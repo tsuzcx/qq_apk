@@ -1,43 +1,45 @@
 package com.tencent.mobileqq.app.msgnotify;
 
-import ammy;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bdal;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class MsgNotifyPushDialog$4
+class MsgNotifyPushDialog$4
   implements Runnable
 {
-  public MsgNotifyPushDialog$4(ammy paramammy) {}
+  MsgNotifyPushDialog$4(MsgNotifyPushDialog paramMsgNotifyPushDialog) {}
   
   public void run()
   {
-    int i = 0;
     AnimationDrawable localAnimationDrawable;
     if (this.this$0.isShowing())
     {
-      ammy.a(this.this$0, true);
+      MsgNotifyPushDialog.a(this.this$0, true);
       localAnimationDrawable = new AnimationDrawable();
     }
     try
     {
       long l1 = System.currentTimeMillis();
-      while (i < ammy.jdField_a_of_type_Int)
+      int i = 0;
+      while (i < MsgNotifyPushDialog.g)
       {
-        Bitmap localBitmap = bdal.a(String.format(ammy.c + ammy.e, new Object[] { Integer.valueOf(i) }));
-        localAnimationDrawable.addFrame(new BitmapDrawable(ammy.a(this.this$0).getResources(), localBitmap), 1000 / ammy.jdField_a_of_type_Int);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(MsgNotifyPushDialog.d);
+        ((StringBuilder)localObject).append(MsgNotifyPushDialog.f);
+        localObject = BitmapManager.a(String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(i) }));
+        localAnimationDrawable.addFrame(new BitmapDrawable(MsgNotifyPushDialog.a(this.this$0).getResources(), (Bitmap)localObject), 1000 / MsgNotifyPushDialog.g);
         i += 1;
       }
       localAnimationDrawable.setOneShot(true);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d(ammy.jdField_a_of_type_JavaLangString, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
+        QLog.d(MsgNotifyPushDialog.a, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
       }
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new MsgNotifyPushDialog.4.1(this, localAnimationDrawable), 500L);
+      this.this$0.j.postDelayed(new MsgNotifyPushDialog.4.1(this, localAnimationDrawable), 500L);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError) {}
@@ -45,7 +47,7 @@ public class MsgNotifyPushDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.4
  * JD-Core Version:    0.7.0.1
  */

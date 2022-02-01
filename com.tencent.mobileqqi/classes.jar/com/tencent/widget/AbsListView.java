@@ -46,6 +46,7 @@ import com.tencent.mobileqq.util.ThreadPriorityManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LongSparseArray;
 import com.tencent.util.VersionUtils;
+import hur;
 import hus;
 import hut;
 import huu;
@@ -53,12 +54,11 @@ import huv;
 import huw;
 import hux;
 import huy;
-import huz;
+import hva;
 import hvb;
 import hvc;
 import hvd;
 import hve;
-import hvf;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -141,15 +141,15 @@ public abstract class AbsListView
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private EdgeEffect jdField_a_of_type_ComTencentWidgetEdgeEffect;
   public FastScroller a;
-  huv jdField_a_of_type_Huv;
+  huu jdField_a_of_type_Huu;
+  private huv jdField_a_of_type_Huv;
   private huw jdField_a_of_type_Huw;
-  private hux jdField_a_of_type_Hux;
-  private huz jdField_a_of_type_Huz;
-  private hvb jdField_a_of_type_Hvb;
-  hvc jdField_a_of_type_Hvc;
-  private hvd jdField_a_of_type_Hvd;
-  public hve a;
-  public final hvf a;
+  private huy jdField_a_of_type_Huy;
+  private hva jdField_a_of_type_Hva;
+  hvb jdField_a_of_type_Hvb;
+  private hvc jdField_a_of_type_Hvc;
+  public hvd a;
+  public final hve a;
   private Object jdField_a_of_type_JavaLangObject = null;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   private boolean jdField_a_of_type_Boolean = false;
@@ -229,7 +229,7 @@ public abstract class AbsListView
   public AbsListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Hvf = new hvf(this);
+    this.jdField_a_of_type_Hve = new hve(this);
     this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
     this.t = false;
     this.v = false;
@@ -250,7 +250,7 @@ public abstract class AbsListView
   public AbsListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Hvf = new hvf(this);
+    this.jdField_a_of_type_Hve = new hve(this);
     this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
     this.t = false;
     this.v = false;
@@ -305,7 +305,7 @@ public abstract class AbsListView
   private void E()
   {
     if (this.jdField_c_of_type_JavaLangRunnable == null) {
-      this.jdField_c_of_type_JavaLangRunnable = new hut(this);
+      this.jdField_c_of_type_JavaLangRunnable = new hus(this);
     }
     post(this.jdField_c_of_type_JavaLangRunnable);
   }
@@ -600,7 +600,7 @@ public abstract class AbsListView
         this.ad = 0;
         Object localObject = getHandler();
         if (localObject != null) {
-          ((Handler)localObject).removeCallbacks(this.jdField_a_of_type_Hux);
+          ((Handler)localObject).removeCallbacks(this.jdField_a_of_type_Huw);
         }
         setPressed(false);
         localObject = getChildAt(this.W - this.ap);
@@ -901,14 +901,14 @@ public abstract class AbsListView
   public View a(int paramInt, boolean[] paramArrayOfBoolean)
   {
     paramArrayOfBoolean[0] = false;
-    View localView2 = this.jdField_a_of_type_Hvf.b(paramInt);
+    View localView2 = this.jdField_a_of_type_Hve.b(paramInt);
     View localView1;
     if (localView2 != null)
     {
       localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView2, this);
       if (localView1 != localView2)
       {
-        this.jdField_a_of_type_Hvf.a(localView2, paramInt);
+        this.jdField_a_of_type_Hve.a(localView2, paramInt);
         paramArrayOfBoolean = localView1;
         if (this.ai != 0)
         {
@@ -935,9 +935,9 @@ public abstract class AbsListView
     return new AbsListView.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected huv a()
+  protected huu a()
   {
-    return new huv(this);
+    return new huu(this);
   }
   
   public CharSequence a()
@@ -972,18 +972,18 @@ public abstract class AbsListView
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Hve == null) {
-      this.jdField_a_of_type_Hve = new hve(this);
+    if (this.jdField_a_of_type_Hvd == null) {
+      this.jdField_a_of_type_Hvd = new hvd(this);
     }
-    this.jdField_a_of_type_Hve.b(paramInt1, paramInt2);
+    this.jdField_a_of_type_Hvd.b(paramInt1, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Hve == null) {
-      this.jdField_a_of_type_Hve = new hve(this);
+    if (this.jdField_a_of_type_Hvd == null) {
+      this.jdField_a_of_type_Hvd = new hvd(this);
     }
-    this.jdField_a_of_type_Hve.a(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Hvd.a(paramInt1, paramInt2, paramInt3);
   }
   
   public void a(int paramInt, View paramView)
@@ -1023,13 +1023,13 @@ public abstract class AbsListView
   public void a(List paramList)
   {
     int i2 = getChildCount();
-    AbsListView.RecyclerListener localRecyclerListener = hvf.a(this.jdField_a_of_type_Hvf);
+    AbsListView.RecyclerListener localRecyclerListener = hve.a(this.jdField_a_of_type_Hve);
     int i1 = 0;
     while (i1 < i2)
     {
       View localView = getChildAt(i1);
       AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)localView.getLayoutParams();
-      if ((localLayoutParams != null) && (this.jdField_a_of_type_Hvf.a(localLayoutParams.jdField_a_of_type_Int)))
+      if ((localLayoutParams != null) && (this.jdField_a_of_type_Hve.a(localLayoutParams.jdField_a_of_type_Int)))
       {
         paramList.add(localView);
         if (localRecyclerListener != null) {
@@ -1038,7 +1038,7 @@ public abstract class AbsListView
       }
       i1 += 1;
     }
-    this.jdField_a_of_type_Hvf.a(paramList);
+    this.jdField_a_of_type_Hve.a(paramList);
     removeAllViewsInLayout();
   }
   
@@ -1229,7 +1229,7 @@ public abstract class AbsListView
       if ((i6 < i12) || (i6 >= i13)) {
         break label786;
       }
-      this.jdField_a_of_type_Hvf.a(localView, i6);
+      this.jdField_a_of_type_Hve.a(localView, i6);
       break label786;
       label602:
       paramInt1 = getHeight() - i5;
@@ -1252,7 +1252,7 @@ public abstract class AbsListView
         if ((paramInt2 < i12) || (paramInt2 >= i13)) {
           break label807;
         }
-        this.jdField_a_of_type_Hvf.a(localView, paramInt2);
+        this.jdField_a_of_type_Hve.a(localView, paramInt2);
         break label807;
         label691:
         if (this.Q != -1)
@@ -1429,7 +1429,7 @@ public abstract class AbsListView
           if (this.jdField_a_of_type_AndroidViewActionMode == null) {
             break label380;
           }
-          this.jdField_a_of_type_Hvc.a(this.jdField_a_of_type_AndroidViewActionMode, paramInt, paramLong, bool1);
+          this.jdField_a_of_type_Hvb.a(this.jdField_a_of_type_AndroidViewActionMode, paramInt, paramLong, bool1);
           i1 = i2;
           label167:
           this.p = true;
@@ -1548,18 +1548,18 @@ public abstract class AbsListView
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Hve == null) {
-      this.jdField_a_of_type_Hve = new hve(this);
+    if (this.jdField_a_of_type_Hvd == null) {
+      this.jdField_a_of_type_Hvd = new hvd(this);
     }
-    this.jdField_a_of_type_Hve.a(paramInt);
+    this.jdField_a_of_type_Hvd.a(paramInt);
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Hve == null) {
-      this.jdField_a_of_type_Hve = new hve(this);
+    if (this.jdField_a_of_type_Hvd == null) {
+      this.jdField_a_of_type_Hvd = new hvd(this);
     }
-    this.jdField_a_of_type_Hve.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Hvd.a(paramInt1, paramInt2);
   }
   
   abstract void b(boolean paramBoolean);
@@ -1580,7 +1580,7 @@ public abstract class AbsListView
       if (paramInt == 0) {
         break label121;
       }
-      localObject = hvf.a(this.jdField_a_of_type_Hvf);
+      localObject = hve.a(this.jdField_a_of_type_Hve);
       i1 = localObject.length;
       paramInt = 0;
       while (paramInt < i1)
@@ -1591,10 +1591,10 @@ public abstract class AbsListView
         paramInt += 1;
       }
     }
-    if (!a(hvf.a(this.jdField_a_of_type_Hvf))) {
+    if (!a(hve.a(this.jdField_a_of_type_Hve))) {
       bool1 = false;
     }
-    Object localObject = hvf.a(this.jdField_a_of_type_Hvf);
+    Object localObject = hve.a(this.jdField_a_of_type_Hve);
     int i1 = localObject.length;
     paramInt = 0;
     for (;;)
@@ -1624,7 +1624,7 @@ public abstract class AbsListView
         bool2 = bool1;
         if (this.jdField_a_of_type_AndroidViewActionMode == null)
         {
-          paramView = startActionMode(this.jdField_a_of_type_Hvc);
+          paramView = startActionMode(this.jdField_a_of_type_Hvb);
           this.jdField_a_of_type_AndroidViewActionMode = paramView;
           bool2 = bool1;
           if (paramView != null)
@@ -1718,8 +1718,8 @@ public abstract class AbsListView
   
   public void c(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Huz == null) {
-      this.jdField_a_of_type_Huz = new huz(this);
+    if (this.jdField_a_of_type_Huy == null) {
+      this.jdField_a_of_type_Huy = new huy(this);
     }
     int i1 = this.ap;
     int i2 = getChildCount();
@@ -1728,17 +1728,17 @@ public abstract class AbsListView
     int i5 = this.mPaddingBottom;
     if ((paramInt1 == 0) || (this.aB == 0) || (i2 == 0) || ((i1 == 0) && (getChildAt(0).getTop() == i3) && (paramInt1 < 0)) || ((i1 + i2 - 1 == this.aB - 1) && (getChildAt(i2 - 1).getBottom() == i4 - i5) && (paramInt1 > 0)))
     {
-      this.jdField_a_of_type_Huz.a();
-      if (this.jdField_a_of_type_Hve != null) {
-        this.jdField_a_of_type_Hve.a();
+      this.jdField_a_of_type_Huy.a();
+      if (this.jdField_a_of_type_Hvd != null) {
+        this.jdField_a_of_type_Hvd.a();
       }
-      if (this.jdField_a_of_type_Hvb != null) {
-        this.jdField_a_of_type_Hvb.b();
+      if (this.jdField_a_of_type_Hva != null) {
+        this.jdField_a_of_type_Hva.b();
       }
       return;
     }
     a(2);
-    this.jdField_a_of_type_Huz.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Huy.a(paramInt1, paramInt2);
   }
   
   @ViewDebug.ExportedProperty
@@ -2315,11 +2315,11 @@ public abstract class AbsListView
           }
           while ((bool) && (!this.p))
           {
-            if (this.jdField_a_of_type_Huw == null) {
-              this.jdField_a_of_type_Huw = new huw(this, null);
+            if (this.jdField_a_of_type_Huv == null) {
+              this.jdField_a_of_type_Huv = new huv(this, null);
             }
-            this.jdField_a_of_type_Huw.a();
-            postDelayed(this.jdField_a_of_type_Huw, ViewConfiguration.getLongPressTimeout());
+            this.jdField_a_of_type_Huv.a();
+            postDelayed(this.jdField_a_of_type_Huv, ViewConfiguration.getLongPressTimeout());
             return;
             label172:
             ((TransitionDrawable)localDrawable).resetTransition();
@@ -2386,12 +2386,12 @@ public abstract class AbsListView
         bool1 = true;
         i2 = i3;
         this.af = -1;
-        removeCallbacks(this.jdField_a_of_type_Huz);
-        if (this.jdField_a_of_type_Hve != null) {
-          this.jdField_a_of_type_Hve.a();
+        removeCallbacks(this.jdField_a_of_type_Huy);
+        if (this.jdField_a_of_type_Hvd != null) {
+          this.jdField_a_of_type_Hvd.a();
         }
-        if (this.jdField_a_of_type_Hvb != null) {
-          this.jdField_a_of_type_Hvb.b();
+        if (this.jdField_a_of_type_Hva != null) {
+          this.jdField_a_of_type_Hva.b();
         }
         this.ab = -1;
         E();
@@ -2591,8 +2591,8 @@ public abstract class AbsListView
       {
         this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(l1);
         this.O -= 1;
-        if ((this.jdField_a_of_type_AndroidViewActionMode != null) && (this.jdField_a_of_type_Hvc != null)) {
-          this.jdField_a_of_type_Hvc.a(this.jdField_a_of_type_AndroidViewActionMode, i5, l1, false);
+        if ((this.jdField_a_of_type_AndroidViewActionMode != null) && (this.jdField_a_of_type_Hvb != null)) {
+          this.jdField_a_of_type_Hvb.a(this.jdField_a_of_type_AndroidViewActionMode, i5, l1, false);
         }
         i3 = i1 - 1;
         i2 = 1;
@@ -2622,10 +2622,10 @@ public abstract class AbsListView
     if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (!this.x)) {
       localViewTreeObserver.addOnGlobalLayoutListener(this);
     }
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Huv == null))
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Huu == null))
     {
-      this.jdField_a_of_type_Huv = a();
-      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_Huv);
+      this.jdField_a_of_type_Huu = a();
+      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_Huu);
       this.p = true;
       this.aC = this.aB;
       this.aB = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
@@ -2671,7 +2671,7 @@ public abstract class AbsListView
       if (this.jdField_a_of_type_AndroidViewInputmethodInputConnectionWrapper == null)
       {
         this.jdField_a_of_type_AndroidViewInputmethodInputConnection = new BaseInputConnection(this, false);
-        this.jdField_a_of_type_AndroidViewInputmethodInputConnectionWrapper = new huu(this, this.jdField_a_of_type_AndroidWidgetEditText.onCreateInputConnection(paramEditorInfo), true);
+        this.jdField_a_of_type_AndroidViewInputmethodInputConnectionWrapper = new hut(this, this.jdField_a_of_type_AndroidWidgetEditText.onCreateInputConnection(paramEditorInfo), true);
       }
       paramEditorInfo.inputType = 177;
       paramEditorInfo.imeOptions = 6;
@@ -2684,7 +2684,7 @@ public abstract class AbsListView
   {
     super.onDetachedFromWindow();
     F();
-    this.jdField_a_of_type_Hvf.b();
+    this.jdField_a_of_type_Hve.b();
     ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
     localViewTreeObserver.removeOnTouchModeChangeListener(this);
     if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetPopupWindow != null))
@@ -2694,8 +2694,8 @@ public abstract class AbsListView
     }
     if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
     {
-      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Huv);
-      this.jdField_a_of_type_Huv = null;
+      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Huu);
+      this.jdField_a_of_type_Huu = null;
     }
     if (this.jdField_a_of_type_JavaLangObject != null) {
       this.jdField_a_of_type_JavaLangObject = a(this.jdField_a_of_type_JavaLangObject);
@@ -2703,20 +2703,20 @@ public abstract class AbsListView
     if (this.jdField_b_of_type_JavaLangObject != null) {
       this.jdField_b_of_type_JavaLangObject = a(this.jdField_b_of_type_JavaLangObject);
     }
-    if (this.jdField_a_of_type_Huz != null) {
-      removeCallbacks(this.jdField_a_of_type_Huz);
+    if (this.jdField_a_of_type_Huy != null) {
+      removeCallbacks(this.jdField_a_of_type_Huy);
     }
-    if (this.jdField_a_of_type_Hve != null) {
-      this.jdField_a_of_type_Hve.a();
+    if (this.jdField_a_of_type_Hvd != null) {
+      this.jdField_a_of_type_Hvd.a();
     }
-    if (this.jdField_a_of_type_Hvb != null) {
-      this.jdField_a_of_type_Hvb.b();
+    if (this.jdField_a_of_type_Hva != null) {
+      this.jdField_a_of_type_Hva.b();
     }
     if (this.jdField_c_of_type_JavaLangRunnable != null) {
       removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
     }
-    if (this.jdField_a_of_type_Hvd != null) {
-      removeCallbacks(this.jdField_a_of_type_Hvd);
+    if (this.jdField_a_of_type_Hvc != null) {
+      removeCallbacks(this.jdField_a_of_type_Hvc);
     }
     if (this.jdField_b_of_type_JavaLangRunnable != null)
     {
@@ -2934,7 +2934,7 @@ public abstract class AbsListView
           getChildAt(paramInt1).forceLayout();
           paramInt1 += 1;
         }
-        this.jdField_a_of_type_Hvf.a();
+        this.jdField_a_of_type_Hve.a();
       }
       if ((this.jdField_a_of_type_ComTencentWidgetFastScroller != null) && (this.aB != this.aC)) {
         this.jdField_a_of_type_ComTencentWidgetFastScroller.a(this.aC, this.aB);
@@ -2944,10 +2944,10 @@ public abstract class AbsListView
       this.ag = ((paramInt4 - paramInt2) / 3);
       if (this.jdField_k_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Hvb == null) {
-          this.jdField_a_of_type_Hvb = new hvb(this);
+        if (this.jdField_a_of_type_Hva == null) {
+          this.jdField_a_of_type_Hva = new hva(this);
         }
-        this.jdField_a_of_type_Hvb.a();
+        this.jdField_a_of_type_Hva.a();
       }
       return;
     }
@@ -3031,8 +3031,8 @@ public abstract class AbsListView
         this.jdField_a_of_type_ComTencentUtilLongSparseArray = paramParcelable.jdField_a_of_type_ComTencentUtilLongSparseArray;
       }
       this.O = paramParcelable.jdField_d_of_type_Int;
-      if ((VersionUtils.e()) && (paramParcelable.jdField_a_of_type_Boolean) && (this.N == 3) && (this.jdField_a_of_type_Hvc != null)) {
-        this.jdField_a_of_type_AndroidViewActionMode = startActionMode(this.jdField_a_of_type_Hvc);
+      if ((VersionUtils.e()) && (paramParcelable.jdField_a_of_type_Boolean) && (this.N == 3) && (this.jdField_a_of_type_Hvb != null)) {
+        this.jdField_a_of_type_AndroidViewActionMode = startActionMode(this.jdField_a_of_type_Hvb);
       }
       requestLayout();
       return;
@@ -3280,7 +3280,7 @@ public abstract class AbsListView
           {
             this.ab = 0;
             if (this.jdField_a_of_type_JavaLangRunnable == null) {
-              this.jdField_a_of_type_JavaLangRunnable = new huy(this);
+              this.jdField_a_of_type_JavaLangRunnable = new hux(this);
             }
             postDelayed(this.jdField_a_of_type_JavaLangRunnable, ViewConfiguration.getTapTimeout());
           }
@@ -3310,12 +3310,12 @@ public abstract class AbsListView
         }
         removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
         return true;
-        this.jdField_a_of_type_Huz.a();
-        if (this.jdField_a_of_type_Hve != null) {
-          this.jdField_a_of_type_Hve.a();
+        this.jdField_a_of_type_Huy.a();
+        if (this.jdField_a_of_type_Hvd != null) {
+          this.jdField_a_of_type_Hvd.a();
         }
-        if (this.jdField_a_of_type_Hvb != null) {
-          this.jdField_a_of_type_Hvb.b();
+        if (this.jdField_a_of_type_Hva != null) {
+          this.jdField_a_of_type_Hva.b();
         }
         this.ab = 5;
         this.Z = ((int)paramMotionEvent.getX());
@@ -3329,11 +3329,11 @@ public abstract class AbsListView
       if (this.ab == 4)
       {
         D();
-        this.jdField_a_of_type_Huz.a();
+        this.jdField_a_of_type_Huy.a();
         this.ab = 3;
         this.ad = 0;
         i1 = a(i3);
-        this.jdField_a_of_type_Huz.b();
+        this.jdField_a_of_type_Huy.b();
         continue;
         i2 = paramMotionEvent.findPointerIndex(this.aL);
         if (i2 == -1) {
@@ -3372,7 +3372,7 @@ public abstract class AbsListView
             invalidate();
             paramMotionEvent = getHandler();
             if (paramMotionEvent != null) {
-              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Hux);
+              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Huw);
             }
             C();
             this.aL = -1;
@@ -3385,17 +3385,17 @@ public abstract class AbsListView
             i2 = this.W;
             View localView = getChildAt(i2 - this.ap);
             float f1 = paramMotionEvent.getX();
-            hvd localhvd;
+            hvc localhvc;
             Handler localHandler;
             if ((f1 > this.jdField_c_of_type_AndroidGraphicsRect.left) && (f1 < getWidth() - this.jdField_c_of_type_AndroidGraphicsRect.right))
             {
               i1 = 1;
-              if (this.jdField_a_of_type_Hvd == null) {
-                this.jdField_a_of_type_Hvd = new hvd(this, null);
+              if (this.jdField_a_of_type_Hvc == null) {
+                this.jdField_a_of_type_Hvc = new hvc(this, null);
               }
-              localhvd = this.jdField_a_of_type_Hvd;
-              localhvd.jdField_a_of_type_Int = i2;
-              localhvd.a();
+              localhvc = this.jdField_a_of_type_Hvc;
+              localhvc.jdField_a_of_type_Int = i2;
+              localhvc.a();
               if ((localView == null) || (localView.hasFocusable()) || (i1 == 0)) {
                 break label1082;
               }
@@ -3414,7 +3414,7 @@ public abstract class AbsListView
               }
             }
             label1025:
-            for (paramMotionEvent = this.jdField_a_of_type_JavaLangRunnable;; paramMotionEvent = this.jdField_a_of_type_Hux)
+            for (paramMotionEvent = this.jdField_a_of_type_JavaLangRunnable;; paramMotionEvent = this.jdField_a_of_type_Huw)
             {
               localHandler.removeCallbacks(paramMotionEvent);
               this.P = 0;
@@ -3437,7 +3437,7 @@ public abstract class AbsListView
               if (this.jdField_b_of_type_JavaLangRunnable != null) {
                 removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
               }
-              this.jdField_b_of_type_JavaLangRunnable = new hus(this, localView, localhvd);
+              this.jdField_b_of_type_JavaLangRunnable = new hur(this, localView, localhvc);
               postDelayed(this.jdField_b_of_type_JavaLangRunnable, ViewConfiguration.getPressedStateDuration());
               return true;
               i1 = 0;
@@ -3449,7 +3449,7 @@ public abstract class AbsListView
             return true;
             label1044:
             if ((!this.p) && (this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(i2))) {
-              localhvd.run();
+              localhvc.run();
             }
             for (;;)
             {
@@ -3457,7 +3457,7 @@ public abstract class AbsListView
               l();
               break;
               label1082:
-              localhvd.run();
+              localhvc.run();
             }
             i1 = getChildCount();
             if (i1 > 0)
@@ -3482,24 +3482,24 @@ public abstract class AbsListView
                   if ((Math.abs(i6) <= this.aJ) || ((this.ap == 0) && (i2 == i4 - this.ak)) || ((i1 + this.ap == this.aB) && (i3 == this.aj + i5))) {
                     break label1338;
                   }
-                  if (this.jdField_a_of_type_Huz == null) {
-                    this.jdField_a_of_type_Huz = new huz(this);
+                  if (this.jdField_a_of_type_Huy == null) {
+                    this.jdField_a_of_type_Huy = new huy(this);
                   }
                   a(2);
-                  this.jdField_a_of_type_Huz.a(-i6);
+                  this.jdField_a_of_type_Huy.a(-i6);
                   break;
                 }
                 label1338:
                 this.ab = -1;
                 a(0);
-                if (this.jdField_a_of_type_Huz != null) {
-                  this.jdField_a_of_type_Huz.a();
+                if (this.jdField_a_of_type_Huy != null) {
+                  this.jdField_a_of_type_Huy.a();
                 }
-                if (this.jdField_a_of_type_Hve != null) {
-                  this.jdField_a_of_type_Hve.a();
+                if (this.jdField_a_of_type_Hvd != null) {
+                  this.jdField_a_of_type_Hvd.a();
                 }
-                if (this.jdField_a_of_type_Hvb != null) {
-                  this.jdField_a_of_type_Hvb.b();
+                if (this.jdField_a_of_type_Hva != null) {
+                  this.jdField_a_of_type_Hva.b();
                 }
               }
             }
@@ -3508,11 +3508,11 @@ public abstract class AbsListView
               this.ab = -1;
               a(0);
               continue;
-              if (this.jdField_a_of_type_Huz == null) {
-                this.jdField_a_of_type_Huz = new huz(this);
+              if (this.jdField_a_of_type_Huy == null) {
+                this.jdField_a_of_type_Huy = new huy(this);
               }
               a(2);
-              this.jdField_a_of_type_Huz.b(j());
+              this.jdField_a_of_type_Huy.b(j());
             }
           }
           switch (this.ab)
@@ -3527,7 +3527,7 @@ public abstract class AbsListView
             E();
             paramMotionEvent = getHandler();
             if (paramMotionEvent != null) {
-              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Hux);
+              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Huw);
             }
             C();
           }
@@ -3540,10 +3540,10 @@ public abstract class AbsListView
             }
             this.aL = -1;
             return true;
-            if (this.jdField_a_of_type_Huz == null) {
-              this.jdField_a_of_type_Huz = new huz(this);
+            if (this.jdField_a_of_type_Huy == null) {
+              this.jdField_a_of_type_Huy = new huy(this);
             }
-            this.jdField_a_of_type_Huz.b(0);
+            this.jdField_a_of_type_Huy.b(0);
           }
           bool1 = bool2;
           if (!VersionUtils.b()) {
@@ -3604,14 +3604,14 @@ public abstract class AbsListView
         return;
         i1 = this.ab;
       } while ((i1 != 5) && (i1 != 6));
-      if ((this.jdField_a_of_type_Huz != null) && (this.mScrollY == 0)) {
-        this.jdField_a_of_type_Huz.a();
+      if ((this.jdField_a_of_type_Huy != null) && (this.mScrollY == 0)) {
+        this.jdField_a_of_type_Huy.a();
       }
-      if (this.jdField_a_of_type_Hve != null) {
-        this.jdField_a_of_type_Hve.a();
+      if (this.jdField_a_of_type_Hvd != null) {
+        this.jdField_a_of_type_Hvd.a();
       }
-      if (this.jdField_a_of_type_Hvb != null) {
-        this.jdField_a_of_type_Hvb.b();
+      if (this.jdField_a_of_type_Hva != null) {
+        this.jdField_a_of_type_Hva.b();
       }
     } while (getScrollY() == 0);
     this.mScrollY = 0;
@@ -3631,15 +3631,15 @@ public abstract class AbsListView
         break label126;
       }
       setChildrenDrawingCacheEnabled(false);
-      if (this.jdField_a_of_type_Huz != null)
+      if (this.jdField_a_of_type_Huy != null)
       {
-        removeCallbacks(this.jdField_a_of_type_Huz);
-        this.jdField_a_of_type_Huz.a();
-        if (this.jdField_a_of_type_Hve != null) {
-          this.jdField_a_of_type_Hve.a();
+        removeCallbacks(this.jdField_a_of_type_Huy);
+        this.jdField_a_of_type_Huy.a();
+        if (this.jdField_a_of_type_Hvd != null) {
+          this.jdField_a_of_type_Hvd.a();
         }
-        if (this.jdField_a_of_type_Hvb != null) {
-          this.jdField_a_of_type_Hvb.b();
+        if (this.jdField_a_of_type_Hva != null) {
+          this.jdField_a_of_type_Hva.b();
         }
         if (getScrollY() != 0)
         {
@@ -4023,7 +4023,7 @@ public abstract class AbsListView
         getChildAt(i1).setDrawingCacheBackgroundColor(paramInt);
         i1 += 1;
       }
-      this.jdField_a_of_type_Hvf.b(paramInt);
+      this.jdField_a_of_type_Hve.b(paramInt);
     }
   }
   
@@ -4151,17 +4151,17 @@ public abstract class AbsListView
           ((Filterable)this.jdField_a_of_type_AndroidWidgetListAdapter).getFilter().filter(paramString);
         }
         this.r = true;
-        this.jdField_a_of_type_Huv.a();
+        this.jdField_a_of_type_Huu.a();
       }
     }
   }
   
   public void setFriction(float paramFloat)
   {
-    if (this.jdField_a_of_type_Huz == null) {
-      this.jdField_a_of_type_Huz = new huz(this);
+    if (this.jdField_a_of_type_Huy == null) {
+      this.jdField_a_of_type_Huy = new huy(this);
     }
-    huz.a(this.jdField_a_of_type_Huz).a(paramFloat);
+    huy.a(this.jdField_a_of_type_Huy).a(paramFloat);
   }
   
   @TargetApi(11)
@@ -4175,7 +4175,7 @@ public abstract class AbsListView
     {
       return;
       if ((VersionUtils.e()) && (paramBoolean) && (this.N == 3) && (this.jdField_a_of_type_AndroidViewActionMode == null)) {
-        this.jdField_a_of_type_AndroidViewActionMode = startActionMode(this.jdField_a_of_type_Hvc);
+        this.jdField_a_of_type_AndroidViewActionMode = startActionMode(this.jdField_a_of_type_Hvb);
       }
       if ((this.N == 2) || (this.N == 3))
       {
@@ -4199,7 +4199,7 @@ public abstract class AbsListView
           if (this.jdField_a_of_type_AndroidViewActionMode != null)
           {
             long l1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
-            this.jdField_a_of_type_Hvc.a(this.jdField_a_of_type_AndroidViewActionMode, paramInt, l1, paramBoolean);
+            this.jdField_a_of_type_Hvb.a(this.jdField_a_of_type_AndroidViewActionMode, paramInt, l1, paramBoolean);
           }
         }
       }
@@ -4250,10 +4250,10 @@ public abstract class AbsListView
   
   public void setMultiChoiceModeListener(AbsListView.MultiChoiceModeListener paramMultiChoiceModeListener)
   {
-    if (this.jdField_a_of_type_Hvc == null) {
-      this.jdField_a_of_type_Hvc = new hvc(this);
+    if (this.jdField_a_of_type_Hvb == null) {
+      this.jdField_a_of_type_Hvb = new hvb(this);
     }
-    this.jdField_a_of_type_Hvc.a(paramMultiChoiceModeListener);
+    this.jdField_a_of_type_Hvb.a(paramMultiChoiceModeListener);
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
@@ -4291,7 +4291,7 @@ public abstract class AbsListView
   
   public void setRecyclerListener(AbsListView.RecyclerListener paramRecyclerListener)
   {
-    hvf.a(this.jdField_a_of_type_Hvf, paramRecyclerListener);
+    hve.a(this.jdField_a_of_type_Hve, paramRecyclerListener);
   }
   
   public void setScrollIndicators(View paramView1, View paramView2)
@@ -4393,16 +4393,16 @@ public abstract class AbsListView
   
   protected void u()
   {
-    if (this.jdField_a_of_type_Huz == null) {
-      this.jdField_a_of_type_Huz = new huz(this);
+    if (this.jdField_a_of_type_Huy == null) {
+      this.jdField_a_of_type_Huy = new huy(this);
     }
-    this.jdField_a_of_type_Huz.b(0);
+    this.jdField_a_of_type_Huy.b(0);
   }
   
   protected void v()
   {
-    if (this.jdField_a_of_type_Huz != null) {
-      this.jdField_a_of_type_Huz.a();
+    if (this.jdField_a_of_type_Huy != null) {
+      this.jdField_a_of_type_Huy.a();
     }
   }
   

@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.BaseActivity;
 import java.lang.ref.WeakReference;
 
-public class ChatHistoryTroopMemberFragment$SearchDialogDismissRunnable
+class ChatHistoryTroopMemberFragment$SearchDialogDismissRunnable
   implements Runnable
 {
   private WeakReference<ChatHistoryTroopMemberFragment> a;
@@ -23,13 +24,15 @@ public class ChatHistoryTroopMemberFragment$SearchDialogDismissRunnable
     ChatHistoryTroopMemberFragment localChatHistoryTroopMemberFragment = (ChatHistoryTroopMemberFragment)this.a.get();
     if (localChatHistoryTroopMemberFragment != null)
     {
-      localChatHistoryTroopMemberFragment.k = false;
-      int i = localChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight();
-      localChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-i);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
-      localTranslateAnimation.setDuration(300L);
-      localChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
-      ((InputMethodManager)localChatHistoryTroopMemberFragment.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(localChatHistoryTroopMemberFragment.getActivity().getWindow().peekDecorView().getWindowToken(), 0);
+      localChatHistoryTroopMemberFragment.ap = false;
+      int i = localChatHistoryTroopMemberFragment.M.getHeight();
+      Object localObject = localChatHistoryTroopMemberFragment.U;
+      i = -i;
+      ((LinearLayout)localObject).offsetTopAndBottom(i);
+      localObject = new TranslateAnimation(0.0F, 0.0F, i, 0.0F);
+      ((TranslateAnimation)localObject).setDuration(300L);
+      localChatHistoryTroopMemberFragment.U.startAnimation((Animation)localObject);
+      ((InputMethodManager)localChatHistoryTroopMemberFragment.getBaseActivity().getSystemService("input_method")).hideSoftInputFromWindow(localChatHistoryTroopMemberFragment.getBaseActivity().getWindow().peekDecorView().getWindowToken(), 0);
     }
   }
 }

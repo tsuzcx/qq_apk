@@ -14,22 +14,36 @@ public class ProbeChain$ProbeChainResult
   
   public String getRdmReportMsg()
   {
-    String str1 = "<" + this.probeName + " start >";
-    String str2 = "<" + this.probeName + " end >";
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("<");
+    ((StringBuilder)localObject1).append(this.probeName);
+    ((StringBuilder)localObject1).append(" start >");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("<");
+    ((StringBuilder)localObject2).append(this.probeName);
+    ((StringBuilder)localObject2).append(" end >");
+    localObject2 = ((StringBuilder)localObject2).toString();
     int j = this.subResults.size();
     int i = 0;
     while (i < j)
     {
-      ProbeItem.ProbeResult localProbeResult = (ProbeItem.ProbeResult)this.subResults.get(i);
-      str1 = str1 + localProbeResult.getRdmReportMsg();
+      localObject3 = (ProbeItem.ProbeResult)this.subResults.get(i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(((ProbeItem.ProbeResult)localObject3).getRdmReportMsg());
+      localObject1 = localStringBuilder.toString();
       i += 1;
     }
-    return str1 + str2;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append((String)localObject2);
+    return ((StringBuilder)localObject3).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.ProbeChain.ProbeChainResult
  * JD-Core Version:    0.7.0.1
  */

@@ -21,20 +21,25 @@ class StreamDecodeGifTask$DecodeStreamTask
   {
     try
     {
-      if (!this.this$0.isCanceled()) {
+      if (!this.this$0.isCanceled())
+      {
         StreamDecodeGifTask.access$200(this.this$0, this.key, this.url, this.path);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      ImageManagerEnv.getLogger().e("StreamDecodeGifTask-decoding-thread", new Object[] { "DecodeStreamTask error : " + localThrowable.toString() });
+      ILog localILog = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DecodeStreamTask error : ");
+      localStringBuilder.append(localThrowable.toString());
+      localILog.e("StreamDecodeGifTask-decoding-thread", new Object[] { localStringBuilder.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.StreamDecodeGifTask.DecodeStreamTask
  * JD-Core Version:    0.7.0.1
  */

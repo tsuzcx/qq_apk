@@ -1,39 +1,37 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfok;
-import bfpq;
+import com.tencent.open.base.LogUtility;
 import java.io.File;
 
-public class UpdateManager$2
+class UpdateManager$2
   implements Runnable
 {
-  public UpdateManager$2(bfpq parambfpq, String paramString, DownloadInfo paramDownloadInfo) {}
+  UpdateManager$2(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      File localFile = new File(this.a);
       if (localFile.exists())
       {
         long l = localFile.length();
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c = l;
-        bfok.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        this.b.E = l;
+        DownloadManager.b().j(this.b);
         return;
       }
-      bflp.c(bfpq.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
+      LogUtility.c(UpdateManager.b, "patchNewApk file not exists");
       return;
     }
     catch (Exception localException)
     {
-      bflp.c(bfpq.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
+      LogUtility.c(UpdateManager.b, "patchNewApk>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.UpdateManager.2
  * JD-Core Version:    0.7.0.1
  */

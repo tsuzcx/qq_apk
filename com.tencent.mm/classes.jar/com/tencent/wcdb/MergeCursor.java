@@ -13,8 +13,19 @@ public class MergeCursor
   
   public MergeCursor(Cursor[] paramArrayOfCursor)
   {
-    AppMethodBeat.i(12191);
-    this.mObserver = new MergeCursor.1(this);
+    AppMethodBeat.i(2872);
+    this.mObserver = new DataSetObserver()
+    {
+      public void onChanged()
+      {
+        MergeCursor.this.mPos = -1;
+      }
+      
+      public void onInvalidated()
+      {
+        MergeCursor.this.mPos = -1;
+      }
+    };
     this.mCursors = paramArrayOfCursor;
     this.mCursor = paramArrayOfCursor[0];
     while (i < this.mCursors.length)
@@ -24,12 +35,12 @@ public class MergeCursor
       }
       i += 1;
     }
-    AppMethodBeat.o(12191);
+    AppMethodBeat.o(2872);
   }
   
   public void close()
   {
-    AppMethodBeat.i(12205);
+    AppMethodBeat.i(2886);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
@@ -40,12 +51,12 @@ public class MergeCursor
       i += 1;
     }
     super.close();
-    AppMethodBeat.o(12205);
+    AppMethodBeat.o(2886);
   }
   
   public void deactivate()
   {
-    AppMethodBeat.i(12204);
+    AppMethodBeat.i(2885);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
@@ -56,33 +67,33 @@ public class MergeCursor
       i += 1;
     }
     super.deactivate();
-    AppMethodBeat.o(12204);
+    AppMethodBeat.o(2885);
   }
   
   public byte[] getBlob(int paramInt)
   {
-    AppMethodBeat.i(12202);
+    AppMethodBeat.i(2883);
     byte[] arrayOfByte = this.mCursor.getBlob(paramInt);
-    AppMethodBeat.o(12202);
+    AppMethodBeat.o(2883);
     return arrayOfByte;
   }
   
   public String[] getColumnNames()
   {
-    AppMethodBeat.i(12203);
+    AppMethodBeat.i(2884);
     if (this.mCursor != null)
     {
       String[] arrayOfString = this.mCursor.getColumnNames();
-      AppMethodBeat.o(12203);
+      AppMethodBeat.o(2884);
       return arrayOfString;
     }
-    AppMethodBeat.o(12203);
+    AppMethodBeat.o(2884);
     return new String[0];
   }
   
   public int getCount()
   {
-    AppMethodBeat.i(12192);
+    AppMethodBeat.i(2873);
     int m = this.mCursors.length;
     int i = 0;
     int k;
@@ -94,77 +105,77 @@ public class MergeCursor
       }
       i += 1;
     }
-    AppMethodBeat.o(12192);
+    AppMethodBeat.o(2873);
     return j;
   }
   
   public double getDouble(int paramInt)
   {
-    AppMethodBeat.i(12199);
+    AppMethodBeat.i(2880);
     double d = this.mCursor.getDouble(paramInt);
-    AppMethodBeat.o(12199);
+    AppMethodBeat.o(2880);
     return d;
   }
   
   public float getFloat(int paramInt)
   {
-    AppMethodBeat.i(12198);
+    AppMethodBeat.i(2879);
     float f = this.mCursor.getFloat(paramInt);
-    AppMethodBeat.o(12198);
+    AppMethodBeat.o(2879);
     return f;
   }
   
   public int getInt(int paramInt)
   {
-    AppMethodBeat.i(12196);
+    AppMethodBeat.i(2877);
     paramInt = this.mCursor.getInt(paramInt);
-    AppMethodBeat.o(12196);
+    AppMethodBeat.o(2877);
     return paramInt;
   }
   
   public long getLong(int paramInt)
   {
-    AppMethodBeat.i(12197);
+    AppMethodBeat.i(2878);
     long l = this.mCursor.getLong(paramInt);
-    AppMethodBeat.o(12197);
+    AppMethodBeat.o(2878);
     return l;
   }
   
   public short getShort(int paramInt)
   {
-    AppMethodBeat.i(12195);
+    AppMethodBeat.i(2876);
     short s = this.mCursor.getShort(paramInt);
-    AppMethodBeat.o(12195);
+    AppMethodBeat.o(2876);
     return s;
   }
   
   public String getString(int paramInt)
   {
-    AppMethodBeat.i(12194);
+    AppMethodBeat.i(2875);
     String str = this.mCursor.getString(paramInt);
-    AppMethodBeat.o(12194);
+    AppMethodBeat.o(2875);
     return str;
   }
   
   public int getType(int paramInt)
   {
-    AppMethodBeat.i(12200);
+    AppMethodBeat.i(2881);
     paramInt = this.mCursor.getType(paramInt);
-    AppMethodBeat.o(12200);
+    AppMethodBeat.o(2881);
     return paramInt;
   }
   
   public boolean isNull(int paramInt)
   {
-    AppMethodBeat.i(12201);
+    AppMethodBeat.i(2882);
     boolean bool = this.mCursor.isNull(paramInt);
-    AppMethodBeat.o(12201);
+    AppMethodBeat.o(2882);
     return bool;
   }
   
   public boolean onMove(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12193);
+    AppMethodBeat.i(2874);
     this.mCursor = null;
     int k = this.mCursors.length;
     paramInt1 = 0;
@@ -187,20 +198,20 @@ public class MergeCursor
           break;
         }
         boolean bool = this.mCursor.moveToPosition(paramInt2 - i);
-        AppMethodBeat.o(12193);
+        AppMethodBeat.o(2874);
         return bool;
       }
       j = i + this.mCursors[paramInt1].getCount();
       label112:
       paramInt1 += 1;
     }
-    AppMethodBeat.o(12193);
+    AppMethodBeat.o(2874);
     return false;
   }
   
   public void registerContentObserver(ContentObserver paramContentObserver)
   {
-    AppMethodBeat.i(12206);
+    AppMethodBeat.i(2887);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
@@ -210,12 +221,12 @@ public class MergeCursor
       }
       i += 1;
     }
-    AppMethodBeat.o(12206);
+    AppMethodBeat.o(2887);
   }
   
   public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    AppMethodBeat.i(12208);
+    AppMethodBeat.i(2889);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
@@ -225,30 +236,30 @@ public class MergeCursor
       }
       i += 1;
     }
-    AppMethodBeat.o(12208);
+    AppMethodBeat.o(2889);
   }
   
   public boolean requery()
   {
-    AppMethodBeat.i(12210);
+    AppMethodBeat.i(2891);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
     {
       if ((this.mCursors[i] != null) && (!this.mCursors[i].requery()))
       {
-        AppMethodBeat.o(12210);
+        AppMethodBeat.o(2891);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(12210);
+    AppMethodBeat.o(2891);
     return true;
   }
   
   public void unregisterContentObserver(ContentObserver paramContentObserver)
   {
-    AppMethodBeat.i(12207);
+    AppMethodBeat.i(2888);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
@@ -258,12 +269,12 @@ public class MergeCursor
       }
       i += 1;
     }
-    AppMethodBeat.o(12207);
+    AppMethodBeat.o(2888);
   }
   
   public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    AppMethodBeat.i(12209);
+    AppMethodBeat.i(2890);
     int j = this.mCursors.length;
     int i = 0;
     while (i < j)
@@ -273,12 +284,12 @@ public class MergeCursor
       }
       i += 1;
     }
-    AppMethodBeat.o(12209);
+    AppMethodBeat.o(2890);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.MergeCursor
  * JD-Core Version:    0.7.0.1
  */

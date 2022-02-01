@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/erb" android:background="@color/a6w" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/na" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/er8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/h0" />
+    </FrameLayout>
+</LinearLayout>

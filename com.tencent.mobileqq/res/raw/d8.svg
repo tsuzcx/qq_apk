@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="96px"
+    version="1.1"
+    viewBox="0 0 96 96"
+    width="96px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>tipsbar_icon_warning</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Tipsbar"
+        stroke="none"
+        stroke-width="1">
+        <g id="tipsbar_icon_warning">
+            <g>
+                <rect
+                    fill="#000000"
+                    fill-opacity="0"
+                    height="96"
+                    id="Rectangle-664"
+                    width="96"
+                    x="0"
+                    y="0"></rect>
+                <g
+                    fill-rule="nonzero"
+                    id="msg_state_fail_resend"
+                    transform="translate(21.000000, 21.000000)">
+                    <circle
+                        cx="27"
+                        cy="27"
+                        fill="#F86161"
+                        id="Oval-47"
+                        r="27"></circle>
+                    <g
+                        fill="#FFFFFF"
+                        id="Group-2"
+                        transform="translate(24.000000, 13.000000)">
+                        <circle
+                            cx="3"
+                            cy="27"
+                            id="Oval-46"
+                            r="3"></circle>
+                        <polygon
+                            id="Combined-Shape"
+                            points="0.494752624 0 5.49475262 0 4.70959852 20.2121212 1.32901987 20.2121212"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

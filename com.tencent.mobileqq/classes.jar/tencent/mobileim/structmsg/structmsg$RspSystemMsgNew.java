@@ -37,13 +37,15 @@ public final class structmsg$RspSystemMsgNew
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 74, 82, 90, 98, 106, 114, 120, 160, 802, 810, 816, 824 }, new String[] { "head", "unread_friend_count", "unread_group_count", "latest_friend_seq", "latest_group_seq", "following_friend_seq", "following_group_seq", "friendmsgs", "groupmsgs", "msg_ribbon_friend", "msg_ribbon_group", "msg_display", "grp_msg_display", "uint32_over", "checktype", "bytes_game_nick", "bytes_undecid_for_qim", "uint32_un_read_count3", "uint32_has_suspicious_flag" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, null, null, null, "", "", Integer.valueOf(0), Integer.valueOf(1), "", localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RspSystemMsgNew.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 74, 82, 90, 98, 106, 114, 120, 160, 802, 810, 816, 824 }, new String[] { "head", "unread_friend_count", "unread_group_count", "latest_friend_seq", "latest_group_seq", "following_friend_seq", "following_group_seq", "friendmsgs", "groupmsgs", "msg_ribbon_friend", "msg_ribbon_group", "msg_display", "grp_msg_display", "uint32_over", "checktype", "bytes_game_nick", "bytes_undecid_for_qim", "uint32_un_read_count3", "uint32_has_suspicious_flag" }, new Object[] { null, localInteger, localInteger, localLong, localLong, localLong, localLong, null, null, null, null, "", "", localInteger, Integer.valueOf(1), "", localByteStringMicro, localInteger, localInteger }, RspSystemMsgNew.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.mobileim.structmsg.structmsg.RspSystemMsgNew
  * JD-Core Version:    0.7.0.1
  */

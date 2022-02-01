@@ -1,364 +1,390 @@
 package com.tencent.mm.modelstat;
 
-import android.content.Intent;
-import android.os.Looper;
-import com.tencent.mars.xlog.LogLogic;
-import com.tencent.mars.xlog.Xlog;
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.q;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.ci.c;
-import com.tencent.mm.ci.d.a;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.g.a.iq;
-import com.tencent.mm.g.a.up;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.modelstat.a.b.1;
-import com.tencent.mm.network.a.b.a;
-import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import java.io.File;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.RWCache;
+import com.tencent.mm.sdk.platformtools.RWCache.Holder;
+import com.tencent.mm.sdk.platformtools.RWCache.IRWCacheAppender;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage;
+import java.util.HashSet;
+import junit.framework.Assert;
 
 public final class l
-  extends b.a
-  implements com.tencent.mm.ai.e
+  extends MStorage
+  implements RWCache.IRWCacheAppender<Integer, j>
 {
-  public static long a(File paramFile, long paramLong)
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS netstat ( id INTEGER PRIMARY KEY, peroid INT, textCountIn INT, textBytesIn INT, imageCountIn INT, imageBytesIn INT, voiceCountIn INT, voiceBytesIn INT, videoCountIn INT, videoBytesIn INT, mobileBytesIn INT, wifiBytesIn INT, sysMobileBytesIn INT, sysWifiBytesIn INT, textCountOut INT, textBytesOut INT, imageCountOut INT, imageBytesOut INT, voiceCountOut INT, voiceBytesOut INT, videoCountOut INT, videoBytesOut INT, mobileBytesOut INT, wifiBytesOut INT, sysMobileBytesOut INT, sysWifiBytesOut INT, reserved1 INT, reserved2 INT, reserved3 TEXT, realMobileBytesIn INT, realWifiBytesIn INT, realMobileBytesOut INT, realWifiBytesOut INT) ", "CREATE INDEX IF NOT EXISTS  statInfoIndex ON netstat ( peroid ) " };
+  private static final String[] oXd = { "realMobileBytesIn", "realWifiBytesIn", "realMobileBytesOut", "realWifiBytesOut" };
+  private long oXa;
+  public RWCache<Integer, j> oXb;
+  private long oXc;
+  public com.tencent.mm.storagebase.h omV;
+  
+  public l(com.tencent.mm.storagebase.h paramh)
   {
-    AppMethodBeat.i(78748);
-    long l1 = 0L;
-    long l2 = l1;
-    for (;;)
+    AppMethodBeat.i(151097);
+    this.omV = paramh;
+    this.oXb = new RWCache(this, com.tencent.mm.kernel.h.baH().getLooper(), 30, 2, 300000L, 1000L);
+    paramh = new HashSet();
+    Object localObject1 = oXd;
+    int k = localObject1.length;
+    int i = 0;
+    while (i < k)
     {
-      int i;
-      try
+      paramh.add(localObject1[i]);
+      i += 1;
+    }
+    localObject1 = this.omV.rawQuery("PRAGMA table_info(netstat);", null, 2);
+    i = ((Cursor)localObject1).getColumnIndex("name");
+    while (((Cursor)localObject1).moveToNext()) {
+      paramh.remove(((Cursor)localObject1).getString(i));
+    }
+    ((Cursor)localObject1).close();
+    localObject1 = oXd;
+    k = localObject1.length;
+    i = j;
+    while (i < k)
+    {
+      Object localObject2 = localObject1[i];
+      if (paramh.contains(localObject2))
       {
-        paramFile = paramFile.listFiles();
-        i = 0;
-        l2 = l1;
-        l3 = l1;
-        if (i < paramFile.length)
-        {
-          l2 = l1;
-          if (paramFile[i].isDirectory())
-          {
-            l2 = l1;
-            l1 += a(paramFile[i], paramLong);
-          }
-          else
-          {
-            l2 = l1;
-            if (paramFile[i].length() > paramLong)
-            {
-              l2 = l1;
-              ab.i("MicroMsg.NetStatMsgExtension", "getFolderSize filesize:%s [%s]", new Object[] { Long.valueOf(paramFile[i].length()), paramFile[i].getPath() });
-            }
-            l2 = l1;
-            l3 = paramFile[i].length();
-            l1 += l3;
-          }
-        }
-      }
-      catch (Exception paramFile)
-      {
-        ab.e("MicroMsg.NetStatMsgExtension", "getFolderSize :%s", new Object[] { bo.l(paramFile) });
-        long l3 = l2;
-        AppMethodBeat.o(78748);
-        return l3;
+        localObject2 = "ALTER TABLE netstat ADD COLUMN " + (String)localObject2 + " INT;";
+        this.omV.execSQL("netstat", (String)localObject2);
       }
       i += 1;
     }
+    this.oXc = System.currentTimeMillis();
+    AppMethodBeat.o(151097);
   }
   
-  public static void b(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public final void a(j paramj)
   {
-    AppMethodBeat.i(78752);
-    if (!com.tencent.mm.kernel.g.RJ().QU())
+    AppMethodBeat.i(151099);
+    Assert.assertNotNull(paramj);
+    long l = System.currentTimeMillis();
+    if (paramj.oWo <= 0) {
+      paramj.oWo = ((int)(l / 86400000L));
+    }
+    if (paramj.oWo <= 0)
     {
-      AppMethodBeat.o(78752);
+      AppMethodBeat.o(151099);
       return;
     }
-    switch (paramInt1)
+    j localj = wT(paramj.oWo);
+    if ((localj != null) && (paramj.oWo == localj.oWo))
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(78752);
-      return;
-      ab.d("MicroMsg.NetStatMsgExtension", "send bytes flow:".concat(String.valueOf(paramInt3)));
-      if (paramBoolean)
-      {
-        n.I(0, paramInt3, paramInt2);
-        AppMethodBeat.o(78752);
-        return;
-      }
-      n.J(0, paramInt3, paramInt2);
-      AppMethodBeat.o(78752);
-      return;
-      ab.d("MicroMsg.NetStatMsgExtension", "recv bytes flow:".concat(String.valueOf(paramInt3)));
-      if (paramBoolean)
-      {
-        n.I(paramInt3, 0, paramInt2);
-        AppMethodBeat.o(78752);
-        return;
-      }
-      n.J(paramInt3, 0, paramInt2);
-      AppMethodBeat.o(78752);
-      return;
-      aj.apk("dns_failed_report");
-    }
-  }
-  
-  public final void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(78750);
-    com.tencent.mm.kernel.g.RO().o(new l.3(this, paramInt1, paramInt2, paramString1, paramInt3, paramString2, paramBoolean), 3000L);
-    AppMethodBeat.o(78750);
-  }
-  
-  public final void a(e.c paramc) {}
-  
-  public final e.b b(e.a parama)
-  {
-    AppMethodBeat.i(78749);
-    if (!com.tencent.mm.kernel.g.RJ().QU())
-    {
-      ab.e("MicroMsg.NetStatMsgExtension", "skip ipxx stat while account not set");
-      AppMethodBeat.o(78749);
-      return null;
-    }
-    parama = parama.eyJ.woR.xJE;
-    ab.d("MicroMsg.NetStatMsgExtension", "onPreAddMessage %s", new Object[] { parama });
-    if (bo.isNullOrNil(parama))
-    {
-      AppMethodBeat.o(78749);
-      return null;
-    }
-    ab.i("MicroMsg.NetStatMsgExtension", "get ipxx cmd=%s", new Object[] { parama });
-    Object localObject1 = br.F(parama, "cmd");
-    long l;
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject1 = br.F(parama, "ClearCache");
-      if (localObject1 != null)
-      {
-        l = bo.getLong((String)((Map)localObject1).get(".ClearCache.androidCacheMask"), 0L);
-        localObject1 = (String)((Map)localObject1).get(".ClearCache.message");
-        localObject2 = new Intent();
-        ((Intent)localObject2).putExtra("key_mask", l);
-        ((Intent)localObject2).putExtra("key_message", (String)localObject1);
-        com.tencent.mm.bq.d.f(ah.getContext(), ".ui.ClearCacheUI", (Intent)localObject2);
+      localj.eQp |= 0x1;
+      paramj.oWp = ((int)(paramj.oWp + localj.oWq));
+      paramj.oWq += localj.oWq;
+      paramj.oWr = ((int)(paramj.oWr + localj.oWs));
+      paramj.oWs += localj.oWs;
+      paramj.oWt += localj.oWt;
+      paramj.oWu += localj.oWu;
+      paramj.oWv += localj.oWv;
+      paramj.oWw += localj.oWw;
+      paramj.oWx += localj.oWx;
+      paramj.oWy += localj.oWy;
+      paramj.oWz += localj.oWz;
+      paramj.oWA += localj.oWA;
+      paramj.oWB = ((int)(paramj.oWB + localj.oWC));
+      paramj.oWC += localj.oWC;
+      paramj.oWD = ((int)(paramj.oWD + localj.oWE));
+      paramj.oWE += localj.oWE;
+      paramj.oWF += localj.oWF;
+      paramj.oWG += localj.oWG;
+      paramj.oWH += localj.oWH;
+      paramj.oWI += localj.oWI;
+      paramj.oWJ += localj.oWJ;
+      paramj.oWK += localj.oWK;
+      paramj.oWL += localj.oWL;
+      paramj.oWM += localj.oWM;
+      paramj.oWN += localj.oWN;
+      paramj.oWO += localj.oWO;
+      paramj.oWP += localj.oWP;
+      paramj.oWQ += localj.oWQ;
+      paramj.id = localj.id;
+      paramj.eQp |= 0x2;
+      if (l - this.oXc > 300000L) {
+        Log.i("MicroMsg.NetStat", paramj.toString());
       }
     }
     for (;;)
     {
-      ab.dsI();
-      com.tencent.mm.kernel.g.Rc().ftA.rr(parama);
-      try
-      {
-        Thread.sleep(50L, 0);
-        label202:
-        LogLogic.initIPxxLogInfo();
-        MMProtocalJni.setProtocalJniLogLevel(new Xlog().getLogLevel());
-        AppMethodBeat.o(78749);
-        return null;
-        int i = bo.getInt((String)((Map)localObject1).get(".cmd.trace.$code"), -1);
-        if (i > 0)
-        {
-          if (i == 6)
-          {
-            parama = new up();
-            com.tencent.mm.sdk.b.a.ymk.l(parama);
-            AppMethodBeat.o(78749);
-            return null;
-          }
-          parama = (String)((Map)localObject1).get(".cmd.trace.$class");
-          int j = bo.getInt((String)((Map)localObject1).get(".cmd.trace.$size"), 0);
-          int k = bo.getInt((String)((Map)localObject1).get(".cmd.trace.$type"), 0);
-          com.tencent.mm.ci.d.dAt().c(new d.a(parama, i, j, k));
-          AppMethodBeat.o(78749);
-          return null;
-        }
-        i = bo.getInt((String)((Map)localObject1).get(".cmd.hprof.$type"), -1);
-        if (i > 0)
-        {
-          ab.d("MicroMsg.NetStatMsgExtension", "hprof type: %d", new Object[] { Integer.valueOf(i) });
-          c.NR(i);
-          AppMethodBeat.o(78749);
-          return null;
-        }
-        if ("android".equalsIgnoreCase((String)((Map)localObject1).get(".cmd.prconfig.$os")))
-        {
-          parama = new iq();
-          parama.cxZ.cya = ((String)((Map)localObject1).get(".cmd.prconfig.xml.$url"));
-          parama.cxZ.cyb = ((String)((Map)localObject1).get(".cmd.prconfig.xml.$signature"));
-          parama.cxZ.cyc = ((String)((Map)localObject1).get(".cmd.prconfig.$url"));
-          parama.cxZ.cyd = ((String)((Map)localObject1).get(".cmd.prconfig.$signature"));
-          com.tencent.mm.sdk.b.a.ymk.a(parama, Looper.myLooper());
-          AppMethodBeat.o(78749);
-          return null;
-        }
-        i = bo.getInt((String)((Map)localObject1).get(".cmd.clearfile.$fb"), -1);
-        if (i == 1)
-        {
-          l = bo.getInt((String)((Map)localObject1).get(".cmd.clearfile.$ps"), 1048576);
-          com.tencent.mm.kernel.g.RO().ac(new l.1(this, l));
-          i = bo.getInt((String)((Map)localObject1).get(".cmd.updzh.$pt"), -1);
-          localObject2 = (String)((Map)localObject1).get(".cmd.updzh.$pd");
-          ab.d("MicroMsg.NetStatMsgExtension", "StackReportUploader pt:%d pd:%s", new Object[] { Integer.valueOf(i), localObject2 });
-          if ((i > 0) && (!bo.isNullOrNil((String)localObject2))) {
-            com.tencent.mm.kernel.g.RO().ac(new l.2(this, i, (String)localObject2));
-          }
-          i = bo.getInt((String)((Map)localObject1).get(".cmd.uploadx5log.type"), -1);
-          if (i <= 0) {
-            continue;
-          }
-          parama = (String)((Map)localObject1).get(".cmd.uploadx5log.date");
-          localObject1 = (String)((Map)localObject1).get(".cmd.uploadx5log.process");
-          ab.i("MicroMsg.UploadX5Log", "upload, date %s,process %s,type %d", new Object[] { parama, localObject1, Integer.valueOf(i) });
-          if (i != 1) {
-            break label1145;
-          }
-          if ((!bo.isNullOrNil(parama)) && (!bo.isNullOrNil((String)localObject1))) {
-            break label1089;
-          }
-          ab.w("MicroMsg.UploadX5Log", "date or process is null,date %s,process %s", new Object[] { parama, localObject1 });
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(78749);
-          return null;
-          if (i == 2)
-          {
-            localObject2 = (String)((Map)localObject1).get(".cmd.clearfile.$pd");
-            File localFile = new File((String)localObject2);
-            if (localFile.exists())
-            {
-              l = localFile.length();
-              label856:
-              ab.i("MicroMsg.NetStatMsgExtension", "clearfile delete :[%s] length:%s", new Object[] { localObject2, Long.valueOf(l) });
-              com.tencent.mm.a.e.deleteFile((String)localObject2);
-              localFile = new File((String)localObject2);
-              if (!localFile.exists()) {
-                break label949;
-              }
-            }
-            label949:
-            for (l = localFile.length();; l = -1L)
-            {
-              ab.i("MicroMsg.NetStatMsgExtension", "clearfile delete finish :[%s] length:%s", new Object[] { localObject2, Long.valueOf(l) });
-              break;
-              l = -1L;
-              break label856;
-            }
-          }
-          if (i != 3) {
-            break;
-          }
-          ab.i("MicroMsg.NetStatMsgExtension", "running  clearfile start:" + com.tencent.mm.kernel.g.RL().Rr() + ".tem");
-          com.tencent.mm.a.e.deleteFile(com.tencent.mm.kernel.g.RL().Rr() + ".tem");
-          com.tencent.mm.a.e.deleteFile(com.tencent.mm.kernel.g.RL().Rs() + ".tem");
-          ab.i("MicroMsg.NetStatMsgExtension", "running  clearfile end:" + com.tencent.mm.kernel.g.RL().Rr() + ".tem");
-          break;
-          label1089:
-          label1145:
-          for (parama = String.format("%s/tencent/tbs_live_log/com.tencent.mm/com.tencent.mm_%s_%s.livelog", new Object[] { b.eQx, localObject1, parama });; parama = b.eQx + "/Android/data/com.tencent.mm/files/tbslog/tbslog.txt")
-          {
-            localObject1 = new File(parama);
-            if (((File)localObject1).exists()) {
-              break label1171;
-            }
-            ab.i("MicroMsg.UploadX5Log", "upload file not exists");
-            break;
-          }
-          label1171:
-          parama = q.b((File)localObject1, false, parama + ".zip");
-          if (parama == null)
-          {
-            ab.i("MicroMsg.UploadX5Log", "zipPath is null");
-          }
-          else
-          {
-            parama = new File(parama);
-            if (!parama.exists()) {
-              ab.i("MicroMsg.UploadX5Log", "upload zip file not exists");
-            } else {
-              com.tencent.mm.cm.g.cT(parama).h(new b.1(i));
-            }
-          }
-        }
-      }
-      catch (Exception parama)
-      {
-        break label202;
+      this.oXc = l;
+      b(paramj);
+      AppMethodBeat.o(151099);
+      return;
+      paramj.eQp |= 0x2;
+      paramj.id = -1;
+      if (localj != null) {
+        Log.i("MicroMsg.NetStat", localj.toString());
+      } else {
+        Log.i("MicroMsg.NetStat", "NetStat started.");
       }
     }
   }
   
-  public final void u(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void append(RWCache<Integer, j> paramRWCache, RWCache.Holder<Integer, j> paramHolder)
   {
-    AppMethodBeat.i(78751);
-    if (!com.tencent.mm.kernel.g.RJ().QU())
+    AppMethodBeat.i(242915);
+    int i = paramHolder.funcType;
+    paramRWCache = (j)paramHolder.values;
+    if ((paramRWCache != null) && (i == 1))
     {
-      AppMethodBeat.o(78751);
-      return;
-    }
-    if (!com.tencent.mm.kernel.g.RM().eIn.eIH)
-    {
-      ab.i("MicroMsg.NetStatMsgExtension", "kernel has not startup");
-      AppMethodBeat.o(78751);
-      return;
-    }
-    ab.i("MicroMsg.NetStatMsgExtension", "reportNetFlow wifi[%d, %d] mobile[%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    if (paramInt1 > 0)
-    {
-      if (paramInt2 <= 0) {
-        break label132;
+      i = paramRWCache.oWo;
+      int j = paramRWCache.id;
+      if (i > 0)
+      {
+        paramHolder = new ContentValues();
+        if ((paramRWCache.eQp & 0x2) != 0) {
+          paramHolder.put("peroid", Integer.valueOf(paramRWCache.oWo));
+        }
+        if ((paramRWCache.eQp & 0x4) != 0) {
+          paramHolder.put("textCountIn", Integer.valueOf(paramRWCache.oWp));
+        }
+        if ((paramRWCache.eQp & 0x8) != 0) {
+          paramHolder.put("textBytesIn", Long.valueOf(paramRWCache.oWq));
+        }
+        if ((paramRWCache.eQp & 0x10) != 0) {
+          paramHolder.put("imageCountIn", Integer.valueOf(paramRWCache.oWr));
+        }
+        if ((paramRWCache.eQp & 0x20) != 0) {
+          paramHolder.put("imageBytesIn", Long.valueOf(paramRWCache.oWs));
+        }
+        if ((paramRWCache.eQp & 0x40) != 0) {
+          paramHolder.put("voiceCountIn", Integer.valueOf(paramRWCache.oWt));
+        }
+        if ((paramRWCache.eQp & 0x80) != 0) {
+          paramHolder.put("voiceBytesIn", Long.valueOf(paramRWCache.oWu));
+        }
+        if ((paramRWCache.eQp & 0x100) != 0) {
+          paramHolder.put("videoCountIn", Integer.valueOf(paramRWCache.oWv));
+        }
+        if ((paramRWCache.eQp & 0x200) != 0) {
+          paramHolder.put("videoBytesIn", Long.valueOf(paramRWCache.oWw));
+        }
+        if ((paramRWCache.eQp & 0x400) != 0) {
+          paramHolder.put("mobileBytesIn", Long.valueOf(paramRWCache.oWx));
+        }
+        if ((paramRWCache.eQp & 0x800) != 0) {
+          paramHolder.put("wifiBytesIn", Long.valueOf(paramRWCache.oWy));
+        }
+        if ((paramRWCache.eQp & 0x1000) != 0) {
+          paramHolder.put("sysMobileBytesIn", Long.valueOf(paramRWCache.oWz));
+        }
+        if ((paramRWCache.eQp & 0x2000) != 0) {
+          paramHolder.put("sysWifiBytesIn", Long.valueOf(paramRWCache.oWA));
+        }
+        if ((paramRWCache.eQp & 0x4000) != 0) {
+          paramHolder.put("textCountOut", Integer.valueOf(paramRWCache.oWB));
+        }
+        if ((paramRWCache.eQp & 0x8000) != 0) {
+          paramHolder.put("textBytesOut", Long.valueOf(paramRWCache.oWC));
+        }
+        if ((paramRWCache.eQp & 0x10000) != 0) {
+          paramHolder.put("imageCountOut", Integer.valueOf(paramRWCache.oWD));
+        }
+        if ((paramRWCache.eQp & 0x20000) != 0) {
+          paramHolder.put("imageBytesOut", Long.valueOf(paramRWCache.oWE));
+        }
+        if ((paramRWCache.eQp & 0x40000) != 0) {
+          paramHolder.put("voiceCountOut", Integer.valueOf(paramRWCache.oWF));
+        }
+        if ((paramRWCache.eQp & 0x80000) != 0) {
+          paramHolder.put("voiceBytesOut", Long.valueOf(paramRWCache.oWG));
+        }
+        if ((paramRWCache.eQp & 0x100000) != 0) {
+          paramHolder.put("videoCountOut", Integer.valueOf(paramRWCache.oWH));
+        }
+        if ((paramRWCache.eQp & 0x200000) != 0) {
+          paramHolder.put("videoBytesOut", Long.valueOf(paramRWCache.oWI));
+        }
+        if ((paramRWCache.eQp & 0x400000) != 0) {
+          paramHolder.put("mobileBytesOut", Long.valueOf(paramRWCache.oWJ));
+        }
+        if ((paramRWCache.eQp & 0x800000) != 0) {
+          paramHolder.put("wifiBytesOut", Long.valueOf(paramRWCache.oWK));
+        }
+        if ((paramRWCache.eQp & 0x1000000) != 0) {
+          paramHolder.put("sysMobileBytesOut", Long.valueOf(paramRWCache.oWL));
+        }
+        if ((paramRWCache.eQp & 0x2000000) != 0) {
+          paramHolder.put("sysWifiBytesOut", Long.valueOf(paramRWCache.oWM));
+        }
+        if ((paramRWCache.eQp & 0x4000000) != 0) {
+          paramHolder.put("realMobileBytesIn", Long.valueOf(paramRWCache.oWN));
+        }
+        if ((paramRWCache.eQp & 0x8000000) != 0) {
+          paramHolder.put("realWifiBytesIn", Long.valueOf(paramRWCache.oWO));
+        }
+        if ((paramRWCache.eQp & 0x10000000) != 0) {
+          paramHolder.put("realMobileBytesOut", Long.valueOf(paramRWCache.oWP));
+        }
+        if ((paramRWCache.eQp & 0x20000000) != 0) {
+          paramHolder.put("realWifiBytesOut", Long.valueOf(paramRWCache.oWQ));
+        }
+        if (j < 0)
+        {
+          paramRWCache.id = ((int)this.omV.insert("netstat", "id", paramHolder));
+          AppMethodBeat.o(242915);
+          return;
+        }
+        this.omV.update("netstat", paramHolder, "peroid=".concat(String.valueOf(i)), null);
       }
-      label98:
-      n.I(paramInt1, paramInt2, 0);
-      if (paramInt3 <= 0) {
-        break label137;
+    }
+    AppMethodBeat.o(242915);
+  }
+  
+  public final boolean b(j paramj)
+  {
+    AppMethodBeat.i(151100);
+    Assert.assertNotNull(paramj);
+    if (paramj.oWo > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      bool = this.oXb.set(Integer.valueOf(paramj.oWo), paramj);
+      AppMethodBeat.o(151100);
+      return bool;
+    }
+  }
+  
+  public final long bNe()
+  {
+    AppMethodBeat.i(151101);
+    this.oXb.appendAll(true);
+    int j = (int)((Util.nowMilliSecond() - 1296000000L) / 86400000L);
+    int i = (int)(Util.currentDayInMills() / 86400000L);
+    Object localObject = "SELECT peroid FROM netstat  WHERE peroid > " + j + " order by peroid limit 1";
+    localObject = this.omV.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = ((Cursor)localObject).getInt(((Cursor)localObject).getColumnIndex("peroid"));
+    }
+    ((Cursor)localObject).close();
+    long l = i;
+    AppMethodBeat.o(151101);
+    return l * 86400000L;
+  }
+  
+  public final void postAppend()
+  {
+    AppMethodBeat.i(151105);
+    if (this.oXa > 0L) {
+      this.omV.endTransaction(this.oXa);
+    }
+    AppMethodBeat.o(151105);
+  }
+  
+  public final boolean preAppend()
+  {
+    AppMethodBeat.i(151103);
+    if (this.omV.inTransaction())
+    {
+      Log.i("MicroMsg.NetStat", "summer preAppend inTransaction return false");
+      AppMethodBeat.o(151103);
+      return false;
+    }
+    this.oXa = this.omV.beginTransaction(Thread.currentThread().getId());
+    if (this.oXa <= 0L)
+    {
+      Log.i("MicroMsg.NetStat", "summer preAppend ticket: " + this.oXa + " return false");
+      AppMethodBeat.o(151103);
+      return false;
+    }
+    AppMethodBeat.o(151103);
+    return true;
+  }
+  
+  public final j wT(int paramInt)
+  {
+    AppMethodBeat.i(151098);
+    Object localObject2 = (j)this.oXb.get(Integer.valueOf(paramInt));
+    Object localObject3;
+    Object localObject1;
+    if (localObject2 == null)
+    {
+      localObject3 = this.omV.query("netstat", null, "peroid = ".concat(String.valueOf(paramInt)), null, null, null, null, 2);
+      localObject1 = localObject2;
+      if (((Cursor)localObject3).moveToFirst())
+      {
+        localObject1 = new j();
+        ((j)localObject1).convertFrom((Cursor)localObject3);
       }
-      label108:
-      if (paramInt4 <= 0) {
-        break label142;
+      ((Cursor)localObject3).close();
+      if (localObject1 != null) {
+        this.oXb.set(Integer.valueOf(paramInt), localObject1);
       }
     }
     for (;;)
     {
-      n.J(paramInt3, paramInt4, 0);
-      AppMethodBeat.o(78751);
-      return;
-      paramInt1 = 0;
-      break;
-      label132:
-      paramInt2 = 0;
-      break label98;
-      label137:
-      paramInt3 = 0;
-      break label108;
-      label142:
-      paramInt4 = 0;
+      AppMethodBeat.o(151098);
+      return localObject1;
+      localObject2 = this.oXb;
+      localObject3 = new j();
+      ((j)localObject3).eQp = 0;
+      ((j)localObject3).id = 0;
+      ((j)localObject3).oWo = 0;
+      ((j)localObject3).oWp = 0;
+      ((j)localObject3).oWq = 0L;
+      ((j)localObject3).oWr = 0;
+      ((j)localObject3).oWs = 0L;
+      ((j)localObject3).oWt = 0;
+      ((j)localObject3).oWu = 0L;
+      ((j)localObject3).oWv = 0;
+      ((j)localObject3).oWw = 0L;
+      ((j)localObject3).oWx = 0L;
+      ((j)localObject3).oWy = 0L;
+      ((j)localObject3).oWz = 0L;
+      ((j)localObject3).oWA = 0L;
+      ((j)localObject3).oWB = 0;
+      ((j)localObject3).oWC = 0L;
+      ((j)localObject3).oWD = 0;
+      ((j)localObject3).oWE = 0L;
+      ((j)localObject3).oWF = 0;
+      ((j)localObject3).oWG = 0L;
+      ((j)localObject3).oWH = 0;
+      ((j)localObject3).oWI = 0L;
+      ((j)localObject3).oWJ = 0L;
+      ((j)localObject3).oWK = 0L;
+      ((j)localObject3).oWL = 0L;
+      ((j)localObject3).oWM = 0L;
+      ((j)localObject3).oWN = 0L;
+      ((j)localObject3).oWO = 0L;
+      ((j)localObject3).oWP = 0L;
+      ((j)localObject3).oWQ = 0L;
+      ((RWCache)localObject2).set(Integer.valueOf(paramInt), localObject3);
+      continue;
+      localObject1 = localObject2;
+      if (((j)localObject2).oWo != paramInt) {
+        localObject1 = null;
+      }
     }
+  }
+  
+  public final j wU(int paramInt)
+  {
+    j localj = null;
+    AppMethodBeat.i(151102);
+    this.oXb.appendAll(true);
+    Object localObject = "SELECT MAX( id), MAX( peroid), SUM( textCountIn), SUM( textBytesIn), SUM( imageCountIn), SUM( imageBytesIn), SUM( voiceCountIn), SUM( voiceBytesIn), SUM( videoCountIn), SUM( videoBytesIn), SUM( mobileBytesIn), SUM( wifiBytesIn), SUM( sysMobileBytesIn), SUM( sysWifiBytesIn), SUM( textCountOut), SUM( textBytesOut), SUM( imageCountOut), SUM( imageBytesOut), SUM( voiceCountOut), SUM( voiceBytesOut), SUM( videoCountOut), SUM( videoBytesOut), SUM( mobileBytesOut), SUM( wifiBytesOut), SUM( sysMobileBytesOut), SUM( sysWifiBytesOut ), SUM( realMobileBytesIn ), SUM( realWifiBytesIn ), SUM( realMobileBytesOut ), SUM( realWifiBytesOut ) FROM netstat WHERE peroid >= ".concat(String.valueOf(paramInt));
+    localObject = this.omV.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localj = new j();
+      localj.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(151102);
+    return localj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelstat.l
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 public final class en
 {
-  private static en nR = null;
+  private static en nR;
   private dt li;
   private ew.a nK;
   private int nL = Process.myPid();
@@ -81,11 +81,22 @@ public final class en
         this.nP.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, paramdu));
         ea.bV().a(new en.4(this, paramLong, paramInt1, paramInt2), "shark register push");
       }
-      do
+      else
       {
-        return;
-        paramJceStruct = "[shark_push]registerSharkPush(), only one listener is allowed for current version! callIdent: " + paramLong + " cmdId: " + paramInt1 + " flag: " + paramInt2;
-      } while (!ea.cv());
+        paramJceStruct = new StringBuilder();
+        paramJceStruct.append("[shark_push]registerSharkPush(), only one listener is allowed for current version! callIdent: ");
+        paramJceStruct.append(paramLong);
+        paramJceStruct.append(" cmdId: ");
+        paramJceStruct.append(paramInt1);
+        paramJceStruct.append(" flag: ");
+        paramJceStruct.append(paramInt2);
+        paramJceStruct = paramJceStruct.toString();
+        if (ea.cv()) {
+          break label143;
+        }
+      }
+      return;
+      label143:
       throw new RuntimeException(paramJceStruct);
     }
   }
@@ -95,12 +106,14 @@ public final class en
     if (parama.oi == null) {
       return;
     }
-    switch (dy.af(parama.oh))
+    int i = dy.af(parama.oh);
+    if (i != 8)
     {
-    default: 
-      parama.oi.a(paramInteger1.intValue(), parama.gV, paramInteger2.intValue(), paramInteger3.intValue(), parama.og);
-      return;
-    case 16: 
+      if (i != 16)
+      {
+        parama.oi.a(paramInteger1.intValue(), parama.gV, paramInteger2.intValue(), paramInteger3.intValue(), parama.og);
+        return;
+      }
       parama.oi.a(paramInteger1.intValue(), parama.gV, paramInteger2.intValue(), paramInteger3.intValue(), parama.og);
       return;
     }
@@ -110,21 +123,24 @@ public final class en
   
   public du w(int paramInt1, int paramInt2)
   {
-    du localdu = null;
-    synchronized (this.nP)
+    for (;;)
     {
-      if (this.nP.containsKey(Integer.valueOf(paramInt1)))
+      synchronized (this.nP)
       {
-        localdu = (du)((Pair)this.nP.remove(Integer.valueOf(paramInt1))).second;
-        ea.bV().a(new en.5(this, paramInt1, paramInt2), "shark unregist push");
+        if (this.nP.containsKey(Integer.valueOf(paramInt1)))
+        {
+          du localdu = (du)((Pair)this.nP.remove(Integer.valueOf(paramInt1))).second;
+          ea.bV().a(new en.5(this, paramInt1, paramInt2), "shark unregist push");
+          return localdu;
+        }
       }
-      return localdu;
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.en
  * JD-Core Version:    0.7.0.1
  */

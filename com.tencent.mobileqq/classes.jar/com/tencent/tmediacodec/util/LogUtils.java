@@ -1,96 +1,144 @@
 package com.tencent.tmediacodec.util;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/util/LogUtils;", "", "()V", "ANDROID_LOG", "com/tencent/tmediacodec/util/LogUtils$ANDROID_LOG$1", "Lcom/tencent/tmediacodec/util/LogUtils$ANDROID_LOG$1;", "TAG", "", "mLogEnable", "", "mLogLevel", "", "mLogProxy", "Lcom/tencent/tmediacodec/util/ILogProxy;", "d", "", "tag", "msg", "e", "tr", "", "i", "isEnableLog", "level", "setLogEnable", "logEnable", "setLogLevel", "setLogProxy", "logProxy", "v", "w", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class LogUtils
 {
-  private static final LogUtils.ANDROID_LOG.1 ANDROID_LOG = new LogUtils.ANDROID_LOG.1();
-  public static final LogUtils INSTANCE = new LogUtils();
-  private static final String TAG = "LogUtils";
-  private static boolean mLogEnable;
-  private static int mLogLevel = 3;
-  private static ILogProxy mLogProxy = (ILogProxy)ANDROID_LOG;
+  private static String GLOBAL_TAG = "TMediaCodec";
+  private static String TAG = "LogUtils";
+  private static boolean mLogEnable = true;
+  private static int mLogLevel = 2;
+  private static ILogProxy mLogProxy = new LogUtils.1();
   
-  static
+  public static void d(@NonNull String paramString1, @NonNull String paramString2)
   {
-    mLogEnable = true;
-  }
-  
-  public final void d(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tag");
-    Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (isEnableLog(3)) {
-      mLogProxy.d(paramString1, paramString2);
+    if (isEnableLog(3))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.d(localStringBuilder.toString(), paramString2);
     }
   }
   
-  public final void e(@NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
+  public static void e(@NonNull String paramString1, @NonNull String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tag");
-    Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (isEnableLog(6)) {
-      mLogProxy.e(paramString1, paramString2, paramThrowable);
+    if (isEnableLog(6))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.e(localStringBuilder.toString(), paramString2, null);
     }
   }
   
-  public final void i(@NotNull String paramString1, @NotNull String paramString2)
+  public static void e(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tag");
-    Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (isEnableLog(4)) {
-      mLogProxy.i(paramString1, paramString2);
+    if (isEnableLog(6))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.e(localStringBuilder.toString(), paramString2, paramThrowable);
     }
   }
   
-  public final boolean isEnableLog(int paramInt)
+  public static void i(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    if (isEnableLog(4))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.i(localStringBuilder.toString(), paramString2);
+    }
+  }
+  
+  public static boolean isEnableLog(int paramInt)
   {
     return (mLogEnable) && (paramInt >= mLogLevel);
   }
   
-  public final void setLogEnable(boolean paramBoolean)
+  public static boolean isLogEnable()
+  {
+    return mLogEnable;
+  }
+  
+  public static void setLogEnable(boolean paramBoolean)
   {
     mLogEnable = paramBoolean;
   }
   
-  public final void setLogLevel(int paramInt)
+  public static void setLogLevel(int paramInt)
   {
     mLogLevel = paramInt;
-    Log.i("LogUtils", "set LogLevel:" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(GLOBAL_TAG);
+    ((StringBuilder)localObject).append(".LogUtils");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set LogLevel:");
+    localStringBuilder.append(paramInt);
+    Log.i((String)localObject, localStringBuilder.toString());
   }
   
-  public final void setLogProxy(@NotNull ILogProxy paramILogProxy)
+  public static void setLogProxy(@NonNull ILogProxy paramILogProxy)
   {
-    Intrinsics.checkParameterIsNotNull(paramILogProxy, "logProxy");
     mLogProxy = paramILogProxy;
   }
   
-  public final void v(@NotNull String paramString1, @NotNull String paramString2)
+  public static void v(@NonNull String paramString1, @NonNull String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tag");
-    Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (isEnableLog(2)) {
-      mLogProxy.v(paramString1, paramString2);
+    if (isEnableLog(2))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.v(localStringBuilder.toString(), paramString2);
     }
   }
   
-  public final void w(@NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
+  public static void w(@NonNull String paramString1, @NonNull String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tag");
-    Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (isEnableLog(5)) {
-      mLogProxy.w(paramString1, paramString2, paramThrowable);
+    if (isEnableLog(5))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.w(localStringBuilder.toString(), paramString2, null);
+    }
+  }
+  
+  public static void w(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable)
+  {
+    if (isEnableLog(5))
+    {
+      ILogProxy localILogProxy = mLogProxy;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(GLOBAL_TAG);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString1);
+      localILogProxy.w(localStringBuilder.toString(), paramString2, paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.util.LogUtils
  * JD-Core Version:    0.7.0.1
  */

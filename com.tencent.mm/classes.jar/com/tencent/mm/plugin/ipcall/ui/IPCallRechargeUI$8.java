@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.s;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class IPCallRechargeUI$8
   implements DialogInterface.OnCancelListener
@@ -14,26 +14,26 @@ final class IPCallRechargeUI$8
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(22259);
+    AppMethodBeat.i(25879);
     try
     {
-      if (this.nUW.nUV != null) {
-        aw.Rc().a(this.nUW.nUV);
+      if (this.JOI.JOH != null) {
+        bh.aZW().a(this.JOI.JOH);
       }
-      this.nUW.finish();
-      AppMethodBeat.o(22259);
+      this.JOI.finish();
+      AppMethodBeat.o(25879);
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      ab.e("MicroMsg.IPCallRechargeUI", "cancel getProductListScene error: %s", new Object[] { paramDialogInterface.getMessage() });
-      AppMethodBeat.o(22259);
+      Log.e("MicroMsg.IPCallRechargeUI", "cancel getProductListScene error: %s", new Object[] { paramDialogInterface.getMessage() });
+      AppMethodBeat.o(25879);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallRechargeUI.8
  * JD-Core Version:    0.7.0.1
  */

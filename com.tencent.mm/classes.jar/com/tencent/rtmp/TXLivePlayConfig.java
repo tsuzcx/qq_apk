@@ -1,5 +1,6 @@
 package com.tencent.rtmp;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public class TXLivePlayConfig
@@ -12,7 +13,9 @@ public class TXLivePlayConfig
   int mConnectRetryInterval = 3;
   boolean mEnableAec = false;
   boolean mEnableMessage = false;
+  boolean mEnableMetaData = false;
   boolean mEnableNearestIP = true;
+  String mFlvSessionKey = "";
   protected Map<String, String> mHeaders;
   float mMaxAutoAdjustCacheTime = 5.0F;
   int mMaxCacheItems;
@@ -30,6 +33,7 @@ public class TXLivePlayConfig
     this.mAutoAdjustCacheTime = paramBoolean;
   }
   
+  @Deprecated
   public void setCacheFolderPath(String paramString)
   {
     this.mCacheFolderPath = paramString;
@@ -55,11 +59,23 @@ public class TXLivePlayConfig
     this.mEnableMessage = paramBoolean;
   }
   
+  public void setEnableMetaData(boolean paramBoolean)
+  {
+    this.mEnableMetaData = paramBoolean;
+  }
+  
+  @Deprecated
   public void setEnableNearestIP(boolean paramBoolean)
   {
     this.mEnableNearestIP = paramBoolean;
   }
   
+  public void setFlvSessionKey(String paramString)
+  {
+    this.mFlvSessionKey = paramString;
+  }
+  
+  @Deprecated
   public void setHeaders(Map<String, String> paramMap)
   {
     this.mHeaders = paramMap;
@@ -70,6 +86,7 @@ public class TXLivePlayConfig
     this.mMaxAutoAdjustCacheTime = paramFloat;
   }
   
+  @Deprecated
   public void setMaxCacheItems(int paramInt)
   {
     this.mMaxCacheItems = paramInt;
@@ -80,6 +97,7 @@ public class TXLivePlayConfig
     this.mMinAutoAdjustCacheTime = paramFloat;
   }
   
+  @Deprecated
   public void setRtmpChannelType(int paramInt)
   {
     this.mRtmpChannelType = paramInt;
@@ -88,6 +106,14 @@ public class TXLivePlayConfig
   public void setVideoBlockThreshold(int paramInt)
   {
     this.mVideoBlockThreshold = paramInt;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(218475);
+    String str = "{mCacheTime=" + this.mCacheTime + ", mMaxAutoAdjustCacheTime=" + this.mMaxAutoAdjustCacheTime + ", mMinAutoAdjustCacheTime=" + this.mMinAutoAdjustCacheTime + ", mAutoAdjustCacheTime=" + this.mAutoAdjustCacheTime + ", mVideoBlockThreshold=" + this.mVideoBlockThreshold + ", mConnectRetryCount=" + this.mConnectRetryCount + ", mConnectRetryInterval=" + this.mConnectRetryInterval + ", mEnableAec=" + this.mEnableAec + ", mEnableMessage=" + this.mEnableMessage + ", mEnableMetaData=" + this.mEnableMetaData + '}';
+    AppMethodBeat.o(218475);
+    return str;
   }
 }
 

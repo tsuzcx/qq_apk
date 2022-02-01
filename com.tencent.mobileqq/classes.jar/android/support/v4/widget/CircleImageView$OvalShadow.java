@@ -17,8 +17,9 @@ class CircleImageView$OvalShadow
   {
     CircleImageView.access$002(paramCircleImageView, paramInt1);
     this.mCircleDiameter = paramInt2;
-    float f1 = this.mCircleDiameter / 2;
-    float f2 = this.mCircleDiameter / 2;
+    paramInt1 = this.mCircleDiameter;
+    float f1 = paramInt1 / 2;
+    float f2 = paramInt1 / 2;
     float f3 = CircleImageView.access$000(paramCircleImageView);
     paramCircleImageView = Shader.TileMode.CLAMP;
     this.mRadialGradient = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, paramCircleImageView);
@@ -29,8 +30,10 @@ class CircleImageView$OvalShadow
   {
     int i = this.this$0.getWidth();
     int j = this.this$0.getHeight();
-    paramCanvas.drawCircle(i / 2, j / 2, this.mCircleDiameter / 2 + CircleImageView.access$000(this.this$0), this.mShadowPaint);
-    paramCanvas.drawCircle(i / 2, j / 2, this.mCircleDiameter / 2, paramPaint);
+    float f1 = i / 2;
+    float f2 = j / 2;
+    paramCanvas.drawCircle(f1, f2, this.mCircleDiameter / 2 + CircleImageView.access$000(this.this$0), this.mShadowPaint);
+    paramCanvas.drawCircle(f1, f2, this.mCircleDiameter / 2, paramPaint);
   }
 }
 

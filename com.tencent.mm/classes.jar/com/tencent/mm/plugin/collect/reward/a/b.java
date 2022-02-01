@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.qb;
-import com.tencent.mm.protocal.protobuf.qc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.xu;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,82 +23,82 @@ public final class b
   extends a
 {
   private final String TAG;
-  private f callback;
-  public qc kOF;
-  public boolean kOG;
-  private com.tencent.mm.ai.b rr;
+  private com.tencent.mm.am.h callback;
+  public boolean qmM;
+  private c rr;
+  public xv wZT;
   
   public b(boolean paramBoolean)
   {
-    AppMethodBeat.i(41034);
+    AppMethodBeat.i(63894);
     this.TAG = "MicroMsg.NetSceneQrRewardGetCode";
-    b.a locala = new b.a();
-    locala.fsX = new qb();
-    locala.fsY = new qc();
+    c.a locala = new c.a();
+    locala.otE = new xu();
+    locala.otF = new xv();
     locala.funcId = 1323;
     locala.uri = "/cgi-bin/mmpay-bin/getrewardqrcode";
-    locala.reqCmdId = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((qb)this.rr.fsV.fta).wIu = paramBoolean;
-    this.kOG = paramBoolean;
-    AppMethodBeat.o(41034);
+    this.rr = locala.bEF();
+    ((xu)c.b.b(this.rr.otB)).ZgD = paramBoolean;
+    this.qmM = paramBoolean;
+    AppMethodBeat.o(63894);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(41036);
-    ab.i("MicroMsg.NetSceneQrRewardGetCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.kOF = ((qc)((com.tencent.mm.ai.b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneQrRewardGetCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kOF.cnK), this.kOF.kNv });
-    if ((!this.kOC) && (this.kOF.cnK != 0)) {
-      this.kOD = true;
+    AppMethodBeat.i(63896);
+    Log.i("MicroMsg.NetSceneQrRewardGetCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.wZT = ((xv)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneQrRewardGetCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.wZT.hAV), this.wZT.wYI });
+    if ((!this.oaK) && (this.wZT.hAV != 0)) {
+      this.wZR = true;
     }
-    if ((!this.kOC) && (!this.kOD))
+    if ((!this.oaK) && (!this.wZR))
     {
-      g.RL().Ru().set(ac.a.yIl, Integer.valueOf(this.kOF.wIB));
-      g.RL().Ru().set(ac.a.yIm, Integer.valueOf(this.kOF.wIx));
-      g.RL().Ru().set(ac.a.yIo, this.kOF.desc);
-      g.RL().Ru().set(ac.a.yIn, this.kOF.jVh);
-      g.RL().Ru().set(ac.a.yIq, Integer.valueOf(this.kOF.wIA));
-      g.RL().Ru().set(ac.a.yIs, this.kOF.knU);
-      g.RL().Ru().set(ac.a.yIt, this.kOF.wIz);
-      g.RL().Ru().set(ac.a.yIu, this.kOF.qiN);
-      paramq = new ArrayList();
-      Iterator localIterator = this.kOF.wIy.iterator();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acTZ, Integer.valueOf(this.wZT.ZgK));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUa, Integer.valueOf(this.wZT.ZgG));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUc, this.wZT.desc);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUb, this.wZT.vFa);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUe, Integer.valueOf(this.wZT.ZgJ));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUg, this.wZT.wul);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUh, this.wZT.ZgI);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUi, this.wZT.OhN);
+      params = new ArrayList();
+      Iterator localIterator = this.wZT.ZgH.iterator();
       while (localIterator.hasNext()) {
-        paramq.add(String.valueOf(((Integer)localIterator.next()).intValue()));
+        params.add(String.valueOf(((Integer)localIterator.next()).intValue()));
       }
-      g.RL().Ru().set(ac.a.yIr, bo.d(paramq, ","));
-      h.qsU.idkeyStat(724L, 2L, 1L, false);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acUf, Util.listToString(params, ","));
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(724L, 2L, 1L, false);
     }
     for (;;)
     {
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
       }
-      AppMethodBeat.o(41036);
+      AppMethodBeat.o(63896);
       return;
-      if (this.kOC) {
-        h.qsU.idkeyStat(724L, 4L, 1L, false);
+      if (this.oaK) {
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(724L, 4L, 1L, false);
       } else {
-        h.qsU.idkeyStat(724L, 3L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(724L, 3L, 1L, false);
       }
     }
   }
   
-  protected final boolean bhR()
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    return false;
+    AppMethodBeat.i(63895);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(63895);
+    return i;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  protected final boolean drU()
   {
-    AppMethodBeat.i(41035);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(41035);
-    return i;
+    return false;
   }
   
   public final int getType()
@@ -108,7 +108,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.a.b
  * JD-Core Version:    0.7.0.1
  */

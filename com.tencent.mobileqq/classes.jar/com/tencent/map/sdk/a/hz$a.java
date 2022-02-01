@@ -20,40 +20,33 @@ public final class hz$a
   
   public final void run()
   {
-    hz localhz;
-    List localList;
-    if ((this.a != null) && (this.a.get() != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      localhz = (hz)this.a.get();
-      localList = hz.a(localhz, this.b, this.c);
-      if (localList == null) {
-        break label132;
-      }
-      if (!localhz.a) {
-        break label126;
-      }
-      if ((!hz.a(localhz, hz.a(localhz), hz.b(localhz))) || (!hz.a(localhz, hz.c(localhz), hz.d(localhz))))
+      localObject = (hz)this.a.get();
+      List localList = hz.a((hz)localObject, this.b, this.c);
+      int i = 0;
+      if (localList != null)
       {
-        localhz.a = false;
-        hz.a(localhz, false);
+        if (((hz)localObject).a)
+        {
+          if ((hz.a((hz)localObject, hz.a((hz)localObject), hz.b((hz)localObject))) && (hz.a((hz)localObject, hz.c((hz)localObject), hz.d((hz)localObject)))) {}
+          while (i < localList.size())
+          {
+            hz.a((hz)localObject, (FileUpdateRsp)localList.get(i));
+            i += 1;
+            continue;
+            ((hz)localObject).a = false;
+            hz.a((hz)localObject, false);
+            return;
+          }
+        }
+        hz.a((hz)localObject, true);
+        return;
       }
+      ((hz)localObject).a = false;
+      hz.a((hz)localObject, false);
     }
-    else
-    {
-      return;
-    }
-    int i = 0;
-    while (i < localList.size())
-    {
-      hz.a(localhz, (FileUpdateRsp)localList.get(i));
-      i += 1;
-    }
-    label126:
-    hz.a(localhz, true);
-    return;
-    label132:
-    localhz.a = false;
-    hz.a(localhz, false);
   }
 }
 

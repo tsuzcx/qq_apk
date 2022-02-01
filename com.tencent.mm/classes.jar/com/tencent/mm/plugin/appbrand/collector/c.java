@@ -6,246 +6,246 @@ import java.util.Set;
 
 public final class c
 {
-  private static boolean hgA;
-  private static final Set<String> hgB;
-  private static b hgz;
+  private static b qVa;
+  private static boolean qVb;
+  private static final Set<String> qVc;
   
   static
   {
-    AppMethodBeat.i(57040);
-    hgz = new h();
-    hgB = new HashSet();
-    AppMethodBeat.o(57040);
+    AppMethodBeat.i(146105);
+    qVa = new h();
+    qVc = new HashSet();
+    AppMethodBeat.o(146105);
+  }
+  
+  public static CollectSession WY(String paramString)
+  {
+    AppMethodBeat.i(146100);
+    if (!Xg(paramString))
+    {
+      AppMethodBeat.o(146100);
+      return null;
+    }
+    paramString = qVa.WY(paramString);
+    AppMethodBeat.o(146100);
+    return paramString;
+  }
+  
+  public static CollectSession WZ(String paramString)
+  {
+    AppMethodBeat.i(146101);
+    if (!qVb)
+    {
+      AppMethodBeat.o(146101);
+      return null;
+    }
+    paramString = qVa.WZ(paramString);
+    AppMethodBeat.o(146101);
+    return paramString;
+  }
+  
+  public static void Xa(String paramString)
+  {
+    AppMethodBeat.i(146102);
+    if (!Xg(paramString))
+    {
+      AppMethodBeat.o(146102);
+      return;
+    }
+    qVa.Xa(paramString);
+    AppMethodBeat.o(146102);
+  }
+  
+  public static StringBuilder Xb(String paramString)
+  {
+    AppMethodBeat.i(146104);
+    if (!Xf(paramString))
+    {
+      paramString = new StringBuilder();
+      AppMethodBeat.o(146104);
+      return paramString;
+    }
+    paramString = qVa.Xb(paramString);
+    AppMethodBeat.o(146104);
+    return paramString;
+  }
+  
+  public static void Xc(String paramString)
+  {
+    AppMethodBeat.i(146089);
+    if (paramString.length() == 0)
+    {
+      AppMethodBeat.o(146089);
+      return;
+    }
+    qVc.add(paramString);
+    AppMethodBeat.o(146089);
+  }
+  
+  public static void Xd(String paramString)
+  {
+    AppMethodBeat.i(146090);
+    if (paramString.length() == 0)
+    {
+      AppMethodBeat.o(146090);
+      return;
+    }
+    qVc.remove(paramString);
+    AppMethodBeat.o(146090);
+  }
+  
+  public static boolean Xe(String paramString)
+  {
+    AppMethodBeat.i(146091);
+    if (paramString.length() == 0)
+    {
+      AppMethodBeat.o(146091);
+      return false;
+    }
+    boolean bool = qVc.contains(paramString);
+    AppMethodBeat.o(146091);
+    return bool;
+  }
+  
+  private static boolean Xf(String paramString)
+  {
+    AppMethodBeat.i(146092);
+    if ((qVb) && (qVc.contains(paramString)))
+    {
+      AppMethodBeat.o(146092);
+      return true;
+    }
+    AppMethodBeat.o(146092);
+    return false;
+  }
+  
+  private static boolean Xg(String paramString)
+  {
+    AppMethodBeat.i(146093);
+    if (!qVb)
+    {
+      AppMethodBeat.o(146093);
+      return false;
+    }
+    paramString = qVa.WY(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(146093);
+      return false;
+    }
+    if (!qVc.contains(paramString.groupId))
+    {
+      AppMethodBeat.o(146093);
+      return false;
+    }
+    AppMethodBeat.o(146093);
+    return true;
   }
   
   public static void a(CollectSession paramCollectSession)
   {
-    AppMethodBeat.i(57032);
+    AppMethodBeat.i(146097);
     if (paramCollectSession == null)
     {
-      AppMethodBeat.o(57032);
+      AppMethodBeat.o(146097);
       return;
     }
-    if (!zP(paramCollectSession.groupId))
+    if (!Xf(paramCollectSession.groupId))
     {
-      AppMethodBeat.o(57032);
+      AppMethodBeat.o(146097);
       return;
     }
-    hgz.a(paramCollectSession);
-    AppMethodBeat.o(57032);
-  }
-  
-  public static boolean ayk()
-  {
-    return hgA;
-  }
-  
-  public static CollectSession bH(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(57033);
-    if (!zQ(paramString1))
-    {
-      AppMethodBeat.o(57033);
-      return null;
-    }
-    paramString1 = hgz.bH(paramString1, paramString2);
-    AppMethodBeat.o(57033);
-    return paramString1;
-  }
-  
-  public static void bI(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(57031);
-    if (!zQ(paramString1))
-    {
-      AppMethodBeat.o(57031);
-      return;
-    }
-    hgz.bI(paramString1, paramString2);
-    AppMethodBeat.o(57031);
-  }
-  
-  public static int bJ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(57038);
-    if (!zP(paramString1))
-    {
-      AppMethodBeat.o(57038);
-      return 0;
-    }
-    int i = hgz.bJ(paramString1, paramString2);
-    AppMethodBeat.o(57038);
-    return i;
+    qVa.a(paramCollectSession);
+    AppMethodBeat.o(146097);
   }
   
   public static void c(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    AppMethodBeat.i(57030);
-    if (!zP(paramString1))
+    AppMethodBeat.i(146095);
+    if (!Xf(paramString1))
     {
-      AppMethodBeat.o(57030);
+      AppMethodBeat.o(146095);
       return;
     }
-    hgz.c(paramString1, paramString2, paramString3, paramBoolean);
-    AppMethodBeat.o(57030);
+    qVa.c(paramString1, paramString2, paramString3, paramBoolean);
+    AppMethodBeat.o(146095);
+  }
+  
+  public static boolean ckn()
+  {
+    return qVb;
   }
   
   public static void clear()
   {
-    AppMethodBeat.i(57029);
-    if (!hgA)
+    AppMethodBeat.i(146094);
+    if (!qVb)
     {
-      AppMethodBeat.o(57029);
+      AppMethodBeat.o(146094);
       return;
     }
-    hgz.clear();
-    AppMethodBeat.o(57029);
+    qVa.clear();
+    AppMethodBeat.o(146094);
   }
   
-  public static void dO(boolean paramBoolean)
+  public static CollectSession dp(String paramString1, String paramString2)
   {
-    hgA = paramBoolean;
-  }
-  
-  public static void l(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(57034);
-    if (!zQ(paramString1))
+    AppMethodBeat.i(146098);
+    if (!Xg(paramString1))
     {
-      AppMethodBeat.o(57034);
-      return;
-    }
-    hgz.l(paramString1, paramString2, paramBoolean);
-    AppMethodBeat.o(57034);
-  }
-  
-  public static void print(String paramString)
-  {
-    AppMethodBeat.i(57037);
-    if (!zQ(paramString))
-    {
-      AppMethodBeat.o(57037);
-      return;
-    }
-    hgz.print(paramString);
-    AppMethodBeat.o(57037);
-  }
-  
-  public static CollectSession zJ(String paramString)
-  {
-    AppMethodBeat.i(57035);
-    if (!zQ(paramString))
-    {
-      AppMethodBeat.o(57035);
+      AppMethodBeat.o(146098);
       return null;
     }
-    paramString = hgz.zJ(paramString);
-    AppMethodBeat.o(57035);
-    return paramString;
+    paramString1 = qVa.dp(paramString1, paramString2);
+    AppMethodBeat.o(146098);
+    return paramString1;
   }
   
-  public static CollectSession zK(String paramString)
+  public static void dq(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(57036);
-    if (!hgA)
+    AppMethodBeat.i(146096);
+    if (!Xg(paramString1))
     {
-      AppMethodBeat.o(57036);
-      return null;
-    }
-    paramString = hgz.zK(paramString);
-    AppMethodBeat.o(57036);
-    return paramString;
-  }
-  
-  public static StringBuilder zL(String paramString)
-  {
-    AppMethodBeat.i(57039);
-    if (!zP(paramString))
-    {
-      paramString = new StringBuilder();
-      AppMethodBeat.o(57039);
-      return paramString;
-    }
-    paramString = hgz.zL(paramString);
-    AppMethodBeat.o(57039);
-    return paramString;
-  }
-  
-  public static void zM(String paramString)
-  {
-    AppMethodBeat.i(57024);
-    if (paramString.length() == 0)
-    {
-      AppMethodBeat.o(57024);
+      AppMethodBeat.o(146096);
       return;
     }
-    hgB.add(paramString);
-    AppMethodBeat.o(57024);
+    qVa.dq(paramString1, paramString2);
+    AppMethodBeat.o(146096);
   }
   
-  public static void zN(String paramString)
+  public static int dr(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(57025);
-    if (paramString.length() == 0)
+    AppMethodBeat.i(146103);
+    if (!Xf(paramString1))
     {
-      AppMethodBeat.o(57025);
+      AppMethodBeat.o(146103);
+      return 0;
+    }
+    int i = qVa.dr(paramString1, paramString2);
+    AppMethodBeat.o(146103);
+    return i;
+  }
+  
+  public static void iu(boolean paramBoolean)
+  {
+    qVb = paramBoolean;
+  }
+  
+  public static void o(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(146099);
+    if (!Xg(paramString1))
+    {
+      AppMethodBeat.o(146099);
       return;
     }
-    hgB.remove(paramString);
-    AppMethodBeat.o(57025);
-  }
-  
-  public static boolean zO(String paramString)
-  {
-    AppMethodBeat.i(57026);
-    if (paramString.length() == 0)
-    {
-      AppMethodBeat.o(57026);
-      return false;
-    }
-    boolean bool = hgB.contains(paramString);
-    AppMethodBeat.o(57026);
-    return bool;
-  }
-  
-  private static boolean zP(String paramString)
-  {
-    AppMethodBeat.i(57027);
-    if ((hgA) && (hgB.contains(paramString)))
-    {
-      AppMethodBeat.o(57027);
-      return true;
-    }
-    AppMethodBeat.o(57027);
-    return false;
-  }
-  
-  private static boolean zQ(String paramString)
-  {
-    AppMethodBeat.i(57028);
-    if (!hgA)
-    {
-      AppMethodBeat.o(57028);
-      return false;
-    }
-    paramString = hgz.zJ(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(57028);
-      return false;
-    }
-    if (!hgB.contains(paramString.groupId))
-    {
-      AppMethodBeat.o(57028);
-      return false;
-    }
-    AppMethodBeat.o(57028);
-    return true;
+    qVa.o(paramString1, paramString2, paramBoolean);
+    AppMethodBeat.o(146099);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.c
  * JD-Core Version:    0.7.0.1
  */

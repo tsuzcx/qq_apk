@@ -10,9 +10,9 @@ public final class ExposStuctInfo
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public int appid;
-  public Map<String, String> extendInfo;
-  public byte opType;
+  public int appid = 0;
+  public Map<String, String> extendInfo = null;
+  public byte opType = 0;
   public String recordId = "";
   
   static
@@ -40,19 +40,21 @@ public final class ExposStuctInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.recordId != null) {
-      paramJceOutputStream.write(this.recordId, 0);
+    Object localObject = this.recordId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.opType, 2);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 3);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.ExposStuctInfo
  * JD-Core Version:    0.7.0.1
  */

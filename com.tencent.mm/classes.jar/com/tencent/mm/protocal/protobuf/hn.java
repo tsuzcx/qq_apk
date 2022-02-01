@@ -1,87 +1,132 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class hn
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int cCy;
-  public String eAx;
+  public String ProductID;
+  public ciy YIT;
+  public String YIU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(48779);
+    AppMethodBeat.i(104745);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.eAx == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ProductID == null)
       {
-        paramVarArgs = new b("Not all required fields were included: uuid");
-        AppMethodBeat.o(48779);
+        paramVarArgs = new b("Not all required fields were included: ProductID");
+        AppMethodBeat.o(104745);
         throw paramVarArgs;
       }
-      if (this.eAx != null) {
-        paramVarArgs.e(1, this.eAx);
+      if (this.YIT == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Price");
+        AppMethodBeat.o(104745);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(2, this.cCy);
-      AppMethodBeat.o(48779);
+      if (this.ProductID != null) {
+        paramVarArgs.g(1, this.ProductID);
+      }
+      if (this.YIT != null)
+      {
+        paramVarArgs.qD(2, this.YIT.computeSize());
+        this.YIT.writeFields(paramVarArgs);
+      }
+      if (this.YIU != null) {
+        paramVarArgs.g(3, this.YIU);
+      }
+      AppMethodBeat.o(104745);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.eAx == null) {
-        break label306;
+      if (this.ProductID == null) {
+        break label500;
       }
     }
-    label306:
-    for (paramInt = e.a.a.b.b.a.f(1, this.eAx) + 0;; paramInt = 0)
+    label500:
+    for (int i = i.a.a.b.b.a.h(1, this.ProductID) + 0;; i = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.cCy);
-      AppMethodBeat.o(48779);
-      return paramInt + i;
+      paramInt = i;
+      if (this.YIT != null) {
+        paramInt = i + i.a.a.a.qC(2, this.YIT.computeSize());
+      }
+      i = paramInt;
+      if (this.YIU != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YIU);
+      }
+      AppMethodBeat.o(104745);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.eAx == null)
+        if (this.ProductID == null)
         {
-          paramVarArgs = new b("Not all required fields were included: uuid");
-          AppMethodBeat.o(48779);
+          paramVarArgs = new b("Not all required fields were included: ProductID");
+          AppMethodBeat.o(104745);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(48779);
+        if (this.YIT == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Price");
+          AppMethodBeat.o(104745);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104745);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         hn localhn = (hn)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(48779);
+          AppMethodBeat.o(104745);
           return -1;
         case 1: 
-          localhn.eAx = locala.CLY.readString();
-          AppMethodBeat.o(48779);
+          localhn.ProductID = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(104745);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            ciy localciy = new ciy();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localciy.parseFrom((byte[])localObject);
+            }
+            localhn.YIT = localciy;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104745);
           return 0;
         }
-        localhn.cCy = locala.CLY.sl();
-        AppMethodBeat.o(48779);
+        localhn.YIU = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(104745);
         return 0;
       }
-      AppMethodBeat.o(48779);
+      AppMethodBeat.o(104745);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.hn
  * JD-Core Version:    0.7.0.1
  */

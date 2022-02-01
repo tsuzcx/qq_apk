@@ -55,58 +55,58 @@ public class GPUBaseFilter
   
   public static float[] caculateCenterCropMvpMatrix(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f1 = paramInt3 / paramInt4;
-    float f2 = paramInt1 / paramInt2;
-    if (f1 < f2)
+    float f1 = paramInt3;
+    float f2 = paramInt4;
+    float f3 = f1 / f2;
+    float f4 = paramInt1 / paramInt2;
+    if (f3 < f4)
     {
-      f2 = paramInt4 * f2 / paramInt3;
+      f1 = f4 * f2 / f1;
+    }
+    else
+    {
+      if (f3 > f4)
+      {
+        f2 = f1 / (f4 * f2);
+        f1 = 1.0F;
+        break label73;
+      }
       f1 = 1.0F;
     }
-    for (;;)
-    {
-      float[] arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
-      return arrayOfFloat;
-      if (f1 > f2)
-      {
-        f1 = paramInt3 / (f2 * paramInt4);
-        f2 = 1.0F;
-      }
-      else
-      {
-        f1 = 1.0F;
-        f2 = 1.0F;
-      }
-    }
+    f2 = 1.0F;
+    label73:
+    float[] arrayOfFloat = new float[16];
+    Matrix.setIdentityM(arrayOfFloat, 0);
+    Matrix.scaleM(arrayOfFloat, 0, f1, f2, 1.0F);
+    return arrayOfFloat;
   }
   
   public static float[] caculateFitCenterMvpMatrix(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f1 = paramInt3 / paramInt4;
-    float f2 = paramInt1 / paramInt2;
-    if (f1 > f2)
+    float f1 = paramInt3;
+    float f2 = paramInt4;
+    float f3 = f1 / f2;
+    float f4 = paramInt1 / paramInt2;
+    if (f3 > f4)
     {
-      f2 = paramInt4 * f2 / paramInt3;
+      f1 = f4 * f2 / f1;
+    }
+    else
+    {
+      if (f3 < f4)
+      {
+        f2 = f1 / (f4 * f2);
+        f1 = 1.0F;
+        break label73;
+      }
       f1 = 1.0F;
     }
-    for (;;)
-    {
-      float[] arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
-      return arrayOfFloat;
-      if (f1 < f2)
-      {
-        f1 = paramInt3 / (f2 * paramInt4);
-        f2 = 1.0F;
-      }
-      else
-      {
-        f1 = 1.0F;
-        f2 = 1.0F;
-      }
-    }
+    f2 = 1.0F;
+    label73:
+    float[] arrayOfFloat = new float[16];
+    Matrix.setIdentityM(arrayOfFloat, 0);
+    Matrix.scaleM(arrayOfFloat, 0, f1, f2, 1.0F);
+    return arrayOfFloat;
   }
   
   public static void checkGlError(String paramString)
@@ -117,14 +117,23 @@ public class GPUBaseFilter
       if (i == 0) {
         break;
       }
-      new RuntimeException(paramString + ": glError " + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      new RuntimeException(localStringBuilder.toString());
     }
   }
   
   public static void checkLocation(int paramInt, String paramString)
   {
-    if (paramInt < 0) {
-      new RuntimeException("Unable to locate '" + paramString + "' in program");
+    if (paramInt < 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to locate '");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("' in program");
+      new RuntimeException(localStringBuilder.toString());
     }
   }
   
@@ -196,13 +205,16 @@ public class GPUBaseFilter
     if (this.mIsInitialized) {
       return;
     }
-    ProgramTools.ProgramInfo localProgramInfo = ProgramTools.createProgram(this.mVertexShader, this.mFragmentShader);
-    if (localProgramInfo == null)
+    Object localObject = ProgramTools.createProgram(this.mVertexShader, this.mFragmentShader);
+    if (localObject == null)
     {
-      new RuntimeException("failed creating program " + getClass().getSimpleName());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("failed creating program ");
+      ((StringBuilder)localObject).append(getClass().getSimpleName());
+      new RuntimeException(((StringBuilder)localObject).toString());
       return;
     }
-    this.mProgram = localProgramInfo.programId;
+    this.mProgram = ((ProgramTools.ProgramInfo)localObject).programId;
     this.mIsInitialized = true;
     onInitialized();
   }
@@ -239,7 +251,7 @@ public class GPUBaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.GPUBaseFilter
  * JD-Core Version:    0.7.0.1
  */

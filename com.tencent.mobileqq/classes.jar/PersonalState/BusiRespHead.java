@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class BusiRespHead
   extends JceStruct
 {
-  public int iReplyCode;
-  public int iSeq;
-  public short shVersion;
+  public int iReplyCode = 0;
+  public int iSeq = 0;
+  public short shVersion = 0;
   public String strResult = "";
   
   public BusiRespHead() {}
@@ -35,14 +35,15 @@ public final class BusiRespHead
     paramJceOutputStream.write(this.shVersion, 0);
     paramJceOutputStream.write(this.iSeq, 1);
     paramJceOutputStream.write(this.iReplyCode, 2);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 3);
+    String str = this.strResult;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.BusiRespHead
  * JD-Core Version:    0.7.0.1
  */

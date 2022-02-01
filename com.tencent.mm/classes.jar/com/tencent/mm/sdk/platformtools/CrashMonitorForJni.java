@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.a.b;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.recovery.Recovery;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -17,31 +17,32 @@ public class CrashMonitorForJni
 {
   private static final String TAG = "MicroMsg.CrashMonitorForJni";
   private static ParcelFileDescriptor mCrashRecordFd = null;
-  private static a sCrashExtraMessageGetter;
+  private static CrashExtraMessageGetter sCrashExtraMessageGetter;
   
   private static void OnCrash(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(126235);
-    Recovery.dUi();
+    AppMethodBeat.i(145683);
+    Recovery.crash();
     new StringBuilder("OnCrash sig:").append(paramInt1).append("  stack:").append(paramString);
-    b.k(paramInt1, paramString);
-    AppMethodBeat.o(126235);
+    CrashReportFactory.reportJniCrash(paramInt1, paramString, "CrashMonitor");
+    Log.appenderClose();
+    AppMethodBeat.o(145683);
   }
   
   private static void OnCrash(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(146058);
+    AppMethodBeat.i(145684);
     paramString2 = getThreadJavaStack(getThreadByName(paramString2));
     paramString1 = new StringBuilder(paramString1);
     paramString1.append("\n******* Java stack for JNI crash *******\n");
     paramString1.append(paramString2);
     writeStackToFile(paramString1.toString());
-    AppMethodBeat.o(146058);
+    AppMethodBeat.o(145684);
   }
   
   private static CharSequence getAllThreadJavaStack()
   {
-    AppMethodBeat.i(126236);
+    AppMethodBeat.i(145685);
     StringBuilder localStringBuilder1 = new StringBuilder(8192);
     StringBuilder localStringBuilder2 = new StringBuilder(2048);
     Iterator localIterator = Thread.getAllStackTraces().entrySet().iterator();
@@ -66,7 +67,7 @@ public class CrashMonitorForJni
         localStringBuilder1.append(localStringBuilder2);
       }
     }
-    AppMethodBeat.o(126236);
+    AppMethodBeat.o(145685);
     return localStringBuilder1;
   }
   
@@ -74,14 +75,14 @@ public class CrashMonitorForJni
   
   public static String getCrashThreadJavaStack()
   {
-    AppMethodBeat.i(126237);
+    AppMethodBeat.i(145686);
     Object localObject1 = new StringWriter();
     PrintWriter localPrintWriter = new PrintWriter((Writer)localObject1);
     Object localObject2 = sCrashExtraMessageGetter;
     if (localObject2 != null)
     {
       localPrintWriter.append("\n");
-      localPrintWriter.append(((a)localObject2).Bt());
+      localPrintWriter.append(((CrashExtraMessageGetter)localObject2).getExtraMessage());
       localPrintWriter.append("\n");
     }
     localObject2 = new Throwable("\n******* Java stack for JNI crash *******");
@@ -101,17 +102,17 @@ public class CrashMonitorForJni
     localPrintWriter.append(getAllThreadJavaStack());
     localPrintWriter.append('\n');
     localObject1 = ((StringWriter)localObject1).toString();
-    AppMethodBeat.o(126237);
+    AppMethodBeat.o(145686);
     return localObject1;
   }
   
   public static Thread getThreadByName(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(146061);
+    AppMethodBeat.i(145689);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(146061);
+      AppMethodBeat.o(145689);
       return null;
     }
     Set localSet = Thread.getAllStackTraces().keySet();
@@ -131,17 +132,17 @@ public class CrashMonitorForJni
     {
       i += 1;
       break;
-      AppMethodBeat.o(146061);
+      AppMethodBeat.o(145689);
       return localObject;
     }
   }
   
   public static String getThreadJavaStack(Thread paramThread)
   {
-    AppMethodBeat.i(146060);
+    AppMethodBeat.i(145688);
     if (paramThread == null)
     {
-      AppMethodBeat.o(146060);
+      AppMethodBeat.o(145688);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -155,7 +156,7 @@ public class CrashMonitorForJni
       i += 1;
     }
     paramThread = localStringBuilder.toString();
-    AppMethodBeat.o(146060);
+    AppMethodBeat.o(145688);
     return paramThread;
   }
   
@@ -165,109 +166,89 @@ public class CrashMonitorForJni
   
   public static native void setClientVersionMsg(String paramString);
   
-  public static void setCrashExtraMessageGetter(a parama)
+  public static void setCrashExtraMessageGetter(CrashExtraMessageGetter paramCrashExtraMessageGetter)
   {
-    sCrashExtraMessageGetter = parama;
+    sCrashExtraMessageGetter = paramCrashExtraMessageGetter;
   }
   
   public static void setCrashRecordLowFd(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(146057);
+    AppMethodBeat.i(145682);
     mCrashRecordFd = paramParcelFileDescriptor;
     nativeSetCrashRecordLowFd(paramParcelFileDescriptor.getFd());
-    AppMethodBeat.o(146057);
+    AppMethodBeat.o(145682);
   }
   
   /* Error */
   private static void writeStackToFile(String paramString)
   {
     // Byte code:
-    //   0: ldc 249
-    //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 19	com/tencent/mm/sdk/platformtools/CrashMonitorForJni:mCrashRecordFd	Landroid/os/ParcelFileDescriptor;
-    //   8: ifnull +104 -> 112
-    //   11: new 251	java/io/FileOutputStream
-    //   14: dup
-    //   15: getstatic 19	com/tencent/mm/sdk/platformtools/CrashMonitorForJni:mCrashRecordFd	Landroid/os/ParcelFileDescriptor;
-    //   18: invokevirtual 255	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   21: invokespecial 258	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
-    //   24: astore_1
-    //   25: aload_1
-    //   26: aload_0
-    //   27: invokevirtual 262	java/lang/String:getBytes	()[B
-    //   30: invokevirtual 266	java/io/FileOutputStream:write	([B)V
-    //   33: aload_1
-    //   34: invokevirtual 269	java/io/FileOutputStream:flush	()V
-    //   37: aload_1
-    //   38: ifnull +7 -> 45
-    //   41: aload_1
-    //   42: invokevirtual 272	java/io/FileOutputStream:close	()V
-    //   45: ldc 249
-    //   47: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   50: return
-    //   51: astore_0
-    //   52: ldc 249
-    //   54: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   57: return
-    //   58: astore_0
-    //   59: aconst_null
-    //   60: astore_1
-    //   61: aload_1
-    //   62: ifnull +7 -> 69
-    //   65: aload_1
-    //   66: invokevirtual 272	java/io/FileOutputStream:close	()V
-    //   69: ldc 249
-    //   71: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   74: return
-    //   75: astore_0
-    //   76: ldc 249
-    //   78: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   81: return
-    //   82: astore_0
-    //   83: aconst_null
-    //   84: astore_1
-    //   85: aload_1
-    //   86: ifnull +7 -> 93
-    //   89: aload_1
-    //   90: invokevirtual 272	java/io/FileOutputStream:close	()V
-    //   93: ldc 249
-    //   95: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   98: aload_0
-    //   99: athrow
-    //   100: astore_1
-    //   101: goto -8 -> 93
-    //   104: astore_0
-    //   105: goto -20 -> 85
-    //   108: astore_0
-    //   109: goto -48 -> 61
-    //   112: aconst_null
-    //   113: astore_1
-    //   114: goto -77 -> 37
+    //   0: ldc_w 256
+    //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 19	com/tencent/mm/sdk/platformtools/CrashMonitorForJni:mCrashRecordFd	Landroid/os/ParcelFileDescriptor;
+    //   9: ifnull +82 -> 91
+    //   12: new 258	java/io/FileOutputStream
+    //   15: dup
+    //   16: getstatic 19	com/tencent/mm/sdk/platformtools/CrashMonitorForJni:mCrashRecordFd	Landroid/os/ParcelFileDescriptor;
+    //   19: invokevirtual 262	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   22: invokespecial 265	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   25: astore_1
+    //   26: aload_1
+    //   27: aload_0
+    //   28: invokevirtual 269	java/lang/String:getBytes	()[B
+    //   31: invokevirtual 273	java/io/FileOutputStream:write	([B)V
+    //   34: aload_1
+    //   35: invokevirtual 276	java/io/FileOutputStream:flush	()V
+    //   38: aload_1
+    //   39: ifnull +7 -> 46
+    //   42: aload_1
+    //   43: invokevirtual 279	java/io/FileOutputStream:close	()V
+    //   46: ldc_w 256
+    //   49: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: return
+    //   53: astore_0
+    //   54: ldc_w 256
+    //   57: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: return
+    //   61: astore_0
+    //   62: aconst_null
+    //   63: astore_1
+    //   64: aload_1
+    //   65: ifnull +7 -> 72
+    //   68: aload_1
+    //   69: invokevirtual 279	java/io/FileOutputStream:close	()V
+    //   72: ldc_w 256
+    //   75: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: return
+    //   79: astore_0
+    //   80: ldc_w 256
+    //   83: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: return
+    //   87: astore_0
+    //   88: goto -24 -> 64
+    //   91: aconst_null
+    //   92: astore_1
+    //   93: goto -55 -> 38
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	117	0	paramString	String
-    //   24	66	1	localFileOutputStream	java.io.FileOutputStream
-    //   100	1	1	localThrowable	Throwable
-    //   113	1	1	localObject	Object
+    //   0	96	0	paramString	String
+    //   25	68	1	localFileOutputStream	java.io.FileOutputStream
     // Exception table:
     //   from	to	target	type
-    //   41	45	51	java/lang/Throwable
-    //   5	25	58	java/lang/Throwable
-    //   65	69	75	java/lang/Throwable
-    //   5	25	82	finally
-    //   89	93	100	java/lang/Throwable
-    //   25	37	104	finally
-    //   25	37	108	java/lang/Throwable
+    //   42	46	53	finally
+    //   6	26	61	finally
+    //   68	72	79	finally
+    //   26	38	87	finally
   }
   
-  public static abstract interface a
+  public static abstract interface CrashExtraMessageGetter
   {
-    public abstract String Bt();
+    public abstract String getExtraMessage();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.CrashMonitorForJni
  * JD-Core Version:    0.7.0.1
  */

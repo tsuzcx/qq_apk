@@ -1,16 +1,26 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class ddk
-  implements Runnable
+public class ddk
+  implements IStatusListener
 {
-  ddk(ddj paramddj, Drawable paramDrawable) {}
+  public ddk(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    this.jdField_a_of_type_Ddj.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (this.a.b)
+    {
+      if (paramInt != 100) {
+        this.a.a(2131561424);
+      }
+      this.a.o();
+    }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

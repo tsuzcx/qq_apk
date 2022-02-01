@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/g8t" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="4.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0">
+        <RelativeLayout android:id="@id/gbv" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/a3o" android:layout_height="@dimen/a3j" android:layout_centerHorizontal="true">
+            <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_alignParentTop="true" />
+            <ImageView android:id="@id/g8p" android:layout_width="@dimen/a3i" android:layout_height="@dimen/a3f" android:layout_marginLeft="@dimen/a3g" android:layout_marginTop="@dimen/a3h" android:layout_alignParentLeft="true" android:contentDescription="@null" />
+            <TextView android:textSize="@dimen/a3l" android:textColor="@color/pv" android:gravity="center_vertical" android:id="@id/g8c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a6x" android:layout_marginRight="@dimen/a71" android:layout_toRightOf="@id/g8p" android:layout_alignTop="@id/g8p" />
+            <TextView android:textSize="@dimen/a3n" android:textColor="@color/qu" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/g8v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/a71" android:maxLines="1" android:layout_toRightOf="@id/g8p" android:layout_below="@id/g8c" android:layout_alignLeft="@id/g8c" />
+            <TextView android:textSize="@dimen/a3n" android:textColor="@color/qu" android:gravity="center_vertical" android:id="@id/g8x" android:layout_width="wrap_content" android:layout_height="@dimen/a3m" android:layout_marginRight="@dimen/a71" android:text="@string/bhi" android:layout_toRightOf="@id/g8p" android:layout_below="@id/g8v" android:layout_alignLeft="@id/g8c" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/rp" android:id="@id/g91" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dbw" android:layout_below="@id/g8x" android:layout_alignLeft="@id/g8c" />
+            <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_marginTop="@dimen/a3e" android:layout_below="@id/g8p" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/biw">
+                <Button android:textSize="@dimen/a3c" android:textColor="@color/pv" android:gravity="center" android:id="@id/g8r" android:background="@drawable/common_dialog_btn_left" android:paddingLeft="@dimen/a3a" android:paddingRight="@dimen/a3b" android:layout_width="@dimen/a3d" android:layout_height="@dimen/a39" android:text="@string/dba" android:drawableLeft="@drawable/dbd" android:drawablePadding="@dimen/a38" android:onClick="BtnOnClick" android:contentDescription="@string/bhe" />
+                <View android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/a3c" android:textColor="@color/pv" android:gravity="center" android:orientation="horizontal" android:id="@id/qav_gaudio_join" android:background="@drawable/common_dialog_btn_right" android:paddingLeft="@dimen/a3a" android:paddingRight="@dimen/a3b" android:layout_width="@dimen/a3d" android:layout_height="@dimen/a39" android:text="@string/ic8" android:drawableLeft="@drawable/dbc" android:drawablePadding="@dimen/a38" android:onClick="BtnOnClick" android:contentDescription="@string/bh9" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

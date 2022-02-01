@@ -9,8 +9,8 @@ public final class cluster_list_identify_photo_req
 {
   static comm_page_info cache_page_info = new comm_page_info();
   public String categoryid = "";
-  public long op_uin;
-  public comm_page_info page_info;
+  public long op_uin = 0L;
+  public comm_page_info page_info = null;
   
   public cluster_list_identify_photo_req() {}
   
@@ -31,17 +31,19 @@ public final class cluster_list_identify_photo_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.op_uin, 0);
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 1);
+    Object localObject = this.categoryid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.page_info != null) {
-      paramJceOutputStream.write(this.page_info, 2);
+    localObject = this.page_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.cluster_list_identify_photo_req
  * JD-Core Version:    0.7.0.1
  */

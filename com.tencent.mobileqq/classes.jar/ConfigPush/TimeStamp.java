@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class TimeStamp
   extends JceStruct
 {
-  public byte day;
-  public byte hour;
-  public byte month;
-  public int year;
+  public byte day = 0;
+  public byte hour = 0;
+  public byte month = 0;
+  public int year = 0;
   
   public TimeStamp() {}
   
@@ -40,7 +40,7 @@ public final class TimeStamp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.TimeStamp
  * JD-Core Version:    0.7.0.1
  */

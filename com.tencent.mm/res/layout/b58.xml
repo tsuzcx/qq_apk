@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fes" wallet:layoutRes="@layout/b59" wallet:infoIvVisibility="dl" wallet:titleTvVisibility="dl" style="@style/gy"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />
+<TextView android:id="@id/gsk" android:background="?android:selectableItemBackground" style="@style/rc"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

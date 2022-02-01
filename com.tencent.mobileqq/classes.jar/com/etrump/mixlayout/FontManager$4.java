@@ -1,24 +1,24 @@
 package com.etrump.mixlayout;
 
-import alto;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
-import fx;
 
-public class FontManager$4
+class FontManager$4
   implements Runnable
 {
-  public FontManager$4(fx paramfx, String paramString, int paramInt1, int paramInt2) {}
+  FontManager$4(FontManager paramFontManager, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((alto)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
-    fx.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)FontManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.a);
+    FontManager.a(FontManager.a(this.this$0), this.a, localExtensionInfo, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.4
  * JD-Core Version:    0.7.0.1
  */

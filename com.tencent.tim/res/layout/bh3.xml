@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:id="@id/ejj" android:background="@drawable/fyx" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/m3j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/cd5" />
+    <include android:id="@id/hbi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bi6" />
+    <ViewStub android:id="@id/hbj" android:layout="@layout/bi7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/hbk" android:layout="@layout/bi8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/hbg" android:layout="@layout/bi4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/hbh" android:layout="@layout/bi5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

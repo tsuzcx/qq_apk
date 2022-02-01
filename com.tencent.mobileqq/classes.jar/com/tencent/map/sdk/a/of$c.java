@@ -14,12 +14,19 @@ public abstract class of$c
   
   public String toString()
   {
-    return "Options{mType=" + this.g + ", mCacheSize=" + this.h + ", keyGenerator=" + this.i + '}';
+    StringBuilder localStringBuilder = new StringBuilder("Options{mType=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", mCacheSize=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", keyGenerator=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.of.c
  * JD-Core Version:    0.7.0.1
  */

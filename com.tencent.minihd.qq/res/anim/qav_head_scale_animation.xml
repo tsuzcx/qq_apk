@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale android:interpolator="@android:anim/linear_interpolator" android:duration="200" android:pivotX="50.0%" android:pivotY="50.0%" android:shareInterpolator="true" android:fillBefore="false" android:fillAfter="true" android:repeatCount="0" android:repeatMode="restart" android:fromXScale="1.0" android:toXScale="0.0" android:fromYScale="1.0" android:toYScale="0.0" android:fillEnabled="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

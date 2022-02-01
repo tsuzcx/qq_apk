@@ -14,12 +14,14 @@ import com.tencent.viola.ui.component.VRecyclerList;
 import com.tencent.viola.ui.component.VSlider;
 import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.context.RenderActionContext;
+import com.tencent.viola.ui.dom.Attr;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.DomObjectCell;
 import com.tencent.viola.ui.view.VScrollView;
 import com.tencent.viola.ui.view.list.VRecyclerView;
 import com.tencent.viola.ui.view.refresh.VRefreshViewGroup;
 import com.tencent.viola.utils.ViolaLogUtils;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
@@ -44,44 +46,54 @@ public class MethodAddElement
   
   private void dealAddView(VComponentContainer paramVComponentContainer, VComponent paramVComponent)
   {
-    int j = -1;
-    if ((paramVComponentContainer.getRealView() instanceof ScrollView)) {
+    if ((paramVComponentContainer.getRealView() instanceof ScrollView))
+    {
       if (paramVComponentContainer.getRealView().getChildAt(0) == null)
       {
         FrameLayout localFrameLayout = new FrameLayout(paramVComponentContainer.getRealView().getContext());
         localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
         localFrameLayout.addView(paramVComponent.getRealView());
         paramVComponentContainer.getRealView().addView(localFrameLayout);
+        return;
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramVComponentContainer = (FrameLayout)paramVComponentContainer.getRealView().getChildAt(0);
-        if ((paramVComponent.getRealView() != null) && (paramVComponent.getRealView().getParent() != null)) {
-          ((ViewGroup)paramVComponent.getRealView().getParent()).removeView(paramVComponent.getRealView());
-        }
-        paramVComponentContainer.addView(paramVComponent.getRealView());
-        return;
-      } while ((paramVComponentContainer instanceof VSlider));
+      paramVComponentContainer = (FrameLayout)paramVComponentContainer.getRealView().getChildAt(0);
       if ((paramVComponent.getRealView() != null) && (paramVComponent.getRealView().getParent() != null)) {
         ((ViewGroup)paramVComponent.getRealView().getParent()).removeView(paramVComponent.getRealView());
       }
-    } while (paramVComponentContainer.getRealView() == null);
-    int k = this.mAddIndex;
-    int i = k;
-    if (k < -1) {
-      i = -1;
-    }
-    if (i >= paramVComponentContainer.getRealView().getChildCount()) {
-      i = j;
-    }
-    for (;;)
-    {
-      paramVComponentContainer.getRealView().addView(paramVComponent.getRealView(), i);
+      paramVComponentContainer.addView(paramVComponent.getRealView());
       return;
+    }
+    if ((paramVComponentContainer instanceof VSlider)) {
+      return;
+    }
+    if ((paramVComponent.getRealView() != null) && (paramVComponent.getRealView().getParent() != null)) {
+      ((ViewGroup)paramVComponent.getRealView().getParent()).removeView(paramVComponent.getRealView());
+    }
+    if (paramVComponentContainer.getRealView() != null)
+    {
+      int j = this.mAddIndex;
+      int i = j;
+      if (j < -1) {
+        i = -1;
+      }
+      j = i;
+      if (i >= paramVComponentContainer.getRealView().getChildCount()) {
+        j = -1;
+      }
+      paramVComponentContainer.getRealView().addView(paramVComponent.getRealView(), j);
+    }
+  }
+  
+  private void tryHidePreCreateBody(ViolaInstance paramViolaInstance, DomObject paramDomObject)
+  {
+    if (paramViolaInstance != null)
+    {
+      if (paramDomObject == null) {
+        return;
+      }
+      if (ViolaUtils.getBoolean(paramDomObject.getAttributes().get("hidePreCreateBodyWhenMounted"))) {
+        paramViolaInstance.hidePreCreateBody();
+      }
     }
   }
   
@@ -144,90 +156,98 @@ public class MethodAddElement
   
   public void executeRender(RenderActionContext paramRenderActionContext)
   {
-    if (paramRenderActionContext == null) {}
-    Object localObject;
-    VComponentContainer localVComponentContainer;
-    VComponent localVComponent;
-    do
+    if (paramRenderActionContext == null) {
+      return;
+    }
+    ViolaInstance localViolaInstance = paramRenderActionContext.getInstance();
+    if (localViolaInstance != null)
     {
-      do
-      {
-        return;
-        localObject = paramRenderActionContext.getInstance();
-      } while ((localObject == null) || (TextUtils.isEmpty(this.mRootRef)) || (!(paramRenderActionContext.getComponent(this.mParentRef) instanceof VComponentContainer)) || (!(paramRenderActionContext.getComponent(this.mRootRef) instanceof VComponentContainer)));
-      localVComponentContainer = (VComponentContainer)paramRenderActionContext.getComponent(this.mParentRef);
-      localVComponent = paramRenderActionContext.getComponent(this.mRef);
-      paramRenderActionContext = (VComponentContainer)paramRenderActionContext.getComponent(this.mRootRef);
-      if ((paramRenderActionContext == null) || (paramRenderActionContext.isDestroyed()))
-      {
-        ViolaLogUtils.d(TAG, "rootCmp  is destroy ");
+      if (TextUtils.isEmpty(this.mRootRef)) {
         return;
       }
-      if ((localVComponentContainer == null) || (localVComponentContainer.isDestroyed()))
+      if (!(paramRenderActionContext.getComponent(this.mParentRef) instanceof VComponentContainer)) {
+        return;
+      }
+      if (!(paramRenderActionContext.getComponent(this.mRootRef) instanceof VComponentContainer)) {
+        return;
+      }
+      VComponentContainer localVComponentContainer = (VComponentContainer)paramRenderActionContext.getComponent(this.mParentRef);
+      VComponent localVComponent = paramRenderActionContext.getComponent(this.mRef);
+      paramRenderActionContext = (VComponentContainer)paramRenderActionContext.getComponent(this.mRootRef);
+      if ((paramRenderActionContext != null) && (!paramRenderActionContext.isDestroyed()))
       {
+        if ((localVComponentContainer != null) && (!localVComponentContainer.isDestroyed()))
+        {
+          Object localObject;
+          if ((localVComponentContainer instanceof VRecyclerList))
+          {
+            localObject = this.mAddDom;
+            if (localObject != null)
+            {
+              ((VRecyclerList)localVComponentContainer).notifyItemInsert((DomObject)localObject, this.mAddIndex);
+              return;
+            }
+          }
+          localVComponentContainer.notifyChange(3);
+          if (localVComponent == null)
+          {
+            ViolaLogUtils.d(TAG, "component is null");
+            return;
+          }
+          if ((localVComponentContainer.mChildren != null) && (localVComponentContainer.mChildren.contains(localVComponent)))
+          {
+            ViolaLogUtils.d(TAG, "repeat component");
+            return;
+          }
+          localVComponentContainer.addChild(localVComponent, this.mAddIndex);
+          if ((localViolaInstance.getContext() == null) && (!localViolaInstance.isGlobalMode())) {
+            return;
+          }
+          localVComponent.createView();
+          if (!(localVComponentContainer.getRealView() instanceof AdapterView)) {
+            if ((localVComponent.getRealView() instanceof VScrollView))
+            {
+              if (localVComponent.getRealView().getParent() != null)
+              {
+                localObject = (View)localVComponent.getRealView().getParent();
+                localVComponentContainer.getRealView().addView((View)localObject);
+              }
+              else
+              {
+                dealAddView(localVComponentContainer, localVComponent);
+              }
+            }
+            else if ((localVComponent.getHostView() instanceof VRecyclerView))
+            {
+              localObject = (VRecyclerList)localVComponent;
+              if (((VRecyclerList)localObject).isInterceptAddView())
+              {
+                ((VRecyclerList)localObject).addSubViewOnIntercept(localVComponentContainer.getRealView(), -1);
+              }
+              else
+              {
+                ((VRecyclerList)localObject).getRealParentView().removeView(localVComponent.getHostView());
+                localVComponentContainer.getRealView().addView(localVComponent.getHostView());
+              }
+            }
+            else
+            {
+              dealAddView(localVComponentContainer, localVComponent);
+            }
+          }
+          paramRenderActionContext.applyLayout();
+          localVComponent.applyLayout();
+          localVComponent.applyEvents();
+          localVComponent.bindData();
+          localVComponent.notifyChange(3);
+          localVComponent.notifyWhenChange("add", this.mAddDom);
+          tryHidePreCreateBody(localViolaInstance, this.mAddDom);
+          return;
+        }
         ViolaLogUtils.d(TAG, "parent  is destroy ");
         return;
       }
-      if (((localVComponentContainer instanceof VRecyclerList)) && (this.mAddDom != null))
-      {
-        ((VRecyclerList)localVComponentContainer).notifyItemInsert(this.mAddDom, this.mAddIndex);
-        return;
-      }
-      localVComponentContainer.notifyChange();
-      if (localVComponent == null)
-      {
-        ViolaLogUtils.d(TAG, "component is null");
-        return;
-      }
-      if ((localVComponentContainer.mChildren != null) && (localVComponentContainer.mChildren.contains(localVComponent)))
-      {
-        ViolaLogUtils.d(TAG, "repeat component");
-        return;
-      }
-      localVComponentContainer.addChild(localVComponent, this.mAddIndex);
-    } while (((ViolaInstance)localObject).getContext() == null);
-    localVComponent.createView();
-    if (!(localVComponentContainer.getRealView() instanceof AdapterView))
-    {
-      if (!(localVComponent.getRealView() instanceof VScrollView)) {
-        break label325;
-      }
-      if (localVComponent.getRealView().getParent() == null) {
-        break label316;
-      }
-      localObject = (View)localVComponent.getRealView().getParent();
-      localVComponentContainer.getRealView().addView((View)localObject);
-    }
-    for (;;)
-    {
-      paramRenderActionContext.applyLayout();
-      localVComponent.applyLayout();
-      localVComponent.applyEvents();
-      localVComponent.bindData();
-      localVComponent.notifyChange();
-      localVComponent.notifyWhenChange("add", this.mAddDom);
-      return;
-      label316:
-      dealAddView(localVComponentContainer, localVComponent);
-      continue;
-      label325:
-      if ((localVComponent.getHostView() instanceof VRecyclerView))
-      {
-        localObject = (VRecyclerList)localVComponent;
-        if (((VRecyclerList)localObject).isInterceptAddView())
-        {
-          ((VRecyclerList)localObject).addSubViewOnIntercept(localVComponentContainer.getRealView(), -1);
-        }
-        else
-        {
-          ((VRecyclerList)localObject).getRealParentView().removeView(localVComponent.getHostView());
-          localVComponentContainer.getRealView().addView(localVComponent.getHostView());
-        }
-      }
-      else
-      {
-        dealAddView(localVComponentContainer, localVComponent);
-      }
+      ViolaLogUtils.d(TAG, "rootCmp  is destroy ");
     }
   }
   
@@ -238,15 +258,16 @@ public class MethodAddElement
   
   public boolean isAddVInstance()
   {
-    if (this.mData == null) {
+    JSONObject localJSONObject = this.mData;
+    if (localJSONObject == null) {
       return false;
     }
-    return "instance".equals(this.mData.optString("type"));
+    return "instance".equals(localJSONObject.optString("type"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAddElement
  * JD-Core Version:    0.7.0.1
  */

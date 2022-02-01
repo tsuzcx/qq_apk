@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.game.d.bl;
-import com.tencent.mm.plugin.game.d.bm;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.game.protobuf.bx;
+import com.tencent.mm.plugin.game.protobuf.by;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class aq
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public final b lFp;
+  private h callback;
+  public final c mtC;
   
   public aq(int paramInt1, LinkedList<String> paramLinkedList, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(111445);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bl();
-    ((b.a)localObject).fsY = new bm();
-    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetlibgamelist";
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.lFp = ((b.a)localObject).ado();
-    localObject = (bl)this.lFp.fsV.fta;
-    ((bl)localObject).nsV = paramInt1;
-    ((bl)localObject).nsW = 15;
-    ((bl)localObject).nsa = aa.dsG();
-    ((bl)localObject).gwY = bo.hi(ah.getContext());
-    ((bl)localObject).nsX = paramInt2;
-    ((bl)localObject).nsF = paramLinkedList;
-    ((bl)localObject).nsY = paramBoolean;
-    AppMethodBeat.o(111445);
+    AppMethodBeat.i(41610);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new bx();
+    ((c.a)localObject).otF = new by();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetlibgamelist";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (bx)c.b.b(this.mtC.otB);
+    ((bx)localObject).IKo = paramInt1;
+    ((bx)localObject).IKp = 15;
+    ((bx)localObject).IJD = LocaleUtil.getApplicationLanguage();
+    ((bx)localObject).pSo = Util.getSimCountryCode(MMApplicationContext.getContext());
+    ((bx)localObject).IKq = paramInt2;
+    ((bx)localObject).IJY = paramLinkedList;
+    ((bx)localObject).IKr = paramBoolean;
+    AppMethodBeat.o(41610);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(111446);
-    this.callback = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(111446);
+    AppMethodBeat.i(41611);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(41611);
     return i;
   }
   
@@ -60,12 +60,12 @@ public final class aq
     return 1218;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(111447);
-    ab.i("MicroMsg.NetSceneGetLibGameList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    AppMethodBeat.i(41612);
+    Log.i("MicroMsg.NetSceneGetLibGameList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(111447);
+    AppMethodBeat.o(41612);
   }
 }
 

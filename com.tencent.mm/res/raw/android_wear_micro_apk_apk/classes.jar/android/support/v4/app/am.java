@@ -1,9 +1,6 @@
 package android.support.v4.app;
 
-abstract interface am
-{
-  public abstract void a(bm parambm);
-}
+public abstract interface am<D> {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\res\raw\android_wear_micro_apk_apk\classes.jar

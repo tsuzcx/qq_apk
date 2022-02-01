@@ -24,23 +24,21 @@ public final class jf
       return "";
     }
     String str = paramContext.getPackageName();
+    Object localObject = null;
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(str, 128);
-      if (paramContext == null) {
-        return "";
-      }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
-      if (paramContext.metaData == null) {
-        return "";
-      }
+      paramContext.printStackTrace();
+      paramContext = localObject;
+    }
+    if (paramContext == null) {
+      return "";
+    }
+    if (paramContext.metaData == null) {
+      return "";
     }
     return paramContext.metaData.getString("TencentMapSDK");
   }

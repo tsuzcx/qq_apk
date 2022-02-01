@@ -15,14 +15,14 @@ final class zzcf
   
   protected final void doExecute(A paramA, TaskCompletionSource<ResultT> paramTaskCompletionSource)
   {
-    AppMethodBeat.i(60875);
+    AppMethodBeat.i(11367);
     TaskApiCall.Builder.zza(this.zzmc).accept(paramA, paramTaskCompletionSource);
-    AppMethodBeat.o(60875);
+    AppMethodBeat.o(11367);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzcf
  * JD-Core Version:    0.7.0.1
  */

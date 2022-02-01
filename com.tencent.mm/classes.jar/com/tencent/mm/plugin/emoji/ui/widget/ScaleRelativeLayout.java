@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui.widget;
 
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -11,16 +12,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScaleRelativeLayout
   extends RelativeLayout
 {
-  public float arJ = 3.0F;
-  private float arK = 0.5F;
-  private float lsA = 0.0F;
-  private float lsB = 0.0F;
-  public float lsC = 6.0F;
-  private float lsD = 0.3F;
-  private boolean lsE = false;
-  private ValueAnimator lsF;
-  private float lsy = 1.0F;
-  private float lsz = 1.0F;
+  public float maxScale = 3.0F;
+  private float minScale = 0.5F;
+  private float ydA = 0.3F;
+  private View ydB;
+  private boolean ydC = false;
+  private ValueAnimator ydD;
+  private float ydv = 1.0F;
+  private float ydw = 1.0F;
+  private float ydx = 0.0F;
+  private float ydy = 0.0F;
+  public float ydz = 6.0F;
   
   public ScaleRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,27 +34,39 @@ public class ScaleRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  private void dDo()
+  {
+    AppMethodBeat.i(270747);
+    View localView = this.ydB;
+    if (localView != null)
+    {
+      localView.setScaleX(this.ydv);
+      localView.setScaleY(this.ydv);
+    }
+    AppMethodBeat.o(270747);
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(53860);
+    AppMethodBeat.i(109435);
     if (paramMotionEvent.getPointerCount() > 1)
     {
-      AppMethodBeat.o(53860);
+      AppMethodBeat.o(109435);
       return true;
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(53860);
+    AppMethodBeat.o(109435);
     return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(53861);
-    if ((!this.lsE) && (paramMotionEvent.getPointerCount() == 2))
+    AppMethodBeat.i(109436);
+    if ((!this.ydC) && (paramMotionEvent.getPointerCount() == 2))
     {
-      this.lsE = true;
-      this.lsA = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
-      this.lsz = this.lsy;
+      this.ydC = true;
+      this.ydx = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
+      this.ydw = this.ydv;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -64,78 +78,85 @@ public class ScaleRelativeLayout
     case 6: 
       for (;;)
       {
-        if (this.lsA <= 0.0F) {
-          this.lsA = 0.1F;
+        if (this.ydx <= 0.0F) {
+          this.ydx = 0.1F;
         }
-        int i = 0;
-        while (i < getChildCount())
-        {
-          paramMotionEvent = getChildAt(i);
-          paramMotionEvent.setScaleX(this.lsy);
-          paramMotionEvent.setScaleY(this.lsy);
-          i += 1;
-        }
+        dDo();
+        AppMethodBeat.o(109436);
+        return true;
         if (paramMotionEvent.getPointerCount() == 2)
         {
           f2 = (float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-          f1 = this.lsz * f2 / this.lsA;
-          if (f1 > this.lsC)
+          f1 = this.ydw * f2 / this.ydx;
+          if (f1 > this.ydz)
           {
-            f1 = this.lsC;
-            this.lsB = (this.lsA * f1);
+            f1 = this.ydz;
+            this.ydy = (this.ydx * f1);
           }
           for (;;)
           {
-            this.lsy = f1;
-            if (this.lsF == null) {
+            this.ydv = f1;
+            if (this.ydD == null) {
               break;
             }
-            this.lsF.cancel();
+            this.ydD.cancel();
             break;
-            if (f1 < this.lsD)
+            if (f1 < this.ydA)
             {
-              f1 = this.lsD;
-              this.lsB = (this.lsA * f1);
+              f1 = this.ydA;
+              this.ydy = (this.ydx * f1);
             }
             else
             {
-              this.lsB = f2;
+              this.ydy = f2;
             }
           }
           if (paramMotionEvent.getPointerCount() == 2)
           {
-            this.lsA = this.lsB;
-            this.lsz = this.lsy;
-            this.lsE = false;
+            this.ydx = this.ydy;
+            this.ydw = this.ydv;
+            this.ydC = false;
           }
         }
       }
     }
-    float f2 = this.lsy;
-    float f1 = this.lsy;
-    if (this.lsy < this.arK) {
-      f1 = this.arK;
+    float f2 = this.ydv;
+    float f1 = this.ydv;
+    if (this.ydv < this.minScale) {
+      f1 = this.minScale;
     }
     for (;;)
     {
-      if (this.lsF != null) {
-        this.lsF.cancel();
+      if (this.ydD != null) {
+        this.ydD.cancel();
       }
-      this.lsF = ValueAnimator.ofFloat(new float[] { f2, f1 });
-      this.lsF.addUpdateListener(new ScaleRelativeLayout.1(this));
-      this.lsF.start();
+      this.ydD = ValueAnimator.ofFloat(new float[] { f2, f1 });
+      this.ydD.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(109434);
+          ScaleRelativeLayout.a(ScaleRelativeLayout.this, ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue());
+          ScaleRelativeLayout.a(ScaleRelativeLayout.this);
+          AppMethodBeat.o(109434);
+        }
+      });
+      this.ydD.start();
       break;
-      if (this.lsy > this.arJ) {
-        f1 = this.arJ;
+      if (this.ydv > this.maxScale) {
+        f1 = this.maxScale;
       }
     }
-    AppMethodBeat.o(53861);
-    return true;
+  }
+  
+  public void setScaleChild(View paramView)
+  {
+    this.ydB = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.widget.ScaleRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import fth;
+import ftg;
 
 public final class QfileOnlineFileController
-  extends fth
+  extends ftg
 {
   static final String b = "<FileAssistant>QfileOnlineFileController";
   

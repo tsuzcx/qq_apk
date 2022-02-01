@@ -4,26 +4,7 @@ import java.lang.reflect.Array;
 
 public final class n
 {
-  public static float[] c(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
-  {
-    float[] arrayOfFloat = new float[3];
-    int i = 0;
-    while (i < 3)
-    {
-      float f = 0.0F;
-      int j = 0;
-      while (j < 3)
-      {
-        f += paramArrayOfFloat[i][j] * paramArrayOfFloat1[j];
-        j += 1;
-      }
-      arrayOfFloat[i] = f;
-      i += 1;
-    }
-    return arrayOfFloat;
-  }
-  
-  public static float[][] c(float[][] paramArrayOfFloat)
+  public static float[][] b(float[][] paramArrayOfFloat)
   {
     float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 });
     int i = 0;
@@ -100,10 +81,29 @@ public final class n
     }
     return arrayOfFloat;
   }
+  
+  public static float[] c(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
+  {
+    float[] arrayOfFloat = new float[3];
+    int i = 0;
+    while (i < 3)
+    {
+      float f = 0.0F;
+      int j = 0;
+      while (j < 3)
+      {
+        f += paramArrayOfFloat[i][j] * paramArrayOfFloat1[j];
+        j += 1;
+      }
+      arrayOfFloat[i] = f;
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.n
  * JD-Core Version:    0.7.0.1
  */

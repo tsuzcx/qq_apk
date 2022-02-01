@@ -1,0 +1,21 @@
+{
+  "ime_symbol_types_bg_color": "#2c2c2c",
+  "ime_key_grey_color": "#404040",
+  "ime_key_grey_shadow_color":"@color/UN_BW_0_Alpha_0_5",
+  "ime_key_white_color": "#535353",
+  "ime_key_white_shadow_color": "#99000000",
+  "S8_button_bg_color": "#202020",
+  "ime_emoji_type_gradient_start_color": "#001C1C1C",
+  "ime_emoji_type_gradient_end_color": "#ff1C1C1C",
+  "ime_emoji_type_selected_color":"@color/BW_100_Alpha_0_1",
+  "S2_text_invalid_color":"@color/FG_2",
+  "ime_emoji_delete_bg_color": "#202020",
+  "ime_key_float_view_long_click_bg_color": "#2c2c2c",
+  "ime_key_float_view_upper_bg_color": "#2c2c2c",
+  "ime_key_transparent_to_white_bg_pressed":"@color/BW_100_Alpha_0_0_5",
+  "ime_mask_color": "#f32C2C2C",
+  "ime_candidate_start_color":"@color/BG_1",
+  "ime_candidate_end_color":"@color/BG_1",
+  "ime_keyboard_end_color":"@color/BG_1",
+  "ime_text_up_bg_color":"@color/FG_1"
+}

@@ -20,33 +20,42 @@ public class BaseSpringSystem
   
   public BaseSpringSystem(SpringLooper paramSpringLooper)
   {
-    if (paramSpringLooper == null) {
-      throw new IllegalArgumentException("springLooper is required");
+    if (paramSpringLooper != null)
+    {
+      this.mSpringLooper = paramSpringLooper;
+      this.mSpringLooper.setSpringSystem(this);
+      return;
     }
-    this.mSpringLooper = paramSpringLooper;
-    this.mSpringLooper.setSpringSystem(this);
+    throw new IllegalArgumentException("springLooper is required");
   }
   
   void activateSpring(String paramString)
   {
-    Spring localSpring = (Spring)this.mSpringRegistry.get(paramString);
-    if (localSpring == null) {
-      throw new IllegalArgumentException("springId " + paramString + " does not reference a registered spring");
-    }
-    this.mActiveSprings.add(localSpring);
-    if (getIsIdle())
+    Object localObject = (Spring)this.mSpringRegistry.get(paramString);
+    if (localObject != null)
     {
-      this.mIdle = false;
-      this.mSpringLooper.start();
+      this.mActiveSprings.add(localObject);
+      if (getIsIdle())
+      {
+        this.mIdle = false;
+        this.mSpringLooper.start();
+      }
+      return;
     }
+    localObject = new StringBuilder("springId ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" does not reference a registered spring");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void addListener(SpringSystemListener paramSpringSystemListener)
   {
-    if (paramSpringSystemListener == null) {
-      throw new IllegalArgumentException("newListener is required");
+    if (paramSpringSystemListener != null)
+    {
+      this.mListeners.add(paramSpringSystemListener);
+      return;
     }
-    this.mListeners.add(paramSpringSystemListener);
+    throw new IllegalArgumentException("newListener is required");
   }
   
   void advance(double paramDouble)
@@ -75,20 +84,24 @@ public class BaseSpringSystem
   
   void deregisterSpring(Spring paramSpring)
   {
-    if (paramSpring == null) {
-      throw new IllegalArgumentException("spring is required");
+    if (paramSpring != null)
+    {
+      this.mActiveSprings.remove(paramSpring);
+      this.mSpringRegistry.remove(paramSpring.getId());
+      return;
     }
-    this.mActiveSprings.remove(paramSpring);
-    this.mSpringRegistry.remove(paramSpring.getId());
+    throw new IllegalArgumentException("spring is required");
   }
   
   public List<Spring> getAllSprings()
   {
     Object localObject = this.mSpringRegistry.values();
-    if ((localObject instanceof List)) {}
-    for (localObject = (List)localObject;; localObject = new ArrayList((Collection)localObject)) {
-      return Collections.unmodifiableList((List)localObject);
+    if ((localObject instanceof List)) {
+      localObject = (List)localObject;
+    } else {
+      localObject = new ArrayList((Collection)localObject);
     }
+    return Collections.unmodifiableList((List)localObject);
   }
   
   public boolean getIsIdle()
@@ -98,47 +111,52 @@ public class BaseSpringSystem
   
   public Spring getSpringById(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("id is required");
+    if (paramString != null) {
+      return (Spring)this.mSpringRegistry.get(paramString);
     }
-    return (Spring)this.mSpringRegistry.get(paramString);
+    throw new IllegalArgumentException("id is required");
   }
   
   public void loop(double paramDouble)
   {
     Iterator localIterator = this.mListeners.iterator();
-    if (!localIterator.hasNext())
-    {
-      advance(paramDouble);
-      if (this.mActiveSprings.isEmpty()) {
-        this.mIdle = true;
-      }
-      localIterator = this.mListeners.iterator();
-    }
     for (;;)
     {
       if (!localIterator.hasNext())
       {
-        if (this.mIdle) {
-          this.mSpringLooper.stop();
+        advance(paramDouble);
+        if (this.mActiveSprings.isEmpty()) {
+          this.mIdle = true;
         }
-        return;
-        ((SpringSystemListener)localIterator.next()).onBeforeIntegrate(this);
-        break;
+        localIterator = this.mListeners.iterator();
+        for (;;)
+        {
+          if (!localIterator.hasNext())
+          {
+            if (this.mIdle) {
+              this.mSpringLooper.stop();
+            }
+            return;
+          }
+          ((SpringSystemListener)localIterator.next()).onAfterIntegrate(this);
+        }
       }
-      ((SpringSystemListener)localIterator.next()).onAfterIntegrate(this);
+      ((SpringSystemListener)localIterator.next()).onBeforeIntegrate(this);
     }
   }
   
   void registerSpring(Spring paramSpring)
   {
-    if (paramSpring == null) {
-      throw new IllegalArgumentException("spring is required");
-    }
-    if (this.mSpringRegistry.containsKey(paramSpring.getId())) {
+    if (paramSpring != null)
+    {
+      if (!this.mSpringRegistry.containsKey(paramSpring.getId()))
+      {
+        this.mSpringRegistry.put(paramSpring.getId(), paramSpring);
+        return;
+      }
       throw new IllegalArgumentException("spring is already registered");
     }
-    this.mSpringRegistry.put(paramSpring.getId(), paramSpring);
+    throw new IllegalArgumentException("spring is required");
   }
   
   public void removeAllListeners()
@@ -148,15 +166,17 @@ public class BaseSpringSystem
   
   public void removeListener(SpringSystemListener paramSpringSystemListener)
   {
-    if (paramSpringSystemListener == null) {
-      throw new IllegalArgumentException("listenerToRemove is required");
+    if (paramSpringSystemListener != null)
+    {
+      this.mListeners.remove(paramSpringSystemListener);
+      return;
     }
-    this.mListeners.remove(paramSpringSystemListener);
+    throw new IllegalArgumentException("listenerToRemove is required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.animation.rebound.BaseSpringSystem
  * JD-Core Version:    0.7.0.1
  */

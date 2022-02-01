@@ -18,15 +18,19 @@ public class ActivityLifecycle
     if (DebugHelper.sDebug) {
       DebugHelper.log("ActivityLifecycle onNewIntent");
     }
-    synchronized (mWeakCallbackArrayList)
+    try
     {
-      try
+      synchronized (mWeakCallbackArrayList)
       {
         Iterator localIterator = mWeakCallbackArrayList.iterator();
-        while (localIterator.hasNext())
+        for (;;)
         {
-          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
-          if (localActivityLifecycleCallback != null) {
+          if (localIterator.hasNext())
+          {
+            ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
+            if (localActivityLifecycleCallback == null) {
+              continue;
+            }
             try
             {
               localActivityLifecycleCallback.onNewIntent(paramActivity, paramIntent);
@@ -37,13 +41,16 @@ public class ActivityLifecycle
             }
           }
         }
-        paramActivity = finally;
       }
-      catch (ConcurrentModificationException paramActivity)
-      {
-        paramActivity.printStackTrace();
-        return;
-      }
+    }
+    catch (ConcurrentModificationException paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    for (;;)
+    {
+      throw paramActivity;
     }
   }
   
@@ -52,15 +59,19 @@ public class ActivityLifecycle
     if (DebugHelper.sDebug) {
       DebugHelper.log("ActivityLifecycle onPause");
     }
-    synchronized (mWeakCallbackArrayList)
+    try
     {
-      try
+      synchronized (mWeakCallbackArrayList)
       {
         Iterator localIterator = mWeakCallbackArrayList.iterator();
-        while (localIterator.hasNext())
+        for (;;)
         {
-          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
-          if (localActivityLifecycleCallback != null) {
+          if (localIterator.hasNext())
+          {
+            ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
+            if (localActivityLifecycleCallback == null) {
+              continue;
+            }
             try
             {
               localActivityLifecycleCallback.onPause(paramActivity);
@@ -71,13 +82,16 @@ public class ActivityLifecycle
             }
           }
         }
-        paramActivity = finally;
       }
-      catch (ConcurrentModificationException paramActivity)
-      {
-        paramActivity.printStackTrace();
-        return;
-      }
+    }
+    catch (ConcurrentModificationException paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    for (;;)
+    {
+      throw paramActivity;
     }
   }
   
@@ -86,15 +100,19 @@ public class ActivityLifecycle
     if (DebugHelper.sDebug) {
       DebugHelper.log("ActivityLifecycle onResume");
     }
-    synchronized (mWeakCallbackArrayList)
+    try
     {
-      try
+      synchronized (mWeakCallbackArrayList)
       {
         Iterator localIterator = mWeakCallbackArrayList.iterator();
-        while (localIterator.hasNext())
+        for (;;)
         {
-          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
-          if (localActivityLifecycleCallback != null) {
+          if (localIterator.hasNext())
+          {
+            ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
+            if (localActivityLifecycleCallback == null) {
+              continue;
+            }
             try
             {
               localActivityLifecycleCallback.onResume(paramActivity);
@@ -105,13 +123,16 @@ public class ActivityLifecycle
             }
           }
         }
-        paramActivity = finally;
       }
-      catch (ConcurrentModificationException paramActivity)
-      {
-        paramActivity.printStackTrace();
-        return;
-      }
+    }
+    catch (ConcurrentModificationException paramActivity)
+    {
+      paramActivity.printStackTrace();
+      return;
+    }
+    for (;;)
+    {
+      throw paramActivity;
     }
   }
   
@@ -120,35 +141,44 @@ public class ActivityLifecycle
     if (paramActivityLifecycleCallback == null) {
       return;
     }
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("ActivityLifecycle registerNFCEventCallback;callback=" + paramActivityLifecycleCallback.getClass().getName());
+    if (DebugHelper.sDebug)
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("ActivityLifecycle registerNFCEventCallback;callback=");
+      ((StringBuilder)???).append(paramActivityLifecycleCallback.getClass().getName());
+      DebugHelper.log(((StringBuilder)???).toString());
     }
-    Object localObject;
     synchronized (mWeakCallbackArrayList)
     {
-      localObject = mCallbackReferenceQueue.poll();
-      if (localObject != null) {
-        mWeakCallbackArrayList.remove(localObject);
-      }
-    }
-    try
-    {
-      localObject = mWeakCallbackArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject2;
+      for (;;)
       {
-        ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)((Iterator)localObject).next()).get();
-        if (localActivityLifecycleCallback == paramActivityLifecycleCallback) {
-          return;
+        localObject2 = mCallbackReferenceQueue.poll();
+        if (localObject2 == null) {
+          break;
+        }
+        mWeakCallbackArrayList.remove(localObject2);
+      }
+      try
+      {
+        localObject2 = mWeakCallbackArrayList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)((Iterator)localObject2).next()).get();
+          if (localActivityLifecycleCallback == paramActivityLifecycleCallback) {
+            return;
+          }
         }
       }
+      catch (ConcurrentModificationException localConcurrentModificationException)
+      {
+        label113:
+        break label113;
+      }
+      paramActivityLifecycleCallback = new WeakReference(paramActivityLifecycleCallback, mCallbackReferenceQueue);
+      mWeakCallbackArrayList.add(paramActivityLifecycleCallback);
+      return;
     }
-    catch (ConcurrentModificationException localConcurrentModificationException)
-    {
-      label112:
-      break label112;
-    }
-    paramActivityLifecycleCallback = new WeakReference(paramActivityLifecycleCallback, mCallbackReferenceQueue);
-    mWeakCallbackArrayList.add(paramActivityLifecycleCallback);
   }
   
   public void unregister(ActivityLifecycle.ActivityLifecycleCallback paramActivityLifecycleCallback)
@@ -156,9 +186,9 @@ public class ActivityLifecycle
     if (paramActivityLifecycleCallback == null) {
       return;
     }
-    try
+    synchronized (mWeakCallbackArrayList)
     {
-      synchronized (mWeakCallbackArrayList)
+      try
       {
         Iterator localIterator = mWeakCallbackArrayList.iterator();
         while (localIterator.hasNext())
@@ -171,14 +201,21 @@ public class ActivityLifecycle
           }
         }
       }
+      catch (ConcurrentModificationException paramActivityLifecycleCallback)
+      {
+        label62:
+        label72:
+        break label62;
+      }
       return;
+      break label72;
+      throw paramActivityLifecycleCallback;
     }
-    catch (ConcurrentModificationException paramActivityLifecycleCallback) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ActivityLifecycle
  * JD-Core Version:    0.7.0.1
  */

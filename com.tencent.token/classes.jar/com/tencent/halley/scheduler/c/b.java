@@ -1,7 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.c;
-import com.tencent.halley.common.b.d;
+import com.tencent.token.md;
+import com.tencent.token.me;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public final class b
   public String b = "";
   private Map c = null;
   
-  public final void a(com.tencent.halley.common.b.a parama)
+  public final void a(md parammd)
   {
     if (d == null)
     {
@@ -23,22 +24,23 @@ public final class b
       a locala = new a();
       d.add(locala);
     }
-    this.a = ((ArrayList)parama.a(d, 0, true));
-    this.b = parama.a(1, true);
+    this.a = ((ArrayList)parammd.a(d, 0, true));
+    this.b = parammd.a(1, true);
     if (e == null)
     {
       e = new HashMap();
       e.put("", "");
     }
-    this.c = ((Map)parama.a(e, 2, false));
+    this.c = ((Map)parammd.a(e, 2, false));
   }
   
-  public final void a(d paramd)
+  public final void a(me paramme)
   {
-    paramd.a(this.a, 0);
-    paramd.a(this.b, 1);
-    if (this.c != null) {
-      paramd.a(this.c, 2);
+    paramme.a(this.a, 0);
+    paramme.a(this.b, 1);
+    Map localMap = this.c;
+    if (localMap != null) {
+      paramme.a(localMap, 2);
     }
   }
 }

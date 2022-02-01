@@ -10,15 +10,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class hw_submit_homework$HwExamAnswer
   extends MessageMicro<HwExamAnswer>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "questionid", "answer", "result", "score" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0) }, HwExamAnswer.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField answer = PBField.initString("");
   public final PBStringField questionid = PBField.initString("");
   public final PBInt32Field result = PBField.initInt32(0);
   public final PBUInt32Field score = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "questionid", "answer", "result", "score" }, new Object[] { "", "", localInteger, localInteger }, HwExamAnswer.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.homework.hw_submit_homework.HwExamAnswer
  * JD-Core Version:    0.7.0.1
  */

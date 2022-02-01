@@ -1,27 +1,15 @@
-import android.support.v4.util.LruCache;
-import common.qzone.component.cache.common.ExtendLruCache;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class hzc
-  extends LruCache
+  extends WeakReference
 {
-  public hzc(ExtendLruCache paramExtendLruCache, int paramInt)
-  {
-    super(paramInt);
-  }
+  public Object a;
   
-  protected Object create(Object paramObject)
+  public hzc(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
   {
-    return this.a.c(paramObject);
-  }
-  
-  protected void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    this.a.a(paramBoolean, paramObject1, paramObject2, paramObject3);
-  }
-  
-  protected int sizeOf(Object paramObject1, Object paramObject2)
-  {
-    return this.a.a(paramObject1, paramObject2);
+    super(paramObject2, paramReferenceQueue);
+    this.a = paramObject1;
   }
 }
 

@@ -10,7 +10,7 @@ public final class stAlbumInfo
   public String strMid = "";
   public String strName = "";
   public String strPic = "";
-  public long uiId;
+  public long uiId = 0L;
   
   public stAlbumInfo() {}
   
@@ -33,20 +33,23 @@ public final class stAlbumInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uiId, 0);
-    if (this.strMid != null) {
-      paramJceOutputStream.write(this.strMid, 1);
+    String str = this.strMid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 2);
+    str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strPic != null) {
-      paramJceOutputStream.write(this.strPic, 3);
+    str = this.strPic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

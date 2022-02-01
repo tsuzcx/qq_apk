@@ -26,14 +26,15 @@ public final class fd_comm$AuthInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 88, 98, 170, 178, 184 }, new String[] { "uin", "ctime", "skey", "a8", "appid", "net_type", "imei", "longitude", "latitude", "city_code" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), "", "", "", Integer.valueOf(0) }, AuthInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 88, 98, 170, 178, 184 }, new String[] { "uin", "ctime", "skey", "a8", "appid", "net_type", "imei", "longitude", "latitude", "city_code" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, "", "", "", localInteger }, AuthInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     fudai.fd_comm.AuthInfo
  * JD-Core Version:    0.7.0.1
  */

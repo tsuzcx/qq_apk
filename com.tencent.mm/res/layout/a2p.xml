@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:id="@id/c2z" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/c2c" android:background="#ffdadada" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/hk" android:gravity="center" android:layout_gravity="center" android:id="@id/c2g" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/e4s" android:lineSpacingExtra="@dimen/mp" />
+    <LinearLayout android:orientation="vertical" android:id="@id/c2y" android:background="@color/aav" android:paddingTop="@dimen/if" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c33" android:background="@color/aav" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/m1" style="@style/r8">
+            <TextView android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/c34" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/c99" android:layout_weight="1.0" style="@style/nn" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView android:gravity="center" android:id="@id/c31" android:background="@color/a6w" android:paddingBottom="@dimen/j6" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/az8" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+        <LinearLayout android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/c30" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/j6" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c32" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="@dimen/m1" style="@style/r8">
+            <TextView android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/c35" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/c98" android:layout_weight="1.0" style="@style/nn" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

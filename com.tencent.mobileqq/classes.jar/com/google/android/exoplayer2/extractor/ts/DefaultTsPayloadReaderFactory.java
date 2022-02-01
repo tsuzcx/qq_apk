@@ -61,32 +61,34 @@ public final class DefaultTsPayloadReaderFactory
         ArrayList localArrayList = new ArrayList();
         int n = localParsableByteArray.readUnsignedByte();
         i = 0;
-        if (i < (n & 0x1F))
+        for (;;)
         {
+          paramEsInfo = localArrayList;
+          if (i >= (n & 0x1F)) {
+            break;
+          }
           String str = localParsableByteArray.readString(3);
           int i1 = localParsableByteArray.readUnsignedByte();
-          if ((i1 & 0x80) != 0)
-          {
+          int j;
+          if ((i1 & 0x80) != 0) {
             j = 1;
-            label127:
-            if (j == 0) {
-              break label178;
-            }
+          } else {
+            j = 0;
+          }
+          if (j != 0)
+          {
+            j = i1 & 0x3F;
             paramEsInfo = "application/cea-708";
           }
-          for (int j = i1 & 0x3F;; j = 1)
+          else
           {
-            localArrayList.add(Format.createTextSampleFormat(null, paramEsInfo, null, -1, 0, str, j, null));
-            localParsableByteArray.skipBytes(2);
-            i += 1;
-            break;
-            j = 0;
-            break label127;
-            label178:
             paramEsInfo = "application/cea-608";
+            j = 1;
           }
+          localArrayList.add(Format.createTextSampleFormat(null, paramEsInfo, null, -1, 0, str, j, null));
+          localParsableByteArray.skipBytes(2);
+          i += 1;
         }
-        paramEsInfo = localArrayList;
       }
       localParsableByteArray.setPosition(m + k);
     }
@@ -95,7 +97,7 @@ public final class DefaultTsPayloadReaderFactory
   
   private boolean isSet(int paramInt)
   {
-    return (this.flags & paramInt) != 0;
+    return (paramInt & this.flags) != 0;
   }
   
   public SparseArray<TsPayloadReader> createInitialPayloadReaders()
@@ -105,52 +107,77 @@ public final class DefaultTsPayloadReaderFactory
   
   public TsPayloadReader createPayloadReader(int paramInt, TsPayloadReader.EsInfo paramEsInfo)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-    case 3: 
-    case 4: 
-    case 15: 
-    case 17: 
-    case 129: 
-    case 135: 
-    case 130: 
-    case 138: 
-    case 2: 
-    case 27: 
-    case 36: 
-    case 134: 
-      do
+      if ((paramInt != 3) && (paramInt != 4))
       {
-        do
+        if (paramInt != 15)
         {
-          do
+          if (paramInt != 17)
           {
-            do
+            if (paramInt != 21)
             {
-              return null;
-              return new PesReader(new MpegAudioReader(paramEsInfo.language));
-            } while (isSet(2));
-            return new PesReader(new AdtsReader(false, paramEsInfo.language));
-          } while (isSet(2));
+              if (paramInt != 27)
+              {
+                if (paramInt != 36)
+                {
+                  if (paramInt != 89)
+                  {
+                    if (paramInt != 138)
+                    {
+                      if (paramInt != 129)
+                      {
+                        if (paramInt == 130) {
+                          break label133;
+                        }
+                        if (paramInt != 134)
+                        {
+                          if (paramInt != 135) {
+                            return null;
+                          }
+                        }
+                        else
+                        {
+                          if (isSet(16)) {
+                            return null;
+                          }
+                          return new SectionReader(new SpliceInfoSectionReader());
+                        }
+                      }
+                      return new PesReader(new Ac3Reader(paramEsInfo.language));
+                    }
+                    label133:
+                    return new PesReader(new DtsReader(paramEsInfo.language));
+                  }
+                  return new PesReader(new DvbSubtitleReader(paramEsInfo.dvbSubtitleInfos));
+                }
+                return new PesReader(new H265Reader(buildSeiReader(paramEsInfo)));
+              }
+              if (isSet(4)) {
+                return null;
+              }
+              return new PesReader(new H264Reader(buildSeiReader(paramEsInfo), isSet(1), isSet(8)));
+            }
+            return new PesReader(new Id3Reader());
+          }
+          if (isSet(2)) {
+            return null;
+          }
           return new PesReader(new LatmReader(paramEsInfo.language));
-          return new PesReader(new Ac3Reader(paramEsInfo.language));
-          return new PesReader(new DtsReader(paramEsInfo.language));
-          return new PesReader(new H262Reader());
-        } while (isSet(4));
-        return new PesReader(new H264Reader(buildSeiReader(paramEsInfo), isSet(1), isSet(8)));
-        return new PesReader(new H265Reader(buildSeiReader(paramEsInfo)));
-      } while (isSet(16));
-      return new SectionReader(new SpliceInfoSectionReader());
-    case 21: 
-      return new PesReader(new Id3Reader());
+        }
+        if (isSet(2)) {
+          return null;
+        }
+        return new PesReader(new AdtsReader(false, paramEsInfo.language));
+      }
+      return new PesReader(new MpegAudioReader(paramEsInfo.language));
     }
-    return new PesReader(new DvbSubtitleReader(paramEsInfo.dvbSubtitleInfos));
+    return new PesReader(new H262Reader());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.DefaultTsPayloadReaderFactory
  * JD-Core Version:    0.7.0.1
  */

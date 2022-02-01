@@ -41,14 +41,15 @@ public final class QmfClientIpInfo
     paramJceOutputStream.write(this.IpType, 0);
     paramJceOutputStream.write(this.ClientPort, 1);
     paramJceOutputStream.write(this.ClientIpv4, 2);
-    if (this.ClientIpv6 != null) {
-      paramJceOutputStream.write(this.ClientIpv6, 3);
+    byte[] arrayOfByte = this.ClientIpv6;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QMF_PROTOCAL.QmfClientIpInfo
  * JD-Core Version:    0.7.0.1
  */

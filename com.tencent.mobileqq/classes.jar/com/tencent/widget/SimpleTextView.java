@@ -21,15 +21,15 @@ public class SimpleTextView
   extends View
   implements ISkinTypeface
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private final TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 17;
+  private int mCurTextColor;
+  private int mGravity = 17;
+  private boolean mNeedCompute;
+  private CharSequence mText = "";
+  private Rect mTextBounds;
+  private ColorStateList mTextColor;
+  private final TextPaint mTextPaint;
+  private float mX;
+  private float mY;
   
   public SimpleTextView(Context paramContext)
   {
@@ -45,172 +45,148 @@ public class SimpleTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = getResources();
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.density = paramContext.getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
+    this.mTextPaint = new TextPaint(1);
+    this.mTextPaint.density = paramContext.getDisplayMetrics().density;
+    this.mTextBounds = new Rect();
+    this.mNeedCompute = true;
+    this.mTextPaint.setTypeface(Typeface.SANS_SERIF);
   }
   
-  private void a()
+  private void setRawTextSize(float paramFloat)
   {
-    int i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getDrawableState(), 0);
-    if (i != this.jdField_a_of_type_Int)
+    if (paramFloat != this.mTextPaint.getTextSize())
     {
-      this.jdField_a_of_type_Int = i;
+      this.mTextPaint.setTextSize(paramFloat);
+      this.mNeedCompute = true;
       invalidate();
     }
   }
   
-  private void a(float paramFloat)
+  private void updateTextColors()
   {
-    if (paramFloat != this.jdField_a_of_type_AndroidTextTextPaint.getTextSize())
+    int i = this.mTextColor.getColorForState(getDrawableState(), 0);
+    if (i != this.mCurTextColor)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-      this.jdField_a_of_type_Boolean = true;
+      this.mCurTextColor = i;
       invalidate();
     }
-  }
-  
-  public final CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public Paint getPaint()
   {
-    return this.jdField_a_of_type_AndroidTextTextPaint;
+    return this.mTextPaint;
+  }
+  
+  public final CharSequence getText()
+  {
+    return this.mText;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    String str = this.jdField_a_of_type_JavaLangCharSequence.toString();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(i);
-    this.jdField_a_of_type_AndroidTextTextPaint.drawableState = getDrawableState();
+    String str = this.mText.toString();
+    int i = this.mCurTextColor;
+    this.mTextPaint.setColor(i);
+    this.mTextPaint.drawableState = getDrawableState();
     paramCanvas.save();
     paramCanvas.translate(getScrollX(), getScrollY());
-    float f1;
-    int m;
-    int n;
-    int j;
-    int i1;
-    int k;
-    int i2;
-    float f2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mNeedCompute)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(str, 0, str.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      f1 = Layout.getDesiredWidth(str, this.jdField_a_of_type_AndroidTextTextPaint);
-      m = getPaddingLeft();
-      n = getPaddingRight();
+      this.mTextPaint.getTextBounds(str, 0, str.length(), this.mTextBounds);
+      float f = Layout.getDesiredWidth(str, this.mTextPaint);
+      int m = getPaddingLeft();
+      int n = getPaddingRight();
       i = getPaddingTop();
-      j = getPaddingBottom();
-      i1 = getWidth();
-      k = getHeight();
-      i2 = this.jdField_b_of_type_Int & 0x7;
-      this.jdField_a_of_type_Float = m;
-      if (i2 != 1) {
-        break label284;
+      int j = getPaddingBottom();
+      int i1 = getWidth();
+      int k = getHeight();
+      int i2 = this.mGravity & 0x7;
+      this.mX = m;
+      if (i2 == 1) {
+        this.mX += (i1 - m - n - f) / 2.0F;
+      } else if (i2 == 5) {
+        this.mX += i1 - m - n - f;
       }
-      f2 = this.jdField_a_of_type_Float;
-      this.jdField_a_of_type_Float = ((i1 - m - n - f1) / 2.0F + f2);
-      m = this.jdField_b_of_type_Int & 0x70;
-      Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
+      m = this.mGravity & 0x70;
+      Paint.FontMetricsInt localFontMetricsInt = this.mTextPaint.getFontMetricsInt();
       n = localFontMetricsInt.descent - localFontMetricsInt.ascent;
-      this.jdField_b_of_type_Float = (n - localFontMetricsInt.descent + i);
-      if (m != 16) {
-        break label315;
+      this.mY = (n - localFontMetricsInt.descent + i);
+      if (m == 16) {
+        this.mY += (k - j - i - n) / 2;
+      } else if (m == 80) {
+        this.mY += k - j - i - n;
       }
-      this.jdField_b_of_type_Float += (k - j - i - n) / 2;
+      this.mNeedCompute = false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      paramCanvas.drawText(str, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.restore();
-      return;
-      label284:
-      if (i2 != 5) {
-        break;
-      }
-      f2 = this.jdField_a_of_type_Float;
-      this.jdField_a_of_type_Float = (i1 - m - n - f1 + f2);
-      break;
-      label315:
-      if (m == 80) {
-        this.jdField_b_of_type_Float += k - j - i - n;
-      }
-    }
+    paramCanvas.drawText(str, this.mX, this.mY, this.mTextPaint);
+    paramCanvas.restore();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int k = getMeasuredWidth();
-    int m = getMeasuredHeight();
-    int i1 = View.MeasureSpec.getMode(paramInt1);
-    int n = View.MeasureSpec.getMode(paramInt2);
-    int i = View.MeasureSpec.getSize(paramInt1);
+    int j = getMeasuredWidth();
+    int k = getMeasuredHeight();
+    int n = View.MeasureSpec.getMode(paramInt1);
+    int m = View.MeasureSpec.getMode(paramInt2);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    if (i1 == 1073741824)
+    int i;
+    if (n != 1073741824)
     {
-      paramInt1 = i;
-      if (n != 1073741824) {
-        break label122;
+      i = (int)Math.ceil(Layout.getDesiredWidth(this.mText, this.mTextPaint)) + (getPaddingLeft() + getPaddingRight());
+      if (n == -2147483648) {
+        paramInt1 = Math.min(paramInt1, i);
+      } else {
+        paramInt1 = i;
       }
     }
-    for (;;)
+    if (m != 1073741824)
     {
-      setMeasuredDimension(paramInt1, paramInt2);
-      if ((m != paramInt2) || (k != paramInt1)) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-      int j = (int)Math.ceil(Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint)) + (getPaddingLeft() + getPaddingRight());
-      paramInt1 = j;
-      if (i1 != -2147483648) {
-        break;
-      }
-      paramInt1 = Math.min(i, j);
-      break;
-      label122:
-      i = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt(null) + (getPaddingTop() + getPaddingBottom());
-      if (n == -2147483648) {
+      i = this.mTextPaint.getFontMetricsInt(null) + (getPaddingTop() + getPaddingBottom());
+      if (m == -2147483648) {
         paramInt2 = Math.min(paramInt2, i);
       } else {
         paramInt2 = i;
       }
     }
+    setMeasuredDimension(paramInt1, paramInt2);
+    if ((k != paramInt2) || (j != paramInt1)) {
+      this.mNeedCompute = true;
+    }
   }
   
   public void setGravity(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.mGravity != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Boolean = true;
+      this.mGravity = paramInt;
+      this.mNeedCompute = true;
       invalidate();
     }
   }
   
   public final void setText(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence == paramCharSequence) || ((paramCharSequence == null) && ("".equals(this.jdField_a_of_type_JavaLangCharSequence)))) {
-      return;
+    CharSequence localCharSequence = this.mText;
+    if (localCharSequence != paramCharSequence)
+    {
+      if ((paramCharSequence == null) && ("".equals(localCharSequence))) {
+        return;
+      }
+      this.mText = paramCharSequence;
+      if (this.mText == null) {
+        this.mText = "";
+      }
+      requestLayout();
+      invalidate();
     }
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = "";
-    }
-    requestLayout();
-    invalidate();
   }
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(paramInt);
-    a();
+    this.mTextColor = ColorStateList.valueOf(paramInt);
+    updateTextColors();
   }
   
   public void setTextSize(float paramFloat)
@@ -221,17 +197,17 @@ public class SimpleTextView
   public void setTextSize(int paramInt, float paramFloat)
   {
     Object localObject = getContext();
-    if (localObject == null) {}
-    for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
-    {
-      a(TypedValue.applyDimension(paramInt, paramFloat, ((Resources)localObject).getDisplayMetrics()));
-      return;
+    if (localObject == null) {
+      localObject = Resources.getSystem();
+    } else {
+      localObject = ((Context)localObject).getResources();
     }
+    setRawTextSize(TypedValue.applyDimension(paramInt, paramFloat, ((Resources)localObject).getDisplayMetrics()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

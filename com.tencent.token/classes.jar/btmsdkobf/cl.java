@@ -11,7 +11,7 @@ public abstract class cl
   
   public abstract void a(String paramString, boolean paramBoolean);
   
-  public void a(HashMap paramHashMap) {}
+  public void a(HashMap<String, String> paramHashMap) {}
   
   public abstract cs.b aA();
   
@@ -79,7 +79,7 @@ public abstract class cl
   
   public abstract void b(v paramv);
   
-  public abstract void b(String paramString, long paramLong, List paramList);
+  public abstract void b(String paramString, long paramLong, List<String> paramList);
   
   public abstract void b(String paramString, boolean paramBoolean);
   

@@ -5,12 +5,6 @@ import java.util.Arrays;
 
 public class Zstd
 {
-  public static native int blockSizeMax();
-  
-  public static native int chainLogMax();
-  
-  public static native int chainLogMin();
-  
   public static int compress(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, int paramInt)
   {
     if (!paramByteBuffer2.isDirect()) {
@@ -362,27 +356,9 @@ public class Zstd
   
   public static native long decompressedSize(byte[] paramArrayOfByte);
   
-  public static native int frameHeaderSizeMax();
-  
-  public static native int frameHeaderSizeMin();
-  
   public static native String getErrorName(long paramLong);
   
-  public static native int hashLogMax();
-  
-  public static native int hashLogMin();
-  
   public static native boolean isError(long paramLong);
-  
-  public static native int magicNumber();
-  
-  public static native int searchLengthMax();
-  
-  public static native int searchLengthMin();
-  
-  public static native int searchLogMax();
-  
-  public static native int searchLogMin();
   
   public static long trainFromBuffer(byte[][] paramArrayOfByte, byte[] paramArrayOfByte1)
   {
@@ -397,14 +373,10 @@ public class Zstd
   }
   
   public static native long trainFromBufferDirect(ByteBuffer paramByteBuffer1, int[] paramArrayOfInt, ByteBuffer paramByteBuffer2, boolean paramBoolean);
-  
-  public static native int windowLogMax();
-  
-  public static native int windowLogMin();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.zstd.Zstd
  * JD-Core Version:    0.7.0.1
  */

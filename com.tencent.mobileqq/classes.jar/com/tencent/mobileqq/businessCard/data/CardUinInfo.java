@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aoaa;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,58 +14,59 @@ import org.json.JSONException;
 public class CardUinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardUinInfo> CREATOR = new aoaa();
+  public static final Parcelable.Creator<CardUinInfo> CREATOR = new CardUinInfo.1();
   public String a;
-  public boolean a;
   public boolean b;
+  public boolean c;
   
   public CardUinInfo() {}
   
   public CardUinInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
+    this.a = paramParcel.readString();
+    int i = paramParcel.readByte();
+    boolean bool2 = true;
+    boolean bool1;
+    if (i != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label48;
-      }
-    }
-    label48:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.b = bool1;
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.b = bool1;
+    if (paramParcel.readByte() != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.c = bool1;
   }
   
   public static String a(List<CardUinInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
-    }
-    localJSONArray1 = new JSONArray();
-    try
+    JSONArray localJSONArray1;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localJSONArray1 = new JSONArray();
+      try
       {
-        CardUinInfo localCardUinInfo = (CardUinInfo)paramList.next();
-        JSONArray localJSONArray2 = new JSONArray();
-        localJSONArray2.put(0, localCardUinInfo.jdField_a_of_type_JavaLangString);
-        localJSONArray2.put(1, localCardUinInfo.jdField_a_of_type_Boolean);
-        localJSONArray2.put(2, localCardUinInfo.b);
-        localJSONArray1.put(localJSONArray2);
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          CardUinInfo localCardUinInfo = (CardUinInfo)paramList.next();
+          JSONArray localJSONArray2 = new JSONArray();
+          localJSONArray2.put(0, localCardUinInfo.a);
+          localJSONArray2.put(1, localCardUinInfo.b);
+          localJSONArray2.put(2, localCardUinInfo.c);
+          localJSONArray1.put(localJSONArray2);
+        }
+        return localJSONArray1.toString();
       }
-      return localJSONArray1.toString();
+      catch (JSONException paramList)
+      {
+        paramList.printStackTrace();
+      }
     }
-    catch (JSONException paramList)
-    {
-      paramList.printStackTrace();
-    }
+    return "";
   }
   
   public static List<CardUinInfo> a(String paramString)
@@ -84,9 +84,9 @@ public class CardUinInfo
       {
         JSONArray localJSONArray = (JSONArray)paramString.get(i);
         CardUinInfo localCardUinInfo = new CardUinInfo();
-        localCardUinInfo.jdField_a_of_type_JavaLangString = localJSONArray.getString(0);
-        localCardUinInfo.jdField_a_of_type_Boolean = localJSONArray.getBoolean(1);
-        localCardUinInfo.b = localJSONArray.getBoolean(2);
+        localCardUinInfo.a = localJSONArray.getString(0);
+        localCardUinInfo.b = localJSONArray.getBoolean(1);
+        localCardUinInfo.c = localJSONArray.getBoolean(2);
         localArrayList.add(localCardUinInfo);
         i += 1;
       }
@@ -108,34 +108,27 @@ public class CardUinInfo
   
   public String toString()
   {
-    return "CardUinInfo{uin='" + this.jdField_a_of_type_JavaLangString + ", isFriend='" + this.jdField_a_of_type_Boolean + ", isSearchable=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CardUinInfo{uin='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", isFriend='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", isSearchable=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.b) {
-        break label46;
-      }
-    }
-    label46:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeString(this.a);
+    paramParcel.writeByte((byte)this.b);
+    paramParcel.writeByte((byte)this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardUinInfo
  * JD-Core Version:    0.7.0.1
  */

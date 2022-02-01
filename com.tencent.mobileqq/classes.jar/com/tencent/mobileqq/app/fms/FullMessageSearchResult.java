@@ -6,56 +6,53 @@ import java.util.List;
 
 public class FullMessageSearchResult
 {
-  public int a;
   public List<FullMessageSearchResult.SearchResultItem> a;
-  
-  public FullMessageSearchResult()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int b = 0;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("FullMessageSearchResult:");
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    Object localObject = this.a;
+    if (localObject == null)
     {
       localStringBuilder.append("null");
       return localStringBuilder.toString();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (localIterator.hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      FullMessageSearchResult.SearchResultItem localSearchResultItem = (FullMessageSearchResult.SearchResultItem)localIterator.next();
+      FullMessageSearchResult.SearchResultItem localSearchResultItem = (FullMessageSearchResult.SearchResultItem)((Iterator)localObject).next();
       localStringBuilder.append("(");
       localStringBuilder.append(localSearchResultItem.user.uin);
       localStringBuilder.append(",");
-      if (localSearchResultItem.secondPageList == null)
-      {
+      List localList = localSearchResultItem.secondPageList;
+      int j = 0;
+      int i;
+      if (localList == null) {
         i = 0;
-        label96:
-        localStringBuilder.append(i);
-        localStringBuilder.append(",");
-        if (localSearchResultItem.secondPageMessageUniseq != null) {
-          break label149;
-        }
-      }
-      label149:
-      for (int i = 0;; i = localSearchResultItem.secondPageMessageUniseq.size())
-      {
-        localStringBuilder.append(i);
-        localStringBuilder.append(")");
-        break;
+      } else {
         i = localSearchResultItem.secondPageList.size();
-        break label96;
       }
+      localStringBuilder.append(i);
+      localStringBuilder.append(",");
+      if (localSearchResultItem.secondPageMessageUniseq == null) {
+        i = j;
+      } else {
+        i = localSearchResultItem.secondPageMessageUniseq.size();
+      }
+      localStringBuilder.append(i);
+      localStringBuilder.append(")");
     }
-    localStringBuilder.append(" searchFinFlag=" + this.jdField_a_of_type_Int);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" searchFinFlag=");
+    ((StringBuilder)localObject).append(this.b);
+    localStringBuilder.append(((StringBuilder)localObject).toString());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.FullMessageSearchResult
  * JD-Core Version:    0.7.0.1
  */

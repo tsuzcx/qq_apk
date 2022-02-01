@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -24,7 +25,15 @@ public class QCircleFollowTagListRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudRead.StGetFollowTagListRsp localStGetFollowTagListRsp = new FeedCloudRead.StGetFollowTagListRsp();
-    localStGetFollowTagListRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetFollowTagListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetFollowTagListRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetFollowTagListRsp;
   }
   
@@ -33,14 +42,14 @@ public class QCircleFollowTagListRequest
     return "FeedCloudSvr.trpc.feedcloud.commreader.ComReader.GetFollowTagList";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mRequest.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleFollowTagListRequest
  * JD-Core Version:    0.7.0.1
  */

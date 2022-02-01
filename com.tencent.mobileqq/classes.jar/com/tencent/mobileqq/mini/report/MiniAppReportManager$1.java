@@ -16,8 +16,12 @@ final class MiniAppReportManager$1
   
   public void onActivityPaused(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppReportManager", 2, "onActivityPaused " + paramActivity.getClass().getSimpleName());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPaused ");
+      localStringBuilder.append(paramActivity.getClass().getSimpleName());
+      QLog.i("MiniAppReportManager", 2, localStringBuilder.toString());
     }
     if ((paramActivity instanceof MiniChatActivity)) {
       MiniAppReportManager.access$000(true);
@@ -26,8 +30,12 @@ final class MiniAppReportManager$1
   
   public void onActivityResumed(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppReportManager", 2, "onActivityResumed " + paramActivity.getClass().getSimpleName());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResumed ");
+      localStringBuilder.append(paramActivity.getClass().getSimpleName());
+      QLog.i("MiniAppReportManager", 2, localStringBuilder.toString());
     }
     if (((paramActivity instanceof MiniChatActivity)) || ((paramActivity instanceof PublicTransFragmentActivity))) {
       MiniAppReportManager.access$000(false);
@@ -40,8 +48,12 @@ final class MiniAppReportManager$1
   
   public void onActivityStopped(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppReportManager", 2, "onActivityStopped " + paramActivity.getClass().getSimpleName());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityStopped ");
+      localStringBuilder.append(paramActivity.getClass().getSimpleName());
+      QLog.i("MiniAppReportManager", 2, localStringBuilder.toString());
     }
     if ((paramActivity instanceof PublicTransFragmentActivity)) {
       MiniAppReportManager.access$000(true);
@@ -50,7 +62,7 @@ final class MiniAppReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager.1
  * JD-Core Version:    0.7.0.1
  */

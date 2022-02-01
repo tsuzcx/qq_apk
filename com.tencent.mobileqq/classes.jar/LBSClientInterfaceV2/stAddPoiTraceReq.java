@@ -31,14 +31,15 @@ public final class stAddPoiTraceReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.strPoiId, 0);
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 1);
+    stGPS localstGPS = this.stGps;
+    if (localstGPS != null) {
+      paramJceOutputStream.write(localstGPS, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSClientInterfaceV2.stAddPoiTraceReq
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ import android.text.Selection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import cji;
 import cjj;
 import cjk;
 import cjl;
 import cjm;
-import cjn;
-import cjq;
+import cjp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.widget.ClearableEditText;
@@ -50,22 +50,22 @@ public class EditInfoActivity
     this.jdField_b_of_type_JavaLangString = "0/0";
     this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new cjj(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cjq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cji(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cjp(this);
   }
   
   private void a(EditText paramEditText)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231628));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231627));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    paramEditText.addTextChangedListener(new cjn(this));
+    paramEditText.addTextChangedListener(new cjm(this));
   }
   
   private void e()
   {
     setContentView(2130903210);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131231627));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTextClearedListener(new cjm(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131231626));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTextClearedListener(new cjl(this));
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(this.jdField_a_of_type_JavaLangString);
@@ -93,7 +93,7 @@ public class EditInfoActivity
   private void f()
   {
     setContentView(2130903209);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231627));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231626));
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
@@ -160,7 +160,7 @@ public class EditInfoActivity
     for (;;)
     {
       setTitle(this.e);
-      b(2131561977, new cjl(this));
+      b(2131561977, new cjk(this));
       d(true);
       return;
       e();
@@ -188,7 +188,7 @@ public class EditInfoActivity
     d();
     c();
     j(2130837729);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cjk(this), 500L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cjj(this), 500L);
     a(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
   }
   

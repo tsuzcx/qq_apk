@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/xd" style="@style/q1"
+<LinearLayout android:orientation="vertical" android:background="@drawable/azr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bs4" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:scaleType="fitXY" />
-    <TextView android:textColor="@color/a37" android:layout_gravity="center_horizontal" android:id="@id/bs5" android:paddingTop="@dimen/ng" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bz4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bz2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cv" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/d0">
+        <Button android:textColor="@color/ib" android:id="@id/apy" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/atw" style="@style/or" />
+        <Button android:id="@id/hls" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" android:text="@string/au4" style="@style/oi" />
+        <Button android:id="@id/amg" android:visibility="gone" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:text="@string/au4" style="@style/oh" />
+    </LinearLayout>
 </LinearLayout>

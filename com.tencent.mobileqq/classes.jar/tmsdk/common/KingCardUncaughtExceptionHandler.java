@@ -28,102 +28,100 @@ public class KingCardUncaughtExceptionHandler
   
   private boolean checkClazzFromSdk(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      arrayOfString = SDK_PACKAGES;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      String[] arrayOfString = SDK_PACKAGES;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         if (paramString.startsWith(arrayOfString[i])) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    int j = 1;
-    for (;;)
+    try
     {
-      try
-      {
-        localObject = paramThread.getName();
-        Log.d("KingCardUEH", "uncaughtException thread:" + paramThread.getName() + ", e:" + paramThrowable);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          if (!((String)localObject).equals(Looper.getMainLooper().getThread().getName())) {
-            continue;
-          }
-          localObject = paramThrowable.getStackTrace();
-          int k = localObject.length;
-          i = 0;
-          if (i >= k) {
-            continue;
-          }
-          if (!checkClazzFromSdk(localObject[i].getClassName())) {
-            continue;
-          }
-          i = j;
-          if (i != 0)
-          {
-            i = this.mDao.getInt("ks_e_ts", 0);
-            long l = this.mDao.getLong("ks_e_f_t", 0L);
-            if (l == 0L) {
-              this.mDao.edit().putLong("ks_e_f_t", System.currentTimeMillis()).commit();
-            }
-            localObject = this.mDao.edit();
-            i += 1;
-            ((SharedPreferences.Editor)localObject).putInt("ks_e_ts", i).commit();
-            if (i >= 5)
-            {
-              if ((System.currentTimeMillis() - l < TimeUnit.DAYS.toMillis(1L)) && (this.mCallback != null)) {
-                this.mCallback.onException();
-              }
-              this.mDao.edit().putInt("ks_e_ts", 0).apply();
-              this.mDao.edit().putLong("ks_e_f_t", 0L).commit();
-            }
-          }
-        }
+      localObject = paramThread.getName();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uncaughtException thread:");
+      localStringBuilder.append(paramThread.getName());
+      localStringBuilder.append(", e:");
+      localStringBuilder.append(paramThrowable);
+      Log.d("KingCardUEH", localStringBuilder.toString());
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label310;
       }
-      catch (Throwable localThrowable)
+      if (!((String)localObject).equals(Looper.getMainLooper().getThread().getName())) {
+        break label120;
+      }
+      localObject = paramThrowable.getStackTrace();
+      j = localObject.length;
+      i = 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
         Object localObject;
-        int i;
-        boolean bool;
+        int j;
+        label120:
+        long l;
+        label310:
         continue;
-      }
-      if (this.ueh != null) {
-        this.ueh.uncaughtException(paramThread, paramThrowable);
-      }
-      return;
-      i += 1;
-      continue;
-      bool = ((String)localObject).startsWith("kingcardsdk_");
-      i = j;
-      if (!bool) {
+        i += 1;
+        continue;
+        label343:
+        int i = 1;
+        continue;
+        label348:
         i = 0;
+      }
+    }
+    if (i < j) {
+      if (checkClazzFromSdk(localObject[i].getClassName()))
+      {
+        break label343;
+        if (!((String)localObject).startsWith("kingcardsdk_")) {
+          break label348;
+        }
+        break label343;
+        if (i != 0)
+        {
+          i = this.mDao.getInt("ks_e_ts", 0);
+          l = this.mDao.getLong("ks_e_f_t", 0L);
+          if (l == 0L) {
+            this.mDao.edit().putLong("ks_e_f_t", System.currentTimeMillis()).commit();
+          }
+          localObject = this.mDao.edit();
+          i += 1;
+          ((SharedPreferences.Editor)localObject).putInt("ks_e_ts", i).commit();
+          if (i >= 5)
+          {
+            if ((System.currentTimeMillis() - l < TimeUnit.DAYS.toMillis(1L)) && (this.mCallback != null)) {
+              this.mCallback.onException();
+            }
+            this.mDao.edit().putInt("ks_e_ts", 0).apply();
+            this.mDao.edit().putLong("ks_e_f_t", 0L).commit();
+          }
+        }
+        localObject = this.ueh;
+        if (localObject != null) {
+          ((Thread.UncaughtExceptionHandler)localObject).uncaughtException(paramThread, paramThrowable);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tmsdk.common.KingCardUncaughtExceptionHandler
  * JD-Core Version:    0.7.0.1
  */

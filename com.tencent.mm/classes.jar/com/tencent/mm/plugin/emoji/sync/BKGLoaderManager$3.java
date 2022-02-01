@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.emoji.sync;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cy;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.eb;
+import com.tencent.mm.sdk.event.IListener;
 
-final class BKGLoaderManager$3
-  extends c<cy>
+class BKGLoaderManager$3
+  extends IListener<eb>
 {
-  BKGLoaderManager$3(BKGLoaderManager paramBKGLoaderManager)
+  BKGLoaderManager$3(c paramc, q paramq)
   {
-    AppMethodBeat.i(53183);
-    this.__eventId = cy.class.getName().hashCode();
-    AppMethodBeat.o(53183);
+    super(paramq);
+    AppMethodBeat.i(269783);
+    this.__eventId = eb.class.getName().hashCode();
+    AppMethodBeat.o(269783);
   }
 }
 

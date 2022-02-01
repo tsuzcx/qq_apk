@@ -67,18 +67,10 @@ public final class LoggerFactory
       SUBST_FACTORY.clear();
       return;
     }
-    catch (NoClassDefFoundError localNoClassDefFoundError)
+    catch (Exception localException)
     {
-      if (messageContainsOrgSlf4jImplStaticLoggerBinder(localNoClassDefFoundError.getMessage()))
-      {
-        INITIALIZATION_STATE = 4;
-        Util.report("Failed to load class \"org.slf4j.impl.StaticLoggerBinder\".");
-        Util.report("Defaulting to no-operation (NOP) logger implementation");
-        Util.report("See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.");
-        return;
-      }
-      failedBinding(localNoClassDefFoundError);
-      throw localNoClassDefFoundError;
+      failedBinding(localException);
+      throw new IllegalStateException("Unexpected initialization failure", localException);
     }
     catch (NoSuchMethodError localNoSuchMethodError)
     {
@@ -92,19 +84,29 @@ public final class LoggerFactory
       }
       throw localNoSuchMethodError;
     }
-    catch (Exception localException)
+    catch (NoClassDefFoundError localNoClassDefFoundError)
     {
-      failedBinding(localException);
-      throw new IllegalStateException("Unexpected initialization failure", localException);
+      if (messageContainsOrgSlf4jImplStaticLoggerBinder(localNoClassDefFoundError.getMessage()))
+      {
+        INITIALIZATION_STATE = 4;
+        Util.report("Failed to load class \"org.slf4j.impl.StaticLoggerBinder\".");
+        Util.report("Defaulting to no-operation (NOP) logger implementation");
+        Util.report("See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.");
+        return;
+      }
+      failedBinding(localNoClassDefFoundError);
+      throw localNoClassDefFoundError;
     }
   }
   
   private static void emitReplayOrSubstituionWarning(SubstituteLoggingEvent paramSubstituteLoggingEvent, int paramInt)
   {
-    if (paramSubstituteLoggingEvent.getLogger().isDelegateEventAware()) {
+    if (paramSubstituteLoggingEvent.getLogger().isDelegateEventAware())
+    {
       emitReplayWarning(paramInt);
+      return;
     }
-    while (paramSubstituteLoggingEvent.getLogger().isDelegateNOP()) {
+    if (paramSubstituteLoggingEvent.getLogger().isDelegateNOP()) {
       return;
     }
     emitSubstitutionWarning();
@@ -112,7 +114,11 @@ public final class LoggerFactory
   
   private static void emitReplayWarning(int paramInt)
   {
-    Util.report("A number (" + paramInt + ") of logging calls during the initialization phase have been intercepted and are");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("A number (");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(") of logging calls during the initialization phase have been intercepted and are");
+    Util.report(localStringBuilder.toString());
     Util.report("now being replayed. These are subject to the filtering rules of the underlying logging system.");
     Util.report("See also http://www.slf4j.org/codes.html#replay");
   }
@@ -134,28 +140,23 @@ public final class LoggerFactory
   
   static Set<URL> findPossibleStaticLoggerBinderPathSet()
   {
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-    for (;;)
+    localLinkedHashSet = new LinkedHashSet();
+    try
     {
-      try
-      {
-        Object localObject = LoggerFactory.class.getClassLoader();
-        if (localObject == null)
-        {
-          localObject = ClassLoader.getSystemResources(STATIC_LOGGER_BINDER_PATH);
-          if (((Enumeration)localObject).hasMoreElements())
-          {
-            localLinkedHashSet.add((URL)((Enumeration)localObject).nextElement());
-            continue;
-          }
-          return localLinkedHashSet;
-        }
+      Object localObject = LoggerFactory.class.getClassLoader();
+      if (localObject == null) {
+        localObject = ClassLoader.getSystemResources(STATIC_LOGGER_BINDER_PATH);
+      } else {
+        localObject = ((ClassLoader)localObject).getResources(STATIC_LOGGER_BINDER_PATH);
       }
-      catch (IOException localIOException)
-      {
-        Util.report("Error getting resources from path", localIOException);
+      while (((Enumeration)localObject).hasMoreElements()) {
+        localLinkedHashSet.add((URL)((Enumeration)localObject).nextElement());
       }
-      Enumeration localEnumeration = localIOException.getResources(STATIC_LOGGER_BINDER_PATH);
+      return localLinkedHashSet;
+    }
+    catch (IOException localIOException)
+    {
+      Util.report("Error getting resources from path", localIOException);
     }
   }
   
@@ -165,34 +166,48 @@ public final class LoggerFactory
     {
       SUBST_FACTORY.postInitialization();
       Iterator localIterator = SUBST_FACTORY.getLoggers().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         SubstituteLogger localSubstituteLogger = (SubstituteLogger)localIterator.next();
         localSubstituteLogger.setDelegate(getLogger(localSubstituteLogger.getName()));
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   public static ILoggerFactory getILoggerFactory()
   {
-    if (INITIALIZATION_STATE == 0) {}
-    try
-    {
-      if (INITIALIZATION_STATE == 0)
+    if (INITIALIZATION_STATE == 0) {
+      try
       {
-        INITIALIZATION_STATE = 1;
-        performInitialization();
+        if (INITIALIZATION_STATE == 0)
+        {
+          INITIALIZATION_STATE = 1;
+          performInitialization();
+        }
       }
-      switch (INITIALIZATION_STATE)
-      {
-      default: 
-        throw new IllegalStateException("Unreachable code");
-      }
+      finally {}
     }
-    finally {}
-    return StaticLoggerBinder.getSingleton().getLoggerFactory();
-    return NOP_FALLBACK_FACTORY;
-    throw new IllegalStateException("org.slf4j.LoggerFactory in failed state. Original exception was thrown EARLIER. See also http://www.slf4j.org/codes.html#unsuccessfulInit");
+    int i = INITIALIZATION_STATE;
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i == 4) {
+            return NOP_FALLBACK_FACTORY;
+          }
+          throw new IllegalStateException("Unreachable code");
+        }
+        return StaticLoggerBinder.getSingleton().getLoggerFactory();
+      }
+      throw new IllegalStateException("org.slf4j.LoggerFactory in failed state. Original exception was thrown EARLIER. See also http://www.slf4j.org/codes.html#unsuccessfulInit");
+    }
     return SUBST_FACTORY;
   }
   
@@ -232,20 +247,18 @@ public final class LoggerFactory
   
   private static boolean messageContainsOrgSlf4jImplStaticLoggerBinder(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      if (paramString.contains("org/slf4j/impl/StaticLoggerBinder")) {
-        return true;
-      }
-    } while (!paramString.contains("org.slf4j.impl.StaticLoggerBinder"));
-    return true;
+    }
+    if (paramString.contains("org/slf4j/impl/StaticLoggerBinder")) {
+      return true;
+    }
+    return paramString.contains("org.slf4j.impl.StaticLoggerBinder");
   }
   
   private static boolean nonMatchingClasses(Class<?> paramClass1, Class<?> paramClass2)
   {
-    return !paramClass2.isAssignableFrom(paramClass1);
+    return paramClass2.isAssignableFrom(paramClass1) ^ true;
   }
   
   private static final void performInitialization()
@@ -260,8 +273,8 @@ public final class LoggerFactory
   {
     LinkedBlockingQueue localLinkedBlockingQueue = SUBST_FACTORY.getEventQueue();
     int j = localLinkedBlockingQueue.size();
-    int i = 0;
     ArrayList localArrayList = new ArrayList(128);
+    int i = 0;
     for (;;)
     {
       if (localLinkedBlockingQueue.drainTo(localArrayList, 128) == 0) {
@@ -283,30 +296,36 @@ public final class LoggerFactory
   
   private static void replaySingleEvent(SubstituteLoggingEvent paramSubstituteLoggingEvent)
   {
-    if (paramSubstituteLoggingEvent == null) {}
-    SubstituteLogger localSubstituteLogger;
-    String str;
-    do
-    {
-      return;
-      localSubstituteLogger = paramSubstituteLoggingEvent.getLogger();
-      str = localSubstituteLogger.getName();
-      if (localSubstituteLogger.isDelegateNull()) {
-        throw new IllegalStateException("Delegate logger cannot be null at this state.");
-      }
-    } while (localSubstituteLogger.isDelegateNOP());
-    if (localSubstituteLogger.isDelegateEventAware())
-    {
-      localSubstituteLogger.log(paramSubstituteLoggingEvent);
+    if (paramSubstituteLoggingEvent == null) {
       return;
     }
-    Util.report(str);
+    SubstituteLogger localSubstituteLogger = paramSubstituteLoggingEvent.getLogger();
+    String str = localSubstituteLogger.getName();
+    if (!localSubstituteLogger.isDelegateNull())
+    {
+      if (localSubstituteLogger.isDelegateNOP()) {
+        return;
+      }
+      if (localSubstituteLogger.isDelegateEventAware())
+      {
+        localSubstituteLogger.log(paramSubstituteLoggingEvent);
+        return;
+      }
+      Util.report(str);
+      return;
+    }
+    throw new IllegalStateException("Delegate logger cannot be null at this state.");
   }
   
   private static void reportActualBinding(Set<URL> paramSet)
   {
-    if ((paramSet != null) && (isAmbiguousStaticLoggerBinderPathSet(paramSet))) {
-      Util.report("Actual binding is of type [" + StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr() + "]");
+    if ((paramSet != null) && (isAmbiguousStaticLoggerBinderPathSet(paramSet)))
+    {
+      paramSet = new StringBuilder();
+      paramSet.append("Actual binding is of type [");
+      paramSet.append(StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr());
+      paramSet.append("]");
+      Util.report(paramSet.toString());
     }
   }
   
@@ -319,7 +338,11 @@ public final class LoggerFactory
       while (paramSet.hasNext())
       {
         URL localURL = (URL)paramSet.next();
-        Util.report("Found binding in [" + localURL + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Found binding in [");
+        localStringBuilder.append(localURL);
+        localStringBuilder.append("]");
+        Util.report(localStringBuilder.toString());
       }
       Util.report("See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.");
     }
@@ -332,29 +355,31 @@ public final class LoggerFactory
   
   private static final void versionSanityCheck()
   {
-    int j = 0;
     for (;;)
     {
       int i;
       try
       {
         String str = StaticLoggerBinder.REQUESTED_API_VERSION;
-        String[] arrayOfString = API_COMPATIBILITY_LIST;
-        int k = arrayOfString.length;
+        Object localObject = API_COMPATIBILITY_LIST;
+        int k = localObject.length;
         i = 0;
+        int j = 0;
         if (i < k)
         {
-          if (str.startsWith(arrayOfString[i])) {
+          if (str.startsWith(localObject[i])) {
             j = 1;
           }
         }
-        else
+        else if (j == 0)
         {
-          if (j == 0)
-          {
-            Util.report("The requested version " + str + " by your slf4j binding is not compatible with " + Arrays.asList(API_COMPATIBILITY_LIST).toString());
-            Util.report("See http://www.slf4j.org/codes.html#version_mismatch for further details.");
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("The requested version ");
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(" by your slf4j binding is not compatible with ");
+          ((StringBuilder)localObject).append(Arrays.asList(API_COMPATIBILITY_LIST).toString());
+          Util.report(((StringBuilder)localObject).toString());
+          Util.report("See http://www.slf4j.org/codes.html#version_mismatch for further details.");
           return;
         }
       }
@@ -373,7 +398,7 @@ public final class LoggerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.LoggerFactory
  * JD-Core Version:    0.7.0.1
  */

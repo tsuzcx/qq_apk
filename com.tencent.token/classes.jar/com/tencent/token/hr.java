@@ -1,120 +1,132 @@
 package com.tencent.token;
 
-import okio.f;
-import okio.h;
-import okio.l;
-import okio.x;
-import okio.z;
+import android.content.Context;
+import android.support.v7.widget.ActionBarContextView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-final class hr
-  implements x
+public final class hr
+  extends ho
+  implements id.a
 {
-  private final l b = new l(this.a.d.a());
-  private boolean c;
+  private Context a;
+  private ActionBarContextView b;
+  private ho.a e;
+  private WeakReference<View> f;
+  private boolean g;
+  private boolean h;
+  private id i;
   
-  hr(ho paramho) {}
-  
-  public z a()
+  public hr(Context paramContext, ActionBarContextView paramActionBarContextView, ho.a parama, boolean paramBoolean)
   {
-    return this.b;
+    this.a = paramContext;
+    this.b = paramActionBarContextView;
+    this.e = parama;
+    paramContext = new id(paramActionBarContextView.getContext());
+    paramContext.e = 1;
+    this.i = paramContext;
+    this.i.a(this);
+    this.h = paramBoolean;
   }
   
-  public void a_(f paramf, long paramLong)
+  public final MenuInflater a()
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    return new ht(this.b.getContext());
+  }
+  
+  public final void a(int paramInt)
+  {
+    b(this.a.getString(paramInt));
+  }
+  
+  public final void a(View paramView)
+  {
+    this.b.setCustomView(paramView);
+    if (paramView != null) {
+      paramView = new WeakReference(paramView);
+    } else {
+      paramView = null;
     }
-    if (paramLong == 0L) {
+    this.f = paramView;
+  }
+  
+  public final void a(id paramid)
+  {
+    d();
+    this.b.a();
+  }
+  
+  public final void a(CharSequence paramCharSequence)
+  {
+    this.b.setSubtitle(paramCharSequence);
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    this.b.setTitleOptional(paramBoolean);
+  }
+  
+  public final boolean a(id paramid, MenuItem paramMenuItem)
+  {
+    return this.e.a(this, paramMenuItem);
+  }
+  
+  public final Menu b()
+  {
+    return this.i;
+  }
+  
+  public final void b(int paramInt)
+  {
+    a(this.a.getString(paramInt));
+  }
+  
+  public final void b(CharSequence paramCharSequence)
+  {
+    this.b.setTitle(paramCharSequence);
+  }
+  
+  public final void c()
+  {
+    if (this.g) {
       return;
     }
-    this.a.d.k(paramLong);
-    this.a.d.b("\r\n");
-    this.a.d.a_(paramf, paramLong);
-    this.a.d.b("\r\n");
+    this.g = true;
+    this.b.sendAccessibilityEvent(32);
+    this.e.a(this);
   }
   
-  /* Error */
-  public void close()
+  public final void d()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 42	com/tencent/token/hr:c	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: iconst_1
-    //   16: putfield 42	com/tencent/token/hr:c	Z
-    //   19: aload_0
-    //   20: getfield 16	com/tencent/token/hr:a	Lcom/tencent/token/ho;
-    //   23: getfield 27	com/tencent/token/ho:d	Lokio/h;
-    //   26: ldc 63
-    //   28: invokeinterface 58 2 0
-    //   33: pop
-    //   34: aload_0
-    //   35: getfield 16	com/tencent/token/hr:a	Lcom/tencent/token/ho;
-    //   38: aload_0
-    //   39: getfield 37	com/tencent/token/hr:b	Lokio/l;
-    //   42: invokevirtual 66	com/tencent/token/ho:a	(Lokio/l;)V
-    //   45: aload_0
-    //   46: getfield 16	com/tencent/token/hr:a	Lcom/tencent/token/ho;
-    //   49: iconst_3
-    //   50: putfield 70	com/tencent/token/ho:e	I
-    //   53: goto -42 -> 11
-    //   56: astore_2
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_2
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	hr
-    //   6	2	1	bool	boolean
-    //   56	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	56	finally
-    //   14	53	56	finally
+    this.e.b(this, this.i);
   }
   
-  /* Error */
-  public void flush()
+  public final CharSequence f()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 42	com/tencent/token/hr:c	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 16	com/tencent/token/hr:a	Lcom/tencent/token/ho;
-    //   18: getfield 27	com/tencent/token/ho:d	Lokio/h;
-    //   21: invokeinterface 73 1 0
-    //   26: goto -15 -> 11
-    //   29: astore_2
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_2
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	hr
-    //   6	2	1	bool	boolean
-    //   29	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	29	finally
-    //   14	26	29	finally
+    return this.b.getTitle();
+  }
+  
+  public final CharSequence g()
+  {
+    return this.b.getSubtitle();
+  }
+  
+  public final boolean h()
+  {
+    return this.b.g;
+  }
+  
+  public final View i()
+  {
+    WeakReference localWeakReference = this.f;
+    if (localWeakReference != null) {
+      return (View)localWeakReference.get();
+    }
+    return null;
   }
 }
 

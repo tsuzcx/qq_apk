@@ -13,21 +13,36 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if (paramIntent != null)
     {
-      return;
-      paramContext = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.w("MiniAppInterface", 2, "accountReceiver.onReceive broacast action=" + paramContext);
+      if (paramIntent.getAction() == null) {
+        return;
       }
-    } while ((!"com.tencent.process.exit".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext)) && (!"mqq.intent.action.LOGOUT".equals(paramContext)) && (!("mqq.intent.action.EXIT_" + MiniAppInterface.access$100(this.a).getPackageName()).equals(paramContext)));
-    this.a.exitProcess();
+      paramContext = paramIntent.getAction();
+      if (QLog.isColorLevel())
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("accountReceiver.onReceive broacast action=");
+        paramIntent.append(paramContext);
+        QLog.w("MiniAppInterface", 2, paramIntent.toString());
+      }
+      if ((!"com.tencent.process.exit".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext)) && (!"mqq.intent.action.LOGOUT".equals(paramContext)))
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("mqq.intent.action.EXIT_");
+        paramIntent.append(MiniAppInterface.access$100(this.a).getPackageName());
+        if (!paramIntent.toString().equals(paramContext)) {}
+      }
+      else
+      {
+        this.a.exitProcess();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.b
  * JD-Core Version:    0.7.0.1
  */

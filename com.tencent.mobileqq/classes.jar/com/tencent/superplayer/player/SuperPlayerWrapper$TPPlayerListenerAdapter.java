@@ -2,132 +2,222 @@ package com.tencent.superplayer.player;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.SuperPlayerMsg;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.utils.LogUtil;
-import com.tencent.superplayer.utils.Utils;
-import com.tencent.superplayer.vinfo.VInfoGetter.VInfoGetterListener;
+import com.tencent.superplayer.utils.TVideoUtil;
 import com.tencent.thumbplayer.api.ITPPlayer;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnCompletionListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnErrorListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnInfoListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnPreparedListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSeekCompleteListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoFrameOutListener;
-import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoSizeChangedListener;
-import com.tencent.thumbplayer.api.TPCaptureCallBack;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class SuperPlayerWrapper$TPPlayerListenerAdapter
-  implements VInfoGetter.VInfoGetterListener, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnVideoFrameOutListener, ITPPlayerListener.IOnVideoSizeChangedListener, TPCaptureCallBack
+  implements ListenerCombine.ITPPlayerCombine
 {
   private SuperPlayerWrapper.WrapperIdCaptureListener mCaptureListener;
+  private SuperPlayerListenerCallBack mWrapperCallback;
   
-  private SuperPlayerWrapper$TPPlayerListenerAdapter(SuperPlayerWrapper paramSuperPlayerWrapper) {}
+  SuperPlayerWrapper$TPPlayerListenerAdapter(SuperPlayerWrapper paramSuperPlayerWrapper, SuperPlayerListenerCallBack paramSuperPlayerListenerCallBack)
+  {
+    this.mWrapperCallback = paramSuperPlayerListenerCallBack;
+  }
+  
+  public void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
+  {
+    this.mWrapperCallback.onAudioFrameOutput(paramTPAudioFrameBuffer);
+  }
   
   public void onCaptureVideoFailed(int paramInt)
   {
-    if (this.mCaptureListener != null) {
-      this.mCaptureListener.onCaptureVideoFailed(paramInt);
+    SuperPlayerWrapper.WrapperIdCaptureListener localWrapperIdCaptureListener = this.mCaptureListener;
+    if (localWrapperIdCaptureListener != null) {
+      localWrapperIdCaptureListener.onCaptureVideoFailed(paramInt);
     }
   }
   
   public void onCaptureVideoSuccess(Bitmap paramBitmap)
   {
-    if (this.mCaptureListener != null) {
-      this.mCaptureListener.onCaptureVideoSuccess(paramBitmap);
+    SuperPlayerWrapper.WrapperIdCaptureListener localWrapperIdCaptureListener = this.mCaptureListener;
+    if (localWrapperIdCaptureListener != null) {
+      localWrapperIdCaptureListener.onCaptureVideoSuccess(paramBitmap);
     }
   }
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onCompletion");
-    SuperPlayerWrapper.access$300(this.this$0).changeStateAndNotify(7);
-    SuperPlayerWrapper.access$500(this.this$0).onCompletion(this.this$0);
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(7);
+    this.mWrapperCallback.onCompletion(this.this$0);
   }
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onError, errorType:" + paramInt1 + ", errorCode:" + paramInt2 + ", arg1:" + paramLong1 + ", arg2:" + paramLong2);
-    SuperPlayerWrapper.access$300(this.this$0).changeStateAndNotify(9);
-    SuperPlayerWrapper.access$500(this.this$0).onError(this.this$0, 1, paramInt1, paramInt2, paramLong1 + ":" + paramLong2);
+    ReportThumbPlayer.getInstance().onError(paramITPPlayer, paramInt1, paramInt2);
+    paramITPPlayer = SuperPlayerWrapper.access$100(this.this$0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("inner listener called : onError, errorType:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", errorCode:");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(", arg1:");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append(", arg2:");
+    ((StringBuilder)localObject).append(paramLong2);
+    LogUtil.e(paramITPPlayer, ((StringBuilder)localObject).toString());
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(9);
+    paramITPPlayer = this.mWrapperCallback;
+    localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramLong2);
+    paramITPPlayer.onError((ISuperPlayer)localObject, 1, paramInt1, paramInt2, localStringBuilder.toString());
   }
   
-  public void onGetVInfoFailed(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, int paramInt, String paramString)
+  public void onGetVInfoFailed(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, int paramInt1, int paramInt2, String paramString)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onGetVInfoFailed:" + paramInt + "+" + paramString);
-    if (SuperPlayerWrapper.access$500(this.this$0) != null) {
-      SuperPlayerWrapper.access$500(this.this$0).onError(this.this$0, 3, 0, paramInt, paramString);
+    paramSuperPlayerVideoInfo = SuperPlayerWrapper.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inner listener called : onGetVInfoFailed:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("+");
+    localStringBuilder.append(paramString);
+    LogUtil.e(paramSuperPlayerVideoInfo, localStringBuilder.toString());
+    if (SuperPlayerWrapper.access$400(this.this$0))
+    {
+      SuperPlayerWrapper.access$402(this.this$0, false);
+      return;
     }
-    SuperPlayerWrapper.access$300(this.this$0).changeStateAndNotify(9);
+    paramSuperPlayerVideoInfo = this.mWrapperCallback;
+    if (paramSuperPlayerVideoInfo != null) {
+      paramSuperPlayerVideoInfo.onError(this.this$0, 2, paramInt1, paramInt2, paramString);
+    }
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(9);
   }
   
   public void onGetVInfoSuccess(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onGetVInfoSuccess:" + paramSuperPlayerVideoInfo);
-    if (paramSuperPlayerVideoInfo == SuperPlayerWrapper.access$200(this.this$0))
+    Object localObject = SuperPlayerWrapper.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inner listener called : onGetVInfoSuccess:");
+    localStringBuilder.append(paramSuperPlayerVideoInfo);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = SuperPlayerWrapper.access$300(this.this$0);
+    if (localObject != null)
     {
-      if (TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) {
-        break label126;
+      if (paramSuperPlayerVideoInfo == null) {
+        return;
       }
-      SuperPlayerWrapper.access$300(this.this$0).changeStateAndNotify(2);
-      SuperPlayerWrapper.access$400(this.this$0, paramSuperPlayerVideoInfo);
-    }
-    for (;;)
-    {
-      if (SuperPlayerWrapper.access$500(this.this$0) != null)
+      if (SuperPlayerWrapper.access$400(this.this$0))
       {
-        SuperPlayerWrapper.access$500(this.this$0).onDefinitionInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinitionStr(), paramSuperPlayerVideoInfo.getTVideoNetInfo().getDefinitionStrList());
-        SuperPlayerWrapper.access$500(this.this$0).onTVideoNetInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo());
+        if (paramSuperPlayerVideoInfo.getFormat() == 303)
+        {
+          paramSuperPlayerVideoInfo = TVideoUtil.a(paramSuperPlayerVideoInfo);
+          if (paramSuperPlayerVideoInfo != null) {
+            SuperPlayerWrapper.access$700(this.this$0).switchDefinition(paramSuperPlayerVideoInfo, SuperPlayerWrapper.access$500(this.this$0).getAndIncrement(), null, SuperPlayerWrapper.access$600(this.this$0));
+          }
+        }
+        else
+        {
+          SuperPlayerWrapper.access$700(this.this$0).switchDefinition(paramSuperPlayerVideoInfo.getPlayUrl(), SuperPlayerWrapper.access$500(this.this$0).getAndIncrement(), null, SuperPlayerWrapper.access$600(this.this$0));
+        }
+        SuperPlayerWrapper.access$402(this.this$0, false);
+        return;
       }
-      return;
-      label126:
-      if (SuperPlayerWrapper.access$500(this.this$0) != null) {
-        SuperPlayerWrapper.access$500(this.this$0).onError(this.this$0, 3, 0, 101, null);
+      if ((TextUtils.equals(paramSuperPlayerVideoInfo.getVid(), ((SuperPlayerVideoInfo)localObject).getVid())) && (TextUtils.equals(paramSuperPlayerVideoInfo.getRequestDefinition(), ((SuperPlayerVideoInfo)localObject).getRequestDefinition()))) {
+        if ((TextUtils.isEmpty(paramSuperPlayerVideoInfo.getPlayUrl())) && (paramSuperPlayerVideoInfo.getTVideoSectionList() == null))
+        {
+          localObject = this.mWrapperCallback;
+          if (localObject != null) {
+            ((SuperPlayerListenerCallBack)localObject).onError(this.this$0, 2, 5000, 32000001, null);
+          }
+          SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(9);
+        }
+        else
+        {
+          SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(2);
+          localObject = this.this$0;
+          SuperPlayerWrapper.access$1000((SuperPlayerWrapper)localObject, paramSuperPlayerVideoInfo, SuperPlayerWrapper.access$900((SuperPlayerWrapper)localObject));
+        }
       }
-      SuperPlayerWrapper.access$300(this.this$0).changeStateAndNotify(9);
+      if ((this.mWrapperCallback != null) && (paramSuperPlayerVideoInfo.getTVideoNetInfo() != null))
+      {
+        this.mWrapperCallback.onDefinitionInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo().getCurrentDefinitionStr(), paramSuperPlayerVideoInfo.getTVideoNetInfo().getDefinitionStrList());
+        this.mWrapperCallback.onTVideoNetInfoUpdate(this.this$0, paramSuperPlayerVideoInfo.getTVideoNetInfo());
+      }
     }
   }
   
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onInfo, what:" + paramInt + ", arg1:" + paramLong1 + ", arg2:" + paramLong2);
-    paramInt = Utils.convertPlayerMsg(paramInt);
-    SuperPlayerWrapper.access$500(this.this$0).onInfo(this.this$0, paramInt, paramLong1, paramLong2, paramObject);
+    ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
+    if (SuperPlayerWrapper.access$1100(this.this$0, paramInt, paramLong1, paramLong2, paramObject)) {
+      return;
+    }
+    paramInt = SuperPlayerMsg.convert(paramInt);
+    paramITPPlayer = SuperPlayerWrapper.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inner listener called : onInfo, what:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", arg1:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", arg2:");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(", extraObject:");
+    localStringBuilder.append(paramObject);
+    LogUtil.i(paramITPPlayer, localStringBuilder.toString());
+    this.mWrapperCallback.onInfo(this.this$0, paramInt, paramLong1, paramLong2, paramObject);
   }
   
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onPrepared");
-    SuperPlayerWrapper.access$300(this.this$0).changeStateAndNotify(4);
-    SuperPlayerWrapper.access$500(this.this$0).onVideoPrepared(this.this$0);
+    SuperPlayerWrapper.access$800(this.this$0).changeStateAndNotify(4);
+    this.mWrapperCallback.onVideoPrepared(this.this$0);
   }
   
   public void onSeekComplete(ITPPlayer paramITPPlayer)
   {
     LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onSeekComplete");
-    SuperPlayerWrapper.access$500(this.this$0).onSeekComplete(this.this$0);
+    this.mWrapperCallback.onSeekComplete(this.this$0);
+  }
+  
+  public void onSubtitleData(ITPPlayer paramITPPlayer, TPSubtitleData paramTPSubtitleData)
+  {
+    this.mWrapperCallback.onSubtitleData(this.this$0, paramTPSubtitleData);
   }
   
   public void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onVideoFrameOut");
+    this.mWrapperCallback.onVideoFrameOutput(paramTPVideoFrameBuffer);
   }
   
   public void onVideoSizeChanged(ITPPlayer paramITPPlayer, long paramLong1, long paramLong2)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onVideoSizeChanged, width:" + paramLong1 + ", height:" + paramLong2);
-    SuperPlayerWrapper.access$500(this.this$0).onVideoSizeChanged(this.this$0, (int)paramLong1, (int)paramLong2);
+    paramITPPlayer = SuperPlayerWrapper.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inner listener called : onVideoSizeChanged, width:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(paramLong2);
+    LogUtil.i(paramITPPlayer, localStringBuilder.toString());
+    this.mWrapperCallback.onVideoSizeChanged(this.this$0, (int)paramLong1, (int)paramLong2);
   }
   
-  public void setCaptureListener(SuperPlayerWrapper.WrapperIdCaptureListener paramWrapperIdCaptureListener)
+  void setCaptureListener(SuperPlayerWrapper.WrapperIdCaptureListener paramWrapperIdCaptureListener)
   {
     this.mCaptureListener = paramWrapperIdCaptureListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerWrapper.TPPlayerListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

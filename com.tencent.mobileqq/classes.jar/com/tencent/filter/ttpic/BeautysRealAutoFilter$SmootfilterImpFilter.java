@@ -23,18 +23,23 @@ public class BeautysRealAutoFilter$SmootfilterImpFilter
     int i;
     if (f >= 1.0F)
     {
-      i = (int)Math.floor(Math.sqrt(-2.0D * Math.pow(f, 2.0D) * Math.log(0.0039063F * Math.sqrt(6.283185307179586D * Math.pow(f, 2.0D)))));
+      double d3 = f;
+      double d1 = Math.pow(d3, 2.0D);
+      double d2 = 0.0039063F;
+      d3 = Math.sqrt(Math.pow(d3, 2.0D) * 6.283185307179586D);
+      Double.isNaN(d2);
+      i = (int)Math.floor(Math.sqrt(d1 * -2.0D * Math.log(d2 * d3)));
       i += i % 2;
     }
-    for (;;)
+    else
     {
-      updateFragmentShader(HFGPUShaderFactory.gaussianFragmentShaderForOptimizedBlurOfRadiusOpt1(i, f, this.useforHorizontal, this.useforHorizontal));
-      clearGLSLSelf();
-      apply();
-      this.needUpdate = false;
-      return;
       i = 0;
     }
+    boolean bool = this.useforHorizontal;
+    updateFragmentShader(HFGPUShaderFactory.gaussianFragmentShaderForOptimizedBlurOfRadiusOpt1(i, f, bool, bool));
+    clearGLSLSelf();
+    apply();
+    this.needUpdate = false;
   }
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
@@ -47,17 +52,18 @@ public class BeautysRealAutoFilter$SmootfilterImpFilter
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.needUpdate) || (this.previewWidth != paramInt2) || (this.previewHeight != paramInt3)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((!this.needUpdate) && (this.previewWidth == paramInt2) && (this.previewHeight == paramInt3)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.needUpdate = bool;
+    if (this.needUpdate)
     {
-      this.needUpdate = bool;
-      if (this.needUpdate)
-      {
-        this.previewWidth = paramInt2;
-        this.previewHeight = paramInt3;
-        generrateShader();
-      }
-      return;
+      this.previewWidth = paramInt2;
+      this.previewHeight = paramInt3;
+      generrateShader();
     }
   }
   
@@ -69,7 +75,7 @@ public class BeautysRealAutoFilter$SmootfilterImpFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.ttpic.BeautysRealAutoFilter.SmootfilterImpFilter
  * JD-Core Version:    0.7.0.1
  */

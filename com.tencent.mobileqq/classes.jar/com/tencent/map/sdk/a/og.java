@@ -9,11 +9,12 @@ public final class og<D extends nz>
   og(og.a parama)
   {
     this.a = parama;
-    int j = (int)(0.5F * (float)Runtime.getRuntime().maxMemory());
-    int k = (int)(0.15F * (float)Runtime.getRuntime().maxMemory());
+    int j = (int)((float)Runtime.getRuntime().maxMemory() * 0.5F);
+    int k = (int)((float)Runtime.getRuntime().maxMemory() * 0.15F);
+    og.a locala = this.a;
     int i = j;
-    if (this.a != null) {
-      i = Math.min(Math.max(this.a.a, k), j);
+    if (locala != null) {
+      i = Math.min(Math.max(locala.a, k), j);
     }
     this.b = new oa.a(i, parama.b);
   }
@@ -35,7 +36,7 @@ public final class og<D extends nz>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.og
  * JD-Core Version:    0.7.0.1
  */

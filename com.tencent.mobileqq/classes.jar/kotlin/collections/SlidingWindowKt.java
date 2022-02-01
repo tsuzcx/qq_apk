@@ -15,22 +15,33 @@ public final class SlidingWindowKt
   public static final void checkWindowSizeStep(int paramInt1, int paramInt2)
   {
     int i;
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
+    if ((paramInt1 > 0) && (paramInt2 > 0)) {
       i = 1;
-      if (i != 0) {
-        return;
-      }
-      if (paramInt1 == paramInt2) {
-        break label73;
-      }
-    }
-    label73:
-    for (String str = "Both size " + paramInt1 + " and step " + paramInt2 + " must be greater than zero.";; str = "size " + paramInt1 + " must be greater than zero.")
-    {
-      throw ((Throwable)new IllegalArgumentException(str.toString()));
+    } else {
       i = 0;
-      break;
+    }
+    if (i == 0)
+    {
+      Object localObject;
+      if (paramInt1 != paramInt2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Both size ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(" and step ");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" must be greater than zero.");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("size ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(" must be greater than zero.");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      throw ((Throwable)new IllegalArgumentException(localObject.toString()));
     }
   }
   
@@ -54,7 +65,7 @@ public final class SlidingWindowKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.SlidingWindowKt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/dni" android:background="@color/a1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/a1" android:paddingLeft="@dimen/a7j" android:paddingRight="@dimen/a7j" android:layout_width="fill_parent" android:layout_height="48.0dip">
-        <ImageButton android:id="@id/dnj" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/a8x" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/dnk" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/a8y" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/dnl" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/a8w" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/dnm" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/a9_" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dnn" android:background="@null" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="38.0dip" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/a9c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0">
-                <ImageView android:layout_gravity="center" android:background="@null" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/fav_note_voiceplayer_record_icon" android:layout_weight="0.5" />
-                <TextView android:textColor="@color/a6q" android:layout_gravity="center_vertical" android:id="@id/dno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="00:00" android:layout_weight="0.5" />
-            </LinearLayout>
-        </LinearLayout>
-        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <ImageButton android:id="@id/dnp" android:background="@null" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/a93" android:layout_centerInParent="true" />
-            <TextView android:id="@id/dnq" android:background="@color/a6i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-    <include layout="@layout/akt" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/a03" android:background="@drawable/zb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/c4" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/fmt" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fmu" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/cd" android:src="@raw/finder_live_audio_tips" app:iconColor="@color/az" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="@dimen/a78" android:textColor="@color/az" android:id="@id/fmv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8u" app:layout_constraintBottom_toBottomOf="@id/fmu" app:layout_constraintLeft_toRightOf="@id/fmu" app:layout_constraintTop_toTopOf="@id/fmu" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/ite" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/itf" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cd" android:layout_marginRight="@dimen/cd" android:src="@raw/finder_live_audio_tips" app:iconColor="@color/az" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="@dimen/a78" android:textColor="@color/az" android:id="@id/itg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8u" app:layout_constraintBottom_toBottomOf="@id/itf" app:layout_constraintRight_toLeftOf="@id/itf" app:layout_constraintTop_toTopOf="@id/itf" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,8 +16,8 @@ public class SystemAndEmojiEmoticonPanel
   
   protected void a(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131231634));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager = ((EmoticonViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131231633));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131231633));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager = ((EmoticonViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131231632));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
     localArrayList.add(new ClassicEmoticonPanelViewBinder(paramContext, paramEmoticonCallback, 9));
@@ -26,7 +26,7 @@ public class SystemAndEmojiEmoticonPanel
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.getCount(), true);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager.setCurrentItem(9);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131231651));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131231650));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
   }
 }

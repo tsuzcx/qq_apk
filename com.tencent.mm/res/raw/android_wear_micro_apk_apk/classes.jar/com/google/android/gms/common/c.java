@@ -10,7 +10,7 @@ import android.util.Log;
 final class c
   extends Handler
 {
-  private final Context Hj;
+  private final Context IY;
   
   public c(b paramb, Context paramContext) {}
   
@@ -26,9 +26,9 @@ final class c
     do
     {
       return;
-      i = this.Hk.d(this.Hj);
-    } while (!this.Hk.aZ(i));
-    this.Hk.a(this.Hj, i);
+      i = this.IZ.d(this.IY);
+    } while (!this.IZ.bt(i));
+    this.IZ.a(this.IY, i);
   }
 }
 

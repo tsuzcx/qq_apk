@@ -13,13 +13,13 @@ public final class pendantConfig
   static pendantStageConfig cache_medium_stage;
   static pendantStageConfig cache_strong_stage;
   static pendantStageConfig cache_weak_stage = new pendantStageConfig();
-  public int cid;
-  public boolean enable;
-  public Map<String, String> ext;
-  public pendantStageConfig medium_stage;
-  public pendantStageConfig strong_stage;
+  public int cid = 0;
+  public boolean enable = false;
+  public Map<String, String> ext = null;
+  public pendantStageConfig medium_stage = null;
+  public pendantStageConfig strong_stage = null;
   public String trace_id = "";
-  public pendantStageConfig weak_stage;
+  public pendantStageConfig weak_stage = null;
   
   static
   {
@@ -56,27 +56,32 @@ public final class pendantConfig
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.enable, 0);
-    if (this.weak_stage != null) {
-      paramJceOutputStream.write(this.weak_stage, 1);
+    Object localObject = this.weak_stage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.medium_stage != null) {
-      paramJceOutputStream.write(this.medium_stage, 2);
+    localObject = this.medium_stage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.strong_stage != null) {
-      paramJceOutputStream.write(this.strong_stage, 3);
+    localObject = this.strong_stage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.cid, 4);
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 5);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 6);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.pendantConfig
  * JD-Core Version:    0.7.0.1
  */

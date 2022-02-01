@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class BlackSimpleInfo
   extends JceStruct
 {
-  public byte cAge;
-  public byte cSex;
-  public long lBlackID;
+  public byte cAge = 0;
+  public byte cSex = 0;
+  public long lBlackID = 0L;
   public String strNick = "";
-  public short wFace;
+  public short wFace = 0;
   
   public BlackSimpleInfo() {}
   
@@ -44,7 +44,7 @@ public final class BlackSimpleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.BlackSimpleInfo
  * JD-Core Version:    0.7.0.1
  */

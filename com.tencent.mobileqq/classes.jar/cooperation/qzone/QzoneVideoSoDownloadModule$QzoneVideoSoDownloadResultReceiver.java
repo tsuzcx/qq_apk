@@ -2,29 +2,30 @@ package cooperation.qzone;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bjgp;
+import com.tencent.qzonehub.api.DownloadResultCallback;
 
 public class QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver
   extends ResultReceiver
 {
-  private bjgp a;
+  private DownloadResultCallback mCallback;
   
-  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bjgp parambjgp)
+  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(DownloadResultCallback paramDownloadResultCallback)
   {
     super(null);
-    this.a = parambjgp;
+    this.mCallback = paramDownloadResultCallback;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    if (this.a != null) {
-      this.a.callback(paramInt, paramBundle);
+    DownloadResultCallback localDownloadResultCallback = this.mCallback;
+    if (localDownloadResultCallback != null) {
+      localDownloadResultCallback.callback(paramInt, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver
  * JD-Core Version:    0.7.0.1
  */

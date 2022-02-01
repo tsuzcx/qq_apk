@@ -9,8 +9,8 @@ public final class SimpleComment
   extends JceStruct
 {
   static ArrayList<Long> cache_reply_ids = new ArrayList();
-  public long id;
-  public ArrayList<Long> reply_ids;
+  public long id = 0L;
+  public ArrayList<Long> reply_ids = null;
   
   static
   {
@@ -34,14 +34,15 @@ public final class SimpleComment
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.id, 0);
-    if (this.reply_ids != null) {
-      paramJceOutputStream.write(this.reply_ids, 1);
+    ArrayList localArrayList = this.reply_ids;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.SimpleComment
  * JD-Core Version:    0.7.0.1
  */

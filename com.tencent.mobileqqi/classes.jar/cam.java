@@ -1,41 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.ConfigObserver;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
-public class cam
-  extends ConfigObserver
+class cam
+  implements Runnable
 {
-  public cam(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
+  cam(cal paramcal, List paramList) {}
   
-  protected void a(boolean paramBoolean, long paramLong)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      Object localObject = new File(AppConstants.aU);
-      List localList = null;
-      if (((File)localObject).exists()) {
-        localList = ChatBackgroundSettingActivity.a();
-      }
-      if (localList != null)
-      {
-        localObject = this.a.getSharedPreferences("chat_background_version", 0).edit();
-        ((SharedPreferences.Editor)localObject).putLong("chat_background_version", paramLong);
-        ((SharedPreferences.Editor)localObject).commit();
-        this.a.runOnUiThread(new can(this, localList));
-      }
-    }
-    this.a.d();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a.notifyDataSetChanged();
-    }
+    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cal.a).clear();
+    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cal.a).addAll(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Cal.a.e();
+    this.jdField_a_of_type_Cal.a.a.notifyDataSetChanged();
   }
 }
 

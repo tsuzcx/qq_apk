@@ -8,8 +8,8 @@ public final class RishState
   extends JceStruct
 {
   static byte[] cache_vState = (byte[])new byte[1];
-  public long uModifyTime;
-  public byte[] vState;
+  public long uModifyTime = 0L;
+  public byte[] vState = null;
   
   static
   {
@@ -38,7 +38,7 @@ public final class RishState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.RishState
  * JD-Core Version:    0.7.0.1
  */

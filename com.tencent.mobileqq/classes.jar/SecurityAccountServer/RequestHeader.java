@@ -9,16 +9,16 @@ public final class RequestHeader
 {
   static int cache_assistImport;
   public String account = "";
-  public int appid;
+  public int appid = 0;
   public int assistImport = 0;
   public String channel_id = "";
-  public int cmd;
+  public int cmd = 0;
   public String ksid = "";
-  public int requestID;
+  public int requestID = 0;
   public String sbid = "";
-  public int svrSeqNo;
-  public long uin;
-  public int ver;
+  public int svrSeqNo = 0;
+  public long uin = 0L;
+  public int ver = 0;
   
   public RequestHeader() {}
   
@@ -69,7 +69,7 @@ public final class RequestHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestHeader
  * JD-Core Version:    0.7.0.1
  */

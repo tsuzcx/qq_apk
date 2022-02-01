@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom|center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="35.0dip">
-        <ImageView android:id="@id/eaj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/scanner_flash_open_normal" android:scaleX="1.1" android:scaleY="1.1" />
+<com.tencent.mm.view.TouchableLayout android:id="@id/kcz" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/ivm" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d" app:refreshLayout="@layout/ca6">
+            <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/klh" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout android:gravity="center" android:id="@id/di" android:background="@color/BW_93" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/finder_self_feed_like_arrow" android:rotation="-90.0" app:iconColor="@color/m4" />
+        <TextView android:textSize="@dimen/cd" android:textColor="@color/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d6z" />
     </LinearLayout>
-    <TextView android:textSize="14.0dip" android:textColor="@color/a6q" android:id="@id/eak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/e1m" />
-</LinearLayout>
+</com.tencent.mm.view.TouchableLayout>

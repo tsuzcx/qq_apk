@@ -1,18 +1,41 @@
 import com.tencent.mobileqq.app.DiscussionIconHelper;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import java.util.ArrayList;
 
 public class fbr
-  implements Runnable
 {
-  public fbr(DiscussionIconHelper paramDiscussionIconHelper) {}
+  public byte a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public void run()
+  private fbr(DiscussionIconHelper paramDiscussionIconHelper)
   {
-    long l = DeviceInfoUtil.a();
-    int i = DeviceInfoUtil.b();
-    if ((l != 0L) && (l < 1024L) && (i <= 1)) {
-      DiscussionIconHelper.a(this.a, true);
+    this.jdField_a_of_type_Byte = 1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a(byte paramByte)
+  {
+    if (paramByte == 3)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Byte = 1;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
+    while (paramByte != 2) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

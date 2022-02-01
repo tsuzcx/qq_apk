@@ -15,45 +15,55 @@ public class cb
   
   public static int E(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 4: 
-    default: 
-      return -1;
-    case 0: 
-      return 0;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {}
+            return -1;
+          }
+          return 3;
+        }
+        return 1;
+      }
       return 2;
-    case 2: 
-      return 1;
     }
-    return 3;
+    return 0;
   }
   
   public static int F(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      return -1;
-    case 0: 
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3) {
+              return -1;
+            }
+            return 3;
+          }
+          return 1;
+        }
+        return 2;
+      }
       return 0;
-    case 2: 
-      return 1;
-    case 1: 
-      return 2;
-    case 3: 
-      return 3;
     }
     return 4;
   }
   
   public static boolean G(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 1: 
-    default: 
+      if (paramInt != 1) {}
       return true;
     }
     return false;
@@ -61,48 +71,47 @@ public class cb
   
   public static int a(ScanResult paramScanResult)
   {
-    if ((paramScanResult == null) || (paramScanResult.capabilities == null)) {
-      return -1;
+    if ((paramScanResult != null) && (paramScanResult.capabilities != null))
+    {
+      if (paramScanResult.capabilities.contains("WEP")) {
+        return 1;
+      }
+      if (paramScanResult.capabilities.contains("PSK")) {
+        return 2;
+      }
+      if (paramScanResult.capabilities.contains("EAP")) {
+        return 3;
+      }
+      return 0;
     }
-    if (paramScanResult.capabilities.contains("WEP")) {
-      return 1;
-    }
-    if (paramScanResult.capabilities.contains("PSK")) {
-      return 2;
-    }
-    if (paramScanResult.capabilities.contains("EAP")) {
-      return 3;
-    }
-    return 0;
+    return -1;
   }
   
   public static boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
+    boolean bool3 = l(paramString1);
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (l(paramString1))
+    if (bool3)
     {
       bool1 = bool2;
       if (l(paramString2))
       {
         bool1 = bool2;
         if (c(paramString1, paramString2)) {
-          if ((paramInt1 != -1) && (paramInt2 != -1)) {
-            break label53;
+          if ((paramInt1 != -1) && (paramInt2 != -1))
+          {
+            bool1 = bool2;
+            if (paramInt1 != paramInt2) {}
+          }
+          else
+          {
+            bool1 = true;
           }
         }
       }
     }
-    for (;;)
-    {
-      bool1 = true;
-      label53:
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramInt1 != paramInt2);
-    }
+    return bool1;
   }
   
   public static WifiConfig b(String paramString, int paramInt1, int paramInt2)
@@ -111,33 +120,38 @@ public class cb
     localWifiConfig.ey = paramString;
     localWifiConfig.ez = paramInt1;
     localWifiConfig.eE = paramInt2;
-    switch (localWifiConfig.eE)
-    {
-    }
-    do
-    {
+    paramInt1 = localWifiConfig.eE;
+    if ((paramInt1 != 19) && (paramInt1 != 25) && (paramInt1 != 27)) {
       return localWifiConfig;
-      paramString = cg.aL().aN();
-    } while (paramString == null);
-    localWifiConfig.eH = paramString.eH;
-    localWifiConfig.eG = paramString.gu;
+    }
+    paramString = cg.aL().aN();
+    if (paramString != null)
+    {
+      localWifiConfig.eH = paramString.eH;
+      localWifiConfig.eG = paramString.gu;
+    }
     return localWifiConfig;
   }
   
   public static boolean b(ScanResult paramScanResult)
   {
-    if ((paramScanResult == null) || (paramScanResult.BSSID == null) || (paramScanResult.SSID == null)) {}
-    while ((!k(paramScanResult.BSSID)) || (j(paramScanResult.SSID).length() <= 0)) {
-      return false;
+    if ((paramScanResult != null) && (paramScanResult.BSSID != null))
+    {
+      if (paramScanResult.SSID == null) {
+        return false;
+      }
+      if ((k(paramScanResult.BSSID)) && (j(paramScanResult.SSID).length() > 0)) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public static String byte2HexStr(byte paramByte)
   {
-    int i = gS[(paramByte & 0xF)];
-    paramByte = (byte)(paramByte >>> 4);
-    return new String(new char[] { gS[(paramByte & 0xF)], i });
+    char[] arrayOfChar = gS;
+    int i = arrayOfChar[(paramByte & 0xF)];
+    return new String(new char[] { arrayOfChar[((byte)(paramByte >>> 4) & 0xF)], i });
   }
   
   public static String c(byte[] paramArrayOfByte)
@@ -150,62 +164,69 @@ public class cb
   
   public static boolean c(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramString1 == null) || (paramString2 == null)) {
-      bool1 = false;
-    }
-    do
+    if (paramString1 != null)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramString1.compareTo(paramString2) == 0);
-      bool1 = bool2;
-    } while (j(paramString1).compareTo(j(paramString2)) == 0);
+      if (paramString2 == null) {
+        return false;
+      }
+      if (paramString1.compareTo(paramString2) == 0) {
+        return true;
+      }
+      if (j(paramString1).compareTo(j(paramString2)) == 0) {
+        return true;
+      }
+    }
     return false;
   }
   
   public static byte char2Byte(char paramChar)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return (byte)(paramChar - '0');
+    if ((paramChar >= '0') && (paramChar <= '9'))
+    {
+      paramChar -= '0';
+      return (byte)paramChar;
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return (byte)(paramChar - 'a' + 10);
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return (byte)(paramChar - 'A' + 10);
-    }
+    char c = 'a';
+    if ((paramChar >= 'a') && (paramChar <= 'f')) {}
+    do
+    {
+      paramChar = paramChar - c + 10;
+      break;
+      c = 'A';
+    } while ((paramChar >= 'A') && (paramChar <= 'F'));
     return 0;
   }
   
   public static int d(WifiConfiguration paramWifiConfiguration)
   {
-    int i = 1;
     if (paramWifiConfiguration.allowedKeyManagement.get(1)) {
-      i = 2;
+      return 2;
     }
-    do
+    if (!paramWifiConfiguration.allowedKeyManagement.get(2))
     {
-      return i;
-      if ((paramWifiConfiguration.allowedKeyManagement.get(2)) || (paramWifiConfiguration.allowedKeyManagement.get(3))) {
+      if (paramWifiConfiguration.allowedKeyManagement.get(3)) {
         return 3;
       }
-    } while (paramWifiConfiguration.wepKeys[0] != null);
-    return 0;
+      paramWifiConfiguration = paramWifiConfiguration.wepKeys;
+      int i = 0;
+      if (paramWifiConfiguration[0] != null) {
+        i = 1;
+      }
+      return i;
+    }
+    return 3;
   }
   
   public static int d(String paramString, int paramInt)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(paramString))
+    if (!bool)
     {
       i = j;
       if (paramInt != 4) {
-        i = -1 + paramString.hashCode() * 10 + paramInt;
+        i = paramString.hashCode() * 10 - 1 + paramInt;
       }
     }
     return i;
@@ -213,35 +234,36 @@ public class cb
   
   public static String j(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = "";
+      return "";
     }
-    int i;
-    do
+    int i = paramString.length();
+    String str = paramString;
+    if (i > 1)
     {
-      do
-      {
-        do
-        {
-          return str;
-          i = paramString.length();
-          str = paramString;
-        } while (i <= 1);
-        str = paramString;
-      } while (paramString.charAt(0) != '"');
       str = paramString;
-    } while (paramString.charAt(i - 1) != '"');
-    return paramString.substring(1, i - 1);
+      if (paramString.charAt(0) == '"')
+      {
+        i -= 1;
+        str = paramString;
+        if (paramString.charAt(i) == '"') {
+          str = paramString.substring(1, i);
+        }
+      }
+    }
+    return str;
   }
   
   public static boolean k(String paramString)
   {
-    if ((paramString == null) || (paramString.length() != 17)) {}
-    while (paramString.compareTo("00:00:00:00:00:00") == 0) {
-      return false;
+    if (paramString != null)
+    {
+      if (paramString.length() != 17) {
+        return false;
+      }
+      return paramString.compareTo("00:00:00:00:00:00") != 0;
     }
-    return true;
+    return false;
   }
   
   public static boolean l(String paramString)
@@ -250,13 +272,13 @@ public class cb
     try
     {
       gR = (String)Class.forName("android.net.wifi.WifiSsid").getField("NONE").get(null);
-      label29:
-      return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, gR)) && (!TextUtils.equals(paramString, "0x"));
     }
     catch (Throwable localThrowable)
     {
-      break label29;
+      label32:
+      break label32;
     }
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, gR)) && (!TextUtils.equals(paramString, "0x"));
   }
   
   public static byte[] m(String paramString)
@@ -282,19 +304,14 @@ public class cb
     if ((paramString != null) && (paramString.length == 6))
     {
       int i = 0;
-      if (i < paramString.length)
+      while (i < paramString.length)
       {
         if ((paramString[i] != null) && (paramString[i].length() == 1)) {
           arrayOfByte[i] = char2Byte(paramString[i].charAt(1));
+        } else if ((paramString[i] != null) && (paramString[i].length() == 2)) {
+          arrayOfByte[i] = ((byte)(char2Byte(paramString[i].charAt(0)) * 16 + char2Byte(paramString[i].charAt(1))));
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ((paramString[i] != null) && (paramString[i].length() == 2)) {
-            arrayOfByte[i] = ((byte)(char2Byte(paramString[i].charAt(0)) * 16 + char2Byte(paramString[i].charAt(1))));
-          }
-        }
+        i += 1;
       }
     }
     return arrayOfByte;
@@ -302,7 +319,7 @@ public class cb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cb
  * JD-Core Version:    0.7.0.1
  */

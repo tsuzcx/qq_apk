@@ -1,20 +1,17 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.widget.CursorAdapter;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
 public class bwp
+  implements Runnable
 {
-  public ImageView a;
-  ProgressBar a;
-  public TextView a;
-  public AnimationTextView a;
-  public String a;
-  ImageView b;
-  public TextView b;
-  ImageView c;
-  public TextView c;
-  TextView d;
+  public bwp(BaseSystemActivity paramBaseSystemActivity) {}
+  
+  public void run()
+  {
+    if (this.a.a.getCursor() != null) {
+      this.a.b();
+    }
+  }
 }
 
 

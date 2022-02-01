@@ -34,12 +34,12 @@ import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fmx;
 import fmy;
 import fmz;
 import fna;
 import fnb;
-import fnc;
-import fne;
+import fnd;
 import friendlist.GetOnlineInfoResp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -65,8 +65,8 @@ public class ContactSyncManager
   private Account jdField_a_of_type_AndroidAccountsAccount = null;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   public QQAppInterface a;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new fmy(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new fna(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new fmx(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new fmz(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   private volatile boolean jdField_c_of_type_Boolean;
@@ -124,8 +124,8 @@ public class ContactSyncManager
   private List a()
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getContentResolver();
-    ((ContentResolver)localObject).delete(fne.a(c()), "deleted>0", null);
-    Cursor localCursor = ((ContentResolver)localObject).query(fne.a(c()), fne.jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
+    ((ContentResolver)localObject).delete(fnd.a(c()), "deleted>0", null);
+    Cursor localCursor = ((ContentResolver)localObject).query(fnd.a(c()), fnd.jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
     localObject = new ArrayList();
     if (localCursor != null)
     {
@@ -285,7 +285,7 @@ public class ContactSyncManager
   private void a(List paramList, PhoneContact paramPhoneContact, long paramLong)
   {
     paramList = ContactOperation.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, paramLong);
-    Cursor localCursor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getContentResolver().query(fnc.jdField_a_of_type_AndroidNetUri, fnc.jdField_a_of_type_ArrayOfJavaLangString, "raw_contact_id=?", new String[] { String.valueOf(paramLong) }, null);
+    Cursor localCursor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getContentResolver().query(fnb.jdField_a_of_type_AndroidNetUri, fnb.jdField_a_of_type_ArrayOfJavaLangString, "raw_contact_id=?", new String[] { String.valueOf(paramLong) }, null);
     if (localCursor != null) {
       while (localCursor.moveToNext()) {
         if (localCursor.getString(1).equals("vnd.android.cursor.item/name"))
@@ -294,7 +294,7 @@ public class ContactSyncManager
           if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equals(paramPhoneContact.name)))
           {
             paramLong = localCursor.getLong(0);
-            localObject = ContentUris.withAppendedId(fnc.jdField_a_of_type_AndroidNetUri, paramLong);
+            localObject = ContentUris.withAppendedId(fnb.jdField_a_of_type_AndroidNetUri, paramLong);
             paramList.a(paramPhoneContact.name, (Uri)localObject);
           }
         }
@@ -637,7 +637,7 @@ public class ContactSyncManager
         synchronized (jdField_a_of_type_JavaUtilSet)
         {
           jdField_a_of_type_JavaUtilSet.add(localAccount.name);
-          localAccountManager.removeAccount(localAccount, new fnb(this), null);
+          localAccountManager.removeAccount(localAccount, new fna(this), null);
           i += 1;
         }
       }
@@ -919,7 +919,7 @@ public class ContactSyncManager
       }
     }
     paramUri = new SimplePhoneContact();
-    Cursor localCursor = ((ContentResolver)localObject).query(fnc.jdField_a_of_type_AndroidNetUri, fnc.jdField_a_of_type_ArrayOfJavaLangString, "raw_contact_id=?", new String[] { String.valueOf(l1) }, null);
+    Cursor localCursor = ((ContentResolver)localObject).query(fnb.jdField_a_of_type_AndroidNetUri, fnb.jdField_a_of_type_ArrayOfJavaLangString, "raw_contact_id=?", new String[] { String.valueOf(l1) }, null);
     if (localCursor != null) {
       while (localCursor.moveToNext()) {
         if (localCursor.getString(1).equals("vnd.android.cursor.item/name")) {
@@ -930,7 +930,7 @@ public class ContactSyncManager
     try
     {
       localCursor.close();
-      localObject = ((ContentResolver)localObject).query(ContactsContract.RawContacts.CONTENT_URI, fne.b, "_id=?", new String[] { String.valueOf(l1) }, null);
+      localObject = ((ContentResolver)localObject).query(ContactsContract.RawContacts.CONTENT_URI, fnd.b, "_id=?", new String[] { String.valueOf(l1) }, null);
       if (localObject != null) {
         if (((Cursor)localObject).moveToNext())
         {
@@ -1198,7 +1198,7 @@ public class ContactSyncManager
     if (QLog.isColorLevel()) {
       QLog.d("ContactSync.Manager", 2, "deleteSyncContact | mobileNo = " + c(paramString));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getContentResolver().delete(fne.a(c()), "sourceid=?", new String[] { paramString });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getContentResolver().delete(fnd.a(c()), "sourceid=?", new String[] { paramString });
   }
   
   public void a(boolean paramBoolean)
@@ -1446,7 +1446,7 @@ public class ContactSyncManager
     }
     BaseApplicationImpl.a.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     if (!this.c) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fmz(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fmy(this));
     }
     for (;;)
     {

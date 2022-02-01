@@ -2,119 +2,120 @@ package com.tencent.tinker.loader.hotplug.interceptor;
 
 public abstract class Interceptor<T_TARGET>
 {
-  private T_TARGET BuC = null;
+  private static final String TAG = "Tinker.Interceptor";
   private volatile boolean mInstalled = false;
+  private T_TARGET mTarget = null;
   
-  protected abstract void cX(T_TARGET paramT_TARGET);
-  
-  protected T_TARGET cY(T_TARGET paramT_TARGET)
+  protected T_TARGET decorate(T_TARGET paramT_TARGET)
   {
     return paramT_TARGET;
   }
   
-  protected abstract T_TARGET dWB();
+  protected abstract T_TARGET fetchTarget();
+  
+  protected abstract void inject(T_TARGET paramT_TARGET);
   
   /* Error */
-  public final void dWC()
+  public void install()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 35	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:dWB	()Ljava/lang/Object;
+    //   3: invokevirtual 37	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:fetchTarget	()Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_0
     //   8: aload_1
-    //   9: putfield 19	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:BuC	Ljava/lang/Object;
+    //   9: putfield 23	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mTarget	Ljava/lang/Object;
     //   12: aload_0
     //   13: aload_1
-    //   14: invokevirtual 37	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:cY	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   14: invokevirtual 39	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:decorate	(Ljava/lang/Object;)Ljava/lang/Object;
     //   17: astore_2
     //   18: aload_2
     //   19: aload_1
     //   20: if_acmpeq +16 -> 36
     //   23: aload_0
     //   24: aload_2
-    //   25: invokevirtual 39	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:cX	(Ljava/lang/Object;)V
+    //   25: invokevirtual 41	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:inject	(Ljava/lang/Object;)V
     //   28: aload_0
     //   29: iconst_1
-    //   30: putfield 21	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mInstalled	Z
+    //   30: putfield 25	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mInstalled	Z
     //   33: aload_0
     //   34: monitorexit
     //   35: return
-    //   36: new 41	java/lang/StringBuilder
-    //   39: dup
-    //   40: ldc 43
-    //   42: invokespecial 46	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   45: aload_1
-    //   46: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   49: ldc 52
-    //   51: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: pop
-    //   55: goto -27 -> 28
-    //   58: astore_1
-    //   59: aload_0
-    //   60: aconst_null
-    //   61: putfield 19	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:BuC	Ljava/lang/Object;
-    //   64: new 57	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
-    //   67: dup
-    //   68: aload_1
-    //   69: invokespecial 60	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
-    //   72: athrow
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
+    //   36: ldc 12
+    //   38: new 43	java/lang/StringBuilder
+    //   41: dup
+    //   42: ldc 45
+    //   44: invokespecial 48	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   47: aload_1
+    //   48: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   51: ldc 54
+    //   53: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: iconst_0
+    //   60: anewarray 5	java/lang/Object
+    //   63: invokestatic 67	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   66: goto -38 -> 28
+    //   69: astore_1
+    //   70: aload_0
+    //   71: aconst_null
+    //   72: putfield 23	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mTarget	Ljava/lang/Object;
+    //   75: new 69	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
+    //   78: dup
+    //   79: aload_1
+    //   80: invokespecial 72	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
+    //   83: athrow
+    //   84: astore_1
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_1
+    //   88: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	78	0	this	Interceptor
-    //   6	40	1	localObject1	Object
-    //   58	11	1	localThrowable	java.lang.Throwable
-    //   73	4	1	localObject2	Object
+    //   0	89	0	this	Interceptor
+    //   6	42	1	localObject1	Object
+    //   69	11	1	localThrowable	java.lang.Throwable
+    //   84	4	1	localObject2	Object
     //   17	8	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   2	18	58	java/lang/Throwable
-    //   23	28	58	java/lang/Throwable
-    //   28	33	58	java/lang/Throwable
-    //   36	55	58	java/lang/Throwable
-    //   2	18	73	finally
-    //   23	28	73	finally
-    //   28	33	73	finally
-    //   36	55	73	finally
-    //   59	73	73	finally
+    //   2	18	69	finally
+    //   23	28	69	finally
+    //   28	33	69	finally
+    //   36	66	69	finally
+    //   70	84	84	finally
   }
   
   /* Error */
-  public final void uninstall()
+  public void uninstall()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 21	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mInstalled	Z
+    //   3: getfield 25	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mInstalled	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +21 -> 29
     //   11: aload_0
     //   12: aload_0
-    //   13: getfield 19	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:BuC	Ljava/lang/Object;
-    //   16: invokevirtual 39	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:cX	(Ljava/lang/Object;)V
+    //   13: getfield 23	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mTarget	Ljava/lang/Object;
+    //   16: invokevirtual 41	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:inject	(Ljava/lang/Object;)V
     //   19: aload_0
     //   20: aconst_null
-    //   21: putfield 19	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:BuC	Ljava/lang/Object;
+    //   21: putfield 23	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mTarget	Ljava/lang/Object;
     //   24: aload_0
     //   25: iconst_0
-    //   26: putfield 21	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mInstalled	Z
+    //   26: putfield 25	com/tencent/tinker/loader/hotplug/interceptor/Interceptor:mInstalled	Z
     //   29: aload_0
     //   30: monitorexit
     //   31: return
     //   32: astore_2
-    //   33: new 57	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
+    //   33: new 69	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException
     //   36: dup
     //   37: aload_2
-    //   38: invokespecial 60	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
+    //   38: invokespecial 72	com/tencent/tinker/loader/hotplug/interceptor/InterceptFailedException:<init>	(Ljava/lang/Throwable;)V
     //   41: athrow
     //   42: astore_2
     //   43: aload_0
@@ -129,9 +130,8 @@ public abstract class Interceptor<T_TARGET>
     //   42	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   11	29	32	java/lang/Throwable
+    //   11	29	32	finally
     //   2	7	42	finally
-    //   11	29	42	finally
     //   33	42	42	finally
   }
   
@@ -139,7 +139,7 @@ public abstract class Interceptor<T_TARGET>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.interceptor.Interceptor
  * JD-Core Version:    0.7.0.1
  */

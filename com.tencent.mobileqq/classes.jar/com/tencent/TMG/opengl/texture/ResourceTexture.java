@@ -38,45 +38,50 @@ public class ResourceTexture
     int i = this.mContext.getResources().getDisplayMetrics().widthPixels;
     if (i <= 480) {
       ((BitmapFactory.Options)localObject).inSampleSize = 2;
+    } else if (i <= 720) {
+      ((BitmapFactory.Options)localObject).inSampleSize = 1;
+    } else {
+      ((BitmapFactory.Options)localObject).inSampleSize = 1;
     }
-    for (;;)
+    label143:
+    try
     {
-      try
-      {
-        Bitmap localBitmap1 = BitmapFactory.decodeResource(this.mContext.getResources(), this.mResId, (BitmapFactory.Options)localObject);
-        return localBitmap1;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError2)
-      {
-        ((BitmapFactory.Options)localObject).inSampleSize *= 2;
-        try
-        {
-          Bitmap localBitmap2 = BitmapFactory.decodeResource(this.mContext.getResources(), this.mResId, (BitmapFactory.Options)localObject);
-          return localBitmap2;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError3)
-        {
-          ((BitmapFactory.Options)localObject).inSampleSize *= 2;
-          try
-          {
-            localObject = BitmapFactory.decodeResource(this.mContext.getResources(), this.mResId, (BitmapFactory.Options)localObject);
-            return localObject;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError1) {}
-        }
-      }
-      if (i <= 720) {
-        ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      } else {
-        ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      }
+      localBitmap = BitmapFactory.decodeResource(this.mContext.getResources(), this.mResId, (BitmapFactory.Options)localObject);
+      return localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      Bitmap localBitmap;
+      label87:
+      label115:
+      break label87;
+    }
+    ((BitmapFactory.Options)localObject).inSampleSize *= 2;
+    try
+    {
+      localBitmap = BitmapFactory.decodeResource(this.mContext.getResources(), this.mResId, (BitmapFactory.Options)localObject);
+      return localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError3)
+    {
+      break label115;
+    }
+    ((BitmapFactory.Options)localObject).inSampleSize *= 2;
+    try
+    {
+      localObject = BitmapFactory.decodeResource(this.mContext.getResources(), this.mResId, (BitmapFactory.Options)localObject);
+      return localObject;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
+      break label143;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.texture.ResourceTexture
  * JD-Core Version:    0.7.0.1
  */

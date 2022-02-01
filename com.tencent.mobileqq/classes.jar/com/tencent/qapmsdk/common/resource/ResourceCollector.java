@@ -34,22 +34,20 @@ public class ResourceCollector
     Intrinsics.checkParameterIsNotNull(paramList, "files");
     this.isValid = false;
     paramList = ((Iterable)CollectionsKt.filterNotNull((Iterable)paramList)).iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      if (paramList.hasNext())
+      RandomAccessFile localRandomAccessFile = (RandomAccessFile)paramList.next();
+      try
       {
-        RandomAccessFile localRandomAccessFile = (RandomAccessFile)paramList.next();
-        try
-        {
-          localRandomAccessFile.close();
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            Logger.INSTANCE.d(new String[] { "QAPM_common_ResourceCollector", localIOException + ": can not close file." });
-          }
-        }
+        localRandomAccessFile.close();
+      }
+      catch (IOException localIOException)
+      {
+        Logger localLogger = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localIOException);
+        localStringBuilder.append(": can not close file.");
+        localLogger.d(new String[] { "QAPM_common_ResourceCollector", localStringBuilder.toString() });
       }
     }
   }
@@ -112,41 +110,35 @@ public class ResourceCollector
   {
     read();
     this.hasPeeked = true;
-    return !this.reachedEof;
+    return true ^ this.reachedEof;
   }
   
   protected final boolean read()
   {
-    if (this.hasPeeked)
+    boolean bool2 = this.hasPeeked;
+    boolean bool1 = false;
+    if (bool2)
     {
       this.hasPeeked = false;
-      return !this.reachedEof;
+      return this.reachedEof ^ true;
     }
-    if (this.curIndex >= 1536) {
+    int i = this.curIndex;
+    if (i >= 1536) {
       return false;
     }
-    int i;
-    if (this.bufferBytes[this.curIndex] != -1)
-    {
-      i = this.bufferBytes[this.curIndex] & 0xFF;
-      label62:
-      this.curChar = i;
-      this.curIndex += 1;
-      if (this.curChar != -1) {
-        break label106;
-      }
-    }
-    label106:
-    for (boolean bool = true;; bool = false)
-    {
-      this.reachedEof = bool;
-      if (!this.reachedEof) {
-        break;
-      }
-      return false;
+    byte[] arrayOfByte = this.bufferBytes;
+    if (arrayOfByte[i] != -1) {
+      i = arrayOfByte[i] & 0xFF;
+    } else {
       i = -1;
-      break label62;
     }
+    this.curChar = i;
+    this.curIndex += 1;
+    if (this.curChar == -1) {
+      bool1 = true;
+    }
+    this.reachedEof = bool1;
+    return this.reachedEof ^ true;
   }
   
   protected final int readHash()
@@ -154,26 +146,28 @@ public class ResourceCollector
     int j = 0;
     boolean bool = false;
     int i = 0;
-    while ((i == 0) && (read())) {
-      if (this.curChar != 32)
+    while ((j == 0) && (read()))
+    {
+      int k = this.curChar;
+      if (k != 32)
       {
-        j = j * 31 + this.curChar;
+        i = i * 31 + k;
         bool = true;
       }
       else
       {
-        i = 1;
+        j = 1;
       }
     }
     softAssert(bool);
-    return j;
+    return i;
   }
   
   protected final long readNumber()
   {
-    boolean bool = false;
-    long l = 0L;
     int i = 0;
+    long l = 0L;
+    boolean bool = false;
     while ((i == 0) && (read())) {
       if (Character.isDigit(this.curChar))
       {
@@ -232,13 +226,13 @@ public class ResourceCollector
   
   protected final boolean softAssert(boolean paramBoolean)
   {
-    this.isValid &= paramBoolean;
+    this.isValid = (paramBoolean & this.isValid);
     return this.isValid;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.resource.ResourceCollector
  * JD-Core Version:    0.7.0.1
  */

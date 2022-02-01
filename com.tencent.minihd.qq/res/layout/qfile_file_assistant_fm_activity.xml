@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/file_assistant" android:background="@drawable/skin_entry_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:id="@id/rl_title_bar" style="@style/title_bar">
+        <TextView android:id="@id/localLeftTitle" style="@style/title_bar_left_btn" />
+        <com.tencent.widget.SegmentedControlView android:orientation="horizontal" android:id="@id/recent_list_mode" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:divider="@null" android:checkedButton="@id/recent_list_chat" android:layout_centerInParent="true" android:dividerPadding="0.0dip" tencent:firstButtonBackground="@drawable/segmented_button_title_bg_first" tencent:lastButtonBackground="@drawable/segmented_button_title_bg_last" tencent:middleButtonBackground="@drawable/segmented_button_background_middle" tencent:uniqueButtonBackground="@drawable/segmented_button_background_unique">
+            <RadioButton android:textSize="14.0sp" android:gravity="center" android:id="@id/recent_list" android:background="@null" android:layout_width="62.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/fm_cap_recent" style="@style/TitleBarSegmentItemTxt" />
+            <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0sp" android:gravity="center" android:id="@id/local_list" android:background="@null" android:layout_width="62.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/fm_cap_local" style="@style/TitleBarSegmentItemTxt" />
+            <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0sp" android:gravity="center" android:id="@id/cloud_list" android:background="@null" android:layout_width="62.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/fm_cap_cloud" style="@style/TitleBarSegmentItemTxt" />
+        </com.tencent.widget.SegmentedControlView>
+        <TextView android:id="@id/select_cancel" android:visibility="visible" style="@style/title_bar_right_btn" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/mainContent" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.filemanager.widget.QfileTabBarView android:id="@id/fileTabBar" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</LinearLayout>

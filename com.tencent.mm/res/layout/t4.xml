@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.internal.NavigationMenuItemView android:paddingLeft="?ff" android:paddingRight="?fg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="?fd" android:foreground="?ew"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout style="@style/gq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/b3v" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/qk" style="@style/gy" />
+    <TextView android:id="@id/b9_" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/b3v" style="@style/h7" />
+    <LinearLayout android:id="@id/b4_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/b3v" style="@style/h3">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/kg" android:id="@id/b4b" android:background="@drawable/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/cg" android:minHeight="@dimen/ad" style="@style/hc" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

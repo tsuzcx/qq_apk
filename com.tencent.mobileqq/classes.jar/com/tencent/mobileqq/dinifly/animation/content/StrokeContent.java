@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
@@ -41,20 +41,26 @@ public class StrokeContent
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
     super.addValueCallback(paramT, paramLottieValueCallback);
-    if (paramT == LottieProperty.STROKE_COLOR) {
-      this.colorAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    while (paramT != LottieProperty.COLOR_FILTER) {
-      return;
-    }
-    if (paramLottieValueCallback == null)
+    if (paramT == LottieProperty.STROKE_COLOR)
     {
-      this.colorFilterAnimation = null;
+      this.colorAnimation.setValueCallback(paramLottieValueCallback);
       return;
     }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    this.colorFilterAnimation.addUpdateListener(this);
-    this.layer.addAnimation(this.colorAnimation);
+    if (paramT == LottieProperty.COLOR_FILTER)
+    {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
+      {
+        this.colorFilterAnimation = null;
+        return;
+      }
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorFilterAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorAnimation);
+    }
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)

@@ -7,8 +7,7 @@ import android.text.TextUtils;
 import com.tencent.ark.open.ArkUtil;
 import com.tencent.ark.open.delegate.ArkDelegateManager;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.Map;
 import org.json.JSONObject;
 
 public class ArkEnvironmentManager
@@ -19,15 +18,14 @@ public class ArkEnvironmentManager
   private static final String PREF_APP_SERVER_CONFIG_DEBUG = "ArkAppServerConfigDebug";
   public static final String TAG = "ArkApp";
   private static final String TAG_INNER = "ArkApp.Environment";
-  private HashMap<String, Long> _logTimestamp = new HashMap();
   private String mCurUin;
   private ArkEnvironmentManager.IDataReport mDataReport;
+  private boolean mEnableAndroid9EmojiSupport = false;
   boolean mIsAccelerationChecked = false;
   boolean mIsDebug = false;
   boolean mIsHardwareAcceleration = false;
   private boolean mIsTestEnv = false;
   private ArkEnvironmentManager.LibraryLoader mLoader;
-  private ArkEnvironmentManager.Log mLogCallback;
   private String mQQVersion;
   private String mRootDirectory;
   boolean mShowFps = false;
@@ -38,17 +36,17 @@ public class ArkEnvironmentManager
   
   public static String GetMinSdkVersion()
   {
-    return String.format(Locale.CHINA, "%d", new Object[] { Integer.valueOf(ark.arkGetMinPlatformVersion()) });
+    return StringUtil.format("%d", new Object[] { Integer.valueOf(ark.arkGetMinPlatformVersion()) });
   }
   
   public static String GetPlatformBuildNumber()
   {
-    return String.format(Locale.CHINA, "%d", new Object[] { Integer.valueOf(ark.arkGetPlatformBuildNumber()) });
+    return StringUtil.format("%d", new Object[] { Integer.valueOf(ark.arkGetPlatformBuildNumber()) });
   }
   
   public static String GetSdkVersion()
   {
-    return String.format(Locale.CHINA, "%d", new Object[] { Integer.valueOf(ark.arkGetPlatformVersion()) });
+    return StringUtil.format("%d", new Object[] { Integer.valueOf(ark.arkGetPlatformVersion()) });
   }
   
   public static SharedPreferences getAppConfigSharedPreferences()
@@ -64,40 +62,24 @@ public class ArkEnvironmentManager
     return ArkEnvironmentManager.LazyHolder.gInstance;
   }
   
-  private String getLogQueueKey()
-  {
-    Object localObject = null;
-    try
-    {
-      String str = ArkDispatchQueue.getCurrentQueueKey();
-      localObject = str;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        exlogE("ArkApp.Environment", String.format("getLogQueueKey=%s", new Object[] { localUnsatisfiedLinkError.getMessage() }));
-      }
-    }
-    if (TextUtils.isEmpty(localObject)) {
-      return "";
-    }
-    return " QueueKey:" + localObject;
-  }
-  
   public static SharedPreferences getSharedPreferences(String paramString)
   {
     Context localContext = ArkDelegateManager.getInstance().getApplicationContext();
-    if ((localContext != null) && (!TextUtils.isEmpty(paramString))) {
-      return localContext.getSharedPreferences(paramString + ArkDelegateManager.getInstance().getPorcessName(), 0);
+    if ((localContext != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(ArkDelegateManager.getInstance().getProcessName());
+      return localContext.getSharedPreferences(localStringBuilder.toString(), 0);
     }
     return null;
   }
   
   public HandlerThread createHandlerThread(String paramString)
   {
-    if (this.mThreadCreater != null) {
-      return this.mThreadCreater.createHanderThread(paramString);
+    ArkEnvironmentManager.ThreadCreater localThreadCreater = this.mThreadCreater;
+    if (localThreadCreater != null) {
+      return localThreadCreater.createHandlerThread(paramString);
     }
     return null;
   }
@@ -112,43 +94,11 @@ public class ArkEnvironmentManager
     return true;
   }
   
-  public void doDataReport(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  public void doDataReport(String paramString1, String paramString2, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
   {
-    doDataReport(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, 0L, 0L, "");
-  }
-  
-  public void doDataReport(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString4)
-  {
-    if (this.mDataReport != null) {
-      this.mDataReport.report(paramString1, paramString3, paramInt1, paramInt2, paramInt3, paramLong1, paramLong2, paramString2, paramString4);
-    }
-  }
-  
-  public void exlogD(String paramString1, String paramString2)
-  {
-    if (this.mLogCallback != null) {
-      this.mLogCallback.d(paramString1, paramString2);
-    }
-  }
-  
-  public void exlogE(String paramString1, String paramString2)
-  {
-    if (this.mLogCallback != null) {
-      this.mLogCallback.e(paramString1, paramString2);
-    }
-  }
-  
-  public void exlogI(String paramString1, String paramString2)
-  {
-    if (this.mLogCallback != null) {
-      this.mLogCallback.i(paramString1, paramString2);
-    }
-  }
-  
-  public void exlogW(String paramString1, String paramString2)
-  {
-    if (this.mLogCallback != null) {
-      this.mLogCallback.w(paramString1, paramString2);
+    ArkEnvironmentManager.IDataReport localIDataReport = this.mDataReport;
+    if (localIDataReport != null) {
+      localIDataReport.report(paramString1, paramString2, paramBoolean, paramInt, paramMap);
     }
   }
   
@@ -162,20 +112,30 @@ public class ArkEnvironmentManager
   
   public String getAppIconDirectory()
   {
-    return this.mRootDirectory + "/Icon";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mRootDirectory);
+    localStringBuilder.append("/Icon");
+    return localStringBuilder.toString();
   }
   
   public String getAppInstallDirectory()
   {
-    return this.mRootDirectory + "/Install";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mRootDirectory);
+    localStringBuilder.append("/Install");
+    return localStringBuilder.toString();
   }
   
   public String getAppResPath(String paramString)
   {
-    paramString = getResDirectory() + "/" + paramString;
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getResDirectory());
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramString);
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = new File(paramString);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
     return paramString;
   }
@@ -190,7 +150,10 @@ public class ArkEnvironmentManager
   
   public String getCacheDirectory()
   {
-    return this.mRootDirectory + "/Cache";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mRootDirectory);
+    localStringBuilder.append("/Cache");
+    return localStringBuilder.toString();
   }
   
   public String getCurrentUin()
@@ -213,17 +176,17 @@ public class ArkEnvironmentManager
   
   public int getProxyPort()
   {
-    int i = 0;
     String str = System.getProperty("http.proxyPort");
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      i = Integer.parseInt(str);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      localNumberFormatException.printStackTrace();
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        int i = Integer.parseInt(str);
+        return i;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        localNumberFormatException.printStackTrace();
+      }
     }
     return 0;
   }
@@ -238,7 +201,10 @@ public class ArkEnvironmentManager
   
   public String getResDirectory()
   {
-    return this.mRootDirectory + "/Res";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mRootDirectory);
+    localStringBuilder.append("/Res");
+    return localStringBuilder.toString();
   }
   
   public String getRootDirectory()
@@ -248,31 +214,36 @@ public class ArkEnvironmentManager
   
   public String getStorageDirectory()
   {
-    return this.mRootDirectory + "/Storage";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mRootDirectory);
+    localStringBuilder.append("/Storage");
+    return localStringBuilder.toString();
   }
   
   public boolean isHardwareAcceleration()
   {
-    if (!this.mIsAccelerationChecked) {}
-    try
-    {
-      if (!this.mIsAccelerationChecked)
+    if (!this.mIsAccelerationChecked) {
+      try
       {
-        long l1 = System.currentTimeMillis();
-        this.mIsHardwareAcceleration = EGLContextHolder.isDeviceSupported();
-        long l2 = System.currentTimeMillis();
-        logI("ArkApp.Environment", String.format("isHardwareAcceleration, %s, time=%d", new Object[] { Boolean.valueOf(this.mIsHardwareAcceleration), Long.valueOf(l2 - l1) }));
-        this.mIsAccelerationChecked = true;
+        if (!this.mIsAccelerationChecked)
+        {
+          long l1 = System.currentTimeMillis();
+          this.mIsHardwareAcceleration = EGLContextHolder.isDeviceSupported();
+          long l2 = System.currentTimeMillis();
+          Logger.logI("ArkApp.Environment", String.format("isHardwareAcceleration, %s, time=%d", new Object[] { Boolean.valueOf(this.mIsHardwareAcceleration), Long.valueOf(l2 - l1) }));
+          this.mIsAccelerationChecked = true;
+        }
       }
-      return this.mIsHardwareAcceleration;
+      finally {}
     }
-    finally {}
+    return this.mIsHardwareAcceleration;
   }
   
   public boolean isLibraryLoad()
   {
-    if (this.mLoader != null) {
-      return this.mLoader.isLibraryLoad();
+    ArkEnvironmentManager.LibraryLoader localLibraryLoader = this.mLoader;
+    if (localLibraryLoader != null) {
+      return localLibraryLoader.isLibraryLoad();
     }
     return false;
   }
@@ -297,107 +268,18 @@ public class ArkEnvironmentManager
   
   protected boolean loadLibraryImpl()
   {
-    if (this.mLoader == null) {}
-    while (!this.mLoader.Load()) {
+    ArkEnvironmentManager.LibraryLoader localLibraryLoader = this.mLoader;
+    if (localLibraryLoader == null) {
       return false;
     }
-    ArkViewModel.precreateOfflineContext();
-    ark.SetEnvironmentManager(this);
-    return true;
-  }
-  
-  public void logD(String paramString1, String paramString2)
-  {
-    exlogD(paramString1, paramString2 + getLogQueueKey());
-  }
-  
-  public void logD(String paramString, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
+    if (localLibraryLoader.Load())
     {
-      Object localObject = paramVarArgs[i];
-      if (localObject != null) {
-        localStringBuilder.append(localObject.toString());
-      }
-      i += 1;
+      ark.arkSetAndroid9EmojiFeatureSupport(this.mEnableAndroid9EmojiSupport);
+      ArkViewModel.precreateOfflineContext();
+      ark.SetEnvironmentManager(this);
+      return true;
     }
-    localStringBuilder.append(getLogQueueKey());
-    exlogD(paramString, localStringBuilder.toString());
-  }
-  
-  public void logE(String paramString1, String paramString2)
-  {
-    exlogE(paramString1, paramString2 + getLogQueueKey());
-  }
-  
-  public void logE(String paramString, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      Object localObject = paramVarArgs[i];
-      if (localObject != null) {
-        localStringBuilder.append(localObject.toString());
-      }
-      i += 1;
-    }
-    localStringBuilder.append(getLogQueueKey());
-    exlogE(paramString, localStringBuilder.toString());
-  }
-  
-  public void logI(String paramString1, String paramString2)
-  {
-    exlogI(paramString1, paramString2 + getLogQueueKey());
-  }
-  
-  public void logI(String paramString, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      Object localObject = paramVarArgs[i];
-      if (localObject != null) {
-        localStringBuilder.append(localObject.toString());
-      }
-      i += 1;
-    }
-    localStringBuilder.append(getLogQueueKey());
-    exlogI(paramString, localStringBuilder.toString());
-  }
-  
-  public void logW(String paramString1, String paramString2)
-  {
-    exlogW(paramString1, paramString2 + getLogQueueKey());
-  }
-  
-  public void logW(String paramString, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      Object localObject = paramVarArgs[i];
-      if (localObject != null) {
-        localStringBuilder.append(localObject.toString());
-      }
-      i += 1;
-    }
-    localStringBuilder.append(getLogQueueKey());
-    exlogW(paramString, localStringBuilder.toString());
-  }
-  
-  public void logWithLimit(String paramString1, String paramString2, String paramString3)
-  {
-    Long localLong = (Long)this._logTimestamp.get(paramString1);
-    if ((localLong == null) || (System.currentTimeMillis() - localLong.longValue() >= 1000L))
-    {
-      this._logTimestamp.put(paramString1, new Long(System.currentTimeMillis()));
-      exlogI(paramString2, paramString3 + getLogQueueKey());
-    }
+    return false;
   }
   
   public void setCurrentUin(String paramString)
@@ -418,6 +300,11 @@ public class ArkEnvironmentManager
     ArkUtil.checkVersion(paramBoolean);
   }
   
+  public void setEnableAndroid9EmojiSupport(boolean paramBoolean)
+  {
+    this.mEnableAndroid9EmojiSupport = paramBoolean;
+  }
+  
   public void setEnableShowFps(boolean paramBoolean)
   {
     this.mShowFps = paramBoolean;
@@ -426,7 +313,10 @@ public class ArkEnvironmentManager
   public void setEnv(boolean paramBoolean)
   {
     this.mIsTestEnv = paramBoolean;
-    logI("ArkApp", "ArkEnvironmentManager setEnv Type isTestEnv =" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ArkEnvironmentManager setEnv Type isTestEnv =");
+    localStringBuilder.append(paramBoolean);
+    Logger.logI("ArkApp", localStringBuilder.toString());
   }
   
   public void setHardwareDisableList(JSONObject paramJSONObject)
@@ -439,9 +329,9 @@ public class ArkEnvironmentManager
     this.mLoader = paramLibraryLoader;
   }
   
-  public void setLogCallback(ArkEnvironmentManager.Log paramLog)
+  public void setLogCallback(ArkEnvironmentManager.ILog paramILog)
   {
-    this.mLogCallback = paramLog;
+    Logger.setLogCallback(paramILog);
   }
   
   public void setProfilingLogFlag(boolean paramBoolean)
@@ -478,14 +368,14 @@ public class ArkEnvironmentManager
       if (isSingleThreadMode())
       {
         ArkDispatchQueue.setDefaultAttribute(1);
-        logI("ArkApp.Environment", "setThreadMode, single thread mode");
+        Logger.logI("ArkApp.Environment", "setThreadMode, single thread mode");
         return;
       }
       ArkDispatchQueue.setDefaultAttribute(4);
-      logI("ArkApp.Environment", "setThreadMode, multiple thread mode");
+      Logger.logI("ArkApp.Environment", "setThreadMode, multiple thread mode");
       return;
     }
-    logI("ArkApp.Environment", "setThreadMode, library not load");
+    Logger.logI("ArkApp.Environment", "setThreadMode, library not load");
   }
   
   public void setUseVirtualContext(boolean paramBoolean)
@@ -500,7 +390,7 @@ public class ArkEnvironmentManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkEnvironmentManager
  * JD-Core Version:    0.7.0.1
  */

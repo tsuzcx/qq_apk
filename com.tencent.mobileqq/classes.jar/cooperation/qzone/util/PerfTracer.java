@@ -2,7 +2,8 @@ package cooperation.qzone.util;
 
 import android.content.Intent;
 import android.os.SystemClock;
-import bjun;
+import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -126,7 +127,7 @@ public final class PerfTracer
   private static final String SUB_TAG = "FeedsScrollPerformanceAutoMonitor";
   private static final String TAG = "Perf.Qzone";
   public static final String THREADTIME_TAG = "threadtime";
-  public static final boolean TRACE = false;
+  public static final boolean TRACE = true;
   public static final String UPLOADPHOTO_INITDATA = "UploadPhoto_initData";
   public static final String UPLOADPHOTO_INITEMOVIEW = "UploadPhoto_initEmoView";
   public static final String UPLOADPHOTO_INITUI = "UploadPhoto_initUI";
@@ -157,40 +158,77 @@ public final class PerfTracer
   
   public static void trace(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    System.currentTimeMillis();
-    SystemClock.currentThreadTimeMillis();
+    long l1 = System.currentTimeMillis();
+    long l2 = SystemClock.currentThreadTimeMillis();
     TimeCostTrace.getTrace("qzone_launch").stopStep(paramString1);
     TimeCostTrace.getTrace("qzone_launch").startStep(paramString2);
+    Object localObject1;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localObject1 = (Long)sLogs.remove(paramString1);
+      Object localObject2 = sLogs;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("threadtime");
+      localObject2 = (Long)((ConcurrentHashMap)localObject2).remove(localStringBuilder.toString());
+      if ((localObject1 != null) && (((Long)localObject1).longValue() != 0L) && (localObject2 != null) && (((Long)localObject2).longValue() != 0L))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("FeedsScrollPerformanceAutoMonitor");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("position,");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("  , cost=");
+        localStringBuilder.append(l1 - ((Long)localObject1).longValue());
+        localStringBuilder.append(", costThreadtime:");
+        localStringBuilder.append(l2 - ((Long)localObject2).longValue());
+        Log.i("Perf.Qzone", localStringBuilder.toString());
+        if (paramBoolean) {
+          reportTracePerf(paramString1, l1 - ((Long)localObject1).longValue());
+        }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      sLogs.put(paramString2, Long.valueOf(l1));
+      paramString1 = sLogs;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append("threadtime");
+      paramString1.put(((StringBuilder)localObject1).toString(), Long.valueOf(l2));
+    }
   }
   
   public static void traceClick2Activity(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    long l;
-    do
-    {
+    if (paramIntent == null) {
       return;
-      l = paramIntent.getLongExtra("click_time", 0L);
-    } while (l <= 0L);
-    boolean bool = paramIntent.getBooleanExtra("QZoneExtra.Plugin.isloading", false);
-    int i = paramIntent.getIntExtra("startup_sceneid", -1);
-    TimeCostTrace.getTrace("qzone_launch").markFirst(l, i, bool);
-    TimeCostTrace.getTrace("qzone_launch").startStep("click2LoadActivityCreate", l);
-    TimeCostTrace.getTrace("qzone_launch").startStep("click2LoadCompleted", l);
-    TimeCostTrace.getTrace("qzone_launch").startStep("click2WindowShow", l);
-    traceEnd("click2LoadActivityCreate");
+    }
+    long l = paramIntent.getLongExtra("click_time", 0L);
+    if (l > 0L)
+    {
+      sLogs.put("click2LoadActivityCreate", Long.valueOf(l));
+      sLogs.put("click2LoadCompleted", Long.valueOf(l));
+      boolean bool = paramIntent.getBooleanExtra("QZoneExtra.Plugin.isloading", false);
+      int i = paramIntent.getIntExtra("startup_sceneid", -1);
+      TimeCostTrace.getTrace("qzone_launch").markFirst(l, i, bool);
+      TimeCostTrace.getTrace("qzone_launch").startStep("click2LoadActivityCreate", l);
+      TimeCostTrace.getTrace("qzone_launch").startStep("click2LoadCompleted", l);
+      TimeCostTrace.getTrace("qzone_launch").startStep("click2WindowShow", l);
+      traceEnd("click2LoadActivityCreate");
+    }
   }
   
-  public static void traceClick2Completed(bjun parambjun)
+  public static void traceClick2Completed(PerfTracer.PerfTimeReport paramPerfTimeReport)
   {
     traceEnd("click2LoadCompleted");
     TimeCostTrace localTimeCostTrace = TimeCostTrace.getTrace("qzone_launch");
     if (localTimeCostTrace == null) {
       return;
     }
-    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambjun != null))
+    if ((localTimeCostTrace.getTimeCost() > 0L) && (paramPerfTimeReport != null))
     {
-      parambjun.reportPerfTime(localTimeCostTrace);
+      paramPerfTimeReport.reportPerfTime(localTimeCostTrace);
       return;
     }
     localTimeCostTrace.destroy();
@@ -223,7 +261,7 @@ public final class PerfTracer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.PerfTracer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
@@ -15,9 +14,9 @@ public class FaceInformationConfirmUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(505);
+    AppMethodBeat.i(104024);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(505);
+    AppMethodBeat.o(104024);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -28,7 +27,7 @@ public class FaceInformationConfirmUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceInformationConfirmUI
  * JD-Core Version:    0.7.0.1
  */

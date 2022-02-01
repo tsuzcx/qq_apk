@@ -3,22 +3,24 @@ package com.tencent.mobileqq.troop.activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhuf;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.common.util.Util;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.ScannerResult;
+import com.tencent.mobileqq.qrscan.api.IScanUtilApi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
+import com.tencent.widget.ActionSheet;
 import java.io.File;
 import java.net.URL;
-import ndi;
-import ndq;
-import yak;
 
 class TroopAvatarWallEditActivity$6
   implements Runnable
 {
-  TroopAvatarWallEditActivity$6(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, bhuf parambhuf) {}
+  TroopAvatarWallEditActivity$6(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
   
   public void run()
   {
@@ -27,29 +29,45 @@ class TroopAvatarWallEditActivity$6
       if (QLog.isColorLevel()) {
         QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "QR Check Start!");
       }
-      Object localObject = new Bundle();
-      String str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-      if (this.this$0.a == null)
+      localObject2 = new Bundle();
+      Object localObject1 = this.a.getURL().toString();
+      if (this.this$0.r == null)
       {
         CookieSyncManager.createInstance(this.this$0.getApplicationContext());
-        this.this$0.a = CookieManager.getInstance();
+        this.this$0.r = CookieManager.getInstance();
       }
-      String str2 = this.this$0.a.getCookie(str1);
-      if (str2 != null)
+      Object localObject3 = this.this$0.r.getCookie((String)localObject1);
+      if (localObject3 != null)
       {
-        ((Bundle)localObject).putString("Cookie", str2);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "Get cookie: " + ndq.c(str2, new String[0]) + " from " + ndq.b(str1, new String[0]));
+        ((Bundle)localObject2).putString("Cookie", (String)localObject3);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Get cookie: ");
+          localStringBuilder.append(Util.c((String)localObject3, new String[0]));
+          localStringBuilder.append(" from ");
+          localStringBuilder.append(Util.b((String)localObject1, new String[0]));
+          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, localStringBuilder.toString());
         }
       }
-      localObject = ndi.a(BaseApplication.getContext(), str1, (Bundle)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "saveTmpImage path = " + (String)localObject);
+      localObject2 = ImageUtil.a(BaseApplication.getContext(), (String)localObject1, (Bundle)localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("saveTmpImage path = ");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, ((StringBuilder)localObject3).toString());
       }
-      this.this$0.c = ((String)localObject);
-      bfwb.a = ndq.b(str1, new String[0]);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (yak.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
+      this.this$0.x = ((String)localObject2);
+      com.tencent.qbar.QbarCrashCollector.sCurrentUrl = Util.b((String)localObject1, new String[0]);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("file://");
+        ((StringBuilder)localObject1).append(new File((String)localObject2).getAbsolutePath());
+        localObject1 = Uri.parse(((StringBuilder)localObject1).toString());
+        localObject1 = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromFile((Uri)localObject1, this.this$0, 1, false);
+        if ((localObject1 != null) && (((ScannerResult)localObject1).h()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "has QRCode ");
@@ -57,35 +75,40 @@ class TroopAvatarWallEditActivity$6
           this.this$0.runOnUiThread(new TroopAvatarWallEditActivity.6.1(this));
         }
       }
-      for (;;)
+      else if (QLog.isColorLevel())
       {
-        bfwb.a = null;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "no QRCode ");
-        }
+        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "no QRCode ");
       }
+      com.tencent.qbar.QbarCrashCollector.sCurrentUrl = null;
       return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "showMenuActionSheet error : " + localException.getMessage());
-        return;
-      }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "showMenuActionSheet error : " + localUnsatisfiedLinkError.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("showMenuActionSheet error : ");
+        ((StringBuilder)localObject2).append(localUnsatisfiedLinkError.getMessage());
+        QLog.e("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, ((StringBuilder)localObject2).toString());
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("showMenuActionSheet error : ");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        QLog.e("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, ((StringBuilder)localObject2).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.6
  * JD-Core Version:    0.7.0.1
  */

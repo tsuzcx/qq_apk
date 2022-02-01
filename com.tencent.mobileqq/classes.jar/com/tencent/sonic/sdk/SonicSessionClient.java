@@ -16,15 +16,17 @@ public abstract class SonicSessionClient
   
   public void clientReady()
   {
-    if (this.session != null) {
-      this.session.onClientReady();
+    SonicSession localSonicSession = this.session;
+    if (localSonicSession != null) {
+      localSonicSession.onClientReady();
     }
   }
   
   public void getDiffData(SonicDiffDataCallback paramSonicDiffDataCallback)
   {
-    if (this.session != null) {
-      this.session.onWebReady(paramSonicDiffDataCallback);
+    SonicSession localSonicSession = this.session;
+    if (localSonicSession != null) {
+      localSonicSession.onWebReady(paramSonicDiffDataCallback);
     }
   }
   
@@ -36,22 +38,24 @@ public abstract class SonicSessionClient
   
   public void pageFinish(String paramString)
   {
-    if (this.session != null) {
-      this.session.onClientPageFinished(paramString);
+    SonicSession localSonicSession = this.session;
+    if (localSonicSession != null) {
+      localSonicSession.onClientPageFinished(paramString);
     }
   }
   
   public Object requestResource(String paramString)
   {
-    if (this.session != null) {
-      return this.session.onClientRequestResource(paramString);
+    SonicSession localSonicSession = this.session;
+    if (localSonicSession != null) {
+      return localSonicSession.onClientRequestResource(paramString);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionClient
  * JD-Core Version:    0.7.0.1
  */

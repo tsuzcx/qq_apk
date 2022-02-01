@@ -12,15 +12,15 @@ class p
   
   public final void d(List<?> paramList)
   {
-    if (this.gQ.gP == null) {}
-    for (Object localObject1 = null; localObject1 == null; localObject1 = (n)this.gQ.gP.get())
+    if (this.iO.iN == null) {}
+    for (Object localObject1 = null; localObject1 == null; localObject1 = (n)this.iO.iN.get())
     {
       MediaBrowserCompat.MediaItem.c(paramList);
       return;
     }
     paramList = MediaBrowserCompat.MediaItem.c(paramList);
-    List localList = ((n)localObject1).aJ();
-    localObject1 = ((n)localObject1).aI();
+    List localList = ((n)localObject1).aZ();
+    localObject1 = ((n)localObject1).aY();
     int i = 0;
     label63:
     int j;

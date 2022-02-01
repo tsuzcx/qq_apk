@@ -14,18 +14,12 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bdvc;
-import bdvd;
-import bdvf;
-import bdvg;
-import bdvh;
-import bdvi;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.vas.ui.VipPngPlayAnimationDrawable;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -36,173 +30,204 @@ import org.apache.http.message.BasicHeader;
 
 public class VasResDrawable
   extends VipPngPlayAnimationDrawable
-  implements Handler.Callback
+  implements Handler.Callback, AbsVasRes
 {
-  private float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bdvd jdField_a_of_type_Bdvd;
-  private bdvg jdField_a_of_type_Bdvg;
-  private bdvh jdField_a_of_type_Bdvh;
-  private bdvi jdField_a_of_type_Bdvi;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new bdvf(this);
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private Handler b;
-  private int i;
+  protected Drawable a;
+  protected VasResController b;
+  protected Context c;
+  protected Handler d;
+  protected int e;
+  protected VasResDrawable.Options f;
+  protected VasResDrawable.VasResDrawableAdapter g;
+  protected VasResDrawable.RefreshListener h;
+  protected Path i;
+  protected RectF j;
+  protected float k;
+  private URLDrawable.URLDrawableListener l = new VasResDrawable.1(this);
+  
+  public VasResDrawable(Context paramContext, int paramInt)
+  {
+    super(paramContext.getResources());
+    a(paramContext, paramInt, new VasResDrawable.Options(this));
+    this.i = new Path();
+    this.j = new RectF();
+  }
   
   public VasResDrawable(AppRuntime paramAppRuntime, int paramInt)
   {
-    super(paramAppRuntime.getApplication().getApplicationContext().getResources());
-    a(paramAppRuntime, paramInt, new bdvg(this));
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    super(MobileQQ.getContext().getResources());
+    a(paramAppRuntime.getApplication().getApplicationContext(), paramInt, new VasResDrawable.Options(this));
+    this.i = new Path();
+    this.j = new RectF();
   }
   
-  private Drawable a(String paramString1, String paramString2)
+  private void a(Context paramContext, int paramInt, VasResDrawable.Options paramOptions)
   {
-    Drawable localDrawable = null;
-    if (TextUtils.isEmpty(paramString2))
+    this.e = paramInt;
+    this.f = paramOptions;
+    this.c = paramContext;
+    this.d = new Handler(Looper.getMainLooper(), this);
+    this.b = new VasResController(paramInt, this.d);
+  }
+  
+  @org.jetbrains.annotations.Nullable
+  private URL c(String paramString1, String paramString2)
+  {
+    try
     {
-      if (a().b > 0) {
-        return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(a().b);
+      if (!TextUtils.isEmpty(d().a)) {
+        return new URL(d().a, paramString2, paramString1);
       }
+      paramString1 = new URL("http", paramString2, paramString1);
+      return paramString1;
     }
-    else {
-      try
-      {
-        if (!TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString)) {}
-        for (paramString1 = new URL(a().jdField_a_of_type_JavaLangString, paramString2, paramString1); (paramString1 == null) || (this.jdField_a_of_type_MqqAppAppRuntime == null); paramString1 = new URL("http", paramString2, paramString1)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845711);
-        }
-      }
-      catch (MalformedURLException paramString2)
-      {
-        for (;;)
-        {
-          paramString1 = localDrawable;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("VasResDrawable", 2, paramString2.getMessage());
-            paramString1 = localDrawable;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VasResDrawable", 2, "getBGDrawable url = " + paramString1.toString());
-        }
-        paramString2 = URLDrawable.URLDrawableOptions.obtain();
-        paramString2.mRequestWidth = a().c;
-        paramString2.mRequestHeight = a().d;
-        if (a().jdField_a_of_type_Int > 0)
-        {
-          localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(a().jdField_a_of_type_Int);
-          paramString2.mLoadingDrawable = localDrawable;
-          paramString2.mFailedDrawable = localDrawable;
-        }
-        paramString1 = URLDrawable.getDrawable(paramString1, paramString2);
-        if ((a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length > 0)) {
-          paramString1.setHeaders(a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader);
-        }
-        if (paramString1.getStatus() == 2) {
-          paramString1.restartDownload();
-        }
-        paramString1.setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
-        return paramString1;
+    catch (MalformedURLException paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VasResDrawable", 2, paramString1.getMessage());
       }
     }
     return null;
   }
   
-  private void a(AppRuntime paramAppRuntime, int paramInt, bdvg parambdvg)
+  protected Drawable a(String paramString1, String paramString2)
   {
-    this.i = paramInt;
-    this.jdField_a_of_type_Bdvg = parambdvg;
-    this.jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.b = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Bdvd = new bdvd(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.b);
-  }
-  
-  public bdvc a()
-  {
-    return this.jdField_a_of_type_Bdvi;
-  }
-  
-  public bdvd a()
-  {
-    return this.jdField_a_of_type_Bdvd;
-  }
-  
-  public bdvg a()
-  {
-    return this.jdField_a_of_type_Bdvg;
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Bdvi != null) {
-      this.jdField_a_of_type_Bdvi.c();
+    if (this.c == null) {
+      this.c = MobileQQ.getContext();
     }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      if (d().c > 0) {
+        return this.c.getResources().getDrawable(d().c);
+      }
+      return null;
+    }
+    paramString1 = c(paramString1, paramString2);
+    if (paramString1 == null) {
+      return this.c.getResources().getDrawable(2130847784);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getBGDrawable url = ");
+      paramString2.append(paramString1.toString());
+      QLog.d("VasResDrawable", 2, paramString2.toString());
+    }
+    paramString2 = URLDrawable.URLDrawableOptions.obtain();
+    paramString2.mRequestWidth = d().d;
+    paramString2.mRequestHeight = d().e;
+    if (d().b > 0)
+    {
+      Drawable localDrawable = this.c.getResources().getDrawable(d().b);
+      paramString2.mLoadingDrawable = localDrawable;
+      paramString2.mFailedDrawable = localDrawable;
+    }
+    paramString1 = URLDrawable.getDrawable(paramString1, paramString2);
+    if ((d().f != null) && (d().f.length > 0)) {
+      paramString1.setHeaders(d().f);
+    }
+    if (paramString1.getStatus() == 2) {
+      paramString1.restartDownload();
+    }
+    paramString1.setURLDrawableListener(this.l);
+    return paramString1;
+  }
+  
+  public VasResController a()
+  {
+    return this.b;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.k = paramFloat;
   }
   
-  public void a(bdvh parambdvh)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bdvh = parambdvh;
+    if (d().c > 0)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        this.a = ((Context)localObject).getResources().getDrawable(this.f.c);
+      }
+    }
+    super.c();
+    this.b.a(paramInt);
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((VasResDrawable.VasResDrawableAdapter)localObject).a();
+    }
   }
   
-  public void a(bdvi parambdvi)
+  protected void a(@NonNull Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Bdvi = parambdvi;
-    if (this.jdField_a_of_type_Bdvi != null) {
-      this.jdField_a_of_type_Bdvi.b();
+    this.i.reset();
+    this.j.set(getBounds());
+    Object localObject = this.i;
+    RectF localRectF = this.j;
+    float f1 = this.k;
+    ((Path)localObject).addRoundRect(localRectF, f1, f1, Path.Direction.CW);
+    paramCanvas.clipPath(this.i);
+    localObject = this.a;
+    if (localObject != null)
+    {
+      ((Drawable)localObject).setBounds(getBounds());
+      this.a.draw(paramCanvas);
+    }
+  }
+  
+  public void a(VasResDrawable.RefreshListener paramRefreshListener)
+  {
+    this.h = paramRefreshListener;
+  }
+  
+  public void a(VasResDrawable.VasResDrawableAdapter paramVasResDrawableAdapter)
+  {
+    this.g = paramVasResDrawableAdapter;
+    paramVasResDrawableAdapter = this.g;
+    if (paramVasResDrawableAdapter != null) {
+      paramVasResDrawableAdapter.a();
     }
     invalidateSelf();
   }
   
-  public void a(String paramString1, String paramString2)
+  public VasResAdapter b()
   {
-    if ((this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length != 0))
-    {
-      Header[] arrayOfHeader = new Header[this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length + 1];
-      System.arraycopy(this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader, 0, arrayOfHeader, 0, this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length);
-      arrayOfHeader[this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length] = new BasicHeader(paramString1, paramString2);
-      this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = arrayOfHeader;
-      return;
-    }
-    this.jdField_a_of_type_Bdvg.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = new Header[] { new BasicHeader(paramString1, paramString2) };
+    return this.g;
   }
   
-  public void b(int paramInt)
+  public void b(String paramString1, String paramString2)
   {
-    if (a().b > 0) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getResources().getDrawable(this.jdField_a_of_type_Bdvg.b);
+    if ((this.f.f != null) && (this.f.f.length != 0))
+    {
+      Header[] arrayOfHeader = new Header[this.f.f.length + 1];
+      System.arraycopy(this.f.f, 0, arrayOfHeader, 0, this.f.f.length);
+      arrayOfHeader[this.f.f.length] = new BasicHeader(paramString1, paramString2);
+      this.f.f = arrayOfHeader;
+      return;
     }
-    super.a();
-    this.jdField_a_of_type_Bdvd.a(paramInt);
-    if (this.jdField_a_of_type_Bdvi != null) {
-      this.jdField_a_of_type_Bdvi.b();
+    this.f.f = new Header[] { new BasicHeader(paramString1, paramString2) };
+  }
+  
+  public void c()
+  {
+    super.c();
+    VasResDrawable.VasResDrawableAdapter localVasResDrawableAdapter = this.g;
+    if (localVasResDrawableAdapter != null) {
+      localVasResDrawableAdapter.b();
     }
+  }
+  
+  public VasResDrawable.Options d()
+  {
+    return this.f;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(getBounds());
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    }
-    if (this.jdField_a_of_type_Bdvi.a()) {
+    a(paramCanvas);
+    if (this.g.d()) {
       super.draw(paramCanvas);
     }
   }
@@ -214,43 +239,51 @@ public class VasResDrawable
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Bdvi == null) {
+    if (this.g == null) {
       return false;
     }
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
+    default: 
       return true;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bdvi.a())) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.i), this.jdField_a_of_type_Bdvi.a());
+    case 10003: 
+      this.g.a();
+      paramMessage = this.h;
+      if (paramMessage != null)
+      {
+        paramMessage.c();
+        return true;
+      }
+      break;
+    case 10002: 
+      this.g.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      paramMessage = this.h;
+      if (paramMessage != null) {
+        paramMessage.b();
+      }
+      return true;
+    case 10001: 
+      if (!TextUtils.isEmpty(this.g.c())) {
+        this.a = a(String.valueOf(this.e), this.g.c());
       }
       paramMessage = paramMessage.getData();
       if (paramMessage.getInt("type") == 1)
       {
         String[] arrayOfString = paramMessage.getStringArray("pngs");
-        int j = paramMessage.getInt("interval");
-        int k = paramMessage.getInt("repeatTimes");
-        a(arrayOfString, j);
-        a(a().e);
-        this.f = k;
+        int m = paramMessage.getInt("interval");
+        int n = paramMessage.getInt("repeatTimes");
+        a(arrayOfString, m);
+        b(d().g);
+        this.A = n;
       }
       invalidateSelf();
-      if (this.jdField_a_of_type_Bdvh != null) {
-        this.jdField_a_of_type_Bdvh.a();
+      paramMessage = this.h;
+      if (paramMessage != null) {
+        paramMessage.a();
       }
-      return true;
-      this.jdField_a_of_type_Bdvi.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      if (this.jdField_a_of_type_Bdvh != null) {
-        this.jdField_a_of_type_Bdvh.b();
-      }
-      return true;
-      this.jdField_a_of_type_Bdvi.b();
-      if (this.jdField_a_of_type_Bdvh != null) {
-        this.jdField_a_of_type_Bdvh.c();
-      }
+      break;
     }
+    return true;
   }
   
   public void setAlpha(int paramInt)
@@ -258,14 +291,14 @@ public class VasResDrawable
     super.setAlpha(paramInt);
   }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  public void setColorFilter(@android.support.annotation.Nullable ColorFilter paramColorFilter)
   {
     super.setColorFilter(paramColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResDrawable
  * JD-Core Version:    0.7.0.1
  */

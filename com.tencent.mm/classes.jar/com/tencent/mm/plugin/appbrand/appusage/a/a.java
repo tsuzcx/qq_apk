@@ -1,38 +1,22 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.p;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.autogen.b.t;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class a
-  extends p
+  extends t
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(129733);
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.yrM.put("appId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "appId";
-    locala.columns[1] = "recommendCard";
-    locala.yrM.put("recommendCard", "BLOB");
-    localStringBuilder.append(" recommendCard BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(129733);
+    AppMethodBeat.i(44664);
+    info = t.aJm();
+    AppMethodBeat.o(44664);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

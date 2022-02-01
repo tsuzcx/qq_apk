@@ -74,66 +74,75 @@ public abstract class BaseMapView<M extends BaseMap, O extends IMapOptions>
   
   public void onDestroy()
   {
-    if (this.a != null)
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null)
     {
-      this.a.c();
+      localBaseMap.c();
       this.a = null;
     }
   }
   
   public void onPause()
   {
-    if (this.a != null) {
-      this.a.e();
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null) {
+      localBaseMap.e();
     }
   }
   
   public void onRestart()
   {
-    if (this.a != null) {
-      this.a.f();
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null) {
+      localBaseMap.f();
     }
   }
   
   public void onResume()
   {
-    if (this.a != null) {
-      this.a.d();
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null) {
+      localBaseMap.d();
     }
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.b != null) {
-      this.b.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    IMapRenderView localIMapRenderView = this.b;
+    if (localIMapRenderView != null) {
+      localIMapRenderView.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void onStart()
   {
-    if (this.a != null) {
-      this.a.a();
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null) {
+      localBaseMap.a();
     }
   }
   
   public void onStop()
   {
-    if (this.a != null) {
-      this.a.b();
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null) {
+      localBaseMap.b();
     }
   }
   
   public void onSurfaceChanged(Object paramObject, int paramInt1, int paramInt2)
   {
-    if (this.b != null) {
-      this.b.onSurfaceChanged(paramObject, paramInt1, paramInt2);
+    IMapRenderView localIMapRenderView = this.b;
+    if (localIMapRenderView != null) {
+      localIMapRenderView.onSurfaceChanged(paramObject, paramInt1, paramInt2);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.a != null) && (this.a.getMapManager() != null) && (this.a.getMapManager().b != null)) {
+    BaseMap localBaseMap = this.a;
+    if ((localBaseMap != null) && (localBaseMap.getMapManager() != null) && (this.a.getMapManager().b != null)) {
       return this.a.getMapManager().b.onTouchEvent(paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -146,14 +155,15 @@ public abstract class BaseMapView<M extends BaseMap, O extends IMapOptions>
   
   public void setOnTop(boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.setOnTop(paramBoolean);
+    BaseMap localBaseMap = this.a;
+    if (localBaseMap != null) {
+      localBaseMap.setOnTop(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.BaseMapView
  * JD-Core Version:    0.7.0.1
  */

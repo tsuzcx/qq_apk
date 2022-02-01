@@ -16,9 +16,15 @@ public class Marker
   
   public boolean matchesName(String paramString)
   {
-    if (this.name.equalsIgnoreCase(paramString)) {}
-    while ((this.name.endsWith(CARRIAGE_RETURN)) && (this.name.substring(0, this.name.length() - 1).equalsIgnoreCase(paramString))) {
+    if (this.name.equalsIgnoreCase(paramString)) {
       return true;
+    }
+    if (this.name.endsWith(CARRIAGE_RETURN))
+    {
+      String str = this.name;
+      if (str.substring(0, str.length() - 1).equalsIgnoreCase(paramString)) {
+        return true;
+      }
     }
     return false;
   }

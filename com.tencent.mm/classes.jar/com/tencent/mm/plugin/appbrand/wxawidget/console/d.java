@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.appbrand.wxawidget.console;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d.a;
-import com.tencent.mm.ipcinvoker.d.b;
 import com.tencent.mm.ipcinvoker.d.e;
-import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.h.a;
+import com.tencent.mm.ipcinvoker.h.b;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.plugin.appbrand.wxawidget.a;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,84 +15,84 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final Map<String, List<a>> eEq;
-  private static List<a> jxu;
-  private static final e jxv;
+  private static final Map<String, List<a>> mza;
+  private static List<a> uSJ;
+  private static final e uSK;
   
   static
   {
-    AppMethodBeat.i(11138);
-    eEq = new ConcurrentHashMap();
-    jxu = new LinkedList();
-    jxv = new d.1();
-    AppMethodBeat.o(11138);
+    AppMethodBeat.i(121621);
+    mza = new ConcurrentHashMap();
+    uSJ = new LinkedList();
+    uSK = new e() {};
+    AppMethodBeat.o(121621);
   }
   
   public static boolean a(a parama)
   {
-    AppMethodBeat.i(11135);
-    if (jxu.contains(parama))
+    AppMethodBeat.i(121618);
+    if (uSJ.contains(parama))
     {
-      AppMethodBeat.o(11135);
+      AppMethodBeat.o(121618);
       return false;
     }
     Object localObject;
     e locale;
-    com.tencent.mm.ipcinvoker.d locald;
-    if ((eEq.isEmpty()) && (jxu.isEmpty()))
+    h localh;
+    if ((mza.isEmpty()) && (uSJ.isEmpty()))
     {
-      localObject = c.jxt;
-      locale = jxv;
-      locald = ((com.tencent.mm.ipcinvoker.d.d)localObject).eEF;
-      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).cnC;
+      localObject = c.uSI;
+      locale = uSK;
+      localh = ((com.tencent.mm.ipcinvoker.d.d)localObject).mzh;
+      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).event;
       if ((localObject != null) && (((String)localObject).length() != 0) && (locale != null)) {
-        break label105;
+        break label102;
       }
     }
     for (;;)
     {
-      boolean bool = jxu.add(parama);
-      AppMethodBeat.o(11135);
+      boolean bool = uSJ.add(parama);
+      AppMethodBeat.o(121618);
       return bool;
-      label105:
+      label102:
       Bundle localBundle = new Bundle();
-      localBundle.putString("Token", com.tencent.mm.ipcinvoker.d.ae(locale));
+      localBundle.putString("Token", h.cI(locale));
       localBundle.putString("Event", (String)localObject);
-      f.a(locald.eEf, localBundle, d.a.class, locale);
+      j.a(localh.myC, localBundle, h.a.class, locale);
     }
   }
   
   public static boolean b(a parama)
   {
-    AppMethodBeat.i(11136);
-    boolean bool = jxu.remove(parama);
+    AppMethodBeat.i(121619);
+    boolean bool = uSJ.remove(parama);
     Object localObject;
-    com.tencent.mm.ipcinvoker.d locald;
-    if ((eEq.isEmpty()) && (jxu.isEmpty()))
+    h localh;
+    if ((mza.isEmpty()) && (uSJ.isEmpty()))
     {
-      localObject = c.jxt;
-      parama = jxv;
-      locald = ((com.tencent.mm.ipcinvoker.d.d)localObject).eEF;
-      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).cnC;
+      localObject = c.uSI;
+      parama = uSK;
+      localh = ((com.tencent.mm.ipcinvoker.d.d)localObject).mzh;
+      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).event;
       if ((localObject != null) && (((String)localObject).length() != 0) && (parama != null)) {
-        break label79;
+        break label77;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(11136);
+      AppMethodBeat.o(121619);
       return bool;
-      label79:
+      label77:
       Bundle localBundle = new Bundle();
-      localBundle.putString("Token", com.tencent.mm.ipcinvoker.d.ae(parama));
+      localBundle.putString("Token", h.cI(parama));
       localBundle.putString("Event", (String)localObject);
-      f.a(locald.eEf, localBundle, d.b.class, null);
+      j.a(localh.myC, localBundle, h.b.class, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.d
  * JD-Core Version:    0.7.0.1
  */

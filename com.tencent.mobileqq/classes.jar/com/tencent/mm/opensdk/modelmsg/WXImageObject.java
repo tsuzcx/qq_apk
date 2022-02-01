@@ -4,8 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 
 public class WXImageObject
   implements WXMediaMessage.IMediaObject
@@ -22,15 +23,18 @@ public class WXImageObject
   {
     try
     {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 85, localByteArrayOutputStream);
-      this.imageData = localByteArrayOutputStream.toByteArray();
-      localByteArrayOutputStream.close();
+      localObject = new ByteArrayOutputStream();
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject);
+      this.imageData = ((ByteArrayOutputStream)localObject).toByteArray();
+      ((ByteArrayOutputStream)localObject).close();
       return;
     }
     catch (Exception paramBitmap)
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "WXImageObject <init>, exception:" + paramBitmap.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WXImageObject <init>, exception:");
+      ((StringBuilder)localObject).append(paramBitmap.getMessage());
+      Log.e("MicroMsg.SDK.WXImageObject", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -41,32 +45,47 @@ public class WXImageObject
   
   private int getFileSize(String paramString)
   {
-    return d.getFileSize(paramString);
+    return b.a(paramString);
   }
   
   public boolean checkArgs()
   {
-    if (((this.imageData == null) || (this.imageData.length == 0)) && ((this.imagePath == null) || (this.imagePath.length() == 0)))
+    Object localObject = this.imageData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, all arguments are null");
-      return false;
+      localObject = this.imagePath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.imageData != null) && (this.imageData.length > 26214400))
+    else
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, content is too large");
-      return false;
+      localObject = this.imageData;
+      if ((localObject != null) && (localObject.length > 26214400)) {
+        localObject = "checkArgs fail, content is too large";
+      }
     }
-    if ((this.imagePath != null) && (this.imagePath.length() > 10240))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, path is invalid");
+      Log.e("MicroMsg.SDK.WXImageObject", (String)localObject);
       return false;
+      localObject = this.imagePath;
+      if ((localObject != null) && (((String)localObject).length() > 10240))
+      {
+        localObject = "checkArgs fail, path is invalid";
+      }
+      else
+      {
+        localObject = this.imagePath;
+        if ((localObject != null) && (getFileSize((String)localObject) > 26214400))
+        {
+          localObject = "checkArgs fail, image content is too large";
+        }
+        else
+        {
+          return true;
+          localObject = "checkArgs fail, all arguments are null";
+        }
+      }
     }
-    if ((this.imagePath != null) && (getFileSize(this.imagePath) > 26214400))
-    {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, image content is too large");
-      return false;
-    }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -93,7 +112,7 @@ public class WXImageObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXImageObject
  * JD-Core Version:    0.7.0.1
  */

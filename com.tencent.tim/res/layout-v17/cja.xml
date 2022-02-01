@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:background="@drawable/f8b" android:layout_width="fill_parent" android:layout_height="80.0dip" android:minHeight="80.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:layout_gravity="center|left" android:id="@id/n36" android:focusable="false" android:clickable="false" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitXY" android:contentDescription="@null" />
+    <RelativeLayout android:id="@id/n9q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="18.0sp" android:textColor="@color/fl" android:id="@id/o8i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/nb" android:singleLine="true" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/gm" android:id="@id/o8h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip" android:maxLines="1" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/gm" android:id="@id/o8g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:maxLines="1" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/gm" android:id="@id/o8f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:maxLines="1" />
+                </LinearLayout>
+            </LinearLayout>
+            <com.tencent.widget.FixSizeImageView android:id="@id/mnc" android:background="@drawable/blh" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="12.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        </RelativeLayout>
+        <ProgressBar android:id="@id/mnb" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="3.0dip" android:max="200" android:progress="20" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" style="@style/ab4" />
+        <FrameLayout android:id="@id/nk2" android:background="#ffaeaeae" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" />
+    </RelativeLayout>
+</LinearLayout>

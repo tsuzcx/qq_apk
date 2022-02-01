@@ -9,7 +9,12 @@ final class TAVMovieTimeEffectUtil$1
 {
   public int compare(TAVMovieTimeEffect paramTAVMovieTimeEffect1, TAVMovieTimeEffect paramTAVMovieTimeEffect2)
   {
-    if (paramTAVMovieTimeEffect1.getTimeRange().getStartUs() <= paramTAVMovieTimeEffect2.getTimeRange().getStartUs()) {
+    long l1 = paramTAVMovieTimeEffect1.getTimeRange().getStartUs();
+    long l2 = paramTAVMovieTimeEffect2.getTimeRange().getStartUs();
+    if (l1 == l2) {
+      return 0;
+    }
+    if (l1 <= l2) {
       return -1;
     }
     return 1;
@@ -17,7 +22,7 @@ final class TAVMovieTimeEffectUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.utils.TAVMovieTimeEffectUtil.1
  * JD-Core Version:    0.7.0.1
  */

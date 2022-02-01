@@ -1,84 +1,107 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbi;
-import com.tencent.mm.protocal.protobuf.bbj;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.dco;
+import com.tencent.mm.protocal.protobuf.dex;
+import com.tencent.mm.protocal.protobuf.dey;
+import com.tencent.mm.protocal.protobuf.dfn;
+import com.tencent.mm.protocal.protobuf.dfo;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class x
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f eGj;
-  public String kVV;
-  public String kVW;
-  private final b rr;
-  public String sign;
-  public String uVJ;
-  public int uVK;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
   
-  public x(String paramString1, String paramString2, String paramString3)
+  public x(List<dfo> paramList)
   {
-    AppMethodBeat.i(6628);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bbi();
-    ((b.a)localObject).fsY = new bbj();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_getuseropenid";
-    ((b.a)localObject).funcId = 1177;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bbi)this.rr.fsV.fta;
-    ((bbi)localObject).app_id = paramString1;
-    ((bbi)localObject).wYQ = paramString2;
-    ((bbi)localObject).kqi = paramString3;
-    AppMethodBeat.o(6628);
+    AppMethodBeat.i(78909);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new dex();
+    ((c.a)localObject).otF = new dey();
+    ((c.a)localObject).uri = "/cgi-bin/mmux-bin/jslog";
+    ((c.a)localObject).funcId = 1803;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (dex)c.b.b(this.rr.otB);
+    dfn localdfn = new dfn();
+    localdfn.mut = d.Yxb;
+    localdfn.muu = d.Yxa;
+    localdfn.muv = d.Yxd;
+    localdfn.muw = d.Yxe;
+    localdfn.mux = LocaleUtil.getApplicationLanguage();
+    localdfn.aaLm = ((int)(System.currentTimeMillis() / 1000L));
+    ((dex)localObject).YEV = localdfn;
+    ((dex)localObject).YEW.addAll(paramList);
+    AppMethodBeat.o(78909);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(6630);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6630);
+    AppMethodBeat.i(78911);
+    this.callback = paramh;
+    Log.d("MicroMsg.NetSceneJsLog", "doScene");
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(78911);
     return i;
   }
   
   public final int getType()
   {
-    return 1177;
+    return 1803;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(6629);
-    ab.i("MicroMsg.NetSceneMMBizGetUserOpenId", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(78910);
+    Log.i("MicroMsg.NetSceneJsLog", "onGYNetEnd, netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bbj)this.rr.fsW.fta;
-      this.uVJ = paramq.uVJ;
-      this.sign = paramq.sign;
-      this.kVW = paramq.kVW;
-      this.kVV = paramq.kVV;
-      this.uVK = paramq.uVK;
-      ab.d("MicroMsg.NetSceneMMBizGetUserOpenId", "openid:%s, sign:%s, head_img_url:%s, nick_name:%s, friend_relation:%d", new Object[] { this.uVJ, this.sign, this.kVW, this.kVV, Integer.valueOf(this.uVK) });
+      params = (dey)c.c.b(((c)params).otC);
+      Log.i("MicroMsg.NetSceneJsLog", "received InvalidLogList: ");
+      paramArrayOfByte = new StringBuilder("{ ");
+      if (!Util.isNullOrNil(params.aaKT)) {
+        break label165;
+      }
+      paramArrayOfByte.append("{  }");
     }
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(6629);
+    for (;;)
+    {
+      paramArrayOfByte.append(" }");
+      Log.i("MicroMsg.NetSceneJsLog", paramArrayOfByte.toString());
+      h.a.iva();
+      h.mh(params.aaKT);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(78910);
+      return;
+      label165:
+      Iterator localIterator = params.aaKT.iterator();
+      while (localIterator.hasNext())
+      {
+        dco localdco = (dco)localIterator.next();
+        paramArrayOfByte.append(String.format(" { logId(%d), interval(%d) },", new Object[] { Integer.valueOf(localdco.ZsX), Integer.valueOf(localdco.aaIw) }));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.x
  * JD-Core Version:    0.7.0.1
  */

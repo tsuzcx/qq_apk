@@ -1,39 +1,42 @@
 package com.tencent.av.business.manager.report;
 
 import android.text.TextUtils;
-import azps;
+import com.tencent.mobileqq.statistics.DcReportUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lkz;
-import llb;
 
-public class VideoNodeReporter$6
+class VideoNodeReporter$6
   implements Runnable
 {
-  public VideoNodeReporter$6(lkz paramlkz, long paramLong) {}
+  VideoNodeReporter$6(VideoNodeReporter paramVideoNodeReporter, long paramLong) {}
   
   public void run()
   {
-    Object localObject = lkz.a(this.this$0, this.a);
-    QLog.d("VideoNodeReporter", 1, "reportToServer ,roomId = " + this.a + ", detail = " + (String)localObject);
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.a != 0L)) {
-      azps.a(null, "dc02402", (String)localObject);
+    Object localObject1 = VideoNodeReporter.b(this.this$0, this.a);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("reportToServer ,roomId = ");
+    ((StringBuilder)localObject2).append(this.a);
+    ((StringBuilder)localObject2).append(", detail = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject2).toString());
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (this.a != 0L)) {
+      DcReportUtil.a(null, "dc02402", (String)localObject1);
     }
-    lkz.a(this.this$0, this.a);
-    localObject = this.this$0.a.iterator();
-    while (((Iterator)localObject).hasNext())
+    VideoNodeReporter.a(this.this$0, this.a);
+    localObject1 = this.this$0.e.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      llb localllb = (llb)((Iterator)localObject).next();
-      if (this.a == localllb.a) {
-        ((Iterator)localObject).remove();
+      localObject2 = (VideoNodeReporter.SeesionRecord)((Iterator)localObject1).next();
+      if (this.a == ((VideoNodeReporter.SeesionRecord)localObject2).a) {
+        ((Iterator)localObject1).remove();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoNodeReporter.6
  * JD-Core Version:    0.7.0.1
  */

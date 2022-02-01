@@ -29,16 +29,17 @@ public final class oidb_0x8dd$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 58, 64, 72, 80, 90, 96, 104, 114 }, new String[] { "bytes_cookie", "uint32_source_type", "msg_lbs_info", "msg_filter", "bytes_req_ad", "msg_req_ctrl", "uint32_gender", "uint32_client_version", "uint32_client_type", "bytes_qq_version", "code", "areaStat", "bytes_recommend_cookie" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), null, null, localByteStringMicro2, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro4 }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 58, 64, 72, 80, 90, 96, 104, 114 }, new String[] { "bytes_cookie", "uint32_source_type", "msg_lbs_info", "msg_filter", "bytes_req_ad", "msg_req_ctrl", "uint32_gender", "uint32_client_version", "uint32_client_type", "bytes_qq_version", "code", "areaStat", "bytes_recommend_cookie" }, new Object[] { localByteStringMicro1, localInteger, null, null, localByteStringMicro2, null, localInteger, localInteger, localInteger, localByteStringMicro3, Long.valueOf(0L), localInteger, localByteStringMicro4 }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.ReqBody
  * JD-Core Version:    0.7.0.1
  */

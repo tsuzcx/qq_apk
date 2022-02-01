@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background" android:drawable="@drawable/f9d" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/f9g" />
+    <item android:id="@android:id/progress">
+        <bitmap android:src="@drawable/f9d" />
+    </item>
+</layer-list>

@@ -25,15 +25,16 @@ public final class ilive_feeds_tmem$ChangFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 64, 72, 80 }, new String[] { "chang", "pic_url", "vid", "width", "hight", "replay", "desc", "short_video_num", "roomid", "view_num" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ChangFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 64, 72, 80 }, new String[] { "chang", "pic_url", "vid", "width", "hight", "replay", "desc", "short_video_num", "roomid", "view_num" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, null, localByteStringMicro3, localInteger, localInteger, localInteger }, ChangFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.ChangFeed
  * JD-Core Version:    0.7.0.1
  */

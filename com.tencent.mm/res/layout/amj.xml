@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@android:id/list" android:paddingBottom="@dimen/ll" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:divider="#00000000" android:dividerHeight="0.0px" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/iwl" android:background="@drawable/aqy" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <ImageView android:id="@id/f1c" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:layout_marginEnd="@dimen/cd" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eqj" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_2" android:id="@id/c21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{desc}" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/itu" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_filled_done" app:iconColor="@color/Brand" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/c7o" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" style="@style/i7" />
+</LinearLayout>

@@ -1,26 +1,8 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aepi;
-import ahex;
-import ahfb;
-import ahhd;
-import ahhx;
-import ahic;
-import ahid;
-import ahih;
-import ahii;
-import ahij;
-import ahik;
-import ahil;
-import ahim;
-import ahin;
-import ahio;
-import ahip;
-import ahke;
-import ahkj;
-import alud;
-import alwd;
-import ampt;
+import addcontacts.AccountSearchPb.ResultItem;
+import addcontacts.AccountSearchPb.hotwordrecord;
+import addcontacts.AccountSearchPb.record;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,36 +15,51 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import ayvh;
-import ayvm;
-import azqs;
-import bbph;
-import bcpx;
-import bdbb;
-import bdeu;
-import bdhj;
-import bdin;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.api.IPublicAccountDetailReportUtil;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchHistoryManager;
 import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView.IGroupSearchContext;
+import com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopListWrapperForSearchEmpty;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qroute.route.URIRequest;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
+import com.tencent.mobileqq.search.util.ReportUtil;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.soso.location.SosoInterfaceOnLocationListener;
+import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder;
+import com.tencent.mobileqq.troop.recommend.RecommendTroopListWrapper;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.util.PrettyAccountUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
-import cooperation.qzone.widget.QzoneSearchResultView;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -71,163 +68,355 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import nrt;
-import swe;
-import swy;
+import mqq.app.AppRuntime;
 
 public class SearchContactsFragment
   extends SearchBaseFragment
 {
-  private static int jdField_b_of_type_Int = -1;
-  private double jdField_a_of_type_Double;
-  public int a;
-  private ahex jdField_a_of_type_Ahex;
-  public ahim a;
-  private ahio jdField_a_of_type_Ahio;
-  ahkj jdField_a_of_type_Ahkj = new ahii(this);
-  protected ampt a;
-  private ViewFactory.GuideView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView;
-  private GroupSearchRecommendView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView;
-  ArrayList<ahin> jdField_a_of_type_JavaUtilArrayList;
-  public boolean a;
-  private double jdField_b_of_type_Double;
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<ahip> jdField_b_of_type_JavaUtilArrayList;
-  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private String c;
-  private String d;
-  public boolean d;
-  private String e;
-  private int g = 2;
+  private static int E = -1;
+  SearchContactsFragment.JumpListener A;
+  private double B = 0.0D;
+  private double C = 0.0D;
+  private ArrayList<SearchResult> D;
+  private String F = null;
+  private String G = "";
+  private String H = "";
+  private Map<Integer, Integer> I = new ConcurrentHashMap();
+  private String J;
+  private int K = 2;
+  private RecommendTroopListWrapper L;
+  private GroupSearchRecommendView M;
+  private ViewFactory.GuideView N;
+  private SearchContactsFragment.SearchResultAdapter O;
+  boolean a;
+  int b;
+  boolean c = true;
+  protected SosoInterfaceOnLocationListener x = null;
+  GroupSearchRecommendView.IGroupSearchContext y = new SearchContactsFragment.2(this);
+  ArrayList<SearchContactsFragment.ListItemData> z;
   
   public SearchContactsFragment()
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Ampt = new ahih(this, 0, true, false, 60000L, false, false, "SearchContacts");
-    SosoInterface.a(this.jdField_a_of_type_Ampt);
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.x);
   }
   
-  private int a(int paramInt)
+  public static SearchContactsFragment a(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 80000000: 
-    default: 
-      return 1;
-    case 80000001: 
-      return 2;
+    E = paramInt;
+    return new SearchContactsFragment();
+  }
+  
+  private void a(SearchBaseFragment.ArticleItemViewHolder paramArticleItemViewHolder)
+  {
+    if (paramArticleItemViewHolder == null) {
+      return;
     }
-    return 3;
+    Object localObject2 = getBaseActivity();
+    if (localObject2 != null)
+    {
+      Object localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("url", paramArticleItemViewHolder.f);
+      int i = E;
+      if (i == 13)
+      {
+        ((Bundle)localObject1).putInt("articalChannelId", 12);
+      }
+      else if (i == 1)
+      {
+        ((Bundle)localObject1).putInt("articalChannelId", 10);
+        if (paramArticleItemViewHolder.i != null) {
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.e, paramArticleItemViewHolder.i, paramArticleItemViewHolder.j, "1");
+        }
+      }
+      else if (i == 2)
+      {
+        ((Bundle)localObject1).putInt("articalChannelId", 11);
+      }
+      localObject2 = new ActivityURIRequest((Context)localObject2, "/pubaccount/browser");
+      ((ActivityURIRequest)localObject2).extra().putAll((Bundle)localObject1);
+      QRoute.startUri((URIRequest)localObject2, null);
+      Object localObject3;
+      Object localObject4;
+      if (E == 12)
+      {
+        localObject1 = this.r;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("");
+        ((StringBuilder)localObject2).append(paramArticleItemViewHolder.g);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject3 = this.e;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("");
+        ((StringBuilder)localObject4).append(paramArticleItemViewHolder.h);
+        ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, (String)localObject2, "", (String)localObject3, ((StringBuilder)localObject4).toString());
+      }
+      else
+      {
+        localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+        localObject2 = this.r;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(paramArticleItemViewHolder.g);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        localObject4 = this.e;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(paramArticleItemViewHolder.h);
+        ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEventForMigrate((AppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, (String)localObject3, "", (String)localObject4, localStringBuilder.toString(), false);
+      }
+      localObject1 = (Integer)this.I.get(Integer.valueOf(80000003));
+      if (localObject1 != null) {
+        i = ((Integer)localObject1).intValue();
+      } else {
+        i = 0;
+      }
+      SearchUtils.a(80000003, i, paramArticleItemViewHolder.g, true, null, this.e, E);
+    }
   }
   
-  private ahip a(int paramInt)
+  private void a(SearchBaseFragment.ItemViewHolder paramItemViewHolder)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+    if (paramItemViewHolder == null) {
+      return;
+    }
+    if (paramItemViewHolder == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchContactsFragment", 2, "onClickItemViewHolder return for null holder");
+      }
+      return;
+    }
+    a(paramItemViewHolder.j, paramItemViewHolder.k, 2);
+    ReportController.b(this.r, "CliOper", "", "", "0X8004BF2", "0X8004BF2", d(paramItemViewHolder.j), 0, "", "", "", "");
+    Object localObject3 = (Integer)this.I.get(Integer.valueOf(paramItemViewHolder.j));
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramItemViewHolder.k != null)
+    {
+      localObject1 = localObject2;
+      if (paramItemViewHolder.k.uin != null) {
+        localObject1 = String.valueOf(paramItemViewHolder.k.uin.get());
+      }
+    }
+    int j = paramItemViewHolder.j;
+    int i;
+    if (localObject3 != null) {
+      i = ((Integer)localObject3).intValue();
+    } else {
+      i = 0;
+    }
+    SearchUtils.a(j, i, paramItemViewHolder.m, true, (String)localObject1, this.e, E);
+    if (paramItemViewHolder.j == 80000002)
+    {
+      localObject3 = paramItemViewHolder.k;
+      localObject1 = getBaseActivity();
+      if ((localObject3 != null) && (localObject1 != null) && ((localObject1 instanceof SearchBaseActivity)))
+      {
+        i = ((SearchBaseActivity)localObject1).f();
+        Object localObject4 = (IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class);
+        localObject1 = ((AccountSearchPb.record)localObject3).uin;
+        localObject2 = "";
+        if (localObject1 != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(((AccountSearchPb.record)localObject3).uin.get());
+          ((StringBuilder)localObject1).append("");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = "";
+        }
+        ((IPublicAccountDetailReportUtil)localObject4).setAttrSearchClick(2, (String)localObject1, paramItemViewHolder.m, E);
+        if (E == 12)
+        {
+          localObject1 = this.r;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(paramItemViewHolder.m);
+          ((StringBuilder)localObject4).append("");
+          localObject4 = ((StringBuilder)localObject4).toString();
+          String str = SearchBaseActivity.JumpSrcConstants.a(i);
+          paramItemViewHolder = (SearchBaseFragment.ItemViewHolder)localObject2;
+          if (((AccountSearchPb.record)localObject3).uin != null)
+          {
+            paramItemViewHolder = new StringBuilder();
+            paramItemViewHolder.append(((AccountSearchPb.record)localObject3).uin.get());
+            paramItemViewHolder.append("");
+            paramItemViewHolder = paramItemViewHolder.toString();
+          }
+          ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, (String)localObject4, str, paramItemViewHolder, this.e);
+          return;
+        }
+        localObject2 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+        localObject4 = this.r;
+        if (((AccountSearchPb.record)localObject3).uin != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(((AccountSearchPb.record)localObject3).uin.get());
+          ((StringBuilder)localObject1).append("");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = "";
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(paramItemViewHolder.m);
+        ((StringBuilder)localObject3).append("");
+        ((IPublicAccountReportUtils)localObject2).publicAccountReportClickEventForMigrate((AppInterface)localObject4, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005D20", "0X8005D20", 0, 0, ((StringBuilder)localObject3).toString(), SearchBaseActivity.JumpSrcConstants.a(i), this.e, "", false);
+      }
+    }
+  }
+  
+  private void a(NearbyTroops.CustomViewHolder paramCustomViewHolder)
+  {
+    int i;
+    if (paramCustomViewHolder.k) {
+      i = 30004;
+    } else {
+      i = 30008;
+    }
+    Object localObject = TroopInfoUIUtil.a(paramCustomViewHolder.y, paramCustomViewHolder.j, i);
+    ((Bundle)localObject).putInt("exposureSource", 3);
+    ((Bundle)localObject).putInt("t_s_f", 1000);
+    TroopUtils.a(o(), (Bundle)localObject, 2);
+    ReportController.b(this.r, "CliOper", "", "", "0X8004BF2", "0X8004BF2", d(80000001), 0, "", "", "", "");
+    ReportController.b(this.r, "P_CliOper", "Grp_find", "", "result", "Clk_grpdate", 0, 0, paramCustomViewHolder.y, "", "", "");
+    localObject = (Integer)this.I.get(Integer.valueOf(80000001));
+    if (localObject != null) {
+      i = ((Integer)localObject).intValue();
+    } else {
+      i = 0;
+    }
+    SearchUtils.a(80000001, i, paramCustomViewHolder.h, true, paramCustomViewHolder.y, this.e, E);
+    SearchUtils.a("add_page", "all_result", "clk_grp", 0, this.K, new String[] { paramCustomViewHolder.y, "", this.e, "" });
+  }
+  
+  private SearchResult b(int paramInt)
+  {
+    Object localObject = this.D;
+    if (localObject == null) {
       return null;
     }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ahip localahip = (ahip)localIterator.next();
-      if (localahip.jdField_a_of_type_Int == paramInt) {
-        return localahip;
+      SearchResult localSearchResult = (SearchResult)((Iterator)localObject).next();
+      if (localSearchResult.a == paramInt) {
+        return localSearchResult;
       }
     }
     return null;
   }
   
-  public static SearchContactsFragment a(int paramInt)
-  {
-    jdField_b_of_type_Int = paramInt;
-    return new SearchContactsFragment();
-  }
-  
-  private String a(int paramInt)
+  private String c(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return "";
-    case 80000000: 
-      return "0X8004BEE";
+    case 80000002: 
+      return "0X8004BF0";
     case 80000001: 
       return "0X8004BEF";
     }
-    return "0X8004BF0";
+    return "0X8004BEE";
   }
   
-  private boolean a()
+  private int d(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    switch (paramInt)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        ahin localahin = (ahin)localIterator.next();
-        if ((localahin != null) && (localahin.jdField_b_of_type_Int == 80000002)) {
-          return true;
-        }
-      }
+    default: 
+      return 1;
+    case 80000002: 
+      return 3;
+    case 80000001: 
+      return 2;
     }
-    return false;
+    return 1;
   }
   
-  private boolean b(ArrayList<ahip> paramArrayList)
+  private boolean e(ArrayList<SearchResult> paramArrayList)
   {
     if ((paramArrayList != null) && (paramArrayList.size() == 1))
     {
-      Object localObject = (ahip)paramArrayList.get(0);
-      if (((ahip)localObject).jdField_b_of_type_Boolean)
+      Object localObject1 = (SearchResult)paramArrayList.get(0);
+      Object localObject2;
+      if (((SearchResult)localObject1).j)
       {
-        paramArrayList = "http://sqimg.qq.com/qq_product_operations/tiqq/suicide/?keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchContactsFragment", 2, "is SuicideWord word = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + paramArrayList);
-        }
-        localObject = a();
-        Intent localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramArrayList);
-        localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        localIntent.putExtra("portraitOnly", true);
-        localIntent.putExtra("hide_more_button", true);
-        localIntent.putExtra("hide_operation_bar", true);
-        localIntent.putExtra("isShowAd", false);
-        ((BaseActivity)localObject).startActivity(localIntent);
-        return true;
-      }
-      localObject = ((ahip)localObject).jdField_b_of_type_JavaUtilList;
-      if ((localObject != null) && (((List)localObject).size() == 1))
-      {
-        localObject = (AccountSearchPb.record)((List)localObject).get(0);
-        int i = ((ahip)paramArrayList.get(0)).jdField_a_of_type_Int;
-        if (i == 80000003) {
-          return false;
-        }
-        long l = ((AccountSearchPb.record)localObject).code.get();
-        if ((i == 80000001) && (!TextUtils.isEmpty(this.e)) && (!String.valueOf(l).equals(this.e))) {
-          return false;
-        }
-        a(i, (AccountSearchPb.record)localObject);
-        if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
-          return false;
-        }
-        if (((SearchBaseActivity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).a() == 0) {
-          a().finish();
-        }
-        return true;
-      }
-      if ((localObject != null) && (((List)localObject).size() == 2))
-      {
-        localObject = SearchBaseActivity.c.matcher(this.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchContactsFragment", 2, "needJump lastKeywords = " + this.jdField_a_of_type_JavaLangString);
-        }
-        if (((Matcher)localObject).matches())
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("https://sqimg.qq.com/qq_product_operations/tiqq/suicide/?keyword=");
+        paramArrayList.append(URLEncoder.encode(this.e));
+        paramArrayList = paramArrayList.toString();
+        if (QLog.isColorLevel())
         {
-          e();
-          a(this.jdField_b_of_type_JavaUtilArrayList);
-          a(((ahip)paramArrayList.get(0)).jdField_a_of_type_Int, false);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("is SuicideWord word = ");
+          ((StringBuilder)localObject1).append(this.e);
+          ((StringBuilder)localObject1).append(" jump url is : ");
+          ((StringBuilder)localObject1).append(paramArrayList);
+          QLog.d("SearchContactsFragment", 2, ((StringBuilder)localObject1).toString());
+        }
+        localObject1 = o();
+        localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", paramArrayList);
+        ((Intent)localObject2).putExtra("uin", this.r.getCurrentAccountUin());
+        ((Intent)localObject2).putExtra("portraitOnly", true);
+        ((Intent)localObject2).putExtra("hide_more_button", true);
+        ((Intent)localObject2).putExtra("hide_operation_bar", true);
+        ((Intent)localObject2).putExtra("isShowAd", false);
+        ((BaseActivity)localObject1).startActivity((Intent)localObject2);
+        return true;
+      }
+      localObject1 = ((SearchResult)localObject1).e;
+      int i;
+      if ((localObject1 != null) && (((List)localObject1).size() == 1))
+      {
+        localObject1 = (AccountSearchPb.record)((List)localObject1).get(0);
+        int j = ((SearchResult)paramArrayList.get(0)).a;
+        if (j == 80000003) {
+          return false;
+        }
+        long l = ((AccountSearchPb.record)localObject1).code.get();
+        if ((j == 80000001) && (!TextUtils.isEmpty(this.J)) && (!String.valueOf(l).equals(this.J))) {
+          return false;
+        }
+        i = 30002;
+        if (this.f == 1) {
+          i = 30010;
+        }
+        a(j, (AccountSearchPb.record)localObject1, i);
+        if (this.s == null) {
+          return false;
+        }
+        if (((SearchBaseActivity)this.s).f() == 0) {
+          o().finish();
+        }
+        return true;
+      }
+      if ((localObject1 != null) && (((List)localObject1).size() == 2))
+      {
+        localObject1 = SearchBaseActivity.E.matcher(this.e);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("needJump lastKeywords = ");
+          ((StringBuilder)localObject2).append(this.e);
+          QLog.d("SearchContactsFragment", 2, ((StringBuilder)localObject2).toString());
+        }
+        if (((Matcher)localObject1).matches())
+        {
+          g();
+          b(this.D);
+          if (this.f == 1) {
+            i = 3;
+          } else if (this.f == 0) {
+            i = 2;
+          } else {
+            i = 0;
+          }
+          a(((SearchResult)paramArrayList.get(0)).a, false, i);
           return true;
         }
       }
@@ -235,102 +424,399 @@ public class SearchContactsFragment
     return false;
   }
   
-  public String a(ahid paramahid, ahin paramahin)
+  private boolean t()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = paramahin.jdField_b_of_type_Int;
-    paramahid.jdField_a_of_type_JavaLangString = (paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() + "");
-    boolean bool;
-    SpannableStringBuilder localSpannableStringBuilder;
-    label132:
-    Object localObject;
-    if (paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L)
+    Object localObject = this.z;
+    if (localObject != null)
     {
-      bool = true;
-      paramahid.jdField_a_of_type_Boolean = bool;
-      paramahid.jdField_b_of_type_JavaLangString = paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      localSpannableStringBuilder = new SpannableStringBuilder();
-      switch (i)
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-      default: 
-        paramahid.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-        if ((i == 80000000) && (!TextUtils.isEmpty(paramahid.jdField_a_of_type_JavaLangString)) && (bdeu.b(paramahid.jdField_a_of_type_JavaLangString)))
-        {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130841432);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-          int j = aepi.a(15.0F, BaseApplication.getContext().getResources());
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-          ((Drawable)localObject).setBounds(0, 0, j, aepi.a(15.0F, BaseApplication.getContext().getResources()));
-          paramahid.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
-          label249:
-          localStringBuilder.append(paramahid.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
-          localStringBuilder.append(paramahid.jdField_b_of_type_AndroidWidgetTextView.getText().toString());
-          switch (i)
-          {
-          default: 
-            i = 1;
-          }
+        SearchContactsFragment.ListItemData localListItemData = (SearchContactsFragment.ListItemData)((Iterator)localObject).next();
+        if ((localListItemData != null) && (localListItemData.d == 80000002)) {
+          return true;
         }
-        break;
       }
     }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_Bdbb.a(i, paramahid.jdField_a_of_type_JavaLangString);
-      paramahin = (ahin)localObject;
-      if (localObject == null)
-      {
-        localObject = bdhj.a();
-        paramahin = (ahin)localObject;
-        if (!this.jdField_a_of_type_Bdbb.a())
-        {
-          this.jdField_a_of_type_Bdbb.a(paramahid.jdField_a_of_type_JavaLangString, i, true, (byte)1);
-          paramahin = (ahin)localObject;
-        }
-      }
-      paramahid.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramahin);
-      return localStringBuilder.toString();
+    return false;
+  }
+  
+  String a(SearchBaseFragment.ItemViewHolder paramItemViewHolder, SearchContactsFragment.ListItemData paramListItemData)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = paramListItemData.d;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramListItemData.a.uin.get());
+    ((StringBuilder)localObject1).append("");
+    paramItemViewHolder.f = ((StringBuilder)localObject1).toString();
+    boolean bool;
+    if (paramListItemData.a.uin.get() != 0L) {
+      bool = true;
+    } else {
       bool = false;
+    }
+    paramItemViewHolder.h = bool;
+    paramItemViewHolder.g = paramListItemData.a.mobile.get();
+    paramItemViewHolder.b.setCompoundDrawables(null, null, null, null);
+    Object localObject2 = new SpannableStringBuilder();
+    switch (i)
+    {
+    default: 
       break;
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000000, paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get()));
-      localSpannableStringBuilder.append("(");
-      if (paramahid.jdField_a_of_type_Boolean) {}
-      for (localObject = paramahid.jdField_a_of_type_JavaLangString;; localObject = paramahid.jdField_b_of_type_JavaLangString)
-      {
-        localSpannableStringBuilder.append(a(80000000, (String)localObject));
-        localSpannableStringBuilder.append(")");
-        break;
+    case 80000002: 
+      paramItemViewHolder.b.setText(a(80000002, String.valueOf(paramListItemData.a.name.get())));
+      break;
+    case 80000001: 
+      paramItemViewHolder.b.setText(a(80000001, String.valueOf(paramListItemData.a.name.get())));
+      ((SpannableStringBuilder)localObject2).append("(");
+      ((SpannableStringBuilder)localObject2).append(a(80000001, String.valueOf(paramListItemData.a.code.get())));
+      ((SpannableStringBuilder)localObject2).append(")");
+      break;
+    case 80000000: 
+      paramItemViewHolder.b.setText(a(80000000, paramListItemData.a.name.get()));
+      ((SpannableStringBuilder)localObject2).append("(");
+      if (paramItemViewHolder.h) {
+        localObject1 = paramItemViewHolder.f;
+      } else {
+        localObject1 = paramItemViewHolder.g;
       }
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000002, String.valueOf(paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get())));
-      break label132;
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setText(a(80000001, String.valueOf(paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get())));
-      localSpannableStringBuilder.append("(");
-      localSpannableStringBuilder.append(a(80000001, String.valueOf(paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get())));
-      localSpannableStringBuilder.append(")");
-      break label132;
-      paramahid.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      break label249;
-      localStringBuilder.append(a(paramahid, paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
-      i = 1;
-      continue;
+      ((SpannableStringBuilder)localObject2).append(a(80000000, (String)localObject1));
+      ((SpannableStringBuilder)localObject2).append(")");
+    }
+    localObject1 = PrettyAccountUtil.a(paramListItemData.a.uint32_richflag1_59.get(), paramListItemData.a.uint32_richflag4_409.get(), (CharSequence)localObject2, paramListItemData.a.accout.get());
+    paramItemViewHolder.c.setText((CharSequence)localObject1);
+    if ((i == 80000000) && (!TextUtils.isEmpty(paramItemViewHolder.f)) && (Utils.c(paramItemViewHolder.f)))
+    {
+      localObject1 = this.r.getApp().getResources().getDrawable(2130842755);
+      this.r.getApp();
+      int j = AIOUtils.b(15.0F, BaseApplication.getContext().getResources());
+      this.r.getApp();
+      ((Drawable)localObject1).setBounds(0, 0, j, AIOUtils.b(15.0F, BaseApplication.getContext().getResources()));
+      paramItemViewHolder.c.setCompoundDrawables(null, null, (Drawable)localObject1, null);
+    }
+    else
+    {
+      paramItemViewHolder.c.setCompoundDrawables(null, null, null, null);
+    }
+    PrettyAccountUtil.a(paramItemViewHolder.c, paramListItemData.a.uint32_richflag1_59.get(), paramListItemData.a.uint32_richflag4_409.get(), 2131168119, 17);
+    localStringBuilder.append(paramItemViewHolder.b.getText().toString());
+    localStringBuilder.append(paramItemViewHolder.c.getText().toString());
+    switch (i)
+    {
+    default: 
+      break;
+    case 80000002: 
+      localStringBuilder.append(b(paramItemViewHolder, paramListItemData.a));
+      break;
+    case 80000001: 
       i = 4;
-      paramahid.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramahid.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      paramahid.jdField_c_of_type_AndroidWidgetTextView.setText(paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.number.get() + alud.a(2131714007));
-      paramahid.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getResources().getColor(2131166977));
-      paramahid.d.setText(paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.brief.get());
-      paramahid.jdField_a_of_type_JavaLangString = String.valueOf(paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
-      localStringBuilder.append(paramahid.jdField_c_of_type_AndroidWidgetTextView.getText()).append(paramahid.d.getText());
-      continue;
-      localStringBuilder.append(b(paramahid, paramahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record));
-      i = 1;
+      paramItemViewHolder.d.setVisibility(0);
+      paramItemViewHolder.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      localObject1 = paramItemViewHolder.d;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramListItemData.a.number.get());
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131911083));
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
+      paramItemViewHolder.d.setTextColor(o().getResources().getColor(2131168118));
+      paramItemViewHolder.e.setText(paramListItemData.a.brief.get());
+      paramItemViewHolder.f = String.valueOf(paramListItemData.a.code.get());
+      localStringBuilder.append(paramItemViewHolder.d.getText());
+      localStringBuilder.append(paramItemViewHolder.e.getText());
+      break;
+    case 80000000: 
+      localStringBuilder.append(a(paramItemViewHolder, paramListItemData.a));
+    }
+    i = 1;
+    localObject1 = this.m.getBitmapFromCache(i, paramItemViewHolder.f);
+    paramListItemData = (SearchContactsFragment.ListItemData)localObject1;
+    if (localObject1 == null)
+    {
+      localObject1 = ImageUtil.k();
+      paramListItemData = (SearchContactsFragment.ListItemData)localObject1;
+      if (!this.m.isPausing())
+      {
+        this.m.requestDecodeFace(paramItemViewHolder.f, i, true, (byte)1);
+        paramListItemData = (SearchContactsFragment.ListItemData)localObject1;
+      }
+    }
+    paramItemViewHolder.a.setImageBitmap(paramListItemData);
+    return localStringBuilder.toString();
+  }
+  
+  protected void a()
+  {
+    if (this.z == null)
+    {
+      j();
+      return;
+    }
+    if (this.O == null)
+    {
+      this.O = new SearchContactsFragment.SearchResultAdapter(this, BaseApplicationImpl.getContext(), this.r, this.k, 4, true);
+      this.O.a(this.z);
+      this.k.setAdapter(this.O);
+      this.i = this.O;
+    }
+    if (this.j.getChildAt(0) != this.k)
+    {
+      this.j.removeAllViews();
+      this.j.addView(this.k);
+    }
+    this.O.a(this.z);
+    this.O.notifyDataSetChanged();
+    if (this.h)
+    {
+      this.h = false;
+      this.k.setSelection(0);
+    }
+    if (t())
+    {
+      Object localObject1 = getBaseActivity();
+      if ((localObject1 != null) && ((localObject1 instanceof SearchContactsActivity)))
+      {
+        localObject1 = SearchBaseActivity.JumpSrcConstants.a(((SearchContactsActivity)localObject1).f());
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.r, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1F", "0X8005D1F", 0, 0, "", (String)localObject1, this.e, "", false);
+      }
+      if (this.z != null)
+      {
+        localObject1 = new StringBuilder();
+        Object localObject2 = this.z.iterator();
+        int i = 0;
+        while (((Iterator)localObject2).hasNext())
+        {
+          SearchContactsFragment.ListItemData localListItemData = (SearchContactsFragment.ListItemData)((Iterator)localObject2).next();
+          if ((localListItemData != null) && (localListItemData.a != null) && (localListItemData.d == 80000002))
+          {
+            ((StringBuilder)localObject1).append(String.valueOf(localListItemData.a.uin.get()));
+            ((StringBuilder)localObject1).append("#");
+            i += 1;
+          }
+        }
+        localObject2 = ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).buildSearchID(this.r.getCurrentAccountUin(), this.e);
+        ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).setAttrSearchPage((String)localObject2, this.e, 2, false, i, ((StringBuilder)localObject1).toString());
+      }
     }
   }
   
-  ArrayList<ahip> a(ArrayList<ahip> paramArrayList)
+  void a(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    int[] arrayOfInt = ViewFactory.a(c());
+    Object localObject1 = new Intent();
+    ((Intent)localObject1).putExtra("last_key_words", this.e);
+    Object localObject2;
+    switch (paramInt1)
+    {
+    default: 
+      break;
+    case 80000003: 
+      ((Intent)localObject1).putExtra("from_key", 5);
+      ((Intent)localObject1).putExtra("fromType", E);
+      ((Intent)localObject1).setClass(o(), ClassificationSearchActivity.class);
+      ClassificationSearchActivity.a(o(), (Intent)localObject1, b(paramInt1));
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.r, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, "0", "", this.e, "", false);
+      break;
+    case 80000002: 
+      ((Intent)localObject1).putExtra("from_key", 2);
+      localObject2 = getBaseActivity();
+      if ((localObject2 != null) && ((localObject2 instanceof SearchContactsActivity))) {
+        ((Intent)localObject1).putExtra("jump_src_key", ((SearchContactsActivity)localObject2).f());
+      }
+      ((Intent)localObject1).setClass(o(), ClassificationSearchActivity.class);
+      ClassificationSearchActivity.a(o(), (Intent)localObject1, b(paramInt1));
+      if ((localObject2 != null) && ((localObject2 instanceof SearchBaseActivity)))
+      {
+        paramInt1 = ((SearchBaseActivity)localObject2).f();
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.r, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D21", "0X8005D21", 0, 0, "0", SearchBaseActivity.JumpSrcConstants.a(paramInt1), this.e, "", false);
+      }
+      paramInt1 = 3;
+      break;
+    case 80000001: 
+      long l1 = Double.valueOf(this.B * 1000000.0D).longValue();
+      long l2 = Double.valueOf(this.C * 1000000.0D).longValue();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("https://qqweb.qq.com/m/relativegroup/index.html?source=qun_rec&keyword=");
+      ((StringBuilder)localObject1).append(URLEncoder.encode(this.e));
+      ((StringBuilder)localObject1).append("&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=");
+      ((StringBuilder)localObject1).append(Long.valueOf(l2));
+      ((StringBuilder)localObject1).append("&lat=");
+      ((StringBuilder)localObject1).append(Long.valueOf(l1));
+      ((StringBuilder)localObject1).append("&sourceext=");
+      ((StringBuilder)localObject1).append(paramInt2);
+      localObject2 = ((StringBuilder)localObject1).toString();
+      localObject1 = localObject2;
+      if (paramBoolean)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append("&show_tab=hot");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&_wv=17039363&_wwv=1293&_cwv=8");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("call jump ,lastKeywords = ");
+        ((StringBuilder)localObject2).append(this.e);
+        ((StringBuilder)localObject2).append(" jump url is : ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("SearchContactsFragment", 2, ((StringBuilder)localObject2).toString());
+      }
+      localObject2 = new Intent(o(), QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("uin", this.r.getCurrentAccountUin());
+      ((Intent)localObject2).putExtra("portraitOnly", true);
+      ((Intent)localObject2).putExtra("hide_more_button", true);
+      ((Intent)localObject2).putExtra("hide_operation_bar", true);
+      ((Intent)localObject2).putExtra("isShowAd", false);
+      o().startActivity((Intent)localObject2);
+      ReportController.b(this.r, "P_CliOper", "Grp_find", "", "result", "Clk_more", 0, 0, "", "", "", "");
+      localObject2 = this.r;
+      if (this.e.matches("^\\d{5,11}$")) {
+        localObject1 = "2";
+      } else {
+        localObject1 = "1";
+      }
+      ReportController.b((AppRuntime)localObject2, "dc00899", "Grp_find", "", "inte_add", "inte_find_grp", 0, 0, (String)localObject1, this.e, "", "");
+      paramInt1 = 2;
+      break;
+    case 80000000: 
+      localObject2 = o();
+      if (localObject2 != null)
+      {
+        ((Intent)localObject1).putExtra("from_key", 0);
+        ((Intent)localObject1).setClass((Context)localObject2, ClassificationSearchActivity.class);
+        ClassificationSearchActivity.a((Activity)localObject2, (Intent)localObject1, b(paramInt1));
+      }
+      break;
+    }
+    paramInt1 = 1;
+    ReportController.b(this.r, "CliOper", "", "", "0X8004BF1", "0X8004BF1", paramInt1, 0, "", "", "", "");
+  }
+  
+  void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(o(), "/pubaccount/browser");
+      localActivityURIRequest.extra().putString("url", paramString1);
+      QRoute.startUri(localActivityURIRequest, null);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.e, paramString2, paramString3, "2");
+      return;
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.g = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "doSearch");
+    }
+    if (NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
+    {
+      l();
+      this.e = paramString;
+      if (this.t == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SearchContactsFragment", 2, "doSearch:should not be here | searchFacade = null");
+        }
+        m();
+        return;
+      }
+      this.t.c();
+      if (this.f == 1)
+      {
+        this.a = true;
+        this.b = 80000001;
+        if (this.c) {
+          GroupSearchHistoryManager.a().a(this.r.getCurrentUin(), paramString);
+        } else {
+          this.c = true;
+        }
+      }
+      ContactSearchFacade localContactSearchFacade;
+      int i;
+      if (E == 12)
+      {
+        localContactSearchFacade = this.t;
+        if (this.a) {
+          i = this.b;
+        } else {
+          i = 80000006;
+        }
+        localContactSearchFacade.a(paramString, i, this.C, this.B, 1);
+      }
+      else
+      {
+        localContactSearchFacade = this.t;
+        if (this.a) {
+          i = this.b;
+        } else {
+          i = 80000005;
+        }
+        localContactSearchFacade.a(paramString, i, this.C, this.B, 0);
+      }
+      this.h = true;
+      if (this.a)
+      {
+        paramString = c(this.b);
+        ReportController.b(this.r, "CliOper", "", "", paramString, paramString, this.f + 1, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(this.r, "CliOper", "", "", "0X8004BED", "0X8004BED", this.f + 1, 0, "", "", "", "");
+      return;
+    }
+    QQToast.makeText(BaseApplicationImpl.getContext(), 2131892104, 0).show(i());
+  }
+  
+  protected boolean a(ArrayList<SearchResult> paramArrayList)
+  {
+    boolean bool = this.a;
+    int i = 1;
+    if (!bool)
+    {
+      this.D = paramArrayList;
+      this.K = ReportUtil.a(paramArrayList, this.J);
+      if (!e(this.D))
+      {
+        this.z = d(c(paramArrayList));
+        g();
+        b(this.D);
+        return true;
+      }
+      return false;
+    }
+    this.a = false;
+    this.D = paramArrayList;
+    g();
+    b(this.D);
+    if (!e(this.D))
+    {
+      if (this.f == 1) {
+        i = 3;
+      } else if (this.f != 0) {
+        i = 0;
+      }
+      a(((SearchResult)paramArrayList.get(0)).a, false, i);
+    }
+    return false;
+  }
+  
+  void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SearchContactsFragment", 2, "show group search recommend view");
+    }
+    this.M = new GroupSearchRecommendView(o(), this.y, new SearchContactsFragment.3(this), new SearchContactsFragment.4(this));
+    this.M.a();
+    a(this.M);
+  }
+  
+  ArrayList<SearchResult> c(ArrayList<SearchResult> paramArrayList)
+  {
+    int[] arrayOfInt = ViewFactory.a(n());
     ArrayList localArrayList = new ArrayList(paramArrayList.size());
     int j = arrayOfInt.length;
     int i = 0;
@@ -340,9 +826,9 @@ public class SearchContactsFragment
       Iterator localIterator = paramArrayList.iterator();
       while (localIterator.hasNext())
       {
-        ahip localahip = (ahip)localIterator.next();
-        if (localahip.jdField_a_of_type_Int == k) {
-          localArrayList.add(localahip);
+        SearchResult localSearchResult = (SearchResult)localIterator.next();
+        if (localSearchResult.a == k) {
+          localArrayList.add(localSearchResult);
         }
       }
       i += 1;
@@ -350,654 +836,286 @@ public class SearchContactsFragment
     return localArrayList;
   }
   
-  protected void a()
+  void c(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      g();
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Ahio == null)
-        {
-          this.jdField_a_of_type_Ahio = new ahio(this, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 4, true);
-          this.jdField_a_of_type_Ahio.a(this.jdField_a_of_type_JavaUtilArrayList);
-          this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ahio);
-          this.a = this.jdField_a_of_type_Ahio;
-        }
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) != this.jdField_a_of_type_ComTencentWidgetXListView)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentWidgetXListView);
-        }
-        this.jdField_a_of_type_Ahio.a(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_Ahio.notifyDataSetChanged();
-        if (this.jdField_c_of_type_Boolean)
-        {
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
-        }
-      } while (!a());
-      localObject1 = getActivity();
-      if ((localObject1 != null) && ((localObject1 instanceof SearchContactsActivity)))
-      {
-        localObject1 = ahhx.a(((SearchContactsActivity)localObject1).a());
-        nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1F", "0X8005D1F", 0, 0, "", (String)localObject1, this.jdField_a_of_type_JavaLangString, "", false);
-      }
-    } while (this.jdField_a_of_type_JavaUtilArrayList == null);
-    Object localObject1 = new StringBuilder();
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    while (((Iterator)localObject2).hasNext())
-    {
-      ahin localahin = (ahin)((Iterator)localObject2).next();
-      if ((localahin != null) && (localahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null) && (localahin.jdField_b_of_type_Int == 80000002))
-      {
-        ((StringBuilder)localObject1).append(String.valueOf(localahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get())).append("#");
-        i += 1;
-      }
-    }
-    localObject2 = swe.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    swe.a().a((String)localObject2, this.jdField_a_of_type_JavaLangString, 2, false, i, ((StringBuilder)localObject1).toString());
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject1 = new Intent();
-    ((Intent)localObject1).putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    int i = 1;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    for (;;)
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF1", "0X8004BF1", paramInt, 0, "", "", "", "");
-      return;
-      Object localObject2 = a();
-      if (localObject2 == null) {
-        break;
-      }
-      ((Intent)localObject1).putExtra("from_key", 0);
-      ((Intent)localObject1).setClass((Context)localObject2, ClassificationSearchActivity.class);
-      ClassificationSearchActivity.a((Activity)localObject2, (Intent)localObject1, a(paramInt));
-      paramInt = 1;
-      continue;
-      long l1 = Double.valueOf(this.jdField_a_of_type_Double * 1000000.0D).longValue();
-      long l2 = Double.valueOf(this.jdField_b_of_type_Double * 1000000.0D).longValue();
-      localObject2 = "https://qqweb.qq.com/m/relativegroup/index.html?source=qun_rec&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-      localObject1 = localObject2;
-      if (paramBoolean) {
-        localObject1 = (String)localObject2 + "&show_tab=hot";
-      }
-      localObject1 = (String)localObject1 + "&_wv=17039363&_wwv=1293&_cwv=8";
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchContactsFragment", 2, "call jump ,lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
-      }
-      localObject2 = new Intent(a(), QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      ((Intent)localObject2).putExtra("portraitOnly", true);
-      ((Intent)localObject2).putExtra("hide_more_button", true);
-      ((Intent)localObject2).putExtra("hide_operation_bar", true);
-      ((Intent)localObject2).putExtra("isShowAd", false);
-      a().startActivity((Intent)localObject2);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "Clk_more", 0, 0, "", "", "", "");
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_a_of_type_JavaLangString.matches("^\\d{5,11}$")) {}
-      for (localObject1 = "2";; localObject1 = "1")
-      {
-        azqs.b((QQAppInterface)localObject2, "dc00899", "Grp_find", "", "inte_add", "inte_find_grp", 0, 0, (String)localObject1, this.jdField_a_of_type_JavaLangString, "", "");
-        paramInt = 2;
-        break;
-      }
-      ((Intent)localObject1).putExtra("from_key", 2);
-      localObject2 = getActivity();
-      if ((localObject2 != null) && ((localObject2 instanceof SearchContactsActivity))) {
-        ((Intent)localObject1).putExtra("jump_src_key", ((SearchContactsActivity)localObject2).a());
-      }
-      ((Intent)localObject1).setClass(a(), ClassificationSearchActivity.class);
-      ClassificationSearchActivity.a(a(), (Intent)localObject1, a(paramInt));
-      paramInt = 3;
-      i = paramInt;
-      if (localObject2 == null) {
-        break;
-      }
-      i = paramInt;
-      if (!(localObject2 instanceof SearchBaseActivity)) {
-        break;
-      }
-      paramInt = ((SearchBaseActivity)localObject2).a();
-      nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D21", "0X8005D21", 0, 0, "0", ahhx.a(paramInt), this.jdField_a_of_type_JavaLangString, "", false);
-      paramInt = 3;
-      continue;
-      ((Intent)localObject1).putExtra("from_key", 5);
-      ((Intent)localObject1).putExtra("fromType", jdField_b_of_type_Int);
-      ((Intent)localObject1).setClass(a(), ClassificationSearchActivity.class);
-      ClassificationSearchActivity.a(a(), (Intent)localObject1, a(paramInt));
-      nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, "0", "", this.jdField_a_of_type_JavaLangString, "", false);
-      paramInt = 1;
+    ViewFactory.GuideView localGuideView = this.N;
+    if (localGuideView != null) {
+      localGuideView.a(n(), paramString);
     }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      Intent localIntent = new Intent(a(), PublicAccountBrowser.class);
-      localIntent.putExtra("url", paramString1);
-      a().startActivity(localIntent);
-      nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.jdField_a_of_type_JavaLangString, paramString2, paramString3, "2");
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "doSearch");
-    }
-    if (bdin.d(BaseApplicationImpl.getContext()))
-    {
-      h();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      if (this.jdField_a_of_type_Ahhd == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchContactsFragment", 2, "doSearch:should not be here | searchFacade = null");
-        }
-        i();
-        return;
-      }
-      this.jdField_a_of_type_Ahhd.c();
-      if (this.jdField_d_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = 80000001;
-        if (this.jdField_d_of_type_Boolean) {
-          ahke.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString);
-        }
-      }
-      else
-      {
-        if (jdField_b_of_type_Int != 12) {
-          break label223;
-        }
-        localahhd = this.jdField_a_of_type_Ahhd;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label216;
-        }
-      }
-      label216:
-      for (int i = this.jdField_a_of_type_Int;; i = 80000006)
-      {
-        localahhd.a(paramString, i, this.jdField_b_of_type_Double, this.jdField_a_of_type_Double, 1);
-        this.jdField_c_of_type_Boolean = true;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label268;
-        }
-        paramString = a(this.jdField_a_of_type_Int);
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", paramString, paramString, this.jdField_d_of_type_Int + 1, 0, "", "", "", "");
-        return;
-        this.jdField_d_of_type_Boolean = true;
-        break;
-      }
-      label223:
-      ahhd localahhd = this.jdField_a_of_type_Ahhd;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (i = this.jdField_a_of_type_Int;; i = 80000005)
-      {
-        localahhd.a(paramString, i, this.jdField_b_of_type_Double, this.jdField_a_of_type_Double, 0);
-        break;
-      }
-      label268:
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BED", "0X8004BED", this.jdField_d_of_type_Int + 1, 0, "", "", "", "");
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 2131694768, 0).b(b());
-  }
-  
-  protected boolean a(ArrayList<ahip> paramArrayList)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-      this.g = ayvh.a(paramArrayList, this.e);
-      if (!b(this.jdField_b_of_type_JavaUtilArrayList))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList = b(a(paramArrayList));
-        e();
-        a(this.jdField_b_of_type_JavaUtilArrayList);
-        return true;
-      }
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-    e();
-    a(this.jdField_b_of_type_JavaUtilArrayList);
-    if (!b(this.jdField_b_of_type_JavaUtilArrayList)) {
-      a(((ahip)paramArrayList.get(0)).jdField_a_of_type_Int, false);
-    }
-    return false;
-  }
-  
-  ArrayList<ahin> b(ArrayList<ahip> paramArrayList)
+  ArrayList<SearchContactsFragment.ListItemData> d(ArrayList<SearchResult> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList(12);
-    int n = paramArrayList.size();
-    int j = 0;
-    ahip localahip;
-    for (;;)
+    int i1 = paramArrayList.size();
+    int i = 0;
+    while (i < i1)
     {
-      if (j < n)
+      SearchResult localSearchResult = (SearchResult)paramArrayList.get(i);
+      if ((localSearchResult != null) && ((localSearchResult.e.size() > 0) || (localSearchResult.i.size() > 0)))
       {
-        localahip = (ahip)paramArrayList.get(j);
-        if ((localahip == null) || ((localahip.jdField_b_of_type_JavaUtilList.size() <= 0) && (localahip.jdField_c_of_type_JavaUtilList.size() <= 0)))
+        Object localObject = new SearchContactsFragment.ListItemData();
+        ((SearchContactsFragment.ListItemData)localObject).c = 0;
+        ((SearchContactsFragment.ListItemData)localObject).d = localSearchResult.a;
+        ((SearchContactsFragment.ListItemData)localObject).j = localSearchResult.k;
+        if (ViewFactory.b(localSearchResult.a) == 2131886308) {
+          ((SearchContactsFragment.ListItemData)localObject).e = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.r, BaseApplicationImpl.getContext());
+        } else {
+          ((SearchContactsFragment.ListItemData)localObject).e = o().getString(ViewFactory.b(localSearchResult.a));
+        }
+        localArrayList.add(localObject);
+        localObject = null;
+        if (!TextUtils.isEmpty(localSearchResult.g)) {
+          localObject = localSearchResult.g;
+        }
+        SearchContactsFragment.ListItemData localListItemData;
+        int j;
+        if ((localSearchResult.f != null) && (localSearchResult.f.hotword.has()))
         {
-          j += 1;
+          localListItemData = new SearchContactsFragment.ListItemData();
+          localListItemData.c = 2;
+          localListItemData.b = localSearchResult.f;
+          localListItemData.d = localSearchResult.a;
+          localListItemData.f = localSearchResult.h;
+          localListItemData.g = ((String)localObject);
+          localArrayList.add(localListItemData);
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F75", "0X8006F75", 0, 0, this.e, localListItemData.b.hotword.get(), String.valueOf(localListItemData.b.hotword_type.get()), "");
+          j = 2;
         }
         else
         {
-          localObject = new ahin();
-          ((ahin)localObject).jdField_a_of_type_Int = 0;
-          ((ahin)localObject).jdField_b_of_type_Int = localahip.jdField_a_of_type_Int;
-          if (ViewFactory.a(localahip.jdField_a_of_type_Int) == 2131689767)
+          j = 3;
+        }
+        if (localSearchResult.a == 80000004)
+        {
+          int n = localSearchResult.i.size();
+          k = 0;
+          for (;;)
           {
-            ((ahin)localObject).jdField_a_of_type_JavaLangString = swy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-            label127:
-            localArrayList.add(localObject);
-            if (TextUtils.isEmpty(localahip.jdField_a_of_type_JavaLangString)) {
-              break label816;
+            m = n;
+            if (k >= j) {
+              break;
             }
+            localObject = new SearchContactsFragment.ListItemData();
+            ((SearchContactsFragment.ListItemData)localObject).h = ((AccountSearchPb.ResultItem)localSearchResult.i.get(k));
+            ((SearchContactsFragment.ListItemData)localObject).c = 2;
+            ((SearchContactsFragment.ListItemData)localObject).d = localSearchResult.a;
+            localArrayList.add(localObject);
+            if (k >= n - 1)
+            {
+              m = n;
+              break;
+            }
+            k += 1;
           }
         }
-      }
-    }
-    label805:
-    label816:
-    for (Object localObject = localahip.jdField_a_of_type_JavaLangString;; localObject = null)
-    {
-      ahin localahin;
-      int i;
-      if ((localahip.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) && (localahip.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.has()))
-      {
-        localahin = new ahin();
-        localahin.jdField_a_of_type_Int = 2;
-        localahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord = localahip.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
-        localahin.jdField_b_of_type_Int = localahip.jdField_a_of_type_Int;
-        localahin.jdField_c_of_type_Int = localahip.jdField_c_of_type_Int;
-        localahin.jdField_b_of_type_JavaLangString = ((String)localObject);
-        localArrayList.add(localahin);
-        i = 2;
-        nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F75", "0X8006F75", 0, 0, this.jdField_a_of_type_JavaLangString, localahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.get(), String.valueOf(localahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_type.get()), "");
-      }
-      for (;;)
-      {
-        int m;
-        int k;
-        if (localahip.jdField_a_of_type_Int == 80000004)
+        int m = localSearchResult.e.size();
+        int k = 0;
+        while (k < j)
         {
-          m = localahip.jdField_c_of_type_JavaUtilList.size();
-          k = 0;
-          label314:
-          if (k < i)
-          {
-            localObject = new ahin();
-            ((ahin)localObject).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem = ((AccountSearchPb.ResultItem)localahip.jdField_c_of_type_JavaUtilList.get(k));
-            ((ahin)localObject).jdField_a_of_type_Int = 2;
-            ((ahin)localObject).jdField_b_of_type_Int = localahip.jdField_a_of_type_Int;
-            localArrayList.add(localObject);
-            if (k < m - 1) {}
+          localListItemData = new SearchContactsFragment.ListItemData();
+          localListItemData.c = 2;
+          localListItemData.a = ((AccountSearchPb.record)localSearchResult.e.get(k));
+          localListItemData.d = localSearchResult.a;
+          localListItemData.f = localSearchResult.h;
+          localListItemData.g = ((String)localObject);
+          localListItemData.j = localSearchResult.k;
+          localArrayList.add(localListItemData);
+          if (k >= m - 1) {
+            break;
           }
-          else
-          {
-            i = m;
+          if (localSearchResult.a == 80000001) {
+            ReportController.b(this.r, "P_CliOper", "Grp_find", "", "result", "exp", 0, 0, "", "", "", "");
           }
+          k += 1;
+        }
+        if (m > 3)
+        {
+          localObject = new SearchContactsFragment.ListItemData();
+          ((SearchContactsFragment.ListItemData)localObject).c = 1;
+          ((SearchContactsFragment.ListItemData)localObject).d = localSearchResult.a;
+          ((SearchContactsFragment.ListItemData)localObject).f = localSearchResult.h;
+          if (localSearchResult.a == 80000004) {
+            ((SearchContactsFragment.ListItemData)localObject).i = localSearchResult.g;
+          }
+          localArrayList.add(localObject);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("search reuslt : type = ");
+          ((StringBuilder)localObject).append(localSearchResult.a);
+          ((StringBuilder)localObject).append("count = ");
+          ((StringBuilder)localObject).append(localSearchResult.e.size());
+          QLog.d("SearchContactsFragment", 2, ((StringBuilder)localObject).toString());
+        }
+        switch (localSearchResult.a)
+        {
+        default: 
+          localObject = "";
         }
         for (;;)
         {
-          if (i > 3)
-          {
-            localObject = new ahin();
-            ((ahin)localObject).jdField_a_of_type_Int = 1;
-            ((ahin)localObject).jdField_b_of_type_Int = localahip.jdField_a_of_type_Int;
-            ((ahin)localObject).jdField_c_of_type_Int = localahip.jdField_c_of_type_Int;
-            if (localahip.jdField_a_of_type_Int == 80000004) {
-              ((ahin)localObject).jdField_c_of_type_JavaLangString = localahip.jdField_a_of_type_JavaLangString;
-            }
-            localArrayList.add(localObject);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("SearchContactsFragment", 2, "search reuslt : type = " + localahip.jdField_a_of_type_Int + "count = " + localahip.jdField_b_of_type_JavaUtilList.size());
-          }
-          localObject = "";
-          switch (localahip.jdField_a_of_type_Int)
-          {
-          }
-          for (;;)
-          {
-            azqs.b(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, String.valueOf(Math.min(i, 3)), "", "", "");
-            break;
-            ((ahin)localObject).jdField_a_of_type_JavaLangString = a().getString(ViewFactory.a(localahip.jdField_a_of_type_Int));
-            break label127;
-            k += 1;
-            break label314;
-            k = localahip.jdField_b_of_type_JavaUtilList.size();
-            m = 0;
-            for (;;)
-            {
-              if (m >= i) {
-                break label805;
-              }
-              localahin = new ahin();
-              localahin.jdField_a_of_type_Int = 2;
-              localahin.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = ((AccountSearchPb.record)localahip.jdField_b_of_type_JavaUtilList.get(m));
-              localahin.jdField_b_of_type_Int = localahip.jdField_a_of_type_Int;
-              localahin.jdField_c_of_type_Int = localahip.jdField_c_of_type_Int;
-              localahin.jdField_b_of_type_JavaLangString = ((String)localObject);
-              localArrayList.add(localahin);
-              if (m >= k - 1)
-              {
-                i = k;
-                break;
-              }
-              if (localahip.jdField_a_of_type_Int == 80000001) {
-                azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "exp", 0, 0, "", "", "", "");
-              }
-              m += 1;
-            }
-            localObject = "0X80061B8";
-            continue;
-            localObject = "0X80061BB";
-            continue;
-            localObject = "0X80061BE";
-            continue;
-            localObject = "0X80061C1";
-          }
-          return localArrayList;
-          i = k;
+          break;
+          localObject = "0X80061C1";
+          continue;
+          localObject = "0X80061BE";
+          continue;
+          localObject = "0X80061BB";
+          continue;
+          localObject = "0X80061B8";
         }
-        i = 3;
+        ReportController.b(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, String.valueOf(Math.min(m, 3)), "", "", "");
       }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  void d()
+  {
+    if (this.N == null)
+    {
+      this.N = ((ViewFactory.GuideView)ViewFactory.a().a(80000005, o(), true, this.m, null));
+      localObject = this.N;
+      if (localObject == null) {
+        return;
+      }
+      ((ViewFactory.GuideView)localObject).setListener(new SearchContactsFragment.5(this));
+      a(this.N);
+      return;
+    }
+    Object localObject = this.j.getChildAt(0);
+    ViewFactory.GuideView localGuideView = this.N;
+    if (localObject != localGuideView) {
+      a(localGuideView);
     }
   }
   
-  void b()
+  public void d(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SearchContactsFragment", 2, "show group search recommend view");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView = new GroupSearchRecommendView(a(), this.jdField_a_of_type_Ahkj, new ahij(this), new ahik(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView.a();
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView);
-  }
-  
-  void b(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView.a(c(), paramString);
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    this.e = paramString;
+    this.J = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      l();
-      b(paramString);
+      d();
+      c(paramString);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.j.removeAllViews();
   }
   
-  protected void g()
+  protected void j()
   {
-    Object localObject = (alwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
-    if ((80000001 == this.jdField_a_of_type_Int) && (((alwd)localObject).jdField_d_of_type_Boolean)) {
-      if (this.jdField_a_of_type_Ahex == null)
+    Object localObject = (MayknowRecommendManager)this.r.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+    if ((80000001 == this.b) && (((MayknowRecommendManager)localObject).j))
+    {
+      localObject = this.L;
+      if (localObject == null)
       {
-        this.jdField_a_of_type_Ahex = new ahfb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null);
-        localObject = this.jdField_a_of_type_Ahex.a();
-        TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+        this.L = new RecommendTroopListWrapperForSearchEmpty(this.r, this.s, null, null);
+        localObject = this.L.g();
+        TextView localTextView = new TextView(this.s);
         localTextView.setGravity(17);
-        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(105.0F, getResources())));
-        localTextView.setTextColor(getResources().getColor(2131166981));
+        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(105.0F, getResources())));
+        localTextView.setTextColor(getResources().getColor(2131168122));
         localTextView.setTextSize(1, 17.0F);
-        localTextView.setText(alud.a(2131714014));
-        localTextView.setBackgroundResource(2130838593);
+        localTextView.setText(HardCodeUtil.a(2131911090));
+        localTextView.setBackgroundResource(2130838959);
         ((ListView)localObject).addHeaderView(localTextView);
-        localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        localTextView.setTextColor(getResources().getColor(2131166981));
+        localTextView = new TextView(this.s);
+        localTextView.setTextColor(getResources().getColor(2131168122));
         localTextView.setTextSize(1, 14.0F);
         localTextView.setGravity(16);
-        localTextView.setPadding(aepi.a(15.0F, getResources()), 0, 0, 0);
-        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(40.0F, getResources())));
-        localTextView.setText(alud.a(2131714005));
-        localTextView.setBackgroundResource(2130838593);
+        localTextView.setPadding(AIOUtils.b(15.0F, getResources()), 0, 0, 0);
+        localTextView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(40.0F, getResources())));
+        localTextView.setText(HardCodeUtil.a(2131911081));
+        localTextView.setBackgroundResource(2130838959);
         ((ListView)localObject).addHeaderView(localTextView);
-        a(this.jdField_a_of_type_Ahex.a());
       }
+      else
+      {
+        ((RecommendTroopListWrapper)localObject).f();
+      }
+      a(this.L.g());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      this.jdField_a_of_type_Ahex.b();
-      break;
-      super.g();
+      super.j();
     }
-  }
-  
-  public void k()
-  {
-    super.k();
-    e();
-  }
-  
-  void l()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView = ((ViewFactory.GuideView)ViewFactory.a().a(80000005, a(), true));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView != null) {}
-    }
-    while (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) == this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView)
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView.setListener(new ahil(this));
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView);
-      return;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView);
+    this.a = false;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject1 = paramView.getTag();
-    if (localObject1 != null) {
-      if ((localObject1 instanceof ahid))
-      {
-        localObject2 = (ahid)localObject1;
-        a(((ahid)localObject2).jdField_b_of_type_Int, ((ahid)localObject2).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record);
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF2", "0X8004BF2", a(((ahid)localObject2).jdField_b_of_type_Int), 0, "", "", "", "");
-        localObject3 = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(((ahid)localObject2).jdField_b_of_type_Int));
-        localObject1 = null;
-        paramView = (View)localObject1;
-        if (localObject2 != null)
-        {
-          paramView = (View)localObject1;
-          if (((ahid)localObject2).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null)
-          {
-            paramView = (View)localObject1;
-            if (((ahid)localObject2).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin != null) {
-              paramView = String.valueOf(((ahid)localObject2).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-            }
-          }
-        }
-        j = ((ahid)localObject2).jdField_b_of_type_Int;
-        if (localObject3 != null)
-        {
-          i = ((Integer)localObject3).intValue();
-          ayvm.a(j, i, ((ahid)localObject2).jdField_c_of_type_Int, true, paramView, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
-          if (((ahid)localObject2).jdField_b_of_type_Int == 80000002)
-          {
-            localObject1 = ((ahid)localObject2).jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-            paramView = getActivity();
-            if ((localObject1 != null) && (paramView != null) && ((paramView instanceof SearchBaseActivity)))
-            {
-              i = ((SearchBaseActivity)paramView).a();
-              localObject3 = swe.a();
-              if (((AccountSearchPb.record)localObject1).uin == null) {
-                break label404;
-              }
-              paramView = ((AccountSearchPb.record)localObject1).uin.get() + "";
-              ((swe)localObject3).a(2, paramView, ((ahid)localObject2).jdField_c_of_type_Int, jdField_b_of_type_Int);
-              if (jdField_b_of_type_Int != 12) {
-                break label416;
-              }
-              localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              localObject2 = ((ahid)localObject2).jdField_c_of_type_Int + "";
-              str = ahhx.a(i);
-              if (((AccountSearchPb.record)localObject1).uin == null) {
-                break label410;
-              }
-              paramView = ((AccountSearchPb.record)localObject1).uin.get() + "";
-              azqs.b((QQAppInterface)localObject3, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, (String)localObject2, str, paramView, this.jdField_a_of_type_JavaLangString);
-            }
-          }
-        }
-      }
-    }
-    label404:
-    label410:
-    label416:
-    label1125:
-    while (!(paramView instanceof QzoneSearchResultView))
+    Object localObject = paramView.getTag();
+    if (localObject != null)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            int j;
-            String str;
-            return;
-            i = 0;
-            continue;
-            paramView = "";
-            continue;
-            paramView = "";
-          }
-          Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (((AccountSearchPb.record)localObject1).uin != null) {}
-          for (paramView = ((AccountSearchPb.record)localObject1).uin.get() + "";; paramView = "")
-          {
-            nrt.a((QQAppInterface)localObject3, "P_CliOper", "Pb_account_lifeservice", paramView, "0X8005D20", "0X8005D20", 0, 0, ((ahid)localObject2).jdField_c_of_type_Int + "", ahhx.a(i), this.jdField_a_of_type_JavaLangString, "", false);
-            return;
-          }
-          if ((localObject1 instanceof bbph))
-          {
-            paramView = (bbph)localObject1;
-            localObject1 = TroopInfoActivity.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_b_of_type_JavaLangString, 101);
-            ((Bundle)localObject1).putInt("exposureSource", 3);
-            ((Bundle)localObject1).putInt("t_s_f", 1000);
-            bcpx.a(a(), (Bundle)localObject1, 2);
-            azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BF2", "0X8004BF2", a(80000001), 0, "", "", "", "");
-            azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "result", "Clk_grpdate", 0, 0, paramView.jdField_a_of_type_JavaLangString, "", "", "");
-            localObject1 = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(80000001));
-            if (localObject1 != null) {}
-            for (i = ((Integer)localObject1).intValue();; i = 0)
-            {
-              ayvm.a(80000001, i, paramView.jdField_a_of_type_Int, true, paramView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
-              ayvm.a("add_page", "all_result", "clk_grp", 0, this.g, new String[] { paramView.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangString, "" });
-              return;
-            }
-          }
-        } while (!(localObject1 instanceof ahic));
-        paramView = getActivity();
-      } while (paramView == null);
-      localObject1 = (ahic)localObject1;
-      Object localObject2 = new Intent(paramView, PublicAccountBrowser.class);
-      ((Intent)localObject2).putExtra("url", ((ahic)localObject1).jdField_a_of_type_JavaLangString);
-      if (jdField_b_of_type_Int == 13)
-      {
-        ((Intent)localObject2).putExtra("articalChannelId", 12);
-        paramView.startActivity((Intent)localObject2);
-        if (jdField_b_of_type_Int != 12) {
-          break label1045;
-        }
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "" + ((ahic)localObject1).jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaLangString, "" + ((ahic)localObject1).jdField_a_of_type_Long);
-        paramView = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(80000003));
-        if (paramView == null) {
-          break label1125;
-        }
-      }
-      for (int i = paramView.intValue();; i = 0)
-      {
-        ayvm.a(80000003, i, ((ahic)localObject1).jdField_a_of_type_Int, true, null, this.jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
-        return;
-        if (jdField_b_of_type_Int == 1)
-        {
-          ((Intent)localObject2).putExtra("articalChannelId", 10);
-          if ((localObject1 == null) || (((ahic)localObject1).jdField_b_of_type_JavaLangString == null)) {
-            break;
-          }
-          nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F2A", "0X8006F2A", 0, 0, this.jdField_a_of_type_JavaLangString, ((ahic)localObject1).jdField_b_of_type_JavaLangString, ((ahic)localObject1).jdField_c_of_type_JavaLangString, "1");
-          break;
-        }
-        if (jdField_b_of_type_Int != 2) {
-          break;
-        }
-        ((Intent)localObject2).putExtra("articalChannelId", 11);
-        break;
-        nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "" + ((ahic)localObject1).jdField_a_of_type_Int, "", this.jdField_a_of_type_JavaLangString, "" + ((ahic)localObject1).jdField_a_of_type_Long, false);
-        break label905;
+      if ((localObject instanceof SearchBaseFragment.ItemViewHolder)) {
+        a((SearchBaseFragment.ItemViewHolder)localObject);
+      } else if ((localObject instanceof NearbyTroops.CustomViewHolder)) {
+        a((NearbyTroops.CustomViewHolder)localObject);
+      } else if ((localObject instanceof SearchBaseFragment.ArticleItemViewHolder)) {
+        a((SearchBaseFragment.ArticleItemViewHolder)localObject);
       }
     }
-    label905:
-    label1045:
-    ((QzoneSearchResultView)paramView).a(getActivity());
+    else if ((paramView instanceof QzoneSearchResultView)) {
+      ((QzoneSearchResultView)paramView).a(getBaseActivity());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Ahio != null) {
-      this.jdField_a_of_type_Ahio.c();
+    SearchContactsFragment.SearchResultAdapter localSearchResultAdapter = this.O;
+    if (localSearchResultAdapter != null) {
+      localSearchResultAdapter.c();
     }
-    if (this.jdField_a_of_type_Ampt != null) {
-      SosoInterface.b(this.jdField_a_of_type_Ampt);
+    if (this.x != null) {
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.x);
     }
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Ahex != null) {
-      this.jdField_a_of_type_Ahex.e();
+    RecommendTroopListWrapper localRecommendTroopListWrapper = this.L;
+    if (localRecommendTroopListWrapper != null) {
+      localRecommendTroopListWrapper.e();
     }
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    ApngImage.pauseByTag(37);
   }
   
   public void onResume()
   {
     super.onResume();
-    if ((this.jdField_d_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView.b();
+    if (this.f == 1)
+    {
+      GroupSearchRecommendView localGroupSearchRecommendView = this.M;
+      if (localGroupSearchRecommendView != null) {
+        localGroupSearchRecommendView.b();
+      }
     }
+    ApngImage.playByTag(37);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    if (this.jdField_d_of_type_Int == 1) {
+    if (this.f == 1) {
       b();
     }
+  }
+  
+  public void q()
+  {
+    super.q();
+    g();
   }
 }
 

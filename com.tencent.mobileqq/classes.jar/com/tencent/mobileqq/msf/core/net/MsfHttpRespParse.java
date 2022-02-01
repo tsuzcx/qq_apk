@@ -51,12 +51,14 @@ public class MsfHttpRespParse
   private void parseHead()
   {
     this.lineBuf.clear();
-    if (this.msfHttpResp.getSessionBuffer().readLine(this.lineBuf) == -1) {
-      throw new NoHttpResponseException("The target server failed to respond");
+    if (this.msfHttpResp.getSessionBuffer().readLine(this.lineBuf) != -1)
+    {
+      Object localObject = new ParserCursor(0, this.lineBuf.length());
+      localObject = this.lineParser.parseStatusLine(this.lineBuf, (ParserCursor)localObject);
+      this.msfHttpResp.setStatusline((StatusLine)localObject);
+      return;
     }
-    Object localObject = new ParserCursor(0, this.lineBuf.length());
-    localObject = this.lineParser.parseStatusLine(this.lineBuf, (ParserCursor)localObject);
-    this.msfHttpResp.setStatusline((StatusLine)localObject);
+    throw new NoHttpResponseException("The target server failed to respond");
   }
   
   public boolean isParseHeadFinished()
@@ -81,68 +83,79 @@ public class MsfHttpRespParse
   
   protected Header[] parseHeaders(int paramInt1, int paramInt2, LineParser paramLineParser)
   {
-    int j = 0;
     Object localObject2 = paramLineParser;
     if (paramLineParser == null) {
       localObject2 = BasicLineParser.DEFAULT;
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = null;
     paramLineParser = null;
+    Object localObject3 = paramLineParser;
+    int j;
+    Object localObject1;
     for (;;)
     {
       if (paramLineParser == null) {
         paramLineParser = new CharArrayBuffer(64);
-      }
-      while ((this.msfHttpResp.getSessionBuffer().readLine(paramLineParser) == -1) || (paramLineParser.length() < 1))
-      {
-        paramLineParser = new Header[localArrayList.size()];
-        paramInt1 = j;
-        while (paramInt1 < localArrayList.size())
-        {
-          localObject1 = (CharArrayBuffer)localArrayList.get(paramInt1);
-          try
-          {
-            paramLineParser[paramInt1] = ((LineParser)localObject2).parseHeader((CharArrayBuffer)localObject1);
-            paramInt1 += 1;
-          }
-          catch (ParseException paramLineParser)
-          {
-            int i;
-            throw new ProtocolException(paramLineParser.getMessage());
-          }
-        }
+      } else {
         paramLineParser.clear();
       }
-      if (((paramLineParser.charAt(0) == ' ') || (paramLineParser.charAt(0) == '\t')) && (localObject1 != null))
+      int k = this.msfHttpResp.getSessionBuffer().readLine(paramLineParser);
+      j = 0;
+      int i = 0;
+      if ((k == -1) || (paramLineParser.length() < 1)) {
+        break label272;
+      }
+      Object localObject4;
+      if (((paramLineParser.charAt(0) == ' ') || (paramLineParser.charAt(0) == '\t')) && (localObject3 != null))
       {
-        i = 0;
-        for (;;)
+        while (i < paramLineParser.length())
         {
-          if (i < paramLineParser.length())
-          {
-            int k = paramLineParser.charAt(i);
-            if ((k == 32) || (k == 9)) {}
-          }
-          else
-          {
-            if ((paramInt2 <= 0) || (((CharArrayBuffer)localObject1).length() + 1 + paramLineParser.length() - i <= paramInt2)) {
-              break;
-            }
-            throw new IOException("Maximum line length limit exceeded");
+          j = paramLineParser.charAt(i);
+          if ((j != 32) && (j != 9)) {
+            break;
           }
           i += 1;
         }
-        ((CharArrayBuffer)localObject1).append(' ');
-        ((CharArrayBuffer)localObject1).append(paramLineParser, i, paramLineParser.length() - i);
-      }
-      while ((paramInt1 > 0) && (localArrayList.size() >= paramInt1))
-      {
-        throw new IOException("Maximum header count exceeded");
-        localArrayList.add(paramLineParser);
-        Object localObject3 = null;
+        if ((paramInt2 > 0) && (((CharArrayBuffer)localObject3).length() + 1 + paramLineParser.length() - i > paramInt2)) {
+          throw new IOException("Maximum line length limit exceeded");
+        }
+        ((CharArrayBuffer)localObject3).append(' ');
+        ((CharArrayBuffer)localObject3).append(paramLineParser, i, paramLineParser.length() - i);
         localObject1 = paramLineParser;
-        paramLineParser = localObject3;
+        localObject4 = localObject3;
+      }
+      else
+      {
+        localArrayList.add(paramLineParser);
+        localObject1 = null;
+        localObject4 = paramLineParser;
+      }
+      paramLineParser = (LineParser)localObject1;
+      localObject3 = localObject4;
+      if (paramInt1 > 0)
+      {
+        if (localArrayList.size() >= paramInt1) {
+          break;
+        }
+        paramLineParser = (LineParser)localObject1;
+        localObject3 = localObject4;
+      }
+    }
+    throw new IOException("Maximum header count exceeded");
+    label272:
+    paramLineParser = new Header[localArrayList.size()];
+    paramInt1 = j;
+    while (paramInt1 < localArrayList.size())
+    {
+      localObject1 = (CharArrayBuffer)localArrayList.get(paramInt1);
+      try
+      {
+        paramLineParser[paramInt1] = ((LineParser)localObject2).parseHeader((CharArrayBuffer)localObject1);
+        paramInt1 += 1;
+      }
+      catch (ParseException paramLineParser)
+      {
+        throw new ProtocolException(paramLineParser.getMessage());
       }
     }
     return paramLineParser;
@@ -150,7 +163,7 @@ public class MsfHttpRespParse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.MsfHttpRespParse
  * JD-Core Version:    0.7.0.1
  */

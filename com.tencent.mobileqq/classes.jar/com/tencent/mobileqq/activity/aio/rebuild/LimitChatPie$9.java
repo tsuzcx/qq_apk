@@ -1,40 +1,34 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agse;
-import alto;
-import android.text.TextUtils;
-import android.widget.TextView;
-import aweo;
-import aybg;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qqexpand.network.ExpandReqInfo;
+import com.tencent.mobileqq.qqexpand.network.ExpandResponse;
+import com.tencent.mobileqq.qqexpand.network.IExpandCmdCallback;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class LimitChatPie$9
-  implements Runnable
+class LimitChatPie$9
+  implements IExpandCmdCallback
 {
-  public LimitChatPie$9(agse paramagse, String paramString, boolean paramBoolean) {}
+  LimitChatPie$9(LimitChatPie paramLimitChatPie) {}
   
-  public void run()
+  public void onProtocol(@Nullable ExpandReqInfo paramExpandReqInfo, @NotNull ExpandResponse paramExpandResponse)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.this$0.f.setText(agse.a(this.this$0));
-    }
-    for (;;)
+    if ((paramExpandResponse.b() == 0) && (paramExpandResponse.a() != null))
     {
-      localObject = (aybg)this.this$0.a(45);
-      if (!((aybg)localObject).c()) {
-        break;
-      }
+      ThreadManager.getUIHandler().post(new LimitChatPie.9.1(this, paramExpandResponse));
       return;
-      this.this$0.f.setText(this.jdField_a_of_type_JavaLangString);
     }
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Boolean) || (((aybg)localObject).b()) || (!this.this$0.Q)) {
-      bool = false;
-    }
-    Object localObject = ((alto)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    aweo.a().a((Friends)localObject, this.this$0.f, bool);
+    paramExpandReqInfo = new StringBuilder();
+    paramExpandReqInfo.append(this.a.c);
+    paramExpandReqInfo.append("expand.chat.");
+    paramExpandReqInfo = paramExpandReqInfo.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestAbleToGreet. error ");
+    localStringBuilder.append(paramExpandResponse.b());
+    QLog.w(paramExpandReqInfo, 1, localStringBuilder.toString());
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bcsc;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
 
 class TroopAvatarWallEditActivity$4$1
   implements Runnable
@@ -10,12 +10,12 @@ class TroopAvatarWallEditActivity$4$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity$4.this$0.a.a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+    this.b.this$0.d.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

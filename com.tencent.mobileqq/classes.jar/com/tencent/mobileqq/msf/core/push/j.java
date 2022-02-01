@@ -11,12 +11,12 @@ class j
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer.release();
-    this.a.ac = null;
+    this.a.aa = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.j
  * JD-Core Version:    0.7.0.1
  */

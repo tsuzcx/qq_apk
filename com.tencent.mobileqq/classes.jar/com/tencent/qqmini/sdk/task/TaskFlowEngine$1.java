@@ -1,29 +1,26 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhlu;
-import bhlx;
-
-public class TaskFlowEngine$1
+class TaskFlowEngine$1
   implements Runnable
 {
-  public TaskFlowEngine$1(bhlx parambhlx) {}
+  TaskFlowEngine$1(TaskFlowEngine paramTaskFlowEngine) {}
   
   public void run()
   {
-    bhlu[] arrayOfbhlu = bhlx.access$000(this.this$0);
-    int j = arrayOfbhlu.length;
+    BaseTask[] arrayOfBaseTask = this.this$0.mTasks;
+    int j = arrayOfBaseTask.length;
     int i = 0;
     while (i < j)
     {
-      bhlu localbhlu = arrayOfbhlu[i];
-      this.this$0.executeTask(localbhlu);
+      BaseTask localBaseTask = arrayOfBaseTask[i];
+      this.this$0.executeTask(localBaseTask);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskFlowEngine.1
  * JD-Core Version:    0.7.0.1
  */

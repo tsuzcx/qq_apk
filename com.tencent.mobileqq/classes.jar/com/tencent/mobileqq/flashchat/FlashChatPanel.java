@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.flashchat;
 
-import aepi;
-import afii;
-import akpy;
-import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -13,8 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.graphics.drawable.StateListDrawable;
 import android.support.v4.util.MQLruCache;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -29,40 +23,44 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anob;
-import arwf;
-import arwg;
-import arwi;
-import arwp;
-import assg;
-import bamp;
-import banh;
-import bczz;
-import bdbk;
-import bdun;
-import bevu;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper;
+import com.tencent.mobileqq.apollo.aio.api.IApolloAIOHelper;
+import com.tencent.mobileqq.app.GlobalImageCache;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.hiboom.HiBoomConstants;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.util.AccessibilityUtils;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.Pair;
 import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -76,212 +74,179 @@ import mqq.app.MobileQQ;
 @TargetApi(11)
 public class FlashChatPanel
   extends RelativeLayout
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, arwp, bevu, Runnable
+  implements View.OnClickListener, ViewPager.OnPageChangeListener, OnHolderItemClickListener, TabBarView.OnTabChangeListener, Runnable
 {
-  public static final int d;
-  public static final int e;
-  public static int f;
-  public static final int g;
-  public static final int h = BaseChatItemLayout.g + BaseChatItemLayout.l;
-  protected static final int i = BaseChatItemLayout.h + BaseChatItemLayout.m;
-  public static final int j = BaseChatItemLayout.i + BaseChatItemLayout.n;
-  public static final int k = BaseChatItemLayout.j + BaseChatItemLayout.o;
-  int jdField_a_of_type_Int;
-  public View a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  public ETTextView a;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  ArkAppLoadLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
-  public ArkAppRootLayout a;
-  ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-  public MessageForArkFlashChat a;
-  public HiBoomTextView a;
-  QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = null;
-  TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = null;
-  public HashMap<Integer, ArkFlashChatContainerWrapper> a;
-  public Random a;
-  public boolean a;
-  public int[] a;
-  public FlashChatTextEffectView[] a;
-  int b;
-  public View b;
-  public HashMap<Integer, ArkFlashChatContainerWrapper> b;
-  int c = -1;
-  int l = -1;
-  public int m;
+  public static final int l;
+  public static final int m;
+  public static int n;
+  public static final int o;
+  public static final int u = BaseChatItemLayout.k + BaseChatItemLayout.n;
+  protected static final int v = BaseChatItemLayout.l + BaseChatItemLayout.o;
+  public static final int w = BaseChatItemLayout.getBubblePaddingAlignError() + BaseChatItemLayout.getTextPaddingAlignError();
+  BaseChatPie A;
+  public int[] B = new int[2];
+  public int C = 0;
+  public boolean D = false;
+  QQViewPager a = null;
+  TabBarView b = null;
+  int c;
+  int d = -1;
+  int e = -1;
+  RelativeLayout f = null;
+  public View g;
+  public ArkAppRootLayout h;
+  public HiBoomTextView i;
+  public ETTextView j;
+  public View k;
+  public FlashChatTextEffectView[] p = new FlashChatTextEffectView[2];
+  public Random q = new Random();
+  public HashMap<Integer, ArkFlashChatContainerWrapper> r = new HashMap();
+  public MessageForArkFlashChat s;
+  public HashMap<Integer, ArkFlashChatContainerWrapper> t = new HashMap();
+  int x = -1;
+  ArkAppView y;
+  ArkAppLoadLayout z;
   
   static
   {
     Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    d = aepi.a(400.0F, localResources);
-    g = aepi.a(1.0F, localResources);
-    e = (localResources.getDisplayMetrics().widthPixels - g * 2) / 3;
-    f = aepi.a(100.0F, localResources);
+    l = AIOUtils.b(400.0F, localResources);
+    o = AIOUtils.b(1.0F, localResources);
+    m = (localResources.getDisplayMetrics().widthPixels - o * 2) / 3;
+    n = AIOUtils.b(100.0F, localResources);
   }
   
   public FlashChatPanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView = new FlashChatTextEffectView[2];
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
   }
   
   public FlashChatPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView = new FlashChatTextEffectView[2];
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
   }
   
   public FlashChatPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView = new FlashChatTextEffectView[2];
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-  }
-  
-  public static float a()
-  {
-    return 20.0F * MobileQQ.sMobileQQ.getResources().getDisplayMetrics().scaledDensity + anob.jdField_b_of_type_Int;
   }
   
   private void a(QQAppInterface paramQQAppInterface, View paramView, Drawable paramDrawable)
   {
-    if ((paramDrawable == null) || (paramView == null)) {
-      return;
+    if (paramDrawable != null)
+    {
+      if (paramView == null) {
+        return;
+      }
+      paramQQAppInterface = new Rect();
+      paramDrawable.getPadding(paramQQAppInterface);
+      int i1 = paramView.getPaddingTop();
+      int i2 = paramQQAppInterface.top;
+      int i3 = paramView.getPaddingLeft();
+      int i4 = paramQQAppInterface.left;
+      int i5 = paramView.getPaddingRight();
+      int i6 = paramQQAppInterface.right;
+      int i7 = paramView.getPaddingBottom();
+      int i8 = paramQQAppInterface.bottom;
+      paramView.setBackgroundDrawable(paramDrawable);
+      paramView.setPadding(i3 + i4, i1 + i2, i5 + i6, i7 + i8);
     }
-    paramQQAppInterface = new Rect();
-    paramDrawable.getPadding(paramQQAppInterface);
-    int n = paramView.getPaddingTop();
-    int i1 = paramQQAppInterface.top;
-    int i2 = paramView.getPaddingLeft();
-    int i3 = paramQQAppInterface.left;
-    int i4 = paramView.getPaddingRight();
-    int i5 = paramQQAppInterface.right;
-    int i6 = paramView.getPaddingBottom();
-    int i7 = paramQQAppInterface.bottom;
-    paramView.setBackgroundDrawable(paramDrawable);
-    paramView.setPadding(i2 + i3, n + i1, i4 + i5, i7 + i6);
   }
   
   private void a(FlashChatItem paramFlashChatItem)
   {
-    String str2 = banh.f(assg.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()));
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = alud.a(2131705011);
+    Object localObject2 = com.tencent.mobileqq.text.TextUtils.getTextWithoutEmoji(HiBoomConstants.a(this.A.Y.getText().toString()));
+    Object localObject1 = localObject2;
+    if (android.text.TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = HardCodeUtil.a(2131902626);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.panel", 2, "updateHiBoomPreview item = " + paramFlashChatItem);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("updateHiBoomPreview item = ");
+      ((StringBuilder)localObject2).append(paramFlashChatItem);
+      QLog.d("HiBoomFont.panel", 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setHiBoom(paramFlashChatItem.id, 0, assg.a);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setText(str1);
+    this.j.setVisibility(8);
+    this.h.setVisibility(8);
+    this.i.setVisibility(0);
+    this.i.setHiBoom(paramFlashChatItem.id, 0, HiBoomConstants.e);
+    this.i.setText((CharSequence)localObject1);
   }
   
-  public static float b()
+  public static float getFlashChatHeight()
   {
-    return a() * 3.0F / 4.0F;
+    return getFlashChatWidth() * 3.0F / 4.0F;
+  }
+  
+  public static float getFlashChatWidth()
+  {
+    float f1 = MobileQQ.sMobileQQ.getResources().getDisplayMetrics().scaledDensity;
+    return ArkAppCenterUtil.b + f1 * 20.0F;
   }
   
   public RelativeLayout a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      return this.f;
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    if (this.f == null)
     {
       Object localObject2 = getContext();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from((Context)localObject2).inflate(2131560969, null));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364327).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363912);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365008)).setImageDrawable(bdbk.a((AppInterface)localObject1, 1, ((QQAppInterface)localObject1).c()));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362821).setPadding(0, 0, 0, 0);
-      Object localObject3 = (ArkAppLoadLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369757);
+      this.f = ((RelativeLayout)LayoutInflater.from((Context)localObject2).inflate(2131627448, null));
+      this.f.setOnClickListener(this);
+      this.f.findViewById(2131430806).setOnClickListener(this);
+      this.g = this.f.findViewById(2131430276);
+      this.g.setOnClickListener(this);
+      Object localObject1 = this.A.d;
+      ((ImageView)this.f.findViewById(2131431625)).setImageDrawable(FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, ((QQAppInterface)localObject1).getCurrentUin()));
+      this.f.findViewById(2131428772).setPadding(0, 0, 0, 0);
+      Object localObject3 = (ArkAppLoadLayout)this.f.findViewById(2131437612);
       Object localObject4 = (RelativeLayout.LayoutParams)((ArkAppLoadLayout)localObject3).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject4).setMargins(5, 5, 5, 5);
       ((ArkAppLoadLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377787));
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(((Context)localObject2).getResources().getColorStateList(2131166921));
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(((Context)localObject2).getResources().getColorStateList(2131166915));
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setSpannableFactory(bamp.a);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMaxWidth(BaseChatItemLayout.d);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMovementMethod(LinkMovementMethod.getInstance());
-      if ((0 == 0) && (BaseApplicationImpl.sImageCache != null))
+      this.j = ((ETTextView)this.f.findViewById(2131447274));
+      this.j.setTextColor(((Context)localObject2).getResources().getColorStateList(2131168016));
+      this.j.setLinkTextColor(((Context)localObject2).getResources().getColorStateList(2131168008));
+      this.j.setSpannableFactory(QQText.SPANNABLE_FACTORY);
+      this.j.setMaxWidth(BaseChatItemLayout.e);
+      this.j.setMovementMethod(LinkMovementMethod.getInstance());
+      if (GlobalImageCache.a != null)
       {
-        localObject2 = (Drawable.ConstantState)BaseApplicationImpl.sImageCache.get("bubblebg://default_mine");
+        localObject2 = (Drawable.ConstantState)GlobalImageCache.a.get("bubblebg://default_mine");
         if (localObject2 != null)
         {
-          if (QLog.isColorLevel()) {}
+          QLog.isColorLevel();
           ((Drawable.ConstantState)localObject2).newDrawable();
         }
       }
       localObject2 = ((QQAppInterface)localObject1).getApp().getResources();
-      localObject3 = ((Resources)localObject2).getDrawable(2130849439);
-      localObject4 = ((Resources)localObject2).getDrawable(2130849438);
+      localObject3 = ((Resources)localObject2).getDrawable(2130852127);
+      localObject4 = ((Resources)localObject2).getDrawable(2130852126);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject3);
       localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject4);
-      if (BaseApplicationImpl.sImageCache != null)
+      if (GlobalImageCache.a != null)
       {
-        if (QLog.isColorLevel()) {}
-        BaseApplicationImpl.sImageCache.put("bubblebg://default_mine", localStateListDrawable.getConstantState());
+        QLog.isColorLevel();
+        GlobalImageCache.a.put("bubblebg://default_mine", localStateListDrawable.getConstantState());
       }
-      a((QQAppInterface)localObject1, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localStateListDrawable);
-      localObject1 = ((Resources)localObject2).getColorStateList(2131166925);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setPadding(j, h, k, i);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor((ColorStateList)localObject1);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout = ((ArkAppRootLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362809));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362798));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369757));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setClipRadius(14.0F);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setAlignLeft(false);
-      new arwi(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new arwg(this));
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367650));
+      a((QQAppInterface)localObject1, this.j, localStateListDrawable);
+      localObject1 = ((Resources)localObject2).getColorStateList(2131168020);
+      this.j.setPadding(BaseChatItemLayout.getTextBubblePaddingAlignHead(), u, BaseChatItemLayout.getTextBubblePaddingAlignError(), v);
+      this.j.setTextColor((ColorStateList)localObject1);
+      this.j.setTextSize(0, this.A.ah.r);
+      this.h = ((ArkAppRootLayout)this.f.findViewById(2131428759));
+      this.y = ((ArkAppView)this.f.findViewById(2131428746));
+      this.z = ((ArkAppLoadLayout)this.f.findViewById(2131437612));
+      this.y.setClipRadius(14.0F);
+      this.y.setBorderType(2);
+      this.y.setAlignLeft(false);
+      new FlashChatPanel.arkViewOnLongClickAndTouchListener(this);
+      this.y.setCallback(new FlashChatPanel.2(this));
+      this.i = ((HiBoomTextView)this.f.findViewById(2131435032));
     }
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public FlashChatItem a()
-  {
-    return a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-  }
-  
-  public FlashChatItem a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      FlashChatItem localFlashChatItem = this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[paramInt1].a(paramInt2);
-      return localFlashChatItem;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.i("FlashChat", 2, "recordChoose " + paramInt1 + " " + this.jdField_a_of_type_Int + "" + paramInt2);
-      }
-    }
-    return null;
+    return this.f;
   }
   
   public Pair<Integer, Integer> a(int paramInt)
@@ -289,32 +254,32 @@ public class FlashChatPanel
     Object localObject = new ArrayList();
     for (;;)
     {
-      int n;
+      int i1;
       try
       {
-        FlashChatTextEffectView localFlashChatTextEffectView = this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[paramInt];
+        FlashChatTextEffectView localFlashChatTextEffectView = this.p[paramInt];
         if (localFlashChatTextEffectView != null)
         {
-          n = 0;
-          if (n < localFlashChatTextEffectView.a())
+          i1 = 0;
+          if (i1 < localFlashChatTextEffectView.getSize())
           {
-            FlashChatItem localFlashChatItem = localFlashChatTextEffectView.a(n);
-            if ((FlashChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFlashChatItem) != null) || (localFlashChatItem.id == -100000)) {
+            FlashChatItem localFlashChatItem = localFlashChatTextEffectView.c(i1);
+            if ((FlashChatManager.a(this.A.d, localFlashChatItem) != null) || (localFlashChatItem.id == -100000)) {
               break label152;
             }
-            ((ArrayList)localObject).add(new Pair(Integer.valueOf(paramInt), Integer.valueOf(n)));
+            ((ArrayList)localObject).add(new Pair(Integer.valueOf(paramInt), Integer.valueOf(i1)));
             break label152;
           }
         }
         if (((ArrayList)localObject).isEmpty()) {
           return null;
         }
-        n = this.jdField_a_of_type_JavaUtilRandom.nextInt(((ArrayList)localObject).size());
-        paramInt = n;
-        if (this.l == n) {
-          paramInt = (n + 1) / ((ArrayList)localObject).size();
+        i1 = this.q.nextInt(((ArrayList)localObject).size());
+        paramInt = i1;
+        if (this.x == i1) {
+          paramInt = (i1 + 1) / ((ArrayList)localObject).size();
         }
-        this.l = paramInt;
+        this.x = paramInt;
         localObject = (Pair)((ArrayList)localObject).get(paramInt);
         return localObject;
       }
@@ -324,35 +289,35 @@ public class FlashChatPanel
         return null;
       }
       label152:
-      n += 1;
+      i1 += 1;
     }
   }
   
   public void a()
   {
-    FlashChatItem localFlashChatItem = a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FlashChat", 1, "recordChoose" + this.jdField_b_of_type_Int + " " + localFlashChatItem);
+    FlashChatItem localFlashChatItem = getSelectedItem();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recordChoose");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localFlashChatItem);
+      QLog.i("FlashChat", 1, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    if (localFlashChatItem != null)
-    {
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-      localStringBuilder.append(":");
-      if (localFlashChatItem != null) {
-        break label126;
-      }
-      localStringBuilder.append(-1);
+    if (localFlashChatItem != null) {
+      localStringBuilder.append(this.d);
+    } else {
+      localStringBuilder.append(this.e);
     }
-    for (;;)
-    {
-      ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217)).a(localStringBuilder.toString());
-      return;
-      localStringBuilder.append(this.c);
-      break;
-      label126:
+    localStringBuilder.append(":");
+    if (localFlashChatItem == null) {
+      localStringBuilder.append(-1);
+    } else {
       localStringBuilder.append(localFlashChatItem.id);
     }
+    ((FlashChatManager)this.A.d.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).c(localStringBuilder.toString());
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -362,13 +327,20 @@ public class FlashChatPanel
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int n = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "selectItem " + paramInt1 + " " + paramInt2);
-    }
-    Object localObject2 = a(paramInt1, paramInt2);
     Object localObject1;
-    if (localObject2 != null) {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("selectItem ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(" ");
+      ((StringBuilder)localObject1).append(paramInt2);
+      QLog.d("FlashChat", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = b(paramInt1, paramInt2);
+    int i1 = 0;
+    if (localObject2 != null)
+    {
       if (((FlashChatItem)localObject2).id == -100000)
       {
         localObject1 = a(paramInt1);
@@ -377,94 +349,97 @@ public class FlashChatPanel
           if (QLog.isColorLevel()) {
             QLog.d("FlashChat", 2, "random empty");
           }
-          this.jdField_a_of_type_Int = paramInt2;
-          this.jdField_b_of_type_Int = paramInt1;
-          paramInt1 = n;
-          label111:
-          if (paramInt1 >= this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView.length) {
-            break label225;
-          }
-          localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[paramInt1];
-          if (localObject1 != null)
-          {
-            if (paramInt1 == this.jdField_b_of_type_Int) {
-              break label469;
-            }
-            ((FlashChatTextEffectView)localObject1).a(-1);
-          }
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("random");
+          ((StringBuilder)localObject2).append(((Pair)localObject1).first);
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(((Pair)localObject1).second);
+          QLog.d("FlashChat", 2, ((StringBuilder)localObject2).toString());
+          a(((Integer)((Pair)localObject1).first).intValue(), ((Integer)((Pair)localObject1).second).intValue());
         }
       }
-    }
-    for (;;)
-    {
-      paramInt1 += 1;
-      break label111;
-      QLog.d("FlashChat", 2, "random" + ((Pair)localObject1).first + " " + ((Pair)localObject1).second);
-      a(((Integer)((Pair)localObject1).first).intValue(), ((Integer)((Pair)localObject1).second).intValue());
-      label225:
-      return;
-      if (paramInt1 == 0)
+      else if (paramInt1 == 0)
       {
-        localObject1 = FlashChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FlashChatItem)localObject2);
+        localObject1 = FlashChatManager.a(this.A.d, (FlashChatItem)localObject2);
         if (localObject1 != null)
         {
-          localObject2 = "mvip.g.a.sl_" + ((FlashChatItem)localObject2).id;
-          bdun.a(getContext(), (String)localObject2, (String)localObject1, 0, false, false);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("mvip.g.a.sl_");
+          localStringBuilder.append(((FlashChatItem)localObject2).id);
+          localObject2 = localStringBuilder.toString();
+          VasH5PayUtil.a(getContext(), (String)localObject2, (String)localObject1, 0, false, false);
           return;
         }
         if (paramBoolean) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_b_of_type_Int, false);
+          this.b.setSelectedTab(this.d, false);
         }
         setupArkUI((FlashChatItem)localObject2);
-        break;
       }
-      if (paramInt1 != 1) {
-        break;
+      else if (paramInt1 == 1)
+      {
+        if (paramBoolean) {
+          this.b.setSelectedTab(paramInt1, false);
+        }
+        a((FlashChatItem)localObject2);
       }
-      if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt1, false);
-      }
-      a((FlashChatItem)localObject2);
-      break;
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+    }
+    else
+    {
+      localObject2 = this.A.Y.getText().toString();
       localObject1 = localObject2;
       if (localObject2 != null) {
         localObject1 = ((String)localObject2).trim();
       }
       localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = alud.a(2131705002);
+      if (android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = HardCodeUtil.a(2131902617);
       }
       if (QLog.isColorLevel()) {
         QLog.d("FlashChat", 2, "cancelChoose");
       }
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setVisibility(0);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setText((CharSequence)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
-      if ((!paramBoolean) || (paramInt1 < 0) || (paramInt1 > 1)) {
+      this.j.setVisibility(0);
+      this.j.setText((CharSequence)localObject2);
+      this.h.setVisibility(8);
+      this.i.setVisibility(8);
+      if ((paramBoolean) && (paramInt1 >= 0) && (paramInt1 <= 1)) {
+        this.b.setSelectedTab(paramInt1, false);
+      }
+    }
+    this.c = paramInt2;
+    this.d = paramInt1;
+    paramInt1 = i1;
+    for (;;)
+    {
+      localObject1 = this.p;
+      if (paramInt1 >= localObject1.length) {
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt1, false);
-      break;
-      label469:
-      ((FlashChatTextEffectView)localObject1).a(paramInt2);
+      localObject1 = localObject1[paramInt1];
+      if (localObject1 != null) {
+        if (paramInt1 != this.d) {
+          ((FlashChatTextEffectView)localObject1).b(-1);
+        } else {
+          ((FlashChatTextEffectView)localObject1).b(paramInt2);
+        }
+      }
+      paramInt1 += 1;
     }
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (AppSetting.c) {}
-    try
-    {
-      FlashChatItem localFlashChatItem = a(paramInt2, paramInt1);
-      if (localFlashChatItem != null) {
-        bczz.a(paramView, localFlashChatItem.name);
+    if (AppSetting.e) {
+      try
+      {
+        FlashChatItem localFlashChatItem = b(paramInt2, paramInt1);
+        if (localFlashChatItem != null) {
+          AccessibilityUtils.a(paramView, localFlashChatItem.name);
+        }
       }
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
+      catch (Exception paramView)
       {
         paramView.printStackTrace();
       }
@@ -472,247 +447,291 @@ public class FlashChatPanel
     a(paramInt2, paramInt1);
   }
   
-  public void a(boolean paramBoolean)
+  public FlashChatItem b(int paramInt1, int paramInt2)
   {
-    int i2 = -1;
-    Object localObject1;
-    Object localObject3;
-    if (paramBoolean)
+    try
     {
-      com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = (int)(246.0F * getResources().getDisplayMetrics().density);
-      localObject1 = a(true);
-      if (((RelativeLayout)localObject1).getParent() == null)
-      {
-        localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-        ((FrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372245)).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131367006).setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setVisibility(8);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)
-        {
-          this.m = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight();
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setCustomHeight(0);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Akpy != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Akpy.a(false);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.ax();
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().toString();
-        localObject1 = localObject3;
-        if (localObject3 != null) {
-          localObject1 = ((String)localObject3).trim();
-        }
-        if ((localObject1 != null) && (((String)localObject1).length() != 0) && (((String)localObject1).length() <= 20)) {
-          break label410;
-        }
-        this.jdField_b_of_type_AndroidViewView.setEnabled(false);
-        label229:
-        localObject1 = ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217)).b();
-        if (localObject1 == null) {
-          break label723;
-        }
-      }
+      FlashChatItem localFlashChatItem = this.p[paramInt1].c(paramInt2);
+      return localFlashChatItem;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      int n;
-      int i3;
-      for (;;)
-      {
-        int i1;
-        try
-        {
-          localObject1 = ((String)localObject1).split(":");
-          if (localObject1.length != 2) {
-            break label723;
-          }
-          n = Integer.valueOf(localObject1[0]).intValue();
-          i1 = n;
-        }
-        catch (Exception localException1)
-        {
-          int i4;
-          int i5;
-          label410:
-          n = -1;
-          i1 = i2;
-        }
-        try
-        {
-          i3 = Integer.valueOf(localObject1[1]).intValue();
-          i1 = n;
-          localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[n];
-          i1 = i2;
-          if (localObject1 != null)
-          {
-            i2 = -1;
-            i1 = 0;
-          }
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            n = i1;
-            i1 = i2;
-          }
-        }
-        try
-        {
-          if (i1 >= ((FlashChatTextEffectView)localObject1).a()) {
-            break label717;
-          }
-          localObject3 = ((FlashChatTextEffectView)localObject1).a(i1);
-          if (n == 0)
-          {
-            i4 = i2;
-            if (FlashChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FlashChatItem)localObject3) == null)
-            {
-              i4 = i2;
-              if (localObject3 != null)
-              {
-                i5 = ((FlashChatItem)localObject3).id;
-                i4 = i2;
-                if (i5 == i3) {
-                  i4 = i1;
-                }
-              }
-            }
-            i1 += 1;
-            i2 = i4;
-            continue;
-            ((RelativeLayout)localObject1).setVisibility(0);
-            break;
-            this.jdField_b_of_type_AndroidViewView.setEnabled(true);
-            break label229;
-          }
-          i4 = i2;
-          if (n == 1)
-          {
-            i4 = i2;
-            if (localObject3 != null)
-            {
-              i5 = ((FlashChatItem)localObject3).id;
-              i4 = i2;
-              if (i5 != i3) {}
-            }
-          }
-        }
-        catch (Exception localException3)
-        {
-          i1 = i2;
-          break label511;
-          i1 = i2;
-        }
-      }
-      a(n, i1, true);
-      if (n == 0)
-      {
-        localObject1 = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217);
-        if (((FlashChatManager)localObject1).a().size() < 3) {
-          ((FlashChatManager)localObject1).c();
-        }
-      }
-      return;
-      label511:
-      localException1.printStackTrace();
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Akpy != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Akpy.a(true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aw();
-      localObject2 = a(false);
-      if (localObject2 != null) {
-        ((RelativeLayout)localObject2).setVisibility(8);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131367006).setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setCustomHeight(this.m);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView != null)
-      {
-        localObject2 = this.jdField_b_of_type_JavaUtilHashMap.values().iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ArkFlashChatContainerWrapper)((Iterator)localObject2).next();
-          if (localObject3 != null) {
-            ((ArkFlashChatContainerWrapper)localObject3).doOnEvent(2);
-          }
-        }
-        this.jdField_b_of_type_JavaUtilHashMap.clear();
-      }
+      localException.printStackTrace();
       if (QLog.isColorLevel())
       {
-        QLog.i("FlashChat", 2, "restore layout");
-        return;
-        label717:
-        label723:
-        i3 = -1;
-        n = -1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("recordChoose ");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("");
+        localStringBuilder.append(paramInt2);
+        QLog.i("FlashChat", 2, localStringBuilder.toString());
       }
     }
-  }
-  
-  public boolean a()
-  {
-    if (getVisibility() != 0) {}
-    while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString())) {
-      return false;
-    }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c();
-    return true;
-  }
-  
-  public void b()
-  {
-    a(this.jdField_b_of_type_Int, -1);
-    a();
-    QQToast.a(getContext(), alud.a(2131705001), 0).a();
+    return null;
   }
   
   public void b(View paramView, int paramInt1, int paramInt2) {}
   
+  public void b(boolean paramBoolean)
+  {
+    Object localObject1;
+    Object localObject3;
+    int i3;
+    if (paramBoolean)
+    {
+      com.tencent.widget.XPanelContainer.a = (int)(getResources().getDisplayMetrics().density * 246.0F);
+      localObject1 = a(true);
+      localObject3 = ((RelativeLayout)localObject1).getParent();
+      i3 = -1;
+      if (localObject3 == null)
+      {
+        localObject3 = new RelativeLayout.LayoutParams(-1, -1);
+        ((FrameLayout)this.A.aZ.findViewById(2131440610)).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
+      }
+      else
+      {
+        ((RelativeLayout)localObject1).setVisibility(0);
+      }
+      this.A.aZ.findViewById(2131433920).setVisibility(8);
+      this.A.p.setVisibility(8);
+      if (this.A.W != null)
+      {
+        this.C = this.A.W.getHeight();
+        this.A.W.setCustomHeight(0);
+      }
+      localObject1 = (IApolloAIOHelper)this.A.q(8);
+      if (localObject1 != null) {
+        ((IApolloAIOHelper)localObject1).showApolloView(false);
+      }
+      localObject1 = (AIOShortcutBarHelper)this.A.q(52);
+      if (localObject1 != null) {
+        ((AIOShortcutBarHelper)localObject1).d(11);
+      }
+      localObject3 = this.A.Y.getEditableText().toString();
+      localObject1 = localObject3;
+      if (localObject3 != null) {
+        localObject1 = ((String)localObject3).trim();
+      }
+      if ((localObject1 != null) && (((String)localObject1).length() != 0) && (((String)localObject1).length() <= 20)) {
+        this.k.setEnabled(true);
+      } else {
+        this.k.setEnabled(false);
+      }
+      localObject1 = ((FlashChatManager)this.A.d.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).b();
+      if (localObject1 == null) {
+        break label790;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = ((String)localObject1).split(":");
+        if (localObject1.length != 2) {
+          break label790;
+        }
+        i1 = Integer.valueOf(localObject1[0]).intValue();
+        i2 = i1;
+        try
+        {
+          i4 = Integer.valueOf(localObject1[1]).intValue();
+          i2 = i1;
+          localObject1 = this.p[i1];
+          i5 = i1;
+          i2 = i3;
+          if (localObject1 == null) {
+            continue;
+          }
+          i3 = -1;
+          i2 = 0;
+          try
+          {
+            if (i2 < ((FlashChatTextEffectView)localObject1).getSize())
+            {
+              localObject3 = ((FlashChatTextEffectView)localObject1).c(i2);
+              if (i1 == 0)
+              {
+                i5 = i3;
+                if (FlashChatManager.a(this.A.d, (FlashChatItem)localObject3) == null)
+                {
+                  i5 = i3;
+                  if (localObject3 != null)
+                  {
+                    i5 = i3;
+                    if (((FlashChatItem)localObject3).id == i4) {
+                      i5 = i2;
+                    }
+                  }
+                }
+              }
+              else
+              {
+                i5 = i3;
+                if (i1 == 1)
+                {
+                  i5 = i3;
+                  if (localObject3 != null)
+                  {
+                    int i6 = ((FlashChatItem)localObject3).id;
+                    i5 = i3;
+                    if (i6 == i4)
+                    {
+                      i5 = i1;
+                      continue;
+                    }
+                  }
+                }
+              }
+              i2 += 1;
+              i3 = i5;
+            }
+            else
+            {
+              i2 = i3;
+              i5 = i1;
+            }
+          }
+          catch (Exception localException1) {}
+          localException2.printStackTrace();
+        }
+        catch (Exception localException2)
+        {
+          i1 = i2;
+        }
+      }
+      catch (Exception localException3)
+      {
+        int i2;
+        int i5;
+        Object localObject2;
+        i1 = -1;
+        continue;
+      }
+      i2 = i3;
+      i5 = i1;
+      a(i5, i2, true);
+      if (i5 == 0)
+      {
+        localObject2 = (FlashChatManager)this.A.d.getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
+        if (((FlashChatManager)localObject2).g().size() < 3)
+        {
+          ((FlashChatManager)localObject2).f();
+          return;
+          this.A.p.setVisibility(0);
+          localObject2 = (IApolloAIOHelper)this.A.q(8);
+          if (localObject2 != null) {
+            ((IApolloAIOHelper)localObject2).showApolloView(true);
+          }
+          localObject2 = (AIOShortcutBarHelper)this.A.q(52);
+          if (localObject2 != null) {
+            ((AIOShortcutBarHelper)localObject2).d(12);
+          }
+          localObject2 = a(false);
+          if (localObject2 != null) {
+            ((RelativeLayout)localObject2).setVisibility(8);
+          }
+          this.A.aZ.findViewById(2131433920).setVisibility(0);
+          if (this.A.W != null) {
+            this.A.W.setCustomHeight(this.C);
+          }
+          if (this.y != null)
+          {
+            localObject2 = this.t.values().iterator();
+            if (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (ArkFlashChatContainerWrapper)((Iterator)localObject2).next();
+              if (localObject3 == null) {
+                continue;
+              }
+              ((ArkFlashChatContainerWrapper)localObject3).doOnEvent(2);
+              continue;
+            }
+            this.t.clear();
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("FlashChat", 2, "restore layout");
+          }
+        }
+      }
+      return;
+      label790:
+      int i4 = -1;
+      int i1 = -1;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (getVisibility() != 0) {
+      return false;
+    }
+    if (android.text.TextUtils.isEmpty(this.A.Y.getText().toString())) {
+      return false;
+    }
+    a();
+    this.A.ax();
+    return true;
+  }
+  
   public void c()
   {
+    a(this.d, -1);
     a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.ar();
-    a(false);
+    QQToast.makeText(getContext(), HardCodeUtil.a(2131902616), 0).show();
+  }
+  
+  public void d()
+  {
+    a();
+    this.A.aw();
+    b(false);
+  }
+  
+  public FlashChatItem getSelectedItem()
+  {
+    return b(this.d, this.c);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if (i1 != 2131430276)
     {
-    default: 
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramView) {}
-      return;
-    case 2131376395: 
-      a();
-      c();
-      return;
-    case 2131364327: 
-      c();
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      if (i1 != 2131430806)
+      {
+        if (i1 != 2131445580)
+        {
+          RelativeLayout localRelativeLayout = this.f;
+        }
+        else
+        {
+          b();
+          d();
+        }
+      }
+      else
+      {
+        d();
+        this.D = true;
+      }
     }
-    b();
+    else {
+      c();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int n = paramMotionEvent.getAction() & 0xFF;
-    if (n == 0) {
+    int i1 = paramMotionEvent.getAction() & 0xFF;
+    if (i1 == 0) {
       getParent().requestDisallowInterceptTouchEvent(true);
+    } else if ((i1 == 1) || (i1 == 3)) {
+      getParent().requestDisallowInterceptTouchEvent(false);
     }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((n == 1) || (n == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
-    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -721,13 +740,13 @@ public class FlashChatPanel
   
   public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, false);
+    this.b.setSelectedTab(paramInt, false);
   }
   
   public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt2, true);
-    this.c = paramInt2;
+    this.a.setCurrentItem(paramInt2, true);
+    this.e = paramInt2;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -738,14 +757,15 @@ public class FlashChatPanel
   public void run()
   {
     Object localObject = a(false);
-    if (localObject == null) {}
-    do
-    {
+    if (localObject == null) {
       return;
-      localObject = ((View)localObject).getLayoutParams();
-    } while (localObject == null);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131368344)).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    ((ViewGroup.LayoutParams)localObject).height = (this.jdField_a_of_type_ArrayOfInt[1] - ImmersiveUtils.getStatusBarHeight(getContext()));
+    }
+    localObject = ((View)localObject).getLayoutParams();
+    if (localObject != null)
+    {
+      ((ViewGroup)this.A.aZ.findViewById(2131435809)).getLocationInWindow(this.B);
+      ((ViewGroup.LayoutParams)localObject).height = (this.B[1] - ImmersiveUtils.getStatusBarHeight(getContext()));
+    }
   }
   
   public void setVisibility(int paramInt)
@@ -753,75 +773,80 @@ public class FlashChatPanel
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      a(true);
+      b(true);
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.D) {
       a();
     }
-    a(false);
+    b(false);
   }
   
   public void setupArkUI(FlashChatItem paramFlashChatItem)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+    Object localObject2 = this.A.Y.getText().toString();
     Object localObject1 = localObject2;
     if (localObject2 != null) {
       localObject1 = ((String)localObject2).trim();
     }
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject1 = alud.a(2131705003);
+    localObject2 = localObject1;
+    if (android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = HardCodeUtil.a(2131902618);
     }
-    for (;;)
+    if (paramFlashChatItem.id == -100000)
     {
-      int n;
-      if (paramFlashChatItem.id == -100000)
+      i1 = this.q.nextInt(2);
+      int i2 = this.q.nextInt(this.p[i1].getSize());
+      if (QLog.isColorLevel())
       {
-        n = this.jdField_a_of_type_JavaUtilRandom.nextInt(2);
-        int i1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[n].a());
-        if (QLog.isColorLevel()) {
-          QLog.d("FlashChat", 2, "setupArkUI  random " + n + " " + i1);
-        }
-        a(n, i1);
+        paramFlashChatItem = new StringBuilder();
+        paramFlashChatItem.append("setupArkUI  random ");
+        paramFlashChatItem.append(i1);
+        paramFlashChatItem.append(" ");
+        paramFlashChatItem.append(i2);
+        QLog.d("FlashChat", 2, paramFlashChatItem.toString());
       }
-      ArkAppView localArkAppView;
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FlashChat", 2, "setupArkUI" + paramFlashChatItem);
-        }
-        this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setVisibility(0);
-        n = paramFlashChatItem.id;
-        localArkAppView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-      } while (localArkAppView == null);
-      Object localObject3 = (ArkFlashChatContainerWrapper)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(n));
-      localObject2 = localObject3;
+      a(i1, i2);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setupArkUI");
+      ((StringBuilder)localObject1).append(paramFlashChatItem);
+      QLog.d("FlashChat", 2, ((StringBuilder)localObject1).toString());
+    }
+    this.j.setVisibility(8);
+    this.i.setVisibility(8);
+    this.h.setVisibility(0);
+    int i1 = paramFlashChatItem.id;
+    ArkAppView localArkAppView = this.y;
+    if (localArkAppView != null)
+    {
+      Object localObject3 = (ArkFlashChatContainerWrapper)this.t.get(Integer.valueOf(i1));
+      localObject1 = localObject3;
       if (localObject3 == null)
       {
-        localObject2 = new ArkFlashChatContainerWrapper();
-        this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(n), localObject2);
+        localObject1 = new ArkFlashChatContainerWrapper();
+        this.t.put(Integer.valueOf(i1), localObject1);
       }
       localObject3 = new MessageForArkFlashChat();
-      ((MessageForArkFlashChat)localObject3).uniseq = n;
+      ((MessageForArkFlashChat)localObject3).uniseq = i1;
       ((MessageForArkFlashChat)localObject3).ark_app_message = new ArkFlashChatMessage();
-      ((MessageForArkFlashChat)localObject3).ark_app_message.promptText = ((String)localObject1);
-      ((MessageForArkFlashChat)localObject3).arkContainer = ((ArkFlashChatContainerWrapper)localObject2);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = ((MessageForArkFlashChat)localObject3);
-      ((ArkFlashChatContainerWrapper)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), paramFlashChatItem.appName, paramFlashChatItem.mainView, paramFlashChatItem.ver, paramFlashChatItem.id, ((MessageForArkFlashChat)localObject3).ark_app_message.getMeta(((MessageForArkFlashChat)localObject3).uniseq, false), getContext().getResources().getDisplayMetrics().scaledDensity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), a(), b(), a(), b(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
-      localArkAppView.a((afii)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
-      localArkAppView.setCallback(new arwf(this, paramFlashChatItem, (MessageForArkFlashChat)localObject1, (MessageForArkFlashChat)localObject3));
-      localArkAppView.a((afii)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
-      return;
+      ((MessageForArkFlashChat)localObject3).ark_app_message.promptText = ((String)localObject2);
+      ((MessageForArkFlashChat)localObject3).arkContainer = ((ArkFlashChatContainerWrapper)localObject1);
+      localObject2 = this.s;
+      this.s = ((MessageForArkFlashChat)localObject3);
+      ((ArkFlashChatContainerWrapper)localObject1).a(this.A.d, getContext(), paramFlashChatItem.appName, paramFlashChatItem.mainView, paramFlashChatItem.ver, paramFlashChatItem.id, ((MessageForArkFlashChat)localObject3).ark_app_message.getMeta(((MessageForArkFlashChat)localObject3).uniseq, false), getContext().getResources().getDisplayMetrics().scaledDensity, this.A.aE(), getFlashChatWidth(), getFlashChatHeight(), getFlashChatWidth(), getFlashChatHeight(), this.s);
+      localArkAppView.a((ArkAppContainer)localObject1, this.z);
+      localArkAppView.setCallback(new FlashChatPanel.1(this, paramFlashChatItem, (MessageForArkFlashChat)localObject2, (MessageForArkFlashChat)localObject3));
+      localArkAppView.a((ArkAppContainer)localObject1, this.z);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatPanel
  * JD-Core Version:    0.7.0.1
  */

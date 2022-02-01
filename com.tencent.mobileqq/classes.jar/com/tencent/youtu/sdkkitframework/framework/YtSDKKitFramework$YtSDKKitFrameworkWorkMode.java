@@ -16,7 +16,10 @@ public enum YtSDKKitFramework$YtSDKKitFrameworkWorkMode
     YT_FW_ACTION_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_ACTION_TYPE", 3, 3);
     YT_FW_REFLECT_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_REFLECT_TYPE", 4, 4);
     YT_FW_ACTREFLECT_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_ACTREFLECT_TYPE", 5, 5);
-    $VALUES = new YtSDKKitFrameworkWorkMode[] { YT_FW_UNKNOWN, YT_FW_OCR_TYPE, YT_FW_SILENT_TYPE, YT_FW_ACTION_TYPE, YT_FW_REFLECT_TYPE, YT_FW_ACTREFLECT_TYPE };
+    YT_FW_LIPREAD_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_LIPREAD_TYPE", 6, 6);
+    YT_FW_DETECTONLY_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_DETECTONLY_TYPE", 7, 7);
+    YT_FW_OCR_VIID_TYPE = new YtSDKKitFrameworkWorkMode("YT_FW_OCR_VIID_TYPE", 8, 8);
+    $VALUES = new YtSDKKitFrameworkWorkMode[] { YT_FW_UNKNOWN, YT_FW_OCR_TYPE, YT_FW_SILENT_TYPE, YT_FW_ACTION_TYPE, YT_FW_REFLECT_TYPE, YT_FW_ACTREFLECT_TYPE, YT_FW_LIPREAD_TYPE, YT_FW_DETECTONLY_TYPE, YT_FW_OCR_VIID_TYPE };
     map = new HashMap();
     YtSDKKitFrameworkWorkMode[] arrayOfYtSDKKitFrameworkWorkMode = values();
     int j = arrayOfYtSDKKitFrameworkWorkMode.length;
@@ -48,7 +51,7 @@ public enum YtSDKKitFramework$YtSDKKitFrameworkWorkMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,19 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NavigateBackCallbackContext;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "()V", "plugin-appbrand-integration_release"})
-final class o
-  extends a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "", "onCallback", "", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "", "data", "", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface o
 {
-  public static final o ioM;
+  public abstract void a(p paramp, int paramInt, String paramString);
   
-  static
-  {
-    AppMethodBeat.i(134754);
-    ioM = new o();
-    AppMethodBeat.o(134754);
-  }
+  public abstract void adv(String paramString);
   
-  private o()
-  {
-    super((byte)0);
-  }
+  public abstract void b(p paramp, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.o
  * JD-Core Version:    0.7.0.1
  */

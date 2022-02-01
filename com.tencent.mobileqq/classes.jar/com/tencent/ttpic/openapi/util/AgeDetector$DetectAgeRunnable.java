@@ -27,21 +27,24 @@ class AgeDetector$DetectAgeRunnable
   
   public void clear()
   {
-    if (AgeDetector.access$100(this.this$0)) {
-      AgeDetector.access$202(this.this$0, true);
-    }
-    do
+    if (AgeDetector.access$100(this.this$0))
     {
+      AgeDetector.access$202(this.this$0, true);
       return;
-      this.detectData = null;
-    } while (this.mValueHashMap == null);
-    this.mValueHashMap.clear();
-    AgeDetector.access$202(this.this$0, false);
+    }
+    this.detectData = null;
+    ConcurrentHashMap localConcurrentHashMap = this.mValueHashMap;
+    if (localConcurrentHashMap != null)
+    {
+      localConcurrentHashMap.clear();
+      AgeDetector.access$202(this.this$0, false);
+    }
   }
   
   public int getAgeByFaceID(long paramLong)
   {
-    if ((this.mValueHashMap != null) && (this.mValueHashMap.get(Long.valueOf(paramLong)) != null)) {
+    ConcurrentHashMap localConcurrentHashMap = this.mValueHashMap;
+    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.get(Long.valueOf(paramLong)) != null)) {
       return ((AgeDetector.AgeResultInfo)this.mValueHashMap.get(Long.valueOf(paramLong))).ageResult;
     }
     return AgeType.DEFAULT.value;
@@ -49,23 +52,27 @@ class AgeDetector$DetectAgeRunnable
   
   public void reset()
   {
-    if (AgeDetector.access$100(this.this$0)) {
+    if (AgeDetector.access$100(this.this$0))
+    {
       AgeDetector.access$302(this.this$0, true);
-    }
-    while (this.mValueHashMap == null) {
       return;
     }
-    this.mValueHashMap.clear();
-    AgeDetector.access$302(this.this$0, false);
+    ConcurrentHashMap localConcurrentHashMap = this.mValueHashMap;
+    if (localConcurrentHashMap != null)
+    {
+      localConcurrentHashMap.clear();
+      AgeDetector.access$302(this.this$0, false);
+    }
   }
   
   public void run()
   {
-    if ((!AgeDetector.access$400()) || (this.detectInfos == null)) {}
-    do
+    if (AgeDetector.access$400())
     {
-      return;
-      AgeDetector.access$102(this.this$0, true);
+      if (this.detectInfos == null) {
+        return;
+      }
+      this.this$0.updateDetectStatus(true);
       if (this.detectData.length != 0)
       {
         AgeDetector.access$502(this.this$0, Bitmap.createBitmap(this.widthData, this.heightData, Bitmap.Config.ARGB_8888));
@@ -78,8 +85,8 @@ class AgeDetector$DetectAgeRunnable
         if (this.mValueHashMap == null) {
           this.mValueHashMap = new ConcurrentHashMap();
         }
-        AgeDetector.AgeResultInfo localAgeResultInfo2 = (AgeDetector.AgeResultInfo)this.mValueHashMap.get(Long.valueOf(localAgeDetectInfo.faceID));
-        if ((localAgeDetectInfo != null) && (localAgeDetectInfo.isInImage) && ((localAgeResultInfo2 == null) || (localAgeResultInfo2.needDetectAge())))
+        AgeDetector.AgeResultInfo localAgeResultInfo = (AgeDetector.AgeResultInfo)this.mValueHashMap.get(Long.valueOf(localAgeDetectInfo.faceID));
+        if ((localAgeDetectInfo != null) && (localAgeDetectInfo.isInImage) && ((localAgeResultInfo == null) || (localAgeResultInfo.needDetectAge())))
         {
           if (this.ytFaceAttr1 == null) {
             this.ytFaceAttr1 = new YTFaceAttr();
@@ -91,29 +98,41 @@ class AgeDetector$DetectAgeRunnable
           if (this.ytFaceAttr1.predictFaceAttrBitmap(AgeDetector.access$500(this.this$0), localAgeDetectInfo.points, 0, this.faceAttr) == 0)
           {
             localAgeDetectInfo.ageType = this.faceAttr.ageRes;
-            AgeDetector.AgeResultInfo localAgeResultInfo1 = localAgeResultInfo2;
-            if (localAgeResultInfo2 == null) {
-              localAgeResultInfo1 = new AgeDetector.AgeResultInfo(this.this$0, localAgeDetectInfo.faceID);
+            Object localObject = localAgeResultInfo;
+            if (localAgeResultInfo == null) {
+              localObject = new AgeDetector.AgeResultInfo(this.this$0, localAgeDetectInfo.faceID);
             }
-            localAgeResultInfo1.updateAge(localAgeDetectInfo.ageType);
-            this.mValueHashMap.put(Long.valueOf(localAgeDetectInfo.faceID), localAgeResultInfo1);
-            Log.i("AgeDetector", "faceID:" + localAgeDetectInfo.faceID + ",detected age:" + localAgeDetectInfo.ageType);
+            if (AgeDetector.access$600(this.this$0)) {
+              ((AgeDetector.AgeResultInfo)localObject).setAgeResult(localAgeDetectInfo.ageType);
+            } else {
+              ((AgeDetector.AgeResultInfo)localObject).updateAge(localAgeDetectInfo.ageType);
+            }
+            this.mValueHashMap.put(Long.valueOf(localAgeDetectInfo.faceID), localObject);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("faceID:");
+            ((StringBuilder)localObject).append(localAgeDetectInfo.faceID);
+            ((StringBuilder)localObject).append(",detected age:");
+            ((StringBuilder)localObject).append(localAgeDetectInfo.ageType);
+            Log.i("AgeDetector", ((StringBuilder)localObject).toString());
           }
           localAgeDetectInfo.points = null;
         }
       }
       this.detectInfos.clear();
-      AgeDetector.access$102(this.this$0, false);
+      this.this$0.updateDetectStatus(false);
       if (AgeDetector.access$200(this.this$0)) {
         clear();
       }
-    } while (!AgeDetector.access$300(this.this$0));
-    reset();
+      if (AgeDetector.access$300(this.this$0)) {
+        reset();
+      }
+    }
   }
   
   public void setData(byte[] paramArrayOfByte)
   {
-    if ((this.detectData == null) || (this.detectData.length < paramArrayOfByte.length)) {
+    byte[] arrayOfByte = this.detectData;
+    if ((arrayOfByte == null) || (arrayOfByte.length < paramArrayOfByte.length)) {
       this.detectData = new byte[paramArrayOfByte.length];
     }
     System.arraycopy(paramArrayOfByte, 0, this.detectData, 0, paramArrayOfByte.length);
@@ -132,20 +151,21 @@ class AgeDetector$DetectAgeRunnable
   
   public void setKeyPointLocationByIndex(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, boolean paramBoolean, long paramLong)
   {
-    if ((this.mValueHashMap != null) && (this.mValueHashMap.get(Long.valueOf(paramLong)) != null) && (!((AgeDetector.AgeResultInfo)this.mValueHashMap.get(Long.valueOf(paramLong))).needDetectAge())) {
+    Object localObject = this.mValueHashMap;
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong)) != null) && (!((AgeDetector.AgeResultInfo)this.mValueHashMap.get(Long.valueOf(paramLong))).needDetectAge())) {
       return;
     }
     this.faceCount = (paramInt1 + 1);
     if (this.detectInfos == null) {
       this.detectInfos = new Vector();
     }
-    AgeDetector.AgeDetectInfo localAgeDetectInfo = new AgeDetector.AgeDetectInfo(this.this$0, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, paramInt11, paramBoolean, paramLong);
-    this.detectInfos.add(localAgeDetectInfo);
+    localObject = new AgeDetector.AgeDetectInfo(this.this$0, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, paramInt11, paramBoolean, paramLong);
+    this.detectInfos.add(localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AgeDetector.DetectAgeRunnable
  * JD-Core Version:    0.7.0.1
  */

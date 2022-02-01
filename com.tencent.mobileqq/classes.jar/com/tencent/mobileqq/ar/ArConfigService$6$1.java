@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ar;
 
-import amww;
-
-public class ArConfigService$6$1
+class ArConfigService$6$1
   implements Runnable
 {
-  public ArConfigService$6$1(amww paramamww, int paramInt) {}
+  ArConfigService$6$1(ArConfigService.6 param6, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Amww.a, this.jdField_a_of_type_Int);
+    ArConfigService.a(this.b.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.6.1
  * JD-Core Version:    0.7.0.1
  */

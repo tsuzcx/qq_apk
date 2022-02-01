@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_droplist_operate_rsp
   extends JceStruct
 {
-  public int retCode;
+  public int retCode = 0;
   public String retMsg = "";
   
   public mobile_droplist_operate_rsp() {}
@@ -27,14 +27,15 @@ public final class mobile_droplist_operate_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.retCode, 0);
-    if (this.retMsg != null) {
-      paramJceOutputStream.write(this.retMsg, 1);
+    String str = this.retMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_DROPLIST.mobile_droplist_operate_rsp
  * JD-Core Version:    0.7.0.1
  */

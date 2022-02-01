@@ -1,10 +1,18 @@
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.open.applist.H5ConfirmDialog;
+import com.tencent.open.applist.H5ConfirmDialog.Dialogcallback;
 
 public class hlb
+  implements View.OnClickListener
 {
-  public static final int a = 0;
-  public WebView a;
-  public String a;
+  public hlb(H5ConfirmDialog paramH5ConfirmDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dialogcallback.a(this.a.createIcon_cb.isChecked());
+  }
 }
 
 

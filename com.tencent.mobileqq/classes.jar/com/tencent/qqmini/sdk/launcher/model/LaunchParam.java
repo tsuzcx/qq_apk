@@ -4,11 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LaunchParam
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParam> CREATOR = new LaunchParam.1();
+  public static final int FLAG_NEED_KILL = 2;
+  public static final int FLAG_NEED_NEW_PROCESS = 1;
+  public static final int FLAG_NONE = 0;
   public static final int LAUNCH_SCENE_1017 = 1017;
   public static final int LAUNCH_SCENE_1025 = 1025;
   public static final int LAUNCH_SCENE_1034 = 1034;
@@ -44,18 +49,22 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_BAR = 3006;
   public static final int LAUNCH_SCENE_DESKTOP_SHORTCUT = 1023;
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
+  public static final int LAUNCH_SCENE_FILE_MATERIAL = 1173;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
+  public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
   public static final int LAUNCH_SCENE_INTIMATE_RELATIONSHIP_PLAY_TOGETHER = 2064;
   public static final int LAUNCH_SCENE_KUOLIE_RECOMM = 2065;
   public static final int LAUNCH_SCENE_LEBA = 2007;
   public static final int LAUNCH_SCENE_LEBA_MINIAPP = 2050;
   public static final int LAUNCH_SCENE_MAIN_ENTRY = 1001;
+  public static final int LAUNCH_SCENE_MINI_APP_ONCE_SUBSCRIBE = 2105;
   public static final int LAUNCH_SCENE_MINI_APP_PROFILE = 1024;
   public static final int LAUNCH_SCENE_MINI_APP_SUBSCRIBE = 2085;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_LONG_PRESS = 1048;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
+  public static final int LAUNCH_SCENE_MODIFY_FRIEND_INTERACTIVE_STORAGE = 2218;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
   public static final int LAUNCH_SCENE_PROFILE_CARD = 2062;
@@ -72,6 +81,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_NINE = 2092;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
+  public static final int LAUNCH_SCENE_RECENT_COLOR_NOTE = 1132;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
@@ -79,6 +89,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_SEARCH_RESULT_TOP = 1005;
   public static final int LAUNCH_SCENE_SHARE_C2C = 1007;
   public static final int LAUNCH_SCENE_SHARE_GROUP = 1008;
+  public static final int LAUNCH_SCENE_SHARE_MESSAGE_TO_FRIEND = 2217;
   public static final int LAUNCH_SCENE_SHARE_OPEN_SDK = 1036;
   public static final int LAUNCH_SCENE_SHARE_QZONE = 2003;
   public static final int LAUNCH_SCENE_SHARE_TICKET = 1044;
@@ -99,17 +110,22 @@ public class LaunchParam
   public String extendData;
   public String extraKey;
   public String fakeUrl;
+  public List<FileMaterialInfo> fileMaterialInfoList;
+  public int forceReload = 0;
   public int fromBackToMiniApp;
   public String fromEnvVersion;
   public String fromMiniAppId;
   public MiniAppInfo fromMiniAppInfo;
   public boolean isFakeAppInfo;
+  public boolean isFlutterMode;
   public long launchClickTimeMillis;
   public String miniAppId;
   public String navigateExtData;
+  public String privateExtraData;
   public String reportData;
   public int scene = 1001;
   public String shareTicket;
+  public boolean skipHotReload = false;
   public int tempState = 0;
   public long timestamp;
   
@@ -123,23 +139,43 @@ public class LaunchParam
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    String str = "";
     int i = paramString.indexOf("?");
-    Object localObject = paramString;
+    String str = "";
+    Object localObject1;
     if (i != -1)
     {
-      localObject = paramString.substring(0, i);
-      str = paramString.substring(i + 1, paramString.length());
+      localObject1 = paramString.substring(0, i);
+      localObject2 = paramString.substring(i + 1, paramString.length());
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
-    paramString = (String)localObject;
-    if (!((String)localObject).toLowerCase().endsWith(".html")) {
-      paramString = (String)localObject + ".html";
+    else
+    {
+      localObject1 = "";
     }
-    localObject = new StringBuilder().append(paramString);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = "";; paramString = "?" + str) {
-      return paramString;
+    Object localObject2 = paramString;
+    if (!paramString.toLowerCase().endsWith(".html"))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(".html");
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      paramString = str;
+    }
+    else
+    {
+      paramString = new StringBuilder();
+      paramString.append("?");
+      paramString.append((String)localObject1);
+      paramString = paramString.toString();
+    }
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public void clone(LaunchParam paramLaunchParam)
@@ -163,6 +199,13 @@ public class LaunchParam
     this.entryModel = paramLaunchParam.entryModel;
     this.fromBackToMiniApp = paramLaunchParam.fromBackToMiniApp;
     this.isFakeAppInfo = paramLaunchParam.isFakeAppInfo;
+    this.isFlutterMode = paramLaunchParam.isFlutterMode;
+    this.fromEnvVersion = paramLaunchParam.fromEnvVersion;
+    this.fromMiniAppInfo = paramLaunchParam.fromMiniAppInfo;
+    this.privateExtraData = paramLaunchParam.privateExtraData;
+    this.fileMaterialInfoList = paramLaunchParam.fileMaterialInfoList;
+    this.forceReload = paramLaunchParam.forceReload;
+    this.skipHotReload = paramLaunchParam.skipHotReload;
   }
   
   public void createFrom(Parcel paramParcel)
@@ -182,12 +225,31 @@ public class LaunchParam
     this.extendData = paramParcel.readString();
     this.entryModel = ((EntryModel)paramParcel.readParcelable(EntryModel.class.getClassLoader()));
     this.fromBackToMiniApp = paramParcel.readInt();
-    if (paramParcel.readInt() == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isFakeAppInfo = bool;
-      return;
+    int i = paramParcel.readInt();
+    boolean bool2 = false;
+    if (i == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.isFakeAppInfo = bool1;
+    if (paramParcel.readInt() == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.isFlutterMode = bool1;
+    this.fromEnvVersion = paramParcel.readString();
+    this.fromMiniAppInfo = ((MiniAppInfo)paramParcel.readParcelable(MiniAppInfo.class.getClassLoader()));
+    this.privateExtraData = paramParcel.readString();
+    this.fileMaterialInfoList = new ArrayList();
+    paramParcel.readList(this.fileMaterialInfoList, MiniAppInfo.class.getClassLoader());
+    this.forceReload = paramParcel.readInt();
+    boolean bool1 = bool2;
+    if (paramParcel.readInt() != 0) {
+      bool1 = true;
+    }
+    this.skipHotReload = bool1;
   }
   
   public int describeContents()
@@ -195,53 +257,68 @@ public class LaunchParam
     return 0;
   }
   
+  public boolean fromBackToMiniApp()
+  {
+    return this.fromBackToMiniApp == 1;
+  }
+  
   public String getScheme()
   {
-    Object localObject2 = "mqqapi://microapp/open?mini_appid=" + this.miniAppId;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(this.entryPath)) {
-      localObject1 = (String)localObject2 + "&entryPath=" + this.entryPath;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("mqqapi://microapp/open?mini_appid=");
+    ((StringBuilder)localObject1).append(this.miniAppId);
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject2;
+    if (!TextUtils.isEmpty(this.entryPath))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("&entryPath=");
+      ((StringBuilder)localObject1).append(this.entryPath);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     localObject2 = localObject1;
-    if (!TextUtils.isEmpty(this.extendData)) {
-      localObject2 = (String)localObject1 + "&extraData=" + this.extendData;
+    if (!TextUtils.isEmpty(this.extendData))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&extraData=");
+      ((StringBuilder)localObject2).append(this.extendData);
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
     return localObject2;
   }
   
   public boolean isValid()
   {
-    boolean bool1 = true;
+    int i = this.scene;
     boolean bool2 = false;
-    switch (this.scene)
+    boolean bool1 = false;
+    if (i != 1037)
     {
-    default: 
-      if (TextUtils.isEmpty(this.miniAppId))
+      if (i != 2003)
       {
-        bool1 = bool2;
-        if (TextUtils.isEmpty(this.fakeUrl)) {
-          break;
+        switch (i)
+        {
+        default: 
+          if ((!TextUtils.isEmpty(this.miniAppId)) || (!TextUtils.isEmpty(this.fakeUrl))) {
+            bool1 = true;
+          }
+          return bool1;
         }
+        return TextUtils.isEmpty(this.fakeUrl) ^ true;
       }
-      else
-      {
+      return TextUtils.isEmpty(this.fakeUrl) ^ true;
+    }
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(this.miniAppId))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.fromMiniAppId)) {
         bool1 = true;
       }
-      break;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-        } while (!TextUtils.isEmpty(this.fakeUrl));
-        return false;
-      } while ((!TextUtils.isEmpty(this.miniAppId)) && (!TextUtils.isEmpty(this.fromMiniAppId)));
-      return false;
-    } while (!TextUtils.isEmpty(this.fakeUrl));
-    return false;
+    return bool1;
   }
   
   public void standardize()
@@ -251,37 +328,60 @@ public class LaunchParam
   
   public String toString()
   {
-    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", extendData='" + this.extendData + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + ", fakeUrl='" + this.fakeUrl + '\'' + ", timestamp=" + this.timestamp + ", launchClickTimeMillis=" + this.launchClickTimeMillis + ", tempState=" + this.tempState + ", shareTicket=" + this.shareTicket + ", envVersion=" + this.envVersion + ", reportData=" + this.reportData + ", fromBackToMiniApp=" + this.fromBackToMiniApp + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LaunchParam{scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(", miniAppId='");
+    localStringBuilder.append(this.miniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraKey='");
+    localStringBuilder.append(this.extraKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryPath='");
+    localStringBuilder.append(this.entryPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extendData='");
+    localStringBuilder.append(this.extendData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", navigateExtData='");
+    localStringBuilder.append(this.navigateExtData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fromMiniAppId='");
+    localStringBuilder.append(this.fromMiniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fakeUrl='");
+    localStringBuilder.append(this.fakeUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timestamp=");
+    localStringBuilder.append(this.timestamp);
+    localStringBuilder.append(", launchClickTimeMillis=");
+    localStringBuilder.append(this.launchClickTimeMillis);
+    localStringBuilder.append(", tempState=");
+    localStringBuilder.append(this.tempState);
+    localStringBuilder.append(", shareTicket=");
+    localStringBuilder.append(this.shareTicket);
+    localStringBuilder.append(", envVersion=");
+    localStringBuilder.append(this.envVersion);
+    localStringBuilder.append(", reportData=");
+    localStringBuilder.append(this.reportData);
+    localStringBuilder.append(", fromBackToMiniApp=");
+    localStringBuilder.append(this.fromBackToMiniApp);
+    localStringBuilder.append(", isFakeAppInfo=");
+    localStringBuilder.append(this.isFakeAppInfo);
+    localStringBuilder.append(", isFlutterMode=");
+    localStringBuilder.append(this.isFlutterMode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.scene);
-    paramParcel.writeString(this.miniAppId);
-    paramParcel.writeString(this.extraKey);
-    paramParcel.writeString(this.entryPath);
-    paramParcel.writeString(this.navigateExtData);
-    paramParcel.writeString(this.fromMiniAppId);
-    paramParcel.writeLong(this.launchClickTimeMillis);
-    paramParcel.writeInt(this.tempState);
-    paramParcel.writeLong(this.timestamp);
-    paramParcel.writeString(this.shareTicket);
-    paramParcel.writeString(this.envVersion);
-    paramParcel.writeString(this.reportData);
-    paramParcel.writeString(this.extendData);
-    paramParcel.writeParcelable(this.entryModel, paramInt);
-    paramParcel.writeInt(this.fromBackToMiniApp);
-    if (this.isFakeAppInfo) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

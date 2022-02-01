@@ -1,78 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class cbv
-  extends MessageObserver
+  extends ProxyObserver
 {
   public cbv(ChatHistory paramChatHistory) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void b()
   {
-    if (!paramBoolean1)
-    {
-      int i = 1;
-      if (paramBoolean2) {
-        i = 7;
-      }
-      paramString = this.a.a.obtainMessage(i);
-      this.a.a(paramString);
-      return;
-    }
-    this.a.b.a().c();
-    paramString = this.a.a.obtainMessage(0);
-    this.a.a(paramString);
-  }
-  
-  protected void a_(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      localMessage = this.a.a.obtainMessage(1);
-      this.a.a(localMessage);
-      return;
-    }
-    this.a.b.a().c();
-    Message localMessage = this.a.a.obtainMessage(0);
-    this.a.a(localMessage);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    this.a.m();
-    if (!paramBoolean)
-    {
-      Message localMessage = this.a.a.obtainMessage(5);
-      this.a.a(localMessage);
-    }
-  }
-  
-  protected void b_(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      localMessage = this.a.a.obtainMessage(1);
-      this.a.a(localMessage);
-      return;
-    }
-    this.a.b.a().c();
-    Message localMessage = this.a.a.obtainMessage(0);
-    this.a.a(localMessage);
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      localMessage = this.a.a.obtainMessage(3);
-      this.a.a(localMessage);
-      return;
-    }
-    Message localMessage = this.a.a.obtainMessage(2);
-    this.a.a(localMessage);
+    this.a.runOnUiThread(new cbw(this));
   }
 }
 

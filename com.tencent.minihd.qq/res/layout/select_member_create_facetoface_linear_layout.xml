@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/title_bar" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/custom_commen_title" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/content_container" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:gravity="center_horizontal" android:id="@id/textview_tip" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/select_create_facetoface_troop_tip" />
+                <include layout="@layout/select_member_create_facetoface_four_digit_view" />
+                <TextView android:layout_gravity="center_horizontal" android:id="@id/progress_view" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:gravity="center_horizontal" android:id="@id/textview_tip2" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/select_create_facetoface_troop_tip_enter" android:contentDescription="@string/select_create_facetoface_troop_tip_enter" />
+                <View android:id="@id/divider_line" android:background="#ffd3d3d3" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" />
+                <GridView android:gravity="center" android:id="@id/gridview" android:paddingLeft="20.0dip" android:paddingTop="20.0dip" android:paddingRight="20.0dip" android:visibility="invisible" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/transparent" android:horizontalSpacing="3.0dip" android:verticalSpacing="18.0dip" android:stretchMode="spacingWidth" android:columnWidth="66.0dip" android:numColumns="4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/bottom_layout" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/divider_line_bottom" android:background="#ffd3d3d3" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="20.0dip" />
+        <Button android:gravity="center" android:id="@id/enter_dicussion_btn" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="20.0dip" android:text="@string/select_create_facetoface_enter_discussion" android:contentDescription="进入讨论组" style="@style/ButtonBlue" />
+    </LinearLayout>
+    <include layout="@layout/select_member_create_facetoface_digits_pad" />
+</FrameLayout>

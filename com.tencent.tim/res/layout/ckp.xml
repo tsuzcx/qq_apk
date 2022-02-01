@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.utilities.ui.WrapContentListView android:id="@id/n9c" android:paddingTop="@dimen/bpk" android:paddingBottom="@dimen/bph" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:dividerHeight="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.database.corrupt;
 
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import apfx;
-import apfy;
-import apfz;
-import apga;
-import apgb;
-import apgc;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -19,61 +18,96 @@ import mqq.app.MobileQQ;
 public class DBFixConfigActivity
   extends AppActivity
 {
-  public static int a;
-  public static String a;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
-  RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  public Runnable a;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
-  RadioButton jdField_b_of_type_AndroidWidgetRadioButton;
+  public static String a = "DBFix";
+  public static int f = 2;
+  RadioGroup b;
+  RadioButton c;
+  RadioButton d;
+  Button e;
+  CheckBox g;
+  CheckBox h;
+  Button i;
+  Runnable j = new DBFixConfigActivity.11(this);
   
-  static
+  private void a()
   {
-    jdField_a_of_type_JavaLangString = "DBFix";
-    jdField_a_of_type_Int = 2;
+    EditText localEditText = (EditText)super.findViewById(2131432619);
+    super.findViewById(2131430674).setOnClickListener(new DBFixConfigActivity.7(this, localEditText));
   }
   
-  public DBFixConfigActivity()
+  private void b()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new DBFixConfigActivity.7(this);
+    super.findViewById(2131429851).setOnClickListener(new DBFixConfigActivity.8(this));
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  private void c()
+  {
+    EditText localEditText = (EditText)super.findViewById(2131432619);
+    super.findViewById(2131442921).setOnClickListener(new DBFixConfigActivity.9(this, localEditText));
+  }
+  
+  private void d()
+  {
+    super.findViewById(2131445894).setOnClickListener(new DBFixConfigActivity.10(this));
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559250);
+    super.setContentView(2131625294);
     paramBundle = getAppRuntime();
     String str = paramBundle.getAccount();
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)super.findViewById(2131364256));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new apfx(this, paramBundle, str));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365505));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365024));
-    jdField_a_of_type_Int = paramBundle.getApplication().getSharedPreferences(DBFixManager.b, 0).getInt(str + DBFixManager.c, 2);
-    if (jdField_a_of_type_Int == 2)
+    this.b = ((RadioGroup)super.findViewById(2131430688));
+    this.b.setOnCheckedChangeListener(new DBFixConfigActivity.1(this, paramBundle, str));
+    this.c = ((RadioButton)super.findViewById(2131432266));
+    this.d = ((RadioButton)super.findViewById(2131431642));
+    SharedPreferences localSharedPreferences = paramBundle.getApplication().getSharedPreferences(DBFixManager.d, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(DBFixManager.e);
+    f = localSharedPreferences.getInt(localStringBuilder.toString(), 2);
+    if (f == 2)
     {
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setChecked(false);
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setChecked(true);
+      this.c.setChecked(false);
+      this.d.setChecked(true);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131380294));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new apfy(this));
-      ((Button)super.findViewById(2131364856)).setOnClickListener(new apfz(this, str));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131369887));
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new apga(this, paramBundle));
-      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131363869));
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new apgb(this, paramBundle));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372268));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new apgc(this, paramBundle));
-      return true;
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setChecked(true);
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setChecked(false);
+      this.c.setChecked(true);
+      this.d.setChecked(false);
     }
+    this.e = ((Button)super.findViewById(2131450250));
+    this.e.setOnClickListener(new DBFixConfigActivity.2(this));
+    ((Button)super.findViewById(2131431419)).setOnClickListener(new DBFixConfigActivity.3(this, str));
+    this.g = ((CheckBox)super.findViewById(2131437772));
+    this.g.setChecked(true);
+    this.g.setOnCheckedChangeListener(new DBFixConfigActivity.4(this, paramBundle));
+    this.h = ((CheckBox)super.findViewById(2131430233));
+    this.h.setChecked(true);
+    this.h.setOnCheckedChangeListener(new DBFixConfigActivity.5(this, paramBundle));
+    this.i = ((Button)super.findViewById(2131440636));
+    this.i.setOnClickListener(new DBFixConfigActivity.6(this));
+    d();
+    b();
+    c();
+    a();
+    return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 

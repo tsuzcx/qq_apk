@@ -1,67 +1,39 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import a.f.b.j;
-import a.l;
-import com.tencent.luggage.game.e.a.a.b;
-import com.tencent.luggage.sdk.b.a.c.c;
-import com.tencent.magicbrush.MBRuntime;
-import com.tencent.magicbrush.MBRuntime.MBParams;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.menu.a.a;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.wework.api.IWWAPI;
+import com.tencent.wework.api.IWWAPI.WWAppType;
+import com.tencent.wework.api.WWAPIFactory;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/menu/ShowPkgInfoKt;", "", "()V", "showWAGameInfoIfNeeded", "", "sb", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "plugin-appbrand-integration_release"})
 public final class s
+  extends a<ah>
 {
-  public static final s irl;
-  
-  static
+  public s()
   {
-    AppMethodBeat.i(134756);
-    irl = new s();
-    AppMethodBeat.o(134756);
+    super(x.tkK.ordinal());
+    AppMethodBeat.i(323863);
+    AppMethodBeat.o(323863);
   }
   
-  public static void a(StringBuilder paramStringBuilder, r paramr)
+  public static boolean eY(Context paramContext)
   {
-    AppMethodBeat.i(134755);
-    j.q(paramStringBuilder, "sb");
-    if (!(paramr instanceof c)) {
-      paramr = null;
-    }
-    for (;;)
+    AppMethodBeat.i(323873);
+    paramContext = WWAPIFactory.oM(paramContext);
+    if ((paramContext.a(IWWAPI.WWAppType.aicA)) && (paramContext.keI()))
     {
-      paramr = (c)paramr;
-      if (paramr != null) {}
-      for (paramr = (b)paramr.x(b.class); paramr == null; paramr = null)
-      {
-        AppMethodBeat.o(134755);
-        return;
-      }
-      MBRuntime localMBRuntime = paramr.getMBRuntime();
-      if (localMBRuntime == null)
-      {
-        paramStringBuilder.append("\n[renderer] ").append("unknown");
-        AppMethodBeat.o(134755);
-        return;
-      }
-      paramStringBuilder.append("\n[renderer] ").append("mbruntime");
-      if (localMBRuntime.getParams().use_command_buffer) {
-        paramStringBuilder.append(" commandbuffer");
-      }
-      paramr = paramStringBuilder.append("\n[renderer] ").append("antialias ");
-      if (localMBRuntime.getParams().allow_antialias_) {}
-      for (paramStringBuilder = "allowed";; paramStringBuilder = "disallowed")
-      {
-        paramr.append(paramStringBuilder);
-        AppMethodBeat.o(134755);
-        return;
-      }
+      AppMethodBeat.o(323873);
+      return true;
     }
+    AppMethodBeat.o(323873);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.s
  * JD-Core Version:    0.7.0.1
  */

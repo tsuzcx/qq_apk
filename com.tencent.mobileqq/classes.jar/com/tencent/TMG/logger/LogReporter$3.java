@@ -11,25 +11,28 @@ class LogReporter$3
   
   public void onCompleted(int paramInt, String paramString, Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof LogReporter.LogReprotInfo))) {
-      return;
-    }
-    paramObject = (LogReporter.LogReprotInfo)paramObject;
-    File localFile = new File(paramObject.logPath);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (paramInt != 0)
+    if (paramObject != null)
     {
-      Log.e("LogReporter", String.format("mUploadCosFileListener| uplaod log file failed. code=%d", new Object[] { Integer.valueOf(paramInt) }));
-      return;
+      if (!(paramObject instanceof LogReporter.LogReprotInfo)) {
+        return;
+      }
+      paramObject = (LogReporter.LogReprotInfo)paramObject;
+      File localFile = new File(paramObject.logPath);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      if (paramInt != 0)
+      {
+        Log.e("LogReporter", String.format("mUploadCosFileListener| uplaod log file failed. code=%d", new Object[] { Integer.valueOf(paramInt) }));
+        return;
+      }
+      LogReporter.access$200(this.this$0, paramString, paramObject.uploadSeq);
     }
-    LogReporter.access$200(this.this$0, paramString, paramObject.uploadSeq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.logger.LogReporter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -131,7 +131,7 @@
 																			},
 																			"attributes":{
 																					"setImageWithURLString:lineup:":[
-																							"http://qqpublic.qpic.cn/qq_public/0/0-2233326793-4A8B7E8B430EDC8FA27DC338BB78BBC6/0",
+																							"https://pub.idqqimg.com/pc/misc/files/20200609/5e42211a1f30454fa4dfbddc806a683b.png",
 																							"0"
 																					],
                                                                                     "setAttatchInfo:": "$advantage_text"
@@ -397,7 +397,7 @@
                                                                             "value": "6"
                                                                         },
                                                                         "attributes": {
-                                                                            "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20190916/ae9cbff3b7c549caa1523038fadfc3ed.png", 0]
+                                                                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20190916/ae9cbff3b7c549caa1523038fadfc3ed.png", 0]
                                                                         }
                                                                     }
                                                                 ]

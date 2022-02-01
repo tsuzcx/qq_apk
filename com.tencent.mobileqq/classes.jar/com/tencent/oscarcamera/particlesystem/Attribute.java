@@ -8,23 +8,25 @@ public class Attribute
   
   public long expression()
   {
-    if (this.mValue != null) {
-      return this.mValue.expression();
+    Value localValue = this.mValue;
+    if (localValue != null) {
+      return localValue.expression();
     }
     return -1L;
   }
   
   public double value()
   {
-    if (this.mValue != null) {
-      return this.mValue.value();
+    Value localValue = this.mValue;
+    if (localValue != null) {
+      return localValue.value();
     }
     return 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.Attribute
  * JD-Core Version:    0.7.0.1
  */

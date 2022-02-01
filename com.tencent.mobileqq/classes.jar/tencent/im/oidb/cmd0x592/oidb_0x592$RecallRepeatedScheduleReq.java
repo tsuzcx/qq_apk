@@ -24,12 +24,13 @@ public final class oidb_0x592$RecallRepeatedScheduleReq
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "bytes_workflow_id", "msg_notify_source_id", "enum_recall_type", "uint64_recall_start_time", "uint64_recall_end_time" }, new Object[] { localByteStringMicro, null, Integer.valueOf(1), Long.valueOf(0L), Long.valueOf(0L) }, RecallRepeatedScheduleReq.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "bytes_workflow_id", "msg_notify_source_id", "enum_recall_type", "uint64_recall_start_time", "uint64_recall_end_time" }, new Object[] { localByteStringMicro, null, Integer.valueOf(1), localLong, localLong }, RecallRepeatedScheduleReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.RecallRepeatedScheduleReq
  * JD-Core Version:    0.7.0.1
  */

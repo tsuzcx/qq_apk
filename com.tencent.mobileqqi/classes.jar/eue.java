@@ -1,15 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class eue
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
   public eue(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.d(paramView);
+    VoipDialInterfaceActivity.a(this.a).setText("");
+    return false;
   }
 }
 

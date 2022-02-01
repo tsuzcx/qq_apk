@@ -2,95 +2,95 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.card.d.t;
-import com.tencent.mm.protocal.protobuf.oz;
-import com.tencent.mm.protocal.protobuf.pa;
-import com.tencent.mm.protocal.protobuf.pb;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.card.c.u;
+import com.tencent.mm.protocal.protobuf.wl;
+import com.tencent.mm.protocal.protobuf.wm;
+import com.tencent.mm.protocal.protobuf.wn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 
 public final class v
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public String koq;
-  public ArrayList<oz> kor;
-  private final b rr;
+  private h callback;
+  private final c rr;
+  public String wuF;
+  public ArrayList<wl> wuG;
   
   public v(String paramString1, float paramFloat1, float paramFloat2, String paramString2)
   {
-    AppMethodBeat.i(87879);
-    this.koq = paramString1;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new pa();
-    ((b.a)localObject).fsY = new pb();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/cardshoplbs";
-    ((b.a)localObject).funcId = 563;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (pa)this.rr.fsV.fta;
-    ((pa)localObject).kml = paramString1;
-    ((pa)localObject).cAH = paramFloat1;
-    ((pa)localObject).cyV = paramFloat2;
-    ((pa)localObject).cHn = paramString2;
-    ab.d("MicroMsg.NetSceneCardShopLBS", "<init>, cardId = %s, longtitude = %f, latitude = %f, card_id = %s", new Object[] { paramString1, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), paramString2 });
-    AppMethodBeat.o(87879);
+    AppMethodBeat.i(112821);
+    this.wuF = paramString1;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new wm();
+    ((c.a)localObject).otF = new wn();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/cardshoplbs";
+    ((c.a)localObject).funcId = 1058;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (wm)c.b.b(this.rr.otB);
+    ((wm)localObject).wsy = paramString1;
+    ((wm)localObject).longitude = paramFloat1;
+    ((wm)localObject).latitude = paramFloat2;
+    ((wm)localObject).iaI = paramString2;
+    Log.d("MicroMsg.NetSceneCardShopLBS", "<init>, cardId = %s, longtitude = %f, latitude = %f, card_id = %s", new Object[] { paramString1, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), paramString2 });
+    AppMethodBeat.o(112821);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(87880);
-    if (bo.isNullOrNil(((pa)this.rr.fsV.fta).kml))
+    AppMethodBeat.i(112822);
+    if (Util.isNullOrNil(((wm)c.b.b(this.rr.otB)).wsy))
     {
-      ab.e("MicroMsg.NetSceneCardShopLBS", "doScene fail, cardId is null");
-      AppMethodBeat.o(87880);
+      Log.e("MicroMsg.NetSceneCardShopLBS", "doScene fail, cardId is null");
+      AppMethodBeat.o(112822);
       return -1;
     }
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87880);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(112822);
     return i;
   }
   
   public final int getType()
   {
-    return 563;
+    return 1058;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87881);
-    ab.i("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(112823);
+    Log.i("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = ((pb)this.rr.fsW.fta).koi;
-      if (TextUtils.isEmpty(paramq)) {
-        ab.e("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd fail, json_ret is empty");
+      params = ((wn)c.c.b(this.rr.otC)).wuy;
+      if (TextUtils.isEmpty(params)) {
+        Log.e("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd fail, json_ret is empty");
       }
-      this.kor = t.IN(paramq);
-      if (this.kor != null) {
-        ab.d("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, respList size = %d", new Object[] { Integer.valueOf(this.kor.size()) });
+      this.wuG = u.alH(params);
+      if (this.wuG != null) {
+        Log.d("MicroMsg.NetSceneCardShopLBS", "onGYNetEnd, respList size = %d", new Object[] { Integer.valueOf(this.wuG.size()) });
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(87881);
+    AppMethodBeat.o(112823);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.v
  * JD-Core Version:    0.7.0.1
  */

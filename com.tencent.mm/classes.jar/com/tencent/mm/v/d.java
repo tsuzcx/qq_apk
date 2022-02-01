@@ -1,60 +1,71 @@
 package com.tencent.mm.v;
 
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.f;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ba;
-import com.tencent.mm.u.e;
+import com.tencent.mm.api.j;
+import com.tencent.mm.api.u;
+import com.tencent.mm.s.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.storage.bu;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/executor/OpDeleteExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsg", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/executor/OpDeleteExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsg", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements b
 {
-  public static final d.a eza;
+  public static final d.a mqg;
   
   static
   {
-    AppMethodBeat.i(35483);
-    eza = new d.a((byte)0);
-    AppMethodBeat.o(35483);
+    AppMethodBeat.i(114136);
+    mqg = new d.a((byte)0);
+    AppMethodBeat.o(114136);
   }
   
-  public final void a(e parame, com.tencent.mm.api.l paraml, ba paramba, f paramf1, f paramf2, long paramLong)
+  public final void a(e parame, u paramu, com.tencent.mm.s.d paramd)
   {
-    AppMethodBeat.i(35481);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramba, "storage");
-    j.q(paramf1, "newFunctionMsgItem");
-    ab.i("FunctionMsg.OpDeleteExecutor", "[OpDeleteExecutor] op delete! id:".concat(String.valueOf(paramf1)));
-    if (paramf2 != null)
+    AppMethodBeat.i(114135);
+    s.u(parame, "timer");
+    s.u(paramu, "dispatcher");
+    s.u(paramd, "task");
+    Log.i("FunctionMsg.OpDeleteExecutor", s.X("[onTaskExpired] delete ", paramd.mpT.field_functionmsgid));
+    parame = paramd.mpT;
+    paramu.a(parame.field_functionmsgid, parame, parame.field_addMsg);
+    AppMethodBeat.o(114135);
+  }
+  
+  public final void a(e parame, u paramu, bu parambu, j paramj1, j paramj2, long paramLong)
+  {
+    AppMethodBeat.i(114134);
+    s.u(parame, "timer");
+    s.u(paramu, "dispatcher");
+    s.u(parambu, "storage");
+    s.u(paramj1, "newFunctionMsgItem");
+    Log.i("FunctionMsg.OpDeleteExecutor", s.X("[OpDeleteExecutor] op delete! id:", paramj1));
+    if (paramj2 == null) {}
+    for (paramu = null;; paramu = ah.aiuX)
     {
-      ab.i("FunctionMsg.OpDeleteExecutor", "[OpDeleteExecutor] op delete, newFunctionMsgItem.version: %s, functionMsgItem.version: %s, %s", new Object[] { Long.valueOf(paramf1.getVersion()), Long.valueOf(paramf2.getVersion()), paramf2 });
-      if ((paramf1.getVersion() == paramf2.getVersion()) || (paramf1.getVersion() == 0L))
+      if (paramu == null)
       {
-        paramf2.aF(paramf1.Ai());
-        paramba.delete((c)paramf2, new String[0]);
-        parame.a(1, paramf2, (b)this);
+        paramu = (d)this;
+        Log.i("FunctionMsg.OpDeleteExecutor", s.X("[OpDeleteExecutor] op delete, the origin one not exist! ", paramj1));
+        parame.a(1, paramj1, (b)paramu);
       }
-      AppMethodBeat.o(35481);
+      AppMethodBeat.o(114134);
       return;
+      paramLong = paramj1.field_version;
+      s.checkNotNull(paramj2);
+      Log.i("FunctionMsg.OpDeleteExecutor", "[OpDeleteExecutor] op delete, newFunctionMsgItem.version: %s, functionMsgItem.version: %s, %s", new Object[] { Long.valueOf(paramLong), Long.valueOf(paramj2.field_version), paramj2 });
+      if ((paramj1.field_version == paramj2.field_version) || (paramj1.field_version == 0L))
+      {
+        paramj2.field_actionTime = paramj1.field_actionTime;
+        parambu.delete((IAutoDBItem)paramj2, new String[0]);
+        paramj2.field_businessInfo = paramj1.field_businessInfo;
+        parame.a(1, paramj2, (b)this);
+      }
     }
-    ab.i("FunctionMsg.OpDeleteExecutor", "[OpDeleteExecutor] op delete, the origin one not exist! ".concat(String.valueOf(paramf1)));
-    AppMethodBeat.o(35481);
-  }
-  
-  public final void a(e parame, com.tencent.mm.api.l paraml, com.tencent.mm.u.d paramd)
-  {
-    AppMethodBeat.i(35482);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramd, "task");
-    ab.i("FunctionMsg.OpDeleteExecutor", "[onTaskExpired] delete " + paramd.eyP.Ad());
-    parame = paramd.eyP;
-    paraml.b(parame.Ad(), parame, parame.Ag());
-    AppMethodBeat.o(35482);
   }
 }
 

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.emosm.web;
 
-import appu;
-
 class EmojiIPCAlarmer$TimeoutTaskWrapper
   implements Runnable
 {

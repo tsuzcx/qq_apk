@@ -1,121 +1,93 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.b.j;
-import a.l;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextWatcher;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import com.tencent.luggage.l.k;
+import com.tencent.luggage.m.a.a;
+import com.tencent.luggage.m.a.g;
+import com.tencent.luggage.m.a.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.MMFormInputView;
-import com.tencent.mm.ui.base.MMFormVerifyCodeInputView;
-import com.tencent.mm.ui.widget.MMSwitchBtn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.BaseLuggageActivity;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "finishBtn", "Landroid/widget/Button;", "getFinishBtn", "()Landroid/widget/Button;", "setFinishBtn", "(Landroid/widget/Button;)V", "formInputView", "Lcom/tencent/mm/ui/base/MMFormVerifyCodeInputView;", "getFormInputView", "()Lcom/tencent/mm/ui/base/MMFormVerifyCodeInputView;", "setFormInputView", "(Lcom/tencent/mm/ui/base/MMFormVerifyCodeInputView;)V", "formVerifyCodeInputView", "Lcom/tencent/mm/ui/base/MMFormInputView;", "getFormVerifyCodeInputView", "()Lcom/tencent/mm/ui/base/MMFormInputView;", "setFormVerifyCodeInputView", "(Lcom/tencent/mm/ui/base/MMFormInputView;)V", "mobile", "getMobile", "setMobile", "switchBtn", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "getSwitchBtn", "()Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "setSwitchBtn", "(Lcom/tencent/mm/ui/widget/MMSwitchBtn;)V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "sendSms", "showErrorTips", "errMsg", "verifyCode", "Companion", "plugin-appbrand-integration_release"})
-@com.tencent.mm.ui.base.a(3)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PhoneNumberAddUI
-  extends MMActivity
+  extends BaseLuggageActivity
 {
-  public static final a iDA;
-  String appId = "";
-  String czF = "";
-  MMFormVerifyCodeInputView iDw;
-  MMFormInputView iDx;
-  MMSwitchBtn iDy;
-  Button iDz;
+  public static final PhoneNumberAddUI.a tHe;
+  private l tHf;
   
   static
   {
-    AppMethodBeat.i(134840);
-    iDA = new a((byte)0);
-    AppMethodBeat.o(134840);
+    AppMethodBeat.i(148111);
+    tHe = new PhoneNumberAddUI.a((byte)0);
+    AppMethodBeat.o(148111);
   }
   
-  public final int getLayoutId()
+  private static final boolean a(PhoneNumberAddUI paramPhoneNumberAddUI, MenuItem paramMenuItem)
   {
-    return 2130968703;
-  }
-  
-  public final void jC(String paramString)
-  {
-    AppMethodBeat.i(134836);
-    j.q(paramString, "<set-?>");
-    this.czF = paramString;
-    AppMethodBeat.o(134836);
+    AppMethodBeat.i(318947);
+    s.u(paramPhoneNumberAddUI, "this$0");
+    paramPhoneNumberAddUI.finish();
+    AppMethodBeat.o(318947);
+    return true;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(134837);
-    super.onCreate(paramBundle);
-    setActionbarColor(-1);
-    getContentView().setBackgroundColor(getActionbarColor());
-    paramBundle = getIntent().getStringExtra("APPID");
-    j.p(paramBundle, "intent.getStringExtra(APPID)");
-    this.appId = paramBundle;
-    ab.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:%s", new Object[] { this.appId });
-    b.a.a.a.a.a.a.a.a.CKU.azx(this.appId);
-    this.iDy = ((MMSwitchBtn)findViewById(2131821277));
-    this.iDz = ((Button)findViewById(2131821278));
-    this.iDw = ((MMFormVerifyCodeInputView)findViewById(2131821275));
-    paramBundle = this.iDw;
-    if (paramBundle != null) {
-      paramBundle.setInputType(3);
-    }
-    paramBundle = this.iDw;
-    if (paramBundle != null) {
-      paramBundle.setSendSmsBtnClickListener((View.OnClickListener)new PhoneNumberAddUI.b(this));
-    }
-    paramBundle = this.iDw;
-    if (paramBundle != null) {
-      paramBundle.addTextChangedListener((TextWatcher)new PhoneNumberAddUI.c(this));
-    }
-    this.iDx = ((MMFormInputView)findViewById(2131821276));
-    paramBundle = this.iDx;
-    if (paramBundle != null) {
-      paramBundle.setInputType(3);
-    }
-    paramBundle = this.iDx;
-    if (paramBundle != null) {
-      paramBundle.addTextChangedListener((TextWatcher)new PhoneNumberAddUI.d(this));
-    }
-    paramBundle = this.iDz;
-    if (paramBundle != null)
+    AppMethodBeat.i(148109);
+    String str = getIntent().getStringExtra("APPID");
+    if (k.exm.fJ(str))
     {
-      paramBundle.setOnClickListener((View.OnClickListener)new PhoneNumberAddUI.e(this));
-      AppMethodBeat.o(134837);
-      return;
+      setTheme(a.h.WeUITheme_DarkMode);
+      super.onCreate(paramBundle);
+      setNavigationbarColor(getResources().getColor(a.a.BG_1));
+      setActionBarColor(getResources().getColor(a.a.BG_2));
+      hideActionbarLine();
+      Log.i("MicroMsg.PhoneNumberAddUI", s.X("onCreate() appId:", str));
+      setTitle((CharSequence)getResources().getString(a.g.appbrand_phone_number_add_phone_number));
+      setBackBtn(new PhoneNumberAddUI..ExternalSyntheticLambda0(this));
+      paramBundle = u.tHm;
+      paramBundle = u.cHB();
+      Context localContext = (Context)this;
+      s.checkNotNull(str);
+      this.tHf = paramBundle.a(localContext, str, (a)new b(this));
+      paramBundle = this.tHf;
+      if (paramBundle != null) {
+        paramBundle.init();
+      }
+      paramBundle = this.tHf;
+      if (paramBundle != null) {
+        break label196;
+      }
     }
-    AppMethodBeat.o(134837);
+    label196:
+    for (paramBundle = null;; paramBundle = paramBundle.getView())
+    {
+      setContentView(paramBundle);
+      AppMethodBeat.o(148109);
+      return;
+      setTheme(a.h.WeUITheme_LightMode);
+      break;
+    }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(134839);
+    AppMethodBeat.i(148110);
     super.onDestroy();
-    MMFormVerifyCodeInputView localMMFormVerifyCodeInputView = this.iDw;
-    if (localMMFormVerifyCodeInputView != null) {
-      localMMFormVerifyCodeInputView.reset();
+    l locall = this.tHf;
+    if (locall != null) {
+      locall.uninit();
     }
-    b.a.a.a.a.a.a.a.a.CKU.afj(this.appId);
-    AppMethodBeat.o(134839);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(134838);
-    super.onResume();
-    setMMTitle(2131297160);
-    hideActionbarLine();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new f(this));
-    AppMethodBeat.o(134838);
+    AppMethodBeat.o(148110);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -124,27 +96,20 @@ public final class PhoneNumberAddUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI$Companion;", "", "()V", "APPID", "", "TAG", "addPhoneNumber", "", "context", "Landroid/content/Context;", "appId", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class f
-    implements MenuItem.OnMenuItemClickListener
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements a<ah>
   {
-    f(PhoneNumberAddUI paramPhoneNumberAddUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    b(PhoneNumberAddUI paramPhoneNumberAddUI)
     {
-      AppMethodBeat.i(134823);
-      this.iDB.finish();
-      AppMethodBeat.o(134823);
-      return true;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberAddUI
  * JD-Core Version:    0.7.0.1
  */

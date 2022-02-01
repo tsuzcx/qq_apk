@@ -1,29 +1,31 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ahxx;
 import android.util.Base64;
-import bdhb;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public class FaceUnblockCameraJsApiPlugin$2
+class FaceUnblockCameraJsApiPlugin$2
   implements Runnable
 {
-  public FaceUnblockCameraJsApiPlugin$2(ahxx paramahxx, String paramString) {}
+  FaceUnblockCameraJsApiPlugin$2(FaceUnblockCameraJsApiPlugin paramFaceUnblockCameraJsApiPlugin, String paramString) {}
   
   public void run()
   {
     try
     {
-      Object localObject = bdhb.a(this.a);
+      Object localObject = FileUtils.readFile(this.a);
       if (localObject != null)
       {
         localObject = Base64.encodeToString((byte[])localObject, 0);
         ThreadManager.getUIHandler().post(new FaceUnblockCameraJsApiPlugin.2.1(this, (String)localObject));
         return;
       }
-      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock FileUtils.readFile returns null, filepath:" + this.a);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FaceUnlock FileUtils.readFile returns null, filepath:");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.e("FaceUnblockCameraJsApiPlugin", 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)

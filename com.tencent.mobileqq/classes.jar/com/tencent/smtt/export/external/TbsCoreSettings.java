@@ -14,6 +14,7 @@ public class TbsCoreSettings
   public static final String EXTRA_FILE_SIZES = "com.google.android.apps.chrome.extra.extraFileSizes";
   public static final String LAZY_LOAD_LIBRARY_FDS = "lazy_load_library_fds";
   public static final String LAZY_LOAD_LIBRARY_NAMES = "lazy_load_library_names";
+  public static final String NO_SENSITIVE_API = "no_sensitive_api";
   public static final String TBS_SANDBOX_CRASH_RECORD_FILE0 = "sandbox_crash_record0";
   public static final String TBS_SANDBOX_CRASH_RECORD_FILE1 = "sandbox_crash_record1";
   public static final String TBS_SETTINGS_APP_KEY = "AppKey";
@@ -32,7 +33,7 @@ public class TbsCoreSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.TbsCoreSettings
  * JD-Core Version:    0.7.0.1
  */

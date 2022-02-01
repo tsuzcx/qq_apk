@@ -1,0 +1,1618 @@
+package com.tencent.mobileqq.app.message;
+
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForFunnyFace;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlinkHelper;
+import hta;
+import htb;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class MsgProxyUtils
+{
+  public static final int a = 40;
+  public static final String a = "select name from sqlite_master where type=\"table\" and (name like \"mr_friend%\" or name like \"mr_troop%\" or name like \"mr_discusssion%\" or name like \"mr_contact%\" or name like \"mr_devicemsg%\")";
+  static Comparator jdField_a_of_type_JavaUtilComparator = new hta();
+  private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static final boolean a = true;
+  public static final int[] a;
+  public static final String[] a;
+  public static final int b = 40;
+  public static final String b = "one_way";
+  public static final int[] b;
+  public static final int c = 15;
+  private static final String c = "Q.msg.MsgProxyUtils";
+  public static final int[] c;
+  public static final int d = 15;
+  private static final String d = "mr_friend";
+  public static final int[] d;
+  public static final int e = 10;
+  private static final String e = "mr_troop";
+  public static final int[] e;
+  private static final int jdField_f_of_type_Int = 480;
+  private static final String jdField_f_of_type_JavaLangString = "mr_discusssion";
+  public static final int[] f;
+  private static final String g = "mr_contact";
+  public static final int[] g;
+  private static final String h = "mr_devicemsg";
+  public static final int[] h;
+  public static final int[] i;
+  public static final int[] j;
+  public static final int[] k;
+  public static final int[] l;
+  public static final int[] m;
+  public static final int[] n;
+  public static final int[] o;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfInt = new int[] { -1004, -1012, -1001, -1002, -2012, -2006, -4001, 193, 734, 230, -4002, -4003, -4004, -2015, -1014, -4008, -4009, -2021, -2018, -1040, -1039, -4005, -3009, -4020, -3010, -3011, -2019, -1041, -1043, -1044, -1045, -5000, -1017, 1018, -1042, 2024, -1026, -1027, -1028, -5005, -1046 };
+    b = new int[] { -4004, -4003, -4009, -4020, -3010, -3011, -1044, -1026, -1027 };
+    c = new int[] { -1034, -1042, -2015, -2003, -2004, -2009, -1001, -2012, -1013, -1019, -1018, -1014, -1043, -1045, -5000, -5001, -1024, -1028, 2024, -1025, -5005, -1046 };
+    d = new int[] { -1004, -1012, -4002, -4003, -4004, -1013, -4009, -1016, -1017, -2021, -1041, -1043, -1044, -1045, -5000, -5001, 1018, -2016, 2024, -5005, -1046, -3013 };
+    e = new int[] { -4003, -4020, -4004, -4009 };
+    f = new int[] { -2006, -1034, -1042, -2015, -4002, -4003, -4004, -1001, -1013, -1019, -1018, -2012, -1014, -1004, -1016, -1017, -2021, -3011, -4020, -3009, -3010, -1041, -1043, -1044, -1045, -5000, -5001, -1024, -1028, 1018, 2024, -1012, -1046 };
+    g = new int[0];
+    h = new int[0];
+    i = new int[] { 1008 };
+    j = new int[] { -1000, -2000, -2002, -2005, -1035, -1036, -1037, -20000, -2007, -2011, -2010 };
+    k = new int[] { -2000, -2002, -2007, -2011, -2020, -2022 };
+    l = new int[] { -1001, -2009, -2016, -4008 };
+    m = new int[] { -2002 };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.af, AppConstants.V, AppConstants.au, AppConstants.ab, AppConstants.ae };
+    n = new int[] { 0, 1000, 1004, 1020, 1006, 1001, 1009, 1003, 1005, 1008, 1023, 1021, 1022, 1024, 1025, 1010, 7100 };
+    o = new int[] { 1000, 1004, 1020 };
+  }
+  
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return paramInt;
+    case 1001: 
+    case 7100: 
+      return 1001;
+    case 1010: 
+      return 1010;
+    }
+    return 1009;
+  }
+  
+  public static int a(String paramString)
+  {
+    if (paramString.startsWith("mr_discusssion")) {
+      return 3000;
+    }
+    if (paramString.startsWith("mr_friend")) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public static int a(List paramList, QQAppInterface paramQQAppInterface)
+  {
+    int i2;
+    if ((paramList == null) || (paramList.isEmpty())) {
+      i2 = 0;
+    }
+    HashSet localHashSet;
+    int i1;
+    do
+    {
+      return i2;
+      localHashSet = new HashSet();
+      paramList = paramList.iterator();
+      i1 = 0;
+      i2 = i1;
+    } while (!paramList.hasNext());
+    MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+    if ((!localMessageRecord.isread) && (!localMessageRecord.isLongMsg())) {
+      i1 += 1;
+    }
+    for (;;)
+    {
+      break;
+      i2 = i1;
+      if (!localMessageRecord.isread)
+      {
+        i2 = i1;
+        if (localMessageRecord.isLongMsg())
+        {
+          if (paramQQAppInterface.a().a(localMessageRecord)) {
+            break;
+          }
+          i2 = i1;
+          if (!localHashSet.contains(a(localMessageRecord)))
+          {
+            i2 = i1 + 1;
+            localHashSet.add(a(localMessageRecord));
+          }
+        }
+      }
+      i1 = i2;
+    }
+  }
+  
+  public static MessageRecord a(List paramList)
+  {
+    Object localObject;
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      localObject = null;
+      return localObject;
+    }
+    int i1 = paramList.size() - 1;
+    for (;;)
+    {
+      if (i1 < 0) {
+        break label60;
+      }
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
+      localObject = localMessageRecord;
+      if (localMessageRecord.msgtype != -2006) {
+        break;
+      }
+      i1 -= 1;
+    }
+    label60:
+    return null;
+  }
+  
+  public static TroopMemberInfo a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a(paramQQAppInterface, paramMessageRecord)) {
+      return null;
+    }
+    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+    paramMessageRecord = (TroopMemberInfo)paramQQAppInterface.a(TroopMemberInfo.class, new String[] { paramMessageRecord.frienduin, paramMessageRecord.senderuin });
+    paramQQAppInterface.a();
+    return paramMessageRecord;
+  }
+  
+  public static String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("not in (");
+    int i1 = 0;
+    if (i1 < jdField_a_of_type_ArrayOfInt.length)
+    {
+      localStringBuilder.append(jdField_a_of_type_ArrayOfInt[i1]);
+      if (i1 == jdField_a_of_type_ArrayOfInt.length - 1) {
+        localStringBuilder.append(")");
+      }
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    return paramMessageRecord.longMsgId + "&" + paramMessageRecord.senderuin + "&" + paramMessageRecord.longMsgCount;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      return (String)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    String str = MD5.toMD5(paramString);
+    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 3000) {
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, str);
+    return str;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    String str;
+    if ((paramInt != 1) && (3000 != paramInt) && (paramInt != 1006) && (paramInt != 7000))
+    {
+      str = paramString;
+      if (paramInt != 9501) {}
+    }
+    else
+    {
+      str = paramString + "&" + paramInt;
+    }
+    return str;
+  }
+  
+  public static List a(List paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if ((!i(localMessageRecord.msgtype)) && (((localMessageRecord.istroop != 3000) && (localMessageRecord.istroop != 1)) || (localMessageRecord.shmsgseq > 0L))) {
+        localArrayList.add(localMessageRecord);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static List a(List paramList1, List paramList2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList1 == null) || (paramList2 == null)) {
+      return null;
+    }
+    paramList2 = paramList2.iterator();
+    label191:
+    for (;;)
+    {
+      MessageRecord localMessageRecord1;
+      if (paramList2.hasNext())
+      {
+        localMessageRecord1 = (MessageRecord)paramList2.next();
+        Iterator localIterator = paramList1.iterator();
+        MessageRecord localMessageRecord2;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localMessageRecord2 = (MessageRecord)localIterator.next();
+        } while ((localMessageRecord1.getId() != localMessageRecord1.getId()) || (localMessageRecord1.shmsgseq != localMessageRecord2.shmsgseq) || (localMessageRecord1.msgtype != localMessageRecord2.msgtype) || (localMessageRecord1.time != localMessageRecord2.time) || (localMessageRecord1.msgUid != localMessageRecord2.msgUid) || (localMessageRecord1.longMsgIndex != localMessageRecord2.longMsgIndex) || (localMessageRecord1.longMsgId != localMessageRecord2.longMsgId));
+      }
+      for (int i1 = 1;; i1 = 0)
+      {
+        if (i1 != 0) {
+          break label191;
+        }
+        localArrayList.add(localMessageRecord1);
+        break;
+        return localArrayList;
+      }
+    }
+  }
+  
+  public static List a(List paramList, boolean paramBoolean)
+  {
+    return a(paramList, paramBoolean, 15);
+  }
+  
+  public static List a(List paramList, boolean paramBoolean, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return localArrayList;
+    }
+    if (paramBoolean) {
+      Collections.sort(paramList, new htb());
+    }
+    long l1 = ((MessageRecord)paramList.get(paramList.size() - 1)).shmsgseq;
+    int i1 = paramList.size() - 1;
+    int i2 = 0;
+    for (;;)
+    {
+      if ((i1 >= 0) && (l1 - ((MessageRecord)paramList.get(i1)).shmsgseq <= 1L)) {
+        if ((l1 != ((MessageRecord)paramList.get(i1)).shmsgseq) || (i1 >= paramList.size() - 1)) {
+          break label169;
+        }
+      }
+      for (;;)
+      {
+        l1 = ((MessageRecord)paramList.get(i1)).shmsgseq;
+        localArrayList.add(0, paramList.get(i1));
+        if (i2 < paramInt) {
+          break;
+        }
+        return localArrayList;
+        label169:
+        i2 += 1;
+      }
+      i1 -= 1;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if (paramInt != 1) {}
+    for (;;)
+    {
+      return;
+      Object localObject1 = new ArrayList();
+      Object localObject2 = paramQQAppInterface.a().a(paramString, paramInt).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject2).next();
+        if (o(localMessageRecord.msgtype)) {
+          ((List)localObject1).add(localMessageRecord);
+        }
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (MessageRecord)((Iterator)localObject1).next();
+        paramQQAppInterface.a().a(paramString, paramInt, -4009, ((MessageRecord)localObject2).uniseq);
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  {
+    Iterator localIterator = paramQQAppInterface.a().a(paramString, paramInt1).iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if (paramInt2 == localMessageRecord.msgtype) {
+        switch (paramInt2)
+        {
+        default: 
+          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+          break;
+        case -3010: 
+          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+          break;
+        case -4020: 
+          paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+          break;
+        case -3011: 
+          if (!QlinkHelper.a()) {
+            paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, localMessageRecord.uniseq);
+          }
+          break;
+        }
+      }
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      paramMessageRecord.extLong |= 0x1;
+      paramMessageRecord.saveExtInfoToExtStr("one_way", "true");
+      return;
+    }
+    paramMessageRecord.removeExtInfoToExtStr("one_way");
+  }
+  
+  public static void a(String paramString, int paramInt, List paramList, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      Object localObject2 = new ArrayList();
+      HashMap localHashMap = new HashMap();
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = paramQQAppInterface.a();
+      Object localObject3 = paramList.iterator();
+      int i1 = 0;
+      int i2 = 0;
+      Object localObject4;
+      label166:
+      int i3;
+      if (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (MessageRecord)((Iterator)localObject3).next();
+        String str1;
+        if (((MessageRecord)localObject4).isLongMsg())
+        {
+          str1 = a((MessageRecord)localObject4);
+          if (localHashMap.containsKey(str1)) {
+            if (Math.abs(((MessageRecord)((ArrayList)localHashMap.get(str1)).get(0)).time - ((MessageRecord)localObject4).time) <= 480L)
+            {
+              ((ArrayList)localHashMap.get(str1)).add(localObject4);
+              ((List)localObject2).add(localObject4);
+              i3 = i1;
+              i1 = i2;
+              i2 = i3;
+            }
+          }
+        }
+        for (;;)
+        {
+          i3 = i1;
+          i1 = i2;
+          i2 = i3;
+          break;
+          i3 = i1 + 1;
+          String str2 = b(str1, i3);
+          localHashMap.put(str2, localHashMap.get(str1));
+          paramQQAppInterface = null;
+          i1 = 0;
+          for (;;)
+          {
+            if (i1 < localArrayList.size())
+            {
+              paramQQAppInterface = (Pair)localArrayList.get(i1);
+              if (!((String)paramQQAppInterface.first).equals(str1)) {}
+            }
+            else
+            {
+              if (paramQQAppInterface != null)
+              {
+                localArrayList.remove(i1);
+                localArrayList.add(i1, new Pair(str2, paramQQAppInterface.second));
+              }
+              paramQQAppInterface = new ArrayList();
+              paramQQAppInterface.add(localObject4);
+              localHashMap.put(str1, paramQQAppInterface);
+              localArrayList.add(new Pair(str1, Integer.valueOf(i2)));
+              i1 = i3;
+              break;
+            }
+            i1 += 1;
+          }
+          paramQQAppInterface = new ArrayList();
+          paramQQAppInterface.add(localObject4);
+          localHashMap.put(str1, paramQQAppInterface);
+          localArrayList.add(new Pair(str1, Integer.valueOf(i2)));
+          break label166;
+          i3 = i2 + 1;
+          i2 = i1;
+          i1 = i3;
+        }
+      }
+      paramList.removeAll((Collection)localObject2);
+      if ((!localHashMap.isEmpty()) && (!localArrayList.isEmpty()))
+      {
+        if (((MessageCache)localObject1).a(paramString, paramInt) != null)
+        {
+          paramQQAppInterface = new ArrayList();
+          localObject2 = localHashMap.keySet().iterator();
+          for (;;)
+          {
+            if (!((Iterator)localObject2).hasNext()) {
+              break label764;
+            }
+            localObject3 = (String)((Iterator)localObject2).next();
+            localObject4 = (ArrayList)localHashMap.get(localObject3);
+            if (!((ArrayList)localObject4).isEmpty()) {
+              if ((((MessageRecord)((ArrayList)localObject4).get(0)).longMsgCount <= ((ArrayList)localObject4).size()) || (((MessageRecord)((ArrayList)localObject4).get(0)).isSendFromLocal()))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: complete online msg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + (String)localObject3);
+                }
+                ((MessageCache)localObject1).a(paramString, paramInt, (String)localObject3);
+              }
+              else if (((MessageCache)localObject1).a(paramString, paramInt, (String)localObject3))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: incomplete online msg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + (String)localObject3);
+                }
+                paramQQAppInterface.add(localObject3);
+                localObject4 = localArrayList.iterator();
+                if (((Iterator)localObject4).hasNext())
+                {
+                  if (!TextUtils.equals((CharSequence)((Pair)((Iterator)localObject4).next()).first, (CharSequence)localObject3)) {
+                    break;
+                  }
+                  ((Iterator)localObject4).remove();
+                }
+              }
+            }
+          }
+          label764:
+          if (!paramQQAppInterface.isEmpty())
+          {
+            paramQQAppInterface = paramQQAppInterface.iterator();
+            while (paramQQAppInterface.hasNext()) {
+              localHashMap.remove((String)paramQQAppInterface.next());
+            }
+          }
+        }
+        i2 = localArrayList.size() - 1;
+        while (i2 >= 0)
+        {
+          paramQQAppInterface = (Pair)localArrayList.get(i2);
+          localObject2 = (ArrayList)localHashMap.get(paramQQAppInterface.first);
+          try
+          {
+            Collections.sort((List)localObject2, jdField_a_of_type_JavaUtilComparator);
+            localObject1 = new ArrayList();
+            localObject2 = ((ArrayList)localObject2).iterator();
+            i1 = 0;
+            for (;;)
+            {
+              if (!((Iterator)localObject2).hasNext()) {
+                break label1080;
+              }
+              localObject3 = (MessageRecord)((Iterator)localObject2).next();
+              if (!a((MessageRecord)localObject3)) {
+                break;
+              }
+              ((ArrayList)localObject1).add(localObject3);
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel())
+              {
+                QLog.d("Q.msg.MsgProxyUtils", 2, "sort long msg error", localException);
+                continue;
+                i3 = i1;
+                if (!localException.isEmpty())
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + a((MessageRecord)localException.get(0)));
+                  }
+                  paramList.add(i1 + ((Integer)paramQQAppInterface.second).intValue(), new MessageForLongMsg(localException));
+                  localException.clear();
+                  i3 = i1 + 1;
+                }
+                paramList.add(i3 + ((Integer)paramQQAppInterface.second).intValue(), localObject3);
+                i1 = i3 + 1;
+              }
+            }
+            label1080:
+            if (!localException.isEmpty())
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.msg.MsgProxyUtils", 2, "mergeLongMsg: uin=" + paramString + ",istroop=" + paramInt + ",key=" + a((MessageRecord)localException.get(0)));
+              }
+              paramList.add(((Integer)paramQQAppInterface.second).intValue() + i1, new MessageForLongMsg(localException));
+              localException.clear();
+            }
+            i2 -= 1;
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(List paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord.msgtype == -2006) || (!localMessageRecord.isValid)) {
+        localArrayList.add(localMessageRecord);
+      }
+    }
+    paramList.removeAll(localArrayList);
+  }
+  
+  public static void a(List paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    if ((paramMessageRecord.istroop == 3000) || (paramMessageRecord.istroop == 1))
+    {
+      c(paramList, paramMessageRecord, paramBoolean);
+      return;
+    }
+    if (c(paramMessageRecord.istroop))
+    {
+      b(paramList, paramMessageRecord, paramBoolean);
+      return;
+    }
+    paramList.add(paramMessageRecord);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if (h.length == 0) {}
+    for (;;)
+    {
+      return false;
+      int[] arrayOfInt = h;
+      int i2 = arrayOfInt.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          return true;
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2)
+  {
+    return (a(paramInt1) == 1001) && (paramInt2 != -3001) && (paramInt2 != -3000) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != -1003);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    return (paramMessageRecord.istroop == 1) && (((FriendManager)paramQQAppInterface.getManager(8)).f(paramMessageRecord.frienduin));
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    return ((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForMixedMsg));
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (paramMessageRecord1.isLongMsg()) && (paramMessageRecord2.isLongMsg()) && (paramMessageRecord1.longMsgId == paramMessageRecord2.longMsgId) && (paramMessageRecord1.longMsgCount == paramMessageRecord2.longMsgCount) && (TextUtils.equals(paramMessageRecord1.senderuin, paramMessageRecord2.senderuin)) && (Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) <= 480L);
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, boolean paramBoolean)
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramMessageRecord1.msgtype == paramMessageRecord2.msgtype) {
+      if (paramMessageRecord1.msgUid != 0L) {
+        if ((paramBoolean) && ((f(paramMessageRecord2.msgtype)) || (paramMessageRecord2.msgtype == -2002)))
+        {
+          bool1 = bool2;
+          if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
+          {
+            bool1 = bool2;
+            if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
+              bool1 = true;
+            }
+          }
+          paramBoolean = bool1;
+          if (!bool1) {
+            if (paramMessageRecord1.msgtype != -2005)
+            {
+              paramBoolean = bool1;
+              if (paramMessageRecord1.msgtype != -2002) {}
+            }
+            else
+            {
+              paramBoolean = bool1;
+              if (c(paramMessageRecord1, paramMessageRecord2)) {
+                paramBoolean = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((paramBoolean) && (QLog.isColorLevel())) {
+        QLog.w("Q.msg.MsgProxyUtils", 2, "friend---------------msgFilter istroop: " + paramMessageRecord2.istroop + " friendUin: " + paramMessageRecord2.frienduin + " senderUin: " + paramMessageRecord2.senderuin + " LOC_shmsgseq: " + paramMessageRecord1.shmsgseq + " NEW_shmsgseq:" + paramMessageRecord1.shmsgseq + " LOC_msgType: " + paramMessageRecord1.msgtype + " NEW_msgType" + paramMessageRecord2.msgtype + " LOC_msgtime: " + paramMessageRecord1.time + " NEW_msgtime:" + paramMessageRecord2.time + " LOC_msgUid:" + paramMessageRecord1.msgUid + " NEW_msgUid:" + paramMessageRecord2.msgUid + " LOC_msgContent: " + paramMessageRecord1.getLogColorContent() + " NEW_msgContent:" + paramMessageRecord2.getLogColorContent());
+      }
+      return paramBoolean;
+      paramBoolean = bool1;
+      if (c(paramMessageRecord1, paramMessageRecord2))
+      {
+        paramBoolean = true;
+        continue;
+        paramBoolean = bool1;
+        if (c(paramMessageRecord1, paramMessageRecord2))
+        {
+          paramBoolean = true;
+          continue;
+          if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2007))
+          {
+            paramBoolean = bool1;
+            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
+            {
+              paramBoolean = bool1;
+              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
+                paramBoolean = true;
+              }
+            }
+          }
+          else if ((paramMessageRecord1.msgtype == -2001) && (paramMessageRecord2.msgtype == -2000))
+          {
+            paramBoolean = bool1;
+            if (paramMessageRecord1.time == paramMessageRecord2.time)
+            {
+              paramBoolean = bool1;
+              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
+                paramBoolean = true;
+              }
+            }
+          }
+          else if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2011))
+          {
+            paramBoolean = bool1;
+            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
+            {
+              paramBoolean = bool1;
+              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
+                paramBoolean = true;
+              }
+            }
+          }
+          else if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2022))
+          {
+            paramBoolean = bool1;
+            if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
+            {
+              paramBoolean = bool1;
+              if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
+                paramBoolean = true;
+              }
+            }
+          }
+          else
+          {
+            paramBoolean = bool1;
+            if (paramMessageRecord1.msgtype == -1000)
+            {
+              paramBoolean = bool1;
+              if (paramMessageRecord2.msgtype == -2025)
+              {
+                paramBoolean = bool1;
+                if (paramMessageRecord1.msgUid == paramMessageRecord2.msgUid)
+                {
+                  paramBoolean = bool1;
+                  if (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) {
+                    paramBoolean = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    if ((paramMessageRecord1.frienduin == null) || (!paramMessageRecord1.frienduin.equals(paramMessageRecord2.frienduin))) {
+      paramBoolean1 = false;
+    }
+    label68:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return paramBoolean1;
+                    if (paramBoolean1) {
+                      break label170;
+                    }
+                    if (paramBoolean2) {
+                      break label68;
+                    }
+                    if (Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) >= 30L) {
+                      break;
+                    }
+                    paramBoolean1 = bool;
+                  } while (b(paramMessageRecord1, paramMessageRecord2));
+                  return false;
+                  if (paramMessageRecord1.shmsgseq != paramMessageRecord2.shmsgseq) {
+                    break;
+                  }
+                  paramBoolean1 = bool;
+                } while (paramMessageRecord1.msgtype == paramMessageRecord2.msgtype);
+                if (paramMessageRecord1.msgtype != -1000) {
+                  break;
+                }
+                paramBoolean1 = bool;
+              } while (paramMessageRecord2.msgtype == -2007);
+              paramBoolean1 = bool;
+            } while (paramMessageRecord1.msgtype == -2006);
+            paramBoolean1 = bool;
+          } while (paramMessageRecord2.msgtype == -2006);
+          if (paramMessageRecord1.msgtype != -1000) {
+            break;
+          }
+          paramBoolean1 = bool;
+        } while (paramMessageRecord2.msgtype == -2011);
+        return false;
+        return false;
+        if (!paramMessageRecord1.isSendFromLocal()) {
+          return false;
+        }
+        if ((paramMessageRecord1.extraflag != 32772) && (paramMessageRecord1.extraflag != 32768)) {
+          return false;
+        }
+        if (paramMessageRecord1.msgtype == -2006) {
+          return false;
+        }
+        if ((paramMessageRecord1.senderuin == null) || (!paramMessageRecord1.senderuin.equals(paramMessageRecord2.senderuin))) {
+          return false;
+        }
+        if ((paramMessageRecord1.msgUid == 0L) || (paramMessageRecord2.msgUid == 0L) || (paramMessageRecord1.msgUid != paramMessageRecord2.msgUid)) {
+          break;
+        }
+        paramBoolean1 = bool;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.msg.MsgProxyUtils", 2, "compTroopMsgContent RewriteSeq: find msg by uid=" + paramMessageRecord1.msgUid);
+      return true;
+      if ((Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) >= 510L) && (Math.abs(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) >= 2L)) {
+        break;
+      }
+      paramBoolean1 = bool;
+    } while (b(paramMessageRecord1, paramMessageRecord2));
+    label170:
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int i2 = arrayOfString.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfString[i1].equals(paramString)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    return ((a(paramInt) == 1001) && (AppConstants.af.equals(paramString))) || ((a(paramInt) == 1009) && (AppConstants.V.equals(paramString))) || ((a(paramInt) == 1010) && (AppConstants.au.equals(paramString)));
+  }
+  
+  public static boolean a(String paramString, int paramInt, List paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    Object localObject;
+    do
+    {
+      while (!paramList.hasNext())
+      {
+        do
+        {
+          return false;
+          paramString = new HashMap();
+          paramList = paramList.iterator();
+          paramInt = 0;
+          if (paramList.hasNext())
+          {
+            localObject = (MessageRecord)paramList.next();
+            String str;
+            if (((MessageRecord)localObject).isLongMsg())
+            {
+              str = a((MessageRecord)localObject);
+              if (paramString.containsKey(str)) {
+                if (Math.abs(((MessageRecord)((ArrayList)paramString.get(str)).get(0)).time - ((MessageRecord)localObject).time) <= 480L) {
+                  ((ArrayList)paramString.get(str)).add(localObject);
+                }
+              }
+            }
+            for (;;)
+            {
+              break;
+              paramInt += 1;
+              paramString.put(b(str, paramInt), paramString.get(str));
+              ArrayList localArrayList = new ArrayList();
+              localArrayList.add(localObject);
+              paramString.put(str, localArrayList);
+              continue;
+              localArrayList = new ArrayList();
+              localArrayList.add(localObject);
+              paramString.put(str, localArrayList);
+            }
+          }
+        } while (paramString.isEmpty());
+        paramList = paramString.keySet().iterator();
+      }
+      localObject = (ArrayList)paramString.get((String)paramList.next());
+    } while ((((ArrayList)localObject).isEmpty()) || (((MessageRecord)((ArrayList)localObject).get(0)).longMsgCount <= ((ArrayList)localObject).size()) || (((MessageRecord)((ArrayList)localObject).get(0)).isSendFromLocal()));
+    return true;
+  }
+  
+  public static boolean a(List paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return false;
+    }
+    int i2 = paramList.size();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (((MessageRecord)paramList.get(i1)).msgtype != -2006) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
+  }
+  
+  public static byte[] a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)MessageRecordFactory.a(-2017);
+    MessageRecord.copyMessageRecordBaseField(localMessageForTroopFile, paramMessageRecord1);
+    localMessageForTroopFile.doParse();
+    paramMessageRecord1 = (MessageForTroopFile)MessageRecordFactory.a(-2017);
+    MessageRecord.copyMessageRecordBaseField(paramMessageRecord1, paramMessageRecord2);
+    paramMessageRecord1.doParse();
+    localMessageForTroopFile.bisID = paramMessageRecord1.bisID;
+    localMessageForTroopFile.dspFileName = paramMessageRecord1.dspFileName;
+    localMessageForTroopFile.dspFileSize = paramMessageRecord1.dspFileSize;
+    localMessageForTroopFile.fileSize = paramMessageRecord1.fileSize;
+    localMessageForTroopFile.fileName = paramMessageRecord1.fileName;
+    localMessageForTroopFile.url = paramMessageRecord1.url;
+    localMessageForTroopFile.serial();
+    return localMessageForTroopFile.msgData;
+  }
+  
+  static String[] a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString != null)
+    {
+      localObject1 = localObject2;
+      if (paramString.length() > 0)
+      {
+        localObject1 = localObject2;
+        if (paramString.charAt(0) == '\026') {
+          localObject1 = paramString.split("\\|");
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public static String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("not in (");
+    int i1 = 0;
+    if (i1 < f.length)
+    {
+      localStringBuilder.append(f[i1]);
+      if (i1 == f.length - 1) {
+        localStringBuilder.append(")");
+      }
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    return paramString + "&" + paramInt;
+  }
+  
+  public static List b(List paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (!g(localMessageRecord.msgtype)) {
+        localArrayList.add(localMessageRecord);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  {
+    a(paramQQAppInterface, paramString, paramInt1, paramInt2);
+  }
+  
+  public static void b(List paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    int i3 = 0;
+    Iterator localIterator = paramList.iterator();
+    int i1 = 0;
+    for (;;)
+    {
+      i2 = i3;
+      if (!localIterator.hasNext()) {
+        break label83;
+      }
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if (((paramBoolean) || (localMessageRecord.time >= paramMessageRecord.time)) && ((!paramBoolean) || (localMessageRecord.time > paramMessageRecord.time))) {
+        break;
+      }
+      i1 += 1;
+    }
+    int i2 = 1;
+    label83:
+    if (i2 == 0)
+    {
+      paramList.add(paramMessageRecord);
+      return;
+    }
+    paramList.add(i1, paramMessageRecord);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    if (i.length == 0) {}
+    for (;;)
+    {
+      return false;
+      int[] arrayOfInt = i;
+      int i2 = arrayOfInt.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          return true;
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    return (paramMessageRecord.istroop == 1) && (((HotChatManager)paramQQAppInterface.getManager(58)).d(paramMessageRecord.frienduin));
+  }
+  
+  public static boolean b(MessageRecord paramMessageRecord)
+  {
+    return ((paramMessageRecord.extLong & 0x1) == 1) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("one_way")));
+  }
+  
+  private static boolean b(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    boolean bool2 = true;
+    boolean bool3 = true;
+    boolean bool4 = true;
+    boolean bool1 = true;
+    if (paramMessageRecord1.msgtype != paramMessageRecord2.msgtype) {}
+    String str;
+    Object localObject;
+    label576:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return false;
+                  str = paramMessageRecord1.msg;
+                  localObject = paramMessageRecord2.msg;
+                  if (paramMessageRecord2.msgtype != -1000) {
+                    break;
+                  }
+                } while (!TextUtils.equals(str, (CharSequence)localObject));
+                return true;
+                if (paramMessageRecord2.msgtype != -2002) {
+                  break;
+                }
+              } while ((!(paramMessageRecord2 instanceof MessageForPtt)) || (!(paramMessageRecord1 instanceof MessageForPtt)) || (((MessageForPtt)paramMessageRecord1).urlAtServer == null) || (((MessageForPtt)paramMessageRecord1).urlAtServer.length() <= 0) || (((MessageForPtt)paramMessageRecord2).urlAtServer == null) || (((MessageForPtt)paramMessageRecord2).urlAtServer.length() <= 0));
+              return ((MessageForPtt)paramMessageRecord1).urlAtServer.equals(((MessageForPtt)paramMessageRecord2).urlAtServer);
+              if (paramMessageRecord2.msgtype == -2011)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("Debug", 2, "c2c" + Arrays.toString(paramMessageRecord1.msgData) + " : " + Arrays.toString(paramMessageRecord2.msgData));
+                }
+                return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
+              }
+              if (paramMessageRecord2.msgtype != -2000) {
+                break label576;
+              }
+              if ((str == null) || (localObject == null) || (str.length() <= 0) || (((String)localObject).length() <= 0) || (str.charAt(0) != '\026') || (((String)localObject).charAt(0) != '\026')) {
+                break;
+              }
+              paramMessageRecord1 = a((String)localObject);
+              localObject = a(str);
+            } while ((!paramMessageRecord1[1].equals(localObject[1])) || (!paramMessageRecord1[2].equals(localObject[2])));
+            if ((paramMessageRecord2.issend == 2) || (paramMessageRecord2.isSendFromLocal()))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.msg.MsgProxyUtils", 2, "-------->compMsgContent: samePic: picSize:" + paramMessageRecord1[1] + ",picType:" + paramMessageRecord1[2] + ",isSend == true");
+              }
+              return true;
+            }
+            if (!str.contains(AppConstants.aG)) {
+              break;
+            }
+            paramMessageRecord2 = localObject[0].split("/");
+            paramMessageRecord2 = paramMessageRecord2[(paramMessageRecord2.length - 1)].split("\\.")[0];
+            str = MD5.toMD5(paramMessageRecord1[4]);
+          } while (!str.equals(paramMessageRecord2));
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.MsgProxyUtils", 2, "-------->compMsgContent: samePic: picSize:" + paramMessageRecord1[1] + ",picType:" + paramMessageRecord1[2] + ",Path:" + str);
+          }
+          return true;
+          return localObject[0].equals(paramMessageRecord1[0]);
+        } while ((((MessageForPic)paramMessageRecord1).uuid == null) || (((MessageForPic)paramMessageRecord1).uuid.length() <= 0) || (((MessageForPic)paramMessageRecord2).uuid == null) || (((MessageForPic)paramMessageRecord2).uuid.length() <= 0));
+        return ((MessageForPic)paramMessageRecord1).uuid.equals(((MessageForPic)paramMessageRecord2).uuid);
+        if ((paramMessageRecord2.msgtype == -2007) && (paramMessageRecord1.msgtype == -2007)) {
+          return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
+        }
+        if ((paramMessageRecord2.msgtype == -1035) && (paramMessageRecord1.msgtype == -1035)) {
+          return Arrays.equals(paramMessageRecord2.msgData, paramMessageRecord1.msgData);
+        }
+        if ((paramMessageRecord2.msgtype == -1034) && (paramMessageRecord1.msgtype == -1034))
+        {
+          if ((paramMessageRecord2.time == paramMessageRecord1.time) && (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq)) {}
+          for (;;)
+          {
+            return bool1;
+            bool1 = false;
+          }
+        }
+        if ((paramMessageRecord2.msgtype == -1042) && (paramMessageRecord1.msgtype == -1042))
+        {
+          if (paramMessageRecord2.time == paramMessageRecord1.time) {}
+          for (bool1 = bool2;; bool1 = false) {
+            return bool1;
+          }
+        }
+        if ((paramMessageRecord2.msgtype == -2015) && (paramMessageRecord1.msgtype == -2015))
+        {
+          if ((paramMessageRecord2.time == paramMessageRecord1.time) && (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq)) {}
+          for (bool1 = bool3;; bool1 = false) {
+            return bool1;
+          }
+        }
+        if ((paramMessageRecord2.msgtype == -2010) && (paramMessageRecord1.msgtype == -2010)) {
+          return ((MessageForFunnyFace)paramMessageRecord2).msgEquals((MessageForFunnyFace)paramMessageRecord1);
+        }
+        if (paramMessageRecord2.msgtype != -2005) {
+          break;
+        }
+      } while ((!(paramMessageRecord2 instanceof MessageForFile)) || (!(paramMessageRecord1 instanceof MessageForFile)));
+      if (paramMessageRecord2.uniseq == paramMessageRecord1.uniseq) {}
+      for (bool1 = bool4;; bool1 = false) {
+        return bool1;
+      }
+    } while ((paramMessageRecord2.msgtype == -2017) || (!TextUtils.equals(str, (CharSequence)localObject)));
+    return true;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (paramString == null) {}
+    for (;;)
+    {
+      return false;
+      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      int i2 = arrayOfString.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        String str = arrayOfString[i1];
+        if (paramString.startsWith(str + "&")) {
+          return true;
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  public static String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("not in (");
+    int i1 = 0;
+    if (i1 < c.length)
+    {
+      localStringBuilder.append(c[i1]);
+      if (i1 == c.length - 1) {
+        localStringBuilder.append(")");
+      }
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static void c(List paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    int i3 = 0;
+    Iterator localIterator = paramList.iterator();
+    int i1 = 0;
+    for (;;)
+    {
+      i2 = i3;
+      if (!localIterator.hasNext()) {
+        break label83;
+      }
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if (((paramBoolean) || (localMessageRecord.shmsgseq >= paramMessageRecord.shmsgseq)) && ((!paramBoolean) || (localMessageRecord.shmsgseq > paramMessageRecord.shmsgseq))) {
+        break;
+      }
+      i1 += 1;
+    }
+    int i2 = 1;
+    label83:
+    if (i2 == 0)
+    {
+      paramList.add(paramMessageRecord);
+      return;
+    }
+    paramList.add(i1, paramMessageRecord);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = n;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    return a(paramQQAppInterface, paramMessageRecord);
+  }
+  
+  private static boolean c(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    boolean bool = true;
+    if (paramMessageRecord1.msgtype == -1034) {
+      bool = b(paramMessageRecord1, paramMessageRecord2);
+    }
+    do
+    {
+      return bool;
+      if (paramMessageRecord1.msgtype == -1042) {
+        return b(paramMessageRecord1, paramMessageRecord2);
+      }
+      if ((paramMessageRecord1.msgtype != -2000) && (paramMessageRecord1.msgtype != -1000)) {
+        break;
+      }
+    } while ((Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) < 30L) && (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq) && (b(paramMessageRecord1, paramMessageRecord2)));
+    do
+    {
+      do
+      {
+        return false;
+        if (paramMessageRecord1.msgtype == -2002) {
+          return b(paramMessageRecord1, paramMessageRecord2);
+        }
+        if (paramMessageRecord1.msgtype == -2005) {
+          return b(paramMessageRecord1, paramMessageRecord2);
+        }
+      } while ((Math.abs(paramMessageRecord1.time - paramMessageRecord2.time) >= 30L) || (paramMessageRecord1.shmsgseq != paramMessageRecord2.shmsgseq));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.msg.MsgProxyUtils", 2, "other equal : mr.shmsgseq = " + paramMessageRecord1.shmsgseq);
+      }
+    } while (!b(paramMessageRecord1, paramMessageRecord2));
+    return true;
+  }
+  
+  public static String d()
+  {
+    if (g.length == 0) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("not in (");
+    int i1 = 0;
+    if (i1 < g.length)
+    {
+      localStringBuilder.append(g[i1]);
+      if (i1 == g.length - 1) {
+        localStringBuilder.append(")");
+      }
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = o;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    return (b(paramMessageRecord)) && (!a(paramMessageRecord.frienduin, paramMessageRecord.istroop)) && (paramQQAppInterface.a().b(paramMessageRecord.frienduin));
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    int[] arrayOfInt = c;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (arrayOfInt[i1] == paramInt) {
+        return false;
+      }
+      i1 += 1;
+    }
+    return true;
+  }
+  
+  public static boolean f(int paramInt)
+  {
+    int[] arrayOfInt = m;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (arrayOfInt[i1] == paramInt) {
+        return false;
+      }
+      i1 += 1;
+    }
+    return true;
+  }
+  
+  public static boolean g(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean h(int paramInt)
+  {
+    if (g.length == 0) {}
+    for (;;)
+    {
+      return false;
+      int[] arrayOfInt = g;
+      int i2 = arrayOfInt.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          return true;
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  public static boolean i(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = b;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean j(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = j;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean k(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = k;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean l(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = l;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean m(int paramInt)
+  {
+    return paramInt == -2006;
+  }
+  
+  public static boolean n(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = d;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean o(int paramInt)
+  {
+    boolean bool2 = false;
+    int[] arrayOfInt = e;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < i2)
+      {
+        if (arrayOfInt[i1] == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public static boolean p(int paramInt)
+  {
+    return (a(paramInt) == 1001) || (a(paramInt) == 1009) || (a(paramInt) == 1010);
+  }
+  
+  public static boolean q(int paramInt)
+  {
+    return paramInt == 1025;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.app.message.MsgProxyUtils
+ * JD-Core Version:    0.7.0.1
+ */

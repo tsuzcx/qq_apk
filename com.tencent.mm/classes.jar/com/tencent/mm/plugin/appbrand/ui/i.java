@@ -1,72 +1,184 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import a.f.b.j;
-import a.l;
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.Intent;
-import android.os.RemoteException;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
+import android.view.accessibility.AccessibilityManager;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.animation.Animation;
+import com.tencent.luggage.l.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.aa;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.g.b.z;
+import kotlin.l.o;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashUtils;", "", "()V", "TAG", "", "<set-?>", "", "isBlockSplashHideForDebug", "()Z", "setBlockSplashHideForDebug", "(Z)V", "isBlockSplashHideForDebug$delegate", "Lcom/tencent/luggage/util/LuggageMMKVProperty;", "setupSplashAccessibilityTraversalOrder", "", "order", "", "", "splashView", "Landroid/view/View;", "fromDPToPix", "Landroid/content/Context;", "dp", "hideImmediately", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "safeDetachFromWindow", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  private static final Integer[] iPj;
-  public static final i iPk;
+  public static final i ubj;
+  static final g ubk;
   
   static
   {
-    AppMethodBeat.i(135001);
-    iPk = new i();
-    iPj = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
-    AppMethodBeat.o(135001);
+    AppMethodBeat.i(160939);
+    aYe = new o[] { (o)ai.a((z)new aa(i.class, "isBlockSplashHideForDebug", "isBlockSplashHideForDebug()Z", 0)) };
+    ubj = new i();
+    ubk = new g(Boolean.FALSE);
+    AppMethodBeat.o(160939);
   }
   
-  public static void a(Activity paramActivity, com.tencent.mm.plugin.appbrand.task.i.a parama)
+  public static final void a(ah paramah)
   {
-    AppMethodBeat.i(135000);
-    j.q(paramActivity, "activity");
-    j.q(parama, "finishHandler");
-    try
+    int i = 1;
+    AppMethodBeat.i(160938);
+    Object localObject;
+    if (paramah != null)
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
-      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
-      parama = new i.a(parama, paramActivity);
-      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(iPj, Integer.valueOf(localRunningAppProcessInfo.importance))))
+      localObject = paramah.getView();
+      if ((localObject == null) || (((View)localObject).isAttachedToWindow() != true)) {}
+    }
+    while (i != 0)
+    {
+      localObject = paramah.getView().getAnimation();
+      if (localObject != null) {
+        ((Animation)localObject).cancel();
+      }
+      paramah.getView().animate().cancel();
+      paramah.getView().setVisibility(8);
+      localObject = paramah.getView().getParent();
+      if (localObject == null)
       {
-        paramActivity = new StringBuilder("finish directly importance[");
-        if (localRunningAppProcessInfo != null)
-        {
-          i = localRunningAppProcessInfo.importance;
-          ab.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
-          parama.ate();
-          AppMethodBeat.o(135000);
-          return;
-        }
+        paramah = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(160938);
+        throw paramah;
+        i = 0;
+      }
+      else
+      {
+        ((ViewGroup)localObject).removeView(paramah.getView());
       }
     }
-    catch (RemoteException localRemoteException)
+    AppMethodBeat.o(160938);
+  }
+  
+  public static final void b(List<Integer> paramList, View paramView)
+  {
+    int i = 0;
+    AppMethodBeat.i(322087);
+    s.u(paramList, "order");
+    s.u(paramView, "splashView");
+    Object localObject = (AccessibilityManager)MMApplicationContext.getContext().getSystemService("accessibility");
+    if (localObject == null) {}
+    for (boolean bool = false; (!bool) || (Build.VERSION.SDK_INT < 22); bool = ((AccessibilityManager)localObject).isEnabled())
     {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        int i = -1;
+      AppMethodBeat.o(322087);
+      return;
+    }
+    localObject = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      View localView = paramView.findViewById(((Number)((Iterator)localObject).next()).intValue());
+      if (localView != null) {
+        paramList.add(localView);
       }
-      parama = (AppBrandProxyUIProcessTask.b)new i.b(parama);
-      com.tencent.mm.plugin.appbrand.ipc.a.a((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)new AccountReleaseProxyUILaunchRequest(), parama, new Intent().addFlags(67108864));
-      AppMethodBeat.o(135000);
+    }
+    paramList = (List)paramList;
+    paramView = ((Iterable)paramList).iterator();
+    for (;;)
+    {
+      int j;
+      if (paramView.hasNext())
+      {
+        localObject = paramView.next();
+        j = i + 1;
+        if (i < 0) {
+          p.kkW();
+        }
+        localObject = (View)localObject;
+        ((View)localObject).setAccessibilityTraversalAfter(-1);
+        ((View)localObject).setAccessibilityTraversalBefore(-1);
+        if (i > 0)
+        {
+          ((View)localObject).setAccessibilityDelegate((View.AccessibilityDelegate)new a((View)paramList.get(i - 1)));
+          i = j;
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(322087);
+        return;
+      }
+      i = j;
+    }
+  }
+  
+  public static final void dI(View paramView)
+  {
+    AppMethodBeat.i(322082);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(322082);
+      return;
+    }
+    paramView.setVisibility(8);
+    Object localObject = paramView.getParent();
+    if ((localObject instanceof ViewGroup)) {}
+    for (localObject = (ViewGroup)localObject;; localObject = null)
+    {
+      if (localObject != null) {
+        ((ViewGroup)localObject).removeView(paramView);
+      }
+      AppMethodBeat.o(322082);
+      return;
+    }
+  }
+  
+  public final boolean cKW()
+  {
+    AppMethodBeat.i(322094);
+    boolean bool = ((Boolean)ubk.a(this, aYe[0])).booleanValue();
+    AppMethodBeat.o(322094);
+    return bool;
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashUtils$setupSplashAccessibilityTraversalOrder$1$1", "Landroid/view/View$AccessibilityDelegate;", "onInitializeAccessibilityNodeInfo", "", "host", "Landroid/view/View;", "info", "Landroid/view/accessibility/AccessibilityNodeInfo;", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends View.AccessibilityDelegate
+  {
+    a(View paramView) {}
+    
+    public final void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+    {
+      AppMethodBeat.i(322107);
+      super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+      if ((paramAccessibilityNodeInfo == null) || (paramAccessibilityNodeInfo.isSelected()))
+      {
+        AppMethodBeat.o(322107);
+        return;
+      }
+      paramAccessibilityNodeInfo.setTraversalAfter(this.ubl);
+      paramAccessibilityNodeInfo.setTraversalBefore(null);
+      AppMethodBeat.o(322107);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.i
  * JD-Core Version:    0.7.0.1
  */

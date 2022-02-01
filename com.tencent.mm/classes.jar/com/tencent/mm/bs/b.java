@@ -1,77 +1,227 @@
 package com.tencent.mm.bs;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.text.Editable;
-import android.view.MotionEvent;
-import com.tencent.mm.api.g;
-import com.tencent.mm.api.k;
-import com.tencent.mm.api.n;
-import com.tencent.mm.api.r;
-import com.tencent.mm.api.s.a;
+import android.content.res.Resources;
+import android.os.StatFs;
+import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.vfs.y;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 
-public abstract interface b
+public final class b
 {
-  public abstract boolean K(MotionEvent paramMotionEvent);
+  private static String bsi(String paramString)
+  {
+    AppMethodBeat.i(32073);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(32073);
+      return "";
+    }
+    paramString = paramString.replaceAll(" ", "").trim().replaceAll("kB", "").trim().replaceAll("\\t", "").trim();
+    AppMethodBeat.o(32073);
+    return paramString;
+  }
   
-  public abstract com.tencent.mm.cache.e a(com.tencent.mm.e.a parama);
+  public static String getRomInfo()
+  {
+    AppMethodBeat.i(32077);
+    String str2 = "";
+    String str1 = str2;
+    try
+    {
+      StatFs localStatFs = new StatFs(g.aQa().getPath());
+      str1 = str2;
+      long l = localStatFs.getBlockSize();
+      str1 = str2;
+      str2 = "" + "AvailableSizes:" + localStatFs.getAvailableBlocks() * l + ";";
+      str1 = str2;
+      str2 = str2 + "FreeSizes:" + localStatFs.getFreeBlocks() * l + ";";
+      str1 = str2;
+      str2 = str2 + "AllSize:" + l * localStatFs.getBlockCount() + ";";
+      str1 = str2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.PostTaskHardwareInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      }
+    }
+    str1 = str1.replace(",", "_");
+    AppMethodBeat.o(32077);
+    return str1;
+  }
   
-  public abstract void a(Editable paramEditable, int paramInt1, int paramInt2);
+  public static String iPg()
+  {
+    AppMethodBeat.i(32074);
+    try
+    {
+      localBufferedReader = new BufferedReader(new InputStreamReader(y.Lh("/proc/cpuinfo"), "UTF-8"));
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder(256);
+        for (;;)
+        {
+          String str2 = localBufferedReader.readLine();
+          if (str2 == null) {
+            break;
+          }
+          if (!Util.isNullOrNil(str2)) {
+            localStringBuilder.append(bsi(str2)).append(';');
+          }
+        }
+        try
+        {
+          Log.printErrStackTrace("MicroMsg.PostTaskHardwareInfo", localThrowable, "unexpected exception occurred.", new Object[0]);
+          return "";
+        }
+        finally
+        {
+          String str1;
+          Util.qualityClose(localBufferedReader);
+          AppMethodBeat.o(32074);
+        }
+      }
+      finally {}
+    }
+    finally
+    {
+      BufferedReader localBufferedReader = null;
+    }
+    str1 = localThrowable.toString().replace(',', '_');
+    Util.qualityClose(localBufferedReader);
+    AppMethodBeat.o(32074);
+    return str1;
+  }
   
-  public abstract void a(n paramn, boolean paramBoolean);
+  public static String iPh()
+  {
+    AppMethodBeat.i(32075);
+    try
+    {
+      localBufferedReader = new BufferedReader(new InputStreamReader(y.Lh("/proc/meminfo"), "UTF-8"));
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder(256);
+        for (;;)
+        {
+          String str2 = localBufferedReader.readLine();
+          if (str2 == null) {
+            break;
+          }
+          if (!Util.isNullOrNil(str2)) {
+            localStringBuilder.append(bsi(str2)).append(';');
+          }
+        }
+        try
+        {
+          Log.printErrStackTrace("MicroMsg.PostTaskHardwareInfo", localThrowable, "unexpected exception occurred.", new Object[0]);
+          return "";
+        }
+        finally
+        {
+          String str1;
+          Util.qualityClose(localBufferedReader);
+          AppMethodBeat.o(32075);
+        }
+      }
+      finally {}
+    }
+    finally
+    {
+      BufferedReader localBufferedReader = null;
+    }
+    str1 = localThrowable.toString().replace(',', '_');
+    Util.qualityClose(localBufferedReader);
+    AppMethodBeat.o(32075);
+    return str1;
+  }
   
-  public abstract void a(s.a parama);
+  public static String iPi()
+  {
+    AppMethodBeat.i(32076);
+    Object localObject1 = "";
+    try
+    {
+      new DisplayMetrics();
+      Object localObject2 = MMApplicationContext.getContext().getResources().getDisplayMetrics();
+      int i = ((DisplayMetrics)localObject2).widthPixels;
+      int j = ((DisplayMetrics)localObject2).heightPixels;
+      float f1 = ((DisplayMetrics)localObject2).density;
+      float f2 = ((DisplayMetrics)localObject2).xdpi;
+      float f3 = ((DisplayMetrics)localObject2).ydpi;
+      localObject2 = "" + "width:" + String.valueOf(i) + ";";
+      localObject2 = (String)localObject2 + "height:" + String.valueOf(j) + ";";
+      localObject2 = (String)localObject2 + "density:" + String.valueOf(f1) + ";";
+      localObject2 = (String)localObject2 + "xd:" + String.valueOf(f2) + ";";
+      localObject2 = (String)localObject2 + "yd:" + String.valueOf(f3) + ";";
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.PostTaskHardwareInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      }
+    }
+    localObject1 = ((String)localObject1).replace(",", "_");
+    AppMethodBeat.o(32076);
+    return localObject1;
+  }
   
-  public abstract void a(com.tencent.mm.view.a parama);
+  public static String iPj()
+  {
+    AppMethodBeat.i(32078);
+    String str2 = "";
+    String str1 = str2;
+    try
+    {
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.i.b.bmz());
+      str1 = str2;
+      long l = localStatFs.getBlockSize();
+      str1 = str2;
+      str2 = "" + "AvailableSizes:" + localStatFs.getAvailableBlocks() * l + ";";
+      str1 = str2;
+      str2 = str2 + "FreeSizes:" + localStatFs.getFreeBlocks() * l + ";";
+      str1 = str2;
+      str2 = str2 + "AllSize:" + l * localStatFs.getBlockCount() + ";";
+      str1 = str2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.PostTaskHardwareInfo", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      }
+    }
+    str1 = str1.replace(",", "_");
+    AppMethodBeat.o(32078);
+    return str1;
+  }
   
-  public abstract <T extends com.tencent.mm.e.b> T c(com.tencent.mm.api.e parame);
-  
-  public abstract void d(k paramk);
-  
-  public abstract void dqb();
-  
-  public abstract com.tencent.mm.view.a dqc();
-  
-  public abstract <T extends com.tencent.mm.e.b> T dqd();
-  
-  public abstract void dqe();
-  
-  public abstract Bitmap dqf();
-  
-  public abstract boolean dqg();
-  
-  public abstract s.a getConfig();
-  
-  public abstract Context getContext();
-  
-  public abstract float getCurScale();
-  
-  public abstract com.tencent.mm.api.e[] getFeatures();
-  
-  public abstract float getInitScale();
-  
-  public abstract r getSelectedFeatureListener();
-  
-  public abstract void onAttachedToWindow();
-  
-  public abstract void onDestroy();
-  
-  public abstract void onDraw(Canvas paramCanvas);
-  
-  public abstract void onExit();
-  
-  public abstract void onFinish();
-  
-  public abstract void setActionBarCallback(g paramg);
-  
-  public abstract void setAutoShowFooterAndBar(boolean paramBoolean);
-  
-  public abstract boolean zY();
+  public static String iPk()
+  {
+    AppMethodBeat.i(32079);
+    bh.bCz();
+    String str = (String)c.ban().d(71, null);
+    AppMethodBeat.o(32079);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.bs.b
  * JD-Core Version:    0.7.0.1
  */

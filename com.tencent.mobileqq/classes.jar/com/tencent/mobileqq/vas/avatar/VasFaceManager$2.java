@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import bdfp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class VasFaceManager$2
@@ -12,22 +12,26 @@ class VasFaceManager$2
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = this.this$0.a.a(this.a, true);
-    if ((localExtensionInfo != null) && (localExtensionInfo.faceIdUpdateTime != 0L))
+    Object localObject = this.this$0.b.getExtensionInfo(this.a, true);
+    if ((localObject != null) && (((ExtensionInfo)localObject).faceIdUpdateTime != 0L))
     {
       this.this$0.a(this.a, null);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.VasFaceManager", 2, "requestFaceId uin: " + this.a);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestFaceId uin: ");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.d("Q.qqhead.VasFaceManager", 2, ((StringBuilder)localObject).toString());
     }
-    bdfp.a(this.a);
-    bdfp.a(this.this$0.a);
+    AvatarPendantUtil.a(this.a);
+    AvatarPendantUtil.a(this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager.2
  * JD-Core Version:    0.7.0.1
  */

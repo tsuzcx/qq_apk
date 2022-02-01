@@ -1,30 +1,16 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsData.GeoInfo;
 import cooperation.qzone.LbsData.QzoneGpsInfo;
 
 public final class ibs
   implements Parcelable.Creator
 {
-  public LbsData.GeoInfo a(Parcel paramParcel)
+  public LbsData.QzoneGpsInfo a(Parcel paramParcel)
   {
-    LbsData.GeoInfo localGeoInfo = new LbsData.GeoInfo();
-    localGeoInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localGeoInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localGeoInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localGeoInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localGeoInfo.c = paramParcel.readString();
-    localGeoInfo.d = paramParcel.readString();
-    localGeoInfo.e = paramParcel.readString();
-    localGeoInfo.f = paramParcel.readString();
-    localGeoInfo.g = paramParcel.readString();
-    localGeoInfo.h = paramParcel.readString();
-    localGeoInfo.i = paramParcel.readString();
-    localGeoInfo.jdField_a_of_type_CooperationQzoneLbsData$QzoneGpsInfo = ((LbsData.QzoneGpsInfo)LbsData.QzoneGpsInfo.CREATOR.createFromParcel(paramParcel));
-    return localGeoInfo;
+    return new LbsData.QzoneGpsInfo(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt());
   }
   
-  public LbsData.GeoInfo[] a(int paramInt)
+  public LbsData.QzoneGpsInfo[] a(int paramInt)
   {
     return null;
   }

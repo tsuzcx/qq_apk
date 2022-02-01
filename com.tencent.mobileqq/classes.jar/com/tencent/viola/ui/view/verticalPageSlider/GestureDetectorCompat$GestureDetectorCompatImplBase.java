@@ -18,12 +18,14 @@ class GestureDetectorCompat$GestureDetectorCompatImplBase
   
   private void init(Context paramContext)
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context must not be null");
-    }
-    if (this.mListener == null) {
+    if (paramContext != null)
+    {
+      if (this.mListener != null) {
+        return;
+      }
       throw new IllegalArgumentException("OnGestureListener must not be null");
     }
+    throw new IllegalArgumentException("Context must not be null");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -33,7 +35,7 @@ class GestureDetectorCompat$GestureDetectorCompatImplBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.verticalPageSlider.GestureDetectorCompat.GestureDetectorCompatImplBase
  * JD-Core Version:    0.7.0.1
  */

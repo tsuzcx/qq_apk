@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqyj;
-
-public class OnlineFileSessionCenter$3
+class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(aqyj paramaqyj, int paramInt) {}
+  OnlineFileSessionCenter$3(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class OnlineFileSessionCenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.3
  * JD-Core Version:    0.7.0.1
  */

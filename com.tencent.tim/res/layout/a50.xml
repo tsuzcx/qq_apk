@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/kq5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.image.URLImageView android:id="@id/v2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <View android:id="@id/v6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/kos" android:background="@drawable/n5" android:visibility="visible" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/kot" android:background="@drawable/t0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/ksk" android:visibility="visible" android:layout_width="12.0dip" android:layout_height="13.0dip" android:src="@drawable/drd" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/l65" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/pvm" />
+    </LinearLayout>
+    <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:id="@id/v3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/py0" android:drawableTop="@drawable/fd2" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/v8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true">
+        <TextView android:layout_gravity="center_vertical" android:id="@id/fzr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        <SeekBar android:layout_gravity="center_vertical" android:id="@id/v7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:maxHeight="2.0dip" android:progressDrawable="@drawable/aik" android:minHeight="2.0dip" android:thumb="@drawable/gnh" android:thumbOffset="0.0dip" android:layout_weight="1.0" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/jut" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="30:00" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdVideoGuide android:id="@id/ex" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+</RelativeLayout>

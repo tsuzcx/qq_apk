@@ -24,6 +24,8 @@ public class CGRect
   
   public CGRect(@NonNull PointF paramPointF, @NonNull CGSize paramCGSize)
   {
+    Utils.checkNotNull(paramPointF);
+    Utils.checkNotNull(paramCGSize);
     PointF localPointF = paramPointF;
     if (paramPointF == null) {
       localPointF = new PointF();
@@ -43,26 +45,34 @@ public class CGRect
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (CGRect)paramObject;
-    } while ((this.origin.equals(paramObject.origin)) && (this.size.equals(paramObject.size)));
+      return (this.origin.equals(paramObject.origin)) && (this.size.equals(paramObject.size));
+    }
     return false;
   }
   
   public String toString()
   {
-    return "[" + this.origin + "," + this.size + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.origin);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.size);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CGRect
  * JD-Core Version:    0.7.0.1
  */

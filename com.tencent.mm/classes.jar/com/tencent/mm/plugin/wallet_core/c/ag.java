@@ -1,48 +1,61 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class ag
   extends m
 {
-  public double qjH;
-  public String qlI;
-  public String ucd;
-  public double uce;
+  public String Vyi;
+  public JSONObject rwB;
+  
+  public ag(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
+  {
+    AppMethodBeat.i(69957);
+    this.Vyi = "";
+    this.Vyi = paramString1;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("activity_id", paramString1);
+    localHashMap.put("award_id", paramString2);
+    localHashMap.put("send_record_id", paramString3);
+    localHashMap.put("user_record_id", paramString4);
+    localHashMap.put("req_key", paramString5);
+    localHashMap.put("transaction_id", paramString6);
+    localHashMap.put("activity_mch_id", String.valueOf(paramLong));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(69957);
+  }
   
   public final int getFuncId()
   {
-    return 1689;
+    return 1979;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 0;
+    return 1979;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/transfergetchargefee";
+    return "/cgi-bin/mmpay-bin/tenpay/querypayaward";
+  }
+  
+  public final boolean isBlock()
+  {
+    return false;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46556);
-    ab.i("Micromsg.NetSceneTransferChargeQuery", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
-    {
-      ab.i("Micromsg.NetSceneTransferChargeQuery", "NetSceneTransferChargeQuery request error");
-      AppMethodBeat.o(46556);
-      return;
-    }
-    this.ucd = paramJSONObject.optString("short_desc");
-    this.qlI = paramJSONObject.optString("charge_desc");
-    this.uce = paramJSONObject.optDouble("acc_fee");
-    this.qjH = (paramJSONObject.optDouble("remain_fee") / 100.0D);
-    AppMethodBeat.o(46556);
+    AppMethodBeat.i(69958);
+    Log.i("MicroMsg.NetSceneTenpayQueryPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    this.rwB = paramJSONObject;
+    AppMethodBeat.o(69958);
   }
 }
 

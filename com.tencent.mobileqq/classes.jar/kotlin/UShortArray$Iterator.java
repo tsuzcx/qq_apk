@@ -23,19 +23,19 @@ final class UShortArray$Iterator
   
   public short nextUShort()
   {
-    if (this.index < this.array.length)
+    int i = this.index;
+    short[] arrayOfShort = this.array;
+    if (i < arrayOfShort.length)
     {
-      short[] arrayOfShort = this.array;
-      int i = this.index;
       this.index = (i + 1);
       return UShort.constructor-impl(arrayOfShort[i]);
     }
-    throw ((Throwable)new NoSuchElementException(String.valueOf(this.index)));
+    throw ((Throwable)new NoSuchElementException(String.valueOf(i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.UShortArray.Iterator
  * JD-Core Version:    0.7.0.1
  */

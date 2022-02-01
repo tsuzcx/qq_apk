@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_tab_text_color" android:ellipsize="end" android:layout_gravity="center" android:id="@android:id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="众推" android:maxLines="1" android:maxEms="8" />
+    <View android:layout_gravity="bottom|center" android:background="@drawable/qcircle_skin_bottom_line_selector" android:layout_width="20.0dip" android:layout_height="3.0dip" android:layout_marginBottom="9.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/ouo" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="33.0dip" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/ous" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="11.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="-2.0dip" android:src="@drawable/ipk" />
+</FrameLayout>

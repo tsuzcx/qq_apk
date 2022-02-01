@@ -8,10 +8,10 @@ public final class NumberInfo
   extends JceStruct
 {
   static LocationInfo cache_stLocationInfo = new LocationInfo();
-  public LocationInfo stLocationInfo;
+  public LocationInfo stLocationInfo = null;
   public String strFontColor = "";
   public String strNumber = "";
-  public long uiFontSize;
+  public long uiFontSize = 0L;
   
   public NumberInfo() {}
   
@@ -33,21 +33,24 @@ public final class NumberInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLocationInfo != null) {
-      paramJceOutputStream.write(this.stLocationInfo, 0);
+    Object localObject = this.stLocationInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.strFontColor != null) {
-      paramJceOutputStream.write(this.strFontColor, 1);
+    localObject = this.strFontColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.uiFontSize, 2);
-    if (this.strNumber != null) {
-      paramJceOutputStream.write(this.strNumber, 3);
+    localObject = this.strNumber;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.NumberInfo
  * JD-Core Version:    0.7.0.1
  */

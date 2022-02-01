@@ -27,6 +27,7 @@ public class BeautyBodyThinShoulder
   {
     initParams();
     this.smoothedWithinFrames = 2;
+    int k = 0;
     this.currentIdx = 0;
     this.validDuration = 2000L;
     this.hasSeenValid = false;
@@ -63,52 +64,53 @@ public class BeautyBodyThinShoulder
       this.smoothedParams = new BeautyBodyThinShoulder.ThinShoulderParameters(this);
     }
     this.smoothedParams.reset();
-    float f1 = 0.0F;
-    float f2 = 0.0F;
-    float f3 = 0.0F;
     int j = 0;
+    float f4 = 0.0F;
+    float f2 = 0.0F;
+    float f1 = 0.0F;
     int i = k;
-    float f4;
+    float f3;
     while (i < this.smoothedWithinFrames)
     {
-      float f6 = f1;
-      float f5 = f2;
-      f4 = f3;
       k = j;
+      float f6 = f4;
+      float f5 = f2;
+      f3 = f1;
       if (this.previousValidFrames[i] != 0)
       {
         k = j + 1;
         BeautyBodyThinShoulder.ThinShoulderParameters localThinShoulderParameters = this.previousParams[i];
-        f4 = f3 + localThinShoulderParameters.rect.left;
+        f6 = f4 + localThinShoulderParameters.rect.left;
         f5 = f2 + localThinShoulderParameters.rect.top;
-        f6 = f1 + localThinShoulderParameters.rect.right + localThinShoulderParameters.rect.bottom;
+        f3 = f1 + localThinShoulderParameters.rect.right + localThinShoulderParameters.rect.bottom;
       }
       i += 1;
-      f1 = f6;
-      f2 = f5;
-      f3 = f4;
       j = k;
+      f4 = f6;
+      f2 = f5;
+      f1 = f3;
     }
     if (j > 0)
     {
-      f3 /= j;
-      f2 /= j;
-      f1 /= j;
-      f4 = 0.0F / j;
-      this.smoothedParams.rect = new RectF(f3, f2, f1, f4);
+      f3 = j;
+      f4 /= f3;
+      f2 /= f3;
+      f1 /= f3;
+      f3 = 0.0F / f3;
+      this.smoothedParams.rect = new RectF(f4, f2, f1, f3);
     }
   }
   
   public void calculateMiddleLineWithNormalizedPoints(PointF[] paramArrayOfPointF)
   {
-    int i = 0;
-    float f1 = 0.0F;
     int j = leftIndexs.length;
+    int i = 0;
     PointF localPointF1 = paramArrayOfPointF[0];
     PointF localPointF2 = paramArrayOfPointF[58];
-    float f2 = 0.0F;
-    float f3 = 0.0F;
     float f4 = 0.0F;
+    float f3 = 0.0F;
+    float f2 = 0.0F;
+    float f1 = 0.0F;
     while (i < j)
     {
       PointF localPointF3 = paramArrayOfPointF[leftIndexs[i]];
@@ -119,7 +121,8 @@ public class BeautyBodyThinShoulder
       f1 += localPointF3.y + localPointF4.y - localPointF1.y - localPointF2.y;
       i += 1;
     }
-    setParams(new BeautyBodyThinShoulder.ThinShoulderParameters(this, new RectF(f4 / j, f3 / j - 0.05F * f1, f2 / j * 2.0F, f1 * 0.18F)));
+    float f5 = j;
+    setParams(new BeautyBodyThinShoulder.ThinShoulderParameters(this, new RectF(f4 / f5, f3 / f5 - 0.05F * f1, f2 / f5 * 2.0F, f1 * 0.18F)));
   }
   
   public BeautyBodyThinShoulder.ThinShoulderParameters getThinShoulderParameters()
@@ -143,16 +146,15 @@ public class BeautyBodyThinShoulder
   {
     if (paramPointF.x < 0.0F) {
       this.center.x = 0.0F;
+    } else if (paramPointF.x > 1.0F) {
+      this.center.x = 1.0F;
+    } else {
+      this.center.x = paramPointF.x;
     }
-    while (paramPointF.y < 0.0F)
+    if (paramPointF.y < 0.0F)
     {
       this.center.y = 0.0F;
       return;
-      if (paramPointF.x > 1.0F) {
-        this.center.x = 1.0F;
-      } else {
-        this.center.x = paramPointF.x;
-      }
     }
     if (paramPointF.y > 1.0F)
     {
@@ -225,8 +227,10 @@ public class BeautyBodyThinShoulder
     {
       this.hasSeenValid = true;
       calculateMiddleLineWithNormalizedPoints(paramArrayOfPointF);
-      this.previousValidFrames[this.currentIdx] = true;
-      this.previousParams[this.currentIdx] = this.params.copy();
+      paramArrayOfPointF = this.previousValidFrames;
+      int i = this.currentIdx;
+      paramArrayOfPointF[i] = 1;
+      this.previousParams[i] = this.params.copy();
       paramArrayOfPointF = this.smoothedParams;
       this.params = paramArrayOfPointF;
       this.previousValidParams = paramArrayOfPointF;
@@ -244,7 +248,7 @@ public class BeautyBodyThinShoulder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.BeautyBodyThinShoulder
  * JD-Core Version:    0.7.0.1
  */

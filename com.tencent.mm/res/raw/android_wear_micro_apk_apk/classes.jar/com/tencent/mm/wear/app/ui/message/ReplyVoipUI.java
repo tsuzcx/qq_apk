@@ -26,24 +26,25 @@ import java.io.UnsupportedEncodingException;
 public class ReplyVoipUI
   extends MMActivity
 {
-  private boolean adQ;
-  private String adf;
-  private ImageView aeA;
-  private String afI;
-  private TextView afL;
-  private ImageButton agD;
-  private ImageButton agE;
-  private RelativeLayout.LayoutParams agF;
-  private RelativeLayout.LayoutParams agG;
-  private float agH;
-  private int agI;
-  private com.tencent.mm.wear.a.b.a agJ;
-  private PowerManager.WakeLock agK;
-  private boolean agL;
-  private boolean agM;
-  private Animation agN;
-  private Animation agO;
-  private Runnable agP = new Runnable()
+  private String agG;
+  private boolean ahs;
+  private ImageView aic;
+  private Vibrator ajR;
+  private String ajk;
+  private TextView ajn;
+  private ImageButton akf;
+  private ImageButton akg;
+  private RelativeLayout.LayoutParams akh;
+  private RelativeLayout.LayoutParams aki;
+  private float akj;
+  private int akk;
+  private com.tencent.mm.wear.a.b.a akl;
+  private PowerManager.WakeLock akm;
+  private boolean akn;
+  private boolean ako;
+  private Animation akp;
+  private Animation akq;
+  private Runnable akr = new Runnable()
   {
     public final void run()
     {
@@ -52,7 +53,7 @@ public class ReplyVoipUI
         ReplyVoipUI.c(ReplyVoipUI.this).postDelayed(ReplyVoipUI.b(ReplyVoipUI.this), 1500L);
       }
       if ((ReplyVoipUI.f(ReplyVoipUI.this) != null) && (ReplyVoipUI.g(ReplyVoipUI.this) != null)) {
-        com.tencent.mm.wear.a.b.a.aiT.post(new Runnable()
+        com.tencent.mm.wear.a.b.a.amv.post(new Runnable()
         {
           public final void run()
           {
@@ -77,32 +78,31 @@ public class ReplyVoipUI
       }
     }
   };
-  private e agQ = new e() {};
-  private e agR = new e() {};
-  private Vibrator agp;
+  private e aks = new e() {};
+  private e akt = new e() {};
   
-  private void ca(int paramInt)
+  private void cw(int paramInt)
   {
     try
     {
       com.tencent.mm.wear.app.f.b localb = new com.tencent.mm.wear.app.f.b(paramInt, getUsername().getBytes("utf8"));
-      h.mc().a(localb);
+      h.mP().a(localb);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
   }
   
-  private void nt()
+  private void og()
   {
-    this.agF.rightMargin = -80;
-    RelativeLayout.LayoutParams localLayoutParams = this.agF;
-    this.agF.height = 80;
+    this.akh.rightMargin = -80;
+    RelativeLayout.LayoutParams localLayoutParams = this.akh;
+    this.akh.height = 80;
     localLayoutParams.width = 80;
-    this.agG.leftMargin = -80;
-    localLayoutParams = this.agG;
-    this.agG.height = 80;
+    this.aki.leftMargin = -80;
+    localLayoutParams = this.aki;
+    this.aki.height = 80;
     localLayoutParams.width = 80;
-    this.agI = 0;
+    this.akk = 0;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -110,23 +110,23 @@ public class ReplyVoipUI
     super.onCreate(paramBundle);
     setContentView(2130903106);
     getWindow().addFlags(6946944);
-    this.adf = getIntent().getStringExtra("key_talker");
-    d.c("MicroMsg.ReplyVoipUI", "voip talker=%s", new Object[] { this.adf });
-    this.afI = getIntent().getStringExtra("key_nickname");
-    ((WatchViewStub)findViewById(2131558521)).a(new w()
+    this.agG = getIntent().getStringExtra("key_talker");
+    d.c("MicroMsg.ReplyVoipUI", "voip talker=%s", new Object[] { this.agG });
+    this.ajk = getIntent().getStringExtra("key_nickname");
+    ((WatchViewStub)findViewById(2131558522)).a(new w()
     {
       public final void a(WatchViewStub paramAnonymousWatchViewStub)
       {
         ReplyVoipUI.a(ReplyVoipUI.this, paramAnonymousWatchViewStub);
       }
     });
-    this.agp = ((Vibrator)getSystemService("vibrator"));
-    this.agK = ((PowerManager)getSystemService("power")).newWakeLock(268435482, "ReplyVoipUI");
-    if (!this.agK.isHeld()) {
-      this.agK.acquire();
+    this.ajR = ((Vibrator)getSystemService("vibrator"));
+    this.akm = ((PowerManager)getSystemService("power")).newWakeLock(268435482, "ReplyVoipUI");
+    if (!this.akm.isHeld()) {
+      this.akm.acquire();
     }
-    com.tencent.mm.sdk.a.a.WJ.a(this.agR);
-    com.tencent.mm.sdk.a.a.WJ.a(this.agQ);
+    com.tencent.mm.sdk.a.a.YM.a(this.akt);
+    com.tencent.mm.sdk.a.a.YM.a(this.aks);
     new Thread()
     {
       public final void run()
@@ -137,7 +137,7 @@ public class ReplyVoipUI
         Looper.loop();
       }
     }.start();
-    com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+    com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -150,29 +150,29 @@ public class ReplyVoipUI
   protected void onPause()
   {
     super.onPause();
-    if (this.agK.isHeld()) {
-      this.agK.release();
+    if (this.akm.isHeld()) {
+      this.akm.release();
     }
   }
   
   protected void onStop()
   {
     super.onStop();
-    this.adQ = true;
-    com.tencent.mm.sdk.a.a.WJ.b(this.agR);
-    com.tencent.mm.sdk.a.a.WJ.b(this.agQ);
-    this.agJ.removeCallbacks(this.agP);
-    this.agJ.getLooper().quit();
+    this.ahs = true;
+    com.tencent.mm.sdk.a.a.YM.b(this.akt);
+    com.tencent.mm.sdk.a.a.YM.b(this.aks);
+    this.akl.removeCallbacks(this.akr);
+    this.akl.getLooper().quit();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.agH = paramMotionEvent.getX();
-      nt();
-      this.agD.requestLayout();
-      this.agL = true;
+      this.akj = paramMotionEvent.getX();
+      og();
+      this.akf.requestLayout();
+      this.akn = true;
     }
     float f3;
     float f1;
@@ -182,71 +182,71 @@ public class ReplyVoipUI
       return true;
       if (paramMotionEvent.getAction() == 1)
       {
-        if (this.agF.rightMargin >= -5)
+        if (this.akh.rightMargin >= -5)
         {
           d.c("MicroMsg.ReplyVoipUI", "OnClickAccept", new Object[0]);
-          ca(11027);
-          this.agD.setEnabled(false);
-          this.agE.setEnabled(false);
+          cw(11027);
+          this.akf.setEnabled(false);
+          this.akg.setEnabled(false);
           finish();
-          this.adQ = true;
+          this.ahs = true;
         }
         for (;;)
         {
-          this.agL = false;
+          this.akn = false;
           return true;
-          if (this.agG.leftMargin >= -5)
+          if (this.aki.leftMargin >= -5)
           {
             d.c("MicroMsg.ReplyVoipUI", "OnClickReject", new Object[0]);
-            ca(11028);
-            this.agD.setEnabled(false);
-            this.agE.setEnabled(false);
+            cw(11028);
+            this.akf.setEnabled(false);
+            this.akg.setEnabled(false);
             finish();
-            this.adQ = true;
+            this.ahs = true;
           }
           else
           {
-            nt();
-            this.agD.requestLayout();
+            og();
+            this.akf.requestLayout();
           }
         }
       }
-      f3 = paramMotionEvent.getX() - this.agH;
-      d.e("MicroMsg.ReplyVoipUI", "horizontalDis: %f", new Object[] { Float.valueOf(f3) });
-      if (this.agI == 0) {
+      f3 = paramMotionEvent.getX() - this.akj;
+      d.d("MicroMsg.ReplyVoipUI", "horizontalDis: %f", new Object[] { Float.valueOf(f3) });
+      if (this.akk == 0) {
         if (f3 <= 0.0F) {
           break label329;
         }
       }
-      for (this.agI = 2;; this.agI = 1)
+      for (this.akk = 2;; this.akk = 1)
       {
         float f2 = Math.abs(f3) / 160.0F;
         f1 = f2;
         if (f2 >= 1.0F) {
           f1 = 1.0F;
         }
-        if ((this.agI != 2) || (f3 < 0.0F)) {
+        if ((this.akk != 2) || (f3 < 0.0F)) {
           break;
         }
-        this.agG.leftMargin = ((int)((1.0F - f1) * -80.0F));
-        paramMotionEvent = this.agG;
-        localLayoutParams = this.agG;
+        this.aki.leftMargin = ((int)((1.0F - f1) * -80.0F));
+        paramMotionEvent = this.aki;
+        localLayoutParams = this.aki;
         i = (int)(f1 * 240.0F + 80.0F);
         localLayoutParams.height = i;
         paramMotionEvent.width = i;
-        this.agE.bringToFront();
-        this.agE.requestLayout();
+        this.akg.bringToFront();
+        this.akg.requestLayout();
         return true;
       }
-    } while ((this.agI != 1) || (f3 > 0.0F));
-    this.agF.rightMargin = ((int)((1.0F - f1) * -80.0F));
-    paramMotionEvent = this.agF;
-    RelativeLayout.LayoutParams localLayoutParams = this.agF;
+    } while ((this.akk != 1) || (f3 > 0.0F));
+    this.akh.rightMargin = ((int)((1.0F - f1) * -80.0F));
+    paramMotionEvent = this.akh;
+    RelativeLayout.LayoutParams localLayoutParams = this.akh;
     int i = (int)(f1 * 240.0F + 80.0F);
     localLayoutParams.height = i;
     paramMotionEvent.width = i;
-    this.agD.bringToFront();
-    this.agD.requestLayout();
+    this.akf.bringToFront();
+    this.akf.requestLayout();
     return true;
   }
 }

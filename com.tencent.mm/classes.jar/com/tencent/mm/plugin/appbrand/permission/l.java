@@ -1,23 +1,18 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.annotation.SuppressLint;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 
-public final class l
-  extends e
+public abstract interface l
+  extends b
 {
-  @SuppressLint({"WrongConstant"})
-  public l(i parami)
-  {
-    super(parami, i, bool);
-    AppMethodBeat.i(132512);
-    AppMethodBeat.o(132512);
-  }
+  public abstract boolean a(e parame);
+  
+  public abstract boolean aZ(Class<? extends e> paramClass);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.l
  * JD-Core Version:    0.7.0.1
  */

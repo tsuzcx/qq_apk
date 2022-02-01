@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="#ff353535" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="24.0dip" android:text="@string/dde" />
-    <TextView android:textSize="@dimen/ef" android:textColor="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="21.0dip" android:text="@string/ddd" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/bzf" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/iq" android:text="@string/g71" style="@style/oi" />
+        <Button android:id="@id/bze" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/iq" android:text="@string/g74" style="@style/oi" />
+        <Button android:id="@id/bzd" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/iq" android:text="@string/g70" style="@style/oi" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/m8" android:textColor="@color/g_" android:id="@id/ftn" android:background="@color/BW_0_Alpha_0_2" android:padding="10.0dip" android:scrollbars="vertical" android:layout_width="300.0dip" android:layout_height="115.0dip" android:fadeScrollbars="false" />
+    <TextView android:textSize="@dimen/m8" android:textColor="@color/g_" android:id="@id/fto" android:background="@color/BW_0_Alpha_0_2" android:padding="10.0dip" android:scrollbars="vertical" android:layout_width="300.0dip" android:layout_height="200.0dip" android:layout_marginTop="5.0dip" android:fadeScrollbars="false" />
 </LinearLayout>

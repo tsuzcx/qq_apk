@@ -60,23 +60,27 @@ public final class stReqComm
     paramJceOutputStream.write(this.sOSVersion, 4);
     paramJceOutputStream.write(this.sDeviceID, 5);
     paramJceOutputStream.write(this.iAuthType, 6);
-    if (this.sUid != null) {
-      paramJceOutputStream.write(this.sUid, 7);
+    String str = this.sUid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.sSessionKey != null) {
-      paramJceOutputStream.write(this.sSessionKey, 8);
+    str = this.sSessionKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.sReserved1 != null) {
-      paramJceOutputStream.write(this.sReserved1, 9);
+    str = this.sReserved1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.sReserved2 != null) {
-      paramJceOutputStream.write(this.sReserved2, 10);
+    str = this.sReserved2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     CommonClientInterface.stReqComm
  * JD-Core Version:    0.7.0.1
  */

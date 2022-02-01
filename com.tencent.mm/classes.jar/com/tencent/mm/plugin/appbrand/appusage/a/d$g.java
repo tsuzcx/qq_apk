@@ -1,35 +1,33 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import a.f.a.q;
-import a.f.b.k;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsi;
 import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 2>", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Ljava/util/LinkedList;", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class d$g
-  extends k
-  implements q<Integer, LinkedList<bsi>, Integer, y>
+  extends u
+  implements a<LinkedList<Integer>>
 {
-  public static final g hdv;
+  public static final g qRl;
   
   static
   {
-    AppMethodBeat.i(134577);
-    hdv = new g();
-    AppMethodBeat.o(134577);
+    AppMethodBeat.i(50316);
+    qRl = new g();
+    AppMethodBeat.o(50316);
   }
   
   d$g()
   {
-    super(3);
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.d.g
  * JD-Core Version:    0.7.0.1
  */

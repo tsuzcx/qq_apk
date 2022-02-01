@@ -1,37 +1,31 @@
 package com.tencent.mm.ui.conversation;
 
-import android.view.MenuItem;
+import android.graphics.Point;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.n.d;
 
 final class EnterpriseConversationUI$EnterpriseConversationFmUI$4
-  implements n.d
+  implements View.OnTouchListener
 {
-  EnterpriseConversationUI$EnterpriseConversationFmUI$4(EnterpriseConversationUI.EnterpriseConversationFmUI paramEnterpriseConversationFmUI) {}
+  EnterpriseConversationUI$EnterpriseConversationFmUI$4(EnterpriseConversationUI.EnterpriseConversationFmUI paramEnterpriseConversationFmUI, Point paramPoint) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(34420);
-    switch (paramMenuItem.getItemId())
+    AppMethodBeat.i(256690);
+    if (paramMotionEvent.getAction() == 0)
     {
+      this.afpl.x = ((int)paramMotionEvent.getRawX());
+      this.afpl.y = ((int)paramMotionEvent.getRawY());
     }
-    for (;;)
-    {
-      AppMethodBeat.o(34420);
-      return;
-      EnterpriseConversationUI.EnterpriseConversationFmUI.a(this.AkO, EnterpriseConversationUI.EnterpriseConversationFmUI.g(this.AkO));
-      AppMethodBeat.o(34420);
-      return;
-      EnterpriseConversationUI.EnterpriseConversationFmUI.b(this.AkO, EnterpriseConversationUI.EnterpriseConversationFmUI.g(this.AkO));
-      AppMethodBeat.o(34420);
-      return;
-      EnterpriseConversationUI.EnterpriseConversationFmUI.auH(EnterpriseConversationUI.EnterpriseConversationFmUI.g(this.AkO));
-    }
+    AppMethodBeat.o(256690);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.EnterpriseConversationUI.EnterpriseConversationFmUI.4
  * JD-Core Version:    0.7.0.1
  */

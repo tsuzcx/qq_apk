@@ -1,27 +1,25 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.oskplayer.proxy.VideoManager;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayerUtil;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-class ChannelProxyImpl$9
-  implements IMediaPlayerUtil
+final class ChannelProxyImpl$9
+  implements MiniAppCmdInterface
 {
-  ChannelProxyImpl$9(ChannelProxyImpl paramChannelProxyImpl) {}
+  ChannelProxyImpl$9(AsyncResult paramAsyncResult) {}
   
-  public int getContentFlag(String paramString)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return VideoManager.getInstance().probeContentFlag(paramString);
-  }
-  
-  public String getUrl(String paramString)
-  {
-    return OskPlayerCore.getInstance().getUrl(paramString);
+    AsyncResult localAsyncResult = this.a;
+    if (localAsyncResult != null) {
+      localAsyncResult.onReceiveResult(paramBoolean, paramJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.9
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ final class ah
   
   public final void onChanged()
   {
-    this.ua.f(null);
-    if (RecyclerView.g(this.ua).hasStableIds())
+    this.vQ.f(null);
+    if (RecyclerView.g(this.vQ).hasStableIds())
     {
-      ak.a(this.ua.tM, true);
-      RecyclerView.m(this.ua);
+      ak.a(this.vQ.vC, true);
+      RecyclerView.m(this.vQ);
     }
     for (;;)
     {
-      if (!this.ua.ta.cC()) {
-        this.ua.requestLayout();
+      if (!this.vQ.uQ.cJ()) {
+        this.vQ.requestLayout();
       }
       return;
-      ak.a(this.ua.tM, true);
-      RecyclerView.m(this.ua);
+      ak.a(this.vQ.vC, true);
+      RecyclerView.m(this.vQ);
     }
   }
 }

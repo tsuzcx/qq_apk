@@ -1,15 +1,31 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.struct.PushBanner;
+import com.tencent.mobileqq.widget.WorkSpaceView;
 
 public class hhy
-  implements View.OnClickListener
+  extends Handler
 {
-  public hhy(TabBarView paramTabBarView, int paramInt) {}
+  public hhy(WorkSpaceView paramWorkSpaceView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
+      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
+        this.a.a(this.a.a() + 1);
+      }
+      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
+      continue;
+      WorkSpaceView.a(this.a).removeMessages(0);
+    }
   }
 }
 

@@ -23,22 +23,20 @@ public class BackgroundColorProperty
   {
     BorderDrawable localBorderDrawable = ViolaUtils.getBorderDrawable(paramView);
     int i;
-    if (localBorderDrawable != null) {
+    if (localBorderDrawable != null)
+    {
       i = localBorderDrawable.getColor();
     }
-    for (;;)
+    else if ((paramView.getBackground() instanceof ColorDrawable))
     {
-      return Integer.valueOf(i);
-      if ((paramView.getBackground() instanceof ColorDrawable))
-      {
-        i = ((ColorDrawable)paramView.getBackground()).getColor();
-      }
-      else
-      {
-        i = 0;
-        ViolaLogUtils.e("BackgroundColorAnimation", "Unsupported background type");
-      }
+      i = ((ColorDrawable)paramView.getBackground()).getColor();
     }
+    else
+    {
+      i = 0;
+      ViolaLogUtils.e("BackgroundColorAnimation", "Unsupported background type");
+    }
+    return Integer.valueOf(i);
   }
   
   public void set(View paramView, Integer paramInteger)
@@ -46,29 +44,24 @@ public class BackgroundColorProperty
     Object localObject = ViolaUtils.getBorderDrawable(paramView);
     if (localObject != null) {
       ((BorderDrawable)localObject).setColor(paramInteger.intValue());
+    } else if ((paramView.getBackground() instanceof ColorDrawable)) {
+      ((ColorDrawable)paramView.getBackground()).setColor(paramInteger.intValue());
+    } else {
+      ViolaLogUtils.e("BackgroundColorAnimation", "Unsupported background type");
     }
-    for (;;)
+    if ((paramView instanceof IVView))
     {
-      if ((paramView instanceof IVView))
-      {
-        localObject = ((IVView)paramView).getComponent();
-        if (localObject != null) {
-          ((VComponent)localObject).notifyNativeBgColorChanged(paramInteger.intValue());
-        }
-      }
-      paramView.requestLayout();
-      return;
-      if ((paramView.getBackground() instanceof ColorDrawable)) {
-        ((ColorDrawable)paramView.getBackground()).setColor(paramInteger.intValue());
-      } else {
-        ViolaLogUtils.e("BackgroundColorAnimation", "Unsupported background type");
+      localObject = ((IVView)paramView).getComponent();
+      if (localObject != null) {
+        ((VComponent)localObject).notifyNativeBgColorChanged(paramInteger.intValue());
       }
     }
+    paramView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.BackgroundColorProperty
  * JD-Core Version:    0.7.0.1
  */

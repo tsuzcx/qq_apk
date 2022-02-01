@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/79" android:layout_width="175.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/qhq" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/qhr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:id="@id/qhs" android:visibility="visible" android:layout_width="15.0dip" android:layout_height="7.0dip" android:src="@drawable/jjk" />
+</LinearLayout>

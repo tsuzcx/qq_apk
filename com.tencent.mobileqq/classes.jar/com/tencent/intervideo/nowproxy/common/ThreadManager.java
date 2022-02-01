@@ -6,32 +6,34 @@ import android.os.Looper;
 
 public class ThreadManager
 {
-  public static volatile HandlerThread FILE_HANDLER_THREAD = null;
-  public static volatile Handler FILE_THREAD_HANDLER = null;
-  public static volatile Handler UI_THREAD_HANDLER = null;
+  public static volatile HandlerThread FILE_HANDLER_THREAD;
+  public static volatile Handler FILE_THREAD_HANDLER;
+  public static volatile Handler UI_THREAD_HANDLER;
   
   public static Handler getFileThreadHandler()
   {
-    if (FILE_HANDLER_THREAD == null) {}
-    try
-    {
-      FILE_HANDLER_THREAD = new HandlerThread("nowlive_install", 0);
-      FILE_HANDLER_THREAD.start();
-      FILE_THREAD_HANDLER = new Handler(FILE_HANDLER_THREAD.getLooper());
-      return FILE_THREAD_HANDLER;
+    if (FILE_HANDLER_THREAD == null) {
+      try
+      {
+        FILE_HANDLER_THREAD = new HandlerThread("nowlive_install", 0);
+        FILE_HANDLER_THREAD.start();
+        FILE_THREAD_HANDLER = new Handler(FILE_HANDLER_THREAD.getLooper());
+      }
+      finally {}
     }
-    finally {}
+    return FILE_THREAD_HANDLER;
   }
   
   public static Handler getUIThreadHandler()
   {
-    if (FILE_HANDLER_THREAD == null) {}
-    try
-    {
-      FILE_THREAD_HANDLER = new Handler(Looper.getMainLooper());
-      return FILE_THREAD_HANDLER;
+    if (FILE_HANDLER_THREAD == null) {
+      try
+      {
+        FILE_THREAD_HANDLER = new Handler(Looper.getMainLooper());
+      }
+      finally {}
     }
-    finally {}
+    return FILE_THREAD_HANDLER;
   }
   
   public static void unInit()
@@ -54,7 +56,7 @@ public class ThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

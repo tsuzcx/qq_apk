@@ -1,17 +1,43 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import xsm;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qqgamepub.api.IGamePubAccountMsgService;
+import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.utils.IArkPubicEventWrap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class PublicAccountChatPie$7
+class PublicAccountChatPie$7
   implements Runnable
 {
-  public PublicAccountChatPie$7(agti paramagti) {}
+  PublicAccountChatPie$7(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), xsm.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F));
+    if (PublicAccountChatPie.g(this.this$0) > 0)
+    {
+      int j = PublicAccountChatPie.g(this.this$0);
+      int i = j;
+      if (j > 2) {
+        i = 2;
+      }
+      localObject = this.this$0.d.getMessageFacade().a("2747277822", 1008, i);
+      ((IApolloExtensionHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(2, (List)localObject);
+    }
+    Object localObject = ((IGamePubAccountMsgService)this.this$0.d.getRuntimeService(IGamePubAccountMsgService.class, "")).findArkMessage("2747277822", 100, 100).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)((Iterator)localObject).next();
+      if (!TextUtils.isEmpty(localQQGameMsgInfo.arkAppName)) {
+        ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addNotify(localQQGameMsgInfo.arkAppName);
+      }
+    }
   }
 }
 

@@ -12,12 +12,12 @@ public final class aq
   public int cZ = 0;
   public String da = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new aq();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.cZ = paramJceInputStream.read(this.cZ, 0, true);
     this.da = paramJceInputStream.readString(1, false);
@@ -25,17 +25,20 @@ public final class aq
     this.cT = paramJceInputStream.readString(3, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cZ, 0);
-    if (this.da != null) {
-      paramJceOutputStream.write(this.da, 1);
+    String str = this.da;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.cS != null) {
-      paramJceOutputStream.write(this.cS, 2);
+    str = this.cS;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.cT != null) {
-      paramJceOutputStream.write(this.cT, 3);
+    str = this.cT;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

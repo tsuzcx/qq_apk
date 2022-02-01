@@ -57,21 +57,24 @@ public final class mobile_sub_getspaceright_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.rightval, 0);
-    if (this.allGroups != null) {
-      paramJceOutputStream.write(this.allGroups, 1);
+    Object localObject = this.allGroups;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
     paramJceOutputStream.write(this.cur_seq, 2);
-    if (this.question != null) {
-      paramJceOutputStream.write(this.question, 3);
+    localObject = this.question;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.white_list != null) {
-      paramJceOutputStream.write(this.white_list, 4);
+    localObject = this.white_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_getspaceright_rsp
  * JD-Core Version:    0.7.0.1
  */

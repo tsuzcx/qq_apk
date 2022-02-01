@@ -1,56 +1,57 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbm;
-import anfx;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
 
-public class QQARSession$9
+class QQARSession$9
   implements Runnable
 {
-  public QQARSession$9(anfx paramanfx, boolean paramBoolean) {}
+  QQARSession$9(QQARSession paramQQARSession, boolean paramBoolean) {}
   
   public void run()
   {
+    boolean bool = QQARSession.d(this.this$0);
     int j = 0;
-    if (anfx.c(this.this$0)) {
-      if (anfx.a(this.this$0) != null) {
-        anfx.b(this.this$0, false);
-      }
-    }
-    int i;
-    do
+    if (bool)
     {
+      if (QQARSession.e(this.this$0) != null) {
+        QQARSession.c(this.this$0, false);
+      }
       return;
+    }
+    int i = j;
+    if (QQARSession.f(this.this$0) != null)
+    {
       i = j;
-      if (anfx.a(this.this$0) != null)
+      if (QQARSession.f(this.this$0).j != null)
       {
         i = j;
-        if (anfx.a(this.this$0).a != null)
+        if (QQARSession.b(this.this$0))
         {
           i = j;
-          if (anfx.b(this.this$0))
-          {
-            i = j;
-            if (this.this$0.a == 2) {
-              i = 1;
-            }
+          if (this.this$0.a == 2) {
+            i = 1;
           }
         }
       }
-      if ((this.a) && (i != 0))
-      {
-        anfx.a(this.this$0, anfx.a(this.this$0).a);
-        return;
-      }
-    } while (i == 0);
-    if (anfx.a(this.this$0) != null) {
-      anfx.b(this.this$0, true);
     }
-    this.this$0.n();
+    if ((this.a) && (i != 0))
+    {
+      QQARSession localQQARSession = this.this$0;
+      QQARSession.a(localQQARSession, QQARSession.f(localQQARSession).j);
+      return;
+    }
+    if (i != 0)
+    {
+      if (QQARSession.e(this.this$0) != null) {
+        QQARSession.c(this.this$0, true);
+      }
+      this.this$0.C();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.9
  * JD-Core Version:    0.7.0.1
  */

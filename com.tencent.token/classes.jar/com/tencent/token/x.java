@@ -1,22 +1,6 @@
 package com.tencent.token;
 
-final class x
-  implements Runnable
-{
-  public final void run()
-  {
-    try
-    {
-      o.a();
-      s.a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-}
+public abstract interface x {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

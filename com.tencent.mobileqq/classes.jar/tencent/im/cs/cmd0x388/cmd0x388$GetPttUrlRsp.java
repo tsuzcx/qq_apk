@@ -33,18 +33,19 @@ public final class cmd0x388$GetPttUrlRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48, 56, 66, 74, 80, 88, 96, 210, 218, 226 }, new String[] { "uint64_fileid", "bytes_file_md5", "uint32_result", "bytes_fail_msg", "rpt_bytes_down_url", "rpt_uint32_down_ip", "rpt_uint32_down_port", "bytes_down_domain", "bytes_down_para", "uint64_file_id", "uint32_transfer_type", "uint32_allow_retry", "rpt_msg_down_ip6", "bytes_client_ip6", "rpt_str_domain" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro6, "" }, GetPttUrlRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48, 56, 66, 74, 80, 88, 96, 210, 218, 226 }, new String[] { "uint64_fileid", "bytes_file_md5", "uint32_result", "bytes_fail_msg", "rpt_bytes_down_url", "rpt_uint32_down_ip", "rpt_uint32_down_port", "bytes_down_domain", "bytes_down_para", "uint64_file_id", "uint32_transfer_type", "uint32_allow_retry", "rpt_msg_down_ip6", "bytes_client_ip6", "rpt_str_domain" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localInteger, localInteger, null, localByteStringMicro6, "" }, GetPttUrlRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlRsp
  * JD-Core Version:    0.7.0.1
  */

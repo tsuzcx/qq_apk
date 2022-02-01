@@ -24,7 +24,7 @@ import com.tencent.mobileqq.data.EmoticonKeyword;
 import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import fov;
+import fou;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
@@ -56,7 +56,7 @@ public class EmotionPreviewLayout
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     int i = (int)(10.0F * this.jdField_a_of_type_Float);
     setPadding(0, i, i, i);
-    this.jdField_a_of_type_AndroidOsHandler = new fov(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fou(this);
   }
   
   private void a()

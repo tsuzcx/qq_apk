@@ -2,26 +2,25 @@ package com.tencent.mobileqq.systemmsg;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bafj;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class GroupSystemMsgController$2
+class GroupSystemMsgController$2
   implements Runnable
 {
-  public GroupSystemMsgController$2(bafj parambafj, QQAppInterface paramQQAppInterface, int paramInt) {}
+  GroupSystemMsgController$2(GroupSystemMsgController paramGroupSystemMsgController, AppInterface paramAppInterface, int paramInt) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = this.a.getApp().getSharedPreferences(this.a.getCurrentAccountUin(), 0);
     if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_Group_suspicious_msg", this.jdField_a_of_type_Int).commit();
+      localSharedPreferences.edit().putInt("unread_Group_suspicious_msg", this.b).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.GroupSystemMsgController.2
  * JD-Core Version:    0.7.0.1
  */

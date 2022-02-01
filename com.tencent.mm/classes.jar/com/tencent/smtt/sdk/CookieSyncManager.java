@@ -2,10 +2,11 @@ package com.tencent.smtt.sdk;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.DexLoader;
+import com.tencent.smtt.export.external.interfaces.IX5CoreCookieManager;
 import java.lang.reflect.Field;
 
 public class CookieSyncManager
+  extends z
 {
   private static android.webkit.CookieSyncManager a;
   private static CookieSyncManager b;
@@ -13,27 +14,26 @@ public class CookieSyncManager
   
   private CookieSyncManager(Context paramContext)
   {
-    AppMethodBeat.i(63889);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(55015);
+    if (isX5Core())
     {
-      localbz.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_createInstance", new Class[] { Context.class }, new Object[] { paramContext });
+      getCookieManagerImpl().syncManagerCreateInstance(paramContext);
       c = true;
     }
-    AppMethodBeat.o(63889);
+    AppMethodBeat.o(55015);
   }
   
   public static CookieSyncManager createInstance(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(63887);
+      AppMethodBeat.i(55013);
       a = android.webkit.CookieSyncManager.createInstance(paramContext);
       if ((b == null) || (!c)) {
         b = new CookieSyncManager(paramContext.getApplicationContext());
       }
       paramContext = b;
-      AppMethodBeat.o(63887);
+      AppMethodBeat.o(55013);
       return paramContext;
     }
     finally {}
@@ -43,76 +43,73 @@ public class CookieSyncManager
   {
     try
     {
-      AppMethodBeat.i(63888);
+      AppMethodBeat.i(55014);
       if (b == null)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException("CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()");
-        AppMethodBeat.o(63888);
+        AppMethodBeat.o(55014);
         throw localIllegalStateException;
       }
     }
     finally {}
     CookieSyncManager localCookieSyncManager = b;
-    AppMethodBeat.o(63888);
+    AppMethodBeat.o(55014);
     return localCookieSyncManager;
   }
   
   public void startSync()
   {
-    AppMethodBeat.i(63892);
-    Object localObject = bz.a();
-    if ((localObject != null) && (((bz)localObject).b()))
+    AppMethodBeat.i(55018);
+    if (isX5Core())
     {
-      ((bz)localObject).c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_startSync", new Class[0], new Object[0]);
-      AppMethodBeat.o(63892);
+      getCookieManagerImpl().syncManagerStartSync();
+      AppMethodBeat.o(55018);
       return;
     }
     a.startSync();
     try
     {
-      localObject = Class.forName("android.webkit.WebSyncManager").getDeclaredField("mSyncThread");
-      ((Field)localObject).setAccessible(true);
-      ((Thread)((Field)localObject).get(a)).setUncaughtExceptionHandler(new p());
-      AppMethodBeat.o(63892);
+      Field localField = Class.forName("android.webkit.WebSyncManager").getDeclaredField("mSyncThread");
+      localField.setAccessible(true);
+      ((Thread)localField.get(a)).setUncaughtExceptionHandler(new h());
+      AppMethodBeat.o(55018);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(63892);
+      AppMethodBeat.o(55018);
     }
   }
   
   public void stopSync()
   {
-    AppMethodBeat.i(63891);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(55017);
+    if (isX5Core())
     {
-      localbz.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_stopSync", new Class[0], new Object[0]);
-      AppMethodBeat.o(63891);
+      getCookieManagerImpl().syncManagerStopSync();
+      AppMethodBeat.o(55017);
       return;
     }
     a.stopSync();
-    AppMethodBeat.o(63891);
+    AppMethodBeat.o(55017);
   }
   
   public void sync()
   {
-    AppMethodBeat.i(63890);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(55016);
+    if (isX5Core())
     {
-      localbz.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_Sync", new Class[0], new Object[0]);
-      AppMethodBeat.o(63890);
+      getCookieManagerImpl().syncManagerSync();
+      AppMethodBeat.o(55016);
       return;
     }
     a.sync();
-    AppMethodBeat.o(63890);
+    AppMethodBeat.o(55016);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.CookieSyncManager
  * JD-Core Version:    0.7.0.1
  */

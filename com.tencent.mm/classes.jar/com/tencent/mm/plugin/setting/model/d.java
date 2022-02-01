@@ -1,68 +1,81 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.afd;
-import com.tencent.mm.protocal.protobuf.afe;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.eb;
+import com.tencent.mm.protocal.protobuf.ec;
+import com.tencent.mm.protocal.protobuf.fqm;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class d
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private b rr;
+  private h callback;
+  private List<String> zPw;
   
-  public d(String paramString)
+  public d(List<String> paramList)
   {
-    AppMethodBeat.i(126844);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new afd();
-    ((b.a)localObject).fsY = new afe();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/generalset";
-    ((b.a)localObject).funcId = 177;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (afd)this.rr.fsV.fta;
-    ((afd)localObject).SetType = 1;
-    ((afd)localObject).wXY = paramString;
-    AppMethodBeat.o(126844);
+    this.zPw = paramList;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(126845);
-    ab.d("MicroMsg.NetSceneGeneralSet", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(126845);
+    AppMethodBeat.i(73763);
+    this.callback = paramh;
+    paramh = new c.a();
+    eb localeb = new eb();
+    ArrayList localArrayList = new ArrayList();
+    if (this.zPw != null)
+    {
+      i = 0;
+      while (i < this.zPw.size())
+      {
+        fqm localfqm = new fqm();
+        localfqm.UserName = ((String)this.zPw.get(i));
+        localArrayList.add(localfqm);
+        i += 1;
+      }
+    }
+    localeb.YGj.addAll(localArrayList);
+    paramh.otE = localeb;
+    paramh.otF = new ec();
+    paramh.uri = "/cgi-bin/micromsg-bin/addtrustedfriends";
+    paramh.funcId = 583;
+    paramh.otG = 0;
+    paramh.otG = 0;
+    int i = dispatch(paramg, paramh.bEF(), this);
+    AppMethodBeat.o(73763);
     return i;
   }
   
   public final int getType()
   {
-    return 177;
+    return 583;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(126846);
-    ab.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    AppMethodBeat.i(73762);
+    updateDispatchIdNew(paramInt1);
+    if ((paramInt2 != 0) || (paramInt3 != 0)) {
+      Log.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(126846);
+    AppMethodBeat.o(73762);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.d
  * JD-Core Version:    0.7.0.1
  */

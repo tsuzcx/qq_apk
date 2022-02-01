@@ -9,15 +9,15 @@ import java.util.List;
 public final class c<_Target extends a>
   implements a, b<_Target>
 {
-  private List<WeakReference<_Target>> a;
-  private boolean b;
+  private List<WeakReference<_Target>> aguC;
+  private boolean aguD;
   
   public c()
   {
-    AppMethodBeat.i(126111);
-    this.a = new ArrayList();
-    this.b = true;
-    AppMethodBeat.o(126111);
+    AppMethodBeat.i(74908);
+    this.aguC = new ArrayList();
+    this.aguD = true;
+    AppMethodBeat.o(74908);
   }
   
   public final void dead()
@@ -26,13 +26,13 @@ public final class c<_Target extends a>
     {
       try
       {
-        AppMethodBeat.i(126113);
-        if (!this.b)
+        AppMethodBeat.i(74910);
+        if (!this.aguD)
         {
-          AppMethodBeat.o(126113);
+          AppMethodBeat.o(74910);
           return;
         }
-        Iterator localIterator = this.a.iterator();
+        Iterator localIterator = this.aguC.iterator();
         if (localIterator.hasNext())
         {
           a locala = (a)((WeakReference)localIterator.next()).get();
@@ -42,11 +42,11 @@ public final class c<_Target extends a>
           locala.dead();
           continue;
         }
-        this.a.clear();
+        this.aguC.clear();
       }
       finally {}
-      this.b = false;
-      AppMethodBeat.o(126113);
+      this.aguD = false;
+      AppMethodBeat.o(74910);
     }
   }
   
@@ -59,7 +59,7 @@ public final class c<_Target extends a>
     //   2: ldc 67
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/mm/vending/e/c:b	Z
+    //   8: getfield 32	com/tencent/mm/vending/e/c:aguD	Z
     //   11: ifne +21 -> 32
     //   14: aload_1
     //   15: invokestatic 73	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
@@ -71,7 +71,7 @@ public final class c<_Target extends a>
     //   30: monitorexit
     //   31: return
     //   32: aload_0
-    //   33: getfield 30	com/tencent/mm/vending/e/c:a	Ljava/util/List;
+    //   33: getfield 30	com/tencent/mm/vending/e/c:aguC	Ljava/util/List;
     //   36: new 56	java/lang/ref/WeakReference
     //   39: dup
     //   40: aload_1
@@ -98,7 +98,7 @@ public final class c<_Target extends a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.e.c
  * JD-Core Version:    0.7.0.1
  */

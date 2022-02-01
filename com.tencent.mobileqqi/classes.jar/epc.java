@@ -1,57 +1,32 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
 
 public class epc
-  extends TouchDelegate
+  extends Handler
 {
-  public epc(DragTextView paramDragTextView, Rect paramRect, View paramView)
-  {
-    super(paramRect, paramView);
-  }
+  public epc(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "DragTouchDelegate.onTouchEvent:" + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY());
-    }
-    if (this.a.getVisibility() != 0) {
-      return false;
-    }
-    if (DragTextView.a(this.a) == -1) {
-      return false;
-    }
-    Object localObject = (ViewGroup)this.a.getParent();
-    if (localObject == null) {
-      return false;
-    }
-    Rect localRect = new Rect();
-    ((ViewGroup)localObject).getGlobalVisibleRect(localRect);
-    localObject = new Rect();
-    this.a.getGlobalVisibleRect((Rect)localObject);
-    if (DragTextView.a(this.a) == 2)
+    switch (paramMessage.what)
     {
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a) * 0.5D));
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a) * 1.5D));
-      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a) * 1.5D));
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
+    case 2: 
+      this.a.a.setPadding(0, 0, 0, 0);
+      return;
     }
-    for (((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a) * 0.5D)); ((Rect)localObject).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()); ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a))))
-    {
-      return this.a.onTouchEvent(paramMotionEvent);
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a)));
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a)));
-      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a)));
-    }
-    return false;
+    ContactsInnerFrame.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     epc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,74 @@
 package com.tencent.mobileqq.ocr.ui;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import avwu;
-import avyo;
-import avyp;
-import avys;
-import azqs;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SearchResult;
+import com.tencent.mobileqq.ocr.TabItem;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import java.util.List;
 
 public class SearchResultFragment
   extends BaseOCRTextSearchFragment
 {
-  public int a;
-  public ViewPager a;
-  public ScrolledTabHost a;
-  public SearchResultViewPagerAdapter a;
+  ViewPager c;
+  ScrolledTabHost d;
+  SearchResultViewPagerAdapter e;
+  protected int f = 0;
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost != null) {
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.b();
+    ScrolledTabHost localScrolledTabHost = this.d;
+    if (localScrolledTabHost != null) {
+      localScrolledTabHost.b();
     }
   }
   
-  public void a(String paramString, int paramInt, avwu paramavwu)
+  public void a(String paramString, int paramInt, OCRTextSearchInfo.SearchResult paramSearchResult)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramString, paramInt, paramavwu);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a();
+    paramString = this.e.a(paramString, paramInt, paramSearchResult);
+    this.d.a();
     paramInt = 0;
     while (paramInt < paramString.size())
     {
-      paramavwu = (avys)paramString.get(paramInt);
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(paramavwu.a);
+      paramSearchResult = (TabItem)paramString.get(paramInt);
+      this.d.a(paramSearchResult.b);
       paramInt += 1;
     }
     if (paramString.size() == 1) {
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setVisibility(8);
+      this.d.setVisibility(8);
+    } else {
+      this.d.setVisibility(0);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(0);
-      return;
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setVisibility(0);
-    }
+    this.d.setCurrentTab(0);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    azqs.b(null, "dc00898", "", "", "0X80082E6", "0X80082E6", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X80082E6", "0X80082E6", 0, 0, "", "", "", "");
     super.onCreate(paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559672, null);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramLayoutInflater.findViewById(2131379995));
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131377391));
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter = new SearchResultViewPagerAdapter(this.jdField_a_of_type_Avyb, this, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setOnTabSelectedListener(new avyo(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new avyp(this));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625850, null);
+    this.c = ((ViewPager)paramLayoutInflater.findViewById(2131449896));
+    this.d = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131446765));
+    this.e = new SearchResultViewPagerAdapter(this.a, this, this.c);
+    this.c.setAdapter(this.e);
+    this.d.setOnTabSelectedListener(new SearchResultFragment.1(this));
+    this.c.setOnPageChangeListener(new SearchResultFragment.2(this));
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StReportShareRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -40,27 +40,14 @@ public class MiniReportShareServlet
     int k = paramIntent.getIntExtra("key_share_type", 0);
     int m = paramIntent.getIntExtra("key_dest_type", 0);
     Object localObject2 = paramIntent.getStringExtra("key_dest_id");
-    COMM.StCommonExt localStCommonExt;
-    if (arrayOfByte != null) {
-      localStCommonExt = new COMM.StCommonExt();
-    }
-    try
+    if (arrayOfByte != null)
     {
-      localStCommonExt.mergeFrom(arrayOfByte);
-      localObject2 = new ReportShareRequest(l, (String)localObject1, i, j, k, m, (String)localObject2).encode(paramIntent, this.index, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
+      try
+      {
+        localStCommonExt.mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_usr_time.ReportShare");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniReportShareServlet", 2, "onSend. mergeFrom extData exception!");
@@ -68,11 +55,20 @@ public class MiniReportShareServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    localObject2 = new ReportShareRequest(l, (String)localObject1, i, j, k, m, (String)localObject2).encode(paramIntent, this.index, getTraceId());
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_usr_time.ReportShare");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniReportShareServlet
  * JD-Core Version:    0.7.0.1
  */

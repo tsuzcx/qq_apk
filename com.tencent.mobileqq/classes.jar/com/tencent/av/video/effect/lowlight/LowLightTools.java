@@ -31,56 +31,58 @@ public class LowLightTools
   
   public static Bitmap getLowLightImage(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
-    int i;
     int k;
+    int m;
     for (;;)
     {
       try
       {
         localBitmap = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
-        arrayOfByte = new byte[262144];
+        localObject = new byte[262144];
+        k = 0;
         j = 0;
-        i = 0;
       }
       catch (Throwable localThrowable)
       {
         Bitmap localBitmap;
-        byte[] arrayOfByte;
         int j;
         float f;
-        int m;
-        Log.d("LowLightTools", "getLowLightImage:" + localThrowable);
+        int i;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getLowLightImage:");
+        ((StringBuilder)localObject).append(localThrowable);
+        Log.d("LowLightTools", ((StringBuilder)localObject).toString());
         return null;
       }
-      if (k >= 256) {
-        break label220;
+      if (m >= 256) {
+        break label228;
       }
-      f = (float)Math.pow(1.0F - (255.0F - k) * paramFloat2 / (255.0F - paramFloat1), paramFloat3);
-      m = (byte)(int)clipping(Double.valueOf(Math.pow((int)clipping(Integer.valueOf((int)((i - paramFloat1) / f + paramFloat1))) / 255.0F, paramFloat4) * 255.0D));
-      arrayOfByte[j] = ((byte)m);
-      arrayOfByte[(j + 1)] = ((byte)m);
-      arrayOfByte[(j + 2)] = ((byte)m);
-      arrayOfByte[(j + 3)] = -1;
+      f = (float)Math.pow(1.0F - (255.0F - m) * paramFloat2 / (255.0F - paramFloat1), paramFloat3);
+      i = (byte)(byte)(int)clipping(Double.valueOf(Math.pow((int)clipping(Integer.valueOf((int)((k - paramFloat1) / f + paramFloat1))) / 255.0F, paramFloat4) * 255.0D));
+      localObject[j] = i;
+      localObject[(j + 1)] = i;
+      localObject[(j + 2)] = i;
+      localObject[(j + 3)] = -1;
       j += 4;
-      k += 1;
+      m += 1;
     }
-    label220:
-    label227:
+    label228:
+    label235:
     for (;;)
     {
-      localBitmap.copyPixelsFromBuffer(ByteBuffer.wrap(arrayOfByte));
+      localBitmap.copyPixelsFromBuffer(ByteBuffer.wrap((byte[])localObject));
       if (paramBoolean) {
         saveBitmap(localBitmap);
       }
       return localBitmap;
       for (;;)
       {
-        if (i >= 256) {
-          break label227;
+        if (k >= 256) {
+          break label235;
         }
-        k = 0;
+        m = 0;
         break;
-        i += 1;
+        k += 1;
       }
     }
   }
@@ -89,19 +91,29 @@ public class LowLightTools
   {
     try
     {
-      paramContext = BitmapFactory.decodeStream(CommonUtils.getInputStreamFromPath(paramContext, paramString + "/" + "LowLight.png"));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("/");
+      localStringBuilder.append("LowLight.png");
+      paramContext = BitmapFactory.decodeStream(CommonUtils.getInputStreamFromPath(paramContext, localStringBuilder.toString()));
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      Log.d("LowLightTools", "getLowLightImage:" + paramContext);
+      paramString = new StringBuilder();
+      paramString.append("getLowLightImage:");
+      paramString.append(paramContext);
+      Log.d("LowLightTools", paramString.toString());
     }
     return null;
   }
   
   public static void saveBitmap(Bitmap paramBitmap)
   {
-    Object localObject = new File(StorageUtils.VIDEO_EFFECT_PATH + "LowLight/lowLight_saved.png");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(StorageUtils.VIDEO_EFFECT_PATH);
+    ((StringBuilder)localObject).append("LowLight/lowLight_saved.png");
+    localObject = new File(((StringBuilder)localObject).toString());
     if (((File)localObject).exists()) {
       ((File)localObject).delete();
     }
@@ -115,13 +127,16 @@ public class LowLightTools
     }
     catch (Exception paramBitmap)
     {
-      Log.d("LowLightTools", "saveBitmap:" + paramBitmap);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveBitmap:");
+      ((StringBuilder)localObject).append(paramBitmap);
+      Log.d("LowLightTools", ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.lowlight.LowLightTools
  * JD-Core Version:    0.7.0.1
  */

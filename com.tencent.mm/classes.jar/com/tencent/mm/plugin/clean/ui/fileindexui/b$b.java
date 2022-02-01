@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.clean.c.i;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.calcwx.b.a;
+import com.tencent.mm.plugin.clean.c.c;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,31 +15,30 @@ final class b$b
 {
   private b$b(b paramb) {}
   
-  private void bk(List<com.tencent.mm.plugin.f.b.a> paramList)
+  private void eV(List<a> paramList)
   {
-    AppMethodBeat.i(18753);
+    AppMethodBeat.i(22863);
     int j = paramList.size();
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < j)
     {
-      com.tencent.mm.plugin.f.b.a locala = (com.tencent.mm.plugin.f.b.a)paramList.get(i);
-      i locali2 = (i)localHashMap.get(Long.valueOf(locala.field_msgId));
-      i locali1 = locali2;
-      if (locali2 == null)
+      a locala = (a)paramList.get(i);
+      c localc2 = (c)localHashMap.get(Long.valueOf(locala.field_msgId));
+      c localc1 = localc2;
+      if (localc2 == null)
       {
-        locali1 = new i();
-        localHashMap.put(Long.valueOf(locala.field_msgId), locali1);
-        localArrayList.add(locali1);
+        localc1 = new c();
+        localHashMap.put(Long.valueOf(locala.field_msgId), localc1);
+        localArrayList.add(localc1);
       }
-      locali1.kHd.add(locala);
-      locali1.fXv = locala.field_msgtime;
-      locali1.userName = locala.field_username;
-      locali1.cpg = locala.field_msgId;
-      if (!com.tencent.mm.plugin.f.a.sR(locala.field_msgSubType)) {
-        locali1.size += locala.field_size;
-      }
+      localc1.wRI.add(locala);
+      localc1.pba = locala.field_msgtime;
+      localc1.userName = locala.field_username;
+      localc1.hCz = locala.field_msgId;
+      localc1.size += locala.field_size;
+      localc1.msgType = locala.field_msgType;
       switch (locala.field_msgSubType)
       {
       }
@@ -46,77 +46,68 @@ final class b$b
       {
         i += 1;
         break;
-        locali1.filePath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 3;
+        localc1.filePath = (h.baE().mCI + locala.field_path);
+        localc1.type = 3;
         continue;
-        locali1.thumbPath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 3;
+        if (locala.field_msgType == 486539313) {}
+        for (localc1.thumbPath = locala.field_path;; localc1.thumbPath = (h.baE().mCI + locala.field_path))
+        {
+          localc1.type = 3;
+          break;
+        }
+        localc1.filePath = (h.baE().mCI + locala.field_path);
+        localc1.type = 1;
         continue;
-        locali1.filePath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 1;
+        localc1.thumbPath = (h.baE().mCI + locala.field_path);
+        localc1.type = 1;
         continue;
-        locali1.thumbPath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 1;
+        localc1.filePath = (h.baE().mCI + locala.field_path);
+        localc1.type = 4;
         continue;
-        locali1.filePath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 1;
-        continue;
-        locali1.thumbPath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 1;
-        continue;
-        locali1.filePath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 4;
-        continue;
-        locali1.thumbPath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 4;
-        continue;
-        locali1.filePath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 4;
-        continue;
-        locali1.thumbPath = (g.RL().eHQ + locala.field_path);
-        locali1.type = 4;
+        localc1.thumbPath = (h.baE().mCI + locala.field_path);
+        localc1.type = 4;
       }
     }
     paramList = localArrayList.iterator();
     while (paramList.hasNext()) {
-      if (((i)paramList.next()).size <= 0L) {
+      if (((c)paramList.next()).size <= 0L) {
         paramList.remove();
       }
     }
-    b.d(this.kHM).addAll(localArrayList);
-    AppMethodBeat.o(18753);
+    b.d(this.wSn).addAll(localArrayList);
+    AppMethodBeat.o(22863);
   }
   
   /* Error */
   public final void run()
   {
     // Byte code:
-    //   0: sipush 18752
+    //   0: sipush 22862
     //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 177	com/tencent/mm/pointers/PLong
+    //   6: new 178	com/tencent/mm/pointers/PLong
     //   9: dup
-    //   10: invokespecial 178	com/tencent/mm/pointers/PLong:<init>	()V
+    //   10: invokespecial 179	com/tencent/mm/pointers/PLong:<init>	()V
     //   13: astore 11
-    //   15: new 177	com/tencent/mm/pointers/PLong
+    //   15: new 178	com/tencent/mm/pointers/PLong
     //   18: dup
-    //   19: invokespecial 178	com/tencent/mm/pointers/PLong:<init>	()V
+    //   19: invokespecial 179	com/tencent/mm/pointers/PLong:<init>	()V
     //   22: astore 12
-    //   24: invokestatic 184	com/tencent/mm/plugin/f/b:bak	()Lcom/tencent/mm/plugin/f/b;
-    //   27: invokevirtual 188	com/tencent/mm/plugin/f/b:bal	()Lcom/tencent/mm/plugin/f/b/b;
+    //   24: invokestatic 185	com/tencent/mm/plugin/calcwx/a:diz	()Lcom/tencent/mm/plugin/calcwx/a;
+    //   27: invokevirtual 189	com/tencent/mm/plugin/calcwx/a:diA	()Lcom/tencent/mm/plugin/calcwx/b/b;
     //   30: astore 10
     //   32: aload_0
-    //   33: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   36: invokestatic 192	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
+    //   33: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   36: invokestatic 193	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
     //   39: astore 13
-    //   41: invokestatic 198	com/tencent/mm/sdk/platformtools/bo:yB	()J
+    //   41: invokestatic 199	com/tencent/mm/sdk/platformtools/Util:currentTicks	()J
     //   44: lstore_1
     //   45: new 110	java/lang/StringBuilder
     //   48: dup
-    //   49: ldc 200
-    //   51: invokespecial 203	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   49: ldc 201
+    //   51: invokespecial 204	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   54: aload 13
     //   56: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: ldc 205
+    //   59: ldc 206
     //   61: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   67: astore 14
@@ -125,10 +116,10 @@ final class b$b
     //   72: aconst_null
     //   73: astore 8
     //   75: aload 10
-    //   77: getfield 211	com/tencent/mm/plugin/f/b/b:db	Lcom/tencent/mm/sdk/e/e;
+    //   77: getfield 212	com/tencent/mm/plugin/calcwx/b/b:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   80: aload 14
     //   82: aconst_null
-    //   83: invokeinterface 217 3 0
+    //   83: invokeinterface 218 3 0
     //   88: astore 10
     //   90: aload 10
     //   92: ifnull +63 -> 155
@@ -137,7 +128,7 @@ final class b$b
     //   99: aload 10
     //   101: astore 9
     //   103: aload 10
-    //   105: invokeinterface 222 1 0
+    //   105: invokeinterface 223 1 0
     //   110: ifeq +45 -> 155
     //   113: aload 10
     //   115: astore 8
@@ -146,8 +137,8 @@ final class b$b
     //   121: aload 11
     //   123: aload 10
     //   125: iconst_0
-    //   126: invokeinterface 226 2 0
-    //   131: putfield 229	com/tencent/mm/pointers/PLong:value	J
+    //   126: invokeinterface 227 2 0
+    //   131: putfield 230	com/tencent/mm/pointers/PLong:value	J
     //   134: aload 10
     //   136: astore 8
     //   138: aload 10
@@ -155,14 +146,14 @@ final class b$b
     //   142: aload 12
     //   144: aload 10
     //   146: iconst_1
-    //   147: invokeinterface 226 2 0
-    //   152: putfield 229	com/tencent/mm/pointers/PLong:value	J
+    //   147: invokeinterface 227 2 0
+    //   152: putfield 230	com/tencent/mm/pointers/PLong:value	J
     //   155: aload 10
     //   157: ifnull +10 -> 167
     //   160: aload 10
-    //   162: invokeinterface 232 1 0
-    //   167: ldc 234
-    //   169: ldc 236
+    //   162: invokeinterface 233 1 0
+    //   167: ldc 235
+    //   169: ldc 237
     //   171: iconst_2
     //   172: anewarray 4	java/lang/Object
     //   175: dup
@@ -172,60 +163,60 @@ final class b$b
     //   180: dup
     //   181: iconst_1
     //   182: lload_1
-    //   183: invokestatic 240	com/tencent/mm/sdk/platformtools/bo:av	(J)J
+    //   183: invokestatic 241	com/tencent/mm/sdk/platformtools/Util:ticksToNow	(J)J
     //   186: invokestatic 58	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   189: aastore
-    //   190: invokestatic 245	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   190: invokestatic 246	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   193: aload 12
     //   195: aload 12
-    //   197: getfield 229	com/tencent/mm/pointers/PLong:value	J
+    //   197: getfield 230	com/tencent/mm/pointers/PLong:value	J
     //   200: lconst_1
     //   201: lsub
-    //   202: putfield 229	com/tencent/mm/pointers/PLong:value	J
+    //   202: putfield 230	com/tencent/mm/pointers/PLong:value	J
     //   205: aload 11
-    //   207: getfield 229	com/tencent/mm/pointers/PLong:value	J
+    //   207: getfield 230	com/tencent/mm/pointers/PLong:value	J
     //   210: lstore 5
     //   212: lload 5
-    //   214: ldc2_w 246
+    //   214: ldc2_w 247
     //   217: lsub
     //   218: aload 12
-    //   220: getfield 229	com/tencent/mm/pointers/PLong:value	J
-    //   223: invokestatic 253	java/lang/Math:max	(JJ)J
+    //   220: getfield 230	com/tencent/mm/pointers/PLong:value	J
+    //   223: invokestatic 254	java/lang/Math:max	(JJ)J
     //   226: lstore_3
     //   227: aload_0
-    //   228: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   231: invokestatic 256	com/tencent/mm/plugin/clean/ui/fileindexui/b:b	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Z
+    //   228: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   231: invokestatic 257	com/tencent/mm/plugin/clean/ui/fileindexui/b:b	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Z
     //   234: istore 7
     //   236: iload 7
     //   238: ifeq +73 -> 311
-    //   241: sipush 18752
-    //   244: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   241: sipush 22862
+    //   244: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   247: return
     //   248: astore 10
     //   250: aload 8
     //   252: astore 9
-    //   254: ldc 234
+    //   254: ldc 235
     //   256: aload 10
-    //   258: ldc_w 258
+    //   258: ldc_w 259
     //   261: iconst_1
     //   262: anewarray 4	java/lang/Object
     //   265: dup
     //   266: iconst_0
     //   267: aload 14
     //   269: aastore
-    //   270: invokestatic 262	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   270: invokestatic 263	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   273: aload 8
     //   275: ifnull -108 -> 167
     //   278: aload 8
-    //   280: invokeinterface 232 1 0
+    //   280: invokeinterface 233 1 0
     //   285: goto -118 -> 167
     //   288: astore 8
     //   290: aload 9
     //   292: ifnull +10 -> 302
     //   295: aload 9
-    //   297: invokeinterface 232 1 0
-    //   302: sipush 18752
-    //   305: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   297: invokeinterface 233 1 0
+    //   302: sipush 22862
+    //   305: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   308: aload 8
     //   310: athrow
     //   311: lload_3
@@ -239,35 +230,35 @@ final class b$b
     //   322: lsub
     //   323: lstore_1
     //   324: aload_0
-    //   325: invokestatic 184	com/tencent/mm/plugin/f/b:bak	()Lcom/tencent/mm/plugin/f/b;
-    //   328: invokevirtual 188	com/tencent/mm/plugin/f/b:bal	()Lcom/tencent/mm/plugin/f/b/b;
+    //   325: invokestatic 185	com/tencent/mm/plugin/calcwx/a:diz	()Lcom/tencent/mm/plugin/calcwx/a;
+    //   328: invokevirtual 189	com/tencent/mm/plugin/calcwx/a:diA	()Lcom/tencent/mm/plugin/calcwx/b/b;
     //   331: aload_0
-    //   332: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   335: invokestatic 192	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
+    //   332: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   335: invokestatic 193	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
     //   338: lload 5
     //   340: lload_1
-    //   341: invokevirtual 266	com/tencent/mm/plugin/f/b/b:r	(Ljava/lang/String;JJ)Ljava/util/List;
-    //   344: invokespecial 268	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:bk	(Ljava/util/List;)V
+    //   341: invokevirtual 267	com/tencent/mm/plugin/calcwx/b/b:y	(Ljava/lang/String;JJ)Ljava/util/List;
+    //   344: invokespecial 269	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:eV	(Ljava/util/List;)V
     //   347: aload_0
-    //   348: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   351: invokestatic 271	com/tencent/mm/plugin/clean/ui/fileindexui/b:c	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)V
+    //   348: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   351: invokestatic 272	com/tencent/mm/plugin/clean/ui/fileindexui/b:c	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)V
     //   354: lload_1
     //   355: lstore_3
     //   356: aload_0
-    //   357: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   360: invokestatic 256	com/tencent/mm/plugin/clean/ui/fileindexui/b:b	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Z
+    //   357: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   360: invokestatic 257	com/tencent/mm/plugin/clean/ui/fileindexui/b:b	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Z
     //   363: ifne +77 -> 440
     //   366: lload_3
     //   367: aload 12
-    //   369: getfield 229	com/tencent/mm/pointers/PLong:value	J
+    //   369: getfield 230	com/tencent/mm/pointers/PLong:value	J
     //   372: lcmp
     //   373: ifle +67 -> 440
     //   376: lload_3
-    //   377: ldc2_w 272
+    //   377: ldc2_w 273
     //   380: lsub
     //   381: aload 12
-    //   383: getfield 229	com/tencent/mm/pointers/PLong:value	J
-    //   386: invokestatic 253	java/lang/Math:max	(JJ)J
+    //   383: getfield 230	com/tencent/mm/pointers/PLong:value	J
+    //   386: invokestatic 254	java/lang/Math:max	(JJ)J
     //   389: lstore 5
     //   391: lload 5
     //   393: lstore_1
@@ -280,33 +271,33 @@ final class b$b
     //   404: lsub
     //   405: lstore_1
     //   406: aload_0
-    //   407: invokestatic 184	com/tencent/mm/plugin/f/b:bak	()Lcom/tencent/mm/plugin/f/b;
-    //   410: invokevirtual 188	com/tencent/mm/plugin/f/b:bal	()Lcom/tencent/mm/plugin/f/b/b;
+    //   407: invokestatic 185	com/tencent/mm/plugin/calcwx/a:diz	()Lcom/tencent/mm/plugin/calcwx/a;
+    //   410: invokevirtual 189	com/tencent/mm/plugin/calcwx/a:diA	()Lcom/tencent/mm/plugin/calcwx/b/b;
     //   413: aload_0
-    //   414: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   417: invokestatic 192	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
+    //   414: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   417: invokestatic 193	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
     //   420: lload_3
     //   421: lload_1
-    //   422: invokevirtual 266	com/tencent/mm/plugin/f/b/b:r	(Ljava/lang/String;JJ)Ljava/util/List;
-    //   425: invokespecial 268	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:bk	(Ljava/util/List;)V
+    //   422: invokevirtual 267	com/tencent/mm/plugin/calcwx/b/b:y	(Ljava/lang/String;JJ)Ljava/util/List;
+    //   425: invokespecial 269	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:eV	(Ljava/util/List;)V
     //   428: aload_0
-    //   429: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:kHM	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
-    //   432: invokestatic 271	com/tencent/mm/plugin/clean/ui/fileindexui/b:c	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)V
+    //   429: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:wSn	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+    //   432: invokestatic 272	com/tencent/mm/plugin/clean/ui/fileindexui/b:c	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)V
     //   435: lload_1
     //   436: lstore_3
     //   437: goto -81 -> 356
-    //   440: sipush 18752
-    //   443: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   440: sipush 22862
+    //   443: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   446: return
     //   447: astore 8
-    //   449: ldc_w 275
+    //   449: ldc_w 276
     //   452: aload 8
-    //   454: ldc_w 277
+    //   454: ldc_w 278
     //   457: iconst_0
     //   458: anewarray 4	java/lang/Object
-    //   461: invokestatic 262	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   464: sipush 18752
-    //   467: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   461: invokestatic 263	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   464: sipush 22862
+    //   467: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   470: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -344,7 +335,7 @@ final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.b.b
  * JD-Core Version:    0.7.0.1
  */

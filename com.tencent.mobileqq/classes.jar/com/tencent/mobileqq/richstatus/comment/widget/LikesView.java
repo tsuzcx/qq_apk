@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -12,27 +11,25 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import ayej;
-import ayek;
-import ayel;
-import ayeu;
-import ayev;
-import ayew;
-import bamp;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.richstatus.comment.bean.LikeItem;
+import com.tencent.mobileqq.richstatus.comment.bean.User;
+import com.tencent.mobileqq.richstatus.comment.spannable.CommentMovementMethod;
+import com.tencent.mobileqq.text.QQText;
 import java.util.List;
 
 public class LikesView
   extends TextView
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ayew jdField_a_of_type_Ayew;
-  private String jdField_a_of_type_JavaLangString = "LikesView";
-  private List<ayej> jdField_a_of_type_JavaUtilList;
+  private String a = "LikesView";
   private int b;
   private int c;
+  private int d;
+  private long e;
+  private List<LikeItem> f;
+  private LikesView.OnItemClickListener g;
+  private Drawable h;
   
   public LikesView(Context paramContext)
   {
@@ -54,19 +51,10 @@ public class LikesView
     a(paramAttributeSet);
   }
   
-  private SpannableString a()
-  {
-    SpannableString localSpannableString = new SpannableString("  ");
-    int i = aepi.a(20.0F, getResources());
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, i, i);
-    localSpannableString.setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 0), 0, 1, 33);
-    return localSpannableString;
-  }
-  
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new ayev(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new LikesView.2(this, this.b, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
@@ -75,8 +63,8 @@ public class LikesView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.LikesView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166372));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166834));
+      this.b = paramAttributeSet.getColor(0, getResources().getColor(2131167338));
+      this.c = paramAttributeSet.getColor(1, getResources().getColor(2131167910));
       return;
     }
     finally
@@ -87,81 +75,99 @@ public class LikesView
   
   private void b()
   {
-    this.c = getResources().getColor(2131166369);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846977);
+    this.d = getResources().getColor(2131167335);
+    this.h = getResources().getDrawable(2130849332);
   }
   
-  public Drawable a()
+  private SpannableString c()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    SpannableString localSpannableString = new SpannableString("  ");
+    int i = AIOUtils.b(20.0F, getResources());
+    this.h.setBounds(0, 0, i, i);
+    localSpannableString.setSpan(new ImageSpan(this.h, 0), 0, 1, 33);
+    return localSpannableString;
   }
   
   public void a()
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.f;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       setVisibility(0);
-      localSpannableStringBuilder.append(a());
+      localSpannableStringBuilder.append(c());
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.f.size())
       {
-        ayej localayej = (ayej)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localayej != null)
+        localObject = (LikeItem)this.f.get(i);
+        if (localObject != null)
         {
-          localSpannableStringBuilder.append(a(localayej.a.b, localayej.a.jdField_a_of_type_JavaLangString));
-          if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {
+          localSpannableStringBuilder.append(a(((LikeItem)localObject).b.b, ((LikeItem)localObject).b.a));
+          if (i != this.f.size() - 1) {
             localSpannableStringBuilder.append(", ");
           }
         }
         i += 1;
       }
-      if (this.jdField_a_of_type_Long > 1L) {
-        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131720208), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+      if (this.e > 1L) {
+        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131916685), new Object[] { Long.valueOf(this.e) }));
+      } else {
+        localSpannableStringBuilder.append(getContext().getResources().getString(2131916684));
       }
-      for (;;)
-      {
-        setText(new bamp(localSpannableStringBuilder, 3, 12));
-        setTextColor(this.c);
-        setMovementMethod(new ayel(this.b, getContext().getResources().getColor(2131167140)));
-        setOnClickListener(new ayeu(this));
-        return;
-        localSpannableStringBuilder.append(getContext().getResources().getString(2131720207));
-      }
+      setText(new QQText(localSpannableStringBuilder, 3, 12));
+      setTextColor(this.d);
+      setMovementMethod(new CommentMovementMethod(this.c, getContext().getResources().getColor(2131168376)));
+      setOnClickListener(new LikesView.1(this));
+      return;
     }
     setVisibility(8);
   }
   
-  public void a(List<ayej> paramList, long paramLong)
+  public void a(List<LikeItem> paramList, long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.e = paramLong;
+    this.f = paramList;
     a();
+  }
+  
+  public Drawable getLikeSpanDrawable()
+  {
+    return this.h;
+  }
+  
+  public List<LikeItem> getLikes()
+  {
+    return this.f;
+  }
+  
+  public LikesView.OnItemClickListener getOnItemClickListener()
+  {
+    return this.g;
   }
   
   public void setItemColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setLikSpanDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.h = paramDrawable;
   }
   
   public void setNormalTextColor(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
   
-  public void setOnItemClickListener(ayew paramayew)
+  public void setOnItemClickListener(LikesView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Ayew = paramayew;
+    this.g = paramOnItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.LikesView
  * JD-Core Version:    0.7.0.1
  */

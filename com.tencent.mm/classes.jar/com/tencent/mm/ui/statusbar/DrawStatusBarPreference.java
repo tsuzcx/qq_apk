@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.statusbar;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,7 +11,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class DrawStatusBarPreference
   extends MMPreference
 {
-  private b iLE = null;
+  private b afCA = null;
   
   public int getResourceId()
   {
@@ -21,18 +20,18 @@ public class DrawStatusBarPreference
   
   public void initSwipeBack()
   {
-    AppMethodBeat.i(107548);
+    AppMethodBeat.i(142985);
     super.initSwipeBack();
     if ((getSwipeBackLayout() != null) && (getSwipeBackLayout().getChildCount() > 0))
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.iLE = new b(this);
-      this.iLE.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.iLE);
-      getSwipeBackLayout().setContentView(this.iLE);
+      this.afCA = new b(this);
+      this.afCA.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.afCA);
+      getSwipeBackLayout().setContentView(this.afCA);
     }
-    AppMethodBeat.o(107548);
+    AppMethodBeat.o(142985);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)

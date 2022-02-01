@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dva" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/m2i" android:background="@drawable/b6q" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/gb" />
+        </FrameLayout>
+        <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:id="@id/m0i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ls6" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ScrollView android:id="@id/j46" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/ls8" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginBottom="24.0dip" android:text="@string/ls9" />
+            <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/ls_" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginBottom="24.0dip" android:text="@string/lsa" />
+            <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/lsb" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginBottom="24.0dip" android:text="@string/lsc" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -15,33 +15,33 @@ public class MCacheItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MCacheItem> CREATOR;
-  private c ecx;
+  private IAutoDBItem item;
   
   static
   {
-    AppMethodBeat.i(57848);
-    CREATOR = new MCacheItem.1();
-    AppMethodBeat.o(57848);
+    AppMethodBeat.i(131969);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(131969);
   }
   
   public MCacheItem(Parcel paramParcel)
   {
-    AppMethodBeat.i(57845);
-    this.ecx = c(paramParcel);
-    AppMethodBeat.o(57845);
+    AppMethodBeat.i(131966);
+    this.item = e(paramParcel);
+    AppMethodBeat.o(131966);
   }
   
-  public MCacheItem(c paramc)
+  public MCacheItem(IAutoDBItem paramIAutoDBItem)
   {
-    this.ecx = paramc;
+    this.item = paramIAutoDBItem;
   }
   
   /* Error */
-  private c c(Parcel paramParcel)
+  private IAutoDBItem e(Parcel paramParcel)
   {
     // Byte code:
     //   0: ldc 46
-    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: invokevirtual 52	android/os/Parcel:readString	()Ljava/lang/String;
     //   9: invokestatic 58	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
@@ -49,10 +49,10 @@ public class MCacheItem
     //   14: aload_0
     //   15: aload 4
     //   17: invokevirtual 62	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   20: checkcast 64	com/tencent/mm/sdk/e/c
-    //   23: putfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   20: checkcast 64	com/tencent/mm/sdk/storage/IAutoDBItem
+    //   23: putfield 42	com/tencent/mm/cache/MCacheItem:item	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
     //   26: aload 4
-    //   28: invokestatic 68	com/tencent/mm/sdk/e/c:getValidFields	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
+    //   28: invokestatic 68	com/tencent/mm/sdk/storage/IAutoDBItem:getValidFields	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
     //   31: astore 4
     //   33: aload 4
     //   35: arraylength
@@ -66,7 +66,7 @@ public class MCacheItem
     //   46: iload_2
     //   47: aaload
     //   48: astore 5
-    //   50: getstatic 72	com/tencent/mm/cache/MCacheItem$a:ecz	Ljava/util/Map;
+    //   50: getstatic 72	com/tencent/mm/cache/MCacheItem$a:GET_METHODS	Ljava/util/Map;
     //   53: aload 5
     //   55: invokevirtual 78	java/lang/reflect/Field:getType	()Ljava/lang/Class;
     //   58: invokeinterface 84 2 0
@@ -89,7 +89,7 @@ public class MCacheItem
     //   89: dup
     //   90: iconst_2
     //   91: aload_0
-    //   92: getfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   92: getfield 42	com/tencent/mm/cache/MCacheItem:item	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
     //   95: aastore
     //   96: invokevirtual 90	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   99: pop
@@ -106,9 +106,9 @@ public class MCacheItem
     //   117: dup
     //   118: iconst_0
     //   119: aload 5
-    //   121: invokestatic 100	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   121: invokestatic 100	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   124: aastore
-    //   125: invokestatic 106	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   125: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   128: goto -28 -> 100
     //   131: astore_1
     //   132: ldc 92
@@ -118,15 +118,15 @@ public class MCacheItem
     //   140: dup
     //   141: iconst_0
     //   142: aload_1
-    //   143: invokestatic 100	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   143: invokestatic 100	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   146: aastore
-    //   147: invokestatic 106	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   150: ldc 46
     //   152: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   155: aconst_null
     //   156: areturn
     //   157: aload_0
-    //   158: getfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   158: getfield 42	com/tencent/mm/cache/MCacheItem:item	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
     //   161: astore_1
     //   162: ldc 46
     //   164: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -163,9 +163,9 @@ public class MCacheItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(57847);
-    paramParcel.writeString(this.ecx.getClass().getName());
-    Field[] arrayOfField = c.getValidFields(this.ecx.getClass());
+    AppMethodBeat.i(131968);
+    paramParcel.writeString(this.item.getClass().getName());
+    Field[] arrayOfField = IAutoDBItem.getValidFields(this.item.getClass());
     int i = arrayOfField.length;
     paramInt = 0;
     for (;;)
@@ -173,28 +173,28 @@ public class MCacheItem
       if (paramInt < i)
       {
         Field localField = arrayOfField[paramInt];
-        Method localMethod = (Method)MCacheItem.a.ecy.get(localField.getType());
+        Method localMethod = (Method)MCacheItem.a.SET_METHODS.get(localField.getType());
         if (localMethod != null) {}
         try
         {
-          localMethod.invoke(null, new Object[] { paramParcel, localField, this.ecx });
+          localMethod.invoke(null, new Object[] { paramParcel, localField, this.item });
           paramInt += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ab.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bo.l(localException) });
+            Log.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
           }
         }
       }
     }
-    AppMethodBeat.o(57847);
+    AppMethodBeat.o(131968);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.cache.MCacheItem
  * JD-Core Version:    0.7.0.1
  */

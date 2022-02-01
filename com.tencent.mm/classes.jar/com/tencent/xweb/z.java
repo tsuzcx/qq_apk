@@ -1,165 +1,178 @@
 package com.tencent.xweb;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.view.View;
+import android.webkit.ConsoleMessage;
+import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.PermissionRequest;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.Log;
-import org.xwalk.core.XWalkEnvironment;
+import com.tencent.xweb.internal.f;
 
-public final class z
+public class z
 {
-  private static final Object BEw;
+  f aifb;
   
-  static
+  public static boolean kfD()
   {
-    AppMethodBeat.i(3956);
-    BEw = new Object();
-    AppMethodBeat.o(3956);
+    return false;
   }
   
-  public static void ab(String[] paramArrayOfString)
+  public void a(WebView paramWebView, int paramInt) {}
+  
+  public boolean a(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    AppMethodBeat.i(3955);
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+    AppMethodBeat.i(212469);
+    if (this.aifb != null)
     {
-      AppMethodBeat.o(3955);
-      return;
+      boolean bool = this.aifb.khc();
+      AppMethodBeat.o(212469);
+      return bool;
     }
-    synchronized (BEw)
-    {
-      Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
-      if (localObject2 == null)
-      {
-        Log.e("FileReaderCrashDetect", "resetCrashInfo sp is null");
-        AppMethodBeat.o(3955);
-        return;
-      }
-      localObject2 = ((SharedPreferences)localObject2).edit();
-      if (localObject2 == null)
-      {
-        Log.e("FileReaderCrashDetect", "resetCrashInfo editor is null");
-        AppMethodBeat.o(3955);
-        return;
-      }
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = paramArrayOfString[i].toLowerCase();
-        ((SharedPreferences.Editor)localObject2).remove(str + "_count");
-        ((SharedPreferences.Editor)localObject2).remove(str + "_time");
-        ((SharedPreferences.Editor)localObject2).commit();
-        i += 1;
-      }
-      AppMethodBeat.o(3955);
-      return;
-    }
+    AppMethodBeat.o(212469);
+    return false;
   }
   
-  public static boolean axZ(String arg0)
+  public boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, a parama)
   {
-    AppMethodBeat.i(151436);
-    if ((??? == null) || (???.isEmpty()))
-    {
-      Log.e("FileReaderCrashDetect", "isRecentCrashed fileExt is empty");
-      AppMethodBeat.o(151436);
-      return false;
-    }
-    String str = ???.toLowerCase();
-    synchronized (BEw)
-    {
-      SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
-      if (localSharedPreferences == null)
-      {
-        Log.e("FileReaderCrashDetect", "isRecentCrashed sp is null");
-        AppMethodBeat.o(151436);
-        return false;
-      }
-      long l1 = localSharedPreferences.getLong(str + "_count", 0L);
-      long l2 = localSharedPreferences.getLong(str + "_time", 0L);
-      long l3 = System.currentTimeMillis();
-      if ((l1 >= 3L) && (l3 - l2 < 86400000L))
-      {
-        AppMethodBeat.o(151436);
-        return true;
-      }
-      AppMethodBeat.o(151436);
-      return false;
-    }
+    return false;
   }
   
-  public static void mP(String arg0)
+  public boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    AppMethodBeat.i(151435);
-    if ((??? == null) || (???.isEmpty()))
+    AppMethodBeat.i(156776);
+    if (this.aifb != null)
     {
-      Log.e("FileReaderCrashDetect", "onFinish param is empty");
-      AppMethodBeat.o(151435);
-      return;
+      boolean bool = this.aifb.a(paramString1, paramString2, paramJsResult);
+      AppMethodBeat.o(156776);
+      return bool;
     }
-    String str = ???.toLowerCase();
-    synchronized (BEw)
-    {
-      Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
-      if (localObject2 == null)
-      {
-        Log.e("FileReaderCrashDetect", "onFinish sp is null");
-        AppMethodBeat.o(151435);
-        return;
-      }
-      localObject2 = ((SharedPreferences)localObject2).edit();
-      if (localObject2 == null)
-      {
-        Log.e("FileReaderCrashDetect", "onFinish editor is null");
-        AppMethodBeat.o(151435);
-        return;
-      }
-      ((SharedPreferences.Editor)localObject2).putLong(str + "_count", 0L);
-      ((SharedPreferences.Editor)localObject2).putLong(str + "_time", System.currentTimeMillis());
-      ((SharedPreferences.Editor)localObject2).commit();
-      AppMethodBeat.o(151435);
-      return;
-    }
+    AppMethodBeat.o(156776);
+    return false;
   }
   
-  public static void onStart(String arg0)
+  public boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, q paramq)
   {
-    AppMethodBeat.i(151434);
-    if ((??? == null) || (???.isEmpty()))
+    AppMethodBeat.i(156778);
+    if (this.aifb != null)
     {
-      Log.e("FileReaderCrashDetect", "onStart param is empty");
-      AppMethodBeat.o(151434);
-      return;
+      boolean bool = this.aifb.a(paramString1, paramString2, paramString3, paramq);
+      AppMethodBeat.o(156778);
+      return bool;
     }
-    String str = ???.toLowerCase();
-    synchronized (BEw)
+    AppMethodBeat.o(156778);
+    return false;
+  }
+  
+  public void b(WebView paramWebView, int paramInt) {}
+  
+  public boolean b(long paramLong, String paramString1, String paramString2, String paramString3)
+  {
+    return true;
+  }
+  
+  public boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    AppMethodBeat.i(156777);
+    if (this.aifb != null)
     {
-      Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
-      if (localObject2 == null)
-      {
-        Log.e("FileReaderCrashDetect", "onStart sp is null");
-        AppMethodBeat.o(151434);
-        return;
-      }
-      long l = ((SharedPreferences)localObject2).getLong(str + "_count", 0L);
-      localObject2 = ((SharedPreferences)localObject2).edit();
-      if (localObject2 == null)
-      {
-        Log.e("FileReaderCrashDetect", "onStart editor is null");
-        AppMethodBeat.o(151434);
-        return;
-      }
-      ((SharedPreferences.Editor)localObject2).putLong(str + "_count", l + 1L);
-      ((SharedPreferences.Editor)localObject2).putLong(str + "_time", System.currentTimeMillis());
-      ((SharedPreferences.Editor)localObject2).commit();
-      AppMethodBeat.o(151434);
-      return;
+      boolean bool = this.aifb.b(paramString1, paramString2, paramJsResult);
+      AppMethodBeat.o(156777);
+      return bool;
     }
+    AppMethodBeat.o(156777);
+    return false;
+  }
+  
+  public boolean cxL()
+  {
+    AppMethodBeat.i(212473);
+    if (this.aifb != null)
+    {
+      boolean bool = this.aifb.cxL();
+      AppMethodBeat.o(212473);
+      return bool;
+    }
+    AppMethodBeat.o(212473);
+    return false;
+  }
+  
+  public void d(WebView paramWebView, String paramString) {}
+  
+  public boolean e(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    return true;
+  }
+  
+  public View getVideoLoadingProgressView()
+  {
+    return null;
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    return false;
+  }
+  
+  public void onExitFullscreenVideo(Bitmap paramBitmap) {}
+  
+  public void onGeolocationPermissionsHidePrompt() {}
+  
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
+  {
+    AppMethodBeat.i(156774);
+    paramCallback.invoke(paramString, true, true);
+    AppMethodBeat.o(156774);
+  }
+  
+  public void onHideCustomView()
+  {
+    AppMethodBeat.i(156775);
+    if (this.aifb != null) {
+      this.aifb.onHideCustomView();
+    }
+    AppMethodBeat.o(156775);
+  }
+  
+  public void onPermissionRequest(PermissionRequest paramPermissionRequest)
+  {
+    AppMethodBeat.i(212486);
+    paramPermissionRequest.deny();
+    AppMethodBeat.o(212486);
+  }
+  
+  public void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest) {}
+  
+  public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    AppMethodBeat.i(156780);
+    if (this.aifb != null) {
+      this.aifb.onShowCustomView(paramView, paramCustomViewCallback);
+    }
+    AppMethodBeat.o(156780);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(156779);
+    paramValueCallback.onReceiveValue(null);
+    AppMethodBeat.o(156779);
+  }
+  
+  public static abstract class a
+  {
+    public abstract String[] getAcceptTypes();
+    
+    public abstract int getMode();
+    
+    public abstract boolean isCaptureEnabled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/h08" android:layout_width="wrap_content" android:layout_height="54.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/jfq" android:layout_width="wrap_content" android:layout_height="17.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:text="送给" />
+        <com.tencent.timi.game.userinfo.api.view.AvatarTextView android:textSize="12.0dip" android:textColor="@color/b4k" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/qso" android:layout_width="wrap_content" android:layout_height="17.0dip" android:layout_marginLeft="5.0dip" android:singleLine="true" android:layout_toRightOf="@id/jfq" android:layout_alignTop="@id/jfq" />
+        <TextView android:textSize="10.0dip" android:textColor="#ff999999" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/q14" android:layout_width="wrap_content" android:layout_height="17.0dip" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_below="@id/jfq" android:layout_alignLeft="@id/jfq" />
+        <View android:id="@id/mvt" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_marginTop="-15.0dip" android:layout_alignLeft="@id/qso" android:layout_alignTop="@id/qso" android:layout_alignRight="@id/qso" />
+    </RelativeLayout>
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/nlm" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="6.0dip" />
+</LinearLayout>

@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anzz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,35 +13,29 @@ import org.json.JSONException;
 public class CardOCRInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new anzz();
-  public float a;
-  public int a;
+  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new CardOCRInfo.1();
   public String a;
-  public List<String> a;
-  public float b;
   public String b;
-  public List<String> b;
-  public float c;
-  public String c;
-  public String d;
+  public List<String> c = new ArrayList();
+  public List<String> d = new ArrayList();
+  public float e;
+  public float f;
+  public float g;
+  public int h;
+  public String i;
+  public String j;
   
-  public CardOCRInfo()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-  }
+  public CardOCRInfo() {}
   
   public CardOCRInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    paramParcel.readList(this.jdField_a_of_type_JavaUtilList, getClass().getClassLoader());
-    paramParcel.readList(this.jdField_b_of_type_JavaUtilList, getClass().getClassLoader());
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.jdField_b_of_type_Float = paramParcel.readFloat();
-    this.jdField_c_of_type_Float = paramParcel.readFloat();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    paramParcel.readList(this.c, getClass().getClassLoader());
+    paramParcel.readList(this.d, getClass().getClassLoader());
+    this.e = paramParcel.readFloat();
+    this.f = paramParcel.readFloat();
+    this.g = paramParcel.readFloat();
   }
   
   public static CardOCRInfo a(String paramString)
@@ -54,10 +47,10 @@ public class CardOCRInfo
     try
     {
       paramString = new JSONArray(paramString);
-      localCardOCRInfo.jdField_a_of_type_JavaLangString = paramString.getString(0);
-      localCardOCRInfo.jdField_b_of_type_JavaLangString = paramString.getString(1);
-      localCardOCRInfo.jdField_a_of_type_JavaUtilList = BusinessCard.unPack(paramString.getString(2));
-      localCardOCRInfo.jdField_b_of_type_JavaUtilList = BusinessCard.unPack(paramString.getString(3));
+      localCardOCRInfo.a = paramString.getString(0);
+      localCardOCRInfo.b = paramString.getString(1);
+      localCardOCRInfo.c = BusinessCard.unPack(paramString.getString(2));
+      localCardOCRInfo.d = BusinessCard.unPack(paramString.getString(3));
       return localCardOCRInfo;
     }
     catch (Exception paramString)
@@ -78,19 +71,16 @@ public class CardOCRInfo
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      localJSONArray.put(0, paramCardOCRInfo.jdField_a_of_type_JavaLangString);
-      localJSONArray.put(1, paramCardOCRInfo.jdField_b_of_type_JavaLangString);
-      localJSONArray.put(2, BusinessCard.pack(paramCardOCRInfo.jdField_a_of_type_JavaUtilList));
-      localJSONArray.put(3, BusinessCard.pack(paramCardOCRInfo.jdField_b_of_type_JavaUtilList));
-      return localJSONArray.toString();
+      localJSONArray.put(0, paramCardOCRInfo.a);
+      localJSONArray.put(1, paramCardOCRInfo.b);
+      localJSONArray.put(2, BusinessCard.pack(paramCardOCRInfo.c));
+      localJSONArray.put(3, BusinessCard.pack(paramCardOCRInfo.d));
     }
     catch (JSONException paramCardOCRInfo)
     {
-      for (;;)
-      {
-        paramCardOCRInfo.printStackTrace();
-      }
+      paramCardOCRInfo.printStackTrace();
     }
+    return localJSONArray.toString();
   }
   
   public int describeContents()
@@ -100,23 +90,42 @@ public class CardOCRInfo
   
   public String toString()
   {
-    return "erroCode: " + this.jdField_a_of_type_Int + " errMsg: " + this.jdField_c_of_type_JavaLangString + " uin:" + this.jdField_a_of_type_JavaUtilList + " uincon:" + this.jdField_b_of_type_Float + " phone: " + this.jdField_b_of_type_JavaUtilList + " phoneConfidence: " + this.jdField_c_of_type_Float + " name:" + this.jdField_a_of_type_JavaLangString + " nameConfidence:" + this.jdField_a_of_type_Float + " imgUrl:" + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("erroCode: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" errMsg: ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(" uin:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" uincon:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" phone: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" phoneConfidence: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" nameConfidence:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" imgUrl:");
+    localStringBuilder.append(this.j);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeList(this.jdField_b_of_type_JavaUtilList);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeFloat(this.jdField_b_of_type_Float);
-    paramParcel.writeFloat(this.jdField_c_of_type_Float);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeList(this.c);
+    paramParcel.writeList(this.d);
+    paramParcel.writeFloat(this.e);
+    paramParcel.writeFloat(this.f);
+    paramParcel.writeFloat(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardOCRInfo
  * JD-Core Version:    0.7.0.1
  */

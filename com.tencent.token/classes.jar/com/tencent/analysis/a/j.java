@@ -48,7 +48,7 @@ public final class j
     paramByteBuffer = ByteBuffer.wrap(b().b.a(arrayOfByte));
     int j = paramByteBuffer.getShort();
     int i = 0;
-    while (i < (0xFFFF & j))
+    while (i < (j & 0xFFFF))
     {
       b.a(paramByteBuffer, this.d);
       i += 1;
@@ -69,7 +69,12 @@ public final class j
   
   public final String toString()
   {
-    return "ShakeHandsRes [field=" + this.d + ", toString()=" + super.toString() + "]";
+    StringBuilder localStringBuilder = new StringBuilder("ShakeHandsRes [field=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", toString()=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

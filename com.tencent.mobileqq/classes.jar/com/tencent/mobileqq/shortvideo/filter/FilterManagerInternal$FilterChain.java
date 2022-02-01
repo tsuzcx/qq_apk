@@ -24,9 +24,9 @@ class FilterManagerInternal$FilterChain
   void generateID()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.mFilters != null)
+    int[] arrayOfInt = this.mFilters;
+    if (arrayOfInt != null)
     {
-      int[] arrayOfInt = this.mFilters;
       int j = arrayOfInt.length;
       int i = 0;
       while (i < j)
@@ -41,16 +41,17 @@ class FilterManagerInternal$FilterChain
   
   void getFilterParams(ArrayList<Object> paramArrayList)
   {
-    if (this.mParams != null) {
-      paramArrayList.addAll(Arrays.asList(this.mParams));
+    Object[] arrayOfObject = this.mParams;
+    if (arrayOfObject != null) {
+      paramArrayList.addAll(Arrays.asList(arrayOfObject));
     }
   }
   
   void getFilterTypes(ArrayList<Integer> paramArrayList)
   {
-    if (this.mFilters != null)
+    int[] arrayOfInt = this.mFilters;
+    if (arrayOfInt != null)
     {
-      int[] arrayOfInt = this.mFilters;
       int j = arrayOfInt.length;
       int i = 0;
       while (i < j)
@@ -68,44 +69,34 @@ class FilterManagerInternal$FilterChain
   
   Object getParam(int paramInt)
   {
-    if ((this.mParams != null) && (paramInt >= 0) && (paramInt < this.mParams.length)) {
-      return this.mParams[paramInt];
+    Object[] arrayOfObject = this.mParams;
+    if ((arrayOfObject != null) && (paramInt >= 0) && (paramInt < arrayOfObject.length)) {
+      return arrayOfObject[paramInt];
     }
     return null;
   }
   
   boolean hasFilterType(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int[] arrayOfInt;
-    int j;
-    int i;
-    if (this.mFilters != null)
+    int[] arrayOfInt = this.mFilters;
+    if (arrayOfInt != null)
     {
-      arrayOfInt = this.mFilters;
-      j = arrayOfInt.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = arrayOfInt.length;
+      int i = 0;
+      while (i < j)
       {
         if (arrayOfInt[i] == paramInt) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.FilterManagerInternal.FilterChain
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$eb
+final class c$eb
   extends c.g
 {
-  public c$eb()
+  c$eb()
   {
-    super("jumpToBizProfile", "jump_to_biz_profile", 61, true);
+    super("handleDeviceInfo", "handleDeviceInfo", 372, false);
   }
 }
 

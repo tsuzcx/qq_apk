@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qcircle_skin_color_bg_default" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/o9l" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="@dimen/bnw" android:src="@drawable/qcircle_skin_icon_nav_back" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xxp" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RadioGroup android:id="@id/pu1" android:background="@drawable/aiq" android:paddingLeft="6.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

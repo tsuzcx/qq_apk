@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingRight="@dimen/bcx" android:layout_width="60.0dip" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.flashshow.widgets.common.FSSquareImageView android:id="@id/lnn" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.flashshow.view.SquareImageView android:layout_gravity="center" android:id="@id/o6j" android:background="@color/bu" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/ih5" android:scaleType="centerCrop" app:round_radius="90.0dip" />
+</FrameLayout>

@@ -23,6 +23,7 @@ public final class py
       this.e = paramTencentMapOptions.getExtSurface();
     }
     setEGLContextClientVersion(2);
+    boolean bool = true;
     setPreserveEGLContextOnPause(true);
     setEGLConfigChooser(new pv.b(this, 8, 16));
     setEGLContextFactory(new py.1(this));
@@ -31,43 +32,45 @@ public final class py
     }
     setRenderer(this);
     setRenderMode(0);
-    if (Build.VERSION.SDK_INT < 11) {}
-    for (;;)
-    {
-      this.d = bool;
-      this.c = new pn(this, getContext().getApplicationContext(), paramTencentMapOptions);
-      setContentDescription("地图");
-      return;
+    if (Build.VERSION.SDK_INT < 11) {
+      bool = false;
+    } else {
       setPreserveEGLContextOnPause(true);
-      bool = true;
     }
+    this.d = bool;
+    this.c = new pn(this, getContext().getApplicationContext(), paramTencentMapOptions);
+    setContentDescription("地图");
   }
   
   public final void a(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    if (this.c != null) {
-      this.c.a(paramGL10, paramInt1, paramInt2);
+    pn localpn = this.c;
+    if (localpn != null) {
+      localpn.a(paramGL10, paramInt1, paramInt2);
     }
   }
   
   public final void a(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.c != null) {
-      this.c.a(paramGL10, paramEGLConfig);
+    pn localpn = this.c;
+    if (localpn != null) {
+      localpn.a(paramGL10, paramEGLConfig);
     }
   }
   
   public final boolean a(GL10 paramGL10)
   {
-    if (this.c == null) {
+    pn localpn = this.c;
+    if (localpn == null) {
       return false;
     }
-    return this.c.a(paramGL10);
+    return localpn.a(paramGL10);
   }
   
   protected final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.c != null) && (this.c.a(paramMotionEvent))) {
+    pn localpn = this.c;
+    if ((localpn != null) && (localpn.a(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -75,8 +78,9 @@ public final class py
   
   public final int getEGLContextHash()
   {
-    if (this.c != null) {
-      return this.c.getEGLContextHash();
+    pn localpn = this.c;
+    if (localpn != null) {
+      return localpn.getEGLContextHash();
     }
     return 0;
   }
@@ -88,8 +92,9 @@ public final class py
   
   public final void onDestroy()
   {
-    if (this.c != null) {
-      this.c.onDestroy();
+    pn localpn = this.c;
+    if (localpn != null) {
+      localpn.onDestroy();
     }
   }
   
@@ -98,8 +103,9 @@ public final class py
     if (this.d) {
       super.onPause();
     }
-    if (this.c != null) {
-      this.c.onPause();
+    pn localpn = this.c;
+    if (localpn != null) {
+      localpn.onPause();
     }
   }
   
@@ -122,16 +128,18 @@ public final class py
     if (this.d) {
       super.onResume();
     }
-    if (this.c != null) {
-      this.c.onResume();
+    pn localpn = this.c;
+    if (localpn != null) {
+      localpn.onResume();
     }
   }
   
   public final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.c != null) {
-      this.c.a(paramInt1, paramInt2);
+    pn localpn = this.c;
+    if (localpn != null) {
+      localpn.a(paramInt1, paramInt2);
     }
   }
   
@@ -139,15 +147,16 @@ public final class py
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.c != null) {
-      return this.c.onTouchEvent(paramMotionEvent);
+    pn localpn = this.c;
+    if (localpn != null) {
+      return localpn.onTouchEvent(paramMotionEvent);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.py
  * JD-Core Version:    0.7.0.1
  */

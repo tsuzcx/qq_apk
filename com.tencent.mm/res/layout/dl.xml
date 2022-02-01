@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleFrameLayoutWithHotspot android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/b7"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ol" />
-</LinearLayout>
+    <LinearLayout android:layout_gravity="center|right" android:orientation="horizontal" android:id="@id/f9" android:background="@drawable/cp" android:layout_width="wrap_content" android:layout_height="@dimen/r5" android:layout_marginRight="@dimen/qq">
+        <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton android:id="@id/fc" android:background="@drawable/cm" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/kd" />
+        <View android:layout_gravity="center_vertical" android:id="@id/fa" android:background="@color/da" android:layout_width="@dimen/vs" android:layout_height="@dimen/r4" />
+        <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton android:id="@id/fb" android:background="@drawable/cn" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/k_" />
+    </LinearLayout>
+</com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleFrameLayoutWithHotspot>

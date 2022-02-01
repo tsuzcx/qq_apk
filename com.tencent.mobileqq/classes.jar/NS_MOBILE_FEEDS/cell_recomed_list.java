@@ -9,9 +9,9 @@ public final class cell_recomed_list
   extends JceStruct
 {
   static ArrayList<s_likeman> cache_likemans = new ArrayList();
-  public int isrecomed;
-  public ArrayList<s_likeman> likemans;
-  public int num;
+  public int isrecomed = 0;
+  public ArrayList<s_likeman> likemans = null;
+  public int num = 0;
   
   static
   {
@@ -39,14 +39,15 @@ public final class cell_recomed_list
   {
     paramJceOutputStream.write(this.num, 0);
     paramJceOutputStream.write(this.isrecomed, 1);
-    if (this.likemans != null) {
-      paramJceOutputStream.write(this.likemans, 2);
+    ArrayList localArrayList = this.likemans;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomed_list
  * JD-Core Version:    0.7.0.1
  */

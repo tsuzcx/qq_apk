@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/bve" android:background="@color/os" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ij">
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/dw" android:textColor="#ff000000" android:id="@id/bvj" android:background="@drawable/l_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{detail detail detail detail detail detail detail detail }" android:maxLength="10000" android:lineSpacingMultiplier="1.2" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/yz" />
-    </LinearLayout>
-</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>
+    <ImageView android:background="@drawable/b4i" android:layout_width="4.0dip" android:layout_height="4.0dip" android:layout_marginLeft="4.0dip" android:baselineAlignBottom="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/a7b" android:id="@id/cdr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="" />
+</LinearLayout>

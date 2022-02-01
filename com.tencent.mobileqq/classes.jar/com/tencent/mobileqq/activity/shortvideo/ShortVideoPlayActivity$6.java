@@ -12,7 +12,7 @@ class ShortVideoPlayActivity$6
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
     }
-    this.this$0.f();
+    this.this$0.startHiding();
   }
 }
 

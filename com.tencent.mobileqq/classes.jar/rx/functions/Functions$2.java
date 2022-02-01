@@ -7,15 +7,15 @@ final class Functions$2
   
   public R call(Object... paramVarArgs)
   {
-    if (paramVarArgs.length != 1) {
-      throw new RuntimeException("Func1 expecting 1 argument.");
+    if (paramVarArgs.length == 1) {
+      return this.val$f.call(paramVarArgs[0]);
     }
-    return this.val$f.call(paramVarArgs[0]);
+    throw new RuntimeException("Func1 expecting 1 argument.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.functions.Functions.2
  * JD-Core Version:    0.7.0.1
  */

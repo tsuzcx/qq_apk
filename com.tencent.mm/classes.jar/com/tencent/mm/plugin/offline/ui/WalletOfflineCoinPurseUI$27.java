@@ -1,27 +1,24 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.offline.c.a;
 
 final class WalletOfflineCoinPurseUI$27
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   WalletOfflineCoinPurseUI$27(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI) {}
   
-  public final void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(43534);
-    a.bZH();
-    a.i(this.pny, WalletOfflineCoinPurseUI.c(this.pny));
-    this.pny.finish();
-    AppMethodBeat.o(43534);
+    AppMethodBeat.i(269161);
+    WalletOfflineCoinPurseUI.I(this.MCi);
+    AppMethodBeat.o(269161);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.27
  * JD-Core Version:    0.7.0.1
  */

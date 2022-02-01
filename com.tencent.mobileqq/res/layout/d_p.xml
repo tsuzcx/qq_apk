@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/oep" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="@dimen/brz" android:layout_alignParentBottom="true">
+        <com.tencent.mobileqq.wink.editor.music.lyric.WinkMusicWaveView android:layout_gravity="center_vertical" android:id="@id/5z" android:layout_width="fill_parent" android:layout_height="@dimen/bs8" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip">
+            <TextView android:textSize="10.0dip" android:textColor="@color/b52" android:id="@id/qp9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/qoi" android:background="@drawable/haj" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="22.0dip" android:text="@string/1a" android:layout_centerInParent="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/b7i" android:gravity="center" android:id="@id/kbq" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:text="@string/1b" android:layout_centerInParent="true" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/b52" android:id="@id/qkx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/nch" android:background="@drawable/glq" android:layout_width="fill_parent" android:layout_height="@dimen/bs6" android:layout_above="@id/oep" />
+    <com.tencent.mobileqq.wink.editor.music.lyric.interaction.MoreLyricLayout android:orientation="vertical" android:id="@id/oqj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/oep" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/oif" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_above="@id/oep">
+        <ImageView android:id="@id/o5s" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="28.0dip" android:src="@drawable/j67" android:contentDescription="@string/19" />
+        <ImageView android:id="@id/o61" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/jru" android:layout_alignParentRight="true" android:contentDescription="@string/1_" />
+    </RelativeLayout>
+</RelativeLayout>

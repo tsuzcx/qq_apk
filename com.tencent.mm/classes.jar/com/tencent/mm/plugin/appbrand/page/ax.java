@@ -1,156 +1,151 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.v4.view.t;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.a.d;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b.a;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.appbrand.jsapi.i.f;
+import com.tencent.mm.plugin.appbrand.jsapi.webview.g.c;
+import com.tencent.mm.plugin.appbrand.page.a.e;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@SuppressLint({"ViewConstructor"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/CustomPauseRenderingExtensionWrapper;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPauseRenderingExtension;", "originExtension", "(Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewPauseRenderingExtension;)V", "value", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "htmlView", "getHtmlView", "()Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "setHtmlView", "(Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;)V", "paused", "", "pauseRendering", "", "resetRenderingState", "restoreRendering", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ax
-  extends FrameLayout
-  implements b.a
+  implements e
 {
-  private v bBK;
-  d ixk;
-  private b ixl;
-  boolean izC;
+  public static final ax.a tzG;
+  private boolean orA;
+  private final e tzH;
+  private g.c tzI;
   
-  public ax(Context paramContext, v paramv)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(140916);
-    this.izC = false;
-    this.bBK = paramv;
-    paramContext = this.bBK.getPageConfig();
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(140916);
-      return;
-    }
-    if (paramContext.ayo())
-    {
-      this.ixk = new d(getContext());
-      this.ixk.setActuallyVisible(false);
-      this.ixl = ((b)this.bBK.iwn.b(getContext(), b.class));
-      this.ixl.setFullscreenMode(false);
-      this.ixl.fb(false);
-      aJX();
-      this.ixk.addView(this.ixl);
-      addView(this.ixk, -1, -2);
-    }
-    setBackgroundColor(g.bA(paramContext.hhh, -1));
-    AppMethodBeat.o(140916);
+    AppMethodBeat.i(50936);
+    tzG = new ax.a((byte)0);
+    AppMethodBeat.o(50936);
   }
   
-  private void aJY()
+  public ax(e parame)
   {
-    AppMethodBeat.i(140919);
-    if (this.ixl != null)
+    AppMethodBeat.i(50935);
+    this.tzH = parame;
+    AppMethodBeat.o(50935);
+  }
+  
+  public static final void a(ah paramah, final g.c paramc)
+  {
+    AppMethodBeat.i(325191);
+    s.u(paramah, "page");
+    paramah.a((i.f)new a.a(paramah, paramc));
+    AppMethodBeat.o(325191);
+  }
+  
+  private static final void a(ax paramax, int paramInt)
+  {
+    AppMethodBeat.i(325188);
+    s.u(paramax, "this$0");
+    paramax.cFN();
+    AppMethodBeat.o(325188);
+  }
+  
+  private final void cFN()
+  {
+    AppMethodBeat.i(50934);
+    if (this.orA)
     {
-      if ((getVisibility() == 0) && (t.aw(this)))
+      cxD();
+      AppMethodBeat.o(50934);
+      return;
+    }
+    cxC();
+    if (this.tzI != null) {
+      this.tzH.cxD();
+    }
+    AppMethodBeat.o(50934);
+  }
+  
+  public final void cxC()
+  {
+    int j = 0;
+    AppMethodBeat.i(50932);
+    this.orA = false;
+    Object localObject = this.tzI;
+    int i = j;
+    if (localObject != null)
+    {
+      localObject = ((g.c)localObject).getAndroidView();
+      i = j;
+      if (localObject != null)
       {
-        this.ixl.setLoadingIconVisibility(true);
-        this.ixk.setActuallyVisible(true);
-        AppMethodBeat.o(140919);
+        i = j;
+        if (((View)localObject).getVisibility() == 0) {
+          i = 1;
+        }
+      }
+    }
+    if (i != 0)
+    {
+      localObject = this.tzI;
+      s.checkNotNull(localObject);
+      ((g.c)localObject).cxC();
+      AppMethodBeat.o(50932);
+      return;
+    }
+    this.tzH.cxC();
+    AppMethodBeat.o(50932);
+  }
+  
+  public final void cxD()
+  {
+    AppMethodBeat.i(50933);
+    this.orA = true;
+    g.c localc = this.tzI;
+    if (localc != null) {
+      localc.cxD();
+    }
+    this.tzH.cxD();
+    AppMethodBeat.o(50933);
+  }
+  
+  public final void d(g.c paramc)
+  {
+    AppMethodBeat.i(325195);
+    if (!s.p(this.tzI, paramc))
+    {
+      this.tzI = paramc;
+      cFN();
+      if (paramc != null) {
+        paramc.a(new ax..ExternalSyntheticLambda0(this));
+      }
+    }
+    AppMethodBeat.o(325195);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/page/CustomPauseRenderingExtensionWrapper$Companion$notifyHtmlViewChanged$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnReadyListener;", "onReady", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a$a
+    implements i.f
+  {
+    a$a(ah paramah, g.c paramc) {}
+    
+    public final void onReady()
+    {
+      AppMethodBeat.i(324883);
+      Object localObject = this.ryq.aa(e.class);
+      if ((localObject instanceof ax)) {}
+      for (localObject = (ax)localObject;; localObject = null)
+      {
+        if (localObject != null) {
+          ((ax)localObject).d(paramc);
+        }
+        this.ryq.b((i.f)this);
+        AppMethodBeat.o(324883);
         return;
       }
-      this.ixl.setLoadingIconVisibility(false);
-      this.ixk.setActuallyVisible(false);
     }
-    AppMethodBeat.o(140919);
-  }
-  
-  final void aJX()
-  {
-    AppMethodBeat.i(140917);
-    if (this.ixl == null)
-    {
-      AppMethodBeat.o(140917);
-      return;
-    }
-    if (!TextUtils.isEmpty(this.bBK.getActionBar().getMainTitle())) {
-      this.ixl.setMainTitle(this.bBK.getActionBar().getMainTitle());
-    }
-    for (;;)
-    {
-      this.ixl.setNavHidden(this.bBK.getActionBar().aOJ());
-      AppMethodBeat.o(140917);
-      return;
-      this.ixl.setMainTitle(getContext().getString(2131296558));
-    }
-  }
-  
-  public final void eI(boolean paramBoolean)
-  {
-    this.izC = paramBoolean;
-  }
-  
-  protected final void onAttachedToWindow()
-  {
-    AppMethodBeat.i(140921);
-    super.onAttachedToWindow();
-    aJY();
-    AppMethodBeat.o(140921);
-  }
-  
-  protected final void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(140922);
-    super.onDetachedFromWindow();
-    aJY();
-    AppMethodBeat.o(140922);
-  }
-  
-  public final void setBackgroundColor(int paramInt)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(140918);
-    if (paramInt == 0)
-    {
-      setWillNotDraw(true);
-      AppMethodBeat.o(140918);
-      return;
-    }
-    paramInt = 0xFF000000 | paramInt;
-    setWillNotDraw(false);
-    super.setBackgroundColor(paramInt);
-    if (this.ixl != null)
-    {
-      this.ixl.setBackgroundAlpha(1.0D);
-      this.ixl.setBackgroundColor(paramInt);
-      if (aj.Ow(paramInt)) {
-        break label81;
-      }
-    }
-    for (;;)
-    {
-      this.ixl.setForegroundStyle(bool);
-      AppMethodBeat.o(140918);
-      return;
-      label81:
-      bool = false;
-    }
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(140920);
-    super.setVisibility(paramInt);
-    aJY();
-    AppMethodBeat.o(140920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ax
  * JD-Core Version:    0.7.0.1
  */

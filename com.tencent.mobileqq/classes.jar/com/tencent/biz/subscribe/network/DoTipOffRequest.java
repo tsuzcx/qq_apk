@@ -4,7 +4,8 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffReq;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
@@ -28,7 +29,15 @@ public class DoTipOffRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountWrite.StDoTipOffRsp localStDoTipOffRsp = new CertifiedAccountWrite.StDoTipOffRsp();
-    localStDoTipOffRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDoTipOffRsp.mergeFrom(paramArrayOfByte);
+      return localStDoTipOffRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDoTipOffRsp;
   }
   
@@ -37,14 +46,14 @@ public class DoTipOffRequest
     return "CertifiedAccountSvc.certified_account_write.DoTipOff";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoTipOffRequest
  * JD-Core Version:    0.7.0.1
  */

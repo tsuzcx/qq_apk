@@ -1,10 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class cii
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements View.OnClickListener
 {
-  public TextView a;
+  public cii(DoodleActivity paramDoodleActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b.setVisibility(0);
+    this.a.a.setVisibility(8);
+  }
 }
 
 

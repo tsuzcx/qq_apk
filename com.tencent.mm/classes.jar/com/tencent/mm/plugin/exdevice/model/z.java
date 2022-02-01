@@ -1,83 +1,95 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.alb;
-import com.tencent.mm.protocal.protobuf.alc;
-import com.tencent.mm.protocal.protobuf.ald;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.exdevice.i.b;
+import com.tencent.mm.plugin.exdevice.service.f;
+import com.tencent.mm.plugin.exdevice.service.u;
+import com.tencent.mm.protocal.protobuf.cyx;
+import com.tencent.mm.protocal.protobuf.czb;
+import com.tencent.mm.protocal.protobuf.exi;
+import com.tencent.mm.protocal.protobuf.exj;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class z
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f eGj;
-  private String lFB;
-  b lFp;
+  private h mAY;
+  public com.tencent.mm.am.c mtC;
+  String yse;
   
-  public z(LinkedList<alc> paramLinkedList, String paramString1, String paramString2)
+  public z(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(19355);
-    this.lFB = "";
-    this.lFp = null;
-    this.eGj = null;
-    this.lFB = paramString2;
-    paramString2 = new b.a();
-    paramString2.fsX = new ald();
-    paramString2.fsY = new ale();
-    paramString2.uri = "/cgi-bin/micromsg-bin/getharddeviceoperticket";
-    paramString2.funcId = 543;
-    paramString2.reqCmdId = 0;
-    paramString2.respCmdId = 0;
-    this.lFp = paramString2.ado();
-    paramString2 = (ald)this.lFp.fsV.fta;
-    if (!bo.isNullOrNil(paramString1))
+    AppMethodBeat.i(23416);
+    this.mtC = null;
+    this.mAY = null;
+    Log.i("MicroMsg.exdevice.NetSceneSendHardDeviceMsg", "NetSceneSendHardDeviceMsg deviceType = %s, deviceId = %s, sessionId = %d, createTime = %d, data length = %d, msgType = %d", new Object[] { paramString1, paramString2, Long.valueOf(paramLong2), Long.valueOf(paramLong3), Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt) });
+    this.yse = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new exi();
+    ((c.a)localObject).otF = new exj();
+    ((c.a)localObject).funcId = 538;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/sendharddevicemsg";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (exi)c.b.b(this.mtC.otB);
+    cyx localcyx = new cyx();
+    localcyx.YJY = paramString1;
+    localcyx.vgV = paramString2;
+    ((exi)localObject).YNR = localcyx;
+    paramString1 = new czb();
+    paramString1.aaEe = paramLong2;
+    paramString1.CreateTime = ((int)paramLong3);
+    paramString1.YLa = new gol().df(paramArrayOfByte);
+    paramString1.vhJ = paramInt;
+    ((exi)localObject).abzm = paramString1;
+    if (paramLong1 != 0L)
     {
-      alb localalb = new alb();
-      localalb.wuS = paramString1;
-      paramString2.xcc = localalb;
+      ((exi)localObject).aaDZ = new gol().df(u.dGD().C(paramLong1, 2));
+      AppMethodBeat.o(23416);
+      return;
     }
-    paramString2.xcb = paramLinkedList;
-    AppMethodBeat.o(19355);
+    paramString1 = ah.dFO().apI(paramString2);
+    if (paramString1 != null) {
+      ((exi)localObject).aaDZ = new gol().df(paramString1.field_sessionBuf);
+    }
+    AppMethodBeat.o(23416);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(19356);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(19356);
+    AppMethodBeat.i(23418);
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(23418);
     return i;
   }
   
   public final int getType()
   {
-    return 543;
+    return 538;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(19357);
-    ab.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.eGj != null) {
-      this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(19357);
+    AppMethodBeat.i(23417);
+    Log.i("MicroMsg.exdevice.NetSceneSendHardDeviceMsg", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(23417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.z
  * JD-Core Version:    0.7.0.1
  */

@@ -25,16 +25,6 @@ public final class Dispatcher
   private final Deque<RealCall.AsyncCall> runningAsyncCalls = new ArrayDeque();
   private final Deque<RealCall> runningSyncCalls = new ArrayDeque();
   
-  static
-  {
-    if (!Dispatcher.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public Dispatcher() {}
   
   public Dispatcher(ExecutorService paramExecutorService)
@@ -46,59 +36,63 @@ public final class Dispatcher
   {
     try
     {
-      if (!paramDeque.remove(paramT)) {
-        throw new AssertionError("Call wasn't in-flight!");
+      if (paramDeque.remove(paramT))
+      {
+        paramDeque = this.idleCallback;
+        if ((!promoteAndExecute()) && (paramDeque != null)) {
+          paramDeque.run();
+        }
+        return;
       }
+      throw new AssertionError("Call wasn't in-flight!");
     }
     finally {}
-    paramDeque = this.idleCallback;
-    if ((!promoteAndExecute()) && (paramDeque != null)) {
-      paramDeque.run();
-    }
   }
   
   private boolean promoteAndExecute()
   {
-    int i = 0;
-    assert (!Thread.holdsLock(this));
     ArrayList localArrayList = new ArrayList();
-    boolean bool;
-    label184:
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = this.readyAsyncCalls.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.readyAsyncCalls.iterator();
-        RealCall.AsyncCall localAsyncCall;
-        if (localIterator.hasNext())
-        {
-          localAsyncCall = (RealCall.AsyncCall)localIterator.next();
-          if (this.runningAsyncCalls.size() < this.maxRequests) {}
-        }
-        else
-        {
-          if (runningCallsCount() <= 0) {
-            break label184;
-          }
-          bool = true;
-          int j = localArrayList.size();
-          if (i >= j) {
-            break;
-          }
-          ((RealCall.AsyncCall)localArrayList.get(i)).executeOn(executorService());
-          i += 1;
-          continue;
+        RealCall.AsyncCall localAsyncCall = (RealCall.AsyncCall)localIterator.next();
+        if (this.runningAsyncCalls.size() >= this.maxRequests) {
+          break;
         }
         if (runningCallsForHost(localAsyncCall) < this.maxRequestsPerHost)
         {
           localIterator.remove();
           localArrayList.add(localAsyncCall);
           this.runningAsyncCalls.add(localAsyncCall);
-          continue;
-          bool = false;
         }
       }
-      finally {}
+      j = runningCallsCount();
+      i = 0;
+      if (j <= 0) {
+        break label182;
+      }
+      bool = true;
+    }
+    finally
+    {
+      for (;;)
+      {
+        int j;
+        int i;
+        for (;;)
+        {
+          throw localObject;
+        }
+        boolean bool = false;
+      }
+    }
+    j = localArrayList.size();
+    while (i < j)
+    {
+      ((RealCall.AsyncCall)localArrayList.get(i)).executeOn(executorService());
+      i += 1;
     }
     return bool;
   }
@@ -110,39 +104,35 @@ public final class Dispatcher
     while (localIterator.hasNext())
     {
       RealCall.AsyncCall localAsyncCall = (RealCall.AsyncCall)localIterator.next();
-      if (!localAsyncCall.get().forWebSocket)
-      {
-        if (!localAsyncCall.host().equals(paramAsyncCall.host())) {
-          break label67;
-        }
+      if ((!localAsyncCall.get().forWebSocket) && (localAsyncCall.host().equals(paramAsyncCall.host()))) {
         i += 1;
       }
     }
-    label67:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
   
   public void cancelAll()
   {
     try
     {
-      Iterator localIterator1 = this.readyAsyncCalls.iterator();
-      while (localIterator1.hasNext()) {
-        ((RealCall.AsyncCall)localIterator1.next()).get().cancel();
+      Iterator localIterator = this.readyAsyncCalls.iterator();
+      while (localIterator.hasNext()) {
+        ((RealCall.AsyncCall)localIterator.next()).get().cancel();
       }
-      localIterator2 = this.runningAsyncCalls.iterator();
+      localIterator = this.runningAsyncCalls.iterator();
+      while (localIterator.hasNext()) {
+        ((RealCall.AsyncCall)localIterator.next()).get().cancel();
+      }
+      localIterator = this.runningSyncCalls.iterator();
+      while (localIterator.hasNext()) {
+        ((RealCall)localIterator.next()).cancel();
+      }
+      return;
     }
     finally {}
-    while (localIterator2.hasNext()) {
-      ((RealCall.AsyncCall)localIterator2.next()).get().cancel();
-    }
-    Iterator localIterator2 = this.runningSyncCalls.iterator();
-    while (localIterator2.hasNext()) {
-      ((RealCall)localIterator2.next()).cancel();
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -226,16 +216,19 @@ public final class Dispatcher
   {
     try
     {
-      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = new ArrayList();
       Iterator localIterator = this.readyAsyncCalls.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((RealCall.AsyncCall)localIterator.next()).get());
+        ((List)localObject1).add(((RealCall.AsyncCall)localIterator.next()).get());
       }
-      localList2 = Collections.unmodifiableList(localList1);
+      localObject1 = Collections.unmodifiableList((List)localObject1);
+      return localObject1;
     }
     finally {}
-    List localList2;
-    return localList2;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public int queuedCallsCount()
@@ -256,17 +249,20 @@ public final class Dispatcher
   {
     try
     {
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.runningSyncCalls);
+      Object localObject1 = new ArrayList();
+      ((List)localObject1).addAll(this.runningSyncCalls);
       Iterator localIterator = this.runningAsyncCalls.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((RealCall.AsyncCall)localIterator.next()).get());
+        ((List)localObject1).add(((RealCall.AsyncCall)localIterator.next()).get());
       }
-      localList2 = Collections.unmodifiableList(localList1);
+      localObject1 = Collections.unmodifiableList((List)localObject1);
+      return localObject1;
     }
     finally {}
-    List localList2;
-    return localList2;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public int runningCallsCount()
@@ -300,35 +296,41 @@ public final class Dispatcher
   
   public void setMaxRequests(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("max < 1: " + paramInt);
+    if (paramInt >= 1) {
+      try
+      {
+        this.maxRequests = paramInt;
+        promoteAndExecute();
+        return;
+      }
+      finally {}
     }
-    try
-    {
-      this.maxRequests = paramInt;
-      promoteAndExecute();
-      return;
-    }
-    finally {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("max < 1: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setMaxRequestsPerHost(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("max < 1: " + paramInt);
+    if (paramInt >= 1) {
+      try
+      {
+        this.maxRequestsPerHost = paramInt;
+        promoteAndExecute();
+        return;
+      }
+      finally {}
     }
-    try
-    {
-      this.maxRequestsPerHost = paramInt;
-      promoteAndExecute();
-      return;
-    }
-    finally {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("max < 1: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Dispatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/g0m" android:background="@drawable/a0y" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerInParent="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g0l" android:layout_width="@dimen/a76" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_arrow" android:layout_centerInParent="true" app:iconColor="@color/al6" />
+    </RelativeLayout>
+</RelativeLayout>

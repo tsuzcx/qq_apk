@@ -1,26 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import android.view.View;
+import com.tencent.mm.ui.widget.MMWebView;
 
 public abstract interface h
+  extends g
 {
-  public abstract boolean dgS();
+  public abstract boolean Kw(String paramString);
   
-  public abstract void dgT();
+  public abstract boolean bEj();
   
-  public abstract void dgU();
+  public abstract void bEk();
   
-  public abstract void dgV();
-  
-  public abstract void oH(boolean paramBoolean);
-  
-  public abstract void setEmbeddedBottomBar(View paramView);
-  
-  public abstract void setEmbeddedTitleBarCompat(View paramView);
+  public abstract void c(MMWebView paramMMWebView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.h
  * JD-Core Version:    0.7.0.1
  */

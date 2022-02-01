@@ -1,8 +1,16 @@
 package com.tencent.mm.vending.base;
 
-public abstract interface Vending$a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class Vending$a<T>
 {
-  public abstract void cwM();
+  volatile T object;
+  
+  private Vending$a()
+  {
+    AppMethodBeat.i(74964);
+    AppMethodBeat.o(74964);
+  }
 }
 
 

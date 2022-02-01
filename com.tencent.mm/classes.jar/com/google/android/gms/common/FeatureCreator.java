@@ -12,7 +12,7 @@ public class FeatureCreator
   
   public Feature createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89357);
+    AppMethodBeat.i(4379);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     String str = null;
     int i = 0;
@@ -37,7 +37,7 @@ public class FeatureCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new Feature(str, i, l);
-    AppMethodBeat.o(89357);
+    AppMethodBeat.o(4379);
     return paramParcel;
   }
   
@@ -48,7 +48,7 @@ public class FeatureCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.FeatureCreator
  * JD-Core Version:    0.7.0.1
  */

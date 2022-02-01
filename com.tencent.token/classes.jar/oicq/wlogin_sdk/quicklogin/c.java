@@ -28,31 +28,37 @@ final class c
   private boolean a(SslCertificate paramSslCertificate)
   {
     paramSslCertificate = SslCertificate.saveState(paramSslCertificate).getByteArray("x509-certificate");
-    if (paramSslCertificate != null) {
-      try
-      {
-        paramSslCertificate = CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(paramSslCertificate));
-        boolean bool = Arrays.equals(MessageDigest.getInstance("SHA-256").digest(((X509Certificate)paramSslCertificate).getEncoded()), new byte[] { 51, -65, -44, 0, 73, 7, 89, -98, 112, -76, -112, -125, 58, 25, -96, -8, -40, -51, 57, -89, -92, -47, 9, -16, -108, 34, -93, -30, -1, -123, -89, -98 });
-        return bool;
-      }
-      catch (Exception paramSslCertificate) {}
+    if (paramSslCertificate != null) {}
+    try
+    {
+      paramSslCertificate = CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(paramSslCertificate));
+      boolean bool = Arrays.equals(MessageDigest.getInstance("SHA-256").digest(((X509Certificate)paramSslCertificate).getEncoded()), new byte[] { 51, -65, -44, 0, 73, 7, 89, -98, 112, -76, -112, -125, 58, 25, -96, -8, -40, -51, 57, -89, -92, -47, 9, -16, -108, 34, -93, -30, -1, -123, -89, -98 });
+      return bool;
+    }
+    catch (Exception paramSslCertificate)
+    {
+      label242:
+      break label242;
     }
     return false;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public final void onPageFinished(WebView paramWebView, String paramString)
   {
     if (17 <= Build.VERSION.SDK_INT) {
       this.b.loadUrl(this.c);
     }
   }
   
-  public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
+  public final void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
     try
     {
-      util.LOGI("ssl error " + paramSslError.getUrl() + ":" + paramSslError.getPrimaryError());
-      label37:
+      paramWebView = new StringBuilder("ssl error ");
+      paramWebView.append(paramSslError.getUrl());
+      paramWebView.append(":");
+      paramWebView.append(paramSslError.getPrimaryError());
+      util.LOGI(paramWebView.toString());
       if (true == QuickLoginWebViewLoader.sslErrorProcessed)
       {
         paramSslErrorHandler.proceed();
@@ -65,45 +71,53 @@ final class c
         return;
       }
       paramWebView = new AlertDialog.Builder(this.a);
-      paramWebView.setMessage("页面证书错误(" + paramSslError.getPrimaryError() + ")，是否继续？");
+      StringBuilder localStringBuilder = new StringBuilder("页面证书错误(");
+      localStringBuilder.append(paramSslError.getPrimaryError());
+      localStringBuilder.append(")，是否继续？");
+      paramWebView.setMessage(localStringBuilder.toString());
       paramWebView.setPositiveButton("继续", new d(this, paramSslErrorHandler));
       paramWebView.setNegativeButton("取消", new e(this, paramSslErrorHandler));
       paramWebView.setOnCancelListener(new f(this, paramSslErrorHandler));
       paramWebView = paramWebView.create();
-      try
-      {
-        paramWebView.show();
-        return;
-      }
-      catch (Exception paramWebView) {}
     }
     catch (Error paramWebView)
     {
-      break label37;
+      for (;;)
+      {
+        try
+        {
+          paramWebView.show();
+          return;
+        }
+        catch (Exception paramWebView) {}
+        paramWebView = paramWebView;
+      }
     }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public final boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (paramString != null) {}
-    try
-    {
-      paramWebView.getContext().startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
-      return true;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("load url ");
-      paramWebView = paramString;
-      if (paramString != null) {
-        break label54;
+    if (paramString != null) {
+      try
+      {
+        paramWebView.getContext().startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
+        return true;
       }
-      paramWebView = "";
-      label54:
-      util.LOGI(paramWebView + " failed " + localException.getMessage(), "");
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder("load url ");
+        paramWebView = paramString;
+        if (paramString == null) {
+          paramWebView = "";
+        }
+        localStringBuilder.append(paramWebView);
+        localStringBuilder.append(" failed ");
+        localStringBuilder.append(localException.getMessage());
+        util.LOGI(localStringBuilder.toString(), "");
+        return true;
+      }
     }
     return false;
-    return true;
   }
 }
 

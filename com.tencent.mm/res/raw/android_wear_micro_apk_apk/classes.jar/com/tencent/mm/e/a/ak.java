@@ -3,27 +3,27 @@ package com.tencent.mm.e.a;
 public final class ak
   extends com.tencent.mm.d.a
 {
-  public int Wy;
-  public long Wz;
+  public int Yt;
+  public long Yu;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aq(1, this.Wy);
-      paramVarArgs.g(2, this.Wz);
+      paramVarArgs.at(1, this.Yt);
+      paramVarArgs.g(2, this.Yu);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.ak(1, this.Wy) + 0 + a.a.a.a.e(2, this.Wz);
+      return a.a.a.a.an(1, this.Yt) + 0 + a.a.a.b.b.a.f(2, this.Yu);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -37,10 +37,10 @@ public final class ak
       default: 
         return -1;
       case 1: 
-        localak.Wy = locala.ot();
+        localak.Yt = locala.pg();
         return 0;
       }
-      localak.Wz = locala.ow();
+      localak.Yu = locala.pj();
       return 0;
     }
     return -1;

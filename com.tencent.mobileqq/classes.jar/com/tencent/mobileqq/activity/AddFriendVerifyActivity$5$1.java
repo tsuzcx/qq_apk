@@ -11,37 +11,32 @@ class AddFriendVerifyActivity$5$1
   
   public void run()
   {
-    TextView localTextView;
-    if (AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0).isShown())
+    if (AddFriendVerifyActivity.f(this.b.this$0).isShown())
     {
-      localTextView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString)) {
-        break label91;
+      TextView localTextView = AddFriendVerifyActivity.f(this.b.this$0);
+      String str;
+      if (TextUtils.isEmpty(this.b.a)) {
+        str = this.a;
+      } else {
+        str = this.b.a;
       }
-      str = this.jdField_a_of_type_JavaLangString;
       localTextView.setText(str);
-      if (AppSetting.c)
+      if (AppSetting.e)
       {
-        localTextView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.this$0);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString)) {
-          break label102;
+        localTextView = AddFriendVerifyActivity.f(this.b.this$0);
+        if (TextUtils.isEmpty(this.b.a)) {
+          str = this.a;
+        } else {
+          str = this.b.a;
         }
+        localTextView.setContentDescription(str);
       }
-    }
-    label91:
-    label102:
-    for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString)
-    {
-      localTextView.setContentDescription(str);
-      return;
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$5.jdField_a_of_type_JavaLangString;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

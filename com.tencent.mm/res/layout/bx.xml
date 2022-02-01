@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopBottomView android:id="@id/qf" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <LinearLayout android:orientation="horizontal" android:background="@color/a3x" android:paddingTop="@dimen/n_" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <TextView android:textAppearance="@style/kt" android:textColor="@color/e6" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/qg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dv" android:layout_marginTop="1.0dip" android:text="@string/sg" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
-        <RelativeLayout android:paddingRight="@dimen/lb" android:layout_width="@dimen/g9" android:layout_height="fill_parent">
-            <ImageView android:id="@id/qh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_dark_search" android:scaleType="center" android:layout_centerInParent="true" />
-            <ImageView android:id="@id/qi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginRight="@dimen/n_" android:src="@drawable/a66" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout android:paddingRight="@dimen/lb" android:layout_width="@dimen/g9" android:layout_height="fill_parent">
-            <ImageView android:id="@id/qj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_add2" android:scaleType="center" android:layout_centerInParent="true" />
-            <ImageView android:id="@id/qk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginRight="@dimen/n_" android:src="@drawable/a66" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <Button android:id="@id/epc" android:layout_marginLeft="5.0dip" android:text="getDB" style="@style/oi" />
+        <Button android:id="@id/apj" android:layout_marginLeft="5.0dip" android:text="calcExpt" style="@style/oi" />
+        <Button android:id="@id/c0b" android:layout_marginLeft="5.0dip" android:text="delDB" style="@style/om" />
+        <Button android:id="@id/ir5" android:layout_marginLeft="5.0dip" android:text="reset" style="@style/om" />
+        <Button android:id="@id/jk9" android:layout_marginLeft="5.0dip" android:text="experience" style="@style/oi" />
     </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/hq" android:id="@id/cnd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+    <ListView android:id="@id/iw4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/aks" android:dividerHeight="1.0dip" />
+</LinearLayout>

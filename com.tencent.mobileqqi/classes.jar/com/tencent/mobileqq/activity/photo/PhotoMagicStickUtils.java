@@ -7,7 +7,7 @@ import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import end;
+import enc;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -155,7 +155,7 @@ public class PhotoMagicStickUtils
     localActionSheet.a(2131561599, 5);
     localActionSheet.a(2131561896, 5);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new end(paramActivity, paramString1, localActionSheet, paramBoolean, paramString2, paramString3, paramString4));
+    localActionSheet.a(new enc(paramActivity, paramString1, localActionSheet, paramBoolean, paramString2, paramString3, paramString4));
     localActionSheet.show();
   }
   

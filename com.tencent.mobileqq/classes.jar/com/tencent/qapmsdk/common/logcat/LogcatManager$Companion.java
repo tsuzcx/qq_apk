@@ -28,11 +28,11 @@ public final class LogcatManager$Companion
   @Nullable
   public final ILogcat initLogcat(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return (ILogcat)((Companion)this).getJavaLog();
-    case 2: 
+      if (paramInt != 2) {
+        return (ILogcat)((Companion)this).getJavaLog();
+      }
       return (ILogcat)((Companion)this).getNativeLog();
     }
     return (ILogcat)((Companion)this).getJavaLog();
@@ -40,7 +40,7 @@ public final class LogcatManager$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.logcat.LogcatManager.Companion
  * JD-Core Version:    0.7.0.1
  */

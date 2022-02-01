@@ -5,13 +5,13 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.config.SDKConfig;
 import com.tencent.qapmsdk.base.dbpersist.DBHandler;
 import com.tencent.qapmsdk.base.dbpersist.DBHelper;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.BaseInfo.Info;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.reporter.ReporterMachine;
-import com.tencent.qapmsdk.base.reporter.authorization.Authorization;
 import com.tencent.qapmsdk.common.activty.LifecycleCallback;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
@@ -19,21 +19,16 @@ import com.tencent.qapmsdk.common.util.AndroidVersion;
 import com.tencent.qapmsdk.common.util.AndroidVersion.Companion;
 import java.lang.reflect.Method;
 import kotlin.Metadata;
-import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/qapmmanager/QAPMLauncher;", "", "()V", "TAG", "", "environmentChecker", "Lcom/tencent/qapmsdk/qapmmanager/EnvironmentChecker;", "isBreadCrumb", "", "isMonitorInitiated", "isRemoteConfig", "pluginManager", "Lcom/tencent/qapmsdk/qapmmanager/QAPMPluginManager;", "getPluginManager", "()Lcom/tencent/qapmsdk/qapmmanager/QAPMPluginManager;", "abolish", "", "afterLaunch", "launch", "userMode", "", "preLaunch", "reporterMachineInit", "qapmmanager_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/qapmmanager/QAPMLauncher;", "", "()V", "TAG", "", "environmentChecker", "Lcom/tencent/qapmsdk/qapmmanager/EnvironmentChecker;", "isMonitorInitiated", "", "pluginManager", "Lcom/tencent/qapmsdk/qapmmanager/QAPMPluginManager;", "getPluginManager", "()Lcom/tencent/qapmsdk/qapmmanager/QAPMPluginManager;", "abolish", "", "afterLaunch", "launch", "userMode", "", "preLaunch", "reporterMachineInit", "qapmmanager_release"}, k=1, mv={1, 1, 15})
 public final class QAPMLauncher
 {
   public static final QAPMLauncher INSTANCE = new QAPMLauncher();
   private static final String TAG = "QAPM_manager_QAPMLauncher";
   private static final EnvironmentChecker environmentChecker = new EnvironmentChecker();
-  @JvmField
-  public static boolean isBreadCrumb;
   private static boolean isMonitorInitiated;
-  @JvmField
-  public static boolean isRemoteConfig;
   @NotNull
   private static final QAPMPluginManager pluginManager = new QAPMPluginManager();
   
@@ -66,14 +61,18 @@ public final class QAPMLauncher
       if ((pluginManager.productPlugin(PluginCombination.userBreadCrumbPlugin.pluginName) != null) && ((PluginController.startedPluginMode & PluginCombination.userBreadCrumbPlugin.mode) > 0))
       {
         Class localClass = Class.forName("com.tencent.qapmsdk.athena.BreadCrumb");
-        Method localMethod = localClass.getDeclaredMethod("getInstance", new Class[0]);
-        localClass.getDeclaredMethod("setFlag", new Class[] { Integer.TYPE }).invoke(localMethod.invoke(null, new Object[0]), new Object[] { Integer.valueOf(PluginController.startedPluginMode) });
+        localObject = localClass.getDeclaredMethod("getInstance", new Class[0]);
+        localClass.getDeclaredMethod("setFlag", new Class[] { Integer.TYPE }).invoke(((Method)localObject).invoke(null, new Object[0]), new Object[] { Integer.valueOf(PluginController.startedPluginMode) });
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      Logger.INSTANCE.w(new String[] { "QAPM_manager_QAPMLauncher", localException + ": Not found BreadCrumb Model" });
+      Object localObject = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localException);
+      localStringBuilder.append(": Not found BreadCrumb Model");
+      ((Logger)localObject).w(new String[] { "QAPM_manager_QAPMLauncher", localStringBuilder.toString() });
     }
   }
   
@@ -88,17 +87,20 @@ public final class QAPMLauncher
     Object localObject = BaseInfo.app;
     if (localObject != null)
     {
-      NetworkWatcher localNetworkWatcher = NetworkWatcher.INSTANCE;
-      localObject = ((Application)localObject).getApplicationContext();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "it.applicationContext");
-      localNetworkWatcher.init((Context)localObject);
-      if (((!isMonitorInitiated) && (!environmentChecker.checkSysPermission())) || ((Authorization.isAuthorize) && (!environmentChecker.checkAuthorization())))
+      if (!SDKConfig.PURE_QAPM)
+      {
+        NetworkWatcher localNetworkWatcher = NetworkWatcher.INSTANCE;
+        localObject = ((Application)localObject).getApplicationContext();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "it.applicationContext");
+        localNetworkWatcher.init((Context)localObject);
+      }
+      if (((!isMonitorInitiated) && (!environmentChecker.checkSysPermission())) || ((SDKConfig.PURE_QAPM) && (!environmentChecker.checkAuthorization())))
       {
         Logger.INSTANCE.e(new String[] { "QAPM_manager_QAPMLauncher", "launch QAPM error, please check environment!" });
         return;
       }
       int i = paramInt;
-      if (isRemoteConfig) {
+      if (SDKConfig.PURE_QAPM) {
         i = environmentChecker.checkConfigs(paramInt);
       }
       if (i != 0)
@@ -129,7 +131,7 @@ public final class QAPMLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMLauncher
  * JD-Core Version:    0.7.0.1
  */

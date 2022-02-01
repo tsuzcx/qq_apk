@@ -7,21 +7,21 @@ import com.qq.taf.jce.JceStruct;
 public final class stConfInfo
   extends JceStruct
 {
-  public long bubbleEndTime;
-  public long bubbleStartTime;
-  public long collectTime;
-  public int defaultFeedPosition;
-  public int defaultTogetherFeed;
-  public int exclusive;
-  public int feedUseType;
+  public long bubbleEndTime = 0L;
+  public long bubbleStartTime = 0L;
+  public long collectTime = 0L;
+  public int defaultFeedPosition = 0;
+  public int defaultTogetherFeed = 0;
+  public int exclusive = 0;
+  public int feedUseType = 0;
   public String followFeed = "";
-  public long iStartPos;
-  public int iType;
-  public int isCollected;
+  public long iStartPos = 0L;
+  public int iType = 0;
+  public int isCollected = 0;
   public String strLabel = "";
   public String togetherFeed = "";
-  public int togetherType;
-  public int useCount;
+  public int togetherType = 0;
+  public int useCount = 0;
   
   public stConfInfo() {}
   
@@ -67,18 +67,21 @@ public final class stConfInfo
   {
     paramJceOutputStream.write(this.iType, 0);
     paramJceOutputStream.write(this.iStartPos, 1);
-    if (this.strLabel != null) {
-      paramJceOutputStream.write(this.strLabel, 2);
+    String str = this.strLabel;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.isCollected, 3);
     paramJceOutputStream.write(this.collectTime, 4);
     paramJceOutputStream.write(this.exclusive, 5);
-    if (this.followFeed != null) {
-      paramJceOutputStream.write(this.followFeed, 6);
+    str = this.followFeed;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.useCount, 7);
-    if (this.togetherFeed != null) {
-      paramJceOutputStream.write(this.togetherFeed, 8);
+    str = this.togetherFeed;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.togetherType, 9);
     paramJceOutputStream.write(this.feedUseType, 10);
@@ -90,7 +93,7 @@ public final class stConfInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stConfInfo
  * JD-Core Version:    0.7.0.1
  */

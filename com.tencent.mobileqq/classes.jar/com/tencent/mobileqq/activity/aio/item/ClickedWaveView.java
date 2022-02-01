@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aepi;
-import afki;
-import afxl;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -14,101 +11,115 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ClickedWaveView
   extends ImageView
 {
-  static final int jdField_a_of_type_Int = aepi.a(0.01F, BaseApplicationImpl.getContext().getResources());
-  static final int b = aepi.a(60.0F, BaseApplicationImpl.getContext().getResources());
-  afki jdField_a_of_type_Afki = null;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  Scroller jdField_a_of_type_AndroidWidgetScroller = null;
-  ClickedWaveView.MovingRadiusRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$MovingRadiusRunnable = new ClickedWaveView.MovingRadiusRunnable(this);
+  static final int a = AIOUtils.b(0.01F, BaseApplicationImpl.getContext().getResources());
+  static final int b = AIOUtils.b(60.0F, BaseApplicationImpl.getContext().getResources());
   int c = 20;
   int d = 0;
+  Scroller e = null;
+  Drawable f = null;
+  ClickedWaveView.OnTouchReceive g = null;
+  ClickedWaveView.MovingRadiusRunnable h = new ClickedWaveView.MovingRadiusRunnable(this);
+  private Bundle i;
   
   public ClickedWaveView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new DecelerateInterpolator());
+    this.e = new Scroller(paramContext, new DecelerateInterpolator());
   }
   
   public ClickedWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new DecelerateInterpolator());
+    this.e = new Scroller(paramContext, new DecelerateInterpolator());
   }
   
   public ClickedWaveView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new DecelerateInterpolator());
+    this.e = new Scroller(paramContext, new DecelerateInterpolator());
+  }
+  
+  public Bundle getExtraInfo()
+  {
+    return this.i;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getWidth() / 2;
-    int j = getHeight() / 2;
+    int j = getWidth() / 2;
+    int k = getHeight() / 2;
     Paint localPaint = new Paint();
     localPaint.setARGB(this.d, 0, 0, 0);
-    if (this.c > i) {
-      this.c = i;
+    if (this.c > j) {
+      this.c = j;
     }
-    paramCanvas.drawCircle(i, j, this.c, localPaint);
+    paramCanvas.drawCircle(j, k, this.c, localPaint);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
+    int j = paramMotionEvent.getAction();
+    if (j != 0)
     {
-    }
-    for (;;)
-    {
+      if ((j != 1) && (j != 3)) {
+        return bool;
+      }
+      setImageDrawable(this.f);
+      Drawable localDrawable = this.f;
+      if ((localDrawable != null) && ((localDrawable instanceof CustomFrameAnimationDrawable))) {
+        ((CustomFrameAnimationDrawable)localDrawable).d();
+      }
+      if (paramMotionEvent.getAction() == 1)
+      {
+        paramMotionEvent = this.g;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.a(this.i);
+        }
+      }
       return bool;
-      if (this.jdField_a_of_type_Afki != null) {
-        this.jdField_a_of_type_Afki.a();
-      }
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
-        ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).unscheduleSelf((Runnable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(jdField_a_of_type_Int, 0, b, 0, 900);
-      this.c = jdField_a_of_type_Int;
-      this.d = 30;
-      afxl.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
-      postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$MovingRadiusRunnable, 20L);
-      return true;
-      setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
-        ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).d();
-      }
-      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Afki != null)) {
-        this.jdField_a_of_type_Afki.a(this.jdField_a_of_type_AndroidOsBundle);
-      }
     }
+    paramMotionEvent = this.g;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a();
+    }
+    paramMotionEvent = this.f;
+    if ((paramMotionEvent != null) && ((paramMotionEvent instanceof CustomFrameAnimationDrawable))) {
+      ((CustomFrameAnimationDrawable)paramMotionEvent).unscheduleSelf((Runnable)paramMotionEvent);
+    }
+    this.e.startScroll(a, 0, b, 0, 900);
+    this.c = a;
+    this.d = 30;
+    PokeItemHelper.a(this, this.i.getInt("type"), this.i.getInt("id"));
+    postDelayed(this.h, 20L);
+    return true;
   }
   
   public void setCustomDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.f = paramDrawable;
   }
   
   public void setExtraInfo(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.i = paramBundle;
   }
   
-  public void setOnTouchReceive(afki paramafki)
+  public void setOnTouchReceive(ClickedWaveView.OnTouchReceive paramOnTouchReceive)
   {
-    this.jdField_a_of_type_Afki = paramafki;
+    this.g = paramOnTouchReceive;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ClickedWaveView
  * JD-Core Version:    0.7.0.1
  */

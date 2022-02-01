@@ -39,43 +39,44 @@ public class JSTimerModule
   
   public void destroy()
   {
-    if (this.handler != null) {
-      this.handler.removeCallbacksAndMessages(null);
+    Object localObject = this.handler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    if ((this.timeoutMap != null) && (this.timeoutMap.size() > 0)) {
+    localObject = this.timeoutMap;
+    if ((localObject != null) && (((Map)localObject).size() > 0)) {
       this.timeoutMap.clear();
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    String str;
-    int i;
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramMessage.getData() == null);
-      str = paramMessage.getData().getString("callback");
-      i = paramMessage.arg1;
-    } while (getViolaInstance() == null);
-    try
-    {
-      paramMessage = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("timerId", i);
-      paramMessage.put("ret", 0);
-      paramMessage.put("data", localJSONObject);
-      ViolaBridgeManager.getInstance().execJSFuncByName(str, paramMessage.toString());
+    if (paramMessage.what != 1) {
       return false;
     }
-    catch (JSONException paramMessage)
-    {
-      ViolaLogUtils.e("JSTimerModule", "handleMessage JSONException e:" + paramMessage.getMessage());
+    if (paramMessage.getData() == null) {
+      return false;
+    }
+    Object localObject = paramMessage.getData().getString("callback");
+    int i = paramMessage.arg1;
+    if (getViolaInstance() != null) {
+      try
+      {
+        paramMessage = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("timerId", i);
+        paramMessage.put("ret", 0);
+        paramMessage.put("data", localJSONObject);
+        ViolaBridgeManager.getInstance().execJSFuncByName(null, (String)localObject, paramMessage.toString());
+        return false;
+      }
+      catch (JSONException paramMessage)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleMessage JSONException e:");
+        ((StringBuilder)localObject).append(paramMessage.getMessage());
+        ViolaLogUtils.e("JSTimerModule", ((StringBuilder)localObject).toString());
+      }
     }
     return false;
   }
@@ -83,23 +84,29 @@ public class JSTimerModule
   @JSMethod(uiThread=false)
   public void setTimeout(@NonNull String paramString, @IntRange(from=0L) int paramInt)
   {
-    ViolaLogUtils.d("JSTimerModule", "functId:" + paramString + " delay:" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("functId:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" delay:");
+    ((StringBuilder)localObject).append(paramInt);
+    ViolaLogUtils.d("JSTimerModule", ((StringBuilder)localObject).toString());
     this.timerCount += 1;
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
+    localObject = Message.obtain();
+    ((Message)localObject).what = 1;
     Bundle localBundle = new Bundle();
     localBundle.putString("callback", paramString);
     localBundle.putInt("delay", paramInt);
-    localMessage.setData(localBundle);
-    localMessage.arg1 = this.timerCount;
-    localMessage.obj = Integer.valueOf(this.timerCount);
-    this.timeoutMap.put(Integer.valueOf(this.timerCount), localMessage.obj);
-    this.handler.sendMessageDelayed(localMessage, paramInt);
+    ((Message)localObject).setData(localBundle);
+    int i = this.timerCount;
+    ((Message)localObject).arg1 = i;
+    ((Message)localObject).obj = Integer.valueOf(i);
+    this.timeoutMap.put(Integer.valueOf(this.timerCount), ((Message)localObject).obj);
+    this.handler.sendMessageDelayed((Message)localObject, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.JSTimerModule
  * JD-Core Version:    0.7.0.1
  */

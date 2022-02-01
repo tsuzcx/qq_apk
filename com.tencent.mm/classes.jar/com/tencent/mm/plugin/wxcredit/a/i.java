@@ -1,49 +1,50 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.protocal.protobuf.btl;
-import com.tencent.mm.protocal.protobuf.btm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.epr;
+import com.tencent.mm.protocal.protobuf.eps;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class i
-  extends u
+  extends w
 {
-  private f callback;
-  private b rr;
+  private h callback;
+  private c rr;
   
   public i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(48668);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new btl();
-    ((b.a)localObject).fsY = new btm();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/removevirtualbankcard";
-    ((b.a)localObject).funcId = 600;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (btl)this.rr.fsV.fta;
-    ((btl)localObject).xHa = paramString1;
-    ((btl)localObject).xGZ = bo.getInt(paramString2, 0);
-    ((btl)localObject).wDH = m.cTC();
-    AppMethodBeat.o(48668);
+    AppMethodBeat.i(72312);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new epr();
+    ((c.a)localObject).otF = new eps();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/removevirtualbankcard";
+    ((c.a)localObject).funcId = 600;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (epr)c.b.b(this.rr.otB);
+    ((epr)localObject).abtH = paramString1;
+    ((epr)localObject).abtG = Util.getInt(paramString2, 0);
+    ((epr)localObject).Zbi = k.iis();
+    AppMethodBeat.o(72312);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(48670);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(48670);
+    AppMethodBeat.i(72314);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(72314);
     return i;
   }
   
@@ -52,17 +53,20 @@ public final class i
     return 600;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(142604);
-    ab.d("MicroMsg.NetSceneRemoveVirtualBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(72313);
+    Log.d("MicroMsg.NetSceneRemoveVirtualBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      c.c.b(((c)params).otC);
+    }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(142604);
+    AppMethodBeat.o(72313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.i
  * JD-Core Version:    0.7.0.1
  */

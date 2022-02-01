@@ -4,11 +4,11 @@ import com.google.android.gms.common.api.g;
 
 public abstract class bh<A extends g, L>
 {
-  private final bb<L> Ph;
+  private final bb<L> QW;
   
-  public final void jd()
+  public final void jm()
   {
-    this.Ph.clear();
+    this.QW.clear();
   }
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/cao" android:padding="2.0dip" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.ball.view.CircleImageView android:id="@id/m89" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/can" />
+    <com.tencent.mm.plugin.ball.view.CircleImageView android:id="@id/m8d" android:background="@raw/icons_filled_close" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/g36" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/a85" />
+</androidx.constraintlayout.widget.ConstraintLayout>

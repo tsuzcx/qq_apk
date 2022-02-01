@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/iww" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:fillViewport="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:id="@id/mbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginBottom="16.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/m_l" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
+        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/m_k" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ma6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+    <com.tencent.mm.plugin.finder.nearby.newlivesquare.commonview.IndicatorView android:layout_gravity="center_horizontal" android:id="@id/mbm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

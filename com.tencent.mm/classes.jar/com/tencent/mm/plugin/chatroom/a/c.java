@@ -1,23 +1,19 @@
 package com.tencent.mm.plugin.chatroom.a;
 
-import com.tencent.mm.cg.h;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.ag;
+import com.tencent.mm.kernel.b.a;
 
 public abstract interface c
   extends a
 {
-  public abstract boolean IV(String paramString);
+  public abstract int getMembersCountByChatRoomName(String paramString);
   
-  public abstract ag YJ();
+  public abstract boolean isChatRoomDismiss(String paramString);
   
-  public abstract ag c(h paramh);
-  
-  public abstract void ge(boolean paramBoolean);
+  public abstract boolean isNotInChatRoom(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.chatroom.a.c
  * JD-Core Version:    0.7.0.1
  */

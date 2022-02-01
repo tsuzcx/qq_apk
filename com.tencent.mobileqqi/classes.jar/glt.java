@@ -1,24 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class glt
-  extends Handler
+  implements Runnable
 {
-  public glt(FriendSystemMsgController paramFriendSystemMsgController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public glt(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((FriendSystemMsgController.a(this.a)) && (FriendSystemMsgController.a(this.a) != null))
-    {
-      FriendSystemMsgController.a(this.a, false);
-      FriendSystemMsgController.a(this.a).a().a(2);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("friend_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
     }
   }
 }

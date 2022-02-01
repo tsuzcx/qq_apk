@@ -1,20 +1,24 @@
 package com.tencent.mobileqq.ar;
 
-import amwz;
+import com.tencent.qphone.base.util.QLog;
 
-public class ArConfigService$ArConfigManagerStub$2
+class ArConfigService$ArConfigManagerStub$2
   implements Runnable
 {
-  public ArConfigService$ArConfigManagerStub$2(amwz paramamwz, ArConfigService paramArConfigService) {}
+  ArConfigService$ArConfigManagerStub$2(ArConfigService.ArConfigManagerStub paramArConfigManagerStub, ArConfigService paramArConfigService, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.f(this.a);
+    ArConfigService.a(this.a, this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("downloadArSo first progress ");
+    localStringBuilder.append(this.b);
+    QLog.d("ArConfig_ArConfigService", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.2
  * JD-Core Version:    0.7.0.1
  */

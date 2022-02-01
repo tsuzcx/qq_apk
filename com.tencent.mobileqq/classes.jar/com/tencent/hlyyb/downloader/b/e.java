@@ -23,29 +23,41 @@ public final class e
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.a).append(",");
-    localStringBuilder.append(this.b).append(",");
-    localStringBuilder.append(this.c).append(",");
-    localStringBuilder.append(this.d).append(",");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
     Iterator localIterator;
     if (this.e.size() > 0)
     {
       localIterator = this.e.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("-");
+      while (localIterator.hasNext())
+      {
+        localStringBuilder.append((String)localIterator.next());
+        localStringBuilder.append("-");
       }
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
     localStringBuilder.append(",");
-    localStringBuilder.append(this.f).append(",");
-    localStringBuilder.append(this.g).append(",");
-    localStringBuilder.append(this.h).append(",");
-    localStringBuilder.append(this.i).append(",");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",");
     if (this.j.size() > 0)
     {
       localIterator = this.j.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("-");
+      while (localIterator.hasNext())
+      {
+        localStringBuilder.append((String)localIterator.next());
+        localStringBuilder.append("-");
       }
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
@@ -55,8 +67,10 @@ public final class e
     if (this.l.size() > 0)
     {
       localIterator = this.l.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("-");
+      while (localIterator.hasNext())
+      {
+        localStringBuilder.append((String)localIterator.next());
+        localStringBuilder.append("-");
       }
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
@@ -67,7 +81,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,13 @@ class ThreadNormalPool
   
   static
   {
-    if (ThreadSetting.isPublicVersion) {}
-    for (int i = 128;; i = 64)
-    {
-      BLOCKING_QUEUE_SIZE = i;
-      return;
+    int i;
+    if (ThreadSetting.isPublicVersion) {
+      i = 128;
+    } else {
+      i = 64;
     }
+    BLOCKING_QUEUE_SIZE = i;
   }
   
   private ThreadNormalPool(BlockingQueue<Runnable> paramBlockingQueue, PriorityThreadFactory paramPriorityThreadFactory)
@@ -44,7 +45,7 @@ class ThreadNormalPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadNormalPool
  * JD-Core Version:    0.7.0.1
  */

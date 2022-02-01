@@ -13,13 +13,13 @@ public final class w
   
   protected final void b(ConnectionResult paramConnectionResult)
   {
-    this.JK.Jy.c(paramConnectionResult);
-    this.JK.a(paramConnectionResult);
+    this.Lz.Ln.c(paramConnectionResult);
+    this.Lz.a(paramConnectionResult);
   }
   
-  protected final boolean hj()
+  protected final boolean ht()
   {
-    this.JK.Jy.c(ConnectionResult.Hb);
+    this.Lz.Ln.c(ConnectionResult.IQ);
     return true;
   }
 }

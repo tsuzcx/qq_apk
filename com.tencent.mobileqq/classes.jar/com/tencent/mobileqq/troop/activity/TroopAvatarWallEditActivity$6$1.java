@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bhuf;
+import com.tencent.widget.ActionSheet;
 
 class TroopAvatarWallEditActivity$6$1
   implements Runnable
@@ -9,13 +9,13 @@ class TroopAvatarWallEditActivity$6$1
   
   public void run()
   {
-    this.a.a.b(2131693495);
-    this.a.a.b();
+    this.a.b.addButton(2131890808);
+    this.a.b.updateAllButton();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

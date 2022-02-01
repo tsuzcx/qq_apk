@@ -16,41 +16,46 @@ class AppBrandLaunchUI$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l;
-    Object localObject;
     if (paramBoolean)
     {
-      l = paramJSONObject.optLong("retCode");
-      localObject = paramJSONObject.optString("errMsg");
-      QLog.i("miniapp-start_AppBrandLaunchUI", 1, "getAppInfoById, retCode = " + l + ",errMsg = " + (String)localObject);
+      long l = paramJSONObject.optLong("retCode");
+      Object localObject1 = paramJSONObject.optString("errMsg");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAppInfoById, retCode = ");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(",errMsg = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("miniapp-start_AppBrandLaunchUI", 1, ((StringBuilder)localObject2).toString());
       paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       if (paramJSONObject != null)
       {
-        localObject = new MiniAppConfig(paramJSONObject);
-        if (this.val$param != null)
+        localObject1 = new MiniAppConfig(paramJSONObject);
+        localObject2 = this.val$param;
+        if (localObject2 != null)
         {
-          ((MiniAppConfig)localObject).launchParam = this.val$param;
-          ((MiniAppConfig)localObject).launchParam.miniAppId = paramJSONObject.appId;
+          ((MiniAppConfig)localObject1).launchParam = ((LaunchParam)localObject2);
+          ((MiniAppConfig)localObject1).launchParam.miniAppId = paramJSONObject.appId;
         }
         if ((paramJSONObject.verType != 3) && (paramJSONObject.verType != 1)) {
-          ((MiniAppConfig)localObject).forceReroad = 3;
+          ((MiniAppConfig)localObject1).launchParam.forceReload = 3;
         }
-        AppBrandLaunchUI.access$000(this.this$0, (MiniAppConfig)localObject);
+        AppBrandLaunchUI.access$000(this.this$0, (MiniAppConfig)localObject1);
+      }
+      else
+      {
+        ThreadManager.getUIHandler().post(new AppBrandLaunchUI.1.1(this, (String)localObject1, l));
       }
     }
-    for (;;)
+    else
     {
-      this.this$0.finish();
-      return;
-      ThreadManager.getUIHandler().post(new AppBrandLaunchUI.1.1(this, (String)localObject, l));
-      continue;
       ThreadManager.getUIHandler().post(new AppBrandLaunchUI.1.2(this, paramJSONObject));
     }
+    this.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI.1
  * JD-Core Version:    0.7.0.1
  */

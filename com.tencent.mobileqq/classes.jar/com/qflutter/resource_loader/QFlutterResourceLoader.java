@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.tencent.nativebmp.NativeBitmap;
 import io.flutter.plugin.common.MethodChannel.Result;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,140 +33,137 @@ public class QFlutterResourceLoader
   
   private NativeImageReplyInfo buildImageInfoReply(String paramString)
   {
-    boolean bool3 = true;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("buildImageInfoReply nativeImageID：");
     ((StringBuilder)localObject1).append(paramString);
     Log.d("QFlutterResourceLoader", ((StringBuilder)localObject1).toString());
-    Object localObject3;
-    Object localObject2;
-    boolean bool1;
-    if (!TextUtils.isEmpty(paramString))
-    {
+    if (!TextUtils.isEmpty(paramString)) {
       localObject1 = this.nativeInterface.getNativeAppImage(paramString);
-      if (localObject1 != null)
+    } else {
+      localObject1 = null;
+    }
+    Object localObject3;
+    if (localObject1 != null)
+    {
+      localObject3 = localObject1;
+      if (!((NativeImageInfo)localObject1).isNull()) {}
+    }
+    else
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new NativeImageInfo();
+      }
+      if ((!paramString.startsWith("https:")) && (!paramString.startsWith("http:")) && (!paramString.startsWith("HTTPS:")))
       {
-        localObject3 = localObject1;
-        if (!((NativeImageInfo)localObject1).isNull()) {}
+        localObject3 = localObject2;
+        if (!paramString.startsWith("HTTP:")) {}
       }
       else
       {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = new NativeImageInfo();
-        }
-        if ((!paramString.startsWith("https:")) && (!paramString.startsWith("http:")) && (!paramString.startsWith("HTTPS:")))
-        {
-          localObject3 = localObject2;
-          if (!paramString.startsWith("HTTP:")) {}
-        }
-        else
-        {
-          ((NativeImageInfo)localObject2).url = paramString;
-          localObject3 = localObject2;
-        }
+        ((NativeImageInfo)localObject2).url = paramString;
+        localObject3 = localObject2;
       }
-      localObject1 = new NativeImageReplyInfo();
-      boolean bool2 = false;
-      bool1 = bool2;
-      if (localObject3.bitmap != null)
-      {
-        bool1 = bool2;
-        if (replyBitmap(localObject3, paramString, (NativeImageReplyInfo)localObject1)) {
-          bool1 = true;
-        }
-      }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (localObject3.drawable != null)
-        {
-          bool2 = bool1;
-          if (replyDrawable(localObject3, paramString, (NativeImageReplyInfo)localObject1)) {
-            bool2 = true;
-          }
-        }
-      }
-      bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (localObject3.drawableId != 0)
-        {
-          replyDrawableIdImage(localObject3, paramString, (NativeImageReplyInfo)localObject1);
-          bool1 = true;
-        }
-      }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (localObject3.bytes != null)
-        {
-          replyChannelBytes(localObject3, paramString, (NativeImageReplyInfo)localObject1);
-          bool2 = true;
-        }
-      }
-      bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(localObject3.assetsPath))
-        {
-          replyAssetImage(localObject3, paramString, (NativeImageReplyInfo)localObject1);
-          bool1 = true;
-        }
-      }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (!TextUtils.isEmpty(localObject3.path))
-        {
-          replyFilePath(localObject3, paramString, (NativeImageReplyInfo)localObject1);
-          bool2 = true;
-        }
-      }
-      bool1 = bool2;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(localObject3.url))
-        {
-          replyImageUrl(localObject3, paramString, (NativeImageReplyInfo)localObject1);
-          bool1 = true;
-        }
-      }
-      if ((bool1) || (localObject3.color == null)) {
-        break label518;
-      }
-      replyImageColor(localObject3, paramString, (NativeImageReplyInfo)localObject1);
-      bool1 = bool3;
     }
-    label518:
-    for (;;)
+    localObject1 = new NativeImageReplyInfo();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject3.bitmap != null)
     {
-      if (localObject3.scale > 0.01D) {
-        ((NativeImageReplyInfo)localObject1).scale = localObject3.scale;
+      bool1 = bool2;
+      if (replyBitmap(localObject3, paramString, (NativeImageReplyInfo)localObject1)) {
+        bool1 = true;
       }
-      if ((localObject3.isNinePatch) && (localObject3.ninePatchInfo != null)) {
-        ((NativeImageReplyInfo)localObject1).ninePatchInfo = localObject3.ninePatchInfo;
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("buildImageInfoReply nativeImageID：");
-      ((StringBuilder)localObject2).append(paramString);
-      ((StringBuilder)localObject2).append(" handled:");
-      ((StringBuilder)localObject2).append(bool1);
-      ((StringBuilder)localObject2).append(" replyInfo:");
-      ((StringBuilder)localObject2).append(localObject1);
-      ((StringBuilder)localObject2).append(" info:");
-      ((StringBuilder)localObject2).append(localObject3);
-      Log.d("QFlutterResourceLoader", ((StringBuilder)localObject2).toString());
-      return localObject1;
-      localObject1 = null;
-      break;
     }
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (localObject3.drawable != null)
+      {
+        bool2 = bool1;
+        if (replyDrawable(localObject3, paramString, (NativeImageReplyInfo)localObject1)) {
+          bool2 = true;
+        }
+      }
+    }
+    bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (localObject3.drawableId != 0)
+      {
+        replyDrawableIdImage(localObject3, paramString, (NativeImageReplyInfo)localObject1);
+        bool1 = true;
+      }
+    }
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (localObject3.bytes != null)
+      {
+        replyChannelBytes(localObject3, paramString, (NativeImageReplyInfo)localObject1);
+        bool2 = true;
+      }
+    }
+    bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(localObject3.assetsPath))
+      {
+        replyAssetImage(localObject3, paramString, (NativeImageReplyInfo)localObject1);
+        bool1 = true;
+      }
+    }
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (!TextUtils.isEmpty(localObject3.path))
+      {
+        replyFilePath(localObject3, paramString, (NativeImageReplyInfo)localObject1);
+        bool2 = true;
+      }
+    }
+    bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(localObject3.url))
+      {
+        replyImageUrl(localObject3, paramString, (NativeImageReplyInfo)localObject1);
+        bool1 = true;
+      }
+    }
+    bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (localObject3.color != null)
+      {
+        replyImageColor(localObject3, paramString, (NativeImageReplyInfo)localObject1);
+        bool2 = true;
+      }
+    }
+    if (localObject3.scale > 0.01D) {
+      ((NativeImageReplyInfo)localObject1).scale = localObject3.scale;
+    }
+    if ((localObject3.isNinePatch) && (localObject3.ninePatchInfo != null)) {
+      ((NativeImageReplyInfo)localObject1).ninePatchInfo = localObject3.ninePatchInfo;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("buildImageInfoReply nativeImageID：");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" handled:");
+    ((StringBuilder)localObject2).append(bool2);
+    ((StringBuilder)localObject2).append(" replyInfo:");
+    ((StringBuilder)localObject2).append(localObject1);
+    ((StringBuilder)localObject2).append(" info:");
+    ((StringBuilder)localObject2).append(localObject3);
+    Log.d("QFlutterResourceLoader", ((StringBuilder)localObject2).toString());
+    return localObject1;
   }
   
   public static QFlutterResourceLoader get()
@@ -254,54 +252,55 @@ public class QFlutterResourceLoader
     if (localObject2 != null)
     {
       Object localObject1;
-      if ((localObject2 instanceof BitmapDrawable)) {
+      if ((localObject2 instanceof BitmapDrawable))
+      {
         localObject1 = ((BitmapDrawable)localObject2).getBitmap();
       }
-      while (localObject1 != null)
+      else if ((localObject2 instanceof NinePatchDrawable))
+      {
+        localObject2 = Utils.getBitmapFromNinePatchDrawable((NinePatchDrawable)localObject2);
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          paramNativeImageInfo.isNinePatch = true;
+          localObject1 = localObject2;
+          if (paramNativeImageInfo.ninePatchInfo == null)
+          {
+            paramNativeImageInfo.ninePatchInfo = Utils.getNinePatchInfoFromChunk(((Bitmap)localObject2).getNinePatchChunk());
+            localObject1 = localObject2;
+          }
+        }
+      }
+      else
+      {
+        localObject1 = this.nativeInterface.getBitmapFromDrawable((Drawable)localObject2);
+        if ((localObject1 != null) && (this.nativeInterface.isNinePatchDrawable((Drawable)localObject2)))
+        {
+          paramNativeImageInfo.isNinePatch = true;
+          if (paramNativeImageInfo.ninePatchInfo == null) {
+            paramNativeImageInfo.ninePatchInfo = this.nativeInterface.getNinePatchInfo((Drawable)localObject2);
+          }
+          if (paramNativeImageInfo.ninePatchInfo == null) {
+            paramNativeImageInfo.ninePatchInfo = Utils.getNinePatchInfoFromChunk(((Bitmap)localObject1).getNinePatchChunk());
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("replyDrawable: ");
+          ((StringBuilder)localObject2).append(paramString);
+          ((StringBuilder)localObject2).append(" ninePatchInfo:");
+          ((StringBuilder)localObject2).append(paramNativeImageInfo.ninePatchInfo);
+          ((StringBuilder)localObject2).append(" density:");
+          ((StringBuilder)localObject2).append(((Bitmap)localObject1).getDensity());
+          ((StringBuilder)localObject2).append(" densityDpi:");
+          ((StringBuilder)localObject2).append(this.context.getResources().getDisplayMetrics().densityDpi);
+          ((StringBuilder)localObject2).append(" \nchunk:");
+          ((StringBuilder)localObject2).append(Arrays.toString(((Bitmap)localObject1).getNinePatchChunk()));
+          Log.d("QFlutterResourceLoader", ((StringBuilder)localObject2).toString());
+        }
+      }
+      if (localObject1 != null)
       {
         paramNativeImageInfo.bitmap = ((Bitmap)localObject1);
         return replyBitmap(paramNativeImageInfo, paramString, paramNativeImageReplyInfo);
-        if ((localObject2 instanceof NinePatchDrawable))
-        {
-          localObject2 = Utils.getBitmapFromNinePatchDrawable((NinePatchDrawable)localObject2);
-          localObject1 = localObject2;
-          if (localObject2 != null)
-          {
-            paramNativeImageInfo.isNinePatch = true;
-            localObject1 = localObject2;
-            if (paramNativeImageInfo.ninePatchInfo == null)
-            {
-              paramNativeImageInfo.ninePatchInfo = Utils.getNinePatchInfoFromChunk(((Bitmap)localObject2).getNinePatchChunk());
-              localObject1 = localObject2;
-            }
-          }
-        }
-        else
-        {
-          localObject1 = this.nativeInterface.getBitmapFromDrawable((Drawable)localObject2);
-          if ((localObject1 != null) && (this.nativeInterface.isNinePatchDrawable((Drawable)localObject2)))
-          {
-            paramNativeImageInfo.isNinePatch = true;
-            if (paramNativeImageInfo.ninePatchInfo == null) {
-              paramNativeImageInfo.ninePatchInfo = this.nativeInterface.getNinePatchInfo((Drawable)localObject2);
-            }
-            if (paramNativeImageInfo.ninePatchInfo == null) {
-              paramNativeImageInfo.ninePatchInfo = Utils.getNinePatchInfoFromChunk(((Bitmap)localObject1).getNinePatchChunk());
-            }
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("replyDrawable: ");
-            ((StringBuilder)localObject2).append(paramString);
-            ((StringBuilder)localObject2).append(" ninePatchInfo:");
-            ((StringBuilder)localObject2).append(paramNativeImageInfo.ninePatchInfo);
-            ((StringBuilder)localObject2).append(" density:");
-            ((StringBuilder)localObject2).append(((Bitmap)localObject1).getDensity());
-            ((StringBuilder)localObject2).append(" densityDpi:");
-            ((StringBuilder)localObject2).append(this.context.getResources().getDisplayMetrics().densityDpi);
-            ((StringBuilder)localObject2).append(" \nchunk:");
-            ((StringBuilder)localObject2).append(Arrays.toString(((Bitmap)localObject1).getNinePatchChunk()));
-            Log.d("QFlutterResourceLoader", ((StringBuilder)localObject2).toString());
-          }
-        }
       }
     }
     return false;
@@ -348,16 +347,18 @@ public class QFlutterResourceLoader
   
   private void replyRawData(NativeImageInfo paramNativeImageInfo, String paramString, InputStream paramInputStream, NativeImageReplyInfo paramNativeImageReplyInfo)
   {
-    int j = 0;
     try
     {
       int i = paramInputStream.available();
       paramNativeImageInfo = ByteBuffer.allocateDirect(i);
       Object localObject = new byte[Math.min(1024, i)];
-      for (i = paramInputStream.read((byte[])localObject); i != -1; i = paramInputStream.read((byte[])localObject))
+      i = paramInputStream.read((byte[])localObject);
+      int j = 0;
+      while (i != -1)
       {
         j += i;
         paramNativeImageInfo.put((byte[])localObject, 0, i);
+        i = paramInputStream.read((byte[])localObject);
       }
       long l = JniInterface.getByteBufferPtr(paramNativeImageInfo);
       localObject = new StringBuilder();
@@ -380,30 +381,28 @@ public class QFlutterResourceLoader
   public void cacheObj(String paramString, Object paramObject)
   {
     QFlutterResourceLoader.CacheItem localCacheItem;
-    if (this.sCacheObj.containsKey(paramString))
-    {
+    if (this.sCacheObj.containsKey(paramString)) {
       localCacheItem = (QFlutterResourceLoader.CacheItem)this.sCacheObj.get(paramString);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("cacheBitmap:");
-      localStringBuilder.append(paramString);
-      Log.i("QFlutterResourceLoader", localStringBuilder.toString());
-      if (localCacheItem != null) {
-        break label98;
-      }
+    } else {
+      localCacheItem = null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cacheBitmap:");
+    localStringBuilder.append(paramString);
+    Log.i("QFlutterResourceLoader", localStringBuilder.toString());
+    if (localCacheItem == null)
+    {
       localCacheItem = new QFlutterResourceLoader.CacheItem(this, null);
       localCacheItem.cache(paramObject);
       localCacheItem.increment();
       this.sCacheObj.put(paramString, localCacheItem);
-    }
-    label98:
-    while (localCacheItem == null)
-    {
       return;
-      localCacheItem = null;
-      break;
     }
-    localCacheItem.cache(paramObject);
-    localCacheItem.increment();
+    if (localCacheItem != null)
+    {
+      localCacheItem.cache(paramObject);
+      localCacheItem.increment();
+    }
   }
   
   public void deCache(String paramString)
@@ -444,7 +443,7 @@ public class QFlutterResourceLoader
     this.nativeInterface = paramNativeAppInterface;
     if (!this.sJniSoLoaded)
     {
-      paramNativeAppInterface.loadJniSo();
+      NativeBitmap.init(paramNativeAppInterface.getLibPath());
       this.sJniSoLoaded = true;
     }
   }
@@ -481,7 +480,7 @@ public class QFlutterResourceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.resource_loader.QFlutterResourceLoader
  * JD-Core Version:    0.7.0.1
  */

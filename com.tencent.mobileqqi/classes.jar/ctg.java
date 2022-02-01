@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
 public class ctg
-  implements DialogInterface.OnClickListener
+  implements PermissionDialogCallback
 {
-  public ctg(LoginActivity paramLoginActivity) {}
+  public ctg(LoginActivity paramLoginActivity, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).request(new cth(this));
   }
 }
 

@@ -7,9 +7,9 @@ import java.io.File;
 
 public final class e
 {
-  public static boolean dUy()
+  public static boolean jXg()
   {
-    AppMethodBeat.i(114509);
+    AppMethodBeat.i(138350);
     try
     {
       Object localObject = System.getenv("PATH");
@@ -24,8 +24,8 @@ public final class e
           if (localFile.exists())
           {
             new StringBuilder("SuFile found : ").append(localFile.toString());
-            h.dUT();
-            AppMethodBeat.o(114509);
+            h.jXC();
+            AppMethodBeat.o(138350);
             return true;
           }
           i += 1;
@@ -33,22 +33,22 @@ public final class e
       }
       if (new File("/system/bin/su").exists())
       {
-        h.dUT();
-        AppMethodBeat.o(114509);
+        h.jXC();
+        AppMethodBeat.o(138350);
         return true;
       }
       if (new File("/system/xbin/su").exists())
       {
-        h.dUT();
-        AppMethodBeat.o(114509);
+        h.jXC();
+        AppMethodBeat.o(138350);
         return true;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       h.w(localThrowable);
-      h.dUT();
-      AppMethodBeat.o(114509);
+      h.jXC();
+      AppMethodBeat.o(138350);
     }
     return false;
   }

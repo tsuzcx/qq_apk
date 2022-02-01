@@ -4,47 +4,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class WXPayHelper
   implements IWXAPIEventHandler
 {
-  private static WXPayHelper jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication().getApplicationContext(), "wxf0a80d0ac2e82aa7", true);
-  private ArrayList<Handler> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  
-  private WXPayHelper()
-  {
-    registerApp();
-  }
+  private static final byte[] a = new byte[0];
+  private static WXPayHelper b = null;
+  private final String c = "wxf0a80d0ac2e82aa7";
+  private final IWXAPI d = WXAPIFactory.createWXAPI(BaseApplication.getContext(), this.c, true);
+  private final ArrayList<Handler> e = new ArrayList(1);
   
   public static WXPayHelper getInstance()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper == null) {
-        jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper = new WXPayHelper();
+    if (b == null) {
+      synchronized (a)
+      {
+        if (b == null) {
+          b = new WXPayHelper();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper;
     }
+    return b;
   }
   
   public void addObserver(Handler paramHandler)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.e)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramHandler)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramHandler);
+      if (!this.e.contains(paramHandler)) {
+        this.e.add(paramHandler);
       }
       return;
     }
@@ -52,37 +50,37 @@ public class WXPayHelper
   
   public int getWXAppSupportAPI()
   {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI();
+    return this.d.getWXAppSupportAPI();
   }
   
   public void handleIntent(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.handleIntent(paramIntent, this);
+    this.d.handleIntent(paramIntent, this);
   }
   
   public boolean isWXinstalled()
   {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
+    return this.d.isWXAppInstalled();
   }
   
   public boolean isWXsupportApi()
   {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 553779201;
+    return this.d.getWXAppSupportAPI() >= 553779201;
   }
   
   public boolean isWXsupportPayApi()
   {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 570425345;
+    return this.d.getWXAppSupportAPI() >= 570425345;
   }
   
   public void onReq(BaseReq paramBaseReq) {}
   
   public void onResp(BaseResp paramBaseResp)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.e)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext())
+      Iterator localIterator = this.e.iterator();
+      while (localIterator.hasNext())
       {
         Handler localHandler = (Handler)localIterator.next();
         Message localMessage = new Message();
@@ -95,21 +93,29 @@ public class WXPayHelper
         localMessage.setData(localBundle);
         localHandler.sendMessage(localMessage);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramBaseResp;
     }
   }
   
   public void registerApp()
   {
-    this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wxf0a80d0ac2e82aa7");
+    this.d.registerApp(this.c);
+  }
+  
+  public void registerApp(String paramString)
+  {
+    this.d.registerApp(paramString);
   }
   
   public void removeObserver(Handler paramHandler)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.e)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramHandler)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramHandler);
-      }
+      this.e.remove(paramHandler);
       return;
     }
   }
@@ -117,24 +123,29 @@ public class WXPayHelper
   public void sendReq(Bundle paramBundle)
   {
     PayReq localPayReq = new PayReq();
-    localPayReq.appId = "wxf0a80d0ac2e82aa7";
+    String str2 = paramBundle.getString("appid");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = this.c;
+    }
+    localPayReq.appId = str1;
     localPayReq.partnerId = paramBundle.getString("partnerid");
     localPayReq.prepayId = paramBundle.getString("prepayid");
     localPayReq.nonceStr = paramBundle.getString("noncestr");
     localPayReq.timeStamp = paramBundle.getString("timestamp");
     localPayReq.packageValue = paramBundle.getString("package");
     localPayReq.sign = paramBundle.getString("sign");
-    this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(localPayReq);
+    this.d.sendReq(localPayReq);
   }
   
   public void unRegisterApp()
   {
-    this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.unregisterApp();
+    this.d.unregisterApp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXPayHelper
  * JD-Core Version:    0.7.0.1
  */

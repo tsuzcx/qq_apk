@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,61 +17,63 @@ public final class cell_comm
   static Map<String, byte[]> cache_extendInfoData;
   static UgcRightInfo cache_right_info = new UgcRightInfo();
   static Map<Integer, Integer> cache_stMapABTest = new HashMap();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public long adv_stytle;
-  public long adv_subtype;
-  public int appid;
+  public long adv_stytle = 0L;
+  public long adv_subtype = 0L;
+  public int appid = 0;
   public String clientkey = "";
   public String curlikekey = "";
-  public ArrayList<s_droplist_option> custom_droplist;
+  public ArrayList<s_droplist_option> custom_droplist = null;
   public long editmask = 4294967295L;
-  public Map<String, String> extendInfo;
-  public Map<String, byte[]> extendInfoData;
-  public long feedsDelTime;
-  public int feedsattr;
-  public int feedsattr2;
+  public Map<String, String> extendInfo = null;
+  public Map<String, byte[]> extendInfoData = null;
+  public long feedsDelTime = 0L;
+  public int feedsattr = 0;
+  public int feedsattr2 = 0;
+  public long feedsattr3 = 0L;
   public String feedsid = "";
   public String feedskey = "";
-  public int feedstype;
-  public int hot_score;
+  public int feedstype = 0;
+  public int hot_score = 0;
   public int iClick_area = 0;
   public String interestkey = "";
-  public boolean is_kuolie;
-  public boolean is_stay;
-  public int operatemask;
-  public int operatemask2;
-  public long operatemask3;
+  public boolean is_kuolie = false;
+  public boolean is_stay = false;
+  public int operatemask = 0;
+  public int operatemask2 = 0;
+  public long operatemask3 = 0L;
   public String orglikekey = "";
-  public int originaltype;
+  public int originaltype = 0;
   public String paykey = "";
-  public int positionmask;
-  public int positionmask2;
-  public boolean pull_qzone;
-  public int recom_show_type;
-  public int recomlayout;
-  public long recomreportid;
-  public int recomtype;
+  public int positionmask = 0;
+  public int positionmask2 = 0;
+  public boolean pull_qzone = false;
+  public int recom_show_type = 0;
+  public int recomlayout = 0;
+  public long recomreportid = 0L;
+  public int recomtype = 0;
   public String refer = "";
-  public int reportfeedsattr;
-  public UgcRightInfo right_info;
-  public int shield;
-  public long show_mask;
-  public int space_right;
+  public int reportfeedsattr = 0;
+  public UgcRightInfo right_info = null;
+  public int shield = 0;
+  public long show_mask = 0L;
+  public int space_right = 0;
   public String sqDynamicFeedsKey = "";
-  public Map<Integer, Integer> stMapABTest;
-  public int subid;
-  public int time;
-  public int uflag;
+  public Map<Integer, Integer> stMapABTest = null;
+  public int subid = 0;
+  public int time = 0;
+  public int uflag = 0;
   public String ugckey = "";
   public String ugcrightkey = "";
-  public int wup_feeds_type;
+  public int wup_feeds_type = 0;
   
   static
   {
-    cache_stMapABTest.put(Integer.valueOf(0), Integer.valueOf(0));
+    Object localObject = Integer.valueOf(0);
+    cache_stMapABTest.put(localObject, localObject);
     cache_custom_droplist = new ArrayList();
-    Object localObject = new s_droplist_option();
+    localObject = new s_droplist_option();
     cache_custom_droplist.add(localObject);
     cache_extendInfo = new HashMap();
     cache_extendInfo.put("", "");
@@ -82,7 +85,7 @@ public final class cell_comm
   
   public cell_comm() {}
   
-  public cell_comm(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, String paramString3, String paramString4, String paramString5, int paramInt7, int paramInt8, String paramString6, String paramString7, long paramLong1, int paramInt9, int paramInt10, String paramString8, String paramString9, int paramInt11, String paramString10, long paramLong2, long paramLong3, UgcRightInfo paramUgcRightInfo, int paramInt12, long paramLong4, int paramInt13, int paramInt14, int paramInt15, int paramInt16, Map<Integer, Integer> paramMap, boolean paramBoolean1, String paramString11, int paramInt17, int paramInt18, int paramInt19, long paramLong5, ArrayList<s_droplist_option> paramArrayList, Map<String, String> paramMap1, int paramInt20, long paramLong6, String paramString12, int paramInt21, Map<String, byte[]> paramMap2, int paramInt22, boolean paramBoolean2, boolean paramBoolean3, long paramLong7)
+  public cell_comm(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, String paramString3, String paramString4, String paramString5, int paramInt7, int paramInt8, String paramString6, String paramString7, long paramLong1, int paramInt9, int paramInt10, String paramString8, String paramString9, int paramInt11, String paramString10, long paramLong2, long paramLong3, UgcRightInfo paramUgcRightInfo, int paramInt12, long paramLong4, int paramInt13, int paramInt14, int paramInt15, int paramInt16, Map<Integer, Integer> paramMap, boolean paramBoolean1, String paramString11, int paramInt17, int paramInt18, int paramInt19, long paramLong5, ArrayList<s_droplist_option> paramArrayList, Map<String, String> paramMap1, int paramInt20, long paramLong6, String paramString12, int paramInt21, Map<String, byte[]> paramMap2, int paramInt22, boolean paramBoolean2, boolean paramBoolean3, long paramLong7, long paramLong8)
   {
     this.appid = paramInt1;
     this.subid = paramInt2;
@@ -133,6 +136,7 @@ public final class cell_comm
     this.is_kuolie = paramBoolean2;
     this.pull_qzone = paramBoolean3;
     this.operatemask3 = paramLong7;
+    this.feedsattr3 = paramLong8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -186,56 +190,68 @@ public final class cell_comm
     this.is_kuolie = paramJceInputStream.read(this.is_kuolie, 46, false);
     this.pull_qzone = paramJceInputStream.read(this.pull_qzone, 47, false);
     this.operatemask3 = paramJceInputStream.read(this.operatemask3, 48, false);
+    this.feedsattr3 = paramJceInputStream.read(this.feedsattr3, 49, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.subid, 1);
-    if (this.refer != null) {
-      paramJceOutputStream.write(this.refer, 2);
+    Object localObject = this.refer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.time, 3);
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 5);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.originaltype, 6);
     paramJceOutputStream.write(this.operatemask, 7);
-    if (this.feedskey != null) {
-      paramJceOutputStream.write(this.feedskey, 8);
+    localObject = this.feedskey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.orglikekey != null) {
-      paramJceOutputStream.write(this.orglikekey, 9);
+    localObject = this.orglikekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.curlikekey != null) {
-      paramJceOutputStream.write(this.curlikekey, 10);
+    localObject = this.curlikekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.feedstype, 11);
     paramJceOutputStream.write(this.feedsattr, 12);
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 13);
+    localObject = this.ugckey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 14);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.show_mask, 15);
     paramJceOutputStream.write(this.uflag, 16);
     paramJceOutputStream.write(this.shield, 17);
-    if (this.ugcrightkey != null) {
-      paramJceOutputStream.write(this.ugcrightkey, 18);
+    localObject = this.ugcrightkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.interestkey != null) {
-      paramJceOutputStream.write(this.interestkey, 19);
+    localObject = this.interestkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.recomtype, 20);
-    if (this.feedsid != null) {
-      paramJceOutputStream.write(this.feedsid, 21);
+    localObject = this.feedsid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.adv_stytle, 22);
     paramJceOutputStream.write(this.adv_subtype, 23);
-    if (this.right_info != null) {
-      paramJceOutputStream.write(this.right_info, 24);
+    localObject = this.right_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 24);
     }
     paramJceOutputStream.write(this.recomlayout, 25);
     paramJceOutputStream.write(this.recomreportid, 26);
@@ -243,41 +259,48 @@ public final class cell_comm
     paramJceOutputStream.write(this.reportfeedsattr, 28);
     paramJceOutputStream.write(this.recom_show_type, 29);
     paramJceOutputStream.write(this.wup_feeds_type, 30);
-    if (this.stMapABTest != null) {
-      paramJceOutputStream.write(this.stMapABTest, 31);
+    localObject = this.stMapABTest;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 31);
     }
     paramJceOutputStream.write(this.is_stay, 32);
-    if (this.paykey != null) {
-      paramJceOutputStream.write(this.paykey, 33);
+    localObject = this.paykey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 33);
     }
     paramJceOutputStream.write(this.operatemask2, 34);
     paramJceOutputStream.write(this.positionmask, 35);
     paramJceOutputStream.write(this.positionmask2, 36);
     paramJceOutputStream.write(this.editmask, 37);
-    if (this.custom_droplist != null) {
-      paramJceOutputStream.write(this.custom_droplist, 38);
+    localObject = this.custom_droplist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 38);
     }
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 39);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 39);
     }
     paramJceOutputStream.write(this.feedsattr2, 40);
     paramJceOutputStream.write(this.feedsDelTime, 41);
-    if (this.sqDynamicFeedsKey != null) {
-      paramJceOutputStream.write(this.sqDynamicFeedsKey, 42);
+    localObject = this.sqDynamicFeedsKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 42);
     }
     paramJceOutputStream.write(this.iClick_area, 43);
-    if (this.extendInfoData != null) {
-      paramJceOutputStream.write(this.extendInfoData, 44);
+    localObject = this.extendInfoData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 44);
     }
     paramJceOutputStream.write(this.hot_score, 45);
     paramJceOutputStream.write(this.is_kuolie, 46);
     paramJceOutputStream.write(this.pull_qzone, 47);
     paramJceOutputStream.write(this.operatemask3, 48);
+    paramJceOutputStream.write(this.feedsattr3, 49);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comm
  * JD-Core Version:    0.7.0.1
  */

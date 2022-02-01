@@ -47,18 +47,20 @@ public final class mobile_sub_setspaceright_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.rightval, 1);
-    if (this.allowGroupsId != null) {
-      paramJceOutputStream.write(this.allowGroupsId, 2);
+    Object localObject = this.allowGroupsId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
     paramJceOutputStream.write(this.cur_seq, 3);
-    if (this.questions != null) {
-      paramJceOutputStream.write(this.questions, 4);
+    localObject = this.questions;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_setspaceright_req
  * JD-Core Version:    0.7.0.1
  */

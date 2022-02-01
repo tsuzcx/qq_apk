@@ -22,13 +22,36 @@ final class MiniProgramLpReportDC04266$2
       localObject = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$100(), (List)localObject, null);
       MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
     }
-    QLog.d("MiniProgramLpReportDC04266", 2, "MiniReportManager  reportCostTimeEvent: costTime event = [" + this.val$eventName + "], costTime result = [" + this.val$retCode + "], appType = [" + MiniReportManager.getAppType(this.val$miniAppConfig) + "], timeCost = [" + this.val$costTime + "],  attachInfo = [" + this.val$attachInfo + "]  launchId:" + str + "  retCode:" + this.val$retCode + "  reserves1:" + this.val$reserves1 + "  reserves2:" + this.val$reserves2 + "  reserves3:" + this.val$reserves3 + "  reserves4:" + this.val$reserves4);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("MiniReportManager  reportCostTimeEvent: costTime event = [");
+    ((StringBuilder)localObject).append(this.val$eventName);
+    ((StringBuilder)localObject).append("], costTime result = [");
+    ((StringBuilder)localObject).append(this.val$retCode);
+    ((StringBuilder)localObject).append("], appType = [");
+    ((StringBuilder)localObject).append(MiniReportManager.getAppType(this.val$miniAppConfig));
+    ((StringBuilder)localObject).append("], timeCost = [");
+    ((StringBuilder)localObject).append(this.val$costTime);
+    ((StringBuilder)localObject).append("],  attachInfo = [");
+    ((StringBuilder)localObject).append(this.val$attachInfo);
+    ((StringBuilder)localObject).append("]  launchId:");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("  retCode:");
+    ((StringBuilder)localObject).append(this.val$retCode);
+    ((StringBuilder)localObject).append("  reserves1:");
+    ((StringBuilder)localObject).append(this.val$reserves1);
+    ((StringBuilder)localObject).append("  reserves2:");
+    ((StringBuilder)localObject).append(this.val$reserves2);
+    ((StringBuilder)localObject).append("  reserves3:");
+    ((StringBuilder)localObject).append(this.val$reserves3);
+    ((StringBuilder)localObject).append("  reserves4:");
+    ((StringBuilder)localObject).append(this.val$reserves4);
+    QLog.d("MiniProgramLpReportDC04266", 2, ((StringBuilder)localObject).toString());
     MiniProgramLpReportDC05115.reDispatchReportEvent(this.val$miniAppConfig, this.val$eventName, String.valueOf(this.val$retCode), this.val$costTime, this.val$reserves4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04266.2
  * JD-Core Version:    0.7.0.1
  */

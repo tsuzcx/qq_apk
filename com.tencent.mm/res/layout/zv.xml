@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="120.0dip"
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/buq" android:background="#20000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="50.0dip" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/bur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
-        <TextView android:textSize="11.0dip" android:textColor="#4d000000" android:id="@id/bus" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bp3" />
-        <ImageButton android:id="@id/but" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginRight="@dimen/ll" android:src="@raw/fav_capacity_foot_arrow" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.plugin.downloader_app.ui.TaskManagerHeaderView android:id="@id/evp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.downloader_app.ui.DeleteTaskFooterView android:id="@id/c1h" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.downloader_app.ui.TaskListView android:id="@id/fp6" android:background="@color/ng" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/c1h" android:layout_below="@id/evp" />
+    <ViewStub android:id="@id/hh8" android:layout="@layout/blm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/g40" android:layout="@layout/zs" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

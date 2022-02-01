@@ -1,53 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.i.i;
-import com.tencent.mm.plugin.appbrand.widget.b.l;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.n.o;
+import org.json.JSONObject;
 
-public abstract interface c
+public abstract class c<CONTEXT extends f>
+  extends p
 {
-  public abstract void A(Runnable paramRunnable);
+  public abstract void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt);
   
-  public abstract <T extends j> T U(Class<T> paramClass);
+  public void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt, o paramo) {}
   
-  public abstract <T extends k> T V(Class<T> paramClass);
-  
-  public abstract void a(ai paramai);
-  
-  public abstract int aAN();
-  
-  public abstract i aAO();
-  
-  public abstract Handler aAP();
-  
-  public abstract com.tencent.mm.plugin.appbrand.b.b asW();
-  
-  public abstract l asX();
-  
-  public abstract void b(ai paramai);
-  
-  public abstract void b(String paramString1, String paramString2, int[] paramArrayOfInt);
-  
-  public abstract void bY(String paramString1, String paramString2);
-  
-  public abstract String getAppId();
-  
-  public abstract Context getContext();
-  
-  public abstract void h(int paramInt, String paramString);
-  
-  public abstract boolean isRunning();
-  
-  public abstract <T extends com.tencent.luggage.a.b> T q(Class<T> paramClass);
-  
-  public abstract i wB();
-  
-  public abstract Map<String, m> wC();
-  
-  public abstract o wX();
+  protected boolean cpE()
+  {
+    return false;
+  }
 }
 
 

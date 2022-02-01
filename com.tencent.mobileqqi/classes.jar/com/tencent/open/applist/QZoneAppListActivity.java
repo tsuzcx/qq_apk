@@ -28,7 +28,7 @@ import com.tencent.open.business.base.JsCallbackManager;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.PluginState;
 import com.tencent.smtt.sdk.WebView;
-import hle;
+import hld;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +71,7 @@ public class QZoneAppListActivity
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new hle(this));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new hld(this));
   }
   
   protected void b(WebView paramWebView, String paramString)
@@ -235,7 +235,7 @@ public class QZoneAppListActivity
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText("应用宝");
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131232116);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131232115);
   }
   
   @TargetApi(11)
@@ -248,8 +248,8 @@ public class QZoneAppListActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setFocusableInTouchMode(true);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setHorizontalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkh);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkg);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkg);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkf);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnCreateContextMenuListener(null);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.getView().setOnLongClickListener(null);
     Object localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
@@ -295,7 +295,7 @@ public class QZoneAppListActivity
         this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibility");
         this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibilityTraversal");
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232114));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232113));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView);
       if ((this.h) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack != null)) {
         this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.setParams("&isFirstEnter=1");

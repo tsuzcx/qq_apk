@@ -12,32 +12,38 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ExpandableListAdapter;
 import android.widget.Scroller;
-import bibe;
-import bibf;
-import bibg;
 
 public class SwipPinnedHeaderExpandableListView
   extends PinnedHeaderExpandableListView
   implements Handler.Callback
 {
-  private byte jdField_a_of_type_Byte;
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bibe jdField_a_of_type_Bibe;
-  private bibg jdField_a_of_type_Bibg;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private int d;
-  private int e;
-  private int f;
-  private final int g;
+  private static final int ANIM_DURATION = 300;
+  private static final int MSG_ANIM_HIDE = 1;
+  private static final int MSG_ANIM_SHOW = 0;
+  private static final int MSG_HIDE_POPMENU = 2;
+  private static final byte SLIDE_DIR_DEFAULT = 0;
+  private static final byte SLIDE_DIR_HORIZONTAL = 1;
+  private static final byte SLIDE_DIR_VERTICAL = 2;
+  public static final String TAG = "SwipListView";
+  public static final int TAG_MENUS_WIDTH = -3;
+  private View mCurItemView;
+  private int mCurViewRVWidth;
+  private int mCurX;
+  private int mCurY;
+  private boolean mDragEnable = false;
+  private boolean mIsShowRV;
+  private SwipPinnedHeaderExpandableListView.SwipListListener mListener;
+  private int mMinFlingVelocity;
+  private View mPreItemView;
+  private SwipPinnedHeaderExpandableListView.RightIconMenuListener mRIMListenr;
+  private Scroller mScroller;
+  private Handler mScrollerHandler;
+  private byte mSlideDir;
+  private int mStartX;
+  private int mStartY;
+  private View mToAnimView;
+  private final int scaledTouchSlop;
+  private VelocityTracker velocityTracker;
   
   public SwipPinnedHeaderExpandableListView(Context paramContext)
   {
@@ -52,616 +58,631 @@ public class SwipPinnedHeaderExpandableListView
   public SwipPinnedHeaderExpandableListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bibf());
+    this.mScroller = new Scroller(paramContext, new SwipPinnedHeaderExpandableListView.SmoothInterpolator());
     paramContext = ViewConfiguration.get(getContext());
-    this.g = paramContext.getScaledTouchSlop();
-    this.e = (paramContext.getScaledMinimumFlingVelocity() * 4);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.d = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.scaledTouchSlop = paramContext.getScaledTouchSlop();
+    this.mMinFlingVelocity = (paramContext.getScaledMinimumFlingVelocity() * 4);
+    this.mStartX = -1;
+    this.mCurX = -1;
+    this.mStartY = -1;
+    this.mCurY = -1;
+    this.mScrollerHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  private int a()
+  private void addVelocityTracker(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    return (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
+    if (this.velocityTracker == null) {
+      this.velocityTracker = VelocityTracker.obtain();
+    }
+    this.velocityTracker.addMovement(paramMotionEvent);
   }
   
-  private int a(int paramInt1, int paramInt2)
+  private void cancelShowHideAnim()
   {
-    int i = 300;
+    this.mScrollerHandler.removeMessages(1);
+    this.mScrollerHandler.removeMessages(0);
+    this.mToAnimView = null;
+  }
+  
+  private void endOfTouch()
+  {
+    int i = getScrollVelocity();
+    int j = this.mCurItemView.getScrollX();
+    int k = this.mMinFlingVelocity;
+    if (i > k)
+    {
+      hiddeRight(this.mCurItemView);
+      return;
+    }
+    if (i < -k)
+    {
+      showRight(this.mCurItemView);
+      return;
+    }
+    if ((i > 0) && (j < this.mCurViewRVWidth * 0.7F))
+    {
+      hiddeRight(this.mCurItemView);
+      return;
+    }
+    if ((i < 0) && (j > this.mCurViewRVWidth * 0.3F))
+    {
+      showRight(this.mCurItemView);
+      return;
+    }
+    if ((this.mIsShowRV) && (j < this.mCurViewRVWidth * 0.7F))
+    {
+      hiddeRight(this.mCurItemView);
+      return;
+    }
+    if (j > this.mCurViewRVWidth * 0.3F)
+    {
+      showRight(this.mCurItemView);
+      return;
+    }
+    hiddeRight(this.mCurItemView);
+  }
+  
+  private int getAnimDuration(int paramInt1, int paramInt2)
+  {
     if (paramInt1 > 0) {
-      i = (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
+      return (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
     }
-    return i;
+    return 300;
   }
   
-  private void a()
+  private int getScrollVelocity()
   {
-    int i = a();
-    int j = this.jdField_b_of_type_AndroidViewView.getScrollX();
-    if (i > this.e)
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if (i < -this.e)
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((i > 0) && (j < this.f * 0.7F))
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((i < 0) && (j > this.f * 0.3F))
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((this.jdField_b_of_type_Boolean) && (j < this.f * 0.7F))
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if (j > this.f * 0.3F)
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    a(this.jdField_b_of_type_AndroidViewView);
+    this.velocityTracker.computeCurrentVelocity(1000);
+    return (int)this.velocityTracker.getXVelocity();
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  private void hiddeRight(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    int i;
+    if (paramView != null) {
+      i = paramView.getScrollX();
+    } else {
+      i = 0;
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null) {}
-    for (int i = paramView.getScrollX();; i = 0)
+    Object localObject = this.mListener;
+    if (localObject != null) {
+      ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).updateCurShowRightView(null);
+    }
+    if (i != 0)
     {
-      if (this.jdField_a_of_type_Bibg != null) {
-        this.jdField_a_of_type_Bibg.a(null);
+      int j;
+      if ((paramView.getTag(-3) instanceof Integer)) {
+        j = ((Integer)paramView.getTag(-3)).intValue();
+      } else {
+        j = 0;
       }
-      if (i != 0) {
-        if (!(paramView.getTag(-3) instanceof Integer)) {
-          break label142;
-        }
+      localObject = this.mToAnimView;
+      if ((localObject != paramView) && (localObject != null)) {
+        ((View)localObject).scrollTo(0, 0);
       }
-      label142:
-      for (int j = ((Integer)paramView.getTag(-3)).intValue();; j = 0)
-      {
-        if ((this.jdField_c_of_type_AndroidViewView != paramView) && (this.jdField_c_of_type_AndroidViewView != null)) {
-          this.jdField_c_of_type_AndroidViewView.scrollTo(0, 0);
-        }
-        d();
-        this.jdField_c_of_type_AndroidViewView = paramView;
-        int k = -i;
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_Bibe == null);
-        this.jdField_a_of_type_Bibe.b(this.jdField_c_of_type_AndroidViewView);
-        return;
-      }
+      cancelShowHideAnim();
+      this.mToAnimView = paramView;
+      int k = -i;
+      this.mScroller.startScroll(i, 0, k, 0, getAnimDuration(j, k));
+      this.mScrollerHandler.sendEmptyMessage(1);
+      return;
+    }
+    paramView = this.mRIMListenr;
+    if (paramView != null) {
+      paramView.onRightIconMenuHide(this.mToAnimView);
     }
   }
   
-  private boolean a(float paramFloat)
+  private boolean isHitCurItemLeft(float paramFloat)
   {
-    return paramFloat < getWidth() - this.f;
+    return paramFloat < getWidth() - this.mCurViewRVWidth;
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  private boolean isShowingRightView(View paramView)
   {
-    if ((paramFloat1 > this.g) || (paramFloat2 > this.g))
+    return (paramView != null) && (paramView.getScrollX() >= this.scaledTouchSlop);
+  }
+  
+  private boolean judgeScrollDirection(float paramFloat1, float paramFloat2)
+  {
+    int i = this.scaledTouchSlop;
+    if ((paramFloat1 <= i) && (paramFloat2 <= i)) {
+      return false;
+    }
+    if ((paramFloat1 > this.scaledTouchSlop) && (paramFloat2 / paramFloat1 < 0.6F))
     {
-      if ((paramFloat1 > this.g) && (paramFloat2 / paramFloat1 < 0.6F))
-      {
-        this.jdField_a_of_type_Byte = 1;
-        return true;
-      }
-      this.jdField_a_of_type_Byte = 2;
+      this.mSlideDir = 1;
       return true;
     }
-    return false;
-  }
-  
-  private void b(View paramView)
-  {
-    int j;
-    if (paramView != null)
-    {
-      j = paramView.getScrollX();
-      i = j;
-      if (this.jdField_a_of_type_Bibg != null) {
-        this.jdField_a_of_type_Bibg.a(paramView);
-      }
-    }
-    for (int i = j;; i = 0)
-    {
-      j = this.f;
-      if ((j == 0) && (paramView != null) && ((paramView.getTag(-3) instanceof Integer))) {
-        j = ((Integer)paramView.getTag(-3)).intValue();
-      }
-      for (;;)
-      {
-        if (i != j)
-        {
-          if ((this.jdField_c_of_type_AndroidViewView != paramView) && (this.jdField_c_of_type_AndroidViewView != null)) {
-            this.jdField_c_of_type_AndroidViewView.scrollTo(0, 0);
-          }
-          d();
-          this.jdField_c_of_type_AndroidViewView = paramView;
-          k = j - i;
-          this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-        }
-        while (this.jdField_a_of_type_Bibe == null)
-        {
-          int k;
-          return;
-        }
-        this.jdField_a_of_type_Bibe.a(paramView);
-        return;
-      }
-    }
-  }
-  
-  private boolean b(View paramView)
-  {
-    return (paramView != null) && (paramView.getScrollX() >= this.g);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_c_of_type_AndroidViewView = null;
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-    {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, View paramView, int paramInt3)
-  {
-    paramInt2 = this.jdField_c_of_type_Int;
-    paramInt1 = paramView.getScrollX() - (paramInt1 - paramInt2);
-    if (paramInt1 > paramInt3) {}
-    for (;;)
-    {
-      paramView.scrollTo(paramInt3, 0);
-      return;
-      if (paramInt1 < 0) {
-        paramInt3 = 0;
-      } else {
-        paramInt3 = paramInt1;
-      }
-    }
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (this.jdField_a_of_type_Bibg != null) {
-      return this.jdField_a_of_type_Bibg.a(paramView);
-    }
+    this.mSlideDir = 2;
     return true;
   }
   
-  public void b()
+  private void recycleVelocityTracker()
   {
-    int i;
-    int j;
-    if (!b(this.jdField_b_of_type_AndroidViewView))
+    VelocityTracker localVelocityTracker = this.velocityTracker;
+    if (localVelocityTracker != null)
     {
-      i = getFirstVisiblePosition() - getHeaderViewsCount();
-      j = getLastVisiblePosition();
-    }
-    for (;;)
-    {
-      if (i <= j)
-      {
-        View localView = getChildAt(i);
-        if (b(localView)) {
-          this.jdField_b_of_type_AndroidViewView = localView;
-        }
-      }
-      else
-      {
-        a(this.jdField_b_of_type_AndroidViewView);
-        return;
-      }
-      i += 1;
+      localVelocityTracker.recycle();
+      this.velocityTracker = null;
     }
   }
   
-  public void c()
+  private void showRight(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_b_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.d = -1;
+    int i;
+    if (paramView != null)
+    {
+      i = paramView.getScrollX();
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).updateCurShowRightView(paramView);
+      }
+    }
+    else
+    {
+      i = 0;
+    }
+    int k = this.mCurViewRVWidth;
+    int j = k;
+    if (k == 0)
+    {
+      j = k;
+      if (paramView != null)
+      {
+        j = k;
+        if ((paramView.getTag(-3) instanceof Integer)) {
+          j = ((Integer)paramView.getTag(-3)).intValue();
+        }
+      }
+    }
+    if (i != j)
+    {
+      localObject = this.mToAnimView;
+      if ((localObject != paramView) && (localObject != null)) {
+        ((View)localObject).scrollTo(0, 0);
+      }
+      cancelShowHideAnim();
+      this.mToAnimView = paramView;
+      k = j - i;
+      this.mScroller.startScroll(i, 0, k, 0, getAnimDuration(j, k));
+      this.mScrollerHandler.sendEmptyMessage(0);
+      return;
+    }
+    Object localObject = this.mRIMListenr;
+    if (localObject != null) {
+      ((SwipPinnedHeaderExpandableListView.RightIconMenuListener)localObject).onRightIconMenuShow(paramView);
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    boolean bool;
+    float f;
+    if (i != 0)
     {
-    default: 
-      bool = false;
+      if (i != 1)
+      {
+        if (i != 2) {
+          return false;
+        }
+        paramMessage = this.mListener;
+        if (paramMessage != null)
+        {
+          paramMessage.hideMenuPop();
+          return true;
+        }
+      }
+      else
+      {
+        bool = this.mScroller.computeScrollOffset();
+        f = this.mScroller.getCurrX();
+        paramMessage = this.mToAnimView;
+        if (paramMessage != null)
+        {
+          paramMessage.scrollTo((int)f, 0);
+          invalidate();
+        }
+        if (bool)
+        {
+          this.mScrollerHandler.sendEmptyMessage(1);
+          return true;
+        }
+        paramMessage = this.mRIMListenr;
+        if (paramMessage != null) {
+          paramMessage.onRightIconMenuHide(this.mToAnimView);
+        }
+        this.mToAnimView = null;
+        return true;
+      }
     }
-    do
+    else
     {
-      return bool;
-      bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-      float f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      if (this.jdField_c_of_type_AndroidViewView != null)
+      bool = this.mScroller.computeScrollOffset();
+      f = this.mScroller.getCurrX();
+      paramMessage = this.mToAnimView;
+      if (paramMessage != null)
       {
-        this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
+        paramMessage.scrollTo((int)f, 0);
         invalidate();
       }
       if (bool)
       {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+        this.mScrollerHandler.sendEmptyMessage(0);
         return true;
       }
-      if (this.jdField_a_of_type_Bibe != null) {
-        this.jdField_a_of_type_Bibe.a(this.jdField_c_of_type_AndroidViewView);
+      paramMessage = this.mRIMListenr;
+      if (paramMessage != null) {
+        paramMessage.onRightIconMenuShow(this.mToAnimView);
       }
-      this.jdField_c_of_type_AndroidViewView = null;
-      return true;
-      bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-      f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      if (this.jdField_c_of_type_AndroidViewView != null)
-      {
-        this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
-        invalidate();
-      }
-      if (bool)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return true;
-      }
-      if (this.jdField_a_of_type_Bibe != null) {
-        this.jdField_a_of_type_Bibe.b(this.jdField_c_of_type_AndroidViewView);
-      }
-      this.jdField_c_of_type_AndroidViewView = null;
-      return true;
-    } while (this.jdField_a_of_type_Bibg == null);
-    this.jdField_a_of_type_Bibg.e();
+      this.mToAnimView = null;
+    }
     return true;
+  }
+  
+  public void hideCurShowingRightView()
+  {
+    if (!isShowingRightView(this.mCurItemView))
+    {
+      int i = getFirstVisiblePosition() - getHeaderViewsCount();
+      int j = getLastVisiblePosition();
+      while (i <= j)
+      {
+        View localView = getChildAt(i);
+        if (isShowingRightView(localView))
+        {
+          this.mCurItemView = localView;
+          break;
+        }
+        i += 1;
+      }
+    }
+    hiddeRight(this.mCurItemView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool2 = super.onInterceptTouchEvent(paramMotionEvent);
-      return bool2;
+    if (!this.mDragEnable) {
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
     int j = (int)(paramMotionEvent.getX() + 0.5F);
     int i = (int)(paramMotionEvent.getY() + 0.5F);
     int k = paramMotionEvent.getAction();
-    label72:
-    boolean bool1;
-    switch (k)
+    if (k != 0)
     {
-    default: 
-      bool1 = false;
-      label75:
-      if ((k == 0) && (this.jdField_b_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_Bibg != null) {
-          this.jdField_a_of_type_Bibg.a(true);
-        }
-        d();
-      }
-      break;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_Byte = 0;
-      if (this.jdField_a_of_type_Bibg != null) {
-        this.jdField_a_of_type_Bibg.a(null);
-      }
-      this.jdField_a_of_type_Int = j;
-      this.jdField_c_of_type_Int = j;
-      this.jdField_b_of_type_Int = i;
-      this.d = i;
-      this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
-      this.jdField_b_of_type_Boolean = b(this.jdField_a_of_type_AndroidViewView);
-      int m;
-      int n;
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        m = getFirstVisiblePosition();
-        n = getHeaderViewsCount();
-        i = getLastVisiblePosition();
-      }
-      for (;;)
-      {
-        if (i >= m - n)
+      if (k != 1) {
+        if (k != 2)
         {
-          View localView = getChildAt(i);
-          this.jdField_b_of_type_Boolean = b(localView);
-          if (this.jdField_b_of_type_Boolean) {
-            this.jdField_a_of_type_AndroidViewView = localView;
+          if (k != 3) {
+            break label189;
           }
         }
         else
         {
-          this.f = 0;
-          this.jdField_b_of_type_AndroidViewView = null;
-          i = this.jdField_b_of_type_Int;
-          if (isOverscrollHeadVisiable()) {
-            i = this.jdField_b_of_type_Int + getScrollY();
+          if (this.mCurViewRVWidth <= 0) {
+            break label189;
           }
-          i = pointToPosition(this.jdField_a_of_type_Int, i);
-          if (i >= 0)
-          {
-            this.jdField_b_of_type_AndroidViewView = getChildAt(i - getFirstVisiblePosition());
-            if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView.getTag(-3) instanceof Integer))) {
-              this.f = ((Integer)this.jdField_b_of_type_AndroidViewView.getTag(-3)).intValue();
-            }
-            if ((this.f > 0) && (!a(this.jdField_b_of_type_AndroidViewView))) {
-              this.f = 0;
-            }
+          if (this.mSlideDir == 0) {
+            judgeScrollDirection(Math.abs(j - this.mStartX), Math.abs(i - this.mStartY));
           }
-          if ((!this.jdField_b_of_type_Boolean) || ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(j)))) {
-            break label412;
+          if (this.mSlideDir != 1) {
+            break label189;
           }
-          bool1 = true;
-          break;
+          if (j < this.mStartX) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          bool1 = bool2;
+          if (!bool2) {
+            break label488;
+          }
+          this.mScrollerHandler.sendEmptyMessage(2);
+          bool1 = bool2;
+          break label488;
         }
-        i -= 1;
       }
-      label412:
+      if (this.mIsShowRV) {
+        hiddeRight(this.mPreItemView);
+      }
+      this.mStartX = -1;
+      this.mCurX = -1;
+      this.mStartY = -1;
+      this.mCurY = -1;
+    }
+    label189:
+    Object localObject;
+    do
+    {
       bool1 = false;
-      break label75;
-      if (this.f <= 0) {
-        break label72;
+      break;
+      this.mSlideDir = 0;
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).updateCurShowRightView(null);
       }
-      if (this.jdField_a_of_type_Byte == 0) {
-        a(Math.abs(j - this.jdField_a_of_type_Int), Math.abs(i - this.jdField_b_of_type_Int));
-      }
-      if (this.jdField_a_of_type_Byte != 1) {
-        break label72;
-      }
-      if (j < this.jdField_a_of_type_Int) {}
-      for (bool2 = true;; bool2 = false)
+      this.mStartX = j;
+      this.mCurX = j;
+      this.mStartY = i;
+      this.mCurY = i;
+      this.mPreItemView = this.mCurItemView;
+      this.mIsShowRV = isShowingRightView(this.mPreItemView);
+      if (!this.mIsShowRV)
       {
-        bool1 = bool2;
-        if (!bool2) {
-          break;
+        int m = getFirstVisiblePosition();
+        int n = getHeaderViewsCount();
+        i = getLastVisiblePosition();
+        while (i >= m - n)
+        {
+          localObject = getChildAt(i);
+          this.mIsShowRV = isShowingRightView((View)localObject);
+          if (this.mIsShowRV)
+          {
+            this.mPreItemView = ((View)localObject);
+            break;
+          }
+          i -= 1;
         }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        bool1 = bool2;
-        break;
       }
-      if (this.jdField_b_of_type_Boolean) {
-        a(this.jdField_a_of_type_AndroidViewView);
+      this.mCurViewRVWidth = 0;
+      this.mCurItemView = null;
+      i = this.mStartY;
+      if (isOverscrollHeadVisiable()) {
+        i = this.mStartY + getScrollY();
       }
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.d = -1;
-      break label72;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Bibg != null)) {
-        this.jdField_a_of_type_Bibg.a(false);
+      i = pointToPosition(this.mStartX, i);
+      if (i >= 0)
+      {
+        this.mCurItemView = getChildAt(i - getFirstVisiblePosition());
+        localObject = this.mCurItemView;
+        if ((localObject != null) && ((((View)localObject).getTag(-3) instanceof Integer))) {
+          this.mCurViewRVWidth = ((Integer)this.mCurItemView.getTag(-3)).intValue();
+        }
+        if ((this.mCurViewRVWidth > 0) && (!supportSwip(this.mCurItemView))) {
+          this.mCurViewRVWidth = 0;
+        }
+      }
+    } while ((!this.mIsShowRV) || ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(j))));
+    boolean bool1 = true;
+    label488:
+    if ((k == 0) && (this.mIsShowRV))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).interceptTouchEvent(true);
+      }
+      cancelShowHideAnim();
+    }
+    else if ((k == 1) || (k == 3))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).interceptTouchEvent(false);
       }
     }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = super.onInterceptTouchEvent(paramMotionEvent);
+    }
+    return bool2;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool2 = super.onTouchEvent(paramMotionEvent);
-      return bool2;
+    if (!this.mDragEnable) {
+      return super.onTouchEvent(paramMotionEvent);
     }
-    a(paramMotionEvent);
+    addVelocityTracker(paramMotionEvent);
     int i = (int)(paramMotionEvent.getX() + 0.5F);
     int j = (int)(paramMotionEvent.getY() + 0.5F);
     int k = paramMotionEvent.getAction();
     boolean bool1;
-    switch (k)
+    label265:
+    label268:
+    label282:
+    label285:
+    Object localObject;
+    if (k != 0)
     {
-    default: 
-      bool1 = false;
-    case 0: 
-    case 2: 
-      for (;;)
+      if (k != 1)
       {
-        if ((k == 0) && (this.jdField_b_of_type_Boolean))
+        if (k != 2)
         {
-          if (this.jdField_a_of_type_Bibg != null) {
-            this.jdField_a_of_type_Bibg.a(true);
-          }
-          label112:
-          bool2 = bool1;
-          if (bool1) {
-            break;
-          }
-          return super.onTouchEvent(paramMotionEvent);
-          if ((this.jdField_b_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))) {}
-          for (bool2 = true;; bool2 = false)
-          {
-            bool1 = bool2;
-            if (!this.jdField_b_of_type_Boolean) {
-              break;
-            }
-            bool1 = bool2;
-            if (this.jdField_a_of_type_AndroidViewView == this.jdField_b_of_type_AndroidViewView) {
-              break;
-            }
-            a(this.jdField_a_of_type_AndroidViewView);
-            bool1 = bool2;
-            break;
-          }
-          if (this.jdField_b_of_type_Boolean) {
-            if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))
-            {
-              bool2 = true;
-              label234:
-              bool1 = bool2;
-              if (this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView)
-              {
-                if (this.jdField_a_of_type_Byte == 0)
-                {
-                  bool1 = bool2;
-                  if (!a(Math.abs(i - this.jdField_a_of_type_Int), Math.abs(j - this.jdField_b_of_type_Int))) {
-                    continue;
-                  }
-                }
-                bool1 = bool2;
-                if (this.jdField_a_of_type_Byte == 1)
-                {
-                  a(i, j, this.jdField_b_of_type_AndroidViewView, this.f);
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_Int = i;
-      this.d = j;
-      break;
-      bool2 = false;
-      break label234;
-      if (this.f == 0)
-      {
-        bool1 = false;
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.jdField_a_of_type_Int), Math.abs(j - this.jdField_b_of_type_Int))))
-        {
-          bool1 = false;
-          break;
-        }
-        if (this.jdField_a_of_type_Byte == 1)
-        {
-          a(i, j, this.jdField_b_of_type_AndroidViewView, this.f);
-          bool1 = true;
-          continue;
-          if (this.jdField_b_of_type_Boolean) {
-            if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))
-            {
-              bool2 = true;
-              label446:
-              bool1 = bool2;
-              if (this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView)
-              {
-                if (this.jdField_a_of_type_Byte != 1) {
-                  break label509;
-                }
-                a();
-                bool1 = true;
-              }
-            }
-          }
-          for (;;)
-          {
-            e();
-            this.jdField_a_of_type_Int = -1;
-            this.jdField_c_of_type_Int = -1;
-            this.jdField_b_of_type_Int = -1;
-            this.d = -1;
-            break;
-            bool2 = false;
-            break label446;
-            label509:
-            a(this.jdField_b_of_type_AndroidViewView);
-            bool1 = bool2;
-            continue;
-            if (this.f == 0)
-            {
-              bool1 = false;
-            }
-            else
-            {
-              if (this.jdField_a_of_type_Byte == 1)
-              {
-                a();
-                bool1 = true;
-                continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Bibg == null)) {
-                  break label112;
-                }
-                this.jdField_a_of_type_Bibg.a(false);
-                break label112;
-              }
-              bool1 = false;
-            }
+          if (k == 3) {
+            break label285;
           }
         }
         else
         {
-          bool1 = false;
+          if (this.mIsShowRV)
+          {
+            if ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(i))) {
+              bool1 = false;
+            } else {
+              bool1 = true;
+            }
+            bool2 = bool1;
+            if (this.mCurItemView != this.mPreItemView) {
+              break label268;
+            }
+            if ((this.mSlideDir == 0) && (!judgeScrollDirection(Math.abs(i - this.mStartX), Math.abs(j - this.mStartY)))) {
+              break label282;
+            }
+            bool2 = bool1;
+            if (this.mSlideDir != 1) {
+              break label268;
+            }
+            scrollItemView(i, j, this.mCurItemView, this.mCurViewRVWidth);
+            break label265;
+          }
+          if (this.mCurViewRVWidth != 0) {}
+        }
+        do
+        {
+          bool2 = false;
+          break;
+          if ((this.mSlideDir == 0) && (!judgeScrollDirection(Math.abs(i - this.mStartX), Math.abs(j - this.mStartY))))
+          {
+            bool1 = false;
+            break label505;
+          }
+        } while (this.mSlideDir != 1);
+        scrollItemView(i, j, this.mCurItemView, this.mCurViewRVWidth);
+        bool2 = true;
+        this.mCurX = i;
+        this.mCurY = j;
+        bool1 = bool2;
+        break label505;
+      }
+      if (this.mIsShowRV)
+      {
+        if ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(i))) {
+          bool2 = false;
+        } else {
+          bool2 = true;
+        }
+        localObject = this.mCurItemView;
+        bool1 = bool2;
+        if (localObject != this.mPreItemView) {
+          break label402;
+        }
+        if (this.mSlideDir == 1)
+        {
+          endOfTouch();
+        }
+        else
+        {
+          hiddeRight((View)localObject);
+          bool1 = bool2;
+          break label402;
+        }
+      }
+      else
+      {
+        if ((this.mCurViewRVWidth == 0) || (this.mSlideDir != 1)) {
+          break label399;
+        }
+        endOfTouch();
+      }
+      bool1 = true;
+      break label402;
+      label399:
+      bool1 = false;
+      label402:
+      recycleVelocityTracker();
+      this.mStartX = -1;
+      this.mCurX = -1;
+      this.mStartY = -1;
+      this.mCurY = -1;
+    }
+    else
+    {
+      if ((this.mIsShowRV) && ((this.mCurItemView != this.mPreItemView) || (isHitCurItemLeft(i)))) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      bool1 = bool2;
+      if (this.mIsShowRV)
+      {
+        localObject = this.mPreItemView;
+        bool1 = bool2;
+        if (localObject != this.mCurItemView)
+        {
+          hiddeRight((View)localObject);
+          bool1 = bool2;
         }
       }
     }
+    label505:
+    if ((k == 0) && (this.mIsShowRV))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).interceptTouchEvent(true);
+      }
+    }
+    else if ((k == 1) || (k == 3))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipPinnedHeaderExpandableListView.SwipListListener)localObject).interceptTouchEvent(false);
+      }
+    }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = super.onTouchEvent(paramMotionEvent);
+    }
+    return bool2;
+  }
+  
+  public void resetState()
+  {
+    this.mPreItemView = null;
+    this.mCurItemView = null;
+    this.mStartX = -1;
+    this.mCurX = -1;
+    this.mStartY = -1;
+    this.mCurY = -1;
+  }
+  
+  protected void scrollItemView(int paramInt1, int paramInt2, View paramView, int paramInt3)
+  {
+    paramInt2 = this.mCurX;
+    paramInt2 = paramView.getScrollX() - (paramInt1 - paramInt2);
+    if (paramInt2 > paramInt3)
+    {
+      paramInt1 = paramInt3;
+    }
+    else
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 < 0) {
+        paramInt1 = 0;
+      }
+    }
+    paramView.scrollTo(paramInt1, 0);
   }
   
   public void setAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
     super.setAdapter(paramExpandableListAdapter);
-    if ((paramExpandableListAdapter instanceof bibg)) {
-      this.jdField_a_of_type_Bibg = ((bibg)paramExpandableListAdapter);
+    if ((paramExpandableListAdapter instanceof SwipPinnedHeaderExpandableListView.SwipListListener)) {
+      this.mListener = ((SwipPinnedHeaderExpandableListView.SwipListListener)paramExpandableListAdapter);
     }
   }
   
   public void setDragEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (!this.jdField_a_of_type_Boolean) {
-      b();
+    this.mDragEnable = paramBoolean;
+    if (!this.mDragEnable) {
+      hideCurShowingRightView();
     }
   }
   
-  public void setRightIconMenuListener(bibe parambibe)
+  public void setRightIconMenuListener(SwipPinnedHeaderExpandableListView.RightIconMenuListener paramRightIconMenuListener)
   {
-    this.jdField_a_of_type_Bibe = parambibe;
+    this.mRIMListenr = paramRightIconMenuListener;
   }
   
-  public void setSwipListListener(bibg parambibg)
+  public void setSwipListListener(SwipPinnedHeaderExpandableListView.SwipListListener paramSwipListListener)
   {
-    this.jdField_a_of_type_Bibg = parambibg;
+    this.mListener = paramSwipListListener;
+  }
+  
+  public boolean supportSwip(View paramView)
+  {
+    SwipPinnedHeaderExpandableListView.SwipListListener localSwipListListener = this.mListener;
+    if (localSwipListListener != null) {
+      return localSwipListListener.supportSwip(paramView);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.SwipPinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

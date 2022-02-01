@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stBlockRecommPersonRsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   
   public stBlockRecommPersonRsp() {}
   
@@ -28,7 +28,7 @@ public final class stBlockRecommPersonRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stBlockRecommPersonRsp
  * JD-Core Version:    0.7.0.1
  */

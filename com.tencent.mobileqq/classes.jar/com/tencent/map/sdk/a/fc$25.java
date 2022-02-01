@@ -15,7 +15,12 @@ final class fc$25
   
   public final String toString()
   {
-    return "Factory[typeHierarchy=" + this.a.getName() + ",adapter=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder("Factory[typeHierarchy=");
+    localStringBuilder.append(this.a.getName());
+    localStringBuilder.append(",adapter=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

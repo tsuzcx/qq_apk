@@ -32,7 +32,7 @@ public abstract class ParallelJobSegment<IN, OUT>
     this.mJobType = paramInt;
   }
   
-  public void call(IN paramIN)
+  protected void call(IN paramIN)
   {
     ParallelJobSegment.ThreadOffJob localThreadOffJob = new ParallelJobSegment.ThreadOffJob(this, this.mTAG, null);
     localThreadOffJob.setJobType(this.mJobType);
@@ -44,7 +44,7 @@ public abstract class ParallelJobSegment<IN, OUT>
     this.mFuture = Bosses.get().postJob(localThreadOffJob, paramIN);
   }
   
-  public void error(Error paramError)
+  protected void error(Error paramError)
   {
     ParallelJobSegment.ThreadOffErrJob localThreadOffErrJob = new ParallelJobSegment.ThreadOffErrJob(this, this.mTAG, null);
     localThreadOffErrJob.setJobType(this.mJobType);
@@ -56,9 +56,10 @@ public abstract class ParallelJobSegment<IN, OUT>
     this.mFuture = Bosses.get().postJob(localThreadOffErrJob, paramError);
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
-    if (this.mFuture == null) {
+    Future localFuture = this.mFuture;
+    if (localFuture == null) {
       return;
     }
     if (this.mNeedSchedule)
@@ -66,7 +67,7 @@ public abstract class ParallelJobSegment<IN, OUT>
       Bosses.get().cancelJob(this.mFuture, true);
       return;
     }
-    this.mFuture.cancel(true);
+    localFuture.cancel(true);
   }
   
   protected abstract void runSegment(JobContext paramJobContext, IN paramIN);
@@ -78,7 +79,7 @@ public abstract class ParallelJobSegment<IN, OUT>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.parallel.ParallelJobSegment
  * JD-Core Version:    0.7.0.1
  */

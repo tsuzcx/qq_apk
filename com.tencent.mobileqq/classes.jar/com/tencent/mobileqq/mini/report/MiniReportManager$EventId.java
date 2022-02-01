@@ -7,7 +7,11 @@ public class MiniReportManager$EventId
   public static final int APP_CREATE = 24;
   public static final int APP_DOWNLOAD_END = 620;
   public static final int APP_DOWNLOAD_START = 619;
+  public static final int APP_EMBEDDED_LIVE_PLAYER = 710;
+  public static final int APP_EMBEDDED_LIVE_PLAYER_RESULT = 711;
   public static final int APP_EMBEDDED_VIDEO = 700;
+  public static final int APP_EMBEDDED_VIDEO_RESULT = 701;
+  public static final int APP_ERR_WHITE_SCREEN = 150;
   public static final int APP_EXIT = 22;
   public static final int APP_FIRST_NEWPAGE_RESULT = 638;
   public static final int APP_FIRST_RENDER_RESULT = 636;
@@ -49,6 +53,7 @@ public class MiniReportManager$EventId
   public static final int LOADING_PAGE_CLOSE_CLICK = 1026;
   public static final int MEMORY_GROWTH = 643;
   public static final int MEMORY_PERFORMANCE = 631;
+  public static final int MINI_APP_DOWNLOAD_WITH_CACHE = 1044;
   public static final int MINI_APP_START_BY_CACHE = 1028;
   public static final int MINI_GAME_BASE_LIB_INSTALL_SKIP = 1012;
   public static final int MINI_GAME_BASE_LIB_LOAD_JAR = 1003;
@@ -68,6 +73,7 @@ public class MiniReportManager$EventId
   public static final int MINI_GAME_LOAD_BASE_LIB_END = 1015;
   public static final int MINI_GAME_LOAD_MAIN_PKG = 1007;
   public static final int MINI_GAME_LOAD_MAIN_PKG_END = 1008;
+  public static final int MINI_GAME_LOAD_SO_EXCEPTION = 1050;
   public static final int MINI_GAME_LOAD_SUB_PKG = 1009;
   public static final int MINI_GAME_LOAD_SUB_PKG_END = 1010;
   public static final int MINI_GAME_NO_REFRESH = 1019;
@@ -76,6 +82,10 @@ public class MiniReportManager$EventId
   public static final int MINI_GAME_STAY_DURATION = 1021;
   public static final int MINI_GAME_SURVIVAL = 1017;
   public static final int MINI_GAME_TWICE_LAUNCH = 1023;
+  public static final int MINI_SEARCH_DF_LAUNCH = 1060;
+  public static final int MINI_SEARCH_DF_LOAD_END = 1063;
+  public static final int MINI_SEARCH_DF_LOAD_START = 1062;
+  public static final int MINI_SEARCH_DF_RESULT = 1061;
   public static final int PAGE_CLICK = 612;
   public static final int PAGE_FRAME_LOAD_END = 624;
   public static final int PAGE_FRAME_LOAD_START = 623;
@@ -98,6 +108,7 @@ public class MiniReportManager$EventId
   public static final int SERVICE_JS_READ_START = 10;
   public static final int SHOW = 21;
   public static final int SSO_CMD_END = 601;
+  public static final int SSO_CMD_RESULT = 599;
   public static final int SSO_CMD_START = 600;
   public static final int STEP_CREATE_SURFACEVIEW = 1039;
   public static final int STEP_FIRST_FRAME_FROM_CREATE = 1043;
@@ -132,7 +143,7 @@ public class MiniReportManager$EventId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniReportManager.EventId
  * JD-Core Version:    0.7.0.1
  */

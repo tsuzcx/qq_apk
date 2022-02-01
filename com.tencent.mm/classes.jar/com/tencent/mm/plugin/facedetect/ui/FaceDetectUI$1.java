@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.facedetect.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class FaceDetectUI$1
   implements View.OnClickListener
@@ -12,10 +14,14 @@ final class FaceDetectUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(458);
-    ab.i("MicroMsg.FaceDetectUI", "hy: user cancelled with left button");
-    FaceDetectUI.a(this.mmb);
-    AppMethodBeat.o(458);
+    AppMethodBeat.i(103977);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/facedetect/ui/FaceDetectUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    Log.i("MicroMsg.FaceDetectUI", "hy: user cancelled with left button");
+    FaceDetectUI.a(this.zWb);
+    a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(103977);
   }
 }
 

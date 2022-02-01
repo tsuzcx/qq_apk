@@ -1,28 +1,15 @@
 package kotlinx.coroutines.a;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/internal/Symbol;", "", "symbol", "", "(Ljava/lang/String;)V", "getSymbol", "()Ljava/lang/String;", "toString", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"DEFAULT_CLOSE_MESSAGE", "", "cancelConsumed", "", "Lkotlinx/coroutines/channels/ReceiveChannel;", "cause", "", "consume", "R", "E", "Lkotlinx/coroutines/channels/BroadcastChannel;", "block", "Lkotlin/Function1;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/channels/BroadcastChannel;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "(Lkotlinx/coroutines/channels/ReceiveChannel;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "consumeEach", "action", "(Lkotlinx/coroutines/channels/BroadcastChannel;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "(Lkotlinx/coroutines/channels/ReceiveChannel;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "onReceiveOrNull", "Lkotlinx/coroutines/selects/SelectClause1;", "", "receiveOrNull", "(Lkotlinx/coroutines/channels/ReceiveChannel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "toList", "", "kotlinx-coroutines-core"}, k=5, mv={1, 5, 1}, xi=48, xs="kotlinx/coroutines/channels/ChannelsKt")
 public final class m
 {
-  private final String CJt;
-  
-  public m(String paramString)
-  {
-    AppMethodBeat.i(118391);
-    this.CJt = paramString;
-    AppMethodBeat.o(118391);
-  }
-  
-  public final String toString()
-  {
-    return this.CJt;
-  }
+  public static final void a(x<?> arg0, Throwable arg1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.m
  * JD-Core Version:    0.7.0.1
  */

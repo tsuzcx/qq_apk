@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-
 class QQToast$ProtectedToast$1
   implements Runnable
 {
@@ -12,13 +8,11 @@ class QQToast$ProtectedToast$1
   public void run()
   {
     this.this$0.cancel();
-    this.this$0.getView().findViewById(2131378106);
-    AnimationUtils.loadAnimation(BaseApplicationImpl.context, 2130772232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.ProtectedToast.1
  * JD-Core Version:    0.7.0.1
  */

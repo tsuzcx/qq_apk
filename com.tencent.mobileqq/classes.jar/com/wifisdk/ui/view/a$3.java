@@ -21,14 +21,15 @@ class a$3
       a.h(this.uU).setVisibility(8);
       a.i(this.uU).setVisibility(8);
       a.j(this.uU).setVisibility(8);
-      a.a(this.uU, a.g(this.uU));
+      a locala = this.uU;
+      a.a(locala, a.g(locala));
     }
     a.k(this.uU);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.wifisdk.ui.view.a.3
  * JD-Core Version:    0.7.0.1
  */

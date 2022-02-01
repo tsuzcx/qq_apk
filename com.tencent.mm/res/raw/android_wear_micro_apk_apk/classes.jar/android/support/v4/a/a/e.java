@@ -1,18 +1,19 @@
 package android.support.v4.a.a;
 
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
 final class e
   extends d
 {
-  public final boolean a(Drawable paramDrawable, int paramInt)
+  e(d paramd)
   {
-    return paramDrawable.setLayoutDirection(paramInt);
+    super(paramd);
   }
   
-  public final Drawable b(Drawable paramDrawable)
+  public final Drawable newDrawable(Resources paramResources)
   {
-    return paramDrawable;
+    return new c(this, paramResources);
   }
 }
 

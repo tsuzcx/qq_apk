@@ -13,16 +13,16 @@ final class zzax
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60810);
+    AppMethodBeat.i(11302);
     zzav.zza(this.zzit, (GoogleApiClient)this.zziu.get(), this.zziv, true);
-    AppMethodBeat.o(60810);
+    AppMethodBeat.o(11302);
   }
   
   public final void onConnectionSuspended(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzax
  * JD-Core Version:    0.7.0.1
  */

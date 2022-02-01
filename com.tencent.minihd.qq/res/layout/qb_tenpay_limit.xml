@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <RelativeLayout android:background="@drawable/qb_tenpay_border" android:paddingLeft="15.0dip" android:paddingRight="1.0dip" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_account_balance" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/qb_tenpay_label" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_orange_color" android:id="@id/balance_textview" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2000元" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0sp" android:paddingTop="8.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="@string/qb_tenpay_hb_cert" />
+    <Button android:id="@id/bin_confirm" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="9.0dip" android:text="@string/qb_tenpay_hb_newuser" style="@style/qb_tenpay_btn_submit" />
+</LinearLayout>

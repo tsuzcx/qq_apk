@@ -8,14 +8,14 @@ import java.util.concurrent.TimeUnit;
 public class el
   extends ThreadPoolExecutor
 {
-  private el.a ou = null;
+  private a ou = null;
   
-  public el(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, RejectedExecutionHandler paramRejectedExecutionHandler)
+  public el(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue, RejectedExecutionHandler paramRejectedExecutionHandler)
   {
     super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, new ek(), paramRejectedExecutionHandler);
   }
   
-  public void a(el.a parama)
+  public void a(a parama)
   {
     this.ou = parama;
   }
@@ -23,22 +23,31 @@ public class el
   protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
     super.afterExecute(paramRunnable, paramThrowable);
-    if (this.ou != null) {
-      this.ou.afterExecute(paramRunnable, paramThrowable);
+    a locala = this.ou;
+    if (locala != null) {
+      locala.afterExecute(paramRunnable, paramThrowable);
     }
   }
   
   protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
     super.beforeExecute(paramThread, paramRunnable);
-    if (this.ou != null) {
-      this.ou.beforeExecute(paramThread, paramRunnable);
+    a locala = this.ou;
+    if (locala != null) {
+      locala.beforeExecute(paramThread, paramRunnable);
     }
   }
   
   public void execute(Runnable paramRunnable)
   {
     super.execute(paramRunnable);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void afterExecute(Runnable paramRunnable, Throwable paramThrowable);
+    
+    public abstract void beforeExecute(Thread paramThread, Runnable paramRunnable);
   }
 }
 

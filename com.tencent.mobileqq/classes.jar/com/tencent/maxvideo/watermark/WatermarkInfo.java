@@ -28,7 +28,7 @@ public class WatermarkInfo
   
   public boolean hasBGMusic()
   {
-    return !TextUtils.isEmpty(this.mBgMusicPath);
+    return TextUtils.isEmpty(this.mBgMusicPath) ^ true;
   }
   
   public boolean isYellow()
@@ -38,17 +38,31 @@ public class WatermarkInfo
   
   public String toJson()
   {
-    return "{\"materialPath\":\"" + this.mJsonFilePath + "\",\"materialDirPath\":\"" + this.mDir + "\"}";
+    StringBuilder localStringBuilder = new StringBuilder("{\"materialPath\":\"");
+    localStringBuilder.append(this.mJsonFilePath);
+    localStringBuilder.append("\",\"materialDirPath\":\"");
+    localStringBuilder.append(this.mDir);
+    localStringBuilder.append("\"}");
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "WatermarkInfo [mType=" + this.mType + ", mDir=" + this.mDir + ", mJsonFilePath=" + this.mJsonFilePath + ", mDesc=" + this.mDesc + "]";
+    StringBuilder localStringBuilder = new StringBuilder("WatermarkInfo [mType=");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", mDir=");
+    localStringBuilder.append(this.mDir);
+    localStringBuilder.append(", mJsonFilePath=");
+    localStringBuilder.append(this.mJsonFilePath);
+    localStringBuilder.append(", mDesc=");
+    localStringBuilder.append(this.mDesc);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.maxvideo.watermark.WatermarkInfo
  * JD-Core Version:    0.7.0.1
  */

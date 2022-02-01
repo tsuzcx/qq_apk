@@ -114,7 +114,22 @@ public class bl
   
   public String toString()
   {
-    return "WifiCloudInfo{mFreeWifiLevel=" + this.fl + ", mWifiType=" + this.eE + ", mSubWifiType=" + this.fo + ", mPoiDesc='" + this.fp + '\'' + ", mReviewMarks=" + this.fq + ", mSortMarks=" + this.fr + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WifiCloudInfo{mFreeWifiLevel=");
+    localStringBuilder.append(this.fl);
+    localStringBuilder.append(", mWifiType=");
+    localStringBuilder.append(this.eE);
+    localStringBuilder.append(", mSubWifiType=");
+    localStringBuilder.append(this.fo);
+    localStringBuilder.append(", mPoiDesc='");
+    localStringBuilder.append(this.fp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mReviewMarks=");
+    localStringBuilder.append(this.fq);
+    localStringBuilder.append(", mSortMarks=");
+    localStringBuilder.append(this.fr);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void u(int paramInt)
@@ -134,15 +149,22 @@ public class bl
   
   public boolean x(int paramInt)
   {
-    if (I() >= 1) {
-      return this.eE == paramInt;
+    int i = I();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i >= 1)
+    {
+      bool1 = bool2;
+      if (this.eE == paramInt) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.bl
  * JD-Core Version:    0.7.0.1
  */

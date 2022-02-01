@@ -2,98 +2,105 @@ package com.tencent.mm.plugin.websearch.widget;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static final d uMu;
+  private static final d Wtg;
   
   static
   {
-    AppMethodBeat.i(91443);
-    uMu = new d();
-    AppMethodBeat.o(91443);
+    AppMethodBeat.i(116638);
+    Wtg = new d();
+    AppMethodBeat.o(116638);
   }
   
   public static boolean a(WidgetData paramWidgetData)
   {
-    AppMethodBeat.i(91437);
+    AppMethodBeat.i(116632);
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 1);
     localBundle.putParcelable("data", paramWidgetData);
-    boolean bool = ((Bundle)f.a("com.tencent.mm", localBundle, d.a.class)).getBoolean("result");
-    AppMethodBeat.o(91437);
-    return bool;
+    paramWidgetData = (Bundle)j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class);
+    if (paramWidgetData != null)
+    {
+      boolean bool = paramWidgetData.getBoolean("result");
+      AppMethodBeat.o(116632);
+      return bool;
+    }
+    AppMethodBeat.o(116632);
+    return false;
   }
   
   public static void b(WidgetData paramWidgetData)
   {
-    AppMethodBeat.i(91440);
+    AppMethodBeat.i(116635);
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 4);
     localBundle.putParcelable("data", paramWidgetData);
-    f.a("com.tencent.mm", localBundle, d.a.class, null);
-    AppMethodBeat.o(91440);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
+    AppMethodBeat.o(116635);
   }
   
   public static void b(WidgetData paramWidgetData, String paramString)
   {
-    AppMethodBeat.i(91438);
+    AppMethodBeat.i(116633);
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 3);
     localBundle.putParcelable("data", paramWidgetData);
     localBundle.putString("err", paramString);
-    f.a("com.tencent.mm", localBundle, d.a.class, null);
-    AppMethodBeat.o(91438);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
+    AppMethodBeat.o(116633);
   }
   
   public static void c(WidgetData paramWidgetData)
   {
-    AppMethodBeat.i(91441);
+    AppMethodBeat.i(116636);
     if (paramWidgetData == null)
     {
-      AppMethodBeat.o(91441);
+      AppMethodBeat.o(116636);
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 5);
     localBundle.putParcelable("data", paramWidgetData);
-    f.a("com.tencent.mm", localBundle, d.a.class, null);
-    AppMethodBeat.o(91441);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
+    AppMethodBeat.o(116636);
   }
   
   public static void c(WidgetData paramWidgetData, String paramString)
   {
-    AppMethodBeat.i(91439);
+    AppMethodBeat.i(116634);
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 7);
     localBundle.putParcelable("data", paramWidgetData);
     localBundle.putString("err", paramString);
-    f.a("com.tencent.mm", localBundle, d.a.class, null);
-    AppMethodBeat.o(91439);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
+    AppMethodBeat.o(116634);
   }
   
   public static void d(WidgetData paramWidgetData)
   {
-    AppMethodBeat.i(91442);
-    ab.i("WidgetSafeModeIpcImpl", "onDisplaySucc");
+    AppMethodBeat.i(116637);
+    Log.i("WidgetSafeModeIpcImpl", "onDisplaySucc");
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 6);
     localBundle.putParcelable("data", paramWidgetData);
-    f.a("com.tencent.mm", localBundle, d.a.class, null);
-    AppMethodBeat.o(91442);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
+    AppMethodBeat.o(116637);
   }
   
-  public static d dab()
+  public static d irb()
   {
-    return uMu;
+    return Wtg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.d
  * JD-Core Version:    0.7.0.1
  */

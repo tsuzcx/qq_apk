@@ -1,104 +1,219 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import com.tencent.threadpool.i.d;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask;", "", "()V", "animationDuration", "", "isTimerCancelled", "", "showDuration", "targetView", "Landroid/view/View;", "taskFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "taskListener", "Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "cancel", "", "cancelShowAnimation", "cancelTaskTimer", "setShowAnimationDuration", "setTaskListener", "listener", "duration", "startAnimationTask", "withShowAnimation", "startShowAnimation", "show", "startTaskTimer", "view", "Companion", "ScanViewAnimationTaskListener", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  implements SensorEventListener
 {
-  public static final o qDy;
-  public SensorManager bmB;
-  public Sensor qDu;
-  public float[] qDv;
-  public int qDw;
-  private long qDx;
+  public static final o.a PjB;
+  private long EHU;
+  private long PjC;
+  public b PjD;
+  private d<?> PjE;
+  private boolean PjF;
+  private View nmf;
   
   static
   {
-    AppMethodBeat.i(81465);
-    qDy = new o();
-    AppMethodBeat.o(81465);
+    AppMethodBeat.i(314163);
+    PjB = new o.a((byte)0);
+    AppMethodBeat.o(314163);
   }
   
-  private o()
+  private final void CA(boolean paramBoolean)
   {
-    AppMethodBeat.i(81462);
-    this.qDv = new float[3];
-    this.bmB = ((SensorManager)ah.getContext().getSystemService("sensor"));
-    this.qDu = this.bmB.getDefaultSensor(1);
-    AppMethodBeat.o(81462);
-  }
-  
-  public final long cjL()
-  {
-    if (this.qDw >= 5) {
-      return this.qDx;
+    float f2 = 1.0F;
+    AppMethodBeat.i(314143);
+    Log.v("MicroMsg.ScanViewAnimationTask", "alvinluo startShowAnimation show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject = this.nmf;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
     }
-    return 0L;
-  }
-  
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    AppMethodBeat.i(81463);
-    if (paramSensorEvent.sensor.getType() == 1)
+    localObject = this.PjD;
+    if (localObject != null) {
+      ((b)localObject).gTB();
+    }
+    localObject = this.nmf;
+    float f1;
+    if (paramBoolean)
     {
-      paramSensorEvent = paramSensorEvent.values;
-      ab.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
-      if ((this.qDv[0] == 0.0F) && (this.qDv[1] == 0.0F) && (this.qDv[2] == 0.0F))
-      {
-        this.qDv[0] = paramSensorEvent[0];
-        this.qDv[1] = paramSensorEvent[1];
-        this.qDv[2] = paramSensorEvent[2];
-        AppMethodBeat.o(81463);
-        return;
+      f1 = 0.0F;
+      if (!paramBoolean) {
+        break label109;
       }
-      if ((Math.abs(paramSensorEvent[0] - this.qDv[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.qDv[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.qDv[2]) <= 0.7F)) {
-        break label227;
-      }
-      ab.d("MicroMsg.ScanStableDetector", "scan unstable");
-      this.qDw = 0;
     }
     for (;;)
     {
-      this.qDv[0] = paramSensorEvent[0];
-      this.qDv[1] = paramSensorEvent[1];
-      this.qDv[2] = paramSensorEvent[2];
-      AppMethodBeat.o(81463);
+      p.a((View)localObject, f1, f2, 200L, (Animator.AnimatorListener)new c(paramBoolean, this));
+      AppMethodBeat.o(314143);
       return;
-      label227:
-      if (this.qDw == 0) {
-        this.qDx = System.currentTimeMillis();
-      }
-      this.qDw += 1;
-      if (this.qDw >= 5) {
-        ab.d("MicroMsg.ScanStableDetector", "scan stable");
-      }
+      f1 = 1.0F;
+      break;
+      label109:
+      f2 = 0.0F;
     }
   }
   
-  public final void stop()
+  private static final void b(o paramo)
   {
-    AppMethodBeat.i(81464);
-    ab.i("MicroMsg.ScanStableDetector", "stop detect scan stable");
-    if (this.bmB != null)
+    AppMethodBeat.i(314151);
+    s.u(paramo, "this$0");
+    if (paramo.PjF)
     {
-      ab.i("MicroMsg.ScanStableDetector", "unregister accelerate listener");
-      this.bmB.unregisterListener(this);
+      AppMethodBeat.o(314151);
+      return;
     }
-    AppMethodBeat.o(81464);
+    paramo.CA(false);
+    AppMethodBeat.o(314151);
+  }
+  
+  private final void gUj()
+  {
+    AppMethodBeat.i(314138);
+    Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo startTaskTimer");
+    gUk();
+    this.PjE = h.ahAA.o(new o..ExternalSyntheticLambda0(this), this.PjC);
+    this.PjF = false;
+    AppMethodBeat.o(314138);
+  }
+  
+  private final void gUk()
+  {
+    AppMethodBeat.i(314139);
+    Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo cancelTaskTimer");
+    this.PjF = true;
+    d locald = this.PjE;
+    if (locald != null) {
+      locald.cancel(false);
+    }
+    AppMethodBeat.o(314139);
+  }
+  
+  private final void gUl()
+  {
+    AppMethodBeat.i(314148);
+    Object localObject = this.nmf;
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).animate();
+      if (localObject != null)
+      {
+        localObject = ((ViewPropertyAnimator)localObject).setListener(null);
+        if (localObject != null)
+        {
+          localObject = ((ViewPropertyAnimator)localObject).setUpdateListener(null);
+          if (localObject != null) {
+            ((ViewPropertyAnimator)localObject).cancel();
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(314148);
+  }
+  
+  public final void Cz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(314193);
+    Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo startAnimationTask view: %s, withShowAnimation: %b", new Object[] { this.nmf, Boolean.valueOf(paramBoolean) });
+    Object localObject = this.PjD;
+    if (localObject != null) {
+      ((b)localObject).gTC();
+    }
+    if (paramBoolean)
+    {
+      CA(true);
+      AppMethodBeat.o(314193);
+      return;
+    }
+    localObject = this.nmf;
+    if (localObject != null)
+    {
+      ((View)localObject).setVisibility(0);
+      ((View)localObject).setAlpha(1.0F);
+    }
+    gUj();
+    AppMethodBeat.o(314193);
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(314198);
+    gUk();
+    gUl();
+    AppMethodBeat.o(314198);
+  }
+  
+  public final o gUh()
+  {
+    this.PjC = 2000L;
+    return this;
+  }
+  
+  public final o gUi()
+  {
+    this.EHU = 150L;
+    return this;
+  }
+  
+  public final o ja(View paramView)
+  {
+    AppMethodBeat.i(314176);
+    s.u(paramView, "view");
+    this.nmf = paramView;
+    AppMethodBeat.o(314176);
+    return this;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$ScanViewAnimationTaskListener;", "", "onShowAnimationEnd", "", "show", "", "onShowAnimationStart", "onShowTaskEnd", "onShowTaskStart", "withShowAnimation", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface b
+  {
+    public abstract void gTB();
+    
+    public abstract void gTC();
+    
+    public abstract void gTD();
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/scanner/util/ScanViewShowAnimationTask$startShowAnimation$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends AnimatorListenerAdapter
+  {
+    c(boolean paramBoolean, o paramo) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(314127);
+      super.onAnimationEnd(paramAnimator);
+      Log.d("MicroMsg.ScanViewAnimationTask", "alvinluo onShowAnimationEnd show: %b", new Object[] { Boolean.valueOf(this.obi) });
+      o.c(jdField_this);
+      if (this.obi)
+      {
+        o.d(jdField_this);
+        AppMethodBeat.o(314127);
+        return;
+      }
+      paramAnimator = o.c(jdField_this);
+      if (paramAnimator != null) {
+        paramAnimator.gTD();
+      }
+      AppMethodBeat.o(314127);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.o
  * JD-Core Version:    0.7.0.1
  */

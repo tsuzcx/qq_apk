@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.text.TextUtils;
-import bdhb;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.util.Map;
 
 class ShortVideoRealItemBuilder$4
@@ -14,16 +14,16 @@ class ShortVideoRealItemBuilder$4
   {
     if (!TextUtils.isEmpty(this.a))
     {
-      if (ShortVideoRealItemBuilder.a().size() == 0) {
+      if (ShortVideoRealItemBuilder.k().size() == 0) {
         RMVideoStateMgr.c(this.a);
       }
-      bdhb.a(this.a);
+      FileUtils.deleteDirectory(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

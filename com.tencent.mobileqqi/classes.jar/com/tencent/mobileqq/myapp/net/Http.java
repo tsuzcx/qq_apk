@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import gdg;
+import gdf;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
@@ -56,10 +56,10 @@ public class Http
     jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
   }
   
-  private static gdg a()
+  private static gdf a()
   {
     Object localObject1 = BaseApplication.getContext();
-    gdg localgdg = new gdg();
+    gdf localgdf = new gdf();
     try
     {
       String str1;
@@ -82,50 +82,50 @@ public class Http
         if ((str3 != null) && (str3.startsWith("ctwap"))) {
           if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
           {
-            localgdg.jdField_a_of_type_JavaLangString = str1;
-            localgdg.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+            localgdf.jdField_a_of_type_JavaLangString = str1;
+            localgdf.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
           }
           else
           {
-            localgdg.jdField_a_of_type_JavaLangString = "10.0.0.200";
-            localgdg.jdField_a_of_type_Int = 80;
+            localgdf.jdField_a_of_type_JavaLangString = "10.0.0.200";
+            localgdf.jdField_a_of_type_Int = 80;
           }
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        return localgdg;
+        return localgdf;
       }
       if ((str3 != null) && (str3.startsWith("cmwap")))
       {
         if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
         {
-          localgdg.jdField_a_of_type_JavaLangString = str1;
-          localgdg.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          localgdf.jdField_a_of_type_JavaLangString = str1;
+          localgdf.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
         }
         else
         {
-          localgdg.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localgdg.jdField_a_of_type_Int = 80;
+          localgdf.jdField_a_of_type_JavaLangString = "10.0.0.172";
+          localgdf.jdField_a_of_type_Int = 80;
         }
       }
       else if ((str3 != null) && (str3.startsWith("uniwap"))) {
         if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
         {
-          localgdg.jdField_a_of_type_JavaLangString = str1;
-          localgdg.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          localgdf.jdField_a_of_type_JavaLangString = str1;
+          localgdf.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
         }
         else
         {
-          localgdg.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localgdg.jdField_a_of_type_Int = 80;
+          localgdf.jdField_a_of_type_JavaLangString = "10.0.0.172";
+          localgdf.jdField_a_of_type_Int = 80;
         }
       }
-      return localgdg;
+      return localgdf;
     }
     finally {}
-    return localgdg;
+    return localgdf;
   }
   
   public static String a()
@@ -167,8 +167,8 @@ public class Http
               }
             }
             localObject = a();
-            str = ((gdg)localObject).jdField_a_of_type_JavaLangString;
-            i = ((gdg)localObject).jdField_a_of_type_Int;
+            str = ((gdf)localObject).jdField_a_of_type_JavaLangString;
+            i = ((gdf)localObject).jdField_a_of_type_Int;
             continue;
           }
           return null;
@@ -239,8 +239,8 @@ public class Http
             }
           }
           localObject2 = a();
-          localObject1 = ((gdg)localObject2).jdField_a_of_type_JavaLangString;
-          i = ((gdg)localObject2).jdField_a_of_type_Int;
+          localObject1 = ((gdf)localObject2).jdField_a_of_type_JavaLangString;
+          i = ((gdf)localObject2).jdField_a_of_type_Int;
           break;
           localObject1 = null;
         }

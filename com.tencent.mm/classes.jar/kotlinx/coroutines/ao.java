@@ -1,41 +1,72 @@
 package kotlinx.coroutines;
 
-import a.l;
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.c.c;
+import kotlin.Metadata;
+import kotlin.d.a;
+import kotlin.d.f.c;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/Dispatchers;", "", "()V", "Default", "Lkotlinx/coroutines/CoroutineDispatcher;", "Default$annotations", "getDefault", "()Lkotlinx/coroutines/CoroutineDispatcher;", "IO", "IO$annotations", "getIO", "Main", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Main$annotations", "getMain", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "Unconfined", "Unconfined$annotations", "getUnconfined", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CoroutineId;", "Lkotlinx/coroutines/ThreadContextElement;", "", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "id", "", "(J)V", "getId", "()J", "component1", "copy", "equals", "", "other", "", "hashCode", "", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "toString", "updateThreadContext", "Key", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ao
+  extends a
+  implements cy<String>
 {
-  private static final w CHR;
-  private static final w CHS;
-  private static final w CHT;
-  public static final ao CHU;
+  public static final a ajvI;
+  final long id;
   
   static
   {
-    AppMethodBeat.i(118371);
-    CHU = new ao();
-    CHR = v.epx();
-    CHS = (w)bt.CIE;
-    c localc = c.CKp;
-    CHT = c.epI();
-    AppMethodBeat.o(118371);
+    AppMethodBeat.i(118241);
+    ajvI = new a((byte)0);
+    AppMethodBeat.o(118241);
   }
   
-  public static final w epH()
+  public ao(long paramLong)
   {
-    return CHR;
+    super((f.c)ajvI);
+    AppMethodBeat.i(118240);
+    this.id = paramLong;
+    AppMethodBeat.o(118240);
   }
   
-  public static final w epI()
+  public final boolean equals(Object paramObject)
   {
-    return CHT;
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof ao)) {
+        return false;
+      }
+      paramObject = (ao)paramObject;
+    } while (this.id == paramObject.id);
+    return false;
   }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(188861);
+    int i = q.a..ExternalSyntheticBackport0.m(this.id);
+    AppMethodBeat.o(188861);
+    return i;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118237);
+    String str = "CoroutineId(" + this.id + ')';
+    AppMethodBeat.o(118237);
+    return str;
+  }
+  
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/CoroutineId$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineId;", "()V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements f.c<ao>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ao
  * JD-Core Version:    0.7.0.1
  */

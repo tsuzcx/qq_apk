@@ -1,5 +1,7 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.biz.qqcircle.QCirclePluginUtil;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -14,8 +16,6 @@ import feedcloud.FeedCloudWrite.StDoCommentReq;
 import feedcloud.FeedCloudWrite.StDoCommentRsp;
 import java.util.ArrayList;
 import java.util.List;
-import tra;
-import tzy;
 
 public class QCircleDoCommentRequest
   extends QCircleBaseRequest
@@ -25,7 +25,7 @@ public class QCircleDoCommentRequest
   public static final int OPER_TYPE_OWNER_DELETE = 2;
   FeedCloudWrite.StDoCommentReq req;
   
-  public QCircleDoCommentRequest(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt)
+  public QCircleDoCommentRequest(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt, boolean paramBoolean)
   {
     if (paramStFeed == null)
     {
@@ -33,7 +33,7 @@ public class QCircleDoCommentRequest
       return;
     }
     this.req = new FeedCloudWrite.StDoCommentReq();
-    this.req.feed.set(tra.a(paramStFeed));
+    this.req.feed.set(QCirclePluginUtil.a(paramStFeed));
     this.req.comment.set(paramStComment);
     this.req.commentType.set(paramInt);
     this.req.from.set(0);
@@ -42,25 +42,30 @@ public class QCircleDoCommentRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
+    if (paramBoolean) {
       paramStFeed.value.set("2");
-    }
-    for (;;)
-    {
-      paramStComment = new FeedCloudCommon.StCommonExt();
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramStFeed);
-      paramStComment.mapInfo.set(localArrayList);
-      this.req.extInfo.set(paramStComment);
-      return;
+    } else {
       paramStFeed.value.set("1");
     }
+    paramStComment = new FeedCloudCommon.StCommonExt();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramStFeed);
+    paramStComment.mapInfo.set(localArrayList);
+    this.req.extInfo.set(paramStComment);
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudWrite.StDoCommentRsp localStDoCommentRsp = new FeedCloudWrite.StDoCommentRsp();
-    localStDoCommentRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDoCommentRsp.mergeFrom(paramArrayOfByte);
+      return localStDoCommentRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDoCommentRsp;
   }
   
@@ -69,14 +74,14 @@ public class QCircleDoCommentRequest
     return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DoComment";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoCommentRequest
  * JD-Core Version:    0.7.0.1
  */

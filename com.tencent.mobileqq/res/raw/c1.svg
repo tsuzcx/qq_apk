@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="66px"
+    version="1.1"
+    viewBox="0 0 66 66"
+    width="66px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>close3x anzhuo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="文件类型"
+        stroke="none"
+        stroke-width="1">
+        <g
+            fill="#F86161"
+            id="close3x-anzhuo">
+            <path
+                d="M29.8180195,33 L17.9090097,21.0909903 L21.0909903,17.9090097 L33,29.8180195 L44.9090097,17.9090097 L48.0909903,21.0909903 L36.1819805,33 L48.0909903,44.9090097 L44.9090097,48.0909903 L33,36.1819805 L21.0909903,48.0909903 L17.9090097,44.9090097 L29.8180195,33 Z M33,66 C51.2253967,66 66,51.2253967 66,33 C66,14.7746033 51.2253967,0 33,0 C14.7746033,0 0,14.7746033 0,33 C0,51.2253967 14.7746033,66 33,66 Z"
+                id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

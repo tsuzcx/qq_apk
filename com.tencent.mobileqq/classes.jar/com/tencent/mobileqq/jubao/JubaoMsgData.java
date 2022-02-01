@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.jubao;
 
 import android.support.annotation.NonNull;
-import azah;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.mini.sdk.JsonORM;
 import com.tencent.mobileqq.mini.sdk.JsonORM.Column;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -23,15 +23,15 @@ public class JubaoMsgData
   public static JubaoMsgData transfer(@NonNull MessageRecord paramMessageRecord)
   {
     JubaoMsgData localJubaoMsgData = new JubaoMsgData();
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000))
+    if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000))
     {
-      localJubaoMsgData.msgSeq = ((int)paramMessageRecord.shmsgseq);
+      int i = MessageUtils.b(paramMessageRecord.msgUid);
+      localJubaoMsgData.msgSeq = (0xFFFF & (short)(int)paramMessageRecord.shmsgseq);
+      localJubaoMsgData.msgTime = ((int)paramMessageRecord.time);
+      localJubaoMsgData.msgRandom = i;
       return localJubaoMsgData;
     }
-    int i = azah.b(paramMessageRecord.msgUid);
-    localJubaoMsgData.msgSeq = (0xFFFF & (short)(int)paramMessageRecord.shmsgseq);
-    localJubaoMsgData.msgTime = ((int)paramMessageRecord.time);
-    localJubaoMsgData.msgRandom = i;
+    localJubaoMsgData.msgSeq = ((int)paramMessageRecord.shmsgseq);
     return localJubaoMsgData;
   }
   
@@ -42,7 +42,7 @@ public class JubaoMsgData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoMsgData
  * JD-Core Version:    0.7.0.1
  */

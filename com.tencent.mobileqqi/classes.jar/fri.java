@@ -1,27 +1,28 @@
-import android.content.Context;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-public class fri
-  implements View.OnLongClickListener
+class fri
+  implements View.OnClickListener
 {
-  public fri(FMRecentFileActivity paramFMRecentFileActivity) {}
+  fri(frh paramfrh, View paramView) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (paramView == null) {
-      return false;
+    if ((FMRecentFileActivity.a(this.jdField_a_of_type_Frh.a) != null) && (FMRecentFileActivity.a(this.jdField_a_of_type_Frh.a).isShowing())) {
+      FMRecentFileActivity.a(this.jdField_a_of_type_Frh.a).dismiss();
     }
-    FileManagerEntity localFileManagerEntity = ((RecentFileAdapter.ItemHolder)paramView.getTag()).a;
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
-    FMRecentFileActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new frj(this, paramView), localFileManagerEntity.fileName));
-    return true;
+    paramView = ((RecentFileAdapter.ItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+    if (this.jdField_a_of_type_Frh.a.b.a().b(paramView.nSessionId)) {
+      this.jdField_a_of_type_Frh.a.a.setVisible();
+    }
+    FMRecentFileActivity.a(this.jdField_a_of_type_Frh.a);
   }
 }
 

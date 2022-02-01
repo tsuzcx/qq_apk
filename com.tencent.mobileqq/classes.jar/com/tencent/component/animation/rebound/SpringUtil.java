@@ -9,12 +9,12 @@ public class SpringUtil
   
   public static double mapValueFromRangeToRange(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5)
   {
-    return (paramDouble1 - paramDouble2) / (paramDouble3 - paramDouble2) * (paramDouble5 - paramDouble4) + paramDouble4;
+    return paramDouble4 + (paramDouble1 - paramDouble2) / (paramDouble3 - paramDouble2) * (paramDouble5 - paramDouble4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.animation.rebound.SpringUtil
  * JD-Core Version:    0.7.0.1
  */

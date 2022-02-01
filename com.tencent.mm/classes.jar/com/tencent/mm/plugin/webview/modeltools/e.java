@@ -4,69 +4,69 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.app.f;
+import com.tencent.mm.br.c;
+import com.tencent.mm.sdk.event.IListener;
 import org.json.JSONObject;
 
 public final class e
 {
-  private c scanBankCardConfirmResultListener;
-  private c uXA;
-  String uXx;
-  private a uXy;
-  private c uXz;
+  String WNv;
+  private a WNw;
+  private IListener WNx;
+  private IListener WNy;
+  private IListener scanBankCardConfirmResultListener;
   
   public e()
   {
-    AppMethodBeat.i(6940);
-    this.uXx = null;
-    this.uXz = new e.1(this);
-    this.scanBankCardConfirmResultListener = new e.2(this);
-    this.uXA = new e.3(this);
-    AppMethodBeat.o(6940);
+    AppMethodBeat.i(79131);
+    this.WNv = null;
+    this.WNx = new LicenceScanner.1(this, f.hfK);
+    this.scanBankCardConfirmResultListener = new LicenceScanner.2(this, f.hfK);
+    this.WNy = new LicenceScanner.3(this, f.hfK);
+    AppMethodBeat.o(79131);
   }
   
   public final boolean a(String paramString, Context paramContext, a parama)
   {
-    AppMethodBeat.i(6941);
+    AppMethodBeat.i(79132);
     if ("bank".equalsIgnoreCase(paramString))
     {
       paramString = new Intent();
       paramString.putExtra("BaseScanUI_select_scan_mode", 7);
       paramString.putExtra("scan_bankcard_with_confirm_ui", true);
       paramString.addFlags(268435456);
-      d.b(paramContext, "scanner", ".ui.BaseScanUI", paramString);
-      this.uXy = parama;
-      this.uXx = "bank";
-      a.ymk.c(this.uXz);
-      a.ymk.c(this.scanBankCardConfirmResultListener);
-      AppMethodBeat.o(6941);
+      c.b(paramContext, "scanner", ".ui.ScanCardUI", paramString);
+      this.WNw = parama;
+      this.WNv = "bank";
+      this.WNx.alive();
+      this.scanBankCardConfirmResultListener.alive();
+      AppMethodBeat.o(79132);
       return true;
     }
     if ("identity_pay_auth".equalsIgnoreCase(paramString))
     {
       paramString = new Intent();
       paramString.putExtra("BaseScanUI_select_scan_mode", 11);
-      d.b(paramContext, "scanner", ".ui.BaseScanUI", paramString);
-      this.uXy = parama;
-      this.uXx = "identity";
-      a.ymk.c(this.uXz);
-      a.ymk.c(this.uXA);
-      AppMethodBeat.o(6941);
+      c.b(paramContext, "scanner", ".ui.ScanCardUI", paramString);
+      this.WNw = parama;
+      this.WNv = "identity_pay_auth";
+      this.WNx.alive();
+      this.WNy.alive();
+      AppMethodBeat.o(79132);
       return true;
     }
-    AppMethodBeat.o(6941);
+    AppMethodBeat.o(79132);
     return false;
   }
   
   public static abstract interface a
   {
-    public abstract void CF(String paramString);
-    
     public abstract void a(String paramString, JSONObject paramJSONObject, Bitmap paramBitmap);
     
-    public abstract void ahA(String paramString);
+    public abstract void abh(String paramString);
+    
+    public abstract void bkM(String paramString);
   }
 }
 

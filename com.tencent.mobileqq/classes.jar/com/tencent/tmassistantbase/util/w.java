@@ -60,56 +60,54 @@ public class w
   
   public static <T extends AccessibleObject> T a(T paramT)
   {
-    T ?;
     if (paramT == null) {
-      ? = null;
+      return null;
     }
-    do
+    if ((paramT instanceof Member))
     {
-      Member localMember;
-      do
-      {
-        return ?;
-        if (!(paramT instanceof Member)) {
-          break;
-        }
-        localMember = (Member)paramT;
-        if (!Modifier.isPublic(localMember.getModifiers())) {
-          break;
-        }
-        ? = paramT;
-      } while (Modifier.isPublic(localMember.getDeclaringClass().getModifiers()));
-      ? = paramT;
-    } while (paramT.isAccessible());
-    paramT.setAccessible(true);
+      Member localMember = (Member)paramT;
+      if ((Modifier.isPublic(localMember.getModifiers())) && (Modifier.isPublic(localMember.getDeclaringClass().getModifiers()))) {
+        return paramT;
+      }
+    }
+    if (!paramT.isAccessible()) {
+      paramT.setAccessible(true);
+    }
     return paramT;
   }
   
   private Method a(String paramString, Class<?>[] paramArrayOfClass)
   {
-    Object localObject = b();
-    try
+    Class localClass = b();
+    label16:
+    label27:
+    do
     {
-      Method localMethod1 = ((Class)localObject).getMethod(paramString, paramArrayOfClass);
-      return localMethod1;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException1)
-    {
-      Class localClass;
-      do
+      try
       {
-        try
-        {
-          Method localMethod2 = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass);
-          return localMethod2;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException2)
-        {
-          localClass = ((Class)localObject).getSuperclass();
-          localObject = localClass;
-        }
-      } while (localClass != null);
-      throw new NoSuchMethodException();
+        localMethod = localClass.getMethod(paramString, paramArrayOfClass);
+        return localMethod;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException1)
+      {
+        Method localMethod;
+        break label16;
+      }
+      try
+      {
+        localMethod = localClass.getDeclaredMethod(paramString, paramArrayOfClass);
+        return localMethod;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        break label27;
+      }
+      localClass = localClass.getSuperclass();
+    } while (localClass != null);
+    paramString = new NoSuchMethodException();
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -123,21 +121,16 @@ public class w
     if (paramArrayOfClass1.length == paramArrayOfClass2.length)
     {
       int i = 0;
-      if (i < paramArrayOfClass2.length)
-      {
-        if (paramArrayOfClass2[i] == x.class) {}
-        while (b(paramArrayOfClass1[i]).isAssignableFrom(b(paramArrayOfClass2[i])))
-        {
+      while (i < paramArrayOfClass2.length) {
+        if ((paramArrayOfClass2[i] == x.class) || (b(paramArrayOfClass1[i]).isAssignableFrom(b(paramArrayOfClass2[i])))) {
           i += 1;
-          break;
+        } else {
+          return false;
         }
       }
+      return true;
     }
-    else
-    {
-      return false;
-    }
-    return true;
+    return false;
   }
   
   private static Class<?>[] a(Object... paramVarArgs)
@@ -147,33 +140,28 @@ public class w
       return new Class[0];
     }
     Class[] arrayOfClass = new Class[paramVarArgs.length];
-    if (i < paramVarArgs.length)
+    while (i < paramVarArgs.length)
     {
       Object localObject = paramVarArgs[i];
-      if (localObject == null) {}
-      for (localObject = x.class;; localObject = localObject.getClass())
-      {
-        arrayOfClass[i] = localObject;
-        i += 1;
-        break;
+      if (localObject == null) {
+        localObject = x.class;
+      } else {
+        localObject = localObject.getClass();
       }
+      arrayOfClass[i] = localObject;
+      i += 1;
     }
     return arrayOfClass;
   }
   
   public static Class<?> b(Class<?> paramClass)
   {
-    Class<?> localClass;
     if (paramClass == null) {
-      localClass = null;
+      return null;
     }
-    do
+    Object localObject = paramClass;
+    if (paramClass.isPrimitive())
     {
-      do
-      {
-        return localClass;
-        localClass = paramClass;
-      } while (!paramClass.isPrimitive());
       if (Boolean.TYPE == paramClass) {
         return Boolean.class;
       }
@@ -198,9 +186,12 @@ public class w
       if (Character.TYPE == paramClass) {
         return Character.class;
       }
-      localClass = paramClass;
-    } while (Void.TYPE != paramClass);
-    return Void.class;
+      localObject = paramClass;
+      if (Void.TYPE == paramClass) {
+        localObject = Void.class;
+      }
+    }
+    return localObject;
   }
   
   private Method b(String paramString, Class<?>[] paramArrayOfClass)
@@ -209,7 +200,6 @@ public class w
     Method[] arrayOfMethod = ((Class)localObject2).getMethods();
     int j = arrayOfMethod.length;
     int i = 0;
-    Object localObject1;
     for (;;)
     {
       localObject1 = localObject2;
@@ -235,10 +225,21 @@ public class w
         }
         i += 1;
       }
-      localObject2 = ((Class)localObject1).getSuperclass();
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    throw new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(paramArrayOfClass) + " could be found on type " + b() + ".");
+      localObject1 = ((Class)localObject1).getSuperclass();
+    } while (localObject1 != null);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("No similar method ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" with params ");
+    ((StringBuilder)localObject1).append(Arrays.toString(paramArrayOfClass));
+    ((StringBuilder)localObject1).append(" could be found on type ");
+    ((StringBuilder)localObject1).append(b());
+    ((StringBuilder)localObject1).append(".");
+    paramString = new NoSuchMethodException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private Field e(String paramString)
@@ -250,7 +251,8 @@ public class w
       return localField1;
     }
     catch (NoSuchFieldException localNoSuchFieldException1) {}
-    for (;;)
+    label36:
+    do
     {
       try
       {
@@ -259,11 +261,14 @@ public class w
       }
       catch (NoSuchFieldException localNoSuchFieldException2)
       {
-        localClass = localClass.getSuperclass();
-        if (localClass == null) {
-          throw new ReflectException(localNoSuchFieldException1);
-        }
+        break label36;
       }
+      localClass = localClass.getSuperclass();
+    } while (localClass != null);
+    paramString = new ReflectException(localNoSuchFieldException1);
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -283,13 +288,17 @@ public class w
   public w a(String paramString, Object... paramVarArgs)
   {
     Class[] arrayOfClass = a(paramVarArgs);
-    try
+    for (;;)
     {
-      w localw = a(a(paramString, arrayOfClass), this.a, paramVarArgs);
-      return localw;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
+      try
+      {
+        w localw = a(a(paramString, arrayOfClass), this.a, paramVarArgs);
+        return localw;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        continue;
+      }
       try
       {
         paramString = a(b(paramString, arrayOfClass), this.a, paramVarArgs);
@@ -358,7 +367,7 @@ public class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.w
  * JD-Core Version:    0.7.0.1
  */

@@ -38,29 +38,35 @@ public final class s_question
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.qustion1 != null) {
-      paramJceOutputStream.write(this.qustion1, 0);
+    String str = this.qustion1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.qustion2 != null) {
-      paramJceOutputStream.write(this.qustion2, 1);
+    str = this.qustion2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.qustion3 != null) {
-      paramJceOutputStream.write(this.qustion3, 2);
+    str = this.qustion3;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.result1 != null) {
-      paramJceOutputStream.write(this.result1, 3);
+    str = this.result1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.result2 != null) {
-      paramJceOutputStream.write(this.result2, 4);
+    str = this.result2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.result3 != null) {
-      paramJceOutputStream.write(this.result3, 5);
+    str = this.result3;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_question
  * JD-Core Version:    0.7.0.1
  */

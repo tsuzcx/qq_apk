@@ -1,23 +1,29 @@
 package com.tencent.mobileqq.adapter;
 
-import akhq;
-import akhr;
 import android.view.View;
 
-public class BaseWhatASmoothAdapter$1
+class BaseWhatASmoothAdapter$1
   implements Runnable
 {
-  public BaseWhatASmoothAdapter$1(akhq paramakhq, View paramView, Object paramObject1, Object paramObject2, int paramInt, akhr paramakhr) {}
+  BaseWhatASmoothAdapter$1(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, Object paramObject1, Object paramObject2, int paramInt, BaseWhatASmoothAdapter.RunningMark paramRunningMark) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_JavaLangObject != null) && (this.b != null) && ((this.b.equals(localObject)) || (localObject == null)))
+    Object localObject1 = this.a.getTag();
+    if (this.b != null)
     {
-      this.this$0.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_AndroidViewView.setTag(this.this$0.a + this.jdField_a_of_type_Int);
+      Object localObject2 = this.c;
+      if ((localObject2 != null) && ((localObject2.equals(localObject1)) || (localObject1 == null)))
+      {
+        this.this$0.a(this.a, this.b);
+        localObject1 = this.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.this$0.a);
+        ((StringBuilder)localObject2).append(this.d);
+        ((View)localObject1).setTag(((StringBuilder)localObject2).toString());
+      }
     }
-    akhr.a(this.jdField_a_of_type_Akhr, null);
+    BaseWhatASmoothAdapter.RunningMark.a(this.e, null);
   }
 }
 

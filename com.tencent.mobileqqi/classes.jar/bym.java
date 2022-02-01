@@ -1,28 +1,88 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
-class bym
-  implements DialogInterface.OnClickListener
+public class bym
+  extends ShieldListObserver
 {
-  bym(byk parambyk, String paramString) {}
+  public bym(ChatActivity paramChatActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    ((DiscussionManager)this.jdField_a_of_type_Byk.a.b.getManager(48)).a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Byk.a.b.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    
+    if (this.a.a == null) {
+      return;
     }
-    ((DiscussionHandler)this.jdField_a_of_type_Byk.a.b.a(6)).d();
-    this.jdField_a_of_type_Byk.a.finish();
+    String str = this.a.a.jdField_a_of_type_JavaLangString;
+    if (this.a.a.jdField_a_of_type_Int == 1006) {
+      str = this.a.a.f;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a(this.a, paramBoolean, false);
+      if (!paramBoolean) {
+        break;
+      }
+      ChatActivity.e(this.a);
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.a();
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.jdField_a_of_type_JavaLangString;
+    if (this.a.a.jdField_a_of_type_Int == 1006) {
+      str = this.a.a.f;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a();
+      if (!paramBoolean) {
+        break;
+      }
+      ChatActivity.e(this.a);
+      return;
+    }
   }
 }
 

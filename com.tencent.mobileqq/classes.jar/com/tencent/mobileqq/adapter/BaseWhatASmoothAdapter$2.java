@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import akhq;
-
-public class BaseWhatASmoothAdapter$2
+class BaseWhatASmoothAdapter$2
   implements Runnable
 {
   public void run()
   {
-    akhq.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Akhr);
+    BaseWhatASmoothAdapter.a(this.this$0, this.a, this.b, this.c, this.d);
   }
 }
 

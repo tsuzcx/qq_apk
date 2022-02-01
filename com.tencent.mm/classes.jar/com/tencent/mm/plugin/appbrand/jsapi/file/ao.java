@@ -1,29 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.j;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import org.json.JSONObject;
 
-final class ao
-  extends f
+public final class ao
+  extends e<bk>
 {
-  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  private static final int CTRL_INDEX = 380;
+  private static final String NAME = "rmdir";
+  
+  public ao()
   {
-    AppMethodBeat.i(102815);
-    if (paramc.wX().zd(paramString) == j.gZA) {}
-    for (paramc = "ok";; paramc = String.format("fail no such file or directory \"%s\"", new Object[] { paramString }))
-    {
-      paramc = new h.a(paramc, new Object[0]);
-      AppMethodBeat.o(102815);
-      return paramc;
-    }
+    super(new bk());
+    AppMethodBeat.i(128894);
+    AppMethodBeat.o(128894);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ao
  * JD-Core Version:    0.7.0.1
  */

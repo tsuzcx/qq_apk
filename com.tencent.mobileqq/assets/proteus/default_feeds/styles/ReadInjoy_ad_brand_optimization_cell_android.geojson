@@ -17,26 +17,25 @@
             {
                 "view_type":"container",
                 "layout_type":"layout_relative",
-                "margin_left":"6",
+                "margin_left":"14",
                 "height":{
                     "type":"wrap_content"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"363"
+                    "value":"351"
                 },
                 "subviews":[
                     {
                         "view_type": "ReadInJoyAdBrandOptimizationView",
                         "view_id": "id_article_brand_optimization",
-                        "margin_left":"0",
                         "margin_top":"0",
                         "height":{
                             "type":"wrap_content"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"363"
+                            "value":"347"
                         },
                         "attributes":{
                             "setFeedsModel:": "$article_model"
@@ -61,6 +60,22 @@
                         "attributes": {
                           "setImage:": "feeds_dislike"
                         }
+                    },
+   	                {
+                      "view_type": "UIImageView",
+                      "view_id": "id_top_left_mask",
+                      "default_visible": "YES",
+                      "height": {
+                        "type": "absolutely",
+                        "value": "6"
+                      },
+                      "width": {
+                        "type": "absolutely",
+                        "value": "6"
+                      },
+                      "attributes": {
+                        "loadImageWithPath:": "left_top_round_corner"
+                      }
                     }
                 ]
             },
@@ -76,7 +91,6 @@
                     "value":"363"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#E5E5E5"
                 }
             }
@@ -84,4 +98,3 @@
         ]
     }
 }
-

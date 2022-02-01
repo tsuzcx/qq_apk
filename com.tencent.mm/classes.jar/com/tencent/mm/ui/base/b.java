@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.ComponentName;
@@ -8,8 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -17,28 +17,13 @@ import java.lang.reflect.Proxy;
 
 public final class b
 {
-  public static void K(Context paramContext, Intent paramIntent)
+  public static void a(Activity paramActivity, b paramb)
   {
-    AppMethodBeat.i(106256);
-    if ((paramIntent == null) || (paramContext == null) || (!(paramContext instanceof Activity)))
+    AppMethodBeat.i(141614);
+    if (d.rc(16))
     {
-      AppMethodBeat.o(106256);
-      return;
-    }
-    if (paramIntent.getBooleanExtra("animation_pop_in", false)) {
-      ((Activity)paramContext).overridePendingTransition(2131034217, 2131034130);
-    }
-    AppMethodBeat.o(106256);
-  }
-  
-  @TargetApi(16)
-  public static void a(Activity paramActivity, a parama)
-  {
-    AppMethodBeat.i(106253);
-    if (d.fw(16))
-    {
-      ab.w("MicroMsg.ActivityUtil", "convertActivityToTranslucent::Android Version Error %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-      AppMethodBeat.o(106253);
+      Log.w("MicroMsg.ActivityUtil", "convertActivityToTranslucent::Android Version Error %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      AppMethodBeat.o(141614);
       return;
     }
     for (;;)
@@ -49,252 +34,283 @@ public final class b
         Class[] arrayOfClass = Activity.class.getDeclaredClasses();
         int j = arrayOfClass.length;
         i = 0;
-        localObject1 = null;
+        Object localObject1 = null;
+        Object localObject2;
         if (i < j)
         {
           localObject2 = arrayOfClass[i];
           if (!((Class)localObject2).getSimpleName().contains("TranslucentConversionListener")) {
-            break label271;
+            break label284;
           }
           localObject1 = localObject2;
-          break label271;
+          break label284;
         }
-        if (parama == null) {
-          break label266;
-        }
-        Object localObject2 = new b((byte)0);
-        ((b)localObject2).zhi = new WeakReference(parama);
-        parama = Proxy.newProxyInstance(((Class)localObject1).getClassLoader(), new Class[] { localObject1 }, (InvocationHandler)localObject2);
-        if (d.fw(21))
+        if (paramb != null)
         {
-          localObject1 = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject1 });
+          localObject2 = new c((byte)0);
+          ((c)localObject2).mql = new WeakReference(paramb);
+          paramb = Proxy.newProxyInstance(((Class)localObject1).getClassLoader(), new Class[] { localObject1 }, (InvocationHandler)localObject2);
+          if (d.rc(21))
+          {
+            localObject1 = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject1 });
+            ((Method)localObject1).setAccessible(true);
+            ((Method)localObject1).invoke(paramActivity, new Object[] { paramb });
+            if ((paramActivity instanceof a)) {
+              ((a)paramActivity).cLv();
+            }
+            AppMethodBeat.o(141614);
+            return;
+          }
+          localObject1 = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject1, ActivityOptions.class });
           ((Method)localObject1).setAccessible(true);
-          ((Method)localObject1).invoke(paramActivity, new Object[] { parama });
-          AppMethodBeat.o(106253);
-          return;
+          ((Method)localObject1).invoke(paramActivity, new Object[] { paramb, null });
+          continue;
         }
+        paramb = null;
       }
-      catch (Throwable paramActivity)
+      finally
       {
-        ab.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityToTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
-        AppMethodBeat.o(106253);
+        Log.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityToTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
+        AppMethodBeat.o(141614);
         return;
       }
-      Object localObject1 = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject1, ActivityOptions.class });
-      ((Method)localObject1).setAccessible(true);
-      ((Method)localObject1).invoke(paramActivity, new Object[] { parama, null });
-      AppMethodBeat.o(106253);
-      return;
-      label266:
-      parama = null;
       continue;
-      label271:
+      label284:
       i += 1;
     }
   }
   
-  public static void aD(Activity paramActivity)
+  public static void aR(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(106252);
+    AppMethodBeat.i(141617);
+    if ((paramIntent == null) || (paramContext == null) || (!(paramContext instanceof Activity)))
+    {
+      AppMethodBeat.o(141617);
+      return;
+    }
+    if (paramIntent.getBooleanExtra("animation_pop_in", false)) {
+      ((Activity)paramContext).overridePendingTransition(a.a.pop_in, a.a.anim_not_change);
+    }
+    if (paramIntent.getBooleanExtra("animation_push_up_in", false)) {
+      ((Activity)paramContext).overridePendingTransition(a.a.push_up_in, a.a.anim_not_change);
+    }
+    AppMethodBeat.o(141617);
+  }
+  
+  public static void bZ(Activity paramActivity)
+  {
+    AppMethodBeat.i(141613);
     try
     {
       Method localMethod = Activity.class.getDeclaredMethod("convertFromTranslucent", new Class[0]);
       localMethod.setAccessible(true);
       localMethod.invoke(paramActivity, new Object[0]);
-      AppMethodBeat.o(106252);
+      if ((paramActivity instanceof a)) {
+        ((a)paramActivity).cLw();
+      }
+      AppMethodBeat.o(141613);
       return;
     }
-    catch (Throwable paramActivity)
+    finally
     {
-      ab.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityFromTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
-      AppMethodBeat.o(106252);
+      Log.printErrStackTrace("MicroMsg.ActivityUtil", paramActivity, "call convertActivityFromTranslucent Fail: %s", new Object[] { paramActivity.getMessage() });
+      AppMethodBeat.o(141613);
     }
   }
   
-  public static int atu(String paramString)
+  public static int bzW(String paramString)
   {
-    AppMethodBeat.i(106245);
-    paramString = atv(paramString);
+    AppMethodBeat.i(141606);
+    paramString = bzX(paramString);
     if (paramString != null)
     {
-      int i = au(paramString);
-      AppMethodBeat.o(106245);
+      int i = ci(paramString);
+      AppMethodBeat.o(141606);
       return i;
     }
-    AppMethodBeat.o(106245);
+    AppMethodBeat.o(141606);
     return 0;
   }
   
-  private static Class<?> atv(String paramString)
+  private static Class<?> bzX(String paramString)
   {
-    AppMethodBeat.i(106248);
+    AppMethodBeat.i(141609);
     try
     {
       Class localClass = Class.forName(paramString);
-      AppMethodBeat.o(106248);
+      AppMethodBeat.o(141609);
       return localClass;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      ab.printErrStackTrace("MicroMsg.ActivityUtil", localClassNotFoundException, "", new Object[0]);
-      ab.e("MicroMsg.ActivityUtil", "Class %s not found in dex", new Object[] { paramString });
-      AppMethodBeat.o(106248);
+      Log.printErrStackTrace("MicroMsg.ActivityUtil", localClassNotFoundException, "", new Object[0]);
+      Log.e("MicroMsg.ActivityUtil", "Class %s not found in dex", new Object[] { paramString });
+      AppMethodBeat.o(141609);
     }
     return null;
   }
   
-  public static boolean atw(String paramString)
+  public static boolean bzY(String paramString)
   {
-    AppMethodBeat.i(106251);
-    if ((atu(paramString) & 0x4) != 0)
+    AppMethodBeat.i(141612);
+    if ((bzW(paramString) & 0x4) != 0)
     {
-      AppMethodBeat.o(106251);
+      AppMethodBeat.o(141612);
       return true;
     }
-    AppMethodBeat.o(106251);
+    AppMethodBeat.o(141612);
     return false;
   }
   
-  public static int au(Class<?> paramClass)
+  public static int ci(Class<?> paramClass)
   {
-    AppMethodBeat.i(106246);
+    AppMethodBeat.i(141607);
     a locala = (a)paramClass.getAnnotation(a.class);
     if (locala != null)
     {
       i = locala.value();
-      AppMethodBeat.o(106246);
+      AppMethodBeat.o(141607);
       return i;
     }
-    int i = av(paramClass);
-    AppMethodBeat.o(106246);
+    int i = cj(paramClass);
+    AppMethodBeat.o(141607);
     return i;
   }
   
-  private static int av(Class<?> paramClass)
+  private static int cj(Class<?> paramClass)
   {
-    AppMethodBeat.i(106247);
+    AppMethodBeat.i(141608);
     paramClass = paramClass.getSuperclass();
     if (paramClass != null)
     {
-      int i = au(paramClass);
-      AppMethodBeat.o(106247);
+      int i = ci(paramClass);
+      AppMethodBeat.o(141608);
       return i;
     }
-    AppMethodBeat.o(106247);
+    AppMethodBeat.o(141608);
     return 0;
   }
   
-  public static boolean aw(Class<?> paramClass)
+  public static boolean ck(Class<?> paramClass)
   {
-    AppMethodBeat.i(106249);
-    if ((au(paramClass) & 0x1) == 0)
+    AppMethodBeat.i(141610);
+    if ((ci(paramClass) & 0x1) == 0)
     {
-      AppMethodBeat.o(106249);
+      AppMethodBeat.o(141610);
       return true;
     }
-    AppMethodBeat.o(106249);
+    AppMethodBeat.o(141610);
     return false;
   }
   
-  public static boolean ax(Class<?> paramClass)
+  public static boolean cl(Class<?> paramClass)
   {
-    AppMethodBeat.i(106250);
-    if ((au(paramClass) & 0x2) == 0)
+    AppMethodBeat.i(141611);
+    if ((ci(paramClass) & 0x2) == 0)
     {
-      AppMethodBeat.o(106250);
+      AppMethodBeat.o(141611);
       return true;
     }
-    AppMethodBeat.o(106250);
+    AppMethodBeat.o(141611);
     return false;
   }
   
-  public static String e(ComponentName paramComponentName)
+  public static String f(ComponentName paramComponentName)
   {
-    AppMethodBeat.i(106244);
+    AppMethodBeat.i(141605);
     if (paramComponentName.getClassName().startsWith(paramComponentName.getPackageName()))
     {
       paramComponentName = paramComponentName.getClassName();
-      AppMethodBeat.o(106244);
+      AppMethodBeat.o(141605);
       return paramComponentName;
     }
-    paramComponentName = paramComponentName.getPackageName() + paramComponentName.getClassName();
-    AppMethodBeat.o(106244);
+    paramComponentName = paramComponentName.getClassName();
+    AppMethodBeat.o(141605);
     return paramComponentName;
   }
   
-  public static void ie(Context paramContext)
+  public static void nd(Context paramContext)
   {
-    AppMethodBeat.i(106254);
+    AppMethodBeat.i(141615);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
     {
-      AppMethodBeat.o(106254);
+      AppMethodBeat.o(141615);
       return;
     }
-    ((Activity)paramContext).overridePendingTransition(2131034217, 2131034130);
-    AppMethodBeat.o(106254);
+    ((Activity)paramContext).overridePendingTransition(a.a.pop_in, a.a.anim_not_change);
+    AppMethodBeat.o(141615);
   }
   
-  public static void jdMethod_if(Context paramContext)
+  public static void ne(Context paramContext)
   {
-    AppMethodBeat.i(106255);
+    AppMethodBeat.i(141616);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
     {
-      AppMethodBeat.o(106255);
+      AppMethodBeat.o(141616);
       return;
     }
-    ((Activity)paramContext).overridePendingTransition(2131034217, 2131034222);
-    AppMethodBeat.o(106255);
+    ((Activity)paramContext).overridePendingTransition(a.a.pop_in, a.a.pop_out);
+    AppMethodBeat.o(141616);
   }
   
-  public static void ig(Context paramContext)
+  public static void nf(Context paramContext)
   {
-    AppMethodBeat.i(106257);
+    AppMethodBeat.i(141618);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
     {
-      AppMethodBeat.o(106257);
+      AppMethodBeat.o(141618);
       return;
     }
-    ((Activity)paramContext).overridePendingTransition(2131034130, 2131034222);
-    AppMethodBeat.o(106257);
+    ((Activity)paramContext).overridePendingTransition(a.a.anim_not_change, a.a.pop_out);
+    AppMethodBeat.o(141618);
   }
   
-  public static void ih(Context paramContext)
+  public static void ng(Context paramContext)
   {
-    AppMethodBeat.i(106258);
+    AppMethodBeat.i(141619);
     if ((paramContext == null) || (!(paramContext instanceof Activity)))
     {
-      AppMethodBeat.o(106258);
+      AppMethodBeat.o(141619);
       return;
     }
-    ((Activity)paramContext).overridePendingTransition(2131034130, 2131034130);
-    AppMethodBeat.o(106258);
+    paramContext = (Activity)paramContext;
+    int i = a.a.anim_not_change;
+    paramContext.overridePendingTransition(i, i);
+    AppMethodBeat.o(141619);
   }
   
   public static abstract interface a
   {
-    public abstract void iX(boolean paramBoolean);
+    public abstract void cLv();
+    
+    public abstract void cLw();
   }
   
-  static final class b
+  public static abstract interface b
+  {
+    public abstract void onComplete(boolean paramBoolean);
+  }
+  
+  static final class c
     implements InvocationHandler
   {
-    WeakReference<b.a> zhi;
+    WeakReference<b.b> mql;
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
       boolean bool2 = false;
-      AppMethodBeat.i(106243);
-      if (this.zhi == null)
+      AppMethodBeat.i(141604);
+      if (this.mql == null)
       {
-        ab.i("MicroMsg.ActivityUtil", "swipe invoke fail, callbackRef NULL!");
-        AppMethodBeat.o(106243);
+        Log.i("MicroMsg.ActivityUtil", "swipe invoke fail, callbackRef NULL!");
+        AppMethodBeat.o(141604);
         return null;
       }
-      paramObject = (b.a)this.zhi.get();
+      paramObject = (b.b)this.mql.get();
       if (paramObject == null)
       {
-        ab.i("MicroMsg.ActivityUtil", "swipe invoke fail, callback NULL!");
-        AppMethodBeat.o(106243);
+        Log.i("MicroMsg.ActivityUtil", "swipe invoke fail, callback NULL!");
+        AppMethodBeat.o(141604);
         return null;
       }
       boolean bool1 = bool2;
@@ -309,15 +325,15 @@ public final class b
           }
         }
       }
-      paramObject.iX(bool1);
-      AppMethodBeat.o(106243);
+      paramObject.onComplete(bool1);
+      AppMethodBeat.o(141604);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.b
  * JD-Core Version:    0.7.0.1
  */

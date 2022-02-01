@@ -31,19 +31,21 @@ public class MaskFilter
   {
     if (paramArrayOfFloat == null)
     {
-      if (this.mVertexBuffer != null) {
-        this.mVertexBuffer.clear();
+      paramArrayOfFloat = this.mVertexBuffer;
+      if (paramArrayOfFloat != null) {
+        paramArrayOfFloat.clear();
       }
       return;
     }
-    if ((this.mVertexBuffer == null) || (this.mVertexBuffer.capacity() < paramArrayOfFloat.length * 4))
+    FloatBuffer localFloatBuffer = this.mVertexBuffer;
+    if ((localFloatBuffer != null) && (localFloatBuffer.capacity() >= paramArrayOfFloat.length * 4))
     {
-      this.mVertexBuffer = GlUtil.createFloatBuffer(paramArrayOfFloat);
+      this.mVertexBuffer.clear();
+      this.mVertexBuffer.put(paramArrayOfFloat);
+      this.mVertexBuffer.rewind();
       return;
     }
-    this.mVertexBuffer.clear();
-    this.mVertexBuffer.put(paramArrayOfFloat);
-    this.mVertexBuffer.rewind();
+    this.mVertexBuffer = GlUtil.createFloatBuffer(paramArrayOfFloat);
   }
   
   public boolean drawShape(float[] paramArrayOfFloat1, int paramInt, float[] paramArrayOfFloat2)
@@ -52,27 +54,34 @@ public class MaskFilter
     if (paramArrayOfFloat2 == null) {
       arrayOfFloat = this.mDefaultMvpMatirx;
     }
-    int i = getProgram();
-    if (i <= 0) {}
-    do
-    {
+    int j = getProgram();
+    if (j <= 0) {
       return false;
-      getFloatBuffer(paramArrayOfFloat1);
-    } while ((this.mVertexBuffer == null) || (this.mVertexBuffer.limit() == 0));
-    int j = this.mVertexBuffer.limit() / 2;
-    GLES20.glUseProgram(i);
-    GLES20.glVertexAttribPointer(this.maPositionLocation, 2, 5126, false, 0, this.mVertexBuffer);
-    GLES20.glEnableVertexAttribArray(this.maPositionLocation);
-    GLES20.glUniform4f(this.mColorLocation, paramInt >> 16 & 0xFF, paramInt >> 8 & 0xFF, paramInt & 0xFF, paramInt >> 24 & 0xFF);
-    if (this.mMatrixLocation >= 0) {
-      GLES20.glUniformMatrix4fv(this.mMatrixLocation, 1, false, arrayOfFloat, 0);
     }
-    GLES20.glDrawArrays(6, 0, j);
-    GLES20.glDisableVertexAttribArray(this.maPositionLocation);
-    return true;
+    getFloatBuffer(paramArrayOfFloat1);
+    paramArrayOfFloat1 = this.mVertexBuffer;
+    if (paramArrayOfFloat1 != null)
+    {
+      if (paramArrayOfFloat1.limit() == 0) {
+        return false;
+      }
+      int i = this.mVertexBuffer.limit() / 2;
+      GLES20.glUseProgram(j);
+      GLES20.glVertexAttribPointer(this.maPositionLocation, 2, 5126, false, 0, this.mVertexBuffer);
+      GLES20.glEnableVertexAttribArray(this.maPositionLocation);
+      GLES20.glUniform4f(this.mColorLocation, paramInt >> 16 & 0xFF, paramInt >> 8 & 0xFF, paramInt & 0xFF, paramInt >> 24 & 0xFF);
+      paramInt = this.mMatrixLocation;
+      if (paramInt >= 0) {
+        GLES20.glUniformMatrix4fv(paramInt, 1, false, arrayOfFloat, 0);
+      }
+      GLES20.glDrawArrays(6, 0, i);
+      GLES20.glDisableVertexAttribArray(this.maPositionLocation);
+      return true;
+    }
+    return false;
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     this.mDefaultMvpMatirx = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
     int i = getProgram();
@@ -87,7 +96,7 @@ public class MaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.MaskFilter
  * JD-Core Version:    0.7.0.1
  */

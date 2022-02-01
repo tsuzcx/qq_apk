@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.servlet;
 
 import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactRsp;
-import aasd;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.mobileqq.utils.WupUtil;
 import mqq.app.Packet;
 
 public class MiniAppBatchGetContactServlet
@@ -25,7 +25,7 @@ public class MiniAppBatchGetContactServlet
     localStBatchGetContactRsp.mergeFrom(paramArrayOfByte);
     if (paramBundle.getLong("retCode") == 0L)
     {
-      paramArrayOfByte = aasd.a(localStBatchGetContactRsp);
+      paramArrayOfByte = GdtJsonPbUtil.a(localStBatchGetContactRsp);
       if (paramArrayOfByte != null) {
         paramBundle.putString("contact_list", paramArrayOfByte.toString());
       }
@@ -44,14 +44,14 @@ public class MiniAppBatchGetContactServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.BatchGetContact");
-    paramPacket.putSendData(bdpd.a(arrayOfByte1));
+    paramPacket.putSendData(WupUtil.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppBatchGetContactServlet
  * JD-Core Version:    0.7.0.1
  */

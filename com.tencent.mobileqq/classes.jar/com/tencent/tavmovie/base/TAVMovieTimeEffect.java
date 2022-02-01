@@ -14,8 +14,9 @@ public class TAVMovieTimeEffect
   
   public CMTime calculateSourceDuration()
   {
-    if (this.sourceTimeRange != null) {
-      return this.sourceTimeRange.getDuration();
+    CMTimeRange localCMTimeRange = this.sourceTimeRange;
+    if (localCMTimeRange != null) {
+      return localCMTimeRange.getDuration();
     }
     return CMTime.CMTimeZero;
   }
@@ -89,7 +90,7 @@ public class TAVMovieTimeEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.base.TAVMovieTimeEffect
  * JD-Core Version:    0.7.0.1
  */

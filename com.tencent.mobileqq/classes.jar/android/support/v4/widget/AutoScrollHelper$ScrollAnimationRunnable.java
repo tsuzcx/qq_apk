@@ -18,21 +18,21 @@ class AutoScrollHelper$ScrollAnimationRunnable
       AutoScrollHelper.access$300(this.this$0).start();
     }
     AutoScrollHelper.ClampedScroller localClampedScroller = AutoScrollHelper.access$300(this.this$0);
-    if ((localClampedScroller.isFinished()) || (!AutoScrollHelper.access$400(this.this$0)))
+    if ((!localClampedScroller.isFinished()) && (AutoScrollHelper.access$400(this.this$0)))
     {
-      AutoScrollHelper.access$102(this.this$0, false);
+      if (AutoScrollHelper.access$500(this.this$0))
+      {
+        AutoScrollHelper.access$502(this.this$0, false);
+        AutoScrollHelper.access$600(this.this$0);
+      }
+      localClampedScroller.computeScrollDelta();
+      int i = localClampedScroller.getDeltaX();
+      int j = localClampedScroller.getDeltaY();
+      this.this$0.scrollTargetBy(i, j);
+      ViewCompat.postOnAnimation(AutoScrollHelper.access$700(this.this$0), this);
       return;
     }
-    if (AutoScrollHelper.access$500(this.this$0))
-    {
-      AutoScrollHelper.access$502(this.this$0, false);
-      AutoScrollHelper.access$600(this.this$0);
-    }
-    localClampedScroller.computeScrollDelta();
-    int i = localClampedScroller.getDeltaX();
-    int j = localClampedScroller.getDeltaY();
-    this.this$0.scrollTargetBy(i, j);
-    ViewCompat.postOnAnimation(AutoScrollHelper.access$700(this.this$0), this);
+    AutoScrollHelper.access$102(this.this$0, false);
   }
 }
 

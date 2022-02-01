@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/kkg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/l5a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/hx5" android:visibility="gone" android:layout_width="@dimen/bx" android:layout_height="@dimen/bx" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

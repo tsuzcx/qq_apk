@@ -1,33 +1,27 @@
+import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.activity.SubAccountSettingActivity;
 import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountDataControll;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class dmq
   implements ActionSheet.OnButtonClickListener
 {
-  dmq(dmp paramdmp, ActionSheet paramActionSheet) {}
+  dmq(dmo paramdmo, ActionSheet paramActionSheet) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    paramView = "";
-    if (SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a) != null) {
-      paramView = SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a).subuin;
-    }
-    ReportController.b(this.jdField_a_of_type_Dmp.a.b, "CliOper", "", paramView, "Bind_account", "Clean_msg_tipslist", 0, 0, "", "", "", "");
-    if (SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a) != null)
+    do
     {
-      SubAccountDataControll.a().a(this.jdField_a_of_type_Dmp.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a).subuin);
-      this.jdField_a_of_type_Dmp.a.b(this.jdField_a_of_type_Dmp.a.getString(2131561834));
-    }
+      return;
+    } while ((!this.jdField_a_of_type_Dmo.a.f()) || ((SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a) != null) && (TextUtils.isEmpty(SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a).subuin))));
+    this.jdField_a_of_type_Dmo.a.d();
+    SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dmo.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a).subuin);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }

@@ -10,7 +10,6 @@ class b
   
   public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    int j = 0;
     try
     {
       String[] arrayOfString = new String[4];
@@ -31,7 +30,7 @@ class b
       paramString2.update(paramString1.getBytes());
       paramString1 = paramString2.digest();
       paramString2 = new StringBuffer(paramString1.length * 2 + paramString1.length / 2);
-      i = j;
+      i = 0;
       while (i < paramString1.length)
       {
         paramString3 = Integer.toHexString(paramString1[i] & 0xFF);
@@ -47,7 +46,11 @@ class b
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      throw new a(-40003);
+      paramString1 = new a(-40003);
+    }
+    for (;;)
+    {
+      throw paramString1;
     }
   }
   
@@ -66,7 +69,7 @@ class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

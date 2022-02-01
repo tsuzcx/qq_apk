@@ -20,14 +20,15 @@ public final class qqstory_pgc$ReqGetStoryList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uid", "type", "count", "start_cookie", "union_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, ReqGetStoryList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "uid", "type", "count", "start_cookie", "union_id" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, ReqGetStoryList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.ReqGetStoryList
  * JD-Core Version:    0.7.0.1
  */

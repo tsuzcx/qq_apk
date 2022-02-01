@@ -10,15 +10,21 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class appoint_define$FreshFeedInfo
   extends MessageMicro<FreshFeedInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_uin", "uint32_time", "str_feed_id", "uint64_feed_type" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "", Long.valueOf(0L) }, FreshFeedInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField str_feed_id = PBField.initString("");
   public final PBUInt32Field uint32_time = PBField.initUInt32(0);
   public final PBUInt64Field uint64_feed_type = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_uin", "uint32_time", "str_feed_id", "uint64_feed_type" }, new Object[] { localLong, Integer.valueOf(0), "", localLong }, FreshFeedInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     appoint.define.appoint_define.FreshFeedInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,29 +5,30 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import wrd;
-import wvq;
-import xsm;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
-public class NewMyStorySegment$8
+class NewMyStorySegment$8
   implements Runnable
 {
-  public NewMyStorySegment$8(wvq paramwvq, TextView paramTextView, View paramView, ImageView paramImageView) {}
+  NewMyStorySegment$8(NewMyStorySegment paramNewMyStorySegment, TextView paramTextView, View paramView, ImageView paramImageView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(wvq.a(this.this$0, wvq.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - xsm.a(wvq.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
-    if (wvq.a(this.this$0).f > 0)
+    TextView localTextView = this.a;
+    NewMyStorySegment localNewMyStorySegment = this.this$0;
+    localTextView.setText(NewMyStorySegment.a(localNewMyStorySegment, NewMyStorySegment.b(localNewMyStorySegment), this.b.getWidth() - this.c.getWidth() - UIUtils.a(NewMyStorySegment.c(this.this$0), 70.0F), this.a.getPaint()));
+    if (NewMyStorySegment.b(this.this$0).q > 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
+      this.a.setTextColor(-65536);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(wvq.b(this.this$0).getResources().getColor(2131166991));
+    this.a.setTextColor(NewMyStorySegment.d(this.this$0).getResources().getColor(2131168133));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.8
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ final class WalletBalanceFetchResultUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(45347);
-    WalletBalanceFetchResultUI.a(this.tNF);
-    AppMethodBeat.o(45347);
+    AppMethodBeat.i(68570);
+    WalletBalanceFetchResultUI.a(this.Vbs);
+    AppMethodBeat.o(68570);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchResultUI.1
  * JD-Core Version:    0.7.0.1
  */

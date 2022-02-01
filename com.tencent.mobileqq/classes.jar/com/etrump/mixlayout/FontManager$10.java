@@ -1,34 +1,39 @@
 package com.etrump.mixlayout;
 
-import bdom;
+import com.tencent.mobileqq.utils.VasUtils;
 import com.tencent.qphone.base.util.QLog;
-import fx;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class FontManager$10
+class FontManager$10
   implements Runnable
 {
-  public FontManager$10(fx paramfx, String paramString, int paramInt) {}
+  FontManager$10(FontManager paramFontManager, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (fx.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString))
+    if (FontManager.d(this.this$0).containsKey(this.a))
     {
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)fx.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      if (localConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Int)))
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)FontManager.d(this.this$0).get(this.a);
+      if (localConcurrentHashMap.containsKey(Integer.valueOf(this.b)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VasFont", 2, "updateDiyConfig uin = " + this.jdField_a_of_type_JavaLangString + " fontId = " + this.jdField_a_of_type_Int);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("updateDiyConfig uin = ");
+          localStringBuilder.append(this.a);
+          localStringBuilder.append(" fontId = ");
+          localStringBuilder.append(this.b);
+          QLog.d("VasFont", 2, localStringBuilder.toString());
         }
-        localConcurrentHashMap.remove(Integer.valueOf(this.jdField_a_of_type_Int));
-        bdom.a(this.this$0.a);
+        localConcurrentHashMap.remove(Integer.valueOf(this.b));
+        VasUtils.a(FontManager.a(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.10
  * JD-Core Version:    0.7.0.1
  */

@@ -12,25 +12,24 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import belz;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class WereWolvesLoadingView
   extends FrameLayout
 {
-  int jdField_a_of_type_Int;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  View jdField_a_of_type_AndroidViewView;
-  public TextView a;
-  belz jdField_a_of_type_Belz;
-  Runnable jdField_a_of_type_JavaLangRunnable = new WereWolvesLoadingView.1(this);
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = 0;
-  public View b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  Runnable jdField_b_of_type_JavaLangRunnable = new WereWolvesLoadingView.2(this);
-  boolean jdField_b_of_type_Boolean = false;
+  View a;
+  int b;
+  public TextView c = null;
+  public View d;
+  TextView e;
+  boolean f;
+  WereWolvesLoadingView.LoadingCallback g;
+  Handler h = new Handler(Looper.getMainLooper());
+  int i = 0;
+  Runnable j = new WereWolvesLoadingView.1(this);
+  Runnable k = new WereWolvesLoadingView.2(this);
+  boolean l = false;
   
   public WereWolvesLoadingView(Context paramContext)
   {
@@ -46,88 +45,91 @@ public class WereWolvesLoadingView
   
   void a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559382, this);
-    this.jdField_a_of_type_Int = findViewById(2131372344).getLayoutParams().width;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372341);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372366));
+    this.d = LayoutInflater.from(getContext()).inflate(2131625507, this);
+    this.b = findViewById(2131440740).getLayoutParams().width;
+    this.a = findViewById(2131440737);
+    this.e = ((TextView)findViewById(2131440768));
     setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377898));
+    this.c = ((TextView)findViewById(2131447419));
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#323e6f"));
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/nearby_game_room_bg.jpg", (URLDrawable.URLDrawableOptions)localObject);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+    localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/nearby_game_room_bg.jpg", (URLDrawable.URLDrawableOptions)localObject);
+    this.d.setBackgroundDrawable((Drawable)localObject);
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 10L);
+    this.l = false;
+    this.h.postDelayed(this.k, 10L);
   }
   
   public void c()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.l = true;
   }
   
-  public void setComplete(belz parambelz)
+  public void setComplete(WereWolvesLoadingView.LoadingCallback paramLoadingCallback)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Belz = parambelz;
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    this.l = true;
+    this.h.removeCallbacks(this.k);
+    this.g = paramLoadingCallback;
+    this.h.post(this.j);
   }
   
   public void setProgress(int paramInt)
   {
-    int i;
+    int m;
     if (paramInt < 0)
     {
-      i = 0;
-      paramInt = this.jdField_a_of_type_Int * i / 100;
-      if (paramInt == 0) {
-        break label129;
-      }
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = paramInt;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      m = 0;
     }
-    for (;;)
+    else
     {
-      this.jdField_b_of_type_Int = i;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%d%%", new Object[] { Integer.valueOf(i) }));
-      if (this.jdField_b_of_type_Int < 100) {
-        break label141;
+      m = paramInt;
+      if (paramInt > 100) {
+        m = 100;
       }
-      if ((this.jdField_a_of_type_Belz != null) && (!this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Belz.a();
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-      i = paramInt;
-      if (paramInt <= 100) {
-        break;
-      }
-      i = 100;
-      break;
-      label129:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    label141:
-    this.jdField_a_of_type_Boolean = false;
+    paramInt = this.b * m / 100;
+    Object localObject;
+    if (paramInt != 0)
+    {
+      localObject = this.a.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = paramInt;
+      this.a.setVisibility(0);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    else
+    {
+      this.a.setVisibility(8);
+    }
+    this.i = m;
+    this.e.setText(String.format("%d%%", new Object[] { Integer.valueOf(m) }));
+    if (this.i >= 100)
+    {
+      localObject = this.g;
+      if ((localObject != null) && (!this.f))
+      {
+        ((WereWolvesLoadingView.LoadingCallback)localObject).a();
+        this.f = true;
+      }
+    }
+    else
+    {
+      this.f = false;
+    }
   }
   
   public void setTips(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.c.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WereWolvesLoadingView
  * JD-Core Version:    0.7.0.1
  */

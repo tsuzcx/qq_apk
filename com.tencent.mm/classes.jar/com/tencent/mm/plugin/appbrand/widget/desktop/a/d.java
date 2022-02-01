@@ -1,329 +1,379 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.a;
 
-import android.content.res.Resources;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.c;
 import com.tencent.mm.plugin.appbrand.widget.desktop.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collections;
 import java.util.List;
 
 public final class d<T extends RecyclerView.v>
   extends b<T>
 {
-  int chT = 0;
-  int endPos = 0;
-  View jfC;
-  public g jfK = null;
-  FrameLayout jis;
-  private List jit;
-  List jiu;
-  Object jiv;
-  boolean jiw;
-  public a jix;
-  d.a jiy;
-  public int paddingLeft = 0;
-  public int paddingTop = 0;
+  private int dIY = 0;
+  FrameLayout eCZ;
+  private List eXW;
+  private int endPos = 0;
+  private View uAI;
+  public g uAT = null;
+  public a uBf;
+  private Object uBg;
+  private e uBh;
   
-  public d(FrameLayout paramFrameLayout, List paramList1, List paramList2, d.a parama)
+  public d(FrameLayout paramFrameLayout, List paramList, e parame)
   {
-    this.jis = paramFrameLayout;
-    this.jit = paramList1;
-    this.jiy = parama;
-    this.jiu = paramList2;
+    this.eCZ = paramFrameLayout;
+    this.eXW = paramList;
+    this.uBh = parame;
   }
   
-  private View f(RecyclerView paramRecyclerView, T paramT)
+  public final boolean N(T paramT)
   {
-    AppMethodBeat.i(134225);
-    paramT.aku.setVisibility(4);
-    paramRecyclerView = this.jix.b(paramRecyclerView, paramT);
-    paramRecyclerView.setVisibility(0);
-    AppMethodBeat.o(134225);
-    return paramRecyclerView;
-  }
-  
-  private void n(RecyclerView paramRecyclerView)
-  {
-    AppMethodBeat.i(134224);
-    if (this.jiw)
+    AppMethodBeat.i(324241);
+    if (this.uBf != null)
     {
-      int i = this.jiu.indexOf(this.jiv);
-      if (i >= 0)
-      {
-        this.jiu.remove(i);
-        paramRecyclerView.getAdapter().bT(i);
-      }
-      this.jiw = false;
-      if (this.jiy != null) {
-        this.jiy.aPp();
-      }
-    }
-    AppMethodBeat.o(134224);
-  }
-  
-  public final boolean O(T paramT)
-  {
-    AppMethodBeat.i(134215);
-    if (this.jix != null)
-    {
-      boolean bool = this.jix.O(paramT);
-      AppMethodBeat.o(134215);
+      boolean bool = this.uBf.N(paramT);
+      AppMethodBeat.o(324241);
       return bool;
     }
     if (paramT == null)
     {
-      AppMethodBeat.o(134215);
+      AppMethodBeat.o(324241);
       return false;
     }
-    AppMethodBeat.o(134215);
+    AppMethodBeat.o(324241);
     return true;
   }
   
-  public final boolean P(T paramT)
+  public final void O(T paramT)
   {
-    AppMethodBeat.i(134221);
-    if (this.jix != null)
-    {
-      boolean bool = this.jix.P(paramT);
-      AppMethodBeat.o(134221);
-      return bool;
+    AppMethodBeat.i(324283);
+    Log.i("MicroMsg.ItemMoveHelper", "alvinluo onStar adapter position: %d", new Object[] { Integer.valueOf(paramT.KJ()) });
+    if ((paramT instanceof com.tencent.mm.plugin.appbrand.widget.desktop.d)) {
+      Log.i("MicroMsg.ItemMoveHelper", "alvinluo onStar holder: %s", new Object[] { ((com.tencent.mm.plugin.appbrand.widget.desktop.d)paramT).titleTv.getText() });
     }
-    AppMethodBeat.o(134221);
-    return false;
+    if (this.uBf != null) {
+      this.uBf.eo(this.uBg);
+    }
+    AppMethodBeat.o(324283);
   }
   
-  public final boolean R(T paramT)
+  public final void a(final RecyclerView paramRecyclerView, T paramT, int paramInt, boolean paramBoolean1, boolean paramBoolean2, final Runnable paramRunnable)
   {
-    AppMethodBeat.i(134217);
-    if (this.jix != null)
-    {
-      boolean bool = this.jix.a(paramT, this.jiv);
-      AppMethodBeat.o(134217);
-      return bool;
+    AppMethodBeat.i(324266);
+    if (this.uBf != null) {
+      this.uBf.ak(paramInt, paramBoolean1);
     }
-    AppMethodBeat.o(134217);
-    return true;
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, RecyclerView.v paramv, int paramInt, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(134219);
-    if (this.jix != null) {
-      this.jix.cz(this.jfC);
-    }
-    d.4 local4 = new d.4(this, paramRecyclerView, paramInt, paramRunnable);
-    if ((paramv != null) && (this.jfC != null))
+    final Runnable local1;
+    final RecyclerView.v localv;
+    float f4;
+    float f6;
+    float f5;
+    float f2;
+    float f3;
+    if (paramBoolean2)
     {
-      ab.i("ItemInsertHelper", "[finishMove] position:" + paramv.jN() + " dragViewPosition:" + paramInt);
-      RecyclerView.v localv = paramRecyclerView.bQ(paramInt);
-      float f2 = this.jfC.getTranslationX();
-      float f1 = this.jfC.getTranslationY();
-      float f3;
-      if (!this.jiw)
+      local1 = new Runnable()
       {
-        f2 = c(paramRecyclerView, paramv);
-        f3 = this.jiy.aMW();
-        f1 = Q(paramv) + this.jiy.aMX();
-        f2 = f3 + f2;
+        public final void run()
+        {
+          AppMethodBeat.i(49838);
+          if (d.a(d.this) != null)
+          {
+            a locala = d.a(d.this);
+            d.b(d.this);
+            locala.f(d.c(d.this), d.d(d.this), d.e(d.this));
+          }
+          if (paramRunnable != null) {
+            paramRunnable.run();
+          }
+          AppMethodBeat.o(49838);
+        }
+      };
+      if ((paramT != null) && (this.uAI != null))
+      {
+        Log.i("ItemMoveHelper", "[finishMove] position" + paramT.KJ() + " dragViewPosition:" + paramInt);
+        localv = paramRecyclerView.fU(paramInt);
+        f4 = this.uAI.getTranslationX();
+        f6 = this.uAI.getTranslationY();
+        f5 = 1.0F;
+        paramRunnable = Boolean.TRUE;
+        if ((paramInt == paramT.KJ()) || (localv != null)) {
+          break label392;
+        }
+        if (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).Ju() <= paramInt) {
+          break label368;
+        }
+        f1 = f6 - paramRecyclerView.getHeight();
+        f2 = f4;
+        paramT = paramRunnable;
+        f3 = f5;
       }
+    }
+    label192:
+    long l;
+    label204:
+    label246:
+    do
+    {
       for (;;)
       {
-        paramRunnable = this.jiy.cA(this.jfC);
-        paramRecyclerView = paramRunnable;
-        if (paramRunnable == null) {
-          paramRecyclerView = this.jfC;
+        paramRunnable = this.uBh.dV(this.uAI);
+        if (paramRunnable != null) {
+          break label680;
         }
-        ab.i("ItemInsertHelper", "alvinluo finishMove transX: %f, transY: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f1) });
-        this.jfC.findViewById(2131823387).setVisibility(4);
-        paramRecyclerView.animate().scaleX(1.0F).scaleY(1.0F).setDuration(300L).setListener(null).start();
-        this.jfC.animate().translationX(f2).translationY(f1).setDuration(300L).setListener(new d.5(this, paramv, local4, localv)).start();
-        AppMethodBeat.o(134219);
-        return;
-        if ((localv != null) && (paramInt == localv.jN())) {
+        paramRunnable = this.uAI;
+        if (!paramT.booleanValue()) {
           break;
         }
-        if (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).it() > paramInt) {
-          f1 -= paramRecyclerView.getHeight();
-        } else {
-          f1 = paramRecyclerView.getHeight() + f1;
+        l = 300L;
+        f5 = f1;
+        f4 = f2;
+        if (l > 0L)
+        {
+          f5 = f1;
+          f4 = f2;
+          if (f3 >= 0.99999F)
+          {
+            if ((localv instanceof com.tencent.mm.plugin.appbrand.widget.desktop.d)) {
+              break label600;
+            }
+            f1 = 0.0F;
+            f4 = f1 + this.uBh.cPk();
+            if ((localv instanceof com.tencent.mm.plugin.appbrand.widget.desktop.d)) {
+              break label640;
+            }
+            f1 = 0.0F;
+            f5 = f1 + this.uBh.cPl();
+          }
         }
+        paramRunnable.animate().scaleX(1.0F).scaleY(1.0F).setDuration(300L).setListener(null).start();
+        this.uAI.animate().scaleX(f3).scaleY(f3).translationX(f4).translationY(f5).setDuration(l).setListener(new Animator.AnimatorListener()
+        {
+          public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
+          
+          public final void onAnimationEnd(Animator paramAnonymousAnimator)
+          {
+            AppMethodBeat.i(49839);
+            d.this.eCZ.removeView(d.b(d.this));
+            d.b(d.this).setVisibility(8);
+            paramAnonymousAnimator = d.a(d.this).cPp();
+            if ((paramAnonymousAnimator != null) && (d.a(d.this).i(paramRecyclerView)) && (d.a(d.this).cPq() > 8)) {
+              paramAnonymousAnimator.setImageDrawable(((ImageView)d.f(d.this).dW(d.b(d.this))).getDrawable());
+            }
+            if (localv != null) {
+              localv.caK.setVisibility(0);
+            }
+            local1.run();
+            AppMethodBeat.o(49839);
+          }
+          
+          public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+          
+          public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+        }).start();
+        AppMethodBeat.o(324266);
+        return;
+        f1 = paramRecyclerView.getHeight() + f6;
+        f3 = f5;
+        paramT = paramRunnable;
+        f2 = f4;
       }
-      float f4;
-      if (this.jiw)
-      {
-        f2 = c(paramRecyclerView, localv) + this.jiy.aMW();
-        f3 = Q(localv);
-        f4 = this.jiy.aMX();
-        if (this.jfK != null) {
-          break label441;
-        }
-        f1 = 0.0F;
-      }
-      for (;;)
-      {
-        f3 = f4 + f3 + f1;
-        ab.i("ItemInsertHelper", "alvinluo finishMove computeMoveExtraY %f", new Object[] { Float.valueOf(f1) });
-        f1 = f3;
-        break;
-        label441:
-        paramInt = this.jfK.computeVerticalScrollOffset();
-        int i = paramRecyclerView.computeVerticalScrollExtent();
-        int j = this.jfK.computeVerticalScrollRange();
-        int k = j - paramRecyclerView.getMeasuredHeight() - paramInt;
-        ab.i("ItemInsertHelper", "alvinluo computeMoveExtraY scrollOffset: %d, scrollExtent: %d, scrollRange: %d, height: %d, extra: %d, diff: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramRecyclerView.getMeasuredHeight()), Integer.valueOf((int)(paramRecyclerView.getResources().getDimension(2131428643) * 1.0F)), Integer.valueOf(k) });
-        if (k > paramRecyclerView.getResources().getDimension(2131428643) * 1.0F) {
-          f1 = 0.0F;
-        } else {
-          f1 = paramRecyclerView.getResources().getDimension(2131428643) * 1.0F - k;
-        }
+      f3 = f5;
+      paramT = paramRunnable;
+      f1 = f6;
+      f2 = f4;
+    } while (localv == null);
+    label271:
+    label368:
+    paramT = this.uBf.cPo();
+    label392:
+    Object localObject;
+    if ((paramT != null) && (this.uBf.cPq() > 8) && (this.uBf.i(paramRecyclerView)))
+    {
+      f2 = paramT[0] - this.uAI.getWidth() / 2.0F;
+      f4 = paramT[1] - this.uAI.getHeight() / 2.0F;
+      paramT = this.uBh.dW(this.uAI);
+      localObject = this.uBf.cPp();
+      if ((paramT == null) || (localObject == null)) {
+        break label683;
       }
     }
-    ab.e("ItemInsertHelper", "alvinluo finishMove viewHolder is null");
-    AppMethodBeat.o(134219);
+    label640:
+    label680:
+    label683:
+    for (float f1 = ((ImageView)localObject).getHeight() * 1.0F / paramT.getHeight();; f1 = 1.0F)
+    {
+      f3 = f1;
+      paramT = paramRunnable;
+      f1 = f4;
+      break;
+      if (!this.uBf.i(paramRecyclerView)) {}
+      for (paramBoolean1 = true;; paramBoolean1 = false)
+      {
+        paramT = Boolean.valueOf(paramBoolean1);
+        f3 = f5;
+        f1 = f6;
+        f2 = f4;
+        break;
+      }
+      l = 0L;
+      break label204;
+      label600:
+      paramT = ((com.tencent.mm.plugin.appbrand.widget.desktop.d)localv).ttT;
+      localObject = new int[2];
+      paramT.getLocationOnScreen((int[])localObject);
+      f1 = localObject[0] + com.tencent.mm.plugin.appbrand.widget.desktop.b.fu(paramRecyclerView.getContext()) / 2.0F;
+      break label246;
+      paramT = ((com.tencent.mm.plugin.appbrand.widget.desktop.d)localv).ttT;
+      localObject = new int[2];
+      paramT.getLocationOnScreen((int[])localObject);
+      f1 = localObject[1] + com.tencent.mm.plugin.appbrand.widget.desktop.b.fu(paramRecyclerView.getContext()) / 2.0F;
+      break label271;
+      break label192;
+    }
   }
   
-  public final void a(View paramView, float paramFloat1, float paramFloat2, RecyclerView.v paramv, int paramInt)
+  public final boolean a(RecyclerView paramRecyclerView, T paramT1, T paramT2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(134220);
+    AppMethodBeat.i(324258);
+    Log.i("MicroMsg.ItemMoveHelper", "[onMoved] position:" + paramT1.KJ() + " target:" + paramT2.KJ());
+    Log.i("MicroMsg.ItemMoveHelper", "alvinluo onMoved mList: %d", new Object[] { Integer.valueOf(this.eXW.hashCode()) });
+    if ((paramInt1 < 0) || (paramInt1 >= this.eXW.size()) || (paramInt2 < 0) || (paramInt2 >= this.eXW.size()))
+    {
+      AppMethodBeat.o(324258);
+      return false;
+    }
+    if (paramInt1 < paramInt2)
+    {
+      i = paramInt1;
+      while (i < paramInt2)
+      {
+        Collections.swap(this.eXW, i, i + 1);
+        i += 1;
+      }
+    }
+    int i = paramInt1;
+    while (i > paramInt2)
+    {
+      Collections.swap(this.eXW, i, i - 1);
+      i -= 1;
+    }
+    Log.i("MicroMsg.ItemMoveHelper", "alvinluo onMoved end mList: %d", new Object[] { Integer.valueOf(this.eXW.hashCode()) });
+    paramRecyclerView.getAdapter().bz(paramInt1, paramInt2);
+    if (this.uBh != null) {
+      this.endPos = paramInt2;
+    }
+    paramRecyclerView.getAdapter().e(0, paramRecyclerView.getAdapter().getItemCount(), Boolean.TRUE);
+    AppMethodBeat.o(324258);
+    return true;
+  }
+  
+  public final void b(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    AppMethodBeat.i(324272);
     if (paramView == null)
     {
-      AppMethodBeat.o(134220);
+      AppMethodBeat.o(324272);
       return;
     }
     paramView.setTranslationX(paramView.getTranslationX() - paramFloat1);
     paramView.setTranslationY(paramView.getTranslationY() - paramFloat2);
-    if (this.jix != null) {
-      this.jix.a(paramv, paramView, this.jiv, paramInt);
+    if (this.uBf != null) {
+      this.uBf.e(paramView, paramFloat3, paramFloat4);
     }
-    AppMethodBeat.o(134220);
+    AppMethodBeat.o(324272);
   }
   
-  public final boolean a(final RecyclerView paramRecyclerView, T paramT1, T paramT2, final int paramInt1, final int paramInt2)
+  public final boolean cPn()
   {
-    AppMethodBeat.i(134218);
-    ab.i("ItemInsertHelper", "alvinluo ItemInsertHelper onMoved isHasInserted: " + this.jiw + ", from: " + paramInt1 + ", to: " + paramInt2);
-    if (!this.jiw)
+    AppMethodBeat.i(324276);
+    if (this.uBf != null)
     {
-      this.jiu.add(paramInt2, this.jiv);
-      paramRecyclerView.post(new d.1(this, paramRecyclerView, paramInt2));
-      this.jiw = true;
-      if (this.jiy != null) {
-        this.jiy.aPo();
-      }
+      boolean bool = this.uBf.cPn();
+      AppMethodBeat.o(324276);
+      return bool;
     }
-    for (;;)
-    {
-      this.endPos = paramInt2;
-      if (this.jiy != null) {
-        this.jiy.e(this.jiv, paramInt2);
-      }
-      AppMethodBeat.o(134218);
-      return true;
-      int i;
-      if (paramInt1 < paramInt2)
-      {
-        i = paramInt1;
-        while (i < paramInt2)
-        {
-          Collections.swap(this.jiu, i, i + 1);
-          i += 1;
-        }
-        if (paramRecyclerView != null) {
-          paramRecyclerView.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(134211);
-              paramRecyclerView.getAdapter().ao(paramInt1, paramInt2);
-              AppMethodBeat.o(134211);
-            }
-          });
-        }
-      }
-      else if (paramInt1 > paramInt2)
-      {
-        i = paramInt1;
-        while (i > paramInt2)
-        {
-          Collections.swap(this.jiu, i, i - 1);
-          i -= 1;
-        }
-        if (paramRecyclerView != null) {
-          paramRecyclerView.post(new d.3(this, paramRecyclerView, paramInt1, paramInt2));
-        }
-      }
-    }
+    AppMethodBeat.o(324276);
+    return false;
   }
   
-  public final View d(RecyclerView paramRecyclerView, T paramT)
+  public final View f(RecyclerView paramRecyclerView, T paramT)
   {
-    AppMethodBeat.i(134216);
-    this.jfC = f(paramRecyclerView, paramT);
-    if (this.jfC != null)
+    AppMethodBeat.i(324245);
+    paramRecyclerView = this.eCZ;
+    paramT.caK.setVisibility(4);
+    View localView = this.uBf.M(paramT);
+    localView.setAlpha(1.0F);
+    localView.setScaleX(1.0F);
+    localView.setScaleY(1.0F);
+    localView.setVisibility(0);
+    this.uAI = localView;
+    paramRecyclerView.addView(localView);
+    Log.i("MicroMsg.ItemMoveHelper", "[onDragBegin] position:" + paramT.KJ());
+    if ((paramT.KJ() < 0) && (this.uAI != null))
     {
-      FrameLayout localFrameLayout = this.jis;
-      paramRecyclerView = f(paramRecyclerView, paramT);
-      this.jfC = paramRecyclerView;
-      localFrameLayout.addView(paramRecyclerView);
-      if ((paramT.jN() < 0) && (this.jfC != null))
-      {
-        this.jis.removeView(this.jfC);
-        this.jfC = null;
-        AppMethodBeat.o(134216);
-        return null;
-      }
-      this.jiw = false;
-      if (paramT.jN() < this.jit.size())
-      {
-        this.jiv = this.jiy.bo(this.jit.get(paramT.jN()));
-        this.chT = paramT.jN();
-        paramRecyclerView = this.jfC;
-        AppMethodBeat.o(134216);
-        return paramRecyclerView;
-      }
+      this.eCZ.removeView(this.uAI);
+      this.uAI = null;
+      AppMethodBeat.o(324245);
+      return null;
     }
-    AppMethodBeat.o(134216);
-    return null;
+    if ((this.uBh != null) && (this.eXW.size() > paramT.KJ()))
+    {
+      this.uBg = this.uBh.l(this.eXW.get(paramT.KJ()), paramT.KJ());
+      this.dIY = paramT.KJ();
+      this.endPos = this.dIY;
+    }
+    paramRecyclerView = this.uAI;
+    AppMethodBeat.o(324245);
+    return paramRecyclerView;
   }
   
-  public final void e(RecyclerView paramRecyclerView, T paramT)
+  public final boolean g(RecyclerView paramRecyclerView, T paramT)
   {
-    AppMethodBeat.i(134222);
-    int i = paramT.jN();
-    ab.i("ItemInsertHelper", "[onDelete] position:".concat(String.valueOf(i)));
-    if ((i >= 0) && (i < this.jit.size())) {
-      this.jit.remove(i);
-    }
-    n(paramRecyclerView);
-    if (this.jix != null)
+    AppMethodBeat.i(324250);
+    if (this.uBf != null)
     {
-      if ((this.jiv instanceof AppBrandDesktopView.c)) {
-        ((AppBrandDesktopView.c)this.jiv).position = paramT.jN();
-      }
-      this.jix.bn(this.jiv);
+      boolean bool = this.uBf.e(paramRecyclerView, paramT);
+      AppMethodBeat.o(324250);
+      return bool;
     }
-    AppMethodBeat.o(134222);
+    AppMethodBeat.o(324250);
+    return true;
   }
   
-  public final void m(RecyclerView paramRecyclerView)
+  public final void h(RecyclerView paramRecyclerView, T paramT)
   {
-    AppMethodBeat.i(134223);
-    ab.i("ItemInsertHelper", "alvinluo onCancel");
-    n(paramRecyclerView);
-    AppMethodBeat.o(134223);
+    AppMethodBeat.i(324287);
+    Log.i("MicroMsg.ItemMoveHelper", "alvinluo onDelete adapter position: %d", new Object[] { Integer.valueOf(paramT.KJ()) });
+    if ((paramT instanceof com.tencent.mm.plugin.appbrand.widget.desktop.d)) {
+      Log.i("MicroMsg.ItemMoveHelper", "alvinluo onDelete holder: %s", new Object[] { ((com.tencent.mm.plugin.appbrand.widget.desktop.d)paramT).titleTv.getText() });
+    }
+    if (this.uBh.cPm())
+    {
+      this.eXW.remove(paramT.KJ());
+      Log.i("MicroMsg.ItemMoveHelper", "alvinluo mList hashCode: %d", new Object[] { Integer.valueOf(this.eXW.hashCode()) });
+      paramRecyclerView.getAdapter().fX(paramT.KJ());
+    }
+    if (this.uBf != null) {
+      this.uBf.m(this.uBg, paramT.KJ());
+    }
+    AppMethodBeat.o(324287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -11,23 +11,23 @@ class QzoneSlideShowPreparingFragment$2
   
   public void run()
   {
-    if ((QzoneSlideShowPreparingFragment.a(this.this$0) != null) && (QzoneSlideShowPreparingFragment.a(this.this$0) != null) && (QzoneSlideShowPreparingFragment.a(this.this$0) != null))
+    if ((QzoneSlideShowPreparingFragment.b(this.this$0) != null) && (QzoneSlideShowPreparingFragment.c(this.this$0) != null) && (QzoneSlideShowPreparingFragment.d(this.this$0) != null))
     {
-      int i = QzoneSlideShowPreparingFragment.a(this.this$0).getProgress();
+      int i = QzoneSlideShowPreparingFragment.b(this.this$0).getProgress();
       if (i < 95)
       {
         i += 1;
-        String str = i + "%";
-        QzoneSlideShowPreparingFragment.a(this.this$0).setProgress(i);
-        QzoneSlideShowPreparingFragment.a(this.this$0).setText(str);
-        QzoneSlideShowPreparingFragment.a(this.this$0).sendEmptyMessage(10);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("%");
+        localObject = ((StringBuilder)localObject).toString();
+        QzoneSlideShowPreparingFragment.b(this.this$0).setProgress(i);
+        QzoneSlideShowPreparingFragment.c(this.this$0).setText((CharSequence)localObject);
+        QzoneSlideShowPreparingFragment.d(this.this$0).sendEmptyMessage(10);
+        return;
       }
+      QzoneSlideShowPreparingFragment.d(this.this$0).removeCallbacks(this);
     }
-    else
-    {
-      return;
-    }
-    QzoneSlideShowPreparingFragment.a(this.this$0).removeCallbacks(this);
   }
 }
 

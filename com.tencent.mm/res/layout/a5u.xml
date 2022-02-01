@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+    <RelativeLayout android:background="@color/p0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a62" android:textColor="@color/al6" android:id="@id/ewi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/ci8" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+        <Button android:textSize="@dimen/io" android:id="@id/cqf" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:text="@string/ci6" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oh" />
+    </RelativeLayout>
+</merge>

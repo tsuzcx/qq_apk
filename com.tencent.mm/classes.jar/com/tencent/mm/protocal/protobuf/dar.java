@@ -1,98 +1,177 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
 
 public final class dar
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int ygW;
-  public boolean ygX;
-  public String ygY;
-  public b ygZ;
-  public int yha;
+  public String IKJ;
+  public String Url;
+  public String ZjC;
+  public String aaGk;
+  public String aaGl;
+  public String aaGm;
+  public String aaGn;
+  public int aaGo;
+  public String aaGp;
+  public String hAP;
+  public int vhJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(143703);
+    AppMethodBeat.i(32327);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.ygX);
-      paramVarArgs.aO(2, this.ygW);
-      if (this.ygY != null) {
-        paramVarArgs.e(3, this.ygY);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.hAP != null) {
+        paramVarArgs.g(1, this.hAP);
       }
-      if (this.ygZ != null) {
-        paramVarArgs.c(4, this.ygZ);
+      if (this.aaGk != null) {
+        paramVarArgs.g(2, this.aaGk);
       }
-      paramVarArgs.aO(5, this.yha);
-      AppMethodBeat.o(143703);
+      paramVarArgs.bS(3, this.vhJ);
+      if (this.Url != null) {
+        paramVarArgs.g(4, this.Url);
+      }
+      if (this.aaGl != null) {
+        paramVarArgs.g(5, this.aaGl);
+      }
+      if (this.ZjC != null) {
+        paramVarArgs.g(6, this.ZjC);
+      }
+      if (this.aaGm != null) {
+        paramVarArgs.g(7, this.aaGm);
+      }
+      if (this.IKJ != null) {
+        paramVarArgs.g(8, this.IKJ);
+      }
+      if (this.aaGn != null) {
+        paramVarArgs.g(9, this.aaGn);
+      }
+      paramVarArgs.bS(10, this.aaGo);
+      if (this.aaGp != null) {
+        paramVarArgs.g(11, this.aaGp);
+      }
+      AppMethodBeat.o(32327);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.hAP == null) {
+        break label807;
+      }
+    }
+    label807:
+    for (paramInt = i.a.a.b.b.a.h(1, this.hAP) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.eW(1) + 1 + 0 + e.a.a.b.b.a.bl(2, this.ygW);
+      int i = paramInt;
+      if (this.aaGk != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.aaGk);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.vhJ);
       paramInt = i;
-      if (this.ygY != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.ygY);
+      if (this.Url != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Url);
       }
       i = paramInt;
-      if (this.ygZ != null) {
-        i = paramInt + e.a.a.b.b.a.b(4, this.ygZ);
+      if (this.aaGl != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.aaGl);
       }
-      paramInt = e.a.a.b.b.a.bl(5, this.yha);
-      AppMethodBeat.o(143703);
-      return i + paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      paramInt = i;
+      if (this.ZjC != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.ZjC);
       }
-      AppMethodBeat.o(143703);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      dar localdar = (dar)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      i = paramInt;
+      if (this.aaGm != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.aaGm);
+      }
+      paramInt = i;
+      if (this.IKJ != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.IKJ);
+      }
+      i = paramInt;
+      if (this.aaGn != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.aaGn);
+      }
+      i += i.a.a.b.b.a.cJ(10, this.aaGo);
+      paramInt = i;
+      if (this.aaGp != null) {
+        paramInt = i + i.a.a.b.b.a.h(11, this.aaGp);
+      }
+      AppMethodBeat.o(32327);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(143703);
-        return -1;
-      case 1: 
-        localdar.ygX = locala.CLY.emu();
-        AppMethodBeat.o(143703);
-        return 0;
-      case 2: 
-        localdar.ygW = locala.CLY.sl();
-        AppMethodBeat.o(143703);
-        return 0;
-      case 3: 
-        localdar.ygY = locala.CLY.readString();
-        AppMethodBeat.o(143703);
-        return 0;
-      case 4: 
-        localdar.ygZ = locala.CLY.eqS();
-        AppMethodBeat.o(143703);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(32327);
         return 0;
       }
-      localdar.yha = locala.CLY.sl();
-      AppMethodBeat.o(143703);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        dar localdar = (dar)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32327);
+          return -1;
+        case 1: 
+          localdar.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 2: 
+          localdar.aaGk = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 3: 
+          localdar.vhJ = locala.ajGk.aar();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 4: 
+          localdar.Url = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 5: 
+          localdar.aaGl = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 6: 
+          localdar.ZjC = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 7: 
+          localdar.aaGm = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 8: 
+          localdar.IKJ = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 9: 
+          localdar.aaGn = locala.ajGk.readString();
+          AppMethodBeat.o(32327);
+          return 0;
+        case 10: 
+          localdar.aaGo = locala.ajGk.aar();
+          AppMethodBeat.o(32327);
+          return 0;
+        }
+        localdar.aaGp = locala.ajGk.readString();
+        AppMethodBeat.o(32327);
+        return 0;
+      }
+      AppMethodBeat.o(32327);
+      return -1;
     }
-    AppMethodBeat.o(143703);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dar
  * JD-Core Version:    0.7.0.1
  */

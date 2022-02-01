@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class IconInfo
   extends JceStruct
 {
-  public int iHigh;
-  public int iWidth;
+  public int iHigh = 0;
+  public int iWidth = 0;
   public String strUrl = "";
   
   public IconInfo() {}
@@ -29,8 +29,9 @@ public final class IconInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 0);
+    String str = this.strUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.iWidth, 1);
     paramJceOutputStream.write(this.iHigh, 2);
@@ -38,7 +39,7 @@ public final class IconInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_COMM_VIP_GROWTH.IconInfo
  * JD-Core Version:    0.7.0.1
  */

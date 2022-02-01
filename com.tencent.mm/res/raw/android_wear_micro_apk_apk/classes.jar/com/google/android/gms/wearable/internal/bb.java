@@ -13,7 +13,7 @@ public final class bb
     c.a(paramParcel, 2, paramzzcc.getId());
     c.a(paramParcel, 3, paramzzcc.getDisplayName());
     c.c(paramParcel, 4, paramzzcc.getHopCount());
-    c.a(paramParcel, 5, paramzzcc.kJ());
+    c.a(paramParcel, 5, paramzzcc.kS());
     c.v(paramParcel, i);
   }
 }

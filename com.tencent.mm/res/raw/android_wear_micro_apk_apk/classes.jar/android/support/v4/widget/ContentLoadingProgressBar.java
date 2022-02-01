@@ -7,27 +7,27 @@ import android.widget.ProgressBar;
 public class ContentLoadingProgressBar
   extends ProgressBar
 {
-  boolean aF = false;
-  long nU = -1L;
-  boolean nV = false;
-  boolean nW = false;
-  private final Runnable nX = new Runnable()
+  boolean co = false;
+  long pI = -1L;
+  boolean pJ = false;
+  boolean pK = false;
+  private final Runnable pL = new Runnable()
   {
     public final void run()
     {
-      ContentLoadingProgressBar.this.nV = false;
-      ContentLoadingProgressBar.this.nU = -1L;
+      ContentLoadingProgressBar.this.pJ = false;
+      ContentLoadingProgressBar.this.pI = -1L;
       ContentLoadingProgressBar.this.setVisibility(8);
     }
   };
-  private final Runnable nY = new Runnable()
+  private final Runnable pM = new Runnable()
   {
     public final void run()
     {
-      ContentLoadingProgressBar.this.nW = false;
-      if (!ContentLoadingProgressBar.this.aF)
+      ContentLoadingProgressBar.this.pK = false;
+      if (!ContentLoadingProgressBar.this.co)
       {
-        ContentLoadingProgressBar.this.nU = System.currentTimeMillis();
+        ContentLoadingProgressBar.this.pI = System.currentTimeMillis();
         ContentLoadingProgressBar.this.setVisibility(0);
       }
     }
@@ -38,22 +38,22 @@ public class ContentLoadingProgressBar
     super(paramContext, paramAttributeSet, 0);
   }
   
-  private void cb()
+  private void cf()
   {
-    removeCallbacks(this.nX);
-    removeCallbacks(this.nY);
+    removeCallbacks(this.pL);
+    removeCallbacks(this.pM);
   }
   
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    cb();
+    cf();
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    cb();
+    cf();
   }
 }
 

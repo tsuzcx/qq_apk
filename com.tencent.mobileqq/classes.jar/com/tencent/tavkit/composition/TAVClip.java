@@ -8,7 +8,6 @@ import com.tencent.tav.asset.MutableCompositionTrack;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tavkit.ciimage.CIImage;
 import com.tencent.tavkit.composition.audio.TAVAudioTransition;
 import com.tencent.tavkit.composition.model.TAVAudioConfiguration;
@@ -29,7 +28,6 @@ import java.util.List;
 public class TAVClip
   implements TAVTransitionableAudio, TAVTransitionableVideo, Cloneable
 {
-  private final String TAG = "TAVClip@" + Integer.toHexString(hashCode());
   private TAVAudioConfiguration audioConfiguration = new TAVAudioConfiguration();
   private HashMap<String, Object> extraTrackInfoMap = new HashMap();
   private TAVResource resource;
@@ -68,31 +66,27 @@ public class TAVClip
   
   public CompositionTrack audioCompositionTrackForComposition(MutableComposition paramMutableComposition, int paramInt, boolean paramBoolean)
   {
-    MutableCompositionTrack localMutableCompositionTrack = null;
-    CMTimeRange localCMTimeRange = null;
     TrackInfo localTrackInfo = this.resource.trackInfoForType(2, paramInt);
-    if (localTrackInfo == null)
-    {
-      paramMutableComposition = localCMTimeRange;
-      return paramMutableComposition;
+    MutableCompositionTrack localMutableCompositionTrack1 = null;
+    if (localTrackInfo == null) {
+      return null;
     }
-    localCMTimeRange = new CMTimeRange(this.startTime, localTrackInfo.getScaleToDuration());
+    CMTimeRange localCMTimeRange = new CMTimeRange(this.startTime, localTrackInfo.getScaleToDuration());
     if (paramBoolean) {
-      localMutableCompositionTrack = CompositionUtils.mutableTrackCompatibleWithTimeRange(paramMutableComposition, localCMTimeRange, 2);
+      localMutableCompositionTrack1 = CompositionUtils.mutableTrackCompatibleWithTimeRange(paramMutableComposition, localCMTimeRange, 2);
     }
-    if ((localMutableCompositionTrack == null) && (localTrackInfo.getMediaType() != 0)) {
-      localMutableCompositionTrack = paramMutableComposition.addMutableTrackWithMediaType(localTrackInfo.getMediaType(), 0);
-    }
-    for (;;)
+    MutableCompositionTrack localMutableCompositionTrack2 = localMutableCompositionTrack1;
+    if (localMutableCompositionTrack1 == null)
     {
-      paramMutableComposition = localMutableCompositionTrack;
-      if (localMutableCompositionTrack == null) {
-        break;
+      localMutableCompositionTrack2 = localMutableCompositionTrack1;
+      if (localTrackInfo.getMediaType() != 0) {
+        localMutableCompositionTrack2 = paramMutableComposition.addMutableTrackWithMediaType(localTrackInfo.getMediaType(), 0);
       }
-      CompositionUtils.insertTimeRangeToTrack(localTrackInfo, localMutableCompositionTrack, localCMTimeRange);
-      return localMutableCompositionTrack;
-      Logger.e(this.TAG, "audioCompositionTrackForComposition: compositionTrack == null || info.getMediaType() == 0");
     }
+    if (localMutableCompositionTrack2 != null) {
+      CompositionUtils.insertTimeRangeToTrack(localTrackInfo, localMutableCompositionTrack2, localCMTimeRange);
+    }
+    return localMutableCompositionTrack2;
   }
   
   public TAVClip clone()
@@ -101,8 +95,9 @@ public class TAVClip
     localTAVClip.resource = this.resource.clone();
     localTAVClip.videoConfiguration = this.videoConfiguration.clone();
     localTAVClip.audioConfiguration = this.audioConfiguration.clone();
-    if (this.transition != null) {
-      localTAVClip.transition = this.transition;
+    TAVTransition localTAVTransition = this.transition;
+    if (localTAVTransition != null) {
+      localTAVClip.transition = localTAVTransition;
     }
     localTAVClip.extraTrackInfoMap = new HashMap(this.extraTrackInfoMap);
     return localTAVClip;
@@ -124,8 +119,9 @@ public class TAVClip
   
   public TAVAudioTransition getAudioTransition()
   {
-    if (this.transition != null) {
-      return this.transition.getAudioTransition();
+    TAVTransition localTAVTransition = this.transition;
+    if (localTAVTransition != null) {
+      return localTAVTransition.getAudioTransition();
     }
     return null;
   }
@@ -173,8 +169,9 @@ public class TAVClip
   
   public TAVVideoTransition getVideoTransition()
   {
-    if (this.transition != null) {
-      return this.transition.getVideoTransition();
+    TAVTransition localTAVTransition = this.transition;
+    if (localTAVTransition != null) {
+      return localTAVTransition.getVideoTransition();
     }
     return null;
   }
@@ -212,8 +209,9 @@ public class TAVClip
   public void setStartTime(CMTime paramCMTime)
   {
     this.startTime = paramCMTime;
-    if (this.videoConfiguration != null) {
-      this.videoConfiguration.updateTimeRange(getTimeRange());
+    paramCMTime = this.videoConfiguration;
+    if (paramCMTime != null) {
+      paramCMTime.updateTimeRange(getTimeRange());
     }
   }
   
@@ -234,41 +232,49 @@ public class TAVClip
   
   public String toString()
   {
-    return "TAVClip{resource=" + this.resource + ", videoConfiguration=" + this.videoConfiguration + ", startTime=" + this.startTime + ", transition=" + this.transition + ", extraTrackInfoMap=" + this.extraTrackInfoMap + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVClip{resource=");
+    localStringBuilder.append(this.resource);
+    localStringBuilder.append(", videoConfiguration=");
+    localStringBuilder.append(this.videoConfiguration);
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(", transition=");
+    localStringBuilder.append(this.transition);
+    localStringBuilder.append(", extraTrackInfoMap=");
+    localStringBuilder.append(this.extraTrackInfoMap);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public CompositionTrack videoCompositionTrackForComposition(MutableComposition paramMutableComposition, int paramInt, boolean paramBoolean)
   {
-    MutableCompositionTrack localMutableCompositionTrack = null;
-    CMTimeRange localCMTimeRange = null;
     TrackInfo localTrackInfo = this.resource.trackInfoForType(1, paramInt);
-    if (localTrackInfo == null)
-    {
-      paramMutableComposition = localCMTimeRange;
-      return paramMutableComposition;
+    MutableCompositionTrack localMutableCompositionTrack1 = null;
+    if (localTrackInfo == null) {
+      return null;
     }
-    localCMTimeRange = new CMTimeRange(this.startTime, localTrackInfo.getScaleToDuration());
+    CMTimeRange localCMTimeRange = new CMTimeRange(this.startTime, localTrackInfo.getScaleToDuration());
     if (paramBoolean) {
-      localMutableCompositionTrack = CompositionUtils.mutableTrackCompatibleWithTimeRange(paramMutableComposition, localCMTimeRange, 1);
+      localMutableCompositionTrack1 = CompositionUtils.mutableTrackCompatibleWithTimeRange(paramMutableComposition, localCMTimeRange, 1);
     }
-    if ((localMutableCompositionTrack == null) && (localTrackInfo.getMediaType() != 0)) {
-      localMutableCompositionTrack = paramMutableComposition.addMutableTrackWithMediaType(localTrackInfo.getMediaType(), -1);
-    }
-    for (;;)
+    MutableCompositionTrack localMutableCompositionTrack2 = localMutableCompositionTrack1;
+    if (localMutableCompositionTrack1 == null)
     {
-      paramMutableComposition = localMutableCompositionTrack;
-      if (localMutableCompositionTrack == null) {
-        break;
+      localMutableCompositionTrack2 = localMutableCompositionTrack1;
+      if (localTrackInfo.getMediaType() != 0) {
+        localMutableCompositionTrack2 = paramMutableComposition.addMutableTrackWithMediaType(localTrackInfo.getMediaType(), -1);
       }
-      CompositionUtils.insertTimeRangeToTrack(localTrackInfo, localMutableCompositionTrack, localCMTimeRange);
-      return localMutableCompositionTrack;
-      Logger.e(this.TAG, "videoCompositionTrackForComposition: compositionTrack == null || info.getMediaType() == 0");
     }
+    if (localMutableCompositionTrack2 != null) {
+      CompositionUtils.insertTimeRangeToTrack(localTrackInfo, localMutableCompositionTrack2, localCMTimeRange);
+    }
+    return localMutableCompositionTrack2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.TAVClip
  * JD-Core Version:    0.7.0.1
  */

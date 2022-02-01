@@ -12,12 +12,12 @@ class StructMsgForGeneralShare$6
   
   public void run()
   {
-    ((QQAppInterface)this.a).a().a(this.this$0.message.frienduin, this.this$0.message.msgtype, this.this$0.message.uniseq, "extStr", this.this$0.message.extStr);
+    ((QQAppInterface)this.a).getMessageFacade().a(this.this$0.message.frienduin, this.this$0.message.msgtype, this.this$0.message.uniseq, "extStr", this.this$0.message.extStr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.6
  * JD-Core Version:    0.7.0.1
  */

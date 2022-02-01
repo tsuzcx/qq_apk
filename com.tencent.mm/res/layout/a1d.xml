@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/k6" android:background="@color/a6r" android:paddingLeft="@dimen/g6" android:paddingRight="@dimen/g6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:background="@raw/force_notify_show_ui_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/fw" />
-    <TextView android:textSize="@dimen/dt" android:textStyle="bold" android:textColor="@color/h9" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="37.0dip" android:text="@string/c1j" />
-    <TextView android:textSize="@dimen/du" android:textColor="@color/h9" android:gravity="center" android:id="@id/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:background="@color/a3x" android:paddingBottom="@dimen/fw" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/a6r" android:id="@id/byi" android:background="@drawable/s4" android:layout_width="@dimen/fy" android:layout_height="@dimen/g7" android:text="@string/c1h" style="@style/nr" />
-        <Button android:id="@id/byj" android:layout_width="@dimen/fy" android:layout_height="@dimen/g7" android:layout_marginTop="@dimen/g2" android:text="@string/c1l" style="@style/nx" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/ceo" android:padding="@dimen/df" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/o2" android:gravity="center_horizontal" android:id="@id/cep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:maxLines="2" android:layout_below="@id/ceo" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.emojicapture.ui.capture.StickerSelectFrame android:id="@id/ceu" android:visibility="gone" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" android:layout_centerHorizontal="true" />
+</RelativeLayout>

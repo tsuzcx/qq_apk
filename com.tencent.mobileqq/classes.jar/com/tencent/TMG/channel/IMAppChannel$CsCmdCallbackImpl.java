@@ -14,25 +14,27 @@ public class IMAppChannel$CsCmdCallbackImpl
   
   public void onError(int paramInt, String paramString)
   {
-    if (this.mCallback != null)
+    AVAppChannel.CsCmdCallback localCsCmdCallback = this.mCallback;
+    if (localCsCmdCallback != null)
     {
-      this.mCallback.onError(paramInt, paramString);
+      localCsCmdCallback.onError(paramInt, paramString);
       this.mCallback = null;
     }
   }
   
   public void onSuccess(byte[] paramArrayOfByte)
   {
-    if (this.mCallback != null)
+    AVAppChannel.CsCmdCallback localCsCmdCallback = this.mCallback;
+    if (localCsCmdCallback != null)
     {
-      this.mCallback.onSuccess(paramArrayOfByte);
+      localCsCmdCallback.onSuccess(paramArrayOfByte);
       this.mCallback = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.channel.IMAppChannel.CsCmdCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

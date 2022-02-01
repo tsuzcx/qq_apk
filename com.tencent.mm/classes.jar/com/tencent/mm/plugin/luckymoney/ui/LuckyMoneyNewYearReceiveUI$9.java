@@ -1,27 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.sdk.platformtools.ab;
 
 final class LuckyMoneyNewYearReceiveUI$9
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   LuckyMoneyNewYearReceiveUI$9(LuckyMoneyNewYearReceiveUI paramLuckyMoneyNewYearReceiveUI) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(42794);
-    ab.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "goto BalanceManagerUI!");
-    h.an(this.ouD.getContext(), 1);
-    AppMethodBeat.o(42794);
+    AppMethodBeat.i(284414);
+    paramDialogInterface.dismiss();
+    this.KEd.finish();
+    AppMethodBeat.o(284414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNewYearReceiveUI.9
  * JD-Core Version:    0.7.0.1
  */

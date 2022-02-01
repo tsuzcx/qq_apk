@@ -105,31 +105,37 @@ public final class stWeatherInfo
     paramJceOutputStream.write(this.iTempMax, 8);
     paramJceOutputStream.write(this.iTempMin, 9);
     paramJceOutputStream.write(this.iHumidity, 10);
-    if (this.strSunriseTime != null) {
-      paramJceOutputStream.write(this.strSunriseTime, 11);
+    Object localObject = this.strSunriseTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.strSunsetTime != null) {
-      paramJceOutputStream.write(this.strSunsetTime, 12);
+    localObject = this.strSunsetTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strPressure != null) {
-      paramJceOutputStream.write(this.strPressure, 13);
+    localObject = this.strPressure;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.iWindForce, 14);
-    if (this.strDeviceName != null) {
-      paramJceOutputStream.write(this.strDeviceName, 15);
+    localObject = this.strDeviceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.iPM2p5, 16);
-    if (this.mapForecastInfo != null) {
-      paramJceOutputStream.write(this.mapForecastInfo, 17);
+    localObject = this.mapForecastInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 17);
     }
-    if (this.mapAlarminfo != null) {
-      paramJceOutputStream.write(this.mapAlarminfo, 18);
+    localObject = this.mapAlarminfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSClientInterfaceV2.stWeatherInfo
  * JD-Core Version:    0.7.0.1
  */

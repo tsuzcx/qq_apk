@@ -1,151 +1,85 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.c;
-import com.tencent.mm.m.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/ImportVideoHevcChecker;", "", "()V", "TAG", "", "importVideoEnableHevc", "", "queryGpuRating", "", "plugin-videologic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
 {
-  private static volatile r vKH = null;
+  public static final r XRn;
   
-  public static q B(int paramInt, Bundle paramBundle)
+  static
   {
-    AppMethodBeat.i(125830);
-    switch (paramInt)
-    {
-    default: 
-      paramBundle = new o();
-      AppMethodBeat.o(125830);
-      return paramBundle;
-    case 2: 
-      paramBundle = new a(paramBundle);
-      AppMethodBeat.o(125830);
-      return paramBundle;
-    }
-    paramBundle = new v();
-    AppMethodBeat.o(125830);
-    return paramBundle;
+    AppMethodBeat.i(244745);
+    XRn = new r();
+    AppMethodBeat.o(244745);
   }
   
-  public static int Lv(int paramInt)
+  public static boolean iHY()
   {
-    AppMethodBeat.i(125831);
-    switch (paramInt)
+    boolean bool3 = true;
+    boolean bool4 = false;
+    AppMethodBeat.i(244740);
+    if (!BuildInfo.IS_ARM64)
     {
-    default: 
-      AppMethodBeat.o(125831);
-      return 5;
-    case 0: 
-      paramInt = bo.getInt(g.Nr().R("QQBroswer", "RecommendCount"), 5);
-      AppMethodBeat.o(125831);
-      return paramInt;
+      AppMethodBeat.o(244740);
+      return false;
     }
-    AppMethodBeat.o(125831);
-    return 2147483647;
-  }
-  
-  public static void Lw(int paramInt)
-  {
-    AppMethodBeat.i(125832);
-    switch (paramInt)
+    i locali = i.agtt;
+    int i = i.a(b.a.agrx, 0);
+    boolean bool2;
+    int j;
+    boolean bool1;
+    if (((c)h.ax(c.class)).a(c.a.zwh, 0) == 1)
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125832);
-      return;
-      h.qsU.e(10998, new Object[] { Integer.valueOf(0) });
-      AppMethodBeat.o(125832);
-      return;
-      h.qsU.e(11091, new Object[] { Integer.valueOf(0) });
-    }
-  }
-  
-  public static void Lx(int paramInt)
-  {
-    AppMethodBeat.i(125833);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125833);
-      return;
-      h.qsU.e(10998, new Object[] { Integer.valueOf(1) });
-      AppMethodBeat.o(125833);
-      return;
-      h.qsU.e(11091, new Object[] { Integer.valueOf(1) });
-    }
-  }
-  
-  public static void Ly(int paramInt)
-  {
-    AppMethodBeat.i(125834);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125834);
-      return;
-      h.qsU.e(10998, new Object[] { Integer.valueOf(3) });
-      AppMethodBeat.o(125834);
-      return;
-      h.qsU.e(11091, new Object[] { Integer.valueOf(3) });
-    }
-  }
-  
-  public static void Lz(int paramInt)
-  {
-    AppMethodBeat.i(125835);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125835);
-      return;
-      h.qsU.e(10998, new Object[] { Integer.valueOf(2) });
-      AppMethodBeat.o(125835);
-      return;
-      h.qsU.e(11091, new Object[] { Integer.valueOf(2) });
-    }
-  }
-  
-  public static r dlm()
-  {
-    AppMethodBeat.i(125829);
-    if (vKH == null) {}
-    try
-    {
-      if (vKH == null) {
-        vKH = new r();
+      bool2 = true;
+      Log.i("MicroMsg.ImportVideoHevcChecker", s.X("importVideoEnableHevc software encode enable:", Boolean.valueOf(bool2)));
+      j = MultiProcessMMKV.getMMKV("mmkv_gpu_info").getInt("gpu_info_rating", -1);
+      bool1 = bool2;
+      if (bool2)
+      {
+        int k = ((c)h.ax(c.class)).a(c.a.zwi, -1);
+        Log.i("MicroMsg.ImportVideoHevcChecker", "importVideoEnableHevc software encode gpu rating limit:" + k + ", gpuRating:" + j);
+        if (k <= 0) {
+          break label218;
+        }
+        bool1 = bool4;
+        if (j >= k) {
+          bool1 = true;
+        }
       }
-      r localr = vKH;
-      AppMethodBeat.o(125829);
-      return localr;
+      label158:
+      if (i != 1) {
+        break label223;
+      }
+      bool1 = bool3;
     }
-    finally
+    label218:
+    label223:
+    for (;;)
     {
-      AppMethodBeat.o(125829);
+      Log.i("MicroMsg.ImportVideoHevcChecker", "importVideoEnableHevc software encode enable:" + bool1 + ", repairerConfig:" + i + ", gpuRating:" + j);
+      AppMethodBeat.o(244740);
+      return bool1;
+      bool2 = false;
+      break;
+      bool1 = false;
+      break label158;
     }
-  }
-  
-  public static final class a
-  {
-    public int vKI;
-    public int vKJ;
-    public String vKK;
-    public int vKL;
-    public String vKM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.r
  * JD-Core Version:    0.7.0.1
  */

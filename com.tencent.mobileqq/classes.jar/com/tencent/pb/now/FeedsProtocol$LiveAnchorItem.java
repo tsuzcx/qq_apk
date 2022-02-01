@@ -28,17 +28,18 @@ public final class FeedsProtocol$LiveAnchorItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56, 66, 72, 80, 88, 96 }, new String[] { "id", "user_info", "room_name", "rpt_msg_rich_title", "room_img_url", "location", "watch_count", "jump_url", "anchor_type", "room_id", "sub_room_id", "begin_time" }, new Object[] { localByteStringMicro1, null, localByteStringMicro2, null, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, LiveAnchorItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56, 66, 72, 80, 88, 96 }, new String[] { "id", "user_info", "room_name", "rpt_msg_rich_title", "room_img_url", "location", "watch_count", "jump_url", "anchor_type", "room_id", "sub_room_id", "begin_time" }, new Object[] { localByteStringMicro1, null, localByteStringMicro2, null, localByteStringMicro3, localByteStringMicro4, localInteger, localByteStringMicro5, localInteger, localInteger, localInteger, Long.valueOf(0L) }, LiveAnchorItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.LiveAnchorItem
  * JD-Core Version:    0.7.0.1
  */

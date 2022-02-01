@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/common_list_overscoll_top_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/rl_title_bar" layout="@layout/custom_commen_title" />
+    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:id="@id/public_account_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+        <RelativeLayout android:id="@id/public_account_empty" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/font_size_large" android:textColor="#88000000" android:id="@id/public_account_empty_tips" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="140.0dip" android:text="优质服务，与你共享" android:includeFontPadding="false" android:drawableTop="@drawable/add_contacts_public_account_large" android:drawablePadding="15.0dip" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/public_account_add" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="10.0dip" android:text="立即添加" android:layout_below="@id/public_account_empty_tips" style="@style/ButtonBlue" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

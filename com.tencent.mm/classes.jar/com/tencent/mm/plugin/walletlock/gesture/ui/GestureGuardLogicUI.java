@@ -10,200 +10,406 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.ai.w.a;
-import com.tencent.mm.g.b.a.bt;
-import com.tencent.mm.plugin.walletlock.c.i;
-import com.tencent.mm.plugin.walletlock.gesture.a.e;
-import com.tencent.mm.plugin.walletlock.gesture.a.f;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.s;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.autogen.a.ada;
+import com.tencent.mm.autogen.a.ada.a;
+import com.tencent.mm.autogen.mmdata.rpt.rn;
+import com.tencent.mm.plugin.walletlock.a.a;
+import com.tencent.mm.plugin.walletlock.a.b;
+import com.tencent.mm.plugin.walletlock.a.d;
+import com.tencent.mm.plugin.walletlock.a.e;
+import com.tencent.mm.plugin.walletlock.a.g;
+import com.tencent.mm.plugin.walletlock.gesture.a.d;
+import com.tencent.mm.plugin.walletlock.gesture.a.i;
 import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView;
 import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView.a;
 import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bhn;
-import com.tencent.mm.protocal.protobuf.bho;
-import com.tencent.mm.protocal.protobuf.bkn;
-import com.tencent.mm.protocal.protobuf.bko;
-import com.tencent.mm.protocal.protobuf.bte;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.dwp;
+import com.tencent.mm.protocal.protobuf.dwq;
+import com.tencent.mm.protocal.protobuf.ebi;
+import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.protocal.protobuf.eox;
+import com.tencent.mm.protocal.protobuf.eoy;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.b.c;
-import com.tencent.mm.ui.widget.b.c.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
+import java.util.HashSet;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(19)
 public class GestureGuardLogicUI
   extends MMActivity
-  implements View.OnClickListener, PatternLockView.a
+  implements View.OnClickListener, PatternLockView.a, com.tencent.mm.plugin.walletlock.ui.a
 {
-  private ak mHandler;
+  private List<com.tencent.mm.plugin.walletlock.gesture.a.h> WgA;
+  private List<com.tencent.mm.plugin.walletlock.gesture.a.h> WgB;
+  private boolean WgC;
+  private int WgD;
+  private com.tencent.mm.am.p WgE;
+  private com.tencent.mm.am.p WgF;
+  private String WgG;
+  private ViewFlipper WgH;
+  private Dialog WgI;
+  private boolean WgJ;
+  private boolean WgK;
+  private String WgL;
+  private int Wgi;
+  private int Wgv;
+  private int Wgw;
+  private int Wgx;
+  private a[] Wgy;
+  private Animation Wgz;
+  private MMHandler mHandler;
   private int mStatus;
   private String mToken;
-  private int uEF;
-  private int uEO;
-  private int uEP;
-  private int uEQ;
-  private a[] uER;
-  private Animation uES;
-  private List<f> uET;
-  private List<f> uEU;
-  private boolean uEV;
-  private int uEW;
-  private m uEX;
-  private m uEY;
-  private String uEZ;
-  private ViewFlipper uFa;
-  private Dialog uFb;
-  private boolean uFc;
-  private boolean uFd;
-  private String uFe;
   
   public GestureGuardLogicUI()
   {
-    AppMethodBeat.i(51614);
-    this.uEO = 0;
-    this.uEP = 0;
-    this.uEQ = 0;
-    this.uER = null;
-    this.uES = null;
-    this.uET = null;
-    this.uEU = null;
-    this.uEV = false;
-    this.uEW = 0;
-    this.uEX = null;
-    this.uEY = null;
+    AppMethodBeat.i(129819);
+    this.Wgv = 0;
+    this.Wgw = 0;
+    this.Wgx = 0;
+    this.Wgy = null;
+    this.Wgz = null;
+    this.WgA = null;
+    this.WgB = null;
+    this.WgC = false;
+    this.WgD = 0;
+    this.WgE = null;
+    this.WgF = null;
     this.mToken = null;
-    this.uEZ = null;
-    this.uFa = null;
-    this.mHandler = new ak(Looper.getMainLooper());
-    this.uFb = null;
-    this.uFc = true;
-    this.uFd = false;
-    this.uEF = -1;
-    AppMethodBeat.o(51614);
+    this.WgG = null;
+    this.WgH = null;
+    this.mHandler = new MMHandler(Looper.getMainLooper());
+    this.WgI = null;
+    this.WgJ = true;
+    this.WgK = false;
+    this.Wgi = -1;
+    AppMethodBeat.o(129819);
   }
   
-  private void a(String paramString, GestureGuardLogicUI.a parama)
+  private void U(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(51634);
-    TextView localTextView = this.uER[this.uEQ].uFl;
-    localTextView.getText().toString();
-    localTextView.setText(paramString);
-    localTextView.setTextColor(this.uEP);
-    localTextView.startAnimation(this.uES);
-    this.uES.setAnimationListener(new GestureGuardLogicUI.15(this, parama));
-    AppMethodBeat.o(51634);
-  }
-  
-  private void a(String paramString, List<f> paramList, w.a parama)
-  {
-    AppMethodBeat.i(51626);
-    c(new GestureGuardLogicUI.4(this));
-    if (paramString == null)
+    AppMethodBeat.i(129827);
+    Log.i("MicroMsg.GestureGuardLogicUI", "alvinluo gesture finishWithResult");
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("key_err_code", paramInt2);
+    ((Intent)localObject).putExtra("key_err_msg", paramString);
+    setResult(paramInt1, (Intent)localObject);
+    finish();
+    if ((paramInt2 == 4) || (paramInt2 == 0))
     {
-      aCV();
-      parama.a(3, -6, getString(2131300506), null, null);
-      AppMethodBeat.o(51626);
+      paramString = new ada();
+      localObject = paramString.igZ;
+      if (paramInt2 != 4) {
+        break label105;
+      }
+    }
+    label105:
+    for (paramInt1 = 5;; paramInt1 = 6)
+    {
+      ((ada.a)localObject).ihb = paramInt1;
+      paramString.igZ.activity = this;
+      paramString.publish();
+      AppMethodBeat.o(129827);
       return;
     }
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bte();
-    ((b.a)localObject).fsY = new btf();
-    ((b.a)localObject).funcId = 688;
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/registernewpatternlock";
-    localObject = ((b.a)localObject).ado();
-    bte localbte = (bte)((com.tencent.mm.ai.b)localObject).fsV.fta;
-    localbte.xGL = new SKBuiltinBuffer_t().setBuffer(paramString.getBytes());
-    localbte.xGM = new SKBuiltinBuffer_t().setBuffer(e.ec(paramList));
-    w.a((com.tencent.mm.ai.b)localObject, new GestureGuardLogicUI.5(this, parama), false);
-    AppMethodBeat.o(51626);
   }
   
-  private void a(List<f> paramList, w.a parama)
+  private void a(String paramString, final a parama)
   {
-    AppMethodBeat.i(51628);
-    c(new GestureGuardLogicUI.10(this));
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bhn();
-    ((b.a)localObject).fsY = new bho();
-    ((b.a)localObject).funcId = 689;
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/oppatternlock";
-    localObject = ((b.a)localObject).ado();
-    bhn localbhn = (bhn)((com.tencent.mm.ai.b)localObject).fsV.fta;
-    localbhn.vA = 3;
-    localbhn.xwF = new SKBuiltinBuffer_t().setBuffer(e.ec(paramList));
-    w.a((com.tencent.mm.ai.b)localObject, new GestureGuardLogicUI.11(this, parama), false);
-    AppMethodBeat.o(51628);
+    AppMethodBeat.i(129839);
+    TextView localTextView = this.Wgy[this.Wgx].WgS;
+    localTextView.getText().toString();
+    localTextView.setText(paramString);
+    localTextView.setTextColor(this.Wgw);
+    localTextView.startAnimation(this.Wgz);
+    this.Wgz.setAnimationListener(new Animation.AnimationListener()
+    {
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(129805);
+        GestureGuardLogicUI.s(GestureGuardLogicUI.this).setAnimationListener(null);
+        if (parama != null) {
+          parama.onDone();
+        }
+        AppMethodBeat.o(129805);
+      }
+      
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      
+      public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+    });
+    AppMethodBeat.o(129839);
   }
   
-  private void a(List<f> paramList1, List<f> paramList2, w.a parama)
+  private void a(String paramString, List<com.tencent.mm.plugin.walletlock.gesture.a.h> paramList, final z.a parama)
   {
-    AppMethodBeat.i(51627);
-    Object localObject = new b.a();
+    AppMethodBeat.i(129831);
     c(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(51593);
-        GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].uFn.cYe();
-        if ((GestureGuardLogicUI.p(GestureGuardLogicUI.this) != null) && (!GestureGuardLogicUI.p(GestureGuardLogicUI.this).isCanceled())) {
-          com.tencent.mm.kernel.g.Rc().a(GestureGuardLogicUI.p(GestureGuardLogicUI.this));
+        AppMethodBeat.i(129794);
+        GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].WgU.ink();
+        if ((GestureGuardLogicUI.n(GestureGuardLogicUI.this) != null) && (!GestureGuardLogicUI.n(GestureGuardLogicUI.this).isCanceled())) {
+          com.tencent.mm.kernel.h.aZW().a(GestureGuardLogicUI.n(GestureGuardLogicUI.this));
         }
-        AppMethodBeat.o(51593);
+        AppMethodBeat.o(129794);
       }
     });
-    ((b.a)localObject).fsX = new bhn();
-    ((b.a)localObject).fsY = new bho();
-    ((b.a)localObject).funcId = 689;
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/oppatternlock";
-    localObject = ((b.a)localObject).ado();
-    bhn localbhn = (bhn)((com.tencent.mm.ai.b)localObject).fsV.fta;
-    localbhn.vA = 1;
-    localbhn.xwF = new SKBuiltinBuffer_t().setBuffer(e.ec(paramList1));
-    localbhn.xwG = new SKBuiltinBuffer_t().setBuffer(e.ec(paramList2));
-    w.a((com.tencent.mm.ai.b)localObject, new GestureGuardLogicUI.9(this, parama), false);
-    AppMethodBeat.o(51627);
-  }
-  
-  private void aCV()
-  {
-    AppMethodBeat.i(51639);
-    if ((this.uFb != null) && (this.uFb.isShowing())) {
-      this.uFb.dismiss();
-    }
-    AppMethodBeat.o(51639);
-  }
-  
-  private void as(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(51633);
-    int i = paramInt - this.uEQ;
-    if (i == 0)
+    if (paramString == null)
     {
-      AppMethodBeat.o(51633);
+      bQa();
+      parama.callback(3, -6, getString(a.g.WeL), null, null);
+      AppMethodBeat.o(129831);
       return;
     }
-    this.uEQ = paramInt;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eox();
+    ((c.a)localObject).otF = new eoy();
+    ((c.a)localObject).funcId = 688;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/registernewpatternlock";
+    localObject = ((c.a)localObject).bEF();
+    eox localeox = (eox)c.b.b(((com.tencent.mm.am.c)localObject).otB);
+    localeox.abtd = new gol().df(paramString.getBytes());
+    localeox.abte = new gol().df(com.tencent.mm.plugin.walletlock.gesture.a.g.md(paramList));
+    z.a((com.tencent.mm.am.c)localObject, new z.a()
+    {
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+      {
+        AppMethodBeat.i(129795);
+        Log.i("MicroMsg.GestureGuardLogicUI", String.format("Scene doSwitchOn, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString }));
+        GestureGuardLogicUI.o(GestureGuardLogicUI.this);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          com.tencent.mm.plugin.walletlock.gesture.a.f.a(((eoy)c.c.b(paramAnonymousc.otC)).abcB);
+          GestureGuardLogicUI.inh();
+          ((com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.walletlock.a.b.class)).asE(1);
+        }
+        com.tencent.mm.plugin.walletlock.model.h.WhQ.inw();
+        if (parama != null)
+        {
+          paramAnonymousInt1 = parama.callback(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousc, paramAnonymousp);
+          AppMethodBeat.o(129795);
+          return paramAnonymousInt1;
+        }
+        AppMethodBeat.o(129795);
+        return 0;
+      }
+    }, false);
+    AppMethodBeat.o(129831);
+  }
+  
+  private void a(List<com.tencent.mm.plugin.walletlock.gesture.a.h> paramList, final z.a parama)
+  {
+    AppMethodBeat.i(129833);
+    c(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(129800);
+        GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].WgU.ink();
+        if ((GestureGuardLogicUI.p(GestureGuardLogicUI.this) != null) && (!GestureGuardLogicUI.p(GestureGuardLogicUI.this).isCanceled())) {
+          com.tencent.mm.kernel.h.aZW().a(GestureGuardLogicUI.p(GestureGuardLogicUI.this));
+        }
+        AppMethodBeat.o(129800);
+      }
+    });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new dwp();
+    ((c.a)localObject).otF = new dwq();
+    ((c.a)localObject).funcId = 689;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/oppatternlock";
+    localObject = ((c.a)localObject).bEF();
+    dwp localdwp = (dwp)c.b.b(((com.tencent.mm.am.c)localObject).otB);
+    localdwp.bUl = 3;
+    localdwp.abcz = new gol().df(com.tencent.mm.plugin.walletlock.gesture.a.g.md(paramList));
+    z.a((com.tencent.mm.am.c)localObject, new z.a()
+    {
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+      {
+        AppMethodBeat.i(129801);
+        Log.i("MicroMsg.GestureGuardLogicUI", String.format("Scene doSwitchOff, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString }));
+        GestureGuardLogicUI.o(GestureGuardLogicUI.this);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          com.tencent.mm.plugin.walletlock.gesture.a.f.a(((dwq)c.c.b(paramAnonymousc.otC)).abcB);
+          com.tencent.mm.plugin.walletlock.model.f localf = com.tencent.mm.plugin.walletlock.model.f.WhM;
+          com.tencent.mm.plugin.walletlock.model.f.Id(false);
+          GestureGuardLogicUI.i(GestureGuardLogicUI.this);
+          GestureGuardLogicUI.inh();
+        }
+        if (parama != null)
+        {
+          paramAnonymousInt1 = parama.callback(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousc, paramAnonymousp);
+          AppMethodBeat.o(129801);
+          return paramAnonymousInt1;
+        }
+        AppMethodBeat.o(129801);
+        return 0;
+      }
+    }, false);
+    AppMethodBeat.o(129833);
+  }
+  
+  private void a(List<com.tencent.mm.plugin.walletlock.gesture.a.h> paramList1, List<com.tencent.mm.plugin.walletlock.gesture.a.h> paramList2, final z.a parama)
+  {
+    AppMethodBeat.i(129832);
+    Object localObject = new c.a();
+    c(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(129798);
+        GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].WgU.ink();
+        if ((GestureGuardLogicUI.p(GestureGuardLogicUI.this) != null) && (!GestureGuardLogicUI.p(GestureGuardLogicUI.this).isCanceled())) {
+          com.tencent.mm.kernel.h.aZW().a(GestureGuardLogicUI.p(GestureGuardLogicUI.this));
+        }
+        AppMethodBeat.o(129798);
+      }
+    });
+    ((c.a)localObject).otE = new dwp();
+    ((c.a)localObject).otF = new dwq();
+    ((c.a)localObject).funcId = 689;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/oppatternlock";
+    localObject = ((c.a)localObject).bEF();
+    dwp localdwp = (dwp)c.b.b(((com.tencent.mm.am.c)localObject).otB);
+    localdwp.bUl = 1;
+    localdwp.abcz = new gol().df(com.tencent.mm.plugin.walletlock.gesture.a.g.md(paramList1));
+    localdwp.abcA = new gol().df(com.tencent.mm.plugin.walletlock.gesture.a.g.md(paramList2));
+    z.a((com.tencent.mm.am.c)localObject, new z.a()
+    {
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+      {
+        AppMethodBeat.i(129799);
+        Log.i("MicroMsg.GestureGuardLogicUI", String.format("Scene doModify, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString }));
+        GestureGuardLogicUI.o(GestureGuardLogicUI.this);
+        Object localObject;
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          com.tencent.mm.plugin.walletlock.gesture.a.f.a(((dwq)c.c.b(paramAnonymousc.otC)).abcB);
+          GestureGuardLogicUI.inh();
+          if (GestureGuardLogicUI.q(GestureGuardLogicUI.this) != 0) {
+            break label206;
+          }
+          if (GestureGuardLogicUI.r(GestureGuardLogicUI.this) != 1) {
+            break label161;
+          }
+          localObject = new rn();
+          ((rn)localObject).iPe = 8L;
+          ((rn)localObject).jvX = 2L;
+          ((rn)localObject).bMH();
+        }
+        for (;;)
+        {
+          com.tencent.mm.plugin.walletlock.model.h.WhQ.inw();
+          if (parama == null) {
+            break;
+          }
+          paramAnonymousInt1 = parama.callback(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousc, paramAnonymousp);
+          AppMethodBeat.o(129799);
+          return paramAnonymousInt1;
+          label161:
+          if (GestureGuardLogicUI.r(GestureGuardLogicUI.this) == 2)
+          {
+            localObject = new rn();
+            ((rn)localObject).iPe = 10L;
+            ((rn)localObject).jvX = 2L;
+            ((rn)localObject).bMH();
+            continue;
+            label206:
+            localObject = GestureGuardLogicUI.this.getIntent().getStringExtra("next_action");
+            if ("next_action.modify_pattern".equals(localObject))
+            {
+              localObject = new rn();
+              ((rn)localObject).iPe = 5L;
+              ((rn)localObject).jvX = 2L;
+              ((rn)localObject).bMH();
+            }
+            else if ("next_action.switch_on_pattern".equals(localObject))
+            {
+              localObject = new rn();
+              ((rn)localObject).iPe = 4L;
+              ((rn)localObject).jvX = 2L;
+              ((rn)localObject).bMH();
+            }
+            else
+            {
+              localObject = new rn();
+              ((rn)localObject).iPe = 5L;
+              ((rn)localObject).jvX = 2L;
+              ((rn)localObject).bMH();
+            }
+          }
+        }
+        AppMethodBeat.o(129799);
+        return 0;
+      }
+    }, false);
+    AppMethodBeat.o(129832);
+  }
+  
+  private void bQa()
+  {
+    AppMethodBeat.i(129844);
+    if ((this.WgI != null) && (this.WgI.isShowing())) {
+      this.WgI.dismiss();
+    }
+    AppMethodBeat.o(129844);
+  }
+  
+  private void c(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(129843);
+    if (this.WgI == null)
+    {
+      this.WgI = k.a(this, getString(a.g.WeO), false, paramOnCancelListener);
+      AppMethodBeat.o(129843);
+      return;
+    }
+    this.WgI.show();
+    AppMethodBeat.o(129843);
+  }
+  
+  private void ci(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(129838);
+    int i = paramInt - this.Wgx;
+    if (i == 0)
+    {
+      AppMethodBeat.o(129838);
+      return;
+    }
+    this.Wgx = paramInt;
     if (paramBoolean) {
       if (i > 0)
       {
-        this.uFa.setInAnimation(this, 2131034266);
-        this.uFa.setOutAnimation(this, 2131034263);
+        this.WgH.setInAnimation(this, a.a.slide_right_in);
+        this.WgH.setOutAnimation(this, a.a.slide_left_out);
       }
     }
     for (;;)
@@ -215,406 +421,665 @@ public class GestureGuardLogicUI
       paramInt = 0;
       while (paramInt < i)
       {
-        this.uFa.showNext();
+        this.WgH.showNext();
         paramInt += 1;
       }
-      this.uFa.setInAnimation(this, 2131034262);
-      this.uFa.setOutAnimation(this, 2131034267);
+      this.WgH.setInAnimation(this, a.a.slide_left_in);
+      this.WgH.setOutAnimation(this, a.a.slide_right_out);
       continue;
-      this.uFa.setInAnimation(null);
-      this.uFa.setOutAnimation(null);
+      this.WgH.setInAnimation(null);
+      this.WgH.setOutAnimation(null);
     }
-    AppMethodBeat.o(51633);
+    AppMethodBeat.o(129838);
     return;
     label137:
     while (paramInt < 0)
     {
-      this.uFa.showPrevious();
+      this.WgH.showPrevious();
       paramInt += 1;
     }
-    AppMethodBeat.o(51633);
+    AppMethodBeat.o(129838);
   }
   
-  private void c(DialogInterface.OnCancelListener paramOnCancelListener)
+  private boolean ina()
   {
-    AppMethodBeat.i(51638);
-    if (this.uFb == null)
-    {
-      this.uFb = com.tencent.mm.ui.base.h.b(this, getString(2131300509), false, paramOnCancelListener);
-      AppMethodBeat.o(51638);
-      return;
-    }
-    this.uFb.show();
-    AppMethodBeat.o(51638);
-  }
-  
-  private boolean cXU()
-  {
-    AppMethodBeat.i(51623);
+    AppMethodBeat.i(129828);
     if ((this.mStatus != 20) && (this.mStatus != 0) && (this.mStatus != 2) && (this.mStatus != 1))
     {
-      if (this.uFc) {
-        cYa();
+      if (this.WgJ) {
+        ing();
       }
       for (;;)
       {
-        AppMethodBeat.o(51623);
+        AppMethodBeat.o(129828);
         return true;
-        cXZ();
+        inf();
       }
     }
-    cXX();
-    AppMethodBeat.o(51623);
+    ind();
+    AppMethodBeat.o(129828);
     return false;
   }
   
-  private void cXV()
+  private void inb()
   {
-    AppMethodBeat.i(51624);
-    Object localObject1 = this.uER[this.uEQ];
+    AppMethodBeat.i(129829);
+    if (this.Wgy == null)
+    {
+      AppMethodBeat.o(129829);
+      return;
+    }
+    Object localObject1 = this.Wgy[this.Wgx];
     switch (this.mStatus)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(51624);
+      AppMethodBeat.o(129829);
       return;
-      setMMTitle(getString(2131300518));
-      setMMTitle(getString(2131300519));
-      if (this.uEF == 1)
+      setMMTitle(getString(a.g.WeV));
+      setMMTitle(getString(a.g.WeW));
+      if (this.Wgi == 1)
       {
-        localObject2 = new bt();
-        ((bt)localObject2).cRI = 8L;
-        ((bt)localObject2).cYT = 1L;
-        ((bt)localObject2).ake();
+        localObject2 = new rn();
+        ((rn)localObject2).iPe = 8L;
+        ((rn)localObject2).jvX = 1L;
+        ((rn)localObject2).bMH();
       }
       long l;
       for (;;)
       {
-        this.uEV = true;
-        ((a)localObject1).uFn.setEnableInput(false);
-        ((a)localObject1).uFn.setOnPatternListener(null);
-        l = Math.ceil((600L - com.tencent.mm.plugin.walletlock.gesture.a.d.cXM().uEN / 1000L) / 60.0D);
-        ((a)localObject1).uFl.setText(String.format(getString(2131300511), new Object[] { Long.valueOf(l) }));
-        ((a)localObject1).uFl.setTextColor(getResources().getColor(2131690137));
-        AppMethodBeat.o(51624);
+        this.WgC = true;
+        ((a)localObject1).WgU.setEnableInput(false);
+        ((a)localObject1).WgU.setOnPatternListener(null);
+        l = Math.ceil((600L - com.tencent.mm.plugin.walletlock.gesture.a.f.imS().Wgu / 1000L) / 60.0D);
+        ((a)localObject1).WgS.setText(String.format(getString(a.g.WeP), new Object[] { Long.valueOf(l) }));
+        ((a)localObject1).WgS.setTextColor(getResources().getColor(a.b.red_text_color));
+        AppMethodBeat.o(129829);
         return;
-        if (this.uEF == 2)
+        if (this.Wgi == 2)
         {
-          localObject2 = new bt();
-          ((bt)localObject2).cRI = 10L;
-          ((bt)localObject2).cYT = 1L;
-          ((bt)localObject2).ake();
+          localObject2 = new rn();
+          ((rn)localObject2).iPe = 10L;
+          ((rn)localObject2).jvX = 1L;
+          ((rn)localObject2).bMH();
         }
       }
       Object localObject2 = getIntent().getStringExtra("next_action");
       if ("next_action.modify_pattern".equals(localObject2))
       {
-        setMMTitle(getString(2131300519));
-        localObject2 = new bt();
-        ((bt)localObject2).cRI = 5L;
-        ((bt)localObject2).cYT = 1L;
-        ((bt)localObject2).ake();
+        setMMTitle(getString(a.g.WeW));
+        localObject2 = new rn();
+        ((rn)localObject2).iPe = 5L;
+        ((rn)localObject2).jvX = 1L;
+        ((rn)localObject2).bMH();
       }
       for (;;)
       {
-        this.uEV = false;
-        ((a)localObject1).uFn.setEnableInput(true);
-        ((a)localObject1).uFn.setOnPatternListener(this);
-        ((a)localObject1).uFl.setText(getString(2131300515));
-        ((a)localObject1).uFl.setTextColor(getResources().getColor(2131690136));
-        if (((a)localObject1).uFo.getVisibility() == 8) {
+        this.WgC = false;
+        ((a)localObject1).WgU.setEnableInput(true);
+        ((a)localObject1).WgU.setOnPatternListener(this);
+        ((a)localObject1).WgS.setText(getString(a.g.WeS));
+        ((a)localObject1).WgS.setTextColor(getResources().getColor(a.b.normal_text_color));
+        if (((a)localObject1).WgV.getVisibility() == 8) {
           break;
         }
-        ((a)localObject1).uFo.setVisibility(8);
-        AppMethodBeat.o(51624);
+        ((a)localObject1).WgV.setVisibility(8);
+        AppMethodBeat.o(129829);
         return;
         if ("next_action.switch_on_pattern".equals(localObject2))
         {
-          setMMTitle(getString(2131300520));
-          localObject2 = new bt();
-          ((bt)localObject2).cRI = 4L;
-          ((bt)localObject2).cYT = 1L;
-          ((bt)localObject2).ake();
+          setMMTitle(getString(a.g.WeX));
+          localObject2 = new rn();
+          ((rn)localObject2).iPe = 4L;
+          ((rn)localObject2).jvX = 1L;
+          ((rn)localObject2).bMH();
         }
         else
         {
-          setMMTitle(getString(2131300519));
-          localObject2 = new bt();
-          ((bt)localObject2).cRI = 5L;
-          ((bt)localObject2).cYT = 1L;
-          ((bt)localObject2).ake();
+          setMMTitle(getString(a.g.WeW));
+          localObject2 = new rn();
+          ((rn)localObject2).iPe = 5L;
+          ((rn)localObject2).jvX = 1L;
+          ((rn)localObject2).bMH();
         }
       }
-      ((a)localObject1).uFl.setText(getResources().getString(2131300513));
-      ((a)localObject1).uFl.setTextColor(this.uEO);
-      ((a)localObject1).uFn.cYe();
-      ((a)localObject1).uFn.setEnableInput(true);
-      if (((a)localObject1).uFo.getVisibility() != 8)
+      ((a)localObject1).WgS.setText(getResources().getString(a.g.WeQ));
+      ((a)localObject1).WgS.setTextColor(this.Wgv);
+      ((a)localObject1).WgU.ink();
+      ((a)localObject1).WgU.setEnableInput(true);
+      if (((a)localObject1).WgV.getVisibility() != 8)
       {
-        ((a)localObject1).uFo.setVisibility(8);
-        AppMethodBeat.o(51624);
+        ((a)localObject1).WgV.setVisibility(8);
+        AppMethodBeat.o(129829);
         return;
         localObject1 = getIntent().getStringExtra("next_action");
         if ("next_action.modify_pattern".equals(localObject1))
         {
-          if (this.uFd)
+          if (this.WgK)
           {
-            this.uFd = false;
-            a(this.mToken, this.uET, new GestureGuardLogicUI.21(this));
-            AppMethodBeat.o(51624);
+            this.WgK = false;
+            a(this.mToken, this.WgA, new z.a()
+            {
+              public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+              {
+                AppMethodBeat.i(129811);
+                if (paramAnonymousInt2 == 0)
+                {
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.Wfb), 0).show();
+                  com.tencent.mm.plugin.report.service.h.OAn.b(11474, new Object[0]);
+                }
+                for (;;)
+                {
+                  GestureGuardLogicUI.b(GestureGuardLogicUI.this);
+                  GestureGuardLogicUI.d(GestureGuardLogicUI.this);
+                  GestureGuardLogicUI.this.finish();
+                  AppMethodBeat.o(129811);
+                  return 0;
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeJ), 0).show();
+                }
+              }
+            });
+            AppMethodBeat.o(129829);
             return;
           }
-          a(this.uEU, this.uET, new GestureGuardLogicUI.22(this));
-          AppMethodBeat.o(51624);
+          a(this.WgB, this.WgA, new z.a()
+          {
+            public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+            {
+              AppMethodBeat.i(129812);
+              if (paramAnonymousInt2 == 0) {
+                Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.Wfb), 0).show();
+              }
+              for (;;)
+              {
+                GestureGuardLogicUI.a(GestureGuardLogicUI.this, null);
+                GestureGuardLogicUI.d(GestureGuardLogicUI.this);
+                GestureGuardLogicUI.this.finish();
+                AppMethodBeat.o(129812);
+                return 0;
+                Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeJ), 0).show();
+              }
+            }
+          });
+          AppMethodBeat.o(129829);
           return;
         }
         if ("next_action.switch_on_pattern".equals(localObject1))
         {
-          a(this.mToken, this.uET, new GestureGuardLogicUI.23(this));
-          AppMethodBeat.o(51624);
+          a(this.mToken, this.WgA, new z.a()
+          {
+            public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+            {
+              AppMethodBeat.i(129813);
+              GestureGuardLogicUI.b(GestureGuardLogicUI.this);
+              GestureGuardLogicUI.d(GestureGuardLogicUI.this);
+              if (paramAnonymousInt2 == 0)
+              {
+                Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.Wfa), 0).show();
+                GestureGuardLogicUI.a(GestureGuardLogicUI.this, -1, 0, "open gesture ok");
+              }
+              for (;;)
+              {
+                AppMethodBeat.o(129813);
+                return 0;
+                Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeJ), 0).show();
+                GestureGuardLogicUI.a(GestureGuardLogicUI.this, -1, -1, "open gesture failed");
+              }
+            }
+          });
+          AppMethodBeat.o(129829);
           return;
         }
         if ("next_action.goto_protected_page".equals(localObject1))
         {
-          a(this.mToken, this.uET, new GestureGuardLogicUI.24(this));
-          AppMethodBeat.o(51624);
+          a(this.mToken, this.WgA, new z.a()
+          {
+            public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+            {
+              AppMethodBeat.i(129814);
+              if (paramAnonymousInt2 == 0)
+              {
+                com.tencent.mm.plugin.walletlock.gesture.a.f.xB(SystemClock.elapsedRealtime());
+                Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.Wfb), 0).show();
+                GestureGuardLogicUI.e(GestureGuardLogicUI.this);
+              }
+              for (;;)
+              {
+                GestureGuardLogicUI.b(GestureGuardLogicUI.this);
+                GestureGuardLogicUI.d(GestureGuardLogicUI.this);
+                AppMethodBeat.o(129814);
+                return 0;
+                Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeJ), 0).show();
+              }
+            }
+          });
+          AppMethodBeat.o(129829);
           return;
-          ((a)localObject1).uFn.setEnableInput(false);
-          ((a)localObject1).uFn.setDisplayMode(PatternLockView.b.uFS);
-          a(getResources().getString(2131300514), new GestureGuardLogicUI.25(this, (a)localObject1));
-          AppMethodBeat.o(51624);
+          ((a)localObject1).WgU.setEnableInput(false);
+          ((a)localObject1).WgU.setDisplayMode(PatternLockView.b.Whx);
+          a(getResources().getString(a.g.WeR), new a()
+          {
+            public final void onDone()
+            {
+              AppMethodBeat.i(129816);
+              GestureGuardLogicUI.f(GestureGuardLogicUI.this).postDelayed(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(129815);
+                  GestureGuardLogicUI.f(GestureGuardLogicUI.this).removeCallbacks(this);
+                  GestureGuardLogicUI.25.this.WgQ.WgU.ink();
+                  GestureGuardLogicUI.a(GestureGuardLogicUI.this, 16);
+                  GestureGuardLogicUI.g(GestureGuardLogicUI.this);
+                  GestureGuardLogicUI.h(GestureGuardLogicUI.this);
+                  AppMethodBeat.o(129815);
+                }
+              }, 500L);
+              AppMethodBeat.o(129816);
+            }
+          });
+          AppMethodBeat.o(129829);
           return;
-          setMMTitle(getString(2131300518));
-          this.uEV = false;
-          ((a)localObject1).uFn.setEnableInput(true);
-          ((a)localObject1).uFn.setOnPatternListener(this);
+          setMMTitle(getString(a.g.WeY));
+          this.WgC = false;
+          ((a)localObject1).WgU.setEnableInput(true);
+          ((a)localObject1).WgU.setOnPatternListener(this);
           if ("next_action.goto_protected_page".equals(getIntent().getStringExtra("next_action"))) {
-            if (!bo.isNullOrNil(this.uFe)) {
-              ((a)localObject1).uFl.setText(this.uFe);
+            if (!Util.isNullOrNil(this.WgL)) {
+              ((a)localObject1).WgS.setText(this.WgL);
             }
           }
           for (;;)
           {
-            ((a)localObject1).uFl.setTextColor(this.uEO);
-            if (((a)localObject1).uFo.getVisibility() == 0) {
+            ((a)localObject1).WgS.setTextColor(this.Wgv);
+            if (((a)localObject1).WgV.getVisibility() == 0) {
               break;
             }
-            ((a)localObject1).uFo.setVisibility(0);
-            AppMethodBeat.o(51624);
+            ((a)localObject1).WgV.setVisibility(0);
+            AppMethodBeat.o(129829);
             return;
-            ((a)localObject1).uFl.setText(getString(2131300517));
+            ((a)localObject1).WgS.setText(getString(a.g.WeU));
             continue;
-            ((a)localObject1).uFl.setText(getString(2131300516));
+            ((a)localObject1).WgS.setText(getString(a.g.WeT));
           }
           localObject2 = getIntent().getStringExtra("next_action");
           if ("next_action.modify_pattern".equals(localObject2))
           {
-            ((a)localObject1).uFn.cYe();
-            as(1, true);
+            ((a)localObject1).WgU.ink();
+            ci(1, true);
             this.mStatus = 16;
             break;
           }
           if ("next_action.switch_off_pattern".equals(localObject2))
           {
-            a(this.uEU, new GestureGuardLogicUI.26(this));
-            AppMethodBeat.o(51624);
+            a(this.WgB, new z.a()
+            {
+              public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+              {
+                AppMethodBeat.i(129817);
+                if (paramAnonymousInt2 == 0) {
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeZ), 0).show();
+                }
+                for (;;)
+                {
+                  GestureGuardLogicUI.a(GestureGuardLogicUI.this, null);
+                  GestureGuardLogicUI.this.finish();
+                  AppMethodBeat.o(129817);
+                  return 0;
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeJ), 0).show();
+                }
+              }
+            });
+            AppMethodBeat.o(129829);
             return;
           }
           if ("next_action.goto_protected_page".equals(localObject2))
           {
-            com.tencent.mm.plugin.walletlock.gesture.a.d.ni(SystemClock.elapsedRealtime());
-            cXW();
-            com.tencent.mm.plugin.walletlock.c.h.al(this.uEF, 1, 0);
-            AppMethodBeat.o(51624);
+            com.tencent.mm.plugin.walletlock.gesture.a.f.xB(SystemClock.elapsedRealtime());
+            inc();
+            com.tencent.mm.plugin.walletlock.model.g.bp(this.Wgi, 1, 0);
+            AppMethodBeat.o(129829);
             return;
             l = SystemClock.elapsedRealtime();
-            com.tencent.mm.plugin.walletlock.gesture.a.d.af(l, 0L);
-            com.tencent.mm.plugin.walletlock.gesture.a.d.IN(this.uEW);
-            com.tencent.mm.plugin.walletlock.gesture.a.d.cXB();
-            if (this.uEW == 5)
+            com.tencent.mm.plugin.walletlock.gesture.a.f.bE(l, 0L);
+            com.tencent.mm.plugin.walletlock.gesture.a.f.asG(this.WgD);
+            com.tencent.mm.plugin.walletlock.gesture.a.f.imH();
+            if (this.WgD == 5)
             {
-              this.uEV = true;
-              com.tencent.mm.plugin.walletlock.gesture.a.d.ae(l, 0L);
-              ((a)localObject1).uFn.cYe();
-              ((a)localObject1).uFn.setEnableInput(false);
+              this.WgC = true;
+              com.tencent.mm.plugin.walletlock.gesture.a.f.bD(l, 0L);
+              ((a)localObject1).WgU.ink();
+              ((a)localObject1).WgU.setEnableInput(false);
               this.mStatus = 20;
-              cXV();
-              cXY();
+              inb();
+              ine();
             }
             for (;;)
             {
               localObject1 = getIntent().getStringExtra("next_action");
-              ab.i("MicroMsg.GestureGuardLogicUI", "alvinluo nextAction: %s", new Object[] { localObject1 });
+              Log.i("MicroMsg.GestureGuardLogicUI", "alvinluo nextAction: %s", new Object[] { localObject1 });
               if (!"next_action.goto_protected_page".equals(localObject1)) {
                 break;
               }
-              if (this.uEW != 5) {
-                break label1268;
+              if (this.WgD != 5) {
+                break label1279;
               }
-              com.tencent.mm.plugin.walletlock.c.h.al(this.uEF, 1, 2);
-              AppMethodBeat.o(51624);
+              com.tencent.mm.plugin.walletlock.model.g.bp(this.Wgi, 1, 2);
+              AppMethodBeat.o(129829);
               return;
-              ((a)localObject1).uFn.setEnableInput(false);
-              ((a)localObject1).uFn.setDisplayMode(PatternLockView.b.uFS);
-              a(String.format(getResources().getString(2131300507), new Object[] { Integer.valueOf(5 - this.uEW) }), new GestureGuardLogicUI.27(this, (a)localObject1));
+              ((a)localObject1).WgU.setEnableInput(false);
+              ((a)localObject1).WgU.setDisplayMode(PatternLockView.b.Whx);
+              a(String.format(getResources().getString(a.g.WeM), new Object[] { Integer.valueOf(5 - this.WgD) }), new a()
+              {
+                public final void onDone()
+                {
+                  AppMethodBeat.i(129818);
+                  GestureGuardLogicUI.a(GestureGuardLogicUI.this, 0);
+                  this.WgQ.WgU.ink();
+                  this.WgQ.WgU.setEnableInput(true);
+                  AppMethodBeat.o(129818);
+                }
+              });
             }
-            label1268:
-            com.tencent.mm.plugin.walletlock.c.h.al(this.uEF, 1, 1);
+            label1279:
+            com.tencent.mm.plugin.walletlock.model.g.bp(this.Wgi, 1, 1);
           }
         }
       }
     }
   }
   
-  private void cXW()
+  private void inc()
   {
-    AppMethodBeat.i(51629);
-    Intent localIntent = (Intent)getIntent().getParcelableExtra("page_intent");
-    if (localIntent != null)
+    AppMethodBeat.i(129834);
+    Object localObject = (Intent)getIntent().getParcelableExtra("page_intent");
+    if (localObject != null)
     {
-      i.uGl.oe(true);
-      i.uGl.of(true);
-      localIntent.addFlags(131072);
-      startActivity(localIntent);
+      com.tencent.mm.plugin.walletlock.model.h.WhQ.Ih(true);
+      com.tencent.mm.plugin.walletlock.model.h.WhQ.Ii(true);
+      ((Intent)localObject).addFlags(131072);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/walletlock/gesture/ui/GestureGuardLogicUI", "doGotoProtectedPage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/walletlock/gesture/ui/GestureGuardLogicUI", "doGotoProtectedPage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(51629);
+      AppMethodBeat.o(129834);
       return;
-      ab.i("MicroMsg.GestureGuardLogicUI", "Protected page's intent not found, finish myself only.");
+      Log.i("MicroMsg.GestureGuardLogicUI", "Protected page's intent not found, finish myself only.");
     }
   }
   
-  private void cXX()
+  private void ind()
   {
-    AppMethodBeat.i(51630);
+    AppMethodBeat.i(129835);
     String str = getIntent().getStringExtra("next_action");
     if ((this.mStatus == 20) || ("next_action.goto_protected_page".equals(str))) {
-      i.uGl.cYr();
+      com.tencent.mm.plugin.walletlock.model.h.WhQ.inx();
     }
-    AppMethodBeat.o(51630);
+    AppMethodBeat.o(129835);
   }
   
-  private void cXY()
+  private void ine()
   {
-    AppMethodBeat.i(51635);
-    c.a locala = new c.a(this);
-    locala.rG(false).avn(String.format(getString(2131300500), new Object[] { Long.valueOf(10L) }));
-    locala.Ri(2131300496).a(new DialogInterface.OnClickListener()
+    AppMethodBeat.i(129840);
+    e.a locala = new e.a(this);
+    locala.NC(false).bDw(String.format(getString(a.g.WeF), new Object[] { Long.valueOf(10L) }));
+    locala.aER(a.g.WeB).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(51601);
+        AppMethodBeat.i(129806);
         paramAnonymousDialogInterface.dismiss();
-        GestureGuardLogicUI.this.onClick(GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].uFo);
-        AppMethodBeat.o(51601);
+        GestureGuardLogicUI.this.onClick(GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].WgV);
+        AppMethodBeat.o(129806);
       }
     });
-    locala.Rj(2131300495).b(new GestureGuardLogicUI.17(this));
-    locala.aLZ().show();
-    AppMethodBeat.o(51635);
+    locala.aES(a.g.WeA).d(new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(129807);
+        paramAnonymousDialogInterface.dismiss();
+        GestureGuardLogicUI.t(GestureGuardLogicUI.this);
+        GestureGuardLogicUI.a(GestureGuardLogicUI.this, 0, 4, "user cancel when setting gesture");
+        AppMethodBeat.o(129807);
+      }
+    });
+    locala.jHH().show();
+    AppMethodBeat.o(129840);
   }
   
-  private void cXZ()
+  private void inf()
   {
-    AppMethodBeat.i(51636);
-    new c.a(this).rG(true).Rf(2131300503).Ri(2131300498).a(new GestureGuardLogicUI.18(this)).aLZ().show();
-    AppMethodBeat.o(51636);
+    AppMethodBeat.i(129841);
+    new e.a(this).NC(true).aEO(a.g.WeI).aER(a.g.WeD).c(new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(129808);
+        paramAnonymousDialogInterface.dismiss();
+        AppMethodBeat.o(129808);
+      }
+    }).jHH().show();
+    AppMethodBeat.o(129841);
   }
   
-  private void cYa()
+  private void ing()
   {
-    AppMethodBeat.i(51637);
+    AppMethodBeat.i(129842);
     String str = getIntent().getStringExtra("next_action");
     if ((!"next_action.modify_pattern".equals(str)) && ("next_action.switch_on_pattern".equals(str))) {}
-    for (str = getString(2131300502);; str = getString(2131300501))
+    for (str = getString(a.g.WeH);; str = getString(a.g.WeG))
     {
-      new c.a(this).rG(false).avn(str).Ri(2131300499).a(new GestureGuardLogicUI.20(this)).Rj(2131300497).b(new GestureGuardLogicUI.19(this)).aLZ().show();
-      AppMethodBeat.o(51637);
+      new e.a(this).NC(false).bDw(str).aER(a.g.WeE).c(new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(129810);
+          paramAnonymousDialogInterface.dismiss();
+          GestureGuardLogicUI.t(GestureGuardLogicUI.this);
+          GestureGuardLogicUI.a(GestureGuardLogicUI.this, 0, 4, "user cancel when setting gesture");
+          AppMethodBeat.o(129810);
+        }
+      }).aES(a.g.WeC).d(new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(129809);
+          paramAnonymousDialogInterface.dismiss();
+          AppMethodBeat.o(129809);
+        }
+      }).jHH().show();
+      AppMethodBeat.o(129842);
       return;
     }
-  }
-  
-  private void z(int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(51622);
-    ab.i("MicroMsg.GestureGuardLogicUI", "alvinluo gesture finishWithResult");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_err_code", paramInt2);
-    localIntent.putExtra("key_err_msg", paramString);
-    setResult(paramInt1, localIntent);
-    finish();
-    AppMethodBeat.o(51622);
   }
   
   public final void a(PatternLockView paramPatternLockView)
   {
-    AppMethodBeat.i(51632);
-    paramPatternLockView.setDisplayMode(PatternLockView.b.uFR);
-    AppMethodBeat.o(51632);
+    AppMethodBeat.i(129837);
+    paramPatternLockView.setDisplayMode(PatternLockView.b.Whw);
+    AppMethodBeat.o(129837);
   }
   
-  public final void a(PatternLockView paramPatternLockView, List<f> paramList)
+  public final void a(final PatternLockView paramPatternLockView, final List<com.tencent.mm.plugin.walletlock.gesture.a.h> paramList)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(51625);
+    AppMethodBeat.i(129830);
     if (this.mStatus == 16)
     {
       if (paramList.size() < 4)
       {
         paramPatternLockView.setEnableInput(false);
-        paramPatternLockView.setDisplayMode(PatternLockView.b.uFS);
-        a(String.format(getString(2131300508), new Object[] { Integer.valueOf(4) }), new GestureGuardLogicUI.2(this, paramPatternLockView));
-        AppMethodBeat.o(51625);
+        paramPatternLockView.setDisplayMode(PatternLockView.b.Whx);
+        a(String.format(getString(a.g.WeN), new Object[] { Integer.valueOf(4) }), new a()
+        {
+          public final void onDone()
+          {
+            AppMethodBeat.i(129792);
+            paramPatternLockView.ink();
+            paramPatternLockView.setEnableInput(true);
+            AppMethodBeat.o(129792);
+          }
+        });
+        AppMethodBeat.o(129830);
         return;
       }
-      this.uET = paramList;
-      paramPatternLockView.cYe();
+      this.WgA = paramList;
+      paramPatternLockView.ink();
       this.mStatus = 17;
-      as(2, true);
+      ci(2, true);
     }
     for (;;)
     {
-      cXV();
+      inb();
       do
       {
-        AppMethodBeat.o(51625);
+        AppMethodBeat.o(129830);
         return;
         if (this.mStatus == 0)
         {
-          paramPatternLockView = new GestureGuardLogicUI.3(this, paramList);
-          Object localObject1 = com.tencent.mm.plugin.walletlock.gesture.a.d.cXR();
-          Object localObject2 = com.tencent.mm.plugin.walletlock.gesture.a.d.cXQ();
-          com.tencent.mm.plugin.report.service.h.qsU.e(11453, new Object[0]);
-          c(new GestureGuardLogicUI.6(this));
-          boolean bool3 = e.b((bko)localObject1);
-          boolean bool4 = e.b((bkn)localObject2);
+          paramPatternLockView = new z.a()
+          {
+            public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+            {
+              AppMethodBeat.i(129793);
+              if (paramAnonymousInt2 == 0)
+              {
+                GestureGuardLogicUI.i(GestureGuardLogicUI.this);
+                GestureGuardLogicUI.j(GestureGuardLogicUI.this);
+                com.tencent.mm.plugin.walletlock.gesture.a.f.imZ();
+                com.tencent.mm.plugin.walletlock.gesture.a.f.imT();
+                com.tencent.mm.plugin.walletlock.gesture.a.f.imV();
+                GestureGuardLogicUI.a(GestureGuardLogicUI.this, paramList);
+                GestureGuardLogicUI.a(GestureGuardLogicUI.this, 1);
+                GestureGuardLogicUI.h(GestureGuardLogicUI.this);
+              }
+              for (;;)
+              {
+                AppMethodBeat.o(129793);
+                return 0;
+                if (paramAnonymousInt2 == -3)
+                {
+                  GestureGuardLogicUI.k(GestureGuardLogicUI.this);
+                  GestureGuardLogicUI.a(GestureGuardLogicUI.this, 2);
+                  GestureGuardLogicUI.h(GestureGuardLogicUI.this);
+                }
+                else
+                {
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeK), 0).show();
+                }
+              }
+            }
+          };
+          Object localObject1 = com.tencent.mm.plugin.walletlock.gesture.a.f.imX();
+          Object localObject2 = com.tencent.mm.plugin.walletlock.gesture.a.f.imW();
+          com.tencent.mm.plugin.report.service.h.OAn.b(11453, new Object[0]);
+          c(new DialogInterface.OnCancelListener()
+          {
+            public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+            {
+              AppMethodBeat.i(129796);
+              GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].WgU.ink();
+              if ((GestureGuardLogicUI.p(GestureGuardLogicUI.this) != null) && (!GestureGuardLogicUI.p(GestureGuardLogicUI.this).isCanceled())) {
+                com.tencent.mm.kernel.h.aZW().a(GestureGuardLogicUI.p(GestureGuardLogicUI.this));
+              }
+              AppMethodBeat.o(129796);
+            }
+          });
+          boolean bool3 = com.tencent.mm.plugin.walletlock.gesture.a.g.b((ebj)localObject1);
+          boolean bool4 = com.tencent.mm.plugin.walletlock.gesture.a.g.b((ebi)localObject2);
           if (bool4) {
             if (bool3) {
-              if (((bkn)localObject2).version < ((bko)localObject1).xzj) {
+              if (((ebi)localObject2).version < ((ebj)localObject1).abgU) {
                 bool1 = true;
               }
             }
           }
           for (;;)
           {
-            ab.i("MicroMsg.GestureGuardLogicUI", String.format("isInfoValid:%b, isBuffValid:%b, verify by server:%b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool1) }));
+            Log.i("MicroMsg.GestureGuardLogicUI", String.format("isInfoValid:%b, isBuffValid:%b, verify by server:%b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool1) }));
             if (!bool1) {
               break;
             }
-            localObject1 = new b.a();
-            ((b.a)localObject1).fsX = new bhn();
-            ((b.a)localObject1).fsY = new bho();
-            ((b.a)localObject1).funcId = 689;
-            ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/oppatternlock";
-            localObject1 = ((b.a)localObject1).ado();
-            localObject2 = (bhn)((com.tencent.mm.ai.b)localObject1).fsV.fta;
-            ((bhn)localObject2).vA = 2;
-            ((bhn)localObject2).xwF = new SKBuiltinBuffer_t().setBuffer(e.ec(paramList));
-            w.a((com.tencent.mm.ai.b)localObject1, new GestureGuardLogicUI.7(this, paramPatternLockView), false);
-            AppMethodBeat.o(51625);
+            localObject1 = new c.a();
+            ((c.a)localObject1).otE = new dwp();
+            ((c.a)localObject1).otF = new dwq();
+            ((c.a)localObject1).funcId = 689;
+            ((c.a)localObject1).uri = "/cgi-bin/micromsg-bin/oppatternlock";
+            localObject1 = ((c.a)localObject1).bEF();
+            localObject2 = (dwp)c.b.b(((com.tencent.mm.am.c)localObject1).otB);
+            ((dwp)localObject2).bUl = 2;
+            ((dwp)localObject2).abcz = new gol().df(com.tencent.mm.plugin.walletlock.gesture.a.g.md(paramList));
+            z.a((com.tencent.mm.am.c)localObject1, new z.a()
+            {
+              public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+              {
+                AppMethodBeat.i(129797);
+                Log.i("MicroMsg.GestureGuardLogicUI", String.format("Scene verifyPattern, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString }));
+                GestureGuardLogicUI.o(GestureGuardLogicUI.this);
+                Object localObject;
+                if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+                {
+                  com.tencent.mm.plugin.walletlock.gesture.a.f.a(((dwq)c.c.b(paramAnonymousc.otC)).abcB);
+                  if (GestureGuardLogicUI.q(GestureGuardLogicUI.this) != 0) {
+                    break label197;
+                  }
+                  if (GestureGuardLogicUI.r(GestureGuardLogicUI.this) != 1) {
+                    break label152;
+                  }
+                  localObject = new rn();
+                  ((rn)localObject).iPe = 8L;
+                  ((rn)localObject).jvX = 2L;
+                  ((rn)localObject).bMH();
+                }
+                while (paramPatternLockView != null)
+                {
+                  paramAnonymousInt1 = paramPatternLockView.callback(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousc, paramAnonymousp);
+                  AppMethodBeat.o(129797);
+                  return paramAnonymousInt1;
+                  label152:
+                  if (GestureGuardLogicUI.r(GestureGuardLogicUI.this) == 2)
+                  {
+                    localObject = new rn();
+                    ((rn)localObject).iPe = 10L;
+                    ((rn)localObject).jvX = 2L;
+                    ((rn)localObject).bMH();
+                    continue;
+                    label197:
+                    localObject = GestureGuardLogicUI.this.getIntent().getStringExtra("next_action");
+                    if ("next_action.modify_pattern".equals(localObject))
+                    {
+                      localObject = new rn();
+                      ((rn)localObject).iPe = 5L;
+                      ((rn)localObject).jvX = 2L;
+                      ((rn)localObject).bMH();
+                    }
+                    else if ("next_action.switch_on_pattern".equals(localObject))
+                    {
+                      localObject = new rn();
+                      ((rn)localObject).iPe = 4L;
+                      ((rn)localObject).jvX = 2L;
+                      ((rn)localObject).bMH();
+                    }
+                    else
+                    {
+                      localObject = new rn();
+                      ((rn)localObject).iPe = 5L;
+                      ((rn)localObject).jvX = 2L;
+                      ((rn)localObject).bMH();
+                    }
+                  }
+                }
+                AppMethodBeat.o(129797);
+                return 0;
+              }
+            }, false);
+            AppMethodBeat.o(129830);
             return;
             bool1 = false;
             continue;
@@ -622,34 +1087,34 @@ public class GestureGuardLogicUI
             continue;
             bool1 = true;
           }
-          aCV();
-          localObject1 = com.tencent.mm.plugin.walletlock.gesture.a.d.cXQ();
+          bQa();
+          localObject1 = com.tencent.mm.plugin.walletlock.gesture.a.f.imW();
           if (localObject1 == null) {}
-          for (boolean bool1 = bool2; bool1; bool1 = new String(((bkn)localObject1).xzg.getBufferToBytes()).equals(com.tencent.mm.a.g.w(((StringBuilder)localObject2).toString().getBytes())))
+          for (boolean bool1 = bool2; bool1; bool1 = new String(((ebi)localObject1).abgR.aaxD.Op).equals(com.tencent.mm.b.g.getMessageDigest(((StringBuilder)localObject2).toString().getBytes())))
           {
-            paramPatternLockView.a(3, 0, null, null, null);
-            AppMethodBeat.o(51625);
+            paramPatternLockView.callback(3, 0, null, null, null);
+            AppMethodBeat.o(129830);
             return;
             localObject2 = new StringBuilder();
-            com.tencent.mm.kernel.g.RJ();
-            ((StringBuilder)localObject2).append(new com.tencent.mm.a.p(com.tencent.mm.kernel.a.getUin()).longValue());
+            com.tencent.mm.kernel.h.baC();
+            ((StringBuilder)localObject2).append(new com.tencent.mm.b.p(com.tencent.mm.kernel.b.getUin()).longValue());
             ((StringBuilder)localObject2).append('_');
-            ((StringBuilder)localObject2).append(new String(e.ec(paramList)));
+            ((StringBuilder)localObject2).append(new String(com.tencent.mm.plugin.walletlock.gesture.a.g.md(paramList)));
           }
-          paramPatternLockView.a(3, -3, null, null, null);
-          AppMethodBeat.o(51625);
+          paramPatternLockView.callback(3, -3, null, null, null);
+          AppMethodBeat.o(129830);
           return;
         }
       } while (this.mStatus != 17);
-      if (this.uET.equals(paramList))
+      if (this.WgA.equals(paramList))
       {
-        paramPatternLockView.cYe();
-        this.uEV = false;
-        this.uEW = 0;
-        com.tencent.mm.plugin.walletlock.gesture.a.d.cXT();
-        com.tencent.mm.plugin.walletlock.gesture.a.d.cXN();
-        com.tencent.mm.plugin.walletlock.gesture.a.d.cXP();
-        com.tencent.mm.plugin.walletlock.gesture.a.d.cXB();
+        paramPatternLockView.ink();
+        this.WgC = false;
+        this.WgD = 0;
+        com.tencent.mm.plugin.walletlock.gesture.a.f.imZ();
+        com.tencent.mm.plugin.walletlock.gesture.a.f.imT();
+        com.tencent.mm.plugin.walletlock.gesture.a.f.imV();
+        com.tencent.mm.plugin.walletlock.gesture.a.f.imH();
         this.mStatus = 18;
       }
       else
@@ -666,100 +1131,171 @@ public class GestureGuardLogicUI
   
   public int getLayoutId()
   {
-    return -1;
+    return a.e.Wez;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(51618);
+    AppMethodBeat.i(129823);
     hideVKB();
-    setMMSubTitle(2131305936);
-    this.uES = AnimationUtils.loadAnimation(this, 2131034249);
-    this.uEO = getResources().getColor(2131690136);
-    this.uEP = getResources().getColor(2131690137);
+    setActionbarColor(getResources().getColor(a.b.white));
+    this.Wgz = AnimationUtils.loadAnimation(this, a.a.Wej);
+    this.Wgv = getResources().getColor(a.b.normal_text_color);
+    this.Wgw = getResources().getColor(a.b.red_text_color);
     Intent localIntent = getIntent();
     String str = localIntent.getStringExtra("action");
     localIntent.getStringExtra("next_action");
     if ("action.switch_on_pattern".equals(str))
     {
       this.mStatus = 16;
-      as(1, false);
+      ci(1, false);
     }
     while (!"action.verify_pattern".equals(str))
     {
-      setBackBtn(new GestureGuardLogicUI.1(this));
-      ab.i("MicroMsg.GestureGuardLogicUI", String.format("GuestureGuardLogicUI, initView done, before doRestBehavior. mStatus=%d", new Object[] { Integer.valueOf(this.mStatus) }));
-      cXV();
-      AppMethodBeat.o(51618);
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(129791);
+          if (GestureGuardLogicUI.a(GestureGuardLogicUI.this))
+          {
+            AppMethodBeat.o(129791);
+            return true;
+          }
+          GestureGuardLogicUI.a(GestureGuardLogicUI.this, 0, 4, "user cancel when setting gesture");
+          AppMethodBeat.o(129791);
+          return true;
+        }
+      });
+      Log.i("MicroMsg.GestureGuardLogicUI", String.format("GuestureGuardLogicUI, initView done, before doRestBehavior. mStatus=%d", new Object[] { Integer.valueOf(this.mStatus) }));
+      inb();
+      AppMethodBeat.o(129823);
       return;
     }
-    if (com.tencent.mm.plugin.walletlock.gesture.a.b.cXL()) {
-      this.uEV = true;
+    if (d.imR()) {
+      this.WgC = true;
     }
     for (this.mStatus = 20;; this.mStatus = 0)
     {
-      as(0, false);
+      ci(0, false);
       break;
-      this.uEV = false;
+      this.WgC = false;
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(51619);
+    AppMethodBeat.i(129824);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1)
     {
       if (paramIntent == null)
       {
-        ab.e("MicroMsg.GestureGuardLogicUI", "hy: Intent data is null.");
-        AppMethodBeat.o(51619);
+        Log.e("MicroMsg.GestureGuardLogicUI", "hy: Intent data is null.");
+        AppMethodBeat.o(129824);
         return;
       }
       paramInt1 = paramIntent.getIntExtra("key_err_code", 0);
       if (paramInt1 == 0)
       {
         this.mToken = paramIntent.getStringExtra("key_token");
-        this.uEZ = paramIntent.getStringExtra("key_type");
+        this.WgG = paramIntent.getStringExtra("key_type");
         paramIntent = getIntent().getStringExtra("next_action");
         if (("next_action.goto_protected_page".equals(paramIntent)) || ("next_action.modify_pattern".equals(paramIntent)))
         {
           if ("next_action.modify_pattern".equals(paramIntent)) {
-            this.uFd = true;
+            this.WgK = true;
           }
-          this.uFc = false;
+          this.WgJ = false;
           setBackBtn(null);
           setBackBtnVisible(false);
           this.mStatus = 16;
-          as(1, false);
+          ci(1, false);
         }
         for (;;)
         {
-          cXV();
-          AppMethodBeat.o(51619);
+          inb();
+          AppMethodBeat.o(129824);
           return;
           if ("next_action.switch_off_pattern".equals(paramIntent))
           {
             paramIntent = this.mToken;
-            GestureGuardLogicUI.12 local12 = new GestureGuardLogicUI.12(this);
-            c(new GestureGuardLogicUI.13(this));
+            final z.a local12 = new z.a()
+            {
+              public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+              {
+                AppMethodBeat.i(129802);
+                if (paramAnonymousInt2 == 0)
+                {
+                  com.tencent.mm.plugin.walletlock.gesture.a.f.imZ();
+                  com.tencent.mm.plugin.walletlock.gesture.a.f.imT();
+                  com.tencent.mm.plugin.walletlock.gesture.a.f.imV();
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeZ), 0).show();
+                }
+                for (;;)
+                {
+                  GestureGuardLogicUI.b(GestureGuardLogicUI.this);
+                  GestureGuardLogicUI.c(GestureGuardLogicUI.this);
+                  GestureGuardLogicUI.this.finish();
+                  AppMethodBeat.o(129802);
+                  return 0;
+                  Toast.makeText(GestureGuardLogicUI.this, GestureGuardLogicUI.this.getString(a.g.WeJ), 0).show();
+                }
+              }
+            };
+            c(new DialogInterface.OnCancelListener()
+            {
+              public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+              {
+                AppMethodBeat.i(129803);
+                GestureGuardLogicUI.l(GestureGuardLogicUI.this)[GestureGuardLogicUI.m(GestureGuardLogicUI.this)].WgU.ink();
+                if ((GestureGuardLogicUI.n(GestureGuardLogicUI.this) != null) && (!GestureGuardLogicUI.n(GestureGuardLogicUI.this).isCanceled())) {
+                  com.tencent.mm.kernel.h.aZW().a(GestureGuardLogicUI.n(GestureGuardLogicUI.this));
+                }
+                AppMethodBeat.o(129803);
+              }
+            });
             if (paramIntent == null)
             {
-              aCV();
-              local12.a(3, -6, getString(2131300506), null, null);
+              bQa();
+              local12.callback(3, -6, getString(a.g.WeL), null, null);
             }
             else
             {
-              Object localObject = new b.a();
-              ((b.a)localObject).fsX = new bte();
-              ((b.a)localObject).fsY = new btf();
-              ((b.a)localObject).funcId = 688;
-              ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/registernewpatternlock";
-              localObject = ((b.a)localObject).ado();
-              bte localbte = (bte)((com.tencent.mm.ai.b)localObject).fsV.fta;
-              localbte.xGL = new SKBuiltinBuffer_t().setBuffer(paramIntent.getBytes());
-              localbte.vA = 3;
-              w.a((com.tencent.mm.ai.b)localObject, new GestureGuardLogicUI.14(this, local12), false);
+              Object localObject = new c.a();
+              ((c.a)localObject).otE = new eox();
+              ((c.a)localObject).otF = new eoy();
+              ((c.a)localObject).funcId = 688;
+              ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/registernewpatternlock";
+              localObject = ((c.a)localObject).bEF();
+              eox localeox = (eox)c.b.b(((com.tencent.mm.am.c)localObject).otB);
+              localeox.abtd = new gol().df(paramIntent.getBytes());
+              localeox.bUl = 3;
+              z.a((com.tencent.mm.am.c)localObject, new z.a()
+              {
+                public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
+                {
+                  AppMethodBeat.i(129804);
+                  Log.i("MicroMsg.GestureGuardLogicUI", String.format("Scene doSwitchOn, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString }));
+                  GestureGuardLogicUI.o(GestureGuardLogicUI.this);
+                  if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+                  {
+                    com.tencent.mm.plugin.walletlock.gesture.a.f.a(((eoy)c.c.b(paramAnonymousc.otC)).abcB);
+                    com.tencent.mm.plugin.walletlock.model.f localf = com.tencent.mm.plugin.walletlock.model.f.WhM;
+                    com.tencent.mm.plugin.walletlock.model.f.Id(false);
+                    GestureGuardLogicUI.inh();
+                  }
+                  com.tencent.mm.plugin.walletlock.model.h.WhQ.inw();
+                  if (local12 != null)
+                  {
+                    paramAnonymousInt1 = local12.callback(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousc, paramAnonymousp);
+                    AppMethodBeat.o(129804);
+                    return paramAnonymousInt1;
+                  }
+                  AppMethodBeat.o(129804);
+                  return 0;
+                }
+              }, false);
             }
           }
           else
@@ -769,136 +1305,141 @@ public class GestureGuardLogicUI
         }
       }
       if (paramInt1 == -1) {
-        Toast.makeText(this, getString(2131300504), 0).show();
+        Toast.makeText(this, getString(a.g.WeJ), 0).show();
       }
     }
-    AppMethodBeat.o(51619);
+    AppMethodBeat.o(129824);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(51620);
-    if (paramView.getId() == 2131825144)
+    AppMethodBeat.i(129825);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/walletlock/gesture/ui/GestureGuardLogicUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (paramView.getId() == a.d.Wex)
     {
       paramView = new Intent();
       paramView.putExtra("action", "action.verify_paypwd");
       paramView.putExtra("key_wallet_lock_type", 1);
-      com.tencent.mm.bq.d.b(this, "wallet", ".pwd.ui.WalletLockCheckPwdUI", paramView, 1001);
+      com.tencent.mm.br.c.b(this, "wallet", ".pwd.ui.WalletLockCheckPwdUI", paramView, 1001);
     }
-    AppMethodBeat.o(51620);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/walletlock/gesture/ui/GestureGuardLogicUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(129825);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     int i = 0;
-    AppMethodBeat.i(51615);
+    AppMethodBeat.i(129820);
     super.onCreate(paramBundle);
+    overridePendingTransition(a.a.slide_right_in, a.a.slide_left_out);
     paramBundle = getIntent();
-    if ((!ah.getPackageName().equals(paramBundle.getPackage())) || (bo.isNullOrNil(paramBundle.getStringExtra("action"))) || (bo.isNullOrNil(paramBundle.getStringExtra("next_action"))))
+    if ((!MMApplicationContext.getPackageName().equals(paramBundle.getPackage())) || (Util.isNullOrNil(paramBundle.getStringExtra("action"))) || (Util.isNullOrNil(paramBundle.getStringExtra("next_action"))))
     {
-      ab.w("MicroMsg.GestureGuardLogicUI", "Intent started this activity has no valid action desc.");
+      Log.w("MicroMsg.GestureGuardLogicUI", "Intent started this activity has no valid action desc.");
       finish();
-      AppMethodBeat.o(51615);
+      AppMethodBeat.o(129820);
       return;
     }
-    this.uFa = new ViewFlipper(this);
-    this.uER = new a[] { new a(this), new a(this), new a(this) };
-    paramBundle = this.uER;
+    this.WgH = new ViewFlipper(this);
+    this.Wgy = new a[] { new a(this), new a(this), new a(this) };
+    paramBundle = this.Wgy;
     int j = paramBundle.length;
     while (i < j)
     {
       Object localObject = paramBundle[i];
-      this.uFa.addView(localObject.mView);
-      localObject.uFn.setOnPatternListener(this);
-      localObject.uFo.setOnClickListener(this);
+      this.WgH.addView(localObject.mView);
+      localObject.WgU.setOnPatternListener(this);
+      localObject.WgV.setOnClickListener(this);
       i += 1;
     }
-    setContentView(this.uFa);
+    setContentView(this.WgH);
     this.mToken = getIntent().getStringExtra("token");
-    this.uEZ = getIntent().getStringExtra("type");
-    this.uFe = getIntent().getStringExtra("verify_title");
-    this.uEF = getIntent().getIntExtra("scene", -1);
+    this.WgG = getIntent().getStringExtra("type");
+    this.WgL = getIntent().getStringExtra("verify_title");
+    this.Wgi = getIntent().getIntExtra("scene", -1);
     if ("next_action.goto_protected_page".equals(getIntent().getStringExtra("next_action"))) {
-      com.tencent.mm.plugin.walletlock.c.h.cYn();
+      com.tencent.mm.plugin.walletlock.model.g.jdMethod_int();
     }
     initView();
-    AppMethodBeat.o(51615);
+    AppMethodBeat.o(129820);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(51617);
+    AppMethodBeat.i(129822);
     super.onDestroy();
-    if (this.uEX != null)
+    if (this.WgE != null)
     {
-      com.tencent.mm.kernel.g.Rc().a(this.uEX);
-      this.uEX = null;
+      com.tencent.mm.kernel.h.aZW().a(this.WgE);
+      this.WgE = null;
     }
-    if (this.uEY != null)
+    if (this.WgF != null)
     {
-      com.tencent.mm.kernel.g.Rc().a(this.uEY);
-      this.uEY = null;
+      com.tencent.mm.kernel.h.aZW().a(this.WgF);
+      this.WgF = null;
     }
-    if ((this.uFb != null) && (this.uFb.isShowing())) {
-      this.uFb.dismiss();
+    if ((this.WgI != null) && (this.WgI.isShowing())) {
+      this.WgI.dismiss();
     }
-    if (this.uFa != null)
+    if (this.WgH != null)
     {
-      this.uFa.removeAllViews();
-      this.uFa = null;
+      this.WgH.removeAllViews();
+      this.WgH = null;
     }
     int i = 0;
-    while (i < this.uER.length)
+    while (i < this.Wgy.length)
     {
-      a locala = this.uER[i];
-      locala.uFn.setOnClickListener(null);
-      locala.uFo.setOnClickListener(null);
+      a locala = this.Wgy[i];
+      locala.WgU.setOnClickListener(null);
+      locala.WgV.setOnClickListener(null);
       locala.mView = null;
-      locala.uFl = null;
-      locala.uFm = null;
-      locala.uFn = null;
-      locala.uFo = null;
-      this.uER[i] = null;
+      locala.WgS = null;
+      locala.WgT = null;
+      locala.WgU = null;
+      locala.WgV = null;
+      this.Wgy[i] = null;
       i += 1;
     }
-    this.uER = null;
-    AppMethodBeat.o(51617);
+    this.Wgy = null;
+    AppMethodBeat.o(129822);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(51621);
+    AppMethodBeat.i(129826);
     if (paramInt == 4)
     {
-      if (cXU())
+      if (ina())
       {
-        AppMethodBeat.o(51621);
+        AppMethodBeat.o(129826);
         return false;
       }
-      z(0, 4, "user cancel when setting gesture");
-      AppMethodBeat.o(51621);
+      U(0, 4, "user cancel when setting gesture");
+      AppMethodBeat.o(129826);
       return false;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(51621);
+    AppMethodBeat.o(129826);
     return bool;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(51616);
+    AppMethodBeat.i(129821);
     super.onResume();
     if (this.mStatus == 0)
     {
-      com.tencent.mm.plugin.walletlock.gesture.a.g localg = com.tencent.mm.plugin.walletlock.gesture.a.d.cXO();
-      if (localg.uEM == -1L) {
+      i locali = com.tencent.mm.plugin.walletlock.gesture.a.f.imU();
+      if (locali.Wgt == -1L) {
         break label98;
       }
-      e.a(localg);
-      if (localg.uEN / 1000L >= 600L) {
+      com.tencent.mm.plugin.walletlock.gesture.a.g.a(locali);
+      if (locali.Wgu / 1000L >= 600L) {
         break label95;
       }
-      com.tencent.mm.plugin.walletlock.gesture.a.d.af(localg.uEM, localg.uEN);
+      com.tencent.mm.plugin.walletlock.gesture.a.f.bE(locali.Wgt, locali.Wgu);
     }
     label95:
     label98:
@@ -906,43 +1447,56 @@ public class GestureGuardLogicUI
     {
       if (i != 0)
       {
-        this.uEW = com.tencent.mm.plugin.walletlock.gesture.a.d.cXS();
-        if (this.uEW != -1) {}
+        this.WgD = com.tencent.mm.plugin.walletlock.gesture.a.f.imY();
+        if (this.WgD != -1) {}
       }
       else
       {
-        this.uEW = 0;
+        this.WgD = 0;
       }
-      AppMethodBeat.o(51616);
+      AppMethodBeat.o(129821);
       return;
-      com.tencent.mm.plugin.walletlock.gesture.a.d.cXP();
+      com.tencent.mm.plugin.walletlock.gesture.a.f.imV();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(51631);
-    Object localObject = this.uER[this.uEQ];
-    if (((a)localObject).uFn != null)
+    AppMethodBeat.i(129836);
+    AppMethodBeat.at(this, paramBoolean);
+    Object localObject = this.Wgy[this.Wgx];
+    if (((a)localObject).WgU != null)
     {
-      localObject = ((a)localObject).uFn;
-      if ((!paramBoolean) || (this.uEV)) {
+      localObject = ((a)localObject).WgU;
+      if ((!paramBoolean) || (this.WgC)) {
         break label58;
       }
     }
     label58:
-    for (boolean bool = true;; bool = false)
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      ((PatternLockView)localObject).setEnableInput(bool);
-      AppMethodBeat.at(this, paramBoolean);
-      AppMethodBeat.o(51631);
+      ((PatternLockView)localObject).setEnableInput(paramBoolean);
+      AppMethodBeat.o(129836);
       return;
     }
+  }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(266984);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.walletlock.gesture.a.c.class);
+    AppMethodBeat.o(266984);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void onDone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.GestureGuardLogicUI
  * JD-Core Version:    0.7.0.1
  */

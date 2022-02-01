@@ -53,12 +53,12 @@ public final class Http2Codec
     this.chain = paramChain;
     this.streamAllocation = paramStreamAllocation;
     this.connection = paramHttp2Connection;
-    if (paramOkHttpClient.protocols().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {}
-    for (paramOkHttpClient = Protocol.H2_PRIOR_KNOWLEDGE;; paramOkHttpClient = Protocol.HTTP_2)
-    {
-      this.protocol = paramOkHttpClient;
-      return;
+    if (paramOkHttpClient.protocols().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {
+      paramOkHttpClient = Protocol.H2_PRIOR_KNOWLEDGE;
+    } else {
+      paramOkHttpClient = Protocol.HTTP_2;
     }
+    this.protocol = paramOkHttpClient;
   }
   
   public static List<Header> http2HeadersList(Request paramRequest)
@@ -91,37 +91,45 @@ public final class Http2Codec
     int j = paramHeaders.size();
     Object localObject1 = null;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      String str1 = paramHeaders.name(i);
-      String str2 = paramHeaders.value(i);
+      String str2 = paramHeaders.name(i);
+      String str1 = paramHeaders.value(i);
       Object localObject2;
-      if (str1.equals(":status")) {
-        localObject2 = StatusLine.parse("HTTP/1.1 " + str2);
-      }
-      for (;;)
+      if (str2.equals(":status"))
       {
-        i += 1;
-        localObject1 = localObject2;
-        break;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("HTTP/1.1 ");
+        ((StringBuilder)localObject1).append(str1);
+        localObject2 = StatusLine.parse(((StringBuilder)localObject1).toString());
+      }
+      else
+      {
         localObject2 = localObject1;
-        if (!HTTP_2_SKIPPED_RESPONSE_HEADERS.contains(str1))
+        if (!HTTP_2_SKIPPED_RESPONSE_HEADERS.contains(str2))
         {
-          Internal.instance.addLenient(localBuilder, str1, str2);
+          Internal.instance.addLenient(localBuilder, str2, str1);
           localObject2 = localObject1;
         }
       }
+      i += 1;
+      localObject1 = localObject2;
     }
-    if (localObject1 == null) {
-      throw new ProtocolException("Expected ':status' header not present");
+    if (localObject1 != null) {
+      return new Response.Builder().protocol(paramProtocol).code(((StatusLine)localObject1).code).message(((StatusLine)localObject1).message).headers(localBuilder.build());
     }
-    return new Response.Builder().protocol(paramProtocol).code(localObject1.code).message(localObject1.message).headers(localBuilder.build());
+    paramHeaders = new ProtocolException("Expected ':status' header not present");
+    for (;;)
+    {
+      throw paramHeaders;
+    }
   }
   
   public void cancel()
   {
-    if (this.stream != null) {
-      this.stream.closeLater(ErrorCode.CANCEL);
+    Http2Stream localHttp2Stream = this.stream;
+    if (localHttp2Stream != null) {
+      localHttp2Stream.closeLater(ErrorCode.CANCEL);
     }
   }
   
@@ -148,16 +156,11 @@ public final class Http2Codec
   
   public Response.Builder readResponseHeaders(boolean paramBoolean)
   {
-    Response.Builder localBuilder2 = readHttp2HeadersList(this.stream.takeHeaders(), this.protocol);
-    Response.Builder localBuilder1 = localBuilder2;
-    if (paramBoolean)
-    {
-      localBuilder1 = localBuilder2;
-      if (Internal.instance.code(localBuilder2) == 100) {
-        localBuilder1 = null;
-      }
+    Response.Builder localBuilder = readHttp2HeadersList(this.stream.takeHeaders(), this.protocol);
+    if ((paramBoolean) && (Internal.instance.code(localBuilder) == 100)) {
+      return null;
     }
-    return localBuilder1;
+    return localBuilder;
   }
   
   public void writeRequestHeaders(Request paramRequest)
@@ -165,20 +168,21 @@ public final class Http2Codec
     if (this.stream != null) {
       return;
     }
-    if (paramRequest.body() != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramRequest = http2HeadersList(paramRequest);
-      this.stream = this.connection.newStream(paramRequest, bool);
-      this.stream.readTimeout().timeout(this.chain.readTimeoutMillis(), TimeUnit.MILLISECONDS);
-      this.stream.writeTimeout().timeout(this.chain.writeTimeoutMillis(), TimeUnit.MILLISECONDS);
-      return;
+    boolean bool;
+    if (paramRequest.body() != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramRequest = http2HeadersList(paramRequest);
+    this.stream = this.connection.newStream(paramRequest, bool);
+    this.stream.readTimeout().timeout(this.chain.readTimeoutMillis(), TimeUnit.MILLISECONDS);
+    this.stream.writeTimeout().timeout(this.chain.writeTimeoutMillis(), TimeUnit.MILLISECONDS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Http2Codec
  * JD-Core Version:    0.7.0.1
  */

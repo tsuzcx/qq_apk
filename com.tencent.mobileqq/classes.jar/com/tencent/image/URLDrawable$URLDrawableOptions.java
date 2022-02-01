@@ -1,7 +1,9 @@
 package com.tencent.image;
 
 import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ICache;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 public class URLDrawable$URLDrawableOptions
 {
@@ -23,7 +25,7 @@ public class URLDrawable$URLDrawableOptions
   public boolean mNeedCheckNetType = false;
   private URLDrawableOptions mNext;
   public boolean mPlayGifImage = false;
-  public byte mPriority = 1;
+  public byte mPriority = URLDrawable.depImp.mCache.getNormalPriority();
   private boolean mRecycled = false;
   public int mRequestHeight = 0;
   public int mRequestWidth = 0;
@@ -54,7 +56,7 @@ public class URLDrawable$URLDrawableOptions
     this.mRecycled = true;
     this.mExtraInfo = null;
     this.mMemoryCacheKeySuffix = null;
-    this.mPriority = 1;
+    this.mPriority = URLDrawable.depImp.mCache.getNormalPriority();
     this.mHttpDownloaderParams = null;
     this.mNeedCheckNetType = false;
     this.mKeyAddWHSuffix = true;
@@ -89,27 +91,25 @@ public class URLDrawable$URLDrawableOptions
       return;
     }
     clearForRecycle();
-    for (;;)
+    synchronized (sPoolSync)
     {
-      synchronized (sPoolSync)
+      if (sPoolSize < 30)
       {
-        if (sPoolSize < 30)
-        {
-          this.mNext = sPool;
-          sPool = this;
-          sPoolSize += 1;
-          return;
-        }
+        this.mNext = sPool;
+        sPool = this;
+        sPoolSize += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("URLDrawableOptions", 2, "URLDrawableOptions pool size is full");
+      else if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        URLDrawable.depImp.mLog.i("URLDrawableOptions", 2, "URLDrawableOptions pool size is full");
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.URLDrawable.URLDrawableOptions
  * JD-Core Version:    0.7.0.1
  */

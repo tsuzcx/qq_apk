@@ -40,16 +40,18 @@ public class AudioFocusHelper
       this.mAudioManager.abandonAudioFocus(this.mAudioFocusListener);
       this.mIsAudioFocus = false;
     }
-    if ((this.mPlayer != null) && (this.mPlayer.isPlaying())) {
+    Player localPlayer = this.mPlayer;
+    if ((localPlayer != null) && (localPlayer.isPlaying())) {
       this.mPlayer.pause();
     }
   }
   
   public void release()
   {
-    if (this.mAudioManager != null)
+    AudioManager localAudioManager = this.mAudioManager;
+    if (localAudioManager != null)
     {
-      this.mAudioManager.abandonAudioFocus(this.mAudioFocusListener);
+      localAudioManager.abandonAudioFocus(this.mAudioFocusListener);
       this.mAudioManager = null;
       this.mAudioFocusListener = null;
       this.mIsAudioFocus = false;
@@ -61,25 +63,22 @@ public class AudioFocusHelper
   
   public void requestFocus()
   {
-    boolean bool = true;
     ensureAudioManager();
-    if (!this.mIsAudioFocus) {
-      if (this.mAudioManager.requestAudioFocus(getAudioFocusChangeListener(), 3, 1) != 1) {
-        break label36;
-      }
-    }
-    for (;;)
+    if (!this.mIsAudioFocus)
     {
+      AudioManager localAudioManager = this.mAudioManager;
+      AudioManager.OnAudioFocusChangeListener localOnAudioFocusChangeListener = getAudioFocusChangeListener();
+      boolean bool = true;
+      if (localAudioManager.requestAudioFocus(localOnAudioFocusChangeListener, 3, 1) != 1) {
+        bool = false;
+      }
       this.mIsAudioFocus = bool;
-      return;
-      label36:
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.player.AudioFocusHelper
  * JD-Core Version:    0.7.0.1
  */

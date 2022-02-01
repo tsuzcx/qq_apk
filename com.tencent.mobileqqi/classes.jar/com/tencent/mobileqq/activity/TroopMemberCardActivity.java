@@ -57,16 +57,16 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import dqa;
 import dqb;
-import dqc;
+import dqd;
 import dqe;
 import dqf;
 import dqg;
-import dqh;
+import dql;
 import dqm;
 import dqn;
 import dqo;
-import dqp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -170,15 +170,15 @@ public class TroopMemberCardActivity
     this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard = new TroopMemberCard();
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dqb(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dqe(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dqf(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new dqg(this);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet$OnButtonClickListener = new dqh(this);
-    this.jdField_e_of_type_AndroidViewView$OnClickListener = new dqm(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dqn(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dqa(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dqd(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dqe(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new dqf(this);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet$OnButtonClickListener = new dqg(this);
+    this.jdField_e_of_type_AndroidViewView$OnClickListener = new dql(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dqm(this);
     this.jdField_a_of_type_AndroidContentIntent = new Intent();
-    this.jdField_a_of_type_AndroidOsHandler = new dqo(this);
+    this.jdField_a_of_type_AndroidOsHandler = new dqn(this);
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -496,7 +496,7 @@ public class TroopMemberCardActivity
       paramView.setTag(Integer.valueOf(paramInt1));
       paramView.setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
       paramView.setContentDescription(getString(paramInt4));
-      paramView = (TextView)paramView.findViewById(2131233040);
+      paramView = (TextView)paramView.findViewById(2131233039);
       paramView.setText(paramInt2);
       paramView.setContentDescription(getString(paramInt4));
       paramView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
@@ -689,9 +689,9 @@ public class TroopMemberCardActivity
   protected void a(List paramList, String paramString1, String paramString2, int paramInt)
   {
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    Object localObject1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131234216);
-    Object localObject2 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131234457);
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131234621);
+    Object localObject1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131234215);
+    Object localObject2 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131234456);
+    LinearLayout localLinearLayout = (LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131234620);
     ((TextView)localObject1).setText(paramString1);
     ((TextView)localObject2).setText(paramInt + "");
     localLinearLayout.removeAllViews();
@@ -787,7 +787,7 @@ public class TroopMemberCardActivity
   {
     Bitmap localBitmap = ImageUtil.a();
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-    ThreadManager.b(new dqc(this, paramString));
+    ThreadManager.b(new dqb(this, paramString));
   }
   
   public void b(String paramString1, String paramString2)
@@ -1201,12 +1201,12 @@ public class TroopMemberCardActivity
   protected void f()
   {
     int i1 = 3;
-    Object localObject1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234615);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234617);
-    Object localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234616);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234618);
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131234612);
-    TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234613);
+    Object localObject1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234614);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234616);
+    Object localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234615);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234617);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131234611);
+    TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234612);
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.memberRole == 0)
     {
       localView.setVisibility(0);
@@ -1375,12 +1375,12 @@ public class TroopMemberCardActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity = this;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131230980));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234610));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234609));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity).inflate(2130904033, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234614));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131234613));
     b(this.jdField_e_of_type_JavaLangString);
     a(0, getString(2131561581), "", false);
     a(1, getString(2131562428), "", true);
@@ -1473,7 +1473,7 @@ public class TroopMemberCardActivity
       localImageView.setVisibility(0);
       localImageView.setImageResource(2130838011);
       localImageView.setContentDescription(getString(2131562183));
-      localImageView.setOnClickListener(new dqp(this));
+      localImageView.setOnClickListener(new dqo(this));
       return;
       setTitle(2131562186);
     }

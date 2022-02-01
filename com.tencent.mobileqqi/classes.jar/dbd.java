@@ -1,20 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountMenuEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class dbd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dbd(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dbd(PublicAccountChatActivity paramPublicAccountChatActivity, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    PublicAccountChatActivity.a(this.a).setVisibility(8);
-    if (this.a.a != null) {
-      this.a.a.setVisibility(0);
+    try
+    {
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b.a().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.a(PublicAccountMenuEntity.class, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.a.jdField_a_of_type_JavaLangString);
+      if (localPublicAccountMenuEntity != null) {
+        localEntityManager.b(localPublicAccountMenuEntity);
+      }
+      if (localEntityManager != null) {
+        localEntityManager.a();
+      }
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(PublicAccountChatActivity.e(), 4, localException.getMessage());
+        }
+      }
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
   }
 }
 

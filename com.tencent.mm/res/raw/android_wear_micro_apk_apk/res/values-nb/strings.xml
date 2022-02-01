@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="a">Slå på</string>
-    <string name="b">%1$s fungerer ikke med mindre du slår på Google Play-tjenester.</string>
-    <string name="c">Slå på Google Play-tjenester</string>
-    <string name="d">Installer</string>
-    <string name="e">%1$s kan ikke kjøre uten Google Play-tjenester, som ikke er installert på enheten din.</string>
-    <string name="f">Installer Google Play-tjenester</string>
-    <string name="g">Google Play Tjenester-feil</string>
-    <string name="h">%1$s har problemer med Google Play-tjenester. Prøv på nytt.</string>
-    <string name="i">%1$s kan ikke kjøre uten Google Play-tjenester, som ikke støttes av enheten din.</string>
-    <string name="j">Oppdater</string>
-    <string name="k">%1$s kjører ikke med mindre du oppdaterer Google Play Tjenester.</string>
-    <string name="l">Oppdater Google Play-tjenester</string>
-    <string name="m">%1$s kjører ikke uten Google Play-tjenester, som oppdateres akkurat nå.</string>
-    <string name="n">Du må installere en ny versjon av Google Play-tjenester. Appen oppdateres automatisk om en kort stund.</string>
-    <string name="o">Åpne på telefonen</string>
-    <string name="p">Logg på</string>
-    <string name="q">Logg på med Google</string>
-    <string name="r">999+</string>
-    <string name="t">Avslutt</string>
+    <string name="common_google_play_services_enable_button">Slå på</string>
+    <string name="common_google_play_services_enable_text">%1$s fungerer ikke med mindre du slår på Google Play-tjenester.</string>
+    <string name="common_google_play_services_enable_title">Slå på Google Play-tjenester</string>
+    <string name="common_google_play_services_install_button">Installer</string>
+    <string name="common_google_play_services_install_text">%1$s kan ikke kjøre uten Google Play-tjenester, som ikke er installert på enheten din.</string>
+    <string name="common_google_play_services_install_title">Installer Google Play-tjenester</string>
+    <string name="common_google_play_services_notification_ticker">Google Play Tjenester-feil</string>
+    <string name="common_google_play_services_unknown_issue">%1$s har problemer med Google Play-tjenester. Prøv på nytt.</string>
+    <string name="common_google_play_services_unsupported_text">%1$s kan ikke kjøre uten Google Play-tjenester, som ikke støttes av enheten din.</string>
+    <string name="common_google_play_services_update_button">Oppdater</string>
+    <string name="common_google_play_services_update_text">%1$s kjører ikke med mindre du oppdaterer Google Play Tjenester.</string>
+    <string name="common_google_play_services_update_title">Oppdater Google Play-tjenester</string>
+    <string name="common_google_play_services_updating_text">%1$s kjører ikke uten Google Play-tjenester, som oppdateres akkurat nå.</string>
+    <string name="common_google_play_services_wear_update_text">Du må installere en ny versjon av Google Play-tjenester. Appen oppdateres automatisk om en kort stund.</string>
+    <string name="common_open_on_phone">Åpne på telefonen</string>
+    <string name="common_signin_button_text">Logg på</string>
+    <string name="common_signin_button_text_long">Logg på med Google</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="dismiss_overlay_button_label">Avslutt</string>
 </resources>

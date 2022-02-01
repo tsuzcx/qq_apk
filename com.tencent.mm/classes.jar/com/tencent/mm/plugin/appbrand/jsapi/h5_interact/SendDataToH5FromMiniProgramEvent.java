@@ -4,33 +4,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public class SendDataToH5FromMiniProgramEvent
-  extends b
+  extends IEvent
   implements Parcelable
 {
   public static final Parcelable.Creator<SendDataToH5FromMiniProgramEvent> CREATOR;
   public String data;
-  public String hMi;
-  public int hMj;
+  public String rZb;
+  public int rZc;
   
   static
   {
-    AppMethodBeat.i(93754);
-    CREATOR = new SendDataToH5FromMiniProgramEvent.1();
-    AppMethodBeat.o(93754);
+    AppMethodBeat.i(121068);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(121068);
   }
   
   public SendDataToH5FromMiniProgramEvent() {}
   
   protected SendDataToH5FromMiniProgramEvent(Parcel paramParcel)
   {
-    AppMethodBeat.i(93753);
-    this.hMi = paramParcel.readString();
+    AppMethodBeat.i(121067);
+    this.rZb = paramParcel.readString();
     this.data = paramParcel.readString();
-    this.hMj = paramParcel.readInt();
-    AppMethodBeat.o(93753);
+    this.rZc = paramParcel.readInt();
+    AppMethodBeat.o(121067);
   }
   
   public int describeContents()
@@ -40,16 +40,16 @@ public class SendDataToH5FromMiniProgramEvent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(93752);
-    paramParcel.writeString(this.hMi);
+    AppMethodBeat.i(121066);
+    paramParcel.writeString(this.rZb);
     paramParcel.writeString(this.data);
-    paramParcel.writeInt(this.hMj);
-    AppMethodBeat.o(93752);
+    paramParcel.writeInt(this.rZc);
+    AppMethodBeat.o(121066);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToH5FromMiniProgramEvent
  * JD-Core Version:    0.7.0.1
  */

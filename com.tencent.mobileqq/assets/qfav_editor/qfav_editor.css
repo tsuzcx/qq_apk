@@ -1,0 +1,243 @@
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+.night {
+  background: #282828;
+  color: #FFFFFF;
+}
+
+.night .wrapper {
+    background-color: #000000;
+}
+
+.wrapper {
+  background-color: #EBEDF5;
+  border-radius: 8px;
+  height: 60px;
+  width: 100%;
+  margin: 10px auto;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.file-summery {
+  left: 12px;
+  width: 80%;
+}
+
+.file-name {
+  text-overflow:ellipsis;
+  width: 95%;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.file-status {
+    font-size: 12px;
+    color: #878b99;
+}
+
+.audio-wrapper {
+    padding: 0 12px;
+}
+
+.audio-content {
+    margin-left: 37px;
+    width: 40%;
+    height: 39px;
+    background: #19BAFF;
+    font-size: 18px;
+    color: #ffffff;
+    border: 1px #19BAFF solid;
+    border-radius: 8px;
+    margin: 0px 0px 5px 0px;
+}
+
+.audio-content .audio-length-total {
+    font-size: 14px;
+}
+
+.play-btn {
+  width: 28px;
+  height: 28px;
+  display: initial;
+  background-image: url(https://static-res.qq.com/static-res/favorite/qfav_ptt_play.png);
+  /* 解除与app的样式冲突 */
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-style: none;
+}
+
+.audio-content .play-btn {
+  margin-left: 10px;
+  width: 17px;
+  height: 17px;
+  background-image: url(qfav_audio_play.png);
+}
+
+.file-thumb {
+  width: 48px;
+  height: 48px;
+  right: 14px;
+
+  display: initial;
+  /* 解除与app的样式冲突 */
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-style: none;
+  background-position: center;
+}
+
+.progress-bar-bg {
+    background-color: #d9d9d9;
+    position: relative;
+    height: 2px;
+    cursor: pointer;
+    float: center;
+    left: 96px;
+    right: 56px;
+}
+
+.progress-bar {
+    background-color: #19BAFF;
+    width: 0;
+    height: 2px;
+}
+
+.progress-bar-bg span {
+    content: " ";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -4px;
+    margin-left: -4px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #19BAFF;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.w100 {
+    width: 100%;
+}
+
+.audio-time {
+    overflow: hidden;
+    margin-top: -1px;
+}
+
+.audio-length-total {
+    font-size: 12px;
+    right: 12px;
+}
+
+.audio-length-current {
+    font-size: 12px;
+    display: inline-block;
+    left: 52px;
+}
+
+:root {
+    --size: 2vmin;
+    --speed: 0.9s;
+    --ease-bars: cubic-bezier(0.105, 0.165, 0.55, 1.0);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.play div {
+    animation: stretch var(--speed) var(--ease-bars) infinite;
+}
+
+.palette {
+  display: flex;
+  height: 100%;
+  left: 30px;
+  width: 55%;
+  position: relative;
+}
+
+.palette div {
+  margin: auto;
+  width: 2px;
+  background: white;
+  vertical-align: middle;
+  align-self: center;
+}
+
+.play div {
+  animation: stretch var(--speed) var(--ease-bars) infinite;
+}
+
+.palette div:nth-child(1n) {
+  animation-delay: 0.095s;
+  height: 20%;
+}
+
+.palette div:nth-child(2n) {
+  animation-delay: 0.19s;
+}
+
+.palette div:nth-child(3n) {
+  animation-delay: 0.285s;
+  height: 30%;
+}
+
+.palette div:nth-child(4n) {
+  animation-delay: 0.38s;
+  height: 45%;
+}
+
+@keyframes stretch {
+  50% {
+    transform: scaleY(1.5);
+  }
+}
+
+@keyframes jump {
+  35% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  85% {
+    transform: scaleY(1.5);
+    ;
+  }
+}
+
+
+button {
+  background-color: transparent;
+  outline: none;
+}
+
+.location-thumb {
+     width: 42px;
+     height: 42px;
+     right: 14px;
+     border-radius: 7.75px;
+ }
+
+.location-summary {
+    left: 12px;
+    right: 66px;
+}

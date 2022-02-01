@@ -1,60 +1,37 @@
 package com.tencent.mm.plugin.welab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.autogen.b.eu;
+import java.util.Map;
 
 public final class d
+  implements com.tencent.mm.plugin.welab.a.a.d
 {
-  public static void A(String paramString1, String paramString2, boolean paramBoolean)
+  public final void a(com.tencent.mm.plugin.welab.a.a.b paramb)
   {
-    AppMethodBeat.i(80542);
-    d.a locala = new d.a();
-    locala.cwc = paramString1;
-    locala.action = 8;
-    locala.timeStamp = System.currentTimeMillis();
-    locala.vuW = paramString2;
-    locala.vuX = paramBoolean;
-    a(locala);
-    AppMethodBeat.o(80542);
+    AppMethodBeat.i(146211);
+    b.iDA().XyD = paramb;
+    AppMethodBeat.o(146211);
   }
   
-  public static void a(d.a parama)
+  public final void a(String paramString, com.tencent.mm.plugin.welab.a.a.b paramb)
   {
-    AppMethodBeat.i(80540);
-    com.tencent.mm.modelsns.d locald = new com.tencent.mm.modelsns.d();
-    locald.k("expid", parama.vuW + ",");
-    locald.k("appid", parama.cwc + ",");
-    locald.k("action", parama.action + ",");
-    locald.k("timestamp", parama.timeStamp + ",");
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (parama.vuX) {}
-    for (int i = 1;; i = 0)
-    {
-      locald.k("hasRedPoint", i + ",");
-      ab.i("WelabReporter", "report " + locald.Fg());
-      h.qsU.e(14206, new Object[] { locald });
-      AppMethodBeat.o(80540);
-      return;
-    }
+    AppMethodBeat.i(146210);
+    b.iDA().XyC.put(paramString, paramb);
+    AppMethodBeat.o(146210);
   }
   
-  public static void t(String paramString, int paramInt, boolean paramBoolean)
+  public final eu bno(String paramString)
   {
-    AppMethodBeat.i(80541);
-    d.a locala = new d.a();
-    locala.cwc = paramString;
-    locala.action = paramInt;
-    locala.timeStamp = System.currentTimeMillis();
-    locala.vuW = a.dhl().ajs(paramString).field_expId;
-    locala.vuX = paramBoolean;
-    a(locala);
-    AppMethodBeat.o(80541);
+    AppMethodBeat.i(146212);
+    paramString = b.iDA().bnn(paramString);
+    AppMethodBeat.o(146212);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public final class CertifiedAccountWrite$StModAccountInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModAccountInfoReq
  * JD-Core Version:    0.7.0.1
  */

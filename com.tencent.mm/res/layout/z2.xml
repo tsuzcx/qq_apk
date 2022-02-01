@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bse" android:background="@drawable/b03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton android:id="@id/bsf" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/ob" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/bsg" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/o_" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/bsh" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/oa" android:layout_weight="1.0" />
-</LinearLayout>
+<FrameLayout android:id="@id/bqz" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/btj" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ktb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" android:importantForAccessibility="no" />
+        <FrameLayout android:layout_gravity="center|top" android:id="@id/c2l" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_behavior="@string/at5" style="?cn" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

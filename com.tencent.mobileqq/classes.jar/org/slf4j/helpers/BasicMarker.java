@@ -17,80 +17,91 @@ public class BasicMarker
   
   BasicMarker(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("A marker name cannot be null");
+    if (paramString != null)
+    {
+      this.name = paramString;
+      return;
     }
-    this.name = paramString;
+    throw new IllegalArgumentException("A marker name cannot be null");
   }
   
   public void add(Marker paramMarker)
   {
-    if (paramMarker == null) {
-      throw new IllegalArgumentException("A null value cannot be added to a Marker as reference.");
-    }
-    if (contains(paramMarker)) {}
-    while (paramMarker.contains(this)) {
+    if (paramMarker != null)
+    {
+      if (contains(paramMarker)) {
+        return;
+      }
+      if (paramMarker.contains(this)) {
+        return;
+      }
+      this.referenceList.add(paramMarker);
       return;
     }
-    this.referenceList.add(paramMarker);
+    throw new IllegalArgumentException("A null value cannot be added to a Marker as reference.");
   }
   
   public boolean contains(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("Other cannot be null");
-    }
-    if (this.name.equals(paramString)) {
-      return true;
-    }
-    if (hasReferences())
+    if (paramString != null)
     {
-      Iterator localIterator = this.referenceList.iterator();
-      while (localIterator.hasNext()) {
-        if (((Marker)localIterator.next()).contains(paramString)) {
-          return true;
+      if (this.name.equals(paramString)) {
+        return true;
+      }
+      if (hasReferences())
+      {
+        Iterator localIterator = this.referenceList.iterator();
+        while (localIterator.hasNext()) {
+          if (((Marker)localIterator.next()).contains(paramString)) {
+            return true;
+          }
         }
       }
+      return false;
     }
-    return false;
+    paramString = new IllegalArgumentException("Other cannot be null");
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public boolean contains(Marker paramMarker)
   {
-    if (paramMarker == null) {
-      throw new IllegalArgumentException("Other cannot be null");
-    }
-    if (equals(paramMarker)) {
-      return true;
-    }
-    if (hasReferences())
+    if (paramMarker != null)
     {
-      Iterator localIterator = this.referenceList.iterator();
-      while (localIterator.hasNext()) {
-        if (((Marker)localIterator.next()).contains(paramMarker)) {
-          return true;
+      if (equals(paramMarker)) {
+        return true;
+      }
+      if (hasReferences())
+      {
+        Iterator localIterator = this.referenceList.iterator();
+        while (localIterator.hasNext()) {
+          if (((Marker)localIterator.next()).contains(paramMarker)) {
+            return true;
+          }
         }
       }
+      return false;
     }
-    return false;
+    paramMarker = new IllegalArgumentException("Other cannot be null");
+    for (;;)
+    {
+      throw paramMarker;
+    }
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramObject == null);
-      bool1 = bool2;
-    } while (!(paramObject instanceof Marker));
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Marker)) {
+      return false;
+    }
     paramObject = (Marker)paramObject;
     return this.name.equals(paramObject.getName());
   }
@@ -132,7 +143,8 @@ public class BasicMarker
     }
     Iterator localIterator = iterator();
     StringBuilder localStringBuilder = new StringBuilder(getName());
-    localStringBuilder.append(' ').append(OPEN);
+    localStringBuilder.append(' ');
+    localStringBuilder.append(OPEN);
     while (localIterator.hasNext())
     {
       localStringBuilder.append(((Marker)localIterator.next()).getName());
@@ -146,7 +158,7 @@ public class BasicMarker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.helpers.BasicMarker
  * JD-Core Version:    0.7.0.1
  */

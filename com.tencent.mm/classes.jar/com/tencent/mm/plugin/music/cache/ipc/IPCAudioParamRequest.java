@@ -9,41 +9,41 @@ public class IPCAudioParamRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCAudioParamRequest> CREATOR;
-  public String cAd;
-  public byte[] fKK;
+  public int LKM;
   public String mimeType;
-  public int oYu;
+  public String musicId;
+  public byte[] oPd;
   
   static
   {
-    AppMethodBeat.i(137460);
-    CREATOR = new IPCAudioParamRequest.1();
-    AppMethodBeat.o(137460);
+    AppMethodBeat.i(137210);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(137210);
   }
   
   public IPCAudioParamRequest()
   {
-    this.cAd = "";
-    this.oYu = 0;
+    this.musicId = "";
+    this.LKM = 0;
     this.mimeType = "";
   }
   
   public IPCAudioParamRequest(Parcel paramParcel)
   {
-    AppMethodBeat.i(137458);
-    this.cAd = "";
-    this.oYu = 0;
+    AppMethodBeat.i(137208);
+    this.musicId = "";
+    this.LKM = 0;
     this.mimeType = "";
-    this.cAd = paramParcel.readString();
-    this.oYu = paramParcel.readInt();
+    this.musicId = paramParcel.readString();
+    this.LKM = paramParcel.readInt();
     this.mimeType = paramParcel.readString();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.fKK = new byte[i];
-      paramParcel.readByteArray(this.fKK);
+      this.oPd = new byte[i];
+      paramParcel.readByteArray(this.oPd);
     }
-    AppMethodBeat.o(137458);
+    AppMethodBeat.o(137208);
   }
   
   public int describeContents()
@@ -53,24 +53,24 @@ public class IPCAudioParamRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(137459);
-    paramParcel.writeString(this.cAd);
-    paramParcel.writeInt(this.oYu);
+    AppMethodBeat.i(137209);
+    paramParcel.writeString(this.musicId);
+    paramParcel.writeInt(this.LKM);
     paramParcel.writeString(this.mimeType);
-    if (this.fKK != null)
+    if (this.oPd != null)
     {
-      paramParcel.writeInt(this.fKK.length);
-      paramParcel.writeByteArray(this.fKK);
-      AppMethodBeat.o(137459);
+      paramParcel.writeInt(this.oPd.length);
+      paramParcel.writeByteArray(this.oPd);
+      AppMethodBeat.o(137209);
       return;
     }
     paramParcel.writeInt(0);
-    AppMethodBeat.o(137459);
+    AppMethodBeat.o(137209);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest
  * JD-Core Version:    0.7.0.1
  */

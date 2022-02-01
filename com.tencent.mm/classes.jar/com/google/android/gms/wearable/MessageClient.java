@@ -27,20 +27,26 @@ public abstract class MessageClient
     super(paramContext, Wearable.API, null, paramSettings);
   }
   
-  public abstract Task<Void> addListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener);
+  public abstract Task<Void> addListener(OnMessageReceivedListener paramOnMessageReceivedListener);
   
-  public abstract Task<Void> addListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener, Uri paramUri, int paramInt);
+  public abstract Task<Void> addListener(OnMessageReceivedListener paramOnMessageReceivedListener, Uri paramUri, int paramInt);
   
-  public abstract Task<Boolean> removeListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener);
+  public abstract Task<Boolean> removeListener(OnMessageReceivedListener paramOnMessageReceivedListener);
   
   public abstract Task<Integer> sendMessage(String paramString1, String paramString2, byte[] paramArrayOfByte);
   
   @Retention(RetentionPolicy.SOURCE)
   public static @interface FilterType {}
+  
+  public static abstract interface OnMessageReceivedListener
+    extends MessageApi.MessageListener
+  {
+    public abstract void onMessageReceived(MessageEvent paramMessageEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.MessageClient
  * JD-Core Version:    0.7.0.1
  */

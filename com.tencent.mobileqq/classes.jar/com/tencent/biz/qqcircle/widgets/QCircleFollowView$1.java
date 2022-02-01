@@ -1,18 +1,21 @@
 package com.tencent.biz.qqcircle.widgets;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class QCircleFollowView$1
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   QCircleFollowView$1(QCircleFollowView paramQCircleFollowView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.this$0.setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleFollowView.1
  * JD-Core Version:    0.7.0.1
  */

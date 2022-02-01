@@ -2,5 +2,5 @@
 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ProgressBar android:layout_gravity="center_vertical" android:id="@id/g1f" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/gl" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/efo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/cuy" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/efo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/cuy" />
 </LinearLayout>

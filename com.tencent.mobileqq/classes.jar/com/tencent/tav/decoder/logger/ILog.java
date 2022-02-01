@@ -8,9 +8,7 @@ public abstract interface ILog
   
   public abstract void e(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public abstract void e(String paramString, Throwable paramThrowable);
-  
-  public abstract void i(String paramString1, String paramString2, Object... paramVarArgs);
+  public abstract void i(String paramString1, String paramString2);
   
   public abstract void v(String paramString1, String paramString2);
   
@@ -18,7 +16,7 @@ public abstract interface ILog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.ILog
  * JD-Core Version:    0.7.0.1
  */

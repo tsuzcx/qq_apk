@@ -1,0 +1,82 @@
+{
+    "view_type": "UIView",
+    "layout_type":"layout_relative",
+    "view_id":"id_rij_comment_diversion_container",
+    "margin_top":"4",
+    "padding_bottom":"6",
+    "visible_depend_on_children":"YES",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "subviews":[
+        {
+            "view_type": "UIView",
+            "view_id": "id_rij_comment_diversion",
+            "align_parent_left": "YES",
+            "direction": "horizontal",
+            "event_type": "cmd_diversion_click",
+            "visible_depend_on_children":"YES",
+            "margin_left":"65",
+            "height": {
+                "type": "relative",
+                "value": "24"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setAttatchInfo:":"$jump_schema",
+                "setCornerRadiusString:":"2.0",
+                "setBackgroundColorString:": "$diversion_view_color"
+            },
+            "subviews":[
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_rij_comment_diversion_icon",
+                    "event_type": "cmd_diversion_click",
+                    "align_parent_top": "YES",
+                    "margin_left": "6",
+                    "margin_top": "6",
+                    "attributes": {
+                        "setCornerRadiusString:":"2.0",
+                        "setImageWithURLString:lineup:": [
+                            "$diversion_app_icon",
+                            "-1"
+                        ]
+                    },
+                    "height": {
+                        "type": "relative",
+                        "value": "12"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "12"
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_comment_diversion_label",
+                    "margin_left":"6",
+                    "margin_right":"6",
+                    "height": {
+                        "type": "relative",
+                        "value": "24"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setText:": "$app_wording",
+                        "setTextColorString:": "$diversion_font_color",
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }
+            ]
+        }
+    ]
+}

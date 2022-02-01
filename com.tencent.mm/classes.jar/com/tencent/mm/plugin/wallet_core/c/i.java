@@ -1,78 +1,67 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.anx;
-import com.tencent.mm.protocal.protobuf.any;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.cym;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class i
-  extends m
-  implements k
+  extends w
 {
-  private f callback;
-  private b rr;
-  public String ubv;
-  public boolean ubw;
+  public cym VxA;
+  private h callback;
+  private final c rr;
   
   public i()
   {
-    AppMethodBeat.i(46503);
-    this.ubv = "";
-    this.ubw = false;
-    b.a locala = new b.a();
-    locala.fsX = new anx();
-    locala.fsY = new any();
-    locala.uri = "/cgi-bin/mmpay-bin/getpayuserduty";
-    locala.funcId = 2541;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    AppMethodBeat.o(46503);
+    AppMethodBeat.i(301119);
+    c.a locala = new c.a();
+    cyl localcyl = new cyl();
+    localcyl.timestamp = cn.bDv();
+    locala.otE = localcyl;
+    locala.otF = new cym();
+    locala.funcId = 6855;
+    locala.uri = "/cgi-bin/mmpay-bin/hkpayplugin";
+    this.rr = locala.bEF();
+    AppMethodBeat.o(301119);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(46504);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(46504);
+    AppMethodBeat.i(301122);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(301122);
     return i;
   }
   
   public final int getType()
   {
-    return 2541;
+    return 6855;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(46505);
-    ab.d("MircoMsg.NetSceneGetPayUserDuty", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(46505);
-      return;
+    AppMethodBeat.i(301124);
+    Log.w("MicroMsg.NetSceneGetPayHKPlugin", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.VxA = ((cym)c.c.b(((c)params).otC));
     }
-    paramq = (any)((b)paramq).fsW.fta;
-    this.ubv = paramq.ubv;
-    this.ubw = paramq.ubw;
-    ab.i("MircoMsg.NetSceneGetPayUserDuty", "duty_info %s need_agree_duty %s", new Object[] { this.ubv, Boolean.valueOf(this.ubw) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(46505);
+    AppMethodBeat.o(301124);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.i
  * JD-Core Version:    0.7.0.1
  */

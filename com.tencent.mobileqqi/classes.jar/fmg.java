@@ -1,15 +1,25 @@
-import android.view.View;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndMovementListener;
 
 public class fmg
-  implements VerticalGallery.OnSelectViewDataUpdateListener
+  implements VerticalGallery.OnEndMovementListener
 {
-  public fmg(IphonePickerView paramIphonePickerView) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(View paramView, int paramInt)
+  public fmg(IphonePickerView paramIphonePickerView, int paramInt)
   {
-    IphonePickerView.a(this.a, paramView, 1);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(VerticalGallery paramVerticalGallery)
+  {
+    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].p();
+    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
+      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+    }
   }
 }
 

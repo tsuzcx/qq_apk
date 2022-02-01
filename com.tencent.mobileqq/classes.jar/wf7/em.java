@@ -64,18 +64,13 @@ public class em
     paramd = new ArrayList();
     int j = paramArrayList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       ae localae = (ae)paramArrayList.get(i);
-      if (localae == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!a(paramBoolean, paramaf, localae)) {
-          paramd.add(localae);
-        }
+      if ((localae != null) && (!a(paramBoolean, paramaf, localae))) {
+        paramd.add(localae);
       }
+      i += 1;
     }
     return paramd;
   }
@@ -106,31 +101,39 @@ public class em
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    if ((this.mW != null) && (this.mW.nB == ???.nB))
+    em.d locald = this.mW;
+    if ((locald != null) && (locald.nB == ???.nB))
     {
       localArrayList.add(this.mW);
       al(this.mW.nB);
     }
-    for (;;)
+    else
     {
+      locald = this.mX;
+      if ((locald != null) && (locald.nB == ???.nB))
+      {
+        localArrayList.add(this.mX);
+        al(this.mX.nB);
+      }
+      else
+      {
+        localArrayList.add(???);
+        al(???.nB);
+      }
+    }
+    synchronized (this.mY)
+    {
+      localArrayList.addAll(this.mY);
+      this.mY.clear();
       ??? = localArrayList.iterator();
       while (???.hasNext()) {
         a(paramBoolean, (em.d)???.next(), paramInt, 0, null);
       }
-      break;
-      if ((this.mX != null) && (this.mX.nB == ???.nB))
-      {
-        localArrayList.add(this.mX);
-        al(this.mX.nB);
-        continue;
-      }
-      localArrayList.add(???);
-      al(???.nB);
-      synchronized (this.mY)
-      {
-        localArrayList.addAll(this.mY);
-        this.mY.clear();
-      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -146,19 +149,20 @@ public class em
     {
       ((ArrayList)localObject1).addAll(this.mZ.values());
       this.mZ.clear();
-    }
-    synchronized (this.mY)
-    {
-      ((ArrayList)localObject1).addAll(this.mY);
-      this.mY.clear();
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      synchronized (this.mY)
       {
-        a(paramBoolean1, (em.d)((Iterator)localObject1).next(), paramInt, 0, null);
-        continue;
-        localObject2 = finally;
-        throw localObject2;
+        ((ArrayList)localObject1).addAll(this.mY);
+        this.mY.clear();
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          a(paramBoolean1, (em.d)((Iterator)localObject1).next(), paramInt, 0, null);
+        }
+        return;
       }
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -181,58 +185,77 @@ public class em
     if (paramae == null) {
       return false;
     }
+    boolean bool = eo.b(paramae);
+    String str1 = "";
+    String str2 = "tcp|";
     StringBuilder localStringBuilder;
-    Object localObject;
-    if (eo.b(paramae))
+    if (bool)
     {
       this.nh.a(paramBoolean, paramaf.bZ, paramae);
-      localStringBuilder = new StringBuilder().append("[ocean]guid|").append(this.mU.cC()).append("|push|通道|");
-      if (paramBoolean)
-      {
-        localObject = "tcp|";
-        localObject = localStringBuilder.append((String)localObject).append("sharkSeqNo|").append(paramaf.bZ).append("|ECmd|").append(paramae.bH).append("|seqNo|").append(paramae.bZ).append("|refSeqNo|").append(paramae.ca).append("|ret|").append(0);
-        if (paramae.cp == null) {
-          break label196;
-        }
-        paramaf = "|pushId|" + paramae.cp.bY;
-        label174:
-        ((StringBuilder)localObject).append(paramaf).toString();
-        paramBoolean = true;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ocean]guid|");
+      localStringBuilder.append(this.mU.cC());
+      localStringBuilder.append("|push|通道|");
+      if (!paramBoolean) {
+        str2 = "http|";
       }
+      localStringBuilder.append(str2);
+      localStringBuilder.append("sharkSeqNo|");
+      localStringBuilder.append(paramaf.bZ);
+      localStringBuilder.append("|ECmd|");
+      localStringBuilder.append(paramae.bH);
+      localStringBuilder.append("|seqNo|");
+      localStringBuilder.append(paramae.bZ);
+      localStringBuilder.append("|refSeqNo|");
+      localStringBuilder.append(paramae.ca);
+      localStringBuilder.append("|ret|");
+      localStringBuilder.append(0);
+      if (paramae.cp != null)
+      {
+        paramaf = new StringBuilder();
+        paramaf.append("|pushId|");
+        paramaf.append(paramae.cp.bY);
+        str1 = paramaf.toString();
+      }
+      localStringBuilder.append(str1);
+      localStringBuilder.toString();
     }
     for (;;)
     {
-      return paramBoolean;
-      localObject = "http|";
-      break;
-      label196:
-      paramaf = "";
-      break label174;
-      if (eo.c(paramae))
-      {
-        this.nh.b(paramBoolean, paramaf.bZ, paramae);
-        localStringBuilder = new StringBuilder().append("[ocean]guid|").append(this.mU.cC()).append("|gift|通道|");
-        if (paramBoolean)
-        {
-          localObject = "tcp|";
-          label266:
-          localObject = localStringBuilder.append((String)localObject).append("sharkSeqNo|").append(paramaf.bZ).append("|ECmd|").append(paramae.bH).append("|seqNo|").append(paramae.bZ).append("|refSeqNo|").append(paramae.ca).append("|ret|").append(0);
-          if (paramae.cp == null) {
-            break label394;
-          }
-        }
-        label394:
-        for (paramaf = "|pushId|" + paramae.cp.bY;; paramaf = "")
-        {
-          ((StringBuilder)localObject).append(paramaf).toString();
-          paramBoolean = true;
-          break;
-          localObject = "http|";
-          break label266;
-        }
+      return true;
+      if (!eo.c(paramae)) {
+        break;
       }
-      paramBoolean = false;
+      this.nh.b(paramBoolean, paramaf.bZ, paramae);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ocean]guid|");
+      localStringBuilder.append(this.mU.cC());
+      localStringBuilder.append("|gift|通道|");
+      if (!paramBoolean) {
+        str2 = "http|";
+      }
+      localStringBuilder.append(str2);
+      localStringBuilder.append("sharkSeqNo|");
+      localStringBuilder.append(paramaf.bZ);
+      localStringBuilder.append("|ECmd|");
+      localStringBuilder.append(paramae.bH);
+      localStringBuilder.append("|seqNo|");
+      localStringBuilder.append(paramae.bZ);
+      localStringBuilder.append("|refSeqNo|");
+      localStringBuilder.append(paramae.ca);
+      localStringBuilder.append("|ret|");
+      localStringBuilder.append(0);
+      if (paramae.cp != null)
+      {
+        paramaf = new StringBuilder();
+        paramaf.append("|pushId|");
+        paramaf.append(paramae.cp.bY);
+        str1 = paramaf.toString();
+      }
+      localStringBuilder.append(str1);
+      localStringBuilder.toString();
     }
+    return false;
   }
   
   private void ak(int paramInt)
@@ -242,25 +265,28 @@ public class em
       Object localObject2 = (ArrayList)this.mY.clone();
       if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
       {
-        x localx;
-        do
+        ??? = ((ArrayList)localObject2).iterator();
+        while (((Iterator)???).hasNext())
         {
-          ??? = ((ArrayList)localObject2).iterator();
-          while (!((Iterator)localObject2).hasNext())
+          localObject2 = (em.d)((Iterator)???).next();
+          if ((localObject2 != null) && (((em.d)localObject2).nE != null) && (((em.d)localObject2).nE.size() > 0))
           {
-            do
-            {
-              if (!((Iterator)???).hasNext()) {
-                break;
-              }
-              localObject2 = (em.d)((Iterator)???).next();
-            } while ((localObject2 == null) || (((em.d)localObject2).nE == null) || (((em.d)localObject2).nE.size() <= 0));
             localObject2 = ((em.d)localObject2).nE.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              x localx = (x)((Iterator)localObject2).next();
+              if (localx != null) {
+                el.cP().a("SharkNetwork", localx.bH, localx.bZ, localx, paramInt);
+              }
+            }
           }
-          localx = (x)((Iterator)localObject2).next();
-        } while (localx == null);
-        el.cP().a("SharkNetwork", localx.bH, localx.bZ, localx, paramInt);
+        }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -284,10 +310,11 @@ public class em
   
   private void c(em.d paramd)
   {
-    if ((paramd == null) || (paramd.nE == null) || (paramd.nC == null) || (paramd.nC.lv == null)) {}
-    for (;;)
+    if ((paramd != null) && (paramd.nE != null) && (paramd.nC != null))
     {
-      return;
+      if (paramd.nC.lv == null) {
+        return;
+      }
       Iterator localIterator = paramd.nE.iterator();
       while (localIterator.hasNext())
       {
@@ -297,111 +324,50 @@ public class em
           if ((localx.cf & 0x2) == 0) {
             localx.data = ea.b(localx.data, paramd.nC.lv.getBytes());
           }
-          if (localx.data != null) {}
+          byte[] arrayOfByte = localx.data;
           el.cP().a("SharkNetwork", localx.bH, localx.bZ, localx, 13);
         }
       }
     }
   }
   
-  /* Error */
   private void cQ()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 107	wf7/em:li	Lwf7/dt;
-    //   6: invokevirtual 144	wf7/dt:bX	()Z
-    //   9: istore_1
-    //   10: iload_1
-    //   11: ifne +6 -> 17
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: return
-    //   17: aload_0
-    //   18: getfield 98	wf7/em:nk	J
-    //   21: lconst_0
-    //   22: lcmp
-    //   23: ifeq +18 -> 41
-    //   26: invokestatic 478	java/lang/System:currentTimeMillis	()J
-    //   29: aload_0
-    //   30: getfield 98	wf7/em:nk	J
-    //   33: lsub
-    //   34: ldc2_w 479
-    //   37: lcmp
-    //   38: ifle -24 -> 14
-    //   41: aload_0
-    //   42: invokestatic 478	java/lang/System:currentTimeMillis	()J
-    //   45: putfield 98	wf7/em:nk	J
-    //   48: aload_0
-    //   49: getfield 96	wf7/em:nj	Landroid/os/Handler;
-    //   52: bipush 8
-    //   54: invokevirtual 482	android/os/Handler:removeMessages	(I)V
-    //   57: aload_0
-    //   58: getfield 96	wf7/em:nj	Landroid/os/Handler;
-    //   61: bipush 8
-    //   63: ldc2_w 483
-    //   66: invokevirtual 488	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
-    //   69: pop
-    //   70: goto -56 -> 14
-    //   73: astore_2
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_2
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	this	em
-    //   9	2	1	bool	boolean
-    //   73	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	73	finally
-    //   17	41	73	finally
-    //   41	70	73	finally
+    try
+    {
+      boolean bool = this.li.bX();
+      if (!bool) {
+        return;
+      }
+      if (this.nk != 0L)
+      {
+        long l1 = System.currentTimeMillis();
+        long l2 = this.nk;
+        if (l1 - l2 <= 300000L) {
+          return;
+        }
+      }
+      this.nk = System.currentTimeMillis();
+      this.nj.removeMessages(8);
+      this.nj.sendEmptyMessageDelayed(8, 5000L);
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   private void cR()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 107	wf7/em:li	Lwf7/dt;
-    //   6: invokevirtual 144	wf7/dt:bX	()Z
-    //   9: istore_1
-    //   10: iload_1
-    //   11: ifne +6 -> 17
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: return
-    //   17: aload_0
-    //   18: getfield 96	wf7/em:nj	Landroid/os/Handler;
-    //   21: bipush 10
-    //   23: invokevirtual 482	android/os/Handler:removeMessages	(I)V
-    //   26: aload_0
-    //   27: getfield 96	wf7/em:nj	Landroid/os/Handler;
-    //   30: bipush 10
-    //   32: ldc2_w 489
-    //   35: invokevirtual 488	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
-    //   38: pop
-    //   39: goto -25 -> 14
-    //   42: astore_2
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_2
-    //   46: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	47	0	this	em
-    //   9	2	1	bool	boolean
-    //   42	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	42	finally
-    //   17	39	42	finally
+    try
+    {
+      boolean bool = this.li.bX();
+      if (!bool) {
+        return;
+      }
+      this.nj.removeMessages(10);
+      this.nj.sendEmptyMessageDelayed(10, 10000L);
+      return;
+    }
+    finally {}
   }
   
   private void cS()
@@ -410,55 +376,59 @@ public class em
     String str2 = this.li.ca();
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!str1.equals(str2))) {
       cU();
+    } else if ((!TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) {
+      this.li.x(str1);
     }
-    do
+    str1 = this.li.cd();
+    str2 = this.li.ce();
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!str1.equals(str2)))
     {
-      for (;;)
-      {
-        str1 = this.li.cd();
-        str2 = this.li.ce();
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (str1.equals(str2))) {
-          break;
-        }
-        cV();
-        return;
-        if ((!TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) {
-          this.li.x(str1);
-        }
-      }
-    } while ((TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2)));
-    this.li.d(str1, false);
+      cV();
+      return;
+    }
+    if ((!TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) {
+      this.li.d(str1, false);
+    }
   }
   
   private static void e(ArrayList<ae> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {}
-    ae localae;
-    do
+    if (paramArrayList != null)
     {
-      return;
-      while (!paramArrayList.hasNext()) {
-        paramArrayList = paramArrayList.iterator();
+      if (paramArrayList.size() <= 0) {
+        return;
       }
-      localae = (ae)paramArrayList.next();
-    } while ((localae == null) || (localae.cc != 3));
-    ee.cz();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        ae localae = (ae)paramArrayList.next();
+        if ((localae != null) && (localae.cc == 3)) {
+          ee.cz();
+        }
+      }
+    }
   }
   
   private boolean f(ArrayList<ae> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() != 1)) {
-      return false;
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.size() != 1) {
+        return false;
+      }
+      paramArrayList = (ae)paramArrayList.get(0);
+      if (paramArrayList == null) {
+        return false;
+      }
+      int i;
+      if (2 == paramArrayList.cc) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      return i != 0;
     }
-    paramArrayList = (ae)paramArrayList.get(0);
-    if (paramArrayList == null) {
-      return false;
-    }
-    if (2 == paramArrayList.cc) {}
-    for (int i = 1; i == 0; i = 0) {
-      return false;
-    }
-    return true;
+    return false;
   }
   
   public static af j(byte[] paramArrayOfByte)
@@ -472,60 +442,62 @@ public class em
   
   protected dx a(boolean paramBoolean, em.d paramd)
   {
+    Object localObject1 = null;
     if (paramd == null) {
       return null;
     }
-    dx localdx;
-    x localx;
+    Object localObject3;
     if (paramBoolean)
     {
-      localdx = this.mT.cO();
-      paramd.nC = localdx;
-      ??? = paramd.nE.iterator();
-      while (((Iterator)???).hasNext())
+      ??? = this.mT.cO();
+      paramd.nC = ((dx)???);
+      localObject3 = paramd.nE.iterator();
+      for (;;)
       {
-        localx = (x)((Iterator)???).next();
-        if ((localx != null) && (localx.data != null) && (localx.data.length > 0) && ((localx.cf & 0x2) == 0))
+        localObject1 = ???;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        localObject1 = (x)((Iterator)localObject3).next();
+        if ((localObject1 != null) && (((x)localObject1).data != null) && (((x)localObject1).data.length > 0) && ((((x)localObject1).cf & 0x2) == 0))
         {
-          localx.data = ea.a(localx.data, localdx.lv.getBytes());
-          if (localx.data != null) {}
+          ((x)localObject1).data = ea.a(((x)localObject1).data, ((dx)???).lv.getBytes());
+          localObject1 = ((x)localObject1).data;
         }
       }
     }
+    if ((paramd.nE != null) && (paramd.nE.size() > 0))
+    {
+      ??? = paramd.nE.iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject3 = (x)((Iterator)???).next();
+        if (localObject3 != null)
+        {
+          if (((x)localObject3).ca == 0) {
+            paramd.nA = true;
+          }
+          el.cP().a("SharkNetwork", ((x)localObject3).bH, ((x)localObject3).bZ, (x)localObject3, 5);
+        }
+      }
+    }
+    synchronized (this.mZ)
+    {
+      this.mZ.put(Integer.valueOf(paramd.nB), paramd);
+      long l;
+      if (paramd.nJ > 0L) {
+        l = paramd.nJ;
+      } else {
+        l = 180000L;
+      }
+      ??? = Message.obtain(this.nl, 1, paramd);
+      this.nl.sendMessageDelayed((Message)???, l);
+      this.mS.d(paramd);
+      return localObject1;
+    }
     for (;;)
     {
-      if ((paramd.nE != null) && (paramd.nE.size() > 0))
-      {
-        ??? = paramd.nE.iterator();
-        while (((Iterator)???).hasNext())
-        {
-          localx = (x)((Iterator)???).next();
-          if (localx != null)
-          {
-            if (localx.ca == 0) {
-              paramd.nA = true;
-            }
-            el.cP().a("SharkNetwork", localx.bH, localx.bZ, localx, 5);
-          }
-        }
-      }
-      for (;;)
-      {
-        synchronized (this.mZ)
-        {
-          this.mZ.put(Integer.valueOf(paramd.nB), paramd);
-          if (paramd.nJ > 0L)
-          {
-            l = paramd.nJ;
-            ??? = Message.obtain(this.nl, 1, paramd);
-            this.nl.sendMessageDelayed((Message)???, l);
-            this.mS.d(paramd);
-            return localdx;
-          }
-        }
-        long l = 180000L;
-      }
-      localdx = null;
+      throw paramd;
     }
   }
   
@@ -546,22 +518,26 @@ public class em
   
   public void a(em.d paramd)
   {
-    if ((paramd == null) || (paramd.nF == null) || (paramd.nE == null) || (paramd.nE.size() <= 0)) {
-      return;
-    }
-    synchronized (this.mY)
+    if ((paramd != null) && (paramd.nF != null) && (paramd.nE != null))
     {
-      this.mY.add(paramd);
-      paramd = paramd.nE.iterator();
-      while (paramd.hasNext())
+      if (paramd.nE.size() <= 0) {
+        return;
+      }
+      synchronized (this.mY)
       {
-        ??? = (x)paramd.next();
-        if (??? != null) {
-          el.cP().a("SharkNetwork", ((x)???).bH, ((x)???).bZ, (x)???, 1);
+        this.mY.add(paramd);
+        paramd = paramd.nE.iterator();
+        while (paramd.hasNext())
+        {
+          ??? = (x)paramd.next();
+          if (??? != null) {
+            el.cP().a("SharkNetwork", ((x)???).bH, ((x)???).bZ, (x)???, 1);
+          }
         }
+        this.nj.sendEmptyMessage(1);
+        return;
       }
     }
-    this.nj.sendEmptyMessage(1);
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3) {}
@@ -575,14 +551,13 @@ public class em
   
   public void bL()
   {
-    if (!this.li.bX()) {}
-    eu localeu;
-    do
-    {
+    if (!this.li.bX()) {
       return;
-      localeu = this.mS.dc();
-    } while (localeu == null);
-    localeu.bL();
+    }
+    eu localeu = this.mS.dc();
+    if (localeu != null) {
+      localeu.bL();
+    }
   }
   
   public String cC()
@@ -602,18 +577,20 @@ public class em
   
   public void cU()
   {
-    if (this.nj != null)
+    Handler localHandler = this.nj;
+    if (localHandler != null)
     {
-      this.nj.removeMessages(4);
+      localHandler.removeMessages(4);
       this.nj.sendEmptyMessageDelayed(4, 15000L);
     }
   }
   
   public void cV()
   {
-    if (this.nj != null)
+    Handler localHandler = this.nj;
+    if (localHandler != null)
     {
-      this.nj.removeMessages(9);
+      localHandler.removeMessages(9);
       this.nj.sendEmptyMessageDelayed(9, 2000L);
     }
   }
@@ -625,7 +602,7 @@ public class em
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.em
  * JD-Core Version:    0.7.0.1
  */

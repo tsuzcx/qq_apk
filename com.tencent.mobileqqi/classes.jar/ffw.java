@@ -1,89 +1,82 @@
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQMapActivityProxy;
 import java.util.ArrayList;
 
-class ffw
-  extends Thread
+public class ffw
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = true;
+  public ffw(QQMapActivityProxy paramQQMapActivityProxy) {}
   
-  public ffw(fft paramfft, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void run()
-  {
-    setName("QQHeadDownloadThread" + this.jdField_a_of_type_Int);
-    Process.setThreadPriority(10);
-    int j = 0;
-    for (;;)
-    {
-      int i;
-      if (((j < fft.a(this.jdField_a_of_type_Fft)) || (fft.a(this.jdField_a_of_type_Fft).size() > 0)) && (this.jdField_a_of_type_Boolean)) {
-        synchronized (fft.a(this.jdField_a_of_type_Fft))
-        {
-          i = fft.a(this.jdField_a_of_type_Fft).size();
-          if (i == 0) {
-            fft.b(this.jdField_a_of_type_Fft);
-          }
-        }
-      }
-      try
-      {
-        fft.a(this.jdField_a_of_type_Fft).wait(30000L);
-        fft.c(this.jdField_a_of_type_Fft);
-        i = j + 1;
-        ffv localffv = null;
-        j = i;
-        if (localffv == null) {
-          continue;
-        }
-        fft.a(this.jdField_a_of_type_Fft, localffv);
-        yield();
-        j = i;
-        continue;
-        if (i > fft.d(this.jdField_a_of_type_Fft))
-        {
-          localffv = (ffv)fft.a(this.jdField_a_of_type_Fft).remove(i - 1);
-        }
-        else
-        {
-          localffv = (ffv)fft.a(this.jdField_a_of_type_Fft).remove(0);
-          break label310;
-          localObject = finally;
-          throw localObject;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQHeadDownloadHandler", 2, "QQHeadDownloadHandler thread exit. isRunning=" + this.jdField_a_of_type_Boolean + ", id=" + this.jdField_a_of_type_Int);
-          }
-          if ((this.jdField_a_of_type_Boolean) && (fft.a(this.jdField_a_of_type_Fft) != null) && (this.jdField_a_of_type_Int < fft.a(this.jdField_a_of_type_Fft).length)) {
-            fft.a(this.jdField_a_of_type_Fft)[this.jdField_a_of_type_Int] = null;
-          }
-          fft.e(this.jdField_a_of_type_Fft);
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          continue;
-          label310:
-          i = 0;
-        }
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.addLbsObserver")) {
+      if (QQMapActivityProxy.a(this.a) != null) {
+        QQMapActivityProxy.a(this.a).a(QQMapActivityProxy.a(this.a));
       }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!paramContext.equals("com.tencent.mobileqq.RemoveLbsObserver")) {
+            break;
+          }
+        } while (QQMapActivityProxy.a(this.a) == null);
+        QQMapActivityProxy.a(this.a).c(QQMapActivityProxy.a(this.a));
+        return;
+        if (paramContext.equals("com.tencent.mobileqq.getStreetViewUrl"))
+        {
+          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
+          return;
+        }
+        if (paramContext.equals("com.tencent.mobileqq.unregisterReceiver"))
+        {
+          QQMapActivityProxy.a(this.a).unregisterReceiver(QQMapActivityProxy.a(this.a));
+          return;
+        }
+        int i;
+        int j;
+        int k;
+        int m;
+        int n;
+        if (paramContext.equals("com.tencent.mobileqq.getLbsShareSearch"))
+        {
+          i = paramIntent.getIntExtra("latitude", 0);
+          j = paramIntent.getIntExtra("longitude", 0);
+          k = paramIntent.getIntExtra("coordinate", 0);
+          paramContext = paramIntent.getStringExtra("keyword");
+          String str = paramIntent.getStringExtra("category");
+          m = paramIntent.getIntExtra("page", 0);
+          n = paramIntent.getIntExtra("count", 0);
+          int i1 = paramIntent.getIntExtra("requireMyLbs", 0);
+          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, paramContext, str, m, n, i1);
+          return;
+        }
+        if (paramContext.equals("com.tencent.mobileqq.getLbsShareShop"))
+        {
+          i = paramIntent.getIntExtra("latitude", 0);
+          j = paramIntent.getIntExtra("longitude", 0);
+          k = paramIntent.getIntExtra("coordinate", 0);
+          m = paramIntent.getIntExtra("begin", 0);
+          n = paramIntent.getIntExtra("count", 0);
+          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, m, n);
+          return;
+        }
+      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
+      paramContext = paramIntent.getStringExtra("shop_id");
+    } while (TextUtils.isEmpty(paramContext));
+    paramIntent = new ArrayList();
+    paramIntent.add(paramContext);
+    ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(paramIntent);
   }
 }
 

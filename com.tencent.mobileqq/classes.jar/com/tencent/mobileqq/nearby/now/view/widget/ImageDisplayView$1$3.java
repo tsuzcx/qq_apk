@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
 import android.graphics.Bitmap;
-import avfn;
+import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
 
 class ImageDisplayView$1$3
   implements Runnable
@@ -10,13 +10,13 @@ class ImageDisplayView$1$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView$1.this$0.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ImageDisplayView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView$1.this$0).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView$1.a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView$1.b);
+    this.b.this$0.a.setImageBitmap(this.a);
+    ImageDisplayView.a(this.b.this$0).a(this.b.b, this.b.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView.1.3
  * JD-Core Version:    0.7.0.1
  */

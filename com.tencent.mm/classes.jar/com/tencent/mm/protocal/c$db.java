@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$db
+final class c$db
   extends c.g
 {
-  public c$db()
+  c$db()
   {
-    super("getTeachSearchData", "", 10000, false);
+    super("getPasteboardContent", "getPasteboardContent", 364, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.db
  * JD-Core Version:    0.7.0.1
  */

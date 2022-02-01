@@ -6,26 +6,26 @@ import java.util.List;
 
 public final class a
 {
-  private List<byte[]> aji = Collections.synchronizedList(new LinkedList());
+  private List<byte[]> amK = Collections.synchronizedList(new LinkedList());
   
   public final void finish()
   {
-    this.aji.clear();
-  }
-  
-  public final byte[] nL()
-  {
-    if (this.aji.size() > 0) {
-      return (byte[])this.aji.remove(0);
-    }
-    return new byte[1024];
+    this.amK.clear();
   }
   
   public final void o(byte[] paramArrayOfByte)
   {
-    if (this.aji.size() <= 2) {
-      this.aji.add(paramArrayOfByte);
+    if (this.amK.size() <= 2) {
+      this.amK.add(paramArrayOfByte);
     }
+  }
+  
+  public final byte[] oz()
+  {
+    if (this.amK.size() > 0) {
+      return (byte[])this.amK.remove(0);
+    }
+    return new byte[1024];
   }
 }
 

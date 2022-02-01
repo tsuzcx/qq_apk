@@ -12,20 +12,20 @@ class QfileRecentDocFileTabView$2
   
   public void run()
   {
-    if (!this.this$0.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a.put(this.jdField_a_of_type_JavaLangString, new ArrayList());
+    if (!this.this$0.c.containsKey(this.a)) {
+      this.this$0.c.put(this.a, new ArrayList());
     }
-    List localList = (List)this.this$0.a.get(this.jdField_a_of_type_JavaLangString);
-    if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+    List localList = (List)this.this$0.c.get(this.a);
+    if (localList.contains(this.b) == true) {
       return;
     }
-    localList.add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localList.add(0, this.b);
     this.this$0.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

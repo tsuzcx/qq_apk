@@ -14,7 +14,7 @@
             </LinearLayout>
             <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
             <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/csp" android:background="@drawable/b2r" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-                <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ffz" />
+                <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/mmu" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ffz" />
             </LinearLayout>
         </LinearLayout>
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/b71" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" tencent:bgType="jsv" tencent:showArrow="true" />

@@ -22,17 +22,55 @@ public class ReplaceMonitorLog
   
   public String build()
   {
-    return this.packageName + "|" + this.versionCode + "|" + this.fileSize + "|" + this.channelId + "|" + this.yybAppId + "|" + this.yybApkId + "|" + this.replacePackageName + "|" + this.replaceVersionCode + "|" + this.replaceFileSize + "|" + this.replaceChannelId + "|" + this.replaceFileMd5 + "|" + this.additionalId + "|" + this.traceId + "|" + this.appType + "|" + this.replaceInterval + "|" + this.step + "|" + this.monitorType + "|" + this.isTDownloadApp + "|" + d.a(this.externalParams, "&");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.channelId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.yybAppId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.yybApkId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.replacePackageName);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.replaceVersionCode);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.replaceFileSize);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.replaceChannelId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.replaceFileMd5);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.additionalId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.traceId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.appType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.replaceInterval);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.step);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.monitorType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.isTDownloadApp);
+    localStringBuilder.append("|");
+    localStringBuilder.append(d.a(this.externalParams, "&"));
+    return localStringBuilder.toString();
   }
   
-  public int getType()
+  protected int getType()
   {
     return 5001;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.st.ReplaceMonitorLog
  * JD-Core Version:    0.7.0.1
  */

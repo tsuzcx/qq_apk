@@ -4,45 +4,42 @@ import com.tencent.luggage.bridge.a.a.a;
 import com.tencent.luggage.bridge.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.m;
-import com.tencent.mm.plugin.appbrand.m.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.appbrand.luggage.a.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
   extends com.tencent.luggage.bridge.impl.a
 {
-  private static e hoj;
+  private static e rlb;
   
   static
   {
-    AppMethodBeat.i(132090);
-    hoj = new com.tencent.mm.plugin.appbrand.luggage.a.c();
-    AppMethodBeat.o(132090);
+    AppMethodBeat.i(47471);
+    rlb = new c();
+    AppMethodBeat.o(47471);
   }
   
   public final void a(a.a parama)
   {
-    AppMethodBeat.i(132089);
-    ab.i("MicroMsg.LuggageInitDelegateWxImpl", "onInitComponent %s", new Object[] { ah.getProcessName() });
+    AppMethodBeat.i(47470);
+    Log.i("MicroMsg.LuggageInitDelegateWxImpl", "onInitComponent %s", new Object[] { MMApplicationContext.getProcessName() });
     super.a(parama);
-    AppMethodBeat.o(132089);
+    AppMethodBeat.o(47470);
   }
   
   public final void a(a.c paramc)
   {
-    AppMethodBeat.i(132088);
-    ab.i("MicroMsg.LuggageInitDelegateWxImpl", "onInitialize %s", new Object[] { ah.getProcessName() });
+    AppMethodBeat.i(47469);
+    Log.i("MicroMsg.LuggageInitDelegateWxImpl", "onInitialize %s", new Object[] { MMApplicationContext.getProcessName() });
     super.a(paramc);
-    paramc.a(e.class, hoj);
-    paramc.a(o.class, new com.tencent.mm.plugin.appbrand.luggage.c.c());
-    paramc.a(com.tencent.mm.plugin.appbrand.t.b.a.class, new m());
-    AppMethodBeat.o(132088);
+    paramc.a(e.class, rlb);
+    AppMethodBeat.o(47469);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a
  * JD-Core Version:    0.7.0.1
  */

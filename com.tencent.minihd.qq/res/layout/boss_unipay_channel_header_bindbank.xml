@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/boss_unipay_linear"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/boss_unipay_id_channel_itemlayout" style="@style/boss_unipay_channelbar.add">
+        <LinearLayout style="@style/boss_unipay_channelproduct">
+            <ImageView style="@style/boss_unipay_icon_channel_product.add" />
+            <TextView android:textColor="@drawable/boss_unipay_dr_btn_minor_color" android:id="@id/boss_unipay_id_channelName" android:text="" style="@style/boss_unipay_tx_link.add" />
+            <TextView android:id="@id/boss_unipay_id_channelDiscount" android:layout_marginLeft="5.0dip" android:text="91折" style="@style/boss_unipay_tx.discount.add" />
+        </LinearLayout>
+        <TextView android:textColor="@color/boss_unipay_c_em" android:gravity="center_vertical" android:id="@id/boss_unipay_id_channelInfo" android:text="" style="@style/boss_unipay_tx.em_small" />
+    </LinearLayout>
+</LinearLayout>

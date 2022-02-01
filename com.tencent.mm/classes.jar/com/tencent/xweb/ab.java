@@ -1,147 +1,44 @@
 package com.tencent.xweb;
 
-import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.c.l;
-import com.tencent.xweb.c.l.a;
-import com.tencent.xweb.xwalk.b;
-import java.util.HashMap;
-import org.xwalk.core.Log;
-import org.xwalk.core.XWalkEnvironment;
+import java.util.Map;
 
 public final class ab
 {
-  static b BEK;
+  private WebResourceRequest aifm;
   
-  public static void a(b paramb)
+  public ab(WebResourceRequest paramWebResourceRequest)
   {
-    try
-    {
-      BEK = paramb;
-      return;
-    }
-    finally
-    {
-      paramb = finally;
-      throw paramb;
-    }
+    this.aifm = paramWebResourceRequest;
   }
   
-  public static void clearAllWebViewCache(Context paramContext, boolean paramBoolean)
+  public final Bundle getBundle()
   {
-    AppMethodBeat.i(3957);
-    Context localContext = paramContext;
-    if (paramContext == null) {}
-    try
+    AppMethodBeat.i(212498);
+    Object localObject;
+    if ((this.aifm != null) && (this.aifm.getRequestHeaders() != null) && (!this.aifm.isForMainFrame()) && (this.aifm.getRequestHeaders().containsKey("Accept")))
     {
-      localContext = XWalkEnvironment.getApplicationContext();
-      if (localContext == null)
+      localObject = (String)this.aifm.getRequestHeaders().get("Accept");
+      if ((localObject == null) || (!((String)localObject).startsWith("text/html"))) {}
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
       {
-        AppMethodBeat.o(3957);
-        return;
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("resourceType", 1);
+        AppMethodBeat.o(212498);
+        return localObject;
       }
-      l.e(WebView.getCurWebType()).clearAllWebViewCache(localContext, paramBoolean);
-      AppMethodBeat.o(3957);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      Log.e("XWebSdk", "clearAllWebViewCache failed: " + paramContext.getMessage());
-      AppMethodBeat.o(3957);
-    }
-  }
-  
-  public static b dYE()
-  {
-    try
-    {
-      b localb = BEK;
-      return localb;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void setSharedPreferenceProvider(h paramh)
-  {
-    try
-    {
-      AppMethodBeat.i(3958);
-      XWalkEnvironment.setSharedPreferenceProvider(paramh);
-      AppMethodBeat.o(3958);
-      return;
-    }
-    finally
-    {
-      paramh = finally;
-      throw paramh;
-    }
-  }
-  
-  public static ab.a v(String paramString, Object paramObject)
-  {
-    int i = 0;
-    AppMethodBeat.i(151440);
-    ab.a locala = new ab.a();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!(paramObject instanceof Bundle))
-    {
-      localObject1 = localObject2;
-      if ((paramObject instanceof HashMap)) {
-        localObject1 = (HashMap)paramObject;
-      }
-    }
-    switch (paramString.hashCode())
-    {
-    default: 
-      i = -1;
-      switch (i)
-      {
-      default: 
-        label78:
-        locala.errorCode = -1;
-      }
-      break;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(151440);
-      return locala;
-      if (!paramString.equals("SET_INIT_ARG")) {
-        break;
-      }
-      break label78;
-      if (!paramString.equals("BASE_CONTEXT_CHANGED")) {
-        break;
-      }
-      i = 1;
-      break label78;
-      XWalkEnvironment.setXWebInitArgs((HashMap)localObject1);
-      continue;
-      try
-      {
-        paramString = l.e(WebView.d.BEq);
-        if (paramString != null)
-        {
-          paramString.excute("BASE_CONTEXT_CHANGED", new Object[] { paramObject });
-          locala.errorCode = 0;
-        }
-      }
-      catch (Exception paramString)
-      {
-        Log.e("XWebSdk", "excute context changed failed");
-      }
+      AppMethodBeat.o(212498);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.ab
  * JD-Core Version:    0.7.0.1
  */

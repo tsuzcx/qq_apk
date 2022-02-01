@@ -3,73 +3,48 @@ package com.tencent.mm.modelsfs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends SFSInputStream
+  extends SFSOutputStream
 {
-  private a fOh;
+  private a oRW;
   
-  public d(long paramLong1, long paramLong2)
+  public d(long paramLong, String paramString)
   {
-    super(paramLong1);
-    AppMethodBeat.i(93164);
-    this.fOh = new a(paramLong2);
-    AppMethodBeat.o(93164);
+    super(paramLong);
+    AppMethodBeat.i(155992);
+    this.oRW = new a(paramString);
+    AppMethodBeat.o(155992);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(93170);
+    AppMethodBeat.i(155995);
     super.close();
-    if (this.fOh != null) {
-      this.fOh.free();
+    if (this.oRW != null) {
+      this.oRW.free();
     }
-    AppMethodBeat.o(93170);
+    AppMethodBeat.o(155995);
   }
   
-  public final void mark(int paramInt)
+  protected final void finalize()
   {
-    AppMethodBeat.i(93165);
-    super.mark(paramInt);
-    this.fOh.ajg();
-    AppMethodBeat.o(93165);
+    AppMethodBeat.i(155996);
+    super.finalize();
+    AppMethodBeat.o(155996);
   }
   
-  public final int read()
+  public final void write(int paramInt)
   {
-    AppMethodBeat.i(93167);
-    int i = super.read();
-    AppMethodBeat.o(93167);
-    return i;
+    AppMethodBeat.i(155993);
+    super.write(paramInt);
+    AppMethodBeat.o(155993);
   }
   
-  public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(93168);
-    paramInt1 = super.read(paramArrayOfByte, paramInt1, paramInt2);
-    if (paramInt1 < 0)
-    {
-      AppMethodBeat.o(93168);
-      return paramInt1;
-    }
-    this.fOh.y(paramArrayOfByte, paramInt2);
-    AppMethodBeat.o(93168);
-    return paramInt1;
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(93166);
-    super.reset();
-    this.fOh.reset();
-    AppMethodBeat.o(93166);
-  }
-  
-  public final long skip(long paramLong)
-  {
-    AppMethodBeat.i(93169);
-    long l = super.skip(paramLong);
-    this.fOh.seek(paramLong);
-    AppMethodBeat.o(93169);
-    return l;
+    AppMethodBeat.i(155994);
+    this.oRW.A(paramArrayOfByte, paramInt2);
+    super.write(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(155994);
   }
 }
 

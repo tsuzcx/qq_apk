@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ehq" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:id="@id/fkn" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/buy" />
+    <Button android:id="@id/emn" android:visibility="gone" style="@style/a6t" />
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/h36" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -4,21 +4,21 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import photo_share_struct.uin_nick_info;
 
 public final class face_show_info
   extends JceStruct
 {
   static ArrayList<String> cache_groupids;
-  static uin_nick_info cache_pic_host;
-  static int cache_status = 0;
-  public ArrayList<String> groupids;
-  public uin_nick_info pic_host;
+  static uin_nick_info cache_pic_host = new uin_nick_info();
+  static int cache_status;
+  public ArrayList<String> groupids = null;
+  public uin_nick_info pic_host = null;
   public int status = 0;
   
   static
   {
-    cache_pic_host = new uin_nick_info();
     cache_groupids = new ArrayList();
     cache_groupids.add("");
   }
@@ -42,17 +42,19 @@ public final class face_show_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.status, 0);
-    if (this.pic_host != null) {
-      paramJceOutputStream.write(this.pic_host, 1);
+    Object localObject = this.pic_host;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.groupids != null) {
-      paramJceOutputStream.write(this.groupids, 2);
+    localObject = this.groupids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.face_show_info
  * JD-Core Version:    0.7.0.1
  */

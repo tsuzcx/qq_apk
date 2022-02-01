@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.profile;
 
-import awqs;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.api.IQvipSpecialSoundManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.util.VasUtil;
 
-public class ProfileCardCheckUpdate$1
+class ProfileCardCheckUpdate$1
   implements Runnable
 {
-  public ProfileCardCheckUpdate$1(awqs paramawqs) {}
+  ProfileCardCheckUpdate$1(ProfileCardCheckUpdate paramProfileCardCheckUpdate) {}
   
   public void run()
   {
@@ -17,15 +17,15 @@ public class ProfileCardCheckUpdate$1
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      localObject = new QvipSpecialSoundManager(BaseApplicationImpl.getContext(), (AppInterface)localObject);
-      ((QvipSpecialSoundManager)localObject).a();
-      ((QvipSpecialSoundManager)localObject).b();
+      localObject = VasUtil.a().getSpecialSoundManager();
+      ((IQvipSpecialSoundManager)localObject).updateSpecialSoundConfig();
+      ((IQvipSpecialSoundManager)localObject).parseSpecialSoundConfigFile();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardCheckUpdate.1
  * JD-Core Version:    0.7.0.1
  */

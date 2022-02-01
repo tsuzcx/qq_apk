@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
-import alrk;
 import android.text.TextUtils;
 import android.util.Pair;
-import asep;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
 
-public class ForwardTroopMemberControllerForMiniPie$1
+class ForwardTroopMemberControllerForMiniPie$1
   implements Runnable
 {
-  public ForwardTroopMemberControllerForMiniPie$1(asep paramasep, String paramString) {}
+  ForwardTroopMemberControllerForMiniPie$1(ForwardTroopMemberControllerForMiniPie paramForwardTroopMemberControllerForMiniPie, String paramString) {}
   
   public void run()
   {
-    Object localObject1 = ((alrk)asep.a(this.this$0).getManager(53)).a(this.a);
+    Object localObject1 = ((DiscussionManager)ForwardTroopMemberControllerForMiniPie.a(this.this$0).getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(this.a);
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
@@ -45,13 +45,16 @@ public class ForwardTroopMemberControllerForMiniPie$1
         }
       }
     }
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "loadDiscussionMember discussion mem list size is: " + localArrayList.size());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("loadDiscussionMember discussion mem list size is: ");
+    ((StringBuilder)localObject1).append(localArrayList.size());
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, ((StringBuilder)localObject1).toString());
     ThreadManager.getUIHandler().post(new ForwardTroopMemberControllerForMiniPie.1.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
+<LinearLayout style="@style/gq"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b6r" android:background="@drawable/vw" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b6s" android:layout_width="wrap_content" android:layout_height="@dimen/n9" android:maxWidth="240.0dip" android:singleLine="true" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b6t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/n9" android:singleLine="true" />
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:gravity="start|center" android:layout_gravity="start|center" android:id="@id/b47" android:background="@drawable/lu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|left" android:id="@id/g4x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/icons_outlined_location" />
+            <com.tencent.mm.ui.widget.MMTextView android:id="@id/g4w" android:layout_marginRight="5.0dip" android:maxWidth="180.0dip" style="@style/hc" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

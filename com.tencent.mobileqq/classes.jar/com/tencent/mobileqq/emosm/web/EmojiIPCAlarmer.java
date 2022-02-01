@@ -2,22 +2,21 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import appu;
 
 public class EmojiIPCAlarmer
 {
-  private volatile Handler jdField_a_of_type_AndroidOsHandler;
-  appu jdField_a_of_type_Appu;
+  EmojiIPCAlarmer.TimeoutObserver a;
+  private volatile Handler b;
   
-  public EmojiIPCAlarmer(appu paramappu)
+  public EmojiIPCAlarmer(EmojiIPCAlarmer.TimeoutObserver paramTimeoutObserver)
   {
-    this.jdField_a_of_type_Appu = paramappu;
+    this.a = paramTimeoutObserver;
   }
   
   public Runnable a(int paramInt, long paramLong)
   {
     EmojiIPCAlarmer.TimeoutTaskWrapper localTimeoutTaskWrapper = new EmojiIPCAlarmer.TimeoutTaskWrapper(this, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localTimeoutTaskWrapper, paramLong);
+    this.b.postDelayed(localTimeoutTaskWrapper, paramLong);
     return localTimeoutTaskWrapper;
   }
   
@@ -25,13 +24,13 @@ public class EmojiIPCAlarmer
   {
     HandlerThread localHandlerThread = new HandlerThread("EmojiIPCTimeoutChecker", 5);
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.b = new Handler(localHandlerThread.getLooper());
   }
   
   public void a(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+      this.b.removeCallbacks(paramRunnable);
     }
   }
 }

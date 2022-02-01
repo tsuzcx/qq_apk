@@ -3,23 +3,19 @@ package com.google.android.gms.auth.api.proxy;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepForSdkWithMembers;
+import android.util.Patterns;
+import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@KeepForSdkWithMembers
-@SafeParcelable.Class(creator="ProxyRequestCreator")
 public class ProxyRequest
   extends AbstractSafeParcelable
 {
@@ -34,22 +30,16 @@ public class ProxyRequest
   public static final int HTTP_METHOD_TRACE;
   public static final int LAST_CODE;
   public static final int VERSION_CODE = 2;
-  @SafeParcelable.Field(id=4)
   public final byte[] body;
-  @SafeParcelable.Field(id=2)
   public final int httpMethod;
-  @SafeParcelable.Field(id=3)
   public final long timeoutMillis;
-  @SafeParcelable.Field(id=1)
   public final String url;
-  @SafeParcelable.VersionField(id=1000)
   private final int versionCode;
-  @SafeParcelable.Field(id=5)
   private Bundle zzdw;
   
   static
   {
-    AppMethodBeat.i(77043);
+    AppMethodBeat.i(10702);
     CREATOR = new zzd();
     HTTP_METHOD_GET = 0;
     HTTP_METHOD_POST = 1;
@@ -60,11 +50,10 @@ public class ProxyRequest
     HTTP_METHOD_TRACE = 6;
     HTTP_METHOD_PATCH = 7;
     LAST_CODE = 7;
-    AppMethodBeat.o(77043);
+    AppMethodBeat.o(10702);
   }
   
-  @SafeParcelable.Constructor
-  ProxyRequest(@SafeParcelable.Param(id=1000) int paramInt1, @SafeParcelable.Param(id=1) String paramString, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) long paramLong, @SafeParcelable.Param(id=4) byte[] paramArrayOfByte, @SafeParcelable.Param(id=5) Bundle paramBundle)
+  ProxyRequest(int paramInt1, String paramString, int paramInt2, long paramLong, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     this.versionCode = paramInt1;
     this.url = paramString;
@@ -76,7 +65,7 @@ public class ProxyRequest
   
   public Map<String, String> getHeaderMap()
   {
-    AppMethodBeat.i(77040);
+    AppMethodBeat.i(10699);
     Object localObject = new LinkedHashMap(this.zzdw.size());
     Iterator localIterator = this.zzdw.keySet().iterator();
     while (localIterator.hasNext())
@@ -85,23 +74,23 @@ public class ProxyRequest
       ((Map)localObject).put(str, this.zzdw.getString(str));
     }
     localObject = Collections.unmodifiableMap((Map)localObject);
-    AppMethodBeat.o(77040);
+    AppMethodBeat.o(10699);
     return localObject;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(77041);
+    AppMethodBeat.i(10700);
     String str = this.url;
     int i = this.httpMethod;
     str = String.valueOf(str).length() + 42 + "ProxyRequest[ url: " + str + ", method: " + i + " ]";
-    AppMethodBeat.o(77041);
+    AppMethodBeat.o(10700);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(77042);
+    AppMethodBeat.i(10701);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 1, this.url, false);
     SafeParcelWriter.writeInt(paramParcel, 2, this.httpMethod);
@@ -110,7 +99,92 @@ public class ProxyRequest
     SafeParcelWriter.writeBundle(paramParcel, 5, this.zzdw, false);
     SafeParcelWriter.writeInt(paramParcel, 1000, this.versionCode);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(77042);
+    AppMethodBeat.o(10701);
+  }
+  
+  public static class Builder
+  {
+    private String zzdx;
+    private int zzdy;
+    private long zzdz;
+    private byte[] zzea;
+    private Bundle zzeb;
+    
+    public Builder(String paramString)
+    {
+      AppMethodBeat.i(10694);
+      this.zzdy = ProxyRequest.HTTP_METHOD_GET;
+      this.zzdz = 3000L;
+      this.zzea = null;
+      this.zzeb = new Bundle();
+      Preconditions.checkNotEmpty(paramString);
+      if (Patterns.WEB_URL.matcher(paramString).matches())
+      {
+        this.zzdx = paramString;
+        AppMethodBeat.o(10694);
+        return;
+      }
+      paramString = new IllegalArgumentException(String.valueOf(paramString).length() + 51 + "The supplied url [ " + paramString + "] is not match Patterns.WEB_URL!");
+      AppMethodBeat.o(10694);
+      throw paramString;
+    }
+    
+    public ProxyRequest build()
+    {
+      AppMethodBeat.i(10698);
+      if (this.zzea == null) {
+        this.zzea = new byte[0];
+      }
+      ProxyRequest localProxyRequest = new ProxyRequest(2, this.zzdx, this.zzdy, this.zzdz, this.zzea, this.zzeb);
+      AppMethodBeat.o(10698);
+      return localProxyRequest;
+    }
+    
+    public Builder putHeader(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(10697);
+      Preconditions.checkNotEmpty(paramString1, "Header name cannot be null or empty!");
+      Bundle localBundle = this.zzeb;
+      String str = paramString2;
+      if (paramString2 == null) {
+        str = "";
+      }
+      localBundle.putString(paramString1, str);
+      AppMethodBeat.o(10697);
+      return this;
+    }
+    
+    public Builder setBody(byte[] paramArrayOfByte)
+    {
+      this.zzea = paramArrayOfByte;
+      return this;
+    }
+    
+    public Builder setHttpMethod(int paramInt)
+    {
+      AppMethodBeat.i(10695);
+      if ((paramInt >= 0) && (paramInt <= ProxyRequest.LAST_CODE)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        Preconditions.checkArgument(bool, "Unrecognized http method code.");
+        this.zzdy = paramInt;
+        AppMethodBeat.o(10695);
+        return this;
+      }
+    }
+    
+    public Builder setTimeoutMillis(long paramLong)
+    {
+      AppMethodBeat.i(10696);
+      if (paramLong >= 0L) {}
+      for (boolean bool = true;; bool = false)
+      {
+        Preconditions.checkArgument(bool, "The specified timeout must be non-negative.");
+        this.zzdz = paramLong;
+        AppMethodBeat.o(10696);
+        return this;
+      }
+    }
   }
 }
 

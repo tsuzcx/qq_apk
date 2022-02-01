@@ -15,16 +15,13 @@ public class RGBEffect
   
   protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (this.progress <= 1.01F) {
-      this.progress += 0.03F;
-    }
-    for (;;)
+    float f = this.progress;
+    if (f <= 1.01F)
     {
-      GLES20.glUniform2f(this.maxOffsetHandle, 0.05F, 0.0F);
-      TAVGLUtils.checkEglError("glUniform2f maxOffsetHandle");
-      GLES20.glUniform1f(this.progressHandle, this.progress);
-      TAVGLUtils.checkEglError("glUniform1f progressHandle");
-      return;
+      this.progress = (f + 0.03F);
+    }
+    else
+    {
       this.delayTime += 0.03F;
       if (this.delayTime > 0.3F)
       {
@@ -32,6 +29,10 @@ public class RGBEffect
         this.delayTime = 0.0F;
       }
     }
+    GLES20.glUniform2f(this.maxOffsetHandle, 0.05F, 0.0F);
+    TAVGLUtils.checkEglError("glUniform2f maxOffsetHandle");
+    GLES20.glUniform1f(this.progressHandle, this.progress);
+    TAVGLUtils.checkEglError("glUniform1f progressHandle");
   }
   
   public RGBEffect clone()
@@ -58,7 +59,7 @@ public class RGBEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.effects.RGBEffect
  * JD-Core Version:    0.7.0.1
  */

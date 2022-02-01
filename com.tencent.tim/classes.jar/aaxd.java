@@ -1,0 +1,93 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame.2.1;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aaxd
+  implements View.OnClickListener
+{
+  public aaxd(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  
+  public void onClick(View paramView)
+  {
+    QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick");
+    aayg.e locale = (aayg.e)paramView.getTag();
+    Object localObject;
+    boolean bool;
+    if ((locale != null) && (locale.checkBox != null) && (locale.item != null))
+    {
+      localObject = "";
+      if (!(locale.item instanceof Friends)) {
+        break label263;
+      }
+      localObject = ((Friends)locale.item).getFriendNickWithAlias();
+      if (locale.checkBox.isEnabled())
+      {
+        if (!locale.uin.startsWith("+")) {
+          break label339;
+        }
+        bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(locale.uin, (String)localObject, 4, "-1");
+        label108:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick = " + bool);
+        }
+        if (locale.groupId == 1007L) {
+          this.a.jdField_a_of_type_Aozi.dYc();
+        }
+        locale.checkBox.setChecked(bool);
+        if (AppSetting.enableTalkBack)
+        {
+          if (!locale.checkBox.isChecked()) {
+            break label362;
+          }
+          paramView.setContentDescription(locale.rc.getText().toString() + acfp.m(2131706651));
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.notifyDataSetChanged();
+      if (AppSetting.enableTalkBack) {
+        paramView.postDelayed(new FriendTeamListInnerFrame.2.1(this, paramView), 2000L);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label263:
+        if ((locale.item instanceof PhoneContact))
+        {
+          localObject = ((PhoneContact)locale.item).name;
+          break;
+        }
+        if (!(locale.item instanceof RelationTroopEntity)) {
+          break;
+        }
+        localObject = (RelationTroopEntity)locale.item;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.Bf(((RelationTroopEntity)localObject).troopInfo.troopuin);
+        this.a.jdField_a_of_type_Aozi.dYe();
+      }
+      label339:
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(locale.uin, (String)localObject, 0, "-1");
+      break label108;
+      label362:
+      paramView.setContentDescription(locale.rc.getText().toString() + acfp.m(2131706650));
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes2.jar
+ * Qualified Name:     aaxd
+ * JD-Core Version:    0.7.0.1
+ */

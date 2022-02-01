@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/jtn" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView android:id="@id/jto" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="4.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/jtp" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="12.0dip" />
+    <ImageView android:id="@id/jtr" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" app:layout_constraintBottom_toTopOf="@id/jtp" app:layout_constraintHeight_default="k02" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/jtq" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/shortvideo_play_btn" app:layout_constraintBottom_toBottomOf="@id/jtr" app:layout_constraintEnd_toEndOf="@id/jtr" app:layout_constraintStart_toStartOf="@id/jtr" app:layout_constraintTop_toTopOf="@id/jtr" />
+</androidx.constraintlayout.widget.ConstraintLayout>

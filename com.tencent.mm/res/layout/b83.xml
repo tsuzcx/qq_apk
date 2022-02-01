@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/vf">
-        <TextView android:textColor="@color/rf" android:id="@id/fcz" android:layout_marginBottom="@dimen/dp" android:text="@string/fxp" style="@style/vs" />
-        <LinearLayout style="@style/w8">
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/fft" android:clickable="false" wallet:titleText="@string/fxs" wallet:contentHint="@string/fxt" wallet:contentTextColor="@color/s4" wallet:contentFocusable="false" style="@style/qh" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/dr4" android:minHeight="45.0dip" wallet:titleText="@string/fxm" wallet:contentHint="@string/fxr" style="@style/vz" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fgz" wallet:titleText="@string/fj7" wallet:contentHint="@string/fj6" style="@style/gy" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fh0" wallet:titleText="@string/fj1" wallet:contentHint="@string/fj0" style="@style/gy" />
-        </LinearLayout>
-        <Button android:id="@id/b02" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/so" style="@style/w5" />
-        <LinearLayout android:orientation="horizontal" android:layout_marginTop="8.0dip" android:layout_marginBottom="38.0dip" style="@style/mj">
-            <CheckBox android:textSize="@dimen/ko" android:textColor="@color/h6" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/fhd" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/nw" android:checked="true" android:minHeight="22.0dip" android:text="@string/fjm" style="@style/o1" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/a92" android:ellipsize="marquee" android:gravity="center|left" android:id="@id/fpe" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:text="@string/fjl" android:singleLine="true" />
-        </LinearLayout>
-        <TextView android:layout_gravity="bottom" android:id="@id/dr_" android:paddingTop="5.0dip" android:layout_height="fill_parent" android:layout_margin="0.0dip" style="@style/wc" />
+<RelativeLayout android:id="@id/fzu" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fzp" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/fzq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/fzp">
+        <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fzr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fzt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1e" />
 </RelativeLayout>

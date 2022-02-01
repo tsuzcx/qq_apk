@@ -25,10 +25,13 @@ public class TextureDataPipe
   
   public void getTransformMatrix(float[] paramArrayOfFloat)
   {
-    if (paramArrayOfFloat.length != 16) {
-      throw new IllegalArgumentException();
+    if (paramArrayOfFloat.length == 16)
+    {
+      float[] arrayOfFloat = sMtxIdentity;
+      System.arraycopy(arrayOfFloat, 0, paramArrayOfFloat, 0, arrayOfFloat.length);
+      return;
     }
-    System.arraycopy(sMtxIdentity, 0, paramArrayOfFloat, 0, sMtxIdentity.length);
+    throw new IllegalArgumentException();
   }
   
   public boolean isBusy()
@@ -63,7 +66,7 @@ public class TextureDataPipe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.gles.TextureDataPipe
  * JD-Core Version:    0.7.0.1
  */

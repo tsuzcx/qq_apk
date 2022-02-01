@@ -256,7 +256,10 @@ public class PublicAccountBrowser
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
-      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131231681);
+      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131231680);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
+      localLinearLayout.setOnClickListener(this);
+      localLinearLayout = (LinearLayout)localView.findViewById(2131231681);
       this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
       localLinearLayout.setOnClickListener(this);
       localLinearLayout = (LinearLayout)localView.findViewById(2131231682);
@@ -265,10 +268,7 @@ public class PublicAccountBrowser
       localLinearLayout = (LinearLayout)localView.findViewById(2131231683);
       this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
       localLinearLayout.setOnClickListener(this);
-      localLinearLayout = (LinearLayout)localView.findViewById(2131231684);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localLinearLayout);
-      localLinearLayout.setOnClickListener(this);
-      ((LinearLayout)localView.findViewById(2131231685)).setOnClickListener(this);
+      ((LinearLayout)localView.findViewById(2131231684)).setOnClickListener(this);
     }
     if (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
       this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, 83, 0, 0);
@@ -461,16 +461,16 @@ public class PublicAccountBrowser
     default: 
       super.onClick(paramView);
       return;
-    case 2131231685: 
+    case 2131231684: 
       this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
       return;
-    case 2131231681: 
+    case 2131231680: 
       b(0);
       return;
-    case 2131231682: 
+    case 2131231681: 
       b(1);
       return;
-    case 2131231683: 
+    case 2131231682: 
       b(2);
       return;
     }

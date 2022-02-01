@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="422.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.vas.qid.QidPagView android:id="@id/pha" android:layout_width="362.0dip" android:layout_height="532.0dip" android:layout_marginTop="-110.0dip" />
+</LinearLayout>

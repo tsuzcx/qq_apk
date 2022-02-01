@@ -30,17 +30,22 @@ final class VideoTagPayloadReader
     int j = paramParsableByteArray.readUnsignedByte();
     int i = j >> 4 & 0xF;
     j &= 0xF;
-    if (j != 7) {
-      throw new TagPayloadReader.UnsupportedFormatException("Video format not supported: " + j);
+    if (j == 7)
+    {
+      this.frameType = i;
+      return i != 5;
     }
-    this.frameType = i;
-    return i != 5;
+    paramParsableByteArray = new StringBuilder();
+    paramParsableByteArray.append("Video format not supported: ");
+    paramParsableByteArray.append(j);
+    throw new TagPayloadReader.UnsupportedFormatException(paramParsableByteArray.toString());
   }
   
   protected void parsePayload(ParsableByteArray paramParsableByteArray, long paramLong)
   {
     int i = paramParsableByteArray.readUnsignedByte();
     long l = paramParsableByteArray.readInt24();
+    Object localObject;
     if ((i == 0) && (!this.hasOutputFormat))
     {
       localObject = new ParsableByteArray(new byte[paramParsableByteArray.bytesLeft()]);
@@ -50,31 +55,32 @@ final class VideoTagPayloadReader
       paramParsableByteArray = Format.createVideoSampleFormat(null, "video/avc", null, -1, -1, paramParsableByteArray.width, paramParsableByteArray.height, -1.0F, paramParsableByteArray.initializationData, -1, paramParsableByteArray.pixelWidthAspectRatio, null);
       this.output.format(paramParsableByteArray);
       this.hasOutputFormat = true;
-    }
-    while ((i != 1) || (!this.hasOutputFormat)) {
       return;
     }
-    Object localObject = this.nalLength.data;
-    localObject[0] = 0;
-    localObject[1] = 0;
-    localObject[2] = 0;
-    int j = this.nalUnitLengthFieldLength;
-    int k;
-    for (i = 0; paramParsableByteArray.bytesLeft() > 0; i = i + 4 + k)
+    if ((i == 1) && (this.hasOutputFormat))
     {
-      paramParsableByteArray.readBytes(this.nalLength.data, 4 - j, this.nalUnitLengthFieldLength);
-      this.nalLength.setPosition(0);
-      k = this.nalLength.readUnsignedIntToInt();
-      this.nalStartCode.setPosition(0);
-      this.output.sampleData(this.nalStartCode, 4);
-      this.output.sampleData(paramParsableByteArray, k);
-    }
-    paramParsableByteArray = this.output;
-    if (this.frameType == 1) {}
-    for (j = 1;; j = 0)
-    {
-      paramParsableByteArray.sampleMetadata(l * 1000L + paramLong, j, i, 0, null);
-      return;
+      localObject = this.nalLength.data;
+      localObject[0] = 0;
+      localObject[1] = 0;
+      localObject[2] = 0;
+      int j = this.nalUnitLengthFieldLength;
+      int k;
+      for (i = 0; paramParsableByteArray.bytesLeft() > 0; i = i + 4 + k)
+      {
+        paramParsableByteArray.readBytes(this.nalLength.data, 4 - j, this.nalUnitLengthFieldLength);
+        this.nalLength.setPosition(0);
+        k = this.nalLength.readUnsignedIntToInt();
+        this.nalStartCode.setPosition(0);
+        this.output.sampleData(this.nalStartCode, 4);
+        this.output.sampleData(paramParsableByteArray, k);
+      }
+      paramParsableByteArray = this.output;
+      if (this.frameType == 1) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      paramParsableByteArray.sampleMetadata(paramLong + l * 1000L, j, i, 0, null);
     }
   }
   
@@ -82,7 +88,7 @@ final class VideoTagPayloadReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.flv.VideoTagPayloadReader
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,67 @@ import java.nio.ByteOrder;
 final class j
   implements d
 {
-  private int awU = -1;
-  private int azR = -1;
-  private boolean azU;
-  private ByteBuffer azt = ayo;
-  private ByteBuffer buffer = ayo;
+  private ByteBuffer buffer = cIl;
+  private int cJL = -1;
+  private boolean cJO;
+  private int channelCount = -1;
   private int encoding = 0;
+  private ByteBuffer outputBuffer = cIl;
   
-  public final void c(ByteBuffer paramByteBuffer)
+  public final boolean C(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(94720);
+    AppMethodBeat.i(91830);
+    if ((paramInt3 != 3) && (paramInt3 != 2) && (paramInt3 != -2147483648) && (paramInt3 != 1073741824))
+    {
+      d.a locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(91830);
+      throw locala;
+    }
+    if ((this.cJL == paramInt1) && (this.channelCount == paramInt2) && (this.encoding == paramInt3))
+    {
+      AppMethodBeat.o(91830);
+      return false;
+    }
+    this.cJL = paramInt1;
+    this.channelCount = paramInt2;
+    this.encoding = paramInt3;
+    if (paramInt3 == 2) {
+      this.buffer = cIl;
+    }
+    AppMethodBeat.o(91830);
+    return true;
+  }
+  
+  public final boolean QU()
+  {
+    return (this.cJO) && (this.outputBuffer == cIl);
+  }
+  
+  public final int Rb()
+  {
+    return this.channelCount;
+  }
+  
+  public final int Rc()
+  {
+    return 2;
+  }
+  
+  public final void Rd()
+  {
+    this.cJO = true;
+  }
+  
+  public final ByteBuffer Re()
+  {
+    ByteBuffer localByteBuffer = this.outputBuffer;
+    this.outputBuffer = cIl;
+    return localByteBuffer;
+  }
+  
+  public final void d(ByteBuffer paramByteBuffer)
+  {
+    AppMethodBeat.i(91831);
     int i = paramByteBuffer.position();
     int m = paramByteBuffer.limit();
     int j = m - i;
@@ -24,7 +75,7 @@ final class j
     {
     default: 
       paramByteBuffer = new IllegalStateException();
-      AppMethodBeat.o(94720);
+      AppMethodBeat.o(91831);
       throw paramByteBuffer;
     case 3: 
       j *= 2;
@@ -43,7 +94,7 @@ final class j
       {
       default: 
         paramByteBuffer = new IllegalStateException();
-        AppMethodBeat.o(94720);
+        AppMethodBeat.o(91831);
         throw paramByteBuffer;
         j = j / 3 * 2;
         break label79;
@@ -77,8 +128,8 @@ final class j
       {
         paramByteBuffer.position(paramByteBuffer.limit());
         this.buffer.flip();
-        this.azt = this.buffer;
-        AppMethodBeat.o(94720);
+        this.outputBuffer = this.buffer;
+        AppMethodBeat.o(91831);
         return;
       }
     }
@@ -86,8 +137,8 @@ final class j
   
   public final void flush()
   {
-    this.azt = ayo;
-    this.azU = false;
+    this.outputBuffer = cIl;
+    this.cJO = false;
   }
   
   public final boolean isActive()
@@ -95,66 +146,20 @@ final class j
     return (this.encoding != 0) && (this.encoding != 2);
   }
   
-  public final boolean nd()
-  {
-    return (this.azU) && (this.azt == ayo);
-  }
-  
-  public final int ni()
-  {
-    return this.awU;
-  }
-  
-  public final void nj()
-  {
-    this.azU = true;
-  }
-  
-  public final ByteBuffer nk()
-  {
-    ByteBuffer localByteBuffer = this.azt;
-    this.azt = ayo;
-    return localByteBuffer;
-  }
-  
-  public final boolean q(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(94719);
-    if ((paramInt3 != 3) && (paramInt3 != 2) && (paramInt3 != -2147483648) && (paramInt3 != 1073741824))
-    {
-      d.a locala = new d.a(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(94719);
-      throw locala;
-    }
-    if ((this.azR == paramInt1) && (this.awU == paramInt2) && (this.encoding == paramInt3))
-    {
-      AppMethodBeat.o(94719);
-      return false;
-    }
-    this.azR = paramInt1;
-    this.awU = paramInt2;
-    this.encoding = paramInt3;
-    if (paramInt3 == 2) {
-      this.buffer = ayo;
-    }
-    AppMethodBeat.o(94719);
-    return true;
-  }
-  
   public final void reset()
   {
-    AppMethodBeat.i(94721);
+    AppMethodBeat.i(91832);
     flush();
-    this.buffer = ayo;
-    this.azR = -1;
-    this.awU = -1;
+    this.buffer = cIl;
+    this.cJL = -1;
+    this.channelCount = -1;
     this.encoding = 0;
-    AppMethodBeat.o(94721);
+    AppMethodBeat.o(91832);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import adjr;
-import adjs;
-import adjt;
-import adju;
-import adjv;
-import adjw;
-import adjx;
-import adjy;
-import adjz;
-import adka;
-import adkb;
-import adkc;
-import adkd;
-import adke;
-import adkf;
-import adkg;
-import adkh;
-import adki;
-import adkj;
-import adkk;
-import adkl;
-import adkn;
-import adko;
-import adkp;
-import adkq;
-import adkr;
-import adks;
-import adkt;
-import adku;
-import adkw;
-import adkx;
-import adky;
-import adkz;
-import adla;
-import alqf;
-import alud;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Application;
@@ -44,7 +8,9 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,876 +19,1123 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.Html;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ForegroundColorSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import auxp;
-import awia;
-import azqs;
-import badd;
-import bdgm;
-import bdix;
-import bdjz;
-import bdne;
-import beas;
-import bety;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.ims.signature.SignatureKickData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.security.FrozenNotifyDlgHelper;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.qqsec.api.FrozenKickUtils;
+import com.tencent.mobileqq.qqsec.api.ISecControllerInterface;
+import com.tencent.mobileqq.qqsec.api.QQSecBlockInjectUtil;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.vip.LhHelper;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import mqq.app.AppRuntime;
 import mqq.app.Constants.LogoutReason;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 import org.json.JSONObject;
 
+@RoutePage(desc="通知类弹框activity", path="/base/notification")
 public class NotificationActivity
-  extends BaseActivity
+  extends QBaseActivity
   implements Handler.Callback
 {
-  public static NotificationActivity a;
-  public static final ArrayList<String> a;
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<TITLE=\"([^>]+)\",URL=\"([^<]+)\">");
-  private static final String jdField_h_of_type_JavaLangString;
-  private int jdField_a_of_type_Int;
-  private adkz jdField_a_of_type_Adkz = new adkz(this);
-  private adla jdField_a_of_type_Adla = new adla(this, 1);
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adks(this);
-  private beas jdField_a_of_type_Beas;
-  private bety jdField_a_of_type_Bety;
-  String jdField_a_of_type_JavaLangString = "http://fwd.z.qq.com:8080/forward.jsp?bid=906";
-  private Constants.LogoutReason jdField_a_of_type_MqqAppConstants$LogoutReason = Constants.LogoutReason.tips;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private adla jdField_b_of_type_Adla = new adla(this, 2);
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private final int jdField_c_of_type_Int = 1;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
-  private final int jdField_e_of_type_Int = 1;
-  private String jdField_e_of_type_JavaLangString;
-  private final int jdField_f_of_type_Int = 2;
-  private String jdField_f_of_type_JavaLangString;
-  private final int jdField_g_of_type_Int = 3;
-  private final String jdField_g_of_type_JavaLangString = "lhPaySn";
-  private final int jdField_h_of_type_Int = 4;
-  private final int i = 5;
-  private final int j = 6;
+  private static final String DEFAULT_NIGHT_COLOR = "#FFFFFF";
+  public static final int DIALOG_ANOTHER_TERMINAL_LOGIN = 5;
+  public static final int DIALOG_IDENTITY_EXPIRED = 1;
+  public static final int DIALOG_SDK_SUSPENDED = 4;
+  public static final int DIALOG_SECURITY_SCAN = 7;
+  public static final int DIALOG_SSO_TIPS = 6;
+  public static final String DLG_CONTENT = "dlg_content";
+  public static final String DLG_LBUTTON = "dlg_lbutton";
+  public static final String DLG_RBUTTON = "dlg_rbutton";
+  public static final String DLG_TITLE = "dlg_title";
+  public static final String DLG_URL = "dlg_url";
+  public static final String KEY_ALIAS = "alias";
+  public static final String KEY_ERROR = "error";
+  public static final String KEY_IS_FROM_LH_LOGIN_VERIFY_CODE = "lh_is_from_login_verify_code";
+  public static final String KEY_LAST_ERROR = "lastError";
+  private static final int LOGIN_FAILED_CODE = 40;
+  public static final String PASSWORD = "password";
+  public static final int PAYRESULT_SUCC = 0;
+  public static final String REASON = "reason";
+  private static final String SEC_TAG = "sec_sig_tag";
+  private static final String TAG = "NotificationActivity";
+  private static final int TIPS_SENEDES_ID_DEFAULT = 0;
+  public static NotificationActivity instance = null;
+  private static ISecControllerInterface sSecControllerInjectInterface;
+  private final int MSG_CARD_STATUS_ERROR = 3;
+  private final int MSG_CARD_STATUS_NO = 2;
+  private final int MSG_CARD_STATUS_OK = 1;
+  private final int MSG_LH_RECEIVE_FAIL = 6;
+  private final int MSG_LH_RECEIVE_START = 4;
+  private final int MSG_LH_RECEIVE_SUCCESS = 5;
+  private Dialog dialog = null;
+  private int dlgType;
+  private byte[] expiredSig;
+  private boolean isAlreadyAuthorized = false;
+  private boolean isDialogShow;
+  private LhHelper lhHelper;
+  private String loginAlias = "";
+  private int loginRet;
+  private String mErrorTitle = "";
+  private String mErrorUrl = null;
+  private int mErrorVersion = 0;
+  private String mForbidStatus = null;
+  private boolean mHandleByMiniApp = false;
+  private boolean mIsLoginWithMask;
+  private boolean mJumpLoginBackFromFund = false;
+  private QQProgressDialog mLoadingDialog;
+  private int mMiniAppScene;
+  private Constants.LogoutReason mReason = Constants.LogoutReason.tips;
+  private BroadcastReceiver mReceiver = new NotificationActivity.6(this);
+  private int mTipsScenesId;
+  private int mUnifyFrozenScene;
+  private boolean mUnifyFrozenStyle = false;
+  private String msg = null;
+  private NotificationActivity.MyClickListener myClickListener = new NotificationActivity.MyClickListener(this);
+  private NotificationActivity.MyDialogClickListener receiveClickListener = new NotificationActivity.MyDialogClickListener(this, 1);
+  private NotificationActivity.MyDialogClickListener renewalClickListener = new NotificationActivity.MyDialogClickListener(this, 2);
+  private String title = null;
+  private MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper(), this);
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(Arrays.asList(new String[] { "0X800AA2F", "0X800AA30", "0X800AA31", "0X800AA32" }));
-    jdField_h_of_type_JavaLangString = bdix.c.pattern() + "|" + bdix.d.pattern();
+    try
+    {
+      if (QQSecBlockInjectUtil.a.size() > 0)
+      {
+        sSecControllerInjectInterface = (ISecControllerInterface)((Class)QQSecBlockInjectUtil.a.get(0)).newInstance();
+        QLog.d("NotificationActivity", 1, "NotificationActivity newInstance");
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("NotificationActivity", 1, "NotificationActivity static statement: ", localException);
+    }
   }
   
-  private Dialog a()
+  private void buyoutLh()
+  {
+    int i = this.lhHelper.b();
+    int j = this.lhHelper.a();
+    if ((j != -1) && (i != -1))
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      boolean bool;
+      if (i == 2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      gotoPay((String)localObject, "mvip.p.lh.pay_over", bool, false);
+      return;
+    }
+    QQToast.makeText(this, HardCodeUtil.a(2131905454), 0).show();
+    finish();
+  }
+  
+  private void checkSetResult(int paramInt)
+  {
+    Intent localIntent = getIntent();
+    boolean bool;
+    if ((localIntent != null) && (localIntent.getBooleanExtra("lh_is_from_login_verify_code", false))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("NotificationActivity", 4, String.format(Locale.getDefault(), "checkSetResult, isFromLH: %s, resultCode: %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
+    }
+    if (bool)
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("lh_is_from_login_verify_code", true);
+      setResult(paramInt, localIntent);
+    }
+  }
+  
+  private Dialog createDialog()
   {
     AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
-    ((Window)localObject).setContentView(2131559400);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131365248);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131365247);
-    localObject = (TextView)((Window)localObject).findViewById(2131365270);
-    if ((localButton1 == null) || (localObject == null)) {
-      return null;
+    ((Window)localObject).setContentView(2131625533);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131431892);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131431891);
+    localObject = (TextView)((Window)localObject).findViewById(2131431914);
+    if ((localButton1 != null) && (localObject != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getString(2131896386));
+      localStringBuilder.append("8.8.17");
+      localStringBuilder.append(getString(2131896385));
+      ((TextView)localObject).setText(localStringBuilder.toString());
+      localButton1.setOnClickListener(new NotificationActivity.33(this));
+      localButton2.setOnClickListener(new NotificationActivity.34(this));
+      return localAlertDialog;
     }
-    ((TextView)localObject).setText(getString(2131698742) + "8.3.5" + getString(2131698741));
-    localButton1.setOnClickListener(new adkl(this));
-    localButton2.setOnClickListener(new adko(this));
-    return localAlertDialog;
+    return null;
   }
   
-  private void a(int paramInt)
+  private CharSequence getHtmlSpannedText(String paramString, boolean paramBoolean)
   {
-    QLog.i("NotificationActivity", 1, "myShowDialog: invoked.  id: " + paramInt);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_AndroidAppDialog = null;
-      switch (paramInt)
-      {
-      default: 
-        sendBroadcast(new Intent("before_account_change"));
-        a(false);
-        return;
-      }
+    Object localObject1 = paramString;
+    if (paramString == null) {
+      localObject1 = "";
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("NotificationActivity", 1, "myShowDialog: invoked.  throwable: " + localThrowable);
-        continue;
-        this.jdField_b_of_type_JavaLangString = getString(2131693470);
-        this.jdField_c_of_type_JavaLangString = getString(2131693471);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adkt(this));
-        continue;
-        TextView localTextView = new TextView(this);
-        localTextView.setLinksClickable(true);
-        localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        localTextView.setTextSize(getResources().getInteger(2131427336));
-        localTextView.setTextColor(getResources().getColor(2131165448));
-        if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals("true"))) {}
-        for (;;)
-        {
-          try
-          {
-            String str1 = getPackageName();
-            localTextView.setText(this.jdField_c_of_type_JavaLangString);
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131700016, new adku(this, str1), false);
-            paramInt = 1;
-            if (paramInt != 0) {
-              break;
-            }
-            if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-              break label438;
-            }
-            localTextView.setText(Html.fromHtml(this.jdField_c_of_type_JavaLangString));
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131692278, new adkw(this));
-          }
-          catch (Exception localException3)
-          {
-            localException3.printStackTrace();
-          }
-          paramInt = 0;
-          continue;
-          label438:
-          localTextView.setText(Html.fromHtml(getString(2131693234)));
-        }
-        try
-        {
-          this.jdField_a_of_type_AndroidAppDialog = a();
-        }
-        catch (Exception localException1)
-        {
-          a();
-        }
-        continue;
-        if (QQPlayerService.a()) {
-          sendBroadcast(new Intent("qqplayer_exit_action"));
-        }
-        auxp.a().d();
-        paramInt = 2131694953;
-        if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
-          paramInt = 2131694878;
-        }
-        localObject1 = a(this.jdField_c_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230, this.jdField_b_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131694953, null, new adkx(this));
-        if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
-          if ((getIntent() != null) && (getIntent().getBooleanExtra("isSameDevice", false)) && (!isInMultiWindow()))
-          {
-            this.jdField_a_of_type_AndroidAppDialog = null;
-            b(true);
-          }
-          else
-          {
-            ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131692833, new adjs(this));
-            localObject1 = new Intent("com.tencent.tim.kickedLogin.otherDevice");
-            ((Intent)localObject1).putExtra("kickedUin", this.app.getAccount());
-            ((Intent)localObject1).putExtra("msg", this.jdField_c_of_type_JavaLangString);
-            ((Intent)localObject1).setPackage("com.tencent.tim");
-            sendBroadcast((Intent)localObject1);
-            continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adjt(this));
-            continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adju(this));
-            continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(getString(2131694157)).setMessage(getString(2131719681)).setPositiveButton(getString(2131719683), new adjw(this)).setNegativeButton(getString(2131719680), new adjv(this));
-          }
-        }
-      }
-      if (this.jdField_b_of_type_Int != 40) {
-        break label1196;
-      }
-    }
-    azqs.a(this.app, "dc00898", "", this.jdField_d_of_type_JavaLangString, "0X800AA2F", "0X800AA2F", 0, 0, "", "", "", this.jdField_c_of_type_JavaLangString);
-    Object localObject1 = getIntent();
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_f_of_type_JavaLangString = "";
-    String str2;
-    if (localObject1 != null)
-    {
-      this.jdField_e_of_type_JavaLangString = ((Intent)localObject1).getStringExtra("errorUrl");
-      this.jdField_d_of_type_Int = ((Intent)localObject1).getIntExtra("errorver", 0);
-      if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
-      {
-        localObject1 = MiniAppSecurityUtil.getArgumentsFromURL(this.jdField_e_of_type_JavaLangString);
-        if (localObject1 != null)
-        {
-          str2 = (String)((Map)localObject1).get("forbid_token");
-          this.jdField_f_of_type_JavaLangString = ((String)((Map)localObject1).get("forbid_status"));
-          if ((!TextUtils.isEmpty(str2)) && (this.jdField_d_of_type_Int == 1))
-          {
-            MiniAppSecurityUtil.updateLoginMiniAppUin(BaseApplicationImpl.sApplication, this.jdField_d_of_type_JavaLangString);
-            MiniAppSecurityUtil.updateLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, this.jdField_d_of_type_JavaLangString, str2);
-          }
-        }
-      }
-    }
-    for (paramInt = 1;; paramInt = 0)
-    {
-      for (;;)
-      {
-        if (paramInt != 0)
-        {
-          azqs.a(this.app, "dc00898", "", "", "0X800AA15", "0X800AA15", 0, 0, "", "", this.jdField_f_of_type_JavaLangString, "");
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694164), getString(2131694163), getString(2131694165), new adjx(this), new adjy(this), new adjz(this));
-          break;
-        }
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694167), getString(2131694163), getString(2131694165), new adka(this), new adkb(this), new adkc(this));
-        break;
-        label1196:
-        switch (this.jdField_b_of_type_Int)
-        {
-        default: 
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.b(this, 230).setMessageWithUrl(this.jdField_c_of_type_JavaLangString).setTitle(getString(2131699743)).setPositiveButton(17039370, new adke(this));
-          break;
-        case 41: 
-        case 116: 
-          localObject1 = (Long)beas.a.get(this.jdField_d_of_type_JavaLangString);
-          if ((localObject1 != null) && (System.currentTimeMillis() - ((Long)localObject1).longValue() < 30000L))
-          {
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(alud.a(2131708012)).setMessage(alud.a(2131708010)).setNegativeButton(alud.a(2131708019), new adkd(this));
-            break;
-          }
-          e();
-          break;
-          Object localObject2 = getIntent().getExtras();
-          localObject1 = ((Bundle)localObject2).getString("dlg_title");
-          str2 = ((Bundle)localObject2).getString("dlg_content");
-          String str3 = ((Bundle)localObject2).getString("dlg_lbutton");
-          String str4 = ((Bundle)localObject2).getString("dlg_rbutton");
-          localObject2 = ((Bundle)localObject2).getString("dlg_url");
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new adkg(this, (String)localObject2)).setNegativeButton(str3, new adkf(this));
-          break;
-          localObject1 = getResources().getString(2131694225);
-          str2 = getResources().getString(2131694224);
-          str3 = getResources().getString(2131694221);
-          str4 = getResources().getString(2131694223);
-          Object localObject3 = getResources().getString(2131694222);
-          localObject2 = new CheckBox(this);
-          ((CheckBox)localObject2).setText((CharSequence)localObject3);
-          ((CheckBox)localObject2).setTextSize(getResources().getInteger(2131427336));
-          ((CheckBox)localObject2).setTextColor(getResources().getColor(2131165448));
-          localObject3 = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0);
-          boolean bool = ((SharedPreferences)localObject3).getBoolean("MemoryAlertAutoClear", false);
-          ((CheckBox)localObject2).setChecked(bool);
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new adki(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new adkh(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
-          break;
-          try
-          {
-            localObject3 = getIntent().getExtras();
-            localObject1 = ((Bundle)localObject3).getString("dlg_title", "");
-            str2 = ((Bundle)localObject3).getString("dlg_content", "");
-            str3 = ((Bundle)localObject3).getString("dlg_lbutton", "");
-            str4 = ((Bundle)localObject3).getString("dlg_rbutton", "");
-            localObject2 = ((Bundle)localObject3).getString("dlg_url", "");
-            paramInt = ((Bundle)localObject3).getInt("dlg_lbtnid", 0);
-            int k = ((Bundle)localObject3).getInt("dlg_rbtnid", 0);
-            localObject3 = String.format("%d", new Object[] { Integer.valueOf(((Bundle)localObject3).getInt("dlg_seccmd", 0)) });
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2);
-            if (this.jdField_a_of_type_AndroidAppDialog == null) {
-              break;
-            }
-            if (!TextUtils.isEmpty(str4)) {
-              ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new adkj(this, (String)localObject2, k, (String)localObject3));
-            }
-            if (!TextUtils.isEmpty(str3)) {
-              ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new adkk(this, paramInt, (String)localObject3));
-            }
-            azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject3, "", "", "");
-          }
-          catch (Exception localException2)
-          {
-            localException2.printStackTrace();
-          }
-        }
-      }
-      break;
-    }
+    Object localObject2 = getString(2131896962);
+    paramString = getString(2131891437);
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append(paramString);
+    ((StringBuilder)localObject3).append("。");
+    localObject3 = ((StringBuilder)localObject3).toString();
+    int i = ((String)localObject1).length() + ((String)localObject2).length();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append((String)localObject3);
+    localObject1 = new SpannableString(((StringBuilder)localObject2).toString());
+    ((SpannableString)localObject1).setSpan(new NotificationActivity.32(this, paramBoolean), i, paramString.length() + i, 33);
+    ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(-11692801), i, paramString.length() + i, 33);
+    return localObject1;
   }
   
-  private void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  private String getTargetUin(Map<String, String> paramMap)
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    if (paramMap == null) {
+      return "";
+    }
+    String str = (String)paramMap.get("uin");
+    paramMap = str;
+    if (TextUtils.isEmpty(str)) {
+      paramMap = this.loginAlias;
+    }
+    return paramMap;
+  }
+  
+  private void gotoPay(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.expiredSig == null)
     {
-      paramString1 = "http://haoma.qq.com/m/expire.html?num=" + this.jdField_d_of_type_JavaLangString;
-      paramString2 = new Intent(this, QQBrowserActivity.class);
+      paramString1 = new StringBuilder();
+      paramString1.append("https://haoma.qq.com/m/expire.html?num=");
+      paramString1.append(this.loginAlias);
+      paramString1 = paramString1.toString();
+      paramString2 = new Intent();
       paramString2.putExtra("url", paramString1);
-      startActivity(paramString2);
-      c(0);
+      RouteUtils.a(this, paramString2, "/base/browser");
+      checkSetResult(0);
       finish();
       return;
     }
-    for (;;)
-    {
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("unit", alud.a(2131708013));
-        localJSONObject.put("userId", this.jdField_d_of_type_JavaLangString);
-        localJSONObject.put("openMonth", paramString1);
-        localJSONObject.put("offerId", "1450000833");
-        localJSONObject.put("aid", paramString2);
-        localJSONObject.put("ticketValue", SecUtil.toHexString(this.jdField_a_of_type_ArrayOfByte));
-        localJSONObject.put("ticketName", "vask_27");
-        localJSONObject.put("isCanChange", paramBoolean2);
-        if (paramBoolean1)
-        {
-          localJSONObject.put("serviceCode", "CJCLUBT");
-          localJSONObject.put("serviceName", "QQ超级会员");
-          paramString1 = new Intent(this, PayBridgeActivity.class);
-          paramString2 = new Bundle();
-          paramString2.putString("json", localJSONObject.toString());
-          paramString2.putString("callbackSn", "lhPaySn");
-          paramString1.putExtras(paramString2);
-          paramString1.putExtra("payparmas_from_is_login_state", false);
-          paramString1.putExtra("pay_requestcode", 4);
-          startActivityForResult(paramString1, 1);
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        c(0);
-        finish();
-        return;
-      }
-      localJSONObject.put("serviceCode", "LTMCLUB");
-      localJSONObject.put("serviceName", "QQ会员");
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    QLog.i("NotificationActivity", 1, "showDialog: invoked.  inResume: " + paramBoolean + " isDialogShow: " + this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Boolean) {}
-    while (((!paramBoolean) && (Build.VERSION.SDK_INT >= 28)) || (this.jdField_a_of_type_AndroidAppDialog == null) || (this.jdField_a_of_type_AndroidAppDialog.isShowing()) || (isFinishing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
     try
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_Boolean = true;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unit", HardCodeUtil.a(2131905444));
+      localJSONObject.put("userId", this.loginAlias);
+      localJSONObject.put("openMonth", paramString1);
+      localJSONObject.put("offerId", "1450000833");
+      localJSONObject.put("aid", paramString2);
+      localJSONObject.put("ticketValue", SecUtil.toHexString(this.expiredSig));
+      localJSONObject.put("ticketName", "vask_27");
+      localJSONObject.put("isCanChange", paramBoolean2);
+      if (paramBoolean1)
+      {
+        localJSONObject.put("serviceCode", "CJCLUBT");
+        localJSONObject.put("serviceName", "QQ超级会员");
+      }
+      else
+      {
+        localJSONObject.put("serviceCode", "LTMCLUB");
+        localJSONObject.put("serviceName", "QQ会员");
+      }
+      sSecControllerInjectInterface.a(this, localJSONObject);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramString1)
     {
-      for (;;)
-      {
-        QLog.i("NotificationActivity", 1, "showDialog: invoked.  t: " + localThrowable);
-      }
+      paramString1.printStackTrace();
+      checkSetResult(0);
+      finish();
     }
   }
   
-  private void b()
+  private void handleFrozenStyle(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      handleUnifyFrozenStyle();
+    } else {
+      handleUnUnifyFrozenStyle();
+    }
+    Dialog localDialog = this.dialog;
+    if (localDialog != null) {
+      localDialog.setCancelable(true);
+    }
+  }
+  
+  private void handleLhExpire()
+  {
+    ThreadManagerV2.excute(new NotificationActivity.36(this), 16, null, true);
+  }
+  
+  private void handleMiniAppFeature()
+  {
+    Object localObject = MiniAppSecurityUtil.getArgumentsFromURL(this.mErrorUrl);
+    if (localObject == null)
+    {
+      QLog.e("handleMiniAppFeature", 1, "paramMap == null");
+      return;
+    }
+    String str = (String)((Map)localObject).get("forbid_token");
+    this.mForbidStatus = ((String)((Map)localObject).get("forbid_status"));
+    if (!TextUtils.isEmpty(str))
+    {
+      if (this.mErrorVersion != 1) {
+        return;
+      }
+      this.mHandleByMiniApp = true;
+      localObject = getTargetUin((Map)localObject);
+      MiniAppSecurityUtil.updateLoginMiniAppUin(BaseApplication.getContext(), (String)localObject);
+      MiniAppSecurityUtil.updateLoginMiniAppForbidToken(BaseApplication.getContext(), (String)localObject, str);
+    }
+  }
+  
+  private void handleUnUnifyFrozenStyle()
+  {
+    String str3;
+    Object localObject;
+    String str1;
+    String str2;
+    if (this.mHandleByMiniApp)
+    {
+      ReportController.a(getAppRuntime(), "dc00898", "", "", "0X800AA15", "0X800AA15", 0, 0, "", "", this.mForbidStatus, "");
+      str3 = this.title;
+      if (isIMBlock()) {
+        localObject = getHtmlSpannedText(this.msg, true);
+      } else {
+        localObject = this.msg;
+      }
+      if (isIMBlock()) {
+        str1 = getString(2131891436);
+      } else {
+        str1 = getString(2131891438);
+      }
+      if (isIMBlock()) {
+        str2 = getString(2131891439);
+      } else {
+        str2 = getString(2131891437);
+      }
+      this.dialog = DialogUtil.a(this, 0, str3, (CharSequence)localObject, str1, str2, getString(2131891440), new NotificationActivity.26(this), new NotificationActivity.27(this), new NotificationActivity.28(this));
+    }
+    else
+    {
+      str3 = this.title;
+      if (isIMBlock()) {
+        localObject = getHtmlSpannedText(this.msg, false);
+      } else {
+        localObject = this.msg;
+      }
+      if (isIMBlock()) {
+        str1 = getString(2131891436);
+      } else {
+        str1 = getString(2131891441);
+      }
+      if (isIMBlock()) {
+        str2 = getString(2131891439);
+      } else {
+        str2 = getString(2131891437);
+      }
+      this.dialog = DialogUtil.a(this, 0, str3, (CharSequence)localObject, str1, str2, getString(2131891440), new NotificationActivity.29(this), new NotificationActivity.30(this), new NotificationActivity.31(this));
+    }
+    setDialogTextColor((QQCustomDialog)this.dialog);
+    if (isIMBlock())
+    {
+      ((QQCustomDialog)this.dialog).getMessageTextView().setMovementMethod(LinkMovementMethod.getInstance());
+      reportIMBlock("0X800B653");
+    }
+  }
+  
+  private void handleUnifyFrozenStyle()
+  {
+    FrozenNotifyDlgHelper.a().a((BaseQQAppInterface)getAppRuntime(), this.mUnifyFrozenScene, 0, this.msg);
+    int i = FrozenNotifyDlgHelper.a().a(this.msg, this.mUnifyFrozenScene, 0);
+    Object localObject = FrozenNotifyDlgHelper.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.msg);
+    localStringBuilder.append("你也可以对帐号进行<TITLE=\"资金管理\",URL=\"https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027\">。");
+    localObject = ((FrozenNotifyDlgHelper)localObject).a(localStringBuilder.toString(), this, i);
+    if (this.mUnifyFrozenScene == 2) {
+      this.mMiniAppScene = 2201;
+    }
+    i = FrozenNotifyDlgHelper.a().b(this.mUnifyFrozenScene);
+    this.dialog = DialogUtil.a(this, 230, this.mErrorTitle, (CharSequence)localObject, 2131887648, i, new NotificationActivity.24(this), new NotificationActivity.25(this));
+  }
+  
+  private void hideProgressDialog()
+  {
+    QQProgressDialog localQQProgressDialog = this.mLoadingDialog;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
+      this.mLoadingDialog.dismiss();
+    }
+  }
+  
+  private boolean isIMBlock()
+  {
+    return this.mTipsScenesId == 1;
+  }
+  
+  private void kickedLogin(boolean paramBoolean)
+  {
+    Object localObject1 = getAppRuntime().getApplication().getAllAccounts();
+    Object localObject3;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      localObject2 = getAppRuntime().getAccount();
+      if ((localObject2 != null) && (((String)localObject2).length() > 0))
+      {
+        localObject3 = ((List)localObject1).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject1 = (SimpleAccount)((Iterator)localObject3).next();
+          if (((String)localObject2).equals(((SimpleAccount)localObject1).getUin())) {
+            break label88;
+          }
+        }
+      }
+    }
+    localObject1 = null;
+    label88:
+    finish();
+    getAppRuntime().setKickIntent(null);
+    if (localObject1 != null)
+    {
+      FrozenKickUtils.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
+      if (paramBoolean)
+      {
+        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new NotificationActivity.35(this, (SimpleAccount)localObject1), 500L);
+        return;
+      }
+      getAppRuntime().login((SimpleAccount)localObject1);
+      return;
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("password", null);
+    if (!PhoneNumLoginImpl.a().a(getAppRuntime(), getAppRuntime().getCurrentAccountUin()))
+    {
+      getAppRuntime().updateSubAccountLogin(getAppRuntime().getCurrentAccountUin(), false);
+      getAppRuntime().getApplication().refreAccountList();
+    }
+    Object localObject2 = sSecControllerInjectInterface.b((BaseQQAppInterface)getAppRuntime());
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+    {
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (String)((Iterator)localObject2).next();
+        if (!PhoneNumLoginImpl.a().a(getAppRuntime(), (String)localObject3))
+        {
+          getAppRuntime().updateSubAccountLogin((String)localObject3, false);
+          getAppRuntime().getApplication().refreAccountList();
+        }
+      }
+    }
+    RouteUtils.a(this, new Intent().putExtras((Bundle)localObject1).addFlags(67108864), "/base/login");
+  }
+  
+  private void myShowDialog(int paramInt)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("myShowDialog: invoked.  id: ");
+    ((StringBuilder)localObject1).append(paramInt);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    int i = 1;
+    QLog.i("NotificationActivity", 1, (String)localObject1);
+    localObject1 = this.dialog;
+    if ((localObject1 != null) && (((Dialog)localObject1).isShowing())) {
+      try
+      {
+        this.dialog.dismiss();
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("myShowDialog: invoked.  throwable: ");
+        ((StringBuilder)localObject3).append(localThrowable);
+        QLog.i("NotificationActivity", 1, ((StringBuilder)localObject3).toString());
+      }
+    }
+    this.dialog = null;
+    Object localObject5;
+    String str2;
+    String str3;
+    Object localObject4;
+    switch (paramInt)
+    {
+    default: 
+      break;
+    case 11: 
+      try
+      {
+        localObject5 = getIntent().getExtras();
+        String str1 = ((Bundle)localObject5).getString("dlg_title", "");
+        localObject3 = ((Bundle)localObject5).getString("dlg_content", "");
+        str2 = ((Bundle)localObject5).getString("dlg_lbutton", "");
+        str3 = ((Bundle)localObject5).getString("dlg_rbutton", "");
+        localObject4 = ((Bundle)localObject5).getString("dlg_url", "");
+        paramInt = ((Bundle)localObject5).getInt("dlg_lbtnid", 0);
+        i = ((Bundle)localObject5).getInt("dlg_rbtnid", 0);
+        localObject5 = String.format("%d", new Object[] { Integer.valueOf(((Bundle)localObject5).getInt("dlg_seccmd", 0)) });
+        this.dialog = DialogUtil.a(this, 230).setTitle(str1).setMessage((CharSequence)localObject3);
+        if (this.dialog != null)
+        {
+          if (!TextUtils.isEmpty(str3)) {
+            ((QQCustomDialog)this.dialog).setPositiveButton(str3, new NotificationActivity.22(this, (String)localObject4, i, (String)localObject5));
+          }
+          if (!TextUtils.isEmpty(str2)) {
+            ((QQCustomDialog)this.dialog).setNegativeButton(str2, new NotificationActivity.23(this, paramInt, (String)localObject5));
+          }
+          ReportController.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject5, "", "", "");
+        }
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+      }
+    case 10: 
+      localObject2 = getResources().getString(2131891523);
+      localObject3 = getResources().getString(2131891522);
+      str2 = getResources().getString(2131891519);
+      str3 = getResources().getString(2131891521);
+      localObject5 = getResources().getString(2131891520);
+      localObject4 = new CheckBox(this);
+      ((CheckBox)localObject4).setText((CharSequence)localObject5);
+      ((CheckBox)localObject4).setTextSize(getResources().getInteger(2131492883));
+      ((CheckBox)localObject4).setTextColor(getResources().getColor(2131165794));
+      localObject5 = getAppRuntime().getApp().getSharedPreferences(getAppRuntime().getAccount(), 0);
+      boolean bool = ((SharedPreferences)localObject5).getBoolean("MemoryAlertAutoClear", false);
+      ((CheckBox)localObject4).setChecked(bool);
+      this.dialog = DialogUtil.a(this, 230).setTitle((String)localObject2).setMessage((CharSequence)localObject3).setView((View)localObject4).setPositiveButton(str3, new NotificationActivity.21(this, (CheckBox)localObject4, bool, (SharedPreferences)localObject5)).setNegativeButton(str2, new NotificationActivity.20(this, (CheckBox)localObject4, bool, (SharedPreferences)localObject5));
+      break;
+    case 9: 
+      localObject4 = getIntent().getExtras();
+      localObject2 = ((Bundle)localObject4).getString("dlg_title");
+      localObject3 = ((Bundle)localObject4).getString("dlg_content");
+      str2 = ((Bundle)localObject4).getString("dlg_lbutton");
+      str3 = ((Bundle)localObject4).getString("dlg_rbutton");
+      localObject4 = ((Bundle)localObject4).getString("dlg_url");
+      this.dialog = DialogUtil.a(this, 230).setTitle((String)localObject2).setMessage((CharSequence)localObject3).setPositiveButton(str3, new NotificationActivity.19(this, (String)localObject4)).setNegativeButton(str2, new NotificationActivity.18(this));
+      break;
+    case 8: 
+      paramInt = this.loginRet;
+      if (paramInt == 40)
+      {
+        ReportController.a(getAppRuntime(), "dc00898", "", this.loginAlias, "0X800AA2F", "0X800AA2F", 0, 0, "", "", "", this.msg);
+        localObject2 = getIntent();
+        if (localObject2 != null)
+        {
+          parseIntentErrorData((Intent)localObject2);
+          handleFrozenStyle(this.mUnifyFrozenStyle);
+        }
+      }
+      else if ((paramInt != 41) && (paramInt != 116))
+      {
+        this.dialog = DialogUtil.b(this, 230).setMessageWithUrl(this.msg).setTitle(getString(2131897224)).setPositiveButton(17039370, new NotificationActivity.17(this));
+      }
+      else
+      {
+        localObject2 = (Long)LhHelper.a.get(this.loginAlias);
+        if ((localObject2 != null) && (System.currentTimeMillis() - ((Long)localObject2).longValue() < 30000L)) {
+          this.dialog = DialogUtil.a(this, 230).setTitle(HardCodeUtil.a(2131905443)).setMessage(HardCodeUtil.a(2131905441)).setNegativeButton(HardCodeUtil.a(2131905450), new NotificationActivity.16(this));
+        } else {
+          handleLhExpire();
+        }
+      }
+      break;
+    case 7: 
+      this.dialog = DialogUtil.a(this, 230).setTitle(getString(2131891434)).setMessage(getString(2131916187)).setPositiveButton(getString(2131916189), new NotificationActivity.15(this)).setNegativeButton(getString(2131916186), new NotificationActivity.14(this));
+      break;
+    case 6: 
+      this.dialog = DialogUtil.a(this, 230).setTitle(this.title).setMessage(this.msg).setPositiveButton(17039370, new NotificationActivity.12(this));
+      break;
+    case 5: 
+      if ((TextUtils.isEmpty(this.msg)) && (TextUtils.isEmpty(this.title)))
+      {
+        localObject2 = getAppRuntime().getKickIntent();
+        if (localObject2 != null)
+        {
+          this.title = ((Intent)localObject2).getStringExtra("title");
+          this.msg = ((Intent)localObject2).getStringExtra("msg");
+          this.mReason = ((Constants.LogoutReason)((Intent)localObject2).getSerializableExtra("reason"));
+        }
+      }
+      sSecControllerInjectInterface.a(this, true, true);
+      if (this.mReason != Constants.LogoutReason.kicked) {
+        i = 2131892189;
+      } else {
+        i = 2131892267;
+      }
+      if (FrozenNotifyDlgHelper.a().a(this.msg))
+      {
+        ReportController.a(null, "dc00898", "", "", "0X800B427", "0X800B427", 0, 0, "", "", "", "");
+        paramInt = 1;
+      }
+      else
+      {
+        paramInt = 0;
+      }
+      if (FrozenNotifyDlgHelper.a().b(this.msg))
+      {
+        ReportController.a(null, "dc00898", "", "", "0X800B5E4", "0X800B5E4", 0, 0, "", "", "", "");
+        paramInt = 4;
+      }
+      localObject2 = FrozenNotifyDlgHelper.a().a(this.msg, this, paramInt);
+      this.dialog = DialogUtil.a(this, 230, this.title, (CharSequence)localObject2, i, 2131892267, null, new NotificationActivity.10(this));
+      if (this.mReason != Constants.LogoutReason.kicked) {
+        if ((getIntent() != null) && (getIntent().getBooleanExtra("isSameDevice", false)) && (!isInMultiWindow()))
+        {
+          this.dialog = null;
+          kickedLogin(true);
+        }
+        else
+        {
+          ((QQCustomDialog)this.dialog).setPositiveButton(2131889665, new NotificationActivity.11(this));
+          localObject2 = new Intent("com.tencent.tim.kickedLogin.otherDevice");
+          ((Intent)localObject2).putExtra("kickedUin", getAppRuntime().getAccount());
+          ((Intent)localObject2).putExtra("msg", this.msg);
+          ((Intent)localObject2).setPackage("com.tencent.tim");
+          sendBroadcast((Intent)localObject2);
+        }
+      }
+      getAppRuntime().setKickIntent(null);
+      break;
+    case 4: 
+      this.dialog = DialogUtil.a(this, 230).setTitle(this.title).setMessage(this.msg).setPositiveButton(17039370, new NotificationActivity.13(this));
+      break;
+    }
+    try
+    {
+      this.dialog = createDialog();
+    }
+    catch (Exception localException2)
+    {
+      label1508:
+      break label1508;
+    }
+    exitApp();
+    break label1833;
+    Object localObject2 = new TextView(this);
+    ((TextView)localObject2).setLinksClickable(true);
+    ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
+    ((TextView)localObject2).setTextSize(getResources().getInteger(2131492883));
+    ((TextView)localObject2).setTextColor(getResources().getColor(2131165794));
+    Object localObject3 = this.title;
+    if ((localObject3 != null) && (((String)localObject3).equals("true"))) {
+      try
+      {
+        localObject3 = getPackageName();
+        ((TextView)localObject2).setText(this.msg);
+        this.dialog = DialogUtil.a(this, 230).setMessage(this.msg).addView((View)localObject2).setPositiveButton(2131897875, new NotificationActivity.8(this, (String)localObject3), false);
+        paramInt = i;
+      }
+      catch (Exception localException3)
+      {
+        localException3.printStackTrace();
+      }
+    } else {
+      paramInt = 0;
+    }
+    if (paramInt == 0)
+    {
+      if (!TextUtils.isEmpty(this.msg)) {
+        ((TextView)localObject2).setText(Html.fromHtml(this.msg));
+      } else {
+        ((TextView)localObject2).setText(Html.fromHtml(getString(2131890110)));
+      }
+      this.dialog = DialogUtil.a(this, 230).setMessage(this.msg).addView((View)localObject2).setPositiveButton(2131889053, new NotificationActivity.9(this));
+      break label1833;
+      ReportController.a(null, "dc00898", "", "", "0X800B42F", "0X800B42F", 0, 0, "", "", "", "");
+      this.title = getString(2131916863);
+      this.msg = getString(2131916862);
+      this.dialog = DialogUtil.a(this, 230).setTitle(this.title).setMessage(this.msg).setPositiveButton(17039370, new NotificationActivity.7(this));
+    }
+    label1833:
+    sendBroadcast(new Intent("before_account_change"));
+    showDialog(false);
+  }
+  
+  private void parseIntentErrorData(Intent paramIntent)
+  {
+    if (paramIntent == null)
+    {
+      QLog.e("parseIntentErrorData", 1, "loginFailedIntent == null");
+      return;
+    }
+    this.mErrorUrl = "";
+    this.mErrorVersion = 0;
+    this.mForbidStatus = "";
+    this.mHandleByMiniApp = false;
+    this.mUnifyFrozenStyle = false;
+    this.mErrorTitle = "";
+    this.mUnifyFrozenScene = -1;
+    this.mMiniAppScene = 2098;
+    if (paramIntent.getBooleanExtra("keyFromLoginView", false)) {
+      ReportController.a(getAppRuntime(), "dc00898", "", "", "0X800B292", "0X800B292", 0, 0, "", "", this.msg, "");
+    } else if (paramIntent.getBooleanExtra("keyFromAddAccount", false)) {
+      ReportController.a(getAppRuntime(), "dc00898", "", "", "0X800B294", "0X800B294", 0, 0, "", "", this.msg, "");
+    } else if (paramIntent.getBooleanExtra("keyFromBindAccount", false)) {
+      ReportController.a(getAppRuntime(), "dc00898", "", "", "0X800B296", "0X800B296", 0, 0, "", "", this.msg, "");
+    }
+    this.mErrorUrl = paramIntent.getStringExtra("errorUrl");
+    this.mErrorVersion = paramIntent.getIntExtra("errorver", 0);
+    this.mIsLoginWithMask = paramIntent.getBooleanExtra("is_need_login_with_mask", false);
+    this.mUnifyFrozenStyle = FrozenNotifyDlgHelper.a().a(paramIntent.getByteArrayExtra("tlverror"));
+    this.mErrorTitle = paramIntent.getStringExtra("errortitle");
+    this.mUnifyFrozenScene = FrozenNotifyDlgHelper.a().b(paramIntent.getByteArrayExtra("tlverror"));
+    if (!TextUtils.isEmpty(this.mErrorUrl)) {
+      handleMiniAppFeature();
+    }
+  }
+  
+  private void payExpiredAccount(int paramInt)
+  {
+    if ((paramInt != 41) && (paramInt != 116)) {
+      return;
+    }
+    boolean bool;
+    if (paramInt == 116) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    gotoPay("3", "mvip.gongneng.android.haoma_03", bool, true);
+  }
+  
+  private void receiveLhCard()
+  {
+    ThreadManagerV2.excute(new NotificationActivity.39(this), 16, null, true);
+  }
+  
+  private void reportIMBlock(String paramString)
+  {
+    if (isIMBlock())
+    {
+      Object localObject = getIntent();
+      if (localObject == null) {
+        localObject = "";
+      } else {
+        localObject = ((Intent)localObject).getStringExtra("uin");
+      }
+      ReportController.b(null, "dc00898", "", (String)localObject, paramString, paramString, 0, 0, "", "", this.msg, "");
+    }
+  }
+  
+  private void sendAccountBroadcast()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VideoController", 2, "send broadcast:NewIntent.ACTION_ACCOUNT_KICKED");
     }
     Intent localIntent = new Intent();
-    if (localIntent != null)
+    localIntent.setAction("mqq.intent.action.ACCOUNT_KICKED");
+    getAppRuntime().getApp().sendBroadcast(localIntent);
+  }
+  
+  private void setDialogTextColor(QQCustomDialog paramQQCustomDialog)
+  {
+    if (!"1103".equals(ThemeUtil.getCurrentThemeId())) {
+      return;
+    }
+    TextView localTextView1 = paramQQCustomDialog.getTitleTextView();
+    TextView localTextView2 = paramQQCustomDialog.getMessageTextView();
+    TextView localTextView3 = paramQQCustomDialog.getBtnLeft();
+    TextView localTextView4 = paramQQCustomDialog.getBtnight();
+    paramQQCustomDialog = (TextView)paramQQCustomDialog.findViewById(2131431854);
+    try
     {
-      localIntent.setAction("mqq.intent.action.ACCOUNT_KICKED");
-      this.app.getApp().sendBroadcast(localIntent);
+      int i = Color.parseColor("#FFFFFF");
+      setTextColor(i, new TextView[] { localTextView1, localTextView2, localTextView3, localTextView4, paramQQCustomDialog });
+      return;
+    }
+    catch (Exception paramQQCustomDialog)
+    {
+      QLog.e("NotificationActivity", 1, "setDialogTextColor: parseColor error", paramQQCustomDialog);
     }
   }
   
-  private void b(int paramInt)
+  private void setTextColor(int paramInt, TextView... paramVarArgs)
   {
-    if ((paramInt != 41) && (paramInt != 116)) {
-      return;
-    }
-    if (paramInt == 116) {}
-    for (boolean bool = true;; bool = false)
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      a("3", "mvip.gongneng.android.haoma_03", bool, true);
-      return;
-    }
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    String str = null;
-    Object localObject1 = this.app.getApplication().getAllAccounts();
-    Object localObject2;
-    Object localObject3;
-    if ((localObject1 != null) && (((List)localObject1).size() > 0))
-    {
-      localObject2 = this.app.getAccount();
-      if ((localObject2 != null) && (((String)localObject2).length() > 0))
-      {
-        localObject3 = ((List)localObject1).iterator();
-        do
-        {
-          if (!((Iterator)localObject3).hasNext()) {
-            break;
-          }
-          localObject1 = (SimpleAccount)((Iterator)localObject3).next();
-        } while (!((String)localObject2).equals(((SimpleAccount)localObject1).getUin()));
+      TextView localTextView = paramVarArgs[i];
+      if (localTextView != null) {
+        localTextView.setTextColor(paramInt);
       }
+      i += 1;
     }
-    for (;;)
+  }
+  
+  private void showDialog(boolean paramBoolean)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showDialog: invoked.  inResume: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" isDialogShow: ");
+    ((StringBuilder)localObject).append(this.isDialogShow);
+    QLog.i("NotificationActivity", 1, ((StringBuilder)localObject).toString());
+    if (this.isDialogShow) {
+      return;
+    }
+    if ((!paramBoolean) && (Build.VERSION.SDK_INT >= 28)) {
+      return;
+    }
+    localObject = this.dialog;
+    if ((localObject != null) && (!((Dialog)localObject).isShowing()) && (!isFinishing()))
     {
+      if ((this.dlgType == 8) && (this.loginRet == 40))
+      {
+        this.dialog.setCancelable(true);
+        this.dialog.setOnCancelListener(new NotificationActivity.5(this));
+      }
+      else
+      {
+        this.dialog.setCancelable(false);
+      }
+      try
+      {
+        this.dialog.show();
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showDialog: invoked.  t: ");
+        localStringBuilder.append(localThrowable);
+        QLog.i("NotificationActivity", 1, localStringBuilder.toString());
+      }
+      this.isDialogShow = true;
+    }
+  }
+  
+  private void showProgressDialog()
+  {
+    if (this.mLoadingDialog == null) {
+      this.mLoadingDialog = new QQProgressDialog(this, getTitleBarHeight());
+    }
+    if (!this.mLoadingDialog.isShowing())
+    {
+      this.mLoadingDialog.a(HardCodeUtil.a(2131905445));
+      this.mLoadingDialog.show();
+    }
+  }
+  
+  private void stopUpgrade()
+  {
+    sSecControllerInjectInterface.a((BaseQQAppInterface)getAppRuntime());
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 1)
+    {
+      if (Utils.a(paramIntent) == 0) {
+        paramInt1 = -1;
+      } else {
+        paramInt1 = 0;
+      }
+      checkSetResult(paramInt1);
       finish();
-      this.app.setKickIntent(null);
-      if (localObject1 != null)
-      {
-        bdne.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
-        if (paramBoolean)
-        {
-          new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new NotificationActivity.31(this, (SimpleAccount)localObject1), 500L);
-          return;
-        }
-        this.app.login((SimpleAccount)localObject1);
-        return;
-      }
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("password", null);
-      if (!awia.a().a(this.app, this.app.getCurrentAccountUin()))
-      {
-        this.app.updateSubAccountLogin(this.app.getCurrentAccountUin(), false);
-        this.app.getApplication().refreAccountList();
-      }
-      localObject3 = (badd)this.app.getManager(61);
-      localObject1 = str;
-      if (localObject3 != null) {
-        localObject1 = ((badd)localObject3).a();
-      }
-      if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
-      {
-        localObject1 = ((ArrayList)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          str = (String)((Iterator)localObject1).next();
-          if (!awia.a().a(this.app, str))
-          {
-            this.app.updateSubAccountLogin(str, false);
-            this.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      startActivity(new Intent(this, LoginActivity.class).putExtras((Bundle)localObject2).addFlags(67108864));
-      return;
-      localObject1 = null;
     }
   }
   
-  private void c()
-  {
-    alqf localalqf = (alqf)this.app.a(4);
-    if (localalqf != null) {
-      localalqf.a();
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    Intent localIntent = getIntent();
-    if ((localIntent != null) && (localIntent.getBooleanExtra("lh_is_from_login_verify_code", false))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("NotificationActivity", 4, String.format(Locale.getDefault(), "checkSetResult, isFromLH: %s, resultCode: %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
-      }
-      if (bool)
-      {
-        localIntent = new Intent();
-        localIntent.putExtra("lh_is_from_login_verify_code", true);
-        setResult(paramInt, localIntent);
-      }
-      return;
-    }
-  }
-  
-  private void d()
-  {
-    int k = this.jdField_a_of_type_Beas.b();
-    int m = this.jdField_a_of_type_Beas.a();
-    if ((m == -1) || (k == -1))
-    {
-      QQToast.a(this, alud.a(2131708023), 0).a();
-      finish();
-      return;
-    }
-    String str = m + "";
-    if (k == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(str, "mvip.p.lh.pay_over", bool, false);
-      return;
-    }
-  }
-  
-  private void e()
-  {
-    ThreadManagerV2.excute(new NotificationActivity.32(this), 16, null, true);
-  }
-  
-  private void f()
-  {
-    ThreadManagerV2.excute(new NotificationActivity.35(this), 16, null, true);
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_Bety == null) {
-      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
-    }
-    if (!this.jdField_a_of_type_Bety.isShowing())
-    {
-      this.jdField_a_of_type_Bety.a(alud.a(2131708014));
-      this.jdField_a_of_type_Bety.show();
-    }
-  }
-  
-  private void h()
-  {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
-    }
-  }
-  
-  public CharSequence a(String paramString)
-  {
-    if (paramString == null) {}
-    while (!bdix.b.matcher(paramString).find()) {
-      return paramString;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("");
-    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
-    int n = 0;
-    int k = 0;
-    int m = 0;
-    String str;
-    Object localObject;
-    if (localMatcher.find())
-    {
-      n = localMatcher.start(0);
-      m = localMatcher.end(0);
-      str = paramString.substring(localMatcher.start(1), localMatcher.end(1));
-      localObject = paramString.substring(localMatcher.start(2), localMatcher.end(2));
-      if (k == n) {
-        break label401;
-      }
-      localSpannableStringBuilder.append(paramString.substring(k, n));
-      k = m;
-    }
-    label401:
-    for (;;)
-    {
-      SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new adky((String)localObject, new WeakReference(this)), 0, str.length(), 33);
-      localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131165735)), 0, str.length(), 33);
-      localSpannableStringBuilder.append(localSpannableString);
-      n = 1;
-      break;
-      if (n != 0)
-      {
-        localSpannableStringBuilder.append(paramString.substring(m));
-        return localSpannableStringBuilder;
-      }
-      localMatcher = Pattern.compile(jdField_h_of_type_JavaLangString, 2).matcher(paramString);
-      k = 0;
-      m = 0;
-      while (localMatcher.find())
-      {
-        int i1 = localMatcher.start();
-        m = localMatcher.end();
-        str = paramString.substring(i1, m);
-        n = k;
-        if (k != i1)
-        {
-          localSpannableStringBuilder.append(paramString.substring(k, i1));
-          n = m;
-        }
-        localObject = new SpannableString(str);
-        ((SpannableString)localObject).setSpan(new adky(str, new WeakReference(this)), 0, str.length(), 33);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(getResources().getColor(2131165735)), 0, str.length(), 33);
-        localSpannableStringBuilder.append((CharSequence)localObject);
-        k = n;
-      }
-      localSpannableStringBuilder.append(paramString.substring(m));
-      return localSpannableStringBuilder;
-    }
-  }
-  
-  public void a()
-  {
-    sendBroadcast(new Intent("qqplayer_exit_action"));
-    finish();
-    this.app.b(false);
-  }
-  
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt1 == 1) {
-      if (LiangHaoBuyFragment.a(paramIntent) != 0) {
-        break label24;
-      }
-    }
-    label24:
-    for (paramInt1 = -1;; paramInt1 = 0)
-    {
-      c(paramInt1);
-      finish();
-      return;
-    }
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559398);
+    super.setContentView(2131625527);
     Object localObject = "";
     paramBundle = (Bundle)localObject;
     try
     {
-      this.jdField_a_of_type_Int = getIntent().getIntExtra("type", 0);
+      this.dlgType = getIntent().getIntExtra("type", 0);
       paramBundle = (Bundle)localObject;
-      localObject = getIntent().getAction();
-      paramBundle = (Bundle)localObject;
+      String str1 = getIntent().getAction();
+      paramBundle = str1;
       if (QLog.isColorLevel())
       {
-        paramBundle = (Bundle)localObject;
-        QLog.d("NotificationActivity", 2, "NotificationActivity action = " + (String)localObject);
+        paramBundle = str1;
+        localObject = new StringBuilder();
+        paramBundle = str1;
+        ((StringBuilder)localObject).append("NotificationActivity action = ");
+        paramBundle = str1;
+        ((StringBuilder)localObject).append(str1);
+        paramBundle = str1;
+        QLog.d("NotificationActivity", 2, ((StringBuilder)localObject).toString());
       }
-      paramBundle = (Bundle)localObject;
-      if (!"mqq.intent.action.ACCOUNT_EXPIRED".equals(localObject)) {
-        break label347;
-      }
-      paramBundle = (Bundle)localObject;
-      this.jdField_a_of_type_Int = 1;
-      paramBundle = (Bundle)localObject;
-      c();
-    }
-    catch (Exception localException)
-    {
-      try
+      paramBundle = str1;
+      if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(str1))
       {
-        do
+        paramBundle = str1;
+        this.dlgType = 1;
+        paramBundle = str1;
+        stopUpgrade();
+      }
+      else
+      {
+        paramBundle = str1;
+        if ("mqq.intent.action.ACCOUNT_TIPS".equals(str1))
         {
-          for (;;)
+          paramBundle = str1;
+          this.dlgType = 6;
+        }
+        else
+        {
+          paramBundle = str1;
+          if ("mqq.intent.action.ACCOUNT_KICKED".equals(str1))
           {
-            String str;
-            paramBundle.mergeFrom((byte[])localObject);
-            if (paramBundle.has()) {
-              break label482;
-            }
-            return false;
-            paramBundle = (Bundle)localObject;
-            if ("mqq.intent.action.ACCOUNT_TIPS".equals(localObject))
+            paramBundle = str1;
+            sendAccountBroadcast();
+            paramBundle = str1;
+            stopUpgrade();
+            paramBundle = str1;
+            this.dlgType = 5;
+          }
+          else
+          {
+            paramBundle = str1;
+            if ("mqq.intent.action.GRAY".equals(str1))
             {
-              paramBundle = (Bundle)localObject;
-              this.jdField_a_of_type_Int = 6;
-              continue;
-              localException = localException;
-              localObject = paramBundle;
-              paramBundle = (Bundle)localObject;
-              if (QLog.isColorLevel())
-              {
-                QLog.e("NotificationActivity", 2, "doOnCreate exception", localException);
-                paramBundle = (Bundle)localObject;
-              }
+              paramBundle = str1;
+              this.dlgType = 2;
             }
             else
             {
-              paramBundle = (Bundle)localObject;
-              if ("mqq.intent.action.ACCOUNT_KICKED".equals(localObject))
+              paramBundle = str1;
+              if ("mqq.intent.action.SUSPEND".equals(str1))
               {
-                paramBundle = (Bundle)localObject;
-                b();
-                paramBundle = (Bundle)localObject;
-                c();
-                paramBundle = (Bundle)localObject;
-                this.jdField_a_of_type_Int = 5;
-              }
-              else
-              {
-                paramBundle = (Bundle)localObject;
-                if (!"mqq.intent.action.GRAY".equals(localObject)) {
-                  break;
-                }
-                paramBundle = (Bundle)localObject;
-                this.jdField_a_of_type_Int = 2;
+                paramBundle = str1;
+                this.dlgType = 4;
               }
             }
           }
-          paramBundle = (Bundle)localObject;
-        } while (!"mqq.intent.action.SUSPEND".equals(localObject));
-        paramBundle = (Bundle)localObject;
-        this.jdField_a_of_type_Int = 4;
+        }
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      paramBundle = str1;
+      this.title = getIntent().getStringExtra("title");
+      paramBundle = str1;
+      this.msg = getIntent().getStringExtra("msg");
+      paramBundle = str1;
+      this.loginAlias = getIntent().getStringExtra("loginalias");
+      paramBundle = str1;
+      this.expiredSig = getIntent().getByteArrayExtra("expiredSig");
+      paramBundle = str1;
+      this.loginRet = getIntent().getIntExtra("loginret", 0);
+      paramBundle = str1;
+      this.mTipsScenesId = getIntent().getIntExtra("keyTipsScenesId", 0);
+      paramBundle = str1;
+      this.mReason = ((Constants.LogoutReason)getIntent().getSerializableExtra("reason"));
+      paramBundle = str1;
+      String str2 = getIntent().getStringExtra("securityScan");
+      localObject = str1;
+      if (str2 != null)
       {
-        for (;;)
+        paramBundle = str1;
+        localObject = str1;
+        if ("security_scan".equals(str2))
         {
-          localInvalidProtocolBufferMicroException.printStackTrace();
+          paramBundle = str1;
+          this.dlgType = 7;
+          localObject = str1;
         }
-        if ((paramBundle.str_packname.has()) && (paramBundle.u32_check_result.has()) && (paramBundle.str_right_button.has()) && (paramBundle.str_url.has())) {
-          break label540;
-        }
-        if (!QLog.isColorLevel()) {
-          break label538;
-        }
-        QLog.d("sec_sig_tag", 2, "NotificationActivity:package fail");
-        return false;
-        ThreadManager.post(new NotificationActivity.2(this, paramBundle.u32_check_result.get(), paramBundle.u32_cache_time.get()), 5, null, false);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new adkn(this, paramBundle));
-        if (!paramBundle.str_left_button.has()) {
-          break label648;
-        }
-        ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new adkr(this));
-        a(false);
-        return true;
       }
     }
-    paramBundle = (Bundle)localObject;
-    this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("title");
-    paramBundle = (Bundle)localObject;
-    this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("msg");
-    paramBundle = (Bundle)localObject;
-    this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("loginalias");
-    paramBundle = (Bundle)localObject;
-    this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("expiredSig");
-    paramBundle = (Bundle)localObject;
-    this.jdField_b_of_type_Int = getIntent().getIntExtra("loginret", 0);
-    paramBundle = (Bundle)localObject;
-    this.jdField_a_of_type_MqqAppConstants$LogoutReason = ((Constants.LogoutReason)getIntent().getSerializableExtra("reason"));
-    paramBundle = (Bundle)localObject;
-    str = getIntent().getStringExtra("securityScan");
-    if (str != null)
+    catch (Exception localException)
     {
-      paramBundle = (Bundle)localObject;
-      if ("security_scan".equals(str))
+      localObject = paramBundle;
+      if (QLog.isColorLevel())
       {
-        paramBundle = (Bundle)localObject;
-        this.jdField_a_of_type_Int = 7;
+        QLog.e("NotificationActivity", 2, "doOnCreate exception", localException);
+        localObject = paramBundle;
       }
     }
-    paramBundle = (Bundle)localObject;
-    QLog.d("NotificationActivity", 1, "notification activity type:" + this.jdField_a_of_type_Int);
-    label538:
-    label540:
-    if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramBundle))
+    paramBundle = new StringBuilder();
+    paramBundle.append("notification activity type:");
+    paramBundle.append(this.dlgType);
+    QLog.d("NotificationActivity", 1, paramBundle.toString());
+    if ("mqq.intent.action.ACCOUNT_KICKED".equals(localObject))
     {
-      if (this.jdField_a_of_type_MqqAppConstants$LogoutReason == Constants.LogoutReason.secKicked)
+      if (this.mReason == Constants.LogoutReason.secKicked)
       {
         if (QLog.isColorLevel()) {
           QLog.d("sec_sig_tag", 2, "NotificationActivity:sec kick");
         }
         localObject = getIntent().getByteArrayExtra("data");
         paramBundle = new signature.SignatureKickData();
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject);
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
+        if (!paramBundle.has()) {
+          return false;
+        }
+        if ((paramBundle.str_packname.has()) && (paramBundle.u32_check_result.has()) && (paramBundle.str_right_button.has()) && (paramBundle.str_url.has()))
+        {
+          ThreadManager.post(new NotificationActivity.2(this, paramBundle.u32_check_result.get(), paramBundle.u32_cache_time.get()), 5, null, false);
+          this.dialog = DialogUtil.a(this, 230).setTitle(this.title).setMessage(this.msg).setPositiveButton(paramBundle.str_right_button.get(), new NotificationActivity.3(this, paramBundle));
+          if (paramBundle.str_left_button.has()) {
+            ((QQCustomDialog)this.dialog).setNegativeButton(paramBundle.str_left_button.get(), new NotificationActivity.4(this));
+          }
+          showDialog(false);
+          return true;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("sec_sig_tag", 2, "NotificationActivity:package fail");
+        }
+        return false;
       }
-      label347:
-      label482:
-      PatternLockUtils.setFirstEnterAfterLoginState(this, this.app.getAccount(), true);
+      sSecControllerInjectInterface.a(this, getAppRuntime().getAccount());
     }
-    label648:
-    this.jdField_a_of_type_Beas = new beas(this.jdField_d_of_type_JavaLangString);
-    a(this.jdField_a_of_type_Int);
-    registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.closeNotification"));
+    this.lhHelper = new LhHelper(this.loginAlias);
+    myShowDialog(this.dlgType);
+    registerReceiver(this.mReceiver, new IntentFilter("com.tencent.mobileqq.closeNotification"));
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    QLog.i("NotificationActivity", 1, "doOnDestroy: invoked.  isDialogShow: " + this.jdField_a_of_type_Boolean);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("doOnDestroy: invoked.  isDialogShow: ");
+    localStringBuilder1.append(this.isDialogShow);
+    QLog.i("NotificationActivity", 1, localStringBuilder1.toString());
     try
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      if ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing())) {}
+      unregisterReceiver(this.mReceiver);
     }
     catch (Throwable localThrowable1)
     {
+      localThrowable1.printStackTrace();
+    }
+    Dialog localDialog = this.dialog;
+    if ((localDialog != null) && (localDialog.isShowing())) {
       try
       {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-        this.jdField_a_of_type_AndroidAppDialog = null;
-        super.doOnDestroy();
-        if (jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity == this) {
-          jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity = null;
-        }
-        return;
-        localThrowable1 = localThrowable1;
-        localThrowable1.printStackTrace();
+        this.dialog.dismiss();
       }
       catch (Throwable localThrowable2)
       {
-        for (;;)
-        {
-          QLog.i("NotificationActivity", 1, "doOnDestroy: invoked.  t: " + localThrowable2);
-        }
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("doOnDestroy: invoked.  t: ");
+        localStringBuilder2.append(localThrowable2);
+        QLog.i("NotificationActivity", 1, localStringBuilder2.toString());
       }
     }
-  }
-  
-  public void doOnResume()
-  {
-    super.doOnResume();
-    a(true);
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131700015, new adjr(this));
+    this.dialog = null;
+    super.doOnDestroy();
+    if (instance == this) {
+      instance = null;
     }
   }
   
-  public void doOnUserLeaveHint()
+  protected void doOnResume()
+  {
+    super.doOnResume();
+    showDialog(true);
+    if (this.isAlreadyAuthorized)
+    {
+      Dialog localDialog = this.dialog;
+      if ((localDialog != null) && (localDialog.isShowing())) {
+        ((QQCustomDialog)this.dialog).setPositiveButton(2131897874, new NotificationActivity.1(this));
+      }
+    }
+    if ((this.mJumpLoginBackFromFund) && (this.dlgType == 5))
+    {
+      this.mJumpLoginBackFromFund = false;
+      kickToLoginActivity();
+    }
+  }
+  
+  protected void doOnUserLeaveHint()
   {
     super.doOnUserLeaveHint();
-    if (this.jdField_a_of_type_Int == 3) {
-      a();
+    if (this.dlgType == 3) {
+      exitApp();
+    }
+  }
+  
+  public void enableJumpLoginFromFund()
+  {
+    this.mJumpLoginBackFromFund = true;
+  }
+  
+  public void exitApp()
+  {
+    sSecControllerInjectInterface.a(this, false, false);
+    finish();
+    if (getAppRuntime() != null) {
+      getAppRuntime().exit(false);
     }
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    Dialog localDialog = this.dialog;
+    if ((localDialog != null) && (localDialog.isShowing())) {
+      this.dialog.dismiss();
     }
-    this.jdField_a_of_type_AndroidAppDialog = null;
+    this.dialog = null;
     super.finish();
-    if (jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity == this) {
-      jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity = null;
+    if (instance == this) {
+      instance = null;
     }
   }
   
@@ -932,51 +1145,95 @@ public class NotificationActivity
     {
     default: 
       return true;
-    case 1: 
-      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getResources().getString(2131693894), getResources().getString(2131693884), getResources().getString(2131693880), this.jdField_a_of_type_Adla, alud.a(2131708022), this.jdField_a_of_type_Adla, this.jdField_a_of_type_Adkz);
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      return true;
-    case 2: 
-      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getResources().getString(2131693894), getResources().getString(2131693883), getResources().getString(2131693881), this.jdField_b_of_type_Adla, getResources().getString(2131693879), this.jdField_b_of_type_Adla, this.jdField_a_of_type_Adkz);
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      return true;
-    case 3: 
-      if (this.jdField_b_of_type_Int == 41) {}
-      for (paramMessage = getString(2131695492);; paramMessage = getString(2131695491))
-      {
-        String str = getString(2131695490);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131695489, new adkq(this)).setPositiveButton(2131695486, new adkp(this));
-        this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-        this.jdField_a_of_type_AndroidAppDialog.show();
-        return true;
-      }
-    case 4: 
-      g();
-      return true;
-    case 5: 
-      h();
-      QQToast.a(this, 2, alud.a(2131708017), 0).b(getTitleBarHeight());
-      beas.a.put(this.jdField_d_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
+    case 6: 
+      hideProgressDialog();
+      QQToast.makeText(this, 1, HardCodeUtil.a(2131905447), 0).show(getTitleBarHeight());
       finish();
       return true;
+    case 5: 
+      hideProgressDialog();
+      QQToast.makeText(this, 2, HardCodeUtil.a(2131905448), 0).show(getTitleBarHeight());
+      LhHelper.a.put(this.loginAlias, Long.valueOf(System.currentTimeMillis()));
+      finish();
+      return true;
+    case 4: 
+      showProgressDialog();
+      return true;
+    case 3: 
+      int i;
+      if (this.loginRet == 41) {
+        i = 2131892719;
+      } else {
+        i = 2131892718;
+      }
+      paramMessage = getString(i);
+      String str = getString(2131892717);
+      this.dialog = DialogUtil.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131892716, new NotificationActivity.38(this)).setPositiveButton(2131892715, new NotificationActivity.37(this));
+      this.dialog.setCancelable(false);
+      this.dialog.show();
+      return true;
+    case 2: 
+      this.dialog = DialogUtil.a(this, getResources().getString(2131891188), getResources().getString(2131891177), getResources().getString(2131891175), this.renewalClickListener, getResources().getString(2131891173), this.renewalClickListener, this.myClickListener);
+      this.dialog.show();
+      return true;
     }
-    h();
-    QQToast.a(this, 1, alud.a(2131708016), 0).b(getTitleBarHeight());
-    finish();
+    this.dialog = DialogUtil.a(this, getResources().getString(2131891188), getResources().getString(2131891178), getResources().getString(2131891174), this.receiveClickListener, HardCodeUtil.a(2131905453), this.receiveClickListener, this.myClickListener);
+    this.dialog.show();
     return true;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void kickToLoginActivity()
   {
-    super.onCreate(paramBundle);
-    jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity = this;
+    if (FrozenNotifyDlgHelper.a().a(this.msg)) {
+      ReportController.a(null, "dc00898", "", "", "0X800B42A", "0X800B42A", 0, 0, "", "", "", "");
+    }
+    if (FrozenNotifyDlgHelper.a().b(this.msg)) {
+      ReportController.a(null, "dc00898", "", "", "0X800B5E6", "0X800B5E6", 0, 0, "", "", "", "");
+    }
+    finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("password", null);
+    localBundle.putBoolean("is_from_account_another_login_exit", true);
+    if (!PhoneNumLoginImpl.a().a(getAppRuntime(), getAppRuntime().getCurrentAccountUin()))
+    {
+      getAppRuntime().updateSubAccountLogin(getAppRuntime().getCurrentAccountUin(), false);
+      getAppRuntime().getApplication().refreAccountList();
+    }
+    Object localObject = sSecControllerInjectInterface.b((BaseQQAppInterface)getAppRuntime());
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        if (!PhoneNumLoginImpl.a().a(getAppRuntime(), str))
+        {
+          getAppRuntime().updateSubAccountLogin(str, false);
+          getAppRuntime().getApplication().refreAccountList();
+        }
+      }
+    }
+    RouteUtils.a(this, new Intent().putExtras(localBundle).addFlags(67108864), "/base/login");
   }
   
-  public void onLogout(Constants.LogoutReason paramLogoutReason) {}
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    instance = this;
+  }
+  
+  protected void onLogout(Constants.LogoutReason paramLogoutReason) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity
  * JD-Core Version:    0.7.0.1
  */

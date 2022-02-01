@@ -1,53 +1,51 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.f.a.m;
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ex;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.autogen.b.hv;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.Metadata;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/StoryRoomInfo;", "Lcom/tencent/mm/autogen/table/BaseStoryRoomInfo;", "()V", "value", "", "extBuf", "getExtBuf", "()[B", "setExtBuf", "([B)V", "", "", "newStoryList", "getNewStoryList", "()Ljava/util/List;", "setNewStoryList", "(Ljava/util/List;)V", "", "nextSyncTime", "getNextSyncTime", "()J", "setNextSyncTime", "(J)V", "roomName", "getRoomName", "()Ljava/lang/String;", "setRoomName", "(Ljava/lang/String;)V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryRoomInfo;", "Lcom/tencent/mm/autogen/table/BaseStoryRoomInfo;", "()V", "value", "", "extBuf", "getExtBuf", "()[B", "setExtBuf", "([B)V", "", "", "newStoryList", "getNewStoryList", "()Ljava/util/List;", "setNewStoryList", "(Ljava/util/List;)V", "", "nextSyncTime", "getNextSyncTime", "()J", "setNextSyncTime", "(J)V", "roomName", "getRoomName", "()Ljava/lang/String;", "setRoomName", "(Ljava/lang/String;)V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends ex
+  extends hv
 {
-  private static final String TAG = "MicroMsg.StoryExtInfo";
-  private static final c.a info;
-  public static final a sGZ;
-  private static final m<Long, Long, Boolean> sGx;
+  private static final m<Long, Long, Boolean> SsT;
+  public static final l.a Str;
+  private static final String TAG;
+  private static final IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(109970);
-    sGZ = new a((byte)0);
+    AppMethodBeat.i(119595);
+    Str = new l.a((byte)0);
     TAG = "MicroMsg.StoryExtInfo";
-    info = ex.Hm();
-    sGx = (m)l.b.sHa;
-    AppMethodBeat.o(109970);
+    info = hv.aJm();
+    SsT = (m)l.b.Sts;
+    AppMethodBeat.o(119595);
   }
   
   public l()
   {
-    AppMethodBeat.i(109969);
-    j.q("", "value");
+    AppMethodBeat.i(119594);
+    s.u("", "value");
     this.field_roomname = "";
-    AppMethodBeat.o(109969);
+    AppMethodBeat.o(119594);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(109968);
-    c.a locala = info;
-    j.p(locala, "StoryRoomInfo.info");
-    AppMethodBeat.o(109968);
-    return locala;
+    AppMethodBeat.i(119593);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
+    s.s(localMAutoDBInfo, "info");
+    AppMethodBeat.o(119593);
+    return localMAutoDBInfo;
   }
-  
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/StoryRoomInfo$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "compareUnsignedLong", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "i", "j", "", "getCompareUnsignedLong", "()Lkotlin/jvm/functions/Function2;", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-story_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.l
  * JD-Core Version:    0.7.0.1
  */

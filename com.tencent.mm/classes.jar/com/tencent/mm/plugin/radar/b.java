@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.radar;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.ui.i.a;
-import java.util.HashMap;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/SubCoreRadar;", "Lcom/tencent/mm/model/ISubCore;", "()V", "clearPluginData", "", "pluginFlag", "", "doRadar", "getBaseDBFactories", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "onAccountPostReset", "updated", "", "onAccountRelease", "onSdcardMount", "mounted", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/RadarApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements at
+  implements n
 {
-  private static final String TAG = "MicroMsg.SubCoreRadar";
-  public static final b.a pPF;
+  public static final a Nrn;
+  private static m pFn;
+  private static l pFo;
   
   static
   {
-    AppMethodBeat.i(102860);
-    pPF = new b.a((byte)0);
-    TAG = "MicroMsg.SubCoreRadar";
-    AppMethodBeat.o(102860);
+    AppMethodBeat.i(138495);
+    Nrn = new a((byte)0);
+    AppMethodBeat.o(138495);
   }
   
-  public final void clearPluginData(int paramInt) {}
-  
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final void a(l paraml)
   {
-    return null;
+    AppMethodBeat.i(138494);
+    s.u(paraml, "callback");
+    pFo = paraml;
+    AppMethodBeat.o(138494);
   }
   
-  public final void onAccountPostReset(boolean paramBoolean)
+  public final void a(m paramm)
   {
-    AppMethodBeat.i(102859);
-    com.tencent.mm.plugin.radar.ui.b.a locala = com.tencent.mm.plugin.radar.ui.b.a.pRb;
-    com.tencent.mm.plugin.radar.ui.b.a.a((i.a)new b.b());
-    AppMethodBeat.o(102859);
+    AppMethodBeat.i(138493);
+    s.u(paramm, "callback");
+    pFn = paramm;
+    AppMethodBeat.o(138493);
   }
   
-  public final void onAccountRelease() {}
-  
-  public final void onSdcardMount(boolean paramBoolean) {}
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/RadarApplication$Companion;", "", "()V", "modelCallback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "getModelCallback", "()Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "setModelCallback", "(Lcom/tencent/mm/pluginsdk/IMMModelCallback;)V", "uiCallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "getUiCallback", "()Lcom/tencent/mm/pluginsdk/IMMUICallback;", "setUiCallback", "(Lcom/tencent/mm/pluginsdk/IMMUICallback;)V", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.b
  * JD-Core Version:    0.7.0.1
  */

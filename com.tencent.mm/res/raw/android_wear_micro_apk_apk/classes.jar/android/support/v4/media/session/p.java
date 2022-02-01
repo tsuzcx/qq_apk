@@ -8,11 +8,11 @@ import android.view.KeyEvent;
 final class p
   implements l
 {
-  private d ig;
+  private d ke;
   
   public p(MediaSessionCompat.Token paramToken)
   {
-    this.ig = e.b((IBinder)paramToken.bc());
+    this.ke = e.b((IBinder)paramToken.bt());
   }
   
   public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
@@ -22,7 +22,7 @@ final class p
     }
     try
     {
-      this.ig.a(paramKeyEvent);
+      this.ke.a(paramKeyEvent);
       return false;
     }
     catch (RemoteException paramKeyEvent)

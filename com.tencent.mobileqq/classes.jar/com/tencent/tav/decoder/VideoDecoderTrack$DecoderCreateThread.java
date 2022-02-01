@@ -14,7 +14,7 @@ class VideoDecoderTrack$DecoderCreateThread
   
   private VideoDecoderTrack$DecoderCreateThread(VideoDecoderTrack paramVideoDecoderTrack, DecoderAssetTrack paramDecoderAssetTrack, Surface paramSurface, int paramInt)
   {
-    super("DecoderCreateThread " + paramDecoderAssetTrack.assetPath);
+    super(paramVideoDecoderTrack.toString());
     this.videoAsset = paramDecoderAssetTrack;
     this.outputSurface = paramSurface;
     this.segmentIndex = paramInt;
@@ -22,16 +22,20 @@ class VideoDecoderTrack$DecoderCreateThread
   
   private void checkCreateDecoder()
   {
-    if ((VideoDecoderTrack.access$900(this.this$0) != null) && (ExtractorUtils.isSameExtractor(VideoDecoderTrack.access$900(this.this$0).extractor, this.videoAsset))) {
+    if ((VideoDecoderTrack.access$1000(this.this$0) != null) && (ExtractorUtils.isSameExtractor(VideoDecoderTrack.access$1000(this.this$0).extractor, this.videoAsset))) {
       return;
     }
-    if (VideoDecoderTrack.access$900(this.this$0) == null)
+    if (VideoDecoderTrack.access$1000(this.this$0) == null)
     {
       createDecoder();
       return;
     }
-    Logger.d(VideoDecoderTrack.access$400(), "DecoderCreateThread create - " + this.videoAsset.assetPath);
-    if ((VideoDecoderTrack.access$900(this.this$0).decoder != null) && (VideoDecoderTrack.access$900(this.this$0).decoder != VideoDecoderTrack.access$1000(this.this$0))) {
+    String str = VideoDecoderTrack.access$500();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DecoderCreateThread create - ");
+    localStringBuilder.append(this.videoAsset.assetPath);
+    Logger.d(str, localStringBuilder.toString());
+    if ((VideoDecoderTrack.access$1000(this.this$0).decoder != null) && (VideoDecoderTrack.access$1000(this.this$0).decoder != VideoDecoderTrack.access$1100(this.this$0))) {
       releaseNextDecoder();
     }
     createDecoder();
@@ -39,67 +43,57 @@ class VideoDecoderTrack$DecoderCreateThread
   
   private void createDecoder()
   {
-    if ((VideoDecoderTrack.access$1100(this.this$0) == null) || (this.segmentIndex >= VideoDecoderTrack.access$1100(this.this$0).size())) {
-      return;
-    }
-    for (;;)
+    if (VideoDecoderTrack.access$1200(this.this$0) != null)
     {
+      if (this.segmentIndex >= VideoDecoderTrack.access$1200(this.this$0).size()) {
+        return;
+      }
+      IVideoDecoder localIVideoDecoder;
       try
       {
-        Surface localSurface = this.outputSurface;
-        if (this.videoAsset.sourceType != 3) {
-          continue;
-        }
-        localObject2 = new ImageDecoder();
-        localObject1 = localObject2;
+        Object localObject1 = this.outputSurface;
+        Object localObject2 = VideoDecoderTrack.access$1300(this.this$0, this.videoAsset, (Surface)localObject1);
+        localIVideoDecoder = VideoDecoderTrack.access$1500(this.this$0, (IVideoDecoder.Params)localObject2, VideoDecoderTrack.access$1400(this.this$0, this.segmentIndex));
         try
         {
-          VideoDecoderTrack.access$1200(this.this$0, localSurface);
-          localObject1 = localObject2;
-          ((IVideoDecoder)localObject2).init(this.videoAsset.assetPath, ImageDecoder.IMAGE_DECODE_SIZE, null);
-          localObject1 = localObject2;
-          ((IVideoDecoder)localObject2).start(VideoDecoderTrack.access$1300(this.this$0, this.segmentIndex).getTimeRange(), VideoDecoderTrack.access$1300(this.this$0, this.segmentIndex).getDecoderStartTime());
-          localObject1 = localObject2;
-          VideoDecoderTrack.access$902(this.this$0, new VideoDecoderTrack.DecoderWrapper(this.this$0, null));
-          localObject1 = localObject2;
-          VideoDecoderTrack.access$900(this.this$0).outputSurface = localSurface;
-          localObject1 = localObject2;
-          VideoDecoderTrack.access$900(this.this$0).decoder = ((IVideoDecoder)localObject2);
-          localObject1 = localObject2;
-          VideoDecoderTrack.access$900(this.this$0).extractor = this.videoAsset;
-          localObject1 = localObject2;
-          VideoDecoderTrack.access$900(this.this$0).segmentIndex = this.segmentIndex;
-          localObject1 = localObject2;
-          Logger.d(VideoDecoderTrack.access$400(), "DecoderCreateThread success - " + this.videoAsset.assetPath);
+          if (((IVideoDecoder.Params)localObject2).sourceType == 3) {
+            VideoDecoderTrack.access$300(this.this$0, (Surface)localObject1);
+          }
+          if (localIVideoDecoder == null) {
+            return;
+          }
+          localIVideoDecoder.start(VideoDecoderTrack.access$1400(this.this$0, this.segmentIndex).getTimeRange(), VideoDecoderTrack.access$1400(this.this$0, this.segmentIndex).getDecoderStartTime());
+          VideoDecoderTrack.access$1002(this.this$0, new VideoDecoderTrack.DecoderWrapper(this.this$0, null));
+          VideoDecoderTrack.access$1000(this.this$0).outputSurface = ((Surface)localObject1);
+          VideoDecoderTrack.access$1000(this.this$0).decoder = localIVideoDecoder;
+          VideoDecoderTrack.access$1000(this.this$0).extractor = this.videoAsset;
+          VideoDecoderTrack.access$1000(this.this$0).segmentIndex = this.segmentIndex;
+          localObject1 = VideoDecoderTrack.access$500();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("DecoderCreateThread success - ");
+          ((StringBuilder)localObject2).append(this.videoAsset.assetPath);
+          Logger.d((String)localObject1, ((StringBuilder)localObject2).toString());
           return;
         }
-        catch (Exception localException2)
-        {
-          localObject2 = localObject1;
-          localObject1 = localException2;
-        }
+        catch (Exception localException1) {}
+        Logger.e(VideoDecoderTrack.access$500(), "createDecoder: ", localException2);
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        Object localObject1;
-        Object localObject2 = null;
-        continue;
+        localIVideoDecoder = null;
       }
-      Logger.e(VideoDecoderTrack.access$400(), (Throwable)localObject1);
-      VideoDecoderTrack.access$500(this.this$0, (IVideoDecoder)localObject2);
-      return;
-      localObject2 = new VideoDecoder(this.videoAsset.assetPath, localException2);
+      VideoDecoderTrack.access$600(this.this$0, localIVideoDecoder);
     }
   }
   
   private void releaseNextDecoder()
   {
-    synchronized (VideoDecoderTrack.access$800(this.this$0))
+    synchronized (VideoDecoderTrack.access$900(this.this$0))
     {
-      if (VideoDecoderTrack.access$900(this.this$0) != null)
+      if (VideoDecoderTrack.access$1000(this.this$0) != null)
       {
-        VideoDecoderTrack.DecoderWrapper.access$300(VideoDecoderTrack.access$900(this.this$0));
-        VideoDecoderTrack.access$902(this.this$0, null);
+        VideoDecoderTrack.DecoderWrapper.access$400(VideoDecoderTrack.access$1000(this.this$0));
+        VideoDecoderTrack.access$1002(this.this$0, null);
       }
       return;
     }
@@ -107,33 +101,43 @@ class VideoDecoderTrack$DecoderCreateThread
   
   public void run()
   {
-    ??? = VideoDecoderTrack.access$400();
-    StringBuilder localStringBuilder = new StringBuilder().append("DecoderCreateThread start - ").append(this.videoAsset.assetPath).append(" - ");
-    if (this.outputSurface != null) {}
-    for (boolean bool = true;; bool = false)
+    ??? = VideoDecoderTrack.access$500();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DecoderCreateThread start - ");
+    localStringBuilder.append(this.videoAsset.assetPath);
+    localStringBuilder.append(" - ");
+    boolean bool;
+    if (this.outputSurface != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    Logger.d((String)???, localStringBuilder.toString());
+    if (VideoDecoderTrack.access$700(this.this$0))
     {
-      Logger.d((String)???, bool);
-      if (!VideoDecoderTrack.access$600(this.this$0)) {
-        break;
-      }
-      VideoDecoderTrack.access$702(this.this$0, null);
+      VideoDecoderTrack.access$802(this.this$0, null);
       return;
     }
-    synchronized (VideoDecoderTrack.access$800(this.this$0))
+    synchronized (VideoDecoderTrack.access$900(this.this$0))
     {
       checkCreateDecoder();
-      VideoDecoderTrack.access$702(this.this$0, null);
-      if (VideoDecoderTrack.access$600(this.this$0)) {
+      VideoDecoderTrack.access$802(this.this$0, null);
+      if (VideoDecoderTrack.access$700(this.this$0)) {
         releaseNextDecoder();
       }
-      Logger.d(VideoDecoderTrack.access$400(), "DecoderCreateThread finish - " + this.videoAsset.assetPath);
+      ??? = VideoDecoderTrack.access$500();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DecoderCreateThread finish - ");
+      localStringBuilder.append(this.videoAsset.assetPath);
+      Logger.d((String)???, localStringBuilder.toString());
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoderTrack.DecoderCreateThread
  * JD-Core Version:    0.7.0.1
  */

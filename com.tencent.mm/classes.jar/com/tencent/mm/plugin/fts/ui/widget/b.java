@@ -8,69 +8,76 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.fts.ui.p.a;
+import com.tencent.mm.plugin.fts.ui.p.c;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class b
+public class b
   extends Drawable
 {
+  int Giy;
+  Drawable HCU;
+  private Drawable HCV;
+  private int HCW;
+  private int HCX;
+  private int HCY;
+  private int HCZ;
+  private int HDa;
+  private int HDb;
+  boolean HDc;
+  private int HDd;
+  int HDe;
+  private int HDf;
   private Context context;
   int currentState;
-  private int nbA;
-  private int nbB;
-  private int nbC;
-  private int nbD;
-  private int nbE;
-  private int nbF;
-  private int nbG;
-  boolean nbH;
-  private int nbI;
-  int nbJ;
-  private int nbK;
-  private Drawable nby;
-  private Drawable nbz;
   private Paint paint;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(62159);
-    this.nbA = 0;
-    this.nbB = 0;
+    AppMethodBeat.i(112284);
+    this.HCW = 0;
+    this.Giy = 0;
     this.paint = new Paint(1);
-    this.nbG = 0;
-    this.nbH = false;
+    this.HDb = 0;
+    this.HDc = false;
     this.currentState = 2;
-    this.nbJ = 0;
-    this.nbK = 0;
+    this.HDe = 0;
+    this.HDf = 0;
     this.context = paramContext;
-    this.nbA = a.m(paramContext, 2131690701);
-    this.nbB = a.m(paramContext, 2131690709);
-    this.nby = paramContext.getResources().getDrawable(2130838924);
-    this.nbz = paramContext.getResources().getDrawable(2130838925);
-    this.nbG = a.fromDPToPix(paramContext, 24);
-    this.nbC = a.m(paramContext, 2131690626);
-    this.nbF = a.m(paramContext, 2131690627);
-    this.nbI = a.fromDPToPix(paramContext, 47);
-    this.nbD = a.fromDPToPix(paramContext, 47);
-    this.nbE = a.fromDPToPix(paramContext, 60);
-    this.nbK = 4;
-    ab.d("MicroMsg.FTSVoiceInputDrawable", "waveStep %s", new Object[] { Integer.valueOf(this.nbK) });
-    AppMethodBeat.o(62159);
+    this.HCW = a.w(paramContext, p.a.wechat_green);
+    this.Giy = a.w(paramContext, p.a.white);
+    this.HCU = paramContext.getResources().getDrawable(p.c.fts_microphone_normal);
+    this.HCV = paramContext.getResources().getDrawable(p.c.fts_microphone_press);
+    this.HDb = a.fromDPToPix(paramContext, 24);
+    this.HCX = a.w(paramContext, p.a.voice_input_btn_outer_color);
+    this.HDa = a.w(paramContext, p.a.voice_input_btn_pressed_mask);
+    this.HDd = a.fromDPToPix(paramContext, 47);
+    this.HCY = a.fromDPToPix(paramContext, 47);
+    this.HCZ = a.fromDPToPix(paramContext, 60);
+    this.HDf = 4;
+    Log.d("MicroMsg.FTSVoiceInputDrawable", "waveStep %s", new Object[] { Integer.valueOf(this.HDf) });
+    AppMethodBeat.o(112284);
   }
   
-  private void d(Canvas paramCanvas, boolean paramBoolean)
+  public static boolean Wr(int paramInt)
   {
-    AppMethodBeat.i(62162);
-    if ((this.nby == null) || (j(paramCanvas)))
+    return paramInt < 10;
+  }
+  
+  private void e(Canvas paramCanvas, boolean paramBoolean)
+  {
+    AppMethodBeat.i(112287);
+    if ((this.HCU == null) || (p(paramCanvas)))
     {
-      AppMethodBeat.o(62162);
+      AppMethodBeat.o(112287);
       return;
     }
     Drawable localDrawable;
     if (paramBoolean) {
-      localDrawable = this.nbz;
+      localDrawable = this.HCV;
     }
-    for (int i = this.nbA;; i = this.nbB)
+    for (int i = this.HCW;; i = this.Giy)
     {
       int j = paramCanvas.getWidth() / 2;
       int k = paramCanvas.getHeight() / 2;
@@ -79,62 +86,47 @@ public final class b
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
       this.paint.setColor(i);
-      paramCanvas.drawCircle(j, k, this.nbG, this.paint);
+      paramCanvas.drawCircle(j, k, this.HDb, this.paint);
       localDrawable.setBounds(j - m, k - n, j + m, k + n);
       localDrawable.draw(paramCanvas);
-      AppMethodBeat.o(62162);
+      AppMethodBeat.o(112287);
       return;
-      localDrawable = this.nby;
+      localDrawable = this.HCU;
     }
   }
   
-  private static boolean j(Canvas paramCanvas)
+  private static boolean p(Canvas paramCanvas)
   {
-    AppMethodBeat.i(62164);
+    AppMethodBeat.i(112289);
     if ((paramCanvas == null) || (paramCanvas.getWidth() == 0) || (paramCanvas.getHeight() == 0))
     {
-      AppMethodBeat.o(62164);
+      AppMethodBeat.o(112289);
       return true;
     }
-    AppMethodBeat.o(62164);
+    AppMethodBeat.o(112289);
     return false;
   }
   
-  public static boolean wD(int paramInt)
+  public void draw(Canvas paramCanvas)
   {
-    return paramInt < 10;
-  }
-  
-  public final void bDo()
-  {
-    AppMethodBeat.i(62160);
-    ab.d("MicroMsg.FTSVoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
-    this.currentState = 2;
-    this.nbJ = 0;
-    invalidateSelf();
-    AppMethodBeat.o(62160);
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(62161);
+    AppMethodBeat.i(112286);
     int i;
     int j;
-    if (((this.currentState == 6) || (this.currentState == 7)) && (!j(paramCanvas)))
+    if (((this.currentState == 6) || (this.currentState == 7)) && (!p(paramCanvas)))
     {
       i = paramCanvas.getWidth() >> 1;
       j = paramCanvas.getHeight() >> 1;
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
-      this.paint.setColor(this.nbC);
+      this.paint.setColor(this.HCX);
       if (this.currentState != 7) {
         break label261;
       }
-      if (this.nbH)
+      if (this.HDc)
       {
-        this.nbI -= this.nbK;
-        this.nbI = Math.min(Math.max(this.nbD, this.nbI), this.nbE);
-        paramCanvas.drawCircle(i, j, this.nbI, this.paint);
+        this.HDd -= this.HDf;
+        this.HDd = Math.min(Math.max(this.HCY, this.HDd), this.HCZ);
+        paramCanvas.drawCircle(i, j, this.HDd, this.paint);
       }
     }
     else
@@ -143,58 +135,68 @@ public final class b
       if ((this.currentState != 6) && (this.currentState != 7)) {
         break label281;
       }
-      d(paramCanvas, true);
+      e(paramCanvas, true);
     }
     for (;;)
     {
-      if (((this.currentState == 6) || (this.currentState == 7)) && (!j(paramCanvas)))
+      if (((this.currentState == 6) || (this.currentState == 7)) && (!p(paramCanvas)))
       {
         this.paint.setStyle(Paint.Style.FILL);
-        this.paint.setColor(this.nbF);
-        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.nbG, this.paint);
+        this.paint.setColor(this.HDa);
+        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.HDb, this.paint);
       }
-      AppMethodBeat.o(62161);
+      AppMethodBeat.o(112286);
       return;
-      this.nbI += this.nbK;
+      this.HDd += this.HDf;
       break;
       label261:
-      paramCanvas.drawCircle(i, j, this.nbD, this.paint);
+      paramCanvas.drawCircle(i, j, this.HCY, this.paint);
       break label142;
       label281:
-      d(paramCanvas, false);
+      e(paramCanvas, false);
     }
   }
   
-  public final int getIntrinsicHeight()
+  public final void fzj()
   {
-    return this.nbG * 2;
+    AppMethodBeat.i(112285);
+    Log.d("MicroMsg.FTSVoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
+    this.currentState = 2;
+    this.HDe = 0;
+    invalidateSelf();
+    AppMethodBeat.o(112285);
   }
   
-  public final int getIntrinsicWidth()
+  public int getIntrinsicHeight()
   {
-    AppMethodBeat.i(62163);
+    return this.HDb * 2;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    AppMethodBeat.i(112288);
     if (this.context == null)
     {
-      AppMethodBeat.o(62163);
+      AppMethodBeat.o(112288);
       return 0;
     }
-    int i = a.gw(this.context);
-    AppMethodBeat.o(62163);
+    int i = a.ms(this.context);
+    AppMethodBeat.o(112288);
     return i;
   }
   
-  public final int getOpacity()
+  public int getOpacity()
   {
     return -3;
   }
   
-  public final void setAlpha(int paramInt) {}
+  public void setAlpha(int paramInt) {}
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

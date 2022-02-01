@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/dgm" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_alignParentLeft="true" />
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/dgl" android:layout_toRightOf="@id/dgm" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/ayq" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/kdq" android:layout_width="fill_parent" android:layout_height="25.0dip" android:maxEms="8" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/ayq" android:textColor="@color/black" android:ellipsize="end" android:id="@id/kdq" android:layout_width="fill_parent" android:layout_height="25.0dip" android:maxEms="8" android:singleLine="true" android:includeFontPadding="false" />
         <TextView android:textSize="@dimen/aym" android:textColor="@color/bn" android:id="@id/kdr" android:layout_width="fill_parent" android:layout_height="20.0dip" android:includeFontPadding="false" android:layout_below="@id/kdq" android:layout_alignLeft="@id/kdq" android:layout_alignRight="@id/kdq" />
     </RelativeLayout>
     <ImageView android:id="@id/dgl" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />

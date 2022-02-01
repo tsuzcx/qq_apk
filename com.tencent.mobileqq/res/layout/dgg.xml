@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/nfp" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/mwl" android:padding="4.0dip" android:layout_width="@dimen/n5" android:layout_height="@dimen/n5" android:src="@drawable/jhs" android:scaleType="fitXY" app:layout_constraintEnd_toEndOf="fic" app:layout_constraintTop_toTopOf="fic" />
+        <com.tencent.timi.game.team.impl.floating.WaveAvatarRoundView android:id="@id/qzy" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="3.0dip" app:layout_constraintEnd_toEndOf="@id/mwl" app:layout_constraintTop_toTopOf="@id/mwl" />
+        <Space android:id="@id/iz9" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="50.0dip" app:layout_constraintEnd_toEndOf="@id/qzy" app:layout_constraintStart_toStartOf="@id/qzy" app:layout_constraintTop_toTopOf="@id/qzy" />
+        <com.tencent.timi.game.team.impl.floating.TeamFloatingStateView android:id="@id/q6c" android:layout_width="75.0dip" android:layout_height="32.0dip" app:layout_constraintEnd_toEndOf="@id/qzy" app:layout_constraintStart_toStartOf="@id/qzy" app:layout_constraintTop_toBottomOf="@id/iz9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout android:id="@id/nn9" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="19.0dip">
+        <ImageView android:id="@id/nn7" android:layout_width="55.0dip" android:layout_height="19.0dip" android:scaleType="fitXY" />
+        <View android:layout_gravity="right" android:id="@id/nn8" android:background="@drawable/gzc" android:layout_width="@dimen/ng" android:layout_height="@dimen/ng" />
+    </FrameLayout>
+</FrameLayout>

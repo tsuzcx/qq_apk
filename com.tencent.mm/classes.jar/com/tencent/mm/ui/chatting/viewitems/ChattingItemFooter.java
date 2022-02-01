@@ -7,150 +7,85 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.q;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.List;
+import com.tencent.mm.R.g;
+import com.tencent.mm.am.s;
+import com.tencent.mm.an.k;
+import com.tencent.mm.an.w;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ChattingItemFooter
   extends LinearLayout
   implements View.OnClickListener
 {
-  private static final int[] zVW = { 2130838265, 2130838265, 2130838271, 2130838268 };
-  private static final int[] zVX = { 2130840097, 2130840101, 2130840106, 2130840103 };
-  private String ikj;
+  private static final int[] aeUk = { R.g.fna, R.g.fna, R.g.fnc, R.g.fnb };
+  private static final int[] aeUl = { R.g.foU, R.g.foV, R.g.foX, R.g.foW };
   private Context mContext;
   private LayoutInflater mInflater;
+  private String sWX;
   
   public ChattingItemFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(33207);
+    AppMethodBeat.i(37299);
     this.mContext = paramContext;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    AppMethodBeat.o(33207);
+    AppMethodBeat.o(37299);
   }
   
-  private TextView a(int paramInt1, int paramInt2, LinearLayout.LayoutParams paramLayoutParams)
+  private void c(k paramk)
   {
-    AppMethodBeat.i(33209);
-    if (paramInt1 < paramInt2)
-    {
-      paramLayoutParams = (TextView)getChildAt(paramInt1);
-      AppMethodBeat.o(33209);
-      return paramLayoutParams;
-    }
-    TextView localTextView = (TextView)this.mInflater.inflate(2130969062, null);
-    localTextView.setLongClickable(false);
-    localTextView.setOnClickListener(this);
-    localTextView.setLayoutParams(paramLayoutParams);
-    addView(localTextView);
-    AppMethodBeat.o(33209);
-    return localTextView;
-  }
-  
-  private void d(j paramj)
-  {
-    AppMethodBeat.i(33210);
-    paramj = new q(this.ikj, paramj.getInfo());
-    aw.Rc().a(paramj, 0);
-    AppMethodBeat.o(33210);
-  }
-  
-  public final boolean m(List<j> paramList, String paramString)
-  {
-    AppMethodBeat.i(33208);
-    if ((paramList == null) || (paramList.size() <= 0))
-    {
-      ab.d("ChattingItemFooter", "no menulist!");
-      setVisibility(8);
-      AppMethodBeat.o(33208);
-      return false;
-    }
-    this.ikj = paramString;
-    int i = getChildCount();
-    paramString = zVW;
-    Object localObject = new LinearLayout.LayoutParams(0, -1);
-    ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-    int j = paramList.size();
-    switch (j)
-    {
-    }
-    for (;;)
-    {
-      if ((i > j) && (i - 1 > 0)) {
-        removeViews(j, i - 1);
-      }
-      setLongClickable(true);
-      setVisibility(0);
-      AppMethodBeat.o(33208);
-      return true;
-      paramList = (j)paramList.get(0);
-      localObject = a(0, i, (LinearLayout.LayoutParams)localObject);
-      ((TextView)localObject).setText(paramList.name);
-      ((TextView)localObject).setTag(paramList);
-      ((TextView)localObject).setBackgroundResource(paramString[3]);
-      continue;
-      j localj = (j)paramList.get(1);
-      TextView localTextView = a(1, i, (LinearLayout.LayoutParams)localObject);
-      localTextView.setText(localj.name);
-      localTextView.setTag(localj);
-      localTextView.setBackgroundResource(paramString[1]);
-      localj = (j)paramList.get(0);
-      localTextView = a(0, i, (LinearLayout.LayoutParams)localObject);
-      localTextView.setText(localj.name);
-      localTextView.setTag(localj);
-      localTextView.setBackgroundResource(paramString[0]);
-      paramList = (j)paramList.get(j - 1);
-      localObject = a(j - 1, i, (LinearLayout.LayoutParams)localObject);
-      ((TextView)localObject).setText(paramList.name);
-      ((TextView)localObject).setTag(paramList);
-      ((TextView)localObject).setBackgroundResource(paramString[2]);
-    }
+    AppMethodBeat.i(37300);
+    paramk = new w(this.sWX, paramk.getInfo());
+    bh.aZW().a(paramk, 0);
+    AppMethodBeat.o(37300);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(33211);
+    AppMethodBeat.i(37301);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemFooter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     paramView = paramView.getTag();
-    if (!(paramView instanceof j))
+    if (!(paramView instanceof k))
     {
-      AppMethodBeat.o(33211);
+      a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemFooter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(37301);
       return;
     }
-    paramView = (j)paramView;
+    paramView = (k)paramView;
     switch (paramView.type)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(33211);
+      a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemFooter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(37301);
       return;
-      ab.d("ChattingItemFooter", "get latest message");
-      paramView.state = j.fwo;
-      d(paramView);
-      AppMethodBeat.o(33211);
-      return;
-      ab.d("ChattingItemFooter", "start webview url");
-      paramView.state = j.fwo;
-      d(paramView);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramView.value);
-      localIntent.putExtra("showShare", false);
-      localIntent.putExtra("geta8key_username", this.ikj);
-      d.b(this.mContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      Log.d("ChattingItemFooter", "get latest message");
+      paramView.state = k.owm;
+      c(paramView);
+      continue;
+      Log.d("ChattingItemFooter", "start webview url");
+      paramView.state = k.owm;
+      c(paramView);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", paramView.value);
+      ((Intent)localObject).putExtra("showShare", false);
+      ((Intent)localObject).putExtra("geta8key_username", this.sWX);
+      ((Intent)localObject).putExtra("key_enable_teen_mode_check", true);
+      c.b(this.mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ChattingItemFooter
  * JD-Core Version:    0.7.0.1
  */

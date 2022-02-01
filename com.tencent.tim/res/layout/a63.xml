@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout android:background="@color/al3" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/eek" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="#ff333333" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/az6" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/close" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/do9" android:scaleType="centerInside" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/gf4" android:background="@color/al3" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/eek" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center" android:id="@id/gf5" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center" android:id="@id/hzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/pwu" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView android:id="@id/b4j" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:layout_above="@id/ac1" android:layout_below="@id/gf4" android:splitMotionEvents="false" />
+    <TextView android:textSize="14.0dip" android:gravity="center_vertical" android:id="@id/k6m" android:background="@color/al3" android:paddingLeft="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="44.0dip" />
+    <include android:id="@id/f_g" android:visibility="gone" layout="@layout/a66" />
+    <include android:id="@id/f_w" android:visibility="gone" layout="@layout/a9j" />
+    <ImageView android:id="@id/aaf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/doe" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ac1" android:background="@color/al3" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_toLeftOf="@id/aaf" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/input" android:background="@drawable/z0" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/dtx" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/b3p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/dog" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/ir0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/doh" />
+    </LinearLayout>
+    <View android:id="@id/bmt" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/ac1" />
+    <FrameLayout android:id="@id/fx1" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/ikq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="#ffa18cd1" android:id="@id/c9l" android:background="#fffbc2eb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout>

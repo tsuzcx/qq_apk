@@ -5,22 +5,22 @@ import android.view.WindowInsets;
 
 public final class av
 {
-  private final Object mp;
+  private final Object ol;
   
   private av(Object paramObject)
   {
-    this.mp = paramObject;
+    this.ol = paramObject;
   }
   
-  static Object a(av paramav)
+  static Object c(av paramav)
   {
     if (paramav == null) {
       return null;
     }
-    return paramav.mp;
+    return paramav.ol;
   }
   
-  static av n(Object paramObject)
+  static av u(Object paramObject)
   {
     if (paramObject == null) {
       return null;
@@ -31,7 +31,7 @@ public final class av
   public final av a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return new av(((WindowInsets)this.mp).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
+      return new av(((WindowInsets)this.ol).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
     }
     return null;
   }
@@ -46,18 +46,18 @@ public final class av
         return false;
       }
       paramObject = (av)paramObject;
-      if (this.mp != null) {
+      if (this.ol != null) {
         break;
       }
-    } while (paramObject.mp == null);
+    } while (paramObject.ol == null);
     return false;
-    return this.mp.equals(paramObject.mp);
+    return this.ol.equals(paramObject.ol);
   }
   
   public final int getSystemWindowInsetBottom()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mp).getSystemWindowInsetBottom();
+      return ((WindowInsets)this.ol).getSystemWindowInsetBottom();
     }
     return 0;
   }
@@ -65,7 +65,7 @@ public final class av
   public final int getSystemWindowInsetLeft()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mp).getSystemWindowInsetLeft();
+      return ((WindowInsets)this.ol).getSystemWindowInsetLeft();
     }
     return 0;
   }
@@ -73,7 +73,7 @@ public final class av
   public final int getSystemWindowInsetRight()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mp).getSystemWindowInsetRight();
+      return ((WindowInsets)this.ol).getSystemWindowInsetRight();
     }
     return 0;
   }
@@ -81,23 +81,23 @@ public final class av
   public final int getSystemWindowInsetTop()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.mp).getSystemWindowInsetTop();
+      return ((WindowInsets)this.ol).getSystemWindowInsetTop();
     }
     return 0;
   }
   
   public final int hashCode()
   {
-    if (this.mp == null) {
+    if (this.ol == null) {
       return 0;
     }
-    return this.mp.hashCode();
+    return this.ol.hashCode();
   }
   
   public final boolean isConsumed()
   {
     if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.mp).isConsumed();
+      return ((WindowInsets)this.ol).isConsumed();
     }
     return false;
   }

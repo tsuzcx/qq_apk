@@ -2,24 +2,25 @@ package com.tencent.mm.plugin.appbrand.widget;
 
 import android.content.Context;
 import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private float Tb;
-  private float jaD;
-  private float jaE;
-  private float jaF;
-  private float jaG;
-  private boolean jaH;
-  private ak mHandler;
+  private MMHandler mHandler;
   private boolean mIsStart;
+  private float mProgress;
+  private float uxL;
+  private float uxM;
+  private float uxN;
+  private float uxO;
+  private boolean uxP;
   
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,26 +30,50 @@ public class MMFalseProgressBar
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(87444);
+    AppMethodBeat.i(135398);
     this.mIsStart = false;
-    this.Tb = 0.0F;
-    this.jaH = true;
-    this.mHandler = new MMFalseProgressBar.1(this, Looper.getMainLooper());
-    setMax(1000);
-    if (at.ha(ah.getContext()))
+    this.mProgress = 0.0F;
+    this.uxP = true;
+    this.mHandler = new MMHandler(Looper.getMainLooper())
     {
-      this.jaD = 4.0F;
-      this.jaE = 1.0F;
-      this.jaF = 0.3F;
-      this.jaG = 50.0F;
-      AppMethodBeat.o(87444);
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(135397);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.a(MMFalseProgressBar.this);
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.b(MMFalseProgressBar.this);
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.c(MMFalseProgressBar.this);
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.d(MMFalseProgressBar.this);
+        }
+      }
+    };
+    setMax(1000);
+    if (NetStatusUtil.isWifiOr4G(MMApplicationContext.getContext()))
+    {
+      this.uxL = 4.0F;
+      this.uxM = 1.0F;
+      this.uxN = 0.3F;
+      this.uxO = 50.0F;
+      AppMethodBeat.o(135398);
       return;
     }
-    this.jaD = 2.0F;
-    this.jaE = 0.5F;
-    this.jaF = 0.15F;
-    this.jaG = 50.0F;
-    AppMethodBeat.o(87444);
+    this.uxL = 2.0F;
+    this.uxM = 0.5F;
+    this.uxN = 0.15F;
+    this.uxO = 50.0F;
+    AppMethodBeat.o(135398);
   }
 }
 

@@ -12,20 +12,20 @@ final class LoginIndepPass$11
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(124977);
+    AppMethodBeat.i(128155);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      LoginIndepPass.a(this.gEE);
-      AppMethodBeat.o(124977);
+      LoginIndepPass.a(this.qbg);
+      AppMethodBeat.o(128155);
       return true;
     }
-    AppMethodBeat.o(124977);
+    AppMethodBeat.o(128155);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginIndepPass.11
  * JD-Core Version:    0.7.0.1
  */

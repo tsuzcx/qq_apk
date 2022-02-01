@@ -17,7 +17,7 @@ final class c$1
       if (this.f)
       {
         x.a("clear user datas", new Object[0]);
-        a.a(c.b(this.g)).B();
+        a.a(c.b(this.g)).A();
       }
       return;
     }
@@ -32,7 +32,7 @@ final class c$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.c.1
  * JD-Core Version:    0.7.0.1
  */

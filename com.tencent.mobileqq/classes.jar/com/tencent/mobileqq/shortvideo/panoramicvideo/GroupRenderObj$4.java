@@ -15,7 +15,7 @@ class GroupRenderObj$4
     Object localObject = new ArrayList();
     int i = 0;
     BaseRenderObj localBaseRenderObj;
-    if (i < this.this$0.renderObjLists.size())
+    while (i < this.this$0.renderObjLists.size())
     {
       localBaseRenderObj = (BaseRenderObj)this.this$0.renderObjLists.get(i);
       if (i == this.val$pos)
@@ -23,12 +23,11 @@ class GroupRenderObj$4
         ((List)localObject).add(this.val$filter);
         localBaseRenderObj.destroy();
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         ((List)localObject).add(localBaseRenderObj);
       }
+      i += 1;
     }
     this.this$0.renderObjLists.clear();
     localObject = ((List)localObject).iterator();
@@ -37,12 +36,13 @@ class GroupRenderObj$4
       localBaseRenderObj = (BaseRenderObj)((Iterator)localObject).next();
       this.this$0.renderObjLists.add(localBaseRenderObj);
     }
-    this.this$0.onRenderObjChanged(this.this$0.surfaceWidth, this.this$0.surfaceHeight);
+    localObject = this.this$0;
+    ((GroupRenderObj)localObject).onRenderObjChanged(((GroupRenderObj)localObject).surfaceWidth, this.this$0.surfaceHeight);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj.4
  * JD-Core Version:    0.7.0.1
  */

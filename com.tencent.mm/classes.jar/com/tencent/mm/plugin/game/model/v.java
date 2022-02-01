@@ -1,45 +1,29 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ca;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.autogen.b.dq;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class v
-  extends ca
+  extends dq
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(111353);
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.yrM.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "key";
-    locala.columns[1] = "value";
-    locala.yrM.put("value", "BLOB");
-    localStringBuilder.append(" value BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(111353);
+    AppMethodBeat.i(41518);
+    info = aJm();
+    AppMethodBeat.o(41518);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.v
  * JD-Core Version:    0.7.0.1
  */

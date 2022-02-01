@@ -1,67 +1,154 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class avx
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public double latitude;
-  public double longitude;
+  public atz ZEc;
+  public String finderUsername;
+  public int hYl;
+  public bkk liveNoticeInfo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(10194);
+    AppMethodBeat.i(257477);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.f(1, this.latitude);
-      paramVarArgs.f(2, this.longitude);
-      AppMethodBeat.o(10194);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.eW(1);
-      int i = e.a.a.b.b.a.eW(2);
-      AppMethodBeat.o(10194);
-      return paramInt + 8 + 0 + (i + 8);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(10194);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      avx localavx = (avx)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(10194);
-        return -1;
-      case 1: 
-        localavx.latitude = Double.longBitsToDouble(locala.CLY.emy());
-        AppMethodBeat.o(10194);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.ZEc != null)
+      {
+        paramVarArgs.qD(2, this.ZEc.computeSize());
+        this.ZEc.writeFields(paramVarArgs);
+      }
+      if (this.finderUsername != null) {
+        paramVarArgs.g(3, this.finderUsername);
+      }
+      if (this.liveNoticeInfo != null)
+      {
+        paramVarArgs.qD(4, this.liveNoticeInfo.computeSize());
+        this.liveNoticeInfo.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bS(5, this.hYl);
+      AppMethodBeat.o(257477);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label652;
+      }
+    }
+    label652:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.ZEc != null) {
+        paramInt = i + i.a.a.a.qC(2, this.ZEc.computeSize());
+      }
+      i = paramInt;
+      if (this.finderUsername != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.finderUsername);
+      }
+      paramInt = i;
+      if (this.liveNoticeInfo != null) {
+        paramInt = i + i.a.a.a.qC(4, this.liveNoticeInfo.computeSize());
+      }
+      i = i.a.a.b.b.a.cJ(5, this.hYl);
+      AppMethodBeat.o(257477);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(257477);
         return 0;
       }
-      localavx.longitude = Double.longBitsToDouble(locala.CLY.emy());
-      AppMethodBeat.o(10194);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        avx localavx = (avx)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(257477);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localavx.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257477);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new atz();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((atz)localObject2).parseFrom((byte[])localObject1);
+            }
+            localavx.ZEc = ((atz)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257477);
+          return 0;
+        case 3: 
+          localavx.finderUsername = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(257477);
+          return 0;
+        case 4: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new bkk();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((bkk)localObject2).parseFrom((byte[])localObject1);
+            }
+            localavx.liveNoticeInfo = ((bkk)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257477);
+          return 0;
+        }
+        localavx.hYl = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(257477);
+        return 0;
+      }
+      AppMethodBeat.o(257477);
+      return -1;
     }
-    AppMethodBeat.o(10194);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.avx
  * JD-Core Version:    0.7.0.1
  */

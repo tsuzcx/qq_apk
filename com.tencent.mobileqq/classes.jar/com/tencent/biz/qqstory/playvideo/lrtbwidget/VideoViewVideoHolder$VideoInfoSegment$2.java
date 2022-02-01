@@ -1,36 +1,36 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import alud;
 import android.view.View;
-import bdin;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import vuz;
-import wxe;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class VideoViewVideoHolder$VideoInfoSegment$2
+class VideoViewVideoHolder$VideoInfoSegment$2
   implements Runnable
 {
-  public VideoViewVideoHolder$VideoInfoSegment$2(vuz paramvuz) {}
+  VideoViewVideoHolder$VideoInfoSegment$2(VideoViewVideoHolder.VideoInfoSegment paramVideoInfoSegment) {}
   
   public void run()
   {
     if (this.a.isCanceled()) {
       return;
     }
-    wxe.e(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "response FAILED get video info of %s", new Object[] { this.a.jdField_a_of_type_JavaLangString });
-    VideoViewVideoHolder.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, alud.a(2131716837));
-    wxe.d(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "get video info failed, hide loading view");
-    VideoViewVideoHolder.c(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 6);
-    VideoViewVideoHolder.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-    if (!bdin.g(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext())) {
-      VideoViewVideoHolder.b(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 880001);
+    SLog.e(this.a.b.a, "response FAILED get video info of %s", new Object[] { this.a.a });
+    VideoViewVideoHolder.a(this.a.b, HardCodeUtil.a(2131913625));
+    SLog.d(this.a.b.a, "get video info failed, hide loading view");
+    VideoViewVideoHolder.c(this.a.b, 6);
+    VideoViewVideoHolder.a(this.a.b, false);
+    if (!NetworkUtil.isNetworkAvailable(this.a.b.b.getContext())) {
+      VideoViewVideoHolder.b(this.a.b, 880001);
     }
-    vuz.b(this.a, new ErrorMessage(VideoViewVideoHolder.b(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "get video info failed"));
+    VideoViewVideoHolder.VideoInfoSegment localVideoInfoSegment = this.a;
+    VideoViewVideoHolder.VideoInfoSegment.b(localVideoInfoSegment, new ErrorMessage(VideoViewVideoHolder.c(localVideoInfoSegment.b), "get video info failed"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoInfoSegment.2
  * JD-Core Version:    0.7.0.1
  */

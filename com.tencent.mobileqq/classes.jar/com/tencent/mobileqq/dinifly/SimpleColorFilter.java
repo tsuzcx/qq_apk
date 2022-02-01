@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dinifly;
 
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 public class SimpleColorFilter
   extends PorterDuffColorFilter

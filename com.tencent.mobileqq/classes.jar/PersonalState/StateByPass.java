@@ -8,7 +8,7 @@ public final class StateByPass
   extends JceStruct
 {
   static stRishState cache_oRishState;
-  public stRishState oRishState;
+  public stRishState oRishState = null;
   
   public StateByPass() {}
   
@@ -32,7 +32,7 @@ public final class StateByPass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.StateByPass
  * JD-Core Version:    0.7.0.1
  */

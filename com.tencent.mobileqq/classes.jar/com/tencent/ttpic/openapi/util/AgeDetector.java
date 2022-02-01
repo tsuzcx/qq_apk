@@ -5,6 +5,7 @@ import android.graphics.PointF;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.util.Log;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.AgeType;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
@@ -38,6 +39,7 @@ public class AgeDetector
   private int mInitCheckCount = 0;
   private boolean mIsDetectingAge = false;
   private boolean mNeedDetectAge = false;
+  private boolean mSyncDetectAge = false;
   
   private void addFaceKeyPoint2Detect(int paramInt, FaceInfo paramFaceInfo, boolean paramBoolean)
   {
@@ -68,14 +70,19 @@ public class AgeDetector
   public static int getRangeIndex(int paramInt)
   {
     int i = 0;
-    while (i < AGE_RANGS.length)
+    AgeDetector.AgeRang[] arrayOfAgeRang;
+    for (;;)
     {
-      if (AGE_RANGS[i].isMatch(paramInt)) {
+      arrayOfAgeRang = AGE_RANGS;
+      if (i >= arrayOfAgeRang.length) {
+        break;
+      }
+      if (arrayOfAgeRang[i].isMatch(paramInt)) {
         return i;
       }
       i += 1;
     }
-    return AGE_RANGS.length - 1;
+    return arrayOfAgeRang.length - 1;
   }
   
   private void initThreadHandle()
@@ -91,12 +98,16 @@ public class AgeDetector
   
   private boolean isOutImage(FaceInfo paramFaceInfo, int paramInt)
   {
-    return (paramFaceInfo == null) || (((PointF)paramFaceInfo.points.get(43)).x < 5.0F) || (((PointF)paramFaceInfo.points.get(53)).x > paramInt - 5) || (((PointF)paramFaceInfo.points.get(43)).y < 5.0F) || (((PointF)paramFaceInfo.points.get(53)).y < 5.0F) || (paramFaceInfo.angles[0] < -0.75D);
+    boolean bool = false;
+    if ((paramFaceInfo == null) || (((PointF)paramFaceInfo.points.get(43)).x < 5.0F) || (((PointF)paramFaceInfo.points.get(53)).x > paramInt - 5) || (((PointF)paramFaceInfo.points.get(43)).y < 5.0F) || (((PointF)paramFaceInfo.points.get(53)).y < 5.0F) || (paramFaceInfo.angles[0] < -0.75D)) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void realDectect(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<FaceInfo> paramList)
   {
-    this.mIsDetectingAge = true;
+    updateDetectStatus(true);
     if (this.mDetectorAgeHandler == null) {
       initThreadHandle();
     }
@@ -107,7 +118,7 @@ public class AgeDetector
     this.mDetectAgeRunnable.setImgWH(paramInt1, paramInt2);
     paramInt2 = 0;
     boolean bool1 = false;
-    if (paramInt2 < paramList.size())
+    while (paramInt2 < paramList.size())
     {
       paramArrayOfByte = (FaceInfo)paramList.get(paramInt2);
       paramArrayOfByte.age = AgeType.DEFAULT.value;
@@ -115,15 +126,10 @@ public class AgeDetector
       if (!bool2) {
         bool1 = true;
       }
-      if (!bool2) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        addFaceKeyPoint2Detect(paramInt2, paramArrayOfByte, bool2);
-        paramInt2 += 1;
-        break;
-      }
+      addFaceKeyPoint2Detect(paramInt2, paramArrayOfByte, bool2 ^ true);
+      paramInt2 += 1;
     }
-    this.mIsDetectingAge = bool1;
+    updateDetectStatus(bool1);
     if (bool1)
     {
       this.mDetectorAgeHandler.removeCallbacks(this.mDetectAgeRunnable);
@@ -133,53 +139,68 @@ public class AgeDetector
   
   public void destroy()
   {
-    if (this.mDetectorAgeHandler != null)
+    Object localObject = this.mDetectorAgeHandler;
+    if (localObject != null)
     {
-      this.mDetectorAgeHandler.getLooper().quit();
+      ((Handler)localObject).getLooper().quit();
       this.mDetectorAgeHandler = null;
     }
-    if (this.mDetectAgeRunnable != null) {
-      this.mDetectAgeRunnable.clear();
+    localObject = this.mDetectAgeRunnable;
+    if (localObject != null) {
+      ((AgeDetector.DetectAgeRunnable)localObject).clear();
     }
     sInstance = null;
-    this.mIsDetectingAge = false;
+    updateDetectStatus(false);
   }
   
   public void detectAge(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<FaceInfo> paramList)
   {
     this.mFaceInfos = paramList;
-    if (!isInitial)
-    {
-      if (this.mInitCheckCount % 30 == 0) {
-        initThreadHandle();
+    if (!isInitial) {
+      if (this.mSyncDetectAge)
+      {
+        if (this.mDetectorAgeHandler == null)
+        {
+          HandlerThread localHandlerThread = new HandlerThread("AgeDetectThread");
+          localHandlerThread.start();
+          this.mDetectorAgeHandler = new Handler(localHandlerThread.getLooper());
+        }
+        getInstance().init();
       }
-      this.mInitCheckCount += 1;
+      else
+      {
+        if (this.mInitCheckCount % 30 == 0) {
+          initThreadHandle();
+        }
+        this.mInitCheckCount += 1;
+        return;
+      }
     }
-    do
+    this.DISTANCE_MAX_TWO_POINTS = (paramInt1 * 3 / 4);
+    if (!this.mNeedDetectAge)
     {
+      paramArrayOfByte = this.mDetectorAgeHandler;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.removeCallbacks(this.mDetectAgeRunnable);
+      }
+      paramArrayOfByte = this.mDetectAgeRunnable;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.reset();
+      }
+      this.mFaceCount = 0;
       return;
-      this.DISTANCE_MAX_TWO_POINTS = (paramInt1 * 3 / 4);
-      if (!this.mNeedDetectAge)
-      {
-        if (this.mDetectorAgeHandler != null) {
-          this.mDetectorAgeHandler.removeCallbacks(this.mDetectAgeRunnable);
-        }
-        if (this.mDetectAgeRunnable != null) {
-          this.mDetectAgeRunnable.reset();
-        }
-        this.mFaceCount = 0;
-        return;
+    }
+    if ((paramList != null) && (paramList.size() != this.mFaceCount)) {
+      this.mFaceCount = paramList.size();
+    }
+    if ((paramArrayOfByte != null) && (paramList != null) && (paramList.size() > 0))
+    {
+      if ((!this.mIsDetectingAge) && (this.mFaceCount > 0)) {
+        realDectect(paramArrayOfByte, paramInt1, paramInt2, paramList);
       }
-      if ((paramList != null) && (paramList.size() != this.mFaceCount)) {
-        this.mFaceCount = paramList.size();
-      }
-      if ((paramArrayOfByte == null) || (paramList == null) || (paramList.size() <= 0))
-      {
-        reset();
-        return;
-      }
-    } while ((this.mIsDetectingAge) || (this.mFaceCount <= 0));
-    realDectect(paramArrayOfByte, paramInt1, paramInt2, paramList);
+      return;
+    }
+    reset();
   }
   
   public void detectAgeAndUpdateFaceInfo(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<FaceInfo> paramList)
@@ -190,15 +211,41 @@ public class AgeDetector
   
   public List<FaceInfo> getAge()
   {
-    if ((!isInitial) || (this.mDetectAgeRunnable == null) || (this.mFaceInfos == null) || (this.mFaceInfos.size() < 1)) {
-      return this.mFaceInfos;
-    }
-    Iterator localIterator = this.mFaceInfos.iterator();
-    while (localIterator.hasNext())
+    if ((isInitial) && (this.mDetectAgeRunnable != null))
     {
-      FaceInfo localFaceInfo = (FaceInfo)localIterator.next();
-      if (localFaceInfo != null) {
-        localFaceInfo.age = this.mDetectAgeRunnable.getAgeByFaceID(localFaceInfo.faceId);
+      List localList = this.mFaceInfos;
+      if ((localList != null) && (localList.size() >= 1))
+      {
+        if (this.mSyncDetectAge) {
+          try
+          {
+            for (;;)
+            {
+              boolean bool = this.mIsDetectingAge;
+              if (!bool) {
+                break;
+              }
+              try
+              {
+                wait();
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                Log.e("AgeDetector", localInterruptedException.getMessage());
+              }
+            }
+          }
+          finally {}
+        }
+        Iterator localIterator = this.mFaceInfos.iterator();
+        while (localIterator.hasNext())
+        {
+          FaceInfo localFaceInfo = (FaceInfo)localIterator.next();
+          if (localFaceInfo != null) {
+            localFaceInfo.age = this.mDetectAgeRunnable.getAgeByFaceID(localFaceInfo.faceId);
+          }
+        }
+        return this.mFaceInfos;
       }
     }
     return this.mFaceInfos;
@@ -206,13 +253,18 @@ public class AgeDetector
   
   public void init()
   {
-    if ((isInitial) || (!FeatureManager.Features.AGE_DETECT.init()))
+    if ((!isInitial) && (FeatureManager.Features.AGE_DETECT.init()))
     {
-      LogUtils.e("AgeDetector", "AgeDetector not need init:!" + isInitial + ",ready:" + FeatureManager.Features.AGE_DETECT.isFunctionReady());
+      LogUtils.i("AgeDetector", "AgeDetector has inited.");
+      isInitial = true;
       return;
     }
-    LogUtils.i("AgeDetector", "AgeDetector has inited.");
-    isInitial = true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AgeDetector not need init:!");
+    localStringBuilder.append(isInitial);
+    localStringBuilder.append(",ready:");
+    localStringBuilder.append(FeatureManager.Features.AGE_DETECT.isFunctionReady());
+    LogUtils.e("AgeDetector", localStringBuilder.toString());
   }
   
   public boolean isDetectAge()
@@ -222,11 +274,13 @@ public class AgeDetector
   
   public void reset()
   {
-    if (this.mDetectorAgeHandler != null) {
-      this.mDetectorAgeHandler.removeCallbacks(this.mDetectAgeRunnable);
+    Object localObject = this.mDetectorAgeHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacks(this.mDetectAgeRunnable);
     }
-    if (this.mDetectAgeRunnable != null) {
-      this.mDetectAgeRunnable.reset();
+    localObject = this.mDetectAgeRunnable;
+    if (localObject != null) {
+      ((AgeDetector.DetectAgeRunnable)localObject).reset();
     }
   }
   
@@ -234,10 +288,30 @@ public class AgeDetector
   {
     this.mNeedDetectAge = paramBoolean;
   }
+  
+  public void setSyncDetectAge(boolean paramBoolean)
+  {
+    this.mSyncDetectAge = paramBoolean;
+  }
+  
+  public void updateDetectStatus(boolean paramBoolean)
+  {
+    try
+    {
+      this.mIsDetectingAge = paramBoolean;
+      notifyAll();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AgeDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/a4b" android:layout_height="@dimen/n9" android:minHeight="@dimen/n9" style="@style/mp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/w_" android:id="@id/cv" android:layout_width="0.0dip" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/n_" android:layout_weight="1.0" style="@style/lg" />
-    <RadioButton android:textSize="0.0dip" android:id="@id/ka" android:background="@drawable/a0c" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
-    <CheckBox android:id="@id/deq" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/n_" />
-</LinearLayout>
+<RelativeLayout android:id="@id/dlc" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="#ff7186b0" android:id="@id/dl8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/we" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" android:layout_alignParentEnd="true" />
+    <RelativeLayout android:id="@id/dlb" android:background="@drawable/zd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dl9" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_close2" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" android:layout_alignParentEnd="true" app:iconColor="@color/BW_100_Alpha_0_3" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dld" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_search" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="-28.0dip" android:layout_toStartOf="@id/dl_" app:iconColor="@color/BW_100_Alpha_0_3" />
+        <EditText android:textSize="17.0dip" android:textColor="@color/az" android:textColorHint="@color/BW_100_Alpha_0_3" android:id="@id/dl_" android:background="@color/ahb" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/dny" android:maxLines="1" android:singleLine="true" android:layout_centerVertical="true" android:imeOptions="actionSearch" android:layout_marginStart="@dimen/cw" android:layout_toStartOf="@id/dl9" />
+    </RelativeLayout>
+</RelativeLayout>

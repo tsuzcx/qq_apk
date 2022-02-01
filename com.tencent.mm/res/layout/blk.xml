@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hex" android:background="@color/ai8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/her" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/het" android:background="@drawable/al1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/hey" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cv">
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/hez" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/h8i" />
+            <View android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/hez" />
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/hev" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cv" />
+        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:layout_marginBottom="66.0dip">
+            <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/hes" android:background="@drawable/aky" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/we" />
+            <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/hew" android:background="@drawable/al0" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/z9" android:layout_marginStart="@dimen/cp" android:layout_toEndOf="@id/hes" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

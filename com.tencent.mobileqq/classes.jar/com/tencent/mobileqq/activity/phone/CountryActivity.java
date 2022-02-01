@@ -1,163 +1,178 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aimg;
-import aimh;
-import aimi;
-import aimj;
-import aimk;
-import aimm;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 import android.widget.TextView;
-import bczz;
-import bdgz;
-import bdjb;
-import bdjc;
-import beqq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.minigame.utils.AssetsUtil;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.utils.AssetsUtil;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.utils.PhoneCodeUtils;
+import com.tencent.mobileqq.utils.PhoneCodeUtils.CountryCode;
 import com.tencent.mobileqq.widget.IndexView;
+import com.tencent.mobileqq.widget.IndexView.OnIndexChangedListener;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class CountryActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, beqq
+  implements View.OnClickListener, IndexView.OnIndexChangedListener
 {
-  private aimj jdField_a_of_type_Aimj;
-  public aimm a;
-  public View a;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  public IndexView a;
-  private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-  public ArrayList<bdjc> a;
-  public LinkedHashMap<String, Integer> a;
-  public View b;
-  private View c;
+  IndexView a;
+  ArrayList<PhoneCodeUtils.CountryCode> b = new ArrayList();
+  LinkedHashMap<String, Integer> c = new LinkedHashMap();
+  View d;
+  View e;
+  CountryActivity.SearchDialog f;
+  private PinnedDividerListView g;
+  private CountryActivity.CountryAdapter h;
+  private View i;
+  private EditText j;
   
-  public CountryActivity()
+  static void a(View paramView, PhoneCodeUtils.CountryCode paramCountryCode)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  }
-  
-  public static void a(View paramView, bdjc parambdjc)
-  {
-    paramView = (aimk)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(parambdjc.b);
-    paramView.b.setText("+" + parambdjc.c);
-    paramView.jdField_a_of_type_Bdjc = parambdjc;
+    paramView = (CountryActivity.ItemViewHolder)paramView.getTag();
+    paramView.a.setText(paramCountryCode.c);
+    TextView localTextView = paramView.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("+");
+    localStringBuilder.append(paramCountryCode.d);
+    localTextView.setText(localStringBuilder.toString());
+    paramView.c = paramCountryCode;
   }
   
   private static View b(ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131559423, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131625568, paramViewGroup, false);
     if (paramBoolean) {
-      paramViewGroup.setPadding(paramViewGroup.getPaddingLeft(), paramViewGroup.getPaddingTop(), (int)bdgz.a(BaseApplicationImpl.sApplication, 40.0F), paramViewGroup.getPaddingBottom());
+      paramViewGroup.setPadding(paramViewGroup.getPaddingLeft(), paramViewGroup.getPaddingTop(), (int)DisplayUtils.a(BaseApplicationImpl.sApplication, 40.0F), paramViewGroup.getPaddingBottom());
     }
-    paramLayoutInflater = new aimk(null);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131364879));
-    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131364878));
+    paramLayoutInflater = new CountryActivity.ItemViewHolder(null);
+    paramLayoutInflater.a = ((TextView)paramViewGroup.findViewById(2131431449));
+    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131431448));
     paramViewGroup.setTag(paramLayoutInflater);
     return paramViewGroup;
   }
   
   public void a(View paramView)
   {
-    paramView = (aimk)paramView.getTag();
-    if (paramView.jdField_a_of_type_Bdjc != null)
+    paramView = (CountryActivity.ItemViewHolder)paramView.getTag();
+    if (paramView.c != null)
     {
-      if ((this.jdField_a_of_type_Aimm != null) && (this.jdField_a_of_type_Aimm.isShowing()) && (!super.isFinishing())) {
-        this.jdField_a_of_type_Aimm.dismiss();
+      Object localObject = this.f;
+      if ((localObject != null) && (((CountryActivity.SearchDialog)localObject).isShowing()) && (!super.isFinishing())) {
+        this.f.dismiss();
       }
-      Intent localIntent = new Intent();
-      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Bdjc.b);
-      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Bdjc.c);
-      setResult(-1, localIntent);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("k_name", paramView.c.c);
+      ((Intent)localObject).putExtra("k_code", paramView.c.d);
+      setResult(-1, (Intent)localObject);
       finish();
     }
   }
   
-  public void a(String paramString)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ("$".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
-      return;
-    }
-    PinnedDividerListView localPinnedDividerListView = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount();
-    localPinnedDividerListView.setSelection(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + i);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559421);
-    String[] arrayOfString = getResources().getStringArray(2130968651);
-    Object localObject = bdjb.a(AssetsUtil.getContentFromAssets(this, "internationalCode.json"));
+    setContentView(2131625566);
+    String[] arrayOfString = getResources().getStringArray(2130968654);
+    Object localObject = PhoneCodeUtils.b(AssetsUtil.a(this, "internationalCode.json"));
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
-      paramBundle = this.jdField_a_of_type_JavaUtilArrayList;
+      paramBundle = this.b;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = paramBundle;
-    localObject = bdjb.a(arrayOfString, this.jdField_a_of_type_JavaUtilArrayList);
+    this.b = paramBundle;
+    localObject = PhoneCodeUtils.a(arrayOfString, this.b);
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
-      paramBundle = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+      paramBundle = this.c;
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = paramBundle;
-    setTitle(alud.a(2131702999));
-    this.leftView.setText(2131690623);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375863);
-    this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131364880));
-    this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2131562582, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
-    this.c.setPadding(0, 0, 40, 0);
-    this.c.findViewById(2131363522).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131365851));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    bczz.b(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(this.c);
-    this.jdField_a_of_type_Aimj = new aimj(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Aimj);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368222));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(arrayOfString, true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
+    this.c = paramBundle;
+    setTitle(HardCodeUtil.a(2131900770));
+    this.leftView.setText(2131887625);
+    this.d = findViewById(2131444897);
+    this.e = ((View)this.d.getParent());
+    this.g = ((PinnedDividerListView)findViewById(2131431450));
+    this.i = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2131629215, this.g, false);
+    this.i.setPadding(0, 0, 40, 0);
+    this.i.findViewById(2131429816).setVisibility(8);
+    this.j = ((EditText)this.i.findViewById(2131432634));
+    this.j.setFocusableInTouchMode(false);
+    this.j.setCursorVisible(false);
+    this.j.setOnClickListener(this);
+    AccessibilityUtil.b(this.i);
+    this.g.addHeaderView(this.i);
+    this.h = new CountryActivity.CountryAdapter(this, null);
+    this.g.setAdapter(this.h);
+    this.a = ((IndexView)findViewById(2131435677));
+    this.a.setIndex(arrayOfString, true);
+    this.a.setOnIndexChangedListener(this);
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetEditText)
+    if (paramView == this.j)
     {
-      this.jdField_a_of_type_Aimm = new aimm(this, this);
-      this.jdField_a_of_type_Aimm.setCanceledOnTouchOutside(true);
-      int i = this.jdField_a_of_type_AndroidViewView.getHeight();
-      paramView = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
-      paramView.setDuration(300L);
-      paramView.setFillAfter(true);
-      paramView.setAnimationListener(new aimg(this));
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new aimh(this, i));
-      this.jdField_a_of_type_Aimm.setOnDismissListener(new aimi(this, i, localTranslateAnimation));
-      this.b.startAnimation(paramView);
+      this.f = new CountryActivity.SearchDialog(this, this);
+      this.f.setCanceledOnTouchOutside(true);
+      int k = this.d.getHeight();
+      float f1 = -k;
+      TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, f1);
+      localTranslateAnimation1.setDuration(300L);
+      localTranslateAnimation1.setFillAfter(true);
+      localTranslateAnimation1.setAnimationListener(new CountryActivity.1(this));
+      TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, f1, 0.0F);
+      localTranslateAnimation2.setDuration(300L);
+      localTranslateAnimation2.setAnimationListener(new CountryActivity.2(this, k));
+      this.f.setOnDismissListener(new CountryActivity.3(this, k, localTranslateAnimation2));
+      this.e.startAnimation(localTranslateAnimation1);
+    }
+    else
+    {
+      a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onIndexChanged(String paramString)
+  {
+    if ("$".equals(paramString))
+    {
+      this.g.setSelection(0);
       return;
     }
-    a(paramView);
+    PinnedDividerListView localPinnedDividerListView = this.g;
+    localPinnedDividerListView.setSelection(localPinnedDividerListView.getHeaderViewsCount() + ((Integer)this.c.get(paramString)).intValue());
   }
 }
 

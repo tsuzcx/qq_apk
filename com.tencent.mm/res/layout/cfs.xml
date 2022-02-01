@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/BW_97" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/gl3" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/krw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="89.0dip" android:src="@raw/icons_filled_done2" android:scaleType="fitXY" app:iconColor="@color/Brand" />
+                <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/k_p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="37.0dip" android:text="@string/kyx" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/p7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="@color/a7b" android:id="@id/pd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="¥" app:walletTypeFace="k0_" />
+                    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="@color/a7b" android:id="@id/pc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <TextView android:textSize="13.0dip" android:textColor="@color/m4" android:id="@id/i7k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/e9z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_below="@id/krw" android:layout_alignParentBottom="true">
+                <Button android:id="@id/e_0" android:text="@string/z9" style="@style/op" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/m4" android:gravity="bottom" android:id="@id/l18" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="31.0dip" android:text="" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/agw" android:background="@color/al2" android:padding="16.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:minHeight="80.0dip">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/agi" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="16.0dip" android:src="@raw/lqt_plan_logo" />
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/agj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                <TextView android:textSize="@dimen/bd" android:textColor="@color/m4" android:id="@id/agh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+            </LinearLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" app:iconColor="@color/f_" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

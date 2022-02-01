@@ -28,8 +28,9 @@ public class TAVAudioConfiguration$VolumeEdge
   
   public CMTime getDuration()
   {
-    if (this.timeRange != null) {
-      return this.timeRange.getDuration();
+    CMTimeRange localCMTimeRange = this.timeRange;
+    if (localCMTimeRange != null) {
+      return localCMTimeRange.getDuration();
     }
     return CMTime.CMTimeZero;
   }
@@ -52,10 +53,8 @@ public class TAVAudioConfiguration$VolumeEdge
   public float getVolume(CMTime paramCMTime)
   {
     long l = paramCMTime.getTimeUs();
-    float f1 = this.startVolume;
-    float f2 = this.endVolume;
-    float f3 = this.startVolume;
-    return (float)l * 1.0F / (float)getDuration().getTimeUs() * (f2 - f3) + f1;
+    float f = this.startVolume;
+    return f + (this.endVolume - f) * ((float)l * 1.0F / (float)getDuration().getTimeUs());
   }
   
   public void setDuration(@NonNull CMTime paramCMTime)
@@ -80,7 +79,7 @@ public class TAVAudioConfiguration$VolumeEdge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVAudioConfiguration.VolumeEdge
  * JD-Core Version:    0.7.0.1
  */

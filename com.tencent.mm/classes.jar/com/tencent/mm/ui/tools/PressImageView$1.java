@@ -9,10 +9,10 @@ final class PressImageView$1
   
   public final void run()
   {
-    AppMethodBeat.i(107746);
-    this.AwN.setPressed(false);
-    this.AwN.invalidate();
-    AppMethodBeat.o(107746);
+    AppMethodBeat.i(143211);
+    this.afKe.setPressed(false);
+    this.afKe.invalidate();
+    AppMethodBeat.o(143211);
   }
 }
 

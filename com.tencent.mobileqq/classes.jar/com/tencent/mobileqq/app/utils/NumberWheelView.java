@@ -1,39 +1,37 @@
 package com.tencent.mobileqq.app.utils;
 
-import amri;
-import amrj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import bhuy;
-import bice;
-import bicf;
-import bicg;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndFlingListener;
+import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 import java.util.List;
 
 public class NumberWheelView
   extends WheelView
-  implements bhuy, bice, bicf, bicg
+  implements AdapterView.OnItemSelectedListener, VerticalGallery.OnEndFlingListener, VerticalGallery.OnEndMovementListener, VerticalGallery.OnSelectViewDataUpdateListener
 {
   public int a;
-  private amri jdField_a_of_type_Amri;
-  private amrj jdField_a_of_type_Amrj;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final int h = 0;
-  private final int i = 36;
-  private final int j = 18;
-  private final int k = -7829368;
-  private final int l = 5;
-  private final int m = 1;
-  private final int n = 19;
-  private final int o = -16777216;
-  private int p;
-  private int q;
+  private final int b = 0;
+  private final int c = 36;
+  private final int d = 18;
+  private final int e = -7829368;
+  private final int f = 5;
+  private final int g = 1;
+  private final int h = 19;
+  private final int i = -16777216;
+  private NumberWheelView.ScrollStateListener j;
+  private Context k;
+  private NumberWheelView.NumberAdapter l;
+  private int m;
+  private int n;
   
   public NumberWheelView(Context paramContext)
   {
@@ -55,10 +53,10 @@ public class NumberWheelView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = 1;
-    this.p = 0;
-    this.q = 0;
+    this.k = paramContext;
+    this.a = 1;
+    this.m = 0;
+    this.n = 0;
     setNeedTranslate(true);
     setScrollCycle(true);
     setOnEndFlingListener(this);
@@ -67,51 +65,50 @@ public class NumberWheelView
     setOnSelectViewDataUpdateListener(this);
   }
   
-  private void b(View paramView, int paramInt)
+  private void a(View paramView, int paramInt)
   {
     if ((paramView instanceof WheelTextView))
     {
-      if (paramInt != 0) {
-        break label30;
+      if (paramInt == 0)
+      {
+        paramView = (WheelTextView)paramView;
+        paramView.setTextSize(18.0F);
+        paramView.setTextColor(-7829368);
+        return;
       }
-      ((WheelTextView)paramView).setTextSize(18.0F);
-      ((WheelTextView)paramView).setTextColor(-7829368);
+      if (paramInt == 1)
+      {
+        paramView = (WheelTextView)paramView;
+        paramView.setTextSize(19.0F);
+        paramView.setTextColor(-16777216);
+      }
     }
-    label30:
-    while (paramInt != 1) {
-      return;
-    }
-    ((WheelTextView)paramView).setTextSize(19.0F);
-    ((WheelTextView)paramView).setTextColor(-16777216);
   }
   
-  public int a()
+  public int getCurrent()
   {
     int i1 = getSelectedItemPosition();
-    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Amri.a.size())) {
-      return 0;
+    if ((i1 >= 0) && (i1 < this.l.a.size())) {
+      return ((Integer)this.l.a.get(i1)).intValue();
     }
-    return ((Integer)this.jdField_a_of_type_Amri.a.get(i1)).intValue();
+    return 0;
   }
   
-  public void a(View paramView, int paramInt)
+  public void onEndFling(VerticalGallery paramVerticalGallery)
   {
-    b(paramView, 1);
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Amrj != null) {
-      this.jdField_a_of_type_Amrj.a(this, paramVerticalGallery);
+    this.a = 1;
+    NumberWheelView.ScrollStateListener localScrollStateListener = this.j;
+    if (localScrollStateListener != null) {
+      localScrollStateListener.a(this, paramVerticalGallery);
     }
   }
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public void onEndMovement(VerticalGallery paramVerticalGallery)
   {
-    this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Amrj != null) {
-      this.jdField_a_of_type_Amrj.a(this, paramVerticalGallery);
+    this.a = 1;
+    NumberWheelView.ScrollStateListener localScrollStateListener = this.j;
+    if (localScrollStateListener != null) {
+      localScrollStateListener.a(this, paramVerticalGallery);
     }
   }
   
@@ -119,21 +116,21 @@ public class NumberWheelView
   {
     boolean bool = super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     if (bool) {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
     return bool;
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i1 = this.jdField_a_of_type_Amri.getCount();
+    int i1 = this.l.getCount();
     paramInt = 0;
     while (paramInt < i1)
     {
-      b(paramAdapterView.getChildAt(paramInt), 0);
+      a(paramAdapterView.getChildAt(paramInt), 0);
       paramInt += 1;
     }
-    b(paramView, 1);
+    a(paramView, 1);
   }
   
   public void onNothingSelected(AdapterView<?> paramAdapterView) {}
@@ -142,45 +139,58 @@ public class NumberWheelView
   {
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     if (bool) {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
     return bool;
+  }
+  
+  public void onSelectDataUpdate(View paramView, int paramInt)
+  {
+    a(paramView, 1);
   }
   
   public void setRange(int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramInt2)
     {
-      this.p = paramInt2;
-      this.q = paramInt1;
+      this.m = paramInt2;
+      this.n = paramInt1;
     }
-    while (this.jdField_a_of_type_Amri == null)
+    else
     {
-      this.jdField_a_of_type_Amri = new amri(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
-      setAdapter(this.jdField_a_of_type_Amri);
-      return;
-      this.q = paramInt2;
-      this.p = paramInt1;
+      this.n = paramInt2;
+      this.m = paramInt1;
     }
-    this.jdField_a_of_type_Amri.a(paramInt1, paramInt2);
+    NumberWheelView.NumberAdapter localNumberAdapter = this.l;
+    if (localNumberAdapter == null)
+    {
+      this.l = new NumberWheelView.NumberAdapter(this, this.k, 36, this.m, this.n);
+      setAdapter(this.l);
+      return;
+    }
+    localNumberAdapter.a(paramInt1, paramInt2);
   }
   
-  public void setScrollStateListener(amrj paramamrj)
+  public void setScrollStateListener(NumberWheelView.ScrollStateListener paramScrollStateListener)
   {
-    this.jdField_a_of_type_Amrj = paramamrj;
+    this.j = paramScrollStateListener;
   }
   
   public void setValue(int paramInt)
   {
-    if ((paramInt < this.p) || (paramInt > this.q)) {
-      return;
+    int i1 = this.m;
+    if (paramInt >= i1)
+    {
+      if (paramInt > this.n) {
+        return;
+      }
+      setSelection(paramInt - i1);
     }
-    setSelection(paramInt - this.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.NumberWheelView
  * JD-Core Version:    0.7.0.1
  */

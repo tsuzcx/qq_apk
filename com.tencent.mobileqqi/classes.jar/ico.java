@@ -1,57 +1,73 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
-import cooperation.qzone.model.PhotoInfo;
-import cooperation.qzone.model.PictureCutInfo;
+import cooperation.qzone.model.PhotoParam;
 
 public final class ico
   implements Parcelable.Creator
 {
-  public PhotoInfo a(Parcel paramParcel)
+  public PhotoParam a(Parcel paramParcel)
   {
     boolean bool2 = true;
-    PhotoInfo localPhotoInfo = new PhotoInfo();
-    localPhotoInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localPhotoInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.c = paramParcel.readString();
-    localPhotoInfo.d = paramParcel.readString();
-    localPhotoInfo.e = paramParcel.readString();
-    localPhotoInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localPhotoInfo.jdField_g_of_type_Int = paramParcel.readInt();
+    PhotoParam localPhotoParam = new PhotoParam();
+    localPhotoParam.jdField_a_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_b_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_c_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_b_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_c_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_d_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.g = paramParcel.readString();
+    localPhotoParam.h = paramParcel.readString();
+    localPhotoParam.i = paramParcel.readString();
+    localPhotoParam.jdField_e_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
+    localPhotoParam.j = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      localPhotoInfo.jdField_a_of_type_Boolean = bool1;
-      localPhotoInfo.f = paramParcel.readString();
-      localPhotoInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localPhotoInfo.jdField_h_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_i_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.j = paramParcel.readInt();
-      localPhotoInfo.jdField_a_of_type_CooperationQzoneModelPictureCutInfo = ((PictureCutInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localPhotoInfo.jdField_a_of_type_CooperationQzoneModelGpsInfo4LocalImage = ((GpsInfo4LocalImage)paramParcel.readParcelable(getClass().getClassLoader()));
+      localPhotoParam.jdField_a_of_type_Boolean = bool1;
+      localPhotoParam.jdField_f_of_type_Int = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label258;
+        break label270;
+      }
+      bool1 = true;
+      label215:
+      localPhotoParam.jdField_b_of_type_Boolean = bool1;
+      localPhotoParam.k = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label275;
+      }
+      bool1 = true;
+      label240:
+      localPhotoParam.jdField_c_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label280;
       }
     }
-    label258:
+    label270:
+    label275:
+    label280:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localPhotoInfo.jdField_b_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_a_of_type_Long = paramParcel.readLong();
-      localPhotoInfo.jdField_b_of_type_Long = paramParcel.readLong();
-      return localPhotoInfo;
+      localPhotoParam.jdField_d_of_type_Boolean = bool1;
+      return localPhotoParam;
       bool1 = false;
       break;
+      bool1 = false;
+      break label215;
+      bool1 = false;
+      break label240;
     }
   }
   
-  public PhotoInfo[] a(int paramInt)
+  public PhotoParam[] a(int paramInt)
   {
-    return new PhotoInfo[paramInt];
+    return null;
   }
 }
 

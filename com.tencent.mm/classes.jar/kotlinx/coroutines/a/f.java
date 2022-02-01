@@ -1,23 +1,18 @@
 package kotlinx.coroutines.a;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "()V", "isEmpty", "", "()Z", "describeRemove", "", "forEach", "", "T", "Lkotlinx/coroutines/internal/Node;", "block", "Lkotlin/Function1;", "remove", "validate", "validate$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
-public class f
-  extends h
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/BroadcastChannel;", "E", "Lkotlinx/coroutines/channels/SendChannel;", "cancel", "", "cause", "", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "openSubscription", "Lkotlinx/coroutines/channels/ReceiveChannel;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface f<E>
+  extends ab<E>
 {
-  public final boolean aQx()
-  {
-    AppMethodBeat.i(118427);
-    Throwable localThrowable = (Throwable)new UnsupportedOperationException();
-    AppMethodBeat.o(118427);
-    throw localThrowable;
-  }
+  public abstract x<E> kDj();
+  
+  public abstract void kDk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.a.f
  * JD-Core Version:    0.7.0.1
  */

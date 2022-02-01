@@ -5,22 +5,22 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aspn;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.qwallet.temp.IQWalletApiProxy;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import cooperation.qwallet.plugin.impl.QWalletHelperDelegate;
 import java.util.HashMap;
-import java.util.List;
 
 public class PatternLockUtils
 {
   public static final int ALL_FAILED_GAP_TIME = 600;
-  public static final int CHECK_PWD_MIN_TIME = 300;
+  public static final int CHECK_PWD_MIN_TIME = 120;
   private static final String KEY_CFT_USER_TYPE = "cft_user_type";
   private static final String KEY_CHECK_INTERVAL_TIME = "check_interval_time";
+  private static final String KEY_EXIT_INTERVAL_TIME = "exitinterval_time";
   private static final String KEY_FORGROUND_INTERVAL_TIME = "forground_interval_time";
   private static final String KEY_IS_FIRST_CREATE = "is_first_create";
   private static final String KEY_IS_FIRST_ENTER_AFTER_LOGIN = "isFirstEnterAfterLogin";
@@ -28,44 +28,72 @@ public class PatternLockUtils
   private static final String KEY_IS_NEW_CREATE = "is_new_create";
   private static final String KEY_LAST_UNLOCK_FAILED_TIME = "last_unlock_failed_time";
   private static final String KEY_PWD = "lock_pwd";
+  private static final String KEY_PWD_TYPE = "lock_pwd_type";
   private static final String KEY_SHAREPRE_NAME = "qwallet_patternlock";
   private static final String KEY_UNLOCK_FAILED_TIMES = "unlock_failed_times";
   public static final int LENGHT_MIN = 4;
   private static final String TAG = "Q.qwallet.pay.pattutils";
   public static final int UNLOCK_MAXTIMES = 5;
-  protected static long gLastExitWalletTime;
   
   public static String encodeToLocalPWD(Context paramContext, String paramString1, String paramString2)
   {
-    String str = QWalletHelper.getQWDevId();
+    String str = QWalletHelperDelegate.getQWDevId();
     paramContext = encodeToServerPWD(paramContext, paramString1, paramString2);
-    return MD5.toMD5(str + paramContext);
+    paramString1 = new StringBuilder();
+    paramString1.append(str);
+    paramString1.append(paramContext);
+    return MD5.toMD5(paramString1.toString());
   }
   
   public static String encodeToServerPWD(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = MD5.toMD5(paramString1 + paramString2);
-    return MD5.toMD5(paramContext + paramString2);
+    paramContext = new StringBuilder();
+    paramContext.append(paramString1);
+    paramContext.append(paramString2);
+    paramContext = MD5.toMD5(paramContext.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append(paramContext);
+    paramString1.append(paramString2);
+    return MD5.toMD5(paramString1.toString());
   }
   
   public static long getCheckIntervalTime(Context paramContext, String paramString)
   {
-    long l2 = getSharedPreferences(paramContext).getLong("check_interval_time" + paramString, -1L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getCheckIntervalTime.uin=" + paramString + ",checkIntervalTime=" + l2);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("check_interval_time");
+    localStringBuilder.append(paramString);
+    long l = paramContext.getLong(localStringBuilder.toString(), -1L);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getCheckIntervalTime.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",checkIntervalTime=");
+      paramContext.append(l);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 300L;
+    if (l < 0L) {
+      return 120L;
     }
-    return l1;
+    return l;
   }
   
   public static long getForgroundIntervalTime(Context paramContext, String paramString)
   {
-    long l = getSharedPreferences(paramContext).getLong("forground_interval_time" + paramString, -1L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getForgroundIntervalTime.uin=" + paramString + ",forgroundIntervalTime=" + l);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("forground_interval_time");
+    localStringBuilder.append(paramString);
+    long l = paramContext.getLong(localStringBuilder.toString(), -1L);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getForgroundIntervalTime.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",forgroundIntervalTime=");
+      paramContext.append(l);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     if (l < 0L) {
       return 0L;
@@ -73,30 +101,83 @@ public class PatternLockUtils
     return l;
   }
   
-  public static long getLastExitWalletTime()
+  public static long getLastExitWalletTime(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getLastExitWalletTime,gLastExitWalletTime=" + gLastExitWalletTime);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exitinterval_time");
+    localStringBuilder.append(paramString);
+    long l = paramContext.getLong(localStringBuilder.toString(), -1L);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getLastExitWalletTime.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",exitIntervalTime=");
+      paramContext.append(l);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
-    return gLastExitWalletTime;
+    if (l < 0L) {
+      return 0L;
+    }
+    return l;
   }
   
   public static long getLastUnlockFailedTime(Context paramContext, String paramString)
   {
-    long l = getSharedPreferences(paramContext).getLong("last_unlock_failed_time" + paramString, 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getLastUnlockFailedTime.uin=" + paramString + ",allFailedTime=" + l);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("last_unlock_failed_time");
+    localStringBuilder.append(paramString);
+    long l = paramContext.getLong(localStringBuilder.toString(), 0L);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getLastUnlockFailedTime.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",allFailedTime=");
+      paramContext.append(l);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     return l;
   }
   
   public static String getPWD(Context paramContext, String paramString)
   {
-    paramContext = getSharedPreferences(paramContext).getString("lock_pwd" + paramString, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getGesturePWD.uin=" + paramString + ",pw=" + paramContext);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lock_pwd");
+    localStringBuilder.append(paramString);
+    paramContext = paramContext.getString(localStringBuilder.toString(), "");
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getGesturePWD.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",pw=");
+      localStringBuilder.append(paramContext);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     return paramContext;
+  }
+  
+  public static int getPWDType(Context paramContext, String paramString)
+  {
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lock_pwd_type");
+    localStringBuilder.append(paramString);
+    int i = paramContext.getInt(localStringBuilder.toString(), 0);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getGesturePWD.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",pwdType=");
+      paramContext.append(i);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
+    }
+    return i;
   }
   
   private static SharedPreferences getSharedPreferences(Context paramContext)
@@ -106,91 +187,148 @@ public class PatternLockUtils
   
   public static boolean getSyncPatternLockState(Context paramContext, String paramString)
   {
-    boolean bool = getSharedPreferences(paramContext).getBoolean("is_need_sync" + paramString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getSyncPatternLockState.uin=" + paramString + ",isNeedSync=" + bool);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is_need_sync");
+    localStringBuilder.append(paramString);
+    boolean bool = paramContext.getBoolean(localStringBuilder.toString(), true);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getSyncPatternLockState.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",isNeedSync=");
+      paramContext.append(bool);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     return bool;
   }
   
   public static int getUnlockFailedTimes(Context paramContext, String paramString)
   {
-    int i = getSharedPreferences(paramContext).getInt("unlock_failed_times" + paramString, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "getUnlockFailedTime.uin=" + paramString + ",failedTimes=" + i);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unlock_failed_times");
+    localStringBuilder.append(paramString);
+    int i = paramContext.getInt(localStringBuilder.toString(), 0);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getUnlockFailedTime.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",failedTimes=");
+      paramContext.append(i);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     return i;
   }
   
   public static boolean isFirstCreatePatternLock(Context paramContext, String paramString)
   {
-    boolean bool = getSharedPreferences(paramContext).getBoolean("is_first_create" + paramString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "isFirstCreatePatternLock.uin=" + paramString + ",isFirst=" + bool);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is_first_create");
+    localStringBuilder.append(paramString);
+    boolean bool = paramContext.getBoolean(localStringBuilder.toString(), true);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("isFirstCreatePatternLock.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",isFirst=");
+      paramContext.append(bool);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     return bool;
   }
   
   public static boolean isFirstEnterAfterLogin(Context paramContext, String paramString)
   {
-    boolean bool = getSharedPreferences(paramContext).getBoolean("isFirstEnterAfterLogin" + paramString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "isFirstEnterAfterLogin.uin=" + paramString + ",isFirstEnterAfterLogin=" + bool);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isFirstEnterAfterLogin");
+    localStringBuilder.append(paramString);
+    boolean bool = paramContext.getBoolean(localStringBuilder.toString(), true);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("isFirstEnterAfterLogin.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",isFirstEnterAfterLogin=");
+      paramContext.append(bool);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     return bool;
   }
   
   public static boolean isNeedOpenPatternLock(Context paramContext, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      bool1 = false;
-    }
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramContext != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            String str = getPWD(paramContext, paramString);
-            if ((str == null) || (str.length() <= 0)) {
-              return false;
-            }
-            bool1 = bool2;
-          } while (isNewCreatePatternLock(paramContext, paramString));
-          bool1 = bool2;
-        } while (isFirstEnterAfterLogin(paramContext, paramString));
-        bool1 = bool2;
-      } while (getUnlockFailedTimes(paramContext, paramString) >= 5);
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      String str = getPWD(paramContext, paramString);
       bool1 = bool2;
-    } while (getCheckIntervalTime(paramContext, paramString) + getLastExitWalletTime() <= NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    return false;
+      if (str != null)
+      {
+        if (str.length() <= 0) {
+          return false;
+        }
+        if (isNewCreatePatternLock(paramContext, paramString)) {
+          return true;
+        }
+        if (isFirstEnterAfterLogin(paramContext, paramString)) {
+          return true;
+        }
+        if (getUnlockFailedTimes(paramContext, paramString) >= 5) {
+          return true;
+        }
+        long l = getCheckIntervalTime(paramContext, paramString);
+        bool1 = bool2;
+        if (getLastExitWalletTime(paramContext, paramString) + l <= NetConnInfoCenter.getServerTimeMillis() / 1000L) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public static boolean isNewCreatePatternLock(Context paramContext, String paramString)
   {
-    boolean bool = getSharedPreferences(paramContext).getBoolean("is_new_create" + paramString, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "isNewCreatePatternLock.uin=" + paramString + ",isNew=" + bool);
+    paramContext = getSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is_new_create");
+    localStringBuilder.append(paramString);
+    boolean bool = paramContext.getBoolean(localStringBuilder.toString(), false);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("isNewCreatePatternLock.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",isNew=");
+      paramContext.append(bool);
+      QLog.d("Q.qwallet.pay.pattutils", 2, paramContext.toString());
     }
     return bool;
   }
   
-  public static boolean isOpenQWalletLockWhenJumpToQWallet(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
+  public static boolean isOpenQWalletLockWhenJumpToQWallet(Activity paramActivity, BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    if ((paramActivity == null) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if (GesturePWDUtils.getAppForground(paramActivity)) {
-      return false;
-    }
-    paramString = paramString.toLowerCase();
-    if (!paramString.startsWith("mqqapi://wallet/open?")) {
-      return false;
+    if ((paramActivity != null) && (paramBaseQQAppInterface != null))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      if (((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).getAppForground(paramActivity)) {
+        return false;
+      }
+      paramString = paramString.toLowerCase();
+      if (!paramString.startsWith("mqqapi://wallet/open?")) {
+        return false;
+      }
     }
     for (;;)
     {
@@ -210,40 +348,44 @@ public class PatternLockUtils
           {
             localObject2 = localObject1[i].split("=");
             if ((localObject2 == null) || (localObject2.length != 2)) {
-              break label243;
+              break label256;
             }
             paramString.put(localObject2[0], localObject2[1]);
-            break label243;
+            break label256;
           }
         }
         localObject1 = (String)paramString.get("src_type");
         Object localObject2 = (String)paramString.get("viewtype");
         paramString = (String)paramString.get("view");
-        if ((localObject1 == null) || (!((String)localObject1).equals("web"))) {
-          break;
-        }
-        if ((localObject2 == null) || (!((String)localObject2).equals("0"))) {
-          break label252;
-        }
-        if ((paramString != null) && (!paramString.equals("0")))
+        if (localObject1 != null)
         {
-          boolean bool = paramString.equals("1");
-          if (!bool) {
+          if (!((String)localObject1).equals("web")) {
             return false;
           }
+          if (localObject2 != null)
+          {
+            if (!((String)localObject2).equals("0")) {
+              return false;
+            }
+            if ((paramString != null) && (!paramString.equals("0")))
+            {
+              boolean bool = paramString.equals("1");
+              if (!bool) {
+                return false;
+              }
+            }
+            return isPatternLockOpened(paramActivity, paramBaseQQAppInterface.getCurrentAccountUin());
+          }
         }
+        return false;
       }
       catch (Exception paramActivity)
       {
         return false;
       }
-      return isPatternLockOpened(paramActivity, paramQQAppInterface.getCurrentAccountUin());
-      label243:
+      label256:
       i += 1;
     }
-    return false;
-    label252:
-    return false;
   }
   
   public static boolean isPatternLockOpened(Context paramContext, String paramString)
@@ -252,50 +394,60 @@ public class PatternLockUtils
     return (paramContext != null) && (paramContext.length() > 0);
   }
   
-  public static String patternToString(List<aspn> paramList)
-  {
-    if (paramList == null) {
-      return "";
-    }
-    int j = paramList.size();
-    StringBuilder localStringBuilder = new StringBuilder(j);
-    int i = 0;
-    while (i < j)
-    {
-      aspn localaspn = (aspn)paramList.get(i);
-      int k = localaspn.a();
-      localStringBuilder.append((char)(localaspn.b() + k * 3 + 49));
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
   public static void setCheckIntervalTime(Context paramContext, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setCheckIntervalTime.uin=" + paramString + ",curTime=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCheckIntervalTime.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",curTime=");
+      localStringBuilder.append(paramLong);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putLong("check_interval_time" + paramString, paramLong);
-    paramContext.commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("check_interval_time");
+    localStringBuilder.append(paramString);
+    paramContext.putLong(localStringBuilder.toString(), paramLong);
+    paramContext.apply();
   }
   
   public static void setFirstCreatePatternLock(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setFirstCreatePatternLock.uin=" + paramString + ",isFirst=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setFirstCreatePatternLock.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",isFirst=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putBoolean("is_first_create" + paramString, paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is_first_create");
+    localStringBuilder.append(paramString);
+    paramContext.putBoolean(localStringBuilder.toString(), paramBoolean);
     paramContext.commit();
   }
   
   public static void setFirstEnterAfterLoginState(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setFirstEnterAfterLoginState.uin=" + paramString + ",isFirstState=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setFirstEnterAfterLoginState.uin=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",isFirstState=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("Q.qwallet.pay.pattutils", 2, ((StringBuilder)localObject).toString());
     }
-    getSharedPreferences(paramContext).edit().putBoolean("isFirstEnterAfterLogin" + paramString, paramBoolean).commit();
+    Object localObject = getSharedPreferences(paramContext).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isFirstEnterAfterLogin");
+    localStringBuilder.append(paramString);
+    ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), paramBoolean).commit();
     if (paramBoolean) {
       setSyncPatternLockState(paramContext, paramString, true);
     }
@@ -303,89 +455,161 @@ public class PatternLockUtils
   
   public static void setForgroundIntervalTime(Context paramContext, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setForgroundIntervalTime.uin=" + paramString + ",curTime=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setForgroundIntervalTime.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",curTime=");
+      localStringBuilder.append(paramLong);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putLong("forground_interval_time" + paramString, paramLong);
-    paramContext.commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("forground_interval_time");
+    localStringBuilder.append(paramString);
+    paramContext.putLong(localStringBuilder.toString(), paramLong);
+    paramContext.apply();
   }
   
-  public static void setLastExitWalletTime(long paramLong)
+  public static void setLastExitWalletTime(Context paramContext, String paramString, long paramLong)
   {
-    gLastExitWalletTime = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setLastExitWalletTime,curTime=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLastExitWalletTime,curTime=");
+      localStringBuilder.append(paramLong);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
+    paramContext = getSharedPreferences(paramContext).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exitinterval_time");
+    localStringBuilder.append(paramString);
+    paramContext.putLong(localStringBuilder.toString(), paramLong);
+    paramContext.apply();
   }
   
   public static void setLastUnlockFailedTime(Context paramContext, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setLastUnlockFailedTime.uin=" + paramString + ",curTime=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLastUnlockFailedTime.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",curTime=");
+      localStringBuilder.append(paramLong);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putLong("last_unlock_failed_time" + paramString, paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("last_unlock_failed_time");
+    localStringBuilder.append(paramString);
+    paramContext.putLong(localStringBuilder.toString(), paramLong);
     paramContext.commit();
   }
   
   public static void setNewCreatePatternLock(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setNewCreatePatternLock.uin=" + paramString + ",isNew=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setNewCreatePatternLock.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",isNew=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putBoolean("is_new_create" + paramString, paramBoolean);
-    paramContext.commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is_new_create");
+    localStringBuilder.append(paramString);
+    paramContext.putBoolean(localStringBuilder.toString(), paramBoolean);
+    paramContext.apply();
   }
   
   public static void setPWD(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setGesturePWD.uin=" + paramString1 + ",pw=" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGesturePWD.uin=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",pw=");
+      localStringBuilder.append(paramString2);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putString("lock_pwd" + paramString1, paramString2);
-    paramContext.commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lock_pwd");
+    localStringBuilder.append(paramString1);
+    paramContext.putString(localStringBuilder.toString(), paramString2);
+    paramContext.apply();
+  }
+  
+  public static void setPWDType(Context paramContext, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGesturePWD.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",pwdType=");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
+    }
+    paramContext = getSharedPreferences(paramContext).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lock_pwd_type");
+    localStringBuilder.append(paramString);
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
+    paramContext.apply();
   }
   
   public static void setSyncPatternLockState(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setSyncPatternLockState.uin=" + paramString + ",isNeedSync=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSyncPatternLockState.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",isNeedSync=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
-    getSharedPreferences(paramContext).edit().putBoolean("is_need_sync" + paramString, paramBoolean).commit();
+    paramContext = getSharedPreferences(paramContext).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is_need_sync");
+    localStringBuilder.append(paramString);
+    paramContext.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
   }
   
   public static void setUnlockFailedTimes(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.pay.pattutils", 2, "setUnlockFailedTime.uin=" + paramString + ",failedTimes=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUnlockFailedTime.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",failedTimes=");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.qwallet.pay.pattutils", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putInt("unlock_failed_times" + paramString, paramInt);
-    paramContext.commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unlock_failed_times");
+    localStringBuilder.append(paramString);
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
+    paramContext.apply();
   }
   
-  public static List<aspn> stringToPattern(String paramString)
+  public static void syncQWalletPatternLock(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < paramString.length())
-    {
-      int j = paramString.indexOf(i) - 49;
-      localArrayList.add(aspn.a(j / 3, j % 3));
-      i += 1;
-    }
-    return localArrayList;
+    ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).syncQWalletPatternLock(paramBaseQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.PatternLockUtils
  * JD-Core Version:    0.7.0.1
  */

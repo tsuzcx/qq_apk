@@ -1,11 +1,13 @@
 package com.tencent.viola.ui.baseComponent;
 
 import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.PointF;
 import android.graphics.Shader;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +19,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.viola.adapter.VComponentAdapter;
@@ -54,7 +58,6 @@ import com.tencent.viola.ui.view.VTextView;
 import com.tencent.viola.utils.VReflectionUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -83,6 +86,8 @@ public abstract class VComponent<T extends View>
   private List<VComponent.AnimationInfo> animationInfos = new CopyOnWriteArrayList();
   private VComponentCompat compat;
   private boolean fixMinHeight = false;
+  private Animator fromTransformOpacityAnimator;
+  private boolean hasPerformFromTransformOpacity;
   private ViewPropertyAnimator mAlphaAnimator;
   private AnimationModule.AnimationHolder mAnimationHolder;
   public Set<String> mAppendEvents = new HashSet();
@@ -96,9 +101,10 @@ public abstract class VComponent<T extends View>
   private long mDoubleClickSystemTime = 0L;
   private int mFrameX = 0;
   private int mFrameY = 0;
+  private boolean mHasPerformTransformAnimate;
   private IFComponentHolder mHolder;
   public T mHost;
-  public ViolaInstance mInstance;
+  protected ViolaInstance mInstance;
   private boolean mIsDestroyed = false;
   private boolean mLazy = false;
   private ConcurrentHashMap<String, Integer> mLifeCycleMap;
@@ -109,9 +115,11 @@ public abstract class VComponent<T extends View>
   private int mPreRealLeft = 0;
   private int mPreRealTop = 0;
   private int mPreRealWidth = 0;
+  private ViewPropertyAnimator mTransformAnimator;
   private int mType;
   @VComponentField(nativeReturnMethod="getVisibility", propertyName="visibility")
   private String mVisibility;
+  private VComponent.BringLayerToTopContext topIndexContext;
   
   public VComponent(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -135,210 +143,178 @@ public abstract class VComponent<T extends View>
   
   private void dealFireCommonTouchEvent(View paramView, String paramString, MotionEvent paramMotionEvent)
   {
-    float f1 = 0.0F;
     if ((this.mAppendEvents.contains(paramString)) && (!isScrollComponent())) {
       paramView = new JSONObject();
     }
-    try
+    for (;;)
     {
-      paramView.put("id", getRef());
-      if (getInstance() != null)
+      try
       {
+        paramView.put("id", getRef());
+        ViolaInstance localViolaInstance = getInstance();
+        float f1 = 0.0F;
+        if (localViolaInstance == null) {
+          break label233;
+        }
         paramMotionEvent = getInstance().getLocationOnRenderContainer(new float[] { paramMotionEvent.getRawX(), paramMotionEvent.getRawY() });
-        f2 = paramMotionEvent.x;
-        f1 = paramMotionEvent.y;
-        paramView.put("page_x", FlexConvertUtils.px2dip(f2));
-        paramView.put("page_y", FlexConvertUtils.px2dip(f1));
-        paramView.put("pageX", FlexConvertUtils.px2dip(f2) + "dp");
-        paramView.put("pageY", FlexConvertUtils.px2dip(f1) + "dp");
+        f1 = paramMotionEvent.x;
+        f2 = paramMotionEvent.y;
+        paramView.put("page_x", FlexConvertUtils.px2dip(f1));
+        paramView.put("page_y", FlexConvertUtils.px2dip(f2));
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append(FlexConvertUtils.px2dip(f1));
+        paramMotionEvent.append("dp");
+        paramView.put("pageX", paramMotionEvent.toString());
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append(FlexConvertUtils.px2dip(f2));
+        paramMotionEvent.append("dp");
+        paramView.put("pageY", paramMotionEvent.toString());
         paramView.put("name", paramString);
         paramView.put("frame", getPositionInfoRelativeToParent(0));
-        fireEvent(paramString, paramView);
-        return;
       }
-    }
-    catch (JSONException paramMotionEvent)
-    {
-      for (;;)
+      catch (JSONException paramMotionEvent)
       {
         paramMotionEvent.printStackTrace();
-        continue;
-        float f2 = 0.0F;
+      }
+      fireEvent(paramString, paramView);
+      return;
+      label233:
+      float f2 = 0.0F;
+    }
+  }
+  
+  private void execAssocioationJSFuncByName(JSONObject paramJSONObject1, String paramString, List<JSParam> paramList, JSONObject paramJSONObject2)
+  {
+    if ((paramJSONObject1 != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (!paramJSONObject1.has(paramString)) {
+        return;
+      }
+      ViolaInstance localViolaInstance = getInstance();
+      if (localViolaInstance == null) {
+        return;
+      }
+      paramJSONObject1 = paramJSONObject1.optJSONObject(paramString);
+      Iterator localIterator = paramJSONObject1.keys();
+      JSONObject localJSONObject = new JSONObject();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = paramJSONObject1.optString(str);
+        localObject = ViolaBridgeManager.getInstance().execJSFuncByNameWithResult(localViolaInstance.getRuntimeName(), (String)localObject, paramList);
+        if ((localObject != null) && (((JSParam)localObject).data != null)) {
+          localJSONObject.put(str, ((JSParam)localObject).data);
+        }
+      }
+      if (paramJSONObject1.length() > 0) {
+        paramJSONObject2.put(paramString, localJSONObject);
       }
     }
   }
   
   private void exportClickAction(String paramString)
   {
-    if (!containVR(this.mDomObj)) {}
-    VComponentAdapter localVComponentAdapter;
-    View localView;
-    do
-    {
-      do
-      {
-        return;
-        localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
-      } while (localVComponentAdapter == null);
-      localView = getHostView();
-    } while (localView == null);
-    int i = -1;
-    switch (paramString.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return;
-      case 0: 
-        localVComponentAdapter.onClick(localView, this.mDomObj.getAttributes().get("vr"));
-        return;
-        if (paramString.equals("click"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("doubleClick")) {
-            i = 1;
-          }
-        }
-        break;
-      }
-    }
-    localVComponentAdapter.onDoubleClick(localView, this.mDomObj.getAttributes().get("vr"));
-  }
-  
-  private void fireClickAction(String paramString, MotionEvent paramMotionEvent)
-  {
-    float f1 = 0.0F;
-    if ((this.mAppendEvents.contains(paramString)) && (this.mHost != null)) {}
-    for (;;)
-    {
-      JSONArray localJSONArray;
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONArray = new JSONArray();
-        localJSONObject = new JSONObject();
-        Object localObject = getPositionInfoRelativeToRoot(0);
-        if (getInstance() == null) {
-          break label504;
-        }
-        paramMotionEvent = getInstance().getLocationOnRenderContainer(new float[] { paramMotionEvent.getRawX(), paramMotionEvent.getRawY() });
-        f2 = paramMotionEvent.x;
-        f1 = paramMotionEvent.y;
-        localJSONObject.put("pageX", FlexConvertUtils.px2dip(f2) + "dp");
-        localJSONObject.put("pageY", FlexConvertUtils.px2dip(f1) + "dp");
-        localJSONObject.put("frame", localObject);
-        localJSONObject.put("state", "start");
-        paramMotionEvent = this.mHost.getTag();
-        if ((paramMotionEvent == null) || (!(paramMotionEvent instanceof HashMap))) {
-          break label467;
-        }
-        paramMotionEvent = (HashMap)paramMotionEvent;
-        localObject = paramMotionEvent.get("click");
-        if ((localObject == null) || (!(localObject instanceof Map))) {
-          break label324;
-        }
-        localObject = ((Map)localObject).entrySet().iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break label358;
-        }
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localJSONObject.put(localEntry.getKey().toString(), localEntry.getValue());
-        continue;
-        exportClickAction(paramString);
-      }
-      catch (JSONException paramMotionEvent)
-      {
-        ViolaLogUtils.e("VComponent", "mClickEventListener JSONException e:" + paramMotionEvent.getMessage());
-      }
+    if (!containVR(this.mDomObj)) {
       return;
-      label324:
-      if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich)) {
-        localJSONObject.put("index", -2);
-      }
-      label358:
-      paramMotionEvent.put("click", null);
-      for (;;)
-      {
-        paramMotionEvent = this.mDomObj.getRef();
-        if (!TextUtils.isEmpty(paramMotionEvent)) {
-          localJSONArray.put(paramMotionEvent);
-        }
-        localJSONArray.put(paramString);
-        ViolaLogUtils.d("VComponent", "mClickEventListener callData :" + localJSONArray.toString() + ", dom type = " + getDomObject().getType() + " , data " + localJSONObject.toString());
-        fireEvent(paramString, localJSONArray, localJSONObject);
-        break;
-        label467:
-        if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich)) {
-          localJSONObject.put("index", -2);
-        }
-      }
-      label504:
-      float f2 = 0.0F;
     }
+    VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+    if (localVComponentAdapter == null) {
+      return;
+    }
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    int i = -1;
+    int j = paramString.hashCode();
+    if (j != -1643834313)
+    {
+      if ((j == 94750088) && (paramString.equals("click"))) {
+        i = 0;
+      }
+    }
+    else if (paramString.equals("doubleClick")) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      if (i != 1) {
+        return;
+      }
+      localVComponentAdapter.onDoubleClick(localView, this.mDomObj.getAttributes().get("vr"));
+      return;
+    }
+    localVComponentAdapter.onClick(localView, this.mDomObj.getAttributes().get("vr"));
   }
   
   private void fireCommonTouchEvent(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      dealFireCommonTouchEvent(paramView, "touchDown", paramMotionEvent);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          dealFireCommonTouchEvent(paramView, "touchCancel", paramMotionEvent);
+          return;
+        }
+        dealFireCommonTouchEvent(paramView, "touchMove", paramMotionEvent);
+        return;
+      }
       dealFireCommonTouchEvent(paramView, "touchUp", paramMotionEvent);
       return;
-    case 2: 
-      dealFireCommonTouchEvent(paramView, "touchMove", paramMotionEvent);
-      return;
     }
-    dealFireCommonTouchEvent(paramView, "touchCancel", paramMotionEvent);
+    dealFireCommonTouchEvent(paramView, "touchDown", paramMotionEvent);
   }
   
   private int getLifeCycleConstanceFromEvent(String paramString)
   {
-    int j = 1;
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        j = 0;
-      case 0: 
-        return j;
-        if (paramString.equals("created"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("mounted"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("updated"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("destroyed")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1986762265: 
+      if (paramString.equals("destroyed")) {
+        i = 3;
       }
+      break;
+    case 1242932856: 
+      if (paramString.equals("mounted")) {
+        i = 1;
+      }
+      break;
+    case 1028554472: 
+      if (paramString.equals("created")) {
+        i = 0;
+      }
+      break;
+    case -234430277: 
+      if (paramString.equals("updated")) {
+        i = 2;
+      }
+      break;
     }
-    return 2;
-    return 3;
-    return 4;
+    int i = -1;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return 0;
+          }
+          return 4;
+        }
+        return 3;
+      }
+      return 2;
+    }
+    return 1;
   }
   
   private float getPivotXResultByStr(String paramString)
@@ -373,48 +349,121 @@ public abstract class VComponent<T extends View>
     }
   }
   
-  private void internalApplyEvents()
+  private void internalCreateViewImpl()
   {
-    int j = this.mDomObj.getEvents().size();
-    int i = 0;
-    while (i < j)
+    if (this.mContext == null)
     {
-      addEvent((String)this.mDomObj.getEvents().get(i));
-      i += 1;
-    }
-    addClickEvent();
-  }
-  
-  private void internalApplyLayout()
-  {
-    if (isLazy()) {
-      return;
-    }
-    DomObject localDomObject1 = this.mDomObj;
-    int i;
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    synchronized (DomObject.LOCK)
-    {
-      i = (int)localDomObject1.getLayoutX();
-      j = (int)localDomObject1.getStyle().getMarginRight(750);
-      k = (int)localDomObject1.getLayoutY();
-      m = (int)localDomObject1.getStyle().getMarginBottom(750);
-      n = (int)localDomObject1.getLayoutWidth();
-      i1 = (int)localDomObject1.getLayoutHeight();
-      if ((this.mPreRealWidth == n) && (this.mPreRealHeight == i1) && (this.mPreRealLeft == i) && (this.mPreRealTop == k)) {
-        return;
+      localObject = this.mParent;
+      if (localObject != null) {
+        this.mContext = ((VComponentContainer)localObject).getContext();
       }
     }
-    this.mPreRealWidth = n;
-    this.mPreRealHeight = i1;
-    this.mPreRealLeft = i;
-    this.mPreRealTop = k;
-    setHostLayoutParams(this.mHost, n, i1, i, j, k, m);
-    calFrameXY(localDomObject2);
+    Object localObject = this.mContext;
+    if (localObject != null)
+    {
+      this.mHost = initComponentHostView((Context)localObject);
+      tryCompatVR(this.mDomObj);
+      if ((this.mHost == null) && (!isVirtualComponent())) {
+        initView();
+      }
+      localObject = this.mHost;
+      if (localObject != null) {
+        ((View)localObject).setId(DomUtils.generateViewId());
+      }
+      updateLifeCycle("created");
+    }
+    else
+    {
+      ViolaLogUtils.e("createViewImpl", "Context is null");
+    }
+    trySetFromTransformOpacity();
+  }
+  
+  private void internalDestroy(boolean paramBoolean)
+  {
+    Object localObject = this.mHost;
+    if ((localObject != null) && (((View)localObject).getLayerType() == 2)) {
+      this.mHost.setLayerType(0, null);
+    }
+    removeAllEvent();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("destroy component type:");
+    ((StringBuilder)localObject).append(this.mDomObj.getType());
+    ((StringBuilder)localObject).append("; ref:");
+    ((StringBuilder)localObject).append(this.mDomObj.getRef());
+    ViolaLogUtils.d("VComponent", ((StringBuilder)localObject).toString());
+    updateLifeCycle("destroyed");
+    if (paramBoolean) {
+      this.mDomObj.destroy();
+    }
+    this.mIsDestroyed = true;
+    this.mContext = null;
+    this.animationInfos.clear();
+    localObject = this.mAlphaAnimator;
+    if (localObject != null)
+    {
+      ((ViewPropertyAnimator)localObject).cancel();
+      this.mAlphaAnimator = null;
+    }
+    localObject = this.mTransformAnimator;
+    if (localObject != null)
+    {
+      ((ViewPropertyAnimator)localObject).cancel();
+      this.mTransformAnimator = null;
+    }
+    localObject = this.fromTransformOpacityAnimator;
+    if (localObject != null)
+    {
+      ((Animator)localObject).cancel();
+      this.fromTransformOpacityAnimator = null;
+    }
+  }
+  
+  private void internalRichGesture(JSParam paramJSParam)
+  {
+    Object localObject1 = this.mAssocioationEvents;
+    if ((localObject1 != null) && (((AssocioationEvents)localObject1).mProps != null))
+    {
+      if (paramJSParam == null) {
+        return;
+      }
+      localObject1 = new ArrayList();
+      ((List)localObject1).add(paramJSParam);
+      try
+      {
+        paramJSParam = this.mAssocioationEvents.mProps;
+        int i = 0;
+        while (i < paramJSParam.length())
+        {
+          Object localObject2 = new JSONObject();
+          JSONObject localJSONObject = paramJSParam.optJSONObject(i);
+          if ((localJSONObject != null) && (localJSONObject.has(AssocioationEvents.ASSOCIOATION_PROPS_KEY_TARGET)))
+          {
+            String str = localJSONObject.optString(AssocioationEvents.ASSOCIOATION_PROPS_KEY_TARGET);
+            execAssocioationJSFuncByName(localJSONObject, AssocioationEvents.ASSOCIOATION_PROPS_KEY_STYLE, (List)localObject1, (JSONObject)localObject2);
+            execAssocioationJSFuncByName(localJSONObject, AssocioationEvents.ASSOCIOATION_PROPS_KEY_ATTR, (List)localObject1, (JSONObject)localObject2);
+            if (ViolaUtils.isStyleOrAttrChange(str, getInstance().getInstanceId(), (JSONObject)localObject2))
+            {
+              localObject2 = new MethodUpdateElement(str, (JSONObject)localObject2, this.mAssocioationEvents.sync, this.mAssocioationEvents.applyLayout);
+              if (this.mAssocioationEvents.sync) {
+                ((MethodUpdateElement)localObject2).executeAsync(getInstance().getInstanceId());
+              } else {
+                ViolaSDKManager.getInstance().getDomManager().postTransitionTask(getInstance().getInstanceId(), (DOMAction)localObject2, false);
+              }
+            }
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Exception paramJSParam)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[internalRichGesture]: ");
+        ((StringBuilder)localObject1).append(paramJSParam.getMessage());
+        ViolaLogUtils.e("VComponent", ((StringBuilder)localObject1).toString());
+      }
+    }
   }
   
   private boolean isContainCommonTouchEvent()
@@ -430,9 +479,12 @@ public abstract class VComponent<T extends View>
   private void resetBackground()
   {
     this.mBackgroundDrawable = null;
-    if (this.mHost != null) {
-      setBackgroundDrawable();
+    if (ViolaUtils.isBindDataOpmOpen())
+    {
+      setBackgroundCompat(this.mBackgroundDrawable);
+      return;
     }
+    setBackgroundDrawable();
   }
   
   private void resetBackgroundImage()
@@ -443,12 +495,30 @@ public abstract class VComponent<T extends View>
     }
     if (Build.VERSION.SDK_INT >= 16) {
       localView.setBackground(null);
-    }
-    for (;;)
-    {
-      this.mBackgroundDrawable = null;
-      return;
+    } else {
       localView.setBackgroundDrawable(null);
+    }
+    this.mBackgroundDrawable = null;
+  }
+  
+  private void resetChipChild()
+  {
+    if ((this.mHost != null) && (Build.VERSION.SDK_INT >= 21))
+    {
+      this.mHost.setOutlineProvider(null);
+      this.mHost.setClipToOutline(false);
+    }
+  }
+  
+  private void resetClipChildLegacy()
+  {
+    if ((this.mHost != null) && (Build.VERSION.SDK_INT >= 21))
+    {
+      if ((getHostView().getOutlineProvider() instanceof CornerViewOutlineProvider)) {
+        ((CornerViewOutlineProvider)getHostView().getOutlineProvider()).setRadius(0.0F);
+      }
+      getHostView().setOutlineProvider(null);
+      getHostView().setClipToOutline(false);
     }
   }
   
@@ -471,6 +541,16 @@ public abstract class VComponent<T extends View>
     localView.setPivotY(0.0F);
   }
   
+  private void setBackgroundCompat(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      getHostView().setBackground(paramDrawable);
+      return;
+    }
+    getHostView().setBackgroundDrawable(paramDrawable);
+  }
+  
   private void setBorderStyle(int paramInt, String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
@@ -478,10 +558,45 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private void setFromTransform(Object paramObject)
+  {
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    if ((this.mDomObj != null) && (this.mDomObj.getStyle().containsKey("transform_origin_parse")))
+    {
+      Pair localPair = (Pair)this.mDomObj.getStyle().get("transform_origin_parse");
+      localView.setPivotX(((Float)localPair.first).floatValue());
+      localView.setPivotY(((Float)localPair.second).floatValue());
+    }
+    setTransformValue(localView, paramObject, false);
+  }
+  
   private void setLinearGradient(Object paramObject)
   {
     if ((paramObject instanceof LinearGradient)) {
       getOrCreateBorder().setImage((Shader)paramObject);
+    }
+  }
+  
+  private void setOpacityCompat(float paramFloat)
+  {
+    if ((!this.hasPerformFromTransformOpacity) && (this.mHost != null) && (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("animationDuration")) && (this.mDomObj.getStyle().containsKey("fromTransformOpacity")))
+    {
+      Object localObject = this.fromTransformOpacityAnimator;
+      if ((localObject != null) && (((Animator)localObject).isRunning())) {
+        this.fromTransformOpacityAnimator.cancel();
+      }
+      int i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
+      localObject = this.mHost;
+      this.fromTransformOpacityAnimator = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { ((View)localObject).getAlpha(), paramFloat }).setDuration(i);
+      this.fromTransformOpacityAnimator.start();
+      this.hasPerformFromTransformOpacity = true;
+      return;
+    }
+    if ((this.mDomObj != null) && (this.mDomObj.getStyle().containsKey("opacity"))) {
+      setOpacity(paramFloat);
     }
   }
   
@@ -492,14 +607,26 @@ public abstract class VComponent<T extends View>
     if (localView == null) {
       return;
     }
-    localView.setPivotX(((Float)paramObject.first).floatValue());
-    localView.setPivotY(((Float)paramObject.second).floatValue());
+    if (this.mDomObj != null)
+    {
+      if (this.mDomObj.getAttributes().containsKey("animationDuration")) {
+        return;
+      }
+      localView.setPivotX(((Float)paramObject.first).floatValue());
+      localView.setPivotY(((Float)paramObject.second).floatValue());
+    }
   }
   
   private void setTransform(Object paramObject)
   {
     View localView = getHostView();
     if (localView == null) {
+      return;
+    }
+    if ((this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("animationDuration")) && (!this.mHasPerformTransformAnimate))
+    {
+      setTransformWithAnimate(localView, (Map)paramObject);
+      this.mHasPerformTransformAnimate = true;
       return;
     }
     setTransformValue(localView, paramObject, false);
@@ -513,96 +640,120 @@ public abstract class VComponent<T extends View>
       Object localObject = (Map.Entry)paramObject.next();
       Property localProperty = (Property)((Map.Entry)localObject).getKey();
       float f;
-      label68:
-      int i;
-      if ((paramBoolean) && (localProperty.getName().contains("scale")))
-      {
+      if ((paramBoolean) && (localProperty.getName().contains("scale"))) {
         f = 1.0F;
-        localObject = localProperty.getName();
-        i = -1;
-        switch (((String)localObject).hashCode())
-        {
-        }
+      } else if (paramBoolean) {
+        f = 0.0F;
+      } else {
+        f = ((Float)((Map.Entry)localObject).getValue()).floatValue();
       }
-      for (;;)
+      localObject = localProperty.getName();
+      int i = -1;
+      switch (((String)localObject).hashCode())
       {
-        switch (i)
-        {
-        default: 
-          break;
-        case 0: 
-          paramView.setRotation(f);
-          break;
-          if (paramBoolean)
-          {
-            f = 0.0F;
-            break label68;
-          }
-          f = ((Float)((Map.Entry)localObject).getValue()).floatValue();
-          break label68;
-          if (((String)localObject).equals("rotation"))
-          {
-            i = 0;
-            continue;
-            if (((String)localObject).equals("rotationX"))
-            {
-              i = 1;
-              continue;
-              if (((String)localObject).equals("rotationY"))
-              {
-                i = 2;
-                continue;
-                if (((String)localObject).equals("scale"))
-                {
-                  i = 3;
-                  continue;
-                  if (((String)localObject).equals("scaleX"))
-                  {
-                    i = 4;
-                    continue;
-                    if (((String)localObject).equals("scaleY"))
-                    {
-                      i = 5;
-                      continue;
-                      if (((String)localObject).equals("translation"))
-                      {
-                        i = 6;
-                        continue;
-                        if (((String)localObject).equals("translationX"))
-                        {
-                          i = 7;
-                          continue;
-                          if (((String)localObject).equals("translationY")) {
-                            i = 8;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          break;
+      default: 
+        break;
+      case 109250890: 
+        if (((String)localObject).equals("scale")) {
+          i = 3;
         }
+        break;
+      case -40300674: 
+        if (((String)localObject).equals("rotation")) {
+          i = 0;
+        }
+        break;
+      case -908189617: 
+        if (((String)localObject).equals("scaleY")) {
+          i = 5;
+        }
+        break;
+      case -908189618: 
+        if (((String)localObject).equals("scaleX")) {
+          i = 4;
+        }
+        break;
+      case -1225497656: 
+        if (((String)localObject).equals("translationY")) {
+          i = 8;
+        }
+        break;
+      case -1225497657: 
+        if (((String)localObject).equals("translationX")) {
+          i = 7;
+        }
+        break;
+      case -1249320805: 
+        if (((String)localObject).equals("rotationY")) {
+          i = 2;
+        }
+        break;
+      case -1249320806: 
+        if (((String)localObject).equals("rotationX")) {
+          i = 1;
+        }
+        break;
+      case -1840647503: 
+        if (((String)localObject).equals("translation")) {
+          i = 6;
+        }
+        break;
       }
-      paramView.setRotationX(f);
-      continue;
-      paramView.setRotationY(f);
-      continue;
-      paramView.setScaleX(f);
-      paramView.setScaleY(f);
-      continue;
-      paramView.setScaleX(f);
-      continue;
-      paramView.setScaleY(f);
-      continue;
-      paramView.setTranslationX(f);
-      paramView.setTranslationY(f);
-      continue;
-      paramView.setTranslationX(f);
-      continue;
-      paramView.setTranslationY(f);
+      switch (i)
+      {
+      default: 
+        break;
+      case 8: 
+        paramView.setTranslationY(f);
+        break;
+      case 7: 
+        paramView.setTranslationX(f);
+        break;
+      case 6: 
+        paramView.setTranslationX(f);
+        paramView.setTranslationY(f);
+        break;
+      case 5: 
+        paramView.setScaleY(f);
+        break;
+      case 4: 
+        paramView.setScaleX(f);
+        break;
+      case 3: 
+        paramView.setScaleX(f);
+        paramView.setScaleY(f);
+        break;
+      case 2: 
+        paramView.setRotationY(f);
+        break;
+      case 1: 
+        paramView.setRotationX(f);
+        break;
+      case 0: 
+        paramView.setRotation(f);
+      }
+    }
+  }
+  
+  private void setVRElementId()
+  {
+    if (this.mHost != null)
+    {
+      if (this.mDomObj == null) {
+        return;
+      }
+      VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+      if (localVComponentAdapter == null) {
+        return;
+      }
+      localVComponentAdapter.setVRElementReuseIdentifier(this.mHost, this.mDomObj.getRef());
+    }
+  }
+  
+  private void trySetFromTransformOpacity()
+  {
+    if ((this.mHost != null) && (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("animationDuration")) && (this.mDomObj.getStyle().containsKey("fromTransformOpacity"))) {
+      this.mHost.setAlpha(ViolaUtils.getFloat(this.mDomObj.getStyle().get("fromTransformOpacity"), Float.valueOf(1.0F)));
     }
   }
   
@@ -624,42 +775,60 @@ public abstract class VComponent<T extends View>
   
   public void addEvent(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.mAppendEvents.contains(paramString)) || (getRealView() == null)) {
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (!this.mAppendEvents.contains(paramString)))
+    {
+      if (getRealView() == null) {
+        return;
+      }
+      this.mAppendEvents.add(paramString);
     }
-    this.mAppendEvents.add(paramString);
   }
   
   public void addSubViewOnIntercept(ViewGroup paramViewGroup, int paramInt) {}
   
+  public void afterBringToRootByAnim() {}
+  
   @JSMethod
   public void animate(@NonNull JSONObject paramJSONObject1, @NonNull JSONObject paramJSONObject2, @Nullable String paramString)
   {
-    if ((this.mDomObj != null) && (!TextUtils.isEmpty(this.mDomObj.getRef())) && (paramJSONObject1 != null) && (paramJSONObject2 != null) && (this.mInstance != null)) {}
-    try
-    {
-      paramJSONObject2.put("styles", paramJSONObject1);
-      if (paramJSONObject2 != null)
+    if ((this.mDomObj != null) && (!TextUtils.isEmpty(this.mDomObj.getRef())) && (paramJSONObject1 != null) && (paramJSONObject2 != null) && (this.mInstance != null)) {
+      try
       {
+        paramJSONObject2.put("styles", paramJSONObject1);
         paramJSONObject1 = new MethodAnimation(this.mDomObj.getRef(), paramJSONObject2, paramString);
         ViolaSDKManager.getInstance().getDomManager().postActionDelay(this.mInstance.getInstanceId(), paramJSONObject1, false, 16L);
+        return;
       }
-      return;
-    }
-    catch (JSONException paramJSONObject1)
-    {
-      ViolaLogUtils.e("VComponent", "animate JSONException e :" + paramJSONObject1.getMessage());
+      catch (JSONException paramJSONObject1)
+      {
+        paramJSONObject2 = new StringBuilder();
+        paramJSONObject2.append("animate JSONException e :");
+        paramJSONObject2.append(paramJSONObject1.getMessage());
+        ViolaLogUtils.e("VComponent", paramJSONObject2.toString());
+      }
     }
   }
   
   public void applyEvents()
   {
-    internalApplyEvents();
+    applyEventsWithoutRecurse();
+  }
+  
+  public void applyEventsWithoutRecurse()
+  {
+    int j = this.mDomObj.getEvents().size();
+    int i = 0;
+    while (i < j)
+    {
+      addEvent((String)this.mDomObj.getEvents().get(i));
+      i += 1;
+    }
+    addClickEvent();
   }
   
   public void applyLayout()
   {
-    internalApplyLayout();
+    applyLayoutWithoutRecurse();
   }
   
   public final void applyLayout(DomObject paramDomObject)
@@ -673,30 +842,71 @@ public abstract class VComponent<T extends View>
   
   public void applyLayoutAndEvent()
   {
-    this.mDomObj.applyDrawLayoutStyle();
     applyLayout();
     applyEvents();
   }
   
+  public void applyLayoutWithoutRecurse()
+  {
+    if (isLazy()) {
+      return;
+    }
+    DomObject localDomObject = this.mDomObj;
+    synchronized (DomObject.LOCK)
+    {
+      int i = (int)localDomObject.getLayoutX();
+      int j = (int)localDomObject.getStyle().getMarginRight(750);
+      int k = (int)localDomObject.getLayoutY();
+      int m = (int)localDomObject.getStyle().getMarginBottom(750);
+      int n = (int)localDomObject.getLayoutWidth();
+      int i1 = (int)localDomObject.getLayoutHeight();
+      if ((this.mPreRealWidth == n) && (this.mPreRealHeight == i1) && (this.mPreRealLeft == i) && (this.mPreRealTop == k)) {
+        return;
+      }
+      this.mPreRealWidth = n;
+      this.mPreRealHeight = i1;
+      this.mPreRealLeft = i;
+      this.mPreRealTop = k;
+      setHostLayoutParams(this.mHost, n, i1, i, j, k, m);
+      calFrameXY(localDomObject);
+      return;
+    }
+  }
+  
+  public void beforeBringToRootByAnim() {}
+  
   public void bindData()
+  {
+    bindDataWithoutRecurse();
+  }
+  
+  public void bindData(DomObject paramDomObject)
+  {
+    if (this.mDomObj != paramDomObject)
+    {
+      ViolaLogUtils.e("VComponent", "update dom not equal");
+      return;
+    }
+    this.mDomObj = paramDomObject;
+    initLifeCycle(paramDomObject);
+    bindData();
+  }
+  
+  public void bindDataWithoutRecurse()
   {
     if (!isLazy())
     {
       updateStyle(this.mDomObj.getStyle(), false);
       updateAttrs(this.mDomObj.getAttributes());
       updateExtra(this.mDomObj.getExtra());
-      setBackgroundDrawable();
-      checkClipChild();
+      if (!ViolaUtils.isBindDataOpmOpen())
+      {
+        setBackgroundDrawable();
+        checkClipChild();
+      }
       checkDisAppearEventFromDomobject();
       updateLifeCycle("mounted");
     }
-  }
-  
-  public void bindData(DomObject paramDomObject)
-  {
-    this.mDomObj = paramDomObject;
-    initLifeCycle(paramDomObject);
-    bindData();
   }
   
   public void bindDomobj(DomObject paramDomObject)
@@ -708,6 +918,65 @@ public abstract class VComponent<T extends View>
   public void bindHolder(IFComponentHolder paramIFComponentHolder)
   {
     this.mHolder = paramIFComponentHolder;
+  }
+  
+  @JSMethod
+  public void bringLayerToRootView()
+  {
+    if (this.mHost != null)
+    {
+      if (getInstance() == null) {
+        return;
+      }
+      Object localObject1 = getInstance().getRootComp();
+      if (localObject1 != null)
+      {
+        if (((VComponentContainer)localObject1).mHost == null) {
+          return;
+        }
+        Object localObject2 = new int[2];
+        ((VComponentContainer)localObject1).mHost.getLocationInWindow((int[])localObject2);
+        Object localObject3 = new int[2];
+        this.mHost.getLocationInWindow((int[])localObject3);
+        float f1 = localObject3[0] - localObject2[0];
+        float f2 = localObject3[1] - localObject2[1];
+        localObject2 = this.mHost.getLayoutParams();
+        if ((localObject2 instanceof ViewGroup.MarginLayoutParams))
+        {
+          localObject2 = (ViewGroup.MarginLayoutParams)localObject2;
+          int i = ((ViewGroup.MarginLayoutParams)localObject2).leftMargin;
+          int j = ((ViewGroup.MarginLayoutParams)localObject2).topMargin;
+          ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)f1);
+          ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)f2);
+          localObject3 = getParent();
+          if ((localObject3 != null) && (((VComponentContainer)localObject3).mHost != null))
+          {
+            int k = ((VComponentContainer)localObject3).indexOf(this);
+            ((VComponentContainer)localObject3).getRealView().removeView(this.mHost);
+            if (this.topIndexContext == null) {
+              this.topIndexContext = new VComponent.BringLayerToTopContext(null);
+            }
+            localObject3 = this.topIndexContext;
+            ((VComponent.BringLayerToTopContext)localObject3).index = k;
+            ((VComponent.BringLayerToTopContext)localObject3).leftMargin = i;
+            ((VComponent.BringLayerToTopContext)localObject3).topMargin = j;
+            if ((this.mHost.getParent() instanceof ViewGroup)) {
+              ((ViewGroup)this.mHost.getParent()).removeView(this.mHost);
+            }
+            localObject1 = ((VComponentContainer)localObject1).getRealView();
+            if (localObject1 != null)
+            {
+              ((ViewGroup)localObject1).addView(this.mHost);
+              this.mHost.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("bringLayerToRootView, hashCode: ");
+              ((StringBuilder)localObject1).append(hashCode());
+              ViolaLogUtils.e("VComponent-TopLayer", ((StringBuilder)localObject1).toString());
+            }
+          }
+        }
+      }
+    }
   }
   
   public final void calFrameXY(DomObject paramDomObject)
@@ -724,85 +993,102 @@ public abstract class VComponent<T extends View>
   
   protected void checkClipChild()
   {
-    float[] arrayOfFloat;
     if ((Build.VERSION.SDK_INT >= 21) && (getHostView() != null))
     {
       getHostView().setOutlineProvider(null);
       getHostView().setClipToOutline(false);
       if ((getDomObject().getAttributes() != null) && (getDomObject().getAttributes().containsKey("clipChild")) && (isSetBorderRadius()))
       {
-        arrayOfFloat = getOrCreateBorder().getBorderRadiusArray();
-        if (arrayOfFloat[0] == 0.0F) {
-          break label111;
+        float[] arrayOfFloat = getOrCreateBorder().getBorderRadiusArray();
+        if (arrayOfFloat[0] != 0.0F)
+        {
+          getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[0], getContentHeight(), 0));
+          getHostView().setClipToOutline(true);
+          return;
         }
-        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[0], getContentHeight(), 0));
-        getHostView().setClipToOutline(true);
+        if ((arrayOfFloat[1] != 0.0F) && (arrayOfFloat[1] == arrayOfFloat[2]) && (arrayOfFloat[1] != arrayOfFloat[4]))
+        {
+          getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[1], getContentHeight(), 1));
+          getHostView().setClipToOutline(true);
+          return;
+        }
+        if ((arrayOfFloat[3] != 0.0F) && (arrayOfFloat[3] == arrayOfFloat[4]) && (arrayOfFloat[3] != arrayOfFloat[1]))
+        {
+          getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[3], getContentHeight(), 2));
+          getHostView().setClipToOutline(true);
+        }
       }
     }
-    label111:
-    do
-    {
-      return;
-      if ((arrayOfFloat[1] != 0.0F) && (arrayOfFloat[1] == arrayOfFloat[2]) && (arrayOfFloat[1] != arrayOfFloat[4]))
-      {
-        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[1], getContentHeight(), 1));
-        getHostView().setClipToOutline(true);
-        return;
-      }
-    } while ((arrayOfFloat[3] == 0.0F) || (arrayOfFloat[3] != arrayOfFloat[4]) || (arrayOfFloat[3] == arrayOfFloat[1]));
-    getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[3], getContentHeight(), 2));
-    getHostView().setClipToOutline(true);
   }
   
   protected void checkDisAppearEventFromDomobject()
   {
-    float f2 = 0.0F;
-    DomObject localDomObject;
-    int i;
     if ((this.mDomObj.getEvents().contains("didAppear")) || (this.mDomObj.getEvents().contains("didDisappear")) || (this.mDomObj.getEvents().contains("willAppear")))
     {
-      localDomObject = getDomObject();
-      if ((localDomObject != null) && (localDomObject.getParent() != null) && (!"page".equals(localDomObject.getType())))
+      Object localObject = getDomObject();
+      if ((localObject != null) && (((DomObject)localObject).getParent() != null) && (!"page".equals(((DomObject)localObject).getType())))
       {
-        i = 0;
-        if ((!"cell".equals(localDomObject.getType())) && (!"footer-cell".equals(localDomObject.getType()))) {
-          break label375;
+        int j = 0;
+        int i = 0;
+        while ((!"cell".equals(((DomObject)localObject).getType())) && (!"footer-cell".equals(((DomObject)localObject).getType())))
+        {
+          j = (int)(j + ((DomObject)localObject).getLayoutY() + ((DomObject)localObject).getPadding().get(1));
+          i = (int)(i + ((DomObject)localObject).getLayoutX() + ((DomObject)localObject).getPadding().get(0));
+          DomObject localDomObject = (DomObject)((DomObject)localObject).getParent();
+          if (localDomObject == null) {
+            return;
+          }
+          localObject = localDomObject;
+          if (localDomObject.getParent() == null) {
+            return;
+          }
         }
-        ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyStart(i, getRef());
-        ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyEnd(i + getDomObject().getLayoutHeight(), getRef());
-        if (!getDomObject().getAttributes().containsKey("appearScopeTop")) {
-          break label421;
+        localObject = (DomObjectCell)localObject;
+        float f1 = j;
+        ((DomObjectCell)localObject).addReDidAppearComptDyStart(f1, getRef());
+        ((DomObjectCell)localObject).addReDidAppearComptDyEnd(f1 + getDomObject().getLayoutHeight(), getRef());
+        f1 = i;
+        ((DomObjectCell)localObject).addReDidAppearComptDxStart(f1, getRef());
+        ((DomObjectCell)localObject).addReDidAppearComptDxEnd(f1 + getDomObject().getLayoutWidth(), getRef());
+        boolean bool = getDomObject().getAttributes().containsKey("appearScopeTop");
+        float f4 = 0.0F;
+        if (bool) {
+          f1 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeTop"), 750);
+        } else {
+          f1 = 0.0F;
+        }
+        float f2;
+        if (getDomObject().getAttributes().containsKey("appearScopeBottom")) {
+          f2 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeBottom"), 750);
+        } else {
+          f2 = 0.0F;
+        }
+        float f3;
+        if (getDomObject().getAttributes().containsKey("appearScopeLeft")) {
+          f3 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeLeft"), 750);
+        } else {
+          f3 = 0.0F;
+        }
+        if (getDomObject().getAttributes().containsKey("appearScopeRight")) {
+          f4 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeRight"), 750);
+        }
+        ((DomObjectCell)localObject).addReDidAppearComptDyStartOffset(f1, getRef());
+        ((DomObjectCell)localObject).addReDidAppearComptDyEndOffset(f2, getRef());
+        ((DomObjectCell)localObject).addReDidAppearComptDxStartOffset(f3, getRef());
+        ((DomObjectCell)localObject).addReDidAppearComptDxEndOffset(f4, getRef());
+        if (!((DomObjectCell)localObject).isSetComponentStaet(getRef())) {
+          ((DomObjectCell)localObject).setComponentState(getRef(), DomObjectCell.ComponentState.DIDDISAPPEAR);
+        }
+        if (getDomObject().getEvents().contains("didAppear")) {
+          ((DomObjectCell)localObject).addRegisterComponent("didAppear", getRef());
+        }
+        if (getDomObject().getEvents().contains("didDisappear")) {
+          ((DomObjectCell)localObject).addRegisterComponent("didDisappear", getRef());
+        }
+        if (getDomObject().getEvents().contains("willAppear")) {
+          ((DomObjectCell)localObject).addRegisterComponent("willAppear", getRef());
         }
       }
-    }
-    label421:
-    for (float f1 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeTop"), 750);; f1 = 0.0F)
-    {
-      if (getDomObject().getAttributes().containsKey("appearScopeBottom")) {
-        f2 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeBottom"), 750);
-      }
-      ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyStartOffset(f1, getRef());
-      ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyEndOffset(f2, getRef());
-      if (!((DomObjectCell)localDomObject).isSetComponentStaet(getRef())) {
-        ((DomObjectCell)localDomObject).setComponentState(getRef(), DomObjectCell.ComponentState.DIDDISAPPEAR);
-      }
-      if (getDomObject().getEvents().contains("didAppear")) {
-        ((DomObjectCell)localDomObject).addRegisterComponent("didAppear", getRef());
-      }
-      if (getDomObject().getEvents().contains("didDisappear")) {
-        ((DomObjectCell)localDomObject).addRegisterComponent("didDisappear", getRef());
-      }
-      if (getDomObject().getEvents().contains("willAppear")) {
-        ((DomObjectCell)localDomObject).addRegisterComponent("willAppear", getRef());
-      }
-      label375:
-      do
-      {
-        return;
-        i = (int)(i + localDomObject.getLayoutY() + localDomObject.getPadding().get(1));
-        localDomObject = (DomObject)localDomObject.getParent();
-      } while ((localDomObject == null) || (localDomObject.getParent() == null));
-      break;
     }
   }
   
@@ -826,57 +1112,138 @@ public abstract class VComponent<T extends View>
   public final void createView(Context paramContext)
   {
     if (!isLazy()) {
-      createViewImpl(paramContext);
+      createViewImplWithContext(paramContext);
     }
   }
   
   protected void createViewImpl()
   {
-    if (this.mContext != null)
-    {
-      this.mHost = initComponentHostView(this.mContext);
-      tryCompatVR(this.mDomObj);
-      if ((this.mHost == null) && (!isVirtualComponent())) {
-        initView();
-      }
-      if (this.mHost != null) {
-        this.mHost.setId(DomUtils.generateViewId());
-      }
-      updateLifeCycle("created");
-    }
+    internalCreateViewImpl();
   }
   
-  protected void createViewImpl(Context paramContext)
+  protected void createViewImplWithContext(Context paramContext)
   {
     this.mContext = paramContext;
-    createViewImpl();
+    internalCreateViewImpl();
   }
   
   public void destroy()
   {
-    if ((this.mHost != null) && (this.mHost.getLayerType() == 2)) {
-      this.mHost.setLayerType(0, null);
-    }
-    removeAllEvent();
-    ViolaLogUtils.d("VComponent", "destroy component type:" + this.mDomObj.getType() + "; ref:" + this.mDomObj.getRef());
-    updateLifeCycle("destroyed");
-    this.mDomObj.destroy();
-    this.mIsDestroyed = true;
-    this.mContext = null;
-    this.animationInfos.clear();
-    if (this.mAlphaAnimator != null)
+    internalDestroy(true);
+  }
+  
+  public void destroyComp()
+  {
+    internalDestroy(false);
+    if (this.mInstance != null)
     {
-      this.mAlphaAnimator.cancel();
-      this.mAlphaAnimator = null;
+      if (this.mDomObj == null) {
+        return;
+      }
+      DOMActionContext localDOMActionContext = ViolaUtils.getDomActionContext(this.mInstance.getInstanceId());
+      if (localDOMActionContext == null) {
+        return;
+      }
+      String str = this.mDomObj.getRef();
+      localDOMActionContext.unregisterComponent(str);
+      localDOMActionContext.unregisterDOMObject(str);
     }
   }
   
   final void doRichGestrue(JSParam paramJSParam)
   {
+    if (this.mAssocioationEvents.sync)
+    {
+      internalRichGesture(paramJSParam);
+      return;
+    }
     ViolaBridgeManager.getInstance().post(new VComponent.2(this, paramJSParam));
   }
   
-  public final void fireEvent(String paramString, Object paramObject1, Object paramObject2)
+  protected void fireClickAction(String paramString, MotionEvent paramMotionEvent)
+  {
+    if ((this.mAppendEvents.contains(paramString)) && (this.mHost != null)) {}
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new JSONArray();
+        JSONObject localJSONObject = new JSONObject();
+        Object localObject2 = getPositionInfoRelativeToRoot(0);
+        Object localObject3 = getInstance();
+        float f1 = 0.0F;
+        if (localObject3 == null) {
+          break label561;
+        }
+        paramMotionEvent = getInstance().getLocationOnRenderContainer(new float[] { paramMotionEvent.getRawX(), paramMotionEvent.getRawY() });
+        f1 = paramMotionEvent.x;
+        f2 = paramMotionEvent.y;
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append(FlexConvertUtils.px2dip(f1));
+        paramMotionEvent.append("dp");
+        localJSONObject.put("pageX", paramMotionEvent.toString());
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append(FlexConvertUtils.px2dip(f2));
+        paramMotionEvent.append("dp");
+        localJSONObject.put("pageY", paramMotionEvent.toString());
+        localJSONObject.put("frame", localObject2);
+        localJSONObject.put("viewFrame", getPositionInfoRelativeToParent(0));
+        localJSONObject.put("state", "start");
+        paramMotionEvent = this.mHost.getTag();
+        if ((paramMotionEvent != null) && ((paramMotionEvent instanceof HashMap)))
+        {
+          paramMotionEvent = (HashMap)paramMotionEvent;
+          localObject2 = paramMotionEvent.get("click");
+          if ((localObject2 != null) && ((localObject2 instanceof Map)))
+          {
+            localObject2 = ((Map)localObject2).entrySet().iterator();
+            if (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (Map.Entry)((Iterator)localObject2).next();
+              localJSONObject.put(((Map.Entry)localObject3).getKey().toString(), ((Map.Entry)localObject3).getValue());
+              continue;
+            }
+          }
+          else if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich))
+          {
+            localJSONObject.put("index", -2);
+          }
+          paramMotionEvent.put("click", null);
+        }
+        else if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich))
+        {
+          localJSONObject.put("index", -2);
+        }
+        paramMotionEvent = this.mDomObj.getRef();
+        if (!TextUtils.isEmpty(paramMotionEvent)) {
+          ((JSONArray)localObject1).put(paramMotionEvent);
+        }
+        ((JSONArray)localObject1).put(paramString);
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append("mClickEventListener callData :");
+        paramMotionEvent.append(((JSONArray)localObject1).toString());
+        paramMotionEvent.append(", dom type = ");
+        paramMotionEvent.append(getDomObject().getType());
+        paramMotionEvent.append(" , data ");
+        paramMotionEvent.append(localJSONObject.toString());
+        ViolaLogUtils.d("VComponent", paramMotionEvent.toString());
+        fireEvent(paramString, localObject1, localJSONObject);
+      }
+      catch (JSONException paramMotionEvent)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("mClickEventListener JSONException e:");
+        ((StringBuilder)localObject1).append(paramMotionEvent.getMessage());
+        ViolaLogUtils.e("VComponent", ((StringBuilder)localObject1).toString());
+      }
+      exportClickAction(paramString);
+      return;
+      label561:
+      float f2 = 0.0F;
+    }
+  }
+  
+  protected final void fireEvent(String paramString, Object paramObject1, Object paramObject2)
   {
     if ((this.mInstance != null) && (this.mDomObj != null)) {
       ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "dom", "fireEvent", paramObject1, paramObject2, true);
@@ -900,16 +1267,18 @@ public abstract class VComponent<T extends View>
   
   public int getContentHeight()
   {
-    if (this.mContentHeight > 0) {
-      return this.mContentHeight;
+    int i = this.mContentHeight;
+    if (i > 0) {
+      return i;
     }
     return (int)this.mDomObj.getLayoutHeight();
   }
   
   public int getContentWidth()
   {
-    if (this.mContentWidth > 0) {
-      return this.mContentWidth;
+    int i = this.mContentWidth;
+    if (i > 0) {
+      return i;
     }
     return (int)this.mDomObj.getLayoutWidth();
   }
@@ -943,10 +1312,22 @@ public abstract class VComponent<T extends View>
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("x", FlexConvertUtils.px2dip(getFrameX()) + "dp");
-      localJSONObject.put("y", FlexConvertUtils.px2dip(getFrameY()) + "dp");
-      localJSONObject.put("width", FlexConvertUtils.px2dip(getHostView().getWidth()) + "dp");
-      localJSONObject.put("height", FlexConvertUtils.px2dip(getHostView().getHeight()) + "dp");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getFrameX()));
+      localStringBuilder.append("dp");
+      localJSONObject.put("x", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getFrameY()));
+      localStringBuilder.append("dp");
+      localJSONObject.put("y", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getHostView().getWidth()));
+      localStringBuilder.append("dp");
+      localJSONObject.put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getHostView().getHeight()));
+      localStringBuilder.append("dp");
+      localJSONObject.put("height", localStringBuilder.toString());
       return localJSONObject;
     }
     catch (JSONException localJSONException) {}
@@ -956,32 +1337,36 @@ public abstract class VComponent<T extends View>
   @JSMethod(uiThread=true)
   public void getFrameInfos(@Nullable String paramString)
   {
-    if ((this.mDomObj != null) && (!TextUtils.isEmpty(this.mDomObj.getRef())) && (this.mInstance != null) && (this.mHost != null)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject = new int[2];
-      this.mHost.getLocationInWindow((int[])localObject);
-      int i = localObject[0];
-      int j = this.mInstance.getMatchWindowsX();
-      int k = localObject[1];
-      int m = this.mInstance.getMatchWindowsY();
-      localObject = new int[2];
-      this.mHost.getLocationOnScreen((int[])localObject);
-      localJSONObject.put("pageX", FlexConvertUtils.px2dip(i - j));
-      localJSONObject.put("pageY", FlexConvertUtils.px2dip(k - m));
-      localJSONObject.put("screenX", FlexConvertUtils.px2dip(localObject[0]));
-      localJSONObject.put("screenY", FlexConvertUtils.px2dip(localObject[1]));
-      localJSONObject.put("width", FlexConvertUtils.px2dip(this.mHost.getWidth()));
-      localJSONObject.put("height", FlexConvertUtils.px2dip(this.mHost.getHeight()));
-      localObject = new JSONArray();
-      ((JSONArray)localObject).put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject, localJSONObject, true);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      ViolaLogUtils.e("VComponent", "mLongPressListener JSONException e:" + paramString.getMessage());
+    if ((this.mDomObj != null) && (!TextUtils.isEmpty(this.mDomObj.getRef())) && (this.mInstance != null) && (this.mHost != null)) {
+      try
+      {
+        localObject1 = new JSONObject();
+        Object localObject2 = new int[2];
+        this.mHost.getLocationInWindow((int[])localObject2);
+        int i = localObject2[0];
+        int j = this.mInstance.getMatchWindowsX();
+        int k = localObject2[1];
+        int m = this.mInstance.getMatchWindowsY();
+        localObject2 = new int[2];
+        this.mHost.getLocationOnScreen((int[])localObject2);
+        ((JSONObject)localObject1).put("pageX", FlexConvertUtils.px2dip(i - j));
+        ((JSONObject)localObject1).put("pageY", FlexConvertUtils.px2dip(k - m));
+        ((JSONObject)localObject1).put("screenX", FlexConvertUtils.px2dip(localObject2[0]));
+        ((JSONObject)localObject1).put("screenY", FlexConvertUtils.px2dip(localObject2[1]));
+        ((JSONObject)localObject1).put("width", FlexConvertUtils.px2dip(this.mHost.getWidth()));
+        ((JSONObject)localObject1).put("height", FlexConvertUtils.px2dip(this.mHost.getHeight()));
+        localObject2 = new JSONArray();
+        ((JSONArray)localObject2).put(paramString);
+        ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject2, localObject1, true);
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("mLongPressListener JSONException e:");
+        ((StringBuilder)localObject1).append(paramString.getMessage());
+        ViolaLogUtils.e("VComponent", ((StringBuilder)localObject1).toString());
+      }
     }
   }
   
@@ -1008,76 +1393,74 @@ public abstract class VComponent<T extends View>
   @JSMethod(uiThread=true)
   public void getNativeNodeInfo(String paramString)
   {
-    JSONObject localJSONObject1;
-    Object localObject2;
-    Map localMap;
-    String str;
     for (;;)
     {
+      int i;
       try
       {
-        localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject1 = new JSONObject();
         localJSONObject1.put("ref", getRef());
         localJSONObject1.put("type", getDomObject().getType());
-        localObject2 = VReflectionUtils.getFieldValueFromComponent(this, "mHost");
-        localJSONObject2 = new JSONObject();
-        localIterator = this.mDomObj.getStyle().entrySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (Map.Entry)localIterator.next();
-        localMap = VReflectionUtils.getPropertyMap(getClass());
-        str = (String)((Map.Entry)localObject1).getKey();
-        if (localMap.containsKey(str))
+        Object localObject2 = VReflectionUtils.getFieldValueFromComponent(this, "mHost");
+        JSONObject localJSONObject2 = new JSONObject();
+        Iterator localIterator = this.mDomObj.getStyle().entrySet().iterator();
+        Map localMap;
+        String str;
+        if (localIterator.hasNext())
         {
-          localObject1 = VReflectionUtils.getMethodValue(localObject2, (String)localMap.get(str));
+          localObject1 = (Map.Entry)localIterator.next();
+          localMap = VReflectionUtils.getPropertyMap(getClass());
+          str = (String)((Map.Entry)localObject1).getKey();
+          if (localMap.containsKey(str)) {
+            localObject1 = VReflectionUtils.getMethodValue(localObject2, (String)localMap.get(str));
+          } else {
+            localObject1 = ((Map.Entry)localObject1).getValue();
+          }
           localJSONObject2.put(str, localObject1);
+          continue;
+        }
+        localJSONObject1.put("style", localJSONObject2);
+        localJSONObject2 = new JSONObject();
+        localIterator = this.mDomObj.getAttributes().entrySet().iterator();
+        if (localIterator.hasNext())
+        {
+          localObject1 = (Map.Entry)localIterator.next();
+          localMap = VReflectionUtils.getAttrMap(getClass());
+          str = (String)((Map.Entry)localObject1).getKey();
+          if (localMap.containsKey(str)) {
+            localObject1 = VReflectionUtils.getMethodValue(localObject2, (String)localMap.get(str));
+          } else {
+            localObject1 = ((Map.Entry)localObject1).getValue();
+          }
+          localJSONObject2.put(str, localObject1);
+          continue;
+        }
+        localJSONObject1.put("attr", localJSONObject2);
+        localObject1 = new JSONArray();
+        i = 0;
+        if (i < this.mDomObj.getChildCount())
+        {
+          if (this.mDomObj.getChild(i) != null) {
+            ((JSONArray)localObject1).put(this.mDomObj.getChild(i).getRef());
+          }
         }
         else
         {
-          localObject1 = ((Map.Entry)localObject1).getValue();
+          localJSONObject1.put("childiren", localObject1);
+          localJSONObject1.put("frame", getPositionInfoRelativeToParent(0));
+          localJSONObject1.put("position", getPositionInfoRelativeToRoot(0));
+          localObject1 = new JSONArray();
+          ((JSONArray)localObject1).put(paramString);
+          ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject1, localJSONObject1, true);
+          return;
         }
       }
       catch (JSONException paramString)
       {
-        ViolaLogUtils.e("VComponent", "getNativeNodeInfo JSONException e:" + paramString.getMessage());
-        return;
-      }
-    }
-    localJSONObject1.put("style", localJSONObject2);
-    JSONObject localJSONObject2 = new JSONObject();
-    Iterator localIterator = this.mDomObj.getAttributes().entrySet().iterator();
-    if (localIterator.hasNext())
-    {
-      localObject1 = (Map.Entry)localIterator.next();
-      localMap = VReflectionUtils.getAttrMap(getClass());
-      str = (String)((Map.Entry)localObject1).getKey();
-      if (localMap.containsKey(str)) {}
-      for (localObject1 = VReflectionUtils.getMethodValue(localObject2, (String)localMap.get(str));; localObject1 = ((Map.Entry)localObject1).getValue())
-      {
-        localJSONObject2.put(str, localObject1);
-        break;
-      }
-    }
-    localJSONObject1.put("attr", localJSONObject2);
-    Object localObject1 = new JSONArray();
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.mDomObj.getChildCount())
-      {
-        if (this.mDomObj.getChild(i) != null) {
-          ((JSONArray)localObject1).put(this.mDomObj.getChild(i).getRef());
-        }
-      }
-      else
-      {
-        localJSONObject1.put("childiren", localObject1);
-        localJSONObject1.put("frame", getPositionInfoRelativeToParent(0));
-        localJSONObject1.put("position", getPositionInfoRelativeToRoot(0));
-        localObject1 = new JSONArray();
-        ((JSONArray)localObject1).put(paramString);
-        ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject1, localJSONObject1, true);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getNativeNodeInfo JSONException e:");
+        ((StringBuilder)localObject1).append(paramString.getMessage());
+        ViolaLogUtils.e("VComponent", ((StringBuilder)localObject1).toString());
         return;
       }
       i += 1;
@@ -1089,7 +1472,9 @@ public abstract class VComponent<T extends View>
     if (this.mBackgroundDrawable == null)
     {
       this.mBackgroundDrawable = new BorderDrawable();
-      if (this.mHost == null) {}
+      if (ViolaUtils.isBindDataOpmOpen()) {
+        setBackgroundCompat(this.mBackgroundDrawable);
+      }
     }
     return this.mBackgroundDrawable;
   }
@@ -1101,100 +1486,135 @@ public abstract class VComponent<T extends View>
   
   public JSONObject getPositionInfoRelativeToParent(int paramInt)
   {
-    localJSONObject = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     if (paramInt == 0) {}
     try
     {
-      Object localObject = FlexConvertUtils.px2dip(getHostView().getX()) + "dp";
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FlexConvertUtils.px2dip(getHostView().getX()));
+      ((StringBuilder)localObject).append("dp");
+      localObject = ((StringBuilder)localObject).toString();
+      break label62;
+      localObject = Float.valueOf(getHostView().getX());
+      label62:
       localJSONObject.put("x", localObject);
       if (paramInt == 0)
       {
-        localObject = FlexConvertUtils.px2dip(getHostView().getY()) + "dp";
-        label85:
-        localJSONObject.put("y", localObject);
-        if (paramInt != 0) {
-          break label212;
-        }
-        localObject = FlexConvertUtils.px2dip(getHostView().getWidth()) + "dp";
-        label129:
-        localJSONObject.put("width", localObject);
-        if (paramInt != 0) {
-          break label226;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(FlexConvertUtils.px2dip(getHostView().getY()));
+        ((StringBuilder)localObject).append("dp");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      for (localObject = FlexConvertUtils.px2dip(getHostView().getHeight()) + "dp";; localObject = Integer.valueOf(paramInt))
+      else
       {
-        localJSONObject.put("height", localObject);
-        return localJSONObject;
-        localObject = Float.valueOf(getHostView().getX());
-        break;
         localObject = Float.valueOf(getHostView().getY());
-        break label85;
-        label212:
-        localObject = Integer.valueOf(getHostView().getWidth());
-        break label129;
-        label226:
-        paramInt = getHostView().getHeight();
       }
+      localJSONObject.put("y", localObject);
+      if (paramInt == 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(FlexConvertUtils.px2dip(getHostView().getWidth()));
+        ((StringBuilder)localObject).append("dp");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = Integer.valueOf(getHostView().getWidth());
+      }
+      localJSONObject.put("width", localObject);
+      if (paramInt == 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(FlexConvertUtils.px2dip(getHostView().getHeight()));
+        ((StringBuilder)localObject).append("dp");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = Integer.valueOf(getHostView().getHeight());
+      }
+      localJSONObject.put("height", localObject);
       return localJSONObject;
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("VComponent", "getPositionInfoRelativeToParent error = " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPositionInfoRelativeToParent error = ");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("VComponent", localStringBuilder.toString());
       localException.printStackTrace();
     }
+    return localJSONObject;
   }
   
   public JSONObject getPositionInfoRelativeToRoot(int paramInt)
   {
-    localJSONObject = new JSONObject();
-    if (this.mHost != null)
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = this.mHost;
+    if (localObject1 != null)
     {
-      Object localObject = new int[2];
-      this.mHost.getLocationInWindow((int[])localObject);
-      int i = localObject[0] - this.mInstance.getMatchWindowsX();
-      int j = localObject[1] - this.mInstance.getMatchWindowsY();
+      Object localObject2 = new int[2];
+      ((View)localObject1).getLocationInWindow((int[])localObject2);
+      int i = localObject2[0] - this.mInstance.getMatchWindowsX();
+      int j = localObject2[1] - this.mInstance.getMatchWindowsY();
       if (paramInt == 0) {}
       try
       {
-        localObject = FlexConvertUtils.px2dip(i) + "dp";
-        localJSONObject.put("x", localObject);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(FlexConvertUtils.px2dip(i));
+        ((StringBuilder)localObject1).append("dp");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        break label107;
+        localObject1 = Integer.valueOf(i);
+        label107:
+        localJSONObject.put("x", localObject1);
         if (paramInt == 0)
         {
-          localObject = FlexConvertUtils.px2dip(j) + "dp";
-          label127:
-          localJSONObject.put("y", localObject);
-          if (paramInt != 0) {
-            break label253;
-          }
-          localObject = FlexConvertUtils.px2dip(this.mHost.getWidth()) + "dp";
-          label174:
-          localJSONObject.put("width", localObject);
-          if (paramInt != 0) {
-            break label268;
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(FlexConvertUtils.px2dip(j));
+          ((StringBuilder)localObject1).append("dp");
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
-        for (localObject = FlexConvertUtils.px2dip(this.mHost.getHeight()) + "dp";; localObject = Integer.valueOf(paramInt))
+        else
         {
-          localJSONObject.put("height", localObject);
-          return localJSONObject;
-          localObject = Integer.valueOf(i);
-          break;
-          localObject = Integer.valueOf(j);
-          break label127;
-          label253:
-          localObject = Integer.valueOf(this.mHost.getWidth());
-          break label174;
-          label268:
-          paramInt = this.mHost.getHeight();
+          localObject1 = Integer.valueOf(j);
         }
+        localJSONObject.put("y", localObject1);
+        if (paramInt == 0)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(FlexConvertUtils.px2dip(this.mHost.getWidth()));
+          ((StringBuilder)localObject1).append("dp");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = Integer.valueOf(this.mHost.getWidth());
+        }
+        localJSONObject.put("width", localObject1);
+        if (paramInt == 0)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(FlexConvertUtils.px2dip(this.mHost.getHeight()));
+          ((StringBuilder)localObject1).append("dp");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = Integer.valueOf(this.mHost.getHeight());
+        }
+        localJSONObject.put("height", localObject1);
         return localJSONObject;
       }
       catch (Exception localException)
       {
-        ViolaLogUtils.e("VComponent", "getPositionInfoRelativeToRoot error = " + localException.getMessage());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getPositionInfoRelativeToRoot error = ");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        ViolaLogUtils.e("VComponent", ((StringBuilder)localObject2).toString());
       }
     }
+    return localJSONObject;
   }
   
   public View getRealView()
@@ -1213,33 +1633,42 @@ public abstract class VComponent<T extends View>
   @JSMethod
   public void getScreenPosition(@Nullable String paramString)
   {
-    if ((this.mDomObj != null) && (!TextUtils.isEmpty(this.mDomObj.getRef())) && (this.mInstance != null) && (this.mHost != null)) {}
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      Object localObject = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      int[] arrayOfInt = new int[2];
-      this.mHost.getLocationOnScreen(arrayOfInt);
-      int i = arrayOfInt[0];
-      int j = arrayOfInt[1];
-      float f = FlexConvertUtils.getScreenWidth() / getDomObject().getViewPortWidth();
-      ((JSONObject)localObject).put("x", i / f);
-      ((JSONObject)localObject).put("y", j / f);
-      ((JSONObject)localObject).put("width", getContentWidth() / f);
-      ((JSONObject)localObject).put("height", getContentHeight() / f);
-      localJSONObject2.put("width", FlexConvertUtils.getScreenWidth() / f);
-      localJSONObject2.put("height", FlexConvertUtils.getScreenHeight() / f);
-      localJSONObject1.put("position", localObject);
-      localJSONObject1.put("screen", localJSONObject2);
-      localObject = new JSONArray();
-      ((JSONArray)localObject).put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject, localJSONObject1, true);
-      return;
+    if ((this.mDomObj != null) && (!TextUtils.isEmpty(this.mDomObj.getRef())) && (this.mInstance != null) && (this.mHost != null)) {
+      try
+      {
+        JSONObject localJSONObject1 = new JSONObject();
+        Object localObject = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
+        int[] arrayOfInt = new int[2];
+        this.mHost.getLocationOnScreen(arrayOfInt);
+        int i = arrayOfInt[0];
+        int j = arrayOfInt[1];
+        float f = FlexConvertUtils.getScreenWidth() / getDomObject().getViewPortWidth();
+        ((JSONObject)localObject).put("x", i / f);
+        ((JSONObject)localObject).put("y", j / f);
+        ((JSONObject)localObject).put("width", getContentWidth() / f);
+        ((JSONObject)localObject).put("height", getContentHeight() / f);
+        localJSONObject2.put("width", FlexConvertUtils.getScreenWidth() / f);
+        localJSONObject2.put("height", FlexConvertUtils.getScreenHeight() / f);
+        localJSONObject1.put("position", localObject);
+        localJSONObject1.put("screen", localJSONObject2);
+        localObject = new JSONArray();
+        ((JSONArray)localObject).put(paramString);
+        ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject, localJSONObject1, true);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+  }
+  
+  @JSMethod
+  public void hidePreCreateBody()
+  {
+    if (getInstance() != null) {
+      getInstance().hidePreCreateBody();
     }
   }
   
@@ -1253,15 +1682,23 @@ public abstract class VComponent<T extends View>
   public final void invoke(String paramString, JSONArray paramJSONArray)
   {
     paramString = this.mHolder.getMethodInvoker(paramString);
-    if (paramString != null) {}
-    try
-    {
-      getInstance().getNativeInvokeHelper().invoke(this, paramString, paramJSONArray);
-      return;
-    }
-    catch (Exception paramJSONArray)
-    {
-      ViolaLogUtils.e("VComponent", "Component] updateProperties :class:" + getClass() + "method:" + paramString.toString() + " function e" + paramJSONArray);
+    if (paramString != null) {
+      try
+      {
+        getInstance().getNativeInvokeHelper().invoke(this, paramString, paramJSONArray);
+        return;
+      }
+      catch (Exception paramJSONArray)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Component] updateProperties :class:");
+        localStringBuilder.append(getClass());
+        localStringBuilder.append("method:");
+        localStringBuilder.append(paramString.toString());
+        localStringBuilder.append(" function e");
+        localStringBuilder.append(paramJSONArray);
+        ViolaLogUtils.e("VComponent", localStringBuilder.toString());
+      }
     }
   }
   
@@ -1276,10 +1713,21 @@ public abstract class VComponent<T extends View>
   
   public boolean isCreated()
   {
-    if ((this.mLifeCycleMap.containsKey(this.mDomObj.getRef())) && ((this.mLifeCycleMap.get(this.mDomObj.getRef()) instanceof Integer))) {
-      return ((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue() != 0;
+    boolean bool3 = this.mLifeCycleMap.containsKey(this.mDomObj.getRef());
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if ((this.mLifeCycleMap.get(this.mDomObj.getRef()) instanceof Integer))
+      {
+        bool1 = bool2;
+        if (((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue() != 0) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public boolean isDestroyed()
@@ -1294,27 +1742,43 @@ public abstract class VComponent<T extends View>
   
   public boolean isLayerTypeEnabled()
   {
-    if (this.mInstance == null) {
+    ViolaInstance localViolaInstance = this.mInstance;
+    if (localViolaInstance == null) {
       return false;
     }
-    return this.mInstance.isLayerTypeEnabled();
+    return localViolaInstance.isLayerTypeEnabled();
   }
   
   public boolean isLazy()
   {
-    if (this.mLazy) {}
-    while ((this.mParent != null) && (this.mParent.isLazy())) {
+    if (this.mLazy) {
       return true;
     }
-    return false;
+    VComponentContainer localVComponentContainer = this.mParent;
+    return (localVComponentContainer != null) && (localVComponentContainer.isLazy());
   }
   
   public boolean isMounted()
   {
-    if ((this.mLifeCycleMap.containsKey(this.mDomObj.getRef())) && ((this.mLifeCycleMap.get(this.mDomObj.getRef()) instanceof Integer))) {
-      return (2 == ((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue()) || (3 == ((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue());
+    boolean bool3 = this.mLifeCycleMap.containsKey(this.mDomObj.getRef());
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if ((this.mLifeCycleMap.get(this.mDomObj.getRef()) instanceof Integer)) {
+        if (2 != ((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue())
+        {
+          bool1 = bool2;
+          if (3 != ((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue()) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public boolean isReuse()
@@ -1324,9 +1788,10 @@ public abstract class VComponent<T extends View>
   
   public boolean isSetBorderRadius()
   {
+    DomObject localDomObject = getDomObject();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (getDomObject() != null)
+    if (localDomObject != null)
     {
       bool1 = bool2;
       if (getDomObject().getStyle() != null) {
@@ -1356,140 +1821,138 @@ public abstract class VComponent<T extends View>
   
   public boolean needInterceptTouchEvent()
   {
-    return this.mNeedInterceptTouchEvent;
+    return (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("disableTouchPenetrate")) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("disableTouchPenetrate")));
   }
   
-  public void notifyChange()
+  public void notifyChange(int paramInt)
   {
-    if (this.mParent != null) {
-      this.mParent.notifyChange();
+    VComponentContainer localVComponentContainer = this.mParent;
+    if (localVComponentContainer != null) {
+      localVComponentContainer.notifyChange(paramInt);
     }
   }
   
   public void notifyChange(int paramInt, String paramString)
   {
-    if (this.mParent != null) {
-      this.mParent.notifyChange(paramInt, paramString);
+    VComponentContainer localVComponentContainer = this.mParent;
+    if (localVComponentContainer != null) {
+      localVComponentContainer.notifyChange(paramInt, paramString);
     }
   }
   
   public void notifyNativeBgColorChanged(int paramInt)
   {
-    if (!this.mNeedLayoutOnAnimation) {}
-    for (;;)
-    {
+    if (!this.mNeedLayoutOnAnimation) {
       return;
-      if ((this.mInstance != null) && (!isDestroyed()))
-      {
-        Object localObject = new JSONObject();
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject).put("backgroundColor", String.format("#%06X", new Object[] { Integer.valueOf(0xFFFFFF & paramInt) }));
-          localJSONObject.put("style", localObject);
-          localObject = new MethodUpdateElement(getRef(), localJSONObject);
-          if ((localObject instanceof DOMAction))
-          {
-            ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstance.getInstanceId(), (DOMAction)localObject, false);
-            return;
-          }
-        }
-        catch (JSONException localJSONException) {}
-      }
     }
+    Object localObject;
+    JSONObject localJSONObject;
+    if (this.mInstance != null)
+    {
+      if (isDestroyed()) {
+        return;
+      }
+      localObject = new JSONObject();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      ((JSONObject)localObject).put("backgroundColor", String.format("#%06X", new Object[] { Integer.valueOf(paramInt & 0xFFFFFF) }));
+      localJSONObject.put("style", localObject);
+      localObject = new MethodUpdateElement(getRef(), localJSONObject);
+      if ((localObject instanceof DOMAction)) {
+        ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstance.getInstanceId(), (DOMAction)localObject, false);
+      }
+      return;
+    }
+    catch (JSONException localJSONException) {}
   }
   
   public void notifyNativeSizeChanged(int paramInt1, int paramInt2)
   {
-    if (!this.mNeedLayoutOnAnimation) {}
-    for (;;)
-    {
+    if (!this.mNeedLayoutOnAnimation) {
       return;
-      if ((this.mInstance != null) && (!isDestroyed()))
-      {
-        Object localObject = new JSONObject();
-        JSONObject localJSONObject = new JSONObject();
-        float f1 = FlexConvertUtils.px2dip(paramInt1);
-        float f2 = FlexConvertUtils.px2dip(paramInt2);
-        try
-        {
-          ((JSONObject)localObject).put("width", f1 + "dp");
-          ((JSONObject)localObject).put("height", f2 + "dp");
-          localJSONObject.put("style", localObject);
-          localObject = new MethodUpdateElement(getRef(), localJSONObject);
-          if ((localObject instanceof DOMAction))
-          {
-            ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstance.getInstanceId(), (DOMAction)localObject, false);
-            return;
-          }
-        }
-        catch (JSONException localJSONException) {}
-      }
     }
+    Object localObject;
+    JSONObject localJSONObject;
+    float f1;
+    float f2;
+    if (this.mInstance != null)
+    {
+      if (isDestroyed()) {
+        return;
+      }
+      localObject = new JSONObject();
+      localJSONObject = new JSONObject();
+      f1 = FlexConvertUtils.px2dip(paramInt1);
+      f2 = FlexConvertUtils.px2dip(paramInt2);
+    }
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(f1);
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject).put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(f2);
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject).put("height", localStringBuilder.toString());
+      localJSONObject.put("style", localObject);
+      localObject = new MethodUpdateElement(getRef(), localJSONObject);
+      if ((localObject instanceof DOMAction)) {
+        ViolaSDKManager.getInstance().getDomManager().postAction(this.mInstance.getInstanceId(), (DOMAction)localObject, false);
+      }
+      return;
+    }
+    catch (JSONException localJSONException) {}
   }
   
   public void notifyWhenChange(String paramString, DomObject paramDomObject)
   {
-    if (this.mParent != null) {
-      this.mParent.notifyWhenChange(paramString, paramDomObject);
+    VComponentContainer localVComponentContainer = this.mParent;
+    if (localVComponentContainer != null) {
+      localVComponentContainer.notifyWhenChange(paramString, paramDomObject);
     }
   }
   
   public boolean onActivityBack()
   {
-    ViolaLogUtils.d("VComponent", "life onActivityBack ref:" + getRef());
     return false;
   }
   
   @Deprecated
-  public void onActivityCreate()
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityCreate ref:" + getRef());
-  }
+  public void onActivityCreate() {}
   
-  public void onActivityDestroy()
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityDestroy ref:" + getRef());
-  }
+  public void onActivityDestroy() {}
   
-  public void onActivityPause()
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityPause ref:" + getRef());
-  }
+  public void onActivityPause() {}
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityResult : requestCode:" + paramInt1 + "; resultCode :" + paramInt2);
-  }
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void onActivityResume()
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityResume ref:" + getRef());
-  }
+  public void onActivityResume() {}
   
-  public void onActivityStart()
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityStart ref:" + getRef());
-  }
+  public void onActivityStart() {}
   
-  public void onActivityStop()
-  {
-    ViolaLogUtils.d("VComponent", "life onActivityStop ref:" + getRef());
-  }
+  public void onActivityStop() {}
   
   public void onBindData(DomObject paramDomObject)
   {
     this.mDomObj = paramDomObject;
     initLifeCycle(paramDomObject);
-    internalApplyEvents();
-    internalApplyLayout();
+    applyEventsWithoutRecurse();
+    applyLayoutWithoutRecurse();
     updateStyle(this.mDomObj.getStyle(), false);
     updateAttrs(this.mDomObj.getAttributes());
     updateExtra(this.mDomObj.getExtra());
-    setBackgroundDrawable();
-    checkClipChild();
+    if (!ViolaUtils.isBindDataOpmOpen())
+    {
+      setBackgroundDrawable();
+      checkClipChild();
+    }
     updateLifeCycle("mounted");
   }
+  
+  public void onRecycler() {}
   
   public void onRichGestureScroll(int paramInt1, int paramInt2)
   {
@@ -1499,8 +1962,14 @@ public abstract class VComponent<T extends View>
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("x", FlexConvertUtils.px2dip(paramInt1) + "dp");
-      localJSONObject.put("y", FlexConvertUtils.px2dip(paramInt2) + "dp");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(paramInt1));
+      localStringBuilder.append("dp");
+      localJSONObject.put("x", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(paramInt2));
+      localStringBuilder.append("dp");
+      localJSONObject.put("y", localStringBuilder.toString());
       doRichGestrue(new JSParam(3, localJSONObject.toString()));
       return;
     }
@@ -1521,14 +1990,19 @@ public abstract class VComponent<T extends View>
   
   public final void removeAllEvent()
   {
-    if ((this.mDomObj == null) || (this.mDomObj.getEvents().size() < 1)) {}
-    do
+    if (this.mDomObj != null)
     {
-      return;
+      if (this.mDomObj.getEvents().size() < 1) {
+        return;
+      }
       this.mAppendEvents.clear();
-    } while (this.mHost == null);
-    this.mHost.setOnFocusChangeListener(null);
-    this.mHost.setOnTouchListener(null);
+      View localView = this.mHost;
+      if (localView != null)
+      {
+        localView.setOnFocusChangeListener(null);
+        this.mHost.setOnTouchListener(null);
+      }
+    }
   }
   
   public void removeAnimationInfo(VComponent.AnimationInfo paramAnimationInfo)
@@ -1538,21 +2012,29 @@ public abstract class VComponent<T extends View>
   
   protected boolean removeEvent(String paramString)
   {
-    ViolaLogUtils.d("VComponent", "removeEvent: " + paramString);
-    if ((TextUtils.isEmpty(paramString)) || (!this.mAppendEvents.contains(paramString)) || (this.mHost == null)) {}
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeEvent: ");
+    localStringBuilder.append(paramString);
+    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty(paramString)) && (this.mAppendEvents.contains(paramString)))
     {
-      return true;
+      if (this.mHost == null) {
+        return true;
+      }
       this.mAppendEvents.remove(paramString);
       if (paramString.equals("click"))
       {
         this.mHost.setOnTouchListener(null);
         return true;
       }
-    } while (!paramString.equals("longPress"));
-    this.mHost.setOnTouchListener(null);
+      if (paramString.equals("longPress")) {
+        this.mHost.setOnTouchListener(null);
+      }
+    }
     return true;
   }
+  
+  public void removedByDiff() {}
   
   public void removedByJs()
   {
@@ -1565,10 +2047,11 @@ public abstract class VComponent<T extends View>
       paramAnimator.cancel();
     }
     paramAnimator = getHostView();
-    if ((paramAnimator == null) || (paramAnimationBean == null) || (paramAnimationBean.styles == null)) {}
-    do
+    if ((paramAnimator != null) && (paramAnimationBean != null))
     {
-      return;
+      if (paramAnimationBean.styles == null) {
+        return;
+      }
       if (!TextUtils.isEmpty(paramAnimationBean.styles.backgroundColor)) {
         paramAnimator.setBackgroundDrawable(null);
       }
@@ -1580,37 +2063,42 @@ public abstract class VComponent<T extends View>
         paramAnimator.setPivotX(0.0F);
         paramAnimator.setPivotY(0.0F);
       }
-    } while (TextUtils.isEmpty(paramAnimationBean.styles.transform));
-    paramAnimator.setScaleX(1.0F);
-    paramAnimator.setScaleY(1.0F);
-    paramAnimator.setRotation(0.0F);
-    paramAnimator.setRotationX(0.0F);
-    paramAnimator.setRotationY(0.0F);
-    paramAnimator.setTranslationX(0.0F);
-    paramAnimator.setTranslationY(0.0F);
+      if (!TextUtils.isEmpty(paramAnimationBean.styles.transform))
+      {
+        paramAnimator.setScaleX(1.0F);
+        paramAnimator.setScaleY(1.0F);
+        paramAnimator.setRotation(0.0F);
+        paramAnimator.setRotationX(0.0F);
+        paramAnimator.setRotationY(0.0F);
+        paramAnimator.setTranslationX(0.0F);
+        paramAnimator.setTranslationY(0.0F);
+      }
+    }
   }
   
   protected boolean resetAttr(String paramString)
   {
-    ViolaLogUtils.d("VComponent", "resetAttr: " + paramString);
-    if (("clipChild".equals(paramString)) && (this.mHost != null) && (Build.VERSION.SDK_INT >= 21))
-    {
-      if ((getHostView().getOutlineProvider() instanceof CornerViewOutlineProvider)) {
-        ((CornerViewOutlineProvider)getHostView().getOutlineProvider()).setRadius(0.0F);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resetAttr: ");
+    localStringBuilder.append(paramString);
+    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
+    if ("clipChild".equals(paramString)) {
+      if (ViolaUtils.isBindDataOpmOpen()) {
+        resetChipChild();
+      } else {
+        resetClipChildLegacy();
       }
-      getHostView().setOutlineProvider(null);
-      getHostView().setClipToOutline(false);
-      return true;
     }
     return false;
   }
   
   public final void resetAttrs(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         resetAttr((String)paramList.next());
@@ -1636,18 +2124,34 @@ public abstract class VComponent<T extends View>
           getHostView().setAlpha(1.0F);
         }
         this.mAlphaAnimator = null;
-        return;
       }
+      this.mNeedInterceptTouchEvent = false;
+      if (this.mTransformAnimator != null)
+      {
+        this.mTransformAnimator.cancel();
+        this.mTransformAnimator = null;
+      }
+      this.mHasPerformTransformAnimate = false;
+      if (this.fromTransformOpacityAnimator != null)
+      {
+        this.fromTransformOpacityAnimator.cancel();
+        this.fromTransformOpacityAnimator = null;
+      }
+      this.hasPerformFromTransformOpacity = false;
+      return;
     }
     catch (Exception localException) {}
   }
   
+  public void resetComponent(DomObject paramDomObject) {}
+  
   public final void resetEvents(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         removeEvent((String)paramList.next());
@@ -1657,193 +2161,209 @@ public abstract class VComponent<T extends View>
   
   protected boolean resetStyle(String paramString)
   {
-    boolean bool = true;
-    ViolaLogUtils.d("VComponent", "resetStyle: " + paramString);
-    int i = -1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resetStyle: ");
+    localStringBuilder.append(paramString);
+    ViolaLogUtils.d("VComponent", localStringBuilder.toString());
     switch (paramString.hashCode())
     {
     default: 
-      switch (i)
-      {
-      default: 
-        bool = false;
+      break;
+    case 1941332754: 
+      if (paramString.equals("visibility")) {
+        i = 22;
+      }
+      break;
+    case 1511773502: 
+      if (paramString.equals("background_image_parse")) {
+        i = 26;
+      }
+      break;
+    case 1349188574: 
+      if (paramString.equals("borderRadius")) {
+        i = 16;
+      }
+      break;
+    case 1287124693: 
+      if (paramString.equals("backgroundColor")) {
+        i = 15;
+      }
+      break;
+    case 741115130: 
+      if (paramString.equals("borderWidth")) {
+        i = 0;
+      }
+      break;
+    case 737768677: 
+      if (paramString.equals("borderStyle")) {
+        i = 10;
+      }
+      break;
+    case 722830999: 
+      if (paramString.equals("borderColor")) {
+        i = 5;
+      }
+      break;
+    case 588239831: 
+      if (paramString.equals("borderBottomRightRadius")) {
+        i = 20;
+      }
+      break;
+    case 581268560: 
+      if (paramString.equals("borderBottomLeftRadius")) {
+        i = 19;
+      }
+      break;
+    case 565945933: 
+      if (paramString.equals("transform_origin_parse")) {
+        i = 23;
+      }
+      break;
+    case 333432965: 
+      if (paramString.equals("borderTopRightRadius")) {
+        i = 18;
+      }
+      break;
+    case -40300674: 
+      if (paramString.equals("rotation")) {
+        i = 27;
+      }
+      break;
+    case -223992013: 
+      if (paramString.equals("borderLeftWidth")) {
+        i = 1;
+      }
+      break;
+    case -227338466: 
+      if (paramString.equals("borderLeftStyle")) {
+        i = 11;
+      }
+      break;
+    case -242276144: 
+      if (paramString.equals("borderLeftColor")) {
+        i = 6;
+      }
+      break;
+    case -325605344: 
+      if (paramString.equals("transform_parse")) {
+        i = 24;
+      }
+      break;
+    case -1228066334: 
+      if (paramString.equals("borderTopLeftRadius")) {
+        i = 17;
+      }
+      break;
+    case -1267206133: 
+      if (paramString.equals("opacity")) {
+        i = 21;
+      }
+      break;
+    case -1290574193: 
+      if (paramString.equals("borderBottomWidth")) {
+        i = 4;
+      }
+      break;
+    case -1293920646: 
+      if (paramString.equals("borderBottomStyle")) {
+        i = 14;
+      }
+      break;
+    case -1308858324: 
+      if (paramString.equals("borderBottomColor")) {
+        i = 9;
+      }
+      break;
+    case -1373358863: 
+      if (paramString.equals("fromTransformParse")) {
+        i = 25;
+      }
+      break;
+    case -1452542531: 
+      if (paramString.equals("borderTopWidth")) {
+        i = 2;
+      }
+      break;
+    case -1455888984: 
+      if (paramString.equals("borderTopStyle")) {
+        i = 12;
+      }
+      break;
+    case -1470826662: 
+      if (paramString.equals("borderTopColor")) {
+        i = 7;
+      }
+      break;
+    case -1971292586: 
+      if (paramString.equals("borderRightWidth")) {
+        i = 3;
+      }
+      break;
+    case -1974639039: 
+      if (paramString.equals("borderRightStyle")) {
+        i = 13;
+      }
+      break;
+    case -1989576717: 
+      if (paramString.equals("borderRightColor")) {
+        i = 8;
       }
       break;
     }
-    do
+    int i = -1;
+    switch (i)
     {
-      do
-      {
-        do
-        {
-          return bool;
-          if (!paramString.equals("borderWidth")) {
-            break;
-          }
-          i = 0;
-          break;
-          if (!paramString.equals("borderLeftWidth")) {
-            break;
-          }
-          i = 1;
-          break;
-          if (!paramString.equals("borderTopWidth")) {
-            break;
-          }
-          i = 2;
-          break;
-          if (!paramString.equals("borderRightWidth")) {
-            break;
-          }
-          i = 3;
-          break;
-          if (!paramString.equals("borderBottomWidth")) {
-            break;
-          }
-          i = 4;
-          break;
-          if (!paramString.equals("borderColor")) {
-            break;
-          }
-          i = 5;
-          break;
-          if (!paramString.equals("borderLeftColor")) {
-            break;
-          }
-          i = 6;
-          break;
-          if (!paramString.equals("borderTopColor")) {
-            break;
-          }
-          i = 7;
-          break;
-          if (!paramString.equals("borderRightColor")) {
-            break;
-          }
-          i = 8;
-          break;
-          if (!paramString.equals("borderBottomColor")) {
-            break;
-          }
-          i = 9;
-          break;
-          if (!paramString.equals("borderStyle")) {
-            break;
-          }
-          i = 10;
-          break;
-          if (!paramString.equals("borderLeftStyle")) {
-            break;
-          }
-          i = 11;
-          break;
-          if (!paramString.equals("borderTopStyle")) {
-            break;
-          }
-          i = 12;
-          break;
-          if (!paramString.equals("borderRightStyle")) {
-            break;
-          }
-          i = 13;
-          break;
-          if (!paramString.equals("borderBottomStyle")) {
-            break;
-          }
-          i = 14;
-          break;
-          if (!paramString.equals("backgroundColor")) {
-            break;
-          }
-          i = 15;
-          break;
-          if (!paramString.equals("borderRadius")) {
-            break;
-          }
-          i = 16;
-          break;
-          if (!paramString.equals("borderTopLeftRadius")) {
-            break;
-          }
-          i = 17;
-          break;
-          if (!paramString.equals("borderTopRightRadius")) {
-            break;
-          }
-          i = 18;
-          break;
-          if (!paramString.equals("borderBottomLeftRadius")) {
-            break;
-          }
-          i = 19;
-          break;
-          if (!paramString.equals("borderBottomRightRadius")) {
-            break;
-          }
-          i = 20;
-          break;
-          if (!paramString.equals("opacity")) {
-            break;
-          }
-          i = 21;
-          break;
-          if (!paramString.equals("visibility")) {
-            break;
-          }
-          i = 22;
-          break;
-          if (!paramString.equals("transform_origin_parse")) {
-            break;
-          }
-          i = 23;
-          break;
-          if (!paramString.equals("transform_parse")) {
-            break;
-          }
-          i = 24;
-          break;
-          if (!paramString.equals("background_image_parse")) {
-            break;
-          }
-          i = 25;
-          break;
-          if (!paramString.equals("rotation")) {
-            break;
-          }
-          i = 26;
-          break;
-          resetBackground();
-          return true;
-          setBorderRadius(0, 0.0F);
-          resetBackground();
-          return true;
-          setBoderTopLeftRadius(0.0F);
-          resetBackground();
-          return true;
-          setBoderTopRightRadius(0.0F);
-          resetBackground();
-          return true;
-          setBoderBottomLeftRadius(0.0F);
-          resetBackground();
-          return true;
-          setBoderBottomRightRadius(0.0F);
-          resetBackground();
-          return true;
-        } while (this.mHost == null);
-        this.mHost.setAlpha(1.0F);
-        return true;
-      } while (this.mHost == null);
-      getHostView().setVisibility(0);
+    default: 
+      return false;
+    case 27: 
+      paramString = getHostView();
+      if (paramString != null) {
+        paramString.setRotation(0.0F);
+      }
       return true;
-      resetTransformOrigin();
-      return true;
-      resetTransform();
-      return true;
+    case 26: 
       resetBackgroundImage();
       return true;
-      paramString = getHostView();
-    } while (paramString == null);
-    paramString.setRotation(0.0F);
+    case 24: 
+    case 25: 
+      resetTransform();
+      return true;
+    case 23: 
+      resetTransformOrigin();
+      return true;
+    case 22: 
+      if (this.mHost != null) {
+        getHostView().setVisibility(0);
+      }
+      return true;
+    case 21: 
+      paramString = this.mHost;
+      if (paramString != null) {
+        paramString.setAlpha(1.0F);
+      }
+      return true;
+    case 20: 
+      setBoderBottomRightRadius(0.0F);
+      resetBackground();
+      return true;
+    case 19: 
+      setBoderBottomLeftRadius(0.0F);
+      resetBackground();
+      return true;
+    case 18: 
+      setBoderTopRightRadius(0.0F);
+      resetBackground();
+      return true;
+    case 17: 
+      setBoderTopLeftRadius(0.0F);
+      resetBackground();
+      return true;
+    case 16: 
+      setBorderRadius(0, 0.0F);
+      resetBackground();
+      return true;
+    }
+    resetBackground();
     return true;
   }
   
@@ -1852,6 +2372,42 @@ public abstract class VComponent<T extends View>
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       resetStyle((String)paramList.next());
+    }
+  }
+  
+  @JSMethod
+  public void resumeLayer()
+  {
+    if ((this.mHost != null) && (getInstance() != null))
+    {
+      if (this.topIndexContext == null) {
+        return;
+      }
+      Object localObject = getInstance().getRootComp();
+      if (localObject != null)
+      {
+        if (((VComponentContainer)localObject).mHost == null) {
+          return;
+        }
+        localObject = ((VComponentContainer)localObject).getRealView();
+        if (localObject == null) {
+          return;
+        }
+        ((ViewGroup)localObject).removeView(this.mHost);
+        localObject = (FrameLayout.LayoutParams)this.mHost.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).leftMargin = this.topIndexContext.leftMargin;
+        ((FrameLayout.LayoutParams)localObject).topMargin = this.topIndexContext.topMargin;
+        this.mHost.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = getParent();
+        if (localObject != null)
+        {
+          ((VComponentContainer)localObject).getRealView().addView(this.mHost, this.topIndexContext.index);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("resumeLayer, hashCode: ");
+          ((StringBuilder)localObject).append(hashCode());
+          ViolaLogUtils.e("VComponent-TopLayer", ((StringBuilder)localObject).toString());
+        }
+      }
     }
   }
   
@@ -1876,42 +2432,39 @@ public abstract class VComponent<T extends View>
   
   public void setBackgroundDrawable()
   {
-    float[] arrayOfFloat;
     if (getHostView() != null)
     {
-      if (this.mBackgroundDrawable != null) {
-        this.mBackgroundDrawable.invalidateSelf();
+      Object localObject = this.mBackgroundDrawable;
+      if (localObject != null) {
+        ((BorderDrawable)localObject).invalidateSelf();
       }
-      if (Build.VERSION.SDK_INT < 16) {
-        break label128;
+      if (Build.VERSION.SDK_INT >= 16) {
+        getHostView().setBackground(this.mBackgroundDrawable);
+      } else {
+        getHostView().setBackgroundDrawable(this.mBackgroundDrawable);
       }
-      getHostView().setBackground(this.mBackgroundDrawable);
       if ((getDomObject().getAttributes() != null) && (getDomObject().getAttributes().containsKey("clipChild")) && (isSetBorderRadius()) && (Build.VERSION.SDK_INT >= 21))
       {
-        arrayOfFloat = getOrCreateBorder().getBorderRadiusArray();
-        if (arrayOfFloat[0] == 0.0F) {
-          break label142;
+        localObject = getOrCreateBorder().getBorderRadiusArray();
+        if (localObject[0] != 0.0F)
+        {
+          getHostView().setOutlineProvider(new CornerViewOutlineProvider(localObject[0], getContentHeight(), 0));
+          getHostView().setClipToOutline(true);
+          return;
         }
-        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[0], getContentHeight(), 0));
-        getHostView().setClipToOutline(true);
+        if ((localObject[1] != 0.0F) && (localObject[1] == localObject[2]) && (localObject[1] != localObject[4]))
+        {
+          getHostView().setOutlineProvider(new CornerViewOutlineProvider(localObject[1], getContentHeight(), 1));
+          getHostView().setClipToOutline(true);
+          return;
+        }
+        if ((localObject[3] != 0.0F) && (localObject[3] == localObject[4]) && (localObject[3] != localObject[1]))
+        {
+          getHostView().setOutlineProvider(new CornerViewOutlineProvider(localObject[3], getContentHeight(), 2));
+          getHostView().setClipToOutline(true);
+        }
       }
     }
-    label128:
-    label142:
-    do
-    {
-      return;
-      getHostView().setBackgroundDrawable(this.mBackgroundDrawable);
-      break;
-      if ((arrayOfFloat[1] != 0.0F) && (arrayOfFloat[1] == arrayOfFloat[2]) && (arrayOfFloat[1] != arrayOfFloat[4]))
-      {
-        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[1], getContentHeight(), 1));
-        getHostView().setClipToOutline(true);
-        return;
-      }
-    } while ((arrayOfFloat[3] == 0.0F) || (arrayOfFloat[3] != arrayOfFloat[4]) || (arrayOfFloat[3] == arrayOfFloat[1]));
-    getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[3], getContentHeight(), 2));
-    getHostView().setClipToOutline(true);
   }
   
   public void setBoderBottomLeftRadius(float paramFloat)
@@ -1955,6 +2508,31 @@ public abstract class VComponent<T extends View>
     getOrCreateBorder().setBorderWidth(paramInt, paramFloat);
   }
   
+  protected void setClipChild()
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (getHostView() != null) && (isSetBorderRadius()))
+    {
+      float[] arrayOfFloat = getOrCreateBorder().getBorderRadiusArray();
+      if (arrayOfFloat[0] != 0.0F)
+      {
+        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[0], getContentHeight(), 0));
+        getHostView().setClipToOutline(true);
+        return;
+      }
+      if ((arrayOfFloat[1] != 0.0F) && (arrayOfFloat[1] == arrayOfFloat[2]) && (arrayOfFloat[1] != arrayOfFloat[4]))
+      {
+        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[1], getContentHeight(), 1));
+        getHostView().setClipToOutline(true);
+        return;
+      }
+      if ((arrayOfFloat[3] != 0.0F) && (arrayOfFloat[3] == arrayOfFloat[4]) && (arrayOfFloat[3] != arrayOfFloat[1]))
+      {
+        getHostView().setOutlineProvider(new CornerViewOutlineProvider(arrayOfFloat[3], getContentHeight(), 2));
+        getHostView().setClipToOutline(true);
+      }
+    }
+  }
+  
   public void setContentHeight(int paramInt)
   {
     this.mContentHeight = paramInt;
@@ -1967,33 +2545,32 @@ public abstract class VComponent<T extends View>
   
   public void setHostLayoutParams(T paramT, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (this.mHost == null) {
+    int i = paramInt2;
+    View localView = this.mHost;
+    if (localView == null) {
       return;
     }
     if (this.mParent == null)
     {
       paramT = new FrameLayout.LayoutParams(paramInt1, paramInt2);
       paramT.setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-      label37:
-      if (paramT != null) {
-        this.mHost.setLayoutParams(paramT);
-      }
     }
     else
     {
-      if ((!(this.mHost instanceof VTextView)) || (!((VTextView)this.mHost).mIsRich)) {
-        break label110;
+      paramInt2 = i;
+      if ((localView instanceof VTextView))
+      {
+        paramInt2 = i;
+        if (((VTextView)localView).mIsRich) {
+          paramInt2 = i + 5;
+        }
       }
-      paramInt2 += 5;
-    }
-    label110:
-    for (;;)
-    {
       paramT = this.mParent.getChildLayoutParams(this, paramT, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
       setContentHeight(paramInt2);
       setContentWidth(paramInt1);
-      break label37;
-      break;
+    }
+    if (paramT != null) {
+      this.mHost.setLayoutParams(paramT);
     }
   }
   
@@ -2021,341 +2598,537 @@ public abstract class VComponent<T extends View>
   public void setOpacityWithAnimate(Object paramObject)
   {
     float f = ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F));
-    if ((f < 0.0F) || (f > 1.0F)) {}
-    do
+    if (f >= 0.0F)
     {
-      return;
+      if (f > 1.0F) {
+        return;
+      }
       paramObject = getHostView();
-    } while ((paramObject == null) || (paramObject.getAlpha() == f) || (this.mDomObj == null) || (!this.mDomObj.getAttributes().containsKey("animationDuration")));
-    int i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
-    this.mAlphaAnimator = paramObject.animate().alpha(f).setDuration(i);
-    this.mAlphaAnimator.start();
+      if ((paramObject != null) && (this.mDomObj != null))
+      {
+        if (!this.mDomObj.getAttributes().containsKey("animationDuration")) {
+          return;
+        }
+        ViewPropertyAnimator localViewPropertyAnimator = this.mAlphaAnimator;
+        if (localViewPropertyAnimator != null) {
+          localViewPropertyAnimator.cancel();
+        }
+        int i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
+        this.mAlphaAnimator = paramObject.animate().alpha(f).setDuration(i);
+        this.mAlphaAnimator.start();
+      }
+    }
   }
   
   protected boolean setProperty(String paramString, Object paramObject)
   {
-    boolean bool2 = true;
-    int i = -1;
-    boolean bool1;
     switch (paramString.hashCode())
     {
     default: 
-      switch (i)
-      {
-      default: 
-        bool1 = false;
+      break;
+    case 2021893585: 
+      if (paramString.equals("floatCenter")) {
+        i = 28;
+      }
+      break;
+    case 2002678695: 
+      if (paramString.equals("floatBottom")) {
+        i = 27;
+      }
+      break;
+    case 1941332754: 
+      if (paramString.equals("visibility")) {
+        i = 22;
+      }
+      break;
+    case 1511773502: 
+      if (paramString.equals("background_image_parse")) {
+        i = 29;
+      }
+      break;
+    case 1349188574: 
+      if (paramString.equals("borderRadius")) {
+        i = 16;
+      }
+      break;
+    case 1287124693: 
+      if (paramString.equals("backgroundColor")) {
+        i = 0;
+      }
+      break;
+    case 741115130: 
+      if (paramString.equals("borderWidth")) {
+        i = 1;
+      }
+      break;
+    case 737768677: 
+      if (paramString.equals("borderStyle")) {
+        i = 11;
+      }
+      break;
+    case 722830999: 
+      if (paramString.equals("borderColor")) {
+        i = 6;
+      }
+      break;
+    case 588239831: 
+      if (paramString.equals("borderBottomRightRadius")) {
+        i = 21;
+      }
+      break;
+    case 581268560: 
+      if (paramString.equals("borderBottomLeftRadius")) {
+        i = 20;
+      }
+      break;
+    case 565945933: 
+      if (paramString.equals("transform_origin_parse")) {
+        i = 24;
+      }
+      break;
+    case 333432965: 
+      if (paramString.equals("borderTopRightRadius")) {
+        i = 19;
+      }
+      break;
+    case 3772: 
+      if (paramString.equals("vr")) {
+        i = 32;
+      }
+      break;
+    case -40300674: 
+      if (paramString.equals("rotation")) {
+        i = 23;
+      }
+      break;
+    case -223992013: 
+      if (paramString.equals("borderLeftWidth")) {
+        i = 2;
+      }
+      break;
+    case -227338466: 
+      if (paramString.equals("borderLeftStyle")) {
+        i = 12;
+      }
+      break;
+    case -242276144: 
+      if (paramString.equals("borderLeftColor")) {
+        i = 7;
+      }
+      break;
+    case -325605344: 
+      if (paramString.equals("transform_parse")) {
+        i = 25;
+      }
+      break;
+    case -986512259: 
+      if (paramString.equals("topIndex")) {
+        i = 26;
+      }
+      break;
+    case -1228066334: 
+      if (paramString.equals("borderTopLeftRadius")) {
+        i = 18;
+      }
+      break;
+    case -1267206133: 
+      if (paramString.equals("opacity")) {
+        i = 17;
+      }
+      break;
+    case -1290574193: 
+      if (paramString.equals("borderBottomWidth")) {
+        i = 5;
+      }
+      break;
+    case -1293920646: 
+      if (paramString.equals("borderBottomStyle")) {
+        i = 15;
+      }
+      break;
+    case -1308858324: 
+      if (paramString.equals("borderBottomColor")) {
+        i = 10;
+      }
+      break;
+    case -1373358863: 
+      if (paramString.equals("fromTransformParse")) {
+        i = 30;
+      }
+      break;
+    case -1452542531: 
+      if (paramString.equals("borderTopWidth")) {
+        i = 3;
+      }
+      break;
+    case -1455888984: 
+      if (paramString.equals("borderTopStyle")) {
+        i = 13;
+      }
+      break;
+    case -1470826662: 
+      if (paramString.equals("borderTopColor")) {
+        i = 8;
+      }
+      break;
+    case -1629228116: 
+      if (paramString.equals("clipChild")) {
+        i = 33;
+      }
+      break;
+    case -1717142839: 
+      if (paramString.equals("fromTransformOpacity")) {
+        i = 31;
+      }
+      break;
+    case -1971292586: 
+      if (paramString.equals("borderRightWidth")) {
+        i = 4;
+      }
+      break;
+    case -1974639039: 
+      if (paramString.equals("borderRightStyle")) {
+        i = 14;
+      }
+      break;
+    case -1989576717: 
+      if (paramString.equals("borderRightColor")) {
+        i = 9;
       }
       break;
     }
-    do
+    int i = -1;
+    switch (i)
     {
-      do
+    default: 
+      return false;
+    case 33: 
+      if (ViolaUtils.isBindDataOpmOpen()) {
+        setClipChild();
+      }
+      return true;
+    case 32: 
+      setVRElementId();
+      return true;
+    case 31: 
+      setOpacityCompat(ViolaUtils.getFloat(this.mDomObj.getStyle().get("opacity"), Float.valueOf(1.0F)));
+      return true;
+    case 30: 
+      setFromTransform(paramObject);
+      return true;
+    case 29: 
+      setLinearGradient(paramObject);
+      return true;
+    case 28: 
+      if ((Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue()) && (getHostView() != null) && (getInstance() != null)) {
+        getInstance().getViolaPageListener().onComponentFloatCenter(getHostView(), getDomObject().getLayoutHeight());
+      }
+      return true;
+    case 27: 
+      if ((Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue()) && (getHostView() != null) && (getInstance() != null)) {
+        getInstance().getViolaPageListener().onComponentFloatBottom(getHostView(), getDomObject().getLayoutHeight());
+      }
+      return true;
+    case 26: 
+      if ((Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue()) && (getHostView() != null) && (getInstance() != null)) {
+        getInstance().getViolaPageListener().onComponentTopIndex(getHostView(), getDomObject().getLayoutHeight());
+      }
+      return true;
+    case 25: 
+      setTransform(paramObject);
+      return true;
+    case 24: 
+      setPivot(paramObject);
+      return true;
+    case 23: 
+      float f = ViolaUtils.getFloat(paramObject, Float.valueOf(90.0F));
+      getHostView().setRotation(f);
+      return true;
+    case 22: 
+      if (getHostView() != null)
       {
-        do
+        this.mVisibility = ViolaUtils.getString(paramObject, "visible");
+        if ("visible".equals(this.mVisibility))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  do
-                                  {
-                                    do
-                                    {
-                                      do
-                                      {
-                                        do
-                                        {
-                                          do
-                                          {
-                                            do
-                                            {
-                                              do
-                                              {
-                                                return bool1;
-                                                if (!paramString.equals("backgroundColor")) {
-                                                  break;
-                                                }
-                                                i = 0;
-                                                break;
-                                                if (!paramString.equals("borderWidth")) {
-                                                  break;
-                                                }
-                                                i = 1;
-                                                break;
-                                                if (!paramString.equals("borderLeftWidth")) {
-                                                  break;
-                                                }
-                                                i = 2;
-                                                break;
-                                                if (!paramString.equals("borderTopWidth")) {
-                                                  break;
-                                                }
-                                                i = 3;
-                                                break;
-                                                if (!paramString.equals("borderRightWidth")) {
-                                                  break;
-                                                }
-                                                i = 4;
-                                                break;
-                                                if (!paramString.equals("borderBottomWidth")) {
-                                                  break;
-                                                }
-                                                i = 5;
-                                                break;
-                                                if (!paramString.equals("borderColor")) {
-                                                  break;
-                                                }
-                                                i = 6;
-                                                break;
-                                                if (!paramString.equals("borderLeftColor")) {
-                                                  break;
-                                                }
-                                                i = 7;
-                                                break;
-                                                if (!paramString.equals("borderTopColor")) {
-                                                  break;
-                                                }
-                                                i = 8;
-                                                break;
-                                                if (!paramString.equals("borderRightColor")) {
-                                                  break;
-                                                }
-                                                i = 9;
-                                                break;
-                                                if (!paramString.equals("borderBottomColor")) {
-                                                  break;
-                                                }
-                                                i = 10;
-                                                break;
-                                                if (!paramString.equals("borderStyle")) {
-                                                  break;
-                                                }
-                                                i = 11;
-                                                break;
-                                                if (!paramString.equals("borderLeftStyle")) {
-                                                  break;
-                                                }
-                                                i = 12;
-                                                break;
-                                                if (!paramString.equals("borderTopStyle")) {
-                                                  break;
-                                                }
-                                                i = 13;
-                                                break;
-                                                if (!paramString.equals("borderRightStyle")) {
-                                                  break;
-                                                }
-                                                i = 14;
-                                                break;
-                                                if (!paramString.equals("borderBottomStyle")) {
-                                                  break;
-                                                }
-                                                i = 15;
-                                                break;
-                                                if (!paramString.equals("borderRadius")) {
-                                                  break;
-                                                }
-                                                i = 16;
-                                                break;
-                                                if (!paramString.equals("opacity")) {
-                                                  break;
-                                                }
-                                                i = 17;
-                                                break;
-                                                if (!paramString.equals("borderTopLeftRadius")) {
-                                                  break;
-                                                }
-                                                i = 18;
-                                                break;
-                                                if (!paramString.equals("borderTopRightRadius")) {
-                                                  break;
-                                                }
-                                                i = 19;
-                                                break;
-                                                if (!paramString.equals("borderBottomLeftRadius")) {
-                                                  break;
-                                                }
-                                                i = 20;
-                                                break;
-                                                if (!paramString.equals("borderBottomRightRadius")) {
-                                                  break;
-                                                }
-                                                i = 21;
-                                                break;
-                                                if (!paramString.equals("visibility")) {
-                                                  break;
-                                                }
-                                                i = 22;
-                                                break;
-                                                if (!paramString.equals("rotation")) {
-                                                  break;
-                                                }
-                                                i = 23;
-                                                break;
-                                                if (!paramString.equals("transform_origin_parse")) {
-                                                  break;
-                                                }
-                                                i = 24;
-                                                break;
-                                                if (!paramString.equals("transform_parse")) {
-                                                  break;
-                                                }
-                                                i = 25;
-                                                break;
-                                                if (!paramString.equals("topIndex")) {
-                                                  break;
-                                                }
-                                                i = 26;
-                                                break;
-                                                if (!paramString.equals("background_image_parse")) {
-                                                  break;
-                                                }
-                                                i = 27;
-                                                break;
-                                                paramString = ViolaUtils.getString(paramObject, null);
-                                                bool1 = bool2;
-                                              } while (paramString == null);
-                                              setBackgroundColor(paramString);
-                                              return true;
-                                              setBorderWidth(0, FlexConvertUtils.getFloatByViewport(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(1, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(2, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(3, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(4, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              paramString = ViolaUtils.getString(paramObject, null);
-                                              bool1 = bool2;
-                                            } while (paramString == null);
-                                            setBorderColor(0, paramString);
-                                            return true;
-                                            paramString = ViolaUtils.getString(paramObject, null);
-                                            bool1 = bool2;
-                                          } while (paramString == null);
-                                          setBorderColor(1, paramString);
-                                          return true;
-                                          paramString = ViolaUtils.getString(paramObject, null);
-                                          bool1 = bool2;
-                                        } while (paramString == null);
-                                        setBorderColor(2, paramString);
-                                        return true;
-                                        paramString = ViolaUtils.getString(paramObject, null);
-                                        bool1 = bool2;
-                                      } while (paramString == null);
-                                      setBorderColor(3, paramString);
-                                      return true;
-                                      paramString = ViolaUtils.getString(paramObject, null);
-                                      bool1 = bool2;
-                                    } while (paramString == null);
-                                    setBorderColor(4, paramString);
-                                    return true;
-                                    paramString = ViolaUtils.getString(paramObject, null);
-                                    bool1 = bool2;
-                                  } while (paramString == null);
-                                  setBorderStyle(0, paramString);
-                                  return true;
-                                  paramString = ViolaUtils.getString(paramObject, null);
-                                  bool1 = bool2;
-                                } while (paramString == null);
-                                setBorderStyle(1, paramString);
-                                return true;
-                                paramString = ViolaUtils.getString(paramObject, null);
-                                bool1 = bool2;
-                              } while (paramString == null);
-                              setBorderStyle(2, paramString);
-                              return true;
-                              paramString = ViolaUtils.getString(paramObject, null);
-                              bool1 = bool2;
-                            } while (paramString == null);
-                            setBorderStyle(3, paramString);
-                            return true;
-                            paramString = ViolaUtils.getString(paramObject, null);
-                            bool1 = bool2;
-                          } while (paramString == null);
-                          setBorderStyle(4, paramString);
-                          return true;
-                          paramString = ViolaUtils.getString(paramObject, null);
-                          bool1 = bool2;
-                        } while (paramString == null);
-                        setBorderRadius(0, FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-                        return true;
-                        paramString = Float.valueOf(ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F)));
-                        bool1 = bool2;
-                      } while (paramString == null);
-                      bool1 = bool2;
-                    } while (paramString.equals(Float.valueOf(-1.0F)));
-                    setOpacity(paramString.floatValue());
-                    return true;
-                    paramString = ViolaUtils.getString(paramObject, null);
-                    bool1 = bool2;
-                  } while (paramString == null);
-                  setBoderTopLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-                  return true;
-                  paramString = ViolaUtils.getString(paramObject, null);
-                  bool1 = bool2;
-                } while (paramString == null);
-                setBoderTopRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-                return true;
-                paramString = ViolaUtils.getString(paramObject, null);
-                bool1 = bool2;
-              } while (paramString == null);
-              setBoderBottomLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-              return true;
-              paramString = ViolaUtils.getString(paramObject, null);
-              bool1 = bool2;
-            } while (paramString == null);
-            setBoderBottomRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-            return true;
-            bool1 = bool2;
-          } while (getHostView() == null);
-          this.mVisibility = ViolaUtils.getString(paramObject, "visible");
-          if ("visible".equals(this.mVisibility))
-          {
-            getHostView().setVisibility(0);
-            return true;
-          }
-          getHostView().setVisibility(4);
+          getHostView().setVisibility(0);
           return true;
-          float f = ViolaUtils.getFloat(paramObject, Float.valueOf(90.0F));
-          getHostView().setRotation(f);
-          return true;
-          setPivot(paramObject);
-          return true;
-          setTransform(paramObject);
-          return true;
-          bool1 = bool2;
-        } while (!Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue());
-        bool1 = bool2;
-      } while (getHostView() == null);
-      bool1 = bool2;
-    } while (getInstance() == null);
-    getInstance().getViolaPageListener().onComponentTopIndex(getHostView(), getDomObject().getLayoutHeight());
+        }
+        getHostView().setVisibility(4);
+      }
+      return true;
+    case 21: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBoderBottomRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+      }
+      return true;
+    case 20: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBoderBottomLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+      }
+      return true;
+    case 19: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBoderTopRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+      }
+      return true;
+    case 18: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBoderTopLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+      }
+      return true;
+    case 17: 
+      paramString = Float.valueOf(ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F)));
+      if ((paramString != null) && (!paramString.equals(Float.valueOf(-1.0F)))) {
+        setOpacityCompat(paramString.floatValue());
+      }
+      return true;
+    case 16: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderRadius(0, FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+      }
+      return true;
+    case 15: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderStyle(4, paramString);
+      }
+      return true;
+    case 14: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderStyle(3, paramString);
+      }
+      return true;
+    case 13: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderStyle(2, paramString);
+      }
+      return true;
+    case 12: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderStyle(1, paramString);
+      }
+      return true;
+    case 11: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderStyle(0, paramString);
+      }
+      return true;
+    case 10: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderColor(4, paramString);
+      }
+      return true;
+    case 9: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderColor(3, paramString);
+      }
+      return true;
+    case 8: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderColor(2, paramString);
+      }
+      return true;
+    case 7: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderColor(1, paramString);
+      }
+      return true;
+    case 6: 
+      paramString = ViolaUtils.getString(paramObject, null);
+      if (paramString != null) {
+        setBorderColor(0, paramString);
+      }
+      return true;
+    case 5: 
+      setBorderWidth(4, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+      return true;
+    case 4: 
+      setBorderWidth(3, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+      return true;
+    case 3: 
+      setBorderWidth(2, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+      return true;
+    case 2: 
+      setBorderWidth(1, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+      return true;
+    case 1: 
+      setBorderWidth(0, FlexConvertUtils.getFloatByViewport(paramObject, getDomObject().getViewPortWidth()));
+      return true;
+    }
+    paramString = ViolaUtils.getString(paramObject, null);
+    if (paramString != null) {
+      setBackgroundColor(paramString);
+    }
     return true;
-    setLinearGradient(paramObject);
-    return true;
+  }
+  
+  public void setTransformWithAnimate(View paramView, Map<Property<View, Float>, Float> paramMap)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    float f6 = -1.0F;
+    float f7 = -1.0F;
+    float f4 = -1.0F;
+    float f5 = -1.0F;
+    float f2 = -1.0F;
+    float f3 = -1.0F;
+    while (paramMap.hasNext())
+    {
+      Object localObject = (Map.Entry)paramMap.next();
+      Property localProperty = (Property)((Map.Entry)localObject).getKey();
+      float f1 = ((Float)((Map.Entry)localObject).getValue()).floatValue();
+      localObject = localProperty.getName();
+      i = -1;
+      switch (((String)localObject).hashCode())
+      {
+      default: 
+        break;
+      case 109250890: 
+        if (((String)localObject).equals("scale")) {
+          i = 5;
+        }
+        break;
+      case -40300674: 
+        if (((String)localObject).equals("rotation")) {
+          i = 6;
+        }
+        break;
+      case -908189617: 
+        if (((String)localObject).equals("scaleY")) {
+          i = 4;
+        }
+        break;
+      case -908189618: 
+        if (((String)localObject).equals("scaleX")) {
+          i = 3;
+        }
+        break;
+      case -1225497656: 
+        if (((String)localObject).equals("translationY")) {
+          i = 1;
+        }
+        break;
+      case -1225497657: 
+        if (((String)localObject).equals("translationX")) {
+          i = 0;
+        }
+        break;
+      case -1249320805: 
+        if (((String)localObject).equals("rotationY")) {
+          i = 8;
+        }
+        break;
+      case -1249320806: 
+        if (((String)localObject).equals("rotationX")) {
+          i = 7;
+        }
+        break;
+      case -1840647503: 
+        if (((String)localObject).equals("translation")) {
+          i = 2;
+        }
+        break;
+      }
+      switch (i)
+      {
+      default: 
+        break;
+      case 8: 
+        f3 = f1;
+        break;
+      case 7: 
+        f2 = f1;
+        break;
+      case 6: 
+        f3 = f1;
+        f2 = f1;
+        break;
+      case 5: 
+        f5 = f1;
+        f4 = f1;
+        break;
+      case 4: 
+        f5 = f1;
+        break;
+      case 3: 
+        f4 = f1;
+        break;
+      case 2: 
+        f7 = f1;
+        f6 = f1;
+        break;
+      case 1: 
+        f7 = f1;
+        break;
+      case 0: 
+        f6 = f1;
+      }
+    }
+    if ((f6 == -1.0F) && (f7 == -1.0F) && (f4 == -1.0F) && (f5 == -1.0F) && (f2 == -1.0F) && (f3 == -1.0F)) {
+      return;
+    }
+    paramMap = this.mTransformAnimator;
+    if (paramMap != null) {
+      paramMap.cancel();
+    }
+    this.mTransformAnimator = paramView.animate();
+    paramMap = null;
+    if (this.mDomObj.getStyle().containsKey("transform_origin_parse")) {
+      paramMap = (Pair)this.mDomObj.getStyle().get("transform_origin_parse");
+    }
+    if (f6 != -1.0F) {
+      this.mTransformAnimator.translationX(f6);
+    }
+    if (f7 != -1.0F) {
+      this.mTransformAnimator.translationY(f7);
+    }
+    if (f4 != -1.0F)
+    {
+      this.mTransformAnimator.scaleX(f4);
+      if (paramMap != null) {
+        paramView.setPivotX(((Float)paramMap.first).floatValue());
+      }
+    }
+    if (f5 != -1.0F)
+    {
+      this.mTransformAnimator.scaleY(f5);
+      if (paramMap != null) {
+        paramView.setPivotY(((Float)paramMap.second).floatValue());
+      }
+    }
+    if (f2 != -1.0F)
+    {
+      this.mTransformAnimator.rotationX(f2);
+      if (paramMap != null) {
+        paramView.setPivotX(((Float)paramMap.first).floatValue());
+      }
+    }
+    if (f3 != -1.0F)
+    {
+      this.mTransformAnimator.rotationY(f3);
+      if (paramMap != null) {
+        paramView.setPivotY(((Float)paramMap.second).floatValue());
+      }
+    }
+    int i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
+    paramView = getInstance();
+    if (paramView == null) {
+      return;
+    }
+    paramView.increaseTransformCount();
+    this.mTransformAnimator.setDuration(i).setListener(new VComponent.3(this, paramView)).start();
   }
   
   public void tryCompatVR(DomObject paramDomObject)
@@ -2372,60 +3145,66 @@ public abstract class VComponent<T extends View>
   public void unregisterFromContext(boolean paramBoolean)
   {
     Object localObject = getInstance();
-    if ((localObject == null) || (this.mDomObj == null)) {}
-    do
+    if (localObject != null)
     {
-      do
-      {
+      if (this.mDomObj == null) {
         return;
-        localObject = ViolaUtils.getDomActionContext(((ViolaInstance)localObject).getInstanceId());
-      } while (localObject == null);
+      }
+      localObject = ViolaUtils.getDomActionContext(((ViolaInstance)localObject).getInstanceId());
+      if (localObject == null) {
+        return;
+      }
       ((DOMActionContext)localObject).unregisterComponent(this.mDomObj.getRef());
-    } while (!paramBoolean);
-    ((DOMActionContext)localObject).unregisterDOMObject(this.mDomObj.getRef());
+      if (paramBoolean) {
+        ((DOMActionContext)localObject).unregisterDOMObject(this.mDomObj.getRef());
+      }
+    }
   }
   
   public void updateAttrs(Map<String, Object> paramMap)
   {
-    if (paramMap != null) {
-      paramMap = paramMap.entrySet().iterator();
-    }
-    for (;;)
+    if (paramMap != null)
     {
-      if (paramMap.hasNext())
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
       {
-        Object localObject1 = (Map.Entry)paramMap.next();
-        localObject2 = (String)((Map.Entry)localObject1).getKey();
-        localObject1 = ((Map.Entry)localObject1).getValue();
-        if (setProperty((String)localObject2, localObject1)) {
-          continue;
-        }
-        if (this.mHolder != null) {}
-      }
-      else
-      {
-        return;
-      }
-      Object localObject2 = this.mHolder.getPropertyInvoker((String)localObject2);
-      if (localObject2 != null)
-      {
-        Type[] arrayOfType;
-        try
+        Object localObject2 = (Map.Entry)paramMap.next();
+        Object localObject1 = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = ((Map.Entry)localObject2).getValue();
+        if (!setProperty((String)localObject1, localObject2))
         {
-          arrayOfType = ((Invoker)localObject2).getParameterTypes();
-          if (arrayOfType.length == 1) {
-            break label183;
+          Object localObject3 = this.mHolder;
+          if (localObject3 == null) {
+            return;
           }
-          ViolaLogUtils.e("VComponent", "[VComponent] setX method only one parameter：" + localObject2);
-          return;
+          localObject1 = ((IFComponentHolder)localObject3).getPropertyInvoker((String)localObject1);
+          if (localObject1 != null) {
+            try
+            {
+              localObject3 = ((Invoker)localObject1).getParameterTypes();
+              if (localObject3.length != 1)
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("[VComponent] setX method only one parameter：");
+                ((StringBuilder)localObject2).append(localObject1);
+                ViolaLogUtils.e("VComponent", ((StringBuilder)localObject2).toString());
+                return;
+              }
+              ((Invoker)localObject1).invoke(this, new Object[] { VReflectionUtils.parseArgument(localObject3[0], localObject2) });
+            }
+            catch (Exception localException)
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("[VComponent] updateProperties :class:");
+              ((StringBuilder)localObject3).append(getClass());
+              ((StringBuilder)localObject3).append("method:");
+              ((StringBuilder)localObject3).append(localObject1.toString());
+              ((StringBuilder)localObject3).append(" function ");
+              ((StringBuilder)localObject3).append(ViolaLogUtils.getStackTrace(localException));
+              ViolaLogUtils.e("VComponent", ((StringBuilder)localObject3).toString());
+            }
+          }
         }
-        catch (Exception localException)
-        {
-          ViolaLogUtils.e("VComponent", "[VComponent] updateProperties :class:" + getClass() + "method:" + localObject2.toString() + " function " + ViolaLogUtils.getStackTrace(localException));
-        }
-        continue;
-        label183:
-        ((Invoker)localObject2).invoke(this, new Object[] { VReflectionUtils.parseArgument(arrayOfType[0], localException) });
       }
     }
   }
@@ -2443,34 +3222,34 @@ public abstract class VComponent<T extends View>
   public void updateLifeCycle(String paramString)
   {
     int i = getLifeCycleConstanceFromEvent(paramString);
-    JSONObject localJSONObject;
     if ((this.mLifeCycleMap.containsKey(this.mDomObj.getRef())) && ((this.mLifeCycleMap.get(this.mDomObj.getRef()) instanceof Integer)) && ((i > ((Integer)this.mLifeCycleMap.get(this.mDomObj.getRef())).intValue()) || (i == 3)))
     {
       this.mLifeCycleMap.put(this.mDomObj.getRef(), Integer.valueOf(i));
-      if (this.mDomObj.getEvents().contains(paramString)) {
-        localJSONObject = new JSONObject();
-      }
-    }
-    try
-    {
-      localJSONObject.put("frame", getPositionInfoRelativeToRoot(1));
-      JSONArray localJSONArray = new JSONArray();
-      if (getDomObject() != null)
+      if (this.mDomObj.getEvents().contains(paramString))
       {
-        String str = getDomObject().getRef();
-        if (str != null) {
-          localJSONArray.put(str);
+        JSONObject localJSONObject = new JSONObject();
+        Object localObject;
+        try
+        {
+          localJSONObject.put("frame", getPositionInfoRelativeToRoot(1));
         }
-      }
-      localJSONArray.put(paramString);
-      fireEvent(paramString, localJSONArray, localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ViolaLogUtils.e("VComponent", "updateLifeCycle error :" + localException.getMessage());
+        catch (Exception localException)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("updateLifeCycle error :");
+          ((StringBuilder)localObject).append(localException.getMessage());
+          ViolaLogUtils.e("VComponent", ((StringBuilder)localObject).toString());
+        }
+        JSONArray localJSONArray = new JSONArray();
+        if (getDomObject() != null)
+        {
+          localObject = getDomObject().getRef();
+          if (localObject != null) {
+            localJSONArray.put(localObject);
+          }
+        }
+        localJSONArray.put(paramString);
+        fireEvent(paramString, localJSONArray, localJSONObject);
       }
     }
   }
@@ -2496,7 +3275,7 @@ public abstract class VComponent<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponent
  * JD-Core Version:    0.7.0.1
  */

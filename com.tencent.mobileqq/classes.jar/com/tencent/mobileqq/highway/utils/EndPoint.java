@@ -9,9 +9,9 @@ public class EndPoint
   public int connIndex;
   public int connResult = -1;
   public long cost = -1L;
-  public int failCount;
+  public int failCount = 0;
   public String host;
-  public int ipIndex;
+  public int ipIndex = 0;
   public boolean isSameIsp = true;
   public String keyOfAPN = "";
   public int port;
@@ -55,12 +55,24 @@ public class EndPoint
   
   public String toString()
   {
-    return this.host + ":" + this.port + ",type:" + this.type + " failCount:" + this.failCount + " isSameIPC:" + this.isSameIsp + " keyOfAPN:" + this.keyOfAPN;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.host);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.port);
+    localStringBuilder.append(",type:");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(" failCount:");
+    localStringBuilder.append(this.failCount);
+    localStringBuilder.append(" isSameIPC:");
+    localStringBuilder.append(this.isSameIsp);
+    localStringBuilder.append(" keyOfAPN:");
+    localStringBuilder.append(this.keyOfAPN);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.EndPoint
  * JD-Core Version:    0.7.0.1
  */

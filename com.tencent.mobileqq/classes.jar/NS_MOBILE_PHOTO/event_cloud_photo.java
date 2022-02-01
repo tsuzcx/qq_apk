@@ -13,10 +13,10 @@ public final class event_cloud_photo
   static Map<Integer, s_picurl> cache_specUrls = new HashMap();
   public String albumid = "";
   public String lloc = "";
-  public long owner;
-  public Map<Integer, s_picurl> specUrls;
-  public int type;
-  public long uploadTime;
+  public long owner = 0L;
+  public Map<Integer, s_picurl> specUrls = null;
+  public int type = 0;
+  public long uploadTime = 0L;
   
   static
   {
@@ -53,14 +53,15 @@ public final class event_cloud_photo
     paramJceOutputStream.write(this.lloc, 2);
     paramJceOutputStream.write(this.uploadTime, 5);
     paramJceOutputStream.write(this.type, 10);
-    if (this.specUrls != null) {
-      paramJceOutputStream.write(this.specUrls, 11);
+    Map localMap = this.specUrls;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_cloud_photo
  * JD-Core Version:    0.7.0.1
  */

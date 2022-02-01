@@ -2,9 +2,10 @@ package cooperation.liveroom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -79,7 +80,7 @@ public class LiveRoomInterfaceProxy
     return this.mRuntime.getDevLockIntent();
   }
   
-  public awgg getEntityManagerFactory(String paramString)
+  public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     return this.mRuntime.getQQEntityManagerFactory();
   }
@@ -103,7 +104,7 @@ public class LiveRoomInterfaceProxy
   {
     try
     {
-      AppRuntime.Status localStatus = this.mRuntime.getOnlineStatus();
+      AppRuntime.Status localStatus = ((IOnlineStatusService)this.mRuntime.getRuntimeService(IOnlineStatusService.class, "multi")).getOnlineStatus();
       return localStatus;
     }
     finally
@@ -195,7 +196,8 @@ public class LiveRoomInterfaceProxy
   
   public void sendOnlineStatus(AppRuntime.Status paramStatus, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
-    this.mRuntime.sendOnlineStatus(paramStatus, paramBoolean1, paramLong, paramBoolean2);
+    AppRuntime.Status localStatus = ((IOnlineStatusService)this.mRuntime.getRuntimeService(IOnlineStatusService.class, "multi")).getOnlineStatus();
+    this.mRuntime.sendOnlineStatus(paramStatus, localStatus, paramBoolean1, paramLong, paramBoolean2);
   }
   
   public void sendWirelessMeibaoReq(int paramInt)
@@ -283,7 +285,7 @@ public class LiveRoomInterfaceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomInterfaceProxy
  * JD-Core Version:    0.7.0.1
  */

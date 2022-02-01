@@ -1,41 +1,45 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alud;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
+import android.graphics.Color;
 import android.graphics.Paint.FontMetrics;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import asry;
-import awgf;
-import awgg;
-import azqs;
-import bdfr;
-import bdgm;
-import bdjz;
-import bdom;
-import bdyz;
-import begz;
-import bels;
+import android.util.TypedValue;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.ETFont;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.dpc.enumname.DPCNames;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.hiboom.HiBoomFont;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
+import com.tencent.mobileqq.vas.util.VasSoUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebViewProviderInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fx;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FilenameFilter;
@@ -55,11 +59,10 @@ public class ChatFontJsPlugin
   public static final int FONT_TYPE_FONT = 0;
   public static final int FONT_TYPE_HIBOOM = 1;
   private static final String TAG = "ChatFontJsPlugin";
-  public static FilenameFilter mHiBoomFontFilter = new bdyz();
   private BrowserAppInterface browserApp;
   private boolean isUseFont;
   private HashMap<String, Integer> mFontSize;
-  private FilenameFilter mHiBoomDirFilter = new ChatFontJsPlugin.6(this);
+  private FilenameFilter mHiBoomDirFilter = new ChatFontJsPlugin.5(this);
   private Bundle mReqBundle;
   
   public ChatFontJsPlugin()
@@ -71,8 +74,7 @@ public class ChatFontJsPlugin
   {
     Object localObject = new Paint.FontMetrics();
     ETEngine.getInstance().native_getFontMetrics((Paint.FontMetrics)localObject, paramETFont);
-    float f = Math.abs(((Paint.FontMetrics)localObject).ascent);
-    f = ((Paint.FontMetrics)localObject).descent + f;
+    float f = Math.abs(((Paint.FontMetrics)localObject).ascent) + ((Paint.FontMetrics)localObject).descent;
     localObject = new ChatFontJsPlugin.FontPadding();
     if (f > paramETFont.getSize())
     {
@@ -105,19 +107,27 @@ public class ChatFontJsPlugin
       super.callJs(paramString2, new String[] { "{\"ret\":-2}" });
       return;
     }
-    if (!fx.a(paramInt1, paramInt2))
+    if (!FontManagerConstants.checkFontExist(paramInt1, paramInt2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "checkDiyFontText fail font not exists id = " + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("checkDiyFontText fail font not exists id = ");
+        paramString1.append(paramInt1);
+        QLog.d("ChatFontJsPlugin", 2, paramString1.toString());
       }
       super.callJs(paramString2, new String[] { "{\"ret\":-2}" });
       return;
     }
-    ETFont localETFont = new ETFont(paramInt1, fx.a(paramInt1, paramInt2), 16.0F);
+    ETFont localETFont = new ETFont(paramInt1, FontManagerConstants.getTTFPath(paramInt1, paramInt2), 16.0F);
     if (!ETEngine.getInstance().native_diyFontIsDIYFont(localETFont))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "checkDiyFontText fail font is not diy font id = " + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("checkDiyFontText fail font is not diy font id = ");
+        paramString1.append(paramInt1);
+        QLog.d("ChatFontJsPlugin", 2, paramString1.toString());
       }
       super.callJs(paramString2, new String[] { "{\"ret\":-2}" });
       return;
@@ -135,7 +145,10 @@ public class ChatFontJsPlugin
       }
       else
       {
-        localObject2 = (String)localObject1 + paramString1.charAt(paramInt1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(paramString1.charAt(paramInt1));
+        localObject2 = ((StringBuilder)localObject2).toString();
       }
       paramInt1 += 1;
       localObject1 = localObject2;
@@ -148,9 +161,17 @@ public class ChatFontJsPlugin
       super.callJs(paramString2, new String[] { "{\"ret\":0}" });
       return;
     }
-    paramString1 = "{\"ret\":-1,\"data\":{\"invalidText\":\"" + (String)localObject1 + "\"}}";
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "checkDiyFontText result = " + paramString1);
+    paramString1 = new StringBuilder();
+    paramString1.append("{\"ret\":-1,\"data\":{\"invalidText\":\"");
+    paramString1.append((String)localObject1);
+    paramString1.append("\"}}");
+    paramString1 = paramString1.toString();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkDiyFontText result = ");
+      ((StringBuilder)localObject1).append(paramString1);
+      QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject1).toString());
     }
     super.callJs(paramString2, new String[] { paramString1 });
   }
@@ -163,66 +184,80 @@ public class ChatFontJsPlugin
         QLog.d("ChatFontJsPlugin", 2, "getDiyFontInfo fail engine not ready");
       }
       super.callJs(paramString, new String[] { "{\"ret\":-1}" });
-    }
-    for (;;)
-    {
       return;
-      if (!fx.a(paramInt1, paramInt2))
+    }
+    if (!FontManagerConstants.checkFontExist(paramInt1, paramInt2))
+    {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatFontJsPlugin", 2, "getDiyFontInfo fail font not exists id = " + paramInt1);
-        }
-        super.callJs(paramString, new String[] { "{\"ret\":-1}" });
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDiyFontInfo fail font not exists id = ");
+        ((StringBuilder)localObject1).append(paramInt1);
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
+      super.callJs(paramString, new String[] { "{\"ret\":-1}" });
+      return;
+    }
+    Object localObject1 = new ETFont(paramInt1, FontManagerConstants.getTTFPath(paramInt1, paramInt2), 16.0F);
+    if (!ETEngine.getInstance().native_diyFontIsDIYFont((ETFont)localObject1))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDiyFontInfo fail font is not diy font id = ");
+        ((StringBuilder)localObject1).append(paramInt1);
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
+      super.callJs(paramString, new String[] { "{\"ret\":-1}" });
+      return;
+    }
+    paramInt2 = ETEngine.getInstance().native_diyFontGetUPEM((ETFont)localObject1);
+    if (paramInt2 <= 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDiyFontInfo get upem fail fontid = ");
+        ((StringBuilder)localObject1).append(paramInt1);
+        ((StringBuilder)localObject1).append(" upem = ");
+        ((StringBuilder)localObject1).append(paramInt2);
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
+      super.callJs(paramString, new String[] { "{\"ret\":-1}" });
+      return;
+    }
+    ((ETFont)localObject1).setSize(paramInt2);
+    Object localObject2 = new Paint.FontMetrics();
+    ETEngine.getInstance().native_getFontMetrics((Paint.FontMetrics)localObject2, (ETFont)localObject1);
+    paramInt1 = (int)(Math.abs(((Paint.FontMetrics)localObject2).ascent) + ((Paint.FontMetrics)localObject2).descent);
+    localObject1 = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject1).put("ret", 0);
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("upem", paramInt2);
+      ((JSONObject)localObject2).put("height", paramInt1);
+      ((JSONObject)localObject1).put("data", localObject2);
+      super.callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getDiyFontInfo result = ");
+        ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject2).toString());
         return;
       }
-      Object localObject1 = new ETFont(paramInt1, fx.a(paramInt1, paramInt2), 16.0F);
-      if (!ETEngine.getInstance().native_diyFontIsDIYFont((ETFont)localObject1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatFontJsPlugin", 2, "getDiyFontInfo fail font is not diy font id = " + paramInt1);
-        }
-        super.callJs(paramString, new String[] { "{\"ret\":-1}" });
-        return;
-      }
-      paramInt2 = ETEngine.getInstance().native_diyFontGetUPEM((ETFont)localObject1);
-      if (paramInt2 <= 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatFontJsPlugin", 2, "getDiyFontInfo get upem fail fontid = " + paramInt1 + " upem = " + paramInt2);
-        }
-        super.callJs(paramString, new String[] { "{\"ret\":-1}" });
-        return;
-      }
-      ((ETFont)localObject1).setSize(paramInt2);
-      Object localObject2 = new Paint.FontMetrics();
-      ETEngine.getInstance().native_getFontMetrics((Paint.FontMetrics)localObject2, (ETFont)localObject1);
-      paramInt1 = (int)(Math.abs(((Paint.FontMetrics)localObject2).ascent) + ((Paint.FontMetrics)localObject2).descent);
-      localObject1 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject1).put("ret", 0);
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("upem", paramInt2);
-        ((JSONObject)localObject2).put("height", paramInt1);
-        ((JSONObject)localObject1).put("data", localObject2);
-        super.callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ChatFontJsPlugin", 2, "getDiyFontInfo result = " + ((JSONObject)localObject1).toString());
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ChatFontJsPlugin", 2, "getDiyFontInfo error: ", localException);
-        super.callJs(paramString, new String[] { "{\"ret\":-1}" });
-      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ChatFontJsPlugin", 2, "getDiyFontInfo error: ", localException);
+      super.callJs(paramString, new String[] { "{\"ret\":-1}" });
     }
   }
   
   private void queryLocalHiBoom(String paramString)
   {
-    Object localObject = new File(asry.b);
+    Object localObject = new File(HiBoomFont.f);
     JSONObject localJSONObject = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
@@ -234,41 +269,37 @@ public class ChatFontJsPlugin
         int i = 0;
         while (i < k)
         {
-          String[] arrayOfString = arrayOfFile[i].list(mHiBoomFontFilter);
+          String[] arrayOfString = arrayOfFile[i].list(HiBoomFont.i);
           if (arrayOfString != null)
           {
             int m = arrayOfString.length;
             int j = 0;
-            if (j < m)
+            while (j < m)
             {
               String str = arrayOfString[j];
-              if (str.endsWith(".hy")) {
+              boolean bool = str.endsWith(".hy");
+              localObject = ".fz4";
+              if (bool)
+              {
                 localObject = ".hy";
               }
-              for (;;)
+              else if (str.endsWith(".fz"))
               {
-                label127:
-                localObject = str.substring(0, str.length() - ((String)localObject).length());
-                if (TextUtils.isDigitsOnly((CharSequence)localObject)) {
-                  localJSONArray.put(Integer.parseInt((String)localObject));
+                localObject = ".fz";
+              }
+              else if (!str.endsWith(".fz4"))
+              {
+                if (!str.endsWith(".hy3")) {
+                  break label226;
                 }
-                do
-                {
-                  j += 1;
-                  break;
-                  if (str.endsWith(".fz"))
-                  {
-                    localObject = ".fz";
-                    break label127;
-                  }
-                  if (str.endsWith(".fz4"))
-                  {
-                    localObject = ".fz4";
-                    break label127;
-                  }
-                } while (!str.endsWith(".hy3"));
                 localObject = ".hy3";
               }
+              localObject = str.substring(0, str.length() - ((String)localObject).length());
+              if (TextUtils.isDigitsOnly((CharSequence)localObject)) {
+                localJSONArray.put(Integer.parseInt((String)localObject));
+              }
+              label226:
+              j += 1;
             }
           }
           i += 1;
@@ -278,16 +309,20 @@ public class ChatFontJsPlugin
     try
     {
       localJSONObject.put("downloadedList", localJSONArray);
-      label247:
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "queryLocalHiBoom result = " + localJSONObject.toString());
+      label251:
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("queryLocalHiBoom result = ");
+        ((StringBuilder)localObject).append(localJSONObject.toString());
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
       super.callJs(paramString, new String[] { localJSONObject.toString() });
       return;
     }
     catch (Exception localException)
     {
-      break label247;
+      break label251;
     }
   }
   
@@ -300,15 +335,19 @@ public class ChatFontJsPlugin
   
   private void setFontSwitch(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "setFontSwitch:" + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setFontSwitch:");
+      localStringBuilder.append(paramJSONObject);
+      QLog.d("ChatFontJsPlugin", 2, localStringBuilder.toString());
     }
     try
     {
       int i = paramJSONObject.getInt("action");
       this.mReqBundle.clear();
       this.mReqBundle.putInt("action", i);
-      super.sendRemoteReq(apml.a("setFontSwtich", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(DataFactory.a("setFontSwtich", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -327,483 +366,243 @@ public class ChatFontJsPlugin
       }
       tryInitHYEngine("0");
       super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
-    }
-    do
-    {
-      return;
-      if ((!TextUtils.isEmpty(paramString2)) && (paramInt3 > 0)) {
-        break;
-      }
-      super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
-    } while (!QLog.isColorLevel());
-    QLog.d("ChatFontJsPlugin", 2, "diyPreview text = " + paramString2 + " fontsize = " + paramInt3);
-    return;
-    if (!fx.a(paramInt1, paramInt2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "diyPreview font not exists");
-      }
-      super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
-      startDownloadFont(paramInt1, paramInt2, "0", 0);
       return;
     }
-    if (!ETEngine.getInstance().native_isFontLoaded(paramInt1)) {
-      ETEngine.getInstance().native_loadFont(fx.a(paramInt1, paramInt2), paramInt1, false);
-    }
-    ETFont localETFont = new ETFont(paramInt1, fx.a(paramInt1, paramInt2), paramInt3 * 2);
-    if (!ETEngine.getInstance().native_diyFontIsDIYFont(localETFont))
+    Object localObject1;
+    int j;
+    Object localObject2;
+    int k;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramInt3 > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "checkDiyFontText fail font is not diy font id = " + paramInt1);
+      if (!FontManagerConstants.checkFontExist(paramInt1, paramInt2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ChatFontJsPlugin", 2, "diyPreview font not exists");
+        }
+        super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+        startDownloadFont(paramInt1, paramInt2, "0", 0);
+        return;
       }
-      super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
-      return;
+      if (!ETEngine.getInstance().native_isFontLoaded(paramInt1)) {
+        ETEngine.getInstance().native_loadFont(FontManagerConstants.getTTFPath(paramInt1, paramInt2), paramInt1, false);
+      }
+      localObject1 = FontManagerConstants.getTTFPath(paramInt1, paramInt2);
+      j = paramInt3 * 2;
+      localObject1 = new ETFont(paramInt1, (String)localObject1, j);
+      if (!ETEngine.getInstance().native_diyFontIsDIYFont((ETFont)localObject1))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("checkDiyFontText fail font is not diy font id = ");
+          paramString2.append(paramInt1);
+          QLog.d("ChatFontJsPlugin", 2, paramString2.toString());
+        }
+        super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+        return;
+      }
+      localObject2 = calculateFontPadding((ETFont)localObject1);
+      ((ETFont)localObject1).setSize(((ChatFontJsPlugin.FontPadding)localObject2).fontSize);
+      ((ETFont)localObject1).parseDIYJsonString(paramString3);
+      k = paramString2.length();
     }
-    Object localObject = calculateFontPadding(localETFont);
-    localETFont.setSize(((ChatFontJsPlugin.FontPadding)localObject).fontSize);
-    localETFont.parseDIYJsonString(paramString3);
-    int k = paramString2.length();
     try
     {
-      paramString3 = Bitmap.createBitmap(paramInt3 * 2 * k, paramInt3 * 2, Bitmap.Config.ARGB_8888);
-      paramInt1 = 0;
-      if (paramInt1 < k)
+      paramString3 = Bitmap.createBitmap(j * k, j, Bitmap.Config.ARGB_8888);
+      int i;
+      for (paramInt2 = 0; paramInt2 < k; paramInt2 = i)
       {
-        int j = paramInt3 * 2 * paramInt1;
-        int i = 0;
-        if (((ChatFontJsPlugin.FontPadding)localObject).paddingType == 1) {
-          paramInt2 = (int)(j + ((ChatFontJsPlugin.FontPadding)localObject).padding);
-        }
-        for (;;)
+        paramInt1 = j * paramInt2;
+        if (((ChatFontJsPlugin.FontPadding)localObject2).paddingType == 1)
         {
-          ETEngine.getInstance().native_drawText(paramString2.substring(paramInt1, paramInt1 + 1), paramString3, paramInt2, i, localETFont);
-          paramInt1 += 1;
-          break;
-          paramInt2 = j;
-          if (((ChatFontJsPlugin.FontPadding)localObject).paddingType == 2)
-          {
-            i = (int)(0 + ((ChatFontJsPlugin.FontPadding)localObject).padding);
-            paramInt2 = j;
-          }
+          paramInt1 = (int)(paramInt1 + ((ChatFontJsPlugin.FontPadding)localObject2).padding);
+          break label701;
         }
+        if (((ChatFontJsPlugin.FontPadding)localObject2).paddingType != 2) {
+          break label701;
+        }
+        paramInt3 = (int)(0 + ((ChatFontJsPlugin.FontPadding)localObject2).padding);
+        localObject3 = ETEngine.getInstance();
+        i = paramInt2 + 1;
+        ((ETEngine)localObject3).native_drawText(paramString2.substring(paramInt2, i), paramString3, paramInt1, paramInt3, (ETFont)localObject1);
       }
       paramString2 = new ByteArrayOutputStream();
       paramString3.compress(Bitmap.CompressFormat.PNG, 100, paramString2);
-      paramString2 = bdfr.encodeToString(paramString2.toByteArray(), 2);
-      localObject = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("img", paramString2);
-      localJSONObject.put("width", paramString3.getWidth());
-      localJSONObject.put("height", paramString3.getHeight());
-      ((JSONObject)localObject).put("data", localJSONObject);
-      ((JSONObject)localObject).put("ret", 0);
-      super.callJs(paramString1, new String[] { ((JSONObject)localObject).toString() });
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "diyPreview result = " + ((JSONObject)localObject).toString());
+      localObject2 = Base64Util.encodeToString(paramString2.toByteArray(), 2);
+      paramString2 = new JSONObject();
+      Object localObject3 = new JSONObject();
+      ((JSONObject)localObject3).put("img", localObject2);
+      ((JSONObject)localObject3).put("width", paramString3.getWidth());
+      ((JSONObject)localObject3).put("height", paramString3.getHeight());
+      paramString2.put("data", localObject3);
+      paramString2.put("ret", 0);
+      super.callJs(paramString1, new String[] { paramString2.toString() });
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("diyPreview result = ");
+        ((StringBuilder)localObject2).append(paramString2.toString());
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject2).toString());
       }
       paramString3.recycle();
     }
     catch (OutOfMemoryError paramString2)
     {
-      for (;;)
-      {
-        QLog.e("ChatFontJsPlugin", 1, "diyPreview createBitmap OOM");
-        super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
-      }
+      break label579;
     }
     catch (Exception paramString2)
     {
-      for (;;)
-      {
-        QLog.e("ChatFontJsPlugin", 1, "diyPreview createBitmap OOM");
-        super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
-      }
+      label553:
+      break label553;
     }
-    ETEngine.getInstance().native_diyFontDeleteNativeConfig(localETFont.m_diyHandle);
+    QLog.e("ChatFontJsPlugin", 1, "diyPreview createBitmap OOM");
+    super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+    break label602;
+    label579:
+    QLog.e("ChatFontJsPlugin", 1, "diyPreview createBitmap OOM");
+    super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+    label602:
+    ETEngine.getInstance().native_diyFontDeleteNativeConfig(((ETFont)localObject1).mDiyHandle);
+    return;
+    super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("diyPreview text = ");
+      paramString1.append(paramString2);
+      paramString1.append(" fontsize = ");
+      paramString1.append(paramInt3);
+      QLog.d("ChatFontJsPlugin", 2, paramString1.toString());
+    }
   }
   
-  /* Error */
   void getFontPreview(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, String paramString4)
   {
-    // Byte code:
-    //   0: invokestatic 60	com/etrump/mixlayout/ETEngine:getInstance	()Lcom/etrump/mixlayout/ETEngine;
-    //   3: getfield 127	com/etrump/mixlayout/ETEngine:isEngineReady	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   9: ifne +41 -> 50
-    //   12: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   15: ifeq +12 -> 27
-    //   18: ldc 16
-    //   20: iconst_2
-    //   21: ldc_w 370
-    //   24: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   27: aload_0
-    //   28: ldc_w 372
-    //   31: invokevirtual 375	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin:tryInitHYEngine	(Ljava/lang/String;)V
-    //   34: aload_0
-    //   35: aload_1
-    //   36: iconst_1
-    //   37: anewarray 117	java/lang/String
-    //   40: dup
-    //   41: iconst_0
-    //   42: ldc_w 468
-    //   45: aastore
-    //   46: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   49: return
-    //   50: aload 4
-    //   52: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   55: ifne +8 -> 63
-    //   58: iload 6
-    //   60: ifgt +98 -> 158
-    //   63: aload_0
-    //   64: aload_1
-    //   65: iconst_1
-    //   66: anewarray 117	java/lang/String
-    //   69: dup
-    //   70: iconst_0
-    //   71: new 142	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   78: ldc_w 470
-    //   81: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: iload 6
-    //   86: invokevirtual 152	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   89: ldc_w 472
-    //   92: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: aload 4
-    //   97: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: ldc_w 474
-    //   103: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: aastore
-    //   110: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   113: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   116: ifeq -67 -> 49
-    //   119: ldc 16
-    //   121: iconst_2
-    //   122: new 142	java/lang/StringBuilder
-    //   125: dup
-    //   126: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   129: ldc_w 377
-    //   132: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: aload 4
-    //   137: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: ldc_w 379
-    //   143: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: iload 6
-    //   148: invokevirtual 152	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   151: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   157: return
-    //   158: iconst_2
-    //   159: iload 6
-    //   161: i2f
-    //   162: aload_0
-    //   163: getfield 476	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin:browserApp	Lcom/tencent/mobileqq/app/BrowserAppInterface;
-    //   166: invokevirtual 482	com/tencent/mobileqq/app/BrowserAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   169: invokevirtual 488	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   172: invokevirtual 494	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   175: invokestatic 500	android/util/TypedValue:applyDimension	(IFLandroid/util/DisplayMetrics;)F
-    //   178: fconst_2
-    //   179: fdiv
-    //   180: f2i
-    //   181: istore 9
-    //   183: iload_2
-    //   184: iload_3
-    //   185: invokestatic 140	fx:a	(II)Z
-    //   188: ifne +44 -> 232
-    //   191: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   194: ifeq +12 -> 206
-    //   197: ldc 16
-    //   199: iconst_2
-    //   200: ldc_w 381
-    //   203: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   206: aload_0
-    //   207: aload_1
-    //   208: iconst_1
-    //   209: anewarray 117	java/lang/String
-    //   212: dup
-    //   213: iconst_0
-    //   214: ldc_w 502
-    //   217: aastore
-    //   218: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   221: aload_0
-    //   222: iload_2
-    //   223: iload_3
-    //   224: ldc_w 372
-    //   227: iconst_0
-    //   228: invokevirtual 385	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin:startDownloadFont	(IILjava/lang/String;I)V
-    //   231: return
-    //   232: ldc_w 503
-    //   235: istore 6
-    //   237: aload 7
-    //   239: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   242: ifne +10 -> 252
-    //   245: aload 7
-    //   247: invokestatic 508	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   250: istore 6
-    //   252: invokestatic 60	com/etrump/mixlayout/ETEngine:getInstance	()Lcom/etrump/mixlayout/ETEngine;
-    //   255: iload_2
-    //   256: invokevirtual 389	com/etrump/mixlayout/ETEngine:native_isFontLoaded	(I)Z
-    //   259: ifne +17 -> 276
-    //   262: invokestatic 60	com/etrump/mixlayout/ETEngine:getInstance	()Lcom/etrump/mixlayout/ETEngine;
-    //   265: iload_2
-    //   266: iload_3
-    //   267: invokestatic 159	fx:a	(II)Ljava/lang/String;
-    //   270: iload_2
-    //   271: iconst_0
-    //   272: invokevirtual 393	com/etrump/mixlayout/ETEngine:native_loadFont	(Ljava/lang/String;IZ)Z
-    //   275: pop
-    //   276: new 82	com/etrump/mixlayout/ETFont
-    //   279: dup
-    //   280: iload_2
-    //   281: iload_2
-    //   282: iload_3
-    //   283: invokestatic 159	fx:a	(II)Ljava/lang/String;
-    //   286: iload 9
-    //   288: i2f
-    //   289: invokespecial 163	com/etrump/mixlayout/ETFont:<init>	(ILjava/lang/String;F)V
-    //   292: astore 7
-    //   294: aload_0
-    //   295: aload 7
-    //   297: invokespecial 395	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin:calculateFontPadding	(Lcom/etrump/mixlayout/ETFont;)Lcom/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin$FontPadding;
-    //   300: astore 11
-    //   302: aload 7
-    //   304: aload 11
-    //   306: getfield 92	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin$FontPadding:fontSize	F
-    //   309: invokevirtual 220	com/etrump/mixlayout/ETFont:setSize	(F)V
-    //   312: aload 7
-    //   314: iload 6
-    //   316: invokevirtual 512	com/etrump/mixlayout/ETFont:setColor	(I)V
-    //   319: aload 7
-    //   321: aload 5
-    //   323: invokevirtual 398	com/etrump/mixlayout/ETFont:parseDIYJsonString	(Ljava/lang/String;)V
-    //   326: aload 4
-    //   328: invokevirtual 174	java/lang/String:length	()I
-    //   331: istore 10
-    //   333: iload 9
-    //   335: iload 10
-    //   337: imul
-    //   338: iload 9
-    //   340: getstatic 404	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   343: invokestatic 410	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   346: astore 5
-    //   348: iconst_0
-    //   349: istore_2
-    //   350: iload_2
-    //   351: iload 10
-    //   353: if_icmpge +133 -> 486
-    //   356: iload 9
-    //   358: iload_2
-    //   359: imul
-    //   360: istore 8
-    //   362: iconst_0
-    //   363: istore 6
-    //   365: aload 11
-    //   367: getfield 89	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin$FontPadding:paddingType	I
-    //   370: iconst_1
-    //   371: if_icmpne +86 -> 457
-    //   374: iload 8
-    //   376: i2f
-    //   377: aload 11
-    //   379: getfield 95	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin$FontPadding:padding	F
-    //   382: fadd
-    //   383: f2i
-    //   384: istore_3
-    //   385: invokestatic 60	com/etrump/mixlayout/ETEngine:getInstance	()Lcom/etrump/mixlayout/ETEngine;
-    //   388: aload 4
-    //   390: iload_2
-    //   391: iload_2
-    //   392: iconst_1
-    //   393: iadd
-    //   394: invokevirtual 284	java/lang/String:substring	(II)Ljava/lang/String;
-    //   397: aload 5
-    //   399: iload_3
-    //   400: iload 6
-    //   402: aload 7
-    //   404: invokevirtual 414	com/etrump/mixlayout/ETEngine:native_drawText	(Ljava/lang/String;Landroid/graphics/Bitmap;IILcom/etrump/mixlayout/ETFont;)Z
-    //   407: pop
-    //   408: iload_2
-    //   409: iconst_1
-    //   410: iadd
-    //   411: istore_2
-    //   412: goto -62 -> 350
-    //   415: astore 4
-    //   417: aload_0
-    //   418: aload_1
-    //   419: iconst_1
-    //   420: anewarray 117	java/lang/String
-    //   423: dup
-    //   424: iconst_0
-    //   425: new 142	java/lang/StringBuilder
-    //   428: dup
-    //   429: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   432: ldc_w 514
-    //   435: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   438: aload 7
-    //   440: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   443: ldc_w 474
-    //   446: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   449: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   452: aastore
-    //   453: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   456: return
-    //   457: iload 8
-    //   459: istore_3
-    //   460: aload 11
-    //   462: getfield 89	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin$FontPadding:paddingType	I
-    //   465: iconst_2
-    //   466: if_icmpne -81 -> 385
-    //   469: iconst_0
-    //   470: i2f
-    //   471: aload 11
-    //   473: getfield 95	com/tencent/mobileqq/vaswebviewplugin/ChatFontJsPlugin$FontPadding:padding	F
-    //   476: fadd
-    //   477: f2i
-    //   478: istore 6
-    //   480: iload 8
-    //   482: istore_3
-    //   483: goto -98 -> 385
-    //   486: new 416	java/io/ByteArrayOutputStream
-    //   489: dup
-    //   490: invokespecial 417	java/io/ByteArrayOutputStream:<init>	()V
-    //   493: astore 4
-    //   495: aload 5
-    //   497: getstatic 423	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   500: bipush 100
-    //   502: aload 4
-    //   504: invokevirtual 427	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   507: pop
-    //   508: aload 4
-    //   510: invokevirtual 431	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   513: iconst_2
-    //   514: invokestatic 437	bdfr:encodeToString	([BI)Ljava/lang/String;
-    //   517: astore 4
-    //   519: new 222	org/json/JSONObject
-    //   522: dup
-    //   523: invokespecial 223	org/json/JSONObject:<init>	()V
-    //   526: astore 11
-    //   528: new 222	org/json/JSONObject
-    //   531: dup
-    //   532: invokespecial 223	org/json/JSONObject:<init>	()V
-    //   535: astore 12
-    //   537: aload 12
-    //   539: ldc_w 439
-    //   542: aload 4
-    //   544: invokevirtual 238	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   547: pop
-    //   548: aload 12
-    //   550: ldc_w 441
-    //   553: aload 5
-    //   555: invokevirtual 444	android/graphics/Bitmap:getWidth	()I
-    //   558: invokevirtual 229	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   561: pop
-    //   562: aload 12
-    //   564: ldc 233
-    //   566: aload 5
-    //   568: invokevirtual 447	android/graphics/Bitmap:getHeight	()I
-    //   571: invokevirtual 229	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   574: pop
-    //   575: aload 11
-    //   577: ldc 235
-    //   579: aload 12
-    //   581: invokevirtual 238	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   584: pop
-    //   585: aload 11
-    //   587: ldc 225
-    //   589: iconst_0
-    //   590: invokevirtual 229	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   593: pop
-    //   594: aload_0
-    //   595: aload_1
-    //   596: iconst_1
-    //   597: anewarray 117	java/lang/String
-    //   600: dup
-    //   601: iconst_0
-    //   602: aload 11
-    //   604: invokevirtual 239	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   607: aastore
-    //   608: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   611: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   614: ifeq +33 -> 647
-    //   617: ldc 16
-    //   619: iconst_2
-    //   620: new 142	java/lang/StringBuilder
-    //   623: dup
-    //   624: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   627: ldc_w 449
-    //   630: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   633: aload 11
-    //   635: invokevirtual 239	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   638: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   641: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   644: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   647: aload 5
-    //   649: invokevirtual 452	android/graphics/Bitmap:recycle	()V
-    //   652: invokestatic 60	com/etrump/mixlayout/ETEngine:getInstance	()Lcom/etrump/mixlayout/ETEngine;
-    //   655: aload 7
-    //   657: getfield 456	com/etrump/mixlayout/ETFont:m_diyHandle	J
-    //   660: invokevirtual 460	com/etrump/mixlayout/ETEngine:native_diyFontDeleteNativeConfig	(J)V
-    //   663: return
-    //   664: astore 4
-    //   666: ldc 16
-    //   668: iconst_1
-    //   669: ldc_w 462
-    //   672: invokestatic 464	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   675: aload_0
-    //   676: aload_1
-    //   677: iconst_1
-    //   678: anewarray 117	java/lang/String
-    //   681: dup
-    //   682: iconst_0
-    //   683: ldc 204
-    //   685: aastore
-    //   686: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   689: goto -37 -> 652
-    //   692: astore 4
-    //   694: ldc 16
-    //   696: iconst_1
-    //   697: ldc_w 462
-    //   700: invokestatic 464	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   703: aload_0
-    //   704: aload_1
-    //   705: iconst_1
-    //   706: anewarray 117	java/lang/String
-    //   709: dup
-    //   710: iconst_0
-    //   711: ldc 204
-    //   713: aastore
-    //   714: invokespecial 123	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   717: goto -65 -> 652
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	720	0	this	ChatFontJsPlugin
-    //   0	720	1	paramString1	String
-    //   0	720	2	paramInt1	int
-    //   0	720	3	paramInt2	int
-    //   0	720	4	paramString2	String
-    //   0	720	5	paramString3	String
-    //   0	720	6	paramInt3	int
-    //   0	720	7	paramString4	String
-    //   360	121	8	i	int
-    //   181	179	9	j	int
-    //   331	23	10	k	int
-    //   300	334	11	localObject	Object
-    //   535	45	12	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   245	252	415	java/lang/Exception
-    //   333	348	664	java/lang/OutOfMemoryError
-    //   365	385	664	java/lang/OutOfMemoryError
-    //   385	408	664	java/lang/OutOfMemoryError
-    //   460	480	664	java/lang/OutOfMemoryError
-    //   486	647	664	java/lang/OutOfMemoryError
-    //   647	652	664	java/lang/OutOfMemoryError
-    //   333	348	692	java/lang/Exception
-    //   365	385	692	java/lang/Exception
-    //   385	408	692	java/lang/Exception
-    //   460	480	692	java/lang/Exception
-    //   486	647	692	java/lang/Exception
-    //   647	652	692	java/lang/Exception
+    if (!ETEngine.getInstance().isEngineReady.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatFontJsPlugin", 2, "diyPreview engine not ready");
+      }
+      tryInitHYEngine("0");
+      super.callJs(paramString1, new String[] { "{\"ret\":-1,\"msg\":\"font engine not ready.\"}" });
+      return;
+    }
+    int j;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramInt3 > 0))
+    {
+      j = (int)(TypedValue.applyDimension(2, paramInt3, this.browserApp.getApp().getResources().getDisplayMetrics()) / 2.0F);
+      if (!FontManagerConstants.checkFontExist(paramInt1, paramInt2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ChatFontJsPlugin", 2, "diyPreview font not exists");
+        }
+        super.callJs(paramString1, new String[] { "{\"ret\":-3,\"msg\":\"this font need download.\"}" });
+        startDownloadFont(paramInt1, paramInt2, "0", 0);
+        return;
+      }
+      paramInt3 = -16777216;
+      if (TextUtils.isEmpty(paramString4)) {}
+    }
+    try
+    {
+      paramInt3 = Color.parseColor(paramString4);
+    }
+    catch (Exception paramString2)
+    {
+      label163:
+      Object localObject1;
+      int k;
+      break label163;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("{\"ret\":-4,\"msg\":\"color is illegal:");
+    paramString2.append(paramString4);
+    paramString2.append("\"}");
+    super.callJs(paramString1, new String[] { paramString2.toString() });
+    return;
+    if (!ETEngine.getInstance().native_isFontLoaded(paramInt1)) {
+      ETEngine.getInstance().native_loadFont(FontManagerConstants.getTTFPath(paramInt1, paramInt2), paramInt1, false);
+    }
+    paramString4 = new ETFont(paramInt1, FontManagerConstants.getTTFPath(paramInt1, paramInt2), j);
+    localObject1 = calculateFontPadding(paramString4);
+    paramString4.setSize(((ChatFontJsPlugin.FontPadding)localObject1).fontSize);
+    paramString4.setColor(paramInt3);
+    paramString4.parseDIYJsonString(paramString3);
+    k = paramString2.length();
+    try
+    {
+      paramString3 = Bitmap.createBitmap(j * k, j, Bitmap.Config.ARGB_8888);
+      int i;
+      for (paramInt2 = 0; paramInt2 < k; paramInt2 = i)
+      {
+        paramInt1 = j * paramInt2;
+        if (((ChatFontJsPlugin.FontPadding)localObject1).paddingType == 1)
+        {
+          paramInt1 = (int)(paramInt1 + ((ChatFontJsPlugin.FontPadding)localObject1).padding);
+          break label794;
+        }
+        if (((ChatFontJsPlugin.FontPadding)localObject1).paddingType != 2) {
+          break label794;
+        }
+        paramInt3 = (int)(0 + ((ChatFontJsPlugin.FontPadding)localObject1).padding);
+        localObject2 = ETEngine.getInstance();
+        i = paramInt2 + 1;
+        ((ETEngine)localObject2).native_drawText(paramString2.substring(paramInt2, i), paramString3, paramInt1, paramInt3, paramString4);
+      }
+      paramString2 = new ByteArrayOutputStream();
+      paramString3.compress(Bitmap.CompressFormat.PNG, 100, paramString2);
+      localObject1 = Base64Util.encodeToString(paramString2.toByteArray(), 2);
+      paramString2 = new JSONObject();
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("img", localObject1);
+      ((JSONObject)localObject2).put("width", paramString3.getWidth());
+      ((JSONObject)localObject2).put("height", paramString3.getHeight());
+      paramString2.put("data", localObject2);
+      paramString2.put("ret", 0);
+      super.callJs(paramString1, new String[] { paramString2.toString() });
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("diyPreview result = ");
+        ((StringBuilder)localObject1).append(paramString2.toString());
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
+      paramString3.recycle();
+    }
+    catch (OutOfMemoryError paramString2)
+    {
+      break label612;
+    }
+    catch (Exception paramString2)
+    {
+      label586:
+      break label586;
+    }
+    QLog.e("ChatFontJsPlugin", 1, "diyPreview createBitmap OOM");
+    super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+    break label635;
+    label612:
+    QLog.e("ChatFontJsPlugin", 1, "diyPreview createBitmap OOM");
+    super.callJs(paramString1, new String[] { "{\"ret\":-1}" });
+    label635:
+    ETEngine.getInstance().native_diyFontDeleteNativeConfig(paramString4.mDiyHandle);
+    return;
+    paramString3 = new StringBuilder();
+    paramString3.append("{\"ret\":-2,\"msg\":\"illegal fontSize= ");
+    paramString3.append(paramInt3);
+    paramString3.append(" text=");
+    paramString3.append(paramString2);
+    paramString3.append("\"}");
+    super.callJs(paramString1, new String[] { paramString3.toString() });
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("diyPreview text = ");
+      paramString1.append(paramString2);
+      paramString1.append(" fontsize = ");
+      paramString1.append(paramInt3);
+      QLog.d("ChatFontJsPlugin", 2, paramString1.toString());
+    }
   }
   
   protected long getPluginBusiness()
@@ -811,38 +610,54 @@ public class ChatFontJsPlugin
     return 2147487744L;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    if ((paramString1 == null) || (!"font".equals(paramString2)) || (paramString3 == null)) {
-      return false;
-    }
-    paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
-    if (paramString2 == null) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "handleJsRequest JSON = " + paramString2.toString());
-    }
-    int i = paramString2.optInt("id");
-    int j = paramString2.optInt("type");
-    int k = paramString2.optInt("fontType");
-    paramString1 = paramString2.optString("callback");
-    paramJsBridgeListener = null;
-    this.mReqBundle.clear();
-    if ("queryLocal".equals(paramString3))
+    if (QLog.isColorLevel())
     {
-      queryLocal(paramString2, paramString1);
-      return true;
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(", pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(", methodName=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("ChatFontJsPlugin", 2, paramJsBridgeListener.toString());
     }
-    if ("setSize".equals(paramString3))
+    int i;
+    int j;
+    int k;
+    if ((paramString1 != null) && ("font".equals(paramString2)) && (paramString3 != null))
     {
-      setSize(paramString2, paramString1);
-      return true;
+      paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      if (paramString2 == null) {
+        return true;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("handleJsRequest JSON = ");
+        paramJsBridgeListener.append(paramString2.toString());
+        QLog.d("ChatFontJsPlugin", 2, paramJsBridgeListener.toString());
+      }
+      i = paramString2.optInt("id");
+      j = paramString2.optInt("type");
+      k = paramString2.optInt("fontType");
+      paramString1 = paramString2.optString("callback");
+      this.mReqBundle.clear();
+      if ("queryLocal".equals(paramString3))
+      {
+        queryLocal(paramString2, paramString1);
+        return true;
+      }
+      if ("setSize".equals(paramString3))
+      {
+        setSize(paramString2, paramString1);
+        return true;
+      }
+      boolean bool = "queryInfo".equals(paramString3);
+      paramJsBridgeListener = "isSupportFounderColorFont";
+      if ((bool) && (i != 0)) {}
     }
-    if ((!"queryInfo".equals(paramString3)) || (i == 0)) {}
     try
     {
       paramJsBridgeListener = new JSONObject();
@@ -850,253 +665,271 @@ public class ChatFontJsPlugin
       paramString2.put("status", 3);
       paramString2.put("progress", 100);
       paramJsBridgeListener.put("result", 0);
-      paramJsBridgeListener.put("message", alud.a(2131701971));
+      paramJsBridgeListener.put("message", HardCodeUtil.a(2131899817));
       super.callJs(paramString1, new String[] { paramJsBridgeListener.toString() });
-      label291:
+      label318:
       paramJsBridgeListener = "queryFontInfo";
-      for (;;)
+      break label1053;
+      if ("setup".equals(paramString3))
       {
-        this.mReqBundle.putInt("id", i);
-        this.mReqBundle.putInt("type", j);
-        this.mReqBundle.putInt("fontOrhiboom", k);
-        super.sendRemoteReq(apml.a(paramJsBridgeListener, paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-        return true;
-        if ("setup".equals(paramString3))
+        paramJsBridgeListener = "setupChatFont";
+      }
+      else
+      {
+        if ("startDownload".equals(paramString3))
         {
-          paramJsBridgeListener = "setupChatFont";
+          startDownloadFont(i, j, paramString1, k);
+          return true;
+        }
+        if ("stopDownload".equals(paramString3))
+        {
+          if (k != 0)
+          {
+            if (k != 1) {
+              paramJsBridgeListener = null;
+            } else {
+              paramJsBridgeListener = "ipc_stop_download_hiboom";
+            }
+          }
+          else {
+            paramJsBridgeListener = "font_StopDownLoad";
+          }
         }
         else
         {
-          if ("startDownload".equals(paramString3))
+          if ("showBlackMsgBox".equals(paramString3))
           {
-            startDownloadFont(i, j, paramString1, k);
+            paramJsBridgeListener = new JSONObject();
+            try
+            {
+              paramString2 = paramString2.getString("msg");
+              paramString3 = this.mRuntime.e();
+              if ((paramString3 != null) && (paramString3.getWebTitleBarInterface() != null)) {
+                QQToast.makeText(this.mRuntime.d(), paramString2, 0).show(paramString3.getWebTitleBarInterface().m());
+              }
+            }
+            catch (JSONException paramString2)
+            {
+              if (QLog.isColorLevel())
+              {
+                paramString3 = new StringBuilder();
+                paramString3.append("showBlackMsgBox failed: ");
+                paramString3.append(paramString2.getMessage());
+                QLog.e("ChatFontJsPlugin", 2, paramString3.toString());
+              }
+            }
+            super.callJs(paramString1, new String[] { paramJsBridgeListener.toString() });
             return true;
           }
-          if ("stopDownload".equals(paramString3))
+          if ("isUseFont".equals(paramString3))
           {
-            switch (k)
-            {
-            default: 
-              break;
-            case 0: 
-              paramJsBridgeListener = "font_StopDownLoad";
-              break;
-            case 1: 
-              paramJsBridgeListener = "ipc_stop_download_hiboom";
-              break;
-            }
+            isUseFont(paramString1);
+            return true;
           }
-          else
+          if ("setFontSwitch".equals(paramString3))
           {
-            if ("showBlackMsgBox".equals(paramString3))
+            setFontSwitch(paramString2, paramString1);
+            return true;
+          }
+          int m;
+          if ("setMagicFont".equals(paramString3))
+          {
+            m = paramString2.optInt("setup");
+            this.mReqBundle.putInt("magic_setup", m);
+            paramJsBridgeListener = "setupMagicFont";
+          }
+          else if (!"isSupportFounderColorFont".equals(paramString3))
+          {
+            if ("initEngine".equals(paramString3))
             {
-              paramJsBridgeListener = new JSONObject();
-              try
+              tryInitHYEngine(paramString1);
+              return true;
+            }
+            if ("getFontPreview".equals(paramString3))
+            {
+              paramJsBridgeListener = paramString2.optString("char");
+              getFontPreview(paramString1, i, paramString2.optInt("type"), paramJsBridgeListener, paramString2.optString("config"), paramString2.optInt("fontSize"), paramString2.optString("color"));
+              return true;
+            }
+            if ("diyPreview".equals(paramString3))
+            {
+              diyPreview(paramString1, i, 1, paramString2.optString("char"), paramString2.optString("config"), paramString2.optInt("fontSize"));
+              return true;
+            }
+            if ("checkText".equals(paramString3))
+            {
+              checkDiyFontText(i, j, paramString2.optString("text"), paramString1);
+              return true;
+            }
+            if ("getFontInfo".equals(paramString3))
+            {
+              getDiyFontInfo(i, j, paramString1);
+              return true;
+            }
+            if ("setMagicFontType".equals(paramString3))
+            {
+              m = paramString2.optInt("id");
+              if (QLog.isColorLevel())
               {
-                paramString2 = paramString2.getString("msg");
-                paramString3 = this.mRuntime.a(this.mRuntime.a());
-                if ((paramString3 != null) && ((paramString3 instanceof bels))) {
-                  QQToast.a(this.mRuntime.a(), paramString2, 0).b(((bels)paramString3).b());
-                }
+                paramJsBridgeListener = new StringBuilder();
+                paramJsBridgeListener.append("fontEffectId: ");
+                paramJsBridgeListener.append(m);
+                QLog.i("ChatFontJsPlugin", 2, paramJsBridgeListener.toString());
               }
-              catch (JSONException paramString2)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.e("ChatFontJsPlugin", 2, "showBlackMsgBox failed: " + paramString2.getMessage());
-                  }
-                }
-              }
-              super.callJs(paramString1, new String[] { paramJsBridgeListener.toString() });
-              return true;
+              this.mReqBundle.putInt("fontEffectId", m);
+              paramJsBridgeListener = "setupFontEffect";
             }
-            if ("isUseFont".equals(paramString3))
+            else if ("setHaibao".equals(paramString3))
             {
-              isUseFont(paramString1);
-              return true;
-            }
-            if ("setFontSwitch".equals(paramString3))
-            {
-              setFontSwitch(paramString2, paramString1);
-              return true;
-            }
-            int m;
-            if ("setMagicFont".equals(paramString3))
-            {
-              paramJsBridgeListener = "setupMagicFont";
-              m = paramString2.optInt("setup");
-              this.mReqBundle.putInt("magic_setup", m);
-            }
-            else if ("isSupportFounderColorFont".equals(paramString3))
-            {
-              paramJsBridgeListener = "isSupportFounderColorFont";
+              paramJsBridgeListener = "ipc_hiboom_change";
             }
             else
             {
-              if ("initEngine".equals(paramString3))
+              if ("queryLocalHaibao".equals(paramString3))
               {
-                tryInitHYEngine(paramString1);
+                queryLocalHiBoom(paramString1);
                 return true;
               }
-              if ("getFontPreview".equals(paramString3))
+              if ("isSupportHaibao".equals(paramString3))
               {
-                paramJsBridgeListener = paramString2.optString("char");
-                getFontPreview(paramString1, i, paramString2.optInt("type"), paramJsBridgeListener, paramString2.optString("config"), paramString2.optInt("fontSize"), paramString2.optString("color"));
-                return true;
+                paramJsBridgeListener = "ipc_hiboom_switch";
               }
-              if ("diyPreview".equals(paramString3))
+              else if ("isHaibaoOpen".equals(paramString3))
               {
-                diyPreview(paramString1, i, 1, paramString2.optString("char"), paramString2.optString("config"), paramString2.optInt("fontSize"));
-                return true;
+                paramJsBridgeListener = "ipc_hiboom_user_switch";
               }
-              if ("checkText".equals(paramString3))
+              else if ("isSysFont".equals(paramString3))
               {
-                checkDiyFontText(i, j, paramString2.optString("text"), paramString1);
-                return true;
+                paramJsBridgeListener = "ipc_is_sys_font";
               }
-              if ("getFontInfo".equals(paramString3))
+              else if ("setSysFont".equals(paramString3))
               {
-                getDiyFontInfo(i, j, paramString1);
-                return true;
+                m = paramString2.optInt("sysfont", -1);
+                this.mReqBundle.putInt("sysfont", m);
+                paramJsBridgeListener = "ipc_set_sys_font";
               }
-              if ("setMagicFontType".equals(paramString3))
+              else if ("hasSysColorFont".equals(paramString3))
               {
-                paramJsBridgeListener = "setupFontEffect";
-                m = paramString2.optInt("id");
-                if (QLog.isColorLevel()) {
-                  QLog.i("ChatFontJsPlugin", 2, "fontEffectId: " + m);
-                }
-                this.mReqBundle.putInt("fontEffectId", m);
-              }
-              else if ("setHaibao".equals(paramString3))
-              {
-                paramJsBridgeListener = "ipc_hiboom_change";
+                paramJsBridgeListener = "ipc_has_sys_color_font";
               }
               else
               {
-                if ("queryLocalHaibao".equals(paramString3))
-                {
-                  queryLocalHiBoom(paramString1);
-                  return true;
+                if (!"paySuccess".equals(paramString3)) {
+                  break label1113;
                 }
-                if ("isSupportHaibao".equals(paramString3))
-                {
-                  paramJsBridgeListener = "ipc_hiboom_switch";
-                }
-                else if ("isHaibaoOpen".equals(paramString3))
-                {
-                  paramJsBridgeListener = "ipc_hiboom_user_switch";
-                }
-                else if ("isSysFont".equals(paramString3))
-                {
-                  paramJsBridgeListener = "ipc_is_sys_font";
-                }
-                else if ("setSysFont".equals(paramString3))
-                {
-                  paramJsBridgeListener = "ipc_set_sys_font";
-                  m = paramString2.optInt("sysfont", -1);
-                  this.mReqBundle.putInt("sysfont", m);
-                }
-                else if ("hasSysColorFont".equals(paramString3))
-                {
-                  paramJsBridgeListener = "ipc_has_sys_color_font";
-                }
-                else
-                {
-                  if (!"paySuccess".equals(paramString3)) {
-                    break;
-                  }
-                  paramJsBridgeListener = "ipc_set_hiboom";
-                }
+                paramJsBridgeListener = "ipc_set_hiboom";
               }
             }
           }
         }
       }
+      label1053:
+      this.mReqBundle.putInt("id", i);
+      this.mReqBundle.putInt("type", j);
+      this.mReqBundle.putInt("fontOrhiboom", k);
+      super.sendRemoteReq(DataFactory.a(paramJsBridgeListener, paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      return true;
+      label1113:
       if ("fontBubblePaySuccess".equals(paramString3))
       {
         this.mReqBundle.putInt("id", i);
         this.mReqBundle.putInt("sid", paramString2.optInt("sid"));
-        super.sendRemoteReq(apml.a("fontBubblePaySuccess", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        super.sendRemoteReq(DataFactory.a("fontBubblePaySuccess", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         return true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatFontJsPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("NOT support method ");
+        paramJsBridgeListener.append(paramString3);
+        paramJsBridgeListener.append(" yet!!");
+        QLog.w("ChatFontJsPlugin", 2, paramJsBridgeListener.toString());
       }
+      return false;
       return false;
     }
     catch (JSONException paramJsBridgeListener)
     {
-      break label291;
+      break label318;
     }
   }
   
   void initHYEngine(String paramString)
   {
-    int j = -1;
-    int k = bdom.a(bdom.a(), "libvipfont808.so");
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "initHYEngine result = " + k);
-    }
-    int i = j;
-    switch (k)
+    int j = VasSoUtils.a(VasSoUtils.a(), "libvipfont8417.so");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-    default: 
-      i = j;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initHYEngine result = ");
+      localStringBuilder.append(j);
+      QLog.d("ChatFontJsPlugin", 2, localStringBuilder.toString());
     }
-    for (;;)
+    int i = -1;
+    if (j != 0)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString))) {
-        super.callJs(paramString, new String[] { "{\"ret\":" + i + "}" });
-      }
-      return;
-      i = 0;
-      continue;
-      ETEngine.isSOLoaded.set(true);
-      try
+      if (j != 1) {}
+    }
+    else {
+      for (;;)
       {
-        bool = ETEngine.getInstance().initEngine(20, 8388608);
-        i = j;
+        i = 0;
+        break;
+        ETEngine.isSOLoaded.set(true);
+        try
+        {
+          bool = ETEngine.getInstance().initEngine(20, 8388608);
+        }
+        catch (Exception localException)
+        {
+          boolean bool;
+          label94:
+          break label94;
+        }
+        QLog.e("ChatFontJsPlugin", 1, "initHYEngine fail");
+        bool = false;
         if (!bool) {
-          continue;
+          break;
         }
         ETEngine.getInstance().isEngineReady.set(true);
-        i = 0;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("ChatFontJsPlugin", 1, "initHYEngine fail");
-          boolean bool = false;
-        }
-      }
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString)))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{\"ret\":");
+      localStringBuilder.append(i);
+      localStringBuilder.append("}");
+      super.callJs(paramString, new String[] { localStringBuilder.toString() });
     }
   }
   
   public void isUseFont(String paramString)
   {
-    boolean bool1 = this.mRuntime.a().getSharedPreferences("font_open_switch", 4).getBoolean("isUserOpenFontSwitch_" + this.mRuntime.a().getAccount(), false);
-    boolean bool2 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.chat_font.name());
-    if ((bool1) || (bool2)) {}
-    JSONObject localJSONObject;
-    for (bool1 = true;; bool1 = false)
+    Object localObject1 = this.mRuntime.d().getSharedPreferences("font_open_switch", 4);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("isUserOpenFontSwitch_");
+    ((StringBuilder)localObject2).append(this.mRuntime.b().getAccount());
+    boolean bool1 = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
+    boolean bool2 = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.chat_font.name());
+    if ((!bool1) && (!bool2)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    this.isUseFont = bool1;
+    localObject1 = new JSONObject();
+    if (!this.isUseFont)
     {
-      this.isUseFont = bool1;
-      localJSONObject = new JSONObject();
-      if (this.isUseFont) {
-        break;
-      }
-      bdjz localbdjz = bdgm.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131720825)).setMessage(this.mRuntime.a().getString(2131695408)).setPositiveButton(this.mRuntime.a().getString(2131695409), new ChatFontJsPlugin.3(this, localJSONObject, paramString)).setNegativeButton(this.mRuntime.a().getString(2131695404), new ChatFontJsPlugin.2(this, localJSONObject, paramString));
-      localbdjz.show();
-      localbdjz.setOnCancelListener(new ChatFontJsPlugin.4(this, localJSONObject, paramString));
+      localObject2 = DialogUtil.a(this.mRuntime.d(), 230).setTitle(this.mRuntime.d().getString(2131917239)).setMessage(this.mRuntime.d().getString(2131892680)).setPositiveButton(this.mRuntime.d().getString(2131892681), new ChatFontJsPlugin.3(this, (JSONObject)localObject1, paramString)).setNegativeButton(this.mRuntime.d().getString(2131892678), new ChatFontJsPlugin.2(this, (JSONObject)localObject1, paramString));
+      ((QQCustomDialog)localObject2).show();
+      ((QQCustomDialog)localObject2).setOnCancelListener(new ChatFontJsPlugin.4(this, (JSONObject)localObject1, paramString));
       return;
     }
     try
     {
-      localJSONObject.put("isUse", 1);
-      callJs(paramString, new String[] { localJSONObject.toString() });
+      ((JSONObject)localObject1).put("isUse", 1);
+      callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
       return;
     }
     catch (JSONException localJSONException)
@@ -1106,385 +939,463 @@ public class ChatFontJsPlugin
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if ((localAppInterface instanceof BrowserAppInterface)) {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
+    } else if (QLog.isColorLevel()) {
+      QLog.e("ChatFontJsPlugin", 2, "ERROR!!! ChatFont market is not running in web process!");
     }
-    for (;;)
-    {
-      this.mReqBundle = new Bundle();
-      this.mFontSize = new HashMap(4);
-      this.mFontSize.put("small", Integer.valueOf(0));
-      this.mFontSize.put("middle", Integer.valueOf(1));
-      this.mFontSize.put("big", Integer.valueOf(2));
-      this.mFontSize.put("bigger", Integer.valueOf(3));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("ChatFontJsPlugin", 2, "ERROR!!! ChatFont market is not running in web process!");
-      }
-    }
+    this.mReqBundle = new Bundle();
+    this.mFontSize = new HashMap(4);
+    this.mFontSize.put("small", Integer.valueOf(0));
+    this.mFontSize.put("middle", Integer.valueOf(1));
+    this.mFontSize.put("big", Integer.valueOf(2));
+    this.mFontSize.put("bigger", Integer.valueOf(3));
   }
   
   public void onPushMsg(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatFontJsPlugin", 2, "onPushMsg=" + paramBundle);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPushMsg=");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.i("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
     int i = paramBundle.getInt("srcType");
     int j;
-    JSONObject localJSONObject;
     if (i == 2)
     {
       i = paramBundle.getInt("id");
       j = paramBundle.getInt("result");
       paramBundle = paramBundle.getString("callbackId");
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatFontJsPlugin", 2, "onPushMsg DOWNLOAD_FONT_PKG id = " + i + " result = " + j + " callbackId = " + paramBundle);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onPushMsg DOWNLOAD_FONT_PKG id = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" result = ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" callbackId = ");
+        ((StringBuilder)localObject).append(paramBundle);
+        QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
-      localJSONObject = new JSONObject();
+      localObject = new JSONObject();
     }
     try
     {
-      localJSONObject.put("id", i);
-      localJSONObject.put("result", j);
-      label150:
-      super.callJs(paramBundle, new String[] { localJSONObject.toString() });
-      do
+      ((JSONObject)localObject).put("id", i);
+      ((JSONObject)localObject).put("result", j);
+      label182:
+      super.callJs(paramBundle, new String[] { ((JSONObject)localObject).toString() });
+      return;
+      if (i == 9)
       {
-        do
-        {
-          return;
-        } while (i != 9);
         i = paramBundle.getInt("result");
         paramBundle = paramBundle.getString("callbackId");
         initHYEngine(paramBundle);
-      } while (!QLog.isColorLevel());
-      QLog.d("ChatFontJsPlugin", 2, "onPushMsg DOWN_HY_SO result = " + i + " callbackId = " + paramBundle);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onPushMsg DOWN_HY_SO result = ");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" callbackId = ");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
+        }
+      }
       return;
     }
     catch (JSONException localJSONException)
     {
-      break label150;
+      break label182;
     }
   }
   
   protected void onResponse(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    label4:
+    if (paramBundle == null) {
+      return;
+    }
     String str1;
+    String str2;
     JSONObject localJSONObject;
-    Bundle localBundle;
-    boolean bool;
-    label849:
-    do
+    if (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key)
     {
-      do
+      str1 = paramBundle.getString("cmd");
+      str2 = paramBundle.getString("callbackid");
+      localJSONObject = new JSONObject();
+    }
+    for (;;)
+    {
+      try
       {
-        break label4;
-        break label4;
-        break label4;
-        break label4;
-        break label4;
-        break label4;
-        String str2;
-        for (;;)
+        localObject = paramBundle.getBundle("response");
+        boolean bool = "setupChatFont".equals(str1);
+        if (bool)
         {
-          return;
-          if (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key)
-          {
-            str1 = paramBundle.getString("cmd");
-            str2 = paramBundle.getString("callbackid");
-            localJSONObject = new JSONObject();
-            try
-            {
-              localBundle = paramBundle.getBundle("response");
-              if ("setupChatFont".equals(str1))
-              {
-                localJSONObject.put("result", localBundle.getInt("result"));
-                localJSONObject.put("message", localBundle.getString("message"));
-                super.callJs(str2, new String[] { localJSONObject.toString() });
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " Result = " + localJSONObject.toString());
-              }
-            }
-            catch (Exception paramBundle)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ChatFontJsPlugin", 2, "Failed to handle cmd " + str1 + ", exception: " + paramBundle.getMessage());
-              }
-            }
-          }
-        }
-        for (;;)
-        {
+          localJSONObject.put("result", ((Bundle)localObject).getInt("result"));
+          localJSONObject.put("message", ((Bundle)localObject).getString("message"));
           super.callJs(str2, new String[] { localJSONObject.toString() });
+          if (!QLog.isColorLevel()) {
+            break label1388;
+          }
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResponse cmd = ");
+          paramBundle.append(str1);
+          paramBundle.append(" Result = ");
+          paramBundle.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
           return;
-          if ("queryFontInfo".equals(str1))
-          {
-            paramBundle = localBundle.getString("result");
-            super.callJs(str2, new String[] { paramBundle });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " Result = " + paramBundle);
-            return;
+        }
+        if ("queryFontInfo".equals(str1))
+        {
+          paramBundle = ((Bundle)localObject).getString("result");
+          super.callJs(str2, new String[] { paramBundle });
+          if (!QLog.isColorLevel()) {
+            break label1389;
           }
-          if ("font_StopDownLoad".equals(str1))
-          {
-            localJSONObject.put("result", 0);
-            super.callJs(str2, new String[] { localJSONObject.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " Result = " + localJSONObject.toString());
-            return;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onResponse cmd = ");
+          ((StringBuilder)localObject).append(str1);
+          ((StringBuilder)localObject).append(" Result = ");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+        if ("font_StopDownLoad".equals(str1))
+        {
+          localJSONObject.put("result", 0);
+          super.callJs(str2, new String[] { localJSONObject.toString() });
+          if (!QLog.isColorLevel()) {
+            break label1390;
           }
-          if ("setFontSwtich".equals(str1))
-          {
-            localJSONObject.put("result", 0);
-            super.callJs(str2, new String[] { localJSONObject.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " Result = " + localJSONObject.toString());
-            return;
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResponse cmd = ");
+          paramBundle.append(str1);
+          paramBundle.append(" Result = ");
+          paramBundle.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
+          return;
+        }
+        if ("setFontSwtich".equals(str1))
+        {
+          localJSONObject.put("result", 0);
+          super.callJs(str2, new String[] { localJSONObject.toString() });
+          if (!QLog.isColorLevel()) {
+            break label1391;
           }
-          if ("setupMagicFont".equals(str1))
-          {
-            localJSONObject.put("result", 0);
-            super.callJs(str2, new String[] { localJSONObject.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " Result = " + localJSONObject.toString());
-            return;
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResponse cmd = ");
+          paramBundle.append(str1);
+          paramBundle.append(" Result = ");
+          paramBundle.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
+          return;
+        }
+        if ("setupMagicFont".equals(str1))
+        {
+          localJSONObject.put("result", 0);
+          super.callJs(str2, new String[] { localJSONObject.toString() });
+          if (!QLog.isColorLevel()) {
+            break label1392;
           }
-          if ("setupFontEffect".equals(str1))
-          {
-            localJSONObject.put("ret", paramBundle.getInt("ret"));
-            localJSONObject.put("msg", paramBundle.getString("msg"));
-            super.callJs(str2, new String[] { localJSONObject.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " Result = " + localJSONObject.toString());
-            return;
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResponse cmd = ");
+          paramBundle.append(str1);
+          paramBundle.append(" Result = ");
+          paramBundle.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
+          return;
+        }
+        bool = "setupFontEffect".equals(str1);
+        if (bool)
+        {
+          localJSONObject.put("ret", paramBundle.getInt("ret"));
+          localJSONObject.put("msg", paramBundle.getString("msg"));
+          super.callJs(str2, new String[] { localJSONObject.toString() });
+          if (!QLog.isColorLevel()) {
+            break label1393;
           }
-          if ("isSupportFounderColorFont".equals(str1))
-          {
-            i = localBundle.getInt("result", 0);
-            paramBundle = new JSONObject();
-            paramBundle.put("isSupport", i);
-            localJSONObject.put("result", 0);
-            localJSONObject.put("data", paramBundle);
-            super.callJs(str2, new String[] { localJSONObject.toString() });
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " result = " + localJSONObject.toString());
-            return;
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResponse cmd = ");
+          paramBundle.append(str1);
+          paramBundle.append(" Result = ");
+          paramBundle.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
+          return;
+        }
+        bool = "isSupportFounderColorFont".equals(str1);
+        if (bool)
+        {
+          i = ((Bundle)localObject).getInt("result", 0);
+          paramBundle = new JSONObject();
+          paramBundle.put("isSupport", i);
+          localJSONObject.put("result", 0);
+          localJSONObject.put("data", paramBundle);
+          super.callJs(str2, new String[] { localJSONObject.toString() });
+          if (!QLog.isColorLevel()) {
+            break label1394;
           }
-          if (!"ipc_hiboom_switch".equals(str1)) {
-            break label917;
-          }
-          bool = localBundle.getBoolean("isSupport", false);
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResponse cmd = ");
+          paramBundle.append(str1);
+          paramBundle.append(" result = ");
+          paramBundle.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
+          return;
+        }
+        if ("ipc_hiboom_switch".equals(str1))
+        {
+          bool = ((Bundle)localObject).getBoolean("isSupport", false);
           localJSONObject.put("ret", 0);
           paramBundle = new JSONObject();
           if (!bool) {
-            break label1264;
+            break label1395;
           }
           i = 1;
           paramBundle.put("isSupport", i);
           localJSONObject.put("data", paramBundle);
-          if (QLog.isColorLevel()) {
-            QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " result = " + localJSONObject.toString());
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("onResponse cmd = ");
+            paramBundle.append(str1);
+            paramBundle.append(" result = ");
+            paramBundle.append(localJSONObject.toString());
+            QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
           }
         }
-        if (!"ipc_download_hiboom".equals(str1)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ChatFontJsPlugin", 2, "onResponse download hiboom");
-      return;
-      if (!"font_startDownLoad".equals(str1)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    label917:
-    QLog.d("ChatFontJsPlugin", 2, "onResponse download font");
-    return;
-    if ("ipc_hiboom_user_switch".equals(str1))
-    {
-      bool = localBundle.getBoolean("isSupport", false);
-      localJSONObject.put("ret", 0);
-      paramBundle = new JSONObject();
-      if (!bool) {
-        break label1269;
-      }
-    }
-    label1264:
-    label1269:
-    for (int i = 1;; i = 0)
-    {
-      paramBundle.put("isSupport", i);
-      localJSONObject.put("data", paramBundle);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ChatFontJsPlugin", 2, "onResponse cmd = " + str1 + " result = " + localJSONObject.toString());
-      break;
-      if ("ipc_is_sys_font".equals(str1))
-      {
-        i = localBundle.getInt("isSysFont", -1);
-        if (i < 0)
+        else
         {
-          localJSONObject.put("ret", -1);
-          break;
+          if ("ipc_download_hiboom".equals(str1))
+          {
+            if (!QLog.isColorLevel()) {
+              break label1400;
+            }
+            QLog.d("ChatFontJsPlugin", 2, "onResponse download hiboom");
+            return;
+          }
+          if ("font_startDownLoad".equals(str1))
+          {
+            if (!QLog.isColorLevel()) {
+              break label1401;
+            }
+            QLog.d("ChatFontJsPlugin", 2, "onResponse download font");
+            return;
+          }
+          if ("ipc_hiboom_user_switch".equals(str1))
+          {
+            bool = ((Bundle)localObject).getBoolean("isSupport", false);
+            localJSONObject.put("ret", 0);
+            paramBundle = new JSONObject();
+            if (!bool) {
+              break label1402;
+            }
+            i = 1;
+            paramBundle.put("isSupport", i);
+            localJSONObject.put("data", paramBundle);
+            if (QLog.isColorLevel())
+            {
+              paramBundle = new StringBuilder();
+              paramBundle.append("onResponse cmd = ");
+              paramBundle.append(str1);
+              paramBundle.append(" result = ");
+              paramBundle.append(localJSONObject.toString());
+              QLog.d("ChatFontJsPlugin", 2, paramBundle.toString());
+            }
+          }
+          else if ("ipc_is_sys_font".equals(str1))
+          {
+            i = ((Bundle)localObject).getInt("isSysFont", -1);
+            if (i < 0)
+            {
+              localJSONObject.put("ret", -1);
+            }
+            else
+            {
+              paramBundle = new JSONObject();
+              paramBundle.put("isSysFont", i);
+              localJSONObject.put("data", paramBundle);
+              localJSONObject.put("ret", 0);
+            }
+          }
+          else if ("ipc_set_sys_font".equals(str1))
+          {
+            localJSONObject.put("ret", ((Bundle)localObject).getInt("ret", -1));
+          }
+          else if ("ipc_has_sys_color_font".equals(str1))
+          {
+            i = ((Bundle)localObject).getInt("hasColor", -1);
+            if (i == -1)
+            {
+              localJSONObject.put("ret", -1);
+            }
+            else
+            {
+              paramBundle = new JSONObject();
+              paramBundle.put("hasColor", i);
+              localJSONObject.put("data", paramBundle);
+              localJSONObject.put("ret", 0);
+            }
+          }
         }
-        paramBundle = new JSONObject();
-        paramBundle.put("isSysFont", i);
-        localJSONObject.put("data", paramBundle);
-        localJSONObject.put("ret", 0);
-        break;
       }
-      if ("ipc_set_sys_font".equals(str1))
+      catch (Exception paramBundle)
       {
-        localJSONObject.put("ret", localBundle.getInt("ret", -1));
-        break;
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Failed to handle cmd ");
+          ((StringBuilder)localObject).append(str1);
+          ((StringBuilder)localObject).append(", exception: ");
+          ((StringBuilder)localObject).append(paramBundle.getMessage());
+          QLog.e("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
+        }
       }
-      if (!"ipc_has_sys_color_font".equals(str1)) {
-        break;
-      }
-      i = localBundle.getInt("hasColor", -1);
-      if (i == -1)
-      {
-        localJSONObject.put("ret", -1);
-        break;
-      }
-      paramBundle = new JSONObject();
-      paramBundle.put("hasColor", i);
-      localJSONObject.put("data", paramBundle);
-      localJSONObject.put("ret", 0);
-      break;
+      super.callJs(str2, new String[] { localJSONObject.toString() });
+      return;
+      label1388:
+      return;
+      label1389:
+      return;
+      label1390:
+      return;
+      label1391:
+      return;
+      label1392:
+      return;
+      label1393:
+      return;
+      label1394:
+      return;
+      label1395:
+      int i = 0;
+      continue;
+      label1400:
+      return;
+      label1401:
+      return;
+      label1402:
       i = 0;
-      break label849;
     }
   }
   
   public void queryLocal(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatFontJsPlugin", 2, "queryLocal:" + paramJSONObject);
-    }
-    JSONObject localJSONObject;
     Object localObject;
-    int i;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("queryLocal:");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.i("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
+    }
     try
     {
-      localJSONObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
       paramJSONObject = this.browserApp.getEntityManagerFactory(null).createEntityManager();
-      localObject = (ExtensionInfo)paramJSONObject.a(ExtensionInfo.class, this.browserApp.getAccount());
-      paramJSONObject.a();
+      localObject = (ExtensionInfo)paramJSONObject.find(ExtensionInfo.class, this.browserApp.getAccount());
+      paramJSONObject.close();
       localJSONObject.put("result", 0);
       if (localObject == null) {
         localJSONObject.put("currentId", 0L);
-      }
-      for (;;)
-      {
-        i = MobileQQ.getContext().getSharedPreferences("setting_text_size", 4).getInt("chat_text_size_type", 0);
-        paramJSONObject = "small";
-        Iterator localIterator = this.mFontSize.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (String)localIterator.next();
-        if (((Integer)this.mFontSize.get(localObject)).intValue() != i) {
-          break label460;
-        }
-        paramJSONObject = (JSONObject)localObject;
-        break label460;
+      } else {
         localJSONObject.put("currentId", ((ExtensionInfo)localObject).uVipFont);
       }
+      int i = MobileQQ.getContext().getSharedPreferences("setting_text_size", 4).getInt("chat_text_size_type", 0);
+      paramJSONObject = "small";
+      Iterator localIterator = this.mFontSize.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (String)localIterator.next();
+        if (((Integer)this.mFontSize.get(localObject)).intValue() == i) {
+          paramJSONObject = (JSONObject)localObject;
+        }
+      }
       localJSONObject.put("currentSize", paramJSONObject);
+      paramJSONObject = this.mRuntime.d().getSharedPreferences("font_open_switch", 4);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isUserOpenFontSwitch_");
+      ((StringBuilder)localObject).append(this.mRuntime.b().getAccount());
+      boolean bool1 = paramJSONObject.getBoolean(((StringBuilder)localObject).toString(), false);
+      boolean bool2 = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.chat_font.name());
+      if ((!bool1) && (!bool2)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i != 0) {
+        localJSONObject.put("isOpen", 1);
+      } else {
+        localJSONObject.put("isOpen", 0);
+      }
+      paramJSONObject = new File(FontManagerConstants.FONT_DOWN_LOAD_PATH);
+      localObject = new JSONArray();
+      searchFontInDir(paramJSONObject, (JSONArray)localObject);
+      searchFontInDir(new File(FontManagerConstants.FONT_FZ_COMPATIBLE_DIR), (JSONArray)localObject);
+      localJSONObject.put("downloadedList", localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatFontJsPlugin", 2, localJSONObject.toString());
+      }
+      super.callJs(paramString, new String[] { localJSONObject.toString() });
+      return;
     }
     catch (JSONException paramJSONObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ChatFontJsPlugin", 2, "getFontId failed: " + paramJSONObject.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getFontId failed: ");
+        ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+        QLog.e("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
       super.callJs(paramString, new String[] { paramJSONObject.getMessage() });
-      return;
-    }
-    boolean bool1 = this.mRuntime.a().getSharedPreferences("font_open_switch", 4).getBoolean("isUserOpenFontSwitch_" + this.mRuntime.a().getAccount(), false);
-    boolean bool2 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.chat_font.name());
-    if (!bool1) {
-      if (!bool2) {
-        break label468;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        localJSONObject.put("isOpen", 1);
-      }
-      for (;;)
-      {
-        paramJSONObject = new File(fx.a);
-        localObject = new JSONArray();
-        searchFontInDir(paramJSONObject, (JSONArray)localObject);
-        searchFontInDir(new File(fx.b), (JSONArray)localObject);
-        localJSONObject.put("downloadedList", localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatFontJsPlugin", 2, localJSONObject.toString());
-        }
-        super.callJs(paramString, new String[] { localJSONObject.toString() });
-        return;
-        localJSONObject.put("isOpen", 0);
-      }
-      label460:
-      break;
-      i = 1;
-      continue;
-      label468:
-      i = 0;
     }
   }
   
   public void setSize(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "setSize:" + paramJSONObject);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setSize:");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
+      localObject = new JSONObject();
       paramJSONObject = paramJSONObject.getString("size");
-      azqs.a(null, "CliOper", "", "", "Font_Mall", "change_" + paramJSONObject, 0, 0, "", "", "", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("change_");
+      localStringBuilder.append(paramJSONObject);
+      ReportController.a(null, "CliOper", "", "", "Font_Mall", localStringBuilder.toString(), 0, 0, "", "", "", "");
+      boolean bool = this.mFontSize.containsKey(paramJSONObject);
       int i;
-      if (this.mFontSize.containsKey(paramJSONObject))
+      if (bool)
       {
         i = ((Integer)this.mFontSize.get(paramJSONObject)).intValue();
-        localJSONObject.put("result", 0);
+        ((JSONObject)localObject).put("result", 0);
       }
-      for (;;)
+      else
       {
-        paramJSONObject = MobileQQ.getContext().getSharedPreferences("setting_text_size", 4).edit();
-        paramJSONObject.putInt("chat_text_size_type", i);
-        paramJSONObject.commit();
-        localJSONObject.put("message", "success");
-        super.callJs(paramString, new String[] { localJSONObject.toString() });
-        return;
-        localJSONObject.put("result", -1);
-        localJSONObject.put("message", "size illege");
-        super.callJs(paramString, new String[] { localJSONObject.toString() });
+        ((JSONObject)localObject).put("result", -1);
+        ((JSONObject)localObject).put("message", "size illege");
+        super.callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
         i = 0;
       }
+      paramJSONObject = MobileQQ.getContext().getSharedPreferences("setting_text_size", 4).edit();
+      paramJSONObject.putInt("chat_text_size_type", i);
+      paramJSONObject.commit();
+      ((JSONObject)localObject).put("message", "success");
+      super.callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception paramJSONObject) {}
@@ -1492,129 +1403,143 @@ public class ChatFontJsPlugin
   
   void startDownloadFont(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    switch (paramInt3)
+    JSONObject localJSONObject;
+    if (paramInt3 != 0)
     {
-    }
-    for (;;)
-    {
-      return;
-      JSONObject localJSONObject;
-      if (fx.a(paramInt1, paramInt2)) {
+      if (paramInt3 != 1) {
+        return;
+      }
+      if (HiBoomFont.a(paramInt1)) {
         localJSONObject = new JSONObject();
       }
+    }
+    try
+    {
+      localJSONObject.put("id", paramInt1);
+      localJSONObject.put("result", 3);
+      super.callJs(paramString, new String[] { localJSONObject.toString() });
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("startDownloadFont result = ");
+        paramString.append(localJSONObject.toString());
+        QLog.d("ChatFontJsPlugin", 2, paramString.toString());
+        return;
+        this.mReqBundle.putInt("id", paramInt1);
+        super.sendRemoteReq(DataFactory.a("ipc_download_hiboom", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        return;
+        if (FontManagerConstants.checkFontExist(paramInt1, paramInt2)) {
+          localJSONObject = new JSONObject();
+        }
+      }
+    }
+    catch (JSONException localJSONException1)
+    {
       try
       {
         localJSONObject.put("id", paramInt1);
         localJSONObject.put("result", 3);
-        label62:
+        label181:
         super.callJs(paramString, new String[] { localJSONObject.toString() });
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ChatFontJsPlugin", 2, "startDownloadFont result = " + localJSONObject.toString());
-        return;
-        this.mReqBundle.putInt("id", paramInt1);
-        this.mReqBundle.putInt("type", paramInt2);
-        super.sendRemoteReq(apml.a("font_startDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-        return;
-        if (asry.a(paramInt1)) {
-          localJSONObject = new JSONObject();
-        }
-        try
+        if (QLog.isColorLevel())
         {
-          localJSONObject.put("id", paramInt1);
-          localJSONObject.put("result", 3);
-          label199:
-          super.callJs(paramString, new String[] { localJSONObject.toString() });
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ChatFontJsPlugin", 2, "startDownloadFont result = " + localJSONObject.toString());
+          paramString = new StringBuilder();
+          paramString.append("startDownloadFont result = ");
+          paramString.append(localJSONObject.toString());
+          QLog.d("ChatFontJsPlugin", 2, paramString.toString());
           return;
           this.mReqBundle.putInt("id", paramInt1);
-          super.sendRemoteReq(apml.a("ipc_download_hiboom", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-          return;
+          this.mReqBundle.putInt("type", paramInt2);
+          super.sendRemoteReq(DataFactory.a("font_startDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         }
-        catch (JSONException localJSONException1)
-        {
-          break label199;
-        }
+        return;
+        localJSONException1 = localJSONException1;
       }
       catch (JSONException localJSONException2)
       {
-        break label62;
+        break label181;
       }
     }
   }
   
   void tryInitHYEngine(String paramString)
   {
-    int j = -1;
     if (ETEngine.getInstance().isEngineReady.get())
     {
       super.callJs(paramString, new String[] { "{\"ret\":0}" });
       if (QLog.isColorLevel()) {
         QLog.d("ChatFontJsPlugin", 2, "tryInitHYEngine engine is ready");
       }
-    }
-    do
-    {
       return;
-      if (!ETEngine.getInstance().isEngineInited.get()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ChatFontJsPlugin", 2, "tryInitHYEngine has inited");
-    return;
-    ETEngine.getInstance().isEngineInited.set(true);
-    int k = bdom.a(bdom.a(), "libvipfont808.so");
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatFontJsPlugin", 2, "tryInitHYEngine loadSoResult = " + k);
     }
-    int i = j;
-    switch (k)
+    if (ETEngine.getInstance().isEngineInited.get())
     {
-    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatFontJsPlugin", 2, "tryInitHYEngine has inited");
+      }
+      return;
+    }
+    ETEngine.getInstance().isEngineInited.set(true);
+    int j = VasSoUtils.a(VasSoUtils.a(), "libvipfont8417.so");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tryInitHYEngine loadSoResult = ");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("ChatFontJsPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    int i = -1;
+    if (j != 0)
+    {
+      if (j != 1) {
+        if (j == 2) {
+          break label228;
+        }
+      } else {
+        super.sendRemoteReq(DataFactory.a("ipc_font_download_hy_so", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      }
+    }
+    else {
+      ETEngine.isSOLoaded.set(true);
+    }
+    try
+    {
+      bool = ETEngine.getInstance().initEngine(20, 8388608);
+    }
+    catch (Exception localException)
+    {
+      boolean bool;
+      label199:
+      break label199;
+    }
+    QLog.e("ChatFontJsPlugin", 1, "tryInitHYEngine fail");
+    bool = false;
+    if (bool)
+    {
+      ETEngine.getInstance().isEngineReady.set(true);
       i = 0;
     }
-    for (;;)
+    label228:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("{\"ret\":");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("}");
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString))) {
+      super.callJs(paramString, new String[] { localObject });
+    }
+    if (QLog.isColorLevel())
     {
-      String str = "{\"ret\":" + i + "}";
-      if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString))) {
-        super.callJs(paramString, new String[] { str });
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ChatFontJsPlugin", 2, "initEngine result = " + str);
-      return;
-      super.sendRemoteReq(apml.a("ipc_font_download_hy_so", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-      return;
-      ETEngine.isSOLoaded.set(true);
-      try
-      {
-        bool = ETEngine.getInstance().initEngine(20, 8388608);
-        i = j;
-        if (!bool) {
-          continue;
-        }
-        ETEngine.getInstance().isEngineReady.set(true);
-        i = 0;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("ChatFontJsPlugin", 1, "tryInitHYEngine fail");
-          boolean bool = false;
-        }
-      }
+      paramString = new StringBuilder();
+      paramString.append("initEngine result = ");
+      paramString.append((String)localObject);
+      QLog.d("ChatFontJsPlugin", 2, paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontJsPlugin
  * JD-Core Version:    0.7.0.1
  */

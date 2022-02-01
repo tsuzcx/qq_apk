@@ -29,7 +29,16 @@ public class a
   
   public void a(int paramInt1, int paramInt2, JceStruct paramJceStruct1, JceStruct paramJceStruct2)
   {
-    ab.c("WashMonitor", "GetMonitorInfoEngine>>onFinish reqId=" + paramInt1 + " errorCode=" + paramInt2 + " request=" + paramJceStruct1 + " response=" + paramJceStruct2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetMonitorInfoEngine>>onFinish reqId=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" errorCode=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" request=");
+    localStringBuilder.append(paramJceStruct1);
+    localStringBuilder.append(" response=");
+    localStringBuilder.append(paramJceStruct2);
+    ab.c("WashMonitor", localStringBuilder.toString());
     if ((paramInt2 == 0) && ((paramJceStruct2 instanceof GetMobilePhoneQqApkInfoResponse)))
     {
       paramJceStruct1 = (GetMobilePhoneQqApkInfoResponse)paramJceStruct2;
@@ -39,16 +48,25 @@ public class a
         this.a.a(paramInt1, paramJceStruct1.strategy, paramJceStruct1.fileSize, paramJceStruct1.apkMd5, paramJceStruct1.maxFileSize, paramJceStruct1.channelId);
         return;
       }
-      ab.c("WashMonitor", "GetMonitorInfoEngine>>onFinish failed ret = " + paramJceStruct1.ret + " retMsg=" + paramJceStruct1.msg);
+      paramJceStruct2 = new StringBuilder();
+      paramJceStruct2.append("GetMonitorInfoEngine>>onFinish failed ret = ");
+      paramJceStruct2.append(paramJceStruct1.ret);
+      paramJceStruct2.append(" retMsg=");
+      paramJceStruct2.append(paramJceStruct1.msg);
+      ab.c("WashMonitor", paramJceStruct2.toString());
       this.a.a(paramInt1, paramJceStruct1.ret, paramJceStruct1.msg);
       return;
     }
-    this.a.a(paramInt1, paramInt2, "response is " + paramJceStruct2);
+    paramJceStruct1 = this.a;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("response is ");
+    localStringBuilder.append(paramJceStruct2);
+    paramJceStruct1.a(paramInt1, paramInt2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.a
  * JD-Core Version:    0.7.0.1
  */

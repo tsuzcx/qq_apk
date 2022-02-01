@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/fav_note_toolbar_voice" />
-    <item android:drawable="@raw/fav_note_toolbar_voice" />
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="8.0dip" />
+            <solid android:color="@color/BW_0_Alpha_0_1" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape>
+            <corners android:radius="8.0dip" />
+            <solid android:color="#ffc9c9c9" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <corners android:radius="8.0dip" />
+            <solid android:color="@color/c" />
+        </shape>
+    </item>
 </selector>

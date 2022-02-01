@@ -8,12 +8,15 @@ public class AVVideoCtrl$EnableCameraCompleteCallback
   
   protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    Log.d("SdkJni", "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EnableCameraCompleteCallback.OnComplete. result = ");
+    localStringBuilder.append(paramInt);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback
  * JD-Core Version:    0.7.0.1
  */

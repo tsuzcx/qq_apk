@@ -9,17 +9,17 @@ import android.graphics.RectF;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bdee;
+import com.tencent.mobileqq.util.SquareRoundImageUtils;
 
 public class ImageProgressMask
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private int b;
+  private Paint a;
+  private Path b;
+  private float c;
+  private RectF d;
+  private int e;
+  private int f;
   
   public ImageProgressMask(Context paramContext)
   {
@@ -39,14 +39,19 @@ public class ImageProgressMask
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165455));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.a = new Paint();
+    this.a.setColor(getResources().getColor(2131165801));
+    this.a.setAntiAlias(true);
+    this.b = new Path();
+    this.d = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
     if (Build.VERSION.SDK_INT <= 16) {
       setLayerType(1, null);
     }
+  }
+  
+  public float getProgress()
+  {
+    return this.c;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -54,44 +59,47 @@ public class ImageProgressMask
     try
     {
       paramCanvas.save();
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      if ((this.jdField_a_of_type_Int == 0) && (this.b == 0))
+      paramCanvas.clipPath(this.b);
+      if ((this.e == 0) && (this.f == 0))
       {
-        this.jdField_a_of_type_Int = getWidth();
-        this.b = getHeight();
-        this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, this.b * this.jdField_a_of_type_Float, this.jdField_a_of_type_Int, this.b);
+        this.e = getWidth();
+        this.f = getHeight();
+        this.d = new RectF(0.0F, this.f * this.c, this.e, this.f);
       }
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(this.d, this.a);
       super.onDraw(paramCanvas);
       paramCanvas.restore();
       return;
     }
     catch (Exception localException)
     {
-      super.onDraw(paramCanvas);
+      label98:
+      break label98;
     }
+    super.onDraw(paramCanvas);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.jdField_a_of_type_AndroidGraphicsPath = bdee.a(paramInt1, paramInt2);
+      this.b = SquareRoundImageUtils.a(paramInt1, paramInt2);
     }
   }
   
   public void setProgress(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Int = getWidth();
-    this.b = getHeight();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, this.b * this.jdField_a_of_type_Float, this.jdField_a_of_type_Int, this.b);
+    this.c = paramFloat;
+    this.e = getWidth();
+    this.f = getHeight();
+    int i = this.f;
+    this.d = new RectF(0.0F, i * this.c, this.e, i);
     postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.ImageProgressMask
  * JD-Core Version:    0.7.0.1
  */

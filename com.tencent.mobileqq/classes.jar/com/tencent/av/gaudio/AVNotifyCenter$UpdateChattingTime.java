@@ -1,9 +1,8 @@
 package com.tencent.av.gaudio;
 
+import com.tencent.av.utils.UITools;
 import java.lang.ref.WeakReference;
-import lpj;
 import mqq.os.MqqHandler;
-import mww;
 
 class AVNotifyCenter$UpdateChattingTime
   implements Runnable
@@ -18,31 +17,32 @@ class AVNotifyCenter$UpdateChattingTime
   public void run()
   {
     AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
-    if (localAVNotifyCenter == null) {}
-    do
-    {
-      return;
-      if (localAVNotifyCenter.a(String.valueOf(localAVNotifyCenter.jdField_b_of_type_Lpj.jdField_a_of_type_Long)))
-      {
-        localAVNotifyCenter.jdField_b_of_type_JavaLangRunnable = null;
-        return;
-      }
-      if (localAVNotifyCenter.a != null) {
-        localAVNotifyCenter.a.postDelayed(this, 2000L);
-      }
-    } while (!localAVNotifyCenter.f);
-    String str = mww.a(localAVNotifyCenter.c);
-    if (localAVNotifyCenter.jdField_b_of_type_Lpj.jdField_a_of_type_Int == 3)
-    {
-      localAVNotifyCenter.a(29, 0, Long.toString(localAVNotifyCenter.jdField_b_of_type_Lpj.jdField_a_of_type_Long), str);
+    if (localAVNotifyCenter == null) {
       return;
     }
-    localAVNotifyCenter.a(29, 0, localAVNotifyCenter.jdField_b_of_type_Lpj.b, str);
+    if (localAVNotifyCenter.a(String.valueOf(AVNotifyCenter.c(localAVNotifyCenter).h)))
+    {
+      localAVNotifyCenter.l = null;
+      return;
+    }
+    if (localAVNotifyCenter.f != null) {
+      localAVNotifyCenter.f.postDelayed(this, 2000L);
+    }
+    if (localAVNotifyCenter.n)
+    {
+      String str = UITools.a(localAVNotifyCenter.m);
+      if (AVNotifyCenter.c(localAVNotifyCenter).c == 3)
+      {
+        localAVNotifyCenter.a(29, 0, Long.toString(AVNotifyCenter.c(localAVNotifyCenter).h), str);
+        return;
+      }
+      localAVNotifyCenter.a(29, 0, AVNotifyCenter.c(localAVNotifyCenter).e, str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.UpdateChattingTime
  * JD-Core Version:    0.7.0.1
  */

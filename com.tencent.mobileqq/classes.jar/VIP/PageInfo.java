@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class PageInfo
   extends JceStruct
 {
-  public long iPos;
+  public long iPos = 0L;
   
   public PageInfo() {}
   
@@ -28,7 +28,7 @@ public final class PageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.PageInfo
  * JD-Core Version:    0.7.0.1
  */

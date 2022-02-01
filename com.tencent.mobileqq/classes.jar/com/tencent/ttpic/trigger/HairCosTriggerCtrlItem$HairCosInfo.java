@@ -21,23 +21,23 @@ public class HairCosTriggerCtrlItem$HairCosInfo
   
   private boolean isInCurPart(int paramInt, int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramInt < 0)) {
-      return true;
-    }
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    for (;;)
+    if (paramArrayOfInt != null)
     {
-      if (i >= j) {
-        break label36;
+      if (paramInt < 0) {
+        return true;
       }
-      if (paramArrayOfInt[i] == paramInt) {
-        break;
+      int j = paramArrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (paramArrayOfInt[i] == paramInt) {
+          return true;
+        }
+        i += 1;
       }
-      i += 1;
+      return false;
     }
-    label36:
-    return false;
+    return true;
   }
   
   public int getFrameIndex()
@@ -55,17 +55,19 @@ public class HairCosTriggerCtrlItem$HairCosInfo
   public boolean updateTriggerStatus(PTDetectInfo paramPTDetectInfo, int paramInt)
   {
     this.triggerCtrlItem.updateTriggerStatus(paramPTDetectInfo);
-    if ((this.triggerCtrlItem.isTriggered()) && (isInCurPart(paramInt, this.activeParts)) && ((this.genderType == 0) || ((paramPTDetectInfo.faceStatus != null) && (this.genderType == paramPTDetectInfo.faceStatus.gender)))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.needRender = bool;
-      return this.needRender;
+    boolean bool;
+    if ((this.triggerCtrlItem.isTriggered()) && (isInCurPart(paramInt, this.activeParts)) && ((this.genderType == 0) || ((paramPTDetectInfo.faceStatus != null) && (this.genderType == paramPTDetectInfo.faceStatus.gender)))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.needRender = bool;
+    return this.needRender;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.trigger.HairCosTriggerCtrlItem.HairCosInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,91 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aozj;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import oicq.wlogin_sdk.tools.MD5;
 
-public class ConfigServlet$3
+class ConfigServlet$3
   implements Runnable
 {
   public void run()
   {
-    boolean bool1 = false;
-    int i;
-    if (!this.jdField_a_of_type_JavaIoFile.exists())
+    boolean bool1 = this.a.exists();
+    int k = 0;
+    if (!bool1)
     {
-      i = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("SPLASH_ConfigServlet", 2, "begin download url is " + this.jdField_a_of_type_JavaLangString + " file is " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " md5 " + this.b);
-      }
-      bool1 = HttpDownloadUtil.a((AppInterface)this.this$0.getAppRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-      if (bool1) {
-        if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-      }
-    }
-    label276:
-    label279:
-    for (;;)
-    {
-      try
+      int i = 0;
+      label194:
+      label219:
+      int j;
+      do
       {
-        bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
-        if (!bool2) {}
-        localThrowable1.printStackTrace();
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("SPLASH_ConfigServlet", 2, "down load success but check md5 failed");
-          }
-          bool1 = false;
-          i += 1;
-          if (bool1) {
-            break label279;
-          }
-          if (i < 2) {
-            break label276;
-          }
-          if ((!bool1) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
-            this.jdField_a_of_type_JavaIoFile.delete();
-          }
-          return;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("begin download url is ");
+          localStringBuilder.append(this.b);
+          localStringBuilder.append(" file is ");
+          localStringBuilder.append(this.a.getAbsolutePath());
+          localStringBuilder.append(" md5 ");
+          localStringBuilder.append(this.c);
+          QLog.d("SPLASH_ConfigServlet", 2, localStringBuilder.toString());
         }
-        catch (Throwable localThrowable2)
+        bool1 = HttpDownloadUtil.download(this.d, this.b, this.a);
+        if (bool1)
         {
-          for (;;)
+          if (this.a.exists())
           {
-            boolean bool2;
-            bool1 = false;
+            try
+            {
+              boolean bool2 = MD5.getFileMD5(this.a).equalsIgnoreCase(this.c);
+              k = bool1;
+              if (bool2) {
+                break label219;
+              }
+              try
+              {
+                if (!QLog.isColorLevel()) {
+                  break label194;
+                }
+                QLog.d("SPLASH_ConfigServlet", 2, "down load success but check md5 failed");
+              }
+              catch (Throwable localThrowable1)
+              {
+                k = 0;
+              }
+              localThrowable2.printStackTrace();
+            }
+            catch (Throwable localThrowable2)
+            {
+              k = bool1;
+            }
+            break label219;
+          }
+          k = 0;
+        }
+        else
+        {
+          k = bool1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SPLASH_ConfigServlet", 2, "down load pic failed try again");
+            k = bool1;
           }
         }
-        localThrowable1 = localThrowable1;
-      }
-      continue;
-      bool1 = false;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("SPLASH_ConfigServlet", 2, "down load pic failed try again");
-      }
-      continue;
+        j = i + 1;
+        if (k != 0) {
+          break;
+        }
+        i = j;
+      } while (j < 2);
+    }
+    else
+    {
       try
       {
-        bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
-        if (!bool2) {
-          continue;
-        }
-        bool1 = true;
+        bool1 = MD5.getFileMD5(this.a).equalsIgnoreCase(this.c);
+        k = bool1;
       }
       catch (Exception localException)
       {
@@ -87,14 +94,19 @@ public class ConfigServlet$3
         }
         localException.printStackTrace();
       }
-      continue;
-      break;
+    }
+    if (k == 0)
+    {
+      File localFile = this.a;
+      if ((localFile != null) && (localFile.exists())) {
+        this.a.delete();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.3
  * JD-Core Version:    0.7.0.1
  */

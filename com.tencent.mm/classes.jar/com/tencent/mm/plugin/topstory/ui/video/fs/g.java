@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.c.d;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.h;
 
@@ -12,92 +13,92 @@ public class g
   extends h
   implements a
 {
-  public e tkK;
-  public FrameLayout tkL;
+  public e TOt;
+  public FrameLayout TOu;
   
   public g(View paramView, b paramb)
   {
     super(paramView, paramb);
   }
   
-  public final void GL(int paramInt)
+  public final void FD(boolean paramBoolean)
   {
-    AppMethodBeat.i(1950);
-    a(this.tim, this.tim.bMN(), this.tkK, paramInt);
-    AppMethodBeat.o(1950);
-  }
-  
-  public void cJL()
-  {
-    AppMethodBeat.i(1947);
-    if (this.tkK == null)
+    AppMethodBeat.i(126324);
+    super.FD(paramBoolean);
+    this.TLM.aoU(KJ());
+    if (this.TOt.bi(paramBoolean, false))
     {
-      if (!this.tim.cJn()) {
-        break label135;
-      }
-      this.tkK = new k(this.tim.bMN(), this.tim, this);
-      this.tkL.removeAllViews();
-      if (!this.tim.cJn()) {
-        break label163;
-      }
+      hNu();
+      hNt();
     }
-    label135:
-    label163:
-    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().x, this.tim.cJi().y);; localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().y, this.tim.cJi().x))
-    {
-      this.tkL.addView(this.tkK, localLayoutParams);
-      this.tkK.a(this.tfm, cJb());
-      AppMethodBeat.o(1947);
-      return;
-      this.tkK = new e(this.tim.bMN(), this.tim, this);
-      break;
-    }
+    AppMethodBeat.o(126324);
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f cJM()
+  public final void ape(int paramInt)
   {
-    return this.tkK;
-  }
-  
-  public final int cJb()
-  {
-    AppMethodBeat.i(156796);
-    int i = jN();
-    AppMethodBeat.o(156796);
-    return i;
-  }
-  
-  public final void ep(View paramView)
-  {
-    AppMethodBeat.i(1945);
-    this.tkL = ((FrameLayout)paramView.findViewById(2131828187));
-    AppMethodBeat.o(1945);
+    AppMethodBeat.i(126328);
+    a(this.TLM, this.TLM.fWt(), this.TOt, paramInt);
+    AppMethodBeat.o(126328);
   }
   
   public final View getWowView()
   {
-    AppMethodBeat.i(1949);
-    View localView = this.tkK.getControlBar().getWowView();
-    AppMethodBeat.o(1949);
+    AppMethodBeat.i(126327);
+    View localView = this.TOt.getControlBar().getWowView();
+    AppMethodBeat.o(126327);
     return localView;
   }
   
-  public final void mA(boolean paramBoolean)
+  public final int hNv()
   {
-    AppMethodBeat.i(1946);
-    super.mA(paramBoolean);
-    this.tim.GA(jN());
-    if (this.tkK.Q(paramBoolean, false))
+    AppMethodBeat.i(369748);
+    int i = KJ();
+    AppMethodBeat.o(369748);
+    return i;
+  }
+  
+  public void hOh()
+  {
+    AppMethodBeat.i(126325);
+    if (this.TOt == null)
     {
-      cJa();
-      cIZ();
+      if (!this.TLM.hNH()) {
+        break label133;
+      }
+      this.TOt = new k(this.TLM.fWt(), this.TLM, this);
+      this.TOu.removeAllViews();
+      if (!this.TLM.hNH()) {
+        break label161;
+      }
     }
-    AppMethodBeat.o(1946);
+    label133:
+    label161:
+    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.TLM.dXX().x, this.TLM.dXX().y);; localLayoutParams = new FrameLayout.LayoutParams(this.TLM.dXX().y, this.TLM.dXX().x))
+    {
+      this.TOu.addView(this.TOt, localLayoutParams);
+      this.TOt.a(this.TIW, hNv());
+      AppMethodBeat.o(126325);
+      return;
+      this.TOt = new e(this.TLM.fWt(), this.TLM, this);
+      break;
+    }
+  }
+  
+  public final com.tencent.mm.plugin.topstory.ui.video.f hOi()
+  {
+    return this.TOt;
+  }
+  
+  public final void ko(View paramView)
+  {
+    AppMethodBeat.i(126323);
+    this.TOu = ((FrameLayout)paramView.findViewById(c.d.video_view_container));
+    AppMethodBeat.o(126323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.g
  * JD-Core Version:    0.7.0.1
  */

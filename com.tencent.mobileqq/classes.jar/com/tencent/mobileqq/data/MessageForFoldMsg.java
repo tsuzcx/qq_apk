@@ -23,25 +23,21 @@ public class MessageForFoldMsg
   
   public void init(boolean paramBoolean1, String paramString1, String paramString2, long paramLong, boolean paramBoolean2)
   {
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.redBagId = paramString1;
-      this.redBagIndex = paramString2;
-      this.mPasswdRedBagSender = paramLong;
-      this.foldFlag = paramBoolean1;
-      if (paramBoolean2) {
-        if (!this.foldFlag) {
-          break label62;
-        }
-      }
-    }
-    label62:
-    for (this.msgtype = -2006;; this.msgtype = -1000)
-    {
-      saveExtInfoToExtStr("redbag_fold_msg", "true");
-      return;
+    if (TextUtils.isEmpty(paramString1)) {
       paramString1 = "";
-      break;
+    }
+    this.redBagId = paramString1;
+    this.redBagIndex = paramString2;
+    this.mPasswdRedBagSender = paramLong;
+    this.foldFlag = paramBoolean1;
+    if (paramBoolean2)
+    {
+      if (this.foldFlag) {
+        this.msgtype = -2006;
+      } else {
+        this.msgtype = -1000;
+      }
+      saveExtInfoToExtStr("redbag_fold_msg", "true");
     }
   }
   
@@ -53,10 +49,11 @@ public class MessageForFoldMsg
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
+    int i = this.istroop;
     boolean bool = true;
-    if (this.istroop != 1)
+    if (i != 1)
     {
       super.postRead();
       return;
@@ -67,53 +64,32 @@ public class MessageForFoldMsg
       try
       {
         localFoldMsg.mergeFrom(this.msgData);
-        if (localFoldMsg.fold_flags.get() != 1) {
-          break label144;
+        if (localFoldMsg.fold_flags.get() == 1)
+        {
+          this.foldFlag = bool;
+          this.redBagId = localFoldMsg.redbag_id.get().toStringUtf8();
+          this.msg = localFoldMsg.msg_content.get().toStringUtf8();
+          this.mPasswdRedBagSender = localFoldMsg.redbag_sender_uin.get();
+          this.redBagIndex = localFoldMsg.redbag_index.get().toStringUtf8();
+          init(this.foldFlag, this.redBagId, this.redBagIndex, this.mPasswdRedBagSender, false);
+          return;
         }
-        this.foldFlag = bool;
-        this.redBagId = localFoldMsg.redbag_id.get().toStringUtf8();
-        this.msg = localFoldMsg.msg_content.get().toStringUtf8();
-        this.mPasswdRedBagSender = localFoldMsg.redbag_sender_uin.get();
-        this.redBagIndex = localFoldMsg.redbag_index.get().toStringUtf8();
-        init(this.foldFlag, this.redBagId, this.redBagIndex, this.mPasswdRedBagSender, false);
-        return;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("msgFold", 2, "MessageForFoldMsg postRead error ", localException);
+        }
+        return;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("msgFold", 2, "MessageForFoldMsg postRead error ", localException);
-      return;
-      label144:
       bool = false;
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    int i = 1;
-    if (this.istroop != 1)
-    {
-      super.prewrite();
-      return;
-    }
-    RichMsg.FoldMsg localFoldMsg = new RichMsg.FoldMsg();
-    PBUInt32Field localPBUInt32Field = localFoldMsg.fold_flags;
-    if (this.foldFlag) {}
-    for (;;)
-    {
-      localPBUInt32Field.set(i);
-      localFoldMsg.redbag_sender_uin.set(this.mPasswdRedBagSender);
-      localFoldMsg.redbag_id.set(ByteStringMicro.copyFromUtf8(this.redBagId));
-      localFoldMsg.msg_content.set(ByteStringMicro.copyFromUtf8(this.msg));
-      localFoldMsg.redbag_index.set(ByteStringMicro.copyFromUtf8(this.redBagIndex));
-      this.msgData = localFoldMsg.toByteArray();
-      return;
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 

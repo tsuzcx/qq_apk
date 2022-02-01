@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetCategoryDetailReqItem
   extends JceStruct
 {
-  static int cache_type = 0;
+  static int cache_type;
   public String categoryid = "";
   public String page_str = "";
   public int type = 1;
@@ -30,18 +30,20 @@ public final class GetCategoryDetailReqItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 0);
+    String str = this.categoryid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.page_str != null) {
-      paramJceOutputStream.write(this.page_str, 1);
+    str = this.page_str;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.type, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetCategoryDetailReqItem
  * JD-Core Version:    0.7.0.1
  */

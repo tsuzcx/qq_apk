@@ -2,59 +2,63 @@ package com.etrump.mixlayout;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import gj;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
 
-public final class VasShieldFont$1
+final class VasShieldFont$1
   implements Runnable
 {
-  public VasShieldFont$1(QQAppInterface paramQQAppInterface, MqqHandler paramMqqHandler) {}
+  VasShieldFont$1(QQAppInterface paramQQAppInterface, MqqHandler paramMqqHandler) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasShieldFont", 2, "loadDefaultFont: type=" + gj.a);
-    }
-    if (!gj.a().get())
-    {
-      if (gj.b() == null)
-      {
-        if (!gj.a()) {
-          break label135;
-        }
-        gj.c();
-        gj.b();
-      }
-      if (this.jdField_a_of_type_MqqOsMqqHandler != null)
-      {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(87);
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(87);
-      }
-    }
-    StringBuilder localStringBuilder;
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("loadDefaultFont: typeface=");
-      if (gj.b() == null) {
-        break label145;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadDefaultFont: type=");
+      ((StringBuilder)localObject).append(VasShieldFont.b);
+      QLog.d("VasShieldFont", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!VasShieldFont.g().get())
+    {
+      if (VasShieldFont.h() == null) {
+        if (VasShieldFont.i())
+        {
+          VasShieldFont.j();
+          VasShieldFont.d();
+        }
+        else
+        {
+          VasShieldFont.c(this.a);
+        }
+      }
+      localObject = this.b;
+      if (localObject != null)
+      {
+        ((MqqHandler)localObject).removeMessages(87);
+        this.b.sendEmptyMessage(87);
       }
     }
-    label135:
-    label145:
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      QLog.d("VasShieldFont", 2, bool);
-      gj.b().set(false);
-      return;
-      gj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadDefaultFont: typeface=");
+      boolean bool;
+      if (VasShieldFont.h() != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("VasShieldFont", 2, ((StringBuilder)localObject).toString());
     }
+    VasShieldFont.k().set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.VasShieldFont.1
  * JD-Core Version:    0.7.0.1
  */

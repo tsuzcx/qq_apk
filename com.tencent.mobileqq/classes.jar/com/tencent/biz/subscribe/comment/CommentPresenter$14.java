@@ -1,23 +1,21 @@
 package com.tencent.biz.subscribe.comment;
 
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tribe.async.dispatch.Dispatcher;
-import umc;
-import ygc;
-import ygg;
 
-public class CommentPresenter$14
+class CommentPresenter$14
   implements Runnable
 {
-  public CommentPresenter$14(ygg paramygg) {}
+  CommentPresenter$14(CommentPresenter paramCommentPresenter) {}
   
   public void run()
   {
-    umc.a().dispatch(new ygc(1, new Object[0]));
+    StoryDispatcher.a().dispatch(new CommentEvent(1, new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.14
  * JD-Core Version:    0.7.0.1
  */

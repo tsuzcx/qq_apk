@@ -6,9 +6,11 @@ import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.view.SurfaceHolder;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import java.io.File;
 import org.json.JSONObject;
 
@@ -26,133 +28,127 @@ public class MiniAppCamera
   
   private void a(String paramString, WebviewContainer paramWebviewContainer, int paramInt)
   {
-    paramString = com.tencent.mobileqq.microapp.b.a.b(paramString, null);
-    if (paramString != null) {}
-    for (paramString = paramString.toString();; paramString = "")
-    {
-      paramWebviewContainer.appBrandRuntime.i.evaluateCallbackJs(paramInt, paramString);
-      return;
+    paramString = c.b(paramString, null);
+    if (paramString != null) {
+      paramString = paramString.toString();
+    } else {
+      paramString = "";
     }
+    paramWebviewContainer.appBrandRuntime.i.evaluateCallbackJs(paramInt, paramString);
   }
   
   /* Error */
   private static String b(android.graphics.Bitmap paramBitmap, File paramFile, String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: bipush 100
-    //   5: istore_3
-    //   6: new 63	java/io/FileOutputStream
-    //   9: dup
-    //   10: aload_1
-    //   11: invokespecial 66	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   14: astore 5
-    //   16: new 68	java/io/BufferedOutputStream
-    //   19: dup
-    //   20: aload 5
-    //   22: invokespecial 71	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   25: astore 6
-    //   27: ldc 73
-    //   29: aload_2
-    //   30: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   33: ifeq +68 -> 101
-    //   36: bipush 80
-    //   38: istore_3
-    //   39: aload_0
-    //   40: getstatic 85	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   43: bipush 100
-    //   45: iload_3
-    //   46: invokestatic 91	java/lang/Math:min	(II)I
-    //   49: aload 6
-    //   51: invokevirtual 97	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   54: pop
-    //   55: aload 6
-    //   57: invokevirtual 101	java/io/BufferedOutputStream:flush	()V
-    //   60: aload_1
-    //   61: invokevirtual 106	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   64: aload_1
-    //   65: invokevirtual 106	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   68: getstatic 110	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:h	I
-    //   71: getstatic 112	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:i	I
-    //   74: iload_3
-    //   75: invokestatic 117	bdhj:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
-    //   78: astore_0
-    //   79: aload 6
-    //   81: ifnull +8 -> 89
-    //   84: aload 6
-    //   86: invokevirtual 120	java/io/BufferedOutputStream:close	()V
-    //   89: aload 5
-    //   91: ifnull +8 -> 99
-    //   94: aload 5
-    //   96: invokevirtual 121	java/io/FileOutputStream:close	()V
-    //   99: aload_0
-    //   100: areturn
-    //   101: ldc 123
-    //   103: aload_2
-    //   104: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   107: istore 4
-    //   109: iload 4
-    //   111: ifeq -72 -> 39
-    //   114: bipush 60
-    //   116: istore_3
-    //   117: goto -78 -> 39
-    //   120: astore_0
-    //   121: aconst_null
-    //   122: astore_1
-    //   123: aload 6
-    //   125: astore_2
-    //   126: aload_1
-    //   127: ifnull +7 -> 134
-    //   130: aload_1
-    //   131: invokevirtual 120	java/io/BufferedOutputStream:close	()V
-    //   134: aload_2
-    //   135: ifnull +7 -> 142
+    //   0: new 63	java/io/FileOutputStream
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 66	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   8: astore 4
+    //   10: new 68	java/io/BufferedOutputStream
+    //   13: dup
+    //   14: aload 4
+    //   16: invokespecial 71	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   19: astore 5
+    //   21: ldc 73
+    //   23: aload_2
+    //   24: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   27: ifeq +9 -> 36
+    //   30: bipush 80
+    //   32: istore_3
+    //   33: goto +18 -> 51
+    //   36: ldc 81
+    //   38: aload_2
+    //   39: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   42: ifeq +121 -> 163
+    //   45: bipush 60
+    //   47: istore_3
+    //   48: goto +3 -> 51
+    //   51: aload_0
+    //   52: getstatic 87	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   55: bipush 100
+    //   57: iload_3
+    //   58: invokestatic 93	java/lang/Math:min	(II)I
+    //   61: aload 5
+    //   63: invokevirtual 99	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   66: pop
+    //   67: aload 5
+    //   69: invokevirtual 103	java/io/BufferedOutputStream:flush	()V
+    //   72: aload_1
+    //   73: invokevirtual 108	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   76: aload_1
+    //   77: invokevirtual 108	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   80: getstatic 112	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:h	I
+    //   83: getstatic 114	com/tencent/mobileqq/microapp/widget/media/MiniAppCamera:i	I
+    //   86: iload_3
+    //   87: invokestatic 119	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   90: astore_0
+    //   91: aload 5
+    //   93: invokevirtual 122	java/io/BufferedOutputStream:close	()V
+    //   96: aload 4
+    //   98: invokevirtual 123	java/io/FileOutputStream:close	()V
+    //   101: aload_0
+    //   102: areturn
+    //   103: astore_0
+    //   104: aload 4
+    //   106: astore_2
+    //   107: aload 5
+    //   109: astore_1
+    //   110: goto +17 -> 127
+    //   113: astore_0
+    //   114: aconst_null
+    //   115: astore_1
+    //   116: aload 4
+    //   118: astore_2
+    //   119: goto +8 -> 127
+    //   122: astore_0
+    //   123: aconst_null
+    //   124: astore_2
+    //   125: aload_2
+    //   126: astore_1
+    //   127: aload_1
+    //   128: ifnull +10 -> 138
+    //   131: aload_1
+    //   132: invokevirtual 122	java/io/BufferedOutputStream:close	()V
+    //   135: goto +3 -> 138
     //   138: aload_2
-    //   139: invokevirtual 121	java/io/FileOutputStream:close	()V
-    //   142: aload_0
-    //   143: athrow
-    //   144: astore_1
-    //   145: goto -56 -> 89
+    //   139: ifnull +7 -> 146
+    //   142: aload_2
+    //   143: invokevirtual 123	java/io/FileOutputStream:close	()V
+    //   146: aload_0
+    //   147: athrow
     //   148: astore_1
-    //   149: aload_0
-    //   150: areturn
-    //   151: astore_1
-    //   152: goto -18 -> 134
+    //   149: goto -53 -> 96
+    //   152: astore_1
+    //   153: aload_0
+    //   154: areturn
     //   155: astore_1
-    //   156: goto -14 -> 142
-    //   159: astore_0
-    //   160: aconst_null
-    //   161: astore_1
-    //   162: aload 5
-    //   164: astore_2
-    //   165: goto -39 -> 126
-    //   168: astore_0
-    //   169: aload 5
-    //   171: astore_2
-    //   172: aload 6
-    //   174: astore_1
-    //   175: goto -49 -> 126
+    //   156: goto -18 -> 138
+    //   159: astore_1
+    //   160: goto -14 -> 146
+    //   163: bipush 100
+    //   165: istore_3
+    //   166: goto -115 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	paramBitmap	android.graphics.Bitmap
-    //   0	178	1	paramFile	File
-    //   0	178	2	paramString	String
-    //   5	112	3	i	int
-    //   107	3	4	bool	boolean
-    //   14	156	5	localFileOutputStream	java.io.FileOutputStream
-    //   1	172	6	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   0	169	0	paramBitmap	android.graphics.Bitmap
+    //   0	169	1	paramFile	File
+    //   0	169	2	paramString	String
+    //   32	134	3	i	int
+    //   8	109	4	localFileOutputStream	java.io.FileOutputStream
+    //   19	89	5	localBufferedOutputStream	java.io.BufferedOutputStream
     // Exception table:
     //   from	to	target	type
-    //   6	16	120	finally
-    //   84	89	144	java/lang/Exception
-    //   94	99	148	java/lang/Exception
-    //   130	134	151	java/lang/Exception
-    //   138	142	155	java/lang/Exception
-    //   16	27	159	finally
-    //   27	36	168	finally
-    //   39	79	168	finally
-    //   101	109	168	finally
+    //   21	30	103	finally
+    //   36	45	103	finally
+    //   51	91	103	finally
+    //   10	21	113	finally
+    //   0	10	122	finally
+    //   91	96	148	java/lang/Exception
+    //   96	101	152	java/lang/Exception
+    //   131	135	155	java/lang/Exception
+    //   142	146	159	java/lang/Exception
   }
   
   /* Error */
@@ -162,112 +158,130 @@ public class MiniAppCamera
     //   0: new 132	android/media/MediaMetadataRetriever
     //   3: dup
     //   4: invokespecial 134	android/media/MediaMetadataRetriever:<init>	()V
-    //   7: astore 6
-    //   9: aload 6
-    //   11: aload_0
-    //   12: invokevirtual 138	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   15: aload 6
-    //   17: ldc2_w 139
-    //   20: iconst_2
-    //   21: invokevirtual 144	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
-    //   24: astore_0
-    //   25: aload_0
-    //   26: ifnull +123 -> 149
-    //   29: aload_0
-    //   30: invokevirtual 148	android/graphics/Bitmap:getWidth	()I
-    //   33: istore_2
-    //   34: aload_0
-    //   35: invokevirtual 151	android/graphics/Bitmap:getHeight	()I
-    //   38: istore_3
-    //   39: iload_2
-    //   40: iload_3
-    //   41: invokestatic 154	java/lang/Math:max	(II)I
-    //   44: istore 4
-    //   46: iload 4
-    //   48: sipush 512
-    //   51: if_icmple +98 -> 149
-    //   54: ldc 155
-    //   56: iload 4
-    //   58: i2f
-    //   59: fdiv
-    //   60: fstore_1
-    //   61: aload_0
-    //   62: iload_2
-    //   63: i2f
-    //   64: fload_1
-    //   65: fmul
-    //   66: invokestatic 159	java/lang/Math:round	(F)I
-    //   69: iload_3
-    //   70: i2f
-    //   71: fload_1
-    //   72: fmul
-    //   73: invokestatic 159	java/lang/Math:round	(F)I
-    //   76: iconst_1
-    //   77: invokestatic 163	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   80: astore 5
-    //   82: aload 5
-    //   84: astore_0
-    //   85: aload 6
-    //   87: invokevirtual 166	android/media/MediaMetadataRetriever:release	()V
-    //   90: aload_0
-    //   91: areturn
-    //   92: astore 5
-    //   94: aload 5
-    //   96: invokevirtual 169	java/lang/RuntimeException:printStackTrace	()V
-    //   99: aload_0
-    //   100: areturn
-    //   101: astore 5
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: aload 5
-    //   107: invokevirtual 170	java/lang/Throwable:printStackTrace	()V
-    //   110: aload 6
-    //   112: invokevirtual 166	android/media/MediaMetadataRetriever:release	()V
-    //   115: aload_0
-    //   116: areturn
-    //   117: astore 5
-    //   119: aload 5
-    //   121: invokevirtual 169	java/lang/RuntimeException:printStackTrace	()V
-    //   124: aload_0
-    //   125: areturn
-    //   126: astore_0
-    //   127: aload 6
-    //   129: invokevirtual 166	android/media/MediaMetadataRetriever:release	()V
-    //   132: aload_0
-    //   133: athrow
-    //   134: astore 5
-    //   136: aload 5
-    //   138: invokevirtual 169	java/lang/RuntimeException:printStackTrace	()V
-    //   141: goto -9 -> 132
-    //   144: astore 5
-    //   146: goto -41 -> 105
-    //   149: goto -64 -> 85
+    //   7: astore 7
+    //   9: aconst_null
+    //   10: astore 6
+    //   12: aload 6
+    //   14: astore 5
+    //   16: aload 7
+    //   18: aload_0
+    //   19: invokevirtual 138	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   22: aload 6
+    //   24: astore 5
+    //   26: aload 7
+    //   28: ldc2_w 139
+    //   31: iconst_2
+    //   32: invokevirtual 144	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
+    //   35: astore 6
+    //   37: aload 6
+    //   39: astore_0
+    //   40: aload 6
+    //   42: ifnull +81 -> 123
+    //   45: aload 6
+    //   47: astore 5
+    //   49: aload 6
+    //   51: invokevirtual 148	android/graphics/Bitmap:getWidth	()I
+    //   54: istore_2
+    //   55: aload 6
+    //   57: astore 5
+    //   59: aload 6
+    //   61: invokevirtual 151	android/graphics/Bitmap:getHeight	()I
+    //   64: istore_3
+    //   65: aload 6
+    //   67: astore 5
+    //   69: iload_2
+    //   70: iload_3
+    //   71: invokestatic 154	java/lang/Math:max	(II)I
+    //   74: istore 4
+    //   76: aload 6
+    //   78: astore_0
+    //   79: iload 4
+    //   81: sipush 512
+    //   84: if_icmple +39 -> 123
+    //   87: aload 6
+    //   89: astore 5
+    //   91: ldc 155
+    //   93: iload 4
+    //   95: i2f
+    //   96: fdiv
+    //   97: fstore_1
+    //   98: aload 6
+    //   100: astore 5
+    //   102: aload 6
+    //   104: iload_2
+    //   105: i2f
+    //   106: fload_1
+    //   107: fmul
+    //   108: invokestatic 159	java/lang/Math:round	(F)I
+    //   111: fload_1
+    //   112: iload_3
+    //   113: i2f
+    //   114: fmul
+    //   115: invokestatic 159	java/lang/Math:round	(F)I
+    //   118: iconst_1
+    //   119: invokestatic 163	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   122: astore_0
+    //   123: aload_0
+    //   124: astore 6
+    //   126: aload 7
+    //   128: invokevirtual 166	android/media/MediaMetadataRetriever:release	()V
+    //   131: aload_0
+    //   132: areturn
+    //   133: astore_0
+    //   134: aload_0
+    //   135: invokevirtual 169	java/lang/RuntimeException:printStackTrace	()V
+    //   138: aload 6
+    //   140: areturn
+    //   141: astore_0
+    //   142: goto +20 -> 162
+    //   145: astore_0
+    //   146: aload_0
+    //   147: invokevirtual 170	java/lang/Throwable:printStackTrace	()V
+    //   150: aload 5
+    //   152: astore 6
+    //   154: aload 7
+    //   156: invokevirtual 166	android/media/MediaMetadataRetriever:release	()V
+    //   159: aload 5
+    //   161: areturn
+    //   162: aload 7
+    //   164: invokevirtual 166	android/media/MediaMetadataRetriever:release	()V
+    //   167: goto +10 -> 177
+    //   170: astore 5
+    //   172: aload 5
+    //   174: invokevirtual 169	java/lang/RuntimeException:printStackTrace	()V
+    //   177: aload_0
+    //   178: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	152	0	paramString	String
-    //   60	12	1	f	float
-    //   33	30	2	i	int
-    //   38	32	3	j	int
-    //   44	13	4	k	int
-    //   80	3	5	localBitmap	android.graphics.Bitmap
-    //   92	3	5	localRuntimeException1	java.lang.RuntimeException
-    //   101	5	5	localThrowable1	java.lang.Throwable
-    //   117	3	5	localRuntimeException2	java.lang.RuntimeException
-    //   134	3	5	localRuntimeException3	java.lang.RuntimeException
-    //   144	1	5	localThrowable2	java.lang.Throwable
-    //   7	121	6	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   0	179	0	paramString	String
+    //   97	15	1	f	float
+    //   54	51	2	i	int
+    //   64	49	3	j	int
+    //   74	20	4	k	int
+    //   14	146	5	localObject1	java.lang.Object
+    //   170	3	5	localRuntimeException	java.lang.RuntimeException
+    //   10	143	6	localObject2	java.lang.Object
+    //   7	156	7	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
     // Exception table:
     //   from	to	target	type
-    //   85	90	92	java/lang/RuntimeException
-    //   9	25	101	java/lang/Throwable
-    //   110	115	117	java/lang/RuntimeException
-    //   9	25	126	finally
-    //   29	46	126	finally
-    //   54	82	126	finally
-    //   105	110	126	finally
-    //   127	132	134	java/lang/RuntimeException
-    //   29	46	144	java/lang/Throwable
-    //   54	82	144	java/lang/Throwable
+    //   126	131	133	java/lang/RuntimeException
+    //   154	159	133	java/lang/RuntimeException
+    //   16	22	141	finally
+    //   26	37	141	finally
+    //   49	55	141	finally
+    //   59	65	141	finally
+    //   69	76	141	finally
+    //   91	98	141	finally
+    //   102	123	141	finally
+    //   146	150	141	finally
+    //   16	22	145	java/lang/Throwable
+    //   26	37	145	java/lang/Throwable
+    //   49	55	145	java/lang/Throwable
+    //   59	65	145	java/lang/Throwable
+    //   69	76	145	java/lang/Throwable
+    //   91	98	145	java/lang/Throwable
+    //   102	123	145	java/lang/Throwable
+    //   162	167	170	java/lang/RuntimeException
   }
   
   public void a(WebviewContainer paramWebviewContainer, String paramString, int paramInt)
@@ -331,7 +345,7 @@ public class MiniAppCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppCamera
  * JD-Core Version:    0.7.0.1
  */

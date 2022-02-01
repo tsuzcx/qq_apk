@@ -2,33 +2,33 @@ package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
-import com.tencent.mobileqq.R.styleable;
-import uct;
-import ucw;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.biz.qcircle.R.styleable;
+import com.tencent.richframework.text.rich.RFWAsyncRichTextView.OnClickAtTextListener;
+import com.tencent.richframework.text.rich.RFWAsyncRichTextView.OnClickHashTagTextListener;
+import java.util.List;
 
 public class QCircleExpandableTextView
   extends LinearLayout
 {
-  int jdField_a_of_type_Int = 0;
-  public TextView a;
-  public AsyncRichTextView a;
-  public String a;
-  public ucw a;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d = 0;
-  public int e = 0;
+  QCircleAsyncTextView a;
+  TextView b;
+  int c = 0;
+  int d = 0;
+  String e;
+  String f;
+  boolean g = false;
+  int h = 0;
+  boolean i = true;
+  int j = 0;
+  int k = 0;
+  boolean l = false;
+  QCircleExpandableTextView.OnExpandStateChangeListener m;
   
   public QCircleExpandableTextView(Context paramContext)
   {
@@ -43,42 +43,54 @@ public class QCircleExpandableTextView
   public QCircleExpandableTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
     a(paramContext, paramAttributeSet);
   }
   
-  private int a(TextView paramTextView)
+  private int a(TextView paramTextView, int paramInt)
   {
-    return paramTextView.getLayout().getLineTop(paramTextView.getLineCount()) + paramTextView.getCompoundPaddingBottom() + paramTextView.getCompoundPaddingTop();
+    if (paramTextView == null) {
+      return 0;
+    }
+    int n;
+    if (paramTextView.getLayout() == null) {
+      n = paramTextView.getCompoundPaddingBottom();
+    }
+    for (paramInt = paramTextView.getCompoundPaddingTop();; paramInt = paramTextView.getCompoundPaddingTop())
+    {
+      return n + paramInt;
+      n = paramTextView.getLayout().getLineTop(paramInt) + paramTextView.getCompoundPaddingBottom();
+    }
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     setOrientation(1);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ExpandableTextViewAttr);
-    this.jdField_a_of_type_Int = paramContext.getInteger(2, 3);
-    this.jdField_b_of_type_Int = paramContext.getInteger(0, 250);
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(1);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(3);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.az);
+    this.c = paramContext.getInteger(R.styleable.aC, 3);
+    this.d = paramContext.getInteger(R.styleable.aA, 250);
+    this.e = paramContext.getString(R.styleable.aB);
+    this.f = paramContext.getString(R.styleable.aD);
     paramContext.recycle();
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.i;
   }
   
-  public TextView b()
+  public TextView getExpandTextView()
   {
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
+    return this.b;
+  }
+  
+  public List<String> getHashTagList()
+  {
+    return this.a.getHashTagList();
+  }
+  
+  public TextView getSourceTextView()
+  {
+    return this.a;
   }
   
   protected void onFinishInflate()
@@ -87,85 +99,103 @@ public class QCircleExpandableTextView
     if (getChildCount() < 2) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)getChildAt(0));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getChildAt(1));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new uct(this));
+    this.a = ((QCircleAsyncTextView)getChildAt(0));
+    this.b = ((TextView)getChildAt(1));
+    this.b.setText(this.f);
+    this.b.setOnClickListener(new QCircleExpandableTextView.1(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.l;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((getVisibility() == 8) || (!this.jdField_a_of_type_Boolean)) {
-      super.onMeasure(paramInt1, paramInt2);
-    }
-    do
+    if ((getVisibility() != 8) && (this.g))
     {
-      do
+      this.g = false;
+      this.b.setVisibility(8);
+      this.a.setMaxLines(2147483647);
+      if (this.a.getLineCount() <= this.c)
       {
-        return;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setMaxLines(2147483647);
         super.onMeasure(paramInt1, paramInt2);
-      } while (this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.getLineCount() <= this.jdField_a_of_type_Int);
-      this.jdField_c_of_type_Int = a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView);
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setMaxLines(this.jdField_a_of_type_Int);
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      QCircleAsyncTextView localQCircleAsyncTextView = this.a;
+      this.h = a(localQCircleAsyncTextView, localQCircleAsyncTextView.getLineCount());
+      if (this.i) {
+        this.a.setMaxLines(this.c);
+      }
+      if ((this.m != null) && (this.b.getVisibility() == 8)) {
+        this.m.a();
+      }
+      this.b.setVisibility(0);
       super.onMeasure(paramInt1, paramInt2);
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.post(new QCircleExpandableTextView.2(this));
-  }
-  
-  public void setListener(ucw paramucw)
-  {
-    this.jdField_a_of_type_Ucw = paramucw;
-  }
-  
-  public void setText(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText(paramString);
-  }
-  
-  public void setText(String paramString, boolean paramBoolean)
-  {
-    boolean bool;
-    if (!paramBoolean)
-    {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label70;
+      if (this.i)
+      {
+        this.a.post(new QCircleExpandableTextView.2(this));
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      clearAnimation();
-      setText(paramString);
-      getLayoutParams().height = -2;
-      if (this.jdField_a_of_type_Ucw != null) {
-        this.jdField_a_of_type_Ucw.a(paramBoolean);
-      }
+      this.a.post(new QCircleExpandableTextView.3(this));
       return;
-      bool = false;
-      break;
-      label70:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    }
+    super.onMeasure(paramInt1, paramInt2);
+  }
+  
+  public void setClickAreaTextColor(int paramInt)
+  {
+    this.a.setClickAreaTextColor(paramInt);
+  }
+  
+  public void setListener(QCircleExpandableTextView.OnExpandStateChangeListener paramOnExpandStateChangeListener)
+  {
+    this.m = paramOnExpandStateChangeListener;
+  }
+  
+  public void setNeedSpecialAreaBold(boolean paramBoolean)
+  {
+    this.a.setNeedSpecialAreaBold(paramBoolean);
+  }
+  
+  public void setOnClickHashTagListener(RFWAsyncRichTextView.OnClickHashTagTextListener paramOnClickHashTagTextListener)
+  {
+    this.a.setOnClickHashTagTextListener(paramOnClickHashTagTextListener);
+  }
+  
+  public void setSpecialAreaTextColor(int paramInt)
+  {
+    this.a.setSpecialClickAreaColor(paramInt);
+  }
+  
+  public void setText(String paramString, RFWAsyncRichTextView.OnClickAtTextListener paramOnClickAtTextListener)
+  {
+    this.g = true;
+    this.a.setOnClickAtTextListener(paramOnClickAtTextListener);
+    this.a.setText(paramString);
+  }
+  
+  public void setText(String paramString, boolean paramBoolean, RFWAsyncRichTextView.OnClickAtTextListener paramOnClickAtTextListener)
+  {
+    this.i = (paramBoolean ^ true);
+    if (this.i) {
+      this.b.setText(this.f);
+    } else {
+      this.b.setText(this.e);
+    }
+    clearAnimation();
+    setText(paramString, paramOnClickAtTextListener);
+    getLayoutParams().height = -2;
+    paramString = this.m;
+    if (paramString != null) {
+      paramString.b(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView
  * JD-Core Version:    0.7.0.1
  */

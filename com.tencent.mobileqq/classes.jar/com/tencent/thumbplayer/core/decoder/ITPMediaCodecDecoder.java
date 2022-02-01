@@ -1,11 +1,12 @@
 package com.tencent.thumbplayer.core.decoder;
 
-import android.support.annotation.NonNull;
 import android.view.Surface;
+import androidx.annotation.NonNull;
 
 public abstract interface ITPMediaCodecDecoder
 {
   public static final int BOOL_ENABLE_ASYNC_MODE = 1;
+  public static final int BOOL_ENABLE_MEDIACODEC_REUSE = 4;
   public static final int BOOL_ENABLE_SET_OUTPUT_SURFACE_API = 0;
   public static final int BOOL_SET_IS_ADTS = 2;
   public static final int BOOL_SET_IS_AUDIO_PASSTHROUGH = 3;
@@ -32,13 +33,15 @@ public abstract interface ITPMediaCodecDecoder
   
   public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4);
+  public abstract boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4, int paramInt5, int paramInt6);
   
   public abstract int release();
   
   public abstract int releaseOutputBuffer(int paramInt, boolean paramBoolean);
   
   public abstract void setCryptoInfo(int paramInt1, @NonNull int[] paramArrayOfInt1, @NonNull int[] paramArrayOfInt2, @NonNull byte[] paramArrayOfByte1, @NonNull byte[] paramArrayOfByte2, int paramInt2);
+  
+  public abstract int setOperateRate(float paramFloat);
   
   public abstract int setOutputSurface(Surface paramSurface);
   
@@ -60,7 +63,7 @@ public abstract interface ITPMediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.ITPMediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

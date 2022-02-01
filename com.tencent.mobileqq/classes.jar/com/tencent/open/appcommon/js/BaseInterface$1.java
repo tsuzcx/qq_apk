@@ -17,13 +17,13 @@ class BaseInterface$1
       this.this$0.firstIn = true;
     }
     if (this.this$0.batchCallbackQueue.size() > 0) {
-      this.this$0.batchCallback(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Long);
+      this.this$0.batchCallback(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseInterface.1
  * JD-Core Version:    0.7.0.1
  */

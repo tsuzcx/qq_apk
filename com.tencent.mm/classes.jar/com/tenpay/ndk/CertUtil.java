@@ -3,9 +3,13 @@ package com.tenpay.ndk;
 import android.content.Context;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.security.MessageDigest;
 
@@ -19,7 +23,7 @@ public class CertUtil
   private byte[] cipher_buf = null;
   private byte[] csr_buf = null;
   private String deskey = null;
-  private CertUtil.EventListener eventListener = null;
+  private EventListener eventListener = null;
   private String iccid = null;
   private String imei = null;
   private String imsi = null;
@@ -44,42 +48,42 @@ public class CertUtil
   
   static
   {
-    AppMethodBeat.i(49565);
+    AppMethodBeat.i(73316);
     TAG = CertUtil.class.getSimpleName();
     instance = null;
-    AppMethodBeat.o(49565);
+    AppMethodBeat.o(73316);
   }
   
   private void checkDir(String paramString)
   {
-    AppMethodBeat.i(49544);
-    paramString = new File(paramString);
-    if (!paramString.exists())
+    AppMethodBeat.i(73293);
+    paramString = new u(paramString);
+    if (!paramString.jKS())
     {
-      paramString.mkdirs();
-      AppMethodBeat.o(49544);
+      paramString.jKY();
+      AppMethodBeat.o(73293);
       return;
     }
     if (!paramString.isDirectory())
     {
-      paramString.delete();
-      paramString.mkdirs();
+      paramString.diJ();
+      paramString.jKY();
     }
-    AppMethodBeat.o(49544);
+    AppMethodBeat.o(73293);
   }
   
   private boolean create_dir(String paramString)
   {
-    AppMethodBeat.i(49545);
+    AppMethodBeat.i(73294);
     for (;;)
     {
       try
       {
-        paramString = new File(paramString);
-        if (paramString.exists()) {
+        paramString = new u(paramString);
+        if (paramString.jKS()) {
           continue;
         }
-        boolean bool2 = paramString.mkdirs();
+        boolean bool2 = paramString.jKY();
         bool1 = bool2;
         if (bool2) {}
       }
@@ -88,54 +92,56 @@ public class CertUtil
         boolean bool1 = false;
         continue;
       }
-      AppMethodBeat.o(49545);
+      AppMethodBeat.o(73294);
       return bool1;
       bool1 = true;
     }
   }
   
+  private native byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
   private boolean del_all_files(String paramString)
   {
-    AppMethodBeat.i(49546);
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    AppMethodBeat.i(73295);
+    u localu = new u(paramString);
+    if (!localu.jKS())
     {
-      AppMethodBeat.o(49546);
+      AppMethodBeat.o(73295);
       return false;
     }
-    if (!localFile.isDirectory())
+    if (!localu.isDirectory())
     {
-      AppMethodBeat.o(49546);
+      AppMethodBeat.o(73295);
       return false;
     }
-    String[] arrayOfString = localFile.list();
+    String[] arrayOfString = localu.jKW();
     int i = 0;
     boolean bool = false;
     if (i < arrayOfString.length) {
-      if (paramString.endsWith(File.separator))
+      if (paramString.endsWith("/"))
       {
-        localFile = new File(paramString + arrayOfString[i]);
-        label103:
-        if (!localFile.isFile()) {
-          break label163;
+        localu = new u(paramString + arrayOfString[i]);
+        label102:
+        if (!localu.jKV()) {
+          break label161;
         }
-        localFile.delete();
+        localu.diJ();
       }
     }
     for (;;)
     {
       i += 1;
       break;
-      localFile = new File(paramString + File.separator + arrayOfString[i]);
-      break label103;
-      label163:
-      if (localFile.isDirectory())
+      localu = new u(paramString + "/" + arrayOfString[i]);
+      break label102;
+      label161:
+      if (localu.isDirectory())
       {
-        del_all_files(paramString + File.separator + arrayOfString[i]);
-        del_dir(paramString + File.separator + arrayOfString[i], true);
+        del_all_files(paramString + "/" + arrayOfString[i]);
+        del_dir(paramString + "/" + arrayOfString[i], true);
         bool = true;
         continue;
-        AppMethodBeat.o(49546);
+        AppMethodBeat.o(73295);
         return bool;
       }
     }
@@ -143,23 +149,25 @@ public class CertUtil
   
   private void del_dir(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(49547);
+    AppMethodBeat.i(73296);
     try
     {
       del_all_files(paramString);
       if (paramBoolean) {
-        new File(paramString.toString()).delete();
+        new u(paramString.toString()).diJ();
       }
-      AppMethodBeat.o(49547);
+      AppMethodBeat.o(73296);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(49547);
+      AppMethodBeat.o(73296);
     }
   }
   
   private native boolean encrypt();
+  
+  private native long expireTime();
   
   private native boolean genCertApplyCsr();
   
@@ -169,9 +177,9 @@ public class CertUtil
   
   private String getCertDir()
   {
-    AppMethodBeat.i(49541);
+    AppMethodBeat.i(73290);
     String str = this.mContext.getFilesDir().getParentFile().getAbsolutePath() + "/cert";
-    AppMethodBeat.o(49541);
+    AppMethodBeat.o(73290);
     return str;
   }
   
@@ -179,18 +187,18 @@ public class CertUtil
   
   public static CertUtil getInstance()
   {
-    AppMethodBeat.i(49539);
+    AppMethodBeat.i(73288);
     if (instance == null) {}
     try
     {
       instance = new CertUtil();
       CertUtil localCertUtil = instance;
-      AppMethodBeat.o(49539);
+      AppMethodBeat.o(73288);
       return localCertUtil;
     }
     finally
     {
-      AppMethodBeat.o(49539);
+      AppMethodBeat.o(73288);
     }
   }
   
@@ -200,10 +208,10 @@ public class CertUtil
   
   private String hexdigest(String paramString)
   {
-    AppMethodBeat.i(49550);
+    AppMethodBeat.i(73299);
     if (paramString == null)
     {
-      AppMethodBeat.o(49550);
+      AppMethodBeat.o(73299);
       return "";
     }
     char[] arrayOfChar = new char[16];
@@ -260,7 +268,7 @@ public class CertUtil
         continue;
       }
       paramString = new String((char[])localObject);
-      AppMethodBeat.o(49550);
+      AppMethodBeat.o(73299);
       return paramString;
       while (i < 16)
       {
@@ -280,52 +288,52 @@ public class CertUtil
   
   private boolean isNotEmptyDir(String paramString)
   {
-    AppMethodBeat.i(49548);
+    AppMethodBeat.i(73297);
     boolean bool = true;
-    paramString = new File(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.listFiles() == null)) {
+    paramString = new u(paramString);
+    if ((!paramString.jKS()) || (!paramString.isDirectory()) || (paramString.jKX() == null)) {
       bool = false;
     }
-    AppMethodBeat.o(49548);
+    AppMethodBeat.o(73297);
     return bool;
   }
   
   private boolean isNullOrEmpty(String paramString)
   {
-    AppMethodBeat.i(49551);
+    AppMethodBeat.i(73300);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(49551);
+      AppMethodBeat.o(73300);
       return true;
     }
-    AppMethodBeat.o(49551);
+    AppMethodBeat.o(73300);
     return false;
   }
   
   private boolean isValidDir(String paramString)
   {
-    AppMethodBeat.i(49549);
+    AppMethodBeat.i(73298);
     boolean bool = true;
-    paramString = new File(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory())) {
+    paramString = new u(paramString);
+    if ((!paramString.jKS()) || (!paramString.isDirectory())) {
       bool = false;
     }
-    AppMethodBeat.o(49549);
+    AppMethodBeat.o(73298);
     return bool;
   }
   
   private void onNativeEvent(int paramInt, String paramString)
   {
-    AppMethodBeat.i(142687);
+    AppMethodBeat.i(73315);
     if (this.eventListener != null) {
       this.eventListener.onEvent(paramInt, paramString);
     }
-    AppMethodBeat.o(142687);
+    AppMethodBeat.o(73315);
   }
   
   private void setAndCheckDir(String paramString)
   {
-    AppMethodBeat.i(49542);
+    AppMethodBeat.i(73291);
     String str = getCertDir();
     paramString = str + "/" + hexdigest(new StringBuilder().append(paramString).append(this.imei).toString());
     this.cert_dir = (paramString + "/cert");
@@ -334,18 +342,18 @@ public class CertUtil
     this.token_dir = (paramString + "/auth");
     checkDir(str);
     checkDir(this.token_dir);
-    AppMethodBeat.o(49542);
+    AppMethodBeat.o(73291);
   }
   
   private void setDir(String paramString)
   {
-    AppMethodBeat.i(49543);
+    AppMethodBeat.i(73292);
     paramString = getCertDir() + "/" + hexdigest(new StringBuilder().append(paramString).append(this.imei).toString());
     this.cert_dir = (paramString + "/cert");
     this.priv_dir = (paramString + "/priv");
     this.publ_dir = (paramString + "/publ");
     this.token_dir = (paramString + "/auth");
-    AppMethodBeat.o(49543);
+    AppMethodBeat.o(73292);
   }
   
   private native boolean setToken();
@@ -356,9 +364,9 @@ public class CertUtil
   {
     try
     {
-      AppMethodBeat.i(49556);
+      AppMethodBeat.i(73305);
       del_dir(getCertDir(), true);
-      AppMethodBeat.o(49556);
+      AppMethodBeat.o(73305);
       return;
     }
     finally
@@ -372,9 +380,9 @@ public class CertUtil
   {
     try
     {
-      AppMethodBeat.i(49557);
+      AppMethodBeat.i(73306);
       del_dir(getCertDir() + "/" + hexdigest(new StringBuilder().append(paramString).append(this.imei).toString()), true);
-      AppMethodBeat.o(49557);
+      AppMethodBeat.o(73306);
       return;
     }
     finally
@@ -390,27 +398,27 @@ public class CertUtil
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 303
-    //   5: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 307
+    //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokespecial 305	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
+    //   10: invokespecial 309	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
     //   13: ifeq +12 -> 25
-    //   16: ldc_w 303
-    //   19: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: ldc_w 307
+    //   19: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: aload_0
     //   23: monitorexit
     //   24: return
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 307	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
+    //   27: invokespecial 311	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
     //   30: aload_0
     //   31: aload_0
-    //   32: getfield 290	com/tenpay/ndk/CertUtil:token_dir	Ljava/lang/String;
+    //   32: getfield 294	com/tenpay/ndk/CertUtil:token_dir	Ljava/lang/String;
     //   35: iconst_1
-    //   36: invokespecial 174	com/tenpay/ndk/CertUtil:del_dir	(Ljava/lang/String;Z)V
-    //   39: ldc_w 303
-    //   42: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   36: invokespecial 176	com/tenpay/ndk/CertUtil:del_dir	(Ljava/lang/String;Z)V
+    //   39: ldc_w 307
+    //   42: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: goto -23 -> 22
     //   48: astore_1
     //   49: aload_0
@@ -427,6 +435,56 @@ public class CertUtil
     //   25	45	48	finally
   }
   
+  public String decrypt(String paramString1, String paramString2)
+  {
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(208626);
+        if ((isNullOrEmpty(paramString1)) || (isNullOrEmpty(paramString2)))
+        {
+          AppMethodBeat.o(208626);
+          paramString1 = localObject;
+          return paramString1;
+        }
+        setAndCheckDir(paramString1);
+        if ((!isNotEmptyDir(this.cert_dir)) || (!isNotEmptyDir(this.publ_dir)) || (!isNotEmptyDir(this.priv_dir)))
+        {
+          AppMethodBeat.o(208626);
+          paramString1 = localObject;
+          continue;
+        }
+        arrayOfByte = Base64.decode(paramString2.getBytes(), 0);
+      }
+      finally {}
+      byte[] arrayOfByte;
+      if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+      {
+        Log.e(TAG, "base64 decode data fail, %s", new Object[] { paramString2 });
+        AppMethodBeat.o(208626);
+        paramString1 = localObject;
+      }
+      else
+      {
+        this.cert_id = paramString1;
+        this.cipher_buf = null;
+        paramString1 = decrypt(paramString1.getBytes(), arrayOfByte);
+        if (paramString1 == null)
+        {
+          AppMethodBeat.o(208626);
+          paramString1 = localObject;
+        }
+        else
+        {
+          paramString1 = Base64.encodeToString(paramString1, 0);
+          AppMethodBeat.o(208626);
+        }
+      }
+    }
+  }
+  
   public String encrypt(String paramString1, String paramString2)
   {
     Object localObject2 = null;
@@ -435,17 +493,17 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(49558);
+        AppMethodBeat.i(73307);
         if ((isNullOrEmpty(paramString1)) || (isNullOrEmpty(paramString2)))
         {
-          AppMethodBeat.o(49558);
+          AppMethodBeat.o(73307);
           paramString1 = localObject1;
           return paramString1;
         }
         setAndCheckDir(paramString1);
         if ((!isNotEmptyDir(this.cert_dir)) || (!isNotEmptyDir(this.publ_dir)) || (!isNotEmptyDir(this.priv_dir)))
         {
-          AppMethodBeat.o(49558);
+          AppMethodBeat.o(73307);
           paramString1 = localObject1;
           continue;
         }
@@ -464,15 +522,17 @@ public class CertUtil
       try
       {
         paramString1 = new String(this.cipher_buf, "UTF-8");
-        AppMethodBeat.o(49558);
+        AppMethodBeat.o(73307);
       }
       catch (Exception paramString1)
       {
-        AppMethodBeat.o(49558);
+        AppMethodBeat.o(73307);
         paramString1 = localObject1;
       }
     }
   }
+  
+  public native byte[] encryptWithPubkey(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, boolean paramBoolean);
   
   public byte[] genQrcode(String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
@@ -482,17 +542,17 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(49560);
+        AppMethodBeat.i(73310);
         if ((isNullOrEmpty(paramString1)) || (isNullOrEmpty(paramString2)) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
         {
-          AppMethodBeat.o(49560);
+          AppMethodBeat.o(73310);
           paramString1 = localObject1;
           return paramString1;
         }
         setAndCheckDir(paramString1);
         if ((!isNotEmptyDir(this.cert_dir)) || (!isNotEmptyDir(this.publ_dir)) || (!isNotEmptyDir(this.priv_dir)))
         {
-          AppMethodBeat.o(49560);
+          AppMethodBeat.o(73310);
           paramString1 = localObject1;
           continue;
         }
@@ -512,11 +572,11 @@ public class CertUtil
       try
       {
         paramString1 = this.cipher_buf;
-        AppMethodBeat.o(49560);
+        AppMethodBeat.o(73310);
       }
       catch (Exception paramString1)
       {
-        AppMethodBeat.o(49560);
+        AppMethodBeat.o(73310);
         paramString1 = localObject1;
       }
     }
@@ -530,17 +590,17 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(49559);
+        AppMethodBeat.i(73309);
         if ((isNullOrEmpty(paramString1)) || (isNullOrEmpty(paramString2)))
         {
-          AppMethodBeat.o(49559);
+          AppMethodBeat.o(73309);
           paramString1 = localObject1;
           return paramString1;
         }
         setAndCheckDir(paramString1);
         if ((!isNotEmptyDir(this.cert_dir)) || (!isNotEmptyDir(this.publ_dir)) || (!isNotEmptyDir(this.priv_dir)))
         {
-          AppMethodBeat.o(49559);
+          AppMethodBeat.o(73309);
           paramString1 = localObject1;
           continue;
         }
@@ -552,7 +612,7 @@ public class CertUtil
       if ((paramString2 == null) || (paramString1.length() <= 0) || (paramString2.length() <= 0))
       {
         label117:
-        AppMethodBeat.o(49559);
+        AppMethodBeat.o(73309);
         paramString1 = localObject1;
       }
       else
@@ -570,11 +630,11 @@ public class CertUtil
         try
         {
           paramString1 = new String(this.sig_buf, "UTF-8");
-          AppMethodBeat.o(49559);
+          AppMethodBeat.o(73309);
         }
         catch (Exception paramString1)
         {
-          AppMethodBeat.o(49559);
+          AppMethodBeat.o(73309);
           paramString1 = localObject1;
         }
       }
@@ -589,17 +649,17 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(155105);
+        AppMethodBeat.i(73308);
         if ((isNullOrEmpty(paramString)) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
         {
-          AppMethodBeat.o(155105);
+          AppMethodBeat.o(73308);
           paramString = localObject1;
           return paramString;
         }
         setAndCheckDir(paramString);
         if ((!isNotEmptyDir(this.cert_dir)) || (!isNotEmptyDir(this.publ_dir)) || (!isNotEmptyDir(this.priv_dir)))
         {
-          AppMethodBeat.o(155105);
+          AppMethodBeat.o(73308);
           paramString = localObject1;
           continue;
         }
@@ -617,11 +677,11 @@ public class CertUtil
       try
       {
         paramString = new String(this.sig_buf, "UTF-8");
-        AppMethodBeat.o(155105);
+        AppMethodBeat.o(73308);
       }
       catch (Exception paramString)
       {
-        AppMethodBeat.o(155105);
+        AppMethodBeat.o(73308);
         paramString = localObject1;
       }
     }
@@ -633,7 +693,7 @@ public class CertUtil
     Object localObject2 = null;
     try
     {
-      AppMethodBeat.i(49552);
+      AppMethodBeat.i(73301);
       this.qq_id = paramString;
       this.csr_buf = null;
       paramString = localObject2;
@@ -646,13 +706,13 @@ public class CertUtil
       try
       {
         paramString = new String(this.csr_buf, "ASCII");
-        AppMethodBeat.o(49552);
+        AppMethodBeat.o(73301);
       }
       catch (Exception paramString)
       {
         for (;;)
         {
-          AppMethodBeat.o(49552);
+          AppMethodBeat.o(73301);
           paramString = localObject1;
         }
       }
@@ -667,7 +727,7 @@ public class CertUtil
     Object localObject2 = null;
     try
     {
-      AppMethodBeat.i(49553);
+      AppMethodBeat.i(73302);
       this.qq_id = paramString;
       this.csr_buf = null;
       paramString = localObject2;
@@ -680,13 +740,13 @@ public class CertUtil
       try
       {
         paramString = new String(this.csr_buf, "ASCII");
-        AppMethodBeat.o(49553);
+        AppMethodBeat.o(73302);
       }
       catch (Exception paramString)
       {
         for (;;)
         {
-          AppMethodBeat.o(49553);
+          AppMethodBeat.o(73302);
           paramString = localObject1;
         }
       }
@@ -705,17 +765,17 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(49562);
+        AppMethodBeat.i(73312);
         if (isNullOrEmpty(paramString))
         {
-          AppMethodBeat.o(49562);
+          AppMethodBeat.o(73312);
           paramString = localObject1;
           return paramString;
         }
         setAndCheckDir(paramString);
         if (!isNotEmptyDir(this.token_dir))
         {
-          AppMethodBeat.o(49562);
+          AppMethodBeat.o(73312);
           paramString = localObject1;
           continue;
         }
@@ -732,11 +792,11 @@ public class CertUtil
       try
       {
         paramString = new String(this.token_buf, "UTF-8");
-        AppMethodBeat.o(49562);
+        AppMethodBeat.o(73312);
       }
       catch (Exception paramString)
       {
-        AppMethodBeat.o(49562);
+        AppMethodBeat.o(73312);
         paramString = localObject1;
       }
     }
@@ -748,31 +808,31 @@ public class CertUtil
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 346
-    //   5: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 373
+    //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokespecial 305	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
+    //   10: invokespecial 309	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
     //   13: ifeq +15 -> 28
     //   16: iconst_0
     //   17: istore_2
-    //   18: ldc_w 346
-    //   21: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: ldc_w 373
+    //   21: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aload_0
     //   25: monitorexit
     //   26: iload_2
     //   27: ireturn
     //   28: aload_0
     //   29: aload_1
-    //   30: invokespecial 307	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
+    //   30: invokespecial 311	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
     //   33: aload_0
     //   34: aload_1
-    //   35: putfield 78	com/tenpay/ndk/CertUtil:cert_id	Ljava/lang/String;
+    //   35: putfield 79	com/tenpay/ndk/CertUtil:cert_id	Ljava/lang/String;
     //   38: aload_0
-    //   39: invokespecial 348	com/tenpay/ndk/CertUtil:getTokenCount	()I
+    //   39: invokespecial 375	com/tenpay/ndk/CertUtil:getTokenCount	()I
     //   42: istore_2
-    //   43: ldc_w 346
-    //   46: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: ldc_w 373
+    //   46: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -25 -> 24
     //   52: astore_1
     //   53: aload_0
@@ -797,53 +857,53 @@ public class CertUtil
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 350
-    //   5: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 377
+    //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
-    //   9: invokevirtual 260	java/lang/String:length	()I
+    //   9: invokevirtual 266	java/lang/String:length	()I
     //   12: ifgt +15 -> 27
     //   15: iconst_0
     //   16: istore_3
-    //   17: ldc_w 350
-    //   20: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: ldc_w 377
+    //   20: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: iload_3
     //   26: ireturn
     //   27: aload_0
-    //   28: new 152	java/lang/String
+    //   28: new 154	java/lang/String
     //   31: dup
     //   32: aload_2
-    //   33: invokevirtual 237	java/lang/String:getBytes	()[B
-    //   36: ldc_w 336
-    //   39: invokespecial 320	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   42: putfield 76	com/tenpay/ndk/CertUtil:svr_cert	Ljava/lang/String;
+    //   33: invokevirtual 243	java/lang/String:getBytes	()[B
+    //   36: ldc_w 363
+    //   39: invokespecial 345	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   42: putfield 77	com/tenpay/ndk/CertUtil:svr_cert	Ljava/lang/String;
     //   45: aload_0
     //   46: aload_1
-    //   47: invokevirtual 352	com/tenpay/ndk/CertUtil:clearCert	(Ljava/lang/String;)V
+    //   47: invokevirtual 379	com/tenpay/ndk/CertUtil:clearCert	(Ljava/lang/String;)V
     //   50: aload_0
     //   51: aload_1
-    //   52: invokespecial 311	com/tenpay/ndk/CertUtil:setAndCheckDir	(Ljava/lang/String;)V
+    //   52: invokespecial 315	com/tenpay/ndk/CertUtil:setAndCheckDir	(Ljava/lang/String;)V
     //   55: aload_0
     //   56: aload_0
-    //   57: getfield 278	com/tenpay/ndk/CertUtil:cert_dir	Ljava/lang/String;
-    //   60: invokespecial 354	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
+    //   57: getfield 282	com/tenpay/ndk/CertUtil:cert_dir	Ljava/lang/String;
+    //   60: invokespecial 381	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
     //   63: pop
     //   64: aload_0
     //   65: aload_0
-    //   66: getfield 282	com/tenpay/ndk/CertUtil:priv_dir	Ljava/lang/String;
-    //   69: invokespecial 354	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
+    //   66: getfield 286	com/tenpay/ndk/CertUtil:priv_dir	Ljava/lang/String;
+    //   69: invokespecial 381	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
     //   72: pop
     //   73: aload_0
     //   74: aload_0
-    //   75: getfield 286	com/tenpay/ndk/CertUtil:publ_dir	Ljava/lang/String;
-    //   78: invokespecial 354	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
+    //   75: getfield 290	com/tenpay/ndk/CertUtil:publ_dir	Ljava/lang/String;
+    //   78: invokespecial 381	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
     //   81: pop
     //   82: aload_0
-    //   83: invokespecial 356	com/tenpay/ndk/CertUtil:importCert	()Z
+    //   83: invokespecial 383	com/tenpay/ndk/CertUtil:importCert	()Z
     //   86: istore_3
-    //   87: ldc_w 350
-    //   90: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: ldc_w 377
+    //   90: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: goto -70 -> 23
     //   96: astore_1
     //   97: aload_0
@@ -867,33 +927,36 @@ public class CertUtil
     //   27	45	101	java/lang/Exception
   }
   
-  public void init(Context paramContext, CertUtil.EventListener paramEventListener)
+  public void init(Context paramContext, EventListener paramEventListener)
   {
-    AppMethodBeat.i(142686);
+    AppMethodBeat.i(73289);
     this.eventListener = paramEventListener;
     this.mContext = paramContext.getApplicationContext();
     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-    if (f.IS_FLAVOR_RED) {}
+    if (BuildInfo.IS_FLAVOR_RED) {}
     try
     {
-      this.imsi = localTelephonyManager.getSubscriberId();
+      Log.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { Util.getStack() });
+      this.imsi = ((String)a.a(localTelephonyManager, "com/tenpay/ndk/CertUtil", "init", "(Landroid/content/Context;Lcom/tenpay/ndk/CertUtil$EventListener;)V", "android/telephony/TelephonyManager", "getSubscriberId", "()Ljava/lang/String;"));
+      Log.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { Util.getStack() });
       this.iccid = localTelephonyManager.getSimSerialNumber();
-      this.imei = localTelephonyManager.getDeviceId();
+      Log.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { Util.getStack() });
+      this.imei = ((String)a.a(localTelephonyManager, "com/tenpay/ndk/CertUtil", "init", "(Landroid/content/Context;Lcom/tenpay/ndk/CertUtil$EventListener;)V", "android/telephony/TelephonyManager", "getDeviceId", "()Ljava/lang/String;"));
       this.softid = Settings.System.getString(paramContext.getContentResolver(), "android_id");
-      label74:
+      label173:
       this.deskey = paramEventListener.getUniqueID();
-      ab.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
+      Log.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
       for (;;)
       {
         this.imei = this.deskey;
-        AppMethodBeat.o(142686);
+        AppMethodBeat.o(73289);
         return;
         this.deskey = paramEventListener.getUniqueID();
       }
     }
     catch (Exception paramContext)
     {
-      break label74;
+      break label173;
     }
   }
   
@@ -904,10 +967,10 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(49555);
+        AppMethodBeat.i(73304);
         if (isNullOrEmpty(paramString))
         {
-          AppMethodBeat.o(49555);
+          AppMethodBeat.o(73304);
           return bool;
         }
         setDir(paramString);
@@ -915,18 +978,18 @@ public class CertUtil
         {
           this.cert_id = paramString;
           bool = isCertExist();
-          AppMethodBeat.o(49555);
+          AppMethodBeat.o(73304);
         }
         else
         {
-          AppMethodBeat.o(49555);
+          AppMethodBeat.o(73304);
         }
       }
       finally {}
     }
   }
   
-  public void setEventListener(CertUtil.EventListener paramEventListener)
+  public void setEventListener(EventListener paramEventListener)
   {
     this.eventListener = paramEventListener;
   }
@@ -939,16 +1002,16 @@ public class CertUtil
     {
       try
       {
-        AppMethodBeat.i(49561);
+        AppMethodBeat.i(73311);
         if ((isNullOrEmpty(paramString1)) || (isNullOrEmpty(paramString2)))
         {
-          AppMethodBeat.o(49561);
+          AppMethodBeat.o(73311);
           paramBoolean = bool;
           return paramBoolean;
         }
         if ((paramBoolean) && ((paramString3 == null) || (paramString3.length() != 16)))
         {
-          AppMethodBeat.o(49561);
+          AppMethodBeat.o(73311);
           paramBoolean = bool;
           continue;
         }
@@ -957,7 +1020,7 @@ public class CertUtil
       finally {}
       if (!isValidDir(this.cert_dir))
       {
-        AppMethodBeat.o(49561);
+        AppMethodBeat.o(73311);
         paramBoolean = bool;
       }
       else
@@ -965,7 +1028,7 @@ public class CertUtil
         if (isValidDir(this.token_dir)) {
           break;
         }
-        AppMethodBeat.o(49561);
+        AppMethodBeat.o(73311);
         paramBoolean = bool;
       }
     }
@@ -977,17 +1040,24 @@ public class CertUtil
       this.token = paramString2;
       this.token_len = this.token.length();
       paramBoolean = setToken();
-      AppMethodBeat.o(49561);
+      AppMethodBeat.o(73311);
       break;
       if (paramBoolean) {
         i = 1;
       }
     }
   }
+  
+  public static abstract interface EventListener
+  {
+    public abstract String getUniqueID();
+    
+    public abstract void onEvent(int paramInt, String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.ndk.CertUtil
  * JD-Core Version:    0.7.0.1
  */

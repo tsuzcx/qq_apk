@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.opengl.GLES20;
-import android.os.Environment;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.RenderContext;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class TAVGLUtils
 {
   private static final String TAG = "TAVGLUtils";
-  private static final String TAV_DEBUG_IMAGE_DIR = Environment.getExternalStorageDirectory().getPath() + "/TAV调试图片";
+  private static final String TAV_DEBUG_IMAGE_DIR = "/sdcard/tavkit_demo/TAV调试图片";
   
   private static TextureInfo checkTextureInfo(TextureInfo paramTextureInfo)
   {
@@ -26,21 +26,45 @@ public class TAVGLUtils
       return paramTextureInfo;
     }
     TextureInfo localTextureInfo = new TextureInfo(RenderContext.createTexture(3553), 3553, paramTextureInfo.width, paramTextureInfo.height, null, 0);
-    TextureFilter localTextureFilter = new TextureFilter();
-    localTextureFilter.setOutputTextureInfo(localTextureInfo);
-    localTextureFilter.applyFilter(paramTextureInfo, null, paramTextureInfo.getTextureMatrix(), 1.0F, null);
+    Renderer localRenderer = new Renderer();
+    localRenderer.setOutputTextureInfo(localTextureInfo);
+    localRenderer.render(paramTextureInfo, null, paramTextureInfo.getTextureMatrix(), 1.0F, null);
     return localTextureInfo;
   }
   
   @NotNull
-  public static File newDebugImageFile(int paramInt1, int paramInt2, int paramInt3)
+  private static String getTimeTag()
   {
-    String str = Long.toHexString(System.currentTimeMillis()) + "_id=" + paramInt1 + "_" + paramInt2 + "_" + paramInt3 + ".png";
-    File localFile = new File(TAV_DEBUG_IMAGE_DIR);
-    if ((!localFile.exists()) && (!localFile.mkdir())) {
-      throw new RuntimeException("mkdir return false, path = " + localFile.getAbsolutePath());
+    return Long.toHexString(System.currentTimeMillis());
+  }
+  
+  @NotNull
+  private static File newDebugImageFile(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return newDebugImageFile(getTimeTag(), paramInt1, paramInt2, paramInt3);
+  }
+  
+  private static File newDebugImageFile(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("_id=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
+    paramString = new File("/sdcard/tavkit_demo/TAV调试图片");
+    if ((!paramString.exists()) && (!paramString.mkdir()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mkdir return false, path = ");
+      ((StringBuilder)localObject).append(paramString.getAbsolutePath());
+      throw new RuntimeException(((StringBuilder)localObject).toString());
     }
-    return new File(TAV_DEBUG_IMAGE_DIR, str);
+    return new File("/sdcard/tavkit_demo/TAV调试图片", (String)localObject);
   }
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
@@ -75,44 +99,54 @@ public class TAVGLUtils
   public static Bitmap saveBitmap(CIImage paramCIImage)
   {
     TextureInfo localTextureInfo = CIContext.newTextureInfo(paramCIImage.getSize().width, paramCIImage.getSize().height);
-    CIImageFilter localCIImageFilter = new CIImageFilter();
-    localCIImageFilter.setOutputTextureInfo(localTextureInfo);
-    paramCIImage.draw(localCIImageFilter);
+    RendererWrapper localRendererWrapper = new RendererWrapper();
+    localRendererWrapper.setOutputTextureInfo(localTextureInfo);
+    paramCIImage.drawTo(localRendererWrapper);
     return saveBitmap(localTextureInfo);
   }
   
-  public static void saveBitmapToFile(Bitmap paramBitmap)
+  public static String saveBitmapToFile(Bitmap paramBitmap)
   {
-    saveBitmapToFile(paramBitmap, newDebugImageFile(0, paramBitmap.getWidth(), paramBitmap.getHeight()));
+    return saveBitmapToFile(paramBitmap, newDebugImageFile(0, paramBitmap.getWidth(), paramBitmap.getHeight()));
   }
   
-  public static void saveBitmapToFile(Bitmap paramBitmap, File paramFile)
+  public static String saveBitmapToFile(Bitmap paramBitmap, File paramFile)
   {
-    if (!paramFile.createNewFile()) {
-      throw new RuntimeException("createNewFile return false, path = " + paramFile.getAbsolutePath());
+    if (paramFile.createNewFile())
+    {
+      Object localObject = new ByteArrayOutputStream();
+      paramBitmap.compress(Bitmap.CompressFormat.PNG, 0, (OutputStream)localObject);
+      paramBitmap = ((ByteArrayOutputStream)localObject).toByteArray();
+      localObject = new FileOutputStream(paramFile);
+      ((FileOutputStream)localObject).write(paramBitmap);
+      ((FileOutputStream)localObject).flush();
+      ((FileOutputStream)localObject).close();
+      return paramFile.getAbsolutePath();
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 0, localByteArrayOutputStream);
-    paramBitmap = localByteArrayOutputStream.toByteArray();
-    paramFile = new FileOutputStream(paramFile);
-    paramFile.write(paramBitmap);
-    paramFile.flush();
-    paramFile.close();
+    paramBitmap = new StringBuilder();
+    paramBitmap.append("createNewFile return false, path = ");
+    paramBitmap.append(paramFile.getAbsolutePath());
+    throw new RuntimeException(paramBitmap.toString());
   }
   
-  public static void saveBitmapToFile(TextureInfo paramTextureInfo)
+  public static String saveBitmapToFile(TextureInfo paramTextureInfo)
   {
-    saveBitmapToFile(paramTextureInfo, newDebugImageFile(paramTextureInfo.textureID, paramTextureInfo.width, paramTextureInfo.height));
+    return saveBitmapToFile(paramTextureInfo, getTimeTag());
   }
   
-  public static void saveBitmapToFile(TextureInfo paramTextureInfo, File paramFile)
+  public static String saveBitmapToFile(TextureInfo paramTextureInfo, File paramFile)
   {
-    saveBitmapToFile(saveBitmap(paramTextureInfo), paramFile);
+    return saveBitmapToFile(saveBitmap(paramTextureInfo), paramFile);
+  }
+  
+  public static String saveBitmapToFile(TextureInfo paramTextureInfo, String paramString)
+  {
+    return saveBitmapToFile(paramTextureInfo, newDebugImageFile(paramString, paramTextureInfo.textureID, paramTextureInfo.width, paramTextureInfo.height));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.TAVGLUtils
  * JD-Core Version:    0.7.0.1
  */

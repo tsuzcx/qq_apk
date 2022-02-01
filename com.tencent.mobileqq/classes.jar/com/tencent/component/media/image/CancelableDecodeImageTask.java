@@ -4,7 +4,7 @@ public class CancelableDecodeImageTask
   extends DecodeImageTask
 {
   private static int mObjectPoolSize;
-  private static CancelableDecodeImageTask sPool = null;
+  private static CancelableDecodeImageTask sPool;
   private static final Object sPoolSync = new Object();
   private CancelableDecodeImageTask next = null;
   
@@ -40,42 +40,48 @@ public class CancelableDecodeImageTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static CancelableDecodeImageTask obtain(ImageKey paramImageKey)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        CancelableDecodeImageTask localCancelableDecodeImageTask = sPool;
-        sPool = sPool.next;
-        localCancelableDecodeImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localCancelableDecodeImageTask.setImageKey(paramImageKey);
-        return localCancelableDecodeImageTask;
+        if (sPool != null)
+        {
+          CancelableDecodeImageTask localCancelableDecodeImageTask = sPool;
+          sPool = sPool.next;
+          localCancelableDecodeImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localCancelableDecodeImageTask.setImageKey(paramImageKey);
+          return localCancelableDecodeImageTask;
+        }
       }
-      return new CancelableDecodeImageTask(paramImageKey);
     }
+    return new CancelableDecodeImageTask(paramImageKey);
   }
   
   public static CancelableDecodeImageTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        CancelableDecodeImageTask localCancelableDecodeImageTask = sPool;
-        sPool = sPool.next;
-        localCancelableDecodeImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localCancelableDecodeImageTask.setImageTask(paramImageTask);
-        return localCancelableDecodeImageTask;
+        if (sPool != null)
+        {
+          CancelableDecodeImageTask localCancelableDecodeImageTask = sPool;
+          sPool = sPool.next;
+          localCancelableDecodeImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localCancelableDecodeImageTask.setImageTask(paramImageTask);
+          return localCancelableDecodeImageTask;
+        }
       }
-      return new CancelableDecodeImageTask(paramImageTask);
     }
+    return new CancelableDecodeImageTask(paramImageTask);
   }
   
   public void excuteTask()
@@ -128,7 +134,7 @@ public class CancelableDecodeImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.CancelableDecodeImageTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ailt;
-import ailu;
-import ailv;
-import ailw;
-import ailx;
-import alud;
-import amrp;
-import amrr;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -23,6 +16,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -32,148 +26,177 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import aozx;
-import awhw;
-import azqs;
-import bdeu;
-import bdgm;
-import bdin;
-import bdjz;
-import bhtd;
-import bhzd;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.SMSBodyObserver;
+import com.tencent.mobileqq.app.utils.SmsContent;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.WeakReferenceHandler;
+import com.tencent.widget.OnSizeChangeListener;
 
 public class BindVerifyActivity
   extends DialogBaseActivity
-  implements amrp, Handler.Callback, TextWatcher, View.OnClickListener, View.OnKeyListener, CompoundButton.OnCheckedChangeListener, bhzd
+  implements Handler.Callback, TextWatcher, View.OnClickListener, View.OnKeyListener, CompoundButton.OnCheckedChangeListener, SMSBodyObserver, OnSizeChangeListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private amrr jdField_a_of_type_Amrr;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awhw jdField_a_of_type_Awhw;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private awhw jdField_b_of_type_Awhw;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private EditText a;
+  private TextView b;
+  private Button c;
+  private ContactBindObserver d;
+  private ContactBindObserver e;
+  private final Handler f = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private SmsContent g;
+  private String h;
+  private byte[] i;
+  private String j;
+  private String k;
+  private int l = 0;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
+  private int p = -1;
+  private int q;
+  private boolean r = false;
   
   private void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("kBindType", 0);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("k_number");
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("k_country_code");
-    setLeftViewName(2131690382);
+    this.l = paramIntent.getIntExtra("kBindType", 0);
+    this.h = paramIntent.getStringExtra("k_number");
+    this.i = paramIntent.getByteArrayExtra("cmd_param_encrypt_mobile");
+    this.j = paramIntent.getStringExtra("k_mask_number_forshow");
+    this.k = paramIntent.getStringExtra("k_country_code");
+    setLeftViewName(2131887440);
     setTitle("");
-    ((TextView)findViewById(2131371078)).setText(2131695199);
-    paramIntent = this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString;
-    String str = getString(2131695238, new Object[] { paramIntent });
-    SpannableString localSpannableString = new SpannableString(str);
-    int i = str.indexOf(paramIntent);
-    localSpannableString.setSpan(new ForegroundColorSpan(Color.rgb(255, 159, 64)), i, paramIntent.length() + i, 17);
-    ((TextView)findViewById(2131371076)).setText(localSpannableString);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131379516));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131376395));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375698));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    b();
-  }
-  
-  private void b(String paramString)
-  {
+    TextView localTextView = (TextView)findViewById(2131439225);
+    Object localObject = (TextView)findViewById(2131449356);
+    this.c = ((Button)findViewById(2131445580));
+    String str = a();
+    if (this.p == 23)
+    {
+      paramIntent = getString(2131892535, new Object[] { str });
+      localTextView.setText(2131892536);
+      ((TextView)localObject).setVisibility(0);
+      this.c.setText(getResources().getString(2131892527));
+    }
+    else
+    {
+      localTextView.setText(2131892500);
+      paramIntent = getString(2131892538, new Object[] { str });
+      ((TextView)localObject).setVisibility(8);
+    }
+    localObject = new SpannableString(paramIntent);
+    int i1 = paramIntent.indexOf(str);
+    ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.rgb(255, 159, 64)), i1, str.length() + i1, 17);
+    ((TextView)findViewById(2131439223)).setText((CharSequence)localObject);
+    this.a = ((EditText)findViewById(2131449350));
+    this.a.addTextChangedListener(this);
+    this.a.setOnKeyListener(this);
+    this.c.setOnClickListener(this);
+    this.b = ((TextView)findViewById(2131444699));
+    this.b.setOnClickListener(this);
     c();
+  }
+  
+  private void a(String paramString)
+  {
+    g();
     a("dc00898", "0X8009F18", 0);
-    if (!bdin.d(this)) {
-      b(2131694831);
-    }
-    do
+    if (!NetworkUtil.isNetSupport(this))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("BindVerifyActivity", 2, "doCommit cur: " + this.jdField_c_of_type_Boolean);
-      }
-    } while (this.jdField_c_of_type_Boolean);
-    this.jdField_c_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Awhw == null)
-    {
-      this.jdField_a_of_type_Awhw = new ailu(this);
-      this.app.registObserver(this.jdField_a_of_type_Awhw);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-    a(2131719785, 1000L, true);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 30000L);
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new BindVerifyActivity.7(this), 300L);
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (getIntent().getBooleanExtra("k_is_block", false)) {
-      azqs.b(this.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 0, 0, "", "", "", "");
-    }
-    if (getIntent().getBooleanExtra("key_is_from_qqhotspot", false))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("bind_mobile", a());
-      ((Intent)localObject).putExtra("check_permission_result", "");
-      setResult(-1, (Intent)localObject);
-      finish();
+      showToast(2131892157);
       return;
     }
-    if (this.jdField_b_of_type_Int == 10)
+    if (QLog.isColorLevel())
     {
-      setResult(-1, null);
-      finish();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doCommit cur: ");
+      localStringBuilder.append(this.r);
+      QLog.i("BindVerifyActivity", 2, localStringBuilder.toString());
+    }
+    if (this.r) {
       return;
     }
-    if (this.jdField_b_of_type_Int == 21)
+    this.r = true;
+    if (this.d == null)
     {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("bind_mobile", a());
-      setResult(-1, (Intent)localObject);
-      finish();
-      return;
+      this.d = new BindVerifyActivity.2(this);
+      this.app.registObserver(this.d);
     }
-    Object localObject = new BindVerifyActivity.3(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new ailv(this));
-    aozx.a(this, this.app, (Runnable)localObject, localDenyRunnable);
+    this.mPhoneContactService.sendVerifySmsCode(paramString, this.l, this.m, this.n);
+    showProgressDialog(2131916272, 1000L, true);
+    this.f.sendEmptyMessageDelayed(4, 30000L);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
+  private void e()
   {
-    if ((paramInt2 > 0) && (paramInt4 > 0) && (paramInt2 < paramInt4) && (paramInt1 == paramInt3)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 100L);
+    if (this.q == 1)
+    {
+      f();
+      return;
     }
+    if (this.o)
+    {
+      this.mPhoneContactService.sendBindMobileEncrypt(this.k, this.i, this.l, this.m, this.n);
+      return;
+    }
+    this.mPhoneContactService.sendBindMobile(this.k, this.h, this.l, this.m, this.n);
   }
   
-  public void a(Bundle paramBundle)
+  private void f()
+  {
+    if (this.o)
+    {
+      this.mPhoneContactService.sendRebindMobileEncrypt(this.k, this.i, this.l, this.m, this.n);
+      return;
+    }
+    this.mPhoneContactService.sendRebindMobile(this.k, this.h, this.l, this.m, this.n);
+  }
+  
+  private void g()
+  {
+    this.a.postDelayed(new BindVerifyActivity.7(this), 300L);
+  }
+  
+  protected String a()
+  {
+    StringBuilder localStringBuilder;
+    String str;
+    if (this.o)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.k);
+      localStringBuilder.append(" ");
+      str = this.j;
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.k);
+      localStringBuilder.append(" ");
+      str = this.h;
+    }
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
+  }
+  
+  protected void a(Bundle paramBundle)
   {
     Object localObject = paramBundle.getString("k_uin");
     paramBundle = a();
-    localObject = getResources().getString(2131695214, new Object[] { paramBundle, localObject, this.app.getCurrentAccountUin() });
-    int i = ((String)localObject).indexOf(paramBundle);
+    localObject = getResources().getString(2131892529, new Object[] { paramBundle, localObject, this.app.getCurrentAccountUin() });
+    int i1 = ((String)localObject).indexOf(paramBundle);
     localObject = new SpannableString((CharSequence)localObject);
-    ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.rgb(255, 159, 64)), i, paramBundle.length() + i, 17);
-    paramBundle = bdgm.a(this, 230, null, (CharSequence)localObject, getString(2131690648), getString(2131694953), new ailw(this), new ailx(this));
+    ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.rgb(255, 159, 64)), i1, paramBundle.length() + i1, 17);
+    paramBundle = DialogUtil.a(this, 230, null, (CharSequence)localObject, getString(2131887648), getString(2131892267), new BindVerifyActivity.5(this), new BindVerifyActivity.6(this));
     if ((paramBundle != null) && (!paramBundle.isShowing()) && (!isFinishing())) {
       paramBundle.show();
     }
@@ -181,131 +204,173 @@ public class BindVerifyActivity
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    azqs.b(this.app, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", "", "");
+    ReportController.b(this.app, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", "", "");
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
     if (paramEditable.toString().length() > 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.c.setEnabled(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    this.c.setEnabled(false);
   }
   
-  public String b()
+  protected void b()
   {
-    String str = "";
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText();
-    if (localObject != null) {
-      str = localObject.toString();
+    if (getIntent().getBooleanExtra("k_is_block", false)) {
+      ReportController.b(this.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 0, 0, "", "", "", "");
     }
-    localObject = str;
-    if (str == null) {
-      localObject = "";
+    Intent localIntent;
+    if (getIntent().getBooleanExtra("key_is_from_qqhotspot", false))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", a());
+      localIntent.putExtra("check_permission_result", "");
+      setResult(-1, localIntent);
+      finish();
+      return;
     }
-    return localObject;
-  }
-  
-  public void b()
-  {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131701526));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701530));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166977));
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, 60, 0), 1000L);
+    int i1 = this.p;
+    if (i1 == 10)
+    {
+      setResult(-1, null);
+      finish();
+      return;
+    }
+    if (i1 == 21)
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", a());
+      setResult(-1, localIntent);
+      finish();
+      return;
+    }
+    PermissionChecker.a(this, new BindVerifyActivity.3(this), new DenyRunnable(this, new BindVerifyActivity.4(this)));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void c()
+  {
+    this.r = false;
+    this.c.setEnabled(false);
+    this.a.setText("");
+    this.a.setHint(HardCodeUtil.a(2131899372));
+    this.b.setText(HardCodeUtil.a(2131899376));
+    this.b.setEnabled(false);
+    this.b.setTextColor(getResources().getColor(2131168118));
+    this.f.removeMessages(1);
+    Handler localHandler = this.f;
+    localHandler.sendMessageDelayed(localHandler.obtainMessage(1, 60, 0), 1000L);
+  }
+  
+  public String d()
+  {
+    Object localObject1 = this.a.getText();
+    if (localObject1 != null) {
+      localObject1 = localObject1.toString();
+    } else {
+      localObject1 = "";
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = "";
+    }
+    return localObject2;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public void doOnBackPressed()
   {
-    if (this.jdField_b_of_type_Int == 10) {
-      azqs.b(this.app, "dc00898", "", "", "0X8006AA8", "0X8006AA8", 0, 0, "", "", "", "");
+    if (this.p == 10) {
+      ReportController.b(this.app, "dc00898", "", "", "0X8006AA8", "0X8006AA8", 0, 0, "", "", "", "");
     }
-    QQAppInterface localQQAppInterface;
     if (getIntent().getBooleanExtra("k_is_block", false))
     {
-      localQQAppInterface = this.app;
-      if (b().length() < 4) {
-        break label107;
+      QQAppInterface localQQAppInterface = this.app;
+      int i1;
+      if (d().length() >= 4) {
+        i1 = 1;
+      } else {
+        i1 = 0;
       }
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80056B6", "0X80056B6", i1, 0, "", "", "", "");
     }
-    label107:
-    for (int i = 1;; i = 0)
-    {
-      azqs.b(localQQAppInterface, "CliOper", "", "", "0X80056B6", "0X80056B6", i, 0, "", "", "", "");
-      setResult(0);
-      super.doOnBackPressed();
-      return;
-    }
+    setResult(0);
+    super.doOnBackPressed();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_uni", false);
-    this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
-    this.jdField_b_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
-    this.jdField_c_of_type_Int = getIntent().getIntExtra("keyReqBindMode", 0);
+    this.m = getIntent().getBooleanExtra("cmd_param_is_from_uni", false);
+    this.n = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
+    this.o = getIntent().getBooleanExtra("cmd_param_is_encrypt", false);
+    this.p = getIntent().getIntExtra("kSrouce", -1);
+    this.q = getIntent().getIntExtra("keyReqBindMode", 0);
     getWindow().setSoftInputMode(18);
-    setContentView(2131559417);
-    if ((Build.MANUFACTURER.equalsIgnoreCase("Letv")) && (Build.MODEL.equalsIgnoreCase("X900+"))) {}
-    for (;;)
+    setContentView(2131625563);
+    if ((!Build.MANUFACTURER.equalsIgnoreCase("Letv")) || (!Build.MODEL.equalsIgnoreCase("X900+")))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BindVerifyActivity", 2, String.format("onCreate [%s, %s, %s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int) }));
-      }
-      a(getIntent());
-      this.jdField_a_of_type_Amrr = new amrr(null, System.currentTimeMillis());
-      this.jdField_a_of_type_Amrr.a(this, this);
-      a("dc00898", "0X8009F17", 0);
-      return true;
-      paramBundle = (BounceScrollView)findViewById(2131363441);
+      paramBundle = (BounceScrollView)findViewById(2131429719);
       if (paramBundle != null) {
         paramBundle.setOnSizeChangeListener(this);
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, String.format("onCreate [%s, %s, %s]", new Object[] { Boolean.valueOf(this.m), Boolean.valueOf(this.n), Integer.valueOf(this.p) }));
+    }
+    a(getIntent());
+    this.g = new SmsContent(null, System.currentTimeMillis());
+    this.g.a(this, this);
+    a("dc00898", "0X8009F17", 0);
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Awhw != null)
+    if (this.d != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Awhw);
-      this.jdField_a_of_type_Awhw = null;
+      this.app.unRegistObserver(this.d);
+      this.d = null;
     }
-    if (this.jdField_b_of_type_Awhw != null)
+    if (this.e != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Awhw);
-      this.jdField_b_of_type_Awhw = null;
+      this.app.unRegistObserver(this.e);
+      this.e = null;
     }
-    if (this.jdField_a_of_type_Amrr != null) {
-      this.jdField_a_of_type_Amrr.a();
+    SmsContent localSmsContent = this.g;
+    if (localSmsContent != null) {
+      localSmsContent.a();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setKeyListener(null);
+    this.f.removeCallbacksAndMessages(null);
+    this.a.removeTextChangedListener(this);
+    this.a.setKeyListener(null);
     super.doOnDestroy();
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     a(paramIntent);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
     if (QLog.isColorLevel()) {
@@ -313,115 +378,146 @@ public class BindVerifyActivity
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     if (QLog.isColorLevel()) {
       QLog.i("BindVerifyActivity", 2, "doOnResume");
     }
-    if (b().length() == 0) {
-      c();
+    if (d().length() == 0) {
+      g();
     }
   }
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    paramString1 = bdeu.d(paramString1, paramString2);
+    paramString1 = Utils.d(paramString1, paramString2);
     if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramString1).sendToTarget();
+      this.f.obtainMessage(2, paramString1).sendToTarget();
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-    }
-    do
-    {
-      do
+      if (i1 != 2)
       {
-        return true;
-        int i = paramMessage.arg1 - 1;
-        paramMessage.arg1 = i;
-        if (i <= 0)
+        if (i1 != 3)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165826));
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701527));
-          this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-          return true;
+          if (i1 != 4) {
+            return true;
+          }
+          this.r = false;
+          this.f.removeMessages(4);
+          dismissProgressDialog();
+          showToast(1, getString(2131915700));
+          if (QLog.isColorLevel())
+          {
+            QLog.i("BindVerifyActivity", 2, "MSG_REQUEST_TIMEOUT");
+            return true;
+          }
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166977));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(alud.a(2131701524), new Object[] { Integer.valueOf(i) }));
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, i, 0), 1000L);
+        else
+        {
+          this.f.removeMessages(3);
+          paramMessage = (BounceScrollView)findViewById(2131429719);
+          if (paramMessage != null)
+          {
+            paramMessage.fullScroll(130);
+            return true;
+          }
+        }
+      }
+      else
+      {
+        this.a.setText((String)paramMessage.obj);
         return true;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText((String)paramMessage.obj);
+      }
+    }
+    else
+    {
+      i1 = paramMessage.arg1 - 1;
+      paramMessage.arg1 = i1;
+      if (i1 <= 0)
+      {
+        this.b.setEnabled(true);
+        this.b.setTextColor(getResources().getColor(2131166618));
+        this.b.setText(HardCodeUtil.a(2131899373));
+        this.a.setText("");
         return true;
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-        paramMessage = (BounceScrollView)findViewById(2131363441);
-      } while (paramMessage == null);
-      paramMessage.fullScroll(130);
-      return true;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-      b();
-      a(1, getString(2131719233));
-    } while (!QLog.isColorLevel());
-    QLog.i("BindVerifyActivity", 2, "MSG_REQUEST_TIMEOUT");
+      }
+      this.b.setEnabled(false);
+      this.b.setTextColor(getResources().getColor(2131168118));
+      this.b.setText(String.format(HardCodeUtil.a(2131899370), new Object[] { Integer.valueOf(i1) }));
+      paramMessage = this.f;
+      paramMessage.sendMessageDelayed(paramMessage.obtainMessage(1, i1, 0), 1000L);
+    }
     return true;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if (b().length() > 0) {
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    if (paramBoolean) {
+      if (d().length() > 0) {
+        this.c.setEnabled(true);
+      } else {
+        this.c.setEnabled(false);
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if (i1 != 2131436180)
     {
-    default: 
-      return;
-    case 2131368624: 
-      doOnBackPressed();
-      return;
-    case 2131375698: 
-      if (this.jdField_b_of_type_Awhw == null)
+      if (i1 != 2131444699)
       {
-        this.jdField_b_of_type_Awhw = new ailt(this);
-        this.app.registObserver(this.jdField_b_of_type_Awhw);
+        if (i1 == 2131445580) {
+          a(d());
+        }
       }
-      if (this.jdField_c_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-      }
-      for (;;)
+      else
       {
-        a(2131719785, 1000L, true);
+        if (this.e == null)
+        {
+          this.e = new BindVerifyActivity.1(this);
+          this.app.registObserver(this.e);
+        }
+        e();
+        showProgressDialog(2131916272, 1000L, true);
         a("dc00898", "0X8009F1A", 0);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
       }
     }
-    b(b());
+    else {
+      doOnBackPressed();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 66) && (b().length() >= 4)) {
-      b(b());
+    if ((paramInt == 66) && (d().length() >= 4)) {
+      a(d());
     }
     return false;
+  }
+  
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
+  {
+    if ((paramInt2 > 0) && (paramInt4 > 0) && (paramInt2 < paramInt4) && (paramInt1 == paramInt3)) {
+      this.f.sendEmptyMessageDelayed(3, 100L);
+    }
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

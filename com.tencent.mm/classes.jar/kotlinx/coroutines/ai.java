@@ -1,58 +1,68 @@
 package kotlinx.coroutines;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.locks.LockSupport;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.d.b.a.e;
+import kotlin.d.d;
+import kotlin.g.a.b;
+import kotlinx.coroutines.internal.ab;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/DefaultTimeSource;", "Lkotlinx/coroutines/TimeSource;", "()V", "currentTimeMillis", "", "nanoTime", "parkNanos", "", "blocker", "", "nanos", "registerTimeLoopThread", "trackTask", "unTrackTask", "unpark", "thread", "Ljava/lang/Thread;", "unregisterTimeLoopThread", "wrapTask", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "block", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"recoverResult", "Lkotlin/Result;", "T", "state", "", "uCont", "Lkotlin/coroutines/Continuation;", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "toState", "onCancellation", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "caller", "Lkotlinx/coroutines/CancellableContinuation;", "(Ljava/lang/Object;Lkotlinx/coroutines/CancellableContinuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class ai
-  implements br
 {
-  public static final ai CHL;
-  
-  static
+  public static final <T> Object e(Object paramObject, d<? super T> paramd)
   {
-    AppMethodBeat.i(118522);
-    CHL = new ai();
-    AppMethodBeat.o(118522);
+    AppMethodBeat.i(188892);
+    if ((paramObject instanceof ae))
+    {
+      Object localObject = Result.Companion;
+      localObject = ((ae)paramObject).cause;
+      paramObject = localObject;
+      if (au.ajvP) {
+        if ((paramd instanceof e)) {
+          break label56;
+        }
+      }
+      label56:
+      for (paramObject = localObject;; paramObject = ab.a((Throwable)localObject, (e)paramd))
+      {
+        paramObject = Result.constructor-impl(ResultKt.createFailure(paramObject));
+        AppMethodBeat.o(188892);
+        return paramObject;
+      }
+    }
+    paramd = Result.Companion;
+    paramObject = Result.constructor-impl(paramObject);
+    AppMethodBeat.o(188892);
+    return paramObject;
   }
   
-  public final Runnable aB(Runnable paramRunnable)
+  public static final <T> Object e(Object paramObject, b<? super Throwable, ah> paramb)
   {
-    AppMethodBeat.i(118519);
-    j.q(paramRunnable, "block");
-    AppMethodBeat.o(118519);
-    return paramRunnable;
-  }
-  
-  public final long nanoTime()
-  {
-    AppMethodBeat.i(118518);
-    long l = System.nanoTime();
-    AppMethodBeat.o(118518);
-    return l;
-  }
-  
-  public final void parkNanos(Object paramObject, long paramLong)
-  {
-    AppMethodBeat.i(118520);
-    j.q(paramObject, "blocker");
-    LockSupport.parkNanos(paramObject, paramLong);
-    AppMethodBeat.o(118520);
-  }
-  
-  public final void unpark(Thread paramThread)
-  {
-    AppMethodBeat.i(118521);
-    j.q(paramThread, "thread");
-    LockSupport.unpark(paramThread);
-    AppMethodBeat.o(118521);
+    AppMethodBeat.i(188887);
+    Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
+    if (localThrowable == null)
+    {
+      if (paramb != null)
+      {
+        paramObject = new af(paramObject, paramb);
+        AppMethodBeat.o(188887);
+        return paramObject;
+      }
+      AppMethodBeat.o(188887);
+      return paramObject;
+    }
+    paramObject = new ae(localThrowable);
+    AppMethodBeat.o(188887);
+    return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.ai
  * JD-Core Version:    0.7.0.1
  */

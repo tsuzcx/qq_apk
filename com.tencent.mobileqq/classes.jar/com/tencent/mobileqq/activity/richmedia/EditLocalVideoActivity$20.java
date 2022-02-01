@@ -9,8 +9,8 @@ class EditLocalVideoActivity$20
   
   public void run()
   {
-    if (EditLocalVideoActivity.b(this.this$0)) {
-      EditLocalVideoActivity.a(this.this$0).setVisibility(0);
+    if (EditLocalVideoActivity.t(this.this$0)) {
+      EditLocalVideoActivity.r(this.this$0).setVisibility(0);
     }
   }
 }

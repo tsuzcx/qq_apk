@@ -9,8 +9,8 @@ class VideoController$5
   {
     try
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.a.a(this.b, this.c, this.d, this.e);
+      this.f.run();
       return;
     }
     catch (Exception localException)
@@ -21,7 +21,7 @@ class VideoController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.5
  * JD-Core Version:    0.7.0.1
  */

@@ -47,20 +47,23 @@ public final class FileCommitRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.result, 1);
-    if (this.session != null) {
-      paramJceOutputStream.write(this.session, 2);
+    Object localObject = this.session;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.biz_rsp != null) {
-      paramJceOutputStream.write(this.biz_rsp, 3);
+    localObject = this.biz_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
-    if (this.dumpRsp != null) {
-      paramJceOutputStream.write(this.dumpRsp, 4);
+    localObject = this.dumpRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.FileCommitRsp
  * JD-Core Version:    0.7.0.1
  */

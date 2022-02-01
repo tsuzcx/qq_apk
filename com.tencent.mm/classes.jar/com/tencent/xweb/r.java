@@ -1,23 +1,17 @@
 package com.tencent.xweb;
 
-import android.net.Uri;
-import java.util.Map;
-
-public abstract interface r
+public final class r
 {
-  public abstract String getMethod();
+  public static a aieT;
   
-  public abstract Map<String, String> getRequestHeaders();
-  
-  public abstract Uri getUrl();
-  
-  public abstract boolean hasGesture();
-  
-  public abstract boolean isForMainFrame();
+  public static abstract interface a
+  {
+    public abstract void DA(String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.r
  * JD-Core Version:    0.7.0.1
  */

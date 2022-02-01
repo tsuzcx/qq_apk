@@ -1,25 +1,18 @@
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class crp
-  extends QZoneObserver
+  extends FMObserver
 {
   public crp(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void b()
   {
+    this.a.a.notifyDataSetChanged();
     if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      this.a.a.notifyDataSetChanged();
-      Leba.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
+      QLog.i("Q.lebatab.leba", 2, "onSomethingchaned. notifyData.");
     }
   }
 }

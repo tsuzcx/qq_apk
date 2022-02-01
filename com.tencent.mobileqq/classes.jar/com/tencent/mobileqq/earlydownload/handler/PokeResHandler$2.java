@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import afxl;
-import apll;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
 
-public class PokeResHandler$2
+class PokeResHandler$2
   implements Runnable
 {
-  public PokeResHandler$2(apll paramapll) {}
+  PokeResHandler$2(PokeResHandler paramPokeResHandler) {}
   
   public void run()
   {
-    afxl.a(this.this$0.a, null);
+    PokeItemHelper.a(this.this$0.c, null);
   }
 }
 

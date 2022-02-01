@@ -2,65 +2,57 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdyp;
-import bdys;
-import bdyx;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.msf.sdk.utils.SignUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.adv.api.IVasAdvApi;
+import com.tencent.mobileqq.vashealth.api.IQQHealthApi;
+import com.tencent.mobileqq.vashealth.api.ISportManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
-import nud;
 
 public class StepServiceAsync
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StepServiceAsync", 2, "StepServiceAsync call!");
-    }
-    Object localObject = (nud)this.a.app.a(139);
-    ((nud)localObject).a = true;
-    ((nud)localObject).b = System.currentTimeMillis();
-    ((nud)localObject).a(null, null, false, null);
-    localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-    if (!bdys.a())
+    ((IVasAdvApi)QRoute.api(IVasAdvApi.class)).requestPublicAccountAd();
+    Object localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+    if (!((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isSupportStepCounter((Context)localObject))
     {
       QLog.i("StepServiceAsync", 1, "step counter unsupported model.");
-      return super.a();
+      return super.doStep();
     }
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.health_ban.name(), "");
-    QLog.i("StepServiceAsync", 1, "ban_info:" + str);
+    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.health_ban.name(), "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ban_info:");
+    localStringBuilder.append(str);
+    QLog.i("StepServiceAsync", 1, localStringBuilder.toString());
     if ((!TextUtils.isEmpty(str)) && (Integer.parseInt(str) == 0))
     {
-      localObject = new NewIntent((Context)localObject, bdyx.class);
-      ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_health_switch");
+      localObject = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getStepCounterServletIntent((Context)localObject);
       ((NewIntent)localObject).putExtra("isOpen", false);
-      this.a.app.startServlet((NewIntent)localObject);
+      this.mAutomator.k.startServlet((NewIntent)localObject);
       QLog.e("StepServiceAsync", 1, "step counter found current model banned!");
-      return super.a();
+      return super.doStep();
     }
-    if (!SignUtils.isSupportKeyStore()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bdyp.b = bool;
-      localObject = (bdys)this.a.app.getManager(260);
-      if (bdyp.a(1)) {
-        ((bdys)localObject).a("login");
-      }
-      ((bdys)localObject).a();
-      return 7;
+    ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).setIsOldMode(SignUtils.isSupportKeyStore() ^ true);
+    localObject = (ISportManager)this.mAutomator.k.getRuntimeService(ISportManager.class, "multi");
+    if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isNeedReport(this.mAutomator.k.getAccount())) {
+      ((ISportManager)localObject).refreshCurrentStep("login");
     }
+    ((ISportManager)localObject).doOnLogin();
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepServiceAsync
  * JD-Core Version:    0.7.0.1
  */

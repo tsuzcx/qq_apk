@@ -11,13 +11,13 @@ public final class RspGetNearbyPubAcctInfo
   static int cache_eReplyCode;
   static byte[] cache_vContext;
   static ArrayList<PubAcctInfo> cache_vGroupInfo;
-  public int eReplyCode;
-  public int iCompletedFlag;
-  public int iFlagStamp;
-  public int iRadius;
-  public int iRedFlag;
-  public byte[] vContext;
-  public ArrayList<PubAcctInfo> vGroupInfo;
+  public int eReplyCode = 0;
+  public int iCompletedFlag = 0;
+  public int iFlagStamp = 0;
+  public int iRadius = 0;
+  public int iRedFlag = 0;
+  public byte[] vContext = null;
+  public ArrayList<PubAcctInfo> vGroupInfo = null;
   
   public RspGetNearbyPubAcctInfo() {}
   
@@ -60,8 +60,9 @@ public final class RspGetNearbyPubAcctInfo
     paramJceOutputStream.write(this.vContext, 1);
     paramJceOutputStream.write(this.iCompletedFlag, 2);
     paramJceOutputStream.write(this.iRadius, 3);
-    if (this.vGroupInfo != null) {
-      paramJceOutputStream.write(this.vGroupInfo, 4);
+    ArrayList localArrayList = this.vGroupInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
     paramJceOutputStream.write(this.iRedFlag, 5);
     paramJceOutputStream.write(this.iFlagStamp, 6);
@@ -69,7 +70,7 @@ public final class RspGetNearbyPubAcctInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyPubAcct.RspGetNearbyPubAcctInfo
  * JD-Core Version:    0.7.0.1
  */

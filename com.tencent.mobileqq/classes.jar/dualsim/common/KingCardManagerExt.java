@@ -10,15 +10,16 @@ public class KingCardManagerExt
   
   public static IKingCardInterface getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new KingCardManagerExt();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new KingCardManagerExt();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public IKcActivationInterface generateActivationInterface(Context paramContext)
@@ -32,7 +33,11 @@ public class KingCardManagerExt
         return paramContext;
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label21:
+      break label21;
+    }
     return null;
   }
   
@@ -47,7 +52,11 @@ public class KingCardManagerExt
         return paramContext;
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label21:
+      break label21;
+    }
     return null;
   }
   
@@ -62,7 +71,11 @@ public class KingCardManagerExt
         return localObject;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label20:
+      break label20;
+    }
     return "";
   }
   
@@ -77,7 +90,11 @@ public class KingCardManagerExt
         return localObject;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
   
@@ -111,7 +128,7 @@ public class KingCardManagerExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dualsim.common.KingCardManagerExt
  * JD-Core Version:    0.7.0.1
  */

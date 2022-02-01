@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:orientation="vertical" android:id="@id/brt" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="@color/ck" android:gravity="center" android:id="@id/j6w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j1" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ewv" android:background="@color/cr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

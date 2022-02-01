@@ -13,8 +13,8 @@ public final class callback_info
   public String content = "";
   public String h5hb_url = "";
   public boolean has_grabed = true;
-  public short hb_type;
-  public Map<String, String> trans_info;
+  public short hb_type = 0;
+  public Map<String, String> trans_info = null;
   
   static
   {
@@ -45,20 +45,23 @@ public final class callback_info
   {
     paramJceOutputStream.write(this.hb_type, 0);
     paramJceOutputStream.write(this.has_grabed, 1);
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    Object localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.trans_info != null) {
-      paramJceOutputStream.write(this.trans_info, 3);
+    localObject = this.trans_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.h5hb_url != null) {
-      paramJceOutputStream.write(this.h5hb_url, 4);
+    localObject = this.h5hb_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.callback_info
  * JD-Core Version:    0.7.0.1
  */

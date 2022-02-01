@@ -1,154 +1,314 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.w;
-import com.tencent.mm.plugin.luckymoney.model.x;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.ui.e;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.luckymoney.a.c;
+import com.tencent.mm.plugin.luckymoney.model.ah;
+import com.tencent.mm.plugin.luckymoney.model.bi;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.pluginsdk.ui.applet.v;
+import com.tencent.mm.pluginsdk.ui.applet.w;
+import com.tencent.mm.protocal.g;
+import com.tencent.mm.protocal.protobuf.czi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.ui.k;
 
 public final class i
-  extends BaseAdapter
 {
-  private Context mContext;
-  private LayoutInflater mInflater;
-  private List<w> oja;
-  String ojb;
-  boolean ojc;
-  int ojd;
-  View.OnClickListener owY;
-  i.b owZ;
-  
-  public i(Context paramContext)
+  public static void a(Context paramContext, ViewGroup paramViewGroup, bi parambi, c paramc)
   {
-    AppMethodBeat.i(43030);
-    this.oja = new LinkedList();
-    this.ojd = 1;
-    this.owZ = null;
-    this.mContext = paramContext;
-    this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(43030);
-  }
-  
-  private w yI(int paramInt)
-  {
-    AppMethodBeat.i(43033);
-    w localw = (w)this.oja.get(paramInt);
-    AppMethodBeat.o(43033);
-    return localw;
-  }
-  
-  public final void ci(List<w> paramList)
-  {
-    AppMethodBeat.i(43031);
-    if (paramList == null) {
-      new LinkedList();
-    }
-    for (;;)
+    AppMethodBeat.i(65785);
+    if (parambi == null)
     {
-      notifyDataSetChanged();
-      AppMethodBeat.o(43031);
+      AppMethodBeat.o(65785);
       return;
-      this.oja = paramList;
     }
+    a(paramContext, paramViewGroup, parambi, paramc, parambi.type);
+    AppMethodBeat.o(65785);
   }
   
-  public final int getCount()
+  public static void a(Context paramContext, ViewGroup paramViewGroup, bi parambi, c paramc, String paramString)
   {
-    AppMethodBeat.i(43032);
-    int i = this.oja.size();
-    AppMethodBeat.o(43032);
-    return i;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(43034);
-    if (paramView == null)
+    AppMethodBeat.i(65786);
+    if ((paramViewGroup == null) || (parambi == null))
     {
-      paramView = this.mInflater.inflate(2130970044, paramViewGroup, false);
-      paramViewGroup = new i.c(this);
-      paramViewGroup.ldP = paramView.findViewById(2131821003);
-      paramViewGroup.kPy = ((ImageView)paramView.findViewById(2131825822));
-      paramViewGroup.nzx = ((TextView)paramView.findViewById(2131825823));
-      paramViewGroup.ojf = ((TextView)paramView.findViewById(2131825827));
-      paramViewGroup.ojg = ((TextView)paramView.findViewById(2131825824));
-      paramViewGroup.ojh = ((TextView)paramView.findViewById(2131825826));
-      paramViewGroup.oji = ((TextView)paramView.findViewById(2131825825));
-      paramViewGroup.ojj = ((ImageView)paramView.findViewById(2131825828));
-      paramViewGroup.ojk = ((TextView)paramView.findViewById(2131825829));
-      if (this.owZ != null) {
-        this.owZ.a(paramViewGroup, this.mContext);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (parambi.lTH == 0)
+    {
+      Log.i("MicroMsg.LuckyMoneyOperationViewMgr", "operInfo enable:" + parambi.lTH);
+      paramViewGroup.setVisibility(8);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (!parambi.type.equalsIgnoreCase(paramString))
+    {
+      Log.i("MicroMsg.LuckyMoneyOperationViewMgr", "not match type:" + parambi.type + ", " + paramString);
+      paramViewGroup.setVisibility(8);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("Text")) || (paramString.equalsIgnoreCase("Native")))
+    {
+      paramString = new e();
+      paramString.KFR = paramc;
+      paramString.a(paramContext, paramViewGroup, parambi);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("Pic"))
+    {
+      paramString = new a();
+      paramString.KFR = paramc;
+      paramString.a(paramContext, paramViewGroup, parambi);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("Appid"))
+    {
+      paramString = new b();
+      paramString.KFR = paramc;
+      paramString.a(paramContext, paramViewGroup, parambi);
+    }
+    AppMethodBeat.o(65786);
+  }
+  
+  static final class a
+    implements i.d
+  {
+    i.c KFR;
+    
+    public final void a(final Context paramContext, ViewGroup paramViewGroup, final bi parambi)
+    {
+      AppMethodBeat.i(65779);
+      if (Util.isNullOrNil(parambi.name))
+      {
+        Log.w("MicroMsg.LuckyMoneyOperationViewMgr", "BannerPicOperationView attach iconUrl null");
+        paramViewGroup.setVisibility(8);
+        AppMethodBeat.o(65779);
+        return;
       }
-      paramView.setTag(paramViewGroup);
+      ImageView localImageView = new ImageView(paramContext);
+      localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      ah.p(localImageView, parambi.name);
+      if (!Util.isNullOrNil(parambi.content)) {
+        localImageView.setOnClickListener(new k()
+        {
+          public final void dr(View paramAnonymousView)
+          {
+            AppMethodBeat.i(284294);
+            com.tencent.mm.plugin.report.service.h.OAn.b(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(parambi.KuZ) });
+            if (i.a.this.KFR != null) {
+              g.ik(i.a.this.KFR.KFX, 1);
+            }
+            com.tencent.mm.wallet_core.ui.i.p(paramContext, parambi.content, true);
+            AppMethodBeat.o(284294);
+          }
+        });
+      }
+      localImageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      paramViewGroup.addView(localImageView);
+      paramViewGroup.setVisibility(0);
+      com.tencent.mm.plugin.report.service.h.OAn.b(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(parambi.KuZ) });
+      if (this.KFR != null) {
+        g.ik(this.KFR.KFX, 0);
+      }
+      AppMethodBeat.o(65779);
     }
-    w localw;
-    for (;;)
+  }
+  
+  static final class b
+    implements i.d
+  {
+    i.c KFR;
+    
+    public final void a(final Context paramContext, ViewGroup paramViewGroup, final bi parambi)
     {
-      localw = yI(paramInt);
-      x.b(paramViewGroup.kPy, localw.ooC, localw.userName);
-      if ((!bo.nullAsNil(localw.onz).equals(this.ojb)) || (!this.ojc)) {
+      AppMethodBeat.i(65782);
+      if (Util.isNullOrNil(parambi.name))
+      {
+        AppMethodBeat.o(65782);
+        return;
+      }
+      TextView localTextView = new TextView(paramContext);
+      if ((this.KFR != null) && (this.KFR.textColor != -2147483648))
+      {
+        localTextView.setTextColor(this.KFR.textColor);
+        if ((this.KFR == null) || (this.KFR.textSize == -2147483648)) {
+          break label242;
+        }
+        localTextView.setTextSize(0, this.KFR.textSize);
+      }
+      for (;;)
+      {
+        localTextView.setGravity(17);
+        localTextView.setText(parambi.name);
+        if (!Util.isNullOrNil(parambi.content)) {
+          localTextView.setOnClickListener(new k()
+          {
+            public final void dr(View paramAnonymousView)
+            {
+              AppMethodBeat.i(284535);
+              com.tencent.mm.plugin.report.service.h.OAn.b(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(parambi.KuZ) });
+              if (parambi.Kva != 1)
+              {
+                ((com.tencent.mm.pluginsdk.i)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.i.class)).a(paramContext, parambi.content, new v()
+                {
+                  public final void onAddContact(int paramAnonymous2Int)
+                  {
+                    AppMethodBeat.i(65780);
+                    switch (paramAnonymous2Int)
+                    {
+                    }
+                    for (;;)
+                    {
+                      AppMethodBeat.o(65780);
+                      return;
+                      com.tencent.mm.wallet_core.ui.i.ap(i.b.1.this.val$context, i.b.1.this.KFS.content);
+                    }
+                  }
+                }).show();
+                AppMethodBeat.o(284535);
+                return;
+              }
+              com.tencent.mm.wallet_core.ui.i.an(paramContext, parambi.content);
+              AppMethodBeat.o(284535);
+            }
+          });
+        }
+        paramViewGroup.addView(localTextView, new ViewGroup.LayoutParams(-2, -2));
+        paramViewGroup.setVisibility(0);
+        com.tencent.mm.plugin.report.service.h.OAn.b(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(parambi.KuZ) });
+        AppMethodBeat.o(65782);
+        return;
+        localTextView.setTextColor(paramContext.getResources().getColor(a.c.wallet_link_color));
         break;
+        label242:
+        localTextView.setTextSize(0, paramContext.getResources().getDimensionPixelSize(a.d.HintTextSize));
       }
-      paramViewGroup.oji.setOnClickListener(this.owY);
-      paramViewGroup.oji.setVisibility(0);
-      paramViewGroup.ojh.setVisibility(8);
-      paramViewGroup.ojf.setVisibility(8);
-      x.a(this.mContext, paramViewGroup.nzx, localw.ooB);
-      String str = this.mContext.getString(2131301295, new Object[] { e.E(localw.ooo / 100.0D) });
-      paramViewGroup.ojg.setText(str);
-      if (!bo.isNullOrNil(localw.ooE)) {
-        break label453;
+    }
+  }
+  
+  public static final class c
+  {
+    public boolean KFW = false;
+    public int KFX = 0;
+    public czi KFY;
+    public int resourceId = 0;
+    public int textColor = -2147483648;
+    public int textSize = -2147483648;
+  }
+  
+  static abstract interface d
+  {
+    public abstract void a(Context paramContext, ViewGroup paramViewGroup, bi parambi);
+  }
+  
+  static final class e
+    implements i.d
+  {
+    i.c KFR;
+    
+    public final void a(final Context paramContext, ViewGroup paramViewGroup, final bi parambi)
+    {
+      AppMethodBeat.i(65784);
+      if (Util.isNullOrNil(parambi.name))
+      {
+        AppMethodBeat.o(65784);
+        return;
       }
-      paramViewGroup.ojj.setVisibility(8);
-      paramViewGroup.ojk.setVisibility(8);
-      AppMethodBeat.o(43034);
-      return paramView;
-      paramViewGroup = (i.c)paramView.getTag();
-    }
-    if (bo.isNullOrNil(localw.ooD)) {
-      paramViewGroup.ojh.setVisibility(8);
-    }
-    for (;;)
-    {
-      paramViewGroup.ojf.setText(x.j(this.mContext, bo.getLong(localw.oop, 0L) * 1000L));
-      paramViewGroup.ojf.setVisibility(0);
-      paramViewGroup.oji.setVisibility(8);
-      break;
-      x.a(this.mContext, paramViewGroup.ojh, localw.ooD);
-      paramViewGroup.ojh.setVisibility(0);
-    }
-    label453:
-    paramViewGroup.ojk.setText(localw.ooE);
-    if (this.ojd == 2) {
-      paramViewGroup.ojj.setImageResource(2130839405);
-    }
-    for (;;)
-    {
-      paramViewGroup.ojj.setVisibility(0);
-      paramViewGroup.ojk.setVisibility(0);
-      break;
-      paramViewGroup.ojj.setImageResource(2130839354);
+      Object localObject = LayoutInflater.from(paramContext).inflate(a.g.lucky_money_text_oper_view, paramViewGroup, true);
+      TextView localTextView = (TextView)((View)localObject).findViewById(a.f.lucky_money_text_oper_wording);
+      localObject = (ImageView)((View)localObject).findViewById(a.f.lucky_money_text_oper_icon);
+      if (!Util.isNullOrNil(parambi.iconUrl))
+      {
+        ah.p((ImageView)localObject, parambi.iconUrl);
+        ((ImageView)localObject).setVisibility(0);
+        if ((this.KFR == null) || (this.KFR.textSize == -2147483648)) {
+          break label307;
+        }
+        localTextView.setTextSize(0, this.KFR.textSize);
+      }
+      for (;;)
+      {
+        localTextView.setGravity(17);
+        localTextView.setText(parambi.name);
+        if (!Util.isNullOrNil(parambi.content))
+        {
+          localTextView.setTextColor(MMApplicationContext.getContext().getResources().getColor(a.c.link_color));
+          localTextView.setOnClickListener(new k()
+          {
+            public final void dr(View paramAnonymousView)
+            {
+              AppMethodBeat.i(284090);
+              com.tencent.mm.plugin.report.service.h.OAn.b(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(parambi.KuZ) });
+              if (i.e.this.KFR != null) {
+                g.ik(i.e.this.KFR.KFX, 1);
+              }
+              if ((i.e.this.KFR != null) && (i.e.this.KFR.KFW)) {
+                com.tencent.mm.plugin.report.service.h.OAn.b(13051, new Object[] { Integer.valueOf(i.e.this.KFR.KFX), Integer.valueOf(2), "", "", "", parambi.content, parambi.type, "", "", Integer.valueOf(i.e.this.KFR.resourceId) });
+              }
+              com.tencent.mm.plugin.report.service.h localh;
+              String str;
+              if (parambi.type.equals("Native"))
+              {
+                Log.i("MicroMsg.LuckyMoneyOperationViewMgr", "go native:" + parambi.content);
+                if ("weixin://festival/gotoshake".equalsIgnoreCase(parambi.content)) {
+                  Log.i("MicroMsg.LuckyMoneyOperationViewMgr", " go new year shake");
+                }
+                localh = com.tencent.mm.plugin.report.service.h.OAn;
+                str = parambi.content;
+                if (i.e.this.KFR.KFY == null) {
+                  break label390;
+                }
+              }
+              label390:
+              for (paramAnonymousView = i.e.this.KFR.KFY.aaEp;; paramAnonymousView = "")
+              {
+                localh.b(16589, new Object[] { Integer.valueOf(2), str, paramAnonymousView, c.KlA, Integer.valueOf(0), c.openId });
+                AppMethodBeat.o(284090);
+                return;
+                com.tencent.mm.wallet_core.ui.i.p(paramContext, parambi.content, true);
+                break;
+              }
+            }
+          });
+        }
+        if ((this.KFR != null) && (this.KFR.textColor != -2147483648)) {
+          localTextView.setTextColor(this.KFR.textColor);
+        }
+        paramViewGroup.setVisibility(0);
+        com.tencent.mm.plugin.report.service.h.OAn.b(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(parambi.KuZ) });
+        if (this.KFR != null) {
+          g.ik(this.KFR.KFX, 0);
+        }
+        AppMethodBeat.o(65784);
+        return;
+        ((ImageView)localObject).setVisibility(8);
+        break;
+        label307:
+        localTextView.setTextSize(0, paramContext.getResources().getDimensionPixelSize(a.d.HintTextSize));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.i
  * JD-Core Version:    0.7.0.1
  */

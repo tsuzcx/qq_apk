@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@android:color/white" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="12.0sp" android:textColor="#ffa5a5a5" android:ellipsize="none" android:id="@id/jk2" android:background="@drawable/a0n" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:drawableLeft="@drawable/flc" android:drawablePadding="3.0dip" android:layout_weight="1.0" android:contentDescription="" />
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView android:id="@id/ap9" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/q0g" android:drawableLeft="@drawable/dpv" style="@style/hh" />
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView android:id="@id/ap8" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/pvl" android:drawableLeft="@drawable/h9v" style="@style/hh" />
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView android:id="@id/ap7" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/pwb" style="@style/hh" />
+        <com.tencent.image.URLImageView android:id="@id/dvt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:adjustViewBounds="true" android:maxHeight="40.0dip" />
+    </LinearLayout>
+</FrameLayout>

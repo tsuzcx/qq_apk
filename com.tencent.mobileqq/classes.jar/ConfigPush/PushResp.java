@@ -8,9 +8,9 @@ public final class PushResp
   extends JceStruct
 {
   static byte[] cache_jcebuf;
-  public byte[] jcebuf;
-  public long lSeq;
-  public int type;
+  public byte[] jcebuf = null;
+  public long lSeq = 0L;
+  public int type = 0;
   
   public PushResp() {}
   
@@ -37,14 +37,15 @@ public final class PushResp
   {
     paramJceOutputStream.write(this.type, 1);
     paramJceOutputStream.write(this.lSeq, 2);
-    if (this.jcebuf != null) {
-      paramJceOutputStream.write(this.jcebuf, 3);
+    byte[] arrayOfByte = this.jcebuf;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.PushResp
  * JD-Core Version:    0.7.0.1
  */

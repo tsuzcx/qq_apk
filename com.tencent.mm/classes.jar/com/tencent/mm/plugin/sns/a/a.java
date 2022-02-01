@@ -1,61 +1,59 @@
 package com.tencent.mm.plugin.sns.a;
 
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/accessibility/SnsCommentDetailUIAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements c
+  extends MMBaseAccessibilityConfig
 {
-  private Map<Integer, com.tencent.mm.plugin.sns.a.a.a> qYm;
-  
-  public a()
+  public a(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(35688);
-    this.qYm = new HashMap();
-    AppMethodBeat.o(35688);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(306258);
+    AppMethodBeat.o(306258);
   }
   
-  public final void a(int paramInt1, int paramInt2, Object... paramVarArgs)
+  public final void initConfig()
   {
-    AppMethodBeat.i(35690);
-    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.qYm.get(Integer.valueOf(paramInt1));
-    if (locala == null)
+    AppMethodBeat.i(306268);
+    root(b.g.sns_comment_footer).view(b.f.album_comment_green_send_btn).talkOn(b.j.sns_send_over, (b)a.PKR);
+    AppMethodBeat.o(306268);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, Boolean>
+  {
+    public static final a PKR;
+    
+    static
     {
-      ab.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(35690);
-      return;
+      AppMethodBeat.i(306267);
+      PKR = new a();
+      AppMethodBeat.o(306267);
     }
-    locala.e(paramInt2, paramVarArgs);
-    AppMethodBeat.o(35690);
-  }
-  
-  public final void a(com.tencent.mm.plugin.sns.a.a.a parama)
-  {
-    AppMethodBeat.i(35689);
-    this.qYm.put(Integer.valueOf(parama.cfL()), parama);
-    AppMethodBeat.o(35689);
-  }
-  
-  public final void e(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(35691);
-    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.qYm.get(Integer.valueOf(paramInt));
-    if (locala == null)
+    
+    a()
     {
-      ab.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(35691);
-      return;
+      super();
     }
-    locala.u(paramVarArgs);
-    AppMethodBeat.o(35691);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.a
  * JD-Core Version:    0.7.0.1
  */

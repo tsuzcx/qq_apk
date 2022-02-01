@@ -10,18 +10,23 @@ class BusinessCardEditActivity$11
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) {
-      BusinessCardEditActivity.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.company, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum);
-    }
-    while (this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo == null) {
+    BusinessCardEditActivity localBusinessCardEditActivity;
+    if (this.this$0.C != null)
+    {
+      localBusinessCardEditActivity = this.this$0;
+      BusinessCardEditActivity.a(localBusinessCardEditActivity, localBusinessCardEditActivity.C.cardName, this.this$0.C.company, this.this$0.C.mobilesNum);
       return;
     }
-    BusinessCardEditActivity.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.a, null, this.this$0.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.b);
+    if (this.this$0.D != null)
+    {
+      localBusinessCardEditActivity = this.this$0;
+      BusinessCardEditActivity.a(localBusinessCardEditActivity, localBusinessCardEditActivity.D.a, null, this.this$0.D.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.11
  * JD-Core Version:    0.7.0.1
  */

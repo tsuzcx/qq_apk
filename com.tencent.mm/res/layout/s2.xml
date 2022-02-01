@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/q1"
+<LinearLayout style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/b8v" android:background="@color/a6q" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s3" android:gravity="center" android:id="@id/a6l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/b45" />
-</RelativeLayout>
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:id="@id/l1g" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="visible" style="@style/h7" />
+        <FrameLayout android:id="@id/b47" android:background="@drawable/lb" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <ImageView android:id="@id/b4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxWidth="@dimen/a7" />
+            <ImageView android:id="@id/b4e" android:background="@drawable/lb" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/c_p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+        </FrameLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <TextView android:ellipsize="end" android:id="@id/b3g" android:layout_marginLeft="0.0dip" android:text="{source}" android:singleLine="true" style="@style/gr" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

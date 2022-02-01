@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/b8q" android:background="#ff181818" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/kq3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title">
+        <com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView android:layout_gravity="center" android:id="@id/kvb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="center" android:id="@id/bbd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <ImageView android:layout_gravity="center" android:id="@id/kwn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/gh5" android:scaleType="center" />
+    </FrameLayout>
+    <com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar android:id="@id/kpp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/kpq" />
+    <RelativeLayout android:id="@id/kpq" android:background="@color/a2n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/kpr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/qpp" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/kpt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="00:00" android:layout_centerInParent="true" />
+        <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/kps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/qq9" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

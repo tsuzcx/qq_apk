@@ -1,955 +1,1001 @@
 package com.tencent.mm.storage;
 
-import android.content.Context;
-import android.util.SparseArray;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import junit.framework.Assert;
+import com.tencent.mm.cp.g;
+import com.tencent.mm.memory.a.c;
+import com.tencent.mm.model.br;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEvent;
+import com.tencent.mm.vending.c.a;
+import com.tencent.threadpool.i;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public final class ac
+  extends MAutoStorage<ab>
 {
-  public static String eQv;
-  public static final String yxo;
+  public static final String[] INDEX_CREATE;
+  public static final String[] SQL_CREATE;
+  public static final String[] acFK;
+  private static final com.tencent.mm.b.f<Long, Boolean> acFM;
+  private final MStorageEvent<c, a> acFL;
+  int acFN;
+  public boolean acFO;
+  private AtomicLong acFP;
+  private long acFQ;
+  private long acFR;
+  private final long acFS;
+  private AtomicLong acFT;
+  public final com.tencent.mm.storagebase.h omV;
   
   static
   {
-    AppMethodBeat.i(58995);
-    eQv = e.eQv;
-    yxo = ah.getContext().getFilesDir() + "/xlog";
-    if (b.dsf()) {
-      Assert.assertTrue(dwx());
-    }
-    AppMethodBeat.o(58995);
+    AppMethodBeat.i(124655);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ab.info, "BizTimeLineInfo") };
+    INDEX_CREATE = new String[] { "CREATE  INDEX IF NOT EXISTS msg_id_index ON BizTimeLineInfo ( msgId ) ", "CREATE  INDEX IF NOT EXISTS  has_show_talker_index ON BizTimeLineInfo ( hasShow,talker ) ", "CREATE  INDEX IF NOT EXISTS  has_show_place_top_index ON BizTimeLineInfo ( hasShow,placeTop ) ", "CREATE  INDEX IF NOT EXISTS  order_flag_place_top_index ON BizTimeLineInfo ( orderFlag,placeTop ) ", "CREATE  INDEX IF NOT EXISTS  talker_id_order_flag_index ON BizTimeLineInfo ( talkerId,orderFlag ) " };
+    acFK = new String[] { "CREATE  INDEX IF NOT EXISTS  biz_status_talker_index ON BizTimeLineInfo ( status,talker ) ", "CREATE  INDEX IF NOT EXISTS  biz_msg_svr_id_index ON BizTimeLineInfo ( msgSvrId ) ", "CREATE  INDEX IF NOT EXISTS  biz_talker_index ON BizTimeLineInfo ( talker ) ", "CREATE  INDEX IF NOT EXISTS  order_flag_status_index ON BizTimeLineInfo ( orderFlag,status ) ", "CREATE  INDEX IF NOT EXISTS  order_flag_has_show_index ON BizTimeLineInfo ( orderFlag,hasShow ) ", "CREATE  INDEX IF NOT EXISTS  is_read_order_flag_index ON BizTimeLineInfo ( isRead,orderFlag ) ", "CREATE  INDEX IF NOT EXISTS  is_read_msg_id_index ON BizTimeLineInfo ( isRead,msgId ) ", "CREATE  INDEX IF NOT EXISTS  biz_type_order_flag_isread_index ON BizTimeLineInfo ( type,orderFlag,isRead ) ", "CREATE  INDEX IF NOT EXISTS  biz_type_is_read_index ON BizTimeLineInfo ( type,isRead ) ", "CREATE  INDEX IF NOT EXISTS  biz_create_time_index ON BizTimeLineInfo ( createTime ) ", "CREATE  INDEX IF NOT EXISTS  recommend_card_id_index ON BizTimeLineInfo ( recommendCardId ) " };
+    acFM = new c(30);
+    AppMethodBeat.o(124655);
   }
   
-  private static final String arb(String paramString)
+  public ac(com.tencent.mm.storagebase.h paramh)
   {
-    AppMethodBeat.i(58994);
-    String[] arrayOfString = paramString.split("_");
-    if ((arrayOfString == null) || (arrayOfString.length < 4))
-    {
-      if (arrayOfString == null) {}
-      for (i = -1;; i = arrayOfString.length)
-      {
-        ab.e("MicroMsg.ConstantsStorage", "BusinessInfoKey parse failed: key:%s split by '_'  fileds len too short : %d , at least 4", new Object[] { paramString, Integer.valueOf(i) });
-        AppMethodBeat.o(58994);
-        return null;
-      }
-    }
-    int i = 0;
-    while (i < arrayOfString.length)
-    {
-      if ((arrayOfString[i] == null) || (arrayOfString[i].length() <= 0))
-      {
-        ab.e("MicroMsg.ConstantsStorage", "BusinessInfoKey parse failed: name:%s , [%s] too short ( <1 ) ", new Object[] { paramString, arrayOfString[i] });
-        AppMethodBeat.o(58994);
-        return null;
-      }
-      i += 1;
-    }
-    int j = arrayOfString.length - 1;
-    String str2 = arrayOfString[j];
-    i = j;
-    String str1 = str2;
-    if (str2.equals("SYNC"))
-    {
-      i = j - 1;
-      str1 = arrayOfString[i];
-    }
-    if (i < 3)
-    {
-      if (arrayOfString == null) {
-        i = -1;
-      }
-      ab.e("MicroMsg.ConstantsStorage", "BusinessInfoKey parse failed: name:%s split by '_'  fileds len too short : %d , at least 3", new Object[] { paramString, Integer.valueOf(i) });
-    }
-    if ((!str1.equals("INT")) && (!str1.equals("LONG")) && (!str1.equals("STRING")) && (!str1.equals("BOOLEAN")) && (!str1.equals("FLOAT")) && (!str1.equals("DOUBLE")))
-    {
-      ab.e("MicroMsg.ConstantsStorage", "BusinessInfoKey parse failed: name[%s], invalid type:%s ", new Object[] { paramString, str1 });
-      AppMethodBeat.o(58994);
-      return null;
-    }
-    paramString = paramString.substring(0, paramString.lastIndexOf(str1) - 1);
-    AppMethodBeat.o(58994);
-    return paramString;
+    super(paramh, ab.info, "BizTimeLineInfo", INDEX_CREATE);
+    AppMethodBeat.i(124624);
+    this.acFL = new MStorageEvent() {};
+    this.acFN = 100;
+    this.acFO = true;
+    this.acFP = new AtomicLong(10L);
+    this.acFQ = 10L;
+    this.acFS = -5000000L;
+    this.acFT = new AtomicLong(-5000000L);
+    this.omV = paramh;
+    iYF();
+    AppMethodBeat.o(124624);
   }
   
-  private static final boolean dwx()
+  private void iYC()
   {
-    AppMethodBeat.i(58992);
-    Field[] arrayOfField = ac.class.getDeclaredFields();
-    SparseArray localSparseArray = new SparseArray();
-    int i = 0;
+    try
+    {
+      AppMethodBeat.i(248506);
+      ab localab = iYx();
+      if (localab != null) {
+        this.acFQ = Math.min(localab.iYa(), this.acFQ);
+      }
+      AppMethodBeat.o(248506);
+      return;
+    }
+    finally {}
+  }
+  
+  private void iYF()
+  {
     for (;;)
     {
-      if (i >= arrayOfField.length) {
-        break label224;
-      }
-      Field localField = arrayOfField[i];
-      if ((Modifier.isStatic(localField.getModifiers())) && ((localField.getName().startsWith("USERINFO_")) || (localField.getName().startsWith("NEW_BANDAGE_")) || (localField.getName().startsWith("DYNAMIC_CONFIG_"))) && (localField.getType().toString().equals("int"))) {}
       try
       {
-        int j = localField.getInt(null);
-        if (localSparseArray.get(j, null) != null)
-        {
-          ab.e("MicroMsg.ConstantsStorage", "%s and %s has same value(0x%05X)!!!", new Object[] { localSparseArray.get(j), localField.getName(), Integer.valueOf(j) });
-          AppMethodBeat.o(58992);
-          return false;
+        AppMethodBeat.i(124649);
+        this.acFQ = (iYG() >> 32);
+        if (this.acFQ < 10L) {
+          this.acFQ = 10L;
         }
-        localSparseArray.put(j, localField.getName());
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        for (;;)
+        ab localab = iYx();
+        if (localab == null)
         {
-          ab.e("MicroMsg.ConstantsStorage", "exception:%s", new Object[] { bo.l(localIllegalArgumentException) });
+          Log.w("MicroMsg.BizTimeLineInfoStorage", "initGroupId is null, id %d", new Object[] { Long.valueOf(this.acFQ) });
+          AppMethodBeat.o(124649);
+          return;
+        }
+        if (localab.field_status == 4)
+        {
+          this.acFP.set(this.acFQ + 1L);
+          this.acFR = this.acFP.longValue();
+          Log.i("MicroMsg.BizTimeLineInfoStorage", "initGroupId id %d/%d, status %d", new Object[] { Long.valueOf(this.acFP.longValue()), Long.valueOf(this.acFQ), Integer.valueOf(localab.field_status) });
+          AppMethodBeat.o(124649);
+        }
+        else
+        {
+          this.acFP.set(this.acFQ);
         }
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          ab.e("MicroMsg.ConstantsStorage", "exception:%s", new Object[] { bo.l(localIllegalAccessException) });
-        }
-      }
-      i += 1;
+      finally {}
     }
-    label224:
-    if (localSparseArray.size() > 511)
+  }
+  
+  private long iYG()
+  {
+    try
     {
-      ab.e("MicroMsg.ConstantsStorage", "constants values size(%d) is over the limit(%d)!!!", new Object[] { Integer.valueOf(localSparseArray.size()), Integer.valueOf(511) });
-      AppMethodBeat.o(58992);
-      return false;
+      AppMethodBeat.i(124651);
+      Cursor localCursor = this.omV.rawQuery("select max(orderFlag) from BizTimeLineInfo", null, 2);
+      long l = 0L;
+      if (localCursor.moveToFirst())
+      {
+        l = localCursor.getLong(0);
+        localCursor.close();
+      }
+      AppMethodBeat.o(124651);
+      return l;
     }
-    ab.i("MicroMsg.ConstantsStorage", "checkDuplicateUserInfo values size: %d", new Object[] { Integer.valueOf(localSparseArray.size()) });
-    boolean bool = dwy();
-    AppMethodBeat.o(58992);
+    finally {}
+  }
+  
+  public static List<ab> s(Cursor paramCursor)
+  {
+    AppMethodBeat.i(124635);
+    LinkedList localLinkedList = new LinkedList();
+    while (paramCursor.moveToNext())
+    {
+      ab localab = new ab();
+      localab.convertFrom(paramCursor);
+      localLinkedList.add(localab);
+    }
+    paramCursor.close();
+    AppMethodBeat.o(124635);
+    return localLinkedList;
+  }
+  
+  private int yI(long paramLong)
+  {
+    int i = 0;
+    AppMethodBeat.i(248495);
+    Object localObject = "SELECT count(*) FROM BizTimeLineInfo where isRead != 1 and orderFlag >= " + (0x0 & paramLong) + " and orderFlag < " + paramLong;
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = ((Cursor)localObject).getInt(0);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(248495);
+    return i;
+  }
+  
+  private void yR(long paramLong)
+  {
+    try
+    {
+      AppMethodBeat.i(124646);
+      this.acFQ = Math.max(paramLong, this.acFQ);
+      AppMethodBeat.o(124646);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean E(ab paramab)
+  {
+    AppMethodBeat.i(124625);
+    boolean bool = c(paramab, true);
+    AppMethodBeat.o(124625);
     return bool;
   }
   
-  private static final boolean dwy()
+  public final boolean F(ab paramab)
   {
-    AppMethodBeat.i(58993);
-    ArrayList localArrayList = new ArrayList(a.values().length);
-    a[] arrayOfa = a.values();
-    int j = arrayOfa.length;
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(124626);
+    boolean bool = super.updateNotify(paramab, false, new String[] { "msgSvrId" });
+    a locala = new a();
+    locala.talker = paramab.field_talker;
+    locala.vGS = paramab;
+    locala.acFX = b.acGb;
+    a(locala);
+    AppMethodBeat.o(124626);
+    return bool;
+  }
+  
+  public final boolean G(ab paramab)
+  {
+    AppMethodBeat.i(248577);
+    if (paramab.field_isRead == 1)
     {
-      Object localObject = arrayOfa[i];
-      if ((localObject == null) || (((a)localObject).name() == null))
-      {
-        ab.e("MicroMsg.ConstantsStorage", "BusinessInfoKey check error: info is null!!!");
-        AppMethodBeat.o(58993);
-        return false;
-      }
-      localObject = arb(((a)localObject).name());
-      if (bo.isNullOrNil((String)localObject))
-      {
-        AppMethodBeat.o(58993);
-        return false;
-      }
-      if (localArrayList.contains(localObject))
-      {
-        ab.e("MicroMsg.ConstantsStorage", "BusinessInfoKey check error: redefinition of [%s] which already defined!", new Object[] { localObject });
-        AppMethodBeat.o(58993);
-        return false;
-      }
-      localArrayList.add(localObject);
-      i += 1;
+      AppMethodBeat.o(248577);
+      return false;
     }
-    AppMethodBeat.o(58993);
+    com.tencent.threadpool.h.ahAA.g(new ac.6(this, paramab), "updateUnReadStatus");
+    AppMethodBeat.o(248577);
     return true;
   }
   
-  public static enum a
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(124621);
+    if (this.acFL.event(parama)) {
+      this.acFL.doNotify();
+    }
+    AppMethodBeat.o(124621);
+  }
+  
+  public final void a(c paramc)
+  {
+    AppMethodBeat.i(124623);
+    this.acFL.remove(paramc);
+    AppMethodBeat.o(124623);
+  }
+  
+  public final void a(c paramc, Looper paramLooper)
+  {
+    AppMethodBeat.i(124622);
+    this.acFL.add(paramc, paramLooper);
+    AppMethodBeat.o(124622);
+  }
+  
+  public final boolean aLw(String paramString)
+  {
+    AppMethodBeat.i(124644);
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "deleteByTalker: %s", new Object[] { paramString });
+    ab localab = new ab();
+    localab.field_talker = paramString;
+    boolean bool = super.delete(localab, false, new String[] { "talker" });
+    paramString = new a();
+    paramString.talker = localab.field_talker;
+    paramString.vGS = localab;
+    paramString.acFX = b.acGa;
+    a(paramString);
+    iYC();
+    AppMethodBeat.o(124644);
+    return bool;
+  }
+  
+  public final ab aq(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(124631);
+    ab localab = new ab();
+    paramString = this.omV.query("BizTimeLineInfo", null, paramString + "=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
+    if (paramString.moveToFirst())
+    {
+      localab.convertFrom(paramString);
+      paramString.close();
+      AppMethodBeat.o(124631);
+      return localab;
+    }
+    paramString.close();
+    AppMethodBeat.o(124631);
+    return null;
+  }
+  
+  public final List<ab> ayA(int paramInt)
+  {
+    AppMethodBeat.i(124633);
+    List localList = s(this.omV.query("BizTimeLineInfo", null, null, null, null, null, "orderFlag DESC limit ".concat(String.valueOf(paramInt))));
+    AppMethodBeat.o(124633);
+    return localList;
+  }
+  
+  public final ab ayB(int paramInt)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(248697);
+    Object localObject1 = "SELECT * FROM BizTimeLineInfo order by orderFlag DESC limit 1 offset ".concat(String.valueOf(paramInt));
+    Object localObject2 = this.omV.rawQuery((String)localObject1, null);
+    if (((Cursor)localObject2).moveToFirst())
+    {
+      localObject1 = new ab();
+      ((ab)localObject1).convertFrom((Cursor)localObject2);
+    }
+    for (;;)
+    {
+      ((Cursor)localObject2).close();
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        if (((ab)localObject1).iYa() >= iYD()) {}
+      }
+      else
+      {
+        long l = iYD();
+        localObject1 = "SELECT * FROM BizTimeLineInfo where orderFlag > " + (l << 32) + " order by orderFlag asc limit 1";
+        localObject2 = this.omV.rawQuery((String)localObject1, null);
+        localObject1 = localObject3;
+        if (((Cursor)localObject2).moveToFirst())
+        {
+          localObject1 = new ab();
+          ((ab)localObject1).convertFrom((Cursor)localObject2);
+        }
+        ((Cursor)localObject2).close();
+        localObject2 = localObject1;
+      }
+      AppMethodBeat.o(248697);
+      return localObject2;
+      localObject1 = null;
+    }
+  }
+  
+  public final void ayC(int paramInt)
+  {
+    AppMethodBeat.i(248714);
+    Object localObject = String.format("DELETE FROM %s WHERE %s = %d and isRead = %d", new Object[] { "BizTimeLineInfo", "type", Integer.valueOf(637534257), Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "deleteMsgByTypeAndExposeStatus type:%d ret:%b", new Object[] { Integer.valueOf(637534257), Boolean.valueOf(this.omV.execSQL("BizTimeLineInfo", (String)localObject)) });
+    localObject = new a();
+    ((a)localObject).acFX = b.acGa;
+    a((a)localObject);
+    AppMethodBeat.o(248714);
+  }
+  
+  public final void bSr()
+  {
+    AppMethodBeat.i(248682);
+    com.tencent.threadpool.h.ahAA.a(new ac.3(this), 10L, "BizTimeLineInfoStorageDeleteThread");
+    AppMethodBeat.o(248682);
+  }
+  
+  public final List<ab> bp(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(124632);
+    Object localObject = this.omV;
+    String str = "orderFlag DESC limit ".concat(String.valueOf(paramInt));
+    localObject = s(((com.tencent.mm.storagebase.h)localObject).query("BizTimeLineInfo", null, "orderFlag<?", new String[] { String.valueOf(paramLong) }, null, null, str));
+    AppMethodBeat.o(124632);
+    return localObject;
+  }
+  
+  public final void bvA(String paramString)
+  {
+    AppMethodBeat.i(124627);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(124627);
+      return;
+    }
+    if (((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(paramString).aSQ()) {}
+    for (int i = 1;; i = 0)
+    {
+      Object localObject = "update BizTimeLineInfo set placeTop = " + i + " where status > 4 and talker = '" + paramString + "'";
+      this.omV.execSQL("BizTimeLineInfo", (String)localObject);
+      localObject = "update BizTimeLineInfo set placeTop = " + i + " where status < 4 and talker = '" + paramString + "'";
+      this.omV.execSQL("BizTimeLineInfo", (String)localObject);
+      localObject = iYx();
+      if ((localObject != null) && (paramString.equals(((ab)localObject).field_talker)))
+      {
+        ((ab)localObject).field_placeTop = i;
+        super.updateNotify((IAutoDBItem)localObject, false, new String[] { "msgSvrId" });
+      }
+      paramString = new a();
+      paramString.acFX = b.acGb;
+      a(paramString);
+      AppMethodBeat.o(124627);
+      return;
+    }
+  }
+  
+  public final ab bvB(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(248722);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(248722);
+      return null;
+    }
+    paramString = "SELECT * FROM BizTimeLineInfo where type=620757041 and recommendCardId='" + paramString + "'";
+    Cursor localCursor = this.omV.rawQuery(paramString, null);
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new ab();
+      paramString.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(248722);
+    return paramString;
+  }
+  
+  public final boolean c(ab paramab, boolean paramBoolean)
+  {
+    AppMethodBeat.i(248543);
+    boolean bool = super.insertNotify(paramab, false);
+    if (paramBoolean) {
+      yR(paramab.iYa());
+    }
+    a locala = new a();
+    locala.talker = paramab.field_talker;
+    locala.vGS = paramab;
+    locala.acFX = b.acFZ;
+    a(locala);
+    AppMethodBeat.o(248543);
+    return bool;
+  }
+  
+  public final boolean d(ab paramab, boolean paramBoolean)
+  {
+    AppMethodBeat.i(248553);
+    boolean bool = super.updateNotify(paramab, false, new String[] { "msgId" });
+    if (paramBoolean)
+    {
+      a locala = new a();
+      locala.talker = paramab.field_talker;
+      locala.vGS = paramab;
+      locala.acFX = b.acGb;
+      a(locala);
+    }
+    AppMethodBeat.o(248553);
+    return bool;
+  }
+  
+  public final int dWF()
+  {
+    int i = 0;
+    AppMethodBeat.i(124650);
+    Cursor localCursor = this.omV.rawQuery("SELECT count(*) FROM BizTimeLineInfo", null);
+    if (localCursor.moveToFirst()) {
+      i = localCursor.getInt(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(124650);
+    return i;
+  }
+  
+  public final List<ab> g(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  {
+    AppMethodBeat.i(248630);
+    LinkedList localLinkedList = new LinkedList();
+    int j = Math.min(20, paramInt1);
+    int i = 0;
+    long l1 = iYD() << 32;
+    long l2 = System.currentTimeMillis();
+    Object localObject1 = af.acGt;
+    if (af.ayJ(paramInt2))
+    {
+      l1 = paramLong2 & 0x0;
+      localObject1 = " and orderFlag < " + paramLong2 + " ";
+    }
+    for (paramLong2 = l1;; paramLong2 = l1)
+    {
+      paramInt2 = 0;
+      String str;
+      Object localObject2;
+      int k;
+      if (paramInt2 == 0)
+      {
+        j = Math.min(j, paramInt1 - localLinkedList.size());
+        if (j > 0)
+        {
+          str = "SELECT * FROM BizTimeLineInfo where  isRead = 0 and orderFlag >= " + paramLong2 + (String)localObject1 + " and createTime >= " + paramLong1 + " and bitFlag&1073741824 = 0 order by orderFlag ASC limit " + j + " offset " + i;
+          localObject2 = s(this.omV.rawQuery(str, null));
+          localLinkedList.addAll((Collection)localObject2);
+          k = ((List)localObject2).size();
+          if (k < j) {}
+          for (paramInt2 = 1;; paramInt2 = 0)
+          {
+            i += j;
+            Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadListNew sql = %s, localLimit=%d, tmpListSize=%d", new Object[] { str, Integer.valueOf(j), Integer.valueOf(k) });
+            break;
+          }
+        }
+      }
+      paramInt2 = Math.min(20, paramInt1 - localLinkedList.size());
+      i = 0;
+      j = 0;
+      if (j == 0)
+      {
+        k = localLinkedList.size();
+        j = Math.min(paramInt2, paramInt1 - k);
+        if (j > 0)
+        {
+          str = "";
+          if (k > 0)
+          {
+            str = "and msgId not in (";
+            paramInt2 = 0;
+            if (paramInt2 < k)
+            {
+              localObject2 = new StringBuilder().append(str);
+              if (paramInt2 > 0) {}
+              for (str = ",";; str = "")
+              {
+                str = str + ((ab)localLinkedList.get(paramInt2)).field_msgId;
+                paramInt2 += 1;
+                break;
+              }
+            }
+            str = str + ")";
+          }
+          str = "SELECT * FROM BizTimeLineInfo where  isRead = 0 " + (String)localObject1 + str + " order by orderFlag DESC limit " + j + " offset " + i;
+          localObject2 = s(this.omV.rawQuery(str, null));
+          k = ((List)localObject2).size();
+          if (k < j) {}
+          for (paramInt2 = 1;; paramInt2 = 0)
+          {
+            localLinkedList.addAll((Collection)localObject2);
+            Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadListNew sql2 = %s, localLimit=%d, tmpListSize=%d", new Object[] { str, Integer.valueOf(j), Integer.valueOf(k) });
+            k = i + j;
+            i = j;
+            j = paramInt2;
+            paramInt2 = i;
+            i = k;
+            break;
+          }
+        }
+      }
+      Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadListNew cost %d, size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l2), Integer.valueOf(localLinkedList.size()) });
+      AppMethodBeat.o(248630);
+      return localLinkedList;
+      localObject1 = "";
+    }
+  }
+  
+  public final void iYA()
+  {
+    AppMethodBeat.i(124640);
+    ab localab = iYx();
+    if (localab == null)
+    {
+      AppMethodBeat.o(124640);
+      return;
+    }
+    yO(localab.field_orderFlag);
+    AppMethodBeat.o(124640);
+  }
+  
+  public final int iYB()
+  {
+    AppMethodBeat.i(124642);
+    ab localab = iYx();
+    if (localab == null)
+    {
+      AppMethodBeat.o(124642);
+      return 0;
+    }
+    int i = yP(localab.field_orderFlag);
+    AppMethodBeat.o(124642);
+    return i;
+  }
+  
+  public final long iYD()
+  {
+    try
+    {
+      long l = this.acFQ;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final long iYE()
+  {
+    try
+    {
+      AppMethodBeat.i(124648);
+      long l = this.acFP.incrementAndGet();
+      AppMethodBeat.o(124648);
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final long iYH()
+  {
+    ab localab = null;
+    try
+    {
+      AppMethodBeat.i(124652);
+      if (this.acFT.longValue() == -5000000L)
+      {
+        Cursor localCursor = this.omV.rawQuery("SELECT * FROM BizTimeLineInfo where type=620757041 or type=637534257 order by msgId DESC limit 1", null);
+        if (localCursor.moveToFirst())
+        {
+          localab = new ab();
+          localab.convertFrom(localCursor);
+        }
+        localCursor.close();
+        if (localab != null) {
+          this.acFT.set(localab.field_msgId);
+        }
+      }
+      long l = this.acFT.incrementAndGet();
+      AppMethodBeat.o(124652);
+      return l;
+    }
+    finally {}
+  }
+  
+  public final void iYI()
+  {
+    AppMethodBeat.i(248709);
+    Object localObject = String.format("DELETE FROM %s WHERE type = %d and createTime < %d", new Object[] { "BizTimeLineInfo", Integer.valueOf(637534257), Long.valueOf(br.bCJ() - 86400000L) });
+    Log.d("MicroMsg.BizTimeLineInfoStorage", "deleteExposedAdMsgByType ret:%b, sql=%s", new Object[] { Boolean.valueOf(this.omV.execSQL("BizTimeLineInfo", (String)localObject)), localObject });
+    localObject = new a();
+    ((a)localObject).acFX = b.acGa;
+    a((a)localObject);
+    AppMethodBeat.o(248709);
+  }
+  
+  public final void iYJ()
+  {
+    AppMethodBeat.i(248720);
+    Object localObject = String.format("DELETE FROM %s WHERE %s = %d", new Object[] { "BizTimeLineInfo", "type", Integer.valueOf(637534257) });
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "deleteAllMsgByType type:%d ret:%b", new Object[] { Integer.valueOf(637534257), Boolean.valueOf(this.omV.execSQL("BizTimeLineInfo", (String)localObject)) });
+    localObject = new a();
+    ((a)localObject).acFX = b.acGa;
+    a((a)localObject);
+    AppMethodBeat.o(248720);
+  }
+  
+  public final long iYa()
+  {
+    try
+    {
+      AppMethodBeat.i(124647);
+      long l = this.acFP.longValue();
+      AppMethodBeat.o(124647);
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final ab iYw()
+  {
+    ab localab = null;
+    AppMethodBeat.i(248615);
+    Object localObject = String.format("SELECT * FROM %s WHERE %s = %d order by %s  DESC limit 1", new Object[] { "BizTimeLineInfo", "type", Integer.valueOf(637534257), "orderFlag" });
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localab = new ab();
+      localab.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(248615);
+    return localab;
+  }
+  
+  public final ab iYx()
+  {
+    ab localab = null;
+    AppMethodBeat.i(124636);
+    Cursor localCursor = this.omV.rawQuery("SELECT * FROM BizTimeLineInfo order by orderFlag DESC limit 1", null);
+    if (localCursor.moveToFirst())
+    {
+      localab = new ab();
+      localab.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(124636);
+    return localab;
+  }
+  
+  public final ab iYy()
+  {
+    ab localab = null;
+    AppMethodBeat.i(248638);
+    Cursor localCursor = this.omV.rawQuery("SELECT * FROM BizTimeLineInfo where type !=637534257 order by createTime DESC limit 1", null);
+    if (localCursor.moveToFirst())
+    {
+      localab = new ab();
+      localab.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(248638);
+    return localab;
+  }
+  
+  public final long iYz()
+  {
+    AppMethodBeat.i(248643);
+    Cursor localCursor = this.omV.rawQuery("SELECT createTime FROM BizTimeLineInfo where type !=637534257 order by createTime DESC limit 1", null);
+    long l = 0L;
+    if (localCursor.moveToFirst()) {
+      l = localCursor.getLong(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(248643);
+    return l;
+  }
+  
+  public final boolean mH(List<ab> paramList)
+  {
+    AppMethodBeat.i(248567);
+    if (Util.isNullOrNil(paramList))
+    {
+      AppMethodBeat.o(248567);
+      return false;
+    }
+    long l = this.omV.beginTransaction(Thread.currentThread().getId());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ab localab = (ab)paramList.next();
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("orderFlag", Long.valueOf(localab.field_orderFlag));
+      localContentValues.put("bitFlag", Integer.valueOf(localab.field_bitFlag));
+      localContentValues.put("status", Integer.valueOf(3));
+      if (localab.acFx)
+      {
+        localContentValues.put("hasShow", Integer.valueOf(0));
+        localContentValues.put("isRead", Integer.valueOf(0));
+      }
+      localContentValues.put("rankSessionId", localab.field_rankSessionId);
+      this.omV.update("BizTimeLineInfo", localContentValues, "msgId = ?", new String[] { localab.field_msgId });
+    }
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "batResortBizTimeLineInfo ret=%d", new Object[] { Integer.valueOf(this.omV.endTransaction(l)) });
+    com.tencent.threadpool.h.ahAA.bk(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(248810);
+        ac.a locala = new ac.a();
+        locala.acFX = ac.b.acGc;
+        ac.this.a(locala);
+        AppMethodBeat.o(248810);
+      }
+    });
+    AppMethodBeat.o(248567);
+    return true;
+  }
+  
+  public final List<ab> nT(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(248610);
+    Object localObject = this.omV;
+    String str = "orderFlag DESC limit ".concat(String.valueOf(paramInt2));
+    localObject = s(((com.tencent.mm.storagebase.h)localObject).query("BizTimeLineInfo", null, "type=?", new String[] { String.valueOf(paramInt1) }, null, null, str));
+    AppMethodBeat.o(248610);
+    return localObject;
+  }
+  
+  public final ab yF(long paramLong)
+  {
+    AppMethodBeat.i(124629);
+    ab localab = aq(paramLong, "orderFlag");
+    AppMethodBeat.o(124629);
+    return localab;
+  }
+  
+  public final List<ab> yG(long paramLong)
+  {
+    AppMethodBeat.i(248595);
+    List localList = s(this.omV.query("BizTimeLineInfo", null, "orderFlag>?", new String[] { String.valueOf(paramLong) }, null, null, "orderFlag DESC limit 5"));
+    AppMethodBeat.o(248595);
+    return localList;
+  }
+  
+  public final List<ab> yH(long paramLong)
+  {
+    AppMethodBeat.i(124634);
+    List localList = s(this.omV.query("BizTimeLineInfo", null, "orderFlag>=?", new String[] { String.valueOf(paramLong) }, null, null, "orderFlag DESC"));
+    AppMethodBeat.o(124634);
+    return localList;
+  }
+  
+  public final int yJ(long paramLong)
+  {
+    int i = -1;
+    AppMethodBeat.i(248624);
+    if (yI(paramLong) <= 0)
+    {
+      Log.i("MicroMsg.BizTimeLineInfoStorage", "getMaxWeightByOrderFlag unReadCount < 0");
+      AppMethodBeat.o(248624);
+      return -1;
+    }
+    Object localObject = String.format("SELECT orderFlag FROM %s WHERE isRead = 1 and orderFlag <= %d and orderFlag >= %d order by orderFlag ASC limit 1", new Object[] { "BizTimeLineInfo", Long.valueOf(paramLong), Long.valueOf(0x0 & paramLong) });
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = (int)((((Cursor)localObject).getLong(0) & 0xFF000000) >> 24) - 1;
+    }
+    ((Cursor)localObject).close();
+    if (i < 0) {
+      Log.i("MicroMsg.BizTimeLineInfoStorage", "getMaxWeightByOrderFlag weight < 0");
+    }
+    AppMethodBeat.o(248624);
+    return i;
+  }
+  
+  public final ab yK(long paramLong)
+  {
+    ab localab = null;
+    AppMethodBeat.i(124637);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where talkerId = " + paramLong + "  order by orderFlag DESC limit 1";
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localab = new ab();
+      localab.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(124637);
+    return localab;
+  }
+  
+  public final void yL(long paramLong)
+  {
+    AppMethodBeat.i(124638);
+    long l1 = System.currentTimeMillis();
+    long l2 = 0x0 & paramLong;
+    String str = "update BizTimeLineInfo set status = 4 where orderFlag >= " + l2 + " and status > 4";
+    this.omV.execSQL("BizTimeLineInfo", str);
+    str = "update BizTimeLineInfo set status = 4 where orderFlag >= " + l2 + " and status < 4";
+    this.omV.execSQL("BizTimeLineInfo", str);
+    Log.d("MicroMsg.BizTimeLineInfoStorage", "resetUnread cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    acFM.B(Long.valueOf(paramLong), Boolean.TRUE);
+    AppMethodBeat.o(124638);
+  }
+  
+  public final int yM(long paramLong)
+  {
+    AppMethodBeat.i(124639);
+    Object localObject = (Boolean)acFM.get(Long.valueOf(paramLong));
+    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
+    {
+      AppMethodBeat.o(124639);
+      return 0;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = 0x0 & paramLong;
+    localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= " + l2 + " and status > 4";
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {}
+    for (int i = ((Cursor)localObject).getInt(0);; i = 0)
+    {
+      ((Cursor)localObject).close();
+      localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= " + l2 + " and status < 4";
+      localObject = this.omV.rawQuery((String)localObject, null);
+      int j = i;
+      if (((Cursor)localObject).moveToFirst()) {
+        j = i + ((Cursor)localObject).getInt(0);
+      }
+      ((Cursor)localObject).close();
+      if (j == 0) {
+        acFM.B(Long.valueOf(paramLong), Boolean.TRUE);
+      }
+      Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnread cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+      AppMethodBeat.o(124639);
+      return j;
+    }
+  }
+  
+  public final ab yN(long paramLong)
+  {
+    AppMethodBeat.i(248655);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where orderFlag < " + (paramLong << 32) + " ORDER BY orderFlag desc LIMIT 1 ";
+    localObject = this.omV.rawQuery((String)localObject, null);
+    ab localab = new ab();
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localab.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(248655);
+      return localab;
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(248655);
+    return null;
+  }
+  
+  public final void yO(long paramLong)
+  {
+    AppMethodBeat.i(124641);
+    g.jPX().h(new ac.2(this, paramLong)).b(new a() {});
+    AppMethodBeat.o(124641);
+  }
+  
+  public final int yP(long paramLong)
+  {
+    AppMethodBeat.i(124643);
+    long l = System.currentTimeMillis();
+    Object localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= " + (0x0 & paramLong) + " and hasShow < 1 ";
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {}
+    for (int i = ((Cursor)localObject).getInt(0);; i = 0)
+    {
+      Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnShowCount count = %d,cost = %d", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
+      ((Cursor)localObject).close();
+      if (i > 2000)
+      {
+        if (this.acFR == this.acFP.longValue()) {
+          iYE();
+        }
+        AppMethodBeat.o(124643);
+        return 0;
+      }
+      AppMethodBeat.o(124643);
+      return i;
+    }
+  }
+  
+  public final void yQ(long paramLong)
+  {
+    AppMethodBeat.i(124645);
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "deleteById: %d", new Object[] { Long.valueOf(paramLong) });
+    Object localObject = new ab();
+    ((ab)localObject).field_msgId = paramLong;
+    super.delete((IAutoDBItem)localObject, false, new String[] { "msgId" });
+    localObject = new a();
+    ((a)localObject).acFX = b.acGa;
+    a((a)localObject);
+    iYC();
+    AppMethodBeat.o(124645);
+  }
+  
+  public final ab yS(long paramLong)
+  {
+    ab localab = null;
+    AppMethodBeat.i(124653);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where type=620757041 and orderFlag > ".concat(String.valueOf(paramLong));
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localab = new ab();
+      localab.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(124653);
+    return localab;
+  }
+  
+  public final ab yT(long paramLong)
+  {
+    ab localab = null;
+    AppMethodBeat.i(248704);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where type=637534257 and orderFlag > ".concat(String.valueOf(paramLong));
+    localObject = this.omV.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localab = new ab();
+      localab.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(248704);
+    return localab;
+  }
+  
+  public static final class a
+  {
+    public ac.b acFX = ac.b.acFZ;
+    public boolean acFY = false;
+    public List<ab> list;
+    public String talker;
+    public ab vGS;
+  }
+  
+  public static enum b
   {
     static
     {
-      AppMethodBeat.i(58991);
-      yxp = new a("USERINFO_REPORT_LAST_TIME_REPORT_DYNACFG_VER_LONG", 0);
-      yxq = new a("USERINFO_REPORT_LAST_TIME_REPORT_VIDEO_SEND_RECV_COUNT_LONG", 1);
-      yxr = new a("USERINFO_UPDATE_UPDATE_FLAG_LONG", 2);
-      yxs = new a("USERINFO_UPDATE_UPDATE_VERION_LONG", 3);
-      yxt = new a("USERINFO_UPDATE_UPDATE_TIME_LONG", 4);
-      yxu = new a("USERINFO_WALLET_OFFLINE_IEMI_STRING_SYNC", 5);
-      yxv = new a("USERINFO_WALLET_OFFLINE_CODE_VER_STRING", 6);
-      yxw = new a("USERINFO_SHAKE_CARD_ENTRANCE_OPEN_BOOLEAN_SYNC", 7);
-      yxx = new a("USERINFO_SHAKE_CARD_ENTRANCE_BEGIN_TIME_INT_SYNC", 8);
-      yxy = new a("USERINFO_SHAKE_CARD_ENTRANCE_END_TIME_INT_SYNC", 9);
-      yxz = new a("USERINFO_SHAKE_CARD_ENTRANCE_NAME_STRING_SYNC", 10);
-      yxA = new a("USERINFO_SHAKE_CARD_FLOW_CONTROL_LEVEL_MIN_INT_SYNC", 11);
-      yxB = new a("USERINFO_SHAKE_CARD_FLOW_CONTROL_LEVEL_MAX_INT_SYNC", 12);
-      yxC = new a("USERINFO_SHAKE_CARD_ENTRANCE_TIP_STRING_SYNC", 13);
-      yxD = new a("USERINFO_SHAKE_CARD_ACTIVITY_TYPE_INT_SYNC", 14);
-      yxE = new a("USERINFO_SHAKE_CARD_ENTRANCE_RED_DOT_ID_STRING_SYNC", 15);
-      yxF = new a("USERINFO_SHAKE_CARD_ENTRANCE_RED_DOT_DESC_STRING_SYNC", 16);
-      yxG = new a("USERINFO_SHAKE_CARD_ENTRANCE_RED_DOT_TEXT_STRING_SYNC", 17);
-      yxH = new a("USERINFO_SHAKE_CARD_TAB_RED_DOT_ID_STRING_SYNC", 18);
-      yxI = new a("USERINFO_SHAKE_CARD_TAB_RED_DOT_DESC_STRING_SYNC", 19);
-      yxJ = new a("USERINFO_GAME_SEARCH_LIST_UPDATE_TIME_LONG", 20);
-      yxK = new a("USERINFO_GAME_GLOBAL_CONFIG_UPDATE_TIME_LONG", 21);
-      yxL = new a("USERINFO_MINIGAME_SEARCH_LIST_UPDATE_TIME_LONG", 22);
-      yxM = new a("USERINFO_EMOJI_BACKUP_OVERSIZE_BOOLEAN", 23);
-      yxN = new a("USERINFO_EMOJI_SYNC_STORE_EMOJI_UPLODD_LONG", 24);
-      yxO = new a("USERINFO_EMOJI_SYNC_STORE_EMOJI_DOWNLOAD_LONG", 25);
-      yxP = new a("USERINFO_EMOJI_RECOVER_CUSTOM_EMOJI_BOOLEAN", 26);
-      yxQ = new a("USERINFO_EMOJI_SYNC_STORE_EMOJI_UPLODD_FINISH_BOOLEAN", 27);
-      yxR = new a("USERINFO_EMOJI_STORE_LAST_REFRESH_TIME_LONG", 28);
-      yxS = new a("USERINFO_EMOJI_STORE_RECOMMEND_LAST_UPDATE_TIME_LONG", 29);
-      yxT = new a("USERINFO_EMOJI_STORE_NEW_ORIGINAL_BOOLEAN", 30);
-      yxU = new a("USERINFO_EMOJI_SYNC_CUSTOM_EMOJI_BATCH_DOWNLOAD_BOOLEAN", 31);
-      yxV = new a("USERINFO_EMOJI_SYNC_CAPTURE_EMOJI_BATCH_DOWNLOAD_BOOLEAN", 32);
-      yxW = new a("USERINFO_EMOJI_SYNC_STORE_EMOJI_NEW_PANEL_BOOLEAN", 33);
-      yxX = new a("USERINFO_EMOJI_STORE_NEW_DESIGNER_EMOJI_BOOLEAN", 34);
-      yxY = new a("USERINFO_EMOJI_NEXT_CUSTOM_BATCH_DOWNLOAD_TIME_LONG", 35);
-      yxZ = new a("USERINFO_EMOJI_NEXT_CAPTURE_BATCH_DOWNLOAD_TIME_LONG", 36);
-      yya = new a("USERINFO_EMOJI_CLEAN_TEMP_FILE_TASK_LONG", 37);
-      yyb = new a("USERINFO_EMOJI_ENCODE_EMOJI_FILE_TASK_LONG", 38);
-      yyc = new a("USERINFO_EMOJI_REPORT_CUSTOM_EMOJI_COUNT_LONG", 39);
-      yyd = new a("USERINFO_EMOJI_REWARD_TIP_ENABLE_BOOLEAN", 40);
-      yye = new a("USERINFO_EMOJI_CUREENT_VERSION_INT", 41);
-      yyf = new a("USERINFO_EMOJI_UPDATE_EMOJI_GROUP_COUNT_BOOLEAN", 42);
-      yyg = new a("USERINFO_EMOJI_NEW_EMOJI_INT", 43);
-      yyh = new a("USERINFO_EMOJI_NEW_PANEL_INT", 44);
-      yyi = new a("USERINFO_EMOJI_NEW_SUGGEST_INT", 45);
-      yyj = new a("USERINFO_EMOJI_EGG_INT", 46);
-      yyk = new a("USERINFO_EMOJI_NEW_PANEL_NAME_STRING", 47);
-      yyl = new a("USERINFO_LUCKY_MONEY_NEWYEAR_SWITCH_INT_SYNC", 48);
-      yym = new a("USERINFO_LUCKY_MONEY_NEWYEAR_LOCAL_SWITCH_INT", 49);
-      yyn = new a("USERINFO_ADD_CONTACT_BY_WEWORK_SWITCH_INT", 50);
-      yyo = new a("USERINFO_ADD_CONTACT_BY_WEWORK_STRING_SYNC", 51);
-      yyp = new a("USERINFO_ADD_CONTACT_BY_WEWORK_USERNAME_STRING_SYNC", 52);
-      yyq = new a("USERINFO_VOICEPRINT_MORE_TAB_DOT_SHOW_BOOLEAN", 53);
-      yyr = new a("USERFINO_VOICEPRINT_SETTING_DOT_SHOW_BOOLEAN", 54);
-      yys = new a("USERINFO_VOICEPRINT_SETTING_ACCOUNT_INFO_DOT_SHOW_BOOLEAN", 55);
-      yyt = new a("USERINFO_VOICEPRINT_SETTING_ACCOUNT_INFO_NEW_SHOW_BOOLEAN", 56);
-      yyu = new a("USERINFO_REPORTNETTYPE_SEQ_LONG", 57);
-      yyv = new a("USERINFO_REPORTNETTYPE_LASTREPORT_LONG", 58);
-      yyw = new a("USERINFO_SELFINFO_SMALLIMGURL_STRING", 59);
-      yyx = new a("USERINFO_SELFINFO_GETPROFILE_TIME_LONG", 60);
-      yyy = new a("USERINFO_WALLET_BALANCE_NOTICE_STRING", 61);
-      yyz = new a("USERINFO_WALLET_FETCH_NOTICE_STRING", 62);
-      yyA = new a("USERINFO_WALLET_SUPPORT_BANK_WORD_STRING", 63);
-      yyB = new a("USERINFO_NEED_TO_UPDATE_CONVERSATION_TIME_DIVIDER_LONG", 64);
-      yyC = new a("USERINFO_EXPOSE_GETEXPOSESCENE_TIME_LONG", 65);
-      yyD = new a("USERINFO_WXPHONE_PB_COUNT_INT", 66);
-      yyE = new a("USERINFO_MALL_INDEX_HAS_SHOWN_FTF_NOTICE_BOOLEAN", 67);
-      yyF = new a("USERINFO_PHONE_RECHARGE_CLOSED_BANNER_STRING", 68);
-      yyG = new a("USERINFO_QQMAIL_UNREAD_COUNT_INT", 69);
-      yyH = new a("USERINFO_AUTOGETBIG_IMG_MAX_LONG", 70);
-      yyI = new a("USERINFO_AUTOGETBIG_IMG_CURRENT_LONG", 71);
-      yyJ = new a("USERINFO_AUTOGETBIG_IMG_CURRENT_DATE_LONG", 72);
-      yyK = new a("USERINFO_SHAKE_KV_STAT_BLUETOOTH_POWER_STATE_TIME_LONG", 73);
-      yyL = new a("USERINFO_SHAKE_TV_LATITUDE_STRING", 74);
-      yyM = new a("USERINFO_SHAKE_TV_LONGTITUDE_STRING", 75);
-      yyN = new a("NEW_BANDAGE_DATASOURCE_NEW_CARD_REDDOT_WORDING_STRING_SYNC", 76);
-      yyO = new a("NEW_BANDAGE_DATASOURCE_NEW_CARD_ICON_STRING_SYNC", 77);
-      yyP = new a("NEW_BANDAGE_WATCHER_SETTING_CARD_ENTRY_REDDOT_WORDING_STRING_SYNC", 78);
-      yyQ = new a("NEW_BANDAGE_WATCHER_SETTING_CARD_ENTRY_ICON_STRING_SYNC", 79);
-      yyR = new a("USERINFO_CARDLAYOUT_TESTDATA_STRING", 80);
-      yyS = new a("USERINFO_CARD_LAYOUT_BUF_DATA_STRING_SYNC", 81);
-      yyT = new a("USERINFO_CARD_REDOT_WORDING_STRING_SYNC", 82);
-      yyU = new a("USERINFO_CARD_REDOT_END_TIME_INT_SYNC", 83);
-      yyV = new a("USERINFO_CARD_REDOT_BUFF_STRING_SYNC", 84);
-      yyW = new a("USERINFO_CARD_REDOT_ICON_URL_STRING_SYNC", 85);
-      yyX = new a("USERINFO_CARD_MSG_TIPS_TITLE_STRING_SYNC", 86);
-      yyY = new a("USERINFO_CARD_MSG_TIPS_ICON_URL_STRING_SYNC", 87);
-      yyZ = new a("USERINFO_CARD_GET_LAYOUT_SCENE_INT_SYNC", 88);
-      yza = new a("USERINFO_CARD_GET_LAYOUT_JSON_STRING_SYNC", 89);
-      yzb = new a("USERINFO_CARD_SHARECARD_LAYOUT_JSON_STRING_SYNC", 90);
-      yzc = new a("USERINFO_CARD_REQUENCE_LONG_SYNC", 91);
-      yzd = new a("USERINFO_CARD_IS_SHARE_CARD_ENTRANCE_OPEN_INT_SYNC", 92);
-      yze = new a("USERINFO_CARD_IS_SHOW_SHARE_CARD_TIP_INT_SYNC", 93);
-      yzf = new a("USERINFO_CARD_IS_SHOW_SHARE_CARD_ENTRANCE_TIP_INT_SYNC", 94);
-      yzg = new a("USERINFO_CARD_IS_SHOW_MEMBERSHIP_TIP_INT_SYNC", 95);
-      yzh = new a("USERINFO_CARD_SHARE_LIST_CLEAR_TIME_INT_SYNC", 96);
-      yzi = new a("USERINFO_CARD_SHOW_WARNING_CARD_IDS_STRING_SYNC", 97);
-      yzj = new a("USERINFO_CARD_HAS_UPDATE_CARD_TYPE_INT_SYNC", 98);
-      yzk = new a("USERINFO_CARD_MSG_CARD_ID_STRING_SYNC", 99);
-      yzl = new a("USERINFO_CARD_MSG_NEED_CHECK_BOOLEAN_SYNC", 100);
-      yzm = new a("USERINFO_CARD_HOME_PAGE_LIST_STRING_SYNC", 101);
-      yzn = new a("USERINFO_CARD_HOME_PAGE_SECOND_ENTRANCE_STRING_SYNC", 102);
-      yzo = new a("USERINFO_CARD_HOME_PAGE_CARD_NUM_INT_SYNC", 103);
-      yzp = new a("USERINFO_CARD_HOME_PAGE_HAS_LOAD_NEW_ENTRANCE_BOOLEAN_SYNC", 104);
-      yzq = new a("USERINFO_POSITION_REMIND_MSG_TIP_IN_BOOLEAN", 105);
-      yzr = new a("USERINFO_FINGER_PRINT_SHOW_OPEN_GUIDE_BOOLEAN_SYNC", 106);
-      yzs = new a("USERINFO_FINGER_PRINT_SHOW_OPEN_HWFPMANAGER_BOOLEAN_SYNC", 107);
-      yzt = new a("USERINFO_WALLET_FINGERPRINT_SWITCH_IS_NOT_NEW_BOOLEAN_SYNC", 108);
-      yzu = new a("USERINFO_FINGER_PRINT_IS_OPEN_BOOLEAN_SYNC", 109);
-      yzv = new a("USERINFO_FINGER_PRINT_IS_SO_LOAD_SUCCESS_BOOLEAN_SYNC", 110);
-      yzw = new a("USERINFO_FINGER_PRINT_IS_FORCE_PWD_MODE_BOOLEAN_SYNC", 111);
-      yzx = new a("USERINFO_FINGER_PRINT_SHOW_OPEN_GUIDE_IN_TRANSPARENT_BOOLEAN_SYNC", 112);
-      yzy = new a("USERINFO_FINGER_PRINT_IS_SO_LOADLIBRARY_SUCCESS_BOOLEAN_SYNC", 113);
-      yzz = new a("USERINFO_FINGER_PRINT_IS_FIRST_SHOWN_BOOLEAN_SYNC", 114);
-      yzA = new a("USERINFO_FINGER_PRINT_SHOW_OPEN_GUIDE_IN_TRANSPARENT_NEW_BOOLEAN_SYNC", 115);
-      yzB = new a("USERINFO_FINGER_PRINT_SHOW_OPEN_GUIDE_COUNT_INT_SYNC", 116);
-      yzC = new a("USERINFO_FINGER_PRINT_LAST_IS_SEVERE_ERROR_BOOLEAN_SYNC", 117);
-      yzD = new a("USERINFO_IS_LAST_UPLOAD_ASK_SUCCESS_BOOLEAN_SYNC", 118);
-      yzE = new a("USERINFO_IS_LAST_GEN_ASK_SUCCESS_BOOLEAN_SYNC", 119);
-      yzF = new a("USERINFO_IS_LAST_UPLOAD_AK_SUCCESS_BOOLEAN_SYNC", 120);
-      yzG = new a("USERINFO_IS_LAST_GEN_AK_SUCCESS_BOOLEAN_SYNC", 121);
-      yzH = new a("USERINFO_ABTEST_SERVER_TIMESTAMP_INT", 122);
-      yzI = new a("USERINFO_ABTEST_LAST_UPDATE_TIME_LONG", 123);
-      yzJ = new a("USERINFO_ABTEST_UPDATE_TIME_INTERVAL_INT", 124);
-      yzK = new a("USERINFO_NFC_CPU_CARD_CONFIG_STRING", 125);
-      yzL = new a("USERINFO_BIND_MOBILE_XML_TIP_BOOLEAN", 126);
-      yzM = new a("USERINFO_BIND_MOBILE_XML_FORCE_BIND_BOOLEAN", 127);
-      yzN = new a("USERINFO_BIND_MOBILE_XML_WORDING_STRING", 128);
-      yzO = new a("USERINFO_BIZ_ATTR_SYNC_OPEN_FLAG_INT", 129);
-      yzP = new a("USERINFO_NFC_OPEN_SWITCH_INT_SYNC", 130);
-      yzQ = new a("USERINFO_NFC_OPEN_DEFAULT_SWITCH_INT_SYNC", 131);
-      yzR = new a("BUSINESS_SNS_ADLOG_FREQUENCY_INT", 132);
-      yzS = new a("BUSINESS_SNS_ADLOG_CNTTIME_INT", 133);
-      yzT = new a("USERINFO_NFC_OPEN_SWITCH_WORDING_STRING_SYNC", 134);
-      yzU = new a("USERINFO_SNS_OPEN_UPLOAD_DRAFT_MEDIA_STRING_SYNC", 135);
-      yzV = new a("USERINFO_SNS_OPEN_UPLOAD_NEWTEXT_DRAFT_STRING_SYNC", 136);
-      yzW = new a("USERINFO_SNS_OPEN_UPLOAD_DRAFT_LAST_SESSIONID_STRING", 137);
-      yzX = new a("USERINFO_SNS_OPEN_UPLOAD_WEISHI_BOOLEAN_SYNC", 138);
-      yzY = new a("USERINFO_SNS_OPEN_SHOW_WEISHI_BOOLEAN_SYNC", 139);
-      yzZ = new a("USERINFO_IPCALL_COUNTRY_CODE_RESTRCTION_INT", 140);
-      yAa = new a("USERINFO_IPCALL_COUNTRY_CODE_LASTUPDATE_TIME_LONG", 141);
-      yAb = new a("USERINFO_IPCALL_FIRST_IN_BOOLEAN", 142);
-      yAc = new a("USERINFO_IPCALL_ADDRESS_LASTREPORT_TIME_LONG", 143);
-      yAd = new a("USERINFO_IPCALL_ADDRESS_GETMFRIEND_LASTUPDATE_TIME_LONG", 144);
-      yAe = new a("USERINFO_IPCALL_ADDRESS_GETLOCATION_LASTUPDATE_TIME_LONG", 145);
-      yAf = new a("USERINFO_IPCALL_ADDRESS_ACCOUNT_SHOW_REDDOT_BOOLEAN", 146);
-      yAg = new a("USERFINO_IPCALL_ADDRESS_ACCOUNT_SHOW_REDDOT_TYPE_INT", 147);
-      yAh = new a("USERFINO_IPCALL_ADDRESS_ACCOUNT_STRING", 148);
-      yAi = new a("USERFINO_IPCALL_ADDRESS_ACCOUNT_ACTIVITY_STRING", 149);
-      yAj = new a("USERINFO_IPCALL_ADDRESS_ACCOUNT_ACTIVITY_CLEAR_TYPE_INT", 150);
-      yAk = new a("USERINFO_IPCALL_ADDRESS_ACCOUNT_ACTIVITY_TYPE_VERSION_INT", 151);
-      yAl = new a("USERFINO_IPCALL_RECHARGE_STRING", 152);
-      yAm = new a("USERINFO_IPCALL_RECHARGE_SHOW_REDDOT_BOOLEAN", 153);
-      yAn = new a("USERINFO_IPCALL_PACKAGE_PURCHASE_STRING", 154);
-      yAo = new a("USERINFO_IPCALL_EXCHANGE_RECORD_SHOW_REDDOT_BOOLEAN", 155);
-      yAp = new a("USERFINO_IPCALL_HAS_ENTRY_BOOLEAN", 156);
-      yAq = new a("USERFINO_IPCALL_HAS_ENTRY_FIND_REDDOT_INT", 157);
-      yAr = new a("USERFINO_IPCALL_HAS_ENTRY_FIND_WORDING_STRING", 158);
-      yAs = new a("USERFINO_IPCALL_HAS_ENTRY_FIND_REDDOT_NEWXML_BOOLEAN", 159);
-      yAt = new a("USERFINO_IPCALL_HAS_ENTRY_FIND_REDDOT_TYPE_INT", 160);
-      yAu = new a("USERINFO_IPCALL_MSG_CENTER_SHOW_REDDOT_BOOLEAN", 161);
-      yAv = new a("USERFINO_IPCALL_MSG_CENTER_SHOW_REDDOT_TYPE_INT", 162);
-      yAw = new a("USERFINO_IPCALL_REDDOT_RECHARGE_VERSION_INT", 163);
-      yAx = new a("USERFINO_IPCALL_SHOW_FROM_VOIP_LAST_TIME_LONG", 164);
-      yAy = new a("USERFINO_IPCALL_SHOW_FROM_VOIP_TIME_COUNT_INT", 165);
-      yAz = new a("USERFINO_FAV_HAS_DB_DATATOTALLENGTH_BOOLEAN", 166);
-      yAA = new a("USERFINO_FAV_USED_CAPACITY_LONG", 167);
-      yAB = new a("USERFINO_FAV_TOTAL_CAPACITY_LONG", 168);
-      yAC = new a("USERFINO_FAV_IS_FULL_BOOLEAN", 169);
-      yAD = new a("USERFINO_IPCALL_SHOW_FEEDBACK_LAST_TIME_LONG", 170);
-      yAE = new a("USERFINO_IPCALL_SHOW_FEEDBACK_TIME_COUNT_INT", 171);
-      yAF = new a("USERFINO_IPCALL_HAS_ACTIVITY_BOOLEAN", 172);
-      yAG = new a("USERFINO_IPCALL_ACTIVITY_STRING", 173);
-      yAH = new a("USERINFO_SUBMENU_SHOW_TIT_BOOLEAN", 174);
-      yAI = new a("USERINFO_PROFILE_WEIDIANINFO_STRING", 175);
-      yAJ = new a("GAME_DISCOVERY_ENTRANCE_MSGID_LONG_SYNC", 176);
-      yAK = new a("GAME_INDEX_BUBBLE_MSGID_LONG_SYNC", 177);
-      yAL = new a("GAME_MSG_ENTRANCE_MSGID_LONG_SYNC", 178);
-      yAM = new a("GAME_GIFT_ENTRANCE_MSGID_LONG_SYNC", 179);
-      yAN = new a("GAME_INDEX_FLOATLAYER_MSGID_LONG_SYNC", 180);
-      yAO = new a("GAME_INDEX_BANNER_MSGID_LONG_SYNC", 181);
-      yAP = new a("USERINFO_WELCOMEMSG_CONTENT_STRING", 182);
-      yAQ = new a("USERINFO_WELCOMEMSG_EXT_LASTTIME_LONG", 183);
-      yAR = new a("USERINFO_WELCOMEMSG_EXT_SHOWCOUNT_LONG", 184);
-      yAS = new a("USERINFO_RES_DOWNLOADER_CHECK_RES_UPDATE_INTERVAL_LONG", 185);
-      yAT = new a("USERINFO_RES_DOWNLOADER_CHECK_RESUME_INTERVAL_LONG", 186);
-      yAU = new a("USERINFO_LOAN_ENTRANCE_RED_POINT_INT", 187);
-      yAV = new a("USERINFO_WEBVIEW_CLEAR_HOST_COOKIES_INTERVAL_LONG", 188);
-      yAW = new a("USERINFO_IBEACON_PUSH_SHOP_ID_LONG", 189);
-      yAX = new a("USERINFO_IBEACON_PUSH_CHANNEL_OPEN_METHOD_INT", 190);
-      yAY = new a("USERINFO_IBEACON_PUSH_CHANNEL_OPEN_TIME_LONG", 191);
-      yAZ = new a("USERINFO_IBEACON_SHAKE_TAB_DISPLAY_INT", 192);
-      yBa = new a("USERINFO_IBEACON_SHAKE_IS_RANGING_INTERFACE_BOOLEAN", 193);
-      yBb = new a("USERINFO_IBEACON_PUSH_BEACONINFO_STRING", 194);
-      yBc = new a("USERINFO_IBEACON_PUSH_LAST_BEACONINFO_STRING", 195);
-      yBd = new a("USERINFO_IBEACON_PUSH_IS_OPEN_BOOLEAN", 196);
-      yBe = new a("USERINFO_IBEACON_PUSH_OPEN_TIEMSTAMP_LONG", 197);
-      yBf = new a("USERINFO_IBEACON_PUSH_IS_IN_SHAKEUI_BOOLEAN", 198);
-      yBg = new a("USERINFO_IBEACON_SHAKE_TAB_IS_BLUETOOTH_RESIDENT_BOOLEAN", 199);
-      yBh = new a("USERINFO_IBEACON_SHAKE_TAB_IS_CITY_RESIDENT_BOOLEAN", 200);
-      yBi = new a("USERINFO_IBEACON_SHAKE_TAB_IS_UIN_RESIDENT_INT", 201);
-      yBj = new a("USERINFO_IBEACON_SHAKE_TAB_RESIDENT_GATED_LAUNCH_INT", 202);
-      yBk = new a("USERINFO_PROFILE_WEIDIANINFO_ALERT_INT", 203);
-      yBl = new a("USERINFO_LAST_LOCATION_STRING", 204);
-      yBm = new a("USERINFO_LAST_F2F_INVITE_TIME_LONG", 205);
-      yBn = new a("USERINFO_F2F_DELAY_TIME_LONG", 206);
-      yBo = new a("USERINFO_MALL_INDEX_TYPE_NAME_LIST_STRING_SYNC", 207);
-      yBp = new a("USERINFO_MALL_THIRD_PARTY_DISCLAIMER_STRING", 208);
-      yBq = new a("USERINFO_SHAKE_TV_ACCURACY_STRING", 209);
-      yBr = new a("USERINFO_IPCALL_ACCOUNT_CACHE_STRING", 210);
-      yBs = new a("USERINFO_SET_CAN_WEBVIEW_CACHE_DOWNLOAD_BOOLEAN", 211);
-      yBt = new a("USERINFO_SET_CAN_WEBVIEW_CACHE_PRE_PUSH_DOWNLOAD_BOOLEAN", 212);
-      yBu = new a("USERINFO_WEBVIEW_CACHE_CLEANUP_INTERVAL_LONG", 213);
-      yBv = new a("USERINFO_TRICK_SOTER_BOOLEAN", 214);
-      yBw = new a("USERINFO_CLEANUI_QQMGRINFO_STRING", 215);
-      yBx = new a("USERINFO_POSITION_AT_CHATRECORD_FIRST_IN_BOOLEAN", 216);
-      yBy = new a("USERINFO_POSITION_INVOKE_EDIT_TIP_IN_BOOLEAN", 217);
-      yBz = new a("USERINFO_HAD_SHOW_WALLET_MULTI_WALLET_GUIDE_BOOLEAN", 218);
-      yBA = new a("USERINFO_HAD_SHOW_WALLET_SECURITY_TIPS_BOOLEAN", 219);
-      yBB = new a("USERINFO_WALLET_BULLETIN_GET_TIME_LONG", 220);
-      yBC = new a("USERINFO_WALLET_BULLETIN_UPDATE_INTERVAL_LONG", 221);
-      yBD = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRL_STRING_SYNC", 222);
-      yBE = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_TIP_STRING_SYNC", 223);
-      yBF = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLMARKFINDMORE_STRING_SYNC", 224);
-      yBG = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLMARKCAMERA_STRING_SYNC", 225);
-      yBH = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLMARKFULLSCREEN_STRING_SYNC", 226);
-      yBI = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLLUCKYOPEN_BOOLEAN_SYNC", 227);
-      yBJ = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLLUCKYCTRLHASSHOW_BOOLEAN_SYNC", 228);
-      yBK = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLLUCKYCOUNT_INT_SYNC", 229);
-      yBL = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLLUCKYCOUNT2_INT_SYNC", 230);
-      yBM = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLMARKPOST_STRING_SYNC", 231);
-      yBN = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_CTRLMARKGOLDCAMERATIP_STRING_SYNC", 232);
-      yBO = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_TIPMARKCAMERATIP_STRING_SYNC", 233);
-      yBP = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_LEVELCTRL_STRING_SYNC", 234);
-      yBQ = new a("USERINFO_NEWYEAR_2016_HONGBAO_SNS_FLOW_CONTROL_CACHEBUFFER_STRING", 235);
-      yBR = new a("USERINFO_NEWYEAR_2016_ACCEPT_CARD_ITEM_BUFFER_STRING_SYNC", 236);
-      yBS = new a("USERINFO_NEWYEAR_2016_HONGBAO_IS_OPEN_SNS_PAY_INT_SYNC", 237);
-      yBT = new a("USERINFO_NEWYEAR_2016_HONGBAO_CAN_OPEN_SNS_PAY_INT_SYNC", 238);
-      yBU = new a("USERINFO_NEWYEAR_2016_HONGBAO_IS_WHITE_USER_INT_SYNC", 239);
-      yBV = new a("USERINFO_NEWYEAR_2016_HONGBAO_OPEN_SNS_PAY_TITLE_STRING_SYNC", 240);
-      yBW = new a("USERINFO_NEWYEAR_2016_HONGBAO_OPEN_SNS_PAY_WORDING_STRING_SYNC", 241);
-      yBX = new a("USERINFO_NEWYEAR_2016_HONGBAO_SET_SNS_PAY_TITLE_STRING_SYNC", 242);
-      yBY = new a("USERINFO_NEWYEAR_2016_HONGBAO_SET_SNS_PAY_WORDING_STRING_SYNC", 243);
-      yBZ = new a("USERINFO_NEWYEAR_2016_HONGBAO_HAS_SHOW_SNS_PAY_GUIDE_DIALOG_BOOLEAN_SYNC", 244);
-      yCa = new a("USERINFO_NEWYEAR_HONGBAO_IMAGE_PATH_STRING_SYNC", 245);
-      yCb = new a("USERINFO_NEWYEAR_HONGBAO_IMAGE_ID_STRING_SYNC", 246);
-      yCc = new a("USERINFO_NEWYEAR_HONGBAO_IMAGE_AES_KEY_STRING_SYNC", 247);
-      yCd = new a("USERINFO_NEWYEAR_HONGBAO_IMAGE_LENGTH_INT_SYNC", 248);
-      yCe = new a("USERINFO_NEWYEAR_HONGBAO_IMAGE_PRESTRAIN_FLAG_INT_SYNC", 249);
-      yCf = new a("USERINFO_FINGERPRINT_RETRY_TIME_INT_SYNC", 250);
-      yCg = new a("USERINFO_FINGERPRINT_LAST_FREEZE_TIME_LONG_SYNC", 251);
-      yCh = new a("USERINFO_OVER_SEA_DOWNLOAD_X5_HAS_NOTIFY_BOOLEAN_SYNC", 252);
-      yCi = new a("USERINFO_WALLET_PAY_DEDUCT_IS_NEW_BOOLEAN_SYNC", 253);
-      yCj = new a("USERINFO_WALLET_FETCH_CHARGE_TIP_DIALOG_BOOLEAN_SYNC", 254);
-      yCk = new a("USERINFO_WALLET_PREF_INFO_CACHE_TIME_LONG_SYNC", 255);
-      yCl = new a("USERINFO_WALLET_PREF_INFO_EXPIRES_INT_SYNC", 256);
-      yCm = new a("USERINFO_WALLET_BANKCARD_DETAIL_URL_STRING_SYNC", 257);
-      yCn = new a("USERINFO_WALLET_BANKCARD_DETAIL_URL_TIMESTAMP_LONG_SYNC", 258);
-      yCo = new a("USERINFO_WALLET_REALNAME_SWITCH_WORDING_STRING_SYNC", 259);
-      yCp = new a("USERINFO_WALLET_REALNAME_DISCLAIMER_QUERY_EXPIRED_TIME_LONG_SYNC", 260);
-      yCq = new a("USERINFO_WALLET_DISCLAIMER_NEED_AGERR_INT_SYNC", 261);
-      yCr = new a("USERINFO_WALLET_REALNAME_URL_STRING_SYNC", 262);
-      yCs = new a("USERINFO_WALLET_LBS_REPORT_DIALOG_SHOW_TIME_LONG_SYNC", 263);
-      yCt = new a("USERINFO_WALLET_LBS_REPORT_CONFIG_STRING_SYNC", 264);
-      yCu = new a("USERINFO_WALLET_LBS_REPORT_DIALOG_TITLE_STRING_SYNC", 265);
-      yCv = new a("USERINFO_WALLET_LBS_REPORT_DIALOG_CONTENT_STRING_SYNC", 266);
-      yCw = new a("USERINFO_WALLET_RELEAY_NAME_TIP_CONTENT_STRING_SYNC", 267);
-      yCx = new a("USERINFO_WALLET_RELEAY_NAME_BALANCE_CONTENT_STRING_SYNC", 268);
-      yCy = new a("USERINFO_WALLET_DEDUCT_SELECT_WORDING_STRING", 269);
-      yCz = new a("USERINFO_WALLET_DEDUCT_CHANGE_WORDING_STRING", 270);
-      yCA = new a("USERINFO_WALLET_DEDUCT_FORGET_URL_STRING", 271);
-      yCB = new a("USERINFO_MINIQB_SUPPORT_FILE_TYPE_STRING_SYNC", 272);
-      yCC = new a("USERINFO_FACE_DETECTION_ENROLLED_BOOLEAN_SYNC", 273);
-      yCD = new a("USERINFO_WALLET_MALLINDEX_OSDATA_TYPE_STRING_SYNC", 274);
-      yCE = new a("USERINFO_WALLET_REGION_TYPE_INT_SYNC", 275);
-      yCF = new a("USERINFO_RECHARGE_SHOW_REMIND_BOOLEAN", 276);
-      yCG = new a("USERINFO_APP_BRAND_PUBLIC_LIB_UPDATE_NEXT_TIME_SEC_LONG", 277);
-      yCH = new a("USERINFO_APP_BRAND_PUBLIC_LIB_USERNAME_STRING", 278);
-      yCI = new a("USERINFO_APP_BRAND_PUBLIC_LIB_APPID_STRING", 279);
-      yCJ = new a("USERINFO_APP_BRAND_PRUNE_PKG_NEXT_TIME_SEC_LONG", 280);
-      yCK = new a("USERINFO_APP_BRAND_USAGE_RECORD_SYNC_NEXT_TIME_SEC_LONG", 281);
-      yCL = new a("USERINFO_APP_BRAND_COLLECTION_LIST_FETCH_NEXT_TIME_SEC_LONG", 282);
-      yCM = new a("USERINFO_APP_BRAND_USAGE_RECORD_HAS_FAVORITE_BOOLEAN", 283);
-      yCN = new a("USERINFO_APP_BRAND_USAGE_RECORD_HAS_HISTORY_BOOLEAN", 284);
-      yCO = new a("USERINFO_APP_BRAND_SHOW_HISTORY_COUNT_BOOLEAN", 285);
-      yCP = new a("USERINFO_APP_BRAND_HISTORY_HAS_MORE_BOOLEAN", 286);
-      yCQ = new a("USERINFO_APP_BRAND_HISTORY_LIST_PAGING_LAST_SERVER_MIN_UPDATE_TIME_LONG", 287);
-      yCR = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_END_TIME_SECOND_LONG", 288);
-      yCS = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_NEW_XML_MSG_ID_STRING", 289);
-      yCT = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_NEW_XML_PUSH_TIME_LONG", 290);
-      yCU = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_NEW_XML_SHOWTYPE_INT", 291);
-      yCV = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_NEW_XML_REASON_INT", 292);
-      yCW = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_TIPS_STRING", 293);
-      yCX = new a("USERINFO_APP_BRAND_ENTRANCE_RED_DOT_HAS_REPORTED_SEE_RED_DOT_BOOLEAN", 294);
-      yCY = new a("USERINFO_APP_BRAND_ENTRANCE_SHOW_NEW_BOOLEAN", 295);
-      yCZ = new a("USERINFO_APP_BRAND_ENTRANCE_LOCATION_REPORT_MSG_ID_STRING", 296);
-      yDa = new a("USERINFO_APP_BRAND_ENTRANCE_LOCATION_REPORT_END_TIME_SECOND_LONG", 297);
-      yDb = new a("USERINFO_APP_BRAND_ENTRANCE_LOCATION_REPORT_LAST_TIME_SECOND_LONG", 298);
-      yDc = new a("USERINFO_APP_BRAND_ENTRANCE_LOCATION_REPORT_FREQUENCY_SECOND_LONG", 299);
-      yDd = new a("USERINFO_APP_BRAND_ENTRANCE_SHOW_RED_DOT_ONCE_BOOLEAN", 300);
-      yDe = new a("USERINFO_APP_BRAND_ENTRANCE_HAS_SEEN_NEARBY_SHOWCASE_BOOLEAN_SYNC", 301);
-      yDf = new a("USERINFO_APP_BRAND_CHATTING_BANNER_INFO_STRING_SYNC", 302);
-      yDg = new a("USERINFO_APP_BRAND_SEARCH_SHOW_OUT_DAILY_SYNC_LAST_TIME_SECOND_LONG", 303);
-      yDh = new a("USERINFO_APP_BRAND_RECENT_BAR_HAS_BEEN_REVEALED_BY_FIRST_APP_LAUNCH_BOOLEAN", 304);
-      yDi = new a("USERINFO_APP_BRAND_COLLECTION_RECORD_TABLE_UPGRADE_ISSUE_DONE_BOOLEAN", 305);
-      yDj = new a("USERINFO_APP_BRAND_RECOMMEND_GET_RECALL_INFO_LAST_TIME_LONG_SYNC", 306);
-      yDk = new a("USERINFO_APP_BRAND_RECOMMEND_DATA_STATE_INT_SYNC", 307);
-      yDl = new a("APPBRAND_PREDOWNLOAD_CGI_PULL_LAST_TIME_IN_SECOND_LONG", 308);
-      yDm = new a("APPBRAND_PREDOWNLOAD_DONE_USAGE_USERNAME_DUPLICATE_BEFORE_BOOLEAN_SYNC", 309);
-      yDn = new a("APPBRAND_SHORTCUT_URL_UPGRADE_FIXED_BOOLEAN_SYNC", 310);
-      yDo = new a("APPBRAND_TBS_CHECK_INSTALL_LAST_TIME_IN_SECOND_LONG", 311);
-      yDp = new a("APPBRAND_BLOCK_QRCODE_PREFIX_STRING_SYNC", 312);
-      yDq = new a("USERINFO_EXT_SPORT_PKGNAME_STRING", 313);
-      yDr = new a("USERINFO_SENSE_WHERE_LOCATION_STRING", 314);
-      yDs = new a("USERINFO_LAST_GET_SENSE_WHERE_LOCATION_LONG", 315);
-      yDt = new a("USERINFO_LAST_START_SENSE_WHERE_LONG", 316);
-      yDu = new a("USERINFO_REPORT_SD_STATUS_TIME_LONG", 317);
-      yDv = new a("USERINFO_REPORT_HARDCODER_TIME_LONG", 318);
-      yDw = new a("USERINFO_REPORT_ECDH_AUTH_TIME_LONG", 319);
-      yDx = new a("USERINFO_ADDRESS_HAS_SHOW_DISCLAIMER_DIALOG_BOOLEAN_SYNC", 320);
-      yDy = new a("USERINFO_INVOICE_HAS_SHOW_DISCLAIMER_DIALOG_BOOLEAN_SYNC", 321);
-      yDz = new a("USERINFO_ONLINE_VIDEO_INT", 322);
-      yDA = new a("USERINFO_ADDRESS_HAS_SHOW_WALLETOFFLINE_DIALOG_BOOLEAN_SYNC", 323);
-      yDB = new a("USERINFO_SERVICE_NOTIFY_MESSAGE_NOTICE_BOOLEAN_SYNC", 324);
-      yDC = new a("USERINFO_WXA_CUSTOM_SESSION_MESSAGE_NOTICE_BOOLEAN_SYNC", 325);
-      yDD = new a("USERINFO_WALLETDIGITAL_CERT_CRT_STRING_SYNC", 326);
-      yDE = new a("USERINFO_WALLETDIGITAL_CERT_NO_STRING_SYNC", 327);
-      yDF = new a("USERINFO_WALLETDIGITAL_CERT_SHOW_INT_SYNC", 328);
-      yDG = new a("USERINFO_ADDRESS_HAS_SHOW_WALLETOFFLINE2_DIALOG_BOOLEAN_SYNC", 329);
-      yDH = new a("USERINFO_AA_MAX_PAYER_NUM_INT", 330);
-      yDI = new a("USERINFO_AA_MAX_RECEIVER_NUM_INT", 331);
-      yDJ = new a("USERINFO_AA_MAX_TOTAL_USER_NUM_INT", 332);
-      yDK = new a("USERINFO_AA_MAX_TOTAL_AMOUNT_LONG", 333);
-      yDL = new a("USERINFO_AA_MAX_PER_AMOUNT_LONG", 334);
-      yDM = new a("USERINFO_APP_BRAND_FAILED_FORMID_STRING", 335);
-      yDN = new a("USERINFO_LOCAL_SIGHT_RECODER_INT_SYNC", 336);
-      yDO = new a("USERINFO_LOCAL_SIGHT_ENCODEINSEND_INT_SYNC", 337);
-      yDP = new a("USERINFO_LOCAL_SIGHT_PREWVIEWSIZE_INT_SYNC", 338);
-      yDQ = new a("USERINFO_LOCAL_SIGHT_BITRATE_INT_SYNC", 339);
-      yDR = new a("USERINFO_LOCAL_SIGHT_DEBUGINFO_INT_SYNC", 340);
-      yDS = new a("USERINFO_LOCAL_SIGHT_SET_SHUTTER_SOUND_INT_SYNC", 341);
-      yDT = new a("USERINFO_LOCAL_SIGHT_CROP_INT_SYNC", 342);
-      yDU = new a("USERINFO_LOCAL_SIGHT_OPENOLDSIGHT_INT_SYNC", 343);
-      yDV = new a("USERINFO_LOCAL_SIGHT_SETTING_PRESET_INT_SYNC", 344);
-      yDW = new a("USERINFO_LOCAL_SIGHT_THREADCOUNT_INT_SYNC", 345);
-      yDX = new a("USERINFO_LOCAL_SIGHT_REALSCALE_INT_SYNC", 346);
-      yDY = new a("USERINFO_LOCAL_SIGHT_FOCUS_INT_SYNC", 347);
-      yDZ = new a("USERINFO_LOCAL_SIGHT_FFMMPEGCUT_INT_SYNC", 348);
-      yEa = new a("USERINFO_LOCAL_SIGHT_COMPRESS_TO_SINGLE_CHANNEL_INT_SYNC", 349);
-      yEb = new a("USERINFO_LOCAL_SIGHT_CLIP_PREVIEW_MEDIA_PLAYER_INT_SYNC", 350);
-      yEc = new a("USERINFO_LOCAL_SIGHT_AUDIO_RECORDER_TYPE_INT_SYNC", 351);
-      yEd = new a("USERINFO_MMSIGHT_MEDIACODEC_COLORFORMAT_INT", 352);
-      yEe = new a("USERINFO_WECHAT_DB_REPORT_LAST_TIME_LONG", 353);
-      yEf = new a("USERINFO_CLOG_SAMPLING_REFRESH_TIME_LONG", 354);
-      yEg = new a("USERINFO_AVATAR_LAST_MIGRATION_FINISH_LONG", 355);
-      yEh = new a("USERINFO_WECHAT_FILE_SCAN_LAST_TIME_LONG", 356);
-      yEi = new a("USERINFO_WECHAT_FILE_SCAN_INTERVAL_LONG", 357);
-      yEj = new a("USERINFO_WECHAT_FILE_SCAN_WAIT_TIME_LONG", 358);
-      yEk = new a("USERINFO_INSTALL_FIRST_TIME_LONG", 359);
-      yEl = new a("USERINFO_INSTALL_FIRST_CLIENT_VERSION_INT", 360);
-      yEm = new a("USERINFO_INSTALL_LAST_REPORT_TIME_LONG", 361);
-      yEn = new a("USERINFO_MSG_SYNCHRONIZE_BOOLEAN", 362);
-      yEo = new a("USERINFO_LOGIN_EXT_DEVICE_INFO_INT", 363);
-      yEp = new a("USERINFO_BACKUP_PC_BACKUPING_BOOLEAN", 364);
-      yEq = new a("USERINFO_BACKUP_PC_RECOVERING_BOOLEAN", 365);
-      yEr = new a("USERINFO_BACKUP_PC_MERGERING_BOOLEAN", 366);
-      yEs = new a("USERINFO_BACKUP_MOVE_BACKUPING_BOOLEAN", 367);
-      yEt = new a("USERINFO_BACKUP_MOVE_RECOVERING_BOOLEAN", 368);
-      yEu = new a("USERINFO_BACKUP_MOVE_MERGERING_BOOLEAN", 369);
-      yEv = new a("USERINFO_BACKUP_OLD_RECORDS_BOOLEAN", 370);
-      yEw = new a("USERINFO_WECHAT_BACKUP_CHAT_SIZE_CALCULATE_LAST_TIME_LONG", 371);
-      yEx = new a("USERINFO_WECHAT_BACKUP_CHAT_SIZE_CALCULATE_INTERVAL_LONG", 372);
-      yEy = new a("USERINFO_WECHAT_BACKUP_CHAT_SIZE_CALCULATE_WAIT_TIME_LONG", 373);
-      yEz = new a("USERINFO_DELAY_TRANSFER_CONFIRM_WORDING_STRING", 374);
-      yEA = new a("USERINFO_DELAY_TRANSFER_SWITCH_WORDING_STRING", 375);
-      yEB = new a("USERINFO_DELAY_TRANSFER_REMIND_WORDING_STRING", 376);
-      yEC = new a("USERINFO_DELAY_TRANSFER_EXPIRE_TIME_LONG", 377);
-      yED = new a("USERINFO_DELAY_TRANSFER_DESC_URL_STRING", 378);
-      yEE = new a("USERINFO_DELAY_TRANSFER_DESC_URL_FLAG_INT", 379);
-      yEF = new a("USERINFO_DELAY_TRANSFER_SHOW_SWITCH_FLAG_INT", 380);
-      yEG = new a("USERINFO_WEIXIN_MUL_TERMINAL_AUTOSYNC_BOOLEAN", 381);
-      yEH = new a("USERINFO_WEIXIN_CAMERA_STATE_INT", 382);
-      yEI = new a("USERINFO_WEIXIN_CAMERASAVEIMAGE_STATE_BOOLEAN", 383);
-      yEJ = new a("USERINFO_WEIXIN_CAMERASAVEVIDEO_STATE_BOOLEAN", 384);
-      yEK = new a("USERINFO_WEIXIN_SNSAUTOPLAY_AUTOSYNC_BOOLEAN", 385);
-      yEL = new a("USERINFO_WALLET_REMITTANCE_STRING_SYNC", 386);
-      yEM = new a("USERINFO_WALLET_HONGBAO_STRING_SYNC", 387);
-      yEN = new a("USERINFO_WALLET_HONGBAO_LAST_THX_SEND_EMOJI_MD5_STRING", 388);
-      yEO = new a("USERINFO_WALLET_HONGBAO_NEW_YEAR_LAST_SEND_EMOJI_MD5_STRING", 389);
-      yEP = new a("USERINFO_WALLET_HONGBAO_PAYMSGID_STRING_SYNC", 390);
-      yEQ = new a("USERINFO_WEBVIEW_KEEP_STRING_SYNC", 391);
-      yER = new a("USERINFO_WEBVIEW_KEEP_LAST_PAGE_STRING_SYNC", 392);
-      yES = new a("USERINFO_WEBVIEW_KEEP_LAST_PAGE_TITLE_STRING_SYNC", 393);
-      yET = new a("USERINFO_F2F_RING_TONE_STRING", 394);
-      yEU = new a("USERINFO_WXA_SEARCH_INPUT_HINT_LANG_STRING_SYNC", 395);
-      yEV = new a("USERINFO_WXA_SEARCH_INPUT_HINT_CONTENT_STRING_SYNC", 396);
-      yEW = new a("USERINFO_WXA_SEARCH_INPUT_HINT_CONTENT_ID_STRING_SYNC", 397);
-      yEX = new a("USERINFO_WXA_SEARCH_INPUT_HINT_UPDATE_TIME_LONG_SYNC", 398);
-      yEY = new a("USERINFO_SHAKE_NEWYEAR_COOKIE_STRING", 399);
-      yEZ = new a("USERINFO_SNS_RECENT_LIMITED_ID_LONG_SYNC", 400);
-      yFa = new a("USERINFO_VIDEO_NEED_RESET_EXTRACTOR_BOOLEAN", 401);
-      yFb = new a("USERINFO_MALL_NEWS_MARKED_STRING_SYNC", 402);
-      yFc = new a("USERINFO_LAUNCH_APP_NOT_ASK_PKG_STRING", 403);
-      yFd = new a("USERINFO_WEBVIEW_KEEP_TOP_SCENE_INT_SYNC", 404);
-      yFe = new a("USERINFO_SNS_INTRODUCE_SETTING_DISPLAY_BOOLEAN_SYNC", 405);
-      yFf = new a("USERINFO_FACE_SHOW_TUTORIAL_BOOLEAN_SYNC", 406);
-      yFg = new a("USERINFO_HEAVY_USER_FLAG_LONG", 407);
-      yFh = new a("USERINFO_HEAVY_USER_REPORT_TIME_LONG", 408);
-      yFi = new a("USERINFO_HEAVY_USER_REPORT_TYPE_SD_FILE_SIZE_LONG", 409);
-      yFj = new a("USERINFO_HEAVY_USER_REPORT_TYPE_SD_FILE_RATIO_LONG", 410);
-      yFk = new a("USERINFO_HEAVY_USER_REPORT_TYPE_DB_SIZE_LONG", 411);
-      yFl = new a("USERINFO_HEAVY_USER_REPORT_TYPE_DB_MESSAGE_LONG", 412);
-      yFm = new a("USERINFO_HEAVY_USER_REPORT_TYPE_DB_CONVERSATION_LONG", 413);
-      yFn = new a("USERINFO_HEAVY_USER_REPORT_TYPE_DB_CONTACT_LONG", 414);
-      yFo = new a("USERINFO_HEAVY_USER_REPORT_TYPE_DB_CHATROOM_LONG", 415);
-      yFp = new a("USERINFO_HEAVY_USER_REPORT_TYPE_FAV_DB_SIZE_LONG", 416);
-      yFq = new a("USERINFO_MM_LVFETIME_REPORT_PID_INT", 417);
-      yFr = new a("USERINFO_MM_LVFETIME_REPORT_LIFETIME_LONG", 418);
-      yFs = new a("USERINFO_MM_LVFETIME_REPORT_MEMORY_PSS_INT", 419);
-      yFt = new a("USERINFO_X264_VERSION_INT", 420);
-      yFu = new a("USERINFO_SETTING_RECENT_RED_DOT_ID_INT", 421);
-      yFv = new a("USERINFO_MY_RED_DOT_WILL_SHOW_ID_INT", 422);
-      yFw = new a("USERINFO_MY_RED_DOT_DID_SHOW_ID_INT", 423);
-      yFx = new a("USERINFO_SETTING_RED_DOT_WILL_SHOW_ID_INT", 424);
-      yFy = new a("USERINFO_SETTING_RED_DOT_DID_SHOW_ID_INT", 425);
-      yFz = new a("USERINFO_PRIVATY_RED_DOT_WILL_SHOW_ID_INT", 426);
-      yFA = new a("USERINFO_PRIVATY_RED_DOT_DID_SHOW_ID_INT", 427);
-      yFB = new a("USERINFO_RECENT_RED_DOT_WILL_SHOW_ID_INT", 428);
-      yFC = new a("USERINFO_RECENT_RED_DOT_DID_SHOW_ID_INT", 429);
-      yFD = new a("USERINFO_WEIXIN_ENABLEFPSTOOL_STATE_BOOLEAN", 430);
-      yFE = new a("USERINFO_CONTINUE_TEST_SCAN_TIME_INT", 431);
-      yFF = new a("USERINFO_ABOUT_INVOICE_ENTRANCE_BOOLEAN", 432);
-      yFG = new a("USERINFO_MUSIO_LAST_SCAN_MUSIC_PIECE_FILE_TIME_LONG", 433);
-      yFH = new a("USERINFO_MUSIO_LAST_SCAN_MUSIC_FILE_TIME_LONG", 434);
-      yFI = new a("USERINFO_MUSIC_PLAYER_SWITCH_FLAG_INT_SYNC", 435);
-      yFJ = new a("USERINFO_MUSIC_SUPPORT_PLAYER_FLAG_SEQUENCE_LONG_SYNC", 436);
-      yFK = new a("USERINFO_MUSIC_RREMOVE_PLAYING_AUDIO_PLAYER_GROUP_COUNT_INT_SYNC", 437);
-      yFL = new a("USERINFO_MUSIC_SHOW_AUDIO_TOAST_BOOLEAN_SYNC", 438);
-      yFM = new a("USERINFO_MUSIC_OPEN_MIX_AUDIO_BOOLEAN_SYNC", 439);
-      yFN = new a("USERINFO_WEB_SEARCH_CONFIG_ZH_CN_STRING", 440);
-      yFO = new a("USERINFO_WEB_SEARCH_CONFIG_ZH_TW_STRING", 441);
-      yFP = new a("USERINFO_WEB_SEARCH_CONFIG_ZH_HK_STRING", 442);
-      yFQ = new a("USERINFO_WEB_SEARCH_CONFIG_EN_STRING", 443);
-      yFR = new a("USERINFO_WEB_SEARCH_CONFIG_AR_STRING", 444);
-      yFS = new a("USERINFO_WEB_SEARCH_CONFIG_DE_STRING", 445);
-      yFT = new a("USERINFO_WEB_SEARCH_CONFIG_DE_DE_STRING", 446);
-      yFU = new a("USERINFO_WEB_SEARCH_CONFIG_ES_STRING", 447);
-      yFV = new a("USERINFO_WEB_SEARCH_CONFIG_FR_STRING", 448);
-      yFW = new a("USERINFO_WEB_SEARCH_CONFIG_HE_STRING", 449);
-      yFX = new a("USERINFO_WEB_SEARCH_CONFIG_HI_STRING", 450);
-      yFY = new a("USERINFO_WEB_SEARCH_CONFIG_ID_STRING", 451);
-      yFZ = new a("USERINFO_WEB_SEARCH_CONFIG_IN_STRING", 452);
-      yGa = new a("USERINFO_WEB_SEARCH_CONFIG_IT_STRING", 453);
-      yGb = new a("USERINFO_WEB_SEARCH_CONFIG_IW_STRING", 454);
-      yGc = new a("USERINFO_WEB_SEARCH_CONFIG_JA_STRING", 455);
-      yGd = new a("USERINFO_WEB_SEARCH_CONFIG_KO_STRING", 456);
-      yGe = new a("USERINFO_WEB_SEARCH_CONFIG_LO_STRING", 457);
-      yGf = new a("USERINFO_WEB_SEARCH_CONFIG_MS_STRING", 458);
-      yGg = new a("USERINFO_WEB_SEARCH_CONFIG_MY_STRING", 459);
-      yGh = new a("USERINFO_WEB_SEARCH_CONFIG_PL_STRING", 460);
-      yGi = new a("USERINFO_WEB_SEARCH_CONFIG_PT_STRING", 461);
-      yGj = new a("USERINFO_WEB_SEARCH_CONFIG_RU_STRING", 462);
-      yGk = new a("USERINFO_WEB_SEARCH_CONFIG_TH_STRING", 463);
-      yGl = new a("USERINFO_WEB_SEARCH_CONFIG_TR_STRING", 464);
-      yGm = new a("USERINFO_WEB_SEARCH_CONFIG_VI_STRING", 465);
-      yGn = new a("USERINFO_CLIENT_SERVER_DIFF_TIME_LONG", 466);
-      yGo = new a("USERINFO_CLIENT_SERVER_TIME_LONG", 467);
-      yGp = new a("USERINFO_CLIENT_SERVER_ELAPSED_TIME_LONG", 468);
-      yGq = new a("USERINFO_MSG_DELAY_STAT_STRING", 469);
-      yGr = new a("USERINFO_SET_SUPPORT_WX_CODE_BOOLEAN", 470);
-      yGs = new a("USERINFO_TENCENT_MAP_COUNT_INT", 471);
-      yGt = new a("USERINFO_CROWDTEST_CLIENT_VERSION_INT", 472);
-      yGu = new a("USERINFO_CROWDTEST_APPLY_EXPIRE_LONG", 473);
-      yGv = new a("USERINFO_CROWDTEST_APPLY_LINK_STRING", 474);
-      yGw = new a("USERINFO_CROWDTEST_FEEDBACK_LINK_STRING", 475);
-      yGx = new a("USERINFO_SETTING_PLUGIN_SWITCH_REDDOT_INT", 476);
-      yGy = new a("USERINFO_SETTING_PLUGIN_SWITCH_NAMES_STRING", 477);
-      yGz = new a("USERINFO_BACKGROUND_CALC_TIME_LONG", 478);
-      yGA = new a("USERINFO_WELAB_LAST_UPDATE_TIME_LONG", 479);
-      yGB = new a("USERINFO_WELAB_UPDATE_TIME_INTERVAL_INT", 480);
-      yGC = new a("USERINFO_WELAB_SERVER_TIMESTAMP_INT", 481);
-      yGD = new a("USERINFO_WELAB_REDPOINT_STRING", 482);
-      yGE = new a("USERINFO_WELAB_APP_REDPOINT_STRING", 483);
-      yGF = new a("USERINFO_WENOTE_KEEP_TOP_DATA_STRING_SYNC", 484);
-      yGG = new a("BUSINESS_OFFLINE_GETMSG_INTERVAL_INT", 485);
-      yGH = new a("BUSINESS_OFFLINE_GETMSG_ACK_KEY_STRING", 486);
-      yGI = new a("BUSINESS_OFFLINE_GETMSG_MAX_POS_TIME_INT", 487);
-      yGJ = new a("USERINFO_WALLET_HK_PAY_URL_STRING", 488);
-      yGK = new a("USERINFO_SUPPORT_HEVC_VIDEO_INT", 489);
-      yGL = new a("USERINFO_HAD_PRELOAD_SIZE_LONG", 490);
-      yGM = new a("USERINFO_HAD_PRELOAD_TIME_LONG", 491);
-      yGN = new a("USERINFO_C2C_HAD_PRELOAD_COUNT_INT", 492);
-      yGO = new a("USERINFO_SNS_HAD_PRELOAD_COUNT_INT", 493);
-      yGP = new a("USERINFO_CHATTING_MONITOR_MAIN_WORDING_STRING_SYNC", 494);
-      yGQ = new a("USERINFO_CHATTING_MONITOR_MAIN_URL_STRING_SYNC", 495);
-      yGR = new a("USERINFO_CHATTING_MONITOR_MAIN_INTERVAL_LONG_SYNC", 496);
-      yGS = new a("USERINFO_CHATTING_MONITOR_MAIN_CLOSABLE_BOOLEAN_SYNC", 497);
-      yGT = new a("USERINFO_CHATTING_MONITOR_MAIN_AUTOTRIGGER_BOOLEAN_SYNC", 498);
-      yGU = new a("USERINFO_CHATTING_BANNER_CLOSED_BOOLEAN_SYNC", 499);
-      yGV = new a("USERINFO_CHATTING_MONITOR_FINGER_PRINT_STRING_SYNC", 500);
-      yGW = new a("USERINFO_MAIN_MONITOR_MAIN_WORDING_STRING_SYNC", 501);
-      yGX = new a("USERINFO_MAIN_MONITOR_MAIN_URL_STRING_SYNC", 502);
-      yGY = new a("USERINFO_MAIN_MONITOR_MAIN_INTERVAL_LONG_SYNC", 503);
-      yGZ = new a("USERINFO_MAIN_MONITOR_MAIN_CLOSABLE_BOOLEAN_SYNC", 504);
-      yHa = new a("USERINFO_MAIN_MONITOR_MAIN_AUTOTRIGGER_BOOLEAN_SYNC", 505);
-      yHb = new a("USERINFO_MAIN_BANNER_CLOSED_BOOLEAN_SYNC", 506);
-      yHc = new a("USERINFO_MONITOR_BANNER_MSG_COME_TIME_TICKS_LONG_SYNC", 507);
-      yHd = new a("USERINFO_MONITOR_IS_TRIGGERED_BOOLEAN_SYNC", 508);
-      yHe = new a("USERINFO_RECENT_LAUNCH_AA_GROUP_STRING_SYNC", 509);
-      yHf = new a("USERINFO_WALLET_ENTRY_REDDOT_PUSH_DATE_LONG_SYNC", 510);
-      yHg = new a("USERINFO_WALLET_INDEX_MAIDAN_STRING_SYNC", 511);
-      yHh = new a("USERINFO_LQT_WALLET_RED_DOT_WORDING_STRING", 512);
-      yHi = new a("USERINFO_LQT_WALLET_RED_DOT_INT", 513);
-      yHj = new a("USERINFO_LQT_BALANCE_RED_DOT_INT", 514);
-      yHk = new a("USERINFO_LQT_LINK_RED_DOT_INT", 515);
-      yHl = new a("USERINFO_LQB_MALL_ENTRY_RED_DOT_INT", 516);
-      yHm = new a("USERINFO_WEPKG_CHECK_DOWNLOAD_TIME_LONG", 517);
-      yHn = new a("USERINFO_WEPKG_FRONT_TRIGGER_DOWNLOAD_TIME_LONG", 518);
-      yHo = new a("USERINFO_WEPKG_ENTRANCE_TRIGGER_DOWNLOAD_TIME_LONG", 519);
-      yHp = new a("USERINFO_GAME_SILENT_DOWNLOAD_TIME_LONG", 520);
-      yHq = new a("USERINFO_FTS_MASTER_DB_VERISON_INT_SYNC", 521);
-      yHr = new a("USERINFO_FTS_MASTER_DB_CORRUPT_REBUILD_TIME_INT_SYNC", 522);
-      yHs = new a("USERINFO_TINKER_BOOTS_CHECK_LAST_TIME_LONG", 523);
-      yHt = new a("BUSINESS_OFFLINE_GETMSG_REQ_KEY_STRING", 524);
-      yHu = new a("BUSINESS_OFFLINE_GETMSG_PAYMSG_TYPE_INT", 525);
-      yHv = new a("BUSINESS_OFFLINE_GETMSG_TRANS_ID_STRING", 526);
-      yHw = new a("USERINFO_FTS_DISCOVERY_RED_ID_INT", 527);
-      yHx = new a("USERINFO_FTS_DISCOVERY_RED_XML_STRING", 528);
-      yHy = new a("NEW_BANDAGE_DATASOURCE_WALLET_MORE_TAB_STRING_SYNC", 529);
-      yHz = new a("NEW_BANDAGE_DATASOURCE_WALLET_BANKCARD_STRING_SYNC", 530);
-      yHA = new a("NEW_BANDAGE_WATCHER_WALLET_COMMON_STRING_SYNC", 531);
-      yHB = new a("USERINFO_WALLET_MORE_TAB_REDDOT_WORDING_STRING_SYNC", 532);
-      yHC = new a("USERINFO_WALLET_BANKCARD_SERIAL_STRING_SYNC", 533);
-      yHD = new a("USERINFO_CALC_WX_SCAN_STEP_INT", 534);
-      yHE = new a("USERINFO_CALC_WX_SCAN_CURR_MSGID2_LONG", 535);
-      yHF = new a("USERINFO_CALC_WX_SCAN_MAX_MSGID2_LONG", 536);
-      yHG = new a("USERINFO_CALC_WX_SCAN_REPORT_TIME_LONG", 537);
-      yHH = new a("USERINFO_CALC_WX_SCAN_START_TIME_LONG", 538);
-      yHI = new a("USERINFO_CALC_WX_SCAN_FINISH_TIME_LONG", 539);
-      yHJ = new a("USERINFO_CALC_WX_SCAN_SHOW_FILE_INT", 540);
-      yHK = new a("USERINFO_WALLET_F2F_COLLECT_PAY_URL_STRING_SYNC", 541);
-      yHL = new a("USERINFO_WALLET_F2F_COLLECT_TRUE_NAME_STRING_SYNC", 542);
-      yHM = new a("USERINFO_WALLET_F2F_COLLECT_PAY_URL_ERROR_LEVEL_INT_SYNC", 543);
-      yHN = new a("USERINFO_WALLET_F2F_COLLECT_BOTTOM_MENU_STRING_SYNC", 544);
-      yHO = new a("USERINFO_WALLET_F2F_COLLECT_BOTTOM_LEFT_ICON_URL_STRING_SYNC", 545);
-      yHP = new a("USERINFO_WALLET_F2F_COLLECT_UPRIGHT_MENU_STRING_SYNC", 546);
-      yHQ = new a("USERINFO_WALLET_BIND_CARD_MENU_STRING_SYNC", 547);
-      yHR = new a("USERINFO_WALLET_FACING_REDDOT_WORDING_STRING_SYNC", 548);
-      yHS = new a("USERINFO_HARDWARE_LAST_UPLOAD_TICKS_LONG_SYNC", 549);
-      yHT = new a("USERINFO_WALLET_LQT_OPEN_FLAG_INT_SYNC", 550);
-      yHU = new a("USERINFO_WALLET_LQT_ENTRY_WORDING_STRING_SYNC", 551);
-      yHV = new a("USERINFO_WALLET_SET_PWD_TIP_INT_SYNC", 552);
-      yHW = new a("USERINFO_WALLETLOCK_CURRENT_USED_TYPE_INT_SYNC", 553);
-      yHX = new a("USERINFO_WALLETLOCK_FINGERPRINT_IS_OPENED_BOOLEAN_SYNC", 554);
-      yHY = new a("USERINFO_WALLETLOCK_FINGERPRINT_FID_LIST_STRING_SYNC", 555);
-      yHZ = new a("USERINFO_WALLETLOCK_GESTURE_IS_OPENED_BOOLEAN_SYNC", 556);
-      yIa = new a("USERINFO_WALLETLOCK_FINGERPRINT_LAST_VERIFY_OK_TIME_STRING_SYNC", 557);
-      yIb = new a("USERINFO_WALLETLOCK_FINGERPRINT_LAST_BLOCK_TIME_STRING_SYNC", 558);
-      yIc = new a("USERINFO_WALLETLOCK_IS_AUTO_JUMP_TO_GESTURE_WHEN_NOT_SUPPORT_FINGERPRINT_BOOLEAN_SYNC", 559);
-      yId = new a("USERINFO_WALLETLOCK_FACEID_IS_OPENED_BOOLEAN_SYNC", 560);
-      yIe = new a("USERINFO_WALLETLOCK_CURRENT_JSON_TYPE_STRING_SYNC", 561);
-      yIf = new a("USERINFO_WALLET_USERINFO_UNREGTITLE_TYPE_STRING_SYNC", 562);
-      yIg = new a("USERINFO_WALLET_USERINFO_UNREGURL_TYPE_STRING_SYNC", 563);
-      yIh = new a("USERINFO_WCPAY_WALLET_BUFFER_CN_STRING_SYNC", 564);
-      yIi = new a("USERINFO_WCPAY_WALLET_BUFFER_MY_STRING_SYNC", 565);
-      yIj = new a("USERINFO_WCPAY_WALLET_BUFFER_ZA_STRING_SYNC", 566);
-      yIk = new a("USERINFO_WCPAY_WALLET_BUFFER_HK_STRING_SYNC", 567);
-      yIl = new a("USERINFO_WALLET_QR_REWARD_PHOTO_WIDTH_INT_SYNC", 568);
-      yIm = new a("USERINFO_WALLET_QR_REWARD_ICON_WIDTH_INT_SYNC", 569);
-      yIn = new a("USERINFO_WALLET_QR_REWARD_WORD_STRING_SYNC", 570);
-      yIo = new a("USERINFO_WALLET_QR_REWARD_DESC_STRING_SYNC", 571);
-      yIp = new a("USERINFO_WALLET_QR_REWARD_TRUE_NAME_STRING_SYNC", 572);
-      yIq = new a("USERINFO_WALLET_QR_REWARD_MAX_AMT_INT_SYNC", 573);
-      yIr = new a("USERINFO_WALLET_QR_REWARD_AMT_LIST_STRING_SYNC", 574);
-      yIs = new a("USERINFO_WALLET_QR_REWARD_BOTTOM_STR_STRING_SYNC", 575);
-      yIt = new a("USERINFO_WALLET_QR_REWARD_BOTTOM_URL_STRING_SYNC", 576);
-      yIu = new a("USERINFO_WALLET_QR_REWARD_LAST_PHOTO_URL_STRING_SYNC", 577);
-      yIv = new a("USERINFO_SHOW_MSG_DELAY_BOOLEAN_SYNC", 578);
-      yIw = new a("USERINFO_WALLET_COLLECT_BUSITYPE_INT_SYNC", 579);
-      yIx = new a("USERINFO_WALLET_COLLECT_BUSIURL_STRING_SYNC", 580);
-      yIy = new a("USERINFO_SETTING_SWITCH_ACCOUNT_FIRST_CLICK_BOOLEAN_SYNC", 581);
-      yIz = new a("GAME_FIND_MORE_FRIEND_MSG_ID_STRING_SYNC", 582);
-      yIA = new a("NEW_BANDAGE_DATASOURCE_GROUP_PAY_STRING_SYNC", 583);
-      yIB = new a("NEW_BANDAGE_DATASOURCE_F2F_COLLECT_STRING_SYNC", 584);
-      yIC = new a("NEW_BANDAGE_DATASOURCE_F2F_HB_STRING_SYNC", 585);
-      yID = new a("NEW_BANDAGE_DATASOURCE_QR_REWARD_STRING_SYNC", 586);
-      yIE = new a("NEW_BANDAGE_DATASOURCE_BANK_REMIT_STRING_SYNC", 587);
-      yIF = new a("USERINFO_PAY_OR_RECV_HAS_SHOW_RED_DOT_BOOLEAN_SYNC", 588);
-      yIG = new a("USERINFO_WALLET_BANK_REMIT_MIN_POUNDAGE_INT_SYNC", 589);
-      yIH = new a("USERINFO_WALLET_BANK_REMIT_MAX_TRANSFER_AMOUNT_INT_SYNC", 590);
-      yII = new a("USERINFO_WALLET_BANK_REMIT_PAYLIST_STRING_SYNC", 591);
-      yIJ = new a("USERINFO_WALLET_BANK_REMIT_OPEN_INT_SYNC", 592);
-      yIK = new a("USERINFO_WALLET_BANK_REMIT_HAS_SHOWN_RED_DOT_INT_SYNC", 593);
-      yIL = new a("USERINFO_WALLET_MENU_UI_REDDOT_CONFIG_STRING_SYNC", 594);
-      yIM = new a("USERINFO_WALLET_MALL_MENU_UI_REDDOT_CONFIG_BOOLEAN_SYNC", 595);
-      yIN = new a("USERINFO_WALLET_MALL_MENU_UI_REDDOT_CONFIG_EXPIRETIME_LONG_SYNC", 596);
-      yIO = new a("USERINFO_CELLTEXTVIEW_CONFIG_BOOLEAN_SYNC", 597);
-      yIP = new a("USERINFO_APPBRANDRECENTVIEW_CONFIG_BOOLEAN_SYNC", 598);
-      yIQ = new a("USERINFO_WALLET_BALANCE_MENU_INFO_STRING_SYNC", 599);
-      yIR = new a("USERINFO_WALLET_ENTRY_WORDING_STRING_SYNC", 600);
-      yIS = new a("USERINFO_WALLET_MY_ENTRY_TAB_REDDOT_BOOLEAN_SYNC", 601);
-      yIT = new a("USERINFO_WALLET_MY_ENTRY_TAB_REDDOT_EXPIRETIME_LONG_SYNC", 602);
-      yIU = new a("USERINFO_WALLET_MY_ENTRY_REDDOT_BOOLEAN_SYNC", 603);
-      yIV = new a("USERINFO_WALLET_MY_ENTRY_REDDOT_EXPIRETIME_LONG_SYNC", 604);
-      yIW = new a("USERINFO_WALLET_FETCH_CHARGE_RATE_VERSION_STRING_SYNC", 605);
-      yIX = new a("USERINFO_WALLET_New_MY_ENTRY_WORDING_STRING_SYNC", 606);
-      yIY = new a("USERINFO_WALLET_New_MY_ENTRY_TAB_REDDOT_STRING_SYNC", 607);
-      yIZ = new a("USERINFO_WALLET_New_MY_ENTRY_TAB_REDDOT_EXPIRETIME_LONG_SYNC", 608);
-      yJa = new a("USERINFO_WALLET_New_MY_ENTRY_REDDOT_EXPIRETIME_LONG_SYNC", 609);
-      yJb = new a("USERINFO_WALLET_New_MALL_UI_REDDOT_CONFIG_BOOLEAN_SYNC", 610);
-      yJc = new a("USERINFO_WALLET_New_MALL_UI_REDDOT_CONFIG_EXPIRETIME_LONG_SYNC", 611);
-      yJd = new a("USERINFO_WALLET_New_MALL_UI_ITEM_REDDOT_CONFIG_STRING_SYNC", 612);
-      yJe = new a("USERINFO_NEW_BANDAGE_WATCHER_PAY_ENTRANCE_STRING_SYNC", 613);
-      yJf = new a("USERINFO_NEW_BANDAGE_WATCHER_ME_TAB_STRING_SYNC", 614);
-      yJg = new a("USERINFO_LUCKY_MONEY_ENVELOPE_SNAPSHOT_STRING_SYNC", 615);
-      yJh = new a("USERINFO_LUCKY_MONEY_HAS_SHOW_NEW_FLAG_BOOLEAN_SYNC", 616);
-      yJi = new a("USERINFO_LUCKY_MONEY_FIRST_NEW_FLAG_STRING_SYNC", 617);
-      yJj = new a("USERINFO_LUCKY_MONEY_FIRST_NEW_FLAG_APP_PANEL_STRING_SYNC", 618);
-      yJk = new a("USERINFO_LUCKY_MONEY_FIRST_NEW_FLAG_HOME_STRING_SYNC", 619);
-      yJl = new a("USERINFO_LUCKY_MONEY_ENVELOPE_HAS_SOURCE_INT_SYNC", 620);
-      yJm = new a("USERINFO_LUCKY_MONEY_ENVELOPE_ILLEGAL_STRING_SYNC", 621);
-      yJn = new a("USERINFO_LUCKY_MONEY_ENVELOPE_ILLEGAL2_STRING_SYNC", 622);
-      yJo = new a("USERINFO_SOTER_REPORT_TIMESTAMP_LONG_SYNC", 623);
-      yJp = new a("USERINFO_LQT_PLAN_INDEX_CACHE_STRING_SYNC", 624);
-      yJq = new a("USERINFO_FORCE_USE_NEW_CASHIER_INT_SYNC", 625);
-      yJr = new a("USERINFO_LQT_PLAN_ADD_CACHE_STRING_SYNC", 626);
-      yJs = new a("USERINFO_LQT_DETAIL_STRING_SYNC", 627);
-      yJt = new a("USERINFO_SOTER_UPLOAD_AK_FAILURE_INT_SYNC", 628);
-      yJu = new a("USERINFO_LQT_DEFAULTCARD_STRING_SYNC", 629);
-      yJv = new a("USERINFO_LQT_DEFAULTCARD_SAVE_STRING_SYNC", 630);
-      yJw = new a("USERINFO_LQT_DEFAULTCARD_FETCH_STRING_SYNC", 631);
-      yJx = new a("USERINFO_HARDWARE_CPU_FREQUENCY_MHZ_INT_SYNC", 632);
-      yJy = new a("USERINFO_HARDWARE_MEMORY_IN_MB_INT_SYNC", 633);
-      yJz = new a("USERINFO_TOP_STORY_REDDOT_TIMESTAMP_LONG", 634);
-      yJA = new a("USERINFO_TOP_STORY_CMTREDDOT_TIMESTAMP_LONG", 635);
-      yJB = new a("USERINFO_TOP_STORY_CMTREDDOT_SEQ_INT", 636);
-      yJC = new a("USERINFO_TOP_STORY_RED_XML_REC_STRING", 637);
-      yJD = new a("USERINFO_TOP_STORY_REMUX_TYPE_INT", 638);
-      yJE = new a("USERINFO_TOP_STORY_CROP_TYPE_INT", 639);
-      yJF = new a("USERINFO_TOP_STORY_ENCODER_TYPE_INT", 640);
-      yJG = new a("USERINFO_TOP_STORY_VIDEO_EDUCATION_INT", 641);
-      yJH = new a("NEW_BANDAGE_DATASOURCE_DEVICE_PROTECT_STRING_SYNC", 642);
-      yJI = new a("NEW_BANDAGE_WATCHER_SETTINGS_MORE_SAFE_STRING_SYNC", 643);
-      yJJ = new a("USERINFO_DEVICE_PROTECT_SECURITY_STATUS_INT_SYNC", 644);
-      yJK = new a("USERINFO_FTS_RECOMMEND_LOCAL_FILE_INDEX_LONG_SYNC", 645);
-      yJL = new a("USERINFO_WALLET_F2F_RCV_VOICE_PLAYED_LIST_STRING_SYNC", 646);
-      yJM = new a("USERINFO_WALLET_AGREE_PAY_BOOLEAN_SYNC", 647);
-      yJN = new a("USERINFO_MULTITALK_DISABLE_TIME_INT_SYNC", 648);
-      yJO = new a("USERINFO_MULTITALK_DISABLE_TIMESTAMP_LONG_SYNC", 649);
-      yJP = new a("USERINFO_WALLET_INDEX_IS_SHOW_LQB_INT_SYNC", 650);
-      yJQ = new a("USERINFO_WALLET_INDEX_IS_LQB_OPEN_INT_SYNC", 651);
-      yJR = new a("USERINFO_WALLET_INDEX_LQB_OPEN_URL_STRING_SYNC", 652);
-      yJS = new a("USERINFO_LAST_LOGIN_USERNAME_STRING", 653);
-      yJT = new a("USERINFO_LAST_LOGIN_AVATAR_PATH_STRING", 654);
-      yJU = new a("USERINFO_VOIP_MSG_SOUND_DIFF_STAT_BOOLEAN_SYNC", 655);
-      yJV = new a("USERINFO_SEARCH_REDDOT_LONG", 656);
-      yJW = new a("USERINFO_NEED_BIRTHDAY_BOOLEAN_SYNC", 657);
-      yJX = new a("USERINFO_NEED_OPENPLATFORM_BOOLEAN_SYNC", 658);
-      yJY = new a("USERINFO_NEED_CONFIRM_BOOLEAN_SYNC", 659);
-      yJZ = new a("USERINFO_READERAPP_REPORT_TIMESTAMP_LONG", 660);
-      yKa = new a("USERINFO_GET_EXPT_INTERVAL_SEC_INT", 661);
-      yKb = new a("USERINFO_GET_EXPT_LAST_TIME_SEC_INT", 662);
-      yKc = new a("USERINOF_VOICE_INPUT_DEF_LANG_HISTORY_STRING", 663);
-      yKd = new a("USERINFO_BIZ_TIME_LINE_GROUP_START_TIME_STRING_SYNC", 664);
-      yKe = new a("USERINFO_BIZ_TIME_LINE_MIGRATE_DATA_INT_SYNC", 665);
-      yKf = new a("USERINFO_BIZ_TIME_LINE_OFTEN_READ_STRING_SYNC", 666);
-      yKg = new a("USERINFO_ROOM_EXPT_INFO_STRING", 667);
-      yKh = new a("USERINFO_WEBVIEW_BAG_INFO_STRING_SYNC", 668);
-      yKi = new a("USERINFO_WEBVIEW_BAG_TEST_INFO_STRING_SYNC", 669);
-      yKj = new a("USERINFO_TOP_STORY_RED_DOT_RESULT_STRING", 670);
-      yKk = new a("USERINFO_TOP_STORY_HOME_UI_TIMESTAMP_LONG", 671);
-      yKl = new a("USERINFO_RECENT_SMILEY_STRING", 672);
-      yKm = new a("USERINFO_SNS_MEDIA_COLLAPSE_STRING", 673);
-      yKn = new a("USERINFO_SNS_MEDIA_COLLAPSE_SNS_ID_LONG", 674);
-      yKo = new a("USERINFO_EMOJI_CAPTURE_OPENED_BOOLEAN", 675);
-      yKp = new a("USERINFO_EMOJI_CAPTURE_IMITATE_SAVED_BOOLEAN", 676);
-      yKq = new a("USERINFO_EMOJI_CAPTURE_OUTER_EMOJI_BUTTON_RED_DOT_BOOLEAN", 677);
-      yKr = new a("USERINFO_EMOJI_CAPTURE_TAB_RED_DOT_BOOLEAN", 678);
-      yKs = new a("USERINFO_EMOJI_CAPTURE_TAB_SPRING_FESTIVAL_DOT_BOOLEAN", 679);
-      yKt = new a("USERINFO_EMOJI_CAPTURE_PANEL_FROM_TIPS_TIME_LONG", 680);
-      yKu = new a("USERINFO_MALL_INDEX_GDPR_AGREE_BOOLEAN_SYNC", 681);
-      yKv = new a("USERINFO_MALL_INDEX_GDPR_CACHE_STRING_SYNC", 682);
-      yKw = new a("USERINFO_OPENIM_SELECT_ALERT_ID_BOOLEAN", 683);
-      yKx = new a("USERINFO_FACE_ID_IS_OPEN_BOOLEAN_SYNC", 684);
-      yKy = new a("USERINFO_VOIP_LAST_SCORE_TIME_LONG", 685);
-      yKz = new a("USERINFO_EMOJI_STORE_EXPT_CONFIG_STRING", 686);
-      yKA = new a("USERINFO_WEISHI_EXPOSE_COUNT_INT_SYNC", 687);
-      yKB = new a("NEW_BANDAGE_WATCHER_SCAN_ENTRY_RED_DOT_STRING_SYNC", 688);
-      yKC = new a("NEW_BANDAGE_DATASOURCE_TRANSLATION_RED_DOT_STRING_SYNC", 689);
-      yKD = new a("NEW_BANDAGE_WATCHER_SCAN_OCR_ENTRY_RED_DOT_STRING_SYNC", 690);
-      yKE = new a("USERINFO_TRANSLATION_RED_DOT_ID_INT_SYNC", 691);
-      yKF = new a("USERINFO_TOP_STORY_FS_SCROLL_TIPS_INT", 692);
-      yKG = new a("USERINFO_TOP_STORY_SHORT_VIDEO_FS_SCROLL_TIPS_INT", 693);
-      yKH = new a("USERINFO_GDPR_LOCATION_PERMISSION_DESCRIBE_CONFIRM_BOOLEAN_SYNC", 694);
-      yKI = new a("USERINFO_PHONE_RECHARGE_RECOMMENDED_LIST_STRING_SYNC", 695);
-      yKJ = new a("USERINFO_DOWNLOADER_APP_HIDDEN_BOOLEAN_SYNC", 696);
-      yKK = new a("USERINFO_TOP_STORY_CMT_RED_XML_REC_STRING", 697);
-      yKL = new a("USERINFO_TOP_STORY_HOME_TAB_RED_XML_REC_STRING", 698);
-      yKM = new a("USERINFO_TOP_STORY_USER_ICON_RED_XML_REC_STRING", 699);
-      yKN = new a("USERINFO_TOP_STORY_LAST_ENTER_TAB_REC_INT", 700);
-      yKO = new a("USERINFO_TOP_STORY_LAST_REPORT_H5VERSION_TIME_LONG", 701);
-      yKP = new a("USERINFO_WEBSEARCH_LAST_REPORT_H5VERSION_LONG", 702);
-      yKQ = new a("MY_LIFE_AROUND_APP_RED_DOT_TAG_BOOLEAN", 703);
-      yKR = new a("MY_LIFE_AROUND_APP_NEW_RED_DOT_TAG_BOOLEAN", 704);
-      yKS = new a("MY_LIFE_AROUND_APP_RED_DOT_TYPE_STRING", 705);
-      yKT = new a("MY_LIFE_AROUND_APP_RED_DOT_TEXT_STRING", 706);
-      yKU = new a("MY_LIFE_AROUND_APP_RED_DOT_IMG_URL_STRING", 707);
-      yKV = new a("USERINFO_CARD_STORE_LIST_STRING_SYNC", 708);
-      yKW = new a("USERINFO_CARD_UNDER_LIST_STRING_SYNC", 709);
-      yKX = new a("USERINFO_CARD_TOP_LIST_STRING_SYNC", 710);
-      yKY = new a("USERINFO_CARD_SORT_INFO_LIST_STRING_SYNC", 711);
-      yKZ = new a("USERINFO_CARD_JUMP_LIST_STRING_SYNC", 712);
-      yLa = new a("USERINFO_CARD_TICKET_LIST_STRING_SYNC", 713);
-      yLb = new a("USERINFO_CARD_LICENSE_LIST_STRING_SYNC", 714);
-      yLc = new a("USERINFO_CARD_INVALID_TICKET_STRING_SYNC", 715);
-      yLd = new a("USERINFO_CARD_ENTRANCE_LAST_TIMESTAMP_LONG_SYNC", 716);
-      yLe = new a("USERINFO_CARD_ENTRANCE_SWITCH_INT_SYNC", 717);
-      yLf = new a("USERINFO_CARD_ENTRANCE_SHOW_SORT_INT_SYNC", 718);
-      yLg = new a("USERINFO_CARD_ENTRANCE_SORT_TYPE_INT_SYNC", 719);
-      yLh = new a("USERINFO_CARD_ENTRANCE_TRADE_AREA_INT_SYNC", 720);
-      yLi = new a("USERINFO_CARD_ENTRANCE_TRADE_AREA_INFO_STRING_SYNC", 721);
-      yLj = new a("USERINFO_UPDATE_SNS_TIMELINE_SCENE_INT", 722);
-      yLk = new a("USERINFO_WALLET_PAGE_DATA_STRING_SYNC", 723);
-      yLl = new a("USERINFO_WALLET_REALNAME_INFO_JSON_STRING_SYNC", 724);
-      yLm = new a("USERINFO_SNS_ENTRY_SWITCH_INT", 725);
-      yLn = new a("FIND_MORE_UI_ENTRY_LAST_REPORT_TIME_LONG_SYNC", 726);
-      yLo = new a("USERINFO_PRIORITY_DB_VERSION_INT", 727);
-      yLp = new a("USERINFO_LAST_REBOOT_TIME_LONG", 728);
-      yLq = new a("NEW_BANDAGE_SNS_AD_COMMENT_AT_RED_DOT_BOOLEAN_SYNC", 729);
-      yLr = new a("USERINFO_STORY_ONE_DAY_POST_COUNT_INT_SYNC", 730);
-      yLs = new a("USERINFO_STORY_ONE_DAY_POST_TIMESTAMP_LONG_SYNC", 731);
-      yLt = new a("USERINFO_WALLET_BALANCE_SHOW_INT", 732);
-      yLu = new a("USERINFO_STORY_BUBBLE_COUNT_INT", 733);
-      yLv = new a("USERINFO_STORY_GALLERY_FIRST_BOOLEAN_SYNC", 734);
-      yLw = new a("USERINFO_STORY_CAPTURE_FIRST_BOOLEAN_SYNC", 735);
-      yLx = new a("USERINFO_STORY_PULL_DOWN_MORE_TAB_FIRST_BOOLEAN_SYNC", 736);
-      yLy = new a("USERINFO_STORY_PULL_DOWN_PROFILE_FIRST_BOOLEAN_SYNC", 737);
-      yLz = new a("USERINFO_STORY_EDITOR_SHOW_PRIVACY_TIP_BOOLEAN_SYNC", 738);
-      yLA = new a("USERINFO_STORY_EDITOR_SHOW_FAV_TIP_BOOLEAN_SYNC", 739);
-      yLB = new a("USERINFO_WEIXIN_UNREAD_RECORDS_LAST_RPT_TIME_LONG", 740);
-      yLC = new a("USERINFO_LIFE_APP_PRE_LOAD_LAST_REQUEST_VERSION_INT", 741);
-      yLD = new a("USERINFO_LIFE_APP_PRE_LOAD_LAST_REQUEST_TIME_LONG", 742);
-      yLE = new a("USERINFO_STORY_POST_FIRST_BOOLEAN_SYNC", 743);
-      yLF = new a("USERINFO_STORY_POST_FIRST_TO_AUTOPLAY_BOOLEAN_SYNC", 744);
-      yLG = new a("USERINFO_STORY_WHATS_NEW_BOOLEAN_SYNC", 745);
-      yLH = new a("USERINFO_STORY_FIRST_PULL_DOWN_BOOLEAN_SYNC", 746);
-      yLI = new a("USERINFO_STORY_PULL_DOWN_COUNT_INT", 747);
-      yLJ = new a("USERINFO_LUCKY_MONEY_HONGBAO_LOCAL_SWITCH_INT", 748);
-      yLK = new a("USERINFO_STORY_SNS_HEADER_TYPE_INT", 749);
-      yLL = new a("USERINFO_STORY_SNS_UPDATE_TIME_LONG", 750);
-      yLM = new a("USERINFO_STORY_SNS_ALL_READ_TIME_LONG", 751);
-      yLN = new a("USERINFO_EMOJI_SPRING_FESTIVAL_CROP_TYPE_INT", 752);
-      yLO = new a("USERINFO_STORY_NEED_DISPLAY_ALBUM_GUIDE_BOOLEAN_SYNC", 753);
-      yLP = new a("USERINFO_EMOJI_SPRING_FESTIVAL_ORDER_INDEX_INT", 754);
-      yLQ = new a("USERINFO_KINDA_PAY_CONFIG_TYPE_INT", 755);
-      yLR = new a("USERINFO_LOGIN_SHOW_BIND_THIRD_ADD_TYPE_INT", 756);
-      yLS = new a("USERINFO_STORY_VIDEO_PLAY_SIZE_INT", 757);
-      yLT = new a("USERINFO_VOICE_OFFLINE_RES_IDS_STRING_SYNC", 758);
-      yLU = new a("USERINFO_VOICE_OFFLINE_RES_ID_STRING_SYNC", 759);
-      yLV = new a("USERINFO_EXT_PAY_SETTING_LONG_SYNC", 760);
-      yOZ = new a("USERINFO_WALLET_HB_REFUND_CONFIG_REFACTOR_STRING_SYNC", 761);
-      yLX = new a("USERINFO_WALLET_HB_REFUND_RED_DOT_BOOLEAN_SYNC", 762);
-      yLY = new a("USERINFO_NEAR_BY_AD_STRING_SYNC", 763);
-      yLZ = new a("USERINFO_OFFLINE_SCAN_LOCAL_STORAGE_STRING_SYNC", 764);
-      yMa = new a("USERINFO_ACCOUNT_MANAGER_NEW_ACCOUNTS_BOOLEAN_SYNC", 765);
-      yMb = new a[] { yxp, yxq, yxr, yxs, yxt, yxu, yxv, yxw, yxx, yxy, yxz, yxA, yxB, yxC, yxD, yxE, yxF, yxG, yxH, yxI, yxJ, yxK, yxL, yxM, yxN, yxO, yxP, yxQ, yxR, yxS, yxT, yxU, yxV, yxW, yxX, yxY, yxZ, yya, yyb, yyc, yyd, yye, yyf, yyg, yyh, yyi, yyj, yyk, yyl, yym, yyn, yyo, yyp, yyq, yyr, yys, yyt, yyu, yyv, yyw, yyx, yyy, yyz, yyA, yyB, yyC, yyD, yyE, yyF, yyG, yyH, yyI, yyJ, yyK, yyL, yyM, yyN, yyO, yyP, yyQ, yyR, yyS, yyT, yyU, yyV, yyW, yyX, yyY, yyZ, yza, yzb, yzc, yzd, yze, yzf, yzg, yzh, yzi, yzj, yzk, yzl, yzm, yzn, yzo, yzp, yzq, yzr, yzs, yzt, yzu, yzv, yzw, yzx, yzy, yzz, yzA, yzB, yzC, yzD, yzE, yzF, yzG, yzH, yzI, yzJ, yzK, yzL, yzM, yzN, yzO, yzP, yzQ, yzR, yzS, yzT, yzU, yzV, yzW, yzX, yzY, yzZ, yAa, yAb, yAc, yAd, yAe, yAf, yAg, yAh, yAi, yAj, yAk, yAl, yAm, yAn, yAo, yAp, yAq, yAr, yAs, yAt, yAu, yAv, yAw, yAx, yAy, yAz, yAA, yAB, yAC, yAD, yAE, yAF, yAG, yAH, yAI, yAJ, yAK, yAL, yAM, yAN, yAO, yAP, yAQ, yAR, yAS, yAT, yAU, yAV, yAW, yAX, yAY, yAZ, yBa, yBb, yBc, yBd, yBe, yBf, yBg, yBh, yBi, yBj, yBk, yBl, yBm, yBn, yBo, yBp, yBq, yBr, yBs, yBt, yBu, yBv, yBw, yBx, yBy, yBz, yBA, yBB, yBC, yBD, yBE, yBF, yBG, yBH, yBI, yBJ, yBK, yBL, yBM, yBN, yBO, yBP, yBQ, yBR, yBS, yBT, yBU, yBV, yBW, yBX, yBY, yBZ, yCa, yCb, yCc, yCd, yCe, yCf, yCg, yCh, yCi, yCj, yCk, yCl, yCm, yCn, yCo, yCp, yCq, yCr, yCs, yCt, yCu, yCv, yCw, yCx, yCy, yCz, yCA, yCB, yCC, yCD, yCE, yCF, yCG, yCH, yCI, yCJ, yCK, yCL, yCM, yCN, yCO, yCP, yCQ, yCR, yCS, yCT, yCU, yCV, yCW, yCX, yCY, yCZ, yDa, yDb, yDc, yDd, yDe, yDf, yDg, yDh, yDi, yDj, yDk, yDl, yDm, yDn, yDo, yDp, yDq, yDr, yDs, yDt, yDu, yDv, yDw, yDx, yDy, yDz, yDA, yDB, yDC, yDD, yDE, yDF, yDG, yDH, yDI, yDJ, yDK, yDL, yDM, yDN, yDO, yDP, yDQ, yDR, yDS, yDT, yDU, yDV, yDW, yDX, yDY, yDZ, yEa, yEb, yEc, yEd, yEe, yEf, yEg, yEh, yEi, yEj, yEk, yEl, yEm, yEn, yEo, yEp, yEq, yEr, yEs, yEt, yEu, yEv, yEw, yEx, yEy, yEz, yEA, yEB, yEC, yED, yEE, yEF, yEG, yEH, yEI, yEJ, yEK, yEL, yEM, yEN, yEO, yEP, yEQ, yER, yES, yET, yEU, yEV, yEW, yEX, yEY, yEZ, yFa, yFb, yFc, yFd, yFe, yFf, yFg, yFh, yFi, yFj, yFk, yFl, yFm, yFn, yFo, yFp, yFq, yFr, yFs, yFt, yFu, yFv, yFw, yFx, yFy, yFz, yFA, yFB, yFC, yFD, yFE, yFF, yFG, yFH, yFI, yFJ, yFK, yFL, yFM, yFN, yFO, yFP, yFQ, yFR, yFS, yFT, yFU, yFV, yFW, yFX, yFY, yFZ, yGa, yGb, yGc, yGd, yGe, yGf, yGg, yGh, yGi, yGj, yGk, yGl, yGm, yGn, yGo, yGp, yGq, yGr, yGs, yGt, yGu, yGv, yGw, yGx, yGy, yGz, yGA, yGB, yGC, yGD, yGE, yGF, yGG, yGH, yGI, yGJ, yGK, yGL, yGM, yGN, yGO, yGP, yGQ, yGR, yGS, yGT, yGU, yGV, yGW, yGX, yGY, yGZ, yHa, yHb, yHc, yHd, yHe, yHf, yHg, yHh, yHi, yHj, yHk, yHl, yHm, yHn, yHo, yHp, yHq, yHr, yHs, yHt, yHu, yHv, yHw, yHx, yHy, yHz, yHA, yHB, yHC, yHD, yHE, yHF, yHG, yHH, yHI, yHJ, yHK, yHL, yHM, yHN, yHO, yHP, yHQ, yHR, yHS, yHT, yHU, yHV, yHW, yHX, yHY, yHZ, yIa, yIb, yIc, yId, yIe, yIf, yIg, yIh, yIi, yIj, yIk, yIl, yIm, yIn, yIo, yIp, yIq, yIr, yIs, yIt, yIu, yIv, yIw, yIx, yIy, yIz, yIA, yIB, yIC, yID, yIE, yIF, yIG, yIH, yII, yIJ, yIK, yIL, yIM, yIN, yIO, yIP, yIQ, yIR, yIS, yIT, yIU, yIV, yIW, yIX, yIY, yIZ, yJa, yJb, yJc, yJd, yJe, yJf, yJg, yJh, yJi, yJj, yJk, yJl, yJm, yJn, yJo, yJp, yJq, yJr, yJs, yJt, yJu, yJv, yJw, yJx, yJy, yJz, yJA, yJB, yJC, yJD, yJE, yJF, yJG, yJH, yJI, yJJ, yJK, yJL, yJM, yJN, yJO, yJP, yJQ, yJR, yJS, yJT, yJU, yJV, yJW, yJX, yJY, yJZ, yKa, yKb, yKc, yKd, yKe, yKf, yKg, yKh, yKi, yKj, yKk, yKl, yKm, yKn, yKo, yKp, yKq, yKr, yKs, yKt, yKu, yKv, yKw, yKx, yKy, yKz, yKA, yKB, yKC, yKD, yKE, yKF, yKG, yKH, yKI, yKJ, yKK, yKL, yKM, yKN, yKO, yKP, yKQ, yKR, yKS, yKT, yKU, yKV, yKW, yKX, yKY, yKZ, yLa, yLb, yLc, yLd, yLe, yLf, yLg, yLh, yLi, yLj, yLk, yLl, yLm, yLn, yLo, yLp, yLq, yLr, yLs, yLt, yLu, yLv, yLw, yLx, yLy, yLz, yLA, yLB, yLC, yLD, yLE, yLF, yLG, yLH, yLI, yLJ, yLK, yLL, yLM, yLN, yLO, yLP, yLQ, yLR, yLS, yLT, yLU, yLV, yOZ, yLX, yLY, yLZ, yMa };
-      AppMethodBeat.o(58991);
+      AppMethodBeat.i(124620);
+      acFZ = new b("INSERT", 0);
+      acGa = new b("DELETE", 1);
+      acGb = new b("UPDATE", 2);
+      acGc = new b("RE_SORT", 3);
+      acGd = new b[] { acFZ, acGa, acGb, acGc };
+      AppMethodBeat.o(124620);
     }
     
-    private a() {}
+    private b() {}
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void onNotifyChange(Object paramObject, ac.a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.storage.ac
  * JD-Core Version:    0.7.0.1
  */

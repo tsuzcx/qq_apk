@@ -1,44 +1,14 @@
 import android.database.Cursor;
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
 
-public class hvu
-  extends Filter
+public abstract interface hvu
 {
-  hvv a;
+  public abstract Cursor a();
   
-  public hvu(hvv paramhvv)
-  {
-    this.a = paramhvv;
-  }
+  public abstract Cursor a(CharSequence paramCharSequence);
   
-  public CharSequence convertResultToString(Object paramObject)
-  {
-    return this.a.a((Cursor)paramObject);
-  }
+  public abstract CharSequence a(Cursor paramCursor);
   
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
-  {
-    paramCharSequence = this.a.a(paramCharSequence);
-    Filter.FilterResults localFilterResults = new Filter.FilterResults();
-    if (paramCharSequence != null)
-    {
-      localFilterResults.count = paramCharSequence.getCount();
-      localFilterResults.values = paramCharSequence;
-      return localFilterResults;
-    }
-    localFilterResults.count = 0;
-    localFilterResults.values = null;
-    return localFilterResults;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    paramCharSequence = this.a.a();
-    if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
-      this.a.a((Cursor)paramFilterResults.values);
-    }
-  }
+  public abstract void a(Cursor paramCursor);
 }
 
 

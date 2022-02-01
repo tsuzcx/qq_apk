@@ -56,31 +56,32 @@ public class QQImage2FrameFilter
       f1 = this.mSurfaceWidth * 1.0F / this.mImageWidth * this.mImageHeight / this.mSurfaceHeight;
       Matrix.scaleM(this.mMvpMatirx, 0, 1.0F, f1, 1.0F);
     }
-    for (;;)
+    else
     {
-      if (this.mGaussianBlurFilter != null)
-      {
-        this.mGaussianBlurFilter.drawTexture(this.mInputTextureID);
-        this.mOutputTextureID = this.mGaussianBlurFilter.getTextureId();
-      }
-      this.mRenderFBO.bind();
-      this.mBaseFilter.drawTexture(this.mOutputTextureID, null, null);
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(32771, 771);
-      GLES20.glBlendColor(0.0F, 0.0F, 0.0F, 0.75F);
-      this.mBaseFilter.drawTexture(this.mInputTextureID, null, this.mMvpMatirx);
-      GLES20.glDisable(3042);
-      this.mRenderFBO.unbind();
-      if (!this.mRollY) {
-        break;
-      }
+      f1 = this.mSurfaceHeight * 1.0F / this.mImageHeight * this.mImageWidth / this.mSurfaceWidth;
+      Matrix.scaleM(this.mMvpMatirx, 0, f1, 1.0F, 1.0F);
+    }
+    GaussianBlurFilterCompose localGaussianBlurFilterCompose = this.mGaussianBlurFilter;
+    if (localGaussianBlurFilterCompose != null)
+    {
+      localGaussianBlurFilterCompose.drawTexture(this.mInputTextureID);
+      this.mOutputTextureID = this.mGaussianBlurFilter.getTextureId();
+    }
+    this.mRenderFBO.bind();
+    this.mBaseFilter.drawTexture(this.mOutputTextureID, null, null);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(32771, 771);
+    GLES20.glBlendColor(0.0F, 0.0F, 0.0F, 0.75F);
+    this.mBaseFilter.drawTexture(this.mInputTextureID, null, this.mMvpMatirx);
+    GLES20.glDisable(3042);
+    this.mRenderFBO.unbind();
+    if (this.mRollY)
+    {
       this.mRollFBO.bind();
       this.mBaseFilter.drawTexture(this.mRenderFBO.getTexId(), new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F }, null);
       this.mRollFBO.unbind();
       this.mOutputTextureID = this.mRollFBO.getTexId();
       return;
-      f1 = this.mSurfaceHeight * 1.0F / this.mImageHeight * this.mImageWidth / this.mSurfaceWidth;
-      Matrix.scaleM(this.mMvpMatirx, 0, f1, 1.0F, 1.0F);
     }
     this.mOutputTextureID = this.mRenderFBO.getTexId();
   }
@@ -99,26 +100,30 @@ public class QQImage2FrameFilter
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
-    if (this.mGaussianBlurFilter != null)
+    Object localObject = this.mGaussianBlurFilter;
+    if (localObject != null)
     {
-      this.mGaussianBlurFilter.destroy();
+      ((GaussianBlurFilterCompose)localObject).destroy();
       this.mGaussianBlurFilter = null;
     }
-    if (this.mRenderFBO != null)
+    localObject = this.mRenderFBO;
+    if (localObject != null)
     {
-      GlUtil.deleteTexture(this.mRenderFBO.getTexId());
+      GlUtil.deleteTexture(((RenderBuffer)localObject).getTexId());
       this.mRenderFBO.destroy();
       this.mRenderFBO = null;
     }
     this.mMvpMatirx = null;
-    if (this.mBaseFilter != null)
+    localObject = this.mBaseFilter;
+    if (localObject != null)
     {
-      this.mBaseFilter.destroy();
+      ((GPUBaseFilter)localObject).destroy();
       this.mBaseFilter = null;
     }
-    if (this.mRollFBO != null)
+    localObject = this.mRollFBO;
+    if (localObject != null)
     {
-      GlUtil.deleteTexture(this.mRollFBO.getTexId());
+      GlUtil.deleteTexture(((RenderBuffer)localObject).getTexId());
       this.mRollFBO.destroy();
       this.mRollFBO = null;
     }
@@ -136,7 +141,7 @@ public class QQImage2FrameFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQImage2FrameFilter
  * JD-Core Version:    0.7.0.1
  */

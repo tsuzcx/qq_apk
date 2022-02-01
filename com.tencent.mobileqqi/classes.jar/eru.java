@@ -1,16 +1,42 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import java.util.LinkedHashMap;
 
 public class eru
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends Handler
 {
-  public int a;
-  public TextView a;
-  public TroopInfo a;
+  public eru(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  private eru(TroopListInnerFrame paramTroopListInnerFrame) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 2: 
+      do
+      {
+        return;
+        Object[] arrayOfObject = (Object[])paramMessage.obj;
+        if (arrayOfObject.length == 3)
+        {
+          this.a.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
+          this.a.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
+          this.a.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
+        }
+        this.a.jdField_a_of_type_Erz.notifyDataSetChanged();
+      } while ((paramMessage.what != 2) && ((paramMessage.what != 1) || (this.a.jdField_a_of_type_Boolean)));
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 40, 0);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
+  }
 }
 
 

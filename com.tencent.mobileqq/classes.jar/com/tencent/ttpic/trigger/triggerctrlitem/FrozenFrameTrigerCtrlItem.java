@@ -40,43 +40,48 @@ public class FrozenFrameTrigerCtrlItem
   
   public void addAllFreezeTrigger()
   {
-    if (this.mFaceAttr != null)
+    Object localObject = this.mFaceAttr;
+    if (localObject != null)
     {
-      Set localSet = this.mFaceAttr.getTriggeredExpression();
-      if (localSet != null) {
-        localSet.add(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
+      localObject = ((PTFaceAttr)localObject).getTriggeredExpression();
+      if (localObject != null) {
+        ((Set)localObject).add(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
       }
     }
   }
   
   public void clear()
   {
-    if (this.mFreezeFrame != null)
+    Object localObject = this.mFreezeFrame;
+    if (localObject != null)
     {
-      this.mFreezeFrame.setCanUnlock(true);
+      ((Frame)localObject).setCanUnlock(true);
       this.mFreezeFrame.unlock();
       this.mFreezeFrame.clear();
       this.mFreezeFrame = null;
     }
-    if (this.mFaceAttr != null)
+    localObject = this.mFaceAttr;
+    if (localObject != null)
     {
-      this.mFaceAttr.setData(null);
+      ((PTFaceAttr)localObject).setData(null);
       this.mFaceAttr = null;
     }
-    if (this.mSegAttr != null)
+    localObject = this.mSegAttr;
+    if (localObject != null)
     {
-      Frame localFrame = this.mSegAttr.getMaskFrame();
-      if (localFrame != null)
+      localObject = ((PTSegAttr)localObject).getMaskFrame();
+      if (localObject != null)
       {
-        localFrame.setCanUnlock(true);
-        localFrame.unlock();
-        localFrame.clear();
+        ((Frame)localObject).setCanUnlock(true);
+        ((Frame)localObject).unlock();
+        ((Frame)localObject).clear();
         this.mSegAttr.setMaskFrame(null);
       }
       this.mSegAttr = null;
     }
-    if (this.mHandActionCounter != null) {
-      this.mHandActionCounter.clear();
+    localObject = this.mHandActionCounter;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
     this.mGestuereTrigger = -1;
   }
@@ -113,19 +118,21 @@ public class FrozenFrameTrigerCtrlItem
   
   public Frame getSegMaskSnapshot()
   {
-    if (this.mSegAttr != null) {
-      return this.mSegAttr.getMaskFrame();
+    PTSegAttr localPTSegAttr = this.mSegAttr;
+    if (localPTSegAttr != null) {
+      return localPTSegAttr.getMaskFrame();
     }
     return null;
   }
   
   public void removeAllFreezeTrigger()
   {
-    if (this.mFaceAttr != null)
+    Object localObject = this.mFaceAttr;
+    if (localObject != null)
     {
-      Set localSet = this.mFaceAttr.getTriggeredExpression();
-      if (localSet != null) {
-        localSet.remove(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
+      localObject = ((PTFaceAttr)localObject).getTriggeredExpression();
+      if (localObject != null) {
+        ((Set)localObject).remove(Integer.valueOf(PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value));
       }
     }
   }
@@ -138,13 +145,14 @@ public class FrozenFrameTrigerCtrlItem
   
   public void setHandActionCounter(Map<Integer, Integer> paramMap)
   {
-    if (this.mHandActionCounter != null) {
-      this.mHandActionCounter.clear();
+    Object localObject = this.mHandActionCounter;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
+    localObject = paramMap.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      int i = ((Integer)localIterator.next()).intValue();
+      int i = ((Integer)((Iterator)localObject).next()).intValue();
       Integer localInteger = (Integer)paramMap.get(Integer.valueOf(i));
       if (localInteger != null) {
         this.mHandActionCounter.put(Integer.valueOf(i), localInteger);
@@ -161,19 +169,19 @@ public class FrozenFrameTrigerCtrlItem
   {
     if (paramPTFaceAttr != null)
     {
-      if (this.mFaceAttr != null) {
-        break label163;
+      Object localObject = this.mFaceAttr;
+      if (localObject == null)
+      {
+        localObject = new byte[paramPTFaceAttr.getData().length];
+        System.arraycopy(paramPTFaceAttr.getData(), 0, localObject, 0, localObject.length);
+        this.mFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(paramPTFaceAttr.getAllFacePoints()).faceDetectScale(paramPTFaceAttr.getFaceDetectScale()).timeStamp(paramPTFaceAttr.getTimeStamp()).faceAngles(paramPTFaceAttr.getAllFaceAngles()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).rotation(paramPTFaceAttr.getRotation()).faceStatusList(paramPTFaceAttr.getFaceStatusList()).data((byte[])localObject).bodyPoints(paramPTFaceAttr.getBodyPoints()).faceKitVerticesArray(paramPTFaceAttr.getFaceKitVerticesArray()).featureIndicesArray(paramPTFaceAttr.getFeatureIndicesArray()).facePiont2DCenter(paramPTFaceAttr.getFacePiont2DCenter()).pointsVis(paramPTFaceAttr.getPointsVis()).recordFaceInfo(paramPTFaceAttr.getRecordFaceInfo()).faceDetector(paramPTFaceAttr.getFaceDetector()).faceDetWidth(paramPTFaceAttr.getFaceDetWidth()).faceDetHeight(paramPTFaceAttr.getFaceDetHeight()).faceInfoList(paramPTFaceAttr.getFaceInfoList()));
       }
-      byte[] arrayOfByte = new byte[paramPTFaceAttr.getData().length];
-      System.arraycopy(paramPTFaceAttr.getData(), 0, arrayOfByte, 0, arrayOfByte.length);
-      this.mFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(paramPTFaceAttr.getAllFacePoints()).faceDetectScale(paramPTFaceAttr.getFaceDetectScale()).timeStamp(paramPTFaceAttr.getTimeStamp()).faceAngles(paramPTFaceAttr.getAllFaceAngles()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).rotation(paramPTFaceAttr.getRotation()).faceStatusList(paramPTFaceAttr.getFaceStatusList()).data(arrayOfByte).bodyPoints(paramPTFaceAttr.getBodyPoints()).faceKitVerticesArray(paramPTFaceAttr.getFaceKitVerticesArray()).featureIndicesArray(paramPTFaceAttr.getFeatureIndicesArray()).facePiont2DCenter(paramPTFaceAttr.getFacePiont2DCenter()).pointsVis(paramPTFaceAttr.getPointsVis()).recordFaceInfo(paramPTFaceAttr.getRecordFaceInfo()).faceDetector(paramPTFaceAttr.getFaceDetector()));
+      else
+      {
+        ((PTFaceAttr)localObject).setTimeStamp(paramPTFaceAttr.getTimeStamp());
+      }
     }
-    for (;;)
-    {
-      return this.mFaceAttr;
-      label163:
-      this.mFaceAttr.setTimeStamp(paramPTFaceAttr.getTimeStamp());
-    }
+    return this.mFaceAttr;
   }
   
   public int updateGestuereTrigger(AIAttr paramAIAttr)
@@ -200,15 +208,14 @@ public class FrozenFrameTrigerCtrlItem
       this.mFreezeFrame = FrameBufferCache.getInstance().get(paramFrame1.width, paramFrame1.height);
       paramBaseFilter.RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, -1, 0.0D, this.mFreezeFrame);
       this.mFreezeFrame.setCanUnlock(false);
-      paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, -1, 0.0D, paramFrame2);
-    }
-    for (;;)
-    {
+      paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
       return paramFrame2;
-      if (this.mFreezeFrame != null) {
-        paramBaseFilter.RenderProcess(this.mFreezeFrame.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, -1, 0.0D, paramFrame2);
-      }
     }
+    paramFrame1 = this.mFreezeFrame;
+    if (paramFrame1 != null) {
+      paramBaseFilter.RenderProcess(paramFrame1.getTextureId(), this.mFreezeFrame.width, this.mFreezeFrame.height, paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
+    }
+    return paramFrame2;
   }
   
   public Frame updateInputFrame(Frame paramFrame, BaseFilter paramBaseFilter)
@@ -248,7 +255,7 @@ public class FrozenFrameTrigerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.trigger.triggerctrlitem.FrozenFrameTrigerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

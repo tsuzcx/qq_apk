@@ -30,27 +30,20 @@ public final class ak
   
   public int a(ak paramak)
   {
-    int k = 0;
     int[] arrayOfInt = new int[4];
     arrayOfInt[0] = JceUtil.compareTo(this.cL, paramak.cL);
     arrayOfInt[1] = JceUtil.compareTo(this.cM, paramak.cM);
     arrayOfInt[2] = JceUtil.compareTo(this.version, paramak.version);
     arrayOfInt[3] = JceUtil.compareTo(this.cN, paramak.cN);
     int i = 0;
-    for (;;)
+    while (i < arrayOfInt.length)
     {
-      int j = k;
-      if (i < arrayOfInt.length)
-      {
-        if (arrayOfInt[i] != 0) {
-          j = arrayOfInt[i];
-        }
-      }
-      else {
-        return j;
+      if (arrayOfInt[i] != 0) {
+        return arrayOfInt[i];
       }
       i += 1;
     }
+    return 0;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -80,19 +73,23 @@ public final class ak
     paramJceOutputStream.write(this.cL, 0);
     paramJceOutputStream.write(this.cM, 1);
     paramJceOutputStream.write(this.version, 2);
-    if (this.cN != null) {
-      paramJceOutputStream.write(this.cN, 3);
+    String str = this.cN;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.cO != null) {
-      paramJceOutputStream.write(this.cO, 4);
+    str = this.cO;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.cP, 5);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 6);
+    str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.cB, 7);
-    if (this.cQ != null) {
-      paramJceOutputStream.write(this.cQ, 8);
+    str = this.cQ;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.cR, 9);
     paramJceOutputStream.write(this.cS, 10);
@@ -102,14 +99,15 @@ public final class ak
     paramJceOutputStream.write(this.cU, 14);
     paramJceOutputStream.write(this.cV, 15);
     paramJceOutputStream.write(this.cW, 16);
-    if (this.cX != null) {
-      paramJceOutputStream.write(this.cX, 17);
+    str = this.cX;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ak
  * JD-Core Version:    0.7.0.1
  */

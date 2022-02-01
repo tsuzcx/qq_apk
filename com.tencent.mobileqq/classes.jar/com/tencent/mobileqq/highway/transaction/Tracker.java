@@ -24,7 +24,7 @@ public class Tracker
   public static final String SND_S = "SND_S";
   public static final String SUCES = "SUCES";
   public static final boolean TRACE = true;
-  public boolean bLogTime;
+  public boolean bLogTime = false;
   List<String> logStrings = Collections.synchronizedList(new ArrayList());
   
   public Tracker(int paramInt, long paramLong)
@@ -32,34 +32,45 @@ public class Tracker
     if (paramLong < 204800L) {
       this.bLogTime = true;
     }
-    String str = "TransId:" + paramInt + "\tStartTime:" + SystemClock.uptimeMillis() + "\tFileSize:" + paramLong + "\n";
-    this.logStrings.add(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("TransId:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("\tStartTime:");
+    ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
+    ((StringBuilder)localObject).append("\tFileSize:");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("\n");
+    localObject = ((StringBuilder)localObject).toString();
+    this.logStrings.add(localObject);
   }
   
   public String dumpTrackerInfo()
   {
-    StringBuilder localStringBuilder = new StringBuilder("_TRACKER_");
+    StringBuilder localStringBuilder2 = new StringBuilder("_TRACKER_");
     try
     {
       Iterator localIterator = this.logStrings.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next());
+      for (;;)
+      {
+        localStringBuilder1 = localStringBuilder2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localStringBuilder2.append((String)localIterator.next());
       }
-      Object localObject;
-      return "_TRACKER_FAIL.";
     }
     catch (Exception localException)
     {
-      localObject = null;
-      for (;;)
-      {
-        this.logStrings.clear();
-        if (localObject == null) {
-          break;
-        }
-        return localObject.toString();
-      }
+      StringBuilder localStringBuilder1;
+      label48:
+      break label48;
     }
+    localStringBuilder1 = null;
+    this.logStrings.clear();
+    if (localStringBuilder1 != null) {
+      return localStringBuilder1.toString();
+    }
+    return "_TRACKER_FAIL.";
   }
   
   public void logStep(String paramString1, String paramString2)
@@ -68,13 +79,20 @@ public class Tracker
       return;
     }
     long l = SystemClock.uptimeMillis();
-    paramString1 = l + "\tStep:" + paramString1 + "\tInfo:" + paramString2 + "\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(l);
+    localStringBuilder.append("\tStep:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\tInfo:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("\n");
+    paramString1 = localStringBuilder.toString();
     this.logStrings.add(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.Tracker
  * JD-Core Version:    0.7.0.1
  */

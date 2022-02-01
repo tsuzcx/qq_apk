@@ -10,8 +10,8 @@ class PhoneContactStatusCheckView$1$1
   
   public void run()
   {
-    if ((PhoneContactStatusCheckView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView$1.this$0) != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-      PhoneContactStatusCheckView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView$1.this$0).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((PhoneContactStatusCheckView.a(this.b.this$0) != null) && (this.a != null)) {
+      PhoneContactStatusCheckView.a(this.b.this$0).setImageBitmap(this.a);
     }
   }
 }

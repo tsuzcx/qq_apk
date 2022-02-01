@@ -29,17 +29,18 @@ public final class articlesummary$NewPackInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72, 80, 90, 98, 104 }, new String[] { "pack_type", "rpt_pack_article_list", "bytes_top_icon_url", "bytes_top_title", "bytes_more_tips", "bytes_more_href", "bytes_sub_head_icon_url", "uint32_follow_status", "uin32_head_type", "uint32_video_size_type", "msg_head_url_jump_info", "msg_right_more_url_jump_info", "uint32_column_id" }, new Object[] { Integer.valueOf(1), null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0) }, NewPackInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72, 80, 90, 98, 104 }, new String[] { "pack_type", "rpt_pack_article_list", "bytes_top_icon_url", "bytes_top_title", "bytes_more_tips", "bytes_more_href", "bytes_sub_head_icon_url", "uint32_follow_status", "uin32_head_type", "uint32_video_size_type", "msg_head_url_jump_info", "msg_right_more_url_jump_info", "uint32_column_id" }, new Object[] { Integer.valueOf(1), null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localInteger, localInteger, localInteger, null, null, localInteger }, NewPackInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.NewPackInfo
  * JD-Core Version:    0.7.0.1
  */

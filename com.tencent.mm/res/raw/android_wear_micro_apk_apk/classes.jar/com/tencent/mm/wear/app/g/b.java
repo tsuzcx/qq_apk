@@ -5,30 +5,30 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public final class b
 {
-  private c aiM = new c(this, (byte)0);
-  private BlockingQueue<a> aiN = new LinkedBlockingDeque();
+  private c amo = new c(this, (byte)0);
+  private BlockingQueue<a> amp = new LinkedBlockingDeque();
   
   public b()
   {
-    Thread localThread = new Thread(this.aiM);
+    Thread localThread = new Thread(this.amo);
     localThread.setPriority(1);
     localThread.start();
   }
   
   public final void a(a parama)
   {
-    this.aiN.add(parama);
+    this.amp.add(parama);
   }
   
   protected final void finalize()
   {
-    this.aiM.stop();
+    this.amo.stop();
     super.finalize();
   }
   
   public final void finish()
   {
-    this.aiM.stop();
+    this.amo.stop();
   }
 }
 

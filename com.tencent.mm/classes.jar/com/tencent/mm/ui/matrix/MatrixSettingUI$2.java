@@ -1,28 +1,24 @@
 package com.tencent.mm.ui.matrix;
 
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class MatrixSettingUI$2
-  implements MenuItem.OnMenuItemClickListener
+  implements MatrixSettingSeekBarPreference.a
 {
   MatrixSettingUI$2(MatrixSettingUI paramMatrixSettingUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void aDZ(int paramInt)
   {
-    AppMethodBeat.i(156162);
-    paramMenuItem = new Intent(this.Apu, MatrixReportUI.class);
-    paramMenuItem.addFlags(67108864);
-    this.Apu.startActivity(paramMenuItem);
-    AppMethodBeat.o(156162);
-    return false;
+    AppMethodBeat.i(38887);
+    Log.i("Matrix.SettingUI", "[onConfirm] threshold=".concat(String.valueOf(paramInt)));
+    MatrixSettingUI.cC("MODIFY_EVIL_THRESHOLD", paramInt);
+    AppMethodBeat.o(38887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSettingUI.2
  * JD-Core Version:    0.7.0.1
  */

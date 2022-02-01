@@ -13,10 +13,11 @@ public class ConfigProtocol$C2SReqConfigProtocol
   
   public void AddTLV(ConfigProtocol.TLVBase paramTLVBase)
   {
-    if (this.attrs == null) {
+    ArrayList localArrayList = this.attrs;
+    if (localArrayList == null) {
       return;
     }
-    this.attrs.add(paramTLVBase);
+    localArrayList.add(paramTLVBase);
     this.lengthOfTLV = ((short)(this.lengthOfTLV + 4));
     this.lengthOfTLV = ((short)(this.lengthOfTLV + paramTLVBase.getLength()));
     this.numOfTLV = ((short)(this.numOfTLV + 1));
@@ -87,7 +88,7 @@ public class ConfigProtocol$C2SReqConfigProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigProtocol.C2SReqConfigProtocol
  * JD-Core Version:    0.7.0.1
  */

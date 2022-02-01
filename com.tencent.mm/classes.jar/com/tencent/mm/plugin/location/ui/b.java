@@ -5,121 +5,124 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
+import com.tencent.mm.plugin.map.a.j;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.MMGridPaper;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.ui.widget.a.i;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class b
 {
+  private i KdO;
+  private MMGridPaper KdP;
+  private a KdQ;
+  private ViewGroup KdR;
+  private RelativeLayout KdS;
+  private ArrayList<String> KdT;
+  private int avatarSize;
   private Context mContext;
-  private i obN;
-  private MMGridPaper obO;
-  private a obP;
-  private ViewGroup obQ;
-  private RelativeLayout obR;
-  private ArrayList<String> obS;
-  private int obT;
   
   private b(Context paramContext)
   {
-    AppMethodBeat.i(113423);
-    this.obN = null;
-    this.obO = null;
-    this.obP = null;
-    this.obQ = null;
-    this.obR = null;
+    AppMethodBeat.i(55799);
+    this.KdO = null;
+    this.KdP = null;
+    this.KdQ = null;
+    this.KdR = null;
+    this.KdS = null;
     this.mContext = null;
-    this.obS = null;
-    this.obT = 0;
+    this.KdT = null;
+    this.avatarSize = 0;
     this.mContext = paramContext;
-    this.obN = new i(this.mContext, 2131493912);
-    this.obQ = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2130968798, null));
-    this.obO = ((MMGridPaper)this.obQ.findViewById(2131821600));
-    this.obO.dDT();
-    this.obO.setDialogMode(true);
-    this.obO.dDS();
-    this.obO.setMaxRow(3);
-    this.obO.setMaxCol(3);
-    this.obO.setHeaderView(null);
-    this.obO.dDT();
-    this.obO.setItemWidthInDp(70);
-    this.obO.setItemHeightInDp(70);
-    this.obN.setCanceledOnTouchOutside(true);
-    this.obN.setContentView(this.obQ);
-    this.obP = new a();
-    this.obO.setGridPaperAdapter(this.obP);
-    AppMethodBeat.o(113423);
+    this.KdO = new i(this.mContext, a.j.trackDialog);
+    this.KdR = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(a.f.avatars_dialog, null));
+    this.KdP = ((MMGridPaper)this.KdR.findViewById(a.e.dialog_content));
+    this.KdP.jmk();
+    this.KdP.setDialogMode(true);
+    this.KdP.jmj();
+    this.KdP.setMaxRow(3);
+    this.KdP.setMaxCol(3);
+    this.KdP.setHeaderView(null);
+    this.KdP.jmk();
+    this.KdP.setItemWidthInDp(70);
+    this.KdP.setItemHeightInDp(70);
+    this.KdO.setCanceledOnTouchOutside(true);
+    this.KdO.setContentView(this.KdR);
+    this.KdQ = new a();
+    this.KdP.setGridPaperAdapter(this.KdQ);
+    AppMethodBeat.o(55799);
   }
   
-  public static void b(Context paramContext, ArrayList<String> paramArrayList)
+  public static void e(Context paramContext, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(113424);
-    ab.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    AppMethodBeat.i(55800);
+    Log.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     paramContext = new b(paramContext);
-    paramContext.obS = new ArrayList();
+    paramContext.KdT = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     String str;
     while (paramArrayList.hasNext())
     {
       str = (String)paramArrayList.next();
-      paramContext.obS.add(str);
+      paramContext.KdT.add(str);
     }
     int i;
-    if (paramContext.obS.size() < 3)
+    if (paramContext.KdT.size() < 3)
     {
-      paramContext.obO.setMaxCol(paramContext.obS.size());
-      paramArrayList = paramContext.obO.getLayoutParams();
-      paramContext.obT = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
-      i = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 8);
-      if (paramContext.obS.size() <= 0) {
+      paramContext.KdP.setMaxCol(paramContext.KdT.size());
+      paramArrayList = paramContext.KdP.getLayoutParams();
+      paramContext.avatarSize = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 70);
+      i = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 8);
+      if (paramContext.KdT.size() <= 0) {
         break label443;
       }
-      if (paramContext.obS.size() >= 3) {
+      if (paramContext.KdT.size() >= 3) {
         break label376;
       }
-      int j = paramContext.obT;
-      int k = paramContext.obS.size();
-      i = i * (paramContext.obS.size() - 1) + j * k;
+      int j = paramContext.avatarSize;
+      int k = paramContext.KdT.size();
+      i = i * (paramContext.KdT.size() - 1) + j * k;
     }
     for (;;)
     {
       label192:
-      str = BackwardSupportUtil.b.gB(paramContext.mContext);
-      ab.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.obS.size()), Integer.valueOf(paramContext.obT), str });
+      str = BackwardSupportUtil.BitmapFactory.getDisplayDensityType(paramContext.mContext);
+      Log.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.KdT.size()), Integer.valueOf(paramContext.avatarSize), str });
       paramArrayList.width = i;
-      paramContext.obT = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
-      i = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 15);
-      if (paramContext.obS.size() > 0) {
-        if (paramContext.obS.size() <= 3)
+      paramContext.avatarSize = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 70);
+      i = com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 15);
+      if (paramContext.KdT.size() > 0) {
+        if (paramContext.KdT.size() <= 3)
         {
-          i += paramContext.obT;
+          i += paramContext.avatarSize;
           label303:
-          ab.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
+          Log.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
         }
       }
       for (;;)
       {
         paramArrayList.height = i;
-        paramContext.obO.setLayoutParams(paramArrayList);
-        paramContext.obO.requestLayout();
-        paramContext.obP.F(paramContext.obS);
-        paramContext.obN.show();
-        AppMethodBeat.o(113424);
+        paramContext.KdP.setLayoutParams(paramArrayList);
+        paramContext.KdP.requestLayout();
+        paramContext.KdQ.setData(paramContext.KdT);
+        paramContext.KdO.show();
+        AppMethodBeat.o(55800);
         return;
-        paramContext.obO.setMaxCol(3);
+        paramContext.KdP.setMaxCol(3);
         break;
         label376:
-        i = i * 2 + paramContext.obT * 3;
+        i = i * 2 + paramContext.avatarSize * 3;
         break label192;
-        if (paramContext.obS.size() <= 6)
+        if (paramContext.KdT.size() <= 6)
         {
-          i += paramContext.obT * 2;
+          i += paramContext.avatarSize * 2;
           break label303;
         }
-        i = i * 2 + paramContext.obT * 3 + com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 10);
+        i = i * 2 + paramContext.avatarSize * 3 + com.tencent.mm.cd.a.fromDPToPix(paramContext.mContext, 10);
         break label303;
         i = 0;
       }
@@ -130,7 +133,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.b
  * JD-Core Version:    0.7.0.1
  */

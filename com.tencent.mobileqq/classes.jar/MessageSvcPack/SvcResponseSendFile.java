@@ -8,7 +8,7 @@ public final class SvcResponseSendFile
   extends JceStruct
 {
   public String strResult = "";
-  public long uReplyCode;
+  public long uReplyCode = 0L;
   
   public SvcResponseSendFile() {}
   
@@ -27,14 +27,15 @@ public final class SvcResponseSendFile
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uReplyCode, 0);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 1);
+    String str = this.strResult;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcResponseSendFile
  * JD-Core Version:    0.7.0.1
  */

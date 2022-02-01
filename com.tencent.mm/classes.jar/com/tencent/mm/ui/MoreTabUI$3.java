@@ -1,33 +1,19 @@
 package com.tencent.mm.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.widget.listview.PullDownListView;
+import com.tencent.mm.autogen.a.cx;
+import com.tencent.mm.sdk.event.IListener;
 
-final class MoreTabUI$3
-  implements View.OnClickListener
+class MoreTabUI$3
+  extends IListener<cx>
 {
-  MoreTabUI$3(MoreTabUI paramMoreTabUI) {}
-  
-  public final void onClick(View paramView)
+  MoreTabUI$3(MoreTabUI paramMoreTabUI, q paramq)
   {
-    AppMethodBeat.i(29691);
-    ab.i("MicroMsg.MoreTabUI", "onClick: mActionBarRoot");
-    if (MoreTabUI.g(this.zdu))
-    {
-      t.makeText(this.zdu.getContext(), this.zdu.getResources().getString(2131304178), 0).show();
-      AppMethodBeat.o(29691);
-      return;
-    }
-    if ((MoreTabUI.h(this.zdu) != null) && (MoreTabUI.h(this.zdu).isVisible)) {
-      MoreTabUI.h(this.zdu).dPj();
-    }
-    AppMethodBeat.o(29691);
+    super(paramq);
+    AppMethodBeat.i(249257);
+    this.__eventId = cx.class.getName().hashCode();
+    AppMethodBeat.o(249257);
   }
 }
 

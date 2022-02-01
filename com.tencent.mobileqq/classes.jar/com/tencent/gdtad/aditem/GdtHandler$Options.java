@@ -1,123 +1,148 @@
 package com.tencent.gdtad.aditem;
 
-import aamy;
-import aase;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.gdtad.log.GdtLog;
+import org.json.JSONObject;
 
 public class GdtHandler$Options
   implements Parcelable
 {
-  public static final Parcelable.Creator<Options> CREATOR = new aamy();
-  public int a;
-  public long a;
-  public Rect a;
-  public Bundle a;
+  public static final Parcelable.Creator<Options> CREATOR = new GdtHandler.Options.1();
   public GdtAd a;
-  public String a;
-  public boolean a;
-  public int b;
   public boolean b;
-  public boolean c;
-  public boolean d;
+  public int c;
+  public int d;
   public boolean e;
   public boolean f;
-  private boolean g;
+  public boolean g;
+  public String h;
+  public boolean i;
+  public Rect j;
+  public long k;
+  public boolean l;
+  public boolean m;
+  public String n;
+  public JSONObject o;
+  public Bundle p;
+  private boolean q;
   
   public GdtHandler$Options()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_b_of_type_Int = -2147483648;
+    this.b = true;
+    this.c = -2147483648;
+    this.d = -2147483648;
+    this.e = false;
+    this.f = false;
+    this.g = false;
+    this.i = false;
+    this.j = null;
+    this.q = false;
+    this.k = 0L;
+    this.l = false;
+    this.m = false;
+    this.n = null;
+    this.o = null;
   }
   
-  public GdtHandler$Options(Parcel paramParcel)
+  protected GdtHandler$Options(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_b_of_type_Int = -2147483648;
+    boolean bool2 = true;
+    this.b = true;
+    this.c = -2147483648;
+    this.d = -2147483648;
+    this.e = false;
+    this.f = false;
+    this.g = false;
+    this.i = false;
+    this.j = null;
+    this.q = false;
+    this.k = 0L;
+    this.l = false;
+    this.m = false;
+    this.n = null;
+    this.o = null;
     if (paramParcel == null)
     {
-      aase.d("GdtHandler", "Options(Parcel in) error");
+      GdtLog.d("GdtHandler", "Options(Parcel in) error");
       return;
     }
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramParcel.readParcelable(GdtAd.class.getClassLoader()));
-    if (paramParcel.readByte() != 0)
-    {
+    this.a = ((GdtAd)paramParcel.readParcelable(GdtAd.class.getClassLoader()));
+    boolean bool1;
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label211;
-      }
-      bool1 = true;
-      label90:
-      this.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label216;
-      }
-      bool1 = true;
-      label104:
-      this.c = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label221;
-      }
-      bool1 = true;
-      label118:
-      this.d = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label226;
-      }
-      bool1 = true;
-      label132:
-      this.e = bool1;
-      this.jdField_a_of_type_AndroidGraphicsRect = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
-      if (paramParcel.readByte() == 0) {
-        break label231;
-      }
-      bool1 = true;
-      label162:
-      this.g = bool1;
-      this.jdField_a_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readByte() == 0) {
-        break label236;
-      }
+    } else {
+      bool1 = false;
     }
-    label211:
-    label216:
-    label221:
-    label226:
-    label231:
-    label236:
-    for (boolean bool1 = bool2;; bool1 = false)
+    this.b = bool1;
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.e = bool1;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.f = bool1;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.g = bool1;
+    this.h = paramParcel.readString();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.i = bool1;
+    this.j = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.q = bool1;
+    this.k = paramParcel.readLong();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.l = bool1;
+    if (paramParcel.readByte() != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.m = bool1;
+    this.n = paramParcel.readString();
+    this.p = paramParcel.readBundle();
+    try
     {
-      this.f = bool1;
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+      this.o = new JSONObject(paramParcel.readString());
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label90;
-      bool1 = false;
-      break label104;
-      bool1 = false;
-      break label118;
-      bool1 = false;
-      break label132;
-      bool1 = false;
-      break label162;
+    }
+    catch (Throwable paramParcel)
+    {
+      GdtLog.d("GdtHandler", "Options(Parcel in)", paramParcel);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd != null) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isValid()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getTraceId())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForClick())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForEffect())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForLandingPage()));
+    GdtAd localGdtAd = this.a;
+    return (localGdtAd != null) && (localGdtAd.isValid()) && (!TextUtils.isEmpty(this.a.getTraceId())) && (!TextUtils.isEmpty(this.a.getUrlForImpression())) && (!TextUtils.isEmpty(this.a.getUrlForClick())) && (!TextUtils.isEmpty(this.a.getUrlForEffect())) && (!TextUtils.isEmpty(this.a.getUrlForAction())) && (!TextUtils.isEmpty(this.a.getUrlForLandingPage()));
   }
   
   public int describeContents()
@@ -127,86 +152,39 @@ public class GdtHandler$Options
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int j = 1;
     if (paramParcel == null)
     {
-      aase.d("GdtHandler", "writeToParcel error");
+      GdtLog.d("GdtHandler", "writeToParcel error");
       return;
     }
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramInt);
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      paramParcel.writeByte((byte)i);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label185;
-      }
-      i = 1;
-      label64:
-      paramParcel.writeByte((byte)i);
-      if (!this.c) {
-        break label190;
-      }
-      i = 1;
-      label79:
-      paramParcel.writeByte((byte)i);
-      if (!this.d) {
-        break label195;
-      }
-      i = 1;
-      label94:
-      paramParcel.writeByte((byte)i);
-      if (!this.e) {
-        break label200;
-      }
-      i = 1;
-      label109:
-      paramParcel.writeByte((byte)i);
-      paramParcel.writeParcelable(this.jdField_a_of_type_AndroidGraphicsRect, paramInt);
-      if (!this.g) {
-        break label205;
-      }
-      paramInt = 1;
-      label133:
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      if (!this.f) {
-        break label210;
-      }
+    paramParcel.writeParcelable(this.a, paramInt);
+    paramParcel.writeByte((byte)this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeByte((byte)this.e);
+    paramParcel.writeByte((byte)this.f);
+    paramParcel.writeByte((byte)this.g);
+    paramParcel.writeString(this.h);
+    paramParcel.writeByte((byte)this.i);
+    paramParcel.writeParcelable(this.j, paramInt);
+    paramParcel.writeByte((byte)this.q);
+    paramParcel.writeLong(this.k);
+    paramParcel.writeByte((byte)this.l);
+    paramParcel.writeByte((byte)this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeBundle(this.p);
+    String str;
+    if ((this.o != null) && (!JSONObject.NULL.equals(this.o))) {
+      str = this.o.toString();
+    } else {
+      str = null;
     }
-    label185:
-    label190:
-    label195:
-    label200:
-    label205:
-    label210:
-    for (paramInt = j;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label64;
-      i = 0;
-      break label79;
-      i = 0;
-      break label94;
-      i = 0;
-      break label109;
-      paramInt = 0;
-      break label133;
-    }
+    paramParcel.writeString(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtHandler.Options
  * JD-Core Version:    0.7.0.1
  */

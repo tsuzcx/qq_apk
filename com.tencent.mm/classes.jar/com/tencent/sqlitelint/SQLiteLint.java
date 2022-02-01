@@ -13,78 +13,84 @@ public class SQLiteLint
   private static final int BEHAVIOUR_REPORT = 2;
   public static String sPackageName;
   static IssueReportBehaviour.IReportDelegate sReportDelegate;
-  private static SqlExecutionCallbackMode sSqlExecutionCallbackMode;
+  private static SQLiteLint.SqlExecutionCallbackMode sSqlExecutionCallbackMode;
   
   static
   {
-    AppMethodBeat.i(93992);
+    AppMethodBeat.i(52836);
     if (!SQLiteLint.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      SQLiteLintNativeBridge.loadLibrary();
       sSqlExecutionCallbackMode = null;
       sPackageName = null;
-      AppMethodBeat.o(93992);
+      AppMethodBeat.o(52836);
       return;
     }
   }
   
   public static void enableCheckers(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(93990);
+    AppMethodBeat.i(52834);
     if (SQLiteLintAndroidCoreManager.INSTANCE.get(paramString) == null)
     {
-      AppMethodBeat.o(93990);
+      AppMethodBeat.o(52834);
       return;
     }
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(93990);
+      AppMethodBeat.o(52834);
       return;
     }
     SQLiteLintAndroidCoreManager.INSTANCE.get(paramString).enableCheckers(paramList);
-    AppMethodBeat.o(93990);
+    AppMethodBeat.o(52834);
   }
   
-  public static SqlExecutionCallbackMode getSqlExecutionCallbackMode()
+  public static SQLiteLint.SqlExecutionCallbackMode getSqlExecutionCallbackMode()
   {
     return sSqlExecutionCallbackMode;
   }
   
+  public static void init()
+  {
+    AppMethodBeat.i(229324);
+    SQLiteLintNativeBridge.loadLibrary();
+    AppMethodBeat.o(229324);
+  }
+  
   public static void install(Context paramContext, SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(93985);
+    AppMethodBeat.i(52829);
     if ((!$assertionsDisabled) && (paramSQLiteDatabase == null))
     {
       paramContext = new AssertionError();
-      AppMethodBeat.o(93985);
+      AppMethodBeat.o(52829);
       throw paramContext;
     }
     if ((!$assertionsDisabled) && (sSqlExecutionCallbackMode == null))
     {
       paramContext = new AssertionError("SqlExecutionCallbackMode not set！setSqlExecutionCallbackMode must be called before install");
-      AppMethodBeat.o(93985);
+      AppMethodBeat.o(52829);
       throw paramContext;
     }
     paramSQLiteDatabase = new InstallEnv(paramSQLiteDatabase.getPath(), new SimpleSQLiteExecutionDelegate(paramSQLiteDatabase));
     SQLiteLintAndroidCoreManager.INSTANCE.install(paramContext, paramSQLiteDatabase, Options.LAX);
-    AppMethodBeat.o(93985);
+    AppMethodBeat.o(52829);
   }
   
   public static void install(Context paramContext, InstallEnv paramInstallEnv, Options paramOptions)
   {
-    AppMethodBeat.i(93986);
+    AppMethodBeat.i(52830);
     if ((!$assertionsDisabled) && (paramInstallEnv == null))
     {
       paramContext = new AssertionError();
-      AppMethodBeat.o(93986);
+      AppMethodBeat.o(52830);
       throw paramContext;
     }
     if ((!$assertionsDisabled) && (sSqlExecutionCallbackMode == null))
     {
       paramContext = new AssertionError("SqlExecutionCallbackMode is UNKNOWN！setSqlExecutionCallbackMode must be called before install");
-      AppMethodBeat.o(93986);
+      AppMethodBeat.o(52830);
       throw paramContext;
     }
     Options localOptions = paramOptions;
@@ -92,28 +98,28 @@ public class SQLiteLint
       localOptions = Options.LAX;
     }
     SQLiteLintAndroidCoreManager.INSTANCE.install(paramContext, paramInstallEnv, localOptions);
-    AppMethodBeat.o(93986);
+    AppMethodBeat.o(52830);
   }
   
   public static void notifySqlExecution(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(93987);
+    AppMethodBeat.i(52831);
     if (SQLiteLintAndroidCoreManager.INSTANCE.get(paramString1) == null)
     {
-      AppMethodBeat.o(93987);
+      AppMethodBeat.o(52831);
       return;
     }
     SQLiteLintAndroidCoreManager.INSTANCE.get(paramString1).notifySqlExecution(paramString1, paramString2, paramInt);
-    AppMethodBeat.o(93987);
+    AppMethodBeat.o(52831);
   }
   
   public static void setPackageName(Context paramContext)
   {
-    AppMethodBeat.i(93991);
+    AppMethodBeat.i(52835);
     if (sPackageName == null) {
       sPackageName = paramContext.getPackageName();
     }
-    AppMethodBeat.o(93991);
+    AppMethodBeat.o(52835);
   }
   
   static void setReportDelegate(IssueReportBehaviour.IReportDelegate paramIReportDelegate)
@@ -121,39 +127,39 @@ public class SQLiteLint
     sReportDelegate = paramIReportDelegate;
   }
   
-  public static void setSqlExecutionCallbackMode(SqlExecutionCallbackMode paramSqlExecutionCallbackMode)
+  public static void setSqlExecutionCallbackMode(SQLiteLint.SqlExecutionCallbackMode paramSqlExecutionCallbackMode)
   {
-    AppMethodBeat.i(93984);
+    AppMethodBeat.i(52828);
     if (sSqlExecutionCallbackMode != null)
     {
-      AppMethodBeat.o(93984);
+      AppMethodBeat.o(52828);
       return;
     }
     sSqlExecutionCallbackMode = paramSqlExecutionCallbackMode;
-    if (paramSqlExecutionCallbackMode == SqlExecutionCallbackMode.HOOK) {
+    if (paramSqlExecutionCallbackMode == SQLiteLint.SqlExecutionCallbackMode.HOOK) {
       SQLite3ProfileHooker.hook();
     }
-    AppMethodBeat.o(93984);
+    AppMethodBeat.o(52828);
   }
   
   public static void setWhiteList(String paramString, int paramInt)
   {
-    AppMethodBeat.i(93989);
+    AppMethodBeat.i(52833);
     if (SQLiteLintAndroidCoreManager.INSTANCE.get(paramString) == null)
     {
-      AppMethodBeat.o(93989);
+      AppMethodBeat.o(52833);
       return;
     }
     SQLiteLintAndroidCoreManager.INSTANCE.get(paramString).setWhiteList(paramInt);
-    AppMethodBeat.o(93989);
+    AppMethodBeat.o(52833);
   }
   
   public static void uninstall(String paramString)
   {
-    AppMethodBeat.i(93988);
+    AppMethodBeat.i(52832);
     SQLiteLintAndroidCoreManager.INSTANCE.get(paramString).release();
     SQLiteLintAndroidCoreManager.INSTANCE.remove(paramString);
-    AppMethodBeat.o(93988);
+    AppMethodBeat.o(52832);
   }
   
   public static final class InstallEnv
@@ -163,34 +169,34 @@ public class SQLiteLint
     
     static
     {
-      AppMethodBeat.i(93977);
+      AppMethodBeat.i(52821);
       if (!SQLiteLint.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(93977);
+        AppMethodBeat.o(52821);
         return;
       }
     }
     
     public InstallEnv(String paramString, ISQLiteExecutionDelegate paramISQLiteExecutionDelegate)
     {
-      AppMethodBeat.i(93976);
+      AppMethodBeat.i(52820);
       if ((!$assertionsDisabled) && (paramString == null))
       {
         paramString = new AssertionError();
-        AppMethodBeat.o(93976);
+        AppMethodBeat.o(52820);
         throw paramString;
       }
       if ((!$assertionsDisabled) && (paramISQLiteExecutionDelegate == null))
       {
         paramString = new AssertionError();
-        AppMethodBeat.o(93976);
+        AppMethodBeat.o(52820);
         throw paramString;
       }
       this.mConcernedDbPath = paramString;
       this.mSQLiteExecutionDelegate = paramISQLiteExecutionDelegate;
-      AppMethodBeat.o(93976);
+      AppMethodBeat.o(52820);
     }
     
     public final String getConcernedDbPath()
@@ -211,9 +217,9 @@ public class SQLiteLint
     
     static
     {
-      AppMethodBeat.i(93980);
+      AppMethodBeat.i(52824);
       LAX = new Builder().build();
-      AppMethodBeat.o(93980);
+      AppMethodBeat.o(52824);
     }
     
     public final boolean isAlertBehaviourEnable()
@@ -232,17 +238,17 @@ public class SQLiteLint
       
       public Builder()
       {
-        AppMethodBeat.i(93978);
+        AppMethodBeat.i(52822);
         this.mBehaviourMask |= 0x1;
-        AppMethodBeat.o(93978);
+        AppMethodBeat.o(52822);
       }
       
       public final SQLiteLint.Options build()
       {
-        AppMethodBeat.i(93979);
+        AppMethodBeat.i(52823);
         SQLiteLint.Options localOptions = new SQLiteLint.Options();
         SQLiteLint.Options.access$002(localOptions, this.mBehaviourMask);
-        AppMethodBeat.o(93979);
+        AppMethodBeat.o(52823);
         return localOptions;
       }
       
@@ -269,24 +275,10 @@ public class SQLiteLint
       }
     }
   }
-  
-  public static enum SqlExecutionCallbackMode
-  {
-    static
-    {
-      AppMethodBeat.i(93983);
-      HOOK = new SqlExecutionCallbackMode("HOOK", 0);
-      CUSTOM_NOTIFY = new SqlExecutionCallbackMode("CUSTOM_NOTIFY", 1);
-      $VALUES = new SqlExecutionCallbackMode[] { HOOK, CUSTOM_NOTIFY };
-      AppMethodBeat.o(93983);
-    }
-    
-    private SqlExecutionCallbackMode() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLint
  * JD-Core Version:    0.7.0.1
  */

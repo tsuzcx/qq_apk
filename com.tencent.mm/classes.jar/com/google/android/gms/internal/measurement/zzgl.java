@@ -47,7 +47,7 @@ public class zzgl
   
   private zzgl(zzhj paramzzhj)
   {
-    AppMethodBeat.i(69063);
+    AppMethodBeat.i(1586);
     this.zzvo = false;
     Preconditions.checkNotNull(paramzzhj);
     zza(this);
@@ -107,7 +107,7 @@ public class zzgl
       ((zzjq)localObject).zzm();
       this.zzaqa = ((zzgf)localObject);
       this.zzami.zzc(new zzgm(this, paramzzhj));
-      AppMethodBeat.o(69063);
+      AppMethodBeat.o(1586);
       return;
       zzge().zzip().log("Application context is not an Application");
     }
@@ -115,58 +115,58 @@ public class zzgl
   
   private static void zza(zzhg paramzzhg)
   {
-    AppMethodBeat.i(69084);
+    AppMethodBeat.i(1607);
     if (paramzzhg == null)
     {
       paramzzhg = new IllegalStateException("Component not created");
-      AppMethodBeat.o(69084);
+      AppMethodBeat.o(1607);
       throw paramzzhg;
     }
-    AppMethodBeat.o(69084);
+    AppMethodBeat.o(1607);
   }
   
   private static void zza(zzhh paramzzhh)
   {
-    AppMethodBeat.i(69083);
+    AppMethodBeat.i(1606);
     if (paramzzhh == null)
     {
       paramzzhh = new IllegalStateException("Component not created");
-      AppMethodBeat.o(69083);
+      AppMethodBeat.o(1606);
       throw paramzzhh;
     }
     if (!paramzzhh.isInitialized())
     {
       paramzzhh = String.valueOf(paramzzhh.getClass());
       paramzzhh = new IllegalStateException(String.valueOf(paramzzhh).length() + 27 + "Component not initialized: " + paramzzhh);
-      AppMethodBeat.o(69083);
+      AppMethodBeat.o(1606);
       throw paramzzhh;
     }
-    AppMethodBeat.o(69083);
+    AppMethodBeat.o(1606);
   }
   
   private final void zzch()
   {
-    AppMethodBeat.i(69082);
+    AppMethodBeat.i(1605);
     if (!this.zzvo)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("AppMeasurement is not initialized");
-      AppMethodBeat.o(69082);
+      AppMethodBeat.o(1605);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(69082);
+    AppMethodBeat.o(1605);
   }
   
   static void zzfr()
   {
-    AppMethodBeat.i(69087);
+    AppMethodBeat.i(1610);
     IllegalStateException localIllegalStateException = new IllegalStateException("Unexpected call on client side");
-    AppMethodBeat.o(69087);
+    AppMethodBeat.o(1610);
     throw localIllegalStateException;
   }
   
   public static zzgl zzg(Context paramContext)
   {
-    AppMethodBeat.i(69081);
+    AppMethodBeat.i(1604);
     Preconditions.checkNotNull(paramContext);
     Preconditions.checkNotNull(paramContext.getApplicationContext());
     if (zzame == null) {}
@@ -176,12 +176,12 @@ public class zzgl
         zzame = new zzgl(new zzhj(paramContext));
       }
       paramContext = zzame;
-      AppMethodBeat.o(69081);
+      AppMethodBeat.o(1604);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(69081);
+      AppMethodBeat.o(1604);
     }
   }
   
@@ -193,12 +193,12 @@ public class zzgl
   public final boolean isEnabled()
   {
     boolean bool = false;
-    AppMethodBeat.i(69085);
+    AppMethodBeat.i(1608);
     zzab();
     zzch();
     if (zzgg().zzhg())
     {
-      AppMethodBeat.o(69085);
+      AppMethodBeat.o(1608);
       return false;
     }
     Boolean localBoolean = zzgg().zzas("firebase_analytics_collection_enabled");
@@ -208,7 +208,7 @@ public class zzgl
     for (;;)
     {
       bool = zzgf().zzg(bool);
-      AppMethodBeat.o(69085);
+      AppMethodBeat.o(1608);
       return bool;
       if (!GoogleServices.isMeasurementExplicitlyDisabled()) {
         bool = true;
@@ -219,7 +219,7 @@ public class zzgl
   protected final void start()
   {
     boolean bool1 = false;
-    AppMethodBeat.i(69065);
+    AppMethodBeat.i(1588);
     zzab();
     if (zzgf().zzaju.get() == 0L) {
       zzgf().zzaju.set(zzbt().currentTimeMillis());
@@ -251,7 +251,7 @@ public class zzgl
         zzge().zzim().log("Uploading is not possible. App measurement disabled");
       }
       super.start();
-      AppMethodBeat.o(69065);
+      AppMethodBeat.o(1588);
       return;
     }
     Object localObject;
@@ -299,7 +299,7 @@ public class zzgl
   
   final void zza(zzhj paramzzhj)
   {
-    AppMethodBeat.i(69064);
+    AppMethodBeat.i(1587);
     zzab();
     Object localObject1 = new zzeo(this);
     ((zzhh)localObject1).zzm();
@@ -334,7 +334,7 @@ public class zzgl
       }
       super.zza(paramzzhj);
       this.zzvo = true;
-      AppMethodBeat.o(69064);
+      AppMethodBeat.o(1587);
       return;
       localObject2 = zzge().zzir();
       localObject1 = String.valueOf(localObject1);
@@ -348,9 +348,9 @@ public class zzgl
   
   public final void zzab()
   {
-    AppMethodBeat.i(69080);
+    AppMethodBeat.i(1603);
     zzgd().zzab();
-    AppMethodBeat.o(69080);
+    AppMethodBeat.o(1603);
   }
   
   final void zzb(zzhh paramzzhh)
@@ -365,118 +365,118 @@ public class zzgl
   
   public final zzdu zzft()
   {
-    AppMethodBeat.i(69079);
+    AppMethodBeat.i(1602);
     zza(this.zzamq);
     zzdu localzzdu = this.zzamq;
-    AppMethodBeat.o(69079);
+    AppMethodBeat.o(1602);
     return localzzdu;
   }
   
   public final zzhk zzfu()
   {
-    AppMethodBeat.i(69071);
+    AppMethodBeat.i(1594);
     zza(this.zzamp);
     zzhk localzzhk = this.zzamp;
-    AppMethodBeat.o(69071);
+    AppMethodBeat.o(1594);
     return localzzhk;
   }
   
   public final zzfb zzfv()
   {
-    AppMethodBeat.i(69078);
+    AppMethodBeat.i(1601);
     zza(this.zzamu);
     zzfb localzzfb = this.zzamu;
-    AppMethodBeat.o(69078);
+    AppMethodBeat.o(1601);
     return localzzfb;
   }
   
   public final zzeo zzfw()
   {
-    AppMethodBeat.i(69077);
+    AppMethodBeat.i(1600);
     zza(this.zzamt);
     zzeo localzzeo = this.zzamt;
-    AppMethodBeat.o(69077);
+    AppMethodBeat.o(1600);
     return localzzeo;
   }
   
   public final zzii zzfx()
   {
-    AppMethodBeat.i(69076);
+    AppMethodBeat.i(1599);
     zza(this.zzams);
     zzii localzzii = this.zzams;
-    AppMethodBeat.o(69076);
+    AppMethodBeat.o(1599);
     return localzzii;
   }
   
   public final zzif zzfy()
   {
-    AppMethodBeat.i(69075);
+    AppMethodBeat.i(1598);
     zza(this.zzamo);
     zzif localzzif = this.zzamo;
-    AppMethodBeat.o(69075);
+    AppMethodBeat.o(1598);
     return localzzif;
   }
   
   public final zzfc zzfz()
   {
-    AppMethodBeat.i(69074);
+    AppMethodBeat.i(1597);
     zza(this.zzamr);
     zzfc localzzfc = this.zzamr;
-    AppMethodBeat.o(69074);
+    AppMethodBeat.o(1597);
     return localzzfc;
   }
   
   public final zzfe zzga()
   {
-    AppMethodBeat.i(69073);
+    AppMethodBeat.i(1596);
     zza(this.zzamn);
     zzfe localzzfe = this.zzamn;
-    AppMethodBeat.o(69073);
+    AppMethodBeat.o(1596);
     return localzzfe;
   }
   
   public final zzka zzgb()
   {
-    AppMethodBeat.i(69072);
+    AppMethodBeat.i(1595);
     zza(this.zzamm);
     zzka localzzka = this.zzamm;
-    AppMethodBeat.o(69072);
+    AppMethodBeat.o(1595);
     return localzzka;
   }
   
   public final zzjh zzgc()
   {
-    AppMethodBeat.i(69070);
+    AppMethodBeat.i(1593);
     zza(this.zzamj);
     zzjh localzzjh = this.zzamj;
-    AppMethodBeat.o(69070);
+    AppMethodBeat.o(1593);
     return localzzjh;
   }
   
   public final zzgg zzgd()
   {
-    AppMethodBeat.i(69069);
+    AppMethodBeat.i(1592);
     zza(this.zzami);
     zzgg localzzgg = this.zzami;
-    AppMethodBeat.o(69069);
+    AppMethodBeat.o(1592);
     return localzzgg;
   }
   
   public final zzfg zzge()
   {
-    AppMethodBeat.i(69067);
+    AppMethodBeat.i(1590);
     zza(this.zzamh);
     zzfg localzzfg = this.zzamh;
-    AppMethodBeat.o(69067);
+    AppMethodBeat.o(1590);
     return localzzfg;
   }
   
   public final zzfr zzgf()
   {
-    AppMethodBeat.i(69066);
+    AppMethodBeat.i(1589);
     zza(this.zzamg);
     zzfr localzzfr = this.zzamg;
-    AppMethodBeat.o(69066);
+    AppMethodBeat.o(1589);
     return localzzfr;
   }
   
@@ -487,14 +487,14 @@ public class zzgl
   
   public final zzfg zzjo()
   {
-    AppMethodBeat.i(69068);
+    AppMethodBeat.i(1591);
     if ((this.zzamh != null) && (this.zzamh.isInitialized()))
     {
       zzfg localzzfg = this.zzamh;
-      AppMethodBeat.o(69068);
+      AppMethodBeat.o(1591);
       return localzzfg;
     }
-    AppMethodBeat.o(69068);
+    AppMethodBeat.o(1591);
     return null;
   }
   
@@ -520,16 +520,16 @@ public class zzgl
   
   final long zzjt()
   {
-    AppMethodBeat.i(69086);
+    AppMethodBeat.i(1609);
     Long localLong = Long.valueOf(zzgf().zzajz.get());
     if (localLong.longValue() == 0L)
     {
       l = this.zzaem;
-      AppMethodBeat.o(69086);
+      AppMethodBeat.o(1609);
       return l;
     }
     long l = Math.min(this.zzaem, localLong.longValue());
-    AppMethodBeat.o(69086);
+    AppMethodBeat.o(1609);
     return l;
   }
   
@@ -541,7 +541,7 @@ public class zzgl
   protected final boolean zzjv()
   {
     boolean bool2 = false;
-    AppMethodBeat.i(69088);
+    AppMethodBeat.i(1611);
     zzch();
     zzab();
     if ((this.zzamw == null) || (this.zzamx == 0L) || ((this.zzamw != null) && (!this.zzamw.booleanValue()) && (Math.abs(zzbt().elapsedRealtime() - this.zzamx) > 1000L)))
@@ -573,13 +573,13 @@ public class zzgl
       }
     }
     boolean bool1 = this.zzamw.booleanValue();
-    AppMethodBeat.o(69088);
+    AppMethodBeat.o(1611);
     return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgl
  * JD-Core Version:    0.7.0.1
  */

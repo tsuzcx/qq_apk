@@ -19,18 +19,16 @@ public class DesktopAppGroupInfo
   
   public void addPbData(PBRepeatMessageField<INTERFACE.StUserAppInfo> paramPBRepeatMessageField)
   {
-    if (paramPBRepeatMessageField == null) {}
-    for (;;)
-    {
+    if (paramPBRepeatMessageField == null) {
       return;
-      this.datas.clear();
-      paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-      while (paramPBRepeatMessageField.hasNext())
-      {
-        Object localObject = (INTERFACE.StUserAppInfo)paramPBRepeatMessageField.next();
-        localObject = new DesktopAppInfo(this.mModuleType, MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject));
-        this.datas.add(localObject);
-      }
+    }
+    this.datas.clear();
+    paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
+    while (paramPBRepeatMessageField.hasNext())
+    {
+      Object localObject = (INTERFACE.StUserAppInfo)paramPBRepeatMessageField.next();
+      localObject = new DesktopAppInfo(this.mModuleType, MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject));
+      this.datas.add(localObject);
     }
   }
   
@@ -45,12 +43,17 @@ public class DesktopAppGroupInfo
   
   public String toString()
   {
-    return "AppGroup_" + this.mModuleType + "_" + this.datas.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppGroup_");
+    localStringBuilder.append(this.mModuleType);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.datas.size());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppGroupInfo
  * JD-Core Version:    0.7.0.1
  */

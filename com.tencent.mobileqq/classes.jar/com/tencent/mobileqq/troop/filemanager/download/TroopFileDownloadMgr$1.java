@@ -1,34 +1,33 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bbvj;
-import bbvl;
-import bbwf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 
-public class TroopFileDownloadMgr$1
+class TroopFileDownloadMgr$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$1(bbwf parambbwf) {}
+  TroopFileDownloadMgr$1(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
     if (this.this$0.a) {
       return;
     }
-    QQAppInterface localQQAppInterface = bbvj.a();
+    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.this$0);
       this.this$0.a = true;
       return;
     }
-    bbvl.a("TroopFileDownloadMgr", bbvl.a, "init registerConnectionChangeReceiver fail");
+    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "init registerConnectionChangeReceiver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.1
  * JD-Core Version:    0.7.0.1
  */

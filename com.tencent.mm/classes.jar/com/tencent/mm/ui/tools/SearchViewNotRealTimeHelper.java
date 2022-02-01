@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.tools;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -16,153 +17,161 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.tools.b.c;
-import com.tencent.mm.ui.w;
 import java.util.ArrayList;
 
 public class SearchViewNotRealTimeHelper
   extends LinearLayout
-  implements d
+  implements e
 {
-  private View ApR;
-  private ImageButton ApT;
-  private ActionBarSearchView.a ApY;
-  public Button Axs;
-  private a Axt;
-  private EditText naN;
+  private View afDg;
+  private ImageButton afDi;
+  private ActionBarSearchView.a afDo;
+  public Button afKP;
+  private a afKQ;
+  private EditText dzv;
   
   public SearchViewNotRealTimeHelper(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(107794);
+    AppMethodBeat.i(143263);
     init();
-    AppMethodBeat.o(107794);
+    AppMethodBeat.o(143263);
   }
   
   public SearchViewNotRealTimeHelper(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(107793);
+    AppMethodBeat.i(143262);
     init();
-    AppMethodBeat.o(107793);
+    AppMethodBeat.o(143262);
   }
   
   private void init()
   {
-    AppMethodBeat.i(107795);
-    w.hM(getContext()).inflate(2130968617, this, true);
-    this.naN = ((EditText)findViewById(2131820995));
-    this.ApT = ((ImageButton)findViewById(2131820996));
-    this.ApR = findViewById(2131820992);
-    this.Axs = ((Button)findViewById(2131820875));
-    this.Axs.setEnabled(false);
-    this.naN.addTextChangedListener(new TextWatcher()
+    AppMethodBeat.i(143264);
+    af.mU(getContext()).inflate(a.h.actionbar_searchview_with_searchbtn, this, true);
+    this.dzv = ((EditText)findViewById(a.g.edittext));
+    this.afDi = ((ImageButton)findViewById(a.g.status_btn));
+    this.afDg = findViewById(a.g.ab_back_container);
+    this.afKP = ((Button)findViewById(a.g.button));
+    this.afKP.setEnabled(false);
+    this.dzv.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(107788);
+        AppMethodBeat.i(143257);
         if ((paramAnonymousEditable == null) || (paramAnonymousEditable.length() <= 0))
         {
           SearchViewNotRealTimeHelper.a(SearchViewNotRealTimeHelper.this).setVisibility(8);
           SearchViewNotRealTimeHelper.b(SearchViewNotRealTimeHelper.this).setEnabled(false);
-          AppMethodBeat.o(107788);
+          AppMethodBeat.o(143257);
           return;
         }
         SearchViewNotRealTimeHelper.a(SearchViewNotRealTimeHelper.this).setVisibility(0);
         SearchViewNotRealTimeHelper.b(SearchViewNotRealTimeHelper.this).setEnabled(true);
-        AppMethodBeat.o(107788);
+        AppMethodBeat.o(143257);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.naN.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.dzv.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        AppMethodBeat.i(107789);
+        AppMethodBeat.i(143258);
         if ((3 == paramAnonymousInt) && (SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this) != null))
         {
-          boolean bool = SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this).wR(SearchViewNotRealTimeHelper.this.getSearchContent());
-          AppMethodBeat.o(107789);
+          boolean bool = SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this).SN(SearchViewNotRealTimeHelper.this.getSearchContent());
+          AppMethodBeat.o(143258);
           return bool;
         }
-        AppMethodBeat.o(107789);
+        AppMethodBeat.o(143258);
         return false;
       }
     });
-    c.d(this.naN).QS(100).a(null);
-    this.ApT.setOnClickListener(new View.OnClickListener()
+    c.i(this.dzv).aEg(100).a(null);
+    this.afDi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(107790);
+        AppMethodBeat.i(143259);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/tools/SearchViewNotRealTimeHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         SearchViewNotRealTimeHelper.d(SearchViewNotRealTimeHelper.this).setText("");
         if (SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this) != null) {
-          SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this).aWD();
+          SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this).dcD();
         }
-        AppMethodBeat.o(107790);
+        a.a(this, "com/tencent/mm/ui/tools/SearchViewNotRealTimeHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(143259);
       }
     });
-    this.ApR.setOnClickListener(new View.OnClickListener()
+    this.afDg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(107791);
-        ab.v("MicroMsg.SearchViewNotRealTimeHelper", "home btn click");
+        AppMethodBeat.i(143260);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/tools/SearchViewNotRealTimeHelper$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        Log.v("MicroMsg.SearchViewNotRealTimeHelper", "home btn click");
         if (SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this) != null) {
           SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this);
         }
         if (SearchViewNotRealTimeHelper.e(SearchViewNotRealTimeHelper.this) != null) {
-          SearchViewNotRealTimeHelper.e(SearchViewNotRealTimeHelper.this).bMn();
+          SearchViewNotRealTimeHelper.e(SearchViewNotRealTimeHelper.this).jCN();
         }
-        AppMethodBeat.o(107791);
+        a.a(this, "com/tencent/mm/ui/tools/SearchViewNotRealTimeHelper$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(143260);
       }
     });
-    this.Axs.setOnClickListener(new View.OnClickListener()
+    this.afKP.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(107792);
+        AppMethodBeat.i(143261);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/tools/SearchViewNotRealTimeHelper$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this) != null) {
-          SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this).GL(SearchViewNotRealTimeHelper.this.getSearchContent());
+          SearchViewNotRealTimeHelper.c(SearchViewNotRealTimeHelper.this).aiU(SearchViewNotRealTimeHelper.this.getSearchContent());
         }
-        AppMethodBeat.o(107792);
+        a.a(this, "com/tencent/mm/ui/tools/SearchViewNotRealTimeHelper$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(143261);
       }
     });
-    AppMethodBeat.o(107795);
+    AppMethodBeat.o(143264);
   }
   
-  public final void dNx()
-  {
-    AppMethodBeat.i(107804);
-    this.naN.clearFocus();
-    AppMethodBeat.o(107804);
-  }
+  public final void MV(boolean paramBoolean) {}
   
-  public final boolean dNy()
+  public final void MW(boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public final boolean dNz()
-  {
-    return false;
+    AppMethodBeat.i(143272);
+    this.dzv.setText("");
+    AppMethodBeat.o(143272);
   }
   
   public String getSearchContent()
   {
-    AppMethodBeat.i(107805);
-    Object localObject = this.naN.getEditableText();
+    AppMethodBeat.i(143274);
+    Object localObject = this.dzv.getEditableText();
     if (localObject == null)
     {
-      AppMethodBeat.o(107805);
+      AppMethodBeat.o(143274);
       return "";
     }
     localObject = localObject.toString();
-    AppMethodBeat.o(107805);
+    AppMethodBeat.o(143274);
     return localObject;
   }
   
@@ -181,27 +190,35 @@ public class SearchViewNotRealTimeHelper
     return false;
   }
   
-  public final void rr(boolean paramBoolean) {}
-  
-  public final void rs(boolean paramBoolean)
+  public final void jCK()
   {
-    AppMethodBeat.i(107803);
-    this.naN.setText("");
-    AppMethodBeat.o(107803);
+    AppMethodBeat.i(143273);
+    this.dzv.clearFocus();
+    AppMethodBeat.o(143273);
+  }
+  
+  public final boolean jCL()
+  {
+    return false;
+  }
+  
+  public final boolean jCM()
+  {
+    return false;
   }
   
   public void setAutoMatchKeywords(boolean paramBoolean) {}
   
   public void setBackClickCallback(ActionBarSearchView.a parama)
   {
-    this.ApY = parama;
+    this.afDo = parama;
   }
   
   public void setCallBack(ActionBarSearchView.b paramb) {}
   
   public void setCallBack(a parama)
   {
-    this.Axt = parama;
+    this.afKQ = parama;
   }
   
   public void setEditTextEnabled(boolean paramBoolean) {}
@@ -210,68 +227,77 @@ public class SearchViewNotRealTimeHelper
   
   public void setHint(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107807);
+    AppMethodBeat.i(143276);
     setSearchHint(paramCharSequence);
-    AppMethodBeat.o(107807);
+    AppMethodBeat.o(143276);
+  }
+  
+  public void setImeScene(int paramInt)
+  {
+    AppMethodBeat.i(251246);
+    if (this.dzv != null) {
+      this.dzv.getInputExtras(true).putInt("wechat_scene", paramInt);
+    }
+    AppMethodBeat.o(251246);
   }
   
   public void setKeywords(ArrayList<String> paramArrayList) {}
   
   public void setNotRealCallBack(a parama)
   {
-    this.Axt = parama;
+    this.afKQ = parama;
   }
   
   public void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener) {}
   
   public void setSearchBtnText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107796);
-    this.Axs.setText(paramCharSequence);
-    AppMethodBeat.o(107796);
+    AppMethodBeat.i(143265);
+    this.afKP.setText(paramCharSequence);
+    AppMethodBeat.o(143265);
   }
   
   public void setSearchColor(int paramInt)
   {
-    AppMethodBeat.i(107798);
-    this.naN.setTextColor(paramInt);
-    AppMethodBeat.o(107798);
+    AppMethodBeat.i(143267);
+    this.dzv.setTextColor(paramInt);
+    AppMethodBeat.o(143267);
   }
   
   public void setSearchContent(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107797);
-    this.naN.setText("");
-    this.naN.append(paramCharSequence);
-    AppMethodBeat.o(107797);
+    AppMethodBeat.i(143266);
+    this.dzv.setText("");
+    this.dzv.append(paramCharSequence);
+    AppMethodBeat.o(143266);
   }
   
   public void setSearchContent(String paramString)
   {
-    AppMethodBeat.i(107806);
+    AppMethodBeat.i(143275);
     setSearchContent(paramString);
-    AppMethodBeat.o(107806);
+    AppMethodBeat.o(143275);
   }
   
   public void setSearchHint(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107799);
-    this.naN.setHint(paramCharSequence);
-    AppMethodBeat.o(107799);
+    AppMethodBeat.i(143268);
+    this.dzv.setHint(paramCharSequence);
+    AppMethodBeat.o(143268);
   }
   
   public void setSearchHintColor(int paramInt)
   {
-    AppMethodBeat.i(107800);
-    this.naN.setHintTextColor(paramInt);
-    AppMethodBeat.o(107800);
+    AppMethodBeat.i(143269);
+    this.dzv.setHintTextColor(paramInt);
+    AppMethodBeat.o(143269);
   }
   
   public void setSearchIcon(int paramInt)
   {
-    AppMethodBeat.i(107801);
-    this.naN.setCompoundDrawablesWithIntrinsicBounds(paramInt, 0, 0, 0);
-    AppMethodBeat.o(107801);
+    AppMethodBeat.i(143270);
+    this.dzv.setCompoundDrawablesWithIntrinsicBounds(paramInt, 0, 0, 0);
+    AppMethodBeat.o(143270);
   }
   
   public void setSearchTipIcon(int paramInt) {}
@@ -280,34 +306,34 @@ public class SearchViewNotRealTimeHelper
   
   public void setShowBackIcon(boolean paramBoolean)
   {
-    AppMethodBeat.i(107802);
-    if (this.ApR != null)
+    AppMethodBeat.i(143271);
+    if (this.afDg != null)
     {
       if (paramBoolean)
       {
-        this.ApR.setVisibility(0);
-        AppMethodBeat.o(107802);
+        this.afDg.setVisibility(0);
+        AppMethodBeat.o(143271);
         return;
       }
-      this.ApR.setVisibility(8);
+      this.afDg.setVisibility(8);
     }
-    AppMethodBeat.o(107802);
+    AppMethodBeat.o(143271);
   }
   
   public void setStatusBtnEnabled(boolean paramBoolean) {}
   
   public static abstract interface a
   {
-    public abstract void GL(String paramString);
+    public abstract boolean SN(String paramString);
     
-    public abstract void aWD();
+    public abstract void aiU(String paramString);
     
-    public abstract boolean wR(String paramString);
+    public abstract void dcD();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.SearchViewNotRealTimeHelper
  * JD-Core Version:    0.7.0.1
  */

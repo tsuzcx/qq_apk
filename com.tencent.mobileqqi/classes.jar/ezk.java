@@ -1,13 +1,15 @@
-import android.os.Process;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class ezk
-  extends Thread
+public class ezk
+  implements Runnable
 {
-  ezk(ezj paramezj) {}
+  public ezk(BusinessHandler paramBusinessHandler, BusinessObserver paramBusinessObserver, int paramInt, Handler paramHandler, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
-    Process.killProcess(Process.myPid());
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

@@ -7,6 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,31 +17,39 @@ import java.util.List;
 final class TalkRoomAvatarsFrame$a
   extends BaseAdapter
 {
+  String Kfz;
+  List<String> SOz;
   private Context mContext;
-  String odp;
-  List<String> tdC;
   
   public TalkRoomAvatarsFrame$a(Context paramContext)
   {
-    AppMethodBeat.i(25895);
-    this.tdC = new LinkedList();
+    AppMethodBeat.i(29577);
+    this.SOz = new LinkedList();
     this.mContext = paramContext;
-    AppMethodBeat.o(25895);
+    AppMethodBeat.o(29577);
+  }
+  
+  public final int cs(String paramString)
+  {
+    AppMethodBeat.i(29578);
+    int i = this.SOz.indexOf(paramString);
+    AppMethodBeat.o(29578);
+    return i;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(25897);
-    int i = this.tdC.size();
-    AppMethodBeat.o(25897);
+    AppMethodBeat.i(29579);
+    int i = this.SOz.size();
+    AppMethodBeat.o(29579);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(25898);
-    Object localObject = this.tdC.get(paramInt);
-    AppMethodBeat.o(25898);
+    AppMethodBeat.i(29580);
+    Object localObject = this.SOz.get(paramInt);
+    AppMethodBeat.o(29580);
     return localObject;
   }
   
@@ -49,45 +60,45 @@ final class TalkRoomAvatarsFrame$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(25899);
-    String str = (String)this.tdC.get(paramInt);
+    AppMethodBeat.i(29581);
+    String str = (String)this.SOz.get(paramInt);
     ImageView localImageView;
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2130970986, null);
-      paramViewGroup = new TalkRoomAvatarsFrame.a.a(this);
-      paramViewGroup.egq = ((ImageView)paramView.findViewById(2131828477));
-      paramViewGroup.egr = ((TextView)paramView.findViewById(2131828478));
+      paramView = View.inflate(this.mContext, R.i.goA, null);
+      paramViewGroup = new a();
+      paramViewGroup.lBC = ((ImageView)paramView.findViewById(R.h.fLL));
+      paramViewGroup.lBD = ((TextView)paramView.findViewById(R.h.gaV));
       paramView.setTag(paramViewGroup);
-      localImageView = paramViewGroup.egq;
-      if (!str.equals(this.odp)) {
-        break label140;
+      localImageView = paramViewGroup.lBC;
+      if (!str.equals(this.Kfz)) {
+        break label144;
       }
     }
-    label140:
-    for (paramInt = 2130840512;; paramInt = 0)
+    label144:
+    for (paramInt = R.g.fpp;; paramInt = 0)
     {
       localImageView.setBackgroundResource(paramInt);
-      paramViewGroup.egr.setVisibility(8);
-      a.b.u(paramViewGroup.egq, str);
-      AppMethodBeat.o(25899);
+      paramViewGroup.lBD.setVisibility(8);
+      a.b.C(paramViewGroup.lBC, str);
+      AppMethodBeat.o(29581);
       return paramView;
-      paramViewGroup = (TalkRoomAvatarsFrame.a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
     }
   }
   
-  public final int indexOf(String paramString)
+  final class a
   {
-    AppMethodBeat.i(25896);
-    int i = this.tdC.indexOf(paramString);
-    AppMethodBeat.o(25896);
-    return i;
+    public ImageView lBC;
+    public TextView lBD;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame.a
  * JD-Core Version:    0.7.0.1
  */

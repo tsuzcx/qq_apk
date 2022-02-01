@@ -12,16 +12,16 @@ final class FtsWebVideoView$10
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(5835);
-    if (FtsWebVideoView.d(this.uQE).isPlaying()) {
-      FtsWebVideoView.a(this.uQE, paramContext);
+    AppMethodBeat.i(78048);
+    if (FtsWebVideoView.d(this.WCO).isPlaying()) {
+      FtsWebVideoView.a(this.WCO, paramContext);
     }
-    AppMethodBeat.o(5835);
+    AppMethodBeat.o(78048);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.FtsWebVideoView.10
  * JD-Core Version:    0.7.0.1
  */

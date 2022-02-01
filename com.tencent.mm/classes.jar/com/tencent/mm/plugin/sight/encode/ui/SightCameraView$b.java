@@ -6,12 +6,12 @@ public enum SightCameraView$b
 {
   static
   {
-    AppMethodBeat.i(25114);
-    qXa = new b("CREATE", 0);
-    qXb = new b("CHANGED", 1);
-    qXc = new b("DESTORY", 2);
-    qXd = new b[] { qXa, qXb, qXc };
-    AppMethodBeat.o(25114);
+    AppMethodBeat.i(28789);
+    PJC = new b("CREATE", 0);
+    PJD = new b("CHANGED", 1);
+    PJE = new b("DESTORY", 2);
+    PJF = new b[] { PJC, PJD, PJE };
+    AppMethodBeat.o(28789);
   }
   
   private SightCameraView$b() {}

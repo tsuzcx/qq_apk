@@ -29,15 +29,16 @@ public final class qqwalletaio_resv$qqwalletaio_elem_resv
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 72, 80, 88, 96, 106 }, new String[] { "bytes_subject_image", "transaction_id", "sound_record_duration", "uint32_resource_type", "uint32_skin_id", "uint32_effects_id", "int32_special_pop_id", "rpt_payer", "uint32_subjectid", "uint32_hb_from", "uint32_song_id", "uint32_song_flag", "bytes_idiom_alpha" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, qqwalletaio_elem_resv.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 72, 80, 88, 96, 106 }, new String[] { "bytes_subject_image", "transaction_id", "sound_record_duration", "uint32_resource_type", "uint32_skin_id", "uint32_effects_id", "int32_special_pop_id", "rpt_payer", "uint32_subjectid", "uint32_hb_from", "uint32_song_id", "uint32_song_flag", "bytes_idiom_alpha" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger, localInteger, null, localInteger, localInteger, localInteger, localInteger, localByteStringMicro3 }, qqwalletaio_elem_resv.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.qqwallet.qqwalletaio_resv.qqwalletaio_elem_resv
  * JD-Core Version:    0.7.0.1
  */

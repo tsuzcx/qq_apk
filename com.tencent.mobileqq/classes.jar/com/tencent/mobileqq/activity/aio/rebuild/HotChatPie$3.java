@@ -1,18 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agrn;
+import com.tencent.mobileqq.hotchat.api.IHotChatPostListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
-public class HotChatPie$3
-  implements Runnable
+class HotChatPie$3
+  implements AbsListView.OnScrollListener
 {
-  public HotChatPie$3(agrn paramagrn, boolean paramBoolean) {}
+  HotChatPie$3(HotChatPie paramHotChatPie) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.this$0.E()) {
-      return;
+    if ((paramInt == 0) && (this.a.ck != null) && (this.a.ck.getLastVisiblePosition() == this.a.ck.getCount() - 1) && (this.a.cl != null) && (this.a.cl.getLastPullUpEndIndex() != 0) && (this.a.cl.isLastPullUpEnded()))
+    {
+      this.a.cl.setPullUpStarted();
+      paramAbsListView = this.a;
+      HotChatPie.a(paramAbsListView, paramAbsListView.cl.getLastPullUpEndIndex(), 10);
     }
-    agrn.a(this.this$0, this.a);
   }
 }
 

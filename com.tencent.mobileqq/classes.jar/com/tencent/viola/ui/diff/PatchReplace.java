@@ -25,71 +25,78 @@ public class PatchReplace
   
   public void applyPatch(DomDiffUtils.OnComponentDiffListener paramOnComponentDiffListener, DOMActionContext paramDOMActionContext)
   {
-    if (this.mNewDom == null) {
-      ViolaLogUtils.d("PatchReplace", "mNewDom is null");
-    }
-    label234:
-    do
+    if (this.mNewDom == null)
     {
-      Object localObject;
-      ViewGroup localViewGroup;
-      do
+      ViolaLogUtils.d("PatchReplace", "mNewDom is null");
+      return;
+    }
+    paramDOMActionContext = this.mOldComponent;
+    if (paramDOMActionContext == null)
+    {
+      ViolaLogUtils.d("PatchReplace", "mOldComponent is null");
+      return;
+    }
+    if (paramDOMActionContext.mParent == null)
+    {
+      ViolaLogUtils.d("PatchReplace", "mPatent is null");
+      return;
+    }
+    this.mNewDom.lazy(false);
+    Object localObject = this.mOldComponent.mParent;
+    paramDOMActionContext = generateComponentTree(((VComponentContainer)localObject).getInstance(), this.mNewDom, (VComponentContainer)localObject);
+    if (paramDOMActionContext != null)
+    {
+      int i = ((VComponentContainer)localObject).indexOf(this.mOldComponent);
+      if (i != -1)
       {
-        do
+        paramDOMActionContext.lazy(false);
+        paramDOMActionContext.createView();
+        ((VComponentContainer)localObject).remove(this.mOldComponent, false);
+        this.mOldComponent.removedByDiff();
+        ((VComponentContainer)localObject).addChild(paramDOMActionContext, i);
+        if (((localObject instanceof VRecyclerList)) && (this.mOldComponent.getRealView() != null))
         {
-          int i;
-          do
+          localObject = (ViewGroup)this.mOldComponent.getRealView().getParent();
+          if (localObject != null)
           {
-            do
-            {
-              do
-              {
-                return;
-                if (this.mOldComponent == null)
-                {
-                  ViolaLogUtils.d("PatchReplace", "mOldComponent is null");
-                  return;
-                }
-                if (this.mOldComponent.mParent == null)
-                {
-                  ViolaLogUtils.d("PatchReplace", "mPatent is null");
-                  return;
-                }
-                this.mNewDom.lazy(false);
-                localObject = this.mOldComponent.mParent;
-                paramDOMActionContext = generateComponentTree(((VComponentContainer)localObject).getInstance(), this.mNewDom, (VComponentContainer)localObject);
-              } while (paramDOMActionContext == null);
-              i = ((VComponentContainer)localObject).indexOf(this.mOldComponent);
-              if (i == -1) {
-                break label234;
-              }
-              paramDOMActionContext.lazy(false);
-              paramDOMActionContext.createView();
-              ((VComponentContainer)localObject).remove(this.mOldComponent, false);
-              ((VComponentContainer)localObject).addChild(paramDOMActionContext, i);
-              if ((!(localObject instanceof VRecyclerList)) || (this.mOldComponent.getRealView() == null)) {
-                break;
-              }
-              localObject = (ViewGroup)this.mOldComponent.getRealView().getParent();
-            } while (localObject == null);
             ((ViewGroup)localObject).removeView(this.mOldComponent.getRealView());
             ((ViewGroup)localObject).addView(paramDOMActionContext.getHostView());
-          } while ((paramOnComponentDiffListener == null) || (!(this.mOldComponent instanceof VCell)) || (!(paramDOMActionContext instanceof VCell)));
-          paramOnComponentDiffListener.onCellChange((VCell)this.mOldComponent, (VCell)paramDOMActionContext);
-          return;
+            if (paramOnComponentDiffListener != null)
+            {
+              localObject = this.mOldComponent;
+              if (((localObject instanceof VCell)) && ((paramDOMActionContext instanceof VCell))) {
+                paramOnComponentDiffListener.onCellChange((VCell)localObject, (VCell)paramDOMActionContext);
+              }
+            }
+          }
+        }
+        else
+        {
           ((VComponentContainer)localObject).addSubView(paramDOMActionContext.getRealView(), i);
-          return;
-        } while ((!(localObject instanceof VRecyclerList)) || (((VComponentContainer)localObject).getRealView() == null) || (this.mOldComponent.getRealView() == null));
-        localViewGroup = (ViewGroup)this.mOldComponent.getRealView().getParent();
-      } while (localViewGroup == null);
-      paramDOMActionContext.lazy(false);
-      paramDOMActionContext.createView();
-      ((VComponentContainer)localObject).remove(this.mOldComponent, false);
-      ((VComponentContainer)localObject).addChild(paramDOMActionContext);
-      localViewGroup.removeView(this.mOldComponent.getRealView());
-      localViewGroup.addView(paramDOMActionContext.getHostView());
-    } while ((paramOnComponentDiffListener == null) || (!(this.mOldComponent instanceof VCell)) || (!(paramDOMActionContext instanceof VCell)));
-    paramOnComponentDiffListener.onCellChange((VCell)this.mOldComponent, (VCell)paramDOMActionContext);
+        }
+      }
+      else if (((localObject instanceof VRecyclerList)) && (((VComponentContainer)localObject).getRealView() != null) && (this.mOldComponent.getRealView() != null))
+      {
+        ViewGroup localViewGroup = (ViewGroup)this.mOldComponent.getRealView().getParent();
+        if (localViewGroup != null)
+        {
+          paramDOMActionContext.lazy(false);
+          paramDOMActionContext.createView();
+          ((VComponentContainer)localObject).remove(this.mOldComponent, false);
+          this.mOldComponent.removedByDiff();
+          ((VComponentContainer)localObject).addChild(paramDOMActionContext);
+          localViewGroup.removeView(this.mOldComponent.getRealView());
+          localViewGroup.addView(paramDOMActionContext.getHostView());
+          if (paramOnComponentDiffListener != null)
+          {
+            localObject = this.mOldComponent;
+            if (((localObject instanceof VCell)) && ((paramDOMActionContext instanceof VCell))) {
+              paramOnComponentDiffListener.onCellChange((VCell)localObject, (VCell)paramDOMActionContext);
+            }
+          }
+        }
+      }
+    }
   }
   
   public String toString()
@@ -99,7 +106,7 @@ public class PatchReplace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.diff.PatchReplace
  * JD-Core Version:    0.7.0.1
  */

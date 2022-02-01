@@ -12,7 +12,12 @@ class VideoInstructionsBuilder$2
   
   public int compare(TAVVideoCompositionLayerInstruction paramTAVVideoCompositionLayerInstruction1, TAVVideoCompositionLayerInstruction paramTAVVideoCompositionLayerInstruction2)
   {
-    if (paramTAVVideoCompositionLayerInstruction1.getTimeRange().getStart().smallThan(paramTAVVideoCompositionLayerInstruction2.getTimeRange().getStart())) {
+    paramTAVVideoCompositionLayerInstruction1 = paramTAVVideoCompositionLayerInstruction1.getTimeRange().getStart();
+    paramTAVVideoCompositionLayerInstruction2 = paramTAVVideoCompositionLayerInstruction2.getTimeRange().getStart();
+    if (paramTAVVideoCompositionLayerInstruction1.equalsTo(paramTAVVideoCompositionLayerInstruction2)) {
+      return 0;
+    }
+    if (paramTAVVideoCompositionLayerInstruction1.smallThan(paramTAVVideoCompositionLayerInstruction2)) {
       return -1;
     }
     return 1;
@@ -20,7 +25,7 @@ class VideoInstructionsBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.VideoInstructionsBuilder.2
  * JD-Core Version:    0.7.0.1
  */

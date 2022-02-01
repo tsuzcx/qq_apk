@@ -4,5 +4,5 @@
     <include android:id="@id/dor" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bxe" />
     <include android:id="@id/doy" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bxe" />
     <include android:id="@id/dp4" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bxe" />
-    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:gravity="center" android:id="@id/ezq" android:background="@drawable/jj" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/fr5" android:drawablePadding="12.0dip" />
+    <com.tencent.mobileqq.search.base.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:gravity="center" android:id="@id/ezq" android:background="@drawable/common_list_item_background" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/fr5" android:drawablePadding="12.0dip" />
 </LinearLayout>

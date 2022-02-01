@@ -14,7 +14,7 @@ import com.tencent.ttpic.openapi.manager.TriggerStateManager;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 import com.tencent.ttpic.openapi.model.TriggerStateItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.trigger.TriggerTimeUpdater;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,58 +52,62 @@ public class VideoFilterInputFreeze
   
   private void checkFreezeFrameValiedByTime(long paramLong)
   {
-    boolean bool2 = true;
-    if ((this.mCurrentTime <= 0L) || ((!this.mIsFreezeFrameMode) && (this.TRIGGERED_TIMES > 0) && (this.mHasTriggeredTimes >= this.TRIGGERED_TIMES))) {
-      return;
-    }
-    if (this.mFreezeSnapshot != null) {
-      this.mFreezeSnapshot.updateTimeStamp(paramLong);
-    }
-    paramLong = getCurentObjectLifeTime(paramLong);
-    if ((paramLong >= this.mFreezeFrameStartTime) && (paramLong >= 0L))
+    if (this.mCurrentTime > 0L)
     {
-      bool1 = true;
+      if (!this.mIsFreezeFrameMode)
+      {
+        int i = this.TRIGGERED_TIMES;
+        if ((i > 0) && (this.mHasTriggeredTimes >= i)) {
+          return;
+        }
+      }
+      VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+      if (localVideoFilterListSnapshot != null) {
+        localVideoFilterListSnapshot.updateTimeStamp(paramLong);
+      }
+      paramLong = getCurentObjectLifeTime(paramLong);
+      long l = this.mFreezeFrameStartTime;
+      boolean bool2 = false;
+      if ((paramLong >= l) && (paramLong >= 0L)) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
       if ((!this.mIsFreezeFrameMode) && (bool1)) {
         this.mHasTriggeredTimes += 1;
       }
       this.mIsFreezeFrameMode = bool1;
-      if (this.mIsFreezeFrameMode)
+      boolean bool1 = this.mIsFreezeFrameMode;
+      if (bool1)
       {
-        if (this.mFreezeFrameDuration <= 0L) {
-          break label221;
+        l = this.mFreezeFrameDuration;
+        if (l > 0L) {
+          if (paramLong < this.mFreezeFrameStartTime + l) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
         }
-        if (paramLong >= this.mFreezeFrameStartTime + this.mFreezeFrameDuration) {
-          break label216;
-        }
-        bool1 = true;
-        label134:
         this.mIsFreezeFrameMode = bool1;
-        if ((!this.mIsFreezeFrameMode) && (!this.mIsAlawayTriggedFreezeFrame)) {
-          if (paramLong > this.mFreezeFrameStartTime + this.mPlayTime) {
-            break label229;
+        if ((!this.mIsFreezeFrameMode) && (!this.mIsAlawayTriggedFreezeFrame))
+        {
+          bool1 = bool2;
+          if (paramLong <= this.mFreezeFrameStartTime + this.mPlayTime) {
+            bool1 = true;
+          }
+          this.mIsFreezeFrameMode = bool1;
+        }
+        if (!this.mIsFreezeFrameMode)
+        {
+          localVideoFilterListSnapshot = this.mFreezeSnapshot;
+          if (localVideoFilterListSnapshot != null)
+          {
+            localVideoFilterListSnapshot.clear();
+            this.mFreezeSnapshot = null;
           }
         }
       }
-    }
-    label216:
-    label221:
-    label229:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mIsFreezeFrameMode = bool1;
-      if ((!this.mIsFreezeFrameMode) && (this.mFreezeSnapshot != null))
-      {
-        this.mFreezeSnapshot.clear();
-        this.mFreezeSnapshot = null;
-      }
       updateTriggerTimeUpdater(paramLong, this.mIsFreezeFrameMode);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label134;
-      bool1 = this.mIsFreezeFrameMode;
-      break label134;
     }
   }
   
@@ -112,10 +116,14 @@ public class VideoFilterInputFreeze
     if (!this.mIsAlawayTriggedFreezeFrame) {
       this.mIsFreezeFrameMode = isPlaying();
     }
-    if ((!this.mIsFreezeFrameMode) && (this.mFreezeSnapshot != null))
+    if (!this.mIsFreezeFrameMode)
     {
-      this.mFreezeSnapshot.clear();
-      this.mFreezeSnapshot = null;
+      VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+      if (localVideoFilterListSnapshot != null)
+      {
+        localVideoFilterListSnapshot.clear();
+        this.mFreezeSnapshot = null;
+      }
     }
   }
   
@@ -126,23 +134,16 @@ public class VideoFilterInputFreeze
     }
     int j = -1;
     int i;
-    if (VideoMaterialUtil.isFaceTriggerType(this.mFreezeFrameTriggleType))
+    if (VideoMaterial.isFaceTriggerType(this.mFreezeFrameTriggleType))
     {
       paramMap = (FaceActionCounter)paramMap.get(Integer.valueOf(this.mFreezeFrameTriggleType));
-      if (paramMap != null)
-      {
+      i = j;
+      if (paramMap != null) {
         i = paramMap.count;
-        if (i % this.mTotalTriggerCount != this.mActiveTriggerCount) {
-          break label126;
-        }
       }
     }
-    label126:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      return bool;
-      i = -1;
-      break;
       paramMap = AIActionCounter.getActions(AEDetectorType.HAND);
       i = j;
       if (paramMap != null)
@@ -152,59 +153,62 @@ public class VideoFilterInputFreeze
           i = ((Integer)paramMap.get(Integer.valueOf(this.mFreezeFrameTriggleType))).intValue();
         }
       }
-      break;
     }
+    return i % this.mTotalTriggerCount == this.mActiveTriggerCount;
   }
   
   private int checkTriggered(int paramInt, Map<Integer, FaceActionCounter> paramMap)
   {
-    int i = 1;
     if (paramInt == this.mFreezeFrameTriggleType)
     {
-      if (this.mTotalTriggerCount > 1) {
-        if (checkTriggerActiveCount(paramMap)) {
+      if (this.mTotalTriggerCount > 1)
+      {
+        if (checkTriggerActiveCount(paramMap))
+        {
           triggeredWork();
         }
-      }
-      for (;;)
-      {
-        paramInt = 2;
-        do
+        else
         {
-          return paramInt;
-          paramInt = i;
-        } while (!this.mIsFreezeFrameMode);
-        this.mIsFreezeFrameMode = false;
-        checkPlayOver();
-        continue;
+          if (!this.mIsFreezeFrameMode) {
+            return 1;
+          }
+          this.mIsFreezeFrameMode = false;
+          checkPlayOver();
+        }
+      }
+      else {
         triggeredWork();
       }
+      return 2;
     }
     return 0;
   }
   
   private long getCurentObjectLifeTime(long paramLong)
   {
-    long l = paramLong;
-    if (this.mInitTime >= 0L) {
-      l = paramLong - this.mInitTime;
+    long l2 = this.mInitTime;
+    long l1 = paramLong;
+    if (l2 >= 0L) {
+      l1 = paramLong - l2;
     }
-    return l;
+    return l1;
   }
   
   private boolean isPlaying()
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.mFreezeSnapshot != null)
+    Object localObject = this.mFreezeSnapshot;
+    if (localObject != null)
     {
-      PTFaceAttr localPTFaceAttr = this.mFreezeSnapshot.getPTFaceSnapshot();
-      l1 = l2;
-      if (localPTFaceAttr != null) {
-        l1 = getCurentObjectLifeTime(localPTFaceAttr.getTimeStamp());
+      localObject = ((VideoFilterListSnapshot)localObject).getPTFaceSnapshot();
+      if (localObject != null)
+      {
+        l = getCurentObjectLifeTime(((PTFaceAttr)localObject).getTimeStamp());
+        break label32;
       }
     }
-    return this.mPlayTime + this.mFreezeFrameStartTime > l1;
+    long l = 0L;
+    label32:
+    return this.mPlayTime + this.mFreezeFrameStartTime > l;
   }
   
   private void postDelayTimesTriggered()
@@ -243,133 +247,119 @@ public class VideoFilterInputFreeze
   
   private void updateTriggerTimeUpdater(long paramLong, boolean paramBoolean)
   {
-    if (this.mTriggerTimeUpdater != null) {
-      this.mFreezeFrameStartTime = this.mTriggerTimeUpdater.updateCurTriggerTimeAddDelayTime(paramLong, this.mFreezeFrameStartTime, paramBoolean);
+    TriggerTimeUpdater localTriggerTimeUpdater = this.mTriggerTimeUpdater;
+    if (localTriggerTimeUpdater != null) {
+      this.mFreezeFrameStartTime = localTriggerTimeUpdater.updateCurTriggerTimeAddDelayTime(paramLong, this.mFreezeFrameStartTime, paramBoolean);
     }
   }
   
   public void checkFreezeFrameValiedByStateTrigger(Map<Integer, FaceActionCounter> paramMap, Set<Integer> paramSet)
   {
-    if ((this.mCurrentTime <= 0L) || ((!this.mIsFreezeFrameMode) && (this.TRIGGERED_TIMES > 0) && (this.mHasTriggeredTimes >= this.TRIGGERED_TIMES))) {}
-    label167:
-    label173:
-    label177:
-    for (;;)
+    if (this.mCurrentTime > 0L)
     {
-      return;
-      if (this.mFreezeSnapshot != null) {
-        this.mFreezeSnapshot.updateCameraTriggerAction(paramSet);
+      if (!this.mIsFreezeFrameMode)
+      {
+        int i = this.TRIGGERED_TIMES;
+        if ((i > 0) && (this.mHasTriggeredTimes >= i)) {
+          return;
+        }
       }
-      boolean bool1;
+      VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+      if (localVideoFilterListSnapshot != null) {
+        localVideoFilterListSnapshot.updateCameraTriggerAction(paramSet);
+      }
       if (this.mIsStateTrigger)
       {
         paramSet = TriggerStateManager.getInstance().getTriggerStateItem(this.mItemRenderId);
-        if (paramSet == null) {
-          break label173;
-        }
-        boolean bool2 = paramSet.isTriggerState(this.mTriggerState);
-        bool1 = bool2;
-        if (bool2)
+        if (paramSet != null)
         {
-          bool1 = bool2;
-          if (this.mTriggerStateRangeMin < this.mTriggerStateRangeMax)
+          bool = paramSet.isTriggerState(this.mTriggerState);
+          if ((bool) && (this.mTriggerStateRangeMin < this.mTriggerStateRangeMax))
           {
             double d = paramSet.getRandomValue();
-            if ((d < this.mTriggerStateRangeMin) || (d >= this.mTriggerStateRangeMax)) {
-              break label167;
+            if ((d >= this.mTriggerStateRangeMin) && (d < this.mTriggerStateRangeMax))
+            {
+              bool = true;
+              break label138;
             }
-            bool1 = true;
+          }
+          else
+          {
+            break label138;
           }
         }
+        boolean bool = false;
+        label138:
+        if ((bool) && (checkTriggered(this.mFreezeFrameTriggleType, paramMap) != 0)) {
+          return;
+        }
       }
-      for (;;)
+      if (this.mIsFreezeFrameMode)
       {
-        if ((bool1) && (checkTriggered(this.mFreezeFrameTriggleType, paramMap) != 0)) {
-          break label177;
-        }
-        if (!this.mIsFreezeFrameMode) {
-          break;
-        }
         this.mIsFreezeFrameMode = false;
         checkPlayOver();
-        return;
-        bool1 = false;
-        continue;
-        bool1 = false;
       }
     }
   }
   
   public void checkFreezeFrameValiedByTriggers(Map<Integer, FaceActionCounter> paramMap, Set<Integer> paramSet, AIAttr paramAIAttr)
   {
-    label34:
-    int i;
-    if ((this.mCurrentTime <= 0L) || ((!this.mIsFreezeFrameMode) && (this.TRIGGERED_TIMES > 0) && (this.mHasTriggeredTimes >= this.TRIGGERED_TIMES)))
+    if (this.mCurrentTime > 0L)
     {
-      return;
-    }
-    else
-    {
-      if (this.mFreezeSnapshot != null) {
-        this.mFreezeSnapshot.updateCameraTriggerAction(paramSet);
+      int i;
+      if (!this.mIsFreezeFrameMode)
+      {
+        i = this.TRIGGERED_TIMES;
+        if ((i > 0) && (this.mHasTriggeredTimes >= i)) {
+          return;
+        }
+      }
+      VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+      if (localVideoFilterListSnapshot != null) {
+        localVideoFilterListSnapshot.updateCameraTriggerAction(paramSet);
       }
       paramAIAttr = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (paramAIAttr == null) {
-        break label163;
+      if ((paramAIAttr != null) && (paramAIAttr.getHandType() == this.mFreezeFrameTriggleType)) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      if (paramAIAttr.getHandType() != this.mFreezeFrameTriggleType) {
-        break label116;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      label82:
-      if (i != 0) {
-        if (checkTriggered(this.mFreezeFrameTriggleType, paramMap) != 0) {
-          break label34;
-        }
-      }
-      label116:
-      do
+      if (i != 0)
       {
-        break label133;
-        if (!this.mIsFreezeFrameMode) {
-          break label34;
+        if (checkTriggered(this.mFreezeFrameTriggleType, paramMap) == 0) {}
+      }
+      else if (paramSet != null)
+      {
+        paramSet = paramSet.iterator();
+        while (paramSet.hasNext()) {
+          if (checkTriggered(((Integer)paramSet.next()).intValue(), paramMap) != 0) {
+            return;
+          }
         }
+      }
+      if (this.mIsFreezeFrameMode)
+      {
         this.mIsFreezeFrameMode = false;
         checkPlayOver();
-        return;
-        i = 0;
-        break label82;
-        if (paramSet == null) {
-          break;
-        }
-        paramSet = paramSet.iterator();
-        if (!paramSet.hasNext()) {
-          break;
-        }
-      } while (checkTriggered(((Integer)paramSet.next()).intValue(), paramMap) == 0);
-      label133:
-      return;
-      label163:
-      i = 0;
+      }
     }
   }
   
   public void clear()
   {
-    if (this.mFreezeSnapshot != null)
+    Object localObject = this.mFreezeSnapshot;
+    if (localObject != null)
     {
-      this.mFreezeSnapshot.clear();
+      ((VideoFilterListSnapshot)localObject).clear();
       this.mFreezeSnapshot = null;
     }
     this.mIsFreezeFrameMode = false;
     this.mHasTriggeredTimes = 0;
     this.mIsDelaying = false;
-    if (this.mPostHandler != null)
+    localObject = this.mPostHandler;
+    if (localObject != null)
     {
-      this.mPostHandler.getLooper().quit();
+      ((Handler)localObject).getLooper().quit();
       this.mPostHandler = null;
     }
     if (this.mTriggerTimeUpdater != null) {
@@ -384,16 +374,18 @@ public class VideoFilterInputFreeze
   
   public PTFaceAttr getPTFaceSnapshot(PTFaceAttr paramPTFaceAttr)
   {
-    if (this.mFreezeSnapshot != null) {
-      paramPTFaceAttr = this.mFreezeSnapshot.getPTFaceSnapshot();
+    VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+    if (localVideoFilterListSnapshot != null) {
+      paramPTFaceAttr = localVideoFilterListSnapshot.getPTFaceSnapshot();
     }
     return paramPTFaceAttr;
   }
   
   public PTSegAttr getPTSegSnapshot(PTSegAttr paramPTSegAttr)
   {
-    if (this.mFreezeSnapshot != null) {
-      paramPTSegAttr = this.mFreezeSnapshot.getPTSegSnapshot();
+    VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+    if (localVideoFilterListSnapshot != null) {
+      paramPTSegAttr = localVideoFilterListSnapshot.getPTSegSnapshot();
     }
     return paramPTSegAttr;
   }
@@ -416,20 +408,23 @@ public class VideoFilterInputFreeze
   public void reset()
   {
     this.mIsFreezeFrameMode = false;
-    if (this.mFreezeSnapshot != null)
+    Object localObject = this.mFreezeSnapshot;
+    if (localObject != null)
     {
-      this.mFreezeSnapshot.clear();
+      ((VideoFilterListSnapshot)localObject).clear();
       this.mFreezeSnapshot = null;
     }
     this.mHasTriggeredTimes = 0;
     this.mIsDelaying = false;
-    if (this.mInitTime > 0L)
+    long l = this.mInitTime;
+    if (l > 0L)
     {
-      this.mInitTime += this.mCurrentTime;
+      this.mInitTime = (l + this.mCurrentTime);
       this.mCurrentTime = 0L;
     }
-    if (this.mPostHandler != null) {
-      this.mPostHandler.removeCallbacks(this.mDelayRunnable);
+    localObject = this.mPostHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacks(this.mDelayRunnable);
     }
     updateTriggerTimeUpdater(-1L, false);
   }
@@ -437,8 +432,12 @@ public class VideoFilterInputFreeze
   public void setDelayTriggerTime(long paramLong)
   {
     this.DELAY_TRIGGER_TIME = paramLong;
-    if ((this.mIsTimeTrigged) && (this.mFreezeFrameStartTime >= 0L)) {
-      this.mFreezeFrameStartTime += this.DELAY_TRIGGER_TIME;
+    if (this.mIsTimeTrigged)
+    {
+      paramLong = this.mFreezeFrameStartTime;
+      if (paramLong >= 0L) {
+        this.mFreezeFrameStartTime = (paramLong + this.DELAY_TRIGGER_TIME);
+      }
     }
     HandlerThread localHandlerThread = new HandlerThread("ExpressionDetectThread");
     localHandlerThread.start();
@@ -472,8 +471,9 @@ public class VideoFilterInputFreeze
     this.mFreezeFrameStartTime = paramLong1;
     this.mFreezeFrameDuration = paramLong2;
     this.mIsAlawayTriggedFreezeFrame = paramBoolean;
-    if (this.DELAY_TRIGGER_TIME >= 0L) {
-      this.mFreezeFrameStartTime += this.DELAY_TRIGGER_TIME;
+    paramLong1 = this.DELAY_TRIGGER_TIME;
+    if (paramLong1 >= 0L) {
+      this.mFreezeFrameStartTime += paramLong1;
     }
     checkFreezeFrameValiedByTime(0L);
   }
@@ -486,39 +486,28 @@ public class VideoFilterInputFreeze
   public void setFreezeFrameTriggleType(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
     this.mIsTimeTrigged = false;
-    if (paramInt1 == PTFaceAttr.PTExpression.ALWAYS.value)
-    {
-      if ((!this.mIsFreezeFrameMode) && (this.DELAY_TRIGGER_TIME > 0L) && (this.mPostHandler != null)) {
+    if (paramInt1 == PTFaceAttr.PTExpression.ALWAYS.value) {
+      if ((!this.mIsFreezeFrameMode) && (this.DELAY_TRIGGER_TIME > 0L) && (this.mPostHandler != null))
+      {
         postDelayTimesTriggered();
       }
-    }
-    else
-    {
-      this.mFreezeFrameTriggleType = paramInt1;
-      this.mIsAlawayTriggedFreezeFrame = paramBoolean;
-      if (paramInt2 <= 0) {
-        break label92;
-      }
-      label56:
-      this.mActiveTriggerCount = paramInt2;
-      if (paramInt3 <= 1) {
-        break label97;
+      else
+      {
+        this.mFreezeFrameStartTime = 0L;
+        this.mIsFreezeFrameMode = true;
+        this.mHasTriggeredTimes = 1;
       }
     }
-    for (;;)
-    {
-      this.mTotalTriggerCount = paramInt3;
-      return;
-      this.mFreezeFrameStartTime = 0L;
-      this.mIsFreezeFrameMode = true;
-      this.mHasTriggeredTimes = 1;
-      break;
-      label92:
+    this.mFreezeFrameTriggleType = paramInt1;
+    this.mIsAlawayTriggedFreezeFrame = paramBoolean;
+    if (paramInt2 <= 0) {
       paramInt2 = 0;
-      break label56;
-      label97:
+    }
+    this.mActiveTriggerCount = paramInt2;
+    if (paramInt3 <= 1) {
       paramInt3 = 1;
     }
+    this.mTotalTriggerCount = paramInt3;
   }
   
   public void setIsStateTrigger(boolean paramBoolean)
@@ -549,8 +538,9 @@ public class VideoFilterInputFreeze
   
   public void updateTimeStamp(long paramLong)
   {
-    if (this.mFreezeSnapshot != null) {
-      this.mFreezeSnapshot.updateTimeStamp(paramLong);
+    VideoFilterListSnapshot localVideoFilterListSnapshot = this.mFreezeSnapshot;
+    if (localVideoFilterListSnapshot != null) {
+      localVideoFilterListSnapshot.updateTimeStamp(paramLong);
     }
     if (this.mInitTime < 0L) {
       this.mInitTime = paramLong;
@@ -563,7 +553,7 @@ public class VideoFilterInputFreeze
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.VideoFilterInputFreeze
  * JD-Core Version:    0.7.0.1
  */

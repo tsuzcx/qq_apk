@@ -1,10 +1,22 @@
 package com.tencent.xweb.xwalk.b;
 
-public abstract interface b
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class b
 {
-  public abstract void a(g.c paramc);
+  public String aipS;
+  public String aipT;
+  public String aiqL;
+  public int airn;
+  public int type;
   
-  public abstract void b(g.c paramc);
+  public final String toString()
+  {
+    AppMethodBeat.i(212771);
+    String str = "PatchFileConfig type:" + this.type + ", originalFileType:" + this.airn + ", originalFileName:" + this.aipT + ", patchFileName:" + this.aipS + ", patchEndFileMd5:" + this.aiqL;
+    AppMethodBeat.o(212771);
+    return str;
+  }
 }
 
 

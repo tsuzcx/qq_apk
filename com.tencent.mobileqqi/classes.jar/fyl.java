@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy;
 
 public class fyl
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public fyl(FilePreviewAnimQueue paramFilePreviewAnimQueue, FilePreviewAnimQueue.FilePreviewAnim paramFilePreviewAnim) {}
+  public fyl(UniformDownloadBPTransProxy paramUniformDownloadBPTransProxy, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$FilePreviewAnim.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = true;
+    UniformDownloadBPTransProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransEntity, null);
   }
 }
 

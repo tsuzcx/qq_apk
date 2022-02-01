@@ -2,9 +2,9 @@ package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
 
 public class QCirclePushTipView
   extends TextView
@@ -27,14 +27,14 @@ public class QCirclePushTipView
   
   private void a()
   {
-    setBackgroundDrawable(getResources().getDrawable(2130843687));
-    setTextColor(getResources().getColor(2131167194));
+    setBackgroundDrawable(getResources().getDrawable(2130845216));
+    setTextColor(getResources().getColor(2131168464));
     setTextSize(1, 14.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCirclePushTipView
  * JD-Core Version:    0.7.0.1
  */

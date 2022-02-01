@@ -6,13 +6,13 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import bdpd;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -34,41 +34,46 @@ public class MiniAppGetUserAppListServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     Object localObject = new Bundle();
-    for (;;)
+    try
     {
-      try
+      ((Bundle)localObject).putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        ((Bundle)localObject).putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
+        boolean bool = paramFromServiceMsg.isSuccess();
+        if (bool)
+        {
+          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+          localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+          ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
+          ((Bundle)localObject).putLong("retCode", localStQWebRsp.retCode.get());
+          ((Bundle)localObject).putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          ((Bundle)localObject).putParcelable("getUserAppList", paramFromServiceMsg);
+          notifyObserver(paramIntent, 1010, true, (Bundle)localObject, MiniAppObserver.class);
+          localObject = new INTERFACE.StGetUserAppListRsp();
+          ((INTERFACE.StGetUserAppListRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          savaMiniAppInfo((INTERFACE.StGetUserAppListRsp)localObject);
         }
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        else
+        {
+          ((Bundle)localObject).putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+          ((Bundle)localObject).putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+          notifyObserver(paramIntent, 1010, false, (Bundle)localObject, MiniAppObserver.class);
         }
-        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
-        ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
-        ((Bundle)localObject).putLong("retCode", localStQWebRsp.retCode.get());
-        ((Bundle)localObject).putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        ((Bundle)localObject).putParcelable("getUserAppList", paramFromServiceMsg);
-        notifyObserver(paramIntent, 1010, true, (Bundle)localObject, MiniAppObserver.class);
-        localObject = new INTERFACE.StGetUserAppListRsp();
-        ((INTERFACE.StGetUserAppListRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-        savaMiniAppInfo((INTERFACE.StGetUserAppListRsp)localObject);
       }
-      catch (Throwable localThrowable)
+      else
       {
-        QLog.e("MiniAppGetUserAppListServlet", 1, localThrowable + ", onReceive exception: " + Log.getStackTraceString(localThrowable));
-        continue;
         QLog.e("MiniAppGetUserAppListServlet", 1, "onReceive. inform MiniAppGetUserAppListServlet response is null.");
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      ((Bundle)localObject).putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
-      ((Bundle)localObject).putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
-      notifyObserver(paramIntent, 1010, false, (Bundle)localObject, MiniAppObserver.class);
     }
+    catch (Throwable localThrowable)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localThrowable);
+      ((StringBuilder)localObject).append(", onReceive exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(localThrowable));
+      QLog.e("MiniAppGetUserAppListServlet", 1, ((StringBuilder)localObject).toString());
+    }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -76,28 +81,15 @@ public class MiniAppGetUserAppListServlet
     long l1 = paramIntent.getLongExtra("key_uin", 0L);
     long l2 = paramIntent.getLongExtra("key_num", 10L);
     int i = paramIntent.getIntExtra("key_index", -1);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject = null;
-    if (arrayOfByte != null) {
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte1 != null)
+    {
       localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new GetUserAppListRequest((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, i, getTraceId());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte1);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetUserAppList");
-      paramPacket.putSendData(bdpd.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppGetUserAppListServlet", 2, "onSend. mergeFrom exception!");
@@ -105,11 +97,24 @@ public class MiniAppGetUserAppListServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject = null;
+    }
+    byte[] arrayOfByte2 = new GetUserAppListRequest((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, i, getTraceId());
+    Object localObject = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      localObject = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetUserAppList");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppListServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,12 @@ class TVKHttpClient$1
   
   public void onErrorResponse(Request paramRequest, IOException paramIOException)
   {
-    paramRequest = paramIOException;
     if ((paramIOException instanceof HttpDataSource.InvalidResponseCodeException))
     {
       paramRequest = (HttpDataSource.InvalidResponseCodeException)paramIOException;
-      paramRequest = new ITVKHttpProcessor.InvalidResponseCodeException(paramRequest.responseCode, paramRequest.responseMessage);
+      paramIOException = new ITVKHttpProcessor.InvalidResponseCodeException(paramRequest.responseCode, paramRequest.responseMessage);
     }
-    this.val$callback.onFailure(paramRequest);
+    this.val$callback.onFailure(paramIOException);
   }
   
   public void onResponseReceived(Request paramRequest, Response paramResponse)
@@ -29,7 +28,7 @@ class TVKHttpClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKHttpClient.1
  * JD-Core Version:    0.7.0.1
  */

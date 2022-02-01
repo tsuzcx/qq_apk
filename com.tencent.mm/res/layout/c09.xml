@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/b47" android:background="@color/d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/jk7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.tools.VideoSightView android:id="@id/f3g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:gravity="center" android:id="@id/ck0" android:background="@color/g_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jac" android:layout_centerInParent="true" android:alpha="0.8" />
+    <ViewStub android:id="@id/jle" android:layout="@layout/c07" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/k1h" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:gravity="center" android:id="@id/ckq" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
+    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:layout_centerInParent="true" />
+</RelativeLayout>

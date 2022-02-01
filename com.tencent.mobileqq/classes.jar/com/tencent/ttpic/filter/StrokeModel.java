@@ -33,14 +33,14 @@ public class StrokeModel
   {
     if (this != paramObject)
     {
-      if ((paramObject instanceof StrokeModel)) {
+      if ((paramObject instanceof StrokeModel))
+      {
         paramObject = (StrokeModel)paramObject;
+        return (this.sid.equals(paramObject.sid)) && (this.strokeType == paramObject.strokeType) && (Float.compare(this.strokeWidth, paramObject.strokeWidth) == 0) && (Float.compare(this.strokeGap, paramObject.strokeGap) == 0) && (Arrays.equals(this.strokeColor, paramObject.strokeColor));
       }
+      return false;
     }
-    else {
-      return (this.sid.equals(paramObject.sid)) && (this.strokeType == paramObject.strokeType) && (Float.compare(this.strokeWidth, paramObject.strokeWidth) == 0) && (Float.compare(this.strokeGap, paramObject.strokeGap) == 0) && (Arrays.equals(this.strokeColor, paramObject.strokeColor));
-    }
-    return false;
+    return true;
   }
   
   public String getSid()
@@ -70,20 +70,22 @@ public class StrokeModel
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.sid;
-    if (localObject != null) {}
-    for (int i = ((String)localObject).hashCode();; i = 0)
-    {
-      int k = this.strokeType;
-      int m = Float.floatToIntBits(this.strokeWidth);
-      int n = Float.floatToIntBits(this.strokeGap);
-      localObject = this.strokeColor;
-      if (localObject != null) {
-        j = Arrays.hashCode((float[])localObject);
-      }
-      return (((i * 31 + k) * 31 + m) * 31 + n) * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = ((String)localObject).hashCode();
+    } else {
+      i = 0;
     }
+    int k = this.strokeType;
+    int m = Float.floatToIntBits(this.strokeWidth);
+    int n = Float.floatToIntBits(this.strokeGap);
+    localObject = this.strokeColor;
+    if (localObject != null) {
+      j = Arrays.hashCode((float[])localObject);
+    }
+    return (((i * 31 + k) * 31 + m) * 31 + n) * 31 + j;
   }
   
   public void setSid(String paramString)
@@ -113,12 +115,24 @@ public class StrokeModel
   
   public String toString()
   {
-    return "StrokeModel(sid=" + this.sid + ", strokeType=" + this.strokeType + ", strokeWidth=" + this.strokeWidth + ", strokeGap=" + this.strokeGap + ", strokeColor=" + Arrays.toString(this.strokeColor) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StrokeModel(sid=");
+    localStringBuilder.append(this.sid);
+    localStringBuilder.append(", strokeType=");
+    localStringBuilder.append(this.strokeType);
+    localStringBuilder.append(", strokeWidth=");
+    localStringBuilder.append(this.strokeWidth);
+    localStringBuilder.append(", strokeGap=");
+    localStringBuilder.append(this.strokeGap);
+    localStringBuilder.append(", strokeColor=");
+    localStringBuilder.append(Arrays.toString(this.strokeColor));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.StrokeModel
  * JD-Core Version:    0.7.0.1
  */

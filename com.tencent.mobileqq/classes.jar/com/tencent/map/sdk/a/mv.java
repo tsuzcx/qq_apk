@@ -34,93 +34,98 @@ public class mv
   
   public mv(pn parampn, PolygonOptions paramPolygonOptions)
   {
-    if ((parampn == null) || (parampn.az == null)) {}
-    do
+    if (parampn != null)
     {
-      return;
+      if (parampn.az == null) {
+        return;
+      }
       this.h = new Polygon2D();
       this.h.polygonId = -1;
       this.t = paramPolygonOptions;
       this.q = parampn.az;
-    } while ((paramPolygonOptions == null) || (nl.a(paramPolygonOptions.getText())));
-    this.q.a(this);
+      if ((paramPolygonOptions != null) && (!nl.a(paramPolygonOptions.getText()))) {
+        this.q.a(this);
+      }
+    }
   }
   
   private static DoublePoint[] a(DoublePoint[] paramArrayOfDoublePoint)
   {
-    double d6 = paramArrayOfDoublePoint[0].x;
-    double d4 = paramArrayOfDoublePoint[0].y;
-    double d2 = paramArrayOfDoublePoint[0].x;
+    double d7 = paramArrayOfDoublePoint[0].x;
+    double d2 = paramArrayOfDoublePoint[0].y;
+    double d5 = paramArrayOfDoublePoint[0].x;
     double d1 = paramArrayOfDoublePoint[0].y;
     int i1 = 1;
-    double d5;
-    double d3;
-    if (i1 < 4)
+    while (i1 < 4)
     {
-      double d7 = paramArrayOfDoublePoint[i1].x;
-      d5 = paramArrayOfDoublePoint[i1].y;
-      d3 = d6;
-      if (d7 < d6) {
-        d3 = d7;
+      double d8 = paramArrayOfDoublePoint[i1].x;
+      double d3 = paramArrayOfDoublePoint[i1].y;
+      double d4 = d7;
+      if (d8 < d7) {
+        d4 = d8;
       }
-      if (d7 <= d2) {
-        break label160;
+      double d6 = d5;
+      if (d8 > d5) {
+        d6 = d8;
       }
-      d2 = d7;
+      d5 = d2;
+      if (d3 < d2) {
+        d5 = d3;
+      }
+      d8 = d1;
+      if (d3 > d1) {
+        d8 = d3;
+      }
+      i1 += 1;
+      d7 = d4;
+      d2 = d5;
+      d5 = d6;
+      d1 = d8;
     }
-    label160:
-    for (;;)
-    {
-      d6 = d4;
-      if (d5 < d4) {
-        d6 = d5;
-      }
-      if (d5 > d1) {
-        d1 = d5;
-      }
-      for (;;)
-      {
-        i1 += 1;
-        d4 = d6;
-        d6 = d3;
-        break;
-        return new DoublePoint[] { new DoublePoint(d6, d4), new DoublePoint(d2, d1) };
-      }
-    }
+    return new DoublePoint[] { new DoublePoint(d7, d2), new DoublePoint(d5, d1) };
   }
   
   private void e()
   {
-    if (this.q == null) {}
-    while (((this.h.polygonId >= 0) && (!this.f)) || (this.i == null) || (this.i.size() <= 2)) {
+    if (this.q == null) {
       return;
     }
-    this.h.color = e(this.b);
-    this.h.borderColor = e(this.c);
-    this.h.borderWidth = this.a;
-    this.h.polygonMode = 1;
-    this.h.zIndex = i();
-    this.h.level = j();
-    int i2 = this.i.size();
-    this.h.points = new Point[i2];
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      GeoPoint localGeoPoint = (GeoPoint)this.i.get(i1);
-      this.h.points[i1] = new Point(localGeoPoint.getLongitudeE6(), localGeoPoint.getLatitudeE6());
-      i1 += 1;
-    }
-    if (-1 == this.h.polygonId) {
-      this.h.polygonId = this.q.a(this.h);
-    }
-    for (;;)
-    {
-      this.q.b.k();
-      this.f = false;
+    if ((this.h.polygonId >= 0) && (!this.f)) {
       return;
-      if (this.f) {
+    }
+    Object localObject = this.i;
+    if (localObject != null)
+    {
+      if (((List)localObject).size() <= 2) {
+        return;
+      }
+      this.h.color = e(this.b);
+      this.h.borderColor = e(this.c);
+      this.h.borderWidth = this.a;
+      localObject = this.h;
+      ((Polygon2D)localObject).polygonMode = 1;
+      ((Polygon2D)localObject).zIndex = i();
+      this.h.level = j();
+      int i2 = this.i.size();
+      this.h.points = new Point[i2];
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localObject = (GeoPoint)this.i.get(i1);
+        this.h.points[i1] = new Point(((GeoPoint)localObject).getLongitudeE6(), ((GeoPoint)localObject).getLatitudeE6());
+        i1 += 1;
+      }
+      if (-1 == this.h.polygonId)
+      {
+        localObject = this.h;
+        ((Polygon2D)localObject).polygonId = this.q.a((Polygon2D)localObject);
+      }
+      else if (this.f)
+      {
         this.q.b(this.h);
       }
+      this.q.b.k();
+      this.f = false;
     }
   }
   
@@ -131,32 +136,35 @@ public class mv
   
   private Rect f()
   {
-    if (this.j != null) {
+    Object localObject = this.j;
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = this.i;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = (GeoPoint)this.i.get(0);
+      int i3 = ((GeoPoint)localObject).getLatitudeE6();
+      int i5 = ((GeoPoint)localObject).getLongitudeE6();
+      int i6 = this.i.size();
+      int i2 = 1;
+      int i4 = i5;
+      int i1 = i3;
+      while (i2 < i6)
+      {
+        localObject = (GeoPoint)this.i.get(i2);
+        int i7 = ((GeoPoint)localObject).getLatitudeE6();
+        int i8 = ((GeoPoint)localObject).getLongitudeE6();
+        i5 = Math.min(i5, i8);
+        i4 = Math.max(i4, i8);
+        i3 = Math.max(i3, i7);
+        i1 = Math.min(i1, i7);
+        i2 += 1;
+      }
+      this.j = new Rect(i5, i3, i4, i1);
       return this.j;
     }
-    if ((this.i == null) || (this.i.isEmpty())) {
-      return null;
-    }
-    GeoPoint localGeoPoint = (GeoPoint)this.i.get(0);
-    int i2 = localGeoPoint.getLatitudeE6();
-    int i5 = localGeoPoint.getLongitudeE6();
-    int i6 = this.i.size();
-    int i3 = i2;
-    int i4 = i5;
-    int i1 = 1;
-    while (i1 < i6)
-    {
-      localGeoPoint = (GeoPoint)this.i.get(i1);
-      int i7 = localGeoPoint.getLatitudeE6();
-      int i8 = localGeoPoint.getLongitudeE6();
-      i5 = Math.min(i5, i8);
-      i4 = Math.max(i4, i8);
-      i3 = Math.max(i3, i7);
-      i2 = Math.min(i2, i7);
-      i1 += 1;
-    }
-    this.j = new Rect(i5, i3, i4, i2);
-    return this.j;
+    return null;
   }
   
   public final Rect a(fu paramfu)
@@ -179,60 +187,56 @@ public class mv
   
   public final void a(int paramInt)
   {
-    if (paramInt == kc.c.a) {}
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.q == null);
-      localObject1 = this.q.b.h;
-    } while ((this.q == null) || (nl.a(this.t.getText())));
-    synchronized (this.l)
-    {
-      if (this.m == null) {
-        this.m = new mv.a((byte)0);
-      }
-      ??? = new GeoPoint(this.p.top, this.p.left);
-      GeoPoint localGeoPoint1 = new GeoPoint(this.p.top, this.p.right);
-      GeoPoint localGeoPoint2 = new GeoPoint(this.p.bottom, this.p.right);
-      GeoPoint localGeoPoint3 = new GeoPoint(this.p.bottom, this.p.left);
-      localObject1 = a(new DoublePoint[] { ((fu)localObject1).a((GeoPoint)???), ((fu)localObject1).a(localGeoPoint1), ((fu)localObject1).a(localGeoPoint2), ((fu)localObject1).a(localGeoPoint3) });
-      new Rect((int)localObject1[0].x, (int)localObject1[0].y, (int)localObject1[1].x, (int)localObject1[1].y);
+    if (paramInt == kc.c.a) {
       return;
+    }
+    Object localObject1 = this.q;
+    if (localObject1 != null)
+    {
+      localObject1 = ((pm)localObject1).b.h;
+      if ((this.q != null) && (!nl.a(this.t.getText()))) {
+        synchronized (this.l)
+        {
+          if (this.m == null) {
+            this.m = new mv.a((byte)0);
+          }
+          ??? = new GeoPoint(this.p.top, this.p.left);
+          GeoPoint localGeoPoint1 = new GeoPoint(this.p.top, this.p.right);
+          GeoPoint localGeoPoint2 = new GeoPoint(this.p.bottom, this.p.right);
+          GeoPoint localGeoPoint3 = new GeoPoint(this.p.bottom, this.p.left);
+          localObject1 = a(new DoublePoint[] { ((fu)localObject1).a((GeoPoint)???), ((fu)localObject1).a(localGeoPoint1), ((fu)localObject1).a(localGeoPoint2), ((fu)localObject1).a(localGeoPoint3) });
+          new Rect((int)localObject1[0].x, (int)localObject1[0].y, (int)localObject1[1].x, (int)localObject1[1].y);
+          return;
+        }
+      }
     }
   }
   
   public final void a(fu paramfu, GL10 paramGL10)
   {
-    int i2 = -1;
-    int i1 = 1;
-    label456:
-    for (;;)
+    try
     {
-      Object localObject1;
-      try
-      {
-        localObject1 = this.q;
-        if (localObject1 == null) {
-          return;
-        }
-        if (!this.e)
-        {
-          this.q.c(this.h.polygonId);
-          this.h.polygonId = -1;
-          continue;
-        }
-        if (!nl.a(this.t.getText())) {
-          break label78;
-        }
+      Object localObject1 = this.q;
+      if (localObject1 == null) {
+        return;
       }
-      finally {}
-      e();
-      continue;
-      label78:
-      if (this.h != null)
+      boolean bool = this.e;
+      int i2 = -1;
+      if (!bool)
+      {
+        this.q.c(this.h.polygonId);
+        this.h.polygonId = -1;
+        return;
+      }
+      if (nl.a(this.t.getText()))
+      {
+        e();
+        return;
+      }
+      localObject1 = this.h;
+      int i3 = 0;
+      int i1 = i3;
+      if (localObject1 != null)
       {
         Object localObject2 = f();
         Object localObject4 = new GeoPoint(((Rect)localObject2).top, ((Rect)localObject2).left);
@@ -244,59 +248,65 @@ public class mv
         localObject1 = paramfu.a((GeoPoint)localObject1);
         paramfu = a(new DoublePoint[] { localObject4, paramfu.a((GeoPoint)localObject2), localObject3, localObject1 });
         paramfu = new Rect((int)paramfu[0].x, (int)paramfu[0].y, (int)paramfu[1].x, (int)paramfu[1].y);
-        if ((Math.abs(paramfu.width()) <= 5) || (Math.abs(paramfu.height()) <= 5)) {}
-      }
-      for (;;)
-      {
-        for (;;)
+        i1 = i3;
+        if (Math.abs(paramfu.width()) > 5)
         {
-          if (i1 == 0) {
-            break label456;
-          }
-          a(paramGL10);
-          if (this.k == null) {
-            break;
-          }
-          this.k.a(paramGL10);
-          this.n = this.k.a();
-          if (this.s) {
-            break;
-          }
-          paramfu = this.q;
-          int i3 = this.k.a();
-          if (this.h == null)
-          {
-            i1 = i2;
-            label368:
-            paramfu = paramfu.b;
-            if (paramfu.a != null) {
-              paramfu = paramfu.a;
-            }
-          }
-          try
-          {
-            paramfu.y();
-            long l1 = paramfu.b;
-            if (l1 == 0L) {
-              paramfu.z();
-            }
-            for (;;)
-            {
-              this.s = true;
-              break;
-              i1 = this.h.polygonId;
-              break label368;
-              paramfu.a.nativeBringElementAbove(paramfu.b, i3, i1);
-              paramfu.z();
-            }
-            i1 = 0;
-          }
-          finally
-          {
-            paramfu.z();
+          int i4 = Math.abs(paramfu.height());
+          i1 = i3;
+          if (i4 > 5) {
+            i1 = 1;
           }
         }
       }
+      if (i1 == 0) {
+        return;
+      }
+      a(paramGL10);
+      if (this.k != null)
+      {
+        this.k.a(paramGL10);
+        paramfu = new StringBuilder();
+        paramfu.append(this.k.a());
+        this.n = paramfu.toString();
+        if (!this.s)
+        {
+          paramfu = this.q;
+          i3 = this.k.a();
+          if (this.h == null) {
+            i1 = i2;
+          } else {
+            i1 = this.h.polygonId;
+          }
+          paramfu = paramfu.b;
+          if (paramfu.a != null)
+          {
+            paramfu = paramfu.a;
+            try
+            {
+              paramfu.y();
+              long l1 = paramfu.b;
+              if (l1 == 0L) {}
+              for (;;)
+              {
+                paramfu.z();
+                break;
+                paramfu.a.nativeBringElementAbove(paramfu.b, i3, i1);
+              }
+              this.s = true;
+            }
+            finally
+            {
+              paramfu.z();
+            }
+          }
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramfu;
     }
   }
   
@@ -339,50 +349,44 @@ public class mv
   
   public final void a(List<GeoPoint> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    label32:
-    int i1;
-    label42:
-    GeoPoint localGeoPoint;
-    if (this.i == null)
+    if (paramList != null)
     {
-      this.i = new ArrayList();
+      if (paramList.isEmpty()) {
+        return;
+      }
+      Object localObject = this.i;
+      if (localObject == null) {
+        this.i = new ArrayList();
+      } else {
+        ((List)localObject).clear();
+      }
       int i3 = paramList.size();
-      i1 = 0;
-      if (i1 < i3)
+      int i1 = 0;
+      while (i1 < i3)
       {
-        localGeoPoint = (GeoPoint)paramList.get(i1);
-        if (localGeoPoint != null)
+        localObject = (GeoPoint)paramList.get(i1);
+        if (localObject != null)
         {
-          i2 = 0;
-          label67:
-          if (i2 >= i1) {
-            break label139;
+          int i2 = 0;
+          while (i2 < i1)
+          {
+            if (((GeoPoint)localObject).equals((GeoPoint)paramList.get(i2)))
+            {
+              i2 = 1;
+              break label118;
+            }
+            i2 += 1;
           }
-          if (!localGeoPoint.equals((GeoPoint)paramList.get(i2))) {
-            break label132;
+          i2 = 0;
+          label118:
+          if (i2 == 0)
+          {
+            this.f = true;
+            this.i.add(localObject);
           }
         }
+        i1 += 1;
       }
-    }
-    label132:
-    label139:
-    for (int i2 = 1;; i2 = 0)
-    {
-      if (i2 == 0)
-      {
-        this.f = true;
-        this.i.add(localGeoPoint);
-      }
-      i1 += 1;
-      break label42;
-      break;
-      this.i.clear();
-      break label32;
-      i2 += 1;
-      break label67;
     }
   }
   
@@ -417,9 +421,10 @@ public class mv
     if (this.h != null) {
       localRect = f();
     }
-    if (this.k != null)
+    ir localir = this.k;
+    if (localir != null)
     {
-      paramfu = this.k.b(paramfu);
+      paramfu = localir.b(paramfu);
       localRect.left = Math.min(localRect.left, paramfu.left);
       localRect.top = Math.min(localRect.top, paramfu.top);
       localRect.right = Math.max(localRect.right, paramfu.right);
@@ -434,11 +439,12 @@ public class mv
   
   public final void c(boolean paramBoolean)
   {
-    if (this.q == null) {
+    pm localpm = this.q;
+    if (localpm == null) {
       return;
     }
     this.e = paramBoolean;
-    this.q.b.k();
+    localpm.b.k();
   }
   
   public final void d()
@@ -448,49 +454,51 @@ public class mv
   
   public final void h()
   {
-    if (this.q == null) {
+    ??? = this.q;
+    if (??? == null) {
       return;
     }
-    Object localObject2 = this.q.b.c;
+    Object localObject2 = ((pm)???).b.c;
     synchronized (((kl)localObject2).e)
     {
       ((kl)localObject2).e.remove(this);
-      if (this.h != null) {
-        this.q.c(this.h.polygonId);
+      ??? = this.h;
+      if (??? != null) {
+        this.q.c(((Polygon2D)???).polygonId);
       }
-      if (this.i != null)
+      ??? = this.i;
+      if (??? != null)
       {
-        this.i.clear();
+        ((List)???).clear();
         this.i = null;
       }
-    }
-    synchronized (this.l)
-    {
-      if (this.m != null)
+      synchronized (this.l)
       {
-        localObject2 = this.m;
-        if ((((mv.a)localObject2).a != null) && (!((mv.a)localObject2).a.isRecycled()))
+        if (this.m != null)
         {
-          ((mv.a)localObject2).a.recycle();
-          ((mv.a)localObject2).a = null;
+          localObject2 = this.m;
+          if ((((mv.a)localObject2).a != null) && (!((mv.a)localObject2).a.isRecycled()))
+          {
+            ((mv.a)localObject2).a.recycle();
+            ((mv.a)localObject2).a = null;
+          }
+          this.m = null;
         }
-        this.m = null;
+        ??? = this.k;
+        if (??? != null)
+        {
+          this.q.b((go)???);
+          this.k = null;
+        }
+        this.r = false;
+        return;
       }
-      if (this.k != null)
-      {
-        this.q.b(this.k);
-        this.k = null;
-      }
-      this.r = false;
-      return;
-      localObject3 = finally;
-      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mv
  * JD-Core Version:    0.7.0.1
  */

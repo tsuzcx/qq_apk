@@ -4,7 +4,7 @@ import android.view.inputmethod.InputConnection;
 
 public abstract interface a
 {
-  public abstract InputConnection aRc();
+  public abstract InputConnection cRo();
 }
 
 

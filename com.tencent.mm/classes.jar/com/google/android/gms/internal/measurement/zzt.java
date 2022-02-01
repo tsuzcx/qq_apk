@@ -16,19 +16,19 @@ public final class zzt
   
   public final Bundle zza(Bundle paramBundle)
   {
-    AppMethodBeat.i(69743);
+    AppMethodBeat.i(2266);
     Object localObject = obtainAndWriteInterfaceToken();
     zzp.zza((Parcel)localObject, paramBundle);
     paramBundle = transactAndReadException(1, (Parcel)localObject);
     localObject = (Bundle)zzp.zza(paramBundle, Bundle.CREATOR);
     paramBundle.recycle();
-    AppMethodBeat.o(69743);
+    AppMethodBeat.o(2266);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzt
  * JD-Core Version:    0.7.0.1
  */

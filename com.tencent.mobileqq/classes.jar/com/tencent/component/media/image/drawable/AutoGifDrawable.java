@@ -28,39 +28,40 @@ public class AutoGifDrawable
   
   public boolean draw(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    boolean bool = false;
-    if (this.realDrawable != null)
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null)
     {
-      this.realDrawable.setCallback(this.gifDrawableCallback);
+      localNewGifDrawable.setCallback(this.gifDrawableCallback);
       this.realDrawable.setBounds(0, 0, paramInt1, paramInt2);
       this.realDrawable.draw(paramCanvas);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public NewGifDrawable.GifPlayListener getGifPlayListener()
   {
-    if (this.realDrawable != null) {
-      return this.realDrawable.getGifPlayListener();
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      return localNewGifDrawable.getGifPlayListener();
     }
     return null;
   }
   
   public int getLoopCount()
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.getLoopCount();
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.getLoopCount();
     }
     return 0;
   }
   
   public Drawable getRealDrawable()
   {
-    if (this.realDrawable != null) {
-      return this.realDrawable;
-    }
-    return this.realDrawable;
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {}
+    return localNewGifDrawable;
   }
   
   public void init(ImageUrl paramImageUrl, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback)
@@ -70,26 +71,29 @@ public class AutoGifDrawable
   
   public void init(ImageUrl paramImageUrl, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback, AutoGifDrawable.GifDownloadCallBackListener paramGifDownloadCallBackListener)
   {
-    if ((paramImageUrl == null) || (paramContext == null)) {}
-    do
+    if (paramImageUrl != null)
     {
-      do
-      {
+      if (paramContext == null) {
         return;
-        ImageLoader.Options localOptions = ImageLoader.Options.copy(paramOptions);
-        localOptions.needShowGifAnimation = true;
-        localOptions.isGifPlayWhileDownloading = ImageManagerEnv.g().isSupportGifPlaying();
-        localOptions.useMainThread = true;
-        localOptions.mImageType = 2;
-        this.context = paramContext;
-        this.autoGifCallback = paramAutoGifCallback;
-        this.gifDownloadCallBackListener = paramGifDownloadCallBackListener;
-        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramImageUrl, paramImageUrl.url, this.gifDownloadListener, localOptions);
-      } while (!(paramContext instanceof NewGifDrawable));
-      this.realDrawable = ((NewGifDrawable)paramContext);
-      this.realDrawable.setCallback(this.gifDrawableCallback);
-    } while (paramGifDownloadCallBackListener == null);
-    paramGifDownloadCallBackListener.onImageLoaded(paramImageUrl.url, this.realDrawable, paramOptions);
+      }
+      ImageLoader.Options localOptions = ImageLoader.Options.copy(paramOptions);
+      localOptions.needShowGifAnimation = true;
+      localOptions.isGifPlayWhileDownloading = ImageManagerEnv.g().isSupportGifPlaying();
+      localOptions.useMainThread = true;
+      localOptions.mImageType = 2;
+      this.context = paramContext;
+      this.autoGifCallback = paramAutoGifCallback;
+      this.gifDownloadCallBackListener = paramGifDownloadCallBackListener;
+      paramContext = ImageLoader.getInstance(paramContext).loadImage(paramImageUrl, paramImageUrl.url, this.gifDownloadListener, localOptions);
+      if ((paramContext instanceof NewGifDrawable))
+      {
+        this.realDrawable = ((NewGifDrawable)paramContext);
+        this.realDrawable.setCallback(this.gifDrawableCallback);
+        if (paramGifDownloadCallBackListener != null) {
+          paramGifDownloadCallBackListener.onImageLoaded(paramImageUrl.url, this.realDrawable, paramOptions);
+        }
+      }
+    }
   }
   
   public void init(String paramString, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback)
@@ -99,41 +103,46 @@ public class AutoGifDrawable
   
   public void init(String paramString, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback, AutoGifDrawable.GifDownloadCallBackListener paramGifDownloadCallBackListener)
   {
-    if ((paramString == null) || (paramContext == null)) {}
-    do
+    if (paramString != null)
     {
-      do
-      {
+      if (paramContext == null) {
         return;
-        ImageLoader.Options localOptions = ImageLoader.Options.copy(paramOptions);
-        localOptions.needShowGifAnimation = true;
-        localOptions.isGifPlayWhileDownloading = ImageManagerEnv.g().isSupportGifPlaying();
-        localOptions.useMainThread = true;
-        localOptions.mImageType = 2;
-        this.context = paramContext;
-        this.autoGifCallback = paramAutoGifCallback;
-        this.gifDownloadCallBackListener = paramGifDownloadCallBackListener;
-        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramString, this.gifDownloadListener, localOptions);
-      } while (!(paramContext instanceof NewGifDrawable));
-      this.realDrawable = ((NewGifDrawable)paramContext);
-      this.realDrawable.setCallback(this.gifDrawableCallback);
-    } while (paramGifDownloadCallBackListener == null);
-    paramGifDownloadCallBackListener.onImageLoaded(paramString, this.realDrawable, paramOptions);
+      }
+      ImageLoader.Options localOptions = ImageLoader.Options.copy(paramOptions);
+      localOptions.needShowGifAnimation = true;
+      localOptions.isGifPlayWhileDownloading = ImageManagerEnv.g().isSupportGifPlaying();
+      localOptions.useMainThread = true;
+      localOptions.mImageType = 2;
+      this.context = paramContext;
+      this.autoGifCallback = paramAutoGifCallback;
+      this.gifDownloadCallBackListener = paramGifDownloadCallBackListener;
+      paramContext = ImageLoader.getInstance(paramContext).loadImage(paramString, this.gifDownloadListener, localOptions);
+      if ((paramContext instanceof NewGifDrawable))
+      {
+        this.realDrawable = ((NewGifDrawable)paramContext);
+        this.realDrawable.setCallback(this.gifDrawableCallback);
+        if (paramGifDownloadCallBackListener != null) {
+          paramGifDownloadCallBackListener.onImageLoaded(paramString, this.realDrawable, paramOptions);
+        }
+      }
+    }
   }
   
   public boolean isRunning()
   {
-    if (this.realDrawable != null) {
-      return this.realDrawable.isRunning();
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      return localNewGifDrawable.isRunning();
     }
     return false;
   }
   
   public void recycled()
   {
-    if (this.realDrawable != null)
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null)
     {
-      this.realDrawable.setGifPlayListener(null);
+      localNewGifDrawable.setGifPlayListener(null);
       this.realDrawable.setVisible(false, false);
       this.realDrawable.stop();
       this.realDrawable = null;
@@ -145,65 +154,73 @@ public class AutoGifDrawable
   
   public void reset()
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.reset();
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.reset();
     }
   }
   
   public void restart()
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.setVisible(true, true);
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.setVisible(true, true);
     }
   }
   
   public void setGifPlayListener(NewGifDrawable.GifPlayListener paramGifPlayListener)
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.setGifPlayListener(paramGifPlayListener);
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.setGifPlayListener(paramGifPlayListener);
     }
   }
   
   public void setLoopCount(int paramInt)
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.setLoopCount(paramInt);
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.setLoopCount(paramInt);
     }
   }
   
   public void setLoopModel(int paramInt)
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.setCurrentModel(paramInt);
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.setCurrentModel(paramInt);
     }
   }
   
   public void setSpeed(float paramFloat)
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.setSpeed(paramFloat);
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.setSpeed(paramFloat);
     }
   }
   
   public void start()
   {
-    if (this.realDrawable != null) {
-      this.realDrawable.setVisible(true, false);
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null) {
+      localNewGifDrawable.setVisible(true, false);
     }
   }
   
   public void stop()
   {
-    if (this.realDrawable != null)
+    NewGifDrawable localNewGifDrawable = this.realDrawable;
+    if (localNewGifDrawable != null)
     {
-      this.realDrawable.setVisible(false, false);
+      localNewGifDrawable.setVisible(false, false);
       this.realDrawable.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.AutoGifDrawable
  * JD-Core Version:    0.7.0.1
  */

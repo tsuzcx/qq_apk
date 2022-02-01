@@ -1,24 +1,31 @@
 package com.tencent.mobileqq.adapter;
 
-import aklr;
-import akly;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.troop.adapter.contact.TroopListItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class TroopListAdapter2$5
-  implements Runnable
+class TroopListAdapter2$5
+  implements View.OnClickListener
 {
-  public TroopListAdapter2$5(aklr paramaklr, TroopManager paramTroopManager, String paramString, akly paramakly, boolean paramBoolean) {}
+  TroopListAdapter2$5(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopListAdapter2", 2, "itemTag.troopInfo.troopcode == null, queryDB");
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof TroopListAdapter2.TroopListViewItemTag))
+    {
+      localObject = (TroopListAdapter2.TroopListViewItemTag)localObject;
+      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).h != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).h.b != null)) {
+        this.a.b.a(((TroopListAdapter2.TroopListViewItemTag)localObject).h.b, ((TroopListAdapter2.TroopListViewItemTag)localObject).h.a);
+      }
+      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).h != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).h.c != null)) {
+        this.a.b.a(((TroopListAdapter2.TroopListViewItemTag)localObject).h.c);
+      }
+      new ReportTask(this.a.e).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
     }
-    ThreadManager.getUIHandler().post(new TroopListAdapter2.5.1(this, str));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

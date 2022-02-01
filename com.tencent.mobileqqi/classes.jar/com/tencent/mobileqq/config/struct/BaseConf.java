@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.config.struct;
 
 import com.tencent.mobileqq.config.ConfigManager;
-import fmx;
+import fmw;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
@@ -94,8 +94,8 @@ public abstract class BaseConf
       int j = 0;
       if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        fmx localfmx = (fmx)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        if ((localfmx.d == null) || (!localfmx.d.contains(paramString))) {}
+        fmw localfmw = (fmw)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        if ((localfmw.d == null) || (!localfmw.d.contains(paramString))) {}
       }
       for (;;)
       {

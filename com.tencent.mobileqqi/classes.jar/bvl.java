@@ -1,10 +1,31 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bvl
-  extends Handler
+  implements Runnable
 {
   public bvl(AuthDevActivity paramAuthDevActivity) {}
+  
+  public void run()
+  {
+    try
+    {
+      if ((AuthDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        AuthDevActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+      }
+      if ((AuthDevActivity.a(this.a) != null) && (!AuthDevActivity.a(this.a).isShowing())) {
+        AuthDevActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+  }
 }
 
 

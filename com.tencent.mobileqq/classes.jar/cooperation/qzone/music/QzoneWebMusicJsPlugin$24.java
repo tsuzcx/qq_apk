@@ -1,9 +1,9 @@
 package cooperation.qzone.music;
 
-import begz;
-import bjqu;
-import bjqw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 class QzoneWebMusicJsPlugin$24
   implements Runnable
@@ -12,12 +12,12 @@ class QzoneWebMusicJsPlugin$24
   
   public void run()
   {
-    bjqu.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
+    RemoteHandleManager.getInstance().getSender().setPlayMode(this.this$0.mRuntime.b().getLongAccountUin(), this.val$random, this.val$auto, this.val$_loopPlay);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.24
  * JD-Core Version:    0.7.0.1
  */

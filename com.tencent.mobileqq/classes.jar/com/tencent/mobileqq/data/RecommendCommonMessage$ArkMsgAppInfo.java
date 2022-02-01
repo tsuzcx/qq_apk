@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import afih;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -10,25 +10,26 @@ public class RecommendCommonMessage$ArkMsgAppInfo
   public String appPath = "";
   public String appVer = "0.0.0.1";
   public String appView = "";
-  public boolean equalInputText;
+  public boolean equalInputText = false;
   public String keyword = "";
-  public afih mArkContainer;
+  public ArkAioContainerWrapper mArkContainer;
   public LinkedList<ArkMsgAppInfo> mOpenCardAppInfoList = new LinkedList();
   public String meta = "";
   
   public void doOnEvent(int paramInt)
   {
-    Iterator localIterator = this.mOpenCardAppInfoList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.mOpenCardAppInfoList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ArkMsgAppInfo localArkMsgAppInfo = (ArkMsgAppInfo)localIterator.next();
+      ArkMsgAppInfo localArkMsgAppInfo = (ArkMsgAppInfo)((Iterator)localObject).next();
       if (localArkMsgAppInfo != null) {
         localArkMsgAppInfo.doOnEvent(paramInt);
       }
     }
-    if (this.mArkContainer != null)
+    localObject = this.mArkContainer;
+    if (localObject != null)
     {
-      this.mArkContainer.doOnEvent(paramInt);
+      ((ArkAioContainerWrapper)localObject).doOnEvent(paramInt);
       if (paramInt == 2) {
         this.mArkContainer = null;
       }
@@ -37,16 +38,14 @@ public class RecommendCommonMessage$ArkMsgAppInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof ArkMsgAppInfo)) {
-        return false;
-      }
-      paramObject = (ArkMsgAppInfo)paramObject;
-    } while ((this.appName.equals(paramObject.appName)) && (this.appPath.equals(paramObject.appPath)) && (this.appView.equals(paramObject.appView)) && (this.keyword.equals(paramObject.keyword)) && (this.equalInputText == paramObject.equalInputText) && (this.meta.equals(paramObject.meta)));
-    return false;
+    }
+    if (!(paramObject instanceof ArkMsgAppInfo)) {
+      return false;
+    }
+    paramObject = (ArkMsgAppInfo)paramObject;
+    return (this.appName.equals(paramObject.appName)) && (this.appPath.equals(paramObject.appPath)) && (this.appView.equals(paramObject.appView)) && (this.keyword.equals(paramObject.keyword)) && (this.equalInputText == paramObject.equalInputText) && (this.meta.equals(paramObject.meta));
   }
 }
 

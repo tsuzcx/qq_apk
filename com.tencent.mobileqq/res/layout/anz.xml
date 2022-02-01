@@ -2,18 +2,18 @@
 <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:orientation="horizontal" android:id="@id/eb_" android:layout_width="fill_parent" android:layout_height="52.0dip">
-        <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/klf" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/klf" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
         <TextView android:textSize="14.0sp" android:textColor="#ff262626" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fz" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="50.0dip" android:maxLines="1" android:layout_toRightOf="@id/klf" />
         <TextView android:textSize="14.0sp" android:textColor="#ffa6a6a6" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fx" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="50.0dip" android:maxLines="1" android:layout_toRightOf="@id/fz" />
     </RelativeLayout>
     <TextView android:textSize="17.0sp" android:textColor="#ff262626" android:gravity="center_vertical" android:id="@id/ef" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxLines="2" android:layout_below="@id/eb_" />
     <RelativeLayout android:id="@id/avi" android:layout_width="fill_parent" android:layout_height="135.0dip" android:layout_below="@id/ef">
         <LinearLayout android:orientation="horizontal" android:id="@id/de4" android:paddingTop="8.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/dh0" android:layout_width="120.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
+            <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/dh0" android:layout_width="120.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
             <View android:layout_width="1.5dip" android:layout_height="fill_parent" />
-            <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/dh1" android:layout_width="120.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
+            <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/dh1" android:layout_width="120.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
             <View android:layout_width="1.5dip" android:layout_height="fill_parent" />
-            <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/dh2" android:layout_width="120.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
+            <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/dh2" android:layout_width="120.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
         </LinearLayout>
         <com.tencent.image.URLImageView android:id="@id/bji" android:background="@drawable/bg2" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="8.0dip" />
         <com.tencent.image.URLImageView android:id="@id/dn5" android:background="@drawable/bx9" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="8.0dip" android:layout_alignParentRight="true" />
@@ -22,7 +22,7 @@
     </RelativeLayout>
     <RelativeLayout android:id="@id/ao4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="84.0dip" android:layout_marginBottom="7.0dip" android:layout_below="@id/avi">
         <LinearLayout android:orientation="horizontal" android:background="#fff7f7f7" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="84.0dip">
-            <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:layout_gravity="center_vertical" android:id="@id/anc" android:layout_width="60.0dip" android:layout_height="60.0dip" />
+            <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:layout_gravity="center_vertical" android:id="@id/anc" android:layout_width="60.0dip" android:layout_height="60.0dip" />
             <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/aop" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
                 <TextView android:textSize="14.0sp" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/aon" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="硬汉也心动的户外表，专为户外运动爱好者设计，兼顾舒适性和实用性" android:maxLines="2" />
                 <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffff5e43" android:id="@id/aqj" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¥319" android:layout_alignParentBottom="true" />
@@ -34,5 +34,5 @@
         <com.tencent.image.URLImageView android:id="@id/aqa" android:background="@drawable/bg1" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
         <com.tencent.image.URLImageView android:id="@id/aqk" android:background="@drawable/bx8" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/ap1" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="50.0dip" />
+    <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/ap1" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="50.0dip" />
 </RelativeLayout>

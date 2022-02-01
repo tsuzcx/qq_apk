@@ -20,13 +20,15 @@ public class tlv_t116
     if (paramArrayOfLong == null) {
       arrayOfLong = new long[0];
     }
-    this._t116_body_len = (arrayOfLong.length * 4 + 10);
+    int k = arrayOfLong.length;
+    int j = 10;
+    this._t116_body_len = (k * 4 + 10);
     paramArrayOfLong = new byte[this._t116_body_len];
     util.int8_to_buf(paramArrayOfLong, 0, this._ver);
     util.int32_to_buf(paramArrayOfLong, 1, paramInt1);
     util.int32_to_buf(paramArrayOfLong, 5, paramInt2);
     util.int8_to_buf(paramArrayOfLong, 9, arrayOfLong.length);
-    paramInt2 = 10;
+    paramInt2 = j;
     paramInt1 = i;
     while (paramInt1 < arrayOfLong.length)
     {
@@ -42,7 +44,7 @@ public class tlv_t116
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t116
  * JD-Core Version:    0.7.0.1
  */

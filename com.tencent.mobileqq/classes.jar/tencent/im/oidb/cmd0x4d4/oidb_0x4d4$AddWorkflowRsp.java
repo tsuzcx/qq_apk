@@ -18,14 +18,15 @@ public final class oidb_0x4d4$AddWorkflowRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint32_result", "bytes_error_msg", "bytes_workflow_id", "uint32_data_version" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, AddWorkflowRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint32_result", "bytes_error_msg", "bytes_workflow_id", "uint32_data_version" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, AddWorkflowRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.AddWorkflowRsp
  * JD-Core Version:    0.7.0.1
  */

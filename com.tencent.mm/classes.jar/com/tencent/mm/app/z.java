@@ -1,144 +1,128 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Log;
+import android.os.Looper;
+import android.os.Message;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.plugin.fcm.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.splash.b;
-import com.tencent.mm.splash.c;
-import com.tencent.mm.splash.f;
-import com.tencent.mm.splash.m;
-import com.tencent.mm.splash.n;
-import com.tencent.mm.xlog.app.XLogSetup;
-import com.tencent.tinker.entry.ApplicationLike;
-import java.util.ArrayList;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c.a;
+import com.tencent.mm.model.c.a.1;
+import com.tencent.mm.model.c.b.1;
+import com.tencent.mm.model.c.c;
+import com.tencent.mm.model.c.c.1;
+import com.tencent.mm.model.c.c.a;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.plugin.sns.c.q;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.ui.HomeUI;
+import com.tencent.mm.ui.LauncherUI;
+import com.tencent.mm.ui.MainTabUI;
+import com.tencent.mm.ui.conversation.MainUI;
+import com.tencent.mm.ui.p;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public final class z
 {
-  public static com.tencent.mm.kernel.b.h bZn;
+  public static z hhq;
+  public boolean hhr;
+  public MMHandler hhs;
   
-  private static void BJ()
+  public z()
   {
-    AppMethodBeat.i(137946);
-    com.tencent.mm.splash.h.a(new c()
+    AppMethodBeat.i(19458);
+    this.hhs = new MMHandler(Looper.getMainLooper())
     {
-      public final void a(Throwable paramAnonymousThrowable, String paramAnonymousString)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(137940);
-        ab.printErrStackTrace("WxSplash.WeChatSplash", paramAnonymousThrowable, paramAnonymousString, new Object[0]);
-        String str = paramAnonymousString;
-        if (paramAnonymousString == null) {
-          str = "";
-        }
-        paramAnonymousThrowable = str + "  " + Log.getStackTraceString(paramAnonymousThrowable);
-        com.tencent.mm.splash.h.dvB().ywn.add(paramAnonymousThrowable);
-        AppMethodBeat.o(137940);
-      }
-      
-      public final void c(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(137941);
-        ab.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(137941);
-      }
-      
-      public final void m(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(137939);
-        if ((z.bZn != null) && (z.bZn.SD()))
+        AppMethodBeat.i(19457);
+        super.handleMessage(paramAnonymousMessage);
+        Object localObject;
+        if (paramAnonymousMessage.what == -1999)
         {
-          paramAnonymousActivity = paramAnonymousActivity.getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.h.Mp());
-          if (paramAnonymousActivity.getBoolean("first_launch_weixin", true))
+          if (!z.this.hhr)
           {
-            paramAnonymousActivity.edit().putBoolean("first_launch_weixin", false).commit();
-            XLogSetup.realSetupXlog();
+            paramAnonymousMessage = LauncherUI.getInstance();
+            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.adBI))
+            {
+              paramAnonymousMessage.adBG.getMainTabUI().bzP("tab_main");
+              localObject = paramAnonymousMessage.getHomeUI();
+              if (((HomeUI)localObject).adAk) {
+                ((HomeUI)localObject).adAm = true;
+              }
+              localObject = q.Qkh;
+              if (localObject != null) {
+                ((com.tencent.mm.plugin.sns.c.i)localObject).heg();
+              }
+              paramAnonymousMessage = paramAnonymousMessage.adBG.getMainTabUI().adHf.values().iterator();
+              while (paramAnonymousMessage.hasNext())
+              {
+                localObject = (Fragment)paramAnonymousMessage.next();
+                if (!(localObject instanceof MainUI)) {
+                  ((p)localObject).jhw();
+                }
+              }
+            }
+            System.gc();
+            AppMethodBeat.o(19457);
           }
         }
-        AppMethodBeat.o(137939);
+        else if (paramAnonymousMessage.what == -2999)
+        {
+          if (z.this.hhr)
+          {
+            AppMethodBeat.o(19457);
+            return;
+          }
+          paramAnonymousMessage = LauncherUI.getInstance();
+          if (paramAnonymousMessage != null)
+          {
+            paramAnonymousMessage = paramAnonymousMessage.adBG.getMainTabUI();
+            if (paramAnonymousMessage.adHf.containsKey(Integer.valueOf(0))) {
+              ((p)paramAnonymousMessage.adHf.get(Integer.valueOf(0))).jhw();
+            }
+          }
+          if (com.tencent.mm.kernel.h.baC().aZN())
+          {
+            bh.bCt();
+            paramAnonymousMessage = ci.Ka("plugin.emoji");
+            if (paramAnonymousMessage != null) {
+              paramAnonymousMessage.clearPluginData(0);
+            }
+            paramAnonymousMessage = com.tencent.mm.model.c.b.bEz();
+            localObject = a.bEw();
+            c localc = c.bEC();
+            bh.baH().postToWorker(new b.1(paramAnonymousMessage));
+            com.tencent.threadpool.h.ahAA.bm(new a.1((a)localObject));
+            localc.a(paramAnonymousMessage);
+            localc.a((c.a)localObject);
+            bh.baH().postToWorker(new c.1(localc));
+          }
+          System.gc();
+        }
+        AppMethodBeat.o(19457);
       }
-    });
-    com.tencent.mm.splash.h.a(new b()
-    {
-      public final boolean be(Context paramAnonymousContext)
-      {
-        AppMethodBeat.i(137954);
-        boolean bool = com.tencent.mm.f.a.bp(paramAnonymousContext);
-        AppMethodBeat.o(137954);
-        return bool;
-      }
-      
-      public final boolean bf(Context paramAnonymousContext)
-      {
-        AppMethodBeat.i(137955);
-        boolean bool = com.tencent.mm.f.a.bf(paramAnonymousContext);
-        AppMethodBeat.o(137955);
-        return bool;
-      }
-      
-      public final void bg(Context paramAnonymousContext)
-      {
-        AppMethodBeat.i(137956);
-        com.tencent.mm.f.a.bg(paramAnonymousContext);
-        AppMethodBeat.o(137956);
-      }
-    });
-    com.tencent.mm.splash.h.a(new f()
-    {
-      public final void BK()
-      {
-        AppMethodBeat.i(137968);
-        com.tencent.mm.blink.a.BK();
-        AppMethodBeat.o(137968);
-      }
-      
-      public final void BL()
-      {
-        AppMethodBeat.i(137970);
-        com.tencent.mm.blink.a.id(1);
-        AppMethodBeat.o(137970);
-      }
-      
-      public final void dD(String paramAnonymousString)
-      {
-        AppMethodBeat.i(137969);
-        com.tencent.mm.blink.a.dD(paramAnonymousString);
-        AppMethodBeat.o(137969);
-      }
-    });
-    AppMethodBeat.o(137946);
+    };
+    AppMethodBeat.o(19458);
   }
   
-  public static void a(com.tencent.mm.kernel.b.h paramh, String paramString)
+  public static z aCK()
   {
-    AppMethodBeat.i(137947);
-    bZn = paramh;
-    BJ();
-    if (paramString == null)
-    {
-      ab.i("WxSplash.WeChatSplash", "splash callback class is null, return.");
-      AppMethodBeat.o(137947);
-      return;
+    AppMethodBeat.i(19459);
+    if (hhq == null) {
+      hhq = new z();
     }
-    com.tencent.mm.blink.a.v(paramh.eKG.getApplicationStartMillisTime(), paramh.eKG.getApplicationStartElapsedTime());
-    com.tencent.mm.splash.h.aqJ(ah.dsN());
-    com.tencent.mm.splash.h.as(WeChatSplashActivity.class);
-    com.tencent.mm.splash.h.at(WeChatSplashFallbackActivity.class);
-    if (d.e(paramh)) {
-      com.tencent.mm.splash.h.aqI("com.google.firebase.provider.FirebaseInitProvider");
-    }
-    m.a(paramh.bX, paramh.mProcessName, paramString);
-    AppMethodBeat.o(137947);
+    z localz = hhq;
+    AppMethodBeat.o(19459);
+    return localz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.z
  * JD-Core Version:    0.7.0.1
  */

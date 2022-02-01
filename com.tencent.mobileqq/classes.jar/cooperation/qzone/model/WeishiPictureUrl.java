@@ -3,27 +3,26 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlo;
 
 public class WeishiPictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new bjlo();
-  public int a;
-  public PictureUrl a;
+  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new WeishiPictureUrl.1();
+  public int key;
+  public PictureUrl pictureUrl;
   
   public WeishiPictureUrl() {}
   
   public WeishiPictureUrl(int paramInt, PictureUrl paramPictureUrl)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_CooperationQzoneModelPictureUrl = paramPictureUrl;
+    this.key = paramInt;
+    this.pictureUrl = paramPictureUrl;
   }
   
-  public WeishiPictureUrl(Parcel paramParcel)
+  protected WeishiPictureUrl(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(PictureUrl.class.getClassLoader()));
+    this.key = paramParcel.readInt();
+    this.pictureUrl = ((PictureUrl)paramParcel.readParcelable(PictureUrl.class.getClassLoader()));
   }
   
   public int describeContents()
@@ -33,13 +32,13 @@ public class WeishiPictureUrl
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelPictureUrl, paramInt);
+    paramParcel.writeInt(this.key);
+    paramParcel.writeParcelable(this.pictureUrl, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.WeishiPictureUrl
  * JD-Core Version:    0.7.0.1
  */

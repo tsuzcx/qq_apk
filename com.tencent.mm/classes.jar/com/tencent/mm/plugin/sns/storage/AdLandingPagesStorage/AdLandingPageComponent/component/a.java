@@ -6,25 +6,25 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
-  extends h
+  extends n
 {
   public a(Context paramContext, c paramc, ViewGroup paramViewGroup)
   {
     super(paramContext, paramc, paramViewGroup);
   }
   
-  protected final void a(LinearLayout paramLinearLayout)
+  protected final void f(LinearLayout paramLinearLayout)
   {
-    Object localObject = (c)this.rve;
+    Object localObject = (c)this.QOV;
     if (paramLinearLayout == null) {
       return;
     }
-    int i = Double.compare(((c)localObject).rrR, ((c)localObject).rrS);
-    int m = (int)((c)localObject).rrR;
-    int n = (int)((c)localObject).rrS;
+    int i = Double.compare(((c)localObject).QJj, ((c)localObject).QJk);
+    int m = (int)((c)localObject).QJj;
+    int n = (int)((c)localObject).QJk;
     int k;
     if (i == 0)
     {
@@ -38,7 +38,7 @@ public abstract class a
     }
     for (;;)
     {
-      ab.i("AdLandingBorderedComp", "border width top %d,bottom %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+      Log.i("AdLandingBorderedComp", "border width top %d,bottom %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
       if (i > 0)
       {
         localLinearLayout = new LinearLayout(paramLinearLayout.getContext());
@@ -60,7 +60,7 @@ public abstract class a
       if (m == 0)
       {
         j = m;
-        if (((c)localObject).rrR != 0.0D) {
+        if (((c)localObject).QJj != 0.0D) {
           j = 1;
         }
       }
@@ -70,7 +70,7 @@ public abstract class a
       {
         k = n;
         i = j;
-        if (((c)localObject).rrS != 0.0D)
+        if (((c)localObject).QJk != 0.0D)
         {
           k = 1;
           i = j;
@@ -81,7 +81,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.a
  * JD-Core Version:    0.7.0.1
  */

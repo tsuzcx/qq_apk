@@ -1,263 +1,145 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cu;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class bg
-  extends com.tencent.mm.sdk.e.j<bf>
-  implements f
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  public boolean adiM;
+  public String adiN;
+  public String md5;
+  private String paV;
+  public boolean paW;
+  public long time;
   
-  static
+  public bg(String paramString)
   {
-    AppMethodBeat.i(1318);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(bf.info, "LBSVerifyMessage") };
-    AppMethodBeat.o(1318);
-  }
-  
-  public bg(e parame)
-  {
-    super(parame, bf.info, "LBSVerifyMessage", cu.INDEX_CREATE);
-    this.db = parame;
-  }
-  
-  public final Cursor Nw(int paramInt)
-  {
-    AppMethodBeat.i(1308);
-    Object localObject = "SELECT sayhiencryptuser,max(createtime) createtime FROM " + getTableName() + " where isSend = 0 GROUP BY sayhiencryptuser LIMIT " + paramInt;
-    localObject = "SELECT a.* FROM (" + (String)localObject + ") b left join " + getTableName() + " a on b.sayhiencryptuser=a.sayhiencryptuser and b.createtime=a.createtime where a.isSend = 0 ORDER BY a.createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(1308);
-    return localObject;
-  }
-  
-  public final void Te(String paramString)
-  {
-    AppMethodBeat.i(1309);
-    paramString = "svrid = '" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    ab.i("MicroMsg.LBSVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(1309);
-  }
-  
-  public final void Tf(String paramString)
-  {
-    AppMethodBeat.i(1310);
-    paramString = "sayhiuser = '" + paramString + "' or sayhiencryptuser='" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    ab.i("MicroMsg.LBSVerifyMessageStorage", "delByUserName = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(1310);
-  }
-  
-  public final long Tg(String paramString)
-  {
-    AppMethodBeat.i(1316);
-    Cursor localCursor;
-    if (paramString != null)
+    AppMethodBeat.i(104954);
+    this.md5 = "-1";
+    this.adiN = "";
+    if (Util.isNullOrNil(paramString))
     {
-      paramString = (bg)((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPN();
-      localCursor = paramString.db.a("SELECT * FROM " + paramString.getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
-      if (localCursor == null)
-      {
-        paramString = null;
-        if (paramString == null) {
-          break label157;
-        }
-      }
-    }
-    label157:
-    for (long l1 = paramString.field_createtime + 1L;; l1 = 0L)
-    {
-      long l2 = bo.aox();
-      if (l1 > l2)
-      {
-        AppMethodBeat.o(1316);
-        return l1;
-        if (!localCursor.moveToFirst())
-        {
-          localCursor.close();
-          paramString = null;
-          break;
-        }
-        paramString = new bf();
-        paramString.convertFrom(localCursor);
-        localCursor.close();
-        break;
-      }
-      AppMethodBeat.o(1316);
-      return l2;
-    }
-  }
-  
-  public final boolean a(bf parambf)
-  {
-    AppMethodBeat.i(1312);
-    if (parambf == null)
-    {
-      ab.e("MicroMsg.LBSVerifyMessageStorage", "insert fail, lbsMsg is null");
-      AppMethodBeat.o(1312);
-      return false;
-    }
-    if (super.insert(parambf))
-    {
-      doNotify(parambf.systemRowid);
-      AppMethodBeat.o(1312);
-      return true;
-    }
-    AppMethodBeat.o(1312);
-    return false;
-  }
-  
-  public final bf[] asg(String paramString)
-  {
-    AppMethodBeat.i(1313);
-    ab.d("MicroMsg.LBSVerifyMessageStorage", "getLastLBSVerifyMessage");
-    paramString = "select *, rowid from LBSVerifyMessage  where sayhiuser = '" + bo.wC(paramString) + "' or sayhiencryptuser = '" + bo.wC(paramString) + "' order by createtime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bf localbf = new bf();
-      localbf.convertFrom(paramString);
-      localArrayList.add(localbf);
-    }
-    paramString.close();
-    paramString = (bf[])localArrayList.toArray(new bf[localArrayList.size()]);
-    AppMethodBeat.o(1313);
-    return paramString;
-  }
-  
-  public final bf ash(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(1314);
-    ab.d("MicroMsg.LBSVerifyMessageStorage", "getLBSVerifyMessage");
-    paramString = "select *, rowid from LBSVerifyMessage  where (sayhiuser = '" + bo.wC(paramString) + "' or sayhiencryptuser = '" + bo.wC(paramString) + "') and flag=1 order by createtime DESC limit 1";
-    Cursor localCursor = this.db.a(paramString, null, 2);
-    if (localCursor.moveToFirst())
-    {
-      paramString = new bf();
-      paramString.convertFrom(localCursor);
+      Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
+      AppMethodBeat.o(104954);
+      return;
     }
     for (;;)
     {
-      localCursor.close();
-      AppMethodBeat.o(1314);
-      return paramString;
-      ab.i("MicroMsg.LBSVerifyMessageStorage", "getLBSVerifyMessage, cursor count = 0");
-      paramString = localObject;
+      try
+      {
+        Object localObject;
+        if (paramString.endsWith("\n"))
+        {
+          localObject = paramString.substring(0, paramString.length() - 1);
+          localObject = ((String)localObject).split(":", 6);
+          if ((localObject.length == 4) && (au.bwS(localObject[0])))
+          {
+            i = 1;
+            if (localObject.length > i) {
+              this.paV = localObject[i];
+            }
+            if (localObject.length > i + 1) {
+              this.time = Util.getLong(localObject[(i + 1)], 0L);
+            }
+            if (localObject.length > i + 2) {
+              this.paW = localObject[(i + 2)].equals("1");
+            }
+            if (localObject.length > i + 3) {
+              this.md5 = localObject[(i + 3)];
+            }
+            if (localObject.length > i + 4) {
+              this.adiN = localObject[(i + 4)].replace("*#*", ":");
+            }
+            if (localObject.length > i + 5) {
+              this.adiM = localObject[(i + 5)].equals("1");
+            }
+            AppMethodBeat.o(104954);
+          }
+        }
+        else
+        {
+          this.adiN = paramString.replace(":", "*#*");
+          localObject = paramString;
+          continue;
+        }
+        int i = 0;
+      }
+      catch (Exception localException)
+      {
+        this.time = 0L;
+        Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, Util.stackTraceToString(localException) });
+        AppMethodBeat.o(104954);
+        return;
+      }
     }
   }
   
-  public final void axH()
+  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
   {
-    AppMethodBeat.i(1311);
-    this.db.delete(getTableName(), null, null);
-    AppMethodBeat.o(1311);
+    int j = 1;
+    AppMethodBeat.i(104952);
+    paramString3 = paramString3.replace(":", "*#*");
+    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
+    if (paramBoolean1)
+    {
+      i = 1;
+      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
+      if (!paramBoolean2) {
+        break label121;
+      }
+    }
+    label121:
+    for (int i = j;; i = 0)
+    {
+      paramString1 = i + "\n";
+      AppMethodBeat.o(104952);
+      return paramString1;
+      i = 0;
+      break;
+    }
   }
   
-  public final bf bPW()
+  public static bg byj(String paramString)
   {
-    AppMethodBeat.i(1306);
-    Cursor localCursor = this.db.a("SELECT * FROM " + getTableName() + " where status != 4 ORDER BY createtime DESC LIMIT 1", null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(1306);
-      return null;
-    }
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(1306);
-      return null;
-    }
-    bf localbf = new bf();
-    localbf.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(1306);
-    return localbf;
-  }
-  
-  public final int bbZ()
-  {
-    AppMethodBeat.i(1304);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 4", null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(1304);
-      return 0;
-    }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    AppMethodBeat.o(1304);
-    return i;
-  }
-  
-  public final bf[] eF(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(1315);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ab.e("MicroMsg.LBSVerifyMessageStorage", "getLastRecvLbsMsg fail, talker is null");
-      AppMethodBeat.o(1315);
-      return null;
-    }
-    paramString = "select * from LBSVerifyMessage where isSend = 0 and (sayhiuser = '" + bo.wC(paramString) + "' or sayhiencryptuser = '" + bo.wC(paramString) + "') order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bf localbf = new bf();
-      localbf.convertFrom(paramString);
-      localArrayList.add(localbf);
-    }
-    paramString.close();
-    paramString = (bf[])localArrayList.toArray(new bf[localArrayList.size()]);
-    AppMethodBeat.o(1315);
+    AppMethodBeat.i(104955);
+    paramString = new bg(paramString);
+    AppMethodBeat.o(104955);
     return paramString;
   }
   
-  public final int getCount()
+  public final String bOq()
   {
-    int i = 0;
-    AppMethodBeat.i(1305);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName(), null, 2);
-    if (localCursor.moveToFirst()) {
-      i = localCursor.getInt(0);
-    }
-    localCursor.close();
-    AppMethodBeat.o(1305);
-    return i;
+    return this.paV;
   }
   
-  public final Cursor xL(int paramInt)
+  public final String bPi()
   {
-    AppMethodBeat.i(1307);
-    Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(1307);
-    return localObject;
+    int j = 1;
+    AppMethodBeat.i(104953);
+    Object localObject = new StringBuilder().append(this.paV).append(":").append(this.time).append(":");
+    if (this.paW)
+    {
+      i = 1;
+      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.adiN).append(":");
+      if (!this.adiM) {
+        break label118;
+      }
+    }
+    label118:
+    for (int i = j;; i = 0)
+    {
+      localObject = i + "\n";
+      AppMethodBeat.o(104953);
+      return localObject;
+      i = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bg
  * JD-Core Version:    0.7.0.1
  */

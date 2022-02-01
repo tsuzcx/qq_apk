@@ -12,8 +12,8 @@ public final class ReqInsertBlackList
   static ReqHeader cache_stHeader;
   static ArrayList<Long> cache_vBlackList;
   public int eType = 0;
-  public ReqHeader stHeader;
-  public ArrayList<Long> vBlackList;
+  public ReqHeader stHeader = null;
+  public ArrayList<Long> vBlackList = null;
   
   public ReqInsertBlackList() {}
   
@@ -48,7 +48,7 @@ public final class ReqInsertBlackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.ReqInsertBlackList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.qipc;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import eipc.EIPCThreadEngine;
+import eipc.EIPCModule;
+import eipc.EIPCModuleFactory;
 
 final class QIPCEnvironmentInit$1
-  extends EIPCThreadEngine
+  implements EIPCModuleFactory
 {
-  public void excute(Runnable paramRunnable)
+  public EIPCModule onCreateModule(String paramString)
   {
-    ThreadManager.executeOnSubThread(paramRunnable);
+    return QIPCServerModuleFactory.onCreateModule(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCEnvironmentInit.1
  * JD-Core Version:    0.7.0.1
  */

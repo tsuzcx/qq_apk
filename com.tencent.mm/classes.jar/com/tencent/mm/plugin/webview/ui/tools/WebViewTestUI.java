@@ -1,25 +1,33 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.xweb.w;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.ag;
 
 public class WebViewTestUI
   extends MMActivity
 {
-  private w iyq;
-  MMWebViewWithJsApi vea;
+  MMWebViewWithJsApi WWM;
+  private ag tyV;
   
   public WebViewTestUI()
   {
-    AppMethodBeat.i(7805);
-    this.iyq = new WebViewTestUI.1(this);
-    AppMethodBeat.o(7805);
+    AppMethodBeat.i(80040);
+    this.tyV = new ag()
+    {
+      public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
+      {
+        AppMethodBeat.i(80039);
+        super.b(paramAnonymousWebView, paramAnonymousString);
+        AppMethodBeat.o(80039);
+      }
+    };
+    AppMethodBeat.o(80040);
   }
   
   public int getLayoutId()
@@ -29,14 +37,14 @@ public class WebViewTestUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(7806);
+    AppMethodBeat.i(80041);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("rawUrl");
-    this.vea = MMWebViewWithJsApi.a.fD(this);
-    this.vea.setWebViewClient(this.iyq);
-    setContentView(this.vea);
-    this.vea.loadUrl(paramBundle);
-    AppMethodBeat.o(7806);
+    this.WWM = MMWebViewWithJsApi.a.ld(this);
+    this.WWM.setWebViewClient(this.tyV);
+    setContentView(this.WWM);
+    this.WWM.loadUrl(paramBundle);
+    AppMethodBeat.o(80041);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

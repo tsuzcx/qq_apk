@@ -1,27 +1,27 @@
 package cooperation.qzone.webviewplugin;
 
-import bjts;
-import bjxe;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.AlbumLibDownloaderUtil;
 
-public class QZoneSharePictureJsPlugin$1
+class QZoneSharePictureJsPlugin$1
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$1(bjxe parambjxe, String[] paramArrayOfString) {}
+  QZoneSharePictureJsPlugin$1(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
   public void run()
   {
-    if (bjts.a().a(bjts.a, true))
+    if (AlbumLibDownloaderUtil.getInstance().vertifySoIsOK(AlbumLibDownloaderUtil.GIF_SO_LIB_NAME, true))
     {
-      bjxe.a(this.this$0, this.this$0.a.mRuntime, this.a);
+      QZoneSharePictureJsPlugin localQZoneSharePictureJsPlugin = this.this$0;
+      QZoneSharePictureJsPlugin.access$000(localQZoneSharePictureJsPlugin, localQZoneSharePictureJsPlugin.parentPlugin.mRuntime, this.val$args);
       return;
     }
-    bjxe.a(this.this$0, this.a);
+    QZoneSharePictureJsPlugin.access$100(this.this$0, this.val$args);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

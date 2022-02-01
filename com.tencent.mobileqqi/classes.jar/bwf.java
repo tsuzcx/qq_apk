@@ -1,29 +1,20 @@
+import android.widget.Button;
 import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class bwf
   implements Runnable
 {
-  public bwf(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public bwf(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    try
+    String str = Utils.d(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity) != null))
     {
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setText(str);
+      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setEnabled(true);
     }
   }
 }

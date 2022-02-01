@@ -1,120 +1,162 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.provider.Settings.SettingNotFoundException;
+import android.provider.Settings.System;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public final class k
-  implements f.c
 {
-  AppBrandVideoView idQ;
-  private e idR;
-  ap idS;
-  int idT;
-  int idU;
-  ap idl;
-  
-  public k(AppBrandVideoView paramAppBrandVideoView, e parame)
+  public static void b(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(126572);
-    this.idU = 0;
-    this.idQ = paramAppBrandVideoView;
-    this.idR = parame;
-    this.idR.a(this);
-    AppMethodBeat.o(126572);
-  }
-  
-  final void a(ai paramai, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(126576);
-    if ((!(paramai instanceof k.l)) && (!(paramai instanceof k.i))) {
-      ab.i("MicroMsg.JsApiVideoCallback", "dispatchEvent event %s", new Object[] { paramai.getName() });
-    }
-    this.idR.b(paramai.BN(paramJSONObject.toString()));
-    AppMethodBeat.o(126576);
-  }
-  
-  final JSONObject aFD()
-  {
-    AppMethodBeat.i(126577);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("data", this.idQ.getCookieData());
-    AppMethodBeat.o(126577);
-    return localJSONObject;
-  }
-  
-  final void aFE()
-  {
-    AppMethodBeat.i(126578);
-    if (this.idS != null) {
-      this.idS.stopTimer();
-    }
-    AppMethodBeat.o(126578);
-  }
-  
-  final void aFF()
-  {
-    AppMethodBeat.i(126579);
-    if (this.idl != null) {
-      this.idl.stopTimer();
-    }
-    AppMethodBeat.o(126579);
-  }
-  
-  public final void c(int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    AppMethodBeat.i(126575);
-    try
+    AppMethodBeat.i(328191);
+    if (!(paramContext instanceof Activity))
     {
-      ab.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-      JSONObject localJSONObject = aFD();
-      localJSONObject.put("fullScreen", paramBoolean);
-      localJSONObject.put("videoPlayerId", paramInt1);
-      localJSONObject.put("direction", paramInt2);
-      a(new k.e((byte)0), localJSONObject);
-      AppMethodBeat.o(126575);
+      AppMethodBeat.o(328191);
       return;
     }
-    catch (JSONException localJSONException)
+    float f;
+    if (paramFloat < 0.01F) {
+      f = 0.01F;
+    }
+    for (;;)
     {
-      ab.e("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { localJSONException });
-      AppMethodBeat.o(126575);
+      paramContext = (Activity)paramContext;
+      WindowManager.LayoutParams localLayoutParams = paramContext.getWindow().getAttributes();
+      localLayoutParams.screenBrightness = f;
+      paramContext.getWindow().setAttributes(localLayoutParams);
+      AppMethodBeat.o(328191);
+      return;
+      f = paramFloat;
+      if (paramFloat > 1.0F) {
+        f = 1.0F;
+      }
     }
   }
   
-  public final void clean()
+  private static int cuR()
   {
-    AppMethodBeat.i(126574);
-    this.idR.b(this);
-    aFE();
-    aFF();
-    AppMethodBeat.o(126574);
+    AppMethodBeat.i(328178);
+    int k = 255;
+    j = k;
+    try
+    {
+      Resources localResources = Resources.getSystem();
+      j = k;
+      int m = localResources.getIdentifier("config_screenBrightnessSettingMaximum", "integer", "android");
+      i = k;
+      if (m != 0)
+      {
+        j = k;
+        i = localResources.getInteger(m);
+      }
+      j = i;
+      Log.d("MicroMsg.VideoPlayerUtils", "getMaxBrightness %d", new Object[] { Integer.valueOf(i) });
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.i("MicroMsg.VideoPlayerUtils", "get max brightness fail, fallback to 255");
+        int i = j;
+      }
+    }
+    AppMethodBeat.o(328178);
+    return i;
   }
   
-  public final void onDestroy()
+  public static boolean d(g paramg)
   {
-    AppMethodBeat.i(126573);
-    ab.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
-    clean();
-    this.idQ.setCallback(null);
-    AppMethodBeat.o(126573);
+    AppMethodBeat.i(328156);
+    if ((paramg != null) && (1 == paramg.getPlayerType()))
+    {
+      AppMethodBeat.o(328156);
+      return true;
+    }
+    AppMethodBeat.o(328156);
+    return false;
   }
   
-  static final class b
-    extends ai
+  public static boolean e(g paramg)
   {
-    private static final int CTRL_INDEX = 131;
-    private static final String NAME = "onVideoClickDanmuBtn";
+    AppMethodBeat.i(328162);
+    if ((paramg != null) && (2 == paramg.getPlayerType()))
+    {
+      AppMethodBeat.o(328162);
+      return true;
+    }
+    AppMethodBeat.o(328162);
+    return false;
+  }
+  
+  private static float eM(Context paramContext)
+  {
+    AppMethodBeat.i(137848);
+    paramContext = paramContext.getContentResolver();
+    float f1 = 0.0F;
+    try
+    {
+      float f2 = Settings.System.getInt(paramContext, "screen_brightness");
+      f1 = f2;
+      int i = cuR();
+      f1 = f2 / i;
+    }
+    catch (Settings.SettingNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.VideoPlayerUtils", paramContext, "", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(137848);
+    return f1;
+  }
+  
+  public static float eN(Context paramContext)
+  {
+    AppMethodBeat.i(137849);
+    if (!(paramContext instanceof Activity))
+    {
+      AppMethodBeat.o(137849);
+      return 1.0F;
+    }
+    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
+    if (localLayoutParams.screenBrightness < 0.0F)
+    {
+      f = eM(paramContext);
+      AppMethodBeat.o(137849);
+      return f;
+    }
+    float f = localLayoutParams.screenBrightness;
+    AppMethodBeat.o(137849);
+    return f;
+  }
+  
+  public static String iY(long paramLong)
+  {
+    AppMethodBeat.i(137850);
+    if (paramLong < 3600000L) {}
+    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
+    {
+      localObject = new SimpleDateFormat((String)localObject);
+      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
+      AppMethodBeat.o(137850);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.k
  * JD-Core Version:    0.7.0.1
  */

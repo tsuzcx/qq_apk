@@ -7,6 +7,7 @@ public final class PTSValueConvertUtil
   private static float RPX_TO_DP_RATE = PTSDeviceUtil.getScreenWidthDp() / 750.0F;
   private static final String TAG = "PTSValueConvertUtil";
   
+  @Deprecated
   public static float dp2px(float paramFloat)
   {
     return PTSDeviceUtil.dp2px(paramFloat);
@@ -14,16 +15,29 @@ public final class PTSValueConvertUtil
   
   public static boolean getBoolean(Object paramObject)
   {
-    boolean bool;
     if ((paramObject instanceof Boolean)) {
-      bool = ((Boolean)paramObject).booleanValue();
+      return ((Boolean)paramObject).booleanValue();
     }
-    do
+    boolean bool2 = false;
+    if (paramObject == null) {
+      return false;
+    }
+    boolean bool1;
+    if ((paramObject instanceof String))
     {
-      return bool;
-      bool = false;
-    } while (!(paramObject instanceof String));
-    return TextUtils.equals("true", (String)paramObject);
+      paramObject = (String)paramObject;
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramObject))
+      {
+        bool1 = bool2;
+        if (TextUtils.equals("0", paramObject)) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static int getColor(Object paramObject)
@@ -31,25 +45,27 @@ public final class PTSValueConvertUtil
     try
     {
       l = Long.valueOf((String)paramObject).longValue();
-      l = (l & 0xFF) << 24 | l >> 8;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        PTSLog.e("PTSValueConvertUtil", "getColor, value = " + paramObject + ", e = " + localNumberFormatException);
-        l = 0L;
-      }
+      l = l << 24 & 0xFF000000 | l >> 8 & 0xFFFFFF;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        PTSLog.e("PTSValueConvertUtil", "getColor, value = " + paramObject + ", e = " + localException);
-        long l = 0L;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColor, value = ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", e = ");
+      localStringBuilder.append(localException);
+      PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
     }
-    PTSLog.i("PTSValueConvertUtil", "getColor, value = " + paramObject + ", res = " + l);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColor, value = ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", e = ");
+      localStringBuilder.append(localNumberFormatException);
+      PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
+    }
+    long l = 0L;
     return (int)l;
   }
   
@@ -66,7 +82,12 @@ public final class PTSValueConvertUtil
       }
       catch (Exception localException)
       {
-        PTSLog.e("PTSValueConvertUtil", "getFloat, value = " + paramObject + ", e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloat, value = ");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(", e = ");
+        localStringBuilder.append(localException);
+        PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
       }
     }
     return 0.0F;
@@ -85,7 +106,12 @@ public final class PTSValueConvertUtil
       }
       catch (Exception localException)
       {
-        PTSLog.e("PTSValueConvertUtil", "getInt, value = " + paramObject + ", e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getInt, value = ");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(", e = ");
+        localStringBuilder.append(localException);
+        PTSLog.e("PTSValueConvertUtil", localStringBuilder.toString());
       }
     }
     return 0;
@@ -102,6 +128,7 @@ public final class PTSValueConvertUtil
     return "";
   }
   
+  @Deprecated
   public static float px2dp(float paramFloat)
   {
     return PTSDeviceUtil.px2dp(paramFloat);
@@ -109,7 +136,7 @@ public final class PTSValueConvertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.utils.PTSValueConvertUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,27 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import alof;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aqly;
-import aqlz;
-import aqma;
-import aqmb;
-import aqmc;
-import aqmd;
-import aqme;
-import aqmf;
-import aqmg;
-import aqmj;
-import aqmk;
-import arbw;
-import arcc;
-import arqx;
-import arrr;
-import bdhb;
-import bhuf;
-import bhus;
-import bhuw;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.BubblePopupWindow;
 import java.io.File;
 import java.util.ArrayList;
@@ -44,122 +32,145 @@ public class LocalFileBrowserActivity
   extends BaseFileAssistantActivity
   implements View.OnClickListener
 {
-  public static String g = "LocalFileBrowserActivity<FileAssistant>";
-  private AsyncTask jdField_a_of_type_AndroidOsAsyncTask;
-  public View.OnClickListener a;
-  public View.OnLongClickListener a;
-  EditText jdField_a_of_type_AndroidWidgetEditText = null;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  public arcc a;
-  protected bhuw a;
-  public BaseActivity a;
-  public NoFileRelativeLayout a;
-  public SlideDetectListView a;
-  public BubblePopupWindow a;
-  public Map<String, Integer> a;
-  public View.OnClickListener b;
-  TextView b;
-  public ArrayList<FileInfo> b;
-  TextView c;
-  public int e = -1;
-  public int f = 0;
-  public String h;
-  String i;
-  boolean j;
-  boolean k = true;
+  public static String F = "LocalFileBrowserActivity<FileAssistant>";
+  TextView G;
+  TextView H;
+  EditText I = null;
+  NoFileRelativeLayout J = null;
+  SlideDetectListView K = null;
+  LinearLayout L = null;
+  LocalFileAdapter M = null;
+  String N;
+  ArrayList<FileInfo> O = new ArrayList();
+  int P = -1;
+  int Q = 0;
+  boolean R = false;
+  String S;
+  QBaseActivity T;
+  BubblePopupWindow U = null;
+  Map<String, Integer> V = new HashMap();
+  boolean W;
+  boolean X = true;
+  public View.OnLongClickListener Y = new LocalFileBrowserActivity.5(this);
+  public View.OnClickListener Z = new LocalFileBrowserActivity.6(this);
+  protected AdapterView.OnItemClickListener aa = new LocalFileBrowserActivity.8(this);
+  private AsyncTask ab = null;
   
-  public LocalFileBrowserActivity()
+  private void N()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = null;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
-    this.jdField_a_of_type_Arcc = null;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aqmc(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new aqmg(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new aqmj(this);
-    this.jdField_a_of_type_Bhuw = new aqlz(this);
+    if (this.O.size() == 0) {
+      this.J.setGone();
+    } else {
+      this.J.setVisible(true);
+    }
+    this.M.notifyDataSetChanged();
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  private void O()
   {
-    String str;
-    if (paramString != null)
+    this.K = ((SlideDetectListView)findViewById(2131437341));
+    this.J = ((NoFileRelativeLayout)findViewById(2131439351));
+    this.J.setText(2131888916);
+    this.K.setOnItemClickListener(this.aa);
+    this.K.setEmptyView(this.J);
+    this.J.setGone();
+    int i = this.Q;
+    if ((i != 7) && (i != 8) && (i != 11))
     {
-      str = paramString;
-      if (paramString.length() != 0) {
-        break label15;
-      }
-    }
-    label15:
-    do
-    {
+      this.M.a(this.K);
       return;
-      do
+    }
+    c(false);
+  }
+  
+  private void P()
+  {
+    int i = this.Q;
+    if (i != 6) {
+      if (i != 7)
       {
-        VFSFile localVFSFile = new VFSFile(str);
-        paramString = str;
-        if (localVFSFile.exists()) {
-          break;
+        if (i != 8)
+        {
+          if (i != 11)
+          {
+            if (i != 23) {
+              break label103;
+            }
+          }
+          else
+          {
+            File localFile = (File)QQFileManagerUtil.b(this).get("externalSdCard");
+            if (localFile == null)
+            {
+              this.N = "/";
+              break label103;
+            }
+            this.N = localFile.getPath();
+            break label103;
+          }
         }
-        paramString = localVFSFile.getParent();
-        str = paramString;
-      } while (paramString != null);
-    } while (paramString == null);
-    if (paramBoolean)
-    {
-      int m = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getFirstVisiblePosition();
-      this.jdField_a_of_type_JavaUtilMap.put(this.h, Integer.valueOf(m));
-      this.h = paramString;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(this.h);
-      switch (this.f)
+        else
+        {
+          this.N = AppConstants.SDCARD_ROOT;
+          break label103;
+        }
+      }
+      else
       {
+        this.N = "/";
+        break label103;
       }
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
-        this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
-      }
-      this.jdField_a_of_type_AndroidOsAsyncTask = new aqma(this, paramBoolean).execute(new String[] { paramString });
-      return;
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(this.h)) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(this.h);
-      break;
-      if (this.h.equalsIgnoreCase(this.i)) {
-        this.c.setText(2131692571);
-      } else {
-        this.c.setText(2131692785);
-      }
+    this.N = AppConstants.SDCARD_FILE_SAVE_PATH;
+    label103:
+    this.S = this.N;
+  }
+  
+  private void Q()
+  {
+    Object localObject = AppConstants.SDCARD_FILE_SAVE_PATH;
+    String str = AppConstants.SDCARD_FILE_SAVE_TMP_PATH;
+    File localFile = new File((String)localObject);
+    if (!FileUtils.fileExists((String)localObject)) {
+      localFile.mkdirs();
+    }
+    localObject = new File(str);
+    if (!FileUtils.fileExists(str)) {
+      ((File)localObject).mkdirs();
     }
   }
   
-  private void c(int paramInt)
+  private void R()
   {
-    n();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelection(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.post(new LocalFileBrowserActivity.12(this, paramInt));
+    this.g = getString(FileCategoryEntity.a(this.Q));
+    setTitle(this.g);
+    if (this.G == null) {
+      this.G = ((TextView)findViewById(2131436227));
+    }
+    this.H = this.leftView;
+    TextView localTextView = this.H;
+    if (localTextView != null) {
+      localTextView.setOnClickListener(new LocalFileBrowserActivity.7(this));
+    }
+    this.H = this.leftView;
   }
   
-  private boolean l()
+  private boolean S()
   {
-    if (((this.f == 8) || (this.f == 11)) && (this.h.equals(this.i))) {
+    int i = this.Q;
+    if (((i == 8) || (i == 11)) && (this.N.equals(this.S))) {
       return super.onBackEvent();
     }
-    if (this.f == 6) {
+    i = this.Q;
+    if (i == 6) {
       return super.onBackEvent();
     }
-    if (this.f == 23)
+    if (i == 23)
     {
       finish();
       return false;
     }
-    String str = new VFSFile(this.h).getParent();
+    String str = new File(this.N).getParent();
     if (str != null)
     {
       a(str, false);
@@ -168,161 +179,148 @@ public class LocalFileBrowserActivity
     return super.onBackEvent();
   }
   
-  private void n()
+  private void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setGone();
-    }
-    for (;;)
+    if (paramString != null)
     {
-      this.jdField_a_of_type_Arcc.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible(true);
-    }
-  }
-  
-  private void o()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131369581));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = ((NoFileRelativeLayout)findViewById(2131371190));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692128);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_Bhuw);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setGone();
-    if ((this.f == 7) || (this.f == 8) || (this.f == 11))
-    {
-      c(false);
-      return;
-    }
-    this.jdField_a_of_type_Arcc.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new aqmb(this));
-  }
-  
-  private void p()
-  {
-    switch (this.f)
-    {
-    }
-    for (;;)
-    {
-      this.i = this.h;
-      return;
-      this.h = arqx.a().b();
-      continue;
-      this.h = alof.aW;
-      continue;
-      this.h = "/";
-      continue;
-      File localFile = (File)arrr.a(this).get("externalSdCard");
-      if (localFile == null) {
-        this.h = "/";
-      } else {
-        this.h = localFile.getPath();
+      String str = paramString;
+      if (paramString.length() == 0) {
+        return;
       }
+      do
+      {
+        paramString = new File(str);
+        if (paramString.exists()) {
+          break;
+        }
+        paramString = paramString.getParent();
+        str = paramString;
+      } while (paramString != null);
+      str = paramString;
+      if (str == null) {
+        return;
+      }
+      if (paramBoolean)
+      {
+        i = this.K.getFirstVisiblePosition();
+        this.V.put(this.N, Integer.valueOf(i));
+      }
+      else if (this.V.containsKey(this.N))
+      {
+        this.V.remove(this.N);
+      }
+      this.N = str;
+      this.I.setText(this.N);
+      int i = this.Q;
+      if ((i != 6) && ((i == 7) || (i == 8) || (i == 11))) {
+        if (this.N.equalsIgnoreCase(this.S)) {
+          this.H.setText(2131889353);
+        } else {
+          this.H.setText(2131889620);
+        }
+      }
+      paramString = this.ab;
+      if (paramString != null) {
+        paramString.cancel(true);
+      }
+      a(paramBoolean, str);
     }
   }
   
-  private void q()
+  private void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = arqx.a().b();
-    String str = arqx.a().c();
-    VFSFile localVFSFile = new VFSFile((String)localObject);
-    if (!bdhb.a((String)localObject)) {
-      localVFSFile.mkdirs();
-    }
-    localObject = new VFSFile(str);
-    if (!bdhb.a(str)) {
-      ((VFSFile)localObject).mkdirs();
-    }
+    this.ab = new LocalFileBrowserActivity.9(this, paramBoolean).execute(new String[] { paramString });
   }
   
-  private void r()
+  private void e(int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = getString(arbw.a(this.f));
-    setTitle(this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368670));
-    }
-    this.c = this.leftView;
-    if (this.c != null) {
-      this.c.setOnClickListener(new aqmk(this));
-    }
-    this.c = this.leftView;
+    N();
+    this.K.setSelected(true);
+    this.K.setSelection(paramInt);
+    this.K.setSelected(true);
+    this.K.post(new LocalFileBrowserActivity.10(this, paramInt));
   }
   
-  public void b()
+  public void c()
   {
-    n();
+    N();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131560651);
-    this.f = getIntent().getBundleExtra("bundle").getInt("category");
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = this;
-    p();
-    q();
-    r();
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131364953));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369494));
-    this.jdField_a_of_type_Arcc = new arcc(this, this.jdField_b_of_type_JavaUtilArrayList, this);
-    o();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Arcc);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_Bhuw);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollToTopListener(new aqly(this));
-    a(this.h, true);
-    if (this.f == 6) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    setContentView(2131627045);
     paramBundle = getIntent();
+    this.Q = paramBundle.getBundleExtra("bundle").getInt("category");
+    this.R = paramBundle.getBooleanExtra("open_with_qq_images", false);
+    this.T = this;
+    P();
+    Q();
+    R();
+    this.I = ((EditText)findViewById(2131431525));
+    this.L = ((LinearLayout)findViewById(2131437244));
+    this.M = new LocalFileAdapter(this, this.O, this);
+    O();
+    this.K.setAdapter(this.M);
+    this.K.setOnItemClickListener(this.aa);
+    this.K.setOnScrollToTopListener(new LocalFileBrowserActivity.1(this));
+    a(this.N, true);
+    if (this.Q == 6) {
+      this.L.setVisibility(8);
+    }
     if (paramBundle.getIntExtra("localSdCardfile", -1) != -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setEditBtnVisible(false);
-      d();
+      this.a.setEditBtnVisible(false);
+      f();
     }
-    this.j = paramBundle.getBooleanExtra("select_file_only_docs_file", false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setDocsCheck(this.j);
-    if (this.j) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setOnlyDocsChecked();
+    this.W = paramBundle.getBooleanExtra("select_file_only_docs_file", false);
+    this.a.setDocsCheck(this.W);
+    if (this.W) {
+      this.a.setOnlyDocsChecked();
     }
-    l();
+    B();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
-      this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
+    AsyncTask localAsyncTask = this.ab;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = null;
+    this.ab = null;
     super.doOnDestroy();
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public void m()
-  {
-    bhuf localbhuf = (bhuf)bhus.a(this, null);
-    localbhuf.a(getResources().getStringArray(2130968633)[1], 3);
-    localbhuf.a(new aqmd(this, localbhuf));
-    localbhuf.setOnDismissListener(new aqme(this));
-    localbhuf.setOnCancelListener(new aqmf(this));
-    localbhuf.c(2131690648);
-    localbhuf.show();
-  }
-  
   public void onBackPressed()
   {
-    l();
+    S();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

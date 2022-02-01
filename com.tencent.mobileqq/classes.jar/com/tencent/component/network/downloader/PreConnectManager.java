@@ -13,37 +13,52 @@ public class PreConnectManager
   private static final String CONNECTION_KEEP_ALIVE = "keep-alive";
   private static final String HEADER_CONNECTION = "Connection";
   
-  public static void connectHost(OkHttpClient paramOkHttpClient, ArrayList<String> paramArrayList)
+  public static void connectHost(OkHttpClient paramOkHttpClient, ArrayList<String> paramArrayList, String paramString)
   {
     if ((paramOkHttpClient != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
     {
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
-        tryConnectHost(paramOkHttpClient, (String)paramArrayList.next());
+        tryConnectHost(paramOkHttpClient, (String)paramArrayList.next(), paramString);
       }
     }
   }
   
-  private static void tryConnectHost(OkHttpClient paramOkHttpClient, String paramString)
+  private static void tryConnectHost(OkHttpClient paramOkHttpClient, String paramString1, String paramString2)
   {
-    if ((paramOkHttpClient == null) || (TextUtils.isEmpty(paramString))) {
-      QDLog.e("downloader", "pre-connect fail, url:" + paramString);
-    }
-    Request.Builder localBuilder;
-    do
+    if ((paramOkHttpClient != null) && (!TextUtils.isEmpty(paramString1)))
     {
-      return;
-      QDLog.i("downloader", "pre-connect:" + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pre-connect:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" method:");
+      ((StringBuilder)localObject).append(paramString2);
+      QDLog.i("downloader", ((StringBuilder)localObject).toString());
       long l = System.currentTimeMillis();
-      localBuilder = new Request.Builder().url(paramString).addHeader("Connection", "keep-alive").head();
-      paramString = new PreConnectManager.1(paramString, l);
-    } while (paramOkHttpClient == null);
-    paramOkHttpClient.newCall(localBuilder.build()).enqueue(paramString);
+      localObject = paramString2;
+      if (!paramString2.equals("HEAD"))
+      {
+        localObject = paramString2;
+        if (!paramString2.equals("GET")) {
+          localObject = "HEAD";
+        }
+      }
+      paramString2 = new Request.Builder().url(paramString1).method((String)localObject, null).addHeader("Connection", "keep-alive");
+      paramString1 = new PreConnectManager.1(paramString1, l);
+      if (paramOkHttpClient != null) {
+        paramOkHttpClient.newCall(paramString2.build()).enqueue(paramString1);
+      }
+      return;
+    }
+    paramOkHttpClient = new StringBuilder();
+    paramOkHttpClient.append("pre-connect fail, url:");
+    paramOkHttpClient.append(paramString1);
+    QDLog.e("downloader", paramOkHttpClient.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.PreConnectManager
  * JD-Core Version:    0.7.0.1
  */

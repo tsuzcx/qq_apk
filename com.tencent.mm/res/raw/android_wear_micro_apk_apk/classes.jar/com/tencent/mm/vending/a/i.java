@@ -2,16 +2,16 @@ package com.tencent.mm.vending.a;
 
 final class i<T>
 {
-  private volatile T Zw;
+  private volatile T acW;
   
-  public final void M(T paramT)
+  public final void V(T paramT)
   {
-    this.Zw = paramT;
+    this.acW = paramT;
   }
   
-  public final T lC()
+  public final T mj()
   {
-    return this.Zw;
+    return this.acW;
   }
 }
 

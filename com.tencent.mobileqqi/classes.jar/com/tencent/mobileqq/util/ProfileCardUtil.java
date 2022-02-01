@@ -66,9 +66,9 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import hau;
 import hav;
 import haw;
-import hax;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -798,7 +798,7 @@ public class ProfileCardUtil
   public static String a(Context paramContext)
   {
     paramContext = paramContext.getDir("profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "6.0.2";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "6.0.3";
   }
   
   public static String a(Context paramContext, ProfileCardInfo paramProfileCardInfo)
@@ -1624,8 +1624,8 @@ public class ProfileCardUtil
   {
     Object localObject1 = null;
     int i2 = 0;
-    TextView localTextView = (TextView)paramView.findViewById(2131231507);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131232623);
+    TextView localTextView = (TextView)paramView.findViewById(2131231506);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131232622);
     if (paramRichStatus != null) {
       localObject1 = paramRichStatus.a(null, -8947849, paramResources.getColor(2131361825));
     }
@@ -1747,7 +1747,7 @@ public class ProfileCardUtil
     }
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramBaseActivity, paramBaseActivity.d());
     localQQProgressDialog.show();
-    new Thread(new hax(paramBaseActivity, paramString2, paramBoolean, paramString1, paramString3, localQQProgressDialog)).start();
+    new Thread(new haw(paramBaseActivity, paramString2, paramBoolean, paramString1, paramString3, localQQProgressDialog)).start();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
@@ -2073,7 +2073,7 @@ public class ProfileCardUtil
     {
       paramArrayOfByte = HexUtil.a(paramArrayOfByte);
       String str = HexUtil.a(paramArrayOfByte);
-      new hav(str, b(paramArrayOfByte)).start();
+      new hau(str, b(paramArrayOfByte)).start();
       b(str);
       return;
     }
@@ -2438,7 +2438,7 @@ public class ProfileCardUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.a().post(new haw(paramString));
+    ThreadManager.a().post(new hav(paramString));
   }
 }
 

@@ -1,57 +1,61 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.g.a.pt;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ags;
-import com.tencent.mm.protocal.protobuf.agt;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.vu;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.protocal.protobuf.cfb;
+import com.tencent.mm.protocal.protobuf.cfc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.LinkedList;
 
 public final class f
-  extends com.tencent.mm.ai.m
-  implements k
+  extends p
+  implements m
 {
-  private com.tencent.mm.ai.f callback;
-  private b rr;
-  public LinkedList<String> ubt;
+  public LinkedList<String> Vxy;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
   public f(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(46495);
-    ab.i("MicroMsg.NetSceneGetBankcardLogo", "NetSceneGetBankcardLogo call");
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ags();
-    ((b.a)localObject).fsY = new agt();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/bankresource";
-    ((b.a)localObject).funcId = getType();
-    this.rr = ((b.a)localObject).ado();
+    AppMethodBeat.i(69897);
+    Log.i("MicroMsg.NetSceneGetBankcardLogo", "NetSceneGetBankcardLogo call");
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cfb();
+    ((c.a)localObject).otF = new cfc();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/bankresource";
+    ((c.a)localObject).funcId = getType();
+    this.rr = ((c.a)localObject).bEF();
     this.rr.setIsUserCmd(true);
-    localObject = (ags)this.rr.fsV.fta;
-    ((ags)localObject).wZr = paramLinkedList;
-    ((ags)localObject).wDH = com.tencent.mm.plugin.wallet_core.model.m.cTC();
-    if (!com.tencent.mm.pluginsdk.wallet.g.dpN()) {
-      ((ags)localObject).wIZ = com.tencent.mm.pluginsdk.wallet.g.dpO();
+    localObject = (cfb)c.b.b(this.rr.otB);
+    ((cfb)localObject).aaoM = paramLinkedList;
+    ((cfb)localObject).Zbi = k.iis();
+    if (!e.iOV()) {
+      ((cfb)localObject).Zhn = e.iOW();
     }
-    com.tencent.mm.wallet_core.ui.e.RX(42);
-    AppMethodBeat.o(46495);
+    i.aGA(42);
+    AppMethodBeat.o(69897);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(46496);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(46496);
+    AppMethodBeat.i(69898);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(69898);
     return i;
   }
   
@@ -60,41 +64,41 @@ public final class f
     return 1650;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(46497);
-    ab.i("MicroMsg.NetSceneGetBankcardLogo", "NetSceneGetBankcardLogo onGYNetEnd,errType=" + paramInt2 + "errCode=" + paramInt3);
+    AppMethodBeat.i(69899);
+    Log.i("MicroMsg.NetSceneGetBankcardLogo", "NetSceneGetBankcardLogo onGYNetEnd,errType=" + paramInt2 + "errCode=" + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (agt)((b)paramq).fsW.fta;
-      ab.i("MicroMsg.NetSceneGetBankcardLogo", "respone %s", new Object[] { paramq.wZs });
-      this.ubt = paramq.ubt;
-      paramArrayOfByte = this.ubt;
+      params = (cfc)c.c.b(((c)params).otC);
+      Log.i("MicroMsg.NetSceneGetBankcardLogo", "respone %s", new Object[] { params.aaoN });
+      this.Vxy = params.Vxy;
+      paramArrayOfByte = this.Vxy;
       if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0))
       {
-        ab.d("MicroMsg.NetSceneGetBankcardLogo", "empty bank logo list");
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCm, bo.bf(paramq.wZs, ""));
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCn, Long.valueOf(System.currentTimeMillis() / 1000L));
+        Log.d("MicroMsg.NetSceneGetBankcardLogo", "empty bank logo list");
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acMI, Util.nullAs(params.aaoN, ""));
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acMJ, Long.valueOf(System.currentTimeMillis() / 1000L));
       }
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(46497);
+      AppMethodBeat.o(69899);
       return;
-      pt localpt = new pt();
-      localpt.cGk.cGm = paramArrayOfByte;
-      a.ymk.l(localpt);
+      vu localvu = new vu();
+      localvu.hZs.hZu = paramArrayOfByte;
+      localvu.publish();
       break;
-      com.tencent.mm.wallet_core.ui.e.RX(43);
+      i.aGA(43);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.f
  * JD-Core Version:    0.7.0.1
  */

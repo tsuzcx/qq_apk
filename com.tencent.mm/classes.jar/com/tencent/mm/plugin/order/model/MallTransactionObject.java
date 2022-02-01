@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,222 +15,222 @@ public class MallTransactionObject
   implements Parcelable
 {
   public static final Parcelable.Creator<MallTransactionObject> CREATOR;
-  public int cLI;
-  public int cii;
-  public String cnJ;
+  public String DUX;
+  public List<MallOrderDetailObject.HelpCenter> MDR;
+  public int MDS;
+  public String MDU;
+  public int MEA;
+  public int MEB;
+  public double MEC;
+  public String MED;
+  public int MEE;
+  public String MEF;
+  public int MEG;
+  public int MEH;
+  public int MEI;
+  public String MEJ;
+  public String MEK;
+  public String MEL;
+  public String MEM;
+  public String MEN;
+  public String MEO;
+  public double MEP;
+  public String MEQ;
+  public String MEc;
+  public String MEd;
+  public String MEe;
+  public String MEf;
+  public String MEg;
+  public String MEh;
+  public String MEi;
+  public String MEj;
+  public String MEk;
+  public String MEl;
+  public int MEm;
+  public String MEn;
+  public String MEo;
+  public String MEp;
+  public String MEq;
+  public String MEr;
+  public String MEs;
+  public String MEt;
+  public double MEu;
+  public String MEv;
+  public String MEw;
+  public String MEx;
+  public String MEy;
+  public String MEz;
+  public int createTime;
   public String desc;
-  public int fDT;
-  public String hiQ;
-  public double kNS;
-  public List<MallOrderDetailObject.HelpCenter> poQ;
-  public int poR;
-  public String poT;
-  public String ppA;
-  public int ppB;
-  public int ppC;
-  public double ppD;
-  public String ppE;
-  public int ppF;
-  public String ppG;
-  public int ppH;
-  public int ppI;
-  public int ppJ;
-  public String ppK;
-  public String ppL;
-  public String ppM;
-  public String ppN;
-  public String ppO;
-  public String ppP;
-  public double ppQ;
-  public String ppR;
-  public String ppb;
-  public String ppc;
-  public String ppd;
-  public String ppe;
-  public String ppf;
-  public String ppg;
-  public String pph;
-  public String ppi;
-  public String ppj;
-  public String ppk;
-  public int ppl;
-  public String ppm;
-  public String ppn;
-  public String ppo;
-  public String ppp;
-  public String ppq;
-  public String ppr;
-  public String pps;
-  public String ppt;
-  public String ppu;
-  public double ppv;
-  public String ppw;
-  public String ppx;
-  public String ppy;
-  public String ppz;
+  public String hAU;
+  public int hva;
+  public String hzv;
+  public int igp;
+  public String phA;
   public int subType;
   public int type;
+  public double wZe;
   
   static
   {
-    AppMethodBeat.i(43772);
+    AppMethodBeat.i(66680);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(43772);
+    AppMethodBeat.o(66680);
   }
   
   public MallTransactionObject()
   {
-    AppMethodBeat.i(43767);
-    this.kNS = 0.0D;
-    this.poQ = new LinkedList();
-    this.poR = -1;
-    AppMethodBeat.o(43767);
+    AppMethodBeat.i(66675);
+    this.wZe = 0.0D;
+    this.MDR = new LinkedList();
+    this.MDS = -1;
+    AppMethodBeat.o(66675);
   }
   
   public MallTransactionObject(Parcel paramParcel)
   {
-    AppMethodBeat.i(43768);
-    this.kNS = 0.0D;
-    this.poQ = new LinkedList();
-    this.poR = -1;
+    AppMethodBeat.i(66676);
+    this.wZe = 0.0D;
+    this.MDR = new LinkedList();
+    this.MDS = -1;
     this.subType = paramParcel.readInt();
-    this.cLI = paramParcel.readInt();
-    this.cii = paramParcel.readInt();
-    this.ppb = paramParcel.readString();
-    this.ppc = paramParcel.readString();
-    this.ppd = paramParcel.readString();
-    this.ppe = paramParcel.readString();
+    this.igp = paramParcel.readInt();
+    this.hva = paramParcel.readInt();
+    this.MEc = paramParcel.readString();
+    this.MEd = paramParcel.readString();
+    this.MEe = paramParcel.readString();
+    this.MEf = paramParcel.readString();
     this.desc = paramParcel.readString();
-    this.ppf = paramParcel.readString();
-    this.ppg = paramParcel.readString();
-    this.kNS = paramParcel.readDouble();
-    this.pph = paramParcel.readString();
-    this.ppi = paramParcel.readString();
-    this.ppj = paramParcel.readString();
-    this.ppk = paramParcel.readString();
-    this.fDT = paramParcel.readInt();
-    this.ppl = paramParcel.readInt();
-    this.cnJ = paramParcel.readString();
-    this.ppm = paramParcel.readString();
-    this.ppn = paramParcel.readString();
-    this.ppp = paramParcel.readString();
-    this.ppq = paramParcel.readString();
-    this.poT = paramParcel.readString();
-    this.ppr = paramParcel.readString();
-    this.hiQ = paramParcel.readString();
-    this.pps = paramParcel.readString();
-    this.ppt = paramParcel.readString();
-    this.ppu = paramParcel.readString();
-    this.ppv = paramParcel.readDouble();
-    this.ppw = paramParcel.readString();
-    this.ppx = paramParcel.readString();
-    this.ppy = paramParcel.readString();
-    this.ppz = paramParcel.readString();
-    this.ppB = paramParcel.readInt();
-    this.ppH = paramParcel.readInt();
-    this.ppD = paramParcel.readDouble();
-    this.ppE = paramParcel.readString();
-    this.ppF = paramParcel.readInt();
-    this.ppG = paramParcel.readString();
-    this.ppH = paramParcel.readInt();
-    this.ppI = paramParcel.readInt();
-    this.ppJ = paramParcel.readInt();
-    this.ppK = paramParcel.readString();
-    this.ppL = paramParcel.readString();
-    this.ppM = paramParcel.readString();
-    this.ppN = paramParcel.readString();
-    this.ppO = paramParcel.readString();
-    this.ppP = paramParcel.readString();
-    this.ppQ = paramParcel.readDouble();
-    this.ppR = paramParcel.readString();
-    this.ppA = paramParcel.readString();
-    this.poR = paramParcel.readInt();
+    this.MEg = paramParcel.readString();
+    this.MEh = paramParcel.readString();
+    this.wZe = paramParcel.readDouble();
+    this.MEi = paramParcel.readString();
+    this.MEj = paramParcel.readString();
+    this.MEk = paramParcel.readString();
+    this.MEl = paramParcel.readString();
+    this.createTime = paramParcel.readInt();
+    this.MEm = paramParcel.readInt();
+    this.hAU = paramParcel.readString();
+    this.MEn = paramParcel.readString();
+    this.MEo = paramParcel.readString();
+    this.MEq = paramParcel.readString();
+    this.hzv = paramParcel.readString();
+    this.MDU = paramParcel.readString();
+    this.MEr = paramParcel.readString();
+    this.phA = paramParcel.readString();
+    this.MEs = paramParcel.readString();
+    this.MEt = paramParcel.readString();
+    this.DUX = paramParcel.readString();
+    this.MEu = paramParcel.readDouble();
+    this.MEv = paramParcel.readString();
+    this.MEw = paramParcel.readString();
+    this.MEx = paramParcel.readString();
+    this.MEy = paramParcel.readString();
+    this.MEA = paramParcel.readInt();
+    this.MEG = paramParcel.readInt();
+    this.MEC = paramParcel.readDouble();
+    this.MED = paramParcel.readString();
+    this.MEE = paramParcel.readInt();
+    this.MEF = paramParcel.readString();
+    this.MEG = paramParcel.readInt();
+    this.MEH = paramParcel.readInt();
+    this.MEI = paramParcel.readInt();
+    this.MEJ = paramParcel.readString();
+    this.MEK = paramParcel.readString();
+    this.MEL = paramParcel.readString();
+    this.MEM = paramParcel.readString();
+    this.MEN = paramParcel.readString();
+    this.MEO = paramParcel.readString();
+    this.MEP = paramParcel.readDouble();
+    this.MEQ = paramParcel.readString();
+    this.MEz = paramParcel.readString();
+    this.MDS = paramParcel.readInt();
     int j = paramParcel.readInt();
-    this.poQ = new LinkedList();
+    this.MDR = new LinkedList();
     int i = 0;
     while (i < j)
     {
       MallOrderDetailObject.HelpCenter localHelpCenter = (MallOrderDetailObject.HelpCenter)paramParcel.readParcelable(MallOrderDetailObject.HelpCenter.class.getClassLoader());
-      this.poQ.add(localHelpCenter);
+      this.MDR.add(localHelpCenter);
       i += 1;
     }
-    AppMethodBeat.o(43768);
+    AppMethodBeat.o(66676);
   }
   
-  public static MallTransactionObject am(JSONObject paramJSONObject)
+  public static MallTransactionObject bF(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(43770);
+    AppMethodBeat.i(66678);
     if (paramJSONObject != null)
     {
       MallTransactionObject localMallTransactionObject = new MallTransactionObject();
       localMallTransactionObject.type = paramJSONObject.optInt("rec_type", 1);
       localMallTransactionObject.subType = paramJSONObject.optInt("sub_pay_type", 0);
-      localMallTransactionObject.cLI = paramJSONObject.optInt("pay_scene");
-      localMallTransactionObject.cii = paramJSONObject.optInt("user_type");
-      localMallTransactionObject.ppb = paramJSONObject.optString("buy_uin");
-      localMallTransactionObject.ppc = paramJSONObject.optString("buy_name");
-      localMallTransactionObject.ppd = paramJSONObject.optString("sale_uin");
-      localMallTransactionObject.ppe = paramJSONObject.optString("sale_name");
-      localMallTransactionObject.cnJ = paramJSONObject.optString("trans_id");
-      localMallTransactionObject.ppm = paramJSONObject.optString("sp_billno");
+      localMallTransactionObject.igp = paramJSONObject.optInt("pay_scene");
+      localMallTransactionObject.hva = paramJSONObject.optInt("user_type");
+      localMallTransactionObject.MEc = paramJSONObject.optString("buy_uin");
+      localMallTransactionObject.MEd = paramJSONObject.optString("buy_name");
+      localMallTransactionObject.MEe = paramJSONObject.optString("sale_uin");
+      localMallTransactionObject.MEf = paramJSONObject.optString("sale_name");
+      localMallTransactionObject.hAU = paramJSONObject.optString("trans_id");
+      localMallTransactionObject.MEn = paramJSONObject.optString("sp_billno");
       localMallTransactionObject.desc = paramJSONObject.optString("goods_name");
-      localMallTransactionObject.ppf = paramJSONObject.optString("goods_detail");
-      localMallTransactionObject.kNS = (paramJSONObject.optDouble("fee") / 100.0D);
-      localMallTransactionObject.pph = paramJSONObject.optString("fee_color");
-      localMallTransactionObject.ppi = paramJSONObject.optString("trade_state");
-      localMallTransactionObject.ppj = paramJSONObject.optString("trade_state_name");
-      localMallTransactionObject.ppk = paramJSONObject.optString("trade_state_color");
-      localMallTransactionObject.ppn = paramJSONObject.optString("buy_bank_name");
-      localMallTransactionObject.ppo = paramJSONObject.optString("card_tail");
-      localMallTransactionObject.fDT = paramJSONObject.optInt("create_timestamp");
-      localMallTransactionObject.ppl = paramJSONObject.optInt("modify_timestamp");
-      localMallTransactionObject.ppp = paramJSONObject.optString("fee_type");
+      localMallTransactionObject.MEg = paramJSONObject.optString("goods_detail");
+      localMallTransactionObject.wZe = (paramJSONObject.optDouble("fee") / 100.0D);
+      localMallTransactionObject.MEi = paramJSONObject.optString("fee_color");
+      localMallTransactionObject.MEj = paramJSONObject.optString("trade_state");
+      localMallTransactionObject.MEk = paramJSONObject.optString("trade_state_name");
+      localMallTransactionObject.MEl = paramJSONObject.optString("trade_state_color");
+      localMallTransactionObject.MEo = paramJSONObject.optString("buy_bank_name");
+      localMallTransactionObject.MEp = paramJSONObject.optString("card_tail");
+      localMallTransactionObject.createTime = paramJSONObject.optInt("create_timestamp");
+      localMallTransactionObject.MEm = paramJSONObject.optInt("modify_timestamp");
+      localMallTransactionObject.MEq = paramJSONObject.optString("fee_type");
       JSONObject localJSONObject = paramJSONObject.optJSONObject("appinfo");
       if (localJSONObject != null)
       {
-        localMallTransactionObject.ppq = localJSONObject.optString("app_username");
-        localMallTransactionObject.poT = localJSONObject.optString("app_telephone");
-        localMallTransactionObject.ppr = localJSONObject.optString("app_nickname");
-        localMallTransactionObject.hiQ = localJSONObject.optString("app_icon_url");
-        localMallTransactionObject.ppz = localJSONObject.optString("safeguard_url");
-        localMallTransactionObject.ppA = localJSONObject.optString("display_name");
+        localMallTransactionObject.hzv = localJSONObject.optString("app_username");
+        localMallTransactionObject.MDU = localJSONObject.optString("app_telephone");
+        localMallTransactionObject.MEr = localJSONObject.optString("app_nickname");
+        localMallTransactionObject.phA = localJSONObject.optString("app_icon_url");
+        localMallTransactionObject.MEy = localJSONObject.optString("safeguard_url");
+        localMallTransactionObject.MEz = localJSONObject.optString("display_name");
       }
-      localMallTransactionObject.pps = paramJSONObject.optString("deliver_price");
-      localMallTransactionObject.ppt = paramJSONObject.optString("preferential_price");
-      localMallTransactionObject.ppu = paramJSONObject.optString("discount");
-      localMallTransactionObject.ppv = (paramJSONObject.optDouble("original_total_fee") / 100.0D);
-      localMallTransactionObject.ppw = paramJSONObject.optString("total_price");
-      localMallTransactionObject.ppx = paramJSONObject.optString("receipt_company");
-      localMallTransactionObject.ppy = paramJSONObject.optString("biz_pledge");
-      localMallTransactionObject.ppB = paramJSONObject.optInt("pre_fetch_timestamp");
-      localMallTransactionObject.ppC = paramJSONObject.optInt("arrived_timestamp");
-      localMallTransactionObject.ppD = (paramJSONObject.optDouble("transfer_fee") / 100.0D);
-      localMallTransactionObject.ppE = paramJSONObject.optString("receiver_name");
-      localMallTransactionObject.ppF = paramJSONObject.optInt("allow_resend_msg");
-      localMallTransactionObject.ppG = paramJSONObject.optString("charge_fee");
-      localMallTransactionObject.ppH = paramJSONObject.optInt("receive_timestamp");
-      localMallTransactionObject.ppI = paramJSONObject.optInt("refund_timestamp");
-      localMallTransactionObject.ppJ = paramJSONObject.optInt("create_timestamp");
-      localMallTransactionObject.ppK = paramJSONObject.optString("buy_bank_type");
-      localMallTransactionObject.ppL = paramJSONObject.optString("payer_name");
-      localMallTransactionObject.ppM = paramJSONObject.optString("true_name");
-      localMallTransactionObject.ppN = paramJSONObject.optString("refund_bank_type");
-      localMallTransactionObject.ppO = paramJSONObject.optString("rateinfo");
-      localMallTransactionObject.ppP = paramJSONObject.optString("original_feeinfo");
-      localMallTransactionObject.ppQ = (paramJSONObject.optDouble("fetch_total_fee") / 100.0D);
-      localMallTransactionObject.ppR = paramJSONObject.optString("fetch_total_fee_color");
-      localMallTransactionObject.poR = paramJSONObject.optInt("userroll_type");
-      localMallTransactionObject.poQ = an(paramJSONObject);
-      AppMethodBeat.o(43770);
+      localMallTransactionObject.MEs = paramJSONObject.optString("deliver_price");
+      localMallTransactionObject.MEt = paramJSONObject.optString("preferential_price");
+      localMallTransactionObject.DUX = paramJSONObject.optString("discount");
+      localMallTransactionObject.MEu = (paramJSONObject.optDouble("original_total_fee") / 100.0D);
+      localMallTransactionObject.MEv = paramJSONObject.optString("total_price");
+      localMallTransactionObject.MEw = paramJSONObject.optString("receipt_company");
+      localMallTransactionObject.MEx = paramJSONObject.optString("biz_pledge");
+      localMallTransactionObject.MEA = paramJSONObject.optInt("pre_fetch_timestamp");
+      localMallTransactionObject.MEB = paramJSONObject.optInt("arrived_timestamp");
+      localMallTransactionObject.MEC = (paramJSONObject.optDouble("transfer_fee") / 100.0D);
+      localMallTransactionObject.MED = paramJSONObject.optString("receiver_name");
+      localMallTransactionObject.MEE = paramJSONObject.optInt("allow_resend_msg");
+      localMallTransactionObject.MEF = paramJSONObject.optString("charge_fee");
+      localMallTransactionObject.MEG = paramJSONObject.optInt("receive_timestamp");
+      localMallTransactionObject.MEH = paramJSONObject.optInt("refund_timestamp");
+      localMallTransactionObject.MEI = paramJSONObject.optInt("create_timestamp");
+      localMallTransactionObject.MEJ = paramJSONObject.optString("buy_bank_type");
+      localMallTransactionObject.MEK = paramJSONObject.optString("payer_name");
+      localMallTransactionObject.MEL = paramJSONObject.optString("true_name");
+      localMallTransactionObject.MEM = paramJSONObject.optString("refund_bank_type");
+      localMallTransactionObject.MEN = paramJSONObject.optString("rateinfo");
+      localMallTransactionObject.MEO = paramJSONObject.optString("original_feeinfo");
+      localMallTransactionObject.MEP = (paramJSONObject.optDouble("fetch_total_fee") / 100.0D);
+      localMallTransactionObject.MEQ = paramJSONObject.optString("fetch_total_fee_color");
+      localMallTransactionObject.MDS = paramJSONObject.optInt("userroll_type");
+      localMallTransactionObject.MDR = bG(paramJSONObject);
+      AppMethodBeat.o(66678);
       return localMallTransactionObject;
     }
-    AppMethodBeat.o(43770);
+    AppMethodBeat.o(66678);
     return null;
   }
   
-  private static List<MallOrderDetailObject.HelpCenter> an(JSONObject paramJSONObject)
+  private static List<MallOrderDetailObject.HelpCenter> bG(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(43771);
+    AppMethodBeat.i(66679);
     localLinkedList = new LinkedList();
     try
     {
@@ -240,7 +240,7 @@ public class MallTransactionObject
       {
         MallOrderDetailObject.HelpCenter localHelpCenter = new MallOrderDetailObject.HelpCenter();
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-        localHelpCenter.coy = localJSONObject.optBoolean("is_show_button");
+        localHelpCenter.hBY = localJSONObject.optBoolean("is_show_button");
         localHelpCenter.name = localJSONObject.optString("name");
         localHelpCenter.url = localJSONObject.optString("url");
         localLinkedList.add(localHelpCenter);
@@ -250,9 +250,9 @@ public class MallTransactionObject
     }
     catch (Exception paramJSONObject)
     {
-      ab.printErrStackTrace("MicroMsg.MallTransactionObject", paramJSONObject, "", new Object[0]);
-      ab.e("MicroMsg.MallTransactionObject", "parseHelpCenter error %s", new Object[] { paramJSONObject.getMessage() });
-      AppMethodBeat.o(43771);
+      Log.printErrStackTrace("MicroMsg.MallTransactionObject", paramJSONObject, "", new Object[0]);
+      Log.e("MicroMsg.MallTransactionObject", "parseHelpCenter error %s", new Object[] { paramJSONObject.getMessage() });
+      AppMethodBeat.o(66679);
     }
   }
   
@@ -263,70 +263,70 @@ public class MallTransactionObject
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(43769);
+    AppMethodBeat.i(66677);
     paramParcel.writeInt(this.subType);
-    paramParcel.writeInt(this.cLI);
-    paramParcel.writeInt(this.cii);
-    paramParcel.writeString(this.ppb);
-    paramParcel.writeString(this.ppc);
-    paramParcel.writeString(this.ppd);
-    paramParcel.writeString(this.ppe);
+    paramParcel.writeInt(this.igp);
+    paramParcel.writeInt(this.hva);
+    paramParcel.writeString(this.MEc);
+    paramParcel.writeString(this.MEd);
+    paramParcel.writeString(this.MEe);
+    paramParcel.writeString(this.MEf);
     paramParcel.writeString(this.desc);
-    paramParcel.writeString(this.ppf);
-    paramParcel.writeString(this.ppg);
-    paramParcel.writeDouble(this.kNS);
-    paramParcel.writeString(this.pph);
-    paramParcel.writeString(this.ppi);
-    paramParcel.writeString(this.ppj);
-    paramParcel.writeString(this.ppk);
-    paramParcel.writeInt(this.fDT);
-    paramParcel.writeInt(this.ppl);
-    paramParcel.writeString(this.cnJ);
-    paramParcel.writeString(this.ppm);
-    paramParcel.writeString(this.ppn);
-    paramParcel.writeString(this.ppp);
-    paramParcel.writeString(this.ppq);
-    paramParcel.writeString(this.poT);
-    paramParcel.writeString(this.ppr);
-    paramParcel.writeString(this.hiQ);
-    paramParcel.writeString(this.pps);
-    paramParcel.writeString(this.ppt);
-    paramParcel.writeString(this.ppu);
-    paramParcel.writeDouble(this.ppv);
-    paramParcel.writeString(this.ppw);
-    paramParcel.writeString(this.ppx);
-    paramParcel.writeString(this.ppy);
-    paramParcel.writeString(this.ppz);
-    paramParcel.writeInt(this.ppB);
-    paramParcel.writeInt(this.ppH);
-    paramParcel.writeDouble(this.ppD);
-    paramParcel.writeString(this.ppE);
-    paramParcel.writeInt(this.ppF);
-    paramParcel.writeString(this.ppG);
-    paramParcel.writeInt(this.ppH);
-    paramParcel.writeInt(this.ppI);
-    paramParcel.writeInt(this.ppJ);
-    paramParcel.writeString(this.ppK);
-    paramParcel.writeString(this.ppL);
-    paramParcel.writeString(this.ppM);
-    paramParcel.writeString(this.ppN);
-    paramParcel.writeString(this.ppO);
-    paramParcel.writeString(this.ppP);
-    paramParcel.writeDouble(this.ppQ);
-    paramParcel.writeString(this.ppR);
-    paramParcel.writeString(this.ppA);
-    paramParcel.writeInt(this.poR);
-    paramParcel.writeInt(this.poQ.size());
-    Iterator localIterator = this.poQ.iterator();
+    paramParcel.writeString(this.MEg);
+    paramParcel.writeString(this.MEh);
+    paramParcel.writeDouble(this.wZe);
+    paramParcel.writeString(this.MEi);
+    paramParcel.writeString(this.MEj);
+    paramParcel.writeString(this.MEk);
+    paramParcel.writeString(this.MEl);
+    paramParcel.writeInt(this.createTime);
+    paramParcel.writeInt(this.MEm);
+    paramParcel.writeString(this.hAU);
+    paramParcel.writeString(this.MEn);
+    paramParcel.writeString(this.MEo);
+    paramParcel.writeString(this.MEq);
+    paramParcel.writeString(this.hzv);
+    paramParcel.writeString(this.MDU);
+    paramParcel.writeString(this.MEr);
+    paramParcel.writeString(this.phA);
+    paramParcel.writeString(this.MEs);
+    paramParcel.writeString(this.MEt);
+    paramParcel.writeString(this.DUX);
+    paramParcel.writeDouble(this.MEu);
+    paramParcel.writeString(this.MEv);
+    paramParcel.writeString(this.MEw);
+    paramParcel.writeString(this.MEx);
+    paramParcel.writeString(this.MEy);
+    paramParcel.writeInt(this.MEA);
+    paramParcel.writeInt(this.MEG);
+    paramParcel.writeDouble(this.MEC);
+    paramParcel.writeString(this.MED);
+    paramParcel.writeInt(this.MEE);
+    paramParcel.writeString(this.MEF);
+    paramParcel.writeInt(this.MEG);
+    paramParcel.writeInt(this.MEH);
+    paramParcel.writeInt(this.MEI);
+    paramParcel.writeString(this.MEJ);
+    paramParcel.writeString(this.MEK);
+    paramParcel.writeString(this.MEL);
+    paramParcel.writeString(this.MEM);
+    paramParcel.writeString(this.MEN);
+    paramParcel.writeString(this.MEO);
+    paramParcel.writeDouble(this.MEP);
+    paramParcel.writeString(this.MEQ);
+    paramParcel.writeString(this.MEz);
+    paramParcel.writeInt(this.MDS);
+    paramParcel.writeInt(this.MDR.size());
+    Iterator localIterator = this.MDR.iterator();
     while (localIterator.hasNext()) {
       paramParcel.writeParcelable((MallOrderDetailObject.HelpCenter)localIterator.next(), paramInt);
     }
-    AppMethodBeat.o(43769);
+    AppMethodBeat.o(66677);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.MallTransactionObject
  * JD-Core Version:    0.7.0.1
  */

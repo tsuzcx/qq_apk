@@ -10,52 +10,52 @@ import java.util.Comparator;
 
 public final class c
 {
-  private static c abK = null;
-  public static int abS = 6;
-  private static final Comparator<d> abT = new Comparator() {};
-  private String[] abL = null;
-  private String[] abM = null;
-  private String[] abN = null;
-  private String[] abO = null;
-  private String[] abP = null;
-  private String[] abQ = null;
-  private d[] abR = null;
+  private static c afl = null;
+  public static int aft = 6;
+  private static final Comparator<d> afu = new Comparator() {};
+  private String[] afm = null;
+  private String[] afn = null;
+  private String[] afo = null;
+  private String[] afp = null;
+  private String[] afq = null;
+  private String[] afr = null;
+  private d[] afs = null;
   
   private c(Context paramContext)
   {
-    this.abL = paramContext.getResources().getStringArray(2131492882);
-    this.abM = paramContext.getResources().getStringArray(2131492885);
-    this.abN = paramContext.getResources().getStringArray(2131492883);
-    this.abO = paramContext.getResources().getStringArray(2131492887);
-    this.abP = paramContext.getResources().getStringArray(2131492884);
-    this.abQ = paramContext.getResources().getStringArray(2131492886);
-    this.abR = new d[this.abL.length * 6];
+    this.afm = paramContext.getResources().getStringArray(2131492882);
+    this.afn = paramContext.getResources().getStringArray(2131492885);
+    this.afo = paramContext.getResources().getStringArray(2131492883);
+    this.afp = paramContext.getResources().getStringArray(2131492887);
+    this.afq = paramContext.getResources().getStringArray(2131492884);
+    this.afr = paramContext.getResources().getStringArray(2131492886);
+    this.afs = new d[this.afm.length * 6];
     int j = 0;
     int i = 0;
-    while (j < this.abL.length)
+    while (j < this.afm.length)
     {
-      this.abR[i] = new d(j, this.abL[j]);
+      this.afs[i] = new d(j, this.afm[j]);
       i += 1;
       j += 1;
     }
     j = 0;
-    while (j < this.abM.length)
+    while (j < this.afn.length)
     {
-      this.abR[i] = new d(j, this.abM[j]);
+      this.afs[i] = new d(j, this.afn[j]);
       i += 1;
       j += 1;
     }
     j = 0;
-    while (j < this.abN.length)
+    while (j < this.afo.length)
     {
-      this.abR[i] = new d(j, this.abN[j]);
+      this.afs[i] = new d(j, this.afo[j]);
       i += 1;
       j += 1;
     }
     j = 0;
-    while (j < this.abO.length)
+    while (j < this.afp.length)
     {
-      this.abR[i] = new d(j, this.abO[j]);
+      this.afs[i] = new d(j, this.afp[j]);
       i += 1;
       j += 1;
     }
@@ -66,64 +66,68 @@ public final class c
     {
       k = n;
       m = i;
-      if (j >= this.abP.length) {
+      if (j >= this.afq.length) {
         break;
       }
-      this.abR[i] = new d(j, this.abP[j]);
+      this.afs[i] = new d(j, this.afq[j]);
       i += 1;
       j += 1;
     }
-    while (k < this.abQ.length)
+    while (k < this.afr.length)
     {
-      this.abR[m] = new d(k, this.abQ[k]);
+      this.afs[m] = new d(k, this.afr[k]);
       m += 1;
       k += 1;
     }
-    Arrays.sort(this.abR, abT);
+    Arrays.sort(this.afs, afu);
   }
   
-  private static boolean a(int paramInt1, SpannableString paramSpannableString, int paramInt2)
+  private static d K(String paramString)
   {
-    boolean bool2 = false;
-    String str = paramSpannableString.subSequence(paramInt1, paramSpannableString.length());
-    Object localObject = mA().abR;
-    int j = Arrays.binarySearch((Object[])localObject, new d(0, str), abT);
+    d[] arrayOfd = nm().afs;
+    int j = Arrays.binarySearch(arrayOfd, new d(0, paramString), afu);
     int i = j;
     if (j < 0) {
       i = -j - 2;
     }
-    if ((i >= 0) && (str.startsWith(localObject[i].abU))) {}
-    for (str = localObject[i];; str = null)
+    if ((i >= 0) && (paramString.startsWith(arrayOfd[i].afv))) {
+      return arrayOfd[i];
+    }
+    return null;
+  }
+  
+  private static boolean a(int paramInt1, SpannableString paramSpannableString, int paramInt2)
+  {
+    d locald = K(paramSpannableString.subSequence(paramInt1, paramSpannableString.length()));
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (locald != null)
     {
-      boolean bool1 = bool2;
-      if (str != null)
+      Drawable localDrawable = a.ni().cf(locald.pos);
+      bool1 = bool2;
+      if (localDrawable != null)
       {
-        localObject = a.mw().bJ(str.pos);
         bool1 = bool2;
-        if (localObject != null)
+        if (paramInt1 <= paramSpannableString.length())
         {
           bool1 = bool2;
-          if (paramInt1 <= paramSpannableString.length())
+          if (locald.afv.length() + paramInt1 <= paramSpannableString.length())
           {
-            bool1 = bool2;
-            if (str.abU.length() + paramInt1 <= paramSpannableString.length())
-            {
-              a.mw().a(paramSpannableString, (Drawable)localObject, paramInt1, paramInt1 + str.abU.length(), paramInt2);
-              bool1 = true;
-            }
+            a.ni().a(paramSpannableString, localDrawable, paramInt1, paramInt1 + locald.afv.length(), paramInt2);
+            bool1 = true;
           }
         }
       }
-      return bool1;
     }
+    return bool1;
   }
   
-  public static c mA()
+  public static c nm()
   {
-    if (abK == null) {
-      abK = new c(MMApplication.getContext());
+    if (afl == null) {
+      afl = new c(MMApplication.getContext());
     }
-    return abK;
+    return afl;
   }
   
   public final boolean a(Context paramContext, SpannableString paramSpannableString, int paramInt)

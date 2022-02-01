@@ -1,27 +1,24 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bejc;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class SwiftBrowserTBSHandler$6
-  implements Runnable
+class SwiftBrowserTBSHandler$6
+  implements View.OnClickListener
 {
-  public SwiftBrowserTBSHandler$6(bejc parambejc) {}
-  
-  public void run()
+  public void onClick(View paramView)
   {
-    this.this$0.a(MsfSdkUtils.insertMtype("Web", this.this$0.jdField_a_of_type_JavaLangString), 0);
-    synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
-    {
-      this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      this.this$0.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+    if (this.a.f != null) {
+      this.a.f.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.6
  * JD-Core Version:    0.7.0.1
  */

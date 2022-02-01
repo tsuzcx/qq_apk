@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import bjdm;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +10,14 @@ import org.json.JSONObject;
 public class LpReportInfo_DC02543
   implements LpReportInfo
 {
-  private static final String QUA = ;
+  private static final String QUA = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
   private static final String TABLE_NAME = "DC02543";
   private long clientTime;
   private String envent;
   private HashMap<String, String> msgMap;
   private String retcode = "0";
   private long serverTime;
-  private long timeCost;
+  private long timeCost = 0L;
   private String uin;
   
   public LpReportInfo_DC02543(String paramString1, String paramString2, long paramLong)
@@ -33,7 +33,7 @@ public class LpReportInfo_DC02543
     this.timeCost = paramLong;
     this.msgMap = paramHashMap;
     this.clientTime = System.currentTimeMillis();
-    this.serverTime = NetConnInfoCenter.getServerTimeMillis();
+    this.serverTime = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getServerTimeMillis();
   }
   
   public String getSimpleInfo()
@@ -43,23 +43,19 @@ public class LpReportInfo_DC02543
   
   public Map<String, String> toMap()
   {
-    localObject3 = "";
+    HashMap localHashMap = this.msgMap;
+    Object localObject3 = "";
     Object localObject1 = localObject3;
-    if (this.msgMap != null) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.msgMap);
-      localObject1 = localObject3;
-      if (localJSONObject != null) {
-        localObject1 = localJSONObject.toString();
+    Object localObject2;
+    if (localHashMap != null) {
+      try
+      {
+        localObject1 = new JSONObject(localHashMap).toString();
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QZLog.d("QZLog", 4, "", localException);
-        Object localObject2 = localObject3;
+        localObject2 = localObject3;
       }
     }
     localObject3 = new HashMap();
@@ -67,7 +63,7 @@ public class LpReportInfo_DC02543
     ((HashMap)localObject3).put("Event", this.envent);
     ((HashMap)localObject3).put("RetCode", this.retcode);
     ((HashMap)localObject3).put("TimeCost", String.valueOf(this.timeCost));
-    ((HashMap)localObject3).put("msg", localObject1);
+    ((HashMap)localObject3).put("msg", localObject2);
     ((HashMap)localObject3).put("QUA", QUA);
     ((HashMap)localObject3).put("clientTime", String.valueOf(this.clientTime));
     ((HashMap)localObject3).put("serverTime", String.valueOf(this.serverTime));
@@ -76,7 +72,7 @@ public class LpReportInfo_DC02543
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC02543
  * JD-Core Version:    0.7.0.1
  */

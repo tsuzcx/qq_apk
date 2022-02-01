@@ -1,5 +1,6 @@
 package oicq.wlogin_sdk.request;
 
+import java.util.HashMap;
 import java.util.List;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.tools.ErrMsg;
@@ -21,6 +22,8 @@ public class WtloginListener
   public void OnCheckSMSAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte1, int paramInt, ErrMsg paramErrMsg) {}
   
   public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, int paramInt1, int paramInt2, WUserSigInfo paramWUserSigInfo, int paramInt3, ErrMsg paramErrMsg) {}
+  
+  public void OnCheckSMSVerifyLoginAccountForReview(long paramLong1, long paramLong2, int paramInt1, String paramString, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg) {}
   
   public void OnCheckWebsigAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg) {}
   
@@ -46,9 +49,11 @@ public class WtloginListener
   
   public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte, int paramInt2, ErrMsg paramErrMsg) {}
   
+  public void OnGuaranteeCheckValidUrl(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte) {}
+  
   public void OnInit(int paramInt) {}
   
-  public void OnQueryCodeResult(long paramLong1, List paramList, long paramLong2, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt) {}
+  public void OnQueryCodeResult(long paramLong1, List<byte[]> paramList, long paramLong2, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt) {}
   
   public void OnQuickRegisterCheckAccount(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
@@ -61,6 +66,10 @@ public class WtloginListener
   public void OnRefreshSMSVerifyLoginCode(String paramString1, String paramString2, int paramInt1, int paramInt2, WUserSigInfo paramWUserSigInfo, int paramInt3, ErrMsg paramErrMsg) {}
   
   public void OnRegCheckDownloadMsg(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
+  
+  public void OnRegCheckError(int paramInt, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, Object paramObject) {}
+  
+  public void OnRegCheckIframe(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, Object paramObject) {}
   
   public void OnRegCheckUploadMsg(WUserSigInfo paramWUserSigInfo, String paramString) {}
   
@@ -86,13 +95,19 @@ public class WtloginListener
   
   public void OnRequestTransport(String paramString, long paramLong1, long paramLong2, TransReqContext paramTransReqContext, WUserSigInfo paramWUserSigInfo, int paramInt) {}
   
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, List paramList, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt) {}
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, List<byte[]> paramList, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt) {}
   
   public void OnVerifySMSVerifyLoginCode(String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg) {}
   
   public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg) {}
   
   public void onGetStWithQrSig(String paramString, long paramLong1, int paramInt1, long paramLong2, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg) {}
+  
+  public void onLoginByGateway(int paramInt, WUserSigInfo paramWUserSigInfo, String paramString, ErrMsg paramErrMsg, HashMap<String, Object> paramHashMap) {}
+  
+  public void onLoginByWeChat(long paramLong, byte[] paramArrayOfByte, WtloginHelper.QuickLoginParam paramQuickLoginParam, int paramInt1, int paramInt2, ErrMsg paramErrMsg) {}
+  
+  public void onModifyQIMPassword(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
   public void onQuickLogin(String paramString, WtloginHelper.QuickLoginParam paramQuickLoginParam, int paramInt, ErrMsg paramErrMsg) {}
 }

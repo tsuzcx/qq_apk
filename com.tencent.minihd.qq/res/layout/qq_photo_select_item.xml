@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/photo_select_item_photo_iv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/photo_select_item_selected_color_iv" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/photo_selected_mask" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/photo_select_item_selected_icon_iv" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/pic_preview_icon_checked" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

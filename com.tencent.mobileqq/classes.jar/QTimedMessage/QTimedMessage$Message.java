@@ -23,13 +23,15 @@ public final class QTimedMessage$Message
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 58, 66 }, new String[] { "uint64_appid", "bytes_msg_id", "msg_author", "uint32_main_type", "uint32_sub_type", "uint64_create_time", "msg_timer", "msg_content" }, new Object[] { Long.valueOf(0L), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, null }, Message.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 58, 66 }, new String[] { "uint64_appid", "bytes_msg_id", "msg_author", "uint32_main_type", "uint32_sub_type", "uint64_create_time", "msg_timer", "msg_content" }, new Object[] { localLong, localByteStringMicro, null, localInteger, localInteger, localLong, null, null }, Message.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QTimedMessage.QTimedMessage.Message
  * JD-Core Version:    0.7.0.1
  */

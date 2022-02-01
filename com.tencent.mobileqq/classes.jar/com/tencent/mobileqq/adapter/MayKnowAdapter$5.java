@@ -1,26 +1,29 @@
 package com.tencent.mobileqq.adapter;
 
-import akjt;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
-public class MayKnowAdapter$5
+class MayKnowAdapter$5
   implements Runnable
 {
-  public MayKnowAdapter$5(akjt paramakjt) {}
+  MayKnowAdapter$5(MayKnowAdapter paramMayKnowAdapter) {}
   
   public void run()
   {
-    View localView = akjt.a(this.this$0);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "delayUpdateRunnable target：" + localView);
+    View localView = MayKnowAdapter.b(this.this$0);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("delayUpdateRunnable target：");
+      localStringBuilder.append(localView);
+      QLog.d("MayKnowAdapter", 2, localStringBuilder.toString());
     }
     if (localView != null)
     {
-      akjt.a(this.this$0, localView);
+      MayKnowAdapter.a(this.this$0, localView);
       return;
     }
-    akjt.a(this.this$0);
+    MayKnowAdapter.a(this.this$0);
   }
 }
 

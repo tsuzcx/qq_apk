@@ -1,19 +1,15 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
-class cqy
-  implements Runnable
+public class cqy
+  implements View.OnClickListener
 {
-  cqy(cqx paramcqx, Bitmap paramBitmap) {}
+  public cqy(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    int i = this.jdField_a_of_type_Cqx.a.getResources().getDimensionPixelSize(2131427612);
-    IndividuationSetActivity.a(this.jdField_a_of_type_Cqx.a).setRightIcon(localBitmapDrawable, i, i);
+    this.a.a();
   }
 }
 

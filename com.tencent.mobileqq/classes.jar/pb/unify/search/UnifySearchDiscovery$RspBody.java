@@ -12,20 +12,25 @@ public final class UnifySearchDiscovery$RspBody
   extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bucket_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField error_msg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field expire_time = PBField.initUInt32(0);
   public final PBUInt32Field result_code = PBField.initUInt32(0);
   public final PBRepeatMessageField<UnifySearchDiscovery.Result> result_items = PBField.initRepeatMessage(UnifySearchDiscovery.Result.class);
+  public final PBBytesField rsp_ext = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "result_items", "result_code", "error_msg", "expire_time" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, RspBody.class);
+    Integer localInteger = Integer.valueOf(0);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50 }, new String[] { "result_items", "result_code", "error_msg", "expire_time", "bucket_id", "rsp_ext" }, new Object[] { null, localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3 }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     pb.unify.search.UnifySearchDiscovery.RspBody
  * JD-Core Version:    0.7.0.1
  */

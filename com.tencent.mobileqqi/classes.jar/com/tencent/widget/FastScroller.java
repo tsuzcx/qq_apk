@@ -23,7 +23,7 @@ import android.widget.BaseAdapter;
 import android.widget.HeaderViewListAdapter;
 import android.widget.SectionIndexer;
 import com.tencent.util.VersionUtils;
-import hwa;
+import hvz;
 
 public class FastScroller
 {
@@ -58,7 +58,7 @@ public class FastScroller
   private SectionIndexer jdField_a_of_type_AndroidWidgetSectionIndexer;
   public AbsListView a;
   private FastScroller.ScrollFade jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new hwa(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new hvz(this);
   boolean jdField_a_of_type_Boolean;
   private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
   int jdField_b_of_type_Int;

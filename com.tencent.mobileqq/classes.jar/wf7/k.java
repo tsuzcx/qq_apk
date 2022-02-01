@@ -41,20 +41,23 @@ public final class k
   {
     paramJceOutputStream.write(this.aG, 0);
     paramJceOutputStream.write(this.aH, 1);
-    if (this.count != 1) {
-      paramJceOutputStream.write(this.count, 2);
+    int i = this.count;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.aI != null) {
-      paramJceOutputStream.write(this.aI, 3);
+    ArrayList localArrayList = this.aI;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.aJ != null) {
-      paramJceOutputStream.write(this.aJ, 4);
+    localArrayList = this.aJ;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.k
  * JD-Core Version:    0.7.0.1
  */

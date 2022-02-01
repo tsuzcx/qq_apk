@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/nw" android:background="@drawable/l8" android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/bme" android:visibility="gone" android:layout_width="@dimen/n8" android:layout_height="@dimen/n8" android:layout_marginRight="@dimen/n_" android:src="@drawable/cv" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/bl_" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/afm" android:layout_toRightOf="@id/bme" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="left" android:id="@id/bla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/bl_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginLeft="@dimen/m2">
+        <ImageView android:id="@id/l5f" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="38.0dip" android:src="@drawable/bpb" android:layout_alignParentBottom="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g" android:layout_marginBottom="@dimen/m7" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <ImageView android:id="@id/hx8" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@raw/biz_video_play_icon" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/az" android:id="@id/l5u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:includeFontPadding="false" />
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

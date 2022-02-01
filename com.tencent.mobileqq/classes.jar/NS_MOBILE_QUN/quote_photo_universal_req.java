@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class quote_photo_universal_req
   extends JceStruct
@@ -45,20 +46,23 @@ public final class quote_photo_universal_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.quote_src != null) {
-      paramJceOutputStream.write(this.quote_src, 0);
+    Object localObject = this.quote_src;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.quote_dst != null) {
-      paramJceOutputStream.write(this.quote_dst, 1);
+    localObject = this.quote_dst;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 2);
+    localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.quote_photo_universal_req
  * JD-Core Version:    0.7.0.1
  */

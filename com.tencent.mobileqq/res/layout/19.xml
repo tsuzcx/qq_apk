@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/nne" android:background="@drawable/18" android:visibility="gone" android:layout_width="98.0dip" android:layout_height="37.0dip" />
+    <View android:id="@id/nvy" android:background="@drawable/14" android:layout_width="49.0dip" android:layout_height="37.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/18" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/mp0" android:visibility="gone" android:src="@drawable/i5p" style="@style/ab2" />
+        <ImageView android:id="@id/mpi" android:visibility="gone" android:src="@drawable/i5l" style="@style/ab2" />
+        <ImageView android:id="@id/mpr" android:visibility="gone" android:src="@drawable/i5u" style="@style/ab2" />
+        <ImageView android:id="@id/mob" android:visibility="gone" android:src="@drawable/i5k" style="@style/ab2" />
+        <ImageView android:id="@id/afl" android:visibility="gone" android:src="@drawable/i5i" style="@style/ab2" />
+        <ImageView android:id="@id/mot" android:visibility="gone" android:src="@drawable/i5m" style="@style/ab2" />
+    </LinearLayout>
+</merge>

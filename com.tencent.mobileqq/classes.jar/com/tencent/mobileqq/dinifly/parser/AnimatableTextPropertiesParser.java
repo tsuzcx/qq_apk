@@ -1,101 +1,79 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableColorValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTextProperties;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 public class AnimatableTextPropertiesParser
 {
+  private static JsonReader.Options ANIMATABLE_PROPERTIES_NAMES = JsonReader.Options.of(new String[] { "fc", "sc", "sw", "t" });
+  private static JsonReader.Options PROPERTIES_NAMES = JsonReader.Options.of(new String[] { "a" });
+  
   public static AnimatableTextProperties parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
     paramJsonReader.beginObject();
     AnimatableTextProperties localAnimatableTextProperties = null;
-    label6:
-    while (paramJsonReader.hasNext())
-    {
-      String str = paramJsonReader.nextName();
-      int i = -1;
-      switch (str.hashCode())
+    while (paramJsonReader.hasNext()) {
+      if (paramJsonReader.selectName(PROPERTIES_NAMES) != 0)
       {
+        paramJsonReader.skipName();
+        paramJsonReader.skipValue();
       }
-      for (;;)
+      else
       {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label6;
-          if (str.equals("a")) {
-            i = 0;
-          }
-          break;
-        }
+        localAnimatableTextProperties = parseAnimatableTextProperties(paramJsonReader, paramLottieComposition);
       }
-      localAnimatableTextProperties = parseAnimatableTextProperties(paramJsonReader, paramLottieComposition);
     }
     paramJsonReader.endObject();
-    paramJsonReader = localAnimatableTextProperties;
     if (localAnimatableTextProperties == null) {
-      paramJsonReader = new AnimatableTextProperties(null, null, null, null);
+      return new AnimatableTextProperties(null, null, null, null);
     }
-    return paramJsonReader;
+    return localAnimatableTextProperties;
   }
   
   private static AnimatableTextProperties parseAnimatableTextProperties(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
     paramJsonReader.beginObject();
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
     AnimatableColorValue localAnimatableColorValue2 = null;
     AnimatableColorValue localAnimatableColorValue1 = null;
-    label15:
+    Object localObject1 = localAnimatableColorValue1;
+    Object localObject2 = localObject1;
     while (paramJsonReader.hasNext())
     {
-      String str = paramJsonReader.nextName();
-      int i = -1;
-      switch (str.hashCode())
+      int i = paramJsonReader.selectName(ANIMATABLE_PROPERTIES_NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label15;
-          if (str.equals("fc"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str.equals("sc"))
+            if (i != 3)
             {
-              i = 1;
-              continue;
-              if (str.equals("sw"))
-              {
-                i = 2;
-                continue;
-                if (str.equals("t")) {
-                  i = 3;
-                }
-              }
+              paramJsonReader.skipName();
+              paramJsonReader.skipValue();
+            }
+            else
+            {
+              localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
             }
           }
-          break;
+          else {
+            localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localAnimatableColorValue1 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
         }
       }
-      localAnimatableColorValue1 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableColorValue2 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+      else {
+        localAnimatableColorValue2 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
+      }
     }
     paramJsonReader.endObject();
-    return new AnimatableTextProperties(localAnimatableColorValue1, localAnimatableColorValue2, localAnimatableFloatValue1, localAnimatableFloatValue2);
+    return new AnimatableTextProperties(localAnimatableColorValue2, localAnimatableColorValue1, (AnimatableFloatValue)localObject1, (AnimatableFloatValue)localObject2);
   }
 }
 

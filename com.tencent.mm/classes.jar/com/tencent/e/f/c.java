@@ -7,38 +7,6 @@ import java.security.NoSuchAlgorithmException;
 
 public final class c
 {
-  private static void a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    int k = paramArrayOfByte.length;
-    int i = 0;
-    int m;
-    for (int j = 0; i < k >> 2; j = m + 1)
-    {
-      m = j + 1;
-      paramArrayOfByte[j] &= 0xFF;
-      int n = paramArrayOfInt[i];
-      j = m + 1;
-      paramArrayOfInt[i] = ((paramArrayOfByte[m] & 0xFF) << 8 | n);
-      n = paramArrayOfInt[i];
-      m = j + 1;
-      paramArrayOfInt[i] = (n | (paramArrayOfByte[j] & 0xFF) << 16);
-      paramArrayOfInt[i] |= (paramArrayOfByte[m] & 0xFF) << 24;
-      i += 1;
-    }
-    if (j < paramArrayOfByte.length)
-    {
-      k = j + 1;
-      paramArrayOfByte[j] &= 0xFF;
-      j = 8;
-      while (k < paramArrayOfByte.length)
-      {
-        paramArrayOfInt[i] |= (paramArrayOfByte[k] & 0xFF) << j;
-        k += 1;
-        j += 8;
-      }
-    }
-  }
-  
   private static void a(int[] paramArrayOfInt, int paramInt, byte[] paramArrayOfByte)
   {
     int i = paramArrayOfByte.length >> 2;
@@ -74,9 +42,41 @@ public final class c
     }
   }
   
-  private static byte[] cp(byte[] paramArrayOfByte)
+  private static void b(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(114595);
+    int k = paramArrayOfByte.length;
+    int i = 0;
+    int m;
+    for (int j = 0; i < k >> 2; j = m + 1)
+    {
+      m = j + 1;
+      paramArrayOfByte[j] &= 0xFF;
+      int n = paramArrayOfInt[i];
+      j = m + 1;
+      paramArrayOfInt[i] = ((paramArrayOfByte[m] & 0xFF) << 8 | n);
+      n = paramArrayOfInt[i];
+      m = j + 1;
+      paramArrayOfInt[i] = (n | (paramArrayOfByte[j] & 0xFF) << 16);
+      paramArrayOfInt[i] |= (paramArrayOfByte[m] & 0xFF) << 24;
+      i += 1;
+    }
+    if (j < paramArrayOfByte.length)
+    {
+      k = j + 1;
+      paramArrayOfByte[j] &= 0xFF;
+      j = 8;
+      while (k < paramArrayOfByte.length)
+      {
+        paramArrayOfInt[i] |= (paramArrayOfByte[k] & 0xFF) << j;
+        k += 1;
+        j += 8;
+      }
+    }
+  }
+  
+  private static byte[] dw(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(138458);
     Object localObject = paramArrayOfByte;
     if (paramArrayOfByte != null)
     {
@@ -88,7 +88,7 @@ public final class c
       localObject = MessageDigest.getInstance("MD5");
       ((MessageDigest)localObject).update(paramArrayOfByte);
       localObject = ((MessageDigest)localObject).digest();
-      AppMethodBeat.o(114595);
+      AppMethodBeat.o(138458);
       return localObject;
     }
     catch (NoSuchAlgorithmException paramArrayOfByte)
@@ -100,9 +100,9 @@ public final class c
     }
   }
   
-  public static byte[] dUP()
+  public static byte[] jXz()
   {
-    AppMethodBeat.i(114594);
+    AppMethodBeat.i(138457);
     try
     {
       Object localObject = new StringBuffer();
@@ -113,30 +113,30 @@ public final class c
         i += 1;
       }
       localObject = ((StringBuffer)localObject).toString().getBytes("UTF-8");
-      AppMethodBeat.o(114594);
+      AppMethodBeat.o(138457);
       return localObject;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      AppMethodBeat.o(114594);
+      AppMethodBeat.o(138457);
     }
     return null;
   }
   
-  public static byte[] m(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static byte[] q(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(114596);
-    byte[] arrayOfByte = cp(paramArrayOfByte2);
+    AppMethodBeat.i(138459);
+    byte[] arrayOfByte = dw(paramArrayOfByte2);
     if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0))
     {
-      AppMethodBeat.o(114596);
+      AppMethodBeat.o(138459);
       return paramArrayOfByte1;
     }
     if (paramArrayOfByte1.length % 4 == 0)
     {
       i = (paramArrayOfByte1.length >>> 2) + 1;
       paramArrayOfByte2 = new int[i];
-      a(paramArrayOfByte1, paramArrayOfByte2);
+      b(paramArrayOfByte1, paramArrayOfByte2);
       paramArrayOfByte2[(i - 1)] = paramArrayOfByte1.length;
       if (arrayOfByte.length % 4 != 0) {
         break label117;
@@ -159,7 +159,7 @@ public final class c
       i = (paramArrayOfByte1.length >>> 2) + 2;
       break;
     }
-    a(arrayOfByte, paramArrayOfByte1);
+    b(arrayOfByte, paramArrayOfByte1);
     int i1 = paramArrayOfByte2.length - 1;
     i = paramArrayOfByte2[i1];
     int j = 52 / (i1 + 1) + 6;
@@ -186,26 +186,26 @@ public final class c
     }
     paramArrayOfByte1 = new byte[paramArrayOfByte2.length << 2];
     a(paramArrayOfByte2, paramArrayOfByte2.length, paramArrayOfByte1);
-    AppMethodBeat.o(114596);
+    AppMethodBeat.o(138459);
     return paramArrayOfByte1;
   }
   
-  public static byte[] n(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static byte[] r(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(114597);
-    byte[] arrayOfByte = cp(paramArrayOfByte2);
+    AppMethodBeat.i(138460);
+    byte[] arrayOfByte = dw(paramArrayOfByte2);
     if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0))
     {
-      AppMethodBeat.o(114597);
+      AppMethodBeat.o(138460);
       return paramArrayOfByte1;
     }
     if ((paramArrayOfByte1.length % 4 != 0) || (paramArrayOfByte1.length < 8))
     {
-      AppMethodBeat.o(114597);
+      AppMethodBeat.o(138460);
       return null;
     }
     paramArrayOfByte2 = new int[paramArrayOfByte1.length >>> 2];
-    a(paramArrayOfByte1, paramArrayOfByte2);
+    b(paramArrayOfByte1, paramArrayOfByte2);
     if (arrayOfByte.length % 4 == 0) {}
     for (int i = arrayOfByte.length >>> 2;; i = (arrayOfByte.length >>> 2) + 1)
     {
@@ -221,7 +221,7 @@ public final class c
         i += 1;
       }
     }
-    a(arrayOfByte, paramArrayOfByte1);
+    b(arrayOfByte, paramArrayOfByte1);
     int n = paramArrayOfByte2.length - 1;
     i = paramArrayOfByte2[0];
     int j = (52 / (n + 1) + 6) * -1640531527;
@@ -246,18 +246,18 @@ public final class c
     i = paramArrayOfByte2[n];
     if ((i < 0) || (i > paramArrayOfByte2.length - 1 << 2))
     {
-      AppMethodBeat.o(114597);
+      AppMethodBeat.o(138460);
       return null;
     }
     paramArrayOfByte1 = new byte[i];
     a(paramArrayOfByte2, paramArrayOfByte2.length - 1, paramArrayOfByte1);
-    AppMethodBeat.o(114597);
+    AppMethodBeat.o(138460);
     return paramArrayOfByte1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.f.c
  * JD-Core Version:    0.7.0.1
  */

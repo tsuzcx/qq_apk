@@ -25,13 +25,17 @@ final class PluginController$resetReportNum$1
   public final void invoke(@NotNull DefaultPluginConfig paramDefaultPluginConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramDefaultPluginConfig, "it");
-    BaseInfo.editor.putInt("count_plugin_" + String.valueOf(paramDefaultPluginConfig.plugin), 0);
+    AsyncSPEditor localAsyncSPEditor = BaseInfo.editor;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("count_plugin_");
+    localStringBuilder.append(String.valueOf(paramDefaultPluginConfig.plugin));
+    localAsyncSPEditor.putInt(localStringBuilder.toString(), 0);
     paramDefaultPluginConfig.curReportNum = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.monitorplugin.PluginController.resetReportNum.1
  * JD-Core Version:    0.7.0.1
  */

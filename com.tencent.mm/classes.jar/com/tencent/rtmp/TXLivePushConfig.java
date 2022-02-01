@@ -1,6 +1,9 @@
 package com.tencent.rtmp;
 
 import android.graphics.Bitmap;
+import com.tencent.liteav.basic.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
 
 public class TXLivePushConfig
 {
@@ -17,8 +20,9 @@ public class TXLivePushConfig
   int mConnectRetryCount = 3;
   int mConnectRetryInterval = 3;
   int mCustomModeType = 0;
-  boolean mEnableANS = false;
   boolean mEnableAec = false;
+  boolean mEnableAgc = false;
+  boolean mEnableAns = false;
   boolean mEnableAudioPreview = false;
   boolean mEnableHighResolutionCapture = true;
   boolean mEnableNearestIP = true;
@@ -31,8 +35,10 @@ public class TXLivePushConfig
   boolean mFrontCamera = true;
   int mHardwareAccel = 2;
   int mHomeOrientation = 1;
-  int mMaxVideoBitrate = 1000;
-  int mMinVideoBitrate = 400;
+  int mLocalVideoMirrorType = 0;
+  int mMaxVideoBitrate = 1500;
+  HashMap<String, String> mMetaData;
+  int mMinVideoBitrate = 800;
   int mPauseFlag = 1;
   int mPauseFps = 5;
   Bitmap mPauseImg = null;
@@ -46,7 +52,8 @@ public class TXLivePushConfig
   int mVideoFPS = 20;
   String mVideoPreProcessFuncName;
   String mVideoPreProcessLibrary;
-  int mVideoResolution = 1;
+  c mVideoResolution = c.c;
+  int mVolumeType = 0;
   Bitmap mWatermark;
   float mWatermarkWidth = -1.0F;
   int mWatermarkX = 0;
@@ -60,11 +67,27 @@ public class TXLivePushConfig
     this.mEnableAec = paramBoolean;
   }
   
+  public void enableAGC(boolean paramBoolean)
+  {
+    this.mEnableAgc = paramBoolean;
+  }
+  
+  public void enableANS(boolean paramBoolean)
+  {
+    this.mEnableAns = paramBoolean;
+  }
+  
+  public void enableAudioEarMonitoring(boolean paramBoolean)
+  {
+    this.mEnableAudioPreview = paramBoolean;
+  }
+  
   public void enableHighResolutionCaptureMode(boolean paramBoolean)
   {
     this.mEnableHighResolutionCapture = paramBoolean;
   }
   
+  @Deprecated
   public void enableNearestIP(boolean paramBoolean)
   {
     this.mEnableNearestIP = paramBoolean;
@@ -83,11 +106,6 @@ public class TXLivePushConfig
   public void enableVideoHardEncoderMainProfile(boolean paramBoolean)
   {
     this.mEnableVideoHardEncoderMainProfile = paramBoolean;
-  }
-  
-  public void setANS(boolean paramBoolean)
-  {
-    this.mEnableANS = paramBoolean;
   }
   
   public void setAudioChannels(int paramInt)
@@ -110,6 +128,7 @@ public class TXLivePushConfig
     this.mAutoAdjustStrategy = paramInt;
   }
   
+  @Deprecated
   public void setBeautyFilter(int paramInt1, int paramInt2, int paramInt3)
   {
     this.mBeautyLevel = paramInt1;
@@ -149,16 +168,19 @@ public class TXLivePushConfig
     this.mEnableZoom = paramBoolean;
   }
   
+  @Deprecated
   public void setEyeScaleLevel(int paramInt)
   {
     this.mEyeScaleLevel = paramInt;
   }
   
+  @Deprecated
   public void setFaceSlimLevel(int paramInt)
   {
     this.mFaceSlimLevel = paramInt;
   }
   
+  @Deprecated
   public void setFrontCamera(boolean paramBoolean)
   {
     this.mFrontCamera = paramBoolean;
@@ -188,9 +210,19 @@ public class TXLivePushConfig
     this.mHomeOrientation = paramInt;
   }
   
+  public void setLocalVideoMirrorType(int paramInt)
+  {
+    this.mLocalVideoMirrorType = paramInt;
+  }
+  
   public void setMaxVideoBitrate(int paramInt)
   {
     this.mMaxVideoBitrate = paramInt;
+  }
+  
+  public void setMetaData(HashMap<String, String> paramHashMap)
+  {
+    this.mMetaData = paramHashMap;
   }
   
   public void setMinVideoBitrate(int paramInt)
@@ -214,6 +246,7 @@ public class TXLivePushConfig
     this.mPauseImg = paramBitmap;
   }
   
+  @Deprecated
   public void setRtmpChannelType(int paramInt)
   {
     this.mRtmpChannelType = paramInt;
@@ -246,7 +279,90 @@ public class TXLivePushConfig
   
   public void setVideoResolution(int paramInt)
   {
-    this.mVideoResolution = paramInt;
+    switch (paramInt)
+    {
+    case 20: 
+    case 21: 
+    case 22: 
+    case 23: 
+    case 24: 
+    case 25: 
+    case 26: 
+    case 27: 
+    case 28: 
+    case 29: 
+    default: 
+      return;
+    case 0: 
+      this.mVideoResolution = c.b;
+      return;
+    case 1: 
+      this.mVideoResolution = c.c;
+      return;
+    case 2: 
+      this.mVideoResolution = c.d;
+      return;
+    case 3: 
+      this.mVideoResolution = c.e;
+      return;
+    case 4: 
+      this.mVideoResolution = c.f;
+      return;
+    case 5: 
+      this.mVideoResolution = c.g;
+      return;
+    case 6: 
+      this.mVideoResolution = c.h;
+      return;
+    case 7: 
+      this.mVideoResolution = c.i;
+      return;
+    case 8: 
+      this.mVideoResolution = c.j;
+      return;
+    case 9: 
+      this.mVideoResolution = c.k;
+      return;
+    case 10: 
+      this.mVideoResolution = c.l;
+      return;
+    case 11: 
+      this.mVideoResolution = c.m;
+      return;
+    case 12: 
+      this.mVideoResolution = c.n;
+      return;
+    case 13: 
+      this.mVideoResolution = c.o;
+      return;
+    case 14: 
+      this.mVideoResolution = c.p;
+      return;
+    case 15: 
+      this.mVideoResolution = c.q;
+      return;
+    case 16: 
+      this.mVideoResolution = c.r;
+      return;
+    case 17: 
+      this.mVideoResolution = c.s;
+      return;
+    case 18: 
+      this.mVideoResolution = c.t;
+      return;
+    case 19: 
+      this.mVideoResolution = c.u;
+      return;
+    case 30: 
+      this.mVideoResolution = c.w;
+      return;
+    }
+    this.mVideoResolution = c.x;
+  }
+  
+  public void setVolumeType(int paramInt)
+  {
+    this.mVolumeType = paramInt;
   }
   
   public void setWatermark(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -263,10 +379,18 @@ public class TXLivePushConfig
     this.mWatermarkX = paramInt1;
     this.mWatermarkY = paramInt2;
   }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(218512);
+    String str = "[resolution:" + this.mVideoResolution + "][fps:" + this.mVideoFPS + "][gop:" + this.mVideoEncodeGop + "][bitrate:" + this.mVideoBitrate + "][maxBitrate:" + this.mMaxVideoBitrate + "][minBitrate:" + this.mMinVideoBitrate + "][highCapture:" + this.mEnableHighResolutionCapture + "][hwAcc:" + this.mHardwareAccel + "][homeOrientation:" + this.mHomeOrientation + "][volumeType:" + this.mVolumeType + "][earMonitor:" + this.mEnableAudioPreview + "][agc:" + this.mEnableAgc + "][ans:" + this.mEnableAns + "][aec:" + this.mEnableAec + "][sample:" + this.mAudioSample + "][pureAudioPush:" + this.mEnablePureAudioPush + "]";
+    AppMethodBeat.o(218512);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePushConfig
  * JD-Core Version:    0.7.0.1
  */

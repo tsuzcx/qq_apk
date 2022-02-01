@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class WloginSimpleInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new WloginSimpleInfo.1();
+  public static final Parcelable.Creator<WloginSimpleInfo> CREATOR = new WloginSimpleInfo.1();
   private static final long serialVersionUID = 1L;
   public byte[] _age;
   public byte[] _face;
@@ -36,100 +36,74 @@ public class WloginSimpleInfo
   public WloginSimpleInfo(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7)
   {
     this._uin = paramLong;
-    if (paramArrayOfByte1 != null)
-    {
+    if (paramArrayOfByte1 != null) {
       this._face = ((byte[])paramArrayOfByte1.clone());
-      if (paramArrayOfByte2 == null) {
-        break label137;
-      }
-      this._age = ((byte[])paramArrayOfByte2.clone());
-      label41:
-      if (paramArrayOfByte3 == null) {
-        break label147;
-      }
-      this._gender = ((byte[])paramArrayOfByte3.clone());
-      label58:
-      if (paramArrayOfByte4 == null) {
-        break label157;
-      }
-      this._nick = ((byte[])paramArrayOfByte4.clone());
-      label75:
-      if (paramArrayOfByte5 == null) {
-        break label167;
-      }
-      this._img_type = ((byte[])paramArrayOfByte5.clone());
-      label92:
-      if (paramArrayOfByte6 == null) {
-        break label177;
-      }
+    } else {
+      this._face = new byte[0];
     }
-    label137:
-    label147:
-    label157:
-    label167:
-    label177:
-    for (this._img_format = ((byte[])paramArrayOfByte6.clone());; this._img_format = new byte[0])
+    if (paramArrayOfByte2 != null) {
+      this._age = ((byte[])paramArrayOfByte2.clone());
+    } else {
+      this._age = new byte[0];
+    }
+    if (paramArrayOfByte3 != null) {
+      this._gender = ((byte[])paramArrayOfByte3.clone());
+    } else {
+      this._gender = new byte[0];
+    }
+    if (paramArrayOfByte4 != null) {
+      this._nick = ((byte[])paramArrayOfByte4.clone());
+    } else {
+      this._nick = new byte[0];
+    }
+    if (paramArrayOfByte5 != null) {
+      this._img_type = ((byte[])paramArrayOfByte5.clone());
+    } else {
+      this._img_type = new byte[0];
+    }
+    if (paramArrayOfByte6 != null) {
+      this._img_format = ((byte[])paramArrayOfByte6.clone());
+    } else {
+      this._img_format = new byte[0];
+    }
+    if (paramArrayOfByte7 != null)
     {
-      if (paramArrayOfByte7 == null) {
-        break label187;
-      }
       this._img_url = ((byte[])paramArrayOfByte7.clone());
       return;
-      this._face = new byte[0];
-      break;
-      this._age = new byte[0];
-      break label41;
-      this._gender = new byte[0];
-      break label58;
-      this._nick = new byte[0];
-      break label75;
-      this._img_type = new byte[0];
-      break label92;
     }
-    label187:
     this._img_url = new byte[0];
   }
   
   public WloginSimpleInfo(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[][] paramArrayOfByte)
   {
     this._uin = paramLong;
-    if (paramArrayOfByte1 != null)
-    {
+    if (paramArrayOfByte1 != null) {
       this._face = ((byte[])paramArrayOfByte1.clone());
-      if (paramArrayOfByte2 == null) {
-        break label140;
-      }
-      this._age = ((byte[])paramArrayOfByte2.clone());
-      label41:
-      if (paramArrayOfByte3 == null) {
-        break label150;
-      }
-      this._gender = ((byte[])paramArrayOfByte3.clone());
-      label58:
-      if (paramArrayOfByte4 == null) {
-        break label160;
-      }
+    } else {
+      this._face = new byte[0];
     }
-    label140:
-    label150:
-    label160:
-    for (this._nick = ((byte[])paramArrayOfByte4.clone());; this._nick = new byte[0])
+    if (paramArrayOfByte2 != null) {
+      this._age = ((byte[])paramArrayOfByte2.clone());
+    } else {
+      this._age = new byte[0];
+    }
+    if (paramArrayOfByte3 != null) {
+      this._gender = ((byte[])paramArrayOfByte3.clone());
+    } else {
+      this._gender = new byte[0];
+    }
+    if (paramArrayOfByte4 != null) {
+      this._nick = ((byte[])paramArrayOfByte4.clone());
+    } else {
+      this._nick = new byte[0];
+    }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 3))
     {
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length != 3)) {
-        break label170;
-      }
       this._img_type = ((byte[])paramArrayOfByte[0].clone());
       this._img_format = ((byte[])paramArrayOfByte[1].clone());
       this._img_url = ((byte[])paramArrayOfByte[2].clone());
       return;
-      this._face = new byte[0];
-      break;
-      this._age = new byte[0];
-      break label41;
-      this._gender = new byte[0];
-      break label58;
     }
-    label170:
     this._img_type = new byte[0];
     this._img_format = new byte[0];
     this._img_url = new byte[0];
@@ -149,29 +123,37 @@ public class WloginSimpleInfo
   {
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
     localWloginSimpleInfo._uin = this._uin;
-    if (this._face != null) {
-      localWloginSimpleInfo._face = ((byte[])this._face.clone());
+    byte[] arrayOfByte = this._face;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._face = ((byte[])arrayOfByte.clone());
     }
-    if (this._age != null) {
-      localWloginSimpleInfo._age = ((byte[])this._age.clone());
+    arrayOfByte = this._age;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._age = ((byte[])arrayOfByte.clone());
     }
-    if (this._gender != null) {
-      localWloginSimpleInfo._gender = ((byte[])this._gender.clone());
+    arrayOfByte = this._gender;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._gender = ((byte[])arrayOfByte.clone());
     }
-    if (this._nick != null) {
-      localWloginSimpleInfo._nick = ((byte[])this._nick.clone());
+    arrayOfByte = this._nick;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._nick = ((byte[])arrayOfByte.clone());
     }
-    if (this._img_type != null) {
-      localWloginSimpleInfo._img_type = ((byte[])this._img_type.clone());
+    arrayOfByte = this._img_type;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._img_type = ((byte[])arrayOfByte.clone());
     }
-    if (this._img_format != null) {
-      localWloginSimpleInfo._img_format = ((byte[])this._img_format.clone());
+    arrayOfByte = this._img_format;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._img_format = ((byte[])arrayOfByte.clone());
     }
-    if (this._img_url != null) {
-      localWloginSimpleInfo._img_url = ((byte[])this._img_url.clone());
+    arrayOfByte = this._img_url;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo._img_url = ((byte[])arrayOfByte.clone());
     }
-    if (this.mainDisplayName != null) {
-      localWloginSimpleInfo.mainDisplayName = ((byte[])this.mainDisplayName.clone());
+    arrayOfByte = this.mainDisplayName;
+    if (arrayOfByte != null) {
+      localWloginSimpleInfo.mainDisplayName = ((byte[])arrayOfByte.clone());
     }
     return localWloginSimpleInfo;
   }
@@ -179,57 +161,48 @@ public class WloginSimpleInfo
   public void get_clone(WloginSimpleInfo paramWloginSimpleInfo)
   {
     this._uin = paramWloginSimpleInfo._uin;
-    if (paramWloginSimpleInfo._face != null)
-    {
-      this._face = ((byte[])paramWloginSimpleInfo._face.clone());
-      if (paramWloginSimpleInfo._age == null) {
-        break label166;
-      }
-      this._age = ((byte[])paramWloginSimpleInfo._age.clone());
-      label50:
-      if (paramWloginSimpleInfo._gender == null) {
-        break label176;
-      }
-      this._gender = ((byte[])paramWloginSimpleInfo._gender.clone());
-      label71:
-      if (paramWloginSimpleInfo._nick == null) {
-        break label186;
-      }
-      this._nick = ((byte[])paramWloginSimpleInfo._nick.clone());
-      label92:
-      if (paramWloginSimpleInfo._img_type == null) {
-        break label196;
-      }
-      this._img_type = ((byte[])paramWloginSimpleInfo._img_type.clone());
-      label113:
-      if (paramWloginSimpleInfo._img_format == null) {
-        break label206;
-      }
-    }
-    label166:
-    label176:
-    label186:
-    label196:
-    label206:
-    for (this._img_format = ((byte[])paramWloginSimpleInfo._img_format.clone());; this._img_format = new byte[0])
-    {
-      if (paramWloginSimpleInfo._img_url == null) {
-        break label216;
-      }
-      this._img_url = ((byte[])paramWloginSimpleInfo._img_url.clone());
-      return;
+    byte[] arrayOfByte = paramWloginSimpleInfo._face;
+    if (arrayOfByte != null) {
+      this._face = ((byte[])arrayOfByte.clone());
+    } else {
       this._face = new byte[0];
-      break;
-      this._age = new byte[0];
-      break label50;
-      this._gender = new byte[0];
-      break label71;
-      this._nick = new byte[0];
-      break label92;
-      this._img_type = new byte[0];
-      break label113;
     }
-    label216:
+    arrayOfByte = paramWloginSimpleInfo._age;
+    if (arrayOfByte != null) {
+      this._age = ((byte[])arrayOfByte.clone());
+    } else {
+      this._age = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._gender;
+    if (arrayOfByte != null) {
+      this._gender = ((byte[])arrayOfByte.clone());
+    } else {
+      this._gender = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._nick;
+    if (arrayOfByte != null) {
+      this._nick = ((byte[])arrayOfByte.clone());
+    } else {
+      this._nick = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._img_type;
+    if (arrayOfByte != null) {
+      this._img_type = ((byte[])arrayOfByte.clone());
+    } else {
+      this._img_type = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._img_format;
+    if (arrayOfByte != null) {
+      this._img_format = ((byte[])arrayOfByte.clone());
+    } else {
+      this._img_format = new byte[0];
+    }
+    paramWloginSimpleInfo = paramWloginSimpleInfo._img_url;
+    if (paramWloginSimpleInfo != null)
+    {
+      this._img_url = ((byte[])paramWloginSimpleInfo.clone());
+      return;
+    }
     this._img_url = new byte[0];
   }
   
@@ -320,65 +293,54 @@ public class WloginSimpleInfo
   public void set_info(WloginSimpleInfo paramWloginSimpleInfo)
   {
     this._uin = paramWloginSimpleInfo._uin;
-    if (paramWloginSimpleInfo._face != null)
-    {
-      this._face = ((byte[])paramWloginSimpleInfo._face.clone());
-      if (paramWloginSimpleInfo._age == null) {
-        break label187;
-      }
-      this._age = ((byte[])paramWloginSimpleInfo._age.clone());
-      label50:
-      if (paramWloginSimpleInfo._gender == null) {
-        break label197;
-      }
-      this._gender = ((byte[])paramWloginSimpleInfo._gender.clone());
-      label71:
-      if (paramWloginSimpleInfo._nick == null) {
-        break label207;
-      }
-      this._nick = ((byte[])paramWloginSimpleInfo._nick.clone());
-      label92:
-      if (paramWloginSimpleInfo._img_type == null) {
-        break label217;
-      }
-      this._img_type = ((byte[])paramWloginSimpleInfo._img_type.clone());
-      label113:
-      if (paramWloginSimpleInfo._img_format == null) {
-        break label227;
-      }
-      this._img_format = ((byte[])paramWloginSimpleInfo._img_format.clone());
-      label134:
-      if (paramWloginSimpleInfo._img_url == null) {
-        break label237;
-      }
-    }
-    label187:
-    label197:
-    label207:
-    label217:
-    label227:
-    label237:
-    for (this._img_url = ((byte[])paramWloginSimpleInfo._img_url.clone());; this._img_url = new byte[0])
-    {
-      if (paramWloginSimpleInfo.mainDisplayName == null) {
-        break label247;
-      }
-      this.mainDisplayName = ((byte[])paramWloginSimpleInfo.mainDisplayName.clone());
-      return;
+    byte[] arrayOfByte = paramWloginSimpleInfo._face;
+    if (arrayOfByte != null) {
+      this._face = ((byte[])arrayOfByte.clone());
+    } else {
       this._face = new byte[0];
-      break;
-      this._age = new byte[0];
-      break label50;
-      this._gender = new byte[0];
-      break label71;
-      this._nick = new byte[0];
-      break label92;
-      this._img_type = new byte[0];
-      break label113;
-      this._img_format = new byte[0];
-      break label134;
     }
-    label247:
+    arrayOfByte = paramWloginSimpleInfo._age;
+    if (arrayOfByte != null) {
+      this._age = ((byte[])arrayOfByte.clone());
+    } else {
+      this._age = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._gender;
+    if (arrayOfByte != null) {
+      this._gender = ((byte[])arrayOfByte.clone());
+    } else {
+      this._gender = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._nick;
+    if (arrayOfByte != null) {
+      this._nick = ((byte[])arrayOfByte.clone());
+    } else {
+      this._nick = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._img_type;
+    if (arrayOfByte != null) {
+      this._img_type = ((byte[])arrayOfByte.clone());
+    } else {
+      this._img_type = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._img_format;
+    if (arrayOfByte != null) {
+      this._img_format = ((byte[])arrayOfByte.clone());
+    } else {
+      this._img_format = new byte[0];
+    }
+    arrayOfByte = paramWloginSimpleInfo._img_url;
+    if (arrayOfByte != null) {
+      this._img_url = ((byte[])arrayOfByte.clone());
+    } else {
+      this._img_url = new byte[0];
+    }
+    paramWloginSimpleInfo = paramWloginSimpleInfo.mainDisplayName;
+    if (paramWloginSimpleInfo != null)
+    {
+      this.mainDisplayName = ((byte[])paramWloginSimpleInfo.clone());
+      return;
+    }
     this.mainDisplayName = new byte[0];
   }
   

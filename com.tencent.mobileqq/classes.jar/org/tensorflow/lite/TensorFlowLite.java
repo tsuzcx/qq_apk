@@ -20,7 +20,11 @@ public final class TensorFlowLite
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      System.err.println("TensorFlowLite: failed to load native library: " + localUnsatisfiedLinkError.getMessage());
+      PrintStream localPrintStream = System.err;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TensorFlowLite: failed to load native library: ");
+      localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
+      localPrintStream.println(localStringBuilder.toString());
     }
     return false;
   }
@@ -29,7 +33,7 @@ public final class TensorFlowLite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.tensorflow.lite.TensorFlowLite
  * JD-Core Version:    0.7.0.1
  */

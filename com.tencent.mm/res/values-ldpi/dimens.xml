@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="afy">180.0dip</dimen>
+    <dimen name="aym">36.0dip</dimen>
+    <dimen name="ayn">6.0dip</dimen>
+    <dimen name="ayo">40.0dip</dimen>
+    <dimen name="ayp">32.0dip</dimen>
+    <dimen name="ayq">30.0dip</dimen>
+</resources>

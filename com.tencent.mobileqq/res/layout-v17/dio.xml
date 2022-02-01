@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/kt9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="94.0dip" />
+    <ImageView android:id="@id/qwv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <ImageView android:id="@id/qwy" android:padding="5.0dip" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/jva" android:layout_centerInParent="true" />
+    <ImageView android:background="@drawable/h7e" android:layout_width="fill_parent" android:layout_height="132.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:id="@id/qwz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="134.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="36.0sp" android:textColor="@color/gg" android:gravity="center_horizontal" android:id="@id/qww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_alignParentLeft="true" android:textAlignment="center" />
+        <TextView android:textSize="24.0sp" android:textColor="@color/alb" android:gravity="center_horizontal" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="/" />
+        <TextView android:textSize="36.0sp" android:textColor="@color/alb" android:gravity="center_horizontal" android:id="@id/qx1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_alignParentRight="true" />
+    </LinearLayout>
+    <SeekBar android:id="@id/qx0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginBottom="77.0dip" android:layout_alignParentBottom="true" style="@style/abc" />
+</RelativeLayout>

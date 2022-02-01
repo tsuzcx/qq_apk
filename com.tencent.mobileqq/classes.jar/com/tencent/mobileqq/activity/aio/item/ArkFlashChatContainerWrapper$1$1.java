@@ -9,14 +9,14 @@ class ArkFlashChatContainerWrapper$1$1
   
   public void run()
   {
-    if (ArkFlashChatContainerWrapper.a(this.a.this$0) != null) {
-      ArkFlashChatContainerWrapper.b(this.a.this$0).onLoading();
+    if (ArkFlashChatContainerWrapper.b(this.a.this$0) != null) {
+      ArkFlashChatContainerWrapper.c(this.a.this$0).onLoading();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.1.1
  * JD-Core Version:    0.7.0.1
  */

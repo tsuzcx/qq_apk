@@ -3,20 +3,19 @@ package com.tencent.qidian;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfzg;
 
 public class QidianProfileCardActivity$QidianCompoundProfileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new bfzg();
-  public int a;
+  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new QidianProfileCardActivity.QidianCompoundProfileItem.1();
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
   public String c;
-  public String d;
-  public String e;
+  public boolean d = false;
+  public int e;
+  public boolean f = false;
+  public String g;
+  public String h;
   
   public int describeContents()
   {
@@ -25,34 +24,19 @@ public class QidianProfileCardActivity$QidianCompoundProfileItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label86;
-      }
-    }
-    label86:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.d);
-      paramParcel.writeString(this.e);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeByte((byte)this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeByte((byte)this.f);
+    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 
 public final class k
-  extends l
+  extends r
 {
-  public String hKu;
-  public String loD;
-  public String rsb;
-  public int rsc;
-  public String sessionFrom;
+  public List<String> QJl;
   
-  public final String toString()
+  public k(List<String> paramList)
   {
-    AppMethodBeat.i(145296);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("userName:").append(this.loD).append(", appId:").append(this.rsb).append(", busId:").append(this.hKu).append(", sessionFrom:").append(this.sessionFrom);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(145296);
-    return localObject;
+    this.QJl = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k
  * JD-Core Version:    0.7.0.1
  */

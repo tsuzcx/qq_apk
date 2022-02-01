@@ -35,24 +35,28 @@ public final class StrangerSkin
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strImageUrl != null) {
-      paramJceOutputStream.write(this.strImageUrl, 0);
+    String str = this.strImageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strTextColor1 != null) {
-      paramJceOutputStream.write(this.strTextColor1, 1);
+    str = this.strTextColor1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strTextColor2 != null) {
-      paramJceOutputStream.write(this.strTextColor2, 2);
+    str = this.strTextColor2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.iItemId, 3);
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 4);
+    str = this.strJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.StrangerSkin
  * JD-Core Version:    0.7.0.1
  */

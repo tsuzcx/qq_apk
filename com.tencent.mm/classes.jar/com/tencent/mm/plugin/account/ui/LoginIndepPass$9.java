@@ -11,15 +11,15 @@ final class LoginIndepPass$9
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(124975);
-    LoginIndepPass.a(this.gEE);
-    AppMethodBeat.o(124975);
+    AppMethodBeat.i(128153);
+    LoginIndepPass.a(this.qbg);
+    AppMethodBeat.o(128153);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginIndepPass.9
  * JD-Core Version:    0.7.0.1
  */

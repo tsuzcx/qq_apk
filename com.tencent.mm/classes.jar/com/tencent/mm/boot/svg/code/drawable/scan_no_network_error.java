@@ -1,0 +1,100 @@
+package com.tencent.mm.boot.svg.code.drawable;
+
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.os.Looper;
+import com.tencent.mm.svg.WeChatSVGRenderC2Java;
+import com.tencent.mm.svg.c;
+
+public class scan_no_network_error
+  extends c
+{
+  private final int height = 40;
+  private final int width = 40;
+  
+  public int doCommand(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return 0;
+      return 40;
+      return 40;
+      Canvas localCanvas = (Canvas)paramVarArgs[0];
+      paramVarArgs = (Looper)paramVarArgs[1];
+      Object localObject1 = c.instanceMatrix(paramVarArgs);
+      Object localObject2 = c.instanceMatrixArray(paramVarArgs);
+      Paint localPaint1 = c.instancePaint(paramVarArgs);
+      localPaint1.setFlags(385);
+      localPaint1.setStyle(Paint.Style.FILL);
+      Paint localPaint2 = c.instancePaint(paramVarArgs);
+      localPaint2.setFlags(385);
+      localPaint2.setStyle(Paint.Style.STROKE);
+      localPaint1.setColor(-16777216);
+      localPaint2.setStrokeWidth(1.0F);
+      localPaint2.setStrokeCap(Paint.Cap.BUTT);
+      localPaint2.setStrokeJoin(Paint.Join.MITER);
+      localPaint2.setStrokeMiter(4.0F);
+      localPaint2.setPathEffect(null);
+      c.instancePaint(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
+      localCanvas.save();
+      localObject2 = c.setMatrixFloatArray((float[])localObject2, 1.0F, 0.0F, -279.0F, 0.0F, 1.0F, -275.0F, 0.0F, 0.0F, 1.0F);
+      ((Matrix)localObject1).reset();
+      ((Matrix)localObject1).setValues((float[])localObject2);
+      localCanvas.concat((Matrix)localObject1);
+      localCanvas.save();
+      localObject2 = c.setMatrixFloatArray((float[])localObject2, 1.0F, 0.0F, 279.0F, 0.0F, 1.0F, 275.0F, 0.0F, 0.0F, 1.0F);
+      ((Matrix)localObject1).reset();
+      ((Matrix)localObject1).setValues((float[])localObject2);
+      localCanvas.concat((Matrix)localObject1);
+      localCanvas.save();
+      localObject1 = c.instancePaint(localPaint1, paramVarArgs);
+      ((Paint)localObject1).setColor(-372399);
+      localObject2 = c.instancePath(paramVarArgs);
+      ((Path)localObject2).moveTo(20.0F, 40.0F);
+      ((Path)localObject2).cubicTo(8.954305F, 40.0F, 0.0F, 31.045694F, 0.0F, 20.0F);
+      ((Path)localObject2).cubicTo(0.0F, 8.954305F, 8.954305F, 0.0F, 20.0F, 0.0F);
+      ((Path)localObject2).cubicTo(31.045694F, 0.0F, 40.0F, 8.954305F, 40.0F, 20.0F);
+      ((Path)localObject2).cubicTo(40.0F, 31.045694F, 31.045694F, 40.0F, 20.0F, 40.0F);
+      ((Path)localObject2).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject2, 1);
+      localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
+      localCanvas.restore();
+      localCanvas.save();
+      localPaint1 = c.instancePaint(localPaint1, paramVarArgs);
+      localPaint1.setColor(-1);
+      localObject1 = c.instancePath(paramVarArgs);
+      ((Path)localObject1).moveTo(19.669922F, 27.944336F);
+      ((Path)localObject1).cubicTo(20.62207F, 27.944336F, 21.339844F, 28.662109F, 21.339844F, 29.614258F);
+      ((Path)localObject1).cubicTo(21.339844F, 30.551758F, 20.62207F, 31.28418F, 19.669922F, 31.28418F);
+      ((Path)localObject1).cubicTo(18.732422F, 31.28418F, 18.0F, 30.551758F, 18.0F, 29.614258F);
+      ((Path)localObject1).cubicTo(18.0F, 28.662109F, 18.732422F, 27.944336F, 19.669922F, 27.944336F);
+      ((Path)localObject1).close();
+      ((Path)localObject1).moveTo(20.988281F, 10.0F);
+      ((Path)localObject1).lineTo(20.8125F, 24.121094F);
+      ((Path)localObject1).lineTo(18.527344F, 24.121094F);
+      ((Path)localObject1).lineTo(18.351563F, 10.0F);
+      ((Path)localObject1).lineTo(20.988281F, 10.0F);
+      ((Path)localObject1).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject1, 1);
+      localCanvas.drawPath((Path)localObject1, localPaint1);
+      localCanvas.restore();
+      localCanvas.restore();
+      localCanvas.restore();
+      c.done(paramVarArgs);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
+ * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.scan_no_network_error
+ * JD-Core Version:    0.7.0.1
+ */

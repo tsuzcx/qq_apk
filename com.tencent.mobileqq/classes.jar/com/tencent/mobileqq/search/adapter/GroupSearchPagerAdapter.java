@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.adapter;
 
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -14,69 +14,82 @@ import java.util.List;
 public class GroupSearchPagerAdapter
   extends PagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
-  private final FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction;
-  List<Fragment> jdField_a_of_type_JavaUtilList;
+  List<Fragment> a;
+  private final FragmentManager b;
+  private FragmentTransaction c;
+  private Fragment d;
   
   private static String a(int paramInt, long paramLong)
   {
-    return "android:switcher:" + paramInt + ":" + paramLong;
-  }
-  
-  public long a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList.get(paramInt) instanceof ActiveEntitySearchFragment)) {
-      return ((Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt)).hashCode();
-    }
-    return paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android:switcher:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   public Fragment a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt))
-    {
-      QLog.e("GroupSearchPagerAdapter", 2, "error! fragments==null || position<0 || fragments.size()<=position !");
-      return ActiveEntitySearchFragment.a(0, new long[] { 0L }, "", "");
+    List localList = this.a;
+    if ((localList != null) && (paramInt >= 0) && (localList.size() > paramInt)) {
+      return (Fragment)this.a.get(paramInt);
     }
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    QLog.e("GroupSearchPagerAdapter", 2, "error! fragments==null || position<0 || fragments.size()<=position !");
+    return ActiveEntitySearchFragment.a(0, new long[] { 0L }, "", "");
+  }
+  
+  public long b(int paramInt)
+  {
+    if ((this.a.get(paramInt) instanceof ActiveEntitySearchFragment)) {
+      return ((Fragment)this.a.get(paramInt)).hashCode();
+    }
+    return paramInt;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
+    if (this.c == null) {
+      this.c = this.b.beginTransaction();
     }
-    if ((paramObject instanceof ActiveEntitySearchFragment)) {
-      QLog.i("Q.uniteSearch.", 2, "Detaching item hash = " + paramObject.hashCode() + "  Detaching item name:" + ((ActiveEntitySearchFragment)paramObject).e);
+    if ((paramObject instanceof ActiveEntitySearchFragment))
+    {
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("Detaching item hash = ");
+      paramViewGroup.append(paramObject.hashCode());
+      paramViewGroup.append("  Detaching item name:");
+      paramViewGroup.append(((ActiveEntitySearchFragment)paramObject).N);
+      QLog.i("Q.uniteSearch.", 2, paramViewGroup.toString());
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction.remove((Fragment)paramObject);
+    this.c.remove((Fragment)paramObject);
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction != null)
+    paramViewGroup = this.c;
+    if (paramViewGroup != null)
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction.commitAllowingStateLoss();
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = null;
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.executePendingTransactions();
+      paramViewGroup.commitAllowingStateLoss();
+      this.c = null;
+      this.b.executePendingTransactions();
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.a;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public int getItemPosition(Object paramObject)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      if (paramObject == this.jdField_a_of_type_JavaUtilList.get(i)) {
+      if (paramObject == this.a.get(i)) {
         return i;
       }
       i += 1;
@@ -86,33 +99,47 @@ public class GroupSearchPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
+    if (this.c == null) {
+      this.c = this.b.beginTransaction();
     }
-    long l = a(paramInt);
+    long l = b(paramInt);
     Object localObject = a(paramViewGroup.getId(), l);
-    localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag((String)localObject);
+    localObject = this.b.findFragmentByTag((String)localObject);
     if (localObject != null)
     {
-      if ((localObject instanceof ActiveEntitySearchFragment)) {
-        QLog.i("Q.uniteSearch.", 2, "Attaching item hash = " + ((Fragment)localObject).hashCode() + "   Attaching item  name:" + ((ActiveEntitySearchFragment)localObject).e);
-      }
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction.attach((Fragment)localObject);
-    }
-    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
-    {
-      if (paramViewGroup != this.jdField_a_of_type_AndroidSupportV4AppFragment)
+      if ((localObject instanceof ActiveEntitySearchFragment))
       {
-        paramViewGroup.setMenuVisibility(false);
-        paramViewGroup.setUserVisibleHint(false);
+        paramViewGroup = new StringBuilder();
+        paramViewGroup.append("Attaching item hash = ");
+        paramViewGroup.append(((Fragment)localObject).hashCode());
+        paramViewGroup.append("   Attaching item  name:");
+        paramViewGroup.append(((ActiveEntitySearchFragment)localObject).N);
+        QLog.i("Q.uniteSearch.", 2, paramViewGroup.toString());
       }
-      return paramViewGroup;
-      localObject = a(paramInt);
-      if ((localObject instanceof ActiveEntitySearchFragment)) {
-        QLog.i("Q.uniteSearch.", 2, "Adding item hash = " + ((Fragment)localObject).hashCode() + "   Adding item  name:" + ((ActiveEntitySearchFragment)localObject).e);
-      }
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentTransaction.add(paramViewGroup.getId(), (Fragment)localObject, a(paramViewGroup.getId(), l));
+      this.c.attach((Fragment)localObject);
+      paramViewGroup = (ViewGroup)localObject;
     }
+    else
+    {
+      localObject = a(paramInt);
+      if ((localObject instanceof ActiveEntitySearchFragment))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Adding item hash = ");
+        localStringBuilder.append(((Fragment)localObject).hashCode());
+        localStringBuilder.append("   Adding item  name:");
+        localStringBuilder.append(((ActiveEntitySearchFragment)localObject).N);
+        QLog.i("Q.uniteSearch.", 2, localStringBuilder.toString());
+      }
+      this.c.add(paramViewGroup.getId(), (Fragment)localObject, a(paramViewGroup.getId(), l));
+      paramViewGroup = (ViewGroup)localObject;
+    }
+    if (paramViewGroup != this.d)
+    {
+      paramViewGroup.setMenuVisibility(false);
+      paramViewGroup.setUserVisibleHint(false);
+    }
+    return paramViewGroup;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -130,22 +157,31 @@ public class GroupSearchPagerAdapter
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramViewGroup = (Fragment)paramObject;
-    if (paramViewGroup != this.jdField_a_of_type_AndroidSupportV4AppFragment)
+    Object localObject = this.d;
+    if (paramViewGroup != localObject)
     {
-      if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null)
+      if (localObject != null)
       {
-        this.jdField_a_of_type_AndroidSupportV4AppFragment.setMenuVisibility(false);
-        this.jdField_a_of_type_AndroidSupportV4AppFragment.setUserVisibleHint(false);
+        ((Fragment)localObject).setMenuVisibility(false);
+        this.d.setUserVisibleHint(false);
       }
       if (paramViewGroup != null)
       {
         paramViewGroup.setMenuVisibility(true);
         paramViewGroup.setUserVisibleHint(true);
       }
-      if ((paramObject instanceof ActiveEntitySearchFragment)) {
-        QLog.i("Q.uniteSearch.", 2, "setPrimaryItem hash = " + paramObject.hashCode() + "  pos=" + paramInt + "  setPrimaryItem name:" + ((ActiveEntitySearchFragment)paramObject).e);
+      if ((paramObject instanceof ActiveEntitySearchFragment))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setPrimaryItem hash = ");
+        ((StringBuilder)localObject).append(paramObject.hashCode());
+        ((StringBuilder)localObject).append("  pos=");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("  setPrimaryItem name:");
+        ((StringBuilder)localObject).append(((ActiveEntitySearchFragment)paramObject).N);
+        QLog.i("Q.uniteSearch.", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_AndroidSupportV4AppFragment = paramViewGroup;
+      this.d = paramViewGroup;
     }
   }
   
@@ -153,7 +189,7 @@ public class GroupSearchPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.adapter.GroupSearchPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

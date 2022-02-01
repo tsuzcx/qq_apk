@@ -5,9 +5,9 @@
         <item quantity="one">%d group</item>
     </plurals>
     <plurals name="b">
-        <item quantity="other">%d contacts</item>
-        <item quantity="zero">%d contact</item>
-        <item quantity="one">%d contact</item>
+        <item quantity="other">%d friends</item>
+        <item quantity="zero">%d friends</item>
+        <item quantity="one">%d friend</item>
     </plurals>
     <plurals name="c">
         <item quantity="other">%d seconds left</item>
@@ -50,97 +50,113 @@
         <item quantity="one">%d day ago</item>
     </plurals>
     <plurals name="m">
+        <item quantity="other">%d months ago</item>
+        <item quantity="one">%d month ago</item>
+    </plurals>
+    <plurals name="n">
+        <item quantity="other">%d years ago</item>
+        <item quantity="one">%d year ago</item>
+    </plurals>
+    <plurals name="o">
         <item quantity="other">Up to %s photos can be selected</item>
         <item quantity="one">Up to %s photo can be selected</item>
     </plurals>
-    <plurals name="n">
-        <item quantity="other">Select up to %s images or videos</item>
-        <item quantity="one">Select up to %s image or video</item>
+    <plurals name="p">
+        <item quantity="other">Select up to %s photos or videos</item>
+        <item quantity="one">Select up to %s photo or video</item>
     </plurals>
-    <plurals name="o">
+    <plurals name="q">
         <item quantity="other">Up to %s videos can be selected</item>
         <item quantity="one">Up to %s video can be selected</item>
     </plurals>
-    <plurals name="q">
+    <plurals name="r">
+        <item quantity="other">%s new messages</item>
+        <item quantity="one">%s new message</item>
+    </plurals>
+    <plurals name="s">
         <item quantity="other">You are inviting %d friends to WeChat</item>
         <item quantity="one">You are inviting %d friend to WeChat</item>
     </plurals>
-    <plurals name="r">
+    <plurals name="t">
         <item quantity="other">%s recipients</item>
         <item quantity="one">%s recipient</item>
     </plurals>
-    <plurals name="s">
+    <plurals name="u">
         <item quantity="other">"You'll send the message to %s friends"</item>
         <item quantity="one">"You'll send the message to %s friend"</item>
     </plurals>
-    <plurals name="t">
+    <plurals name="v">
         <item quantity="other">Your SMS should arrive in %d seconds</item>
         <item quantity="one">Your SMS should arrive in %d second</item>
     </plurals>
-    <plurals name="u">
-        <item quantity="other">%s persons</item>
-        <item quantity="one">%s person</item>
-    </plurals>
-    <plurals name="v">
-        <item quantity="other">%d bottles got reply</item>
-        <item quantity="one">%d bottle got reply</item>
-    </plurals>
     <plurals name="w">
-        <item quantity="other">[%d]</item>
-        <item quantity="one">[%d]</item>
-    </plurals>
-    <plurals name="x">
-        <item quantity="other">%1$d friend(s) sent you %2$d message(s)</item>
-        <item quantity="one">%1$d friend(s) sent you %2$d message(s)</item>
-    </plurals>
-    <plurals name="y">
-        <item quantity="other">%1$d attachments (%2$s)</item>
-        <item quantity="one">%1$d attachment (%2$s)</item>
-    </plurals>
-    <plurals name="z">
         <item quantity="other">%s people</item>
         <item quantity="one">%s person</item>
     </plurals>
+    <plurals name="x">
+        <item quantity="other">%d bottles were replied to</item>
+        <item quantity="one">%d bottle was replied to</item>
+    </plurals>
+    <plurals name="y">
+        <item quantity="other">[%d]</item>
+        <item quantity="one">[%d]</item>
+    </plurals>
+    <plurals name="z">
+        <item quantity="other">%1$d friend(s) sent you %2$d message(s)</item>
+        <item quantity="one">%1$d friend(s) sent you %2$d message(s)</item>
+    </plurals>
     <plurals name="a0">
+        <item quantity="other">%1$d attachments (%2$s)</item>
+        <item quantity="one">%1$d attachment (%2$s)</item>
+    </plurals>
+    <plurals name="a1">
+        <item quantity="other">%s people</item>
+        <item quantity="one">%s person</item>
+    </plurals>
+    <plurals name="a2">
         <item quantity="other">%d people</item>
         <item quantity="one">%d person</item>
     </plurals>
-    <plurals name="a1">
+    <plurals name="a3">
         <item quantity="other">%d new greetings</item>
         <item quantity="one">%d new greeting</item>
     </plurals>
-    <plurals name="a2">
+    <plurals name="a4">
+        <item quantity="other">Select up to %s images or videos</item>
+        <item quantity="one">Select up to %s images or videos</item>
+    </plurals>
+    <plurals name="a5">
         <item quantity="other">%d posts</item>
         <item quantity="one">%d post</item>
     </plurals>
-    <plurals name="a3">
+    <plurals name="a6">
         <item quantity="other">%d notifications</item>
         <item quantity="one">%d notification</item>
     </plurals>
-    <plurals name="a5">
+    <plurals name="a7">
+        <item quantity="other">%d posts</item>
+        <item quantity="one">%d post</item>
+    </plurals>
+    <plurals name="a8">
         <item quantity="other">%d unread messages</item>
         <item quantity="one">%d unread message</item>
     </plurals>
-    <plurals name="a6">
+    <plurals name="a9">
         <item quantity="other">Tab %2$d of %1$d</item>
         <item quantity="zero">Tab 1 of %d</item>
         <item quantity="one">Tab 2 of %d</item>
         <item quantity="two">Tab 3 of %d</item>
     </plurals>
-    <plurals name="a7">
-        <item quantity="other">Real-time Location (%d)</item>
-        <item quantity="one">Real-time Location (%d)</item>
+    <plurals name="a_">
+        <item quantity="other">Real-time Location (%d people)</item>
+        <item quantity="one">Real-time Location (%d person)</item>
     </plurals>
-    <plurals name="a8">
+    <plurals name="aa">
         <item quantity="other">%s seconds left</item>
         <item quantity="one">%s second left</item>
     </plurals>
-    <plurals name="p">
-        <item quantity="other">%s new message(s)</item>
-        <item quantity="one">%s new message(s)</item>
-    </plurals>
-    <plurals name="a4">
-        <item quantity="other">%d posts</item>
-        <item quantity="one">%d post</item>
+    <plurals name="ab">
+        <item quantity="other">Select at least %s photos or videos</item>
+        <item quantity="one">Select at least %s photo or video</item>
     </plurals>
 </resources>

@@ -24,8 +24,8 @@ public final class g
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903068, paramViewGroup, false);
     paramViewGroup = new h(this);
-    paramViewGroup.afL = ((TextView)paramContext.findViewById(2131558443));
-    paramViewGroup.ahj = ((ImageView)paramContext.findViewById(2131558448));
+    paramViewGroup.ajn = ((TextView)paramContext.findViewById(2131558444));
+    paramViewGroup.akL = ((ImageView)paramContext.findViewById(2131558449));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -33,33 +33,33 @@ public final class g
   public final void a(Context paramContext, b paramb)
   {
     paramb = (h)paramb;
-    if (nx())
+    if (ok())
     {
-      paramb.afL.setVisibility(0);
-      TextView localTextView = paramb.afL;
-      e.mB();
-      localTextView.setText(e.a(paramContext, this.ahe.afg.VT, 24));
+      paramb.ajn.setVisibility(0);
+      TextView localTextView = paramb.ajn;
+      e.nn();
+      localTextView.setText(e.a(paramContext, this.akG.aiI.XO, 24));
     }
     for (;;)
     {
       paramContext = new com.tencent.mm.wear.app.c.a();
-      paramContext.acM = 2131427357;
-      paramContext.acL = paramb.ahj;
+      paramContext.agn = 2131427357;
+      paramContext.agm = paramb.akL;
       paramContext.type = 2;
-      paramContext.acG = this.ahe.afg.VO;
-      paramContext.width = MMActivity.nc();
-      paramContext.height = MMActivity.nb();
-      com.tencent.mm.wear.app.b.h.me().a(paramContext);
+      paramContext.agh = this.akG.aiI.XJ;
+      paramContext.width = MMActivity.nP();
+      paramContext.height = MMActivity.nO();
+      com.tencent.mm.wear.app.b.h.mR().a(paramContext);
       return;
-      paramb.afL.setVisibility(8);
+      paramb.ajn.setVisibility(8);
     }
   }
   
   public final boolean a(Context paramContext, a parama)
   {
-    com.tencent.mm.wear.app.d.a.bN(6);
+    com.tencent.mm.wear.app.d.a.cj(6);
     parama = new Intent(paramContext, DetailImgUI.class);
-    parama.putExtra("key_msg_id", this.ahe.afg.VO);
+    parama.putExtra("key_msg_id", this.akG.aiI.XJ);
     paramContext.startActivity(parama);
     return true;
   }

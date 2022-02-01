@@ -12,17 +12,7 @@ public final class SvcRequestPullDisGroupSeq
   implements Cloneable
 {
   static ArrayList<PullDisSeqParam> cache_vDisInfo;
-  public ArrayList<PullDisSeqParam> vDisInfo;
-  
-  static
-  {
-    if (!SvcRequestPullDisGroupSeq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public ArrayList<PullDisSeqParam> vDisInfo = null;
   
   public SvcRequestPullDisGroupSeq() {}
   
@@ -38,18 +28,17 @@ public final class SvcRequestPullDisGroupSeq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -117,7 +106,7 @@ public final class SvcRequestPullDisGroupSeq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRequestPullDisGroupSeq
  * JD-Core Version:    0.7.0.1
  */

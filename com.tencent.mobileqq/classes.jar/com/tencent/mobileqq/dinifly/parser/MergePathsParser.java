@@ -1,54 +1,45 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.model.content.MergePaths;
 import com.tencent.mobileqq.dinifly.model.content.MergePaths.MergePathsMode;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class MergePathsParser
 {
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "mm", "hd" });
+  
   static MergePaths parse(JsonReader paramJsonReader)
   {
+    String str = null;
     MergePaths.MergePathsMode localMergePathsMode = null;
     boolean bool = false;
-    String str1 = null;
-    label7:
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label7;
-          if (str2.equals("nm"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str2.equals("mm"))
-            {
-              i = 1;
-              continue;
-              if (str2.equals("hd")) {
-                i = 2;
-              }
-            }
+            paramJsonReader.skipName();
+            paramJsonReader.skipValue();
           }
-          break;
+          else
+          {
+            bool = paramJsonReader.nextBoolean();
+          }
+        }
+        else {
+          localMergePathsMode = MergePaths.MergePathsMode.forId(paramJsonReader.nextInt());
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localMergePathsMode = MergePaths.MergePathsMode.forId(paramJsonReader.nextInt());
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else {
+        str = paramJsonReader.nextString();
+      }
     }
-    return new MergePaths(str1, localMergePathsMode, bool);
+    return new MergePaths(str, localMergePathsMode, bool);
   }
 }
 

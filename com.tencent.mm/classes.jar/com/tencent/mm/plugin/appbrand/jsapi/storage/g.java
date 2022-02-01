@@ -1,31 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
 import com.tencent.luggage.a.e;
-import com.tencent.luggage.sdk.customize.b;
+import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.f;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.appstorage.v;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class g
-  extends a<h>
+  extends c<k>
 {
   public static final int CTRL_INDEX = 113;
   public static final String NAME = "getStorageInfo";
   
-  protected String w(c paramc)
+  protected String H(f paramf)
   {
-    AppMethodBeat.i(102042);
-    paramc = paramc.getAppId();
-    AppMethodBeat.o(102042);
-    return paramc;
+    AppMethodBeat.i(147248);
+    paramf = paramf.getAppId();
+    AppMethodBeat.o(147248);
+    return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.g
  * JD-Core Version:    0.7.0.1
  */

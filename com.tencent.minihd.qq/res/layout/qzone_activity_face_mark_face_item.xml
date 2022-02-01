@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="65.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/mark_face_checkbox" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:button="@null" android:drawableLeft="@drawable/qzone_selector_skin_icon_circle" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/mark_face_bitmap" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="5.0dip" android:scaleType="centerCrop" android:layout_toRightOf="@id/mark_face_checkbox" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0sp" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center|left" android:id="@id/mark_face_targetnick" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:text="@string/qz_markface_item_addnick" android:singleLine="true" android:layout_toLeftOf="@id/mark_face_arrow" android:layout_toRightOf="@id/mark_face_bitmap" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/mark_face_arrow" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:src="@drawable/qzone_icon_forward_selector" android:layout_alignParentRight="true" />
+</RelativeLayout>

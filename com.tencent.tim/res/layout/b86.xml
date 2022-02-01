@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/s4" android:background="#ff262626" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/kvz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:id="@id/loading" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_centerInParent="true" />
+        <com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView android:id="@id/ksr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/l1k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+</RelativeLayout>

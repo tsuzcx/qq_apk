@@ -1,27 +1,32 @@
 package com.tencent.mobileqq.pushdialog;
 
-import awgf;
-import awza;
-import awzb;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 
-public class PushDialogDbUtil$1
+class PushDialogDbUtil$1
   implements Runnable
 {
-  public PushDialogDbUtil$1(awza paramawza, awgf paramawgf, String[] paramArrayOfString, long paramLong1, long paramLong2, awzb paramawzb) {}
+  PushDialogDbUtil$1(PushDialogDbUtil paramPushDialogDbUtil, EntityManager paramEntityManager, String[] paramArrayOfString, long paramLong1, long paramLong2, PushDialogDbUtil.OnPushDialogDbAction paramOnPushDialogDbAction) {}
   
   public void run()
   {
-    synchronized (awza.a(this.this$0))
+    synchronized (PushDialogDbUtil.a(this.this$0))
     {
-      List localList = this.jdField_a_of_type_Awgf.a(PushDialogTemplate.class, true, "mUin=? AND time>=?", this.jdField_a_of_type_ArrayOfJavaLangString, null, null, null, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("PushDialogDbUtil", 3, "PushDialogTemplate query: " + this.jdField_a_of_type_Long + ", queryTime: " + new Date(this.b));
+      List localList = this.a.query(PushDialogTemplate.class, true, "mUin=? AND time>=?", this.b, null, null, null, null);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("PushDialogTemplate query: ");
+        ((StringBuilder)???).append(this.c);
+        ((StringBuilder)???).append(", queryTime: ");
+        ((StringBuilder)???).append(new Date(this.d));
+        QLog.d("PushDialogDbUtil", 3, ((StringBuilder)???).toString());
       }
-      if (this.jdField_a_of_type_Awzb != null) {
-        this.jdField_a_of_type_Awzb.a(localList);
+      ??? = this.e;
+      if (??? != null) {
+        ((PushDialogDbUtil.OnPushDialogDbAction)???).a(localList);
       }
       return;
     }
@@ -29,7 +34,7 @@ public class PushDialogDbUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogDbUtil.1
  * JD-Core Version:    0.7.0.1
  */

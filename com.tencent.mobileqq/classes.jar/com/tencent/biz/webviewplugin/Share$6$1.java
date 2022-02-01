@@ -4,14 +4,13 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdna;
-import begg;
-import belt;
-import bety;
-import bfhz;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.ShareMsgHelper;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.agent.report.ReportCenter;
 import java.lang.ref.WeakReference;
-import zfy;
+import mqq.app.AppRuntime;
 
 class Share$6$1
   implements Runnable
@@ -20,51 +19,52 @@ class Share$6$1
   
   public void run()
   {
-    Object localObject = (begg)this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    String str1;
-    String str2;
-    if ((localObject != null) && ((localObject instanceof belt)) && (((belt)localObject).b()) && (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    Object localObject1 = (WebUiBaseInterface)this.b.this$0.af.get();
+    if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebUiMethodInterface)) && (((WebUiUtils.WebUiMethodInterface)localObject1).isActivityResume()) && (!this.b.this$0.y.isFinishing()))
     {
-      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bety.isShowing())) {
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bety.dismiss();
+      if ((this.b.this$0.B != null) && (this.b.this$0.B.isShowing())) {
+        this.b.this$0.B.dismiss();
       }
-      str1 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b });
-      str2 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b });
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label431;
+      int j = 1;
+      Object localObject2 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity&uin=%s", new Object[] { this.b.c });
+      String str1 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { this.b.c });
+      if (TextUtils.isEmpty(this.a)) {
+        localObject1 = this.b.b;
+      } else {
+        localObject1 = this.a;
       }
-    }
-    label431:
-    for (localObject = this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.jdField_a_of_type_JavaLangString;; localObject = this.jdField_a_of_type_JavaLangString)
-    {
-      String str3 = String.format(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131696875), new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c });
-      bdna.a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity, 1001, 146, "struct_msg_from_h5", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b, (String)localObject, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.d, str3, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e, "web", null, null, null, "plugin", null, str1, str2, "http://url.cn/JS8oE7", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.f, null);
-      int j = 0;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        j = 1;
+      String str2 = String.format(this.b.this$0.y.getResources().getString(2131894173), new Object[] { this.b.d });
+      ShareMsgHelper.a(this.b.this$0.y, 1001, 146, "struct_msg_from_h5", this.b.c, (String)localObject1, this.b.d, this.b.e, str2, this.b.f, "web", null, null, null, "plugin", null, (String)localObject2, str1, "https://url.cn/JS8oE7", this.b.g, null);
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        j = 0;
       }
       int i = j;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.d)) {
+      if (TextUtils.isEmpty(this.b.e)) {
         i = j | 0x2;
       }
       j = i;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c)) {
+      if (TextUtils.isEmpty(this.b.d)) {
         j = i | 0x4;
       }
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("report_type", "102");
-      ((Bundle)localObject).putString("act_type", "14");
-      ((Bundle)localObject).putString("intext_3", "1");
-      ((Bundle)localObject).putString("intext_2", "" + j);
-      ((Bundle)localObject).putString("stringext_1", "" + this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e);
-      bfhz.a().a((Bundle)localObject, "", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
-      return;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("report_type", "102");
+      ((Bundle)localObject1).putString("act_type", "14");
+      ((Bundle)localObject1).putString("intext_3", "1");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(j);
+      ((Bundle)localObject1).putString("intext_2", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(this.b.f);
+      ((Bundle)localObject1).putString("stringext_1", ((StringBuilder)localObject2).toString());
+      ReportCenter.a().a((Bundle)localObject1, "", this.b.this$0.G.getAccount(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.6.1
  * JD-Core Version:    0.7.0.1
  */

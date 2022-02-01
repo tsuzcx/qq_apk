@@ -8,13 +8,13 @@ public final class s_kuolie_info
   extends JceStruct
 {
   static s_campus_info cache_vecCampusInfo = new s_campus_info();
-  public int iDays;
-  public int iFrdFlag;
-  public int iFrdsCnt;
-  public int iLastNuanTime;
-  public int iState;
+  public int iDays = 0;
+  public int iFrdFlag = 0;
+  public int iFrdsCnt = 0;
+  public int iLastNuanTime = 0;
+  public int iState = 0;
   public String strKuolieCampusAIOKey = "";
-  public s_campus_info vecCampusInfo;
+  public s_campus_info vecCampusInfo = null;
   
   public s_kuolie_info() {}
   
@@ -47,17 +47,19 @@ public final class s_kuolie_info
     paramJceOutputStream.write(this.iState, 2);
     paramJceOutputStream.write(this.iDays, 3);
     paramJceOutputStream.write(this.iLastNuanTime, 4);
-    if (this.vecCampusInfo != null) {
-      paramJceOutputStream.write(this.vecCampusInfo, 5);
+    Object localObject = this.vecCampusInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.strKuolieCampusAIOKey != null) {
-      paramJceOutputStream.write(this.strKuolieCampusAIOKey, 6);
+    localObject = this.strKuolieCampusAIOKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_kuolie_info
  * JD-Core Version:    0.7.0.1
  */

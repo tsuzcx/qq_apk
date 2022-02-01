@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/L1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:layout_gravity="center|top" android:id="@id/geo_page_panel" android:background="@drawable/qq_af_bg_panel" android:layout_width="fill_parent" android:layout_height="410.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="66.0dip" android:layout_marginRight="9.0dip" />
+            <View android:background="@drawable/qq_af_geo_bg_bottom_line" android:focusable="false" android:layout_width="283.0dip" android:layout_height="3.0dip" android:layout_alignBottom="@id/geo_page_panel" android:layout_centerHorizontal="true" />
+            <View android:layout_gravity="center|top" android:background="@drawable/qq_af_geo_bg_top" android:layout_width="fill_parent" android:layout_height="116.0dip" android:layout_marginTop="15.0dip" />
+            <TextView android:textSize="11.0dip" android:textColor="@color/info_card_netvoice_tip_bg" android:gravity="center" android:id="@id/activate_page_time" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" />
+            <RelativeLayout android:id="@id/activate_page_top_container" android:focusable="true" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginTop="60.0dip" android:layout_marginBottom="41.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+                <TextView android:textSize="18.0dip" android:textColor="@color/activate_friend_desc_head" android:gravity="bottom" android:id="@id/activate_page_desc_head" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="8.0dip" android:layout_marginBottom="3.0dip" android:includeFontPadding="false" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="29.0dip" android:textColor="@color/activate_friend_desc_head" android:ellipsize="end" android:gravity="bottom" android:id="@id/activate_page_desc_type" android:layout_width="wrap_content" android:layout_height="40.0dip" android:lines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/activate_page_desc_head" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid android:id="@id/friend_grid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/activate_page_top_container" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/activate_page_btn_chat" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="25.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="25.0dip" android:layout_below="@id/friend_grid" android:layout_centerHorizontal="true" style="@style/ButtonBlue" />
+            <RelativeLayout android:id="@id/activate_geo_nearby_rl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="11.0dip" android:layout_below="@id/activate_page_btn_chat" android:layout_alignRight="@id/activate_page_btn_chat">
+                <View android:id="@id/activate_page_arrow" android:background="@drawable/qq_af_geo_nearby_arrow_selector" android:layout_width="8.0dip" android:layout_height="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/qb_tenpay_skin_blue_item" android:id="@id/activate_page_nearby" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip" android:text="@string/activate_page_nearby" android:layout_toLeftOf="@id/activate_page_arrow" android:layout_centerVertical="true" android:contentDescription="@string/activate_talkback_nearby" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.tencent.widget.ScrollView>
+</FrameLayout>

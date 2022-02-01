@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class LoadDex$3
   implements Runnable
@@ -9,12 +10,12 @@ class LoadDex$3
   
   public void run()
   {
-    UnifiedMonitor.a().b();
+    SharedPreUtils.b(BaseApplicationImpl.context);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadDex.3
  * JD-Core Version:    0.7.0.1
  */

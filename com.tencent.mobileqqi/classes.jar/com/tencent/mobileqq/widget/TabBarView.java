@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
+import hhw;
 import hhx;
-import hhy;
 
 public class TabBarView
   extends LinearLayout
@@ -30,7 +30,7 @@ public class TabBarView
   private static final int j = 2;
   private float jdField_a_of_type_Float;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hhx(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new hhw(this);
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public TabBarView.OnTabChangeListener a;
   private int e = -1;
@@ -116,7 +116,7 @@ public class TabBarView
     localRedDotTextView.setFocusable(true);
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
-    localRedDotTextView.setOnClickListener(new hhy(this, paramInt));
+    localRedDotTextView.setOnClickListener(new hhx(this, paramInt));
     addView(localRedDotTextView, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
   }
   

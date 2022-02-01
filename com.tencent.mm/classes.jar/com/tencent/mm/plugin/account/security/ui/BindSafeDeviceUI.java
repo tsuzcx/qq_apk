@@ -1,11 +1,21 @@
 package com.tencent.mm.plugin.account.security.ui;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
+import com.tencent.mm.plugin.account.security.a.a;
+import com.tencent.mm.plugin.account.security.a.b;
+import com.tencent.mm.plugin.account.security.a.c;
+import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindSafeDeviceUI
@@ -13,27 +23,51 @@ public class BindSafeDeviceUI
 {
   public int getLayoutId()
   {
-    return 2130970636;
+    return a.b.security_account_normal;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(69861);
-    setMMTitle(2131302832);
-    setBackBtn(new BindSafeDeviceUI.1(this));
-    ((ImageView)findViewById(2131827508)).setImageResource(2131230722);
-    ((TextView)findViewById(2131827509)).setText(2131302838);
-    ((TextView)findViewById(2131827512)).setText(2131302839);
-    findViewById(2131827512).setOnClickListener(new BindSafeDeviceUI.2(this));
-    AppMethodBeat.o(69861);
+    AppMethodBeat.i(125543);
+    setMMTitle(a.d.safe_device_account_protect);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(125540);
+        BindSafeDeviceUI.this.finish();
+        AppMethodBeat.o(125540);
+        return true;
+      }
+    });
+    ((ImageView)findViewById(a.a.security_account_state_icon)).setImageResource(a.c.accounts_saftphone_icon);
+    ((TextView)findViewById(a.a.security_account_tips)).setText(a.d.safe_device_bind__hit);
+    ((TextView)findViewById(a.a.tip_title)).setText(a.d.safe_device_bind_mobile);
+    findViewById(a.a.tip_title).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(125541);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        paramAnonymousView = new Intent();
+        paramAnonymousView.putExtra("bind_scene", 1);
+        paramAnonymousView.setClass(BindSafeDeviceUI.this, BindMContactUI.class);
+        MMWizardActivity.aQ(BindSafeDeviceUI.this, paramAnonymousView);
+        a.a(this, "com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(125541);
+      }
+    });
+    AppMethodBeat.o(125543);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(69860);
+    AppMethodBeat.i(125542);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(69860);
+    AppMethodBeat.o(125542);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -44,7 +78,7 @@ public class BindSafeDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.BindSafeDeviceUI
  * JD-Core Version:    0.7.0.1
  */

@@ -32,23 +32,27 @@ public final class VideoInteractMsg
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.userId != null) {
-      paramJceOutputStream.write(this.userId, 0);
+    String str = this.userId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 1);
+    str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 2);
+    str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strCoverUrl != null) {
-      paramJceOutputStream.write(this.strCoverUrl, 3);
+    str = this.strCoverUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.VideoInteractMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/l2" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b25" style="@style/h6" />
-            <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <TextView android:textSize="@dimen/m2" android:ellipsize="end" android:id="@id/b26" android:layout_marginTop="0.0dip" android:text="message" android:maxLines="3" style="@style/h4" />
-            </ScrollView>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/kpd" android:paddingLeft="@dimen/cv" android:layout_width="fill_parent" android:layout_height="@dimen/bb" android:layout_weight="1.0" style="@style/mk">
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4">
+            <TextView android:ellipsize="end" android:id="@android:id/title" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gsa" android:singleLine="true" style="@style/m4" />
         </LinearLayout>
-        <TextView android:id="@id/b27" android:layout_marginLeft="0.0dip" android:text="source" style="@style/h5" />
-        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b24" style="@style/h2" />
     </LinearLayout>
 </LinearLayout>

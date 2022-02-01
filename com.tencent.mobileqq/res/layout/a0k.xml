@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:id="@id/icv" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.ThemeSquareImageView android:id="@id/dw2" android:layout_width="@dimen/ajo" android:layout_height="@dimen/ajo" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.search.base.widget.ThemeSquareImageView android:id="@id/dw2" android:layout_width="@dimen/ajo" android:layout_height="@dimen/ajo" android:scaleType="centerCrop" />
     <com.tencent.widget.ThemeImageView android:id="@id/duw" android:background="@drawable/des" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
     <TextView android:textSize="12.0dip" android:textColor="@color/ahb" android:gravity="center" android:id="@id/kbj" android:background="@drawable/wu" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" />
     <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="none" android:id="@id/ka_" android:paddingRight="4.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="4.0dip" android:layout_alignRight="@id/dw2" android:layout_alignBottom="@id/dw2">
-        <com.tencent.mobileqq.widget.ThemeSquareImageView android:id="@id/i_r" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="0.5dip" android:scaleType="centerCrop" />
+        <com.tencent.mobileqq.search.base.widget.ThemeSquareImageView android:id="@id/i_r" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="0.5dip" android:scaleType="centerCrop" />
         <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:id="@id/i_s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxLines="1" android:singleLine="true" />
     </LinearLayout>
 </RelativeLayout>

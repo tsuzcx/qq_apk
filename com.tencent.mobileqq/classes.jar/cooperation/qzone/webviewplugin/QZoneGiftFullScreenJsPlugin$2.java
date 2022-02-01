@@ -1,0 +1,29 @@
+package cooperation.qzone.webviewplugin;
+
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.IQzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+
+class QZoneGiftFullScreenJsPlugin$2
+  implements IQzoneGiftFullScreenViewController.GiftFullScreenPlayListener
+{
+  QZoneGiftFullScreenJsPlugin$2(QZoneGiftFullScreenJsPlugin paramQZoneGiftFullScreenJsPlugin, String paramString) {}
+  
+  public void giftFullScreenPlayEnd()
+  {
+    if (this.this$0.parentPlugin != null)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("window.");
+      ((StringBuilder)localObject).append(this.val$playCmd);
+      ((StringBuilder)localObject).append("({playFinish:1})");
+      localObject = ((StringBuilder)localObject).toString();
+      this.this$0.parentPlugin.callJs((String)localObject);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
+ * Qualified Name:     cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin.2
+ * JD-Core Version:    0.7.0.1
+ */

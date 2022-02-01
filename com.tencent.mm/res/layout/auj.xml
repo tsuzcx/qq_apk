@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/af1" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-</LinearLayout>
+    <com.tencent.mm.plugin.webview.fts.ui.FtsVideoWrapper android:id="@id/l89" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/kmn" android:background="#66000000" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/cmv" android:background="@null" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_light_back" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bvc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/buq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bx5" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kbc" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/knh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_centerInParent="true">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kni" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/kmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" />
+                <Button android:textSize="15.0dip" android:textColor="@color/al6" android:id="@id/kmp" android:background="@drawable/a6r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/k_l" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:id="@id/kmo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/k__" />
+            </LinearLayout>
+            <ProgressBar android:layout_gravity="center" android:id="@id/l6m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a75" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kn" android:background="@drawable/a70" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/km" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="21.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:id="@id/kk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/f4h" />
+        <com.tencent.mm.plugin.websearch.ui.WebSearchDotPercentIndicator android:id="@id/ko" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:gravity="center" android:id="@id/i7q" android:background="@drawable/a70" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/j6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</RelativeLayout>

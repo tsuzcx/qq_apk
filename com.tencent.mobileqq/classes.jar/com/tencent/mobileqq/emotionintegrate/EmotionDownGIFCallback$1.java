@@ -1,39 +1,44 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import aqaj;
-import awir;
-import awjh;
-import awjm;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
+import com.tencent.mobileqq.pic.PicResult;
 import com.tencent.qphone.base.util.QLog;
 
-public class EmotionDownGIFCallback$1
+class EmotionDownGIFCallback$1
   implements Runnable
 {
-  public EmotionDownGIFCallback$1(aqaj paramaqaj, awir paramawir) {}
+  EmotionDownGIFCallback$1(EmotionDownGIFCallback paramEmotionDownGIFCallback, DownCallBack.DownResult paramDownResult) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmotionDownGIFCallback", 1, "onDownload");
     }
-    if ((this.a != null) && (this.a.jdField_b_of_type_JavaLangString != null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((DownCallBack.DownResult)localObject1).e != null))
     {
-      awjm localawjm = new awjm();
-      localawjm.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localawjm.jdField_a_of_type_JavaLangObject = this.a;
-      localawjm.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_Boolean;
-      if (this.a.jdField_a_of_type_Int != 0)
+      localObject1 = new PicResult();
+      ((PicResult)localObject1).a = this.a.a;
+      Object localObject2 = this.a;
+      ((PicResult)localObject1).d = localObject2;
+      ((PicResult)localObject1).e = ((DownCallBack.DownResult)localObject2).j;
+      if (this.a.a != 0)
       {
-        if (this.a.jdField_a_of_type_Awjh == null)
+        if (this.a.d == null)
         {
-          awjh localawjh = new awjh();
-          localawjh.jdField_b_of_type_JavaLangString = (this.a.jdField_b_of_type_Int + "_" + this.a.jdField_a_of_type_JavaLangString);
-          localawjh.jdField_a_of_type_JavaLangString = "onDownload";
-          this.a.jdField_a_of_type_Awjh = localawjh;
+          localObject2 = new PicInfoInterface.ErrInfo();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.a.b);
+          localStringBuilder.append("_");
+          localStringBuilder.append(this.a.c);
+          ((PicInfoInterface.ErrInfo)localObject2).b = localStringBuilder.toString();
+          ((PicInfoInterface.ErrInfo)localObject2).a = "onDownload";
+          this.a.d = ((PicInfoInterface.ErrInfo)localObject2);
         }
-        localawjm.jdField_a_of_type_Awjh = this.a.jdField_a_of_type_Awjh;
+        ((PicResult)localObject1).b = this.a.d;
       }
-      this.this$0.a(this.a.jdField_a_of_type_Int, localawjm);
+      this.this$0.a(this.a.a, (PicResult)localObject1);
     }
   }
 }

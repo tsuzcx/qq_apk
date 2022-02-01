@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/oiu" android:background="?7f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:baselineAligned="false" android:layoutDirection="ltr" app:layout_constraintLeft_toLeftOf="fic" app:layout_constraintRight_toRightOf="fic" app:layout_constraintTop_toTopOf="fic"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/oj1" layout="@layout/clu" />
+    <include layout="@layout/clo" />
+    <include android:id="@id/oj4" layout="@layout/clu" />
+</LinearLayout>

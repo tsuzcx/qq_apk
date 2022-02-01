@@ -11,9 +11,9 @@ public final class mobile_sub_set_cover_req
   public String cover = "";
   public long coverScene;
   public String coverkey = "";
-  public int iTransparency;
-  public int iVideoHeight;
-  public int iVideoWidth;
+  public int iTransparency = 0;
+  public int iVideoHeight = 0;
+  public int iVideoWidth = 0;
   public String strVideoPlay = "";
   public long syncflag;
   public String trace = "";
@@ -57,24 +57,29 @@ public final class mobile_sub_set_cover_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 1);
+    String str = this.cover;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 2);
+    str = this.type;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.coverkey != null) {
-      paramJceOutputStream.write(this.coverkey, 3);
+    str = this.coverkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.syncflag, 4);
     paramJceOutputStream.write(this.coverScene, 5);
     paramJceOutputStream.write(this.controlBits, 6);
-    if (this.trace != null) {
-      paramJceOutputStream.write(this.trace, 7);
+    str = this.trace;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.iTransparency, 8);
-    if (this.strVideoPlay != null) {
-      paramJceOutputStream.write(this.strVideoPlay, 9);
+    str = this.strVideoPlay;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
     paramJceOutputStream.write(this.iVideoWidth, 10);
     paramJceOutputStream.write(this.iVideoHeight, 11);
@@ -82,7 +87,7 @@ public final class mobile_sub_set_cover_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_set_cover_req
  * JD-Core Version:    0.7.0.1
  */

@@ -2,25 +2,17 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 public abstract interface d$b
 {
-  public abstract void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  public abstract void Bh(int paramInt);
   
-  public abstract void cq(String paramString1, String paramString2);
+  public abstract int getVideoTotalTime();
   
-  public abstract void cr(String paramString1, String paramString2);
+  public abstract void jJ(boolean paramBoolean);
   
-  public abstract void cs(String paramString1, String paramString2);
-  
-  public abstract void ct(String paramString1, String paramString2);
-  
-  public abstract void cu(String paramString1, String paramString2);
-  
-  public abstract void cv(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public abstract void setVideoTotalTime(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.b
  * JD-Core Version:    0.7.0.1
  */

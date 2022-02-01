@@ -29,55 +29,51 @@ public class SwipeRefreshLayout
   extends ViewGroup
   implements h, k
 {
-  private static final int[] kV = { 16842766 };
-  private static final String pP = SwipeRefreshLayout.class.getSimpleName();
-  private float kk;
-  private int kl;
-  private boolean lt;
-  private int lz = -1;
-  private View pQ;
-  u pR;
-  boolean pS = false;
-  private float pT = -1.0F;
-  private float pU;
-  private final m pV;
-  private final j pW;
-  private final int[] pX = new int[2];
-  private final int[] pY = new int[2];
-  private boolean pZ;
-  private int qa;
-  int qb;
-  private float qc;
-  boolean qd;
-  private boolean qe;
-  private final DecelerateInterpolator qf;
-  a qg;
-  private int qh = -1;
-  protected int qi;
-  float qj;
-  protected int qk;
-  int ql;
-  c qm;
-  private Animation qn;
-  private Animation qo;
-  private Animation qp;
-  private Animation qq;
-  boolean qr;
-  private int qs;
-  boolean qt;
-  private t qu;
-  private Animation.AnimationListener qv = new Animation.AnimationListener()
+  private static final int[] mR = { 16842766 };
+  private static final String rF = SwipeRefreshLayout.class.getSimpleName();
+  private final m bc;
+  private float mh;
+  private int mi;
+  private boolean np;
+  private int nv = -1;
+  private View rG;
+  boolean rH = false;
+  private float rI = -1.0F;
+  private float rJ;
+  private final j rK;
+  private final int[] rL = new int[2];
+  private final int[] rM = new int[2];
+  private boolean rN;
+  private int rO;
+  int rP;
+  private float rQ;
+  boolean rR;
+  private boolean rS;
+  private final DecelerateInterpolator rT;
+  a rU;
+  private int rV = -1;
+  protected int rW;
+  float rX;
+  protected int rY;
+  int rZ;
+  c sa;
+  private Animation sb;
+  private Animation sc;
+  private Animation sd;
+  private Animation se;
+  boolean sf;
+  private int sg;
+  boolean sh;
+  private u si;
+  private Animation.AnimationListener sj = new Animation.AnimationListener()
   {
     public final void onAnimationEnd(Animation paramAnonymousAnimation)
     {
-      if (SwipeRefreshLayout.this.pS)
+      if (SwipeRefreshLayout.this.rH)
       {
-        SwipeRefreshLayout.this.qm.setAlpha(255);
-        SwipeRefreshLayout.this.qm.start();
-        if ((SwipeRefreshLayout.this.qr) && (SwipeRefreshLayout.this.pR != null)) {
-          paramAnonymousAnimation = SwipeRefreshLayout.this.pR;
-        }
-        SwipeRefreshLayout.this.qb = SwipeRefreshLayout.this.qg.getTop();
+        SwipeRefreshLayout.this.sa.setAlpha(255);
+        SwipeRefreshLayout.this.sa.start();
+        SwipeRefreshLayout.this.rP = SwipeRefreshLayout.this.rU.getTop();
         return;
       }
       SwipeRefreshLayout.this.reset();
@@ -87,64 +83,104 @@ public class SwipeRefreshLayout
     
     public final void onAnimationStart(Animation paramAnonymousAnimation) {}
   };
-  private final Animation qw = new Animation()
+  private final Animation sk = new Animation()
   {
     public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
     {
-      if (!SwipeRefreshLayout.this.qt) {}
-      for (int i = SwipeRefreshLayout.this.ql - Math.abs(SwipeRefreshLayout.this.qk);; i = SwipeRefreshLayout.this.ql)
+      if (!SwipeRefreshLayout.this.sh) {}
+      for (int i = SwipeRefreshLayout.this.rZ - Math.abs(SwipeRefreshLayout.this.rY);; i = SwipeRefreshLayout.this.rZ)
       {
-        int j = SwipeRefreshLayout.this.qi;
-        i = (int)((i - SwipeRefreshLayout.this.qi) * paramAnonymousFloat);
-        int k = SwipeRefreshLayout.this.qg.getTop();
-        SwipeRefreshLayout.this.R(i + j - k);
-        SwipeRefreshLayout.this.qm.e(1.0F - paramAnonymousFloat);
+        int j = SwipeRefreshLayout.this.rW;
+        i = (int)((i - SwipeRefreshLayout.this.rW) * paramAnonymousFloat);
+        int k = SwipeRefreshLayout.this.rU.getTop();
+        SwipeRefreshLayout.this.ac(i + j - k);
+        SwipeRefreshLayout.this.sa.f(1.0F - paramAnonymousFloat);
         return;
       }
     }
   };
-  private final Animation qx = new Animation()
+  private final Animation sl = new Animation()
   {
     public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
     {
-      SwipeRefreshLayout.this.n(paramAnonymousFloat);
+      SwipeRefreshLayout.this.o(paramAnonymousFloat);
     }
   };
   
   public SwipeRefreshLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.kl = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.qa = getResources().getInteger(17694721);
+    this.mi = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.rO = getResources().getInteger(17694721);
     setWillNotDraw(false);
-    this.qf = new DecelerateInterpolator(2.0F);
+    this.rT = new DecelerateInterpolator(2.0F);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    this.qs = ((int)(40.0F * localDisplayMetrics.density));
-    this.qg = new a(getContext());
-    this.qm = new c(getContext());
-    this.qm.bW();
-    this.qg.setImageDrawable(this.qm);
-    this.qg.setVisibility(8);
-    addView(this.qg);
-    r.a(this);
-    this.ql = ((int)(localDisplayMetrics.density * 64.0F));
-    this.pT = this.ql;
-    this.pV = new m(this);
-    this.pW = new j(this);
+    this.sg = ((int)(40.0F * localDisplayMetrics.density));
+    this.rU = new a(getContext());
+    this.sa = new c(getContext());
+    this.sa.ca();
+    this.rU.setImageDrawable(this.sa);
+    this.rU.setVisibility(8);
+    addView(this.rU);
+    setChildrenDrawingOrderEnabled(true);
+    this.rZ = ((int)(localDisplayMetrics.density * 64.0F));
+    this.rI = this.rZ;
+    this.bc = new m(this);
+    this.rK = new j(this);
     setNestedScrollingEnabled(true);
-    int i = -this.qs;
-    this.qb = i;
-    this.qk = i;
-    n(1.0F);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, kV);
+    int i = -this.sg;
+    this.rP = i;
+    this.rY = i;
+    o(1.0F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, mR);
     setEnabled(paramContext.getBoolean(0, true));
     paramContext.recycle();
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  private void a(int paramInt, Animation.AnimationListener paramAnimationListener)
+  {
+    if (this.rR)
+    {
+      b(paramInt, paramAnimationListener);
+      return;
+    }
+    this.rW = paramInt;
+    this.sl.reset();
+    this.sl.setDuration(200L);
+    this.sl.setInterpolator(this.rT);
+    if (paramAnimationListener != null) {
+      this.rU.setAnimationListener(paramAnimationListener);
+    }
+    this.rU.clearAnimation();
+    this.rU.startAnimation(this.sl);
+  }
+  
+  private void b(int paramInt, Animation.AnimationListener paramAnimationListener)
+  {
+    this.rW = paramInt;
+    this.rX = this.rU.getScaleX();
+    this.se = new Animation()
+    {
+      public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+      {
+        float f1 = SwipeRefreshLayout.this.rX;
+        float f2 = -SwipeRefreshLayout.this.rX;
+        SwipeRefreshLayout.this.k(f1 + f2 * paramAnonymousFloat);
+        SwipeRefreshLayout.this.o(paramAnonymousFloat);
+      }
+    };
+    this.se.setDuration(150L);
+    if (paramAnimationListener != null) {
+      this.rU.setAnimationListener(paramAnimationListener);
+    }
+    this.rU.clearAnimation();
+    this.rU.startAnimation(this.se);
+  }
+  
+  private void b(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionIndex();
-    if (paramMotionEvent.getPointerId(i) == this.lz) {
+    if (paramMotionEvent.getPointerId(i) == this.nv) {
       if (i != 0) {
         break label33;
       }
@@ -152,7 +188,7 @@ public class SwipeRefreshLayout
     label33:
     for (i = 1;; i = 0)
     {
-      this.lz = paramMotionEvent.getPointerId(i);
+      this.nv = paramMotionEvent.getPointerId(i);
       return;
     }
   }
@@ -162,10 +198,49 @@ public class SwipeRefreshLayout
     return (paramAnimation != null) && (paramAnimation.hasStarted()) && (!paramAnimation.hasEnded());
   }
   
-  private void cr()
+  private void cv()
+  {
+    if (this.rH != true)
+    {
+      this.sf = true;
+      cy();
+      this.rH = true;
+      if (this.rH)
+      {
+        int i = this.rP;
+        Animation.AnimationListener localAnimationListener = this.sj;
+        this.rW = i;
+        this.sk.reset();
+        this.sk.setDuration(200L);
+        this.sk.setInterpolator(this.rT);
+        if (localAnimationListener != null) {
+          this.rU.setAnimationListener(localAnimationListener);
+        }
+        this.rU.clearAnimation();
+        this.rU.startAnimation(this.sk);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(this.sj);
+  }
+  
+  private void cw()
+  {
+    this.sc = i(this.sa.getAlpha(), 76);
+  }
+  
+  private void cx()
+  {
+    this.sd = i(this.sa.getAlpha(), 255);
+  }
+  
+  private void cy()
   {
     int i;
-    if (this.pQ == null) {
+    if (this.rG == null) {
       i = 0;
     }
     for (;;)
@@ -173,8 +248,8 @@ public class SwipeRefreshLayout
       if (i < getChildCount())
       {
         View localView = getChildAt(i);
-        if (!localView.equals(this.qg)) {
-          this.pQ = localView;
+        if (!localView.equals(this.rU)) {
+          this.rG = localView;
         }
       }
       else
@@ -185,14 +260,14 @@ public class SwipeRefreshLayout
     }
   }
   
-  private boolean cs()
+  private boolean cz()
   {
-    if (this.qu != null) {
-      return this.qu.ct();
+    if (this.si != null) {
+      return this.si.cA();
     }
-    if ((this.pQ instanceof ListView))
+    if ((this.rG instanceof ListView))
     {
-      ListView localListView = (ListView)this.pQ;
+      ListView localListView = (ListView)this.rG;
       if (Build.VERSION.SDK_INT >= 19) {
         return localListView.canScrollList(-1);
       }
@@ -206,116 +281,92 @@ public class SwipeRefreshLayout
       }
       return false;
     }
-    return this.pQ.canScrollVertically(-1);
+    return this.rG.canScrollVertically(-1);
   }
   
-  private Animation h(final int paramInt1, final int paramInt2)
+  private Animation i(final int paramInt1, final int paramInt2)
   {
     Animation local3 = new Animation()
     {
       public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
-        SwipeRefreshLayout.this.qm.setAlpha((int)(paramInt1 + (paramInt2 - paramInt1) * paramAnonymousFloat));
+        SwipeRefreshLayout.this.sa.setAlpha((int)(paramInt1 + (paramInt2 - paramInt1) * paramAnonymousFloat));
       }
     };
     local3.setDuration(300L);
-    this.qg.setAnimationListener(null);
-    this.qg.clearAnimation();
-    this.qg.startAnimation(local3);
+    this.rU.setAnimationListener(null);
+    this.rU.clearAnimation();
+    this.rU.startAnimation(local3);
     return local3;
-  }
-  
-  private void k(float paramFloat)
-  {
-    this.qm.j(true);
-    float f2 = Math.min(1.0F, Math.abs(paramFloat / this.pT));
-    float f3 = (float)Math.max(f2 - 0.4D, 0.0D) * 5.0F / 3.0F;
-    float f4 = Math.abs(paramFloat);
-    float f5 = this.pT;
-    float f1;
-    int i;
-    int j;
-    if (this.qt)
-    {
-      f1 = this.ql - this.qk;
-      f4 = Math.max(0.0F, Math.min(f4 - f5, f1 * 2.0F) / f1);
-      f4 = (float)(f4 / 4.0F - Math.pow(f4 / 4.0F, 2.0D)) * 2.0F;
-      i = this.qk;
-      j = (int)(f1 * f2 + f1 * f4 * 2.0F);
-      if (this.qg.getVisibility() != 0) {
-        this.qg.setVisibility(0);
-      }
-      if (!this.qd)
-      {
-        this.qg.setScaleX(1.0F);
-        this.qg.setScaleY(1.0F);
-      }
-      if (this.qd) {
-        j(Math.min(1.0F, paramFloat / this.pT));
-      }
-      if (paramFloat >= this.pT) {
-        break label329;
-      }
-      if ((this.qm.getAlpha() > 76) && (!b(this.qo))) {
-        this.qo = h(this.qm.getAlpha(), 76);
-      }
-    }
-    for (;;)
-    {
-      this.qm.f(Math.min(0.8F, f3 * 0.8F));
-      this.qm.e(Math.min(1.0F, f3));
-      this.qm.g((-0.25F + f3 * 0.4F + f4 * 2.0F) * 0.5F);
-      R(j + i - this.qb);
-      return;
-      f1 = this.ql;
-      break;
-      label329:
-      if ((this.qm.getAlpha() < 255) && (!b(this.qp))) {
-        this.qp = h(this.qm.getAlpha(), 255);
-      }
-    }
   }
   
   private void l(float paramFloat)
   {
-    if (paramFloat > this.pT)
+    this.sa.m(true);
+    float f2 = Math.min(1.0F, Math.abs(paramFloat / this.rI));
+    float f3 = Math.max((float)(f2 - 0.4D), 0.0F) * 5.0F / 3.0F;
+    float f4 = Math.abs(paramFloat);
+    float f5 = this.rI;
+    float f1;
+    int i;
+    int j;
+    if (this.sh)
     {
-      if (this.pS != true)
-      {
-        this.qr = true;
-        cr();
-        this.pS = true;
-        if (this.pS)
-        {
-          i = this.qb;
-          localObject = this.qv;
-          this.qi = i;
-          this.qw.reset();
-          this.qw.setDuration(200L);
-          this.qw.setInterpolator(this.qf);
-          if (localObject != null) {
-            this.qg.setAnimationListener((Animation.AnimationListener)localObject);
-          }
-          this.qg.clearAnimation();
-          this.qg.startAnimation(this.qw);
-        }
+      f1 = this.rZ - this.rY;
+      f4 = Math.max(0.0F, Math.min(f4 - f5, f1 * 2.0F) / f1);
+      f4 = (float)(f4 / 4.0F - Math.pow(f4 / 4.0F, 2.0D)) * 2.0F;
+      i = this.rY;
+      j = (int)(f1 * f2 + f1 * f4 * 2.0F);
+      if (this.rU.getVisibility() != 0) {
+        this.rU.setVisibility(0);
       }
-      else
+      if (!this.rR)
       {
-        return;
+        this.rU.setScaleX(1.0F);
+        this.rU.setScaleY(1.0F);
       }
-      a(this.qv);
+      if (this.rR) {
+        k(Math.min(1.0F, paramFloat / this.rI));
+      }
+      if (paramFloat >= this.rI) {
+        break label316;
+      }
+      if ((this.sa.getAlpha() > 76) && (!b(this.sc))) {
+        cw();
+      }
+    }
+    for (;;)
+    {
+      this.sa.g(Math.min(0.8F, f3 * 0.8F));
+      this.sa.f(Math.min(1.0F, f3));
+      this.sa.h((-0.25F + f3 * 0.4F + f4 * 2.0F) * 0.5F);
+      ac(j + i - this.rP);
+      return;
+      f1 = this.rZ;
+      break;
+      label316:
+      if ((this.sa.getAlpha() < 255) && (!b(this.sd))) {
+        cx();
+      }
+    }
+  }
+  
+  private void m(float paramFloat)
+  {
+    if (paramFloat > this.rI)
+    {
+      cv();
       return;
     }
-    this.pS = false;
-    this.qm.f(0.0F);
-    Object localObject = null;
-    if (!this.qd) {
-      localObject = new Animation.AnimationListener()
+    this.rH = false;
+    this.sa.g(0.0F);
+    Animation.AnimationListener local4 = null;
+    if (!this.rR) {
+      local4 = new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          if (!SwipeRefreshLayout.this.qd) {
+          if (!SwipeRefreshLayout.this.rR) {
             SwipeRefreshLayout.this.a(null);
           }
         }
@@ -325,133 +376,99 @@ public class SwipeRefreshLayout
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       };
     }
-    int i = this.qb;
-    if (this.qd)
-    {
-      this.qi = i;
-      this.qj = this.qg.getScaleX();
-      this.qq = new Animation()
-      {
-        public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
-        {
-          float f1 = SwipeRefreshLayout.this.qj;
-          float f2 = -SwipeRefreshLayout.this.qj;
-          SwipeRefreshLayout.this.j(f1 + f2 * paramAnonymousFloat);
-          SwipeRefreshLayout.this.n(paramAnonymousFloat);
-        }
-      };
-      this.qq.setDuration(150L);
-      if (localObject != null) {
-        this.qg.setAnimationListener((Animation.AnimationListener)localObject);
-      }
-      this.qg.clearAnimation();
-      this.qg.startAnimation(this.qq);
-    }
-    for (;;)
-    {
-      this.qm.j(false);
-      return;
-      this.qi = i;
-      this.qx.reset();
-      this.qx.setDuration(200L);
-      this.qx.setInterpolator(this.qf);
-      if (localObject != null) {
-        this.qg.setAnimationListener((Animation.AnimationListener)localObject);
-      }
-      this.qg.clearAnimation();
-      this.qg.startAnimation(this.qx);
-    }
+    a(this.rP, local4);
+    this.sa.m(false);
   }
   
-  private void m(float paramFloat)
+  private void n(float paramFloat)
   {
-    if ((paramFloat - this.qc > this.kl) && (!this.lt))
+    if ((paramFloat - this.rQ > this.mi) && (!this.np))
     {
-      this.kk = (this.qc + this.kl);
-      this.lt = true;
-      this.qm.setAlpha(76);
+      this.mh = (this.rQ + this.mi);
+      this.np = true;
+      this.sa.setAlpha(76);
     }
-  }
-  
-  final void R(int paramInt)
-  {
-    this.qg.bringToFront();
-    r.d(this.qg, paramInt);
-    this.qb = this.qg.getTop();
   }
   
   final void a(Animation.AnimationListener paramAnimationListener)
   {
-    this.qn = new Animation()
+    this.sb = new Animation()
     {
       public final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
-        SwipeRefreshLayout.this.j(1.0F - paramAnonymousFloat);
+        SwipeRefreshLayout.this.k(1.0F - paramAnonymousFloat);
       }
     };
-    this.qn.setDuration(150L);
-    this.qg.setAnimationListener(paramAnimationListener);
-    this.qg.clearAnimation();
-    this.qg.startAnimation(this.qn);
+    this.sb.setDuration(150L);
+    this.rU.setAnimationListener(paramAnimationListener);
+    this.rU.clearAnimation();
+    this.rU.startAnimation(this.sb);
+  }
+  
+  final void ac(int paramInt)
+  {
+    this.rU.bringToFront();
+    r.g(this.rU, paramInt);
+    this.rP = this.rU.getTop();
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    return this.pW.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
+    return this.rK.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
   }
   
   public boolean dispatchNestedPreFling(float paramFloat1, float paramFloat2)
   {
-    return this.pW.dispatchNestedPreFling(paramFloat1, paramFloat2);
+    return this.rK.dispatchNestedPreFling(paramFloat1, paramFloat2);
   }
   
   public boolean dispatchNestedPreScroll(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    return this.pW.dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
+    return this.rK.dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
   }
   
   public boolean dispatchNestedScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
   {
-    return this.pW.dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
+    return this.rK.dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
   }
   
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    if (this.qh < 0) {}
+    if (this.rV < 0) {}
     do
     {
       return paramInt2;
       if (paramInt2 == paramInt1 - 1) {
-        return this.qh;
+        return this.rV;
       }
-    } while (paramInt2 < this.qh);
+    } while (paramInt2 < this.rV);
     return paramInt2 + 1;
   }
   
   public int getNestedScrollAxes()
   {
-    return this.pV.getNestedScrollAxes();
+    return this.bc.getNestedScrollAxes();
   }
   
   public boolean hasNestedScrollingParent()
   {
-    return this.pW.hasNestedScrollingParent();
+    return this.rK.hasNestedScrollingParent();
   }
   
   public boolean isNestedScrollingEnabled()
   {
-    return this.pW.isNestedScrollingEnabled();
+    return this.rK.isNestedScrollingEnabled();
   }
   
-  final void j(float paramFloat)
+  final void k(float paramFloat)
   {
-    this.qg.setScaleX(paramFloat);
-    this.qg.setScaleY(paramFloat);
+    this.rU.setScaleX(paramFloat);
+    this.rU.setScaleY(paramFloat);
   }
   
-  final void n(float paramFloat)
+  final void o(float paramFloat)
   {
-    R(this.qi + (int)((this.qk - this.qi) * paramFloat) - this.qg.getTop());
+    ac(this.rW + (int)((this.rY - this.rW) * paramFloat) - this.rU.getTop());
   }
   
   protected void onDetachedFromWindow()
@@ -462,12 +479,12 @@ public class SwipeRefreshLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    cr();
+    cy();
     int i = paramMotionEvent.getActionMasked();
-    if ((this.qe) && (i == 0)) {
-      this.qe = false;
+    if ((this.rS) && (i == 0)) {
+      this.rS = false;
     }
-    if ((!isEnabled()) || (this.qe) || (cs()) || (this.pS) || (this.pZ)) {
+    if ((!isEnabled()) || (this.rS) || (cz()) || (this.rH) || (this.rN)) {
       return false;
     }
     switch (i)
@@ -475,31 +492,31 @@ public class SwipeRefreshLayout
     }
     for (;;)
     {
-      return this.lt;
-      R(this.qk - this.qg.getTop());
-      this.lz = paramMotionEvent.getPointerId(0);
-      this.lt = false;
-      i = paramMotionEvent.findPointerIndex(this.lz);
+      return this.np;
+      ac(this.rY - this.rU.getTop());
+      this.nv = paramMotionEvent.getPointerId(0);
+      this.np = false;
+      i = paramMotionEvent.findPointerIndex(this.nv);
       if (i < 0) {
         break;
       }
-      this.qc = paramMotionEvent.getY(i);
+      this.rQ = paramMotionEvent.getY(i);
       continue;
-      if (this.lz == -1)
+      if (this.nv == -1)
       {
-        Log.e(pP, "Got ACTION_MOVE event but don't have an active pointer id.");
+        Log.e(rF, "Got ACTION_MOVE event but don't have an active pointer id.");
         return false;
       }
-      i = paramMotionEvent.findPointerIndex(this.lz);
+      i = paramMotionEvent.findPointerIndex(this.nv);
       if (i < 0) {
         break;
       }
-      m(paramMotionEvent.getY(i));
+      n(paramMotionEvent.getY(i));
       continue;
-      a(paramMotionEvent);
+      b(paramMotionEvent);
       continue;
-      this.lt = false;
-      this.lz = -1;
+      this.np = false;
+      this.nv = -1;
     }
   }
   
@@ -511,38 +528,38 @@ public class SwipeRefreshLayout
     do
     {
       return;
-      if (this.pQ == null) {
-        cr();
+      if (this.rG == null) {
+        cy();
       }
-    } while (this.pQ == null);
-    View localView = this.pQ;
+    } while (this.rG == null);
+    View localView = this.rG;
     paramInt3 = getPaddingLeft();
     paramInt4 = getPaddingTop();
     localView.layout(paramInt3, paramInt4, paramInt1 - getPaddingLeft() - getPaddingRight() + paramInt3, paramInt2 - getPaddingTop() - getPaddingBottom() + paramInt4);
-    paramInt2 = this.qg.getMeasuredWidth();
-    paramInt3 = this.qg.getMeasuredHeight();
-    this.qg.layout(paramInt1 / 2 - paramInt2 / 2, this.qb, paramInt1 / 2 + paramInt2 / 2, this.qb + paramInt3);
+    paramInt2 = this.rU.getMeasuredWidth();
+    paramInt3 = this.rU.getMeasuredHeight();
+    this.rU.layout(paramInt1 / 2 - paramInt2 / 2, this.rP, paramInt1 / 2 + paramInt2 / 2, this.rP + paramInt3);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.pQ == null) {
-      cr();
+    if (this.rG == null) {
+      cy();
     }
-    if (this.pQ == null) {}
+    if (this.rG == null) {}
     for (;;)
     {
       return;
-      this.pQ.measure(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), 1073741824));
-      this.qg.measure(View.MeasureSpec.makeMeasureSpec(this.qs, 1073741824), View.MeasureSpec.makeMeasureSpec(this.qs, 1073741824));
-      this.qh = -1;
+      this.rG.measure(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), 1073741824));
+      this.rU.measure(View.MeasureSpec.makeMeasureSpec(this.sg, 1073741824), View.MeasureSpec.makeMeasureSpec(this.sg, 1073741824));
+      this.rV = -1;
       paramInt1 = 0;
       while (paramInt1 < getChildCount())
       {
-        if (getChildAt(paramInt1) == this.qg)
+        if (getChildAt(paramInt1) == this.rU)
         {
-          this.qh = paramInt1;
+          this.rV = paramInt1;
           return;
         }
         paramInt1 += 1;
@@ -562,21 +579,21 @@ public class SwipeRefreshLayout
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    if ((paramInt2 > 0) && (this.pU > 0.0F))
+    if ((paramInt2 > 0) && (this.rJ > 0.0F))
     {
-      if (paramInt2 <= this.pU) {
+      if (paramInt2 <= this.rJ) {
         break label141;
       }
-      paramArrayOfInt[1] = (paramInt2 - (int)this.pU);
-      this.pU = 0.0F;
+      paramArrayOfInt[1] = (paramInt2 - (int)this.rJ);
+      this.rJ = 0.0F;
     }
     for (;;)
     {
-      k(this.pU);
-      if ((this.qt) && (paramInt2 > 0) && (this.pU == 0.0F) && (Math.abs(paramInt2 - paramArrayOfInt[1]) > 0)) {
-        this.qg.setVisibility(8);
+      l(this.rJ);
+      if ((this.sh) && (paramInt2 > 0) && (this.rJ == 0.0F) && (Math.abs(paramInt2 - paramArrayOfInt[1]) > 0)) {
+        this.rU.setVisibility(8);
       }
-      paramView = this.pX;
+      paramView = this.rL;
       if (dispatchNestedPreScroll(paramInt1 - paramArrayOfInt[0], paramInt2 - paramArrayOfInt[1], paramView, null))
       {
         paramArrayOfInt[0] += paramView[0];
@@ -585,44 +602,44 @@ public class SwipeRefreshLayout
       }
       return;
       label141:
-      this.pU -= paramInt2;
+      this.rJ -= paramInt2;
       paramArrayOfInt[1] = paramInt2;
     }
   }
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.pY);
-    paramInt1 = this.pY[1] + paramInt4;
-    if ((paramInt1 < 0) && (!cs()))
+    dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.rM);
+    paramInt1 = this.rM[1] + paramInt4;
+    if ((paramInt1 < 0) && (!cz()))
     {
-      float f = this.pU;
-      this.pU = (Math.abs(paramInt1) + f);
-      k(this.pU);
+      float f = this.rJ;
+      this.rJ = (Math.abs(paramInt1) + f);
+      l(this.rJ);
     }
   }
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    this.pV.w(paramInt);
+    this.bc.G(paramInt);
     startNestedScroll(paramInt & 0x2);
-    this.pU = 0.0F;
-    this.pZ = true;
+    this.rJ = 0.0F;
+    this.rN = true;
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    return (isEnabled()) && (!this.qe) && (!this.pS) && ((paramInt & 0x2) != 0);
+    return (isEnabled()) && (!this.rS) && (!this.rH) && ((paramInt & 0x2) != 0);
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    this.pV.bo();
-    this.pZ = false;
-    if (this.pU > 0.0F)
+    this.bc.bE();
+    this.rN = false;
+    if (this.rJ > 0.0F)
     {
-      l(this.pU);
-      this.pU = 0.0F;
+      m(this.rJ);
+      this.rJ = 0.0F;
     }
     stopNestedScroll();
   }
@@ -630,10 +647,10 @@ public class SwipeRefreshLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionMasked();
-    if ((this.qe) && (i == 0)) {
-      this.qe = false;
+    if ((this.rS) && (i == 0)) {
+      this.rS = false;
     }
-    if ((!isEnabled()) || (this.qe) || (cs()) || (this.pS) || (this.pZ)) {
+    if ((!isEnabled()) || (this.rS) || (cz()) || (this.rH) || (this.rN)) {
       return false;
     }
     float f1;
@@ -649,76 +666,76 @@ public class SwipeRefreshLayout
       for (;;)
       {
         return true;
-        this.lz = paramMotionEvent.getPointerId(0);
-        this.lt = false;
+        this.nv = paramMotionEvent.getPointerId(0);
+        this.np = false;
         continue;
-        i = paramMotionEvent.findPointerIndex(this.lz);
+        i = paramMotionEvent.findPointerIndex(this.nv);
         if (i < 0)
         {
-          Log.e(pP, "Got ACTION_MOVE event but have an invalid active pointer id.");
+          Log.e(rF, "Got ACTION_MOVE event but have an invalid active pointer id.");
           return false;
         }
         f1 = paramMotionEvent.getY(i);
-        m(f1);
-        if (this.lt)
+        n(f1);
+        if (this.np)
         {
-          f1 = (f1 - this.kk) * 0.5F;
+          f1 = (f1 - this.mh) * 0.5F;
           if (f1 <= 0.0F) {
             break;
           }
-          k(f1);
+          l(f1);
           continue;
           i = paramMotionEvent.getActionIndex();
           if (i < 0)
           {
-            Log.e(pP, "Got ACTION_POINTER_DOWN event but have an invalid action index.");
+            Log.e(rF, "Got ACTION_POINTER_DOWN event but have an invalid action index.");
             return false;
           }
-          this.lz = paramMotionEvent.getPointerId(i);
+          this.nv = paramMotionEvent.getPointerId(i);
           continue;
-          a(paramMotionEvent);
+          b(paramMotionEvent);
         }
       }
     }
-    i = paramMotionEvent.findPointerIndex(this.lz);
+    i = paramMotionEvent.findPointerIndex(this.nv);
     if (i < 0)
     {
-      Log.e(pP, "Got ACTION_UP event but don't have an active pointer id.");
+      Log.e(rF, "Got ACTION_UP event but don't have an active pointer id.");
       return false;
     }
-    if (this.lt)
+    if (this.np)
     {
       f1 = paramMotionEvent.getY(i);
-      float f2 = this.kk;
-      this.lt = false;
-      l((f1 - f2) * 0.5F);
+      float f2 = this.mh;
+      this.np = false;
+      m((f1 - f2) * 0.5F);
     }
-    this.lz = -1;
+    this.nv = -1;
     return false;
   }
   
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
-    if (((Build.VERSION.SDK_INT >= 21) || (!(this.pQ instanceof AbsListView))) && ((this.pQ == null) || (r.t(this.pQ)))) {
+    if (((Build.VERSION.SDK_INT >= 21) || (!(this.rG instanceof AbsListView))) && ((this.rG == null) || (r.v(this.rG)))) {
       super.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
   final void reset()
   {
-    this.qg.clearAnimation();
-    this.qm.stop();
-    this.qg.setVisibility(8);
-    this.qg.getBackground().setAlpha(255);
-    this.qm.setAlpha(255);
-    if (this.qd) {
-      j(0.0F);
+    this.rU.clearAnimation();
+    this.sa.stop();
+    this.rU.setVisibility(8);
+    this.rU.getBackground().setAlpha(255);
+    this.sa.setAlpha(255);
+    if (this.rR) {
+      k(0.0F);
     }
     for (;;)
     {
-      this.qb = this.qg.getTop();
+      this.rP = this.rU.getTop();
       return;
-      R(this.qk - this.qb);
+      ac(this.rY - this.rP);
     }
   }
   
@@ -732,17 +749,17 @@ public class SwipeRefreshLayout
   
   public void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    this.pW.setNestedScrollingEnabled(paramBoolean);
+    this.rK.setNestedScrollingEnabled(paramBoolean);
   }
   
   public boolean startNestedScroll(int paramInt)
   {
-    return this.pW.startNestedScroll(paramInt);
+    return this.rK.startNestedScroll(paramInt);
   }
   
   public void stopNestedScroll()
   {
-    this.pW.stopNestedScroll();
+    this.rK.stopNestedScroll();
   }
 }
 

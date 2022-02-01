@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ProfGroupInfoRes
   extends JceStruct
@@ -11,21 +12,21 @@ public final class ProfGroupInfoRes
   static ArrayList<GroupMemberFlag> cache_vAdministrator;
   static ArrayList<String> cache_vsUrl;
   public byte cAlbumResult = -1;
-  public byte cInviteSwitchOpen;
-  public byte cResult;
-  public long dwFlagExt;
-  public long dwTimeStamp;
+  public byte cInviteSwitchOpen = 0;
+  public byte cResult = 0;
+  public long dwFlagExt = 0L;
+  public long dwTimeStamp = 0L;
   public String sAuthGrpInfo = "";
   public String sFingerGroupMemo = "";
   public String sGroupLocation = "";
   public String sGroupMemo = "";
   public String sGroupName = "";
-  public long uGroupCode;
-  public long uGroupOwnerUin;
-  public long uGroupUin;
-  public ArrayList<GroupMemberFlag> vAdministrator;
-  public ArrayList<String> vsUrl;
-  public short wGroupFace;
+  public long uGroupCode = 0L;
+  public long uGroupOwnerUin = 0L;
+  public long uGroupUin = 0L;
+  public ArrayList<GroupMemberFlag> vAdministrator = null;
+  public ArrayList<String> vsUrl = null;
+  public short wGroupFace = 0;
   
   public ProfGroupInfoRes() {}
   
@@ -90,27 +91,31 @@ public final class ProfGroupInfoRes
     paramJceOutputStream.write(this.wGroupFace, 5);
     paramJceOutputStream.write(this.sGroupMemo, 6);
     paramJceOutputStream.write(this.sFingerGroupMemo, 7);
-    if (this.vAdministrator != null) {
-      paramJceOutputStream.write(this.vAdministrator, 8);
+    Object localObject = this.vAdministrator;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
     paramJceOutputStream.write(this.cAlbumResult, 9);
     paramJceOutputStream.write(this.dwTimeStamp, 10);
-    if (this.vsUrl != null) {
-      paramJceOutputStream.write(this.vsUrl, 11);
+    localObject = this.vsUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
-    if (this.sGroupLocation != null) {
-      paramJceOutputStream.write(this.sGroupLocation, 12);
+    localObject = this.sGroupLocation;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.cInviteSwitchOpen, 13);
     paramJceOutputStream.write(this.dwFlagExt, 14);
-    if (this.sAuthGrpInfo != null) {
-      paramJceOutputStream.write(this.sAuthGrpInfo, 15);
+    localObject = this.sAuthGrpInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfGroupInfoRes
  * JD-Core Version:    0.7.0.1
  */

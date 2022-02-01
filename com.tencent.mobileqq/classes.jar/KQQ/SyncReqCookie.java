@@ -10,8 +10,8 @@ public final class SyncReqCookie
 {
   static byte[] cache_vCookie;
   static ArrayList<Long> cache_vServiceId;
-  public byte[] vCookie;
-  public ArrayList<Long> vServiceId;
+  public byte[] vCookie = null;
+  public ArrayList<Long> vServiceId = null;
   
   public SyncReqCookie() {}
   
@@ -40,14 +40,15 @@ public final class SyncReqCookie
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vServiceId, 0);
-    if (this.vCookie != null) {
-      paramJceOutputStream.write(this.vCookie, 1);
+    byte[] arrayOfByte = this.vCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SyncReqCookie
  * JD-Core Version:    0.7.0.1
  */

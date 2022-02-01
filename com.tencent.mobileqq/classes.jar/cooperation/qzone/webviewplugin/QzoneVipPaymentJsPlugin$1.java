@@ -1,27 +1,29 @@
 package cooperation.qzone.webviewplugin;
 
-import bjdt;
-import bjzg;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QZoneHelper;
 import mqq.app.AppRuntime;
 
-public class QzoneVipPaymentJsPlugin$1
+class QzoneVipPaymentJsPlugin$1
   implements Runnable
 {
-  public QzoneVipPaymentJsPlugin$1(bjzg parambjzg) {}
+  QzoneVipPaymentJsPlugin$1(QzoneVipPaymentJsPlugin paramQzoneVipPaymentJsPlugin) {}
   
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if ((localBaseApplicationImpl == null) || (localBaseApplicationImpl.getRuntime() == null)) {
-      return;
+    if (localBaseApplicationImpl != null)
+    {
+      if (localBaseApplicationImpl.getRuntime() == null) {
+        return;
+      }
+      QZoneHelper.preloadQzone(localBaseApplicationImpl, localBaseApplicationImpl.getRuntime().getAccount(), "h5");
     }
-    bjdt.a(localBaseApplicationImpl, localBaseApplicationImpl.getRuntime().getAccount(), "h5");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneVipPaymentJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,33 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.comment.FeedInfoChangeEvent;
 import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.model.LikeManager;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tribe.async.dispatch.Dispatcher;
-import umc;
-import utf;
-import uvm;
-import vzl;
-import woy;
 
-public class BottomVideoInfoWidget$3
+class BottomVideoInfoWidget$3
   implements Runnable
 {
-  public BottomVideoInfoWidget$3(vzl paramvzl, boolean paramBoolean, LikeEntry paramLikeEntry, VideoListFeedItem paramVideoListFeedItem) {}
+  BottomVideoInfoWidget$3(BottomVideoInfoWidget paramBottomVideoInfoWidget, boolean paramBoolean, LikeEntry paramLikeEntry, VideoListFeedItem paramVideoListFeedItem) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      vzl.a(this.this$0).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+    if (this.a) {
+      BottomVideoInfoWidget.c(this.this$0).b(this.b);
+    } else {
+      BottomVideoInfoWidget.c(this.this$0).a(this.b);
     }
-    for (;;)
-    {
-      vzl.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-      utf localutf = new utf(1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-      umc.a().dispatch(localutf);
-      return;
-      vzl.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-    }
+    BottomVideoInfoWidget.d(this.this$0).a(this.c);
+    FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(1, this.c.feedId, 3, this.c);
+    StoryDispatcher.a().dispatch(localFeedInfoChangeEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.3
  * JD-Core Version:    0.7.0.1
  */

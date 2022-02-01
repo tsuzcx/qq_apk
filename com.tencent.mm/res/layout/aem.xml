@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/dcl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</ScrollView>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/db" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/dts" android:background="@drawable/a1i" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_centerVertical="true" android:layout_alignParentStart="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/dtr" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_8" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h5w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
+        <FrameLayout android:id="@id/le4" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/le5" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/finder_live_music_volume" app:iconColor="@color/BW_100_Alpha_0_9" />
+        </FrameLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gry" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cd" android:src="@raw/finder_live_music_menu" app:iconColor="@color/BW_100_Alpha_0_9" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iu" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/finder_live_music_add" app:iconColor="@color/BW_100_Alpha_0_9" />
+    </LinearLayout>
+</RelativeLayout>

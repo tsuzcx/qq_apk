@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dky" android:layout_width="122.0dip" android:layout_height="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <org.libpag.PAGView android:id="@id/dkw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/al6" android:id="@id/dkx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/doq" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+</RelativeLayout>

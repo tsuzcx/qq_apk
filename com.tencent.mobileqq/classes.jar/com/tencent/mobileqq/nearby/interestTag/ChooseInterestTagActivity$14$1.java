@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import avam;
-
-public class ChooseInterestTagActivity$14$1
+class ChooseInterestTagActivity$14$1
   implements Runnable
 {
-  public ChooseInterestTagActivity$14$1(avam paramavam) {}
+  ChooseInterestTagActivity$14$1(ChooseInterestTagActivity.14 param14) {}
   
   public void run()
   {
-    ChooseInterestTagActivity.b(this.a.a, false);
+    ChooseInterestTagActivity.access$3802(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

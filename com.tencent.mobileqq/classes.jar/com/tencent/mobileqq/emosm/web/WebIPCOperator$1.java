@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
-import aprh;
-import aprj;
-
-public class WebIPCOperator$1
+class WebIPCOperator$1
   implements Runnable
 {
-  public WebIPCOperator$1(aprh paramaprh, aprj paramaprj) {}
+  WebIPCOperator$1(WebIPCOperator paramWebIPCOperator, WebIPCOperator.RequestItem paramRequestItem) {}
   
   public void run()
   {
-    this.this$0.e(this.a.a);
+    this.this$0.e(this.a.b);
   }
 }
 

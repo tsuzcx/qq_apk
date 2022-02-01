@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <changeBounds android:duration="600">
+        <targets>
+            <target android:targetId="@id/g28" />
+        </targets>
+    </changeBounds>
+    <fade android:duration="600" android:fadingMode="fade_out">
+        <targets>
+            <target android:targetId="@id/g26" />
+            <target android:targetId="@id/g29" />
+            <target android:targetId="@id/g27" />
+            <target android:excludeId="@id/g1y" />
+        </targets>
+    </fade>
+    <fade android:duration="300" android:fadingMode="fade_in" android:startDelay="300">
+        <targets>
+            <target android:targetId="@id/g2c" />
+        </targets>
+    </fade>
+</transitionSet>

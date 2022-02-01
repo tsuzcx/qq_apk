@@ -5,125 +5,248 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.RawYuvData;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.Timeval;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class YTAGReflectLiveCheckJNIInterface
 {
-  public static int TIME_REGULATION_LOOSE = 1;
-  public static int TIME_REGULATION_STRICT = 0;
-  private static YTAGReflectLiveCheckJNIInterface instance = null;
+  public static int TIME_REGULATION_LOOSE;
+  public static int TIME_REGULATION_STRICT;
+  private static YTAGReflectLiveCheckJNIInterface instance;
+  private static Lock instanceLock;
+  private static IYtLoggerListener loggerListener;
   private long FRnativePtr;
   public Context context;
-  private long nativePtr;
+  
+  static
+  {
+    AppMethodBeat.i(218081);
+    TIME_REGULATION_STRICT = 0;
+    TIME_REGULATION_LOOSE = 1;
+    instance = null;
+    instanceLock = new ReentrantLock();
+    AppMethodBeat.o(218081);
+  }
   
   private YTAGReflectLiveCheckJNIInterface()
   {
-    AppMethodBeat.i(123176);
+    AppMethodBeat.i(43374);
     this.context = null;
     FRNativeConstructor();
-    AppMethodBeat.o(123176);
+    AppMethodBeat.o(43374);
   }
   
-  public static native boolean FRInitFaceSDK(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  public static native String Checksum(String paramString);
   
-  public static native boolean FRReleaseFaceSDK();
+  public static native String ChecksumPose(String paramString1, String paramString2, String paramString3);
   
-  public static void NativeLog(int paramInt, String paramString)
+  public static native String FRGenConfigData(int paramInt, String paramString);
+  
+  public static native String FRVersion();
+  
+  public static native void SetActStr(String paramString);
+  
+  public static native void SetPipelineVersion(String paramString);
+  
+  /* Error */
+  public static void clearInstance()
   {
-    AppMethodBeat.i(123180);
-    if (!YTLogger.isEnableNativeLog())
-    {
-      AppMethodBeat.o(123180);
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      YTLogger.d("NativeLog-".concat(String.valueOf(paramInt)), "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(123180);
-      return;
-    case 2: 
-      YTLogger.v("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(123180);
-      return;
-    case 3: 
-      YTLogger.d("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(123180);
-      return;
-    case 4: 
-      YTLogger.i("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(123180);
-      return;
-    case 5: 
-      YTLogger.w("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(123180);
-      return;
-    }
-    YTLogger.e("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(123180);
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 66
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 42	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   11: invokeinterface 71 1 0
+    //   16: getstatic 35	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   19: ifnull +13 -> 32
+    //   22: getstatic 35	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   25: invokevirtual 74	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:FRNativeDestructor	()V
+    //   28: aconst_null
+    //   29: putstatic 35	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   32: getstatic 42	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   35: invokeinterface 77 1 0
+    //   40: ldc 66
+    //   42: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc 2
+    //   47: monitorexit
+    //   48: return
+    //   49: astore_0
+    //   50: getstatic 42	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   53: invokeinterface 77 1 0
+    //   58: ldc 66
+    //   60: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: aload_0
+    //   64: athrow
+    //   65: astore_0
+    //   66: ldc 2
+    //   68: monitorexit
+    //   69: aload_0
+    //   70: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   49	15	0	localObject1	Object
+    //   65	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   8	32	49	finally
+    //   3	8	65	finally
+    //   32	45	65	finally
+    //   50	65	65	finally
   }
+  
+  public static void compressTest(Bitmap paramBitmap, int paramInt)
+  {
+    AppMethodBeat.i(43377);
+    try
+    {
+      Object localObject = new File("/sdcard/reflect/");
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      localObject = "/sdcard/reflect/" + paramInt + "/";
+      File localFile = new File((String)localObject);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      localObject = new FileOutputStream(new File((String)localObject, "mytestInJava_" + System.currentTimeMillis() + ".jpg"));
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, (OutputStream)localObject);
+      ((FileOutputStream)localObject).flush();
+      ((FileOutputStream)localObject).close();
+      AppMethodBeat.o(43377);
+      return;
+    }
+    catch (Exception paramBitmap)
+    {
+      AppMethodBeat.o(43377);
+    }
+  }
+  
+  public static native void configNativeLog(boolean paramBoolean);
   
   public static byte[] encodeJpeg(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(123179);
+    AppMethodBeat.i(43379);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, 99, localByteArrayOutputStream);
     paramBitmap = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(123179);
+    AppMethodBeat.o(43379);
     return paramBitmap;
   }
   
+  public static byte[] encodeJpeg(Bitmap paramBitmap, int paramInt)
+  {
+    AppMethodBeat.i(43378);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
+    paramBitmap = localByteArrayOutputStream.toByteArray();
+    AppMethodBeat.o(43378);
+    return paramBitmap;
+  }
+  
+  /* Error */
   public static YTAGReflectLiveCheckJNIInterface getInstance()
   {
-    try
-    {
-      AppMethodBeat.i(123175);
-      if (instance == null) {
-        instance = new YTAGReflectLiveCheckJNIInterface();
-      }
-      YTAGReflectLiveCheckJNIInterface localYTAGReflectLiveCheckJNIInterface = instance;
-      AppMethodBeat.o(123175);
-      return localYTAGReflectLiveCheckJNIInterface;
-    }
-    finally {}
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 166
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 42	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   11: invokeinterface 71 1 0
+    //   16: getstatic 35	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   19: ifnonnull +13 -> 32
+    //   22: new 2	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface
+    //   25: dup
+    //   26: invokespecial 167	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:<init>	()V
+    //   29: putstatic 35	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   32: getstatic 42	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   35: invokeinterface 77 1 0
+    //   40: getstatic 35	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   43: astore_0
+    //   44: ldc 166
+    //   46: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: aload_0
+    //   53: areturn
+    //   54: astore_0
+    //   55: getstatic 42	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   58: invokeinterface 77 1 0
+    //   63: ldc 166
+    //   65: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: aload_0
+    //   69: athrow
+    //   70: astore_0
+    //   71: ldc 2
+    //   73: monitorexit
+    //   74: aload_0
+    //   75: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   43	10	0	localYTAGReflectLiveCheckJNIInterface	YTAGReflectLiveCheckJNIInterface
+    //   54	15	0	localObject1	Object
+    //   70	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   8	32	54	finally
+    //   3	8	70	finally
+    //   32	49	70	finally
+    //   55	70	70	finally
   }
   
   public static String modelVersion()
   {
-    return "0.0.1_20180605";
+    return "";
+  }
+  
+  public static void nativeLog(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(218059);
+    if (loggerListener != null) {
+      loggerListener.log("[YTAGReflectLiveCheckJNIInterface.nativeLog]", paramString);
+    }
+    AppMethodBeat.o(218059);
+  }
+  
+  public static void nativeLog(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(218058);
+    if (loggerListener != null) {
+      loggerListener.log(paramString1, paramString2);
+    }
+    AppMethodBeat.o(218058);
   }
   
   public static String sdkVersion()
   {
-    return "0.0.1_20180605";
+    return "";
   }
   
-  public native void ConfigNativeLog(boolean paramBoolean);
+  public static void setLoggerListener(IYtLoggerListener paramIYtLoggerListener)
+  {
+    loggerListener = paramIYtLoggerListener;
+  }
   
-  public native void FRClearRAW();
-  
-  public native void FRDoDetectionImages(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public static native int updateParam(String paramString1, String paramString2);
   
   public native int FRDoDetectionYuvs(boolean paramBoolean, int paramInt);
   
   public native FullPack FRGetAGin();
   
-  public native Bitmap FRGetBestImg();
-  
   public native int FRGetChangePoint();
-  
-  public native int FRGetChannel();
   
   public native int FRGetConfigBegin();
   
   public native int FRGetConfigEnd();
   
-  public native boolean FRGetDoingDelayCalc();
-  
-  public native int FRGetISOImgVecSize();
+  public native int FRGetISOCaptureTimeVecSize();
   
   public native double FRGetISObackup();
   
@@ -131,13 +254,11 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public native double FRGetISOmin();
   
-  public native int FRGetLabelShowing();
+  public native RawYuvData[] FRGetRawYuvDatas();
   
-  public native int FRGetSeqBeginInd();
+  public native int FRGetTriggerTime();
   
-  public native int FRGetSeqEndInd();
-  
-  public native String FRInit(boolean paramBoolean, String paramString);
+  public native int FRInit(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong, float paramFloat);
   
   public native void FRNativeConstructor();
   
@@ -147,17 +268,11 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public native void FRPushISOCaptureTime(Timeval paramTimeval);
   
-  public native void FRPushISOImg(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
   public native void FRPushISOImgYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public native void FRPushRawImg(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public native void FRPushYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong, int paramInt3, float[] paramArrayOfFloat);
   
-  public native void FRPushRawImgYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public native void FRPushRawImgYuvDebug(byte[] paramArrayOfByte, int paramInt1, int paramInt2, Bitmap paramBitmap);
-  
-  public native void FRPushYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public native int FRRelease();
   
   public native void FRSetBegin(Timeval paramTimeval);
   
@@ -173,24 +288,11 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public native void FRSetISOchangeTime(Timeval paramTimeval);
   
-  public native void FRSetISOmin(double paramDouble);
+  public native void FRSetSafetyLevel(int paramInt);
   
-  public native void FRSetLabelShowing(int paramInt);
-  
-  public native void FRSetLandmarks(ArrayList<ArrayList<ArrayList<Integer>>> paramArrayList);
-  
-  public void destroy()
+  public static abstract interface IYtLoggerListener
   {
-    AppMethodBeat.i(123177);
-    FRNativeDestructor();
-    AppMethodBeat.o(123177);
-  }
-  
-  protected void finalize()
-  {
-    AppMethodBeat.i(123178);
-    FRNativeDestructor();
-    AppMethodBeat.o(123178);
+    public abstract void log(String paramString1, String paramString2);
   }
 }
 

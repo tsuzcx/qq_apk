@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/ivTitleBtnRightEdit" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/skin_qzone_feeddetail_editor" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/ivTitleBtnRightCollect" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/skin_qzone_feeddetail_collect" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/ivTitleBtnRightShare" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/skin_qzone_feeddetail_share" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/ivTitleBtnRightReport" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/skin_qzone_feeddetail_report" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/ivTitleBtnRightMore" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/skin_qzone_feeddetail_more" android:scaleType="center" />
+</LinearLayout>

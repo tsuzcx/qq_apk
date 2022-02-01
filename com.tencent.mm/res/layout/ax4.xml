@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.base.MMGallery android:id="@id/epo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/epp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-        <LinearLayout android:layout_gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.MMPageControlView android:gravity="bottom|center" android:id="@id/epq" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="20.0dip" />
+    <RelativeLayout android:id="@id/ekw" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="31.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <com.tencent.mm.plugin.game.media.TextViewWithBottomLine android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/g_" android:id="@id/emy" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/fax" />
+            <com.tencent.mm.plugin.game.media.TextViewWithBottomLine android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/g_" android:id="@id/emf" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/f_r" />
         </LinearLayout>
+        <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/eks" android:layout_width="wrap_content" android:layout_height="31.0dip" android:layout_marginRight="16.0dip" android:text="@string/f9f" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <View android:background="#0d000000" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-</LinearLayout>
+    <androidx.viewpager.widget.ViewPager android:id="@id/eoj" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ekw" />
+</RelativeLayout>

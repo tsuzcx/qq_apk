@@ -29,7 +29,7 @@ public final class BatchDownloadActionRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75979);
+    AppMethodBeat.i(102225);
     this.batchRequestType = paramJceInputStream.read(this.batchRequestType, 0, true);
     if (cache_batchData == null)
     {
@@ -41,12 +41,12 @@ public final class BatchDownloadActionRequest
     this.uin = paramJceInputStream.readString(2, false);
     this.uinType = paramJceInputStream.readString(3, false);
     this.via = paramJceInputStream.readString(4, false);
-    AppMethodBeat.o(75979);
+    AppMethodBeat.o(102225);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75978);
+    AppMethodBeat.i(102224);
     paramJceOutputStream.write(this.batchRequestType, 0);
     if (this.batchData != null) {
       paramJceOutputStream.write(this.batchData, 1);
@@ -60,12 +60,12 @@ public final class BatchDownloadActionRequest
     if (this.via != null) {
       paramJceOutputStream.write(this.via, 4);
     }
-    AppMethodBeat.o(75978);
+    AppMethodBeat.o(102224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.BatchDownloadActionRequest
  * JD-Core Version:    0.7.0.1
  */

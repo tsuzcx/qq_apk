@@ -9,13 +9,13 @@ public final class ResponeQueryLastLoginState
   extends JceStruct
 {
   static ArrayList<LastLoginInfo> cache_lastLoginList;
-  public long interval;
-  public ArrayList<LastLoginInfo> lastLoginList;
+  public long interval = 0L;
+  public ArrayList<LastLoginInfo> lastLoginList = null;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
-  public long nextFlag;
-  public long timeStamp;
+  public long nextFlag = 0L;
+  public long timeStamp = 0L;
   
   public ResponeQueryLastLoginState() {}
   
@@ -60,7 +60,7 @@ public final class ResponeQueryLastLoginState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeQueryLastLoginState
  * JD-Core Version:    0.7.0.1
  */

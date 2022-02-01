@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="52.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/lmy" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="18.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="140.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/dta" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/jlz" android:layout_toRightOf="@id/ivTitleName" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.wink.pick.circle.view.WinkCompoundButton android:id="@id/ivTitleBtnLeft" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="2.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:foregroundHeight="24.0dip" app:foregroundResource="@drawable/jv7" app:foregroundWidth="24.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/b7g" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ivTitleBtnRightText" android:background="@drawable/jve" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginRight="4.0dip" android:minWidth="94.0dip" android:text="下一步" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

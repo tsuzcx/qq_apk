@@ -35,41 +35,38 @@ public class DittoListArea
     }
     this.numbersOfRows.clear();
     removeAllChildren();
-    if ((this.adapter instanceof DittoListArea.ListAreaAdapterWithSection)) {}
-    for (int i = ((DittoListArea.ListAreaAdapterWithSection)this.adapter).numberOfSections(this);; i = 1)
+    Object localObject = this.adapter;
+    int i;
+    if ((localObject instanceof DittoListArea.ListAreaAdapterWithSection)) {
+      i = ((DittoListArea.ListAreaAdapterWithSection)localObject).numberOfSections(this);
+    } else {
+      i = 1;
+    }
+    int j = 0;
+    while (j < i)
     {
-      int j = 0;
-      while (j < i)
+      int m = this.adapter.numberOfRows(this, j);
+      this.numbersOfRows.add(Integer.valueOf(m));
+      int k = 0;
+      while (k < m)
       {
-        int m = this.adapter.numberOfRows(this, j);
-        this.numbersOfRows.add(Integer.valueOf(m));
-        int k = 0;
-        if (k < m)
+        localObject = this.adapter.getArea(this, j, k);
+        if (localObject != null)
         {
-          DittoArea localDittoArea = this.adapter.getArea(this, j, k);
-          if (localDittoArea != null) {
-            if ((k != 0) && (this.mItemInterval != 0))
-            {
-              if (getOrientation() != 1) {
-                break label151;
-              }
-              localDittoArea.setMargin(0, this.mItemInterval, 0, 0);
+          if ((k != 0) && (this.mItemInterval != 0)) {
+            if (getOrientation() == 1) {
+              ((DittoArea)localObject).setMargin(0, this.mItemInterval, 0, 0);
+            } else {
+              ((DittoArea)localObject).setMargin(this.mItemInterval, 0, 0, 0);
             }
           }
-          for (;;)
-          {
-            addChild(localDittoArea);
-            k += 1;
-            break;
-            label151:
-            localDittoArea.setMargin(this.mItemInterval, 0, 0, 0);
-          }
+          addChild((DittoArea)localObject);
         }
-        j += 1;
+        k += 1;
       }
-      requestLayout();
-      return;
+      j += 1;
     }
+    requestLayout();
   }
   
   public void setAdapter(DittoListArea.ListAreaAdapter paramListAreaAdapter)
@@ -86,7 +83,7 @@ public class DittoListArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.widget.DittoListArea
  * JD-Core Version:    0.7.0.1
  */

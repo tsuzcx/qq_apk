@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bbh" android:paddingBottom="@dimen/za" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="right" style="@style/gq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="end|center" android:layout_gravity="end|center" android:orientation="horizontal" android:id="@id/b47" android:background="@drawable/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h3">
+        <com.tencent.mm.ui.widget.MMTextView android:textColor="@color/kg" android:id="@id/g4w" android:layout_marginLeft="5.0dip" android:maxWidth="180.0dip" style="@style/hc" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/g4x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@raw/icons_outlined_location" />
+    </LinearLayout>
+    <include layout="@layout/qk" />
+</LinearLayout>

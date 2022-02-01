@@ -8,26 +8,27 @@ import com.tencent.mm.sdk.platformtools.i;
 
 public final class a
 {
-  private static b WF = null;
-  private static SparseIntArray WG = new SparseIntArray();
-  private static float WH = 0.0F;
+  private static b YA = null;
+  private static SparseIntArray YB = new SparseIntArray();
+  private static float YC = 0.0F;
+  private static boolean YD = false;
+  private static boolean YE = true;
   private static float density = -1.0F;
   
-  public static float w(Context paramContext)
+  public static float x(Context paramContext)
   {
     Context localContext = paramContext;
     if (paramContext == null) {
       localContext = i.getContext();
     }
-    if (density < 0.0F) {
-      density = localContext.getResources().getDisplayMetrics().density;
-    }
-    return density;
+    float f = localContext.getResources().getDisplayMetrics().density;
+    density = f;
+    return f;
   }
   
-  public static int x(Context paramContext)
+  public static int y(Context paramContext)
   {
-    return Math.round(w(paramContext) * 4.0F);
+    return Math.round(x(paramContext) * 4.0F);
   }
 }
 

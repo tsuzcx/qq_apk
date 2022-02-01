@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:skintype="contact_list_bg">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip">
+                <RelativeLayout android:layout_gravity="center" android:id="@id/layout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:id="@id/verify_code_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_mobile_verify" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/verify_code_ok" android:background="@drawable/result_ok" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/verify_code_title" android:layout_alignBaseline="@id/verify_code_title" />
+                    <View android:id="@id/verify_code_bar" android:background="@drawable/tab_bg_selected" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginTop="2.0dip" android:layout_alignLeft="@id/verify_code_title" android:layout_alignRight="@id/verify_code_title" />
+                </RelativeLayout>
+                <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/textview01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:layout_weight="1.0" />
+                <RelativeLayout android:layout_gravity="center" android:id="@id/layout02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:id="@id/set_password_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_set_password" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/set_password_ok" android:background="@drawable/result_ok" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/set_password_title" android:layout_alignBaseline="@id/set_password_title" />
+                    <View android:id="@id/set_password_bar" android:background="@drawable/tab_bg_selected" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginTop="2.0dip" android:layout_alignLeft="@id/set_password_title" android:layout_alignRight="@id/set_password_title" />
+                </RelativeLayout>
+                <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/textview02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:layout_weight="1.0" />
+                <RelativeLayout android:layout_gravity="center" android:id="@id/layout02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:enabled="true" android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:id="@id/register_end_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_end_register" android:layout_centerVertical="true" />
+                    <View android:id="@id/view01" android:background="@drawable/result_ok" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/register_end_title" />
+                    <View android:id="@id/register_end_bar" android:background="@drawable/tab_bg_selected" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginTop="2.0dip" android:layout_alignLeft="@id/register_end_title" android:layout_alignRight="@id/register_end_title" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <View android:background="@drawable/shape_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:orientation="vertical" android:id="@id/mobile_num_module" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/register_mobile_num_module" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:id="@id/verify_code_module" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/register_verify_code_module" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:id="@id/password_module" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/register_password_module" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:id="@id/register_end_module" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/register_end_module" />
+        </LinearLayout>
+        <Button android:id="@id/button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:text="@string/qr_request_verify_code" style="@style/ButtonWhite" />
+    </LinearLayout>
+</ScrollView>

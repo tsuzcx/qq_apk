@@ -1,141 +1,135 @@
 package com.tencent.mm.wallet_core;
 
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.a;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.d;
-import com.tencent.mm.storage.z;
-import java.util.Locale;
-import java.util.Map;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expansions.e;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
 
 public final class b
 {
-  private static b AVB;
+  private static b agRB;
   
-  public static b dRI()
+  public static boolean b(c.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(49006);
-    if (AVB == null) {
-      AVB = new b();
+    AppMethodBeat.i(72645);
+    if (!e.aQh())
+    {
+      AppMethodBeat.o(72645);
+      return false;
     }
-    b localb = AVB;
-    AppMethodBeat.o(49006);
+    try
+    {
+      i locali = i.agtt;
+      i = i.a(b.a.agsx, 0);
+      paramBoolean = ((c)h.ax(c.class)).a(parama, paramBoolean);
+      Log.i("MicroMsg.TenPaySdkAbTest", "isKindaBindCardEnable configval %s svrConfig %s isDebug %s isFlavorRed %s isFlavorPurple %s BuildInfo %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean), Boolean.FALSE, Boolean.valueOf(BuildInfo.IS_FLAVOR_RED), Boolean.valueOf(BuildInfo.IS_FLAVOR_PURPLE), BuildInfo.KINDA_DEFAULT });
+      if ("open".equals(BuildInfo.KINDA_DEFAULT))
+      {
+        AppMethodBeat.o(72645);
+        return true;
+      }
+    }
+    catch (com.tencent.mm.model.b localb)
+    {
+      int i;
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.TenPaySdkAbTest", localb, "isKindaEnable get configVal error! AccountNotReady!", new Object[0]);
+        i = 0;
+      }
+      if ("close".equals(BuildInfo.KINDA_DEFAULT))
+      {
+        AppMethodBeat.o(72645);
+        return false;
+      }
+      if (i == 1)
+      {
+        AppMethodBeat.o(72645);
+        return true;
+      }
+      if (i == 2)
+      {
+        AppMethodBeat.o(72645);
+        return false;
+      }
+      if (paramBoolean)
+      {
+        AppMethodBeat.o(72645);
+        return true;
+      }
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
+      {
+        AppMethodBeat.o(72645);
+        return true;
+      }
+      AppMethodBeat.o(72645);
+    }
+    return false;
+  }
+  
+  public static b jNX()
+  {
+    AppMethodBeat.i(72641);
+    if (agRB == null) {
+      agRB = new b();
+    }
+    b localb = agRB;
+    AppMethodBeat.o(72641);
     return localb;
   }
   
-  public static boolean dRJ()
+  public static boolean jNY()
   {
-    AppMethodBeat.i(49007);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100368");
-    if ((localc.isValid()) && ("1".equals(localc.dvN().get("open")))) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(72642);
+    if (((c)h.ax(c.class)).a(c.a.yXs, 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      ab.i("MicroMsg.TenPaySdkAbTest", "isPwdOpen2048 %s", new Object[] { Integer.valueOf(i) });
-      if (i > 0)
-      {
-        AppMethodBeat.o(49007);
-        return true;
-      }
-      AppMethodBeat.o(49007);
-      return false;
+      Log.i("MicroMsg.TenPaySdkAbTest", "isPwdOpen2048 %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(72642);
+      return bool;
     }
   }
   
-  public static boolean dRK()
+  public static boolean jNZ()
   {
-    AppMethodBeat.i(49008);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100370");
-    if ((localc.isValid()) && ("1".equals(localc.dvN().get("open")))) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(72643);
+    if (((c)h.ax(c.class)).a(c.a.yXu, 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      ab.i("MicroMsg.TenPaySdkAbTest", "isOfflineOpen2048 %s", new Object[] { Integer.valueOf(i) });
-      if (i > 0)
-      {
-        AppMethodBeat.o(49008);
-        return true;
-      }
-      AppMethodBeat.o(49008);
-      return false;
+      Log.i("MicroMsg.TenPaySdkAbTest", "isOfflineOpen2048 %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(72643);
+      return bool;
     }
   }
   
-  public static boolean dRL()
+  public static boolean jOa()
   {
-    AppMethodBeat.i(142610);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100369");
-    if ((localc.isValid()) && ("1".equals(localc.dvN().get("open")))) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(72644);
+    if (((c)h.ax(c.class)).a(c.a.yXt, 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      ab.i("MicroMsg.TenPaySdkAbTest", "isCertOpen2048 %s", new Object[] { Integer.valueOf(i) });
-      if (i > 0)
-      {
-        AppMethodBeat.o(142610);
-        return true;
-      }
-      AppMethodBeat.o(142610);
-      return false;
+      Log.i("MicroMsg.TenPaySdkAbTest", "isCertOpen2048 %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(72644);
+      return bool;
     }
   }
   
-  private static boolean dRM()
+  public static boolean jOb()
   {
-    AppMethodBeat.i(142611);
-    String str2 = Build.BRAND;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    str1 = str1.toLowerCase(Locale.ENGLISH);
-    if (((str1.contains("huawei")) || (str1.contains("honor"))) && (Build.VERSION.SDK_INT == 23))
-    {
-      ab.i("MicroMsg.TenPaySdkAbTest", "bingo isHuaWeiM brand %s", new Object[] { str1 });
-      AppMethodBeat.o(142611);
-      return true;
-    }
-    AppMethodBeat.o(142611);
-    return false;
-  }
-  
-  public static boolean dpQ()
-  {
-    AppMethodBeat.i(142612);
-    int i = ((Integer)g.RL().Ru().get(ac.a.yLQ, Integer.valueOf(0))).intValue();
-    boolean bool = ((a)g.E(a.class)).a(a.a.lVb, false);
-    ab.i("MicroMsg.TenPaySdkAbTest", "isKindaEnable configval %s svrConfig %s isHuaWeiM %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Boolean.valueOf(dRM()) });
-    if (i == 1)
-    {
-      AppMethodBeat.o(142612);
-      return true;
-    }
-    if (i == 2)
-    {
-      AppMethodBeat.o(142612);
-      return false;
-    }
-    if (bool)
-    {
-      AppMethodBeat.o(142612);
-      return true;
-    }
-    if ((f.IS_FLAVOR_RED) || (f.IS_FLAVOR_PURPLE))
-    {
-      AppMethodBeat.o(142612);
-      return true;
-    }
-    AppMethodBeat.o(142612);
-    return false;
+    AppMethodBeat.i(242119);
+    boolean bool = ((c)h.ax(c.class)).a(c.a.yXc, false);
+    AppMethodBeat.o(242119);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.b
  * JD-Core Version:    0.7.0.1
  */

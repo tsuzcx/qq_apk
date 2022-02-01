@@ -56,7 +56,9 @@ public class FaceFeatureFilter
   
   private boolean initFaceImage()
   {
-    if ((!this.isSoftLiteImageReady) && (BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.softlightImage))))
+    boolean bool1 = this.isSoftLiteImageReady;
+    boolean bool2 = false;
+    if ((!bool1) && (BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.softlightImage))))
     {
       GlUtil.loadTexture(this.texture[0], VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.softlightImage));
       initFaceTexCoords();
@@ -75,7 +77,19 @@ public class FaceFeatureFilter
       addParam(new UniformParam.TextureParam("inputImageTexture4", this.texture[2], 33988));
       this.isNormalImageReady = true;
     }
-    return (this.isSoftLiteImageReady) && (this.isMultiplyImageReady) && (this.isNormalImageReady);
+    bool1 = bool2;
+    if (this.isSoftLiteImageReady)
+    {
+      bool1 = bool2;
+      if (this.isMultiplyImageReady)
+      {
+        bool1 = bool2;
+        if (this.isNormalImageReady) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private void initFaceTexCoords()
@@ -86,12 +100,14 @@ public class FaceFeatureFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.isSoftLiteImageReady = false;
     this.isMultiplyImageReady = false;
     this.isNormalImageReady = false;
@@ -125,13 +141,21 @@ public class FaceFeatureFilter
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     AttributeParam localAttributeParam = getAttribParam("position");
-    if ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690)) {}
-    do
+    if (localAttributeParam != null)
     {
-      return false;
+      if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+        return false;
+      }
       localAttributeParam = getAttribParam("inputTextureCoordinate");
-    } while ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690));
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      if (localAttributeParam != null)
+      {
+        if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+          return false;
+        }
+        return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      }
+    }
+    return false;
   }
   
   public void setFaceFeatureParam(FaceFeatureParam paramFaceFeatureParam)
@@ -188,7 +212,7 @@ public class FaceFeatureFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceFeatureFilter
  * JD-Core Version:    0.7.0.1
  */

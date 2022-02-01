@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="50" android:drawable="@drawable/eqh" />
-    <item android:duration="50" android:drawable="@drawable/eqi" />
-    <item android:duration="50" android:drawable="@drawable/eqj" />
-    <item android:duration="50" android:drawable="@drawable/eqk" />
-    <item android:duration="50" android:drawable="@drawable/eql" />
-    <item android:duration="50" android:drawable="@drawable/eqm" />
-    <item android:duration="50" android:drawable="@drawable/eqn" />
-    <item android:duration="50" android:drawable="@drawable/eqr" />
-    <item android:duration="50" android:drawable="@drawable/equ" />
-    <item android:duration="50" android:drawable="@drawable/eqv" />
-    <item android:duration="50" android:drawable="@drawable/eqx" />
-    <item android:duration="50" android:drawable="@drawable/eqz" />
-    <item android:duration="50" android:drawable="@drawable/er1" />
-    <item android:duration="50" android:drawable="@drawable/er5" />
-    <item android:duration="50" android:drawable="@drawable/er6" />
-</animation-list>
+    <gradient android:startColor="#ff00b3ff" android:endColor="#ff007fff" />
+</shape>

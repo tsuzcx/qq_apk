@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@drawable/arp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="@dimen/l" android:textColor="@color/c8" android:gravity="center" android:id="@id/cb8" android:background="@android:color/transparent" android:paddingLeft="@dimen/a2x" android:paddingRight="@dimen/a2x" android:layout_width="wrap_content" android:layout_height="@dimen/b8" android:text="@string/hiz" />
+    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <Button android:textSize="@dimen/l" android:textColor="@color/aks" android:gravity="center" android:id="@id/cbb" android:background="@android:color/transparent" android:paddingLeft="@dimen/a2x" android:paddingRight="@dimen/a2x" android:layout_width="wrap_content" android:layout_height="@dimen/b8" android:text="@string/hj0" />
+</LinearLayout>

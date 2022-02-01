@@ -6,324 +6,376 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.g.a.ae;
-import com.tencent.mm.g.a.af;
-import com.tencent.mm.model.as;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.ao;
+import com.tencent.mm.autogen.a.ap;
 import com.tencent.mm.model.b.b.b;
-import com.tencent.mm.model.r;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.conversation.a.e;
-import com.tencent.mm.ui.conversation.a.e.a;
-import com.tencent.mm.ui.conversation.a.j;
-import com.tencent.mm.ui.conversation.a.q;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.network.p.a;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.conversation.banner.e;
+import com.tencent.mm.ui.conversation.banner.e.a;
+import com.tencent.mm.ui.conversation.banner.i;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  implements d.a, as, n.b
+  implements bd, AvatarStorage.a, MStorageEx.IOnStorageChange
 {
-  List<com.tencent.mm.pluginsdk.ui.b.b> AgF;
-  List<com.tencent.mm.pluginsdk.ui.b.b> AgG;
-  List<com.tencent.mm.pluginsdk.ui.b.b> AgH;
-  List<com.tencent.mm.pluginsdk.ui.b.b> AgI;
-  List<com.tencent.mm.pluginsdk.ui.b.b> AgJ;
-  List<com.tencent.mm.pluginsdk.ui.b.b> AgK;
-  com.tencent.mm.sdk.b.c AgL;
-  com.tencent.mm.sdk.b.c AgM;
-  ListView AgN;
-  View AgO;
+  List<b> aflP;
+  List<b> aflQ;
+  List<b> aflR;
+  List<b> aflS;
+  List<b> aflT;
+  List<b> aflU;
+  IListener aflV;
+  IListener aflW;
+  ListView aflX;
+  private View aflY;
+  boolean aflZ;
   Context context;
-  com.tencent.mm.network.n qwx;
+  com.tencent.mm.network.p mPf;
   
   public a()
   {
-    AppMethodBeat.i(34034);
-    this.AgF = new LinkedList();
-    this.AgG = new LinkedList();
-    this.AgH = new LinkedList();
-    this.AgI = new LinkedList();
-    this.AgJ = new LinkedList();
-    this.AgK = new LinkedList();
-    AppMethodBeat.o(34034);
+    AppMethodBeat.i(38152);
+    this.aflP = new LinkedList();
+    this.aflQ = new LinkedList();
+    this.aflR = new LinkedList();
+    this.aflS = new LinkedList();
+    this.aflT = new LinkedList();
+    this.aflU = new LinkedList();
+    this.aflZ = false;
+    AppMethodBeat.o(38152);
   }
   
-  private static void fC(List<com.tencent.mm.pluginsdk.ui.b.b> paramList)
+  private static void of(List<b> paramList)
   {
-    AppMethodBeat.i(34042);
+    AppMethodBeat.i(38161);
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      ((com.tencent.mm.pluginsdk.ui.b.b)paramList.next()).setVisibility(8);
+      ((b)paramList.next()).setVisibility(8);
     }
-    AppMethodBeat.o(34042);
+    AppMethodBeat.o(38161);
   }
   
-  static void fD(List<com.tencent.mm.pluginsdk.ui.b.b> paramList)
+  private static void og(List<b> paramList)
   {
-    AppMethodBeat.i(34043);
+    AppMethodBeat.i(38162);
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      ((com.tencent.mm.pluginsdk.ui.b.b)paramList.next()).release();
+      ((b)paramList.next()).release();
     }
-    AppMethodBeat.o(34043);
+    AppMethodBeat.o(38162);
   }
   
-  static void fE(List<com.tencent.mm.pluginsdk.ui.b.b> paramList)
+  static void oh(List<b> paramList)
   {
-    AppMethodBeat.i(34044);
+    AppMethodBeat.i(38163);
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.pluginsdk.ui.b.b)localIterator.next()).destroy();
+      ((b)localIterator.next()).destroy();
     }
     paramList.clear();
-    AppMethodBeat.o(34044);
+    AppMethodBeat.o(38163);
   }
   
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
+  public final void LM(String paramString)
   {
-    AppMethodBeat.i(34038);
-    if (aw.RG())
+    AppMethodBeat.i(38156);
+    if ((bh.baz()) && (!bh.aZG()) && (Util.nullAsNil(paramString).length() > 0) && (paramString.equals(z.bAM()))) {
+      ery();
+    }
+    AppMethodBeat.o(38156);
+  }
+  
+  final boolean R(List<b> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(38160);
+    paramList = paramList.iterator();
+    boolean bool = false;
+    if (paramList.hasNext())
     {
-      aw.aaz();
-      if (paramn == com.tencent.mm.model.c.Ru())
+      b localb = (b)paramList.next();
+      View localView = ((ViewGroup)localb.getView()).getChildAt(0);
+      if (localb.cMa())
       {
-        paramInt = ah.aW(paramObject);
-        if (8193 == paramInt) {
-          dMn();
-        }
-        if (42 == paramInt) {
-          dMn();
+        if ((localView != null) && (localView.getVisibility() == 0)) {}
+        for (bool = true;; bool = false)
+        {
+          Log.i("MicroMsg.BannerHelper", "refreshAndReturnIsVisible[true] :%s, checkAll:%b, isVisible:%b, hc:%d", new Object[] { localb, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(hashCode()) });
+          if (paramBoolean) {
+            break;
+          }
+          AppMethodBeat.o(38160);
+          return true;
         }
       }
+      if ((localView != null) && (localView.getVisibility() == 0)) {
+        Log.i("MicroMsg.BannerHelper", "refreshAndReturnIsVisible[false] but visible :%s, checkAll:%b, hc:%d", new Object[] { localb, Boolean.valueOf(paramBoolean), Integer.valueOf(hashCode()) });
+      }
     }
-    AppMethodBeat.o(34038);
+    for (;;)
+    {
+      break;
+      AppMethodBeat.o(38160);
+      return bool;
+      bool = true;
+    }
   }
   
   public final void a(Context paramContext, ListView paramListView, View paramView)
   {
-    AppMethodBeat.i(34035);
+    AppMethodBeat.i(38153);
     this.context = paramContext;
-    this.AgN = paramListView;
-    this.AgO = paramView;
-    this.AgM = new a.1(this);
-    com.tencent.mm.sdk.b.a.ymk.c(this.AgM);
-    paramView = new ae();
-    paramView.cnk.activity = ((Activity)paramContext);
-    com.tencent.mm.sdk.b.a.ymk.l(paramView);
-    paramView = new af();
-    paramView.cnl.cnn = ((com.tencent.mm.pluginsdk.ui.b.b)e.a(this.context, e.a.Amx, null));
-    com.tencent.mm.sdk.b.a.ymk.l(paramView);
-    paramView = (com.tencent.mm.pluginsdk.ui.b.b)e.a(this.context, e.a.Amp, null);
-    Object localObject = new af();
-    ((af)localObject).cnl.cnn = paramView;
-    ((af)localObject).cnl.level = 1;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    paramView = (com.tencent.mm.pluginsdk.ui.b.b)e.a(this.context, e.a.Amq, null);
-    localObject = new af();
-    ((af)localObject).cnl.cnn = paramView;
-    ((af)localObject).cnl.cnm = false;
-    ((af)localObject).cnl.level = 1;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    paramView = (q)e.a(this.context, e.a.Amw, null);
-    localObject = new af();
-    ((af)localObject).cnl.cnn = paramView;
-    ((af)localObject).cnl.cnm = false;
-    ((af)localObject).cnl.level = 2;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    paramView = (com.tencent.mm.ui.conversation.a.a)e.a(this.context, e.a.Amt, null);
-    localObject = new af();
-    ((af)localObject).cnl.cnn = paramView;
-    ((af)localObject).cnl.cnm = false;
-    ((af)localObject).cnl.level = 3;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    paramView = (com.tencent.mm.ui.d.a)e.a(this.context, e.a.Amy, new Object[] { b.b.fou });
-    localObject = new af();
-    ((af)localObject).cnl.cnn = paramView;
-    ((af)localObject).cnl.cnm = true;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    paramView = (com.tencent.mm.pluginsdk.ui.b.b)e.a(this.context, e.a.Amr, null);
-    localObject = new af();
-    ((af)localObject).cnl.cnn = paramView;
-    ((af)localObject).cnl.cnm = false;
-    ((af)localObject).cnl.level = 1;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    com.tencent.mm.sdk.b.a.ymk.d(this.AgM);
-    this.AgK.addAll(this.AgF);
-    this.AgK.addAll(this.AgG);
-    this.AgK.addAll(this.AgH);
-    this.AgK.addAll(this.AgI);
-    Collections.sort(this.AgK, new a.2(this));
-    paramView = this.AgK.iterator();
+    this.aflX = paramListView;
+    this.aflY = paramView;
+    this.aflW = new BannerHelper.1(this, f.hfK);
+    this.aflW.alive();
+    paramView = new ao();
+    paramView.hAm.activity = ((Activity)paramContext);
+    paramView.publish();
+    paramView = new ap();
+    paramView.hAn.hAo = ((b)e.a(this.context, e.a.afta, null));
+    paramView.publish();
+    paramView = (b)e.a(this.context, e.a.afsR, null);
+    Object localObject = new ap();
+    ((ap)localObject).hAn.hAo = paramView;
+    ((ap)localObject).hAn.level = 1;
+    ((ap)localObject).publish();
+    paramView = (b)e.a(this.context, e.a.afsS, null);
+    localObject = new ap();
+    ((ap)localObject).hAn.hAo = paramView;
+    ((ap)localObject).hAn.independent = false;
+    ((ap)localObject).hAn.level = 1;
+    ((ap)localObject).publish();
+    paramView = (com.tencent.mm.ui.conversation.banner.p)e.a(this.context, e.a.afsZ, null);
+    localObject = new ap();
+    ((ap)localObject).hAn.hAo = paramView;
+    ((ap)localObject).hAn.independent = false;
+    ((ap)localObject).hAn.level = 2;
+    ((ap)localObject).publish();
+    paramView = (com.tencent.mm.ui.conversation.banner.a)e.a(this.context, e.a.afsW, null);
+    localObject = new ap();
+    ((ap)localObject).hAn.hAo = paramView;
+    ((ap)localObject).hAn.independent = false;
+    ((ap)localObject).hAn.level = 3;
+    ((ap)localObject).publish();
+    paramView = (com.tencent.mm.ui.c.a)e.a(this.context, e.a.aftb, new Object[] { b.b.ook });
+    localObject = new ap();
+    ((ap)localObject).hAn.hAo = paramView;
+    ((ap)localObject).hAn.independent = true;
+    ((ap)localObject).publish();
+    this.aflW.dead();
+    this.aflU.addAll(this.aflP);
+    this.aflU.addAll(this.aflQ);
+    this.aflU.addAll(this.aflR);
+    this.aflU.addAll(this.aflS);
+    Collections.sort(this.aflU, new Comparator() {});
+    paramView = this.aflU.iterator();
     while (paramView.hasNext())
     {
-      localObject = (com.tencent.mm.pluginsdk.ui.b.b)paramView.next();
-      this.AgN.addHeaderView(((com.tencent.mm.pluginsdk.ui.b.b)localObject).getView());
+      localObject = (b)paramView.next();
+      this.aflX.addHeaderView(((b)localObject).getView());
     }
     new LinkedList();
-    paramView = (com.tencent.mm.pluginsdk.ui.b.b)e.a(paramContext, e.a.Ams, null);
+    paramView = (b)e.a(paramContext, e.a.afsV, null);
     if ((paramView != null) && (paramView.getView() != null)) {
       paramListView.addFooterView(paramView.getView());
     }
-    this.AgJ.add(paramView);
-    paramListView.addFooterView(new j(paramContext).getView(), null, true);
-    this.AgJ.add(paramView);
-    this.qwx = new a.3(this);
-    aw.a(this.qwx);
-    this.AgL = new a.4(this);
-    com.tencent.mm.sdk.b.a.ymk.c(this.AgL);
-    aw.aaz();
-    com.tencent.mm.model.c.a(this);
-    dMn();
-    AppMethodBeat.o(34035);
-  }
-  
-  public final void aaq()
-  {
-    AppMethodBeat.i(34039);
-    dMn();
-    AppMethodBeat.o(34039);
-  }
-  
-  public final void dMn()
-  {
-    AppMethodBeat.i(34036);
-    if ((this.context == null) || (!aw.RG()))
+    this.aflT.add(paramView);
+    paramListView.addFooterView(new i(paramContext).getView(), null, true);
+    this.aflT.add(paramView);
+    this.mPf = new p.a()
     {
-      AppMethodBeat.o(34036);
+      private final MTimerHandler afmb;
+      
+      public final void onNetworkChange(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(38150);
+        if (this.afmb != null) {
+          this.afmb.startTimer(10L);
+        }
+        AppMethodBeat.o(38150);
+      }
+    };
+    bh.a(this.mPf);
+    this.aflV = new BannerHelper.4(this, f.hfK);
+    this.aflV.alive();
+    bh.bCz();
+    c.a(this);
+    ery();
+    AppMethodBeat.o(38153);
+  }
+  
+  public final void ery()
+  {
+    AppMethodBeat.i(38155);
+    if ((this.context == null) || (!bh.baz()))
+    {
+      AppMethodBeat.o(38155);
       return;
     }
-    ab.i("MicroMsg.BannerHelper", "updateBanner, :%d", new Object[] { Integer.valueOf(hashCode()) });
-    boolean bool1 = o(this.AgF, true);
-    boolean bool2 = o(this.AgG, true);
-    boolean bool3 = o(this.AgH, true);
-    boolean bool4 = o(this.AgI, true);
+    Log.i("MicroMsg.BannerHelper", "updateBanner, :%d", new Object[] { Integer.valueOf(hashCode()) });
+    boolean bool1 = R(this.aflP, true);
+    boolean bool2 = R(this.aflQ, true);
+    boolean bool3 = R(this.aflR, true);
+    boolean bool4 = R(this.aflS, true);
     int i;
     if ((bool1) || (bool2) || (bool3) || (bool4))
     {
       i = 1;
       if (!bool2) {
-        break label233;
+        break label232;
       }
-      fC(this.AgH);
-      fC(this.AgI);
+      of(this.aflR);
+      of(this.aflS);
     }
     Object localObject2;
     for (;;)
     {
       localObject1 = new LinkedList();
-      localObject2 = this.AgK.iterator();
+      localObject2 = this.aflU.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        com.tencent.mm.pluginsdk.ui.b.b localb = (com.tencent.mm.pluginsdk.ui.b.b)((Iterator)localObject2).next();
+        b localb = (b)((Iterator)localObject2).next();
         if (localb != null)
         {
           View localView = ((ViewGroup)localb.getView()).getChildAt(0);
           if ((localView != null) && (localView.getVisibility() == 0))
           {
-            localb.nwf = false;
-            localb.eUx = false;
+            localb.isFirst = false;
+            localb.nzL = false;
             ((List)localObject1).add(localb);
           }
         }
       }
       i = 0;
       break;
-      label233:
+      label232:
       if (bool3) {
-        fC(this.AgI);
+        of(this.aflS);
       }
     }
     if (((List)localObject1).size() > 0)
     {
-      ((com.tencent.mm.pluginsdk.ui.b.b)((LinkedList)localObject1).getFirst()).nwf = true;
-      ((com.tencent.mm.pluginsdk.ui.b.b)((LinkedList)localObject1).getLast()).eUx = true;
+      ((b)((LinkedList)localObject1).getFirst()).isFirst = true;
+      ((b)((LinkedList)localObject1).getLast()).nzL = true;
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((com.tencent.mm.pluginsdk.ui.b.b)((Iterator)localObject1).next()).aMK();
+        ((b)((Iterator)localObject1).next()).cMa();
       }
     }
-    if ((i != 0) && (this.AgN.getVisibility() != 0))
+    if ((i != 0) && (this.aflX.getVisibility() != 0))
     {
-      this.AgN.setVisibility(0);
-      this.AgO.setVisibility(8);
+      this.aflX.setVisibility(0);
+      this.aflY.setVisibility(8);
     }
-    Object localObject1 = this.AgJ.iterator();
+    Object localObject1 = this.aflT.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (com.tencent.mm.pluginsdk.ui.b.b)((Iterator)localObject1).next();
+      localObject2 = (b)((Iterator)localObject1).next();
       if (localObject2 != null) {
-        ((com.tencent.mm.pluginsdk.ui.b.b)localObject2).aMK();
+        ((b)localObject2).cMa();
       }
     }
-    AppMethodBeat.o(34036);
+    AppMethodBeat.o(38155);
   }
   
-  final void fB(List<com.tencent.mm.pluginsdk.ui.b.b> paramList)
+  public final void jhq()
   {
-    AppMethodBeat.i(34040);
+    AppMethodBeat.i(38154);
+    Log.i("MicroMsg.BannerHelper", "releaseBanner");
+    if (!this.aflZ)
+    {
+      AppMethodBeat.o(38154);
+      return;
+    }
+    this.aflZ = false;
+    og(this.aflP);
+    og(this.aflQ);
+    og(this.aflR);
+    og(this.aflS);
+    Iterator localIterator = this.aflT.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (localb != null) {
+        localb.release();
+      }
+    }
+    if (bh.baz()) {
+      q.bFp().e(this);
+    }
+    if (bh.baz())
+    {
+      bh.bCz();
+      c.ban().remove(this);
+    }
+    AppMethodBeat.o(38154);
+  }
+  
+  final void oe(List<b> paramList)
+  {
+    AppMethodBeat.i(38159);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      com.tencent.mm.pluginsdk.ui.b.b localb = (com.tencent.mm.pluginsdk.ui.b.b)paramList.next();
+      b localb = (b)paramList.next();
       if (localb.getView() != null) {
-        this.AgN.removeHeaderView(localb.getView());
+        this.aflX.removeHeaderView(localb.getView());
       }
     }
-    AppMethodBeat.o(34040);
+    AppMethodBeat.o(38159);
   }
   
-  final boolean o(List<com.tencent.mm.pluginsdk.ui.b.b> paramList, boolean paramBoolean)
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(34041);
-    paramList = paramList.iterator();
-    boolean bool = false;
-    if (paramList.hasNext())
+    AppMethodBeat.i(38157);
+    if (bh.baz())
     {
-      com.tencent.mm.pluginsdk.ui.b.b localb = (com.tencent.mm.pluginsdk.ui.b.b)paramList.next();
-      View localView = ((ViewGroup)localb.getView()).getChildAt(0);
-      if (localb.aMK())
+      bh.bCz();
+      if (paramMStorageEx == c.ban())
       {
-        if ((localView != null) && (localView.getVisibility() == 0)) {}
-        for (bool = true;; bool = false)
-        {
-          ab.i("MicroMsg.BannerHelper", "refreshAndReturnIsVisible[true] :%s, checkAll:%b, isVisible:%b, hc:%d", new Object[] { localb, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(hashCode()) });
-          if (paramBoolean) {
-            break;
-          }
-          AppMethodBeat.o(34041);
-          return true;
+        paramInt = Util.nullAsInt(paramObject, 0);
+        if (8193 == paramInt) {
+          ery();
+        }
+        if (42 == paramInt) {
+          ery();
         }
       }
-      if ((localView != null) && (localView.getVisibility() == 0)) {
-        ab.i("MicroMsg.BannerHelper", "refreshAndReturnIsVisible[false] but visible :%s, checkAll:%b, hc:%d", new Object[] { localb, Boolean.valueOf(paramBoolean), Integer.valueOf(hashCode()) });
-      }
     }
-    for (;;)
-    {
-      break;
-      AppMethodBeat.o(34041);
-      return bool;
-      bool = true;
-    }
+    AppMethodBeat.o(38157);
   }
   
-  public final void re(String paramString)
+  public final void onNotifyUserStatusChange()
   {
-    AppMethodBeat.i(34037);
-    if ((aw.RG()) && (!aw.QP()) && (ah.nullAsNil(paramString).length() > 0) && (paramString.equals(r.Zn()))) {
-      dMn();
-    }
-    AppMethodBeat.o(34037);
+    AppMethodBeat.i(38158);
+    ery();
+    AppMethodBeat.o(38158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a
  * JD-Core Version:    0.7.0.1
  */

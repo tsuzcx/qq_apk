@@ -8,11 +8,23 @@ public class ek
 {
   private final ThreadGroup or = new ThreadGroup("TMS-COMMON");
   private final AtomicInteger os = new AtomicInteger(1);
-  private final String ot = "Common Thread Pool-" + oS.getAndIncrement() + "-Thread-";
+  private final String ot;
+  
+  ek()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Common Thread Pool-");
+    localStringBuilder.append(oS.getAndIncrement());
+    localStringBuilder.append("-Thread-");
+    this.ot = localStringBuilder.toString();
+  }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.or, paramRunnable, this.ot + this.os.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.or;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.ot);
+    localStringBuilder.append(this.os.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }

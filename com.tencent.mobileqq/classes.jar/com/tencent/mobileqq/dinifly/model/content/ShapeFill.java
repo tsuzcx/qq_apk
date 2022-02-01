@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.model.content;
 
 import android.graphics.Path.FillType;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.FillContent;
@@ -65,7 +65,11 @@ public class ShapeFill
   
   public String toString()
   {
-    return "ShapeFill{color=, fillEnabled=" + this.fillEnabled + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShapeFill{color=, fillEnabled=");
+    localStringBuilder.append(this.fillEnabled);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

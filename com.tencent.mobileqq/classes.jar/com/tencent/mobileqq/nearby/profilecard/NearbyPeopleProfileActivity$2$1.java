@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class NearbyPeopleProfileActivity$2$1
@@ -10,13 +10,13 @@ class NearbyPeopleProfileActivity$2$1
   
   public void run()
   {
-    this.a.this$0.a();
-    QQToast.a(this.a.this$0, 1, alud.a(2131707632), 0).a();
+    this.a.this$0.dismissWaittingDialog();
+    QQToast.makeText(this.a.this$0, 1, HardCodeUtil.a(2131905102), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

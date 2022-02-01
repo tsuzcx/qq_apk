@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ResponseGetRecommendedListV2
   extends JceStruct
@@ -13,23 +14,23 @@ public final class ResponseGetRecommendedListV2
   static ArrayList<CircleFriendInfo> cache_circleInfo;
   static byte[] cache_sessionSid;
   static int cache_type;
-  public long ConfigVersion;
-  public long ForcePopSwitch;
+  public long ConfigVersion = 0L;
+  public long ForcePopSwitch = 0L;
   public String MobileUniqueNo = "";
-  public long PopCloseCount;
-  public long PopWindowsCount;
-  public long PopWindowsTime;
-  public ArrayList<MobileContactsDetailInfoEncrypt> alreadyBindContacts;
-  public ArrayList<MobileContactsDetailInfoEncrypt> assistBindContacts;
-  public long bindingTime;
-  public ArrayList<CircleFriendInfo> circleInfo;
+  public long PopCloseCount = 0L;
+  public long PopWindowsCount = 0L;
+  public long PopWindowsTime = 0L;
+  public ArrayList<MobileContactsDetailInfoEncrypt> alreadyBindContacts = null;
+  public ArrayList<MobileContactsDetailInfoEncrypt> assistBindContacts = null;
+  public long bindingTime = 0L;
+  public ArrayList<CircleFriendInfo> circleInfo = null;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
-  public long nextFlag;
+  public long nextFlag = 0L;
   public long originBinder = 1L;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   public int type = 0;
   
   public ResponseGetRecommendedListV2() {}
@@ -108,20 +109,25 @@ public final class ResponseGetRecommendedListV2
     paramJceOutputStream.write(this.timeStamp, 1);
     paramJceOutputStream.write(this.sessionSid, 2);
     paramJceOutputStream.write(this.alreadyBindContacts, 3);
-    if (this.circleInfo != null) {
-      paramJceOutputStream.write(this.circleInfo, 4);
+    Object localObject = this.circleInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.assistBindContacts != null) {
-      paramJceOutputStream.write(this.assistBindContacts, 5);
+    localObject = this.assistBindContacts;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.nationCode != null) {
-      paramJceOutputStream.write(this.nationCode, 6);
+    localObject = this.nationCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.mobileNo != null) {
-      paramJceOutputStream.write(this.mobileNo, 7);
+    localObject = this.mobileNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 8);
+    localObject = this.MobileUniqueNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.lastUsedFlag, 9);
     paramJceOutputStream.write(this.type, 10);
@@ -136,7 +142,7 @@ public final class ResponseGetRecommendedListV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponseGetRecommendedListV2
  * JD-Core Version:    0.7.0.1
  */

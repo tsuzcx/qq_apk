@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import android.view.SurfaceHolder;
 import com.tencent.mobileqq.troop.widget.VideoViewX;
 
 public class gzo
-  implements View.OnFocusChangeListener
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
   public gzo(VideoViewX paramVideoViewX) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).onClick(paramView);
+    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
+    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
+    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
+    {
+      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
+      this.a.requestLayout();
     }
   }
 }

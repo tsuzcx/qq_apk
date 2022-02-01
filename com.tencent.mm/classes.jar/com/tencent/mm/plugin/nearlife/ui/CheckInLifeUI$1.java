@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.nearlife.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class CheckInLifeUI$1
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class CheckInLifeUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(22953);
-    CheckInLifeUI.a(this.pfs, paramView, false);
-    AppMethodBeat.o(22953);
+    AppMethodBeat.i(26577);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    CheckInLifeUI.a(this.Mrd, paramView, false);
+    a.a(this, "com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(26577);
   }
 }
 

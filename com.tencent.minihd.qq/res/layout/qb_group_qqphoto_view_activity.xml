@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/view_root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <View android:id="@id/pictureviewer_back" android:background="@color/black" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.troop.ablum.preview.PictureFlowViewPager android:id="@id/image_ViewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:id="@id/pictureviewer_header_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <LinearLayout android:id="@id/pictureviewer_footer_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/pictureviewer_indicate_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/qzone_pictureviewer_bottom_height_down" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/viewer_btm_num_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/qzone_picpreviewer_indicate_text1" />
+        <com.tencent.mobileqq.troop.ablum.preview.DotNumberView android:id="@id/viewer_btm_dot_layout" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

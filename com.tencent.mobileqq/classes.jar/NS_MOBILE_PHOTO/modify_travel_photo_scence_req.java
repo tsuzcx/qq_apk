@@ -4,13 +4,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class modify_travel_photo_scence_req
   extends JceStruct
 {
-  static int cache_opetype = 0;
+  static int cache_opetype;
   static Map<String, EditPhoto> cache_picid_time_list;
   static stPhotoPoiArea cache_poi = new stPhotoPoiArea();
   static ArrayList<modify_travel_photo_scence> cache_scence = new ArrayList();
@@ -58,17 +59,19 @@ public final class modify_travel_photo_scence_req
     paramJceOutputStream.write(this.opetype, 1);
     paramJceOutputStream.write(this.poi, 2);
     paramJceOutputStream.write(this.poi_area_start_time, 3);
-    if (this.scence != null) {
-      paramJceOutputStream.write(this.scence, 4);
+    Object localObject = this.scence;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.picid_time_list != null) {
-      paramJceOutputStream.write(this.picid_time_list, 5);
+    localObject = this.picid_time_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.modify_travel_photo_scence_req
  * JD-Core Version:    0.7.0.1
  */

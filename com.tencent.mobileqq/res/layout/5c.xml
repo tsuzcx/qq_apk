@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/mrg" android:background="#b3ebedf5" android:paddingTop="68.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/mrs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:id="@id/mrh" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mrr" android:layout_width="fill_parent" android:layout_height="@dimen/j2" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/wka" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mrp" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/mrs">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/mro" android:clickable="true" android:layout_width="wrap_content" android:layout_height="36.0dip" android:src="@drawable/iws" />
+        <android.support.v7.widget.RecyclerView android:id="@id/mrq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

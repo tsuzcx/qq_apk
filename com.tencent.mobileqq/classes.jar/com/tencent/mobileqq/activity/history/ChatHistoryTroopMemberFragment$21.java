@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.history;
 
-import aicc;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ChatHistoryTroopMemberFragment$21
+class ChatHistoryTroopMemberFragment$21
   implements Runnable
 {
   ChatHistoryTroopMemberFragment$21(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void run()
   {
-    ChatHistoryTroopMemberFragment.a(this.this$0.getActivity().app, Long.valueOf(this.this$0.c).longValue(), new aicc(this));
+    ChatHistoryTroopMemberFragment.a(this.this$0.getBaseActivity().app, Long.valueOf(this.this$0.w).longValue(), new ChatHistoryTroopMemberFragment.21.1(this));
   }
 }
 

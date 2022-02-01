@@ -4,59 +4,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  private static boolean BlH;
-  private static g BlI;
+  private static boolean ahvq;
+  private static g ahvr;
   
   static
   {
-    AppMethodBeat.i(114620);
-    BlH = false;
-    BlI = new k();
-    BlH = false;
-    BlI = new k();
-    AppMethodBeat.o(114620);
+    AppMethodBeat.i(138483);
+    ahvq = false;
+    ahvr = new k();
+    ahvq = false;
+    ahvr = new k();
+    AppMethodBeat.o(138483);
   }
   
-  public static void cU(Object paramObject)
+  public static void hd(Object paramObject)
   {
-    AppMethodBeat.i(114618);
+    AppMethodBeat.i(138481);
     if ((paramObject != null) && ((paramObject instanceof Exception)))
     {
       new StringBuilder().append(paramObject);
-      AppMethodBeat.o(114618);
+      AppMethodBeat.o(138481);
       return;
     }
-    AppMethodBeat.o(114618);
+    AppMethodBeat.o(138481);
   }
   
-  public static void cV(Object paramObject)
+  public static void he(Object paramObject)
   {
-    AppMethodBeat.i(114619);
+    AppMethodBeat.i(138482);
     if ((paramObject != null) && ((paramObject instanceof Exception)))
     {
       new StringBuilder().append(paramObject);
-      AppMethodBeat.o(114619);
+      AppMethodBeat.o(138482);
       return;
     }
-    AppMethodBeat.o(114619);
+    AppMethodBeat.o(138482);
   }
   
-  public static void dUT() {}
+  public static void jXC() {}
   
-  public static void dUU() {}
+  public static void jXD() {}
   
-  public static void dUV() {}
+  public static void jhd() {}
   
   public static void w(Throwable paramThrowable)
   {
-    AppMethodBeat.i(114617);
-    cU(paramThrowable);
-    AppMethodBeat.o(114617);
+    AppMethodBeat.i(138480);
+    hd(paramThrowable);
+    AppMethodBeat.o(138480);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.f.h
  * JD-Core Version:    0.7.0.1
  */

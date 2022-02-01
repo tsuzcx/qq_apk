@@ -16,7 +16,7 @@ import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.utils.VoicePlayer;
 import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
 import com.tencent.mobileqq.widget.OvalProgress;
-import ibp;
+import ibo;
 import mqq.app.AppRuntime;
 
 public class QfavMicroPhoneDialog
@@ -43,20 +43,20 @@ public class QfavMicroPhoneDialog
   public QfavMicroPhoneDialog(Context paramContext, AppRuntime paramAppRuntime, QfavMicroPhoneDialog.Listener paramListener)
   {
     super(paramContext, 2131624405);
-    this.jdField_a_of_type_AndroidOsHandler = new ibp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ibo(this);
     this.jdField_a_of_type_CooperationQqfavWidgetQfavMicroPhoneDialog$Listener = paramListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setContentView(2130903463);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232664));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232672).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress = ((OvalProgress)findViewById(2131232665));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232663));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232671).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress = ((OvalProgress)findViewById(2131232664));
     this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232666));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232667));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232671));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232665));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232666));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232670));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232669));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232668));
     this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QQTextBuilder.a);
   }
   

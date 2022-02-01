@@ -15,7 +15,7 @@ import java.util.Iterator;
 
 public class h
 {
-  private static h a = null;
+  private static h a;
   private ArrayList<j> b = new ArrayList();
   private boolean c = false;
   private d d;
@@ -45,15 +45,15 @@ public class h
   
   public static boolean a(String paramString)
   {
-    BypassInterceptConfig localBypassInterceptConfig = (BypassInterceptConfig)b.a().a("key_bypass_config", BypassInterceptConfig.class);
-    if (localBypassInterceptConfig == null) {
+    Object localObject = (BypassInterceptConfig)b.a().a("key_bypass_config", BypassInterceptConfig.class);
+    if (localObject == null) {
       return false;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("config.status = ");
-    localStringBuilder.append(localBypassInterceptConfig.status);
+    localStringBuilder.append(((BypassInterceptConfig)localObject).status);
     localStringBuilder.append("||config.pkgList = [");
-    Iterator localIterator = localBypassInterceptConfig.pkgList.iterator();
+    Iterator localIterator = ((BypassInterceptConfig)localObject).pkgList.iterator();
     while (localIterator.hasNext())
     {
       localStringBuilder.append((String)localIterator.next());
@@ -61,14 +61,18 @@ public class h
     }
     localStringBuilder.append("]");
     ab.c("miles", localStringBuilder.toString());
-    if (localBypassInterceptConfig.status == 1)
+    if (((BypassInterceptConfig)localObject).status == 1)
     {
       ab.c("miles", "<checkPkg> status == 1, allow all pkg");
       return true;
     }
-    if ((localBypassInterceptConfig.pkgList != null) && (localBypassInterceptConfig.pkgList.contains(paramString)))
+    if ((((BypassInterceptConfig)localObject).pkgList != null) && (((BypassInterceptConfig)localObject).pkgList.contains(paramString)))
     {
-      ab.c("miles", "<checkPkg> pkgList contains " + paramString + ",allow install");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<checkPkg> pkgList contains ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",allow install");
+      ab.c("miles", ((StringBuilder)localObject).toString());
       return true;
     }
     return false;
@@ -78,7 +82,11 @@ public class h
   {
     long l = System.currentTimeMillis();
     BypassInterceptConfig localBypassInterceptConfig = (BypassInterceptConfig)b.a().a("key_bypass_config", BypassInterceptConfig.class);
-    ab.c("miles", "读取配置耗时：" + (System.currentTimeMillis() - l) + "ms");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("读取配置耗时：");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    localStringBuilder.append("ms");
+    ab.c("miles", localStringBuilder.toString());
     return (localBypassInterceptConfig != null) && (localBypassInterceptConfig.status != 0);
   }
   
@@ -88,9 +96,15 @@ public class h
     while (localIterator.hasNext())
     {
       j localj = (j)localIterator.next();
-      Log.i("HookManager", "start inject obj:" + localj.a());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start inject obj:");
+      localStringBuilder.append(localj.a());
+      Log.i("HookManager", localStringBuilder.toString());
       localj.b();
-      Log.i("HookManager", "end inject obj:" + localj.a());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("end inject obj:");
+      localStringBuilder.append(localj.a());
+      Log.i("HookManager", localStringBuilder.toString());
     }
   }
   
@@ -104,14 +118,18 @@ public class h
       GlobalUtil.getInstance().setContext(paramContext.getApplicationContext());
       f.a();
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("Thread.currentThread() == Looper.getMainLooper().getThread() is ");
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Thread.currentThread() == Looper.getMainLooper().getThread() is ");
+    boolean bool;
+    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    ab.c("miles", localStringBuilder.toString());
+    if (b())
     {
-      ab.c("miles", bool);
-      if (!b()) {
-        break;
-      }
       long l = System.currentTimeMillis();
       if (!this.c)
       {
@@ -123,10 +141,14 @@ public class h
         c();
         this.c = true;
       }
-      if ((this.d != null) && (!this.d.c())) {
+      paramContext = this.d;
+      if ((paramContext != null) && (!paramContext.c())) {
         this.d.a(true);
       }
-      ab.c("miles", "<hookAM4Install> time cost:" + (System.currentTimeMillis() - l));
+      paramContext = new StringBuilder();
+      paramContext.append("<hookAM4Install> time cost:");
+      paramContext.append(System.currentTimeMillis() - l);
+      ab.c("miles", paramContext.toString());
       k.a().post(new i(this));
       return;
     }
@@ -135,7 +157,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.h
  * JD-Core Version:    0.7.0.1
  */

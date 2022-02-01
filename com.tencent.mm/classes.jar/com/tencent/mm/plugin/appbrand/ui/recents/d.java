@@ -1,116 +1,119 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.List;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.plugin.appbrand.ba.c;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.report.AppBrandLauncherDesktopReporter;
+import com.tencent.mm.plugin.appbrand.report.f;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import kotlin.Metadata;
+import kotlin.g.a.m;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
 
-public abstract class d<_DataSource extends k>
-  extends a
-  implements View.OnClickListener
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "activity", "Landroidx/fragment/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroidx/fragment/app/FragmentActivity;Landroid/view/ViewGroup;)V", "scope", "Lkotlinx/coroutines/CoroutineScope;", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onResume", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "updateMoreOptionEntryRedDotStatus", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  extends e
 {
-  private final int eln;
-  private final int elo;
-  private final int elp;
-  private final int elq = -1;
-  private final Class iSp;
-  private final com.tencent.mm.plugin.appbrand.ui.widget.a iSq;
-  protected final int iSr = 4;
-  private ViewGroup iSs;
-  protected AppBrandNearbyShowcaseView iSt;
-  private volatile List<LocalUsageInfo> iSu;
-  private ImageView iSv;
-  private final ViewTreeObserver.OnPreDrawListener iSw = new d.1(this);
-  private final k.a iSx = new d.4(this);
-  private Activity mActivity;
-  private boolean wM;
+  public static final d.a ulj;
+  private aq scope;
   
-  d(Class<_DataSource> paramClass, Activity paramActivity, ViewGroup paramViewGroup)
+  static
   {
-    this.mActivity = paramActivity;
-    this.iSp = paramClass;
-    this.eln = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 25);
-    this.elo = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 19);
-    this.elp = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 2);
-    this.iSq = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.eln, this.elp);
-    this.iSs = ((ViewGroup)LayoutInflater.from(paramActivity).inflate(2130968717, paramViewGroup, false));
-    this.iSs.setOnClickListener(this);
-    ((TextView)this.iSs.findViewById(2131820680)).setText(getTitle());
-    this.iSv = ((ImageView)this.iSs.findViewById(2131821353));
-    this.iSt = ((AppBrandNearbyShowcaseView)this.iSs.findViewById(2131821351));
-    this.iSt.setIconLayerCount(4);
-    this.iSt.setIconSize(this.eln + this.elp * 2);
-    this.iSt.setIconGap(this.elo);
+    AppMethodBeat.i(180709);
+    ulj = new d.a((byte)0);
+    AppMethodBeat.o(180709);
   }
   
-  public final void aNd()
+  public d(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
-    this.wM = true;
-    eR(true);
-    this.iSs.getViewTreeObserver().addOnPreDrawListener(this.iSw);
+    super(paramFragmentActivity, paramViewGroup);
+    AppMethodBeat.i(323098);
+    this.scope = ar.kBZ();
+    paramFragmentActivity.getLifecycle().addObserver((androidx.lifecycle.p)new AppBrandLauncherHeaderOrderEntrance.1(this));
+    AppMethodBeat.o(323098);
   }
   
-  public final View aNe()
+  private final void cMA()
   {
-    return this.iSs;
-  }
-  
-  protected abstract List<LocalUsageInfo> aNg();
-  
-  protected final Activity getActivity()
-  {
-    return this.mActivity;
-  }
-  
-  protected abstract String getTitle();
-  
-  public void onClick(View paramView) {}
-  
-  public final void onDetached()
-  {
-    this.wM = false;
-    this.iSs.getViewTreeObserver().removeOnPreDrawListener(this.iSw);
-    g.auF().remove(this.iSx);
-    ((k)g.w(this.iSp)).remove(this.iSx);
-  }
-  
-  public final void onResume() {}
-  
-  public final void pF(int paramInt)
-  {
-    if (this.iSv != null) {
-      this.iSv.setVisibility(paramInt);
+    AppMethodBeat.i(180707);
+    com.tencent.e.f.h.jXD();
+    aq localaq = this.scope;
+    if (localaq != null) {
+      kotlinx.coroutines.j.a(localaq, null, null, (m)new d.b(this, null), 3);
     }
-    TextView localTextView = (TextView)this.iSs.findViewById(2131820680);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localTextView.getLayoutParams();
-    localLayoutParams.leftMargin = this.iSs.getResources().getDimensionPixelOffset(2131428015);
-    localTextView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(180707);
   }
   
-  public final void pG(int paramInt)
+  protected final void a(WeImageView paramWeImageView)
   {
-    this.iSs.setBackgroundResource(paramInt);
+    AppMethodBeat.i(180708);
+    kotlin.g.b.s.u(paramWeImageView, "imageView");
+    paramWeImageView.setVisibility(0);
+    paramWeImageView.setImageResource(ba.h.icons_outline_miniprogram_order);
+    paramWeImageView.setIconColor(getActivity().getResources().getColor(ba.c.Brand));
+    AppMethodBeat.o(180708);
+  }
+  
+  protected final String getTitle()
+  {
+    AppMethodBeat.i(180703);
+    String str = getActivity().getString(ba.i.app_brand_recents_list_header_order_tag_wording);
+    kotlin.g.b.s.s(str, "activity.getString(R.str…header_order_tag_wording)");
+    AppMethodBeat.o(180703);
+    return str;
+  }
+  
+  public final void iR()
+  {
+    AppMethodBeat.i(180705);
+    super.iR();
+    com.tencent.e.f.h.jXD();
+    cMA();
+    AppMethodBeat.o(180705);
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(180704);
+    super.onClick(paramView);
+    paramView = new com.tencent.mm.plugin.appbrand.api.g();
+    paramView.username = "gh_af04e9bb7e91@app";
+    paramView.euz = 0;
+    paramView.version = 0;
+    paramView.scene = 1001;
+    paramView.hzx = "";
+    ((t)com.tencent.mm.kernel.h.ax(t.class)).a((Context)getActivity(), paramView);
+    paramView = new com.tencent.mm.plugin.appbrand.s.g(true);
+    com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)paramView, 0);
+    com.tencent.mm.plugin.report.service.h.OAn.b(18685, new Object[] { Integer.valueOf(2) });
+    paramView = f.tNH;
+    FragmentActivity localFragmentActivity = getActivity();
+    kotlin.g.b.s.s(localFragmentActivity, "activity");
+    paramView = paramView.a(localFragmentActivity);
+    com.tencent.mm.plugin.report.service.h.OAn.b(19468, new Object[] { Integer.valueOf(4), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
+    AppMethodBeat.o(180704);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(180706);
+    super.onResume();
+    cMA();
+    AppMethodBeat.o(180706);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.d
  * JD-Core Version:    0.7.0.1
  */

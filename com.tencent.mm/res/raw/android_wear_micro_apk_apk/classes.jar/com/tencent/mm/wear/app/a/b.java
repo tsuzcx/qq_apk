@@ -9,20 +9,20 @@ import java.io.File;
 final class b
   implements c
 {
-  public String aas;
-  public String aat;
-  public String aau;
+  public String adT;
+  public String adU;
+  public String adV;
   
   private b(a parama) {}
   
   public final void a(Channel paramChannel, int paramInt1, int paramInt2)
   {
-    if ((this.aat.equals(paramChannel.getPath())) && (this.aau.equals(paramChannel.kq())))
+    if ((this.adU.equals(paramChannel.getPath())) && (this.adV.equals(paramChannel.kz())))
     {
-      new File(this.aas).delete();
-      d.c("MicroMsg.GlobalConnection", "delete file %s %s", new Object[] { this.aat, this.aas });
-      z.SC.b(a.a(this.aav), this);
-      paramChannel.a(a.a(this.aav));
+      new File(this.adT).delete();
+      d.c("MicroMsg.GlobalConnection", "delete file %s %s", new Object[] { this.adU, this.adT });
+      z.Ur.b(a.a(this.adW), this);
+      paramChannel.a(a.a(this.adW));
     }
   }
 }

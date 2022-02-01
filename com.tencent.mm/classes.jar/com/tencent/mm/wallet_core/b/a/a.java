@@ -1,58 +1,57 @@
 package com.tencent.mm.wallet_core.b.a;
 
 import android.content.Context;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.avh;
-import com.tencent.mm.protocal.protobuf.avi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.dai;
+import com.tencent.mm.protocal.protobuf.daj;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import org.json.JSONObject;
 
 public abstract class a
-  extends u
+  extends com.tencent.mm.wallet_core.model.w
 {
-  private f callback;
-  private b rr;
+  private h callback;
+  private c rr;
   
-  public abstract String bhG();
+  public int doScene(g paramg, h paramh)
+  {
+    this.callback = paramh;
+    return dispatch(paramg, this.rr, this);
+  }
   
-  public abstract int bhH();
+  public abstract String drI();
   
-  public boolean bhI()
+  public abstract int drJ();
+  
+  public boolean drK()
   {
     return false;
   }
   
-  public int doScene(e parame, f paramf)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    this.callback = paramf;
-    return dispatch(parame, this.rr, this);
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
-  {
-    ab.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + bhH() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString + " " + getType());
-    avi localavi = (avi)((b)paramq).fsW.fta;
+    Log.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + drJ() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString + " " + getType());
+    daj localdaj = (daj)c.c.b(((c)params).otC);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramInt1 = localavi.xkM;
-      paramq = aa.b(localavi.xkL);
-      if ((paramInt1 == 0) && (!bo.isNullOrNil(paramq))) {
-        paramInt1 = localavi.cpX;
+      paramInt1 = localdaj.aaFT;
+      params = com.tencent.mm.platformtools.w.b(localdaj.aaFS);
+      if ((paramInt1 == 0) && (!Util.isNullOrNil(params))) {
+        paramInt1 = localdaj.hDx;
       }
     }
     for (;;)
@@ -60,27 +59,27 @@ public abstract class a
       int i;
       try
       {
-        localJSONObject = new JSONObject(paramq);
+        localJSONObject = new JSONObject(params);
         i = localJSONObject.getInt("retcode");
         paramArrayOfByte = localJSONObject.optString("retmsg");
-        paramq = paramArrayOfByte;
-        if (!bo.isNullOrNil(paramArrayOfByte)) {
-          break label384;
+        params = paramArrayOfByte;
+        if (!Util.isNullOrNil(paramArrayOfByte)) {
+          break label386;
         }
-        paramq = localavi.errorMsg;
+        params = localdaj.errorMsg;
       }
       catch (Exception paramString)
       {
         JSONObject localJSONObject;
-        ab.printErrStackTrace("MiroMsg.NetSceneTenpayH5TransferBase", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MiroMsg.NetSceneTenpayH5TransferBase", paramString, "", new Object[0]);
         i = 1000;
         paramInt1 = 2;
       }
-      if (bhI())
+      if (drK())
       {
-        onGYNetEnd(i, paramq, localJSONObject);
+        onGYNetEnd(i, params, localJSONObject);
         if (paramInt2 != 0) {
-          ab.e("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + bhH() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+          Log.e("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + drJ() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
         }
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         return;
@@ -89,30 +88,30 @@ public abstract class a
       if (paramInt1 == 0)
       {
         paramInt1 = -1000;
-        paramString = paramq;
+        paramString = params;
         paramInt3 = paramInt1;
         continue;
         do
         {
-          paramString = ah.getContext().getString(2131305032);
+          paramString = MMApplicationContext.getContext().getString(a.i.wallet_data_err);
           paramInt2 = i;
           paramInt3 = paramInt1;
           break;
           paramInt2 = 1000;
           paramInt3 = 2;
-          paramString = localavi.xkN;
+          paramString = localdaj.aaFU;
           break;
-          paramString = br.F(paramString, "e");
+          paramString = XmlParser.parseXml(paramString, "e", null);
           i = paramInt2;
           paramInt1 = paramInt3;
         } while (paramString == null);
-        ab.d("MiroMsg.NetSceneTenpayH5TransferBase", "CDN error!");
+        Log.d("MiroMsg.NetSceneTenpayH5TransferBase", "CDN error!");
         paramString = (String)paramString.get(".e.Content");
       }
       else
       {
         continue;
-        label384:
+        label386:
         if (i == 0) {
           if (paramInt1 == 0) {}
         }
@@ -126,19 +125,19 @@ public abstract class a
   {
     if (this.rr == null)
     {
-      localObject1 = new b.a();
-      ((b.a)localObject1).fsX = new avh();
-      ((b.a)localObject1).fsY = new avi();
-      ((b.a)localObject1).uri = bhG();
-      ((b.a)localObject1).funcId = getType();
-      ((b.a)localObject1).reqCmdId = 0;
-      ((b.a)localObject1).respCmdId = 0;
-      this.rr = ((b.a)localObject1).ado();
+      localObject1 = new c.a();
+      ((c.a)localObject1).otE = new dai();
+      ((c.a)localObject1).otF = new daj();
+      ((c.a)localObject1).uri = drI();
+      ((c.a)localObject1).funcId = getType();
+      ((c.a)localObject1).otG = 0;
+      ((c.a)localObject1).respCmdId = 0;
+      this.rr = ((c.a)localObject1).bEF();
       this.rr.setIsUserCmd(true);
     }
-    Object localObject1 = (avh)this.rr.fsV.fta;
-    ((avh)localObject1).xkI = bhH();
-    ((avh)localObject1).xkJ = 1;
+    Object localObject1 = (dai)c.b.b(this.rr.otB);
+    ((dai)localObject1).aaFP = drJ();
+    ((dai)localObject1).aaFQ = 1;
     Object[] arrayOfObject = paramMap.keySet().toArray();
     Arrays.sort(arrayOfObject);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -149,7 +148,7 @@ public abstract class a
       Object localObject2 = arrayOfObject[i];
       String str = (String)paramMap.get(localObject2);
       k = j;
-      if (!bo.isNullOrNil(str))
+      if (!Util.isNullOrNil(str))
       {
         if (j != 0) {
           localStringBuilder.append("&");
@@ -161,14 +160,14 @@ public abstract class a
       }
       i += 1;
     }
-    ab.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + ((avh)localObject1).xkI + ", req = " + localStringBuilder.toString());
+    Log.i("MiroMsg.NetSceneTenpayH5TransferBase", "Cmd : " + ((dai)localObject1).aaFP + ", req = " + localStringBuilder.toString());
     paramMap = localStringBuilder.toString().getBytes();
-    ((avh)localObject1).xkK = new SKBuiltinBuffer_t().setBuffer(paramMap);
+    ((dai)localObject1).aaFR = new gol().df(paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.b.a.a
  * JD-Core Version:    0.7.0.1
  */

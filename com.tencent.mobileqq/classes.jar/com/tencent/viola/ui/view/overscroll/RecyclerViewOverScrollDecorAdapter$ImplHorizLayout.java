@@ -9,17 +9,17 @@ public class RecyclerViewOverScrollDecorAdapter$ImplHorizLayout
   
   public boolean isInAbsoluteEnd()
   {
-    return !this.this$0.mRecyclerView.canScrollHorizontally(1);
+    return this.this$0.mRecyclerView.canScrollHorizontally(1) ^ true;
   }
   
   public boolean isInAbsoluteStart()
   {
-    return !this.this$0.mRecyclerView.canScrollHorizontally(-1);
+    return this.this$0.mRecyclerView.canScrollHorizontally(-1) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.RecyclerViewOverScrollDecorAdapter.ImplHorizLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/skin_input" android:textColorHint="@color/skin_hint_input" android:id="@id/add_publicaccount_keyword" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginTop="@dimen/qq_add_contacts_to_tabbar_height" android:hint="@string/addcontactactivity_searchbar_hint" android:drawablePadding="0.0dip" style="@style/common_single_line_input_box_style" />
+    <TextView android:textSize="12.0sp" android:textColor="#4d000000" android:id="@id/add_publicaccount_title" android:background="@drawable/card_shadow_head" android:paddingLeft="32.0dip" android:paddingTop="32.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/public_account_recommend_title" />
+</LinearLayout>

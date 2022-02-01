@@ -6,11 +6,11 @@ public final class IPCCmd
   implements Serializable
 {
   public static final IPCCmd BatchDownloadAction;
-  public static final IPCCmd BatchSDKDownloadAction;
+  public static final IPCCmd BatchSDKDownloadAction = new IPCCmd(13, 13, "BatchSDKDownloadAction");
   public static final IPCCmd Empty;
   public static final IPCCmd GetDownloadProgress;
   public static final IPCCmd GetDownloadState;
-  public static final IPCCmd GetInstallState;
+  public static final IPCCmd GetInstallState = new IPCCmd(14, 14, "GetInstallState");
   public static final IPCCmd OperateDownloadTask;
   public static final IPCCmd QueryDownloadTask;
   public static final IPCCmd QueryLoginInfo;
@@ -41,28 +41,20 @@ public final class IPCCmd
   
   static
   {
-    if (!IPCCmd.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      __values = new IPCCmd[15];
-      Empty = new IPCCmd(0, 0, "Empty");
-      OperateDownloadTask = new IPCCmd(1, 1, "OperateDownloadTask");
-      GetDownloadState = new IPCCmd(2, 2, "GetDownloadState");
-      GetDownloadProgress = new IPCCmd(3, 3, "GetDownloadProgress");
-      QueryDownloadTask = new IPCCmd(4, 4, "QueryDownloadTask");
-      URIAction = new IPCCmd(5, 5, "URIAction");
-      QueryLoginInfo = new IPCCmd(6, 6, "QueryLoginInfo");
-      QueryLoginState = new IPCCmd(7, 7, "QueryLoginState");
-      ServiceFreeAction = new IPCCmd(8, 8, "ServiceFreeAction");
-      BatchDownloadAction = new IPCCmd(9, 9, "BatchDownloadAction");
-      SubScribeSDKDownloadTaskByVia = new IPCCmd(10, 10, "SubScribeSDKDownloadTaskByVia");
-      SyncSDKDownloadTask = new IPCCmd(11, 11, "SyncSDKDownloadTask");
-      SyncSDKHandShake = new IPCCmd(12, 12, "SyncSDKHandShake");
-      BatchSDKDownloadAction = new IPCCmd(13, 13, "BatchSDKDownloadAction");
-      GetInstallState = new IPCCmd(14, 14, "GetInstallState");
-      return;
-    }
+    __values = new IPCCmd[15];
+    Empty = new IPCCmd(0, 0, "Empty");
+    OperateDownloadTask = new IPCCmd(1, 1, "OperateDownloadTask");
+    GetDownloadState = new IPCCmd(2, 2, "GetDownloadState");
+    GetDownloadProgress = new IPCCmd(3, 3, "GetDownloadProgress");
+    QueryDownloadTask = new IPCCmd(4, 4, "QueryDownloadTask");
+    URIAction = new IPCCmd(5, 5, "URIAction");
+    QueryLoginInfo = new IPCCmd(6, 6, "QueryLoginInfo");
+    QueryLoginState = new IPCCmd(7, 7, "QueryLoginState");
+    ServiceFreeAction = new IPCCmd(8, 8, "ServiceFreeAction");
+    BatchDownloadAction = new IPCCmd(9, 9, "BatchDownloadAction");
+    SubScribeSDKDownloadTaskByVia = new IPCCmd(10, 10, "SubScribeSDKDownloadTaskByVia");
+    SyncSDKDownloadTask = new IPCCmd(11, 11, "SyncSDKDownloadTask");
+    SyncSDKHandShake = new IPCCmd(12, 12, "SyncSDKHandShake");
   }
   
   private IPCCmd(int paramInt1, int paramInt2, String paramString)
@@ -75,33 +67,49 @@ public final class IPCCmd
   public static IPCCmd convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      localObject = __values;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
     }
-    if (!a) {
-      throw new AssertionError();
+    if (a) {
+      return null;
     }
-    return null;
+    Object localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public static IPCCmd convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      IPCCmd[] arrayOfIPCCmd = __values;
+      if (i >= arrayOfIPCCmd.length) {
+        break;
+      }
+      if (arrayOfIPCCmd[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
     }
-    if (!a) {
-      throw new AssertionError();
+    if (a) {
+      return null;
     }
-    return null;
+    paramString = new AssertionError();
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public String toString()
@@ -116,7 +124,7 @@ public final class IPCCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCCmd
  * JD-Core Version:    0.7.0.1
  */

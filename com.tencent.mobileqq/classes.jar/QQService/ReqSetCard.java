@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqSetCard
   extends JceStruct
@@ -15,14 +16,14 @@ public final class ReqSetCard
   static ArrayList<TagInfo> cache_vDelTags;
   static byte[] cache_vReqSetTemplate;
   static ArrayList<TagInfo> cache_vTagsID;
-  public byte bIsSingle;
+  public byte bIsSingle = 0;
   public int eSubCmd = CARDSETTYPE.TYPE_SET_DEFAUT.value();
-  public ReqHead stHeader;
-  public ArrayList<TagInfo> vAddTags;
-  public byte[] vBackground;
-  public ArrayList<TagInfo> vDelTags;
-  public byte[] vReqSetTemplate;
-  public ArrayList<TagInfo> vTagsID;
+  public ReqHead stHeader = null;
+  public ArrayList<TagInfo> vAddTags = null;
+  public byte[] vBackground = null;
+  public ArrayList<TagInfo> vDelTags = null;
+  public byte[] vReqSetTemplate = null;
+  public ArrayList<TagInfo> vTagsID = null;
   
   public ReqSetCard() {}
   
@@ -87,26 +88,31 @@ public final class ReqSetCard
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.eSubCmd, 1);
     paramJceOutputStream.write(this.bIsSingle, 2);
-    if (this.vTagsID != null) {
-      paramJceOutputStream.write(this.vTagsID, 3);
+    Object localObject = this.vTagsID;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.vBackground != null) {
-      paramJceOutputStream.write(this.vBackground, 4);
+    localObject = this.vBackground;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
-    if (this.vDelTags != null) {
-      paramJceOutputStream.write(this.vDelTags, 5);
+    localObject = this.vDelTags;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.vAddTags != null) {
-      paramJceOutputStream.write(this.vAddTags, 6);
+    localObject = this.vAddTags;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.vReqSetTemplate != null) {
-      paramJceOutputStream.write(this.vReqSetTemplate, 7);
+    localObject = this.vReqSetTemplate;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqSetCard
  * JD-Core Version:    0.7.0.1
  */

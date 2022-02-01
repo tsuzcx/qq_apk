@@ -24,16 +24,16 @@ public class zza
   
   protected final Parcel obtainAndWriteInterfaceToken()
   {
-    AppMethodBeat.i(108671);
+    AppMethodBeat.i(4107);
     Parcel localParcel = Parcel.obtain();
     localParcel.writeInterfaceToken(this.zzb);
-    AppMethodBeat.o(108671);
+    AppMethodBeat.o(4107);
     return localParcel;
   }
   
   protected final void transactOneway(int paramInt, Parcel paramParcel)
   {
-    AppMethodBeat.i(108672);
+    AppMethodBeat.i(4108);
     try
     {
       this.zza.transact(1, paramParcel, null, 1);
@@ -42,13 +42,13 @@ public class zza
     finally
     {
       paramParcel.recycle();
-      AppMethodBeat.o(108672);
+      AppMethodBeat.o(4108);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.firebase_messaging.zza
  * JD-Core Version:    0.7.0.1
  */

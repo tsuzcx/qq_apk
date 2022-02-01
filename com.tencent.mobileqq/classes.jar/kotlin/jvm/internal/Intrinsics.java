@@ -28,13 +28,14 @@ public class Intrinsics
   @SinceKotlin(version="1.1")
   public static boolean areEqual(Double paramDouble1, Double paramDouble2)
   {
-    if (paramDouble1 == null) {
-      if (paramDouble2 != null) {}
-    }
-    while ((paramDouble2 != null) && (paramDouble1.doubleValue() == paramDouble2.doubleValue()))
+    if (paramDouble1 == null)
     {
+      if (paramDouble2 == null) {
+        return true;
+      }
+    }
+    else if ((paramDouble2 != null) && (paramDouble1.doubleValue() == paramDouble2.doubleValue())) {
       return true;
-      return false;
     }
     return false;
   }
@@ -48,13 +49,14 @@ public class Intrinsics
   @SinceKotlin(version="1.1")
   public static boolean areEqual(Float paramFloat1, Float paramFloat2)
   {
-    if (paramFloat1 == null) {
-      if (paramFloat2 != null) {}
-    }
-    while ((paramFloat2 != null) && (paramFloat1.floatValue() == paramFloat2.floatValue()))
+    if (paramFloat1 == null)
     {
+      if (paramFloat2 == null) {
+        return true;
+      }
+    }
+    else if ((paramFloat2 != null) && (paramFloat1.floatValue() == paramFloat2.floatValue())) {
       return true;
-      return false;
     }
     return false;
   }
@@ -69,23 +71,34 @@ public class Intrinsics
   
   public static void checkExpressionValueIsNotNull(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramString + " must not be null")));
+    if (paramObject != null) {
+      return;
     }
+    paramObject = new StringBuilder();
+    paramObject.append(paramString);
+    paramObject.append(" must not be null");
+    throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramObject.toString())));
   }
   
   public static void checkFieldIsNotNull(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramString)));
+    if (paramObject != null) {
+      return;
     }
+    throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramString)));
   }
   
   public static void checkFieldIsNotNull(Object paramObject, String paramString1, String paramString2)
   {
-    if (paramObject == null) {
-      throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException("Field specified as non-null is null: " + paramString1 + "." + paramString2)));
+    if (paramObject != null) {
+      return;
     }
+    paramObject = new StringBuilder();
+    paramObject.append("Field specified as non-null is null: ");
+    paramObject.append(paramString1);
+    paramObject.append(".");
+    paramObject.append(paramString2);
+    throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramObject.toString())));
   }
   
   public static void checkHasClass(String paramString)
@@ -98,7 +111,11 @@ public class Intrinsics
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw ((ClassNotFoundException)sanitizeStackTrace(new ClassNotFoundException("Class " + paramString + " is not found. Please update the Kotlin runtime to the latest version", localClassNotFoundException)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Class ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" is not found. Please update the Kotlin runtime to the latest version");
+      throw ((ClassNotFoundException)sanitizeStackTrace(new ClassNotFoundException(localStringBuilder.toString(), localClassNotFoundException)));
     }
   }
   
@@ -112,7 +129,12 @@ public class Intrinsics
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw ((ClassNotFoundException)sanitizeStackTrace(new ClassNotFoundException("Class " + paramString1 + " is not found: this code requires the Kotlin runtime of version at least " + paramString2, localClassNotFoundException)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Class ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" is not found: this code requires the Kotlin runtime of version at least ");
+      localStringBuilder.append(paramString2);
+      throw ((ClassNotFoundException)sanitizeStackTrace(new ClassNotFoundException(localStringBuilder.toString(), localClassNotFoundException)));
     }
   }
   
@@ -132,16 +154,21 @@ public class Intrinsics
   
   public static void checkNotNullExpressionValue(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw ((NullPointerException)sanitizeStackTrace(new NullPointerException(paramString + " must not be null")));
+    if (paramObject != null) {
+      return;
     }
+    paramObject = new StringBuilder();
+    paramObject.append(paramString);
+    paramObject.append(" must not be null");
+    throw ((NullPointerException)sanitizeStackTrace(new NullPointerException(paramObject.toString())));
   }
   
   public static void checkNotNullParameter(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw ((NullPointerException)sanitizeStackTrace(new NullPointerException(paramString)));
+    if (paramObject != null) {
+      return;
     }
+    throw ((NullPointerException)sanitizeStackTrace(new NullPointerException(paramString)));
   }
   
   public static void checkParameterIsNotNull(Object paramObject, String paramString)
@@ -153,16 +180,23 @@ public class Intrinsics
   
   public static void checkReturnedValueIsNotNull(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramString)));
+    if (paramObject != null) {
+      return;
     }
+    throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramString)));
   }
   
   public static void checkReturnedValueIsNotNull(Object paramObject, String paramString1, String paramString2)
   {
-    if (paramObject == null) {
-      throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException("Method specified as non-null returned null: " + paramString1 + "." + paramString2)));
+    if (paramObject != null) {
+      return;
     }
+    paramObject = new StringBuilder();
+    paramObject.append("Method specified as non-null returned null: ");
+    paramObject.append(paramString1);
+    paramObject.append(".");
+    paramObject.append(paramString2);
+    throw ((IllegalStateException)sanitizeStackTrace(new IllegalStateException(paramObject.toString())));
   }
   
   public static int compare(int paramInt1, int paramInt2)
@@ -225,7 +259,10 @@ public class Intrinsics
   
   public static String stringPlus(String paramString, Object paramObject)
   {
-    return paramString + paramObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramObject);
+    return localStringBuilder.toString();
   }
   
   public static void throwAssert()
@@ -285,7 +322,14 @@ public class Intrinsics
     Object localObject = java.lang.Thread.currentThread().getStackTrace()[3];
     String str = ((StackTraceElement)localObject).getClassName();
     localObject = ((StackTraceElement)localObject).getMethodName();
-    throw ((IllegalArgumentException)sanitizeStackTrace(new IllegalArgumentException("Parameter specified as non-null is null: method " + str + "." + (String)localObject + ", parameter " + paramString)));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Parameter specified as non-null is null: method ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(".");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", parameter ");
+    localStringBuilder.append(paramString);
+    throw ((IllegalArgumentException)sanitizeStackTrace(new IllegalArgumentException(localStringBuilder.toString())));
   }
   
   public static void throwUndefinedForReified()
@@ -305,12 +349,16 @@ public class Intrinsics
   
   public static void throwUninitializedPropertyAccessException(String paramString)
   {
-    throwUninitializedProperty("lateinit property " + paramString + " has not been initialized");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lateinit property ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" has not been initialized");
+    throwUninitializedProperty(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.Intrinsics
  * JD-Core Version:    0.7.0.1
  */

@@ -2,22 +2,47 @@ package com.tencent.superplayer.api;
 
 import android.content.Context;
 import com.tencent.qqlive.tvkplayer.TVideoMgr;
+import com.tencent.superplayer.config.ConfigManager;
+import com.tencent.superplayer.datatransport.SPProxyConfig;
+import com.tencent.superplayer.player.SuperPlayerPool;
+import com.tencent.superplayer.report.SPBeaconReporter;
+import com.tencent.superplayer.utils.LogUtil;
 import com.tencent.thumbplayer.api.ITPModuleLoader;
 import com.tencent.thumbplayer.api.TPPlayerMgr;
+import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
+import com.tencent.thumbplayer.datatransport.TPProxyGlobalManager;
+import com.tencent.thumbplayer.tplayer.plugins.report.BeaconAdapter;
+import com.tencent.tmediacodec.TCodecManager;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SuperPlayerSDKMgr
 {
-  private static final String SDK_Version = "V1.0.1";
-  private static String mDataCacheFolder;
-  private static int mPlatform;
+  private static final String SDK_Version = "1.1.0";
+  private static final String TAG = "SuperPlayerSDKMgr";
   private static Context sAppContext;
+  private static String sDataCacheFolder;
+  private static String sDeviceId;
+  private static final SuperPlayerSDKMgr.InnerLogListener sInnerLogListener = new SuperPlayerSDKMgr.InnerLogListener(null);
   private static AtomicBoolean sIsInit = new AtomicBoolean(false);
   private static SuperPlayerSDKMgr.ILogListener sLogListener;
+  private static int sPlatform;
+  private static ISuperPlayerPool sPlayerRunningPool = new SuperPlayerPool();
+  private static SuperPlayerSdkOption sSdkOption;
+  private static String sUid;
+  
+  public static Context getContext()
+  {
+    return sAppContext;
+  }
   
   public static String getDataCacheFolder()
   {
-    return mDataCacheFolder;
+    return sDataCacheFolder;
+  }
+  
+  public static String getDeviceId()
+  {
+    return sDeviceId;
   }
   
   public static SuperPlayerSDKMgr.ILogListener getLogListener()
@@ -27,44 +52,117 @@ public class SuperPlayerSDKMgr
   
   public static int getPlatform()
   {
-    return mPlatform;
+    return sPlatform;
+  }
+  
+  public static ISuperPlayerPool getPlayerPool()
+  {
+    return sPlayerRunningPool;
   }
   
   public static String getSDKVersion()
   {
-    return "V1.0.1";
+    return "1.1.0";
+  }
+  
+  public static SuperPlayerSdkOption getSdkOption()
+  {
+    return sSdkOption;
+  }
+  
+  public static String getUid()
+  {
+    return sUid;
+  }
+  
+  public static boolean hasDeviceId()
+  {
+    String str = sDeviceId;
+    return (str != null) && (!str.isEmpty());
+  }
+  
+  private static void initConfigComponent()
+  {
+    ConfigManager.get().init();
+    ConfigManager.get().setCallback(new SuperPlayerSDKMgr.2());
   }
   
   public static void initSDK(Context paramContext, int paramInt, String paramString)
+  {
+    initSDK(paramContext, paramInt, paramString, SuperPlayerSdkOption.option());
+  }
+  
+  public static void initSDK(Context paramContext, int paramInt, String paramString, SuperPlayerSdkOption paramSuperPlayerSdkOption)
   {
     if (sIsInit.get()) {
       return;
     }
     sIsInit.set(true);
     sAppContext = paramContext.getApplicationContext();
-    mPlatform = paramInt;
-    mDataCacheFolder = paramString;
+    sPlatform = paramInt;
+    sDataCacheFolder = paramString;
+    paramContext = paramSuperPlayerSdkOption;
+    if (paramSuperPlayerSdkOption == null) {
+      paramContext = SuperPlayerSdkOption.option();
+    }
+    sSdkOption = paramContext;
+    sUid = sSdkOption.uid;
+    if (sSdkOption.deviceId.isEmpty()) {
+      paramContext = BeaconAdapter.getQIMEI();
+    } else {
+      paramContext = sSdkOption.deviceId;
+    }
+    sDeviceId = paramContext;
+    sSdkOption.loadConfigFromConfigManager();
+    SPProxyConfig.init(sSdkOption);
+    SPBeaconReporter.init();
     innerInitTVideoMgr();
     innerInitTPPlayerMgr();
+    initTMediaCodecComponent();
+    initConfigComponent();
+  }
+  
+  private static void initTMediaCodecComponent()
+  {
+    TCodecManager.getInstance().setGlobalReuseEnable(true);
+    TCodecManager.getInstance().setLogLevel(2);
+    TCodecManager.getInstance().setLogProxy(new SuperPlayerSDKMgr.1());
   }
   
   private static void innerInitTPPlayerMgr()
   {
-    TPPlayerMgr.setOnLogListener(new SuperPlayerSDKMgr.2());
-    TPPlayerMgr.initSdk(sAppContext, null, getPlatform());
+    TPPlayerMgr.setOnLogListener(sInnerLogListener);
+    TPPlayerMgr.initSdk(sAppContext, sDeviceId, getPlatform());
     TPPlayerMgr.setProxyEnable(true);
     TPPlayerMgr.setDebugEnable(false);
+    TPDownloadProxyNative.getInstance().isNativeLoaded();
   }
   
   private static void innerInitTVideoMgr()
   {
-    TVideoMgr.init(sAppContext, getPlatform());
-    TVideoMgr.setOnLogListener(new SuperPlayerSDKMgr.1());
+    try
+    {
+      TVideoMgr.init(sAppContext, getPlatform());
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("innerInitTVideoMgr error, ");
+      localStringBuilder.append(localThrowable.toString());
+      LogUtil.e("SuperPlayerSDKMgr", localStringBuilder.toString());
+    }
+    TVideoMgr.setOnLogListener(sInnerLogListener);
   }
   
   public static boolean registerTVideoPlatformInfo(TVideoPlatformInfo paramTVideoPlatformInfo)
   {
     return TVideoMgr.registerTVideoPlatformInfo(TVideoPlatformInfo.convert(paramTVideoPlatformInfo));
+  }
+  
+  public static void setDeviceId(String paramString)
+  {
+    sDeviceId = paramString;
+    TPPlayerMgr.setGuid(paramString);
   }
   
   public static void setLibLoader(ITPModuleLoader paramITPModuleLoader)
@@ -76,10 +174,30 @@ public class SuperPlayerSDKMgr
   {
     sLogListener = paramILogListener;
   }
+  
+  public static void setProxyMaxUseMemoryMB(int paramInt)
+  {
+    TPPlayerMgr.setProxyMaxUseMemoryMB(paramInt);
+  }
+  
+  public static void setUpcInfo(String paramString, int paramInt)
+  {
+    TPPlayerMgr.setUpcInfo(paramString, paramInt);
+  }
+  
+  public static void setUpdatePlayerInfoInterval(int paramInt)
+  {
+    TPProxyGlobalManager.getInstance().setUpdatePlayerInfoInterval(paramInt);
+  }
+  
+  public static void setsUid(String paramString)
+  {
+    sUid = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerSDKMgr
  * JD-Core Version:    0.7.0.1
  */

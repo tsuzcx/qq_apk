@@ -1,13 +1,11 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import upq;
-import ups;
 
-public class VideoSaveToAlbumHelper$1
+class VideoSaveToAlbumHelper$1
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$1(upq paramupq, ups paramups, String paramString)
+  VideoSaveToAlbumHelper$1(VideoSaveToAlbumHelper paramVideoSaveToAlbumHelper, VideoSaveToAlbumHelper.VideoSaveToAlbumTaskInfo paramVideoSaveToAlbumTaskInfo, String paramString)
   {
     add(this.val$taskInfo.b);
     add(this.val$hflipPath);
@@ -15,7 +13,7 @@ public class VideoSaveToAlbumHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.1
  * JD-Core Version:    0.7.0.1
  */

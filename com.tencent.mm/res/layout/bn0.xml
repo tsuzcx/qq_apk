@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.wallet_core.ui.CustomerScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/aav" android:paddingTop="@dimen/i9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@id/c3z" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/l1c" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/c3a" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/l0q" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/c3k" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/l0a" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c3l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/c3q" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/gno" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c3r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/c3s" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/l16" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/c42" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/l52" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/c3x" android:background="@color/a6w" android:layout_width="1.0dip" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/l06" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:id="@id/c3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mm.wallet_core.ui.CustomerScrollView>

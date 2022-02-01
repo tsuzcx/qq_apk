@@ -1,25 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
 import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
 
 public class exy
-  implements Comparator
+  implements View.OnClickListener
 {
-  public exy(DiscussionListAdapter2 paramDiscussionListAdapter2, HashMap paramHashMap) {}
+  public exy(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void onClick(View paramView)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
-    }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    paramView = paramView.getTag();
+    if (!(paramView instanceof exz)) {}
+    do
+    {
+      return;
+      paramView = (exz)paramView;
+    } while (paramView.a == null);
+    this.a.a.a(paramView.a);
   }
 }
 

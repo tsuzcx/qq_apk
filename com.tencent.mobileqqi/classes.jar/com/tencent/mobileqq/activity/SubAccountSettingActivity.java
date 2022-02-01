@@ -19,26 +19,26 @@ import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
 import com.tencent.mobileqq.subaccount.SubAccountDataControll;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import dmg;
 import dmh;
-import dmi;
+import dmj;
 import dmk;
-import dml;
-import dmp;
-import dms;
+import dmo;
+import dmr;
 
 public class SubAccountSettingActivity
   extends SubAccountBaseActivity
 {
   public static final int a = 1985;
-  Handler jdField_a_of_type_AndroidOsHandler = new dmh(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dmp(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new dmg(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dmo(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dms(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dmi(this);
-  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dml(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dmr(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dmh(this);
+  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dmk(this);
   private SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private String jdField_a_of_type_JavaLangString = "Q.subaccount.SubAccountSettingActivity";
@@ -52,22 +52,22 @@ public class SubAccountSettingActivity
   private void h()
   {
     setTitle(2131561709);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234570));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234571));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234572));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234573));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234575);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234576));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131234577));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131234578));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234569));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234570));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234571));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234572));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234574);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234575));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131234576));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131234577));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     boolean bool = SubAccountAssistantImpl.a().b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131234574));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131234573));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new dmk(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new dmj(this));
   }
   
   private void i()

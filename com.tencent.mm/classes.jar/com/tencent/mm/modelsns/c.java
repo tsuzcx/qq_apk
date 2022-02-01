@@ -1,35 +1,35 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.bvh;
 import java.util.Map;
 
 public final class c
+  implements k
 {
-  public static int fQM;
-  public static c fQN;
+  public bvh oUa;
   
-  static
+  public c()
   {
-    AppMethodBeat.i(94482);
-    fQM = 0;
-    fQN = new c();
-    AppMethodBeat.o(94482);
+    AppMethodBeat.i(233232);
+    this.oUa = new bvh();
+    AppMethodBeat.o(233232);
   }
   
-  public static void akf()
+  public final String bMC()
   {
-    AppMethodBeat.i(94481);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100024");
-    ab.i("MicroMsg.StatisticsOplogAbTest", "test " + localc.field_rawXML + " " + localc.isValid());
-    if (localc.isValid())
-    {
-      fQM = bo.apV((String)localc.dvN().get("Switch"));
-      ab.i("MicroMsg.StatisticsOplogAbTest", "switchVal " + fQM);
-    }
-    AppMethodBeat.o(94481);
+    AppMethodBeat.i(233239);
+    String str = q.a(this.oUa);
+    AppMethodBeat.o(233239);
+    return str;
+  }
+  
+  public final void i(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(233248);
+    this.oUa = q.H(paramString, paramMap);
+    AppMethodBeat.o(233248);
   }
 }
 

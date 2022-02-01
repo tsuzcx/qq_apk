@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.data.RecommendTroopMsg;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
-class egg
-  implements View.OnClickListener
+public class egg
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  egg(egf paramegf, RecommendTroopMsg paramRecommendTroopMsg) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isTroop()) {
-      RecommendTroopView.a(this.jdField_a_of_type_Egf.a, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.troop, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isRead);
-    }
-    while (!this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.isBusiness()) {
-      return;
-    }
-    RecommendTroopView.a(this.jdField_a_of_type_Egf.a, this.jdField_a_of_type_ComTencentMobileqqDataRecommendTroopMsg.rtbItem);
-    ReportController.b(this.jdField_a_of_type_Egf.a.a, "CliOper", "", "", "Grp_recommend", "Clk_grp_recommend", 0, 0, "", "", "", "");
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 

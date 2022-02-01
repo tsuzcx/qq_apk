@@ -1,19 +1,12 @@
 package android.support.v4.app;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
+import android.arch.lifecycle.x;
 
-public abstract class p
+final class p
 {
-  public Fragment a(Context paramContext, String paramString, Bundle paramBundle)
-  {
-    return Fragment.a(paramContext, paramString, paramBundle);
-  }
-  
-  public abstract View onFindViewById(int paramInt);
-  
-  public abstract boolean onHasView();
+  Object dR;
+  x dS;
+  ae dT;
 }
 
 

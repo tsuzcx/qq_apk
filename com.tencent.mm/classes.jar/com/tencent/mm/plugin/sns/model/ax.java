@@ -1,1183 +1,833 @@
 package com.tencent.mm.plugin.sns.model;
 
 import android.database.Cursor;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.gi;
-import com.tencent.mm.g.a.gi.b;
-import com.tencent.mm.g.a.rz;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
-import com.tencent.mm.opensdk.modelmsg.WXImageObject;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
-import com.tencent.mm.opensdk.modelmsg.WXTextObject;
-import com.tencent.mm.opensdk.modelmsg.WXVideoObject;
-import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
-import com.tencent.mm.plugin.sns.h.j;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bam;
-import com.tencent.mm.protocal.protobuf.bap;
-import com.tencent.mm.protocal.protobuf.bbs;
-import com.tencent.mm.protocal.protobuf.bcp;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.bct;
-import com.tencent.mm.protocal.protobuf.bcu;
-import com.tencent.mm.protocal.protobuf.bcv;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.protocal.protobuf.cwk;
-import com.tencent.mm.protocal.protobuf.du;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.io.IOException;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.mmdata.rpt.pw;
+import com.tencent.mm.autogen.mmdata.rpt.px;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.expt.b.d;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.k.k;
+import com.tencent.mm.plugin.sns.k.l;
+import com.tencent.mm.plugin.sns.statistics.j;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.ab;
+import com.tencent.mm.plugin.sns.storage.w;
+import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.protocal.protobuf.lf;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public final class ax
-  implements f, com.tencent.mm.plugin.sns.b.l
 {
-  public static int rcV;
-  private static final String riS;
-  public Set<ax.a> bLQ;
-  private String dZZ;
-  private s riT;
-  public j riU;
-  public ac.a riV;
-  
-  static
-  {
-    AppMethodBeat.i(145283);
-    rcV = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    riS = com.tencent.mm.kernel.g.RL().cachePath + "rangeCache.data";
-    AppMethodBeat.o(145283);
-  }
+  public static a Qyi;
+  public long QxA;
+  public int QxB;
+  public int QxC;
+  public int QxD;
+  public int QxE;
+  public int QxF;
+  public long QxG;
+  int QxH;
+  public int QxI;
+  public Map<Long, Integer> QxJ;
+  public View QxK;
+  public long QxL;
+  public List<Long> QxM;
+  public boolean QxN;
+  public long QxO;
+  public long QxP;
+  public int QxQ;
+  public boolean QxR;
+  public boolean QxS;
+  public boolean QxT;
+  public k QxU;
+  public l QxV;
+  public l QxW;
+  public long QxX;
+  public long QxY;
+  public long QxZ;
+  public String Qxx;
+  public boolean Qxy;
+  public long Qxz;
+  public long Qya;
+  public l Qyb;
+  public l Qyc;
+  public int Qyd;
+  public long Qye;
+  public aw Qyf;
+  public LinkedList<String> Qyg;
+  private final com.tencent.mm.am.h Qyh;
+  public String sessionId;
   
   public ax()
   {
-    AppMethodBeat.i(36691);
-    this.dZZ = "";
-    this.riT = null;
-    this.bLQ = new HashSet();
-    this.riU = new j();
-    this.riV = new ax.6(this);
-    byte[] arrayOfByte = com.tencent.mm.vfs.e.i(riS, 0, -1);
-    if (arrayOfByte != null) {
-      try
+    AppMethodBeat.i(179099);
+    this.Qxx = "";
+    this.Qxy = false;
+    this.Qxz = 3600L;
+    this.QxA = 86400L;
+    this.QxB = 5;
+    this.QxC = 5;
+    this.QxD = 50;
+    this.QxE = 30;
+    this.QxF = 5;
+    this.QxG = 0L;
+    this.QxH = 50;
+    this.QxI = 0;
+    this.QxJ = new HashMap();
+    this.QxK = null;
+    this.QxL = 0L;
+    this.QxM = new ArrayList();
+    this.QxN = false;
+    this.QxO = 0L;
+    this.QxP = 0L;
+    this.QxQ = ay.QyB;
+    this.QxR = false;
+    this.QxS = false;
+    this.QxT = false;
+    this.QxU = new k();
+    this.QxV = null;
+    this.QxW = null;
+    this.QxX = 0L;
+    this.QxY = 0L;
+    this.QxZ = 0L;
+    this.sessionId = "";
+    this.Qya = 0L;
+    this.Qyb = null;
+    this.Qyc = null;
+    this.Qyd = 0;
+    this.Qye = 0L;
+    this.Qyf = new aw();
+    this.Qyg = new LinkedList();
+    this.Qyh = new com.tencent.mm.am.h()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
-        this.riU = ((j)new j().parseFrom(arrayOfByte));
-        AppMethodBeat.o(36691);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        ab.printErrStackTrace("MicroMsg.UploadManager", localIOException, "", new Object[0]);
-        com.tencent.mm.vfs.e.deleteFile(riS);
-      }
-    }
-    AppMethodBeat.o(36691);
-  }
-  
-  private static int DQ(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 1: 
-      return 1;
-    case 3: 
-      return 3;
-    case 2: 
-      return 2;
-    }
-    return 4;
-  }
-  
-  private ax.b DR(int paramInt)
-  {
-    AppMethodBeat.i(36708);
-    if (paramInt == -1)
-    {
-      ab.e("MicroMsg.UploadManager", "uploading depend localMediaId can not get the media doUploadSight");
-      localObject = ax.b.rji;
-      AppMethodBeat.o(36708);
-      return localObject;
-    }
-    Object localObject = ag.coU().ma(paramInt);
-    bcv localbcv;
-    try
-    {
-      localbcv = (bcv)new bcv().parseFrom(((com.tencent.mm.plugin.sns.storage.r)localObject).rDG);
-      ab.i("MicroMsg.UploadManager", "state " + localbcv.nkT + " doUploadSight, serverErr:" + localbcv.xsx);
-      if (localbcv.nkT == 1)
-      {
-        localObject = ax.b.rji;
-        AppMethodBeat.o(36708);
-        return localObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.UploadManager", "parse uploadInfo error doUploadSight");
-      localb = ax.b.rji;
-      AppMethodBeat.o(36708);
-      return localb;
-    }
-    if (com.tencent.mm.vfs.e.avI(localbcv.videoPath) == 0L)
-    {
-      ab.i("MicroMsg.UploadManager", "path not fileexist  " + localbcv.videoPath);
-      localb = ax.b.rji;
-      AppMethodBeat.o(36708);
-      return localb;
-    }
-    if (com.tencent.mm.vfs.e.avI(localbcv.xsO) == 0L)
-    {
-      ab.i("MicroMsg.UploadManager", "thumbpath not fileexist  " + localbcv.xsO);
-      localb = ax.b.rji;
-      AppMethodBeat.o(36708);
-      return localb;
-    }
-    if (localbcv.nkT == 0)
-    {
-      localb = ax.b.rjj;
-      AppMethodBeat.o(36708);
-      return localb;
-    }
-    if (ag.cpe().DJ(paramInt))
-    {
-      ag.coU().a(paramInt, localb);
-      new ac(paramInt, localb, localbcv.videoPath, localbcv.xsO, this.riV).aas(localbcv.cwc);
-    }
-    ax.b localb = ax.b.rjk;
-    AppMethodBeat.o(36708);
-    return localb;
-  }
-  
-  private ax.b a(int paramInt1, boolean paramBoolean, bct parambct, int paramInt2)
-  {
-    AppMethodBeat.i(36706);
-    if (paramInt1 == -1)
-    {
-      ab.e("MicroMsg.UploadManager", "uploading depend localMediaId can not get the media");
-      parambct = ax.b.rji;
-      AppMethodBeat.o(36706);
-      return parambct;
-    }
-    Object localObject = ag.coU().ma(paramInt1);
-    bcv localbcv;
-    try
-    {
-      localbcv = (bcv)new bcv().parseFrom(((com.tencent.mm.plugin.sns.storage.r)localObject).rDG);
-      ab.i("MicroMsg.UploadManager", "state " + localbcv.nkT + " pic isMuti: " + paramBoolean);
-      if (localbcv.nkT == 1)
-      {
-        parambct = ax.b.rji;
-        AppMethodBeat.o(36706);
-        return parambct;
-      }
-    }
-    catch (Exception parambct)
-    {
-      ab.e("MicroMsg.UploadManager", "parse uploadInfo error");
-      parambct = ax.b.rji;
-      AppMethodBeat.o(36706);
-      return parambct;
-    }
-    String str = com.tencent.mm.plugin.sns.data.i.ZB(((com.tencent.mm.plugin.sns.storage.r)localObject).rDC);
-    str = ao.gl(ag.getAccSnsPath(), ((com.tencent.mm.plugin.sns.storage.r)localObject).rDC) + str;
-    if (com.tencent.mm.vfs.e.avI(str) == 0L)
-    {
-      ab.i("MicroMsg.UploadManager", "path not exist  ".concat(String.valueOf(str)));
-      parambct = ax.b.rji;
-      AppMethodBeat.o(36706);
-      return parambct;
-    }
-    if (localbcv.nkT == 0)
-    {
-      parambct = ax.b.rjj;
-      AppMethodBeat.o(36706);
-      return parambct;
-    }
-    if (ag.cpe().DJ(paramInt1))
-    {
-      ag.coU().a(paramInt1, (com.tencent.mm.plugin.sns.storage.r)localObject);
-      localObject = com.tencent.mm.a.g.w((bo.yB() + " " + System.currentTimeMillis()).getBytes());
-      ag.bEf().post(new ax.5(this, paramInt1, (String)localObject, paramBoolean, parambct, paramInt2));
-    }
-    parambct = ax.b.rjk;
-    AppMethodBeat.o(36706);
-    return parambct;
-  }
-  
-  private static TimeLineObject a(n paramn, bct parambct)
-  {
-    AppMethodBeat.i(36703);
-    TimeLineObject localTimeLineObject2 = paramn.csh();
-    Object localObject = localTimeLineObject2.xTQ;
-    String str1 = localTimeLineObject2.xTP;
-    String str2 = localTimeLineObject2.inF;
-    String str3 = localTimeLineObject2.vSR;
-    String str4 = localTimeLineObject2.xTS.Desc;
-    String str5 = localTimeLineObject2.xTS.Title;
-    String str6 = localTimeLineObject2.xTS.Url;
-    String str7 = localTimeLineObject2.xTS.wOc;
-    du localdu = localTimeLineObject2.xTR;
-    cwk localcwk = localTimeLineObject2.xTY;
-    int i = localTimeLineObject2.xTS.wNZ;
-    int j = localTimeLineObject2.xTS.wOb;
-    TimeLineObject localTimeLineObject1 = com.tencent.mm.modelsns.e.akg();
-    localTimeLineObject1.jJA = paramn.field_userName;
-    localTimeLineObject1.xrU = paramn.field_pravited;
-    localTimeLineObject1.xTP = str1;
-    localTimeLineObject1.inF = bo.nullAsNil(str2);
-    localTimeLineObject1.vSR = bo.nullAsNil(str3);
-    localTimeLineObject1.xTU = localTimeLineObject2.xTU;
-    localTimeLineObject1.xTV = localTimeLineObject2.xTV;
-    localTimeLineObject1.fgB = localTimeLineObject2.fgB;
-    localTimeLineObject1.xTW = localTimeLineObject2.xTW;
-    localTimeLineObject1.sbN = localTimeLineObject2.sbN;
-    localTimeLineObject1.xTS.Desc = str4;
-    localTimeLineObject1.xTS.Title = str5;
-    localTimeLineObject1.xTS.wNZ = i;
-    localTimeLineObject1.xTS.wOb = j;
-    localTimeLineObject1.xTS.Url = str6;
-    localTimeLineObject1.xTS.wOc = str7;
-    localTimeLineObject1.xTQ = ((bap)localObject);
-    localTimeLineObject1.xTX = localTimeLineObject2.xTX;
-    localTimeLineObject1.rHA = localTimeLineObject2.rHA;
-    if (localTimeLineObject2.rjv != null) {
-      localTimeLineObject1.rjv = localTimeLineObject2.rjv;
-    }
-    if (localdu != null) {
-      localTimeLineObject1.xTR = localdu;
-    }
-    if (localcwk != null) {
-      localTimeLineObject1.xTY = localcwk;
-    }
-    paramn = localTimeLineObject2.xTS.wOa.iterator();
-    while (paramn.hasNext())
-    {
-      localObject = (bcs)paramn.next();
-      if (((bcs)localObject).xrY == 1) {
-        localTimeLineObject1.xTS.wOa.add(localObject);
-      }
-    }
-    if (localTimeLineObject2.rjx != null) {
-      localTimeLineObject1.rjx = localTimeLineObject2.rjx;
-    }
-    paramn = v.aae().z(parambct.cpW, true);
-    if (paramn.containsKey("_DATA_CENTER_ITEM_SHOW_TYPE"))
-    {
-      i = paramn.getInt("_DATA_CENTER_ITEM_SHOW_TYPE", -1);
-      if (i != -1)
-      {
-        localTimeLineObject1.xTS.wOd = new bbs();
-        localTimeLineObject1.xTS.wOd.wqp = i;
-        if (i == 5)
+        AppMethodBeat.i(309525);
+        if (paramAnonymousp.getType() == 5987)
         {
-          localTimeLineObject1.xTS.wOd.fgl = paramn.getString("_DATA_CENTER_VID", "");
-          localTimeLineObject1.xTS.wOd.fgi = paramn.getInt("_DATA_CENTER_PUB_TIME", 0);
-          localTimeLineObject1.xTS.wOd.duration = paramn.getInt("_DATA_CENTER__DULATION", 0);
-          localTimeLineObject1.xTS.wOd.desc = paramn.getString("_DATA_CENTER_DESC", "");
-          localTimeLineObject1.xTS.wOd.lHo = paramn.getString("_DATA_CENTER_COVER_URL", "");
-          localTimeLineObject1.xTS.wOd.videoWidth = paramn.getInt("_DATA_CENTER_VIDEO_WIDTH", 0);
-          localTimeLineObject1.xTS.wOd.videoHeight = paramn.getInt("_DATA_CENTER_VIDEO_HEIGHT", 0);
-          localTimeLineObject1.xTS.wOd.fgk = paramn.getInt("_DATA_CENTER_FUNC_FLAG", 0);
-        }
-      }
-    }
-    AppMethodBeat.o(36703);
-    return localTimeLineObject1;
-  }
-  
-  private void a(n paramn, int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(36694);
-    ab.i("MicroMsg.UploadManager", "localId " + paramn.csH() + "processError " + paramInt2 + " errMsg: " + paramString);
-    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(22L, 129L, 1L, true);
-    if (paramInt1 != 0)
-    {
-      paramString = ag.coU().ma(paramInt1);
-      try
-      {
-        i = ((bcv)new bcv().parseFrom(paramString.rDG)).xsx;
-      }
-      catch (Exception paramString)
-      {
-        label136:
-        paramInt1 = 0;
-      }
-    }
-    try
-    {
-      paramString = paramn.csz();
-      paramInt1 = i;
-      if (paramString != null)
-      {
-        paramString.xsx = i;
-        paramn.field_postBuf = paramString.toByteArray();
-        paramInt1 = i;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramInt1 = i;
-      }
-      paramInt1 = 0;
-      break label136;
-    }
-    ab.d("MicroMsg.UploadManager", "post error ".concat(String.valueOf(paramInt1)));
-    paramn.csL();
-    ag.cpf().b(paramn.rCV, paramn);
-    ab.d("MicroMsg.UploadManager", "processError, publish SnsPostFailEvent, snsInfoLocalId:" + paramn.rCV);
-    paramString = new rz();
-    paramString.cIl.cIm = paramn.rCV;
-    com.tencent.mm.sdk.b.a.ymk.l(paramString);
-    switch (paramInt2)
-    {
-    }
-    for (;;)
-    {
-      ae(paramn.rCV, false);
-      AppMethodBeat.o(36694);
-      return;
-      ab.e("MicroMsg.UploadManager", "parse uploadInfo error");
-      break;
-      paramString = paramn.csz();
-      if (paramString == null) {
-        break label388;
-      }
-      paramInt1 = paramString.xsx;
-      break;
-      ab.e("MicroMsg.UploadManager", "upload find timeLine is null delete this item");
-      continue;
-      ab.e("MicroMsg.UploadManager", "parser protobuf error");
-      continue;
-      ab.e("MicroMsg.UploadManager", "local id is not in db");
-      continue;
-      ab.e("MicroMsg.UploadManager", "arg is error");
-      continue;
-      ab.e("MicroMsg.UploadManager", "pullTimeLineXml  error");
-      continue;
-      ab.e("MicroMsg.UploadManager", "errtle  error");
-    }
-  }
-  
-  private void a(n paramn, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(36695);
-    a(paramn, 0, paramInt, paramString);
-    AppMethodBeat.o(36695);
-  }
-  
-  private static void a(bct parambct)
-  {
-    AppMethodBeat.i(36707);
-    if (parambct == null)
-    {
-      AppMethodBeat.o(36707);
-      return;
-    }
-    parambct = parambct.xsq.iterator();
-    while (parambct.hasNext())
-    {
-      bam localbam = (bam)parambct.next();
-      ag.cpe().DK(localbam.xpE);
-    }
-    AppMethodBeat.o(36707);
-  }
-  
-  private void ae(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(36705);
-    ag.bEf().post(new ax.3(this, paramInt, paramBoolean));
-    AppMethodBeat.o(36705);
-  }
-  
-  public static ay b(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(36697);
-    ab.d("MicroMsg.UploadManager", "appmsg.description " + paramWXMediaMessage.description);
-    ab.d("MicroMsg.UploadManager", "appmsg.title " + paramWXMediaMessage.title);
-    Object localObject = paramWXMediaMessage.mediaObject;
-    int i;
-    switch (((WXMediaMessage.IMediaObject)localObject).type())
-    {
-    default: 
-      i = -1;
-    }
-    ay localay;
-    for (;;)
-    {
-      localay = new ay(i);
-      localay.aaR(bo.bf(paramString2, "")).aaS(bo.bf(paramString3, ""));
-      localay.DW(5);
-      ab.d("MicroMsg.UploadManager", "TimeLineType ".concat(String.valueOf(i)));
-      if (i != -1) {
-        break;
-      }
-      ab.d("MicroMsg.UploadManager", "timeLineType is invalid");
-      AppMethodBeat.o(36697);
-      return null;
-      i = 2;
-      continue;
-      i = 4;
-      continue;
-      i = 1;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
-      continue;
-      i = 3;
-    }
-    if (!bo.isNullOrNil(paramString1)) {
-      localay.aaL(paramString1);
-    }
-    localay.aaQ(bo.bf(paramWXMediaMessage.title, "")).aaO(bo.bf(paramWXMediaMessage.description, ""));
-    switch (((WXMediaMessage.IMediaObject)localObject).type())
-    {
-    default: 
-      ab.e("MicroMsg.UploadManager", "none type not support!");
-      AppMethodBeat.o(36697);
-      return null;
-    case 1: 
-      paramWXMediaMessage = (WXTextObject)localObject;
-      localay.aaO("");
-      localay.aaL(paramWXMediaMessage.text);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(36697);
-      return localay;
-      paramString3 = (WXMusicObject)localObject;
-      if (!bo.isNullOrNil(paramString3.musicUrl))
-      {
-        paramString1 = paramString3.musicUrl;
-        paramString2 = bo.bf(paramString1, "");
-        if (bo.isNullOrNil(paramString3.musicDataUrl)) {
-          break label469;
-        }
-      }
-      label469:
-      for (paramString1 = paramString3.musicDataUrl;; paramString1 = paramString3.musicUrl)
-      {
-        localObject = bo.bf(paramString1, "");
-        localay.aaQ("").aaO("");
-        i = DQ(3);
-        if (i != -1) {
-          break label477;
-        }
-        ab.d("MicroMsg.UploadManager", "mediaType is invalid");
-        AppMethodBeat.o(36697);
-        return null;
-        paramString1 = paramString3.musicLowBandUrl;
-        break;
-      }
-      label477:
-      if (!bo.isNullOrNil(paramString3.musicLowBandDataUrl)) {}
-      for (paramString1 = paramString3.musicLowBandDataUrl;; paramString1 = paramString3.musicLowBandUrl)
-      {
-        paramString1 = bo.bf(paramString1, "");
-        if (localay.a(paramWXMediaMessage.thumbData, paramString2, paramString1, (String)localObject, i, bo.bf(paramWXMediaMessage.title, ""), bo.bf(paramWXMediaMessage.description, ""))) {
-          break;
-        }
-        AppMethodBeat.o(36697);
-        return null;
-      }
-      paramWXMediaMessage = (WXImageObject)localObject;
-      if (!bo.ce(paramWXMediaMessage.imageData))
-      {
-        if (!localay.b(paramWXMediaMessage.imageData, "", ""))
-        {
-          AppMethodBeat.o(36697);
-          return null;
-        }
-      }
-      else if (!bo.isNullOrNil(paramWXMediaMessage.imagePath))
-      {
-        if (!localay.gq(paramWXMediaMessage.imagePath, ""))
-        {
-          AppMethodBeat.o(36697);
-          return null;
-        }
-      }
-      else
-      {
-        ab.e("MicroMsg.UploadManager", "share img but no res is exist!");
-        AppMethodBeat.o(36697);
-        return null;
-        paramString1 = (WXWebpageObject)localObject;
-        if (!bo.ce(paramWXMediaMessage.thumbData)) {
-          localay.b(paramWXMediaMessage.thumbData, bo.bf(paramWXMediaMessage.description, ""), bo.bf(paramWXMediaMessage.title, ""));
-        }
-        localay.aaO(paramString1.webpageUrl).aaP(paramString1.webpageUrl);
-        paramWXMediaMessage = paramString1.webpageUrl;
-        localay.rjr.xTS.Url = paramWXMediaMessage;
-        localay.aaN(paramString1.canvasPageXml);
-        continue;
-        ab.e("MicroMsg.UploadManager", "file is not support!");
-        AppMethodBeat.o(36697);
-        return null;
-        paramString2 = (WXVideoObject)localObject;
-        localay.aaQ("").aaO("");
-        i = DQ(4);
-        if (i == -1)
-        {
-          ab.d("MicroMsg.UploadManager", "mediaType is invalid");
-          AppMethodBeat.o(36697);
-          return null;
-        }
-        if (!bo.isNullOrNil(paramString2.videoUrl)) {}
-        for (paramString1 = paramString2.videoUrl;; paramString1 = paramString2.videoLowBandUrl)
-        {
-          paramString1 = bo.bf(paramString1, "");
-          if (localay.a(paramWXMediaMessage.thumbData, paramString1, paramString2.videoLowBandUrl, paramString2.videoUrl, i, bo.bf(paramWXMediaMessage.title, ""), bo.bf(paramWXMediaMessage.description, ""))) {
-            break;
-          }
-          AppMethodBeat.o(36697);
-          return null;
-        }
-        paramWXMediaMessage = (WXAppExtendObject)localObject;
-        if ((bo.isNullOrNil(paramWXMediaMessage.filePath)) || (!paramWXMediaMessage.filePath.startsWith("http"))) {
-          break;
-        }
-        localay.aaQ(paramWXMediaMessage.filePath);
-        localay.aaO(paramWXMediaMessage.filePath);
-      }
-    }
-    ab.e("MicroMsg.UploadManager", "appdata is not support!");
-    AppMethodBeat.o(36697);
-    return null;
-  }
-  
-  private boolean cpM()
-  {
-    AppMethodBeat.i(36702);
-    Object localObject1 = ag.cpf();
-    localObject2 = "select *,rowid from SnsInfo  where " + o.rDq + " order by SnsInfo.rowid asc ";
-    localObject1 = ((o)localObject1).db.rawQuery((String)localObject2, null);
-    ab.d("MicroMsg.SnsInfoStorage", "getLastUpload ".concat(String.valueOf(localObject2)));
-    if (((Cursor)localObject1).getCount() == 0)
-    {
-      ((Cursor)localObject1).close();
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      localObject2 = new n();
-      if (localObject1 != null) {
-        break;
-      }
-      AppMethodBeat.o(36702);
-      return false;
-      ((Cursor)localObject1).moveToFirst();
-    }
-    ((Cursor)localObject1).moveToFirst();
-    do
-    {
-      ((n)localObject2).convertFrom((Cursor)localObject1);
-      try
-      {
-        bct localbct = (bct)new bct().parseFrom(((n)localObject2).field_postBuf);
-        if (n.lY(localbct.xst))
-        {
-          a(localbct);
-          a((n)localObject2, 6, "snsinfo is tle");
-          ab.i("MicroMsg.UploadManager", "checkTLE snsinfo localId it time limit " + ((n)localObject2).csH() + " is die ");
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ab.e("MicroMsg.UploadManager", "startPost parseFrom MediaPostInfo Exception");
-          a((n)localObject2, 2, "MediaPostInfo parser error");
-        }
-      }
-    } while (((Cursor)localObject1).moveToNext());
-    ((Cursor)localObject1).close();
-    AppMethodBeat.o(36702);
-    return true;
-  }
-  
-  private boolean t(n paramn)
-  {
-    AppMethodBeat.i(36699);
-    if (paramn == null)
-    {
-      AppMethodBeat.o(36699);
-      return false;
-    }
-    Object localObject1 = paramn.csh();
-    if (((TimeLineObject)localObject1).xTS.wNZ == 8)
-    {
-      AppMethodBeat.o(36699);
-      return true;
-    }
-    if (((TimeLineObject)localObject1).xTS.wNZ == 2)
-    {
-      AppMethodBeat.o(36699);
-      return true;
-    }
-    Object localObject2;
-    if (((TimeLineObject)localObject1).xTS.wNZ == 26)
-    {
-      localObject2 = new gi();
-      ((gi)localObject2).cuX.type = 30;
-      ((gi)localObject2).cuX.cve = 5;
-      ((gi)localObject2).cuX.desc = ((TimeLineObject)localObject1).xTS.wOc;
-      ((gi)localObject2).cuX.cvd = String.valueOf(paramn.rCV);
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
-      if (((gi)localObject2).cuY.ret != 1)
-      {
-        AppMethodBeat.o(36699);
-        return false;
-      }
-    }
-    if ((localObject1 == null) || (((TimeLineObject)localObject1).xTS.wOa == null))
-    {
-      a(paramn, 1, "timeline or timelineObjList is null");
-      AppMethodBeat.o(36699);
-      return false;
-    }
-    if (((TimeLineObject)localObject1).xTS.wOa.size() == 0)
-    {
-      AppMethodBeat.o(36699);
-      return true;
-    }
-    for (;;)
-    {
-      Object localObject3;
-      try
-      {
-        localObject2 = (bct)new bct().parseFrom(paramn.field_postBuf);
-        if (((TimeLineObject)localObject1).xTS.wNZ != 1) {
-          break label552;
-        }
-        if (((bct)localObject2).xsq.size() > 1)
-        {
-          bool = true;
-          if (((TimeLineObject)localObject1).xTS.wNZ != 21) {
-            break label549;
-          }
-          bool = false;
-          if (((TimeLineObject)localObject1).xTS.wNZ != 15) {
-            break label442;
-          }
-          localObject1 = ((bct)localObject2).xsq.iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label434;
-          }
-          localObject2 = (bam)((Iterator)localObject1).next();
-          localObject3 = DR(((bam)localObject2).xpE);
-          if (localObject3 != ax.b.rji) {
-            break label418;
-          }
-          a(paramn, ((bam)localObject2).xpE, 2, "upload has set it fail");
-          AppMethodBeat.o(36699);
-          return false;
-        }
-      }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.UploadManager", "error to parser postinfo in canPost " + paramn.csH());
-        a(paramn, 2, "mediaPostInfo parser error " + localException.getMessage());
-        AppMethodBeat.o(36699);
-        return false;
-      }
-      boolean bool = false;
-      continue;
-      label418:
-      if (localObject3 == ax.b.rjk)
-      {
-        AppMethodBeat.o(36699);
-        return false;
-        label434:
-        AppMethodBeat.o(36699);
-        return true;
-        label442:
-        localObject3 = ((bct)localObject2).xsq.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          bam localbam = (bam)((Iterator)localObject3).next();
-          ax.b localb = a(localbam.xpE, bool, (bct)localObject2, localException.xTS.wNZ);
-          if (localb == ax.b.rji)
+          com.tencent.mm.kernel.h.baD().mCm.b(5987, this);
+          Object localObject = ((n)paramAnonymousp).Qsf;
+          paramAnonymousString = new StringBuilder();
+          ax.this.Qyg = new LinkedList();
+          if ((localObject != null) && (!Util.isNullOrNil(((lf)localObject).YMW)))
           {
-            a(paramn, localbam.xpE, 2, "upload has set it fail");
-            AppMethodBeat.o(36699);
-            return false;
-          }
-          if (localb == ax.b.rjk)
-          {
-            AppMethodBeat.o(36699);
-            return false;
-          }
-        }
-        AppMethodBeat.o(36699);
-        return true;
-        label549:
-        continue;
-        label552:
-        bool = true;
-      }
-    }
-  }
-  
-  private boolean v(n paramn)
-  {
-    AppMethodBeat.i(36704);
-    bct localbct;
-    try
-    {
-      localbct = (bct)new bct().parseFrom(paramn.field_postBuf);
-      localbct.ePG += 1;
-      paramn.field_postBuf = localbct.toByteArray();
-      ag.cpf().b(paramn.rCV, paramn);
-      if (n.lY(localbct.xst))
-      {
-        a(paramn, 6, "this item isTimeLimit");
-        ab.i("MicroMsg.UploadManager", "snsinfo localId it time limit " + paramn.csH() + " is die ");
-        AppMethodBeat.o(36704);
-        return false;
-      }
-    }
-    catch (Exception localException1)
-    {
-      ab.e("MicroMsg.UploadManager", "startPost parseFrom MediaPostInfo Exception");
-      a(paramn, 2, "MediaPostInfo parser error:" + localException1.getMessage());
-      AppMethodBeat.o(36704);
-      return false;
-    }
-    ab.i("MicroMsg.UploadManager", "try start post " + paramn.csH());
-    TimeLineObject localTimeLineObject;
-    Object localObject2;
-    int i;
-    int j;
-    com.tencent.mm.plugin.sns.storage.r localr;
-    Object localObject3;
-    String str;
-    Object localObject5;
-    int k;
-    Object localObject4;
-    Object localObject1;
-    if (t(paramn))
-    {
-      localTimeLineObject = paramn.csh();
-      localObject2 = a(paramn, localbct);
-      i = 0;
-      if (i < localbct.xsq.size())
-      {
-        j = ((bam)localbct.xsq.get(i)).xpE;
-        localr = ag.coU().ma(j);
-        if (localr == null)
-        {
-          a(paramn, 3, "can not get the media from db ,localMediaId: ".concat(String.valueOf(j)));
-          AppMethodBeat.o(36704);
-          return false;
-        }
-        try
-        {
-          localObject3 = (bcv)new bcv().parseFrom(localr.rDG);
-          if ((((bcv)localObject3).xsK == null) || (((bcv)localObject3).xsM.size() <= 0))
-          {
-            ab.e("MicroMsg.UploadManager", "item with not url" + paramn.field_type);
-            if (paramn.field_type == 3) {
-              break label792;
+            paramAnonymousp = new LinkedList();
+            localObject = ((lf)localObject).YMW.iterator();
+            do
+            {
+              SnsObject localSnsObject;
+              do
+              {
+                if (!((Iterator)localObject).hasNext()) {
+                  break;
+                }
+                localSnsObject = (SnsObject)((Iterator)localObject).next();
+                paramAnonymousString.append(localSnsObject.Username).append(",");
+              } while (ax.this.Qyg.contains(localSnsObject.Username));
+              paramAnonymousString.append("**,");
+              ax.this.Qyg.add(localSnsObject.Username);
+              paramAnonymousp.add(Long.valueOf(localSnsObject.Id));
+            } while (ax.this.Qyg.size() < 3);
+            if (ax.this.Qyc != null)
+            {
+              ax.this.Qyc.QCS = paramAnonymousp;
+              ax.this.Qyc.osR = ax.this.Qyg;
             }
-            a(paramn, 4, "buf url is null");
-            AppMethodBeat.o(36704);
-            return false;
           }
-        }
-        catch (Exception localException2)
-        {
-          ab.e("MicroMsg.UploadManager", "MediaUploadInfo parseFrom MediaUploadInfo Exception");
-          a(paramn, 2, "mediaUploadInfo parser error " + localException2.getMessage());
-          AppMethodBeat.o(36704);
-          return false;
-        }
-        str = ((bcv)localObject3).xsK.Url;
-        localObject5 = ((bcp)((bcv)localObject3).xsM.get(0)).Url;
-        j = ((bcv)localObject3).xsK.jKs;
-        k = ((bcp)((bcv)localObject3).xsM.get(0)).jKs;
-        localObject4 = ((bcv)localObject3).cqq;
-        localObject1 = null;
-        if (i < localTimeLineObject.xTS.wOa.size()) {
-          localObject1 = ((bcs)localTimeLineObject.xTS.wOa.get(i)).xrV;
-        }
-        if ((localTimeLineObject.xTS.wNZ == 4) || (localTimeLineObject.xTS.wNZ == 5))
-        {
-          if (i >= localTimeLineObject.xTS.wOa.size()) {
-            break label1133;
+          if ((!Util.isNullOrNil(ax.this.Qyg)) && (ax.Qyi != null)) {
+            ax.Qyi.bT(ax.this.Qyg);
           }
-          localObject1 = (bcs)localTimeLineObject.xTS.wOa.get(i);
-          ((bcs)localObject1).xrS = ((String)localObject5);
-          ((bcs)localObject1).xrT = k;
+          Log.i("MicroMsg.SnsUnreadTipManager", "onBatchObjectDetailSceneEnd getAvatar, avatar:%s, size:%s", new Object[] { paramAnonymousString.toString(), Integer.valueOf(ax.this.Qyg.size()) });
         }
+        AppMethodBeat.o(309525);
       }
-    }
-    for (;;)
-    {
-      if ((localObject1 != null) && (((TimeLineObject)localObject2).xTS.wNZ == 1)) {
-        ((bcs)localObject1).cqq = ((String)localObject4);
-      }
-      if ((localObject1 != null) && (((TimeLineObject)localObject2).xTS.wNZ == 15))
-      {
-        ((bcs)localObject1).cqq = ((bcv)localObject3).cqq;
-        ((bcs)localObject1).xsn = ((bcv)localObject3).xsn;
-      }
-      if (i < localTimeLineObject.xTS.wOa.size())
-      {
-        localObject3 = (bcs)localTimeLineObject.xTS.wOa.get(i);
-        ((bcs)localObject1).Title = ((bcs)localObject3).Title;
-        ((bcs)localObject1).Desc = ((bcs)localObject3).Desc;
-        ((bcs)localObject1).subType = ((bcs)localObject3).subType;
-        ((bcs)localObject1).rGh = ((bcs)localObject3).rGh;
-      }
-      if (localObject1 == null)
-      {
-        a(paramn, 3, "make media error");
-        AppMethodBeat.o(36704);
-        return false;
-        localObject1 = com.tencent.mm.modelsns.e.a(localr.rDF, localr.type, str, (String)localObject5, j, k, ((bcv)localObject3).xrU, "", (bcu)localObject1);
-      }
-      else
-      {
-        ((TimeLineObject)localObject2).xTS.wOa.add(localObject1);
-        i += 1;
-        break;
-        label792:
-        if (!ag.cpe().DH(paramn.rCV))
-        {
-          ab.d("MicroMsg.UploadManager", "this snsinfo is posting");
-          AppMethodBeat.o(36704);
-          return false;
-        }
-        localObject1 = new LinkedList();
-        localObject3 = localbct.xsr.iterator();
-        while (((Iterator)localObject3).hasNext()) {
-          ((List)localObject1).add(((cfm)((Iterator)localObject3).next()).jJA);
-        }
-        localObject3 = com.tencent.mm.plugin.sns.h.l.b((TimeLineObject)localObject2);
-        ab.d("MicroMsg.UploadManager", "timeLine contentDescScene ：  " + ((TimeLineObject)localObject2).xTV + " contentDescShowType: " + ((TimeLineObject)localObject2).xTU);
-        if (paramn.field_pravited == 1) {
-          ab.i("MicroMsg.UploadManager", "content private xml is null ? " + bo.isNullOrNil((String)localObject3));
-        }
-        while ((localObject3 == null) || (((String)localObject3).equals("")))
-        {
-          a(paramn, 5, "content is error");
-          ag.cpe().DI(paramn.rCV);
-          AppMethodBeat.o(36704);
-          return false;
-          ab.i("MicroMsg.UploadManager", "upload xmlsns: %s", new Object[] { localObject3 });
-        }
-        if (localbct.xsz == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          i = paramn.rCV;
-          localObject4 = localbct.GroupUser;
-          localObject5 = ((TimeLineObject)localObject2).xTQ.xpR;
-          localObject2 = ((TimeLineObject)localObject2).xTS.Title;
-          ag.bEf().post(new ax.4(this, (String)localObject3, localbct, (List)localObject1, localTimeLineObject, i, bool, (LinkedList)localObject4, (com.tencent.mm.bv.b)localObject5, (String)localObject2));
-          ab.d("MicroMsg.UploadManager", "startPost, canPost is false, snsInfoId: " + paramn.csH());
-          AppMethodBeat.o(36704);
-          return true;
-        }
-        label1133:
-        localObject1 = null;
-      }
-    }
+    };
+    AppMethodBeat.o(179099);
   }
   
-  public final boolean a(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3, int paramInt)
+  public static boolean a(l paraml)
   {
-    AppMethodBeat.i(36698);
-    paramString1 = b(paramWXMediaMessage, paramString1, paramString2, paramString3);
-    if (paramString1 == null)
+    AppMethodBeat.i(309462);
+    if ((paraml != null) && (!Util.isNullOrNil(paraml.Adz)))
     {
-      AppMethodBeat.o(36698);
-      return false;
-    }
-    paramString1.aaM(paramWXMediaMessage.mediaTagName);
-    paramString1.aj(paramString2, paramWXMediaMessage.messageExt, paramWXMediaMessage.messageAction);
-    if (paramInt > com.tencent.mm.plugin.sns.c.a.raX) {
-      paramString1.DS(1);
-    }
-    ab.d("MicroMsg.UploadManager", "shareAppMsg set and the result: ".concat(String.valueOf(paramString1.commit())));
-    AppMethodBeat.o(36698);
-    return true;
-  }
-  
-  public final void cnP()
-  {
-    AppMethodBeat.i(36701);
-    ag.bEf().postDelayed(new ax.1(this), 1000L);
-    AppMethodBeat.o(36701);
-  }
-  
-  public final String coK()
-  {
-    AppMethodBeat.i(36692);
-    if ((this.dZZ == null) || (this.dZZ.equals("")))
-    {
-      com.tencent.mm.kernel.g.RM();
-      this.dZZ = ((String)com.tencent.mm.kernel.g.RL().Ru().get(2, null));
-    }
-    String str = this.dZZ;
-    AppMethodBeat.o(36692);
-    return str;
-  }
-  
-  public final void cpN()
-  {
-    AppMethodBeat.i(36709);
-    Iterator localIterator = this.bLQ.iterator();
-    while (localIterator.hasNext())
-    {
-      ax.a locala = (ax.a)localIterator.next();
-      if (locala != null) {
-        locala.cpO();
-      }
-    }
-    AppMethodBeat.o(36709);
-  }
-  
-  public final void f(List<com.tencent.mm.plugin.sns.h.k> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(145282);
-    if (bo.es(paramList))
-    {
-      AppMethodBeat.o(145282);
-      return;
-    }
-    this.riU.rmb = paramBoolean;
-    this.riU.rlZ.clear();
-    this.riU.rlZ.addAll(paramList);
-    ArrayList localArrayList = new ArrayList();
-    com.tencent.mm.plugin.sns.h.k localk;
-    if (bo.es(this.riU.rma))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localk = (com.tencent.mm.plugin.sns.h.k)paramList.next();
-        if (localk.type == 2) {
-          localArrayList.add(localk);
-        }
-      }
-    }
-    paramList = paramList.iterator();
-    label381:
-    for (;;)
-    {
-      if (paramList.hasNext())
-      {
-        localk = (com.tencent.mm.plugin.sns.h.k)paramList.next();
-        if (localk.type == 2)
-        {
-          Iterator localIterator = this.riU.rma.iterator();
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-          } while (!bo.isEqual(((com.tencent.mm.plugin.sns.h.k)localIterator.next()).name, localk.name));
-        }
-      }
-      else
-      {
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label381;
-          }
-          localArrayList.add(localk);
-          break;
-          if (!bo.es(localArrayList)) {
-            this.riU.rma.addAll(0, localArrayList);
-          }
-          if (this.riU.rma.size() > 5)
-          {
-            paramList = new ArrayList();
-            paramList.addAll(this.riU.rma);
-            this.riU.rma.clear();
-            this.riU.rma.addAll(paramList.subList(0, 5));
-          }
-          try
-          {
-            paramList = this.riU.toByteArray();
-            com.tencent.mm.vfs.e.b(riS, paramList, paramList.length);
-            AppMethodBeat.o(145282);
-            return;
-          }
-          catch (IOException paramList)
-          {
-            ab.printErrStackTrace("MicroMsg.UploadManager", paramList, "listToFile failed: " + riS, new Object[0]);
-            com.tencent.mm.vfs.e.deleteFile(riS);
-            AppMethodBeat.o(145282);
-            return;
-          }
-        }
-      }
-    }
-  }
-  
-  public final boolean gf(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(36696);
-    ab.d("MicroMsg.UploadManager", "imgPath " + paramString1 + " text " + paramString2);
-    String str = ag.getAccSnsTmpPath() + com.tencent.mm.a.g.w(paramString1.getBytes());
-    com.tencent.mm.vfs.e.C(paramString1, str);
-    paramString1 = new ay(1);
-    paramString1.aaL(paramString2);
-    paramString1.DW(6);
-    paramString2 = new LinkedList();
-    paramString2.add(new com.tencent.mm.plugin.sns.data.h(str, 2));
-    paramString1.dd(paramString2);
-    if (paramString1.commit() > 0)
-    {
-      AppMethodBeat.o(36696);
+      AppMethodBeat.o(309462);
       return true;
     }
-    AppMethodBeat.o(36696);
+    AppMethodBeat.o(309462);
     return false;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  private void hht()
   {
-    AppMethodBeat.i(36710);
-    ab.i("MicroMsg.UploadManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramm.getType() + " @" + hashCode());
-    switch (paramm.getType())
+    AppMethodBeat.i(179106);
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
     {
-    }
-    while ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      AppMethodBeat.o(36710);
-      return;
-      if ((paramInt1 != 0) || (paramInt2 != 0))
+      Iterator localIterator1;
+      if (this.QxV != null)
       {
-        cnP();
-        continue;
-        paramString = (s)paramm;
-        int i = paramString.cIp;
-        if (paramString.eht)
-        {
-          long l = paramString.reO;
-          ab.i("MicroMsg.UploadManager", "get the del post come back %d ".concat(String.valueOf(l)), new Object[] { Integer.valueOf(i) });
-          if (l != 0L)
-          {
-            ag.cpe().lI(l);
-            com.tencent.mm.kernel.g.RM();
-            com.tencent.mm.kernel.g.RK().eHt.a(new r(l, 1), 0);
-          }
-          ag.cpf().EA(i);
-          if (l != 0L)
-          {
-            ag.cpk().lU(l);
-            com.tencent.mm.plugin.sns.storage.i.lT(l);
-          }
+        Log.i("MicroMsg.SnsUnreadTipManager", "target:[%s, %s]", new Object[] { Long.valueOf(this.QxV.timestamp), Integer.valueOf(this.QxV.Adz.size()) });
+        if (!Util.isNullOrNil(this.QxU.QCM)) {
+          localIterator1 = this.QxU.QCM.iterator();
         }
-        if ((paramInt1 != 0) || (paramInt2 != 0)) {
-          ae(paramString.cIp, false);
-        }
+      }
+      else
+      {
         for (;;)
         {
-          this.riT = null;
-          break;
-          ae(paramString.cIp, true);
-          al.kk(paramString.reO);
+          if (!localIterator1.hasNext()) {
+            break label211;
+          }
+          l locall = (l)localIterator1.next();
+          StringBuilder localStringBuilder = new StringBuilder();
+          Iterator localIterator2 = locall.Adz.iterator();
+          for (;;)
+          {
+            if (localIterator2.hasNext())
+            {
+              localStringBuilder.append((Long)localIterator2.next()).append(",");
+              continue;
+              Log.i("MicroMsg.SnsUnreadTipManager", "target:null");
+              break;
+            }
+          }
+          Log.i("MicroMsg.SnsUnreadTipManager", "item:%s, idList:%s", new Object[] { Long.valueOf(locall.timestamp), localStringBuilder.toString() });
         }
       }
     }
-    AppMethodBeat.o(36710);
+    label211:
+    AppMethodBeat.o(179106);
   }
   
-  public final void u(n paramn)
+  final boolean b(l paraml)
   {
-    AppMethodBeat.i(36700);
-    if (paramn == null)
+    AppMethodBeat.i(179101);
+    if ((Util.isNullOrNil(paraml.Adz)) || (paraml.Adz.size() < this.QxB) || (Util.secondsToNow(paraml.timestamp) > this.QxA) || (Util.secondsToNow(paraml.timestamp) < this.Qxz) || (paraml.state == 2))
     {
-      AppMethodBeat.o(36700);
+      AppMethodBeat.o(179101);
+      return true;
+    }
+    AppMethodBeat.o(179101);
+    return false;
+  }
+  
+  public final void hhp()
+  {
+    AppMethodBeat.i(179102);
+    if (!Util.isNullOrNil(this.QxU.QCM))
+    {
+      Iterator localIterator = this.QxU.QCM.iterator();
+      label118:
+      while (localIterator.hasNext())
+      {
+        l locall = (l)localIterator.next();
+        if (Util.secondsToNow(locall.timestamp) > this.QxA) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label118;
+          }
+          Log.i("MicroMsg.SnsUnreadTipManager", "prepareLastUnreadTipFaultReadCache remove invalid fault:[%s, %s]", new Object[] { Long.valueOf(locall.timestamp), Integer.valueOf(locall.Adz.size()) });
+          localIterator.remove();
+          break;
+        }
+      }
+    }
+    AppMethodBeat.o(179102);
+  }
+  
+  public final void hhq()
+  {
+    AppMethodBeat.i(179103);
+    Object localObject1;
+    Object localObject2;
+    int i;
+    if ((this.QxU.QCN == 0L) || (Util.isNullOrNil(this.QxU.QCM)))
+    {
+      this.QxV = null;
+      this.QxX = 0L;
+      this.QxU.QCN = 0L;
+      this.QxL = 0L;
+      Log.i("MicroMsg.SnsUnreadTipManager", "findTargetItem unreadSnsItems is null");
+      com.tencent.mm.plugin.report.service.h.OAn.p(1295L, 0L, 0L);
+      localObject1 = this.QxW;
+      localObject2 = this.QxV;
+      if (localObject1 == localObject2) {
+        break label1176;
+      }
+      if (((localObject1 == null) || (localObject2 != null)) && ((localObject1 != null) || (localObject2 == null))) {
+        break label1012;
+      }
+      i = 0;
+    }
+    label1176:
+    for (;;)
+    {
+      if ((this.QxV != null) && (!Util.isNullOrNil(this.QxV.Adz)) && ((Util.isNullOrNil(this.Qyg)) || (i == 0)))
+      {
+        Log.i("MicroMsg.SnsUnreadTipManager", "findTargetItem getAvatar, targetsize:%s", new Object[] { Integer.valueOf(this.QxV.Adz.size()) });
+        this.Qyg = new LinkedList();
+        com.tencent.mm.kernel.h.baD().mCm.a(5987, this.Qyh);
+        com.tencent.mm.kernel.h.baD().mCm.a(new n(this.QxV.Adz), 0);
+      }
+      if (i == 0)
+      {
+        this.QxW = this.QxV;
+        this.Qyc = this.QxV;
+      }
+      Log.i("MicroMsg.SnsUnreadTipManager", "findTargetItem firstUnreadId:%s, indicatorSnsId:%s", new Object[] { Long.valueOf(this.QxL), Long.valueOf(this.QxX) });
+      AppMethodBeat.o(179103);
+      return;
+      this.QxV = null;
+      i = this.QxU.QCM.size() - 1;
+      label304:
+      boolean bool;
+      label333:
+      Object localObject3;
+      if (i >= 0)
+      {
+        localObject1 = (l)this.QxU.QCM.get(i);
+        if (!b((l)localObject1))
+        {
+          bool = true;
+          Log.d("MicroMsg.SnsUnreadTipManager", "findTargetItem isValid:%s, item.idList.peek():%s, unreadSnsIdList.lastSnsId:%s", new Object[] { Boolean.valueOf(bool), ((l)localObject1).Adz.peek(), Long.valueOf(this.QxU.QCN) });
+          if ((b((l)localObject1)) || (((Long)((l)localObject1).Adz.peek()).longValue() >= this.QxU.QCN)) {
+            break label997;
+          }
+          this.QxV = ((l)localObject1);
+          Log.i("MicroMsg.SnsUnreadTipManager", "findTargetItem result:[%s,%s]", new Object[] { Long.valueOf(this.QxV.timestamp), Integer.valueOf(this.QxV.Adz.size()) });
+        }
+      }
+      else if (this.QxV != null)
+      {
+        this.QxX = this.QxU.QCN;
+        this.QxL = ((Long)this.QxV.Adz.peek()).longValue();
+        if ((this.QxX == 0L) || (this.QxV == null) || (Util.isNullOrNil(this.QxV.Adz))) {
+          break label1004;
+        }
+        localObject3 = al.hgB();
+        String str1 = t.uB(this.QxY);
+        String str2 = t.uB(((Long)this.QxV.Adz.peek()).longValue());
+        localObject2 = "select snsId from SnsInfo  where " + w.hkV();
+        localObject1 = localObject2;
+        if (w.bad(str1)) {
+          localObject1 = (String)localObject2 + " AND " + ((w)localObject3).bah(str1);
+        }
+        localObject2 = localObject1;
+        if (w.bad(str2)) {
+          localObject2 = (String)localObject1 + " AND " + ((w)localObject3).bag(str2);
+        }
+        localObject1 = (String)localObject2 + w.QYW;
+        Log.d("MicroMsg.SnsInfoStorage", "getAdCursorForTimeLine:%s upLimtiSeq:%s downLimitSeq:%s", new Object[] { localObject1, str1, str2 });
+        this.QxI = ((w)localObject3).QYR.rawQuery((String)localObject1, null).getCount();
+        Log.i("MicroMsg.SnsUnreadTipManager", "calculateFeedsGapCount up:%s down:%s", new Object[] { Long.valueOf(this.QxX), this.QxV.Adz.peek() });
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.SnsUnreadTipManager", "calculateFeedsGapCount:%s", new Object[] { Integer.valueOf(this.QxI) });
+        if (this.QxV.state == 0)
+        {
+          localObject1 = this.Qyf;
+          localObject2 = this.QxV;
+          if (localObject2 != null)
+          {
+            localObject3 = ((l)localObject2).Adz;
+            ((aw)localObject1).Qxu.clear();
+            ((aw)localObject1).Qxu.addAll((Collection)localObject3);
+            ((aw)localObject1).Qxv = ((l)localObject2);
+            if (!Util.isNullOrNil(((aw)localObject1).Qxu))
+            {
+              Log.i("MicroMsg.SnsUnreadPreloader", "start preload unread fault:[%s, %s], preloadCount:%s, unreadItem:%s", new Object[] { Long.valueOf(((l)localObject2).timestamp), Integer.valueOf(((l)localObject2).Adz.size()), Integer.valueOf(((l)localObject2).QCR), localObject2 });
+              ((l)localObject2).QCR += 1;
+              com.tencent.mm.kernel.h.baD().mCm.a(new z(((Long)((aw)localObject1).Qxu.get(0)).longValue() + 1L, 0L, 2), 0);
+            }
+          }
+        }
+        com.tencent.mm.plugin.report.service.h.OAn.p(1295L, 0L, this.QxU.QCM.size());
+        break;
+        bool = false;
+        break label333;
+        label997:
+        i -= 1;
+        break label304;
+        label1004:
+        this.QxI = 0;
+      }
+      label1012:
+      if ((((l)localObject1).timestamp != ((l)localObject2).timestamp) || (((l)localObject1).state != ((l)localObject2).state) || (((l)localObject1).QCQ != ((l)localObject2).QCQ) || (((l)localObject1).QCP != ((l)localObject2).QCP) || (((l)localObject1).QCR != ((l)localObject2).QCR))
+      {
+        i = 0;
+      }
+      else
+      {
+        if ((((l)localObject1).QCO != null) || (((l)localObject2).QCO != null))
+        {
+          if ((((l)localObject1).QCO != null) && (((l)localObject2).QCO != null) && (((l)localObject1).QCO.size() == ((l)localObject2).QCO.size())) {
+            i = 0;
+          }
+          for (;;)
+          {
+            if (i < ((l)localObject1).QCO.size())
+            {
+              if (((l)localObject1).QCO.get(i) != ((l)localObject2).QCO.get(i))
+              {
+                i = 0;
+                break;
+              }
+              i += 1;
+              continue;
+              i = 0;
+              break;
+            }
+          }
+        }
+        i = 1;
+      }
+    }
+  }
+  
+  public final void hhr()
+  {
+    AppMethodBeat.i(179104);
+    al.gHI().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(179096);
+        if (ax.this.QxU != null)
+        {
+          SnsInfo localSnsInfo = al.hgB().vj(ax.this.QxU.QCN);
+          if (localSnsInfo != null) {
+            ax.this.Qya = (localSnsInfo.field_createTime + 1);
+          }
+        }
+        AppMethodBeat.o(179096);
+      }
+    });
+    AppMethodBeat.o(179104);
+  }
+  
+  public final void hhs()
+  {
+    AppMethodBeat.i(179105);
+    if (this.Qxy)
+    {
+      Log.i("MicroMsg.SnsUnreadTipManager", "==============dumpSnsUnreadFault==============");
+      if (Util.isNullOrNil(this.QxU.QCM))
+      {
+        Log.i("MicroMsg.SnsUnreadTipManager", "** unread fault is null **");
+        AppMethodBeat.o(179105);
+        return;
+      }
+      Log.i("MicroMsg.SnsUnreadTipManager", "** unread fault count:%s **", new Object[] { Integer.valueOf(this.QxU.QCM.size()) });
+      Iterator localIterator = this.QxU.QCM.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (l)localIterator.next();
+        Log.i("MicroMsg.SnsUnreadTipManager", "** [%s, %s] **", new Object[] { Long.valueOf(((l)localObject).timestamp), Integer.valueOf(((l)localObject).Adz.size()) });
+        localObject = ((l)localObject).Adz.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          Log.i("MicroMsg.SnsUnreadTipManager", "|__ snsId:%s", new Object[] { (Long)((Iterator)localObject).next() });
+        }
+      }
+    }
+    AppMethodBeat.o(179105);
+  }
+  
+  public final long hhu()
+  {
+    AppMethodBeat.i(179107);
+    if (!a(this.QxV))
+    {
+      AppMethodBeat.o(179107);
+      return -1L;
+    }
+    long l = ((Long)this.QxV.Adz.peek()).longValue();
+    AppMethodBeat.o(179107);
+    return l;
+  }
+  
+  public final void hhv()
+  {
+    AppMethodBeat.i(179108);
+    if (this.Qxy)
+    {
+      ArrayList localArrayList = new ArrayList();
+      ??? = new HashMap();
+      Object localObject3 = ((d)com.tencent.mm.kernel.h.ax(d.class)).dHP();
+      if ((localObject3 == null) || (((Map)localObject3).size() == 0)) {
+        Log.d("MicroMsg.SnsUnreadTipManager", "getLegalFeedId is NullOrNil");
+      }
+      synchronized (this.QxM)
+      {
+        for (;;)
+        {
+          this.QxM.clear();
+          if (Util.isNullOrNil(localArrayList)) {
+            break;
+          }
+          this.QxM.addAll(localArrayList);
+          if ((this.QxX != 0L) && (this.QxZ == 0L) && (this.QxM.contains(Long.valueOf(this.QxX)))) {
+            this.QxZ = cn.getSyncServerTimeSecond();
+          }
+          AppMethodBeat.o(179108);
+          return;
+          ((Map)???).putAll((Map)localObject3);
+          ??? = ((Map)???).entrySet().iterator();
+          while (((Iterator)???).hasNext())
+          {
+            localObject3 = (Map.Entry)((Iterator)???).next();
+            if (!((Boolean)((Map.Entry)localObject3).getValue()).booleanValue()) {
+              localArrayList.add(Long.valueOf(t.aXD((String)((Map.Entry)localObject3).getKey())));
+            }
+          }
+          Collections.sort(localArrayList);
+          if (Util.isNullOrNil(localArrayList)) {
+            Log.d("MicroMsg.SnsUnreadTipManager", "exposeFeedList is NullOrNil");
+          }
+        }
+        Log.i("MicroMsg.SnsUnreadTipManager", "checkExposeFeeds newExposeSnsId isNullOrNil, return");
+      }
+    }
+    AppMethodBeat.o(179108);
+  }
+  
+  public final void hhw()
+  {
+    if (this.QxV != null) {
+      this.QxV.state = 2;
+    }
+  }
+  
+  public final void hhx()
+  {
+    AppMethodBeat.i(179114);
+    if (!this.Qxy)
+    {
+      AppMethodBeat.o(179114);
       return;
     }
-    ab.i("MicroMsg.UploadManager", "cancel snsinfo " + paramn.csH());
-    try
+    final long l1 = this.Qya;
+    final l locall1 = this.Qyb;
+    final l locall2 = this.Qyc;
+    final LinkedList localLinkedList = new LinkedList(this.QxU.QCM);
+    final int i = this.Qyd;
+    final long l2 = this.Qye;
+    String str = this.sessionId;
+    this.Qyd = 0;
+    this.Qye = 0L;
+    al.gHI().post(new Runnable()
     {
-      Object localObject1 = (bct)new bct().parseFrom(paramn.field_postBuf);
-      if ((localObject1 != null) && (((bct)localObject1).xsq != null))
+      public final void run()
       {
-        localObject1 = ((bct)localObject1).xsq.iterator();
-        while (((Iterator)localObject1).hasNext())
+        AppMethodBeat.i(309529);
+        px localpx;
+        Object localObject1;
+        int j;
+        int i;
+        Object localObject2;
+        int i1;
+        long l;
+        int m;
+        Object localObject3;
+        int k;
+        int n;
+        label520:
+        Object localObject4;
+        if (locall1 != null)
         {
-          bam localbam = (bam)((Iterator)localObject1).next();
-          int i = ag.cpe().DM(localbam.xpE);
-          ag.cpe().DL(localbam.xpE);
-          ab.i("MicroMsg.UploadManager", "cancel upload %d", new Object[] { Integer.valueOf(i) });
-          if ((paramn.field_type != 15) && (i >= 0))
+          localpx = j.QFS.QGC;
+          localObject1 = new LinkedList(locall1.QCO);
+          ((LinkedList)localObject1).removeAll(locall1.Adz);
+          LinkedList localLinkedList1 = new LinkedList();
+          LinkedList localLinkedList2 = new LinkedList();
+          j = 0;
+          i = 0;
+          if (j < locall1.QCO.size())
           {
-            com.tencent.mm.kernel.g.RM();
-            com.tencent.mm.kernel.g.RK().eHt.cancel(i);
-            ag.cpe().DK(localbam.xpE);
+            if (j < ax.this.QxH * i)
+            {
+              localObject2 = (List)localLinkedList1.peekLast();
+              if (localObject2 != null) {
+                ((List)localObject2).add((Long)locall1.QCO.get(j));
+              }
+            }
+            for (;;)
+            {
+              j += 1;
+              break;
+              i += 1;
+              localObject2 = new ArrayList();
+              ((List)localObject2).add((Long)locall1.QCO.get(j));
+              localLinkedList1.add(localObject2);
+            }
+          }
+          j = 0;
+          i = 0;
+          if (j < ((LinkedList)localObject1).size())
+          {
+            if (j < ax.this.QxH * i)
+            {
+              localObject2 = (List)localLinkedList2.peekLast();
+              if (localObject2 != null) {
+                ((List)localObject2).add((Long)((LinkedList)localObject1).get(j));
+              }
+            }
+            for (;;)
+            {
+              j += 1;
+              break;
+              i += 1;
+              localObject2 = new ArrayList();
+              ((List)localObject2).add((Long)((LinkedList)localObject1).get(j));
+              localLinkedList2.add(localObject2);
+            }
+          }
+          i1 = Math.max(localLinkedList2.size(), localLinkedList1.size());
+          l = System.currentTimeMillis();
+          j = 0;
+          if (j < i1)
+          {
+            localObject1 = new StringBuffer();
+            localObject2 = new StringBuffer();
+            m = 0;
+            if (j < localLinkedList1.size())
+            {
+              localObject3 = (List)localLinkedList1.get(j);
+              i = ((List)localObject3).size();
+              localObject3 = ((List)localObject3).iterator();
+              for (;;)
+              {
+                k = i;
+                if (!((Iterator)localObject3).hasNext()) {
+                  break;
+                }
+                ((StringBuffer)localObject1).append(t.uB(((Long)((Iterator)localObject3).next()).longValue())).append("|");
+              }
+            }
+            k = 0;
+            if (j < localLinkedList2.size())
+            {
+              localObject3 = (List)localLinkedList2.get(j);
+              i = ((List)localObject3).size();
+              localObject3 = ((List)localObject3).iterator();
+              for (;;)
+              {
+                m = i;
+                if (!((Iterator)localObject3).hasNext()) {
+                  break;
+                }
+                ((StringBuffer)localObject2).append(t.uB(((Long)((Iterator)localObject3).next()).longValue())).append("|");
+              }
+            }
+            i = 0;
+            localObject3 = localLinkedList.iterator();
+            n = 0;
+            while (((Iterator)localObject3).hasNext())
+            {
+              localObject4 = (l)((Iterator)localObject3).next();
+              if (!ax.this.b((l)localObject4))
+              {
+                n += 1;
+              }
+              else
+              {
+                if ((localObject4 == null) || (Util.isNullOrNil(((l)localObject4).Adz))) {
+                  break label1102;
+                }
+                i += 1;
+              }
+            }
+          }
+        }
+        label1102:
+        for (;;)
+        {
+          break label520;
+          if (locall2 != null)
+          {
+            if (!Util.isNullOrNil(locall2.QCO))
+            {
+              localpx.jpH = (locall2.QCO.size() - locall2.QCQ);
+              localpx.jpG = locall2.QCO.size();
+            }
+            if (!Util.isNullOrNil(locall2.Adz))
+            {
+              localpx.jpo = ((Long)locall2.QCO.peek()).longValue();
+              localObject3 = new StringBuffer();
+              localObject4 = locall2.Adz.iterator();
+              while (((Iterator)localObject4).hasNext()) {
+                ((StringBuffer)localObject3).append(t.uB(((Long)((Iterator)localObject4).next()).longValue())).append("|");
+              }
+              localpx.jpr = localpx.F("JumpBreakLayerFeeds", ((StringBuffer)localObject3).toString(), true);
+            }
+            if ((!Util.isNullOrNil(locall2.osR)) && (!Util.isNullOrNil(locall2.QCS)))
+            {
+              localObject3 = new StringBuffer();
+              localObject4 = locall2.osR.iterator();
+              while (((Iterator)localObject4).hasNext()) {
+                ((StringBuffer)localObject3).append((String)((Iterator)localObject4).next()).append("#");
+              }
+              localpx.jpM = localpx.F("AvatarList", ((StringBuffer)localObject3).toString(), true);
+              localObject3 = new StringBuffer();
+              localObject4 = locall2.QCS.iterator();
+              while (((Iterator)localObject4).hasNext()) {
+                ((StringBuffer)localObject3).append(t.uB(((Long)((Iterator)localObject4).next()).longValue())).append("#");
+              }
+              localpx.jpN = localpx.F("IdList", ((StringBuffer)localObject3).toString(), true);
+            }
+          }
+          localpx.jpF = l2;
+          localpx.ijk = localpx.F("SessionId", i, true);
+          localpx.jpw = localpx.F("NewFeeds", ((StringBuffer)localObject1).toString(), true);
+          localpx.jpx = k;
+          localpx.jpy = localpx.F("ExposureNewFeeds", ((StringBuffer)localObject2).toString(), true);
+          localpx.jpz = m;
+          localpx.jpA = i;
+          localpx.jpB = n;
+          localpx.jpC = l1;
+          localpx.jpn = this.Qyx;
+          localpx.iZX = l;
+          localpx.jcC = j;
+          localpx.jcD = i1;
+          localpx.bMH();
+          j += 1;
+          break;
+          j.QFS.QGC = new px();
+          AppMethodBeat.o(309529);
+          return;
+        }
+      }
+    });
+    AppMethodBeat.o(179114);
+  }
+  
+  public final void ju(View paramView)
+  {
+    AppMethodBeat.i(179111);
+    this.QxK = paramView;
+    if ((paramView != null) && ((paramView.getTag() instanceof Long)))
+    {
+      this.QxO = ((Long)paramView.getTag()).longValue();
+      AppMethodBeat.o(179111);
+      return;
+    }
+    this.QxO = 0L;
+    AppMethodBeat.o(179111);
+  }
+  
+  public final void uV(long paramLong)
+  {
+    AppMethodBeat.i(179109);
+    if ((this.Qxy) && (!Util.isNullOrNil(this.QxU.QCM)) && (!this.QxS))
+    {
+      if (Util.isNullOrNil(this.QxM))
+      {
+        Log.i("MicroMsg.SnsUnreadTipManager", "curExposeIdList isNullOrNil, return");
+        AppMethodBeat.o(179109);
+        return;
+      }
+      long l = ((Long)this.QxM.get(0)).longValue();
+      if (Log.getLogLevel() <= 1)
+      {
+        localIterator1 = this.QxM.iterator();
+        while (localIterator1.hasNext()) {
+          Log.d("MicroMsg.SnsUnreadTipManager", "exposeId:%s", new Object[] { (Long)localIterator1.next() });
+        }
+      }
+      if ((this.QxX != 0L) && (paramLong == this.QxX))
+      {
+        this.Qyd += 1;
+        if ((this.Qye == 0L) && (paramLong == this.QxX)) {
+          this.Qye = cn.getSyncServerTimeSecond();
+        }
+      }
+      Iterator localIterator1 = this.QxU.QCM.iterator();
+      while (localIterator1.hasNext())
+      {
+        l locall = (l)localIterator1.next();
+        if (locall == this.QxV)
+        {
+          ArrayList localArrayList = new ArrayList();
+          Iterator localIterator2 = locall.Adz.iterator();
+          while (localIterator2.hasNext())
+          {
+            Long localLong = (Long)localIterator2.next();
+            if (localLong.longValue() >= l) {
+              localArrayList.add(localLong);
+            }
+          }
+          locall.Adz.removeAll(localArrayList);
+          if (Util.isNullOrNil(locall.Adz)) {
+            this.QxV = null;
+          }
+        }
+        else
+        {
+          locall.Adz.removeAll(this.QxM);
+        }
+      }
+      if ((this.QxL != 0L) && (l <= this.QxL))
+      {
+        Log.i("MicroMsg.SnsUnreadTipManager", "alreadyReachFirstFaultItem:%s, %s <= %s", new Object[] { Boolean.valueOf(this.QxR), Long.valueOf(l), Long.valueOf(this.QxL) });
+        this.QxR = true;
+        this.QxX = 0L;
+        this.QxU.QCN = 0L;
+      }
+      Log.i("MicroMsg.SnsUnreadTipManager", "firstExposeId:%s, unreadCount:%s", new Object[] { Long.valueOf(l), Integer.valueOf(this.QxU.QCM.size()) });
+      hht();
+    }
+    AppMethodBeat.o(179109);
+  }
+  
+  public final void uW(long paramLong)
+  {
+    AppMethodBeat.i(179110);
+    Log.i("MicroMsg.SnsUnreadTipManager", "removeFeed:%s", new Object[] { Long.valueOf(paramLong) });
+    if (!Util.isNullOrNil(this.QxU.QCM))
+    {
+      Iterator localIterator = this.QxU.QCM.iterator();
+      while (localIterator.hasNext())
+      {
+        l locall = (l)localIterator.next();
+        locall.Adz.remove(Long.valueOf(paramLong));
+        if (Util.isNullOrNil(locall.Adz))
+        {
+          localIterator.remove();
+          if (locall == this.QxV) {
+            this.QxV = null;
           }
         }
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.UploadManager", "error to parser postinfo in canPost " + paramn.csH());
-        a(paramn, 2, "mediaPostInfo parser error " + localException.getMessage());
-        localObject2 = null;
-      }
-      if ((ag.cpe().DG(paramn.rCV)) && (this.riT != null))
-      {
-        ab.i("MicroMsg.UploadManager", "cancel post");
-        this.riT.eht = true;
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RK().eHt.a(this.riT);
-        ag.cpe().DI(paramn.rCV);
-      }
-      Object localObject2 = ag.cpf().Ez(paramn.rCV);
-      if ((localObject2 != null) && (((n)localObject2).field_snsId != 0L))
-      {
-        ag.cpe().lI(((n)localObject2).field_snsId);
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RK().eHt.a(new r(((n)localObject2).field_snsId, 1), 0);
-      }
-      ag.cpf().EA(paramn.rCV);
-      if (paramn.field_type == 21) {
-        com.tencent.mm.plugin.sns.lucky.a.g.cnW().cnY();
-      }
-      ab.d("MicroMsg.UploadManager", "cancelPost, publish SnsPostFailEvent, snsInfoLocalId " + paramn.csH());
-      localObject2 = new rz();
-      ((rz)localObject2).cIl.cIm = paramn.rCV;
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
-      AppMethodBeat.o(36700);
-    }
+    AppMethodBeat.o(179110);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bT(LinkedList<String> paramLinkedList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ax
  * JD-Core Version:    0.7.0.1
  */

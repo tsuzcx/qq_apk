@@ -43,12 +43,12 @@ import cooperation.qqfav.QfavHelper;
 import cooperation.qqfav.QfavReport;
 import cooperation.zebra.ZebraPluginProxyActivity;
 import cooperation.zebra.ZebraPluginSplashDialog;
-import dvz;
+import dvy;
+import dwb;
 import dwc;
-import dwd;
-import dwg;
-import dwj;
-import dwm;
+import dwf;
+import dwi;
+import dwl;
 import java.io.File;
 import mqq.app.AppActivity;
 import mqq.app.permission.PermissionManager;
@@ -79,7 +79,7 @@ public class PlusPanelUtils
       if (!localAppActivity.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE"))
       {
         localObject1 = new PermissionsDialog();
-        localObject2 = new dwd(localAppActivity, paramSessionInfo, paramQQAppInterface);
+        localObject2 = new dwc(localAppActivity, paramSessionInfo, paramQQAppInterface);
         ((PermissionsDialog)localObject1).a(localAppActivity, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, (PermissionDialogCallback)localObject2);
         return;
       }
@@ -137,7 +137,7 @@ public class PlusPanelUtils
     if ((!((AppActivity)localObject).permissionManager.checkPermission("android.permission.CAMERA")) || (!((AppActivity)localObject).permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")))
     {
       paramActivity = new PermissionsDialog();
-      paramString = new dwj((AppActivity)localObject, paramBoolean, paramString, paramInt, paramSessionInfo);
+      paramString = new dwi((AppActivity)localObject, paramBoolean, paramString, paramInt, paramSessionInfo);
       paramActivity.a((Activity)localObject, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" }, paramString);
       return;
     }
@@ -201,7 +201,7 @@ public class PlusPanelUtils
       if (!localAppActivity.permissionManager.checkPermission("android.permission.ACCESS_FINE_LOCATION"))
       {
         paramActivity = new PermissionsDialog();
-        paramQQAppInterface = new dwg(localAppActivity, paramQQAppInterface);
+        paramQQAppInterface = new dwf(localAppActivity, paramQQAppInterface);
         paramActivity.a(localAppActivity, new String[] { "android.permission.ACCESS_FINE_LOCATION" }, paramQQAppInterface);
         return;
       }
@@ -234,8 +234,8 @@ public class PlusPanelUtils
       if ((!localAppActivity.permissionManager.checkPermission("android.permission.CAMERA")) || (!localAppActivity.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")))
       {
         localObject2 = new PermissionsDialog();
-        dvz localdvz = new dvz(localAppActivity, paramQQAppInterface, paramInt);
-        ((PermissionsDialog)localObject2).a(localAppActivity, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" }, localdvz);
+        dvy localdvy = new dvy(localAppActivity, paramQQAppInterface, paramInt);
+        ((PermissionsDialog)localObject2).a(localAppActivity, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" }, localdvy);
         return;
       }
     }
@@ -310,7 +310,7 @@ public class PlusPanelUtils
       if (!localAppActivity.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE"))
       {
         PermissionsDialog localPermissionsDialog = new PermissionsDialog();
-        paramQQAppInterface = new dwm(localAppActivity, paramQQAppInterface, paramSessionInfo);
+        paramQQAppInterface = new dwl(localAppActivity, paramQQAppInterface, paramSessionInfo);
         localPermissionsDialog.a(localAppActivity, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, paramQQAppInterface);
         return;
       }
@@ -386,7 +386,7 @@ public class PlusPanelUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo)
   {
-    new dwc(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.c(paramContext, paramUri)).execute(new Void[0]);
+    new dwb(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.c(paramContext, paramUri)).execute(new Void[0]);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo)

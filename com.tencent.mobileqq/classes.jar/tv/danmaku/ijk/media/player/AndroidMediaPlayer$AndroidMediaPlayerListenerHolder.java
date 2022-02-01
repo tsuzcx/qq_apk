@@ -25,82 +25,100 @@ class AndroidMediaPlayer$AndroidMediaPlayerListenerHolder
   public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return;
+    if (paramMediaPlayer != null)
+    {
+      if (AndroidMediaPlayer.access$000(paramMediaPlayer)) {
+        return;
+      }
+      paramMediaPlayer.notifyOnBufferingUpdate(paramInt);
     }
-    paramMediaPlayer.notifyOnBufferingUpdate(paramInt);
   }
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return;
+    if (paramMediaPlayer != null)
+    {
+      if (AndroidMediaPlayer.access$000(paramMediaPlayer)) {
+        return;
+      }
+      paramMediaPlayer.notifyOnCompletion();
     }
-    paramMediaPlayer.notifyOnCompletion();
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return false;
+    if ((paramMediaPlayer != null) && (!AndroidMediaPlayer.access$000(paramMediaPlayer))) {
+      return paramMediaPlayer.notifyOnError(paramInt1, paramInt2);
     }
-    return paramMediaPlayer.notifyOnError(paramInt1, paramInt2);
+    return false;
   }
   
   public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return false;
+    if ((paramMediaPlayer != null) && (!AndroidMediaPlayer.access$000(paramMediaPlayer))) {
+      return paramMediaPlayer.notifyOnInfo(paramInt1, paramInt2);
     }
-    return paramMediaPlayer.notifyOnInfo(paramInt1, paramInt2);
+    return false;
   }
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return;
+    if (paramMediaPlayer != null)
+    {
+      if (AndroidMediaPlayer.access$000(paramMediaPlayer)) {
+        return;
+      }
+      paramMediaPlayer.notifyOnPrepared();
     }
-    paramMediaPlayer.notifyOnPrepared();
   }
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return;
+    if (paramMediaPlayer != null)
+    {
+      if (AndroidMediaPlayer.access$000(paramMediaPlayer)) {
+        return;
+      }
+      paramMediaPlayer.notifyOnSeekComplete();
     }
-    paramMediaPlayer.notifyOnSeekComplete();
   }
   
   public void onTimedText(MediaPlayer paramMediaPlayer, TimedText paramTimedText)
   {
     AndroidMediaPlayer localAndroidMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((localAndroidMediaPlayer == null) || (AndroidMediaPlayer.access$000(localAndroidMediaPlayer))) {
-      return;
+    if (localAndroidMediaPlayer != null)
+    {
+      if (AndroidMediaPlayer.access$000(localAndroidMediaPlayer)) {
+        return;
+      }
+      paramMediaPlayer = null;
+      if (paramTimedText != null) {
+        paramMediaPlayer = new IjkTimedText(paramTimedText.getBounds(), paramTimedText.getText());
+      }
+      localAndroidMediaPlayer.notifyOnTimedText(paramMediaPlayer);
     }
-    paramMediaPlayer = null;
-    if (paramTimedText != null) {
-      paramMediaPlayer = new IjkTimedText(paramTimedText.getBounds(), paramTimedText.getText());
-    }
-    localAndroidMediaPlayer.notifyOnTimedText(paramMediaPlayer);
   }
   
   public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     paramMediaPlayer = (AndroidMediaPlayer)this.mWeakMediaPlayer.get();
-    if ((paramMediaPlayer == null) || (AndroidMediaPlayer.access$000(paramMediaPlayer))) {
-      return;
+    if (paramMediaPlayer != null)
+    {
+      if (AndroidMediaPlayer.access$000(paramMediaPlayer)) {
+        return;
+      }
+      paramMediaPlayer.notifyOnVideoSizeChanged(paramInt1, paramInt2, 1, 1);
     }
-    paramMediaPlayer.notifyOnVideoSizeChanged(paramInt1, paramInt2, 1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.AndroidMediaPlayer.AndroidMediaPlayerListenerHolder
  * JD-Core Version:    0.7.0.1
  */

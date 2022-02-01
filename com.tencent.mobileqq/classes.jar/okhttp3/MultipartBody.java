@@ -36,33 +36,40 @@ public final class MultipartBody
   {
     this.boundary = paramByteString;
     this.originalType = paramMediaType;
-    this.contentType = MediaType.get(paramMediaType + "; boundary=" + paramByteString.utf8());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMediaType);
+    localStringBuilder.append("; boundary=");
+    localStringBuilder.append(paramByteString.utf8());
+    this.contentType = MediaType.get(localStringBuilder.toString());
     this.parts = Util.immutableList(paramList);
   }
   
   static StringBuilder appendQuotedString(StringBuilder paramStringBuilder, String paramString)
   {
     paramStringBuilder.append('"');
-    int i = 0;
     int j = paramString.length();
-    if (i < j)
+    int i = 0;
+    while (i < j)
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '\n')
       {
-      default: 
-        paramStringBuilder.append(c);
+        if (c != '\r')
+        {
+          if (c != '"') {
+            paramStringBuilder.append(c);
+          } else {
+            paramStringBuilder.append("%22");
+          }
+        }
+        else {
+          paramStringBuilder.append("%0D");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
+      else {
         paramStringBuilder.append("%0A");
-        continue;
-        paramStringBuilder.append("%0D");
-        continue;
-        paramStringBuilder.append("%22");
       }
+      i += 1;
     }
     paramStringBuilder.append('"');
     return paramStringBuilder;
@@ -70,71 +77,74 @@ public final class MultipartBody
   
   private long writeOrCountBytes(@Nullable BufferedSink paramBufferedSink, boolean paramBoolean)
   {
-    long l1 = 0L;
-    if (paramBoolean) {
-      paramBufferedSink = new Buffer();
-    }
-    for (BufferedSink localBufferedSink = paramBufferedSink;; localBufferedSink = null)
+    Object localObject1;
+    Object localObject2;
+    if (paramBoolean)
     {
-      int k = this.parts.size();
-      int i = 0;
-      Object localObject2;
-      if (i < k)
-      {
-        localObject2 = (MultipartBody.Part)this.parts.get(i);
-        Object localObject1 = ((MultipartBody.Part)localObject2).headers;
-        localObject2 = ((MultipartBody.Part)localObject2).body;
-        paramBufferedSink.write(DASHDASH);
-        paramBufferedSink.write(this.boundary);
-        paramBufferedSink.write(CRLF);
-        if (localObject1 != null)
-        {
-          int j = 0;
-          int m = ((Headers)localObject1).size();
-          while (j < m)
-          {
-            paramBufferedSink.writeUtf8(((Headers)localObject1).name(j)).write(COLONSPACE).writeUtf8(((Headers)localObject1).value(j)).write(CRLF);
-            j += 1;
-          }
-        }
-        localObject1 = ((RequestBody)localObject2).contentType();
-        if (localObject1 != null) {
-          paramBufferedSink.writeUtf8("Content-Type: ").writeUtf8(((MediaType)localObject1).toString()).write(CRLF);
-        }
-        l2 = ((RequestBody)localObject2).contentLength();
-        if (l2 != -1L) {
-          paramBufferedSink.writeUtf8("Content-Length: ").writeDecimalLong(l2).write(CRLF);
-        }
-        while (!paramBoolean)
-        {
-          paramBufferedSink.write(CRLF);
-          if (!paramBoolean) {
-            break label304;
-          }
-          l1 += l2;
-          paramBufferedSink.write(CRLF);
-          i += 1;
-          break;
-        }
-        localBufferedSink.clear();
-        l2 = -1L;
-      }
-      label304:
-      do
-      {
-        return l2;
-        ((RequestBody)localObject2).writeTo(paramBufferedSink);
-        break;
-        paramBufferedSink.write(DASHDASH);
-        paramBufferedSink.write(this.boundary);
-        paramBufferedSink.write(DASHDASH);
-        paramBufferedSink.write(CRLF);
-        l2 = l1;
-      } while (!paramBoolean);
-      long l2 = localBufferedSink.size();
-      localBufferedSink.clear();
-      return l1 + l2;
+      localObject1 = new Buffer();
+      paramBufferedSink = (BufferedSink)localObject1;
     }
+    else
+    {
+      localObject2 = null;
+      localObject1 = paramBufferedSink;
+      paramBufferedSink = (BufferedSink)localObject2;
+    }
+    int k = this.parts.size();
+    long l1 = 0L;
+    int i = 0;
+    while (i < k)
+    {
+      Object localObject3 = (MultipartBody.Part)this.parts.get(i);
+      localObject2 = ((MultipartBody.Part)localObject3).headers;
+      localObject3 = ((MultipartBody.Part)localObject3).body;
+      ((BufferedSink)localObject1).write(DASHDASH);
+      ((BufferedSink)localObject1).write(this.boundary);
+      ((BufferedSink)localObject1).write(CRLF);
+      if (localObject2 != null)
+      {
+        int m = ((Headers)localObject2).size();
+        int j = 0;
+        while (j < m)
+        {
+          ((BufferedSink)localObject1).writeUtf8(((Headers)localObject2).name(j)).write(COLONSPACE).writeUtf8(((Headers)localObject2).value(j)).write(CRLF);
+          j += 1;
+        }
+      }
+      localObject2 = ((RequestBody)localObject3).contentType();
+      if (localObject2 != null) {
+        ((BufferedSink)localObject1).writeUtf8("Content-Type: ").writeUtf8(((MediaType)localObject2).toString()).write(CRLF);
+      }
+      l2 = ((RequestBody)localObject3).contentLength();
+      if (l2 != -1L)
+      {
+        ((BufferedSink)localObject1).writeUtf8("Content-Length: ").writeDecimalLong(l2).write(CRLF);
+      }
+      else if (paramBoolean)
+      {
+        paramBufferedSink.clear();
+        return -1L;
+      }
+      ((BufferedSink)localObject1).write(CRLF);
+      if (paramBoolean) {
+        l1 += l2;
+      } else {
+        ((RequestBody)localObject3).writeTo((BufferedSink)localObject1);
+      }
+      ((BufferedSink)localObject1).write(CRLF);
+      i += 1;
+    }
+    ((BufferedSink)localObject1).write(DASHDASH);
+    ((BufferedSink)localObject1).write(this.boundary);
+    ((BufferedSink)localObject1).write(DASHDASH);
+    ((BufferedSink)localObject1).write(CRLF);
+    long l2 = l1;
+    if (paramBoolean)
+    {
+      l2 = l1 + paramBufferedSink.size();
+      paramBufferedSink.clear();
+    }
+    return l2;
   }
   
   public String boundary()
@@ -185,7 +195,7 @@ public final class MultipartBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.MultipartBody
  * JD-Core Version:    0.7.0.1
  */

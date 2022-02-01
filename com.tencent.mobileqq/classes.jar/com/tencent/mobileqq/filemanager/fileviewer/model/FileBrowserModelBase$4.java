@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import aneh;
-import arki;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.api.IMiniCodeApi;
 
-public class FileBrowserModelBase$4
+class FileBrowserModelBase$4
   implements Runnable
 {
-  public FileBrowserModelBase$4(arki paramarki) {}
+  FileBrowserModelBase$4(FileBrowserModelBase paramFileBrowserModelBase) {}
   
   public void run()
   {
-    if (arki.a(this.this$0) != null)
-    {
-      arki.a(this.this$0).a(hashCode(), "MiniCode_FileBrowser");
-      arki.a(this.this$0, null);
-    }
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).unInit(hashCode(), "MiniCode_FileBrowser");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.4
  * JD-Core Version:    0.7.0.1
  */

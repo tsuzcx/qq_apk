@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.config.ConfigManager;
-
 public class fmn
 {
   public byte a;
+  public long a;
   public String a;
-  public byte b;
-  public String b;
+  public short a;
+  public byte[] a;
+  public short b = 0;
   
-  public fmn(ConfigManager paramConfigManager)
+  public fmn()
   {
+    this.jdField_a_of_type_Short = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_b_of_type_Byte = 0;
-    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 

@@ -54,10 +54,10 @@ public class Assignments
     if (localClass.isEnum()) {
       return new EnumSupplier(localClass).getValueSources(paramParameterSignature);
     }
-    if ((localClass.equals(Boolean.class)) || (localClass.equals(Boolean.TYPE))) {
-      return new BooleanSupplier().getValueSources(paramParameterSignature);
+    if ((!localClass.equals(Boolean.class)) && (!localClass.equals(Boolean.TYPE))) {
+      return Collections.emptyList();
     }
-    return Collections.emptyList();
+    return new BooleanSupplier().getValueSources(paramParameterSignature);
   }
   
   private int getConstructorParameterCount()
@@ -78,7 +78,8 @@ public class Assignments
   {
     ArrayList localArrayList = new ArrayList(this.assigned);
     localArrayList.add(paramPotentialAssignment);
-    return new Assignments(localArrayList, this.unassigned.subList(1, this.unassigned.size()), this.clazz);
+    paramPotentialAssignment = this.unassigned;
+    return new Assignments(localArrayList, paramPotentialAssignment.subList(1, paramPotentialAssignment.size()), this.clazz);
   }
   
   public Object[] getActualValues(int paramInt1, int paramInt2)
@@ -143,7 +144,7 @@ public class Assignments
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.internal.Assignments
  * JD-Core Version:    0.7.0.1
  */

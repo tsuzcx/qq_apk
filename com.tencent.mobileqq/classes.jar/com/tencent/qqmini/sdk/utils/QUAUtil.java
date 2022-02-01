@@ -10,20 +10,25 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
-import bgou;
-import bgxl;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.DeviceUtil;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.utils.VersionUtil;
+import com.tencent.qqmini.sdk.manager.LoginManager;
+import java.net.URLEncoder;
 
+@MiniKeep
 public class QUAUtil
 {
   private static final String TAG = "QUAUtil";
   private static volatile String mWebViewUA = "";
-  private static String[] sLoginTypeList = { "anonymous", "wechat", "qq", "phone", "other" };
-  private static volatile String ua;
+  private static volatile String requestUA;
+  private static String[] sLoginTypeList = { "anonymous", "wechat", "qq", "qqwtlogin", "other" };
+  private static volatile String sSimpleDeviceInfo;
+  private static volatile String systemUA;
   
   public static String getApplicationName(Context paramContext)
   {
@@ -33,13 +38,17 @@ public class QUAUtil
       paramContext = (String)localPackageManager.getApplicationLabel(localPackageManager.getApplicationInfo(paramContext.getPackageName(), 0));
       return paramContext;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label24:
+      break label24;
+    }
     return "";
   }
   
   public static String getLoginType()
   {
-    int i = bgxl.a().a();
+    int i = LoginManager.getInstance().getLoginType();
     return sLoginTypeList[i];
   }
   
@@ -58,123 +67,194 @@ public class QUAUtil
     if (!TextUtils.isEmpty(str)) {
       return str;
     }
-    return "1.3.1";
+    return "1.19.0";
   }
   
   public static String getQUA()
   {
-    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    return "V1_AND_MINISDK_1.3.1_0_RELEASE_B";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V1_AND_MINISDK_1.19.0_0");
+    String str;
+    if (isAbi64()) {
+      str = "_ARM64";
+    } else {
+      str = "_RELEASE_B";
+    }
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
+  }
+  
+  public static String getRequestUA()
+  {
+    if (requestUA == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getSystemUA());
+      localStringBuilder.append(" QQ/");
+      localStringBuilder.append(getPlatformVersionString());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(getPlatformQUA());
+      localStringBuilder.append(" QQ/MiniApp");
+      requestUA = localStringBuilder.toString();
+    }
+    return requestUA;
   }
   
   public static String getSimpleDeviceInfo(Context paramContext)
   {
+    if (!TextUtils.isEmpty(sSimpleDeviceInfo)) {
+      return sSimpleDeviceInfo;
+    }
+    if (paramContext == null) {
+      return "";
+    }
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     Object localObject = (WindowManager)paramContext.getSystemService("window");
     paramContext = new DisplayMetrics();
     ((WindowManager)localObject).getDefaultDisplay().getMetrics(paramContext);
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("m=").append(Build.MODEL).append('&');
-    ((StringBuilder)localObject).append("o=").append(Build.VERSION.RELEASE).append('&');
-    ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
-    ((StringBuilder)localObject).append("p=").append(paramContext.widthPixels).append('*').append(paramContext.heightPixels).append('&');
-    ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
-    ((StringBuilder)localObject).append("mm=").append(bgou.b() / 1048576L).append('&');
-    ((StringBuilder)localObject).append("cf=").append(bgou.c()).append('&');
-    ((StringBuilder)localObject).append("cc=").append(bgou.b()).append('&');
-    ((StringBuilder)localObject).append("qqversion=").append(localMiniAppProxy.getAppVersion());
-    return ((StringBuilder)localObject).toString();
+    ((StringBuilder)localObject).append("m=");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("o=");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("a=");
+    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("p=");
+    ((StringBuilder)localObject).append(paramContext.widthPixels);
+    ((StringBuilder)localObject).append('*');
+    ((StringBuilder)localObject).append(paramContext.heightPixels);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("f=");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("mm=");
+    ((StringBuilder)localObject).append(DeviceUtil.getSystemTotalMemory() / 1048576L);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("cf=");
+    ((StringBuilder)localObject).append(DeviceUtil.getCpuFrequency());
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("cc=");
+    ((StringBuilder)localObject).append(DeviceUtil.getCpuNumber());
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("qqversion=");
+    ((StringBuilder)localObject).append(localMiniAppProxy.getAppVersion());
+    sSimpleDeviceInfo = ((StringBuilder)localObject).toString();
+    return sSimpleDeviceInfo;
   }
   
   public static String getSystemUA()
   {
-    int i = 0;
-    if (ua != null) {
-      return ua;
+    if (systemUA != null) {
+      return systemUA;
     }
-    for (;;)
+    try
     {
-      StringBuilder localStringBuilder;
-      try
-      {
-        boolean bool = VersionUtil.isKITKAT();
-        char c;
-        String str2;
-        if (bool)
-        {
-          try
-          {
-            String str1 = WebSettings.getDefaultUserAgent(AppLoaderFactory.g().getMiniAppEnv().getContext());
-            localStringBuilder = new StringBuilder();
-            int j = str1.length();
-            if (i >= j) {
-              break label144;
-            }
-            c = str1.charAt(i);
-            if ((c > '\037') && (c < '')) {
-              continue;
-            }
-            localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
-          }
-          catch (Exception localException)
-          {
-            str2 = System.getProperty("http.agent");
-            continue;
-          }
-        }
-        else
-        {
-          str2 = System.getProperty("http.agent");
-          continue;
-        }
-        localStringBuilder.append(c);
-      }
-      catch (Throwable localThrowable)
-      {
-        ua = "AndroidQQ";
-      }
-      for (;;)
-      {
-        return ua;
-        label144:
-        ua = localStringBuilder.toString();
-      }
-      i += 1;
+      boolean bool = VersionUtil.isKITKAT();
+      if (!bool) {}
     }
+    catch (Throwable localThrowable)
+    {
+      String str;
+      label31:
+      break label59;
+    }
+    try
+    {
+      str = WebSettings.getDefaultUserAgent(AppLoaderFactory.g().getContext());
+    }
+    catch (Exception localException)
+    {
+      break label31;
+    }
+    str = System.getProperty("http.agent");
+    break label46;
+    str = System.getProperty("http.agent");
+    label46:
+    systemUA = URLEncoder.encode(str, "UTF-8");
+    break label65;
+    label59:
+    systemUA = "AndroidQQ";
+    label65:
+    return systemUA;
   }
   
   public static String getWebViewUA()
   {
-    if (TextUtils.isEmpty(mWebViewUA)) {
-      mWebViewUA = getSystemUA() + " QQ/" + getPlatformVersionString() + " " + getPlatformQUA() + " MiniAppEnable miniProgram miniprogramhtmlwebview";
+    if (TextUtils.isEmpty(mWebViewUA))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getSystemUA());
+      localStringBuilder.append(" QQ/");
+      localStringBuilder.append(getPlatformVersionString());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(getPlatformQUA());
+      localStringBuilder.append(" MiniAppEnable miniProgram miniprogramhtmlwebview");
+      mWebViewUA = localStringBuilder.toString();
     }
-    QMLog.d("QUAUtil", "getWebViewUA done in " + Thread.currentThread().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getWebViewUA done in ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    QMLog.d("QUAUtil", localStringBuilder.toString());
     return mWebViewUA;
+  }
+  
+  public static boolean isAbi64()
+  {
+    return Build.CPU_ABI.equals("arm64-v8a");
+  }
+  
+  public static boolean isAlienApp()
+  {
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId().startsWith("2");
   }
   
   public static boolean isDemoApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("demo");
+    return "demo".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
+  }
+  
+  public static boolean isMicroApp()
+  {
+    return "ma".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isQQApp()
   {
-    return (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq")) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qi")) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("ssq"));
+    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    return ("qq".equals(localMiniAppProxy.getAppName())) || ("qi".equals(localMiniAppProxy.getAppName())) || ("ssq".equals(localMiniAppProxy.getAppName())) || ("tim".equals(localMiniAppProxy.getAppName()));
+  }
+  
+  public static boolean isQQBrowseApp()
+  {
+    return "qb".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isQQMainApp()
   {
-    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName().equalsIgnoreCase("qq");
+    return "qq".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
+  }
+  
+  public static boolean isQQSpeedApp()
+  {
+    return "ssq".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
   }
   
   public static boolean isRdmBuild()
   {
     return getPlatformQUA().toLowerCase().contains("rdm");
   }
+  
+  public static boolean isTimApp()
+  {
+    return "tim".equals(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.QUAUtil
  * JD-Core Version:    0.7.0.1
  */

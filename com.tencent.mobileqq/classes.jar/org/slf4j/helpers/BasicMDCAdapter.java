@@ -49,17 +49,19 @@ public class BasicMDCAdapter
   
   public void put(String paramString1, String paramString2)
   {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("key cannot be null");
-    }
-    Map localMap = (Map)this.inheritableThreadLocal.get();
-    Object localObject = localMap;
-    if (localMap == null)
+    if (paramString1 != null)
     {
-      localObject = new HashMap();
-      this.inheritableThreadLocal.set(localObject);
+      Map localMap = (Map)this.inheritableThreadLocal.get();
+      Object localObject = localMap;
+      if (localMap == null)
+      {
+        localObject = new HashMap();
+        this.inheritableThreadLocal.set(localObject);
+      }
+      ((Map)localObject).put(paramString1, paramString2);
+      return;
     }
-    ((Map)localObject).put(paramString1, paramString2);
+    throw new IllegalArgumentException("key cannot be null");
   }
   
   public void remove(String paramString)
@@ -77,7 +79,7 @@ public class BasicMDCAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.helpers.BasicMDCAdapter
  * JD-Core Version:    0.7.0.1
  */

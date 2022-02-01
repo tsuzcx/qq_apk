@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public final class b
 {
-  public static void cIB()
+  public static void hML()
   {
-    AppMethodBeat.i(96379);
+    AppMethodBeat.i(91001);
     try
     {
       ArrayList localArrayList = new ArrayList();
@@ -23,13 +23,12 @@ public final class b
       localIDKey2.SetKey(1);
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      h.qsU.b(localArrayList, false);
-      AppMethodBeat.o(96379);
+      h.OAn.b(localArrayList, false);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(96379);
+      AppMethodBeat.o(91001);
     }
   }
 }

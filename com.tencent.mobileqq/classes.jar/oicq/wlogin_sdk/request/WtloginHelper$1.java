@@ -10,28 +10,31 @@ class WtloginHelper$1
   public void Done(Ticket paramTicket)
   {
     paramTicket = this.this$0.GetLocalTicket(this.val$userAccount, this.val$appid, this.val$sigType);
-    if (this.val$promise != null) {
-      this.val$promise.Done(paramTicket);
+    WtTicketPromise localWtTicketPromise = this.val$promise;
+    if (localWtTicketPromise != null) {
+      localWtTicketPromise.Done(paramTicket);
     }
   }
   
   public void Failed(ErrMsg paramErrMsg)
   {
-    if (this.val$promise != null) {
-      this.val$promise.Failed(paramErrMsg);
+    WtTicketPromise localWtTicketPromise = this.val$promise;
+    if (localWtTicketPromise != null) {
+      localWtTicketPromise.Failed(paramErrMsg);
     }
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (this.val$promise != null) {
-      this.val$promise.Timeout(paramErrMsg);
+    WtTicketPromise localWtTicketPromise = this.val$promise;
+    if (localWtTicketPromise != null) {
+      localWtTicketPromise.Timeout(paramErrMsg);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WtloginHelper.1
  * JD-Core Version:    0.7.0.1
  */

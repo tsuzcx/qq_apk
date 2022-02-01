@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import affg;
-import bivc;
+import cooperation.qqfav.QfavHelper;
 
-public class MultiFavoriteHelper$3
+class MultiFavoriteHelper$3
   implements Runnable
 {
-  public MultiFavoriteHelper$3(affg paramaffg, String paramString1, boolean paramBoolean, String paramString2) {}
+  MultiFavoriteHelper$3(MultiFavoriteHelper paramMultiFavoriteHelper, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    bivc.a(affg.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, false);
+    QfavHelper.a(MultiFavoriteHelper.c(this.this$0), this.a, this.b, this.c, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiFavoriteHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,11 @@ public final class e_video_source_type
   public static final int _enum_topic_video_source = 2;
   public static final int _enum_ugc_video_source = 1;
   public static final int _enum_unknown_video_source = 9;
+  public static final int _enum_vapf_live_recomd = 10;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_video_source_type
  * JD-Core Version:    0.7.0.1
  */

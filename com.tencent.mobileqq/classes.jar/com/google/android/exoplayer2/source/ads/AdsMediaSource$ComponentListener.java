@@ -14,22 +14,23 @@ final class AdsMediaSource$ComponentListener
   
   public void onAdClicked()
   {
-    if (this.released) {}
-    while ((AdsMediaSource.access$400(this.this$0) == null) || (AdsMediaSource.access$500(this.this$0) == null)) {
+    if (this.released) {
       return;
     }
-    AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.2(this));
+    if ((AdsMediaSource.access$400(this.this$0) != null) && (AdsMediaSource.access$500(this.this$0) != null)) {
+      AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.2(this));
+    }
   }
   
   public void onAdLoadError(IOException paramIOException)
   {
-    if (this.released) {}
-    do
-    {
+    if (this.released) {
       return;
-      Log.w("AdsMediaSource", "Ad load error", paramIOException);
-    } while ((AdsMediaSource.access$400(this.this$0) == null) || (AdsMediaSource.access$500(this.this$0) == null));
-    AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.4(this, paramIOException));
+    }
+    Log.w("AdsMediaSource", "Ad load error", paramIOException);
+    if ((AdsMediaSource.access$400(this.this$0) != null) && (AdsMediaSource.access$500(this.this$0) != null)) {
+      AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.4(this, paramIOException));
+    }
   }
   
   public void onAdPlaybackState(AdPlaybackState paramAdPlaybackState)
@@ -42,22 +43,23 @@ final class AdsMediaSource$ComponentListener
   
   public void onAdTapped()
   {
-    if (this.released) {}
-    while ((AdsMediaSource.access$400(this.this$0) == null) || (AdsMediaSource.access$500(this.this$0) == null)) {
+    if (this.released) {
       return;
     }
-    AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.3(this));
+    if ((AdsMediaSource.access$400(this.this$0) != null) && (AdsMediaSource.access$500(this.this$0) != null)) {
+      AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.3(this));
+    }
   }
   
   public void onInternalAdLoadError(RuntimeException paramRuntimeException)
   {
-    if (this.released) {}
-    do
-    {
+    if (this.released) {
       return;
-      Log.w("AdsMediaSource", "Internal ad load error", paramRuntimeException);
-    } while ((AdsMediaSource.access$400(this.this$0) == null) || (AdsMediaSource.access$500(this.this$0) == null));
-    AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.5(this, paramRuntimeException));
+    }
+    Log.w("AdsMediaSource", "Internal ad load error", paramRuntimeException);
+    if ((AdsMediaSource.access$400(this.this$0) != null) && (AdsMediaSource.access$500(this.this$0) != null)) {
+      AdsMediaSource.access$400(this.this$0).post(new AdsMediaSource.ComponentListener.5(this, paramRuntimeException));
+    }
   }
   
   public void release()
@@ -68,7 +70,7 @@ final class AdsMediaSource$ComponentListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ads.AdsMediaSource.ComponentListener
  * JD-Core Version:    0.7.0.1
  */

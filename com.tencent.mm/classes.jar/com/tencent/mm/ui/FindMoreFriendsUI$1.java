@@ -3,10 +3,10 @@ package com.tencent.mm.ui;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 final class FindMoreFriendsUI$1
-  extends ak
+  extends MMHandler
 {
   FindMoreFriendsUI$1(FindMoreFriendsUI paramFindMoreFriendsUI, Looper paramLooper)
   {
@@ -15,23 +15,23 @@ final class FindMoreFriendsUI$1
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(29207);
+    AppMethodBeat.i(33032);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(29207);
+      AppMethodBeat.o(33032);
       return;
-      if (FindMoreFriendsUI.a(this.yWI) != null) {
-        FindMoreFriendsUI.b(this.yWI);
+      if (FindMoreFriendsUI.a(this.adyF) != null) {
+        FindMoreFriendsUI.b(this.adyF);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.FindMoreFriendsUI.1
  * JD-Core Version:    0.7.0.1
  */

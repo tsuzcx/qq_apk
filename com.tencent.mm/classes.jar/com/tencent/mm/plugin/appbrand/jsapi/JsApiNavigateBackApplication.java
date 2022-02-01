@@ -9,17 +9,17 @@ import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Resp;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.pluginsdk.model.app.u;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class JsApiNavigateBackApplication
-  extends a<r>
+  extends c<com.tencent.mm.plugin.appbrand.g>
 {
   private static final int CTRL_INDEX = 288;
   public static final String NAME = "navigateBackApplication";
@@ -35,9 +35,9 @@ public final class JsApiNavigateBackApplication
     
     static
     {
-      AppMethodBeat.i(130500);
-      CREATOR = new JsApiNavigateBackApplication.NavigateBackAppTask.1();
-      AppMethodBeat.o(130500);
+      AppMethodBeat.i(45558);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(45558);
     }
     
     public NavigateBackAppTask() {}
@@ -50,73 +50,80 @@ public final class JsApiNavigateBackApplication
       this.errCode = paramInt;
     }
     
-    private static void a(Bundle paramBundle, BaseResp paramBaseResp, f paramf)
+    private static void a(Bundle paramBundle, BaseResp paramBaseResp, com.tencent.mm.pluginsdk.model.app.g paramg)
     {
-      AppMethodBeat.i(130497);
+      AppMethodBeat.i(45555);
       paramBaseResp.toBundle(paramBundle);
       paramBaseResp = new MMessageActV2.Args();
-      paramBaseResp.targetPkgName = paramf.field_packageName;
+      paramBaseResp.targetPkgName = paramg.field_packageName;
       paramBaseResp.bundle = paramBundle;
-      p.aC(paramBundle);
-      p.aD(paramBundle);
-      MMessageActV2.send(ah.getContext(), paramBaseResp);
-      AppMethodBeat.o(130497);
+      u.bS(paramBundle);
+      u.bT(paramBundle);
+      MMessageActV2.send(MMApplicationContext.getContext(), paramBaseResp);
+      AppMethodBeat.o(45555);
     }
     
-    public final void ata()
+    public final void asn()
     {
-      AppMethodBeat.i(130496);
-      f localf = g.ca(this.appId, true);
-      ab.i("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appid %s", new Object[] { this.appId });
-      if (localf == null)
+      AppMethodBeat.i(45554);
+      com.tencent.mm.pluginsdk.model.app.g localg = h.s(this.appId, true, true);
+      Log.i("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appid %s", new Object[] { this.appId });
+      if (localg == null)
       {
-        ab.w("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appinfo is null");
-        AppMethodBeat.o(130496);
+        Log.w("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask appinfo is null");
+        AppMethodBeat.o(45554);
+        return;
+      }
+      if (!h.i(localg))
+      {
+        Log.e("MicroMsg.JsApiNavigateBackApplication", "NavigateBackAppTask packageName invalid");
+        AppMethodBeat.o(45554);
         return;
       }
       Bundle localBundle = new Bundle();
-      if (bo.isNullOrNil(this.businessType))
+      if (Util.isNullOrNil(this.businessType))
       {
         localObject = new WXLaunchMiniProgram.Resp(localBundle);
         ((WXLaunchMiniProgram.Resp)localObject).extMsg = this.data;
-        ((WXLaunchMiniProgram.Resp)localObject).openId = localf.field_openId;
-        a(localBundle, (BaseResp)localObject, localf);
-        AppMethodBeat.o(130496);
+        ((WXLaunchMiniProgram.Resp)localObject).openId = localg.field_openId;
+        a(localBundle, (BaseResp)localObject, localg);
+        AppMethodBeat.o(45554);
         return;
       }
       Object localObject = new WXOpenBusinessView.Resp(localBundle);
       ((WXOpenBusinessView.Resp)localObject).extMsg = this.data;
-      ((WXOpenBusinessView.Resp)localObject).openId = localf.field_openId;
+      ((WXOpenBusinessView.Resp)localObject).openId = localg.field_openId;
       ((WXOpenBusinessView.Resp)localObject).errCode = this.errCode;
       ((WXOpenBusinessView.Resp)localObject).businessType = this.businessType;
-      a(localBundle, (BaseResp)localObject, localf);
-      AppMethodBeat.o(130496);
+      ((WXOpenBusinessView.Resp)localObject).transaction = n.YtV;
+      a(localBundle, (BaseResp)localObject, localg);
+      AppMethodBeat.o(45554);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
-      AppMethodBeat.i(130499);
+      AppMethodBeat.i(45557);
       this.appId = paramParcel.readString();
       this.data = paramParcel.readString();
       this.businessType = paramParcel.readString();
       this.errCode = paramParcel.readInt();
-      AppMethodBeat.o(130499);
+      AppMethodBeat.o(45557);
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(130498);
+      AppMethodBeat.i(45556);
       paramParcel.writeString(this.appId);
       paramParcel.writeString(this.data);
       paramParcel.writeString(this.businessType);
       paramParcel.writeInt(this.errCode);
-      AppMethodBeat.o(130498);
+      AppMethodBeat.o(45556);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiNavigateBackApplication
  * JD-Core Version:    0.7.0.1
  */

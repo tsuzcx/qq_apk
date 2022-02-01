@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import amru;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.AppletsHandler;
 
 class MiniAppDesktop$4
   implements Runnable
@@ -10,20 +11,21 @@ class MiniAppDesktop$4
   
   public void run()
   {
-    if (this.val$app == null) {}
-    amru localamru;
-    do
-    {
+    Object localObject = this.val$app;
+    if (localObject == null) {
       return;
-      localamru = (amru)this.val$app.a(148);
-    } while (localamru == null);
-    localamru.a();
-    localamru.c();
+    }
+    localObject = (AppletsHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+    if (localObject != null)
+    {
+      ((AppletsHandler)localObject).a();
+      ((AppletsHandler)localObject).c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.4
  * JD-Core Version:    0.7.0.1
  */

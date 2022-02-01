@@ -1,24 +1,27 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class frh
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
   public frh(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    paramView = this.a;
-    if (!this.a.b.a().a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.c(bool);
-      FMRecentFileActivity.a(this.a);
-      return;
+    if (paramView == null) {
+      return false;
     }
+    FileManagerEntity localFileManagerEntity = ((RecentFileAdapter.ItemHolder)paramView.getTag()).a;
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
+    FMRecentFileActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new fri(this, paramView), localFileManagerEntity.fileName));
+    return true;
   }
 }
 

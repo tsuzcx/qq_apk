@@ -17,29 +17,29 @@ public final class SQLiteLintConfig
   
   public SQLiteLintConfig(SQLiteLint.SqlExecutionCallbackMode paramSqlExecutionCallbackMode)
   {
-    AppMethodBeat.i(94106);
+    AppMethodBeat.i(52950);
     SQLiteLint.setSqlExecutionCallbackMode(paramSqlExecutionCallbackMode);
     this.sConcernDbList = new ArrayList();
-    AppMethodBeat.o(94106);
+    AppMethodBeat.o(52950);
   }
   
   public final void addConcernDB(ConcernDb paramConcernDb)
   {
-    AppMethodBeat.i(94107);
+    AppMethodBeat.i(52951);
     if (paramConcernDb == null)
     {
-      AppMethodBeat.o(94107);
+      AppMethodBeat.o(52951);
       return;
     }
     if (paramConcernDb.mInstallEnv == null)
     {
-      AppMethodBeat.o(94107);
+      AppMethodBeat.o(52951);
       return;
     }
     String str = paramConcernDb.mInstallEnv.getConcernedDbPath();
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(94107);
+      AppMethodBeat.o(52951);
       return;
     }
     int i = 0;
@@ -47,13 +47,13 @@ public final class SQLiteLintConfig
     {
       if (str.equals(paramConcernDb.mInstallEnv.getConcernedDbPath()))
       {
-        AppMethodBeat.o(94107);
+        AppMethodBeat.o(52951);
         return;
       }
       i += 1;
     }
     this.sConcernDbList.add(paramConcernDb);
-    AppMethodBeat.o(94107);
+    AppMethodBeat.o(52951);
   }
   
   public final List<ConcernDb> getConcernDbList()
@@ -76,101 +76,101 @@ public final class SQLiteLintConfig
     
     static
     {
-      AppMethodBeat.i(94105);
+      AppMethodBeat.i(52949);
       if (!SQLiteLintConfig.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(94105);
+        AppMethodBeat.o(52949);
         return;
       }
     }
     
     public ConcernDb(SQLiteDatabase paramSQLiteDatabase)
     {
-      AppMethodBeat.i(94096);
+      AppMethodBeat.i(52940);
       this.mEnableCheckerList = new ArrayList();
       if ((!$assertionsDisabled) && (paramSQLiteDatabase == null))
       {
         paramSQLiteDatabase = new AssertionError();
-        AppMethodBeat.o(94096);
+        AppMethodBeat.o(52940);
         throw paramSQLiteDatabase;
       }
       this.mInstallEnv = new SQLiteLint.InstallEnv(paramSQLiteDatabase.getPath(), new SimpleSQLiteExecutionDelegate(paramSQLiteDatabase));
       this.mOptions = SQLiteLint.Options.LAX;
-      AppMethodBeat.o(94096);
+      AppMethodBeat.o(52940);
     }
     
     public ConcernDb(SQLiteLint.InstallEnv paramInstallEnv, SQLiteLint.Options paramOptions)
     {
-      AppMethodBeat.i(94095);
+      AppMethodBeat.i(52939);
       this.mEnableCheckerList = new ArrayList();
       this.mInstallEnv = paramInstallEnv;
       this.mOptions = paramOptions;
-      AppMethodBeat.o(94095);
+      AppMethodBeat.o(52939);
     }
     
     private ConcernDb enableChecker(String paramString)
     {
-      AppMethodBeat.i(94104);
+      AppMethodBeat.i(52948);
       this.mEnableCheckerList.add(paramString);
-      AppMethodBeat.o(94104);
+      AppMethodBeat.o(52948);
       return this;
     }
     
     public final ConcernDb enableAllCheckers()
     {
-      AppMethodBeat.i(94097);
+      AppMethodBeat.i(52941);
       ConcernDb localConcernDb = enableExplainQueryPlanChecker().enableAvoidSelectAllChecker().enableWithoutRowIdBetterChecker().enableAvoidAutoIncrementChecker().enablePreparedStatementBetterChecker().enableRedundantIndexChecker();
-      AppMethodBeat.o(94097);
+      AppMethodBeat.o(52941);
       return localConcernDb;
     }
     
     public final ConcernDb enableAvoidAutoIncrementChecker()
     {
-      AppMethodBeat.i(94101);
+      AppMethodBeat.i(52945);
       ConcernDb localConcernDb = enableChecker("AvoidAutoIncrementChecker");
-      AppMethodBeat.o(94101);
+      AppMethodBeat.o(52945);
       return localConcernDb;
     }
     
     public final ConcernDb enableAvoidSelectAllChecker()
     {
-      AppMethodBeat.i(94099);
+      AppMethodBeat.i(52943);
       ConcernDb localConcernDb = enableChecker("AvoidSelectAllChecker");
-      AppMethodBeat.o(94099);
+      AppMethodBeat.o(52943);
       return localConcernDb;
     }
     
     public final ConcernDb enableExplainQueryPlanChecker()
     {
-      AppMethodBeat.i(94098);
+      AppMethodBeat.i(52942);
       ConcernDb localConcernDb = enableChecker("ExplainQueryPlanChecker");
-      AppMethodBeat.o(94098);
+      AppMethodBeat.o(52942);
       return localConcernDb;
     }
     
     public final ConcernDb enablePreparedStatementBetterChecker()
     {
-      AppMethodBeat.i(94102);
+      AppMethodBeat.i(52946);
       ConcernDb localConcernDb = enableChecker("PreparedStatementBetterChecker");
-      AppMethodBeat.o(94102);
+      AppMethodBeat.o(52946);
       return localConcernDb;
     }
     
     public final ConcernDb enableRedundantIndexChecker()
     {
-      AppMethodBeat.i(94103);
+      AppMethodBeat.i(52947);
       ConcernDb localConcernDb = enableChecker("RedundantIndexChecker");
-      AppMethodBeat.o(94103);
+      AppMethodBeat.o(52947);
       return localConcernDb;
     }
     
     public final ConcernDb enableWithoutRowIdBetterChecker()
     {
-      AppMethodBeat.i(94100);
+      AppMethodBeat.i(52944);
       ConcernDb localConcernDb = enableChecker("WithoutRowIdBetterChecker");
-      AppMethodBeat.o(94100);
+      AppMethodBeat.o(52944);
       return localConcernDb;
     }
     
@@ -203,7 +203,7 @@ public final class SQLiteLintConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.config.SQLiteLintConfig
  * JD-Core Version:    0.7.0.1
  */

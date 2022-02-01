@@ -8,50 +8,54 @@ import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import ansm;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.memory.MemoryManager;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FrameBmpCache
 {
-  public int a;
-  private long jdField_a_of_type_Long = 1000 / this.jdField_a_of_type_Int;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public MQLruCache<String, Object> a;
-  private ansm jdField_a_of_type_Ansm;
-  volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  public List<String> a;
-  public boolean a;
-  public int b;
-  private long b;
-  public boolean b;
-  private int jdField_c_of_type_Int = -1;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean = true;
+  public MQLruCache<String, Object> a = GlobalImageCache.a;
+  public int b = 10;
+  public int c;
+  public boolean d;
+  public List<String> e;
+  public boolean f;
+  LinkedList<FrameBmpCache.CancelAbleRunnable> g;
+  volatile FrameBmpCache.CancelAbleRunnable h;
+  Object i;
+  Resources j;
+  private long k;
+  private volatile boolean l;
+  private int m;
+  private int n;
+  private Bitmap o;
+  private long p;
+  private int q;
+  private int r;
+  private volatile boolean s;
+  private boolean t;
+  private boolean u;
+  private FrameBmpCache.EndListener v;
   
   public FrameBmpCache(Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-  }
-  
-  private int a(int paramInt)
-  {
-    return paramInt % this.jdField_a_of_type_JavaUtilList.size();
+    int i1 = this.b;
+    this.k = (1000 / i1);
+    this.c = ((int)(i1 / 2.0F));
+    this.d = false;
+    this.f = false;
+    this.l = false;
+    this.m = -1;
+    this.n = 0;
+    this.s = false;
+    this.g = new LinkedList();
+    this.i = new Object();
+    this.t = false;
+    this.u = true;
+    this.j = paramResources;
   }
   
   private Bitmap a(String paramString)
@@ -61,15 +65,16 @@ public class FrameBmpCache
     }
     try
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      if ((!this.jdField_f_of_type_Boolean) || (this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density < 2.0F)) {}
-      for (localOptions.inSampleSize = 2;; localOptions.inSampleSize = 1)
-      {
-        localOptions.inJustDecodeBounds = false;
-        return BitmapFactory.decodeFile(paramString, localOptions);
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+      if ((this.u) && (this.j.getDisplayMetrics().density >= 2.0F)) {
+        ((BitmapFactory.Options)localObject).inSampleSize = 1;
+      } else {
+        ((BitmapFactory.Options)localObject).inSampleSize = 2;
       }
-      return null;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      paramString = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
+      return paramString;
     }
     catch (OutOfMemoryError paramString)
     {
@@ -78,281 +83,303 @@ public class FrameBmpCache
         QLog.e("FrameBmpCache", 2, "decodeBitmap oom", paramString);
         return null;
       }
-      QLog.e("FrameBmpCache", 2, "ecodeBitmap oom " + paramString.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ecodeBitmap oom ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("FrameBmpCache", 2, ((StringBuilder)localObject).toString());
     }
+    return null;
   }
   
-  private void b(int paramInt)
+  private int c(int paramInt)
   {
-    for (;;)
+    return paramInt % this.e.size();
+  }
+  
+  private void d(int paramInt)
+  {
+    int i1;
+    int i2;
+    Object localObject3;
+    label228:
+    label235:
+    synchronized (this.i)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      LinkedList localLinkedList = new LinkedList();
+      i1 = paramInt;
+      i2 = 0;
+      if ((i1 < paramInt + 3) && ((i1 < this.e.size()) || (this.t)))
       {
-        LinkedList localLinkedList = new LinkedList();
-        i = paramInt;
-        if ((i >= paramInt + 3) || ((i >= this.jdField_a_of_type_JavaUtilList.size()) && (!this.jdField_e_of_type_Boolean)))
+        Object localObject1 = (String)this.e.get(c(i1));
+        if (this.a.get(localObject1) != null)
         {
-          if (localLinkedList.size() > 0)
+          break label235;
+          localObject1 = localObject3;
+          if (i2 < this.g.size())
           {
-            this.jdField_a_of_type_JavaUtilLinkedList.addAll(0, localLinkedList);
-            if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable == null) {
-              d();
+            if (c(((FrameBmpCache.CancelAbleRunnable)this.g.get(i2)).a) != c(i1)) {
+              break label228;
             }
+            localObject1 = (FrameBmpCache.CancelAbleRunnable)this.g.remove(i2);
           }
-          return;
-        }
-        Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(a(i));
-        if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject1) == null) {
-          break label224;
-        }
-        break label217;
-        if (j >= this.jdField_a_of_type_JavaUtilLinkedList.size()) {
-          break label211;
-        }
-        if (a(((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) == a(i))
-        {
-          localObject1 = (FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
-          Object localObject4 = localObject1;
+          localObject3 = localObject1;
           if (localObject1 == null) {
-            localObject4 = new FrameBmpCache.CancelAbleRunnable(this, i);
+            localObject3 = new FrameBmpCache.CancelAbleRunnable(this, i1);
           }
-          localLinkedList.add(localObject4);
+          localLinkedList.add(localObject3);
+          break label235;
         }
       }
-      j += 1;
-      continue;
-      label211:
-      Object localObject3 = null;
-      continue;
-      label217:
-      i += 1;
-      continue;
-      label224:
-      int j = 0;
-    }
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable = ((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "keepRunning " + this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable);
-      }
-      ThreadManager.postImmediately(this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable, null, true);
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      else
       {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(i));
-        if ((localBitmap != null) && (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)) {
-          this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(this.jdField_a_of_type_JavaUtilList.get(i));
+        if (localLinkedList.size() > 0)
+        {
+          this.g.addAll(0, localLinkedList);
+          if (this.h == null) {
+            f();
+          }
         }
-        i += 1;
+        return;
       }
     }
   }
   
   private void f()
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Long = (1000 / this.jdField_a_of_type_Int);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.h = ((FrameBmpCache.CancelAbleRunnable)this.g.poll());
+    if (this.h != null)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable != null)
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable.a();
-        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable = null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("keepRunning ");
+        localStringBuilder.append(this.h);
+        QLog.i("FrameBmpCache", 2, localStringBuilder.toString());
+      }
+      ThreadManager.postImmediately(this.h, null, true);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.e == null) {
+      return;
+    }
+    int i1 = 0;
+    while (i1 < this.e.size())
+    {
+      Bitmap localBitmap = (Bitmap)this.a.get(this.e.get(i1));
+      if ((localBitmap != null) && (localBitmap != this.o)) {
+        this.a.remove(this.e.get(i1));
+      }
+      i1 += 1;
+    }
+  }
+  
+  private void h()
+  {
+    this.l = true;
+    this.f = false;
+    this.m = -1;
+    this.n = 0;
+    this.q = 0;
+    this.k = (1000 / this.b);
+    synchronized (this.i)
+    {
+      this.g.clear();
+      if (this.h != null)
+      {
+        this.h.a();
+        this.h = null;
       }
       return;
     }
-  }
-  
-  public Bitmap a()
-  {
-    Object localObject = null;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "getCurrentBitmap, isStop");
-      }
-      if (this.jdField_d_of_type_Boolean) {
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      }
-    }
-    int i;
-    int j;
-    do
-    {
-      return localObject;
-      i = (int)(System.currentTimeMillis() - this.jdField_b_of_type_Long);
-      j = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = ((int)(i / this.jdField_a_of_type_Long));
-      if (this.jdField_c_of_type_Int != j) {
-        b(j + 1);
-      }
-      if (this.jdField_c_of_type_Int < j) {
-        this.jdField_c_of_type_Int = j;
-      }
-      if ((this.jdField_c_of_type_Int < this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_e_of_type_Boolean)) {
-        break;
-      }
-      this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Ansm != null) {
-        this.jdField_a_of_type_Ansm.a(null);
-      }
-    } while (!this.jdField_d_of_type_Boolean);
-    return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
-    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
-    localObject = localBitmap;
-    if (localBitmap == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "getCurrentBitmap, cant find bitmap in cache, index=" + this.jdField_c_of_type_Int);
-      }
-      localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_d_of_type_Int)));
-      localObject = localBitmap;
-      if (localBitmap != null)
-      {
-        this.jdField_c_of_type_Int = this.jdField_d_of_type_Int;
-        localObject = localBitmap;
-      }
-    }
-    if ((this.jdField_c_of_type_Int != j) && (this.jdField_c_of_type_Int - j != 1)) {
-      this.jdField_e_of_type_Int += 1;
-    }
-    if (localObject != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = this.jdField_c_of_type_Int - 1;
-      if ((i > 0) && (i < this.jdField_a_of_type_JavaUtilList.size()))
-      {
-        localObject = (String)this.jdField_a_of_type_JavaUtilList.get(i);
-        this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(localObject);
-      }
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Bitmap a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(str);
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap2 == null)
-      {
-        localBitmap1 = a(str);
-        this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(str, localBitmap1);
-      }
-      return localBitmap1;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameBmpCache", 2, "startDecode");
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    try
-    {
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        FrameBmpCache.CancelAbleRunnable localCancelAbleRunnable = new FrameBmpCache.CancelAbleRunnable(this, i);
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localCancelAbleRunnable);
-        i += 1;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable == null) {
-        d();
-      }
-      return;
-    }
-    finally {}
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = (1000 / this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
+    this.b = paramInt;
+    paramInt = this.b;
+    this.k = (1000 / paramInt);
+    this.c = ((int)(paramInt / 2.0F));
   }
   
-  public void a(ansm paramansm)
+  public void a(FrameBmpCache.EndListener paramEndListener)
   {
-    this.jdField_a_of_type_Ansm = paramansm;
+    this.v = paramEndListener;
   }
   
   public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    if (MemoryManager.a() <= 37748736L) {
-      this.jdField_f_of_type_Boolean = false;
+    this.e = paramList;
+    this.r = 0;
+    this.l = false;
+    if (MemoryManager.d() <= 37748736L) {
+      this.u = false;
     }
-    QLog.d("FrameBmpCache", 1, "mUseHighQuality=" + this.jdField_f_of_type_Boolean);
+    paramList = new StringBuilder();
+    paramList.append("mUseHighQuality=");
+    paramList.append(this.u);
+    QLog.d("FrameBmpCache", 1, paramList.toString());
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.t = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilList != null;
+    return this.e != null;
+  }
+  
+  public Bitmap b(int paramInt)
+  {
+    Object localObject = this.e;
+    if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
+    {
+      String str = (String)this.e.get(paramInt);
+      Bitmap localBitmap = (Bitmap)this.a.get(str);
+      localObject = localBitmap;
+      if (localBitmap == null)
+      {
+        localObject = a(str);
+        this.a.put(str, localObject);
+      }
+      return localObject;
+    }
+    return null;
   }
   
   public void b()
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int)));
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameBmpCache", 2, "startDecode");
+    }
+    Object localObject1 = this.i;
+    int i1 = 0;
+    try
+    {
+      while (i1 < this.e.size())
+      {
+        FrameBmpCache.CancelAbleRunnable localCancelAbleRunnable = new FrameBmpCache.CancelAbleRunnable(this, i1);
+        this.g.add(localCancelAbleRunnable);
+        i1 += 1;
+      }
+      if (this.h == null) {
+        f();
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.s = paramBoolean;
   }
   
-  public void c()
+  public Bitmap c()
+  {
+    boolean bool = this.l;
+    Object localObject = null;
+    if (bool)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FrameBmpCache", 2, "getCurrentBitmap, isStop");
+      }
+      if (this.s) {
+        localObject = this.o;
+      }
+      return localObject;
+    }
+    int i2 = (int)(System.currentTimeMillis() - this.p);
+    int i1 = this.m;
+    this.m = ((int)(i2 / this.k));
+    if (this.m != i1) {
+      d(i1 + 1);
+    }
+    if (this.m < i1) {
+      this.m = i1;
+    }
+    if ((this.m >= this.e.size()) && (!this.t))
+    {
+      this.m = (this.e.size() - 1);
+      this.f = true;
+      localObject = this.v;
+      if (localObject != null) {
+        ((FrameBmpCache.EndListener)localObject).a(null);
+      }
+      if (this.s) {
+        return (Bitmap)this.a.get(this.e.get(c(this.m)));
+      }
+      return null;
+    }
+    Bitmap localBitmap = (Bitmap)this.a.get(this.e.get(c(this.m)));
+    localObject = localBitmap;
+    if (localBitmap == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getCurrentBitmap, cant find bitmap in cache, index=");
+        ((StringBuilder)localObject).append(this.m);
+        QLog.i("FrameBmpCache", 2, ((StringBuilder)localObject).toString());
+      }
+      localBitmap = (Bitmap)this.a.get(this.e.get(c(this.n)));
+      localObject = localBitmap;
+      if (localBitmap != null)
+      {
+        this.m = this.n;
+        localObject = localBitmap;
+      }
+    }
+    i2 = this.m;
+    if ((i2 != i1) && (i2 - i1 != 1)) {
+      this.q += 1;
+    }
+    if (localObject != null) {
+      this.o = ((Bitmap)localObject);
+    }
+    if (this.d)
+    {
+      i1 = this.m - 1;
+      if ((i1 > 0) && (i1 < this.e.size()))
+      {
+        localObject = (String)this.e.get(i1);
+        this.a.remove(localObject);
+      }
+    }
+    return this.o;
+  }
+  
+  public void d()
+  {
+    this.m = 0;
+    this.n = 0;
+    this.q = 0;
+    this.p = System.currentTimeMillis();
+    this.o = ((Bitmap)this.a.get(this.e.get(this.m)));
+    this.l = false;
+    this.f = false;
+  }
+  
+  public void e()
   {
     if (a())
     {
-      f();
-      e();
+      h();
+      g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.FrameBmpCache
  * JD-Core Version:    0.7.0.1
  */

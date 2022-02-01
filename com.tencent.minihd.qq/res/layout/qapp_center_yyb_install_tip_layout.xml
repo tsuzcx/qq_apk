@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dialogRoot" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/dialogBase_width" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/qq_dialog_title_textsize" android:textColor="@color/color_hei" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dialogBase_title_marginLeft" android:layout_marginTop="@dimen/dialogBase_title_marginTop" android:layout_marginRight="@dimen/dialogBase_title_marginRight" android:singleLine="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bodyLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dialogBase_body_marginLeft" android:layout_marginTop="@dimen/dialogBase_body_marginTop" android:layout_marginRight="@dimen/dialogBase_body_marginRight" android:layout_marginBottom="@dimen/dialogBase_body_marginBottom" android:layout_below="@id/dialogTitle">
+        <TextView android:textSize="@dimen/qq_dialog_content_textsize" android:textColor="@color/color_hei" android:gravity="center_horizontal" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/previewImage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/dialogDivider" android:background="@color/dialog_gray" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_divider_width" android:layout_below="@id/bodyLayout" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/btnLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialogDivider">
+        <RelativeLayout android:id="@id/leftBtnLayout" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/qq_dialog_btn_textsize" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="确认" android:singleLine="true" />
+            <ProgressBar android:id="@id/progress" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:max="100" android:progress="0" android:secondaryProgress="0" android:indeterminateOnly="false" android:progressDrawable="@drawable/qapp_center_mydialog_progress_drawable" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/qq_dialog_content_textsize" android:textColor="@color/color_hei" android:gravity="center" android:id="@id/progress_percent" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="" android:singleLine="true" />
+        </RelativeLayout>
+        <View android:background="@color/dialog_gray" android:layout_width="@dimen/dialogBase_divider_width" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/rightBtnLayout" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/qq_dialog_btn_textsize" android:textColor="@color/color_hei" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="取消" android:singleLine="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

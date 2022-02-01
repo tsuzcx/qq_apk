@@ -1,8 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ahbf;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class AfterSyncMsg$6
   implements Runnable
@@ -11,14 +14,25 @@ class AfterSyncMsg$6
   
   public void run()
   {
-    if (this.this$0.a.app.getApplication() != null) {
-      ahbf.a(this.this$0.a.app).a(this.this$0.a.app);
+    QLog.e("QQInitHandler", 1, "VipInfoHandler PreloadWebService AfterSyncMsg");
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    Intent localIntent = new Intent(localBaseApplication, PreloadWebService.class);
+    try
+    {
+      localBaseApplication.startService(localIntent);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQInitHandler", 2, "PreloadWebService", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.AfterSyncMsg.6
  * JD-Core Version:    0.7.0.1
  */

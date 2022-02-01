@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class fp
 {
-  private static final String TAG = fp.class.getSimpleName();
+  private static final String TAG = "fp";
   private static fp qZ;
   private BitSet qE = new BitSet(2);
   private volatile long qF = 30000L;
@@ -59,22 +59,16 @@ public class fp
   @WorkerThread
   private void A(boolean paramBoolean)
   {
-    BitSet localBitSet = this.qE;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
+    this.qE.clear(paramBoolean ^ true);
+    if (paramBoolean)
     {
-      localBitSet.clear(i);
-      if (paramBoolean)
-      {
-        this.qM.set(false);
-        ec();
-        this.qO.set(0);
-        this.qN.set(0);
-      }
-      if (this.qE.isEmpty()) {
-        this.qY.removeCallbacksAndMessages(null);
-      }
-      return;
+      this.qM.set(false);
+      ec();
+      this.qO.set(0);
+      this.qN.set(0);
+    }
+    if (this.qE.isEmpty()) {
+      this.qY.removeCallbacksAndMessages(null);
     }
   }
   
@@ -86,14 +80,18 @@ public class fp
     List localList = this.qP.c(paramBoolean);
     Context localContext = fq.cr();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (String str = "扫描超时，size：";; str = "扫描结束,size: ")
+    String str;
+    if (paramBoolean) {
+      str = "扫描超时，size：";
+    } else {
+      str = "扫描结束,size: ";
+    }
+    localStringBuilder.append(str);
+    localStringBuilder.append(hj.b(localList));
+    dg.a(localContext, localStringBuilder.toString());
+    q(localList);
+    if (hj.a(localList))
     {
-      dg.a(localContext, str + hj.b(localList));
-      q(localList);
-      if (!hj.a(localList)) {
-        break;
-      }
       dY();
       return;
     }
@@ -103,63 +101,59 @@ public class fp
   private void C(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.qP.a(this.qT);
-        return;
-      }
-      finally {}
+      this.qP.a(this.qT);
+      break label35;
       this.qP.b(this.qT);
+      label35:
+      return;
     }
+    finally {}
   }
   
   private void D(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.qQ.a(this.qU);
-        this.qQ.a(this.qV);
-        return;
-      }
-      finally {}
+      this.qQ.a(this.qU);
+      this.qQ.a(this.qV);
+      break label61;
       this.qQ.b(this.qU);
       this.qQ.b(this.qV);
+      label61:
+      return;
     }
+    finally {}
   }
   
   private void E(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.qR.a(this.qW);
-        return;
-      }
-      finally {}
+      this.qR.a(this.qW);
+      break label35;
       this.qR.b(this.qW);
+      label35:
+      return;
     }
+    finally {}
   }
   
   private void F(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.qS.a(this.qX);
-        return;
-      }
-      finally {}
+      this.qS.a(this.qX);
+      break label35;
       this.qS.b(this.qX);
+      label35:
+      return;
     }
+    finally {}
   }
   
   private void a(bn parambn, @Nullable String paramString, @Nullable c paramc)
@@ -180,8 +174,13 @@ public class fp
       while (localIterator.hasNext()) {
         ((fo)localIterator.next()).onConnectionFailed(paramInt);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void b(int paramInt, @Nullable List<bn> paramList)
@@ -192,33 +191,39 @@ public class fp
       while (localIterator.hasNext()) {
         ((fr)localIterator.next()).onUpdateFinish(paramInt, paramList);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public static fp dX()
   {
-    if (qZ == null) {}
-    try
-    {
-      if (qZ == null) {
-        qZ = new fp();
+    if (qZ == null) {
+      try
+      {
+        if (qZ == null) {
+          qZ = new fp();
+        }
       }
-      return qZ;
+      finally {}
     }
-    finally {}
+    return qZ;
   }
   
   @WorkerThread
   private void dZ()
   {
-    if ((this.qE.get(0)) && (!this.qM.get())) {}
-    int i;
-    do
-    {
+    if ((this.qE.get(0)) && (!this.qM.get())) {
       return;
-      i = this.qN.get();
-    } while ((this.qE.get(0)) && (i > 0) && (this.qO.get() > i));
+    }
+    int i = this.qN.get();
+    if ((this.qE.get(0)) && (i > 0) && (this.qO.get() > i)) {
+      return;
+    }
     y(false);
     if (ha.isWifiEnabled())
     {
@@ -235,30 +240,36 @@ public class fp
   private void e(CurrentSessionItem paramCurrentSessionItem)
   {
     if (paramCurrentSessionItem == null) {
-      label6:
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        switch (paramCurrentSessionItem.eX)
-        {
-        case 3: 
-          Iterator localIterator = this.qJ.iterator();
-          if (!localIterator.hasNext()) {
-            break label6;
-          }
-          ((fo)localIterator.next()).a(i, paramCurrentSessionItem);
-          continue;
-          i = 1;
-        }
+      i = paramCurrentSessionItem.eX;
+      if (i == 3) {
+        break label86;
       }
-      finally {}
-      continue;
-      int i = 2;
-      continue;
+      if (i == 4) {
+        break label81;
+      }
       i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        Iterator localIterator;
+        for (;;)
+        {
+          throw paramCurrentSessionItem;
+        }
+        int i = 2;
+        continue;
+        i = 1;
+      }
+    }
+    localIterator = this.qJ.iterator();
+    while (localIterator.hasNext()) {
+      ((fo)localIterator.next()).a(i, paramCurrentSessionItem);
     }
   }
   
@@ -275,8 +286,8 @@ public class fp
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 95	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 414	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   3: getfield 89	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   6: invokevirtual 409	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: istore_1
     //   10: iload_1
     //   11: ifeq +6 -> 17
@@ -285,35 +296,37 @@ public class fp
     //   16: return
     //   17: aload_0
     //   18: iconst_1
-    //   19: invokespecial 462	wf7/fp:D	(Z)V
-    //   22: invokestatic 467	wf7/dk:bJ	()I
+    //   19: invokespecial 457	wf7/fp:D	(Z)V
+    //   22: invokestatic 462	wf7/dk:bJ	()I
     //   25: bipush 23
     //   27: if_icmplt +43 -> 70
     //   30: aload_0
-    //   31: new 469	wf7/fp$a
+    //   31: new 464	wf7/fp$a
     //   34: dup
     //   35: aload_0
     //   36: aconst_null
-    //   37: invokespecial 470	wf7/fp$a:<init>	(Lwf7/fp;Lwf7/fp$1;)V
-    //   40: putfield 88	wf7/fp:qK	Landroid/content/BroadcastReceiver;
-    //   43: new 472	android/content/IntentFilter
+    //   37: invokespecial 465	wf7/fp$a:<init>	(Lwf7/fp;Lwf7/fp$1;)V
+    //   40: putfield 82	wf7/fp:qK	Landroid/content/BroadcastReceiver;
+    //   43: new 467	android/content/IntentFilter
     //   46: dup
-    //   47: invokespecial 473	android/content/IntentFilter:<init>	()V
+    //   47: invokespecial 468	android/content/IntentFilter:<init>	()V
     //   50: astore_2
     //   51: aload_2
-    //   52: ldc_w 475
-    //   55: invokevirtual 479	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   58: invokestatic 225	wf7/fq:cr	()Landroid/content/Context;
+    //   52: ldc_w 470
+    //   55: invokevirtual 474	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   58: invokestatic 219	wf7/fq:cr	()Landroid/content/Context;
     //   61: aload_0
-    //   62: getfield 88	wf7/fp:qK	Landroid/content/BroadcastReceiver;
+    //   62: getfield 82	wf7/fp:qK	Landroid/content/BroadcastReceiver;
     //   65: aload_2
-    //   66: invokevirtual 485	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   66: invokevirtual 480	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   69: pop
     //   70: aload_0
-    //   71: getfield 95	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   71: getfield 89	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   74: iconst_1
-    //   75: invokevirtual 193	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   78: goto -64 -> 14
+    //   75: invokevirtual 187	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   78: aload_0
+    //   79: monitorexit
+    //   80: return
     //   81: astore_2
     //   82: aload_0
     //   83: monitorexit
@@ -343,8 +356,8 @@ public class fp
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 95	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 414	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   3: getfield 89	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   6: invokevirtual 409	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: istore_1
     //   10: iload_1
     //   11: ifne +6 -> 17
@@ -353,19 +366,21 @@ public class fp
     //   16: return
     //   17: aload_0
     //   18: iconst_0
-    //   19: invokespecial 462	wf7/fp:D	(Z)V
+    //   19: invokespecial 457	wf7/fp:D	(Z)V
     //   22: aload_0
-    //   23: getfield 88	wf7/fp:qK	Landroid/content/BroadcastReceiver;
+    //   23: getfield 82	wf7/fp:qK	Landroid/content/BroadcastReceiver;
     //   26: ifnull +13 -> 39
-    //   29: invokestatic 225	wf7/fq:cr	()Landroid/content/Context;
+    //   29: invokestatic 219	wf7/fq:cr	()Landroid/content/Context;
     //   32: aload_0
-    //   33: getfield 88	wf7/fp:qK	Landroid/content/BroadcastReceiver;
-    //   36: invokevirtual 489	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   33: getfield 82	wf7/fp:qK	Landroid/content/BroadcastReceiver;
+    //   36: invokevirtual 484	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   39: aload_0
-    //   40: getfield 95	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   40: getfield 89	wf7/fp:qL	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   43: iconst_0
-    //   44: invokevirtual 193	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   47: goto -33 -> 14
+    //   44: invokevirtual 187	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: return
     //   50: astore_2
     //   51: aload_0
     //   52: monitorexit
@@ -393,20 +408,21 @@ public class fp
     if (localCurrentSessionItem == null) {
       return;
     }
-    switch (localCurrentSessionItem.eW)
+    int i = localCurrentSessionItem.eW;
+    if (i != 0)
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      e(localCurrentSessionItem);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 4) {
+          return;
+        }
+        ar(-9);
+        return;
+      }
       f(localCurrentSessionItem);
       return;
     }
-    ar(-9);
+    e(localCurrentSessionItem);
   }
   
   private void ee()
@@ -417,8 +433,13 @@ public class fp
       while (localIterator.hasNext()) {
         ((fr)localIterator.next()).onUpdateStart();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void ef()
@@ -430,8 +451,13 @@ public class fp
       while (localIterator.hasNext()) {
         ((fo)localIterator.next()).onWifiEnabled();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void eg()
@@ -442,8 +468,13 @@ public class fp
       while (localIterator.hasNext()) {
         ((fo)localIterator.next()).onWifiDisabled();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void eh()
@@ -455,8 +486,13 @@ public class fp
       while (localIterator.hasNext()) {
         ((fo)localIterator.next()).onGPSEnabled();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void ei()
@@ -467,48 +503,33 @@ public class fp
       while (localIterator.hasNext()) {
         ((fo)localIterator.next()).onGPSDisabled();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
-  /* Error */
   private void f(CurrentSessionItem paramCurrentSessionItem)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnonnull +6 -> 9
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: return
-    //   9: aload_0
-    //   10: getfield 86	wf7/fp:qJ	Ljava/util/List;
-    //   13: invokeinterface 370 1 0
-    //   18: astore_2
-    //   19: aload_2
-    //   20: invokeinterface 375 1 0
-    //   25: ifeq -19 -> 6
-    //   28: aload_2
-    //   29: invokeinterface 379 1 0
-    //   34: checkcast 381	wf7/fo
-    //   37: aload_1
-    //   38: invokeinterface 518 2 0
-    //   43: goto -24 -> 19
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	fp
-    //   0	51	1	paramCurrentSessionItem	CurrentSessionItem
-    //   18	11	2	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   9	19	46	finally
-    //   19	43	46	finally
+    if (paramCurrentSessionItem == null) {
+      return;
+    }
+    try
+    {
+      Iterator localIterator = this.qJ.iterator();
+      while (localIterator.hasNext()) {
+        ((fo)localIterator.next()).d(paramCurrentSessionItem);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramCurrentSessionItem;
+    }
   }
   
   private void q(List<bn> paramList)
@@ -522,48 +543,33 @@ public class fp
       while (paramList.hasNext()) {
         ((fr)paramList.next()).onScanResult((List)localObject);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
-  /* Error */
   private void u(bn parambn)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnonnull +6 -> 9
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: return
-    //   9: aload_0
-    //   10: getfield 86	wf7/fp:qJ	Ljava/util/List;
-    //   13: invokeinterface 370 1 0
-    //   18: astore_2
-    //   19: aload_2
-    //   20: invokeinterface 375 1 0
-    //   25: ifeq -19 -> 6
-    //   28: aload_2
-    //   29: invokeinterface 379 1 0
-    //   34: checkcast 381	wf7/fo
-    //   37: aload_1
-    //   38: invokeinterface 540 2 0
-    //   43: goto -24 -> 19
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	fp
-    //   0	51	1	parambn	bn
-    //   18	11	2	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   9	19	46	finally
-    //   19	43	46	finally
+    if (parambn == null) {
+      return;
+    }
+    try
+    {
+      Iterator localIterator = this.qJ.iterator();
+      while (localIterator.hasNext()) {
+        ((fo)localIterator.next()).t(parambn);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw parambn;
+    }
   }
   
   @WorkerThread
@@ -578,12 +584,15 @@ public class fp
       eb();
       ed();
     }
-    while (!ha.isWifiEnabled())
+    else
+    {
+      hk.az(398561);
+      this.qE.set(1);
+    }
+    if (!ha.isWifiEnabled())
     {
       b(-2, null);
       return;
-      hk.az(398561);
-      this.qE.set(1);
     }
     List localList = this.qP.c(true);
     if (hj.a(localList)) {
@@ -594,126 +603,61 @@ public class fp
   
   public void a(@NonNull bn parambn, String paramString)
   {
-    if (parambn == null) {}
-    for (;;)
-    {
+    if (parambn == null) {
       return;
-      try
+    }
+    try
+    {
+      if (!ha.isWifiEnabled())
       {
-        if (!ha.isWifiEnabled())
-        {
-          eg();
-          continue;
-        }
+        eg();
+        return;
       }
-      finally {}
       if (hl.fp())
       {
         hl.a(fq.cr(), parambn.Z(), parambn.ab(), paramString);
         hk.az(500108);
+        return;
       }
-      else
+      u(parambn);
+      a(parambn, paramString, null);
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(fo paramfo)
+  {
+    if (paramfo != null) {
+      try
       {
-        u(parambn);
-        a(parambn, paramString, null);
+        if (!this.qJ.contains(paramfo))
+        {
+          this.qJ.add(paramfo);
+          return;
+        }
       }
+      finally {}
     }
   }
   
-  /* Error */
-  public void a(fo paramfo)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +18 -> 21
-    //   6: aload_0
-    //   7: getfield 86	wf7/fp:qJ	Ljava/util/List;
-    //   10: aload_1
-    //   11: invokeinterface 567 2 0
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifeq +6 -> 24
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 86	wf7/fp:qJ	Ljava/util/List;
-    //   28: aload_1
-    //   29: invokeinterface 570 2 0
-    //   34: pop
-    //   35: goto -14 -> 21
-    //   38: astore_1
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: aload_1
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	this	fp
-    //   0	43	1	paramfo	fo
-    //   16	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	17	38	finally
-    //   24	35	38	finally
-  }
-  
-  /* Error */
   public void a(fr paramfr)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +18 -> 21
-    //   6: aload_0
-    //   7: getfield 84	wf7/fp:qI	Ljava/util/List;
-    //   10: aload_1
-    //   11: invokeinterface 567 2 0
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifeq +6 -> 24
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 84	wf7/fp:qI	Ljava/util/List;
-    //   28: aload_1
-    //   29: invokeinterface 570 2 0
-    //   34: pop
-    //   35: aload_0
-    //   36: getfield 152	wf7/fp:qP	Lwf7/bq;
-    //   39: iconst_1
-    //   40: invokeinterface 221 2 0
-    //   45: astore_3
-    //   46: aload_3
-    //   47: ifnull -26 -> 21
-    //   50: aload_3
-    //   51: invokeinterface 572 1 0
-    //   56: ifne -35 -> 21
-    //   59: aload_1
-    //   60: iconst_0
-    //   61: aload_3
-    //   62: invokeinterface 389 3 0
-    //   67: goto -46 -> 21
-    //   70: astore_1
-    //   71: aload_0
-    //   72: monitorexit
-    //   73: aload_1
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	fp
-    //   0	75	1	paramfr	fr
-    //   16	2	2	bool	boolean
-    //   45	17	3	localList	List
-    // Exception table:
-    //   from	to	target	type
-    //   6	17	70	finally
-    //   24	46	70	finally
-    //   50	67	70	finally
+    if (paramfr != null) {
+      try
+      {
+        if (!this.qI.contains(paramfr))
+        {
+          this.qI.add(paramfr);
+          List localList = this.qP.c(true);
+          if ((localList != null) && (!localList.isEmpty())) {
+            paramfr.onUpdateFinish(0, localList);
+          }
+          return;
+        }
+      }
+      finally {}
+    }
   }
   
   public void a(boolean paramBoolean, TMSDKWifiManager.IFreeWifiCheckCallback paramIFreeWifiCheckCallback) {}
@@ -738,69 +682,27 @@ public class fp
     this.qY.sendEmptyMessage(6);
   }
   
-  /* Error */
   public void destroy()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iconst_0
-    //   4: putfield 79	wf7/fp:qH	Z
-    //   7: invokestatic 590	wf7/ft:eJ	()Lwf7/ft;
-    //   10: invokevirtual 593	wf7/ft:eP	()V
-    //   13: aload_0
-    //   14: getfield 144	wf7/fp:qY	Landroid/os/Handler;
-    //   17: aconst_null
-    //   18: invokevirtual 208	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   21: aload_0
-    //   22: aconst_null
-    //   23: putfield 144	wf7/fp:qY	Landroid/os/Handler;
-    //   26: aload_0
-    //   27: getfield 86	wf7/fp:qJ	Ljava/util/List;
-    //   30: invokeinterface 595 1 0
-    //   35: aload_0
-    //   36: getfield 84	wf7/fp:qI	Ljava/util/List;
-    //   39: invokeinterface 595 1 0
-    //   44: aload_0
-    //   45: iconst_0
-    //   46: invokespecial 173	wf7/fp:E	(Z)V
-    //   49: aload_0
-    //   50: iconst_0
-    //   51: invokespecial 176	wf7/fp:F	(Z)V
-    //   54: aload_0
-    //   55: getfield 170	wf7/fp:qS	Lcom/tencent/qqpimsecure/wificore/api/connect/d;
-    //   58: invokeinterface 598 1 0
-    //   63: ifeq +27 -> 90
-    //   66: aload_0
-    //   67: getfield 170	wf7/fp:qS	Lcom/tencent/qqpimsecure/wificore/api/connect/d;
-    //   70: new 600	wf7/fp$2
-    //   73: dup
-    //   74: aload_0
-    //   75: invokespecial 601	wf7/fp$2:<init>	(Lwf7/fp;)V
-    //   78: invokeinterface 301 2 0
-    //   83: aconst_null
-    //   84: putstatic 407	wf7/fp:qZ	Lwf7/fp;
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: return
-    //   90: invokestatic 182	wf7/ao:c	()Lwf7/ao;
-    //   93: invokevirtual 603	wf7/ao:e	()V
-    //   96: goto -13 -> 83
-    //   99: astore_1
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_1
-    //   103: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	this	fp
-    //   99	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	83	99	finally
-    //   83	87	99	finally
-    //   90	96	99	finally
+    try
+    {
+      this.qH = false;
+      ft.eJ().eP();
+      this.qY.removeCallbacksAndMessages(null);
+      this.qY = null;
+      this.qJ.clear();
+      this.qI.clear();
+      E(false);
+      F(false);
+      if (this.qS.k()) {
+        this.qS.a(new fp.2(this));
+      } else {
+        ao.c().e();
+      }
+      qZ = null;
+      return;
+    }
+    finally {}
   }
   
   public void g(long paramLong)
@@ -842,24 +744,24 @@ public class fp
   public void y(boolean paramBoolean)
   {
     this.qY.removeMessages(3);
-    if (paramBoolean) {
-      this.qY.sendEmptyMessage(3);
-    }
-    do
+    if (paramBoolean)
     {
+      this.qY.sendEmptyMessage(3);
       return;
-      if (this.qE.get(0))
-      {
-        this.qY.sendEmptyMessageDelayed(3, this.qF);
-        return;
-      }
-    } while (!this.qE.get(1));
-    this.qY.sendEmptyMessageDelayed(3, this.qG);
+    }
+    if (this.qE.get(0))
+    {
+      this.qY.sendEmptyMessageDelayed(3, this.qF);
+      return;
+    }
+    if (this.qE.get(1)) {
+      this.qY.sendEmptyMessageDelayed(3, this.qG);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fp
  * JD-Core Version:    0.7.0.1
  */

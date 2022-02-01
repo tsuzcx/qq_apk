@@ -7,9 +7,12 @@ import android.graphics.SurfaceTexture;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.view.TextureRegistry.SurfaceTextureEntry;
 
 @TargetApi(20)
@@ -19,7 +22,8 @@ class VirtualDisplayController
   private final Context context;
   private final int densityDpi;
   private final View.OnFocusChangeListener focusChangeListener;
-  private SingleViewPresentation presentation;
+  @VisibleForTesting
+  SingleViewPresentation presentation;
   private Surface surface;
   private final TextureRegistry.SurfaceTextureEntry textureEntry;
   private VirtualDisplay virtualDisplay;
@@ -48,6 +52,15 @@ class VirtualDisplayController
     return new VirtualDisplayController(paramContext, paramAccessibilityEventsDelegate, localVirtualDisplay, paramPlatformViewFactory, localSurface, paramSurfaceTextureEntry, paramOnFocusChangeListener, paramInt3, paramObject);
   }
   
+  public void dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation == null) {
+      return;
+    }
+    localSingleViewPresentation.dispatchTouchEvent(paramMotionEvent);
+  }
+  
   public void dispose()
   {
     PlatformView localPlatformView = this.presentation.getView();
@@ -60,26 +73,59 @@ class VirtualDisplayController
   
   public View getView()
   {
-    if (this.presentation == null) {
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation == null) {
       return null;
     }
-    return this.presentation.getView().getView();
+    return localSingleViewPresentation.getView().getView();
+  }
+  
+  void onFlutterViewAttached(@NonNull View paramView)
+  {
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onFlutterViewAttached(paramView);
+    }
+  }
+  
+  void onFlutterViewDetached()
+  {
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onFlutterViewDetached();
+    }
   }
   
   void onInputConnectionLocked()
   {
-    if ((this.presentation == null) || (this.presentation.getView() == null)) {
-      return;
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onInputConnectionLocked();
     }
-    this.presentation.getView().onInputConnectionLocked();
   }
   
   void onInputConnectionUnlocked()
   {
-    if ((this.presentation == null) || (this.presentation.getView() == null)) {
-      return;
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onInputConnectionUnlocked();
     }
-    this.presentation.getView().onInputConnectionUnlocked();
   }
   
   public void resize(int paramInt1, int paramInt2, Runnable paramRunnable)
@@ -92,13 +138,15 @@ class VirtualDisplayController
     this.virtualDisplay = ((DisplayManager)this.context.getSystemService("display")).createVirtualDisplay("flutter-vd", paramInt1, paramInt2, this.densityDpi, this.surface, 0);
     View localView = getView();
     localView.addOnAttachStateChangeListener(new VirtualDisplayController.1(this, localView, paramRunnable));
-    this.presentation = new SingleViewPresentation(this.context, this.virtualDisplay.getDisplay(), this.accessibilityEventsDelegate, localPresentationState, this.focusChangeListener, bool);
-    this.presentation.show();
+    paramRunnable = new SingleViewPresentation(this.context, this.virtualDisplay.getDisplay(), this.accessibilityEventsDelegate, localPresentationState, this.focusChangeListener, bool);
+    paramRunnable.show();
+    this.presentation.cancel();
+    this.presentation = paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.platform.VirtualDisplayController
  * JD-Core Version:    0.7.0.1
  */

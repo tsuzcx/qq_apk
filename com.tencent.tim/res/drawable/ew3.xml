@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset android:drawable="@drawable/eb6" android:insetTop="@dimen/brs" android:insetBottom="@dimen/brs"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

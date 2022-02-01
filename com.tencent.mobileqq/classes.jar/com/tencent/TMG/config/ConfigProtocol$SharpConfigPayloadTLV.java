@@ -17,11 +17,12 @@ public class ConfigProtocol$SharpConfigPayloadTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer == null) || (paramByteBuffer.length() < getLength())) {
-      return false;
+    if ((paramByteBuffer != null) && (paramByteBuffer.length() >= getLength()))
+    {
+      this.m_sharpConfigPayload = paramByteBuffer.ReadString(getLength());
+      return true;
     }
-    this.m_sharpConfigPayload = paramByteBuffer.ReadString(getLength());
-    return true;
+    return false;
   }
   
   public String getSharpConfigPayload()
@@ -31,7 +32,7 @@ public class ConfigProtocol$SharpConfigPayloadTLV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigProtocol.SharpConfigPayloadTLV
  * JD-Core Version:    0.7.0.1
  */

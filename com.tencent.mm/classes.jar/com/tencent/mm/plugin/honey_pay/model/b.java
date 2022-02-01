@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.honey_pay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] goC;
-  private e db;
+  private static final String[] pHB;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(41751);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "HoneyPayMsgRecord") };
-    goC = new String[] { "*", "rowid" };
-    AppMethodBeat.o(41751);
+    AppMethodBeat.i(64646);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "HoneyPayMsgRecord") };
+    pHB = new String[] { "*", "rowid" };
+    AppMethodBeat.o(64646);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "HoneyPayMsgRecord", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "HoneyPayMsgRecord", null);
+    this.db = paramISQLiteDatabase;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.b
  * JD-Core Version:    0.7.0.1
  */

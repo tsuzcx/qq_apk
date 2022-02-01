@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/a24" />
-    <item android:drawable="@drawable/a23" />
-</selector>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffb2b2b2" />
+            <size android:height="@dimen/cv" />
+            <corners android:radius="@dimen/cd" />
+        </shape>
+    </item>
+</layer-list>

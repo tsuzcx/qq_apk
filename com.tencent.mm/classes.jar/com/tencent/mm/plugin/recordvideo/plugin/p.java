@@ -1,136 +1,124 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.f.b.j;
-import a.l;
-import a.v;
-import android.content.Context;
-import android.view.ViewPropertyAnimator;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "debugInfoView", "Landroid/widget/TextView;", "(Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Landroid/widget/TextView;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getDebugInfoView", "()Landroid/widget/TextView;", "endTime", "", "getEndTime", "()I", "setEndTime", "(I)V", "isClipMode", "", "lastPlayTimeLogTick", "", "maxRecordTime", "parent", "Landroid/widget/RelativeLayout;", "startTime", "getStartTime", "setStartTime", "videoCallback", "com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1;", "getVideoPlayView", "()Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "setVideoPlayView", "(Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;)V", "gotoClipMode", "", "gotoPreviewMode", "enableCrop", "onPause", "onResume", "release", "setMute", "mute", "setPlayRange", "start", "end", "showVideoDebugInfoIfNeed", "info", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
-  implements q
+  implements v
 {
-  public static final p.a qcG;
-  public Context context;
-  public int endTime;
-  public com.tencent.mm.compatible.util.b gaP;
-  public VideoPlayerTextureView oKC;
-  public com.tencent.mm.media.widget.camerarecordview.a.b qbS;
-  public int qcA;
-  private long qcB;
-  public RelativeLayout qcC;
-  public boolean qcD;
-  public final p.d qcE;
-  public final TextView qcF;
-  public int startTime;
+  private a GrC;
+  private final String TAG;
+  private View view;
   
-  static
+  public p(View paramView, a parama)
   {
-    AppMethodBeat.i(150692);
-    qcG = new p.a((byte)0);
-    AppMethodBeat.o(150692);
+    AppMethodBeat.i(75563);
+    this.view = paramView;
+    this.GrC = parama;
+    this.TAG = "MicroMsg.EditPhotoShadowPlugin";
+    Log.i(this.TAG, s.X("status bar : ", Integer.valueOf(bf.bk(this.view.getContext()))));
+    paramView = new RelativeLayout.LayoutParams(-1, this.view.getLayoutParams().height + bf.bk(this.view.getContext()));
+    paramView.addRule(12, -1);
+    this.view.setLayoutParams((ViewGroup.LayoutParams)paramView);
+    this.view.invalidate();
+    AppMethodBeat.o(75563);
   }
   
-  public p(VideoPlayerTextureView paramVideoPlayerTextureView, d paramd, TextView paramTextView)
+  public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(150691);
-    this.oKC = paramVideoPlayerTextureView;
-    this.qcF = paramTextView;
-    this.context = this.oKC.getContext();
-    this.qcA = 10000;
-    this.qcB = -1L;
-    paramVideoPlayerTextureView = this.oKC.getParent();
-    if (paramVideoPlayerTextureView == null)
-    {
-      paramVideoPlayerTextureView = new v("null cannot be cast to non-null type android.widget.RelativeLayout");
-      AppMethodBeat.o(150691);
-      throw paramVideoPlayerTextureView;
-    }
-    this.qcC = ((RelativeLayout)paramVideoPlayerTextureView);
-    this.qcE = new p.d(this, paramd);
-    AppMethodBeat.o(150691);
+    AppMethodBeat.i(280588);
+    v.a.a(this, paramRecordConfigProvider);
+    AppMethodBeat.o(280588);
   }
   
-  public final boolean cgq()
+  public final void bwk()
   {
-    return false;
-  }
-  
-  public final void ks(boolean paramBoolean)
-  {
-    AppMethodBeat.i(150690);
-    this.qcD = false;
-    Object localObject = this.qcC.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F);
-    j.p(localObject, "parent.animate().scaleX(…eY(1.0f).translationY(0f)");
-    ((ViewPropertyAnimator)localObject).setDuration(300L);
-    if (!paramBoolean)
-    {
-      this.startTime = 0;
-      localObject = this.qbS;
-      if (localObject == null) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = ((com.tencent.mm.media.widget.camerarecordview.a.b)localObject).endTime;; i = 10000)
-    {
-      this.endTime = i;
-      AppMethodBeat.o(150690);
-      return;
-    }
+    AppMethodBeat.i(280601);
+    s.u(this, "this");
+    AppMethodBeat.o(280601);
   }
   
   public final String name()
   {
-    return null;
+    AppMethodBeat.i(280592);
+    String str = v.a.b(this);
+    AppMethodBeat.o(280592);
+    return str;
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(280597);
+    s.u(this, "this");
+    AppMethodBeat.o(280597);
+  }
+  
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(280607);
+    s.u(this, "this");
+    AppMethodBeat.o(280607);
+    return false;
+  }
+  
+  public final void onDetach()
+  {
+    AppMethodBeat.i(280614);
+    s.u(this, "this");
+    AppMethodBeat.o(280614);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(150688);
-    ab.i("MicroMsg.EditVideoPlayPlugin", "onPause");
-    com.tencent.mm.compatible.util.b localb = this.gaP;
-    if (localb != null) {
-      localb.Mh();
-    }
-    this.oKC.pause();
-    AppMethodBeat.o(150688);
+    AppMethodBeat.i(280618);
+    s.u(this, "this");
+    AppMethodBeat.o(280618);
+  }
+  
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(280625);
+    v.a.a(this, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(280625);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(150687);
-    ab.i("MicroMsg.EditVideoPlayPlugin", "onResume");
-    com.tencent.mm.compatible.util.b localb = this.gaP;
-    if (localb != null) {
-      localb.requestFocus();
-    }
-    this.oKC.start();
-    AppMethodBeat.o(150687);
+    AppMethodBeat.i(280633);
+    s.u(this, "this");
+    AppMethodBeat.o(280633);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(150689);
-    ab.i("MicroMsg.EditVideoPlayPlugin", "release");
-    com.tencent.mm.compatible.util.b localb = this.gaP;
-    if (localb != null) {
-      localb.Mh();
-    }
-    this.oKC.stop();
-    this.oKC.setVideoCallback(null);
-    AppMethodBeat.o(150689);
+    AppMethodBeat.i(280642);
+    s.u(this, "this");
+    AppMethodBeat.o(280642);
   }
   
-  public final void reset() {}
+  public final void reset()
+  {
+    AppMethodBeat.i(280650);
+    s.u(this, "this");
+    AppMethodBeat.o(280650);
+  }
   
-  public final void setVisibility(int paramInt) {}
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(280659);
+    s.u(this, "this");
+    AppMethodBeat.o(280659);
+  }
 }
 
 

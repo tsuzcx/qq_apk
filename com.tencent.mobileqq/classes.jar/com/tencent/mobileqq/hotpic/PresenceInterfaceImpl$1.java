@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.os.Handler;
-import asvy;
 
-public class PresenceInterfaceImpl$1
+class PresenceInterfaceImpl$1
   implements Runnable
 {
-  public PresenceInterfaceImpl$1(asvy paramasvy) {}
+  PresenceInterfaceImpl$1(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
   public void run()
   {
-    if (this.this$0.b())
+    if (this.this$0.i())
     {
-      this.this$0.c();
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
+      this.this$0.d();
+      this.this$0.e.postDelayed(this.this$0.j, 100L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

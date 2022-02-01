@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qvip_pay_bank_item_view" android:clickable="true" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <ImageView android:id="@id/qvip_pay_bank_icon" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="85.0dip" android:layout_toRightOf="@id/qvip_pay_bank_icon">
+            <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/qvip_pay_bank_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/qvip_pay_bank_des" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="财付通快捷支付" android:singleLine="true" android:alpha="0.65" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/qvip_pay_bank_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/qvip_pay_mask_layer_view" android:background="@drawable/qvip_pay_bank_item_background" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="56.0dip" android:contentDescription="@null" />
+    </RelativeLayout>
+    <View android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+</LinearLayout>

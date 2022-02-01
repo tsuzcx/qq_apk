@@ -10,9 +10,13 @@ public class JceField
   static
   {
     int i = 0;
-    while (i < zs.length)
+    for (;;)
     {
-      zs[i] = new ZeroField(i);
+      ZeroField[] arrayOfZeroField = zs;
+      if (i >= arrayOfZeroField.length) {
+        break;
+      }
+      arrayOfZeroField[i] = new ZeroField(i);
       i += 1;
     }
   }
@@ -79,10 +83,13 @@ public class JceField
   
   public static JceField createZero(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= 255)) {
-      throw new JceDecodeException("invalid tag: " + paramInt);
+    if ((paramInt >= 0) && (paramInt < 255)) {
+      return zs[paramInt];
     }
-    return zs[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invalid tag: ");
+    localStringBuilder.append(paramInt);
+    throw new JceDecodeException(localStringBuilder.toString());
   }
   
   public int getTag()
@@ -92,7 +99,7 @@ public class JceField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.JceField
  * JD-Core Version:    0.7.0.1
  */

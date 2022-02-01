@@ -50,35 +50,39 @@ public final class hl<T extends hl.a>
   
   private void a(ho paramho, Collection<T> paramCollection)
   {
-    if (!this.a.a(paramho)) {}
-    for (;;)
-    {
+    if (!this.a.a(paramho)) {
       return;
-      Object localObject;
-      if (this.d != null)
-      {
-        localObject = this.d.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((hl)((Iterator)localObject).next()).a(paramho, paramCollection);
-        }
+    }
+    Object localObject = this.d;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((hl)((Iterator)localObject).next()).a(paramho, paramCollection);
       }
-      else if (this.c != null)
+      return;
+    }
+    if (this.c != null)
+    {
+      localObject = this.a;
+      int i;
+      if ((((ho)localObject).a >= paramho.a) && (((ho)localObject).c <= paramho.c) && (((ho)localObject).b >= paramho.b) && (((ho)localObject).d <= paramho.d)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
       {
-        localObject = this.a;
-        if ((((ho)localObject).a >= paramho.a) && (((ho)localObject).c <= paramho.c) && (((ho)localObject).b >= paramho.b) && (((ho)localObject).d <= paramho.d)) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          paramCollection.addAll(this.c);
-          return;
-        }
-        localObject = this.c.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          hl.a locala = (hl.a)((Iterator)localObject).next();
-          DoublePoint localDoublePoint = locala.getItemPoint();
-          if (paramho.a(localDoublePoint.x, localDoublePoint.y)) {
-            paramCollection.add(locala);
-          }
+        paramCollection.addAll(this.c);
+        return;
+      }
+      localObject = this.c.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        hl.a locala = (hl.a)((Iterator)localObject).next();
+        DoublePoint localDoublePoint = locala.getItemPoint();
+        if (paramho.a(localDoublePoint.x, localDoublePoint.y)) {
+          paramCollection.add(locala);
         }
       }
     }

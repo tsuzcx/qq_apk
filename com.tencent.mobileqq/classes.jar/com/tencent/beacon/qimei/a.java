@@ -1,130 +1,111 @@
 package com.tencent.beacon.qimei;
 
-import android.content.Context;
-import com.tencent.beacon.core.b.c;
-import com.tencent.beacon.core.d.b;
-import com.tencent.beacon.event.UserAction;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.beacon.a.c.f;
+import com.tencent.beacon.base.util.d;
+import com.tencent.beacon.pack.QimeiPackage;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class a
+public class a
 {
-  private static a k;
-  private String a = "";
+  private static a a;
   private String b = "";
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  private String f = "";
-  private String g = "";
-  private String h = "";
-  private String i = "";
-  private String j = "";
+  private Qimei c;
   
-  private a(Context paramContext)
+  private a()
   {
-    this.b = c.a(paramContext).a();
-    com.tencent.beacon.core.b.d.a(paramContext);
-    this.c = com.tencent.beacon.core.b.d.e(paramContext);
-    this.d = com.tencent.beacon.core.b.d.c(paramContext);
-    this.e = com.tencent.beacon.core.b.d.d(paramContext);
-    if ("".equals(this.c)) {
-      com.tencent.beacon.core.b.d.d();
-    }
-    this.f = UserAction.getQQ();
-    this.g = com.tencent.beacon.core.b.d.b();
-    this.h = com.tencent.beacon.core.b.d.e();
-    this.i = com.tencent.beacon.core.b.d.a();
-    this.j = com.tencent.beacon.core.b.d.h();
-    com.tencent.beacon.core.b.d.j(paramContext);
-    try
-    {
-      paramContext = d.a(paramContext);
-      if ((paramContext != null) && (!"".equals(paramContext))) {
-        this.a = paramContext;
-      }
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      b.d("load qimei error ", new Object[] { paramContext });
-    }
+    d();
   }
   
-  public static a a(Context paramContext)
+  public static a a()
   {
     try
     {
-      if (k == null) {
-        k = new a(paramContext);
+      if (a == null) {
+        a = new a();
       }
-      paramContext = k;
-      return paramContext;
+      a locala = a;
+      return locala;
     }
     finally {}
   }
   
-  public final String a()
+  private void d()
   {
-    return this.a;
+    try
+    {
+      this.c = new Qimei();
+      Object localObject1 = e.a(com.tencent.beacon.a.c.c.d().c());
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        this.b = ((String)localObject1);
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[qimei] final jceRequest qimeiJson: ");
+      ((StringBuilder)localObject1).append(this.b);
+      com.tencent.beacon.base.util.c.a(((StringBuilder)localObject1).toString(), new Object[0]);
+      localObject1 = e.a(this.b);
+      if (localObject1 != null)
+      {
+        this.c.b((String)((HashMap)localObject1).get("A3"));
+        this.c.a((String)((HashMap)localObject1).get("A153"));
+        this.c.a((Map)localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[qimei] showQimei: ");
+        ((StringBuilder)localObject1).append(this.c.toString());
+        com.tencent.beacon.base.util.c.a(((StringBuilder)localObject1).toString(), new Object[0]);
+      }
+      return;
+    }
+    finally {}
   }
   
-  public final void a(String paramString)
+  public void a(Qimei paramQimei)
   {
-    this.a = paramString;
+    try
+    {
+      this.c = paramQimei;
+      return;
+    }
+    finally
+    {
+      paramQimei = finally;
+      throw paramQimei;
+    }
   }
   
-  public final String b()
-  {
-    return this.a;
-  }
-  
-  public final String c()
-  {
-    return this.b;
-  }
-  
-  public final String d()
+  public Qimei b()
   {
     return this.c;
   }
   
-  public final String e()
+  public QimeiPackage c()
   {
-    return this.d;
-  }
-  
-  public final String f()
-  {
-    return this.e;
-  }
-  
-  public final String g()
-  {
-    return this.i;
-  }
-  
-  public final String h()
-  {
-    return this.f;
-  }
-  
-  public final String i()
-  {
-    return this.g;
-  }
-  
-  public final String j()
-  {
-    return this.h;
-  }
-  
-  public final String k()
-  {
-    return this.j;
+    f localf = f.p();
+    QimeiPackage localQimeiPackage = new QimeiPackage();
+    localQimeiPackage.imei = localf.m();
+    localQimeiPackage.imsi = localf.o();
+    localQimeiPackage.mac = localf.s();
+    localQimeiPackage.androidId = localf.e();
+    String str2 = this.b;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localQimeiPackage.qimei = str1;
+    localQimeiPackage.model = Build.MODEL;
+    localQimeiPackage.brand = Build.BRAND;
+    localQimeiPackage.osVersion = localf.z();
+    localQimeiPackage.broot = d.d();
+    localQimeiPackage.qq = "";
+    localQimeiPackage.cid = localf.v();
+    return localQimeiPackage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.qimei.a
  * JD-Core Version:    0.7.0.1
  */

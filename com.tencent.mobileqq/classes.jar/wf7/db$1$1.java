@@ -11,53 +11,46 @@ class db$1$1
   
   public void run()
   {
-    Object localObject = this.jdField_if.getAction();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
+    Object localObject1 = this.jdField_if.getAction();
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
-      if ("android.net.wifi.SCAN_RESULTS".equals(localObject))
-      {
-        db.a(this.jR.jQ);
-        return;
-      }
-    } while (!"android.net.wifi.CONFIGURED_NETWORKS_CHANGE".equals(localObject));
-    for (;;)
+    }
+    if ("android.net.wifi.SCAN_RESULTS".equals(localObject1))
     {
+      db.a(this.jR.jQ);
+      return;
+    }
+    if ("android.net.wifi.CONFIGURED_NETWORKS_CHANGE".equals(localObject1))
+    {
+      Object localObject2 = null;
+      int i = -1;
       try
       {
-        localObject = (WifiConfiguration)this.jdField_if.getParcelableExtra("wifiConfiguration");
-      }
-      catch (Throwable localThrowable1)
-      {
+        localObject1 = (WifiConfiguration)this.jdField_if.getParcelableExtra("wifiConfiguration");
         try
         {
-          i = this.jdField_if.getIntExtra("changeReason", -1);
-          boolean bool = this.jdField_if.getBooleanExtra("multipleChanges", false);
-          db.a(this.jR.jQ, (WifiConfiguration)localObject, i, bool);
-          bw.c((WifiConfiguration)localObject);
-          if ((localObject == null) || (bw.a(((WifiConfiguration)localObject).networkId, bw.as().at()) == null)) {
-            break;
-          }
-          return;
+          int j = this.jdField_if.getIntExtra("changeReason", -1);
+          i = j;
         }
-        catch (Throwable localThrowable2)
-        {
-          int i;
-          break label123;
-        }
-        localThrowable1 = localThrowable1;
-        localObject = null;
+        catch (Throwable localThrowable1) {}
+        localThrowable2.printStackTrace();
       }
-      label123:
-      localThrowable1.printStackTrace();
-      i = -1;
+      catch (Throwable localThrowable2)
+      {
+        localObject1 = localObject2;
+      }
+      boolean bool = this.jdField_if.getBooleanExtra("multipleChanges", false);
+      db.a(this.jR.jQ, (WifiConfiguration)localObject1, i, bool);
+      bw.c((WifiConfiguration)localObject1);
+      if (localObject1 != null) {
+        bw.a(((WifiConfiguration)localObject1).networkId, bw.as().at());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.db.1.1
  * JD-Core Version:    0.7.0.1
  */

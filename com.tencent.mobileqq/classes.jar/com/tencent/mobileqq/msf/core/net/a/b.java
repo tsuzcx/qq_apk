@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net.a;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
@@ -18,8 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class b
 {
   public static final String a = "HeratbeatProxy";
-  public static byte[] b = null;
-  public static byte[] c = null;
+  public static byte[] b;
+  public static byte[] c;
   public static final String d = "OS.Hello";
   public static boolean e = false;
   private static int f = -1;
@@ -30,20 +30,25 @@ public class b
     if (paramArrayOfByte != null) {}
     try
     {
-      QLog.d("HeratbeatProxy", 1, "rsp length:" + paramArrayOfByte.length);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("rsp length:");
+      localStringBuilder.append(paramArrayOfByte.length);
+      QLog.d("HeratbeatProxy", 1, localStringBuilder.toString());
       c = new byte[paramArrayOfByte.length];
       System.arraycopy(paramArrayOfByte, 0, c, 0, c.length);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.d("HeratbeatProxy", 1, "set response byte failed " + paramArrayOfByte.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("set response byte failed ");
+      localStringBuilder.append(paramArrayOfByte.toString());
+      QLog.d("HeratbeatProxy", 1, localStringBuilder.toString());
     }
   }
   
   public static boolean a()
   {
-    ToServiceMsg localToServiceMsg;
     try
     {
       com.tencent.mobileqq.msf.core.push.a locala = d();
@@ -52,28 +57,31 @@ public class b
         QLog.d("HeratbeatProxy", 1, "encap heartbeat proxy failed to get appPushInfo");
         return false;
       }
-      localToServiceMsg = new ToServiceMsg("", locala.k.uin, "OS.Hello");
-      localToServiceMsg.setAppId(locala.a);
-      localToServiceMsg.setTimeout(30000L);
-      localToServiceMsg.setMsfCommand(MsfCommand.msf_oshello);
-      localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      if (!b(localToServiceMsg))
+      localObject = new ToServiceMsg("", locala.k.uin, "OS.Hello");
+      ((ToServiceMsg)localObject).setAppId(locala.a);
+      ((ToServiceMsg)localObject).setTimeout(30000L);
+      ((ToServiceMsg)localObject).setMsfCommand(MsfCommand.msf_oshello);
+      ((ToServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
+      if (!b((ToServiceMsg)localObject))
       {
         QLog.d("HeratbeatProxy", 1, "encap heartbeat failed");
         return false;
       }
+      if (!a((ToServiceMsg)localObject))
+      {
+        QLog.d("HeratbeatProxy", 1, "failed to send heartbeat request");
+        return false;
+      }
+      return true;
     }
     catch (Exception localException)
     {
-      QLog.d("HeratbeatProxy", 1, "encap heartbeat proxy failed " + localException.toString());
-      return false;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("encap heartbeat proxy failed ");
+      ((StringBuilder)localObject).append(localException.toString());
+      QLog.d("HeratbeatProxy", 1, ((StringBuilder)localObject).toString());
     }
-    if (!a(localToServiceMsg))
-    {
-      QLog.d("HeratbeatProxy", 1, "failed to send heartbeat request");
-      return false;
-    }
-    return true;
+    return false;
   }
   
   private static boolean a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
@@ -85,7 +93,10 @@ public class b
     }
     catch (Exception paramFromServiceMsg)
     {
-      QLog.d("HeratbeatProxy", 1, "encap fromservicemsg failed " + paramFromServiceMsg.toString());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("encap fromservicemsg failed ");
+      paramArrayOfByte.append(paramFromServiceMsg.toString());
+      QLog.d("HeratbeatProxy", 1, paramArrayOfByte.toString());
     }
     return false;
   }
@@ -99,15 +110,18 @@ public class b
       if (!bool) {
         return false;
       }
+      f = paramToServiceMsg.getRequestSsoSeq();
+      g = true;
+      return true;
     }
     catch (Exception paramToServiceMsg)
     {
-      QLog.d("HeratbeatProxy", 1, "failed to send ok.hello " + paramToServiceMsg.toString());
-      return false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to send ok.hello ");
+      localStringBuilder.append(paramToServiceMsg.toString());
+      QLog.d("HeratbeatProxy", 1, localStringBuilder.toString());
     }
-    f = paramToServiceMsg.getRequestSsoSeq();
-    g = true;
-    return true;
+    return false;
   }
   
   public static boolean b()
@@ -131,7 +145,10 @@ public class b
     }
     catch (Exception paramToServiceMsg)
     {
-      QLog.d("HeratbeatProxy", 1, "encap toservicemsg failed " + paramToServiceMsg.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("encap toservicemsg failed ");
+      localStringBuilder.append(paramToServiceMsg.toString());
+      QLog.d("HeratbeatProxy", 1, localStringBuilder.toString());
     }
     return false;
   }
@@ -162,7 +179,12 @@ public class b
         {
           if ((((com.tencent.mobileqq.msf.core.push.a)localObject).k.uin != null) && (((com.tencent.mobileqq.msf.core.push.a)localObject).c > 0L))
           {
-            QLog.d("HeratbeatProxy", 1, "get pushinfo uin:" + ((com.tencent.mobileqq.msf.core.push.a)localObject).k.uin + ", pushid:" + ((com.tencent.mobileqq.msf.core.push.a)localObject).c);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("get pushinfo uin:");
+            localStringBuilder.append(((com.tencent.mobileqq.msf.core.push.a)localObject).k.uin);
+            localStringBuilder.append(", pushid:");
+            localStringBuilder.append(((com.tencent.mobileqq.msf.core.push.a)localObject).c);
+            QLog.d("HeratbeatProxy", 1, localStringBuilder.toString());
             return localObject;
           }
         }
@@ -177,7 +199,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.b
  * JD-Core Version:    0.7.0.1
  */

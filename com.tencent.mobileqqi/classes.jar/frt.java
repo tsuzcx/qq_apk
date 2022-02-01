@@ -1,38 +1,34 @@
-import com.tencent.image.URLDrawable;
+import android.view.View;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
 public class frt
-  implements SlideDetectListView.OnScrollToTopListener
+  implements AdapterView.OnItemClickListener
 {
   public frt(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.b + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    paramAdapterView = (FileInfo)this.a.a.get(paramInt);
+    if (paramAdapterView.a()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
     }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
+    while (!this.a.g()) {
       return;
     }
-    URLDrawable.pause();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    if (FMDataCache.a(paramAdapterView)) {
+      FMDataCache.b(paramAdapterView);
+    }
+    for (;;)
     {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
+      this.a.f();
+      LocalFileBrowserActivity.a(this.a);
       return;
+      FMDataCache.a(paramAdapterView);
     }
   }
 }

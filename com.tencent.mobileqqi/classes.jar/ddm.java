@@ -1,17 +1,14 @@
-import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richstatus.IActionListener;
 
 public class ddm
-  implements IIconListener
+  implements IActionListener
 {
   public ddm(QQSettingMe paramQQSettingMe) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((this.a.b) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().b == paramInt1) && (paramInt2 == 200)) {
+    if ((this.a.b) && (paramInt1 == 102) && (paramInt2 == 300)) {
       this.a.o();
     }
   }

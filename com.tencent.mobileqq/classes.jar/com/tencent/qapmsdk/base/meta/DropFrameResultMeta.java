@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/meta/DropFrameResultMeta;", "Lcom/tencent/qapmsdk/base/meta/MonitorMeta;", "dropCount", "", "duration", "", "dropIntervals", "", "scene", "", "(IF[JLjava/lang/String;)V", "state", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "", "hashCode", "reset", "", "toString", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/meta/DropFrameResultMeta;", "Lcom/tencent/qapmsdk/base/meta/MonitorMeta;", "dropCount", "", "duration", "", "dropIntervals", "", "scene", "", "smoothTime", "(IF[JLjava/lang/String;F)V", "state", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "", "hashCode", "reset", "", "toString", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public final class DropFrameResultMeta
   extends MonitorMeta
 {
@@ -22,19 +22,22 @@ public final class DropFrameResultMeta
   @NotNull
   public String scene;
   @JvmField
+  public float smoothTime;
+  @JvmField
   public int state;
   
   public DropFrameResultMeta()
   {
-    this(0, 0.0F, null, null, 15, null);
+    this(0, 0.0F, null, null, 0.0F, 31, null);
   }
   
-  public DropFrameResultMeta(int paramInt, float paramFloat, @NotNull long[] paramArrayOfLong, @NotNull String paramString)
+  public DropFrameResultMeta(int paramInt, float paramFloat1, @NotNull long[] paramArrayOfLong, @NotNull String paramString, float paramFloat2)
   {
     this.dropCount = paramInt;
-    this.duration = paramFloat;
+    this.duration = paramFloat1;
     this.dropIntervals = paramArrayOfLong;
     this.scene = paramString;
+    this.smoothTime = paramFloat2;
   }
   
   public final int component1()
@@ -59,93 +62,97 @@ public final class DropFrameResultMeta
     return this.scene;
   }
   
+  public final float component5()
+  {
+    return this.smoothTime;
+  }
+  
   @NotNull
-  public final DropFrameResultMeta copy(int paramInt, float paramFloat, @NotNull long[] paramArrayOfLong, @NotNull String paramString)
+  public final DropFrameResultMeta copy(int paramInt, float paramFloat1, @NotNull long[] paramArrayOfLong, @NotNull String paramString, float paramFloat2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "dropIntervals");
     Intrinsics.checkParameterIsNotNull(paramString, "scene");
-    return new DropFrameResultMeta(paramInt, paramFloat, paramArrayOfLong, paramString);
+    return new DropFrameResultMeta(paramInt, paramFloat1, paramArrayOfLong, paramString, paramFloat2);
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this != paramObject)
     {
-      bool1 = bool2;
-      if (!(paramObject instanceof DropFrameResultMeta)) {
-        break label96;
-      }
-      paramObject = (DropFrameResultMeta)paramObject;
-      if (this.dropCount != paramObject.dropCount) {
-        break label98;
-      }
-    }
-    label96:
-    label98:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0)
+      if ((paramObject instanceof DropFrameResultMeta))
       {
-        bool1 = bool2;
-        if (Float.compare(this.duration, paramObject.duration) == 0)
-        {
-          bool1 = bool2;
-          if (Intrinsics.areEqual(this.dropIntervals, paramObject.dropIntervals))
-          {
-            bool1 = bool2;
-            if (Intrinsics.areEqual(this.scene, paramObject.scene)) {
-              bool1 = true;
-            }
-          }
+        paramObject = (DropFrameResultMeta)paramObject;
+        int i;
+        if (this.dropCount == paramObject.dropCount) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((i != 0) && (Float.compare(this.duration, paramObject.duration) == 0) && (Intrinsics.areEqual(this.dropIntervals, paramObject.dropIntervals)) && (Intrinsics.areEqual(this.scene, paramObject.scene)) && (Float.compare(this.smoothTime, paramObject.smoothTime) == 0)) {
+          return true;
         }
       }
-      return bool1;
+      return false;
     }
+    return true;
   }
   
   public int hashCode()
   {
-    int j = 0;
     int k = this.dropCount;
     int m = Float.floatToIntBits(this.duration);
     Object localObject = this.dropIntervals;
-    if (localObject != null) {}
-    for (int i = Arrays.hashCode((long[])localObject);; i = 0)
-    {
-      localObject = this.scene;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return (i + (k * 31 + m) * 31) * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = Arrays.hashCode((long[])localObject);
+    } else {
+      i = 0;
     }
+    localObject = this.scene;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return (((k * 31 + m) * 31 + i) * 31 + j) * 31 + Float.floatToIntBits(this.smoothTime);
   }
   
   public void reset()
   {
-    int i = 0;
     this.dropCount = 0;
     this.duration = 0.0F;
     int j = this.dropIntervals.length;
+    int i = 0;
     while (i < j)
     {
       this.dropIntervals[i] = 0L;
       i += 1;
     }
     this.scene = "";
+    this.state = 0;
+    this.smoothTime = 0.0F;
   }
   
   @NotNull
   public String toString()
   {
-    return "DropFrameResultMeta(dropCount=" + this.dropCount + ", duration=" + this.duration + ", dropIntervals=" + Arrays.toString(this.dropIntervals) + ", scene=" + this.scene + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DropFrameResultMeta(dropCount=");
+    localStringBuilder.append(this.dropCount);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", dropIntervals=");
+    localStringBuilder.append(Arrays.toString(this.dropIntervals));
+    localStringBuilder.append(", scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(", smoothTime=");
+    localStringBuilder.append(this.smoothTime);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.DropFrameResultMeta
  * JD-Core Version:    0.7.0.1
  */

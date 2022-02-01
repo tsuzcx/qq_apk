@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/brb"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.timi.game.profile.impl.view.SexAtView android:textSize="16.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/ow1" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <View android:id="@id/ow7" android:background="#b4e1e1e1" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/ow6" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/zfr" android:layout_weight="1.0" />
+    <View android:id="@id/ow8" android:background="#b4e1e1e1" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" />
+    <FrameLayout android:id="@id/ow3" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textSize="16.0dip" android:textColor="#fff5a300" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zfq" android:drawableLeft="@drawable/jh7" android:drawablePadding="4.0dip" />
+    </FrameLayout>
+</LinearLayout>

@@ -49,15 +49,17 @@ public class ScriptIntrinsicBlur
   
   public void setRadius(float paramFloat)
   {
-    if ((paramFloat <= 0.0F) || (paramFloat > 25.0F)) {
-      throw new RSIllegalArgumentException("Radius out of range (0 < r <= 25).");
+    if ((paramFloat > 0.0F) && (paramFloat <= 25.0F))
+    {
+      setVar(0, paramFloat);
+      return;
     }
-    setVar(0, paramFloat);
+    throw new RSIllegalArgumentException("Radius out of range (0 < r <= 25).");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptIntrinsicBlur
  * JD-Core Version:    0.7.0.1
  */

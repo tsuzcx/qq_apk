@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/zm" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="80.0dip" android:paddingBottom="@dimen/l6" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="20.0dip" android:textColor="#ffaaaaaa" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/byc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/byi" />
-        <TextView android:textSize="@dimen/ko" android:textColor="#ffaaaaaa" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/byd" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/ll" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/m7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/byg" />
-        <ListView android:id="@id/bye" android:background="@color/a3x" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/mn" />
-    </LinearLayout>
-</LinearLayout>
+<View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

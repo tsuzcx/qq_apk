@@ -1,4 +1,27 @@
 {
-  "version": "2.7.1",
-  "updateTime": "2019.6.10 16:16:06"
+  "updateTime": "2021.11.18 22:36:06",
+  "version": "2.21.0",
+  "features": {
+    "pruneWxConfigByPage": true,
+    "injectGameContextPlugin": true,
+    "lazyCodeLoading2": true,
+    "lazyCodeLoadingForDevTool": true,
+    "injectAppSeparatedPlugin": true,
+    "nativeTrans": true,
+    "gameLive": true,
+    "supportInvokeWithAppId": true,
+    "expt": [
+      "clicfg_appbrand_ios_native_download",
+      "clicfg_appbrand_native_download",
+      "clicfg_appbrand_ios_native_socket_wcwss",
+      "clicfg_appbrand_android_createrequesttaskasync",
+      "clicfg_appbrand_android_createdownloadtaskasync",
+      "clicfg_navigation_use_scl_alert_v5",
+      "clicfg_appbrand_ios_native_readfile",
+      "clicfg_appbrand_native_readfile",
+      "clicfg_appbrand_ios_game_split_multi_plugincode",
+      "clicfg_appbrand_game_split_multi_plugincode",
+      "clicfg_appbrand_config_purge_usingcomponents"
+    ]
+  }
 }

@@ -1,0 +1,120 @@
+{
+  "WxImeS1Button": {
+    "width": "@number/ime_s1_button_width",
+    "height": "@number/ime_s1_button_height",
+    "leftPadding": "@number/S1_margin_left_right",
+    "topPadding": "@number/S1_padding_top",
+    "bottomPadding": "@number/S1_padding_bottom",
+    "rightPadding": "@number/S1_margin_left_right"
+  },
+  "WxImeS1WhiteButton": {
+    "style": "@style/WxImeS1Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_white_color",
+    "shadowColor": "@color/ime_key_white_shadow_color",
+    "initialColor": "@color/ime_key_white_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color",
+    "mainTextSize": "@number/S1_text_size",
+    "floatTextSize": "@number/S1_up_text_size",
+    "mainTextColor": "@color/ime_key_text_color",
+    "floatTextColor": "@color/FG_2",
+    "longClickable": true
+  },
+  "WxImeS1GreyButton": {
+    "style": "@style/WxImeS1Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_grey_color",
+    "shadowColor": "@color/ime_key_grey_shadow_color",
+    "initialColor": "@color/ime_key_grey_color",
+    "mainTextSize": "@number/S4_text_size_small",
+    "mainTextColor": "@color/ime_key_text_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color"
+  },
+  "WxImeS2Button": {
+    "width": "@number/S2_button_width",
+    "height": "@number/S2_button_height",
+    "topPadding": "@number/S2_button_top_padding",
+    "bottomPadding": "@number/S2_button_bottom_padding",
+    "leftMargin": "@number/S2_button_margin",
+    "rightMargin": "@number/S2_button_margin"
+  },
+  "WxImeS2WhiteButton": {
+    "width": "@number/S2_button_center_width",
+    "style": "@style/WxImeS2Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_white_color",
+    "shadowColor": "@color/ime_key_white_shadow_color",
+    "initialColor": "@color/ime_key_white_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color",
+    "mainTextSize": "@number/S2_text_upper_mode_size",
+    "floatTextSize": "@number/S2_up_text_size",
+    "mainTextColor": "@color/ime_key_text_color",
+    "floatTextColor": "@color/ime_text_up_bg_color",
+    "leftPadding": "@number/S2_button_margin",
+    "rightPadding": "@number/S2_button_margin",
+    "leftMargin": "0",
+    "rightMargin": "0"
+  },
+  "WxImeS2LastLineWhiteButton": {
+    "style": "@style/WxImeS2Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_white_color",
+    "shadowColor": "@color/ime_key_white_shadow_color",
+    "initialColor": "@color/ime_key_white_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color",
+    "mainTextSize": "@number/S2_text_upper_mode_size",
+    "floatTextSize": "@number/S2_up_text_size",
+    "mainTextColor": "@color/ime_key_text_color",
+    "floatTextColor": "@color/ime_text_up_bg_color"
+  },
+  "WxImeS2GreyButton": {
+    "style": "@style/WxImeS2Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_grey_color",
+    "shadowColor": "@color/ime_key_grey_shadow_color",
+    "initialColor": "@color/ime_key_grey_color",
+    "mainTextSize": "@number/S4_text_size_small",
+    "mainTextColor": "@color/ime_key_text_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color"
+  },
+  "WxImeS2GreyFunctionButton": {
+    "style": "@style/WxImeS2GreyButton",
+    "width": "@number/S2_button_width_large"
+  },
+
+  "WxImeS4Button": {
+    "width": "@number/ime_s1_button_width",
+    "height": "@number/ime_s1_button_height",
+    "leftPadding": "@number/S1_margin_left_right",
+    "topPadding": "@number/S1_padding_top",
+    "bottomPadding": "@number/S1_padding_bottom",
+    "rightPadding": "@number/S1_margin_left_right"
+  },
+  "WxImeS4WhiteButton": {
+    "style": "@style/WxImeS4Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_white_color",
+    "shadowColor": "@color/ime_key_white_shadow_color",
+    "initialColor": "@color/ime_key_white_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color",
+    "mainTextSize": "@number/S4_text_size",
+    "mainTextColor": "@color/ime_key_text_color"
+  },
+  "WxImeS4GreyButton": {
+    "style": "@style/WxImeS4Button",
+    "shadowHeight": "@number/ime_shadow_Height",
+    "bgCorner": "@number/ime_corner_radius",
+    "bgColor": "@color/ime_key_grey_color",
+    "shadowColor": "@color/ime_key_grey_shadow_color",
+    "initialColor": "@color/ime_key_grey_color",
+    "mainTextSize": "@number/S4_text_size_small",
+    "mainTextColor": "@color/ime_key_text_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color"
+  }
+}

@@ -1,19 +1,22 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.utils.Utils;
 
 class PathKeyframeParser
 {
   static PathKeyframe parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    if (paramJsonReader.peek() == JsonToken.BEGIN_OBJECT) {}
-    for (boolean bool = true;; bool = false) {
-      return new PathKeyframe(paramLottieComposition, KeyframeParser.parse(paramJsonReader, paramLottieComposition, Utils.dpScale(), PathParser.INSTANCE, bool));
+    boolean bool;
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_OBJECT) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return new PathKeyframe(paramLottieComposition, KeyframeParser.parse(paramJsonReader, paramLottieComposition, Utils.dpScale(), PathParser.INSTANCE, bool, false));
   }
 }
 

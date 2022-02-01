@@ -4,26 +4,27 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MultiBanner
   extends JceStruct
 {
   static ArrayList<Long> cache_recomUinList = new ArrayList();
   public boolean bNeedPiecewise = true;
-  public boolean bNeedSpread;
+  public boolean bNeedSpread = false;
   public String coverurl = "";
-  public long createtime;
-  public boolean from_now;
+  public long createtime = 0L;
+  public boolean from_now = false;
   public String jmpUrl = "";
-  public int livetype;
-  public int num;
-  public ArrayList<Long> recomUinList;
+  public int livetype = 0;
+  public int num = 0;
+  public ArrayList<Long> recomUinList = null;
   public String roomid = "";
   public String schemaurl = "";
   public String strNicks = "";
-  public int styleType;
+  public int styleType = 0;
   public String summary = "";
-  public long uUin;
+  public long uUin = 0L;
   public String videoUrl = "";
   
   static
@@ -75,33 +76,41 @@ public final class MultiBanner
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strNicks != null) {
-      paramJceOutputStream.write(this.strNicks, 0);
+    Object localObject = this.strNicks;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.uUin, 1);
-    if (this.roomid != null) {
-      paramJceOutputStream.write(this.roomid, 2);
+    localObject = this.roomid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.createtime, 3);
-    if (this.coverurl != null) {
-      paramJceOutputStream.write(this.coverurl, 4);
+    localObject = this.coverurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.num, 5);
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 6);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.schemaurl != null) {
-      paramJceOutputStream.write(this.schemaurl, 7);
+    localObject = this.schemaurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.jmpUrl != null) {
-      paramJceOutputStream.write(this.jmpUrl, 8);
+    localObject = this.jmpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.from_now, 9);
-    if (this.videoUrl != null) {
-      paramJceOutputStream.write(this.videoUrl, 10);
+    localObject = this.videoUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.recomUinList != null) {
-      paramJceOutputStream.write(this.recomUinList, 11);
+    localObject = this.recomUinList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
     paramJceOutputStream.write(this.styleType, 12);
     paramJceOutputStream.write(this.livetype, 13);
@@ -111,7 +120,7 @@ public final class MultiBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.MultiBanner
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@
             "type": "match_parent"
         },
         "default_visible": "YES",
-        "event_type":"multi_video_column_card_click",
+        "event_type": "multi_video_column_card_click",
         "align_parent_center_horizontal": "YES",
         "subviews": [
             {
@@ -20,14 +20,14 @@
                 "layout_type": "layout_relative",
                 "height": {
                     "type": "relative",
-                    "value": "298"
+                    "value": "305"
                 },
                 "width": {
                     "type": "relative",
-                    "value": "363"
+                    "value": "351"
                 },
-                "margin_top": "8",
-                "align_parent_center_horizontal": "YES",
+                "margin_top": "14",
+                "margin_left": "12",
                 "subviews": [
                     {
                         "view_id": "id_bg_default",
@@ -120,15 +120,15 @@
                         "view_type": "UIImageView",
                         "height": {
                             "type": "relative",
-                            "value": "24"
+                            "value": "20"
                         },
                         "width": {
                             "type": "relative",
-                            "value": "24"
+                            "value": "20"
                         },
                         "default_visible": "YES",
-                        "margin_left": "10",
-                        "margin_top": "15",
+                        "margin_left": "12",
+                        "margin_top": "14",
                         "attributes": {
                             "loadImageWithPath:": "$title_icon_url"
                         }
@@ -144,14 +144,14 @@
                         },
                         "default_visible": "YES",
                         "right_of_view": "id_topic_title_icon",
-                        "margin_left": "6",
-                        "margin_top": "16",
-                        "margin_right": "10",
+                        "margin_left": "4",
+                        "margin_top": "12",
+                        "margin_right": "16",
                         "attributes": {
                             "setText:": "$topic_title_text",
                             "setTextColorString:": "#FFFFFF",
                             "setTextAlignmentString:": "0",
-                            "setBoldFontSizeString:": "20",
+                            "setFontSizeString:": "20",
                             "setNumberOfLinesString:": "1"
                         }
                     },
@@ -164,16 +164,16 @@
                         "width": {
                             "type": "match_parent"
                         },
-                        "margin_top": "49",
-                        "margin_left": "10",
-                        "margin_right": "10",
+                        "margin_top": "42",
+                        "margin_left": "16",
+                        "margin_right": "16",
                         "attributes": {
                             "setText:lineSpace:": [
                                 "$topic_desc_text",
                                 "2"
                             ],
                             "setTextColorString:": "#FFFFFF",
-                            "setFontSizeString:": "12",
+                            "setFontSizeString:": "14",
                             "setNumberOfLinesString:": "2"
                         }
                     },
@@ -182,7 +182,7 @@
                         "view_type": "ProteusCollectionView",
                         "height": {
                             "type": "relative",
-                            "value": "107"
+                            "value": "105"
                         },
                         "width": {
                             "type": "match_parent"
@@ -196,15 +196,89 @@
                             "setScrollBounceString:": "1",
                             "setEdgeDragString:": "1",
                             "setScrollInsetLeft:right:top:bottom:": [
-                                "0",
-                                "6",
+                                "4",
+                                "8",
                                 "0",
                                 "0"
                             ],
-                            "setEdgeDragCenterY:type:": ["43","relative"],
-                            "setEdgeDragHeight:type:": ["85","relative"],
+                            "setEdgeDragCenterY:type:": [
+                                "42",
+                                "relative"
+                            ],
+                            "setEdgeDragHeight:type:": [
+                                "85",
+                                "relative"
+                            ],
                             "setEdgeDragArrowPath:": "edge_drag_arrow_black",
-                            "setEdgeDragBackgroundColorString:":"#FFFFFF"
+                            "setEdgeDragBackgroundColorString:": "#FFFFFF"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_left_mask",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_left_mask",
+                        "default_visible": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_bottom_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_right_mask",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_right_mask",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_bottom_round_corner"
                         }
                     }
                 ]
@@ -213,7 +287,7 @@
                 "$includeComponet": "componet/multi_video_tail.geojson"
             },
             {
-                "$includeComponet": "componet/separator.geojson"
+                "$includeComponet": "componet/separator_normal_bottom.geojson"
             }
         ]
     }

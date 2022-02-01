@@ -4,34 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final boolean agj(String paramString)
+  public static final boolean bhH(String paramString)
   {
-    AppMethodBeat.i(26460);
+    AppMethodBeat.i(131330);
     try
     {
       boolean bool = paramString.split("/")[2].equals("wear");
-      AppMethodBeat.o(26460);
+      AppMethodBeat.o(131330);
       return bool;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(26460);
+      AppMethodBeat.o(131330);
     }
     return false;
   }
   
-  public static final int agk(String paramString)
+  public static final int bhI(String paramString)
   {
-    AppMethodBeat.i(26461);
+    AppMethodBeat.i(131331);
     try
     {
       int i = Integer.valueOf(paramString.split("/")[4]).intValue();
-      AppMethodBeat.o(26461);
+      AppMethodBeat.o(131331);
       return i;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(26461);
+      AppMethodBeat.o(131331);
     }
     return 0;
   }

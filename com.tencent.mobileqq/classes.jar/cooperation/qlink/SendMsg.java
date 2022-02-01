@@ -4,40 +4,37 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import biuf;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new biuf();
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = -1L;
-  public final Bundle a;
+  public static final Parcelable.Creator<SendMsg> CREATOR = new SendMsg.1();
   public String a;
-  long b = -1L;
+  public final Bundle b = new Bundle();
+  long c = -1L;
+  long d = -1L;
+  int e;
   
   public SendMsg(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     a(paramParcel);
   }
   
   public SendMsg(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   private void a(Parcel paramParcel)
   {
     try
     {
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_a_of_type_Long = paramParcel.readLong();
-      this.jdField_a_of_type_AndroidOsBundle.clear();
-      this.jdField_a_of_type_AndroidOsBundle.putAll(paramParcel.readBundle(Thread.currentThread().getContextClassLoader()));
+      this.e = paramParcel.readInt();
+      this.a = paramParcel.readString();
+      this.c = paramParcel.readLong();
+      this.b.clear();
+      this.b.putAll(paramParcel.readBundle(Thread.currentThread().getContextClassLoader()));
       return;
     }
     catch (RuntimeException paramParcel)
@@ -49,17 +46,17 @@ public class SendMsg
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public int describeContents()
@@ -69,17 +66,24 @@ public class SendMsg
   
   public String toString()
   {
-    return "SendMsg appSeq:" + this.jdField_a_of_type_Int + " serviceCmd:" + this.jdField_a_of_type_JavaLangString + " timeout:" + this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SendMsg appSeq:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" serviceCmd:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" timeout:");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     try
     {
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
+      paramParcel.writeInt(this.e);
+      paramParcel.writeString(this.a);
+      paramParcel.writeLong(this.c);
+      paramParcel.writeBundle(this.b);
       return;
     }
     catch (RuntimeException paramParcel)
@@ -91,7 +95,7 @@ public class SendMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.SendMsg
  * JD-Core Version:    0.7.0.1
  */

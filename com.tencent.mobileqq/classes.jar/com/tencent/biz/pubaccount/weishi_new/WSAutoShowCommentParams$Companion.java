@@ -1,0 +1,12 @@
+package com.tencent.biz.pubaccount.weishi_new;
+
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/weishi_new/WSAutoShowCommentParams$Companion;", "", "()V", "KEY_COMMENT", "", "KEY_COMMENT_ID", "KEY_IS_SHOW_COMMENT_PANEL", "KEY_REPLY_ID", "qqweishi_impl_release"}, k=1, mv={1, 1, 16})
+public final class WSAutoShowCommentParams$Companion {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSAutoShowCommentParams.Companion
+ * JD-Core Version:    0.7.0.1
+ */

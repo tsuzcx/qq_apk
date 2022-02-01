@@ -1,76 +1,22 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Matrix;
 
 public class egy
-  extends BaseAdapter
 {
-  private egy(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  public int getCount()
+  public egy()
   {
-    return 5;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130904030, null);
-    }
-    int i;
-    int j;
-    switch (paramInt)
-    {
-    default: 
-      i = 2131561882;
-      j = 2130837750;
-      paramInt = 2131561884;
-    }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131232546);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131232547);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
-      return paramViewGroup;
-      i = 2131562390;
-      j = 2130837751;
-      paramInt = 2131562913;
-      continue;
-      i = 2131562715;
-      j = 2130837752;
-      paramInt = 2131562915;
-      continue;
-      i = 2131561882;
-      j = 2130837750;
-      paramInt = 2131561884;
-      continue;
-      i = 2131561882;
-      j = 2130837750;
-      paramInt = 2131561884;
-    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     egy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
-import bjyy;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneUiJsPlugin$1
+class QzoneUiJsPlugin$1
   implements Runnable
 {
-  public QzoneUiJsPlugin$1(bjyy parambjyy, String paramString) {}
+  QzoneUiJsPlugin$1(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
   public void run()
   {
-    bjqu.a().a().g(this.a);
+    RemoteHandleManager.getInstance().getSender().deleteTempVideo(this.val$videoPath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUiJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

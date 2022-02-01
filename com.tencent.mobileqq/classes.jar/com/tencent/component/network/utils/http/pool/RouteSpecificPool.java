@@ -31,15 +31,22 @@ abstract class RouteSpecificPool<T, C, E extends PoolEntry<T, C>>
   
   public void free(E paramE, boolean paramBoolean)
   {
-    if (paramE == null) {
-      throw new IllegalArgumentException("Pool entry may not be null");
+    if (paramE != null)
+    {
+      if (this.leased.remove(paramE))
+      {
+        if (paramBoolean) {
+          this.available.addFirst(paramE);
+        }
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Entry ");
+      localStringBuilder.append(paramE);
+      localStringBuilder.append(" has not been leased from this pool");
+      throw new IllegalStateException(localStringBuilder.toString());
     }
-    if (!this.leased.remove(paramE)) {
-      throw new IllegalStateException("Entry " + paramE + " has not been leased from this pool");
-    }
-    if (paramBoolean) {
-      this.available.addFirst(paramE);
-    }
+    throw new IllegalArgumentException("Pool entry may not be null");
   }
   
   public int getAllocatedCount()
@@ -124,10 +131,10 @@ abstract class RouteSpecificPool<T, C, E extends PoolEntry<T, C>>
   
   public boolean remove(E paramE)
   {
-    if (paramE == null) {
-      throw new IllegalArgumentException("Pool entry may not be null");
+    if (paramE != null) {
+      return (this.available.remove(paramE)) || (this.leased.remove(paramE));
     }
-    return (this.available.remove(paramE)) || (this.leased.remove(paramE));
+    throw new IllegalArgumentException("Pool entry may not be null");
   }
   
   public void shutdown()
@@ -174,7 +181,7 @@ abstract class RouteSpecificPool<T, C, E extends PoolEntry<T, C>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.http.pool.RouteSpecificPool
  * JD-Core Version:    0.7.0.1
  */

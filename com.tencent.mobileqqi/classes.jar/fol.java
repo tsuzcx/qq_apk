@@ -1,72 +1,13 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
 import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class fol
-  extends EmoticonPackageDownloadListener
+class fol
+  implements Runnable
 {
-  public fol(EmoticonMainPanel paramEmoticonMainPanel) {}
+  fol(fok paramfok, MagicFaceViewBinder paramMagicFaceViewBinder) {}
   
-  private void a(EmoticonPackage paramEmoticonPackage)
+  public void run()
   {
-    int j;
-    int i;
-    if ((this.a.getVisibility() == 0) && (EmoticonMainPanel.b() == 2) && (paramEmoticonPackage.jobType == 3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "refresh magic face panel: " + paramEmoticonPackage.epId);
-      }
-      if (EmoticonMainPanel.c(this.a) != null)
-      {
-        j = EmoticonMainPanel.c(this.a).size();
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        paramEmoticonPackage = (EmoticonViewBinder)EmoticonMainPanel.c(this.a).get(i);
-        if ((paramEmoticonPackage != null) && ((paramEmoticonPackage instanceof MagicFaceViewBinder)) && (EmoticonMainPanel.c() == i))
-        {
-          paramEmoticonPackage = (MagicFaceViewBinder)paramEmoticonPackage;
-          this.a.post(new fom(this, paramEmoticonPackage));
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "magicfaceDownloadListener, onPackageEnd");
-    }
-    if (paramEmoticonPackage == null) {}
-    while ((paramEmoticonPackage.jobType != 3) || (paramInt != 0)) {
-      return;
-    }
-    a(paramEmoticonPackage);
-  }
-  
-  public void onPackageStart(EmoticonPackage paramEmoticonPackage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "magicfaceDownloadListener, onPackageStart");
-    }
-    if (paramEmoticonPackage == null) {}
-    while (paramEmoticonPackage.jobType != 3) {
-      return;
-    }
-    a(paramEmoticonPackage);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.b();
   }
 }
 

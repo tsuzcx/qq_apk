@@ -1,21 +1,18 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import vwb;
-import vxg;
-
-public class VideoViewTVKImpl$2$1
+class VideoViewTVKImpl$2$1
   implements Runnable
 {
-  public VideoViewTVKImpl$2$1(vxg paramvxg, vwb paramvwb) {}
+  VideoViewTVKImpl$2$1(VideoViewTVKImpl.2 param2, IVideoView.OnCompletionListener paramOnCompletionListener) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vwb.b(this.jdField_a_of_type_Vxg.a);
+    this.a.a(this.b.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

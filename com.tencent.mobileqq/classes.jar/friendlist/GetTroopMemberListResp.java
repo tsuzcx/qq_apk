@@ -10,15 +10,15 @@ public final class GetTroopMemberListResp
 {
   static int cache_result = 0;
   static ArrayList<stTroopMemberInfo> cache_vecTroopMember = new ArrayList();
-  public long GroupCode;
-  public long GroupUin;
-  public long NextGetTime;
-  public long NextUin;
-  public short errorCode;
-  public long office_mode;
-  public int result;
-  public long uin;
-  public ArrayList<stTroopMemberInfo> vecTroopMember;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public long NextGetTime = 0L;
+  public long NextUin = 0L;
+  public short errorCode = 0;
+  public long office_mode = 0L;
+  public int result = 0;
+  public long uin = 0L;
+  public ArrayList<stTroopMemberInfo> vecTroopMember = null;
   
   static
   {
@@ -69,7 +69,7 @@ public final class GetTroopMemberListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetTroopMemberListResp
  * JD-Core Version:    0.7.0.1
  */

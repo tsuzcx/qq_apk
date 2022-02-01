@@ -1,20 +1,34 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aobw;
+import com.tencent.mobileqq.colornote.api.IColorNoteController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class ColorNotePlugin$3
   implements Runnable
 {
-  ColorNotePlugin$3(ColorNotePlugin paramColorNotePlugin, aobw paramaobw) {}
+  ColorNotePlugin$3(ColorNotePlugin paramColorNotePlugin, IColorNoteController paramIColorNoteController, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    this.val$finalColorNoteController.i();
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(ColorNotePlugin.a(this.this$0).getAttachedActivity(), 2131953338);
+    localQQCustomDialog.setContentView(2131625339);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("是否将");
+    localStringBuilder.append(ColorNotePlugin.b(this.this$0).name);
+    localStringBuilder.append("添加到彩签？");
+    localQQCustomDialog.setMessage(localStringBuilder.toString());
+    localQQCustomDialog.setPositiveButton("确定", new ColorNotePlugin.3.1(this));
+    localQQCustomDialog.setNegativeButton("取消", new ColorNotePlugin.3.2(this));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.3
  * JD-Core Version:    0.7.0.1
  */

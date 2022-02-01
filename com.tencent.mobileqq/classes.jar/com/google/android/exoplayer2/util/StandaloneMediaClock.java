@@ -31,14 +31,13 @@ public final class StandaloneMediaClock
     {
       l1 = this.clock.elapsedRealtime() - this.baseElapsedMs;
       if (this.playbackParameters.speed == 1.0F) {
-        l1 = l2 + C.msToUs(l1);
+        l1 = C.msToUs(l1);
+      } else {
+        l1 = this.playbackParameters.getMediaTimeUsForPlayoutTimeMs(l1);
       }
+      l1 = l2 + l1;
     }
-    else
-    {
-      return l1;
-    }
-    return l2 + this.playbackParameters.getMediaTimeUsForPlayoutTimeMs(l1);
+    return l1;
   }
   
   public void resetPosition(long paramLong)
@@ -78,7 +77,7 @@ public final class StandaloneMediaClock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.StandaloneMediaClock
  * JD-Core Version:    0.7.0.1
  */

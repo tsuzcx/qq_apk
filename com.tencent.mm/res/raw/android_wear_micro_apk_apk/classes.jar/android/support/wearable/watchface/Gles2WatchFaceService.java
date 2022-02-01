@@ -6,9 +6,9 @@ import android.annotation.TargetApi;
 public abstract class Gles2WatchFaceService
   extends WatchFaceService
 {
-  private static final int[] Fw = { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12344 };
-  private static final int[] Fx = { 12440, 2, 12344 };
-  private static final int[] Fy = { 12344 };
+  private static final int[] Hl = { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12344 };
+  private static final int[] Hm = { 12440, 2, 12344 };
+  private static final int[] Hn = { 12344 };
 }
 
 

@@ -11,7 +11,7 @@ final class RemittanceBaseUI$2
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(142140);
+    AppMethodBeat.i(67951);
     if (paramEditable.toString().startsWith(".")) {
       paramEditable.insert(0, "0");
     }
@@ -21,7 +21,7 @@ final class RemittanceBaseUI$2
     if ((i >= 0) && (j - i > 2)) {
       paramEditable.delete(i + 3, j);
     }
-    AppMethodBeat.o(142140);
+    AppMethodBeat.o(67951);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

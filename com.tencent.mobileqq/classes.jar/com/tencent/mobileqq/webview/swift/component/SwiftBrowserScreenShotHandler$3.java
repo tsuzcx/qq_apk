@@ -1,36 +1,42 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Handler;
-import beim;
+import com.tencent.mobileqq.kandian.biz.fastweb.api.IScreenShotImageUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import sdp;
 
-public class SwiftBrowserScreenShotHandler$3
+class SwiftBrowserScreenShotHandler$3
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$3(beim parambeim, int paramInt) {}
+  SwiftBrowserScreenShotHandler$3(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, int paramInt) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaLangString = sdp.a(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "onDetectScreenshot->save file time:" + System.currentTimeMillis());
-    }
-    this.this$0.jdField_a_of_type_Boolean = false;
-    if (this.this$0.b)
+    this.this$0.i = ((IScreenShotImageUtil)QRoute.api(IScreenShotImageUtil.class)).saveBitmapToPublicAccountFileFolder(this.this$0.h, "ShotCache_");
+    if (QLog.isDevelopLevel())
     {
-      this.this$0.b = false;
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDetectScreenshot->save file time:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject).toString());
     }
-    while (this.a != 2) {
+    Object localObject = this.this$0;
+    ((SwiftBrowserScreenShotHandler)localObject).m = false;
+    if (((SwiftBrowserScreenShotHandler)localObject).n)
+    {
+      localObject = this.this$0;
+      ((SwiftBrowserScreenShotHandler)localObject).n = false;
+      ((SwiftBrowserScreenShotHandler)localObject).q.sendEmptyMessage(3);
       return;
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.a == 2) {
+      this.this$0.q.sendEmptyMessage(3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.3
  * JD-Core Version:    0.7.0.1
  */

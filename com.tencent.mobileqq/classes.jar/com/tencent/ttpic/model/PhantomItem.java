@@ -84,7 +84,9 @@ public class PhantomItem
   
   public double getxOffset()
   {
-    return (this.xOffset - 0.5D * (1.0D - this.scale)) / this.scale;
+    double d1 = this.xOffset;
+    double d2 = this.scale;
+    return (d1 - (1.0D - d2) * 0.5D) / d2;
   }
   
   public double getxPhase()
@@ -119,7 +121,9 @@ public class PhantomItem
   
   public double getyOffset()
   {
-    return (this.yOffset - 0.5D * (1.0D - this.scale)) / this.scale;
+    double d1 = this.yOffset;
+    double d2 = this.scale;
+    return (d1 - (1.0D - d2) * 0.5D) / d2;
   }
   
   public double getyPhase()
@@ -139,17 +143,29 @@ public class PhantomItem
   
   public void makeXStep(long paramLong)
   {
-    this.xtime += this.xStep * paramLong * 0.03D;
-    if (this.xtime > this.xRange[1]) {
-      this.xtime = this.xRange[0];
+    double d1 = this.xtime;
+    double d2 = this.xStep;
+    double d3 = paramLong;
+    Double.isNaN(d3);
+    this.xtime = (d1 + d2 * d3 * 0.03D);
+    d1 = this.xtime;
+    double[] arrayOfDouble = this.xRange;
+    if (d1 > arrayOfDouble[1]) {
+      this.xtime = arrayOfDouble[0];
     }
   }
   
   public void makeYStep(long paramLong)
   {
-    this.ytime += this.yStep * paramLong * 0.03D;
-    if (this.ytime > this.yRange[1]) {
-      this.ytime = this.yRange[0];
+    double d1 = this.ytime;
+    double d2 = this.yStep;
+    double d3 = paramLong;
+    Double.isNaN(d3);
+    this.ytime = (d1 + d2 * d3 * 0.03D);
+    d1 = this.ytime;
+    double[] arrayOfDouble = this.yRange;
+    if (d1 > arrayOfDouble[1]) {
+      this.ytime = arrayOfDouble[0];
     }
   }
   
@@ -280,12 +296,57 @@ public class PhantomItem
   
   public String toString()
   {
-    return "PhantomItem{dataPath='" + this.dataPath + '\'' + ", id='" + this.id + '\'' + ", maskImage='" + this.maskImage + '\'' + ", blendMode=" + this.blendMode + ", scale=" + this.scale + ", opacity=" + this.opacity + ", xK=" + this.xK + ", xAsin=" + this.xAsin + ", xBcos=" + this.xBcos + ", xPhase=" + this.xPhase + ", xOffset=" + this.xOffset + ", xStep=" + this.xStep + ", xRange=" + Arrays.toString(this.xRange) + ", yK=" + this.yK + ", yAsin=" + this.yAsin + ", yBcos=" + this.yBcos + ", yPhase=" + this.yPhase + ", yOffset=" + this.yOffset + ", yStep=" + this.yStep + ", yRange=" + Arrays.toString(this.yRange) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PhantomItem{dataPath='");
+    localStringBuilder.append(this.dataPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", maskImage='");
+    localStringBuilder.append(this.maskImage);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", blendMode=");
+    localStringBuilder.append(this.blendMode);
+    localStringBuilder.append(", scale=");
+    localStringBuilder.append(this.scale);
+    localStringBuilder.append(", opacity=");
+    localStringBuilder.append(this.opacity);
+    localStringBuilder.append(", xK=");
+    localStringBuilder.append(this.xK);
+    localStringBuilder.append(", xAsin=");
+    localStringBuilder.append(this.xAsin);
+    localStringBuilder.append(", xBcos=");
+    localStringBuilder.append(this.xBcos);
+    localStringBuilder.append(", xPhase=");
+    localStringBuilder.append(this.xPhase);
+    localStringBuilder.append(", xOffset=");
+    localStringBuilder.append(this.xOffset);
+    localStringBuilder.append(", xStep=");
+    localStringBuilder.append(this.xStep);
+    localStringBuilder.append(", xRange=");
+    localStringBuilder.append(Arrays.toString(this.xRange));
+    localStringBuilder.append(", yK=");
+    localStringBuilder.append(this.yK);
+    localStringBuilder.append(", yAsin=");
+    localStringBuilder.append(this.yAsin);
+    localStringBuilder.append(", yBcos=");
+    localStringBuilder.append(this.yBcos);
+    localStringBuilder.append(", yPhase=");
+    localStringBuilder.append(this.yPhase);
+    localStringBuilder.append(", yOffset=");
+    localStringBuilder.append(this.yOffset);
+    localStringBuilder.append(", yStep=");
+    localStringBuilder.append(this.yStep);
+    localStringBuilder.append(", yRange=");
+    localStringBuilder.append(Arrays.toString(this.yRange));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.model.PhantomItem
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,6 @@ import com.google.android.gms.common.internal.BaseGmsClient.ConnectionProgressRe
 import com.google.android.gms.common.internal.ClientSettings;
 import com.google.android.gms.common.internal.GmsClient;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
@@ -46,7 +45,6 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
-import javax.annotation.Nullable;
 
 public final class zzhg
   extends GmsClient<zzep>
@@ -65,15 +63,14 @@ public final class zzhg
   public zzhg(Context paramContext, Looper paramLooper, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener, ClientSettings paramClientSettings)
   {
     this(paramContext, paramLooper, paramConnectionCallbacks, paramOnConnectionFailedListener, paramClientSettings, Executors.newCachedThreadPool(), zzhp.zza(paramContext));
-    AppMethodBeat.i(71395);
-    AppMethodBeat.o(71395);
+    AppMethodBeat.i(101378);
+    AppMethodBeat.o(101378);
   }
   
-  @VisibleForTesting
   private zzhg(Context paramContext, Looper paramLooper, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener, ClientSettings paramClientSettings, ExecutorService paramExecutorService, zzhp paramzzhp)
   {
     super(paramContext, paramLooper, 14, paramClientSettings, paramConnectionCallbacks, paramOnConnectionFailedListener);
-    AppMethodBeat.i(71396);
+    AppMethodBeat.i(101379);
     this.zzex = new zzer();
     this.zzey = new zzer();
     this.zzez = new zzer();
@@ -84,13 +81,13 @@ public final class zzhg
     this.zzfe = new zzer();
     this.zzew = ((ExecutorService)Preconditions.checkNotNull(paramExecutorService));
     this.zzff = paramzzhp;
-    AppMethodBeat.o(71396);
+    AppMethodBeat.o(101379);
   }
   
   public final void connect(BaseGmsClient.ConnectionProgressReportCallbacks paramConnectionProgressReportCallbacks)
   {
     int i = 0;
-    AppMethodBeat.i(71400);
+    AppMethodBeat.i(101383);
     if (!requiresGooglePlayServices()) {
       try
       {
@@ -109,7 +106,7 @@ public final class zzhg
           for (;;)
           {
             triggerNotAvailable(paramConnectionProgressReportCallbacks, 6, PendingIntent.getActivity(localContext1, 0, (Intent)localObject, 0));
-            AppMethodBeat.o(71400);
+            AppMethodBeat.o(101383);
             return;
             localObject = new Intent("android.intent.action.VIEW", Uri.parse("market://details").buildUpon().appendQueryParameter("id", "com.google.android.wearable.app.cn").build());
           }
@@ -119,11 +116,11 @@ public final class zzhg
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
         triggerNotAvailable(paramConnectionProgressReportCallbacks, 16, null);
-        AppMethodBeat.o(71400);
+        AppMethodBeat.o(101383);
         return;
       }
     }
-    AppMethodBeat.o(71400);
+    AppMethodBeat.o(101383);
   }
   
   public final int getMinApkVersion()
@@ -143,19 +140,19 @@ public final class zzhg
   
   public final String getStartServicePackage()
   {
-    AppMethodBeat.i(71397);
+    AppMethodBeat.i(101380);
     if (this.zzff.zze("com.google.android.wearable.app.cn"))
     {
-      AppMethodBeat.o(71397);
+      AppMethodBeat.o(101380);
       return "com.google.android.wearable.app.cn";
     }
-    AppMethodBeat.o(71397);
+    AppMethodBeat.o(101380);
     return "com.google.android.gms";
   }
   
   public final void onPostInitHandler(int paramInt1, IBinder paramIBinder, Bundle paramBundle, int paramInt2)
   {
-    AppMethodBeat.i(71399);
+    AppMethodBeat.i(101382);
     if (Log.isLoggable("WearableClient", 2)) {
       new StringBuilder(41).append("onPostInitHandler: statusCode ").append(paramInt1);
     }
@@ -171,101 +168,101 @@ public final class zzhg
       this.zzfe.zza(paramIBinder);
     }
     super.onPostInitHandler(paramInt1, paramIBinder, paramBundle, paramInt2);
-    AppMethodBeat.o(71399);
+    AppMethodBeat.o(101382);
   }
   
   public final boolean requiresGooglePlayServices()
   {
-    AppMethodBeat.i(71398);
+    AppMethodBeat.i(101381);
     if (!this.zzff.zze("com.google.android.wearable.app.cn"))
     {
-      AppMethodBeat.o(71398);
+      AppMethodBeat.o(101381);
       return true;
     }
-    AppMethodBeat.o(71398);
+    AppMethodBeat.o(101381);
     return false;
   }
   
   public final void zza(BaseImplementation.ResultHolder<DataApi.GetFdForAssetResult> paramResultHolder, Asset paramAsset)
   {
-    AppMethodBeat.i(71402);
+    AppMethodBeat.i(101385);
     ((zzep)getService()).zza(new zzgx(paramResultHolder), paramAsset);
-    AppMethodBeat.o(71402);
+    AppMethodBeat.o(101385);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, CapabilityApi.CapabilityListener paramCapabilityListener)
   {
-    AppMethodBeat.i(71411);
+    AppMethodBeat.i(101394);
     this.zzfe.zza(this, paramResultHolder, paramCapabilityListener);
-    AppMethodBeat.o(71411);
+    AppMethodBeat.o(101394);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, CapabilityApi.CapabilityListener paramCapabilityListener, ListenerHolder<CapabilityApi.CapabilityListener> paramListenerHolder, IntentFilter[] paramArrayOfIntentFilter)
   {
-    AppMethodBeat.i(71407);
+    AppMethodBeat.i(101390);
     this.zzfe.zza(this, paramResultHolder, paramCapabilityListener, zzhk.zzd(paramListenerHolder, paramArrayOfIntentFilter));
-    AppMethodBeat.o(71407);
+    AppMethodBeat.o(101390);
   }
   
-  public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, ChannelApi.ChannelListener paramChannelListener, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder, @Nullable String paramString, IntentFilter[] paramArrayOfIntentFilter)
+  public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, ChannelApi.ChannelListener paramChannelListener, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder, String paramString, IntentFilter[] paramArrayOfIntentFilter)
   {
-    AppMethodBeat.i(71408);
+    AppMethodBeat.i(101391);
     if (paramString == null)
     {
       this.zzez.zza(this, paramResultHolder, paramChannelListener, zzhk.zzc(paramListenerHolder, paramArrayOfIntentFilter));
-      AppMethodBeat.o(71408);
+      AppMethodBeat.o(101391);
       return;
     }
     paramChannelListener = new zzgc(paramString, paramChannelListener);
     this.zzez.zza(this, paramResultHolder, paramChannelListener, zzhk.zza(paramListenerHolder, paramString, paramArrayOfIntentFilter));
-    AppMethodBeat.o(71408);
+    AppMethodBeat.o(101391);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, ChannelApi.ChannelListener paramChannelListener, String paramString)
   {
-    AppMethodBeat.i(71412);
+    AppMethodBeat.i(101395);
     if (paramString == null)
     {
       this.zzez.zza(this, paramResultHolder, paramChannelListener);
-      AppMethodBeat.o(71412);
+      AppMethodBeat.o(101395);
       return;
     }
     paramChannelListener = new zzgc(paramString, paramChannelListener);
     this.zzez.zza(this, paramResultHolder, paramChannelListener);
-    AppMethodBeat.o(71412);
+    AppMethodBeat.o(101395);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, DataApi.DataListener paramDataListener)
   {
-    AppMethodBeat.i(71409);
+    AppMethodBeat.i(101392);
     this.zzfa.zza(this, paramResultHolder, paramDataListener);
-    AppMethodBeat.o(71409);
+    AppMethodBeat.o(101392);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, DataApi.DataListener paramDataListener, ListenerHolder<DataApi.DataListener> paramListenerHolder, IntentFilter[] paramArrayOfIntentFilter)
   {
-    AppMethodBeat.i(71405);
+    AppMethodBeat.i(101388);
     this.zzfa.zza(this, paramResultHolder, paramDataListener, zzhk.zza(paramListenerHolder, paramArrayOfIntentFilter));
-    AppMethodBeat.o(71405);
+    AppMethodBeat.o(101388);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, MessageApi.MessageListener paramMessageListener)
   {
-    AppMethodBeat.i(71410);
+    AppMethodBeat.i(101393);
     this.zzfb.zza(this, paramResultHolder, paramMessageListener);
-    AppMethodBeat.o(71410);
+    AppMethodBeat.o(101393);
   }
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, MessageApi.MessageListener paramMessageListener, ListenerHolder<MessageApi.MessageListener> paramListenerHolder, IntentFilter[] paramArrayOfIntentFilter)
   {
-    AppMethodBeat.i(71406);
+    AppMethodBeat.i(101389);
     this.zzfb.zza(this, paramResultHolder, paramMessageListener, zzhk.zzb(paramListenerHolder, paramArrayOfIntentFilter));
-    AppMethodBeat.o(71406);
+    AppMethodBeat.o(101389);
   }
   
   public final void zza(BaseImplementation.ResultHolder<DataApi.DataItemResult> paramResultHolder, PutDataRequest paramPutDataRequest)
   {
-    AppMethodBeat.i(71401);
+    AppMethodBeat.i(101384);
     Object localObject2 = paramPutDataRequest.getAssets().entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -275,7 +272,7 @@ public final class zzhg
         paramResultHolder = String.valueOf(paramPutDataRequest.getUri());
         paramPutDataRequest = String.valueOf(localObject1);
         paramResultHolder = new IllegalArgumentException(String.valueOf(paramResultHolder).length() + 33 + String.valueOf(paramPutDataRequest).length() + "Put for " + paramResultHolder + " contains invalid asset: " + paramPutDataRequest);
-        AppMethodBeat.o(71401);
+        AppMethodBeat.o(101384);
         throw paramResultHolder;
       }
     }
@@ -311,7 +308,7 @@ public final class zzhg
         {
           paramPutDataRequest = String.valueOf(paramPutDataRequest);
           paramResultHolder = new IllegalStateException(String.valueOf(paramPutDataRequest).length() + 60 + "Unable to create ParcelFileDescriptor for asset in request: " + paramPutDataRequest, paramResultHolder);
-          AppMethodBeat.o(71401);
+          AppMethodBeat.o(101384);
           throw paramResultHolder;
         }
       } else if (((Asset)localObject3).getUri() != null) {
@@ -325,7 +322,7 @@ public final class zzhg
           new zzhb(paramResultHolder, (List)localObject1).zza(new zzfu(4005, null));
           paramResultHolder = String.valueOf(((Asset)localObject3).getUri());
           new StringBuilder(String.valueOf(paramResultHolder).length() + 28).append("Couldn't resolve asset URI: ").append(paramResultHolder);
-          AppMethodBeat.o(71401);
+          AppMethodBeat.o(101384);
           return;
         }
       } else {
@@ -333,26 +330,26 @@ public final class zzhg
       }
     }
     ((zzep)getService()).zza(new zzhb(paramResultHolder, (List)localObject1), (PutDataRequest)localObject2);
-    AppMethodBeat.o(71401);
+    AppMethodBeat.o(101384);
   }
   
   /* Error */
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, String paramString, Uri paramUri, long paramLong1, long paramLong2)
   {
     // Byte code:
-    //   0: ldc_w 510
+    //   0: ldc_w 506
     //   3: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 87	com/google/android/gms/wearable/internal/zzhg:zzew	Ljava/util/concurrent/ExecutorService;
+    //   7: getfield 86	com/google/android/gms/wearable/internal/zzhg:zzew	Ljava/util/concurrent/ExecutorService;
     //   10: astore 9
     //   12: aload_1
-    //   13: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   13: invokestatic 82	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   16: pop
     //   17: aload_2
-    //   18: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   18: invokestatic 82	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   21: pop
     //   22: aload_3
-    //   23: invokestatic 83	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: invokestatic 82	com/google/android/gms/common/internal/Preconditions:checkNotNull	(Ljava/lang/Object;)Ljava/lang/Object;
     //   26: pop
     //   27: lload 4
     //   29: lconst_0
@@ -361,33 +358,33 @@ public final class zzhg
     //   34: iconst_1
     //   35: istore 8
     //   37: iload 8
-    //   39: ldc_w 512
+    //   39: ldc_w 508
     //   42: iconst_1
-    //   43: anewarray 514	java/lang/Object
+    //   43: anewarray 510	java/lang/Object
     //   46: dup
     //   47: iconst_0
     //   48: lload 4
-    //   50: invokestatic 519	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   50: invokestatic 515	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   53: aastore
-    //   54: invokestatic 523	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
+    //   54: invokestatic 519	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
     //   57: lload 6
-    //   59: ldc2_w 524
+    //   59: ldc2_w 520
     //   62: lcmp
     //   63: iflt +61 -> 124
     //   66: iconst_1
     //   67: istore 8
     //   69: iload 8
-    //   71: ldc_w 527
+    //   71: ldc_w 523
     //   74: iconst_1
-    //   75: anewarray 514	java/lang/Object
+    //   75: anewarray 510	java/lang/Object
     //   78: dup
     //   79: iconst_0
     //   80: lload 6
-    //   82: invokestatic 519	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   82: invokestatic 515	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   85: aastore
-    //   86: invokestatic 523	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
+    //   86: invokestatic 519	com/google/android/gms/common/internal/Preconditions:checkArgument	(ZLjava/lang/String;[Ljava/lang/Object;)V
     //   89: aload 9
-    //   91: new 529	com/google/android/gms/wearable/internal/zzhj
+    //   91: new 525	com/google/android/gms/wearable/internal/zzhj
     //   94: dup
     //   95: aload_0
     //   96: aload_3
@@ -395,9 +392,9 @@ public final class zzhg
     //   98: aload_2
     //   99: lload 4
     //   101: lload 6
-    //   103: invokespecial 532	com/google/android/gms/wearable/internal/zzhj:<init>	(Lcom/google/android/gms/wearable/internal/zzhg;Landroid/net/Uri;Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder;Ljava/lang/String;JJ)V
-    //   106: invokeinterface 536 2 0
-    //   111: ldc_w 510
+    //   103: invokespecial 528	com/google/android/gms/wearable/internal/zzhj:<init>	(Lcom/google/android/gms/wearable/internal/zzhg;Landroid/net/Uri;Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder;Ljava/lang/String;JJ)V
+    //   106: invokeinterface 532 2 0
+    //   111: ldc_w 506
     //   114: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: return
     //   118: iconst_0
@@ -408,12 +405,12 @@ public final class zzhg
     //   127: goto -58 -> 69
     //   130: astore_2
     //   131: aload_1
-    //   132: new 538	com/google/android/gms/common/api/Status
+    //   132: new 534	com/google/android/gms/common/api/Status
     //   135: dup
     //   136: bipush 8
-    //   138: invokespecial 539	com/google/android/gms/common/api/Status:<init>	(I)V
-    //   141: invokeinterface 545 2 0
-    //   146: ldc_w 510
+    //   138: invokespecial 535	com/google/android/gms/common/api/Status:<init>	(I)V
+    //   141: invokeinterface 541 2 0
+    //   146: ldc_w 506
     //   149: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload_2
     //   153: athrow
@@ -436,7 +433,7 @@ public final class zzhg
   
   public final void zza(BaseImplementation.ResultHolder<Status> paramResultHolder, String paramString, Uri paramUri, boolean paramBoolean)
   {
-    AppMethodBeat.i(71403);
+    AppMethodBeat.i(101386);
     try
     {
       ExecutorService localExecutorService = this.zzew;
@@ -444,20 +441,20 @@ public final class zzhg
       Preconditions.checkNotNull(paramString);
       Preconditions.checkNotNull(paramUri);
       localExecutorService.execute(new zzhi(this, paramUri, paramResultHolder, paramBoolean, paramString));
-      AppMethodBeat.o(71403);
+      AppMethodBeat.o(101386);
       return;
     }
     catch (RuntimeException paramString)
     {
       paramResultHolder.setFailedResult(new Status(8));
-      AppMethodBeat.o(71403);
+      AppMethodBeat.o(101386);
       throw paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzhg
  * JD-Core Version:    0.7.0.1
  */

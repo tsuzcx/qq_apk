@@ -7,14 +7,16 @@ class LiteTransferWrapper$3
   
   public void run()
   {
-    if (LiteTransferWrapper.access$200(this.this$0) != 0L) {
-      this.this$0.CancelAllToJNI(LiteTransferWrapper.access$200(this.this$0), this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (LiteTransferWrapper.access$200(this.this$0) != 0L)
+    {
+      LiteTransferWrapper localLiteTransferWrapper = this.this$0;
+      localLiteTransferWrapper.CancelAllToJNI(LiteTransferWrapper.access$200(localLiteTransferWrapper), this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper.3
  * JD-Core Version:    0.7.0.1
  */

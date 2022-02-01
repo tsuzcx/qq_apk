@@ -1,137 +1,284 @@
 package com.tencent.mm.an;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.b.f;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.message.u;
+import com.tencent.mm.message.v;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.br.b;
+import com.tencent.mm.plugin.biz.a.a;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.threadpool.i;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelbiz/BizChattingItemReportHelper;", "", "()V", "TAG", "", "reportCache", "Lcom/tencent/mm/algorithm/LRUMap;", "", "doReportBizServiceMsgClick", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "enterTime", "doReportServiceMsgExpose", "talker", "Lcom/tencent/mm/storage/Contact;", "position", "", "msgCount", "fillReportMsgSendType", "reportInfo", "Lcom/tencent/mm/modelbiz/BizChattingItemReportHelper$BizServiceMsgReportInfo;", "fillReportMsgType", "reportBizServiceMsgClick", "reportServiceMsgExpose", "BizServiceMsgReportInfo", "BizServiceMsgSendType", "BizServiceMsgType", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  /* Error */
-  public static Object t(java.io.InputStream paramInputStream)
+  public static final b ovJ;
+  private static final f<Long, Long> ovK;
+  
+  static
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 9
-    //   4: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 17	java/io/ObjectInputStream
-    //   10: dup
-    //   11: aload_0
-    //   12: invokespecial 21	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   15: astore_1
-    //   16: aload_1
-    //   17: astore_0
-    //   18: aload_1
-    //   19: invokevirtual 25	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   22: astore_2
-    //   23: aload_2
-    //   24: astore_0
-    //   25: aload_1
-    //   26: invokevirtual 29	java/io/ObjectInputStream:close	()V
-    //   29: ldc 9
-    //   31: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   34: aload_0
-    //   35: areturn
-    //   36: astore_1
-    //   37: ldc 34
-    //   39: new 36	java/lang/StringBuilder
-    //   42: dup
-    //   43: ldc 38
-    //   45: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   48: aload_1
-    //   49: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   52: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   58: invokestatic 58	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   61: goto -32 -> 29
-    //   64: astore_2
-    //   65: aconst_null
-    //   66: astore_1
-    //   67: aload_1
-    //   68: astore_0
-    //   69: ldc 34
-    //   71: new 36	java/lang/StringBuilder
-    //   74: dup
-    //   75: ldc 60
-    //   77: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   80: aload_2
-    //   81: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   84: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 58	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   93: aload_3
-    //   94: astore_0
-    //   95: aload_1
-    //   96: ifnull -67 -> 29
-    //   99: aload_1
-    //   100: invokevirtual 29	java/io/ObjectInputStream:close	()V
-    //   103: aload_3
-    //   104: astore_0
-    //   105: goto -76 -> 29
-    //   108: astore_0
-    //   109: ldc 34
-    //   111: new 36	java/lang/StringBuilder
-    //   114: dup
-    //   115: ldc 38
-    //   117: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   120: aload_0
-    //   121: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   124: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 58	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   133: aload_3
-    //   134: astore_0
-    //   135: goto -106 -> 29
-    //   138: astore_1
-    //   139: aconst_null
-    //   140: astore_0
-    //   141: aload_0
-    //   142: ifnull +7 -> 149
-    //   145: aload_0
-    //   146: invokevirtual 29	java/io/ObjectInputStream:close	()V
-    //   149: ldc 9
-    //   151: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   154: aload_1
-    //   155: athrow
-    //   156: astore_0
-    //   157: ldc 34
-    //   159: new 36	java/lang/StringBuilder
-    //   162: dup
-    //   163: ldc 38
-    //   165: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   168: aload_0
-    //   169: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   172: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 58	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   181: goto -32 -> 149
-    //   184: astore_1
-    //   185: goto -44 -> 141
-    //   188: astore_2
-    //   189: goto -122 -> 67
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	192	0	paramInputStream	java.io.InputStream
-    //   15	11	1	localObjectInputStream	java.io.ObjectInputStream
-    //   36	13	1	localException1	java.lang.Exception
-    //   66	34	1	localObject1	Object
-    //   138	17	1	localObject2	Object
-    //   184	1	1	localObject3	Object
-    //   22	2	2	localObject4	Object
-    //   64	17	2	localException2	java.lang.Exception
-    //   188	1	2	localException3	java.lang.Exception
-    //   1	133	3	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   25	29	36	java/lang/Exception
-    //   7	16	64	java/lang/Exception
-    //   99	103	108	java/lang/Exception
-    //   7	16	138	finally
-    //   145	149	156	java/lang/Exception
-    //   18	23	184	finally
-    //   69	93	184	finally
-    //   18	23	188	java/lang/Exception
+    AppMethodBeat.i(239487);
+    ovJ = new b();
+    ovK = (f)new com.tencent.mm.b.h(20);
+    AppMethodBeat.o(239487);
+  }
+  
+  public static final void a(au paramau, cc paramcc, int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(239470);
+    s.u(paramau, "talker");
+    s.u(paramcc, "msg");
+    try
+    {
+      long l = System.currentTimeMillis();
+      if (ovK.get(Long.valueOf(paramcc.field_msgId)) != null)
+      {
+        Object localObject = ovK.get(Long.valueOf(paramcc.field_msgId));
+        s.s(localObject, "reportCache[msg.msgId]");
+        if (l - ((Number)localObject).longValue() < 1000L)
+        {
+          AppMethodBeat.o(239470);
+          return;
+        }
+      }
+      ovK.put(Long.valueOf(paramcc.field_msgId), Long.valueOf(l));
+      com.tencent.threadpool.h.ahAA.g(new b..ExternalSyntheticLambda0(paramau, paramcc, paramInt1, paramInt2, paramLong), "BizServicesReportThread");
+      AppMethodBeat.o(239470);
+      return;
+    }
+    catch (Exception paramau)
+    {
+      Log.printErrStackTrace("MicroMsg.BizChattingItemReportHelper", (Throwable)paramau, "reportServiceMsgExpose exception", new Object[0]);
+      AppMethodBeat.o(239470);
+    }
+  }
+  
+  public static final void a(cc paramcc, long paramLong)
+  {
+    AppMethodBeat.i(239473);
+    if (paramcc == null)
+    {
+      AppMethodBeat.o(239473);
+      return;
+    }
+    if (paramcc.field_isSend == 1)
+    {
+      AppMethodBeat.o(239473);
+      return;
+    }
+    com.tencent.threadpool.h.ahAA.bo(new b..ExternalSyntheticLambda1(paramcc, paramLong));
+    AppMethodBeat.o(239473);
+  }
+  
+  private static void a(cc paramcc, a parama)
+  {
+    AppMethodBeat.i(239477);
+    parama.olT = paramcc.kLu;
+    String str2 = paramcc.kLo;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    s.u(str1, "<set-?>");
+    parama.olS = str1;
+    if (paramcc.iYl())
+    {
+      parama.ovL = 1;
+      parama.ovN = true;
+      if (((CharSequence)parama.url).length() <= 0) {
+        break label414;
+      }
+    }
+    label414:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        paramcc = aa.aUC(parama.url);
+        s.s(paramcc, "doUrlEncode(reportInfo.url)");
+        parama.setUrl(paramcc);
+      }
+      AppMethodBeat.o(239477);
+      return;
+      if (paramcc.iYj())
+      {
+        parama.ovL = 9;
+        parama.ovN = true;
+        break;
+      }
+      if (paramcc.iYk())
+      {
+        parama.ovL = 2;
+        parama.ovN = true;
+        break;
+      }
+      if (paramcc.dSH())
+      {
+        parama.ovL = 5;
+        parama.ovN = true;
+        break;
+      }
+      if ((paramcc.getType() == 452984881) || (paramcc.getType() == 520093745))
+      {
+        parama.ovL = 6;
+        parama.ovN = false;
+        break;
+      }
+      if (paramcc.iYe())
+      {
+        parama.ovL = 3;
+        parama.ovN = false;
+        paramcc = ((a)com.tencent.mm.kernel.h.ax(a.class)).c(paramcc.field_msgId, paramcc.field_content);
+        if ((paramcc == null) || (Util.isNullOrNil((List)paramcc.nUC))) {
+          break;
+        }
+        paramcc = ((v)paramcc.nUC.get(0)).url;
+        s.s(paramcc, "reader.items[0].url");
+        parama.setUrl(paramcc);
+        break;
+      }
+      if ((!paramcc.fxR()) || (paramcc.field_content == null)) {
+        break;
+      }
+      parama.ovN = false;
+      paramcc = k.b.Hf(paramcc.field_content);
+      if (paramcc == null) {
+        break;
+      }
+      if ((paramcc.type == 33) || (paramcc.type == 36))
+      {
+        parama.ovL = 4;
+        str1 = paramcc.url;
+        s.s(str1, "content.url");
+        parama.setUrl(str1);
+        paramcc = paramcc.nTE;
+        s.s(paramcc, "content.appbrandAppId");
+        s.u(paramcc, "<set-?>");
+        parama.extraInfo = paramcc;
+        break;
+      }
+      if (paramcc.type == 5)
+      {
+        parama.ovL = 7;
+        break;
+      }
+      if (paramcc.type != 3) {
+        break;
+      }
+      parama.ovL = 8;
+      break;
+    }
+  }
+  
+  private static final void b(au paramau, cc paramcc, int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(239480);
+    s.u(paramau, "$talker");
+    s.u(paramcc, "$msg");
+    paramInt1 = paramInt2 - paramInt1 - 1;
+    a locala = new a();
+    a(paramcc, locala);
+    b(paramcc, locala);
+    if (locala.ovL > 0)
+    {
+      Log.d("MicroMsg.BizChattingItemReportHelper", "doReportServiceMsgExpose username: %s, msg raw Type: %d, url: %s, revertPos: %s, createTime: %s, enterTime: %s, reportMsgType: %d, sendType: %s, msgSvrId: %s, extraInfo: %s", new Object[] { paramau.field_username, Integer.valueOf(paramcc.getType()), locala.url, Integer.valueOf(paramInt1), Long.valueOf(paramcc.getCreateTime()), Long.valueOf(paramLong), Integer.valueOf(locala.ovL), Integer.valueOf(locala.ovM), Long.valueOf(paramcc.field_msgSvrId), locala.extraInfo });
+      com.tencent.mm.plugin.report.service.h.OAn.b(19202, new Object[] { paramau.field_username, Integer.valueOf(locala.ovL), locala.url, Integer.valueOf(1), Integer.valueOf(paramInt1), Long.valueOf(paramcc.getCreateTime()), Long.valueOf(paramLong), Integer.valueOf(locala.ovM), Long.valueOf(paramcc.field_msgSvrId) });
+    }
+    AppMethodBeat.o(239480);
+  }
+  
+  private static final void b(cc paramcc, long paramLong)
+  {
+    AppMethodBeat.i(239483);
+    if (g.Mw(paramcc.field_talker))
+    {
+      a locala = new a();
+      b(paramcc, locala);
+      a(paramcc, locala);
+      if (locala.ovL > 0)
+      {
+        Log.d("MicroMsg.BizChattingItemReportHelper", "alvinluo doReportBizServiceMsgClick msg raw type: %d, enterTime: %d, kfWorker: %s, kfType: %d, talker: %s, reportMsgType: %d, sendType: %d, msgSvrId: %s, extraInfo: %s", new Object[] { Integer.valueOf(paramcc.getType()), Long.valueOf(paramLong), locala.olS, Integer.valueOf(locala.olT), paramcc.field_talker, Integer.valueOf(locala.ovL), Integer.valueOf(locala.ovM), Long.valueOf(paramcc.field_msgSvrId), locala.extraInfo });
+        com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.OAn;
+        String str2 = paramcc.field_talker;
+        String str1 = str2;
+        if (str2 == null) {
+          str1 = "";
+        }
+        localh.b(19202, new Object[] { str1, Integer.valueOf(locala.ovL), locala.url, Integer.valueOf(2), Integer.valueOf(0), Long.valueOf(paramcc.getCreateTime()), Long.valueOf(paramLong), Integer.valueOf(locala.ovM), Long.valueOf(paramcc.field_msgSvrId) });
+      }
+    }
+    AppMethodBeat.o(239483);
+  }
+  
+  private static void b(cc paramcc, a parama)
+  {
+    AppMethodBeat.i(239478);
+    if (Util.isNullOrNil(paramcc.jUr))
+    {
+      Log.i("MicroMsg.BizChattingItemReportHelper", "fillReportMsgSendType msg source null");
+      AppMethodBeat.o(239478);
+      return;
+    }
+    if (paramcc.getType() == 318767153) {
+      parama.ovM = 2;
+    }
+    br.b localb = br.JP(paramcc.jUr);
+    if (localb == null)
+    {
+      Log.i("MicroMsg.BizChattingItemReportHelper", "fillReportMsgSendType msg source value null");
+      AppMethodBeat.o(239478);
+      return;
+    }
+    if (localb.olP == 3) {
+      parama.ovM = 1;
+    }
+    if ((localb.scene >= 4) && (localb.scene <= 6)) {
+      parama.ovM = 5;
+    }
+    if (h.ac(paramcc)) {
+      parama.ovM = 4;
+    }
+    if (!Util.isNullOrNil(paramcc.kLo)) {
+      parama.ovM = 3;
+    }
+    AppMethodBeat.o(239478);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/modelbiz/BizChattingItemReportHelper$BizServiceMsgReportInfo;", "", "()V", "extraInfo", "", "getExtraInfo", "()Ljava/lang/String;", "setExtraInfo", "(Ljava/lang/String;)V", "kfType", "", "getKfType", "()I", "setKfType", "(I)V", "kfWorker", "getKfWorker", "setKfWorker", "needCheckKF", "", "getNeedCheckKF", "()Z", "setNeedCheckKF", "(Z)V", "reportMsgType", "getReportMsgType", "setReportMsgType", "sendType", "getSendType", "setSendType", "url", "getUrl", "setUrl", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class a
+  {
+    String extraInfo = "";
+    String olS = "";
+    int olT;
+    int ovL;
+    int ovM;
+    boolean ovN = true;
+    String url = "";
+    
+    public final void setUrl(String paramString)
+    {
+      AppMethodBeat.i(239425);
+      s.u(paramString, "<set-?>");
+      this.url = paramString;
+      AppMethodBeat.o(239425);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.an.b
  * JD-Core Version:    0.7.0.1
  */

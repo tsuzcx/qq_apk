@@ -8,7 +8,7 @@ public abstract interface NormalConfigHandler$GetConfigListen<T extends ConfigIn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen
  * JD-Core Version:    0.7.0.1
  */

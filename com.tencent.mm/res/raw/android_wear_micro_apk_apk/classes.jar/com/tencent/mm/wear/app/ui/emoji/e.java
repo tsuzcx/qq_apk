@@ -2,10 +2,10 @@ package com.tencent.mm.wear.app.ui.emoji;
 
 public final class e
 {
-  public int afH;
-  public String afI;
-  public int afJ;
-  public String afs;
+  public String aiU;
+  public int ajj;
+  public String ajk;
+  public int ajl;
   
   public e(d paramd) {}
 }

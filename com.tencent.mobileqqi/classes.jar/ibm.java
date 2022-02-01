@@ -1,5 +1,7 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import cooperation.qqfav.QfavHelper;
 import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class ibm
@@ -9,7 +11,12 @@ public class ibm
   
   public void onClick(View paramView)
   {
-    this.a.onBackPressed();
+    Object localObject = LocationDetailActivity.b(this.a);
+    paramView = new Intent(this.a.getIntent());
+    paramView.putExtras((Intent)localObject);
+    paramView.setClassName("com.qqfav", "com.qqfav.activity.AddLocationFavActivity");
+    localObject = paramView.getStringExtra("pluginsdk_selfuin");
+    QfavHelper.a(this.a, (String)localObject, paramView, 13321);
   }
 }
 

@@ -55,12 +55,12 @@ public class CircleSearchResultAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903149, paramViewGroup, false);
       paramViewGroup = new CircleSearchResultAdapter.ViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
-      paramView.findViewById(2131231409).setVisibility(8);
-      paramView.findViewById(2131231412).setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131231413));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131231414));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231407));
+      paramView.findViewById(2131231408).setVisibility(8);
+      paramView.findViewById(2131231411).setVisibility(8);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231410));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131231412));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131231413));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

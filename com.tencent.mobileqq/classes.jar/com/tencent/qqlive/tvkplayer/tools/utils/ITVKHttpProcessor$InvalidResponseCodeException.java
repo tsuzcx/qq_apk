@@ -12,14 +12,14 @@ public final class ITVKHttpProcessor$InvalidResponseCodeException
   
   public ITVKHttpProcessor$InvalidResponseCodeException(int paramInt, @Nullable String paramString)
   {
-    super("Response code: " + paramInt);
+    super(localStringBuilder.toString());
     this.responseCode = paramInt;
     this.responseMessage = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.ITVKHttpProcessor.InvalidResponseCodeException
  * JD-Core Version:    0.7.0.1
  */

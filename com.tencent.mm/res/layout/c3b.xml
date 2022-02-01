@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintDimensionRatio="9:16"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/jud" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintDimensionRatio="9:16" app:layout_constraintEnd_toEndOf="hr_" />
+    <ImageView android:id="@id/jt3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+</androidx.constraintlayout.widget.ConstraintLayout>

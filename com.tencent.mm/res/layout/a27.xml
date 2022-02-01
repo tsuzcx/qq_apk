@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/m1" android:layout_width="fill_parent" android:layout_height="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/nf" android:textColor="#ff7a93af" android:id="@id/c1c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{more}" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/c1d" android:padding="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/arrows_down" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/cgg" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/db" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+    <View android:id="@id/cgf" android:background="@drawable/emoji_panel_delete_btn" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:layout_marginBottom="20.0dip" android:layout_marginEnd="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toStartOf="@id/cgo" app:layout_goneMarginEnd="@dimen/cd" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cge" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:src="@raw/icons_outlined_emoji_del" android:scaleType="fitCenter" android:contentDescription="@string/x0" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" app:layout_constraintBottom_toBottomOf="@id/cgf" app:layout_constraintEnd_toEndOf="@id/cgf" app:layout_constraintStart_toStartOf="@id/cgf" app:layout_constraintTop_toTopOf="@id/cgf" />
+    <Button android:id="@id/cgo" android:background="@drawable/emoji_panel_send_btn" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:text="@string/a2r" android:layout_marginEnd="@dimen/cd" app:layout_constraintBottom_toBottomOf="@id/cge" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="@id/cge" app:layout_goneMarginEnd="@dimen/bv" style="@style/oi" />
+</merge>

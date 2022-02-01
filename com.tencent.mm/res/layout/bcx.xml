@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ahg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="bottom" android:id="@id/ahc" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/ahb" android:background="@drawable/azn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/ahi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ah_" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/aq6" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+        <TextView android:textSize="@dimen/w2" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/aq7" android:background="@drawable/b4f" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/atw" />
+    </LinearLayout>
+</LinearLayout>

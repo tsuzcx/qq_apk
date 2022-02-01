@@ -23,7 +23,7 @@ public final class newyear_report$OptionReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.new_year_2020.newyear_report.OptionReq
  * JD-Core Version:    0.7.0.1
  */

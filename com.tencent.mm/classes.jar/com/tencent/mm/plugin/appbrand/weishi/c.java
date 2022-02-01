@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.appbrand.weishi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.c.a;
-import com.tencent.mm.plugin.appbrand.page.v;
 
 public final class c
   extends a
 {
-  public c(v paramv)
+  public c(ad paramad)
   {
-    super(paramv);
+    super(paramad);
   }
   
-  public final void onOrientationChanged(int paramInt) {}
+  public final void apW() {}
   
-  public final void vJ()
+  public final void aql()
   {
-    AppMethodBeat.i(133635);
-    super.vJ();
-    AppMethodBeat.o(133635);
+    AppMethodBeat.i(49342);
+    super.aql();
+    AppMethodBeat.o(49342);
   }
   
-  public final void vK()
+  public final void aqm()
   {
-    AppMethodBeat.i(133636);
-    super.vK();
-    AppMethodBeat.o(133636);
+    AppMethodBeat.i(49343);
+    super.aqm();
+    AppMethodBeat.o(49343);
   }
   
-  public final void vu() {}
+  public final void v(boolean paramBoolean, int paramInt) {}
 }
 
 

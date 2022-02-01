@@ -9,25 +9,25 @@ import java.util.WeakHashMap;
 
 public final class bf
 {
-  private final Set<bb<?>> Pd = Collections.newSetFromMap(new WeakHashMap());
+  private final Set<bb<?>> QS = Collections.newSetFromMap(new WeakHashMap());
   
   public final <L> bb<L> a(L paramL, Looper paramLooper, String paramString)
   {
-    d.e(paramL, "Listener must not be null");
-    d.e(paramLooper, "Looper must not be null");
-    d.e(paramString, "Listener type must not be null");
+    d.g(paramL, "Listener must not be null");
+    d.g(paramLooper, "Looper must not be null");
+    d.g(paramString, "Listener type must not be null");
     paramL = new bb(paramLooper, paramL, paramString);
-    this.Pd.add(paramL);
+    this.QS.add(paramL);
     return paramL;
   }
   
   public final void release()
   {
-    Iterator localIterator = this.Pd.iterator();
+    Iterator localIterator = this.QS.iterator();
     while (localIterator.hasNext()) {
       ((bb)localIterator.next()).clear();
     }
-    this.Pd.clear();
+    this.QS.clear();
   }
 }
 

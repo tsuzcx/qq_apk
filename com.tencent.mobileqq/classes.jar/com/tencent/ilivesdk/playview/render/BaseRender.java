@@ -1,0 +1,179 @@
+package com.tencent.ilivesdk.playview.render;
+
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import com.tencent.ilivesdk.utils.LogUtils;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
+
+public abstract class BaseRender
+{
+  static final String TAG = "Render|BaseRender";
+  protected static float squareSize = 1.0F;
+  protected ShortBuffer drawListBuffer;
+  protected short[] drawOrder;
+  protected float mLastCropValue = 0.0F;
+  protected int mRenderType;
+  protected boolean mReverseHorizonal;
+  protected float[] squareCoords;
+  protected float[] squareCoords_horizonal_reverse;
+  protected float[] squareCoords_vertical_horizonal_reverse;
+  protected float[] squareCoords_vertical_reverse;
+  protected float[] textureCoords;
+  protected FloatBuffer textureCoordsBuffer;
+  protected float[] textureTransform;
+  protected FloatBuffer vertexBuffer;
+  protected FloatBuffer vertexBuffer_horizonal_reverse;
+  protected FloatBuffer vertexBuffer_horizonal_vertical_reverse;
+  protected FloatBuffer vertexBuffer_vertical_reverse;
+  
+  public BaseRender()
+  {
+    float f = squareSize;
+    this.squareCoords = new float[] { -f, f, -f, -f, f, -f, f, f };
+    this.squareCoords_horizonal_reverse = new float[] { f, f, f, -f, -f, -f, -f, f };
+    this.squareCoords_vertical_reverse = new float[] { -f, -f, -f, f, f, f, f, -f };
+    this.squareCoords_vertical_horizonal_reverse = new float[] { f, -f, f, f, -f, f, -f, -f };
+    this.drawOrder = new short[] { 0, 1, 2, 0, 2, 3 };
+    this.textureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F, 0.0F, 1.0F };
+    this.textureTransform = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.mRenderType = -1;
+    this.mReverseHorizonal = false;
+  }
+  
+  public BaseRender(int paramInt)
+  {
+    float f = squareSize;
+    this.squareCoords = new float[] { -f, f, -f, -f, f, -f, f, f };
+    this.squareCoords_horizonal_reverse = new float[] { f, f, f, -f, -f, -f, -f, f };
+    this.squareCoords_vertical_reverse = new float[] { -f, -f, -f, f, f, f, f, -f };
+    this.squareCoords_vertical_horizonal_reverse = new float[] { f, -f, f, f, -f, f, -f, -f };
+    this.drawOrder = new short[] { 0, 1, 2, 0, 2, 3 };
+    this.textureCoords = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F, 0.0F, 1.0F };
+    this.textureTransform = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.mRenderType = -1;
+    this.mReverseHorizonal = false;
+    this.mRenderType = paramInt;
+  }
+  
+  public void checkGlError(String paramString)
+  {
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(GLUtils.getEGLErrorString(i));
+      LogUtils.e("Render|BaseRender", localStringBuilder.toString());
+    }
+  }
+  
+  public abstract void destroy();
+  
+  public abstract void draw(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void drawFBO(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public int getRenderType()
+  {
+    if (this.mRenderType == -1) {
+      LogUtils.i("Render|BaseRender", "mRenderType  Error, need initDecodeType ");
+    }
+    return this.mRenderType;
+  }
+  
+  public void setCropValue(float paramFloat)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setCropValue aCropValue=");
+    ((StringBuilder)localObject).append(paramFloat);
+    LogUtils.i("Render|BaseRender", ((StringBuilder)localObject).toString());
+    if (this.mLastCropValue != paramFloat)
+    {
+      this.mLastCropValue = paramFloat;
+      float f;
+      if (paramFloat > 0.0F)
+      {
+        f = 1.0F - paramFloat;
+        this.textureCoords = new float[] { 0.0F, f, 0.0F, 1.0F, 0.0F, paramFloat, 0.0F, 1.0F, 0.5F, paramFloat, 0.0F, 1.0F, 0.5F, f, 0.0F, 1.0F };
+      }
+      else
+      {
+        f = paramFloat / 2.0F;
+        paramFloat = 0.0F - f;
+        f += 0.5F;
+        this.textureCoords = new float[] { paramFloat, 1.0F, 0.0F, 1.0F, paramFloat, 0.0F, 0.0F, 1.0F, f, 0.0F, 0.0F, 1.0F, f, 1.0F, 0.0F, 1.0F };
+      }
+      localObject = ByteBuffer.allocateDirect(this.textureCoords.length * 4);
+      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+      this.textureCoordsBuffer = ((ByteBuffer)localObject).asFloatBuffer();
+      this.textureCoordsBuffer.put(this.textureCoords);
+      this.textureCoordsBuffer.position(0);
+    }
+  }
+  
+  public void setRoteTexture()
+  {
+    float f = squareSize;
+    this.squareCoords = new float[] { f, -f, -f, -f, -f, f, f, f };
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.squareCoords.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.vertexBuffer = localByteBuffer.asFloatBuffer();
+    this.vertexBuffer.put(this.squareCoords);
+    this.vertexBuffer.position(0);
+  }
+  
+  public abstract void setup();
+  
+  public void setupTextureCoordsBuffer()
+  {
+    LogUtils.i("Render|BaseRender", "setupTexture");
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.textureCoords.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.textureCoordsBuffer = localByteBuffer.asFloatBuffer();
+    this.textureCoordsBuffer.put(this.textureCoords);
+    this.textureCoordsBuffer.position(0);
+  }
+  
+  public void setupVertexBuffer()
+  {
+    LogUtils.i("Render|BaseRender", "setupVertexBuffer");
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.drawOrder.length * 2);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.drawListBuffer = localByteBuffer.asShortBuffer();
+    this.drawListBuffer.put(this.drawOrder);
+    this.drawListBuffer.position(0);
+    localByteBuffer = ByteBuffer.allocateDirect(this.squareCoords.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.vertexBuffer = localByteBuffer.asFloatBuffer();
+    this.vertexBuffer.put(this.squareCoords);
+    this.vertexBuffer.position(0);
+    localByteBuffer = ByteBuffer.allocateDirect(this.squareCoords_horizonal_reverse.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.vertexBuffer_horizonal_reverse = localByteBuffer.asFloatBuffer();
+    this.vertexBuffer_horizonal_reverse.put(this.squareCoords_horizonal_reverse);
+    this.vertexBuffer_horizonal_reverse.position(0);
+    localByteBuffer = ByteBuffer.allocateDirect(this.squareCoords_vertical_reverse.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.vertexBuffer_vertical_reverse = localByteBuffer.asFloatBuffer();
+    this.vertexBuffer_vertical_reverse.put(this.squareCoords_vertical_reverse);
+    this.vertexBuffer_vertical_reverse.position(0);
+    localByteBuffer = ByteBuffer.allocateDirect(this.squareCoords_vertical_horizonal_reverse.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.vertexBuffer_horizonal_vertical_reverse = localByteBuffer.asFloatBuffer();
+    this.vertexBuffer_horizonal_vertical_reverse.put(this.squareCoords_vertical_horizonal_reverse);
+    this.vertexBuffer_horizonal_vertical_reverse.position(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.ilivesdk.playview.render.BaseRender
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.mmsight.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class i
 {
-  private static al oHC;
+  private static MMHandler KVF;
   
   static
   {
-    AppMethodBeat.i(76521);
-    oHC = new al("MMSightHandler");
-    AppMethodBeat.o(76521);
+    AppMethodBeat.i(89420);
+    KVF = new MMHandler("MMSightHandler");
+    AppMethodBeat.o(89420);
   }
   
-  public static void O(Runnable paramRunnable)
+  public static void au(Runnable paramRunnable)
   {
-    AppMethodBeat.i(76519);
-    oHC.ac(paramRunnable);
-    AppMethodBeat.o(76519);
+    AppMethodBeat.i(89418);
+    KVF.postToWorker(paramRunnable);
+    AppMethodBeat.o(89418);
   }
   
-  public static void P(Runnable paramRunnable)
+  public static void ax(Runnable paramRunnable)
   {
-    AppMethodBeat.i(76520);
-    oHC.o(paramRunnable, 2000L);
-    AppMethodBeat.o(76520);
+    AppMethodBeat.i(89419);
+    KVF.postDelayed(paramRunnable, 2000L);
+    AppMethodBeat.o(89419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.i
  * JD-Core Version:    0.7.0.1
  */

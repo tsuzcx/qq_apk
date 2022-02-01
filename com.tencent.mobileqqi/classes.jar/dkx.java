@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.XListView;
 
 public class dkx
-  implements View.OnClickListener
+  implements Handler.Callback
 {
   public dkx(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.b(true);
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Manage_stranger_edit", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.B();
+    }
   }
 }
 

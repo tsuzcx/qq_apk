@@ -2,14 +2,13 @@ package com.tencent.mm.plugin.wear.model;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.d;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bw;
+import com.tencent.mm.am.g.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.wear.model.e.f;
 import com.tencent.mm.plugin.wear.model.e.k;
 import com.tencent.mm.plugin.wear.model.e.l;
@@ -19,164 +18,282 @@ import com.tencent.mm.plugin.wear.model.e.o;
 import com.tencent.mm.plugin.wear.model.e.p;
 import com.tencent.mm.plugin.wear.model.e.q;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  implements at
+  implements be
 {
-  q uGA;
-  public r uGB;
-  public d uGC;
-  private e uGD;
-  public g uGE;
-  public b uGF;
-  private WearMessageLogic uGG;
-  private i uGH;
-  public j uGI;
-  public com.tencent.mm.plugin.wear.model.g.a uGJ;
-  private com.tencent.mm.ai.e uGK;
+  private static boolean Wiq = false;
+  private q Wif;
+  private r Wig;
+  private d Wih;
+  private e Wii;
+  private g Wij;
+  private b Wik;
+  private WearMessageLogic Wil;
+  private i Wim;
+  private j Win;
+  private com.tencent.mm.plugin.wear.model.g.a Wio;
+  private com.tencent.mm.am.g Wip;
   
   public a()
   {
-    AppMethodBeat.i(26267);
-    ab.i("MicroMsg.Wear.SubCoreWear", "Create SubCore, classLoader=%s", new Object[] { getClass().getClassLoader() });
-    AppMethodBeat.o(26267);
+    AppMethodBeat.i(29952);
+    Log.i("MicroMsg.Wear.SubCoreWear", "Create SubCore, classLoader=%s", new Object[] { getClass().getClassLoader() });
+    AppMethodBeat.o(29952);
   }
   
-  public static a cYy()
+  private static a inE()
   {
-    AppMethodBeat.i(26268);
-    aw.aat();
-    a locala2 = (a)bw.pF("plugin.wear");
+    AppMethodBeat.i(29953);
+    bh.bCt();
+    a locala2 = (a)ci.Ka("plugin.wear");
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a();
-      aw.aat().a("plugin.wear", locala1);
+      bh.bCt().a("plugin.wear", locala1);
     }
-    AppMethodBeat.o(26268);
+    AppMethodBeat.o(29953);
     return locala1;
+  }
+  
+  public static e inF()
+  {
+    AppMethodBeat.i(261876);
+    e locale = inE().Wii;
+    AppMethodBeat.o(261876);
+    return locale;
+  }
+  
+  public static g inG()
+  {
+    AppMethodBeat.i(29954);
+    if (inE().Wij == null) {
+      inE().Wij = new g();
+    }
+    g localg = inE().Wij;
+    AppMethodBeat.o(29954);
+    return localg;
+  }
+  
+  public static b inH()
+  {
+    AppMethodBeat.i(29955);
+    b localb = inE().Wik;
+    AppMethodBeat.o(29955);
+    return localb;
+  }
+  
+  public static d inI()
+  {
+    AppMethodBeat.i(29956);
+    d locald = inE().Wih;
+    AppMethodBeat.o(29956);
+    return locald;
+  }
+  
+  public static j inJ()
+  {
+    AppMethodBeat.i(29957);
+    j localj = inE().Win;
+    AppMethodBeat.o(29957);
+    return localj;
+  }
+  
+  public static com.tencent.mm.plugin.wear.model.g.a inK()
+  {
+    AppMethodBeat.i(29958);
+    com.tencent.mm.plugin.wear.model.g.a locala = inE().Wio;
+    AppMethodBeat.o(29958);
+    return locala;
+  }
+  
+  public static q inL()
+  {
+    AppMethodBeat.i(29959);
+    q localq = inE().Wif;
+    AppMethodBeat.o(29959);
+    return localq;
+  }
+  
+  public static r inM()
+  {
+    AppMethodBeat.i(29960);
+    r localr = inE().Wig;
+    AppMethodBeat.o(29960);
+    return localr;
+  }
+  
+  public static void inN()
+  {
+    AppMethodBeat.i(261884);
+    if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.znS, 1) == 1)
+    {
+      Wiq = true;
+      Log.i("MicroMsg.Wear.SubCoreWear", "set wear connect");
+    }
+    AppMethodBeat.o(261884);
+  }
+  
+  public static boolean inO()
+  {
+    return Wiq;
   }
   
   public final void clearPluginData(int paramInt)
   {
-    AppMethodBeat.i(26269);
-    ab.i("MicroMsg.Wear.SubCoreWear", "clearPluginData, pluginFlag=%d", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(26269);
+    AppMethodBeat.i(29961);
+    Log.i("MicroMsg.Wear.SubCoreWear", "clearPluginData, pluginFlag=%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(29961);
   }
   
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public final void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(26270);
-    com.tencent.mm.pluginsdk.p.e.vJC = new c();
-    ab.i("MicroMsg.Wear.SubCoreWear", "onAccountPostReset, updated=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.uGA = new q();
-    this.uGB = new r();
-    this.uGI = new j();
-    this.uGD = new e();
-    this.uGE = new g();
-    this.uGF = new b();
-    this.uGC = new d();
-    this.uGG = new WearMessageLogic();
-    this.uGH = new i();
-    this.uGJ = new com.tencent.mm.plugin.wear.model.g.a();
-    this.uGK = new com.tencent.mm.plugin.wear.model.g.b();
-    e.d.a(Integer.valueOf(63), this.uGK);
-    this.uGA.a(this.uGC.uGS);
-    this.uGA.a(this.uGC.uGT);
-    this.uGA.a(this.uGC.uGU);
-    this.uGA.a(new com.tencent.mm.plugin.wear.model.e.h());
-    this.uGA.a(new com.tencent.mm.plugin.wear.model.e.g());
-    this.uGA.a(new com.tencent.mm.plugin.wear.model.e.d());
-    this.uGA.a(new com.tencent.mm.plugin.wear.model.e.c());
-    this.uGA.a(new com.tencent.mm.plugin.wear.model.e.e());
-    this.uGA.a(new f());
-    this.uGA.a(new k());
-    this.uGA.a(new m());
-    this.uGA.a(new o());
-    this.uGA.a(new n());
-    this.uGA.a(new l());
-    this.uGI.a(new a.1(this));
-    j localj = this.uGI;
-    Object localObject = new a.2(this);
-    if (localj.ipC != null)
+    AppMethodBeat.i(29962);
+    com.tencent.mm.pluginsdk.o.d.XNU = new c();
+    Log.i("MicroMsg.Wear.SubCoreWear", "onAccountPostReset, updated=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.Wif = new q();
+    this.Wig = new r();
+    this.Win = new j();
+    this.Wii = new e();
+    this.Wij = new g();
+    this.Wik = new b();
+    this.Wih = new d();
+    this.Wil = new WearMessageLogic();
+    this.Wim = new i();
+    this.Wio = new com.tencent.mm.plugin.wear.model.g.a();
+    this.Wip = new com.tencent.mm.plugin.wear.model.g.b();
+    g.d.a(Integer.valueOf(63), this.Wip);
+    this.Wif.a(this.Wih.Wiy);
+    this.Wif.a(this.Wih.Wiz);
+    this.Wif.a(this.Wih.WiA);
+    this.Wif.a(new com.tencent.mm.plugin.wear.model.e.h());
+    this.Wif.a(new com.tencent.mm.plugin.wear.model.e.g());
+    this.Wif.a(new com.tencent.mm.plugin.wear.model.e.d());
+    this.Wif.a(new com.tencent.mm.plugin.wear.model.e.c());
+    this.Wif.a(new com.tencent.mm.plugin.wear.model.e.e());
+    this.Wif.a(new f());
+    this.Wif.a(new k());
+    this.Wif.a(new m());
+    this.Wif.a(new o());
+    this.Wif.a(new n());
+    this.Wif.a(new l());
+    this.Win.a(new com.tencent.mm.plugin.wear.model.f.c()
     {
-      localObject = localj.ipC.obtainMessage(0, localObject);
-      localj.ipC.sendMessageDelayed((Message)localObject, 5000L);
+      public final String getName()
+      {
+        return "PhoneStartTask";
+      }
+      
+      public final void send()
+      {
+        AppMethodBeat.i(29950);
+        a.a(a.this);
+        r.a(20001, null, false);
+        a.a(a.this);
+        r.a(20008, null, false);
+        AppMethodBeat.o(29950);
+      }
+    });
+    j localj = this.Win;
+    Object localObject = new com.tencent.mm.plugin.wear.model.f.c()
+    {
+      public final String getName()
+      {
+        return "SyncFileTask";
+      }
+      
+      public final void send()
+      {
+        AppMethodBeat.i(29951);
+        if (a.b(a.this).inV() != null) {
+          a.b(a.this).inV().ioa();
+        }
+        a.a(a.this);
+        r.a(20009, null, false);
+        a.a(a.this);
+        r.a(20017, null, false);
+        AppMethodBeat.o(29951);
+      }
+    };
+    if (localj.tiG != null)
+    {
+      localObject = localj.tiG.obtainMessage(0, localObject);
+      localj.tiG.sendMessageDelayed((Message)localObject, 5000L);
     }
-    AppMethodBeat.o(26270);
+    AppMethodBeat.o(29962);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(26272);
-    e.d.b(Integer.valueOf(63), this.uGK);
-    this.uGK = null;
-    ab.i("MicroMsg.Wear.SubCoreWear", "onAccountRelease");
-    this.uGA.uHT.clear();
-    this.uGA = null;
-    this.uGB = null;
-    Object localObject = this.uGD;
-    ((e)localObject).bAz.stopTimer();
-    ((e)localObject).rXQ.dead();
-    ((e)localObject).uGY.dead();
-    ((e)localObject).uGZ.dead();
-    ((e)localObject).ipZ.dead();
-    ((e)localObject).uHa.dead();
-    ((e)localObject).uHb.dead();
-    ((e)localObject).uHc.dead();
-    ((e)localObject).eaA.dead();
-    ((e)localObject).opW.dead();
-    aw.aaz();
-    com.tencent.mm.model.c.YC().a(((e)localObject).mdz);
-    this.uGD = null;
-    this.uGE = null;
-    localObject = this.uGF;
-    com.tencent.mm.sdk.b.a.ymk.d(((b)localObject).uGN);
-    aw.aaz();
-    com.tencent.mm.model.c.YA().b(((b)localObject).mTY);
-    ((b)localObject).uGO.stopTimer();
-    this.uGF = null;
-    localObject = this.uGC;
-    ((d)localObject).uGR.finish();
-    ((d)localObject).uGV.reset();
-    this.uGC = null;
-    localObject = this.uGG;
-    ah.getContext().unregisterReceiver((BroadcastReceiver)localObject);
-    this.uGG = null;
-    localObject = this.uGI;
-    if (((j)localObject).handlerThread != null) {
-      ((j)localObject).handlerThread.quit();
-    }
-    this.uGI = null;
-    localObject = this.uGH;
-    ((i)localObject).elW = null;
-    ((i)localObject).cYF();
-    ah.getContext().unregisterReceiver(((i)localObject).uHu);
-    this.uGH = null;
-    AppMethodBeat.o(26272);
+    AppMethodBeat.i(29964);
+    g.d.b(Integer.valueOf(63), this.Wip);
+    this.Wip = null;
+    Log.i("MicroMsg.Wear.SubCoreWear", "onAccountRelease");
+    this.Wif.Wjw.clear();
+    this.Wif = null;
+    this.Wig = null;
+    Object localObject = this.Wii;
+    ((e)localObject).eln.stopTimer();
+    ((e)localObject).RzK.dead();
+    ((e)localObject).WiD.dead();
+    ((e)localObject).WiE.dead();
+    ((e)localObject).tje.dead();
+    ((e)localObject).WiF.dead();
+    ((e)localObject).WiG.dead();
+    ((e)localObject).WiH.dead();
+    ((e)localObject).ltN.dead();
+    ((e)localObject).Kvi.dead();
+    bh.bCz();
+    com.tencent.mm.model.c.bzD().a(((e)localObject).zOk);
+    this.Wii = null;
+    this.Wij = null;
+    localObject = this.Wik;
+    ((b)localObject).Wit.dead();
+    bh.bCz();
+    com.tencent.mm.model.c.bzA().remove(((b)localObject).HuT);
+    ((b)localObject).Wiu.stopTimer();
+    this.Wik = null;
+    localObject = this.Wih;
+    ((d)localObject).Wix.finish();
+    ((d)localObject).WiB.reset();
+    this.Wih = null;
+    localObject = this.Wil;
+    MMApplicationContext.getContext().unregisterReceiver((BroadcastReceiver)localObject);
+    this.Wil = null;
+    this.Win.tiG.quit();
+    this.Win = null;
+    localObject = this.Wim;
+    ((i)localObject).audioManager = null;
+    MMApplicationContext.getContext().unregisterReceiver(((i)localObject).WiY);
+    this.Wim = null;
+    Wiq = false;
+    AppMethodBeat.o(29964);
   }
   
   public final void onSdcardMount(boolean paramBoolean)
   {
-    AppMethodBeat.i(26271);
-    ab.i("MicroMsg.Wear.SubCoreWear", "onSdcardMount, mounted=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(26271);
+    AppMethodBeat.i(29963);
+    Log.i("MicroMsg.Wear.SubCoreWear", "onSdcardMount, mounted=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(29963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.a
  * JD-Core Version:    0.7.0.1
  */

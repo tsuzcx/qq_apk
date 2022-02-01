@@ -1,133 +1,172 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.protocal.protobuf.arz;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.cuz;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.abm;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.protocal.protobuf.cvq;
+import com.tencent.mm.protocal.protobuf.ehw;
+import com.tencent.mm.protocal.protobuf.gdh;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 import java.util.LinkedList;
 
 @com.tencent.mm.ui.base.a(3)
 public class IPCallDialUI
   extends MMActivity
-  implements f, b.a
+  implements com.tencent.mm.am.h, b.a
 {
-  private String gJX;
-  private TextView gqe;
+  private DialPad JKl;
+  private TextView JKm;
+  private EditText JKn;
+  private View JKo;
+  private ImageButton JKp;
+  private View JKq;
+  private TextView JKr;
+  private TextView JKs;
+  private String JMA;
+  private String JMB;
+  private String JMC;
+  private int JMD;
+  private int JME;
+  private int JMF;
+  private LinkedList<gdh> JMG;
+  com.tencent.mm.plugin.ipcall.model.e.b JMH;
+  com.tencent.mm.plugin.ipcall.model.e.c JMI;
+  private IListener JMJ;
+  private b JMz;
   private String mCountryCode;
-  private ImageButton nQA;
-  private View nQB;
-  private TextView nQC;
-  private TextView nQD;
-  private DialPad nQw;
-  private TextView nQx;
-  private EditText nQy;
-  private View nQz;
-  private b nSL;
-  private String nSM;
-  private String nSN;
-  private String nSO;
-  private int nSP;
-  private int nSQ;
-  private int nSR;
-  private LinkedList<cuz> nSS;
-  com.tencent.mm.plugin.ipcall.a.d.b nST;
-  com.tencent.mm.plugin.ipcall.a.d.c nSU;
-  private com.tencent.mm.sdk.b.c nSV;
+  private TextView nnW;
+  private String qgV;
   
   public IPCallDialUI()
   {
-    AppMethodBeat.i(22129);
-    this.nSP = 0;
-    this.nSQ = 0;
-    this.nSR = -1;
-    this.nSV = new IPCallDialUI.2(this);
-    AppMethodBeat.o(22129);
+    AppMethodBeat.i(25746);
+    this.JMD = 0;
+    this.JME = 0;
+    this.JMF = -1;
+    this.JMJ = new IListener(f.hfK) {};
+    AppMethodBeat.o(25746);
   }
   
-  private void bKi()
+  private void fSk()
   {
-    AppMethodBeat.i(22141);
-    ab.i("MicroMsg.IPCallDialUI", "modifyCountryCodeByUsder");
-    this.nSR = 2;
-    if (this.nSQ == 1)
+    AppMethodBeat.i(25758);
+    Log.i("MicroMsg.IPCallDialUI", "modifyCountryCodeByUsder");
+    this.JMF = 2;
+    if (this.JME == 1)
     {
-      this.nSQ = 2;
-      AppMethodBeat.o(22141);
+      this.JME = 2;
+      AppMethodBeat.o(25758);
       return;
     }
-    this.nSQ = 4;
-    AppMethodBeat.o(22141);
+    this.JME = 4;
+    AppMethodBeat.o(25758);
   }
   
   private void init()
   {
-    AppMethodBeat.i(22133);
-    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.RECORD_AUDIO", 80, null, null);
-    ab.i("MicroMsg.IPCallDialUI", "summerper checkPermission checkMicrophone[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY() });
+    AppMethodBeat.i(25750);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.RECORD_AUDIO", 80, null);
+    Log.i("MicroMsg.IPCallDialUI", "summerper checkPermission checkMicrophone[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
     if (!bool)
     {
-      AppMethodBeat.o(22133);
+      AppMethodBeat.o(25750);
       return;
     }
-    setMMTitle(2131300840);
+    setMMTitle(R.l.gKl);
     setVolumeControlStream(1);
-    this.nQw = ((DialPad)findViewById(2131825219));
-    this.nQx = ((TextView)findViewById(2131825210));
-    this.nQB = findViewById(2131825213);
-    this.nQy = ((EditText)findViewById(2131825211));
-    this.nQz = findViewById(2131825212);
-    this.gqe = ((TextView)findViewById(2131825215));
-    this.nQA = ((ImageButton)findViewById(2131823417));
-    this.nQC = ((TextView)findViewById(2131825214));
-    this.nQD = ((TextView)findViewById(2131825216));
-    this.nSL = new b(this, this.nQy, this.nQx, this.nQz, this.nQw, this.nQA, this.gqe, this.nQB, this.nQC, this.nQD);
-    this.nSL.nQv = this;
-    if (!bo.isNullOrNil(this.nSM)) {
-      this.nSL.cy(this.nSM, -1);
+    this.JKl = ((DialPad)findViewById(R.h.fFN));
+    this.JKm = ((TextView)findViewById(R.h.fDG));
+    this.JKq = findViewById(R.h.fDF);
+    this.JKn = ((EditText)findViewById(R.h.fTj));
+    this.JKo = findViewById(R.h.fTi);
+    this.nnW = ((TextView)findViewById(R.h.fFP));
+    this.JKp = ((ImageButton)findViewById(R.h.fFx));
+    this.JKr = ((TextView)findViewById(R.h.fDH));
+    this.JKs = ((TextView)findViewById(R.h.fFA));
+    this.JMz = new b(this, this.JKn, this.JKm, this.JKo, this.JKl, this.JKp, this.nnW, this.JKq, this.JKr, this.JKs);
+    this.JMz.JKk = this;
+    if (!Util.isNullOrNil(this.JMA)) {
+      this.JMz.fK(this.JMA, -1);
     }
-    if (!bo.isNullOrNil(this.mCountryCode)) {
-      this.nSL.Rj(this.mCountryCode);
+    if (!Util.isNullOrNil(this.mCountryCode)) {
+      this.JMz.aJf(this.mCountryCode);
     }
-    if ((!bo.isNullOrNil(this.nSM)) && (!bo.isNullOrNil(this.mCountryCode))) {
-      this.nSL.bJZ();
+    if ((!Util.isNullOrNil(this.JMA)) && (!Util.isNullOrNil(this.mCountryCode))) {
+      this.JMz.fSb();
     }
-    this.nSL.ai(this.nSS);
-    AppMethodBeat.o(22133);
+    this.JMz.bB(this.JMG);
+    AppMethodBeat.o(25750);
   }
   
-  public final void Rk(String paramString)
+  public final void C(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(22139);
-    ab.i("MicroMsg.IPCallDialUI", "onModifyCountryCodeByUser:countryCode:%s,mCountryCode:%s", new Object[] { paramString, this.mCountryCode });
-    if ((this.nSR != 2) && (this.nSR != -1) && (!this.mCountryCode.equals(paramString))) {
-      bKi();
+    AppMethodBeat.i(25752);
+    Log.i("MicroMsg.IPCallDialUI", "onDial, countryCode: %s, phoneNumber: %s, contactId: %s, nickname: %s", new Object[] { paramString1, paramString2, paramString3, paramString4 });
+    if (!com.tencent.mm.plugin.ipcall.a.c.iI(this))
+    {
+      AppMethodBeat.o(25752);
+      return;
     }
-    AppMethodBeat.o(22139);
+    if (com.tencent.mm.plugin.ipcall.model.c.fRb().Zb(Util.getInt(paramString1, -1)))
+    {
+      k.c(this, getString(R.l.gvZ), getString(R.l.gwa), true);
+      com.tencent.mm.plugin.report.service.h.OAn.kvStat(12058, paramString1);
+      AppMethodBeat.o(25752);
+      return;
+    }
+    com.tencent.mm.plugin.report.service.h.OAn.b(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+    Intent localIntent = new Intent(this, IPCallTalkUI.class);
+    localIntent.putExtra("IPCallTalkUI_contactId", paramString3);
+    localIntent.putExtra("IPCallTalkUI_countryCode", paramString1);
+    localIntent.putExtra("IPCallTalkUI_nickname", paramString4);
+    localIntent.putExtra("IPCallTalkUI_phoneNumber", paramString2);
+    localIntent.putExtra("IPCallTalkUI_dialScene", this.JMD);
+    localIntent.putExtra("IPCallTalkUI_countryType", this.JME);
+    startActivityForResult(localIntent, 1001);
+    AppMethodBeat.o(25752);
   }
   
-  public final void Rl(String paramString)
+  public final void aJg(String paramString)
   {
-    AppMethodBeat.i(22140);
-    ab.i("MicroMsg.IPCallDialUI", "onModifyPhoneNumberByUser:phoneNumber:%s,mPhoneNumber:%s", new Object[] { paramString, this.nSM });
-    if ((this.nSR != 2) && (this.nSR != -1) && (!this.nSM.equals(paramString))) {
-      bKi();
+    AppMethodBeat.i(25756);
+    Log.i("MicroMsg.IPCallDialUI", "onModifyCountryCodeByUser:countryCode:%s,mCountryCode:%s", new Object[] { paramString, this.mCountryCode });
+    if ((this.JMF != 2) && (this.JMF != -1) && (!this.mCountryCode.equals(paramString))) {
+      fSk();
     }
-    AppMethodBeat.o(22140);
+    AppMethodBeat.o(25756);
+  }
+  
+  public final void aJh(String paramString)
+  {
+    AppMethodBeat.i(25757);
+    Log.i("MicroMsg.IPCallDialUI", "onModifyPhoneNumberByUser:phoneNumber:%s,mPhoneNumber:%s", new Object[] { paramString, this.JMA });
+    if ((this.JMF != 2) && (this.JMF != -1) && (!this.JMA.equals(paramString))) {
+      fSk();
+    }
+    AppMethodBeat.o(25757);
   }
   
   public int getForceOrientation()
@@ -137,237 +176,264 @@ public class IPCallDialUI
   
   public int getLayoutId()
   {
-    return 2130969928;
+    return R.i.gkM;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(22134);
+    AppMethodBeat.i(25751);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    b localb = this.nSL;
-    ab.d("MicroMsg.DialPadController", "onActivityResult");
+    b localb = this.JMz;
+    Log.d("MicroMsg.DialPadController", "onActivityResult");
     if ((paramInt1 == 100) && (paramInt2 == 100))
     {
-      String str = bo.bf(paramIntent.getStringExtra("country_name"), "");
-      paramIntent = bo.bf(paramIntent.getStringExtra("couttry_code"), "");
-      ab.d("MicroMsg.DialPadController", "onActivityResult, countryName: %s, countryCode: %s", new Object[] { paramIntent, str });
-      if ((!bo.isNullOrNil(paramIntent)) && (!bo.isNullOrNil(str)))
+      String str = Util.nullAs(paramIntent.getStringExtra("country_name"), "");
+      paramIntent = Util.nullAs(paramIntent.getStringExtra("couttry_code"), "");
+      Log.d("MicroMsg.DialPadController", "onActivityResult, countryName: %s, countryCode: %s", new Object[] { paramIntent, str });
+      if ((!Util.isNullOrNil(paramIntent)) && (!Util.isNullOrNil(str)))
       {
-        localb.nQE = str;
-        localb.nQF = "+".concat(String.valueOf(paramIntent));
-        localb.nQx.setText(localb.nQF);
-        localb.nQG = b.eT(paramIntent.replace("+", ""), localb.nQG);
-        localb.cy(localb.nQG, -1);
-        localb.nQK = false;
+        localb.JKt = str;
+        localb.JKu = "+".concat(String.valueOf(paramIntent));
+        localb.JKm.setText(localb.JKu);
+        localb.JKv = localb.jJ(paramIntent.replace("+", ""), localb.JKv);
+        localb.fK(localb.JKv, -1);
+        localb.JKz = false;
       }
-      AppMethodBeat.o(22134);
+      AppMethodBeat.o(25751);
       return;
     }
     if ((paramInt1 == 1001) && (paramInt2 == -1))
     {
       paramIntent.getBooleanExtra("IPCallTalkUI_TalkIsOverdue", false);
-      localb.cmc.setResult(-1, paramIntent);
-      localb.cmc.finish();
+      localb.lzt.setResult(-1, paramIntent);
+      localb.lzt.finish();
     }
-    AppMethodBeat.o(22134);
+    AppMethodBeat.o(25751);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22130);
+    AppMethodBeat.i(25747);
     super.onCreate(paramBundle);
-    com.tencent.mm.sdk.b.a.ymk.c(this.nSV);
-    aw.Rc().a(807, this);
-    aw.Rc().a(746, this);
+    this.JMJ.alive();
+    bh.aZW().a(807, this);
+    bh.aZW().a(746, this);
     getWindow().addFlags(131072);
-    setBackBtn(new IPCallDialUI.1(this), 2131230755);
-    this.gJX = getIntent().getStringExtra("IPCallTalkUI_nickname");
-    this.nSM = getIntent().getStringExtra("IPCallTalkUI_phoneNumber");
-    this.nSN = getIntent().getStringExtra("IPCallTalkUI_contactId");
-    this.mCountryCode = getIntent().getStringExtra("IPCallTalkUI_countryCode");
-    this.nSO = getIntent().getStringExtra("IPCallTalkUI_toWechatUsername");
-    this.nSP = getIntent().getIntExtra("IPCallTalkUI_dialScene", 0);
-    ab.i("MicroMsg.IPCallDialUI", "onCreate nickName:%s, phoneNumber:%s, contactId:%s, countryCode:%s, toUserName:%s, dialScene:%d", new Object[] { this.gJX, this.nSM, this.nSN, this.mCountryCode, this.nSO, Integer.valueOf(this.nSP) });
-    if (!bo.isNullOrNil(this.nSM)) {
-      this.nSM = com.tencent.mm.plugin.ipcall.b.c.RK(this.nSM);
-    }
-    if (bo.isNullOrNil(this.mCountryCode))
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      if (com.tencent.mm.plugin.ipcall.b.a.RE(this.nSM))
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        if (bo.isNullOrNil(com.tencent.mm.plugin.ipcall.b.a.RC(this.nSM))) {
-          this.nSM = com.tencent.mm.plugin.ipcall.b.a.RF(this.nSM);
+        AppMethodBeat.i(25742);
+        IPCallDialUI.this.finish();
+        AppMethodBeat.o(25742);
+        return true;
+      }
+    }, R.k.actionbar_quit_webview_icon);
+    this.qgV = getIntent().getStringExtra("IPCallTalkUI_nickname");
+    this.JMA = getIntent().getStringExtra("IPCallTalkUI_phoneNumber");
+    this.JMB = getIntent().getStringExtra("IPCallTalkUI_contactId");
+    this.mCountryCode = getIntent().getStringExtra("IPCallTalkUI_countryCode");
+    this.JMC = getIntent().getStringExtra("IPCallTalkUI_toWechatUsername");
+    this.JMD = getIntent().getIntExtra("IPCallTalkUI_dialScene", 0);
+    Log.i("MicroMsg.IPCallDialUI", "onCreate nickName:%s, phoneNumber:%s, contactId:%s, countryCode:%s, toUserName:%s, dialScene:%d", new Object[] { this.qgV, this.JMA, this.JMB, this.mCountryCode, this.JMC, Integer.valueOf(this.JMD) });
+    if (!Util.isNullOrNil(this.JMA)) {
+      this.JMA = com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(this.JMA);
+    }
+    if (Util.isNullOrNil(this.mCountryCode))
+    {
+      if (com.tencent.mm.plugin.ipcall.a.a.aJz(this.JMA))
+      {
+        if (Util.isNullOrNil(com.tencent.mm.plugin.ipcall.a.a.extractCountryCode(this.JMA))) {
+          this.JMA = com.tencent.mm.plugin.ipcall.a.a.aJA(this.JMA);
         }
       }
       else {
-        this.mCountryCode = com.tencent.mm.plugin.ipcall.b.c.bKM();
+        this.mCountryCode = com.tencent.mm.plugin.ipcall.a.c.fSL();
       }
     }
     else
     {
-      if (this.nSP == 1) {
-        break label468;
+      if (this.JMD == 1) {
+        break label465;
       }
-      this.nSR = 0;
-      this.nSQ = 3;
-      this.nST = new com.tencent.mm.plugin.ipcall.a.d.b(this.nSM, this.mCountryCode, "", bo.hi(this), this.nSP);
-      aw.Rc().a(this.nST, 0);
+      this.JMF = 0;
+      this.JME = 3;
+      this.JMH = new com.tencent.mm.plugin.ipcall.model.e.b(this.JMA, this.mCountryCode, "", Util.getSimCountryCode(this), this.JMD);
+      bh.aZW().a(this.JMH, 0);
     }
     for (;;)
     {
       init();
-      AppMethodBeat.o(22130);
+      AppMethodBeat.o(25747);
       return;
-      ab.i("MicroMsg.IPCallDialUI", "country code exist, directly go to talk ui.");
-      this.nSQ = 4;
+      Log.i("MicroMsg.IPCallDialUI", "country code exist, directly go to talk ui.");
+      this.JME = 4;
       paramBundle = new Intent(this, IPCallTalkUI.class);
-      paramBundle.putExtra("IPCallTalkUI_contactId", this.nSN);
+      paramBundle.putExtra("IPCallTalkUI_contactId", this.JMB);
       paramBundle.putExtra("IPCallTalkUI_countryCode", this.mCountryCode);
-      paramBundle.putExtra("IPCallTalkUI_nickname", this.gJX);
-      paramBundle.putExtra("IPCallTalkUI_phoneNumber", this.nSM);
-      paramBundle.putExtra("IPCallTalkUI_dialScene", this.nSP);
-      paramBundle.putExtra("IPCallTalkUI_countryType", this.nSQ);
+      paramBundle.putExtra("IPCallTalkUI_nickname", this.qgV);
+      paramBundle.putExtra("IPCallTalkUI_phoneNumber", this.JMA);
+      paramBundle.putExtra("IPCallTalkUI_dialScene", this.JMD);
+      paramBundle.putExtra("IPCallTalkUI_countryType", this.JME);
       startActivityForResult(paramBundle, 1001);
       finish();
-      AppMethodBeat.o(22130);
+      AppMethodBeat.o(25747);
       return;
-      label468:
-      this.nSR = -1;
-      this.nSQ = 4;
+      label465:
+      this.JMF = -1;
+      this.JME = 4;
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(22136);
+    AppMethodBeat.i(25753);
     super.onDestroy();
-    if (this.nSL != null) {
-      this.nSL.nQv = null;
+    if (this.JMz != null) {
+      this.JMz.JKk = null;
     }
-    com.tencent.mm.sdk.b.a.ymk.d(this.nSV);
-    aw.Rc().b(807, this);
-    aw.Rc().b(746, this);
-    AppMethodBeat.o(22136);
+    this.JMJ.dead();
+    bh.aZW().b(807, this);
+    bh.aZW().b(746, this);
+    AppMethodBeat.o(25753);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(22137);
+    AppMethodBeat.i(25754);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ab.i("MicroMsg.IPCallDialUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
-      AppMethodBeat.o(22137);
+      Log.i("MicroMsg.IPCallDialUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(25754);
       return;
     }
-    ab.i("MicroMsg.IPCallDialUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.IPCallDialUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(22137);
+      AppMethodBeat.o(25754);
       return;
       if (paramArrayOfInt[0] == 0)
       {
         init();
-        AppMethodBeat.o(22137);
+        AppMethodBeat.o(25754);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131302075), getString(2131302083), getString(2131300996), getString(2131297837), false, new IPCallDialUI.3(this), new IPCallDialUI.4(this));
+      k.a(this, getString(R.l.permission_microphone_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(25744);
+          paramAnonymousDialogInterface.dismiss();
+          com.tencent.mm.pluginsdk.permission.b.lx(IPCallDialUI.this.getContext());
+          AppMethodBeat.o(25744);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(25745);
+          paramAnonymousDialogInterface.dismiss();
+          IPCallDialUI.this.finish();
+          AppMethodBeat.o(25745);
+        }
+      });
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(22132);
-    ab.d("MicroMsg.IPCallDialUI", "onResume");
+    AppMethodBeat.i(25749);
+    Log.d("MicroMsg.IPCallDialUI", "onResume");
     super.onResume();
-    AppMethodBeat.o(22132);
+    AppMethodBeat.o(25749);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(22138);
-    if ((paramm instanceof com.tencent.mm.plugin.ipcall.a.d.b))
+    AppMethodBeat.i(25755);
+    if ((paramp instanceof com.tencent.mm.plugin.ipcall.model.e.b))
     {
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramm == this.nST))
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramp == this.JMH))
       {
-        if (this.nST.nON != null) {
-          ab.i("MicroMsg.IPCallDialUI", "Response Result:%d,PureNumber:%s,CountryCode:%s", new Object[] { Integer.valueOf(this.nST.nON.wKy), this.nST.nON.xCn, this.nST.nON.nXE });
+        if (this.JMH.JIC != null) {
+          Log.i("MicroMsg.IPCallDialUI", "Response Result:%d,PureNumber:%s,CountryCode:%s", new Object[] { Integer.valueOf(this.JMH.JIC.aaGv), this.JMH.JIC.abmS, this.JMH.JIC.JRf });
         }
-        if (this.nSR != 2)
+        if (this.JMF != 2)
         {
-          this.nSR = 1;
-          this.nSQ = 1;
-          paramString = this.nST;
-          if ((paramString.nON != null) && (paramString.nON.wKy == 2)) {}
+          this.JMF = 1;
+          this.JME = 1;
+          paramString = this.JMH;
+          if ((paramString.JIC != null) && (paramString.JIC.aaGv == 2)) {}
           for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
           {
-            ab.i("MicroMsg.IPCallDialUI", "check error show error dialog");
-            AppMethodBeat.o(22138);
+            Log.i("MicroMsg.IPCallDialUI", "check error show error dialog");
+            AppMethodBeat.o(25755);
             return;
           }
-          paramString = this.nST;
-          if ((paramString.nON != null) && ((paramString.nON.wKy == 1) || (paramString.nON.wKy == 0)))
+          paramString = this.JMH;
+          if ((paramString.JIC != null) && ((paramString.JIC.aaGv == 1) || (paramString.JIC.aaGv == 0)))
           {
             paramInt1 = 1;
             if (paramInt1 != 0)
             {
-              if ((this.nST.nON == null) || (bo.isNullOrNil(this.nST.nON.nXE))) {
+              if ((this.JMH.JIC == null) || (Util.isNullOrNil(this.JMH.JIC.JRf))) {
                 break label406;
               }
-              if (this.nSL != null)
+              if (this.JMz != null)
               {
-                ab.i("MicroMsg.IPCallDialUI", "response country code:%s, old country code:%s", new Object[] { this.nST.nON.nXE, this.mCountryCode });
-                this.mCountryCode = this.nST.nON.nXE;
-                this.nSL.Rj(this.nST.nON.nXE);
+                Log.i("MicroMsg.IPCallDialUI", "response country code:%s, old country code:%s", new Object[] { this.JMH.JIC.JRf, this.mCountryCode });
+                this.mCountryCode = this.JMH.JIC.JRf;
+                this.JMz.aJf(this.JMH.JIC.JRf);
               }
             }
           }
           for (;;)
           {
-            if ((this.nST.nON == null) || (bo.isNullOrNil(this.nST.nON.xCn)) || (this.nSL == null)) {
+            if ((this.JMH.JIC == null) || (Util.isNullOrNil(this.JMH.JIC.abmS)) || (this.JMz == null)) {
               break label481;
             }
-            ab.i("MicroMsg.IPCallDialUI", "response number:%s, old number:%s", new Object[] { this.nST.nON.xCn, this.nSM });
-            this.nSM = this.nST.nON.xCn;
-            this.nSL.cy(this.nST.nON.xCn, -1);
-            AppMethodBeat.o(22138);
+            Log.i("MicroMsg.IPCallDialUI", "response number:%s, old number:%s", new Object[] { this.JMH.JIC.abmS, this.JMA });
+            this.JMA = this.JMH.JIC.abmS;
+            this.JMz.fK(this.JMH.JIC.abmS, -1);
+            AppMethodBeat.o(25755);
             return;
             paramInt1 = 0;
             break;
             label406:
-            ab.i("MicroMsg.IPCallDialUI", "response country code is empty, ignore");
+            Log.i("MicroMsg.IPCallDialUI", "response country code is empty, ignore");
           }
         }
-        ab.i("MicroMsg.IPCallDialUI", "NetSceneIPCallCheckNumber onSceneEnd, mCheckNumberStatus = userModify, ignore");
-        AppMethodBeat.o(22138);
+        Log.i("MicroMsg.IPCallDialUI", "NetSceneIPCallCheckNumber onSceneEnd, mCheckNumberStatus = userModify, ignore");
+        AppMethodBeat.o(25755);
       }
     }
-    else if ((paramm instanceof com.tencent.mm.plugin.ipcall.a.d.c)) {
+    else if ((paramp instanceof com.tencent.mm.plugin.ipcall.model.e.c)) {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label488;
       }
     }
     label481:
     label488:
-    for (this.nSS = ((com.tencent.mm.plugin.ipcall.a.d.c)paramm).nOP.xhd;; this.nSS = null)
+    for (this.JMG = ((com.tencent.mm.plugin.ipcall.model.e.c)paramp).JIE.aaAY;; this.JMG = null)
     {
-      if (this.nSL != null) {
-        this.nSL.ai(this.nSS);
+      if (this.JMz != null) {
+        this.JMz.bB(this.JMG);
       }
-      AppMethodBeat.o(22138);
+      AppMethodBeat.o(25755);
       return;
     }
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(22131);
+    AppMethodBeat.i(25748);
     super.onStart();
-    this.nSU = new com.tencent.mm.plugin.ipcall.a.d.c();
-    aw.Rc().a(this.nSU, 0);
-    AppMethodBeat.o(22131);
+    this.JMI = new com.tencent.mm.plugin.ipcall.model.e.c();
+    bh.aZW().a(this.JMI, 0);
+    AppMethodBeat.o(25748);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -375,38 +441,10 @@ public class IPCallDialUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final void p(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(22135);
-    ab.i("MicroMsg.IPCallDialUI", "onDial, countryCode: %s, phoneNumber: %s, contactId: %s, nickname: %s", new Object[] { paramString1, paramString2, paramString3, paramString4 });
-    if (!com.tencent.mm.plugin.ipcall.b.c.es(this))
-    {
-      AppMethodBeat.o(22135);
-      return;
-    }
-    if (com.tencent.mm.plugin.ipcall.a.c.bIZ().xE(bo.getInt(paramString1, -1)))
-    {
-      com.tencent.mm.ui.base.h.b(this, getString(2131297832), getString(2131297833), true);
-      com.tencent.mm.plugin.report.service.h.qsU.kvStat(12058, paramString1);
-      AppMethodBeat.o(22135);
-      return;
-    }
-    com.tencent.mm.plugin.report.service.h.qsU.e(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
-    Intent localIntent = new Intent(this, IPCallTalkUI.class);
-    localIntent.putExtra("IPCallTalkUI_contactId", paramString3);
-    localIntent.putExtra("IPCallTalkUI_countryCode", paramString1);
-    localIntent.putExtra("IPCallTalkUI_nickname", paramString4);
-    localIntent.putExtra("IPCallTalkUI_phoneNumber", paramString2);
-    localIntent.putExtra("IPCallTalkUI_dialScene", this.nSP);
-    localIntent.putExtra("IPCallTalkUI_countryType", this.nSQ);
-    startActivityForResult(localIntent, 1001);
-    AppMethodBeat.o(22135);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDialUI
  * JD-Core Version:    0.7.0.1
  */

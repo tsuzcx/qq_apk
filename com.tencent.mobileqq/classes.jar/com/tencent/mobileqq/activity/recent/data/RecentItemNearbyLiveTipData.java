@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import alof;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -25,90 +25,101 @@ public class RecentItemNearbyLiveTipData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    Object localObject = paramQQAppInterface.a();
-    abta localabta = paramQQAppInterface.a();
-    if (localObject != null) {}
-    for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
+    if (paramQQAppInterface != null)
     {
-      MsgSummary localMsgSummary = a();
-      if (localObject == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, msg = null");
+      if (paramContext == null) {
         return;
       }
-      this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
-      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.a().a(((QQMessageFacade.Message)localObject).senderuin, ((QQMessageFacade.Message)localObject).istroop, ((QQMessageFacade.Message)localObject).uniseq));
-      if (this.nearbyLiveTipMsg == null)
+      Message localMessage = null;
+      Object localObject = paramQQAppInterface.getMessageFacade();
+      ConversationFacade localConversationFacade = paramQQAppInterface.getConversationFacade();
+      if (localObject != null) {
+        localMessage = ((QQMessageFacade)localObject).getLastMessage(this.mData.senderuin, this.mData.istroop);
+      }
+      localObject = getMsgSummaryTemp();
+      if (localMessage == null)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, msg = null");
         }
-        QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, nearbyLiveTipMsg = null");
         return;
       }
-      this.nearbyLiveTipMsg.parse();
+      this.mDisplayTime = localMessage.time;
+      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.getMessageFacade().a(localMessage.senderuin, localMessage.istroop, localMessage.uniseq));
+      MessageForNearbyLiveTip localMessageForNearbyLiveTip = this.nearbyLiveTipMsg;
+      if (localMessageForNearbyLiveTip == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, nearbyLiveTipMsg = null");
+        }
+        return;
+      }
+      localMessageForNearbyLiveTip.parse();
       this.mTitleName = this.nearbyLiveTipMsg.nickName;
-      localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
-      if (localabta != null)
+      ((MsgSummary)localObject).strContent = this.nearbyLiveTipMsg.msg;
+      if (localConversationFacade != null) {
+        this.mUnreadNum = localConversationFacade.a(localMessage.frienduin, localMessage.istroop);
+      } else {
+        this.mUnreadNum = 0;
+      }
+      if (bW_().equals("1822701914")) {
+        this.mUnreadFlag = 3;
+      }
+      extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject);
+      if (AppSetting.e)
       {
-        this.mUnreadNum = localabta.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
-        if (c().equals("1822701914")) {
-          this.mUnreadFlag = 3;
-        }
-        a(paramQQAppInterface, paramContext, localMsgSummary);
-        if (!AppSetting.c) {
-          break;
-        }
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
         if (this.mUnreadNum != 0) {
-          break label305;
+          if (this.mUnreadNum == 1)
+          {
+            paramQQAppInterface.append("有一条未读");
+          }
+          else if (this.mUnreadNum == 2)
+          {
+            paramQQAppInterface.append("有两条未读");
+          }
+          else if (this.mUnreadNum > 0)
+          {
+            paramQQAppInterface.append("有");
+            paramQQAppInterface.append(this.mUnreadNum);
+            paramQQAppInterface.append("条未读");
+          }
         }
-      }
-      for (;;)
-      {
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+        if (this.mMsgExtroInfo != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(this.mMsgExtroInfo);
+          paramContext.append(",");
+          paramQQAppInterface.append(paramContext.toString());
         }
-        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(' ');
+        paramQQAppInterface.append(this.mShowTime);
         this.mContentDesc = paramQQAppInterface.toString();
-        return;
-        this.mUnreadNum = 0;
-        break;
-        label305:
-        if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append("有一条未读");
-        } else if (this.mUnreadNum == 2) {
-          paramQQAppInterface.append("有两条未读");
-        } else if (this.mUnreadNum > 0) {
-          paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
-        }
       }
     }
   }
   
-  public String c()
+  public String bW_()
   {
-    String str2 = this.mData.senderuin;
+    String str = this.mData.senderuin;
     try
     {
-      long l1 = Long.valueOf(str2).longValue();
-      String str1 = str2;
-      if (l1 > alof.l)
+      long l1 = Long.valueOf(str).longValue();
+      Object localObject = str;
+      if (l1 > AppConstants.NOW_LIVE_TIP_UIN_BASE)
       {
-        long l2 = alof.l;
-        str1 = l1 - l2 + "";
+        long l2 = AppConstants.NOW_LIVE_TIP_UIN_BASE;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(l1 - l2);
+        ((StringBuilder)localObject).append("");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      return str1;
+      return localObject;
     }
     catch (NumberFormatException localNumberFormatException) {}
-    return str2;
+    return str;
   }
 }
 

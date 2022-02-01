@@ -19,7 +19,7 @@ public class BaseFilter
   extends AEChainI
 {
   public static final String DefaultFragmentShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
-  private static final String TAG = BaseFilter.class.getSimpleName();
+  private static final String TAG = "BaseFilter";
   protected String glslProgramShader;
   protected String glslVertextShader = "precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nuniform mat4 Projection;\nuniform mat4 Modelview; \nuniform mat4 textureMat; \nuniform mat4 tMat;\nvoid main(void)\n{\ngl_Position = Projection * Modelview *position;\nvec4 tmp = tMat*vec4(inputTextureCoordinate.x,inputTextureCoordinate.y,0.0,1.0);\ntextureCoordinate = tmp.xy;\n}";
   private long mGlFilterId = 0L;
@@ -59,19 +59,26 @@ public class BaseFilter
   
   private void checkInputOutputValid(BaseFilter paramBaseFilter, Frame paramFrame, int paramInt)
   {
+    Object localObject;
     if (paramInt == paramFrame.getTextureId())
     {
-      Log.e("BaseFilter", "input and output texture is same! Same texture id is " + paramFrame.getTextureId());
-      if (!AEOpenRenderConfig.isEnableLog()) {}
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("input and output texture is same! Same texture id is ");
+      ((StringBuilder)localObject).append(paramFrame.getTextureId());
+      Log.e("BaseFilter", ((StringBuilder)localObject).toString());
+      AEOpenRenderConfig.isEnableLog();
     }
     paramBaseFilter = paramBaseFilter.mParamList.values().iterator();
     while (paramBaseFilter.hasNext())
     {
-      UniformParam localUniformParam = (UniformParam)paramBaseFilter.next();
-      if (((localUniformParam instanceof UniformParam.TextureParam)) && (((UniformParam.TextureParam)localUniformParam).texture[0] == paramFrame.getTextureId()))
+      localObject = (UniformParam)paramBaseFilter.next();
+      if (((localObject instanceof UniformParam.TextureParam)) && (((UniformParam.TextureParam)localObject).texture[0] == paramFrame.getTextureId()))
       {
-        Log.e("BaseFilter", "input and output texture is same! Same texture id is " + paramFrame.getTextureId());
-        if (!AEOpenRenderConfig.isEnableLog()) {}
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("input and output texture is same! Same texture id is ");
+        ((StringBuilder)localObject).append(paramFrame.getTextureId());
+        Log.e("BaseFilter", ((StringBuilder)localObject).toString());
+        AEOpenRenderConfig.isEnableLog();
       }
     }
   }
@@ -91,17 +98,20 @@ public class BaseFilter
   
   public static String getFilterShader(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1) {
-      try
-      {
-        String str = nativeGetFilterShader(i, paramInt);
-        return str;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        LogUtils.e(TAG, localUnsatisfiedLinkError.toString());
-      }
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    try
+    {
+      String str = nativeGetFilterShader(i, paramInt);
+      return str;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      LogUtils.e(TAG, localUnsatisfiedLinkError.toString());
     }
     return "";
   }
@@ -123,15 +133,21 @@ public class BaseFilter
   
   private void initFilterShader(int paramInt)
   {
-    if ((this.glslProgramShader != null) && (this.glslVertextShader != null)) {}
-    try
+    String str1 = this.glslProgramShader;
+    if (str1 != null)
     {
-      this.mGlFilterId = nativeInitialWithString(this.mGlFilterId, paramInt, this.glslVertextShader, this.glslProgramShader);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      LogUtils.e(TAG, localUnsatisfiedLinkError.toString());
+      String str2 = this.glslVertextShader;
+      if (str2 != null) {
+        try
+        {
+          this.mGlFilterId = nativeInitialWithString(this.mGlFilterId, paramInt, str2, str1);
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          LogUtils.e(TAG, localUnsatisfiedLinkError.toString());
+        }
+      }
     }
   }
   
@@ -174,14 +190,6 @@ public class BaseFilter
   @SoInfo(libName="image_filter_common")
   private native boolean nativeUpdateMatrix(long paramLong, float[] paramArrayOfFloat);
   
-  public void ClearGLSL()
-  {
-    clearGLSLSelf();
-    if (this.mNextFilter != null) {
-      this.mNextFilter.ClearGLSL();
-    }
-  }
-  
   public void OnDrawFrameGLSL()
   {
     GLES20.glUseProgram(this.mProgramIds);
@@ -199,72 +207,74 @@ public class BaseFilter
   public Frame RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     HashMap localHashMap = new HashMap();
-    Frame localFrame1 = new Frame();
+    Object localObject1 = new Frame();
     int i = 0;
-    Object localObject1 = localFrame1;
     Object localObject2 = this;
-    if (localObject2 != null)
+    Frame localFrame;
+    while (localObject2 != null)
     {
+      if (localObject2 == this) {
+        ((BaseFilter)localObject2).beforeRender(paramInt1, paramInt2, paramInt3);
+      } else {
+        ((BaseFilter)localObject2).beforeRender(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height);
+      }
+      ((Frame)localObject1).needReleaseFrame = ((BaseFilter)localObject2).needReleaseFrame;
+      float f1;
+      float f2;
       int j;
       int k;
-      if (localObject2 == this)
+      if (((BaseFilter)localObject2).mNextFilter == null)
       {
-        ((BaseFilter)localObject2).beforeRender(paramInt1, paramInt2, paramInt3);
-        localFrame1.needReleaseFrame = ((BaseFilter)localObject2).needReleaseFrame;
-        if (((BaseFilter)localObject2).mNextFilter != null) {
-          break label224;
-        }
-        j = (int)(paramInt4 * ((BaseFilter)localObject2).scaleFact * this.outPutScaleFactor);
-        k = (int)(paramInt5 * ((BaseFilter)localObject2).scaleFact * this.outPutScaleFactor);
-        label99:
-        localFrame1 = FrameBufferCache.getInstance().get(j, k);
-        localFrame1.bindFrame(-1, j, k, 0.0D);
-        localHashMap.put(Integer.valueOf(i), localFrame1);
-        ((BaseFilter)localObject2).OnDrawFrameGLSL();
-        if ((((BaseFilter)localObject2).mTextureIndexMap == null) || (((BaseFilter)localObject2).mTextureIndexMap.length <= 0)) {
-          break label307;
-        }
+        f1 = paramInt4;
+        f2 = ((BaseFilter)localObject2).scaleFact;
+        float f3 = this.outPutScaleFactor;
+        j = (int)(f1 * f2 * f3);
+        k = (int)(paramInt5 * f2 * f3);
+      }
+      else
+      {
+        f1 = paramInt4;
+        f2 = ((BaseFilter)localObject2).scaleFact;
+        j = (int)(f1 * f2);
+        k = (int)(paramInt5 * f2);
+      }
+      localFrame = FrameBufferCache.getInstance().get(j, k);
+      localFrame.bindFrame(-1, j, k, 0.0D);
+      localHashMap.put(Integer.valueOf(i), localFrame);
+      ((BaseFilter)localObject2).OnDrawFrameGLSL();
+      Object localObject3 = ((BaseFilter)localObject2).mTextureIndexMap;
+      if ((localObject3 != null) && (localObject3.length > 0))
+      {
         j = 0;
-        label162:
-        if (j >= ((BaseFilter)localObject2).mTextureIndexMap.length) {
-          break label307;
-        }
-        if (localObject2.mTextureIndexMap[j] >= 0) {
-          break label251;
-        }
-        ((BaseFilter)localObject2).setTextureParam(paramInt1, j);
-      }
-      for (;;)
-      {
-        j += 1;
-        break label162;
-        ((BaseFilter)localObject2).beforeRender(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height);
-        break;
-        label224:
-        j = (int)(paramInt4 * ((BaseFilter)localObject2).scaleFact);
-        k = (int)(paramInt5 * ((BaseFilter)localObject2).scaleFact);
-        break label99;
-        label251:
-        Frame localFrame2 = (Frame)localHashMap.get(Integer.valueOf(localObject2.mTextureIndexMap[j]));
-        if (localFrame2 != null) {
-          ((BaseFilter)localObject2).setTextureParam(localFrame2.getTextureId(), j);
-        } else {
-          Log.e(TAG, "frame not found!");
+        for (;;)
+        {
+          localObject3 = ((BaseFilter)localObject2).mTextureIndexMap;
+          if (j >= localObject3.length) {
+            break;
+          }
+          if (localObject3[j] < 0)
+          {
+            ((BaseFilter)localObject2).setTextureParam(paramInt1, j);
+          }
+          else
+          {
+            localObject3 = (Frame)localHashMap.get(Integer.valueOf(localObject3[j]));
+            if (localObject3 != null) {
+              ((BaseFilter)localObject2).setTextureParam(((Frame)localObject3).getTextureId(), j);
+            } else {
+              Log.e(TAG, "frame not found!");
+            }
+          }
+          j += 1;
         }
       }
-      label307:
       if (localObject2 == this)
       {
         ((BaseFilter)localObject2).renderTexture(paramInt1, paramInt2, paramInt3);
         j = paramInt1;
       }
-      for (;;)
+      else
       {
-        checkInputOutputValid((BaseFilter)localObject2, localFrame1, j);
-        localObject2 = ((BaseFilter)localObject2).mNextFilter;
-        i += 1;
-        localObject1 = localFrame1;
-        break;
         k = ((Frame)localObject1).getTextureId();
         ((BaseFilter)localObject2).renderTexture(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height);
         j = k;
@@ -274,16 +284,20 @@ public class BaseFilter
           j = k;
         }
       }
+      checkInputOutputValid((BaseFilter)localObject2, localFrame, j);
+      localObject2 = ((BaseFilter)localObject2).mNextFilter;
+      localObject1 = localFrame;
+      i += 1;
     }
-    localObject1 = localHashMap.values().iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject2 = localHashMap.values().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (Frame)((Iterator)localObject1).next();
-      if (localObject2 != localFrame1) {
-        FrameBufferCache.getInstance().put((Frame)localObject2);
+      localFrame = (Frame)((Iterator)localObject2).next();
+      if (localFrame != localObject1) {
+        FrameBufferCache.getInstance().put(localFrame);
       }
     }
-    return localFrame1;
+    return localObject1;
   }
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
@@ -296,86 +310,92 @@ public class BaseFilter
     if (paramFrame == null) {
       return;
     }
+    Object localObject4 = this;
     Object localObject2 = paramFrame;
-    Object localObject1 = paramFrame;
-    Object localObject3 = this;
-    label17:
-    label93:
-    int i;
-    label118:
-    Object localObject4;
-    if (localObject3 != null)
+    Object localObject1 = localObject2;
+    Object localObject3 = localObject2;
+    localObject2 = localObject4;
+    while (localObject2 != null)
     {
-      if (localObject3 == this)
+      if (localObject2 == this) {
+        ((BaseFilter)localObject2).beforeRender(paramInt1, paramInt2, paramInt3);
+      } else {
+        ((BaseFilter)localObject2).beforeRender(localObject3.getTextureId(), localObject3.width, localObject3.height);
+      }
+      ((Frame)localObject1).needReleaseFrame = ((BaseFilter)localObject2).needReleaseFrame;
+      float f1;
+      float f2;
+      if (((BaseFilter)localObject2).mNextFilter == null)
       {
-        ((BaseFilter)localObject3).beforeRender(paramInt1, paramInt2, paramInt3);
-        ((Frame)localObject1).needReleaseFrame = ((BaseFilter)localObject3).needReleaseFrame;
-        if (((BaseFilter)localObject3).mNextFilter != null) {
-          break label180;
-        }
-        ((Frame)localObject1).bindFrame(paramInt6, (int)(paramInt4 * ((BaseFilter)localObject3).scaleFact * this.outPutScaleFactor), (int)(paramInt5 * ((BaseFilter)localObject3).scaleFact * this.outPutScaleFactor), paramDouble);
-        ((BaseFilter)localObject3).OnDrawFrameGLSL();
-        if ((((BaseFilter)localObject3).mTextureIndexMap == null) || (((BaseFilter)localObject3).mTextureIndexMap.length <= 0)) {
-          break label260;
-        }
+        f1 = paramInt4;
+        f2 = ((BaseFilter)localObject2).scaleFact;
+        float f3 = this.outPutScaleFactor;
+        ((Frame)localObject1).bindFrame(paramInt6, (int)(f1 * f2 * f3), (int)(paramInt5 * f2 * f3), paramDouble);
+      }
+      else
+      {
+        f1 = paramInt4;
+        f2 = ((BaseFilter)localObject2).scaleFact;
+        ((Frame)localObject1).bindFrame(-1, (int)(f1 * f2), (int)(paramInt5 * f2), paramDouble);
+      }
+      ((BaseFilter)localObject2).OnDrawFrameGLSL();
+      localObject4 = ((BaseFilter)localObject2).mTextureIndexMap;
+      int i;
+      if ((localObject4 != null) && (localObject4.length > 0))
+      {
         i = 0;
-        if (i >= ((BaseFilter)localObject3).mTextureIndexMap.length) {
-          break label260;
+        for (;;)
+        {
+          localObject4 = ((BaseFilter)localObject2).mTextureIndexMap;
+          if (i >= localObject4.length) {
+            break;
+          }
+          if (localObject4[i] < 0)
+          {
+            ((BaseFilter)localObject2).setTextureParam(paramInt1, i);
+          }
+          else
+          {
+            localObject4 = findFrame(paramFrame, localObject4[i]);
+            if (localObject4 != null) {
+              ((BaseFilter)localObject2).setTextureParam(((Frame)localObject4).getTextureId(), i);
+            } else {
+              Log.e(TAG, "frame not found!");
+            }
+          }
+          i += 1;
         }
-        if (localObject3.mTextureIndexMap[i] >= 0) {
-          break label211;
-        }
-        ((BaseFilter)localObject3).setTextureParam(paramInt1, i);
       }
-      for (;;)
+      if (localObject2 == this)
       {
-        i += 1;
-        break label118;
-        ((BaseFilter)localObject3).beforeRender(((Frame)localObject2).getTextureId(), ((Frame)localObject2).width, ((Frame)localObject2).height);
-        break;
-        label180:
-        ((Frame)localObject1).bindFrame(-1, (int)(paramInt4 * ((BaseFilter)localObject3).scaleFact), (int)(paramInt5 * ((BaseFilter)localObject3).scaleFact), paramDouble);
-        break label93;
-        label211:
-        localObject4 = findFrame(paramFrame, localObject3.mTextureIndexMap[i]);
-        if (localObject4 != null) {
-          ((BaseFilter)localObject3).setTextureParam(((Frame)localObject4).getTextureId(), i);
-        } else {
-          Log.e(TAG, "frame not found!");
+        ((BaseFilter)localObject2).renderTexture(paramInt1, paramInt2, paramInt3);
+        i = paramInt1;
+        localObject4 = localObject3;
+      }
+      else
+      {
+        i = localObject3.getTextureId();
+        ((BaseFilter)localObject2).renderTexture(localObject3.getTextureId(), localObject3.width, localObject3.height);
+        if (localObject3.needReleaseFrame) {
+          localObject3.clearSelf();
         }
+        localObject4 = localObject1;
       }
-      label260:
-      if (localObject3 != this) {
-        break label347;
-      }
-      ((BaseFilter)localObject3).renderTexture(paramInt1, paramInt2, paramInt3);
-      i = paramInt1;
-    }
-    for (;;)
-    {
       if (paramInt6 != 0) {
-        checkInputOutputValid((BaseFilter)localObject3, (Frame)localObject1, i);
+        checkInputOutputValid((BaseFilter)localObject2, (Frame)localObject1, i);
       }
-      localObject4 = ((BaseFilter)localObject3).mNextFilter;
-      localObject3 = localObject1;
-      if (localObject4 != null)
+      BaseFilter localBaseFilter = ((BaseFilter)localObject2).mNextFilter;
+      localObject2 = localBaseFilter;
+      localObject3 = localObject4;
+      if (localBaseFilter != null)
       {
         if (((Frame)localObject1).nextFrame == null) {
           ((Frame)localObject1).nextFrame = new Frame();
         }
-        localObject3 = ((Frame)localObject1).nextFrame;
+        localObject1 = ((Frame)localObject1).nextFrame;
+        localObject2 = localBaseFilter;
+        localObject3 = localObject4;
       }
-      localObject1 = localObject3;
-      localObject3 = localObject4;
-      break label17;
-      break;
-      label347:
-      i = ((Frame)localObject2).getTextureId();
-      ((BaseFilter)localObject3).renderTexture(((Frame)localObject2).getTextureId(), ((Frame)localObject2).width, ((Frame)localObject2).height);
-      if (((Frame)localObject2).needReleaseFrame) {
-        ((Frame)localObject2).clearSelf();
-      }
-      localObject2 = localObject1;
     }
   }
   
@@ -398,8 +418,9 @@ public class BaseFilter
   
   public void addParams(HashMap<String, String> paramHashMap)
   {
-    if (this.mParamHelper != null) {
-      this.mParamHelper.processParams(paramHashMap);
+    ParamHelper localParamHelper = this.mParamHelper;
+    if (localParamHelper != null) {
+      localParamHelper.processParams(paramHashMap);
     }
   }
   
@@ -419,8 +440,9 @@ public class BaseFilter
     if (!isValid()) {
       apply();
     }
-    if (this.mNextFilter != null) {
-      this.mNextFilter.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
+    BaseFilter localBaseFilter = this.mNextFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
     }
   }
   
@@ -431,6 +453,15 @@ public class BaseFilter
   }
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void clearGLSL()
+  {
+    clearGLSLSelf();
+    BaseFilter localBaseFilter = this.mNextFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.clearGLSL();
+    }
+  }
   
   public void clearGLSLSelf()
   {
@@ -451,8 +482,15 @@ public class BaseFilter
   
   public BaseFilter getLastFilter()
   {
-    for (BaseFilter localBaseFilter = this; localBaseFilter.mNextFilter != null; localBaseFilter = localBaseFilter.mNextFilter) {}
-    return localBaseFilter;
+    BaseFilter localBaseFilter;
+    for (Object localObject = this;; localObject = localBaseFilter)
+    {
+      localBaseFilter = ((BaseFilter)localObject).mNextFilter;
+      if (localBaseFilter == null) {
+        break;
+      }
+    }
+    return localObject;
   }
   
   public int getLastFilterID()
@@ -524,8 +562,9 @@ public class BaseFilter
   protected void setGlobalTextureMatrix(float[] paramArrayOfFloat)
   {
     nativeSetGlobalTextureMatrix(this.mGlFilterId, paramArrayOfFloat);
-    if (this.mNextFilter != null) {
-      this.mNextFilter.setGlobalTextureMatrix(paramArrayOfFloat);
+    BaseFilter localBaseFilter = this.mNextFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.setGlobalTextureMatrix(paramArrayOfFloat);
     }
   }
   
@@ -578,8 +617,11 @@ public class BaseFilter
   {
     GLES20.glUseProgram(this.mProgramIds);
     paramInt2 += 2;
-    String str = "inputImageTexture" + paramInt2;
-    int i = GLES20.glGetUniformLocation(this.mProgramIds, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("inputImageTexture");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = GLES20.glGetUniformLocation(this.mProgramIds, (String)localObject);
     if (i >= 0)
     {
       GLES20.glActiveTexture(33984 + paramInt2);
@@ -610,7 +652,7 @@ public class BaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.BaseFilter
  * JD-Core Version:    0.7.0.1
  */

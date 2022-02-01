@@ -23,32 +23,35 @@ public final class lt
   public lt(IMapRenderView paramIMapRenderView)
   {
     this.a = ((pn)paramIMapRenderView.getVectorMapDelegate());
-    if ((this.a != null) && (this.a.a(mw.class) == null)) {
+    paramIMapRenderView = this.a;
+    if ((paramIMapRenderView != null) && (paramIMapRenderView.a(mw.class) == null)) {
       this.a.a(mw.class, this);
     }
   }
   
   public final Polyline a(PolylineOptions paramPolylineOptions, kq paramkq)
   {
-    if (this.a == null) {}
-    mw localmw;
-    do
-    {
+    Object localObject = this.a;
+    if (localObject == null) {
       return null;
-      localmw = new mw(this.a);
-      localmw.a(paramPolylineOptions);
-      localmw.d();
-    } while (!this.a.a(localmw));
+    }
+    localObject = new mw((pn)localObject);
+    ((mw)localObject).a(paramPolylineOptions);
+    ((mw)localObject).d();
+    if (!this.a.a((mu)localObject)) {
+      return null;
+    }
     this.a.az.b.k();
-    paramPolylineOptions = new Polyline(paramPolylineOptions, paramkq, localmw.L);
-    localmw.i = paramPolylineOptions;
+    paramPolylineOptions = new Polyline(paramPolylineOptions, paramkq, ((mu)localObject).L);
+    ((mw)localObject).i = paramPolylineOptions;
     return paramPolylineOptions;
   }
   
   public final void a()
   {
-    if (this.a != null) {
-      this.a.c(mw.class);
+    pn localpn = this.a;
+    if (localpn != null) {
+      localpn.c(mw.class);
     }
   }
   
@@ -59,246 +62,307 @@ public final class lt
   
   public final void a(String paramString)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
+    pn localpn = this.a;
+    if (localpn != null)
+    {
+      if (localpn.az == null) {
+        return;
+      }
+      this.a.a(paramString, true);
+      this.a.az.b.k();
     }
-    this.a.a(paramString, true);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, float paramFloat)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.a(paramFloat);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramString.a(paramFloat);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int paramInt)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        paramString.b(paramInt);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    paramString.b(paramInt);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        if (paramString.h != null)
+        {
+          paramString.h.a();
+          paramString.h.a(paramInt1, paramInt2);
+          paramString.e();
+        }
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    if (paramString.h != null)
-    {
-      paramString.h.a();
-      paramString.h.a(paramInt1, paramInt2);
-      paramString.e();
-    }
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int paramInt, LatLng paramLatLng)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramLatLng = fz.a(paramLatLng);
-    if ((paramInt == -1) || (paramLatLng == null)) {}
-    for (;;)
-    {
-      this.a.az.b.k();
-      return;
-      paramString.r = paramInt;
-      paramString.s = paramLatLng;
-      if (paramString.h != null) {
-        paramString.h.a(paramString.r, paramString.s);
-      }
-      if (paramString.k != null) {
-        paramString.k.s();
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramLatLng = fz.a(paramLatLng);
+        if ((paramInt != -1) && (paramLatLng != null))
+        {
+          paramString.r = paramInt;
+          paramString.s = paramLatLng;
+          if (paramString.h != null) {
+            paramString.h.a(paramString.r, paramString.s);
+          }
+          if (paramString.k != null) {
+            paramString.k.s();
+          }
+        }
+        this.a.az.b.k();
+        return;
       }
     }
   }
   
   public final void a(String paramString, GlAnimation paramGlAnimation)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if ((paramString == null) || (!(paramString instanceof mw))) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if ((paramString != null) && ((paramString instanceof mw)))
+        {
+          ((mw)paramString).a(paramGlAnimation);
+          return;
+        }
         return;
       }
     }
-    ((mw)paramString).a(paramGlAnimation);
   }
   
   public final void a(String paramString, BitmapDescriptor paramBitmapDescriptor)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.a(paramBitmapDescriptor);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramString.a(paramBitmapDescriptor);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, PolylineOptions.Text paramText)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (!(paramString instanceof mw)) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.o = paramText;
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    paramString = (mw)paramString;
-    paramString.o = paramText;
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, PolylineOptions paramPolylineOptions)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if ((paramString == null) || (!(paramString instanceof mw))) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if ((paramString != null) && ((paramString instanceof mw)))
+        {
+          ((mw)paramString).a(paramPolylineOptions);
+          this.a.az.b.k();
+          return;
+        }
         return;
       }
     }
-    ((mw)paramString).a(paramPolylineOptions);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, List<LatLng> paramList)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
         return;
       }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+      }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
     try
     {
       paramString.a(paramList);
-      label69:
+      label63:
       paramString.d();
       this.a.az.b.k();
+      return;
+      paramString = finally;
+      throw paramString;
       return;
     }
     catch (IndexOutOfBoundsException paramList)
     {
-      break label69;
+      break label63;
     }
   }
   
   public final void a(String paramString, boolean paramBoolean)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        paramString.c(paramBoolean);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    paramString.c(paramBoolean);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.a(paramArrayOfInt1, paramArrayOfInt2);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramString.a(paramArrayOfInt1, paramArrayOfInt2);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final boolean a(mu parammu, GeoPoint paramGeoPoint)
@@ -316,71 +380,87 @@ public final class lt
   
   public final void b(String paramString, float paramFloat)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.b(paramFloat);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramString.b(paramFloat);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void b(String paramString, int paramInt)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        paramString.d(paramInt);
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    paramString.d(paramInt);
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void b(String paramString, boolean paramBoolean)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.l = paramBoolean;
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramString.l = paramBoolean;
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final int[][] b(String paramString)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return null;
-    }
-    for (;;)
+    ??? = this.a;
+    Object localObject1 = null;
+    if (??? != null)
     {
-      mw localmw;
+      if (((pt)???).az == null) {
+        return null;
+      }
       synchronized (this.a.a)
       {
         paramString = this.a.c(paramString);
@@ -390,144 +470,159 @@ public final class lt
         if (!(paramString instanceof mw)) {
           return null;
         }
-        localmw = (mw)paramString;
-        if (localmw.m == null) {
-          break label158;
+        mw localmw = (mw)paramString;
+        paramString = localObject1;
+        if (localmw.m != null) {
+          if (localmw.n == null)
+          {
+            paramString = localObject1;
+          }
+          else if (localmw.m.length != localmw.n.length)
+          {
+            paramString = localObject1;
+          }
+          else
+          {
+            paramString = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, localmw.m.length });
+            paramString[0] = localmw.m;
+            paramString[1] = localmw.n;
+          }
         }
-        if (localmw.n == null)
-        {
-          break label158;
-          return paramString;
-        }
-      }
-      if (localmw.m.length != localmw.n.length)
-      {
-        paramString = null;
-      }
-      else
-      {
-        int i = localmw.m.length;
-        paramString = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, i });
-        paramString[0] = localmw.m;
-        paramString[1] = localmw.n;
-        continue;
-        label158:
-        paramString = null;
+        return paramString;
       }
     }
+    return null;
   }
   
   public final void c(String paramString)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        if (paramString.h != null) {
+          paramString.h.a();
+        }
+        paramString.d();
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    if (paramString.h != null) {
-      paramString.h.a();
-    }
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final void c(String paramString, boolean paramBoolean)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mw)) {
+      if (!(paramString instanceof mw)) {
+        return;
+      }
+      paramString = (mw)paramString;
+      paramString.p = paramBoolean;
+      paramString.d();
+      this.a.az.b.k();
       return;
     }
-    paramString = (mw)paramString;
-    paramString.p = paramBoolean;
-    paramString.d();
-    this.a.az.b.k();
   }
   
   public final Rect d(String paramString)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return new Rect();
-    }
-    synchronized (this.a.a)
-    {
-      paramString = this.a.c(paramString);
-      if (paramString == null)
+    ??? = this.a;
+    if ((??? != null) && (((pt)???).az != null)) {
+      synchronized (this.a.a)
       {
-        paramString = new Rect();
+        paramString = this.a.c(paramString);
+        if (paramString == null)
+        {
+          paramString = new Rect();
+          return paramString;
+        }
+        if (!(paramString instanceof mw))
+        {
+          paramString = new Rect();
+          return paramString;
+        }
+        paramString = ((mw)paramString).h.b();
         return paramString;
       }
     }
-    if (!(paramString instanceof mw))
-    {
-      paramString = new Rect();
-      return paramString;
-    }
-    paramString = ((mw)paramString).h.b();
-    return paramString;
+    return new Rect();
   }
   
   public final void d(String paramString, boolean paramBoolean)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      if (((pt)???).az == null) {
+        return;
+      }
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return;
+        }
+        if (!(paramString instanceof mw)) {
+          return;
+        }
+        paramString = (mw)paramString;
+        paramString.q = paramBoolean;
+        if (paramString.h != null) {
+          paramString.h.a.q = paramBoolean;
+        }
+        this.a.az.b.k();
         return;
       }
     }
-    if (!(paramString instanceof mw)) {
-      return;
-    }
-    paramString = (mw)paramString;
-    paramString.q = paramBoolean;
-    if (paramString.h != null) {
-      paramString.h.a.q = paramBoolean;
-    }
-    this.a.az.b.k();
   }
   
   public final List<gg> e(String paramString)
   {
-    if ((this.a == null) || (this.a.az == null)) {
-      return null;
-    }
-    synchronized (this.a.a)
+    ??? = this.a;
+    if (??? != null)
     {
-      paramString = this.a.c(paramString);
-      if (!(paramString instanceof mw)) {
+      if (((pt)???).az == null) {
         return null;
       }
-      paramString = (mw)paramString;
-      ??? = new ArrayList(1);
-      ((List)???).add(paramString.h);
-      return ???;
+      synchronized (this.a.a)
+      {
+        paramString = this.a.c(paramString);
+        if (!(paramString instanceof mw)) {
+          return null;
+        }
+        paramString = (mw)paramString;
+        ??? = new ArrayList(1);
+        ((List)???).add(paramString.h);
+        return ???;
+      }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.lt
  * JD-Core Version:    0.7.0.1
  */

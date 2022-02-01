@@ -36,34 +36,39 @@ public final class FileCompositionLoader
   
   protected LottieComposition doInBackground(InputStream... paramVarArgs)
   {
+    Object localObject1;
     try
     {
       paramVarArgs = (LottieComposition)LottieCompositionFactory.fromJsonInputStreamSync(paramVarArgs[0], null).getValue();
-      if ((this.userData != null) && (paramVarArgs != null) && (paramVarArgs.images != null))
-      {
-        String str1 = this.userData.getString("key");
-        String str2 = this.userData.getString("path");
-        Iterator localIterator = paramVarArgs.images.entrySet().iterator();
-        Log.v("DiniFlyAnimationView", str2);
-        while (localIterator.hasNext())
-        {
-          Object localObject = (Map.Entry)localIterator.next();
-          String str3 = str1 + ((Map.Entry)localObject).getKey();
-          ((LottieImageAsset)((Map.Entry)localObject).getValue()).setKey(str3);
-          localObject = str2 + ((LottieImageAsset)((Map.Entry)localObject).getValue()).getFileName();
-          LottieImageAsset.decodeBitmapIntoCache(this.imageCache, str3, (String)localObject);
-        }
-      }
     }
     catch (AssertionError paramVarArgs)
     {
-      for (;;)
+      localObject1 = this.userData;
+      if (localObject1 != null) {
+        Log.w("FileCompositionLoader", ((Bundle)localObject1).getString("path"));
+      }
+      paramVarArgs.printStackTrace();
+      paramVarArgs = null;
+    }
+    if ((this.userData != null) && (paramVarArgs != null) && (paramVarArgs.images != null))
+    {
+      localObject1 = this.userData.getString("key");
+      String str = this.userData.getString("path");
+      Iterator localIterator = paramVarArgs.images.entrySet().iterator();
+      Log.v("DiniFlyAnimationView", str);
+      while (localIterator.hasNext())
       {
-        if (this.userData != null) {
-          Log.w("FileCompositionLoader", this.userData.getString("path"));
-        }
-        paramVarArgs.printStackTrace();
-        paramVarArgs = null;
+        Object localObject2 = (Map.Entry)localIterator.next();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(((Map.Entry)localObject2).getKey());
+        localObject3 = ((StringBuilder)localObject3).toString();
+        ((LottieImageAsset)((Map.Entry)localObject2).getValue()).setKey((String)localObject3);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(((LottieImageAsset)((Map.Entry)localObject2).getValue()).getFileName());
+        localObject2 = localStringBuilder.toString();
+        LottieImageAsset.decodeBitmapIntoCache(this.imageCache, (String)localObject3, (String)localObject2);
       }
       paramVarArgs.compositionLayer = new CompositionLayer(this.lottieDrawable, LayerParser.parse(paramVarArgs), paramVarArgs.getLayers(), paramVarArgs);
     }
@@ -72,8 +77,9 @@ public final class FileCompositionLoader
   
   protected void onPostExecute(LottieComposition paramLottieComposition)
   {
-    if ((this.loadedListener != null) && (paramLottieComposition != null)) {
-      this.loadedListener.onCompositionLoaded(paramLottieComposition);
+    OnCompositionLoadedListener localOnCompositionLoadedListener = this.loadedListener;
+    if ((localOnCompositionLoadedListener != null) && (paramLottieComposition != null)) {
+      localOnCompositionLoadedListener.onCompositionLoaded(paramLottieComposition);
     }
   }
 }

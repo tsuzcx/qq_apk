@@ -8,24 +8,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class g
 {
   Handler b;
-  c bmg;
+  c dYU;
   
   public g()
   {
-    AppMethodBeat.i(123225);
+    AppMethodBeat.i(76770);
     this.b = new h(this);
-    AppMethodBeat.o(123225);
+    AppMethodBeat.o(76770);
   }
   
   public final void a(int paramInt)
   {
-    AppMethodBeat.i(123226);
+    AppMethodBeat.i(76771);
     Message localMessage = this.b.obtainMessage(100);
     Bundle localBundle = new Bundle();
     localBundle.putInt("errorCode", paramInt);
     localMessage.setData(localBundle);
     this.b.sendMessage(localMessage);
-    AppMethodBeat.o(123226);
+    AppMethodBeat.o(76771);
   }
 }
 

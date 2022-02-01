@@ -1,72 +1,82 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aimo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
+import com.tencent.mobileqq.phonecontact.permission.IReqPermissionRunnable;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class DenyRunnable
-  implements Runnable
+  implements IReqPermissionRunnable
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private aimo jdField_a_of_type_Aimo;
-  private final WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<Context> a;
+  private long b = 0L;
+  private DenyRunnable.OnCancelAction c = null;
+  private int d = 0;
   
   public DenyRunnable(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramContext);
+    this.d = paramInt;
   }
   
-  public DenyRunnable(Context paramContext, aimo paramaimo)
+  public DenyRunnable(Context paramContext, DenyRunnable.OnCancelAction paramOnCancelAction)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Aimo = paramaimo;
+    this.a = new WeakReference(paramContext);
+    this.c = paramOnCancelAction;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    if (QLog.isColorLevel()) {
-      QLog.i("DenyRunnable", 2, "onReqPermission: " + this.jdField_a_of_type_Long);
+    this.b = SystemClock.elapsedRealtime();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqPermission: ");
+      localStringBuilder.append(this.b);
+      QLog.i("DenyRunnable", 2, localStringBuilder.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Context localContext = (Context)this.a.get();
     if (QLog.isColorLevel()) {
       QLog.i("DenyRunnable", 2, String.format("defaultAction [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean), localContext }));
     }
-    if (localContext == null) {}
-    while (paramBoolean) {
+    if (localContext == null) {
       return;
     }
-    Intent localIntent = new Intent(localContext, GuideBindPhoneActivity.class);
-    localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
-    localContext.startActivity(localIntent);
+    if (!paramBoolean)
+    {
+      Intent localIntent = new Intent(localContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", this.d);
+      localContext.startActivity(localIntent);
+    }
   }
   
   public void run()
   {
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if ((this.jdField_a_of_type_Long == 0L) || (Math.abs(l) < 800L)) {}
-    for (boolean bool = false;; bool = true)
+    long l2 = SystemClock.elapsedRealtime();
+    long l1 = this.b;
+    l2 -= l1;
+    boolean bool;
+    if ((l1 != 0L) && (Math.abs(l2) >= 800L)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("DenyRunnable", 2, String.format("run [%s, %s, %s]", new Object[] { Long.valueOf(this.b), Long.valueOf(l2), Boolean.valueOf(bool) }));
+    }
+    DenyRunnable.OnCancelAction localOnCancelAction = this.c;
+    if (localOnCancelAction != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DenyRunnable", 2, String.format("run [%s, %s, %s]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(l), Boolean.valueOf(bool) }));
-      }
-      if (this.jdField_a_of_type_Aimo != null)
-      {
-        this.jdField_a_of_type_Aimo.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), bool);
-        return;
-      }
-      a(bool);
+      localOnCancelAction.onCancel((Context)this.a.get(), bool);
       return;
     }
+    a(bool);
   }
 }
 

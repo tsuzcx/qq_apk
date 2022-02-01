@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/lj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/n9"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f4j" android:background="@color/cr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/k6" android:paddingLeft="@dimen/lr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:layout_weight="1.0">
-        <TextView android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
-        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/lr" android:paddingBottom="@dimen/n_" android:singleLine="true" style="@style/lj" />
-    </LinearLayout>
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.chatroom.ui.story.StoryAvatarDotsView android:id="@id/f18" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </FrameLayout>
+    <ImageView android:id="@id/c9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/image_download_fail_icon" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/cw" android:id="@id/c9x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/fqv" />
 </LinearLayout>

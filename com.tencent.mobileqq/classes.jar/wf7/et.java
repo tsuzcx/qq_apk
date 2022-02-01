@@ -4,18 +4,19 @@ public class et
 {
   public static long b(int paramInt, long paramLong)
   {
-    if (paramInt < 0) {
-      throw new IllegalStateException("thread pool sub-ident is negative");
-    }
-    if (paramLong < 0L) {
+    if (paramInt >= 0)
+    {
+      if (paramLong >= 0L) {
+        return paramInt + paramLong;
+      }
       throw new IllegalStateException("thread pool parent-ident is illegal");
     }
-    return paramInt + paramLong;
+    throw new IllegalStateException("thread pool sub-ident is negative");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.et
  * JD-Core Version:    0.7.0.1
  */

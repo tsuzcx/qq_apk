@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ffffffff" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/dom" android:background="#ffe9e9e9" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="12.0dip" android:layout_alignParentTop="true" />
+    <include android:id="@id/l6" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_below="@id/dom" layout="@layout/d9e" />
+    <RelativeLayout android:id="@id/lf" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_below="@id/l6">
+        <RelativeLayout android:id="@id/lh" android:layout_width="140.0dip" android:layout_height="75.0dip" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true">
+            <com.tencent.image.URLImageView android:id="@id/li" android:layout_width="140.0dip" android:layout_height="75.0dip" android:src="#ff777777" android:scaleType="fitCenter" />
+            <ImageView android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/j3k" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/i6o" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/lh" android:layout_centerVertical="true">
+            <RelativeLayout android:id="@id/lj" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="18.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/lk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="90.0dip" android:text="@string/yt5" android:lines="1" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/ll" android:background="@drawable/gfe" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/yrx" android:layout_toRightOf="@id/lk" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/lg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="90.0dip" android:text="2017-10-1上映" android:lines="1" android:layout_below="@id/lj" />
+        </RelativeLayout>
+        <Button android:textSize="14.0dip" android:textColor="#ff000000" android:id="@id/le" android:background="@drawable/gfa" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/yrb" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,118 +1,72 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import android.view.View;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.StaticLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.page.af;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kiss.widget.textview.d;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.c;
 import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class j
-  extends c
+  extends ab<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
-  private static final int CTRL_INDEX = 447;
-  public static final String NAME = "updateScrollView";
+  private static final int CTRL_INDEX = -2;
+  private static final String NAME = "measureTextString";
   
-  public final boolean c(final com.tencent.mm.plugin.appbrand.jsapi.e parame, final int paramInt, View paramView, JSONObject paramJSONObject)
+  public final String a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(126318);
-    ab.d("MicroMsg.JsApiUpdateScrollView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
-    if (!(paramView instanceof WxaScrollView))
+    int j = 2147483647;
+    AppMethodBeat.i(327350);
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("size");
+    paramJSONObject = paramJSONObject.optJSONObject("label");
+    if ((localJSONObject == null) || (paramJSONObject == null))
     {
-      ab.w("MicroMsg.JsApiUpdateScrollView", "the view(%s) is not a instance of WxaScrollView", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(126318);
-      return false;
+      paramf = ZP("fail:invalid data");
+      AppMethodBeat.o(327350);
+      return paramf;
     }
-    WxaScrollView localWxaScrollView = (WxaScrollView)paramView;
-    com.tencent.mm.plugin.appbrand.jsapi.s.e.b(paramView, paramJSONObject.optJSONObject("style"));
-    try
+    int k = i.a(localJSONObject, "width", 2147483647);
+    int i = k;
+    if (k < 0) {
+      i = 2147483647;
+    }
+    k = i.a(localJSONObject, "height", 2147483647);
+    if (k < 0) {}
+    for (;;)
     {
-      if (paramJSONObject.getBoolean("needScrollEvent")) {
-        localWxaScrollView.setOnScrollChangedListener(new m()
-        {
-          public final void q(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
-          {
-            AppMethodBeat.i(126316);
-            if (!(paramAnonymousView instanceof WxaScrollView))
-            {
-              AppMethodBeat.o(126316);
-              return;
-            }
-            Object localObject = parame.vC().J(paramInt, false);
-            if (localObject == null)
-            {
-              AppMethodBeat.o(126316);
-              return;
-            }
-            localObject = ((v.b)localObject).getString("data", null);
-            if (localObject == null)
-            {
-              AppMethodBeat.o(126316);
-              return;
-            }
-            paramAnonymousView = ((WxaScrollView)paramAnonymousView).getTargetView();
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("data", localObject);
-            localHashMap.put("scrollLeft", Integer.valueOf(g.pN(paramAnonymousInt1)));
-            localHashMap.put("scrollTop", Integer.valueOf(g.pN(paramAnonymousInt2)));
-            localHashMap.put("scrollWidth", Integer.valueOf(g.pN(paramAnonymousView.getWidth())));
-            localHashMap.put("scrollHeight", Integer.valueOf(g.pN(paramAnonymousView.getHeight())));
-            paramAnonymousView = new l().x(localHashMap);
-            parame.b(paramAnonymousView);
-            AppMethodBeat.o(126316);
-          }
-        });
-      }
-      for (;;)
+      if (paramf.getContext() == null) {}
+      float f1;
+      for (paramf = Resources.getSystem();; paramf = paramf.getContext().getResources())
       {
-        label102:
-        paramJSONObject.optInt("scrollLeft", 0);
-        if (paramJSONObject.has("scrollX"))
+        paramf = new a(paramf, i);
+        c.a(paramf, paramJSONObject);
+        paramf = paramf.rTl.bbK().mGW;
+        f1 = 0.0F;
+        i = 0;
+        while (i < paramf.getLineCount())
         {
-          bool = paramJSONObject.optBoolean("scrollX", true);
-          ab.i("MicroMsg.JsApiUpdateScrollView", "scrollHorizontal:%b", new Object[] { Boolean.valueOf(bool) });
-          localWxaScrollView.setScrollHorizontal(bool);
+          f1 = Math.max(f1, paramf.getLineWidth(i));
+          i += 1;
         }
-        if (paramJSONObject.has("scrollY"))
-        {
-          bool = paramJSONObject.optBoolean("scrollY", true);
-          ab.i("MicroMsg.JsApiUpdateScrollView", "scrollVertical:%b", new Object[] { Boolean.valueOf(bool) });
-          localWxaScrollView.setScrollVertical(bool);
-        }
-        if (paramJSONObject.has("scrollTop"))
-        {
-          int i = g.a(paramJSONObject, "scrollTop", localWxaScrollView.getScrollY());
-          ab.i("MicroMsg.JsApiUpdateScrollView", "scrollTop:%d", new Object[] { Integer.valueOf(i) });
-          localWxaScrollView.scrollTo(localWxaScrollView.getScrollX(), i);
-        }
-        boolean bool = super.c(parame, paramInt, paramView, paramJSONObject);
-        AppMethodBeat.o(126318);
-        return bool;
-        localWxaScrollView.setOnScrollChangedListener(null);
       }
+      float f2 = Math.min(paramf.getHeight(), j);
+      paramf = new HashMap(2);
+      paramf.put("width", Float.valueOf(i.bV(f1)));
+      paramf.put("height", Float.valueOf(i.bV(f2)));
+      paramf = m("ok", new j.1(this, paramf));
+      AppMethodBeat.o(327350);
+      return paramf;
+      j = k;
     }
-    catch (JSONException localJSONException)
-    {
-      break label102;
-    }
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(126317);
-    int i = paramJSONObject.getInt("viewId");
-    AppMethodBeat.o(126317);
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.j
  * JD-Core Version:    0.7.0.1
  */

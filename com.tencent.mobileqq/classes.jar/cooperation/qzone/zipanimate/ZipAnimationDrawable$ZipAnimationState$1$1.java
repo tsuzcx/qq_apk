@@ -1,28 +1,23 @@
 package cooperation.qzone.zipanimate;
 
-import bkbb;
-import bkbe;
-import bkbf;
-import bkbg;
-
-public class ZipAnimationDrawable$ZipAnimationState$1$1
+class ZipAnimationDrawable$ZipAnimationState$1$1
   implements Runnable
 {
-  public ZipAnimationDrawable$ZipAnimationState$1$1(bkbg parambkbg) {}
+  ZipAnimationDrawable$ZipAnimationState$1$1(ZipAnimationDrawable.ZipAnimationState.1 param1) {}
   
   public void run()
   {
-    if (this.a.a.a.a != null) {
-      this.a.a.a.a.onDrawableLoaded();
+    if (this.this$2.this$1.this$0.mListener != null) {
+      this.this$2.this$1.this$0.mListener.onDrawableLoaded();
     }
-    if (bkbb.b(this.a.a.a)) {
-      this.a.a.a.d();
+    if (ZipAnimationDrawable.access$300(this.this$2.this$1.this$0)) {
+      this.this$2.this$1.this$0.restartAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1
  * JD-Core Version:    0.7.0.1
  */

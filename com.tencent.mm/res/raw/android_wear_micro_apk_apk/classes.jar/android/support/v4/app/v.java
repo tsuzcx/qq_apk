@@ -1,36 +1,38 @@
 package android.support.v4.app;
 
+import android.os.Build.VERSION;
+import android.support.v4.view.r;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 
-class v
-  implements Animation.AnimationListener
+final class v
+  extends w
 {
-  private final Animation.AnimationListener da;
+  View cZ;
   
-  private v(Animation.AnimationListener paramAnimationListener)
+  v(View paramView, Animation.AnimationListener paramAnimationListener)
   {
-    this.da = paramAnimationListener;
+    super(paramAnimationListener, (byte)0);
+    this.cZ = paramView;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.da != null) {
-      this.da.onAnimationEnd(paramAnimation);
+    if ((r.z(this.cZ)) || (Build.VERSION.SDK_INT >= 24)) {
+      this.cZ.post(new Runnable()
+      {
+        public final void run()
+        {
+          v.this.cZ.setLayerType(0, null);
+        }
+      });
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (this.da != null) {
-      this.da.onAnimationRepeat(paramAnimation);
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.da != null) {
-      this.da.onAnimationStart(paramAnimation);
+    for (;;)
+    {
+      super.onAnimationEnd(paramAnimation);
+      return;
+      this.cZ.setLayerType(0, null);
     }
   }
 }

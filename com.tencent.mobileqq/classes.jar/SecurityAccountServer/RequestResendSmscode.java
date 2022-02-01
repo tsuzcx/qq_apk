@@ -8,7 +8,7 @@ public final class RequestResendSmscode
   extends JceStruct
 {
   static byte[] cache_sessionSid;
-  public byte[] sessionSid;
+  public byte[] sessionSid = null;
   
   public RequestResendSmscode() {}
   
@@ -34,7 +34,7 @@ public final class RequestResendSmscode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestResendSmscode
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ public class VoipDetailActivity$VoipHistoryListItem
   {
     super(paramContext, paramAttributeSet);
     LayoutInflater.from(paramContext).inflate(2130904055, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234670));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234671));
-    this.b = ((TextView)findViewById(2131234672));
-    this.c = ((TextView)findViewById(2131234673));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234669));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234670));
+    this.b = ((TextView)findViewById(2131234671));
+    this.c = ((TextView)findViewById(2131234672));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
     this.b.setText(paramString2);
     this.c.setText(paramString3);

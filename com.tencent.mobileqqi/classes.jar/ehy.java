@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class ehy
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public ehy(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    this.a.a(this.a.a, this.a.a.b, false);
+    this.a.a = false;
   }
 }
 

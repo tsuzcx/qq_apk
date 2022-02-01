@@ -35,21 +35,23 @@ public final class MediaSource$MediaPeriodId
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (MediaPeriodId)paramObject;
-    } while ((this.periodIndex == paramObject.periodIndex) && (this.adGroupIndex == paramObject.adGroupIndex) && (this.adIndexInAdGroup == paramObject.adIndexInAdGroup) && (this.windowSequenceNumber == paramObject.windowSequenceNumber));
+      return (this.periodIndex == paramObject.periodIndex) && (this.adGroupIndex == paramObject.adGroupIndex) && (this.adIndexInAdGroup == paramObject.adIndexInAdGroup) && (this.windowSequenceNumber == paramObject.windowSequenceNumber);
+    }
     return false;
   }
   
   public int hashCode()
   {
-    return (((this.periodIndex + 527) * 31 + this.adGroupIndex) * 31 + this.adIndexInAdGroup) * 31 + (int)this.windowSequenceNumber;
+    return (((527 + this.periodIndex) * 31 + this.adGroupIndex) * 31 + this.adIndexInAdGroup) * 31 + (int)this.windowSequenceNumber;
   }
   
   public boolean isAd()
@@ -59,7 +61,7 @@ public final class MediaSource$MediaPeriodId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.MediaSource.MediaPeriodId
  * JD-Core Version:    0.7.0.1
  */

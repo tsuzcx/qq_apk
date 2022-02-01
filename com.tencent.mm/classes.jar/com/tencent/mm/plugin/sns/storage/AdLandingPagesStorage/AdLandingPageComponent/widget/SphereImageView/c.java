@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static int Y(Bitmap paramBitmap)
+  public static int aI(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(145431);
+    AppMethodBeat.i(97278);
     if (paramBitmap == null)
     {
-      ab.i("SphereImageView.Utils", "initTexture, bmp==null");
-      AppMethodBeat.o(145431);
+      Log.i("SphereImageView.Utils", "initTexture, bmp==null");
+      AppMethodBeat.o(97278);
       return 0;
     }
-    ab.i("SphereImageView.Utils", "initTexture, bmp.w=" + paramBitmap.getWidth() + ", bmp.h=" + paramBitmap.getHeight());
+    Log.i("SphereImageView.Utils", "initTexture, bmp.w=" + paramBitmap.getWidth() + ", bmp.h=" + paramBitmap.getHeight());
     try
     {
       int[] arrayOfInt = new int[1];
@@ -29,20 +29,20 @@ public final class c
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-      AppMethodBeat.o(145431);
+      AppMethodBeat.o(97278);
       return i;
     }
-    catch (Throwable paramBitmap)
+    finally
     {
-      ab.e("SphereImageView.Utils", "initTexture exp:" + paramBitmap.toString());
-      AppMethodBeat.o(145431);
+      Log.e("SphereImageView.Utils", "initTexture exp:" + paramBitmap.toString());
+      AppMethodBeat.o(97278);
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.c
  * JD-Core Version:    0.7.0.1
  */

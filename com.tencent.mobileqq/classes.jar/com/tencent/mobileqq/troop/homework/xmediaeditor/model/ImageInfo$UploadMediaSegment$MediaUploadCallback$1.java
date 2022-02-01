@@ -1,36 +1,32 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bcdu;
-import bced;
-import bcef;
-import bceg;
-import bcej;
-import bcew;
-import bcfe;
-import bcfo;
-import bcfr;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
 
-public class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
+class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$1(bceg parambceg, bcej parambcej) {}
+  ImageInfo$UploadMediaSegment$MediaUploadCallback$1(ImageInfo.UploadMediaSegment.MediaUploadCallback paramMediaUploadCallback, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    bcef.a(this.jdField_a_of_type_Bceg.a).e = 95;
-    bcef.a(this.jdField_a_of_type_Bceg.a).g = -2147483648;
-    XMediaEditor localXMediaEditor = (XMediaEditor)bcef.a(this.jdField_a_of_type_Bceg.a).get();
+    ImageInfo.UploadMediaSegment.b(this.b.a).l = 95;
+    ImageInfo.UploadMediaSegment.b(this.b.a).o = -2147483648;
+    XMediaEditor localXMediaEditor = (XMediaEditor)ImageInfo.UploadMediaSegment.c(this.b.a).get();
     if (localXMediaEditor != null)
     {
-      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(bcef.a(this.jdField_a_of_type_Bceg.a).c);
-      if ((localObject instanceof bcfr))
+      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.b(this.b.a).g);
+      if ((localObject instanceof VideoItem.VideoViewHolder))
       {
-        localObject = (bcfr)localObject;
-        if (this.jdField_a_of_type_Bcej.d.equals(((bcfr)localObject).a.getTag())) {
-          ((bcfo)((bcdu)localXMediaEditor.getAdapter()).a.a(2)).a((bcfe)localObject, bcef.a(this.jdField_a_of_type_Bceg.a), 0);
+        localObject = (VideoItem.VideoViewHolder)localObject;
+        if (this.a.e.equals(((VideoItem.VideoViewHolder)localObject).g.getTag())) {
+          ((VideoItem)((XMediaEditorAdapter)localXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, ImageInfo.UploadMediaSegment.b(this.b.a), 0);
         }
       }
     }
@@ -38,7 +34,7 @@ public class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,100 +4,84 @@ import java.io.PrintWriter;
 
 public final class d<D>
 {
-  int de;
-  boolean ej;
-  f<D> fQ;
-  e<D> fR;
-  boolean fS;
-  boolean fT;
-  boolean fU;
-  boolean fV;
+  int eS;
+  e<D> hN;
+  boolean hO;
+  boolean hP;
+  boolean hQ;
+  boolean hR;
+  boolean hS;
   
-  public final void a(int paramInt, f<D> paramf)
+  public static String dataToString(D paramD)
   {
-    if (this.fQ != null) {
-      throw new IllegalStateException("There is already a listener registered");
-    }
-    this.fQ = paramf;
-    this.de = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    android.support.v4.b.d.a(paramD, localStringBuilder);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public final void a(e<D> parame)
   {
-    if (this.fR != null) {
-      throw new IllegalStateException("There is already a listener registered");
-    }
-    this.fR = parame;
-  }
-  
-  public final void a(f<D> paramf)
-  {
-    if (this.fQ == null) {
+    if (this.hN == null) {
       throw new IllegalStateException("No listener register");
     }
-    if (this.fQ != paramf) {
+    if (this.hN != parame) {
       throw new IllegalArgumentException("Attempting to unregister the wrong listener");
     }
-    this.fQ = null;
+    this.hN = null;
   }
   
   public final void a(String paramString, PrintWriter paramPrintWriter)
   {
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mId=");
-    paramPrintWriter.print(this.de);
+    paramPrintWriter.print(this.eS);
     paramPrintWriter.print(" mListener=");
-    paramPrintWriter.println(this.fQ);
-    if ((this.ej) || (this.fU) || (this.fV))
+    paramPrintWriter.println(this.hN);
+    if ((this.hO) || (this.hR) || (this.hS))
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mStarted=");
-      paramPrintWriter.print(this.ej);
+      paramPrintWriter.print(this.hO);
       paramPrintWriter.print(" mContentChanged=");
-      paramPrintWriter.print(this.fU);
+      paramPrintWriter.print(this.hR);
       paramPrintWriter.print(" mProcessingChange=");
-      paramPrintWriter.println(this.fV);
+      paramPrintWriter.println(this.hS);
     }
-    if ((this.fS) || (this.fT))
+    if ((this.hP) || (this.hQ))
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mAbandoned=");
-      paramPrintWriter.print(this.fS);
+      paramPrintWriter.print(this.hP);
       paramPrintWriter.print(" mReset=");
-      paramPrintWriter.println(this.fT);
+      paramPrintWriter.println(this.hQ);
     }
   }
   
-  public final void b(e<D> parame)
+  public final void abandon()
   {
-    if (this.fR == null) {
-      throw new IllegalStateException("No listener register");
-    }
-    if (this.fR != parame) {
-      throw new IllegalArgumentException("Attempting to unregister the wrong listener");
-    }
-    this.fR = null;
+    this.hP = true;
   }
   
   public final void reset()
   {
-    this.fT = true;
-    this.ej = false;
-    this.fS = false;
-    this.fU = false;
-    this.fV = false;
+    this.hQ = true;
+    this.hO = false;
+    this.hP = false;
+    this.hR = false;
+    this.hS = false;
   }
   
   public final void startLoading()
   {
-    this.ej = true;
-    this.fT = false;
-    this.fS = false;
+    this.hO = true;
+    this.hQ = false;
+    this.hP = false;
   }
   
   public final void stopLoading()
   {
-    this.ej = false;
+    this.hO = false;
   }
   
   public final String toString()
@@ -105,7 +89,7 @@ public final class d<D>
     StringBuilder localStringBuilder = new StringBuilder(64);
     android.support.v4.b.d.a(this, localStringBuilder);
     localStringBuilder.append(" id=");
-    localStringBuilder.append(this.de);
+    localStringBuilder.append(this.eS);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

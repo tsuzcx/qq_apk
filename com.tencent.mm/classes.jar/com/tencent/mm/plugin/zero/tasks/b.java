@@ -10,10 +10,12 @@ public final class b
 {
   public final void execute(g paramg)
   {
-    AppMethodBeat.i(58786);
-    k.a("commonimgdec", getClass().getClassLoader());
-    k.a("wechatcommon", getClass().getClassLoader());
-    AppMethodBeat.o(58786);
+    AppMethodBeat.i(133036);
+    getClass().getClassLoader();
+    k.DA("commonimgdec");
+    getClass().getClassLoader();
+    k.DA("wechatcommon");
+    AppMethodBeat.o(133036);
   }
   
   public final String name()
@@ -23,7 +25,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.b
  * JD-Core Version:    0.7.0.1
  */

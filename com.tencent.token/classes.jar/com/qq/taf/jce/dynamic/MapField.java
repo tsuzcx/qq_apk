@@ -13,37 +13,37 @@ public final class MapField
     this.values = paramArrayOfJceField2;
   }
   
-  public JceField getKey(int paramInt)
+  public final JceField getKey(int paramInt)
   {
     return this.keys[paramInt];
   }
   
-  public JceField[] getKeys()
+  public final JceField[] getKeys()
   {
     return this.keys;
   }
   
-  public JceField getValue(int paramInt)
+  public final JceField getValue(int paramInt)
   {
     return this.values[paramInt];
   }
   
-  public JceField[] getValues()
+  public final JceField[] getValues()
   {
     return this.values;
   }
   
-  public void setKey(int paramInt, JceField paramJceField)
+  public final void setKey(int paramInt, JceField paramJceField)
   {
     this.keys[paramInt] = paramJceField;
   }
   
-  public void setValue(int paramInt, JceField paramJceField)
+  public final void setValue(int paramInt, JceField paramJceField)
   {
     this.values[paramInt] = paramJceField;
   }
   
-  public int size()
+  public final int size()
   {
     return this.keys.length;
   }

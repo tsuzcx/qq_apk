@@ -1,179 +1,158 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Point;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appusage.af;
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.appbrand.ba.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.aw;
 
 public final class b
 {
-  private static int jde;
-  public static float jdf;
-  public static int jdg;
-  public static float jdh;
-  public static int jdi;
-  public static final int jdj;
-  private static float jdk;
-  private static int jdl;
-  private static int jdm;
-  private static boolean jdn;
+  private static boolean uzR = false;
   
-  static
+  public static int c(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(133712);
-    jde = 1;
-    jdf = 4.5F;
-    jdg = 4;
-    jdh = 3.5F;
-    jdi = 3;
-    jdj = AppBrandGlobalSystemConfig.ayt().hhM;
-    jdk = jdf;
-    jdl = jdg;
-    jdm = 0;
-    jdn = true;
-    AppMethodBeat.o(133712);
-  }
-  
-  public static boolean aPf()
-  {
-    return jde == 2;
-  }
-  
-  public static boolean aPg()
-  {
-    AppMethodBeat.i(133708);
-    ab.d("MicroMsg.AppBrandDesktopConfig", "alvinluo isEnableNativeDynamicBackground %b, thread: %d", new Object[] { Boolean.valueOf(jdn), Long.valueOf(Thread.currentThread().getId()) });
-    boolean bool = jdn;
-    AppMethodBeat.o(133708);
-    return bool;
-  }
-  
-  public static boolean aPh()
-  {
-    return true;
-  }
-  
-  public static void aPi()
-  {
-    AppMethodBeat.i(133711);
-    SharedPreferences localSharedPreferences = ah.dsQ();
-    if (localSharedPreferences == null)
+    AppMethodBeat.i(49560);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(133711);
-      return;
+      AppMethodBeat.o(49560);
+      return 0;
     }
-    boolean bool1 = localSharedPreferences.getBoolean("enable_dynamic_background_for_test", false);
-    if (bool1)
+    int k = getScreenWidth(paramContext);
+    if (paramContext == null)
     {
-      ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo initEnableNativeDynamicBackground enableForTest: %b", new Object[] { Boolean.valueOf(bool1) });
-      jdn = true;
-      ff(true);
-      com.tencent.mm.plugin.appbrand.widget.desktop.dynamicbackground.d.aPR();
-      AppMethodBeat.o(133711);
-      return;
+      AppMethodBeat.o(49560);
+      return 0;
     }
-    jdn = localSharedPreferences.getBoolean("enable_dynamic_background", true);
-    boolean bool2 = com.tencent.mm.plugin.appbrand.widget.desktop.dynamicbackground.d.aPQ();
-    bool1 = bool2;
-    if (bool2)
+    int m = ft(paramContext);
+    int i;
+    if (a.cPg()) {
+      i = (int)((k - m * paramFloat) / Math.ceil(paramFloat));
+    }
+    for (;;)
     {
-      int i = localSharedPreferences.getInt("dynamic_background_version", -1);
-      ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo localVersion %d, currentVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(1) });
-      if (i == 1) {
-        break label216;
+      int j = i;
+      if (i < 0) {
+        j = 0;
       }
-      ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo ignore crash because of new version", new Object[] { Integer.valueOf(i), Integer.valueOf(1) });
-      localSharedPreferences.edit().putInt("dynamic_background_version", 1).apply();
-      com.tencent.mm.plugin.appbrand.widget.desktop.dynamicbackground.d.aPR();
-      ff(true);
-    }
-    for (bool1 = false;; bool1 = bool2)
-    {
-      ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo AppBrandDesktopConfig initEnableNativeDynamicBackground: %b, willCrash: %b", new Object[] { Boolean.valueOf(jdn), Boolean.valueOf(bool1) });
-      AppMethodBeat.o(133711);
-      return;
-      label216:
-      ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo disable dynamicBackground because of crash");
-      ff(false);
+      Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d, itemPadding: %d, viewWidth: %d, countPerPage: %f, leftRightPaddingZero: %b", new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), Float.valueOf(paramFloat), Boolean.valueOf(uzR) });
+      AppMethodBeat.o(49560);
+      return j;
+      uzR = false;
+      j = paramContext.getResources().getDimensionPixelOffset(ba.d.app_brand_desktop_view_left_right_padding);
+      float f = getScaleSize(paramContext);
+      i = j;
+      if (f != com.tencent.mm.cd.a.md(paramContext))
+      {
+        i = j;
+        if (f != com.tencent.mm.cd.a.mc(paramContext)) {
+          if ((f != com.tencent.mm.cd.a.me(paramContext)) && (f != com.tencent.mm.cd.a.mf(paramContext)) && (f != com.tencent.mm.cd.a.mg(paramContext))) {
+            break label281;
+          }
+        }
+      }
+      label281:
+      for (i = paramContext.getResources().getDimensionPixelOffset(ba.d.LargePadding);; i = paramContext.getResources().getDimensionPixelOffset(ba.d.NormalPadding))
+      {
+        Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo getLeftRightPadding: %d", new Object[] { Integer.valueOf(i) });
+        j = (k - i * 2 - (int)paramFloat * m) / (((int)paramFloat - 1) * 2);
+        if (j <= i) {
+          break label295;
+        }
+        i = (k - (int)paramFloat * m) / ((int)paramFloat * 2);
+        uzR = true;
+        break;
+      }
+      label295:
+      uzR = false;
+      i = j;
     }
   }
   
-  public static int axA()
+  public static int ft(Context paramContext)
   {
-    AppMethodBeat.i(133707);
-    if (jdm == 0) {
-      jdm = ((af)g.E(af.class)).awR();
+    AppMethodBeat.i(49555);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(49555);
+      return 0;
     }
-    int i = jdm;
-    AppMethodBeat.o(133707);
+    int i = (int)(com.tencent.mm.cd.a.bs(paramContext, ba.d.app_brand_desktop_view_item_width) * getScaleSize(paramContext));
+    AppMethodBeat.o(49555);
     return i;
   }
   
-  public static void ff(boolean paramBoolean)
+  public static float fu(Context paramContext)
   {
-    AppMethodBeat.i(133709);
-    ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo setEnableNativeDynamicBackground enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (jdn != paramBoolean)
+    AppMethodBeat.i(49562);
+    float f = com.tencent.mm.cd.a.bs(paramContext, ba.d.app_brand_desktop_icon_size) * getScaleSize(paramContext);
+    Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo iconSize: %f", new Object[] { Float.valueOf(f) });
+    AppMethodBeat.o(49562);
+    return f;
+  }
+  
+  public static float getScaleSize(Context paramContext)
+  {
+    AppMethodBeat.i(49563);
+    float f2 = com.tencent.mm.cd.a.getScaleSize(paramContext);
+    float f1;
+    if ((f2 != com.tencent.mm.cd.a.mh(paramContext)) && (f2 != com.tencent.mm.cd.a.mi(paramContext)))
     {
-      SharedPreferences localSharedPreferences = ah.dsQ();
-      if (localSharedPreferences != null) {
-        localSharedPreferences.edit().putBoolean("enable_dynamic_background", paramBoolean).apply();
+      f1 = f2;
+      if (f2 != com.tencent.mm.cd.a.mj(paramContext)) {}
+    }
+    else
+    {
+      f1 = com.tencent.mm.cd.a.mg(paramContext);
+    }
+    AppMethodBeat.o(49563);
+    return f1;
+  }
+  
+  private static int getScreenWidth(Context paramContext)
+  {
+    AppMethodBeat.i(49558);
+    try
+    {
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+      if (paramContext.getResources().getConfiguration().orientation == 2)
+      {
+        if (aw.bx(paramContext))
+        {
+          i = aw.bf(paramContext).x;
+          AppMethodBeat.o(49558);
+          return i;
+        }
+        f1 = paramContext.getResources().getConfiguration().screenHeightDp;
+        f2 = localDisplayMetrics.density;
+        i = (int)(f1 * f2);
+        AppMethodBeat.o(49558);
+        return i;
       }
+      float f1 = paramContext.getResources().getConfiguration().screenWidthDp;
+      float f2 = localDisplayMetrics.density;
+      int i = (int)(f1 * f2);
+      AppMethodBeat.o(49558);
+      return i;
     }
-    jdn = paramBoolean;
-    AppMethodBeat.o(133709);
-  }
-  
-  public static int getCompletelyCountPerPage()
-  {
-    return jdl;
-  }
-  
-  public static float getShowCountPerPage()
-  {
-    return jdk;
-  }
-  
-  public static void init(Context paramContext)
-  {
-    AppMethodBeat.i(133710);
-    ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo DesktopConfig init mCurrentType: %d", new Object[] { Integer.valueOf(jde) });
-    if (jde == 1)
+    catch (Exception paramContext)
     {
-      jdf = 4.0F;
-      jdg = 4;
-      jdh = 3.0F;
-      jdi = 3;
-      jdk = jdf;
-      jdl = jdg;
+      Log.printErrStackTrace("MicroMsg.AppBrandDesktopSizeHelper", paramContext, "alvinluo getScreenWidth exception", new Object[0]);
+      AppMethodBeat.o(49558);
     }
-    int j = d.d(paramContext, jdk);
-    int i = j;
-    if (jde == 1) {
-      i = (int)(j + paramContext.getResources().getDimensionPixelSize(2131427854) * 2 * d.dr(paramContext));
-    }
-    if (i <= a.fromDPToPix(paramContext, 10)) {
-      jdk = jdh;
-    }
-    for (jdl = jdi;; jdl = jdg)
-    {
-      ab.i("MicroMsg.AppBrandDesktopConfig", "alvinluo DesktopConfig init showCountPerPage: %f, completelyShowCountPerPage: %d", new Object[] { Float.valueOf(jdk), Integer.valueOf(jdl), Boolean.valueOf(jdn) });
-      AppMethodBeat.o(133710);
-      return;
-      jdk = jdf;
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b
  * JD-Core Version:    0.7.0.1
  */

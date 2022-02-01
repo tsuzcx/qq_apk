@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/kku" android:background="@color/a" android:paddingLeft="@dimen/br" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:text="@string/ey3" style="@style/nb" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:paddingStart="@dimen/cp">
+        <ImageView android:id="@id/a1r" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@drawable/b__" android:layout_centerVertical="true" />
+        <TextView android:ellipsize="end" android:id="@id/kmj" android:visibility="gone" android:layout_marginTop="-3.0dip" android:layout_marginRight="-3.0dip" android:singleLine="true" android:layout_alignTop="@id/a1r" android:layout_alignEnd="@id/a1r" style="@style/zi" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/gg" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cr" android:minWidth="@dimen/d6" android:maxLines="1" android:singleLine="true" android:layout_alignTop="@id/a1r" android:layout_marginStart="@dimen/cd" android:layout_toStartOf="@id/al0" android:layout_toEndOf="@id/a1r" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/c23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:maxWidth="280.0dip" android:maxLines="1" android:singleLine="true" android:layout_below="@id/bta" android:paddingEnd="@dimen/cp" android:layout_toStartOf="@id/al0" android:layout_alignStart="@id/bta" />
+        <Button android:id="@id/al0" android:maxWidth="@dimen/c2" android:text="@string/k0n" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" style="@style/qi" />
+        <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/da" />
+    </RelativeLayout>
+</LinearLayout>

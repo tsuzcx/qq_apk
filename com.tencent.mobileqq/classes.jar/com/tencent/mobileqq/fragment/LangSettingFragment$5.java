@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import alvw;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.LocaleManager;
 
 class LangSettingFragment$5
   implements Runnable
@@ -10,13 +10,13 @@ class LangSettingFragment$5
   
   public void run()
   {
-    alvw.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
-    this.this$0.getActivity().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    LocaleManager.a(this.this$0.getBaseActivity(), this.a);
+    this.this$0.getBaseActivity().runOnUiThread(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

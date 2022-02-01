@@ -10,7 +10,6 @@ import android.os.Looper;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
-import com.google.android.gms.common.util.VisibleForTesting;
 import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class zzk
@@ -27,7 +26,6 @@ public abstract class zzk
     this(paramLifecycleFragment, GoogleApiAvailability.getInstance());
   }
   
-  @VisibleForTesting
   private zzk(LifecycleFragment paramLifecycleFragment, GoogleApiAvailability paramGoogleApiAvailability)
   {
     super(paramLifecycleFragment);
@@ -175,7 +173,7 @@ public abstract class zzk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzk
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import ehs;
+import ehr;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class LebaShowListManager
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static final int b = 2;
   public static int c = 0;
-  public ehs a;
+  public ehr a;
   public HashMap a;
   protected List a;
   public boolean a;
@@ -53,7 +53,7 @@ public class LebaShowListManager
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Ehs = new ehs(this, null);
+    this.jdField_a_of_type_Ehr = new ehr(this, null);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     c = 0;
   }
@@ -264,7 +264,7 @@ public class LebaShowListManager
           localLebaViewItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(i);
           continue;
           break;
-          Collections.sort(localArrayList3, this.jdField_a_of_type_Ehs);
+          Collections.sort(localArrayList3, this.jdField_a_of_type_Ehr);
           paramContext = (RedTouchManager)paramQQAppInterface.getManager(34);
           if (paramContext == null)
           {
@@ -446,7 +446,7 @@ public class LebaShowListManager
   
   public void a(List paramList1, List paramList2)
   {
-    Collections.sort(paramList2, this.jdField_a_of_type_Ehs);
+    Collections.sort(paramList2, this.jdField_a_of_type_Ehr);
     Iterator localIterator = paramList2.iterator();
     int i = 0;
     int j = -1;

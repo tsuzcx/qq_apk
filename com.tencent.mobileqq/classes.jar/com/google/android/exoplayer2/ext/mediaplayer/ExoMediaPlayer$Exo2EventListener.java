@@ -21,7 +21,11 @@ class ExoMediaPlayer$Exo2EventListener
   
   public void onLoadingChanged(boolean paramBoolean)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onLoadingChanged " + paramBoolean);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLoadingChanged ");
+    localStringBuilder.append(paramBoolean);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     if (paramBoolean) {
       ExoMediaPlayer.access$2100(this.this$0, true);
     }
@@ -29,7 +33,14 @@ class ExoMediaPlayer$Exo2EventListener
   
   public void onPlaybackParametersChanged(PlaybackParameters paramPlaybackParameters)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onPlaybackParametersChanged [" + paramPlaybackParameters.speed + "," + paramPlaybackParameters.pitch + "]");
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPlaybackParametersChanged [");
+    localStringBuilder.append(paramPlaybackParameters.speed);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramPlaybackParameters.pitch);
+    localStringBuilder.append("]");
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
   }
   
   public void onPlayerError(ExoPlaybackException paramExoPlaybackException)
@@ -37,31 +48,48 @@ class ExoMediaPlayer$Exo2EventListener
     if (ExoMediaPlayer.access$700(this.this$0) != null) {
       ExoMediaPlayer.access$2100(this.this$0, false);
     }
-    ExoMediaPlayer.getLogger().e("ExoMediaPlayer", "ExoPlaybackException " + paramExoPlaybackException + "\n" + ExoMediaPlayerUtils.getPrintableStackTrace(paramExoPlaybackException));
+    Object localObject = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExoPlaybackException ");
+    localStringBuilder.append(paramExoPlaybackException);
+    localStringBuilder.append("\n");
+    localStringBuilder.append(ExoMediaPlayerUtils.getPrintableStackTrace(paramExoPlaybackException));
+    ((ILogger)localObject).e("ExoMediaPlayer", localStringBuilder.toString());
+    int k = -4999;
+    int i = k;
     if (paramExoPlaybackException != null)
     {
-      i = 0;
-      Throwable localThrowable = null;
-      int j;
-      while ((paramExoPlaybackException instanceof ExoPlaybackException))
+      localStringBuilder = null;
+      int j = 0;
+      localObject = paramExoPlaybackException;
+      paramExoPlaybackException = localStringBuilder;
+      while ((localObject instanceof ExoPlaybackException))
       {
-        localThrowable = paramExoPlaybackException.getCause();
-        j = ((ExoPlaybackException)paramExoPlaybackException).type + 100;
+        paramExoPlaybackException = ((Throwable)localObject).getCause();
+        localObject = (ExoPlaybackException)localObject;
+        j = ((ExoPlaybackException)localObject).type + 100;
         i = j;
         if (j == 1) {
-          i = j + ((ExoPlaybackException)paramExoPlaybackException).rendererIndex;
+          i = j + ((ExoPlaybackException)localObject).rendererIndex;
         }
-        paramExoPlaybackException = localThrowable;
+        localObject = paramExoPlaybackException;
+        j = i;
       }
-      if (localThrowable != null)
-      {
-        if ((localThrowable instanceof HttpDataSource.HttpDataSourceException))
+      i = k;
+      if (paramExoPlaybackException != null) {
+        if ((paramExoPlaybackException instanceof HttpDataSource.HttpDataSourceException))
         {
-          j = i - 4000;
-          if (localThrowable.toString().contains("Unable to connect"))
+          j -= 4000;
+          if (paramExoPlaybackException.toString().contains("Unable to connect"))
           {
             boolean bool = ExoMediaPlayerUtils.isNetworkAvailable(ExoMediaPlayer.access$2700(this.this$0));
-            ExoMediaPlayer.getLogger().e("ExoMediaPlayer", "ExoPlaybackException hasNetwork=" + bool + " caused by:\n" + localThrowable.toString());
+            localObject = ExoMediaPlayer.getLogger();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("ExoPlaybackException hasNetwork=");
+            localStringBuilder.append(bool);
+            localStringBuilder.append(" caused by:\n");
+            localStringBuilder.append(paramExoPlaybackException.toString());
+            ((ILogger)localObject).e("ExoMediaPlayer", localStringBuilder.toString());
             if (!bool)
             {
               ExoMediaPlayer.access$2800(this.this$0, j, -2);
@@ -71,79 +99,94 @@ class ExoMediaPlayer$Exo2EventListener
             return;
           }
           i = j;
-          if (!(localThrowable instanceof HttpDataSource.InvalidResponseCodeException)) {
-            break label497;
-          }
-          paramExoPlaybackException = localThrowable.toString();
-          if (paramExoPlaybackException.contains("403"))
+          if ((paramExoPlaybackException instanceof HttpDataSource.InvalidResponseCodeException))
           {
-            ExoMediaPlayer.access$2800(this.this$0, j, -10);
+            paramExoPlaybackException = paramExoPlaybackException.toString();
+            if (paramExoPlaybackException.contains("403"))
+            {
+              ExoMediaPlayer.access$2800(this.this$0, j, -10);
+              return;
+            }
+            if (paramExoPlaybackException.contains("404"))
+            {
+              ExoMediaPlayer.access$2800(this.this$0, j, -11);
+              return;
+            }
+            if (paramExoPlaybackException.contains("500"))
+            {
+              ExoMediaPlayer.access$2800(this.this$0, j, -12);
+              return;
+            }
+            if (paramExoPlaybackException.contains("502"))
+            {
+              ExoMediaPlayer.access$2800(this.this$0, j, -13);
+              return;
+            }
+            ExoMediaPlayer.access$2800(this.this$0, j, -30);
+          }
+        }
+        else
+        {
+          if ((paramExoPlaybackException instanceof UnrecognizedInputFormatException))
+          {
+            ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
+            ExoMediaPlayer.access$2800(this.this$0, j - 4001, -1);
             return;
           }
-          if (paramExoPlaybackException.contains("404"))
+          if ((paramExoPlaybackException instanceof IllegalStateException))
           {
-            ExoMediaPlayer.access$2800(this.this$0, j, -11);
+            ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
+            ExoMediaPlayer.access$2800(this.this$0, j - 4002, -1);
             return;
           }
-          if (paramExoPlaybackException.contains("500"))
+          if ((paramExoPlaybackException instanceof MediaCodecRenderer.DecoderInitializationException))
           {
-            ExoMediaPlayer.access$2800(this.this$0, j, -12);
+            ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
+            ExoMediaPlayer.access$2800(this.this$0, j - 4003, -1);
             return;
           }
-          if (paramExoPlaybackException.contains("502"))
+          i = k;
+          if ((paramExoPlaybackException instanceof Loader.UnexpectedLoaderException))
           {
-            ExoMediaPlayer.access$2800(this.this$0, j, -13);
+            ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
+            ExoMediaPlayer.access$2800(this.this$0, j - 4004, -1);
             return;
           }
-          ExoMediaPlayer.access$2800(this.this$0, j, -30);
-          return;
-        }
-        if ((localThrowable instanceof UnrecognizedInputFormatException))
-        {
-          ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
-          ExoMediaPlayer.access$2800(this.this$0, i - 4001, -1);
-          return;
-        }
-        if ((localThrowable instanceof IllegalStateException))
-        {
-          ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
-          ExoMediaPlayer.access$2800(this.this$0, i - 4002, -1);
-          return;
-        }
-        if ((localThrowable instanceof MediaCodecRenderer.DecoderInitializationException))
-        {
-          ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
-          ExoMediaPlayer.access$2800(this.this$0, i - 4003, -1);
-          return;
-        }
-        if ((localThrowable instanceof Loader.UnexpectedLoaderException))
-        {
-          ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent());
-          ExoMediaPlayer.access$2800(this.this$0, i - 4004, -1);
-          return;
         }
       }
     }
-    int i = -4999;
-    label497:
     ExoMediaPlayer.getLogger().i("ExoMediaPlayer", ExoMediaPlayerUtils.getLogcatContent(0, null, 30));
     ExoMediaPlayer.access$2800(this.this$0, i, -1);
   }
   
   public void onPlayerStateChanged(boolean paramBoolean, int paramInt)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onPlayerStateChanged playWhenReady=" + paramBoolean + ",playbackState=" + paramInt);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPlayerStateChanged playWhenReady=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(",playbackState=");
+    localStringBuilder.append(paramInt);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     ExoMediaPlayer.access$2600(this.this$0);
   }
   
   public void onPositionDiscontinuity(int paramInt)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onPositionDiscontinuity reason=" + paramInt);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPositionDiscontinuity reason=");
+    localStringBuilder.append(paramInt);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
   }
   
   public void onRepeatModeChanged(int paramInt)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onRepeatModeChanged " + paramInt);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRepeatModeChanged ");
+    localStringBuilder.append(paramInt);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
   }
   
   public void onSeekProcessed()
@@ -153,12 +196,20 @@ class ExoMediaPlayer$Exo2EventListener
   
   public void onShuffleModeEnabledChanged(boolean paramBoolean)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onShuffleModeEnabledChanged shuffleModeEnabled=" + paramBoolean);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onShuffleModeEnabledChanged shuffleModeEnabled=");
+    localStringBuilder.append(paramBoolean);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
   }
   
   public void onTimelineChanged(Timeline paramTimeline, Object paramObject, int paramInt)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onTimelineChanged reason=" + paramInt);
+    paramTimeline = ExoMediaPlayer.getLogger();
+    paramObject = new StringBuilder();
+    paramObject.append("onTimelineChanged reason=");
+    paramObject.append(paramInt);
+    paramTimeline.d("ExoMediaPlayer", paramObject.toString());
   }
   
   public void onTracksChanged(TrackGroupArray paramTrackGroupArray, TrackSelectionArray paramTrackSelectionArray)
@@ -166,14 +217,20 @@ class ExoMediaPlayer$Exo2EventListener
     ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onTracksChanged");
     if (ExoMediaPlayer.access$2500(this.this$0).size() > 0)
     {
-      ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "update duration idx=" + ExoMediaPlayer.access$700(this.this$0).getCurrentWindowIndex() + ",duration=" + ExoMediaPlayer.access$700(this.this$0).getDuration());
+      paramTrackGroupArray = ExoMediaPlayer.getLogger();
+      paramTrackSelectionArray = new StringBuilder();
+      paramTrackSelectionArray.append("update duration idx=");
+      paramTrackSelectionArray.append(ExoMediaPlayer.access$700(this.this$0).getCurrentWindowIndex());
+      paramTrackSelectionArray.append(",duration=");
+      paramTrackSelectionArray.append(ExoMediaPlayer.access$700(this.this$0).getDuration());
+      paramTrackGroupArray.d("ExoMediaPlayer", paramTrackSelectionArray.toString());
       ExoMediaPlayer.access$2500(this.this$0).set(ExoMediaPlayer.access$700(this.this$0).getCurrentWindowIndex(), Long.valueOf(ExoMediaPlayer.access$700(this.this$0).getDuration()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.ExoMediaPlayer.Exo2EventListener
  * JD-Core Version:    0.7.0.1
  */

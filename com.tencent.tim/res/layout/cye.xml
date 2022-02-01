@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_horizontal" android:id="@id/ofr" android:background="#ffe9e9e9" style="@style/af3">
+        <View android:id="@id/ofa" android:background="@null" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/eh4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-120.0dip" android:src="@drawable/h3p" android:layout_below="@id/ofa" android:layout_centerHorizontal="true" android:contentDescription="@string/pb" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/air" android:id="@id/lbi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/wg1" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.qqmail.popularize.view.WelcomeSplashView android:gravity="center_horizontal" android:id="@id/o0x" android:background="#ffe9e9e9" android:visibility="gone" style="@style/af3">
+        <ImageView android:id="@id/o0s" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <View android:id="@id/me5" android:background="@drawable/i73" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/nzp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bso" android:layout_marginTop="@dimen/bso" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/nzr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bso" android:layout_marginRight="@dimen/bso" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/nzo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bso" android:layout_marginBottom="@dimen/bso" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/nzq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bso" android:layout_marginBottom="@dimen/bso" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/nzn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bsn" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </com.tencent.qqmail.popularize.view.WelcomeSplashView>
+</FrameLayout>

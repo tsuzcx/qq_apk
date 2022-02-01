@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.troopgift;
 
-import bcvo;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 
-public class TroopInteractGiftAnimationController$3
+class TroopInteractGiftAnimationController$3
   implements Runnable
 {
-  public TroopInteractGiftAnimationController$3(bcvo parambcvo, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
+  TroopInteractGiftAnimationController$3(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class TroopInteractGiftAnimationController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ public final class CLIENT_REPORT_RSP
   extends JceStruct
 {
   static Map<String, String> cache_msg = new HashMap();
-  public int code;
-  public Map<String, String> msg;
+  public int code = 0;
+  public Map<String, String> msg = null;
   
   static
   {
@@ -35,14 +35,15 @@ public final class CLIENT_REPORT_RSP
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.code, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Map localMap = this.msg;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.CLIENT_REPORT_RSP
  * JD-Core Version:    0.7.0.1
  */

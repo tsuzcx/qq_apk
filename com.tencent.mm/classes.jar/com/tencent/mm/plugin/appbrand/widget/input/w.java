@@ -1,601 +1,578 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.ContextThemeWrapper;
+import android.graphics.Rect;
+import android.text.Editable;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.o;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e.a;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.o.a;
+import com.tencent.mm.plugin.appbrand.widget.input.e.e;
+import com.tencent.mm.plugin.appbrand.widget.input.e.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.tools.g.a;
+import com.tencent.threadpool.i;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-public class w
-  extends LinearLayout
-  implements ac, u.b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputComponent;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandInputComponent;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget;", "inputType", "", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "inputParams", "Lcom/tencent/mm/plugin/appbrand/widget/input/params/InsertParams;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/widget/input/params/InsertParams;)V", "forceLightMode", "", "inputWidget", "keyboardPanel", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "myTag", "performingHideKeyboard", "performingShowKeyboard", "sessionId", "style", "Lcom/tencent/mm/plugin/appbrand/widget/input/params/UpdateParams;", "adjustPositionOnFocused", "clearInputWidgetFocus", "", "currentValue", "Landroid/text/Editable;", "dispatchKeyboardComplete", "isInputDone", "doHideKeyboard", "doShowKeyboard", "findKeyboardPanel", "getInput", "getInputPanel", "Landroid/view/View;", "P", "Lcom/tencent/mm/plugin/appbrand/widget/input/IBaseInputPanel;", "getInputPanelMarginBottom", "", "getPosition", "Landroid/graphics/Rect;", "hideKeyboard", "isFocused", "onFocusChanged", "hasFocus", "showKeyboard", "selectionStart", "selectionEnd", "updateStyle", "params", "updateValue", "value", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class w
+  extends c<x>
 {
-  private static final int VIEW_ID;
-  private static final w.b jnp;
-  private Context context;
-  private final Runnable jna;
-  private d jnb;
-  private c jnc;
-  private boolean jnd;
-  private e jne;
-  private com.tencent.mm.plugin.appbrand.widget.input.panel.e jnf;
-  private View jng;
-  private View jnh;
-  private ImageButton jnj;
-  private boolean jnk;
-  private View jnl;
-  private boolean jnm;
-  protected EditText jnn;
-  private final ad jno;
-  private int state;
+  private final String djQ;
+  private boolean qkq;
+  private final String sessionId;
+  private com.tencent.mm.plugin.appbrand.widget.input.e.h uFd;
+  private boolean uFe;
+  private boolean uFf;
+  private x uHs;
+  private z uHt;
   
-  static
+  public w(String paramString, com.tencent.mm.plugin.appbrand.page.ad paramad, e parame)
   {
-    AppMethodBeat.i(123815);
-    VIEW_ID = 2131820561;
-    jnp = new w.f((byte)0);
-    AppMethodBeat.o(123815);
-  }
-  
-  public w(Context paramContext)
-  {
-    super(paramContext);
-    AppMethodBeat.i(123790);
-    this.jna = new w.1(this);
-    this.jnd = false;
-    this.state = 2;
-    this.context = paramContext;
-    if ((paramContext instanceof ad))
+    super(paramString, paramad, parame.uES);
+    AppMethodBeat.i(324524);
+    this.djQ = s.X("MicroMsg.AppBrand.AppBrandSecureInputComponent#", Integer.valueOf(this.uES));
+    parame = parame.uLy;
+    if (parame == null)
     {
-      paramContext = (ad)paramContext;
-      this.jno = paramContext;
-      super.setId(VIEW_ID);
-      setOrientation(1);
-      paramContext = vR();
-      this.jnh = paramContext;
-      addView(paramContext);
-      paramContext = (e.b)com.tencent.luggage.a.e.q(e.b.class);
-      if (paramContext != null) {
-        break label199;
-      }
-    }
-    label199:
-    for (paramContext = null;; paramContext = paramContext.cV(this.context))
-    {
-      this.jnf = paramContext;
-      if (this.jnf == null) {
-        this.jnf = new e.a(this.context);
-      }
-      this.jng = this.jnf.getPanelView();
-      this.jng.setVisibility(8);
-      this.jng.setBackgroundColor(0);
-      this.jnf.setOnTextOperationListener(new w.4(this));
-      addView(this.jng);
-      vP();
-      AppMethodBeat.o(123790);
-      return;
-      paramContext = new com.tencent.mm.plugin.appbrand.widget.input.b.a();
-      break;
-    }
-  }
-  
-  private void aRi()
-  {
-    AppMethodBeat.i(123793);
-    vO();
-    ((u)n.cJ(this).getOnLayoutListener()).jmJ = this;
-    AppMethodBeat.o(123793);
-  }
-  
-  private void aRj()
-  {
-    AppMethodBeat.i(123794);
-    n localn = n.cJ(this);
-    if (localn.getOnLayoutListener() == null)
-    {
-      AppMethodBeat.o(123794);
-      return;
-    }
-    ((u)localn.getOnLayoutListener()).jmJ = null;
-    AppMethodBeat.o(123794);
-  }
-  
-  private void aRk()
-  {
-    AppMethodBeat.i(123796);
-    aRm();
-    if (this.jnn != null)
-    {
-      InputMethodManager localInputMethodManager = aj.cV(this.jnn);
-      if (!localInputMethodManager.showSoftInput(this.jnn, 1)) {
-        localInputMethodManager.showSoftInput(this.jnn, 2);
-      }
-      AppMethodBeat.o(123796);
-      return;
-    }
-    this.jno.showVKB();
-    AppMethodBeat.o(123796);
-  }
-  
-  private void aRl()
-  {
-    AppMethodBeat.i(123797);
-    jnp.n(this);
-    if (this.jnj != null) {
-      this.jnj.setSelected(true);
-    }
-    qw(1);
-    AppMethodBeat.o(123797);
-  }
-  
-  private void aRm()
-  {
-    AppMethodBeat.i(123798);
-    jnp.m(this);
-    if (this.jnj != null) {
-      this.jnj.setSelected(false);
-    }
-    qw(0);
-    AppMethodBeat.o(123798);
-  }
-  
-  public static w cQ(View paramView)
-  {
-    AppMethodBeat.i(123781);
-    paramView = (w)paramView.getRootView().findViewById(VIEW_ID);
-    AppMethodBeat.o(123781);
-    return paramView;
-  }
-  
-  public static w cR(View paramView)
-  {
-    AppMethodBeat.i(123782);
-    n localn = n.cJ(paramView);
-    if ((localn.getOnLayoutListener() == null) || (!(localn.getOnLayoutListener() instanceof u))) {
-      localn.setOnLayoutListener(new u());
-    }
-    Object localObject1 = cQ(paramView);
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject2 = com.tencent.mm.sdk.f.a.hr(paramView.getContext());
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = paramView.getContext();
-        if (localObject1 == null) {
-          break label133;
-        }
-        if ((localObject1 instanceof ContextThemeWrapper)) {
-          localObject1 = (ContextThemeWrapper)localObject1;
-        }
-      }
-      else
-      {
-        label83:
-        if (!(paramView instanceof w)) {
-          break label138;
-        }
-        paramView = (w)paramView;
-        label95:
-        localn.cK(paramView);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(123782);
-      return paramView;
-      if ((localObject1 instanceof ContextWrapper))
-      {
-        localObject2 = ((ContextWrapper)localObject1).getBaseContext();
-        if (localObject2 != localObject1)
+      parame = null;
+      this.sessionId = parame;
+      parame = paramad.getContext();
+      s.s(parame, "pageView.context");
+      this.uHs = new x(parame);
+      Log.d(this.djQ, "<init>, inputType: " + paramString + ", inputId: " + this.uES + ", sessionId: " + this.sessionId);
+      paramad.a(new w..ExternalSyntheticLambda0(this));
+      paramString = this.uHs;
+      if (paramString != null) {
+        paramString.setListener((x.a)new x.a()
         {
-          localObject1 = localObject2;
-          break;
+          public final void cRt()
+          {
+            AppMethodBeat.i(324627);
+            w.c(this.uHu);
+            AppMethodBeat.o(324627);
+          }
+        });
+      }
+      paramString = this.sessionId;
+      if (paramString != null) {
+        break label272;
+      }
+      paramString = localObject;
+      label186:
+      paramad = (CharSequence)paramString;
+      if ((paramad != null) && (paramad.length() != 0)) {
+        break label298;
+      }
+    }
+    label272:
+    label298:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        paramad = this.uHs;
+        if (paramad != null) {
+          paramad.setText((CharSequence)paramString);
         }
       }
-      label133:
-      localObject1 = null;
-      break label83;
-      label138:
-      paramView = new w((Context)localObject1);
-      break label95;
-      paramView = (View)localObject1;
+      AppMethodBeat.o(324524);
+      return;
+      parame = String.format("AppBrandSecureInput#%s#%s", Arrays.copyOf(new Object[] { Integer.valueOf(paramad.getComponentId()), parame }, 2));
+      s.s(parame, "java.lang.String.format(this, *args)");
+      break;
+      paramad = com.tencent.mm.model.ad.bCb().Jm(paramString);
+      paramString = localObject;
+      if (paramad == null) {
+        break label186;
+      }
+      paramString = paramad.getString("SecureInputValue", null);
+      break label186;
     }
   }
   
-  private void qw(int paramInt)
+  private static final void a(w paramw)
   {
-    AppMethodBeat.i(123795);
-    post(new w.5(this, paramInt, this.jnd));
-    AppMethodBeat.o(123795);
+    AppMethodBeat.i(324545);
+    s.u(paramw, "this$0");
+    Log.i(paramw.djQ, "onDestroy");
+    com.tencent.mm.model.ad.bCb().Jn(paramw.sessionId);
+    AppMethodBeat.o(324545);
   }
   
-  private void setPanelHeightImpl(int paramInt)
+  private static final void a(w paramw, Integer paramInteger)
   {
-    AppMethodBeat.i(123787);
-    if (this.jnf.qu(paramInt)) {
-      this.jna.run();
+    AppMethodBeat.i(324549);
+    s.u(paramw, "this$0");
+    x localx = paramw.uHs;
+    if (localx == null)
+    {
+      AppMethodBeat.o(324549);
+      return;
     }
-    AppMethodBeat.o(123787);
+    if (paramInteger == null)
+    {
+      AppMethodBeat.o(324549);
+      return;
+    }
+    int i = paramInteger.intValue();
+    Log.i(paramw.djQ, s.X("updateStyle, maxLength: ", Integer.valueOf(i)));
+    p.a((EditText)localx).aEg(i).Nc(false).b(g.a.afIH).a(null);
+    AppMethodBeat.o(324549);
   }
   
-  public final boolean aRd()
+  private final z cRs()
   {
-    AppMethodBeat.i(123783);
-    boolean bool = this.jnf.aRd();
-    AppMethodBeat.o(123783);
+    AppMethodBeat.i(324537);
+    if (this.uHt == null)
+    {
+      localObject = this.uHs;
+      if (localObject != null) {
+        break label42;
+      }
+    }
+    label42:
+    for (Object localObject = null;; localObject = ((x)localObject).getInputPanel())
+    {
+      this.uHt = ((z)localObject);
+      localObject = this.uHt;
+      AppMethodBeat.o(324537);
+      return localObject;
+    }
+  }
+  
+  private boolean isFocused()
+  {
+    AppMethodBeat.i(324528);
+    Log.d(this.djQ, "isFocused");
+    if (this.uHs == null)
+    {
+      Log.d(this.djQ, "isFocused, inputWidget is null");
+      AppMethodBeat.o(324528);
+      return false;
+    }
+    Object localObject = this.uHs;
+    if ((localObject != null) && (true == ((x)localObject).isFocused())) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.d(this.djQ, "isFocused, inputWidget focused");
+      AppMethodBeat.o(324528);
+      return true;
+    }
+    localObject = cRs();
+    if (localObject == null)
+    {
+      Log.d(this.djQ, "isFocused, keyboardPanel is null");
+      AppMethodBeat.o(324528);
+      return false;
+    }
+    if (!((z)localObject).isShown())
+    {
+      Log.d(this.djQ, "isFocused, keyboardPanel is not shown");
+      AppMethodBeat.o(324528);
+      return false;
+    }
+    boolean bool = s.p(((z)localObject).getAttachedInputWidget(), this.uHs);
+    AppMethodBeat.o(324528);
     return bool;
   }
   
-  public final boolean b(EditText paramEditText)
+  private final void lC(boolean paramBoolean)
   {
-    if (paramEditText == this.jnn)
+    AppMethodBeat.i(324541);
+    if (!paramBoolean)
     {
-      this.jnn = null;
+      a(cQF());
+      AppMethodBeat.o(324541);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.page.ad localad = (com.tencent.mm.plugin.appbrand.page.ad)this.uEU.get();
+    localObject = this.uFd;
+    try
+    {
+      localObject = y.a(this.uHs, localad, (com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject);
+      localad = null;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        String str = localIllegalStateException.getMessage();
+        Log.i(this.djQ, s.X("dispatchKeyboardComplete, encryptErrorMsg: ", str));
+        localObject = null;
+      }
+    }
+    a(cQF(), (String)localObject, localad);
+    AppMethodBeat.o(324541);
+  }
+  
+  private final void lF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(324534);
+    Log.d(this.djQ, s.X("doHideKeyboard, isInputDone: ", Boolean.valueOf(paramBoolean)));
+    boolean bool = isFocused();
+    if ((this.uFe) || (!bool))
+    {
+      Log.i(this.djQ, "doHideKeyboard, performingHideKeyboard: " + this.uFe + ", isFocused: " + bool);
+      AppMethodBeat.o(324534);
+      return;
+    }
+    this.uFe = true;
+    lC(paramBoolean);
+    Object localObject = this.uHs;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((x)localObject).getRealText$luggage_wxa_app_input_ext_release())
+    {
+      if (localObject != null)
+      {
+        String str = this.sessionId;
+        if (str != null) {
+          com.tencent.mm.model.ad.bCb().M(str, true).aY("SecureInputValue", (String)localObject);
+        }
+      }
+      cQN();
+      remove();
+      this.uFe = false;
+      this.uHs = null;
+      AppMethodBeat.o(324534);
+      return;
+    }
+  }
+  
+  public final boolean agZ(String paramString)
+  {
+    AppMethodBeat.i(324588);
+    Log.d(this.djQ, s.X("updateValue, value: ", paramString));
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      localObject = this.uHs;
+      if (localObject != null) {
+        ((x)localObject).setText((CharSequence)paramString);
+      }
+      AppMethodBeat.o(324588);
       return true;
     }
+    AppMethodBeat.o(324588);
     return false;
   }
   
-  public final void bc(boolean paramBoolean)
+  protected final com.tencent.mm.plugin.appbrand.widget.input.e.h b(com.tencent.mm.plugin.appbrand.widget.input.e.h paramh)
   {
-    AppMethodBeat.i(123786);
-    ab.d("MicroMsg.AppBrandSoftKeyboardPanel", "onKeyboardStateChanged, kbShown = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      qx(0);
-      aRm();
-      AppMethodBeat.o(123786);
-      return;
+    x localx = null;
+    AppMethodBeat.i(324580);
+    s.u(paramh, "params");
+    Log.d(this.djQ, "updateStyle");
+    if (this.uFd == null) {
+      this.uFd = paramh;
     }
-    if (isShown())
+    while (this.uHs == null)
     {
-      if ((this.jnk) && (1 == this.state))
+      AppMethodBeat.o(324580);
+      return null;
+      com.tencent.mm.plugin.appbrand.widget.input.e.h localh = this.uFd;
+      if (localh != null)
       {
-        aRl();
-        AppMethodBeat.o(123786);
-        return;
-      }
-      hide();
-    }
-    AppMethodBeat.o(123786);
-  }
-  
-  protected final void fq(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123789);
-    if ((!this.jnd) && (this.jnc != null))
-    {
-      this.jnd = true;
-      this.jnc.fq(paramBoolean);
-      this.jnd = false;
-    }
-    AppMethodBeat.o(123789);
-  }
-  
-  public final void fu(int paramInt)
-  {
-    AppMethodBeat.i(123784);
-    ab.d("MicroMsg.AppBrandSoftKeyboardPanel", "[scrollUp] refreshHeight %d", new Object[] { Integer.valueOf(paramInt) });
-    jnp.c(this, paramInt);
-    AppMethodBeat.o(123784);
-  }
-  
-  public EditText getAttachedEditText()
-  {
-    return this.jnn;
-  }
-  
-  public int getMinimumHeight()
-  {
-    AppMethodBeat.i(123788);
-    if (getVisibility() == 0)
-    {
-      int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 48);
-      AppMethodBeat.o(123788);
-      return i;
-    }
-    AppMethodBeat.o(123788);
-    return 0;
-  }
-  
-  public final void hide()
-  {
-    AppMethodBeat.i(123809);
-    if (!isShown())
-    {
-      AppMethodBeat.o(123809);
-      return;
-    }
-    qx(8);
-    if (!this.jno.hideVKBHavingResult()) {
-      aj.cV(this).hideSoftInputFromWindow(getWindowToken(), 0);
-    }
-    aRm();
-    AppMethodBeat.o(123809);
-  }
-  
-  protected void onAttachedToWindow()
-  {
-    AppMethodBeat.i(123801);
-    super.onAttachedToWindow();
-    aRi();
-    AppMethodBeat.o(123801);
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(123802);
-    super.onDetachedFromWindow();
-    qx(8);
-    if (this.context != null)
-    {
-      if (this.jnn == null) {
-        break label92;
-      }
-      this.jno.hideVKB(this.jnn);
-    }
-    for (;;)
-    {
-      this.jnf.onDestroy();
-      if (this.jnj != null) {
-        this.jnj.setOnClickListener(null);
-      }
-      this.jnb = null;
-      removeAllViews();
-      this.context = null;
-      aRj();
-      AppMethodBeat.o(123802);
-      return;
-      label92:
-      this.jno.hideVKB();
-    }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(123785);
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ab.v("MicroMsg.AppBrandSoftKeyboardPanel", "[scrollUp] SoftKeyboardPanel onLayout measuredHeight = %d", new Object[] { Integer.valueOf(getMeasuredHeight()) });
-    AppMethodBeat.o(123785);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(123800);
-    super.onMeasure(paramInt1, paramInt2);
-    ab.d("MicroMsg.AppBrandSoftKeyboardPanel", "smileyPanelWrapper, onMeasure");
-    AppMethodBeat.o(123800);
-  }
-  
-  protected final void qv(int paramInt)
-  {
-    AppMethodBeat.i(156854);
-    super.setId(paramInt);
-    AppMethodBeat.o(156854);
-  }
-  
-  final void qx(int paramInt)
-  {
-    AppMethodBeat.i(123804);
-    int i = paramInt;
-    if (paramInt == 0)
-    {
-      i = paramInt;
-      if (o.cy(this)) {
-        i = 8;
+        localh.a((f)paramh);
+        au localau = au.uJG;
+        au.a(localh, paramh);
       }
     }
-    if (getVisibility() == i)
+    b.a((EditText)this.uHs, this.uFd);
+    paramh = this.uFd;
+    if (paramh == null) {}
+    for (paramh = localx;; paramh = paramh.uMi)
     {
-      AppMethodBeat.o(123804);
-      return;
+      if (paramh != null)
+      {
+        localx = this.uHs;
+        if (localx != null) {
+          localx.setLength$luggage_wxa_app_input_ext_release(paramh.intValue());
+        }
+      }
+      com.tencent.threadpool.h.ahAA.bk(new w..ExternalSyntheticLambda1(this, paramh));
+      paramh = this.uFd;
+      AppMethodBeat.o(324580);
+      return paramh;
     }
-    super.setVisibility(i);
-    if (i == 0)
-    {
-      aRi();
-      AppMethodBeat.o(123804);
-      return;
-    }
-    aRj();
-    AppMethodBeat.o(123804);
   }
   
-  public void setCanSmileyInput(boolean paramBoolean)
+  protected final Rect cQC()
+  {
+    AppMethodBeat.i(324594);
+    Object localObject = this.uFd;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(324594);
+      return null;
+    }
+    Integer localInteger = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLC;
+    s.s(localInteger, "styleSnapshot.inputLeft");
+    int i = ((Number)localInteger).intValue();
+    localInteger = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLB;
+    s.s(localInteger, "styleSnapshot.inputTop");
+    int j = ((Number)localInteger).intValue();
+    int k = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLC.intValue();
+    localInteger = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLz;
+    s.s(localInteger, "styleSnapshot.inputWidth");
+    int m = ((Number)localInteger).intValue();
+    int n = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLB.intValue();
+    localObject = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLA;
+    s.s(localObject, "styleSnapshot.inputHeight");
+    localObject = new Rect(i, j, k + m, ((Number)localObject).intValue() + n);
+    AppMethodBeat.o(324594);
+    return localObject;
+  }
+  
+  public final Editable cQF()
+  {
+    AppMethodBeat.i(324590);
+    Editable localEditable = super.cQF();
+    Log.d(this.djQ, s.X("currentValue, curVal: ", localEditable));
+    AppMethodBeat.o(324590);
+    return localEditable;
+  }
+  
+  public final boolean cQL()
+  {
+    AppMethodBeat.i(324584);
+    com.tencent.mm.plugin.appbrand.widget.input.e.h localh = this.uFd;
+    if (localh == null) {}
+    for (boolean bool = false;; bool = s.p(Boolean.TRUE, localh.uLW))
+    {
+      Log.d(this.djQ, s.X("adjustPositionOnFocused, adjustPos: ", Boolean.valueOf(bool)));
+      AppMethodBeat.o(324584);
+      return bool;
+    }
+  }
+  
+  public final int cQM()
   {
     int i = 0;
-    AppMethodBeat.i(123805);
-    this.jnk = false;
-    ImageButton localImageButton;
-    if (this.jnj != null)
+    AppMethodBeat.i(324592);
+    Object localObject = this.uFd;
+    if (localObject == null) {}
+    for (;;)
     {
-      localImageButton = this.jnj;
-      if (!this.jnk) {
-        break label48;
+      Log.d(this.djQ, s.X("getInputPanelMarginBottom, marginBottom: ", Integer.valueOf(i)));
+      AppMethodBeat.o(324592);
+      return i;
+      localObject = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).uLT;
+      if (localObject != null) {
+        i = ((Integer)localObject).intValue();
       }
+    }
+  }
+  
+  public final boolean cQN()
+  {
+    AppMethodBeat.i(324573);
+    Log.d(this.djQ, "hideKeyboard");
+    Object localObject = cRs();
+    if (localObject == null)
+    {
+      Log.i(this.djQ, "hideKeyboardInternal, keyboardPanel is null");
+      AppMethodBeat.o(324573);
+      return false;
+    }
+    if (isFocused())
+    {
+      Log.d(((z)localObject).djQ, "hide");
+      ((z)localObject).setVisibility(8);
+      ((z)localObject).cRq();
+      Log.d(this.djQ, s.X("clearInputWidgetFocus, inputWidget: ", this.uHs));
+      localObject = this.uHs;
+      if (localObject != null)
+      {
+        ((x)localObject).setFocusable(false);
+        ((x)localObject).setFocusableInTouchMode(false);
+        ((x)localObject).setEnabled(false);
+      }
+      cQS();
+      cQT();
+      AppMethodBeat.o(324573);
+      return true;
+    }
+    AppMethodBeat.o(324573);
+    return false;
+  }
+  
+  public final <P extends View,  extends ag> View getInputPanel()
+  {
+    AppMethodBeat.i(324565);
+    Object localObject = cRs();
+    Log.d(this.djQ, s.X("getInputPanel, keyboardPanel: ", localObject));
+    localObject = (View)localObject;
+    AppMethodBeat.o(324565);
+    return localObject;
+  }
+  
+  protected final boolean lz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(324577);
+    Log.d(this.djQ, s.X("onFocusChanged, hasFocus: ", Boolean.valueOf(paramBoolean)));
+    if (!paramBoolean) {
+      lF(false);
     }
     for (;;)
     {
-      localImageButton.setVisibility(i);
-      vP();
-      AppMethodBeat.o(123805);
-      return;
-      label48:
-      i = 4;
-    }
-  }
-  
-  public void setId(int paramInt) {}
-  
-  public void setOnDoneListener(c paramc)
-  {
-    this.jnc = paramc;
-  }
-  
-  public void setOnSmileyChosenListener(d paramd)
-  {
-    this.jnb = paramd;
-  }
-  
-  public void setOnVisibilityChangedListener(e parame)
-  {
-    this.jne = parame;
-  }
-  
-  public void setShowDoneButton(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123806);
-    this.jnm = paramBoolean;
-    View localView;
-    if (this.jnl != null)
-    {
-      localView = this.jnl;
-      if (!this.jnm) {
-        break label48;
+      AppMethodBeat.o(324577);
+      return true;
+      paramBoolean = isFocused();
+      if ((this.uFf) || (paramBoolean))
+      {
+        Log.i(this.djQ, "doShowKeyboard, performingShowKeyboard: " + this.uFf + ", isFocused: " + paramBoolean);
+      }
+      else
+      {
+        this.uFf = true;
+        r(-2, -2, this.qkq);
+        this.uFf = false;
       }
     }
-    label48:
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      vP();
-      AppMethodBeat.o(123806);
-      return;
-    }
   }
   
-  public void setVisibility(int paramInt)
+  public final boolean r(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(123803);
-    if (paramInt == 8)
+    Object localObject3 = null;
+    AppMethodBeat.i(324570);
+    Log.d(this.djQ, "showKeyboard, selectionStart: " + paramInt1 + ", selectionEnd: " + paramInt2 + ", forceLightMode: " + paramBoolean);
+    if (this.uHs == null)
     {
-      if (getVisibility() != paramInt) {
-        fq(false);
+      Log.i(this.djQ, "showKeyboard, inputWidget is null");
+      AppMethodBeat.o(324570);
+      return false;
+    }
+    Object localObject1 = (com.tencent.mm.plugin.appbrand.page.ad)this.uEU.get();
+    if (localObject1 == null) {}
+    for (localObject1 = null; localObject1 == null; localObject1 = ((com.tencent.mm.plugin.appbrand.page.ad)localObject1).getContentView())
+    {
+      Log.w(this.djQ, "showKeyboard, pageContentView is null");
+      AppMethodBeat.o(324570);
+      return false;
+    }
+    Object localObject2 = z.uHA;
+    localObject2 = this.uFd;
+    boolean bool;
+    label170:
+    Object localObject4;
+    if (localObject2 == null)
+    {
+      bool = false;
+      localObject2 = (com.tencent.mm.plugin.appbrand.page.ad)this.uEU.get();
+      if (localObject2 != null) {
+        break label262;
       }
-      hide();
-      AppMethodBeat.o(123803);
-      return;
-    }
-    if (paramInt == 0)
-    {
-      show();
-      AppMethodBeat.o(123803);
-      return;
-    }
-    qx(paramInt);
-    AppMethodBeat.o(123803);
-  }
-  
-  public void show()
-  {
-    AppMethodBeat.i(123808);
-    aRk();
-    vQ();
-    if (!isShown()) {
-      qx(0);
-    }
-    AppMethodBeat.o(123808);
-  }
-  
-  protected void vO()
-  {
-    AppMethodBeat.i(156301);
-    cR(this);
-    AppMethodBeat.o(156301);
-  }
-  
-  protected void vP()
-  {
-    boolean bool = false;
-    AppMethodBeat.i(123799);
-    if (this.jnh == null)
-    {
-      AppMethodBeat.o(123799);
-      return;
-    }
-    w.a locala = (w.a)this.jnh;
-    int i;
-    if (!this.jnk)
-    {
-      i = 1;
-      if (this.jnm) {
-        break label84;
+      localObject2 = null;
+      s.u(localObject1, "view");
+      localObject4 = z.a.ej((View)localObject1);
+      if (localObject4 == null) {
+        break label272;
       }
+      z.a((z)localObject4, bool, (a)localObject2);
+      localObject1 = localObject4;
     }
-    label84:
-    for (int j = 1;; j = 0)
+    for (;;)
     {
-      if (((i & j) != 0) || (o.cy(this))) {
-        bool = true;
+      this.uHt = ((z)localObject1);
+      if (this.uHt != null) {
+        break label344;
       }
-      locala.setIsHide(bool);
-      AppMethodBeat.o(123799);
-      return;
-      i = 0;
+      Log.w(this.djQ, "showKeyboard, keyboardPanel is null");
+      AppMethodBeat.o(324570);
+      return false;
+      localObject2 = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject2).uMg;
+      if (localObject2 == null)
+      {
+        bool = false;
+        break;
+      }
+      bool = ((Boolean)localObject2).booleanValue();
       break;
+      label262:
+      localObject2 = ((com.tencent.mm.plugin.appbrand.page.ad)localObject2).cEK();
+      break label170;
+      label272:
+      localObject4 = n.ed((View)localObject1);
+      if (localObject4 == null)
+      {
+        Log.w("MicroMsg.AppBrand.AppBrandSecureKeyboardPanel", "settleKeyboardPanel, rootFrameLayout is null");
+        localObject1 = localObject3;
+      }
+      else
+      {
+        localObject1 = ((View)localObject1).getContext();
+        s.s(localObject1, "view.context");
+        localObject1 = new z((Context)localObject1, bool, (a)localObject2);
+        ((n)localObject4).n((View)localObject1, false);
+      }
+    }
+    label344:
+    this.uFf = true;
+    cQJ();
+    this.qkq = paramBoolean;
+    if (paramBoolean)
+    {
+      localObject1 = this.uHt;
+      if (localObject1 != null)
+      {
+        Log.d(((z)localObject1).djQ, "forceLightMode");
+        ((z)localObject1).uHC.bZo();
+      }
+    }
+    localObject1 = this.uHt;
+    if (localObject1 != null)
+    {
+      localObject2 = (EditText)this.uHs;
+      Log.d(((z)localObject1).djQ, "show");
+      if (localObject2 != null) {
+        break label489;
+      }
+      Log.i(((z)localObject1).djQ, "show, inputWidget is null");
+    }
+    for (;;)
+    {
+      localObject1 = this.uHt;
+      if (localObject1 != null) {
+        ((z)localObject1).setOnDoneListener((z.b)new a(this));
+      }
+      fZ(paramInt1, paramInt2);
+      cQU();
+      this.uFf = false;
+      AppMethodBeat.o(324570);
+      return true;
+      label489:
+      if (!s.p(localObject2, ((z)localObject1).uHD)) {
+        ((z)localObject1).cRq();
+      }
+      ((z)localObject1).setInputWidget((EditText)localObject2);
+      ((z)localObject1).setVisibility(0);
     }
   }
   
-  protected void vQ()
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputComponent$showKeyboard$1", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$OnDoneListener;", "onDone", "", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements z.b
   {
-    AppMethodBeat.i(123807);
-    setCanSmileyInput(this.jnk);
-    setShowDoneButton(this.jnm);
-    vP();
-    AppMethodBeat.o(123807);
-  }
-  
-  protected <T extends View,  extends w.a> T vR()
-  {
-    AppMethodBeat.i(123792);
-    w.g localg = new w.g(getContext());
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable = ah.getResources().getDrawable(2130840576);
-    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
-    localDrawable = ah.getResources().getDrawable(2130840575);
-    localStateListDrawable.addState(new int[0], localDrawable);
-    this.jnj = ((ImageButton)localg.findViewById(2131821548));
-    this.jnj.setSelected(false);
-    this.jnj.setImageDrawable(localStateListDrawable);
-    this.jnj.setOnClickListener(new w.2(this));
-    this.jnl = localg.findViewById(2131821547);
-    this.jnl.setOnClickListener(new w.3(this));
-    AppMethodBeat.o(123792);
-    return localg;
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void fq(boolean paramBoolean);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract boolean FO(String paramString);
-  }
-  
-  public static abstract interface e
-  {
-    public abstract void fq(int paramInt);
+    a(w paramw) {}
+    
+    public final void onDone()
+    {
+      AppMethodBeat.i(324600);
+      Log.d(w.b(this.uHu), "onDone#OnDoneListener");
+      this.uHu.lz(false);
+      AppMethodBeat.o(324600);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.w
  * JD-Core Version:    0.7.0.1
  */

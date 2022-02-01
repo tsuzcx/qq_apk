@@ -1,63 +1,71 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ando;
-import azri;
-import bdin;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ARReport$2
+class ARReport$2
   implements Runnable
 {
-  public ARReport$2(ando paramando, String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4) {}
+  ARReport$2(ARReport paramARReport, String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localHashMap.put("cloud_download_imgId", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    String str = this.a;
+    if (str != null) {
+      localHashMap.put("cloud_download_imgId", String.valueOf(str));
     }
-    if (this.jdField_a_of_type_Long > 0L) {
-      localHashMap.put("cloud_download_feature_size", String.valueOf(this.jdField_a_of_type_Long));
+    long l1 = this.b;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_feature_size", String.valueOf(l1));
     }
-    if (ando.a(this.this$0, this.jdField_b_of_type_Long)) {
-      localHashMap.put("cloud_download_feature_time", String.valueOf(this.jdField_b_of_type_Long));
+    if (ARReport.a(this.this$0, this.c)) {
+      localHashMap.put("cloud_download_feature_time", String.valueOf(this.c));
     }
-    if (this.jdField_a_of_type_Int > -1) {
-      localHashMap.put("cloud_download_feature_code", String.valueOf(this.jdField_a_of_type_Int));
+    int m = this.d;
+    if (m > -1) {
+      localHashMap.put("cloud_download_feature_code", String.valueOf(m));
     }
-    if (this.jdField_c_of_type_Long > 0L) {
-      localHashMap.put("cloud_download_model_size", String.valueOf(this.jdField_c_of_type_Long));
+    l1 = this.e;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_model_size", String.valueOf(l1));
     }
-    if (ando.a(this.this$0, this.jdField_d_of_type_Long)) {
-      localHashMap.put("cloud_download_model_time", String.valueOf(this.jdField_d_of_type_Long));
+    if (ARReport.a(this.this$0, this.f)) {
+      localHashMap.put("cloud_download_model_time", String.valueOf(this.f));
     }
-    if (this.jdField_b_of_type_Int > -1) {
-      localHashMap.put("cloud_download_model_code", String.valueOf(this.jdField_b_of_type_Int));
+    m = this.g;
+    if (m > -1) {
+      localHashMap.put("cloud_download_model_code", String.valueOf(m));
     }
-    if (this.e > 0L) {
-      localHashMap.put("cloud_download_unzip_time", String.valueOf(this.e));
+    l1 = this.h;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_unzip_time", String.valueOf(l1));
     }
-    if (this.jdField_c_of_type_Int > -1) {
-      localHashMap.put("cloud_download_type", String.valueOf(this.jdField_c_of_type_Int));
+    m = this.i;
+    if (m > -1) {
+      localHashMap.put("cloud_download_type", String.valueOf(m));
     }
-    localHashMap.put("cloud_download_net_type", String.valueOf(bdin.a(BaseApplication.getContext())));
-    if (ando.a(this.this$0, this.f)) {
-      localHashMap.put("cloud_download_all_time", String.valueOf(this.f));
+    localHashMap.put("cloud_download_net_type", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
+    if (ARReport.a(this.this$0, this.j)) {
+      localHashMap.put("cloud_download_all_time", String.valueOf(this.j));
     }
-    if (this.g > 0L) {
-      localHashMap.put("cloud_download_net_size", String.valueOf(this.g));
+    l1 = this.k;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_net_size", String.valueOf(l1));
     }
-    if (this.jdField_d_of_type_Int > -1) {
-      localHashMap.put("cloud_download_all_result", String.valueOf(this.jdField_d_of_type_Int));
+    m = this.l;
+    if (m > -1) {
+      localHashMap.put("cloud_download_all_result", String.valueOf(m));
     }
     localHashMap.put("cloud_download_type", "0");
-    azri.a(BaseApplication.getContext()).a("", "AndroidactARCloudDownLoad", true, 0L, 0L, localHashMap, "", true);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidactARCloudDownLoad", true, 0L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.2
  * JD-Core Version:    0.7.0.1
  */

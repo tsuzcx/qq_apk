@@ -1,38 +1,81 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.app.SVIPHandler.OrderListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.WeakHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SaveTrafficHandler;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class fge
   extends Handler
 {
-  public fge(SVIPHandler paramSVIPHandler, Looper paramLooper)
+  public fge(SaveTrafficHandler paramSaveTrafficHandler, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
+    boolean bool;
     switch (paramMessage.what)
     {
     default: 
-      return;
+      bool = false;
+      paramMessage = this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
     }
-    synchronized (this.a.a)
+    for (;;)
     {
-      SVIPHandler.OrderListener localOrderListener = (SVIPHandler.OrderListener)this.a.a.remove(Integer.valueOf(paramMessage.arg1));
-      if (QLog.isColorLevel()) {
-        QLog.d("vip", 2, "Order buble id timeout");
+      if (!paramMessage.hasNext()) {
+        break label182;
       }
-      if (localOrderListener != null)
+      try
       {
-        SVIPHandler.a(this.a, true);
-        localOrderListener.a(-1, paramMessage.arg2, null, null, null, null);
+        Object localObject = (Map.Entry)paramMessage.next();
+        if (localObject == null) {
+          continue;
+        }
+        ((Integer)((Map.Entry)localObject).getKey()).intValue();
+        localObject = (fgg)((Map.Entry)localObject).getValue();
+        if (localObject == null) {
+          continue;
+        }
+        if (((fgg)localObject).a == bool) {
+          break label152;
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject);
+        paramMessage.remove();
       }
-      return;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      continue;
+      bool = true;
+      break;
+      bool = false;
+      break;
+      label152:
+      if (localException.b) {
+        return;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localException);
+      paramMessage.remove();
+    }
+    label182:
+    if ((SaveTrafficHandler.c != bool) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.h))
+    {
+      int i = this.a.a();
+      paramMessage = new fgg(this.a, i, bool);
+      Handler localHandler = this.a.jdField_a_of_type_AndroidOsHandler;
+      if (bool) {}
+      for (long l = 300000L;; l = 5000L)
+      {
+        localHandler.postDelayed(paramMessage, l);
+        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), paramMessage);
+        return;
+      }
     }
   }
 }

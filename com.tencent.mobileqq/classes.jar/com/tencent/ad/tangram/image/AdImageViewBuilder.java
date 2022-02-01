@@ -22,10 +22,19 @@ public enum AdImageViewBuilder
     return null;
   }
   
+  public static void buildImageView(AdImageViewAdapter.Params paramParams, View paramView)
+  {
+    AdImageViewAdapter localAdImageViewAdapter = getAdapter();
+    if (localAdImageViewAdapter != null) {
+      localAdImageViewAdapter.buildImageView(paramParams, paramView);
+    }
+  }
+  
   private static AdImageViewAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdImageViewAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdImageViewAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -37,7 +46,7 @@ public enum AdImageViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.image.AdImageViewBuilder
  * JD-Core Version:    0.7.0.1
  */

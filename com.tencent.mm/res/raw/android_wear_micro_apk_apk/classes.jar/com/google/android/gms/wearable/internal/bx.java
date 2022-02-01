@@ -13,7 +13,7 @@ final class bx
   
   public final void a(zzco paramzzco)
   {
-    B(new aw(bj.bF(paramzzco.statusCode), paramzzco.TR));
+    K(new aw(bj.ca(paramzzco.statusCode), paramzzco.VG));
   }
 }
 

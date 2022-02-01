@@ -1,42 +1,34 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
-import bekm;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WebSoService$WebSoState
 {
-  public int a;
-  public bekm a;
-  public WebSoService.WebSoState.WebSo3 a;
-  public String a;
-  public WeakReference<Handler> a;
-  public final AtomicInteger a;
-  public boolean a;
-  public boolean[] a;
-  public volatile String b;
-  public final AtomicInteger b = new AtomicInteger(0);
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
+  public String a = null;
+  public volatile String b = null;
+  public String c = null;
   public boolean d;
-  public String e;
-  public boolean e = true;
-  public boolean f;
-  public boolean g;
-  
-  public WebSoService$WebSoState()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = new WebSoService.WebSoState.WebSo3();
-  }
+  public boolean e = false;
+  public final AtomicInteger f = new AtomicInteger(0);
+  public boolean g = false;
+  public boolean h;
+  public int i = 0;
+  public String j = "";
+  public boolean k = true;
+  public boolean l = false;
+  public String m = null;
+  public final AtomicInteger n = new AtomicInteger(0);
+  public boolean o;
+  public WeakReference<Handler> p;
+  public HybridWebReporter.HybridWebReportInfo q;
+  public boolean[] r;
+  public WebSoService.WebSoState.WebSo3 s = new WebSoService.WebSoState.WebSo3();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.WebSoState
  * JD-Core Version:    0.7.0.1
  */

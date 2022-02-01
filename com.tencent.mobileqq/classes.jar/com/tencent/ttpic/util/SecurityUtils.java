@@ -1,61 +1,54 @@
 package com.tencent.ttpic.util;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.text.TextUtils;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.device.BuildConfig;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Iterator;
-import java.util.List;
 
 public class SecurityUtils
 {
-  private static final String TAG = SecurityUtils.class.getSimpleName();
+  private static final String TAG = "SecurityUtils";
   private static String sSignMD5;
   
   private static String byteArrayToHex(byte[] paramArrayOfByte)
   {
-    int i = 0;
     char[] arrayOfChar1 = new char[16];
-    char[] tmp10_8 = arrayOfChar1;
-    tmp10_8[0] = 48;
-    char[] tmp15_10 = tmp10_8;
-    tmp15_10[1] = 49;
-    char[] tmp20_15 = tmp15_10;
-    tmp20_15[2] = 50;
-    char[] tmp25_20 = tmp20_15;
-    tmp25_20[3] = 51;
-    char[] tmp30_25 = tmp25_20;
-    tmp30_25[4] = 52;
-    char[] tmp35_30 = tmp30_25;
-    tmp35_30[5] = 53;
-    char[] tmp40_35 = tmp35_30;
-    tmp40_35[6] = 54;
-    char[] tmp46_40 = tmp40_35;
-    tmp46_40[7] = 55;
-    char[] tmp52_46 = tmp46_40;
-    tmp52_46[8] = 56;
-    char[] tmp58_52 = tmp52_46;
-    tmp58_52[9] = 57;
-    char[] tmp64_58 = tmp58_52;
-    tmp64_58[10] = 65;
-    char[] tmp70_64 = tmp64_58;
-    tmp70_64[11] = 66;
-    char[] tmp76_70 = tmp70_64;
-    tmp76_70[12] = 67;
-    char[] tmp82_76 = tmp76_70;
-    tmp82_76[13] = 68;
-    char[] tmp88_82 = tmp82_76;
-    tmp88_82[14] = 69;
-    char[] tmp94_88 = tmp88_82;
-    tmp94_88[15] = 70;
-    tmp94_88;
+    char[] tmp8_6 = arrayOfChar1;
+    tmp8_6[0] = 48;
+    char[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 49;
+    char[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 50;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 51;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 52;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 53;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 54;
+    char[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 55;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 56;
+    char[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 57;
+    char[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 65;
+    char[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 66;
+    char[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 67;
+    char[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 68;
+    char[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 69;
+    char[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 70;
+    tmp92_86;
     char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
     int k = paramArrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -71,41 +64,10 @@ public class SecurityUtils
   
   public static String getSignMD5(Context paramContext)
   {
-    if (TextUtils.isEmpty(sSignMD5))
-    {
-      if (!BuildConfig.DEBUG) {
-        break label25;
-      }
+    if (TextUtils.isEmpty(sSignMD5)) {
       sSignMD5 = Coffee.getDefaultSign();
     }
-    for (;;)
-    {
-      return sSignMD5;
-      try
-      {
-        label25:
-        sSignMD5 = stringMD5(getSignature(paramContext));
-      }
-      catch (Exception paramContext)
-      {
-        sSignMD5 = Coffee.getDefaultSign();
-      }
-    }
-  }
-  
-  private static String getSignature(Context paramContext)
-  {
-    Iterator localIterator = paramContext.getPackageManager().getInstalledPackages(64).iterator();
-    while (localIterator.hasNext())
-    {
-      PackageInfo localPackageInfo = (PackageInfo)localIterator.next();
-      if (localPackageInfo.packageName.equals(paramContext.getPackageName()))
-      {
-        LogUtils.v(TAG, "getSignature(), signature = %s", new Object[] { localPackageInfo.signatures[0].toCharsString() });
-        return localPackageInfo.signatures[0].toCharsString();
-      }
-    }
-    return "";
+    return sSignMD5;
   }
   
   public static String stringMD5(String paramString)
@@ -117,7 +79,11 @@ public class SecurityUtils
       paramString = byteArrayToHex(localMessageDigest.digest());
       return paramString;
     }
-    catch (NoSuchAlgorithmException paramString) {}
+    catch (NoSuchAlgorithmException paramString)
+    {
+      label24:
+      break label24;
+    }
     return "";
   }
   
@@ -130,13 +96,17 @@ public class SecurityUtils
       paramString = byteArrayToHex(localMessageDigest.digest());
       return paramString;
     }
-    catch (NoSuchAlgorithmException paramString) {}
+    catch (NoSuchAlgorithmException paramString)
+    {
+      label24:
+      break label24;
+    }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.SecurityUtils
  * JD-Core Version:    0.7.0.1
  */

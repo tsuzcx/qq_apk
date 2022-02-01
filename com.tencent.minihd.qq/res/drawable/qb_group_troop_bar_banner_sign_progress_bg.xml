@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <color android:src="@android:color/transparent" android:dither="true" />
+    </item>
+    <item android:id="@android:id/progress">
+        <clip android:gravity="left" android:clipOrientation="horizontal">
+            <nine-patch android:src="@drawable/qb_group_troop_bar_banner_sign_green_progress" android:dither="true" />
+        </clip>
+    </item>
+</layer-list>

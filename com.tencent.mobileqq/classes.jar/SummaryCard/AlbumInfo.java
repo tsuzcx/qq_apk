@@ -9,7 +9,7 @@ public final class AlbumInfo
   extends JceStruct
 {
   static ArrayList<PhotoInfo> cache_vPhotos;
-  public ArrayList<PhotoInfo> vPhotos;
+  public ArrayList<PhotoInfo> vPhotos = null;
   
   public AlbumInfo() {}
   
@@ -31,14 +31,15 @@ public final class AlbumInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vPhotos != null) {
-      paramJceOutputStream.write(this.vPhotos, 0);
+    ArrayList localArrayList = this.vPhotos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.AlbumInfo
  * JD-Core Version:    0.7.0.1
  */

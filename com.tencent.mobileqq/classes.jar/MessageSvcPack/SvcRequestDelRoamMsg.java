@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestDelRoamMsg
   extends JceStruct
 {
-  public byte cVerifyType;
-  public long lPeerUin;
-  public long lUin;
+  public byte cVerifyType = 0;
+  public long lPeerUin = 0L;
+  public long lUin = 0L;
   
   public SvcRequestDelRoamMsg() {}
   
@@ -36,7 +36,7 @@ public final class SvcRequestDelRoamMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestDelRoamMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskId")
 public class PromoteTaskEntry
-  extends awge
+  extends Entity
 {
   public long expireTime;
   public String feedId;
@@ -19,12 +19,33 @@ public class PromoteTaskEntry
   
   public String toString()
   {
-    return "PromoteTaskEntry{taskId=" + this.taskId + ", type=" + this.type + ", unionId='" + this.unionId + '\'' + ", feedId='" + this.feedId + '\'' + ", limitPromoteCount=" + this.limitPromoteCount + ", minimalVideoCount=" + this.minimalVideoCount + ", expireTime=" + this.expireTime + ", promoteCount=" + this.promoteCount + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PromoteTaskEntry{taskId=");
+    localStringBuilder.append(this.taskId);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feedId='");
+    localStringBuilder.append(this.feedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", limitPromoteCount=");
+    localStringBuilder.append(this.limitPromoteCount);
+    localStringBuilder.append(", minimalVideoCount=");
+    localStringBuilder.append(this.minimalVideoCount);
+    localStringBuilder.append(", expireTime=");
+    localStringBuilder.append(this.expireTime);
+    localStringBuilder.append(", promoteCount=");
+    localStringBuilder.append(this.promoteCount);
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.PromoteTaskEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/cth" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ct7" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_weight="3.0" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/cu1" android:layout_width="84.0dip" android:layout_height="84.0dip" android:layout_marginTop="0.0dip" android:src="@drawable/bqo" android:scaleType="fitXY" />
+    <View android:id="@id/ct8" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_weight="1.0" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/k3" android:gravity="center_horizontal" android:id="@id/cu5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="40.0dip" android:text="@string/bif" android:shadowColor="#b3ffffff" android:shadowRadius="1.0" />
+    <View android:id="@id/ct9" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_weight="1.0" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/k3" android:gravity="center_horizontal" android:id="@id/cu2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="40.0dip" android:text="@string/bik" android:shadowColor="#b3ffffff" android:shadowRadius="1.0" />
+    <View android:id="@id/ct_" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.mobileqq.gesturelock.LockPatternView android:layout_gravity="center_horizontal" android:id="@id/cu4" android:layout_width="290.0dip" android:layout_height="290.0dip" android:layout_marginTop="0.0dip" />
+    <View android:id="@id/cta" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_weight="3.0" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/k2" android:gravity="center_horizontal" android:id="@id/cu3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="@string/bii" />
+    <View android:id="@id/ctb" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_weight="3.0" />
+</LinearLayout>

@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class f
   extends c
 {
-  protected File gVL;
-  private OutputStream pU;
+  private OutputStream NY;
+  protected u mFile;
   
-  private boolean eL(String paramString)
+  private boolean adM(String paramString)
   {
-    AppMethodBeat.i(140662);
+    AppMethodBeat.i(146353);
     try
     {
-      this.gVL = new File(paramString);
-      if (this.gVL.exists()) {
-        this.gVL.delete();
+      this.mFile = new u(paramString);
+      if (this.mFile.jKS()) {
+        this.mFile.diJ();
       }
-      this.gVL.createNewFile();
-      this.pU = new DataOutputStream(new FileOutputStream(paramString));
-      AppMethodBeat.o(140662);
+      this.mFile.jKZ();
+      this.NY = new DataOutputStream(y.ev(paramString, false));
+      AppMethodBeat.o(146353);
       return true;
     }
     catch (Exception paramString)
     {
-      ab.b("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
-      AppMethodBeat.o(140662);
+      Log.printInfoStack("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
+      AppMethodBeat.o(146353);
     }
     return false;
   }
   
   public final boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(140659);
-    f(paramArrayOfByte, paramInt, paramBoolean);
+    AppMethodBeat.i(146350);
+    d(paramArrayOfByte, paramInt, paramBoolean);
     try
     {
-      if (this.pU != null) {
-        this.pU.write(paramArrayOfByte);
+      if (this.NY != null) {
+        this.NY.write(paramArrayOfByte);
       }
       label27:
-      AppMethodBeat.o(140659);
+      AppMethodBeat.o(146350);
       return true;
     }
     catch (Exception paramArrayOfByte)
@@ -57,15 +57,15 @@ public class f
   
   public void close()
   {
-    AppMethodBeat.i(140661);
-    if (this.pU != null) {}
+    AppMethodBeat.i(146352);
+    if (this.NY != null) {}
     try
     {
-      this.pU.flush();
-      this.pU.close();
+      this.NY.flush();
+      this.NY.close();
       label26:
-      this.pU = null;
-      AppMethodBeat.o(140661);
+      this.NY = null;
+      AppMethodBeat.o(146352);
       return;
     }
     catch (IOException localIOException)
@@ -76,16 +76,16 @@ public class f
   
   public final void flush()
   {
-    AppMethodBeat.i(140660);
-    f(new byte[0], 0, true);
-    AppMethodBeat.o(140660);
+    AppMethodBeat.i(146351);
+    d(new byte[0], 0, true);
+    AppMethodBeat.o(146351);
   }
   
-  public boolean h(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public boolean j(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(140658);
-    eL(paramString);
-    AppMethodBeat.o(140658);
+    AppMethodBeat.i(146349);
+    adM(paramString);
+    AppMethodBeat.o(146349);
     return true;
   }
 }

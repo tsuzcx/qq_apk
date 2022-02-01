@@ -86,7 +86,7 @@
                         "attributes": {
                             "setText:": "$video_title_text",
                             "setTextColorString:": "#FFFFFF",
-                            "setBoldFontSizeString:": "16",
+                            "setFontSizeString:": "16",
                             "setNumberOfLinesString:": "2"
                         }
                     },
@@ -118,8 +118,7 @@
                         "margin_right": "8",
                         "margin_bottom": "8",
                         "height": {
-                            "type": "wrap_content",
-                            "value": "12"
+                            "type": "wrap_content"
                         },
                         "width": {
                             "type": "wrap_content"
@@ -141,8 +140,7 @@
                         "margin_right": "2",
                         "margin_bottom": "8",
                         "height": {
-                            "type": "wrap_content",
-                            "value": "12"
+                            "type": "wrap_content"
                         },
                         "width": {
                             "type": "wrap_content"
@@ -152,6 +150,74 @@
                             "setTextColorString:": "#FFFFFF",
                             "setFontSizeString:": "12",
                             "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_left_mask_right",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_left_mask_right",
+                        "default_visible": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_bottom_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_right_mask_right",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_right_mask_right",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_bottom_round_corner"
                         }
                     }
                 ]

@@ -1,71 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import azqs;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 class TroopAssistantActivity$18
-  implements Runnable
+  extends MqqHandler
 {
   TroopAssistantActivity$18(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      List localList = this.this$0.a();
-      StringBuilder localStringBuilder = new StringBuilder().append("refreshTroopList -- data.size():");
-      int i;
-      if (localList == null) {
-        i = 0;
-      }
-      for (;;)
-      {
-        QLog.e("TroopAssistantActivity", 2, i);
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("data|size");
-          if (localList != null) {
-            break label118;
-          }
-          i = 0;
-          QLog.i("TroopAssistantActivity", 2, i);
-        }
-        try
-        {
-          Collections.sort(localList, this.this$0.a);
-          this.this$0.runOnUiThread(new TroopAssistantActivity.18.1(this, localList));
-          return;
-          i = localList.size();
-          continue;
-          label118:
-          i = localList.size();
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("TroopAssistantActivity", 2, "Collections.sort error ..., msg: " + localException2.getMessage());
-            }
-          }
-        }
-      }
+    if (!this.a.app.isLogin()) {
       return;
     }
-    catch (Exception localException1)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-      azqs.b(this.this$0.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAssistantActivity", 2, "refreshTroopList exception:" + localException1.toString());
+      if (i != 2) {
+        return;
       }
+      this.a.c();
+      return;
     }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.18
  * JD-Core Version:    0.7.0.1
  */

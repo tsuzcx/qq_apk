@@ -23,14 +23,17 @@ public class ImageViewCatchRecycle
     }
     catch (Exception paramCanvas)
     {
-      while (!QLog.isColorLevel()) {}
+      label6:
+      break label6;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("ImageViewCatchRecycle", 2, "onDraw() Canvas: trying to use a recycled bitmap");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewCatchRecycle
  * JD-Core Version:    0.7.0.1
  */

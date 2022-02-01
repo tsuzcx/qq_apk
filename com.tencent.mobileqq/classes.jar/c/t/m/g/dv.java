@@ -5,18 +5,21 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build.VERSION;
+import java.util.LinkedList;
 
 public final class dv
 {
-  public float a = -1.0F;
-  public float b;
-  public long c = -1L;
-  public double d = -1.0D;
-  public double e = -1.0D;
-  public double f = -1.0D;
-  public double g;
-  public double h = 0.0D;
-  public double i = 0.0D;
+  public LinkedList<fn> a = null;
+  public fp b = null;
+  public fp c = null;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public long f = 0L;
+  public boolean g = true;
+  public float h = 0.0F;
+  public ee i;
+  private final float j = 1.0F;
+  private final float k = 0.6F;
   
   @Deprecated
   @SuppressLint({"MissingPermission"})
@@ -25,39 +28,39 @@ public final class dv
     try
     {
       ConnectivityManager localConnectivityManager = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (localConnectivityManager == null) {}
-      for (paramContext = null; (paramContext == null) || (!paramContext.isConnected()); paramContext = localConnectivityManager.getActiveNetworkInfo()) {
-        return dv.a.a;
+      if (localConnectivityManager == null) {
+        paramContext = null;
+      } else {
+        paramContext = localConnectivityManager.getActiveNetworkInfo();
       }
-      if (Build.VERSION.SDK_INT >= 16)
+      if ((paramContext != null) && (paramContext.isConnected()))
       {
-        if (localConnectivityManager.isActiveNetworkMetered()) {
-          return dv.a.b;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          if (localConnectivityManager.isActiveNetworkMetered()) {
+            return dv.a.b;
+          }
+          return dv.a.c;
         }
-        return dv.a.c;
+        if (1 == paramContext.getType()) {
+          return dv.a.c;
+        }
+        return dv.a.b;
       }
-      if (1 == paramContext.getType()) {
-        return dv.a.c;
-      }
-      paramContext = dv.a.b;
+      paramContext = dv.a.a;
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label83:
+      break label83;
+    }
     return dv.a.a;
-  }
-  
-  public final void a()
-  {
-    this.f = -1.0D;
-    this.a = -1.0F;
-    this.c = -1L;
-    this.h = 0.0D;
-    this.i = 0.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dv
  * JD-Core Version:    0.7.0.1
  */

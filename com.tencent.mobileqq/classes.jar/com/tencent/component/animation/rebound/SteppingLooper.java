@@ -14,13 +14,14 @@ public class SteppingLooper
   
   public boolean step(long paramLong)
   {
-    if ((this.mSpringSystem == null) || (!this.mStarted)) {
-      return false;
+    if ((this.mSpringSystem != null) && (this.mStarted))
+    {
+      paramLong = this.mLastTime + paramLong;
+      this.mSpringSystem.loop(paramLong);
+      this.mLastTime = paramLong;
+      return this.mSpringSystem.getIsIdle();
     }
-    paramLong = this.mLastTime + paramLong;
-    this.mSpringSystem.loop(paramLong);
-    this.mLastTime = paramLong;
-    return this.mSpringSystem.getIsIdle();
+    return false;
   }
   
   public void stop()
@@ -30,7 +31,7 @@ public class SteppingLooper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.animation.rebound.SteppingLooper
  * JD-Core Version:    0.7.0.1
  */

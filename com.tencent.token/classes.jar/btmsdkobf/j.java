@@ -1,7 +1,6 @@
 package btmsdkobf;
 
 import android.database.ContentObserver;
-import android.util.Log;
 
 public class j
   extends ContentObserver
@@ -20,12 +19,10 @@ public class j
   
   public void onChange(boolean paramBoolean)
   {
-    if (this.ah != null)
-    {
-      this.ah.b(this.ag, this.af);
-      return;
+    i locali = this.ah;
+    if (locali != null) {
+      locali.b(this.ag, this.af);
     }
-    Log.e("VMS_IDLG_SDK_Observer", "mIdentifierIdClient is null");
   }
 }
 

@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class doa
-  implements DialogInterface.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public doa(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
+  public doa(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (ThemeSwitchDlgActivity.a(this.a)) {
+    switch (paramCompoundButton.getId())
+    {
+    default: 
       return;
     }
-    this.a.finish();
+    TroopAssistantManager.a().a(this.a.b, paramBoolean);
   }
 }
 

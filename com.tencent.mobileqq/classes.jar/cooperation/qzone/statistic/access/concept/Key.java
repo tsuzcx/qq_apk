@@ -3,7 +3,7 @@ package cooperation.qzone.statistic.access.concept;
 public class Key
 {
   protected int index = -1;
-  protected String name;
+  protected String name = null;
   
   public Key(String paramString)
   {
@@ -47,7 +47,7 @@ public class Key
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.Key
  * JD-Core Version:    0.7.0.1
  */

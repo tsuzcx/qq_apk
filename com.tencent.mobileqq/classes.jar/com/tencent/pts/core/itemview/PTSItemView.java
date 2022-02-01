@@ -29,30 +29,37 @@ public class PTSItemView
   
   private void attachRootNode(PTSNodeVirtual paramPTSNodeVirtual)
   {
-    if ((paramPTSNodeVirtual == null) || (paramPTSNodeVirtual.getView() == null)) {
-      return;
-    }
-    ViewGroup.LayoutParams localLayoutParams;
-    if (paramPTSNodeVirtual.getView().getParent() == null)
+    if (paramPTSNodeVirtual != null)
     {
-      addView(paramPTSNodeVirtual.getView());
-      localLayoutParams = getLayoutParams();
-      if (localLayoutParams != null) {
-        break label116;
+      if (paramPTSNodeVirtual.getView() == null) {
+        return;
       }
-    }
-    for (paramPTSNodeVirtual = new ViewGroup.LayoutParams(paramPTSNodeVirtual.getWidth(), paramPTSNodeVirtual.getHeight());; paramPTSNodeVirtual = localLayoutParams)
-    {
-      if (PTSLog.isDebug()) {
-        PTSLog.i("PTSItemView", "[attachRootNode], lp.width = " + paramPTSNodeVirtual.width + ", lp.height = " + paramPTSNodeVirtual.height);
+      if (paramPTSNodeVirtual.getView().getParent() == null) {
+        addView(paramPTSNodeVirtual.getView());
+      } else {
+        PTSLog.d("PTSItemView", "[attachRootNode], do not attach again.");
+      }
+      Object localObject = getLayoutParams();
+      if (localObject == null)
+      {
+        paramPTSNodeVirtual = new ViewGroup.LayoutParams(paramPTSNodeVirtual.getWidth(), paramPTSNodeVirtual.getHeight());
+      }
+      else
+      {
+        ((ViewGroup.LayoutParams)localObject).width = paramPTSNodeVirtual.getWidth();
+        ((ViewGroup.LayoutParams)localObject).height = paramPTSNodeVirtual.getHeight();
+        paramPTSNodeVirtual = (PTSNodeVirtual)localObject;
+      }
+      if (PTSLog.isDebug())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[attachRootNode], lp.width = ");
+        ((StringBuilder)localObject).append(paramPTSNodeVirtual.width);
+        ((StringBuilder)localObject).append(", lp.height = ");
+        ((StringBuilder)localObject).append(paramPTSNodeVirtual.height);
+        PTSLog.i("PTSItemView", ((StringBuilder)localObject).toString());
       }
       setLayoutParams(paramPTSNodeVirtual);
-      return;
-      PTSLog.d("PTSItemView", "[attachRootNode], do not attach again.");
-      break;
-      label116:
-      localLayoutParams.width = paramPTSNodeVirtual.getWidth();
-      localLayoutParams.height = paramPTSNodeVirtual.getHeight();
     }
   }
   
@@ -90,6 +97,11 @@ public class PTSItemView
       PTSLog.e("PTSItemView", "[bindData], appInstance is null.");
       return;
     }
+    if (paramPTSAppInstance.getRootNode() == null)
+    {
+      PTSLog.e("PTSItemView", "[bindData], appInstance.getRootNode is null.");
+      return;
+    }
     updateAppInstance(paramPTSAppInstance);
     PTSNodeInfo localPTSNodeInfo = paramPTSAppInstance.getRootNode().getRootNodeInfo();
     if (localPTSNodeInfo == null)
@@ -107,7 +119,7 @@ public class PTSItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemView
  * JD-Core Version:    0.7.0.1
  */

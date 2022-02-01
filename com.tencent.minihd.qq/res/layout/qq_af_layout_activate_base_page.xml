@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:id="@id/activate_page_time" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <TextView android:textSize="19.0sp" android:id="@id/activate_page_desc_head" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_below="@id/activate_page_time" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="21.0sp" android:id="@id/activate_page_desc_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/activate_page_desc_head" android:layout_alignBaseline="@id/activate_page_desc_head" />
+    <TextView android:textSize="19.0sp" android:id="@id/activate_page_desc_la" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/activate_page_desc_type" />
+    <TextView android:textSize="19.0sp" android:id="@id/activate_page_desc_end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/activate_page_desc_type" android:layout_alignLeft="@id/activate_page_desc_type" />
+    <com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid android:id="@id/friend_grid" android:layout_width="fill_parent" android:layout_height="250.0dip" android:layout_below="@id/activate_page_desc_end" />
+    <Button android:id="@id/activate_page_btn_chat" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:layout_below="@id/friend_grid" android:layout_centerHorizontal="true" style="@style/ButtonBlue" />
+    <TextView android:textSize="13.0sp" android:id="@id/activate_page_birth_hint" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activate_page_birth_hint" android:layout_below="@id/activate_page_btn_chat" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="13.0sp" android:id="@id/activate_page_nearby" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" android:text="@string/activate_page_nearby" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

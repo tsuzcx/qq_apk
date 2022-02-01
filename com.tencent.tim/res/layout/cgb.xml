@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/h_3" android:layout_width="@dimen/bbv" android:layout_height="@dimen/bbs" android:layout_marginLeft="@dimen/bbt" android:layout_marginRight="@dimen/bbt"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mkh" android:layout_width="@dimen/bbx" android:layout_height="@dimen/bbw" android:layout_centerInParent="true" app:qqArMapGuideRadius="3">
+        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="70.0dip" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/nxp" android:background="@color/afc" android:paddingBottom="18.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/h_t" android:scaleType="center" />
+        <TextView android:textSize="@dimen/bta" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom" android:id="@id/jfo" android:layout_width="fill_parent" android:layout_height="18.0dip" android:text="@string/x5h" android:layout_alignParentBottom="true" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+</RelativeLayout>

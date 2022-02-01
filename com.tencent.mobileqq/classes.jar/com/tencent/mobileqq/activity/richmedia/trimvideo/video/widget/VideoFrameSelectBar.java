@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ajvw;
-import ajvx;
-import ajwa;
-import ajwc;
-import ajwd;
-import ajwe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -17,32 +11,32 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bdoo;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class VideoFrameSelectBar
   extends View
-  implements ajvw, ajwa, ajwd
+  implements FrameParent, FramesProcessor.OnMoveListener, RangeProcessor.OnRangeChangeListener
 {
-  private static final int jdField_a_of_type_Int = bdoo.a(13.0F);
-  private float jdField_a_of_type_Float;
-  private ajvx jdField_a_of_type_Ajvx;
-  private ajwc jdField_a_of_type_Ajwc;
-  private ajwe jdField_a_of_type_Ajwe;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 3000;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean;
+  private static final int c = ViewUtils.dip2px(13.0F);
+  private RangeProcessor a;
+  private FramesProcessor b;
+  private float d;
   private float e;
-  private float f;
-  private float g;
-  private float h;
+  private int f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private float j;
+  private float k;
+  private int l = 3000;
+  private float m = 0.0F;
+  private float n = 0.0F;
+  private float o = 0.0F;
+  private Paint p = new Paint();
+  private String q = "";
+  private boolean r = false;
+  private VideoFrameSelectBar.OnFramesClipChangeListener s;
+  private float t;
   
   public VideoFrameSelectBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,244 +47,308 @@ public class VideoFrameSelectBar
   
   private float a(float paramFloat)
   {
-    return paramFloat / this.jdField_d_of_type_Float * this.jdField_c_of_type_Int;
+    return paramFloat / this.k * this.l;
   }
   
   private final void a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Ajwc.a(paramMotionEvent);
-    }
-    while (!this.jdField_b_of_type_Boolean) {
+    if (this.g)
+    {
+      this.a.a(paramMotionEvent);
       return;
     }
-    this.jdField_a_of_type_Ajvx.a(paramMotionEvent);
+    if (this.h) {
+      this.b.a(paramMotionEvent);
+    }
   }
   
-  private void e()
+  private void h()
   {
     if (getParent() != null) {
       getParent().requestDisallowInterceptTouchEvent(true);
     }
   }
   
-  private void f()
+  private void i()
   {
-    this.jdField_a_of_type_JavaLangString = String.format("%.1f''", new Object[] { Float.valueOf(this.g / 1000.0F) });
-    this.h = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Ajwe != null) {
-      this.jdField_a_of_type_Ajwe.a(this.g);
+    this.q = String.format("%.1f''", new Object[] { Float.valueOf(this.o / 1000.0F) });
+    this.t = this.p.measureText(this.q);
+    VideoFrameSelectBar.OnFramesClipChangeListener localOnFramesClipChangeListener = this.s;
+    if (localOnFramesClipChangeListener != null) {
+      localOnFramesClipChangeListener.a(this.o);
     }
-  }
-  
-  public float a()
-  {
-    return this.e + this.f;
-  }
-  
-  void a()
-  {
-    this.jdField_c_of_type_Boolean = true;
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.f = a((int)(paramFloat1 - this.jdField_a_of_type_Ajwc.b()));
-    this.g = a(paramFloat2 - paramFloat1);
-    f();
-    this.jdField_a_of_type_Ajvx.a((int)paramFloat1);
-    this.jdField_a_of_type_Ajvx.b((int)paramFloat2);
+    this.n = a((int)(paramFloat1 - this.a.b()));
+    this.o = a(paramFloat2 - paramFloat1);
+    i();
+    this.b.a((int)paramFloat1);
+    this.b.b((int)paramFloat2);
     invalidate();
-    if (this.jdField_a_of_type_Ajwe != null) {
-      this.jdField_a_of_type_Ajwe.a((int)a(), (int)b());
+    VideoFrameSelectBar.OnFramesClipChangeListener localOnFramesClipChangeListener = this.s;
+    if (localOnFramesClipChangeListener != null) {
+      localOnFramesClipChangeListener.a((int)getSelectBeginTime(), (int)getSelectEndTime());
     }
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.e = a(paramFloat1);
-    f();
-    if (this.jdField_a_of_type_Ajwc != null) {
-      this.jdField_a_of_type_Ajwc.a(paramFloat2, paramFloat3);
+    this.m = a(paramFloat1);
+    i();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((RangeProcessor)localObject).b(paramFloat2, paramFloat3);
     }
-    if (this.jdField_a_of_type_Ajwe != null) {
-      this.jdField_a_of_type_Ajwe.a((int)a(), (int)b());
+    localObject = this.s;
+    if (localObject != null) {
+      ((VideoFrameSelectBar.OnFramesClipChangeListener)localObject).a((int)getSelectBeginTime(), (int)getSelectEndTime());
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (paramInt < 12000) {
-      this.jdField_c_of_type_Int = 2000;
-    }
-    for (int i = (int)Math.ceil(1.0F * paramInt / 2000.0F);; i = 6)
+    int i1;
+    if (paramInt < 12000)
     {
-      int j = getResources().getDisplayMetrics().widthPixels;
-      float f1 = j * 0.925F / 6.0F;
-      this.jdField_d_of_type_Float = f1;
-      this.jdField_c_of_type_Float = f1;
-      this.jdField_a_of_type_Ajwc = new ajwc(this, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, i, this.jdField_c_of_type_Int, j, paramInt);
-      this.jdField_a_of_type_Ajwc.a(this);
-      this.g = a(this.jdField_a_of_type_Ajwc.c());
-      f();
-      this.jdField_a_of_type_Ajvx = new ajvx(this, paramString, paramInt, i, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, j, this.jdField_a_of_type_Ajwc.b(), this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Ajvx.a(this);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_d_of_type_Boolean = true;
-      return;
-      this.jdField_c_of_type_Int = (paramInt / 6);
+      this.l = 2000;
+      i1 = (int)Math.ceil(paramInt * 1.0F / 2000.0F);
     }
+    else
+    {
+      this.l = (paramInt / 6);
+      i1 = 6;
+    }
+    int i2 = getResources().getDisplayMetrics().widthPixels;
+    float f1 = i2 * 0.925F / 6.0F;
+    this.k = f1;
+    this.j = f1;
+    this.a = new RangeProcessor(this, this.k, this.j, i1, this.l, i2, paramInt);
+    this.a.a(this);
+    this.o = a(this.a.c());
+    i();
+    this.b = new FramesProcessor(this, paramString, paramInt, i1, this.k, this.j, i2, this.a.b(), this.l);
+    this.b.a(this);
+    this.p.setAntiAlias(true);
+    this.r = true;
   }
   
   public boolean a()
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public float b()
-  {
-    return this.e + this.f + this.g;
+    return this.r;
   }
   
   void b()
   {
-    this.jdField_c_of_type_Boolean = false;
+    this.i = true;
   }
   
-  boolean b()
+  boolean c()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.i;
   }
   
-  public void c()
+  void d()
   {
-    if (this.jdField_a_of_type_Ajwc != null) {
-      this.jdField_a_of_type_Ajwc.a();
-    }
-    if (this.jdField_a_of_type_Ajvx != null) {
-      this.jdField_a_of_type_Ajvx.b();
-    }
-    this.jdField_d_of_type_Boolean = false;
-    this.e = 0.0F;
-    this.f = 0.0F;
-    this.g = 0.0F;
+    this.i = false;
   }
   
-  public boolean c()
+  public boolean e()
   {
-    if ((this.jdField_a_of_type_Ajvx == null) || (this.jdField_a_of_type_Ajwc == null)) {}
-    while ((!this.jdField_a_of_type_Ajvx.a()) && (!this.jdField_a_of_type_Ajwc.a())) {
-      return false;
+    FramesProcessor localFramesProcessor = this.b;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localFramesProcessor != null)
+    {
+      if (this.a == null) {
+        return false;
+      }
+      if (!localFramesProcessor.b())
+      {
+        bool1 = bool2;
+        if (!this.a.d()) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
-  public void d()
+  public void f()
   {
-    if (this.jdField_a_of_type_Ajwc != null) {
-      this.jdField_a_of_type_Ajwc.b();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((RangeProcessor)localObject).e();
     }
-    if (this.jdField_a_of_type_Ajvx != null) {
-      this.jdField_a_of_type_Ajvx.b();
+    localObject = this.b;
+    if (localObject != null) {
+      ((FramesProcessor)localObject).c();
     }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Boolean = false;
-    this.e = 0.0F;
-    this.f = 0.0F;
-    this.g = 0.0F;
+    this.r = false;
+    this.m = 0.0F;
+    this.n = 0.0F;
+    this.o = 0.0F;
+  }
+  
+  public void g()
+  {
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((RangeProcessor)localObject).f();
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      ((FramesProcessor)localObject).c();
+    }
+    this.q = "";
+    this.r = false;
+    this.m = 0.0F;
+    this.n = 0.0F;
+    this.o = 0.0F;
+  }
+  
+  public float getFrameHeight()
+  {
+    return this.j;
+  }
+  
+  public float getFrameWidth()
+  {
+    return this.k;
+  }
+  
+  public float getSelectBeginTime()
+  {
+    return this.m + this.n;
+  }
+  
+  public float getSelectEndTime()
+  {
+    return this.m + this.n + this.o;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Ajwc == null) || (this.jdField_a_of_type_Ajvx == null)) {
-      return;
+    if (this.a != null)
+    {
+      if (this.b == null) {
+        return;
+      }
+      this.p.setTextSize(40.0F);
+      this.p.setColor(-1);
+      paramCanvas.translate(0.0F, c + 50);
+      Object localObject = this.b;
+      if (localObject != null) {
+        ((FramesProcessor)localObject).a(paramCanvas);
+      }
+      localObject = this.a;
+      if (localObject != null) {
+        ((RangeProcessor)localObject).a(paramCanvas);
+      }
+      paramCanvas.translate(0.0F, -c - 50);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(40.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.translate(0.0F, jdField_a_of_type_Int + 50);
-    if (this.jdField_a_of_type_Ajvx != null) {
-      this.jdField_a_of_type_Ajvx.a(paramCanvas);
-    }
-    if (this.jdField_a_of_type_Ajwc != null) {
-      this.jdField_a_of_type_Ajwc.a(paramCanvas);
-    }
-    paramCanvas.translate(0.0F, -jdField_a_of_type_Int - 50);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Ajwc == null) || (this.jdField_a_of_type_Ajvx == null))
+    if ((this.a != null) && (this.b != null))
     {
-      setMeasuredDimension(0, 0);
+      setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(this.a.a() + 50.0F + c));
       return;
     }
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_Ajwc.a() + jdField_a_of_type_Int));
+    setMeasuredDimension(0, 0);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!isEnabled()) {}
-    for (;;)
-    {
+    boolean bool1 = isEnabled();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      if ((this.jdField_a_of_type_Ajwc != null) && (this.jdField_a_of_type_Ajvx != null))
+    }
+    bool1 = bool2;
+    if (this.a != null)
+    {
+      if (this.b == null) {
+        return false;
+      }
+      int i1 = paramMotionEvent.getAction() & 0xFF;
+      if (i1 != 0)
       {
-        switch (paramMotionEvent.getAction() & 0xFF)
+        if (i1 != 1)
         {
-        }
-        while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean))
-        {
-          return true;
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Ajwc.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
-          this.jdField_b_of_type_Boolean = false;
-          if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-            return super.onTouchEvent(paramMotionEvent);
+          if (i1 != 2)
+          {
+            if (i1 == 3)
+            {
+              if (c())
+              {
+                d();
+                a(paramMotionEvent);
+                setPressed(false);
+              }
+              invalidate();
+            }
           }
-          setPressed(true);
-          invalidate();
-          a();
-          a(paramMotionEvent);
-          e();
-          continue;
-          if (b())
+          else if (c())
           {
             a(paramMotionEvent);
           }
-          else if (Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > this.jdField_b_of_type_Int)
+          else if (Math.abs(paramMotionEvent.getX() - this.d) > this.f)
           {
             setPressed(true);
             invalidate();
-            a();
+            b();
             a(paramMotionEvent);
-            e();
-            continue;
-            if (b())
-            {
-              a(paramMotionEvent);
-              b();
-              setPressed(false);
-            }
-            for (;;)
-            {
-              invalidate();
-              break;
-              a();
-              a(paramMotionEvent);
-              b();
-            }
-            if (b())
-            {
-              b();
-              a(paramMotionEvent);
-              setPressed(false);
-            }
-            invalidate();
+            h();
           }
         }
+        else
+        {
+          if (c())
+          {
+            a(paramMotionEvent);
+            d();
+            setPressed(false);
+          }
+          else
+          {
+            b();
+            a(paramMotionEvent);
+            d();
+          }
+          invalidate();
+        }
+      }
+      else
+      {
+        this.d = paramMotionEvent.getX();
+        this.e = paramMotionEvent.getY();
+        this.g = this.a.a(this.d, this.e - 50.0F);
+        this.h = false;
+        if ((!this.h) && (!this.g)) {
+          return super.onTouchEvent(paramMotionEvent);
+        }
+        setPressed(true);
+        invalidate();
+        b();
+        a(paramMotionEvent);
+        h();
+      }
+      if (!this.h)
+      {
+        bool1 = bool2;
+        if (!this.g) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
   public void postInvalidate()
@@ -298,9 +356,9 @@ public class VideoFrameSelectBar
     super.postInvalidate();
   }
   
-  public void setOnFramesClipChangeListener(ajwe paramajwe)
+  public void setOnFramesClipChangeListener(VideoFrameSelectBar.OnFramesClipChangeListener paramOnFramesClipChangeListener)
   {
-    this.jdField_a_of_type_Ajwe = paramajwe;
+    this.s = paramOnFramesClipChangeListener;
   }
 }
 

@@ -1,68 +1,72 @@
 package com.tencent.av.business.manager.voiceRecog;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.magicface.EffectFaceManager.BlessingTips;
+import com.tencent.av.recog.AVVoiceRecog;
+import com.tencent.av.tips.TipsUtil;
 import com.tencent.qphone.base.util.QLog;
-import lid;
-import ljv;
-import llk;
-import lvt;
-import mdd;
 
 class VoiceRecogTips$ShowTipsRunable
   implements Runnable
 {
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  ljv jdField_a_of_type_Ljv;
+  VideoAppInterface a;
+  EffectFaceManager.BlessingTips b;
   
-  VoiceRecogTips$ShowTipsRunable(VideoAppInterface paramVideoAppInterface, ljv paramljv)
+  VoiceRecogTips$ShowTipsRunable(VideoAppInterface paramVideoAppInterface, EffectFaceManager.BlessingTips paramBlessingTips)
   {
-    this.jdField_a_of_type_Ljv = paramljv;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramBlessingTips;
+    this.a = paramVideoAppInterface;
   }
   
   public void run()
   {
-    if (!lvt.a().a()) {
-      QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, AVVoiceRecog disable");
-    }
-    do
+    if (!AVVoiceRecog.b().a())
     {
+      QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, AVVoiceRecog disable");
       return;
-      if (VoiceRecogTips.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Ljv.a))
-      {
-        QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, 已经显示过了, time[" + VoiceRecogTips.a + "]");
-        return;
-      }
-      if (lvt.a().a(2))
-      {
-        QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, AVVoiceRecog isPause");
-        return;
-      }
-      lid locallid = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      if (locallid == null)
-      {
-        QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, sessionInfo为空");
-        return;
-      }
-      if (!locallid.j)
-      {
-        QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, 本地没开摄像头");
-        return;
-      }
-      if (!locallid.k)
-      {
-        QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, 对端没开摄像头");
-        return;
-      }
-    } while (!mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1026, this.jdField_a_of_type_Ljv.jdField_b_of_type_JavaLangString, null, this.jdField_a_of_type_Ljv.jdField_b_of_type_Int, null));
-    VoiceRecogTips.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Ljv.a);
-    llk.b();
+    }
+    if (VoiceRecogTips.b(this.a, this.b.a))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ShowTipsRunable, 已经显示过了, time[");
+      ((StringBuilder)localObject).append(VoiceRecogTips.d);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("VoiceRecogTips", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    if (AVVoiceRecog.b().a(2))
+    {
+      QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, AVVoiceRecog isPause");
+      return;
+    }
+    Object localObject = this.a.b().k();
+    if (localObject == null)
+    {
+      QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, sessionInfo为空");
+      return;
+    }
+    if (!((SessionInfo)localObject).H)
+    {
+      QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, 本地没开摄像头");
+      return;
+    }
+    if (!((SessionInfo)localObject).I)
+    {
+      QLog.w("VoiceRecogTips", 1, "ShowTipsRunable, 对端没开摄像头");
+      return;
+    }
+    if (TipsUtil.a(this.a, 1026, this.b.d, null, this.b.g, null))
+    {
+      VoiceRecogTips.a(this.a, this.b.a);
+      VoiceRecogReport.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.voiceRecog.VoiceRecogTips.ShowTipsRunable
  * JD-Core Version:    0.7.0.1
  */

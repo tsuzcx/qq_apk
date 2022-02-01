@@ -4,24 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum a
 {
-  private static volatile a.a emz;
+  private static volatile a lQO;
   
   static
   {
-    AppMethodBeat.i(92909);
-    emy = new a("INSTANCE");
-    emA = new a[] { emy };
-    emz = new a.1();
-    AppMethodBeat.o(92909);
+    AppMethodBeat.i(155631);
+    lQN = new a("INSTANCE");
+    lQP = new a[] { lQN };
+    lQO = new a.1();
+    AppMethodBeat.o(155631);
   }
   
   private a() {}
   
-  public static void a(a.a parama)
+  public static void T(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(240799);
+    lQO.U(paramLong1, paramLong2);
+    AppMethodBeat.o(240799);
+  }
+  
+  public static void a(a parama)
   {
     try
     {
-      emz = parama;
+      lQO = parama;
       return;
     }
     finally
@@ -31,23 +38,30 @@ public enum a
     }
   }
   
-  public static void ga(long paramLong)
+  public static void c(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(92907);
-    emz.w(853L, paramLong);
-    AppMethodBeat.o(92907);
+    AppMethodBeat.i(240804);
+    lQO.d(paramInt, paramVarArgs);
+    AppMethodBeat.o(240804);
   }
   
-  public static void gb(long paramLong)
+  public static void ho(long paramLong)
   {
-    AppMethodBeat.i(92908);
-    emz.w(650L, paramLong);
-    AppMethodBeat.o(92908);
+    AppMethodBeat.i(155629);
+    lQO.U(853L, paramLong);
+    AppMethodBeat.o(155629);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void U(long paramLong1, long paramLong2);
+    
+    public abstract void d(int paramInt, Object... paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.d.a
  * JD-Core Version:    0.7.0.1
  */

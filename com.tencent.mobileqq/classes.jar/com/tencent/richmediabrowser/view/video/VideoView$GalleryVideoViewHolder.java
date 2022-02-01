@@ -1,18 +1,16 @@
 package com.tencent.richmediabrowser.view.video;
 
-import com.tencent.richmediabrowser.view.GalleryUrlImageView;
-import com.tencent.richmediabrowser.view.IBrowserViewHolder;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
 public class VideoView$GalleryVideoViewHolder
-  extends IBrowserViewHolder
 {
-  public GalleryUrlImageView videoView;
+  public BaseVideoView videoView;
   
   public VideoView$GalleryVideoViewHolder(VideoView paramVideoView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.video.VideoView.GalleryVideoViewHolder
  * JD-Core Version:    0.7.0.1
  */

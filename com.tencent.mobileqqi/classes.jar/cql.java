@@ -1,26 +1,19 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.maproam.Utils;
 import com.tencent.mobileqq.utils.VipUtils;
 
 public class cql
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public cql(HornPublishActivity paramHornPublishActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if ((!VipUtils.a(this.a.b)) && (!TextUtils.isEmpty(paramEditable.toString())) && (this.a.a.d + this.a.a.e + this.a.a.f == 0)) {
-      HornPublishActivity.a(this.a);
-    }
-    HornPublishActivity.c(this.a);
+    VipUtils.b(this.a, 1, "mvip.gongneng.mobileqq.zhidinglaba.numberandroid");
+    Utils.a();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

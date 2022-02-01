@@ -32,23 +32,27 @@ public final class stDevice
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.encrypted_deviceid != null) {
-      paramJceOutputStream.write(this.encrypted_deviceid, 0);
+    String str = this.encrypted_deviceid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 1);
+    str = this.imei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.idfa != null) {
-      paramJceOutputStream.write(this.idfa, 2);
+    str = this.idfa;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.qimei != null) {
-      paramJceOutputStream.write(this.qimei, 3);
+    str = this.qimei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stDevice
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ public class DebuggerInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DebuggerInfo> CREATOR;
-  public boolean hox;
-  public boolean hoy;
-  public boolean hoz;
+  public boolean rlp;
+  public boolean rlq;
+  public boolean rlr;
   
   static
   {
-    AppMethodBeat.i(10802);
-    CREATOR = new DebuggerInfo.1();
-    AppMethodBeat.o(10802);
+    AppMethodBeat.i(121284);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(121284);
   }
   
   public int describeContents()
@@ -28,38 +28,38 @@ public class DebuggerInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(10801);
-    if (this.hox)
+    AppMethodBeat.i(121283);
+    if (this.rlp)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.hoy) {
-        break label62;
+      if (!this.rlq) {
+        break label60;
       }
       paramInt = 1;
-      label31:
+      label30:
       paramParcel.writeInt(paramInt);
-      if (!this.hoz) {
-        break label67;
+      if (!this.rlr) {
+        break label65;
       }
     }
-    label62:
-    label67:
+    label60:
+    label65:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(10801);
+      AppMethodBeat.o(121283);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label31;
+      break label30;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo
  * JD-Core Version:    0.7.0.1
  */

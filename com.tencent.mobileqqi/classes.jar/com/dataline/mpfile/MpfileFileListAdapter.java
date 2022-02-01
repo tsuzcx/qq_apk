@@ -67,8 +67,8 @@ public class MpfileFileListAdapter
         paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903520, null);
       }
       paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      ((TextView)paramViewGroup.findViewById(2131231294)).setText(paramView.jdField_a_of_type_JavaLangString);
-      ((ImageView)paramViewGroup.findViewById(2131231293)).setImageResource(2130838598);
+      ((TextView)paramViewGroup.findViewById(2131231293)).setText(paramView.jdField_a_of_type_JavaLangString);
+      ((ImageView)paramViewGroup.findViewById(2131231292)).setImageResource(2130838598);
       return paramViewGroup;
     }
     paramViewGroup = paramView;
@@ -76,8 +76,8 @@ public class MpfileFileListAdapter
       paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903522, null);
     }
     paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ((TextView)paramViewGroup.findViewById(2131231294)).setText(paramView.jdField_a_of_type_JavaLangString);
-    AsyncImageView localAsyncImageView = (AsyncImageView)paramViewGroup.findViewById(2131231293);
+    ((TextView)paramViewGroup.findViewById(2131231293)).setText(paramView.jdField_a_of_type_JavaLangString);
+    AsyncImageView localAsyncImageView = (AsyncImageView)paramViewGroup.findViewById(2131231292);
     String str1 = String.format("%s/%s", new Object[] { MpfileDataCenter.a(), paramView.jdField_a_of_type_JavaLangString });
     String str2 = FileUtil.a(str1);
     if ((str2 != null) && (FileManagerUtil.a(str2) == 0) && (MpfileDataCenter.k != null) && (MpfileDataCenter.k.length() > 0))
@@ -88,8 +88,8 @@ public class MpfileFileListAdapter
     }
     for (;;)
     {
-      ((TextView)paramViewGroup.findViewById(2131232798)).setText(FileUtil.a(paramView.jdField_a_of_type_Long));
-      ((TextView)paramViewGroup.findViewById(2131232802)).setText(paramView.c);
+      ((TextView)paramViewGroup.findViewById(2131232797)).setText(FileUtil.a(paramView.jdField_a_of_type_Long));
+      ((TextView)paramViewGroup.findViewById(2131232801)).setText(paramView.c);
       return paramViewGroup;
       FileManagerUtil.a(localAsyncImageView, str1);
     }

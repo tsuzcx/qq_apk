@@ -50,14 +50,15 @@ public final class move_batch_photo_req
     paramJceOutputStream.write(this.src_albumid, 0);
     paramJceOutputStream.write(this.src_picid_list, 1);
     paramJceOutputStream.write(this.dst_albumid, 2);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 3);
+    Map localMap = this.busi_param;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.move_batch_photo_req
  * JD-Core Version:    0.7.0.1
  */

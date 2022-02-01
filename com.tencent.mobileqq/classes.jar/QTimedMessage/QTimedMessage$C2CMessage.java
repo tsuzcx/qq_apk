@@ -21,13 +21,14 @@ public final class QTimedMessage$C2CMessage
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56 }, new String[] { "msg_from_user", "msg_to_user", "msg_recv_client", "bytes_text", "msg_rich_text", "uint32_send_text_standalone", "uint32_send_rich_text_standalone" }, new Object[] { null, null, null, localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0) }, C2CMessage.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56 }, new String[] { "msg_from_user", "msg_to_user", "msg_recv_client", "bytes_text", "msg_rich_text", "uint32_send_text_standalone", "uint32_send_rich_text_standalone" }, new Object[] { null, null, null, localByteStringMicro, null, localInteger, localInteger }, C2CMessage.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QTimedMessage.QTimedMessage.C2CMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.app.BaseFragment;
 import java.util.ArrayList;
 
 public class ServiceAccountFolderActivityNew$FolderTabFragmentAdapter
@@ -13,19 +13,22 @@ public class ServiceAccountFolderActivityNew$FolderTabFragmentAdapter
     super(paramFragmentManager);
   }
   
-  public int getCount()
+  public BaseFragment a(int paramInt)
   {
-    return ServiceAccountFolderActivityNew.a(this.a).size();
+    if (ServiceAccountFolderActivityNew.j(this.a).size() > paramInt) {
+      return (BaseFragment)ServiceAccountFolderActivityNew.j(this.a).get(paramInt);
+    }
+    return null;
   }
   
-  public Fragment getItem(int paramInt)
+  public int getCount()
   {
-    return (Fragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt);
+    return ServiceAccountFolderActivityNew.j(this.a).size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.FolderTabFragmentAdapter
  * JD-Core Version:    0.7.0.1
  */

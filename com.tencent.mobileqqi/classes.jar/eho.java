@@ -1,25 +1,78 @@
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.language.SelectTransLangActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.international.LocaleUtil;
-import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import java.util.Map;
 
 public class eho
-  implements AdapterView.OnItemClickListener
+  extends BaseAdapter
 {
-  public eho(SelectTransLangActivity paramSelectTransLangActivity) {}
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public eho(SelectTransLangActivity paramSelectTransLangActivity, Context paramContext)
   {
-    QLog.i("SelectTransLangActivity", 2, "position:" + paramInt + "current:" + SelectTransLangActivity.a(this.a) + "language:" + (String)SelectTransLangActivity.a(this.a).get(paramInt));
-    SelectTransLangActivity.a(this.a, paramInt);
-    paramAdapterView = (ehq)paramView.getTag();
-    SelectTransLangActivity.a(this.a, paramAdapterView.a);
-    LocaleUtil.a(this.a.b.a(), this.a, (String)SelectTransLangActivity.a(this.a).get(SelectTransLangActivity.a(this.a)));
-    SelectTransLangActivity.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+  }
+  
+  public int getCount()
+  {
+    return SelectTransLangActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLanguageSelectTransLangActivity).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903258, paramViewGroup, false);
+      paramViewGroup = new ehp(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231858));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231859));
+      paramView.setTag(paramViewGroup);
+      if (paramInt != 0) {
+        break label172;
+      }
+      paramView.setBackgroundResource(2130837882);
+      label66:
+      if (SelectTransLangActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLanguageSelectTransLangActivity).equalsIgnoreCase((String)SelectTransLangActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLanguageSelectTransLangActivity).get(paramInt))) {
+        break label200;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840218);
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)SelectTransLangActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLanguageSelectTransLangActivity).get(SelectTransLangActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLanguageSelectTransLangActivity).get(paramInt)));
+      paramViewGroup.jdField_a_of_type_JavaLangString = ((String)SelectTransLangActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLanguageSelectTransLangActivity).get(paramInt));
+      return paramView;
+      paramViewGroup = (ehp)paramView.getTag();
+      break;
+      label172:
+      if (paramInt == getCount() - 1)
+      {
+        paramView.setBackgroundResource(2130837879);
+        break label66;
+      }
+      paramView.setBackgroundResource(2130837881);
+      break label66;
+      label200:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840217);
+    }
   }
 }
 

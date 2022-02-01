@@ -8,8 +8,8 @@ public final class ReqSetStateSwitch
   extends JceStruct
 {
   static ReqHeader cache_stHeader;
-  public byte bIsOpen;
-  public ReqHeader stHeader;
+  public byte bIsOpen = 0;
+  public ReqHeader stHeader = null;
   
   public ReqSetStateSwitch() {}
   
@@ -36,7 +36,7 @@ public final class ReqSetStateSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.ReqSetStateSwitch
  * JD-Core Version:    0.7.0.1
  */

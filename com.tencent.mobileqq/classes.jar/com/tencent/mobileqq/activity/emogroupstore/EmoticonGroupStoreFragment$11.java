@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ahwi;
-import alud;
 import android.widget.TextView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.List;
 
 class EmoticonGroupStoreFragment$11
@@ -12,9 +11,14 @@ class EmoticonGroupStoreFragment$11
   
   public void run()
   {
-    EmoticonGroupStoreFragment.a(this.this$0).a(EmoticonGroupStoreFragment.a(this.this$0));
-    EmoticonGroupStoreFragment.a(this.this$0).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.b(this.this$0).setText(alud.a(2131704454) + EmoticonGroupStoreFragment.c(this.this$0).size() + alud.a(2131704442));
+    EmoticonGroupStoreFragment.d(this.this$0).a(EmoticonGroupStoreFragment.b(this.this$0));
+    EmoticonGroupStoreFragment.d(this.this$0).notifyDataSetChanged();
+    TextView localTextView = EmoticonGroupStoreFragment.u(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131902098));
+    localStringBuilder.append(EmoticonGroupStoreFragment.k(this.this$0).size());
+    localStringBuilder.append(HardCodeUtil.a(2131902086));
+    localTextView.setText(localStringBuilder.toString());
   }
 }
 

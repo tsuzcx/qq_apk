@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <rotate android:drawable="@drawable/bon" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+    <item android:state_pressed="false">
+        <layer-list>
+            <item android:shape="rectangle">
+                <shape>
+                    <corners android:radius="18.0dip" />
+                    <solid android:color="@color/UN_BW_0_Alpha_0_3" />
+                    <stroke android:width="1.0px" android:color="#ffededed" />
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <corners android:radius="18.0dip" />
+                    <solid android:color="@color/BW_100_Alpha_0_8" />
+                </shape>
+            </item>
+        </layer-list>
     </item>
-</layer-list>
+    <item android:state_pressed="true">
+        <layer-list>
+            <item android:shape="rectangle">
+                <shape>
+                    <solid android:color="@color/UN_BW_0_Alpha_0_1" />
+                </shape>
+            </item>
+            <item android:shape="rectangle">
+                <shape>
+                    <corners android:radius="18.0dip" />
+                    <solid android:color="@color/BW_100_Alpha_0_8" />
+                    <stroke android:width="1.0px" android:color="#ffededed" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

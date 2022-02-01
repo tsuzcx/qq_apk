@@ -7,404 +7,447 @@ import android.graphics.Point;
 import android.hardware.Camera.Parameters;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.w;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.y;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.v.a.a;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.bs;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.co;
+import com.tencent.mm.ui.base.aa;
 
 public final class j
 {
-  static int fYn;
-  public static boolean oHD = true;
-  public static boolean oHE = false;
-  public static boolean oHF = false;
-  public static o oHG;
-  static double oHH;
+  public static boolean KVG = true;
+  public static boolean KVH = false;
+  public static boolean KVI = false;
+  public static o KVJ;
+  static double KVK;
+  static int pch;
   
   public static void a(Camera.Parameters paramParameters, boolean paramBoolean)
   {
-    AppMethodBeat.i(76527);
+    AppMethodBeat.i(89426);
     Object localObject2;
-    if (oHE)
+    int i;
+    if (KVH)
     {
-      localObject1 = ah.getContext();
-      localObject2 = ah.getResources();
-      if (oHG == null) {}
-      for (paramParameters = "";; paramParameters = Integer.valueOf(oHG.oHR))
+      localObject1 = MMApplicationContext.getContext();
+      localObject2 = MMApplicationContext.getResources();
+      i = a.a.i_want_you_know;
+      if (KVJ == null) {}
+      for (paramParameters = "";; paramParameters = Integer.valueOf(KVJ.Ddk))
       {
-        t.makeText((Context)localObject1, ((Resources)localObject2).getString(2131300719, new Object[] { paramParameters }), 1).show();
-        AppMethodBeat.o(76527);
+        aa.makeText((Context)localObject1, ((Resources)localObject2).getString(i, new Object[] { paramParameters }), 1).show();
+        AppMethodBeat.o(89426);
         return;
       }
     }
-    ab.i("MicroMsg.MMSightRecorderConfig", "autoConfig, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(ac.erB.eqR), Boolean.valueOf(oHF) });
-    if (oHF)
+    Log.i("MicroMsg.MMSightRecorderConfig", "autoConfig, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(af.lYf.lWF), Boolean.valueOf(KVI) });
+    if (KVI)
     {
-      AppMethodBeat.o(76527);
+      AppMethodBeat.o(89426);
       return;
     }
-    Object localObject1 = com.tencent.mm.plugin.mmsight.d.bQE();
+    Object localObject1 = com.tencent.mm.plugin.mmsight.d.gbR();
     int k;
-    int i;
     int j;
-    if ((CaptureMMProxy.getInstance() != null) && (!ah.brt()))
+    if ((CaptureMMProxy.getInstance() != null) && (!MMApplicationContext.isMMProcess()))
     {
-      k = bo.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
-      i = bo.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight1080pRecordMinApiLevel"), 19);
-      j = bo.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight720pRecordMinApiLevel"), 19);
-      ab.i("MicroMsg.MMSightRecorderConfig", "apiLevel: %s record1080pApiLevel: %s, record720pApiLevel: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
-      if ((ac.erB.eqQ != -1) && ((ac.erB.eqQ & 0x1) == 0)) {
-        break label714;
+      k = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
+      i = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight1080pRecordMinApiLevel"), 19);
+      j = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight720pRecordMinApiLevel"), 19);
+      Log.i("MicroMsg.MMSightRecorderConfig", "apiLevel: %s record1080pApiLevel: %s, record720pApiLevel: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
+      if ((af.lYf.lWE != -1) && ((af.lYf.lWE & 0x1) == 0)) {
+        break label717;
       }
-      if ((ac.erB.eqQ == -1) || ((ac.erB.eqQ & 0x1) == 0)) {
-        break label467;
+      if ((af.lYf.lWE == -1) || ((af.lYf.lWE & 0x1) == 0)) {
+        break label470;
       }
-      oHG.bRe().oHS = true;
+      KVJ.gcq().KVU = true;
       i = 1;
     }
     for (;;)
     {
       boolean bool;
-      if (ac.erB.eqL != -1)
+      if (af.lYf.lWz != -1)
       {
-        localObject2 = oHG;
-        if (ac.erB.eqL == 1)
+        localObject2 = KVJ;
+        if (af.lYf.lWz == 1)
         {
           bool = true;
-          label292:
-          ((o)localObject2).fdl = bool;
-          label299:
-          if ((ac.erB.eqQ == -1) || ((ac.erB.eqQ & 0x2) != 0))
+          label295:
+          ((o)localObject2).nME = bool;
+          label302:
+          if ((af.lYf.lWE == -1) || ((af.lYf.lWE & 0x2) != 0))
           {
-            if ((ac.erB.eqQ == -1) || ((ac.erB.eqQ & 0x2) == 0)) {
-              break label601;
+            if ((af.lYf.lWE == -1) || ((af.lYf.lWE & 0x2) == 0)) {
+              break label604;
             }
-            paramParameters = oHG.bRc();
-            paramParameters.oHS = false;
-            paramParameters.bRd();
+            paramParameters = KVJ.gco();
+            paramParameters.KVU = false;
+            paramParameters.gcp();
           }
         }
       }
-      label712:
+      label715:
       for (;;)
       {
-        oHG.oHR = -1;
-        ab.i("MicroMsg.MMSightRecorderConfig", "autoConfig parameter byserver %s", new Object[] { oHG.toString() });
-        AppMethodBeat.o(76527);
+        KVJ.Ddk = -1;
+        Log.i("MicroMsg.MMSightRecorderConfig", "autoConfig parameter byserver %s", new Object[] { KVJ.toString() });
+        AppMethodBeat.o(89426);
         return;
-        k = bo.getInt(((a)com.tencent.mm.kernel.g.E(a.class)).Nq().getValue("SightMediaCodecMinApiLevel"), 19);
-        i = bo.getInt(((a)com.tencent.mm.kernel.g.E(a.class)).Nq().getValue("Sight1080pRecordMinApiLevel"), 19);
-        j = bo.getInt(((a)com.tencent.mm.kernel.g.E(a.class)).Nq().getValue("Sight720pRecordMinApiLevel"), 19);
+        k = Util.getInt(((a)com.tencent.mm.kernel.h.ax(a.class)).aRC().getValue("SightMediaCodecMinApiLevel"), 19);
+        i = Util.getInt(((a)com.tencent.mm.kernel.h.ax(a.class)).aRC().getValue("Sight1080pRecordMinApiLevel"), 19);
+        j = Util.getInt(((a)com.tencent.mm.kernel.h.ax(a.class)).aRC().getValue("Sight720pRecordMinApiLevel"), 19);
         break;
-        label467:
-        if ((!com.tencent.mm.compatible.util.d.fv(i)) || (fYn < 512) || (oHH < 1725.0D) || (Math.min(((Point)localObject1).x, ((Point)localObject1).y) < 1080)) {
-          break label714;
+        label470:
+        if ((!com.tencent.mm.compatible.util.d.rb(i)) || (pch < 512) || (KVK < 1725.0D) || (Math.min(((Point)localObject1).x, ((Point)localObject1).y) < 1080)) {
+          break label717;
         }
-        localObject2 = oHG;
-        ((o)localObject2).oHV = g.a(paramParameters, com.tencent.mm.plugin.mmsight.d.bQE(), ((o)localObject2).fcu.width * 2, paramBoolean);
-        if ((((o)localObject2).oHV != null) && (((o)localObject2).oHV.oHu != null)) {}
+        localObject2 = KVJ;
+        ((o)localObject2).KVX = h.b(paramParameters, com.tencent.mm.plugin.mmsight.d.gbR(), ((o)localObject2).nLH.width * 2, paramBoolean);
+        if ((((o)localObject2).KVX != null) && (((o)localObject2).KVX.KVz != null)) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label714;
+            break label717;
           }
-          oHG.bRe().oHS = true;
+          KVJ.gcq().KVU = true;
           i = 1;
           break;
         }
         bool = false;
-        break label292;
-        oHG.fdl = false;
-        break label299;
-        label601:
-        if ((i == 0) && (com.tencent.mm.compatible.util.d.fv(j)) && (fYn >= 512) && (oHH >= 1725.0D) && (Math.min(((Point)localObject1).x, ((Point)localObject1).y) >= 720))
+        break label295;
+        KVJ.nME = false;
+        break label302;
+        label604:
+        if ((i == 0) && (com.tencent.mm.compatible.util.d.rb(j)) && (pch >= 512) && (KVK >= 1725.0D) && (Math.min(((Point)localObject1).x, ((Point)localObject1).y) >= 720))
         {
-          localObject1 = oHG;
-          ((o)localObject1).oHV = g.a(paramParameters, com.tencent.mm.plugin.mmsight.d.bQE(), 720, paramBoolean);
-          if ((((o)localObject1).oHV != null) && (((o)localObject1).oHV.oHu != null)) {}
+          localObject1 = KVJ;
+          ((o)localObject1).KVX = h.b(paramParameters, com.tencent.mm.plugin.mmsight.d.gbR(), 720, paramBoolean);
+          if ((((o)localObject1).KVX != null) && (((o)localObject1).KVX.KVz != null)) {}
           for (i = 1;; i = 0)
           {
             if (i == 0) {
-              break label712;
+              break label715;
             }
-            oHG.bRc().oHS = true;
+            KVJ.gco().KVU = true;
             break;
           }
         }
       }
-      label714:
+      label717:
       i = 0;
     }
   }
   
-  public static void a(g.b paramb)
+  public static void a(h.c paramc)
   {
-    AppMethodBeat.i(76529);
-    if (paramb.oHu == null)
+    AppMethodBeat.i(89429);
+    if (paramc.KVz == null)
     {
-      ab.i("MicroMsg.MMSightRecorderConfig", "checkMore start %s", new Object[] { paramb.toString() });
-      paramb.oHu = paramb.oHx;
-      paramb.oHv = paramb.oHy;
-      paramb.oHw = paramb.oHz;
-      if (Math.min(paramb.oHv.y, paramb.oHv.x) >= oHG.fcu.width + 16)
+      Log.i("MicroMsg.MMSightRecorderConfig", "checkMore start %s", new Object[] { paramc.toString() });
+      paramc.KVz = paramc.KVC;
+      paramc.KVA = paramc.KVD;
+      paramc.KVB = paramc.KVE;
+      if (Math.min(paramc.KVA.y, paramc.KVA.x) >= KVJ.nLH.width + 16)
       {
-        oHG.bRd();
-        oHG.oHS = false;
-        oHG.fdl = false;
-        ab.i("MicroMsg.MMSightRecorderConfig", "checkMore out %s", new Object[] { paramb.toString() });
+        KVJ.gcp();
+        KVJ.KVU = false;
+        KVJ.nME = false;
+        Log.i("MicroMsg.MMSightRecorderConfig", "checkMore out %s", new Object[] { paramc.toString() });
       }
     }
-    AppMethodBeat.o(76529);
-  }
-  
-  public static boolean bQV()
-  {
-    AppMethodBeat.i(140125);
-    if ((CaptureMMProxy.getInstance() != null) && (!ah.brt()))
-    {
-      if (CaptureMMProxy.getInstance().getInt(ac.a.yDV, -1) != -1)
-      {
-        AppMethodBeat.o(140125);
-        return true;
-      }
-      AppMethodBeat.o(140125);
-      return false;
-    }
-    com.tencent.mm.kernel.g.RM();
-    if (com.tencent.mm.kernel.g.RL().Ru().getInt(ac.a.yDV, -1) != -1)
-    {
-      AppMethodBeat.o(140125);
-      return true;
-    }
-    AppMethodBeat.o(140125);
-    return false;
-  }
-  
-  public static void bQW()
-  {
-    AppMethodBeat.i(76530);
-    ab.i("MicroMsg.MMSightRecorderConfig", "initSimple");
-    o localo = new o();
-    oHG = localo;
-    localo.fdl = false;
-    oHG.oHS = false;
-    if (com.tencent.mm.compatible.util.d.fv(19))
-    {
-      oHG.eqK = 2;
-      AppMethodBeat.o(76530);
-      return;
-    }
-    oHG.eqK = 1;
-    AppMethodBeat.o(76530);
+    AppMethodBeat.o(89429);
   }
   
   public static void d(VideoTransPara paramVideoTransPara)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(76528);
-    Object localObject1 = j.a.oHJ;
-    oHE = false;
-    oHF = false;
-    fYn = ((ActivityManager)ah.getContext().getSystemService("activity")).getLargeMemoryClass();
-    oHH = com.tencent.mm.plugin.mmsight.d.ey(ah.getContext());
-    Object localObject2 = bs.dyO();
+    AppMethodBeat.i(89427);
+    Object localObject1 = a.KVM;
+    KVH = false;
+    KVI = false;
+    pch = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    KVK = com.tencent.mm.plugin.mmsight.d.iR(MMApplicationContext.getContext());
+    Object localObject2 = co.jcP();
     int i;
     label121:
+    int n;
+    int m;
     int k;
     int j;
-    if ((CaptureMMProxy.getInstance() != null) && (!ah.brt()))
+    if ((CaptureMMProxy.getInstance() != null) && (!MMApplicationContext.isMMProcess()))
     {
-      i = bo.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
-      ab.i("MicroMsg.MMSightRecorderConfig", "MXM_DynaCfg_AV_Item_Key_SightMediaCodecMinApiLevel: %s", new Object[] { Integer.valueOf(i) });
-      if ((CaptureMMProxy.getInstance() == null) || (ah.brt())) {
-        break label312;
+      i = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
+      Log.i("MicroMsg.MMSightRecorderConfig", "MXM_DynaCfg_AV_Item_Key_SightMediaCodecMinApiLevel: %s", new Object[] { Integer.valueOf(i) });
+      if ((CaptureMMProxy.getInstance() == null) || (MMApplicationContext.isMMProcess())) {
+        break label341;
       }
-      ac.ll(CaptureMMProxy.getInstance().getDeviceInfoConfig());
-      ab.i("MicroMsg.MMSightRecorderConfig", "init large memory class: %sMB, totalMemory: %sGB  fingerprint: %s mmSightRecorderInfo: %s", new Object[] { Integer.valueOf(fYn), Double.valueOf(oHH), localObject2, ac.erB });
-      if ((CaptureMMProxy.getInstance() == null) || (ah.brt())) {
-        break label331;
+      af.Ds(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+      Log.i("MicroMsg.MMSightRecorderConfig", "init large memory class: %sMB, totalMemory: %sGB  fingerprint: %s mmSightRecorderInfo: %s", new Object[] { Integer.valueOf(pch), Double.valueOf(KVK), localObject2, af.lYf });
+      if ((CaptureMMProxy.getInstance() == null) || (MMApplicationContext.isMMProcess())) {
+        break label360;
       }
-      k = CaptureMMProxy.getInstance().getInt(ac.a.yDV, -1);
-      j = CaptureMMProxy.getInstance().getInt(ac.a.yDY, 1);
-      label196:
-      localObject2 = o.a(k, paramVideoTransPara);
-      oHG = (o)localObject2;
+      n = CaptureMMProxy.getInstance().getInt(at.a.acOx, -1);
+      m = CaptureMMProxy.getInstance().getInt(at.a.acOA, 1);
+      k = CaptureMMProxy.getInstance().getInt(at.a.acZC, 1);
+      j = CaptureMMProxy.getInstance().getInt(at.a.acZD, 2);
+      label220:
+      localObject2 = o.a(n, paramVideoTransPara);
+      KVJ = (o)localObject2;
       if (localObject2 == null) {
-        break label389;
+        break label456;
       }
-      paramVideoTransPara = oHG;
-      if (j != 1) {
-        break label370;
+      paramVideoTransPara = KVJ;
+      if (m != 1) {
+        break label437;
       }
       bool1 = true;
-      label225:
-      paramVideoTransPara.oHT = bool1;
-      oHE = true;
-      localObject1 = ah.getContext();
-      localObject2 = ah.getResources();
-      if (oHG != null) {
-        break label376;
+      label251:
+      paramVideoTransPara.KVV = bool1;
+      KVH = true;
+      localObject1 = MMApplicationContext.getContext();
+      localObject2 = MMApplicationContext.getResources();
+      i = a.a.i_want_you_know;
+      if (KVJ != null) {
+        break label443;
       }
     }
-    label312:
-    label331:
-    label370:
-    label376:
-    for (paramVideoTransPara = "";; paramVideoTransPara = Integer.valueOf(oHG.oHR))
+    label437:
+    label443:
+    for (paramVideoTransPara = "";; paramVideoTransPara = Integer.valueOf(KVJ.Ddk))
     {
-      t.makeText((Context)localObject1, ((Resources)localObject2).getString(2131300719, new Object[] { paramVideoTransPara }), 1).show();
-      AppMethodBeat.o(76528);
+      aa.makeText((Context)localObject1, ((Resources)localObject2).getString(i, new Object[] { paramVideoTransPara }), 1).show();
+      AppMethodBeat.o(89427);
       return;
-      i = bo.getInt(((a)com.tencent.mm.kernel.g.E(a.class)).Nq().getValue("SightMediaCodecMinApiLevel"), 19);
+      i = Util.getInt(((a)com.tencent.mm.kernel.h.ax(a.class)).aRC().getValue("SightMediaCodecMinApiLevel"), 19);
       break;
-      com.tencent.mm.kernel.g.RM();
-      ac.ll(com.tencent.mm.kernel.g.RL().Rv().dyM());
+      label341:
+      com.tencent.mm.kernel.h.baF();
+      af.Ds(com.tencent.mm.kernel.h.baE().bao().jcN());
       break label121;
-      com.tencent.mm.kernel.g.RM();
-      k = com.tencent.mm.kernel.g.RL().Ru().getInt(ac.a.yDV, -1);
-      com.tencent.mm.kernel.g.RM();
-      j = com.tencent.mm.kernel.g.RL().Ru().getInt(ac.a.yDY, 1);
-      break label196;
+      label360:
+      com.tencent.mm.kernel.h.baF();
+      n = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acOx, -1);
+      com.tencent.mm.kernel.h.baF();
+      m = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acOA, 1);
+      com.tencent.mm.kernel.h.baF();
+      k = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acZC, 1);
+      com.tencent.mm.kernel.h.baF();
+      j = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acZD, 2);
+      break label220;
       bool1 = false;
-      break label225;
+      break label251;
     }
-    label389:
-    switch (1.oHI[localObject1.ordinal()])
+    label456:
+    switch (1.KVL[localObject1.ordinal()])
     {
     default: 
-      k = ac.erB.eqR;
-      ab.i("MicroMsg.MMSightRecorderConfig", "recorderOption: %s", new Object[] { Integer.valueOf(k) });
-      if (k != -1) {
-        oHG = o.a(k, paramVideoTransPara);
+      n = af.lYf.lWF;
+      Log.i("MicroMsg.MMSightRecorderConfig", "recorderOption: %s", new Object[] { Integer.valueOf(n) });
+      if (n != -1) {
+        KVJ = o.a(n, paramVideoTransPara);
       }
-      if (oHG == null) {
-        break label505;
+      if (KVJ == null) {
+        break label579;
       }
-      if (j != 1) {
+      if (m != 1) {
         break;
       }
     }
-    for (oHG.oHT = true;; oHG.oHT = false)
+    for (KVJ.KVV = true;; KVJ.KVV = false)
     {
-      oHF = true;
-      AppMethodBeat.o(76528);
+      KVI = true;
+      AppMethodBeat.o(89427);
       return;
-      localObject1 = ac.erC;
-      k = 12;
+      localObject1 = af.lYg;
+      n = 12;
       break;
     }
-    label505:
-    oHG = o.a(1, paramVideoTransPara);
-    if (j == 1)
+    label579:
+    KVJ = o.a(1, paramVideoTransPara);
+    if (m == 1)
     {
-      oHG.oHT = true;
-      if (ac.erB.eqK == -1) {
-        break label626;
+      KVJ.KVV = true;
+      KVJ.KVT = k;
+      paramVideoTransPara = KVJ;
+      if (j != 2) {
+        break label726;
       }
-      oHG.eqK = ac.erB.eqK;
-      label547:
-      if (ac.erB.eqN != -1)
+      bool1 = true;
+      label619:
+      paramVideoTransPara.ygy = bool1;
+      if (af.lYf.lWy == -1) {
+        break label732;
+      }
+      KVJ.lWy = af.lYf.lWy;
+      label647:
+      if (af.lYf.lWB != -1)
       {
-        if (ac.erB.eqN != 1) {
-          break label653;
+        if (af.lYf.lWB != 1) {
+          break label787;
         }
         bool1 = true;
-        label570:
-        oHD = bool1;
+        label670:
+        KVG = bool1;
       }
-      if (ac.erB.eqL == -1) {
-        break label665;
+      if (af.lYf.lWz == -1) {
+        break label799;
       }
-      paramVideoTransPara = oHG;
-      if (ac.erB.eqL != 1) {
-        break label659;
+      paramVideoTransPara = KVJ;
+      if (af.lYf.lWz != 1) {
+        break label793;
       }
     }
-    label653:
-    label659:
+    label785:
+    label787:
+    label793:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramVideoTransPara.fdl = bool1;
-      AppMethodBeat.o(76528);
+      paramVideoTransPara.nME = bool1;
+      AppMethodBeat.o(89427);
       return;
-      oHG.oHT = false;
+      KVJ.KVV = false;
       break;
-      label626:
-      if (com.tencent.mm.compatible.util.d.fv(i))
-      {
-        oHG.eqK = 2;
-        break label547;
-      }
-      oHG.eqK = 1;
-      break label547;
+      label726:
       bool1 = false;
-      break label570;
+      break label619;
+      label732:
+      if (com.tencent.mm.compatible.util.d.rb(i)) {}
+      for (KVJ.lWy = 2;; KVJ.lWy = 1)
+      {
+        if (!((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zbv, false)) {
+          break label785;
+        }
+        KVJ.lWy = 1;
+        break;
+      }
+      break label647;
+      bool1 = false;
+      break label670;
     }
-    label665:
-    oHG.fdl = false;
-    AppMethodBeat.o(76528);
+    label799:
+    KVJ.nME = false;
+    AppMethodBeat.o(89427);
   }
   
-  public static boolean d(Point paramPoint)
+  public static boolean gch()
   {
-    AppMethodBeat.i(76526);
-    if (oHE)
+    AppMethodBeat.i(89428);
+    if ((CaptureMMProxy.getInstance() != null) && (!MMApplicationContext.isMMProcess()))
     {
-      Context localContext = ah.getContext();
-      Resources localResources = ah.getResources();
-      if (oHG == null) {}
-      for (paramPoint = "";; paramPoint = Integer.valueOf(oHG.oHR))
+      if (CaptureMMProxy.getInstance().getInt(at.a.acOx, -1) != -1)
       {
-        t.makeText(localContext, localResources.getString(2131300719, new Object[] { paramPoint }), 1).show();
-        AppMethodBeat.o(76526);
+        AppMethodBeat.o(89428);
+        return true;
+      }
+      AppMethodBeat.o(89428);
+      return false;
+    }
+    com.tencent.mm.kernel.h.baF();
+    if (com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acOx, -1) != -1)
+    {
+      AppMethodBeat.o(89428);
+      return true;
+    }
+    AppMethodBeat.o(89428);
+    return false;
+  }
+  
+  public static void gci()
+  {
+    AppMethodBeat.i(89430);
+    Log.i("MicroMsg.MMSightRecorderConfig", "initSimple");
+    o localo = new o();
+    KVJ = localo;
+    localo.nME = false;
+    KVJ.KVU = false;
+    if (com.tencent.mm.compatible.util.d.rb(19))
+    {
+      KVJ.lWy = 2;
+      AppMethodBeat.o(89430);
+      return;
+    }
+    KVJ.lWy = 1;
+    AppMethodBeat.o(89430);
+  }
+  
+  public static boolean k(Point paramPoint)
+  {
+    AppMethodBeat.i(89425);
+    if (KVH)
+    {
+      Context localContext = MMApplicationContext.getContext();
+      Resources localResources = MMApplicationContext.getResources();
+      int i = a.a.i_want_you_know;
+      if (KVJ == null) {}
+      for (paramPoint = "";; paramPoint = Integer.valueOf(KVJ.Ddk))
+      {
+        aa.makeText(localContext, localResources.getString(i, new Object[] { paramPoint }), 1).show();
+        AppMethodBeat.o(89425);
         return false;
       }
     }
-    ab.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy, deviceInfo recorderType: %s, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(ac.erB.eqK), Integer.valueOf(ac.erB.eqR), Boolean.valueOf(oHF) });
-    if (oHF)
+    Log.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy, deviceInfo recorderType: %s, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(af.lYf.lWy), Integer.valueOf(af.lYf.lWF), Boolean.valueOf(KVI) });
+    if (KVI)
     {
-      AppMethodBeat.o(76526);
+      AppMethodBeat.o(89425);
       return false;
     }
-    if (ac.erB.eqK != -1)
+    if (af.lYf.lWy != -1)
     {
-      AppMethodBeat.o(76526);
+      AppMethodBeat.o(89425);
       return true;
     }
-    if ((oHG != null) && (1 == oHG.eqK))
+    if ((KVJ != null) && (1 == KVJ.lWy))
     {
-      AppMethodBeat.o(76526);
+      AppMethodBeat.o(89425);
       return true;
     }
     if (paramPoint == null)
     {
-      AppMethodBeat.o(76526);
+      AppMethodBeat.o(89425);
       return false;
     }
-    if ((com.tencent.mm.plugin.mmsight.d.zo(paramPoint.x)) && (com.tencent.mm.plugin.mmsight.d.zo(paramPoint.y)))
+    if ((com.tencent.mm.plugin.mmsight.d.aaY(paramPoint.x)) && (com.tencent.mm.plugin.mmsight.d.aaY(paramPoint.y)))
     {
-      AppMethodBeat.o(76526);
+      AppMethodBeat.o(89425);
       return true;
     }
-    if (oHG != null)
+    if (KVJ != null)
     {
-      ab.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy not happy %s", new Object[] { paramPoint.toString() });
-      oHG.eqK = 1;
+      Log.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy not happy %s", new Object[] { paramPoint.toString() });
+      KVJ.lWy = 1;
     }
-    AppMethodBeat.o(76526);
+    AppMethodBeat.o(89425);
     return false;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(89424);
+      KVM = new a("MMSightCameraConfig", 0);
+      KVN = new a("MMStoryCameraConfig", 1);
+      KVO = new a[] { KVM, KVN };
+      AppMethodBeat.o(89424);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.j
  * JD-Core Version:    0.7.0.1
  */

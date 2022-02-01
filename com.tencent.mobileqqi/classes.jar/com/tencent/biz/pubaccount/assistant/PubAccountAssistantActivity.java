@@ -69,7 +69,7 @@ public class PubAccountAssistantActivity
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232072));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232071));
     this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130903432, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a(this.jdField_a_of_type_AndroidViewView);
     View localView = getLayoutInflater().inflate(2130903134, null);

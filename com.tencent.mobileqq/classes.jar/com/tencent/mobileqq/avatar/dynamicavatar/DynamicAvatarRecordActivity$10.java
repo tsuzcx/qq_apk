@@ -14,13 +14,13 @@ class DynamicAvatarRecordActivity$10
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i);
     localStringBuilder.append("\"");
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(this.a / 80);
+    this.this$0.C.setText(localStringBuilder);
+    this.this$0.K.setProgress(this.a / 80);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.10
  * JD-Core Version:    0.7.0.1
  */

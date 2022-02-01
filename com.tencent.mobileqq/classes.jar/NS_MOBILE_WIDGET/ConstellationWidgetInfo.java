@@ -66,43 +66,52 @@ public final class ConstellationWidgetInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.consid, 0);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    String str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.interval != null) {
-      paramJceOutputStream.write(this.interval, 2);
+    str = this.interval;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.good != null) {
-      paramJceOutputStream.write(this.good, 3);
+    str = this.good;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.bad != null) {
-      paramJceOutputStream.write(this.bad, 4);
+    str = this.bad;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 5);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.color != null) {
-      paramJceOutputStream.write(this.color, 6);
+    str = this.color;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.num != null) {
-      paramJceOutputStream.write(this.num, 7);
+    str = this.num;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.love, 8);
     paramJceOutputStream.write(this.work, 9);
     paramJceOutputStream.write(this.money, 10);
     paramJceOutputStream.write(this.health, 11);
-    if (this.date != null) {
-      paramJceOutputStream.write(this.date, 12);
+    str = this.date;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
     paramJceOutputStream.write(this.lucky, 13);
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 14);
+    str = this.icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.ConstellationWidgetInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,173 +17,153 @@ public final class r
   
   private static boolean a(Q paramQ, w paramw)
   {
-    if ((paramQ == null) || (paramw == null) || (paramQ.b == null))
+    if ((paramQ != null) && (paramw != null))
     {
-      bool1 = false;
-      return bool1;
-    }
-    String str = (String)paramQ.b.get("B17");
-    if (str != null) {
-      if (str.equals("1"))
-      {
-        bool1 = true;
-        label52:
-        if (bool1 == paramw.f()) {
-          break label433;
-        }
-        e.b("rqdp{  useStrategy changed to} %b", new Object[] { Boolean.valueOf(bool1) });
-        paramw.a(bool1);
+      if (paramQ.b == null) {
+        return false;
       }
-    }
-    boolean bool2;
-    label133:
-    label298:
-    label433:
-    for (boolean bool1 = true;; bool1 = false)
-    {
+      String str1 = (String)paramQ.b.get("B17");
+      if (str1 != null)
+      {
+        bool1 = str1.equals("1");
+        if (bool1 != paramw.f())
+        {
+          e.b("rqdp{  useStrategy changed to} %b", new Object[] { Boolean.valueOf(bool1) });
+          paramw.a(bool1);
+          bool2 = true;
+          break label85;
+        }
+      }
+      boolean bool2 = false;
+      label85:
       if ((paramQ.a != null) && (!paramQ.a.equals(paramw.a())))
       {
         e.b("rqdp{  url changed to} %s", new Object[] { paramQ.a });
         paramw.a(paramQ.a);
         bool2 = true;
-        str = (String)paramQ.b.get("B18");
-        bool1 = bool2;
-        if (str == null) {}
       }
-      for (;;)
+      else
       {
-        for (;;)
+        e.b("rqdp{  url same to} %s", new Object[] { paramQ.a });
+      }
+      str1 = (String)paramQ.b.get("B18");
+      boolean bool1 = bool2;
+      int i;
+      if (str1 != null)
+      {
+        try
         {
-          int i;
-          boolean bool3;
+          i = Integer.parseInt(str1);
+          bool1 = bool2;
+          if (i == paramw.b()) {
+            break label251;
+          }
+          e.b("rqdp{  upStrategy changed to} %d", new Object[] { Integer.valueOf(i) });
           try
           {
-            i = Integer.parseInt(str);
-            bool1 = bool2;
-            if (i != paramw.b()) {
-              e.b("rqdp{  upStrategy changed to} %d", new Object[] { Integer.valueOf(i) });
-            }
+            paramw.a(i);
+            bool1 = true;
           }
-          catch (Exception localException1) {}
-          for (;;)
+          catch (Exception localException1)
           {
-            try
-            {
-              paramw.a(i);
-              bool1 = true;
-              str = (String)paramQ.b.get("B19");
-              bool2 = bool1;
-              if (str == null) {
-                break;
-              }
-            }
-            catch (Exception localException4)
-            {
-              bool2 = true;
-              continue;
-            }
-            try
-            {
-              i = Integer.parseInt(str);
-              bool2 = bool1;
-              if (i != paramw.c()) {
-                e.b("rqdp{  QueryPeriod changed to} %d", new Object[] { Integer.valueOf(i) });
-              }
-            }
-            catch (Exception localException2)
-            {
-              bool2 = bool1;
-              if (e.a(localException2)) {
-                break;
-              }
-              localException2.printStackTrace();
-              bool2 = bool1;
-              break;
-              bool3 = true;
-              break label298;
-            }
+            bool2 = true;
           }
+          bool1 = bool2;
+        }
+        catch (Exception localException2) {}
+        if (!e.a(localException2))
+        {
+          localException2.printStackTrace();
+          bool1 = bool2;
+        }
+      }
+      label251:
+      String str2 = (String)paramQ.b.get("B19");
+      bool2 = bool1;
+      if (str2 != null)
+      {
+        try
+        {
+          i = Integer.parseInt(str2);
+          bool2 = bool1;
+          if (i == paramw.c()) {
+            break label348;
+          }
+          e.b("rqdp{  QueryPeriod changed to} %d", new Object[] { Integer.valueOf(i) });
           try
           {
             paramw.b(i);
             bool2 = true;
-            paramQ = (String)paramQ.b.get("B20");
-            bool1 = bool2;
-            if (paramQ == null) {
-              break;
-            }
-            if (!paramQ.equals("0")) {
-              break label412;
-            }
-            bool3 = false;
-            bool1 = bool2;
-            if (bool3 == paramw.g()) {
-              break;
-            }
-            e.b("rqdp{  enforceQuery changed to} %b", new Object[] { Boolean.valueOf(bool3) });
-            paramw.b(bool3);
-            return true;
           }
           catch (Exception localException3)
           {
             bool1 = true;
-            break label390;
           }
+          bool2 = bool1;
         }
-        bool1 = false;
-        break label52;
-        e.b("rqdp{  url same to} %s", new Object[] { paramQ.a });
-        bool2 = bool1;
-        break label133;
-        bool1 = bool2;
-        if (!e.a(localException1))
+        catch (Exception localException4) {}
+        if (!e.a(localException4))
         {
-          localException1.printStackTrace();
-          bool1 = bool2;
+          localException4.printStackTrace();
+          bool2 = bool1;
         }
       }
+      label348:
+      paramQ = (String)paramQ.b.get("B20");
+      bool1 = bool2;
+      if (paramQ != null)
+      {
+        boolean bool3 = paramQ.equals("0") ^ true;
+        bool1 = bool2;
+        if (bool3 != paramw.g())
+        {
+          e.b("rqdp{  enforceQuery changed to} %b", new Object[] { Boolean.valueOf(bool3) });
+          paramw.b(bool3);
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
+    return false;
   }
   
   public final void a(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if (paramInt != 510) {
-      e.c("rqdp{  com strategy unmatch key:}%d", new Object[] { Integer.valueOf(paramInt) });
-    }
-    for (;;)
+    if (paramInt != 510)
     {
+      e.c("rqdp{  com strategy unmatch key:}%d", new Object[] { Integer.valueOf(paramInt) });
       return;
-      if (paramArrayOfByte != null)
+    }
+    if (paramArrayOfByte != null)
+    {
+      w localw = t.a(this.a).b();
+      if (localw == null)
       {
-        w localw = t.a(this.a).b();
-        if (localw == null)
+        e.c("rqdp{  imposible! common strategy null!}", new Object[0]);
+        return;
+      }
+      try
+      {
+        Q localQ = a.d(paramArrayOfByte);
+        localQ.a(new h(paramArrayOfByte));
+        if (a(localQ, localw))
         {
-          e.c("rqdp{  imposible! common strategy null!}", new Object[0]);
-          return;
-        }
-        try
-        {
-          Q localQ = a.d(paramArrayOfByte);
-          localQ.a(new h(paramArrayOfByte));
-          if (a(localQ, localw))
+          if (paramBoolean)
           {
-            if (paramBoolean)
-            {
-              e.b("rqdp{  update common strategy should save}", new Object[0]);
-              a.a(this.a, paramInt, paramArrayOfByte);
-            }
-            e.b("rqdp{  com strategy changed notify!}", new Object[0]);
-            t.a(this.a).a(localw);
-            return;
+            e.b("rqdp{  update common strategy should save}", new Object[0]);
+            a.a(this.a, paramInt, paramArrayOfByte);
           }
+          e.b("rqdp{  com strategy changed notify!}", new Object[0]);
+          t.a(this.a).a(localw);
         }
-        catch (Throwable paramArrayOfByte)
-        {
-          if (!e.a(paramArrayOfByte)) {
-            paramArrayOfByte.printStackTrace();
-          }
-          e.d("rqdp{  error to common strategy!}", new Object[0]);
+        return;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        if (!e.a(paramArrayOfByte)) {
+          paramArrayOfByte.printStackTrace();
         }
+        e.d("rqdp{  error to common strategy!}", new Object[0]);
       }
     }
   }

@@ -1,33 +1,30 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import bced;
-import bcef;
-import bceg;
-import bcfe;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
 
-public class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
+class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(bceg parambceg, int paramInt) {}
+  ImageInfo$UploadMediaSegment$MediaUploadCallback$2(ImageInfo.UploadMediaSegment.MediaUploadCallback paramMediaUploadCallback, int paramInt) {}
   
   public void run()
   {
-    bcef.a(this.jdField_a_of_type_Bceg.a).e = this.jdField_a_of_type_Int;
-    Object localObject = (XMediaEditor)bcef.a(this.jdField_a_of_type_Bceg.a).get();
+    ImageInfo.UploadMediaSegment.b(this.b.a).l = this.a;
+    Object localObject = (XMediaEditor)ImageInfo.UploadMediaSegment.c(this.b.a).get();
     if (localObject != null)
     {
-      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(bcef.a(this.jdField_a_of_type_Bceg.a).c);
-      if ((localObject instanceof bcfe))
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.b(this.b.a).g);
+      if ((localObject instanceof ImageItem.ImageViewHolder))
       {
-        localObject = (bcfe)localObject;
-        if (bcef.a(this.jdField_a_of_type_Bceg.a).d.equals(((bcfe)localObject).a.getTag()))
+        localObject = (ImageItem.ImageViewHolder)localObject;
+        if (ImageInfo.UploadMediaSegment.b(this.b.a).e.equals(((ImageItem.ImageViewHolder)localObject).g.getTag()))
         {
-          ((bcfe)localObject).a.setVisibility(0);
-          ((bcfe)localObject).a.setDrawStatus(1);
-          ((bcfe)localObject).a.setAnimProgress(bcef.a(this.jdField_a_of_type_Bceg.a).e, bcef.a(this.jdField_a_of_type_Bceg.a).d);
+          ((ImageItem.ImageViewHolder)localObject).g.setVisibility(0);
+          ((ImageItem.ImageViewHolder)localObject).g.setDrawStatus(1);
+          ((ImageItem.ImageViewHolder)localObject).g.setAnimProgress(ImageInfo.UploadMediaSegment.b(this.b.a).l, ImageInfo.UploadMediaSegment.b(this.b.a).e);
         }
       }
     }
@@ -35,7 +32,7 @@ public class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.2
  * JD-Core Version:    0.7.0.1
  */

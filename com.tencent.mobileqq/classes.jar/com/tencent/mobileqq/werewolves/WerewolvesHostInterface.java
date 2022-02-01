@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.werewolves;
 
-import agqq;
-import alto;
-import alud;
-import alxp;
-import amdu;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -13,200 +8,205 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import auxp;
-import azqs;
-import bdbb;
-import bdgm;
-import bdhj;
-import bdin;
-import bdjz;
-import bema;
-import bemj;
-import bemk;
-import beml;
-import bemm;
-import bemn;
-import bemq;
-import bhuf;
+import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.GVideoHandler;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.NearbyHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.gameroom.IGameRoomAVControllerDelegate;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
 import mqq.observer.BusinessObserver;
-import mzx;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class WerewolvesHostInterface
 {
   public static final String TAG = "Q.werewolf.WerewolvesHostInterface";
-  public auxp mGameRoomAVController;
-  public bemq manager;
+  protected IGameRoomAVControllerDelegate gameRoomAVControllerDelegate;
+  WerewolvesPluginManager manager;
   
-  public WerewolvesHostInterface(bemq parambemq)
+  public WerewolvesHostInterface(WerewolvesPluginManager paramWerewolvesPluginManager)
   {
-    this.manager = parambemq;
-    this.mGameRoomAVController = auxp.a();
+    this.manager = paramWerewolvesPluginManager;
+    this.gameRoomAVControllerDelegate = ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class));
   }
   
   public void disableMic()
   {
-    if (this.manager.jdField_a_of_type_Agqq != null) {
-      this.manager.jdField_a_of_type_Agqq.t(false);
-    }
-    while (this.mGameRoomAVController == null) {
-      return;
-    }
-    if (this.mGameRoomAVController.a())
+    if (this.manager.e != null)
     {
-      this.mGameRoomAVController.c();
+      this.manager.e.p(false);
       return;
     }
-    this.mGameRoomAVController.a(new bemj(this));
+    IGameRoomAVControllerDelegate localIGameRoomAVControllerDelegate = this.gameRoomAVControllerDelegate;
+    if (localIGameRoomAVControllerDelegate != null)
+    {
+      if (localIGameRoomAVControllerDelegate.isBinded())
+      {
+        this.gameRoomAVControllerDelegate.stopSpeak();
+        return;
+      }
+      this.gameRoomAVControllerDelegate.bindService(new WerewolvesHostInterface.1(this));
+    }
   }
   
   public void enableMic()
   {
-    if (this.manager.jdField_a_of_type_Agqq != null) {
-      this.manager.jdField_a_of_type_Agqq.t(true);
+    if (this.manager.e != null) {
+      this.manager.e.p(true);
     }
   }
   
   public void enterProfile(String paramString)
   {
-    Object localObject1;
-    if (this.manager.jdField_a_of_type_Agqq != null)
+    if (this.manager.e != null)
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      boolean bool1 = ((alto)localQQAppInterface.getManager(51)).b(paramString);
+      boolean bool1 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString);
       String str = getCurrentRoomUin();
-      Object localObject2 = localQQAppInterface.a(false);
-      ProfileActivity.AllInOne localAllInOne = null;
-      localObject1 = localAllInOne;
+      Object localObject2 = localQQAppInterface.getHotChatMng(false);
+      AllInOne localAllInOne = null;
+      Object localObject1 = localAllInOne;
       if (localObject2 != null)
       {
-        localObject2 = ((HotChatManager)localObject2).a(str);
+        localObject2 = ((HotChatManager)localObject2).c(str);
         localObject1 = localAllInOne;
         if (localObject2 != null) {
           localObject1 = ((HotChatInfo)localObject2).troopCode;
         }
       }
-      localAllInOne = new ProfileActivity.AllInOne(paramString, 42);
-      localAllInOne.h = 113;
-      localAllInOne.d = str;
-      localAllInOne.c = ((String)localObject1);
-      localObject1 = new Intent(this.manager.jdField_a_of_type_Agqq.a(), NearbyPeopleProfileActivity.class);
-      ((Intent)localObject1).putExtra("is_from_werewolves", true);
-      ((Intent)localObject1).putExtra("AllInOne", localAllInOne);
+      localAllInOne = new AllInOne(paramString, 42);
+      localAllInOne.profileEntryType = 113;
+      localAllInOne.troopUin = str;
+      localAllInOne.troopCode = ((String)localObject1);
       boolean bool2 = localQQAppInterface.getCurrentAccountUin().equals(paramString);
       HotChatManager.a = false;
-      if ((bool1) || (bool2)) {
-        ProfileActivity.b(this.manager.jdField_a_of_type_Agqq.a(), localAllInOne);
+      if ((!bool1) && (!bool2))
+      {
+        paramString = new Intent();
+        paramString.putExtra("is_from_werewolves", true);
+        paramString.putExtra("AllInOne", localAllInOne);
+        paramString.putExtra("param_mode", 3);
+        RouteUtils.a(this.manager.e.aX(), paramString, "/nearby/people/profile");
+        return;
       }
+      ProfileUtils.openProfileCard(this.manager.e.aX(), localAllInOne);
     }
-    else
-    {
-      return;
-    }
-    ((Intent)localObject1).putExtra("param_mode", 3);
-    this.manager.jdField_a_of_type_Agqq.a().startActivity((Intent)localObject1);
   }
   
   public void existRoom()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    HotChatInfo localHotChatInfo = localQQAppInterface.a(true).a(getCurrentRoomUin());
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "onExist uin = " + localQQAppInterface.getCurrentAccountUin());
+    HotChatInfo localHotChatInfo = localQQAppInterface.getHotChatMng(true).c(getCurrentRoomUin());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onExist uin = ");
+      localStringBuilder.append(localQQAppInterface.getCurrentAccountUin());
+      QLog.d("Q.werewolf.WerewolvesHostInterface", 2, localStringBuilder.toString());
     }
     if (localHotChatInfo != null) {
-      ((bema)localQQAppInterface.a(107)).a(localHotChatInfo);
+      ((WerewolvesHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(localHotChatInfo);
     }
-    auxp.a().d();
+    ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).hideFloatView();
   }
   
   public void exitChatPie()
   {
-    if (this.manager.jdField_a_of_type_Agqq != null) {
-      this.manager.jdField_a_of_type_Agqq.b(1);
+    if (this.manager.e != null) {
+      this.manager.e.f(1);
     }
   }
   
   public String getCurrentAccountUin()
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin();
   }
   
   public String getCurrentRoomUin()
   {
-    return this.manager.jdField_a_of_type_JavaLangString;
+    return this.manager.d;
   }
   
   public Bitmap getFaceBitmap(String paramString, boolean paramBoolean)
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if (this.manager.jdField_a_of_type_Bdbb != null)
+    Object localObject1;
+    if (this.manager.f != null)
     {
       localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject2 = (alto)((QQAppInterface)localObject1).getManager(51);
+      Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
       boolean bool = ((QQAppInterface)localObject1).getCurrentAccountUin().equals(paramString);
-      if ((!((alto)localObject2).b(paramString)) && (!bool)) {
-        break label125;
-      }
-      localObject2 = this.manager.jdField_a_of_type_Bdbb.a(1, paramString, 200);
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      if ((!((FriendsManager)localObject2).n(paramString)) && (!bool))
       {
+        localObject2 = this.manager.f.getBitmapFromCache(32, paramString, 200);
         localObject1 = localObject2;
-        if (paramBoolean)
+        if (localObject2 == null)
         {
-          this.manager.jdField_a_of_type_Bdbb.a(paramString, 1, true);
           localObject1 = localObject2;
+          if (paramBoolean)
+          {
+            this.manager.f.requestDecodeStrangeFace(paramString, 200, true, false);
+            localObject1 = localObject2;
+          }
+        }
+      }
+      else
+      {
+        localObject2 = this.manager.f.getBitmapFromCache(1, paramString, 200);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = localObject2;
+          if (paramBoolean)
+          {
+            this.manager.f.requestDecodeFace(paramString, 1, true);
+            localObject1 = localObject2;
+          }
         }
       }
     }
-    for (;;)
+    else
     {
-      paramString = (String)localObject1;
-      if (localObject1 == null) {
-        paramString = bdhj.c();
-      }
-      return paramString;
-      label125:
-      localObject2 = this.manager.jdField_a_of_type_Bdbb.a(32, paramString, 200);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = localObject2;
-        if (paramBoolean)
-        {
-          this.manager.jdField_a_of_type_Bdbb.a(paramString, 200, true, false);
-          localObject1 = localObject2;
-        }
-      }
+      localObject1 = null;
     }
+    if (localObject1 == null) {
+      return ImageUtil.n();
+    }
+    return localObject1;
   }
   
   public void getFollowStatus(String paramString)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    amdu localamdu = (amdu)localQQAppInterface.a(20);
-    localQQAppInterface.addObserver(new bemn(this, localQQAppInterface));
-    localamdu.s(paramString);
+    GVideoHandler localGVideoHandler = (GVideoHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
+    localQQAppInterface.addObserver(new WerewolvesHostInterface.5(this, localQQAppInterface));
+    localGVideoHandler.a(paramString);
   }
   
   public String getQQVersion()
   {
-    return "8.3.5";
+    return "8.8.17";
   }
   
   public String getSKey()
@@ -217,8 +217,8 @@ public class WerewolvesHostInterface
   
   public void hideAllPanels()
   {
-    if (this.manager.jdField_a_of_type_Agqq != null) {
-      this.manager.jdField_a_of_type_Agqq.aM();
+    if (this.manager.e != null) {
+      this.manager.e.aQ();
     }
   }
   
@@ -227,12 +227,12 @@ public class WerewolvesHostInterface
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return ((alto)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(51)).b(paramString);
+    return ((FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString);
   }
   
   public boolean isNetworkAvailable()
   {
-    return bdin.g(BaseApplicationImpl.getApplication());
+    return NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication());
   }
   
   public void logD(String paramString1, String paramString2)
@@ -275,16 +275,16 @@ public class WerewolvesHostInterface
     if (QLog.isColorLevel()) {
       QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "onExist");
     }
-    if ((this.manager.jdField_a_of_type_Agqq != null) && (this.manager.jdField_a_of_type_Agqq != null)) {
-      this.manager.jdField_a_of_type_Agqq.f(alud.a(2131717324));
+    if ((this.manager.e != null) && (this.manager.e != null)) {
+      this.manager.e.e(HardCodeUtil.a(2131913848));
     }
     existRoom();
   }
   
   public void onKickOut()
   {
-    if (this.manager.jdField_a_of_type_Agqq != null) {
-      this.manager.jdField_a_of_type_Agqq.f(alud.a(2131717325));
+    if (this.manager.e != null) {
+      this.manager.e.e(HardCodeUtil.a(2131913849));
     }
     existRoom();
   }
@@ -297,7 +297,7 @@ public class WerewolvesHostInterface
       localIntent.addFlags(268435456);
     }
     paramContext.startActivity(localIntent);
-    auxp.a().d = true;
+    ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).setInGameGift(true);
   }
   
   public void openUrl(Context paramContext, String paramString)
@@ -312,13 +312,13 @@ public class WerewolvesHostInterface
   
   public void report(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    azqs.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    ReportController.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void sendPb(String paramString, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg, BusinessObserver paramBusinessObserver)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), mzx.class);
+    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), ProtoServlet.class);
     localNewIntent.putExtra("cmd", paramString);
     localNewIntent.putExtra("data", paramOIDBSSOPkg.toByteArray());
     localNewIntent.setObserver(paramBusinessObserver);
@@ -327,59 +327,60 @@ public class WerewolvesHostInterface
   
   public void setDarkTheme(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.manager.jdField_a_of_type_Agqq != null) {
-      this.manager.jdField_a_of_type_Agqq.e(paramBoolean1, paramBoolean2);
+    if (this.manager.e != null) {
+      this.manager.e.b(paramBoolean1, paramBoolean2);
     }
   }
   
   public void setFollowed(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (String str = "1";; str = "2")
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      alxp.a(localQQAppInterface, paramString, "6", str, 1, new bemm(this, localQQAppInterface, paramString, str, paramBoolean));
-      return;
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "2";
     }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    NearbyHandler.a(localQQAppInterface, paramString, "6", str, 1, new WerewolvesHostInterface.4(this, localQQAppInterface, paramString, str, paramBoolean));
   }
   
   public void setSoundEnable(boolean paramBoolean)
   {
-    if (this.mGameRoomAVController != null)
+    IGameRoomAVControllerDelegate localIGameRoomAVControllerDelegate = this.gameRoomAVControllerDelegate;
+    if (localIGameRoomAVControllerDelegate != null)
     {
-      if (this.mGameRoomAVController.a()) {
-        this.mGameRoomAVController.a(paramBoolean);
+      if (localIGameRoomAVControllerDelegate.isBinded())
+      {
+        this.gameRoomAVControllerDelegate.setSoundEnable(paramBoolean);
+        return;
       }
+      this.gameRoomAVControllerDelegate.bindService(new WerewolvesHostInterface.2(this, paramBoolean));
     }
-    else {
-      return;
-    }
-    this.mGameRoomAVController.a(new bemk(this, paramBoolean));
   }
   
   public void showActionSheet(String paramString, String[] paramArrayOfString, int[] paramArrayOfInt, Object paramObject)
   {
-    if (this.manager.jdField_a_of_type_Agqq == null) {
+    if (this.manager.e == null) {
       return;
     }
-    bhuf localbhuf = bhuf.a(this.manager.jdField_a_of_type_Agqq.a());
+    ActionSheet localActionSheet = ActionSheet.create(this.manager.e.aX());
     if (!TextUtils.isEmpty(paramString)) {
-      localbhuf.a(paramString);
+      localActionSheet.setMainTitle(paramString);
     }
     int i = 0;
     while (i < paramArrayOfString.length)
     {
-      localbhuf.a(paramArrayOfString[i], paramArrayOfInt[i]);
+      localActionSheet.addButton(paramArrayOfString[i], paramArrayOfInt[i]);
       i += 1;
     }
-    localbhuf.c(2131690648);
-    localbhuf.a(new beml(this, paramObject, localbhuf));
-    localbhuf.show();
+    localActionSheet.addCancelButton(2131887648);
+    localActionSheet.setOnButtonClickListener(new WerewolvesHostInterface.3(this, paramObject, localActionSheet));
+    localActionSheet.show();
   }
   
   public Dialog showCustomDialog(Context paramContext, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, String paramString4, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramContext = bdgm.a(paramContext, 230);
+    paramContext = DialogUtil.a(paramContext, 230);
     if (!TextUtils.isEmpty(paramString1)) {
       paramContext.setTitle(paramString1);
     }
@@ -398,13 +399,13 @@ public class WerewolvesHostInterface
   
   public void showQQToast(int paramInt1, String paramString, int paramInt2)
   {
-    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914);
-    QQToast.a(BaseApplicationImpl.getApplication(), paramInt1, paramString, paramInt2).b(i);
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920);
+    QQToast.makeText(BaseApplicationImpl.getApplication(), paramInt1, paramString, paramInt2).show(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,42 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
 import android.text.TextUtils;
-import atnw;
 import com.tencent.qphone.base.util.QLog;
 
-public class LyricsController$5
+class LyricsController$5
   implements Runnable
 {
-  public LyricsController$5(atnw paramatnw) {}
+  LyricsController$5(LyricsController paramLyricsController) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onActivityResumed: mHoldByPermissionType:" + this.this$0.jdField_a_of_type_Int + " mHoldByPermissionUin:" + this.this$0.jdField_a_of_type_JavaLangString);
-    }
-    atnw localatnw = this.this$0;
-    localatnw.h += 1;
-    if ((atnw.a(this.this$0)) && (this.this$0.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString))) {
-      this.this$0.a(this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaLangString);
-    }
-    if (this.this$0.h >= 3)
+    if (QLog.isColorLevel())
     {
-      this.this$0.c = false;
-      this.this$0.h = 0;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityResumed: mHoldByPermissionType:");
+      ((StringBuilder)localObject).append(this.this$0.g);
+      ((StringBuilder)localObject).append(" mHoldByPermissionUin:");
+      ((StringBuilder)localObject).append(this.this$0.h);
+      QLog.d("LyricsController", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.this$0;
+    ((LyricsController)localObject).w += 1;
+    if ((LyricsController.b(this.this$0)) && (this.this$0.g != -1) && (!TextUtils.isEmpty(this.this$0.h)))
+    {
+      localObject = this.this$0;
+      ((LyricsController)localObject).a(((LyricsController)localObject).g, this.this$0.h);
+    }
+    if (this.this$0.w >= 3)
+    {
+      localObject = this.this$0;
+      ((LyricsController)localObject).f = false;
+      ((LyricsController)localObject).w = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.5
  * JD-Core Version:    0.7.0.1
  */

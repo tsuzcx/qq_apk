@@ -1,516 +1,317 @@
 package com.tencent.open.agent;
 
-import alud;
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apkp;
-import bdaq;
-import bfbw;
-import bfdn;
-import bfdo;
-import bfdp;
-import bfdq;
-import bfdr;
-import bfds;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBSInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.FixedBounceScrollView;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthItem;
+import com.tencent.open.agent.entity.Permission;
+import com.tencent.open.agent.util.SSOLog;
 import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qconn.protofile.appType.AuthItem;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class CardContainer
-  extends RelativeLayout
+  extends BaseCardContainer
 {
-  protected int a;
-  protected Context a;
-  public Drawable a;
-  protected Handler a;
-  protected LayoutInflater a;
-  protected ImageView a;
-  private LinearLayout a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected URLDrawableDownListener.Adapter a;
-  public AnyScaleTypeImageView a;
-  protected FixedBounceScrollView a;
-  public AuthorityAccountView a;
-  protected List<bfds> a;
-  public boolean a;
-  protected final int b;
-  protected ImageView b;
-  protected RelativeLayout b;
-  protected TextView b;
-  private boolean b;
-  protected final int c;
-  private ImageView c;
-  protected RelativeLayout c;
-  protected TextView c;
-  protected RelativeLayout d;
-  protected TextView d;
-  protected TextView e;
-  protected TextView f;
+  protected AuthorityAccountView k;
+  private ImageView l;
+  private ImageView m;
+  private TextView n;
+  private TextView o;
+  private TextView p;
+  private TextView q;
+  private TextView r;
+  private RelativeLayout s;
+  private TextView t;
   
   public CardContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bfdn(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bfdo(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    new DisplayMetrics();
-    paramAttributeSet = getResources().getDisplayMetrics();
-    this.jdField_b_of_type_Int = paramAttributeSet.widthPixels;
-    this.jdField_c_of_type_Int = paramAttributeSet.heightPixels;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
-  private URLDrawable a(String paramString)
+  protected void a()
   {
-    localObject3 = null;
-    try
+    SSOLog.b("CardContainer", new Object[] { "displayCoverContainer" });
+    if (!this.d)
     {
-      Object localObject1 = new apkp(0, this.jdField_b_of_type_Int, 100);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
-      try
-      {
-        localObject1 = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-        paramString = (String)localObject1;
+      this.d = true;
+      this.g.setVisibility(0);
+      if ((this.a instanceof QBaseActivity)) {
+        ImmersiveUtils.setStatusTextColor(false, ((QBaseActivity)this.a).getWindow());
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          QLog.e("CardContainer", 1, new Object[] { "genGameUrlImg exception url=", paramString, ",excption=", localIllegalArgumentException.toString() });
-          paramString = localObject3;
-        }
+      if ((this.a instanceof AuthorityActivity)) {
+        ((AuthorityActivity)this.a).a();
+      } else if ((this.a instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)this.a).i();
       }
-      if ((paramString != null) && (paramString.getStatus() == 2))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CardContainer", 2, "-->-->genGameUrlImg: failed");
-        }
-        paramString.restartDownload();
-      }
-      if (((paramString == null) || (paramString.getStatus() != 1)) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-        this.jdField_a_of_type_AndroidOsHandler.post(new CardContainer.7(this, paramString));
-      }
-      return paramString;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("CardContainer", 2, "-->create empty drawable oom.", localOutOfMemoryError);
-        }
-        localObject2 = null;
-      }
+      int i = (int)(this.b / 1.307692F);
+      int j = this.f.getHeight();
+      a(this.h, i, i - j, new CardContainer.1(this));
     }
   }
   
-  private void a(ImageView paramImageView, int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("CardContainer", 2, "performAnim height =" + paramInt1 + ", topMargin =" + paramInt2);
-    }
-    ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { 0, paramInt1 });
-    ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 0, paramInt2 });
-    localValueAnimator1.addUpdateListener(new bfdp(this, paramImageView));
-    localValueAnimator1.addListener(new bfdq(this, paramImageView));
-    localValueAnimator2.addUpdateListener(new bfdr(this));
-    localValueAnimator1.setDuration(300L);
-    localValueAnimator2.setDuration(300L);
-    paramImageView = new AnimatorSet();
-    paramImageView.playTogether(new Animator[] { localValueAnimator1, localValueAnimator2 });
-    paramImageView.setDuration(300L);
-    paramImageView.start();
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("CardContainer", 2, "displayCoverContainer ");
-    }
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-        ImmersiveUtils.a(false, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
-      }
-      if (!(this.jdField_a_of_type_AndroidContentContext instanceof AuthorityActivity)) {
-        break label111;
-      }
-      ((AuthorityActivity)this.jdField_a_of_type_AndroidContentContext).l();
-    }
-    for (;;)
-    {
-      int i = (int)(this.jdField_b_of_type_Int / 1.307692F);
-      int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
-      a(this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView, i, i - j);
-      return;
-      label111:
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)this.jdField_a_of_type_AndroidContentContext).h();
-      }
-    }
-  }
-  
-  protected String a()
-  {
-    String str = AuthorityActivity.e;
-    if (TextUtils.isEmpty(str)) {
-      return "";
-    }
-    int j = str.length();
-    if (j >= 8) {}
-    StringBuilder localStringBuilder;
-    for (Object localObject = str.substring(j - 8);; localObject = str)
-    {
-      localStringBuilder = new StringBuilder("http://i.gtimg.cn/open/app_icon");
-      int i = 2;
-      j = 0;
-      while (j < 8)
-      {
-        localStringBuilder.append("/");
-        localStringBuilder.append(((String)localObject).substring(j, i));
-        j += 2;
-        i += 2;
-      }
-      localObject = new StringBuilder();
-      i = 0;
-      while (i < 8 - j)
-      {
-        ((StringBuilder)localObject).append("0");
-        i += 1;
-      }
-    }
-    localStringBuilder.append("/").append(str).append("_").append("android").append("_").append("ad").append("_").append("0.jpg");
-    localStringBuilder.replace(0, 4, "gamead");
-    localObject = localStringBuilder.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "--> result: " + (String)localObject);
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public List<bfds> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "switchToMode -->mode: " + paramInt + ", mMode=" + this.jdField_a_of_type_Int);
-    }
-    ThreadManager.executeOnSubThread(new CardContainer.3(this));
-    if (paramInt == this.jdField_a_of_type_Int) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchToMode -->mode: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", mMode=");
+    localStringBuilder.append(this.e);
+    SSOLog.a("CardContainer", new Object[] { localStringBuilder.toString() });
+    b(paramString);
+    if (paramInt == this.e) {
       return;
     }
     if (paramInt == 0) {
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.s.setVisibility(0);
+    } else if (paramInt == 1) {
+      this.s.setVisibility(8);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      if (paramInt == 1) {
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-    }
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityActivity", 2, "showAdsInfo adsPic = " + paramBitmap);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityActivity", 2, "showAdsInfo adsTxt = " + paramString);
-    }
+    this.e = paramInt;
   }
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    QLog.i("showAppInfo", 1, "showAppInfo appName = " + paramString, new RuntimeException("ShowAppInfoStack"));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showAppInfo appName = ");
+    ((StringBuilder)localObject).append(paramString);
+    SSOLog.b("CardContainer", ((StringBuilder)localObject).toString());
     setVisibility(0);
-    if ((!TextUtils.isEmpty(paramString)) && (getTag() != null)) {
-      ((TextView)findViewById(2131362218)).setText(alud.a(2131701833) + paramString + alud.a(2131701832));
+    if ((!TextUtils.isEmpty(paramString)) && (getTag() != null))
+    {
+      localObject = (TextView)findViewById(2131427901);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131899683));
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(HardCodeUtil.a(2131899682));
+      ((TextView)localObject).setText(localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setAppInfo(paramString, paramBitmap);
+    localObject = this.k;
+    if (localObject != null) {
+      ((AuthorityAccountView)localObject).setAppInfo(paramString, paramBitmap);
     }
   }
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    int j;
     if (!TextUtils.isEmpty(paramString2))
     {
-      j = 0;
+      int j = 0;
+      int i = 0;
+      while (j < paramString2.length())
+      {
+        if (String.valueOf(paramString2.charAt(j)).getBytes().length > 1) {
+          i += 2;
+        } else {
+          i += 1;
+        }
+        if (i > 10)
+        {
+          i = 1;
+          break label79;
+        }
+        j += 1;
+      }
       i = 0;
-      if (j >= paramString2.length()) {
-        break label276;
+      label79:
+      Object localObject2 = paramString2.substring(0, j);
+      Object localObject1 = localObject2;
+      if (i != 0)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append("...");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      if (String.valueOf(paramString2.charAt(j)).getBytes().length <= 1) {
-        break label258;
-      }
-      i += 2;
-      label45:
-      if (i <= 10) {
-        break label267;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("-->showUserInfo() set nickname ellipsis=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(",nick=");
+      ((StringBuilder)localObject2).append(paramString2);
+      SSOLog.b("CardContainer", ((StringBuilder)localObject2).toString());
+      this.n.setText((CharSequence)localObject1);
+      this.o.setText((CharSequence)localObject1);
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramString2 = String.format(super.getContext().getString(2131886452), new Object[] { paramString1 });
+      this.p.setText(paramString2);
+      this.q.setText(paramString2);
+      if (this.r.getVisibility() == 0) {
+        this.r.setVisibility(8);
       }
     }
-    label258:
-    label267:
-    label276:
-    for (int i = 1;; i = 0)
+    if (paramBitmap != null)
     {
-      String str2 = paramString2.substring(0, j);
-      String str1 = str2;
-      if (i != 0) {
-        str1 = str2 + "...";
+      this.l.setImageBitmap(paramBitmap);
+      this.m.setImageBitmap(paramBitmap);
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramString2 = this.k;
+      if (paramString2 != null) {
+        paramString2.a(paramString1);
       }
-      QLog.i("CardContainer", 1, "-->showUserInfo() set nickname ellipsis=" + str1 + ",nick=" + paramString2);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(str1);
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        paramString2 = String.format(super.getContext().getString(2131689902), new Object[] { paramString1 });
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString2);
-        if (this.e.getVisibility() == 0) {
-          this.e.setVisibility(8);
-        }
-      }
-      if (paramBitmap != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      }
-      if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null)) {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a(paramString1);
-      }
-      return;
-      i += 1;
-      break label45;
-      j += 1;
-      break;
     }
   }
   
-  public boolean a(SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse)
+  public boolean a(SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, String paramString)
   {
-    int i = 0;
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
     Object localObject = paramGetAuthApiListResponse.authorized_form_list.get();
     paramGetAuthApiListResponse = new StringBuilder(((List)localObject).size() * 128);
     localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    boolean bool1;
+    int i;
+    for (;;)
     {
-      SdkAuthorize.AuthItem localAuthItem = (SdkAuthorize.AuthItem)((Iterator)localObject).next();
-      if (localAuthItem.is_new.get() != 0)
-      {
-        bfds localbfds = new bfds();
-        localbfds.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
-        localbfds.jdField_a_of_type_Int = localAuthItem.default_flag.get();
-        localbfds.jdField_b_of_type_Int = localAuthItem.id.get();
-        if (localAuthItem.is_new.get() == 0) {}
-        for (bool = false;; bool = true)
-        {
-          localbfds.jdField_a_of_type_Boolean = bool;
-          localbfds.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
-          if (QLog.isColorLevel()) {
-            paramGetAuthApiListResponse.append("--> Permission p, api: ").append(localbfds.jdField_b_of_type_JavaLangString).append(" | flag: ").append(localbfds.jdField_a_of_type_Int).append(" | id: ").append(localbfds.jdField_b_of_type_Int).append(" | isNew: ").append(localbfds.jdField_a_of_type_Boolean).append(" | title: ").append(localbfds.jdField_a_of_type_JavaLangString).append("\n");
-          }
-          this.jdField_a_of_type_JavaUtilList.add(localbfds);
-          break;
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, paramGetAuthApiListResponse.toString());
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (boolean bool = true; bool; bool = false)
-    {
-      paramGetAuthApiListResponse = this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
-      a(1);
-      this.e.setVisibility(0);
-      if (QLog.isColorLevel()) {
-        QLog.d("CardContainer", 2, "--> has been authority.");
-      }
-      setAdImageByURL(paramGetAuthApiListResponse, a());
-      return bool;
-    }
-    a(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "--> has not been authority.");
-    }
-    paramGetAuthApiListResponse = "";
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localObject = (bfds)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (getTag() != null) {}
-      for (paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· 获得你与QQ通讯录绑定的电话号码";; paramGetAuthApiListResponse = paramGetAuthApiListResponse + "· " + ((bfds)localObject).jdField_a_of_type_JavaLangString)
-      {
-        paramGetAuthApiListResponse = paramGetAuthApiListResponse + "\n";
-        i += 1;
+      boolean bool2 = ((Iterator)localObject).hasNext();
+      bool1 = true;
+      i = 0;
+      if (!bool2) {
         break;
       }
+      appType.AuthItem localAuthItem = (appType.AuthItem)((Iterator)localObject).next();
+      if (localAuthItem.is_new.get() != 0)
+      {
+        Permission localPermission = new Permission();
+        localPermission.d = localAuthItem.api_list.get();
+        localPermission.a = localAuthItem.default_flag.get();
+        localPermission.e = localAuthItem.id.get();
+        if (localAuthItem.is_new.get() == 0) {
+          bool1 = false;
+        }
+        localPermission.c = bool1;
+        localPermission.b = localAuthItem.title.get();
+        paramGetAuthApiListResponse.append(localPermission.toString());
+        paramGetAuthApiListResponse.append("\n");
+        this.c.add(localPermission);
+      }
     }
-    this.f.setText(paramGetAuthApiListResponse);
-    return bool;
+    SSOLog.a("CardContainer", new Object[] { paramGetAuthApiListResponse.toString() });
+    if (this.c.size() == 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    if (bool1)
+    {
+      paramGetAuthApiListResponse = this.h;
+      a(1, paramString);
+      this.r.setVisibility(0);
+      SSOLog.a("CardContainer", new Object[] { "--> has been authority." });
+      a(paramGetAuthApiListResponse, a(paramString));
+      return bool1;
+    }
+    a(0, paramString);
+    SSOLog.a("CardContainer", new Object[] { "--> has not been authority." });
+    paramGetAuthApiListResponse = "";
+    while (i < this.c.size())
+    {
+      paramString = (Permission)this.c.get(i);
+      if (getTag() != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramGetAuthApiListResponse);
+        paramString.append("· 获得你与QQ通讯录绑定的电话号码");
+        paramGetAuthApiListResponse = paramString.toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramGetAuthApiListResponse);
+        ((StringBuilder)localObject).append("· ");
+        ((StringBuilder)localObject).append(paramString.b);
+        paramGetAuthApiListResponse = ((StringBuilder)localObject).toString();
+      }
+      paramString = new StringBuilder();
+      paramString.append(paramGetAuthApiListResponse);
+      paramString.append("\n");
+      paramGetAuthApiListResponse = paramString.toString();
+      i += 1;
+    }
+    this.t.setText(paramGetAuthApiListResponse);
+    return bool1;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.b();
+    this.k.a();
+  }
+  
+  public void c()
+  {
+    AuthorityAccountView localAuthorityAccountView = this.k;
+    if (localAuthorityAccountView != null) {
+      localAuthorityAccountView.f();
     }
+  }
+  
+  public List<Permission> getAuthList()
+  {
+    return this.c;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362224));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362225));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362216));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362220));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362222));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362217));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362221));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362223));
-    this.e = ((TextView)super.findViewById(2131362219));
-    this.e.setVisibility(8);
-    this.f = ((TextView)super.findViewById(2131371402));
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView = ((AuthorityAccountView)super.findViewById(2131361881));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362904));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView = ((FixedBounceScrollView)super.findViewById(2131362915));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setMaxHeight(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.setNeedDisallowIntercept(true);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362227));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131367045));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131378019));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378020));
-  }
-  
-  public void setAdImageByURL(AnyScaleTypeImageView paramAnyScaleTypeImageView, String paramString)
-  {
-    Object localObject = null;
-    AnyScaleTypeImageView localAnyScaleTypeImageView = paramAnyScaleTypeImageView;
-    if (paramAnyScaleTypeImageView == null) {
-      localAnyScaleTypeImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
-    }
-    try
-    {
-      paramAnyScaleTypeImageView = new apkp(0, this.jdField_b_of_type_Int, 100);
-      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = paramAnyScaleTypeImageView;
-      localURLDrawableOptions.mFailedDrawable = paramAnyScaleTypeImageView;
-    }
-    catch (OutOfMemoryError paramAnyScaleTypeImageView)
-    {
-      try
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions;
-        paramAnyScaleTypeImageView = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-        if ((paramAnyScaleTypeImageView != null) && (paramAnyScaleTypeImageView.getStatus() == 2)) {
-          paramAnyScaleTypeImageView.restartDownload();
-        }
-        if ((paramAnyScaleTypeImageView != null) && (paramAnyScaleTypeImageView.getStatus() == 1))
-        {
-          c();
-          if (QLog.isColorLevel()) {
-            QLog.d("CardContainer", 2, "getStatus SUCCESSED: ");
-          }
-          localAnyScaleTypeImageView.setVisibility(0);
-          localAnyScaleTypeImageView.setImageDrawable(paramAnyScaleTypeImageView);
-          return;
-          paramAnyScaleTypeImageView = paramAnyScaleTypeImageView;
-          if (QLog.isColorLevel()) {
-            QLog.e("CardContainer", 2, "-->create color drawable oom.", paramAnyScaleTypeImageView);
-          }
-          paramAnyScaleTypeImageView = null;
-        }
-      }
-      catch (IllegalArgumentException paramAnyScaleTypeImageView)
-      {
-        for (;;)
-        {
-          QLog.e("CardContainer", 1, new Object[] { "setAdImageByURL exception url=", paramString, ",excption=", paramAnyScaleTypeImageView.toString() });
-          paramAnyScaleTypeImageView = localObject;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("CardContainer", 2, "getStatus OTHERS: ");
-          }
-          localAnyScaleTypeImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-        }
-      }
-    }
+    this.l = ((ImageView)super.findViewById(2131427899));
+    this.n = ((TextView)super.findViewById(2131427903));
+    this.p = ((TextView)super.findViewById(2131427905));
+    this.m = ((ImageView)super.findViewById(2131427900));
+    this.o = ((TextView)super.findViewById(2131427904));
+    this.q = ((TextView)super.findViewById(2131427906));
+    this.r = ((TextView)super.findViewById(2131427902));
+    this.r.setVisibility(8);
+    this.t = ((TextView)super.findViewById(2131439604));
+    this.k = ((AuthorityAccountView)super.findViewById(2131427489));
+    this.s = ((RelativeLayout)super.findViewById(2131428888));
+    FixedBounceScrollView localFixedBounceScrollView = (FixedBounceScrollView)super.findViewById(2131428903);
+    localFixedBounceScrollView.setMaxHeight(DisplayUtil.a(this.a, 102.0F));
+    localFixedBounceScrollView.setNeedDisallowIntercept(true);
   }
   
   public void setAppType(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setAppType(paramString);
+    AuthorityAccountView localAuthorityAccountView = this.k;
+    if (localAuthorityAccountView != null) {
+      localAuthorityAccountView.setAppType(paramString);
     }
   }
   
-  public void setChangeAccountListener(bfbw parambfbw)
+  public void setChangeAccountListener(AuthorityAccountView.IChangeAccountListener paramIChangeAccountListener)
   {
-    if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.setChangeAccountListener(parambfbw);
+    AuthorityAccountView localAuthorityAccountView = this.k;
+    if (localAuthorityAccountView != null) {
+      localAuthorityAccountView.setChangeAccountListener(paramIChangeAccountListener);
+    }
+  }
+  
+  public void setDeleteLastAccountListener(AuthorityAccountView.IDeleteLastAccountListener paramIDeleteLastAccountListener)
+  {
+    AuthorityAccountView localAuthorityAccountView = this.k;
+    if (localAuthorityAccountView != null) {
+      localAuthorityAccountView.setDeleteLastAccountListener(paramIDeleteLastAccountListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CardContainer
  * JD-Core Version:    0.7.0.1
  */

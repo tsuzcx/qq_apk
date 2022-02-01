@@ -1,38 +1,42 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.UiThreadUtil;
+import org.json.JSONObject;
 
 class MiniAppPlugin$3
-  extends apmh
+  implements MiniAppCmdInterface
 {
-  MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin) {}
+  MiniAppPlugin$3(MiniAppPlugin paramMiniAppPlugin, String paramString) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey") == MiniAppPlugin.access$000(this.this$0).key) && ("ipc_start_miniapp".equals(paramBundle.getString("cmd"))))
+    long l = paramJSONObject.optLong("retCode");
+    if ((paramBoolean) && (l == 0L))
     {
-      String str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response").getString("result");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle)))
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
+      if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.appId)))
       {
-        QLog.e("MiniAppPlugin", 2, "ipc_start_miniapp result : " + paramBundle);
-        this.this$0.callJs(str, new String[] { paramBundle });
+        UiThreadUtil.a(new MiniAppPlugin.3.1(this, paramJSONObject));
+        return;
       }
+      QLog.e("MiniAppPlugin", 2, "requestMiniApp invalid appInfo");
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestMiniApp failed, retCode=");
+    localStringBuilder.append(l);
+    localStringBuilder.append(",errMsg=");
+    localStringBuilder.append(paramJSONObject.optString("errMsg"));
+    QLog.e("MiniAppPlugin", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin.3
  * JD-Core Version:    0.7.0.1
  */

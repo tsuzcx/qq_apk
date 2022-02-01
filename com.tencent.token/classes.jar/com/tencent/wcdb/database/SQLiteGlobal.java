@@ -6,14 +6,7 @@ import java.io.File;
 
 public final class SQLiteGlobal
 {
-  private static final String TAG = "WCDB.SQLiteGlobal";
-  public static final String defaultJournalMode = "PERSIST";
-  public static final int defaultPageSize;
-  public static final String defaultSyncMode = "FULL";
-  public static final int journalSizeLimit = 524288;
-  public static final int walAutoCheckpoint = 100;
-  public static final int walConnectionPoolSize = 4;
-  public static final String walSyncMode = "FULL";
+  public static final int a;
   
   static
   {
@@ -23,29 +16,23 @@ public final class SQLiteGlobal
     try
     {
       i = new StatFs(Environment.getDataDirectory().getAbsolutePath()).getBlockSize();
-      defaultPageSize = i;
-      nativeSetDefaultPageSize(i);
-      return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      for (;;)
-      {
-        int i = 4096;
-      }
+      int i;
+      label31:
+      break label31;
     }
+    i = 4096;
+    a = i;
+    nativeSetDefaultPageSize(i);
   }
   
-  public static void loadLib() {}
+  public static void a() {}
   
   private static native int nativeReleaseMemory();
   
   private static native void nativeSetDefaultPageSize(int paramInt);
-  
-  public static int releaseMemory()
-  {
-    return nativeReleaseMemory();
-  }
 }
 
 

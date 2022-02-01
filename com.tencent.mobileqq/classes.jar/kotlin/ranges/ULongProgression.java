@@ -24,20 +24,35 @@ public class ULongProgression
   
   private ULongProgression(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (paramLong3 == 0L) {
-      throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
-    }
-    if (paramLong3 == -9223372036854775808L) {
+    if (paramLong3 != 0L)
+    {
+      if (paramLong3 != -9223372036854775808L)
+      {
+        this.first = paramLong1;
+        this.last = UProgressionUtilKt.getProgressionLastElement-7ftBX0g(paramLong1, paramLong2, paramLong3);
+        this.step = paramLong3;
+        return;
+      }
       throw ((Throwable)new IllegalArgumentException("Step must be greater than Long.MIN_VALUE to avoid overflow on negation."));
     }
-    this.first = paramLong1;
-    this.last = UProgressionUtilKt.getProgressionLastElement-7ftBX0g(paramLong1, paramLong2, paramLong3);
-    this.step = paramLong3;
+    throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof ULongProgression)) && (((isEmpty()) && (((ULongProgression)paramObject).isEmpty())) || ((this.first == ((ULongProgression)paramObject).first) && (this.last == ((ULongProgression)paramObject).last) && (this.step == ((ULongProgression)paramObject).step)));
+    if ((paramObject instanceof ULongProgression)) {
+      if ((!isEmpty()) || (!((ULongProgression)paramObject).isEmpty()))
+      {
+        long l = this.first;
+        paramObject = (ULongProgression)paramObject;
+        if ((l != paramObject.first) || (this.last != paramObject.last) || (this.step != paramObject.step)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final long getFirst()
@@ -60,18 +75,24 @@ public class ULongProgression
     if (isEmpty()) {
       return -1;
     }
-    return ((int)ULong.constructor-impl(this.first ^ ULong.constructor-impl(this.first >>> 32)) * 31 + (int)ULong.constructor-impl(this.last ^ ULong.constructor-impl(this.last >>> 32))) * 31 + (int)(this.step ^ this.step >>> 32);
+    long l = this.first;
+    int i = (int)ULong.constructor-impl(l ^ ULong.constructor-impl(l >>> 32));
+    l = this.last;
+    int j = (int)ULong.constructor-impl(l ^ ULong.constructor-impl(l >>> 32));
+    l = this.step;
+    return (int)(l ^ l >>> 32) + (i * 31 + j) * 31;
   }
   
   public boolean isEmpty()
   {
-    if (this.step > 0L) {
-      if (UnsignedKt.ulongCompare(this.first, this.last) <= 0) {}
-    }
-    while (UnsignedKt.ulongCompare(this.first, this.last) < 0)
+    if (this.step > 0L)
     {
+      if (UnsignedKt.ulongCompare(this.first, this.last) > 0) {
+        return true;
+      }
+    }
+    else if (UnsignedKt.ulongCompare(this.first, this.last) < 0) {
       return true;
-      return false;
     }
     return false;
   }
@@ -85,15 +106,33 @@ public class ULongProgression
   @NotNull
   public String toString()
   {
-    if (this.step > 0L) {
-      return ULong.toString-impl(this.first) + ".." + ULong.toString-impl(this.last) + " step " + this.step;
+    StringBuilder localStringBuilder;
+    long l;
+    if (this.step > 0L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ULong.toString-impl(this.first));
+      localStringBuilder.append("..");
+      localStringBuilder.append(ULong.toString-impl(this.last));
+      localStringBuilder.append(" step ");
+      l = this.step;
     }
-    return ULong.toString-impl(this.first) + " downTo " + ULong.toString-impl(this.last) + " step " + -this.step;
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ULong.toString-impl(this.first));
+      localStringBuilder.append(" downTo ");
+      localStringBuilder.append(ULong.toString-impl(this.last));
+      localStringBuilder.append(" step ");
+      l = -this.step;
+    }
+    localStringBuilder.append(l);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.ULongProgression
  * JD-Core Version:    0.7.0.1
  */

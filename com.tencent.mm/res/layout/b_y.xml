@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/gjd" android:background="@drawable/b47" android:paddingLeft="@dimen/ahz" android:paddingRight="@dimen/ahz" android:layout_width="fill_parent" android:layout_height="72.0dip" android:minHeight="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gje" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gjy" android:singleLine="true" />
+    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/l" android:textColor="@color/a7b" android:textColorHint="@color/ge" android:ellipsize="end" android:gravity="center|left" android:id="@id/gjc" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ahz" android:maxLines="3" android:maxLength="25" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gee" android:visibility="visible" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_centerVertical="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gef" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/adv" android:scaleType="fitXY" />
+        <com.tencent.mm.emoji.view.BaseEmojiView android:id="@id/ged" android:background="@drawable/ae_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/gih" style="@style/ib" />
+    </LinearLayout>
+</LinearLayout>

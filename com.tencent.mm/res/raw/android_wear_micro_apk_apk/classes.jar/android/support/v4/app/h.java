@@ -1,27 +1,28 @@
 package android.support.v4.app;
 
-import android.os.Build.VERSION;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
-import android.os.IBinder;
 
-public final class h
+abstract class h
+  extends g
 {
-  public static IBinder a(Bundle paramBundle, String paramString)
+  boolean cc;
+  
+  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      return paramBundle.getBinder(paramString);
+    if ((!this.cc) && (paramInt != -1)) {
+      m(paramInt);
     }
-    return i.a(paramBundle, paramString);
+    super.startActivityForResult(paramIntent, paramInt, paramBundle);
   }
   
-  public static void a(Bundle paramBundle, String paramString, IBinder paramIBinder)
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      paramBundle.putBinder(paramString, paramIBinder);
-      return;
+    if ((!this.cb) && (paramInt1 != -1)) {
+      m(paramInt1);
     }
-    i.a(paramBundle, paramString, paramIBinder);
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
   }
 }
 

@@ -5,13 +5,19 @@ import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 
 public abstract interface a
 {
-  public abstract Rect cwV();
+  public abstract void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt);
   
-  public abstract void h(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder);
+  public abstract Rect getDisplayRect();
+  
+  public abstract void onUIPause();
+  
+  public abstract void pause();
+  
+  public abstract void stop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.video.a
  * JD-Core Version:    0.7.0.1
  */

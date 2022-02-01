@@ -43,26 +43,31 @@ public class SpecifiedSizeCropByPivotProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.mWidth <= 0) || (this.mHeight <= 0)) {}
-    int i;
-    int j;
-    do
+    Object localObject = paramDrawable;
+    if (this.mWidth > 0)
     {
-      return paramDrawable;
-      i = paramDrawable.getIntrinsicWidth();
-      j = paramDrawable.getIntrinsicHeight();
-    } while ((i == this.mWidth) && (j == this.mHeight));
-    if ((i >= j * 2) || (this.hasPivot)) {}
-    for (paramDrawable = new ScaleDrawable(paramDrawable, 10);; paramDrawable = new ScaleDrawable(paramDrawable, 0))
-    {
+      if (this.mHeight <= 0) {
+        return paramDrawable;
+      }
+      int i = paramDrawable.getIntrinsicWidth();
+      int j = paramDrawable.getIntrinsicHeight();
+      if ((i == this.mWidth) && (j == this.mHeight)) {
+        return paramDrawable;
+      }
+      if ((i < j * 2) && (!this.hasPivot)) {
+        paramDrawable = new ScaleDrawable(paramDrawable, 0);
+      } else {
+        paramDrawable = new ScaleDrawable(paramDrawable, 10);
+      }
       paramDrawable.setPivot(this.mPivotXRate, this.mPivotYRate);
-      return new SpecifiedDrawable(paramDrawable, this.mWidth, this.mHeight);
+      localObject = new SpecifiedDrawable(paramDrawable, this.mWidth, this.mHeight);
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.processor.SpecifiedSizeCropByPivotProcessor
  * JD-Core Version:    0.7.0.1
  */

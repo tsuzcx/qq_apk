@@ -13,10 +13,10 @@ public final class JudgeDownloadRsp
   public static final int STATUS_NULL = -1;
   public static final int STATUS_WAIT_TO_REQ = 0;
   static ArrayList<ResInfo> cache_vecDownloadRes = new ArrayList();
-  public int iDownloadStatus;
+  public int iDownloadStatus = 0;
   public int iFailedRetryMax = 3;
-  public int iSegTime;
-  public ArrayList<ResInfo> vecDownloadRes;
+  public int iSegTime = 0;
+  public ArrayList<ResInfo> vecDownloadRes = null;
   
   static
   {
@@ -35,8 +35,9 @@ public final class JudgeDownloadRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iDownloadStatus, 0);
-    if (this.vecDownloadRes != null) {
-      paramJceOutputStream.write(this.vecDownloadRes, 1);
+    ArrayList localArrayList = this.vecDownloadRes;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.iSegTime, 2);
     paramJceOutputStream.write(this.iFailedRetryMax, 3);
@@ -44,7 +45,7 @@ public final class JudgeDownloadRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.JudgeDownloadRsp
  * JD-Core Version:    0.7.0.1
  */

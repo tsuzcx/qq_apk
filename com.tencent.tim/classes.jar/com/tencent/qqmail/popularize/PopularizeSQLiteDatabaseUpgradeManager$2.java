@@ -1,0 +1,35 @@
+package com.tencent.qqmail.popularize;
+
+import com.tencent.moai.database.sqlite.SQLiteDatabase;
+import com.tencent.moai.database.sqlite.SQLiteOpenHelper;
+import com.tencent.qqmail.model.mail.upgrade.QMSQLiteDatabaseUpgrade;
+import com.tencent.qqmail.model.mail.upgrade.QMSQLiteDatabaseUpgradeManager;
+import com.tencent.qqmail.utilities.log.QMLog;
+
+class PopularizeSQLiteDatabaseUpgradeManager$2
+  extends QMSQLiteDatabaseUpgrade
+{
+  PopularizeSQLiteDatabaseUpgradeManager$2(PopularizeSQLiteDatabaseUpgradeManager paramPopularizeSQLiteDatabaseUpgradeManager, QMSQLiteDatabaseUpgradeManager paramQMSQLiteDatabaseUpgradeManager)
+  {
+    super(paramQMSQLiteDatabaseUpgradeManager);
+  }
+  
+  public void doUpgrade(SQLiteOpenHelper paramSQLiteOpenHelper, SQLiteDatabase paramSQLiteDatabase, int paramInt)
+  {
+    QMLog.log(4, "PopularizeSQLiteDatabaseUpgradeManager", "upgrade table for 5250");
+    if ((paramSQLiteOpenHelper instanceof PopularizeSQLiteHelper)) {
+      ((PopularizeSQLiteHelper)paramSQLiteOpenHelper).upgradeForTableFor5250(paramSQLiteDatabase);
+    }
+  }
+  
+  public int getVersion()
+  {
+    return 5250;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes11.jar
+ * Qualified Name:     com.tencent.qqmail.popularize.PopularizeSQLiteDatabaseUpgradeManager.2
+ * JD-Core Version:    0.7.0.1
+ */

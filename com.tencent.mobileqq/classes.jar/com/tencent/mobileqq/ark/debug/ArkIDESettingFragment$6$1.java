@@ -1,51 +1,90 @@
 package com.tencent.mobileqq.ark.debug;
 
-import alud;
 import android.widget.TextView;
-import anqg;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class ArkIDESettingFragment$6$1
+class ArkIDESettingFragment$6$1
   implements Runnable
 {
-  public ArkIDESettingFragment$6$1(anqg paramanqg, int paramInt, TextView paramTextView) {}
+  ArkIDESettingFragment$6$1(ArkIDESettingFragment.6 param6, int paramInt, TextView paramTextView) {}
   
   public void run()
   {
-    String str;
-    switch (this.jdField_a_of_type_Int)
+    Object localObject;
+    switch (this.a)
     {
     default: 
-      str = "js调试库状态: " + alud.a(2131701079);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898943));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 9: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898933));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 8: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898935));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 7: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898941));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 6: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898934));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 5: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898936));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 4: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898937));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 3: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898942));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 2: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898939));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 1: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898944));
+      localObject = ((StringBuilder)localObject).toString();
+      break;
+    case 0: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("js调试库状态: ");
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131898938));
+      localObject = ((StringBuilder)localObject).toString();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      return;
-      str = "js调试库状态: " + alud.a(2131701074);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701080);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701075);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701078);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701073);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701072);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701070);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701077);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701071);
-      continue;
-      str = "js调试库状态: " + alud.a(2131701069);
-    }
+    this.b.setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

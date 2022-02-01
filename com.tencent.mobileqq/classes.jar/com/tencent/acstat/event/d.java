@@ -61,26 +61,26 @@ public abstract class d
     this.g = StatConfig.getCustomUserId(paramContext);
     this.e = af.a(paramContext).b(paramContext);
     paramStatSpecifyReportedInfo = a();
-    if (!a.contains(paramStatSpecifyReportedInfo)) {
+    if (!a.contains(paramStatSpecifyReportedInfo))
+    {
       this.f = StatCommonHelper.getNextEventIndexNo(paramContext).intValue();
     }
-    for (;;)
+    else
     {
-      if (!i.c(j))
-      {
-        paramStatSpecifyReportedInfo = StatConfig.getLocalMidOnly(paramContext);
-        j = paramStatSpecifyReportedInfo;
-        if (!StatCommonHelper.isStringValid(paramStatSpecifyReportedInfo)) {
-          j = "0";
-        }
-      }
-      this.m = StatCommonHelper.hasRootAccess(paramContext);
-      return;
       this.f = (-a().a());
       if (paramStatSpecifyReportedInfo != EventType.NETWORK_DETECTOR) {
         this.l = true;
       }
     }
+    if (!i.c(j))
+    {
+      paramStatSpecifyReportedInfo = StatConfig.getLocalMidOnly(paramContext);
+      j = paramStatSpecifyReportedInfo;
+      if (!StatCommonHelper.isStringValid(paramStatSpecifyReportedInfo)) {
+        j = "0";
+      }
+    }
+    this.m = StatCommonHelper.hasRootAccess(paramContext);
   }
   
   public abstract EventType a();
@@ -105,40 +105,43 @@ public abstract class d
       }
       Util.jsonPut(paramJSONObject, "cui", this.g);
       Object localObject = StatConfig.getAppVersion();
-      if (!StatCommonHelper.isStringValid((String)localObject)) {
+      boolean bool = StatCommonHelper.isStringValid((String)localObject);
+      if (!bool)
+      {
         Util.jsonPut(paramJSONObject, "av", this.i);
       }
-      for (;;)
+      else
       {
-        if (this.k) {
-          paramJSONObject.put("impt", 1);
-        }
-        Util.jsonPut(paramJSONObject, "mid", j);
-        paramJSONObject.put("idx", this.f);
-        paramJSONObject.put("si", this.d);
-        paramJSONObject.put("ts", this.c);
-        localObject = StatConfig.getCommonAttr(this.n);
-        if ((localObject != null) && (((JSONObject)localObject).length() > 0)) {
-          paramJSONObject.put("com", ((JSONObject)localObject).toString());
-        }
-        paramJSONObject.put("dts", StatCommonHelper.getDiffTime(this.n, false));
-        paramJSONObject.put("os", 1);
-        Util.jsonPut(paramJSONObject, "ov", Integer.toString(Build.VERSION.SDK_INT));
-        Util.jsonPut(paramJSONObject, "md", Build.MODEL);
-        paramJSONObject.put("jb", this.m);
-        Util.jsonPut(paramJSONObject, "mf", Build.MANUFACTURER);
-        localObject = StatConfig.getCustomGlobalReportContent();
-        if ((localObject != null) && (((JSONObject)localObject).length() > 0)) {
-          paramJSONObject.put("cc", ((JSONObject)localObject).toString());
-        }
-        Util.jsonPut(paramJSONObject, "qq", StatConfig.getQQ());
-        return a(paramJSONObject);
         Util.jsonPut(paramJSONObject, "av", (String)localObject);
         Util.jsonPut(paramJSONObject, "appv", this.i);
       }
-      return false;
+      if (this.k) {
+        paramJSONObject.put("impt", 1);
+      }
+      Util.jsonPut(paramJSONObject, "mid", j);
+      paramJSONObject.put("idx", this.f);
+      paramJSONObject.put("si", this.d);
+      paramJSONObject.put("ts", this.c);
+      localObject = StatConfig.getCommonAttr(this.n);
+      if ((localObject != null) && (((JSONObject)localObject).length() > 0)) {
+        paramJSONObject.put("com", ((JSONObject)localObject).toString());
+      }
+      paramJSONObject.put("dts", StatCommonHelper.getDiffTime(this.n, false));
+      paramJSONObject.put("os", 1);
+      Util.jsonPut(paramJSONObject, "ov", Integer.toString(Build.VERSION.SDK_INT));
+      Util.jsonPut(paramJSONObject, "md", Build.MODEL);
+      paramJSONObject.put("jb", this.m);
+      Util.jsonPut(paramJSONObject, "mf", Build.MANUFACTURER);
+      localObject = StatConfig.getCustomGlobalReportContent();
+      if ((localObject != null) && (((JSONObject)localObject).length() > 0)) {
+        paramJSONObject.put("cc", ((JSONObject)localObject).toString());
+      }
+      Util.jsonPut(paramJSONObject, "qq", StatConfig.getQQ());
+      bool = a(paramJSONObject);
+      return bool;
     }
     catch (Throwable paramJSONObject) {}
+    return false;
   }
   
   public long c()
@@ -170,13 +173,17 @@ public abstract class d
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label21:
+      break label21;
+    }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.event.d
  * JD-Core Version:    0.7.0.1
  */

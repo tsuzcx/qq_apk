@@ -1,0 +1,15 @@
+package com.tencent.biz.pubaccount.weishi_new.combo.bottomnav;
+
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/weishi_new/combo/bottomnav/WSBottomBarInfoHelper$Id;", "", "()V", "IMMERSION", "", "MESSAGE", "PROFILE", "PUBLISH", "WATERFALL", "qqweishi_impl_release"}, k=1, mv={1, 1, 16})
+public final class WSBottomBarInfoHelper$Id
+{
+  public static final Id a = new Id();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.combo.bottomnav.WSBottomBarInfoHelper.Id
+ * JD-Core Version:    0.7.0.1
+ */

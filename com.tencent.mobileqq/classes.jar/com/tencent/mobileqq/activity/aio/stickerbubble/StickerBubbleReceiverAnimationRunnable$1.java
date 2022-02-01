@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import agxe;
-
 class StickerBubbleReceiverAnimationRunnable$1
   implements Runnable
 {
@@ -11,9 +9,9 @@ class StickerBubbleReceiverAnimationRunnable$1
   {
     if (StickerBubbleReceiverAnimationRunnable.a(this.this$0))
     {
-      agxe.a(this.this$0, StickerBubbleReceiverAnimationRunnable.a(this.this$0));
+      StickerBubbleReceiverAnimationRunnable localStickerBubbleReceiverAnimationRunnable = this.this$0;
+      StickerBubbleAnimationHelper.a(localStickerBubbleReceiverAnimationRunnable, StickerBubbleReceiverAnimationRunnable.b(localStickerBubbleReceiverAnimationRunnable));
       StickerBubbleReceiverAnimationRunnable.a(this.this$0, false);
-      StickerBubbleReceiverAnimationRunnable.b(this.this$0, false);
     }
   }
 }

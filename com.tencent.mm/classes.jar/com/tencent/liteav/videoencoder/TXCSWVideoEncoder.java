@@ -1,16 +1,17 @@
 package com.tencent.liteav.videoencoder;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.a;
-import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.b;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.j.a;
+import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.beauty.b.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 public class TXCSWVideoEncoder
-  extends c
+  extends d
 {
   private static final boolean DEBUG = false;
   private static final String TAG;
@@ -19,33 +20,41 @@ public class TXCSWVideoEncoder
   private long mPTS = 0L;
   private int mPopIdx = 0;
   private int mPushIdx = 0;
-  private g mRawFrameFilter;
+  private j mRawFrameFilter;
   private int mRendIdx = 0;
-  private g mResizeFilter;
+  private j mResizeFilter;
   
   static
   {
-    AppMethodBeat.i(67409);
+    AppMethodBeat.i(14849);
     TAG = TXCSWVideoEncoder.class.getSimpleName();
-    b.f();
+    h.d();
     nativeClassInit();
-    AppMethodBeat.o(67409);
+    AppMethodBeat.o(14849);
   }
   
   public static long getAndIncreaseGopIndex()
   {
-    AppMethodBeat.i(146322);
+    AppMethodBeat.i(14843);
     long l = nativeGetAndIncreaseGopIndex();
-    AppMethodBeat.o(146322);
+    AppMethodBeat.o(14843);
     return l;
   }
   
   public static long getAndIncreateSeq()
   {
-    AppMethodBeat.i(146321);
+    AppMethodBeat.i(14842);
     long l = nativeGetAndIncreaseSeq();
-    AppMethodBeat.o(146321);
+    AppMethodBeat.o(14842);
     return l;
+  }
+  
+  public static boolean isRPSSupported()
+  {
+    AppMethodBeat.i(229493);
+    boolean bool = nativeIsRPSSupported();
+    AppMethodBeat.o(229493);
+    return bool;
   }
   
   private static native void nativeClassInit();
@@ -63,6 +72,8 @@ public class TXCSWVideoEncoder
   private native long nativeGetRealFPS(long paramLong);
   
   private native long nativeInit(WeakReference<TXCSWVideoEncoder> paramWeakReference);
+  
+  private static native boolean nativeIsRPSSupported();
   
   private native void nativeRelease(long paramLong);
   
@@ -88,205 +99,324 @@ public class TXCSWVideoEncoder
   
   private native long nativegetRealBitrate(long paramLong);
   
-  private static void onEncodeFinishedFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, long paramLong1, long paramLong2, long paramLong3)
+  private static void onEncodeFinishedFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(146323);
+    AppMethodBeat.i(229509);
     paramWeakReference = (TXCSWVideoEncoder)paramWeakReference.get();
     if (paramWeakReference != null) {
-      paramWeakReference.onEncodeFinished(paramLong1, paramLong2, paramLong3);
+      paramWeakReference.onEncodeFinished(paramInt, paramLong1, paramLong2);
     }
-    AppMethodBeat.o(146323);
+    AppMethodBeat.o(229509);
   }
   
   private static void postEventFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, byte[] paramArrayOfByte, int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2)
   {
-    AppMethodBeat.i(67405);
+    AppMethodBeat.i(14844);
     paramWeakReference = (TXCSWVideoEncoder)paramWeakReference.get();
-    if (paramWeakReference != null) {
-      paramWeakReference.callDelegate(paramArrayOfByte, paramInt1, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramLong6, paramInt2, null, null);
+    if (paramWeakReference != null)
+    {
+      TXSNALPacket localTXSNALPacket = new TXSNALPacket();
+      localTXSNALPacket.nalData = paramArrayOfByte;
+      localTXSNALPacket.nalType = paramInt1;
+      localTXSNALPacket.gopIndex = paramLong1;
+      localTXSNALPacket.gopFrameIndex = paramLong2;
+      localTXSNALPacket.frameIndex = paramLong3;
+      localTXSNALPacket.refFremeIndex = paramLong4;
+      localTXSNALPacket.pts = paramLong5;
+      localTXSNALPacket.dts = paramLong6;
+      paramWeakReference.callDelegate(localTXSNALPacket, paramInt2);
     }
-    AppMethodBeat.o(67405);
+    AppMethodBeat.o(14844);
   }
   
-  private long pushVideoFrameInternal(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
+  private long pushVideoFrameInternal(final int paramInt1, int paramInt2, int paramInt3, long paramLong, final boolean paramBoolean)
   {
-    AppMethodBeat.i(67406);
+    AppMethodBeat.i(14846);
+    Object localObject2 = this.mResizeFilter;
+    j localj = this.mRawFrameFilter;
+    Object localObject1;
     if (this.mGLContextExternal != null)
     {
       this.mInputWidth = paramInt2;
       this.mInputHeight = paramInt3;
-      if (this.mResizeFilter == null)
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        this.mResizeFilter = new g();
-        this.mResizeFilter.a();
-        this.mResizeFilter.a(true);
+        localObject1 = new j();
+        this.mResizeFilter = ((j)localObject1);
+        ((j)localObject1).a();
+        ((j)localObject1).a(true);
       }
-      this.mResizeFilter.a(this.mOutputWidth, this.mOutputHeight);
+      ((j)localObject1).a(this.mOutputWidth, this.mOutputHeight);
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
-      Object localObject;
       int k;
       int i;
-      if (this.mResizeFilter != null)
+      if (localObject1 != null)
       {
-        localObject = b.a(paramInt2, paramInt3, this.mOutputWidth, this.mOutputHeight);
-        localObject = this.mResizeFilter.a(paramInt2, paramInt3, null, (a)localObject, 0);
         k = (720 - this.mRotation) % 360;
         if ((k != 90) && (k != 270)) {
-          break label301;
+          break label275;
         }
         i = this.mOutputHeight;
         if ((k != 90) && (k != 270)) {
-          break label310;
+          break label284;
         }
       }
-      label301:
-      label310:
+      label275:
+      label284:
       for (int j = this.mOutputWidth;; j = this.mOutputHeight)
       {
-        this.mResizeFilter.a(paramInt2, paramInt3, k, (float[])localObject, i / j, false, false);
-        this.mResizeFilter.b(paramInt1);
-        if (this.mResizeFilter != null) {
-          paramInt1 = this.mResizeFilter.l();
+        ((j)localObject1).a(paramInt2, paramInt3, k, null, i / j, this.mEnableXMirror, false);
+        ((j)localObject1).b(paramInt1);
+        if (localObject1 != null) {
+          paramInt1 = ((j)localObject1).l();
         }
-        localObject = new int[1];
+        localObject2 = new int[1];
         this.mPTS = paramLong;
-        if (this.mRawFrameFilter != null) {
-          break label352;
+        if (localj != null) {
+          break label379;
         }
         TXCLog.i(TAG, "pushVideoFrameInternal->create mRawFrameFilter");
-        this.mRawFrameFilter = new o(1);
-        this.mRawFrameFilter.a(true);
-        if (this.mRawFrameFilter.a()) {
-          break label319;
+        localObject1 = new o(1);
+        this.mRawFrameFilter = ((j)localObject1);
+        ((j)localObject1).a(true);
+        if (((j)localObject1).a()) {
+          break label293;
         }
         TXCLog.i(TAG, "pushVideoFrameInternal->destroy mRawFrameFilter, init failed!");
         this.mRawFrameFilter = null;
-        AppMethodBeat.o(67406);
+        AppMethodBeat.o(14846);
         return 10000004L;
         i = this.mOutputWidth;
         break;
       }
-      label319:
-      this.mRawFrameFilter.a(this.mOutputWidth, this.mOutputHeight);
-      this.mRawFrameFilter.a(new TXCSWVideoEncoder.1(this, paramBoolean, paramInt1));
-      label352:
-      if (this.mRawFrameFilter == null)
+      label293:
+      ((j)localObject1).a(this.mOutputWidth, this.mOutputHeight);
+      ((j)localObject1).a(new j.a()
       {
-        AppMethodBeat.o(67406);
+        public void a(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(14825);
+          synchronized (TXCSWVideoEncoder.this)
+          {
+            if (TXCSWVideoEncoder.this.mListener != null) {
+              TXCSWVideoEncoder.this.mListener.m(TXCSWVideoEncoder.this.mStreamType);
+            }
+            if (paramBoolean)
+            {
+              TXCSWVideoEncoder.access$200(TXCSWVideoEncoder.this, TXCSWVideoEncoder.this.mNativeEncoder, paramInt1, TXCSWVideoEncoder.this.mOutputWidth, TXCSWVideoEncoder.this.mOutputHeight, TXCSWVideoEncoder.this.mPTS);
+              AppMethodBeat.o(14825);
+              return;
+            }
+            TXCSWVideoEncoder.access$300(TXCSWVideoEncoder.this, TXCSWVideoEncoder.this.mNativeEncoder, paramInt1, TXCSWVideoEncoder.this.mOutputWidth, TXCSWVideoEncoder.this.mOutputHeight, TXCSWVideoEncoder.this.mPTS);
+          }
+        }
+      });
+    }
+    for (;;)
+    {
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(14846);
         return 10000004L;
       }
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
-      this.mRawFrameFilter.b(paramInt1);
-      paramInt1 = localObject[0];
+      ((j)localObject1).b(paramInt1);
+      paramInt1 = localObject2[0];
       if (paramInt1 != 0) {
         callDelegate(paramInt1);
       }
+      AppMethodBeat.o(14846);
+      return 0L;
+      label379:
+      localObject1 = localj;
     }
-    AppMethodBeat.o(67406);
-    return 0L;
   }
   
   public void enableNearestRPS(int paramInt)
   {
-    AppMethodBeat.i(146315);
-    nativeEnableNearestRPS(this.mNativeEncoder, paramInt);
-    AppMethodBeat.o(146315);
+    AppMethodBeat.i(14830);
+    try
+    {
+      nativeEnableNearestRPS(this.mNativeEncoder, paramInt);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14830);
+    }
   }
   
   public long getRealBitrate()
   {
-    AppMethodBeat.i(67401);
-    long l = nativegetRealBitrate(this.mNativeEncoder);
-    AppMethodBeat.o(67401);
-    return l;
+    AppMethodBeat.i(14835);
+    try
+    {
+      long l = nativegetRealBitrate(this.mNativeEncoder);
+      return l;
+    }
+    finally
+    {
+      AppMethodBeat.o(14835);
+    }
   }
   
   public double getRealFPS()
   {
-    AppMethodBeat.i(146318);
-    double d = nativeGetRealFPS(this.mNativeEncoder);
-    AppMethodBeat.o(146318);
-    return d;
+    AppMethodBeat.i(14834);
+    try
+    {
+      double d = nativeGetRealFPS(this.mNativeEncoder);
+      return d;
+    }
+    finally
+    {
+      AppMethodBeat.o(14834);
+    }
   }
   
   public long pushVideoFrame(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(67402);
+    AppMethodBeat.i(14836);
     paramLong = pushVideoFrameInternal(paramInt1, paramInt2, paramInt3, paramLong, false);
-    AppMethodBeat.o(67402);
+    AppMethodBeat.o(14836);
+    return paramLong;
+  }
+  
+  public long pushVideoFrameAsync(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    AppMethodBeat.i(14838);
+    paramLong = pushVideoFrameInternal(paramInt1, paramInt2, paramInt3, paramLong, true);
+    AppMethodBeat.o(14838);
     return paramLong;
   }
   
   public long pushVideoFrameSync(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(67403);
+    AppMethodBeat.i(14837);
     paramLong = pushVideoFrameInternal(paramInt1, paramInt2, paramInt3, paramLong, true);
-    AppMethodBeat.o(67403);
+    AppMethodBeat.o(14837);
     return paramLong;
   }
   
   public void restartIDR()
   {
-    AppMethodBeat.i(146320);
-    nativeRestartIDR(this.mNativeEncoder);
-    AppMethodBeat.o(146320);
+    AppMethodBeat.i(14841);
+    try
+    {
+      nativeRestartIDR(this.mNativeEncoder);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14841);
+    }
   }
   
   public void setBitrate(int paramInt)
   {
-    AppMethodBeat.i(67399);
+    AppMethodBeat.i(14831);
     this.mBitrate = paramInt;
-    nativeSetBitrate(this.mNativeEncoder, paramInt);
-    AppMethodBeat.o(67399);
+    try
+    {
+      nativeSetBitrate(this.mNativeEncoder, paramInt);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14831);
+    }
   }
   
   public void setBitrateFromQos(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146316);
+    AppMethodBeat.i(14832);
     this.mBitrate = paramInt1;
-    nativeSetBitrateFromQos(this.mNativeEncoder, paramInt1, paramInt2);
-    AppMethodBeat.o(146316);
+    try
+    {
+      nativeSetBitrateFromQos(this.mNativeEncoder, paramInt1, paramInt2);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14832);
+    }
   }
   
   public void setEncodeIdrFpsFromQos(int paramInt)
   {
-    AppMethodBeat.i(146317);
-    nativeSetEncodeIdrFpsFromQos(this.mNativeEncoder, paramInt);
-    AppMethodBeat.o(146317);
+    AppMethodBeat.i(14833);
+    try
+    {
+      nativeSetEncodeIdrFpsFromQos(this.mNativeEncoder, paramInt);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14833);
+    }
   }
   
   public void setFPS(int paramInt)
   {
-    AppMethodBeat.i(146314);
-    nativeSetFPS(this.mNativeEncoder, paramInt);
-    AppMethodBeat.o(146314);
+    AppMethodBeat.i(14829);
+    try
+    {
+      nativeSetFPS(this.mNativeEncoder, paramInt);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14829);
+    }
   }
   
   public void setID(String paramString)
   {
-    AppMethodBeat.i(146313);
+    AppMethodBeat.i(14828);
     super.setID(paramString);
-    nativeSetID(this.mNativeEncoder, paramString);
-    AppMethodBeat.o(146313);
+    try
+    {
+      nativeSetID(this.mNativeEncoder, paramString);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14828);
+    }
   }
   
   public void setRPSRefBitmap(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(146319);
-    nativeSetRPSRefBitmap(this.mNativeEncoder, paramInt1, paramInt2, paramLong);
-    AppMethodBeat.o(146319);
+    AppMethodBeat.i(14840);
+    try
+    {
+      nativeSetRPSRefBitmap(this.mNativeEncoder, paramInt1, paramInt2, paramLong);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14840);
+    }
   }
   
   public void signalEOSAndFlush()
   {
-    AppMethodBeat.i(67404);
-    nativeSignalEOSAndFlush(this.mNativeEncoder);
-    AppMethodBeat.o(67404);
+    AppMethodBeat.i(14839);
+    try
+    {
+      nativeSignalEOSAndFlush(this.mNativeEncoder);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(14839);
+    }
   }
   
   public int start(TXSVideoEncoderParam paramTXSVideoEncoderParam)
   {
-    AppMethodBeat.i(67397);
+    AppMethodBeat.i(14826);
     super.start(paramTXSVideoEncoderParam);
     int i = (paramTXSVideoEncoderParam.width + 7) / 8 * 8;
     int j = (paramTXSVideoEncoderParam.height + 1) / 2 * 2;
@@ -301,39 +431,56 @@ public class TXCSWVideoEncoder
     this.mOutputHeight = j;
     this.mInputWidth = i;
     this.mInputHeight = j;
-    this.mNativeEncoder = nativeInit(new WeakReference(this));
-    nativeSetBitrate(this.mNativeEncoder, this.mBitrate);
-    nativeSetID(this.mNativeEncoder, getID());
-    nativeStart(this.mNativeEncoder, paramTXSVideoEncoderParam);
-    AppMethodBeat.o(67397);
-    return 0;
+    this.mRawFrameFilter = null;
+    this.mResizeFilter = null;
+    try
+    {
+      this.mNativeEncoder = nativeInit(new WeakReference(this));
+      nativeSetBitrate(this.mNativeEncoder, this.mBitrate);
+      nativeSetID(this.mNativeEncoder, getID());
+      nativeStart(this.mNativeEncoder, paramTXSVideoEncoderParam);
+      return 0;
+    }
+    finally
+    {
+      AppMethodBeat.o(14826);
+    }
   }
   
   public void stop()
   {
-    AppMethodBeat.i(67398);
+    AppMethodBeat.i(14827);
     TXCLog.i(TAG, "stop->enter with mRawFrameFilter:" + this.mRawFrameFilter);
     this.mGLContextExternal = null;
-    nativeStop(this.mNativeEncoder);
-    nativeRelease(this.mNativeEncoder);
-    this.mNativeEncoder = 0L;
-    if (this.mRawFrameFilter != null)
+    try
     {
-      this.mRawFrameFilter.d();
-      this.mRawFrameFilter = null;
+      long l = this.mNativeEncoder;
+      this.mNativeEncoder = 0L;
+      nativeStop(l);
+      nativeRelease(l);
+      if (this.mRawFrameFilter != null)
+      {
+        this.mRawFrameFilter.d();
+        this.mRawFrameFilter = null;
+      }
+      if (this.mResizeFilter != null)
+      {
+        this.mResizeFilter.d();
+        this.mResizeFilter = null;
+      }
+      super.stop();
+      AppMethodBeat.o(14827);
+      return;
     }
-    if (this.mResizeFilter != null)
+    finally
     {
-      this.mResizeFilter.d();
-      this.mResizeFilter = null;
+      AppMethodBeat.o(14827);
     }
-    super.stop();
-    AppMethodBeat.o(67398);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXCSWVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

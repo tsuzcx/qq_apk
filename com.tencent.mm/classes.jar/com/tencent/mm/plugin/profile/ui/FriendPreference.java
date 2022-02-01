@@ -1,85 +1,105 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.c;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.b.p;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.d;
+import com.tencent.mm.modelavatar.f;
+import com.tencent.mm.modelavatar.f.d;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.account.friend.model.i;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.List;
 import junit.framework.Assert;
 
 public class FriendPreference
   extends Preference
-  implements d.a
+  implements AvatarStorage.a
 {
-  private int cCg;
-  private MMActivity cmc;
-  private ad contact;
-  private String gvd;
-  private boolean lJS;
-  private TextView pAD;
-  private ImageView pAE;
-  private ImageView pAF;
-  private com.tencent.mm.plugin.account.friend.a.a pAG;
-  private String pAH;
-  private long pAI;
-  private long pAJ;
+  private TextView MXN;
+  private ImageView MXO;
+  private ImageView MXP;
+  private com.tencent.mm.plugin.account.friend.model.a MXQ;
+  private String MXR;
+  private long MXS;
+  private long MXT;
+  private au contact;
+  private int hUr;
+  private MMActivity lzt;
+  private String pQw;
   private TextView titleTv;
+  private boolean yxr;
   
   public FriendPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(23622);
-    this.cmc = ((MMActivity)paramContext);
+    AppMethodBeat.i(27235);
+    this.lzt = ((MMActivity)paramContext);
     init();
-    AppMethodBeat.o(23622);
+    AppMethodBeat.o(27235);
   }
   
   public FriendPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23623);
-    setLayoutResource(2130970179);
-    setWidgetLayoutResource(2130970254);
+    AppMethodBeat.i(27236);
+    setLayoutResource(R.i.mm_preference);
+    aBp(R.i.mm_preference_submenu);
     init();
-    AppMethodBeat.o(23623);
+    AppMethodBeat.o(27236);
   }
   
-  private void ccq()
+  private void gBN()
   {
-    AppMethodBeat.i(23627);
-    if ((this.contact == null) || (!this.lJS))
+    AppMethodBeat.i(27240);
+    if ((this.contact == null) || (!this.yxr))
     {
-      ab.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.lJS);
-      AppMethodBeat.o(23627);
+      Log.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.yxr);
+      AppMethodBeat.o(27240);
       return;
     }
-    this.cCg = 3;
-    this.titleTv.setText(this.mContext.getString(2131300569));
-    this.pAD.setText(bo.nullAsNil(this.contact.dqD));
-    Object localObject1 = b.qN(this.pAJ);
+    this.hUr = 3;
+    this.titleTv.setText(this.mContext.getString(R.l.hardcode_plugin_facebookapp_nick));
+    this.MXN.setText(Util.nullAsNil(this.contact.jZZ));
+    Object localObject1 = d.Lv(this.MXT);
     Object localObject5;
     Object localObject4;
     if (localObject1 == null)
@@ -87,15 +107,15 @@ public class FriendPreference
       localObject5 = null;
       localObject4 = null;
     }
-    label364:
+    label366:
     for (;;)
     {
       try
       {
-        localInputStream = this.mContext.getResources().openRawResource(2131231226);
+        localInputStream = this.mContext.getResources().openRawResource(R.k.default_qq_avatar);
         localObject4 = localInputStream;
         localObject5 = localInputStream;
-        Bitmap localBitmap = com.tencent.mm.compatible.g.a.decodeStream(localInputStream);
+        Bitmap localBitmap = com.tencent.mm.compatible.f.a.decodeStream(localInputStream);
         localObject4 = localBitmap;
         localObject1 = localObject4;
         if (localInputStream == null) {}
@@ -105,9 +125,9 @@ public class FriendPreference
         InputStream localInputStream;
         Object localObject2;
         localObject5 = localObject4;
-        ab.printErrStackTrace("MicroMsg.FriendPreference", localException4, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.FriendPreference", localException4, "", new Object[0]);
         if (localObject4 == null) {
-          break label364;
+          break label366;
         }
         try
         {
@@ -115,7 +135,7 @@ public class FriendPreference
         }
         catch (Exception localException2)
         {
-          ab.printErrStackTrace("MicroMsg.FriendPreference", localException2, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.FriendPreference", localException2, "", new Object[0]);
         }
         continue;
       }
@@ -127,12 +147,12 @@ public class FriendPreference
         try
         {
           localObject5.close();
-          AppMethodBeat.o(23627);
+          AppMethodBeat.o(27240);
           throw localObject3;
         }
         catch (Exception localException3)
         {
-          ab.printErrStackTrace("MicroMsg.FriendPreference", localException3, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.FriendPreference", localException3, "", new Object[0]);
           continue;
         }
       }
@@ -143,45 +163,45 @@ public class FriendPreference
       }
       catch (Exception localException1)
       {
-        ab.printErrStackTrace("MicroMsg.FriendPreference", localException1, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.FriendPreference", localException1, "", new Object[0]);
         localObject2 = localObject4;
         continue;
       }
       if (localObject1 != null)
       {
-        localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject1, 48, 48, false);
+        localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject1, 78, 78, false);
         if (localObject4 != localObject1)
         {
-          ab.i("MicroMsg.FriendPreference", "bitmap recycle %s", new Object[] { localObject1.toString() });
+          Log.i("MicroMsg.FriendPreference", "bitmap recycle %s", new Object[] { localObject1.toString() });
           ((Bitmap)localObject1).recycle();
         }
-        localObject1 = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject4, true, 0.0F);
-        this.pAE.setImageBitmap((Bitmap)localObject1);
+        localObject1 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject4, true, 0.0F);
+        this.MXO.setImageBitmap((Bitmap)localObject1);
       }
-      aw.aaz();
+      bh.bCz();
       if (!c.isSDCardAvailable()) {
-        this.pAE.setBackgroundDrawable(com.tencent.mm.cb.a.k(this.cmc, 2131231207));
+        this.MXO.setBackgroundDrawable(com.tencent.mm.cd.a.m(this.lzt, R.k.default_avatar));
       }
-      AppMethodBeat.o(23627);
+      AppMethodBeat.o(27240);
       return;
     }
   }
   
-  private void ccr()
+  private void gBO()
   {
-    AppMethodBeat.i(23628);
-    if ((this.contact == null) || (!this.lJS))
+    AppMethodBeat.i(27241);
+    if ((this.contact == null) || (!this.yxr))
     {
-      ab.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.lJS);
-      AppMethodBeat.o(23628);
+      Log.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.yxr);
+      AppMethodBeat.o(27241);
       return;
     }
-    this.cCg = 2;
-    this.titleTv.setText(this.mContext.getString(2131298621));
-    Object localObject1 = bo.nullAsNil(this.pAH);
-    localObject1 = (String)localObject1 + " " + new p(this.pAI).longValue();
-    this.pAD.setText((CharSequence)localObject1);
-    localObject1 = b.gB(this.pAI);
+    this.hUr = 2;
+    this.titleTv.setText(this.mContext.getString(R.l.gBs));
+    Object localObject1 = Util.nullAsNil(this.MXR);
+    localObject1 = (String)localObject1 + " " + new p(this.MXS).longValue();
+    this.MXN.setText((CharSequence)localObject1);
+    localObject1 = d.iy(this.MXS);
     Object localObject5;
     Object localObject4;
     if (localObject1 == null)
@@ -189,15 +209,15 @@ public class FriendPreference
       localObject5 = null;
       localObject4 = null;
     }
-    label389:
+    label390:
     for (;;)
     {
       try
       {
-        localInputStream = this.mContext.getResources().openRawResource(2131231226);
+        localInputStream = this.mContext.getResources().openRawResource(R.k.default_qq_avatar);
         localObject4 = localInputStream;
         localObject5 = localInputStream;
-        Bitmap localBitmap = com.tencent.mm.compatible.g.a.decodeStream(localInputStream);
+        Bitmap localBitmap = com.tencent.mm.compatible.f.a.decodeStream(localInputStream);
         localObject4 = localBitmap;
         localObject1 = localObject4;
         if (localInputStream == null) {}
@@ -207,9 +227,9 @@ public class FriendPreference
         InputStream localInputStream;
         Object localObject2;
         localObject5 = localObject4;
-        ab.printErrStackTrace("MicroMsg.FriendPreference", localException4, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.FriendPreference", localException4, "", new Object[0]);
         if (localObject4 == null) {
-          break label389;
+          break label390;
         }
         try
         {
@@ -217,7 +237,7 @@ public class FriendPreference
         }
         catch (Exception localException2)
         {
-          ab.printErrStackTrace("MicroMsg.FriendPreference", localException2, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.FriendPreference", localException2, "", new Object[0]);
         }
         continue;
       }
@@ -229,12 +249,12 @@ public class FriendPreference
         try
         {
           localObject5.close();
-          AppMethodBeat.o(23628);
+          AppMethodBeat.o(27241);
           throw localObject3;
         }
         catch (Exception localException3)
         {
-          ab.printErrStackTrace("MicroMsg.FriendPreference", localException3, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.FriendPreference", localException3, "", new Object[0]);
           continue;
         }
       }
@@ -245,194 +265,268 @@ public class FriendPreference
       }
       catch (Exception localException1)
       {
-        ab.printErrStackTrace("MicroMsg.FriendPreference", localException1, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.FriendPreference", localException1, "", new Object[0]);
         localObject2 = localObject4;
         continue;
       }
       if (localObject1 != null)
       {
-        localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject1, 48, 48, false);
+        localObject4 = Bitmap.createScaledBitmap((Bitmap)localObject1, 78, 78, false);
         if (localObject4 != localObject1)
         {
-          ab.i("MicroMsg.FriendPreference", "bitmap recycle %s", new Object[] { localObject1.toString() });
+          Log.i("MicroMsg.FriendPreference", "bitmap recycle %s", new Object[] { localObject1.toString() });
           ((Bitmap)localObject1).recycle();
         }
-        localObject1 = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject4, true, 0.0F);
-        this.pAE.setImageBitmap((Bitmap)localObject1);
+        localObject1 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject4, true, 0.0F);
+        this.MXO.setImageBitmap((Bitmap)localObject1);
       }
-      aw.aaz();
+      bh.bCz();
       if (!c.isSDCardAvailable()) {
-        this.pAE.setBackgroundDrawable(com.tencent.mm.cb.a.k(this.cmc, 2131231207));
+        this.MXO.setBackgroundDrawable(com.tencent.mm.cd.a.m(this.lzt, R.k.default_avatar));
       }
-      AppMethodBeat.o(23628);
+      AppMethodBeat.o(27241);
       return;
     }
   }
   
-  private void ccs()
+  private void gBP()
   {
-    AppMethodBeat.i(23629);
-    if ((this.contact == null) || (!this.lJS))
+    AppMethodBeat.i(27242);
+    if ((this.contact == null) || (!this.yxr))
     {
-      ab.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.lJS);
-      AppMethodBeat.o(23629);
+      Log.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.yxr);
+      AppMethodBeat.o(27242);
       return;
     }
-    if (this.pAG == null)
+    if (this.MXQ == null)
     {
-      AppMethodBeat.o(23629);
+      AppMethodBeat.o(27242);
       return;
     }
-    this.cCg = 1;
-    this.titleTv.setText(this.mContext.getString(2131298620));
-    String str = bo.nullAsNil(this.pAG.apZ()) + " " + bo.nullAsNil(this.pAG.aqf()).replace(" ", "");
-    this.pAD.setText(str);
-    Bitmap localBitmap = l.b(this.pAG.apY(), this.mContext);
+    this.hUr = 1;
+    this.titleTv.setText(this.mContext.getString(R.l.gBr));
+    final String str = Util.nullAsNil(this.MXQ.bWI()) + " " + Util.nullAsNil(this.MXQ.bWN()).replace(" ", "");
+    this.MXN.setText(str);
+    Bitmap localBitmap = i.a(this.MXQ.bWH(), this.mContext);
     if (localBitmap == null) {
-      this.pAE.setImageDrawable(com.tencent.mm.cb.a.k(this.cmc, 2131231221));
+      this.MXO.setImageDrawable(com.tencent.mm.cd.a.m(this.lzt, R.k.default_mobile_avatar));
     }
     for (;;)
     {
-      aw.aaz();
-      if (!c.YA().arr(this.pAG.getUsername())) {
+      bh.bCz();
+      if (!c.bzA().bxr(this.MXQ.getUsername())) {
         break;
       }
-      this.pAF.setOnClickListener(new FriendPreference.1(this, str));
-      AppMethodBeat.o(23629);
+      this.MXP.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(27233);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/FriendPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+          if ((FriendPreference.a(FriendPreference.this) != null) && (!Util.isNullOrNil(FriendPreference.a(FriendPreference.this).osA))) {}
+          for (paramAnonymousView = FriendPreference.b(FriendPreference.this).getResources().getStringArray(R.c.fjT);; paramAnonymousView = FriendPreference.b(FriendPreference.this).getResources().getStringArray(R.c.fjU))
+          {
+            localObject = paramAnonymousView;
+            if (com.tencent.mm.plugin.profile.b.pFo.aDC())
+            {
+              paramAnonymousView = Util.stringsToList(paramAnonymousView);
+              paramAnonymousView.add(FriendPreference.b(FriendPreference.this).getResources().getString(R.l.gyY));
+              localObject = (String[])paramAnonymousView.toArray(new String[paramAnonymousView.size()]);
+              h.OAn.b(11621, new Object[] { Integer.valueOf(2), Integer.valueOf(3) });
+            }
+            k.a(FriendPreference.b(FriendPreference.this), null, (String[])localObject, null, new k.d()
+            {
+              public final void qz(int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(27232);
+                switch (paramAnonymous2Int)
+                {
+                }
+                for (;;)
+                {
+                  AppMethodBeat.o(27232);
+                  return;
+                  if ((FriendPreference.1.this.MXU == null) || (FriendPreference.1.this.MXU.length() == 0))
+                  {
+                    AppMethodBeat.o(27232);
+                    return;
+                  }
+                  paramAnonymous2Int = FriendPreference.1.this.MXU.lastIndexOf(' ') + 1;
+                  if (paramAnonymous2Int > 0)
+                  {
+                    FriendPreference.a(FriendPreference.this, FriendPreference.1.this.MXU.substring(paramAnonymous2Int));
+                    AppMethodBeat.o(27232);
+                    return;
+                    if ((FriendPreference.1.this.MXU == null) || (FriendPreference.1.this.MXU.length() == 0))
+                    {
+                      AppMethodBeat.o(27232);
+                      return;
+                    }
+                    paramAnonymous2Int = FriendPreference.1.this.MXU.lastIndexOf(' ');
+                    Object localObject = FriendPreference.1.this.MXU.substring(0, paramAnonymous2Int);
+                    if ((localObject == null) || (((String)localObject).length() == 0))
+                    {
+                      AppMethodBeat.o(27232);
+                      return;
+                    }
+                    ab.c(FriendPreference.c(FriendPreference.this), ((String)localObject).trim());
+                    AppMethodBeat.o(27232);
+                    return;
+                    if ((this.rSp == null) || (this.rSp.length <= 2) || (FriendPreference.a(FriendPreference.this) == null) || (FriendPreference.c(FriendPreference.this) == null))
+                    {
+                      AppMethodBeat.o(27232);
+                      return;
+                    }
+                    if ((FriendPreference.a(FriendPreference.this) != null) && (!Util.isNullOrNil(FriendPreference.a(FriendPreference.this).osA)))
+                    {
+                      FriendPreference.a(FriendPreference.this, FriendPreference.c(FriendPreference.this).field_username, FriendPreference.a(FriendPreference.this).osA);
+                      AppMethodBeat.o(27232);
+                      return;
+                    }
+                    localObject = new Intent();
+                    Bundle localBundle = new Bundle();
+                    localBundle.putInt("fromScene", 2);
+                    ((Intent)localObject).putExtra("reportArgs", localBundle);
+                    com.tencent.mm.plugin.profile.b.pFn.i((Intent)localObject, FriendPreference.b(FriendPreference.this));
+                  }
+                }
+              }
+            });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/FriendPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(27233);
+            return;
+          }
+        }
+      });
+      AppMethodBeat.o(27242);
       return;
-      localBitmap = com.tencent.mm.sdk.platformtools.d.a(Bitmap.createScaledBitmap(localBitmap, 48, 48, false), true, 0.0F);
-      this.pAE.setImageBitmap(localBitmap);
+      localBitmap = BitmapUtil.getRoundedCornerBitmap(Bitmap.createScaledBitmap(localBitmap, 78, 78, false), true, 0.0F);
+      this.MXO.setImageBitmap(localBitmap);
     }
-    this.pAF.setVisibility(4);
-    AppMethodBeat.o(23629);
+    this.MXP.setVisibility(4);
+    AppMethodBeat.o(27242);
   }
   
-  private void cct()
+  private void gBQ()
   {
-    AppMethodBeat.i(23630);
-    if ((this.contact == null) || (!this.lJS))
+    AppMethodBeat.i(27243);
+    if ((this.contact == null) || (!this.yxr))
     {
-      ab.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.lJS);
-      AppMethodBeat.o(23630);
+      Log.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.yxr);
+      AppMethodBeat.o(27243);
       return;
     }
-    this.cCg = 3;
-    this.titleTv.setText(this.mContext.getString(2131302380));
-    this.pAD.setText(bo.nullAsNil(this.gvd));
-    this.pAE.setVisibility(8);
-    AppMethodBeat.o(23630);
+    this.hUr = 3;
+    this.titleTv.setText(this.mContext.getString(R.l.regby_email_address));
+    this.MXN.setText(Util.nullAsNil(this.pQw));
+    this.MXO.setVisibility(8);
+    AppMethodBeat.o(27243);
   }
   
   private void init()
   {
-    this.lJS = false;
+    this.yxr = false;
     this.contact = null;
-    this.pAG = null;
-    this.pAH = "";
-    this.pAI = 0L;
-    this.pAJ = 0L;
-    this.cCg = 0;
-    this.gvd = "";
+    this.MXQ = null;
+    this.MXR = "";
+    this.MXS = 0L;
+    this.MXT = 0L;
+    this.hUr = 0;
+    this.pQw = "";
   }
   
   private void initView()
   {
-    AppMethodBeat.i(23626);
-    if ((this.contact == null) || (!this.lJS))
+    AppMethodBeat.i(27239);
+    if ((this.contact == null) || (!this.yxr))
     {
-      ab.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.lJS);
-      AppMethodBeat.o(23626);
+      Log.d("MicroMsg.FriendPreference", "initView : contact = " + this.contact + " bindView = " + this.yxr);
+      AppMethodBeat.o(27239);
       return;
     }
-    if ((this.pAI != -1L) && (new p(this.pAI).longValue() > 0L))
+    if ((this.MXS != -1L) && (new p(this.MXS).longValue() > 0L))
     {
-      setWidgetLayoutResource(2130970255);
-      ccr();
-      AppMethodBeat.o(23626);
+      aBp(R.i.gmg);
+      gBO();
+      AppMethodBeat.o(27239);
       return;
     }
-    if (this.pAG != null)
+    if (this.MXQ != null)
     {
-      setWidgetLayoutResource(2130970246);
-      ccs();
-      AppMethodBeat.o(23626);
+      aBp(R.i.gmd);
+      gBP();
+      AppMethodBeat.o(27239);
       return;
     }
-    if (this.pAJ > 0L)
+    if (this.MXT > 0L)
     {
-      ccq();
-      AppMethodBeat.o(23626);
+      gBN();
+      AppMethodBeat.o(27239);
       return;
     }
-    if (!TextUtils.isEmpty(this.gvd))
+    if (!TextUtils.isEmpty(this.pQw))
     {
-      cct();
-      AppMethodBeat.o(23626);
+      gBQ();
+      AppMethodBeat.o(27239);
       return;
     }
     Assert.assertTrue(false);
-    AppMethodBeat.o(23626);
+    AppMethodBeat.o(27239);
   }
   
   private boolean q(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(23631);
+    AppMethodBeat.i(27244);
     if (paramBitmap != null)
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-      boolean bool = l.a(paramString, this.mContext, localByteArrayOutputStream.toByteArray());
-      AppMethodBeat.o(23631);
+      boolean bool = i.a(paramString, this.mContext, localByteArrayOutputStream.toByteArray());
+      AppMethodBeat.o(27244);
       return bool;
     }
-    AppMethodBeat.o(23631);
+    AppMethodBeat.o(27244);
     return false;
   }
   
-  public final boolean bkb()
+  public final void LM(String paramString)
   {
-    AppMethodBeat.i(23632);
-    o.acQ().e(this);
-    AppMethodBeat.o(23632);
-    return true;
+    AppMethodBeat.i(27246);
+    long l = d.Lx(paramString);
+    if ((l > 0L) && (this.MXS == l) && (d.a(paramString, false, -1, null) != null)) {
+      initView();
+    }
+    if ((d.Lw(paramString) == this.MXT) && (d.a(paramString, false, -1, null) != null)) {
+      initView();
+    }
+    AppMethodBeat.o(27246);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23625);
-    this.titleTv = ((TextView)paramView.findViewById(2131820680));
-    this.pAD = ((TextView)paramView.findViewById(2131821890));
-    this.pAE = ((ImageView)paramView.findViewById(2131822243));
-    this.pAF = ((ImageView)paramView.findViewById(2131826252));
-    this.lJS = true;
+    AppMethodBeat.i(27238);
+    this.titleTv = ((TextView)paramView.findViewById(R.h.title));
+    this.MXN = ((TextView)paramView.findViewById(R.h.summary));
+    this.MXO = ((ImageView)paramView.findViewById(R.h.image_iv));
+    this.MXP = ((ImageView)paramView.findViewById(R.h.fOm));
+    this.yxr = true;
     initView();
     super.onBindView(paramView);
-    AppMethodBeat.o(23625);
+    AppMethodBeat.o(27238);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23624);
+    AppMethodBeat.i(27237);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970200, localViewGroup);
-    AppMethodBeat.o(23624);
+    localLayoutInflater.inflate(R.i.glQ, localViewGroup);
+    AppMethodBeat.o(27237);
     return paramViewGroup;
-  }
-  
-  public final void re(String paramString)
-  {
-    AppMethodBeat.i(23633);
-    long l = b.qP(paramString);
-    if ((l > 0L) && (this.pAI == l) && (b.b(paramString, false, -1) != null)) {
-      initView();
-    }
-    if ((b.qO(paramString) == this.pAJ) && (b.b(paramString, false, -1) != null)) {
-      initView();
-    }
-    AppMethodBeat.o(23633);
   }
 }
 

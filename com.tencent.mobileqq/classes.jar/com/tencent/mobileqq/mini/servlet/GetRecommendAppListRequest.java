@@ -34,16 +34,20 @@ public class GetRecommendAppListRequest
   
   public static INTERFACE.StGetRecommendAppListRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetRecommendAppListRsp localStGetRecommendAppListRsp = new INTERFACE.StGetRecommendAppListRsp();
+    Object localObject = new INTERFACE.StGetRecommendAppListRsp();
     try
     {
-      localStGetRecommendAppListRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetRecommendAppListRsp;
+      ((INTERFACE.StGetRecommendAppListRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetRecommendAppListRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetRecommendAppListRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -56,7 +60,7 @@ public class GetRecommendAppListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetRecommendAppListRequest
  * JD-Core Version:    0.7.0.1
  */

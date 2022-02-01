@@ -1,34 +1,54 @@
 package com.tencent.mobileqq.confess;
 
-import android.graphics.Rect;
-import android.view.TouchDelegate;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
-final class BaseMsgListFragment$4
-  implements Runnable
+class BaseMsgListFragment$4
+  implements Handler.Callback
 {
-  public void run()
+  BaseMsgListFragment$4(BaseMsgListFragment paramBaseMsgListFragment) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    if (paramMessage.what != 0) {
+      return false;
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    if ((!this.a.e()) && (this.a.i.getMode() == -1))
+    {
+      this.a.k.a(this.a.t);
+      this.a.k.a(17);
+      this.a.d();
+      if ((!this.a.u) && (this.a.t.size() != 0)) {
+        this.a.g.setVisibility(0);
+      } else {
+        this.a.g.setVisibility(8);
+      }
+      if (!this.a.m)
+      {
+        this.a.m = true;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("BaseMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.o) }));
+          return false;
+        }
+      }
     }
+    else
+    {
+      this.a.n = true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.BaseMsgListFragment.4
  * JD-Core Version:    0.7.0.1
  */

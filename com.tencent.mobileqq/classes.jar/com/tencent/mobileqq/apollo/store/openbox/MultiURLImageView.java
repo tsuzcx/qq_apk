@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import aldt;
-import alfa;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,13 +8,15 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.image.Utils;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.Iterator;
 import java.util.List;
 
 public class MultiURLImageView
   extends LinearLayout
 {
-  private List<alfa> a;
+  private List<MultiURLImageView.ViewLayoutData> a;
   
   public MultiURLImageView(Context paramContext)
   {
@@ -27,28 +26,24 @@ public class MultiURLImageView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      Iterator localIterator = this.a.iterator();
-      paramInt1 = 0;
+      localObject = ((List)localObject).iterator();
       paramInt2 = 0;
-      if (localIterator.hasNext())
+      paramInt1 = 0;
+      while (((Iterator)localObject).hasNext())
       {
-        alfa localalfa = (alfa)localIterator.next();
-        int i;
+        MultiURLImageView.ViewLayoutData localViewLayoutData = (MultiURLImageView.ViewLayoutData)((Iterator)localObject).next();
         if (super.getOrientation() == 1)
         {
-          i = localalfa.jdField_b_of_type_Int;
-          paramInt2 = Math.max(paramInt2, localalfa.jdField_a_of_type_Int);
-          paramInt1 += i;
+          paramInt1 += localViewLayoutData.b;
+          paramInt2 = Math.max(paramInt2, localViewLayoutData.a);
         }
-        for (;;)
+        else
         {
-          break;
-          i = localalfa.jdField_a_of_type_Int;
-          int j = localalfa.c;
-          paramInt1 = Math.max(paramInt1, localalfa.jdField_b_of_type_Int);
-          paramInt2 += i + j;
+          paramInt2 += localViewLayoutData.a + localViewLayoutData.c;
+          paramInt1 = Math.max(paramInt1, localViewLayoutData.b);
         }
       }
       super.setMeasuredDimension(paramInt2, paramInt1);
@@ -66,25 +61,53 @@ public class MultiURLImageView
     super.setGravity(16);
   }
   
-  public void setViewLayoutDatas(List<alfa> paramList)
+  public void setViewLayoutDatas(List<MultiURLImageView.ViewLayoutData> paramList)
   {
     this.a = paramList;
-    int i;
-    alfa localalfa;
-    Object localObject;
     if (this.a != null)
     {
-      i = 0;
-      if (i < this.a.size())
+      int i = 0;
+      while (i < this.a.size())
       {
-        localalfa = (alfa)this.a.get(i);
-        if (!TextUtils.isEmpty(localalfa.jdField_a_of_type_JavaLangString)) {}
-      }
-      else
-      {
-        if (super.getChildCount() <= this.a.size()) {
-          break label253;
+        MultiURLImageView.ViewLayoutData localViewLayoutData = (MultiURLImageView.ViewLayoutData)this.a.get(i);
+        if (TextUtils.isEmpty(localViewLayoutData.e)) {
+          break;
         }
+        paramList = localViewLayoutData.f;
+        Object localObject1 = paramList;
+        if (TextUtils.isEmpty(paramList)) {
+          localObject1 = Utils.Crc64String(localViewLayoutData.e);
+        }
+        if (super.getChildCount() > i)
+        {
+          paramList = super.getChildAt(i);
+          if ((paramList instanceof URLImageView))
+          {
+            paramList = (URLImageView)paramList;
+            break label111;
+          }
+        }
+        paramList = null;
+        label111:
+        Object localObject2 = paramList;
+        if (paramList == null)
+        {
+          localObject2 = new URLImageView(super.getContext());
+          super.addView((View)localObject2);
+        }
+        paramList = (LinearLayout.LayoutParams)((URLImageView)localObject2).getLayoutParams();
+        paramList.width = localViewLayoutData.a;
+        paramList.height = localViewLayoutData.b;
+        paramList.leftMargin = localViewLayoutData.c;
+        paramList = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable((String)localObject1, null, localViewLayoutData.e);
+        paramList.startDownload();
+        ((URLImageView)localObject2).setImageDrawable(paramList);
+        ((URLImageView)localObject2).setScaleType(localViewLayoutData.d);
+        ((URLImageView)localObject2).setVisibility(0);
+        i += 1;
+      }
+      if (super.getChildCount() > this.a.size())
+      {
         i = this.a.size();
         while (i < super.getChildCount())
         {
@@ -92,51 +115,13 @@ public class MultiURLImageView
           i += 1;
         }
       }
-      localObject = localalfa.jdField_b_of_type_JavaLangString;
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label266;
-      }
-      localObject = Utils.Crc64String(localalfa.jdField_a_of_type_JavaLangString);
     }
-    label266:
-    for (;;)
-    {
-      if (super.getChildCount() > i)
-      {
-        paramList = super.getChildAt(i);
-        if (!(paramList instanceof URLImageView)) {}
-      }
-      for (paramList = (URLImageView)paramList;; paramList = null)
-      {
-        if (paramList == null)
-        {
-          paramList = new URLImageView(super.getContext());
-          super.addView(paramList);
-        }
-        for (;;)
-        {
-          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramList.getLayoutParams();
-          localLayoutParams.width = localalfa.jdField_a_of_type_Int;
-          localLayoutParams.height = localalfa.jdField_b_of_type_Int;
-          localLayoutParams.leftMargin = localalfa.c;
-          localObject = aldt.a((String)localObject, null, localalfa.jdField_a_of_type_JavaLangString);
-          ((URLDrawable)localObject).startDownload();
-          paramList.setImageDrawable((Drawable)localObject);
-          paramList.setScaleType(localalfa.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
-          paramList.setVisibility(0);
-          i += 1;
-          break;
-          label253:
-          super.requestLayout();
-          return;
-        }
-      }
-    }
+    super.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.MultiURLImageView
  * JD-Core Version:    0.7.0.1
  */

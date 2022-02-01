@@ -1,24 +1,19 @@
 package cooperation.qzone;
 
-import bjpo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzonePatchApi;
 
-public final class QZoneHelper$7
+final class QZoneHelper$7
   implements Runnable
 {
-  public QZoneHelper$7(QQAppInterface paramQQAppInterface) {}
-  
   public void run()
   {
-    bjpo localbjpo = (bjpo)this.a.getManager(175);
-    if (localbjpo != null) {
-      localbjpo.b();
-    }
+    ((IQzonePatchApi)QRoute.api(IQzonePatchApi.class)).getPatchList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.7
  * JD-Core Version:    0.7.0.1
  */

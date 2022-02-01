@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iio" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ViewStub android:id="@id/hwu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer android:id="@id/ccj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/azh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/bsu" android:visibility="gone" layout="@layout/cbx" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView android:id="@id/cc4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditVideoSeekBarView android:id="@id/cc_" android:background="@color/ahb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textColor="@color/a9w" android:id="@id/l5k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mm.ui.widget.InsectRelativeLayout android:id="@id/jl8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/ajv" android:layout_marginBottom="@dimen/cv" android:layout_alignParentBottom="true">
+            <ImageView android:id="@id/jl9" android:background="@drawable/ahf" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="@dimen/ajw" android:src="@raw/mmsight_camera_preview_icon_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/jl_" android:background="@drawable/ahg" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="@dimen/ajw" android:src="@raw/mmsight_camera_preview_icon_done" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </com.tencent.mm.ui.widget.InsectRelativeLayout>
+</merge>

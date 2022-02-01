@@ -5,8 +5,9 @@ import android.support.annotation.Keep;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ad.tangram.util.AdUriUtil;
 import java.lang.ref.WeakReference;
 
 @Keep
@@ -15,78 +16,78 @@ public enum AdIPV4
   INSTANCE;
   
   private static final String TAG = "AdIPV4";
-  private volatile AdIPV4.a address;
+  private volatile AdIPV4.Address address;
   private volatile boolean initialized = false;
-  private AdIPV4.b ipcHandler;
+  private AdIPV4.a ipcHandler;
   private volatile long tryToUpdateCacheTimeMillis = -2147483648L;
   
   private AdIPV4() {}
   
   private static String getIPV4AddressByNetwork(Context paramContext)
   {
-    Throwable localThrowable1 = null;
-    AdReporterForAnalysis.reportForGetIPV4Start(paramContext);
+    AdAnalysisHelperForUtil.reportForGetIPV4Start(paramContext);
     long l = System.currentTimeMillis();
     AdHttp.Params localParams = new AdHttp.Params();
-    localParams.setUrl("https://ipv4.gdt.qq.com/get_client_ip");
+    localParams.setUrl(AdUriUtil.replaceHttpsWithHttpForVivoY67OnAndroidM("https://ipv4.gdt.qq.com/get_client_ip"));
     localParams.method = "GET";
     localParams.connectTimeoutMillis = 3000;
     localParams.readTimeoutMillis = 3000;
     AdHttp.send(localParams);
     AdLog.i("AdIPV4", String.format("getIPV4AddressByNetwork responseCode:%d", new Object[] { Integer.valueOf(localParams.responseCode) }));
-    String str;
-    if (localParams.canSend()) {
-      if (localParams.responseCode != 200) {
-        str = null;
-      }
-    }
-    for (;;)
+    Object localObject2;
+    Throwable localThrowable2;
+    if ((localParams.canSend()) && (localParams.responseCode == 200))
     {
-      AdReporterForAnalysis.reportForGetIPV4End(paramContext, System.currentTimeMillis() - l, localParams, str, localThrowable1);
-      return str;
       try
       {
-        str = new String(localParams.responseData, "UTF-8");
+        localObject2 = new String(localParams.responseData, "UTF-8");
+        Object localObject1 = null;
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable1)
       {
-        AdLog.e("AdIPV4", "getIPV4AddressByNetwork", localThrowable2);
-        str = null;
+        AdLog.e("AdIPV4", "getIPV4AddressByNetwork", localThrowable1);
+        localObject2 = null;
       }
-      continue;
-      str = null;
     }
-  }
-  
-  private void updateCacheIfNecessary()
-  {
-    boolean bool;
-    if (AdProcessManager.INSTANCE.isOnMainProcess().booleanValue()) {
-      bool = false;
-    }
-    for (;;)
+    else
     {
-      AdLog.i("AdIPV4", String.format("updateCacheIfNecessary %b", new Object[] { Boolean.valueOf(bool) }));
-      return;
-      if ((this.address != null) && (!TextUtils.isEmpty(this.address.ip)))
-      {
-        bool = false;
-      }
-      else if ((this.tryToUpdateCacheTimeMillis != -2147483648L) && (System.currentTimeMillis() - this.tryToUpdateCacheTimeMillis < 60000L))
-      {
-        bool = false;
-      }
-      else
-      {
-        AdThreadManager.INSTANCE.post(new AdIPV4.3(this), 3);
-        bool = true;
-      }
+      localThrowable2 = null;
+      localObject2 = localThrowable2;
     }
+    AdAnalysisHelperForUtil.reportForGetIPV4End(paramContext, System.currentTimeMillis() - l, localParams, (String)localObject2, localThrowable2);
+    return localObject2;
   }
   
-  public AdIPV4.a getCache()
+  private void updateCacheIfNecessary(Context paramContext)
   {
-    updateCacheIfNecessary();
+    if (!this.initialized) {
+      return;
+    }
+    Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
+    if (localBoolean == null) {
+      AdLog.e("AdIPV4", "updateCacheIfNecessary isOnMainProcess == null");
+    } else {
+      if ((!localBoolean.booleanValue()) && ((this.address == null) || (TextUtils.isEmpty(this.address.ip))) && ((this.tryToUpdateCacheTimeMillis == -2147483648L) || (System.currentTimeMillis() - this.tryToUpdateCacheTimeMillis >= 60000L))) {
+        break label93;
+      }
+    }
+    boolean bool = false;
+    break label133;
+    label93:
+    if (paramContext != null) {
+      paramContext = new WeakReference(paramContext.getApplicationContext());
+    } else {
+      paramContext = null;
+    }
+    AdThreadManager.INSTANCE.post(new AdIPV4.3(this, paramContext), 3);
+    bool = true;
+    label133:
+    AdLog.i("AdIPV4", String.format("updateCacheIfNecessary %b", new Object[] { Boolean.valueOf(bool) }));
+  }
+  
+  public AdIPV4.Address getCache(Context paramContext)
+  {
+    updateCacheIfNecessary(paramContext);
     return this.address;
   }
   
@@ -96,31 +97,44 @@ public enum AdIPV4
     if (this.initialized) {
       return;
     }
+    Object localObject2 = null;
+    if (paramContext != null) {
+      localObject1 = paramContext.getApplicationContext();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject1 = new WeakReference(localObject1);
+    Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
     try
     {
       if (this.initialized) {
         return;
       }
-    }
-    finally {}
-    this.initialized = true;
-    this.ipcHandler = new AdIPV4.b();
-    if (paramContext != null) {}
-    for (paramContext = paramContext.getApplicationContext();; paramContext = null)
-    {
-      paramContext = new WeakReference(paramContext);
-      if (!AdProcessManager.INSTANCE.isOnMainProcess().booleanValue()) {
-        break;
+      if (localBoolean == null)
+      {
+        AdLog.e("AdIPV4", "getCache isOnMainProcess == null");
+        return;
       }
-      AdThreadManager.INSTANCE.post(new AdIPV4.1(this, paramContext), 4);
+      this.ipcHandler = new AdIPV4.a();
+      this.initialized = true;
+      if (localBoolean.booleanValue())
+      {
+        AdThreadManager.INSTANCE.post(new AdIPV4.1(this, (WeakReference)localObject1), 4);
+        return;
+      }
+      localObject1 = localObject2;
+      if (paramContext != null) {
+        localObject1 = new WeakReference(paramContext.getApplicationContext());
+      }
+      AdThreadManager.INSTANCE.post(new AdIPV4.2(this, (WeakReference)localObject1), 3);
       return;
     }
-    AdThreadManager.INSTANCE.post(new AdIPV4.2(this), 3);
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.net.AdIPV4
  * JD-Core Version:    0.7.0.1
  */

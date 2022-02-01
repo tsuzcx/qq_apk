@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import alud;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,58 +7,47 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import apzm;
-import apzn;
-import azqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import mqq.app.AppRuntime;
 
 public abstract class AIOEmotionBaseFragment
   extends PublicBaseFragment
 {
-  protected int a;
-  public Context a;
   protected View a;
+  protected Context b;
+  protected int c;
   
   public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
-  
-  public QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public abstract void a();
   
   protected abstract void a(int paramInt, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem);
   
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131368624);
-    localTextView.setText(alud.a(2131700407));
-    localTextView.setOnClickListener(new apzm(this));
+    TextView localTextView = (TextView)paramView.findViewById(2131436180);
+    localTextView.setText(HardCodeUtil.a(2131901576));
+    localTextView.setOnClickListener(new AIOEmotionBaseFragment.1(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131368638);
-      paramView.setImageResource(2130837936);
+      paramView = (ImageView)paramView.findViewById(2131436194);
+      paramView.setImageResource(2130838021);
       paramView.setVisibility(0);
-      paramView.setContentDescription(alud.a(2131700406));
-      paramView.setOnClickListener(new apzn(this));
+      paramView.setContentDescription(HardCodeUtil.a(2131898287));
+      paramView.setOnClickListener(new AIOEmotionBaseFragment.2(this));
     }
   }
   
-  public void a(String paramString)
+  protected void a(String paramString)
   {
-    azqs.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, this.c, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -67,7 +55,18 @@ public abstract class AIOEmotionBaseFragment
     return true;
   }
   
+  protected abstract void b();
+  
   protected abstract void b(View paramView);
+  
+  protected QQAppInterface c()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
   
   public boolean needImmersive()
   {
@@ -78,10 +77,11 @@ public abstract class AIOEmotionBaseFragment
   {
     a("0X800997D");
     paramLayoutInflater = a(paramLayoutInflater, paramViewGroup);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidContentContext = getActivity();
+    this.a = paramLayoutInflater;
+    this.b = getBaseActivity();
     a(paramLayoutInflater);
     b(paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   

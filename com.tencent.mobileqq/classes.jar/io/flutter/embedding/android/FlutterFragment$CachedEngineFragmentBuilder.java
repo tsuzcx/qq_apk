@@ -1,7 +1,7 @@
 package io.flutter.embedding.android;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import java.lang.reflect.Constructor;
 
 public class FlutterFragment$CachedEngineFragmentBuilder
@@ -9,9 +9,9 @@ public class FlutterFragment$CachedEngineFragmentBuilder
   private boolean destroyEngineWithFragment = false;
   private final String engineId;
   private final Class<? extends FlutterFragment> fragmentClass;
-  private FlutterView.RenderMode renderMode = FlutterView.RenderMode.surface;
+  private RenderMode renderMode = RenderMode.surface;
   private boolean shouldAttachEngineToActivity = true;
-  private FlutterView.TransparencyMode transparencyMode = FlutterView.TransparencyMode.transparent;
+  private TransparencyMode transparencyMode = TransparencyMode.transparent;
   
   protected FlutterFragment$CachedEngineFragmentBuilder(@NonNull Class<? extends FlutterFragment> paramClass, @NonNull String paramString)
   {
@@ -57,23 +57,18 @@ public class FlutterFragment$CachedEngineFragmentBuilder
     Bundle localBundle = new Bundle();
     localBundle.putString("cached_engine_id", this.engineId);
     localBundle.putBoolean("destroy_engine_with_fragment", this.destroyEngineWithFragment);
-    if (this.renderMode != null)
-    {
-      localObject = this.renderMode;
-      localBundle.putString("flutterview_render_mode", ((FlutterView.RenderMode)localObject).name());
-      if (this.transparencyMode == null) {
-        break label91;
-      }
+    Object localObject = this.renderMode;
+    if (localObject == null) {
+      localObject = RenderMode.surface;
     }
-    label91:
-    for (Object localObject = this.transparencyMode;; localObject = FlutterView.TransparencyMode.transparent)
-    {
-      localBundle.putString("flutterview_transparency_mode", ((FlutterView.TransparencyMode)localObject).name());
-      localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
-      return localBundle;
-      localObject = FlutterView.RenderMode.surface;
-      break;
+    localBundle.putString("flutterview_render_mode", ((RenderMode)localObject).name());
+    localObject = this.transparencyMode;
+    if (localObject == null) {
+      localObject = TransparencyMode.transparent;
     }
+    localBundle.putString("flutterview_transparency_mode", ((TransparencyMode)localObject).name());
+    localBundle.putBoolean("should_attach_engine_to_activity", this.shouldAttachEngineToActivity);
+    return localBundle;
   }
   
   @NonNull
@@ -84,7 +79,7 @@ public class FlutterFragment$CachedEngineFragmentBuilder
   }
   
   @NonNull
-  public CachedEngineFragmentBuilder renderMode(@NonNull FlutterView.RenderMode paramRenderMode)
+  public CachedEngineFragmentBuilder renderMode(@NonNull RenderMode paramRenderMode)
   {
     this.renderMode = paramRenderMode;
     return this;
@@ -98,7 +93,7 @@ public class FlutterFragment$CachedEngineFragmentBuilder
   }
   
   @NonNull
-  public CachedEngineFragmentBuilder transparencyMode(@NonNull FlutterView.TransparencyMode paramTransparencyMode)
+  public CachedEngineFragmentBuilder transparencyMode(@NonNull TransparencyMode paramTransparencyMode)
   {
     this.transparencyMode = paramTransparencyMode;
     return this;
@@ -106,7 +101,7 @@ public class FlutterFragment$CachedEngineFragmentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment.CachedEngineFragmentBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,54 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class eqq
-  implements View.OnKeyListener
+  extends TroopObserver
 {
   public eqq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(int paramInt, byte paramByte)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
+    if (paramInt == 8)
     {
-      SelectMemberActivity.a(this.a).requestFocus();
-      if ((SelectMemberActivity.a(this.a).getText().toString().equals("")) && (this.a.c.size() != 0))
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add troop member fail");
+      }
+      this.a.a.sendEmptyMessage(1);
+    }
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    if (paramInt == 8)
+    {
+      if (paramByte != 0) {
+        break label95;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add troop member success");
+      }
+      this.a.a.sendEmptyMessage(0);
+      if (!SelectMemberActivity.a(this.a))
       {
-        paramView = ((SelectMemberActivity.ResultRecord)this.a.c.get(this.a.c.size() - 1)).a;
-        if (this.a.a(paramView))
-        {
-          this.a.a(paramView);
-          this.a.d();
-          paramInt = this.a.a.a();
-          if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5)) {
-            ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
-          }
-          this.a.a(false);
-        }
+        paramInt = this.a.a();
+        this.a.a(paramInt + 1);
+        ReportController.b(this.a.b, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
       }
     }
-    while ((paramInt != 4) || (!SelectMemberActivity.a(this.a).getText().toString().trim().equals(""))) {
-      return false;
+    return;
+    label95:
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramByte);
     }
-    this.a.i();
-    return false;
+    paramString = null;
+    if (paramByte == 7) {
+      paramString = this.a.getString(2131561460);
+    }
+    this.a.a.obtainMessage(1, paramString).sendToTarget();
   }
 }
 

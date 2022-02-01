@@ -1,19 +1,22 @@
 package com.tencent.ark.open;
 
+import com.tencent.ark.open.appmanage.AppUpdateTask.IUpdateAppByNameCallback;
+import com.tencent.ark.open.appmanage.AppUpdateTask.UpdateTask;
+import com.tencent.ark.open.internal.WeakReferenceHandler;
+
 class ArkAppMgr$3
-  implements ArkAppMgr.IUpdateAppByNameCallback
+  implements AppUpdateTask.IUpdateAppByNameCallback
 {
-  ArkAppMgr$3(ArkAppMgr paramArkAppMgr) {}
+  ArkAppMgr$3(ArkAppMgr paramArkAppMgr, ArkAppMgr.GetAppPathByNameTask paramGetAppPathByNameTask) {}
   
-  public void onUpdateAppByName(ArkAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject)
+  public void onUpdateAppByName(AppUpdateTask.UpdateTask paramUpdateTask)
   {
-    paramObject = (ArkAppMgr.GetAppPathByNameTask)paramObject;
-    paramObject.handler.post(new ArkAppMgr.3.1(this, paramUpdateAppByNameTask, paramObject));
+    this.val$getPathTask.handler.post(new ArkAppMgr.3.1(this, paramUpdateTask));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppMgr.3
  * JD-Core Version:    0.7.0.1
  */

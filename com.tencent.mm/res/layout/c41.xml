@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/al2" android:paddingLeft="@dimen/ahk" android:paddingRight="@dimen/ahk" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/gj2" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/iq" android:layout_marginRight="8.0dip" />
+    <LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/iq" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/gj6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/gj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:singleLine="true" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|right|top" android:layout_gravity="right" android:orientation="vertical" android:paddingTop="@dimen/iq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/iq">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/gj0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:id="@id/gj3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c_z" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/a7b" android:id="@id/gj4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="4.0dip" android:text="@string/jep" />
+    </LinearLayout>
+</LinearLayout>

@@ -23,56 +23,56 @@ public class NewGifDrawableSpecifiedRegionProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    Drawable localDrawable;
     if (!(paramDrawable instanceof NewGifDrawable)) {
-      localDrawable = super.process(paramDrawable);
+      return super.process(paramDrawable);
     }
-    int i;
-    int k;
-    do
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    Drawable localDrawable = paramDrawable;
+    if (i != 0)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localDrawable;
-              i = paramDrawable.getIntrinsicWidth();
-              j = paramDrawable.getIntrinsicHeight();
-              localDrawable = paramDrawable;
-            } while (i == 0);
-            localDrawable = paramDrawable;
-          } while (j == 0);
-          paramDrawable = (NewGifDrawable)paramDrawable;
-          if (i <= j) {
-            break;
-          }
-          k = this.mDisplayRect.left + this.mDisplayRect.right;
-          localDrawable = paramDrawable;
-        } while (k <= 0);
-        i = (i - j) * this.mDisplayRect.left / k;
-        paramDrawable.setSrcRect(new Rect(i, 0, i + j, j));
-        paramDrawable.setIntrinsicWidth(j);
-        paramDrawable.setIntrinsicHeight(j);
+      if (j == 0) {
         return paramDrawable;
+      }
+      paramDrawable = (NewGifDrawable)paramDrawable;
+      int k;
+      if (i > j)
+      {
+        k = this.mDisplayRect.left + this.mDisplayRect.right;
         localDrawable = paramDrawable;
-      } while (i >= j);
-      k = this.mDisplayRect.top + this.mDisplayRect.bottom;
-      localDrawable = paramDrawable;
-    } while (k <= 0);
-    int j = (j - i) * this.mDisplayRect.top / k;
-    paramDrawable.setSrcRect(new Rect(0, j, i, j + i));
-    paramDrawable.setIntrinsicWidth(i);
-    paramDrawable.setIntrinsicHeight(i);
-    return paramDrawable;
+        if (k > 0)
+        {
+          i = (i - j) * this.mDisplayRect.left / k;
+          paramDrawable.setSrcRect(new Rect(i, 0, i + j, j));
+          paramDrawable.setIntrinsicWidth(j);
+          paramDrawable.setIntrinsicHeight(j);
+          return paramDrawable;
+        }
+      }
+      else
+      {
+        localDrawable = paramDrawable;
+        if (i < j)
+        {
+          k = this.mDisplayRect.top + this.mDisplayRect.bottom;
+          localDrawable = paramDrawable;
+          if (k > 0)
+          {
+            j = (j - i) * this.mDisplayRect.top / k;
+            paramDrawable.setSrcRect(new Rect(0, j, i, j + i));
+            paramDrawable.setIntrinsicWidth(i);
+            paramDrawable.setIntrinsicHeight(i);
+            localDrawable = paramDrawable;
+          }
+        }
+      }
+    }
+    return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.processor.NewGifDrawableSpecifiedRegionProcessor
  * JD-Core Version:    0.7.0.1
  */

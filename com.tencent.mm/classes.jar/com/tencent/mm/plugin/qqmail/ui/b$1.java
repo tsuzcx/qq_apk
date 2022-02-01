@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 
 final class b$1
   implements View.OnClickListener
@@ -12,16 +13,20 @@ final class b$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(68282);
-    if (this.pMV.getVisibility() == 0) {
-      this.pMV.performClick();
+    AppMethodBeat.i(123008);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/qqmail/ui/FileUploadHelper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.NnN.getVisibility() == 0) {
+      this.NnN.performClick();
     }
-    AppMethodBeat.o(68282);
+    a.a(this, "com/tencent/mm/plugin/qqmail/ui/FileUploadHelper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(123008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.b.1
  * JD-Core Version:    0.7.0.1
  */

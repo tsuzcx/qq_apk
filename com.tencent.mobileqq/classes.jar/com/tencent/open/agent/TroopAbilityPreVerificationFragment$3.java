@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class TroopAbilityPreVerificationFragment$3
   implements Runnable
@@ -9,13 +9,13 @@ class TroopAbilityPreVerificationFragment$3
   
   public void run()
   {
-    this.this$0.getActivity().setResult(0);
-    this.this$0.getActivity().finish();
+    this.this$0.getBaseActivity().setResult(0);
+    this.this$0.getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityPreVerificationFragment.3
  * JD-Core Version:    0.7.0.1
  */

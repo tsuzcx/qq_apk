@@ -10,14 +10,15 @@ class gc$1
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
   {
-    if (this.rT != null) {
-      this.rT.a(paramInt1, paramInt2, paramInt3, paramInt4, paramJceStruct);
+    b.a locala = this.rT;
+    if (locala != null) {
+      locala.a(paramInt1, paramInt2, paramInt3, paramInt4, paramJceStruct);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gc.1
  * JD-Core Version:    0.7.0.1
  */

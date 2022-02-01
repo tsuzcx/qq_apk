@@ -8,8 +8,8 @@ public final class EntranceContent
   extends JceStruct
 {
   static byte[] cache_content_buff = (byte[])new byte[1];
-  public byte[] content_buff;
-  public int type;
+  public byte[] content_buff = null;
+  public int type = 0;
   
   static
   {
@@ -38,7 +38,7 @@ public final class EntranceContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.EntranceContent
  * JD-Core Version:    0.7.0.1
  */

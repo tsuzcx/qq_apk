@@ -1,62 +1,55 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class ekl
   extends ContactBindObserver
 {
-  public ekl(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
+  public ekl(BindVerifyActivity paramBindVerifyActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.a.d();
-    int i;
-    if (paramBoolean)
+    if (!paramBoolean)
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0))
-      {
-        paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        if ((paramBundle != null) && (!this.a.isFinishing()))
-        {
-          paramBundle.addFlags(536870912);
-          this.a.startActivityForResult(paramBundle, 1);
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(BindNumberFromPcActivity.a(this.a));
-      BindNumberFromPcActivity.a(this.a, null);
+      this.a.b(2131562782);
       return;
-      if (i == 107)
-      {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("k_country_code", this.a.jdField_b_of_type_JavaLangString);
-        paramBundle = localIntent;
-        break;
+    }
+    if ((paramInt == 0) || (paramInt == 106))
+    {
+      localObject = ((PhoneContactManager)this.a.b.getManager(10)).a();
+      if (1 == this.a.a) {
+        MyBusinessActivity.c(true);
       }
-      if (i == 106)
+      if ((this.a.a == 0) || (localObject == null) || (TextUtils.isEmpty(((RespondQueryQQBindingStat)localObject).mobileNo)))
       {
+        this.a.b.a(new ekm(this));
         this.a.setResult(-1);
         this.a.finish();
-        paramBundle = null;
-        break;
       }
-      this.a.b(a(i));
-      paramBundle = null;
-      break;
-      this.a.b(2131562782);
+      for (;;)
+      {
+        ContactUtils.a(this.a.b, -1L, -1, 1);
+        return;
+        this.a.setResult(-1);
+        this.a.finish();
+      }
     }
+    if (paramInt == 213)
+    {
+      this.a.b(this.a.getString(2131558962));
+      return;
+    }
+    Object localObject = this.a.getString(2131558963);
+    if (paramInt == 107) {
+      localObject = this.a.getString(2131558964);
+    }
+    this.a.a(this.a.getString(2131558965), (String)localObject);
   }
 }
 

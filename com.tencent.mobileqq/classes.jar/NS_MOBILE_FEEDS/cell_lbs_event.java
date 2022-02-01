@@ -4,18 +4,19 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_lbs_event
   extends JceStruct
 {
   static s_gps cache_gpsinfo = new s_gps();
   static ArrayList<s_user> cache_usersinfo = new ArrayList();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String desc = "";
-  public long event_id;
-  public s_gps gpsinfo;
-  public ArrayList<s_user> usersinfo;
+  public long event_id = 0L;
+  public s_gps gpsinfo = null;
+  public ArrayList<s_user> usersinfo = null;
   
   static
   {
@@ -48,24 +49,28 @@ public final class cell_lbs_event
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.actiontype, 0);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 1);
+    Object localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.usersinfo != null) {
-      paramJceOutputStream.write(this.usersinfo, 2);
+    localObject = this.usersinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.gpsinfo != null) {
-      paramJceOutputStream.write(this.gpsinfo, 3);
+    localObject = this.gpsinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.event_id, 4);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 5);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_lbs_event
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import com.google.android.gms.a.a;
 public abstract interface ao
   extends IInterface
 {
-  public abstract a hC();
+  public abstract a hM();
   
-  public abstract int hD();
+  public abstract int hN();
 }
 
 

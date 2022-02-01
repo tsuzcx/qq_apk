@@ -16,28 +16,26 @@ class AnimatorSet$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    int j;
-    int i;
     if (!this.canceled)
     {
-      j = this.val$nodesToStart.size();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j) {
-        return;
+      int j = this.val$nodesToStart.size();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          return;
+        }
+        paramAnimator = (AnimatorSet.Node)this.val$nodesToStart.get(i);
+        paramAnimator.animation.start();
+        AnimatorSet.access$2(this.this$0).add(paramAnimator.animation);
+        i += 1;
       }
-      paramAnimator = (AnimatorSet.Node)this.val$nodesToStart.get(i);
-      paramAnimator.animation.start();
-      AnimatorSet.access$2(this.this$0).add(paramAnimator.animation);
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.nineoldandroids.animation.AnimatorSet.1
  * JD-Core Version:    0.7.0.1
  */

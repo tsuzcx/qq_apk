@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetCustomOnlineStatusRsp
   extends JceStruct
 {
-  public int iRet;
+  public int iRet = 0;
   public String sBuffer = "";
   public String sMsg = "";
   
@@ -30,17 +30,19 @@ public final class GetCustomOnlineStatusRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRet, 0);
-    if (this.sMsg != null) {
-      paramJceOutputStream.write(this.sMsg, 1);
+    String str = this.sMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.sBuffer != null) {
-      paramJceOutputStream.write(this.sBuffer, 2);
+    str = this.sBuffer;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GetCustomOnlineStatusRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/root" android:layout_width="@dimen/pad_left_panel_width" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/header_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/common_main_loading" />
+        <ViewStub android:id="@id/stub_leba_content" android:visibility="gone" android:layout="@layout/leba_list_content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="71.0dip" />
+        <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/leba_leftpanel_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/lebaContainer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pad_left_panel_width" />
+</FrameLayout>

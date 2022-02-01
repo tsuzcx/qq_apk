@@ -30,29 +30,35 @@ public class ZipPkmReader
   private ETC1Util.ETC1Texture createTexture(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[4096];
-    if (paramInputStream.read(arrayOfByte, 0, 16) != 16) {
-      throw new IOException("Unable to read PKM file header.");
-    }
-    if (this.headerBuffer == null) {
-      this.headerBuffer = ByteBuffer.allocateDirect(16).order(ByteOrder.nativeOrder());
-    }
-    this.headerBuffer.put(arrayOfByte, 0, 16).position(0);
-    if (!ETC1.isValid(this.headerBuffer)) {
+    if (paramInputStream.read(arrayOfByte, 0, 16) == 16)
+    {
+      if (this.headerBuffer == null) {
+        this.headerBuffer = ByteBuffer.allocateDirect(16).order(ByteOrder.nativeOrder());
+      }
+      this.headerBuffer.put(arrayOfByte, 0, 16).position(0);
+      if (ETC1.isValid(this.headerBuffer))
+      {
+        int i = ETC1.getWidth(this.headerBuffer);
+        int j = ETC1.getHeight(this.headerBuffer);
+        ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(ETC1.getEncodedDataSize(i, j)).order(ByteOrder.nativeOrder());
+        for (;;)
+        {
+          int k = paramInputStream.read(arrayOfByte);
+          if (k == -1) {
+            break;
+          }
+          localByteBuffer.put(arrayOfByte, 0, k);
+        }
+        localByteBuffer.position(0);
+        return new ETC1Util.ETC1Texture(i, j, localByteBuffer);
+      }
       throw new IOException("Not a PKM file.");
     }
-    int i = ETC1.getWidth(this.headerBuffer);
-    int j = ETC1.getHeight(this.headerBuffer);
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(ETC1.getEncodedDataSize(i, j)).order(ByteOrder.nativeOrder());
+    paramInputStream = new IOException("Unable to read PKM file header.");
     for (;;)
     {
-      int k = paramInputStream.read(arrayOfByte);
-      if (k == -1) {
-        break;
-      }
-      localByteBuffer.put(arrayOfByte, 0, k);
+      throw paramInputStream;
     }
-    localByteBuffer.position(0);
-    return new ETC1Util.ETC1Texture(i, j, localByteBuffer);
   }
   
   private boolean hasElements()
@@ -77,23 +83,23 @@ public class ZipPkmReader
   
   public void close()
   {
-    if (this.mZipStream != null) {}
-    try
+    ZipInputStream localZipInputStream = this.mZipStream;
+    if (localZipInputStream != null)
     {
-      this.mZipStream.closeEntry();
-      this.mZipStream.close();
-      if (this.headerBuffer != null)
+      try
       {
-        this.headerBuffer.clear();
-        this.headerBuffer = null;
+        localZipInputStream.closeEntry();
+        this.mZipStream.close();
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
+      }
+      ByteBuffer localByteBuffer = this.headerBuffer;
+      if (localByteBuffer != null)
+      {
+        localByteBuffer.clear();
+        this.headerBuffer = null;
       }
     }
   }
@@ -133,27 +139,31 @@ public class ZipPkmReader
   
   public boolean open()
   {
-    if ((this.path == null) || (this.path.contains("../"))) {
-      return false;
-    }
-    try
+    String str = this.path;
+    if (str != null)
     {
-      if (this.path.startsWith("assets://"))
-      {
-        this.mZipStream = new ZipInputStream(AEModule.getContext().getAssets().open(FileUtils.getRealPath(this.path)));
+      if (str.contains("../")) {
+        return false;
       }
-      else
+      try
       {
-        this.mZipStream = new ZipInputStream(new FileInputStream(this.path));
-        this.mZipStream.reset();
+        if (this.path.startsWith("assets://"))
+        {
+          this.mZipStream = new ZipInputStream(AEModule.getContext().getAssets().open(FileUtils.getRealPath(this.path)));
+        }
+        else
+        {
+          this.mZipStream = new ZipInputStream(new FileInputStream(this.path));
+          this.mZipStream.reset();
+        }
+        return true;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
       }
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      return false;
-    }
-    return true;
+    return false;
   }
   
   public void reset()
@@ -164,7 +174,7 @@ public class ZipPkmReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.ZipPkmReader
  * JD-Core Version:    0.7.0.1
  */

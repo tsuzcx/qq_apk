@@ -1,36 +1,37 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import uyg;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="unionId,nodeType")
 public class MsgTabNodeRecommendActivityReadEntity
-  extends awge
+  extends Entity
 {
   public static final int HAS_READ = 1;
-  public static final String TABLE_NAME = MsgTabNodeRecommendActivityReadEntity.class.getSimpleName();
+  public static final String TABLE_NAME = "MsgTabNodeRecommendActivityReadEntity";
   public int hasRead;
   public int nodeType;
   public String unionId;
   
   public MsgTabNodeRecommendActivityReadEntity() {}
   
-  public MsgTabNodeRecommendActivityReadEntity(uyg paramuyg, int paramInt)
+  public MsgTabNodeRecommendActivityReadEntity(MsgTabNodeInfo paramMsgTabNodeInfo, int paramInt)
   {
-    this.nodeType = paramuyg.jdField_a_of_type_Int;
-    this.unionId = paramuyg.jdField_a_of_type_JavaLangString;
+    this.nodeType = paramMsgTabNodeInfo.b;
+    this.unionId = paramMsgTabNodeInfo.d;
     this.hasRead = paramInt;
   }
   
-  public static String[] getArgs(uyg paramuyg)
+  public static String[] getArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    int i = paramuyg.jdField_a_of_type_Int;
-    if (paramuyg.jdField_a_of_type_JavaLangString == null) {}
-    for (paramuyg = "";; paramuyg = paramuyg.jdField_a_of_type_JavaLangString) {
-      return new String[] { String.valueOf(i), paramuyg };
+    int i = paramMsgTabNodeInfo.b;
+    if (paramMsgTabNodeInfo.d == null) {
+      paramMsgTabNodeInfo = "";
+    } else {
+      paramMsgTabNodeInfo = paramMsgTabNodeInfo.d;
     }
+    return new String[] { String.valueOf(i), paramMsgTabNodeInfo };
   }
   
   public static String getSelection()
@@ -40,12 +41,20 @@ public class MsgTabNodeRecommendActivityReadEntity
   
   public String toString()
   {
-    return "MsgTabNodeEntity{nodeType=" + this.nodeType + ", unionId='" + this.unionId + '\'' + ", hasRead='" + this.hasRead;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabNodeEntity{nodeType=");
+    localStringBuilder.append(this.nodeType);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasRead='");
+    localStringBuilder.append(this.hasRead);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeRecommendActivityReadEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ public final class AdHexUtil
   
   public static String bytes2HexString(byte[] paramArrayOfByte)
   {
-    int j = 0;
-    if (paramArrayOfByte == null) {}
-    int k;
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      k = paramArrayOfByte.length;
-    } while (k <= 0);
+    }
+    int k = paramArrayOfByte.length;
+    if (k <= 0) {
+      return null;
+    }
     try
     {
       char[] arrayOfChar = new char[k << 1];
       int i = 0;
+      int j = 0;
       while (i < k)
       {
         int m = j + 1;
@@ -43,7 +43,7 @@ public final class AdHexUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdHexUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -8,55 +8,48 @@ import junit.framework.Assert;
 
 public abstract class a<_Callback>
 {
-  protected f AOi;
-  private LinkedList<b> a = new LinkedList();
-  protected d bYe;
+  private LinkedList<b> mQueue = new LinkedList();
+  protected d mScheduler;
+  protected f mSchedulerInvoker;
   
   public a()
   {
-    this(g.dQu());
+    this(g.current());
   }
   
   public a(d paramd)
   {
     Assert.assertNotNull(paramd);
-    this.bYe = paramd;
-    this.AOi = new f(paramd, null);
+    this.mScheduler = paramd;
+    this.mSchedulerInvoker = new f(paramd, null);
   }
   
-  protected final b a(b paramb)
+  public a(String paramString)
   {
-    try
+    this(g.bDR(paramString));
+  }
+  
+  protected b add(b paramb)
+  {
+    if (paramb == null) {
+      paramb = null;
+    }
+    for (;;)
     {
-      this.a.add(paramb);
       return paramb;
-    }
-    finally
-    {
-      paramb = finally;
-      throw paramb;
-    }
-  }
-  
-  protected final void b(b paramb)
-  {
-    try
-    {
-      this.a.remove(paramb);
-      return;
-    }
-    finally
-    {
-      paramb = finally;
-      throw paramb;
+      try
+      {
+        this.mQueue.add(paramb);
+      }
+      finally {}
     }
   }
   
-  public final boolean contains(_Callback param_Callback)
+  public boolean contains(_Callback param_Callback)
   {
     try
     {
-      boolean bool = this.a.contains(new b(param_Callback, this));
+      boolean bool = this.mQueue.contains(new b(param_Callback, this));
       return bool;
     }
     finally
@@ -66,11 +59,11 @@ public abstract class a<_Callback>
     }
   }
   
-  public final LinkedList<b> dQj()
+  public LinkedList<b> getQueue()
   {
     try
     {
-      LinkedList localLinkedList = dQk();
+      LinkedList localLinkedList = getQueueImpl();
       return localLinkedList;
     }
     finally
@@ -80,16 +73,30 @@ public abstract class a<_Callback>
     }
   }
   
-  protected final LinkedList<b> dQk()
+  protected LinkedList<b> getQueueImpl()
   {
-    return new LinkedList(this.a);
+    return new LinkedList(this.mQueue);
   }
   
-  public final int size()
+  protected void remove(b paramb)
+  {
+    if (paramb == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        this.mQueue.remove(paramb);
+      }
+      finally {}
+    }
+  }
+  
+  public int size()
   {
     try
     {
-      int i = this.a.size();
+      int i = this.mQueue.size();
       return i;
     }
     finally
@@ -101,7 +108,7 @@ public abstract class a<_Callback>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/boss_unipay_linear"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/boss_unipay_id_saveInfoLayout" style="@style/boss_unipay_bar.info">
+        <TextView android:textSize="17.0sp" android:id="@id/boss_unipay_id_buyInfo" android:layout_width="0.0dip" android:text="info" android:layout_weight="100.0" style="@style/boss_unipay_tx" />
+        <TextView android:textSize="24.0sp" android:id="@id/boss_unipay_id_amount" android:text="00.00" style="@style/boss_unipay_tx.price" />
+        <TextView android:textSize="24.0sp" android:id="@id/boss_unipay_id_unit" android:text="元" style="@style/boss_unipay_tx.price" />
+    </LinearLayout>
+    <View style="@style/boss_unipay_line" />
+</LinearLayout>

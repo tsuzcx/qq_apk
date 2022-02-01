@@ -1,55 +1,38 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwt;
-import arrr;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
-public class FileManagerRSWorker$4
+class FileManagerRSWorker$4
   implements Runnable
 {
-  public FileManagerRSWorker$4(aqwt paramaqwt) {}
+  FileManagerRSWorker$4(FileManagerRSWorker paramFileManagerRSWorker, String paramString) {}
   
   public void run()
   {
-    if (this.this$0.b == 0)
-    {
-      if (this.this$0.f != null)
-      {
-        this.this$0.a(this.this$0.f, 0L);
-        return;
-      }
-      this.this$0.b();
-      return;
-    }
-    if (this.this$0.f.equalsIgnoreCase(""))
-    {
-      this.this$0.f();
-      return;
-    }
     try
     {
-      if (this.this$0.jdField_a_of_type_JavaIoOutputStream != null) {
-        this.this$0.jdField_a_of_type_JavaIoOutputStream.flush();
+      if (this.this$0.u == null) {
+        this.this$0.u = new FileOutputStream(this.this$0.e, true);
       }
-      this.this$0.jdField_a_of_type_Long = arrr.a(this.this$0.d);
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.this$0.c + "]retry request Httpmsg,rd[" + String.valueOf(this.this$0.jdField_a_of_type_Long) + "]");
-      aqwt.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.h);
+      this.this$0.a.getFileManagerDataCenter().a(this.this$0.r, 2002);
+      this.this$0.B.status = 0;
+      this.this$0.a.getFileManagerDataCenter().c(this.this$0.B);
+      this.this$0.B.status = 2;
+      this.this$0.t = this.a;
+      FileManagerRSWorker.a(this.this$0, this.this$0.o, this.this$0.t);
       return;
     }
-    catch (IOException localIOException)
+    catch (FileNotFoundException localFileNotFoundException)
     {
-      for (;;)
-      {
-        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
-      }
+      localFileNotFoundException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.4
  * JD-Core Version:    0.7.0.1
  */

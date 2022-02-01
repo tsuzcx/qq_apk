@@ -1,205 +1,272 @@
 package com.tencent.mm.platformtools;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.av;
-import com.tencent.mm.model.r;
-import com.tencent.mm.modelsimple.s.a;
-import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.BioHelperUI;
-import com.tencent.mm.protocal.protobuf.aek;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class z
 {
-  public static void a(Context paramContext, s.a parama, int paramInt)
+  public static double lat;
+  public static double lng;
+  public static boolean pBA;
+  public static boolean pBB;
+  public static boolean pBC;
+  public static boolean pBD;
+  public static boolean pBE;
+  public static boolean pBF;
+  public static boolean pBG;
+  public static boolean pBH;
+  public static boolean pBI;
+  public static boolean pBJ;
+  public static boolean pBK;
+  public static String pBL;
+  public static boolean pBM;
+  public static boolean pBN;
+  public static boolean pBO;
+  public static boolean pBP;
+  public static int pBQ;
+  public static boolean pBR;
+  public static boolean pBS;
+  public static boolean pBT;
+  public static String pBU;
+  public static String pBV;
+  public static boolean pBW;
+  public static boolean pBX;
+  public static boolean pBY;
+  public static boolean pBZ;
+  public static boolean pBz;
+  public static String pCA;
+  public static boolean pCB;
+  public static boolean pCC;
+  public static boolean pCD;
+  public static int pCE;
+  public static boolean pCF;
+  public static boolean pCG;
+  public static boolean pCH;
+  public static boolean pCI;
+  public static boolean pCJ;
+  public static String pCK;
+  public static int pCL;
+  public static boolean pCM;
+  public static boolean pCN;
+  public static boolean pCO;
+  public static boolean pCP;
+  public static String pCQ;
+  public static int pCR;
+  public static boolean pCS;
+  public static boolean pCT;
+  public static int pCU;
+  public static boolean pCV;
+  public static String pCW;
+  public static float pCX;
+  public static float pCY;
+  public static boolean pCZ;
+  public static boolean pCa;
+  public static boolean pCb;
+  public static boolean pCc;
+  public static boolean pCd;
+  public static int pCe;
+  public static int pCf;
+  public static boolean pCg;
+  public static String pCh;
+  public static String pCi;
+  public static boolean pCj;
+  public static boolean pCk;
+  public static int pCl;
+  public static int pCm;
+  public static int pCn;
+  public static String pCo;
+  public static String pCp;
+  public static String pCq;
+  public static String pCr;
+  public static boolean pCs;
+  public static boolean pCt;
+  public static boolean pCu;
+  public static boolean pCv;
+  public static String pCw;
+  public static String pCx;
+  public static String pCy;
+  public static String pCz;
+  public static int pDa;
+  public static int pDb;
+  public static boolean pDc;
+  public static String pDd;
+  public static String pDe;
+  public static boolean pDf;
+  public static boolean pDg;
+  public static String pDh;
+  public static String pDi;
+  public static boolean pDj;
+  public static boolean pDk;
+  public static boolean pDl;
+  public static boolean pDm;
+  public static boolean pDn;
+  public static boolean pDo;
+  public static boolean pDp;
+  public static boolean pDq;
+  public static boolean pDr;
+  public static boolean pDs;
+  public static boolean pDt;
+  public static int pDu;
+  public static boolean pDv;
+  private static HashMap<Integer, ConcurrentLinkedQueue<Integer>> pDw;
+  public static boolean pDx;
+  public static boolean pDy;
+  public static boolean pDz;
+  
+  static
   {
-    AppMethodBeat.i(124592);
-    paramContext = new Intent(paramContext, BioHelperUI.class);
-    paramContext.putExtra("k_type", parama.type);
-    paramContext.putExtra("KVoiceHelpCode", paramInt);
-    paramContext.putExtra("Kvertify_key", parama.crs);
-    paramContext.putExtra("KVoiceHelpUrl", parama.fPF);
-    paramContext.putExtra("KVoiceHelpWording", parama.cyA);
-    paramContext.putExtra("Kusername", parama.username);
-    if (parama.fPG != null) {
-      paramContext.getExtras().putAll(parama.fPG);
-    }
-    AppMethodBeat.o(124592);
+    AppMethodBeat.i(132987);
+    pBz = false;
+    pBA = false;
+    pBB = false;
+    pBC = false;
+    pBD = false;
+    pBE = false;
+    pBF = false;
+    pBG = false;
+    pBH = false;
+    pBI = false;
+    pBJ = false;
+    pBK = false;
+    pBL = "";
+    pBM = false;
+    pBN = false;
+    pBO = false;
+    pBP = false;
+    pBQ = 0;
+    pBR = false;
+    pBS = false;
+    pBT = false;
+    pBU = "";
+    pBV = "";
+    pBW = false;
+    pBX = false;
+    pBY = false;
+    pBZ = false;
+    pCa = false;
+    pCb = false;
+    pCc = false;
+    pCd = false;
+    pCe = 0;
+    pCf = 0;
+    pCg = false;
+    pCh = null;
+    pCi = null;
+    pCj = false;
+    pCk = false;
+    pCl = 0;
+    pCm = 0;
+    pCn = 0;
+    pCo = "";
+    pCp = "";
+    pCq = null;
+    pCr = null;
+    pCs = false;
+    pCt = false;
+    pCu = false;
+    pCv = false;
+    lat = 0.0D;
+    lng = 0.0D;
+    pCw = "";
+    pCx = "";
+    pCy = "";
+    pCz = "";
+    pCA = "";
+    pCB = false;
+    pCC = false;
+    pCD = false;
+    pCE = 0;
+    pCF = false;
+    pCG = false;
+    pCH = false;
+    pCI = false;
+    pCJ = false;
+    pCK = "";
+    pCL = 0;
+    pCM = false;
+    pCN = true;
+    pCO = false;
+    pCP = false;
+    pCQ = "";
+    pCR = 0;
+    pCS = false;
+    pCT = false;
+    pCU = -1;
+    pCV = false;
+    pCW = "";
+    pCX = 0.4F;
+    pCY = 0.7F;
+    pCZ = false;
+    pDa = 0;
+    pDb = 0;
+    pDc = false;
+    pDd = "";
+    pDe = "";
+    pDf = false;
+    pDg = false;
+    pDh = "";
+    pDi = "";
+    pDj = false;
+    pDk = false;
+    pDl = false;
+    pDm = false;
+    pDn = false;
+    pDo = false;
+    pDp = false;
+    pDq = false;
+    pDr = false;
+    pDs = false;
+    pDt = false;
+    pDu = 0;
+    pDv = false;
+    pDw = new HashMap();
+    pDx = false;
+    pDy = false;
+    pDz = false;
+    AppMethodBeat.o(132987);
   }
   
-  public static void cA(Context paramContext)
+  public static boolean bTO()
   {
-    AppMethodBeat.i(124590);
-    String str1 = paramContext.getString(2131296531);
-    String str2 = paramContext.getString(2131296530);
-    com.tencent.mm.ui.base.h.d(paramContext, str1, "", paramContext.getString(2131298501), paramContext.getString(2131298499), new z.3(str2, paramContext), null);
-    AppMethodBeat.o(124590);
-  }
-  
-  public static void f(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(124593);
-    paramString = com.tencent.mm.h.a.kO(paramString);
-    if (paramString != null)
+    AppMethodBeat.i(234038);
+    if (!pCZ)
     {
-      if (paramString.showType == 8)
+      i locali = i.agtt;
+      if (i.a(b.a.agsC, 0) != 1) {}
+    }
+    else
+    {
+      AppMethodBeat.o(234038);
+      return true;
+    }
+    AppMethodBeat.o(234038);
+    return false;
+  }
+  
+  public static void eW(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(132986);
+    synchronized (pDw)
+    {
+      ConcurrentLinkedQueue localConcurrentLinkedQueue2 = (ConcurrentLinkedQueue)pDw.get(Integer.valueOf(paramInt1));
+      ConcurrentLinkedQueue localConcurrentLinkedQueue1 = localConcurrentLinkedQueue2;
+      if (localConcurrentLinkedQueue2 == null)
       {
-        com.tencent.mm.plugin.account.a.b.a.b(paramContext, paramString.url, paramInt, false);
-        AppMethodBeat.o(124593);
-        return;
+        localConcurrentLinkedQueue1 = new ConcurrentLinkedQueue();
+        pDw.put(Integer.valueOf(paramInt1), localConcurrentLinkedQueue1);
       }
-      String str1 = paramContext.getString(2131297018);
-      String str2 = paramContext.getString(2131296888);
-      z.5 local5 = new z.5(paramContext, paramString, paramInt);
-      if ((paramString.showType == 1) || (paramString.showType == 4))
-      {
-        if (bo.isNullOrNil(paramString.url))
-        {
-          com.tencent.mm.ui.base.h.b(paramContext, paramString.desc, paramString.Title, true);
-          AppMethodBeat.o(124593);
-          return;
-        }
-        com.tencent.mm.ui.base.h.d(paramContext, paramString.desc, paramString.Title, str1, str2, local5, null);
-      }
-      AppMethodBeat.o(124593);
+      localConcurrentLinkedQueue1.add(Integer.valueOf(paramInt2));
+      AppMethodBeat.o(132986);
       return;
     }
-    AppMethodBeat.o(124593);
-  }
-  
-  public static void o(Context paramContext, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(124591);
-    paramString1 = com.tencent.mm.h.a.kO(paramString1);
-    if (paramString1 != null) {
-      paramString1.a(paramContext, new z.4(paramString2, paramContext), null);
-    }
-    AppMethodBeat.o(124591);
-  }
-  
-  public static void showAddrBookUploadConfirm(final Activity paramActivity, final Runnable paramRunnable, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(124587);
-    if ((l.aqq() != l.a.gxB) && (l.aqq() != l.a.gxC)) {
-      ab.e("MicroMsg.PostLoginUtil", "not successfully binded, skip addrbook confirm");
-    }
-    for (;;)
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      AppMethodBeat.o(124587);
-      return;
-      if (bo.e((Boolean)g.RL().Ru().get(12322, null)))
-      {
-        ab.d("MicroMsg.PostLoginUtil", "addrbook upload confirmed");
-      }
-      else if ((!paramBoolean) && (bo.e((Boolean)g.RL().Ru().get(12323, null))))
-      {
-        ab.d("MicroMsg.PostLoginUtil", "addrbook upload login confirmed showed");
-      }
-      else
-      {
-        l.dx(false);
-        String str = bo.nullAsNil(bo.hh(paramActivity));
-        if ((str.length() <= 0) || (!str.equals(g.RL().Ru().get(6, null)))) {
-          break;
-        }
-        l.dx(true);
-        ab.i("MicroMsg.PostLoginUtil", "same none-nil phone number, leave it");
-      }
-    }
-    com.tencent.mm.ui.base.h.a(paramActivity, 2131297553, 2131297087, 2131297115, 2131297014, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(124582);
-        ab.i("MicroMsg.PostLoginUtil", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(this.fwD) });
-        com.tencent.mm.plugin.report.service.h.qsU.e(11438, new Object[] { Integer.valueOf(this.fwD) });
-        l.dx(true);
-        z.syncUploadMContactStatus(true, false);
-        a.aof();
-        if (paramRunnable != null) {
-          paramRunnable.run();
-        }
-        paramActivity.getSharedPreferences(ah.dsP(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
-        AppMethodBeat.o(124582);
-      }
-    }, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(124583);
-        l.dx(false);
-        z.syncUploadMContactStatus(false, false);
-        if (this.gjS != null) {
-          this.gjS.run();
-        }
-        paramActivity.getSharedPreferences(ah.dsP(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
-        AppMethodBeat.o(124583);
-      }
-    });
-    g.RL().Ru().set(12323, Boolean.TRUE);
-    AppMethodBeat.o(124587);
-  }
-  
-  public static void syncUploadMContactStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(124588);
-    int i = r.Zr();
-    if (paramBoolean1)
-    {
-      i &= 0xFFFDFFFF;
-      ab.d("MicroMsg.PostLoginUtil", "Reg By mobile update = ".concat(String.valueOf(i)));
-      g.RL().Ru().set(7, Integer.valueOf(i));
-      if (paramBoolean1) {
-        break label132;
-      }
-    }
-    label132:
-    for (i = 1;; i = 2)
-    {
-      aek localaek = new aek();
-      localaek.wXn = 17;
-      localaek.pKC = i;
-      ((j)g.E(j.class)).Yz().c(new j.a(23, localaek));
-      if (paramBoolean2) {
-        com.tencent.mm.plugin.account.a.a.gmP.BO();
-      }
-      AppMethodBeat.o(124588);
-      return;
-      i |= 0x20000;
-      break;
-    }
-  }
-  
-  public static void wz(String paramString)
-  {
-    AppMethodBeat.i(124589);
-    av.flM.ao("login_user_name", paramString);
-    AppMethodBeat.o(124589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import abti;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.imcore.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.message.RecordForTest;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForLongTextMsg
   extends MessageForText
 {
   public boolean loading;
-  public String mFileName;
-  public long mFileSize;
-  public String mResid;
-  public AbsStructMsg structingMsg;
+  public String mFileName = null;
+  public long mFileSize = 0L;
+  public String mResid = null;
+  @RecordForTest
+  public StructMsgForGeneralShare structingMsg;
   
   protected void doParse()
   {
@@ -24,7 +26,7 @@ public class MessageForLongTextMsg
   
   public boolean isSupportFTS()
   {
-    return abti.x(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -32,12 +34,12 @@ public class MessageForLongTextMsg
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
   }

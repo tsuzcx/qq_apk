@@ -8,14 +8,14 @@ import android.view.ViewGroup.LayoutParams;
 class DragSortListView$RemoveAnimator
   extends DragSortListView.SmoothAnimator
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = -1;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
+  private float b;
+  private float c;
+  private float d;
+  private int e = -1;
+  private int f = -1;
+  private int g;
+  private int h;
+  private int i;
   
   public DragSortListView$RemoveAnimator(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
   {
@@ -24,98 +24,112 @@ class DragSortListView$RemoveAnimator
   
   public void a()
   {
-    int i = -1;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = this.this$0.jdField_c_of_type_Int;
-    this.d = this.this$0.d;
-    this.e = this.this$0.e;
-    this.this$0.g = 1;
-    this.jdField_a_of_type_Float = this.this$0.jdField_a_of_type_AndroidGraphicsPoint.x;
-    if (this.this$0.jdField_a_of_type_Boolean)
+    int j = -1;
+    this.e = -1;
+    this.f = -1;
+    this.g = this.this$0.d;
+    this.h = this.this$0.e;
+    this.i = this.this$0.f;
+    DragSortListView localDragSortListView = this.this$0;
+    localDragSortListView.h = 1;
+    this.b = localDragSortListView.a.x;
+    if (this.this$0.t)
     {
-      float f = this.this$0.getWidth() * 2.0F;
-      if (this.this$0.f == 0.0F)
+      float f1 = this.this$0.getWidth() * 2.0F;
+      if (this.this$0.u == 0.0F)
       {
-        DragSortListView localDragSortListView = this.this$0;
-        if (this.jdField_a_of_type_Float < 0.0F) {
-          localDragSortListView.f = (i * f);
+        localDragSortListView = this.this$0;
+        if (this.b >= 0.0F) {
+          j = 1;
         }
-      }
-      do
-      {
+        localDragSortListView.u = (j * f1);
         return;
-        i = 1;
-        break;
-        f *= 2.0F;
-        if ((this.this$0.f < 0.0F) && (this.this$0.f > -f))
+      }
+      f1 *= 2.0F;
+      if (this.this$0.u < 0.0F)
+      {
+        float f2 = this.this$0.u;
+        float f3 = -f1;
+        if (f2 > f3)
         {
-          this.this$0.f = (-f);
+          this.this$0.u = f3;
           return;
         }
-      } while ((this.this$0.f <= 0.0F) || (this.this$0.f >= f));
-      this.this$0.f = f;
-      return;
+      }
+      if ((this.this$0.u > 0.0F) && (this.this$0.u < f1)) {
+        this.this$0.u = f1;
+      }
     }
-    this.this$0.b();
+    else
+    {
+      this.this$0.c();
+    }
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
     paramFloat1 = 1.0F - paramFloat2;
-    int j = this.this$0.getFirstVisiblePosition();
-    View localView = this.this$0.getChildAt(this.jdField_c_of_type_Int - j);
-    if (this.this$0.jdField_a_of_type_Boolean)
+    int k = this.this$0.getFirstVisiblePosition();
+    View localView = this.this$0.getChildAt(this.g - k);
+    Object localObject;
+    if (this.this$0.t)
     {
-      paramFloat2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
-      if (paramFloat2 != 0.0F) {}
-    }
-    do
-    {
-      do
-      {
+      float f1 = (float)(SystemClock.uptimeMillis() - this.a) / 1000.0F;
+      if (f1 == 0.0F) {
         return;
-        float f1 = this.this$0.f;
-        int k = this.this$0.getWidth();
-        localObject = this.this$0;
-        float f2 = ((DragSortListView)localObject).f;
-        if (this.this$0.f > 0.0F) {}
-        for (i = 1;; i = -1)
-        {
-          ((DragSortListView)localObject).f = (i * paramFloat2 * k + f2);
-          this.jdField_a_of_type_Float += f1 * paramFloat2;
-          this.this$0.jdField_a_of_type_AndroidGraphicsPoint.x = ((int)this.jdField_a_of_type_Float);
-          if ((this.jdField_a_of_type_Float >= k) || (this.jdField_a_of_type_Float <= -k)) {
-            break;
-          }
-          this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-          this.this$0.a(true);
-          return;
-        }
-        if (localView != null)
-        {
-          if (this.jdField_a_of_type_Int == -1)
-          {
-            this.jdField_a_of_type_Int = DragSortListView.a(this.this$0, this.jdField_c_of_type_Int, localView, false);
-            this.jdField_b_of_type_Float = (localView.getHeight() - this.jdField_a_of_type_Int);
-          }
-          i = Math.max((int)(this.jdField_b_of_type_Float * paramFloat1), 1);
-          localObject = localView.getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).height = (i + this.jdField_a_of_type_Int);
-          localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-      } while (this.d == this.jdField_c_of_type_Int);
-      localView = this.this$0.getChildAt(this.d - j);
-    } while (localView == null);
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      this.jdField_b_of_type_Int = DragSortListView.a(this.this$0, this.d, localView, false);
-      this.jdField_c_of_type_Float = (localView.getHeight() - this.jdField_b_of_type_Int);
+      }
+      float f2 = this.this$0.u;
+      int m = this.this$0.getWidth();
+      localObject = this.this$0;
+      float f3 = ((DragSortListView)localObject).u;
+      if (this.this$0.u > 0.0F) {
+        j = 1;
+      } else {
+        j = -1;
+      }
+      float f4 = j;
+      paramFloat2 = m;
+      ((DragSortListView)localObject).u = (f3 + f4 * f1 * paramFloat2);
+      this.b += f2 * f1;
+      localObject = this.this$0.a;
+      f1 = this.b;
+      ((Point)localObject).x = ((int)f1);
+      if ((f1 < paramFloat2) && (f1 > -m))
+      {
+        this.a = SystemClock.uptimeMillis();
+        this.this$0.b(true);
+        return;
+      }
     }
-    int i = Math.max((int)(this.jdField_c_of_type_Float * paramFloat1), 1);
-    Object localObject = localView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = (i + this.jdField_b_of_type_Int);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (localView != null)
+    {
+      if (this.e == -1)
+      {
+        this.e = DragSortListView.b(this.this$0, this.g, localView, false);
+        this.c = (localView.getHeight() - this.e);
+      }
+      j = Math.max((int)(this.c * paramFloat1), 1);
+      localObject = localView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = (this.e + j);
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    int j = this.h;
+    if (j != this.g)
+    {
+      localView = this.this$0.getChildAt(j - k);
+      if (localView != null)
+      {
+        if (this.f == -1)
+        {
+          this.f = DragSortListView.b(this.this$0, this.h, localView, false);
+          this.d = (localView.getHeight() - this.f);
+        }
+        j = Math.max((int)(paramFloat1 * this.d), 1);
+        localObject = localView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = (this.f + j);
+        localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+    }
   }
   
   public void b()

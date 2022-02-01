@@ -19,16 +19,6 @@ public class BlurEffectForMultiConnect
     super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ClearGLSL()
-  {
-    this.mBlurFilter.clearGLSLSelf();
-    this.mBlendFilter.clearGLSLSelf();
-    this.mBlurFrame1.clear();
-    this.mBlurFrame2.clear();
-    this.mBlendFrame.clear();
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.mBlurFilter.apply();
@@ -39,16 +29,29 @@ public class BlurEffectForMultiConnect
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
     super.beforeRender(paramInt1, paramInt2, paramInt3);
-    if ((paramInt2 <= 0) || (paramInt3 <= 0)) {
-      return;
+    if (paramInt2 > 0)
+    {
+      if (paramInt3 <= 0) {
+        return;
+      }
+      int i = paramInt3 * 400 / paramInt2;
+      this.mBlurFilter.updateTextureSize(1.0F / 400, 0.0F);
+      this.mBlurFilter.RenderProcess(paramInt1, 400, i, -1, 0.0D, this.mBlurFrame1);
+      this.mBlurFilter.updateTextureSize(0.0F, 1.0F / i);
+      this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 400, i, -1, 0.0D, this.mBlurFrame2);
+      this.mBlendFilter.updateTexture(paramInt1);
+      this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
     }
-    int i = paramInt3 * 400 / paramInt2;
-    this.mBlurFilter.updateTextureSize(1.0F / 400, 0.0F);
-    this.mBlurFilter.RenderProcess(paramInt1, 400, i, -1, 0.0D, this.mBlurFrame1);
-    this.mBlurFilter.updateTextureSize(0.0F, 1.0F / i);
-    this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 400, i, -1, 0.0D, this.mBlurFrame2);
-    this.mBlendFilter.updateTexture(paramInt1);
-    this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
+  }
+  
+  public void clearGLSL()
+  {
+    this.mBlurFilter.clearGLSLSelf();
+    this.mBlendFilter.clearGLSLSelf();
+    this.mBlurFrame1.clear();
+    this.mBlurFrame2.clear();
+    this.mBlendFrame.clear();
+    super.clearGLSL();
   }
   
   public void clearGLSLSelf()
@@ -76,7 +79,7 @@ public class BlurEffectForMultiConnect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BlurEffectForMultiConnect
  * JD-Core Version:    0.7.0.1
  */

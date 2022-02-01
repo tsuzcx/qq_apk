@@ -1,11 +1,11 @@
 package com.tencent.mm.wallet_core.ui.formview;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.text.SpannableString;
@@ -28,13 +28,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.k;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.lang.reflect.Field;
 import junit.framework.Assert;
@@ -43,51 +47,53 @@ public final class WalletFormView
   extends LinearLayout
   implements View.OnFocusChangeListener
 {
-  private WalletFormView.c AZd;
-  public TenpaySecureEditText AZe;
-  private LinearLayout AZf;
-  private WalletFormView.a AZg;
-  private com.tencent.mm.wallet_core.ui.formview.a.a AZh;
-  private com.tencent.mm.wallet_core.ui.formview.a.b AZi;
-  private int AZj;
-  private int AZk;
-  private int AZl;
-  private int AZm;
+  private boolean NzA;
+  private boolean NzB;
+  private boolean NzC;
+  private int NzD;
+  private int NzE;
+  private int NzF;
+  private TextView Nzb;
+  private WalletIconImageView Nzd;
+  private TextView Nze;
+  private View.OnFocusChangeListener Nzg;
+  private View.OnClickListener Nzh;
+  private int Nzk;
+  private String Nzl;
+  private int Nzm;
+  private String Nzn;
+  private int Nzo;
+  private int Nzp;
+  private int Nzq;
+  private String Nzr;
+  private int Nzs;
+  private String Nzt;
+  private int Nzu;
+  private int Nzv;
+  private String Nzw;
+  private int Nzx;
+  private int Nzy;
+  private int Nzz;
+  private int adZj;
+  private c agVI;
+  public TenpaySecureEditText agVJ;
+  private LinearLayout agVK;
+  private a agVL;
+  private com.tencent.mm.wallet_core.ui.formview.a.a agVM;
+  private com.tencent.mm.wallet_core.ui.formview.a.b agVN;
+  private int agVO;
+  private int agVP;
+  private int agVQ;
+  private int agVR;
+  private int agVS;
+  private boolean agVT;
   @Deprecated
-  private int AZn;
-  private int AZo;
-  private int AZp;
-  private int AZq;
-  private TextView iJG;
-  private String pXA;
-  private int pXB;
-  private int pXC;
-  private String pXD;
-  private int pXE;
-  private int pXF;
-  private int pXG;
-  private boolean pXH;
-  private boolean pXI;
-  private boolean pXJ;
-  private int pXK;
-  private int pXL;
-  private int pXM;
-  private TextView pXi;
-  private WalletIconImageView pXk;
-  private TextView pXl;
-  private View.OnFocusChangeListener pXn;
-  private View.OnClickListener pXo;
-  private int pXr;
-  private String pXs;
-  private int pXt;
-  private String pXu;
-  private int pXv;
-  private int pXw;
-  private int pXx;
-  private String pXy;
-  private int pXz;
-  private TextView qnH;
-  private int zrB;
+  private int agVU;
+  private int agVV;
+  private int agVW;
+  private int agVX;
+  private TextView pJg;
+  private TextView sUt;
   
   public WalletFormView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -97,193 +103,247 @@ public final class WalletFormView
   public WalletFormView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(49412);
-    this.iJG = null;
-    this.pXi = null;
-    this.AZe = null;
-    this.pXk = null;
-    this.pXl = null;
-    this.AZg = null;
-    this.pXn = null;
-    this.pXo = null;
-    this.AZh = null;
-    this.AZi = null;
-    this.pXr = -1;
-    this.AZj = this.pXr;
-    this.AZk = 100;
-    this.pXs = "";
-    this.pXt = 0;
-    this.pXu = "";
-    this.pXv = 8;
-    this.pXw = -1;
-    this.pXx = 4;
-    this.pXy = "";
-    this.pXz = 8;
-    this.pXA = "";
-    this.AZl = -1;
-    this.pXB = 19;
-    this.pXC = 2131690322;
-    this.pXD = "";
-    this.AZm = 0;
-    this.pXE = 2147483647;
-    this.pXF = 1;
-    this.pXG = 2130839676;
-    this.pXH = true;
-    this.pXI = false;
-    this.pXJ = true;
-    this.pXK = 1;
-    this.pXL = 5;
-    this.pXM = 2131690217;
-    this.AZn = 0;
-    this.AZo = 0;
-    this.AZp = 0;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WalletFormAttrs, paramInt, 0);
-    this.pXr = paramAttributeSet.getResourceId(4, this.pXr);
-    paramInt = paramAttributeSet.getResourceId(6, 0);
+    AppMethodBeat.i(73147);
+    this.sUt = null;
+    this.Nzb = null;
+    this.agVJ = null;
+    this.Nzd = null;
+    this.Nze = null;
+    this.agVL = null;
+    this.Nzg = null;
+    this.Nzh = null;
+    this.agVM = null;
+    this.agVN = null;
+    this.Nzk = -1;
+    this.agVO = this.Nzk;
+    this.agVP = 100;
+    this.Nzl = "";
+    this.Nzm = 0;
+    this.Nzn = "";
+    this.Nzo = 8;
+    this.Nzp = -1;
+    this.agVQ = -1;
+    this.Nzq = 4;
+    this.Nzr = "";
+    this.Nzs = 8;
+    this.Nzt = "";
+    this.agVR = -1;
+    this.Nzu = 19;
+    this.Nzv = a.c.normal_text_color;
+    this.Nzw = "";
+    this.agVS = 0;
+    this.Nzx = 2147483647;
+    this.Nzy = 1;
+    this.Nzz = a.e.mm_trans;
+    this.NzA = true;
+    this.NzB = false;
+    this.NzC = true;
+    this.agVT = false;
+    this.NzD = 1;
+    this.NzE = 5;
+    this.NzF = a.c.list_devider_color;
+    this.agVU = 0;
+    this.agVV = 0;
+    this.agVW = 0;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.WalletFormAttrs, paramInt, 0);
+    this.Nzk = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_layoutRes, this.Nzk);
+    paramInt = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_titleText, 0);
     if (paramInt != 0) {
-      this.pXs = paramContext.getString(paramInt);
+      this.Nzl = paramContext.getString(paramInt);
     }
-    this.zrB = paramAttributeSet.getDimensionPixelSize(7, -1);
-    this.pXw = paramAttributeSet.getResourceId(8, this.pXw);
-    paramInt = paramAttributeSet.getResourceId(9, 0);
+    this.adZj = paramAttributeSet.getDimensionPixelSize(a.k.WalletFormAttrs_titleWidth, -1);
+    this.Nzp = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_infoIvRes, this.Nzp);
+    this.agVQ = paramAttributeSet.getColor(a.k.WalletFormAttrs_infoIvColorRes, this.agVQ);
+    paramInt = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_tipsText, 0);
     if (paramInt != 0) {
-      this.pXy = paramContext.getString(paramInt);
+      this.Nzr = paramContext.getString(paramInt);
     }
-    this.pXx = paramAttributeSet.getInteger(11, this.pXx);
-    this.pXt = paramAttributeSet.getInteger(12, this.pXt);
-    this.pXz = paramAttributeSet.getInteger(13, this.pXz);
-    this.pXv = paramAttributeSet.getInteger(14, this.pXv);
-    paramInt = paramAttributeSet.getResourceId(15, 0);
+    this.Nzq = paramAttributeSet.getInteger(a.k.WalletFormAttrs_infoIvVisibility, this.Nzq);
+    this.Nzm = paramAttributeSet.getInteger(a.k.WalletFormAttrs_titleTvVisibility, this.Nzm);
+    this.Nzs = paramAttributeSet.getInteger(a.k.WalletFormAttrs_tipsTvVisibility, this.Nzs);
+    this.Nzo = paramAttributeSet.getInteger(a.k.WalletFormAttrs_prefilledTvVisibility, this.Nzo);
+    paramInt = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_prefilledText, 0);
     if (paramInt != 0) {
-      this.pXu = paramContext.getString(paramInt);
+      this.Nzn = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(16, 0);
+    paramInt = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_contentHint, 0);
     if (paramInt != 0) {
-      this.pXA = paramContext.getString(paramInt);
+      this.Nzt = paramContext.getString(paramInt);
     }
-    this.AZl = paramAttributeSet.getDimensionPixelSize(17, -1);
-    this.pXB = paramAttributeSet.getInteger(18, this.pXB);
-    this.pXC = paramAttributeSet.getColor(19, this.pXC);
-    paramInt = paramAttributeSet.getResourceId(20, 0);
+    this.agVR = paramAttributeSet.getDimensionPixelSize(a.k.WalletFormAttrs_contentHintSize, -1);
+    this.Nzu = paramAttributeSet.getInteger(a.k.WalletFormAttrs_contentGravity, this.Nzu);
+    this.Nzv = paramAttributeSet.getColor(a.k.WalletFormAttrs_contentTextColor, this.Nzv);
+    paramInt = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_contentText, 0);
     if (paramInt != 0) {
-      this.pXD = paramContext.getString(paramInt);
+      this.Nzw = paramContext.getString(paramInt);
     }
-    this.AZm = paramAttributeSet.getInt(21, this.AZm);
-    this.pXE = paramAttributeSet.getInteger(22, this.pXE);
-    this.pXF = paramAttributeSet.getInteger(23, this.pXF);
-    this.pXG = paramAttributeSet.getResourceId(24, this.pXG);
-    this.pXH = paramAttributeSet.getBoolean(25, this.pXH);
-    this.pXI = paramAttributeSet.getBoolean(27, this.pXI);
-    this.pXJ = paramAttributeSet.getBoolean(25, this.pXJ);
-    this.pXK = paramAttributeSet.getInteger(0, this.pXK);
-    this.pXL = paramAttributeSet.getInteger(1, this.pXL);
-    this.AZk = paramAttributeSet.getInteger(29, this.AZk);
-    this.pXM = paramAttributeSet.getInteger(28, this.pXM);
-    this.AZj = paramAttributeSet.getResourceId(5, this.AZj);
-    this.AZn = paramAttributeSet.getInteger(31, 0);
-    this.AZo = paramAttributeSet.getInteger(3, -1);
-    if ((this.AZn == 1) && (this.AZo == -1)) {
-      this.AZo = 4;
+    this.agVS = paramAttributeSet.getInt(a.k.WalletFormAttrs_contentFormat, this.agVS);
+    this.Nzx = paramAttributeSet.getInteger(a.k.WalletFormAttrs_contentMaxSize, this.Nzx);
+    this.Nzy = paramAttributeSet.getInteger(a.k.WalletFormAttrs_contentMinSize, this.Nzy);
+    this.Nzz = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_contentBackground, this.Nzz);
+    this.NzA = paramAttributeSet.getBoolean(a.k.WalletFormAttrs_contentEnabled, this.NzA);
+    this.NzB = paramAttributeSet.getBoolean(a.k.WalletFormAttrs_contentClickable, this.NzB);
+    this.NzC = paramAttributeSet.getBoolean(a.k.WalletFormAttrs_contentEnabled, this.NzC);
+    this.NzD = paramAttributeSet.getInteger(a.k.WalletFormAttrs_android_inputType, this.NzD);
+    this.NzE = paramAttributeSet.getInteger(a.k.WalletFormAttrs_android_imeOptions, this.NzE);
+    this.agVP = paramAttributeSet.getInteger(a.k.WalletFormAttrs_encryptType, this.agVP);
+    this.NzF = paramAttributeSet.getInteger(a.k.WalletFormAttrs_contentHintTextColor, this.NzF);
+    this.agVO = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_longTitleLayoutRes, this.agVO);
+    this.agVU = paramAttributeSet.getInteger(a.k.WalletFormAttrs_typeface, 0);
+    this.agVV = paramAttributeSet.getInteger(a.k.WalletFormAttrs_walletTypeFace, -1);
+    if ((this.agVU == 1) && (this.agVV == -1)) {
+      this.agVV = 4;
     }
-    this.AZp = paramAttributeSet.getResourceId(2, 0);
+    this.agVW = paramAttributeSet.getResourceId(a.k.WalletFormAttrs_android_textCursorDrawable, 0);
     paramAttributeSet.recycle();
-    if (this.pXr > 0) {
+    if (this.Nzk > 0) {
       bool = true;
     }
     Assert.assertTrue(bool);
     setOrientation(1);
-    if ((!bo.isNullOrNil(this.pXs)) && (this.pXs.length() > 6)) {
-      inflate(paramContext, this.AZj, this);
+    if ((!Util.isNullOrNil(this.Nzl)) && (this.Nzl.length() > 6)) {
+      inflate(paramContext, this.agVO, this);
     }
     for (;;)
     {
-      this.iJG = ((TextView)findViewById(2131820696));
-      this.pXi = ((TextView)findViewById(2131820694));
-      this.AZe = ((TenpaySecureEditText)findViewById(2131820689));
-      this.pXk = ((WalletIconImageView)findViewById(2131820693));
-      this.pXl = ((TextView)findViewById(2131820695));
-      this.AZf = ((LinearLayout)findViewById(2131827224));
-      this.qnH = ((TextView)findViewById(2131827225));
-      AppMethodBeat.o(49412);
+      this.sUt = ((TextView)findViewById(a.f.wallet_title));
+      this.Nzb = ((TextView)findViewById(a.f.wallet_prefilled));
+      this.agVJ = ((TenpaySecureEditText)findViewById(a.f.wallet_content));
+      this.Nzd = ((WalletIconImageView)findViewById(a.f.wallet_info));
+      this.Nze = ((TextView)findViewById(a.f.wallet_tips_msg));
+      this.agVK = ((LinearLayout)findViewById(a.f.wallet_max_unit_layout));
+      this.pJg = ((TextView)findViewById(a.f.wallet_max_unit_tv));
+      AppMethodBeat.o(73147);
       return;
-      inflate(paramContext, this.pXr, this);
+      inflate(paramContext, this.Nzk, this);
     }
   }
   
-  private boolean b(View paramView, MotionEvent paramMotionEvent)
+  public static void a(EditText paramEditText, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(49435);
-    if ((paramView != null) && (paramView.getVisibility() == 0))
+    AppMethodBeat.i(73187);
+    if (paramEditText == null)
     {
-      if (dw(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      AppMethodBeat.o(73187);
+      return;
+    }
+    a(paramEditText, paramString, bj(paramString, paramInt1, paramInt2));
+    AppMethodBeat.o(73187);
+  }
+  
+  public static void a(EditText paramEditText, String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(73185);
+    if (paramEditText == null)
+    {
+      AppMethodBeat.o(73185);
+      return;
+    }
+    if (Util.isEqual(paramString1, paramString2))
+    {
+      AppMethodBeat.o(73185);
+      return;
+    }
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
       {
-        AppMethodBeat.o(49435);
-        return true;
+        AppMethodBeat.i(73146);
+        int j = WalletFormView.this.getSelectionStart();
+        int k = WalletFormView.this.getSelectionEnd();
+        if (Util.isNullOrNil(paramString2))
+        {
+          WalletFormView.this.setText("");
+          AppMethodBeat.o(73146);
+          return;
+        }
+        WalletFormView.this.setText(paramString2);
+        EditText localEditText = WalletFormView.this;
+        int i = j;
+        if (j > paramString2.length()) {
+          i = paramString2.length();
+        }
+        j = k;
+        if (k > paramString2.length()) {
+          j = paramString2.length();
+        }
+        localEditText.setSelection(i, j);
+        AppMethodBeat.o(73146);
       }
-      AppMethodBeat.o(49435);
+    });
+    AppMethodBeat.o(73185);
+  }
+  
+  public static boolean a(String paramString, EditText paramEditText)
+  {
+    AppMethodBeat.i(73186);
+    if ((paramString == null) || (paramEditText == null))
+    {
+      AppMethodBeat.o(73186);
       return false;
     }
-    AppMethodBeat.o(49435);
-    return false;
-  }
-  
-  private void cfI()
-  {
-    AppMethodBeat.i(49423);
-    if ((this.pXk != null) && (!bo.isNullOrNil(getText())) && (this.AZe != null) && (this.AZe.isEnabled()) && (this.AZe.isClickable()) && (this.AZe.isFocusable()) && (this.AZe.isFocused()))
+    int i = 0;
+    int j = -1;
+    while ((i < paramString.length()) && ('0' == paramString.charAt(i)))
     {
-      this.pXk.setToClearState(new WalletFormView.2(this));
-      AppMethodBeat.o(49423);
-      return;
+      j = i;
+      i += 1;
     }
-    if (this.pXk != null)
+    if ((j == 0) && (paramString.length() > 1) && (paramString.charAt(j + 1) != '.'))
     {
-      this.pXk.dpM();
-      AppMethodBeat.o(49423);
-      return;
+      a(paramEditText, paramString, 0, j + 1);
+      AppMethodBeat.o(73186);
+      return true;
     }
-    ab.v("MicroMsg.WalletFormView", "hy: no info iv");
-    AppMethodBeat.o(49423);
-  }
-  
-  private void dTa()
-  {
-    AppMethodBeat.i(49437);
-    if (getTitleTv() != null)
+    if (j > 0)
     {
-      getTitleTv().setText(this.pXs);
-      getTitleTv().setVisibility(this.pXt);
-      if (this.zrB > 0)
+      if (paramString.length() == j + 1) {
+        a(paramEditText, paramString, 0, j);
+      }
+      for (;;)
       {
-        ViewGroup.LayoutParams localLayoutParams = getTitleTv().getLayoutParams();
-        if (localLayoutParams != null)
-        {
-          localLayoutParams.width = this.zrB;
-          getTitleTv().setLayoutParams(localLayoutParams);
+        AppMethodBeat.o(73186);
+        return true;
+        if (paramString.charAt(j + 1) == '.') {
+          a(paramEditText, paramString, 0, j);
+        } else {
+          a(paramEditText, paramString, 0, j + 1);
         }
       }
     }
-    AppMethodBeat.o(49437);
+    AppMethodBeat.o(73186);
+    return false;
   }
   
-  private Rect dw(View paramView)
+  public static String bj(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(49436);
-    if (paramView != null)
+    AppMethodBeat.i(73184);
+    if (paramString == null)
     {
-      Rect localRect = new Rect();
-      paramView.getHitRect(localRect);
-      paramView = l(paramView, localRect);
-      AppMethodBeat.o(49436);
-      return paramView;
+      AppMethodBeat.o(73184);
+      return "";
     }
-    AppMethodBeat.o(49436);
-    return null;
+    if ((paramInt1 >= paramString.length()) || (paramInt1 < 0))
+    {
+      AppMethodBeat.o(73184);
+      return paramString;
+    }
+    if (paramInt2 >= paramString.length())
+    {
+      paramString = paramString.substring(0, paramInt1);
+      AppMethodBeat.o(73184);
+      return paramString;
+    }
+    String str = paramString.substring(0, paramInt1);
+    paramString = paramString.substring(paramInt2, paramString.length());
+    paramString = Util.nullAs(str, "") + Util.nullAs(paramString, "");
+    AppMethodBeat.o(73184);
+    return paramString;
   }
   
-  private Rect l(View paramView, Rect paramRect)
+  private Rect g(View paramView, Rect paramRect)
   {
-    if (paramView == this.pXk)
+    if (paramView == this.Nzd)
     {
       paramRect.left -= 50;
       paramRect.right += 50;
@@ -293,438 +353,708 @@ public final class WalletFormView
     return paramRect;
   }
   
+  private void gGb()
+  {
+    AppMethodBeat.i(73160);
+    if ((this.Nzd != null) && (!Util.isNullOrNil(getText())) && (this.agVJ != null) && (this.agVJ.isEnabled()) && (this.agVJ.isClickable()) && (this.agVJ.isFocusable()) && (this.agVJ.isFocused()))
+    {
+      this.Nzd.setToClearState(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(73144);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/wallet_core/ui/formview/WalletFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          WalletFormView.this.gGd();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/formview/WalletFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(73144);
+        }
+      });
+      AppMethodBeat.o(73160);
+      return;
+    }
+    if (this.Nzd != null)
+    {
+      this.Nzd.iOU();
+      AppMethodBeat.o(73160);
+      return;
+    }
+    Log.v("MicroMsg.WalletFormView", "hy: no info iv");
+    AppMethodBeat.o(73160);
+  }
+  
+  private Rect iH(View paramView)
+  {
+    AppMethodBeat.i(73173);
+    if (paramView != null)
+    {
+      Rect localRect = new Rect();
+      paramView.getHitRect(localRect);
+      paramView = g(paramView, localRect);
+      AppMethodBeat.o(73173);
+      return paramView;
+    }
+    AppMethodBeat.o(73173);
+    return null;
+  }
+  
+  private void jPC()
+  {
+    AppMethodBeat.i(73174);
+    if (getTitleTv() != null)
+    {
+      getTitleTv().setText(this.Nzl);
+      getTitleTv().setVisibility(this.Nzm);
+      setTitleWidth(this.adZj);
+    }
+    AppMethodBeat.o(73174);
+  }
+  
+  private boolean k(View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(73172);
+    if ((paramView != null) && (paramView.getVisibility() == 0))
+    {
+      if (iH(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      {
+        AppMethodBeat.o(73172);
+        return true;
+      }
+      AppMethodBeat.o(73172);
+      return false;
+    }
+    AppMethodBeat.o(73172);
+    return false;
+  }
+  
   public final void a(TextWatcher paramTextWatcher)
   {
-    AppMethodBeat.i(49445);
-    if (this.AZe != null) {
-      this.AZe.addTextChangedListener(paramTextWatcher);
+    AppMethodBeat.i(73182);
+    if (this.agVJ != null) {
+      this.agVJ.addTextChangedListener(paramTextWatcher);
     }
-    AppMethodBeat.o(49445);
+    AppMethodBeat.o(73182);
   }
   
-  public final boolean asv()
+  public final void aGD(int paramInt)
   {
-    AppMethodBeat.i(49447);
-    if (this.AZe != null)
+    AppMethodBeat.i(163889);
+    if (this.agVJ != null) {
+      this.agVJ.setPadding(paramInt, 0, 0, 0);
+    }
+    AppMethodBeat.o(163889);
+  }
+  
+  public final boolean bZp()
+  {
+    AppMethodBeat.i(73189);
+    if (this.agVJ != null)
     {
-      int i = this.AZe.getInputLength();
-      if ((i > this.pXE) || (i < this.pXF))
+      int i = this.agVJ.getInputLength();
+      if ((i > this.Nzx) || (i < this.Nzy))
       {
-        AppMethodBeat.o(49447);
+        AppMethodBeat.o(73189);
         return false;
       }
-      if (this.AZi != null)
+      if (this.agVN != null)
       {
-        boolean bool = this.AZi.a(this);
-        AppMethodBeat.o(49447);
+        boolean bool = this.agVN.a(this);
+        AppMethodBeat.o(73189);
         return bool;
       }
-      AppMethodBeat.o(49447);
+      AppMethodBeat.o(73189);
       return true;
     }
-    ab.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
-    AppMethodBeat.o(49447);
+    Log.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
+    AppMethodBeat.o(73189);
     return true;
-  }
-  
-  public final void cfJ()
-  {
-    AppMethodBeat.i(49449);
-    if (this.AZe != null) {
-      this.AZe.clearFocus();
-    }
-    AppMethodBeat.o(49449);
-  }
-  
-  public final void cfK()
-  {
-    AppMethodBeat.i(49448);
-    if (this.AZe != null) {
-      this.AZe.ClearInput();
-    }
-    AppMethodBeat.o(49448);
   }
   
   public final void d(WalletBaseUI paramWalletBaseUI)
   {
-    AppMethodBeat.i(49454);
-    if (this.AZe != null)
+    AppMethodBeat.i(73196);
+    if (this.agVJ != null)
     {
-      this.AZe.setFocusable(true);
-      this.AZe.requestFocus();
+      this.agVJ.setFocusable(true);
+      this.agVJ.requestFocus();
       paramWalletBaseUI.showTenpayKB();
     }
-    AppMethodBeat.o(49454);
+    AppMethodBeat.o(73196);
   }
   
-  public final void dSY()
+  public final void gGc()
   {
-    AppMethodBeat.i(49414);
-    if (this.AZe != null) {
-      this.AZe.setPadding(0, 0, 0, 0);
+    AppMethodBeat.i(73191);
+    if (this.agVJ != null) {
+      this.agVJ.clearFocus();
     }
-    AppMethodBeat.o(49414);
+    AppMethodBeat.o(73191);
   }
   
-  public final boolean dSZ()
+  public final void gGd()
   {
-    AppMethodBeat.i(49424);
-    if (this.AZe != null)
-    {
-      boolean bool = this.AZe.isFocusable();
-      AppMethodBeat.o(49424);
-      return bool;
+    AppMethodBeat.i(73190);
+    if (this.agVJ != null) {
+      this.agVJ.ClearInput();
     }
-    AppMethodBeat.o(49424);
-    return false;
-  }
-  
-  public final void dTb()
-  {
-    AppMethodBeat.i(142684);
-    if (this.AZe != null) {
-      this.AZe.addTextChangedListener(new WalletFormView.3(this));
-    }
-    AppMethodBeat.o(142684);
-  }
-  
-  public final void dTc()
-  {
-    AppMethodBeat.i(49453);
-    if (this.AZe != null)
-    {
-      this.AZe.setFocusable(true);
-      this.AZe.requestFocus();
-      ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this.AZe, 0);
-    }
-    AppMethodBeat.o(49453);
-  }
-  
-  public final boolean fE(View paramView)
-  {
-    AppMethodBeat.i(49450);
-    if (getVisibility() == 0)
-    {
-      if (bo.isNullOrNil(getText()))
-      {
-        if (paramView != null) {
-          paramView.setVisibility(4);
-        }
-        if (this.iJG != null) {
-          this.iJG.setEnabled(true);
-        }
-        AppMethodBeat.o(49450);
-        return false;
-      }
-      if (asv())
-      {
-        if (paramView != null) {
-          paramView.setVisibility(4);
-        }
-        if (this.iJG != null) {
-          this.iJG.setEnabled(true);
-        }
-        AppMethodBeat.o(49450);
-        return true;
-      }
-      if (paramView != null) {
-        paramView.setVisibility(0);
-      }
-      if (this.iJG != null) {
-        this.iJG.setEnabled(false);
-      }
-      AppMethodBeat.o(49450);
-      return false;
-    }
-    if (paramView != null) {
-      paramView.setVisibility(8);
-    }
-    AppMethodBeat.o(49450);
-    return true;
+    AppMethodBeat.o(73190);
   }
   
   public final EditText getContentEt()
   {
-    return this.AZe;
+    return this.agVJ;
   }
   
   public final int getEncrptType()
   {
-    return this.AZk;
+    return this.agVP;
   }
   
   public final com.tencent.mm.wallet_core.ui.formview.a.a getEventDelegate()
   {
-    return this.AZh;
+    return this.agVM;
+  }
+  
+  public final String getHint()
+  {
+    AppMethodBeat.i(242528);
+    if (this.agVJ != null)
+    {
+      String str = this.agVJ.getHint().toString();
+      AppMethodBeat.o(242528);
+      return str;
+    }
+    AppMethodBeat.o(242528);
+    return "";
   }
   
   public final WalletIconImageView getInfoIv()
   {
-    return this.pXk;
+    return this.Nzd;
   }
   
   public final int getInputLength()
   {
-    AppMethodBeat.i(49452);
-    if (this.AZe != null)
+    AppMethodBeat.i(73194);
+    if (this.agVJ != null)
     {
-      int i = this.AZe.getInputLength();
-      AppMethodBeat.o(49452);
+      int i = this.agVJ.getInputLength();
+      AppMethodBeat.o(73194);
       return i;
     }
-    AppMethodBeat.o(49452);
+    AppMethodBeat.o(73194);
     return 0;
   }
   
-  public final WalletFormView.a getInputValidChangeListener()
+  public final a getInputValidChangeListener()
   {
-    return this.AZg;
+    return this.agVL;
   }
   
   public final KeyListener getKeyListener()
   {
-    AppMethodBeat.i(49440);
-    if (this.AZe != null)
+    AppMethodBeat.i(73177);
+    if (this.agVJ != null)
     {
-      KeyListener localKeyListener = this.AZe.getKeyListener();
-      AppMethodBeat.o(49440);
+      KeyListener localKeyListener = this.agVJ.getKeyListener();
+      AppMethodBeat.o(73177);
       return localKeyListener;
     }
-    ab.w("MicroMsg.WalletFormView", "hy: no content et");
-    AppMethodBeat.o(49440);
+    Log.w("MicroMsg.WalletFormView", "hy: no content et");
+    AppMethodBeat.o(73177);
     return null;
   }
   
   public final com.tencent.mm.wallet_core.ui.formview.a.b getLogicDelegate()
   {
-    return this.AZi;
+    return this.agVN;
   }
   
   public final String getMD5Value()
   {
-    AppMethodBeat.i(49416);
-    String str2 = bo.nullAsNil(this.AZe.getText().toString());
+    AppMethodBeat.i(73152);
+    String str2 = Util.nullAsNil(this.agVJ.getText().toString());
     String str1 = str2;
-    if (this.AZi != null)
+    if (this.agVN != null)
     {
       str1 = str2;
-      if (this.AZi.cfH()) {
-        str1 = this.AZi.e(this, str2);
+      if (this.agVN.gGa()) {
+        str1 = this.agVN.c(this, str2);
       }
     }
-    str1 = ag.cE(str1);
-    AppMethodBeat.o(49416);
+    str1 = MD5Util.getMD5String(str1);
+    AppMethodBeat.o(73152);
     return str1;
   }
   
   public final int getMaxInputLength()
   {
-    return this.pXE;
+    return this.Nzx;
   }
   
   public final int getMinInputLength()
   {
-    return this.pXF;
+    return this.Nzy;
   }
   
   public final TextView getPrefilledTv()
   {
-    return this.pXi;
+    return this.Nzb;
   }
   
   public final int getSelectionStart()
   {
-    AppMethodBeat.i(142683);
-    if (this.AZe != null)
+    AppMethodBeat.i(73157);
+    if (this.agVJ != null)
     {
-      int i = this.AZe.getSelectionStart();
-      AppMethodBeat.o(142683);
+      int i = this.agVJ.getSelectionStart();
+      AppMethodBeat.o(73157);
       return i;
     }
-    AppMethodBeat.o(142683);
+    AppMethodBeat.o(73157);
     return -1;
   }
   
   public final String getText()
   {
-    AppMethodBeat.i(49439);
-    if (this.AZe != null)
+    AppMethodBeat.i(73176);
+    if (this.agVJ != null)
     {
-      String str = c.a.a(this.AZk, this.AZe);
-      if ((this.AZi != null) && (this.AZi.cfH()))
+      String str = c.a.a(this.agVP, this.agVJ, 0L, "");
+      if ((this.agVN != null) && (this.agVN.gGa()))
       {
-        str = this.AZi.e(this, str);
-        AppMethodBeat.o(49439);
+        str = this.agVN.c(this, str);
+        AppMethodBeat.o(73176);
         return str;
       }
-      AppMethodBeat.o(49439);
+      AppMethodBeat.o(73176);
       return str;
     }
-    ab.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
-    AppMethodBeat.o(49439);
+    Log.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
+    AppMethodBeat.o(73176);
     return "";
   }
   
   public final TextView getTipsTv()
   {
-    return this.pXl;
+    return this.Nze;
+  }
+  
+  public final float getTitleMeasuredWidth()
+  {
+    AppMethodBeat.i(182538);
+    float f = this.sUt.getPaint().measureText(this.sUt.getText(), 0, this.sUt.getText().length());
+    AppMethodBeat.o(182538);
+    return f;
   }
   
   public final TextView getTitleTv()
   {
-    return this.iJG;
+    return this.sUt;
+  }
+  
+  public final int i(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(73149);
+    if (this.agVX == 0)
+    {
+      int i = this.sUt.getLeft();
+      this.agVX = (this.agVJ.getLeft() - i + this.agVJ.getPaddingLeft());
+      Log.d("MicroMsg.WalletFormView", "mMaxUnitLeftOriginWidth:%s", new Object[] { Integer.valueOf(this.agVX) });
+    }
+    if (!Util.isEqual(paramCharSequence.toString(), ""))
+    {
+      if (paramInt2 == 1) {}
+      for (float f1 = this.agVJ.getPaint().measureText("1");; f1 = this.agVJ.getPaint().measureText("2"))
+      {
+        float f2 = this.agVX;
+        paramInt1 = (int)(f1 / 2.0F + f2 - paramInt1 / 2);
+        AppMethodBeat.o(73149);
+        return paramInt1;
+      }
+    }
+    AppMethodBeat.o(73149);
+    return 0;
   }
   
   public final boolean isPhoneNum()
   {
-    AppMethodBeat.i(49444);
-    if (this.AZe == null)
+    AppMethodBeat.i(73181);
+    if (this.agVJ == null)
     {
-      AppMethodBeat.o(49444);
+      AppMethodBeat.o(73181);
       return false;
     }
-    boolean bool = this.AZe.isPhoneNum();
-    AppMethodBeat.o(49444);
+    boolean bool = this.agVJ.isPhoneNum();
+    AppMethodBeat.o(73181);
     return bool;
   }
   
-  public final int l(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public final boolean jPB()
   {
-    AppMethodBeat.i(142682);
-    if (this.AZq == 0)
+    AppMethodBeat.i(73161);
+    if (this.agVJ != null)
     {
-      int i = this.iJG.getLeft();
-      this.AZq = (this.AZe.getLeft() - i + this.AZe.getPaddingLeft());
-      ab.d("MicroMsg.WalletFormView", "mMaxUnitLeftOriginWidth:%s", new Object[] { Integer.valueOf(this.AZq) });
+      boolean bool = this.agVJ.isFocusable();
+      AppMethodBeat.o(73161);
+      return bool;
     }
-    if (!bo.isEqual(paramCharSequence.toString(), ""))
-    {
-      if (paramInt2 == 1) {}
-      for (float f1 = this.AZe.getPaint().measureText("1");; f1 = this.AZe.getPaint().measureText("2"))
+    AppMethodBeat.o(73161);
+    return false;
+  }
+  
+  public final void jPD()
+  {
+    AppMethodBeat.i(73183);
+    if (this.agVJ != null) {
+      this.agVJ.addTextChangedListener(new TextWatcher()
       {
-        float f2 = this.AZq;
-        paramInt1 = (int)(f1 / 2.0F + f2 - paramInt1 / 2);
-        AppMethodBeat.o(142682);
-        return paramInt1;
-      }
+        public final void afterTextChanged(Editable paramAnonymousEditable)
+        {
+          AppMethodBeat.i(73145);
+          String str = paramAnonymousEditable.toString();
+          int k = str.indexOf(".");
+          int m = str.length();
+          if (k >= 0)
+          {
+            i = str.indexOf(".", k + 1);
+            if (i >= 0)
+            {
+              WalletFormView.a(WalletFormView.j(WalletFormView.this), str, i, m);
+              AppMethodBeat.o(73145);
+              return;
+            }
+          }
+          int i = 0;
+          if ((this.agVZ >= 0) && (k >= 0) && (m - k > this.agVZ))
+          {
+            paramAnonymousEditable = WalletFormView.bj(str, this.agVZ + k + 1, m);
+            i = 1;
+          }
+          for (;;)
+          {
+            int j = i;
+            Object localObject = paramAnonymousEditable;
+            int n;
+            if (this.agWa >= 0)
+            {
+              n = WalletFormView.j(WalletFormView.this).getSelectionStart();
+              if (k <= this.agWa) {
+                break label236;
+              }
+              j = i;
+              localObject = paramAnonymousEditable;
+              if (!Util.isEqual(n, -1))
+              {
+                j = i;
+                localObject = paramAnonymousEditable;
+                if (k - this.agWa > 0)
+                {
+                  j = i;
+                  localObject = paramAnonymousEditable;
+                  if (n - (k - this.agWa) >= 0)
+                  {
+                    localObject = WalletFormView.bj(paramAnonymousEditable, n - (k - 7), n);
+                    j = 1;
+                  }
+                }
+              }
+            }
+            for (;;)
+            {
+              if (j != 0) {
+                WalletFormView.a(WalletFormView.j(WalletFormView.this), str, (String)localObject);
+              }
+              AppMethodBeat.o(73145);
+              return;
+              label236:
+              j = i;
+              localObject = paramAnonymousEditable;
+              if (Util.isEqual(k, -1))
+              {
+                j = i;
+                localObject = paramAnonymousEditable;
+                if (m > this.agWa)
+                {
+                  j = i;
+                  localObject = paramAnonymousEditable;
+                  if (n >= 0)
+                  {
+                    j = i;
+                    localObject = paramAnonymousEditable;
+                    if (n - (m - this.agWa) >= 0)
+                    {
+                      localObject = WalletFormView.bj(paramAnonymousEditable, n - (m - this.agWa), n);
+                      j = 1;
+                    }
+                  }
+                }
+              }
+            }
+            paramAnonymousEditable = str;
+          }
+        }
+        
+        public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+        
+        public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      });
     }
-    AppMethodBeat.o(142682);
-    return 0;
+    AppMethodBeat.o(73183);
+  }
+  
+  public final void jPE()
+  {
+    AppMethodBeat.i(73195);
+    if (this.agVJ != null)
+    {
+      this.agVJ.setFocusable(true);
+      this.agVJ.requestFocus();
+      ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this.agVJ, 0);
+    }
+    AppMethodBeat.o(73195);
+  }
+  
+  public final boolean mJ(View paramView)
+  {
+    AppMethodBeat.i(73192);
+    if (getVisibility() == 0)
+    {
+      if (Util.isNullOrNil(getText()))
+      {
+        if (paramView != null) {
+          paramView.setVisibility(4);
+        }
+        if (this.sUt != null) {
+          this.sUt.setEnabled(true);
+        }
+        AppMethodBeat.o(73192);
+        return false;
+      }
+      if (bZp())
+      {
+        if (paramView != null) {
+          paramView.setVisibility(4);
+        }
+        if (this.sUt != null) {
+          this.sUt.setEnabled(true);
+        }
+        AppMethodBeat.o(73192);
+        return true;
+      }
+      if (paramView != null) {
+        paramView.setVisibility(0);
+      }
+      if (this.sUt != null) {
+        this.sUt.setEnabled(false);
+      }
+      AppMethodBeat.o(73192);
+      return false;
+    }
+    if (paramView != null) {
+      paramView.setVisibility(8);
+    }
+    AppMethodBeat.o(73192);
+    return true;
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(49425);
+    AppMethodBeat.i(73162);
     super.onAttachedToWindow();
-    AppMethodBeat.o(49425);
+    AppMethodBeat.o(73162);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(49426);
+    AppMethodBeat.i(73163);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(49426);
+    AppMethodBeat.o(73163);
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(49427);
+    AppMethodBeat.i(73164);
     super.onFinishInflate();
-    dTa();
+    jPC();
     if (getPrefilledTv() != null)
     {
-      getPrefilledTv().setText(this.pXu);
-      getPrefilledTv().setVisibility(this.pXv);
+      getPrefilledTv().setText(this.Nzn);
+      getPrefilledTv().setVisibility(this.Nzo);
     }
     if (getInfoIv() != null)
     {
-      getInfoIv().setImageResource(this.pXw);
-      getInfoIv().setVisibility(this.pXx);
+      getInfoIv().setImageResource(this.Nzp);
+      getInfoIv().setVisibility(this.Nzq);
+      if (this.agVQ != -1) {
+        getInfoIv().setmUserSetImageIconColor(this.agVQ);
+      }
     }
     if (getTipsTv() != null)
     {
-      getTipsTv().setText(this.pXy);
-      getTipsTv().setVisibility(this.pXz);
+      getTipsTv().setText(this.Nzr);
+      getTipsTv().setVisibility(this.Nzs);
     }
     Object localObject = getContext();
-    if (this.AZe != null)
-    {
-      if (this.AZo >= 0)
-      {
-        String str = e.RV(this.AZo);
-        this.AZe.setTypeface(Typeface.createFromAsset(((Context)localObject).getAssets(), str));
+    String str;
+    if (this.agVJ != null) {
+      if (this.agVV >= 0) {
+        str = i.aGy(this.agVV);
       }
-      if (this.AZl != -1) {
-        break label411;
-      }
-      this.AZe.setHint(this.pXA);
     }
-    for (;;)
+    try
     {
-      this.AZe.setGravity(this.pXB);
-      this.AZe.setTextColor(this.pXC);
-      setText(this.pXD);
-      b.a(this.AZe, this.AZm);
-      this.AZe.setBackgroundResource(this.pXG);
-      this.AZe.setEnabled(this.pXH);
-      this.AZe.setFocusable(this.pXJ);
-      this.AZe.setClickable(this.pXI);
-      this.AZe.setHintTextColor(this.pXM);
-      setImeOptions(this.pXL);
-      setInputType(this.pXK);
-      this.AZe.addTextChangedListener(new WalletFormView.1(this));
-      this.AZe.setOnFocusChangeListener(this);
-      try
+      this.agVJ.setTypeface(Typeface.createFromAsset(((Context)localObject).getAssets(), str));
+      if (this.agVR == -1)
       {
-        if (!bo.hl(this.AZp, 0))
+        this.agVJ.setHint(this.Nzt);
+        this.agVJ.setGravity(this.Nzu);
+        this.agVJ.setTextColor(this.Nzv);
+        setText(this.Nzw);
+        b.a(this.agVJ, this.agVS);
+        this.agVJ.setBackgroundResource(this.Nzz);
+        this.agVJ.setEnabled(this.NzA);
+        this.agVJ.setFocusable(this.NzC);
+        this.agVJ.setClickable(this.NzB);
+        this.agVJ.setHintTextColor(this.NzF);
+        setImeOptions(this.NzE);
+        setInputType(this.NzD);
+        this.agVJ.addTextChangedListener(new TextWatcher()
         {
-          localObject = TextView.class.getDeclaredField("mCursorDrawableRes");
-          ((Field)localObject).setAccessible(true);
-          ((Field)localObject).set(this.AZe, Integer.valueOf(this.AZp));
-        }
-        cfI();
-        if (this.AZe != null)
-        {
-          if (this.pXK != 2) {
-            break label529;
+          private boolean NzH = false;
+          
+          public final void afterTextChanged(Editable paramAnonymousEditable)
+          {
+            AppMethodBeat.i(73143);
+            String str = paramAnonymousEditable.toString();
+            if (str.startsWith(".")) {
+              paramAnonymousEditable.insert(0, "0");
+            }
+            while ((!WalletFormView.i(WalletFormView.this)) || (!WalletFormView.a(str, WalletFormView.j(WalletFormView.this))))
+            {
+              boolean bool = WalletFormView.this.bZp();
+              if (WalletFormView.k(WalletFormView.this) != null)
+              {
+                if (bool != this.NzH)
+                {
+                  WalletFormView.k(WalletFormView.this).onInputValidChange(bool);
+                  this.NzH = WalletFormView.this.bZp();
+                }
+                if (((WalletFormView.k(WalletFormView.this) instanceof WalletFormView.b)) && (bool)) {
+                  WalletFormView.k(WalletFormView.this);
+                }
+              }
+              WalletFormView.l(WalletFormView.this);
+              AppMethodBeat.o(73143);
+              return;
+            }
+            AppMethodBeat.o(73143);
           }
-          this.AZe.setKeyListener(new WalletFormView.4(this));
-          if (this.pXE != -1) {
-            this.AZe.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.pXE) });
+          
+          public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+          
+          public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+          {
+            AppMethodBeat.i(73142);
+            if (WalletFormView.h(WalletFormView.this) != null) {
+              WalletFormView.h(WalletFormView.this).f(paramAnonymousCharSequence);
+            }
+            AppMethodBeat.o(73142);
           }
-        }
-        AppMethodBeat.o(49427);
-        return;
-        label411:
-        localObject = new SpannableString(this.pXA + "  ");
-        ((SpannableString)localObject).setSpan(new com.tencent.mm.ce.a(this.AZl), 0, ((SpannableString)localObject).length() - 2, 33);
-        ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan((int)this.AZe.getTextSize(), false), ((SpannableString)localObject).length() - 2, ((SpannableString)localObject).length(), 33);
-        this.AZe.setHint(new SpannedString((CharSequence)localObject));
+        });
+        this.agVJ.setOnFocusChangeListener(this);
       }
-      catch (Exception localException)
+    }
+    catch (Exception localException1)
+    {
+      try
       {
         for (;;)
         {
-          ab.e("MicroMsg.WalletFormView", "set textCursorDrawable fail!!");
-          continue;
-          label529:
-          if (this.pXK == 4)
+          if (!Util.isEqual(this.agVW, 0))
           {
-            this.AZe.setKeyListener(new WalletFormView.5(this));
+            localObject = TextView.class.getDeclaredField("mCursorDrawableRes");
+            ((Field)localObject).setAccessible(true);
+            ((Field)localObject).set(this.agVJ, Integer.valueOf(this.agVW));
           }
-          else if (this.pXK == 128)
+          gGb();
+          if (this.agVJ != null)
           {
-            this.AZe.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            this.AZe.setKeyListener(new WalletFormView.6(this));
-            this.AZe.setRawInputType(18);
-          }
-          else if (this.pXK == 3)
-          {
-            this.AZe.setKeyListener(new NumberKeyListener()
+            if (this.NzD != 2) {
+              break;
+            }
+            this.agVJ.setKeyListener(new NumberKeyListener()
             {
               protected final char[] getAcceptedChars()
               {
-                return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45 };
+                return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48 };
+              }
+              
+              public final int getInputType()
+              {
+                return 3;
+              }
+            });
+            if (this.Nzx != -1) {
+              this.agVJ.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.Nzx) });
+            }
+          }
+          AppMethodBeat.o(73164);
+          return;
+          localException1 = localException1;
+          Log.e("MicroMsg.WalletFormView", "setTypeface() Exception:%s %s", new Object[] { localException1.getClass().getSimpleName(), localException1.getMessage() });
+        }
+        SpannableString localSpannableString = new SpannableString(this.Nzt + "  ");
+        localSpannableString.setSpan(new com.tencent.mm.cg.a(this.agVR), 0, localSpannableString.length() - 2, 33);
+        localSpannableString.setSpan(new AbsoluteSizeSpan((int)this.agVJ.getTextSize(), false), localSpannableString.length() - 2, localSpannableString.length(), 33);
+        this.agVJ.setHint(new SpannedString(localSpannableString));
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.WalletFormView", "set textCursorDrawable fail!!");
+          continue;
+          if (this.NzD == 4)
+          {
+            this.agVJ.setKeyListener(new NumberKeyListener()
+            {
+              protected final char[] getAcceptedChars()
+              {
+                return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 120, 88 };
+              }
+              
+              public final int getInputType()
+              {
+                return 1;
+              }
+            });
+          }
+          else if (this.NzD == 128)
+          {
+            this.agVJ.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            this.agVJ.setKeyListener(new NumberKeyListener()
+            {
+              protected final char[] getAcceptedChars()
+              {
+                return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48 };
+              }
+              
+              public final int getInputType()
+              {
+                return 18;
+              }
+            });
+            this.agVJ.setRawInputType(18);
+          }
+          else if (this.NzD == 3)
+          {
+            this.agVJ.setKeyListener(new NumberKeyListener()
+            {
+              protected final char[] getAcceptedChars()
+              {
+                return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 43 };
               }
               
               public final int getInputType()
@@ -735,7 +1065,7 @@ public final class WalletFormView
           }
           else
           {
-            this.AZe.setInputType(this.pXK);
+            this.agVJ.setInputType(this.NzD);
           }
         }
       }
@@ -744,310 +1074,343 @@ public final class WalletFormView
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(49456);
-    if (this.pXn != null) {
-      this.pXn.onFocusChange(this, paramBoolean);
+    AppMethodBeat.i(73198);
+    if (this.Nzg != null) {
+      this.Nzg.onFocusChange(this, paramBoolean);
     }
-    if (this.AZg != null) {
-      this.AZg.onInputValidChange(asv());
+    if (this.agVL != null) {
+      this.agVL.onInputValidChange(bZp());
     }
-    if (!asv()) {
-      if (this.iJG != null) {
-        this.iJG.setEnabled(false);
+    if (!bZp()) {
+      if (this.sUt != null) {
+        this.sUt.setEnabled(false);
       }
     }
     for (;;)
     {
-      cfI();
-      AppMethodBeat.o(49456);
+      gGb();
+      AppMethodBeat.o(73198);
       return;
-      if (this.iJG != null) {
-        this.iJG.setEnabled(true);
+      if (this.sUt != null) {
+        this.sUt.setEnabled(true);
       }
     }
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(49434);
-    if ((this.AZh == null) || (!this.AZh.dTe()))
+    AppMethodBeat.i(73171);
+    if ((this.agVM == null) || (!this.agVM.jPG()))
     {
-      if ((this.AZe != null) && (b(this.AZe, paramMotionEvent)) && (!this.AZe.isClickable()))
+      if ((this.agVJ != null) && (k(this.agVJ, paramMotionEvent)) && (!this.agVJ.isClickable()))
       {
-        ab.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
-        AppMethodBeat.o(49434);
+        Log.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
+        AppMethodBeat.o(73171);
         return true;
       }
-      if ((this.pXk != null) && (this.pXk.isClickable()) && (b(this.pXk, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
+      if ((this.Nzd != null) && (this.Nzd.isClickable()) && (k(this.Nzd, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
       {
-        ab.d("MicroMsg.WalletFormView", "hy: click on info iv");
-        cfI();
-        this.pXk.performClick();
-        AppMethodBeat.o(49434);
+        Log.d("MicroMsg.WalletFormView", "hy: click on info iv");
+        gGb();
+        this.Nzd.performClick();
+        AppMethodBeat.o(73171);
         return true;
       }
-      AppMethodBeat.o(49434);
+      AppMethodBeat.o(73171);
       return false;
     }
-    AppMethodBeat.o(49434);
+    AppMethodBeat.o(73171);
     return true;
   }
   
-  @SuppressLint({"WrongCall"})
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(49433);
-    if ((this.AZh == null) || (!this.AZh.dTd())) {
+    AppMethodBeat.i(73170);
+    if ((this.agVM == null) || (!this.agVM.jPF())) {
       super.onMeasure(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(49433);
+    AppMethodBeat.o(73170);
   }
   
   public final void set3DesToView(String paramString)
   {
-    AppMethodBeat.i(49457);
-    if (this.AZe != null) {
-      this.AZe.set3DesEncrptData(paramString);
+    AppMethodBeat.i(73199);
+    if (this.agVJ != null) {
+      this.agVJ.set3DesEncrptData(paramString);
     }
-    AppMethodBeat.o(49457);
+    AppMethodBeat.o(73199);
   }
   
   public final void set3DesValStr(String paramString)
   {
-    AppMethodBeat.i(49415);
-    if ((this.AZe != null) && ((this.AZi == null) || (!this.AZi.d(this, paramString))))
+    AppMethodBeat.i(73151);
+    if ((this.agVJ != null) && ((this.agVN == null) || (!this.agVN.b(this, paramString))))
     {
-      this.AZe.set3DesEncrptData(paramString);
+      this.agVJ.set3DesEncrptData(paramString);
       setSelection(getInputLength());
     }
-    AppMethodBeat.o(49415);
+    AppMethodBeat.o(73151);
   }
   
   public final void setBankcardTail(String paramString)
   {
-    AppMethodBeat.i(49441);
-    if (this.AZe != null) {
-      this.AZe.setBankcardTailNum(paramString);
+    AppMethodBeat.i(73178);
+    if (this.agVJ != null) {
+      this.agVJ.setBankcardTailNum(paramString);
     }
-    AppMethodBeat.o(49441);
+    AppMethodBeat.o(73178);
   }
   
   public final void setContentClickable(boolean paramBoolean)
   {
-    AppMethodBeat.i(49429);
-    if (this.AZe != null) {
-      this.AZe.setClickable(paramBoolean);
+    AppMethodBeat.i(73166);
+    if (this.agVJ != null) {
+      this.agVJ.setClickable(paramBoolean);
     }
-    AppMethodBeat.o(49429);
+    AppMethodBeat.o(73166);
   }
   
   public final void setContentEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(49431);
-    if (this.AZe != null) {
-      this.AZe.setEnabled(paramBoolean);
+    AppMethodBeat.i(73168);
+    if (this.agVJ != null) {
+      this.agVJ.setEnabled(paramBoolean);
     }
-    AppMethodBeat.o(49431);
+    AppMethodBeat.o(73168);
   }
   
   public final void setContentFocusable(boolean paramBoolean)
   {
-    AppMethodBeat.i(49430);
-    if (this.AZe != null) {
-      this.AZe.setFocusable(paramBoolean);
+    AppMethodBeat.i(73167);
+    if (this.agVJ != null) {
+      this.agVJ.setFocusable(paramBoolean);
     }
-    AppMethodBeat.o(49430);
+    AppMethodBeat.o(73167);
   }
   
   public final void setContentTextColor(int paramInt)
   {
-    AppMethodBeat.i(49422);
-    if (this.AZe != null) {
-      this.AZe.setTextColor(paramInt);
+    AppMethodBeat.i(73159);
+    if (this.agVJ != null) {
+      this.agVJ.setTextColor(paramInt);
     }
-    AppMethodBeat.o(49422);
+    AppMethodBeat.o(73159);
   }
   
-  @SuppressLint({"ResourceType"})
   public final void setContentTextColorRes(int paramInt)
   {
-    AppMethodBeat.i(49421);
-    this.pXC = paramInt;
-    if (this.AZe != null) {
-      this.AZe.setTextColor(getResources().getColor(this.pXC));
+    AppMethodBeat.i(73158);
+    this.Nzv = paramInt;
+    if (this.agVJ != null) {
+      this.agVJ.setTextColor(getResources().getColor(this.Nzv));
     }
-    AppMethodBeat.o(49421);
+    AppMethodBeat.o(73158);
   }
   
   public final void setEncryptType(int paramInt)
   {
-    this.AZk = paramInt;
+    this.agVP = paramInt;
   }
   
   public final void setEventDelegate(com.tencent.mm.wallet_core.ui.formview.a.a parama)
   {
-    this.AZh = parama;
+    this.agVM = parama;
   }
   
   public final void setFilterChar(char[] paramArrayOfChar) {}
   
   public final void setFilters(InputFilter[] paramArrayOfInputFilter)
   {
-    AppMethodBeat.i(49451);
-    if (this.AZe != null) {
-      this.AZe.setFilters(paramArrayOfInputFilter);
+    AppMethodBeat.i(73193);
+    if (this.agVJ != null) {
+      this.agVJ.setFilters(paramArrayOfInputFilter);
     }
-    AppMethodBeat.o(49451);
+    AppMethodBeat.o(73193);
   }
   
   public final void setHint(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(49428);
-    if (this.AZe != null)
+    AppMethodBeat.i(73165);
+    if (this.agVJ != null)
     {
-      if (this.AZl == -1)
+      if (this.agVR == -1)
       {
-        this.AZe.setHint(paramCharSequence);
-        AppMethodBeat.o(49428);
+        this.agVJ.setHint(paramCharSequence);
+        AppMethodBeat.o(73165);
         return;
       }
       paramCharSequence = new SpannableString(paramCharSequence);
-      paramCharSequence.setSpan(new AbsoluteSizeSpan(this.AZl, false), 0, paramCharSequence.length(), 33);
-      this.AZe.setHint(new SpannedString(paramCharSequence));
+      paramCharSequence.setSpan(new AbsoluteSizeSpan(this.agVR, false), 0, paramCharSequence.length(), 33);
+      this.agVJ.setHint(new SpannedString(paramCharSequence));
     }
-    AppMethodBeat.o(49428);
+    AppMethodBeat.o(73165);
   }
   
   public final void setImeOptions(int paramInt)
   {
-    AppMethodBeat.i(49417);
-    if (this.AZe != null) {
-      this.AZe.setImeOptions(paramInt);
+    AppMethodBeat.i(73153);
+    if (this.agVJ != null) {
+      this.agVJ.setImeOptions(paramInt);
     }
-    AppMethodBeat.o(49417);
+    AppMethodBeat.o(73153);
   }
   
   public final void setInputEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(49420);
-    if (this.AZe != null) {
-      this.AZe.setEnabled(paramBoolean);
+    AppMethodBeat.i(73156);
+    if (this.agVJ != null) {
+      this.agVJ.setEnabled(paramBoolean);
     }
-    AppMethodBeat.o(49420);
+    AppMethodBeat.o(73156);
   }
   
   public final void setInputType(int paramInt)
   {
-    AppMethodBeat.i(49418);
-    if (this.AZe != null) {
-      this.AZe.setInputType(paramInt);
+    AppMethodBeat.i(73154);
+    if (this.agVJ != null) {
+      this.agVJ.setInputType(paramInt);
     }
-    AppMethodBeat.o(49418);
+    AppMethodBeat.o(73154);
   }
   
   public final void setIsSecretAnswer(boolean paramBoolean)
   {
-    AppMethodBeat.i(49455);
-    if (this.AZe != null) {
-      this.AZe.setIsSecurityAnswerFormat(paramBoolean);
+    AppMethodBeat.i(73197);
+    if (this.agVJ != null) {
+      this.agVJ.setIsSecurityAnswerFormat(paramBoolean);
     }
-    AppMethodBeat.o(49455);
+    AppMethodBeat.o(73197);
   }
   
   public final void setKeyListener(KeyListener paramKeyListener)
   {
-    AppMethodBeat.i(49446);
-    if (this.AZe != null) {
-      this.AZe.setKeyListener(paramKeyListener);
+    AppMethodBeat.i(73188);
+    if (this.agVJ != null) {
+      this.agVJ.setKeyListener(paramKeyListener);
     }
-    AppMethodBeat.o(49446);
+    AppMethodBeat.o(73188);
   }
   
   public final void setLogicDelegate(com.tencent.mm.wallet_core.ui.formview.a.b paramb)
   {
-    this.AZi = paramb;
+    this.agVN = paramb;
   }
   
   public final void setMaxInputLength(int paramInt)
   {
-    this.pXE = paramInt;
+    this.Nzx = paramInt;
   }
   
   public final void setMinInputLength(int paramInt)
   {
-    this.pXF = paramInt;
+    this.Nzy = paramInt;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(49442);
+    AppMethodBeat.i(73179);
     super.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(49442);
+    AppMethodBeat.o(73179);
   }
   
   public final void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
-    AppMethodBeat.i(49432);
-    this.AZe.setOnEditorActionListener(paramOnEditorActionListener);
-    AppMethodBeat.o(49432);
+    AppMethodBeat.i(73169);
+    this.agVJ.setOnEditorActionListener(paramOnEditorActionListener);
+    AppMethodBeat.o(73169);
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.pXn = paramOnFocusChangeListener;
+    this.Nzg = paramOnFocusChangeListener;
   }
   
   public final void setOnInfoIvClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(49443);
-    this.pXo = paramOnClickListener;
+    AppMethodBeat.i(73180);
+    this.Nzh = paramOnClickListener;
     if (getInfoIv() != null) {
-      getInfoIv().setOnClickListener(this.pXo);
+      getInfoIv().setOnClickListener(this.Nzh);
     }
-    AppMethodBeat.o(49443);
+    AppMethodBeat.o(73180);
   }
   
-  public final void setOnInputValidChangeListener(WalletFormView.a parama)
+  public final void setOnInputValidChangeListener(a parama)
   {
-    this.AZg = parama;
+    this.agVL = parama;
   }
   
   public final void setSelection(int paramInt)
   {
-    AppMethodBeat.i(49438);
-    if (this.AZe != null) {
-      this.AZe.setSelection(paramInt);
+    AppMethodBeat.i(73175);
+    if (this.agVJ != null) {
+      this.agVJ.setSelection(paramInt);
     }
-    AppMethodBeat.o(49438);
+    AppMethodBeat.o(73175);
   }
   
   public final void setText(String paramString)
   {
-    AppMethodBeat.i(49419);
-    if ((this.AZe != null) && ((this.AZi == null) || (!this.AZi.c(this, paramString))))
+    AppMethodBeat.i(73155);
+    if ((this.agVJ != null) && ((this.agVN == null) || (!this.agVN.a(this, paramString))))
     {
-      this.AZe.setText(paramString);
-      this.AZe.setSelection(getInputLength());
+      this.agVJ.setText(paramString);
+      this.agVJ.setSelection(getInputLength());
     }
-    AppMethodBeat.o(49419);
+    AppMethodBeat.o(73155);
   }
   
   public final void setTitleText(String paramString)
   {
-    AppMethodBeat.i(49413);
-    this.pXs = paramString;
-    dTa();
-    AppMethodBeat.o(49413);
+    AppMethodBeat.i(73148);
+    this.Nzl = paramString;
+    jPC();
+    AppMethodBeat.o(73148);
   }
   
-  public final void setmWalletFormViewListener(WalletFormView.c paramc)
+  public final void setTitleWidth(int paramInt)
   {
-    this.AZd = paramc;
+    AppMethodBeat.i(182539);
+    this.adZj = paramInt;
+    if (this.adZj > 0)
+    {
+      ViewGroup.LayoutParams localLayoutParams = this.sUt.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.width = this.adZj;
+        this.sUt.setLayoutParams(localLayoutParams);
+      }
+    }
+    AppMethodBeat.o(182539);
+  }
+  
+  public final void setmContentAbnormalMoneyCheck(boolean paramBoolean)
+  {
+    this.agVT = paramBoolean;
+  }
+  
+  public final void setmWalletFormViewListener(c paramc)
+  {
+    this.agVI = paramc;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onInputValidChange(boolean paramBoolean);
+  }
+  
+  public static abstract interface b
+    extends WalletFormView.a
+  {}
+  
+  public static abstract interface c
+  {
+    public abstract void f(CharSequence paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.WalletFormView
  * JD-Core Version:    0.7.0.1
  */

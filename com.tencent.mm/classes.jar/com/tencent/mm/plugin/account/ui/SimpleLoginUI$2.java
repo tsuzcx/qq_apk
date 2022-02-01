@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.nx;
+import com.tencent.mm.sdk.event.IListener;
 
-final class SimpleLoginUI$2
-  implements MenuItem.OnMenuItemClickListener
+class SimpleLoginUI$2
+  extends IListener<nx>
 {
-  SimpleLoginUI$2(SimpleLoginUI paramSimpleLoginUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  SimpleLoginUI$2(SimpleLoginUI paramSimpleLoginUI, q paramq)
   {
-    AppMethodBeat.i(125597);
-    SimpleLoginUI.f(this.gKt);
-    AppMethodBeat.o(125597);
-    return true;
+    super(paramq);
+    AppMethodBeat.i(305068);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(305068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.SimpleLoginUI.2
  * JD-Core Version:    0.7.0.1
  */

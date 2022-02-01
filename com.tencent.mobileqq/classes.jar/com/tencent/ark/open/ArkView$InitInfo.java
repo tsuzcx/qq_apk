@@ -1,17 +1,25 @@
 package com.tencent.ark.open;
 
-class ArkView$InitInfo
+import android.text.TextUtils;
+
+public class ArkView$InitInfo
 {
-  public String appConfig;
-  public String appName;
+  public String appID;
   public String appPath;
-  public String appView;
-  public String metaData;
-  public String minVersion;
+  public String config = "";
+  public String meta = "";
+  public String minVersion = "0.0.0.1";
+  public String resPath;
+  public String view;
+  
+  public boolean isValid()
+  {
+    return (!TextUtils.isEmpty(this.appID)) && (!TextUtils.isEmpty(this.view));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkView.InitInfo
  * JD-Core Version:    0.7.0.1
  */

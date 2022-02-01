@@ -1,24 +1,23 @@
 package cooperation.qzone.patch;
 
-import alud;
-import bjny;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class QZonePatchService$1
+class QZonePatchService$1
   implements Runnable
 {
-  public QZonePatchService$1(bjny parambjny, String paramString1, String paramString2) {}
+  QZonePatchService$1(QZonePatchService paramQZonePatchService, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bjny.b(alud.a(2131712465));
-    bjny.b(alud.a(2131712466));
-    bjny.a();
-    bjny.b(this.a, this.b);
+    QZonePatchService.log(HardCodeUtil.a(2131909647));
+    QZonePatchService.log(HardCodeUtil.a(2131909648));
+    QZonePatchService.access$000();
+    QZonePatchService.access$100(this.val$patchMd5, this.val$patchUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.patch.QZonePatchService.1
  * JD-Core Version:    0.7.0.1
  */

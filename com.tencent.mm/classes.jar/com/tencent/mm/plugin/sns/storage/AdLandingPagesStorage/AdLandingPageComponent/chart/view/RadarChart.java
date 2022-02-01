@@ -13,69 +13,69 @@ import java.util.ArrayList;
 public class RadarChart
   extends Chart
 {
+  private RadarGrid QMA;
+  private RadarDataLayer[] QMB;
+  private a QMC;
+  private boolean QMD;
+  private boolean QME;
+  public int QMF;
+  public int QMG;
+  private int QMH;
+  public Spannable[] QMI;
+  public ArrayList<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a> QMx;
+  private c QMy;
+  public TextView QMz;
   private Context context;
-  public ArrayList<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a> rtZ;
-  private c rua;
-  public TextView rub;
-  private RadarGrid ruc;
-  private RadarDataLayer[] rud;
-  private a rue;
-  private boolean ruf;
-  private boolean rug;
-  public int ruh;
-  public int rui;
-  private int ruj;
-  public Spannable[] ruk;
-  private float rul;
+  private float maxValue;
   
   public RadarChart(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(36958);
-    this.rua = new c();
-    this.ruf = true;
-    this.rug = true;
-    this.ruh = 3;
-    this.rui = 0;
-    this.ruj = 4;
-    this.rul = 1.0F;
+    AppMethodBeat.i(96338);
+    this.QMy = new c();
+    this.QMD = true;
+    this.QME = true;
+    this.QMF = 3;
+    this.QMG = 0;
+    this.QMH = 4;
+    this.maxValue = 1.0F;
     this.context = paramContext;
-    AppMethodBeat.o(36958);
+    AppMethodBeat.o(96338);
   }
   
   public RadarChart(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(36959);
-    this.rua = new c();
-    this.ruf = true;
-    this.rug = true;
-    this.ruh = 3;
-    this.rui = 0;
-    this.ruj = 4;
-    this.rul = 1.0F;
+    AppMethodBeat.i(96339);
+    this.QMy = new c();
+    this.QMD = true;
+    this.QME = true;
+    this.QMF = 3;
+    this.QMG = 0;
+    this.QMH = 4;
+    this.maxValue = 1.0F;
     this.context = paramContext;
-    AppMethodBeat.o(36959);
+    AppMethodBeat.o(96339);
   }
   
   public c getGridStyle()
   {
-    AppMethodBeat.i(36963);
-    if (this.ruc == null)
+    AppMethodBeat.i(96343);
+    if (this.QMA == null)
     {
-      localc = this.rua;
-      AppMethodBeat.o(36963);
+      localc = this.QMy;
+      AppMethodBeat.o(96343);
       return localc;
     }
-    this.rua = this.ruc.getGridStyle();
-    c localc = this.ruc.getGridStyle();
-    AppMethodBeat.o(36963);
+    this.QMy = this.QMA.getGridStyle();
+    c localc = this.QMA.getGridStyle();
+    AppMethodBeat.o(96343);
     return localc;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(36961);
+    AppMethodBeat.i(96341);
     paramInt2 = getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
@@ -83,13 +83,13 @@ public class RadarChart
       getChildAt(paramInt1).layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
       paramInt1 += 1;
     }
-    AppMethodBeat.o(36961);
+    AppMethodBeat.o(96341);
   }
   
   public void setData(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a... paramVarArgs)
   {
     int k = 0;
-    AppMethodBeat.i(36960);
+    AppMethodBeat.i(96340);
     removeAllViews();
     int j = paramVarArgs.length;
     int i = 0;
@@ -98,7 +98,7 @@ public class RadarChart
       if (paramVarArgs[i].size() <= 0)
       {
         paramVarArgs = new Exception("Not enough elements.");
-        AppMethodBeat.o(36960);
+        AppMethodBeat.o(96340);
         throw paramVarArgs;
       }
       i += 1;
@@ -112,56 +112,56 @@ public class RadarChart
         if (!paramVarArgs[i].a(paramVarArgs[j]))
         {
           paramVarArgs = new Error("Layer not compatible.");
-          AppMethodBeat.o(36960);
+          AppMethodBeat.o(96340);
           throw paramVarArgs;
         }
         j += 1;
       }
       i += 1;
     }
-    this.ruk = paramVarArgs[0].cqI();
-    this.rui = paramVarArgs[0].size();
-    if (this.rtZ == null) {
-      this.rtZ = new ArrayList();
+    this.QMI = paramVarArgs[0].hiG();
+    this.QMG = paramVarArgs[0].size();
+    if (this.QMx == null) {
+      this.QMx = new ArrayList();
     }
     j = paramVarArgs.length;
     i = 0;
     while (i < j)
     {
       com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a locala = paramVarArgs[i];
-      this.rtZ.add(locala);
+      this.QMx.add(locala);
       i += 1;
     }
-    this.ruc = new RadarGrid(this.context, this.rui, this.ruj, this.rul, this.ruk, this.rua);
-    addView(this.ruc);
-    this.rud = new RadarDataLayer[this.ruh];
+    this.QMA = new RadarGrid(this.context, this.QMG, this.QMH, this.maxValue, this.QMI, this.QMy);
+    addView(this.QMA);
+    this.QMB = new RadarDataLayer[this.QMF];
     i = k;
-    while ((i < this.rud.length) && (this.rtZ.size() > i))
+    while ((i < this.QMB.length) && (this.QMx.size() > i))
     {
-      this.rud[i] = new RadarDataLayer(this.context, this.rul, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a)this.rtZ.get(i));
-      addView(this.rud[i]);
+      this.QMB[i] = new RadarDataLayer(this.context, this.maxValue, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a)this.QMx.get(i));
+      addView(this.QMB[i]);
       i += 1;
     }
-    if (this.rue == null) {
-      this.rue = new a(this.context, this.rua);
+    if (this.QMC == null) {
+      this.QMC = new a(this.context, this.QMy);
     }
-    addView(this.rue);
-    AppMethodBeat.o(36960);
+    addView(this.QMC);
+    AppMethodBeat.o(96340);
   }
   
   public void setGridStyle(c paramc)
   {
-    AppMethodBeat.i(36962);
-    this.rua = paramc;
-    if (this.ruc != null) {
-      this.ruc.setGridStyle(paramc);
+    AppMethodBeat.i(96342);
+    this.QMy = paramc;
+    if (this.QMA != null) {
+      this.QMA.setGridStyle(paramc);
     }
-    AppMethodBeat.o(36962);
+    AppMethodBeat.o(96342);
   }
   
   public void setLatitudeNum(int paramInt)
   {
-    this.ruj = paramInt;
+    this.QMH = paramInt;
   }
 }
 

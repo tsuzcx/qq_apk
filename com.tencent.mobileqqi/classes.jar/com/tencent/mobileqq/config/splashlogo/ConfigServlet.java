@@ -28,10 +28,10 @@ import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fms;
 import fmt;
 import fmu;
 import fmv;
-import fmw;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.text.ParseException;
@@ -1009,7 +1009,7 @@ public class ConfigServlet
         }
         localObject1 = ((StringBuffer)localObject1).toString();
         if (!a(String.valueOf(l1))) {
-          new fmt(this, str1).start();
+          new fms(this, str1).start();
         }
         localObject2 = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + l1;
         Config.a.a(Config.a.a(l1, str2, str1, (String)localObject1, (String)localObject2, l3 + "|" + l2, (short)j));
@@ -1094,7 +1094,7 @@ public class ConfigServlet
             if (f1 < 0.0F) {
               f5 = 50.0F;
             }
-            new fmu(this, paramString, (String)localObject, paramInt, str1, f2, f3, f5, str2, f4).start();
+            new fmt(this, paramString, (String)localObject, paramInt, str1, f2, f3, f5, str2, f4).start();
           }
           return;
         }
@@ -1117,7 +1117,7 @@ public class ConfigServlet
     if ((paramQQAppInterface != null) && (paramQQAppInterface.a() != null))
     {
       e = paramQQAppInterface.e();
-      new fmw(paramQQAppInterface).start();
+      new fmv(paramQQAppInterface).start();
     }
   }
   
@@ -1152,7 +1152,7 @@ public class ConfigServlet
           {
             new StringBuilder().append(getAppRuntime().getApplication().getFilesDir().getAbsolutePath()).append("/").append("flashlogo.png").toString();
             localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            new fmv(this, str1, paramInt, localSimpleDateFormat.parse(str2).getTime() + "|" + localSimpleDateFormat.parse(paramString).getTime(), str3).start();
+            new fmu(this, str1, paramInt, localSimpleDateFormat.parse(str2).getTime() + "|" + localSimpleDateFormat.parse(paramString).getTime(), str3).start();
           }
           return;
         }

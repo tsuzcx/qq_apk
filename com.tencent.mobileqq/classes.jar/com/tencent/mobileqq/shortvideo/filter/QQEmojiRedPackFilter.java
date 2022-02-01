@@ -73,7 +73,9 @@ public class QQEmojiRedPackFilter
       localRenderBuffer.bind();
       if (this.mWatermarkFilter != null)
       {
-        float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.mWatermarkWidth, this.mWatermarkHeight, this.mWatermarkWidth, this.mWatermarkHeight);
+        i = this.mWatermarkWidth;
+        j = this.mWatermarkHeight;
+        float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(i, j, i, j);
         android.opengl.Matrix.setIdentityM(arrayOfFloat, 0);
         android.opengl.Matrix.scaleM(arrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
         this.mWatermarkFilter.drawTexture(this.mWatermarkTextureIdForEncode, null, arrayOfFloat);
@@ -86,11 +88,13 @@ public class QQEmojiRedPackFilter
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
-    if (this.mWatermarkFilter != null) {
-      this.mWatermarkFilter.destroy();
+    Object localObject = this.mWatermarkFilter;
+    if (localObject != null) {
+      ((GPUAlphaBlendFilter)localObject).destroy();
     }
-    if (this.mRenderFBO != null) {
-      this.mRenderFBO.destroy();
+    localObject = this.mRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
   }
   
@@ -101,7 +105,7 @@ public class QQEmojiRedPackFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter
  * JD-Core Version:    0.7.0.1
  */

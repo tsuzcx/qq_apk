@@ -35,14 +35,15 @@ public final class cell_pic_text
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.data_num, 0);
-    if (this.data_list != null) {
-      paramJceOutputStream.write(this.data_list, 1);
+    ArrayList localArrayList = this.data_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_pic_text
  * JD-Core Version:    0.7.0.1
  */

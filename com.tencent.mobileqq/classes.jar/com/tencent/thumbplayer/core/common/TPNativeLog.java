@@ -10,7 +10,7 @@ public class TPNativeLog
   public static final int LEVEL_VERBOSE = 0;
   public static final int LEVEL_WARN = 3;
   private static final String TAG = "PlayerCore";
-  private static ITPNativeLogCallback mLogCallback = null;
+  private static ITPNativeLogCallback mLogCallback;
   
   @TPMethodCalledByNative
   private static void onPrintLog(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
@@ -22,11 +22,19 @@ public class TPNativeLog
       {
         paramArrayOfByte1 = new String(paramArrayOfByte1, 0, paramInt2, "UTF-8");
         paramArrayOfByte2 = new String(paramArrayOfByte2, 0, paramInt3, "UTF-8");
-        paramInt2 = i;
-        switch (paramInt1)
+        if (paramInt1 == 0) {
+          break label87;
+        }
+        if (paramInt1 == 1) {
+          break label82;
+        }
+        if (paramInt1 == 2) {
+          break label77;
+        }
+        if (paramInt1 != 3)
         {
-        case 4: 
-          printLog(paramInt2, paramArrayOfByte1, paramArrayOfByte2);
+          paramInt1 = i;
+          printLog(paramInt1, paramArrayOfByte1, paramArrayOfByte2);
           return;
         }
       }
@@ -35,15 +43,16 @@ public class TPNativeLog
         printLog(4, paramArrayOfByte1.getMessage());
         return;
       }
-      paramInt2 = 4;
+      paramInt1 = 1;
       continue;
-      paramInt2 = 3;
+      label77:
+      paramInt1 = 2;
       continue;
-      paramInt2 = 2;
+      label82:
+      paramInt1 = 3;
       continue;
-      paramInt2 = 1;
-      continue;
-      paramInt2 = i;
+      label87:
+      paramInt1 = 4;
     }
   }
   
@@ -54,9 +63,10 @@ public class TPNativeLog
   
   public static void printLog(int paramInt, String paramString1, String paramString2)
   {
-    if (mLogCallback != null)
+    ITPNativeLogCallback localITPNativeLogCallback = mLogCallback;
+    if (localITPNativeLogCallback != null)
     {
-      mLogCallback.onPrintLog(paramInt, paramString1, paramString2);
+      localITPNativeLogCallback.onPrintLog(paramInt, paramString1, paramString2);
       return;
     }
     printLogDefault(paramInt, paramString1, paramString2);
@@ -64,25 +74,32 @@ public class TPNativeLog
   
   public static void printLogDefault(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      Log.v(paramString1, paramString2);
-      return;
-    case 0: 
-      Log.v(paramString1, paramString2);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              Log.v(paramString1, paramString2);
+              return;
+            }
+            Log.e(paramString1, paramString2);
+            return;
+          }
+          Log.w(paramString1, paramString2);
+          return;
+        }
+        Log.i(paramString1, paramString2);
+        return;
+      }
       Log.d(paramString1, paramString2);
       return;
-    case 2: 
-      Log.i(paramString1, paramString2);
-      return;
-    case 3: 
-      Log.w(paramString1, paramString2);
-      return;
     }
-    Log.e(paramString1, paramString2);
+    Log.v(paramString1, paramString2);
   }
   
   public static void setLogCallback(ITPNativeLogCallback paramITPNativeLogCallback)
@@ -92,7 +109,7 @@ public class TPNativeLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPNativeLog
  * JD-Core Version:    0.7.0.1
  */

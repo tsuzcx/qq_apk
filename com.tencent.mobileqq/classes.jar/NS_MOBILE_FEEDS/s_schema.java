@@ -14,7 +14,7 @@ public final class s_schema
   public String postparams = "";
   public String schemapageurl = "";
   public byte usepost;
-  public boolean yingyongbao;
+  public boolean yingyongbao = false;
   
   public s_schema() {}
   
@@ -45,28 +45,33 @@ public final class s_schema
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.actiontype, 0);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 1);
+    String str = this.actionurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.downloadurl != null) {
-      paramJceOutputStream.write(this.downloadurl, 2);
+    str = this.downloadurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 3);
+    str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.postparams != null) {
-      paramJceOutputStream.write(this.postparams, 4);
+    str = this.postparams;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.usepost, 5);
-    if (this.schemapageurl != null) {
-      paramJceOutputStream.write(this.schemapageurl, 6);
+    str = this.schemapageurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.yingyongbao, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_schema
  * JD-Core Version:    0.7.0.1
  */

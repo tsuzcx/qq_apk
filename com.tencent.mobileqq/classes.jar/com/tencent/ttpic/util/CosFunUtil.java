@@ -53,31 +53,29 @@ public class CosFunUtil
     float f3 = pointWithW(localPointF2, localPointF1, new PointF(paramArrayOfFloat[18][0], paramArrayOfFloat[18][1])).x;
     float f4 = pointWithW(localPointF2, localPointF1, new PointF(paramArrayOfFloat[9][0], paramArrayOfFloat[9][1])).y;
     PointF localPointF3 = w_pointWithW(localPointF2, localPointF1, new PointF((f2 + f3) * 0.5F, (f1 + f4) * 0.5F));
-    Object localObject = w_pointWithW(localPointF2, localPointF1, new PointF((f3 - f2) * 0.6F, 0.0F));
-    localObject = new PointF(((PointF)localObject).x - localPointF1.x, ((PointF)localObject).y - localPointF1.y);
+    PointF localPointF4 = w_pointWithW(localPointF2, localPointF1, new PointF((f3 - f2) * 0.6F, 0.0F));
+    localPointF4 = new PointF(localPointF4.x - localPointF1.x, localPointF4.y - localPointF1.y);
     localPointF2 = w_pointWithW(localPointF2, localPointF1, new PointF(0.0F, (f4 - f1) * 0.55F));
-    localPointF2 = new PointF(localPointF2.x - localPointF1.x, localPointF2.y - localPointF1.y);
-    localPointF1 = new PointF(localPointF3.x, localPointF3.y);
-    localPointF3 = new PointF(((PointF)localObject).x, ((PointF)localObject).y);
-    localPointF2 = new PointF(localPointF2.x, localPointF2.y);
-    paramArrayOfFloat[99][0] = (localPointF1.x - localPointF3.x - localPointF2.x);
-    paramArrayOfFloat[99][1] = (localPointF1.y - localPointF3.y - localPointF2.y);
-    paramArrayOfFloat[100][0] = (localPointF1.x - localPointF3.x);
-    paramArrayOfFloat[100][1] = (localPointF1.y - localPointF3.y);
-    paramArrayOfFloat[101][0] = (localPointF1.x - localPointF3.x + localPointF2.x);
-    paramArrayOfFloat[101][1] = (localPointF1.y - localPointF3.y + localPointF2.y);
-    paramArrayOfFloat[102][0] = (localPointF1.x + localPointF2.x);
-    paramArrayOfFloat[102][1] = (localPointF1.y + localPointF2.y);
-    paramArrayOfFloat[103][0] = (localPointF1.x + localPointF3.x + localPointF2.x);
-    paramArrayOfFloat[103][1] = (localPointF1.y + localPointF3.y + localPointF2.y);
-    paramArrayOfFloat[104][0] = (localPointF1.x + localPointF3.x);
-    paramArrayOfFloat[104][1] = (localPointF1.y + localPointF3.y);
-    paramArrayOfFloat[105][0] = (localPointF1.x + localPointF3.x - localPointF2.x);
-    localObject = paramArrayOfFloat[105];
-    f1 = localPointF1.y;
-    localObject[1] = (localPointF3.y + f1 - localPointF2.y);
-    paramArrayOfFloat[106][0] = (localPointF1.x - localPointF2.x);
-    paramArrayOfFloat[106][1] = (localPointF1.y - localPointF2.y);
+    localPointF1 = new PointF(localPointF2.x - localPointF1.x, localPointF2.y - localPointF1.y);
+    localPointF2 = new PointF(localPointF3.x, localPointF3.y);
+    localPointF3 = new PointF(localPointF4.x, localPointF4.y);
+    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
+    paramArrayOfFloat[99][0] = (localPointF2.x - localPointF3.x - localPointF1.x);
+    paramArrayOfFloat[99][1] = (localPointF2.y - localPointF3.y - localPointF1.y);
+    paramArrayOfFloat[100][0] = (localPointF2.x - localPointF3.x);
+    paramArrayOfFloat[100][1] = (localPointF2.y - localPointF3.y);
+    paramArrayOfFloat[101][0] = (localPointF2.x - localPointF3.x + localPointF1.x);
+    paramArrayOfFloat[101][1] = (localPointF2.y - localPointF3.y + localPointF1.y);
+    paramArrayOfFloat[102][0] = (localPointF2.x + localPointF1.x);
+    paramArrayOfFloat[102][1] = (localPointF2.y + localPointF1.y);
+    paramArrayOfFloat[103][0] = (localPointF2.x + localPointF3.x + localPointF1.x);
+    paramArrayOfFloat[103][1] = (localPointF2.y + localPointF3.y + localPointF1.y);
+    paramArrayOfFloat[104][0] = (localPointF2.x + localPointF3.x);
+    paramArrayOfFloat[104][1] = (localPointF2.y + localPointF3.y);
+    paramArrayOfFloat[105][0] = (localPointF2.x + localPointF3.x - localPointF1.x);
+    paramArrayOfFloat[105][1] = (localPointF2.y + localPointF3.y - localPointF1.y);
+    paramArrayOfFloat[106][0] = (localPointF2.x - localPointF1.x);
+    paramArrayOfFloat[106][1] = (localPointF2.y - localPointF1.y);
   }
   
   private static PointF pointWithW(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
@@ -91,23 +89,29 @@ public class CosFunUtil
       return;
     }
     scale(paramFaceFeature.points, paramDouble);
-    paramFaceFeature.width = ((int)(paramFaceFeature.width * paramDouble));
-    paramFaceFeature.height = ((int)(paramFaceFeature.height * paramDouble));
+    double d = paramFaceFeature.width;
+    Double.isNaN(d);
+    paramFaceFeature.width = ((int)(d * paramDouble));
+    d = paramFaceFeature.height;
+    Double.isNaN(d);
+    paramFaceFeature.height = ((int)(d * paramDouble));
   }
   
   public static void scale(List<PointF> paramList, double paramDouble)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        PointF localPointF = (PointF)paramList.next();
-        localPointF.x = ((float)(localPointF.x * paramDouble));
-        localPointF.y = ((float)(localPointF.y * paramDouble));
-      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      PointF localPointF = (PointF)paramList.next();
+      double d = localPointF.x;
+      Double.isNaN(d);
+      localPointF.x = ((float)(d * paramDouble));
+      d = localPointF.y;
+      Double.isNaN(d);
+      localPointF.y = ((float)(d * paramDouble));
     }
   }
   
@@ -120,7 +124,7 @@ public class CosFunUtil
     {
       float f3 = AlgoUtils.distanceOfPoint2Line((PointF)paramList.get(99), (PointF)paramList.get(101), f2, (PointF)paramList.get(i));
       float f4 = AlgoUtils.distanceOfPoint2Line((PointF)paramList.get(99), (PointF)paramList.get(105), f1, (PointF)paramList.get(i));
-      ((PointF)paramList.get(i)).set(1.0F * f3, 1.0F * f4);
+      ((PointF)paramList.get(i)).set(f3 * 1.0F, 1.0F * f4);
       i += 1;
     }
     paramList.subList(83, paramList.size()).clear();
@@ -135,7 +139,7 @@ public class CosFunUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.CosFunUtil
  * JD-Core Version:    0.7.0.1
  */

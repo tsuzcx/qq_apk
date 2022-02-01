@@ -1,79 +1,91 @@
 package com.tencent.mm.bp;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.support.v4.app.s.c;
-import android.text.format.Time;
+import android.content.Intent;
+import com.tencent.d.a.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.autogen.a.nr;
+import com.tencent.mm.autogen.a.nr.b;
+import com.tencent.mm.br.c;
+import com.tencent.mm.k.f;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.ca;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.xwalk.core.Log;
 
 public final class a
 {
-  private static String etE = "";
-  
-  public static String Mt()
+  public static boolean aDN()
   {
-    AppMethodBeat.i(89331);
-    if (bo.isNullOrNil(etE)) {
-      etE = com.tencent.mm.kernel.a.Mu().getString("message_channel_id", "message_channel_new_id");
-    }
-    String str = etE;
-    AppMethodBeat.o(89331);
-    return str;
+    AppMethodBeat.i(231174);
+    nr localnr = new nr();
+    localnr.hQd.hHC = 7;
+    localnr.publish();
+    boolean bool = localnr.hQe.hCQ;
+    AppMethodBeat.o(231174);
+    return bool;
   }
   
-  public static void akR(String paramString)
+  public static void aM(Context paramContext, Intent paramIntent)
   {
-    etE = paramString;
-  }
-  
-  public static int bYt()
-  {
-    if (Build.VERSION.SDK_INT < 19) {
-      return 2130839845;
-    }
-    return 2130839847;
-  }
-  
-  public static s.c br(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(89332);
-    paramContext = new s.c(paramContext, paramString);
-    AppMethodBeat.o(89332);
-    return paramContext;
-  }
-  
-  public static String dkN()
-  {
-    AppMethodBeat.i(89333);
-    if (d.fv(26))
+    AppMethodBeat.i(231179);
+    if (iGm())
     {
-      localObject = new Time();
-      ((Time)localObject).setToNow();
-      int i = ((Time)localObject).hour;
-      int j = ((Time)localObject).minute;
-      ah.getContext();
-      if (!com.tencent.mm.m.a.bX(i, j)) {
-        ab.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
-      }
-      for (i = 1; i != 0; i = 0)
+      Log.i("NearbyHelper", "gotoNearByUILiveFriends");
+      ((e)h.az(e.class)).enterFinderLbsLiveFriendsUI(paramContext, paramIntent);
+      AppMethodBeat.o(231179);
+      return;
+    }
+    Log.i("NearbyHelper", "gotoNearBy");
+    if (!iGn())
+    {
+      h.baC().aZJ();
+      if (((n)h.ax(n.class)).gaW().dkF() > 0)
       {
-        AppMethodBeat.o(89333);
-        return "message_dnd_mode_channel_id";
+        c.ai(paramContext, "nearby", ".ui.NearbyFriendShowSayHiUI");
+        AppMethodBeat.o(231179);
+        return;
       }
     }
-    Object localObject = Mt();
-    AppMethodBeat.o(89333);
-    return localObject;
+    c.ai(paramContext, "nearby", ".ui.NearbyFriendsUI");
+    AppMethodBeat.o(231179);
+  }
+  
+  public static boolean iGm()
+  {
+    AppMethodBeat.i(231164);
+    boolean bool = ((cn)h.az(cn.class)).getFinderUtilApi().fgF();
+    AppMethodBeat.o(231164);
+    return bool;
+  }
+  
+  public static boolean iGn()
+  {
+    AppMethodBeat.i(89923);
+    String str2 = ((com.tencent.mm.plugin.zero.b.a)h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("EnableStrangerChat");
+    String str1 = str2;
+    if (Util.isNullOrNil(str2)) {
+      str1 = "0";
+    }
+    boolean bool = "1".equals(str1);
+    AppMethodBeat.o(89923);
+    return bool;
+  }
+  
+  public static void li(Context paramContext)
+  {
+    AppMethodBeat.i(89924);
+    aM(paramContext, new Intent());
+    AppMethodBeat.o(89924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bp.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,46 @@
 package com.tencent.mm.plugin.wallet_core.d;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ac;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.wallet_core.model.aa;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class f
-  extends j<ac>
+  extends MAutoStorage<aa>
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(47076);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ac.info, "WalletKindInfo") };
-    AppMethodBeat.o(47076);
+    AppMethodBeat.i(70614);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(aa.info, "WalletFunciontList") };
+    AppMethodBeat.o(70614);
   }
   
-  public f(e parame)
+  public f(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ac.info, "WalletKindInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, aa.info, "WalletFunciontList", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final ArrayList<ac> cVk()
+  public final void c(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    ArrayList localArrayList = null;
-    AppMethodBeat.i(47075);
-    Cursor localCursor = this.db.a("select * from WalletKindInfo", null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(47075);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      localArrayList = new ArrayList();
-      do
-      {
-        ac localac = new ac();
-        localac.convertFrom(localCursor);
-        localArrayList.add(localac);
-      } while (localCursor.moveToNext());
-    }
-    localCursor.close();
-    AppMethodBeat.o(47075);
-    return localArrayList;
+    AppMethodBeat.i(70613);
+    aa localaa = new aa();
+    localaa.field_wallet_region = paramInt1;
+    localaa.field_function_list = paramString1;
+    localaa.field_new_list = paramString2;
+    localaa.field_banner_list = paramString3;
+    localaa.field_type_name_list = paramString4;
+    localaa.field_isShowSetting = paramInt2;
+    super.replace(localaa);
+    AppMethodBeat.o(70613);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.f
  * JD-Core Version:    0.7.0.1
  */

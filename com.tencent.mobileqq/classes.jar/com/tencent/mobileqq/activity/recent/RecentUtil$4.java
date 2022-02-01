@@ -1,47 +1,38 @@
 package com.tencent.mobileqq.activity.recent;
 
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import suv;
 
-public final class RecentUtil$4
+final class RecentUtil$4
   implements Runnable
 {
-  public RecentUtil$4(QQAppInterface paramQQAppInterface) {}
+  RecentUtil$4(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = suv.a().a(this.a);
+    List localList = TroopBarAssistantManager.a().h(this.a);
+    int j = 0;
     int i;
-    int j;
-    label19:
-    Object localObject;
-    if (localList == null)
-    {
+    if (localList == null) {
       i = 0;
-      j = 0;
-      if (j >= i) {
-        return;
-      }
-      localObject = (TroopBarData)localList.get(j);
-      if (localObject != null) {
-        break label58;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label19;
+    } else {
       i = localList.size();
-      break;
-      label58:
-      localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
-      if (localObject != null) {
-        suv.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
+    }
+    while (j < i)
+    {
+      Object localObject = (TroopBarData)localList.get(j);
+      if (localObject != null)
+      {
+        localObject = this.a.getMessageFacade().getLastMessage(((TroopBarData)localObject).mUin, 1008);
+        if (localObject != null) {
+          TroopBarAssistantManager.a().a(this.a, ((Message)localObject).time);
+        }
       }
+      j += 1;
     }
   }
 }

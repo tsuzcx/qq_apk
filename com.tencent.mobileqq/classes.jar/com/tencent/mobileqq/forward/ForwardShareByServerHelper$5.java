@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.forward;
 
-import asdt;
-import aseh;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ForwardShareByServerHelper$5
+class ForwardShareByServerHelper$5
   implements Runnable
 {
-  public ForwardShareByServerHelper$5(asdt paramasdt, String paramString) {}
+  ForwardShareByServerHelper$5(ForwardShareByServerHelper paramForwardShareByServerHelper, String paramString) {}
   
   public void run()
   {
-    aseh.a("KEY_STAGE_2_TOTAL", false);
-    if (asdt.a(this.this$0) == null) {
-      asdt.a(this.this$0, bdgm.a(asdt.a(this.this$0), 230));
+    ForwardStatisticsReporter.a("KEY_STAGE_2_TOTAL", false);
+    if (ForwardShareByServerHelper.f(this.this$0) == null)
+    {
+      ForwardShareByServerHelper localForwardShareByServerHelper = this.this$0;
+      ForwardShareByServerHelper.a(localForwardShareByServerHelper, DialogUtil.a(ForwardShareByServerHelper.d(localForwardShareByServerHelper), 230));
     }
-    asdt.a(this.this$0).setMessage(this.a);
-    asdt.a(this.this$0).setPositiveButton(2131694953, this.this$0.a);
-    asdt.a(this.this$0).show();
+    ForwardShareByServerHelper.f(this.this$0).setMessage(this.a);
+    ForwardShareByServerHelper.f(this.this$0).setPositiveButton(2131892267, this.this$0.d);
+    ForwardShareByServerHelper.f(this.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.5
  * JD-Core Version:    0.7.0.1
  */

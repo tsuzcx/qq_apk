@@ -3,7 +3,7 @@ package com.tencent.mobileqq.a.a;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -41,34 +41,52 @@ public class d
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("uin", parama.a);
-      localHashMap.put("ssoSeq", "" + parama.b);
-      localHashMap.put("msgSeq", "" + parama.d);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.b);
+      localHashMap.put("ssoSeq", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.d);
+      localHashMap.put("msgSeq", localStringBuilder.toString());
       localHashMap.put("fromUin", parama.e);
       localHashMap.put("toUin", parama.f);
-      localHashMap.put("onsectime", "" + parama.g);
-      localHashMap.put("normaltime", "" + parama.h);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.g);
+      localHashMap.put("onsectime", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.h);
+      localHashMap.put("normaltime", localStringBuilder.toString());
       MsfService.core.getStatReporter().a("OneSecEffect", paramBoolean, 0L, 0L, localHashMap, false, false);
     }
   }
   
   public static void a(ToServiceMsg paramToServiceMsg)
   {
-    int k = -1;
-    if ((TextUtils.isEmpty(paramToServiceMsg.getUin())) || ("0".equals(paramToServiceMsg.getUin())) || (a.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))) || (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))) {
-      return;
-    }
-    boolean bool2 = false;
-    long l2 = -1L;
-    Object localObject2 = paramToServiceMsg.getAttributes();
-    Object localObject1;
-    if (((Map)localObject2).containsKey("msgtype"))
+    if ((!TextUtils.isEmpty(paramToServiceMsg.getUin())) && (!"0".equals(paramToServiceMsg.getUin())) && (!a.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))))
     {
-      localObject1 = ((Map)localObject2).get("msgtype");
-      if (localObject1 == null) {}
-    }
-    for (int i = ((Integer)localObject1).intValue();; i = -1)
-    {
-      boolean bool1 = bool2;
+      if (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd())) {
+        return;
+      }
+      boolean bool2 = false;
+      long l2 = -1L;
+      Object localObject2 = paramToServiceMsg.getAttributes();
+      boolean bool1 = ((Map)localObject2).containsKey("msgtype");
+      int k = -1;
+      if (bool1)
+      {
+        localObject1 = ((Map)localObject2).get("msgtype");
+        if (localObject1 != null)
+        {
+          i = ((Integer)localObject1).intValue();
+          break label113;
+        }
+      }
+      int i = -1;
+      label113:
+      bool1 = bool2;
       if (((Map)localObject2).containsKey("resend_by_user"))
       {
         localObject1 = ((Map)localObject2).get("resend_by_user");
@@ -98,205 +116,254 @@ public class d
       if (((Map)localObject2).containsKey("fromUin"))
       {
         localObject1 = ((Map)localObject2).get("fromUin");
-        if (localObject1 == null) {}
-      }
-      for (localObject1 = (String)localObject1;; localObject1 = null)
-      {
-        if (((Map)localObject2).containsKey("uin"))
+        if (localObject1 != null)
         {
-          localObject2 = ((Map)localObject2).get("uin");
-          if (localObject2 == null) {}
+          localObject1 = (String)localObject1;
+          break label287;
         }
-        for (localObject2 = (String)localObject2; (i == -1000) && (!bool1) && (j <= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)); localObject2 = null)
+      }
+      Object localObject1 = null;
+      label287:
+      if (((Map)localObject2).containsKey("uin"))
+      {
+        localObject2 = ((Map)localObject2).get("uin");
+        if (localObject2 != null)
         {
-          d.a locala = new d.a(null);
-          locala.a = paramToServiceMsg.getUin();
-          locala.b = paramToServiceMsg.getRequestSsoSeq();
-          locala.c = SystemClock.elapsedRealtime();
-          locala.d = l1;
-          locala.e = ((String)localObject1);
-          locala.f = ((String)localObject2);
-          a.put((String)localObject1 + (String)localObject2 + l1, locala);
+          localObject2 = (String)localObject2;
+          break label328;
+        }
+      }
+      localObject2 = null;
+      label328:
+      if ((i == -1000) && (!bool1) && (j <= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
           return;
         }
-        break;
+        d.a locala = new d.a(null);
+        locala.a = paramToServiceMsg.getUin();
+        locala.b = paramToServiceMsg.getRequestSsoSeq();
+        locala.c = SystemClock.elapsedRealtime();
+        locala.d = l1;
+        locala.e = ((String)localObject1);
+        locala.f = ((String)localObject2);
+        paramToServiceMsg = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(l1);
+        paramToServiceMsg.put(localStringBuilder.toString(), locala);
       }
     }
   }
   
   public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject1 = null;
-    int k = -1;
-    if ((TextUtils.isEmpty(paramToServiceMsg.getUin())) || ("0".equals(paramToServiceMsg.getUin())) || (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd())) || (!paramFromServiceMsg.isSuccess())) {
-      return;
-    }
-    boolean bool2 = false;
-    long l2 = -1L;
-    Object localObject2 = paramToServiceMsg.getAttributes();
-    if (((Map)localObject2).containsKey("msgtype"))
+    if ((!TextUtils.isEmpty(paramToServiceMsg.getUin())) && (!"0".equals(paramToServiceMsg.getUin())) && ("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd())))
     {
-      paramToServiceMsg = ((Map)localObject2).get("msgtype");
-      if (paramToServiceMsg == null) {}
-    }
-    for (int i = ((Integer)paramToServiceMsg).intValue();; i = -1)
-    {
-      boolean bool1 = bool2;
-      if (((Map)localObject2).containsKey("resend_by_user"))
+      if (!paramFromServiceMsg.isSuccess()) {
+        return;
+      }
+      boolean bool2 = false;
+      long l2 = -1L;
+      Object localObject = paramToServiceMsg.getAttributes();
+      boolean bool1 = ((Map)localObject).containsKey("msgtype");
+      int k = -1;
+      if (bool1)
       {
-        paramToServiceMsg = ((Map)localObject2).get("resend_by_user");
+        paramToServiceMsg = ((Map)localObject).get("msgtype");
+        if (paramToServiceMsg != null)
+        {
+          i = ((Integer)paramToServiceMsg).intValue();
+          break label102;
+        }
+      }
+      int i = -1;
+      label102:
+      bool1 = bool2;
+      if (((Map)localObject).containsKey("resend_by_user"))
+      {
+        paramToServiceMsg = ((Map)localObject).get("resend_by_user");
         bool1 = bool2;
         if (paramToServiceMsg != null) {
           bool1 = ((Boolean)paramToServiceMsg).booleanValue();
         }
       }
       int j = k;
-      if (((Map)localObject2).containsKey("retryIndex"))
+      if (((Map)localObject).containsKey("retryIndex"))
       {
-        paramToServiceMsg = ((Map)localObject2).get("retryIndex");
+        paramToServiceMsg = ((Map)localObject).get("retryIndex");
         j = k;
         if (paramToServiceMsg != null) {
           j = ((Integer)paramToServiceMsg).intValue();
         }
       }
       long l1 = l2;
-      if (((Map)localObject2).containsKey("msgSeq"))
+      if (((Map)localObject).containsKey("msgSeq"))
       {
-        paramToServiceMsg = ((Map)localObject2).get("msgSeq");
+        paramToServiceMsg = ((Map)localObject).get("msgSeq");
         l1 = l2;
         if (paramToServiceMsg != null) {
           l1 = ((Long)paramToServiceMsg).longValue();
         }
       }
-      if (((Map)localObject2).containsKey("fromUin"))
+      bool2 = ((Map)localObject).containsKey("fromUin");
+      StringBuilder localStringBuilder = null;
+      if (bool2)
       {
-        paramToServiceMsg = ((Map)localObject2).get("fromUin");
-        if (paramToServiceMsg == null) {}
-      }
-      for (paramToServiceMsg = (String)paramToServiceMsg;; paramToServiceMsg = null)
-      {
-        paramFromServiceMsg = localObject1;
-        if (((Map)localObject2).containsKey("uin"))
+        paramToServiceMsg = ((Map)localObject).get("fromUin");
+        if (paramToServiceMsg != null)
         {
-          localObject2 = ((Map)localObject2).get("uin");
-          paramFromServiceMsg = localObject1;
-          if (localObject2 != null) {
-            paramFromServiceMsg = (String)localObject2;
-          }
+          paramToServiceMsg = (String)paramToServiceMsg;
+          break label271;
         }
-        if ((i != -1000) || (bool1) || (j > 0) || (TextUtils.isEmpty(paramToServiceMsg)) || (TextUtils.isEmpty(paramFromServiceMsg))) {
-          break;
+      }
+      paramToServiceMsg = null;
+      label271:
+      paramFromServiceMsg = localStringBuilder;
+      if (((Map)localObject).containsKey("uin"))
+      {
+        localObject = ((Map)localObject).get("uin");
+        paramFromServiceMsg = localStringBuilder;
+        if (localObject != null) {
+          paramFromServiceMsg = (String)localObject;
         }
-        paramToServiceMsg = paramToServiceMsg + paramFromServiceMsg + l1;
+      }
+      if ((i == -1000) && (!bool1) && (j <= 0) && (!TextUtils.isEmpty(paramToServiceMsg)))
+      {
+        if (TextUtils.isEmpty(paramFromServiceMsg)) {
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramToServiceMsg);
+        localStringBuilder.append(paramFromServiceMsg);
+        localStringBuilder.append(l1);
+        paramToServiceMsg = localStringBuilder.toString();
         paramFromServiceMsg = (d.a)a.get(paramToServiceMsg);
-        if (paramFromServiceMsg == null) {
-          break;
+        if (paramFromServiceMsg != null)
+        {
+          a.remove(paramToServiceMsg);
+          if (paramFromServiceMsg.g <= 0L) {
+            return;
+          }
+          paramFromServiceMsg.h = SystemClock.elapsedRealtime();
+          a(paramFromServiceMsg, true);
         }
-        a.remove(paramToServiceMsg);
-        if (paramFromServiceMsg.g <= 0L) {
-          break;
-        }
-        paramFromServiceMsg.h = SystemClock.elapsedRealtime();
-        a(paramFromServiceMsg, true);
-        return;
       }
     }
   }
   
   public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean)
   {
-    Object localObject1 = null;
-    int k = -1;
-    if ((TextUtils.isEmpty(paramToServiceMsg.getUin())) || ("0".equals(paramToServiceMsg.getUin())) || (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))) {
-      return;
-    }
-    boolean bool2 = false;
-    long l2 = -1L;
-    Object localObject2 = paramToServiceMsg.getAttributes();
-    if (((Map)localObject2).containsKey("msgtype"))
+    if ((!TextUtils.isEmpty(paramToServiceMsg.getUin())) && (!"0".equals(paramToServiceMsg.getUin())))
     {
-      paramToServiceMsg = ((Map)localObject2).get("msgtype");
-      if (paramToServiceMsg == null) {}
-    }
-    for (int i = ((Integer)paramToServiceMsg).intValue();; i = -1)
-    {
-      boolean bool1 = bool2;
-      if (((Map)localObject2).containsKey("resend_by_user"))
+      if (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd())) {
+        return;
+      }
+      boolean bool2 = false;
+      long l2 = -1L;
+      Object localObject = paramToServiceMsg.getAttributes();
+      boolean bool1 = ((Map)localObject).containsKey("msgtype");
+      int k = -1;
+      if (bool1)
       {
-        paramToServiceMsg = ((Map)localObject2).get("resend_by_user");
+        paramToServiceMsg = ((Map)localObject).get("msgtype");
+        if (paramToServiceMsg != null)
+        {
+          i = ((Integer)paramToServiceMsg).intValue();
+          break label95;
+        }
+      }
+      int i = -1;
+      label95:
+      bool1 = bool2;
+      if (((Map)localObject).containsKey("resend_by_user"))
+      {
+        paramToServiceMsg = ((Map)localObject).get("resend_by_user");
         bool1 = bool2;
         if (paramToServiceMsg != null) {
           bool1 = ((Boolean)paramToServiceMsg).booleanValue();
         }
       }
       int j = k;
-      if (((Map)localObject2).containsKey("retryIndex"))
+      if (((Map)localObject).containsKey("retryIndex"))
       {
-        paramToServiceMsg = ((Map)localObject2).get("retryIndex");
+        paramToServiceMsg = ((Map)localObject).get("retryIndex");
         j = k;
         if (paramToServiceMsg != null) {
           j = ((Integer)paramToServiceMsg).intValue();
         }
       }
       long l1 = l2;
-      if (((Map)localObject2).containsKey("msgSeq"))
+      if (((Map)localObject).containsKey("msgSeq"))
       {
-        paramToServiceMsg = ((Map)localObject2).get("msgSeq");
+        paramToServiceMsg = ((Map)localObject).get("msgSeq");
         l1 = l2;
         if (paramToServiceMsg != null) {
           l1 = ((Long)paramToServiceMsg).longValue();
         }
       }
-      if (((Map)localObject2).containsKey("fromUin"))
+      bool2 = ((Map)localObject).containsKey("fromUin");
+      StringBuilder localStringBuilder = null;
+      if (bool2)
       {
-        paramToServiceMsg = ((Map)localObject2).get("fromUin");
-        if (paramToServiceMsg == null) {}
+        paramToServiceMsg = ((Map)localObject).get("fromUin");
+        if (paramToServiceMsg != null)
+        {
+          paramToServiceMsg = (String)paramToServiceMsg;
+          break label267;
+        }
       }
-      for (paramToServiceMsg = (String)paramToServiceMsg;; paramToServiceMsg = null)
+      paramToServiceMsg = null;
+      label267:
+      paramFromServiceMsg = localStringBuilder;
+      if (((Map)localObject).containsKey("uin"))
       {
-        paramFromServiceMsg = localObject1;
-        if (((Map)localObject2).containsKey("uin"))
-        {
-          localObject2 = ((Map)localObject2).get("uin");
-          paramFromServiceMsg = localObject1;
-          if (localObject2 != null) {
-            paramFromServiceMsg = (String)localObject2;
-          }
+        localObject = ((Map)localObject).get("uin");
+        paramFromServiceMsg = localStringBuilder;
+        if (localObject != null) {
+          paramFromServiceMsg = (String)localObject;
         }
-        if ((i != -1000) || (bool1) || (j > 0) || (TextUtils.isEmpty(paramToServiceMsg)) || (TextUtils.isEmpty(paramFromServiceMsg))) {
-          break;
+      }
+      if ((i == -1000) && (!bool1) && (j <= 0) && (!TextUtils.isEmpty(paramToServiceMsg)))
+      {
+        if (TextUtils.isEmpty(paramFromServiceMsg)) {
+          return;
         }
-        paramToServiceMsg = paramToServiceMsg + paramFromServiceMsg + l1;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramToServiceMsg);
+        localStringBuilder.append(paramFromServiceMsg);
+        localStringBuilder.append(l1);
+        paramToServiceMsg = localStringBuilder.toString();
         paramFromServiceMsg = (d.a)a.get(paramToServiceMsg);
-        if (paramFromServiceMsg == null) {
-          break;
-        }
-        if (paramBoolean)
+        if (paramFromServiceMsg != null)
         {
-          if (paramFromServiceMsg.h <= 0L)
+          if (paramBoolean)
           {
-            paramFromServiceMsg.g = SystemClock.elapsedRealtime();
+            if (paramFromServiceMsg.h <= 0L)
+            {
+              paramFromServiceMsg.g = SystemClock.elapsedRealtime();
+              return;
+            }
+            a.remove(paramToServiceMsg);
             return;
           }
           a.remove(paramToServiceMsg);
-          return;
+          if (paramFromServiceMsg.g <= 0L) {
+            return;
+          }
+          if (paramFromServiceMsg.h <= 0L) {
+            paramFromServiceMsg.h = SystemClock.elapsedRealtime();
+          }
+          a(paramFromServiceMsg, true);
         }
-        a.remove(paramToServiceMsg);
-        if (paramFromServiceMsg.g <= 0L) {
-          break;
-        }
-        if (paramFromServiceMsg.h <= 0L) {
-          paramFromServiceMsg.h = SystemClock.elapsedRealtime();
-        }
-        a(paramFromServiceMsg, true);
-        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.a.a.d
  * JD-Core Version:    0.7.0.1
  */

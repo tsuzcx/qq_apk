@@ -1,11 +1,16 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.net.wifi.ScanResult;
-import java.util.Comparator;
+import com.tencent.mm.plugin.sns.storage.d;
+import com.tencent.mm.storagebase.h.b;
 
 final class al$1
-  implements Comparator<ScanResult>
-{}
+  implements h.b
+{
+  public final String[] getSQLs()
+  {
+    return d.SQL_CREATE;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

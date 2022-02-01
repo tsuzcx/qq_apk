@@ -9,27 +9,27 @@ public final class d
 {
   public final void a(Object paramObject, Parcel paramParcel)
   {
-    AppMethodBeat.i(114086);
+    AppMethodBeat.i(158797);
     paramParcel.writeParcelable((Parcelable)paramObject, 0);
-    AppMethodBeat.o(114086);
+    AppMethodBeat.o(158797);
   }
   
-  public final boolean af(Object paramObject)
+  public final boolean cJ(Object paramObject)
   {
     return paramObject instanceof Parcelable;
   }
   
-  public final Object d(Parcel paramParcel)
+  public final Object f(Parcel paramParcel)
   {
-    AppMethodBeat.i(114087);
+    AppMethodBeat.i(158798);
     paramParcel = paramParcel.readParcelable(getClass().getClassLoader());
-    AppMethodBeat.o(114087);
+    AppMethodBeat.o(158798);
     return paramParcel;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.d
  * JD-Core Version:    0.7.0.1
  */

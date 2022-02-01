@@ -34,7 +34,6 @@ class FloatKeyframeSet
   
   public float getFloatValue(float paramFloat)
   {
-    int i = 1;
     float f1;
     if (this.mNumKeyframes == 2)
     {
@@ -50,7 +49,7 @@ class FloatKeyframeSet
         f1 = this.mInterpolator.getInterpolation(paramFloat);
       }
       if (this.mEvaluator == null) {
-        return this.firstValue + this.deltaValue * f1;
+        return this.firstValue + f1 * this.deltaValue;
       }
       return ((Number)this.mEvaluator.evaluate(f1, Float.valueOf(this.firstValue), Float.valueOf(this.lastValue))).floatValue();
     }
@@ -74,7 +73,7 @@ class FloatKeyframeSet
       }
       paramFloat = (f1 - f4) / (f5 - f4);
       if (this.mEvaluator == null) {
-        return paramFloat * (f3 - f2) + f2;
+        return f2 + paramFloat * (f3 - f2);
       }
       return ((Number)this.mEvaluator.evaluate(paramFloat, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
     }
@@ -93,11 +92,13 @@ class FloatKeyframeSet
       }
       paramFloat = (f1 - f4) / (f5 - f4);
       if (this.mEvaluator == null) {
-        return paramFloat * (f3 - f2) + f2;
+        return f2 + paramFloat * (f3 - f2);
       }
       return ((Number)this.mEvaluator.evaluate(paramFloat, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
     }
-    for (Object localObject = (Keyframe.FloatKeyframe)this.mKeyframes.get(0);; localObject = localFloatKeyframe)
+    Object localObject = (Keyframe.FloatKeyframe)this.mKeyframes.get(0);
+    int i = 1;
+    for (;;)
     {
       if (i >= this.mNumKeyframes) {
         return ((Number)((Keyframe)this.mKeyframes.get(this.mNumKeyframes - 1)).getValue()).floatValue();
@@ -114,11 +115,12 @@ class FloatKeyframeSet
         f1 = ((Keyframe.FloatKeyframe)localObject).getFloatValue();
         f2 = localFloatKeyframe.getFloatValue();
         if (this.mEvaluator == null) {
-          return (f2 - f1) * paramFloat + f1;
+          return f1 + paramFloat * (f2 - f1);
         }
         return ((Number)this.mEvaluator.evaluate(paramFloat, Float.valueOf(f1), Float.valueOf(f2))).floatValue();
       }
       i += 1;
+      localObject = localFloatKeyframe;
     }
   }
   
@@ -129,7 +131,7 @@ class FloatKeyframeSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.nineoldandroids.animation.FloatKeyframeSet
  * JD-Core Version:    0.7.0.1
  */

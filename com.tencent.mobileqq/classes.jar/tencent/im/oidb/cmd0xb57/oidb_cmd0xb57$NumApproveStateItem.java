@@ -21,13 +21,14 @@ public final class oidb_cmd0xb57$NumApproveStateItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint64_query_num", "uint32_is_approve", "bytes_num_summary", "uint32_is_star", "rpt_msg_medal_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null }, NumApproveStateItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint64_query_num", "uint32_is_approve", "bytes_num_summary", "uint32_is_star", "rpt_msg_medal_info" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro, localInteger, null }, NumApproveStateItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.NumApproveStateItem
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 
 public class SummaryBelowPreference
   extends Preference
@@ -19,30 +21,30 @@ public class SummaryBelowPreference
   public SummaryBelowPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107290);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107290);
+    AppMethodBeat.i(142673);
+    setLayoutResource(a.h.mm_preference);
+    AppMethodBeat.o(142673);
   }
   
   protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107291);
+    AppMethodBeat.i(142674);
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
       localViewGroup.removeAllViews();
-      View.inflate(this.mContext, 2130970256, localViewGroup);
+      View.inflate(this.mContext, a.h.mm_preference_summary_below, localViewGroup);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;
-    AppMethodBeat.o(107291);
+    AppMethodBeat.o(142674);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.SummaryBelowPreference
  * JD-Core Version:    0.7.0.1
  */

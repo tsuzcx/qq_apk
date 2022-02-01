@@ -9,103 +9,111 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.ae;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.protobuf.add;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.a.ah;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.i;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.asi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.List;
 
 public class FavTagEntrance
   extends LinearLayout
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
-  private long cBE;
-  private TextView mEm;
-  private String mEn;
+  private TextView ApN;
+  private String ApO;
+  private long hTN;
   
   public FavTagEntrance(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(74700);
-    this.cBE = -1L;
-    this.mEn = String.valueOf(this.cBE);
-    AppMethodBeat.o(74700);
-  }
-  
-  public final void a(String paramString, m paramm)
-  {
-    AppMethodBeat.i(74704);
-    ab.d("MicroMsg.FavTagEntrence", "on notify change event %s, favIDStr %s", new Object[] { paramString, this.mEn });
-    if (this.mEn.equals(paramString))
-    {
-      paramString = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(this.cBE);
-      if (paramString == null)
-      {
-        ab.w("MicroMsg.FavTagEntrence", "id[%d] info is null, return", new Object[] { Long.valueOf(this.cBE) });
-        AppMethodBeat.o(74704);
-        return;
-      }
-      setTagContent(paramString.field_tagProto.wVq);
-    }
-    AppMethodBeat.o(74704);
+    AppMethodBeat.i(107546);
+    this.hTN = -1L;
+    this.ApO = String.valueOf(this.hTN);
+    AppMethodBeat.o(107546);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(74701);
+    AppMethodBeat.i(107547);
     super.onFinishInflate();
-    this.mEm = ((TextView)findViewById(2131824119));
+    this.ApN = ((TextView)findViewById(q.e.tag_content));
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(74699);
+        AppMethodBeat.i(107545);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/fav/ui/widget/FavTagEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("key_fav_scene", 1);
         paramAnonymousView.putExtra("key_fav_item_id", FavTagEntrance.a(FavTagEntrance.this));
-        b.b(FavTagEntrance.this.getContext(), ".ui.FavTagEditUI", paramAnonymousView);
-        AppMethodBeat.o(74699);
+        com.tencent.mm.plugin.fav.a.b.b(FavTagEntrance.this.getContext(), ".ui.FavTagEditUI", paramAnonymousView);
+        a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavTagEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(107545);
       }
     });
-    AppMethodBeat.o(74701);
+    AppMethodBeat.o(107547);
+  }
+  
+  public void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(107550);
+    Log.d("MicroMsg.FavTagEntrence", "on notify change event %s, favIDStr %s", new Object[] { paramString, this.ApO });
+    if (this.ApO.equals(paramString))
+    {
+      paramString = ((ah)h.az(ah.class)).getFavItemInfoStorage().mK(this.hTN);
+      if (paramString == null)
+      {
+        Log.w("MicroMsg.FavTagEntrence", "id[%d] info is null, return", new Object[] { Long.valueOf(this.hTN) });
+        AppMethodBeat.o(107550);
+        return;
+      }
+      setTagContent(paramString.field_tagProto.ZBH);
+    }
+    AppMethodBeat.o(107550);
   }
   
   public void setFavItemID(long paramLong)
   {
-    AppMethodBeat.i(74702);
-    this.cBE = paramLong;
-    this.mEn = String.valueOf(paramLong);
-    AppMethodBeat.o(74702);
+    AppMethodBeat.i(107548);
+    this.hTN = paramLong;
+    this.ApO = String.valueOf(paramLong);
+    AppMethodBeat.o(107548);
   }
   
   public void setTagContent(List<String> paramList)
   {
-    AppMethodBeat.i(74703);
-    if (this.mEm == null)
+    AppMethodBeat.i(107549);
+    if (this.ApN == null)
     {
-      AppMethodBeat.o(74703);
+      AppMethodBeat.o(107549);
       return;
     }
     Object localObject = getContext();
     if ((localObject == null) || (paramList == null) || (paramList.isEmpty()))
     {
       localObject = "";
-      if (bo.isNullOrNil((String)localObject))
+      if (Util.isNullOrNil((String)localObject))
       {
-        this.mEm.setText("");
-        this.mEm.setHint(2131299708);
-        AppMethodBeat.o(74703);
+        this.ApN.setText("");
+        this.ApN.setHint(q.i.favorite_entrance_add_tag_tips);
+        AppMethodBeat.o(107549);
       }
     }
     else
     {
       String str1 = (String)paramList.get(0);
-      String str2 = ((Context)localObject).getResources().getString(2131299843);
+      String str2 = ((Context)localObject).getResources().getString(q.i.favorite_tag_delimiter);
       int i = 1;
       for (;;)
       {
@@ -117,13 +125,13 @@ public class FavTagEntrance
         i += 1;
       }
     }
-    this.mEm.setText(j.b(getContext(), (CharSequence)localObject, this.mEm.getTextSize()));
-    AppMethodBeat.o(74703);
+    this.ApN.setText(p.b(getContext(), (CharSequence)localObject, this.ApN.getTextSize()));
+    AppMethodBeat.o(107549);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavTagEntrance
  * JD-Core Version:    0.7.0.1
  */

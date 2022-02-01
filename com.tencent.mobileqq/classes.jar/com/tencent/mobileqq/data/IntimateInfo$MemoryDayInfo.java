@@ -28,46 +28,37 @@ public class IntimateInfo$MemoryDayInfo
     MemoryDayInfo localMemoryDayInfo = new MemoryDayInfo();
     localMemoryDayInfo.date = NetConnInfoCenter.getServerTimeMillis();
     localMemoryDayInfo.dateType = paramDateTips.eDateType.get();
-    if (paramDateTips.bytes_icon_url.has())
-    {
+    if (paramDateTips.bytes_icon_url.has()) {
       localObject1 = paramDateTips.bytes_icon_url.get().toStringUtf8();
-      localMemoryDayInfo.iconUrl = ((String)localObject1);
-      if (!paramDateTips.bytes_wording.has()) {
-        break label184;
-      }
+    } else {
+      localObject1 = null;
+    }
+    localMemoryDayInfo.iconUrl = ((String)localObject1);
+    if (paramDateTips.bytes_wording.has()) {
       localObject1 = paramDateTips.bytes_wording.get().toStringUtf8();
-      label81:
-      localMemoryDayInfo.wording = ((String)localObject1);
-      if (!paramDateTips.bytes_link_url.has()) {
-        break label189;
-      }
+    } else {
+      localObject1 = null;
+    }
+    localMemoryDayInfo.wording = ((String)localObject1);
+    if (paramDateTips.bytes_link_url.has()) {
       localObject1 = paramDateTips.bytes_link_url.get().toStringUtf8();
-      label107:
-      localMemoryDayInfo.linkUrl = ((String)localObject1);
-      if (!paramDateTips.bytes_link_wording.has()) {
-        break label194;
-      }
+    } else {
+      localObject1 = null;
     }
-    label184:
-    label189:
-    label194:
-    for (Object localObject1 = paramDateTips.bytes_link_wording.get().toStringUtf8();; localObject1 = null)
-    {
-      localMemoryDayInfo.linkWording = ((String)localObject1);
-      localObject1 = localObject2;
-      if (paramDateTips.bytes_link_colour.has()) {
-        localObject1 = paramDateTips.bytes_link_colour.get().toStringUtf8();
-      }
-      localMemoryDayInfo.linkColor = ((String)localObject1);
-      localMemoryDayInfo.jumpType = paramDateTips.eJumpType.get();
-      return localMemoryDayInfo;
+    localMemoryDayInfo.linkUrl = ((String)localObject1);
+    if (paramDateTips.bytes_link_wording.has()) {
+      localObject1 = paramDateTips.bytes_link_wording.get().toStringUtf8();
+    } else {
       localObject1 = null;
-      break;
-      localObject1 = null;
-      break label81;
-      localObject1 = null;
-      break label107;
     }
+    localMemoryDayInfo.linkWording = ((String)localObject1);
+    Object localObject1 = localObject2;
+    if (paramDateTips.bytes_link_colour.has()) {
+      localObject1 = paramDateTips.bytes_link_colour.get().toStringUtf8();
+    }
+    localMemoryDayInfo.linkColor = ((String)localObject1);
+    localMemoryDayInfo.jumpType = paramDateTips.eJumpType.get();
+    return localMemoryDayInfo;
   }
   
   public static MemoryDayInfo copyFromJson(JSONObject paramJSONObject)
@@ -108,7 +99,32 @@ public class IntimateInfo$MemoryDayInfo
   
   public String toString()
   {
-    return "MemoryDayInfo{date=" + this.date + ", dateType='" + this.dateType + '\'' + ", wording='" + this.wording + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", linkUrl='" + this.linkUrl + '\'' + ", linkWording='" + this.linkWording + '\'' + ", linkColor='" + this.linkColor + '\'' + ", jumpType='" + this.jumpType + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MemoryDayInfo{date=");
+    localStringBuilder.append(this.date);
+    localStringBuilder.append(", dateType='");
+    localStringBuilder.append(this.dateType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.wording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", linkUrl='");
+    localStringBuilder.append(this.linkUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", linkWording='");
+    localStringBuilder.append(this.linkWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", linkColor='");
+    localStringBuilder.append(this.linkColor);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpType='");
+    localStringBuilder.append(this.jumpType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

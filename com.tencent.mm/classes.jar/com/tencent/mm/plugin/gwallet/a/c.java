@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public int nGE;
-  String nGF;
+  String mMessage;
+  public int mResponse;
   
   public c(int paramInt, String paramString)
   {
-    AppMethodBeat.i(41705);
-    this.nGE = paramInt;
+    AppMethodBeat.i(64601);
+    this.mResponse = paramInt;
     if ((paramString == null) || (paramString.trim().length() == 0))
     {
-      this.nGF = b.xq(paramInt);
-      AppMethodBeat.o(41705);
+      this.mMessage = b.getResponseDesc(paramInt);
+      AppMethodBeat.o(64601);
       return;
     }
-    this.nGF = (paramString + " (response: " + b.xq(paramInt) + ")");
-    AppMethodBeat.o(41705);
+    this.mMessage = (paramString + " (response: " + b.getResponseDesc(paramInt) + ")");
+    AppMethodBeat.o(64601);
   }
   
-  public final int bHN()
+  public final int getResponse()
   {
-    switch (this.nGE)
+    switch (this.mResponse)
     {
     default: 
-      return this.nGE;
+      return this.mResponse;
     case 0: 
       return 0;
     case 1: 
@@ -52,20 +52,20 @@ public final class c
   
   public final boolean isSuccess()
   {
-    return this.nGE == 0;
+    return this.mResponse == 0;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(41706);
-    String str = "IapResult: " + this.nGF;
-    AppMethodBeat.o(41706);
+    AppMethodBeat.i(64602);
+    String str = "IapResult: " + this.mMessage;
+    AppMethodBeat.o(64602);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,45 @@
 package com.tencent.mm.plugin.gallery.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class h<E>
-  extends LinkedList<E>
+public final class h
 {
-  private byte[] eKs;
+  private static k HHy;
+  public static final h HHz;
   
-  public h()
+  static
   {
-    AppMethodBeat.i(21297);
-    this.eKs = new byte[0];
-    AppMethodBeat.o(21297);
+    AppMethodBeat.i(289588);
+    HHy = null;
+    HHz = new h();
+    AppMethodBeat.o(289588);
   }
   
-  public final boolean Z(E paramE)
+  public static String ID(String paramString)
   {
-    AppMethodBeat.i(21299);
-    synchronized (this.eKs)
+    AppMethodBeat.i(289587);
+    if (HHy == null)
     {
-      boolean bool = super.contains(paramE);
-      AppMethodBeat.o(21299);
-      return bool;
-    }
-  }
-  
-  public final boolean add(E paramE)
-  {
-    AppMethodBeat.i(21301);
-    synchronized (this.eKs)
-    {
-      boolean bool = super.add(paramE);
-      AppMethodBeat.o(21301);
-      return bool;
-    }
-  }
-  
-  public final E bEi()
-  {
-    AppMethodBeat.i(21298);
-    synchronized (this.eKs)
-    {
-      if (size() > 0)
-      {
-        Object localObject1 = super.poll();
-        AppMethodBeat.o(21298);
-        return localObject1;
-      }
-      AppMethodBeat.o(21298);
+      AppMethodBeat.o(289587);
       return null;
     }
+    paramString = HHy.ID(paramString);
+    AppMethodBeat.o(289587);
+    return paramString;
   }
   
-  public final void bO(E paramE)
+  public static void a(k paramk)
   {
-    AppMethodBeat.i(21300);
-    synchronized (this.eKs)
-    {
-      if (Z(paramE)) {
-        super.remove(paramE);
-      }
-      AppMethodBeat.o(21300);
-      return;
-    }
-  }
-  
-  public final int size()
-  {
-    AppMethodBeat.i(21302);
-    synchronized (this.eKs)
-    {
-      int i = super.size();
-      AppMethodBeat.o(21302);
-      return i;
-    }
+    AppMethodBeat.i(289585);
+    HHy = paramk;
+    Log.i("MicroMsg.GalleryHelper", "setMediaItemProvider: ".concat(String.valueOf(paramk)));
+    AppMethodBeat.o(289585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.h
  * JD-Core Version:    0.7.0.1
  */

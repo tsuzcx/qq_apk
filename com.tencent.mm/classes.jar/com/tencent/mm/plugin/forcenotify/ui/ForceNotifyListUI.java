@@ -1,120 +1,204 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
-import a.f.b.j;
-import a.l;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
+import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.plugin.forcenotify.b.c;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.forcenotify.a.e;
+import com.tencent.mm.plugin.forcenotify.a.f;
+import com.tencent.mm.plugin.forcenotify.a.h;
+import com.tencent.mm.plugin.forcenotify.core.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
+import java.util.Collection;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "()V", "TAG", "", "adapter", "Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyListAdapter;", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "emptyTipView", "Landroid/view/View;", "loadingView", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "touchLoc", "", "getLayoutId", "", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "ForceNotifyListAdapter", "ForceNotifyViewHolder", "plugin-force-notify_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "()V", "TAG", "", "adapter", "Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyListAdapter;", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "emptyTipView", "Landroid/view/View;", "loadingView", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "touchLoc", "", "getLayoutId", "", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "ForceNotifyListAdapter", "ForceNotifyViewHolder", "plugin-force-notify_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ForceNotifyListUI
   extends MMActivity
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
+  private final int[] Cxl;
+  private a HoK;
+  private View HoL;
   private final String TAG;
-  private RecyclerView iQe;
-  private View jjH;
-  private ForceNotifyListUI.a mHE;
-  private View mHF;
-  private final ArrayList<com.tencent.mm.plugin.forcenotify.c.d> mHG;
-  private final int[] mHH;
+  private final ArrayList<com.tencent.mm.plugin.forcenotify.c.h> data;
+  private RecyclerView mkw;
+  private View njN;
   
   public ForceNotifyListUI()
   {
-    AppMethodBeat.i(51083);
+    AppMethodBeat.i(149229);
     this.TAG = "MicroMsg.ForceNotifyListUI";
-    this.mHG = new ArrayList();
-    this.mHH = new int[2];
-    AppMethodBeat.o(51083);
+    this.data = new ArrayList();
+    this.Cxl = new int[2];
+    AppMethodBeat.o(149229);
   }
   
-  public final void a(String paramString, m paramm)
+  private static final void a(ForceNotifyListUI paramForceNotifyListUI)
   {
-    AppMethodBeat.i(51082);
-    ab.i(this.TAG, "[onNotifyChange] event:%s", new Object[] { paramString });
-    com.tencent.mm.sdk.g.d.ysm.execute((Runnable)new ForceNotifyListUI.e(this));
-    AppMethodBeat.o(51082);
+    AppMethodBeat.i(274955);
+    s.u(paramForceNotifyListUI, "this$0");
+    Log.i(paramForceNotifyListUI.TAG, s.X("[onCreate] load size=", Integer.valueOf(paramForceNotifyListUI.data.size())));
+    Object localObject = paramForceNotifyListUI.HoK;
+    s.checkNotNull(localObject);
+    ((RecyclerView.a)localObject).bZE.notifyChanged();
+    localObject = paramForceNotifyListUI.njN;
+    s.checkNotNull(localObject);
+    ((View)localObject).setVisibility(8);
+    if (paramForceNotifyListUI.data.isEmpty())
+    {
+      localObject = paramForceNotifyListUI.mkw;
+      s.checkNotNull(localObject);
+      ((RecyclerView)localObject).setVisibility(8);
+      paramForceNotifyListUI = paramForceNotifyListUI.HoL;
+      s.checkNotNull(paramForceNotifyListUI);
+      paramForceNotifyListUI.setVisibility(0);
+      AppMethodBeat.o(274955);
+      return;
+    }
+    paramForceNotifyListUI = paramForceNotifyListUI.mkw;
+    s.checkNotNull(paramForceNotifyListUI);
+    paramForceNotifyListUI.setVisibility(0);
+    AppMethodBeat.o(274955);
+  }
+  
+  private static final boolean a(ForceNotifyListUI paramForceNotifyListUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(274947);
+    s.u(paramForceNotifyListUI, "this$0");
+    paramForceNotifyListUI.onBackPressed();
+    AppMethodBeat.o(274947);
+    return true;
+  }
+  
+  private static final void b(ForceNotifyListUI paramForceNotifyListUI)
+  {
+    AppMethodBeat.i(274961);
+    s.u(paramForceNotifyListUI, "this$0");
+    paramForceNotifyListUI.data.clear();
+    ArrayList localArrayList = paramForceNotifyListUI.data;
+    c localc = c.Hoc;
+    localArrayList.addAll((Collection)c.fwB());
+    paramForceNotifyListUI.runOnUiThread(new ForceNotifyListUI..ExternalSyntheticLambda4(paramForceNotifyListUI));
+    AppMethodBeat.o(274961);
+  }
+  
+  private static final void c(ForceNotifyListUI paramForceNotifyListUI)
+  {
+    AppMethodBeat.i(274967);
+    s.u(paramForceNotifyListUI, "this$0");
+    if (paramForceNotifyListUI.data.isEmpty())
+    {
+      localRecyclerView = paramForceNotifyListUI.mkw;
+      s.checkNotNull(localRecyclerView);
+      localRecyclerView.setVisibility(8);
+      paramForceNotifyListUI = paramForceNotifyListUI.HoL;
+      s.checkNotNull(paramForceNotifyListUI);
+      paramForceNotifyListUI.setVisibility(0);
+      AppMethodBeat.o(274967);
+      return;
+    }
+    RecyclerView localRecyclerView = paramForceNotifyListUI.mkw;
+    s.checkNotNull(localRecyclerView);
+    localRecyclerView.setVisibility(0);
+    paramForceNotifyListUI = paramForceNotifyListUI.HoK;
+    s.checkNotNull(paramForceNotifyListUI);
+    paramForceNotifyListUI.bZE.notifyChanged();
+    AppMethodBeat.o(274967);
+  }
+  
+  private static final void d(ForceNotifyListUI paramForceNotifyListUI)
+  {
+    AppMethodBeat.i(274972);
+    s.u(paramForceNotifyListUI, "this$0");
+    paramForceNotifyListUI.data.clear();
+    ArrayList localArrayList = paramForceNotifyListUI.data;
+    c localc = c.Hoc;
+    localArrayList.addAll((Collection)c.fwB());
+    paramForceNotifyListUI.runOnUiThread(new ForceNotifyListUI..ExternalSyntheticLambda2(paramForceNotifyListUI));
+    AppMethodBeat.o(274972);
   }
   
   public final int getLayoutId()
   {
-    return 2130969624;
+    return a.f.force_notify_list_ui;
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(51079);
+    AppMethodBeat.i(149225);
     super.onBackPressed();
     finish();
-    AppMethodBeat.o(51079);
+    AppMethodBeat.o(149225);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(51080);
+    AppMethodBeat.i(149226);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.forcenotify.d.a.mHw.add((k.a)this);
-    setMMTitle(2131300119);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new ForceNotifyListUI.c(this));
-    this.jjH = findViewById(2131824243);
-    this.mHF = findViewById(2131821537);
-    this.iQe = ((RecyclerView)findViewById(2131821002));
-    paramBundle = this.iQe;
-    if (paramBundle == null) {
-      j.ebi();
-    }
+    com.tencent.mm.plugin.forcenotify.d.b.Hoz.add((MStorage.IOnStorageChange)this);
+    setMMTitle(a.h.force_notify);
+    setBackBtn(new ForceNotifyListUI..ExternalSyntheticLambda0(this));
+    this.njN = findViewById(a.e.loading);
+    this.HoL = findViewById(a.e.empty_tip);
+    this.mkw = ((RecyclerView)findViewById(a.e.list));
+    paramBundle = this.mkw;
+    s.checkNotNull(paramBundle);
     getContext();
-    paramBundle.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.mHE = new ForceNotifyListUI.a(this);
-    paramBundle = this.iQe;
-    if (paramBundle == null) {
-      j.ebi();
-    }
-    paramBundle.setAdapter((RecyclerView.a)this.mHE);
-    com.tencent.mm.sdk.g.d.ysm.execute((Runnable)new ForceNotifyListUI.d(this));
-    ((com.tencent.mm.plugin.forcenotify.a.a)g.E(com.tencent.mm.plugin.forcenotify.a.a.class)).g("", 1, cb.abq() / 1000L);
-    AppMethodBeat.o(51080);
+    paramBundle.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    this.HoK = new a();
+    paramBundle = this.mkw;
+    s.checkNotNull(paramBundle);
+    paramBundle.setAdapter((RecyclerView.a)this.HoK);
+    com.tencent.threadpool.h.ahAA.bm(new ForceNotifyListUI..ExternalSyntheticLambda1(this));
+    ((com.tencent.mm.plugin.forcenotify.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.forcenotify.a.a.class)).D("", 1, cn.bDv() / 1000L);
+    AppMethodBeat.o(149226);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(51081);
+    AppMethodBeat.i(149227);
     super.onDestroy();
-    com.tencent.mm.plugin.forcenotify.d.a.mHw.remove((k.a)this);
-    ((com.tencent.mm.plugin.forcenotify.a.a)g.E(com.tencent.mm.plugin.forcenotify.a.a.class)).g("", 2, cb.abq() / 1000L);
-    AppMethodBeat.o(51081);
+    com.tencent.mm.plugin.forcenotify.d.b.Hoz.remove((MStorage.IOnStorageChange)this);
+    ((com.tencent.mm.plugin.forcenotify.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.forcenotify.a.a.class)).D("", 2, cn.bDv() / 1000L);
+    AppMethodBeat.o(149227);
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(149228);
+    Log.i(this.TAG, "[onNotifyChange] event:%s", new Object[] { paramString });
+    com.tencent.threadpool.h.ahAA.bm(new ForceNotifyListUI..ExternalSyntheticLambda3(this));
+    AppMethodBeat.o(149228);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -123,103 +207,179 @@ public final class ForceNotifyListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "Landroid/view/View$OnCreateContextMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "forcePushId", "", "getForcePushId", "()Ljava/lang/String;", "setForcePushId", "(Ljava/lang/String;)V", "refreshView", "getRefreshView", "()Landroid/view/View;", "resetView", "Landroid/widget/LinearLayout;", "getResetView", "()Landroid/widget/LinearLayout;", "timeView", "Landroid/widget/TextView;", "getTimeView", "()Landroid/widget/TextView;", "titleView", "getTitleView", "userView", "getUserView", "username", "getUsername", "setUsername", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-force-notify_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyListAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder;", "Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI;", "(Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI;)V", "getItemCount", "", "getItemViewType", "position", "onBindViewHolder", "", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-force-notify_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class a
+    extends RecyclerView.a<ForceNotifyListUI.b>
+  {
+    public a()
+    {
+      AppMethodBeat.i(275027);
+      AppMethodBeat.o(275027);
+    }
+    
+    public final int getItemCount()
+    {
+      AppMethodBeat.i(149210);
+      int i = ForceNotifyListUI.e(this.HoM).size();
+      AppMethodBeat.o(149210);
+      return i;
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      AppMethodBeat.i(149211);
+      Object localObject = ForceNotifyListUI.e(this.HoM).get(paramInt);
+      s.s(localObject, "data[position]");
+      localObject = ((com.tencent.mm.plugin.forcenotify.c.h)localObject).field_UserName;
+      s.s(localObject, "info.field_UserName");
+      if (n.rs((String)localObject, "@app"))
+      {
+        AppMethodBeat.o(149211);
+        return 1;
+      }
+      AppMethodBeat.o(149211);
+      return 0;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Landroid/view/View$OnCreateContextMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "forcePushId", "", "getForcePushId", "()Ljava/lang/String;", "setForcePushId", "(Ljava/lang/String;)V", "refreshView", "getRefreshView", "()Landroid/view/View;", "resetView", "Landroid/widget/LinearLayout;", "getResetView", "()Landroid/widget/LinearLayout;", "timeView", "Landroid/widget/TextView;", "getTimeView", "()Landroid/widget/TextView;", "titleView", "getTitleView", "userView", "getUserView", "username", "getUsername", "setUsername", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-force-notify_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
     extends RecyclerView.v
-    implements View.OnCreateContextMenuListener, n.d
+    implements View.OnCreateContextMenuListener, u.i
   {
-    final ImageView gxs;
-    final TextView mHJ;
-    final TextView mHK;
-    final LinearLayout mHL;
-    final View mHM;
-    String mHN;
-    final TextView titleView;
+    final TextView HoN;
+    final LinearLayout HoO;
+    final View HoP;
+    String HoQ;
+    private final ImageView avatar;
+    private final TextView titleView;
+    final TextView ule;
     String username;
     
     public b()
     {
       super();
-      AppMethodBeat.i(51073);
-      this$1 = localObject.findViewById(2131821210);
-      if (ForceNotifyListUI.this == null) {
-        j.ebi();
-      }
-      this.gxs = ((ImageView)ForceNotifyListUI.this);
-      this$1 = localObject.findViewById(2131821212);
-      if (ForceNotifyListUI.this == null) {
-        j.ebi();
-      }
+      AppMethodBeat.i(149219);
+      this$1 = localObject.findViewById(a.e.avatar_iv);
+      s.checkNotNull(ForceNotifyListUI.this);
+      this.avatar = ((ImageView)ForceNotifyListUI.this);
+      this$1 = localObject.findViewById(a.e.title_tv);
+      s.checkNotNull(ForceNotifyListUI.this);
       this.titleView = ((TextView)ForceNotifyListUI.this);
-      this$1 = localObject.findViewById(2131824239);
-      if (ForceNotifyListUI.this == null) {
-        j.ebi();
+      this$1 = localObject.findViewById(a.e.time_tip);
+      s.checkNotNull(ForceNotifyListUI.this);
+      this.ule = ((TextView)ForceNotifyListUI.this);
+      this.HoN = ((TextView)localObject.findViewById(a.e.user_tv));
+      this$1 = localObject.findViewById(a.e.reset);
+      s.checkNotNull(ForceNotifyListUI.this);
+      this.HoO = ((LinearLayout)ForceNotifyListUI.this);
+      this$1 = localObject.findViewById(a.e.refresh);
+      s.checkNotNull(ForceNotifyListUI.this);
+      this.HoP = ForceNotifyListUI.this;
+      this$1 = localObject.findViewById(a.e.content);
+      ForceNotifyListUI.this.setOnTouchListener(new ForceNotifyListUI.b..ExternalSyntheticLambda2(ForceNotifyListUI.this));
+      ForceNotifyListUI.this.setOnLongClickListener(new ForceNotifyListUI.b..ExternalSyntheticLambda1(ForceNotifyListUI.this, this));
+      this.HoO.setOnClickListener(new ForceNotifyListUI.b..ExternalSyntheticLambda0(ForceNotifyListUI.this, this));
+      AppMethodBeat.o(149219);
+    }
+    
+    private static final void a(b paramb)
+    {
+      AppMethodBeat.i(275051);
+      s.u(paramb, "this$0");
+      paramb.HoP.animate().start();
+      AppMethodBeat.o(275051);
+    }
+    
+    private static final boolean a(ForceNotifyListUI paramForceNotifyListUI, View paramView, MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(275043);
+      s.u(paramForceNotifyListUI, "this$0");
+      s.u(paramView, "view");
+      s.u(paramMotionEvent, "event");
+      if (paramMotionEvent.getAction() == 0)
+      {
+        ForceNotifyListUI.i(paramForceNotifyListUI)[0] = ((int)paramMotionEvent.getRawX());
+        ForceNotifyListUI.i(paramForceNotifyListUI)[1] = ((int)paramMotionEvent.getRawY());
       }
-      this.mHJ = ((TextView)ForceNotifyListUI.this);
-      this.mHK = ((TextView)localObject.findViewById(2131824242));
-      this$1 = localObject.findViewById(2131824240);
-      if (ForceNotifyListUI.this == null) {
-        j.ebi();
-      }
-      this.mHL = ((LinearLayout)ForceNotifyListUI.this);
-      this$1 = localObject.findViewById(2131824241);
-      if (ForceNotifyListUI.this == null) {
-        j.ebi();
-      }
-      this.mHM = ForceNotifyListUI.this;
-      this$1 = localObject.findViewById(2131820946);
-      ForceNotifyListUI.this.setOnTouchListener((View.OnTouchListener)new ForceNotifyListUI.b.1(this));
-      ForceNotifyListUI.this.setOnLongClickListener((View.OnLongClickListener)new ForceNotifyListUI.b.2(this));
-      this.mHL.setOnClickListener((View.OnClickListener)new ForceNotifyListUI.b.3(this));
-      AppMethodBeat.o(51073);
+      AppMethodBeat.o(275043);
+      return false;
+    }
+    
+    private static final boolean a(ForceNotifyListUI paramForceNotifyListUI, b paramb, View paramView)
+    {
+      AppMethodBeat.i(275047);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramForceNotifyListUI);
+      localb.cH(paramb);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject, localb.aYj());
+      s.u(paramForceNotifyListUI, "this$0");
+      s.u(paramb, "this$1");
+      Log.i(ForceNotifyListUI.j(paramForceNotifyListUI), "OnLongClick!");
+      new com.tencent.mm.ui.widget.b.a((Context)paramForceNotifyListUI.getContext()).a(paramView, 0, 0L, (View.OnCreateContextMenuListener)paramb, (u.i)paramb, ForceNotifyListUI.i(paramForceNotifyListUI)[0], ForceNotifyListUI.i(paramForceNotifyListUI)[1]);
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(275047);
+      return true;
+    }
+    
+    private static final void b(ForceNotifyListUI paramForceNotifyListUI, b paramb, View paramView)
+    {
+      AppMethodBeat.i(275059);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramForceNotifyListUI);
+      localb.cH(paramb);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(paramForceNotifyListUI, "this$0");
+      s.u(paramb, "this$1");
+      Log.i(ForceNotifyListUI.j(paramForceNotifyListUI), "resetView onClick! username:%s", new Object[] { paramb.username });
+      c.Hoc.aDK(paramb.username);
+      paramb.HoP.animate().rotation(360.0F).setDuration(300L).withEndAction(new ForceNotifyListUI.b..ExternalSyntheticLambda3(paramb)).start();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/forcenotify/ui/ForceNotifyListUI$ForceNotifyViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(275059);
     }
     
     public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
     {
-      AppMethodBeat.i(51072);
-      j.q(paramContextMenu, "menu");
-      paramView = ForceNotifyListUI.this.getBaseContext();
-      j.p(paramView, "baseContext");
-      paramContextMenu.add((CharSequence)paramView.getResources().getString(2131300127));
-      AppMethodBeat.o(51072);
+      AppMethodBeat.i(149218);
+      s.u(paramContextMenu, "menu");
+      paramContextMenu.add((CharSequence)ForceNotifyListUI.this.getContext().getResources().getString(a.h.force_notify_off));
+      AppMethodBeat.o(149218);
     }
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(51071);
-      if (!at.isNetworkConnected(ah.getContext()))
+      AppMethodBeat.i(149217);
+      if (!NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext()))
       {
-        Toast.makeText((Context)ForceNotifyListUI.this.getContext(), ForceNotifyListUI.this.getResources().getText(2131300044), 1).show();
-        AppMethodBeat.o(51071);
+        Toast.makeText((Context)ForceNotifyListUI.this.getContext(), ForceNotifyListUI.this.getResources().getText(a.h.fmt_iap_err), 1).show();
+        AppMethodBeat.o(149217);
         return;
       }
-      ForceNotifyListUI.a(ForceNotifyListUI.this).remove(jN());
-      paramMenuItem = ForceNotifyListUI.b(ForceNotifyListUI.this);
-      if (paramMenuItem == null) {
-        j.ebi();
-      }
-      paramMenuItem.bT(jN());
-      c.mHu.an(this.mHN, 4);
-      if (ForceNotifyListUI.a(ForceNotifyListUI.this).isEmpty())
+      ForceNotifyListUI.e(ForceNotifyListUI.this).remove(KJ());
+      paramMenuItem = ForceNotifyListUI.f(ForceNotifyListUI.this);
+      s.checkNotNull(paramMenuItem);
+      paramMenuItem.fX(KJ());
+      c.Hoc.bB(this.HoQ, 4);
+      if (ForceNotifyListUI.e(ForceNotifyListUI.this).isEmpty())
       {
-        paramMenuItem = ForceNotifyListUI.c(ForceNotifyListUI.this);
-        if (paramMenuItem == null) {
-          j.ebi();
-        }
+        paramMenuItem = ForceNotifyListUI.g(ForceNotifyListUI.this);
+        s.checkNotNull(paramMenuItem);
         paramMenuItem.setVisibility(8);
-        paramMenuItem = ForceNotifyListUI.d(ForceNotifyListUI.this);
-        if (paramMenuItem == null) {
-          j.ebi();
-        }
+        paramMenuItem = ForceNotifyListUI.h(ForceNotifyListUI.this);
+        s.checkNotNull(paramMenuItem);
         paramMenuItem.setVisibility(0);
       }
-      AppMethodBeat.o(51071);
+      AppMethodBeat.o(149217);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.ForceNotifyListUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ import com.tencent.mobileqq.international.LocaleUtil;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import ehm;
 import ehn;
 import eho;
-import ehp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class SelectTransLangActivity
   private static final String jdField_a_of_type_JavaLangString = "SelectTransLangActivity";
   private int jdField_a_of_type_Int = -1;
   private ListView jdField_a_of_type_AndroidWidgetListView;
-  private ehp jdField_a_of_type_Ehp;
+  private eho jdField_a_of_type_Eho;
   private final List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap;
   private String b;
@@ -45,16 +45,16 @@ public class SelectTransLangActivity
       }
       i += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231857));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231856));
     if (!"10000512".equals(AppSetting.a(this)))
     {
       View localView = LayoutInflater.from(this).inflate(2130903259, null, false);
-      localView.findViewById(2131231861).setOnClickListener(new ehn(this));
+      localView.findViewById(2131231860).setOnClickListener(new ehm(this));
       this.jdField_a_of_type_AndroidWidgetListView.addFooterView(localView);
     }
-    this.jdField_a_of_type_Ehp = new ehp(this, this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ehp);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new eho(this));
+    this.jdField_a_of_type_Eho = new eho(this, this);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Eho);
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ehn(this));
   }
   
   private void e()

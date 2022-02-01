@@ -42,32 +42,37 @@ public class ShakaTripleFadeTransformFilter
   public void setParameterDic(Map<String, Float> paramMap)
   {
     float f2 = ((Float)paramMap.get("scaleUp")).floatValue();
+    int k = 0;
     float f3 = ((Float)paramMap.get("scaleMid")).floatValue();
     float f4 = ((Float)paramMap.get("scaleDown")).floatValue();
     float[] arrayOfFloat = new float[3];
     arrayOfFloat[0] = ((Float)paramMap.get("alphaUp")).floatValue();
     arrayOfFloat[1] = ((Float)paramMap.get("alphaMid")).floatValue();
     arrayOfFloat[2] = ((Float)paramMap.get("alphaDown")).floatValue();
-    int j = arrayOfFloat.length;
-    float f1 = 0.0F;
+    int m = arrayOfFloat.length;
     int i = 0;
-    while (i < j)
+    float f1 = 0.0F;
+    int j;
+    for (;;)
     {
+      j = k;
+      if (i >= m) {
+        break;
+      }
       f1 += arrayOfFloat[i];
       i += 1;
     }
-    i = 0;
-    while (i < arrayOfFloat.length)
+    while (j < arrayOfFloat.length)
     {
-      arrayOfFloat[i] /= f1;
-      i += 1;
+      arrayOfFloat[j] /= f1;
+      j += 1;
     }
     setParams(3, new float[] { f2, f3, f4 }, arrayOfFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.ShakaTripleFadeTransformFilter
  * JD-Core Version:    0.7.0.1
  */

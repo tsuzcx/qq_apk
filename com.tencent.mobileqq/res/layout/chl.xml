@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView android:layout_gravity="bottom|center|right" android:id="@id/ml6" android:layout_width="115.0dip" android:layout_height="210.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:id="@id/nqx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/odl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/aze" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+</FrameLayout>

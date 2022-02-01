@@ -1,0 +1,16 @@
+package com.tencent.mm.service;
+
+public class ProcessService$LiteProcessService
+  extends CommonProcessService
+{
+  public final String getTag()
+  {
+    return "MicroMsg.LiteProcessService";
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.service.ProcessService.LiteProcessService
+ * JD-Core Version:    0.7.0.1
+ */

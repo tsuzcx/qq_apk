@@ -14,13 +14,19 @@ public class GetAppInfoByIdRequest
   public static final String TAG = "GetAppInfoByIdRequest";
   private INTERFACE.StGetAppInfoByIdReq req = new INTERFACE.StGetAppInfoByIdReq();
   
-  public GetAppInfoByIdRequest(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public GetAppInfoByIdRequest(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4)
   {
     this.req.appid.set(paramString1);
     this.req.needVersionInfo.set(paramInt1);
     this.req.checkDevRight.set(paramInt2);
     this.req.firstPath.set(paramString2);
     this.req.envVersion.set(paramString3);
+    paramString2 = this.req.fromAppid;
+    paramString1 = paramString4;
+    if (paramString4 == null) {
+      paramString1 = "";
+    }
+    paramString2.set(paramString1);
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
     }
@@ -28,16 +34,20 @@ public class GetAppInfoByIdRequest
   
   public static INTERFACE.StGetAppInfoByIdRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
+    Object localObject = new INTERFACE.StGetAppInfoByIdRsp();
     try
     {
-      localStGetAppInfoByIdRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetAppInfoByIdRsp;
+      ((INTERFACE.StGetAppInfoByIdRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetAppInfoByIdRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetAppInfoByIdRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -50,7 +60,7 @@ public class GetAppInfoByIdRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetAppInfoByIdRequest
  * JD-Core Version:    0.7.0.1
  */

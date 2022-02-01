@@ -5,16 +5,13 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.widget.Button;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.tips.TipsUtil;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import lid;
-import mdd;
-import mqq.util.WeakReference;
-import mvh;
-import mwk;
-import mwt;
-import ndk;
+import java.lang.ref.WeakReference;
 
 class TraeHelper$5$1
   implements Runnable
@@ -23,179 +20,198 @@ class TraeHelper$5$1
   
   public void run()
   {
-    Object localObject3;
-    lid locallid;
+    int j;
+    int i;
     try
     {
-      if (this.a.this$0.a == null) {
+      if (this.a.this$0.d == null) {
         return;
       }
-      localObject3 = this.a.jdField_a_of_type_AndroidWidgetButton.getResources();
-      locallid = this.a.this$0.a.a();
-      if ((locallid.d == 2) || ((locallid.d == 4) && (locallid.J) && (ndk.a(this.a.jdField_a_of_type_AndroidContentContext))) || (this.a.this$0.a.m()) || (this.a.this$0.a.l())) {
-        break label931;
+      localObject2 = this.a.a.getResources();
+      localSessionInfo = this.a.this$0.d.k();
+      if ((localSessionInfo.g == 2) || ((localSessionInfo.g == 4) && (localSessionInfo.am) && (NetworkUtil.a(this.a.b)))) {
+        break label937;
       }
-      if (!mwk.b(this.a.this$0)) {
-        break label549;
+      if (!TraeHelper.e(this.a.this$0)) {
+        break label932;
       }
     }
     catch (Exception localException)
     {
+      Object localObject2;
+      SessionInfo localSessionInfo;
       Object localObject1;
+      VideoAppInterface localVideoAppInterface;
+      boolean bool;
+      int m;
+      int k;
       QLog.e("TraeSessionHelper", 1, "onUpdateButtonHandFree ui task fail.", localException);
       return;
     }
-    int i = 8;
-    localObject1 = ((Resources)localObject3).getString(2131695915);
-    VideoAppInterface localVideoAppInterface = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((mwk.a(this.a.this$0)) && (mvh.a())) {
-      if ("DEVICE_BLUETOOTHHEADSET".equals(locallid.q))
-      {
-        i = 5;
-        localObject3 = ((Resources)localObject3).getString(2131695913);
-        mdd.a(localVideoAppInterface, 3012);
-        if (!mwk.c(this.a.this$0))
-        {
-          localObject1 = localObject3;
-          if (!mwk.d(this.a.this$0)) {
-            break label928;
-          }
-        }
-        mwk.a(this.a.this$0, false);
-        mwk.b(this.a.this$0, false);
-        mdd.a(localVideoAppInterface, 5, 3000L);
-        i = 5;
-        localObject1 = localObject3;
-      }
-    }
-    label272:
-    label463:
-    int j;
-    label549:
-    Object localObject2;
-    for (;;)
+    localObject1 = ((Resources)localObject2).getString(2131893190);
+    localVideoAppInterface = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    bool = TraeHelper.b(this.a.this$0);
+    m = 1064;
+    k = 8;
+    if ((bool) && (QAVConfigUtils.a()))
     {
-      localObject3 = mwk.a(this.a.this$0, this.a.jdField_a_of_type_AndroidContentContext.getResources(), i, mwk.e(this.a.this$0));
-      this.a.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(null, (Drawable)localObject3, null, null);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject1);
-      if (this.a.this$0.c != null)
+      if ("DEVICE_BLUETOOTH_HEADSET".equals(localSessionInfo.aD))
       {
-        localObject3 = (mwt)this.a.this$0.c.get();
-        if (localObject3 != null) {
-          ((mwt)localObject3).a(locallid.O, this.a.this$0.d);
+        j = 5;
+        localObject2 = ((Resources)localObject2).getString(2131893188);
+        TipsUtil.b(localVideoAppInterface, 3012);
+        if (!TraeHelper.f(this.a.this$0))
+        {
+          localObject1 = localObject2;
+          i = j;
+          if (!TraeHelper.g(this.a.this$0)) {}
+        }
+        else
+        {
+          TraeHelper.a(this.a.this$0, false);
+          TraeHelper.b(this.a.this$0, false);
+          TipsUtil.a(localVideoAppInterface, 1067, 3000L);
+          localObject1 = localObject2;
+          i = j;
         }
       }
-      if (((mwk.f(this.a.this$0)) || (mwk.d(this.a.this$0))) && (!mwk.a(this.a.this$0)))
+      else if ("DEVICE_WIRED_HEADSET".equals(localSessionInfo.aD))
       {
-        mwk.c(this.a.this$0, false);
-        mwk.b(this.a.this$0, false);
-        if (locallid.O)
+        j = 6;
+        localObject2 = ((Resources)localObject2).getString(2131893191);
+        if (!TraeHelper.f(this.a.this$0))
         {
-          i = 2;
-          mdd.a(localVideoAppInterface, i, 3000L);
+          localObject1 = localObject2;
+          i = j;
+          if (!TraeHelper.g(this.a.this$0)) {}
+        }
+        else
+        {
+          TraeHelper.a(this.a.this$0, false);
+          TraeHelper.b(this.a.this$0, false);
+          TipsUtil.a(localVideoAppInterface, 1068, 3000L);
+          localObject1 = localObject2;
+          i = j;
+        }
+      }
+      else if ("DEVICE_EARPHONE".equals(localSessionInfo.aD))
+      {
+        j = 7;
+        localObject2 = ((Resources)localObject2).getString(2131893189);
+        if (!TraeHelper.f(this.a.this$0))
+        {
+          localObject1 = localObject2;
+          i = j;
+          if (!TraeHelper.g(this.a.this$0)) {}
+        }
+        else
+        {
+          TraeHelper.a(this.a.this$0, false);
+          TraeHelper.b(this.a.this$0, false);
+          TipsUtil.a(localVideoAppInterface, 1069, 3000L);
+          localObject1 = localObject2;
+          i = j;
         }
       }
       else
       {
-        QLog.w("TraeSessionHelper", 1, "onUpdateButtonHandFree, btnText[" + (String)localObject1 + "], deviceName[" + locallid.q + "], mCurrentAudioLevel[" + this.a.this$0.d + "]");
-        return;
-        j = 0;
-        break;
-        if ("DEVICE_WIREDHEADSET".equals(locallid.q))
+        i = k;
+        if ("DEVICE_SPEAKERPHONE".equals(localSessionInfo.aD))
         {
-          i = 6;
-          localObject3 = ((Resources)localObject3).getString(2131695916);
-          if (!mwk.c(this.a.this$0))
+          localObject2 = ((Resources)localObject2).getString(2131893190);
+          if (!TraeHelper.f(this.a.this$0))
           {
-            localObject2 = localObject3;
-            if (!mwk.d(this.a.this$0)) {
-              break label928;
-            }
+            localObject1 = localObject2;
+            i = k;
+            if (!TraeHelper.g(this.a.this$0)) {}
           }
-          mwk.a(this.a.this$0, false);
-          mwk.b(this.a.this$0, false);
-          mdd.a(localVideoAppInterface, 6, 3000L);
-          i = 6;
-          localObject2 = localObject3;
-          continue;
-        }
-        if ("DEVICE_EARPHONE".equals(locallid.q))
-        {
-          i = 7;
-          localObject3 = ((Resources)localObject3).getString(2131695914);
-          if (!mwk.c(this.a.this$0))
+          else
           {
-            localObject2 = localObject3;
-            if (!mwk.d(this.a.this$0)) {
-              break label928;
-            }
+            TraeHelper.a(this.a.this$0, false);
+            TraeHelper.b(this.a.this$0, false);
+            TipsUtil.a(localVideoAppInterface, 1064, 3000L);
+            localObject1 = localObject2;
+            i = k;
           }
-          mwk.a(this.a.this$0, false);
-          mwk.b(this.a.this$0, false);
-          mdd.a(localVideoAppInterface, 7, 3000L);
-          i = 7;
-          localObject2 = localObject3;
-          continue;
-        }
-        if (!"DEVICE_SPEAKERPHONE".equals(locallid.q)) {
-          break label928;
-        }
-        i = 8;
-        localObject3 = ((Resources)localObject3).getString(2131695915);
-        if (!mwk.c(this.a.this$0))
-        {
-          localObject2 = localObject3;
-          if (!mwk.d(this.a.this$0)) {
-            break label928;
-          }
-        }
-        mwk.a(this.a.this$0, false);
-        mwk.b(this.a.this$0, false);
-        mdd.a(localVideoAppInterface, 2, 3000L);
-        i = 8;
-        localObject2 = localObject3;
-        continue;
-        mdd.a(localVideoAppInterface, 3012);
-        if (this.a.this$0.d == 1)
-        {
-          if (j == 0) {
-            break label936;
-          }
-          i = 3;
         }
       }
     }
-    for (;;)
+    else
     {
-      localObject2 = ((Resources)localObject3).getString(2131695915);
-      break label272;
-      int k = this.a.this$0.d;
-      if (k == 2) {
-        if (j != 0)
+      TipsUtil.b(localVideoAppInterface, 3012);
+      if (this.a.this$0.n == 1)
+      {
+        if (j == 0) {
+          break label942;
+        }
+        i = 3;
+      }
+      else
+      {
+        i = k;
+        if (this.a.this$0.n == 2)
         {
+          if (j == 0) {
+            break label947;
+          }
           i = 4;
         }
-        else
-        {
-          i = 2;
-          continue;
-          i = 3;
-          break label463;
-          label928:
-          break label272;
-          label931:
-          j = 1;
-          break;
-          label936:
-          i = 1;
-        }
       }
+      label617:
+      localObject1 = ((Resources)localObject2).getString(2131893190);
+    }
+    localObject2 = TraeHelper.a(this.a.this$0, this.a.b.getResources(), i, TraeHelper.h(this.a.this$0));
+    this.a.a.setCompoundDrawables(null, (Drawable)localObject2, null, null);
+    this.a.a.setText((CharSequence)localObject1);
+    if (this.a.this$0.h != null)
+    {
+      localObject2 = (TraeHelper.TraeHelperListener)this.a.this$0.h.get();
+      if (localObject2 != null) {
+        ((TraeHelper.TraeHelperListener)localObject2).a(localSessionInfo.aG, this.a.this$0.n);
+      }
+    }
+    if (((TraeHelper.i(this.a.this$0)) || (TraeHelper.g(this.a.this$0))) && (!TraeHelper.b(this.a.this$0)))
+    {
+      TraeHelper.c(this.a.this$0, false);
+      TraeHelper.b(this.a.this$0, false);
+      if (!localSessionInfo.aG) {
+        break label952;
+      }
+      i = m;
+    }
+    for (;;)
+    {
+      TipsUtil.a(localVideoAppInterface, i, 3000L);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onUpdateButtonHandFree, btnText[");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("], deviceName[");
+      ((StringBuilder)localObject2).append(localSessionInfo.aD);
+      ((StringBuilder)localObject2).append("], mCurrentAudioLevel[");
+      ((StringBuilder)localObject2).append(this.a.this$0.n);
+      ((StringBuilder)localObject2).append("]");
+      QLog.w("TraeSessionHelper", 1, ((StringBuilder)localObject2).toString());
+      return;
+      label932:
+      j = 0;
+      break;
+      label937:
+      j = 1;
+      break;
+      label942:
+      i = 1;
+      break label617;
+      label947:
+      i = 2;
+      break label617;
+      label952:
+      i = 1065;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class AccessRsp
 {
   static byte[] cache_body = (byte[])new byte[1];
   static Tips cache_tips = new Tips();
-  public byte[] body;
-  public int ret;
-  public Tips tips;
+  public byte[] body = null;
+  public int ret = 0;
+  public Tips tips = null;
   
   static
   {
@@ -38,14 +38,15 @@ public final class AccessRsp
   {
     paramJceOutputStream.write(this.ret, 0);
     paramJceOutputStream.write(this.body, 1);
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 2);
+    Tips localTips = this.tips;
+    if (localTips != null) {
+      paramJceOutputStream.write(localTips, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.AccessRsp
  * JD-Core Version:    0.7.0.1
  */

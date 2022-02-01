@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/aj5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <LinearLayout android:paddingLeft="0.0dip" android:paddingTop="0.0dip" android:paddingRight="0.0dip" style="@style/zv">
+            <TextView android:id="@id/lha" android:text="@string/l1t" style="@style/a08" />
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/jf0" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-16.0dip" android:listSelector="@android:color/transparent" android:divider="@color/FG_3" android:dividerHeight="0.5dip" />
+            <LinearLayout android:orientation="vertical" android:id="@id/ee9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <LinearLayout style="@style/a0o">
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/h_f" android:visibility="visible" android:clickable="false" wallet:contentClickable="false" wallet:contentEnabled="false" wallet:contentFocusable="false" wallet:contentHint="@string/kqg" wallet:contentTextColor="@color/xo" wallet:titleText="@string/kqj" style="@style/a0p" />
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/au5" wallet:contentHint="@string/l1p" wallet:titleText="@string/l1q" style="@style/zt" />
+                </LinearLayout>
+            </LinearLayout>
+            <ViewStub android:id="@id/eeb" android:layout="@layout/cfb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/eec" android:layout="@layout/cfc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <Button android:id="@id/hfl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/a12" style="@style/a0k" />
+        </LinearLayout>
+    </ScrollView>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a1_" android:gravity="center_horizontal" android:id="@id/gzh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i6" android:text="@string/lcu" android:layout_alignParentBottom="true" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c9a" />
+</RelativeLayout>

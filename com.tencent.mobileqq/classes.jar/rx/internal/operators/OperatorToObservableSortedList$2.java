@@ -17,22 +17,21 @@ class OperatorToObservableSortedList$2
   
   public void onCompleted()
   {
-    List localList;
     if (!this.completed)
     {
       this.completed = true;
-      localList = this.list;
+      List localList = this.list;
       this.list = null;
-    }
-    try
-    {
-      Collections.sort(localList, this.this$0.sortFunction);
-      this.val$producer.setValue(localList);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Exceptions.throwOrReport(localThrowable, this);
+      try
+      {
+        Collections.sort(localList, this.this$0.sortFunction);
+        this.val$producer.setValue(localList);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Exceptions.throwOrReport(localThrowable, this);
+      }
     }
   }
   
@@ -55,7 +54,7 @@ class OperatorToObservableSortedList$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorToObservableSortedList.2
  * JD-Core Version:    0.7.0.1
  */

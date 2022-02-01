@@ -15,28 +15,28 @@ public abstract class KRegionEditViewOnRegionSelectedCallback
     
     static
     {
-      AppMethodBeat.i(141376);
+      AppMethodBeat.i(135888);
       if (!KRegionEditViewOnRegionSelectedCallback.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(141376);
+        AppMethodBeat.o(135888);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(141372);
+      AppMethodBeat.i(135884);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(141372);
+        AppMethodBeat.o(135884);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(141372);
+      AppMethodBeat.o(135884);
     }
     
     private native void nativeDestroy(long paramLong);
@@ -45,38 +45,38 @@ public abstract class KRegionEditViewOnRegionSelectedCallback
     
     public final void destroy()
     {
-      AppMethodBeat.i(141373);
+      AppMethodBeat.i(135885);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(141373);
+      AppMethodBeat.o(135885);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(141374);
+      AppMethodBeat.i(135886);
       destroy();
       super.finalize();
-      AppMethodBeat.o(141374);
+      AppMethodBeat.o(135886);
     }
     
     public final void onRegionSelected()
     {
-      AppMethodBeat.i(141375);
+      AppMethodBeat.i(135887);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141375);
+        AppMethodBeat.o(135887);
         throw localAssertionError;
       }
       native_onRegionSelected(this.nativeRef);
-      AppMethodBeat.o(141375);
+      AppMethodBeat.o(135887);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.KRegionEditViewOnRegionSelectedCallback
  * JD-Core Version:    0.7.0.1
  */

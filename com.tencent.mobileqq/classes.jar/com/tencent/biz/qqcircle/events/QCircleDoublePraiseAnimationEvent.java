@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.events;
 
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class QCircleDoublePraiseAnimationEvent
   extends SimpleBaseEvent
 {
-  public int mFeedPos;
+  public int mFeedPos = 0;
   public int mPageType;
   public String mTargetFeedId;
   
@@ -18,7 +18,7 @@ public class QCircleDoublePraiseAnimationEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent
  * JD-Core Version:    0.7.0.1
  */

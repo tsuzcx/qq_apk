@@ -6,20 +6,20 @@ import java.util.NoSuchElementException;
 final class h<T>
   implements Iterator<T>
 {
-  int ac;
-  int e;
-  final int jp;
-  boolean jq = false;
+  int bL;
+  final int lm;
+  boolean ln = false;
+  int m;
   
   h(g paramg, int paramInt)
   {
-    this.jp = paramInt;
-    this.e = paramg.bf();
+    this.lm = paramInt;
+    this.m = paramg.bw();
   }
   
   public final boolean hasNext()
   {
-    return this.ac < this.e;
+    return this.bL < this.m;
   }
   
   public final T next()
@@ -27,21 +27,21 @@ final class h<T>
     if (!hasNext()) {
       throw new NoSuchElementException();
     }
-    Object localObject = this.jr.b(this.ac, this.jp);
-    this.ac += 1;
-    this.jq = true;
+    Object localObject = this.lo.b(this.bL, this.lm);
+    this.bL += 1;
+    this.ln = true;
     return localObject;
   }
   
   public final void remove()
   {
-    if (!this.jq) {
+    if (!this.ln) {
       throw new IllegalStateException();
     }
-    this.ac -= 1;
-    this.e -= 1;
-    this.jq = false;
-    this.jr.p(this.ac);
+    this.bL -= 1;
+    this.m -= 1;
+    this.ln = false;
+    this.lo.z(this.bL);
   }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e2i" android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/e2p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e2o" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" app:iconColor="@color/az" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eah" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/e2k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/d4" android:layout_below="@id/e2p" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+        <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/e2m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:text="@string/eai" android:layout_centerHorizontal="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e2l" android:padding="@dimen/bv" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="-1.0dip" android:src="@raw/icons_outlined_help" android:layout_alignTop="@id/e2m" android:layout_toEndOf="@id/e2m" app:iconColor="@color/BW_100_Alpha_0_5" />
+        <TextView android:textSize="@dimen/d4" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/e2m" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/e2f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e2k" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/e29" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="224.0dip" android:text="@string/eae" android:layout_below="@id/e2p" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/e2g" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="224.0dip" android:indeterminateDrawable="@drawable/ang" android:layout_below="@id/e2p" />
+    <include android:visibility="gone" layout="@layout/aih" />
+</RelativeLayout>

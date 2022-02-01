@@ -7,19 +7,19 @@ import com.qq.taf.jce.JceStruct;
 public final class SSummaryCardSetReq
   extends JceStruct
 {
-  static int cache_cmd = 0;
+  static int cache_cmd;
   static cardDiyComplicatedInfo cache_stDiyComplicated = new cardDiyComplicatedInfo();
   static cardDiyTextInfo cache_stDiyText = new cardDiyTextInfo();
-  public long bgid;
-  public long cardid;
+  public long bgid = 0L;
+  public long cardid = 0L;
   public int cmd = 2;
-  public long color;
+  public long color = 0L;
   public String extInfo = "";
-  public long platform;
-  public cardDiyComplicatedInfo stDiyComplicated;
-  public cardDiyTextInfo stDiyText;
-  public long styleid;
-  public long uin;
+  public long platform = 0L;
+  public cardDiyComplicatedInfo stDiyComplicated = null;
+  public cardDiyTextInfo stDiyText = null;
+  public long styleid = 0L;
+  public long uin = 0L;
   public String url = "";
   public String version = "4.7.0";
   
@@ -62,30 +62,35 @@ public final class SSummaryCardSetReq
     paramJceOutputStream.write(this.cmd, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.cardid, 2);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    Object localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.platform, 4);
     paramJceOutputStream.write(this.styleid, 5);
     paramJceOutputStream.write(this.bgid, 6);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 7);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.color, 8);
-    if (this.stDiyText != null) {
-      paramJceOutputStream.write(this.stDiyText, 9);
+    localObject = this.stDiyText;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.extInfo != null) {
-      paramJceOutputStream.write(this.extInfo, 10);
+    localObject = this.extInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.stDiyComplicated != null) {
-      paramJceOutputStream.write(this.stDiyComplicated, 11);
+    localObject = this.stDiyComplicated;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardSetReq
  * JD-Core Version:    0.7.0.1
  */

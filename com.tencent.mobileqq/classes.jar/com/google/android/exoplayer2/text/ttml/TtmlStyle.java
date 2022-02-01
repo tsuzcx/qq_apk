@@ -74,18 +74,18 @@ final class TtmlStyle
   
   public int getBackgroundColor()
   {
-    if (!this.hasBackgroundColor) {
-      throw new IllegalStateException("Background color has not been defined.");
+    if (this.hasBackgroundColor) {
+      return this.backgroundColor;
     }
-    return this.backgroundColor;
+    throw new IllegalStateException("Background color has not been defined.");
   }
   
   public int getFontColor()
   {
-    if (!this.hasFontColor) {
-      throw new IllegalStateException("Font color has not been defined.");
+    if (this.hasFontColor) {
+      return this.fontColor;
     }
-    return this.fontColor;
+    throw new IllegalStateException("Font color has not been defined.");
   }
   
   public String getFontFamily()
@@ -110,18 +110,20 @@ final class TtmlStyle
   
   public int getStyle()
   {
-    int j = 0;
     if ((this.bold == -1) && (this.italic == -1)) {
       return -1;
     }
-    if (this.bold == 1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (this.italic == 1) {
-        j = 2;
-      }
-      return i | j;
+    int i = this.bold;
+    int j = 0;
+    if (i == 1) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (this.italic == 1) {
+      j = 2;
+    }
+    return i | j;
   }
   
   public Layout.Alignment getTextAlign()
@@ -163,48 +165,34 @@ final class TtmlStyle
   
   public TtmlStyle setBold(boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool;
-    if (this.inheritableStyle == null)
-    {
-      bool = true;
-      Assertions.checkState(bool);
-      if (!paramBoolean) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      this.bold = i;
-      return this;
-      bool = false;
-      break;
-      label31:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public TtmlStyle setFontColor(int paramInt)
   {
-    if (this.inheritableStyle == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.fontColor = paramInt;
-      this.hasFontColor = true;
-      return this;
+    boolean bool;
+    if (this.inheritableStyle == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.fontColor = paramInt;
+    this.hasFontColor = true;
+    return this;
   }
   
   public TtmlStyle setFontFamily(String paramString)
   {
-    if (this.inheritableStyle == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.fontFamily = paramString;
-      return this;
+    boolean bool;
+    if (this.inheritableStyle == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.fontFamily = paramString;
+    return this;
   }
   
   public TtmlStyle setFontSize(float paramFloat)
@@ -227,48 +215,12 @@ final class TtmlStyle
   
   public TtmlStyle setItalic(boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool;
-    if (this.inheritableStyle == null)
-    {
-      bool = true;
-      Assertions.checkState(bool);
-      if (!paramBoolean) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      this.italic = i;
-      return this;
-      bool = false;
-      break;
-      label31:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public TtmlStyle setLinethrough(boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool;
-    if (this.inheritableStyle == null)
-    {
-      bool = true;
-      Assertions.checkState(bool);
-      if (!paramBoolean) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      this.linethrough = i;
-      return this;
-      bool = false;
-      break;
-      label31:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public TtmlStyle setTextAlign(Layout.Alignment paramAlignment)
@@ -279,30 +231,12 @@ final class TtmlStyle
   
   public TtmlStyle setUnderline(boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool;
-    if (this.inheritableStyle == null)
-    {
-      bool = true;
-      Assertions.checkState(bool);
-      if (!paramBoolean) {
-        break label31;
-      }
-    }
-    for (;;)
-    {
-      this.underline = i;
-      return this;
-      bool = false;
-      break;
-      label31:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.ttml.TtmlStyle
  * JD-Core Version:    0.7.0.1
  */

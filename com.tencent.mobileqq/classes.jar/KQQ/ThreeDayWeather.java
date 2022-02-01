@@ -10,13 +10,13 @@ public final class ThreeDayWeather
   static DayWeather cache_aftertom;
   static DayWeather cache_today;
   static DayWeather cache_tomorrow;
-  public DayWeather aftertom;
+  public DayWeather aftertom = null;
   public String currtime = "";
-  public int currtmpe;
+  public int currtmpe = 0;
   public String day = "";
   public String festa = "";
-  public DayWeather today;
-  public DayWeather tomorrow;
+  public DayWeather today = null;
+  public DayWeather tomorrow = null;
   public String year = "";
   
   public ThreeDayWeather() {}
@@ -60,23 +60,27 @@ public final class ThreeDayWeather
     paramJceOutputStream.write(this.tomorrow, 2);
     paramJceOutputStream.write(this.aftertom, 3);
     paramJceOutputStream.write(this.currtmpe, 4);
-    if (this.year != null) {
-      paramJceOutputStream.write(this.year, 5);
+    String str = this.year;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.day != null) {
-      paramJceOutputStream.write(this.day, 6);
+    str = this.day;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.festa != null) {
-      paramJceOutputStream.write(this.festa, 7);
+    str = this.festa;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.currtime != null) {
-      paramJceOutputStream.write(this.currtime, 8);
+    str = this.currtime;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ThreeDayWeather
  * JD-Core Version:    0.7.0.1
  */

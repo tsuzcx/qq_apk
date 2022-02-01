@@ -1,19 +1,16 @@
 package com.tencent.mm.booter;
 
-import android.content.Context;
-
 public final class x
+  extends q
 {
-  Context context;
-  
-  public x(Context paramContext)
+  public x(d paramd)
   {
-    this.context = paramContext;
+    super(paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.x
  * JD-Core Version:    0.7.0.1
  */

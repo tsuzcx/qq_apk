@@ -2,11 +2,11 @@ package android.support.wearable.view;
 
 public abstract interface o
 {
-  public abstract void L(int paramInt1, int paramInt2);
+  public abstract void J(int paramInt);
+  
+  public abstract void N(int paramInt1, int paramInt2);
   
   public abstract void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, int paramInt4);
-  
-  public abstract void y(int paramInt);
 }
 
 

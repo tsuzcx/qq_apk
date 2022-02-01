@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.location.model;
 
 import android.os.Looper;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.s;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.plugin.location.model.a.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aah;
-import com.tencent.mm.protocal.protobuf.bmx;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.clf;
-import com.tencent.mm.protocal.protobuf.cpm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.aoo;
+import com.tencent.mm.protocal.protobuf.efn;
+import com.tencent.mm.protocal.protobuf.eor;
+import com.tencent.mm.protocal.protobuf.fot;
+import com.tencent.mm.protocal.protobuf.fvj;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -26,148 +23,267 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class o
-  implements f, com.tencent.mm.bh.b
+  implements com.tencent.mm.am.h, com.tencent.mm.bd.b
 {
-  public boolean caV;
-  public b.a dZA;
-  public com.tencent.mm.modelgeo.d fwu;
+  private String KbU;
+  public double KbW;
+  public double KbX;
+  public int KbY;
+  private int Kdh;
+  private int Kdi;
+  public k Kdj;
+  public HashSet<WeakReference<b>> Kdk;
+  public int Kdl;
+  public fvj Kdm;
+  public LocationInfo Kdn;
+  public boolean Kdo;
+  public boolean Kdp;
+  public int Kdq;
+  boolean Kdr;
+  public a Kds;
+  public int Kdt;
+  public boolean Kdu;
+  public long Kdv;
+  private long Kdw;
+  public k.a Kdx;
+  private int fZW;
   public boolean isStart;
-  ak mHandler;
-  private String nZT;
-  public double nZV;
-  public double nZW;
-  public int nZX;
-  private int obe;
-  private int obf;
-  public i obg;
-  public HashSet<WeakReference<o.b>> obh;
-  public int obi;
-  public cpm obk;
-  public LocationInfo obl;
-  public boolean obm;
-  public boolean obn;
-  public int obo;
-  public String obp;
-  boolean obq;
-  public o.a obr;
-  public int obs;
-  public boolean obt;
-  public long obu;
-  long obv;
-  public i.a obw;
-  private int timestamp;
+  public boolean isTimeout;
+  public b.a lsF;
+  MMHandler mHandler;
+  public String mpr;
+  public com.tencent.mm.modelgeo.d owr;
   
   public o()
   {
-    AppMethodBeat.i(113385);
-    this.obe = 0;
-    this.obf = 1000;
-    this.obh = new HashSet();
-    this.obi = 1;
-    this.obl = new LocationInfo((byte)0);
-    this.obm = false;
-    this.obn = false;
+    AppMethodBeat.i(55760);
+    this.Kdh = 0;
+    this.Kdi = 1000;
+    this.Kdk = new HashSet();
+    this.Kdl = 1;
+    this.Kdn = new LocationInfo((byte)0);
+    this.Kdo = false;
+    this.Kdp = false;
     this.isStart = false;
-    this.obo = this.obi;
-    this.obp = "";
-    this.caV = false;
-    this.obq = false;
-    this.obr = null;
-    this.obs = -1;
-    this.obt = true;
-    this.obu = 0L;
-    this.obv = 0L;
-    this.nZV = -1000.0D;
-    this.nZW = -1000.0D;
-    this.nZX = -1;
-    this.mHandler = new o.1(this, Looper.getMainLooper());
-    this.dZA = new o.2(this);
-    this.obw = new o.3(this);
-    AppMethodBeat.o(113385);
-  }
-  
-  private void bLw()
-  {
-    AppMethodBeat.i(113390);
-    ab.d("MicorMsg.TrackRefreshManager", "trigerRefresh");
-    if (bLB())
+    this.Kdq = this.Kdl;
+    this.mpr = "";
+    this.isTimeout = false;
+    this.Kdr = false;
+    this.Kds = null;
+    this.Kdt = -1;
+    this.Kdu = true;
+    this.Kdv = 0L;
+    this.Kdw = 0L;
+    this.KbW = -1000.0D;
+    this.KbX = -1000.0D;
+    this.KbY = -1;
+    this.mHandler = new MMHandler(Looper.getMainLooper())
     {
-      ab.d("MicorMsg.TrackRefreshManager", "trigerRefresh, joinSuccess");
-      this.fwu = com.tencent.mm.modelgeo.d.agQ();
-      this.fwu.b(this.dZA, true);
-      if (this.obg == null) {
-        this.obg = l.bLt();
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(55758);
+        super.handleMessage(paramAnonymousMessage);
+        if (paramAnonymousMessage == null)
+        {
+          AppMethodBeat.o(55758);
+          return;
+        }
+        o.a(o.this, paramAnonymousMessage);
+        AppMethodBeat.o(55758);
       }
-      this.obg.a(this.obw);
-      bLA();
-    }
-    AppMethodBeat.o(113390);
+    };
+    this.lsF = new b.a()
+    {
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
+      {
+        AppMethodBeat.i(264937);
+        if (!paramAnonymousBoolean)
+        {
+          AppMethodBeat.o(264937);
+          return false;
+        }
+        Log.d("MicorMsg.TrackRefreshManager", "onGetlocatoin fLongitude:%f, fLatitude:%f, locType:%d, speed:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1) });
+        if (o.a(o.this))
+        {
+          o.b(o.this);
+          o.a(o.this, System.currentTimeMillis());
+          long l = o.c(o.this) - o.d(o.this);
+          Log.d("MicorMsg.TrackRefreshManager", "locate time:%d", new Object[] { Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.h.OAn.b(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
+        }
+        if ((o.e(o.this) != null) && (o.e(o.this).abTG != null))
+        {
+          o.e(o.this).abTG.YTd = paramAnonymousFloat2;
+          o.e(o.this).abTG.YTc = paramAnonymousFloat1;
+        }
+        AppMethodBeat.o(264937);
+        return true;
+      }
+    };
+    this.Kdx = new k.a()
+    {
+      public final void Q(double paramAnonymousDouble)
+      {
+        AppMethodBeat.i(264935);
+        if (o.e(o.this) != null) {
+          o.e(o.this).abTG.abkT = paramAnonymousDouble;
+        }
+        AppMethodBeat.o(264935);
+      }
+    };
+    AppMethodBeat.o(55760);
   }
   
-  private void cz(String paramString, int paramInt)
+  private void fM(String paramString, int paramInt)
   {
-    AppMethodBeat.i(113388);
-    ab.d("MicorMsg.TrackRefreshManager", "exitTrack, scene=%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(55763);
+    Log.d("MicorMsg.TrackRefreshManager", "exitTrack, scene=%d", new Object[] { Integer.valueOf(paramInt) });
     paramString = new com.tencent.mm.plugin.location.model.a.a(paramString);
-    ((aah)paramString.rr.fsV.fta).Scene = paramInt;
-    g.Rc().a(paramString, 0);
-    this.nZT = "";
-    AppMethodBeat.o(113388);
+    ((aoo)c.b.b(paramString.rr.otB)).IJG = paramInt;
+    com.tencent.mm.kernel.h.aZW().a(paramString, 0);
+    this.KbU = "";
+    AppMethodBeat.o(55763);
   }
   
-  public final String alg()
+  private void fUH()
   {
-    return this.obp;
+    AppMethodBeat.i(55765);
+    Log.d("MicorMsg.TrackRefreshManager", "trigerRefresh");
+    if (fUM())
+    {
+      Log.d("MicorMsg.TrackRefreshManager", "trigerRefresh, joinSuccess");
+      this.owr = com.tencent.mm.modelgeo.d.bJl();
+      this.owr.a(this.lsF, true);
+      if (this.Kdj == null) {
+        this.Kdj = SubCoreLocation.fUD();
+      }
+      this.Kdj.a(this.Kdx);
+      fUL();
+    }
+    AppMethodBeat.o(55765);
   }
   
-  public final void bLA()
+  public final void ZC(int paramInt)
+  {
+    AppMethodBeat.i(55764);
+    Log.i("MicorMsg.TrackRefreshManager", "track endTrack");
+    if (fUM()) {
+      fM(this.KbU, paramInt);
+    }
+    if (!Util.isNullOrNil(this.mpr))
+    {
+      com.tencent.mm.plugin.location.a.a locala = SubCoreLocation.fUC().aKe(this.mpr);
+      if (locala != null)
+      {
+        locala.hSk.remove(z.bAM());
+        SubCoreLocation.fUC().a(this.mpr, locala.hSk, locala.latitude, locala.longitude, locala.KbS, null, null);
+      }
+    }
+    SubCoreLocation.fUC().aKf("");
+    this.KbU = "";
+    this.mpr = "";
+    this.Kdo = false;
+    this.Kdp = false;
+    this.KbW = -1000.0D;
+    this.KbX = -1000.0D;
+    this.KbY = -1;
+    this.Kdt = -1;
+    AppMethodBeat.o(55764);
+  }
+  
+  public final String bNG()
+  {
+    return this.mpr;
+  }
+  
+  public final boolean fUG()
+  {
+    AppMethodBeat.i(55762);
+    if ((fUM()) && (this.Kdo))
+    {
+      AppMethodBeat.o(55762);
+      return true;
+    }
+    AppMethodBeat.o(55762);
+    return false;
+  }
+  
+  public final void fUI()
+  {
+    AppMethodBeat.i(55766);
+    Log.d("MicorMsg.TrackRefreshManager", "resume refresh");
+    this.Kdr = false;
+    fUH();
+    AppMethodBeat.o(55766);
+  }
+  
+  public final List<String> fUJ()
+  {
+    AppMethodBeat.i(55767);
+    LinkedList localLinkedList = SubCoreLocation.fUC().Px(this.mpr);
+    AppMethodBeat.o(55767);
+    return localLinkedList;
+  }
+  
+  public final void fUK()
+  {
+    if (this.Kdl == 1) {
+      this.Kdl = 3;
+    }
+    while (this.Kdl != 3) {
+      return;
+    }
+    this.Kdl = 2;
+  }
+  
+  public final void fUL()
   {
     boolean bool = true;
-    AppMethodBeat.i(113393);
-    if ((!this.isStart) || (!this.obm) || (this.obl == null))
+    AppMethodBeat.i(55768);
+    if ((!this.isStart) || (!this.Kdo) || (this.Kdn == null))
     {
-      localObject1 = new StringBuilder("error to exit refresh isStart: ").append(this.isStart).append(" isShared: ").append(this.obm).append(" ");
-      if (this.obl == null) {}
+      localObject1 = new StringBuilder("error to exit refresh isStart: ").append(this.isStart).append(" isShared: ").append(this.Kdo).append(" ");
+      if (this.Kdn == null) {}
       for (;;)
       {
-        ab.e("MicorMsg.TrackRefreshManager", bool);
-        AppMethodBeat.o(113393);
+        Log.e("MicorMsg.TrackRefreshManager", bool);
+        AppMethodBeat.o(55768);
         return;
         bool = false;
       }
     }
-    if ((this.obk == null) || (this.obk.xYw.wyP == -1000.0D) || (this.obk.xYw.wyO == -1000.0D))
+    if ((this.Kdm == null) || (this.Kdm.abTG.YTd == -1000.0D) || (this.Kdm.abTG.YTc == -1000.0D))
     {
-      ab.e("MicorMsg.TrackRefreshManager", "error to get my location ");
-      this.mHandler.sendEmptyMessageDelayed(1, this.obf);
-      AppMethodBeat.o(113393);
+      Log.e("MicorMsg.TrackRefreshManager", "error to get my location ");
+      this.mHandler.sendEmptyMessageDelayed(1, this.Kdi);
+      AppMethodBeat.o(55768);
       return;
     }
-    Object localObject2 = r.Zn();
-    Object localObject1 = new clf();
-    ((clf)localObject1).xyb = this.obl.nZY;
-    ((clf)localObject1).wyP = this.obl.nZV;
-    ((clf)localObject1).wyO = this.obl.nZW;
-    ((clf)localObject1).Name = ((String)localObject2);
-    this.obk.Username = ((String)localObject2);
-    this.obk.xYw.xBh = l.bLt().bLk();
+    Object localObject2 = z.bAM();
+    Object localObject1 = new fot();
+    ((fot)localObject1).abeG = this.Kdn.KbZ;
+    ((fot)localObject1).YTd = this.Kdn.KbW;
+    ((fot)localObject1).YTc = this.Kdn.KbX;
+    ((fot)localObject1).IGU = ((String)localObject2);
+    this.Kdm.Username = ((String)localObject2);
+    this.Kdm.abTG.abkT = SubCoreLocation.fUD().fUv();
     localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append("refreshLoopImpl, [trackRoomId:" + this.nZT + "]");
-    switch (this.obi)
+    ((StringBuffer)localObject2).append("refreshLoopImpl, [trackRoomId:" + this.KbU + "]");
+    switch (this.Kdl)
     {
     }
     for (;;)
     {
-      ((StringBuffer)localObject2).append("[ mMyPosiItem " + this.obk.xYw.wyP + " " + this.obk.xYw.wyO + " " + this.obk.xYw.xBh + " ]");
-      ab.d("MicorMsg.TrackRefreshManager", ((StringBuffer)localObject2).toString());
-      localObject2 = this.nZT;
-      int i = this.obi;
-      cpm localcpm = this.obk;
-      int j = this.timestamp + 1;
-      this.timestamp = j;
-      localObject1 = new c((String)localObject2, i, localcpm, j, (clf)localObject1);
-      g.Rc().a((m)localObject1, 0);
-      AppMethodBeat.o(113393);
+      ((StringBuffer)localObject2).append("[ mMyPosiItem " + this.Kdm.abTG.YTd + " " + this.Kdm.abTG.YTc + " " + this.Kdm.abTG.abkT + " ]");
+      Log.d("MicorMsg.TrackRefreshManager", ((StringBuffer)localObject2).toString());
+      localObject2 = this.KbU;
+      int i = this.Kdl;
+      fvj localfvj = this.Kdm;
+      int j = this.fZW + 1;
+      this.fZW = j;
+      localObject1 = new com.tencent.mm.plugin.location.model.a.c((String)localObject2, i, localfvj, j, (fot)localObject1);
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localObject1, 0);
+      AppMethodBeat.o(55768);
       return;
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomUpload ");
       continue;
@@ -176,282 +292,230 @@ public final class o
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomUploadAndDownLoad ");
       continue;
       ((StringBuffer)localObject2).append("track upload_status  MMRefreshTrackRoomFirstUpload ");
-      ((StringBuffer)localObject2).append("[ trackItem " + ((clf)localObject1).wyP + " " + ((clf)localObject1).wyO + " ]");
+      ((StringBuffer)localObject2).append("[ trackItem " + ((fot)localObject1).YTd + " " + ((fot)localObject1).YTc + " ]");
     }
   }
   
-  public final boolean bLB()
+  public final boolean fUM()
   {
-    AppMethodBeat.i(113394);
-    if (!bo.isNullOrNil(this.nZT))
+    AppMethodBeat.i(55769);
+    if (!Util.isNullOrNil(this.KbU))
     {
-      AppMethodBeat.o(113394);
+      AppMethodBeat.o(55769);
       return true;
     }
-    AppMethodBeat.o(113394);
+    AppMethodBeat.o(55769);
     return false;
   }
   
-  public final boolean bLv()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(113387);
-    if ((bLB()) && (this.obm))
-    {
-      AppMethodBeat.o(113387);
-      return true;
-    }
-    AppMethodBeat.o(113387);
-    return false;
-  }
-  
-  public final void bLx()
-  {
-    AppMethodBeat.i(113391);
-    ab.d("MicorMsg.TrackRefreshManager", "resume refresh");
-    this.obq = false;
-    bLw();
-    AppMethodBeat.o(113391);
-  }
-  
-  public final List<String> bLy()
-  {
-    AppMethodBeat.i(113392);
-    LinkedList localLinkedList = l.bLs().uN(this.obp);
-    AppMethodBeat.o(113392);
-    return localLinkedList;
-  }
-  
-  public final void bLz()
-  {
-    if (this.obi == 1) {
-      this.obi = 3;
-    }
-    while (this.obi != 3) {
-      return;
-    }
-    this.obi = 2;
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(113395);
-    ab.d("MicorMsg.TrackRefreshManager", "onSceneEnd scene type %d errType %d errCode %d", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(55770);
+    Log.d("MicorMsg.TrackRefreshManager", "onSceneEnd scene type %d errType %d errCode %d", new Object[] { Integer.valueOf(paramp.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     WeakReference localWeakReference;
-    if (paramm.getType() == 490)
+    if (paramp.getType() == 490)
     {
       if ((paramInt2 == 0) || (paramInt2 >= 1000))
       {
-        this.nZT = ((com.tencent.mm.plugin.location.model.a.b)paramm).nZT;
-        l.bLs().Sb(this.nZT);
-        if (bLB())
+        this.KbU = ((com.tencent.mm.plugin.location.model.a.b)paramp).KbU;
+        SubCoreLocation.fUC().aKf(this.KbU);
+        if (fUM())
         {
-          ab.i("MicorMsg.TrackRefreshManager", "join sucess %s", new Object[] { this.nZT });
-          paramString = com.tencent.mm.bh.d.fUO.uN(this.obp);
-          paramString.add(r.Zn());
-          if (this.obl != null) {
-            com.tencent.mm.bh.d.fUO.a(this.obp, paramString, this.obl.nZV, this.obl.nZW, this.obl.nZY, "", "");
+          Log.i("MicorMsg.TrackRefreshManager", "join sucess %s", new Object[] { this.KbU });
+          paramString = com.tencent.mm.bd.d.oXN.Px(this.mpr);
+          paramString.add(z.bAM());
+          if (this.Kdn != null) {
+            com.tencent.mm.bd.d.oXN.a(this.mpr, paramString, this.Kdn.KbW, this.Kdn.KbX, this.Kdn.KbZ, "", "");
           }
-          while (this.obh != null)
+          while (this.Kdk != null)
           {
-            paramString = this.obh.iterator();
+            paramString = this.Kdk.iterator();
             while (paramString.hasNext())
             {
-              paramm = (WeakReference)paramString.next();
-              if ((paramm != null) && (paramm.get() != null)) {
-                ((o.b)paramm.get()).bLC();
+              paramp = (WeakReference)paramString.next();
+              if ((paramp != null) && (paramp.get() != null)) {
+                ((b)paramp.get()).fUN();
               }
             }
-            com.tencent.mm.bh.d.fUO.a(this.obp, paramString, -1000.0D, -1000.0D, "", "", "");
+            com.tencent.mm.bd.d.oXN.a(this.mpr, paramString, -1000.0D, -1000.0D, "", "", "");
           }
-          bLA();
-          AppMethodBeat.o(113395);
+          fUL();
+          AppMethodBeat.o(55770);
         }
       }
       else
       {
-        if ((paramInt2 == 17) && (this.obh != null))
+        if ((paramInt2 == 17) && (this.Kdk != null))
         {
-          paramString = this.obh.iterator();
+          paramString = this.Kdk.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((o.b)localWeakReference.get()).bLD();
+              ((b)localWeakReference.get()).fUO();
             }
           }
         }
-        if (this.obh != null)
+        if (this.Kdk != null)
         {
-          paramString = this.obh.iterator();
+          paramString = this.Kdk.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((o.b)localWeakReference.get()).onError(0, ((com.tencent.mm.plugin.location.model.a.b)paramm).hxt);
+              ((b)localWeakReference.get()).onError(0, ((com.tencent.mm.plugin.location.model.a.b)paramp).wZb);
             }
           }
-          AppMethodBeat.o(113395);
+          AppMethodBeat.o(55770);
         }
       }
     }
     else if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      if (paramm.getType() == 492)
+      if (paramp.getType() == 492)
       {
-        this.obe += 1;
+        this.Kdh += 1;
         this.mHandler.removeMessages(1);
-        if (this.obe >= 10)
+        if (this.Kdh >= 10)
         {
           this.mHandler.removeMessages(1);
-          if (this.obh != null)
+          if (this.Kdk != null)
           {
-            paramString = this.obh.iterator();
+            paramString = this.Kdk.iterator();
             while (paramString.hasNext())
             {
               localWeakReference = (WeakReference)paramString.next();
               if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-                ((o.b)localWeakReference.get()).onError(1, ((c)paramm).hxt);
+                ((b)localWeakReference.get()).onError(1, ((com.tencent.mm.plugin.location.model.a.c)paramp).wZb);
               }
             }
-            AppMethodBeat.o(113395);
+            AppMethodBeat.o(55770);
           }
         }
-        else if ((bLB()) && (!this.obq))
+        else if ((fUM()) && (!this.Kdr))
         {
-          paramString = ((c)paramm).obG;
+          paramString = ((com.tencent.mm.plugin.location.model.a.c)paramp).KdH;
           if ((paramString != null) && (paramString.BaseResponse != null))
           {
-            if (paramString.BaseResponse.Ret != 12) {
+            if (paramString.BaseResponse.Idd != 12) {
               break label696;
             }
-            this.caV = true;
-            if (this.obr != null) {
-              this.obr.ayM();
+            this.isTimeout = true;
+            if (this.Kds != null) {
+              this.Kds.onTimeout();
             }
           }
           for (;;)
           {
-            ab.d("MicorMsg.TrackRefreshManager", "refresh track room, in error status, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.caV), Integer.valueOf(paramString.BaseResponse.Ret) });
-            if (!this.caV) {
-              this.mHandler.sendEmptyMessageDelayed(1, this.obf);
+            Log.d("MicorMsg.TrackRefreshManager", "refresh track room, in error status, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.isTimeout), Integer.valueOf(paramString.BaseResponse.Idd) });
+            if (!this.isTimeout) {
+              this.mHandler.sendEmptyMessageDelayed(1, this.Kdi);
             }
-            AppMethodBeat.o(113395);
+            AppMethodBeat.o(55770);
             return;
             label696:
-            this.caV = false;
+            this.isTimeout = false;
           }
         }
       }
     }
     else
     {
-      if (paramm.getType() == 492)
+      if (paramp.getType() == 492)
       {
-        paramString = ((c)paramm).obG;
+        paramString = ((com.tencent.mm.plugin.location.model.a.c)paramp).KdH;
         if ((paramString != null) && (paramString.BaseResponse != null))
         {
-          if (paramString.BaseResponse.Ret != 12) {
+          if (paramString.BaseResponse.Idd != 12) {
             break label964;
           }
-          this.caV = true;
-          if (this.obr != null) {
-            this.obr.ayM();
+          this.isTimeout = true;
+          if (this.Kds != null) {
+            this.Kds.onTimeout();
           }
         }
         for (;;)
         {
-          ab.d("MicorMsg.TrackRefreshManager", "refresh track room, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.caV), Integer.valueOf(paramString.BaseResponse.Ret) });
-          if (this.obe > 0) {
-            h.qsU.e(10997, new Object[] { "9", "", Integer.valueOf(this.obe), Integer.valueOf(0) });
+          Log.d("MicorMsg.TrackRefreshManager", "refresh track room, timeout = %b, ret = %d", new Object[] { Boolean.valueOf(this.isTimeout), Integer.valueOf(paramString.BaseResponse.Idd) });
+          if (this.Kdh > 0) {
+            com.tencent.mm.plugin.report.service.h.OAn.b(10997, new Object[] { "9", "", Integer.valueOf(this.Kdh), Integer.valueOf(0) });
           }
-          this.obe = 0;
-          this.obf = ((c)paramm).obD;
-          paramInt1 = ((c)paramm).obH;
-          if ((this.obh == null) || ((paramInt1 != 2) && (paramInt1 != 1) && (paramInt1 != 3))) {
+          this.Kdh = 0;
+          this.Kdi = ((com.tencent.mm.plugin.location.model.a.c)paramp).KdE;
+          paramInt1 = ((com.tencent.mm.plugin.location.model.a.c)paramp).KdI;
+          if ((this.Kdk == null) || ((paramInt1 != 2) && (paramInt1 != 1) && (paramInt1 != 3))) {
             break;
           }
-          paramString = this.obh.iterator();
+          paramString = this.Kdk.iterator();
           while (paramString.hasNext())
           {
             localWeakReference = (WeakReference)paramString.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((o.b)localWeakReference.get()).a(((c)paramm).obG);
+              ((b)localWeakReference.get()).a(((com.tencent.mm.plugin.location.model.a.c)paramp).KdH);
             }
           }
           label964:
-          this.caV = false;
+          this.isTimeout = false;
         }
-        if (this.obi == 1) {}
+        if (this.Kdl == 1) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
           if (paramInt1 == 0) {
-            bLz();
+            fUK();
           }
           this.mHandler.removeMessages(1);
-          if ((bLB()) && (!this.obq) && (!this.caV)) {
-            this.mHandler.sendEmptyMessageDelayed(1, this.obf);
+          if ((fUM()) && (!this.Kdr) && (!this.isTimeout)) {
+            this.mHandler.sendEmptyMessageDelayed(1, this.Kdi);
           }
-          AppMethodBeat.o(113395);
+          AppMethodBeat.o(55770);
           return;
         }
       }
-      if (paramm.getType() == 491) {
-        l.bLs().Sb("");
+      if (paramp.getType() == 491) {
+        SubCoreLocation.fUC().aKf("");
       }
     }
-    AppMethodBeat.o(113395);
+    AppMethodBeat.o(55770);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(113386);
-    ab.i("MicorMsg.TrackRefreshManager", "stop location");
-    if (this.fwu != null) {
-      this.fwu.c(this.dZA);
+    AppMethodBeat.i(55761);
+    Log.i("MicorMsg.TrackRefreshManager", "stop location");
+    if (this.owr != null) {
+      this.owr.a(this.lsF);
     }
-    if (this.obg != null) {
-      this.obg.b(this.obw);
+    if (this.Kdj != null) {
+      this.Kdj.b(this.Kdx);
     }
-    g.Rc().b(492, this);
-    g.Rc().b(490, this);
-    g.Rc().b(491, this);
-    this.obi = 1;
+    com.tencent.mm.kernel.h.aZW().b(492, this);
+    com.tencent.mm.kernel.h.aZW().b(490, this);
+    com.tencent.mm.kernel.h.aZW().b(491, this);
+    this.Kdl = 1;
     this.isStart = false;
-    this.obs = -1;
-    AppMethodBeat.o(113386);
+    this.Kdt = -1;
+    AppMethodBeat.o(55761);
   }
   
-  public final void yb(int paramInt)
+  public static abstract interface a
   {
-    AppMethodBeat.i(113389);
-    ab.i("MicorMsg.TrackRefreshManager", "track endTrack");
-    if (bLB()) {
-      cz(this.nZT, paramInt);
-    }
-    if (!bo.isNullOrNil(this.obp))
-    {
-      com.tencent.mm.plugin.location.a.a locala = l.bLs().Sa(this.obp);
-      if (locala != null)
-      {
-        locala.cAC.remove(r.Zn());
-        l.bLs().a(this.obp, locala.cAC, locala.latitude, locala.longitude, locala.nZR, null, null);
-      }
-    }
-    l.bLs().Sb("");
-    this.nZT = "";
-    this.obp = "";
-    this.obm = false;
-    this.obn = false;
-    this.nZV = -1000.0D;
-    this.nZW = -1000.0D;
-    this.nZX = -1;
-    this.obs = -1;
-    AppMethodBeat.o(113389);
+    public abstract void onTimeout();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(eor parameor);
+    
+    public abstract void fUN();
+    
+    public abstract void fUO();
+    
+    public abstract void onError(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.o
  * JD-Core Version:    0.7.0.1
  */

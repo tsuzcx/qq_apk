@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/ngs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.immersive.views.QFSViewPager android:id="@id/ngx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/ngw" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="44.0dip">
+        <ViewStub android:id="@id/pgl" android:layout="@layout/d3a" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+        <ViewStub android:id="@id/pgm" android:layout="@layout/d3b" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+        <com.tencent.biz.qqcircle.richframework.widget.TabLayoutCompat android:layout_gravity="center" android:id="@id/ngt" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" app:tabCompatMinWidth="56.0dip" />
+    </FrameLayout>
+    <com.tencent.biz.qqcircle.widgets.QFSMessageNoticeView android:layout_gravity="center_horizontal" android:id="@id/ngq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" />
+    <com.tencent.biz.qqcircle.immersive.views.QFSBoxProgressView android:id="@id/pf4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="96.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="44.0dip">
+        <include layout="@layout/d3y" />
+    </FrameLayout>
+    <ViewStub android:id="@id/myk" android:visibility="gone" android:layout="@layout/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p_q" android:visibility="gone" android:layout="@layout/cyi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

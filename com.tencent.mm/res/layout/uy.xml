@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/a1_" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
-    <include android:id="@id/bi0" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/uz" />
-    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@android:id/list" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:layout_below="@id/bi0" dslv:collapsed_height="2.0dip" dslv:drag_scroll_start="0.33" dslv:max_drag_scroll_speed="0.5" dslv:remove_mode="fp" dslv:track_drag_sort="false" dslv:float_alpha="0.4" dslv:slide_shuffle_speed="0.3" dslv:drag_enabled="true" dslv:sort_enabled="true" dslv:remove_enabled="false" dslv:drag_start_mode="fq" dslv:drag_handle_id="@id/bi1" dslv:use_default_controller="true" />
+<RelativeLayout android:background="@drawable/oe" android:paddingLeft="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/br7" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip">
+        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:id="@id/bgk" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/bh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/q" android:ellipsize="end" android:id="@id/bgl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="" android:lines="1" />
+    </LinearLayout>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
 </RelativeLayout>

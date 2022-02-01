@@ -1,417 +1,495 @@
 package com.tencent.mm.plugin.gallery.model;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.HandlerThread;
-import android.os.RemoteException;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.stub.a;
-import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.gallery.b.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.concurrent.ExecutorService;
 
 public final class e
 {
-  private static int bpY = 0;
-  private static e ncT = null;
-  public static boolean ncU = false;
-  public static boolean ncV = false;
-  public static boolean ncW = false;
-  public static boolean ncX = false;
-  private Object lock;
-  private l ncO;
-  private c ncP;
-  private g ncQ;
-  private ArrayList<GalleryItem.MediaItem> ncR;
-  private LinkedHashSet<GalleryItem.MediaItem> ncS;
-  private HashSet<GalleryItem.MediaItem> ncY;
-  private ArrayList<Bundle> ncZ;
-  private HashMap<Integer, Boolean> nda;
+  public static boolean HGS = false;
+  public static boolean HGT = false;
+  public static boolean HGU = false;
+  public static boolean HGV = false;
+  private static volatile e HGZ = null;
+  private static int HHa = 0;
+  private q GzD;
+  private c HGO;
+  private g HGP;
+  private ArrayList<GalleryItem.MediaItem> HGQ;
+  private LinkedHashSet<GalleryItem.MediaItem> HGR;
+  private HashSet<GalleryItem.MediaItem> HGW;
+  private ArrayList<Bundle> HGX;
+  private HashMap<Integer, Boolean> HGY;
+  private SparseArray<GalleryItem.a> HHb;
   
   private e()
   {
-    AppMethodBeat.i(21246);
-    this.ncR = null;
-    this.ncS = new LinkedHashSet();
-    this.lock = new Object();
-    this.ncY = new HashSet();
-    this.ncZ = new ArrayList();
-    this.nda = new HashMap();
-    if (this.ncP == null) {
-      this.ncP = new c();
+    AppMethodBeat.i(111261);
+    this.HGQ = null;
+    this.HGR = new LinkedHashSet();
+    this.HGW = new HashSet();
+    this.HGX = new ArrayList();
+    this.HGY = new HashMap();
+    this.HHb = new SparseArray();
+    if (this.GzD == null) {
+      this.GzD = new q();
     }
-    if (this.ncO == null) {
-      this.ncO = new l();
+    if (this.HGP == null) {
+      this.HGP = new g();
     }
-    if (this.ncQ == null) {
-      this.ncQ = new g();
+    if (this.HGO == null) {
+      this.HGO = new c();
     }
-    AppMethodBeat.o(21246);
-  }
-  
-  public static void B(ArrayList<GalleryItem.MediaItem> paramArrayList)
-  {
-    AppMethodBeat.i(21256);
-    bDO().ncR = paramArrayList;
-    AppMethodBeat.o(21256);
-  }
-  
-  public static GalleryItem.MediaItem PB(String paramString)
-  {
-    AppMethodBeat.i(21245);
-    paramString = GalleryItem.MediaItem.a(0, 0L, paramString, "", "");
-    if (bDO().ncR != null)
+    Object localObject = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.znR, "");
+    Log.i("MicroMsg.GalleryCore", "localAlbumName: %s.", new Object[] { localObject });
+    try
     {
-      int i = bDO().ncR.indexOf(paramString);
-      if (i >= 0)
+      localObject = new i((String)localObject).Fr("localAlbumName");
+      int i = 0;
+      while (i < ((com.tencent.mm.ad.f)localObject).length())
       {
-        paramString = (GalleryItem.MediaItem)bDO().ncR.get(i);
-        AppMethodBeat.o(21245);
-        return paramString;
+        i locali = ((com.tencent.mm.ad.f)localObject).su(i);
+        GalleryItem.a locala = new GalleryItem.a();
+        locala.key = locali.optString("key");
+        locala.path = locali.optString("path");
+        locala.HHF = locali.optString("default");
+        locala.HHG = com.tencent.mm.plugin.gallery.b.h.aFj(locala.path);
+        Log.d("MicroMsg.GalleryCore", "albumName info: %s.", new Object[] { locala });
+        this.HHb.put(locala.HHG, locala);
+        i += 1;
       }
-    }
-    AppMethodBeat.o(21245);
-    return null;
-  }
-  
-  public static void a(a parama, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(21260);
-    ab.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
-    if (parama == null)
-    {
-      ab.e("MicroMsg.GalleryCore", "invoker is null");
-      AppMethodBeat.o(21260);
+      AppMethodBeat.o(111261);
       return;
     }
-    int i;
-    if (bDO().ncO.hQK == 3) {
-      i = 1;
-    }
-    for (;;)
+    catch (Exception localException)
     {
-      int j;
-      label85:
-      Object localObject;
-      label211:
-      int n;
-      int i1;
-      int i2;
-      int i3;
-      boolean bool2;
-      int m;
-      boolean bool3;
-      label352:
-      int k;
-      if (bDO().ncY != null)
-      {
-        j = bDO().ncY.size();
-        ab.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
-        if (j > 0) {
-          parama.aK(13858, i + "," + paramInt + "," + j + ",0");
-        }
-        boolean bool1 = parama.hT(true);
-        ab.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(bool1) });
-        Iterator localIterator = bDO().ncZ.iterator();
-        label360:
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break label625;
-          }
-          localObject = (Bundle)localIterator.next();
-          String str = ((Bundle)localObject).getString("after_photo_edit");
-          if ((!bool1) || (!paramBoolean2))
-          {
-            ab.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
-            com.tencent.mm.vfs.e.deleteFile(str);
-            b.a(str, ah.getContext());
-          }
-          n = ((Bundle)localObject).getInt("report_info_emotion_count");
-          i1 = ((Bundle)localObject).getInt("report_info_text_count");
-          i2 = ((Bundle)localObject).getInt("report_info_mosaic_count");
-          i3 = ((Bundle)localObject).getInt("report_info_doodle_count");
-          bool2 = ((Bundle)localObject).getBoolean("report_info_iscrop");
-          m = ((Bundle)localObject).getInt("report_info_undo_count");
-          bool3 = ((Bundle)localObject).getBoolean("report_info_is_rotation");
-          if (!bool2) {
-            break;
-          }
-          paramInt = 1;
-          if (!bool3) {
-            break label609;
-          }
-          k = 1;
-          ab.i("MicroMsg.GalleryCore", "[reportPhotoEdit] emojiCount:%s,textCount:%s,mosaicCount:%s,penCount:%s,isCrop:%s,undoCount:%s,isRotation:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(k) });
-        } while (j <= 0);
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = new StringBuilder().append(i).append(",").append(paramBoolean1).append(",").append(n).append(",").append(i1).append(",").append(i2).append(",").append(i3).append(",");
-          if (!bool2) {
-            break label615;
-          }
-          paramInt = 1;
-          localObject = ((StringBuilder)localObject).append(paramInt).append(",").append(m).append(",2");
-          if (!bool3) {
-            break label620;
-          }
-          paramInt = 1;
-          parama.aK(13857, paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          ab.printErrStackTrace("MicroMsg.GalleryCore", localRemoteException, "", new Object[0]);
-        }
-        break label211;
-        if (bDO().ncO.hQK != 4) {
-          break label632;
-        }
-        i = 2;
-        break;
-        j = 0;
-        break label85;
-        paramInt = 0;
-        break label352;
-        label609:
-        k = 0;
-        break label360;
-        label615:
-        paramInt = 0;
-        continue;
-        label620:
-        paramInt = 0;
-      }
-      label625:
-      AppMethodBeat.o(21260);
-      return;
-      label632:
-      i = 0;
+      AppMethodBeat.o(111261);
     }
   }
   
-  public static void a(a parama, String paramString, int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static void Ww(int paramInt)
   {
-    int j = 2;
-    AppMethodBeat.i(21261);
-    int k = bDO().ncO.hQK;
+    AppMethodBeat.i(111271);
+    fAl().HGY.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    AppMethodBeat.o(111271);
+  }
+  
+  public static void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(111275);
+    int j = fAn().sfB;
     int i;
-    switch (k)
+    switch (j)
     {
     default: 
       i = 0;
     }
     for (;;)
     {
-      ab.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(k) });
-      if (parama != null) {
-        break;
-      }
-      ab.e("MicroMsg.GalleryCore", "invoker is null");
-      AppMethodBeat.o(21261);
+      Log.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(j) });
+      com.tencent.mm.plugin.gallery.b.h.bZ(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + HGS + "," + HGT + "," + HGU + "," + HGV);
+      HGS = false;
+      HGT = false;
+      HGU = false;
+      HGV = false;
+      AppMethodBeat.o(111275);
       return;
       i = 1;
       continue;
-      i = j;
-      if (!bo.isNullOrNil(paramString))
+      if ((!Util.isNullOrNil(paramString)) && (paramString.equals(MMApplicationContext.getContext().getString(b.i.favorite))))
       {
-        i = j;
-        if (paramString.equals(ah.getContext().getString(2131299680)))
-        {
-          i = 6;
-          continue;
-          i = 3;
-        }
+        i = 6;
       }
-    }
-    try
-    {
-      parama.aK(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + ncU + "," + ncV + "," + ncW + "," + ncX);
-      ncU = false;
-      ncV = false;
-      ncW = false;
-      ncX = false;
-      AppMethodBeat.o(21261);
-      return;
-    }
-    catch (RemoteException parama)
-    {
-      for (;;)
+      else
       {
-        ab.printErrStackTrace("MicroMsg.GalleryCore", parama, "", new Object[0]);
+        i = 2;
+        continue;
+        i = 3;
       }
     }
   }
   
-  private static e bDO()
+  public static GalleryItem.MediaItem aEQ(String paramString)
   {
-    AppMethodBeat.i(21247);
-    if (ncT == null) {
-      ncT = new e();
+    AppMethodBeat.i(111260);
+    paramString = GalleryItem.MediaItem.a(0, 0L, paramString, "", "");
+    if (fAl().HGQ != null)
+    {
+      int i = fAl().HGQ.indexOf(paramString);
+      if (i >= 0)
+      {
+        paramString = (GalleryItem.MediaItem)fAl().HGQ.get(i);
+        AppMethodBeat.o(111260);
+        return paramString;
+      }
     }
-    e locale = ncT;
-    AppMethodBeat.o(21247);
+    AppMethodBeat.o(111260);
+    return null;
+  }
+  
+  public static void aJ(ArrayList<GalleryItem.MediaItem> paramArrayList)
+  {
+    AppMethodBeat.i(111270);
+    fAl().HGQ = paramArrayList;
+    AppMethodBeat.o(111270);
+  }
+  
+  public static SparseArray<GalleryItem.a> fAk()
+  {
+    AppMethodBeat.i(173729);
+    SparseArray localSparseArray = fAl().HHb;
+    AppMethodBeat.o(173729);
+    return localSparseArray;
+  }
+  
+  private static e fAl()
+  {
+    AppMethodBeat.i(111262);
+    if (HGZ == null) {
+      HGZ = new e();
+    }
+    e locale = HGZ;
+    AppMethodBeat.o(111262);
     return locale;
   }
   
-  public static c bDP()
+  public static c fAm()
   {
-    AppMethodBeat.i(21248);
-    c localc = bDO().ncP;
-    AppMethodBeat.o(21248);
+    AppMethodBeat.i(111263);
+    if (fAl().HGO == null) {
+      fAl().HGO = new c();
+    }
+    c localc = fAl().HGO;
+    AppMethodBeat.o(111263);
     return localc;
   }
   
-  public static l bDQ()
+  public static q fAn()
   {
-    AppMethodBeat.i(21249);
-    l locall = bDO().ncO;
-    AppMethodBeat.o(21249);
-    return locall;
+    AppMethodBeat.i(111264);
+    if (fAl().GzD == null) {
+      fAl().GzD = new q();
+    }
+    q localq = fAl().GzD;
+    AppMethodBeat.o(111264);
+    return localq;
   }
   
-  public static g bDR()
+  public static g fAo()
   {
-    AppMethodBeat.i(21250);
-    g localg = bDO().ncQ;
-    AppMethodBeat.o(21250);
+    AppMethodBeat.i(111265);
+    if (fAl().HGP == null) {
+      fAl().HGP = new g();
+    }
+    g localg = fAl().HGP;
+    AppMethodBeat.o(111265);
     return localg;
   }
   
-  public static ArrayList<GalleryItem.MediaItem> bDS()
+  public static ArrayList<GalleryItem.MediaItem> fAp()
   {
-    AppMethodBeat.i(156806);
-    ArrayList localArrayList = bDO().ncR;
-    AppMethodBeat.o(156806);
+    AppMethodBeat.i(369821);
+    ArrayList localArrayList = fAl().HGQ;
+    AppMethodBeat.o(369821);
     return localArrayList;
   }
   
-  public static HashSet<GalleryItem.MediaItem> bDT()
+  public static HashSet<GalleryItem.MediaItem> fAq()
   {
-    AppMethodBeat.i(21253);
-    HashSet localHashSet = bDO().ncY;
-    AppMethodBeat.o(21253);
+    AppMethodBeat.i(111267);
+    HashSet localHashSet = fAl().HGW;
+    AppMethodBeat.o(111267);
     return localHashSet;
   }
   
-  public static ArrayList<Bundle> bDU()
+  public static ArrayList<Bundle> fAr()
   {
-    AppMethodBeat.i(21254);
-    ArrayList localArrayList = bDO().ncZ;
-    AppMethodBeat.o(21254);
+    AppMethodBeat.i(111268);
+    ArrayList localArrayList = fAl().HGX;
+    AppMethodBeat.o(111268);
     return localArrayList;
   }
   
-  public static LinkedHashSet<GalleryItem.MediaItem> bDV()
+  public static LinkedHashSet<GalleryItem.MediaItem> fAs()
   {
-    AppMethodBeat.i(21255);
-    LinkedHashSet localLinkedHashSet = bDO().ncS;
-    AppMethodBeat.o(21255);
+    AppMethodBeat.i(111269);
+    LinkedHashSet localLinkedHashSet = fAl().HGR;
+    AppMethodBeat.o(111269);
     return localLinkedHashSet;
   }
   
-  public static void bDW()
+  public static void fAt()
   {
-    AppMethodBeat.i(21258);
-    bDO().nda.clear();
-    AppMethodBeat.o(21258);
+    AppMethodBeat.i(111272);
+    fAl().HGY.clear();
+    AppMethodBeat.o(111272);
   }
   
-  public static int bDX()
+  public static int fAu()
   {
-    AppMethodBeat.i(21259);
-    int i = bDO().nda.size();
-    AppMethodBeat.o(21259);
+    AppMethodBeat.i(111273);
+    int i = fAl().HGY.size();
+    AppMethodBeat.o(111273);
     return i;
   }
   
-  public static void initialize()
+  public static void fAv()
   {
-    try
-    {
-      bpY += 1;
-      return;
-    }
-    finally {}
+    AppMethodBeat.i(111276);
+    HHa += 1;
+    Log.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(HHa) });
+    AppMethodBeat.o(111276);
   }
   
-  public static void release(boolean paramBoolean)
+  public static boolean fAw()
   {
-    AppMethodBeat.i(21251);
-    try
+    AppMethodBeat.i(111277);
+    if (HHa > 0) {
+      HHa -= 1;
+    }
+    Log.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(HHa) });
+    if (HHa == 0)
     {
-      if (bpY > 0) {
-        bpY -= 1;
-      }
-      if ((paramBoolean) && (bpY == 0))
+      if ((HGZ != null) && (HGZ.HGP != null) && (HGZ.HGO != null))
       {
-        bDO().ncO = null;
-        if (bDO().ncP != null)
-        {
-          localObject1 = bDO().ncP.ncA;
-          if (((d)localObject1).ncK != null)
-          {
-            ((d)localObject1).ncK.a(new d.4((d)localObject1));
-            ((d)localObject1).ncK = null;
-          }
-          if (((d)localObject1).ncL != null)
-          {
-            f localf = ((d)localObject1).ncL;
-            localf.bDZ();
-            localf.bEa();
-            localf.bEc();
-            ((d)localObject1).ncL = null;
-          }
-          bDO().ncP = null;
+        if (HHa != 0) {
+          Log.w("MicroMsg.GalleryCore", "oh, ref count not right!!! Maybe because quick enter/back.");
         }
-        Object localObject1 = bDO().ncQ;
-        if (((g)localObject1).ndf != null)
-        {
-          ((g)localObject1).ndf.quit();
-          ((g)localObject1).ndf = null;
-        }
-        ((g)localObject1).ndi = null;
-        if (((g)localObject1).ndg != null)
-        {
-          ((g)localObject1).ndg.quit();
-          ((g)localObject1).ndg = null;
-        }
-        ((g)localObject1).ndj = null;
-        if (((g)localObject1).ndh != null)
-        {
-          ((g)localObject1).ndh.quit();
-          ((g)localObject1).ndh = null;
-        }
-        ((g)localObject1).ndk = null;
-        bDO().ncQ = null;
-        ncT = null;
       }
-      return;
+      else
+      {
+        AppMethodBeat.o(111277);
+        return true;
+      }
+      d locald;
+      if (fAl().HGO != null)
+      {
+        ??? = r.HIe;
+        ??? = r.fAT();
+        ((r)???).HIf.clear();
+        ((r)???).HIg.clear();
+        fAm().fAh();
+        HGZ.HGO.b(null);
+        locald = HGZ.HGO.HGv;
+        if (locald.HGJ != null)
+        {
+          locald.HGJ.a(new d.4(locald));
+          locald.HGJ = null;
+        }
+      }
+      for (;;)
+      {
+        synchronized (locald.lock)
+        {
+          if (locald.HGK != null)
+          {
+            f localf = locald.HGK;
+            localf.fAy();
+            localf.fAz();
+            MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.HHg).apply();
+            locald.HGK = null;
+          }
+          HGZ.HGO = null;
+          HGZ.GzD = null;
+          if (HGZ.HGP != null)
+          {
+            ??? = HGZ.HGP.fAF();
+            if (??? != null)
+            {
+              ((MMHandler)???).removeCallbacksAndMessages(null);
+              HGZ.HGP.fAG().removeCallbacksAndMessages(null);
+              ??? = HGZ.HGP.fAH();
+              if (??? == null) {
+                break label533;
+              }
+              ((MMHandler)???).removeCallbacksAndMessages(null);
+              ??? = HGZ.HGP.fAI();
+              if (??? == null) {
+                break label545;
+              }
+              ((MMHandler)???).removeCallbacksAndMessages(null);
+              ??? = HGZ.HGP;
+              if (((g)???).HHi != null)
+              {
+                ((g)???).HHi.quit();
+                ((g)???).HHi = null;
+              }
+              ((g)???).HHk = null;
+              ((g)???).mRi = null;
+              if (((g)???).HHm != null)
+              {
+                ((g)???).HHm.shutdown();
+                ((g)???).HHm = null;
+              }
+              if (((g)???).HHn != null)
+              {
+                ((g)???).HHn.shutdown();
+                ((g)???).HHn = null;
+              }
+              if (((g)???).HHo != null)
+              {
+                ((g)???).HHo.shutdown();
+                ((g)???).HHo = null;
+              }
+              if (((g)???).HHp != null)
+              {
+                ((g)???).HHp.quit();
+                ((g)???).HHp = null;
+              }
+              ((g)???).HHq = null;
+              if (((g)???).HHh != null)
+              {
+                ((g)???).HHh.quit();
+                ((g)???).HHh = null;
+              }
+              ((g)???).HHj = null;
+              HGZ.HGP = null;
+            }
+          }
+          else
+          {
+            HGZ = null;
+            Log.i("MicroMsg.GalleryCore", "stopServices: finish.");
+          }
+        }
+        Log.w("MicroMsg.GalleryHandlerThread", "assistHandler is null.");
+        continue;
+        label533:
+        Log.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+        continue;
+        label545:
+        Log.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+      }
     }
-    finally
-    {
-      AppMethodBeat.o(21251);
-    }
+    AppMethodBeat.o(111277);
+    return false;
   }
   
-  public static void wG(int paramInt)
+  public static void j(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(21257);
-    bDO().nda.put(Integer.valueOf(paramInt), Boolean.TRUE);
-    AppMethodBeat.o(21257);
+    AppMethodBeat.i(111274);
+    Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
+    int i;
+    if (fAn().sfB == 3) {
+      i = 1;
+    }
+    for (;;)
+    {
+      int j;
+      label64:
+      Object localObject;
+      label180:
+      label324:
+      int k;
+      if (fAl().HGW != null)
+      {
+        j = fAl().HGW.size();
+        Log.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
+        if (j > 0) {
+          com.tencent.mm.plugin.gallery.b.h.bZ(13858, i + "," + paramInt + "," + j + ",0");
+        }
+        Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.b.h.fBS()) });
+        Iterator localIterator = fAl().HGX.iterator();
+        int n;
+        int i1;
+        int i2;
+        int i3;
+        boolean bool1;
+        int m;
+        boolean bool2;
+        label332:
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break label571;
+          }
+          localObject = (Bundle)localIterator.next();
+          String str = ((Bundle)localObject).getString("after_photo_edit");
+          if (!paramBoolean2)
+          {
+            Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
+            y.deleteFile(str);
+            AndroidMediaUtil.refreshMediaScanner(str, MMApplicationContext.getContext());
+          }
+          n = ((Bundle)localObject).getInt("report_info_emotion_count");
+          i1 = ((Bundle)localObject).getInt("report_info_text_count");
+          i2 = ((Bundle)localObject).getInt("report_info_mosaic_count");
+          i3 = ((Bundle)localObject).getInt("report_info_doodle_count");
+          bool1 = ((Bundle)localObject).getBoolean("report_info_iscrop");
+          m = ((Bundle)localObject).getInt("report_info_undo_count");
+          bool2 = ((Bundle)localObject).getBoolean("report_info_is_rotation");
+          if (!bool1) {
+            break;
+          }
+          paramInt = 1;
+          if (!bool2) {
+            break label555;
+          }
+          k = 1;
+          Log.i("MicroMsg.GalleryCore", "[reportPhotoEdit] emojiCount:%s,textCount:%s,mosaicCount:%s,penCount:%s,isCrop:%s,undoCount:%s,isRotation:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(k) });
+        } while (j <= 0);
+        localObject = new StringBuilder().append(i).append(",").append(paramBoolean1).append(",").append(n).append(",").append(i1).append(",").append(i2).append(",").append(i3).append(",");
+        if (!bool1) {
+          break label561;
+        }
+        paramInt = 1;
+        label480:
+        localObject = ((StringBuilder)localObject).append(paramInt).append(",").append(m).append(",2");
+        if (!bool2) {
+          break label566;
+        }
+      }
+      label555:
+      label561:
+      label566:
+      for (paramInt = 1;; paramInt = 0)
+      {
+        com.tencent.mm.plugin.gallery.b.h.bZ(13857, paramInt);
+        break label180;
+        if (fAn().sfB != 4) {
+          break label578;
+        }
+        i = 2;
+        break;
+        j = 0;
+        break label64;
+        paramInt = 0;
+        break label324;
+        k = 0;
+        break label332;
+        paramInt = 0;
+        break label480;
+      }
+      label571:
+      AppMethodBeat.o(111274);
+      return;
+      label578:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.e
  * JD-Core Version:    0.7.0.1
  */

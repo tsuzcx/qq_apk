@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.apollo.game;
 
-import akuc;
-import akud;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -17,79 +15,66 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ApolloGameStateMachine
   extends Observable
 {
-  public static akud a;
-  private static ApolloGameStateMachine jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
-  public static final HashMap<Integer, List<Integer>> a;
-  public static AtomicBoolean a;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloGameStateMachine.1(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new akuc(this);
-  private ConcurrentHashMap<Integer, ApolloGameStateMachine.StateTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-  private final Object b = new Object();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-    jdField_a_of_type_JavaUtilHashMap = new ApolloGameStateMachine.3();
-  }
+  public static ApolloGameStateMachine.HardwareInfo a;
+  public static AtomicBoolean b = new AtomicBoolean();
+  public static final HashMap<Integer, List<Integer>> c = new ApolloGameStateMachine.3();
+  private static ApolloGameStateMachine h;
+  private ConcurrentHashMap<Integer, ApolloGameStateMachine.StateTask> d = new ConcurrentHashMap();
+  private AtomicLong e = new AtomicLong();
+  private Runnable f = new ApolloGameStateMachine.1(this);
+  private Observer g = new ApolloGameStateMachine.2(this);
+  private AtomicInteger i = new AtomicInteger(0);
+  private final Object j = new Object();
+  private final Object k = new Object();
   
   public static ApolloGameStateMachine a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null) {}
-    for (;;)
-    {
-      try {}catch (Throwable localThrowable)
-      {
-        QLog.e("ApolloGameStateMachine", 1, localThrowable, new Object[0]);
-        continue;
-      }
+    if (h == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+        try
         {
-          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
-          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
-          if ((jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null) && (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null)) {
-            jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
+          if (h == null)
+          {
+            h = new ApolloGameStateMachine();
+            h.d();
+            if ((h != null) && (h.g != null)) {
+              h.addObserver(h.g);
+            }
           }
         }
-        return jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
+        finally {}
+        return h;
       }
-      finally {}
-    }
-  }
-  
-  public static void d()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null)
-    {
-      jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.deleteObservers();
-      jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.c();
-      jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = null;
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      int i = a();
-      ApolloGameStateMachine.StateTask localStateTask = (ApolloGameStateMachine.StateTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-      if (localStateTask != null) {
-        synchronized (this.b)
-        {
-          ThreadManager.post(localStateTask, 5, null, true);
-          return;
-        }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("[cmshow]ApolloGameStateMachine", 1, localThrowable, new Object[0]);
       }
     }
   }
   
-  public int a()
+  public static void f()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    ApolloGameStateMachine localApolloGameStateMachine = h;
+    if (localApolloGameStateMachine != null)
+    {
+      localApolloGameStateMachine.deleteObservers();
+      h.e();
+      h = null;
+    }
+  }
+  
+  private void g()
+  {
+    int m = b();
+    ApolloGameStateMachine.StateTask localStateTask = (ApolloGameStateMachine.StateTask)this.d.get(Integer.valueOf(m));
+    if (localStateTask != null) {
+      synchronized (this.k)
+      {
+        ThreadManager.post(localStateTask, 5, null, true);
+        return;
+      }
+    }
   }
   
   public int a(int paramInt)
@@ -99,92 +84,88 @@ public class ApolloGameStateMachine
   
   public int a(int paramInt, String paramString)
   {
-    ??? = (List)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+    ??? = (List)c.get(Integer.valueOf(this.i.get()));
     if ((??? != null) && (((List)???).contains(Integer.valueOf(paramInt)))) {
-      synchronized (this.b)
+      synchronized (this.k)
       {
         setChanged();
         Bundle localBundle = new Bundle();
         localBundle.putString("TYPE", "GAME_STATE");
-        localBundle.putLong("START_TIME_KEY", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
+        localBundle.putLong("START_TIME_KEY", this.e.get());
         localBundle.putLong("END_TIME_KEY", System.currentTimeMillis());
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-        localBundle.putInt("FROM", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        this.e.set(System.currentTimeMillis());
+        localBundle.putInt("FROM", this.i.get());
         localBundle.putInt("TO", paramInt);
         localBundle.putString("MESSAGE", paramString);
         notifyObservers(localBundle);
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-        e();
+        this.i.set(paramInt);
+        g();
         return -1;
       }
     }
-    QLog.e("ApolloGameStateMachine", 1, "[changeToState] ill");
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
-  
-  public void a()
-  {
-    a();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        b();
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
+    QLog.e("[cmshow]ApolloGameStateMachine", 1, "[changeToState] ill");
+    return this.i.get();
   }
   
   public void a(int paramInt, Runnable paramRunnable)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (paramRunnable != null))
-    {
-      if ((paramRunnable instanceof ApolloGameStateMachine.StateTask))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), (ApolloGameStateMachine.StateTask)paramRunnable);
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), new ApolloGameStateMachine.StateTask(paramInt, paramRunnable, this));
+    if (paramRunnable == null) {
       return;
     }
-    QLog.e("ApolloGameStateMachine", 1, "[setTask] taskList is null rebuild");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if ((paramRunnable instanceof ApolloGameStateMachine.StateTask))
+    {
+      this.d.put(Integer.valueOf(paramInt), (ApolloGameStateMachine.StateTask)paramRunnable);
+      return;
+    }
+    this.d.put(Integer.valueOf(paramInt), new ApolloGameStateMachine.StateTask(paramInt, paramRunnable, this));
   }
   
-  protected void b()
+  public int b()
+  {
+    return this.i.get();
+  }
+  
+  public void c()
+  {
+    a();
+    synchronized (this.j)
+    {
+      this.d.clear();
+      this.i.set(0);
+      d();
+      return;
+    }
+  }
+  
+  protected void d()
   {
     a(1, new ApolloGameStateMachine.4(this));
     a(5, new ApolloGameStateMachine.5(this));
     a(6, new ApolloGameStateMachine.6(this));
   }
   
-  public void c()
+  public void e()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaLangRunnable != null)
+      if (this.f != null)
       {
-        ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 16);
-        this.jdField_a_of_type_JavaLangRunnable = null;
+        ThreadManager.removeJobFromThreadPool(this.f, 16);
+        this.f = null;
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      }
-      this.jdField_a_of_type_JavaUtilObserver = null;
+      this.d.clear();
+      this.g = null;
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("ApolloGameStateMachine", 1, localThrowable, new Object[] { "[destory]" });
+      QLog.e("[cmshow]ApolloGameStateMachine", 1, localThrowable, new Object[] { "[destroy]" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine
  * JD-Core Version:    0.7.0.1
  */

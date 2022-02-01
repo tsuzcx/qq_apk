@@ -1,74 +1,40 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.v;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.plugin.musicchat.a.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/app/AppMsgMusicSender;", "Lcom/tencent/mm/plugin/musicchat/api/IPluginSendMusicToChat;", "userName", "", "(Ljava/lang/String;)V", "getChatUserName", "sendMusic", "", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  extends j<v>
+  implements b
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  private final String userName;
   
-  static
+  public o(String paramString)
   {
-    AppMethodBeat.i(27354);
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "AppSort") };
-    AppMethodBeat.o(27354);
+    AppMethodBeat.i(244890);
+    this.userName = paramString;
+    AppMethodBeat.o(244890);
   }
   
-  public o(e parame)
+  public final void f(k.b paramb)
   {
-    super(parame, n.info, "AppSort", null);
-    AppMethodBeat.i(27351);
-    this.db = parame;
-    parame.execSQL("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( flag )");
-    parame.execSQL("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( sortId )");
-    AppMethodBeat.o(27351);
+    AppMethodBeat.i(244894);
+    s.u(paramb, "content");
+    n.a(k.b.a(paramb), paramb.appId, paramb.appName, this.userName, "", null);
+    AppMethodBeat.o(244894);
   }
   
-  public final boolean a(n paramn)
+  public final String gpc()
   {
-    AppMethodBeat.i(27353);
-    boolean bool = super.insert(paramn);
-    AppMethodBeat.o(27353);
-    return bool;
-  }
-  
-  public final List<String> ny(long paramLong)
-  {
-    AppMethodBeat.i(27352);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new StringBuilder(256);
-    ((StringBuilder)localObject).append("select * from AppSort");
-    ((StringBuilder)localObject).append(" where ");
-    ((StringBuilder)localObject).append("flag = ").append(paramLong);
-    ((StringBuilder)localObject).append(" order by sortId desc ");
-    localObject = rawQuery(((StringBuilder)localObject).toString(), new String[0]);
-    if (localObject == null)
-    {
-      ab.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
-      AppMethodBeat.o(27352);
-      return null;
-    }
-    ab.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
-    int i = ((Cursor)localObject).getColumnIndex("appId");
-    while (((Cursor)localObject).moveToNext()) {
-      localArrayList.add(((Cursor)localObject).getString(i));
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(27352);
-    return localArrayList;
+    return this.userName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.o
  * JD-Core Version:    0.7.0.1
  */

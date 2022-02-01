@@ -21,8 +21,14 @@ public abstract class PluginBroadcastReceiver
   
   public void IInit(String paramString1, String paramString2, String paramString3, BroadcastReceiver paramBroadcastReceiver, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginBroadcastReceiver.Init:" + paramString2 + ", " + this.mPluginResourcesType);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginBroadcastReceiver.Init:");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.mPluginResourcesType);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     this.mIsRunInPlugin = true;
     this.mPluginName = paramString1;
@@ -59,7 +65,7 @@ public abstract class PluginBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

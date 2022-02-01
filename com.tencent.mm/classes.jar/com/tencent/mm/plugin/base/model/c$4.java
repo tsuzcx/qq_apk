@@ -9,16 +9,16 @@ final class c$4
 {
   c$4(Context paramContext, int paramInt, String paramString, boolean paramBoolean) {}
   
-  public final void aVA()
+  public final void onMessageClick()
   {
-    AppMethodBeat.i(155981);
-    c.a(this.val$context, true, this.iqK, this.val$appId, this.jLm);
-    AppMethodBeat.o(155981);
+    AppMethodBeat.i(151457);
+    c.a(this.val$context, true, this.tkb, this.etl, this.vqY);
+    AppMethodBeat.o(151457);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.base.model.c.4
  * JD-Core Version:    0.7.0.1
  */

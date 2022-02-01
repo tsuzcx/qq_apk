@@ -21,46 +21,46 @@ public final class RespEncounterInfo
   static byte[] cache_vTheSameLabels;
   static VipBaseInfo cache_vipBaseInfo;
   public String actionData = "";
-  public byte authFlag;
+  public byte authFlag = 0;
   public String avatarBgGif = "";
-  public byte bIsSingle;
+  public byte bIsSingle = 0;
   public byte cAge = -1;
-  public byte cGroupId;
+  public byte cGroupId = 0;
   public byte cSex = -1;
-  public byte cSpecialFlag;
-  public int charm;
-  public int charm_level;
-  public byte charm_shown;
-  public int common_face_timestamp;
-  public byte constellation;
+  public byte cSpecialFlag = 0;
+  public int charm = 0;
+  public int charm_level = 0;
+  public byte charm_shown = 0;
+  public int common_face_timestamp = 0;
+  public byte constellation = 0;
   public int eMerchantType = 0;
   public int eUserIdentityType = 0;
   public String enc_id = "";
-  public byte god_flag;
-  public int hasAvatarAnimation;
-  public byte host_flag;
-  public byte host_online_flag;
+  public byte god_flag = 0;
+  public int hasAvatarAnimation = 0;
+  public byte host_flag = 0;
+  public byte host_online_flag = 0;
   public int iDistance = -1;
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public int iRank;
+  public int iRank = 0;
   public int iVoteIncrement = -1;
-  public int iVoteNum;
-  public byte is_trav;
-  public long lEctID;
-  public int lTime;
-  public long lTotalVisitorsNum;
-  public byte live_flag;
-  public byte marriage;
-  public int nFaceNum;
+  public int iVoteNum = 0;
+  public byte is_trav = 0;
+  public long lEctID = 0L;
+  public int lTime = 0;
+  public long lTotalVisitorsNum = 0L;
+  public byte live_flag = 0;
+  public byte marriage = 0;
+  public int nFaceNum = 0;
   public String nowBoardcastGif = "";
   public String nowBoardcastWording = "";
   public String personal_imprint = "";
-  public int profession_id;
-  public RishState richState;
-  public int ruleId;
-  public short shIntroType;
-  public byte[] sig;
+  public int profession_id = 0;
+  public RishState richState = null;
+  public int ruleId = 0;
+  public short shIntroType = 0;
+  public byte[] sig = null;
   public String strCertification = "";
   public String strCompanyName = "";
   public String strDescription = "";
@@ -68,19 +68,19 @@ public final class RespEncounterInfo
   public String strPYFaceUrl = "";
   public String strPYName = "";
   public String strSchoolName = "";
-  public int stranger_face_timestamp;
-  public long tiny_id;
+  public int stranger_face_timestamp = 0;
+  public long tiny_id = 0L;
   public String uid = "";
-  public byte[] vDateFaceInfo;
-  public byte[] vDateInfo;
-  public byte[] vDateVideoInfo;
-  public byte[] vFaceID;
-  public byte[] vInterestInfo;
-  public byte[] vIntroContent;
-  public byte[] vTheSameLabels;
-  public VipBaseInfo vipBaseInfo;
-  public short wFace;
-  public byte watch_color;
+  public byte[] vDateFaceInfo = null;
+  public byte[] vDateInfo = null;
+  public byte[] vDateVideoInfo = null;
+  public byte[] vFaceID = null;
+  public byte[] vInterestInfo = null;
+  public byte[] vIntroContent = null;
+  public byte[] vTheSameLabels = null;
+  public VipBaseInfo vipBaseInfo = null;
+  public short wFace = 0;
+  public byte watch_color = 0;
   
   static
   {
@@ -248,28 +248,35 @@ public final class RespEncounterInfo
     paramJceOutputStream.write(this.cAge, 6);
     paramJceOutputStream.write(this.strNick, 7);
     paramJceOutputStream.write(this.cGroupId, 8);
-    if (this.strPYFaceUrl != null) {
-      paramJceOutputStream.write(this.strPYFaceUrl, 9);
+    Object localObject = this.strPYFaceUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strSchoolName != null) {
-      paramJceOutputStream.write(this.strSchoolName, 10);
+    localObject = this.strSchoolName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strCompanyName != null) {
-      paramJceOutputStream.write(this.strCompanyName, 11);
+    localObject = this.strCompanyName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.strPYName != null) {
-      paramJceOutputStream.write(this.strPYName, 12);
+    localObject = this.strPYName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.nFaceNum, 13);
-    if (this.strCertification != null) {
-      paramJceOutputStream.write(this.strCertification, 14);
+    localObject = this.strCertification;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.shIntroType, 15);
-    if (this.vIntroContent != null) {
-      paramJceOutputStream.write(this.vIntroContent, 16);
+    localObject = this.vIntroContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vFaceID != null) {
-      paramJceOutputStream.write(this.vFaceID, 17);
+    localObject = this.vFaceID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
     paramJceOutputStream.write(this.eMerchantType, 18);
     paramJceOutputStream.write(this.eUserIdentityType, 19);
@@ -280,26 +287,32 @@ public final class RespEncounterInfo
     paramJceOutputStream.write(this.iRank, 24);
     paramJceOutputStream.write(this.lTotalVisitorsNum, 25);
     paramJceOutputStream.write(this.cSpecialFlag, 26);
-    if (this.vipBaseInfo != null) {
-      paramJceOutputStream.write(this.vipBaseInfo, 27);
+    localObject = this.vipBaseInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 27);
     }
-    if (this.richState != null) {
-      paramJceOutputStream.write(this.richState, 28);
+    localObject = this.richState;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 28);
     }
-    if (this.sig != null) {
-      paramJceOutputStream.write(this.sig, 29);
+    localObject = this.sig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 29);
     }
-    if (this.enc_id != null) {
-      paramJceOutputStream.write(this.enc_id, 30);
+    localObject = this.enc_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 31);
+    localObject = this.uid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 31);
     }
     paramJceOutputStream.write(this.is_trav, 32);
     paramJceOutputStream.write(this.constellation, 33);
     paramJceOutputStream.write(this.profession_id, 34);
-    if (this.vDateInfo != null) {
-      paramJceOutputStream.write(this.vDateInfo, 35);
+    localObject = this.vDateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 35);
     }
     paramJceOutputStream.write(this.marriage, 36);
     paramJceOutputStream.write(this.tiny_id, 37);
@@ -312,43 +325,52 @@ public final class RespEncounterInfo
     paramJceOutputStream.write(this.charm_level, 44);
     paramJceOutputStream.write(this.watch_color, 45);
     paramJceOutputStream.write(this.charm_shown, 46);
-    if (this.vInterestInfo != null) {
-      paramJceOutputStream.write(this.vInterestInfo, 47);
+    localObject = this.vInterestInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 47);
     }
     paramJceOutputStream.write(this.host_flag, 48);
     paramJceOutputStream.write(this.host_online_flag, 49);
-    if (this.vTheSameLabels != null) {
-      paramJceOutputStream.write(this.vTheSameLabels, 50);
+    localObject = this.vTheSameLabels;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 50);
     }
-    if (this.vDateFaceInfo != null) {
-      paramJceOutputStream.write(this.vDateFaceInfo, 51);
+    localObject = this.vDateFaceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 51);
     }
-    if (this.vDateVideoInfo != null) {
-      paramJceOutputStream.write(this.vDateVideoInfo, 52);
+    localObject = this.vDateVideoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 52);
     }
     paramJceOutputStream.write(this.ruleId, 53);
     paramJceOutputStream.write(this.live_flag, 54);
-    if (this.personal_imprint != null) {
-      paramJceOutputStream.write(this.personal_imprint, 55);
+    localObject = this.personal_imprint;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 55);
     }
-    if (this.actionData != null) {
-      paramJceOutputStream.write(this.actionData, 56);
+    localObject = this.actionData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 56);
     }
-    if (this.avatarBgGif != null) {
-      paramJceOutputStream.write(this.avatarBgGif, 57);
+    localObject = this.avatarBgGif;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 57);
     }
-    if (this.nowBoardcastGif != null) {
-      paramJceOutputStream.write(this.nowBoardcastGif, 58);
+    localObject = this.nowBoardcastGif;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 58);
     }
-    if (this.nowBoardcastWording != null) {
-      paramJceOutputStream.write(this.nowBoardcastWording, 59);
+    localObject = this.nowBoardcastWording;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 59);
     }
     paramJceOutputStream.write(this.hasAvatarAnimation, 60);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.RespEncounterInfo
  * JD-Core Version:    0.7.0.1
  */

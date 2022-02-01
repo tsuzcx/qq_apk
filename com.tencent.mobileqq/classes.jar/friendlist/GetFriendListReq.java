@@ -4,46 +4,48 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetFriendListReq
   extends JceStruct
 {
   static int cache_eAppType;
-  static int cache_reqtype = 0;
+  static int cache_reqtype;
   static ArrayList<Long> cache_uinList = new ArrayList();
   static byte[] cache_vec0xd50Req;
   static byte[] cache_vec0xd6bReq;
   static ArrayList<Long> cache_vecSnsTypelist;
   public int eAppType = 0;
-  public short getfriendCount;
-  public byte getgroupCount;
-  public byte groupid;
-  public byte groupstartIndex;
-  public byte ifGetBothFlag;
-  public byte ifGetDOVId;
-  public byte ifGetGroupInfo;
-  public byte ifGetMSFGroup;
-  public byte ifReflush;
-  public byte ifShowTermType;
-  public int reqtype;
-  public short startIndex;
-  public long uin;
-  public ArrayList<Long> uinList;
-  public byte[] vec0xd50Req;
-  public byte[] vec0xd6bReq;
-  public ArrayList<Long> vecSnsTypelist;
-  public long version;
+  public short getfriendCount = 0;
+  public byte getgroupCount = 0;
+  public byte groupid = 0;
+  public byte groupstartIndex = 0;
+  public byte ifGetBothFlag = 0;
+  public byte ifGetDOVId = 0;
+  public byte ifGetGroupInfo = 0;
+  public byte ifGetMSFGroup = 0;
+  public byte ifReflush = 0;
+  public byte ifShowTermType = 0;
+  public int reqtype = 0;
+  public short startIndex = 0;
+  public long uin = 0L;
+  public ArrayList<Long> uinList = null;
+  public byte[] vec0xd50Req = null;
+  public byte[] vec0xd6bReq = null;
+  public ArrayList<Long> vecSnsTypelist = null;
+  public long version = 0L;
   
   static
   {
-    cache_uinList.add(Long.valueOf(0L));
+    Long localLong = Long.valueOf(0L);
+    cache_uinList.add(localLong);
     cache_eAppType = 0;
     cache_vec0xd50Req = (byte[])new byte[1];
     ((byte[])cache_vec0xd50Req)[0] = 0;
     cache_vec0xd6bReq = (byte[])new byte[1];
     ((byte[])cache_vec0xd6bReq)[0] = 0;
     cache_vecSnsTypelist = new ArrayList();
-    cache_vecSnsTypelist.add(Long.valueOf(0L));
+    cache_vecSnsTypelist.add(localLong);
   }
   
   public GetFriendListReq() {}
@@ -108,26 +110,30 @@ public final class GetFriendListReq
     paramJceOutputStream.write(this.ifGetMSFGroup, 9);
     paramJceOutputStream.write(this.ifShowTermType, 10);
     paramJceOutputStream.write(this.version, 11);
-    if (this.uinList != null) {
-      paramJceOutputStream.write(this.uinList, 12);
+    Object localObject = this.uinList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
     paramJceOutputStream.write(this.eAppType, 13);
     paramJceOutputStream.write(this.ifGetDOVId, 14);
     paramJceOutputStream.write(this.ifGetBothFlag, 15);
-    if (this.vec0xd50Req != null) {
-      paramJceOutputStream.write(this.vec0xd50Req, 16);
+    localObject = this.vec0xd50Req;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vec0xd6bReq != null) {
-      paramJceOutputStream.write(this.vec0xd6bReq, 17);
+    localObject = this.vec0xd6bReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
-    if (this.vecSnsTypelist != null) {
-      paramJceOutputStream.write(this.vecSnsTypelist, 18);
+    localObject = this.vecSnsTypelist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetFriendListReq
  * JD-Core Version:    0.7.0.1
  */

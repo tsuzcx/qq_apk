@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.security.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class SecurityAccountVerifyUI$1
   implements TextWatcher
@@ -12,12 +12,12 @@ final class SecurityAccountVerifyUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(69915);
-    if ((paramEditable != null) && (!bo.isNullOrNil(paramEditable.toString()))) {}
+    AppMethodBeat.i(125597);
+    if ((paramEditable != null) && (!Util.isNullOrNil(paramEditable.toString()))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.gCb.enableOptionMenu(bool);
-      AppMethodBeat.o(69915);
+      this.pYF.enableOptionMenu(bool);
+      AppMethodBeat.o(125597);
       return;
     }
   }

@@ -6,15 +6,17 @@ public abstract interface ISPlayerViewBase
   
   public abstract void setScaleParam(float paramFloat);
   
+  public abstract void setVideoViewTagId(String paramString);
+  
   public abstract void setVideoWidthAndHeight(int paramInt1, int paramInt2);
   
-  public abstract void setViewCallBack(ISPlayerViewBase.viewCreateCallBack paramviewCreateCallBack);
+  public abstract void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack);
   
   public abstract void setXYaxis(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.view.ISPlayerViewBase
  * JD-Core Version:    0.7.0.1
  */

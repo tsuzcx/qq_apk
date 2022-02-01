@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/mk1" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/bn6" android:layout_gravity="right" android:id="@id/n1x" android:paddingTop="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/evz" android:paddingTop="2.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0" />
+        <TextView android:textSize="@dimen/bn_" android:textColor="@color/axf" android:gravity="center" android:id="@id/oa_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/bna" android:textColor="@color/axf" android:gravity="center" android:id="@id/na9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        <ImageView android:id="@id/n1j" android:layout_width="@dimen/bnb" android:layout_height="@dimen/bnb" />
+        <TextView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0" />
+    </LinearLayout>
+</FrameLayout>

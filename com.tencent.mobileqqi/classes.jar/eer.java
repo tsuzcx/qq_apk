@@ -1,32 +1,25 @@
 import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 import java.util.List;
 
-public class eer
+class eer
   implements Runnable
 {
-  public eer(RecommendListView paramRecommendListView) {}
+  eer(eeq parameeq, List paramList) {}
   
   public void run()
   {
-    for (;;)
+    this.jdField_a_of_type_Eeq.a.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    if ((this.jdField_a_of_type_Eeq.a.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Eeq.a.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      synchronized (RecommendListView.a(this.a))
-      {
-        if (!RecommendListView.a(this.a)) {
-          return;
-        }
-        Object localObject1 = (PhoneContactManager)this.a.a.getManager(10);
-        if (localObject1 != null)
-        {
-          localObject1 = ((PhoneContactManager)localObject1).d();
-          this.a.a.runOnUiThread(new ees(this, (List)localObject1));
-          return;
-        }
+      if (this.jdField_a_of_type_Eeq.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a() != this.jdField_a_of_type_Eeq.a.jdField_a_of_type_Efa) {
+        this.jdField_a_of_type_Eeq.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Eeq.a.jdField_a_of_type_Efa);
       }
-      Object localObject3 = null;
+      this.jdField_a_of_type_Eeq.a.jdField_a_of_type_Efa.notifyDataSetChanged();
+      return;
     }
+    this.jdField_a_of_type_Eeq.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(null);
+    this.jdField_a_of_type_Eeq.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_Eeq.a.d);
   }
 }
 

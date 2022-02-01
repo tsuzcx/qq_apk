@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/fhz" android:background="#fff4f4f4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="34.0dip">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:paddingLeft="20.0dip" android:paddingTop="@dimen/ng" android:paddingBottom="@dimen/ng" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fki" android:includeFontPadding="false" />
-    </LinearLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/fi0" android:layout_width="fill_parent" android:layout_height="@dimen/fs" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:src="@color/a0a" />
-    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:paddingLeft="20.0dip" android:paddingTop="13.0dip" android:paddingRight="20.0dip" android:paddingBottom="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a4t" android:id="@id/fi1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/fi2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:includeFontPadding="false" />
-            <TextView android:textSize="@dimen/ko" android:textColor="#ffff891e" android:id="@id/fi3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:includeFontPadding="false" />
-        </LinearLayout>
-        <CheckBox android:id="@id/fi4" android:background="@drawable/vm" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+<LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="bottom|center" android:id="@id/lek" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d0">
+        <com.tencent.mm.plugin.voip.widget.VoipSmallIconButton android:layout_gravity="start|bottom|center" android:id="@id/ld2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" custom:iconRes="@drawable/c8d" custom:iconResPressed="@drawable/c8e" custom:iconTip="@string/kgy" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.voip.widget.VoIPControlIconLayout android:gravity="start" android:layout_gravity="center" android:id="@id/ld8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" custom:checkedIcon="@raw/icons_filled_mike" custom:checkedText="@string/kha" custom:iconBg="@drawable/b12" custom:uncheckedIcon="@raw/icons_filled_mike_off" custom:uncheckedText="@string/kh_" />
+        <FrameLayout android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/ld6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mm.plugin.voip.widget.VoIPControlIconLayout android:gravity="end" android:layout_gravity="center" android:id="@id/ldo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" custom:checkedIcon="@raw/icons_filled_volume_up" custom:checkedText="@string/kiu" custom:iconBg="@drawable/b12" custom:uncheckedIcon="@raw/icons_filled_volume_off" custom:uncheckedText="@string/kit" />
     </LinearLayout>
 </LinearLayout>

@@ -20,13 +20,14 @@ public final class PackServer$GetNewPackReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 160 }, new String[] { "promotion_id", "seq", "signature", "group_id", "group_type", "business" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GetNewPackReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 160 }, new String[] { "promotion_id", "seq", "signature", "group_id", "group_type", "business" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger }, GetNewPackReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.new_year_2014.PackServer.GetNewPackReq
  * JD-Core Version:    0.7.0.1
  */

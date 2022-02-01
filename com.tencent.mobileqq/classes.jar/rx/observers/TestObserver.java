@@ -27,46 +27,90 @@ public class TestObserver<T>
   
   public void assertReceivedOnNext(List<T> paramList)
   {
-    if (this.onNextEvents.size() != paramList.size()) {
-      throw new AssertionError("Number of items does not match. Provided: " + paramList.size() + "  Actual: " + this.onNextEvents.size());
-    }
-    int i = 0;
-    while (i < paramList.size())
+    if (this.onNextEvents.size() == paramList.size())
     {
-      Object localObject1 = paramList.get(i);
-      Object localObject2 = this.onNextEvents.get(i);
-      if (localObject1 == null)
+      int i = 0;
+      while (i < paramList.size())
       {
-        if (localObject2 != null) {
-          throw new AssertionError("Value at index: " + i + " expected to be [null] but was: [" + localObject2 + "]");
+        Object localObject2 = paramList.get(i);
+        Object localObject1 = this.onNextEvents.get(i);
+        if (localObject2 == null)
+        {
+          if (localObject1 != null)
+          {
+            paramList = new StringBuilder();
+            paramList.append("Value at index: ");
+            paramList.append(i);
+            paramList.append(" expected to be [null] but was: [");
+            paramList.append(localObject1);
+            paramList.append("]");
+            throw new AssertionError(paramList.toString());
+          }
         }
-      }
-      else if (!localObject1.equals(localObject2))
-      {
-        localObject1 = new StringBuilder().append("Value at index: ").append(i).append(" expected to be [").append(localObject1).append("] (").append(localObject1.getClass().getSimpleName()).append(") but was: [").append(localObject2).append("] (");
-        if (localObject2 != null) {}
-        for (paramList = localObject2.getClass().getSimpleName();; paramList = "null") {
-          throw new AssertionError(paramList + ")");
+        else if (!localObject2.equals(localObject1))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Value at index: ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" expected to be [");
+          localStringBuilder.append(localObject2);
+          localStringBuilder.append("] (");
+          localStringBuilder.append(localObject2.getClass().getSimpleName());
+          localStringBuilder.append(") but was: [");
+          localStringBuilder.append(localObject1);
+          localStringBuilder.append("] (");
+          if (localObject1 != null) {
+            paramList = localObject1.getClass().getSimpleName();
+          } else {
+            paramList = "null";
+          }
+          localStringBuilder.append(paramList);
+          localStringBuilder.append(")");
+          throw new AssertionError(localStringBuilder.toString());
         }
+        i += 1;
       }
-      i += 1;
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Number of items does not match. Provided: ");
+    localStringBuilder.append(paramList.size());
+    localStringBuilder.append("  Actual: ");
+    localStringBuilder.append(this.onNextEvents.size());
+    paramList = new AssertionError(localStringBuilder.toString());
+    for (;;)
+    {
+      throw paramList;
     }
   }
   
   public void assertTerminalEvent()
   {
-    if (this.onErrorEvents.size() > 1) {
-      throw new AssertionError("Too many onError events: " + this.onErrorEvents.size());
+    if (this.onErrorEvents.size() <= 1)
+    {
+      if (this.onCompletedEvents.size() <= 1)
+      {
+        if ((this.onCompletedEvents.size() == 1) && (this.onErrorEvents.size() == 1)) {
+          throw new AssertionError("Received both an onError and onCompleted. Should be one or the other.");
+        }
+        if (this.onCompletedEvents.size() == 0)
+        {
+          if (this.onErrorEvents.size() != 0) {
+            return;
+          }
+          throw new AssertionError("No terminal events received.");
+        }
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Too many onCompleted events: ");
+      localStringBuilder.append(this.onCompletedEvents.size());
+      throw new AssertionError(localStringBuilder.toString());
     }
-    if (this.onCompletedEvents.size() > 1) {
-      throw new AssertionError("Too many onCompleted events: " + this.onCompletedEvents.size());
-    }
-    if ((this.onCompletedEvents.size() == 1) && (this.onErrorEvents.size() == 1)) {
-      throw new AssertionError("Received both an onError and onCompleted. Should be one or the other.");
-    }
-    if ((this.onCompletedEvents.size() == 0) && (this.onErrorEvents.size() == 0)) {
-      throw new AssertionError("No terminal events received.");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Too many onError events: ");
+    localStringBuilder.append(this.onErrorEvents.size());
+    throw new AssertionError(localStringBuilder.toString());
   }
   
   public List<Object> getEvents()
@@ -113,7 +157,7 @@ public class TestObserver<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.observers.TestObserver
  * JD-Core Version:    0.7.0.1
  */

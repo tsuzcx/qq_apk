@@ -1,67 +1,72 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aga;
-import com.tencent.mm.protocal.protobuf.agb;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dkp;
+import com.tencent.mm.protocal.protobuf.dkq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public final b lFp;
+  String appId;
+  private h mAY;
+  String qUL;
+  final c rr;
   
   public l(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(6595);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new aga();
-    ((b.a)localObject).fsY = new agb();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
-    ((b.a)localObject).funcId = 1097;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.lFp = ((b.a)localObject).ado();
-    localObject = (aga)this.lFp.fsV.fta;
-    ((aga)localObject).cwc = paramString1;
-    ((aga)localObject).signature = paramString2;
-    AppMethodBeat.o(6595);
+    AppMethodBeat.i(78873);
+    this.appId = paramString1;
+    this.qUL = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new dkp();
+    ((c.a)localObject).otF = new dkq();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_downloadcdninfo";
+    ((c.a)localObject).funcId = 1035;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (dkp)c.b.b(this.rr.otB);
+    ((dkp)localObject).appid = paramString1;
+    ((dkp)localObject).aaQN = paramString2;
+    Log.i("MicroMsg.NetSceneDownloadCdnInfo", "download cdn info, appid : %s, mediaId : %s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.o(78873);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(6596);
-    this.callback = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(6596);
+    AppMethodBeat.i(78875);
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(78875);
     return i;
   }
   
   public final int getType()
   {
-    return 1097;
+    return 1035;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(6597);
-    ab.i("MicroMsg.NetSceneGetAppTicket", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(6597);
+    AppMethodBeat.i(78874);
+    Log.i("MicroMsg.NetSceneDownloadCdnInfo", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(78874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.l
  * JD-Core Version:    0.7.0.1
  */

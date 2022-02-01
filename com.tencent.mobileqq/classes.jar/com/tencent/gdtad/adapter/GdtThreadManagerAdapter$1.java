@@ -1,12 +1,11 @@
 package com.tencent.gdtad.adapter;
 
-import aamn;
 import java.util.HashMap;
 
-public class GdtThreadManagerAdapter$1
+class GdtThreadManagerAdapter$1
   extends HashMap<Integer, Integer>
 {
-  public GdtThreadManagerAdapter$1(aamn paramaamn)
+  GdtThreadManagerAdapter$1(GdtThreadManagerAdapter paramGdtThreadManagerAdapter)
   {
     put(Integer.valueOf(3), Integer.valueOf(16));
     put(Integer.valueOf(4), Integer.valueOf(128));
@@ -15,7 +14,7 @@ public class GdtThreadManagerAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1
  * JD-Core Version:    0.7.0.1
  */

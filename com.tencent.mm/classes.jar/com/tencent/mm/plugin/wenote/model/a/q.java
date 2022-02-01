@@ -6,28 +6,28 @@ import java.io.Serializable;
 public final class q
   implements Serializable
 {
-  public boolean muU = false;
-  public int vxA = 0;
-  public boolean vxu = false;
-  public long vxv = -1L;
-  public long vxw = -1L;
-  public String vxx = "";
-  public String vxy = "";
-  public int vxz = 0;
+  public boolean Aeu = false;
+  public boolean XAH = false;
+  public long XAI = -1L;
+  public long XAJ = -1L;
+  public String XAK = "";
+  public String XAL = "";
+  public int XAM = 0;
+  public int XAN = 0;
   
-  public final String dhS()
+  public final String iEb()
   {
-    AppMethodBeat.i(26684);
+    AppMethodBeat.i(30377);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.vxu).append(" topLocalId=").append(this.vxv).append(" topMsgId=").append(this.vxw).append(" topTitle=").append(this.vxx).append(" topNoteXml=").append(this.vxy).append(" topLastPosition=").append(this.vxz).append(" topLastOffset=").append(this.vxA);
+    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.XAH).append(" topLocalId=").append(this.XAI).append(" topMsgId=").append(this.XAJ).append(" topTitle=").append(this.XAK).append(" topNoteXml=").append(this.XAL).append(" topLastPosition=").append(this.XAM).append(" topLastOffset=").append(this.XAN);
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(26684);
+    AppMethodBeat.o(30377);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.q
  * JD-Core Version:    0.7.0.1
  */

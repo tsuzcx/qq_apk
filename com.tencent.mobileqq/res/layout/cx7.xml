@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/qcircle_skin_color_bg_default" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:layout_gravity="center_horizontal" android:id="@id/pel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-13.0dip" android:layout_marginTop="15.0dip" />
+    <RelativeLayout android:gravity="bottom" android:id="@id/p3y" android:layout_width="fill_parent" android:layout_height="30.0dip">
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="可能感兴趣的人" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/p3z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="28.0dip" android:text="更多" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/p4g" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/qcircle_skin_icon_general_arrow_right_primary" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/p4f" android:layout_width="fill_parent" android:layout_height="@dimen/b2l" android:layout_marginTop="30.0dip" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/p4h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/b2l" android:layout_marginTop="30.0dip" />
+</FrameLayout>

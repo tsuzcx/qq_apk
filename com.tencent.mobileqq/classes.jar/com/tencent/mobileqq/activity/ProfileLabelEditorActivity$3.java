@@ -12,13 +12,14 @@ class ProfileLabelEditorActivity$3
   
   public void run()
   {
-    List localList = ProfileLabelEditorActivity.a(this.this$0, this.this$0.app.getCurrentAccountUin());
-    ThreadManager.getUIHandler().post(new ProfileLabelEditorActivity.3.1(this, localList));
+    Object localObject = this.this$0;
+    localObject = ProfileLabelEditorActivity.a((ProfileLabelEditorActivity)localObject, ((ProfileLabelEditorActivity)localObject).app.getCurrentAccountUin());
+    ThreadManager.getUIHandler().post(new ProfileLabelEditorActivity.3.1(this, (List)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity.3
  * JD-Core Version:    0.7.0.1
  */

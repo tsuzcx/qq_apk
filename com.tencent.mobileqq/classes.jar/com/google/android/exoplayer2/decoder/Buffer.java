@@ -6,7 +6,7 @@ public abstract class Buffer
   
   public final void addFlag(int paramInt)
   {
-    this.flags |= paramInt;
+    this.flags = (paramInt | this.flags);
   }
   
   public void clear()
@@ -16,7 +16,7 @@ public abstract class Buffer
   
   public final void clearFlag(int paramInt)
   {
-    this.flags &= (paramInt ^ 0xFFFFFFFF);
+    this.flags = ((paramInt ^ 0xFFFFFFFF) & this.flags);
   }
   
   protected final boolean getFlag(int paramInt)
@@ -46,7 +46,7 @@ public abstract class Buffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.decoder.Buffer
  * JD-Core Version:    0.7.0.1
  */

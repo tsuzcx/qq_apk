@@ -49,17 +49,19 @@ public class Suite
     }
     catch (InitializationError localInitializationError)
     {
-      throw new RuntimeException("This shouldn't be possible");
+      label18:
+      break label18;
     }
+    throw new RuntimeException("This shouldn't be possible");
   }
   
   private static Class<?>[] getAnnotatedClasses(Class<?> paramClass)
   {
     Suite.SuiteClasses localSuiteClasses = (Suite.SuiteClasses)paramClass.getAnnotation(Suite.SuiteClasses.class);
-    if (localSuiteClasses == null) {
-      throw new InitializationError(String.format("class '%s' must have a SuiteClasses annotation", new Object[] { paramClass.getName() }));
+    if (localSuiteClasses != null) {
+      return localSuiteClasses.value();
     }
-    return localSuiteClasses.value();
+    throw new InitializationError(String.format("class '%s' must have a SuiteClasses annotation", new Object[] { paramClass.getName() }));
   }
   
   protected Description describeChild(Runner paramRunner)
@@ -79,7 +81,7 @@ public class Suite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runners.Suite
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net.b;
 
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.CodecWarpper;
 import com.tencent.qphone.base.util.QLog;
@@ -15,59 +15,43 @@ class f$b
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg;
-    String str;
-    for (;;)
-    {
-      if (f.a(this.a).get()) {
-        return;
-      }
+    while (!f.a(this.a).get()) {
       try
       {
-        localToServiceMsg = (ToServiceMsg)f.b(this.a).take();
-        str = localToServiceMsg.getServiceCmd();
-        localObject = null;
+        ToServiceMsg localToServiceMsg = (ToServiceMsg)f.b(this.a).take();
+        String str = localToServiceMsg.getServiceCmd();
+        byte[] arrayOfByte2;
+        try
+        {
+          byte[] arrayOfByte1 = ad.b(localToServiceMsg, 0);
+        }
+        catch (Exception localException)
+        {
+          QLog.d("ReqAllFailSocket", 1, "", localException);
+          arrayOfByte2 = null;
+        }
+        if (591 == CodecWarpper.getSharedObjectVersion()) {
+          arrayOfByte2 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localToServiceMsg.getWupBuffer(), true);
+        } else if ((595 != CodecWarpper.getSharedObjectVersion()) && (600 != CodecWarpper.getSharedObjectVersion())) {
+          arrayOfByte2 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, (byte)0, arrayOfByte2, null, localToServiceMsg.getWupBuffer(), true);
+        } else {
+          arrayOfByte2 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, arrayOfByte2, null, localToServiceMsg.getWupBuffer(), true);
+        }
+        if (f.c(this.a).get()) {
+          f.a(this.a, localToServiceMsg.getServiceCmd(), localToServiceMsg.getMsfCommand(), arrayOfByte2);
+        }
       }
       catch (Throwable localThrowable)
       {
-        Object localObject;
-        byte[] arrayOfByte2;
-        label43:
-        label90:
         localThrowable.printStackTrace();
         f.d(this.a);
       }
-      try
-      {
-        arrayOfByte2 = ag.b(localToServiceMsg, 0);
-        localObject = arrayOfByte2;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("ReqAllFailSocket", 1, "", localException);
-        break label43;
-        if ((595 != CodecWarpper.getSharedObjectVersion()) && (600 != CodecWarpper.getSharedObjectVersion())) {
-          break label211;
-        }
-        byte[] arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localThrowable, localToServiceMsg.getWupBuffer(), true);
-        break label90;
-        arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, (byte)0, arrayOfByte1, localToServiceMsg.getWupBuffer(), true);
-        break label90;
-      }
-      if (591 != CodecWarpper.getSharedObjectVersion()) {
-        break;
-      }
-      localObject = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localToServiceMsg.getWupBuffer(), true);
-      if (f.c(this.a).get()) {
-        f.a(this.a, localToServiceMsg.getServiceCmd(), localToServiceMsg.getMsfCommand(), (byte[])localObject);
-      }
     }
-    label211:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.f.b
  * JD-Core Version:    0.7.0.1
  */

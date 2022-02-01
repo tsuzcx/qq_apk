@@ -7,14 +7,15 @@ class ArkViewModelBase$21
   
   public void run()
   {
-    if (this.val$viewImpl != null) {
-      this.val$viewImpl.onFirstPaint();
+    ArkViewImplement localArkViewImplement = this.val$viewImpl;
+    if (localArkViewImplement != null) {
+      localArkViewImplement.onFirstPaint();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkViewModelBase.21
  * JD-Core Version:    0.7.0.1
  */

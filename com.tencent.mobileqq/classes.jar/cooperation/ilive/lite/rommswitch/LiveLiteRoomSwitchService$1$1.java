@@ -1,0 +1,22 @@
+package cooperation.ilive.lite.rommswitch;
+
+import com.tencent.ilivesdk.roomswitchservice_interface.RoomSwitchInterface.IRoomList;
+
+class LiveLiteRoomSwitchService$1$1
+  implements Runnable
+{
+  LiveLiteRoomSwitchService$1$1(LiveLiteRoomSwitchService.1 param1) {}
+  
+  public void run()
+  {
+    if (this.a.a != null) {
+      this.a.a.onResult(-1, 0, null);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     cooperation.ilive.lite.rommswitch.LiveLiteRoomSwitchService.1.1
+ * JD-Core Version:    0.7.0.1
+ */

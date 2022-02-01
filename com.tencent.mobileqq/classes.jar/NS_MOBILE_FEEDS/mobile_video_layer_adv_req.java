@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,11 +14,11 @@ public final class mobile_video_layer_adv_req
   static Map<Integer, String> cache_busi_param;
   static ArrayList<feeds_context_info> cache_context_list = new ArrayList();
   static Map<String, String> cache_mapExt;
-  public Map<Integer, String> busi_param;
-  public ArrayList<feeds_context_info> context_list;
-  public Map<String, String> mapExt;
-  public int req_type;
-  public long uin;
+  public Map<Integer, String> busi_param = null;
+  public ArrayList<feeds_context_info> context_list = null;
+  public Map<String, String> mapExt = null;
+  public int req_type = 0;
+  public long uin = 0L;
   
   static
   {
@@ -52,21 +53,24 @@ public final class mobile_video_layer_adv_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.context_list != null) {
-      paramJceOutputStream.write(this.context_list, 1);
+    Object localObject = this.context_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 2);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 3);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.req_type, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_video_layer_adv_req
  * JD-Core Version:    0.7.0.1
  */

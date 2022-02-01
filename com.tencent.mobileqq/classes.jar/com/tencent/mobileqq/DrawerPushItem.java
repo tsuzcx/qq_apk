@@ -1,11 +1,11 @@
 package com.tencent.mobileqq;
 
-import awge;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 
 public class DrawerPushItem
-  extends awge
+  extends Entity
 {
   public static final int BUBBLE_PUSH_MSG_TYPE_AIO = 2;
   public static final int BUBBLE_PUSH_MSG_TYPE_AIO_GAME_PANEL = 9;
@@ -28,16 +28,17 @@ public class DrawerPushItem
   public String content;
   public int end_ts;
   public String ext_url;
+  public boolean fromTianshu;
   public String icon_url;
   public int is_reddot;
   public int life_Time;
-  @awhs
+  @unique
   public String msg_id;
   public int msg_type;
   public int priority;
   public int reddotGameId;
   public String reddotPath;
-  @awhp
+  @notColumn
   public int reddotRedId;
   public String scheme;
   public int send_time;
@@ -50,16 +51,85 @@ public class DrawerPushItem
   public String tianshuTraceInfo;
   public String tips_str;
   
+  public boolean isValid()
+  {
+    long l = System.currentTimeMillis() / 1000L;
+    return (this.start_ts < l) && (this.end_ts > l) && (this.show_sum < this.show_counts);
+  }
+  
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(300);
-    localStringBuilder.append("msgType:").append(this.msg_type).append("id:").append(this.msg_id).append(",priority:").append(this.priority).append(",sub_priority:").append(this.sub_priority).append(",start_ts:").append(this.start_ts).append(",end_ts:").append(this.end_ts).append(",send_time:").append(this.send_time).append(",action_id:").append(this.action_id).append(",content:").append(this.content).append(",scheme:").append(this.scheme).append(",ext_url:").append(this.ext_url).append(",show_counts:").append(this.show_counts).append(",show_sum:").append(this.show_sum).append(",is_reddot:").append(this.is_reddot).append(",bubble_res_id:").append(this.bubble_res_id).append(",color:").append(this.color).append(",iconUrl:").append(this.icon_url).append(", lifeTime:").append(this.life_Time).append(",tips:").append(this.tips_str).append(",reddotGameId:").append(this.reddotGameId);
-    return localStringBuilder.toString();
+    StringBuffer localStringBuffer = new StringBuffer("DrawerPushItem{");
+    localStringBuffer.append("msg_id='");
+    localStringBuffer.append(this.msg_id);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", priority=");
+    localStringBuffer.append(this.priority);
+    localStringBuffer.append(", sub_priority=");
+    localStringBuffer.append(this.sub_priority);
+    localStringBuffer.append(", start_ts=");
+    localStringBuffer.append(this.start_ts);
+    localStringBuffer.append(", end_ts=");
+    localStringBuffer.append(this.end_ts);
+    localStringBuffer.append(", send_time=");
+    localStringBuffer.append(this.send_time);
+    localStringBuffer.append(", action_id=");
+    localStringBuffer.append(this.action_id);
+    localStringBuffer.append(", content='");
+    localStringBuffer.append(this.content);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scheme='");
+    localStringBuffer.append(this.scheme);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", ext_url='");
+    localStringBuffer.append(this.ext_url);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", color=");
+    localStringBuffer.append(this.color);
+    localStringBuffer.append(", show_counts=");
+    localStringBuffer.append(this.show_counts);
+    localStringBuffer.append(", show_sum=");
+    localStringBuffer.append(this.show_sum);
+    localStringBuffer.append(", life_Time=");
+    localStringBuffer.append(this.life_Time);
+    localStringBuffer.append(", is_reddot=");
+    localStringBuffer.append(this.is_reddot);
+    localStringBuffer.append(", bubble_res_id=");
+    localStringBuffer.append(this.bubble_res_id);
+    localStringBuffer.append(", icon_url='");
+    localStringBuffer.append(this.icon_url);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", msg_type=");
+    localStringBuffer.append(this.msg_type);
+    localStringBuffer.append(", act_id='");
+    localStringBuffer.append(this.act_id);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", tips_str='");
+    localStringBuffer.append(this.tips_str);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", target_model=");
+    localStringBuffer.append(this.target_model);
+    localStringBuffer.append(", fromTianshu=");
+    localStringBuffer.append(this.fromTianshu);
+    localStringBuffer.append(", tianshuAdId=");
+    localStringBuffer.append(this.tianshuAdId);
+    localStringBuffer.append(", tianshuTraceInfo='");
+    localStringBuffer.append(this.tianshuTraceInfo);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", reddotPath='");
+    localStringBuffer.append(this.reddotPath);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", reddotGameId=");
+    localStringBuffer.append(this.reddotGameId);
+    localStringBuffer.append(", reddotRedId=");
+    localStringBuffer.append(this.reddotRedId);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.DrawerPushItem
  * JD-Core Version:    0.7.0.1
  */

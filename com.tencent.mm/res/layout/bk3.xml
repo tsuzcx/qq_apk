@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/l4t" android:background="@color/py" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/buo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.thumbplayer.view.MultiMediaEffectVideoLayout android:id="@id/l6g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <View android:id="@id/jfk" android:background="@drawable/ake" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.25" />
+            <View android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+            <View android:id="@id/jfl" android:background="@drawable/akf" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.25" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.mv.ui.view.MusicLyricLineView android:id="@id/gk1" android:paddingTop="30.0dip" android:paddingBottom="30.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        <LinearLayout android:gravity="start" android:orientation="horizontal" android:id="@id/l4u" android:paddingLeft="@dimen/cr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ev0" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" />
+            <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cr">
+                <TextView android:textSize="@dimen/cf" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/evh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="遇见你的时候所有星星全都落到我头上 ·遇见你的时候所有星星全都落到我头上  ·遇见你的时候所有星星全都落到我头上·钟汉良" android:maxLines="2" />
+                <TextView android:textSize="@dimen/ce" android:textColor="@color/BW_100_Alpha_0_5_MV" android:id="@id/evi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/aua" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cr" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/m3" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="start|center" android:id="@id/eq3" android:background="@drawable/aiw" android:layout_width="@dimen/dd" android:layout_height="@dimen/d4" android:text="去播放" />
+        <LinearLayout android:gravity="right" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f2v" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:src="@raw/icons_filled_share" app:iconColor="#ffffffff" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f20" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginLeft="@dimen/cr" android:src="@raw/icons_filled_favorites" app:iconColor="#ffffffff" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

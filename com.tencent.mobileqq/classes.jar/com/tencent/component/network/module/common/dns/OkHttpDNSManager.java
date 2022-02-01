@@ -19,57 +19,62 @@ public class OkHttpDNSManager
   
   public List<InetAddress> getAllByName(String paramString)
   {
-    Object localObject1 = null;
-    if (this.customDnsResolve != null)
+    Object localObject1 = this.customDnsResolve;
+    if (localObject1 != null)
     {
-      localObject1 = this.customDnsResolve.getAllByName(paramString);
-      if ((localObject1 != null) && (localObject1.length > 0)) {
+      localObject1 = ((CustomDnsResolve)localObject1).getAllByName(paramString);
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
         QDLog.i("downloader", "OkHttpDNSManager customDnsResolve.getAllByName");
+      }
+      else
+      {
+        localObject2 = this.customDnsResolve.resolveByDns(paramString);
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+          if (localObject2.length > 0)
+          {
+            QDLog.i("downloader", "OkHttpDNSManager customDnsResolve.resolveByDns");
+            localObject1 = localObject2;
+          }
+        }
       }
     }
     else
     {
-      if ((localObject1 == null) || (localObject1.length <= 0)) {
-        break label137;
-      }
+      localObject1 = null;
+    }
+    if ((localObject1 != null) && (localObject1.length > 0))
+    {
       paramString = Arrays.asList((Object[])localObject1);
     }
-    for (;;)
+    else
     {
-      localObject1 = new StringBuilder();
-      if (paramString == null) {
-        break label157;
-      }
-      Object localObject2 = paramString.iterator();
+      paramString = Dns.SYSTEM.lookup(paramString);
+      QDLog.i("downloader", "OkHttpDNSManager Dns.SYSTEM.lookup");
+    }
+    localObject1 = new StringBuilder();
+    if (paramString != null)
+    {
+      localObject2 = paramString.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         ((StringBuilder)localObject1).append(((InetAddress)((Iterator)localObject2).next()).getHostAddress());
         ((StringBuilder)localObject1).append(";");
       }
-      localObject2 = this.customDnsResolve.resolveByDns(paramString);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (localObject2.length <= 0) {
-        break;
-      }
-      QDLog.i("downloader", "OkHttpDNSManager customDnsResolve.resolveByDns");
-      localObject1 = localObject2;
-      break;
-      label137:
-      paramString = Dns.SYSTEM.lookup(paramString);
-      QDLog.i("downloader", "OkHttpDNSManager Dns.SYSTEM.lookup");
     }
-    label157:
-    QDLog.i("downloader", "OkHttpDNSManager" + ((StringBuilder)localObject1).toString());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("OkHttpDNSManager");
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    QDLog.i("downloader", ((StringBuilder)localObject2).toString());
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.OkHttpDNSManager
  * JD-Core Version:    0.7.0.1
  */

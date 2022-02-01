@@ -1,44 +1,45 @@
 package com.tencent.mm.plugin.subapp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class Plugin
-  implements c
+  implements d
 {
   public Plugin()
   {
-    AppMethodBeat.i(25153);
-    ab.i("MicroMsg.Plugin.subapp", "subapp constructor " + System.currentTimeMillis());
-    AppMethodBeat.o(25153);
+    AppMethodBeat.i(28828);
+    Log.i("MicroMsg.Plugin.subapp", "subapp constructor " + System.currentTimeMillis());
+    AppMethodBeat.o(28828);
   }
   
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(25154);
-    ab.i("MicroMsg.Plugin.subapp", "subapp createApplication " + System.currentTimeMillis());
-    b localb = new b();
-    AppMethodBeat.o(25154);
-    return localb;
-  }
-  
-  public final at createSubCore()
-  {
-    AppMethodBeat.i(25156);
-    ab.i("MicroMsg.Plugin.subapp", "subapp createSubCore " + System.currentTimeMillis());
+    AppMethodBeat.i(28829);
+    Log.i("MicroMsg.Plugin.subapp", "subapp createApplication " + System.currentTimeMillis());
     a locala = new a();
-    AppMethodBeat.o(25156);
+    AppMethodBeat.o(28829);
     return locala;
   }
   
-  public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(25155);
-    ab.i("MicroMsg.Plugin.subapp", "subapp getContactWidgetFactory " + System.currentTimeMillis());
-    AppMethodBeat.o(25155);
+    AppMethodBeat.i(28831);
+    Log.i("MicroMsg.Plugin.subapp", "subapp createSubCore " + System.currentTimeMillis());
+    SubCoreSubapp localSubCoreSubapp = new SubCoreSubapp();
+    AppMethodBeat.o(28831);
+    return localSubCoreSubapp;
+  }
+  
+  public final c getContactWidgetFactory()
+  {
+    AppMethodBeat.i(28830);
+    Log.i("MicroMsg.Plugin.subapp", "subapp getContactWidgetFactory " + System.currentTimeMillis());
+    AppMethodBeat.o(28830);
     return null;
   }
 }

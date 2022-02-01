@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahgo;
 import android.os.Handler;
 import android.os.Message;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.util.Iterator;
 import java.util.List;
 
-public class ClassificationSearchActivity$15$1
+class ClassificationSearchActivity$15$1
   implements Runnable
 {
-  public ClassificationSearchActivity$15$1(ahgo paramahgo) {}
+  ClassificationSearchActivity$15$1(ClassificationSearchActivity.15 param15) {}
   
   public void run()
   {
-    awgf localawgf = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localawgf.a(ReadInJoySearchHistoryEntity.class);
+    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
+    List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class);
     if (localList == null) {
       return;
     }
     Object localObject = localList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      localawgf.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
+      localEntityManager.remove((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
     }
     localList.clear();
-    localObject = this.a.a.a.obtainMessage(1);
+    localObject = this.a.a.A.obtainMessage(1);
     ((Message)localObject).obj = localList;
-    this.a.a.a.sendMessage((Message)localObject);
-    localawgf.a();
+    this.a.a.A.sendMessage((Message)localObject);
+    localEntityManager.close();
   }
 }
 

@@ -7,16 +7,16 @@ public class VulkanJniExport
 {
   static
   {
-    AppMethodBeat.i(116016);
+    AppMethodBeat.i(140076);
     b.loadLibrary("mmvulkan");
-    AppMethodBeat.o(116016);
+    AppMethodBeat.o(140076);
   }
   
   public static native boolean isSupportVulkan();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.vulkan.VulkanJniExport
  * JD-Core Version:    0.7.0.1
  */

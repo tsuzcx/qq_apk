@@ -1,96 +1,47 @@
 package com.tencent.mm.plugin.wallet.a;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/accessibility/PreferenceAccessibilityConfig;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "Companion", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends com.tencent.mm.bv.a
+  extends MMBaseAccessibilityConfig
 {
-  public String por;
-  public LinkedList<d> tTW;
+  private static final String TAG;
+  public static final a UZa;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(56643);
-    this.tTW = new LinkedList();
-    AppMethodBeat.o(56643);
+    AppMethodBeat.i(315540);
+    UZa = new a((byte)0);
+    TAG = "PreferenceAccessibilityConfig";
+    AppMethodBeat.o(315540);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public c(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(56644);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.por != null) {
-        paramVarArgs.e(1, this.por);
-      }
-      paramVarArgs.e(2, 8, this.tTW);
-      AppMethodBeat.o(56644);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.por == null) {
-        break label358;
-      }
-    }
-    label358:
-    for (paramInt = e.a.a.b.b.a.f(1, this.por) + 0;; paramInt = 0)
-    {
-      int i = e.a.a.a.c(2, 8, this.tTW);
-      AppMethodBeat.o(56644);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.tTW.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(56644);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-        c localc = (c)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(56644);
-          return -1;
-        case 1: 
-          localc.por = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56644);
-          return 0;
-        }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new d();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((d)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localc.tTW.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(56644);
-        return 0;
-      }
-      AppMethodBeat.o(56644);
-      return -1;
-    }
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(315537);
+    AppMethodBeat.o(315537);
   }
+  
+  public final void initConfig()
+  {
+    AppMethodBeat.i(315544);
+    focusFirst(a.f.title_ll, a.g.mm_preference);
+    AppMethodBeat.o(315544);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/accessibility/PreferenceAccessibilityConfig$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.c
  * JD-Core Version:    0.7.0.1
  */

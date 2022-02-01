@@ -3,8 +3,6 @@ package com.tencent.qphone.base.util;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.commonsdk.soload.SoLoadCore;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import java.io.File;
 
 public class StringUtils
@@ -29,11 +27,10 @@ public class StringUtils
   
   public static boolean getLoadResult(int paramInt)
   {
-    if ((paramInt & 0x2) == 2) {}
-    while ((paramInt & 0x40000) == 262144) {
+    if ((paramInt & 0x2) == 2) {
       return true;
     }
-    return false;
+    return (paramInt & 0x40000) == 262144;
   }
   
   public static String getPlatformString()
@@ -50,148 +47,282 @@ public class StringUtils
   
   public static String getTxLib(Context paramContext)
   {
-    return paramContext.getFilesDir().getParent() + "/txlib/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir().getParent());
+    localStringBuilder.append("/txlib/");
+    return localStringBuilder.toString();
   }
   
   public static boolean loadLibrary(String paramString1, Context paramContext, String paramString2, String paramString3)
   {
-    boolean bool2 = true;
     if (paramContext == null) {
       return false;
     }
     paramContext = new File(paramString2);
-    if (paramContext.exists()) {}
     boolean bool1;
-    label125:
-    for (;;)
-    {
+    if (paramContext.exists()) {
       try
       {
         System.load(paramContext.getAbsolutePath());
         bool1 = true;
-        if ((bool1) || (TextUtils.isEmpty(paramString3))) {
-          break label125;
-        }
       }
       catch (Throwable paramString2)
       {
-        QLog.e(paramString1, 1, "cannot load library " + paramContext.getAbsolutePath(), paramString2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cannot load library ");
+        localStringBuilder.append(paramContext.getAbsolutePath());
+        QLog.e(paramString1, 1, localStringBuilder.toString(), paramString2);
       }
-      try
-      {
-        System.loadLibrary(paramString3);
-        bool1 = bool2;
-      }
-      catch (Throwable paramContext)
-      {
-        QLog.e(paramString1, 1, "cannot load system library " + paramString3, paramContext);
-        bool1 = false;
-        continue;
-      }
-      return bool1;
+    } else {
       bool1 = false;
     }
+    boolean bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (!TextUtils.isEmpty(paramString3)) {
+        try
+        {
+          System.loadLibrary(paramString3);
+          return true;
+        }
+        catch (Throwable paramContext)
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("cannot load system library ");
+          paramString2.append(paramString3);
+          QLog.e(paramString1, 1, paramString2.toString(), paramContext);
+          bool2 = false;
+        }
+      }
+    }
+    return bool2;
   }
   
   public static boolean loadLibrary(String paramString1, String paramString2, Context paramContext)
   {
-    boolean bool2;
-    if (paramContext == null)
+    if (paramContext == null) {
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getTxLib(paramContext));
+    ((StringBuilder)localObject).append("lib");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(".so");
+    File localFile = new File(((StringBuilder)localObject).toString());
+    localObject = localFile;
+    if (!localFile.exists())
     {
-      bool2 = false;
-      return bool2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getFilesDir().getParent());
+      ((StringBuilder)localObject).append("/lib/lib");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(".so");
+      localObject = new File(((StringBuilder)localObject).toString());
     }
-    File localFile2 = new File(getTxLib(paramContext) + "lib" + paramString2 + ".so");
-    File localFile1 = localFile2;
-    if (!localFile2.exists()) {
-      localFile1 = new File(paramContext.getFilesDir().getParent() + "/lib/lib" + paramString2 + ".so");
-    }
-    if (localFile1.exists()) {}
-    for (;;)
+    if (((File)localObject).exists()) {}
+    try
     {
-      try
-      {
-        System.load(localFile1.getAbsolutePath());
-        boolean bool1 = true;
-        bool2 = bool1;
-        if (bool1) {
-          break;
-        }
-        bool1 = false;
-      }
-      catch (UnsatisfiedLinkError paramContext)
-      {
-        try
-        {
-          System.loadLibrary(paramString2);
-          return true;
-        }
-        catch (UnsatisfiedLinkError paramContext)
-        {
-          if (!QLog.isColorLevel()) {
-            break label207;
-          }
-          QLog.d(paramString1, 2, "cannot load library " + paramString2);
-        }
-        paramContext = paramContext;
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "cannot load library " + localFile1.getAbsolutePath());
-        }
-      }
+      System.load(((File)localObject).getAbsolutePath());
+      bool = true;
     }
-    label207:
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      boolean bool;
+      label154:
+      break label154;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("cannot load library ");
+      paramContext.append(((File)localObject).getAbsolutePath());
+      QLog.d(paramString1, 2, paramContext.toString());
+    }
+    bool = false;
+    if (!bool) {}
+    try
+    {
+      System.loadLibrary(paramString2);
+      return true;
+    }
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      label206:
+      break label206;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("cannot load library ");
+      paramContext.append(paramString2);
+      QLog.d(paramString1, 2, paramContext.toString());
+    }
     return false;
+    return bool;
   }
   
+  /* Error */
   public static int msfLoadSo(String paramString1, String paramString2)
   {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        System.loadLibrary(paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("LoadMSFSo", 2, "System.loadLibrary, libname = " + paramString2 + " suc");
-        }
-        i = 262144;
-      }
-      catch (Throwable localThrowable1)
-      {
-        QLog.e("LoadMSFSo", 1, localThrowable1, new Object[0]);
-        if (!"armeabi".equalsIgnoreCase(getPlatformString())) {
-          break label155;
-        }
-        if ((BaseApplication.processName != null) && ((BaseApplication.processName == null) || (!BaseApplication.processName.endsWith(":MSF")))) {
-          continue;
-        }
-        SoLoadUtilNew.setReport(null);
-        i = SoLoadCore.loadSo(BaseApplication.getContext(), paramString2);
-        QLog.e(paramString1, 1, "loadso arm " + paramString2 + " resultCode=" + i);
-        continue;
-      }
-      finally {}
-      return i;
-      try
-      {
-        label155:
-        bool = loadLibrary(paramString1, paramString2, BaseApplication.getContext());
-        QLog.d(paramString1, 1, "loadso x86 " + paramString2 + " " + bool);
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          localThrowable2.printStackTrace();
-          boolean bool = false;
-        }
-      }
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_1
+    //   4: invokestatic 123	java/lang/System:loadLibrary	(Ljava/lang/String;)V
+    //   7: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   10: ifeq +46 -> 56
+    //   13: new 73	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   20: astore 4
+    //   22: aload 4
+    //   24: ldc 147
+    //   26: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: aload 4
+    //   32: aload_1
+    //   33: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload 4
+    //   39: ldc 149
+    //   41: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: pop
+    //   45: ldc 17
+    //   47: iconst_2
+    //   48: aload 4
+    //   50: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: ldc 2
+    //   58: monitorexit
+    //   59: ldc 51
+    //   61: ireturn
+    //   62: astore_0
+    //   63: goto +192 -> 255
+    //   66: astore 4
+    //   68: iconst_0
+    //   69: istore_2
+    //   70: ldc 17
+    //   72: iconst_1
+    //   73: aload 4
+    //   75: iconst_0
+    //   76: anewarray 4	java/lang/Object
+    //   79: invokestatic 152	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   82: ldc 69
+    //   84: invokestatic 154	com/tencent/qphone/base/util/StringUtils:getPlatformString	()Ljava/lang/String;
+    //   87: invokevirtual 158	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   90: ifeq +90 -> 180
+    //   93: getstatic 163	com/tencent/qphone/base/util/BaseApplication:processName	Ljava/lang/String;
+    //   96: ifnull +20 -> 116
+    //   99: getstatic 163	com/tencent/qphone/base/util/BaseApplication:processName	Ljava/lang/String;
+    //   102: ifnull +18 -> 120
+    //   105: getstatic 163	com/tencent/qphone/base/util/BaseApplication:processName	Ljava/lang/String;
+    //   108: ldc 165
+    //   110: invokevirtual 168	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   113: ifeq +7 -> 120
+    //   116: aconst_null
+    //   117: invokestatic 174	com/tencent/commonsdk/soload/SoLoadUtilNew:setReport	(Lcom/tencent/commonsdk/soload/SoLoadReport;)V
+    //   120: invokestatic 178	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   123: aload_1
+    //   124: invokestatic 184	com/tencent/commonsdk/soload/SoLoadCore:loadSo	(Landroid/content/Context;Ljava/lang/String;)I
+    //   127: istore_2
+    //   128: new 73	java/lang/StringBuilder
+    //   131: dup
+    //   132: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   135: astore 4
+    //   137: aload 4
+    //   139: ldc 186
+    //   141: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: pop
+    //   145: aload 4
+    //   147: aload_1
+    //   148: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: pop
+    //   152: aload 4
+    //   154: ldc 188
+    //   156: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload 4
+    //   162: iload_2
+    //   163: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   166: pop
+    //   167: aload_0
+    //   168: iconst_1
+    //   169: aload 4
+    //   171: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokestatic 193	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: goto +73 -> 250
+    //   180: aload_0
+    //   181: aload_1
+    //   182: invokestatic 178	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   185: invokestatic 195	com/tencent/qphone/base/util/StringUtils:loadLibrary	(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)Z
+    //   188: istore_3
+    //   189: goto +12 -> 201
+    //   192: astore 4
+    //   194: aload 4
+    //   196: invokevirtual 198	java/lang/Throwable:printStackTrace	()V
+    //   199: iconst_0
+    //   200: istore_3
+    //   201: new 73	java/lang/StringBuilder
+    //   204: dup
+    //   205: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   208: astore 4
+    //   210: aload 4
+    //   212: ldc 200
+    //   214: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: aload 4
+    //   220: aload_1
+    //   221: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: pop
+    //   225: aload 4
+    //   227: ldc 202
+    //   229: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: pop
+    //   233: aload 4
+    //   235: iload_3
+    //   236: invokevirtual 205	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload_0
+    //   241: iconst_1
+    //   242: aload 4
+    //   244: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   250: ldc 2
+    //   252: monitorexit
+    //   253: iload_2
+    //   254: ireturn
+    //   255: ldc 2
+    //   257: monitorexit
+    //   258: aload_0
+    //   259: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	260	0	paramString1	String
+    //   0	260	1	paramString2	String
+    //   69	185	2	i	int
+    //   188	48	3	bool	boolean
+    //   20	29	4	localStringBuilder1	StringBuilder
+    //   66	8	4	localThrowable1	Throwable
+    //   135	35	4	localStringBuilder2	StringBuilder
+    //   192	3	4	localThrowable2	Throwable
+    //   208	35	4	localStringBuilder3	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   3	56	62	finally
+    //   70	116	62	finally
+    //   116	120	62	finally
+    //   120	177	62	finally
+    //   180	189	62	finally
+    //   194	199	62	finally
+    //   201	250	62	finally
+    //   3	56	66	java/lang/Throwable
+    //   180	189	192	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.StringUtils
  * JD-Core Version:    0.7.0.1
  */

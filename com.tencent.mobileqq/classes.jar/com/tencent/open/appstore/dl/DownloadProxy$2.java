@@ -1,63 +1,64 @@
 package com.tencent.open.appstore.dl;
 
-import bfkr;
-import bfkv;
-import bflp;
-import bfor;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadQueryListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DownloadProxy$2
+class DownloadProxy$2
   implements Runnable
 {
-  public DownloadProxy$2(bfkv parambfkv, List paramList, bfor parambfor) {}
+  DownloadProxy$2(DownloadProxy paramDownloadProxy, List paramList, DownloadQueryListener paramDownloadQueryListener) {}
   
   public void run()
   {
-    bflp.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
-    bfkr.a().a();
+    LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
+    DownloadManagerV2.a().b();
     for (;;)
     {
       int i;
       try
       {
         ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
+        int j = this.a.size();
         i = 0;
         if (i < j)
         {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bfkr.a().b(localDownloadInfo))
-          {
-            bflp.b("DownloadResolver", "[queryByDownloadManagerV2] refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
+          localObject = (DownloadInfo)this.a.get(i);
+          if (!DownloadManagerV2.a().i((DownloadInfo)localObject)) {
+            break label162;
           }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[queryByDownloadManagerV2] refreshDownloadInfo true ");
+          localStringBuilder.append(localObject);
+          LogUtility.b("DownloadResolver", localStringBuilder.toString());
+          localArrayList.add(localObject);
+          break label162;
         }
-        else
+        if (this.b != null)
         {
-          if (this.jdField_a_of_type_Bfor != null) {
-            this.jdField_a_of_type_Bfor.a(localArrayList);
-          }
+          this.b.a(localArrayList);
           return;
         }
       }
       catch (Exception localException)
       {
-        bflp.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
-        if (this.jdField_a_of_type_Bfor == null) {
-          continue;
+        LogUtility.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
+        Object localObject = this.b;
+        if (localObject != null) {
+          ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
         }
-        this.jdField_a_of_type_Bfor.a(-1, localException.getMessage());
-        return;
       }
+      return;
+      label162:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.2
  * JD-Core Version:    0.7.0.1
  */

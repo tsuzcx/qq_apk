@@ -13,53 +13,53 @@ public final class c
   implements a
 {
   private String appId;
-  private String heu;
-  private String hng;
-  private Map<String, Integer> hqI;
+  private String mpa;
+  private String qTb;
+  private Map<String, Integer> rnB;
   
   public c(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(10977);
-    this.hqI = new HashMap();
+    AppMethodBeat.i(121458);
+    this.rnB = new HashMap();
     this.appId = paramString1;
-    this.hng = paramString2;
-    this.heu = (this.hng + "-" + this.appId);
-    AppMethodBeat.o(10977);
+    this.mpa = paramString2;
+    this.qTb = (this.mpa + "-" + this.appId);
+    AppMethodBeat.o(121458);
   }
   
-  public final void Bo(String paramString)
+  public final void Zn(String paramString)
   {
-    AppMethodBeat.i(10978);
+    AppMethodBeat.i(121459);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(10978);
+      AppMethodBeat.o(121459);
       return;
     }
-    Integer localInteger2 = (Integer)this.hqI.get(paramString);
+    Integer localInteger2 = (Integer)this.rnB.get(paramString);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    this.hqI.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
-    AppMethodBeat.o(10978);
+    this.rnB.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
+    AppMethodBeat.o(121459);
   }
   
-  public final void IE()
+  public final void report()
   {
-    AppMethodBeat.i(10979);
-    Iterator localIterator = this.hqI.entrySet().iterator();
+    AppMethodBeat.i(121460);
+    Iterator localIterator = this.rnB.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      h.qsU.e(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.heu, this.hng, this.appId });
+      h.OAn.b(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.qTb, this.mpa, this.appId });
     }
-    this.hqI.clear();
-    AppMethodBeat.o(10979);
+    this.rnB.clear();
+    AppMethodBeat.o(121460);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.i.c
  * JD-Core Version:    0.7.0.1
  */

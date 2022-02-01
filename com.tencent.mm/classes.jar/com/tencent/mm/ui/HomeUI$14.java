@@ -1,22 +1,25 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cr;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 
 final class HomeUI$14
-  extends c<cr>
+  implements u.g
 {
-  HomeUI$14(HomeUI paramHomeUI)
+  HomeUI$14(HomeUI paramHomeUI) {}
+  
+  public final void onCreateMMMenu(s params)
   {
-    AppMethodBeat.i(153774);
-    this.__eventId = cr.class.getName().hashCode();
-    AppMethodBeat.o(153774);
+    AppMethodBeat.i(249444);
+    params.c(1, "拍摄状态");
+    params.c(2, "属性配置");
+    AppMethodBeat.o(249444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.14
  * JD-Core Version:    0.7.0.1
  */

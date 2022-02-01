@@ -1,59 +1,68 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.xp;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class f
-  implements com.tencent.mm.ai.f
+  implements h
 {
-  public static f kMS;
+  public static f wYd;
   private final String TAG;
-  public Map<l, f.a> jFd;
+  public Map<k, a> vcA;
   
   public f()
   {
-    AppMethodBeat.i(40932);
+    AppMethodBeat.i(63782);
     this.TAG = "MicroMsg.F2fGetPayUrlManager";
-    this.jFd = new HashMap();
-    AppMethodBeat.o(40932);
+    this.vcA = new HashMap();
+    AppMethodBeat.o(63782);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(40933);
-    f.a locala;
-    if ((paramm instanceof l))
+    AppMethodBeat.i(63783);
+    a locala;
+    if ((paramp instanceof k))
     {
-      paramString = (l)paramm;
-      locala = (f.a)this.jFd.get(paramm);
+      paramString = (k)paramp;
+      locala = (a)this.vcA.get(paramp);
       if (locala == null)
       {
-        ab.w("MicroMsg.F2fGetPayUrlManager", "no match callback");
-        AppMethodBeat.o(40933);
+        Log.w("MicroMsg.F2fGetPayUrlManager", "no match callback");
+        AppMethodBeat.o(63783);
         return;
       }
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label91;
       }
-      locala.a(true, paramString.kNu);
+      locala.a(true, paramString.wYF);
     }
     for (;;)
     {
-      this.jFd.remove(paramm);
-      AppMethodBeat.o(40933);
+      this.vcA.remove(paramp);
+      AppMethodBeat.o(63783);
       return;
       label91:
-      ab.e("MicroMsg.F2fGetPayUrlManager", "net error: %s", new Object[] { paramString });
-      locala.a(false, paramString.kNu);
+      Log.e("MicroMsg.F2fGetPayUrlManager", "net error: %s", new Object[] { paramString });
+      locala.a(false, paramString.wYF);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void U(String paramString1, String paramString2, int paramInt);
+    
+    public abstract void a(boolean paramBoolean, xp paramxp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.f
  * JD-Core Version:    0.7.0.1
  */

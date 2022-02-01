@@ -47,30 +47,35 @@ public final class MusicInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.xqusic_mid != null) {
-      paramJceOutputStream.write(this.xqusic_mid, 0);
+    String str = this.xqusic_mid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.xqusic_id, 1);
-    if (this.xsong_name != null) {
-      paramJceOutputStream.write(this.xsong_name, 2);
+    str = this.xsong_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.xsinger_id, 3);
-    if (this.xsinger_name != null) {
-      paramJceOutputStream.write(this.xsinger_name, 4);
+    str = this.xsinger_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.xexpire, 5);
-    if (this.xsong_url != null) {
-      paramJceOutputStream.write(this.xsong_url, 6);
+    str = this.xsong_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.type, 7);
-    if (this.xalbumpic_url != null) {
-      paramJceOutputStream.write(this.xalbumpic_url, 8);
+    str = this.xalbumpic_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MUSIC.MusicInfo
  * JD-Core Version:    0.7.0.1
  */

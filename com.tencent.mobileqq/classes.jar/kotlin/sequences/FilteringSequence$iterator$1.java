@@ -69,13 +69,14 @@ public final class FilteringSequence$iterator$1
     if (this.nextState == -1) {
       calcNext();
     }
-    if (this.nextState == 0) {
-      throw ((Throwable)new NoSuchElementException());
+    if (this.nextState != 0)
+    {
+      Object localObject = this.nextItem;
+      this.nextItem = null;
+      this.nextState = -1;
+      return localObject;
     }
-    Object localObject = this.nextItem;
-    this.nextItem = null;
-    this.nextState = -1;
-    return localObject;
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -95,7 +96,7 @@ public final class FilteringSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.FilteringSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

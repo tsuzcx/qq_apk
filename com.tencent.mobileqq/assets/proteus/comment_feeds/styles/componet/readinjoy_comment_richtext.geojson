@@ -1,0 +1,103 @@
+{
+    "view_type": "RIJCommentRichTextView",
+    "view_id": "id_first_comment_view",
+    "event_type":"cmd_comment_content_click",
+    "margin_top": "6",
+    "attributes": {
+        "setCommentModel:":"$commentModel",
+        "setDTElementID:withParams:": [
+            "comment_button",
+            {
+                "rowkey": "$rowkey",
+                "actionid": "click_comment",
+                "click_type": "single",
+                "comment_id": "$comment_id",
+                "sub_comment_id": "$sub_comment_id",
+                "comment_type": "$comment_type"
+            }
+        ],
+        "setRichData:": [
+            {
+                "name": "div",
+                "attrs": {
+                    "class": "div_class",
+                    "style": "line-height: 24px; width:351px;color: #aa0000;-webkit-line-clamp:${comment_text_line}",
+                    "ratio": "$ratio"
+                },
+                "truncationAttrs": {
+                    "text": "更多",
+                    "href": "$comment_text_more_url",
+                    "color": "#376099",
+                    "font-size": "16px"
+                },
+                "children": [
+                    {
+                      "name": "img",
+                      "attrs": {
+                        "style": "width:32px; height:15px;",
+                        "src": "$top_img_path"
+                      }
+                    },
+                    {
+                      "name": "text",
+                      "attrs": {
+                        "class": "div_class",
+                        "style": "line-height: 24px; color: #000000;width:351px;font-size:16px",
+                        "ratio": "$ratio"
+                      },
+                      "children": [
+                          {
+                              "type": "text",
+                              "text": "$top_margin_text"
+                          }
+                      ]
+                    },
+                    {
+                        "name": "text",
+                        "attrs": {
+                            "class": "div_class",
+                            "style": "line-height: 24px; color: #000000;width:351px;font-size:16px",
+                            "ratio": "$ratio"
+                        },
+                        "children": [
+                            {
+                                "type": "text",
+                                "text": "$reply_normal_text"
+                            }
+                        ]
+                    },
+                    {
+                      "name": "a",
+                      "attrs": {
+                          "href": "$jump_url",
+                          "style": "line-height: 24px; color: #376099;width:351px;font-size:16px",
+                          "ratio": "$ratio"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "$reply_highLight_text"
+                        }
+                      ]
+                    },
+                    {
+                        "name": "div",
+                        "attrs": {
+                            "class": "div_class",
+                            "style": "line-height: 24px; color: #000000;width:351px;font-size:16px;",
+                            "ratio": "$ratio"
+                        },
+                        "children": "$rpt_data_info"
+                    }
+                ]
+            }
+        ]
+    },
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "294"
+    }
+}

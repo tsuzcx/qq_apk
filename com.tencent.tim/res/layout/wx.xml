@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/fdy" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_alignParentTop="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/fdr" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/is" />
+            <com.tencent.common.app.InnerFrameManager android:id="@id/fe1" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ViewStub android:id="@id/cy1" android:layout="@layout/ww" android:inflatedId="@id/cy0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/cnz" android:layout="@layout/wv" android:inflatedId="@id/cny" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.common.app.InnerFrameManager>
+        </LinearLayout>
+        <ViewStub android:id="@id/ik_" android:layout="@layout/byg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/ac1" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/cx7" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <HorizontalScrollView android:id="@id/iig" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/ilz" android:layout_alignParentLeft="true">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <GridView android:id="@id/imn" android:paddingLeft="10.0dip" android:scrollbars="none" android:fadingEdge="none" android:layout_width="1.0dip" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="10.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="36.0dip" android:numColumns="1" />
+                <ImageView android:id="@id/f8c" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/b9p" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <TextView android:textSize="@dimen/rj" android:textColor="@color/skin_gray2" android:id="@id/ilz" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0/0" android:layout_toLeftOf="@id/bo2" android:layout_centerVertical="true" />
+        <Button android:textSize="@dimen/rj" android:textColor="#ffa6a6a6" android:id="@id/bo1" android:background="@drawable/cgf" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <Button android:textSize="@dimen/rj" android:textColor="#ffffffff" android:id="@id/bo2" android:background="@drawable/b2z" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

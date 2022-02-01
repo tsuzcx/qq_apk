@@ -1,69 +1,32 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.enq;
+import com.tencent.mm.protocal.protobuf.enr;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/model/CgiEmojiRecommend;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "(Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
+  extends com.tencent.mm.am.b<enr>
 {
-  private static b exj;
-  public int clickCount;
-  public long exk;
-  public int exl;
-  public int exm;
-  public int exn;
-  public boolean exo;
-  public int exp;
-  public int scene;
+  private final enq mhA;
   
-  public static b Pa()
+  public b(enq paramenq)
   {
-    AppMethodBeat.i(151736);
-    if (exj == null) {
-      exj = new b();
-    }
-    b localb = exj;
-    AppMethodBeat.o(151736);
-    return localb;
-  }
-  
-  public final void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    int k = 1;
-    AppMethodBeat.i(151737);
-    long l1 = System.currentTimeMillis();
-    long l2 = this.exk;
-    h localh = h.qsU;
-    int m = this.scene;
-    int i;
-    int n;
-    int j;
-    if (paramBoolean)
-    {
-      i = 1;
-      n = this.exl;
-      if (!paramBoolean) {
-        break label181;
-      }
-      j = this.exp;
-      label53:
-      if (!this.exo) {
-        break label190;
-      }
-    }
-    for (;;)
-    {
-      localh.e(13470, new Object[] { paramString, Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(k), Integer.valueOf(this.exn), Integer.valueOf(this.clickCount), Long.valueOf(l1 - l2) });
-      this.clickCount += 1;
-      AppMethodBeat.o(151737);
-      return;
-      i = 0;
-      break;
-      label181:
-      j = this.exm;
-      break label53;
-      label190:
-      k = 0;
-    }
+    AppMethodBeat.i(242652);
+    this.mhA = paramenq;
+    paramenq = new enr();
+    c.a locala = new c.a();
+    locala.otE = ((a)this.mhA);
+    locala.otF = ((a)paramenq);
+    locala.uri = "/cgi-bin/micromsg-bin/mmrecommendpanelemoji";
+    locala.funcId = 3793;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    c(locala.bEF());
+    AppMethodBeat.o(242652);
   }
 }
 

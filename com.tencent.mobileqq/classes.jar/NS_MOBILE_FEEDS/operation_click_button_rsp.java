@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class operation_click_button_rsp
   extends JceStruct
 {
-  public int iRet;
+  public int iRet = 0;
   public String strButtonText = "";
   public String strJumpUrl = "";
   public String strToastText = "";
@@ -33,20 +33,23 @@ public final class operation_click_button_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRet, 0);
-    if (this.strButtonText != null) {
-      paramJceOutputStream.write(this.strButtonText, 1);
+    String str = this.strButtonText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 2);
+    str = this.strJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strToastText != null) {
-      paramJceOutputStream.write(this.strToastText, 3);
+    str = this.strToastText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.operation_click_button_rsp
  * JD-Core Version:    0.7.0.1
  */

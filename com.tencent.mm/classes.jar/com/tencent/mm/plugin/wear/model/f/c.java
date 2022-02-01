@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.g.a.vx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.autogen.a.adt;
+import com.tencent.mm.plugin.wear.model.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class c
   extends d
 {
   protected final void execute()
   {
-    if (com.tencent.mm.plugin.wear.model.a.cYy().uGC.cYD())
+    if (a.inI().inU())
     {
-      vx localvx = new vx();
-      localvx.cNm.coO = 11;
-      com.tencent.mm.sdk.b.a.ymk.l(localvx);
+      adt localadt = new adt();
+      localadt.iie.hAf = 11;
+      localadt.publish();
       send();
       return;
     }
-    ab.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
+    Log.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
   }
   
   protected abstract void send();

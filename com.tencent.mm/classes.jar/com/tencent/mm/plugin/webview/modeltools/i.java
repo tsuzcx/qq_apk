@@ -1,44 +1,29 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fr;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.autogen.b.is;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class i
-  extends fr
+  extends is
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(7021);
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "host";
-    locala.yrM.put("host", "TEXT");
-    localStringBuilder.append(" host TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "expireTime";
-    locala.yrM.put("expireTime", "LONG");
-    localStringBuilder.append(" expireTime LONG");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(7021);
+    AppMethodBeat.i(79202);
+    info = is.aJm();
+    AppMethodBeat.o(79202);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.i
  * JD-Core Version:    0.7.0.1
  */

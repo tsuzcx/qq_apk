@@ -9,59 +9,59 @@ import java.util.ArrayList;
 public final class a
   extends JceStruct
 {
-  static c Bjv;
-  static ArrayList<b> Bjw;
-  static d Bjx;
-  public c Bjs = null;
-  public ArrayList<b> Bjt = null;
-  public d Bju = null;
+  static c ahsO;
+  static ArrayList<b> ahsP;
+  static d ahsQ;
+  public c ahsL = null;
+  public ArrayList<b> ahsM = null;
+  public d ahsN = null;
   
   static
   {
-    AppMethodBeat.i(114490);
-    Bjv = new c();
-    Bjw = new ArrayList();
+    AppMethodBeat.i(138331);
+    ahsO = new c();
+    ahsP = new ArrayList();
     b localb = new b();
-    Bjw.add(localb);
-    Bjx = new d();
-    AppMethodBeat.o(114490);
+    ahsP.add(localb);
+    ahsQ = new d();
+    AppMethodBeat.o(138331);
   }
   
   public final JceStruct newInit()
   {
-    AppMethodBeat.i(114487);
+    AppMethodBeat.i(138328);
     a locala = new a();
-    AppMethodBeat.o(114487);
+    AppMethodBeat.o(138328);
     return locala;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114489);
-    this.Bjs = ((c)paramJceInputStream.read(Bjv, 0, false));
-    this.Bjt = ((ArrayList)paramJceInputStream.read(Bjw, 1, false));
-    this.Bju = ((d)paramJceInputStream.read(Bjx, 2, false));
-    AppMethodBeat.o(114489);
+    AppMethodBeat.i(138330);
+    this.ahsL = ((c)paramJceInputStream.read(ahsO, 0, false));
+    this.ahsM = ((ArrayList)paramJceInputStream.read(ahsP, 1, false));
+    this.ahsN = ((d)paramJceInputStream.read(ahsQ, 2, false));
+    AppMethodBeat.o(138330);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114488);
-    if (this.Bjs != null) {
-      paramJceOutputStream.write(this.Bjs, 0);
+    AppMethodBeat.i(138329);
+    if (this.ahsL != null) {
+      paramJceOutputStream.write(this.ahsL, 0);
     }
-    if (this.Bjt != null) {
-      paramJceOutputStream.write(this.Bjt, 1);
+    if (this.ahsM != null) {
+      paramJceOutputStream.write(this.ahsM, 1);
     }
-    if (this.Bju != null) {
-      paramJceOutputStream.write(this.Bju, 2);
+    if (this.ahsN != null) {
+      paramJceOutputStream.write(this.ahsN, 2);
     }
-    AppMethodBeat.o(114488);
+    AppMethodBeat.o(138329);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.c.b.a
  * JD-Core Version:    0.7.0.1
  */

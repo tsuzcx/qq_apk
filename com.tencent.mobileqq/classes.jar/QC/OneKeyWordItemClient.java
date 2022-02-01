@@ -8,10 +8,10 @@ public final class OneKeyWordItemClient
   extends JceStruct
 {
   public String sKeyWordContent = "";
-  public long uGroupNum;
-  public long uWordExpiredFlag;
-  public long uWordId;
-  public long uWordStatus;
+  public long uGroupNum = 0L;
+  public long uWordExpiredFlag = 0L;
+  public long uWordId = 0L;
+  public long uWordStatus = 0L;
   
   public OneKeyWordItemClient() {}
   
@@ -36,8 +36,9 @@ public final class OneKeyWordItemClient
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uWordId, 0);
-    if (this.sKeyWordContent != null) {
-      paramJceOutputStream.write(this.sKeyWordContent, 1);
+    String str = this.sKeyWordContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uGroupNum, 2);
     paramJceOutputStream.write(this.uWordExpiredFlag, 3);
@@ -46,7 +47,7 @@ public final class OneKeyWordItemClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.OneKeyWordItemClient
  * JD-Core Version:    0.7.0.1
  */

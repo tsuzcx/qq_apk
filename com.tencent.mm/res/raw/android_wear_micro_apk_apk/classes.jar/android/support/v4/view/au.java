@@ -4,11 +4,11 @@ import android.view.View;
 
 public abstract interface au
 {
-  public abstract void A(View paramView);
+  public abstract void D(View paramView);
   
-  public abstract void y(View paramView);
+  public abstract void E(View paramView);
   
-  public abstract void z(View paramView);
+  public abstract void F(View paramView);
 }
 
 

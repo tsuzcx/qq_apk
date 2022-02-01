@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="@dimen/bil"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center|top" android:orientation="horizontal" android:paddingLeft="@dimen/bii" android:paddingTop="@dimen/bii" android:paddingRight="@dimen/bii" android:layout_width="fill_parent" android:layout_height="@dimen/bil" style="?aa0">
+        <com.google.android.material.button.MaterialButton android:gravity="center" android:layout_gravity="top" android:id="@id/ms8" android:padding="12.0dip" android:layout_width="@dimen/bke" android:layout_height="@dimen/bke" android:insetTop="0.0dip" android:insetBottom="0.0dip" android:contentDescription="@string/xhm" app:icon="@drawable/e8o" app:rippleColor="@color/att" style="?a_x" />
+        <FrameLayout android:id="@id/os7" android:paddingLeft="@dimen/bin" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="start|bottom|center" android:layout_gravity="start|center|top" android:id="@id/osb" android:layout_width="fill_parent" android:layout_height="wrap_content" app:firstBaselineToTopHeight="@dimen/bj4" style="?aa2" />
+            <TextView android:gravity="start|bottom|center" android:layout_gravity="start|center|top" android:id="@id/os6" android:paddingBottom="@dimen/bix" android:layout_width="fill_parent" android:layout_height="wrap_content" app:firstBaselineToTopHeight="@dimen/biy" app:lineHeight="@dimen/bim" style="?aa1" />
+        </FrameLayout>
+        <LinearLayout android:orientation="@integer/ar" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton android:layout_gravity="end|center|top" android:id="@id/mz5" android:layout_width="wrap_content" android:layout_height="@dimen/bke" android:text="@string/xi3" android:contentDescription="@string/xi3" style="?a_y" />
+            <include layout="@layout/cos" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="@dimen/bij" style="?a_z" />
+</merge>

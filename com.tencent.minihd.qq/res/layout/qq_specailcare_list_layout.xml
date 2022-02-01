@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rl_content" android:background="@color/common_third_page_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/list_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp" android:listSelector="@android:color/transparent" android:divider="@null" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue" android:gravity="center" android:id="@id/fixed_add_btn" android:background="@drawable/profile_info_card_btns_bg" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="72.0dip" android:text="@string/qq_specail_care_add" android:singleLine="true" android:layout_alignParentBottom="true" android:contentDescription="@string/qq_specail_care_add" />
+</RelativeLayout>

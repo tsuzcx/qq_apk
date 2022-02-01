@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import aips;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class ChatActivityFacade$11
+final class ChatActivityFacade$11
   implements Runnable
 {
-  public ChatActivityFacade$11(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
+  ChatActivityFacade$11(String paramString, BaseSessionInfo paramBaseSessionInfo, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     try
     {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      aips.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      String str = this.a;
+      int i = this.b.a;
+      QQAppInterface localQQAppInterface = this.c;
+      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
       return;
     }
     catch (Exception localException) {}
@@ -24,7 +24,7 @@ public final class ChatActivityFacade$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/zv">
+        <TextView android:id="@id/b_r" android:text="@string/c2v" style="@style/a08" />
+        <LinearLayout style="@style/a0o">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/b_o" wallet:titleText="@string/c34" style="@style/zt" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/b_p" android:minHeight="45.0dip" wallet:titleText="@string/c35" style="@style/a0l" />
+        </LinearLayout>
+        <Button android:id="@id/b_q" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/a12" style="@style/a0k" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c9a" />
+</RelativeLayout>

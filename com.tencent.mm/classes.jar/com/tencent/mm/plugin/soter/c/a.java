@@ -3,41 +3,41 @@ package com.tencent.mm.plugin.soter.c;
 import android.app.Activity;
 import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.soter.d.j;
-import com.tencent.mm.plugin.soter.d.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.soter.model.g;
+import com.tencent.mm.plugin.soter.model.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 
 public enum a
 {
   static
   {
-    AppMethodBeat.i(73863);
-    snR = new a("IML");
-    snS = new a[] { snR };
-    AppMethodBeat.o(73863);
+    AppMethodBeat.i(145940);
+    RZB = new a("IML");
+    RZC = new a[] { RZB };
+    AppMethodBeat.o(145940);
   }
   
   private a() {}
   
-  public static c a(Activity paramActivity, j paramj, k paramk, Handler paramHandler)
+  public static c a(Activity paramActivity, g paramg, h paramh, Handler paramHandler)
   {
-    AppMethodBeat.i(73862);
-    if (((paramj.soo & 0x1) != 0) && (com.tencent.soter.core.a.jg(ah.getContext())))
+    AppMethodBeat.i(145939);
+    if (((paramg.RZZ & 0x1) != 0) && (com.tencent.soter.core.a.hC(MMApplicationContext.getContext())))
     {
-      paramActivity = new b(new WeakReference(paramActivity), paramj, paramk, paramHandler);
-      AppMethodBeat.o(73862);
+      paramActivity = new b(new WeakReference(paramActivity), paramg, paramh, paramHandler);
+      AppMethodBeat.o(145939);
       return paramActivity;
     }
-    ab.e("MicroMsg.SoterControllerFactory", "hy: no matching: %d", new Object[] { Byte.valueOf(paramj.soo) });
-    AppMethodBeat.o(73862);
+    Log.e("MicroMsg.SoterControllerFactory", "hy: no matching: %d", new Object[] { Byte.valueOf(paramg.RZZ) });
+    AppMethodBeat.o(145939);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.c.a
  * JD-Core Version:    0.7.0.1
  */

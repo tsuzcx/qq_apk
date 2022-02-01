@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,21 +17,21 @@ public final class s_reply
   static ArrayList<s_picdata> cache_replypic;
   static s_user cache_target;
   static s_user cache_user = new s_user();
-  public s_audio audio;
+  public s_audio audio = null;
   public String content = "";
-  public int date;
-  public int displayflag;
-  public Map<String, String> extendInfo;
-  public boolean isDeleted;
-  public int isliked;
-  public int likeNum;
-  public ArrayList<s_likeman> likemans;
+  public int date = 0;
+  public int displayflag = 0;
+  public Map<String, String> extendInfo = null;
+  public boolean isDeleted = false;
+  public int isliked = 0;
+  public int likeNum = 0;
+  public ArrayList<s_likeman> likemans = null;
   public String refer = "";
   public String replyLikeKey = "";
   public String replyid = "";
-  public ArrayList<s_picdata> replypic;
-  public s_user target;
-  public s_user user;
+  public ArrayList<s_picdata> replypic = null;
+  public s_user target = null;
+  public s_user user = null;
   
   static
   {
@@ -88,46 +89,56 @@ public final class s_reply
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.replyid != null) {
-      paramJceOutputStream.write(this.replyid, 0);
+    Object localObject = this.replyid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 1);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.date, 3);
-    if (this.refer != null) {
-      paramJceOutputStream.write(this.refer, 4);
+    localObject = this.refer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.audio != null) {
-      paramJceOutputStream.write(this.audio, 5);
+    localObject = this.audio;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.target != null) {
-      paramJceOutputStream.write(this.target, 6);
+    localObject = this.target;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.replypic != null) {
-      paramJceOutputStream.write(this.replypic, 7);
+    localObject = this.replypic;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
     paramJceOutputStream.write(this.isDeleted, 8);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 9);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
     paramJceOutputStream.write(this.displayflag, 10);
     paramJceOutputStream.write(this.likeNum, 11);
-    if (this.replyLikeKey != null) {
-      paramJceOutputStream.write(this.replyLikeKey, 12);
+    localObject = this.replyLikeKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.isliked, 13);
-    if (this.likemans != null) {
-      paramJceOutputStream.write(this.likemans, 14);
+    localObject = this.likemans;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_reply
  * JD-Core Version:    0.7.0.1
  */

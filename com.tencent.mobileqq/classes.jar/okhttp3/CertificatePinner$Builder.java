@@ -10,18 +10,23 @@ public final class CertificatePinner$Builder
   
   public Builder add(String paramString, String... paramVarArgs)
   {
-    if (paramString == null) {
-      throw new NullPointerException("pattern == null");
-    }
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    if (paramString != null)
     {
-      String str = paramVarArgs[i];
-      this.pins.add(new CertificatePinner.Pin(paramString, str));
-      i += 1;
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = paramVarArgs[i];
+        this.pins.add(new CertificatePinner.Pin(paramString, str));
+        i += 1;
+      }
+      return this;
     }
-    return this;
+    paramString = new NullPointerException("pattern == null");
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public CertificatePinner build()
@@ -31,7 +36,7 @@ public final class CertificatePinner$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.CertificatePinner.Builder
  * JD-Core Version:    0.7.0.1
  */

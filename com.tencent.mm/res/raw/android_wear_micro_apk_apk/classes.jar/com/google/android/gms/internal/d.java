@@ -17,56 +17,56 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class d
   implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2
 {
-  private static final d Mf = new d();
-  private final AtomicBoolean Mg = new AtomicBoolean();
-  private final AtomicBoolean Mh = new AtomicBoolean();
-  private boolean Mi = false;
-  private final ArrayList<e> zg = new ArrayList();
+  private static final d NU = new d();
+  private final ArrayList<e> AV = new ArrayList();
+  private final AtomicBoolean NV = new AtomicBoolean();
+  private final AtomicBoolean NW = new AtomicBoolean();
+  private boolean NX = false;
+  
+  private void A(boolean paramBoolean)
+  {
+    synchronized (NU)
+    {
+      Iterator localIterator = this.AV.iterator();
+      if (localIterator.hasNext()) {
+        ((e)localIterator.next()).A(paramBoolean);
+      }
+    }
+  }
   
   public static void a(Application paramApplication)
   {
-    synchronized (Mf)
+    synchronized (NU)
     {
-      if (!Mf.Mi)
+      if (!NU.NX)
       {
-        paramApplication.registerActivityLifecycleCallbacks(Mf);
-        paramApplication.registerComponentCallbacks(Mf);
-        Mf.Mi = true;
+        paramApplication.registerActivityLifecycleCallbacks(NU);
+        paramApplication.registerComponentCallbacks(NU);
+        NU.NX = true;
       }
       return;
     }
   }
   
-  public static d ic()
+  public static d ik()
   {
-    return Mf;
-  }
-  
-  private void x(boolean paramBoolean)
-  {
-    synchronized (Mf)
-    {
-      Iterator localIterator = this.zg.iterator();
-      if (localIterator.hasNext()) {
-        ((e)localIterator.next()).x(paramBoolean);
-      }
-    }
+    return NU;
   }
   
   public final void a(e parame)
   {
-    synchronized (Mf)
+    synchronized (NU)
     {
-      this.zg.add(parame);
+      this.AV.add(parame);
       return;
     }
   }
   
   @TargetApi(16)
-  public final boolean id()
+  public final boolean il()
   {
     boolean bool = true;
-    if (!this.Mh.get()) {
+    if (!this.NW.get()) {
       if (Build.VERSION.SDK_INT < 16) {
         break label76;
       }
@@ -78,10 +78,10 @@ public final class d
       {
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
         ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
-        if ((!this.Mh.getAndSet(true)) && (localRunningAppProcessInfo.importance > 100)) {
-          this.Mg.set(true);
+        if ((!this.NW.getAndSet(true)) && (localRunningAppProcessInfo.importance > 100)) {
+          this.NV.set(true);
         }
-        bool = this.Mg.get();
+        bool = this.NV.get();
       }
       return bool;
     }
@@ -89,10 +89,10 @@ public final class d
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    boolean bool = this.Mg.compareAndSet(true, false);
-    this.Mh.set(true);
+    boolean bool = this.NV.compareAndSet(true, false);
+    this.NW.set(true);
     if (bool) {
-      x(false);
+      A(false);
     }
   }
   
@@ -102,10 +102,10 @@ public final class d
   
   public final void onActivityResumed(Activity paramActivity)
   {
-    boolean bool = this.Mg.compareAndSet(true, false);
-    this.Mh.set(true);
+    boolean bool = this.NV.compareAndSet(true, false);
+    this.NW.set(true);
     if (bool) {
-      x(false);
+      A(false);
     }
   }
   
@@ -121,10 +121,10 @@ public final class d
   
   public final void onTrimMemory(int paramInt)
   {
-    if ((paramInt == 20) && (this.Mg.compareAndSet(false, true)))
+    if ((paramInt == 20) && (this.NV.compareAndSet(false, true)))
     {
-      this.Mh.set(true);
-      x(true);
+      this.NW.set(true);
+      A(true);
     }
   }
 }

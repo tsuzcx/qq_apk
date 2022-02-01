@@ -16,10 +16,11 @@ class IjkMediaFormat$9
     if (i <= 0) {
       return null;
     }
-    if (i == 4L) {
+    long l = i;
+    if (l == 4L) {
       return "mono";
     }
-    if (i == 3L) {
+    if (l == 3L) {
       return "stereo";
     }
     return String.format(Locale.US, "%x", new Object[] { Integer.valueOf(i) });
@@ -27,7 +28,7 @@ class IjkMediaFormat$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.misc.IjkMediaFormat.9
  * JD-Core Version:    0.7.0.1
  */

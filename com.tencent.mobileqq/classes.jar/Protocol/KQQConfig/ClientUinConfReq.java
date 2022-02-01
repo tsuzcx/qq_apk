@@ -9,9 +9,9 @@ public final class ClientUinConfReq
 {
   static ClientGetUinConfReq cache_clientGetUinConfReq;
   static ClientSetUinConfReq cache_clientSetUinConfReq;
-  public ClientGetUinConfReq clientGetUinConfReq;
-  public ClientSetUinConfReq clientSetUinConfReq;
-  public int iUinCmdType;
+  public ClientGetUinConfReq clientGetUinConfReq = null;
+  public ClientSetUinConfReq clientSetUinConfReq = null;
+  public int iUinCmdType = 0;
   
   public ClientUinConfReq() {}
   
@@ -38,17 +38,19 @@ public final class ClientUinConfReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUinCmdType, 1);
-    if (this.clientSetUinConfReq != null) {
-      paramJceOutputStream.write(this.clientSetUinConfReq, 3);
+    Object localObject = this.clientSetUinConfReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.clientGetUinConfReq != null) {
-      paramJceOutputStream.write(this.clientGetUinConfReq, 4);
+    localObject = this.clientGetUinConfReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.ClientUinConfReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import aebu;
 import mqq.os.MqqHandler;
 
-public class TroopAssistantActivity$11$3
+class TroopAssistantActivity$11$3
   implements Runnable
 {
-  public TroopAssistantActivity$11$3(aebu paramaebu) {}
+  TroopAssistantActivity$11$3(TroopAssistantActivity.11 param11) {}
   
   public void run()
   {
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
+    this.a.a.I.removeMessages(1);
+    this.a.a.I.removeMessages(1);
+    this.a.a.I.sendEmptyMessageDelayed(1, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.11.3
  * JD-Core Version:    0.7.0.1
  */

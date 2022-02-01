@@ -29,7 +29,11 @@ class Android10Platform
         return localAndroid10Platform;
       }
     }
-    catch (ClassNotFoundException localClassNotFoundException) {}
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label23:
+      break label23;
+    }
     return null;
   }
   
@@ -54,22 +58,16 @@ class Android10Platform
   @IgnoreJRERequirement
   public String getSelectedProtocol(SSLSocket paramSSLSocket)
   {
-    String str = paramSSLSocket.getApplicationProtocol();
-    if (str != null)
-    {
-      paramSSLSocket = str;
-      if (!str.isEmpty()) {}
+    paramSSLSocket = paramSSLSocket.getApplicationProtocol();
+    if ((paramSSLSocket != null) && (!paramSSLSocket.isEmpty())) {
+      return paramSSLSocket;
     }
-    else
-    {
-      paramSSLSocket = null;
-    }
-    return paramSSLSocket;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.platform.Android10Platform
  * JD-Core Version:    0.7.0.1
  */

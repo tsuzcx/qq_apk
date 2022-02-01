@@ -3,16 +3,20 @@ package com.tencent.token.ui.base;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
+import com.tencent.token.aaz;
+import com.tencent.token.ui.FaceRecognitionDefaultActivity;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.x;
 
 public class CopyFaceDialog
   extends Dialog
@@ -21,9 +25,9 @@ public class CopyFaceDialog
   private TextView b;
   private Context c;
   
-  public CopyFaceDialog(Context paramContext, int paramInt, String paramString)
+  public CopyFaceDialog(Context paramContext, String paramString)
   {
-    super(paramContext, paramInt);
+    super(paramContext, 2131558791);
     this.a = paramString;
     this.c = paramContext;
   }
@@ -31,15 +35,28 @@ public class CopyFaceDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968630);
+    setContentView(2131296313);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 46.0F * IndexActivity.S_DENSITY));
+    localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.b = ((TextView)findViewById(2131558759));
-    paramBundle = this.a + this.c.getResources().getString(2131230984);
-    this.b.setText(x.a(paramBundle, this.c.getResources().getDimension(2131296399), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 80.0F * IndexActivity.S_DENSITY)));
-    ((Button)findViewById(2131558760)).setOnClickListener(new f(this));
+    this.b = ((TextView)findViewById(2131165427));
+    paramBundle = new StringBuilder();
+    paramBundle.append(this.a);
+    paramBundle.append(this.c.getResources().getString(2131493129));
+    paramBundle = paramBundle.toString();
+    this.b.setText(aaz.a(paramBundle, this.c.getResources().getDimension(2131034250), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
+    ((Button)findViewById(2131165357)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        CopyFaceDialog.this.dismiss();
+        paramAnonymousView = new Intent(CopyFaceDialog.a(CopyFaceDialog.this), FaceRecognitionDefaultActivity.class);
+        paramAnonymousView.addFlags(67108864);
+        CopyFaceDialog.a(CopyFaceDialog.this).startActivity(paramAnonymousView);
+        ((Activity)CopyFaceDialog.a(CopyFaceDialog.this)).finish();
+      }
+    });
   }
 }
 

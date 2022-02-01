@@ -7,12 +7,12 @@ class DropdownView$2
   
   public void run()
   {
-    this.this$0.a = false;
+    this.this$0.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DropdownView.2
  * JD-Core Version:    0.7.0.1
  */

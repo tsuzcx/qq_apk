@@ -13,9 +13,9 @@ import com.tencent.hlyyb.common.b.b;
 public final class a
 {
   public static String a = "";
-  private static Context b = null;
+  private static Context b;
   private static String c;
-  private static long d;
+  private static long d = 0L;
   private static int e = 0;
   private static String f = "3.4.0.16";
   private static Handler g;
@@ -104,7 +104,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.common.a
  * JD-Core Version:    0.7.0.1
  */

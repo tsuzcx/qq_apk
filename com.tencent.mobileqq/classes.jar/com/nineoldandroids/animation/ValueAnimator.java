@@ -75,15 +75,18 @@ public class ValueAnimator
       this.mStartedDelay = true;
       this.mDelayStartTime = paramLong;
     }
-    long l;
-    do
+    else
     {
-      return false;
-      l = paramLong - this.mDelayStartTime;
-    } while (l <= this.mStartDelay);
-    this.mStartTime = (paramLong - (l - this.mStartDelay));
-    this.mPlayingState = 1;
-    return true;
+      long l1 = paramLong - this.mDelayStartTime;
+      long l2 = this.mStartDelay;
+      if (l1 > l2)
+      {
+        this.mStartTime = (paramLong - (l1 - l2));
+        this.mPlayingState = 1;
+        return true;
+      }
+    }
+    return false;
   }
   
   private void endAnimation()
@@ -92,26 +95,19 @@ public class ValueAnimator
     ((ArrayList)sPendingAnimations.get()).remove(this);
     ((ArrayList)sDelayedAnims.get()).remove(this);
     this.mPlayingState = 0;
-    ArrayList localArrayList;
-    int j;
-    int i;
     if ((this.mRunning) && (this.mListeners != null))
     {
-      localArrayList = (ArrayList)this.mListeners.clone();
-      j = localArrayList.size();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j)
+      ArrayList localArrayList = (ArrayList)this.mListeners.clone();
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
       {
-        this.mRunning = false;
-        this.mStarted = false;
-        return;
+        ((Animator.AnimatorListener)localArrayList.get(i)).onAnimationEnd(this);
+        i += 1;
       }
-      ((Animator.AnimatorListener)localArrayList.get(i)).onAnimationEnd(this);
-      i += 1;
     }
+    this.mRunning = false;
+    this.mStarted = false;
   }
   
   public static int getCurrentAnimationsCount()
@@ -160,46 +156,45 @@ public class ValueAnimator
   
   private void start(boolean paramBoolean)
   {
-    if (Looper.myLooper() == null) {
-      throw new AndroidRuntimeException("Animators may only be run on Looper threads");
-    }
-    this.mPlayingBackwards = paramBoolean;
-    this.mCurrentIteration = 0;
-    this.mPlayingState = 0;
-    this.mStarted = true;
-    this.mStartedDelay = false;
-    ((ArrayList)sPendingAnimations.get()).add(this);
-    Object localObject;
-    int j;
-    int i;
-    if (this.mStartDelay == 0L)
+    if (Looper.myLooper() != null)
     {
-      setCurrentPlayTime(getCurrentPlayTime());
+      this.mPlayingBackwards = paramBoolean;
+      this.mCurrentIteration = 0;
       this.mPlayingState = 0;
-      this.mRunning = true;
-      if (this.mListeners != null)
+      this.mStarted = true;
+      this.mStartedDelay = false;
+      ((ArrayList)sPendingAnimations.get()).add(this);
+      if (this.mStartDelay == 0L)
       {
-        localObject = (ArrayList)this.mListeners.clone();
-        j = ((ArrayList)localObject).size();
-        i = 0;
+        setCurrentPlayTime(getCurrentPlayTime());
+        this.mPlayingState = 0;
+        this.mRunning = true;
+        if (this.mListeners != null)
+        {
+          localObject = (ArrayList)this.mListeners.clone();
+          int j = ((ArrayList)localObject).size();
+          int i = 0;
+          while (i < j)
+          {
+            ((Animator.AnimatorListener)((ArrayList)localObject).get(i)).onAnimationStart(this);
+            i += 1;
+          }
+        }
       }
+      ValueAnimator.AnimationHandler localAnimationHandler = (ValueAnimator.AnimationHandler)sAnimationHandler.get();
+      localObject = localAnimationHandler;
+      if (localAnimationHandler == null)
+      {
+        localObject = new ValueAnimator.AnimationHandler(null);
+        sAnimationHandler.set(localObject);
+      }
+      ((ValueAnimator.AnimationHandler)localObject).sendEmptyMessage(0);
+      return;
     }
+    Object localObject = new AndroidRuntimeException("Animators may only be run on Looper threads");
     for (;;)
     {
-      if (i >= j)
-      {
-        ValueAnimator.AnimationHandler localAnimationHandler = (ValueAnimator.AnimationHandler)sAnimationHandler.get();
-        localObject = localAnimationHandler;
-        if (localAnimationHandler == null)
-        {
-          localObject = new ValueAnimator.AnimationHandler(null);
-          sAnimationHandler.set(localObject);
-        }
-        ((ValueAnimator.AnimationHandler)localObject).sendEmptyMessage(0);
-        return;
-      }
-      ((Animator.AnimatorListener)((ArrayList)localObject).get(i)).onAnimationStart(this);
-      i += 1;
+      throw ((Throwable)localObject);
     }
   }
   
@@ -207,22 +202,19 @@ public class ValueAnimator
   {
     initAnimation();
     ((ArrayList)sAnimations.get()).add(this);
-    ArrayList localArrayList;
-    int j;
-    int i;
     if ((this.mStartDelay > 0L) && (this.mListeners != null))
     {
-      localArrayList = (ArrayList)this.mListeners.clone();
-      j = localArrayList.size();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j) {
-        return;
+      ArrayList localArrayList = (ArrayList)this.mListeners.clone();
+      int j = localArrayList.size();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          return;
+        }
+        ((Animator.AnimatorListener)localArrayList.get(i)).onAnimationStart(this);
+        i += 1;
       }
-      ((Animator.AnimatorListener)localArrayList.get(i)).onAnimationStart(this);
-      i += 1;
     }
   }
   
@@ -238,176 +230,159 @@ public class ValueAnimator
   {
     paramFloat = this.mInterpolator.getInterpolation(paramFloat);
     this.mCurrentFraction = paramFloat;
-    int j = this.mValues.length;
+    int k = this.mValues.length;
+    int j = 0;
     int i = 0;
-    if (i >= j) {
-      if (this.mUpdateListeners != null)
-      {
-        j = this.mUpdateListeners.size();
-        i = 0;
-      }
-    }
     for (;;)
     {
-      if (i >= j)
+      if (i >= k)
       {
+        ArrayList localArrayList = this.mUpdateListeners;
+        if (localArrayList != null)
+        {
+          k = localArrayList.size();
+          i = j;
+          for (;;)
+          {
+            if (i >= k) {
+              return;
+            }
+            ((ValueAnimator.AnimatorUpdateListener)this.mUpdateListeners.get(i)).onAnimationUpdate(this);
+            i += 1;
+          }
+        }
         return;
-        this.mValues[i].calculateValue(paramFloat);
-        i += 1;
-        break;
       }
-      ((ValueAnimator.AnimatorUpdateListener)this.mUpdateListeners.get(i)).onAnimationUpdate(this);
+      this.mValues[i].calculateValue(paramFloat);
       i += 1;
     }
   }
   
   boolean animationFrame(long paramLong)
   {
-    boolean bool2 = false;
     if (this.mPlayingState == 0)
     {
       this.mPlayingState = 1;
-      if (this.mSeekTime >= 0L) {
-        break label58;
-      }
-      this.mStartTime = paramLong;
-    }
-    for (;;)
-    {
-      switch (this.mPlayingState)
+      l = this.mSeekTime;
+      if (l < 0L)
       {
-      default: 
-        return false;
-        label58:
-        this.mStartTime = (paramLong - this.mSeekTime);
+        this.mStartTime = paramLong;
+      }
+      else
+      {
+        this.mStartTime = (paramLong - l);
         this.mSeekTime = -1L;
       }
     }
-    float f1;
-    int i;
-    label145:
-    boolean bool1;
-    if (this.mDuration > 0L)
-    {
-      f1 = (float)(paramLong - this.mStartTime) / (float)this.mDuration;
-      if (f1 < 1.0F) {
-        break label282;
-      }
-      if ((this.mCurrentIteration >= this.mRepeatCount) && (this.mRepeatCount != -1)) {
-        break label270;
-      }
-      if (this.mListeners != null)
-      {
-        int j = this.mListeners.size();
-        i = 0;
-        if (i < j) {
-          break label237;
-        }
-      }
-      if (this.mRepeatMode == 2)
-      {
-        if (!this.mPlayingBackwards) {
-          break label264;
-        }
-        bool1 = false;
-        label170:
-        this.mPlayingBackwards = bool1;
-      }
-      this.mCurrentIteration += (int)f1;
-      f1 %= 1.0F;
-      this.mStartTime += this.mDuration;
-      bool1 = bool2;
+    int i = this.mPlayingState;
+    boolean bool2 = false;
+    if ((i != 1) && (i != 2)) {
+      return false;
     }
-    for (;;)
-    {
-      float f2 = f1;
-      if (this.mPlayingBackwards) {
-        f2 = 1.0F - f1;
-      }
-      animateValue(f2);
-      return bool1;
-      f1 = 1.0F;
-      break;
-      label237:
-      ((Animator.AnimatorListener)this.mListeners.get(i)).onAnimationRepeat(this);
-      i += 1;
-      break label145;
-      label264:
-      bool1 = true;
-      break label170;
-      label270:
-      f1 = Math.min(f1, 1.0F);
-      bool1 = true;
-      continue;
-      label282:
-      bool1 = bool2;
+    long l = this.mDuration;
+    if (l > 0L) {
+      f2 = (float)(paramLong - this.mStartTime) / (float)l;
+    } else {
+      f2 = 1.0F;
     }
+    boolean bool1 = bool2;
+    float f1 = f2;
+    if (f2 >= 1.0F)
+    {
+      i = this.mCurrentIteration;
+      int j = this.mRepeatCount;
+      if ((i >= j) && (j != -1))
+      {
+        f1 = Math.min(f2, 1.0F);
+        bool1 = true;
+      }
+      else
+      {
+        if (this.mListeners != null)
+        {
+          j = this.mListeners.size();
+          i = 0;
+          while (i < j)
+          {
+            ((Animator.AnimatorListener)this.mListeners.get(i)).onAnimationRepeat(this);
+            i += 1;
+          }
+        }
+        if (this.mRepeatMode == 2) {
+          this.mPlayingBackwards ^= true;
+        }
+        this.mCurrentIteration += (int)f2;
+        f1 = f2 % 1.0F;
+        this.mStartTime += this.mDuration;
+        bool1 = bool2;
+      }
+    }
+    float f2 = f1;
+    if (this.mPlayingBackwards) {
+      f2 = 1.0F - f1;
+    }
+    animateValue(f2);
+    return bool1;
   }
   
   public void cancel()
   {
-    Iterator localIterator;
-    if ((this.mPlayingState != 0) || (((ArrayList)sPendingAnimations.get()).contains(this)) || (((ArrayList)sDelayedAnims.get()).contains(this))) {
-      if ((this.mRunning) && (this.mListeners != null)) {
-        localIterator = ((ArrayList)this.mListeners.clone()).iterator();
-      }
-    }
-    for (;;)
+    if ((this.mPlayingState != 0) || (((ArrayList)sPendingAnimations.get()).contains(this)) || (((ArrayList)sDelayedAnims.get()).contains(this)))
     {
-      if (!localIterator.hasNext())
+      if ((this.mRunning) && (this.mListeners != null))
       {
-        endAnimation();
-        return;
+        Iterator localIterator = ((ArrayList)this.mListeners.clone()).iterator();
+        while (localIterator.hasNext()) {
+          ((Animator.AnimatorListener)localIterator.next()).onAnimationCancel(this);
+        }
       }
-      ((Animator.AnimatorListener)localIterator.next()).onAnimationCancel(this);
+      endAnimation();
     }
   }
   
   public ValueAnimator clone()
   {
     ValueAnimator localValueAnimator = (ValueAnimator)super.clone();
-    Object localObject;
-    int j;
+    Object localObject = this.mUpdateListeners;
+    int j = 0;
+    int k;
     int i;
-    if (this.mUpdateListeners != null)
+    if (localObject != null)
     {
-      localObject = this.mUpdateListeners;
       localValueAnimator.mUpdateListeners = new ArrayList();
-      j = ((ArrayList)localObject).size();
+      k = ((ArrayList)localObject).size();
       i = 0;
-      if (i < j) {}
-    }
-    else
-    {
-      localValueAnimator.mSeekTime = -1L;
-      localValueAnimator.mPlayingBackwards = false;
-      localValueAnimator.mCurrentIteration = 0;
-      localValueAnimator.mInitialized = false;
-      localValueAnimator.mPlayingState = 0;
-      localValueAnimator.mStartedDelay = false;
-      localObject = this.mValues;
-      if (localObject != null)
+      while (i < k)
       {
-        j = localObject.length;
-        localValueAnimator.mValues = new PropertyValuesHolder[j];
-        localValueAnimator.mValuesMap = new HashMap(j);
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i >= j)
-      {
-        return localValueAnimator;
         localValueAnimator.mUpdateListeners.add((ValueAnimator.AnimatorUpdateListener)((ArrayList)localObject).get(i));
         i += 1;
-        break;
       }
-      PropertyValuesHolder localPropertyValuesHolder = localObject[i].clone();
-      localValueAnimator.mValues[i] = localPropertyValuesHolder;
-      localValueAnimator.mValuesMap.put(localPropertyValuesHolder.getPropertyName(), localPropertyValuesHolder);
-      i += 1;
     }
+    localValueAnimator.mSeekTime = -1L;
+    localValueAnimator.mPlayingBackwards = false;
+    localValueAnimator.mCurrentIteration = 0;
+    localValueAnimator.mInitialized = false;
+    localValueAnimator.mPlayingState = 0;
+    localValueAnimator.mStartedDelay = false;
+    localObject = this.mValues;
+    if (localObject != null)
+    {
+      k = localObject.length;
+      localValueAnimator.mValues = new PropertyValuesHolder[k];
+      localValueAnimator.mValuesMap = new HashMap(k);
+      i = j;
+      for (;;)
+      {
+        if (i >= k) {
+          return localValueAnimator;
+        }
+        PropertyValuesHolder localPropertyValuesHolder = localObject[i].clone();
+        localValueAnimator.mValues[i] = localPropertyValuesHolder;
+        localValueAnimator.mValuesMap.put(localPropertyValuesHolder.getPropertyName(), localPropertyValuesHolder);
+        i += 1;
+      }
+    }
+    return localValueAnimator;
   }
   
   public void end()
@@ -416,23 +391,18 @@ public class ValueAnimator
     {
       this.mStartedDelay = false;
       startAnimation();
-      if ((this.mRepeatCount <= 0) || ((this.mRepeatCount & 0x1) != 1)) {
-        break label82;
-      }
-      animateValue(0.0F);
     }
-    for (;;)
+    else if (!this.mInitialized)
     {
-      endAnimation();
-      return;
-      if (this.mInitialized) {
-        break;
-      }
       initAnimation();
-      break;
-      label82:
+    }
+    int i = this.mRepeatCount;
+    if ((i > 0) && ((i & 0x1) == 1)) {
+      animateValue(0.0F);
+    } else {
       animateValue(1.0F);
     }
+    endAnimation();
   }
   
   public float getAnimatedFraction()
@@ -442,8 +412,9 @@ public class ValueAnimator
   
   public Object getAnimatedValue()
   {
-    if ((this.mValues != null) && (this.mValues.length > 0)) {
-      return this.mValues[0].getAnimatedValue();
+    PropertyValuesHolder[] arrayOfPropertyValuesHolder = this.mValues;
+    if ((arrayOfPropertyValuesHolder != null) && (arrayOfPropertyValuesHolder.length > 0)) {
+      return arrayOfPropertyValuesHolder[0].getAnimatedValue();
     }
     return null;
   }
@@ -459,10 +430,10 @@ public class ValueAnimator
   
   public long getCurrentPlayTime()
   {
-    if ((!this.mInitialized) || (this.mPlayingState == 0)) {
-      return 0L;
+    if ((this.mInitialized) && (this.mPlayingState != 0)) {
+      return AnimationUtils.currentAnimationTimeMillis() - this.mStartTime;
     }
-    return AnimationUtils.currentAnimationTimeMillis() - this.mStartTime;
+    return 0L;
   }
   
   public long getDuration()
@@ -497,37 +468,26 @@ public class ValueAnimator
   
   void initAnimation()
   {
-    int j;
-    int i;
     if (!this.mInitialized)
     {
-      j = this.mValues.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j)
+      int j = this.mValues.length;
+      int i = 0;
+      for (;;)
       {
-        this.mInitialized = true;
-        return;
+        if (i >= j)
+        {
+          this.mInitialized = true;
+          return;
+        }
+        this.mValues[i].init();
+        i += 1;
       }
-      this.mValues[i].init();
-      i += 1;
     }
   }
   
   public boolean isRunning()
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.mPlayingState != 1)
-    {
-      bool1 = bool2;
-      if (!this.mRunning) {
-        bool1 = false;
-      }
-    }
-    return bool1;
+    return (this.mPlayingState == 1) || (this.mRunning);
   }
   
   public boolean isStarted()
@@ -537,33 +497,31 @@ public class ValueAnimator
   
   public void removeAllUpdateListeners()
   {
-    if (this.mUpdateListeners == null) {
+    ArrayList localArrayList = this.mUpdateListeners;
+    if (localArrayList == null) {
       return;
     }
-    this.mUpdateListeners.clear();
+    localArrayList.clear();
     this.mUpdateListeners = null;
   }
   
   public void removeUpdateListener(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
-    if (this.mUpdateListeners == null) {}
-    do
-    {
+    ArrayList localArrayList = this.mUpdateListeners;
+    if (localArrayList == null) {
       return;
-      this.mUpdateListeners.remove(paramAnimatorUpdateListener);
-    } while (this.mUpdateListeners.size() != 0);
-    this.mUpdateListeners = null;
+    }
+    localArrayList.remove(paramAnimatorUpdateListener);
+    if (this.mUpdateListeners.size() == 0) {
+      this.mUpdateListeners = null;
+    }
   }
   
   public void reverse()
   {
-    if (this.mPlayingBackwards) {}
-    for (boolean bool = false;; bool = true)
+    this.mPlayingBackwards ^= true;
+    if (this.mPlayingState == 1)
     {
-      this.mPlayingBackwards = bool;
-      if (this.mPlayingState != 1) {
-        break;
-      }
       long l1 = AnimationUtils.currentAnimationTimeMillis();
       long l2 = this.mStartTime;
       this.mStartTime = (l1 - (this.mDuration - (l1 - l2)));
@@ -587,49 +545,58 @@ public class ValueAnimator
   
   public ValueAnimator setDuration(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("Animators cannot have negative duration: " + paramLong);
+    if (paramLong >= 0L)
+    {
+      this.mDuration = paramLong;
+      return this;
     }
-    this.mDuration = paramLong;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder("Animators cannot have negative duration: ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setEvaluator(TypeEvaluator paramTypeEvaluator)
   {
-    if ((paramTypeEvaluator != null) && (this.mValues != null) && (this.mValues.length > 0)) {
-      this.mValues[0].setEvaluator(paramTypeEvaluator);
+    if (paramTypeEvaluator != null)
+    {
+      PropertyValuesHolder[] arrayOfPropertyValuesHolder = this.mValues;
+      if ((arrayOfPropertyValuesHolder != null) && (arrayOfPropertyValuesHolder.length > 0)) {
+        arrayOfPropertyValuesHolder[0].setEvaluator(paramTypeEvaluator);
+      }
     }
   }
   
   public void setFloatValues(float... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return;
-    }
-    if ((this.mValues == null) || (this.mValues.length == 0)) {
-      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("", paramVarArgs) });
-    }
-    for (;;)
+    if (paramVarArgs != null)
     {
+      if (paramVarArgs.length == 0) {
+        return;
+      }
+      PropertyValuesHolder[] arrayOfPropertyValuesHolder = this.mValues;
+      if ((arrayOfPropertyValuesHolder != null) && (arrayOfPropertyValuesHolder.length != 0)) {
+        arrayOfPropertyValuesHolder[0].setFloatValues(paramVarArgs);
+      } else {
+        setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("", paramVarArgs) });
+      }
       this.mInitialized = false;
-      return;
-      this.mValues[0].setFloatValues(paramVarArgs);
     }
   }
   
   public void setIntValues(int... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return;
-    }
-    if ((this.mValues == null) || (this.mValues.length == 0)) {
-      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("", paramVarArgs) });
-    }
-    for (;;)
+    if (paramVarArgs != null)
     {
+      if (paramVarArgs.length == 0) {
+        return;
+      }
+      PropertyValuesHolder[] arrayOfPropertyValuesHolder = this.mValues;
+      if ((arrayOfPropertyValuesHolder != null) && (arrayOfPropertyValuesHolder.length != 0)) {
+        arrayOfPropertyValuesHolder[0].setIntValues(paramVarArgs);
+      } else {
+        setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("", paramVarArgs) });
+      }
       this.mInitialized = false;
-      return;
-      this.mValues[0].setIntValues(paramVarArgs);
     }
   }
   
@@ -645,17 +612,18 @@ public class ValueAnimator
   
   public void setObjectValues(Object... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return;
-    }
-    if ((this.mValues == null) || (this.mValues.length == 0)) {
-      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("", null, paramVarArgs) });
-    }
-    for (;;)
+    if (paramVarArgs != null)
     {
+      if (paramVarArgs.length == 0) {
+        return;
+      }
+      PropertyValuesHolder[] arrayOfPropertyValuesHolder = this.mValues;
+      if ((arrayOfPropertyValuesHolder != null) && (arrayOfPropertyValuesHolder.length != 0)) {
+        arrayOfPropertyValuesHolder[0].setObjectValues(paramVarArgs);
+      } else {
+        setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("", null, paramVarArgs) });
+      }
       this.mInitialized = false;
-      return;
-      this.mValues[0].setObjectValues(paramVarArgs);
     }
   }
   
@@ -700,27 +668,30 @@ public class ValueAnimator
   
   public String toString()
   {
-    String str1 = "ValueAnimator@" + Integer.toHexString(hashCode());
-    String str2 = str1;
-    int i;
-    if (this.mValues != null) {
-      i = 0;
-    }
-    for (;;)
+    Object localObject = new StringBuilder("ValueAnimator@");
+    ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
+    localObject = ((StringBuilder)localObject).toString();
+    if (this.mValues != null)
     {
-      if (i >= this.mValues.length)
+      int i = 0;
+      for (;;)
       {
-        str2 = str1;
-        return str2;
+        if (i >= this.mValues.length) {
+          return localObject;
+        }
+        localObject = new StringBuilder(String.valueOf(localObject));
+        ((StringBuilder)localObject).append("\n    ");
+        ((StringBuilder)localObject).append(this.mValues[i].toString());
+        localObject = ((StringBuilder)localObject).toString();
+        i += 1;
       }
-      str1 = str1 + "\n    " + this.mValues[i].toString();
-      i += 1;
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.nineoldandroids.animation.ValueAnimator
  * JD-Core Version:    0.7.0.1
  */

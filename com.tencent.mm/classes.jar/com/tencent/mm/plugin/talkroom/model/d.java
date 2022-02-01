@@ -1,201 +1,198 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.n.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cjn;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.fly;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public final class d
-  implements com.tencent.mm.ai.e
+  implements com.tencent.mm.am.g
 {
-  private static int aea(String paramString)
+  private static int bdg(String paramString)
   {
     int j = 0;
-    AppMethodBeat.i(25775);
+    AppMethodBeat.i(29457);
     int i = j;
-    if (!bo.isNullOrNil(paramString)) {}
+    if (!Util.isNullOrNil(paramString)) {}
     try
     {
       i = Integer.valueOf(paramString).intValue();
-      AppMethodBeat.o(25775);
+      AppMethodBeat.o(29457);
       return i;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.TalkRoomExtension", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.TalkRoomExtension", paramString, "", new Object[0]);
         i = j;
       }
     }
   }
   
-  private static String ce(List<cjn> paramList)
+  private static String iK(List<fly> paramList)
   {
-    AppMethodBeat.i(25776);
-    List localList = b.cHs().bLy();
+    AppMethodBeat.i(29458);
+    List localList = b.hCo().fUJ();
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     label187:
     for (;;)
     {
-      cjn localcjn;
+      fly localfly;
       if (paramList.hasNext())
       {
-        localcjn = (cjn)paramList.next();
+        localfly = (fly)paramList.next();
         Iterator localIterator = localList.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((cjn)localIterator.next()).jJA.equals(localcjn.jJA));
+        } while (!((fly)localIterator.next()).UserName.equals(localfly.UserName));
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label187;
         }
-        localLinkedList.add(localcjn.jJA);
+        localLinkedList.add(localfly.UserName);
         break;
         if (localLinkedList.isEmpty())
         {
-          AppMethodBeat.o(25776);
+          AppMethodBeat.o(29458);
           return null;
         }
         i = 0;
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(r.Zn()))
+          if (!paramList.equals(z.bAM()))
           {
-            AppMethodBeat.o(25776);
+            AppMethodBeat.o(29458);
             return paramList;
           }
           i += 1;
         }
-        AppMethodBeat.o(25776);
+        AppMethodBeat.o(29458);
         return null;
       }
     }
   }
   
-  private static String cf(List<cjn> paramList)
+  private static String iL(List<fly> paramList)
   {
-    AppMethodBeat.i(25777);
-    Object localObject = b.cHs().bLy();
+    AppMethodBeat.i(29459);
+    Object localObject = b.hCo().fUJ();
     LinkedList localLinkedList = new LinkedList();
     localObject = ((List)localObject).iterator();
     label187:
     for (;;)
     {
-      cjn localcjn;
+      fly localfly;
       if (((Iterator)localObject).hasNext())
       {
-        localcjn = (cjn)((Iterator)localObject).next();
+        localfly = (fly)((Iterator)localObject).next();
         Iterator localIterator = paramList.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((cjn)localIterator.next()).jJA.equals(localcjn.jJA));
+        } while (!((fly)localIterator.next()).UserName.equals(localfly.UserName));
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label187;
         }
-        localLinkedList.add(localcjn.jJA);
+        localLinkedList.add(localfly.UserName);
         break;
         if (localLinkedList.isEmpty())
         {
-          AppMethodBeat.o(25777);
+          AppMethodBeat.o(29459);
           return null;
         }
         i = 0;
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(r.Zn()))
+          if (!paramList.equals(z.bAM()))
           {
-            AppMethodBeat.o(25777);
+            AppMethodBeat.o(29459);
             return paramList;
           }
           i += 1;
         }
-        AppMethodBeat.o(25777);
+        AppMethodBeat.o(29459);
         return null;
       }
     }
   }
   
-  public final void a(e.c paramc) {}
-  
-  public final e.b b(e.a parama)
+  public final g.b b(g.a parama)
   {
     int k = 1;
-    AppMethodBeat.i(25774);
-    Object localObject2 = parama.eyJ;
+    AppMethodBeat.i(29456);
+    Object localObject2 = parama.mpN;
     if (localObject2 == null)
     {
-      ab.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM is null");
-      AppMethodBeat.o(25774);
+      Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(29456);
       return null;
     }
-    if (((cm)localObject2).nqW != 56)
+    if (((dl)localObject2).IIs != 56)
     {
-      ab.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(((cm)localObject2).nqW) });
-      AppMethodBeat.o(25774);
+      Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(((dl)localObject2).IIs) });
+      AppMethodBeat.o(29456);
       return null;
     }
-    Object localObject1 = aa.a(((cm)localObject2).woP);
-    parama = aa.a(((cm)localObject2).woQ);
-    aw.aaz();
-    if (((String)c.Ru().get(2, null)).equals(localObject1)) {
+    Object localObject1 = w.a(((dl)localObject2).YFE);
+    parama = w.a(((dl)localObject2).YFF);
+    bh.bCz();
+    if (((String)c.ban().d(2, null)).equals(localObject1)) {
       localObject1 = parama;
     }
     for (;;)
     {
-      aw.aaz();
-      parama = c.YA().arw((String)localObject1);
-      if ((parama == null) || ((int)parama.euF == 0))
+      bh.bCz();
+      parama = c.bzA().JE((String)localObject1);
+      if ((parama == null) || ((int)parama.maN == 0))
       {
-        aw.aaz();
-        c.YA().Y(new ad((String)localObject1));
+        bh.bCz();
+        c.bzA().aB(new au((String)localObject1));
       }
-      parama = aa.a(((cm)localObject2).woR);
-      ab.d("MicroMsg.TalkRoomExtension", "talkroom xml:".concat(String.valueOf(parama)));
-      localObject2 = br.F(parama, "talkroominfo");
+      parama = w.a(((dl)localObject2).YFG);
+      Log.d("MicroMsg.TalkRoomExtension", "talkroom xml:".concat(String.valueOf(parama)));
+      localObject2 = XmlParser.parseXml(parama, "talkroominfo", null);
       if (localObject2 != null) {}
       for (;;)
       {
         try
         {
-          if (aea((String)((Map)localObject2).get(".talkroominfo.tracksysmsgtype")) != 0) {
-            break label528;
+          if (bdg((String)((Map)localObject2).get(".talkroominfo.tracksysmsgtype")) != 0) {
+            break label529;
           }
-          aea((String)((Map)localObject2).get(".talkroominfo.sysmsgtype"));
+          bdg((String)((Map)localObject2).get(".talkroominfo.sysmsgtype"));
           i = 1;
           LinkedList localLinkedList = new LinkedList();
-          aea((String)((Map)localObject2).get(".talkroominfo.membersize"));
+          bdg((String)((Map)localObject2).get(".talkroominfo.membersize"));
           int j = 0;
           Object localObject3 = new StringBuilder(".talkroominfo.memberlist.member");
           if (j == 0)
@@ -203,12 +200,12 @@ public final class d
             parama = "";
             localObject3 = parama;
             parama = (String)((Map)localObject2).get((String)localObject3 + ".username");
-            if (!bo.isNullOrNil(parama))
+            if (!Util.isNullOrNil(parama))
             {
-              int m = aea((String)((Map)localObject2).get((String)localObject3 + ".memberid"));
-              localObject3 = new cjn();
-              ((cjn)localObject3).jJA = parama;
-              ((cjn)localObject3).xTD = m;
+              int m = bdg((String)((Map)localObject2).get((String)localObject3 + ".memberid"));
+              localObject3 = new fly();
+              ((fly)localObject3).UserName = parama;
+              ((fly)localObject3).abMo = m;
               localLinkedList.add(localObject3);
               j += 1;
             }
@@ -218,46 +215,48 @@ public final class d
             parama = Integer.valueOf(j);
             continue;
           }
-          if (!((String)localObject1).equals(b.cHs().tcS)) {
-            break label520;
+          if (!((String)localObject1).equals(b.hCo().SNR)) {
+            break label521;
           }
-          localObject2 = ce(localLinkedList);
-          if (!bo.isNullOrNil((String)localObject2)) {
-            break label515;
+          localObject2 = iK(localLinkedList);
+          if (!Util.isNullOrNil((String)localObject2)) {
+            break label516;
           }
-          parama = cf(localLinkedList);
-          localObject3 = b.cHt();
+          parama = iL(localLinkedList);
+          localObject3 = b.hCp();
           j = k;
           if (i != 0) {
             j = 0;
           }
           ((e)localObject3).a((String)localObject1, localLinkedList, (String)localObject2, parama, j);
-          AppMethodBeat.o(25774);
+          AppMethodBeat.o(29456);
           return null;
         }
         catch (Exception parama)
         {
-          ab.e("MicroMsg.TalkRoomExtension", "parsing memList xml failed");
-          ab.printErrStackTrace("MicroMsg.TalkRoomExtension", parama, "", new Object[0]);
+          Log.e("MicroMsg.TalkRoomExtension", "parsing memList xml failed");
+          Log.printErrStackTrace("MicroMsg.TalkRoomExtension", parama, "", new Object[0]);
         }
-        AppMethodBeat.o(25774);
+        AppMethodBeat.o(29456);
         return null;
-        label515:
+        label516:
         parama = null;
         continue;
-        label520:
+        label521:
         parama = null;
         localObject2 = null;
         continue;
-        label528:
+        label529:
         int i = 0;
       }
     }
   }
+  
+  public final void b(g.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.d
  * JD-Core Version:    0.7.0.1
  */

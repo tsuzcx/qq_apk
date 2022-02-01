@@ -1,10 +1,13 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
 import com.tencent.mm.ui.base.preference.CheckPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,77 +17,86 @@ import com.tencent.mm.ui.base.preference.f;
 public class UnfamiliarContactUI
   extends MMPreference
 {
-  private boolean qEM;
-  private boolean qEN;
-  private boolean qEO;
+  private boolean PnU;
+  private boolean PnV;
+  private boolean PnW;
   
   public int getResourceId()
   {
-    return 2131165295;
+    return b.k.settings_unfamiliar_contact_ui;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127687);
+    AppMethodBeat.i(74623);
     super.initView();
-    setMMTitle(2131303501);
-    setBackBtn(new UnfamiliarContactUI.1(this));
-    ((CheckPreference)getPreferenceScreen().atx("settings_half_year_not_chat")).zqz = 0;
-    ((CheckPreference)getPreferenceScreen().atx("settings_has_not_same_chatroom")).zqz = 0;
-    ((CheckPreference)getPreferenceScreen().atx("settings_half_year_not_response")).zqz = 0;
-    ((TextButtonPreference)getPreferenceScreen().atx("settings_next_step")).setEnabled(false);
+    setMMTitle(b.i.settings_unfamiliar_contact);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(74620);
+        UnfamiliarContactUI.this.finish();
+        AppMethodBeat.o(74620);
+        return true;
+      }
+    });
+    ((CheckPreference)getPreferenceScreen().bAi("settings_half_year_not_chat")).adXT = 0;
+    ((CheckPreference)getPreferenceScreen().bAi("settings_has_not_same_chatroom")).adXT = 0;
+    ((CheckPreference)getPreferenceScreen().bAi("settings_half_year_not_response")).adXT = 0;
+    ((TextButtonPreference)getPreferenceScreen().bAi("settings_next_step")).setEnabled(false);
     getPreferenceScreen().notifyDataSetChanged();
-    AppMethodBeat.o(127687);
+    AppMethodBeat.o(74623);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127685);
+    AppMethodBeat.i(74621);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(127685);
+    AppMethodBeat.o(74621);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(127688);
+    AppMethodBeat.i(74624);
     if (paramInt == 4)
     {
       onBackPressed();
-      AppMethodBeat.o(127688);
+      AppMethodBeat.o(74624);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(127688);
+    AppMethodBeat.o(74624);
     return bool;
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(127686);
+    AppMethodBeat.i(74622);
     CheckPreference localCheckPreference;
     boolean bool1;
     if ((paramPreference instanceof CheckPreference))
     {
       localCheckPreference = (CheckPreference)paramPreference;
       if (paramPreference.mKey.equals("settings_half_year_not_chat")) {
-        if (!this.qEM)
+        if (!this.PnU)
         {
           bool1 = true;
-          localCheckPreference.vxW = bool1;
-          if (this.qEM) {
+          localCheckPreference.duj = bool1;
+          if (this.PnU) {
             break label123;
           }
           bool1 = true;
           label57:
-          this.qEM = bool1;
+          this.PnU = bool1;
           label62:
-          paramPreference = (TextButtonPreference)paramf.atx("settings_next_step");
-          if ((!this.qEM) && (!this.qEO))
+          paramPreference = (TextButtonPreference)paramf.bAi("settings_next_step");
+          if ((!this.PnU) && (!this.PnW))
           {
             bool1 = bool2;
-            if (!this.qEN) {}
+            if (!this.PnV) {}
           }
           else
           {
@@ -97,7 +109,7 @@ public class UnfamiliarContactUI
     for (;;)
     {
       paramf.notifyDataSetChanged();
-      AppMethodBeat.o(127686);
+      AppMethodBeat.o(74622);
       return true;
       bool1 = false;
       break;
@@ -106,19 +118,19 @@ public class UnfamiliarContactUI
       break label57;
       if (paramPreference.mKey.equals("settings_has_not_same_chatroom"))
       {
-        if (!this.qEO)
+        if (!this.PnW)
         {
           bool1 = true;
           label149:
-          localCheckPreference.vxW = bool1;
-          if (this.qEO) {
+          localCheckPreference.duj = bool1;
+          if (this.PnW) {
             break label177;
           }
         }
         label177:
         for (bool1 = true;; bool1 = false)
         {
-          this.qEO = bool1;
+          this.PnW = bool1;
           break;
           bool1 = false;
           break label149;
@@ -127,19 +139,19 @@ public class UnfamiliarContactUI
       if (!paramPreference.mKey.equals("settings_half_year_not_response")) {
         break label62;
       }
-      if (!this.qEN)
+      if (!this.PnV)
       {
         bool1 = true;
         label203:
-        localCheckPreference.vxW = bool1;
-        if (this.qEN) {
+        localCheckPreference.duj = bool1;
+        if (this.PnV) {
           break label231;
         }
       }
       label231:
       for (bool1 = true;; bool1 = false)
       {
-        this.qEN = bool1;
+        this.PnV = bool1;
         break;
         bool1 = false;
         break label203;
@@ -147,9 +159,9 @@ public class UnfamiliarContactUI
       if (paramPreference.mKey.equals("settings_next_step"))
       {
         paramPreference = new Intent(this, UnfamiliarContactDetailUI.class);
-        paramPreference.putExtra("half_year_not_chat", this.qEM);
-        paramPreference.putExtra("half_year_not_response", this.qEN);
-        paramPreference.putExtra("has_not_same_chatroom", this.qEO);
+        paramPreference.putExtra("half_year_not_chat", this.PnU);
+        paramPreference.putExtra("half_year_not_response", this.PnV);
+        paramPreference.putExtra("has_not_same_chatroom", this.PnW);
         startActivityForResult(paramPreference, 291);
       }
     }

@@ -30,19 +30,12 @@ public abstract class AbstractFileSystem
   {
     paramList = paramList.iterator();
     int i = 0;
-    if (paramList.hasNext())
-    {
-      if (!delete((String)paramList.next())) {
-        break label43;
+    while (paramList.hasNext()) {
+      if (delete((String)paramList.next())) {
+        i += 1;
       }
-      i += 1;
     }
-    label43:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
   
   public void configure(Map<String, String> paramMap) {}
@@ -51,13 +44,14 @@ public abstract class AbstractFileSystem
   {
     FileSystem localFileSystem = resolveDelegate(this, paramString1, 2);
     paramFileSystem = resolveDelegate(paramFileSystem, paramString2, 1);
-    if ((localFileSystem == null) || (paramFileSystem == null)) {
-      throw new IOException("Cannot resolve delegate filesystem.");
+    if ((localFileSystem != null) && (paramFileSystem != null))
+    {
+      if ((localFileSystem instanceof AbstractFileSystem)) {
+        return ((AbstractFileSystem)localFileSystem).copyFileImpl(paramString1, paramFileSystem, paramString2);
+      }
+      return localFileSystem.copyFile(paramString1, paramFileSystem, paramString2);
     }
-    if ((localFileSystem instanceof AbstractFileSystem)) {
-      return ((AbstractFileSystem)localFileSystem).copyFileImpl(paramString1, paramFileSystem, paramString2);
-    }
-    return localFileSystem.copyFile(paramString1, paramFileSystem, paramString2);
+    throw new IOException("Cannot resolve delegate filesystem.");
   }
   
   protected long copyFileImpl(String paramString1, FileSystem paramFileSystem, String paramString2)
@@ -76,13 +70,14 @@ public abstract class AbstractFileSystem
   {
     FileSystem localFileSystem = resolveDelegate(this, paramString1, 2);
     paramFileSystem = resolveDelegate(paramFileSystem, paramString2, 1);
-    if ((localFileSystem == null) || (paramFileSystem == null)) {
-      throw new IOException("Cannot resolve delegate filesystem.");
+    if ((localFileSystem != null) && (paramFileSystem != null))
+    {
+      if ((localFileSystem instanceof AbstractFileSystem)) {
+        return ((AbstractFileSystem)localFileSystem).moveFileImpl(paramString1, paramFileSystem, paramString2);
+      }
+      return localFileSystem.moveFile(paramString1, paramFileSystem, paramString2);
     }
-    if ((localFileSystem instanceof AbstractFileSystem)) {
-      return ((AbstractFileSystem)localFileSystem).moveFileImpl(paramString1, paramFileSystem, paramString2);
-    }
-    return localFileSystem.moveFile(paramString1, paramFileSystem, paramString2);
+    throw new IOException("Cannot resolve delegate filesystem.");
   }
   
   protected boolean moveFileImpl(String paramString1, FileSystem paramFileSystem, String paramString2)
@@ -137,39 +132,32 @@ public abstract class AbstractFileSystem
   
   protected void statistics(int paramInt, Object... paramVarArgs)
   {
-    if (paramVarArgs.length == 0) {
+    if (paramVarArgs.length == 0)
+    {
       paramVarArgs = null;
     }
-    for (;;)
+    else
     {
-      statistics(paramInt, paramVarArgs);
-      return;
       HashMap localHashMap = new HashMap(paramVarArgs.length / 2);
-      int i = 0;
-      for (;;)
+      int j;
+      for (int i = 0; i < paramVarArgs.length - 1; i = j + 1)
       {
-        if (i >= paramVarArgs.length - 1) {
-          break label92;
-        }
-        int j = i + 1;
+        j = i + 1;
         Object localObject1 = paramVarArgs[i];
-        if (j >= paramVarArgs.length)
-        {
-          paramVarArgs = localHashMap;
+        if (j >= paramVarArgs.length) {
           break;
         }
-        i = j + 1;
         Object localObject2 = paramVarArgs[j];
         localHashMap.put(localObject1.toString(), String.valueOf(localObject2));
       }
-      label92:
       paramVarArgs = localHashMap;
     }
+    statistics(paramInt, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.AbstractFileSystem
  * JD-Core Version:    0.7.0.1
  */

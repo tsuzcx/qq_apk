@@ -1,32 +1,28 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract.Contacts;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.webkit.URLUtil;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.modelsimple.j;
-import com.tencent.mm.plugin.scanner.model.s;
-import com.tencent.mm.plugin.scanner.model.s.a;
-import com.tencent.mm.plugin.scanner.model.s.b;
-import com.tencent.mm.plugin.scanner.model.s.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.c;
+import com.tencent.mm.am.s;
+import com.tencent.mm.modelsimple.n;
+import com.tencent.mm.plugin.scanner.l.g;
+import com.tencent.mm.plugin.scanner.l.i;
+import com.tencent.mm.plugin.scanner.l.k;
+import com.tencent.mm.plugin.scanner.model.as;
+import com.tencent.mm.plugin.scanner.model.as.a;
+import com.tencent.mm.plugin.scanner.model.as.b;
+import com.tencent.mm.plugin.scanner.model.as.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,25 +30,25 @@ import java.util.List;
 public class VcardContactUI
   extends MMPreference
 {
-  private static ArrayList<String> qBH;
-  private static int qBJ;
-  private static int qBK;
-  private s qBG;
-  private r qBI;
-  private f screen;
+  private static ArrayList<String> Pdk;
+  private static int Pdm;
+  private static int Pdn;
+  private as Pdj;
+  private h Pdl;
+  private com.tencent.mm.ui.base.preference.f screen;
   
   static
   {
-    AppMethodBeat.i(81359);
-    qBH = new ArrayList();
-    qBJ = 1;
-    qBK = 1;
-    AppMethodBeat.o(81359);
+    AppMethodBeat.i(52013);
+    Pdk = new ArrayList();
+    Pdm = 1;
+    Pdn = 1;
+    AppMethodBeat.o(52013);
   }
   
   private static void a(List<String> paramList, Intent paramIntent, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(81357);
+    AppMethodBeat.i(52011);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -73,12 +69,12 @@ public class VcardContactUI
         paramIntent.putExtra("phone_type", paramInt1);
       }
     }
-    AppMethodBeat.o(81357);
+    AppMethodBeat.o(52011);
   }
   
-  private void c(List<String> paramList, String paramString1, String paramString2)
+  private void g(List<String> paramList, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(81355);
+    AppMethodBeat.i(52009);
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
@@ -87,33 +83,33 @@ public class VcardContactUI
         String str = (String)paramList.next();
         VcardContactLinkPreference localVcardContactLinkPreference = new VcardContactLinkPreference(this);
         localVcardContactLinkPreference.setKey(paramString1 + String.valueOf(str));
-        if (!qBH.contains(paramString1 + String.valueOf(str))) {
-          qBH.add(paramString1 + String.valueOf(str));
+        if (!Pdk.contains(paramString1 + String.valueOf(str))) {
+          Pdk.add(paramString1 + String.valueOf(str));
         }
         localVcardContactLinkPreference.setTitle(paramString2);
-        localVcardContactLinkPreference.setLayoutResource(2130970179);
-        localVcardContactLinkPreference.setSummary(str);
-        localVcardContactLinkPreference.qJ(false);
-        localVcardContactLinkPreference.zrr = true;
-        localVcardContactLinkPreference.dEO();
-        this.screen.a(localVcardContactLinkPreference, qBJ);
+        localVcardContactLinkPreference.setLayoutResource(l.g.mm_preference);
+        localVcardContactLinkPreference.aS(str);
+        localVcardContactLinkPreference.LG(false);
+        localVcardContactLinkPreference.adZa = true;
+        localVcardContactLinkPreference.jnr();
+        this.screen.a(localVcardContactLinkPreference, Pdm);
       }
     }
-    AppMethodBeat.o(81355);
+    AppMethodBeat.o(52009);
   }
   
-  private void gd(String paramString1, String paramString2)
+  private void lH(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(81356);
+    AppMethodBeat.i(52010);
     KeyValuePreference localKeyValuePreference = new KeyValuePreference(this);
     localKeyValuePreference.setTitle(paramString2);
-    localKeyValuePreference.setLayoutResource(2130970179);
-    localKeyValuePreference.qJ(false);
-    localKeyValuePreference.setSummary(paramString1);
-    localKeyValuePreference.zrr = false;
-    localKeyValuePreference.dEO();
-    this.screen.a(localKeyValuePreference, qBK);
-    AppMethodBeat.o(81356);
+    localKeyValuePreference.setLayoutResource(l.g.mm_preference);
+    localKeyValuePreference.LG(false);
+    localKeyValuePreference.aS(paramString1);
+    localKeyValuePreference.adZa = false;
+    localKeyValuePreference.jnr();
+    this.screen.a(localKeyValuePreference, Pdn);
+    AppMethodBeat.o(52010);
   }
   
   public int getResourceId()
@@ -123,301 +119,267 @@ public class VcardContactUI
   
   public void initView()
   {
-    AppMethodBeat.i(81352);
-    this.qBI = new r(this);
+    AppMethodBeat.i(52008);
+    this.Pdl = new h(this);
     this.screen = getPreferenceScreen();
-    this.qBG = s.qvq;
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(81347);
-        VcardContactUI.this.finish();
-        AppMethodBeat.o(81347);
-        return true;
-      }
-    });
+    this.Pdj = as.OUc;
+    setBackBtn(new VcardContactUI.3(this));
     setMMTitle("");
     this.screen.removeAll();
-    this.screen.addPreferencesFromResource(2131165309);
-    Object localObject = (VcardContactUserHeaderPreference)this.screen.atx("v_contact_info_header");
+    this.screen.aBe(l.k.OLU);
+    Object localObject = (VcardContactUserHeaderPreference)this.screen.bAi("v_contact_info_header");
     if (localObject != null)
     {
-      s locals = this.qBG;
-      if (locals != null)
+      as localas = this.Pdj;
+      if (localas != null)
       {
-        if (!bo.isNullOrNil(locals.quZ.aCR())) {
-          ((VcardContactUserHeaderPreference)localObject).qBS = locals.quZ.aCR();
+        if (!Util.isNullOrNil(localas.OTL.crV())) {
+          ((VcardContactUserHeaderPreference)localObject).fullName = localas.OTL.crV();
         }
-        if (!bo.isNullOrNil(locals.blZ)) {
-          ((VcardContactUserHeaderPreference)localObject).blZ = locals.blZ;
+        if (!Util.isNullOrNil(localas.nickName)) {
+          ((VcardContactUserHeaderPreference)localObject).nickName = localas.nickName;
         }
-        if (!bo.isNullOrNil(locals.qvn)) {
-          ((VcardContactUserHeaderPreference)localObject).qvn = locals.qvn;
+        if (!Util.isNullOrNil(localas.OTZ)) {
+          ((VcardContactUserHeaderPreference)localObject).OTZ = localas.OTZ;
         }
-        if (!bo.isNullOrNil(locals.title)) {
-          ((VcardContactUserHeaderPreference)localObject).title = locals.title;
+        if (!Util.isNullOrNil(localas.title)) {
+          ((VcardContactUserHeaderPreference)localObject).title = localas.title;
         }
       }
     }
-    this.screen.aty("c_contact_info_wx_id");
-    if (!bo.isNullOrNil(this.qBG.hJS))
+    this.screen.bAk("c_contact_info_wx_id");
+    if (!Util.isNullOrNil(this.Pdj.rRV))
     {
-      localObject = (VcardContactLinkPreference)this.screen.atx("v_contact_info_photo_uri");
+      localObject = (VcardContactLinkPreference)this.screen.bAi("v_contact_info_photo_uri");
       if (localObject != null)
       {
-        ((VcardContactLinkPreference)localObject).setSummary(this.qBG.hJS);
-        ((VcardContactLinkPreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = false;
-        qBJ += 2;
-        qBK += 2;
+        ((VcardContactLinkPreference)localObject).aS(this.Pdj.rRV);
+        ((VcardContactLinkPreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = false;
+        Pdm += 2;
+        Pdn += 2;
       }
-      localObject = this.qBG.qvg;
-      if ((localObject != null) && (((s.a)localObject).aCR().length() > 0)) {
-        gd(((s.a)localObject).aCR(), getContext().getString(2131304472));
+      localObject = this.Pdj.OTS;
+      if ((localObject != null) && (((as.a)localObject).crV().length() > 0)) {
+        lH(((as.a)localObject).crV(), getContext().getString(l.i.OLJ));
       }
-      localObject = this.qBG.qvh;
-      if ((localObject != null) && (((s.a)localObject).aCR().length() > 0)) {
-        gd(((s.a)localObject).aCR(), getContext().getString(2131304485));
+      localObject = this.Pdj.OTT;
+      if ((localObject != null) && (((as.a)localObject).crV().length() > 0)) {
+        lH(((as.a)localObject).crV(), getContext().getString(l.i.OLQ));
       }
-      localObject = this.qBG.qve;
-      if ((localObject != null) && (((s.a)localObject).aCR().length() > 0)) {
-        gd(((s.a)localObject).aCR(), getContext().getString(2131304467));
+      localObject = this.Pdj.OTQ;
+      if ((localObject != null) && (((as.a)localObject).crV().length() > 0)) {
+        lH(((as.a)localObject).crV(), getContext().getString(l.i.OLH));
       }
-      localObject = this.qBG.qvf;
-      if ((localObject != null) && (((s.a)localObject).aCR().length() > 0)) {
-        gd(((s.a)localObject).aCR(), getContext().getString(2131304467));
+      localObject = this.Pdj.OTR;
+      if ((localObject != null) && (((as.a)localObject).crV().length() > 0)) {
+        lH(((as.a)localObject).crV(), getContext().getString(l.i.OLH));
       }
-      localObject = this.qBG.qvk;
+      localObject = this.Pdj.OTW;
       if ((localObject != null) && (((List)localObject).size() > 0)) {
-        c((List)localObject, "WorkTel", getContext().getString(2131304486));
+        g((List)localObject, "WorkTel", getContext().getString(l.i.OLR));
       }
-      localObject = this.qBG.qvj;
+      localObject = this.Pdj.OTV;
       if ((localObject != null) && (((List)localObject).size() > 0)) {
-        c((List)localObject, "HomeTel", getContext().getString(2131304474));
+        g((List)localObject, "HomeTel", getContext().getString(l.i.OLK));
       }
-      localObject = this.qBG.qvl;
+      localObject = this.Pdj.OTX;
       if ((localObject != null) && (((List)localObject).size() > 0)) {
-        c((List)localObject, "VideoTEL", getContext().getString(2131304483));
+        g((List)localObject, "VideoTEL", getContext().getString(l.i.OLP));
       }
-      localObject = this.qBG.qvm;
+      localObject = this.Pdj.OTY;
       if ((localObject != null) && (((List)localObject).size() > 0)) {
-        c((List)localObject, "NormalTel", getContext().getString(2131304477));
+        g((List)localObject, "NormalTel", getContext().getString(l.i.OLM));
       }
-      localObject = this.qBG.qvi;
+      localObject = this.Pdj.OTU;
       if ((localObject != null) && (((List)localObject).size() > 0)) {
-        c((List)localObject, "CellTel", getContext().getString(2131304470));
+        g((List)localObject, "CellTel", getContext().getString(l.i.OLI));
       }
-      if (bo.isNullOrNil(this.qBG.hKb)) {
+      if (Util.isNullOrNil(this.Pdj.rSd)) {
         break label1047;
       }
-      localObject = (KeyValuePreference)this.screen.atx("v_contact_info_org");
+      localObject = (KeyValuePreference)this.screen.bAi("v_contact_info_org");
       if (localObject != null)
       {
-        ((KeyValuePreference)localObject).setSummary(this.qBG.hKb);
-        ((KeyValuePreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = true;
+        ((KeyValuePreference)localObject).aS(this.Pdj.rSd);
+        ((KeyValuePreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = true;
       }
       label672:
-      if (bo.isNullOrNil(this.qBG.qvo)) {
+      if (Util.isNullOrNil(this.Pdj.OUa)) {
         break label1063;
       }
-      localObject = (KeyValuePreference)this.screen.atx("v_contact_info_agent");
+      localObject = (KeyValuePreference)this.screen.bAi("v_contact_info_agent");
       if (localObject != null)
       {
-        ((KeyValuePreference)localObject).setSummary(this.qBG.qvo);
-        ((KeyValuePreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = true;
+        ((KeyValuePreference)localObject).aS(this.Pdj.OUa);
+        ((KeyValuePreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = true;
       }
       label726:
-      if (bo.isNullOrNil(this.qBG.url)) {
+      if (Util.isNullOrNil(this.Pdj.url)) {
         break label1079;
       }
-      localObject = (VcardContactLinkPreference)this.screen.atx("v_contact_info_home_page");
+      localObject = (VcardContactLinkPreference)this.screen.bAi("v_contact_info_home_page");
       if (localObject != null)
       {
-        ((VcardContactLinkPreference)localObject).setSummary(this.qBG.url);
-        ((VcardContactLinkPreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = true;
+        ((VcardContactLinkPreference)localObject).aS(this.Pdj.url);
+        ((VcardContactLinkPreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = true;
       }
       label780:
-      if (bo.isNullOrNil(this.qBG.dqF)) {
+      if (Util.isNullOrNil(this.Pdj.kab)) {
         break label1108;
       }
-      localObject = (VcardContactLinkPreference)this.screen.atx("v_contact_info_email");
+      localObject = (VcardContactLinkPreference)this.screen.bAi("v_contact_info_email");
       if (localObject != null)
       {
-        ((VcardContactLinkPreference)localObject).setSummary(this.qBG.dqF);
-        ((VcardContactLinkPreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = true;
+        ((VcardContactLinkPreference)localObject).aS(this.Pdj.kab);
+        ((VcardContactLinkPreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = true;
       }
       label834:
-      if (bo.isNullOrNil(this.qBG.qvd)) {
+      if (Util.isNullOrNil(this.Pdj.OTP)) {
         break label1124;
       }
-      localObject = (KeyValuePreference)this.screen.atx("v_contact_info_birthday");
+      localObject = (KeyValuePreference)this.screen.bAi("v_contact_info_birthday");
       if (localObject != null)
       {
-        ((KeyValuePreference)localObject).setSummary(this.qBG.qvd);
-        ((KeyValuePreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = true;
+        ((KeyValuePreference)localObject).aS(this.Pdj.OTP);
+        ((KeyValuePreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = true;
       }
       label888:
-      if (bo.isNullOrNil(this.qBG.qvp)) {
+      if (Util.isNullOrNil(this.Pdj.OUb)) {
         break label1153;
       }
-      localObject = (KeyValuePreference)this.screen.atx("v_contact_info_remark");
+      localObject = (KeyValuePreference)this.screen.bAi("v_contact_info_remark");
       if (localObject != null)
       {
-        ((KeyValuePreference)localObject).setSummary(this.qBG.qvp);
-        ((KeyValuePreference)localObject).qJ(false);
-        ((KeyValuePreference)localObject).zrr = true;
+        ((KeyValuePreference)localObject).aS(this.Pdj.OUb);
+        ((KeyValuePreference)localObject).LG(false);
+        ((KeyValuePreference)localObject).adZa = true;
       }
     }
     for (;;)
     {
-      if ((this.qBG.qvb == null) || (!this.qBG.qvb.qvt.contains("uri"))) {
+      if ((this.Pdj.OTN == null) || (!this.Pdj.OTN.nBd.contains("uri"))) {
         break label1182;
       }
-      localObject = (VcardContactLinkPreference)this.screen.atx("v_contact_info_logo");
-      ((VcardContactLinkPreference)localObject).setSummary(this.qBG.qvb.qvu);
-      ((KeyValuePreference)localObject).zrr = false;
-      ((VcardContactLinkPreference)localObject).qJ(false);
-      AppMethodBeat.o(81352);
+      localObject = (VcardContactLinkPreference)this.screen.bAi("v_contact_info_logo");
+      ((VcardContactLinkPreference)localObject).aS(this.Pdj.OTN.OUf);
+      ((KeyValuePreference)localObject).adZa = false;
+      ((VcardContactLinkPreference)localObject).LG(false);
+      AppMethodBeat.o(52008);
       return;
-      this.screen.aty("v_contact_info_photo_uri");
-      this.screen.aty("v_category_photo_uri");
+      this.screen.bAk("v_contact_info_photo_uri");
+      this.screen.bAk("v_category_photo_uri");
       break;
       label1047:
-      this.screen.aty("v_contact_info_org");
+      this.screen.bAk("v_contact_info_org");
       break label672;
       label1063:
-      this.screen.aty("v_contact_info_agent");
+      this.screen.bAk("v_contact_info_agent");
       break label726;
       label1079:
-      this.screen.aty("v_contact_info_home_page");
-      this.screen.aty("v_category_home_page");
+      this.screen.bAk("v_contact_info_home_page");
+      this.screen.bAk("v_category_home_page");
       break label780;
       label1108:
-      this.screen.aty("v_contact_info_email");
+      this.screen.bAk("v_contact_info_email");
       break label834;
       label1124:
-      this.screen.aty("v_contact_info_birthday");
-      this.screen.aty("v_category_birthday");
+      this.screen.bAk("v_contact_info_birthday");
+      this.screen.bAk("v_category_birthday");
       break label888;
       label1153:
-      this.screen.aty("v_contact_info_remark");
-      this.screen.aty("v_category_remark");
+      this.screen.bAk("v_contact_info_remark");
+      this.screen.bAk("v_category_remark");
     }
     label1182:
-    this.screen.aty("v_contact_info_logo");
-    this.screen.aty("v_category_logo");
-    AppMethodBeat.o(81352);
+    this.screen.bAk("v_contact_info_logo");
+    this.screen.bAk("v_category_logo");
+    AppMethodBeat.o(52008);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(81349);
+    AppMethodBeat.i(52006);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(81349);
+    AppMethodBeat.o(52006);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(81350);
+    AppMethodBeat.i(52007);
     Object localObject;
     if (paramPreference.mKey.equals("add_vcard_contact"))
     {
-      paramf = getString(2131304466);
-      paramPreference = getString(2131304465);
-      localObject = new h.c()
-      {
-        public final void iA(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(81348);
-          switch (paramAnonymousInt)
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(81348);
-            return;
-            bv.abc().c(10238, new Object[] { Integer.valueOf(1) });
-            Intent localIntent = new Intent("android.intent.action.INSERT", ContactsContract.Contacts.CONTENT_URI);
-            VcardContactUI.a(VcardContactUI.this, localIntent);
-            VcardContactUI.this.startActivity(localIntent);
-            AppMethodBeat.o(81348);
-            return;
-            bv.abc().c(10239, new Object[] { Integer.valueOf(1) });
-            localIntent = new Intent("android.intent.action.INSERT_OR_EDIT", ContactsContract.Contacts.CONTENT_URI);
-            localIntent.setType("vnd.android.cursor.item/person");
-            VcardContactUI.a(VcardContactUI.this, localIntent);
-            VcardContactUI.this.startActivity(localIntent);
-          }
-        }
-      };
-      h.a(this, "", new String[] { paramf, paramPreference }, "", (h.c)localObject);
-      AppMethodBeat.o(81350);
+      paramf = getString(l.i.OLG);
+      paramPreference = getString(l.i.OLF);
+      localObject = new VcardContactUI.4(this);
+      k.a(this, "", new String[] { paramf, paramPreference }, "", (k.d)localObject);
+      AppMethodBeat.o(52007);
       return true;
     }
     if ((paramPreference.mKey.equals("v_contact_info_photo_uri")) || (paramPreference.mKey.equals("v_contact_info_home_page")) || (paramPreference.mKey.equals("v_contact_info_logo")))
     {
-      paramf = paramPreference.getSummary().toString();
-      if ((paramf != null) && (paramf.length() > 0))
+      paramf = paramPreference.gBR().toString();
+      if ((paramf != null) && (paramf.length() > 0) && (URLUtil.isNetworkUrl(paramf)))
       {
-        paramPreference = this.qBI;
-        if (!paramPreference.pDa.dtj()) {
-          ab.e("MicroMsg.scanner.ViewMMURL", "already running, skipped");
+        paramPreference = this.Pdl;
+        if (!paramPreference.NbJ.stopped()) {
+          Log.e("MicroMsg.scanner.ViewMMURL", "already running, skipped");
         }
         for (;;)
         {
-          AppMethodBeat.o(81350);
+          AppMethodBeat.o(52007);
           return true;
           if ((paramf == null) || (paramf.length() == 0))
           {
-            ab.e("MicroMsg.scanner.ViewMMURL", "go fail, qqNum is null");
+            Log.e("MicroMsg.scanner.ViewMMURL", "go fail, qqNum is null");
           }
           else
           {
             paramPreference.url = paramf;
-            localObject = (String)g.RL().Ru().get(46, null);
+            localObject = (String)com.tencent.mm.kernel.h.baE().ban().d(46, null);
             if ((localObject == null) || (((String)localObject).length() == 0))
             {
-              paramPreference.c(paramf, (int)System.currentTimeMillis(), new byte[0]);
+              paramPreference.b(paramf, n.bMd(), new byte[0]);
             }
             else
             {
-              g.Rc().a(233, paramPreference);
-              paramPreference.qBT = new j(paramf, null, 4, 0, (int)System.currentTimeMillis(), new byte[0]);
-              g.Rc().a(paramPreference.qBT, 0);
-              paramPreference.pDa.ag(3000L, 3000L);
+              com.tencent.mm.kernel.h.aZW().a(233, paramPreference);
+              paramPreference.Pdv = new n(paramf, null, 4, 0, n.bMd(), new byte[0]);
+              com.tencent.mm.kernel.h.aZW().a(paramPreference.Pdv, 0);
+              paramPreference.NbJ.startTimer(3000L);
             }
           }
         }
       }
     }
-    else if ((qBH.contains(paramPreference.mKey)) && (!paramPreference.mKey.toLowerCase().contains("fax")))
+    else if ((Pdk.contains(paramPreference.mKey)) && (!paramPreference.mKey.toLowerCase().contains("fax")))
     {
-      paramPreference = paramPreference.getSummary().toString().trim();
+      paramPreference = paramPreference.gBR().toString().trim();
       if ((paramPreference != null) && (paramPreference.length() > 0))
       {
-        paramf = getString(2131298584);
+        paramf = getString(l.i.contact_info_dial);
         paramPreference = new VcardContactUI.1(this, paramPreference);
-        h.a(this, "", new String[] { paramf }, "", paramPreference);
-        AppMethodBeat.o(81350);
+        k.a(this, "", new String[] { paramf }, "", paramPreference);
+        AppMethodBeat.o(52007);
         return true;
       }
     }
     else if (paramPreference.mKey.equals("v_contact_info_email"))
     {
-      localObject = paramPreference.getSummary().toString();
-      paramf = getContext().getString(2131303109);
-      paramPreference = getContext().getString(2131303108);
+      localObject = paramPreference.gBR().toString();
+      paramf = getContext().getString(l.i.OLE);
+      paramPreference = getContext().getString(l.i.OLD);
       localObject = new VcardContactUI.2(this, (String)localObject);
-      h.a(this, "", new String[] { paramf, paramPreference }, "", (h.c)localObject);
+      k.a(this, "", new String[] { paramf, paramPreference }, "", (k.d)localObject);
     }
-    AppMethodBeat.o(81350);
+    AppMethodBeat.o(52007);
     return false;
   }
   
@@ -429,7 +391,7 @@ public class VcardContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.VcardContactUI
  * JD-Core Version:    0.7.0.1
  */

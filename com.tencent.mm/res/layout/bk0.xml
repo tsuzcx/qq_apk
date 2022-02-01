@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="36.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="16.0dip">
+        <SeekBar android:layout_gravity="center_vertical" android:id="@id/h0m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxHeight="@dimen/m9" android:max="100" android:progressDrawable="@drawable/akc" android:minHeight="@dimen/m9" android:thumb="@drawable/akd" android:paddingStart="@dimen/m2" android:paddingEnd="@dimen/m2" />
+        <View android:id="@id/e_e" android:background="#ff000000" android:layout_width="9.0dip" android:layout_height="@dimen/m9" android:layout_centerVertical="true" />
+        <View android:layout_gravity="center_vertical" android:background="#ff000000" android:layout_width="@dimen/m2" android:layout_height="@dimen/m9" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:alpha="0.1" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_marginTop="3.0dip">
+        <TextView android:textSize="@dimen/m3" android:gravity="center" android:id="@id/bxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.5" />
+        <TextView android:textSize="@dimen/m3" android:gravity="center" android:id="@id/cjr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:alpha="0.5" />
+    </RelativeLayout>
+</LinearLayout>

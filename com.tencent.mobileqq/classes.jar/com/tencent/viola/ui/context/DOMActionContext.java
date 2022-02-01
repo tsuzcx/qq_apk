@@ -28,19 +28,25 @@ public abstract interface DOMActionContext
   
   public abstract boolean isDestory();
   
+  public abstract boolean isSupportNv();
+  
   public abstract void markDirty();
   
   public abstract void postRenderTask(RenderAction paramRenderAction);
   
   public abstract void registerDOMObject(String paramString, DomObject paramDomObject);
   
+  public abstract void setNvRootRef(String paramString);
+  
   public abstract void setRootRef(String paramString);
+  
+  public abstract void supportNv(boolean paramBoolean);
   
   public abstract DomObject unregisterDOMObject(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContext
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
 import android.text.TextUtils;
-import bamp;
-import bdex;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ActionMsgUtil;
 
 public class MessageForDeviceText
   extends ChatMessage
@@ -27,7 +27,7 @@ public class MessageForDeviceText
     Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bdex.a((String)localObject2);
+      localObject1 = ActionMsgUtil.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
@@ -35,10 +35,10 @@ public class MessageForDeviceText
     if (localObject1 == null) {
       localObject2 = "";
     }
-    this.sb = new bamp((CharSequence)localObject2, 13, 32, this.istroop);
+    this.sb = new QQText((CharSequence)localObject2, 13, 32, this.istroop);
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     String str2 = getExtInfoFromExtStr("sens_msg_original_text");
     String str1 = str2;

@@ -1,103 +1,103 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.bx;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.game.protobuf.cl;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class c
-  extends f
+  extends g
 {
-  public int cFj;
-  public String cnG;
-  public int cvQ;
-  public int edl;
-  public String hcN;
+  public String ICf;
+  public String ICg;
+  public String ICh;
+  public String ICi;
+  public String ICj;
+  public String ICk;
+  public String ICl;
+  public String ICm;
+  public LinkedList<String> ICn;
+  public String ICo;
+  public LinkedList<String> ICp;
+  public boolean ICq;
+  public boolean ICr;
+  public String ICs;
+  public String ICt;
+  public String ICu;
+  public String ICv;
+  public String ICw;
+  public boolean ICx;
+  public String ICy;
+  public cl ICz;
+  public int appType;
+  public String hAR;
+  public int hMd;
+  public int hYi;
   public String name;
-  public String nlT;
-  public String nlU;
-  public String nlV;
-  public String nlW;
-  public String nlX;
-  public boolean nlY;
-  public String nlZ;
-  public String nma;
-  public String nmb;
-  public LinkedList<String> nmc;
-  public String nmd;
-  public LinkedList<String> nme;
-  public boolean nmf;
-  public boolean nmg;
-  public String nmh;
-  public String nmi;
-  public String nmj;
-  public String nmk;
-  public String nml;
-  public boolean nmm;
-  public String nmn;
-  public long nmo;
-  public bx nmp;
+  public boolean piu;
   public int position;
+  public String qQb;
   public int scene;
   public int status;
+  public long tQv;
   public int type;
   public int versionCode;
   
   public c()
   {
-    AppMethodBeat.i(111194);
+    AppMethodBeat.i(41356);
     this.status = 0;
     this.type = 0;
-    this.nlT = "";
-    this.nlU = "";
-    this.nlV = "#929292";
-    this.nlW = "";
-    this.nlX = "";
-    this.cnG = "";
-    this.nlY = false;
+    this.ICf = "";
+    this.ICg = "";
+    this.ICh = "#929292";
+    this.ICi = "";
+    this.ICj = "";
+    this.hAR = "";
+    this.piu = false;
     this.scene = 0;
-    this.cFj = 0;
+    this.hYi = 0;
     this.position = 1;
     this.versionCode = 0;
-    this.nlZ = "";
-    this.nma = "";
-    this.nmb = "";
-    this.nmc = new LinkedList();
-    this.nmd = "";
-    this.nme = new LinkedList();
-    this.nmf = false;
-    this.nmg = false;
-    this.nmh = "";
-    this.nmi = "#fca28a";
-    this.nmj = "";
-    this.hcN = "";
+    this.ICk = "";
+    this.ICl = "";
+    this.ICm = "";
+    this.ICn = new LinkedList();
+    this.ICo = "";
+    this.ICp = new LinkedList();
+    this.ICq = false;
+    this.ICr = false;
+    this.ICs = "";
+    this.ICt = "#fca28a";
+    this.ICu = "";
+    this.qQb = "";
     this.name = "";
-    this.nmk = "#222222";
-    this.nml = "";
-    this.nmm = false;
-    this.nmn = "";
-    this.nmo = 0L;
-    this.cvQ = 0;
-    this.edl = 0;
-    AppMethodBeat.o(111194);
+    this.ICv = "#222222";
+    this.ICw = "";
+    this.ICx = false;
+    this.ICy = "";
+    this.tQv = 0L;
+    this.hMd = 0;
+    this.appType = 0;
+    AppMethodBeat.o(41356);
   }
   
-  public final boolean bFQ()
+  public final boolean fFS()
   {
-    AppMethodBeat.i(111195);
-    if (((this.edl == 1) || (this.edl == 2)) && (this.nmp != null) && (!bo.isNullOrNil(this.nmp.nto)))
+    AppMethodBeat.i(41357);
+    if (((this.appType == 1) || (this.appType == 2)) && (this.ICz != null) && (!Util.isNullOrNil(this.ICz.IKI)))
     {
-      AppMethodBeat.o(111195);
+      AppMethodBeat.o(41357);
       return true;
     }
-    AppMethodBeat.o(111195);
+    AppMethodBeat.o(41357);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.c
  * JD-Core Version:    0.7.0.1
  */

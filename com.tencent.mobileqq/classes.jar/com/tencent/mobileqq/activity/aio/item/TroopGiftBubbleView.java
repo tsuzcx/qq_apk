@@ -23,16 +23,16 @@ public class TroopGiftBubbleView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      this.a = 2;
+      this.e = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftBubbleView
  * JD-Core Version:    0.7.0.1
  */

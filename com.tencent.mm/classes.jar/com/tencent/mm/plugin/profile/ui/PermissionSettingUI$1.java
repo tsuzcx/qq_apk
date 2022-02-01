@@ -12,17 +12,17 @@ final class PermissionSettingUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(23744);
-    this.pCx.hideVKB();
-    this.pCx.setResult(-1, new Intent());
-    this.pCx.finish();
-    AppMethodBeat.o(23744);
+    AppMethodBeat.i(27363);
+    this.MZW.hideVKB();
+    this.MZW.setResult(-1, new Intent());
+    this.MZW.finish();
+    AppMethodBeat.o(27363);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.PermissionSettingUI.1
  * JD-Core Version:    0.7.0.1
  */

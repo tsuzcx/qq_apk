@@ -1,34 +1,32 @@
 package com.google.firebase.iid;
 
-import android.support.v4.e.a;
 import android.util.Pair;
+import androidx.b.a;
 import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.android.gms.tasks.Tasks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-import javax.annotation.concurrent.GuardedBy;
 
 final class i
 {
-  @GuardedBy("this")
-  private final Map<Pair<String, String>, TaskCompletionSource<String>> bfn;
+  private final Map<Pair<String, String>, TaskCompletionSource<String>> dCM;
   
   i()
   {
-    AppMethodBeat.i(108728);
-    this.bfn = new a();
-    AppMethodBeat.o(108728);
+    AppMethodBeat.i(4164);
+    this.dCM = new a();
+    AppMethodBeat.o(4164);
   }
   
   static String a(TaskCompletionSource<String> paramTaskCompletionSource)
   {
-    AppMethodBeat.i(108731);
+    AppMethodBeat.i(4167);
     try
     {
       paramTaskCompletionSource = (String)Tasks.await(paramTaskCompletionSource.getTask());
-      AppMethodBeat.o(108731);
+      AppMethodBeat.o(4167);
       return paramTaskCompletionSource;
     }
     catch (ExecutionException paramTaskCompletionSource)
@@ -37,47 +35,47 @@ final class i
       if ((paramTaskCompletionSource instanceof IOException))
       {
         paramTaskCompletionSource = (IOException)paramTaskCompletionSource;
-        AppMethodBeat.o(108731);
+        AppMethodBeat.o(4167);
         throw paramTaskCompletionSource;
       }
       if ((paramTaskCompletionSource instanceof RuntimeException))
       {
         paramTaskCompletionSource = (RuntimeException)paramTaskCompletionSource;
-        AppMethodBeat.o(108731);
+        AppMethodBeat.o(4167);
         throw paramTaskCompletionSource;
       }
       paramTaskCompletionSource = new IOException(paramTaskCompletionSource);
-      AppMethodBeat.o(108731);
+      AppMethodBeat.o(4167);
       throw paramTaskCompletionSource;
     }
     catch (InterruptedException paramTaskCompletionSource)
     {
       paramTaskCompletionSource = new IOException(paramTaskCompletionSource);
-      AppMethodBeat.o(108731);
+      AppMethodBeat.o(4167);
       throw paramTaskCompletionSource;
     }
   }
   
   private static String a(l paraml, TaskCompletionSource<String> paramTaskCompletionSource)
   {
-    AppMethodBeat.i(108730);
+    AppMethodBeat.i(4166);
     try
     {
       paraml = paraml.zzp();
       paramTaskCompletionSource.setResult(paraml);
-      AppMethodBeat.o(108730);
+      AppMethodBeat.o(4166);
       return paraml;
     }
     catch (RuntimeException paraml)
     {
       paramTaskCompletionSource.setException(paraml);
-      AppMethodBeat.o(108730);
+      AppMethodBeat.o(4166);
       throw paraml;
     }
     catch (IOException paraml)
     {
-      label25:
-      break label25;
+      label27:
+      break label27;
     }
   }
   
@@ -87,117 +85,117 @@ final class i
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 83
-    //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 85	android/util/Pair
-    //   10: dup
-    //   11: aload_1
-    //   12: aload_2
-    //   13: invokespecial 88	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   16: astore_1
-    //   17: aload_0
-    //   18: getfield 26	com/google/firebase/iid/i:bfn	Ljava/util/Map;
-    //   21: aload_1
-    //   22: invokeinterface 94 2 0
-    //   27: checkcast 39	com/google/android/gms/tasks/TaskCompletionSource
-    //   30: astore_2
-    //   31: aload_2
-    //   32: ifnull +62 -> 94
-    //   35: ldc 96
-    //   37: iconst_3
-    //   38: invokestatic 102	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
-    //   41: ifeq +35 -> 76
-    //   44: aload_1
-    //   45: invokestatic 106	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   48: astore_1
-    //   49: new 108	java/lang/StringBuilder
-    //   52: dup
-    //   53: aload_1
-    //   54: invokestatic 106	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   57: invokevirtual 112	java/lang/String:length	()I
-    //   60: bipush 29
-    //   62: iadd
-    //   63: invokespecial 114	java/lang/StringBuilder:<init>	(I)V
-    //   66: ldc 116
-    //   68: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: aload_1
-    //   72: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: pop
-    //   76: new 122	com/google/firebase/iid/j
-    //   79: dup
-    //   80: aload_2
-    //   81: invokespecial 125	com/google/firebase/iid/j:<init>	(Lcom/google/android/gms/tasks/TaskCompletionSource;)V
-    //   84: astore_1
-    //   85: ldc 83
-    //   87: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: aload_1
-    //   93: areturn
-    //   94: ldc 96
-    //   96: iconst_3
-    //   97: invokestatic 102	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
-    //   100: ifeq +35 -> 135
-    //   103: aload_1
-    //   104: invokestatic 106	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   107: astore_2
-    //   108: new 108	java/lang/StringBuilder
-    //   111: dup
-    //   112: aload_2
-    //   113: invokestatic 106	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   116: invokevirtual 112	java/lang/String:length	()I
-    //   119: bipush 24
-    //   121: iadd
-    //   122: invokespecial 114	java/lang/StringBuilder:<init>	(I)V
-    //   125: ldc 127
-    //   127: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: aload_2
-    //   131: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: pop
-    //   135: new 39	com/google/android/gms/tasks/TaskCompletionSource
-    //   138: dup
-    //   139: invokespecial 128	com/google/android/gms/tasks/TaskCompletionSource:<init>	()V
-    //   142: astore_2
-    //   143: aload_0
-    //   144: getfield 26	com/google/firebase/iid/i:bfn	Ljava/util/Map;
-    //   147: aload_1
-    //   148: aload_2
-    //   149: invokeinterface 132 3 0
-    //   154: pop
-    //   155: new 134	com/google/firebase/iid/k
-    //   158: dup
-    //   159: aload_0
-    //   160: aload_3
-    //   161: aload_2
-    //   162: aload_1
-    //   163: invokespecial 137	com/google/firebase/iid/k:<init>	(Lcom/google/firebase/iid/i;Lcom/google/firebase/iid/l;Lcom/google/android/gms/tasks/TaskCompletionSource;Landroid/util/Pair;)V
-    //   166: astore_1
-    //   167: ldc 83
-    //   169: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   172: goto -82 -> 90
-    //   175: astore_1
-    //   176: aload_0
-    //   177: monitorexit
-    //   178: aload_1
-    //   179: athrow
+    //   2: sipush 4165
+    //   5: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: new 78	android/util/Pair
+    //   11: dup
+    //   12: aload_1
+    //   13: aload_2
+    //   14: invokespecial 81	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   17: astore_1
+    //   18: aload_0
+    //   19: getfield 22	com/google/firebase/iid/i:dCM	Ljava/util/Map;
+    //   22: aload_1
+    //   23: invokeinterface 87 2 0
+    //   28: checkcast 34	com/google/android/gms/tasks/TaskCompletionSource
+    //   31: astore_2
+    //   32: aload_2
+    //   33: ifnull +63 -> 96
+    //   36: ldc 89
+    //   38: iconst_3
+    //   39: invokestatic 95	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
+    //   42: ifeq +35 -> 77
+    //   45: aload_1
+    //   46: invokestatic 99	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   49: astore_1
+    //   50: new 101	java/lang/StringBuilder
+    //   53: dup
+    //   54: aload_1
+    //   55: invokestatic 99	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   58: invokevirtual 105	java/lang/String:length	()I
+    //   61: bipush 29
+    //   63: iadd
+    //   64: invokespecial 107	java/lang/StringBuilder:<init>	(I)V
+    //   67: ldc 109
+    //   69: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: aload_1
+    //   73: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: pop
+    //   77: new 115	com/google/firebase/iid/j
+    //   80: dup
+    //   81: aload_2
+    //   82: invokespecial 118	com/google/firebase/iid/j:<init>	(Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+    //   85: astore_1
+    //   86: sipush 4165
+    //   89: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   92: aload_0
+    //   93: monitorexit
+    //   94: aload_1
+    //   95: areturn
+    //   96: ldc 89
+    //   98: iconst_3
+    //   99: invokestatic 95	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
+    //   102: ifeq +35 -> 137
+    //   105: aload_1
+    //   106: invokestatic 99	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   109: astore_2
+    //   110: new 101	java/lang/StringBuilder
+    //   113: dup
+    //   114: aload_2
+    //   115: invokestatic 99	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   118: invokevirtual 105	java/lang/String:length	()I
+    //   121: bipush 24
+    //   123: iadd
+    //   124: invokespecial 107	java/lang/StringBuilder:<init>	(I)V
+    //   127: ldc 120
+    //   129: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: aload_2
+    //   133: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: pop
+    //   137: new 34	com/google/android/gms/tasks/TaskCompletionSource
+    //   140: dup
+    //   141: invokespecial 121	com/google/android/gms/tasks/TaskCompletionSource:<init>	()V
+    //   144: astore_2
+    //   145: aload_0
+    //   146: getfield 22	com/google/firebase/iid/i:dCM	Ljava/util/Map;
+    //   149: aload_1
+    //   150: aload_2
+    //   151: invokeinterface 125 3 0
+    //   156: pop
+    //   157: new 127	com/google/firebase/iid/k
+    //   160: dup
+    //   161: aload_0
+    //   162: aload_3
+    //   163: aload_2
+    //   164: aload_1
+    //   165: invokespecial 130	com/google/firebase/iid/k:<init>	(Lcom/google/firebase/iid/i;Lcom/google/firebase/iid/l;Lcom/google/android/gms/tasks/TaskCompletionSource;Landroid/util/Pair;)V
+    //   168: astore_1
+    //   169: sipush 4165
+    //   172: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   175: goto -83 -> 92
+    //   178: astore_1
+    //   179: aload_0
+    //   180: monitorexit
+    //   181: aload_1
+    //   182: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	180	0	this	i
-    //   0	180	1	paramString1	String
-    //   0	180	2	paramString2	String
-    //   0	180	3	paraml	l
+    //   0	183	0	this	i
+    //   0	183	1	paramString1	String
+    //   0	183	2	paramString2	String
+    //   0	183	3	paraml	l
     // Exception table:
     //   from	to	target	type
-    //   2	31	175	finally
-    //   35	76	175	finally
-    //   76	90	175	finally
-    //   94	135	175	finally
-    //   135	172	175	finally
+    //   2	32	178	finally
+    //   36	77	178	finally
+    //   77	92	178	finally
+    //   96	137	178	finally
+    //   137	175	178	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.i
  * JD-Core Version:    0.7.0.1
  */

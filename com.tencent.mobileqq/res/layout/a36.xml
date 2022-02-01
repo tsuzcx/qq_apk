@@ -18,7 +18,7 @@
                 <TextView android:textSize="15.0sp" android:textColor="@color/bh" android:gravity="center" android:layout_gravity="center" android:id="@id/i5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/s5" />
             </LinearLayout>
         </com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout>
-        <TextView android:textColor="@color/bp" android:id="@id/bef" android:background="#88ff0000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ARK" />
+        <TextView android:textColor="@color/black" android:id="@id/bef" android:background="#88ff0000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ARK" />
     </RelativeLayout>
     <View android:id="@id/bah" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/content" android:layout_alignBottom="@id/content" />
 </RelativeLayout>

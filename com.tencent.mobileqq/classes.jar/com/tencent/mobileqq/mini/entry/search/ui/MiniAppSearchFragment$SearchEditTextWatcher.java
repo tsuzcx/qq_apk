@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import mqq.util.WeakReference;
@@ -28,18 +29,19 @@ class MiniAppSearchFragment$SearchEditTextWatcher
     if (localDataChangedListener != null) {
       localDataChangedListener.onTextChanged(paramCharSequence.toString());
     }
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).sendSearchAppRequest(paramCharSequence.toString());
-    }
-    while (localDataChangedListener == null) {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).sendSearchAppRequest(paramCharSequence.toString());
       return;
     }
-    localDataChangedListener.onResultDataChanged(false);
+    if (localDataChangedListener != null) {
+      localDataChangedListener.onResultDataChanged(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment.SearchEditTextWatcher
  * JD-Core Version:    0.7.0.1
  */

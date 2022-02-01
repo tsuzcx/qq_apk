@@ -12,6 +12,7 @@ public class TPCaptureUtils
   {
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
     Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.RGB_565);
+    paramArrayOfByte.rewind();
     localBitmap.copyPixelsFromBuffer(paramArrayOfByte);
     paramArrayOfByte = localBitmap;
     if (paramInt3 != 0)
@@ -25,30 +26,31 @@ public class TPCaptureUtils
   
   public static Bitmap frame2Bitmap(TPVideoFrame paramTPVideoFrame)
   {
-    if ((paramTPVideoFrame.data.length <= 0) || (paramTPVideoFrame.height == 0) || (paramTPVideoFrame.width == 0)) {
-      return null;
+    if ((paramTPVideoFrame.data.length > 0) && (paramTPVideoFrame.height != 0) && (paramTPVideoFrame.width != 0)) {
+      return byte2Bitmap(paramTPVideoFrame.data[0], paramTPVideoFrame.width, paramTPVideoFrame.height, paramTPVideoFrame.rotation);
     }
-    return byte2Bitmap(paramTPVideoFrame.data[0], paramTPVideoFrame.width, paramTPVideoFrame.height, paramTPVideoFrame.rotation);
+    return null;
   }
   
   public static Bitmap[] frame2Bitmaps(TPVideoFrame paramTPVideoFrame)
   {
-    if ((paramTPVideoFrame.data.length <= 0) || (paramTPVideoFrame.height == 0) || (paramTPVideoFrame.width == 0)) {
-      return null;
-    }
-    Bitmap[] arrayOfBitmap = new Bitmap[paramTPVideoFrame.data.length];
-    int i = 0;
-    while (i < paramTPVideoFrame.data.length)
+    if ((paramTPVideoFrame.data.length > 0) && (paramTPVideoFrame.height != 0) && (paramTPVideoFrame.width != 0))
     {
-      arrayOfBitmap[i] = byte2Bitmap(paramTPVideoFrame.data[i], paramTPVideoFrame.width, paramTPVideoFrame.height, paramTPVideoFrame.rotation);
-      i += 1;
+      Bitmap[] arrayOfBitmap = new Bitmap[paramTPVideoFrame.data.length];
+      int i = 0;
+      while (i < paramTPVideoFrame.data.length)
+      {
+        arrayOfBitmap[i] = byte2Bitmap(paramTPVideoFrame.data[i], paramTPVideoFrame.width, paramTPVideoFrame.height, paramTPVideoFrame.rotation);
+        i += 1;
+      }
+      return arrayOfBitmap;
     }
-    return arrayOfBitmap;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.caputure.TPCaptureUtils
  * JD-Core Version:    0.7.0.1
  */

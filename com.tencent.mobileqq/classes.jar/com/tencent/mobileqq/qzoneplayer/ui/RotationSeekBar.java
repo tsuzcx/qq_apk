@@ -43,44 +43,49 @@ public class RotationSeekBar
   private int dpToPx(float paramFloat)
   {
     getDensity();
-    return Math.round(sDensity * paramFloat);
+    return Math.round(paramFloat * sDensity);
   }
   
   private MotionEvent fixTouchMoveEvent(MotionEvent paramMotionEvent)
   {
-    int i;
-    int m;
-    int k;
-    int n;
-    int j;
     if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 2))
     {
       int[] arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
-      i = arrayOfInt[0];
-      m = arrayOfInt[1];
-      k = (int)paramMotionEvent.getRawX();
-      n = (int)paramMotionEvent.getRawY();
-      switch (this.mCurRotate)
+      int k = arrayOfInt[0];
+      int i = arrayOfInt[1];
+      int m = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      int n = this.mCurRotate;
+      if (n != 90)
       {
-      default: 
-        j = (int)paramMotionEvent.getX();
-        i = (int)paramMotionEvent.getY();
+        if (n != 180)
+        {
+          if (n != 270)
+          {
+            i = (int)paramMotionEvent.getX();
+            j = (int)paramMotionEvent.getY();
+          }
+          else
+          {
+            i -= j;
+            j = m - k;
+          }
+        }
+        else
+        {
+          j = i - j;
+          i = k - m;
+        }
       }
+      else
+      {
+        i = j - i;
+        j = k - m;
+      }
+      paramMotionEvent.setLocation(i, j);
     }
-    for (;;)
-    {
-      paramMotionEvent.setLocation(j, i);
-      return paramMotionEvent;
-      j = n - m;
-      i -= k;
-      continue;
-      j = i - k;
-      i = m - n;
-      continue;
-      j = m - n;
-      i = k - i;
-    }
+    return paramMotionEvent;
   }
   
   private float getDensity()
@@ -93,20 +98,25 @@ public class RotationSeekBar
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0) && (this.mOnRotationChangeListener != null)) {
-      this.mCurRotate = this.mOnRotationChangeListener.getCurRotate();
-    }
-    MotionEvent localMotionEvent;
-    if (this.mCurRotate == 0)
+    Object localObject;
+    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0))
     {
-      localMotionEvent = paramMotionEvent;
-      if (this.mCurRotate == 360) {}
+      localObject = this.mOnRotationChangeListener;
+      if (localObject != null) {
+        this.mCurRotate = ((RotationSeekBar.OnRotationChangeListener)localObject).getCurRotate();
+      }
+    }
+    int i = this.mCurRotate;
+    if (i == 0)
+    {
+      localObject = paramMotionEvent;
+      if (i == 360) {}
     }
     else
     {
-      localMotionEvent = fixTouchMoveEvent(paramMotionEvent);
+      localObject = fixTouchMoveEvent(paramMotionEvent);
     }
-    return super.dispatchTouchEvent(localMotionEvent);
+    return super.dispatchTouchEvent((MotionEvent)localObject);
   }
   
   void initUI() {}
@@ -161,7 +171,7 @@ public class RotationSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.ui.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

@@ -20,42 +20,35 @@ class NotificationCompatJellybean
   public NotificationCompatJellybean(Context paramContext, Notification paramNotification, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, RemoteViews paramRemoteViews, int paramInt1, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2, Bitmap paramBitmap, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4, CharSequence paramCharSequence4)
   {
     paramContext = new Notification.Builder(paramContext).setWhen(paramNotification.when).setSmallIcon(paramNotification.icon, paramNotification.iconLevel).setContent(paramNotification.contentView).setTicker(paramNotification.tickerText, paramRemoteViews).setSound(paramNotification.sound, paramNotification.audioStreamType).setVibrate(paramNotification.vibrate).setLights(paramNotification.ledARGB, paramNotification.ledOnMS, paramNotification.ledOffMS);
-    if ((paramNotification.flags & 0x2) != 0)
-    {
-      bool = true;
-      paramContext = paramContext.setOngoing(bool);
-      if ((paramNotification.flags & 0x8) == 0) {
-        break label256;
-      }
-      bool = true;
-      label112:
-      paramContext = paramContext.setOnlyAlertOnce(bool);
-      if ((paramNotification.flags & 0x10) == 0) {
-        break label262;
-      }
-      bool = true;
-      label132:
-      paramContext = paramContext.setAutoCancel(bool).setDefaults(paramNotification.defaults).setContentTitle(paramCharSequence1).setContentText(paramCharSequence2).setSubText(paramCharSequence4).setContentInfo(paramCharSequence3).setContentIntent(paramPendingIntent1).setDeleteIntent(paramNotification.deleteIntent);
-      if ((paramNotification.flags & 0x80) == 0) {
-        break label268;
-      }
+    int i = paramNotification.flags;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((i & 0x2) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label256:
-    label262:
-    label268:
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = paramContext.setFullScreenIntent(paramPendingIntent2, bool).setLargeIcon(paramBitmap).setNumber(paramInt1).setUsesChronometer(paramBoolean2).setPriority(paramInt4).setProgress(paramInt2, paramInt3, paramBoolean1);
-      if (Build.VERSION.SDK_INT > 16) {
-        this.b.setShowWhen(true);
-      }
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label112;
-      bool = false;
-      break label132;
+    paramContext = paramContext.setOngoing(bool1);
+    if ((paramNotification.flags & 0x8) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramContext = paramContext.setOnlyAlertOnce(bool1);
+    if ((paramNotification.flags & 0x10) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramContext = paramContext.setAutoCancel(bool1).setDefaults(paramNotification.defaults).setContentTitle(paramCharSequence1).setContentText(paramCharSequence2).setSubText(paramCharSequence4).setContentInfo(paramCharSequence3).setContentIntent(paramPendingIntent1).setDeleteIntent(paramNotification.deleteIntent);
+    if ((paramNotification.flags & 0x80) != 0) {
+      bool1 = true;
+    } else {
+      bool1 = bool2;
+    }
+    this.b = paramContext.setFullScreenIntent(paramPendingIntent2, bool1).setLargeIcon(paramBitmap).setNumber(paramInt1).setUsesChronometer(paramBoolean2).setPriority(paramInt4).setProgress(paramInt2, paramInt3, paramBoolean1);
+    if (Build.VERSION.SDK_INT > 16) {
+      this.b.setShowWhen(true);
     }
   }
   

@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
@@ -26,14 +28,14 @@ public class WalletSelectProfessionUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(47662);
+    AppMethodBeat.i(71230);
     super.onCreate(paramBundle);
-    setMMTitle(2131305643);
+    setMMTitle(a.i.wallet_select_profession_title);
     this.screen = getPreferenceScreen();
     paramBundle = new PreferenceTitleCategory(getContext());
-    paramBundle.setTitle(getString(2131305642));
+    paramBundle.setTitle(getString(a.i.wallet_select_profession_tips));
     paramBundle.setKey("title_category");
-    this.screen.b(paramBundle);
+    this.screen.c(paramBundle);
     paramBundle = getIntent().getParcelableArrayExtra("key_profession_list");
     int i;
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -55,31 +57,41 @@ public class WalletSelectProfessionUI
       while (i < k)
       {
         Object localObject = paramBundle[i];
-        if ((localObject != null) && (!bo.isNullOrNil(localObject.ues)))
+        if ((localObject != null) && (!Util.isNullOrNil(localObject.VBJ)))
         {
           Preference localPreference = new Preference(getContext());
-          localPreference.setTitle(localObject.ues);
+          localPreference.setTitle(localObject.VBJ);
           localPreference.setKey("index_".concat(String.valueOf(j)));
-          this.screen.b(localPreference);
+          this.screen.c(localPreference);
         }
         j += 1;
         i += 1;
       }
     }
-    setBackBtn(new WalletSelectProfessionUI.1(this));
-    AppMethodBeat.o(47662);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(71229);
+        WalletSelectProfessionUI.this.setResult(0);
+        WalletSelectProfessionUI.this.finish();
+        AppMethodBeat.o(71229);
+        return true;
+      }
+    });
+    AppMethodBeat.o(71230);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(47663);
+    AppMethodBeat.i(71231);
     if (paramPreference.mKey.startsWith("index_"))
     {
       paramf = paramPreference.mKey.split("_");
       if (paramf.length != 2) {
         break label81;
       }
-      int i = bo.getInt(paramf[1], 0);
+      int i = Util.getInt(paramf[1], 0);
       paramf = this.mProfessions[i];
       paramPreference = new Intent();
       paramPreference.putExtra("key_select_profession", paramf);
@@ -88,10 +100,10 @@ public class WalletSelectProfessionUI
     for (;;)
     {
       finish();
-      AppMethodBeat.o(47663);
+      AppMethodBeat.o(71231);
       return true;
       label81:
-      ab.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
+      Log.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
       setResult(0);
     }
   }
@@ -104,7 +116,7 @@ public class WalletSelectProfessionUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI
  * JD-Core Version:    0.7.0.1
  */

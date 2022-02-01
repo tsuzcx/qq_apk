@@ -1,31 +1,33 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.pluginsdk.n;
 
 final class MobileInputUI$11
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   MobileInputUI$11(MobileInputUI paramMobileInputUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(125171);
-    paramView = new Intent();
-    paramView.putExtra("country_name", this.gGb.fHT);
-    paramView.putExtra("couttry_code", this.gGb.countryCode);
-    paramView.putExtra("iso_code", this.gGb.gDF);
-    a.gmO.b(paramView, this.gGb);
-    AppMethodBeat.o(125171);
+    AppMethodBeat.i(305088);
+    Object localObject = new Intent();
+    ((Intent)localObject).setClassName(this.qcW.getContext(), "com.tencent.mm.plugin.repairer.ui.RepairerMainUI");
+    paramMenuItem = this.qcW.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/account/ui/MobileInputUI$19", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramMenuItem, "com/tencent/mm/plugin/account/ui/MobileInputUI$19", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(305088);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileInputUI.11
  * JD-Core Version:    0.7.0.1
  */

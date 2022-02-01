@@ -1,64 +1,199 @@
 package com.tencent.mm.ui.base.preference;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import com.tencent.mm.kiss.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.kiss.layout.b;
 import com.tencent.mm.ui.MMFragment;
 
 public abstract class MMPreferenceFragment
   extends MMFragment
 {
-  protected h adapter;
+  private int adZE = 0;
+  private int adZF = 0;
+  private boolean adZG;
+  private h adapter;
   private boolean dirty = false;
   private boolean isRefreshing = false;
-  protected ListView list;
+  private ListView list;
   private SharedPreferences sp;
-  private int zrT = 0;
-  private int zrU = 0;
-  protected boolean zrV;
   
-  public final void dEP()
+  public int getLayoutId()
   {
-    if (this.zrV) {}
+    return a.h.mm_preference_fragment_list_content;
+  }
+  
+  public View getLayoutView()
+  {
+    b.bbG();
+    return b.d(getContext(), a.h.mm_preference_fragment_list_content);
+  }
+  
+  public final ListView getListView()
+  {
+    return this.list;
+  }
+  
+  public final f getPreferenceScreen()
+  {
+    return this.adapter;
+  }
+  
+  public abstract int getResourceId();
+  
+  public final boolean jnA()
+  {
+    return this.adZG;
+  }
+  
+  public final void jnz()
+  {
+    if (this.adZG) {}
     int i;
     do
     {
       return;
       i = getResourceId();
     } while (i == -1);
-    this.adapter.addPreferencesFromResource(i);
-    this.zrV = true;
+    this.adapter.aBe(i);
+    this.adZG = true;
   }
-  
-  public int getLayoutId()
-  {
-    return 2130970229;
-  }
-  
-  public View getLayoutView()
-  {
-    b.SH();
-    return b.b(getContext(), 2130970229);
-  }
-  
-  public abstract int getResourceId();
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.zrV = false;
+    this.adZG = false;
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     this.list = ((ListView)findViewById(16908298));
     this.adapter = new h(getContext(), this.list, this.sp);
-    this.adapter.b(new MMPreferenceFragment.1(this));
+    this.adapter.b(new Preference.a()
+    {
+      public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(142614);
+        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.adZT))
+        {
+          MMPreferenceFragment.a(MMPreferenceFragment.this, true);
+          if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
+            break label170;
+          }
+          paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
+          paramAnonymousObject.setChecked(paramAnonymousObject.isChecked());
+          if (paramAnonymousObject.adZV) {
+            MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putBoolean(paramAnonymousPreference.mKey, paramAnonymousObject.isChecked()).commit();
+          }
+          MMPreferenceFragment.c(MMPreferenceFragment.this);
+        }
+        label170:
+        for (int i = 1;; i = 0)
+        {
+          if (paramAnonymousPreference.mKey != null) {
+            MMPreferenceFragment.this.onPreferenceTreeClick(MMPreferenceFragment.d(MMPreferenceFragment.this), paramAnonymousPreference);
+          }
+          if (i != 0) {
+            MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
+          }
+          MMPreferenceFragment.a(MMPreferenceFragment.this, false);
+          if (i != 0)
+          {
+            AppMethodBeat.o(142614);
+            return true;
+          }
+          AppMethodBeat.o(142614);
+          return false;
+        }
+      }
+    });
     this.list.setAdapter(this.adapter);
-    this.list.setOnItemClickListener(new MMPreferenceFragment.2(this));
-    this.list.setOnItemLongClickListener(new MMPreferenceFragment.3(this));
-    if (this.zrU != 0) {
-      this.list.setSelectionFromTop(0, this.zrU);
+    this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(final AdapterView<?> paramAnonymousAdapterView, final View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(142617);
+        if (paramAnonymousInt < MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount())
+        {
+          AppMethodBeat.o(142617);
+          return;
+        }
+        int i = MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount();
+        paramAnonymousAdapterView = (Preference)MMPreferenceFragment.d(MMPreferenceFragment.this).getItem(paramAnonymousInt - i);
+        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.adZT))
+        {
+          if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
+          {
+            AppMethodBeat.o(142617);
+            return;
+          }
+          if ((paramAnonymousAdapterView instanceof DialogPreference))
+          {
+            paramAnonymousView = (DialogPreference)paramAnonymousAdapterView;
+            paramAnonymousView.fpM();
+            paramAnonymousView.adYa = new DialogPreference.a()
+            {
+              public final void jnj()
+              {
+                AppMethodBeat.i(142615);
+                MMPreferenceFragment.c(MMPreferenceFragment.this);
+                if (paramAnonymousView.adZV) {
+                  MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.getValue()).commit();
+                }
+                MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
+                AppMethodBeat.o(142615);
+              }
+            };
+          }
+          if ((paramAnonymousAdapterView instanceof EditPreference))
+          {
+            paramAnonymousView = (EditPreference)paramAnonymousAdapterView;
+            paramAnonymousView.fpM();
+            paramAnonymousView.adYc = new EditPreference.a()
+            {
+              public final void jnj()
+              {
+                AppMethodBeat.i(142616);
+                MMPreferenceFragment.c(MMPreferenceFragment.this);
+                if (paramAnonymousView.adZV) {
+                  MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.value).commit();
+                }
+                MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
+                AppMethodBeat.o(142616);
+              }
+            };
+          }
+          if (paramAnonymousAdapterView.mKey != null) {
+            MMPreferenceFragment.this.onPreferenceTreeClick(MMPreferenceFragment.d(MMPreferenceFragment.this), paramAnonymousAdapterView);
+          }
+        }
+        AppMethodBeat.o(142617);
+      }
+    });
+    this.list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    {
+      public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(142618);
+        if (paramAnonymousInt < MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount())
+        {
+          AppMethodBeat.o(142618);
+          return false;
+        }
+        int i = MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount();
+        paramAnonymousAdapterView = (Preference)MMPreferenceFragment.d(MMPreferenceFragment.this).getItem(paramAnonymousInt - i);
+        boolean bool = MMPreferenceFragment.this.onPreferenceTreeLongClick(MMPreferenceFragment.d(MMPreferenceFragment.this), paramAnonymousAdapterView, MMPreferenceFragment.e(MMPreferenceFragment.this));
+        AppMethodBeat.o(142618);
+        return bool;
+      }
+    });
+    if (this.adZF != 0) {
+      this.list.setSelectionFromTop(0, this.adZF);
     }
   }
   
@@ -77,12 +212,14 @@ public abstract class MMPreferenceFragment
   public void onResume()
   {
     super.onResume();
-    this.adapter.notifyDataSetChanged();
+    if (this.adapter != null) {
+      this.adapter.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.MMPreferenceFragment
  * JD-Core Version:    0.7.0.1
  */

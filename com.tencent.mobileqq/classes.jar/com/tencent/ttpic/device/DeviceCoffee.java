@@ -6,7 +6,12 @@ public class DeviceCoffee
 {
   public static byte[] drink(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    LogUtils.v("Coffee", "drink() deviceName = " + paramString1 + ", sign = " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("drink() deviceName = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", sign = ");
+    localStringBuilder.append(paramString2);
+    LogUtils.v("Coffee", localStringBuilder.toString());
     return nDrink(paramArrayOfByte, paramArrayOfByte.length, paramString1, paramString2);
   }
   
@@ -21,7 +26,7 @@ public class DeviceCoffee
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.device.DeviceCoffee
  * JD-Core Version:    0.7.0.1
  */

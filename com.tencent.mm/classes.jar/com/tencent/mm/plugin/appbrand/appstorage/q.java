@@ -1,42 +1,49 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import a.f.b.j;
-import a.l;
-import com.tencent.luggage.a.e;
+import android.os.Build.VERSION;
+import android.system.Os;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.o.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.FilesCopy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"KV_STORAGE_ACTION_GET", "", "KV_STORAGE_ACTION_INFO", "KV_STORAGE_ACTION_SET", "KV_STORAGE_SCHEME_DB", "KV_STORAGE_SCHEME_MMKV", "TAG", "", "report", "", "scheme", "action", "dataSize", "count", "cost", "", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "luggage-wechat-full-sdk_release"})
 public final class q
 {
-  public static final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, com.tencent.mm.plugin.appbrand.jsapi.h paramh)
+  public static boolean de(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(102457);
-    j.q(paramh, "service");
-    paramh = paramh.getRuntime();
-    if (paramh != null) {}
-    for (paramh = paramh.wY(); paramh == null; paramh = null)
-    {
-      ab.i("KVStoragePerformanceReport", "sysConfig is null");
-      AppMethodBeat.o(102457);
-      return;
+    AppMethodBeat.i(134327);
+    if (Build.VERSION.SDK_INT >= 21) {
+      try
+      {
+        long l = Util.nowMilliSecond();
+        String str1 = y.n(paramString1, true);
+        String str2 = y.n(paramString2, true);
+        new a();
+        Os.rename(str1, str2);
+        Log.d("MicroMsg.AppBrand.FileMove", "move, os rename works, cost = %d", new Object[] { Long.valueOf(Util.nowMilliSecond() - l) });
+        AppMethodBeat.o(134327);
+        return true;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.AppBrand.FileMove", "move, os rename exp = %s", new Object[] { Util.stackTraceToString(localException) });
+      }
     }
-    if (!paramh.hiZ)
-    {
-      ab.i("KVStoragePerformanceReport", "performance report off");
-      AppMethodBeat.o(102457);
-      return;
+    boolean bool2 = y.qn(paramString1, paramString2);
+    boolean bool1 = bool2;
+    if (!bool2) {
+      bool1 = FilesCopy.copy(y.n(paramString1, true), y.n(paramString2, true), true);
     }
-    ab.i("KVStoragePerformanceReport", "report scheme=" + paramInt1 + "  action=" + paramInt2 + "  dataSize=" + paramInt3 + "  count=" + paramInt4 + "  cost=" + paramLong);
-    ((b)e.r(b.class)).e(16336, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Long.valueOf(paramLong) });
-    AppMethodBeat.o(102457);
+    AppMethodBeat.o(134327);
+    return bool1;
   }
+  
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.q
  * JD-Core Version:    0.7.0.1
  */

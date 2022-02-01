@@ -3,22 +3,23 @@ package com.tencent.biz.subscribe.bizdapters;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
-import ydu;
 
-public class CommodityAdapter$2
+class CommodityAdapter$2
   implements Runnable
 {
-  public CommodityAdapter$2(ydu paramydu) {}
+  CommodityAdapter$2(CommodityAdapter paramCommodityAdapter) {}
   
   public void run()
   {
-    this.this$0.setDatas((ArrayList)ydu.a(this.this$0).goods.get());
-    this.this$0.a(ydu.a(this.this$0));
+    CommodityAdapter localCommodityAdapter = this.this$0;
+    localCommodityAdapter.b((ArrayList)CommodityAdapter.a(localCommodityAdapter).goods.get());
+    localCommodityAdapter = this.this$0;
+    localCommodityAdapter.a(CommodityAdapter.a(localCommodityAdapter));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.CommodityAdapter.2
  * JD-Core Version:    0.7.0.1
  */

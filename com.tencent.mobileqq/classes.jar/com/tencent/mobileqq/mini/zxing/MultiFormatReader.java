@@ -14,9 +14,9 @@ public final class MultiFormatReader
   
   private Result decodeInternal(BinaryBitmap paramBinaryBitmap)
   {
-    if (this.readers != null)
+    Reader[] arrayOfReader = this.readers;
+    if (arrayOfReader != null)
     {
-      Reader[] arrayOfReader = this.readers;
       int j = arrayOfReader.length;
       int i = 0;
       while (i < j)
@@ -29,11 +29,20 @@ public final class MultiFormatReader
         }
         catch (ReaderException localReaderException)
         {
-          i += 1;
+          label45:
+          break label45;
         }
+        i += 1;
       }
     }
-    throw NotFoundException.getNotFoundInstance();
+    else
+    {
+      paramBinaryBitmap = NotFoundException.getNotFoundInstance();
+      for (;;)
+      {
+        throw paramBinaryBitmap;
+      }
+    }
   }
   
   public Result decode(BinaryBitmap paramBinaryBitmap)
@@ -58,9 +67,9 @@ public final class MultiFormatReader
   
   public void reset()
   {
-    if (this.readers != null)
+    Reader[] arrayOfReader = this.readers;
+    if (arrayOfReader != null)
     {
-      Reader[] arrayOfReader = this.readers;
       int j = arrayOfReader.length;
       int i = 0;
       while (i < j)
@@ -74,55 +83,80 @@ public final class MultiFormatReader
   public void setHints(Map<DecodeHintType, ?> paramMap)
   {
     this.hints = paramMap;
+    int k = 1;
     int i;
-    Collection localCollection;
-    label30:
-    ArrayList localArrayList;
-    if ((paramMap != null) && (paramMap.containsKey(DecodeHintType.TRY_HARDER)))
-    {
+    if ((paramMap != null) && (paramMap.containsKey(DecodeHintType.TRY_HARDER))) {
       i = 1;
-      if (paramMap != null) {
-        break label284;
-      }
+    } else {
+      i = 0;
+    }
+    Collection localCollection;
+    if (paramMap == null) {
       localCollection = null;
-      localArrayList = new ArrayList();
-      if (localCollection != null) {
-        if ((!localCollection.contains(BarcodeFormat.UPC_A)) && (!localCollection.contains(BarcodeFormat.UPC_E)) && (!localCollection.contains(BarcodeFormat.EAN_13)) && (!localCollection.contains(BarcodeFormat.EAN_8)) && (!localCollection.contains(BarcodeFormat.CODABAR)) && (!localCollection.contains(BarcodeFormat.CODE_39)) && (!localCollection.contains(BarcodeFormat.CODE_93)) && (!localCollection.contains(BarcodeFormat.CODE_128)) && (!localCollection.contains(BarcodeFormat.ITF))) {
-          break label301;
+    } else {
+      localCollection = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (localCollection != null)
+    {
+      int j = k;
+      if (!localCollection.contains(BarcodeFormat.UPC_A))
+      {
+        j = k;
+        if (!localCollection.contains(BarcodeFormat.UPC_E))
+        {
+          j = k;
+          if (!localCollection.contains(BarcodeFormat.EAN_13))
+          {
+            j = k;
+            if (!localCollection.contains(BarcodeFormat.EAN_8))
+            {
+              j = k;
+              if (!localCollection.contains(BarcodeFormat.CODABAR))
+              {
+                j = k;
+                if (!localCollection.contains(BarcodeFormat.CODE_39))
+                {
+                  j = k;
+                  if (!localCollection.contains(BarcodeFormat.CODE_93))
+                  {
+                    j = k;
+                    if (!localCollection.contains(BarcodeFormat.CODE_128)) {
+                      if (localCollection.contains(BarcodeFormat.ITF)) {
+                        j = k;
+                      } else {
+                        j = 0;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
-    }
-    label284:
-    label301:
-    for (int j = 1;; j = 0)
-    {
       if ((j != 0) && (i == 0)) {
         localArrayList.add(new MultiFormatOneDReader(paramMap));
       }
       if ((j != 0) && (i != 0)) {
         localArrayList.add(new MultiFormatOneDReader(paramMap));
       }
-      if (localArrayList.isEmpty())
-      {
-        if (i == 0) {
-          localArrayList.add(new MultiFormatOneDReader(paramMap));
-        }
-        if (i != 0) {
-          localArrayList.add(new MultiFormatOneDReader(paramMap));
-        }
-      }
-      this.readers = ((Reader[])localArrayList.toArray(EMPTY_READER_ARRAY));
-      return;
-      i = 0;
-      break;
-      localCollection = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
-      break label30;
     }
+    if (localArrayList.isEmpty())
+    {
+      if (i == 0) {
+        localArrayList.add(new MultiFormatOneDReader(paramMap));
+      }
+      if (i != 0) {
+        localArrayList.add(new MultiFormatOneDReader(paramMap));
+      }
+    }
+    this.readers = ((Reader[])localArrayList.toArray(EMPTY_READER_ARRAY));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.MultiFormatReader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="@dimen/md" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/b6n" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/lfq" android:background="@drawable/gf7" android:layout_width="fill_parent" android:layout_height="170.0dip" android:src="@drawable/hn3" android:scaleType="centerInside" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/fl" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ma" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/mb" android:layout_marginBottom="@dimen/ls" android:text="@string/inu" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/fl" android:id="@id/dialogText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ma" android:layout_marginRight="@dimen/mb" android:text="@string/int" android:includeFontPadding="false" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.0" android:layout_marginStart="@dimen/ma" android:layout_marginEnd="@dimen/mb" />
+        <Button android:textSize="17.0sp" android:textColor="@color/ahb" android:gravity="center" android:id="@id/lfp" android:background="@drawable/an6" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="25.0dip" android:text="@string/ins" android:singleLine="true" />
+    </LinearLayout>
+    <Button android:layout_gravity="center_horizontal" android:id="@id/bij" android:background="@drawable/gkh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" />
+</LinearLayout>

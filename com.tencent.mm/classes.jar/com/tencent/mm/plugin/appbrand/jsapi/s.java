@@ -1,33 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import java.util.Map;
 
-public final class s
-  extends p
+public abstract class s
+  extends bc
 {
-  private static final int CTRL_INDEX = 248;
-  private static final String NAME = "onUserCaptureScreen";
-  private static s hxg;
-  
-  static
+  public s K(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(86965);
-    hxg = new s();
-    AppMethodBeat.o(86965);
+    super.L(paramMap);
+    return this;
   }
   
-  public static void k(c paramc)
+  public final s ZQ(String paramString)
   {
-    AppMethodBeat.i(86964);
-    ab.i("MicroMsg.AppBrandOnUserCaptureScreenEvent", "user capture screen event dispatch, appId:%s", new Object[] { paramc.getAppId() });
-    hxg.i(paramc).aBz();
-    AppMethodBeat.o(86964);
+    super.ZR(paramString);
+    return this;
+  }
+  
+  public final s a(f paramf, int paramInt)
+  {
+    super.b(paramf, paramInt);
+    return this;
+  }
+  
+  public final s h(f paramf)
+  {
+    super.i(paramf);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s
  * JD-Core Version:    0.7.0.1
  */

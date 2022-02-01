@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CustomAlbumTemplate
   extends JceStruct
@@ -50,26 +51,31 @@ public final class CustomAlbumTemplate
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stTmpBgImageLarge != null) {
-      paramJceOutputStream.write(this.stTmpBgImageLarge, 0);
+    Object localObject = this.stTmpBgImageLarge;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stTmpBgImageMiddle != null) {
-      paramJceOutputStream.write(this.stTmpBgImageMiddle, 1);
+    localObject = this.stTmpBgImageMiddle;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stTmpBgImageSmall != null) {
-      paramJceOutputStream.write(this.stTmpBgImageSmall, 2);
+    localObject = this.stTmpBgImageSmall;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.vecItems != null) {
-      paramJceOutputStream.write(this.vecItems, 3);
+    localObject = this.vecItems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.vecPhotoFrameView != null) {
-      paramJceOutputStream.write(this.vecPhotoFrameView, 4);
+    localObject = this.vecPhotoFrameView;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CustomAlbumTemplate
  * JD-Core Version:    0.7.0.1
  */

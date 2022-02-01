@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import aelt;
 import android.content.Context;
 import android.widget.TextView;
 
@@ -17,12 +16,12 @@ public class VipProfileCardDiyActivity$DiyDefaultTextView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    this.a.a.a(paramInt1, paramInt2);
+    this.a.ao.onMeasured(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.DiyDefaultTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.os.Bundle;
-import bbsa;
-import bbtn;
-import bcmu;
-import bcmz;
-import bcna;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,460 +13,518 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-public class TroopFileManager$5$1
+class TroopFileManager$5$1
   implements Runnable
 {
-  public TroopFileManager$5$1(bcmz parambcmz, Bundle paramBundle, int paramInt1, ByteStringMicro paramByteStringMicro, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  TroopFileManager$5$1(TroopFileManager.5 param5, Bundle paramBundle, int paramInt1, ByteStringMicro paramByteStringMicro, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    int m;
-    boolean bool;
-    String str;
-    long l;
-    bcna localbcna;
-    synchronized (this.jdField_a_of_type_Bcmz.a)
+    Object localObject7;
+    label2333:
+    label2654:
+    label3062:
+    label3071:
+    synchronized (this.i.a)
     {
-      m = this.jdField_a_of_type_AndroidOsBundle.getInt("reqFor");
-      bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFirstPage");
-      str = this.jdField_a_of_type_AndroidOsBundle.getString("parentFileId");
-      l = this.jdField_a_of_type_AndroidOsBundle.getLong("uin_filter");
-      localbcna = (bcna)this.jdField_a_of_type_Bcmz.a.d.get(str + l);
-      if (localbcna == null) {
+      n = this.a.getInt("reqFor");
+      boolean bool = this.a.getBoolean("isFirstPage");
+      Object localObject1 = this.a.getString("parentFileId");
+      long l = this.a.getLong("uin_filter");
+      Object localObject5 = this.i.a.h;
+      localObject7 = new StringBuilder();
+      ((StringBuilder)localObject7).append((String)localObject1);
+      ((StringBuilder)localObject7).append(l);
+      TroopFileManager.FileManagerStatus localFileManagerStatus = (TroopFileManager.FileManagerStatus)((Map)localObject5).get(((StringBuilder)localObject7).toString());
+      if (localFileManagerStatus == null) {
         return;
       }
-      if (m != 1) {}
-    }
-    int i;
-    try
-    {
-      i = this.jdField_a_of_type_Int;
-      if (i == -1000)
-      {
-        if (this.jdField_a_of_type_Boolean) {
-          break label2763;
-        }
-        if (!QLog.isDevelopLevel()) {
-          break label2731;
-        }
-        QLog.d("TroopFileManager", 4, "onRspFileListV2 failed, req for:" + m);
-        break label2731;
-        for (;;)
-        {
-          return;
-          localObject1 = finally;
-          throw localObject1;
-          localbcna.jdField_a_of_type_Long = 0L;
-          this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-          continue;
-          localbcna.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-          continue;
-          if (localbcna.jdField_a_of_type_JavaUtilList != null) {
-            if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
-            {
-              localbcna.d += 1;
-              this.jdField_a_of_type_Bcmz.a.b(str, l);
-            }
-            else
-            {
-              localbcna.d = 0;
-              this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-              continue;
-              if (localbcna.jdField_a_of_type_JavaUtilList != null) {
-                if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
-                {
-                  localbcna.d += 1;
-                  localbcna.jdField_b_of_type_Boolean = false;
-                  this.jdField_a_of_type_Bcmz.a.b(str, l);
-                }
-                else
-                {
-                  localbcna.jdField_b_of_type_Boolean = false;
-                  localbcna.d = 0;
-                  this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-                }
-              }
-            }
-          }
-        }
+      if (n == 1) {
+        localObject5 = localObject1;
       }
-      localbcna.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localObject2 = this.jdField_a_of_type_JavaUtilList;
-        if (localObject2 != null) {}
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Boolean) {
-          break label2827;
-        }
-        if (!QLog.isDevelopLevel()) {
-          break label2795;
-        }
-        QLog.d("TroopFileManager", 4, "onRspFileListV2 failed, req for:" + m);
-        break label2795;
-        for (;;)
-        {
-          label514:
-          return;
-          localbcna.jdField_a_of_type_Long = 0L;
-          this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-          continue;
-          localbcna.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-          continue;
-          if (localbcna.jdField_a_of_type_JavaUtilList != null) {
-            if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
-            {
-              localbcna.d += 1;
-              this.jdField_a_of_type_Bcmz.a.b(str, l);
-            }
-            else
-            {
-              localbcna.d = 0;
-              this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-              continue;
-              if (localbcna.jdField_a_of_type_JavaUtilList != null) {
-                if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
-                {
-                  localbcna.d += 1;
-                  localbcna.jdField_b_of_type_Boolean = false;
-                  this.jdField_a_of_type_Bcmz.a.b(str, l);
-                }
-                else
-                {
-                  localbcna.jdField_b_of_type_Boolean = false;
-                  localbcna.d = 0;
-                  this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-                }
-              }
-            }
-          }
-        }
-      }
-      localbcna.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-      localbcna.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      if (!bool) {
-        break label977;
-      }
-      localbcna.jdField_a_of_type_Int = this.c;
-      Object localObject2 = this.jdField_a_of_type_Bcmz.a.a();
-      localbcna.jdField_a_of_type_JavaUtilList.clear();
-      localbcna.jdField_a_of_type_JavaUtilMap.clear();
-      localObject2 = ((Collection)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        ??? = (bbsa)((Iterator)localObject2).next();
-        this.jdField_a_of_type_Bcmz.a.b.put(((bbsa)???).jdField_a_of_type_JavaUtilUUID, ???);
-        this.jdField_a_of_type_Bcmz.a.c.put(((bbsa)???).b, ???);
-      }
-      if (!QLog.isDevelopLevel()) {
-        break label2859;
-      }
-    }
-    finally
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        break label2963;
-      }
-    }
-    QLog.d("TroopFileManager", 4, "onRspFileListV2 failed, req for:" + m);
-    for (;;)
-    {
-      label974:
-      throw localObject3;
-      label977:
-      Object localObject6;
-      Object localObject7;
-      switch (m)
-      {
-      case 2: 
-      default: 
-        localObject6 = this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a();
-        localObject7 = this.jdField_a_of_type_JavaUtilList.iterator();
-      }
-      Object localObject4;
-      label1545:
-      label1743:
       for (;;)
       {
-        if (!((Iterator)localObject7).hasNext()) {
-          break label1745;
-        }
-        localObject4 = (bbsa)((Iterator)localObject7).next();
-        if (((bbsa)localObject4).jdField_d_of_type_Boolean)
+        try
         {
-          if (((bbsa)localObject4).b == null) {
-            continue;
-          }
-          ??? = (bbsa)this.jdField_a_of_type_Bcmz.a.c.get(((bbsa)localObject4).b);
-          if (??? == null)
+          j = this.b;
+          if (j == -1000)
           {
-            ((bbsa)localObject4).jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-            this.jdField_a_of_type_Bcmz.a.c.put(((bbsa)localObject4).b, localObject4);
-            Iterator localIterator = ((List)localObject6).iterator();
-            for (;;)
-            {
-              ??? = localObject4;
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              ??? = (bbtn)localIterator.next();
-              if (((bbsa)localObject4).b.equals(((bbtn)???).i))
-              {
-                bbsa localbbsa2 = new bbsa();
-                localbbsa2.jdField_a_of_type_JavaUtilUUID = ((bbtn)???).jdField_a_of_type_JavaUtilUUID;
-                localbbsa2.b = ((bbtn)???).e;
-                localbbsa2.f = ((bbtn)???).i;
-                localbbsa2.a((bbtn)???, this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-                ((bbsa)localObject4).a(localbbsa2);
-              }
+            if (this.d) {
+              continue;
             }
-            localbcna.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-            break;
-          }
-          ((bbsa)???).b((bbsa)localObject4);
-          this.jdField_a_of_type_Bcmz.a.b.put(((bbsa)???).jdField_a_of_type_JavaUtilUUID, ???);
-          if (localbcna.jdField_a_of_type_JavaUtilMap.get(((bbsa)???).b) == null)
-          {
-            localbcna.jdField_a_of_type_JavaUtilList.add(???);
-            localbcna.jdField_a_of_type_JavaUtilMap.put(((bbsa)???).b, ???);
-          }
-          this.jdField_a_of_type_Bcmz.a.c.put(((bbsa)???).b, ???);
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopFileManager", 2, "onRspFileListV2: fileName = " + ((bbsa)localObject4).jdField_c_of_type_JavaLangString + ", filePath = " + ((bbsa)localObject4).b + ", sha = " + ((bbsa)localObject4).jdField_d_of_type_JavaLangString);
-        }
-        ??? = this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(((bbsa)localObject4).b);
-        if (??? == null)
-        {
-          ((bbsa)localObject4).jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-          ((bbsa)localObject4).jdField_d_of_type_Long = ((bbsa)localObject4).jdField_c_of_type_Long;
-        }
-        for (;;)
-        {
-          if ((((bbsa)localObject4).e == 1) || (((bbsa)localObject4).e == 3) || (((bbsa)localObject4).e == 2) || (((bbsa)localObject4).e == 12)) {
-            break label1743;
-          }
-          ??? = (bbsa)this.jdField_a_of_type_Bcmz.a.c.get(((bbsa)localObject4).b);
-          if (??? == null) {
-            break label2891;
-          }
-          ((bbsa)???).b((bbsa)localObject4);
-          localObject4 = ???;
-          ((bbsa)localObject4).a(this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Bcmz.a.b.put(((bbsa)localObject4).jdField_a_of_type_JavaUtilUUID, localObject4);
-          if (localbcna.jdField_a_of_type_JavaUtilMap.get(((bbsa)localObject4).b) == null)
-          {
-            localbcna.jdField_a_of_type_JavaUtilList.add(localObject4);
-            localbcna.jdField_a_of_type_JavaUtilMap.put(((bbsa)localObject4).b, localObject4);
-          }
-          this.jdField_a_of_type_Bcmz.a.c.put(((bbsa)localObject4).b, localObject4);
-          break;
-          ((bbsa)localObject4).jdField_a_of_type_JavaUtilUUID = ((bbtn)???).jdField_a_of_type_JavaUtilUUID;
-          ((bbsa)localObject4).a((bbtn)???, this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (((bbsa)localObject4).e == 9)
-          {
-            ??? = (bbsa)this.jdField_a_of_type_Bcmz.a.c.get(((bbtn)???).i);
-            if (??? != null) {
-              ((bbsa)???).a((bbsa)localObject4);
-            }
-          }
-        }
-      }
-      label1745:
-      int k;
-      if (!"/".equals(str))
-      {
-        localObject4 = (bbsa)this.jdField_a_of_type_Bcmz.a.c.get(str);
-        if (localObject4 != null)
-        {
-          ??? = ((bbsa)localObject4).jdField_a_of_type_JavaUtilMap.keySet();
-          localObject6 = new ArrayList();
-          ??? = ((Set)???).iterator();
-          while (((Iterator)???).hasNext()) {
-            ((List)localObject6).add((String)((Iterator)???).next());
-          }
-          int n = localbcna.jdField_a_of_type_JavaUtilList.size();
-          synchronized (this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager)
-          {
-            localObject6 = ((List)localObject6).iterator();
-            while (((Iterator)localObject6).hasNext())
+            if (QLog.isDevelopLevel())
             {
-              localObject7 = (String)((Iterator)localObject6).next();
-              int j = 0;
-              i = 0;
-              localObject7 = (bbsa)((bbsa)localObject4).jdField_a_of_type_JavaUtilMap.get(localObject7);
-              if (localObject7 != null)
-              {
-                if ((n <= 0) || (localbcna.jdField_a_of_type_JavaUtilList.get(n - 1) == null)) {
-                  break label2726;
-                }
-                int i1 = ((bbsa)localbcna.jdField_a_of_type_JavaUtilList.get(n - 1)).a();
-                if (((bbsa)localObject7).a() >= i1)
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("onRspFileListV2 failed, req for:");
+              ((StringBuilder)localObject5).append(n);
+              QLog.d("TroopFileManager", 4, ((StringBuilder)localObject5).toString());
+              continue;
+              localFileManagerStatus.e = false;
+              this.i.a.a(null, false, (String)localObject1, l);
+              continue;
+              localFileManagerStatus.j = 0L;
+              this.i.a.a(null, false, (String)localObject1, l);
+              continue;
+              if (localFileManagerStatus.g != null) {
+                if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
                 {
-                  k = 0;
-                  label1984:
-                  j = i;
-                  if (k < n)
-                  {
-                    if ((localObject7 == null) || (((bbsa)localObject7).b == null) || (localbcna.jdField_a_of_type_JavaUtilList.get(k) == null) || (!((bbsa)localObject7).b.equals(((bbsa)localbcna.jdField_a_of_type_JavaUtilList.get(k)).b))) {
-                      break label2723;
+                  localFileManagerStatus.i += 1;
+                  localFileManagerStatus.e = false;
+                  this.i.a.b((String)localObject1, l);
+                }
+                else
+                {
+                  localFileManagerStatus.e = false;
+                  localFileManagerStatus.i = 0;
+                  this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, (String)localObject1, l);
+                  continue;
+                  if (localFileManagerStatus.g != null) {
+                    if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+                    {
+                      localFileManagerStatus.i += 1;
+                      this.i.a.b((String)localObject1, l);
                     }
-                    i = 1;
-                    break label2894;
+                    else
+                    {
+                      localFileManagerStatus.i = 0;
+                      this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, (String)localObject1, l);
+                    }
                   }
-                }
-                i = j;
-                if (((bbsa)localObject7).a() <= i1)
-                {
-                  i = j;
-                  if (!this.jdField_b_of_type_Boolean) {
-                    i = 1;
-                  }
-                }
-                label2075:
-                if (i == 0)
-                {
-                  ((bbsa)localObject4).jdField_a_of_type_JavaUtilMap.remove(((bbsa)localObject7).b);
-                  this.jdField_a_of_type_Bcmz.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(((bbsa)localObject7).jdField_a_of_type_JavaUtilUUID, true);
                 }
               }
             }
-          }
-          this.jdField_a_of_type_Bcmz.a.d(localbbsa1);
-        }
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopFileManager", 4, "onRspFileListV2 failed, req for:" + m);
-        }
-      }
-      for (;;)
-      {
-        return;
-        localbcna.jdField_a_of_type_Long = 0L;
-        this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-        continue;
-        localbcna.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-        continue;
-        if (localbcna.jdField_a_of_type_JavaUtilList != null) {
-          if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
-          {
-            localbcna.d += 1;
-            this.jdField_a_of_type_Bcmz.a.b(str, l);
           }
           else
           {
-            localbcna.d = 0;
-            this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-            continue;
-            if (localbcna.jdField_a_of_type_JavaUtilList != null) {
-              if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
+            localObject5 = localObject1;
+            localFileManagerStatus.f = this.c;
+            localObject5 = localObject1;
+            if (this.d)
+            {
+              localObject5 = localObject1;
+              if (this.e != null)
               {
-                localbcna.d += 1;
-                localbcna.jdField_b_of_type_Boolean = false;
-                this.jdField_a_of_type_Bcmz.a.b(str, l);
-              }
-              else
-              {
-                localbcna.jdField_b_of_type_Boolean = false;
-                localbcna.d = 0;
-                this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
+                localObject5 = localObject1;
+                localFileManagerStatus.c = this.f;
+                localObject5 = localObject1;
+                localFileManagerStatus.b = this.g;
+                if (!bool) {
+                  continue;
+                }
+                localObject5 = localObject1;
+                localFileManagerStatus.a = this.h;
+                localObject5 = localObject1;
+                localObject7 = this.i.a.c();
+                localObject5 = localObject1;
+                localFileManagerStatus.g.clear();
+                localObject5 = localObject1;
+                localFileManagerStatus.h.clear();
+                localObject5 = localObject1;
+                localObject7 = ((Collection)localObject7).iterator();
+                localObject5 = localObject1;
+                if (!((Iterator)localObject7).hasNext()) {
+                  continue;
+                }
+                localObject5 = localObject1;
+                ??? = (TroopFileInfo)((Iterator)localObject7).next();
+                localObject5 = localObject1;
+                this.i.a.e.put(((TroopFileInfo)???).b, ???);
+                localObject5 = localObject1;
+                this.i.a.f.put(((TroopFileInfo)???).c, ???);
                 continue;
-                localbcna.jdField_a_of_type_Long = 0L;
-                this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-                break label974;
-                localbcna.jdField_b_of_type_Boolean = false;
-                this.jdField_a_of_type_Bcmz.a.a(null, false, str, l);
-                break label974;
-                if (localbcna.jdField_a_of_type_JavaUtilList == null) {
-                  break label974;
-                }
-                if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
+                localObject5 = localObject1;
+                localFileManagerStatus.c = this.f;
+                localObject5 = localObject1;
+                localObject9 = this.i.a.d.j();
+                localObject5 = localObject1;
+                localObject10 = this.e.iterator();
+                localObject5 = localObject1;
+                if (((Iterator)localObject10).hasNext())
                 {
-                  localbcna.d += 1;
-                  this.jdField_a_of_type_Bcmz.a.b(str, l);
-                  break label974;
-                }
-                localbcna.d = 0;
-                this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-                break label974;
-                if (localbcna.jdField_a_of_type_JavaUtilList == null) {
-                  break label974;
-                }
-                if ((localbcna.jdField_a_of_type_JavaUtilList.size() < 15) && (!localbcna.jdField_a_of_type_Boolean) && (localbcna.d <= 3))
-                {
-                  localbcna.d += 1;
-                  localbcna.jdField_b_of_type_Boolean = false;
-                  this.jdField_a_of_type_Bcmz.a.b(str, l);
-                  break label974;
-                }
-                localbcna.jdField_b_of_type_Boolean = false;
-                localbcna.d = 0;
-                this.jdField_a_of_type_Bcmz.a.a(localbcna.jdField_a_of_type_JavaUtilList, localbcna.jdField_a_of_type_Boolean, str, l);
-                break label974;
-                label2723:
-                break label2894;
-                label2726:
-                i = 0;
-                break label2075;
-                label2731:
-                switch (m)
-                {
-                }
-                break;
-                label2763:
-                switch (m)
-                {
-                }
-                break;
-                label2795:
-                switch (m)
-                {
-                }
-                break label514;
-                label2827:
-                switch (m)
-                {
-                }
-                break label514;
-                label2859:
-                switch (m)
-                {
-                }
-                break label974;
-                label2891:
-                break label1545;
-                label2894:
-                k += 1;
-                break label1984;
-                switch (m)
-                {
-                }
-                continue;
-                switch (m)
-                {
+                  localObject5 = localObject1;
+                  localObject7 = (TroopFileInfo)((Iterator)localObject10).next();
+                  localObject5 = localObject1;
+                  if (((TroopFileInfo)localObject7).B)
+                  {
+                    localObject5 = localObject1;
+                    if (((TroopFileInfo)localObject7).c == null) {
+                      continue;
+                    }
+                    localObject5 = localObject1;
+                    ??? = (TroopFileInfo)this.i.a.f.get(((TroopFileInfo)localObject7).c);
+                    if (??? == null)
+                    {
+                      localObject5 = localObject1;
+                      ((TroopFileInfo)localObject7).b = UUID.randomUUID();
+                      localObject5 = localObject1;
+                      this.i.a.f.put(((TroopFileInfo)localObject7).c, localObject7);
+                      localObject5 = localObject1;
+                      localObject11 = ((List)localObject9).iterator();
+                      ??? = localObject7;
+                      localObject5 = localObject1;
+                      if (((Iterator)localObject11).hasNext())
+                      {
+                        localObject5 = localObject1;
+                        ??? = (TroopFileStatusInfo)((Iterator)localObject11).next();
+                        localObject5 = localObject1;
+                        if (!((TroopFileInfo)localObject7).c.equals(((TroopFileStatusInfo)???).x)) {
+                          continue;
+                        }
+                        localObject5 = localObject1;
+                        TroopFileInfo localTroopFileInfo = new TroopFileInfo();
+                        localObject5 = localObject1;
+                        localTroopFileInfo.b = ((TroopFileStatusInfo)???).a;
+                        localObject5 = localObject1;
+                        localTroopFileInfo.c = ((TroopFileStatusInfo)???).r;
+                        localObject5 = localObject1;
+                        localTroopFileInfo.o = ((TroopFileStatusInfo)???).x;
+                        localObject5 = localObject1;
+                        localTroopFileInfo.a((TroopFileStatusInfo)???, this.i.a.c);
+                        localObject5 = localObject1;
+                        ((TroopFileInfo)localObject7).a(localTroopFileInfo);
+                        continue;
+                      }
+                    }
+                    else
+                    {
+                      localObject5 = localObject1;
+                      ((TroopFileInfo)???).b((TroopFileInfo)localObject7);
+                    }
+                    localObject5 = localObject1;
+                    this.i.a.e.put(((TroopFileInfo)???).b, ???);
+                    localObject5 = localObject1;
+                    if (localFileManagerStatus.h.get(((TroopFileInfo)???).c) == null)
+                    {
+                      localObject5 = localObject1;
+                      localFileManagerStatus.g.add(???);
+                      localObject5 = localObject1;
+                      localFileManagerStatus.h.put(((TroopFileInfo)???).c, ???);
+                    }
+                    localObject5 = localObject1;
+                    this.i.a.f.put(((TroopFileInfo)???).c, ???);
+                    continue;
+                  }
+                  localObject5 = localObject1;
+                  if (QLog.isColorLevel())
+                  {
+                    localObject5 = localObject1;
+                    ??? = new StringBuilder();
+                    localObject5 = localObject1;
+                    ((StringBuilder)???).append("onRspFileListV2: fileName = ");
+                    localObject5 = localObject1;
+                    ((StringBuilder)???).append(((TroopFileInfo)localObject7).d);
+                    localObject5 = localObject1;
+                    ((StringBuilder)???).append(", filePath = ");
+                    localObject5 = localObject1;
+                    ((StringBuilder)???).append(((TroopFileInfo)localObject7).c);
+                    localObject5 = localObject1;
+                    ((StringBuilder)???).append(", sha = ");
+                    localObject5 = localObject1;
+                    ((StringBuilder)???).append(((TroopFileInfo)localObject7).l);
+                    localObject5 = localObject1;
+                    QLog.e("TroopFileManager", 2, ((StringBuilder)???).toString());
+                  }
+                  localObject5 = localObject1;
+                  ??? = this.i.a.d.a(((TroopFileInfo)localObject7).c);
+                  if (??? == null)
+                  {
+                    localObject5 = localObject1;
+                    ((TroopFileInfo)localObject7).b = UUID.randomUUID();
+                  }
                 }
               }
             }
           }
         }
+        finally
+        {
+          int j;
+          Object localObject9;
+          Object localObject10;
+          Object localObject11;
+          int i1;
+          int i2;
+          int m;
+          int k;
+          Object localObject6;
+          continue;
+          if (n == 1) {
+            continue;
+          }
+          if (n == 3) {
+            continue;
+          }
+          continue;
+        }
+        try
+        {
+          ((TroopFileInfo)localObject7).r = ((TroopFileInfo)localObject7).h;
+          continue;
+          ((TroopFileInfo)localObject7).b = ((TroopFileStatusInfo)???).a;
+          ((TroopFileInfo)localObject7).a((TroopFileStatusInfo)???, this.i.a.c);
+          if (((TroopFileInfo)localObject7).p == 9)
+          {
+            localObject5 = (TroopFileInfo)this.i.a.f.get(((TroopFileStatusInfo)???).x);
+            if (localObject5 != null) {
+              ((TroopFileInfo)localObject5).a((TroopFileInfo)localObject7);
+            }
+          }
+          if ((((TroopFileInfo)localObject7).p == 1) || (((TroopFileInfo)localObject7).p == 3) || (((TroopFileInfo)localObject7).p == 2) || (((TroopFileInfo)localObject7).p == 12)) {
+            continue;
+          }
+          localObject5 = (TroopFileInfo)this.i.a.f.get(((TroopFileInfo)localObject7).c);
+          if (localObject5 == null) {
+            continue;
+          }
+          ((TroopFileInfo)localObject5).b((TroopFileInfo)localObject7);
+          ((TroopFileInfo)localObject5).c(this.i.a.c, this.i.a.b);
+          this.i.a.e.put(((TroopFileInfo)localObject5).b, localObject5);
+          if (localFileManagerStatus.h.get(((TroopFileInfo)localObject5).c) == null)
+          {
+            localFileManagerStatus.g.add(localObject5);
+            localFileManagerStatus.h.put(((TroopFileInfo)localObject5).c, localObject5);
+          }
+          this.i.a.f.put(((TroopFileInfo)localObject5).c, localObject5);
+        }
+        finally
+        {
+          localObject3 = finally;
+          continue;
+          if (n == 1) {
+            continue;
+          }
+          if (n == 3) {
+            continue;
+          }
+          continue;
+          if (n == 1) {
+            continue;
+          }
+          if (n == 3) {
+            continue;
+          }
+        }
       }
-      label2963:
-      switch (m)
+      localObject5 = localObject1;
+      if (!"/".equals(localObject5))
       {
+        localObject7 = (TroopFileInfo)this.i.a.f.get(localObject5);
+        if (localObject7 != null)
+        {
+          ??? = ((TroopFileInfo)localObject7).D.keySet();
+          localObject9 = new ArrayList();
+          ??? = ((Set)???).iterator();
+          while (((Iterator)???).hasNext()) {
+            ((List)localObject9).add((String)((Iterator)???).next());
+          }
+          i1 = localFileManagerStatus.g.size();
+          synchronized (this.i.a.d)
+          {
+            localObject9 = ((List)localObject9).iterator();
+            if (((Iterator)localObject9).hasNext())
+            {
+              localObject10 = (String)((Iterator)localObject9).next();
+              localObject10 = (TroopFileInfo)((TroopFileInfo)localObject7).D.get(localObject10);
+              if (localObject10 == null) {
+                break label3081;
+              }
+              if (i1 <= 0) {
+                break label3076;
+              }
+              localObject11 = localFileManagerStatus.g;
+              j = i1 - 1;
+              if (((List)localObject11).get(j) == null) {
+                break label3076;
+              }
+              i2 = ((TroopFileInfo)localFileManagerStatus.g.get(j)).d();
+              if (((TroopFileInfo)localObject10).d() < i2) {
+                break label3071;
+              }
+              m = 0;
+              j = 0;
+              k = j;
+              if (m < i1)
+              {
+                k = j;
+                if (localObject10 == null) {
+                  break label3062;
+                }
+                k = j;
+                if (((TroopFileInfo)localObject10).c == null) {
+                  break label3062;
+                }
+                k = j;
+                if (localFileManagerStatus.g.get(m) == null) {
+                  break label3062;
+                }
+                k = j;
+                if (!((TroopFileInfo)localObject10).c.equals(((TroopFileInfo)localFileManagerStatus.g.get(m)).c)) {
+                  break label3062;
+                }
+                k = 1;
+                break label3062;
+              }
+              j = k;
+              if (((TroopFileInfo)localObject10).d() <= i2)
+              {
+                j = k;
+                if (!this.f) {
+                  j = 1;
+                }
+              }
+              if (j != 0) {
+                break label3081;
+              }
+              ((TroopFileInfo)localObject7).D.remove(((TroopFileInfo)localObject10).c);
+              this.i.a.d.a(((TroopFileInfo)localObject10).b, true);
+              break label3081;
+            }
+            this.i.a.e((TroopFileInfo)localObject7);
+          }
+        }
+      }
+      if (!this.d) {
+        if (QLog.isDevelopLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("onRspFileListV2 failed, req for:");
+          ((StringBuilder)localObject1).append(n);
+          QLog.d("TroopFileManager", 4, ((StringBuilder)localObject1).toString());
+          break label3084;
+          localFileManagerStatus.e = false;
+          this.i.a.a(null, false, str, l);
+          break label2333;
+          localFileManagerStatus.j = 0L;
+          this.i.a.a(null, false, str, l);
+          break label2333;
+          if (localFileManagerStatus.g != null) {
+            if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+            {
+              localFileManagerStatus.i += 1;
+              localFileManagerStatus.e = false;
+              this.i.a.b(str, l);
+            }
+            else
+            {
+              localFileManagerStatus.e = false;
+              localFileManagerStatus.i = 0;
+              this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, str, l);
+              break label2333;
+              if (localFileManagerStatus.g != null) {
+                if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+                {
+                  localFileManagerStatus.i += 1;
+                  this.i.a.b(str, l);
+                }
+                else
+                {
+                  localFileManagerStatus.i = 0;
+                  this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, str, l);
+                }
+              }
+            }
+          }
+          return;
+          if (this.d) {
+            break label3138;
+          }
+          if (!QLog.isDevelopLevel()) {
+            break label3123;
+          }
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("onRspFileListV2 failed, req for:");
+          ((StringBuilder)localObject6).append(n);
+          QLog.d("TroopFileManager", 4, ((StringBuilder)localObject6).toString());
+          break label3123;
+          localFileManagerStatus.e = false;
+          this.i.a.a(null, false, (String)localObject1, l);
+          break label2654;
+          localFileManagerStatus.j = 0L;
+          this.i.a.a(null, false, (String)localObject1, l);
+          break label2654;
+          if (localFileManagerStatus.g != null) {
+            if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+            {
+              localFileManagerStatus.i += 1;
+              localFileManagerStatus.e = false;
+              this.i.a.b((String)localObject1, l);
+            }
+            else
+            {
+              localFileManagerStatus.e = false;
+              localFileManagerStatus.i = 0;
+              this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, (String)localObject1, l);
+              break label2654;
+              if (localFileManagerStatus.g != null) {
+                if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+                {
+                  localFileManagerStatus.i += 1;
+                  this.i.a.b((String)localObject1, l);
+                }
+                else
+                {
+                  localFileManagerStatus.i = 0;
+                  this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, (String)localObject1, l);
+                }
+              }
+            }
+          }
+          return;
+          if (!this.d)
+          {
+            if (!QLog.isDevelopLevel()) {
+              break label3158;
+            }
+            localObject7 = new StringBuilder();
+            ((StringBuilder)localObject7).append("onRspFileListV2 failed, req for:");
+            ((StringBuilder)localObject7).append(n);
+            QLog.d("TroopFileManager", 4, ((StringBuilder)localObject7).toString());
+            break label3158;
+            localFileManagerStatus.e = false;
+            this.i.a.a(null, false, (String)localObject6, l);
+            break label2987;
+            localFileManagerStatus.j = 0L;
+            this.i.a.a(null, false, (String)localObject6, l);
+          }
+          else if (n != 1)
+          {
+            if ((n == 3) && (localFileManagerStatus.g != null)) {
+              if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+              {
+                localFileManagerStatus.i += 1;
+                localFileManagerStatus.e = false;
+                this.i.a.b((String)localObject6, l);
+              }
+              else
+              {
+                localFileManagerStatus.e = false;
+                localFileManagerStatus.i = 0;
+                this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, (String)localObject6, l);
+              }
+            }
+          }
+          else if (localFileManagerStatus.g != null)
+          {
+            if ((localFileManagerStatus.g.size() < 15) && (!localFileManagerStatus.c) && (localFileManagerStatus.i <= 3))
+            {
+              localFileManagerStatus.i += 1;
+              this.i.a.b((String)localObject6, l);
+            }
+            else
+            {
+              localFileManagerStatus.i = 0;
+              this.i.a.a(localFileManagerStatus.g, localFileManagerStatus.c, (String)localObject6, l);
+            }
+          }
+          throw ((Throwable)localObject1);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.5.1
  * JD-Core Version:    0.7.0.1
  */

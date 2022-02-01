@@ -8,56 +8,56 @@ import java.util.Set;
 
 public final class b
 {
-  private int mID;
+  private int OyW;
+  private long OyX;
+  private HashMap<Integer, Long> OyY;
   private long mInterval;
-  private long qrF;
-  private HashMap<Integer, Long> qrG;
   
   public b()
   {
-    AppMethodBeat.i(115098);
-    this.qrG = new HashMap();
-    this.mID = 463;
+    AppMethodBeat.i(125118);
+    this.OyY = new HashMap();
+    this.OyW = 463;
     this.mInterval = 300000L;
-    AppMethodBeat.o(115098);
+    AppMethodBeat.o(125118);
   }
   
-  private void Y(int paramInt, long paramLong)
+  private void aS(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(115100);
-    Long localLong = (Long)this.qrG.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(125120);
+    Long localLong = (Long)this.OyY.get(Integer.valueOf(paramInt));
     long l = paramLong;
     if (localLong != null) {
       l = paramLong + localLong.longValue();
     }
-    this.qrG.put(Integer.valueOf(paramInt), Long.valueOf(l));
-    AppMethodBeat.o(115100);
+    this.OyY.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    AppMethodBeat.o(125120);
   }
   
-  public final void h(int paramInt1, int paramInt2, long paramLong)
+  public final void u(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(115099);
+    AppMethodBeat.i(125119);
     try
     {
-      Y(paramInt1, paramLong);
-      Y(paramInt2, 1L);
+      aS(paramInt1, paramLong);
+      aS(paramInt2, 1L);
       paramLong = System.currentTimeMillis();
-      if (paramLong - this.qrF > this.mInterval)
+      if (paramLong - this.OyX > this.mInterval)
       {
-        Iterator localIterator = this.qrG.entrySet().iterator();
+        Iterator localIterator = this.OyY.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          e.qrI.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
+          f.Ozc.idkeyStat(this.OyW, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
         }
-        this.qrF = paramLong;
+        this.OyX = paramLong;
       }
     }
     finally
     {
-      AppMethodBeat.o(115099);
+      AppMethodBeat.o(125119);
     }
-    AppMethodBeat.o(115099);
+    AppMethodBeat.o(125119);
   }
 }
 

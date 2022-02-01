@@ -1,204 +1,231 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import android.content.Context;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.g.a.ra;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.avh;
-import com.tencent.mm.protocal.protobuf.avi;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.wallet_core.c.k;
-import com.tencent.mm.wallet_core.c.u;
-import java.util.Arrays;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.c.e;
+import com.tencent.mm.wallet_core.c.f;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
-import org.json.JSONObject;
 
-public abstract class z
-  extends u
+public final class z
+  implements com.tencent.mm.am.h, e
 {
-  private f callback;
-  public k jumpRemind;
-  b rr;
+  private f Ktp;
+  private Context mContext;
+  private String mProcessName;
+  private HashSet<p> qhX;
+  private HashSet<p> qhY;
+  private Set<Integer> qhZ;
+  private com.tencent.mm.ui.base.w tipDialog;
   
-  public abstract String bhG();
-  
-  public int bhH()
+  public z(Context paramContext, f paramf)
   {
-    return -1;
+    AppMethodBeat.i(65230);
+    this.Ktp = null;
+    this.qhX = new HashSet();
+    this.qhY = new HashSet();
+    this.tipDialog = null;
+    this.qhZ = new HashSet();
+    this.mContext = paramContext;
+    this.Ktp = paramf;
+    AppMethodBeat.o(65230);
   }
   
-  public int doScene(e parame, f paramf)
+  private void k(p paramp)
   {
-    this.callback = paramf;
-    return dispatch(parame, this.rr, this);
+    AppMethodBeat.i(65238);
+    if ((paramp != null) && ((paramp instanceof com.tencent.mm.wallet_core.model.w))) {
+      ((com.tencent.mm.wallet_core.model.w)paramp).setProcessName(this.mProcessName);
+    }
+    AppMethodBeat.o(65238);
   }
   
-  public int getCgicmdForKV()
+  public final void addSceneEndListener(int paramInt)
   {
-    return bhH();
+    AppMethodBeat.i(65234);
+    this.qhZ.add(Integer.valueOf(paramInt));
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(paramInt, this);
+    AppMethodBeat.o(65234);
   }
   
-  public final boolean isJumpRemind()
+  public final void b(p paramp, boolean paramBoolean)
   {
-    return this.jumpRemind != null;
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
-  {
-    ab.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + bhH() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
-    paramq = (avi)((b)paramq).fsW.fta;
-    int i;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(65231);
+    k(paramp);
+    this.qhX.add(paramp);
+    if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
-      paramInt1 = paramq.xkM;
-      String str = aa.b(paramq.xkL);
-      if ((paramInt1 == 0) && (!bo.isNullOrNil(str)))
+      if (this.tipDialog != null) {
+        this.tipDialog.dismiss();
+      }
+      this.tipDialog = k.a(this.mContext, this.mContext.getString(a.i.loading_tips), false, new DialogInterface.OnCancelListener()
       {
-        i = paramq.cpX;
-        for (;;)
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          try
+          AppMethodBeat.i(65228);
+          z.this.forceCancel();
+          AppMethodBeat.o(65228);
+        }
+      });
+    }
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(paramp, 0);
+    AppMethodBeat.o(65231);
+  }
+  
+  public final void doSceneProgress(p paramp, boolean paramBoolean)
+  {
+    AppMethodBeat.i(65232);
+    Log.d("MicroMsg.WalletNetSceneMgr", "isShowProgress ".concat(String.valueOf(paramBoolean)));
+    k(paramp);
+    this.qhY.add(paramp);
+    if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
+    {
+      if (this.tipDialog != null) {
+        this.tipDialog.dismiss();
+      }
+      this.tipDialog = k.a(this.mContext, 3, this.mContext.getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(65229);
+          if ((z.a(z.this) != null) && (z.b(z.this).isEmpty()))
           {
-            localJSONObject = new JSONObject(str);
-            paramInt1 = localJSONObject.getInt("retcode");
-            paramArrayOfByte = paramq.errorMsg;
-            paramq = paramArrayOfByte;
-            if (bo.isNullOrNil(paramArrayOfByte)) {
-              paramq = localJSONObject.optString("retmsg");
+            z.a(z.this).dismiss();
+            paramAnonymousDialogInterface = z.c(z.this).iterator();
+            while (paramAnonymousDialogInterface.hasNext())
+            {
+              p localp = (p)paramAnonymousDialogInterface.next();
+              com.tencent.mm.kernel.h.baF();
+              com.tencent.mm.kernel.h.baD().mCm.a(localp);
             }
-            this.jumpRemind = k.aX(localJSONObject);
-            if ((!localJSONObject.has("showmess")) || (paramInt1 == 268502454)) {
-              continue;
-            }
-            ab.i("MicroMsg.NetSceneLuckyMoneyBase", "has alert item");
-            paramq = ao.a(null, localJSONObject);
-            paramArrayOfByte = new ra();
-            paramArrayOfByte.cHy.cHz = paramq;
-            a.ymk.l(paramArrayOfByte);
+            z.c(z.this).clear();
           }
-          catch (Exception paramString)
-          {
-            JSONObject localJSONObject;
-            label270:
-            ab.printErrStackTrace("MicroMsg.NetSceneLuckyMoneyBase", paramString, "", new Object[0]);
-            paramInt2 = 1000;
-            paramInt3 = 2;
-            paramString = ah.getContext().getString(2131305032);
-            continue;
-            paramInt2 = 1000;
-            if (i != 0) {
-              break label485;
-            }
-          }
-          ab.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + bhH() + ", tenpayErrType : " + i + ", resp = " + str);
-          if (paramInt2 != 0) {
-            ab.e("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + bhH() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
-          }
-          this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-          return;
-          if ((paramInt1 != 0) || (i != 0)) {
-            continue;
-          }
-          onGYNetEnd(paramInt1, paramq, localJSONObject);
+          AppMethodBeat.o(65229);
+        }
+      });
+    }
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(paramp, 0);
+    AppMethodBeat.o(65232);
+  }
+  
+  public final void fXe()
+  {
+    AppMethodBeat.i(65239);
+    if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
+      this.tipDialog.dismiss();
+    }
+    AppMethodBeat.o(65239);
+  }
+  
+  public final void forceCancel()
+  {
+    AppMethodBeat.i(65233);
+    if (this.tipDialog != null)
+    {
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
+    }
+    Iterator localIterator = this.qhX.iterator();
+    p localp;
+    while (localIterator.hasNext())
+    {
+      localp = (p)localIterator.next();
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(localp);
+    }
+    localIterator = this.qhY.iterator();
+    while (localIterator.hasNext())
+    {
+      localp = (p)localIterator.next();
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(localp);
+    }
+    this.qhX.clear();
+    this.qhY.clear();
+    AppMethodBeat.o(65233);
+  }
+  
+  public final boolean isProcessing()
+  {
+    AppMethodBeat.i(65237);
+    if ((this.qhY.isEmpty()) && (this.qhX.isEmpty()))
+    {
+      AppMethodBeat.o(65237);
+      return false;
+    }
+    AppMethodBeat.o(65237);
+    return true;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(65236);
+    int i;
+    if (this.qhY.contains(paramp))
+    {
+      this.qhY.remove(paramp);
+      Log.d("MicroMsg.WalletNetSceneMgr", "has find scene ");
+      i = 1;
+    }
+    for (;;)
+    {
+      if ((this.qhY.isEmpty()) && (this.qhX.isEmpty())) {
+        if (this.tipDialog != null)
+        {
+          this.tipDialog.dismiss();
+          this.tipDialog = null;
         }
       }
-    }
-    label485:
-    for (paramInt1 = -1000;; paramInt1 = i)
-    {
-      paramString = paramq;
-      paramInt3 = paramInt1;
-      break;
-      paramInt2 = 1000;
-      paramInt3 = 2;
-      paramString = paramq.xkN;
-      break label270;
-      paramString = br.F(paramString, "e");
-      if (paramString != null)
+      for (boolean bool = true;; bool = false)
       {
-        ab.d("MicroMsg.NetSceneLuckyMoneyBase", "CDN error!");
-        paramString = (String)paramString.get(".e.Content");
-        break label270;
+        if ((i != 0) && (this.Ktp != null)) {
+          this.Ktp.onSceneEnd(paramInt1, paramInt2, paramString, paramp, bool);
+        }
+        AppMethodBeat.o(65236);
+        return;
+        if (!this.qhX.contains(paramp)) {
+          break label154;
+        }
+        this.qhX.remove(paramp);
+        Log.d("MicroMsg.WalletNetSceneMgr", "has find forcescenes ");
+        i = 1;
+        break;
       }
-      paramString = ah.getContext().getString(2131305032);
-      break label270;
+      label154:
+      i = 0;
     }
   }
   
-  public abstract void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject);
-  
-  public final void setRequestData(Map<String, String> paramMap)
+  public final void removeSceneEndListener(int paramInt)
   {
-    Object localObject1 = r.Zn();
-    g.RM();
-    localObject1 = ((j)g.E(j.class)).YA().arw((String)localObject1);
-    if (localObject1 != null)
+    AppMethodBeat.i(65235);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(paramInt, this);
+    this.qhZ.remove(Integer.valueOf(paramInt));
+    if (this.qhZ.isEmpty())
     {
-      paramMap.put("province", ((ad)localObject1).dwD());
-      paramMap.put("city", ((ad)localObject1).getCityCode());
+      forceCancel();
+      this.Ktp = null;
+      this.mContext = null;
     }
-    if (this.rr == null)
-    {
-      localObject1 = new b.a();
-      ((b.a)localObject1).fsX = new avh();
-      ((b.a)localObject1).fsY = new avi();
-      ((b.a)localObject1).uri = bhG();
-      ((b.a)localObject1).funcId = getType();
-      ((b.a)localObject1).reqCmdId = 0;
-      ((b.a)localObject1).respCmdId = 0;
-      this.rr = ((b.a)localObject1).ado();
-      this.rr.setIsUserCmd(true);
-    }
-    localObject1 = (avh)this.rr.fsV.fta;
-    ((avh)localObject1).xkI = bhH();
-    ((avh)localObject1).xkJ = 1;
-    Object[] arrayOfObject = paramMap.keySet().toArray();
-    Arrays.sort(arrayOfObject);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    int k;
-    for (int j = 0; i < arrayOfObject.length; j = k)
-    {
-      Object localObject2 = arrayOfObject[i];
-      String str = (String)paramMap.get(localObject2);
-      k = j;
-      if (!bo.isNullOrNil(str))
-      {
-        if (j != 0) {
-          localStringBuilder.append("&");
-        }
-        localStringBuilder.append(localObject2);
-        localStringBuilder.append("=");
-        localStringBuilder.append(str);
-        k = 1;
-      }
-      i += 1;
-    }
-    ab.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + ((avh)localObject1).xkI + ", req = " + localStringBuilder.toString());
-    paramMap = localStringBuilder.toString().getBytes();
-    ((avh)localObject1).xkK = new SKBuiltinBuffer_t().setBuffer(paramMap);
+    AppMethodBeat.o(65235);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.z
  * JD-Core Version:    0.7.0.1
  */

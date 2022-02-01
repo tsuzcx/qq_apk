@@ -30,15 +30,16 @@ public final class LinesSequence$iterator$1
   @NotNull
   public String next()
   {
-    if (!hasNext()) {
-      throw ((Throwable)new NoSuchElementException());
+    if (hasNext())
+    {
+      String str = this.nextValue;
+      this.nextValue = ((String)null);
+      if (str == null) {
+        Intrinsics.throwNpe();
+      }
+      return str;
     }
-    String str = this.nextValue;
-    this.nextValue = ((String)null);
-    if (str == null) {
-      Intrinsics.throwNpe();
-    }
-    return str;
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -48,7 +49,7 @@ public final class LinesSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.LinesSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

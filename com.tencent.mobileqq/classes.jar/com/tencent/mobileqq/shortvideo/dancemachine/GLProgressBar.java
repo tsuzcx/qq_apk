@@ -57,8 +57,8 @@ public class GLProgressBar
     float f3 = this.mSizeRegion.top;
     float f4 = this.mBackgroundView.mSizeRegion.top;
     Object localObject = this.mBackgroundView.getCurrentDrawRegionSize();
-    this.mClipRegion.left = (f1 - f2 + ((RectF)localObject).left);
-    this.mClipRegion.top = (f3 - f4 + ((RectF)localObject).top);
+    this.mClipRegion.left = (((RectF)localObject).left + (f1 - f2));
+    this.mClipRegion.top = (((RectF)localObject).top + (f3 - f4));
     this.mClipRegion.right = (this.mClipRegion.left + this.mSizeRegion.width());
     this.mClipRegion.bottom = (this.mClipRegion.top + this.mSizeRegion.height());
     localObject = this.mBackgroundView.mColor;
@@ -155,18 +155,24 @@ public class GLProgressBar
   
   public void setProgress(long paramLong)
   {
-    if (this.mProgress < this.mMaxProgress)
+    long l = this.mProgress;
+    int i = this.mMaxProgress;
+    if (l < i)
     {
       this.mProgress = paramLong;
-      if (this.mProgress > this.mMaxProgress) {
-        this.mProgress = this.mMaxProgress;
+      if (this.mProgress > i) {
+        this.mProgress = i;
       }
       this.mProgressChanged = true;
-    }
-    while ((this.mProgress < this.mMaxProgress) || (this.mListener == null)) {
       return;
     }
-    this.mListener.progressMax();
+    if (l >= i)
+    {
+      GLProgressBar.ProgressBarListener localProgressBarListener = this.mListener;
+      if (localProgressBarListener != null) {
+        localProgressBarListener.progressMax();
+      }
+    }
   }
   
   public void setProgressBarListener(GLProgressBar.ProgressBarListener paramProgressBarListener)
@@ -235,11 +241,13 @@ public class GLProgressBar
     this.mVertexPointCache[1].set(this.mClipRegion.left, this.mClipRegion.bottom);
     this.mVertexPointCache[2].set(this.mClipRegion.left + this.mStretchLeft, this.mClipRegion.top);
     this.mVertexPointCache[3].set(this.mClipRegion.left + this.mStretchLeft, this.mClipRegion.bottom);
-    f2 += this.mClipRegion.left + this.mStretchLeft;
+    f2 = this.mClipRegion.left + this.mStretchLeft + f2;
     this.mVertexPointCache[4].set(f2, this.mClipRegion.top);
     this.mVertexPointCache[5].set(f2, this.mClipRegion.bottom);
-    this.mVertexPointCache[6].set(f2 + f1, this.mClipRegion.top);
-    this.mVertexPointCache[7].set(f1 + f2, this.mClipRegion.bottom);
+    PointF localPointF = this.mVertexPointCache[6];
+    f1 = f2 + f1;
+    localPointF.set(f1, this.mClipRegion.top);
+    this.mVertexPointCache[7].set(f1, this.mClipRegion.bottom);
     this.mVertexBuffer.position(0);
     setVertexCoordinateData(this.mZOrderValue);
     this.mVertexBuffer.put(0.0F);
@@ -278,7 +286,7 @@ public class GLProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar
  * JD-Core Version:    0.7.0.1
  */

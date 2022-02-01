@@ -13,100 +13,108 @@ import java.net.UnknownHostException;
 public class TraceThread
   extends Thread
 {
-  private int jdField_a_of_type_Int;
-  private TraceConstants.TraceMethod jdField_a_of_type_ComTencentMobileqqUtilsTracerouteTraceConstants$TraceMethod;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Handler> a;
+  private String b;
+  private int c;
+  private TraceConstants.TraceMethod d;
   
   private String a(String paramString)
   {
-    return c("ping " + paramString + " -c " + this.jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ping ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" -c ");
+    localStringBuilder.append(this.c);
+    return c(localStringBuilder.toString());
   }
   
   private void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    Message localMessage;
-    do
-    {
+    if (this.a == null) {
       return;
-      localMessage = new Message();
-      localMessage.what = paramInt;
-      localMessage.obj = paramString;
-      paramString = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramString == null);
-    paramString.sendMessage(localMessage);
+    }
+    Message localMessage = new Message();
+    localMessage.what = paramInt;
+    localMessage.obj = paramString;
+    paramString = (Handler)this.a.get();
+    if (paramString != null) {
+      paramString.sendMessage(localMessage);
+    }
   }
   
   @SuppressLint({"all"})
   private String b(String paramString)
   {
-    return c("/data/data/com.tencent.mobileqq/traceroute " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/data/data/com.tencent.mobileqq/traceroute ");
+    localStringBuilder.append(paramString);
+    return c(localStringBuilder.toString());
   }
   
   private String c(String paramString)
   {
-    String str2 = "";
-    String str1 = str2;
-    for (;;)
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    try
     {
-      try
+      Process localProcess = Runtime.getRuntime().exec(paramString);
+      localObject1 = localObject2;
+      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
+      localObject1 = localObject2;
+      String str2 = localBufferedReader.readLine();
+      paramString = (String)localObject2;
+      String str1 = str2;
+      if (str2 == null)
       {
-        localProcess = Runtime.getRuntime().exec(paramString);
-        str1 = str2;
-        localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
-        str1 = str2;
-        paramString = localBufferedReader.readLine();
-        if (paramString != null) {
-          break label157;
-        }
-        str1 = str2;
+        localObject1 = localObject2;
         localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getErrorStream()));
-        str1 = str2;
-        str2 = localBufferedReader.readLine();
-        paramString = "";
-        str1 = str2;
-        if (str1 == null) {}
+        localObject1 = localObject2;
+        str1 = localBufferedReader.readLine();
+        paramString = (String)localObject2;
       }
-      catch (IOException localIOException1)
+      while (str1 != null)
       {
-        Process localProcess;
-        BufferedReader localBufferedReader;
-        paramString = str1;
-        localIOException1.printStackTrace();
-        return paramString;
+        localObject1 = paramString;
+        localObject2 = new StringBuilder();
+        localObject1 = paramString;
+        ((StringBuilder)localObject2).append(paramString);
+        localObject1 = paramString;
+        ((StringBuilder)localObject2).append(str1);
+        localObject1 = paramString;
+        ((StringBuilder)localObject2).append("\r\n");
+        localObject1 = paramString;
+        paramString = ((StringBuilder)localObject2).toString();
+        localObject1 = paramString;
+        str1 = localBufferedReader.readLine();
       }
-      try
-      {
-        str1 = paramString + str1 + "\r\n";
-        paramString = str1;
-        str1 = paramString;
-        str2 = localBufferedReader.readLine();
-        str1 = str2;
-      }
-      catch (IOException localIOException2)
-      {
-        continue;
-      }
+      localObject1 = paramString;
       localBufferedReader.close();
+      localObject1 = paramString;
       localProcess.destroy();
       return paramString;
-      label157:
-      str2 = "";
-      str1 = paramString;
-      paramString = str2;
     }
+    catch (IOException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localObject1;
   }
   
   public void run()
   {
-    Object localObject;
     try
     {
-      setName("trace-" + this.jdField_a_of_type_JavaLangString);
-      localObject = InetAddress.getByName(this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsTracerouteTraceConstants$TraceMethod == TraceConstants.TraceMethod.UDP) {}
-      for (localObject = b(((InetAddress)localObject).getHostAddress()); ((String)localObject).length() > 0; localObject = a(this.jdField_a_of_type_JavaLangString))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("trace-");
+      ((StringBuilder)localObject).append(this.b);
+      setName(((StringBuilder)localObject).toString());
+      localObject = InetAddress.getByName(this.b);
+      if (this.d == TraceConstants.TraceMethod.UDP) {
+        localObject = b(((InetAddress)localObject).getHostAddress());
+      } else {
+        localObject = a(this.b);
+      }
+      if (((String)localObject).length() > 0)
       {
         a((String)localObject, TraceConstants.TraceAction.TRACE_COMPLETE.ordinal());
         return;
@@ -117,24 +125,24 @@ public class TraceThread
     catch (UnknownHostException localUnknownHostException)
     {
       localUnknownHostException.printStackTrace();
-      localObject = "";
     }
     try
     {
-      String str = localUnknownHostException.getMessage();
-      localObject = str;
+      str = localUnknownHostException.getMessage();
     }
     catch (Exception localException)
     {
-      label111:
-      break label111;
+      String str;
+      label115:
+      break label115;
     }
-    a((String)localObject, TraceConstants.TraceAction.TRACE_ERROR.ordinal());
+    str = "";
+    a(str, TraceConstants.TraceAction.TRACE_ERROR.ordinal());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.traceroute.TraceThread
  * JD-Core Version:    0.7.0.1
  */

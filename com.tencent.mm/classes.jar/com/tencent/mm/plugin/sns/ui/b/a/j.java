@@ -1,64 +1,130 @@
 package com.tencent.mm.plugin.sns.ui.b.a;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ui.c.a.a;
-import com.tencent.mm.plugin.sns.ui.c.a.e;
+import com.tencent.mm.plugin.sns.ui.b.b.b.a;
+import com.tencent.mm.plugin.sns.ui.c.a.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.aw;
 
 public final class j
   extends b
 {
-  private ValueAnimator seV;
-  private ValueAnimator seW;
-  private AnimatorSet seX;
-  ViewGroup seY;
-  int[] sfd;
-  FrameLayout.LayoutParams sfg;
-  LinearLayout.LayoutParams sfk;
-  e sfr;
+  private AnimatorSet Div;
+  ViewGroup RIA;
+  LinearLayout.LayoutParams RIB;
+  FrameLayout.LayoutParams RIC;
+  private ValueAnimator RIs;
+  private ValueAnimator RIw;
+  h RIz;
+  int[] bfh;
   
-  public j(MMActivity paramMMActivity, a parama)
+  public j(final MMActivity paramMMActivity, com.tencent.mm.plugin.sns.ui.c.a.b paramb)
   {
-    AppMethodBeat.i(40044);
-    this.sfd = new int[2];
-    this.hwZ = paramMMActivity;
-    this.sfr = ((e)parama);
-    this.seV = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.seV.addUpdateListener(new j.1(this));
-    this.seV.setDuration(400L);
-    this.seW = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.seW.addUpdateListener(new j.2(this));
-    this.seW.setDuration(100L);
-    this.sfk = ((LinearLayout.LayoutParams)this.sfr.contentView.getLayoutParams());
-    this.seY = ((FrameLayout)this.hwZ.getBodyView().getParent());
-    this.seX = new AnimatorSet();
-    this.seX.playTogether(new Animator[] { this.seV, this.seW });
-    this.seX.addListener(new j.3(this, paramMMActivity));
-    AppMethodBeat.o(40044);
+    AppMethodBeat.i(99947);
+    this.bfh = new int[2];
+    this.activity = paramMMActivity;
+    this.RIz = ((h)paramb);
+    this.RIs = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    this.RIs.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(99943);
+        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        if (f != 1.0D)
+        {
+          j.this.RIz.contentView.setScaleX(f);
+          j.this.RIz.contentView.setScaleY(f);
+          j.this.RIz.contentView.setAlpha(f);
+        }
+        AppMethodBeat.o(99943);
+      }
+    });
+    this.RIs.setDuration(400L);
+    this.RIw = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    this.RIw.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(99944);
+        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        j.this.RIz.RKf.setAlpha(f);
+        j.this.RIz.RKe.setAlpha(f);
+        AppMethodBeat.o(99944);
+      }
+    });
+    this.RIw.setDuration(100L);
+    this.RIB = ((LinearLayout.LayoutParams)this.RIz.contentView.getLayoutParams());
+    this.RIA = ((FrameLayout)this.activity.getBodyView().getParent());
+    this.Div = new AnimatorSet();
+    this.Div.playTogether(new Animator[] { this.RIs, this.RIw });
+    this.Div.addListener(new AnimatorListenerAdapter()
+    {
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(99946);
+        Log.i("MicroMsg.TurnCardAdDetailClickAnimation", "onAnimation end");
+        ((ViewGroup)j.this.activity.getBodyView().getParent()).removeView(j.this.RIz.contentView);
+        ((ViewGroup)j.this.RIz.RoA).addView(j.this.RIz.contentView, j.this.RIB);
+        j.this.RIz.contentView.setScaleX(1.0F);
+        j.this.RIz.contentView.setScaleY(1.0F);
+        j.this.RIz.contentView.setAlpha(1.0F);
+        j.this.RIz.RKf.setAlpha(1.0F);
+        j.this.RIz.RKe.setAlpha(1.0F);
+        if (j.this.RIn != null) {
+          j.this.RIn.onAnimationEnd();
+        }
+        AppMethodBeat.o(99946);
+      }
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(99945);
+        Log.i("MicroMsg.TurnCardAdDetailClickAnimation", "onAnimation start");
+        j.this.RIz.contentView.getLocationInWindow(j.this.bfh);
+        Log.i("MicroMsg.TurnCardAdDetailClickAnimation", "location in window %s, %s", new Object[] { Integer.valueOf(j.this.bfh[0]), Integer.valueOf(j.this.bfh[1]) });
+        ((ViewGroup)j.this.RIz.RoA).removeView(j.this.RIz.contentView);
+        paramAnonymousAnimator = j.this.RIz.RoA.getLayoutParams();
+        paramAnonymousAnimator.width = j.this.RIz.contentView.getWidth();
+        paramAnonymousAnimator.height = (j.this.RIz.contentView.getHeight() + j.this.RIB.topMargin + j.this.RIB.bottomMargin);
+        j.this.RIz.RoA.setLayoutParams(paramAnonymousAnimator);
+        j.this.RIC = new FrameLayout.LayoutParams(-2, -2);
+        j.this.RIC.leftMargin = j.this.bfh[0];
+        j.this.RIC.rightMargin = (j.this.RIA.getWidth() - j.this.RIC.leftMargin - j.this.RIz.contentView.getWidth());
+        j.this.RIC.topMargin = (j.this.bfh[1] - aw.getStatusBarHeight(paramMMActivity));
+        j.this.RIC.bottomMargin = (j.this.RIA.getHeight() - j.this.RIC.topMargin - j.this.RIz.contentView.getHeight());
+        j.this.RIA.addView(j.this.RIz.contentView, j.this.RIC);
+        AppMethodBeat.o(99945);
+      }
+    });
+    AppMethodBeat.o(99947);
   }
   
-  public final void mi(long paramLong)
+  public final void vz(long paramLong)
   {
-    AppMethodBeat.i(40045);
-    if (!this.seX.isStarted())
+    AppMethodBeat.i(99948);
+    if (!this.Div.isStarted())
     {
-      this.seX.setStartDelay(paramLong);
-      this.seX.start();
+      this.Div.setStartDelay(paramLong);
+      this.Div.start();
     }
-    AppMethodBeat.o(40045);
+    AppMethodBeat.o(99948);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.a.j
  * JD-Core Version:    0.7.0.1
  */

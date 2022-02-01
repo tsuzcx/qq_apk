@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.apollo.script;
 
-import alax;
-import albn;
-
-public class SpriteBridge$1
+class SpriteBridge$1
   implements Runnable
 {
-  public SpriteBridge$1(alax paramalax, SpriteTaskParam paramSpriteTaskParam) {}
+  SpriteBridge$1(SpriteBridge paramSpriteBridge, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (alax.a(this.this$0) != null)
+    if (SpriteBridge.a(this.this$0) != null)
     {
-      if (alax.a(this.this$0).a()) {
-        this.a.j = 1;
+      if (SpriteBridge.a(this.this$0).c()) {
+        this.a.p = 1;
       }
-      this.a.a = this.this$0;
-      alax.a(this.this$0).a(this.a);
+      SpriteTaskParam localSpriteTaskParam = this.a;
+      SpriteBridge localSpriteBridge = this.this$0;
+      localSpriteTaskParam.u = localSpriteBridge;
+      SpriteBridge.a(localSpriteBridge).b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteBridge.1
  * JD-Core Version:    0.7.0.1
  */

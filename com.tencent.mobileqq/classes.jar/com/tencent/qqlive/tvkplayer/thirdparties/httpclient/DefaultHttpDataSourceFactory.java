@@ -39,8 +39,9 @@ public final class DefaultHttpDataSourceFactory
   protected DefaultHttpDataSource createDataSourceInternal(int paramInt, HttpDataSource.RequestProperties paramRequestProperties)
   {
     paramRequestProperties = new DefaultHttpDataSource(this.userAgent, null, paramInt, paramInt, this.allowCrossProtocolRedirects, paramRequestProperties);
-    if (this.listener != null) {
-      paramRequestProperties.addTransferListener(this.listener);
+    TransferListener localTransferListener = this.listener;
+    if (localTransferListener != null) {
+      paramRequestProperties.addTransferListener(localTransferListener);
     }
     return paramRequestProperties;
   }
@@ -48,15 +49,16 @@ public final class DefaultHttpDataSourceFactory
   protected DefaultHttpDataSource createDataSourceInternal(HttpDataSource.RequestProperties paramRequestProperties)
   {
     paramRequestProperties = new DefaultHttpDataSource(this.userAgent, null, this.connectTimeoutMillis, this.readTimeoutMillis, this.allowCrossProtocolRedirects, paramRequestProperties);
-    if (this.listener != null) {
-      paramRequestProperties.addTransferListener(this.listener);
+    TransferListener localTransferListener = this.listener;
+    if (localTransferListener != null) {
+      paramRequestProperties.addTransferListener(localTransferListener);
     }
     return paramRequestProperties;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.DefaultHttpDataSourceFactory
  * JD-Core Version:    0.7.0.1
  */

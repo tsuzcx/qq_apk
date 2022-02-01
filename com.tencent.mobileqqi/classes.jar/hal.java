@@ -1,47 +1,26 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper;
-import com.tencent.mobileqq.util.FetchInfoListManager.FetchInfoListener;
-import com.tencent.mobileqq.util.FetchInfoReq;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.FetchInfoListManager;
+import java.util.LinkedList;
 
 public class hal
-  implements FetchInfoListManager.FetchInfoListener
+  extends Handler
 {
-  public hal(FetchBuddyAndTroopNameHelper paramFetchBuddyAndTroopNameHelper) {}
-  
-  public void a(FetchInfoReq paramFetchInfoReq)
+  public hal(FetchInfoListManager paramFetchInfoListManager, Looper paramLooper)
   {
-    if ((paramFetchInfoReq == null) || (!paramFetchInfoReq.a())) {}
-    TroopHandler localTroopHandler;
-    do
-    {
-      do
-      {
-        return;
-        localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(1);
-        localTroopHandler = (TroopHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(19);
-      } while ((localObject == null) || (localTroopHandler == null));
-      if (QLog.isColorLevel()) {
-        QLog.d(FetchBuddyAndTroopNameHelper.a(), 2, StringUtil.a(new Object[] { "fetchInfo()", paramFetchInfoReq.toString() }));
-      }
-      if (paramFetchInfoReq.f == 2)
-      {
-        localTroopHandler.j(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (paramFetchInfoReq.f == 1)
-      {
-        ((FriendListHandler)localObject).a(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramFetchInfoReq.f != 3);
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-    localTroopHandler.a(paramFetchInfoReq.b, (String)paramFetchInfoReq.jdField_a_of_type_JavaLangObject, (ArrayList)localObject);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      FetchInfoListManager.a(this.a);
+    }
+    while ((paramMessage.what != 2) || (FetchInfoListManager.a(this.a) == null)) {
+      return;
+    }
+    FetchInfoListManager.a(this.a).remove(paramMessage.obj);
   }
 }
 

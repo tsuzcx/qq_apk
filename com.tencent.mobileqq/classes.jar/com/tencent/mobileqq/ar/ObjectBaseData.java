@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.ar;
 
-import alud;
-import amyi;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,50 +10,44 @@ import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public abstract class ObjectBaseData
 {
   public float A;
   public float B;
-  public float C;
-  public float D;
+  public int C;
+  public int D;
   public float E;
   public float F;
-  public float G;
+  public int G;
   public float H;
   public float I;
   public float J;
   public float K;
   public float L;
-  public float M = 1.0F;
-  public float N;
-  public float O;
-  public float P;
-  public float Q;
-  public float R;
-  public float S;
-  public float T;
-  public float U;
+  public String M;
+  public String N;
+  public String O;
+  public boolean P;
+  public boolean Q;
+  public String R;
+  public RectF S;
+  public boolean T;
+  public String U;
   public float V;
   public float W;
   public float X;
   public float Y;
   public float Z;
   public float a;
-  public int a;
-  public Context a;
-  public Paint a;
-  public RectF a;
-  public TextPaint a;
-  public String a;
-  public boolean a;
   public float aA;
-  public float aB;
+  public int aB;
   public float aC;
   public float aD;
   public float aE;
   public float aF;
-  public float aG;
+  public int aG;
   public float aH;
   public float aI;
   public float aJ;
@@ -69,20 +61,20 @@ public abstract class ObjectBaseData
   public float aR;
   public float aS;
   public float aT;
-  public float aU;
+  public int aU;
   public float aV;
   public float aW;
   public float aX;
-  public float aY;
+  public int aY;
   public float aZ;
   public float aa;
   public float ab;
   public float ac;
-  public float ad;
+  public int ad;
   public float ae;
   public float af;
   public float ag;
-  public float ah;
+  public float ah = 1.0F;
   public float ai;
   public float aj;
   public float ak;
@@ -92,7 +84,7 @@ public abstract class ObjectBaseData
   public float ao;
   public float ap;
   public float aq;
-  public float ar;
+  public int ar;
   public float as;
   public float at;
   public float au;
@@ -102,41 +94,44 @@ public abstract class ObjectBaseData
   public float ay;
   public float az;
   public float b;
-  public int b;
-  public Paint b;
-  public TextPaint b;
-  public String b;
-  public boolean b;
   public float bA;
   public float bB;
-  public float bC;
+  public int bC;
   public float bD;
   public float bE;
   public float bF;
   public float bG;
   public float bH;
   public float bI;
-  public float bJ;
+  public int bJ;
   public float bK;
-  public float bL;
+  public float bL = 1.0F;
   public float bM;
   public float bN;
   public float bO;
   public float bP;
   public float bQ;
   public float bR;
+  public int bS;
+  public int bT;
+  public int bU;
+  public float bV;
+  public float bW;
+  public float bX;
+  public float bY;
+  public float bZ;
   public float ba;
   public float bb;
-  public float bc;
-  public float bd;
+  public String bc = HardCodeUtil.a(2131905506);
+  public String bd = "YANG YANG";
   public float be;
   public float bf;
-  public float bg = 1.0F;
+  public float bg;
   public float bh;
   public float bi;
   public float bj;
   public float bk;
-  public float bl;
+  public int bl;
   public float bm;
   public float bn;
   public float bo;
@@ -151,76 +146,80 @@ public abstract class ObjectBaseData
   public float bx;
   public float by;
   public float bz;
-  public float c;
-  public int c;
-  public Paint c;
-  public String c;
   public boolean c;
-  public float d;
-  public int d;
-  public Paint d;
-  public String d;
+  public float cA;
+  public float cB;
+  public int cC;
+  public float cD;
+  public float cE;
+  public float cF;
+  public float cG;
+  public Paint cH;
+  public Paint cI;
+  public Paint cJ;
+  public Paint cK;
+  public Paint cL;
+  public Paint cM;
+  public Paint cN;
+  public Paint cO;
+  public Paint cP;
+  public TextPaint cQ;
+  public Paint cR;
+  public Paint cS;
+  public Paint cT;
+  public Paint cU;
+  public Paint cV;
+  public Paint cW;
+  public TextPaint cX;
+  public Paint cY;
+  public Paint cZ;
+  public float ca;
+  public String cb;
+  public String cc;
+  public float cd;
+  public float ce;
+  public float cf;
+  public float cg;
+  public float ch;
+  public float ci;
+  public float cj;
+  public float ck;
+  public float cl;
+  public int cm;
+  public float cn;
+  public float co;
+  public float cp;
+  public int cq;
+  public float cr;
+  public float cs;
+  public float ct;
+  public float cu;
+  public float cv;
+  public int cw;
+  public float cx;
+  public int cy;
+  public float cz;
   public boolean d;
-  public float e;
-  public int e;
-  public Paint e;
-  public String e;
-  public boolean e;
-  public float f;
-  public int f;
-  public Paint f;
-  public String f;
+  public Paint da;
+  public Paint db;
+  public float e = 1.0F;
   public boolean f;
-  public float g;
-  public int g;
-  public Paint g;
-  public String g;
   public boolean g;
-  public float h;
-  public int h;
-  public Paint h;
-  public String h;
   public boolean h;
-  public float i;
-  public int i;
-  public Paint i;
-  public String i;
+  public Context i;
   public float j;
-  public int j;
-  public Paint j;
   public float k;
-  public int k;
-  public Paint k;
   public float l;
-  public int l;
-  public Paint l;
-  public float m;
-  public int m;
-  public Paint m;
+  public float m = 1.0F;
   public float n;
-  public int n;
-  public Paint n;
   public float o;
-  public int o;
-  public Paint o;
   public float p;
-  public int p;
-  public Paint p;
   public float q;
-  public int q;
-  public Paint q;
   public float r;
-  public int r;
-  public Paint r;
   public float s;
-  public int s;
-  public Paint s;
-  public float t;
   public int t;
-  public float u;
   public int u;
   public float v;
-  public int v;
   public float w;
   public float x;
   public float y;
@@ -228,552 +227,549 @@ public abstract class ObjectBaseData
   
   public ObjectBaseData(Context paramContext)
   {
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_g_of_type_Float = 1.0F;
-    this.jdField_f_of_type_JavaLangString = alud.a(2131708083);
-    this.jdField_g_of_type_JavaLangString = "YANG YANG";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.i = paramContext;
     a();
     u();
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    Object localObject = this.i;
+    if (localObject != null)
     {
-      WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+      localObject = (WindowManager)((Context)localObject).getSystemService("window");
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      localWindowManager.getDefaultDisplay().getMetrics(localDisplayMetrics);
-      this.jdField_d_of_type_Float = localDisplayMetrics.widthPixels;
-      this.jdField_e_of_type_Float = localDisplayMetrics.heightPixels;
+      ((WindowManager)localObject).getDefaultDisplay().getMetrics(localDisplayMetrics);
+      this.j = localDisplayMetrics.widthPixels;
+      this.k = localDisplayMetrics.heightPixels;
     }
     v();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(amyi.jdField_b_of_type_Int);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_f_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_g_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_g_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_g_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_g_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_h_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_h_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_h_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_h_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_h_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_i_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_i_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.SQUARE);
-    this.jdField_i_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_i_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_i_of_type_AndroidGraphicsPaint.setColor(this.jdField_l_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(this.jdField_i_of_type_AndroidGraphicsPaint);
-    this.jdField_j_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_j_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.SQUARE);
-    this.jdField_j_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_j_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_j_of_type_AndroidGraphicsPaint.setColor(this.jdField_l_of_type_Int);
-    this.jdField_k_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_k_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.SQUARE);
-    this.jdField_k_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_k_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_k_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_k_of_type_AndroidGraphicsPaint.setStrokeWidth(this.bb);
-    this.jdField_l_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_l_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_l_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_l_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_l_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_m_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_m_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_m_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_m_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_m_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_m_of_type_AndroidGraphicsPaint.setColor(this.jdField_o_of_type_Int);
-    this.jdField_n_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_n_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.SQUARE);
-    this.jdField_n_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_n_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_n_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.jdField_o_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_o_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.SQUARE);
-    this.jdField_o_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_o_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_o_of_type_AndroidGraphicsPaint.setColor(this.jdField_r_of_type_Int);
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint(this.jdField_o_of_type_AndroidGraphicsPaint);
-    this.jdField_p_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_p_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_p_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_p_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_q_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_q_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_q_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_q_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_q_of_type_AndroidGraphicsPaint.setColor(this.t);
-    this.jdField_q_of_type_AndroidGraphicsPaint.setStrokeWidth(this.bJ);
-    this.jdField_r_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_r_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_r_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_r_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_r_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_r_of_type_AndroidGraphicsPaint.setColor(this.jdField_u_of_type_Int);
-    this.jdField_s_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_s_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_s_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_s_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_s_of_type_AndroidGraphicsPaint.setColor(this.jdField_v_of_type_Int);
-    this.jdField_s_of_type_AndroidGraphicsPaint.setStrokeWidth(this.bN);
+    this.cH = new Paint();
+    this.cH.setStrokeCap(Paint.Cap.ROUND);
+    this.cH.setAntiAlias(true);
+    this.cH.setStyle(Paint.Style.STROKE);
+    this.cH.setDither(true);
+    this.cI = new Paint();
+    this.cI.setStrokeCap(Paint.Cap.ROUND);
+    this.cI.setAntiAlias(true);
+    this.cI.setStyle(Paint.Style.FILL);
+    this.cI.setDither(true);
+    this.cI.setStrokeWidth(ObjectBaseData.Dip2PxCache.b);
+    this.cJ = new Paint();
+    this.cJ.setStrokeCap(Paint.Cap.ROUND);
+    this.cJ.setAntiAlias(true);
+    this.cJ.setStyle(Paint.Style.STROKE);
+    this.cJ.setDither(true);
+    this.cK = new Paint();
+    this.cK.setStrokeCap(Paint.Cap.ROUND);
+    this.cK.setAntiAlias(true);
+    this.cK.setStyle(Paint.Style.STROKE);
+    this.cK.setDither(true);
+    this.cL = new Paint();
+    this.cL.setStrokeCap(Paint.Cap.ROUND);
+    this.cL.setAntiAlias(true);
+    this.cL.setStyle(Paint.Style.STROKE);
+    this.cL.setDither(true);
+    this.cM = new Paint();
+    this.cM.setStrokeCap(Paint.Cap.ROUND);
+    this.cM.setAntiAlias(true);
+    this.cM.setStyle(Paint.Style.STROKE);
+    this.cM.setDither(true);
+    this.cN = new Paint();
+    this.cN.setStrokeCap(Paint.Cap.ROUND);
+    this.cN.setAntiAlias(true);
+    this.cN.setStyle(Paint.Style.STROKE);
+    this.cN.setDither(true);
+    this.cO = new Paint();
+    this.cO.setStrokeCap(Paint.Cap.ROUND);
+    this.cO.setAntiAlias(true);
+    this.cO.setStyle(Paint.Style.FILL);
+    this.cO.setDither(true);
+    this.cP = new Paint();
+    this.cP.setStrokeCap(Paint.Cap.SQUARE);
+    this.cP.setAntiAlias(true);
+    this.cP.setDither(true);
+    this.cP.setColor(this.bl);
+    this.cQ = new TextPaint(this.cP);
+    this.cR = new Paint();
+    this.cR.setStrokeCap(Paint.Cap.SQUARE);
+    this.cR.setAntiAlias(true);
+    this.cR.setDither(true);
+    this.cR.setColor(this.bl);
+    this.cS = new Paint();
+    this.cS.setStrokeCap(Paint.Cap.SQUARE);
+    this.cS.setAntiAlias(true);
+    this.cS.setDither(true);
+    this.cS.setColor(-1);
+    this.cS.setStrokeWidth(this.bF);
+    this.cT = new Paint();
+    this.cT.setStrokeCap(Paint.Cap.ROUND);
+    this.cT.setAntiAlias(true);
+    this.cT.setDither(true);
+    this.cT.setColor(-1);
+    this.cU = new Paint();
+    this.cU.setStrokeCap(Paint.Cap.ROUND);
+    this.cU.setAntiAlias(true);
+    this.cU.setStyle(Paint.Style.FILL);
+    this.cU.setDither(true);
+    this.cU.setColor(this.bS);
+    this.cV = new Paint();
+    this.cV.setStrokeCap(Paint.Cap.SQUARE);
+    this.cV.setAntiAlias(true);
+    this.cV.setDither(true);
+    this.cV.setColor(-16777216);
+    this.cW = new Paint();
+    this.cW.setStrokeCap(Paint.Cap.SQUARE);
+    this.cW.setAntiAlias(true);
+    this.cW.setDither(true);
+    this.cW.setColor(this.cm);
+    this.cX = new TextPaint(this.cW);
+    this.cY = new Paint();
+    this.cY.setAntiAlias(true);
+    this.cY.setDither(true);
+    this.cY.setColor(-1);
+    this.cZ = new Paint();
+    this.cZ.setAntiAlias(true);
+    this.cZ.setDither(true);
+    this.cZ.setStyle(Paint.Style.STROKE);
+    this.cZ.setColor(this.cw);
+    this.cZ.setStrokeWidth(this.cv);
+    this.da = new Paint();
+    this.da.setAntiAlias(true);
+    this.da.setStrokeCap(Paint.Cap.ROUND);
+    this.da.setDither(true);
+    this.da.setStyle(Paint.Style.FILL);
+    this.da.setColor(this.cy);
+    this.db = new Paint();
+    this.db.setAntiAlias(true);
+    this.db.setDither(true);
+    this.db.setStyle(Paint.Style.STROKE);
+    this.db.setColor(this.cC);
+    this.db.setStrokeWidth(this.cB);
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
-    this.jdField_f_of_type_Float *= paramFloat;
-    this.jdField_i_of_type_Float *= paramFloat;
-    this.jdField_n_of_type_Float *= paramFloat;
-    this.B *= paramFloat;
-    this.E *= paramFloat;
-    this.L *= paramFloat;
-    this.P *= paramFloat;
-    this.X *= paramFloat;
+    this.e = paramFloat;
+    this.l *= paramFloat;
+    this.o *= paramFloat;
+    this.v *= paramFloat;
+    this.V *= paramFloat;
     this.Y *= paramFloat;
     this.ag *= paramFloat;
-    this.ai *= paramFloat;
-    this.am *= paramFloat;
-    this.an *= paramFloat;
-    this.ay *= paramFloat;
-    this.aB *= paramFloat;
-    this.aH *= paramFloat;
+    this.ak *= paramFloat;
+    this.at *= paramFloat;
+    this.au *= paramFloat;
     this.aD *= paramFloat;
-    this.aE *= paramFloat;
-    this.aM *= paramFloat;
-    this.aN *= paramFloat;
-    this.aQ *= paramFloat;
-    this.aR *= paramFloat;
-    this.aJ = (this.aL * paramFloat);
-    this.aO = (this.aP * paramFloat);
-    this.aH *= paramFloat;
-    this.aS *= paramFloat;
-    this.aT *= paramFloat;
-    this.aU *= paramFloat;
+    this.aF *= paramFloat;
+    this.aK *= paramFloat;
+    this.aL *= paramFloat;
     this.aX *= paramFloat;
-    this.aY *= paramFloat;
     this.bb *= paramFloat;
-    this.bd *= paramFloat;
-    this.be *= paramFloat;
+    this.bj *= paramFloat;
     this.bf *= paramFloat;
-    this.bh *= paramFloat;
+    this.bg *= paramFloat;
+    this.bp *= paramFloat;
+    this.bq *= paramFloat;
+    this.bt *= paramFloat;
+    this.bu *= paramFloat;
+    this.bm = (this.bo * paramFloat);
+    this.br = (this.bs * paramFloat);
+    this.bj *= paramFloat;
+    this.bv *= paramFloat;
+    this.bw *= paramFloat;
+    this.bx *= paramFloat;
+    this.bA *= paramFloat;
+    this.bB *= paramFloat;
+    this.bF *= paramFloat;
+    this.bH *= paramFloat;
     this.bI *= paramFloat;
-    this.bJ *= paramFloat;
     this.bK *= paramFloat;
     this.bM *= paramFloat;
-    this.bN *= paramFloat;
-    this.bQ *= paramFloat;
-    this.bR *= paramFloat;
+    this.cu *= paramFloat;
+    this.cv *= paramFloat;
+    this.cx *= paramFloat;
+    this.cA *= paramFloat;
+    this.cB *= paramFloat;
+    this.cF *= paramFloat;
+    this.cG *= paramFloat;
   }
   
   public abstract void a(boolean paramBoolean);
   
   public void b()
   {
-    this.jdField_f_of_type_Float = amyi.I;
-    this.jdField_i_of_type_Float = amyi.jdField_h_of_type_Int;
-    this.jdField_n_of_type_Float = amyi.jdField_i_of_type_Int;
-    this.B = amyi.L;
-    this.E = amyi.jdField_c_of_type_Int;
-    this.L = amyi.G;
-    this.O = amyi.H;
-    this.P = amyi.jdField_b_of_type_Int;
-    this.X = amyi.G;
-    this.Y = amyi.jdField_c_of_type_Int;
-    this.ag = amyi.G;
-    this.ai = amyi.jdField_u_of_type_Int;
-    this.am = amyi.jdField_q_of_type_Int;
-    this.an = amyi.jdField_b_of_type_Int;
-    this.ay = amyi.jdField_c_of_type_Int;
-    this.aB = amyi.jdField_k_of_type_Int;
-    this.aH = amyi.x;
-    this.aD = amyi.C;
-    this.aE = amyi.jdField_u_of_type_Int;
-    this.aL = amyi.x;
-    this.aM = amyi.x;
-    this.aN = amyi.jdField_p_of_type_Int;
-    this.aP = amyi.jdField_r_of_type_Int;
-    this.aQ = amyi.jdField_r_of_type_Int;
-    this.aR = amyi.jdField_j_of_type_Int;
-    this.aH = amyi.jdField_r_of_type_Int;
-    this.aS = amyi.jdField_k_of_type_Int;
-    this.aT = amyi.jdField_m_of_type_Int;
-    this.aU = 0.0F;
-    this.aX = amyi.jdField_m_of_type_Int;
-    this.aY = amyi.jdField_b_of_type_Int;
-    this.bb = amyi.jdField_a_of_type_Int;
-    this.bd = amyi.A;
-    this.be = amyi.jdField_o_of_type_Int;
-    this.bf = amyi.jdField_f_of_type_Int;
-    this.bh = amyi.jdField_d_of_type_Int;
-    this.bI = amyi.F;
-    this.bJ = amyi.jdField_e_of_type_Int;
-    this.bK = amyi.jdField_h_of_type_Int;
-    this.bM = amyi.y;
-    this.bN = amyi.jdField_c_of_type_Int;
-    this.bQ = amyi.jdField_v_of_type_Int;
-    this.bR = amyi.D;
+    this.l = ObjectBaseData.Dip2PxCache.I;
+    this.o = ObjectBaseData.Dip2PxCache.h;
+    this.v = ObjectBaseData.Dip2PxCache.i;
+    this.V = ObjectBaseData.Dip2PxCache.L;
+    this.Y = ObjectBaseData.Dip2PxCache.c;
+    this.ag = ObjectBaseData.Dip2PxCache.G;
+    this.aj = ObjectBaseData.Dip2PxCache.H;
+    this.ak = ObjectBaseData.Dip2PxCache.b;
+    this.at = ObjectBaseData.Dip2PxCache.G;
+    this.au = ObjectBaseData.Dip2PxCache.c;
+    this.aD = ObjectBaseData.Dip2PxCache.G;
+    this.aF = ObjectBaseData.Dip2PxCache.u;
+    this.aK = ObjectBaseData.Dip2PxCache.q;
+    this.aL = ObjectBaseData.Dip2PxCache.b;
+    this.aX = ObjectBaseData.Dip2PxCache.c;
+    this.bb = ObjectBaseData.Dip2PxCache.k;
+    this.bj = ObjectBaseData.Dip2PxCache.x;
+    this.bf = ObjectBaseData.Dip2PxCache.C;
+    this.bg = ObjectBaseData.Dip2PxCache.u;
+    this.bo = ObjectBaseData.Dip2PxCache.x;
+    this.bp = ObjectBaseData.Dip2PxCache.x;
+    this.bq = ObjectBaseData.Dip2PxCache.p;
+    this.bs = ObjectBaseData.Dip2PxCache.r;
+    this.bt = ObjectBaseData.Dip2PxCache.r;
+    this.bu = ObjectBaseData.Dip2PxCache.j;
+    this.bj = ObjectBaseData.Dip2PxCache.r;
+    this.bv = ObjectBaseData.Dip2PxCache.k;
+    this.bw = ObjectBaseData.Dip2PxCache.m;
+    this.bx = 0.0F;
+    this.bA = ObjectBaseData.Dip2PxCache.m;
+    this.bB = ObjectBaseData.Dip2PxCache.b;
+    this.bF = ObjectBaseData.Dip2PxCache.a;
+    this.bH = ObjectBaseData.Dip2PxCache.A;
+    this.bI = ObjectBaseData.Dip2PxCache.o;
+    this.bK = ObjectBaseData.Dip2PxCache.f;
+    this.bM = ObjectBaseData.Dip2PxCache.d;
+    this.cu = ObjectBaseData.Dip2PxCache.F;
+    this.cv = ObjectBaseData.Dip2PxCache.e;
+    this.cx = ObjectBaseData.Dip2PxCache.h;
+    this.cA = ObjectBaseData.Dip2PxCache.y;
+    this.cB = ObjectBaseData.Dip2PxCache.c;
+    this.cF = ObjectBaseData.Dip2PxCache.v;
+    this.cG = ObjectBaseData.Dip2PxCache.D;
   }
   
   public void setBCAlpha(float paramFloat)
   {
-    this.jdField_v_of_type_Float = paramFloat;
+    this.F = paramFloat;
   }
   
   public void setBCColor(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.G = paramInt;
   }
   
   public void setBCRotate(float paramFloat)
   {
-    this.jdField_h_of_type_Float = paramFloat;
+    this.n = paramFloat;
   }
   
   public void setBCScale(float paramFloat)
   {
-    this.jdField_g_of_type_Float = paramFloat;
+    this.m = paramFloat;
   }
   
   public void setBCWidth(float paramFloat)
   {
-    this.jdField_i_of_type_Float = paramFloat;
+    this.o = paramFloat;
   }
   
   public void setBTAlpha(float paramFloat)
   {
-    this.jdField_u_of_type_Float = paramFloat;
+    this.E = paramFloat;
   }
   
   public void setCenterX(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
   }
   
   public void setCenterY(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.b = paramFloat;
   }
   
   public void setFCAlpha(float paramFloat)
   {
-    this.bk = paramFloat;
+    this.bP = paramFloat;
   }
   
   public void setFCPositionY(float paramFloat)
   {
-    this.bj = paramFloat;
+    this.bO = paramFloat;
   }
   
   public void setFLAlpha(float paramFloat)
   {
-    this.bc = paramFloat;
+    this.bG = paramFloat;
   }
   
   public void setFLPAlpha(float paramFloat)
   {
-    this.bi = paramFloat;
+    this.bN = paramFloat;
   }
   
   public void setFNCHAlpha(float paramFloat)
   {
-    this.aV = paramFloat;
+    this.by = paramFloat;
   }
   
   public void setFNENAlpha(float paramFloat)
   {
-    this.aW = paramFloat;
+    this.bz = paramFloat;
   }
   
   public void setFPAlpha(float paramFloat)
   {
-    this.bH = paramFloat;
+    this.ct = paramFloat;
   }
   
   public void setFPOutCircleAlpha(float paramFloat)
   {
-    this.bO = paramFloat;
+    this.cD = paramFloat;
   }
   
   public void setFPOutCircleScale(float paramFloat)
   {
-    this.bP = paramFloat;
+    this.cE = paramFloat;
   }
   
   public void setIBCAlpha(float paramFloat)
   {
-    this.W = paramFloat;
+    this.as = paramFloat;
   }
   
   public void setIBCRotate(float paramFloat)
   {
-    this.N = paramFloat;
+    this.ai = paramFloat;
   }
   
   public void setIBCScale(float paramFloat)
   {
-    this.M = paramFloat;
+    this.ah = paramFloat;
   }
   
   public void setISCAlpha(float paramFloat)
   {
-    this.af = paramFloat;
+    this.aC = paramFloat;
   }
   
   public void setMainFace(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setMaskScale(float paramFloat)
   {
-    this.aA = paramFloat;
+    this.ba = paramFloat;
   }
   
   public void setOCAlpha(float paramFloat)
   {
-    this.J = paramFloat;
+    this.ae = paramFloat;
   }
   
   public void setOCRotate(float paramFloat)
   {
-    this.D = paramFloat;
+    this.X = paramFloat;
   }
   
   public void setOCScale(float paramFloat)
   {
-    this.C = paramFloat;
+    this.W = paramFloat;
   }
   
   public void setOtherScale(float paramFloat)
   {
-    this.bg = paramFloat;
+    this.bL = paramFloat;
   }
   
   public void setSCAlpha(float paramFloat)
   {
-    this.aw = paramFloat;
+    this.aV = paramFloat;
   }
   
   public void setSCRotate(float paramFloat)
   {
-    this.al = paramFloat;
+    this.aJ = paramFloat;
   }
   
   public void setSCScale(float paramFloat)
   {
-    this.ak = paramFloat;
+    this.aI = paramFloat;
   }
   
   public void setSDAlpha(float paramFloat)
   {
-    this.az = paramFloat;
+    this.aZ = paramFloat;
   }
   
   public void setSDScale(float paramFloat)
   {
-    this.ax = paramFloat;
+    this.aW = paramFloat;
   }
   
   public void setTCAlpha(float paramFloat)
   {
-    this.aj = paramFloat;
+    this.aH = paramFloat;
   }
   
   public void setTCScale(float paramFloat)
   {
-    this.ah = paramFloat;
+    this.aE = paramFloat;
   }
   
   public void u() {}
   
   public void v()
   {
-    this.jdField_f_of_type_Float = amyi.I;
-    this.jdField_i_of_type_Float = amyi.jdField_h_of_type_Int;
-    this.jdField_j_of_type_Float = 234.0F;
-    this.jdField_k_of_type_Float = 36.0F;
-    this.jdField_l_of_type_Float = 54.0F;
-    this.jdField_m_of_type_Float = 216.0F;
-    this.jdField_a_of_type_Int = Color.argb(255, 30, 255, 236);
-    this.jdField_b_of_type_Int = Color.argb(255, 0, 191, 255);
-    this.jdField_n_of_type_Float = amyi.jdField_i_of_type_Int;
-    this.jdField_o_of_type_Float = ((this.jdField_j_of_type_Float + this.jdField_m_of_type_Float) / 2.0F);
-    this.jdField_p_of_type_Float = ((this.jdField_k_of_type_Float + this.jdField_l_of_type_Float) / 2.0F);
-    this.jdField_c_of_type_Int = Color.argb(255, 30, 255, 236);
-    this.jdField_d_of_type_Int = Color.argb(255, 0, 191, 255);
-    this.jdField_e_of_type_Int = Color.argb(255, 30, 255, 236);
-    this.jdField_v_of_type_Float = 0.0F;
-    this.jdField_u_of_type_Float = 0.0F;
-    this.B = amyi.L;
-    this.E = amyi.jdField_c_of_type_Int;
-    this.F = 160.0F;
-    this.G = 290.0F;
-    this.H = 340.0F;
-    this.I = 110.0F;
-    this.jdField_f_of_type_Int = -1;
-    this.J = 102.0F;
-    this.K = amyi.M;
-    this.L = amyi.G;
-    this.O = amyi.H;
-    this.P = amyi.jdField_b_of_type_Int;
-    this.Q = 32.0F;
-    this.R = 138.0F;
-    this.S = 272.0F;
-    this.T = 18.0F;
-    this.U = 152.0F;
-    this.V = 258.0F;
-    this.jdField_g_of_type_Int = -1;
-    this.W = 0.0F;
-    this.X = amyi.G;
-    this.Y = amyi.jdField_c_of_type_Int;
-    this.Z = 60.0F;
-    this.aa = 100.0F;
-    this.ab = 300.0F;
-    this.ac = 340.0F;
-    this.ad = 180.0F;
-    this.ae = 220.0F;
-    this.jdField_h_of_type_Int = -1;
-    this.af = 0.0F;
-    this.ag = amyi.G;
-    this.ai = amyi.jdField_u_of_type_Int;
-    this.jdField_i_of_type_Int = -1;
-    this.aj = 0.0F;
-    this.am = amyi.jdField_q_of_type_Int;
-    this.an = amyi.jdField_b_of_type_Int;
-    this.ao = 183.0F;
-    this.ap = 267.0F;
-    this.aq = 93.0F;
-    this.ar = 177.0F;
-    this.as = 273.0F;
-    this.at = 357.0F;
-    this.au = 3.0F;
-    this.av = 87.0F;
-    this.jdField_j_of_type_Int = -1;
-    this.aw = 0.0F;
-    this.ay = amyi.jdField_c_of_type_Int;
-    this.jdField_k_of_type_Int = -1;
-    this.az = 0.0F;
-    this.aB = amyi.jdField_k_of_type_Int;
-    this.jdField_l_of_type_Int = -1;
-    this.aH = amyi.x;
-    this.aD = amyi.C;
-    this.aE = amyi.jdField_u_of_type_Int;
-    this.aL = amyi.x;
-    this.aM = amyi.x;
-    this.aN = amyi.jdField_p_of_type_Int;
-    this.aP = amyi.jdField_r_of_type_Int;
-    this.aQ = amyi.jdField_r_of_type_Int;
-    this.aR = amyi.jdField_j_of_type_Int;
-    this.aH = amyi.jdField_r_of_type_Int;
-    this.aS = amyi.jdField_k_of_type_Int;
-    this.aT = amyi.jdField_m_of_type_Int;
-    this.aU = 0.0F;
-    this.aX = amyi.jdField_m_of_type_Int;
-    this.aY = amyi.jdField_b_of_type_Int;
-    this.jdField_m_of_type_Int = Color.argb(102, 0, 0, 0);
-    this.aZ = 270.0F;
-    this.ba = 40.0F;
-    this.bb = amyi.jdField_a_of_type_Int;
-    this.bd = amyi.A;
-    this.be = amyi.jdField_o_of_type_Int;
-    this.bf = amyi.jdField_f_of_type_Int;
-    this.bh = amyi.jdField_d_of_type_Int;
-    this.bj = 0.0F;
-    this.bk = 0.0F;
-    this.bl = amyi.K;
-    this.bm = amyi.C;
-    this.jdField_o_of_type_Int = Color.argb(229, 255, 255, 255);
-    this.jdField_p_of_type_Int = Color.argb(229, 255, 255, 255);
-    this.jdField_q_of_type_Int = Color.argb(127, 255, 255, 255);
-    this.bn = amyi.jdField_i_of_type_Int;
-    this.bo = amyi.jdField_s_of_type_Int;
-    this.bw = amyi.z;
-    this.bp = amyi.jdField_s_of_type_Int;
-    this.bq = amyi.jdField_s_of_type_Int;
-    this.br = amyi.jdField_g_of_type_Int;
-    this.bs = amyi.jdField_g_of_type_Int;
-    this.bx = amyi.jdField_s_of_type_Int;
-    this.bt = amyi.jdField_j_of_type_Int;
-    this.bu = amyi.jdField_p_of_type_Int;
-    this.bv = amyi.jdField_s_of_type_Int;
-    this.by = amyi.jdField_s_of_type_Int;
-    this.bz = amyi.jdField_r_of_type_Int;
-    this.bA = amyi.jdField_p_of_type_Int;
-    this.bB = amyi.jdField_n_of_type_Int;
-    this.jdField_r_of_type_Int = Color.argb(255, 119, 119, 119);
-    this.bC = amyi.jdField_h_of_type_Int;
-    this.bD = amyi.jdField_r_of_type_Int;
-    this.bE = amyi.jdField_e_of_type_Int;
-    this.jdField_s_of_type_Int = Color.argb(76, 0, 104, 144);
-    this.bF = amyi.jdField_l_of_type_Int;
-    this.bG = amyi.jdField_i_of_type_Int;
-    this.bH = 0.0F;
-    this.bI = amyi.F;
-    this.bJ = amyi.jdField_e_of_type_Int;
-    this.t = -1;
-    this.bK = amyi.jdField_h_of_type_Int;
-    this.jdField_u_of_type_Int = -1;
-    this.bL = 120.0F;
-    this.bM = amyi.y;
-    this.bN = amyi.jdField_c_of_type_Int;
-    this.jdField_v_of_type_Int = -1;
+    this.l = ObjectBaseData.Dip2PxCache.I;
+    this.o = ObjectBaseData.Dip2PxCache.h;
+    this.p = 234.0F;
+    this.q = 36.0F;
+    this.r = 54.0F;
+    this.s = 216.0F;
+    this.t = Color.argb(255, 30, 255, 236);
+    this.u = Color.argb(255, 0, 191, 255);
+    this.v = ObjectBaseData.Dip2PxCache.i;
+    this.w = ((this.p + this.s) / 2.0F);
+    this.x = ((this.q + this.r) / 2.0F);
+    this.C = Color.argb(255, 30, 255, 236);
+    this.D = Color.argb(255, 0, 191, 255);
+    this.G = Color.argb(255, 30, 255, 236);
+    this.F = 0.0F;
+    this.E = 0.0F;
+    this.V = ObjectBaseData.Dip2PxCache.L;
+    this.Y = ObjectBaseData.Dip2PxCache.c;
+    this.Z = 160.0F;
+    this.aa = 290.0F;
+    this.ab = 340.0F;
+    this.ac = 110.0F;
+    this.ad = -1;
+    this.ae = 102.0F;
+    this.af = ObjectBaseData.Dip2PxCache.M;
+    this.ag = ObjectBaseData.Dip2PxCache.G;
+    this.aj = ObjectBaseData.Dip2PxCache.H;
+    this.ak = ObjectBaseData.Dip2PxCache.b;
+    this.al = 32.0F;
+    this.am = 138.0F;
+    this.an = 272.0F;
+    this.ao = 18.0F;
+    this.ap = 152.0F;
+    this.aq = 258.0F;
+    this.ar = -1;
+    this.as = 0.0F;
+    this.at = ObjectBaseData.Dip2PxCache.G;
+    this.au = ObjectBaseData.Dip2PxCache.c;
+    this.av = 60.0F;
+    this.aw = 100.0F;
+    this.ax = 300.0F;
+    this.ay = 340.0F;
+    this.az = 180.0F;
+    this.aA = 220.0F;
+    this.aB = -1;
+    this.aC = 0.0F;
+    this.aD = ObjectBaseData.Dip2PxCache.G;
+    this.aF = ObjectBaseData.Dip2PxCache.u;
+    this.aG = -1;
+    this.aH = 0.0F;
+    this.aK = ObjectBaseData.Dip2PxCache.q;
+    this.aL = ObjectBaseData.Dip2PxCache.b;
+    this.aM = 183.0F;
+    this.aN = 267.0F;
+    this.aO = 93.0F;
+    this.aP = 177.0F;
+    this.aQ = 273.0F;
+    this.aR = 357.0F;
+    this.aS = 3.0F;
+    this.aT = 87.0F;
+    this.aU = -1;
+    this.aV = 0.0F;
+    this.aX = ObjectBaseData.Dip2PxCache.c;
+    this.aY = -1;
+    this.aZ = 0.0F;
+    this.bb = ObjectBaseData.Dip2PxCache.k;
+    this.bl = -1;
+    this.bj = ObjectBaseData.Dip2PxCache.x;
+    this.bf = ObjectBaseData.Dip2PxCache.C;
+    this.bg = ObjectBaseData.Dip2PxCache.u;
+    this.bo = ObjectBaseData.Dip2PxCache.x;
+    this.bp = ObjectBaseData.Dip2PxCache.x;
+    this.bq = ObjectBaseData.Dip2PxCache.p;
+    this.bs = ObjectBaseData.Dip2PxCache.r;
+    this.bt = ObjectBaseData.Dip2PxCache.r;
+    this.bu = ObjectBaseData.Dip2PxCache.j;
+    this.bj = ObjectBaseData.Dip2PxCache.r;
+    this.bv = ObjectBaseData.Dip2PxCache.k;
+    this.bw = ObjectBaseData.Dip2PxCache.m;
+    this.bx = 0.0F;
+    this.bA = ObjectBaseData.Dip2PxCache.m;
+    this.bB = ObjectBaseData.Dip2PxCache.b;
+    this.bC = Color.argb(102, 0, 0, 0);
+    this.bD = 270.0F;
+    this.bE = 40.0F;
+    this.bF = ObjectBaseData.Dip2PxCache.a;
+    this.bH = ObjectBaseData.Dip2PxCache.A;
+    this.bI = ObjectBaseData.Dip2PxCache.o;
+    this.bK = ObjectBaseData.Dip2PxCache.f;
+    this.bM = ObjectBaseData.Dip2PxCache.d;
     this.bO = 0.0F;
     this.bP = 0.0F;
-    this.bQ = amyi.jdField_v_of_type_Int;
-    this.bR = amyi.D;
-    this.w = amyi.jdField_k_of_type_Int;
+    this.bQ = ObjectBaseData.Dip2PxCache.K;
+    this.bR = ObjectBaseData.Dip2PxCache.C;
+    this.bS = Color.argb(229, 255, 255, 255);
+    this.bT = Color.argb(229, 255, 255, 255);
+    this.bU = Color.argb(127, 255, 255, 255);
+    this.bV = ObjectBaseData.Dip2PxCache.i;
+    this.bW = ObjectBaseData.Dip2PxCache.s;
+    this.cg = ObjectBaseData.Dip2PxCache.z;
+    this.bX = ObjectBaseData.Dip2PxCache.s;
+    this.bY = ObjectBaseData.Dip2PxCache.s;
+    this.bZ = ObjectBaseData.Dip2PxCache.g;
+    this.ca = ObjectBaseData.Dip2PxCache.g;
+    this.ch = ObjectBaseData.Dip2PxCache.s;
+    this.cd = ObjectBaseData.Dip2PxCache.j;
+    this.ce = ObjectBaseData.Dip2PxCache.p;
+    this.cf = ObjectBaseData.Dip2PxCache.s;
+    this.ci = ObjectBaseData.Dip2PxCache.s;
+    this.cj = ObjectBaseData.Dip2PxCache.r;
+    this.ck = ObjectBaseData.Dip2PxCache.p;
+    this.cl = ObjectBaseData.Dip2PxCache.n;
+    this.cm = Color.argb(255, 119, 119, 119);
+    this.cn = ObjectBaseData.Dip2PxCache.h;
+    this.co = ObjectBaseData.Dip2PxCache.r;
+    this.cp = ObjectBaseData.Dip2PxCache.e;
+    this.cq = Color.argb(76, 0, 104, 144);
+    this.cr = ObjectBaseData.Dip2PxCache.l;
+    this.cs = ObjectBaseData.Dip2PxCache.i;
+    this.ct = 0.0F;
+    this.cu = ObjectBaseData.Dip2PxCache.F;
+    this.cv = ObjectBaseData.Dip2PxCache.e;
+    this.cw = -1;
+    this.cx = ObjectBaseData.Dip2PxCache.h;
+    this.cy = -1;
+    this.cz = 120.0F;
+    this.cA = ObjectBaseData.Dip2PxCache.y;
+    this.cB = ObjectBaseData.Dip2PxCache.c;
+    this.cC = -1;
+    this.cD = 0.0F;
+    this.cE = 0.0F;
+    this.cF = ObjectBaseData.Dip2PxCache.v;
+    this.cG = ObjectBaseData.Dip2PxCache.D;
+    this.H = ObjectBaseData.Dip2PxCache.k;
+    this.by = 0.0F;
+    this.bz = 0.0F;
+    this.bG = 0.0F;
+    this.bN = 0.0F;
+    this.bJ = 0;
+    this.F = 0.0F;
+    this.E = 0.0F;
+    this.ae = 0.0F;
     this.aV = 0.0F;
-    this.aW = 0.0F;
-    this.bc = 0.0F;
-    this.bi = 0.0F;
-    this.jdField_n_of_type_Int = 0;
-    this.jdField_v_of_type_Float = 0.0F;
-    this.jdField_u_of_type_Float = 0.0F;
-    this.J = 0.0F;
-    this.aw = 0.0F;
-    this.az = 0.0F;
-    this.aj = 0.0F;
-    this.W = 0.0F;
-    this.af = 0.0F;
+    this.aZ = 0.0F;
+    this.aH = 0.0F;
+    this.as = 0.0F;
+    this.aC = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectBaseData
  * JD-Core Version:    0.7.0.1
  */

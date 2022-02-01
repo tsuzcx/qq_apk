@@ -11,25 +11,24 @@ class AnimationPoint$1
   
   public void run()
   {
-    if (this.this$0.jdField_b_of_type_Boolean) {
+    if (this.this$0.n) {
       return;
     }
-    if ((SystemClock.uptimeMillis() - this.this$0.c < this.this$0.jdField_b_of_type_Long) || (this.this$0.jdField_b_of_type_Long < 0L)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 30L);
-    }
-    for (;;)
+    if ((SystemClock.uptimeMillis() - this.this$0.d >= this.this$0.b) && (this.this$0.b >= 0L))
     {
-      this.this$0.invalidate();
-      return;
-      if (this.this$0.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) {
-        this.this$0.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener.onAnimationEnd(null);
+      if (this.this$0.l != null) {
+        this.this$0.l.onAnimationEnd(null);
       }
     }
+    else {
+      this.this$0.m.postDelayed(this, 30L);
+    }
+    this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.AnimationPoint.1
  * JD-Core Version:    0.7.0.1
  */

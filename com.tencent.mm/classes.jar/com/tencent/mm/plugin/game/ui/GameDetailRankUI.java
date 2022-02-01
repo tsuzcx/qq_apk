@@ -1,103 +1,115 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.v.b;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.game.model.aa;
 import com.tencent.mm.plugin.game.model.c;
-import com.tencent.mm.plugin.game.model.j;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public class GameDetailRankUI
   extends MMActivity
 {
-  public static String EXTRA_SESSION_ID = "extra_session_id";
-  public static String nxm = "gameDetailRankDataKey";
+  public static String IOZ = "extra_session_id";
+  public static String IPa = "gameDetailRankDataKey";
+  private ListView IOW;
+  private GameRankHeadView IOX;
+  private i IOY;
   private String appId;
-  private ListView nxj;
-  private GameRankHeadView nxk;
-  private i nxl;
   
   public int getLayoutId()
   {
-    return 2130969731;
+    return h.f.HYZ;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(111838);
-    setMMTitle(com.tencent.mm.pluginsdk.model.app.g.t(getContext(), this.appId));
-    setBackBtn(new GameDetailRankUI.2(this));
-    AppMethodBeat.o(111838);
+    AppMethodBeat.i(42008);
+    setMMTitle(com.tencent.mm.pluginsdk.model.app.h.x(getContext(), this.appId));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(42004);
+        GameDetailRankUI.this.finish();
+        AppMethodBeat.o(42004);
+        return true;
+      }
+    });
+    AppMethodBeat.o(42008);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(111835);
+    AppMethodBeat.i(42005);
     super.onCreate(paramBundle);
-    paramBundle = getIntent().getStringExtra(EXTRA_SESSION_ID);
-    paramBundle = v.aae().oP(paramBundle);
+    paramBundle = getIntent().getStringExtra(IOZ);
+    paramBundle = ad.bCb().Jn(paramBundle);
     if (paramBundle == null)
     {
       finish();
-      AppMethodBeat.o(111835);
+      AppMethodBeat.o(42005);
       return;
     }
-    paramBundle = (a)paramBundle.get(nxm);
-    this.nxj = ((ListView)findViewById(2131824580));
-    if ((!bo.isNullOrNil(paramBundle.nxo)) && (!bo.isNullOrNil(paramBundle.nxp)))
+    paramBundle = (a)paramBundle.get(IPa);
+    this.IOW = ((ListView)findViewById(h.e.HVd));
+    if ((!Util.isNullOrNil(paramBundle.IPc)) && (!Util.isNullOrNil(paramBundle.IPd)))
     {
-      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2130969738, this.nxj, false);
-      this.nxk = ((GameRankHeadView)localView.findViewById(2131824596));
-      this.nxj.addHeaderView(localView);
-      this.nxk.setData(paramBundle);
+      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(h.f.HZg, this.IOW, false);
+      this.IOX = ((GameRankHeadView)localView.findViewById(h.e.HWq));
+      this.IOW.addHeaderView(localView);
+      this.IOX.setData(paramBundle);
     }
-    this.nxl = new i(this);
-    this.nxl.Ld = 2130969732;
-    this.nxj.setAdapter(this.nxl);
-    this.appId = paramBundle.nxq.field_appId;
-    if (bo.isNullOrNil(this.appId))
+    this.IOY = new i(this);
+    this.IOY.bxp = h.f.HZa;
+    this.IOW.setAdapter(this.IOY);
+    this.appId = paramBundle.IPe.field_appId;
+    if (Util.isNullOrNil(this.appId))
     {
       finish();
-      AppMethodBeat.o(111835);
+      AppMethodBeat.o(42005);
       return;
     }
     initView();
-    com.tencent.mm.kernel.g.RO().ac(new Runnable()
+    com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(111833);
+        AppMethodBeat.i(42003);
         aa localaa = new aa(GameDetailRankUI.a(GameDetailRankUI.this));
         GameDetailRankUI.b(GameDetailRankUI.this).a(localaa);
-        AppMethodBeat.o(111833);
+        AppMethodBeat.o(42003);
       }
     });
-    AppMethodBeat.o(111835);
+    AppMethodBeat.o(42005);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(111837);
+    AppMethodBeat.i(42007);
     super.onDestroy();
-    j.b(this.nxk.nxv);
-    AppMethodBeat.o(111837);
+    k.b(this.IOX.IPj);
+    AppMethodBeat.o(42007);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(111836);
+    AppMethodBeat.i(42006);
     super.onResume();
-    AppMethodBeat.o(111836);
+    AppMethodBeat.o(42006);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -106,11 +118,11 @@ public class GameDetailRankUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public static final class a
+  public static class a
   {
-    public String nxo;
-    public String nxp;
-    c nxq;
+    public String IPc;
+    public String IPd;
+    c IPe;
   }
 }
 

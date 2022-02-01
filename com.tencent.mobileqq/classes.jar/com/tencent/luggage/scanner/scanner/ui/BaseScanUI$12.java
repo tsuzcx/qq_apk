@@ -1,0 +1,28 @@
+package com.tencent.luggage.scanner.scanner.ui;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.luggage.scanner.scanner.ui.widget.ScannerFlashSwitcher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class BaseScanUI$12
+  implements View.OnClickListener
+{
+  BaseScanUI$12(BaseScanUI paramBaseScanUI) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!BaseScanUI.h(this.a).d()) {
+      BaseScanUI.a(this.a, 1);
+    } else {
+      BaseScanUI.a(this.a, 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.scanner.scanner.ui.BaseScanUI.12
+ * JD-Core Version:    0.7.0.1
+ */

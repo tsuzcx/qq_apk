@@ -1,24 +1,26 @@
 package com.tencent.mm.plugin.story.model;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vfs.j;
+import java.util.Comparator;
+import kotlin.Metadata;
+import kotlin.b.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
-final class k$a
-  extends k
-  implements a<y>
+@Metadata(d1={""}, d2={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"}, k=3, mv={1, 5, 1})
+public final class k$a<T>
+  implements Comparator
 {
-  k$a(long paramLong1, long paramLong2, ArrayList paramArrayList)
+  public final int compare(T paramT1, T paramT2)
   {
-    super(0);
+    AppMethodBeat.i(118724);
+    int i = a.b((Comparable)Long.valueOf(((j)paramT1).agxg), (Comparable)Long.valueOf(((j)paramT2).agxg));
+    AppMethodBeat.o(118724);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.k.a
  * JD-Core Version:    0.7.0.1
  */

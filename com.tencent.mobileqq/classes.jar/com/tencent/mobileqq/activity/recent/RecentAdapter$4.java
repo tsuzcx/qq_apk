@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajit;
-import azqs;
-import ssp;
+import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-public class RecentAdapter$4
+class RecentAdapter$4
   implements Runnable
 {
-  public RecentAdapter$4(ajit paramajit, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  RecentAdapter$4(RecentAdapter paramRecentAdapter) {}
   
   public void run()
   {
-    azqs.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(ssp.a().a()));
+    ((BlessManager)this.this$0.d.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).b(true);
   }
 }
 

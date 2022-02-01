@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class ReadInJoySearchHistoryEntity
-  extends awge
+  extends Entity
 {
   public int id;
   public String keyWord;

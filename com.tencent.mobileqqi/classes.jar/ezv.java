@@ -1,20 +1,20 @@
 import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.service.circle.IFriendObserver;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ezv
   implements Runnable
 {
-  public ezv(CircleManager paramCircleManager, String paramString) {}
+  public ezv(CircleManager paramCircleManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.c != null)
+    if (this.a.b != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.c.iterator();
+      Iterator localIterator = this.a.b.iterator();
       while (localIterator.hasNext()) {
-        ((IFriendObserver)localIterator.next()).a(this.jdField_a_of_type_JavaLangString);
+        ((IGroupObserver)localIterator.next()).a(true, 3);
       }
     }
   }

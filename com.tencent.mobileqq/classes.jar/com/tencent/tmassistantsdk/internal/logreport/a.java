@@ -25,7 +25,10 @@ public abstract class a
   {
     try
     {
-      ab.c("BaseReportManager", "enter:" + paramJceStruct);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enter:");
+      localStringBuilder.append(paramJceStruct);
+      ab.c("BaseReportManager", localStringBuilder.toString());
       if (paramJceStruct != null)
       {
         paramJceStruct = ProtocolPackage.jceStructToUTF8Byte(paramJceStruct);
@@ -40,17 +43,29 @@ public abstract class a
   public void a(d paramd, boolean paramBoolean)
   {
     ab.c("BaseReportManager", "enter");
-    ab.c("BaseReportManager", "result:" + paramBoolean);
-    if ((!paramBoolean) && (this.c != null) && (this.c.size() > 0))
+    paramd = new StringBuilder();
+    paramd.append("result:");
+    paramd.append(paramBoolean);
+    ab.c("BaseReportManager", paramd.toString());
+    if (!paramBoolean)
     {
-      ab.c("BaseReportManager", "reback DB!");
-      d().a(this.c);
+      paramd = this.c;
+      if ((paramd != null) && (paramd.size() > 0))
+      {
+        ab.c("BaseReportManager", "reback DB!");
+        d().a(this.c);
+      }
     }
     this.a = null;
     this.c.clear();
     if ((paramBoolean) && (f()) && (this.b < 5))
     {
-      ab.c("BaseReportManager", "reportlog go on,result:" + paramBoolean + " count:" + this.b);
+      paramd = new StringBuilder();
+      paramd.append("reportlog go on,result:");
+      paramd.append(paramBoolean);
+      paramd.append(" count:");
+      paramd.append(this.b);
+      ab.c("BaseReportManager", paramd.toString());
       b();
       this.b += 1;
     }
@@ -59,48 +74,50 @@ public abstract class a
   
   public void b()
   {
-    try
-    {
-      ab.c("BaseReportManager", "enter");
-      if (!GlobalUtil.getInstance().canReportValue())
-      {
-        ab.c("BaseReportManager", "Not WiFi");
-        ab.c("BaseReportManager", "exit");
-      }
-      for (;;)
-      {
-        return;
-        if (this.a == null) {
-          break;
-        }
-        ab.c("BaseReportManager", "reportRequst is sending out");
-        ab.c("BaseReportManager", "exit");
-      }
-      this.a = new d();
-    }
-    finally {}
-    this.a.a(this);
-    ab.c("BaseReportManager", " request:" + this.a + " reportManager:" + getClass().getName());
-    b localb = d().a(1000);
-    ab.c("BaseReportManager", "readLogDataAndSendToServer,wrappterCount:" + localb.b.size());
-    if (localb != null) {
-      if (localb.b.size() <= 0) {
-        break label248;
-      }
-    }
     for (;;)
     {
-      if (!bool) {
-        this.a = null;
+      try
+      {
+        ab.c("BaseReportManager", "enter");
+        if (!GlobalUtil.getInstance().canReportValue())
+        {
+          ab.c("BaseReportManager", "Not WiFi");
+          ab.c("BaseReportManager", "exit");
+          return;
+        }
+        if (this.a != null)
+        {
+          ab.c("BaseReportManager", "reportRequst is sending out");
+          ab.c("BaseReportManager", "exit");
+          return;
+        }
+        this.a = new d();
+        this.a.a(this);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" request:");
+        ((StringBuilder)localObject1).append(this.a);
+        ((StringBuilder)localObject1).append(" reportManager:");
+        ((StringBuilder)localObject1).append(getClass().getName());
+        ab.c("BaseReportManager", ((StringBuilder)localObject1).toString());
+        localObject1 = d().a(1000);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("readLogDataAndSendToServer,wrappterCount:");
+        localStringBuilder.append(((b)localObject1).b.size());
+        ab.c("BaseReportManager", localStringBuilder.toString());
+        if ((localObject1 != null) && (((b)localObject1).b.size() > 0))
+        {
+          this.c.addAll(((b)localObject1).b);
+          bool = this.a.a(e(), (b)localObject1);
+          d().b(((b)localObject1).a);
+          if (!bool) {
+            this.a = null;
+          }
+          ab.c("BaseReportManager", "exit");
+          return;
+        }
       }
-      ab.c("BaseReportManager", "exit");
-      break;
-      this.c.addAll(localb.b);
-      boolean bool = this.a.a(e(), localb);
-      d().b(localb.a);
-      continue;
-      label248:
-      bool = false;
+      finally {}
+      boolean bool = false;
     }
   }
   
@@ -117,7 +134,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountMenuEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class dbe
-  implements Runnable
+  extends Handler
 {
-  public dbe(PublicAccountChatActivity paramPublicAccountChatActivity, SharedPreferences paramSharedPreferences, String paramString) {}
+  public dbe(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b.a().createEntityManager();
-      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.a(PublicAccountMenuEntity.class, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.a.jdField_a_of_type_JavaLangString);
-      if (localPublicAccountMenuEntity != null) {
-        localEntityManager.b(localPublicAccountMenuEntity);
-      }
-      if (localEntityManager != null) {
-        localEntityManager.a();
-      }
     }
-    catch (Exception localException)
+    do
     {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(PublicAccountChatActivity.e(), 4, localException.getMessage());
-        }
-      }
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+      return;
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dbe
  * JD-Core Version:    0.7.0.1
  */

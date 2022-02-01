@@ -1,46 +1,36 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qqfav.widget.FavoriteActionSheet.DefaultActions;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.OvalProgress;
+import cooperation.qqfav.QfavUtil;
+import cooperation.qqfav.widget.QfavMicroPhoneDialog;
 
 public class ibo
-  extends FavoriteActionSheet.DefaultActions
+  extends Handler
 {
-  private WeakReference a;
+  public ibo(QfavMicroPhoneDialog paramQfavMicroPhoneDialog) {}
   
-  public ibo(LocationDetailActivity paramLocationDetailActivity)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramLocationDetailActivity);
-  }
-  
-  public void a()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    if ((localLocationDetailActivity.s != null) && (localLocationDetailActivity.t != null))
+    switch (paramMessage.what)
     {
-      Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
-      localIntent.setClass(localLocationDetailActivity, ForwardRecentActivity.class);
-      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localLocationDetailActivity.d).putExtra("forward_longitude", localLocationDetailActivity.e).putExtra("forward_location", localLocationDetailActivity.p).putExtra("forward_location_string", localLocationDetailActivity.p).putExtra("forward_thumb", AppConstants.aQ + localLocationDetailActivity.s + "_" + localLocationDetailActivity.t + ".png").putExtra("isFromFavorites", true).putExtra("title", localLocationDetailActivity.o).putExtra("summary", localLocationDetailActivity.p);
-      localLocationDetailActivity.startActivityForResult(localIntent, 103);
+    case 8: 
+    case 10: 
+    default: 
+      return;
+    case 7: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 9: 
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 11: 
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(Integer.toString((int)Math.round(this.a.e * 1.0D / 1000.0D)) + "\"");
       return;
     }
-    QQToast.a(localLocationDetailActivity, 2131560787, 1, 2000).b(5);
-  }
-  
-  public void a(String paramString)
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {}
-    while (localLocationDetailActivity.getString(2131560818).compareTo(paramString) != 0) {
-      return;
-    }
-    LocationDetailActivity.a(localLocationDetailActivity);
+    QfavUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 2131560833, 1);
   }
 }
 

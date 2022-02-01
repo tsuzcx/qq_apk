@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.e;
-import com.tencent.mm.plugin.appbrand.jsapi.s.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e;
+import com.tencent.mm.plugin.appbrand.jsapi.base.f;
 import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
 
 public class DuplicateStateCoverViewContainer
@@ -24,20 +24,20 @@ public class DuplicateStateCoverViewContainer
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean aCT()
+  public final boolean crX()
   {
     return true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(141796);
+    AppMethodBeat.i(140671);
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    boolean bool = cp(this).contains(f1, f2);
-    if ((paramMotionEvent.getActionMasked() == 0) && (!K(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
+    boolean bool = dv(this).contains(f1, f2);
+    if ((paramMotionEvent.getActionMasked() == 0) && (!ap(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
     {
-      AppMethodBeat.o(141796);
+      AppMethodBeat.o(140671);
       return false;
     }
     bool = super.dispatchTouchEvent(paramMotionEvent);
@@ -54,10 +54,10 @@ public class DuplicateStateCoverViewContainer
           View localView = getChildAt(j);
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if (((!(localView instanceof CoverViewContainer)) || (((CoverViewContainer)localView).aCT())) && (AppBrandViewMotionCompat.cG(localView)) && (AppBrandViewMotionCompat.a(this, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
+          if (((!(localView instanceof CoverViewContainer)) || (((CoverViewContainer)localView).crX())) && (AppBrandViewMotionCompat.dS(localView)) && (AppBrandViewMotionCompat.a(this, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
           {
-            d.a(this, paramMotionEvent, localView, i);
-            if (((localView instanceof e)) && (((e)localView).aCe())) {
+            e.a(this, paramMotionEvent, localView, i);
+            if (((localView instanceof f)) && (((f)localView).cqz())) {
               break;
             }
           }
@@ -65,13 +65,13 @@ public class DuplicateStateCoverViewContainer
         }
       }
     }
-    AppMethodBeat.o(141796);
+    AppMethodBeat.o(140671);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.DuplicateStateCoverViewContainer
  * JD-Core Version:    0.7.0.1
  */

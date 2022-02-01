@@ -3,8 +3,8 @@ package com.tencent.mobileqq.minigame.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bfbm;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
@@ -17,45 +17,65 @@ public class GameWnsUtils
   
   static
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = true;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameLogEnable", 1) == 1) {}
-    for (;;)
-    {
-      sLogEnable = bool;
-      return;
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameLogEnable", 1) != 1) {
       bool = false;
     }
+    sLogEnable = bool;
   }
   
   private static boolean buildModelEnable()
   {
     String str1 = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBlackList", "[GT-I9502]");
+    boolean bool1 = false;
     try
     {
       String str2 = Build.MODEL;
-      if (TextUtils.isEmpty(str2))
+      boolean bool2 = TextUtils.isEmpty(str2);
+      if (bool2)
       {
         QZLog.e("GameWnsUtils", 2, new Object[] { "buildModelEnable model empty" });
         return false;
       }
-      if (QZLog.isColorLevel()) {
-        QZLog.d("GameWnsUtils", 2, "build model is " + str2);
+      StringBuilder localStringBuilder;
+      if (QZLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("build model is ");
+        localStringBuilder.append(str2);
+        QZLog.d("GameWnsUtils", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty(str1))
       {
-        boolean bool = str1.contains("[" + str2 + "]");
-        if (bool) {}
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("]");
+        bool2 = str1.contains(localStringBuilder.toString());
+        if (bool2) {}
       }
       else
       {
-        return true;
+        bool1 = true;
       }
+      return bool1;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
     return false;
+  }
+  
+  public static String defaultPayShareImg()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPayShareImg", "https://sola.gtimg.cn/aoi/sola/20200615194538_YYA1zqPM8t.png");
+  }
+  
+  public static String defaultPayShareTitle()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPayShareTitle", "亲爱的，拜托你帮我代付一笔订单～");
   }
   
   public static String defaultShareImg()
@@ -65,7 +85,7 @@ public class GameWnsUtils
   
   public static String downloaderPreConnectHost()
   {
-    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDownloaderPreConnectHost", "https://miniapp.gtimg.cn");
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDownloaderPreConnectHost", "https://miniapp.gtimg.cn/miniapp.txt");
   }
   
   public static boolean enableDownloaderPreConnect()
@@ -75,8 +95,9 @@ public class GameWnsUtils
   
   public static boolean enableGameruntimePreload()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameRuntimePreload", 0) > 0) {
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameRuntimePreload", 0) > 0) {
       bool = true;
     }
     return bool;
@@ -97,6 +118,16 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameEnableHttp2", 1) > 0;
   }
   
+  public static boolean enableInstructionsForMiniApp()
+  {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqminiapp", "MiniAppEnableInstructions", 0) > 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
   public static boolean enableOpengles3()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "enableOpengles3", 1) > 0;
@@ -114,7 +145,12 @@ public class GameWnsUtils
   
   public static boolean enableStorageExceedDialog()
   {
-    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameStorageExceedDialogEnable", 1) > 0;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameStorageExceedDialogEnable", 0) > 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static int enableStorageExceedLimit()
@@ -168,14 +204,14 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameCacheFreeDialogContent", "游戏存储异常,是否清缓存后重启游戏？");
   }
   
-  public static int getCloseConfirmShowTimes()
+  public static int getDownloaderMode()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_expoure_times_threshold", 3);
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDownloaderMode", 2);
   }
   
-  public static String getExitConfirmAnimationBlackList()
+  public static int getDropGuideShowTimes()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_scene_black_list", "");
+    return QzoneConfig.getInstance().getConfig("qqtriton", "dropGuideTimesLimit", 3);
   }
   
   public static String getFakeFristFrameUrl()
@@ -191,7 +227,10 @@ public class GameWnsUtils
   public static BaseLibInfo getGameBaseLibInfo()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameBaseLib", "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20190708174635_6988/lib-1.4.7.zip\",\"key2\":\"\",\"key3\":\"1.4.7\",\"key4\": {\"file_length\": 6336933},\"key5\":2}");
-    QLog.i("minigame", 1, "MiniEng getWnsGameBaseLibInfo " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniEng getWnsGameBaseLibInfo ");
+    localStringBuilder.append((String)localObject);
+    QLog.i("minigame", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       try
       {
@@ -240,11 +279,6 @@ public class GameWnsUtils
     return str2.contains(str1);
   }
   
-  public static String getGameExitConfirmImageUrl()
-  {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_exit_confirm_animation_image_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191114160727_AqDlaIYOnx.gif");
-  }
-  
   public static int getGameJsErrorDetectInterval()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameJsErrorDetectInterval", 5000);
@@ -265,9 +299,19 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePresentDetectInterval", 1000);
   }
   
+  public static String getGameRetainConfirmImageUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_retain_confirm_animation_image_url", "https://sola.gtimg.cn/aoi/sola/20201023180719_cpjdc4WFx1.png");
+  }
+  
   public static int getMaxRangeNumber()
   {
     return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppMaxRangeNumber", 4);
+  }
+  
+  public static String getMiniGamePublicAccountGameStoreButtonUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "publicAccountGameStoreButtonUrl", "https://sola.gtimg.cn/aoi/sola/20200713192038_XEvd27FTxi.png");
   }
   
   public static int getNoPresentDurationLimit()
@@ -280,9 +324,29 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameNoPresentTouchLimit", 3);
   }
   
+  public static String getPayForFriendUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPayForFriendUrl", "https://h5.qzone.qq.com/miniapp/act/friendPay?appid={appid}&prepayId={prepayId}&_proxy=1");
+  }
+  
+  public static String getPreConnectBlackAppIdList()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePreConnectBlackAppIdList", "1110244087");
+  }
+  
   public static int getPreConnectNum()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePreConnectNum", 5);
+  }
+  
+  public static String getPreconnectMethod()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPreconnectMethod", "HEAD");
+  }
+  
+  public static long getPreconnectTimeInterval()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPreconnectTimeInterval", 43200L);
   }
   
   public static String getQQUpdateUrl()
@@ -320,9 +384,24 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniReportDelayWaiting", 2000L);
   }
   
+  public static int getRetainConfirmInterval()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "retainConfirmInterval", 10);
+  }
+  
+  public static int getRetainConfirmShowTimes()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "retainConfirmTimesLimit", 3);
+  }
+  
   public static long getShowTimeout()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniShowTimeout", 45000L);
+  }
+  
+  public static String getTritonDownloadBackUpUrl()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameTritonBackupUrl", "https://d3g.qq.com/sngapp/app/update/20200608171442_7604/839triton_base_engine.zip|1.5.0.32.6c8a796|1591357374118");
   }
   
   public static String getWnsLogBlackList()
@@ -347,18 +426,29 @@ public class GameWnsUtils
   
   public static boolean isForceDownloadInMainProcess()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_force_download_in_mainprocess", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqminiapp", "mini_game_force_download_in_mainprocess", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean killAllGamesWhenDestroy()
   {
-    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameKillAllGamesWhenDestroy", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean killAllGamesWhenReuse()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
+    if (localQzoneConfig.getConfig("qqtriton", "MiniGameKillAllGamesWhenReuse", 0) == 0) {
       bool = true;
     }
     return bool;
@@ -395,6 +485,11 @@ public class GameWnsUtils
     }
   }
   
+  public static int retryLoadSubpackageOnCompileCount()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameSubPackRetryOnCompileCount", 1);
+  }
+  
   private static boolean suffixEnable()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameGaryRange", "0-100");
@@ -413,19 +508,15 @@ public class GameWnsUtils
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        long l;
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
-    l = bfbm.a().a() % 100L;
+    long l = CommonDataAdapter.a().c() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.GameWnsUtils
  * JD-Core Version:    0.7.0.1
  */

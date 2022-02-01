@@ -2,11 +2,10 @@ package com.tencent.mobileqq.ocr.view.gesture;
 
 import android.view.MotionEvent;
 import android.view.View;
-import avzo;
-import avzt;
-import awac;
-import awad;
 import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
+import com.tencent.mobileqq.ocr.view.gesture.control.OnGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.state.State;
+import com.tencent.mobileqq.ocr.view.gesture.state.StateController;
 import java.util.List;
 
 public class GestureProxy
@@ -17,43 +16,19 @@ public class GestureProxy
     super(paramView);
   }
   
-  public avzt a()
+  public OnGestureListener a()
   {
-    return this.jdField_a_of_type_Avzt;
+    return this.a;
   }
   
-  public awac a()
+  public void a(GestureProxy.OnStateChangeListener paramOnStateChangeListener)
   {
-    return this.c;
+    this.c.add(paramOnStateChangeListener);
   }
   
-  public Settings a()
+  public void a(OnGestureListener paramOnGestureListener)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Awad.a(this.c);
-    this.jdField_a_of_type_Awad.a(this.d);
-    this.jdField_a_of_type_Awad.a(this.jdField_a_of_type_Awac);
-    this.jdField_a_of_type_Awad.a(this.b);
-    if (this.jdField_a_of_type_Awad.b(this.c))
-    {
-      g();
-      return;
-    }
-    f();
-  }
-  
-  public void a(avzo paramavzo)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramavzo);
-  }
-  
-  public void a(avzt paramavzt)
-  {
-    this.jdField_a_of_type_Avzt = paramavzt;
+    this.a = paramOnGestureListener;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -61,25 +36,49 @@ public class GestureProxy
     return super.a(paramView, paramMotionEvent);
   }
   
-  public void b()
+  public Settings b()
   {
-    e();
-    if (this.jdField_a_of_type_Awad.a(this.c))
-    {
-      g();
-      return;
-    }
-    f();
+    return this.i;
   }
   
   public boolean b(View paramView, MotionEvent paramMotionEvent)
   {
     return super.b(paramView, paramMotionEvent);
   }
+  
+  public State c()
+  {
+    return this.j;
+  }
+  
+  public void d()
+  {
+    this.l.c(this.j);
+    this.l.c(this.k);
+    this.l.c(this.f);
+    this.l.c(this.g);
+    if (this.l.b(this.j))
+    {
+      n();
+      return;
+    }
+    m();
+  }
+  
+  public void e()
+  {
+    l();
+    if (this.l.a(this.j))
+    {
+      n();
+      return;
+    }
+    m();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.GestureProxy
  * JD-Core Version:    0.7.0.1
  */

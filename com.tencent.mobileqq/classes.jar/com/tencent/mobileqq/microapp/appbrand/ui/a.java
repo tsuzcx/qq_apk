@@ -2,11 +2,11 @@ package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import ayvr;
 import com.tencent.mobileqq.microapp.app.b;
+import com.tencent.mobileqq.search.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 
 final class a
-  implements ayvr
+  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
 {
   a(AppBrandUI paramAppBrandUI) {}
   
@@ -24,7 +24,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.a
  * JD-Core Version:    0.7.0.1
  */

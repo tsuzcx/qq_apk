@@ -54,29 +54,41 @@ public class Parameterized
     }
     catch (ClassCastException paramIterable)
     {
-      throw parametersMethodReturnedWrongType();
+      label58:
+      break label58;
+    }
+    paramIterable = parametersMethodReturnedWrongType();
+    for (;;)
+    {
+      throw paramIterable;
     }
   }
   
   private TestWithParameters createTestWithNotNormalizedParameters(String paramString, int paramInt, Object paramObject)
   {
-    if ((paramObject instanceof Object[])) {}
-    for (paramObject = (Object[])paramObject;; paramObject = new Object[] { paramObject }) {
-      return createTestWithParameters(getTestClass(), paramString, paramInt, paramObject);
+    if ((paramObject instanceof Object[])) {
+      paramObject = (Object[])paramObject;
+    } else {
+      paramObject = new Object[] { paramObject };
     }
+    return createTestWithParameters(getTestClass(), paramString, paramInt, paramObject);
   }
   
   private static TestWithParameters createTestWithParameters(TestClass paramTestClass, String paramString, int paramInt, Object[] paramArrayOfObject)
   {
     paramString = MessageFormat.format(paramString.replaceAll("\\{index\\}", Integer.toString(paramInt)), paramArrayOfObject);
-    return new TestWithParameters("[" + paramString + "]", paramTestClass, Arrays.asList(paramArrayOfObject));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    return new TestWithParameters(localStringBuilder.toString(), paramTestClass, Arrays.asList(paramArrayOfObject));
   }
   
   private List<TestWithParameters> createTestsForParameters(Iterable<Object> paramIterable, String paramString)
   {
-    int i = 0;
     ArrayList localArrayList = new ArrayList();
     paramIterable = paramIterable.iterator();
+    int i = 0;
     while (paramIterable.hasNext())
     {
       localArrayList.add(createTestWithNotNormalizedParameters(paramString, i, paramIterable.next()));
@@ -87,15 +99,22 @@ public class Parameterized
   
   private FrameworkMethod getParametersMethod()
   {
-    Iterator localIterator = getTestClass().getAnnotatedMethods(Parameterized.Parameters.class).iterator();
-    while (localIterator.hasNext())
+    Object localObject = getTestClass().getAnnotatedMethods(Parameterized.Parameters.class).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      FrameworkMethod localFrameworkMethod = (FrameworkMethod)localIterator.next();
+      FrameworkMethod localFrameworkMethod = (FrameworkMethod)((Iterator)localObject).next();
       if ((localFrameworkMethod.isStatic()) && (localFrameworkMethod.isPublic())) {
         return localFrameworkMethod;
       }
     }
-    throw new Exception("No public static parameters method on class " + getTestClass().getName());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("No public static parameters method on class ");
+    ((StringBuilder)localObject).append(getTestClass().getName());
+    localObject = new Exception(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private ParametersRunnerFactory getParametersRunnerFactory(Class<?> paramClass)
@@ -119,7 +138,7 @@ public class Parameterized
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runners.Parameterized
  * JD-Core Version:    0.7.0.1
  */

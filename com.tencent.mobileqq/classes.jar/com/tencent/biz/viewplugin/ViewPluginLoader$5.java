@@ -2,40 +2,46 @@ package com.tencent.biz.viewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bead;
-import beae;
-import beaj;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
-import zcn;
 
-public class ViewPluginLoader$5
+class ViewPluginLoader$5
   implements Runnable
 {
-  public ViewPluginLoader$5(zcn paramzcn, JSONObject paramJSONObject, String paramString, bead parambead) {}
+  ViewPluginLoader$5(ViewPluginLoader paramViewPluginLoader, JSONObject paramJSONObject, String paramString, DownloadListener paramDownloadListener) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QLog.e("ViewPluginLoader", 1, "fTargetFile = " + this.jdField_a_of_type_JavaLangString);
-    }
-    do
+    Object localObject1 = this.a.optString("url");
+    if (TextUtils.isEmpty(this.b))
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("fTargetFile = ");
+      ((StringBuilder)localObject1).append(this.b);
+      QLog.e("ViewPluginLoader", 1, ((StringBuilder)localObject1).toString());
       return;
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-      Bundle localBundle = new Bundle();
-      localObject = new beae(str, (File)localObject);
-      ((beae)localObject).b = 3;
-      this.this$0.a().a((beae)localObject, this.jdField_a_of_type_Bead, localBundle);
-    } while (!QLog.isColorLevel());
-    QLog.d("ViewPluginLoader", 2, "start Download url = " + str);
+    }
+    Object localObject3 = new File(this.b);
+    Object localObject2 = new Bundle();
+    localObject3 = new DownloadTask((String)localObject1, (File)localObject3);
+    ((DownloadTask)localObject3).e = 3;
+    this.this$0.c().startDownload((DownloadTask)localObject3, this.c, (Bundle)localObject2);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start Download url = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("ViewPluginLoader", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.5
  * JD-Core Version:    0.7.0.1
  */

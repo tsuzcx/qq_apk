@@ -12,12 +12,12 @@ public final class MsgType0x210SubMsgType0x17
   static ModFriendGroup cache_stModFriendGroup;
   static ModGroupName cache_stModGroupName;
   static ModGroupSort cache_stModGroupSort;
-  public long dwOpType;
-  public AddGroup stAddGroup;
-  public DelGroup stDelGroup;
-  public ModFriendGroup stModFriendGroup;
-  public ModGroupName stModGroupName;
-  public ModGroupSort stModGroupSort;
+  public long dwOpType = 0L;
+  public AddGroup stAddGroup = null;
+  public DelGroup stDelGroup = null;
+  public ModFriendGroup stModFriendGroup = null;
+  public ModGroupName stModGroupName = null;
+  public ModGroupSort stModGroupSort = null;
   
   public MsgType0x210SubMsgType0x17() {}
   
@@ -59,26 +59,31 @@ public final class MsgType0x210SubMsgType0x17
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dwOpType, 0);
-    if (this.stAddGroup != null) {
-      paramJceOutputStream.write(this.stAddGroup, 1);
+    Object localObject = this.stAddGroup;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stDelGroup != null) {
-      paramJceOutputStream.write(this.stDelGroup, 2);
+    localObject = this.stDelGroup;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stModGroupName != null) {
-      paramJceOutputStream.write(this.stModGroupName, 3);
+    localObject = this.stModGroupName;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stModGroupSort != null) {
-      paramJceOutputStream.write(this.stModGroupSort, 4);
+    localObject = this.stModGroupSort;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stModFriendGroup != null) {
-      paramJceOutputStream.write(this.stModFriendGroup, 5);
+    localObject = this.stModFriendGroup;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x17
  * JD-Core Version:    0.7.0.1
  */

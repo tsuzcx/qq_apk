@@ -1,20 +1,23 @@
 package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
-import bdjq;
-import bdjs;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class QQCustomArkDialog$2$2
+class QQCustomArkDialog$2$2
   implements Runnable
 {
-  public QQCustomArkDialog$2$2(bdjs parambdjs) {}
+  QQCustomArkDialog$2$2(QQCustomArkDialog.2 param2) {}
   
   public void run()
   {
-    if (bdjq.a(this.a.a) != null) {}
-    for (Activity localActivity = (Activity)bdjq.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    Activity localActivity;
+    if (QQCustomArkDialog.c(this.a.a) != null) {
+      localActivity = (Activity)QQCustomArkDialog.c(this.a.a).get();
+    } else {
+      localActivity = null;
+    }
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
       this.a.a.show();
       return;
@@ -24,7 +27,7 @@ public class QQCustomArkDialog$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import com.tencent.open.base.ToastUtil;
+import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.downloadnew.MyAppApi;
 
 public class hnv
   implements Runnable
 {
-  public hnv(MyAppApi paramMyAppApi) {}
+  public hnv(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    ToastUtil.a().a(this.a.b);
+    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
   }
 }
 

@@ -1,0 +1,23 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dating.DatingDestinationActivity;
+
+public class iao
+{
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  
+  public iao(DatingDestinationActivity paramDatingDestinationActivity, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
+    this.b = paramTextView2;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\assets\exlibs.1.jar\classes.jar
+ * Qualified Name:     iao
+ * JD-Core Version:    0.7.0.1
+ */

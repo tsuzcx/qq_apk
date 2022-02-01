@@ -10,18 +10,18 @@ final class a$1
   
   public final void run()
   {
-    AppMethodBeat.i(17477);
-    if (this.jDT.jBP != null) {
-      this.jDT.jBP.cancel();
+    AppMethodBeat.i(21536);
+    if (this.vbp.uZm != null) {
+      this.vbp.uZm.cancel();
     }
-    this.jDT.jBP = new b();
-    this.jDT.jBP.a(this.jDT);
-    AppMethodBeat.o(17477);
+    this.vbp.uZm = new b();
+    this.vbp.uZm.a(this.vbp);
+    AppMethodBeat.o(21536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.a.1
  * JD-Core Version:    0.7.0.1
  */

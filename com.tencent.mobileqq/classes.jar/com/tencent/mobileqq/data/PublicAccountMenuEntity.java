@@ -1,20 +1,24 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class PublicAccountMenuEntity
-  extends awge
+  extends Entity
 {
-  public byte[] data;
+  public byte[] data = null;
   public long savedDateTime;
   public int seqno;
-  @awhs
+  @unique
   public String uin;
   
-  public PublicAccountMenuEntity() {}
+  public PublicAccountMenuEntity()
+  {
+    this.seqno = 0;
+    this.savedDateTime = 0L;
+  }
   
   public PublicAccountMenuEntity(String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse)
   {
@@ -23,15 +27,16 @@ public class PublicAccountMenuEntity
   
   public PublicAccountMenuEntity(String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, long paramLong)
   {
+    int i = 0;
+    this.seqno = 0;
+    this.savedDateTime = 0L;
     this.uin = paramString;
     this.data = paramGetPublicAccountMenuResponse.toByteArray();
     this.savedDateTime = paramLong;
-    if (paramGetPublicAccountMenuResponse.seqno.has()) {}
-    for (int i = paramGetPublicAccountMenuResponse.seqno.get();; i = 0)
-    {
-      this.seqno = i;
-      return;
+    if (paramGetPublicAccountMenuResponse.seqno.has()) {
+      i = paramGetPublicAccountMenuResponse.seqno.get();
     }
+    this.seqno = i;
   }
   
   public void clone(PublicAccountMenuEntity paramPublicAccountMenuEntity)

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center" android:background="#00ffffff" android:paddingLeft="10.0dip" android:paddingTop="70.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.HorizontalListView android:layout_gravity="center" android:id="@id/dsv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:cacheColorHint="#00000000" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/c6" android:paddingStart="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="168.0dip" android:layout_height="@dimen/c2" app:cornerRadius="4.0dip">
+            <ImageView android:id="@id/kkg" android:background="@color/x0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <TextView android:textSize="@dimen/a3" android:textColor="@android:color/white" android:layout_gravity="end|bottom|center" android:id="@id/l5w" android:background="@drawable/to" android:paddingLeft="@dimen/df" android:paddingTop="2.0dip" android:paddingRight="@dimen/df" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:text="00:00" android:layout_marginEnd="@dimen/df" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df">
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/l5o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" android:paddingEnd="@dimen/cp" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:id="@id/l65" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/l5o" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:id="@id/l5i" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintStart_toEndOf="@id/l65" app:layout_constraintTop_toTopOf="@id/l65" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</FrameLayout>

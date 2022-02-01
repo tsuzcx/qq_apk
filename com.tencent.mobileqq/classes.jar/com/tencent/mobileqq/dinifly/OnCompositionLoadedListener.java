@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 @Deprecated
 public abstract interface OnCompositionLoadedListener

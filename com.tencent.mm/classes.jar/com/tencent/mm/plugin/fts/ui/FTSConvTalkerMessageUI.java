@@ -1,79 +1,76 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView.b;
-import com.tencent.mm.plugin.fts.ui.widget.a.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.search.FTSEditTextView.d;
+import com.tencent.mm.ui.search.FTSSearchView.c;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FTSConvTalkerMessageUI
   extends FTSBaseUI
 {
-  private int ibk;
-  private String mSN;
-  private String mSO;
-  private h mXf;
+  private String Htv;
+  private String Htw;
+  private i HyL;
+  private int hAN;
   private String query;
-  private int showType;
+  private int syO;
   private String talker;
   
   protected final d a(e parame)
   {
-    AppMethodBeat.i(61833);
-    if (this.mXf == null) {
-      this.mXf = new h(this, this.talker, this.mSO, this.mSN, this.ibk, this.showType);
+    AppMethodBeat.i(111928);
+    if (this.HyL == null) {
+      this.HyL = new i(this, this.talker, this.Htw, this.Htv, this.syO, this.hAN);
     }
-    parame = this.mXf;
-    AppMethodBeat.o(61833);
+    parame = this.HyL;
+    AppMethodBeat.o(111928);
     return parame;
   }
   
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
+  protected final void fyk()
   {
-    AppMethodBeat.i(61834);
-    super.a(paramString2, paramString2, paramList, paramb);
-    AppMethodBeat.o(61834);
-  }
-  
-  protected final void bCD()
-  {
-    AppMethodBeat.i(61832);
-    super.bCD();
-    this.mSN = getIntent().getStringExtra("key_conv");
+    AppMethodBeat.i(111927);
+    super.fyk();
+    this.Htv = getIntent().getStringExtra("key_conv");
     this.talker = getIntent().getStringExtra("key_talker");
     this.query = getIntent().getStringExtra("key_query");
-    this.mSO = getIntent().getStringExtra("key_talker_query");
-    this.showType = getIntent().getIntExtra("detail_type", 1);
-    this.ibk = getIntent().getIntExtra("Search_Scene", 0);
-    ab.i("MicroMsg.FTS.FTSConvTalkerMessageUI", "initSearchData query=%s talker=%s conversation=%s showType=%d", new Object[] { this.query, this.talker, this.mSN, Integer.valueOf(this.showType) });
-    AppMethodBeat.o(61832);
+    this.Htw = getIntent().getStringExtra("key_talker_query");
+    this.hAN = getIntent().getIntExtra("detail_type", 1);
+    this.syO = getIntent().getIntExtra("Search_Scene", 0);
+    Log.i("MicroMsg.FTS.FTSConvTalkerMessageUI", "initSearchData query=%s talker=%s conversation=%s showType=%d", new Object[] { this.query, this.talker, this.Htv, Integer.valueOf(this.hAN) });
+    AppMethodBeat.o(111927);
+  }
+  
+  protected final boolean fyz()
+  {
+    return false;
   }
   
   public int getLayoutId()
   {
-    return 2130969676;
+    return p.e.fts_talker_message_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(61831);
+    AppMethodBeat.i(111926);
     super.onCreate(paramBundle);
-    ((n)g.G(n.class)).getFTSImageLoader().bBL();
-    paramBundle = new FTSConvTalkerMessageUI.a(this, (byte)0);
-    FTSConvTalkerMessageUI.a.a(paramBundle, this.mSO);
-    FTSConvTalkerMessageUI.a locala1 = new FTSConvTalkerMessageUI.a(this, (byte)0);
-    FTSConvTalkerMessageUI.a.a(locala1, ">");
-    FTSConvTalkerMessageUI.a locala2 = new FTSConvTalkerMessageUI.a(this, (byte)0);
-    FTSConvTalkerMessageUI.a.a(locala2, com.tencent.mm.plugin.fts.a.d.NA(this.mSN));
+    ((n)h.az(n.class)).getFTSImageLoader().fxg();
+    paramBundle = new a((byte)0);
+    a.a(paramBundle, this.Htw);
+    a locala1 = new a((byte)0);
+    a.a(locala1, ">");
+    a locala2 = new a((byte)0);
+    a.a(locala2, com.tencent.mm.plugin.fts.a.d.atS(this.Htv));
     ArrayList localArrayList = new ArrayList();
-    if (this.showType == 2)
+    if (this.hAN == 2)
     {
       localArrayList.add(paramBundle);
       localArrayList.add(locala1);
@@ -81,9 +78,9 @@ public class FTSConvTalkerMessageUI
     }
     for (;;)
     {
-      m(this.query, localArrayList);
-      bCz();
-      AppMethodBeat.o(61831);
+      B(this.query, localArrayList);
+      fye();
+      AppMethodBeat.o(111926);
       return;
       localArrayList.add(locala2);
       localArrayList.add(locala1);
@@ -91,10 +88,35 @@ public class FTSConvTalkerMessageUI
     }
   }
   
+  public void onEditTextChange(String paramString1, String paramString2, List<FTSSearchView.c> paramList, FTSEditTextView.d paramd)
+  {
+    AppMethodBeat.i(168770);
+    super.onEditTextChange(paramString2, paramString2, paramList, paramd);
+    AppMethodBeat.o(168770);
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  final class a
+    implements FTSSearchView.c
+  {
+    private String displayName;
+    
+    private a() {}
+    
+    public final int compareTo(Object paramObject)
+    {
+      return 0;
+    }
+    
+    public final String getTagName()
+    {
+      return this.displayName;
+    }
   }
 }
 

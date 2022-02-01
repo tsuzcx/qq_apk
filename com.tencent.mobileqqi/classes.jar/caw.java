@@ -1,40 +1,47 @@
-import android.content.Context;
-import android.os.Environment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity.PicInfo;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
-class caw
-  implements View.OnClickListener
+public class caw
+  extends Handler
 {
-  caw(cav paramcav) {}
+  public caw() {}
   
-  public void onClick(View paramView)
+  public caw(Looper paramLooper)
   {
-    if (!Environment.getExternalStorageState().equals("mounted")) {
-      Toast.makeText(this.a.a.a, this.a.a.getBaseContext().getString(2131562496), 0).show();
-    }
-    String str;
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
     {
-      return;
-      paramView = (ChatBackgroundSettingActivity.PicInfo)((View)paramView.getParent()).getTag();
-      str = AppConstants.aW + paramView.b + ".png";
-    } while (new File(str).exists());
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      Toast.makeText(this.a.a.a, this.a.a.getBaseContext().getString(2131562947), 0).show();
+      if (ChatBackgroundSettingActivity.c < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundSettingActivity.a((QQAppInterface)localObject, paramMessage, StatisticCollector.a(BaseApplication.getContext()));
+        ChatBackgroundSettingActivity.c += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundSettingActivity.c);
+        }
+        Message localMessage = ChatBackgroundSettingActivity.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundSettingActivity.a.sendMessageDelayed(localMessage, 120000L);
+      }
+    }
+    else {
       return;
     }
-    this.a.a.b.a().a(paramView.c, str);
+    ChatBackgroundSettingActivity.c = 0;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aijq;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.utils.SoftKeyboardHeight;
+import com.tencent.mobileqq.utils.SoftKeyboardHeight.OnGetSoftHeightListener;
 
-public class MiniPie$11
-  implements Runnable
+class MiniPie$11
+  implements SoftKeyboardHeight.OnGetSoftHeightListener
 {
-  public MiniPie$11(aijq paramaijq) {}
+  MiniPie$11(MiniPie paramMiniPie) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.this$0.s();
-    this.this$0.a.requestFocus();
+    MiniPie.a(this.a, SoftKeyboardHeight.a(paramInt));
+    this.a.B.height = MiniPie.b(this.a);
   }
 }
 

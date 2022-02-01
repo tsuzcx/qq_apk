@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/j5" android:paddingLeft="12.0dip" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/i" android:dividerHeight="1.0px" android:overScrollMode="never" />
+<LinearLayout android:gravity="end|center" android:orientation="horizontal" android:id="@id/esn" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@color/az" android:gravity="end|center" android:id="@id/eso" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ddb" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/finder_left_arrows" android:layout_marginStart="@dimen/bv" app:iconColor="@color/az" />
 </LinearLayout>

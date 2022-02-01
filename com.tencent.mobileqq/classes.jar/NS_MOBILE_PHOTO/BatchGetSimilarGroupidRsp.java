@@ -13,11 +13,11 @@ public final class BatchGetSimilarGroupidRsp
   static Map<String, Integer> cache_fails;
   static Map<String, String> cache_new_groupids;
   static Map<String, ArrayList<cluster_search_result>> cache_results = new HashMap();
-  public Map<String, Integer> fails;
+  public Map<String, Integer> fails = null;
   public String msg = "";
-  public Map<String, String> new_groupids;
-  public Map<String, ArrayList<cluster_search_result>> results;
-  public int ret;
+  public Map<String, String> new_groupids = null;
+  public Map<String, ArrayList<cluster_search_result>> results = null;
+  public int ret = 0;
   
   static
   {
@@ -53,23 +53,27 @@ public final class BatchGetSimilarGroupidRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.results != null) {
-      paramJceOutputStream.write(this.results, 2);
+    localObject = this.results;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.fails != null) {
-      paramJceOutputStream.write(this.fails, 3);
+    localObject = this.fails;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.new_groupids != null) {
-      paramJceOutputStream.write(this.new_groupids, 4);
+    localObject = this.new_groupids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.BatchGetSimilarGroupidRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <TextView android:id="@id/dh6" android:text="@string/dxd" android:layout_weight="1.0" style="@style/mm" />
-            <com.tencent.mm.ui.widget.MMEditText android:id="@id/dh7" style="@style/ml" />
-            <View style="@style/mh" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<RelativeLayout android:id="@id/dt6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/dsy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/dt5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/dsx" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/dt4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:singleLine="true" android:layout_below="@id/dsx" android:layout_centerHorizontal="true" android:layout_marginStart="22.0dip" android:layout_marginEnd="22.0dip" />
+        <org.libpag.PAGView android:id="@id/dt7" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="2.0dip" android:layout_alignTop="@id/dt4" android:layout_marginStart="-20.0dip" android:layout_toEndOf="@id/dt4" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/dt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/df" android:singleLine="true" android:layout_below="@id/dt4" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class gsi
-  implements View.OnClickListener
+  implements Runnable
 {
   public gsi(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TextUtils.a(this.a.b);
+    if (this.a.a == null) {
+      this.a.a = new QQProgressDialog(this.a, this.a.d());
+    }
+    this.a.a.b(2131560736);
+    this.a.a.show();
   }
 }
 

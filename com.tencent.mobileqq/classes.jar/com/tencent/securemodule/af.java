@@ -37,44 +37,74 @@ public class af
     try
     {
       paramString = new URL(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("network type == ");
+      localStringBuilder.append(this.d);
+      ax.b("HttpUtil", localStringBuilder.toString());
       if (this.d == af.a.b) {}
-      for (this.a = ((HttpURLConnection)paramString.openConnection(new java.net.Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(a(paramContext), b(paramContext)))));; this.a = ((HttpURLConnection)paramString.openConnection()))
+      for (paramContext = (HttpURLConnection)paramString.openConnection(new java.net.Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(a(paramContext), b(paramContext))));; paramContext = (HttpURLConnection)paramString.openConnection())
       {
-        this.a.setReadTimeout(15000);
-        this.a.setConnectTimeout(15000);
-        return 0;
+        this.a = paramContext;
+        break;
       }
-      return -1000;
-    }
-    catch (MalformedURLException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -1053;
-    }
-    catch (IllegalArgumentException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -1057;
-    }
-    catch (SecurityException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -1058;
-    }
-    catch (UnsupportedOperationException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -1059;
-    }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -1056;
+      this.a.setReadTimeout(15000);
+      this.a.setConnectTimeout(15000);
+      return 0;
     }
     catch (Exception paramContext)
     {
+      paramString = new StringBuilder();
+      paramString.append("init error: ");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -1000;
+    }
+    catch (IOException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("io error: ");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -1056;
+    }
+    catch (UnsupportedOperationException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("unsupported operation error: ");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -1059;
+    }
+    catch (SecurityException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("security error: ");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -1058;
+    }
+    catch (IllegalArgumentException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("arg error: ");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -1057;
+    }
+    catch (MalformedURLException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("url error: ");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
       paramContext.printStackTrace();
     }
+    return -1053;
   }
   
   public static String a(Context paramContext)
@@ -119,18 +149,19 @@ public class af
   public static af.a c(Context paramContext)
   {
     NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if ((localNetworkInfo == null) || ((localNetworkInfo.getState() != NetworkInfo.State.CONNECTING) && (localNetworkInfo.getState() != NetworkInfo.State.CONNECTED))) {
-      return af.a.d;
-    }
-    if (localNetworkInfo.getType() == 1) {
-      return af.a.a;
-    }
-    if (localNetworkInfo.getType() == 0)
+    if ((localNetworkInfo != null) && ((localNetworkInfo.getState() == NetworkInfo.State.CONNECTING) || (localNetworkInfo.getState() == NetworkInfo.State.CONNECTED)))
     {
-      if ((android.net.Proxy.getDefaultHost() != null) || (android.net.Proxy.getHost(paramContext) != null)) {
+      if (localNetworkInfo.getType() == 1) {
+        return af.a.a;
+      }
+      if (localNetworkInfo.getType() == 0)
+      {
+        if ((android.net.Proxy.getDefaultHost() == null) && (android.net.Proxy.getHost(paramContext) == null)) {
+          return af.a.c;
+        }
         return af.a.b;
       }
-      return af.a.c;
+      return af.a.d;
     }
     return af.a.d;
   }
@@ -153,95 +184,126 @@ public class af
       this.a.setRequestProperty("Accept", "*/*");
       this.a.setRequestProperty("Accept-Charset", "utf-8");
       this.a.setRequestProperty("Content-Type", "application/octet-stream");
-      this.a.setRequestProperty("Content-length", "" + i);
+      paramContext = this.a;
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(i);
+      paramContext.setRequestProperty("Content-length", paramString.toString());
       paramContext = this.a.getOutputStream();
       paramContext.write(paramArrayOfByte);
       paramContext.close();
       i = this.a.getResponseCode();
+      paramContext = new StringBuilder();
+      paramContext.append("responseCode == ");
+      paramContext.append(i);
+      ax.b("HttpUtil", paramContext.toString());
       if (i == 200)
       {
         this.b = true;
         return 0;
       }
-    }
-    catch (IllegalAccessError paramContext)
-    {
-      paramContext.printStackTrace();
-      return -2060;
       if (i == -1) {
         return -2000;
       }
       return -2000 - i;
     }
-    catch (IllegalStateException paramContext)
+    catch (Exception paramContext)
     {
+      paramString = new StringBuilder();
+      paramString.append("post error:");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
       paramContext.printStackTrace();
-      return -2061;
-    }
-    catch (ProtocolException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -2051;
+      return -2000;
     }
     catch (IOException paramContext)
     {
+      paramString = new StringBuilder();
+      paramString.append("post io error:");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
       paramContext.printStackTrace();
       return -2056;
     }
-    catch (Exception paramContext)
+    catch (ProtocolException paramContext)
     {
+      paramString = new StringBuilder();
+      paramString.append("protocol error:");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -2051;
+    }
+    catch (IllegalStateException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("illegal state error:");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
+      paramContext.printStackTrace();
+      return -2061;
+    }
+    catch (IllegalAccessError paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("illegal access error:");
+      paramString.append(paramContext.getMessage());
+      ax.a("HttpUtil", paramString.toString());
       paramContext.printStackTrace();
     }
-    return -2000;
+    return -2060;
   }
   
   public int a(boolean paramBoolean, AtomicReference<byte[]> paramAtomicReference)
   {
-    int j;
-    if ((this.a == null) || (!this.b))
+    Object localObject1 = this.a;
+    int i = -4000;
+    int j = i;
+    if (localObject1 != null)
     {
-      j = -4000;
-      return j;
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
+      if (!this.b) {
+        return -4000;
+      }
       try
       {
-        localObject1 = new InflaterInputStream(this.a.getInputStream());
+        ax.b("HttpUtil", ((HttpURLConnection)localObject1).getURL());
+        if (paramBoolean) {
+          localObject1 = new InflaterInputStream(this.a.getInputStream());
+        } else {
+          localObject1 = this.a.getInputStream();
+        }
         localObject1 = a((InputStream)localObject1);
         i = 0;
       }
-      catch (IOException localIOException)
+      catch (Exception localException) {}catch (IOException localIOException)
       {
-        Object localObject1;
-        localIOException.printStackTrace();
-        i = -4056;
-        Object localObject2 = null;
-        continue;
+        break label109;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        int i = -4000;
-        Object localObject3 = null;
-        continue;
-      }
-      paramAtomicReference.set(localObject1);
+      ax.a("HttpUtil", "response error");
+      localIOException.printStackTrace();
+      break label126;
+      label109:
+      i = -4056;
+      ax.a("HttpUtil", "response io error");
+      localIOException.printStackTrace();
+      label126:
+      Object localObject2 = null;
+      paramAtomicReference.set(localObject2);
+      paramAtomicReference = this.a;
       j = i;
-      if (this.a == null) {
-        break;
+      if (paramAtomicReference != null)
+      {
+        paramAtomicReference.disconnect();
+        this.a = null;
+        j = i;
       }
-      this.a.disconnect();
-      this.a = null;
-      return i;
-      localObject1 = this.a.getInputStream();
     }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.af
  * JD-Core Version:    0.7.0.1
  */

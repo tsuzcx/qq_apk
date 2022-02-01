@@ -15,6 +15,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import crf;
 import crg;
 import crh;
 import cri;
@@ -22,7 +23,6 @@ import crj;
 import crk;
 import crl;
 import crm;
-import crn;
 import java.lang.reflect.Field;
 
 public class LbsBaseActivity
@@ -82,15 +82,15 @@ public class LbsBaseActivity
   
   private boolean f()
   {
-    return this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.m();
+    return this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.n();
   }
   
   private void g(Runnable paramRunnable)
   {
     if (this.a == null)
     {
-      this.a = a(17039380, 2131563091, 2131561088, 2131562541, new cri(this), new crj(this));
-      this.a.setOnDismissListener(new crk(this, paramRunnable));
+      this.a = a(17039380, 2131563091, 2131561088, 2131562541, new crh(this), new cri(this));
+      this.a.setOnDismissListener(new crj(this, paramRunnable));
     }
     c();
     this.a.show();
@@ -98,8 +98,8 @@ public class LbsBaseActivity
   
   private void h(Runnable paramRunnable)
   {
-    paramRunnable = new crl(this, paramRunnable);
-    this.jdField_b_of_type_AndroidAppDialog = a(2131562689, a(), 2131562511, 2131562541, new crm(this), new crn(this));
+    paramRunnable = new crk(this, paramRunnable);
+    this.jdField_b_of_type_AndroidAppDialog = a(2131562689, a(), 2131562511, 2131562541, new crl(this), new crm(this));
     this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(paramRunnable);
     this.jdField_b_of_type_AndroidAppDialog.show();
   }
@@ -117,7 +117,7 @@ public class LbsBaseActivity
     String str1 = getResources().getString(paramInt4);
     Dialog localDialog = new Dialog(this, 2131624405);
     localDialog.setContentView(2130903162);
-    TextView localTextView = (TextView)localDialog.findViewById(2131231469);
+    TextView localTextView = (TextView)localDialog.findViewById(2131231468);
     if (localTextView != null)
     {
       localTextView.setText((CharSequence)localObject2);
@@ -129,14 +129,14 @@ public class LbsBaseActivity
       ((TextView)localObject2).setText((CharSequence)localObject1);
       ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
     }
-    localObject1 = (TextView)localDialog.findViewById(2131231472);
+    localObject1 = (TextView)localDialog.findViewById(2131231471);
     if (localObject1 != null)
     {
       ((TextView)localObject1).setText(str2);
       ((TextView)localObject1).setContentDescription(str2);
       ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
     }
-    paramOnClickListener1 = (TextView)localDialog.findViewById(2131231473);
+    paramOnClickListener1 = (TextView)localDialog.findViewById(2131231472);
     if (paramOnClickListener1 != null)
     {
       paramOnClickListener1.setText(str1);
@@ -210,7 +210,7 @@ public class LbsBaseActivity
   
   public void d(Runnable paramRunnable)
   {
-    this.c = a(2131561835, 2131561451, 2131561746, 2131561918, new crg(this), new crh(this, paramRunnable));
+    this.c = a(2131561835, 2131561451, 2131561746, 2131561918, new crf(this), new crg(this, paramRunnable));
     this.c.show();
   }
   

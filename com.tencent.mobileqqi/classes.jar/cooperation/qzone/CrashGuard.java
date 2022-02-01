@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import common.qzone.component.util.SecurityUtil;
-import ibq;
+import ibp;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CrashGuard
@@ -45,7 +45,7 @@ public class CrashGuard
     }
     this.jdField_a_of_type_AndroidOsHandler = localHandler;
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new ibq(this, paramLong);
+      this.jdField_a_of_type_JavaLangRunnable = new ibp(this, paramLong);
     }
     if (jdField_a_of_type_Int < 0) {
       jdField_a_of_type_Int = a();

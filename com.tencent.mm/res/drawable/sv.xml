@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="@color/a0x" android:endColor="@color/a0v" android:angle="270.0" android:type="linear" />
-    <corners android:radius="2.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/fav_delete_pressed" />
+    <item android:state_enabled="false" android:drawable="@raw/fav_delete_disable" />
+    <item android:drawable="@raw/fav_delete_normal" />
+</selector>

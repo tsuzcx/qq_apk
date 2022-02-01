@@ -49,14 +49,15 @@ public class DarkCornerPtuFilter
   public void setMaskType(int paramInt)
   {
     this.maskType = paramInt;
-    if (this.nextFilter != null) {
-      this.nextFilter.addParam(new UniformParam.IntParam("maskType", this.maskType));
+    BaseFilter localBaseFilter = this.nextFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.addParam(new UniformParam.IntParam("maskType", this.maskType));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.ttpic.DarkCornerPtuFilter
  * JD-Core Version:    0.7.0.1
  */

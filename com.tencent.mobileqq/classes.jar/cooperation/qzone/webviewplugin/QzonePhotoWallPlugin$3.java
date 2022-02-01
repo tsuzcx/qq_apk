@@ -1,21 +1,20 @@
 package cooperation.qzone.webviewplugin;
 
-import bjyg;
 import java.util.ArrayList;
 
-public class QzonePhotoWallPlugin$3
+class QzonePhotoWallPlugin$3
   implements Runnable
 {
-  public QzonePhotoWallPlugin$3(bjyg parambjyg, ArrayList paramArrayList) {}
+  QzonePhotoWallPlugin$3(QzonePhotoWallPlugin paramQzonePhotoWallPlugin, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bjyg.a(this.this$0, this.a, true);
+    QzonePhotoWallPlugin.access$100(this.this$0, this.val$imagePaths, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePhotoWallPlugin.3
  * JD-Core Version:    0.7.0.1
  */

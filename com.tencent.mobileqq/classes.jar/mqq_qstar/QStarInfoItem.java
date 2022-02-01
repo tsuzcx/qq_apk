@@ -8,11 +8,11 @@ public final class QStarInfoItem
   extends JceStruct
 {
   public String headurl = "";
-  public int level;
+  public int level = 0;
   public String levelurl = "";
   public String name = "";
-  public long starid;
-  public int totalexp;
+  public long starid = 0L;
+  public int totalexp = 0;
   
   public QStarInfoItem() {}
   
@@ -39,22 +39,25 @@ public final class QStarInfoItem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.starid, 0);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    String str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.level, 2);
     paramJceOutputStream.write(this.totalexp, 3);
-    if (this.headurl != null) {
-      paramJceOutputStream.write(this.headurl, 4);
+    str = this.headurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.levelurl != null) {
-      paramJceOutputStream.write(this.levelurl, 5);
+    str = this.levelurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq_qstar.QStarInfoItem
  * JD-Core Version:    0.7.0.1
  */

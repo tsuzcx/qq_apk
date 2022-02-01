@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.dinifly.model.content;
 
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.L;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.MergePathsContent;
 import com.tencent.mobileqq.dinifly.model.layer.BaseLayer;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 
 public class MergePaths
   implements ContentModel
@@ -41,7 +41,7 @@ public class MergePaths
   {
     if (!paramLottieDrawable.enableMergePathsForKitKatAndAbove())
     {
-      L.warn("Animation contains merge paths but they are disabled.");
+      Logger.warning("Animation contains merge paths but they are disabled.");
       return null;
     }
     return new MergePathsContent(this);
@@ -49,7 +49,11 @@ public class MergePaths
   
   public String toString()
   {
-    return "MergePaths{mode=" + this.mode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MergePaths{mode=");
+    localStringBuilder.append(this.mode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

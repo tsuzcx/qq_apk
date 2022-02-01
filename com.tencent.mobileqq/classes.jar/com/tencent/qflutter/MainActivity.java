@@ -1,14 +1,15 @@
 package com.tencent.qflutter;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.qflutter.utils.FLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.app.FlutterActivity;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity
   extends FlutterActivity
@@ -18,42 +19,47 @@ public class MainActivity
   private TextView mOpenFlutter;
   private TextView mOpenFlutterFragment;
   
-  public void onClick(View paramView)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("test1", "v_test1");
-    localHashMap.put("test2", "v_test2");
-    if (paramView == this.mOpenFlutter) {
-      PageRouter.openPageByUrl(this, "qflutter://home_page", localHashMap);
-    }
-    while (paramView != this.mOpenFlutterFragment) {
-      return;
-    }
-    PageRouter.openPageByUrl(this, "qflutter://color_list", localHashMap);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onClick(View paramView) {}
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     sRef = new WeakReference(this);
-    setContentView(2131427372);
-    this.mOpenFlutter = ((TextView)findViewById(2131230882));
-    this.mOpenFlutterFragment = ((TextView)findViewById(2131230881));
+    setContentView(2131296285);
+    this.mOpenFlutter = ((TextView)findViewById(2131165343));
+    this.mOpenFlutterFragment = ((TextView)findViewById(2131165342));
     this.mOpenFlutter.setOnClickListener(this);
     this.mOpenFlutterFragment.setOnClickListener(this);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (sRef != null)
+    WeakReference localWeakReference = sRef;
+    if (localWeakReference != null)
     {
-      sRef.clear();
+      localWeakReference.clear();
       sRef = null;
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -64,7 +70,7 @@ public class MainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qflutter.MainActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,37 @@
 package kotlinx.coroutines;
 
-import a.c.e;
-import a.f.b.j;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.ac;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/StandaloneCoroutine;", "Lkotlinx/coroutines/AbstractCoroutine;", "", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "cancelsParent", "getCancelsParent", "()Z", "handleJobException", "exception", "", "kotlinx-coroutines-core"})
-class bp
-  extends c<y>
+@Metadata(d1={""}, d2={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "getCLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "getDISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class bp
 {
-  public bp(e parame, boolean paramBoolean)
+  private static final ac ajwk;
+  private static final ac ajwl;
+  
+  static
   {
-    super(parame, paramBoolean);
-    AppMethodBeat.i(118463);
-    AppMethodBeat.o(118463);
+    AppMethodBeat.i(188822);
+    ajwk = new ac("REMOVED_TASK");
+    ajwl = new ac("CLOSED_EMPTY");
+    AppMethodBeat.o(188822);
   }
   
-  protected final boolean epU()
+  public static final long BL(long paramLong)
   {
-    return true;
-  }
-  
-  protected final void z(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118462);
-    j.q(paramThrowable, "exception");
-    z.b(this.CHm, paramThrowable);
-    AppMethodBeat.o(118462);
+    if (paramLong <= 0L) {
+      return 0L;
+    }
+    if (paramLong >= 9223372036854L) {
+      return 9223372036854775807L;
+    }
+    return 1000000L * paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bp
  * JD-Core Version:    0.7.0.1
  */

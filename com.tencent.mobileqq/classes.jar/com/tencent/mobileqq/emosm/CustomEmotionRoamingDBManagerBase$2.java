@@ -1,55 +1,68 @@
 package com.tencent.mobileqq.emosm;
 
-import apmi;
-import awgf;
-import awgg;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
-public class CustomEmotionRoamingDBManagerBase$2
+class CustomEmotionRoamingDBManagerBase$2
   implements Runnable
 {
-  public CustomEmotionRoamingDBManagerBase$2(apmi paramapmi, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
+  CustomEmotionRoamingDBManagerBase$2(CustomEmotionRoamingDBManagerBase paramCustomEmotionRoamingDBManagerBase, int paramInt, CustomEmotionBase paramCustomEmotionBase) {}
   
   public void run()
   {
-    if (this.this$0.a == null) {}
-    awgf localawgf;
-    do
-    {
+    if (this.this$0.app == null) {
       return;
-      localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    } while (localawgf == null);
-    boolean bool2 = false;
-    boolean bool1;
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("CustomEmotionRoamingDBManagerBase", 2, "can not save fav emoticon data, type:" + this.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
-      break;
     }
-    for (;;)
-    {
-      localawgf.a();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("CustomEmotionRoamingDBManagerBase", 2, "updateCustomEmotionDataListInDB type:" + this.jdField_a_of_type_Int + "save result: " + bool1);
+    Object localObject = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    if (localObject == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase.setStatus(1000);
-      localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+    }
+    boolean bool2 = false;
+    int i = this.a;
+    boolean bool1;
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i != 4)
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("can not save fav emoticon data, type:");
+            localStringBuilder.append(this.a);
+            QLog.d("CustomEmotionRoamingDBManagerBase", 2, localStringBuilder.toString());
+            bool1 = bool2;
+          }
+        }
+        else
+        {
+          bool1 = ((EntityManager)localObject).remove(this.b);
+        }
+      }
+      else {
+        bool1 = ((EntityManager)localObject).update(this.b);
+      }
+    }
+    else
+    {
+      this.b.setStatus(1000);
+      ((EntityManager)localObject).persist(this.b);
       bool1 = bool2;
-      continue;
-      bool1 = localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
-      continue;
-      bool1 = localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+    }
+    ((EntityManager)localObject).close();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateCustomEmotionDataListInDB type:");
+      ((StringBuilder)localObject).append(this.a);
+      ((StringBuilder)localObject).append("save result: ");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.d("CustomEmotionRoamingDBManagerBase", 2, ((StringBuilder)localObject).toString());
     }
   }
 }

@@ -1,50 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QCallRecord;
 import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import java.util.ArrayList;
 import java.util.List;
 
-public class gfn
+class gfn
   implements Runnable
 {
-  public gfn(QCallDetailActivity paramQCallDetailActivity) {}
+  gfn(gfm paramgfm, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    ArrayList localArrayList;
-    if (QCallDetailActivity.a(this.a) != null) {
-      localArrayList = new ArrayList();
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      synchronized (QCallDetailActivity.a(this.a))
-      {
-        List localList = QCallDetailActivity.a(this.a).a(QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
-        if ((QCallDetailActivity.a(this.a) != null) && (localList != null) && (!localList.isEmpty()))
-        {
-          int i = 20;
-          int j = 0;
-          if ((j >= i) || (j >= localList.size())) {
-            break label191;
-          }
-          if (((QCallRecord)localList.get(j)).type == QCallRecord.TYPE_DATE)
-          {
-            i += 1;
-            localArrayList.add(localList.get(j));
-            j += 1;
-            continue;
-            this.a.b.runOnUiThread(new gfo(this, localArrayList, bool));
-          }
-        }
-        else
-        {
-          bool = true;
-        }
-      }
-      continue;
-      label191:
-      boolean bool = false;
+      QCallDetailActivity.a(this.jdField_a_of_type_Gfm.a).jdField_a_of_type_JavaUtilList.clear();
+      QCallDetailActivity.a(this.jdField_a_of_type_Gfm.a).jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    }
+    QCallDetailActivity.a(this.jdField_a_of_type_Gfm.a, this.jdField_a_of_type_Boolean);
+    if (QCallDetailActivity.a(this.jdField_a_of_type_Gfm.a) != null) {
+      QCallDetailActivity.a(this.jdField_a_of_type_Gfm.a).notifyDataSetChanged();
     }
   }
 }

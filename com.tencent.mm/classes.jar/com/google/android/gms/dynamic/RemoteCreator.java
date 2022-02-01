@@ -24,7 +24,7 @@ public abstract class RemoteCreator<T>
       Preconditions.checkNotNull(paramContext);
       paramContext = GooglePlayServicesUtilLight.getRemoteContext(paramContext);
       if (paramContext == null) {
-        throw new RemoteCreator.RemoteCreatorException("Could not get remote context.");
+        throw new RemoteCreatorException("Could not get remote context.");
       }
       paramContext = paramContext.getClassLoader();
     }
@@ -35,21 +35,35 @@ public abstract class RemoteCreator<T>
     }
     catch (ClassNotFoundException paramContext)
     {
-      throw new RemoteCreator.RemoteCreatorException("Could not load creator class.", paramContext);
+      throw new RemoteCreatorException("Could not load creator class.", paramContext);
     }
     catch (InstantiationException paramContext)
     {
-      throw new RemoteCreator.RemoteCreatorException("Could not instantiate creator.", paramContext);
+      throw new RemoteCreatorException("Could not instantiate creator.", paramContext);
     }
     catch (IllegalAccessException paramContext)
     {
-      throw new RemoteCreator.RemoteCreatorException("Could not access creator.", paramContext);
+      throw new RemoteCreatorException("Could not access creator.", paramContext);
+    }
+  }
+  
+  public static class RemoteCreatorException
+    extends Exception
+  {
+    public RemoteCreatorException(String paramString)
+    {
+      super();
+    }
+    
+    public RemoteCreatorException(String paramString, Throwable paramThrowable)
+    {
+      super(paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamic.RemoteCreator
  * JD-Core Version:    0.7.0.1
  */

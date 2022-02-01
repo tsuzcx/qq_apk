@@ -1,8 +1,14 @@
 package android.support.v4.widget;
 
-public abstract interface t
+import android.view.View;
+
+final class t
+  extends r
 {
-  public abstract boolean ct();
+  public final void a(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
+  {
+    android.support.v4.view.r.a(paramView, ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).rB);
+  }
 }
 
 

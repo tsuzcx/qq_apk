@@ -1,39 +1,38 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajkm;
-import ajlb;
-import alzl;
-import bdiu;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.PAStartupTracker;
 import com.tencent.qphone.base.util.QLog;
-import nrc;
 
-public class RecentPubAccHelper$4
+class RecentPubAccHelper$4
   implements Runnable
 {
-  public RecentPubAccHelper$4(ajkm paramajkm, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData) {}
+  RecentPubAccHelper$4(RecentPubAccHelper paramRecentPubAccHelper, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RecentPubAccHelper", 2, "updateUnfollowInfo");
     }
-    nrc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    Object localObject = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(this.a, this.b.getRecentUserUin());
+    Object localObject = (IPublicAccountDataManager)this.a.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject != null)
     {
-      ((alzl)localObject).c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-      ((alzl)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-      localObject = ((alzl)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfoCache(this.b.getRecentUserUin());
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfo(this.b.getRecentUserUin());
+      localObject = ((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.b.getRecentUserUin());
       if (localObject != null) {
-        ajkm.a(this.this$0, (AccountDetail)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        RecentPubAccHelper.a(this.this$0, (IPublicAccountDetail)localObject, this.a);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), 1008);
-    ajlb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), 1008);
-    bdiu.a(" pubAcc_follow_cancel", null, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+    this.a.getMessageFacade().c(this.b.getRecentUserUin(), 1008);
+    RecentUtil.b(this.a, this.b.getRecentUserUin(), 1008);
+    PAStartupTracker.a(" pubAcc_follow_cancel", null, this.b.getRecentUserUin());
   }
 }
 

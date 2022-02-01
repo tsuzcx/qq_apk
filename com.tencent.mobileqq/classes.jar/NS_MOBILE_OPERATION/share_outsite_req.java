@@ -11,16 +11,16 @@ public final class share_outsite_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
-  public int appid;
+  public int appid = 0;
   public String batchid = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String cellid = "";
-  public int iIsShareTo;
+  public int iIsShareTo = 0;
   public String lloc = "";
-  public int shareScene;
+  public int shareScene = 0;
   public String strMd5Key = "";
-  public long uHostUin;
-  public int ugc_type;
+  public long uHostUin = 0L;
+  public int ugc_type = 0;
   
   static
   {
@@ -62,33 +62,39 @@ public final class share_outsite_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appid, 0);
-    if (this.cellid != null) {
-      paramJceOutputStream.write(this.cellid, 1);
+    Object localObject = this.cellid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.ugc_type, 2);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 3);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.lloc != null) {
-      paramJceOutputStream.write(this.lloc, 4);
+    localObject = this.lloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.batchid != null) {
-      paramJceOutputStream.write(this.batchid, 5);
+    localObject = this.batchid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.uHostUin, 6);
     paramJceOutputStream.write(this.iIsShareTo, 7);
-    if (this.strMd5Key != null) {
-      paramJceOutputStream.write(this.strMd5Key, 8);
+    localObject = this.strMd5Key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.shareScene, 9);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 10);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.share_outsite_req
  * JD-Core Version:    0.7.0.1
  */

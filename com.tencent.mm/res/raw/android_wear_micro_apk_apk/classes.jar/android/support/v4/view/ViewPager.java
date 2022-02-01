@@ -33,9 +33,9 @@ import java.util.List;
 public class ViewPager
   extends ViewGroup
 {
-  static final int[] kV = { 16842931 };
-  private static final Comparator<ai> kX = new Comparator() {};
-  private static final Interpolator kY = new Interpolator()
+  static final int[] mR = { 16842931 };
+  private static final Comparator<ai> mT = new Comparator() {};
+  private static final Interpolator mU = new Interpolator()
   {
     public final float getInterpolation(float paramAnonymousFloat)
     {
@@ -43,69 +43,69 @@ public class ViewPager
       return paramAnonymousFloat * (paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat) + 1.0F;
     }
   };
-  private static final an lU = new an();
-  private boolean aU;
-  private int kD = 0;
-  private int kW;
-  private final ArrayList<ai> kZ = new ArrayList();
-  private final Rect kd = new Rect();
-  private float kj;
-  private float kk;
-  private int kl;
-  private VelocityTracker lA;
-  private int lB;
-  private int lC;
-  private int lD;
-  private int lE;
-  private boolean lF;
-  private EdgeEffect lG;
-  private EdgeEffect lH;
-  private boolean lI = true;
-  private boolean lJ = false;
-  private boolean lK;
-  private int lL;
-  private List<al> lM;
-  private al lN;
-  private al lO;
-  private List<ak> lP;
-  private am lQ;
-  private int lR;
-  private int lS;
-  private ArrayList<View> lT;
-  private final Runnable lV = new Runnable()
+  private static final an nQ = new an();
+  private boolean cE;
+  private int mS;
+  private final ArrayList<ai> mV = new ArrayList();
+  private final ai mW = new ai();
+  o mX;
+  int mY;
+  private int mZ = -1;
+  private final Rect ma = new Rect();
+  private float mg;
+  private float mh;
+  private int mi;
+  private int mz = 0;
+  private int nA;
+  private boolean nB;
+  private EdgeEffect nC;
+  private EdgeEffect nD;
+  private boolean nE = true;
+  private boolean nF = false;
+  private boolean nG;
+  private int nH;
+  private List<al> nI;
+  private al nJ;
+  private al nK;
+  private List<ak> nL;
+  private am nM;
+  private int nN;
+  private int nO;
+  private ArrayList<View> nP;
+  private final Runnable nR = new Runnable()
   {
     public final void run()
     {
-      ViewPager.this.z(0);
-      ViewPager.this.bv();
+      ViewPager.this.K(0);
+      ViewPager.this.bM();
     }
   };
-  private final ai la = new ai();
-  o lb;
-  int lc;
-  private int ld = -1;
-  private Parcelable le = null;
-  private ClassLoader lf = null;
-  private Scroller lg;
-  private boolean lh;
-  private int li;
-  private Drawable lj;
-  private int lk;
-  private int ll;
-  private float lm = -3.402824E+038F;
-  private float ln = 3.4028235E+38F;
-  private int lo;
-  private int lp;
-  private boolean lq;
-  private boolean lr;
-  private int ls = 1;
-  private boolean lt;
-  private boolean lu;
-  private int lv;
-  private int lw;
-  private float lx;
-  private float ly;
-  private int lz = -1;
+  private Parcelable na = null;
+  private ClassLoader nb = null;
+  private Scroller nc;
+  private boolean nd;
+  private int ne;
+  private Drawable nf;
+  private int ng;
+  private int nh;
+  private float ni = -3.402824E+038F;
+  private float nj = 3.4028235E+38F;
+  private int nk;
+  private int nl;
+  private boolean nm;
+  private boolean nn;
+  private int no = 1;
+  private boolean np;
+  private boolean nq;
+  private int nr;
+  private int ns;
+  private float nt;
+  private float nu;
+  private int nv = -1;
+  private VelocityTracker nw;
+  private int nx;
+  private int ny;
+  private int nz;
   
   public ViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -114,24 +114,24 @@ public class ViewPager
     setDescendantFocusability(262144);
     setFocusable(true);
     paramContext = getContext();
-    this.lg = new Scroller(paramContext, kY);
+    this.nc = new Scroller(paramContext, mU);
     paramAttributeSet = ViewConfiguration.get(paramContext);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.kl = paramAttributeSet.getScaledPagingTouchSlop();
-    this.lB = ((int)(400.0F * f));
-    this.lC = paramAttributeSet.getScaledMaximumFlingVelocity();
-    this.lG = new EdgeEffect(paramContext);
-    this.lH = new EdgeEffect(paramContext);
-    this.lD = ((int)(25.0F * f));
-    this.lE = ((int)(2.0F * f));
-    this.lv = ((int)(16.0F * f));
+    this.mi = paramAttributeSet.getScaledPagingTouchSlop();
+    this.nx = ((int)(400.0F * f));
+    this.ny = paramAttributeSet.getScaledMaximumFlingVelocity();
+    this.nC = new EdgeEffect(paramContext);
+    this.nD = new EdgeEffect(paramContext);
+    this.nz = ((int)(25.0F * f));
+    this.nA = ((int)(2.0F * f));
+    this.nr = ((int)(16.0F * f));
     r.a(this, new aj(this));
-    if (r.g(this) == 0) {
-      r.c(this, 1);
+    if (r.h(this) == 0) {
+      r.f(this, 1);
     }
     r.a(this, new n()
     {
-      private final Rect kd = new Rect();
+      private final Rect ma = new Rect();
       
       public final av a(View paramAnonymousView, av paramAnonymousav)
       {
@@ -139,7 +139,7 @@ public class ViewPager
         if (paramAnonymousView.isConsumed()) {
           return paramAnonymousView;
         }
-        paramAnonymousav = this.kd;
+        paramAnonymousav = this.ma;
         paramAnonymousav.left = paramAnonymousView.getSystemWindowInsetLeft();
         paramAnonymousav.top = paramAnonymousView.getSystemWindowInsetTop();
         paramAnonymousav.right = paramAnonymousView.getSystemWindowInsetRight();
@@ -160,50 +160,66 @@ public class ViewPager
     });
   }
   
-  private void B(int paramInt)
+  private ai C(View paramView)
   {
-    this.lr = false;
+    for (;;)
+    {
+      paramView = paramView.getParent();
+      if (paramView == this) {
+        break;
+      }
+      if ((paramView == null) || (!(paramView instanceof View))) {
+        return null;
+      }
+      paramView = (View)paramView;
+    }
+    return bO();
+  }
+  
+  private void M(int paramInt)
+  {
+    this.nn = false;
     a(paramInt, true, false);
   }
   
-  private ai C(int paramInt)
+  private ai N(int paramInt)
   {
     new ai().position = paramInt;
     throw new UnsupportedOperationException("Required method instantiateItem was not overridden");
   }
   
-  private void D(int paramInt)
+  private void O(int paramInt)
   {
     ai localai;
-    if (this.lc != paramInt)
+    if (this.mY != paramInt)
     {
-      localai = E(this.lc);
-      this.lc = paramInt;
+      localai = P(this.mY);
+      this.mY = paramInt;
     }
     for (;;)
     {
-      if (this.lb == null) {
-        bw();
+      if (this.mX == null) {
+        bN();
       }
       do
       {
         return;
-        if (this.lr)
+        if (this.nn)
         {
-          bw();
+          bN();
           return;
         }
       } while (getWindowToken() == null);
-      paramInt = this.ls;
-      int i1 = Math.max(0, this.lc - paramInt);
-      int m = this.lb.getCount();
-      int n = Math.min(m - 1, paramInt + this.lc);
+      paramInt = this.no;
+      int i1 = Math.max(0, this.mY - paramInt);
+      int m = this.mX.getCount();
+      int n = Math.min(m - 1, paramInt + this.mY);
       Object localObject1;
-      if (m != this.kW) {
+      if (m != this.mS) {
         try
         {
           String str = getResources().getResourceName(getId());
-          throw new IllegalStateException("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: " + this.kW + ", found: " + m + " Pager id: " + str + " Pager class: " + getClass() + " Problematic adapter: " + this.lb.getClass());
+          throw new IllegalStateException("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: " + this.mS + ", found: " + m + " Pager id: " + str + " Pager class: " + getClass() + " Problematic adapter: " + this.mX.getClass());
         }
         catch (Resources.NotFoundException localNotFoundException)
         {
@@ -215,11 +231,11 @@ public class ViewPager
       }
       paramInt = 0;
       label212:
-      if (paramInt < this.kZ.size())
+      if (paramInt < this.mV.size())
       {
-        localObject1 = (ai)this.kZ.get(paramInt);
-        if (((ai)localObject1).position >= this.lc) {
-          if (((ai)localObject1).position != this.lc) {
+        localObject1 = (ai)this.mV.get(paramInt);
+        if (((ai)localObject1).position >= this.mY) {
+          if (((ai)localObject1).position != this.mY) {
             break label1125;
           }
         }
@@ -231,7 +247,7 @@ public class ViewPager
         if ((localObject1 == null) && (m > 0)) {}
         label412:
         label564:
-        for (Object localObject2 = C(this.lc);; localObject2 = localObject1)
+        for (Object localObject2 = N(this.mY);; localObject2 = localObject1)
         {
           float f1;
           int k;
@@ -247,13 +263,13 @@ public class ViewPager
             k = paramInt - 1;
             if (k >= 0)
             {
-              localObject1 = (ai)this.kZ.get(k);
-              i2 = bu();
+              localObject1 = (ai)this.mV.get(k);
+              i2 = bL();
               if (i2 > 0) {
                 break label440;
               }
               f2 = 0.0F;
-              j = this.lc - 1;
+              j = this.mY - 1;
               i = paramInt;
               paramInt = k;
               label338:
@@ -266,16 +282,16 @@ public class ViewPager
               if (localObject1 == null) {
                 break label564;
               }
-              if ((j != ((ai)localObject1).position) || (((ai)localObject1).lX)) {
+              if ((j != ((ai)localObject1).position) || (((ai)localObject1).nT)) {
                 break label1115;
               }
-              this.kZ.remove(paramInt);
-              o.bp();
+              this.mV.remove(paramInt);
+              o.bG();
               paramInt -= 1;
               if (paramInt < 0) {
                 break label461;
               }
-              localObject1 = (ai)this.kZ.get(paramInt);
+              localObject1 = (ai)this.mV.get(paramInt);
               i -= 1;
             }
           }
@@ -293,42 +309,42 @@ public class ViewPager
             break label212;
             localObject1 = null;
             break label311;
-            f2 = 2.0F - ((ai)localObject2).lY + getPaddingLeft() / i2;
+            f2 = 2.0F - ((ai)localObject2).nU + getPaddingLeft() / i2;
             break label324;
             localObject1 = null;
             break label412;
             if ((localObject1 != null) && (j == ((ai)localObject1).position))
             {
-              f1 += ((ai)localObject1).lY;
+              f1 += ((ai)localObject1).nU;
               paramInt -= 1;
               if (paramInt >= 0) {
-                localObject1 = (ai)this.kZ.get(paramInt);
+                localObject1 = (ai)this.mV.get(paramInt);
               } else {
                 localObject1 = null;
               }
             }
             else
             {
-              f1 += C(j).lY;
+              f1 += N(j).nU;
               i += 1;
               if (paramInt >= 0) {}
-              for (localObject1 = (ai)this.kZ.get(paramInt);; localObject1 = null) {
+              for (localObject1 = (ai)this.mV.get(paramInt);; localObject1 = null) {
                 break;
               }
-              float f3 = ((ai)localObject2).lY;
+              float f3 = ((ai)localObject2).nU;
               k = i + 1;
               if (f3 < 2.0F)
               {
                 label617:
                 Object localObject3;
-                if (k < this.kZ.size())
+                if (k < this.mV.size())
                 {
-                  localObject1 = (ai)this.kZ.get(k);
+                  localObject1 = (ai)this.mV.get(k);
                   if (i2 > 0) {
                     break label763;
                   }
                   f2 = 0.0F;
-                  j = this.lc + 1;
+                  j = this.mY + 1;
                   localObject3 = localObject1;
                   label629:
                   if (j >= m) {
@@ -348,14 +364,14 @@ public class ViewPager
                     localObject1 = localObject3;
                     f1 = f3;
                     paramInt = k;
-                    if (!localObject3.lX)
+                    if (!localObject3.nT)
                     {
-                      this.kZ.remove(k);
-                      o.bp();
-                      if (k >= this.kZ.size()) {
+                      this.mV.remove(k);
+                      o.bG();
+                      if (k >= this.mV.size()) {
                         break label778;
                       }
-                      localObject1 = (ai)this.kZ.get(k);
+                      localObject1 = (ai)this.mV.get(k);
                       paramInt = k;
                       f1 = f3;
                     }
@@ -379,21 +395,21 @@ public class ViewPager
                   continue;
                   if ((localObject3 != null) && (j == localObject3.position))
                   {
-                    f1 = f3 + localObject3.lY;
+                    f1 = f3 + localObject3.nU;
                     paramInt = k + 1;
-                    if (paramInt < this.kZ.size()) {
-                      localObject1 = (ai)this.kZ.get(paramInt);
+                    if (paramInt < this.mV.size()) {
+                      localObject1 = (ai)this.mV.get(paramInt);
                     } else {
                       localObject1 = null;
                     }
                   }
                   else
                   {
-                    localObject1 = C(j);
+                    localObject1 = N(j);
                     paramInt = k + 1;
-                    f1 = f3 + ((ai)localObject1).lY;
-                    if (paramInt < this.kZ.size()) {
-                      localObject1 = (ai)this.kZ.get(paramInt);
+                    f1 = f3 + ((ai)localObject1).nU;
+                    if (paramInt < this.mV.size()) {
+                      localObject1 = (ai)this.mV.get(paramInt);
                     } else {
                       localObject1 = null;
                     }
@@ -406,27 +422,27 @@ public class ViewPager
               while (paramInt < i)
               {
                 localObject1 = (ViewPager.LayoutParams)getChildAt(paramInt).getLayoutParams();
-                ((ViewPager.LayoutParams)localObject1).mc = paramInt;
-                if ((!((ViewPager.LayoutParams)localObject1).ma) && (((ViewPager.LayoutParams)localObject1).lY == 0.0F))
+                ((ViewPager.LayoutParams)localObject1).nY = paramInt;
+                if ((!((ViewPager.LayoutParams)localObject1).nW) && (((ViewPager.LayoutParams)localObject1).nU == 0.0F))
                 {
-                  localai = bx();
+                  localai = bO();
                   if (localai != null)
                   {
-                    ((ViewPager.LayoutParams)localObject1).lY = localai.lY;
+                    ((ViewPager.LayoutParams)localObject1).nU = localai.nU;
                     ((ViewPager.LayoutParams)localObject1).position = localai.position;
                   }
                 }
                 paramInt += 1;
               }
-              bw();
+              bN();
               if (!hasFocus()) {
                 break;
               }
               localObject1 = findFocus();
               if (localObject1 != null) {}
-              for (localObject1 = x((View)localObject1);; localObject1 = null)
+              for (localObject1 = C((View)localObject1);; localObject1 = null)
               {
-                if ((localObject1 != null) && (((ai)localObject1).position == this.lc)) {
+                if ((localObject1 != null) && (((ai)localObject1).position == this.mY)) {
                   break label1113;
                 }
                 paramInt = 0;
@@ -436,8 +452,8 @@ public class ViewPager
                     break label1107;
                   }
                   localObject1 = getChildAt(paramInt);
-                  localai = bx();
-                  if ((localai != null) && (localai.position == this.lc) && (((View)localObject1).requestFocus(2))) {
+                  localai = bO();
+                  if ((localai != null) && (localai.position == this.mY) && (((View)localObject1).requestFocus(2))) {
                     break;
                   }
                   paramInt += 1;
@@ -456,12 +472,12 @@ public class ViewPager
     }
   }
   
-  private ai E(int paramInt)
+  private ai P(int paramInt)
   {
     int i = 0;
-    while (i < this.kZ.size())
+    while (i < this.mV.size())
     {
-      ai localai = (ai)this.kZ.get(i);
+      ai localai = (ai)this.mV.get(i);
       if (localai.position == paramInt) {
         return localai;
       }
@@ -470,32 +486,37 @@ public class ViewPager
     return null;
   }
   
-  private boolean F(int paramInt)
+  private boolean Q(int paramInt)
   {
-    if (this.kZ.size() == 0)
+    if (this.mV.size() == 0)
     {
-      if (this.lI) {}
+      if (this.nE) {}
       do
       {
         return false;
-        this.lK = false;
+        this.nG = false;
         a(0, 0.0F, 0);
-      } while (this.lK);
+      } while (this.nG);
       throw new IllegalStateException("onPageScrolled did not call superclass implementation");
     }
-    ai localai = bB();
-    int j = bu();
-    int k = this.li;
-    float f = this.li / j;
+    ai localai = bS();
+    int j = bL();
+    int k = this.ne;
+    float f = this.ne / j;
     int i = localai.position;
-    f = (paramInt / j - localai.lZ) / (localai.lY + f);
+    f = (paramInt / j - localai.nV) / (localai.nU + f);
     paramInt = (int)((k + j) * f);
-    this.lK = false;
+    this.nG = false;
     a(i, f, paramInt);
-    if (!this.lK) {
+    if (!this.nG) {
       throw new IllegalStateException("onPageScrolled did not call superclass implementation");
     }
     return true;
+  }
+  
+  private static float a(float paramFloat)
+  {
+    return (float)Math.sin((paramFloat - 0.5F) * 0.4712389F);
   }
   
   private Rect a(Rect paramRect, View paramView)
@@ -531,11 +552,11 @@ public class ViewPager
     int j;
     int i1;
     int k;
-    Object localObject;
+    View localView;
     int i;
     label119:
     int m;
-    if (this.lL > 0)
+    if (this.nH > 0)
     {
       int n = getScrollX();
       paramInt2 = getPaddingLeft();
@@ -545,10 +566,10 @@ public class ViewPager
       k = 0;
       if (k < i2)
       {
-        localObject = getChildAt(k);
-        ViewPager.LayoutParams localLayoutParams = (ViewPager.LayoutParams)((View)localObject).getLayoutParams();
-        if (!localLayoutParams.ma) {
-          break label404;
+        localView = getChildAt(k);
+        ViewPager.LayoutParams localLayoutParams = (ViewPager.LayoutParams)localView.getLayoutParams();
+        if (!localLayoutParams.nW) {
+          break label312;
         }
         switch (localLayoutParams.gravity & 0x7)
         {
@@ -556,12 +577,12 @@ public class ViewPager
         case 4: 
         default: 
           i = paramInt2;
-          int i3 = i + n - ((View)localObject).getLeft();
+          int i3 = i + n - localView.getLeft();
           m = j;
           i = paramInt2;
           if (i3 != 0)
           {
-            ((View)localObject).offsetLeftAndRight(i3);
+            localView.offsetLeftAndRight(i3);
             i = paramInt2;
             m = j;
           }
@@ -575,53 +596,35 @@ public class ViewPager
       paramInt2 = i;
       j = m;
       break;
-      m = paramInt2 + ((View)localObject).getWidth();
+      m = paramInt2 + localView.getWidth();
       i = paramInt2;
       paramInt2 = m;
       break label119;
-      i = Math.max((i1 - ((View)localObject).getMeasuredWidth()) / 2, paramInt2);
+      i = Math.max((i1 - localView.getMeasuredWidth()) / 2, paramInt2);
       break label119;
-      i = i1 - j - ((View)localObject).getMeasuredWidth();
-      j += ((View)localObject).getMeasuredWidth();
+      i = i1 - j - localView.getMeasuredWidth();
+      j += localView.getMeasuredWidth();
       break label119;
-      if (this.lN != null) {
-        this.lN.a(paramInt1, paramFloat);
-      }
-      if (this.lM != null)
-      {
-        i = this.lM.size();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          localObject = (al)this.lM.get(paramInt2);
-          if (localObject != null) {
-            ((al)localObject).a(paramInt1, paramFloat);
-          }
-          paramInt2 += 1;
-        }
-      }
-      if (this.lO != null) {
-        this.lO.a(paramInt1, paramFloat);
-      }
-      if (this.lQ != null)
+      b(paramInt1, paramFloat);
+      if (this.nM != null)
       {
         getScrollX();
         paramInt2 = getChildCount();
         paramInt1 = 0;
         while (paramInt1 < paramInt2)
         {
-          localObject = getChildAt(paramInt1);
-          if (!((ViewPager.LayoutParams)((View)localObject).getLayoutParams()).ma)
+          localView = getChildAt(paramInt1);
+          if (!((ViewPager.LayoutParams)localView.getLayoutParams()).nW)
           {
-            ((View)localObject).getLeft();
-            bu();
+            localView.getLeft();
+            bL();
           }
           paramInt1 += 1;
         }
       }
-      this.lK = true;
+      this.nG = true;
       return;
-      label404:
+      label312:
       m = j;
       i = paramInt2;
     }
@@ -629,84 +632,27 @@ public class ViewPager
   
   private void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
-    ai localai = E(paramInt1);
-    if (localai != null) {}
-    for (int i = (int)(bu() * Math.max(this.lm, Math.min(localai.lZ, this.ln)));; i = 0)
+    ai localai = P(paramInt1);
+    float f;
+    if (localai != null) {
+      f = bL();
+    }
+    for (paramInt1 = (int)(Math.max(this.ni, Math.min(localai.nV, this.nj)) * f);; paramInt1 = 0)
     {
       if (paramBoolean1)
       {
-        if (getChildCount() == 0)
-        {
-          setScrollingCacheEnabled(false);
-          if (paramBoolean2) {
-            by();
-          }
-          return;
+        d(paramInt1, paramInt2);
+        if (paramBoolean2) {
+          bP();
         }
-        if ((this.lg != null) && (!this.lg.isFinished()))
-        {
-          paramInt1 = 1;
-          label85:
-          if (paramInt1 == 0) {
-            break label177;
-          }
-          if (!this.lh) {
-            break label166;
-          }
-          paramInt1 = this.lg.getCurrX();
-          label104:
-          this.lg.abortAnimation();
-          setScrollingCacheEnabled(false);
-        }
-        int j;
-        int k;
-        for (;;)
-        {
-          j = getScrollY();
-          i -= paramInt1;
-          k = 0 - j;
-          if ((i != 0) || (k != 0)) {
-            break label185;
-          }
-          i(false);
-          bv();
-          z(0);
-          break;
-          paramInt1 = 0;
-          break label85;
-          label166:
-          paramInt1 = this.lg.getStartX();
-          break label104;
-          label177:
-          paramInt1 = getScrollX();
-        }
-        label185:
-        setScrollingCacheEnabled(true);
-        z(2);
-        int m = bu();
-        int n = m / 2;
-        float f3 = Math.min(1.0F, 1.0F * Math.abs(i) / m);
-        float f1 = n;
-        float f2 = n;
-        f3 = (float)Math.sin((f3 - 0.5F) * 0.4712389F);
-        paramInt2 = Math.abs(paramInt2);
-        if (paramInt2 > 0) {}
-        for (paramInt2 = Math.round(1000.0F * Math.abs((f2 * f3 + f1) / paramInt2)) * 4;; paramInt2 = (int)((Math.abs(i) / (f1 * 1.0F + this.li) + 1.0F) * 100.0F))
-        {
-          paramInt2 = Math.min(paramInt2, 600);
-          this.lh = false;
-          this.lg.startScroll(paramInt1, j, i, k, paramInt2);
-          r.f(this);
-          break;
-          f1 = m;
-        }
+        return;
       }
       if (paramBoolean2) {
-        by();
+        bP();
       }
-      i(false);
-      scrollTo(i, 0);
-      F(i);
+      l(false);
+      scrollTo(paramInt1, 0);
+      Q(paramInt1);
       return;
     }
   }
@@ -719,12 +665,12 @@ public class ViewPager
   private void a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
     boolean bool = false;
-    if ((this.lb == null) || (this.lb.getCount() <= 0))
+    if ((this.mX == null) || (this.mX.getCount() <= 0))
     {
       setScrollingCacheEnabled(false);
       return;
     }
-    if ((!paramBoolean2) && (this.lc == paramInt1) && (this.kZ.size() != 0))
+    if ((!paramBoolean2) && (this.mY == paramInt1) && (this.mV.size() != 0))
     {
       setScrollingCacheEnabled(false);
       return;
@@ -735,53 +681,53 @@ public class ViewPager
     }
     for (;;)
     {
-      paramInt1 = this.ls;
-      if ((i <= this.lc + paramInt1) && (i >= this.lc - paramInt1)) {
+      paramInt1 = this.no;
+      if ((i <= this.mY + paramInt1) && (i >= this.mY - paramInt1)) {
         break;
       }
       paramInt1 = 0;
-      while (paramInt1 < this.kZ.size())
+      while (paramInt1 < this.mV.size())
       {
-        ((ai)this.kZ.get(paramInt1)).lX = true;
+        ((ai)this.mV.get(paramInt1)).nT = true;
         paramInt1 += 1;
       }
       i = paramInt1;
-      if (paramInt1 >= this.lb.getCount()) {
-        i = this.lb.getCount() - 1;
+      if (paramInt1 >= this.mX.getCount()) {
+        i = this.mX.getCount() - 1;
       }
     }
     paramBoolean2 = bool;
-    if (this.lc != i) {
+    if (this.mY != i) {
       paramBoolean2 = true;
     }
-    if (this.lI)
+    if (this.nE)
     {
-      this.lc = i;
+      this.mY = i;
       if (paramBoolean2) {
-        by();
+        bP();
       }
       requestLayout();
       return;
     }
-    D(i);
+    O(i);
     a(i, paramBoolean1, paramInt2, paramBoolean2);
   }
   
   private void a(ai paramai1, int paramInt, ai paramai2)
   {
-    int m = this.lb.getCount();
-    int i = bu();
+    int m = this.mX.getCount();
+    int i = bL();
     float f2;
     if (i > 0)
     {
-      f2 = this.li / i;
+      f2 = this.ne / i;
       if (paramai2 == null) {
         break label393;
       }
       i = paramai2.position;
       if (i < paramai1.position)
       {
-        f1 = paramai2.lZ + paramai2.lY + f2;
+        f1 = paramai2.nV + paramai2.nU + f2;
         i += 1;
         j = 0;
       }
@@ -790,10 +736,10 @@ public class ViewPager
     {
       for (;;)
       {
-        if ((i > paramai1.position) || (j >= this.kZ.size())) {
+        if ((i > paramai1.position) || (j >= this.mV.size())) {
           break label393;
         }
-        for (paramai2 = (ai)this.kZ.get(j);; paramai2 = (ai)this.kZ.get(j))
+        for (paramai2 = (ai)this.mV.get(j);; paramai2 = (ai)this.mV.get(j))
         {
           k = i;
           f3 = f1;
@@ -802,7 +748,7 @@ public class ViewPager
           }
           k = i;
           f3 = f1;
-          if (j >= this.kZ.size() - 1) {
+          if (j >= this.mV.size() - 1) {
             break;
           }
           j += 1;
@@ -814,19 +760,19 @@ public class ViewPager
           f3 += 1.0F + f2;
           k += 1;
         }
-        paramai2.lZ = f3;
-        f1 = f3 + (paramai2.lY + f2);
+        paramai2.nV = f3;
+        f1 = f3 + (paramai2.nU + f2);
         i = k + 1;
       }
     }
     if (i > paramai1.position)
     {
-      j = this.kZ.size() - 1;
-      f1 = paramai2.lZ;
+      j = this.mV.size() - 1;
+      f1 = paramai2.nV;
       i -= 1;
       while ((i >= paramai1.position) && (j >= 0))
       {
-        for (paramai2 = (ai)this.kZ.get(j);; paramai2 = (ai)this.kZ.get(j))
+        for (paramai2 = (ai)this.mV.get(j);; paramai2 = (ai)this.mV.get(j))
         {
           k = i;
           f3 = f1;
@@ -845,25 +791,25 @@ public class ViewPager
           f3 -= 1.0F + f2;
           k -= 1;
         }
-        f1 = f3 - (paramai2.lY + f2);
-        paramai2.lZ = f1;
+        f1 = f3 - (paramai2.nU + f2);
+        paramai2.nV = f1;
         i = k - 1;
       }
     }
     label393:
-    int k = this.kZ.size();
-    float f3 = paramai1.lZ;
+    int k = this.mV.size();
+    float f3 = paramai1.nV;
     i = paramai1.position - 1;
     if (paramai1.position == 0)
     {
-      f1 = paramai1.lZ;
-      this.lm = f1;
+      f1 = paramai1.nV;
+      this.ni = f1;
       if (paramai1.position != m - 1) {
         break label526;
       }
-      f1 = paramai1.lZ + paramai1.lY - 1.0F;
+      f1 = paramai1.nV + paramai1.nU - 1.0F;
       label459:
-      this.ln = f1;
+      this.nj = f1;
       j = paramInt - 1;
       f1 = f3;
     }
@@ -872,7 +818,7 @@ public class ViewPager
       if (j < 0) {
         break label579;
       }
-      paramai2 = (ai)this.kZ.get(j);
+      paramai2 = (ai)this.mV.get(j);
       for (;;)
       {
         if (i > paramai2.position)
@@ -887,120 +833,36 @@ public class ViewPager
           break label459;
         }
       }
-      f1 -= paramai2.lY + f2;
-      paramai2.lZ = f1;
+      f1 -= paramai2.nU + f2;
+      paramai2.nV = f1;
       if (paramai2.position == 0) {
-        this.lm = f1;
+        this.ni = f1;
       }
       i -= 1;
       j -= 1;
     }
     label579:
-    float f1 = paramai1.lZ + paramai1.lY + f2;
+    float f1 = paramai1.nV + paramai1.nU + f2;
     int j = paramai1.position + 1;
     i = paramInt + 1;
     paramInt = j;
     while (i < k)
     {
-      paramai1 = (ai)this.kZ.get(i);
+      paramai1 = (ai)this.mV.get(i);
       while (paramInt < paramai1.position)
       {
         paramInt += 1;
         f1 += 1.0F + f2;
       }
       if (paramai1.position == m - 1) {
-        this.ln = (paramai1.lY + f1 - 1.0F);
+        this.nj = (paramai1.nU + f1 - 1.0F);
       }
-      paramai1.lZ = f1;
-      f1 += paramai1.lY + f2;
+      paramai1.nV = f1;
+      f1 += paramai1.nU + f2;
       paramInt += 1;
       i += 1;
     }
-    this.lJ = false;
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionIndex();
-    if (paramMotionEvent.getPointerId(i) == this.lz) {
-      if (i != 0) {
-        break label56;
-      }
-    }
-    label56:
-    for (i = 1;; i = 0)
-    {
-      this.lx = paramMotionEvent.getX(i);
-      this.lz = paramMotionEvent.getPointerId(i);
-      if (this.lA != null) {
-        this.lA.clear();
-      }
-      return;
-    }
-  }
-  
-  private boolean a(float paramFloat)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    float f1 = this.lx;
-    this.lx = paramFloat;
-    float f2 = getScrollX() + (f1 - paramFloat);
-    int k = bu();
-    paramFloat = k * this.lm;
-    f1 = k;
-    float f3 = this.ln;
-    ai localai1 = (ai)this.kZ.get(0);
-    ai localai2 = (ai)this.kZ.get(this.kZ.size() - 1);
-    if (localai1.position != 0)
-    {
-      paramFloat = localai1.lZ;
-      paramFloat = k * paramFloat;
-    }
-    for (int i = 0;; i = 1)
-    {
-      int j;
-      if (localai2.position != this.lb.getCount() - 1)
-      {
-        f1 = localai2.lZ * k;
-        j = 0;
-      }
-      for (;;)
-      {
-        if (f2 < paramFloat)
-        {
-          if (i == 0) {
-            break label251;
-          }
-          this.lG.onPull(Math.abs(paramFloat - f2) / k);
-        }
-        for (;;)
-        {
-          this.lx += paramFloat - (int)paramFloat;
-          scrollTo((int)paramFloat, getScrollY());
-          F((int)paramFloat);
-          return bool1;
-          if (f2 > f1)
-          {
-            if (j != 0) {
-              this.lH.onPull(Math.abs(f2 - f1) / k);
-            }
-            for (bool1 = bool2;; bool1 = false)
-            {
-              paramFloat = f1;
-              break;
-            }
-          }
-          bool1 = false;
-          paramFloat = f2;
-          continue;
-          label251:
-          bool1 = false;
-        }
-        j = 1;
-        f1 *= f3;
-      }
-    }
+    this.nF = false;
   }
   
   private boolean a(View paramView, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
@@ -1044,11 +906,11 @@ public class ViewPager
       if (paramInt != 17) {
         break label263;
       }
-      i = a(this.kd, localView).left;
-      j = a(this.kd, (View)localObject).left;
+      i = a(this.ma, localView).left;
+      j = a(this.ma, (View)localObject).left;
       if ((localObject != null) && (i >= j))
       {
-        bool = bC();
+        bool = bU();
         label89:
         if (bool) {
           playSoundEffect(SoundEffectConstants.getContantForFocusDirection(paramInt));
@@ -1097,22 +959,22 @@ public class ViewPager
         break label89;
         if (paramInt == 66)
         {
-          i = a(this.kd, localView).left;
-          j = a(this.kd, (View)localObject).left;
+          i = a(this.ma, localView).left;
+          j = a(this.ma, (View)localObject).left;
           if ((localObject == null) || (i > j))
           {
             bool = localView.requestFocus();
             break label89;
             if ((paramInt == 17) || (paramInt == 1))
             {
-              bool = bC();
+              bool = bU();
               break label89;
             }
             if ((paramInt != 66) && (paramInt != 2)) {
               break label357;
             }
           }
-          bool = bD();
+          bool = bV();
           break label89;
         }
         bool = false;
@@ -1123,7 +985,188 @@ public class ViewPager
     }
   }
   
-  private void bA()
+  private void b(int paramInt, float paramFloat)
+  {
+    if (this.nJ != null) {
+      this.nJ.a(paramInt, paramFloat);
+    }
+    if (this.nI != null)
+    {
+      int j = this.nI.size();
+      int i = 0;
+      while (i < j)
+      {
+        al localal = (al)this.nI.get(i);
+        if (localal != null) {
+          localal.a(paramInt, paramFloat);
+        }
+        i += 1;
+      }
+    }
+    if (this.nK != null) {
+      this.nK.a(paramInt, paramFloat);
+    }
+  }
+  
+  private void b(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionIndex();
+    if (paramMotionEvent.getPointerId(i) == this.nv) {
+      if (i != 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (i = 1;; i = 0)
+    {
+      this.nt = paramMotionEvent.getX(i);
+      this.nv = paramMotionEvent.getPointerId(i);
+      if (this.nw != null) {
+        this.nw.clear();
+      }
+      return;
+    }
+  }
+  
+  private boolean b(float paramFloat)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    float f1 = this.nt;
+    this.nt = paramFloat;
+    float f2 = getScrollX() + (f1 - paramFloat);
+    int k = bL();
+    paramFloat = k * this.ni;
+    f1 = k;
+    float f3 = this.nj;
+    ai localai1 = (ai)this.mV.get(0);
+    ai localai2 = (ai)this.mV.get(this.mV.size() - 1);
+    if (localai1.position != 0)
+    {
+      paramFloat = localai1.nV;
+      paramFloat = k * paramFloat;
+    }
+    for (int i = 0;; i = 1)
+    {
+      int j;
+      if (localai2.position != this.mX.getCount() - 1)
+      {
+        f1 = localai2.nV * k;
+        j = 0;
+      }
+      for (;;)
+      {
+        if (f2 < paramFloat)
+        {
+          if (i == 0) {
+            break label251;
+          }
+          this.nC.onPull(Math.abs(paramFloat - f2) / k);
+        }
+        for (;;)
+        {
+          this.nt += paramFloat - (int)paramFloat;
+          scrollTo((int)paramFloat, getScrollY());
+          Q((int)paramFloat);
+          return bool1;
+          if (f2 > f1)
+          {
+            if (j != 0) {
+              this.nD.onPull(Math.abs(f2 - f1) / k);
+            }
+            for (bool1 = bool2;; bool1 = false)
+            {
+              paramFloat = f1;
+              break;
+            }
+          }
+          bool1 = false;
+          paramFloat = f2;
+          continue;
+          label251:
+          bool1 = false;
+        }
+        j = 1;
+        f1 *= f3;
+      }
+    }
+  }
+  
+  private int bL()
+  {
+    return getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
+  }
+  
+  private void bN()
+  {
+    if (this.nO != 0)
+    {
+      if (this.nP == null) {
+        this.nP = new ArrayList();
+      }
+      for (;;)
+      {
+        int j = getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = getChildAt(i);
+          this.nP.add(localView);
+          i += 1;
+        }
+        this.nP.clear();
+      }
+      Collections.sort(this.nP, nQ);
+    }
+  }
+  
+  private ai bO()
+  {
+    int i = 0;
+    while (i < this.mV.size())
+    {
+      ai localai = (ai)this.mV.get(i);
+      if (this.mX.bH()) {
+        return localai;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  private void bP()
+  {
+    if (this.nJ != null) {
+      this.nJ.bJ();
+    }
+    if (this.nI != null)
+    {
+      int j = this.nI.size();
+      int i = 0;
+      while (i < j)
+      {
+        al localal = (al)this.nI.get(i);
+        if (localal != null) {
+          localal.bJ();
+        }
+        i += 1;
+      }
+    }
+    if (this.nK != null) {
+      this.nK.bJ();
+    }
+  }
+  
+  private boolean bQ()
+  {
+    this.nv = -1;
+    bT();
+    this.nC.onRelease();
+    this.nD.onRelease();
+    return (this.nC.isFinished()) || (this.nD.isFinished());
+  }
+  
+  private void bR()
   {
     ViewParent localViewParent = getParent();
     if (localViewParent != null) {
@@ -1131,9 +1174,9 @@ public class ViewPager
     }
   }
   
-  private ai bB()
+  private ai bS()
   {
-    int i = bu();
+    int i = bL();
     float f1;
     float f2;
     label36:
@@ -1151,7 +1194,7 @@ public class ViewPager
       if (i <= 0) {
         break label204;
       }
-      f2 = this.li / i;
+      f2 = this.ne / i;
       k = -1;
       j = 1;
       i = 0;
@@ -1159,16 +1202,16 @@ public class ViewPager
       f3 = 0.0F;
       f4 = 0.0F;
       localObject2 = localObject1;
-      if (i < this.kZ.size())
+      if (i < this.mV.size())
       {
-        localai = (ai)this.kZ.get(i);
+        localai = (ai)this.mV.get(i);
         if ((j != 0) || (localai.position == k + 1)) {
           break label238;
         }
-        localai = this.la;
-        localai.lZ = (f4 + f3 + f2);
+        localai = this.mW;
+        localai.nV = (f4 + f3 + f2);
         localai.position = (k + 1);
-        localai.lY = 1.0F;
+        localai.nU = 1.0F;
         i -= 1;
       }
     }
@@ -1177,8 +1220,8 @@ public class ViewPager
     label238:
     for (;;)
     {
-      f4 = localai.lZ;
-      f3 = localai.lY;
+      f4 = localai.nV;
+      f3 = localai.nU;
       if (j == 0)
       {
         localObject2 = localObject1;
@@ -1186,7 +1229,7 @@ public class ViewPager
       }
       else
       {
-        if ((f1 >= f3 + f4 + f2) && (i != this.kZ.size() - 1)) {
+        if ((f1 >= f3 + f4 + f2) && (i != this.mV.size() - 1)) {
           break label209;
         }
         localObject2 = localai;
@@ -1197,7 +1240,7 @@ public class ViewPager
       f2 = 0.0F;
       break label36;
       k = localai.position;
-      f3 = localai.lY;
+      f3 = localai.nU;
       i += 1;
       j = 0;
       localObject1 = localai;
@@ -1205,120 +1248,114 @@ public class ViewPager
     }
   }
   
-  private boolean bC()
+  private void bT()
   {
-    if (this.lc > 0)
+    this.np = false;
+    this.nq = false;
+    if (this.nw != null)
     {
-      B(this.lc - 1);
+      this.nw.recycle();
+      this.nw = null;
+    }
+  }
+  
+  private boolean bU()
+  {
+    if (this.mY > 0)
+    {
+      M(this.mY - 1);
       return true;
     }
     return false;
   }
   
-  private boolean bD()
+  private boolean bV()
   {
-    if ((this.lb != null) && (this.lc < this.lb.getCount() - 1))
+    if ((this.mX != null) && (this.mY < this.mX.getCount() - 1))
     {
-      B(this.lc + 1);
+      M(this.mY + 1);
       return true;
     }
     return false;
   }
   
-  private int bu()
+  private void d(int paramInt1, int paramInt2)
   {
-    return getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-  }
-  
-  private void bw()
-  {
-    if (this.lS != 0)
+    if (getChildCount() == 0)
     {
-      if (this.lT == null) {
-        this.lT = new ArrayList();
-      }
-      for (;;)
-      {
-        int j = getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          View localView = getChildAt(i);
-          this.lT.add(localView);
-          i += 1;
-        }
-        this.lT.clear();
-      }
-      Collections.sort(this.lT, lU);
+      setScrollingCacheEnabled(false);
+      return;
     }
-  }
-  
-  private ai bx()
-  {
-    int i = 0;
-    while (i < this.kZ.size())
+    int i;
+    if ((this.nc != null) && (!this.nc.isFinished()))
     {
-      ai localai = (ai)this.kZ.get(i);
-      if (this.lb.bq()) {
-        return localai;
+      i = 1;
+      if (i == 0) {
+        break label127;
       }
-      i += 1;
-    }
-    return null;
-  }
-  
-  private void by()
-  {
-    if (this.lN != null) {
-      this.lN.bs();
-    }
-    if (this.lM != null)
-    {
-      int j = this.lM.size();
-      int i = 0;
-      while (i < j)
-      {
-        al localal = (al)this.lM.get(i);
-        if (localal != null) {
-          localal.bs();
-        }
-        i += 1;
+      if (!this.nd) {
+        break label115;
       }
+      i = this.nc.getCurrX();
+      label54:
+      this.nc.abortAnimation();
+      setScrollingCacheEnabled(false);
     }
-    if (this.lO != null) {
-      this.lO.bs();
-    }
-  }
-  
-  private boolean bz()
-  {
-    boolean bool = false;
-    this.lz = -1;
-    this.lt = false;
-    this.lu = false;
-    if (this.lA != null)
+    int j;
+    int k;
+    int m;
+    for (;;)
     {
-      this.lA.recycle();
-      this.lA = null;
+      j = getScrollY();
+      k = paramInt1 - i;
+      m = 0 - j;
+      if ((k != 0) || (m != 0)) {
+        break label136;
+      }
+      l(false);
+      bM();
+      K(0);
+      return;
+      i = 0;
+      break;
+      label115:
+      i = this.nc.getStartX();
+      break label54;
+      label127:
+      i = getScrollX();
     }
-    this.lG.onRelease();
-    this.lH.onRelease();
-    if ((this.lG.isFinished()) || (this.lH.isFinished())) {
-      bool = true;
+    label136:
+    setScrollingCacheEnabled(true);
+    K(2);
+    paramInt1 = bL();
+    int n = paramInt1 / 2;
+    float f3 = Math.min(1.0F, Math.abs(k) * 1.0F / paramInt1);
+    float f1 = n;
+    float f2 = n;
+    f3 = a(f3);
+    paramInt2 = Math.abs(paramInt2);
+    if (paramInt2 > 0) {}
+    for (paramInt1 = Math.round(1000.0F * Math.abs((f2 * f3 + f1) / paramInt2)) * 4;; paramInt1 = (int)((Math.abs(k) / (f1 * 1.0F + this.ne) + 1.0F) * 100.0F))
+    {
+      paramInt1 = Math.min(paramInt1, 600);
+      this.nd = false;
+      this.nc.startScroll(i, j, k, m, paramInt1);
+      r.g(this);
+      return;
+      f1 = paramInt1;
     }
-    return bool;
   }
   
-  private void i(boolean paramBoolean)
+  private void l(boolean paramBoolean)
   {
     int i;
-    if (this.kD == 2)
+    if (this.mz == 2)
     {
       i = 1;
       if (i != 0)
       {
         setScrollingCacheEnabled(false);
-        if (this.lg.isFinished()) {
+        if (this.nc.isFinished()) {
           break label170;
         }
       }
@@ -1328,29 +1365,29 @@ public class ViewPager
     {
       if (j != 0)
       {
-        this.lg.abortAnimation();
+        this.nc.abortAnimation();
         j = getScrollX();
         k = getScrollY();
-        int m = this.lg.getCurrX();
-        int n = this.lg.getCurrY();
+        int m = this.nc.getCurrX();
+        int n = this.nc.getCurrY();
         if ((j != m) || (k != n))
         {
           scrollTo(m, n);
           if (m != j) {
-            F(m);
+            Q(m);
           }
         }
       }
-      this.lr = false;
+      this.nn = false;
       int k = 0;
       j = i;
       i = k;
-      while (i < this.kZ.size())
+      while (i < this.mV.size())
       {
-        ai localai = (ai)this.kZ.get(i);
-        if (localai.lX)
+        ai localai = (ai)this.mV.get(i);
+        if (localai.nT)
         {
-          localai.lX = false;
+          localai.nT = false;
           j = 1;
         }
         i += 1;
@@ -1361,42 +1398,82 @@ public class ViewPager
     if (j != 0)
     {
       if (paramBoolean) {
-        r.b(this, this.lV);
+        r.b(this, this.nR);
       }
     }
     else {
       return;
     }
-    this.lV.run();
+    this.nR.run();
   }
   
   private void setScrollingCacheEnabled(boolean paramBoolean)
   {
-    if (this.lq != paramBoolean) {
-      this.lq = paramBoolean;
+    if (this.nm != paramBoolean) {
+      this.nm = paramBoolean;
     }
   }
   
-  private ai x(View paramView)
+  final void K(int paramInt)
   {
-    for (;;)
+    int m = 0;
+    if (this.mz == paramInt) {}
+    label38:
+    label77:
+    label83:
+    do
     {
-      paramView = paramView.getParent();
-      if (paramView == this) {
-        break;
+      return;
+      this.mz = paramInt;
+      int i;
+      int j;
+      if (this.nM != null)
+      {
+        if (paramInt != 0)
+        {
+          i = 1;
+          int n = getChildCount();
+          j = 0;
+          if (j >= n) {
+            break label83;
+          }
+          if (i == 0) {
+            break label77;
+          }
+        }
+        for (int k = this.nN;; k = 0)
+        {
+          getChildAt(j).setLayerType(k, null);
+          j += 1;
+          break label38;
+          i = 0;
+          break;
+        }
       }
-      if ((paramView == null) || (!(paramView instanceof View))) {
-        return null;
+      if (this.nJ != null) {
+        this.nJ.J(paramInt);
       }
-      paramView = (View)paramView;
-    }
-    return bx();
+      if (this.nI != null)
+      {
+        j = this.nI.size();
+        i = m;
+        while (i < j)
+        {
+          al localal = (al)this.nI.get(i);
+          if (localal != null) {
+            localal.J(paramInt);
+          }
+          i += 1;
+        }
+      }
+    } while (this.nK == null);
+    this.nK.J(paramInt);
   }
   
-  public final void A(int paramInt)
+  public final void L(int paramInt)
   {
-    this.lr = false;
-    if (!this.lI) {}
+    this.nn = false;
+    if (!this.nE) {}
     for (boolean bool = true;; bool = false)
     {
       a(paramInt, bool, false);
@@ -1406,17 +1483,17 @@ public class ViewPager
   
   final al a(al paramal)
   {
-    al localal = this.lO;
-    this.lO = paramal;
+    al localal = this.nK;
+    this.nK = paramal;
     return localal;
   }
   
   public final void a(ak paramak)
   {
-    if (this.lP == null) {
-      this.lP = new ArrayList();
+    if (this.nL == null) {
+      this.nL = new ArrayList();
     }
-    this.lP.add(paramak);
+    this.nL.add(paramak);
   }
   
   public void addFocusables(ArrayList<View> paramArrayList, int paramInt1, int paramInt2)
@@ -1431,8 +1508,8 @@ public class ViewPager
         View localView = getChildAt(i);
         if (localView.getVisibility() == 0)
         {
-          ai localai = bx();
-          if ((localai != null) && (localai.position == this.lc)) {
+          ai localai = bO();
+          if ((localai != null) && (localai.position == this.mY)) {
             localView.addFocusables(paramArrayList, paramInt1, paramInt2);
           }
         }
@@ -1454,8 +1531,8 @@ public class ViewPager
       View localView = getChildAt(i);
       if (localView.getVisibility() == 0)
       {
-        ai localai = bx();
-        if ((localai != null) && (localai.position == this.lc)) {
+        ai localai = bO();
+        if ((localai != null) && (localai.position == this.mY)) {
           localView.addTouchables(paramArrayList);
         }
       }
@@ -1471,20 +1548,20 @@ public class ViewPager
     for (;;)
     {
       ViewPager.LayoutParams localLayoutParams = (ViewPager.LayoutParams)paramLayoutParams;
-      boolean bool2 = localLayoutParams.ma;
+      boolean bool2 = localLayoutParams.nW;
       if (paramView.getClass().getAnnotation(ah.class) != null) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        localLayoutParams.ma = (bool1 | bool2);
-        if (!this.aU) {
+        localLayoutParams.nW = (bool1 | bool2);
+        if (!this.cE) {
           break label105;
         }
-        if ((localLayoutParams == null) || (!localLayoutParams.ma)) {
+        if ((localLayoutParams == null) || (!localLayoutParams.nW)) {
           break;
         }
         throw new IllegalStateException("Cannot add pager decor view during layout");
       }
-      localLayoutParams.mb = true;
+      localLayoutParams.nX = true;
       addViewInLayout(paramView, paramInt, paramLayoutParams);
       return;
       label105:
@@ -1495,19 +1572,19 @@ public class ViewPager
   
   public final void b(ak paramak)
   {
-    if (this.lP != null) {
-      this.lP.remove(paramak);
+    if (this.nL != null) {
+      this.nL.remove(paramak);
     }
   }
   
-  final void bv()
+  final void bM()
   {
-    D(this.lc);
+    O(this.mY);
   }
   
   public boolean canScrollHorizontally(int paramInt)
   {
-    if (this.lb == null) {}
+    if (this.mX == null) {}
     int i;
     int j;
     do
@@ -1515,14 +1592,14 @@ public class ViewPager
       do
       {
         return false;
-        i = bu();
+        i = bL();
         j = getScrollX();
         if (paramInt >= 0) {
           break;
         }
-      } while (j <= (int)(i * this.lm));
+      } while (j <= (int)(i * this.ni));
       return true;
-    } while ((paramInt <= 0) || (j >= (int)(i * this.ln)));
+    } while ((paramInt <= 0) || (j >= (int)(i * this.nj)));
     return true;
   }
   
@@ -1533,26 +1610,26 @@ public class ViewPager
   
   public void computeScroll()
   {
-    this.lh = true;
-    if ((!this.lg.isFinished()) && (this.lg.computeScrollOffset()))
+    this.nd = true;
+    if ((!this.nc.isFinished()) && (this.nc.computeScrollOffset()))
     {
       int i = getScrollX();
       int j = getScrollY();
-      int k = this.lg.getCurrX();
-      int m = this.lg.getCurrY();
+      int k = this.nc.getCurrX();
+      int m = this.nc.getCurrY();
       if ((i != k) || (j != m))
       {
         scrollTo(k, m);
-        if (!F(k))
+        if (!Q(k))
         {
-          this.lg.abortAnimation();
+          this.nc.abortAnimation();
           scrollTo(0, m);
         }
       }
-      r.f(this);
+      r.g(this);
       return;
     }
-    i(true);
+    l(true);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -1576,7 +1653,7 @@ public class ViewPager
       return bool2;
       if (paramKeyEvent.hasModifiers(2))
       {
-        bool1 = bC();
+        bool1 = bU();
       }
       else
       {
@@ -1584,7 +1661,7 @@ public class ViewPager
         continue;
         if (paramKeyEvent.hasModifiers(2))
         {
-          bool1 = bD();
+          bool1 = bV();
         }
         else
         {
@@ -1626,8 +1703,8 @@ public class ViewPager
       View localView = getChildAt(i);
       if (localView.getVisibility() == 0)
       {
-        ai localai = bx();
-        if ((localai != null) && (localai.position == this.lc) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent))) {
+        ai localai = bO();
+        if ((localai != null) && (localai.position == this.mY) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent))) {
           return true;
         }
       }
@@ -1642,22 +1719,22 @@ public class ViewPager
     int i = 0;
     int m = getOverScrollMode();
     boolean bool;
-    if ((m == 0) || ((m == 1) && (this.lb != null) && (this.lb.getCount() > 1)))
+    if ((m == 0) || ((m == 1) && (this.mX != null) && (this.mX.getCount() > 1)))
     {
       int j;
-      if (!this.lG.isFinished())
+      if (!this.nC.isFinished())
       {
         k = paramCanvas.save();
         i = getHeight() - getPaddingTop() - getPaddingBottom();
         m = getWidth();
         paramCanvas.rotate(270.0F);
-        paramCanvas.translate(-i + getPaddingTop(), this.lm * m);
-        this.lG.setSize(i, m);
-        j = this.lG.draw(paramCanvas) | false;
+        paramCanvas.translate(-i + getPaddingTop(), this.ni * m);
+        this.nC.setSize(i, m);
+        j = this.nC.draw(paramCanvas) | false;
         paramCanvas.restoreToCount(k);
       }
       k = j;
-      if (!this.lH.isFinished())
+      if (!this.nD.isFinished())
       {
         m = paramCanvas.save();
         k = getWidth();
@@ -1665,27 +1742,27 @@ public class ViewPager
         int i1 = getPaddingTop();
         int i2 = getPaddingBottom();
         paramCanvas.rotate(90.0F);
-        paramCanvas.translate(-getPaddingTop(), -(this.ln + 1.0F) * k);
-        this.lH.setSize(n - i1 - i2, k);
-        bool = j | this.lH.draw(paramCanvas);
+        paramCanvas.translate(-getPaddingTop(), -(this.nj + 1.0F) * k);
+        this.nD.setSize(n - i1 - i2, k);
+        bool = j | this.nD.draw(paramCanvas);
         paramCanvas.restoreToCount(m);
       }
     }
     for (;;)
     {
       if (bool) {
-        r.f(this);
+        r.g(this);
       }
       return;
-      this.lG.finish();
-      this.lH.finish();
+      this.nC.finish();
+      this.nD.finish();
     }
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    Drawable localDrawable = this.lj;
+    Drawable localDrawable = this.nf;
     if ((localDrawable != null) && (localDrawable.isStateful())) {
       localDrawable.setState(getDrawableState());
     }
@@ -1709,23 +1786,23 @@ public class ViewPager
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (this.lS == 2) {
+    if (this.nO == 2) {
       i = paramInt1 - 1 - paramInt2;
     }
-    return ((ViewPager.LayoutParams)((View)this.lT.get(i)).getLayoutParams()).mc;
+    return ((ViewPager.LayoutParams)((View)this.nP.get(i)).getLayoutParams()).nY;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.lI = true;
+    this.nE = true;
   }
   
   protected void onDetachedFromWindow()
   {
-    removeCallbacks(this.lV);
-    if ((this.lg != null) && (!this.lg.isFinished())) {
-      this.lg.abortAnimation();
+    removeCallbacks(this.nR);
+    if ((this.nc != null) && (!this.nc.isFinished())) {
+      this.nc.abortAnimation();
     }
     super.onDetachedFromWindow();
   }
@@ -1733,35 +1810,35 @@ public class ViewPager
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.li > 0) && (this.lj != null) && (this.kZ.size() > 0) && (this.lb != null))
+    if ((this.ne > 0) && (this.nf != null) && (this.mV.size() > 0) && (this.mX != null))
     {
       int k = getScrollX();
       int m = getWidth();
-      float f3 = this.li / m;
-      Object localObject = (ai)this.kZ.get(0);
-      float f1 = ((ai)localObject).lZ;
-      int n = this.kZ.size();
+      float f3 = this.ne / m;
+      Object localObject = (ai)this.mV.get(0);
+      float f1 = ((ai)localObject).nV;
+      int n = this.mV.size();
       int i = ((ai)localObject).position;
-      int i1 = ((ai)this.kZ.get(n - 1)).position;
+      int i1 = ((ai)this.mV.get(n - 1)).position;
       int j = 0;
       if (i < i1)
       {
         while ((i > ((ai)localObject).position) && (j < n))
         {
-          localObject = this.kZ;
+          localObject = this.mV;
           j += 1;
           localObject = (ai)((ArrayList)localObject).get(j);
         }
         float f2;
         if (i == ((ai)localObject).position) {
-          f2 = (((ai)localObject).lZ + ((ai)localObject).lY) * m;
+          f2 = (((ai)localObject).nV + ((ai)localObject).nU) * m;
         }
-        for (f1 = ((ai)localObject).lZ + ((ai)localObject).lY + f3;; f1 += 1.0F + f3)
+        for (f1 = ((ai)localObject).nV + ((ai)localObject).nU + f3;; f1 += 1.0F + f3)
         {
-          if (this.li + f2 > k)
+          if (this.ne + f2 > k)
           {
-            this.lj.setBounds(Math.round(f2), this.lk, Math.round(this.li + f2), this.ll);
-            this.lj.draw(paramCanvas);
+            this.nf.setBounds(Math.round(f2), this.ng, Math.round(this.ne + f2), this.nh);
+            this.nf.draw(paramCanvas);
           }
           if (f2 > k + m) {
             return;
@@ -1778,7 +1855,7 @@ public class ViewPager
   {
     int i = paramMotionEvent.getAction() & 0xFF;
     if ((i == 3) || (i == 1)) {
-      bz();
+      bQ();
     }
     do
     {
@@ -1786,90 +1863,90 @@ public class ViewPager
       if (i == 0) {
         break;
       }
-      if (this.lt) {
+      if (this.np) {
         return true;
       }
-    } while (this.lu);
+    } while (this.nq);
     switch (i)
     {
     }
     for (;;)
     {
-      if (this.lA == null) {
-        this.lA = VelocityTracker.obtain();
+      if (this.nw == null) {
+        this.nw = VelocityTracker.obtain();
       }
-      this.lA.addMovement(paramMotionEvent);
-      return this.lt;
-      i = this.lz;
+      this.nw.addMovement(paramMotionEvent);
+      return this.np;
+      i = this.nv;
       if (i != -1)
       {
         i = paramMotionEvent.findPointerIndex(i);
         float f2 = paramMotionEvent.getX(i);
-        float f1 = f2 - this.lx;
+        float f1 = f2 - this.nt;
         float f4 = Math.abs(f1);
         float f3 = paramMotionEvent.getY(i);
-        float f5 = Math.abs(f3 - this.kk);
+        float f5 = Math.abs(f3 - this.mh);
         if (f1 != 0.0F)
         {
-          float f6 = this.lx;
-          if (((f6 < this.lw) && (f1 > 0.0F)) || ((f6 > getWidth() - this.lw) && (f1 < 0.0F))) {}
+          float f6 = this.nt;
+          if (((f6 < this.ns) && (f1 > 0.0F)) || ((f6 > getWidth() - this.ns) && (f1 < 0.0F))) {}
           for (i = 1; (i == 0) && (a(this, false, (int)f1, (int)f2, (int)f3)); i = 0)
           {
-            this.lx = f2;
-            this.ly = f3;
-            this.lu = true;
+            this.nt = f2;
+            this.nu = f3;
+            this.nq = true;
             return false;
           }
         }
-        if ((f4 > this.kl) && (0.5F * f4 > f5))
+        if ((f4 > this.mi) && (0.5F * f4 > f5))
         {
-          this.lt = true;
-          bA();
-          z(1);
+          this.np = true;
+          bR();
+          K(1);
           if (f1 > 0.0F)
           {
-            f1 = this.kj + this.kl;
+            f1 = this.mg + this.mi;
             label328:
-            this.lx = f1;
-            this.ly = f3;
+            this.nt = f1;
+            this.nu = f3;
             setScrollingCacheEnabled(true);
           }
         }
-        while ((this.lt) && (a(f2)))
+        while ((this.np) && (b(f2)))
         {
-          r.f(this);
+          r.g(this);
           break;
-          f1 = this.kj - this.kl;
+          f1 = this.mg - this.mi;
           break label328;
-          if (f5 > this.kl) {
-            this.lu = true;
+          if (f5 > this.mi) {
+            this.nq = true;
           }
         }
         f1 = paramMotionEvent.getX();
-        this.kj = f1;
-        this.lx = f1;
+        this.mg = f1;
+        this.nt = f1;
         f1 = paramMotionEvent.getY();
-        this.kk = f1;
-        this.ly = f1;
-        this.lz = paramMotionEvent.getPointerId(0);
-        this.lu = false;
-        this.lh = true;
-        this.lg.computeScrollOffset();
-        if ((this.kD == 2) && (Math.abs(this.lg.getFinalX() - this.lg.getCurrX()) > this.lE))
+        this.mh = f1;
+        this.nu = f1;
+        this.nv = paramMotionEvent.getPointerId(0);
+        this.nq = false;
+        this.nd = true;
+        this.nc.computeScrollOffset();
+        if ((this.mz == 2) && (Math.abs(this.nc.getFinalX() - this.nc.getCurrX()) > this.nA))
         {
-          this.lg.abortAnimation();
-          this.lr = false;
-          bv();
-          this.lt = true;
-          bA();
-          z(1);
+          this.nc.abortAnimation();
+          this.nn = false;
+          bM();
+          this.np = true;
+          bR();
+          K(1);
         }
         else
         {
-          i(false);
-          this.lt = false;
+          l(false);
+          this.np = false;
           continue;
-          a(paramMotionEvent);
+          b(paramMotionEvent);
         }
       }
     }
@@ -1898,7 +1975,7 @@ public class ViewPager
         break label634;
       }
       localLayoutParams = (ViewPager.LayoutParams)localView.getLayoutParams();
-      if (!localLayoutParams.ma) {
+      if (!localLayoutParams.nW) {
         break label634;
       }
       paramInt4 = localLayoutParams.gravity;
@@ -1968,18 +2045,18 @@ public class ViewPager
         if (localView.getVisibility() != 8)
         {
           localLayoutParams = (ViewPager.LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.ma)
+          if (!localLayoutParams.nW)
           {
-            ai localai = bx();
+            ai localai = bO();
             if (localai != null)
             {
               float f = paramInt4;
-              i = (int)(localai.lZ * f) + paramInt1;
-              if (localLayoutParams.mb)
+              i = (int)(localai.nV * f) + paramInt1;
+              if (localLayoutParams.nX)
               {
-                localLayoutParams.mb = false;
+                localLayoutParams.nX = false;
                 f = paramInt4;
-                localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.lY * f), 1073741824), View.MeasureSpec.makeMeasureSpec(i2 - paramInt2 - j, 1073741824));
+                localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.nU * f), 1073741824), View.MeasureSpec.makeMeasureSpec(i2 - paramInt2 - j, 1073741824));
               }
               localView.layout(i, paramInt2, localView.getMeasuredWidth() + i, localView.getMeasuredHeight() + paramInt2);
             }
@@ -1987,13 +2064,13 @@ public class ViewPager
         }
         paramInt3 += 1;
       }
-      this.lk = paramInt2;
-      this.ll = (i2 - j);
-      this.lL = k;
-      if (this.lI) {
-        a(this.lc, false, 0, false);
+      this.ng = paramInt2;
+      this.nh = (i2 - j);
+      this.nH = k;
+      if (this.nE) {
+        a(this.mY, false, 0, false);
       }
-      this.lI = false;
+      this.nE = false;
       return;
       label634:
       paramInt4 = k;
@@ -2007,7 +2084,7 @@ public class ViewPager
   {
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     paramInt1 = getMeasuredWidth();
-    this.lw = Math.min(paramInt1 / 10, this.lv);
+    this.ns = Math.min(paramInt1 / 10, this.nr);
     paramInt1 = paramInt1 - getPaddingLeft() - getPaddingRight();
     paramInt2 = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
     int i4 = getChildCount();
@@ -2034,7 +2111,7 @@ public class ViewPager
         {
           i = paramInt1;
           j = paramInt2;
-          if (localLayoutParams.ma)
+          if (localLayoutParams.nW)
           {
             i = localLayoutParams.gravity & 0x7;
             m = localLayoutParams.gravity & 0x70;
@@ -2115,11 +2192,11 @@ public class ViewPager
             j = paramInt2;
           }
         }
-        this.lo = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
-        this.lp = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
-        this.aU = true;
-        bv();
-        this.aU = false;
+        this.nk = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
+        this.nl = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
+        this.cE = true;
+        bM();
+        this.cE = false;
         i = getChildCount();
         paramInt2 = 0;
         while (paramInt2 < i)
@@ -2128,10 +2205,10 @@ public class ViewPager
           if (localView.getVisibility() != 8)
           {
             localLayoutParams = (ViewPager.LayoutParams)localView.getLayoutParams();
-            if ((localLayoutParams == null) || (!localLayoutParams.ma))
+            if ((localLayoutParams == null) || (!localLayoutParams.nW))
             {
               float f = paramInt1;
-              localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.lY * f), 1073741824), this.lp);
+              localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.nU * f), 1073741824), this.nl);
             }
           }
           paramInt2 += 1;
@@ -2164,8 +2241,8 @@ public class ViewPager
       View localView = getChildAt(i);
       if (localView.getVisibility() == 0)
       {
-        ai localai = bx();
-        if ((localai != null) && (localai.position == this.lc) && (localView.requestFocus(paramInt, paramRect)))
+        ai localai = bO();
+        if ((localai != null) && (localai.position == this.mY) && (localView.requestFocus(paramInt, paramRect)))
         {
           return true;
           i = j - 1;
@@ -2188,24 +2265,22 @@ public class ViewPager
     }
     paramParcelable = (ViewPager.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    if (this.lb != null)
+    if (this.mX != null)
     {
-      Object localObject = paramParcelable.md;
-      localObject = paramParcelable.me;
       a(paramParcelable.position, false, true);
       return;
     }
-    this.ld = paramParcelable.position;
-    this.le = paramParcelable.md;
-    this.lf = paramParcelable.me;
+    this.mZ = paramParcelable.position;
+    this.na = paramParcelable.nZ;
+    this.nb = paramParcelable.oa;
   }
   
   public Parcelable onSaveInstanceState()
   {
     ViewPager.SavedState localSavedState = new ViewPager.SavedState(super.onSaveInstanceState());
-    localSavedState.position = this.lc;
-    if (this.lb != null) {
-      localSavedState.md = null;
+    localSavedState.position = this.mY;
+    if (this.mX != null) {
+      localSavedState.nZ = null;
     }
     return localSavedState;
   }
@@ -2215,13 +2290,13 @@ public class ViewPager
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != paramInt3)
     {
-      paramInt2 = this.li;
-      paramInt4 = this.li;
-      if ((paramInt3 <= 0) || (this.kZ.isEmpty())) {
+      paramInt2 = this.ne;
+      paramInt4 = this.ne;
+      if ((paramInt3 <= 0) || (this.mV.isEmpty())) {
         break label132;
       }
-      if (!this.lg.isFinished()) {
-        this.lg.setFinalX(this.lc * bu());
+      if (!this.nc.isFinished()) {
+        this.nc.setFinalX(this.mY * bL());
       }
     }
     else
@@ -2236,15 +2311,15 @@ public class ViewPager
     scrollTo((int)((paramInt2 + (paramInt1 - i - j)) * f), getScrollY());
     return;
     label132:
-    ai localai = E(this.lc);
+    ai localai = P(this.mY);
     if (localai != null) {}
-    for (f = Math.min(localai.lZ, this.ln);; f = 0.0F)
+    for (f = Math.min(localai.nV, this.nj);; f = 0.0F)
     {
       paramInt1 = (int)(f * (paramInt1 - getPaddingLeft() - getPaddingRight()));
       if (paramInt1 == getScrollX()) {
         break;
       }
-      i(false);
+      l(false);
       scrollTo(paramInt1, getScrollY());
       return;
     }
@@ -2253,19 +2328,19 @@ public class ViewPager
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
-    if (this.lF) {
+    if (this.nB) {
       return true;
     }
     if ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getEdgeFlags() != 0)) {
       return false;
     }
-    if ((this.lb == null) || (this.lb.getCount() == 0)) {
+    if ((this.mX == null) || (this.mX.getCount() == 0)) {
       return false;
     }
-    if (this.lA == null) {
-      this.lA = VelocityTracker.obtain();
+    if (this.nw == null) {
+      this.nw = VelocityTracker.obtain();
     }
-    this.lA.addMovement(paramMotionEvent);
+    this.nw.addMovement(paramMotionEvent);
     boolean bool1 = bool2;
     switch (paramMotionEvent.getAction() & 0xFF)
     {
@@ -2275,113 +2350,113 @@ public class ViewPager
     for (;;)
     {
       if (bool1) {
-        r.f(this);
+        r.g(this);
       }
       return true;
-      this.lg.abortAnimation();
-      this.lr = false;
-      bv();
+      this.nc.abortAnimation();
+      this.nn = false;
+      bM();
       float f1 = paramMotionEvent.getX();
-      this.kj = f1;
-      this.lx = f1;
+      this.mg = f1;
+      this.nt = f1;
       f1 = paramMotionEvent.getY();
-      this.kk = f1;
-      this.ly = f1;
-      this.lz = paramMotionEvent.getPointerId(0);
+      this.mh = f1;
+      this.nu = f1;
+      this.nv = paramMotionEvent.getPointerId(0);
       bool1 = bool2;
       continue;
       int i;
       float f2;
-      if (!this.lt)
+      if (!this.np)
       {
-        i = paramMotionEvent.findPointerIndex(this.lz);
+        i = paramMotionEvent.findPointerIndex(this.nv);
         if (i == -1)
         {
-          bool1 = bz();
+          bool1 = bQ();
           continue;
         }
         f1 = paramMotionEvent.getX(i);
-        float f3 = Math.abs(f1 - this.lx);
+        float f3 = Math.abs(f1 - this.nt);
         f2 = paramMotionEvent.getY(i);
-        float f4 = Math.abs(f2 - this.ly);
-        if ((f3 > this.kl) && (f3 > f4))
+        float f4 = Math.abs(f2 - this.nu);
+        if ((f3 > this.mi) && (f3 > f4))
         {
-          this.lt = true;
-          bA();
-          if (f1 - this.kj <= 0.0F) {
+          this.np = true;
+          bR();
+          if (f1 - this.mg <= 0.0F) {
             break label392;
           }
         }
       }
       Object localObject;
       label392:
-      for (f1 = this.kj + this.kl;; f1 = this.kj - this.kl)
+      for (f1 = this.mg + this.mi;; f1 = this.mg - this.mi)
       {
-        this.lx = f1;
-        this.ly = f2;
-        z(1);
+        this.nt = f1;
+        this.nu = f2;
+        K(1);
         setScrollingCacheEnabled(true);
         localObject = getParent();
         if (localObject != null) {
           ((ViewParent)localObject).requestDisallowInterceptTouchEvent(true);
         }
         bool1 = bool2;
-        if (!this.lt) {
+        if (!this.np) {
           break;
         }
-        bool1 = a(paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.lz))) | false;
+        bool1 = b(paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.nv))) | false;
         break;
       }
       bool1 = bool2;
-      if (this.lt)
+      if (this.np)
       {
-        localObject = this.lA;
-        ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.lC);
-        int k = (int)((VelocityTracker)localObject).getXVelocity(this.lz);
-        this.lr = true;
-        int j = bu();
+        localObject = this.nw;
+        ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.ny);
+        int k = (int)((VelocityTracker)localObject).getXVelocity(this.nv);
+        this.nn = true;
+        int j = bL();
         int m = getScrollX();
-        localObject = bB();
-        f1 = this.li / j;
+        localObject = bS();
+        f1 = this.ne / j;
         i = ((ai)localObject).position;
-        f2 = (m / j - ((ai)localObject).lZ) / (((ai)localObject).lY + f1);
-        if ((Math.abs((int)(paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.lz)) - this.kj)) > this.lD) && (Math.abs(k) > this.lB))
+        f2 = (m / j - ((ai)localObject).nV) / (((ai)localObject).nU + f1);
+        if ((Math.abs((int)(paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.nv)) - this.mg)) > this.nz) && (Math.abs(k) > this.nx))
         {
           if (k > 0) {}
           for (;;)
           {
             j = i;
-            if (this.kZ.size() > 0)
+            if (this.mV.size() > 0)
             {
-              paramMotionEvent = (ai)this.kZ.get(0);
-              localObject = (ai)this.kZ.get(this.kZ.size() - 1);
+              paramMotionEvent = (ai)this.mV.get(0);
+              localObject = (ai)this.mV.get(this.mV.size() - 1);
               j = Math.max(paramMotionEvent.position, Math.min(i, ((ai)localObject).position));
             }
             a(j, true, true, k);
-            bool1 = bz();
+            bool1 = bQ();
             break;
             i += 1;
           }
         }
-        if (i >= this.lc) {}
+        if (i >= this.mY) {}
         for (f1 = 0.4F;; f1 = 0.6F)
         {
           i += (int)(f1 + f2);
           break;
         }
         bool1 = bool2;
-        if (this.lt)
+        if (this.np)
         {
-          a(this.lc, true, 0, false);
-          bool1 = bz();
+          a(this.mY, true, 0, false);
+          bool1 = bQ();
           continue;
           i = paramMotionEvent.getActionIndex();
-          this.lx = paramMotionEvent.getX(i);
-          this.lz = paramMotionEvent.getPointerId(i);
+          this.nt = paramMotionEvent.getX(i);
+          this.nv = paramMotionEvent.getPointerId(i);
           bool1 = bool2;
           continue;
-          a(paramMotionEvent);
-          this.lx = paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.lz));
+          b(paramMotionEvent);
+          this.nt = paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.nv));
           bool1 = bool2;
         }
       }
@@ -2390,7 +2465,7 @@ public class ViewPager
   
   public void removeView(View paramView)
   {
-    if (this.aU)
+    if (this.cE)
     {
       removeViewInLayout(paramView);
       return;
@@ -2400,63 +2475,7 @@ public class ViewPager
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.lj);
-  }
-  
-  final void z(int paramInt)
-  {
-    int m = 0;
-    if (this.kD == paramInt) {}
-    label38:
-    label77:
-    label83:
-    do
-    {
-      return;
-      this.kD = paramInt;
-      int i;
-      int j;
-      if (this.lQ != null)
-      {
-        if (paramInt != 0)
-        {
-          i = 1;
-          int n = getChildCount();
-          j = 0;
-          if (j >= n) {
-            break label83;
-          }
-          if (i == 0) {
-            break label77;
-          }
-        }
-        for (int k = this.lR;; k = 0)
-        {
-          getChildAt(j).setLayerType(k, null);
-          j += 1;
-          break label38;
-          i = 0;
-          break;
-        }
-      }
-      if (this.lN != null) {
-        this.lN.y(paramInt);
-      }
-      if (this.lM != null)
-      {
-        j = this.lM.size();
-        i = m;
-        while (i < j)
-        {
-          al localal = (al)this.lM.get(i);
-          if (localal != null) {
-            localal.y(paramInt);
-          }
-          i += 1;
-        }
-      }
-    } while (this.lO == null);
-    this.lO.y(paramInt);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.nf);
   }
 }
 

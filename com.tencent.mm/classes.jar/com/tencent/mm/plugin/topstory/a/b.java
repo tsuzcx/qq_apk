@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.topstory.a;
 
-import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.ckw;
-import com.tencent.xweb.WebView.d;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.xweb.WebView.WebViewKind;
 
 public abstract interface b
-  extends d
+  extends com.tencent.mm.kernel.b.d
 {
-  public abstract e getRedDotMgr();
+  public abstract d getRedDotMgr();
   
-  public abstract f getReporter();
+  public abstract e getReporter();
   
-  public abstract WebView.d getWebViewType();
+  public abstract WebView.WebViewKind getWebViewType();
   
-  public abstract void onVideoListUIDestroy(ckw paramckw);
+  public abstract void onVideoListUIDestroy(foe paramfoe);
   
   public abstract void onVideoListUIPause();
   
@@ -21,7 +20,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.b
  * JD-Core Version:    0.7.0.1
  */

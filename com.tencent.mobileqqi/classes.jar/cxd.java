@@ -1,16 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.mobileqq.activity.NearPeopleActivity;
 
 public class cxd
   implements Runnable
 {
-  public cxd(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public cxd(NearPeopleActivity paramNearPeopleActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f);
+    if (HtmlOffline.a(NearPeopleActivity.a(this.a)) == null) {
+      HtmlOffline.a(this.a.a, NearPeopleActivity.b(this.a), this.a.b);
+    }
   }
 }
 

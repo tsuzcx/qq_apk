@@ -17,27 +17,27 @@ public class FormatDetector
   
   static
   {
-    AppMethodBeat.i(128401);
+    AppMethodBeat.i(114176);
     mInstance = new FormatDetector();
     sIsLoadSuccess = false;
     sIsLoadSuccess = NativeLibs.loadAll(new NativeLibs[] { NativeLibs.audioCommon, NativeLibs.formatDetector });
-    AppMethodBeat.o(128401);
+    AppMethodBeat.o(114176);
   }
   
   public static AudioFormat.AudioType getAudioFormat(IDataSource paramIDataSource, boolean paramBoolean)
   {
-    AppMethodBeat.i(128397);
+    AppMethodBeat.i(114172);
     if (paramIDataSource == null)
     {
       paramIDataSource = new IllegalArgumentException("dataSource can't be null!");
-      AppMethodBeat.o(128397);
+      AppMethodBeat.o(114172);
       throw paramIDataSource;
     }
     AudioFormat.AudioType localAudioType = AudioFormat.AudioType.UNSUPPORT;
     try
     {
       paramIDataSource = AudioFormat.getAudioType(mInstance.getFormatFromDataSource(paramIDataSource, paramBoolean));
-      AppMethodBeat.o(128397);
+      AppMethodBeat.o(114172);
       return paramIDataSource;
     }
     catch (UnsatisfiedLinkError paramIDataSource)
@@ -52,19 +52,19 @@ public class FormatDetector
   
   public static AudioFormat.AudioType getAudioFormat(String paramString)
   {
-    AppMethodBeat.i(128395);
+    AppMethodBeat.i(114170);
     paramString = getAudioFormat(paramString, true);
-    AppMethodBeat.o(128395);
+    AppMethodBeat.o(114170);
     return paramString;
   }
   
   public static AudioFormat.AudioType getAudioFormat(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(128396);
+    AppMethodBeat.i(114171);
     if (paramString == null)
     {
       paramString = new IllegalArgumentException("filePath can't be null!");
-      AppMethodBeat.o(128396);
+      AppMethodBeat.o(114171);
       throw paramString;
     }
     try
@@ -80,17 +80,17 @@ public class FormatDetector
         paramString = AudioRecognition.guessFormat(paramString);
       }
     }
-    AppMethodBeat.o(128396);
+    AppMethodBeat.o(114171);
     return paramString;
   }
   
   public static AudioFormat.AudioType getAudioType(IDataSource paramIDataSource)
   {
-    AppMethodBeat.i(128400);
+    AppMethodBeat.i(114175);
     if (paramIDataSource == null)
     {
       paramIDataSource = new IllegalArgumentException("dataSource can't be null!");
-      AppMethodBeat.o(128400);
+      AppMethodBeat.o(114175);
       throw paramIDataSource;
     }
     AudioFormat.AudioType localAudioType = AudioFormat.AudioType.UNSUPPORT;
@@ -101,7 +101,7 @@ public class FormatDetector
     }
     for (;;)
     {
-      AppMethodBeat.o(128400);
+      AppMethodBeat.o(114175);
       return paramIDataSource;
       paramIDataSource = localAudioType;
     }
@@ -109,10 +109,10 @@ public class FormatDetector
   
   public static AudioFormat.AudioType getAudioType(String paramString)
   {
-    AppMethodBeat.i(128399);
+    AppMethodBeat.i(114174);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(128399);
+      AppMethodBeat.o(114174);
       return null;
     }
     AudioFormat.AudioType localAudioType1;
@@ -127,7 +127,7 @@ public class FormatDetector
       if (!AudioFormat.isAudioType(localAudioType1)) {
         localAudioType2 = getAudioTypeFromExtension(paramString.substring(paramString.lastIndexOf('.') + 1).toLowerCase());
       }
-      AppMethodBeat.o(128399);
+      AppMethodBeat.o(114174);
       return localAudioType2;
       localAudioType1 = null;
     }
@@ -135,10 +135,10 @@ public class FormatDetector
   
   public static AudioFormat.AudioType getAudioTypeFromExtension(String paramString)
   {
-    AppMethodBeat.i(128398);
+    AppMethodBeat.i(114173);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(128398);
+      AppMethodBeat.o(114173);
       return null;
     }
     AudioFormat.AudioType[] arrayOfAudioType = AudioFormat.AudioType.values();
@@ -149,13 +149,13 @@ public class FormatDetector
       AudioFormat.AudioType localAudioType = arrayOfAudioType[i];
       if (localAudioType.getExtension().equalsIgnoreCase(paramString))
       {
-        AppMethodBeat.o(128398);
+        AppMethodBeat.o(114173);
         return localAudioType;
       }
       i += 1;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128398);
+    AppMethodBeat.o(114173);
     return paramString;
   }
   
@@ -165,7 +165,7 @@ public class FormatDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.formatdetector.FormatDetector
  * JD-Core Version:    0.7.0.1
  */

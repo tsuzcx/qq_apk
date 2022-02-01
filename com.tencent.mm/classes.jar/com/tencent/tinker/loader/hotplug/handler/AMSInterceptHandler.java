@@ -24,8 +24,9 @@ import java.lang.reflect.Method;
 public class AMSInterceptHandler
   implements ServiceBinderInterceptor.BinderInvocationHandler
 {
-  private static final int[] Buv = { 16842840 };
-  private static final int Buw;
+  private static final int INTENT_SENDER_ACTIVITY;
+  private static final String TAG = "Tinker.AMSIntrcptHndlr";
+  private static final int[] TRANSLUCENT_ATTR_ID = { 16842840 };
   private final Context mContext;
   
   static
@@ -35,11 +36,11 @@ public class AMSInterceptHandler
     {
       try
       {
-        i = ((Integer)ShareReflectUtil.g(ActivityManager.class, "INTENT_SENDER_ACTIVITY").get(null)).intValue();
-        Buw = i;
+        i = ((Integer)ShareReflectUtil.findField(ActivityManager.class, "INTENT_SENDER_ACTIVITY").get(null)).intValue();
+        INTENT_SENDER_ACTIVITY = i;
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         i = 2;
         continue;
@@ -61,50 +62,71 @@ public class AMSInterceptHandler
     this.mContext = paramContext;
   }
   
-  private void a(Intent paramIntent, String paramString1, String paramString2, String paramString3)
+  private Object handleGetIntentSender(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    paramString2 = new ComponentName(paramString1, paramString2);
-    ShareIntentUtil.a(paramIntent, this.mContext.getClassLoader());
-    paramIntent.putExtra("tinker_iek_old_component", paramString2);
-    paramIntent.setComponent(new ComponentName(paramString1, paramString3));
-  }
-  
-  private boolean a(ActivityInfo paramActivityInfo)
-  {
-    boolean bool2 = false;
-    int i = paramActivityInfo.getThemeResource();
-    Object localObject2 = this.mContext.getResources().newTheme();
-    ((Resources.Theme)localObject2).applyStyle(i, true);
-    Object localObject1 = null;
-    paramActivityInfo = null;
-    try
+    int j = 0;
+    int i = 0;
+    if (i < paramArrayOfObject.length) {
+      if (!(paramArrayOfObject[i] instanceof Intent[])) {}
+    }
+    for (;;)
     {
-      localObject2 = ((Resources.Theme)localObject2).obtainStyledAttributes(Buv);
-      paramActivityInfo = (ActivityInfo)localObject2;
-      localObject1 = localObject2;
-      boolean bool1 = ((TypedArray)localObject2).getBoolean(0, false);
-      bool2 = bool1;
-      if (localObject2 != null)
+      if ((i != -1) && (((Integer)paramArrayOfObject[0]).intValue() == INTENT_SENDER_ACTIVITY))
       {
-        ((TypedArray)localObject2).recycle();
-        bool2 = bool1;
+        Intent[] arrayOfIntent = (Intent[])paramArrayOfObject[i];
+        i = j;
+        for (;;)
+        {
+          if (i < arrayOfIntent.length)
+          {
+            Intent localIntent = new Intent(arrayOfIntent[i]);
+            processActivityIntent(localIntent);
+            arrayOfIntent[i] = localIntent;
+            i += 1;
+            continue;
+            i += 1;
+            break;
+          }
+        }
       }
+      return paramMethod.invoke(paramObject, paramArrayOfObject);
+      i = -1;
     }
-    catch (Throwable localThrowable)
-    {
-      return false;
-    }
-    finally
-    {
-      if (localThrowable == null) {
-        break label99;
-      }
-      localThrowable.recycle();
-    }
-    return bool2;
   }
   
-  private Object b(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  private Object handleStartActivities(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    int j = 0;
+    int i = 0;
+    if (i < paramArrayOfObject.length) {
+      if (!(paramArrayOfObject[i] instanceof Intent[])) {}
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        Intent[] arrayOfIntent = (Intent[])paramArrayOfObject[i];
+        i = j;
+        for (;;)
+        {
+          if (i < arrayOfIntent.length)
+          {
+            Intent localIntent = new Intent(arrayOfIntent[i]);
+            processActivityIntent(localIntent);
+            arrayOfIntent[i] = localIntent;
+            i += 1;
+            continue;
+            i += 1;
+            break;
+          }
+        }
+      }
+      return paramMethod.invoke(paramObject, paramArrayOfObject);
+      i = -1;
+    }
+  }
+  
+  private Object handleStartActivity(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     int i = 0;
     if (i < paramArrayOfObject.length) {
@@ -115,7 +137,7 @@ public class AMSInterceptHandler
       if (i != -1)
       {
         Intent localIntent = new Intent((Intent)paramArrayOfObject[i]);
-        bb(localIntent);
+        processActivityIntent(localIntent);
         paramArrayOfObject[i] = localIntent;
       }
       return paramMethod.invoke(paramObject, paramArrayOfObject);
@@ -125,7 +147,35 @@ public class AMSInterceptHandler
     }
   }
   
-  private void bb(Intent paramIntent)
+  private boolean hasTransparentTheme(ActivityInfo paramActivityInfo)
+  {
+    boolean bool2 = false;
+    int i = paramActivityInfo.getThemeResource();
+    Object localObject1 = this.mContext.getResources().newTheme();
+    ((Resources.Theme)localObject1).applyStyle(i, true);
+    paramActivityInfo = null;
+    try
+    {
+      localObject1 = ((Resources.Theme)localObject1).obtainStyledAttributes(TRANSLUCENT_ATTR_ID);
+      paramActivityInfo = (ActivityInfo)localObject1;
+      boolean bool1 = ((TypedArray)localObject1).getBoolean(0, false);
+      bool2 = bool1;
+      if (localObject1 != null)
+      {
+        ((TypedArray)localObject1).recycle();
+        bool2 = bool1;
+      }
+    }
+    finally
+    {
+      while (paramActivityInfo == null) {}
+      paramActivityInfo.recycle();
+    }
+    return bool2;
+    return false;
+  }
+  
+  private void processActivityIntent(Intent paramIntent)
   {
     Object localObject2;
     Object localObject1;
@@ -136,17 +186,17 @@ public class AMSInterceptHandler
     }
     for (;;)
     {
-      if (IncrementComponentManager.awX((String)localObject1))
+      if (IncrementComponentManager.isIncrementActivity((String)localObject1))
       {
-        ActivityInfo localActivityInfo = IncrementComponentManager.awY((String)localObject1);
-        boolean bool = a(localActivityInfo);
-        a(paramIntent, (String)localObject2, (String)localObject1, ActivityStubManager.y((String)localObject1, localActivityInfo.launchMode, bool));
+        ActivityInfo localActivityInfo = IncrementComponentManager.queryActivityInfo((String)localObject1);
+        boolean bool = hasTransparentTheme(localActivityInfo);
+        storeAndReplaceOriginalComponentName(paramIntent, (String)localObject2, (String)localObject1, ActivityStubManager.assignStub((String)localObject1, localActivityInfo.launchMode, bool));
       }
       return;
       localObject2 = this.mContext.getPackageManager().resolveActivity(paramIntent, 0);
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = IncrementComponentManager.ba(paramIntent);
+        localObject1 = IncrementComponentManager.resolveIntent(paramIntent);
       }
       if ((localObject1 != null) && (((ResolveInfo)localObject1).filter != null) && (((ResolveInfo)localObject1).filter.hasCategory("android.intent.category.DEFAULT")))
       {
@@ -161,96 +211,41 @@ public class AMSInterceptHandler
     }
   }
   
-  private Object c(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  private void storeAndReplaceOriginalComponentName(Intent paramIntent, String paramString1, String paramString2, String paramString3)
   {
-    int j = 0;
-    int i = 0;
-    if (i < paramArrayOfObject.length) {
-      if (!(paramArrayOfObject[i] instanceof Intent[])) {}
-    }
-    for (;;)
-    {
-      if ((i != -1) && (((Integer)paramArrayOfObject[0]).intValue() == Buw))
-      {
-        Intent[] arrayOfIntent = (Intent[])paramArrayOfObject[i];
-        i = j;
-        for (;;)
-        {
-          if (i < arrayOfIntent.length)
-          {
-            Intent localIntent = new Intent(arrayOfIntent[i]);
-            bb(localIntent);
-            arrayOfIntent[i] = localIntent;
-            i += 1;
-            continue;
-            i += 1;
-            break;
-          }
-        }
-      }
-      return paramMethod.invoke(paramObject, paramArrayOfObject);
-      i = -1;
-    }
+    paramString2 = new ComponentName(paramString1, paramString2);
+    ShareIntentUtil.fixIntentClassLoader(paramIntent, this.mContext.getClassLoader());
+    paramIntent.putExtra("tinker_iek_old_component", paramString2);
+    paramIntent.setComponent(new ComponentName(paramString1, paramString3));
   }
   
-  public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    int j = 0;
-    Object localObject = paramMethod.getName();
-    if ("startActivity".equals(localObject)) {
-      return b(paramObject, paramMethod, paramArrayOfObject);
+    String str = paramMethod.getName();
+    if ("startActivity".equals(str)) {
+      return handleStartActivity(paramObject, paramMethod, paramArrayOfObject);
     }
-    int i;
-    if ("startActivities".equals(localObject))
-    {
-      i = 0;
-      if (i >= paramArrayOfObject.length) {
-        break label218;
-      }
-      if (!(paramArrayOfObject[i] instanceof Intent[])) {}
+    if ("startActivities".equals(str)) {
+      return handleStartActivities(paramObject, paramMethod, paramArrayOfObject);
     }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        localObject = (Intent[])paramArrayOfObject[i];
-        i = j;
-        for (;;)
-        {
-          if (i < localObject.length)
-          {
-            Intent localIntent = new Intent(localObject[i]);
-            bb(localIntent);
-            localObject[i] = localIntent;
-            i += 1;
-            continue;
-            i += 1;
-            break;
-          }
-        }
-      }
-      return paramMethod.invoke(paramObject, paramArrayOfObject);
-      if ("startActivityAndWait".equals(localObject)) {
-        return b(paramObject, paramMethod, paramArrayOfObject);
-      }
-      if ("startActivityWithConfig".equals(localObject)) {
-        return b(paramObject, paramMethod, paramArrayOfObject);
-      }
-      if ("startActivityAsUser".equals(localObject)) {
-        return b(paramObject, paramMethod, paramArrayOfObject);
-      }
-      if ("getIntentSender".equals(localObject)) {
-        return c(paramObject, paramMethod, paramArrayOfObject);
-      }
-      return paramMethod.invoke(paramObject, paramArrayOfObject);
-      label218:
-      i = -1;
+    if ("startActivityAndWait".equals(str)) {
+      return handleStartActivity(paramObject, paramMethod, paramArrayOfObject);
     }
+    if ("startActivityWithConfig".equals(str)) {
+      return handleStartActivity(paramObject, paramMethod, paramArrayOfObject);
+    }
+    if ("startActivityAsUser".equals(str)) {
+      return handleStartActivity(paramObject, paramMethod, paramArrayOfObject);
+    }
+    if ("getIntentSender".equals(str)) {
+      return handleGetIntentSender(paramObject, paramMethod, paramArrayOfObject);
+    }
+    return paramMethod.invoke(paramObject, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.handler.AMSInterceptHandler
  * JD-Core Version:    0.7.0.1
  */

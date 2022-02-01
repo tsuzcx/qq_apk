@@ -17,7 +17,13 @@ public class RecyclablePool$Recyclable
   {
     if ((this.isInPool) && (paramBoolean))
     {
-      Logger.INSTANCE.d(new String[] { "QAPM_common_RecyclablePool_Recyclable", "changeNext " + paramRecyclable + ", " + paramBoolean });
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("changeNext ");
+      localStringBuilder.append(paramRecyclable);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramBoolean);
+      localLogger.d(new String[] { "QAPM_common_RecyclablePool_Recyclable", localStringBuilder.toString() });
       throw ((Throwable)new RuntimeException("conflict inPool and outPool"));
     }
     this.next = paramRecyclable;
@@ -51,7 +57,7 @@ public class RecyclablePool$Recyclable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.RecyclablePool.Recyclable
  * JD-Core Version:    0.7.0.1
  */

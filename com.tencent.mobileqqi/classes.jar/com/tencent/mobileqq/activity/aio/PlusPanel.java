@@ -33,8 +33,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import com.tencent.widget.ActionSheet;
+import dvw;
 import dvx;
-import dvy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -285,7 +285,7 @@ public class PlusPanel
     label1246:
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter2.a((ArrayList)localObject);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter2.notifyDataSetChanged();
-    post(new dvx(this));
+    post(new dvw(this));
   }
   
   public void a(ChatActivity paramChatActivity, SessionInfo paramSessionInfo)
@@ -394,7 +394,7 @@ public class PlusPanel
             m += 1;
           }
           localActionSheet.d(2131561746);
-          localActionSheet.a(new dvy(this, paramView, localActionSheet));
+          localActionSheet.a(new dvx(this, paramView, localActionSheet));
           localActionSheet.show();
         }
         for (;;)

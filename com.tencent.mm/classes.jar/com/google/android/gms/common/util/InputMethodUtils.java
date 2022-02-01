@@ -9,67 +9,67 @@ public class InputMethodUtils
 {
   public static boolean hideSoftInput(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(90239);
+    AppMethodBeat.i(5261);
     paramContext = zzf(paramContext);
     if (paramContext != null)
     {
       paramContext.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      AppMethodBeat.o(90239);
+      AppMethodBeat.o(5261);
       return true;
     }
-    AppMethodBeat.o(90239);
+    AppMethodBeat.o(5261);
     return false;
   }
   
   public static boolean isAcceptingText(Context paramContext)
   {
-    AppMethodBeat.i(90241);
+    AppMethodBeat.i(5263);
     paramContext = zzf(paramContext);
     if (paramContext != null)
     {
       boolean bool = paramContext.isAcceptingText();
-      AppMethodBeat.o(90241);
+      AppMethodBeat.o(5263);
       return bool;
     }
-    AppMethodBeat.o(90241);
+    AppMethodBeat.o(5263);
     return false;
   }
   
   public static void restart(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(90240);
+    AppMethodBeat.i(5262);
     paramContext = zzf(paramContext);
     if (paramContext != null) {
       paramContext.restartInput(paramView);
     }
-    AppMethodBeat.o(90240);
+    AppMethodBeat.o(5262);
   }
   
   public static boolean showSoftInput(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(90238);
+    AppMethodBeat.i(5260);
     paramContext = zzf(paramContext);
     if (paramContext != null)
     {
       paramContext.showSoftInput(paramView, 0);
-      AppMethodBeat.o(90238);
+      AppMethodBeat.o(5260);
       return true;
     }
-    AppMethodBeat.o(90238);
+    AppMethodBeat.o(5260);
     return false;
   }
   
   private static InputMethodManager zzf(Context paramContext)
   {
-    AppMethodBeat.i(90237);
+    AppMethodBeat.i(5259);
     paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
-    AppMethodBeat.o(90237);
+    AppMethodBeat.o(5259);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.common.util.InputMethodUtils
  * JD-Core Version:    0.7.0.1
  */

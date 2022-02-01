@@ -15,8 +15,13 @@ public final class LogState$Companion
     while (i < k)
     {
       LogState localLogState = arrayOfLogState[i];
-      if (localLogState.getValue() == paramInt) {}
-      for (int j = 1; j != 0; j = 0) {
+      int j;
+      if (localLogState.getValue() == paramInt) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if (j != 0) {
         return localLogState;
       }
       i += 1;
@@ -26,7 +31,7 @@ public final class LogState$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.logger.LogState.Companion
  * JD-Core Version:    0.7.0.1
  */

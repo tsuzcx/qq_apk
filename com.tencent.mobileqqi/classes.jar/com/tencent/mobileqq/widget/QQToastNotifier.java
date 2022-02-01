@@ -5,14 +5,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
+import hhi;
 import hhj;
-import hhk;
 
 public class QQToastNotifier
 {
   private static final int jdField_a_of_type_Int = 1;
   public Context a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hhj(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new hhi(this, Looper.getMainLooper());
   public Toast a;
   
   public QQToastNotifier(Context paramContext)
@@ -42,12 +42,12 @@ public class QQToastNotifier
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    hhk localhhk = new hhk(null);
-    localhhk.jdField_a_of_type_Int = paramInt4;
-    localhhk.b = paramInt1;
-    localhhk.c = paramInt3;
-    localhhk.d = paramInt2;
-    localMessage.obj = localhhk;
+    hhj localhhj = new hhj(null);
+    localhhj.jdField_a_of_type_Int = paramInt4;
+    localhhj.b = paramInt1;
+    localhhj.c = paramInt3;
+    localhhj.d = paramInt2;
+    localMessage.obj = localhhj;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
@@ -55,12 +55,12 @@ public class QQToastNotifier
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    hhk localhhk = new hhk(null);
-    localhhk.jdField_a_of_type_Int = paramInt3;
-    localhhk.jdField_a_of_type_JavaLangString = paramString;
-    localhhk.c = paramInt2;
-    localhhk.d = paramInt1;
-    localMessage.obj = localhhk;
+    hhj localhhj = new hhj(null);
+    localhhj.jdField_a_of_type_Int = paramInt3;
+    localhhj.jdField_a_of_type_JavaLangString = paramString;
+    localhhj.c = paramInt2;
+    localhhj.d = paramInt1;
+    localMessage.obj = localhhj;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }

@@ -18,20 +18,35 @@ public class LongProgression
   
   public LongProgression(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (paramLong3 == 0L) {
-      throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
-    }
-    if (paramLong3 == -9223372036854775808L) {
+    if (paramLong3 != 0L)
+    {
+      if (paramLong3 != -9223372036854775808L)
+      {
+        this.first = paramLong1;
+        this.last = ProgressionUtilKt.getProgressionLastElement(paramLong1, paramLong2, paramLong3);
+        this.step = paramLong3;
+        return;
+      }
       throw ((Throwable)new IllegalArgumentException("Step must be greater than Long.MIN_VALUE to avoid overflow on negation."));
     }
-    this.first = paramLong1;
-    this.last = ProgressionUtilKt.getProgressionLastElement(paramLong1, paramLong2, paramLong3);
-    this.step = paramLong3;
+    throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof LongProgression)) && (((isEmpty()) && (((LongProgression)paramObject).isEmpty())) || ((this.first == ((LongProgression)paramObject).first) && (this.last == ((LongProgression)paramObject).last) && (this.step == ((LongProgression)paramObject).step)));
+    if ((paramObject instanceof LongProgression)) {
+      if ((!isEmpty()) || (!((LongProgression)paramObject).isEmpty()))
+      {
+        long l = this.first;
+        paramObject = (LongProgression)paramObject;
+        if ((l != paramObject.first) || (this.last != paramObject.last) || (this.step != paramObject.step)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final long getFirst()
@@ -54,18 +69,23 @@ public class LongProgression
     if (isEmpty()) {
       return -1;
     }
-    return (int)(31 * (31 * (this.first ^ this.first >>> 32) + (this.last ^ this.last >>> 32)) + (this.step ^ this.step >>> 32));
+    long l1 = 31;
+    long l2 = this.first;
+    long l3 = this.last;
+    long l4 = this.step;
+    return (int)(l1 * ((l2 ^ l2 >>> 32) * l1 + (l3 ^ l3 >>> 32)) + (l4 ^ l4 >>> 32));
   }
   
   public boolean isEmpty()
   {
-    if (this.step > 0L) {
-      if (this.first <= this.last) {}
-    }
-    while (this.first < this.last)
+    if (this.step > 0L)
     {
+      if (this.first > this.last) {
+        return true;
+      }
+    }
+    else if (this.first < this.last) {
       return true;
-      return false;
     }
     return false;
   }
@@ -79,15 +99,33 @@ public class LongProgression
   @NotNull
   public String toString()
   {
-    if (this.step > 0L) {
-      return this.first + ".." + this.last + " step " + this.step;
+    StringBuilder localStringBuilder;
+    long l;
+    if (this.step > 0L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.first);
+      localStringBuilder.append("..");
+      localStringBuilder.append(this.last);
+      localStringBuilder.append(" step ");
+      l = this.step;
     }
-    return this.first + " downTo " + this.last + " step " + -this.step;
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.first);
+      localStringBuilder.append(" downTo ");
+      localStringBuilder.append(this.last);
+      localStringBuilder.append(" step ");
+      l = -this.step;
+    }
+    localStringBuilder.append(l);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.LongProgression
  * JD-Core Version:    0.7.0.1
  */

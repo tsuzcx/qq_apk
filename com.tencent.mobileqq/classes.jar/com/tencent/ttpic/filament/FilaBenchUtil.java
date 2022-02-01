@@ -2,6 +2,7 @@ package com.tencent.ttpic.filament;
 
 import android.opengl.GLES20;
 import android.text.TextUtils;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,7 +18,7 @@ public class FilaBenchUtil
   public static boolean ENABLE_PERFORMANCE_RECORD = false;
   private static final String PREFIX = "[time]";
   public static String SHOWPREVIEW_BENCH_TAG = "[filament]";
-  private static final String TAG = FilaBenchUtil.class.getSimpleName();
+  private static final String TAG = "FilaBenchUtil";
   private static Map<String, Long> lastTimeMap;
   private static Map<String, Long> startTimeMap = new HashMap();
   private static Map<String, CopyOnWriteArrayList<Long>> totalTimeMap = new HashMap();
@@ -29,40 +30,54 @@ public class FilaBenchUtil
   
   public static long benchEnd(String paramString)
   {
-    if ((!ENABLE_LOG) || (TextUtils.isEmpty(paramString)) || (startTimeMap == null)) {
-      return 0L;
-    }
-    Long localLong = (Long)startTimeMap.get(paramString);
-    if (localLong == null) {
-      return 0L;
-    }
-    if ((ENABLE_PERFORMANCE_RECORD) && (paramString.startsWith(SHOWPREVIEW_BENCH_TAG))) {
-      GLES20.glFinish();
-    }
-    CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)totalTimeMap.get(paramString);
-    CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
-    if (localCopyOnWriteArrayList2 == null)
+    if ((ENABLE_LOG) && (!TextUtils.isEmpty(paramString)))
     {
-      localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
-      totalTimeMap.put(paramString, localCopyOnWriteArrayList1);
+      Object localObject1 = startTimeMap;
+      if (localObject1 == null) {
+        return 0L;
+      }
+      Object localObject3 = (Long)((Map)localObject1).get(paramString);
+      if (localObject3 == null) {
+        return 0L;
+      }
+      if ((ENABLE_PERFORMANCE_RECORD) && (paramString.startsWith(SHOWPREVIEW_BENCH_TAG))) {
+        GLES20.glFinish();
+      }
+      Object localObject2 = (CopyOnWriteArrayList)totalTimeMap.get(paramString);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new CopyOnWriteArrayList();
+        totalTimeMap.put(paramString, localObject1);
+      }
+      long l1 = System.currentTimeMillis() - ((Long)localObject3).longValue();
+      ((CopyOnWriteArrayList)localObject1).add(Long.valueOf(l1));
+      int i = ((CopyOnWriteArrayList)localObject1).size();
+      if (i >= 1)
+      {
+        long l2 = getTotalTime((CopyOnWriteArrayList)localObject1) / i;
+        localObject2 = TAG;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("[time]");
+        ((StringBuilder)localObject3).append(paramString);
+        ((StringBuilder)localObject3).append(": ");
+        ((StringBuilder)localObject3).append(l2);
+        ((StringBuilder)localObject3).append(" ms");
+        LogUtils.d((String)localObject2, ((StringBuilder)localObject3).toString());
+        lastTimeMap.put(paramString, Long.valueOf(l2));
+        ((CopyOnWriteArrayList)localObject1).clear();
+      }
+      return l1;
     }
-    long l1 = System.currentTimeMillis() - localLong.longValue();
-    localCopyOnWriteArrayList1.add(Long.valueOf(l1));
-    int i = localCopyOnWriteArrayList1.size();
-    if (i >= 1)
-    {
-      long l2 = getTotalTime(localCopyOnWriteArrayList1) / i;
-      LogUtils.d(TAG, "[time]" + paramString + ": " + l2 + " ms");
-      lastTimeMap.put(paramString, Long.valueOf(l2));
-      localCopyOnWriteArrayList1.clear();
-    }
-    return l1;
+    return 0L;
   }
   
   public static void benchStart(String paramString)
   {
-    if (!ENABLE_LOG) {}
-    while (TextUtils.isEmpty(paramString)) {
+    if (!ENABLE_LOG) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
     if ((ENABLE_PERFORMANCE_RECORD) && (paramString.startsWith(SHOWPREVIEW_BENCH_TAG))) {
@@ -85,65 +100,44 @@ public class FilaBenchUtil
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      LogUtils.d(TAG, "[time]" + (String)localEntry.getKey() + ": " + getTotalTime((CopyOnWriteArrayList)localEntry.getValue()) + "ms");
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[time]");
+      localStringBuilder.append((String)localEntry.getKey());
+      localStringBuilder.append(": ");
+      localStringBuilder.append(getTotalTime((CopyOnWriteArrayList)localEntry.getValue()));
+      localStringBuilder.append("ms");
+      LogUtils.d(str, localStringBuilder.toString());
     }
     totalTimeMap.clear();
   }
   
-  /* Error */
   private static long getTotalTime(CopyOnWriteArrayList<Long> paramCopyOnWriteArrayList)
   {
-    // Byte code:
-    //   0: lconst_0
-    //   1: lstore_1
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 46	com/tencent/ttpic/filament/FilaBenchUtil:ENABLE_LOG	Z
-    //   8: istore 5
-    //   10: iload 5
-    //   12: ifne +8 -> 20
-    //   15: ldc 2
-    //   17: monitorexit
-    //   18: lload_1
-    //   19: lreturn
-    //   20: aload_0
-    //   21: invokestatic 182	com/tencent/ttpic/baseutils/collection/CollectionUtils:isEmpty	(Ljava/util/Collection;)Z
-    //   24: ifne -9 -> 15
-    //   27: aload_0
-    //   28: invokevirtual 183	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
-    //   31: astore_0
-    //   32: lconst_0
-    //   33: lstore_1
-    //   34: aload_0
-    //   35: invokeinterface 162 1 0
-    //   40: ifeq +23 -> 63
-    //   43: aload_0
-    //   44: invokeinterface 166 1 0
-    //   49: checkcast 70	java/lang/Long
-    //   52: invokevirtual 97	java/lang/Long:longValue	()J
-    //   55: lstore_3
-    //   56: lload_1
-    //   57: lload_3
-    //   58: ladd
-    //   59: lstore_1
-    //   60: goto -26 -> 34
-    //   63: goto -48 -> 15
-    //   66: astore_0
-    //   67: ldc 2
-    //   69: monitorexit
-    //   70: aload_0
-    //   71: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	72	0	paramCopyOnWriteArrayList	CopyOnWriteArrayList<Long>
-    //   1	59	1	l1	long
-    //   55	3	3	l2	long
-    //   8	3	5	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   5	10	66	finally
-    //   20	32	66	finally
-    //   34	56	66	finally
+    try
+    {
+      boolean bool = ENABLE_LOG;
+      long l1 = 0L;
+      if (!bool) {
+        return 0L;
+      }
+      bool = CollectionUtils.isEmpty(paramCopyOnWriteArrayList);
+      if (bool) {
+        return 0L;
+      }
+      paramCopyOnWriteArrayList = paramCopyOnWriteArrayList.iterator();
+      while (paramCopyOnWriteArrayList.hasNext())
+      {
+        long l2 = ((Long)paramCopyOnWriteArrayList.next()).longValue();
+        l1 += l2;
+      }
+      return l1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramCopyOnWriteArrayList;
+    }
   }
   
   public static void init()
@@ -165,7 +159,7 @@ public class FilaBenchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilaBenchUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -23,13 +23,14 @@ public final class YTOpenDetection$FaceShapeRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58 }, new String[] { "session_id", "face_shape", "image_height", "image_width", "image", "errorcode", "errormsg" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), "" }, FaceShapeRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58 }, new String[] { "session_id", "face_shape", "image_height", "image_width", "image", "errorcode", "errormsg" }, new Object[] { "", null, localInteger, localInteger, localByteStringMicro, localInteger, "" }, FaceShapeRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenDetection.FaceShapeRsp
  * JD-Core Version:    0.7.0.1
  */

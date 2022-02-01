@@ -1,64 +1,88 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.e;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.aeo;
+import com.tencent.mm.protocal.protobuf.ciq;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
 
-final class z
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "", "waitForDownloadUrl", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "onSuccess", "Lkotlin/Function1;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "Lcom/tencent/mm/plugin/appbrand/launching/LocalUnifiedGetDownloadUrlResp;", "onError", "Lkotlin/Function3;", "", "", "scene", "cgiCommRequestSource", "Lcom/tencent/mm/protocal/protobuf/CommRequestSource;", "LocalUnifiedGetDownloadUrlRequest", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface z
 {
-  static void a(b paramb, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    AppMethodBeat.i(131909);
-    int i = e.ED(paramString);
-    ab.d("MicroMsg.AppBrand.LaunchStepCostReporter", "report %s | %s | %d | %d | %d", new Object[] { paramb.name(), paramString, Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(0) });
-    h.qsU.e(13886, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1), Integer.valueOf(paramb.htj), "", "", Long.valueOf(paramLong), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(0) });
-    AppMethodBeat.o(131909);
-  }
+  public abstract void a(a parama, b<? super ciq[], ah> paramb, q<? super Integer, ? super Integer, ? super String, ah> paramq, int paramInt, aeo paramaeo);
   
-  public static enum a
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "appVersion", "", "getAppVersion", "()I", "setAppVersion", "(I)V", "localPkgEncryptVersion", "getLocalPkgEncryptVersion", "setLocalPkgEncryptVersion", "localPkgVersion", "getLocalPkgVersion", "setLocalPkgVersion", "moduleName", "getModuleName", "setModuleName", "needLatestVersion", "", "getNeedLatestVersion", "()Z", "setNeedLatestVersion", "(Z)V", "packageType", "getPackageType", "setPackageType", "supportEncryptVersion", "getSupportEncryptVersion", "setSupportEncryptVersion", "versionDesc", "getVersionDesc", "setVersionDesc", "versionType", "getVersionType", "setVersionType", "compareTo", "other", "equals", "", "hashCode", "toString", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements Comparable<a>
   {
-    static
-    {
-      AppMethodBeat.i(131905);
-      ilR = new a("NONE", 0);
-      ilS = new a("MISSING_PKG", 1);
-      ilT = new a("NO_USE_RECENT", 2);
-      ilU = new a("INVALID_FIELDS", 3);
-      ilV = new a("VERSION_NOT_FOUND", 4);
-      ilW = new a("PATH_NOT_FOUND", 5);
-      ilX = new a("CMD_UPDATE_VERSION", 6);
-      ilY = new a("ATTRS_NOT_FOUND", 7);
-      ilZ = new a[] { ilR, ilS, ilT, ilU, ilV, ilW, ilX, ilY };
-      AppMethodBeat.o(131905);
-    }
-    
-    private a() {}
-  }
-  
-  public static enum b
-  {
-    final int htj;
+    private static final z.a.a taf;
+    String appId = "";
+    int appVersion;
+    String esT;
+    int euz;
+    int hDq;
+    String qGf;
+    int tah;
+    int tai;
+    int taj;
+    boolean tak;
     
     static
     {
-      AppMethodBeat.i(131908);
-      ima = new b("SYNC_GET_ATTRS", 0, 20);
-      imb = new b("SYNC_LAUNCH", 1, 21);
-      imc = new b("GET_DOWNLOAD_URL", 2, 22);
-      imd = new b[] { ima, imb, imc };
-      AppMethodBeat.o(131908);
+      AppMethodBeat.i(180587);
+      taf = new z.a.a((byte)0);
+      AppMethodBeat.o(180587);
     }
     
-    private b(int paramInt)
+    public final boolean equals(Object paramObject)
     {
-      this.htj = paramInt;
+      AppMethodBeat.i(180584);
+      if (((paramObject instanceof a)) && ((this == paramObject) || (hashCode() == ((a)paramObject).hashCode())))
+      {
+        AppMethodBeat.o(180584);
+        return true;
+      }
+      AppMethodBeat.o(180584);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(180585);
+      int i = toString().hashCode();
+      AppMethodBeat.o(180585);
+      return i;
+    }
+    
+    public final void setAppId(String paramString)
+    {
+      AppMethodBeat.i(180582);
+      s.u(paramString, "<set-?>");
+      this.appId = paramString;
+      AppMethodBeat.o(180582);
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(180586);
+      StringBuilder localStringBuilder = new StringBuilder("LocalUnifiedGetDownloadUrlRequest(appId='").append(this.appId).append("', moduleName=").append(this.esT).append(", packageType=").append(this.hDq).append(", versionType=").append(this.euz).append(", appVersion=").append(this.appVersion).append(", versionDesc='");
+      String str2 = this.qGf;
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = "";
+      }
+      str1 = str1 + "' supportEncryptVersion=" + this.tah + ", localPkgVersion=" + this.tai + ", localPkgEncryptVersion=" + this.taj + ", needLatestVersion=" + this.tak + ')';
+      AppMethodBeat.o(180586);
+      return str1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.z
  * JD-Core Version:    0.7.0.1
  */

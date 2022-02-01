@@ -48,136 +48,123 @@ public abstract class IAppBrandService$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1598968902)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      return true;
-    case 1: 
+      Object localObject2 = null;
+      String str1 = null;
+      String str2 = null;
+      Object localObject3 = null;
+      Object localObject5 = null;
+      Object localObject4 = null;
+      Object localObject1 = null;
+      switch (paramInt1)
+      {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 8: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        localObject2 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        sendCmd((String)localObject2, (Bundle)localObject1, CmdCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
+        paramParcel2.writeNoException();
+        return true;
+      case 7: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        str1 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        onAppStop(str1, (MiniAppConfig)localObject1, (Bundle)localObject2);
+        paramParcel2.writeNoException();
+        return true;
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        str2 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        localObject2 = str1;
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        onAppForeground(str2, (MiniAppConfig)localObject1, (Bundle)localObject2);
+        paramParcel2.writeNoException();
+        return true;
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        str1 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        localObject2 = str2;
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        onAppBackground(str1, (MiniAppConfig)localObject1, (Bundle)localObject2);
+        paramParcel2.writeNoException();
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        str1 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        localObject2 = localObject3;
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        onAppStart(str1, (MiniAppConfig)localObject1, (Bundle)localObject2);
+        paramParcel2.writeNoException();
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        localObject1 = localObject5;
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
+        }
+        preloadPackage((MiniAppInfo)localObject1);
+        paramParcel2.writeNoException();
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        localObject2 = localObject4;
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);
+        }
+        startMiniApp((MiniAppConfig)localObject1, (ResultReceiver)localObject2);
+        paramParcel2.writeNoException();
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
       preloadMiniApp();
       paramParcel2.writeNoException();
       return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label184;
-        }
-      }
-      for (paramParcel1 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        startMiniApp((MiniAppConfig)localObject, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject = null;
-        break;
-      }
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        preloadPackage(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      str = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label305;
-        }
-      }
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onAppStart(str, (MiniAppConfig)localObject, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject = null;
-        break;
-      }
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      str = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label384;
-        }
-      }
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onAppBackground(str, (MiniAppConfig)localObject, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject = null;
-        break;
-      }
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      str = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label463;
-        }
-      }
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onAppForeground(str, (MiniAppConfig)localObject, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject = null;
-        break;
-      }
-    case 7: 
-      label184:
-      label463:
-      paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-      label305:
-      str = paramParcel1.readString();
-      label384:
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject = (MiniAppConfig)MiniAppConfig.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label542;
-        }
-      }
-      label542:
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onAppStop(str, (MiniAppConfig)localObject, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject = null;
-        break;
-      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.mini.launch.IAppBrandService");
-    String str = paramParcel1.readString();
-    if (paramParcel1.readInt() != 0) {}
-    for (Object localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; localObject = null)
-    {
-      sendCmd(str, (Bundle)localObject, CmdCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    }
+    paramParcel2.writeString("com.tencent.mobileqq.mini.launch.IAppBrandService");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.IAppBrandService.Stub
  * JD-Core Version:    0.7.0.1
  */

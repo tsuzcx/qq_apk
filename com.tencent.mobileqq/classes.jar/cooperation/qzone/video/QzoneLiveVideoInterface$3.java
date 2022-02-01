@@ -1,50 +1,37 @@
 package cooperation.qzone.video;
 
-import bejz;
-import bkak;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 final class QzoneLiveVideoInterface$3
-  implements Runnable
+  implements InvocationHandler
 {
-  QzoneLiveVideoInterface$3(bkak parambkak) {}
+  QzoneLiveVideoInterface$3(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  public void run()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    for (;;)
+    if (paramMethod.getName().equals("onFailed"))
     {
-      try
-      {
-        if (1 != QzoneLiveVideoInterface.getIntConfig("LiveSetting", "qzone_webview_need_preload_dex_classes", 1)) {
-          return;
-        }
-        if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
-          break;
-        }
-        if (!bejz.a())
-        {
-          long l = System.currentTimeMillis();
-          bejz.b();
-          QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
-          if (this.a == null) {
-            break;
-          }
-          this.a.a();
-          return;
-        }
+      paramObject = this.val$resourceLoaderListener;
+      if (paramObject != null) {
+        paramObject.onFailed();
       }
-      catch (Exception localException)
-      {
-        QLog.e("QzoneLiveVideoInterface", 1, localException, new Object[0]);
-        return;
-      }
-      QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator is inited");
     }
+    else if (paramMethod.getName().equals("onLoaded"))
+    {
+      paramObject = this.val$resourceLoaderListener;
+      if (paramObject != null) {
+        paramObject.onLoaded((Drawable)paramArrayOfObject[0]);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoInterface.3
  * JD-Core Version:    0.7.0.1
  */

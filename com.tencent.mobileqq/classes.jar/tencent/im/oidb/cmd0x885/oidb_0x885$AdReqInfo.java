@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0x885$AdReqInfo
   extends MessageMicro<AdReqInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58, 66, 74, 80, 88, 98, 106, 112, 120 }, new String[] { "uint64_ad_channel_id", "int32_req_type", "msg_game_component_info", "int32_first_refresh", "int32_second_request", "rpt_feeds_context", "string_article_id", "msg_kol_info", "string_deep_link_version", "int32_scene_id", "int32_revision_video", "string_content_id", "string_account_id", "present_from", "source_channel_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, "", null, "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Long.valueOf(0L) }, AdReqInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_first_refresh = PBField.initInt32(0);
   public final PBInt32Field int32_req_type = PBField.initInt32(0);
   public final PBInt32Field int32_revision_video = PBField.initInt32(0);
@@ -28,10 +28,16 @@ public final class oidb_0x885$AdReqInfo
   public final PBStringField string_content_id = PBField.initString("");
   public final PBStringField string_deep_link_version = PBField.initString("");
   public final PBUInt64Field uint64_ad_channel_id = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58, 66, 74, 80, 88, 98, 106, 112, 120 }, new String[] { "uint64_ad_channel_id", "int32_req_type", "msg_game_component_info", "int32_first_refresh", "int32_second_request", "rpt_feeds_context", "string_article_id", "msg_kol_info", "string_deep_link_version", "int32_scene_id", "int32_revision_video", "string_content_id", "string_account_id", "present_from", "source_channel_id" }, new Object[] { Long.valueOf(0L), localInteger, null, localInteger, localInteger, null, "", null, "", localInteger, localInteger, "", "", localInteger, Long.valueOf(0L) }, AdReqInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo
  * JD-Core Version:    0.7.0.1
  */

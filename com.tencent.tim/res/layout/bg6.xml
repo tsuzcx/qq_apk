@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/h9u" android:background="@color/ajr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbarStyle="outsideOverlay" android:id="@id/h9t" android:background="@color/ajs" android:visibility="visible" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/fxf" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <RelativeLayout android:layout_gravity="center" android:id="@id/kkx" android:background="@color/a8_" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="@dimen/tf" android:layout_centerVertical="true">
+                    <TextView android:textSize="@dimen/x4" android:textColor="@color/a8a" android:gravity="center" android:id="@id/kky" android:layout_width="wrap_content" android:layout_height="@dimen/tf" android:text="@string/ibl" android:layout_alignParentLeft="true" />
+                    <TextView android:textSize="@dimen/x4" android:textColor="@color/a8a" android:gravity="center" android:id="@id/em8" android:layout_width="wrap_content" android:layout_height="@dimen/tf" android:text="@string/c7b" android:layout_alignParentRight="true" />
+                    <ImageView android:gravity="center" android:id="@id/em9" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/g56" android:scaleType="centerInside" android:layout_toLeftOf="@id/em8" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <com.qzone.homepage.ui.component.newpanel.SafeListViewEx android:orientation="vertical" android:id="@id/kkw" android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/aps" android:dividerHeight="1.0px" />
+                <RelativeLayout android:gravity="left" android:orientation="horizontal" android:id="@id/ffw" android:background="@color/a8_" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="@dimen/tf">
+                    <TextView android:textSize="@dimen/x4" android:textColor="@color/a8a" android:gravity="center" android:layout_gravity="center" android:id="@id/ffx" android:layout_width="wrap_content" android:layout_height="@dimen/tf" android:text="@string/cpv" />
+                </RelativeLayout>
+                <com.qzone.homepage.ui.component.newpanel.SafeListViewEx android:orientation="vertical" android:id="@id/ffv" android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/aps" android:dividerHeight="1.0px" />
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+    <com.qzone.homepage.ui.component.newpanel.CommonBtmLine android:id="@id/h_e" android:layout_width="fill_parent" android:layout_height="@dimen/xo" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/khj" android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="@dimen/tf" android:layout_centerInParent="true">
+        <ImageView android:gravity="center" android:id="@id/khi" android:visibility="visible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/g52" android:scaleType="centerInside" />
+        <TextView android:textSize="@dimen/x3" android:textColor="@color/a8a" android:gravity="center" android:id="@id/khh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ia5" />
+    </LinearLayout>
+</LinearLayout>

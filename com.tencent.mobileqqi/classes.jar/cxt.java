@@ -1,37 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.ims.signature.SignatureKickData;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import mqq.manager.ServerConfigManager.ConfigType;
 
 public class cxt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cxt(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
+  public cxt(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    try
+    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130839682), 2131562878);
+    localProgressDialog.setOnDismissListener(new cxu(this));
+    ReportLog.a(this.a.b.getAccount());
+    paramView = null;
+    if (this.a.b.getSid() != null) {
+      paramView = this.a.b.getSid().getBytes();
+    }
+    ReportLog.a(paramView);
+    paramView = this.a.b.a(ServerConfigManager.ConfigType.app, "log_upload");
+    if ((!TextUtils.isEmpty(paramView)) && (paramView.equals("1")))
     {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
-      label75:
-      paramDialogInterface = new Intent("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      ReportLog.a(this.a.b.a(), this.a.b.a(), localProgressDialog);
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label75;
-    }
+    ReportLog.a(this.a.b.a(), this.a.b.a(), localProgressDialog);
   }
 }
 

@@ -1,0 +1,23 @@
+{
+  "view_id":"id_follow_mark",
+  "view_type":"UILabel",
+  "margin_left":"6",
+  "align_parent_center_vertical": "YES",
+  "height":{
+    "type": "absolutely",
+    "value": "17"
+  },
+  "width":{
+    "type": "absolutely",
+    "value": "52"
+  },
+  "attributes":{
+    "setText:":"$my_follow_text",
+    "setTextColorString:":"#00CAFC",
+    "setBackgroundColorString:":"#EEF9FD",
+    "setFontSizeString:":"11",
+    "setNumberOfLinesString:":"1",
+    "setTextAlignmentString:":"1",
+    "setCornerRadiusString:":"4.0"
+  }
+}

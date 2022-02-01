@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.adapter;
 
-import aklr;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
 
-public class TroopListAdapter2$2
-  implements Runnable
+class TroopListAdapter2$2
+  extends TroopMngObserver
 {
-  public TroopListAdapter2$2(aklr paramaklr) {}
+  TroopListAdapter2$2(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void run()
+  protected void b(String paramString)
   {
-    List localList = aklr.a(this.this$0);
-    ThreadManager.getUIHandler().post(new TroopListAdapter2.2.1(this, localList));
+    if ((this.a.a instanceof BaseActivity)) {
+      ((BaseActivity)this.a.a).runOnUiThread(new TroopListAdapter2.2.1(this));
+    }
   }
 }
 

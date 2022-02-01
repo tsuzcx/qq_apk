@@ -1,53 +1,49 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahyd;
-import alud;
-import amrg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import bety;
-import bhsl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class ChatHistoryAuthDevForRoamMsgFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  Handler.Callback a;
-  public bety a;
-  
-  public ChatHistoryAuthDevForRoamMsgFragment()
-  {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new ahyd(this);
-  }
+  QQProgressDialog a;
+  Handler.Callback b = new ChatHistoryAuthDevForRoamMsgFragment.1(this);
   
   private void a()
   {
-    amrg localamrg = (amrg)getActivity().app.a(59);
-    if (localamrg != null)
+    MessageRoamHandler localMessageRoamHandler = (MessageRoamHandler)getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+    if (localMessageRoamHandler != null)
     {
-      localamrg.a((short)1);
+      localMessageRoamHandler.a((short)1);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryAuthDevForRoamMsgFragment", 2, "set_roam_message_auth_mode: 1");
       }
-      this.jdField_a_of_type_Bety = new bety(getActivity(), getActivity().getTitleBarHeight());
-      this.jdField_a_of_type_Bety.setCancelable(false);
-      this.jdField_a_of_type_Bety.a(alud.a(2131702023));
-      if (!getActivity().isFinishing()) {
-        this.jdField_a_of_type_Bety.show();
+      this.a = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
+      this.a.setCancelable(false);
+      this.a.a(HardCodeUtil.a(2131899868));
+      if (!getBaseActivity().isFinishing()) {
+        this.a.show();
       }
     }
   }
@@ -57,28 +53,26 @@ public class ChatHistoryAuthDevForRoamMsgFragment
     PublicFragmentActivity.a(paramActivity, new Intent(), ChatHistoryAuthDevForRoamMsgFragment.class, paramInt);
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131696837));
-    this.mContentView.findViewById(2131379406).setOnClickListener(this);
-    this.mContentView.findViewById(2131379409).setOnClickListener(this);
-    paramLayoutInflater = new bhsl(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    getActivity().app.setHandler(getClass(), paramLayoutInflater);
-    VipUtils.a(getActivity().app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
+    setTitle(getString(2131894134));
+    this.mContentView.findViewById(2131449210).setOnClickListener(this);
+    this.mContentView.findViewById(2131449213).setOnClickListener(this);
+    paramLayoutInflater = new MqqWeakReferenceHandler(this.b);
+    getBaseActivity().app.setHandler(getClass(), paramLayoutInflater);
+    VipUtils.a(getBaseActivity().app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561677;
+    return 2131628283;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != 10000) {
       return;
     }
     if (paramInt2 == 3000)
@@ -86,8 +80,8 @@ public class ChatHistoryAuthDevForRoamMsgFragment
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryAuthDevForRoamMsgFragment", 2, "not verify passwd");
       }
-      getActivity().setResult(0);
-      getActivity().finish();
+      getBaseActivity().setResult(0);
+      getBaseActivity().finish();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -98,34 +92,35 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   
   public boolean onBackEvent()
   {
-    getActivity().setResult(0);
+    getBaseActivity().setResult(0);
     boolean bool = super.onBackEvent();
-    getActivity().overridePendingTransition(2130771977, 2130771978);
+    getBaseActivity().overridePendingTransition(2130771994, 2130771995);
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379406)
+    if (paramView.getId() == 2131449210)
     {
-      this.mContentView.findViewById(2131379406).setEnabled(false);
-      paramView = new Intent(getActivity(), QQBrowserActivity.class);
-      paramView.putExtra("url", "http://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
-      VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
-      startActivityForResult(paramView, 10000);
+      this.mContentView.findViewById(2131449210).setEnabled(false);
+      Intent localIntent = new Intent(getBaseActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
+      VipUtils.a(getBaseActivity().app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
+      startActivityForResult(localIntent, 10000);
     }
-    while (paramView.getId() != 2131379409) {
-      return;
+    else if (paramView.getId() == 2131449213)
+    {
+      VipUtils.a(getBaseActivity().app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);
+      getBaseActivity().setResult(0);
+      getBaseActivity().finish();
     }
-    VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);
-    getActivity().setResult(0);
-    getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(2130771977, 2130771978);
+    getBaseActivity().overridePendingTransition(2130771994, 2130771995);
   }
 }
 

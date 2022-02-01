@@ -10,10 +10,10 @@ public final class PhotoInfo
   extends JceStruct
 {
   static Map<String, String> cache_mapEx = new HashMap();
-  public int IsOnlySelf;
-  public Map<String, String> mapEx;
+  public int IsOnlySelf = 0;
+  public Map<String, String> mapEx = null;
   public String strPicUrl = "";
-  public long uPhotoTimestamp;
+  public long uPhotoTimestamp = 0L;
   
   static
   {
@@ -43,14 +43,15 @@ public final class PhotoInfo
     paramJceOutputStream.write(this.strPicUrl, 0);
     paramJceOutputStream.write(this.uPhotoTimestamp, 1);
     paramJceOutputStream.write(this.IsOnlySelf, 2);
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 3);
+    Map localMap = this.mapEx;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

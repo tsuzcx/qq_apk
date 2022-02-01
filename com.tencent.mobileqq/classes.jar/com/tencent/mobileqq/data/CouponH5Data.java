@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class CouponH5Data
-  extends awge
+  extends Entity
 {
   public String mData;
   public String mHost;

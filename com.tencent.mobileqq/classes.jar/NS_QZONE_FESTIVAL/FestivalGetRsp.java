@@ -9,7 +9,7 @@ public final class FestivalGetRsp
   extends JceStruct
 {
   static ArrayList<FestivalGetRspItem> cache__vec_festivals = new ArrayList();
-  public ArrayList<FestivalGetRspItem> _vec_festivals;
+  public ArrayList<FestivalGetRspItem> _vec_festivals = null;
   
   static
   {
@@ -31,14 +31,15 @@ public final class FestivalGetRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this._vec_festivals != null) {
-      paramJceOutputStream.write(this._vec_festivals, 0);
+    ArrayList localArrayList = this._vec_festivals;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_FESTIVAL.FestivalGetRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -7,106 +7,115 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.widget.Button;
-import bdoo;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class ProgressButton
   extends Button
 {
-  protected float a;
-  protected int a;
   protected Paint a;
-  protected ClipDrawable a;
   protected float b;
-  private int b;
+  protected float c = 0.0F;
+  protected int d = 100;
+  protected ClipDrawable e;
+  private int f = -1;
   
   public ProgressButton(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Int = 100;
     a();
   }
   
   public ProgressButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Int = 100;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    int i = getResources().getColorStateList(2131166936).getDefaultColor();
-    if (this.jdField_b_of_type_Int == -1)
+    this.a = new Paint();
+    int i = getResources().getColorStateList(2131168043).getDefaultColor();
+    int j = this.f;
+    if (j == -1)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
+      this.a.setColor(i);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    this.a.setColor(j);
   }
   
   public ClipDrawable a(@ColorInt int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+    Object localObject = this.e;
+    if (localObject != null) {
+      return localObject;
     }
-    float f = bdoo.a(50.0F);
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
-    localShapeDrawable.getPaint().setColor(paramInt);
-    return new ClipDrawable(localShapeDrawable, 8388611, 1);
+    float f1 = ViewUtils.dip2px(50.0F);
+    localObject = new ShapeDrawable(new RoundRectShape(new float[] { f1, f1, f1, f1, f1, f1, f1, f1 }, null, null));
+    ((ShapeDrawable)localObject).getPaint().setColor(paramInt);
+    return new ClipDrawable((Drawable)localObject, 8388611, 1);
+  }
+  
+  public int getMaxProgress()
+  {
+    return this.d;
+  }
+  
+  public int getProgressColor()
+  {
+    return this.f;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null)
+    ClipDrawable localClipDrawable = this.e;
+    if (localClipDrawable != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setBounds(0, 0, getWidth(), getHeight());
-      this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel((int)(10000 / this.jdField_a_of_type_Int * this.jdField_b_of_type_Float));
-      this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.draw(paramCanvas);
+      localClipDrawable.setBounds(0, 0, getWidth(), getHeight());
+      this.e.setLevel((int)(10000 / this.d * this.c));
+      this.e.draw(paramCanvas);
     }
-    for (;;)
+    else
     {
-      super.onDraw(paramCanvas);
-      return;
-      if (this.jdField_a_of_type_Float == 0.0F) {
-        this.jdField_a_of_type_Float = (getWidth() / this.jdField_a_of_type_Int);
+      if (this.b == 0.0F) {
+        this.b = (getWidth() / this.d);
       }
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, this.jdField_a_of_type_Float * this.jdField_b_of_type_Float, getHeight()), 5.0F, 5.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, this.b * this.c, getHeight()), 5.0F, 5.0F, this.a);
     }
+    super.onDraw(paramCanvas);
   }
   
   public void setMacProgress(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void setProgress(int paramInt)
   {
-    this.jdField_b_of_type_Float = paramInt;
+    this.c = paramInt;
     invalidate();
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    this.f = paramInt;
+    this.a.setColor(this.f);
   }
   
   public void setProgressDrawable(ClipDrawable paramClipDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = paramClipDrawable;
+    this.e = paramClipDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressButton
  * JD-Core Version:    0.7.0.1
  */

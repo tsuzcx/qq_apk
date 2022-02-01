@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class dfc
-  extends TimerTask
+  extends Handler
 {
-  public dfc(RegisterActivity paramRegisterActivity, long paramLong) {}
+  public dfc(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "reQuerySms schedule");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, this.jdField_a_of_type_Long);
+    this.a.g();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131563125);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

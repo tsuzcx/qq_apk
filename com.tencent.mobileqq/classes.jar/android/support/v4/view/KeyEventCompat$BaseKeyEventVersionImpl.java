@@ -14,37 +14,29 @@ class KeyEventCompat$BaseKeyEventVersionImpl
   {
     int j = 1;
     int i;
-    if ((paramInt2 & paramInt3) != 0)
-    {
+    if ((paramInt2 & paramInt3) != 0) {
       i = 1;
-      paramInt4 |= paramInt5;
-      if ((paramInt2 & paramInt4) == 0) {
-        break label51;
-      }
+    } else {
+      i = 0;
+    }
+    paramInt4 |= paramInt5;
+    if ((paramInt2 & paramInt4) != 0) {
       paramInt2 = j;
+    } else {
+      paramInt2 = 0;
     }
-    for (;;)
+    if (i != 0) {
+      if (paramInt2 != 0) {}
+    }
+    for (paramInt2 = paramInt4 ^ 0xFFFFFFFF;; paramInt2 = paramInt3 ^ 0xFFFFFFFF)
     {
-      if (i != 0)
-      {
-        if (paramInt2 != 0)
-        {
-          throw new IllegalArgumentException("bad arguments");
-          i = 0;
-          break;
-          label51:
-          paramInt2 = 0;
-          continue;
-        }
-        paramInt4 = paramInt1 & (paramInt4 ^ 0xFFFFFFFF);
+      return paramInt1 & paramInt2;
+      throw new IllegalArgumentException("bad arguments");
+      if (paramInt2 == 0) {
+        break;
       }
     }
-    do
-    {
-      return paramInt4;
-      paramInt4 = paramInt1;
-    } while (paramInt2 == 0);
-    return paramInt1 & (paramInt3 ^ 0xFFFFFFFF);
+    return paramInt1;
   }
   
   public boolean dispatch(KeyEvent paramKeyEvent, KeyEvent.Callback paramCallback, Object paramObject1, Object paramObject2)
@@ -74,17 +66,15 @@ class KeyEventCompat$BaseKeyEventVersionImpl
   
   public int normalizeMetaState(int paramInt)
   {
+    int i = paramInt;
     if ((paramInt & 0xC0) != 0) {
-      paramInt |= 0x1;
+      i = paramInt | 0x1;
     }
-    for (;;)
-    {
-      int i = paramInt;
-      if ((paramInt & 0x30) != 0) {
-        i = paramInt | 0x2;
-      }
-      return i & 0xF7;
+    paramInt = i;
+    if ((i & 0x30) != 0) {
+      paramInt = i | 0x2;
     }
+    return paramInt & 0xF7;
   }
   
   public void startTracking(KeyEvent paramKeyEvent) {}

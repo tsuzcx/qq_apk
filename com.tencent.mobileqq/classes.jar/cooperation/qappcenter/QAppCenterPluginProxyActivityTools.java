@@ -2,13 +2,16 @@ package cooperation.qappcenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QAppCenterPluginProxyActivityTools
   extends PluginProxyActivity
 {
-  public static boolean a;
+  public static boolean a = false;
   
   public static void a(Activity paramActivity)
   {
@@ -23,7 +26,23 @@ public class QAppCenterPluginProxyActivityTools
     catch (Exception paramActivity) {}
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     a(this);
     Intent localIntent = getIntent();
@@ -33,13 +52,13 @@ public class QAppCenterPluginProxyActivityTools
     super.onCreate(paramBundle);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     a = false;
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     a = true;
@@ -47,7 +66,7 @@ public class QAppCenterPluginProxyActivityTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qappcenter.QAppCenterPluginProxyActivityTools
  * JD-Core Version:    0.7.0.1
  */

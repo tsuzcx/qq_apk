@@ -1,5 +1,6 @@
 package com.tencent.qg.sdk;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -8,6 +9,7 @@ import android.opengl.GLES20;
 import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.qg.sdk.audio.MediaPlayerPool;
+import com.tencent.qg.sdk.deubgger.Debugger;
 import java.nio.ByteBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -22,6 +24,7 @@ public class QGRenderer
   private QGRenderer.QGEventListener QGEventListener = null;
   Bitmap inBitmap;
   private Context mContext;
+  private Debugger mDebugger;
   ByteBuffer mPixelBuf;
   private QGGLSurfaceView parent;
   private int screen_height;
@@ -30,14 +33,28 @@ public class QGRenderer
   
   public QGRenderer(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (dataBundle = "/data/data/" + paramContext.getPackageName() + "/cache";; dataBundle = paramString)
+    if (TextUtils.isEmpty(paramString))
     {
-      assetManager = paramContext.getResources().getAssets();
-      this.mContext = paramContext;
-      this.screen_width = paramInt1;
-      this.screen_height = paramInt2;
-      return;
+      paramString = new StringBuilder();
+      paramString.append("/data/data/");
+      paramString.append(paramContext.getPackageName());
+      paramString.append("/cache");
+      dataBundle = paramString.toString();
+    }
+    else
+    {
+      dataBundle = paramString;
+    }
+    assetManager = paramContext.getResources().getAssets();
+    this.mContext = paramContext;
+    this.screen_width = paramInt1;
+    this.screen_height = paramInt2;
+    if (Debugger.isJsDebugMode(this.mContext))
+    {
+      paramContext = this.mContext;
+      if ((paramContext instanceof Activity)) {
+        this.mDebugger = new Debugger((Activity)paramContext);
+      }
     }
   }
   
@@ -53,8 +70,9 @@ public class QGRenderer
   
   private void onCanvasCreated()
   {
-    if (this.QGEventListener != null) {
-      this.QGEventListener.onCanvasCreated();
+    QGRenderer.QGEventListener localQGEventListener = this.QGEventListener;
+    if (localQGEventListener != null) {
+      localQGEventListener.onCanvasCreated();
     }
   }
   
@@ -81,6 +99,11 @@ public class QGRenderer
   }
   
   public native void clearCache();
+  
+  public Debugger getDebugger()
+  {
+    return this.mDebugger;
+  }
   
   public native void nativeAddJavaScriptFile(String paramString);
   
@@ -119,8 +142,9 @@ public class QGRenderer
   public void onDrawFrame(GL10 paramGL10)
   {
     nativeRender();
-    if (this.QGEventListener != null) {
-      this.QGEventListener.onDrawFrame();
+    paramGL10 = this.QGEventListener;
+    if (paramGL10 != null) {
+      paramGL10.onDrawFrame();
     }
   }
   
@@ -135,6 +159,10 @@ public class QGRenderer
   {
     nativeCreated(this.mContext, assetManager, dataBundle, this.screen_width, this.screen_height);
     onCanvasCreated();
+    paramGL10 = this.mDebugger;
+    if (paramGL10 != null) {
+      paramGL10.init();
+    }
   }
   
   public void onSurfaceDestroy(GL10 paramGL10)
@@ -177,7 +205,7 @@ public class QGRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.QGRenderer
  * JD-Core Version:    0.7.0.1
  */

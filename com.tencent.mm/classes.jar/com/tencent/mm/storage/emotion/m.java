@@ -1,65 +1,100 @@
 package com.tencent.mm.storage.emotion;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bh;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.goe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class m
-  extends bh
+  extends MAutoStorage<l>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(62862);
-    c.a locala = new c.a();
-    locala.yrK = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "prodcutID";
-    locala.yrM.put("prodcutID", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" prodcutID TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "prodcutID";
-    locala.columns[1] = "totalCount";
-    locala.yrM.put("totalCount", "INTEGER");
-    localStringBuilder.append(" totalCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "continuCount";
-    locala.yrM.put("continuCount", "INTEGER");
-    localStringBuilder.append(" continuCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "flag";
-    locala.yrM.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "modifyTime";
-    locala.yrM.put("modifyTime", "LONG");
-    localStringBuilder.append(" modifyTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "showTipsTime";
-    locala.yrM.put("showTipsTime", "LONG");
-    localStringBuilder.append(" showTipsTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "setFlagTime";
-    locala.yrM.put("setFlagTime", "LONG");
-    localStringBuilder.append(" setFlagTime LONG");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(62862);
+    AppMethodBeat.i(105117);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(l.info, "EmotionDetailInfo") };
+    AppMethodBeat.o(105117);
   }
   
-  public final c.a getDBInfo()
+  public m(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return null;
+    super(paramISQLiteDatabase, l.info, "EmotionDetailInfo", null);
+    this.db = paramISQLiteDatabase;
+  }
+  
+  public final void a(String paramString1, goe paramgoe, String paramString2)
+  {
+    AppMethodBeat.i(183930);
+    if ((Util.isNullOrNil(paramString1)) || (paramgoe == null)) {
+      Log.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
+    }
+    try
+    {
+      l locall = new l();
+      locall.field_productID = paramString1;
+      locall.field_content = paramgoe.toByteArray();
+      locall.field_lan = paramString2;
+      paramgoe = locall.convertTo();
+      if (this.db.replace("EmotionDetailInfo", "productID", paramgoe) > 0L)
+      {
+        Log.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
+        AppMethodBeat.o(183930);
+        return;
+      }
+      Log.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID failed. ProductId:%s", new Object[] { paramString1 });
+      AppMethodBeat.o(183930);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.e("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { Util.stackTraceToString(paramString1) });
+      AppMethodBeat.o(183930);
+    }
+  }
+  
+  public final l bzj(String paramString)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(105116);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.w("MicroMsg.emoji.EmotionDetailInfoStorage", "getEmotionDetailRespnseByPID failed. productID is null.");
+      AppMethodBeat.o(105116);
+      return null;
+    }
+    Cursor localCursor = this.db.query("EmotionDetailInfo", new String[] { "content", "lan" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    Object localObject1 = localObject2;
+    if (localCursor != null)
+    {
+      localObject1 = localObject2;
+      if (localCursor.moveToFirst())
+      {
+        localObject1 = new l();
+        ((l)localObject1).field_content = localCursor.getBlob(0);
+        ((l)localObject1).field_lan = localCursor.getString(1);
+        ((l)localObject1).field_productID = paramString;
+      }
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(105116);
+    return localObject1;
+  }
+  
+  public final String getTableName()
+  {
+    return "EmotionDetailInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.m
  * JD-Core Version:    0.7.0.1
  */

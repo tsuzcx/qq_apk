@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,8 +11,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.setting.b.c;
+import com.tencent.mm.plugin.setting.b.d;
+import com.tencent.mm.plugin.setting.b.e;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.ui.bd;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,190 +24,196 @@ import java.util.List;
 public class FontSelectorView
   extends View
 {
-  private static SoftReference<Bitmap> qLR = null;
-  private static int qMa = 8;
-  private int blU;
-  private int eAS;
-  private float nvl;
-  private float nvm;
-  private List<FontSelectorView.b> qLS;
-  private int qLT;
-  private int qLU;
-  private int qLV;
-  private int qLW;
-  private int qLX;
-  private int qLY;
-  private FontSelectorView.a qLZ;
-  private boolean qMb;
-  private boolean qMc;
-  private int topOffset;
+  private static SoftReference<Bitmap> Pyl = null;
+  private static int Pys = 8;
+  private boolean Abi;
+  private int EBz;
+  private int Ips;
+  private int Jkv;
+  private int LGn;
+  private List<b> Pym;
+  private int Pyn;
+  private int Pyo;
+  private int Pyp;
+  private int Pyq;
+  private FontSelectorView.a Pyr;
+  private boolean Pyt;
+  private float cxM;
+  private float cxN;
+  private int interval;
   
   public FontSelectorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(127690);
-    this.qLS = new ArrayList(8);
-    this.qLT = 0;
-    this.topOffset = 0;
-    this.blU = 0;
-    this.eAS = 0;
-    this.nvl = 0.0F;
-    this.nvm = 0.0F;
-    this.qLU = 0;
-    this.qLV = 0;
-    this.qLW = 0;
-    this.qLX = 0;
-    this.qLY = 0;
-    this.qLZ = null;
-    this.qMb = false;
-    this.qMc = false;
-    AppMethodBeat.o(127690);
+    AppMethodBeat.i(74626);
+    this.Pym = new ArrayList(8);
+    this.Ips = 0;
+    this.LGn = 0;
+    this.Jkv = 0;
+    this.interval = 0;
+    this.cxM = 0.0F;
+    this.cxN = 0.0F;
+    this.Pyn = 0;
+    this.Pyo = 0;
+    this.Pyp = 0;
+    this.EBz = 0;
+    this.Pyq = 0;
+    this.Pyr = null;
+    this.Pyt = false;
+    this.Abi = false;
+    AppMethodBeat.o(74626);
   }
   
   public FontSelectorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(127691);
-    this.qLS = new ArrayList(8);
-    this.qLT = 0;
-    this.topOffset = 0;
-    this.blU = 0;
-    this.eAS = 0;
-    this.nvl = 0.0F;
-    this.nvm = 0.0F;
-    this.qLU = 0;
-    this.qLV = 0;
-    this.qLW = 0;
-    this.qLX = 0;
-    this.qLY = 0;
-    this.qLZ = null;
-    this.qMb = false;
-    this.qMc = false;
-    AppMethodBeat.o(127691);
+    AppMethodBeat.i(74627);
+    this.Pym = new ArrayList(8);
+    this.Ips = 0;
+    this.LGn = 0;
+    this.Jkv = 0;
+    this.interval = 0;
+    this.cxM = 0.0F;
+    this.cxN = 0.0F;
+    this.Pyn = 0;
+    this.Pyo = 0;
+    this.Pyp = 0;
+    this.EBz = 0;
+    this.Pyq = 0;
+    this.Pyr = null;
+    this.Pyt = false;
+    this.Abi = false;
+    AppMethodBeat.o(74627);
   }
   
-  private static int aY(float paramFloat)
+  private static int de(float paramFloat)
   {
-    AppMethodBeat.i(127697);
+    AppMethodBeat.i(74632);
     Paint localPaint = new Paint();
     localPaint.setTextSize(paramFloat);
     localPaint.setAntiAlias(true);
     int i = (int)Math.ceil(localPaint.getFontMetrics().bottom);
-    AppMethodBeat.o(127697);
+    AppMethodBeat.o(74632);
     return i;
   }
   
-  public static void ckM()
+  public static void gWB()
   {
-    qMa = 8;
+    Pys = 8;
   }
   
-  private void ckN()
+  private void gWC()
   {
-    AppMethodBeat.i(127693);
-    if ((qLR == null) || (qLR.get() == null)) {
-      qLR = new SoftReference(BitmapFactory.decodeResource(getResources(), 2130838884));
+    AppMethodBeat.i(74629);
+    if ((Pyl == null) || (Pyl.get() == null)) {
+      Pyl = new SoftReference(BitmapFactory.decodeResource(getResources(), b.e.font_chooser_slider));
     }
-    AppMethodBeat.o(127693);
+    AppMethodBeat.o(74629);
   }
   
-  @SuppressLint({"DrawAllocation"})
+  public int getSliderIndex()
+  {
+    return this.Pyq;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(127694);
+    AppMethodBeat.i(74630);
     super.onDraw(paramCanvas);
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(127694);
+      AppMethodBeat.o(74630);
       return;
     }
-    ckN();
+    gWC();
     Object localObject = new Paint();
     ((Paint)localObject).setARGB(255, 152, 152, 152);
     ((Paint)localObject).setStrokeWidth(2.0F);
     int i = getWidth();
     int j = a.fromDPToPix(getContext(), 5);
-    paramCanvas.drawLine(this.qLT, this.blU, i - this.qLT, this.blU, (Paint)localObject);
+    paramCanvas.drawLine(this.Ips, this.Jkv, i - this.Ips, this.Jkv, (Paint)localObject);
     i = 0;
-    while (i < qMa)
+    while (i < Pys)
     {
-      paramCanvas.drawLine(this.qLT + this.eAS * i, this.blU - j, this.qLT + this.eAS * i, this.blU + j, (Paint)localObject);
+      paramCanvas.drawLine(this.Ips + this.interval * i, this.Jkv - j, this.Ips + this.interval * i, this.Jkv + j, (Paint)localObject);
       i += 1;
     }
-    localObject = (Bitmap)qLR.get();
+    localObject = (Bitmap)Pyl.get();
     if (localObject == null) {
-      ckN();
+      gWC();
     }
-    paramCanvas.drawBitmap((Bitmap)localObject, this.qLV, this.qLW, null);
-    String str = getResources().getString(2131303159);
-    getResources().getString(2131303158);
-    getResources().getString(2131303161);
-    float f = al.ap(getContext(), 2131427809) * a.gf(getContext());
+    paramCanvas.drawBitmap((Bitmap)localObject, this.Pyo, this.Pyp, null);
+    String str = getResources().getString(b.i.setting_text_size_normal);
+    getResources().getString(b.i.setting_text_size_large);
+    getResources().getString(b.i.setting_text_size_super);
+    float f = bd.bs(getContext(), b.d.NormalTextSize) * a.mc(getContext());
     Paint localPaint = new Paint();
     localPaint.setTextSize(f);
     i = (int)localPaint.measureText("A");
-    j = aY(f);
-    localPaint.setColor(getResources().getColor(2131689763));
+    j = de(f);
+    localPaint.setColor(getResources().getColor(b.c.normal_text_color));
     localPaint.setAntiAlias(true);
-    paramCanvas.drawText("A", this.qLT - i / 2, this.blU - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
-    f = al.ap(getContext(), 2131427809) * a.gg(getContext());
+    paramCanvas.drawText("A", this.Ips - i / 2, this.Jkv - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
+    f = bd.bs(getContext(), b.d.NormalTextSize) * a.md(getContext());
     localPaint.setTextSize(f);
     i = (int)localPaint.measureText(str);
-    j = aY(f);
-    paramCanvas.drawText(str, this.qLT + this.eAS * 1 - i / 2, this.blU - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
-    f = al.ap(getContext(), 2131427809) * a.gm(getContext());
+    j = de(f);
+    paramCanvas.drawText(str, this.Ips + this.interval * 1 - i / 2, this.Jkv - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
+    f = bd.bs(getContext(), b.d.NormalTextSize) * a.mj(getContext());
     localPaint.setTextSize(f);
     i = (int)localPaint.measureText("A");
-    j = aY(f);
-    paramCanvas.drawText("A", this.qLT + this.eAS * (qMa - 1) - i / 2, this.blU - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
-    AppMethodBeat.o(127694);
+    j = de(f);
+    paramCanvas.drawText("A", this.Ips + this.interval * (Pys - 1) - i / 2, this.Jkv - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
+    AppMethodBeat.o(74630);
   }
   
-  @SuppressLint({"DrawAllocation"})
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(127692);
+    AppMethodBeat.i(74628);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ckN();
-    this.qLS.clear();
+    gWC();
+    this.Pym.clear();
     setClickable(true);
-    this.qLT = a.fromDPToPix(getContext(), 30);
-    this.topOffset = a.fromDPToPix(getContext(), 10);
+    this.Ips = a.fromDPToPix(getContext(), 30);
+    this.LGn = a.fromDPToPix(getContext(), 10);
     paramInt1 = getWidth();
     paramInt2 = getHeight();
-    paramInt3 = this.topOffset;
-    this.blU = (paramInt2 / 2 + paramInt3);
-    qMa = 8;
-    this.eAS = ((paramInt1 - this.qLT * 2) / (qMa - 1));
-    Bitmap localBitmap = (Bitmap)qLR.get();
-    if (localBitmap == null) {
-      ckN();
+    paramInt3 = this.LGn;
+    this.Jkv = (paramInt2 / 2 + paramInt3);
+    Pys = 8;
+    this.interval = ((paramInt1 - this.Ips * 2) / (Pys - 1));
+    Object localObject2 = (Bitmap)Pyl.get();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      gWC();
+      localObject1 = (Bitmap)Pyl.get();
     }
     paramInt1 = 0;
-    while (paramInt1 < qMa)
+    while (paramInt1 < Pys)
     {
-      FontSelectorView.b localb = new FontSelectorView.b((byte)0);
-      localb.left = (this.qLT + this.eAS * paramInt1 - localBitmap.getWidth() / 2);
-      localb.top = (this.blU - localBitmap.getHeight() / 2);
-      localb.right = (this.qLT + this.eAS * paramInt1 + localBitmap.getWidth() / 2);
-      localb.bottom = (this.blU + localBitmap.getHeight() / 2);
-      this.qLS.add(localb);
+      localObject2 = new b((byte)0);
+      ((b)localObject2).left = (this.Ips + this.interval * paramInt1 - ((Bitmap)localObject1).getWidth() / 2);
+      ((b)localObject2).top = (this.Jkv - ((Bitmap)localObject1).getHeight() / 2);
+      ((b)localObject2).right = (this.Ips + this.interval * paramInt1 + ((Bitmap)localObject1).getWidth() / 2);
+      ((b)localObject2).bottom = (this.Jkv + ((Bitmap)localObject1).getHeight() / 2);
+      this.Pym.add(localObject2);
       paramInt1 += 1;
     }
-    this.qLU = this.qLY;
-    if (this.qLX >= 0) {
-      this.qLV = ((FontSelectorView.b)this.qLS.get(this.qLU)).left;
+    this.Pyn = this.Pyq;
+    if (this.EBz >= 0) {
+      this.Pyo = ((b)this.Pym.get(this.Pyn)).left;
     }
     for (;;)
     {
-      this.qLW = ((FontSelectorView.b)this.qLS.get(this.qLU)).top;
+      this.Pyp = ((b)this.Pym.get(this.Pyn)).top;
       invalidate();
-      AppMethodBeat.o(127692);
+      AppMethodBeat.o(74628);
       return;
-      if (this.qLV <= ((FontSelectorView.b)this.qLS.get(this.qLU)).right - this.eAS / 2) {
-        this.qLV = ((FontSelectorView.b)this.qLS.get(this.qLU)).left;
+      if (this.Pyo <= ((b)this.Pym.get(this.Pyn)).right - this.interval / 2) {
+        this.Pyo = ((b)this.Pym.get(this.Pyn)).left;
       } else {
-        this.qLV = ((FontSelectorView.b)this.qLS.get(this.qLU)).right;
+        this.Pyo = ((b)this.Pym.get(this.Pyn)).right;
       }
     }
   }
@@ -212,9 +221,9 @@ public class FontSelectorView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int j = 0;
-    AppMethodBeat.i(127695);
+    AppMethodBeat.i(74631);
     boolean bool;
-    FontSelectorView.b localb;
+    b localb;
     int i;
     switch (paramMotionEvent.getAction())
     {
@@ -222,22 +231,22 @@ public class FontSelectorView
     case 0: 
       for (bool = true;; bool = true)
       {
-        AppMethodBeat.o(127695);
+        AppMethodBeat.o(74631);
         return bool;
-        this.nvl = paramMotionEvent.getX();
-        this.nvm = paramMotionEvent.getY();
-        localb = (FontSelectorView.b)this.qLS.get(this.qLU);
+        this.cxM = paramMotionEvent.getX();
+        this.cxN = paramMotionEvent.getY();
+        localb = (b)this.Pym.get(this.Pyn);
         i = j;
-        if (this.nvl >= localb.left)
+        if (this.cxM >= localb.left)
         {
           i = j;
-          if (this.nvl <= localb.right)
+          if (this.cxM <= localb.right)
           {
             i = j;
-            if (this.nvm >= localb.top)
+            if (this.cxN >= localb.top)
             {
               i = j;
-              if (this.nvm <= localb.bottom) {
+              if (this.cxN <= localb.bottom) {
                 i = 1;
               }
             }
@@ -246,9 +255,9 @@ public class FontSelectorView
         if (i == 0) {
           break;
         }
-        this.qMb = true;
+        this.Pyt = true;
       }
-      this.qMc = true;
+      this.Abi = true;
     }
     label424:
     label575:
@@ -257,45 +266,45 @@ public class FontSelectorView
     {
       bool = super.onTouchEvent(paramMotionEvent);
       break;
-      if (this.qMb)
+      if (this.Pyt)
       {
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
-        this.qLX = ((int)(f1 - this.nvl));
-        this.qLV = ((int)(f1 - this.qLT));
-        this.nvl = f1;
-        this.nvm = f2;
-        paramMotionEvent = (FontSelectorView.b)this.qLS.get(0);
-        localb = (FontSelectorView.b)this.qLS.get(qMa - 1);
-        if (this.qLV <= paramMotionEvent.left) {
-          this.qLV = paramMotionEvent.left;
+        this.EBz = ((int)(f1 - this.cxM));
+        this.Pyo = ((int)(f1 - this.Ips));
+        this.cxM = f1;
+        this.cxN = f2;
+        paramMotionEvent = (b)this.Pym.get(0);
+        localb = (b)this.Pym.get(Pys - 1);
+        if (this.Pyo <= paramMotionEvent.left) {
+          this.Pyo = paramMotionEvent.left;
         }
         for (;;)
         {
           invalidate();
           bool = true;
           break;
-          if (this.qLV >= localb.left)
+          if (this.Pyo >= localb.left)
           {
-            this.qLV = localb.left;
+            this.Pyo = localb.left;
           }
           else
           {
             i = 0;
             for (;;)
             {
-              if (i >= qMa) {
+              if (i >= Pys) {
                 break label424;
               }
-              paramMotionEvent = (FontSelectorView.b)this.qLS.get(i);
-              if ((this.qLV >= paramMotionEvent.left - 5) && (this.qLV <= paramMotionEvent.right + 5))
+              paramMotionEvent = (b)this.Pym.get(i);
+              if ((this.Pyo >= paramMotionEvent.left - 5) && (this.Pyo <= paramMotionEvent.right + 5))
               {
-                this.qLU = i;
-                this.qLY = this.qLU;
-                if (this.qLZ == null) {
+                this.Pyn = i;
+                this.Pyq = this.Pyn;
+                if (this.Pyr == null) {
                   break;
                 }
-                this.qLZ.Da(this.qLU);
+                this.Pyr.mL(this.Pyn);
                 break;
               }
               i += 1;
@@ -305,60 +314,60 @@ public class FontSelectorView
       }
       bool = super.onTouchEvent(paramMotionEvent);
       break;
-      if (this.qMb)
+      if (this.Pyt)
       {
         i = 0;
         for (;;)
         {
-          if (i < qMa - 1)
+          if (i < Pys - 1)
           {
-            paramMotionEvent = (FontSelectorView.b)this.qLS.get(i);
-            localb = (FontSelectorView.b)this.qLS.get(i + 1);
-            if ((this.qLV > paramMotionEvent.left + this.eAS / 2) || (this.qLV < paramMotionEvent.left)) {
+            paramMotionEvent = (b)this.Pym.get(i);
+            localb = (b)this.Pym.get(i + 1);
+            if ((this.Pyo > paramMotionEvent.left + this.interval / 2) || (this.Pyo < paramMotionEvent.left)) {
               break label575;
             }
-            this.qLU = i;
+            this.Pyn = i;
           }
-          for (this.qLV = paramMotionEvent.left;; this.qLV = localb.left)
+          for (this.Pyo = paramMotionEvent.left;; this.Pyo = localb.left)
           {
-            this.qLY = this.qLU;
-            if (this.qLZ != null) {
-              this.qLZ.Da(this.qLU);
+            this.Pyq = this.Pyn;
+            if (this.Pyr != null) {
+              this.Pyr.mL(this.Pyn);
             }
             invalidate();
-            this.qMb = false;
+            this.Pyt = false;
             bool = true;
             break;
-            if ((this.qLV < localb.left - this.eAS / 2) || (this.qLV > localb.left)) {
+            if ((this.Pyo < localb.left - this.interval / 2) || (this.Pyo > localb.left)) {
               break label626;
             }
-            this.qLU = (i + 1);
+            this.Pyn = (i + 1);
           }
           i += 1;
         }
       }
-    } while (!this.qMc);
+    } while (!this.Abi);
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if ((Math.abs(f1 - this.nvl) <= 10.0F) && (Math.abs(f2 - this.nvm) <= 10.0F)) {
+    if ((Math.abs(f1 - this.cxM) <= 10.0F) && (Math.abs(f2 - this.cxN) <= 10.0F)) {
       i = 0;
     }
     for (;;)
     {
-      if (i < qMa)
+      if (i < Pys)
       {
-        paramMotionEvent = (FontSelectorView.b)this.qLS.get(i);
+        paramMotionEvent = (b)this.Pym.get(i);
         if ((f1 < paramMotionEvent.left - 5) || (f1 > paramMotionEvent.right + 5)) {
           break label791;
         }
-        this.qLU = i;
-        this.qLY = this.qLU;
-        this.qLV = paramMotionEvent.left;
-        if (this.qLZ != null) {
-          this.qLZ.Da(this.qLU);
+        this.Pyn = i;
+        this.Pyq = this.Pyn;
+        this.Pyo = paramMotionEvent.left;
+        if (this.Pyr != null) {
+          this.Pyr.mL(this.Pyn);
         }
       }
-      this.qMc = false;
+      this.Abi = false;
       invalidate();
       bool = true;
       break;
@@ -369,12 +378,26 @@ public class FontSelectorView
   
   public void setOnChangeListener(FontSelectorView.a parama)
   {
-    this.qLZ = parama;
+    this.Pyr = parama;
   }
   
   public void setSliderIndex(int paramInt)
   {
-    this.qLY = paramInt;
+    AppMethodBeat.i(298643);
+    paramInt = Math.min(7, Math.max(0, paramInt));
+    this.Pyq = paramInt;
+    if (this.Pyr != null) {
+      this.Pyr.mL(paramInt);
+    }
+    AppMethodBeat.o(298643);
+  }
+  
+  static final class b
+  {
+    public int bottom = 0;
+    public int left = 0;
+    public int right = 0;
+    public int top = 0;
   }
 }
 

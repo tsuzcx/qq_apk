@@ -1,44 +1,76 @@
 package com.tencent.mobileqq.vashealth;
 
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
 
 class HealthBusinessPlugin$4
-  implements Runnable
+  implements BusinessObserver
 {
-  HealthBusinessPlugin$4(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString1, String paramString2) {}
+  HealthBusinessPlugin$4(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    JSONObject localJSONObject = new JSONObject();
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, new Object[] { "[followUin] onReceive, isSuccess=", Boolean.valueOf(paramBoolean) });
+    }
     try
     {
-      Object localObject = new JSONObject(this.a);
-      String str = ((JSONObject)localObject).getString("video_dir");
-      localObject = ((JSONObject)localObject).optString("thumb_dir");
-      File localFile = new File(str);
-      if ((localFile.exists()) && (localFile.isFile())) {
-        localJSONObject.put("videoSize", localFile.length() / 1024L);
-      }
-      localJSONObject.put("thumbData", localObject);
-      localJSONObject.put("videoID", str);
-      if (Build.VERSION.SDK_INT >= 10)
+      JSONObject localJSONObject = new JSONObject();
+      if (!paramBoolean)
       {
-        localObject = new MediaMetadataRetriever();
-        ((MediaMetadataRetriever)localObject).setDataSource(str);
-        localJSONObject.put("videoDuration", String.valueOf(Long.parseLong(((MediaMetadataRetriever)localObject).extractMetadata(9)) / 1000L));
+        QLog.e("HealthBusinessPlugin", 1, "[followUin] onReceive isSuccess=false");
+        localJSONObject.put("code", -1);
       }
-      HealthBusinessPlugin.b(this.this$0, this.b, new String[] { localJSONObject.toString() });
+      else
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          Object localObject = new mobileqq_mp.FollowResponse();
+          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+          paramBundle = (mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get();
+          paramInt = paramBundle.ret_code.get();
+          paramBundle = paramBundle.err_info.get();
+          localJSONObject.put("code", 0);
+          localObject = new JSONObject();
+          if (paramInt == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("HealthBusinessPlugin", 2, "[followUin] onReceive, follow success");
+            }
+            ((JSONObject)localObject).put("follow", true);
+          }
+          else
+          {
+            QLog.e("HealthBusinessPlugin", 1, new Object[] { "[followUin] onReceive, follow failed, retCode=", Integer.valueOf(paramInt), ", errInfo=", paramBundle });
+            ((JSONObject)localObject).put("follow", false);
+          }
+          localJSONObject.put("response", localObject);
+        }
+        else
+        {
+          QLog.e("HealthBusinessPlugin", 1, "[followUin] data null");
+          localJSONObject.put("code", -1);
+        }
+      }
+      this.b.callJs(this.a, new String[] { localJSONObject.toString() });
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception paramBundle)
+    {
+      QLog.e("HealthBusinessPlugin", 1, "[followUin] parse data error=", paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.4
  * JD-Core Version:    0.7.0.1
  */

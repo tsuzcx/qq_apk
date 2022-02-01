@@ -9,9 +9,9 @@ public final class SetGroupResp
 {
   static byte[] cache_vecBody;
   public String ErrorString = "";
-  public byte reqtype;
-  public byte result;
-  public byte[] vecBody;
+  public byte reqtype = 0;
+  public byte result = 0;
+  public byte[] vecBody = null;
   
   public SetGroupResp() {}
   
@@ -46,7 +46,7 @@ public final class SetGroupResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.SetGroupResp
  * JD-Core Version:    0.7.0.1
  */

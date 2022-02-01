@@ -7,8 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
+import com.tencent.mapsdk.rastercore.core.MapContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.i;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -17,75 +17,75 @@ public final class BitmapDescriptorFactory
 {
   public static BitmapDescriptor defaultMarker()
   {
-    AppMethodBeat.i(101159);
+    AppMethodBeat.i(87529);
     BitmapDescriptor localBitmapDescriptor = fromAsset("marker.png");
-    AppMethodBeat.o(101159);
+    AppMethodBeat.o(87529);
     return localBitmapDescriptor;
   }
   
   public static BitmapDescriptor fromAsset(String paramString)
   {
-    AppMethodBeat.i(101157);
+    AppMethodBeat.i(87527);
     try
     {
       paramString = BitmapDescriptorFactory.class.getResourceAsStream("/assets/".concat(String.valueOf(paramString)));
       Bitmap localBitmap = BitmapFactory.decodeStream(paramString);
       paramString.close();
       paramString = fromBitmap(localBitmap);
-      AppMethodBeat.o(101157);
+      AppMethodBeat.o(87527);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(101157);
+      AppMethodBeat.o(87527);
     }
     return null;
   }
   
   public static BitmapDescriptor fromBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(101160);
+    AppMethodBeat.i(87530);
     if (paramBitmap == null)
     {
-      AppMethodBeat.o(101160);
+      AppMethodBeat.o(87530);
       return null;
     }
     paramBitmap = new BitmapDescriptor(paramBitmap);
-    AppMethodBeat.o(101160);
+    AppMethodBeat.o(87530);
     return paramBitmap;
   }
   
   public static BitmapDescriptor fromFile(String paramString)
   {
-    AppMethodBeat.i(101158);
+    AppMethodBeat.i(87528);
     try
     {
       paramString = new FileInputStream(new File(paramString));
       Bitmap localBitmap = BitmapFactory.decodeStream(paramString);
       paramString.close();
       paramString = fromBitmap(localBitmap);
-      AppMethodBeat.o(101158);
+      AppMethodBeat.o(87528);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(101158);
+      AppMethodBeat.o(87528);
     }
     return null;
   }
   
   public static BitmapDescriptor fromPath(String paramString)
   {
-    AppMethodBeat.i(101156);
+    AppMethodBeat.i(87526);
     try
     {
       paramString = fromBitmap(BitmapFactory.decodeFile(paramString));
-      AppMethodBeat.o(101156);
+      AppMethodBeat.o(87526);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(101156);
+      AppMethodBeat.o(87526);
     }
     return null;
   }
@@ -96,7 +96,7 @@ public final class BitmapDescriptorFactory
     // Byte code:
     //   0: ldc 91
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 97	com/tencent/tencentmap/mapsdk/a/i:a	()Landroid/content/Context;
+    //   5: invokestatic 97	com/tencent/mapsdk/rastercore/core/MapContext:getContext	()Landroid/content/Context;
     //   8: astore_1
     //   9: aload_1
     //   10: ifnull +31 -> 41
@@ -110,13 +110,13 @@ public final class BitmapDescriptorFactory
     //   26: invokestatic 63	com/tencent/mapsdk/raster/model/BitmapDescriptorFactory:fromBitmap	(Landroid/graphics/Bitmap;)Lcom/tencent/mapsdk/raster/model/BitmapDescriptor;
     //   29: astore_2
     //   30: aload_1
-    //   31: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   31: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   34: ldc 91
     //   36: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_2
     //   40: areturn
     //   41: aconst_null
-    //   42: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   42: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   45: ldc 91
     //   47: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aconst_null
@@ -125,7 +125,7 @@ public final class BitmapDescriptorFactory
     //   53: aconst_null
     //   54: astore_1
     //   55: aload_1
-    //   56: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   56: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   59: ldc 91
     //   61: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aconst_null
@@ -134,7 +134,7 @@ public final class BitmapDescriptorFactory
     //   67: aconst_null
     //   68: astore_2
     //   69: aload_2
-    //   70: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   70: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   73: ldc 91
     //   75: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: aload_1
@@ -174,43 +174,43 @@ public final class BitmapDescriptorFactory
   
   public static BitmapDescriptor fromView(View paramView)
   {
-    AppMethodBeat.i(101154);
+    AppMethodBeat.i(87524);
     try
     {
-      Object localObject = i.a();
+      Object localObject = MapContext.getContext();
       if (localObject != null)
       {
         localObject = new FrameLayout((Context)localObject);
         ((FrameLayout)localObject).addView(paramView);
         ((FrameLayout)localObject).destroyDrawingCache();
         paramView = fromBitmap(getViewBitmap((View)localObject));
-        AppMethodBeat.o(101154);
+        AppMethodBeat.o(87524);
         return paramView;
       }
-      AppMethodBeat.o(101154);
+      AppMethodBeat.o(87524);
       return null;
     }
     catch (Exception paramView)
     {
-      AppMethodBeat.o(101154);
+      AppMethodBeat.o(87524);
     }
     return null;
   }
   
   private static Bitmap getViewBitmap(View paramView)
   {
-    AppMethodBeat.i(101155);
+    AppMethodBeat.i(87525);
     paramView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     paramView.layout(0, 0, paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
     paramView.buildDrawingCache();
     paramView = paramView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, false);
-    AppMethodBeat.o(101155);
+    AppMethodBeat.o(87525);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.BitmapDescriptorFactory
  * JD-Core Version:    0.7.0.1
  */

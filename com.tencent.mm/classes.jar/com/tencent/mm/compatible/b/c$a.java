@@ -6,21 +6,21 @@ public enum c$a
 {
   static
   {
-    AppMethodBeat.i(92832);
-    elO = new a("PCM", 0);
-    elP = new a("AMR", 1);
-    elQ = new a("SILK", 2);
-    elR = new a("SPEEX", 3);
-    elS = new a("UNKNOWN", 4);
-    elT = new a[] { elO, elP, elQ, elR, elS };
-    AppMethodBeat.o(92832);
+    AppMethodBeat.i(155551);
+    lQd = new a("PCM", 0);
+    lQe = new a("AMR", 1);
+    lQf = new a("SILK", 2);
+    lQg = new a("SPEEX", 3);
+    lQh = new a("UNKNOWN", 4);
+    lQi = new a[] { lQd, lQe, lQf, lQg, lQh };
+    AppMethodBeat.o(155551);
   }
   
   private c$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.compatible.b.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(29387);
-    yYB = new a("ACTIVITY_CREATE", 0);
-    yYC = new a("ACTIVITY_RESUME", 1);
-    yYD = new a("ACTIVITY_PAUSE", 2);
-    yYE = new a[] { yYB, yYC, yYD };
-    AppMethodBeat.o(29387);
+    AppMethodBeat.i(33218);
+    adBl = new a("ACTIVITY_CREATE", 0);
+    adBm = new a("ACTIVITY_RESUME", 1);
+    adBn = new a("ACTIVITY_PAUSE", 2);
+    adBo = new a[] { adBl, adBm, adBn };
+    AppMethodBeat.o(33218);
   }
   
   private HomeUI$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.a
  * JD-Core Version:    0.7.0.1
  */

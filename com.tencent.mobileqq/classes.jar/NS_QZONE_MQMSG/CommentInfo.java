@@ -8,7 +8,7 @@ public final class CommentInfo
   extends JceStruct
 {
   public String jumpUrlToDetail = "";
-  public int totalComment;
+  public int totalComment = 0;
   
   public CommentInfo() {}
   
@@ -27,14 +27,15 @@ public final class CommentInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.totalComment, 0);
-    if (this.jumpUrlToDetail != null) {
-      paramJceOutputStream.write(this.jumpUrlToDetail, 1);
+    String str = this.jumpUrlToDetail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.CommentInfo
  * JD-Core Version:    0.7.0.1
  */

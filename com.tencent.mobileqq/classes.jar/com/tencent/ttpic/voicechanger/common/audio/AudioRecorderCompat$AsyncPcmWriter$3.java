@@ -19,26 +19,22 @@ class AudioRecorderCompat$AsyncPcmWriter$3
       if ((this.this$1.this$0.mWrite2FileEnable) && (AudioRecorderCompat.AsyncPcmWriter.access$000(this.this$1) != null)) {
         AudioRecorderCompat.AsyncPcmWriter.access$000(this.this$1).close();
       }
-      if (this.this$1.this$0.mListener != null)
-      {
-        this.this$1.this$0.mListener.onAudioRecordFinish();
-        this.this$1.this$0.mListener = null;
-      }
-      this.this$1.quit();
-      return;
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        LogUtils.d(AudioRecorderCompat.TAG, "can't close?", localIOException, new Object[0]);
-      }
+      LogUtils.d(AudioRecorderCompat.TAG, "can't close?", localIOException, new Object[0]);
     }
+    if (this.this$1.this$0.mListener != null)
+    {
+      this.this$1.this$0.mListener.onAudioRecordFinish();
+      this.this$1.this$0.mListener = null;
+    }
+    this.this$1.quit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderCompat.AsyncPcmWriter.3
  * JD-Core Version:    0.7.0.1
  */

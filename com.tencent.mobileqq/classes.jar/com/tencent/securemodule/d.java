@@ -12,16 +12,6 @@ public final class d
   public long a = 0L;
   public boolean b = false;
   
-  static
-  {
-    if (!d.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      c = bool;
-      return;
-    }
-  }
-  
   public d()
   {
     a(this.a);
@@ -46,31 +36,40 @@ public final class d
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (c) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (c) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt) {}
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (d)paramObject;
-    } while ((!JceUtil.equals(this.a, paramObject.a)) || (!JceUtil.equals(this.b, paramObject.b)));
-    return true;
+    }
+    paramObject = (d)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.a, paramObject.a))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.b, paramObject.b)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -100,7 +99,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.d
  * JD-Core Version:    0.7.0.1
  */

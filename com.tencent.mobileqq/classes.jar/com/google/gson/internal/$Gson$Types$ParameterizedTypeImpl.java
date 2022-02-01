@@ -16,48 +16,45 @@ final class $Gson$Types$ParameterizedTypeImpl
   
   public $Gson$Types$ParameterizedTypeImpl(Type paramType1, Type paramType2, Type... paramVarArgs)
   {
-    int i;
-    boolean bool;
-    if ((paramType2 instanceof Class))
+    boolean bool1 = paramType2 instanceof Class;
+    int j = 0;
+    if (bool1)
     {
       Class localClass = (Class)paramType2;
-      if ((Modifier.isStatic(localClass.getModifiers())) || (localClass.getEnclosingClass() == null))
-      {
+      bool1 = Modifier.isStatic(localClass.getModifiers());
+      boolean bool2 = true;
+      if ((!bool1) && (localClass.getEnclosingClass() != null)) {
+        i = 0;
+      } else {
         i = 1;
-        if ((paramType1 == null) && (i == 0)) {
-          break label160;
+      }
+      bool1 = bool2;
+      if (paramType1 == null) {
+        if (i != 0) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
         }
-        bool = true;
-        label54:
-        .Gson.Preconditions.checkArgument(bool);
       }
+      .Gson.Preconditions.checkArgument(bool1);
     }
-    else
-    {
-      if (paramType1 != null) {
-        break label166;
-      }
+    if (paramType1 == null) {
+      paramType1 = null;
+    } else {
+      paramType1 = .Gson.Types.canonicalize(paramType1);
     }
-    label160:
-    label166:
-    for (paramType1 = null;; paramType1 = .Gson.Types.canonicalize(paramType1))
+    this.ownerType = paramType1;
+    this.rawType = .Gson.Types.canonicalize(paramType2);
+    this.typeArguments = ((Type[])paramVarArgs.clone());
+    int k = this.typeArguments.length;
+    int i = j;
+    while (i < k)
     {
-      this.ownerType = paramType1;
-      this.rawType = .Gson.Types.canonicalize(paramType2);
-      this.typeArguments = ((Type[])paramVarArgs.clone());
-      int k = this.typeArguments.length;
-      i = j;
-      while (i < k)
-      {
-        .Gson.Preconditions.checkNotNull(this.typeArguments[i]);
-        .Gson.Types.checkNotPrimitive(this.typeArguments[i]);
-        this.typeArguments[i] = .Gson.Types.canonicalize(this.typeArguments[i]);
-        i += 1;
-      }
-      i = 0;
-      break;
-      bool = false;
-      break label54;
+      .Gson.Preconditions.checkNotNull(this.typeArguments[i]);
+      .Gson.Types.checkNotPrimitive(this.typeArguments[i]);
+      paramType1 = this.typeArguments;
+      paramType1[i] = .Gson.Types.canonicalize(paramType1[i]);
+      i += 1;
     }
   }
   
@@ -93,19 +90,23 @@ final class $Gson$Types$ParameterizedTypeImpl
       return .Gson.Types.typeToString(this.rawType);
     }
     StringBuilder localStringBuilder = new StringBuilder((j + 1) * 30);
-    localStringBuilder.append(.Gson.Types.typeToString(this.rawType)).append("<").append(.Gson.Types.typeToString(this.typeArguments[0]));
+    localStringBuilder.append(.Gson.Types.typeToString(this.rawType));
+    localStringBuilder.append("<");
+    localStringBuilder.append(.Gson.Types.typeToString(this.typeArguments[0]));
     int i = 1;
     while (i < j)
     {
-      localStringBuilder.append(", ").append(.Gson.Types.typeToString(this.typeArguments[i]));
+      localStringBuilder.append(", ");
+      localStringBuilder.append(.Gson.Types.typeToString(this.typeArguments[i]));
       i += 1;
     }
-    return ">";
+    localStringBuilder.append(">");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal..Gson.Types.ParameterizedTypeImpl
  * JD-Core Version:    0.7.0.1
  */

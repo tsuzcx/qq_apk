@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import bwr;
 import bws;
 import bwt;
-import bwu;
 import com.tencent.mobileqq.activity.book.BookEditText;
 import com.tencent.mobileqq.activity.book.ResizeLayout;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -49,7 +49,7 @@ public class BookShareAdviceEditActivity
   
   public BookShareAdviceEditActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bws(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bwr(this);
   }
   
   private int a(Context paramContext, float paramFloat)
@@ -132,13 +132,13 @@ public class BookShareAdviceEditActivity
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout = ((ResizeLayout)findViewById(2131231165));
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText = ((BookEditText)findViewById(2131231168));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout = ((ResizeLayout)findViewById(2131231164));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText = ((BookEditText)findViewById(2131231167));
     this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setCanInputWhenLenghtLimit(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setTextLengthLimit(120);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231169));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231170));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231166));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231168));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231169));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231165));
     Object localObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("qrreceivername");
     this.jdField_c_of_type_AndroidWidgetTextView.setText(ContactUtils.g(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a()));
     this.d = ContactUtils.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 0);
@@ -167,8 +167,8 @@ public class BookShareAdviceEditActivity
     {
       this.jdField_c_of_type_Int = ((120 - this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a((String)localObject) + 2) / 3);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_Int + "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new bwt(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new bwu(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new bws(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new bwt(this));
       return;
       label346:
       this.n.setEnabled(true);

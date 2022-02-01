@@ -1,37 +1,29 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MenuItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.model.r;
 
 final class SnsMsgUI$5
-  implements n.d
+  implements DialogInterface.OnCancelListener
 {
-  SnsMsgUI$5(SnsMsgUI paramSnsMsgUI) {}
+  SnsMsgUI$5(SnsMsgUI paramSnsMsgUI, r paramr) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(39069);
-    switch (paramMenuItem.getItemId())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(39069);
-      return;
-      SnsMsgUI.a(this.rSU, this.rSU.rCZ);
-      AppMethodBeat.o(39069);
-      return;
-      SnsMsgUI.n(this.rSU);
-      AppMethodBeat.o(39069);
-      return;
-      SnsMsgUI.a(this.rSU, false);
-    }
+    AppMethodBeat.i(308548);
+    h.baF();
+    h.baD().mCm.a(this.RtZ);
+    AppMethodBeat.o(308548);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.5
  * JD-Core Version:    0.7.0.1
  */

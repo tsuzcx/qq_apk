@@ -4,37 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private int bsY;
+  int cYv;
   String content;
-  int fCK;
-  int fns;
-  String fnu;
-  String fnv;
-  String jRR;
-  int jRS;
-  String jRT;
-  int jRU;
-  int jRV;
-  long jRW;
+  long createtime;
+  private int eQp;
   int msgType;
+  int oFl;
+  int omO;
+  String omQ;
+  String omR;
+  String vyX;
+  String vyY;
+  int vyZ;
+  int vza;
   
   public a()
   {
-    AppMethodBeat.i(18532);
-    this.bsY = -1;
-    this.jRR = "";
-    this.jRS = 0;
-    this.jRT = "";
-    this.jRU = 0;
+    AppMethodBeat.i(22643);
+    this.eQp = -1;
+    this.vyX = "";
+    this.cYv = 0;
+    this.vyY = "";
+    this.vyZ = 0;
     this.msgType = 0;
-    this.jRV = 0;
+    this.vza = 0;
     this.content = "";
-    this.jRW = 0L;
-    this.fns = 0;
-    this.fCK = 0;
-    this.fnu = "";
-    this.fnv = "";
-    AppMethodBeat.o(18532);
+    this.createtime = 0L;
+    this.omO = 0;
+    this.oFl = 0;
+    this.omQ = "";
+    this.omR = "";
+    AppMethodBeat.o(22643);
   }
   
   public final String getContent()
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.a.a
  * JD-Core Version:    0.7.0.1
  */

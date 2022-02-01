@@ -23,7 +23,11 @@ public class FileSchemeResolver
       String str = paramString.getCanonicalPath();
       return str;
     }
-    catch (IOException localIOException) {}
+    catch (IOException localIOException)
+    {
+      label16:
+      break label16;
+    }
     return paramString.getAbsolutePath();
   }
   
@@ -34,64 +38,67 @@ public class FileSchemeResolver
   
   private Pair<ResolverState.MountPointEntry, String> resolveMountPoint(SchemeResolver.ResolverContext paramResolverContext, Uri paramUri)
   {
-    Object localObject = null;
-    List localList = ((ResolverState)paramResolverContext).mActiveMountPoints;
-    paramResolverContext = paramUri.getPath();
-    if ((paramResolverContext == null) || (paramResolverContext.isEmpty()))
+    paramResolverContext = ((ResolverState)paramResolverContext).mActiveMountPoints;
+    Object localObject = paramUri.getPath();
+    if ((localObject != null) && (!((String)localObject).isEmpty()))
     {
-      QLog.e("VFS.FileSchemeResolver", 1, "resolveMountPoint is wrong! " + paramUri.toString());
-      return null;
-    }
-    paramUri = canonicalizePath(paramResolverContext);
-    int i = Collections.binarySearch(localList, paramUri);
-    if (i >= 0)
-    {
-      paramUri = (ResolverState.MountPointEntry)localList.get(i);
-      paramResolverContext = "";
-    }
-    for (;;)
-    {
-      return new Pair(paramUri, paramResolverContext);
-      for (i = -i - 2;; i = paramResolverContext.fallbackIndex)
+      String str = canonicalizePath((String)localObject);
+      int i = Collections.binarySearch(paramResolverContext, str);
+      if (i >= 0)
       {
-        if (i < 0) {
-          paramResolverContext = (SchemeResolver.ResolverContext)localObject;
-        }
-        do
+        localObject = (ResolverState.MountPointEntry)paramResolverContext.get(i);
+        paramResolverContext = "";
+      }
+      for (i = -i - 2;; i = paramUri.fallbackIndex)
+      {
+        if (i < 0)
         {
-          if (i < 0) {
-            break label188;
+          paramUri = null;
+        }
+        else
+        {
+          paramUri = (ResolverState.MountPointEntry)paramResolverContext.get(i);
+          if ((!str.startsWith(paramUri.basePath)) || (str.charAt(paramUri.basePath.length()) != '/')) {
+            continue;
           }
-          localObject = paramUri.substring(paramResolverContext.basePath.length() + 1);
-          paramUri = paramResolverContext;
-          paramResolverContext = (SchemeResolver.ResolverContext)localObject;
-          break;
-          paramResolverContext = (ResolverState.MountPointEntry)localList.get(i);
-        } while ((paramUri.startsWith(paramResolverContext.basePath)) && (paramUri.charAt(paramResolverContext.basePath.length()) == '/'));
-      }
-      label188:
-      if ((!paramUri.isEmpty()) && (paramUri.charAt(0) == '/'))
-      {
-        localObject = paramUri.substring(1);
-        paramUri = paramResolverContext;
-        paramResolverContext = (SchemeResolver.ResolverContext)localObject;
-      }
-      else
-      {
-        localObject = paramResolverContext;
-        paramResolverContext = paramUri;
-        paramUri = (Uri)localObject;
+        }
+        if (i >= 0)
+        {
+          paramResolverContext = str.substring(paramUri.basePath.length() + 1);
+          localObject = paramUri;
+        }
+        else
+        {
+          paramResolverContext = str;
+          localObject = paramUri;
+          if (!str.isEmpty())
+          {
+            paramResolverContext = str;
+            localObject = paramUri;
+            if (str.charAt(0) == '/')
+            {
+              paramResolverContext = str.substring(1);
+              localObject = paramUri;
+            }
+          }
+        }
+        return new Pair(localObject, paramResolverContext);
       }
     }
+    paramResolverContext = new StringBuilder();
+    paramResolverContext.append("resolveMountPoint is wrong! ");
+    paramResolverContext.append(paramUri.toString());
+    QLog.e("VFS.FileSchemeResolver", 1, paramResolverContext.toString());
+    return null;
   }
   
   public Uri exportUri(SchemeResolver.ResolverContext paramResolverContext, Uri paramUri)
   {
     paramResolverContext = resolveMountPoint(paramResolverContext, paramUri);
-    if ((paramResolverContext == null) || (paramResolverContext.first == null)) {
-      return null;
+    if ((paramResolverContext != null) && (paramResolverContext.first != null)) {
+      return new Uri.Builder().scheme("wcf").authority(((ResolverState.MountPointEntry)paramResolverContext.first).fileSystemName).path((String)paramResolverContext.second).build();
     }
-    return new Uri.Builder().scheme("wcf").authority(((ResolverState.MountPointEntry)paramResolverContext.first).fileSystemName).path((String)paramResolverContext.second).build();
+    return null;
   }
   
   public Pair<FileSystem, String> resolve(SchemeResolver.ResolverContext paramResolverContext, Uri paramUri)
@@ -100,15 +107,17 @@ public class FileSchemeResolver
     if (paramUri == null) {
       return null;
     }
-    if (paramUri.first == null) {}
-    for (paramResolverContext = paramResolverContext.root();; paramResolverContext = ((ResolverState.MountPointEntry)paramUri.first).fileSystem) {
-      return new Pair(paramResolverContext, paramUri.second);
+    if (paramUri.first == null) {
+      paramResolverContext = paramResolverContext.root();
+    } else {
+      paramResolverContext = ((ResolverState.MountPointEntry)paramUri.first).fileSystem;
     }
+    return new Pair(paramResolverContext, paramUri.second);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.FileSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

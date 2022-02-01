@@ -18,7 +18,6 @@ public final class DeviceStore$Companion
   public final long getBlockSize(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "path");
-    Logger localLogger;
     try
     {
       long l = new StatFs(paramString).getBlockSizeLong();
@@ -28,39 +27,35 @@ public final class DeviceStore$Companion
     {
       localLogger = Logger.INSTANCE;
       paramString = localNoSuchMethodError.getMessage();
-      if (paramString != null) {}
-      for (;;)
-      {
-        localLogger.d(new String[] { "QAPM_common_DeviceStore", paramString, ": StatFs not method blockSizeLong" });
-        try
-        {
-          paramString = Environment.getExternalStorageDirectory();
-          Intrinsics.checkExpressionValueIsNotNull(paramString, "path");
-          int i = new StatFs(paramString.getPath()).getBlockSize();
-          return i;
-        }
-        catch (NoSuchMethodError paramString)
-        {
-          localLogger = Logger.INSTANCE;
-          paramString = localNoSuchMethodError.getMessage();
-          if (paramString == null) {
-            break;
-          }
-        }
+      if (paramString == null) {
         paramString = "NoSuchMethodError";
       }
+      localLogger.d(new String[] { "QAPM_common_DeviceStore", paramString, ": StatFs not method blockSizeLong" });
     }
-    for (;;)
+    try
     {
-      localLogger.d(new String[] { "QAPM_common_DeviceStore", paramString, ": StatFs not method blockSize" });
-      return 0L;
+      paramString = Environment.getExternalStorageDirectory();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "Environment.getExternalStorageDirectory()");
+      int i = new StatFs(paramString.getPath()).getBlockSize();
+      return i;
+    }
+    catch (NoSuchMethodError paramString)
+    {
+      label94:
+      break label94;
+    }
+    Logger localLogger = Logger.INSTANCE;
+    paramString = localNoSuchMethodError.getMessage();
+    if (paramString == null) {
       paramString = "NoSuchMethodError";
     }
+    localLogger.d(new String[] { "QAPM_common_DeviceStore", paramString, ": StatFs not method blockSize" });
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.device.DeviceStore.Companion
  * JD-Core Version:    0.7.0.1
  */

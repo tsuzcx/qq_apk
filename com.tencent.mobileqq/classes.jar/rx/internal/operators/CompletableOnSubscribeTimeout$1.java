@@ -17,20 +17,18 @@ class CompletableOnSubscribeTimeout$1
     if (this.val$once.compareAndSet(false, true))
     {
       this.val$set.clear();
-      if (this.this$0.other == null) {
+      if (this.this$0.other == null)
+      {
         this.val$s.onError(new TimeoutException());
+        return;
       }
+      this.this$0.other.subscribe(new CompletableOnSubscribeTimeout.1.1(this));
     }
-    else
-    {
-      return;
-    }
-    this.this$0.other.subscribe(new CompletableOnSubscribeTimeout.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeTimeout.1
  * JD-Core Version:    0.7.0.1
  */

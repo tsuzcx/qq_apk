@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public final class DcStandardReportReq
 {
   static ArrayList<Map<String, String>> cache_report_infos = new ArrayList();
   public String dc_name = "";
-  public ArrayList<Map<String, String>> report_infos;
+  public ArrayList<Map<String, String>> report_infos = null;
   
   static
   {
@@ -37,17 +38,19 @@ public final class DcStandardReportReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.dc_name != null) {
-      paramJceOutputStream.write(this.dc_name, 0);
+    Object localObject = this.dc_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.report_infos != null) {
-      paramJceOutputStream.write(this.report_infos, 1);
+    localObject = this.report_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.DcStandardReportReq
  * JD-Core Version:    0.7.0.1
  */

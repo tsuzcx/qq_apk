@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class rtmp_report_basic_info
   extends JceStruct
 {
-  public long dns_parse_delay;
-  public long lTime;
-  public long play_succ_delay;
-  public long rtmp_addr_delay;
+  public long dns_parse_delay = 0L;
+  public long lTime = 0L;
+  public long play_succ_delay = 0L;
+  public long rtmp_addr_delay = 0L;
   
   public rtmp_report_basic_info() {}
   
@@ -40,7 +40,7 @@ public final class rtmp_report_basic_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.rtmp_report_basic_info
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public final class zzbg
   
   static
   {
-    AppMethodBeat.i(60835);
+    AppMethodBeat.i(11327);
     zzji = Executors.newFixedThreadPool(2, new NumberedThreadFactory("GAC_Executor"));
-    AppMethodBeat.o(60835);
+    AppMethodBeat.o(11327);
   }
   
   public static ExecutorService zzbe()
@@ -23,7 +23,7 @@ public final class zzbg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzbg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,36 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class LightalkBlueTipsBar$2
+class LightalkBlueTipsBar$2
   implements Runnable
 {
-  public LightalkBlueTipsBar$2(agzy paramagzy) {}
+  LightalkBlueTipsBar$2(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
   
   public void run()
   {
-    Object localObject = agzy.a(this.this$0).getPreferences();
-    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + agzy.a(this.this$0).getCurrentAccountUin(), 0);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + agzy.a(this.this$0).getCurrentAccountUin(), i + 1);
-    ((SharedPreferences.Editor)localObject).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : commit =====> tipsum = " + (i + 1));
+    Object localObject1 = LightalkBlueTipsBar.a(this.this$0).getPreferences();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("LT_tip_show_times");
+    ((StringBuilder)localObject2).append(LightalkBlueTipsBar.a(this.this$0).getCurrentAccountUin());
+    int i = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0);
+    localObject1 = ((SharedPreferences)localObject1).edit();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("LT_tip_show_times");
+    ((StringBuilder)localObject2).append(LightalkBlueTipsBar.a(this.this$0).getCurrentAccountUin());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    i += 1;
+    ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, i);
+    ((SharedPreferences.Editor)localObject1).commit();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onAIOEvent() : commit =====> tipsum = ");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("LightalkBlueTipsBar", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }

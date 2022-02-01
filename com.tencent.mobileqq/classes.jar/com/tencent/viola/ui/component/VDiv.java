@@ -41,7 +41,10 @@ public class VDiv
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("VDiv", "fivFireBaseInfo error :" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fivFireBaseInfo error :");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("VDiv", localStringBuilder.toString());
     }
     return localJSONObject;
   }
@@ -64,58 +67,92 @@ public class VDiv
     {
       float f1 = getInstance().getMatchWindowsX();
       float f2 = getInstance().getMatchWindowsY();
-      localJSONObject.put("pageX", FlexConvertUtils.px2dip(paramFloat1 - f1) + "dp");
-      localJSONObject.put("pageY", FlexConvertUtils.px2dip(paramFloat2 - f2) + "dp");
-      fireEvent(paramString, getFireEventArgs(paramString), localJSONObject);
-      return;
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(FlexConvertUtils.px2dip(paramFloat1 - f1));
+      localStringBuilder1.append("dp");
+      localJSONObject.put("pageX", localStringBuilder1.toString());
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(FlexConvertUtils.px2dip(paramFloat2 - f2));
+      localStringBuilder1.append("dp");
+      localJSONObject.put("pageY", localStringBuilder1.toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("VDiv", "divFireTouchEvent error :" + localException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("divFireTouchEvent error :");
+      localStringBuilder2.append(localException.getMessage());
+      ViolaLogUtils.e("VDiv", localStringBuilder2.toString());
     }
+    fireEvent(paramString, getFireEventArgs(paramString), localJSONObject);
   }
   
   public void firePanEvent(String paramString, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
     JSONObject localJSONObject1 = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
-    JSONObject localJSONObject2 = getPositionInfoRelativeToRoot(0);
+    JSONObject localJSONObject4 = getPositionInfoRelativeToRoot(0);
     JSONObject localJSONObject3 = new JSONObject();
-    JSONObject localJSONObject4 = new JSONObject();
-    JSONObject localJSONObject5 = new JSONObject();
+    Object localObject = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      localJSONObject1.put("viewFrame", localJSONObject2);
-      localJSONObject1.put("frame", localJSONObject2);
+      localJSONObject1.put("viewFrame", localJSONObject4);
+      localJSONObject1.put("frame", localJSONObject4);
       localJSONObject1.put("state", paramString);
-      localJSONObject3.put("x", FlexConvertUtils.px2dip(paramFloat1) + "dp");
-      localJSONObject3.put("y", FlexConvertUtils.px2dip(paramFloat2) + "dp");
+      paramString = new StringBuilder();
+      paramString.append(FlexConvertUtils.px2dip(paramFloat1));
+      paramString.append("dp");
+      localJSONObject3.put("x", paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(FlexConvertUtils.px2dip(paramFloat2));
+      paramString.append("dp");
+      localJSONObject3.put("y", paramString.toString());
       localJSONObject1.put("translation", localJSONObject3);
-      localJSONObject4.put("x", FlexConvertUtils.px2dip(paramFloat3) + "dp");
-      localJSONObject4.put("y", FlexConvertUtils.px2dip(paramFloat4) + "dp");
-      localJSONObject1.put("location", localJSONObject4);
-      localJSONObject5.put("x", paramFloat5);
-      localJSONObject5.put("y", paramFloat6);
-      localJSONObject1.put("velocity", localJSONObject5);
+      paramString = new StringBuilder();
+      paramString.append(FlexConvertUtils.px2dip(paramFloat3));
+      paramString.append("dp");
+      ((JSONObject)localObject).put("x", paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(FlexConvertUtils.px2dip(paramFloat4));
+      paramString.append("dp");
+      ((JSONObject)localObject).put("y", paramString.toString());
+      localJSONObject1.put("location", localObject);
+      localJSONObject2.put("x", paramFloat5);
+      localJSONObject2.put("y", paramFloat6);
+      localJSONObject1.put("velocity", localJSONObject2);
       paramString = this.mDomObj.getRef();
       if (!TextUtils.isEmpty(paramString)) {
         localJSONArray.put(paramString);
       }
-      localJSONArray.put("pan");
-      ViolaLogUtils.d("VDiv", "firePanEvent callData :" + localJSONArray.toString() + ", dom type = " + getDomObject().getType() + " , data " + localJSONObject1.toString());
-      fireEvent("pan", localJSONArray, localJSONObject1);
-      return;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("VDiv", "firePanEvent error:" + paramString.getMessage());
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("firePanEvent error:");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      ViolaLogUtils.e("VDiv", ((StringBuilder)localObject).toString());
     }
+    localObject = "pan";
+    if (isContainTargetEvent("pan")) {
+      paramString = "pan";
+    } else {
+      paramString = "androidPan";
+    }
+    localJSONArray.put(paramString);
+    paramString = new StringBuilder();
+    paramString.append("firePanEvent callData :");
+    paramString.append(localJSONArray.toString());
+    paramString.append(", dom type = ");
+    paramString.append(getDomObject().getType());
+    paramString.append(" , data ");
+    paramString.append(localJSONObject1.toString());
+    ViolaLogUtils.d("VDiv", paramString.toString());
+    if (isContainTargetEvent("pan")) {
+      paramString = (String)localObject;
+    } else {
+      paramString = "androidPan";
+    }
+    fireEvent(paramString, localJSONArray, localJSONObject1);
   }
   
   protected VFrameLayout initComponentHostView(@NonNull Context paramContext)
@@ -132,62 +169,52 @@ public class VDiv
   
   public void setBackgroundDrawable()
   {
-    if (!this.mHasSetHighlightColor) {
+    if (!this.mHasSetHighlightColor)
+    {
       super.setBackgroundDrawable();
-    }
-    while (getHostView() == null) {
       return;
     }
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Object localObject = new ColorDrawable(this.mHighlightColor);
-    localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject);
-    if (this.mBackgroundDrawable != null)
+    if (getHostView() != null)
     {
-      localObject = this.mBackgroundDrawable;
-      localStateListDrawable.addState(new int[0], (Drawable)localObject);
-    }
-    if (Build.VERSION.SDK_INT >= 16) {
-      ((VFrameLayout)getHostView()).setBackground(localStateListDrawable);
-    }
-    for (;;)
-    {
+      StateListDrawable localStateListDrawable = new StateListDrawable();
+      Object localObject = new ColorDrawable(this.mHighlightColor);
+      localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject);
+      if (this.mBackgroundDrawable != null)
+      {
+        localObject = this.mBackgroundDrawable;
+        localStateListDrawable.addState(new int[0], (Drawable)localObject);
+      }
+      if (Build.VERSION.SDK_INT >= 16) {
+        ((VFrameLayout)getHostView()).setBackground(localStateListDrawable);
+      } else {
+        ((VFrameLayout)getHostView()).setBackgroundDrawable(localStateListDrawable);
+      }
       ((VFrameLayout)getHostView()).setClickable(true);
-      return;
-      ((VFrameLayout)getHostView()).setBackgroundDrawable(localStateListDrawable);
     }
   }
   
   public boolean setProperty(String paramString, Object paramObject)
   {
     String str = ViolaUtils.getString(paramObject, null);
-    int i;
     if (str != null)
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      if ((paramString.hashCode() == 1126933377) && (paramString.equals("highlightBackgroundColor"))) {
+        i = 0;
+      }
+      if (i == 0)
       {
+        this.mHasSetHighlightColor = true;
+        this.mHighlightColor = ColorParseUtils.parseColor(str);
+        return true;
       }
     }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return super.setProperty(paramString, paramObject);
-        if (paramString.equals("highlightBackgroundColor")) {
-          i = 0;
-        }
-        break;
-      }
-    }
-    this.mHasSetHighlightColor = true;
-    this.mHighlightColor = ColorParseUtils.parseColor(str);
-    return true;
+    return super.setProperty(paramString, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VDiv
  * JD-Core Version:    0.7.0.1
  */

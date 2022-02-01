@@ -1,264 +1,233 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Looper;
-import android.view.View;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.location.model.l;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.plugin.location.model.SubCoreLocation;
 import com.tencent.mm.plugin.location.model.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.MMHorList;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.g;
+import com.tencent.mm.plugin.map.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class h
 {
+  boolean KfA;
+  private ViewGroup KfD;
+  private final int KfE;
+  private final int KfF;
+  private final int KfG;
+  private final int KfH;
+  private final int KfI;
+  private final int KfJ;
+  private final int KfK;
+  private final int KfL;
+  private final int KfM;
+  private final int KfN;
+  private final int KfO;
+  boolean KfP;
+  private int KfQ;
+  int KfR;
+  int KfS;
+  int KfT;
+  boolean KfU;
+  String KfV;
   Context context;
-  private String eis;
-  private ak mHandler;
-  private boolean mIsInit;
-  MMHorList ocZ;
-  h.a oda;
-  private int odb;
-  h.c odc;
+  TextView fO;
+  private String lLV;
+  MMHandler mHandler;
+  ArrayList<String> nnU;
   
-  public h(Context paramContext, View paramView, String paramString)
+  public h(Context paramContext, ViewGroup paramViewGroup, String paramString)
   {
-    AppMethodBeat.i(113504);
-    this.mIsInit = false;
-    this.eis = "";
-    this.mHandler = new ak(Looper.getMainLooper());
-    this.odc = null;
-    this.context = paramContext;
-    this.ocZ = ((MMHorList)paramView);
-    this.eis = paramString;
-    bLJ();
-    AppMethodBeat.o(113504);
-  }
-  
-  private void G(ArrayList<h.b> paramArrayList)
-  {
-    AppMethodBeat.i(113506);
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(55923);
+    this.KfE = 100;
+    this.KfF = 1;
+    this.KfG = 2;
+    this.KfH = 3;
+    this.KfI = 4;
+    this.KfJ = 5;
+    this.KfK = 6;
+    this.KfL = 7;
+    this.KfM = 8;
+    this.KfN = 9;
+    this.KfO = 10;
+    this.KfP = true;
+    this.KfQ = Color.parseColor("#44FEBB");
+    this.KfR = Color.parseColor("#FFFFFF");
+    this.KfS = Color.parseColor("#E54646");
+    this.KfT = Color.parseColor("#FFC90C");
+    this.KfA = false;
+    this.KfU = false;
+    this.KfV = "";
+    this.mHandler = new MMHandler(Looper.getMainLooper())
     {
-      h.b localb = (h.b)localIterator.next();
-      if (localb.odg) {
-        localb.bLM();
-      }
-    }
-    this.odb = a.fromDPToPix(this.context, 60);
-    this.ocZ.setOverScrollEnabled(true);
-    this.ocZ.setItemWidth(this.odb);
-    this.ocZ.setCenterInParent(true);
-    this.ocZ.setOnItemClickListener(new h.1(this));
-    this.oda = new h.a(this, paramArrayList);
-    this.ocZ.setAdapter(this.oda);
-    AppMethodBeat.o(113506);
-  }
-  
-  private void Sc(String paramString)
-  {
-    AppMethodBeat.i(113507);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
-    if (this.oda.Sg(paramString))
-    {
-      AppMethodBeat.o(113507);
-      return;
-    }
-    paramString = new h.b(this, paramString);
-    h.a locala = this.oda;
-    locala.odf.add(paramString);
-    locala.notifyDataSetChanged();
-    this.ocZ.invalidate();
-    AppMethodBeat.o(113507);
-  }
-  
-  private void Sd(String paramString)
-  {
-    AppMethodBeat.i(113508);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
-    h.a locala;
-    int i;
-    if (this.oda.Sg(paramString))
-    {
-      locala = this.oda;
-      i = 0;
-      if (i >= locala.odf.size()) {
-        break label108;
-      }
-      if (!((h.b)locala.odf.get(i)).username.equals(paramString)) {
-        break label101;
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        locala.odf.remove(i);
-        locala.notifyDataSetChanged();
-      }
-      this.ocZ.invalidate();
-      AppMethodBeat.o(113508);
-      return;
-      label101:
-      i += 1;
-      break;
-      label108:
-      i = -1;
-    }
-  }
-  
-  private void bLJ()
-  {
-    AppMethodBeat.i(113505);
-    Object localObject = l.bLs().uN(this.eis);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      if (!bo.isNullOrNil(str))
-      {
-        localArrayList1.add(new h.b(this, str));
-        localArrayList2.add(str);
-      }
-    }
-    G(localArrayList1);
-    H(localArrayList2);
-    this.ocZ.invalidate();
-    this.oda.notifyDataSetChanged();
-    AppMethodBeat.o(113505);
-  }
-  
-  public final void H(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(113511);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    Object localObject1 = this.oda.bLL();
-    Object localObject2 = paramArrayList.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str = (String)((Iterator)localObject2).next();
-      if (((ArrayList)localObject1).indexOf(str) == -1) {
-        localArrayList2.add(str);
-      }
-    }
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      if (paramArrayList.indexOf(localObject2) == -1) {
-        localArrayList1.add(localObject2);
-      }
-    }
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, newMember.size=%d, removeMember.size=%d", new Object[] { Integer.valueOf(localArrayList2.size()), Integer.valueOf(localArrayList1.size()) });
-    if (localArrayList2.size() > 0)
-    {
-      paramArrayList = localArrayList2.iterator();
-      while (paramArrayList.hasNext()) {
-        Sc((String)paramArrayList.next());
-      }
-    }
-    if (localArrayList1.size() > 0)
-    {
-      paramArrayList = localArrayList1.iterator();
-      while (paramArrayList.hasNext()) {
-        Sd((String)paramArrayList.next());
-      }
-    }
-    AppMethodBeat.o(113511);
-  }
-  
-  public final void Se(String paramString)
-  {
-    int k = 0;
-    AppMethodBeat.i(113509);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
-    int i;
-    if (this.oda.Sg(paramString))
-    {
-      this.oda.Sf(paramString).bLM();
-      this.oda.notifyDataSetChanged();
-      this.ocZ.invalidate();
-      if ((this.ocZ.getIsTouching()) || (bo.isNullOrNil(paramString)))
-      {
-        AppMethodBeat.o(113509);
-        return;
-      }
-      h.a locala = this.oda;
-      i = 0;
-      if (i >= locala.odf.size()) {
-        break label243;
-      }
-      if (!((h.b)locala.odf.get(i)).username.equals(paramString)) {
-        break label202;
-      }
-    }
-    label172:
-    label202:
-    label209:
-    label238:
-    label243:
-    for (int j = i;; j = -1)
-    {
-      ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
-      int m;
-      if (j != -1)
-      {
-        m = j * this.odb;
-        i = this.ocZ.getCurrentPosition();
-        if (m >= i) {
-          break label209;
-        }
-      }
-      for (;;)
-      {
-        if (j == 0) {
-          i = k;
+        AppMethodBeat.i(55922);
+        super.handleMessage(paramAnonymousMessage);
+        switch (paramAnonymousMessage.what)
+        {
         }
         for (;;)
         {
-          this.mHandler.post(new h.2(this, i));
-          AppMethodBeat.o(113509);
+          AppMethodBeat.o(55922);
           return;
-          i += 1;
-          break;
-          if (m <= i + this.odb * 3) {
-            break label238;
+          h.this.fO.setText(h.this.KfV);
+          AppMethodBeat.o(55922);
+          return;
+          Log.d("MicroMsg.ShareHeaderMsgMgr", "update member num, isMyselfTalking=%b, isOtherTalking=%b", new Object[] { Boolean.valueOf(h.this.KfA), Boolean.valueOf(h.this.KfU) });
+          if ((!h.this.KfA) && (!h.this.KfU))
+          {
+            Object localObject = h.this;
+            ((h)localObject).fO.setTextColor(((h)localObject).KfR);
+            ((h)localObject).fO.invalidate();
+            int i = ((Integer)paramAnonymousMessage.obj).intValue();
+            if (i == 0)
+            {
+              h.this.fO.setText(h.this.context.getString(a.i.track_none_contact_num));
+              AppMethodBeat.o(55922);
+              return;
+            }
+            h.this.fO.setText(h.this.context.getResources().getQuantityString(a.g.track_contact_num, i, new Object[] { Integer.valueOf(i) }));
+            AppMethodBeat.o(55922);
+            return;
+            if ((h.this.KfU) || (h.this.KfA))
+            {
+              removeMessages(3);
+              localObject = Message.obtain();
+              ((Message)localObject).what = 3;
+              ((Message)localObject).obj = paramAnonymousMessage.obj;
+              sendMessage((Message)localObject);
+              AppMethodBeat.o(55922);
+              return;
+            }
+            h.this.KfV = h.this.fO.getText().toString();
+            h.a(h.this);
+            paramAnonymousMessage = aa.getDisplayName((String)paramAnonymousMessage.obj);
+            h.this.fO.setText(h.this.context.getString(a.i.track_somebody_enter, new Object[] { paramAnonymousMessage }));
+            if ((h.this.KfA) || (h.this.KfU))
+            {
+              h.b(h.this);
+              AppMethodBeat.o(55922);
+              return;
+              if ((h.this.KfU) || (h.this.KfA))
+              {
+                removeMessages(4);
+                localObject = Message.obtain();
+                ((Message)localObject).what = 4;
+                ((Message)localObject).obj = paramAnonymousMessage.obj;
+                sendMessage((Message)localObject);
+                AppMethodBeat.o(55922);
+                return;
+              }
+              h.this.KfV = h.this.fO.getText().toString();
+              h.a(h.this);
+              paramAnonymousMessage = aa.getDisplayName((String)paramAnonymousMessage.obj);
+              h.this.fO.setText(h.this.context.getString(a.i.track_somebody_exit, new Object[] { paramAnonymousMessage }));
+              if ((h.this.KfA) || (h.this.KfU))
+              {
+                h.b(h.this);
+                AppMethodBeat.o(55922);
+                return;
+                h.this.KfU = true;
+                h.this.KfA = false;
+                h.a(h.this);
+                paramAnonymousMessage = aa.getDisplayName((String)paramAnonymousMessage.obj);
+                h.this.fO.setText(h.this.context.getString(a.i.track_somebody_saying, new Object[] { paramAnonymousMessage }));
+                AppMethodBeat.o(55922);
+                return;
+                h.this.KfA = true;
+                h.this.KfU = false;
+                h.a(h.this);
+                h.this.fO.setText(h.this.context.getString(a.i.track_self_saying));
+                AppMethodBeat.o(55922);
+                return;
+                h.this.KfA = false;
+                if (!h.this.KfU)
+                {
+                  h.this.xV(true);
+                  AppMethodBeat.o(55922);
+                  return;
+                  h.this.KfU = true;
+                  paramAnonymousMessage = h.this;
+                  paramAnonymousMessage.fO.setTextColor(paramAnonymousMessage.KfS);
+                  paramAnonymousMessage.fO.invalidate();
+                  h.this.fO.setText(h.this.context.getString(a.i.track_talk_conflict));
+                  h.this.KfV = h.this.fO.getText().toString();
+                  h.b(h.this);
+                  AppMethodBeat.o(55922);
+                  return;
+                  paramAnonymousMessage = h.this;
+                  paramAnonymousMessage.fO.setTextColor(paramAnonymousMessage.KfT);
+                  paramAnonymousMessage.fO.invalidate();
+                  h.this.fO.setText(h.this.context.getString(a.i.track_talk_preparing));
+                  AppMethodBeat.o(55922);
+                  return;
+                  h.this.KfU = false;
+                  h.this.xV(false);
+                }
+              }
+            }
           }
-          i = m - this.odb * 3;
-          break label172;
         }
-        i = 0;
       }
-    }
+    };
+    this.context = paramContext;
+    this.KfD = paramViewGroup;
+    this.fO = ((TextView)this.KfD.findViewById(a.e.title));
+    this.lLV = paramString;
+    init();
+    AppMethodBeat.o(55923);
   }
   
-  public final void bLK()
+  private void init()
   {
-    AppMethodBeat.i(113510);
-    h.a locala = this.oda;
-    Iterator localIterator = locala.odf.iterator();
-    while (localIterator.hasNext()) {
-      ((h.b)localIterator.next()).bLN();
+    AppMethodBeat.i(55924);
+    Log.d("MicroMsg.ShareHeaderMsgMgr", "init");
+    this.fO.invalidate();
+    this.nnU = new ArrayList();
+    Iterator localIterator = SubCoreLocation.fUC().Px(this.lLV).iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.nnU.add(str);
     }
-    locala.notifyDataSetChanged();
-    this.ocZ.invalidate();
-    AppMethodBeat.o(113510);
+    xV(false);
+    AppMethodBeat.o(55924);
+  }
+  
+  final void xV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(55925);
+    this.mHandler.removeMessages(2);
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.obj = Integer.valueOf(this.nnU.size());
+    Log.d("MicroMsg.ShareHeaderMsgMgr", "updateMemberCount, size=%d, isDelay=%b", new Object[] { Integer.valueOf(this.nnU.size()), Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      this.mHandler.sendMessageDelayed(localMessage, 100L);
+      AppMethodBeat.o(55925);
+      return;
+    }
+    this.mHandler.sendMessage(localMessage);
+    AppMethodBeat.o(55925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.h
  * JD-Core Version:    0.7.0.1
  */

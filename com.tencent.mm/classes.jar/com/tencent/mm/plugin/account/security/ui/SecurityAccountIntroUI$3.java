@@ -11,9 +11,9 @@ final class SecurityAccountIntroUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(69906);
-    SecurityAccountIntroUI.e(this.gBT);
-    AppMethodBeat.o(69906);
+    AppMethodBeat.i(125588);
+    SecurityAccountIntroUI.e(this.pYx);
+    AppMethodBeat.o(125588);
     return true;
   }
 }

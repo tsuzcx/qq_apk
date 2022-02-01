@@ -43,24 +43,24 @@ public class tlv_t149
   public Boolean verify()
   {
     if (this._body_len < 8) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = util.buf_to_int16(this._buf, this._head_len + 2);
     if (this._body_len < i + 8) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._title_len = i;
     i = util.buf_to_int16(this._buf, this._head_len + 2 + 2 + this._title_len);
     if (this._body_len < this._title_len + 8 + i) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._content_len = i;
     i = util.buf_to_int16(this._buf, this._head_len + 2 + 2 + this._title_len + 2 + this._content_len);
     if (this._body_len < this._title_len + 8 + this._content_len + i) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._otherinfo_len = i;
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

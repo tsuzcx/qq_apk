@@ -568,12 +568,12 @@ public class LiteMpFileActionListActivity
     super.onCreate(paramBundle);
     setContentView(2130903517);
     setTitle(getString(2131559621));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232794));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232792));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.d = ((Button)findViewById(2131232795));
-    this.c = ((Button)findViewById(2131232796));
+    this.d = ((Button)findViewById(2131232794));
+    this.c = ((Button)findViewById(2131232795));
     this.d.setOnClickListener(this);
     this.c.setOnClickListener(this);
   }

@@ -37,10 +37,12 @@ public class HotPicSendData
   
   public int compareTo(HotPicSendData paramHotPicSendData)
   {
-    if (this.sendTime > paramHotPicSendData.sendTime) {
+    long l1 = this.sendTime;
+    long l2 = paramHotPicSendData.sendTime;
+    if (l1 > l2) {
       return 1;
     }
-    if (this.sendTime == paramHotPicSendData.sendTime) {
+    if (l1 == l2) {
       return 0;
     }
     return -1;
@@ -48,7 +50,7 @@ public class HotPicSendData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicSendData
  * JD-Core Version:    0.7.0.1
  */

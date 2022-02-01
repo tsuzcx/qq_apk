@@ -37,20 +37,23 @@ public final class medal_banner
   {
     paramJceOutputStream.write(this.retcode, 0);
     paramJceOutputStream.write(this.bannerType, 1);
-    if (this.bannerText != null) {
-      paramJceOutputStream.write(this.bannerText, 2);
+    String str = this.bannerText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.jumpSchema != null) {
-      paramJceOutputStream.write(this.jumpSchema, 3);
+    str = this.jumpSchema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 4);
+    str = this.jumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.medal_banner
  * JD-Core Version:    0.7.0.1
  */

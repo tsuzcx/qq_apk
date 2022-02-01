@@ -8,27 +8,29 @@ public final class stPublisherRsp
   extends JceStruct
 {
   static stPublisherGuide cache_guide = new stPublisherGuide();
-  public boolean enable;
-  public stPublisherGuide guide;
+  public boolean enable = false;
+  public stPublisherGuide guide = null;
   public String h5Url = "";
   public String miniAppSchema = "";
-  public boolean newUser;
+  public boolean newUser = false;
   public String newsUserText = "";
-  public int noInstallAction;
+  public int noInstallAction = 0;
+  public int showGuide = 0;
   public String weishiSchema = "";
   
   public stPublisherRsp() {}
   
-  public stPublisherRsp(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt, stPublisherGuide paramstPublisherGuide, String paramString3, String paramString4)
+  public stPublisherRsp(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt1, stPublisherGuide paramstPublisherGuide, String paramString3, String paramString4, int paramInt2)
   {
     this.enable = paramBoolean1;
     this.newUser = paramBoolean2;
     this.newsUserText = paramString1;
     this.weishiSchema = paramString2;
-    this.noInstallAction = paramInt;
+    this.noInstallAction = paramInt1;
     this.guide = paramstPublisherGuide;
     this.miniAppSchema = paramString3;
     this.h5Url = paramString4;
+    this.showGuide = paramInt2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -41,33 +43,40 @@ public final class stPublisherRsp
     this.guide = ((stPublisherGuide)paramJceInputStream.read(cache_guide, 5, false));
     this.miniAppSchema = paramJceInputStream.readString(6, false);
     this.h5Url = paramJceInputStream.readString(7, false);
+    this.showGuide = paramJceInputStream.read(this.showGuide, 8, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.enable, 0);
     paramJceOutputStream.write(this.newUser, 1);
-    if (this.newsUserText != null) {
-      paramJceOutputStream.write(this.newsUserText, 2);
+    Object localObject = this.newsUserText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.weishiSchema != null) {
-      paramJceOutputStream.write(this.weishiSchema, 3);
+    localObject = this.weishiSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.noInstallAction, 4);
-    if (this.guide != null) {
-      paramJceOutputStream.write(this.guide, 5);
+    localObject = this.guide;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.miniAppSchema != null) {
-      paramJceOutputStream.write(this.miniAppSchema, 6);
+    localObject = this.miniAppSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.h5Url != null) {
-      paramJceOutputStream.write(this.h5Url, 7);
+    localObject = this.h5Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
+    paramJceOutputStream.write(this.showGuide, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPublisherRsp
  * JD-Core Version:    0.7.0.1
  */

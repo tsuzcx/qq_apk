@@ -1,88 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
+import i.a.a.b;
 
 public final class fp
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public bcs wrF;
+  public String appid;
+  public int status;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94511);
+    AppMethodBeat.i(122485);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wrF == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.appid == null)
       {
-        paramVarArgs = new b("Not all required fields were included: MediaObj");
-        AppMethodBeat.o(94511);
+        paramVarArgs = new b("Not all required fields were included: appid");
+        AppMethodBeat.o(122485);
         throw paramVarArgs;
       }
-      if (this.wrF != null)
-      {
-        paramVarArgs.iQ(1, this.wrF.computeSize());
-        this.wrF.writeFields(paramVarArgs);
+      if (this.appid != null) {
+        paramVarArgs.g(1, this.appid);
       }
-      AppMethodBeat.o(94511);
+      paramVarArgs.bS(2, this.status);
+      AppMethodBeat.o(122485);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wrF == null) {
-        break label358;
+      if (this.appid == null) {
+        break label302;
       }
     }
-    label358:
-    for (paramInt = e.a.a.a.iP(1, this.wrF.computeSize()) + 0;; paramInt = 0)
+    label302:
+    for (paramInt = i.a.a.b.b.a.h(1, this.appid) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(94511);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.status);
+      AppMethodBeat.o(122485);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.wrF == null)
+        if (this.appid == null)
         {
-          paramVarArgs = new b("Not all required fields were included: MediaObj");
-          AppMethodBeat.o(94511);
+          paramVarArgs = new b("Not all required fields were included: appid");
+          AppMethodBeat.o(122485);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(94511);
+        AppMethodBeat.o(122485);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         fp localfp = (fp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(94511);
+          AppMethodBeat.o(122485);
           return -1;
+        case 1: 
+          localfp.appid = locala.ajGk.readString();
+          AppMethodBeat.o(122485);
+          return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bcs();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((bcs)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localfp.wrF = ((bcs)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(94511);
+        localfp.status = locala.ajGk.aar();
+        AppMethodBeat.o(122485);
         return 0;
       }
-      AppMethodBeat.o(94511);
+      AppMethodBeat.o(122485);
       return -1;
     }
   }

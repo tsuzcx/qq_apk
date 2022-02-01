@@ -51,89 +51,76 @@ public final class Tx3gDecoder
   
   private void applyStyleRecord(ParsableByteArray paramParsableByteArray, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    if (paramParsableByteArray.bytesLeft() >= 12) {}
-    for (boolean bool = true;; bool = false)
-    {
-      assertTrue(bool);
-      int i = paramParsableByteArray.readUnsignedShort();
-      int j = paramParsableByteArray.readUnsignedShort();
-      paramParsableByteArray.skipBytes(2);
-      int k = paramParsableByteArray.readUnsignedByte();
-      paramParsableByteArray.skipBytes(1);
-      int m = paramParsableByteArray.readInt();
-      attachFontFace(paramSpannableStringBuilder, k, this.defaultFontFace, i, j, 0);
-      attachColor(paramSpannableStringBuilder, m, this.defaultColorRgba, i, j, 0);
-      return;
+    boolean bool;
+    if (paramParsableByteArray.bytesLeft() >= 12) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    assertTrue(bool);
+    int i = paramParsableByteArray.readUnsignedShort();
+    int j = paramParsableByteArray.readUnsignedShort();
+    paramParsableByteArray.skipBytes(2);
+    int k = paramParsableByteArray.readUnsignedByte();
+    paramParsableByteArray.skipBytes(1);
+    int m = paramParsableByteArray.readInt();
+    attachFontFace(paramSpannableStringBuilder, k, this.defaultFontFace, i, j, 0);
+    attachColor(paramSpannableStringBuilder, m, this.defaultColorRgba, i, j, 0);
   }
   
   private static void assertTrue(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new SubtitleDecoderException("Unexpected subtitle format.");
+    if (paramBoolean) {
+      return;
     }
+    throw new SubtitleDecoderException("Unexpected subtitle format.");
   }
   
   private static void attachColor(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     if (paramInt1 != paramInt2) {
-      paramSpannableStringBuilder.setSpan(new ForegroundColorSpan((paramInt1 & 0xFF) << 24 | paramInt1 >>> 8), paramInt3, paramInt4, paramInt5 | 0x21);
+      paramSpannableStringBuilder.setSpan(new ForegroundColorSpan(paramInt1 >>> 8 | (paramInt1 & 0xFF) << 24), paramInt3, paramInt4, paramInt5 | 0x21);
     }
   }
   
   private static void attachFontFace(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int i = 1;
-    int j;
     if (paramInt1 != paramInt2)
     {
-      j = paramInt5 | 0x21;
-      if ((paramInt1 & 0x1) == 0) {
-        break label118;
+      int j = paramInt5 | 0x21;
+      int i = 1;
+      if ((paramInt1 & 0x1) != 0) {
+        paramInt2 = 1;
+      } else {
+        paramInt2 = 0;
       }
-      paramInt2 = 1;
-      if ((paramInt1 & 0x2) == 0) {
-        break label123;
+      if ((paramInt1 & 0x2) != 0) {
+        paramInt5 = 1;
+      } else {
+        paramInt5 = 0;
       }
-      paramInt5 = 1;
-      label32:
-      if (paramInt2 == 0) {
-        break label149;
+      if (paramInt2 != 0)
+      {
+        if (paramInt5 != 0) {
+          paramSpannableStringBuilder.setSpan(new StyleSpan(3), paramInt3, paramInt4, j);
+        } else {
+          paramSpannableStringBuilder.setSpan(new StyleSpan(1), paramInt3, paramInt4, j);
+        }
       }
-      if (paramInt5 == 0) {
-        break label129;
+      else if (paramInt5 != 0) {
+        paramSpannableStringBuilder.setSpan(new StyleSpan(2), paramInt3, paramInt4, j);
       }
-      paramSpannableStringBuilder.setSpan(new StyleSpan(3), paramInt3, paramInt4, j);
-      label58:
-      if ((paramInt1 & 0x4) == 0) {
-        break label174;
+      if ((paramInt1 & 0x4) != 0) {
+        paramInt1 = i;
+      } else {
+        paramInt1 = 0;
       }
-    }
-    label129:
-    label149:
-    label174:
-    for (paramInt1 = i;; paramInt1 = 0)
-    {
       if (paramInt1 != 0) {
         paramSpannableStringBuilder.setSpan(new UnderlineSpan(), paramInt3, paramInt4, j);
       }
       if ((paramInt1 == 0) && (paramInt2 == 0) && (paramInt5 == 0)) {
         paramSpannableStringBuilder.setSpan(new StyleSpan(0), paramInt3, paramInt4, j);
       }
-      return;
-      label118:
-      paramInt2 = 0;
-      break;
-      label123:
-      paramInt5 = 0;
-      break label32;
-      paramSpannableStringBuilder.setSpan(new StyleSpan(1), paramInt3, paramInt4, j);
-      break label58;
-      if (paramInt5 == 0) {
-        break label58;
-      }
-      paramSpannableStringBuilder.setSpan(new StyleSpan(2), paramInt3, paramInt4, j);
-      break label58;
     }
   }
   
@@ -146,35 +133,30 @@ public final class Tx3gDecoder
   
   private void decodeInitializationData(List<byte[]> paramList)
   {
+    String str = "sans-serif";
+    boolean bool = false;
     if ((paramList != null) && (paramList.size() == 1) && ((((byte[])paramList.get(0)).length == 48) || (((byte[])paramList.get(0)).length == 53)))
     {
       byte[] arrayOfByte = (byte[])paramList.get(0);
       this.defaultFontFace = arrayOfByte[24];
       this.defaultColorRgba = ((arrayOfByte[26] & 0xFF) << 24 | (arrayOfByte[27] & 0xFF) << 16 | (arrayOfByte[28] & 0xFF) << 8 | arrayOfByte[29] & 0xFF);
-      if ("Serif".equals(new String(arrayOfByte, 43, arrayOfByte.length - 43)))
-      {
+      paramList = str;
+      if ("Serif".equals(new String(arrayOfByte, 43, arrayOfByte.length - 43))) {
         paramList = "serif";
-        this.defaultFontFamily = paramList;
-        this.calculatedVideoTrackHeight = (arrayOfByte[25] * 20);
-        if ((arrayOfByte[0] & 0x20) == 0) {
-          break label244;
-        }
       }
-      label244:
-      for (boolean bool = true;; bool = false)
+      this.defaultFontFamily = paramList;
+      this.calculatedVideoTrackHeight = (arrayOfByte[25] * 20);
+      if ((arrayOfByte[0] & 0x20) != 0) {
+        bool = true;
+      }
+      this.customVerticalPlacement = bool;
+      if (this.customVerticalPlacement)
       {
-        this.customVerticalPlacement = bool;
-        if (!this.customVerticalPlacement) {
-          break label249;
-        }
         int i = arrayOfByte[10];
         this.defaultVerticalPlacement = ((arrayOfByte[11] & 0xFF | (i & 0xFF) << 8) / this.calculatedVideoTrackHeight);
         this.defaultVerticalPlacement = Util.constrainValue(this.defaultVerticalPlacement, 0.0F, 0.95F);
         return;
-        paramList = "sans-serif";
-        break;
       }
-      label249:
       this.defaultVerticalPlacement = 0.85F;
       return;
     }
@@ -187,15 +169,15 @@ public final class Tx3gDecoder
   
   private static String readSubtitleText(ParsableByteArray paramParsableByteArray)
   {
-    if (paramParsableByteArray.bytesLeft() >= 2) {}
-    int i;
-    for (boolean bool = true;; bool = false)
-    {
-      assertTrue(bool);
-      i = paramParsableByteArray.readUnsignedShort();
-      if (i != 0) {
-        break;
-      }
+    boolean bool;
+    if (paramParsableByteArray.bytesLeft() >= 2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    assertTrue(bool);
+    int i = paramParsableByteArray.readUnsignedShort();
+    if (i == 0) {
       return "";
     }
     if (paramParsableByteArray.bytesLeft() >= 2)
@@ -208,7 +190,7 @@ public final class Tx3gDecoder
     return paramParsableByteArray.readString(i, Charset.forName("UTF-8"));
   }
   
-  public Subtitle decode(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
+  protected Subtitle decode(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     this.parsableByteArray.reset(paramArrayOfByte, paramInt);
     paramArrayOfByte = readSubtitleText(this.parsableByteArray);
@@ -219,57 +201,56 @@ public final class Tx3gDecoder
     attachFontFace(paramArrayOfByte, this.defaultFontFace, 0, 0, paramArrayOfByte.length(), 16711680);
     attachColor(paramArrayOfByte, this.defaultColorRgba, -1, 0, paramArrayOfByte.length(), 16711680);
     attachFontFamily(paramArrayOfByte, this.defaultFontFamily, "sans-serif", 0, paramArrayOfByte.length(), 16711680);
-    float f1 = this.defaultVerticalPlacement;
-    if (this.parsableByteArray.bytesLeft() >= 8)
+    float f2;
+    for (float f1 = this.defaultVerticalPlacement; this.parsableByteArray.bytesLeft() >= 8; f1 = f2)
     {
       int i = this.parsableByteArray.getPosition();
       int j = this.parsableByteArray.readInt();
-      paramInt = this.parsableByteArray.readInt();
-      if (paramInt == TYPE_STYL)
+      int k = this.parsableByteArray.readInt();
+      int m = TYPE_STYL;
+      boolean bool = true;
+      paramBoolean = true;
+      paramInt = 0;
+      if (k == m)
       {
-        if (this.parsableByteArray.bytesLeft() >= 2) {}
-        for (paramBoolean = true;; paramBoolean = false)
+        if (this.parsableByteArray.bytesLeft() < 2) {
+          paramBoolean = false;
+        }
+        assertTrue(paramBoolean);
+        k = this.parsableByteArray.readUnsignedShort();
+        for (;;)
         {
-          assertTrue(paramBoolean);
-          int k = this.parsableByteArray.readUnsignedShort();
-          paramInt = 0;
-          for (;;)
-          {
-            f2 = f1;
-            if (paramInt >= k) {
-              break;
-            }
-            applyStyleRecord(this.parsableByteArray, paramArrayOfByte);
-            paramInt += 1;
+          f2 = f1;
+          if (paramInt >= k) {
+            break;
           }
+          applyStyleRecord(this.parsableByteArray, paramArrayOfByte);
+          paramInt += 1;
         }
       }
-      float f2 = f1;
-      if (paramInt == TYPE_TBOX)
+      f2 = f1;
+      if (k == TYPE_TBOX)
       {
         f2 = f1;
-        if (this.customVerticalPlacement) {
-          if (this.parsableByteArray.bytesLeft() < 2) {
-            break label276;
+        if (this.customVerticalPlacement)
+        {
+          if (this.parsableByteArray.bytesLeft() >= 2) {
+            paramBoolean = bool;
+          } else {
+            paramBoolean = false;
           }
+          assertTrue(paramBoolean);
+          f2 = Util.constrainValue(this.parsableByteArray.readUnsignedShort() / this.calculatedVideoTrackHeight, 0.0F, 0.95F);
         }
       }
-      label276:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        assertTrue(paramBoolean);
-        f2 = Util.constrainValue(this.parsableByteArray.readUnsignedShort() / this.calculatedVideoTrackHeight, 0.0F, 0.95F);
-        this.parsableByteArray.setPosition(i + j);
-        f1 = f2;
-        break;
-      }
+      this.parsableByteArray.setPosition(i + j);
     }
     return new Tx3gSubtitle(new Cue(paramArrayOfByte, null, f1, 0, 0, 1.4E-45F, -2147483648, 1.4E-45F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.tx3g.Tx3gDecoder
  * JD-Core Version:    0.7.0.1
  */

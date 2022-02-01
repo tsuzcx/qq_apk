@@ -1,149 +1,308 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.au.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.protocal.protobuf.bfh;
-import com.tencent.mm.protocal.protobuf.bfi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ai
 {
-  public static bfi uJI;
+  private static final Map<String, Integer> WoU;
   
-  public static void agy(String paramString)
+  static
   {
-    AppMethodBeat.i(124176);
-    if (b.tM((String)g.RL().Ru().get(274436, null)))
-    {
-      AppMethodBeat.o(124176);
-      return;
-    }
-    if (!t.nU(paramString))
-    {
-      AppMethodBeat.o(124176);
-      return;
-    }
-    if (uJI == null) {
-      cZA();
-    }
-    long l1 = System.currentTimeMillis();
-    Object localObject1 = null;
-    int i = 0;
-    Object localObject2;
-    if (i < uJI.jJv.size())
-    {
-      localObject2 = (bfh)uJI.jJv.get(i);
-      long l2 = (l1 - ((bfh)localObject2).xux) / 86400000L;
-      ((bfh)localObject2).xuw *= Math.pow(0.98D, l2);
-      ((bfh)localObject2).xux = (l2 * 86400000L + ((bfh)localObject2).xux);
-      ab.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((bfh)localObject2).xuw), Long.valueOf(((bfh)localObject2).xux), ((bfh)localObject2).Username });
-      if (!((bfh)localObject2).Username.equals(paramString)) {
-        break label479;
-      }
-      localObject1 = localObject2;
-    }
-    label479:
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (localObject1 == null)
-      {
-        localObject1 = new bfh();
-        ((bfh)localObject1).xuw = 1.0D;
-        ((bfh)localObject1).xux = l1;
-        ((bfh)localObject1).Username = paramString;
-        uJI.jJv.add(localObject1);
-        ab.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
-      }
-      for (;;)
-      {
-        Collections.sort(uJI.jJv, new Comparator() {});
-        i = uJI.jJv.size() - 1;
-        while ((i < uJI.jJv.size()) && (uJI.jJv.size() > 8))
-        {
-          if (((bfh)uJI.jJv.get(i)).xuw < 0.5D) {
-            uJI.jJv.remove(i);
-          }
-          i += 1;
-        }
-        ((bfh)localObject1).xuw += 1.0D;
-        ab.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((bfh)localObject1).xuw) });
-      }
-      paramString = ah.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
-      try
-      {
-        localObject1 = cZx();
-        localObject2 = Base64.encodeToString(uJI.toByteArray(), 0);
-        paramString.edit().putString((String)localObject1, (String)localObject2).commit();
-        ab.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
-        AppMethodBeat.o(124176);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        AppMethodBeat.o(124176);
-        return;
-      }
-    }
+    AppMethodBeat.i(117657);
+    WoU = new HashMap();
+    AppMethodBeat.o(117657);
   }
   
-  public static bfi cZA()
+  private static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, String paramString6, int paramInt4)
   {
-    AppMethodBeat.i(124174);
+    AppMethodBeat.i(117652);
+    a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramBoolean1, paramString4, paramBoolean2, paramString5, paramString6, paramInt4, false);
+    AppMethodBeat.o(117652);
+  }
+  
+  private static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, String paramString6, int paramInt4, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(117653);
+    int i;
+    String str2;
     Object localObject;
-    if (uJI == null)
+    label61:
+    int j;
+    label69:
+    long l;
+    String str1;
+    label109:
+    int m;
+    if (paramBoolean2)
     {
-      localObject = cZx();
-      uJI = new bfi();
-      localObject = ah.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
-      if (!bo.isNullOrNil((String)localObject)) {
-        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+      i = 1;
+      if ((paramInt1 == 1) || (paramInt1 == 10) || (paramInt1 == 12)) {
+        i = 0;
+      }
+      str2 = Util.nullAs(paramString1, "");
+      String str3 = Util.nullAs(paramString2, "");
+      if (!TextUtils.isEmpty(paramString3)) {
+        break label497;
+      }
+      localObject = "";
+      if (!paramBoolean1) {
+        break label504;
+      }
+      j = 1;
+      String str4 = Util.nullAs(paramString4, "");
+      l = System.currentTimeMillis();
+      String str5 = getNetworkType();
+      String str6 = Util.nullAs(paramString5, "");
+      if (!TextUtils.isEmpty(paramString6)) {
+        break label510;
+      }
+      str1 = "";
+      m = asU(paramInt2);
+      if (!paramBoolean3) {
+        break label517;
+      }
+      k = 1;
+      label123:
+      Log.i("MicroMsg.WebSearch.WebSearchActionTracer", "reporting 14904 %s ", new Object[] { w(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, str3, localObject, Integer.valueOf(paramInt3), Integer.valueOf(j), str4, Long.valueOf(l), str5, Integer.valueOf(i), str6, str1, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) }) });
+      localObject = f.Ozc;
+      str1 = Util.nullAs(paramString1, "");
+      str2 = Util.nullAs(paramString2, "");
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = "";
+      }
+      if (!paramBoolean1) {
+        break label523;
+      }
+      j = 1;
+      label303:
+      paramString3 = Util.nullAs(paramString4, "");
+      l = System.currentTimeMillis();
+      paramString4 = getNetworkType();
+      paramString5 = Util.nullAs(paramString5, "");
+      paramString2 = paramString6;
+      if (TextUtils.isEmpty(paramString6)) {
+        paramString2 = "";
+      }
+      m = asU(paramInt2);
+      if (!paramBoolean3) {
+        break label529;
       }
     }
-    try
+    label517:
+    label523:
+    label529:
+    for (int k = 1;; k = 0)
     {
-      uJI.parseFrom((byte[])localObject);
-      label67:
-      if (b.tM((String)g.RL().Ru().get(274436, null))) {
-        uJI.jJv.clear();
-      }
-      localObject = uJI;
-      AppMethodBeat.o(124174);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      break label67;
+      ((f)localObject).b(14904, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str2, paramString1, Integer.valueOf(paramInt3), Integer.valueOf(j), paramString3, Long.valueOf(l), paramString4, Integer.valueOf(i), paramString5, paramString2, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) });
+      AppMethodBeat.o(117653);
+      return;
+      i = 2;
+      break;
+      label497:
+      localObject = paramString3;
+      break label61;
+      label504:
+      j = 0;
+      break label69;
+      label510:
+      str1 = paramString6;
+      break label109;
+      k = 0;
+      break label123;
+      j = 0;
+      break label303;
     }
   }
   
-  public static String cZx()
+  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
   {
-    AppMethodBeat.i(124175);
-    String str = "key_pb_most_search_biz_list" + r.Zn();
-    AppMethodBeat.o(124175);
-    return str;
+    AppMethodBeat.i(117644);
+    a(paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean, paramString4, paramString5, paramInt3, "");
+    AppMethodBeat.o(117644);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean, String paramString4, String paramString5, int paramInt3, String paramString6)
+  {
+    AppMethodBeat.i(117645);
+    a(4, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean, paramString4, true, paramString5, paramString6, paramInt3);
+    AppMethodBeat.o(117645);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, int paramInt3)
+  {
+    AppMethodBeat.i(117646);
+    a(paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean1, paramString4, paramBoolean2, paramString5, paramInt3, "");
+    AppMethodBeat.o(117646);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, int paramInt3, String paramString6)
+  {
+    AppMethodBeat.i(117647);
+    a(7, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean1, paramString4, paramBoolean2, paramString5, paramString6, paramInt3);
+    AppMethodBeat.o(117647);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, int paramInt2)
+  {
+    AppMethodBeat.i(315331);
+    a(207, paramInt1, paramString1, paramString2, paramString3, 0, true, paramString4, paramBoolean, paramString5, "", paramInt2);
+    AppMethodBeat.o(315331);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt2)
+  {
+    AppMethodBeat.i(117650);
+    a(10, paramInt1, paramString1, paramString2, "", 0, paramBoolean, "", true, paramString3, "", paramInt2);
+    AppMethodBeat.o(117650);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt2, String paramString4, String paramString5)
+  {
+    AppMethodBeat.i(315335);
+    if ((paramInt1 == 3) || (paramInt1 == 20) || (paramInt1 == 10000) || (paramInt1 == 103)) {
+      a(300, paramInt1, paramString1, paramString2, paramString5, 0, paramBoolean, "", true, paramString3, paramString4, paramInt2, false);
+    }
+    AppMethodBeat.o(315335);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(117649);
+    a(12, paramInt1, paramString1, paramString2, "", 0, paramBoolean1, "", true, paramString3, paramString4, paramInt2, paramBoolean2);
+    AppMethodBeat.o(117649);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2, String paramString5)
+  {
+    AppMethodBeat.i(315337);
+    if ((paramInt1 == 3) || (paramInt1 == 20) || (paramInt1 == 10000) || (paramInt1 == 103)) {
+      a(301, paramInt1, paramString1, paramString2, paramString5, 0, paramBoolean1, "", true, paramString3, paramString4, paramInt2, paramBoolean2);
+    }
+    AppMethodBeat.o(315337);
+  }
+  
+  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(117651);
+    a(14, paramInt1, paramString1, paramString2, "", 0, paramBoolean1, "", true, paramString3, "", paramInt2, paramBoolean2);
+    if (paramInt1 == 20) {
+      a(214, paramInt1, paramString1, paramString2, "", 0, paramBoolean1, "", true, paramString3, "", paramInt2, paramBoolean2);
+    }
+    AppMethodBeat.o(117651);
+  }
+  
+  private static int asU(int paramInt)
+  {
+    AppMethodBeat.i(117654);
+    switch (paramInt)
+    {
+    default: 
+      paramInt = aj.asY(0);
+      AppMethodBeat.o(117654);
+      return paramInt;
+    case 201: 
+      paramInt = aj.ipQ();
+      AppMethodBeat.o(117654);
+      return paramInt;
+    }
+    paramInt = aj.asY(1);
+    AppMethodBeat.o(117654);
+    return paramInt;
+  }
+  
+  public static void b(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2, String paramString5)
+  {
+    AppMethodBeat.i(315340);
+    if ((paramInt1 == 3) || (paramInt1 == 20) || (paramInt1 == 10000) || (paramInt1 == 103)) {
+      a(302, paramInt1, paramString1, paramString2, paramString5, 0, paramBoolean1, "", true, paramString3, paramString4, paramInt2, paramBoolean2);
+    }
+    AppMethodBeat.o(315340);
+  }
+  
+  public static void c(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2, String paramString5)
+  {
+    AppMethodBeat.i(117648);
+    a(1, paramInt1, paramString1, paramString2, paramString5, 0, paramBoolean1, "", true, paramString3, paramString4, paramInt2, paramBoolean2);
+    AppMethodBeat.o(117648);
+  }
+  
+  public static void d(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  {
+    AppMethodBeat.i(315329);
+    a(204, paramInt1, paramString1, paramString2, paramString3, 0, true, paramString4, true, null, "", paramInt2);
+    AppMethodBeat.o(315329);
+  }
+  
+  private static String getNetworkType()
+  {
+    AppMethodBeat.i(117655);
+    Context localContext = MMApplicationContext.getContext();
+    if (!NetStatusUtil.isConnected(localContext))
+    {
+      Log.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, not connected");
+      AppMethodBeat.o(117655);
+      return "fail";
+    }
+    Log.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, type = ".concat(String.valueOf(NetStatusUtil.getNetType(localContext))));
+    if (NetStatusUtil.is2G(localContext))
+    {
+      Log.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 2g");
+      AppMethodBeat.o(117655);
+      return "2g";
+    }
+    if (NetStatusUtil.is3G(localContext))
+    {
+      Log.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 3g");
+      AppMethodBeat.o(117655);
+      return "3g";
+    }
+    if (NetStatusUtil.is4G(localContext))
+    {
+      Log.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 4g");
+      AppMethodBeat.o(117655);
+      return "4g";
+    }
+    if (NetStatusUtil.isWifi(localContext))
+    {
+      Log.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, wifi");
+      AppMethodBeat.o(117655);
+      return "wifi";
+    }
+    AppMethodBeat.o(117655);
+    return "fail";
+  }
+  
+  public static void ipN() {}
+  
+  private static String w(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(117656);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < 15)
+    {
+      localStringBuilder.append(String.valueOf(paramVarArgs[i]).replace(',', ' ')).append(',');
+      i += 1;
+    }
+    localStringBuilder.append(String.valueOf(paramVarArgs[15]));
+    paramVarArgs = localStringBuilder.toString();
+    AppMethodBeat.o(117656);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ai
  * JD-Core Version:    0.7.0.1
  */

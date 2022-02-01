@@ -1,21 +1,16 @@
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.DialogUtil;
-import java.util.Timer;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.TimerTask;
 
 class gae
-  implements View.OnClickListener
+  extends TimerTask
 {
-  gae(gad paramgad, Dialog paramDialog) {}
+  gae(gad paramgad, ProgressDialog paramProgressDialog) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = DialogUtil.a(this.jdField_a_of_type_Gad.a, 2131562645);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    paramView.show();
-    new Timer().schedule(new gaf(this, paramView), 100L);
+    DumpMemInfoHandler.a(this.jdField_a_of_type_Gad.a.a);
+    this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
   }
 }
 

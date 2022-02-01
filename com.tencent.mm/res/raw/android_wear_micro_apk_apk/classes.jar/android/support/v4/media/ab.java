@@ -2,17 +2,33 @@ package android.support.v4.media;
 
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.support.v4.b.a;
 import android.support.v4.b.m;
 import java.util.HashMap;
 import java.util.List;
 
 final class ab
+  implements IBinder.DeathRecipient
 {
-  String hc;
-  Bundle hd;
-  ae he;
-  aa hf;
-  HashMap<String, List<m<IBinder, Bundle>>> hg = new HashMap();
+  String ja;
+  Bundle jb;
+  ae jc;
+  aa jd;
+  HashMap<String, List<m<IBinder, Bundle>>> je = new HashMap();
+  
+  ab(MediaBrowserServiceCompat paramMediaBrowserServiceCompat) {}
+  
+  public final void binderDied()
+  {
+    this.iY.iT.post(new Runnable()
+    {
+      public final void run()
+      {
+        ab.this.iY.iR.remove(ab.this.jc.asBinder());
+      }
+    });
+  }
 }
 
 

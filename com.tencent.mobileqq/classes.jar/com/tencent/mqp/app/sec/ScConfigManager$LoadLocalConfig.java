@@ -5,28 +5,28 @@ import com.tencent.mobileqq.app.QQAppInterface;
 class ScConfigManager$LoadLocalConfig
   implements Runnable
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private String b;
+  private QQAppInterface c;
   
   public ScConfigManager$LoadLocalConfig(ScConfigManager paramScConfigManager, QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramQQAppInterface;
+    this.b = paramString;
+    this.a = paramBoolean;
   }
   
   public void run()
   {
-    ScConfigManager.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    ScConfigManager.a(this.this$0, this.b);
+    if (this.a) {
+      this.this$0.a(this.c, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.ScConfigManager.LoadLocalConfig
  * JD-Core Version:    0.7.0.1
  */

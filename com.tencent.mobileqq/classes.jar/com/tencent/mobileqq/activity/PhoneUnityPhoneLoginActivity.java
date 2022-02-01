@@ -1,60 +1,73 @@
 package com.tencent.mobileqq.activity;
 
-import adnn;
-import amci;
-import amcj;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import bdin;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcHandler;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private amcj jdField_a_of_type_Amcj = new adnn(this);
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private FormSwitchItem a;
+  private byte[] b;
+  private SecSvcObserver c = new PhoneUnityPhoneLoginActivity.1(this);
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561145);
-    setTitle(getString(2131695168));
-    setContentBackgroundResource(2130838592);
-    this.leftView.setText(2131699798);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131371766));
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+    super.setContentView(2131627633);
+    setTitle(getString(2131892457));
+    setContentBackgroundResource(2130838958);
+    this.leftView.setText(2131897269);
+    this.a = ((FormSwitchItem)super.findViewById(2131440038));
+    paramBundle = this.a;
+    if (paramBundle != null) {
+      paramBundle.setOnCheckedChangeListener(this);
     }
-    addObserver(this.jdField_a_of_type_Amcj);
+    addObserver(this.c);
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
       paramBundle = paramBundle.getExtras();
       if (paramBundle != null) {
-        this.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("phone_num_login_sig");
+        this.b = paramBundle.getByteArray("phone_num_login_sig");
       }
     }
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Amcj);
+    removeObserver(this.c);
     super.doOnDestroy();
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("phone_num_login_result", this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a());
+    localIntent.putExtra("phone_num_login_result", this.a.a());
     super.setResult(-1, localIntent);
     super.finish();
     return false;
@@ -62,42 +75,45 @@ public class PhoneUnityPhoneLoginActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool;
-    if (paramCompoundButton == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    if (paramCompoundButton == this.a.getSwitch())
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-        break label76;
+      this.a.setOnCheckedChangeListener(null);
+      Object localObject = this.a;
+      ((FormSwitchItem)localObject).setChecked(((FormSwitchItem)localObject).a() ^ true);
+      this.a.setOnCheckedChangeListener(this);
+      if (!NetworkUtil.isNetSupport(this))
+      {
+        QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
       }
-      bool = false;
-      paramCompoundButton.setChecked(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      if (bdin.d(this)) {
-        break label81;
+      else
+      {
+        localObject = (SecSvcHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+        if (localObject != null)
+        {
+          byte[] arrayOfByte = this.b;
+          if (arrayOfByte != null) {
+            if (paramBoolean) {
+              ((SecSvcHandler)localObject).a(arrayOfByte);
+            } else {
+              ((SecSvcHandler)localObject).b(arrayOfByte);
+            }
+          }
+        }
       }
-      QQToast.a(this, getString(2131692398), 0).b(getTitleBarHeight());
     }
-    label76:
-    label81:
-    do
-    {
-      return;
-      bool = true;
-      break;
-      paramCompoundButton = (amci)this.app.a(34);
-    } while ((paramCompoundButton == null) || (this.jdField_a_of_type_ArrayOfByte == null));
-    if (paramBoolean)
-    {
-      paramCompoundButton.a(this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
-    paramCompoundButton.b(this.jdField_a_of_type_ArrayOfByte);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity
  * JD-Core Version:    0.7.0.1
  */

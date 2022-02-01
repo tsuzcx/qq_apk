@@ -29,14 +29,15 @@ public final class QPSingleUpdateProto$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56 }, new String[] { "uint32_update_vailable", "uint32_force_download", "uint32_download_type", "bytes_packet_url", "bytes_packet_hash", "rpt_file_item_list", "uint32_getphonenumber_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56 }, new String[] { "uint32_update_vailable", "uint32_force_download", "uint32_download_type", "bytes_packet_url", "bytes_packet_hash", "rpt_file_item_list", "uint32_getphonenumber_flag" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, null, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdateProto.RspBody
  * JD-Core Version:    0.7.0.1
  */

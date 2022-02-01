@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b$c
 {
-  public static final int mVT;
-  public static final TextPaint mVU;
-  public static final int mVV;
-  public static final TextPaint mVW;
-  public static final int mVX;
-  public static final TextPaint mVY;
-  public static final int mVZ;
-  public static final TextPaint mWa;
+  public static final int HwO;
+  public static final TextPaint HwP;
+  public static final int HwQ;
+  public static final TextPaint HwR;
+  public static final int HwS;
+  public static final TextPaint HwT;
+  public static final int HwU;
+  public static final TextPaint HwV;
   
   static
   {
-    AppMethodBeat.i(61719);
-    mVT = a.ao(ah.getContext(), 2131427501);
-    mVU = new TextPaint();
-    mVV = a.ao(ah.getContext(), 2131427809);
-    mVW = new TextPaint();
-    mVX = a.ao(ah.getContext(), 2131427758);
-    mVY = new TextPaint();
-    mVZ = a.ao(ah.getContext(), 2131427860);
-    mWa = new TextPaint();
-    mVU.setTextSize(mVT);
-    mVW.setTextSize(mVV);
-    mVY.setTextSize(mVX);
-    mWa.setTextSize(mVZ);
-    AppMethodBeat.o(61719);
+    AppMethodBeat.i(111812);
+    HwO = a.br(MMApplicationContext.getContext(), p.b.BigTextSize);
+    HwP = new TextPaint();
+    HwQ = a.br(MMApplicationContext.getContext(), p.b.NormalTextSize);
+    HwR = new TextPaint();
+    HwS = a.br(MMApplicationContext.getContext(), p.b.HintTextSize);
+    HwT = new TextPaint();
+    HwU = a.br(MMApplicationContext.getContext(), p.b.SmallerTextSize);
+    HwV = new TextPaint();
+    HwP.setTextSize(HwO);
+    HwR.setTextSize(HwQ);
+    HwT.setTextSize(HwS);
+    HwV.setTextSize(HwU);
+    AppMethodBeat.o(111812);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

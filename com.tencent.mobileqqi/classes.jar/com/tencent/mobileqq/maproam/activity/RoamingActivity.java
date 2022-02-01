@@ -39,9 +39,10 @@ import com.tencent.tencentmap.mapsdk.map.MapController;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.XListView;
 import com.tencent.widget.XListView.MotionEventInterceptor;
-import gbk;
+import gbj;
+import gbl;
 import gbm;
-import gbn;
+import gbo;
 import gbp;
 import gbq;
 import gbr;
@@ -51,7 +52,6 @@ import gbu;
 import gbv;
 import gbw;
 import gbx;
-import gby;
 import java.util.List;
 
 public class RoamingActivity
@@ -70,16 +70,16 @@ public class RoamingActivity
   Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   public Button a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new gbr(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new gbq(this);
   public RoamLocalSearchBar a;
-  RoamSearchDialog.OnRoamResultObserver jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver = new gbv(this);
-  RoamSearchDialog.OnSearchResultItemClick jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick = new gbu(this);
+  RoamSearchDialog.OnRoamResultObserver jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver = new gbu(this);
+  RoamSearchDialog.OnSearchResultItemClick jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick = new gbt(this);
   public RoamingMapView a;
   public GeoPoint a;
   public MapController a;
-  gby jdField_a_of_type_Gby = new gby(this, 1, 1, 1, 8);
+  gbx jdField_a_of_type_Gbx = new gbx(this, 1, 1, 1, 8);
   public Boolean a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new gbk(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new gbj(this);
   public View b;
   Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   public TextView b;
@@ -135,13 +135,13 @@ public class RoamingActivity
       return;
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    a(localGeoPoint, this.jdField_b_of_type_AndroidWidgetTextView, new gbm(this));
+    a(localGeoPoint, this.jdField_b_of_type_AndroidWidgetTextView, new gbl(this));
   }
   
   private void a(GeoPoint paramGeoPoint, TextView paramTextView, RoamingActivity.GetAddressTaskListener paramGetAddressTaskListener)
   {
     if (paramGeoPoint != null) {
-      new gbx(paramGeoPoint, paramTextView, paramGetAddressTaskListener).execute(new Context[] { getApplicationContext() });
+      new gbw(paramGeoPoint, paramTextView, paramGetAddressTaskListener).execute(new Context[] { getApplicationContext() });
     }
   }
   
@@ -150,7 +150,7 @@ public class RoamingActivity
     if ((getSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0).getBoolean("roaming_usage_tips", true)) && (VipUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface)))
     {
       this.jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131233348).setOnClickListener(this);
+      this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131233347).setOnClickListener(this);
     }
   }
   
@@ -183,7 +183,7 @@ public class RoamingActivity
         return;
         localObject = findViewById(16908290);
       } while (localObject == null);
-      View localView = findViewById(2131231448);
+      View localView = findViewById(2131231447);
       localObject = new ChangeViewSizeAnimation(this.jdField_c_of_type_AndroidViewViewGroup, this.jdField_c_of_type_AndroidViewViewGroup.getWidth(), this.jdField_c_of_type_AndroidViewViewGroup.getWidth(), this.jdField_c_of_type_AndroidViewViewGroup.getHeight(), ((View)localObject).getHeight() - localView.getHeight());
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.setMapMode(1);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -204,7 +204,7 @@ public class RoamingActivity
   
   private void m()
   {
-    DialogUtil.a(this, 230).setTitle(getString(2131562948)).setMessage(2131562452).setPositiveButton(getString(2131562540), new gbw(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131562948)).setMessage(2131562452).setPositiveButton(getString(2131562540), new gbv(this)).show();
   }
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -298,10 +298,10 @@ public class RoamingActivity
     if ((!jdField_b_of_type_Boolean) && (this.e == null)) {
       throw new AssertionError();
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.e.findViewById(2131233350));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233351));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.e.findViewById(2131233349));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233350));
     this.jdField_d_of_type_AndroidWidgetTextView.setText(2131562017);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233352));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233351));
     Object localObject = this.jdField_a_of_type_AndroidWidgetButton;
     int i;
     if (VipUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface))
@@ -309,15 +309,15 @@ public class RoamingActivity
       i = 2131562171;
       ((Button)localObject).setText(i);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131233353));
-      this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.e.findViewById(2131233345));
-      this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)this.e.findViewById(2131233347));
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView = ((RoamingMapView)this.e.findViewById(2131233243));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131233352));
+      this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.e.findViewById(2131233344));
+      this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)this.e.findViewById(2131233346));
+      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView = ((RoamingMapView)this.e.findViewById(2131233242));
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.setObserver(this);
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.setBuiltInZoomControls(false);
       i = getIntent().getIntExtra("mode", 0);
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.setMapMode(i);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131233248));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131233247));
       this.jdField_b_of_type_AndroidWidgetTextView.setClickable(true);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839175, 0);
@@ -328,16 +328,16 @@ public class RoamingActivity
       localObject = "查看此地附近的人";
       label320:
       localTextView.setContentDescription((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.e.findViewById(2131233246));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.e.findViewById(2131233245));
       localObject = BitmapManager.a(getResources(), 2130839673);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, ((Bitmap)localObject).getHeight());
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.e.findViewById(2131233247));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.e.findViewById(2131233246));
       this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839675);
       this.jdField_c_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, ((Bitmap)localObject).getHeight());
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar = ((RoamLocalSearchBar)this.e.findViewById(2131233346));
+      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar = ((RoamLocalSearchBar)this.e.findViewById(2131233345));
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver, this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick);
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController = this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.getController();
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.getMaxZoomLevel() - 1);
@@ -348,13 +348,13 @@ public class RoamingActivity
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setCenter((GeoPoint)localObject);
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = ((GeoPoint)localObject);
       this.jdField_b_of_type_ComTencentTencentmapMapsdkMapGeoPoint = ((GeoPoint)localObject);
-      a((GeoPoint)localObject, this.jdField_c_of_type_AndroidWidgetTextView, new gbp(this));
+      a((GeoPoint)localObject, this.jdField_c_of_type_AndroidWidgetTextView, new gbo(this));
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidViewView = this.e.findViewById(2131233349);
+      this.jdField_b_of_type_AndroidViewView = this.e.findViewById(2131233348);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.post(new gbq(this, i));
+      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.post(new gbp(this, i));
       return this.e;
       i = 2131562277;
       break;
@@ -442,7 +442,7 @@ public class RoamingActivity
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.onDestroy();
     }
     b(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
-    this.jdField_a_of_type_Gby = null;
+    this.jdField_a_of_type_Gbx = null;
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver = null;
     Utils.a();
     SOSOMapLBSApi.getInstance().removeLocationUpdate();
@@ -456,13 +456,13 @@ public class RoamingActivity
       return;
     }
     showDialog(0);
-    SOSOMapLBSApi.getInstance().requestLocationUpdate(getApplicationContext(), this.jdField_a_of_type_Gby);
+    SOSOMapLBSApi.getInstance().requestLocationUpdate(getApplicationContext(), this.jdField_a_of_type_Gbx);
   }
   
   protected void f()
   {
     super.f();
-    this.m = ((TextView)findViewById(2131231380));
+    this.m = ((TextView)findViewById(2131231379));
     b(this.m);
     this.m.setText("收起");
     this.m.setVisibility(8);
@@ -477,7 +477,7 @@ public class RoamingActivity
   
   void j()
   {
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new gbn(this));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new gbm(this));
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -508,7 +508,7 @@ public class RoamingActivity
       } while (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.a() != 0);
       paramAnimation = this.jdField_b_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
     } while (paramAnimation == null);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.animateTo(paramAnimation, new gbt(this));
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.animateTo(paramAnimation, new gbs(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -521,9 +521,9 @@ public class RoamingActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131231380: 
-    case 2131233349: 
-    case 2131233248: 
+    case 2131231379: 
+    case 2131233348: 
+    case 2131233247: 
       do
       {
         return;
@@ -544,9 +544,9 @@ public class RoamingActivity
       this.v = 1;
       a(true, false);
       return;
-      Utils.a(this, 2131562519, getResources().getString(2131563244), new gbs(this), null);
+      Utils.a(this, 2131562519, getResources().getString(2131563244), new gbr(this), null);
       return;
-    case 2131233348: 
+    case 2131233347: 
       this.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
       getSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0).edit().putBoolean("roaming_usage_tips", false).commit();
       return;

@@ -1,18 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.ims.signature.SignatureReport;
 import com.tencent.mobileqq.app.StartAppCheckHandler;
 
 public class fgw
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
+  public int a;
+  public long a;
+  signature.SignatureReport jdField_a_of_type_ComTencentImsSignature$SignatureReport;
+  fgv jdField_a_of_type_Fgv;
   public String a;
+  String b;
+  String c;
+  String d;
   
-  public fgw(StartAppCheckHandler paramStartAppCheckHandler, String paramString, Context paramContext, Intent paramIntent)
+  public fgw(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
   }
 }
 

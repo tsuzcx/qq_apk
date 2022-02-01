@@ -25,8 +25,8 @@ public class QQAVImageFilter
   protected int mGLProgId;
   protected int mGLUniformTexture;
   private boolean mIsInitialized = false;
-  public int mOutputHeight;
-  public int mOutputWidth;
+  protected int mOutputHeight;
+  protected int mOutputWidth;
   protected String mQQAVEffectID = null;
   protected String mQQAVEffectName = null;
   protected int mQQAVEffectType;
@@ -179,15 +179,18 @@ public class QQAVImageFilter
   
   public void onDraw2(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == -1) || (paramInt1 == -1)) {
-      return;
+    if (paramInt2 != -1)
+    {
+      if (paramInt1 == -1) {
+        return;
+      }
+      GLES20.glBindFramebuffer(36160, paramInt2);
+      GLES20.glViewport(0, 0, getOutputWidth(), getOutputHeight());
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+      GLES20.glClear(16640);
+      onDraw(paramInt1, this.cubeBuffer, this.textureBuffer);
+      GLES20.glBindFramebuffer(36160, 0);
     }
-    GLES20.glBindFramebuffer(36160, paramInt2);
-    GLES20.glViewport(0, 0, getOutputWidth(), getOutputHeight());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glClear(16640);
-    onDraw(paramInt1, this.cubeBuffer, this.textureBuffer);
-    GLES20.glBindFramebuffer(36160, 0);
   }
   
   protected void onDrawArraysAfter() {}
@@ -272,7 +275,7 @@ public class QQAVImageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -371,8 +371,9 @@ public class JNI
   
   public void setMapCallbackGetGLContext(mh parammh)
   {
-    if (this.a != null) {
-      this.a.setMapCallbackGetGLContext(parammh);
+    JNICallback localJNICallback = this.a;
+    if (localJNICallback != null) {
+      localJNICallback.setMapCallbackGetGLContext(parammh);
     }
   }
   
@@ -380,7 +381,7 @@ public class JNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.engine.jni.JNI
  * JD-Core Version:    0.7.0.1
  */

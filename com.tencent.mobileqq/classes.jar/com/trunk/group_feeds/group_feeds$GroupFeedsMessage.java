@@ -67,6 +67,7 @@ public final class group_feeds$GroupFeedsMessage
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -77,12 +78,12 @@ public final class group_feeds$GroupFeedsMessage
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 45, 53, 58, 66, 82, 98, 104, 114, 122, 128, 154, 162, 168, 178, 184, 192, 202, 210, 216, 226, 232, 242, 248, 256, 400, 410, 416, 426 }, new String[] { "enum_feeds_type", "rpt_feeds_content", "fixed32_win_width", "fixed32_win_height", "bytes_feeds_author_nickname", "bytes_comment_author_nickname", "bytes_group_nickname", "msg_vote_content", "rpt_my_vote_option_id_list", "rpt_vote_statistic", "rpt_vote_record", "int32_vote_status", "bytes_group_name", "bytes_app_name", "rpt_notify_uin_list", "bytes_app_open_param", "int32_app_id", "uint32_reported_id", "bytes_album_name", "bytes_batch_id", "int32_photo_num", "bytes_msg_resid", "uint32_edu_organization_id", "msg_theme_brief", "uint32_NC_feeds_terinal_ctrl", "rpt_concern_uin", "opt_uint32_ctl_flag", "bytes_extra_data", "uint32_expire_time", "memo_ctrl_info" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), localByteStringMicro9, Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro10, Integer.valueOf(0), null }, GroupFeedsMessage.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 45, 53, 58, 66, 82, 98, 104, 114, 122, 128, 154, 162, 168, 178, 184, 192, 202, 210, 216, 226, 232, 242, 248, 256, 400, 410, 416, 426 }, new String[] { "enum_feeds_type", "rpt_feeds_content", "fixed32_win_width", "fixed32_win_height", "bytes_feeds_author_nickname", "bytes_comment_author_nickname", "bytes_group_nickname", "msg_vote_content", "rpt_my_vote_option_id_list", "rpt_vote_statistic", "rpt_vote_record", "int32_vote_status", "bytes_group_name", "bytes_app_name", "rpt_notify_uin_list", "bytes_app_open_param", "int32_app_id", "uint32_reported_id", "bytes_album_name", "bytes_batch_id", "int32_photo_num", "bytes_msg_resid", "uint32_edu_organization_id", "msg_theme_brief", "uint32_NC_feeds_terinal_ctrl", "rpt_concern_uin", "opt_uint32_ctl_flag", "bytes_extra_data", "uint32_expire_time", "memo_ctrl_info" }, new Object[] { localInteger, null, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, localInteger, null, null, localInteger, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, localInteger, localInteger, localByteStringMicro7, localByteStringMicro8, localInteger, localByteStringMicro9, localInteger, null, localInteger, Long.valueOf(0L), localInteger, localByteStringMicro10, localInteger, null }, GroupFeedsMessage.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.group_feeds.group_feeds.GroupFeedsMessage
  * JD-Core Version:    0.7.0.1
  */

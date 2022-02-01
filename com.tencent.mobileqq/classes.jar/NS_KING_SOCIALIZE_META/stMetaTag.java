@@ -9,7 +9,7 @@ public final class stMetaTag
 {
   public String iconUrl = "";
   public String jumpurl = "";
-  public int tag_type;
+  public int tag_type = 0;
   public String title = "";
   
   public stMetaTag() {}
@@ -32,26 +32,42 @@ public final class stMetaTag
   
   public String toString()
   {
-    return "{title='" + this.title + '\'' + ", jumpurl='" + this.jumpurl + '\'' + ", tag_type=" + this.tag_type + ", iconUrl='" + this.iconUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{title='");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpurl='");
+    localStringBuilder.append(this.jumpurl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tag_type=");
+    localStringBuilder.append(this.tag_type);
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.jumpurl != null) {
-      paramJceOutputStream.write(this.jumpurl, 1);
+    str = this.jumpurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.tag_type, 2);
-    if (this.iconUrl != null) {
-      paramJceOutputStream.write(this.iconUrl, 3);
+    str = this.iconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaTag
  * JD-Core Version:    0.7.0.1
  */

@@ -12,50 +12,48 @@ import com.tencent.mobileqq.R.styleable;
 public class RoundTextView
   extends TextView
 {
-  protected int a;
-  protected Paint a;
-  protected RectF a;
+  protected int a = -1;
+  protected Paint b;
+  protected RectF c;
   
   public RoundTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
   }
   
   public RoundTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RoundTextView);
-    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167194);
+    this.a = paramContext.getColor(0, 2131168464);
     paramContext.recycle();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.b = new Paint();
+      this.b.setAntiAlias(true);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_AndroidGraphicsRectF == null) {
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.b.setColor(this.a);
+    if (this.c == null) {
+      this.c = new RectF();
     }
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, getMeasuredHeight() / 2, getMeasuredHeight() / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.c.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    paramCanvas.drawRoundRect(this.c, getMeasuredHeight() / 2, getMeasuredHeight() / 2, this.b);
     super.onDraw(paramCanvas);
   }
   
   public void setRoundBgColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.widget.RoundTextView
  * JD-Core Version:    0.7.0.1
  */

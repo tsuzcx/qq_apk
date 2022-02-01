@@ -14,20 +14,25 @@ class QQLSActivity$14
     try
     {
       PowerManager localPowerManager = (PowerManager)this.this$0.getSystemService("power");
-      this.this$0.a = localPowerManager.newWakeLock(268435462, "QQLSActivity");
-      this.this$0.a.acquire(10000L);
+      this.this$0.k = localPowerManager.newWakeLock(268435462, "QQLSActivity");
+      this.this$0.k.acquire(10000L);
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQLSActivity", 2, "acquireBrightWakeLock:" + localException.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("acquireBrightWakeLock:");
+        localStringBuilder.append(localException.toString());
+        QLog.e("QQLSActivity", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.14
  * JD-Core Version:    0.7.0.1
  */

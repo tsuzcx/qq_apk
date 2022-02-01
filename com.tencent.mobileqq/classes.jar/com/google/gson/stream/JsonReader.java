@@ -65,149 +65,161 @@ public class JsonReader
     arrayOfInt[i] = 6;
     this.pathNames = new String[32];
     this.pathIndices = new int[32];
-    if (paramReader == null) {
-      throw new NullPointerException("in == null");
+    if (paramReader != null)
+    {
+      this.in = paramReader;
+      return;
     }
-    this.in = paramReader;
+    throw new NullPointerException("in == null");
   }
   
   private void checkLenient()
   {
-    if (!this.lenient) {
-      throw syntaxError("Use JsonReader.setLenient(true) to accept malformed JSON");
+    if (this.lenient) {
+      return;
     }
+    throw syntaxError("Use JsonReader.setLenient(true) to accept malformed JSON");
   }
   
   private void consumeNonExecutePrefix()
   {
     nextNonWhitespace(true);
     this.pos -= 1;
-    if ((this.pos + NON_EXECUTE_PREFIX.length > this.limit) && (!fillBuffer(NON_EXECUTE_PREFIX.length))) {
+    int i = this.pos;
+    char[] arrayOfChar = NON_EXECUTE_PREFIX;
+    if ((i + arrayOfChar.length > this.limit) && (!fillBuffer(arrayOfChar.length))) {
       return;
     }
-    int i = 0;
+    i = 0;
     for (;;)
     {
-      if (i >= NON_EXECUTE_PREFIX.length) {
-        break label80;
-      }
-      if (this.buffer[(this.pos + i)] != NON_EXECUTE_PREFIX[i]) {
+      arrayOfChar = NON_EXECUTE_PREFIX;
+      if (i >= arrayOfChar.length) {
         break;
+      }
+      if (this.buffer[(this.pos + i)] != arrayOfChar[i]) {
+        return;
       }
       i += 1;
     }
-    label80:
-    this.pos += NON_EXECUTE_PREFIX.length;
+    this.pos += arrayOfChar.length;
   }
   
   private boolean fillBuffer(int paramInt)
   {
-    boolean bool2 = false;
     char[] arrayOfChar = this.buffer;
-    this.lineStart -= this.pos;
-    if (this.limit != this.pos)
+    int j = this.lineStart;
+    int i = this.pos;
+    this.lineStart = (j - i);
+    j = this.limit;
+    if (j != i)
     {
-      this.limit -= this.pos;
-      System.arraycopy(arrayOfChar, this.pos, arrayOfChar, 0, this.limit);
+      this.limit = (j - i);
+      System.arraycopy(arrayOfChar, i, arrayOfChar, 0, this.limit);
     }
-    for (;;)
+    else
     {
-      this.pos = 0;
-      int i;
-      do
+      this.limit = 0;
+    }
+    this.pos = 0;
+    do
+    {
+      Reader localReader = this.in;
+      i = this.limit;
+      i = localReader.read(arrayOfChar, i, arrayOfChar.length - i);
+      if (i == -1) {
+        break;
+      }
+      this.limit += i;
+      i = paramInt;
+      if (this.lineNumber == 0)
       {
-        i = this.in.read(arrayOfChar, this.limit, arrayOfChar.length - this.limit);
-        bool1 = bool2;
-        if (i == -1) {
-          break;
-        }
-        this.limit = (i + this.limit);
+        j = this.lineStart;
         i = paramInt;
-        if (this.lineNumber == 0)
+        if (j == 0)
         {
           i = paramInt;
-          if (this.lineStart == 0)
+          if (this.limit > 0)
           {
             i = paramInt;
-            if (this.limit > 0)
+            if (arrayOfChar[0] == 65279)
             {
-              i = paramInt;
-              if (arrayOfChar[0] == 65279)
-              {
-                this.pos += 1;
-                this.lineStart += 1;
-                i = paramInt + 1;
-              }
+              this.pos += 1;
+              this.lineStart = (j + 1);
+              i = paramInt + 1;
             }
           }
         }
-        paramInt = i;
-      } while (this.limit < i);
-      boolean bool1 = true;
-      return bool1;
-      this.limit = 0;
-    }
+      }
+      paramInt = i;
+    } while (this.limit < i);
+    return true;
+    return false;
   }
   
   private boolean isLiteral(char paramChar)
   {
-    switch (paramChar)
+    if ((paramChar != '\t') && (paramChar != '\n') && (paramChar != '\f') && (paramChar != '\r') && (paramChar != ' '))
     {
-    default: 
-      return true;
-    case '#': 
-    case '/': 
-    case ';': 
-    case '=': 
-    case '\\': 
-      checkLenient();
+      if (paramChar != '#')
+      {
+        if (paramChar == ',') {
+          break label110;
+        }
+        if ((paramChar != '/') && (paramChar != '='))
+        {
+          if ((paramChar == '{') || (paramChar == '}') || (paramChar == ':')) {
+            break label110;
+          }
+          if (paramChar == ';') {}
+        }
+      }
+      switch (paramChar)
+      {
+      default: 
+        return true;
+      case '\\': 
+        checkLenient();
+      }
     }
+    label110:
     return false;
   }
   
   private int nextNonWhitespace(boolean paramBoolean)
   {
-    char[] arrayOfChar = this.buffer;
+    Object localObject = this.buffer;
     int i = this.pos;
     int j = this.limit;
     for (;;)
     {
-      int k = j;
       int m = i;
+      int k = j;
       if (i == j)
       {
         this.pos = i;
         if (!fillBuffer(1))
         {
-          if (paramBoolean) {
-            throw new EOFException("End of input" + locationString());
+          if (!paramBoolean) {
+            return -1;
           }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("End of input");
+          ((StringBuilder)localObject).append(locationString());
+          throw new EOFException(((StringBuilder)localObject).toString());
         }
-        else
-        {
-          m = this.pos;
-          k = this.limit;
-        }
+        m = this.pos;
+        k = this.limit;
       }
-      else
+      i = m + 1;
+      j = localObject[m];
+      if (j == 10)
       {
-        i = m + 1;
-        j = arrayOfChar[m];
-        if (j == 10)
-        {
-          this.lineNumber += 1;
-          this.lineStart = i;
-          j = k;
-          continue;
-        }
-        if ((j == 32) || (j == 13)) {
-          break label347;
-        }
-        if (j == 9)
-        {
-          j = k;
-          continue;
-        }
+        this.lineNumber += 1;
+        this.lineStart = i;
+      }
+      else if ((j != 32) && (j != 13) && (j != 9))
+      {
         if (j == 47)
         {
           this.pos = i;
@@ -221,25 +233,27 @@ public class JsonReader
             }
           }
           checkLenient();
-          switch (arrayOfChar[this.pos])
+          i = this.pos;
+          k = localObject[i];
+          if (k != 42)
           {
-          default: 
-            return j;
-          case '*': 
-            this.pos += 1;
-            if (!skipTo("*/")) {
-              throw syntaxError("Unterminated comment");
+            if (k != 47) {
+              return j;
             }
-            i = this.pos + 2;
-            j = this.limit;
-            break;
-          case '/': 
-            this.pos += 1;
+            this.pos = (i + 1);
             skipToEndOfLine();
             i = this.pos;
             j = this.limit;
-            break;
+            continue;
           }
+          this.pos = (i + 1);
+          if (skipTo("*/"))
+          {
+            i = this.pos + 2;
+            j = this.limit;
+            continue;
+          }
+          throw syntaxError("Unterminated comment");
         }
         if (j == 35)
         {
@@ -253,8 +267,6 @@ public class JsonReader
         this.pos = i;
         return j;
       }
-      return -1;
-      label347:
       j = k;
     }
   }
@@ -262,184 +274,186 @@ public class JsonReader
   private String nextQuotedValue(char paramChar)
   {
     char[] arrayOfChar = this.buffer;
-    Object localObject1 = null;
-    do
+    Object localObject2;
+    for (Object localObject1 = null;; localObject1 = localObject2)
     {
       char c1 = this.pos;
       int i = this.limit;
       char c2 = c1;
-      if (c2 < i)
+      char c3;
+      for (;;)
       {
-        char c3 = c2 + '\001';
-        c2 = arrayOfChar[c2];
-        if (c2 == paramChar)
+        c3 = c2;
+        if (c3 >= i) {
+          break label203;
+        }
+        c2 = c3 + '\001';
+        c3 = arrayOfChar[c3];
+        if (c3 == paramChar)
         {
-          this.pos = c3;
-          paramChar = c3 - c1 - 1;
+          this.pos = c2;
+          paramChar = c2 - c1 - 1;
           if (localObject1 == null) {
             return new String(arrayOfChar, c1, paramChar);
           }
-          localObject1.append(arrayOfChar, c1, paramChar);
-          return localObject1.toString();
+          ((StringBuilder)localObject1).append(arrayOfChar, c1, paramChar);
+          return ((StringBuilder)localObject1).toString();
         }
-        if (c2 == '\\')
+        if (c3 == '\\')
         {
-          this.pos = c3;
-          i = c3 - c1 - 1;
+          this.pos = c2;
+          c2 = c2 - c1 - 1;
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = new StringBuilder(Math.max((i + 1) * 2, 16));
+            localObject2 = new StringBuilder(Math.max((c2 + '\001') * 2, 16));
           }
-          ((StringBuilder)localObject2).append(arrayOfChar, c1, i);
+          ((StringBuilder)localObject2).append(arrayOfChar, c1, c2);
           ((StringBuilder)localObject2).append(readEscapeCharacter());
-          c2 = this.pos;
+          c1 = this.pos;
           i = this.limit;
           localObject1 = localObject2;
-          c1 = c2;
-        }
-        for (;;)
-        {
           break;
-          if (c2 == '\n')
-          {
-            this.lineNumber += 1;
-            this.lineStart = c3;
-          }
-          c2 = c3;
+        }
+        if (c3 == '\n')
+        {
+          this.lineNumber += 1;
+          this.lineStart = c2;
         }
       }
-      Object localObject2 = localObject1;
+      label203:
+      localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = new StringBuilder(Math.max((c2 - c1) * 2, 16));
+        localObject2 = new StringBuilder(Math.max((c3 - c1) * 2, 16));
       }
-      ((StringBuilder)localObject2).append(arrayOfChar, c1, c2 - c1);
-      this.pos = c2;
-      localObject1 = localObject2;
-    } while (fillBuffer(1));
-    throw syntaxError("Unterminated string");
+      ((StringBuilder)localObject2).append(arrayOfChar, c1, c3 - c1);
+      this.pos = c3;
+      if (!fillBuffer(1)) {
+        break;
+      }
+    }
+    localObject1 = syntaxError("Unterminated string");
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
+    }
   }
   
   private String nextUnquotedValue()
   {
+    int j = 0;
     Object localObject1 = null;
-    int i = 0;
-    for (;;)
+    label150:
+    label172:
+    label175:
+    Object localObject2;
+    do
     {
-      Object localObject2;
-      int j;
-      if (this.pos + i < this.limit)
+      i = 0;
+      do
       {
-        localObject2 = localObject1;
-        j = i;
-        switch (this.buffer[(this.pos + i)])
+        for (;;)
         {
-        default: 
-          i += 1;
-          break;
-        case '#': 
-        case '/': 
-        case ';': 
-        case '=': 
-        case '\\': 
-          checkLenient();
-          j = i;
-          localObject2 = localObject1;
-        case '\t': 
-        case '\n': 
-        case '\f': 
-        case '\r': 
-        case ' ': 
-        case ',': 
-        case ':': 
-        case '[': 
-        case ']': 
-        case '{': 
-        case '}': 
-          label188:
-          if (localObject2 != null) {}
-          break;
-        }
-      }
-      else
-      {
-        for (localObject1 = new String(this.buffer, this.pos, j);; localObject1 = ((StringBuilder)localObject2).append(this.buffer, this.pos, j).toString())
-        {
-          this.pos = (j + this.pos);
-          return localObject1;
-          if (i < this.buffer.length)
-          {
-            localObject2 = localObject1;
-            j = i;
-            if (!fillBuffer(i + 1)) {
-              break label188;
-            }
+          int k = this.pos;
+          if (k + i >= this.limit) {
+            break label150;
+          }
+          k = this.buffer[(k + i)];
+          if ((k == 9) || (k == 10) || (k == 12) || (k == 13) || (k == 32)) {
+            break label172;
+          }
+          if (k == 35) {
             break;
           }
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new StringBuilder(Math.max(i, 16));
+          if (k == 44) {
+            break label172;
           }
-          ((StringBuilder)localObject2).append(this.buffer, this.pos, i);
-          this.pos = (i + this.pos);
-          if (fillBuffer(1)) {
-            break label330;
+          if ((k == 47) || (k == 61)) {
+            break;
           }
-          j = 0;
-          break label188;
+          if ((k == 123) || (k == 125) || (k == 58)) {
+            break label172;
+          }
+          if (k == 59) {
+            break;
+          }
+          switch (k)
+          {
+          default: 
+            i += 1;
+          }
         }
-        label330:
-        i = 0;
-        localObject1 = localObject2;
+        checkLenient();
+        break;
+        if (i >= this.buffer.length) {
+          break label175;
+        }
+      } while (fillBuffer(i + 1));
+      break;
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new StringBuilder(Math.max(i, 16));
       }
+      ((StringBuilder)localObject2).append(this.buffer, this.pos, i);
+      this.pos += i;
+      localObject1 = localObject2;
+    } while (fillBuffer(1));
+    localObject1 = localObject2;
+    int i = j;
+    if (localObject1 == null)
+    {
+      localObject1 = new String(this.buffer, this.pos, i);
     }
+    else
+    {
+      ((StringBuilder)localObject1).append(this.buffer, this.pos, i);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    this.pos += i;
+    return localObject1;
   }
   
   private int peekKeyword()
   {
     int i = this.buffer[this.pos];
-    String str2;
     String str1;
-    int k;
-    int j;
-    if ((i == 116) || (i == 84))
+    String str2;
+    if ((i != 116) && (i != 84))
     {
-      str2 = "true";
-      str1 = "TRUE";
-      i = 5;
-      k = str2.length();
-      j = 1;
-    }
-    for (;;)
-    {
-      if (j >= k) {
-        break label168;
-      }
-      if ((this.pos + j >= this.limit) && (!fillBuffer(j + 1)))
+      if ((i != 102) && (i != 70))
       {
-        return 0;
-        if ((i == 102) || (i == 70))
-        {
-          str2 = "false";
-          str1 = "FALSE";
-          i = 6;
-          break;
+        if ((i != 110) && (i != 78)) {
+          return 0;
         }
-        if ((i == 110) || (i == 78))
-        {
-          str2 = "null";
-          str1 = "NULL";
-          i = 7;
-          break;
-        }
+        i = 7;
+        str1 = "null";
+        str2 = "NULL";
+      }
+      else
+      {
+        i = 6;
+        str1 = "false";
+        str2 = "FALSE";
+      }
+    }
+    else
+    {
+      i = 5;
+      str1 = "true";
+      str2 = "TRUE";
+    }
+    int k = str1.length();
+    int j = 1;
+    while (j < k)
+    {
+      if ((this.pos + j >= this.limit) && (!fillBuffer(j + 1))) {
         return 0;
       }
       int m = this.buffer[(this.pos + j)];
-      if ((m != str2.charAt(j)) && (m != str1.charAt(j))) {
+      if ((m != str1.charAt(j)) && (m != str2.charAt(j))) {
         return 0;
       }
       j += 1;
     }
-    label168:
     if (((this.pos + k < this.limit) || (fillBuffer(k + 1))) && (isLiteral(this.buffer[(this.pos + k)]))) {
       return 0;
     }
@@ -451,183 +465,172 @@ public class JsonReader
   private int peekNumber()
   {
     char[] arrayOfChar = this.buffer;
-    int i2 = this.pos;
-    int n = this.limit;
-    long l1 = 0L;
+    int i3 = this.pos;
+    int k = this.limit;
+    int n = 0;
     int i = 0;
     int j = 1;
-    int k = 0;
+    long l1 = 0L;
     int m = 0;
-    int i3 = n;
-    int i1 = i3;
-    n = i2;
-    if (i2 + m == i3)
-    {
-      if (m == arrayOfChar.length) {
-        return 0;
-      }
-      if (fillBuffer(m + 1)) {}
-    }
-    label112:
-    char c;
     for (;;)
     {
-      if ((k == 2) && (j != 0) && ((l1 != -9223372036854775808L) || (i != 0)) && ((l1 != 0L) || (i == 0))) {
-        if (i != 0)
+      int i2 = i3;
+      int i1 = k;
+      if (i3 + n == k)
+      {
+        if (n == arrayOfChar.length) {
+          return 0;
+        }
+        if (fillBuffer(n + 1))
         {
-          this.peekedLong = l1;
-          this.pos += m;
-          this.peeked = 15;
-          return 15;
-          n = this.pos;
+          i2 = this.pos;
           i1 = this.limit;
-          c = arrayOfChar[(n + m)];
-          switch (c)
-          {
-          default: 
-            if ((c < '0') || (c > '9'))
-            {
-              if (!isLiteral(c)) {
-                continue;
-              }
-              return 0;
-            }
-            break;
-          case '-': 
-            if (k == 0)
-            {
-              i = 1;
-              k = 1;
-            }
-            break;
-          }
         }
       }
-    }
-    for (;;)
-    {
-      int i4 = m + 1;
-      m = k;
-      i3 = i1;
-      i2 = n;
-      k = i;
-      i = m;
-      m = i4;
-      break;
-      if (k == 5)
+      else
       {
-        i2 = 6;
-        k = i;
-        i = i2;
+        char c = arrayOfChar[(i2 + n)];
+        if (c == '+') {
+          break label460;
+        }
+        if ((c == 'E') || (c == 'e')) {
+          break label440;
+        }
+        if (c == '-') {
+          break label418;
+        }
+        if (c == '.') {
+          break label406;
+        }
+        if ((c >= '0') && (c <= '9'))
+        {
+          if ((i != 1) && (i != 0))
+          {
+            long l2;
+            if (i == 2)
+            {
+              if (l1 == 0L) {
+                return 0;
+              }
+              l2 = 10L * l1 - (c - '0');
+              if ((l1 <= -922337203685477580L) && ((l1 != -922337203685477580L) || (l2 >= l1))) {
+                k = 0;
+              } else {
+                k = 1;
+              }
+              k &= j;
+            }
+            else
+            {
+              if (i == 3)
+              {
+                i = 4;
+                break label283;
+              }
+              if (i == 5) {
+                break label267;
+              }
+              k = j;
+              l2 = l1;
+              if (i == 6) {
+                break label267;
+              }
+            }
+            j = k;
+            l1 = l2;
+            break label283;
+            label267:
+            i = 7;
+          }
+          else
+          {
+            l1 = -(c - '0');
+            i = 2;
+          }
+          label283:
+          break label468;
+        }
+        if (isLiteral(c)) {
+          break label404;
+        }
+      }
+      if ((i == 2) && (j != 0) && ((l1 != -9223372036854775808L) || (m != 0)) && ((l1 != 0L) || (m == 0)))
+      {
+        if (m == 0) {
+          l1 = -l1;
+        }
+        this.peekedLong = l1;
+        this.pos += n;
+        this.peeked = 15;
+        return 15;
+      }
+      if ((i != 2) && (i != 4) && (i != 7)) {
+        return 0;
+      }
+      this.peekedNumberLength = n;
+      this.peeked = 16;
+      return 16;
+      label404:
+      return 0;
+      label406:
+      if (i == 2)
+      {
+        i = 3;
       }
       else
       {
         return 0;
-        if (k == 5)
+        label418:
+        if (i == 0)
         {
-          i2 = 6;
-          k = i;
-          i = i2;
+          i = 1;
+          m = 1;
+        }
+        else if (i != 5)
+        {
+          return 0;
+          label440:
+          if ((i != 2) && (i != 4)) {
+            return 0;
+          }
+          i = 5;
+          break label468;
+          label460:
+          if (i != 5) {
+            break;
+          }
         }
         else
         {
-          return 0;
-          if ((k == 2) || (k == 4))
-          {
-            i2 = 5;
-            k = i;
-            i = i2;
-          }
-          else
-          {
-            return 0;
-            if (k == 2)
-            {
-              i2 = 3;
-              k = i;
-              i = i2;
-            }
-            else
-            {
-              return 0;
-              if ((k == 1) || (k == 0))
-              {
-                l1 = -(c - '0');
-                i2 = 2;
-                k = i;
-                i = i2;
-              }
-              else
-              {
-                if (k == 2)
-                {
-                  if (l1 == 0L) {
-                    return 0;
-                  }
-                  long l2 = 10L * l1 - (c - '0');
-                  if ((l1 > -922337203685477580L) || ((l1 == -922337203685477580L) && (l2 < l1))) {}
-                  for (i3 = 1;; i3 = 0)
-                  {
-                    i2 = i;
-                    l1 = l2;
-                    j = i3 & j;
-                    i = k;
-                    k = i2;
-                    break;
-                  }
-                }
-                if (k == 3)
-                {
-                  i2 = 4;
-                  k = i;
-                  i = i2;
-                }
-                else
-                {
-                  if ((k == 5) || (k == 6))
-                  {
-                    i2 = 7;
-                    k = i;
-                    i = i2;
-                    continue;
-                    l1 = -l1;
-                    break label112;
-                    if ((k == 2) || (k == 4) || (k == 7))
-                    {
-                      this.peekedNumberLength = m;
-                      this.peeked = 16;
-                      return 16;
-                    }
-                    return 0;
-                  }
-                  i2 = i;
-                  i = k;
-                  k = i2;
-                }
-              }
-            }
-          }
+          i = 6;
         }
       }
+      label468:
+      n += 1;
+      i3 = i2;
+      k = i1;
     }
+    return 0;
   }
   
   private void push(int paramInt)
   {
-    if (this.stackSize == this.stack.length)
+    int i = this.stackSize;
+    int[] arrayOfInt1 = this.stack;
+    if (i == arrayOfInt1.length)
     {
-      arrayOfInt1 = new int[this.stackSize * 2];
-      int[] arrayOfInt2 = new int[this.stackSize * 2];
-      String[] arrayOfString = new String[this.stackSize * 2];
-      System.arraycopy(this.stack, 0, arrayOfInt1, 0, this.stackSize);
-      System.arraycopy(this.pathIndices, 0, arrayOfInt2, 0, this.stackSize);
+      int[] arrayOfInt2 = new int[i * 2];
+      int[] arrayOfInt3 = new int[i * 2];
+      String[] arrayOfString = new String[i * 2];
+      System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, i);
+      System.arraycopy(this.pathIndices, 0, arrayOfInt3, 0, this.stackSize);
       System.arraycopy(this.pathNames, 0, arrayOfString, 0, this.stackSize);
-      this.stack = arrayOfInt1;
-      this.pathIndices = arrayOfInt2;
+      this.stack = arrayOfInt2;
+      this.pathIndices = arrayOfInt3;
       this.pathNames = arrayOfString;
     }
-    int[] arrayOfInt1 = this.stack;
-    int i = this.stackSize;
+    arrayOfInt1 = this.stack;
+    i = this.stackSize;
     this.stackSize = (i + 1);
     arrayOfInt1[i] = paramInt;
   }
@@ -637,149 +640,163 @@ public class JsonReader
     if ((this.pos == this.limit) && (!fillBuffer(1))) {
       throw syntaxError("Unterminated escape sequence");
     }
-    char[] arrayOfChar = this.buffer;
+    Object localObject = this.buffer;
     int i = this.pos;
     this.pos = (i + 1);
-    char c2 = arrayOfChar[i];
-    char c1 = c2;
-    switch (c2)
+    char c = localObject[i];
+    if (c != '\n')
     {
-    default: 
-      throw syntaxError("Invalid escape sequence");
-    case 'u': 
-      if ((this.pos + 4 > this.limit) && (!fillBuffer(4))) {
-        throw syntaxError("Unterminated escape sequence");
-      }
-      int j = this.pos;
-      c1 = '\000';
-      i = j;
-      if (i < j + 4)
+      if ((c != '"') && (c != '\'') && (c != '/') && (c != '\\'))
       {
-        int k = this.buffer[i];
-        int m = (char)(c1 << '\004');
-        if ((k >= 48) && (k <= 57)) {
-          c1 = (char)(m + (k - 48));
-        }
-        for (;;)
+        if (c != 'b')
         {
-          i += 1;
-          break;
-          if ((k >= 97) && (k <= 102))
+          if (c != 'f')
           {
-            c1 = (char)(m + (k - 97 + 10));
-          }
-          else
-          {
-            if ((k < 65) || (k > 70)) {
-              break label313;
+            if (c != 'n')
+            {
+              if (c != 'r')
+              {
+                if (c != 't')
+                {
+                  if (c == 'u')
+                  {
+                    if ((this.pos + 4 > this.limit) && (!fillBuffer(4))) {
+                      throw syntaxError("Unterminated escape sequence");
+                    }
+                    c = '\000';
+                    int j = this.pos;
+                    int k;
+                    for (i = j;; i = k + 1)
+                    {
+                      k = i;
+                      if (k >= j + 4) {
+                        break label317;
+                      }
+                      i = this.buffer[k];
+                      int m = (char)(c << '\004');
+                      if ((i >= 48) && (i <= 57))
+                      {
+                        i -= 48;
+                        c = (char)(m + i);
+                      }
+                      else
+                      {
+                        if ((i >= 97) && (i <= 102)) {
+                          i -= 97;
+                        }
+                        for (;;)
+                        {
+                          i += 10;
+                          break;
+                          if ((i < 65) || (i > 70)) {
+                            break label264;
+                          }
+                          i -= 65;
+                        }
+                      }
+                    }
+                    label264:
+                    localObject = new StringBuilder();
+                    ((StringBuilder)localObject).append("\\u");
+                    ((StringBuilder)localObject).append(new String(this.buffer, this.pos, 4));
+                    throw new NumberFormatException(((StringBuilder)localObject).toString());
+                    label317:
+                    this.pos += 4;
+                    return c;
+                  }
+                  throw syntaxError("Invalid escape sequence");
+                }
+                return '\t';
+              }
+              return '\r';
             }
-            c1 = (char)(m + (k - 65 + 10));
+            return '\n';
           }
+          return '\f';
         }
-        throw new NumberFormatException("\\u" + new String(this.buffer, this.pos, 4));
+        return '\b';
       }
-      this.pos += 4;
-    case '"': 
-    case '\'': 
-    case '/': 
-    case '\\': 
-      return c1;
-    case 't': 
-      return '\t';
-    case 'b': 
-      return '\b';
-    case 'n': 
-      return '\n';
-    case 'r': 
-      return '\r';
-    case 'f': 
-      label313:
-      return '\f';
     }
-    this.lineNumber += 1;
-    this.lineStart = this.pos;
-    return c2;
+    else
+    {
+      this.lineNumber += 1;
+      this.lineStart = this.pos;
+    }
+    return c;
   }
   
   private void skipQuotedValue(char paramChar)
   {
-    char[] arrayOfChar = this.buffer;
+    Object localObject = this.buffer;
     do
     {
-      int i = this.pos;
-      int j = this.limit;
-      if (i < j)
+      char c1 = this.pos;
+      char c2 = this.limit;
+      while (c1 < c2)
       {
-        int m = i + 1;
-        char c = arrayOfChar[i];
-        if (c == paramChar)
+        char c3 = c1 + '\001';
+        c1 = localObject[c1];
+        if (c1 == paramChar)
         {
-          this.pos = m;
+          this.pos = c3;
           return;
         }
-        int k;
-        if (c == '\\')
+        if (c1 == '\\')
         {
-          this.pos = m;
+          this.pos = c3;
           readEscapeCharacter();
-          i = this.pos;
-          k = this.limit;
+          c1 = this.pos;
+          c2 = this.limit;
         }
-        for (;;)
+        else
         {
-          j = k;
-          break;
-          k = j;
-          i = m;
-          if (c == '\n')
+          if (c1 == '\n')
           {
             this.lineNumber += 1;
-            this.lineStart = m;
-            k = j;
-            i = m;
+            this.lineStart = c3;
           }
+          c1 = c3;
         }
       }
-      this.pos = i;
+      this.pos = c1;
     } while (fillBuffer(1));
-    throw syntaxError("Unterminated string");
+    localObject = syntaxError("Unterminated string");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private boolean skipTo(String paramString)
   {
-    boolean bool2 = false;
     int j = paramString.length();
-    for (;;)
-    {
-      if (this.pos + j > this.limit)
-      {
-        bool1 = bool2;
-        if (!fillBuffer(j)) {
-          break label116;
-        }
-      }
-      if (this.buffer[this.pos] != '\n') {
-        break;
-      }
-      this.lineNumber += 1;
-      this.lineStart = (this.pos + 1);
-      this.pos += 1;
-    }
+    int k = this.pos;
+    int m = this.limit;
     int i = 0;
+    if ((k + j > m) && (!fillBuffer(j))) {
+      return false;
+    }
+    char[] arrayOfChar = this.buffer;
+    k = this.pos;
+    if (arrayOfChar[k] == '\n')
+    {
+      this.lineNumber += 1;
+      this.lineStart = (k + 1);
+    }
     for (;;)
     {
       if (i >= j) {
-        break label113;
+        break label128;
       }
-      if (this.buffer[(this.pos + i)] != paramString.charAt(i)) {
+      if (this.buffer[(this.pos + i)] != paramString.charAt(i))
+      {
+        this.pos += 1;
         break;
       }
       i += 1;
     }
-    label113:
-    boolean bool1 = true;
-    label116:
-    return bool1;
+    label128:
+    return true;
   }
   
   private void skipToEndOfLine()
@@ -787,20 +804,17 @@ public class JsonReader
     int i;
     do
     {
-      if ((this.pos < this.limit) || (fillBuffer(1)))
-      {
-        char[] arrayOfChar = this.buffer;
-        i = this.pos;
-        this.pos = (i + 1);
-        i = arrayOfChar[i];
-        if (i == 10)
-        {
-          this.lineNumber += 1;
-          this.lineStart = this.pos;
-        }
+      if ((this.pos >= this.limit) && (!fillBuffer(1))) {
+        break;
       }
-      else
+      char[] arrayOfChar = this.buffer;
+      i = this.pos;
+      this.pos = (i + 1);
+      i = arrayOfChar[i];
+      if (i == 10)
       {
+        this.lineNumber += 1;
+        this.lineStart = this.pos;
         return;
       }
     } while (i != 13);
@@ -808,43 +822,56 @@ public class JsonReader
   
   private void skipUnquotedValue()
   {
+    label143:
+    label154:
     do
     {
       int i = 0;
-      while (this.pos + i < this.limit) {
-        switch (this.buffer[(this.pos + i)])
+      int j;
+      for (;;)
+      {
+        j = this.pos;
+        if (j + i >= this.limit) {
+          break label154;
+        }
+        j = this.buffer[(j + i)];
+        if ((j == 9) || (j == 10) || (j == 12) || (j == 13) || (j == 32)) {
+          break label143;
+        }
+        if (j == 35) {
+          break;
+        }
+        if (j == 44) {
+          break label143;
+        }
+        if ((j == 47) || (j == 61)) {
+          break;
+        }
+        if ((j == 123) || (j == 125) || (j == 58)) {
+          break label143;
+        }
+        if (j == 59) {
+          break;
+        }
+        switch (j)
         {
         default: 
           i += 1;
-          break;
-        case '#': 
-        case '/': 
-        case ';': 
-        case '=': 
-        case '\\': 
-          checkLenient();
-        case '\t': 
-        case '\n': 
-        case '\f': 
-        case '\r': 
-        case ' ': 
-        case ',': 
-        case ':': 
-        case '[': 
-        case ']': 
-        case '{': 
-        case '}': 
-          this.pos = (i + this.pos);
-          return;
         }
       }
-      this.pos = (i + this.pos);
+      checkLenient();
+      this.pos += i;
+      return;
+      this.pos = (j + i);
     } while (fillBuffer(1));
   }
   
   private IOException syntaxError(String paramString)
   {
-    throw new MalformedJsonException(paramString + locationString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(locationString());
+    throw new MalformedJsonException(localStringBuilder.toString());
   }
   
   public void beginArray()
@@ -861,7 +888,11 @@ public class JsonReader
       this.peeked = 0;
       return;
     }
-    throw new IllegalStateException("Expected BEGIN_ARRAY but was " + peek() + locationString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected BEGIN_ARRAY but was ");
+    localStringBuilder.append(peek());
+    localStringBuilder.append(locationString());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public void beginObject()
@@ -877,7 +908,11 @@ public class JsonReader
       this.peeked = 0;
       return;
     }
-    throw new IllegalStateException("Expected BEGIN_OBJECT but was " + peek() + locationString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected BEGIN_OBJECT but was ");
+    localStringBuilder.append(peek());
+    localStringBuilder.append(locationString());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public void close()
@@ -890,109 +925,66 @@ public class JsonReader
   
   int doPeek()
   {
-    int i = this.stack[(this.stackSize - 1)];
+    Object localObject = this.stack;
+    int j = this.stackSize;
+    int i = localObject[(j - 1)];
     if (i == 1)
     {
-      this.stack[(this.stackSize - 1)] = 2;
-      switch (nextNonWhitespace(true))
-      {
-      default: 
-        this.pos -= 1;
-        i = peekKeyword();
-        if (i == 0) {
-          break;
-        }
-      }
+      localObject[(j - 1)] = 2;
     }
-    int j;
-    do
+    else if (i == 2)
     {
-      return i;
-      if (i == 2)
+      j = nextNonWhitespace(true);
+      if (j != 44)
       {
-        switch (nextNonWhitespace(true))
+        if (j != 59)
         {
-        case 44: 
-        default: 
+          if (j == 93)
+          {
+            this.peeked = 4;
+            return 4;
+          }
           throw syntaxError("Unterminated array");
-        case 93: 
-          this.peeked = 4;
-          return 4;
         }
         checkLenient();
-        break;
       }
-      if ((i == 3) || (i == 5))
-      {
-        this.stack[(this.stackSize - 1)] = 4;
-        if (i == 5) {
-          switch (nextNonWhitespace(true))
-          {
-          default: 
-            throw syntaxError("Unterminated object");
-          case 125: 
-            this.peeked = 2;
-            return 2;
-          case 59: 
-            checkLenient();
-          }
-        }
-        j = nextNonWhitespace(true);
-        switch (j)
-        {
-        default: 
-          checkLenient();
-          this.pos -= 1;
-          if (isLiteral((char)j))
-          {
-            this.peeked = 14;
-            return 14;
-          }
-          break;
-        case 34: 
-          this.peeked = 13;
-          return 13;
-        case 39: 
-          checkLenient();
-          this.peeked = 12;
-          return 12;
-        case 125: 
-          if (i != 5)
-          {
-            this.peeked = 2;
-            return 2;
-          }
-          throw syntaxError("Expected name");
-        }
-        throw syntaxError("Expected name");
+    }
+    else
+    {
+      if ((i == 3) || (i == 5)) {
+        break label482;
       }
       if (i == 4)
       {
-        this.stack[(this.stackSize - 1)] = 5;
-        switch (nextNonWhitespace(true))
-        {
-        case 58: 
-        case 59: 
-        case 60: 
-        default: 
-          throw syntaxError("Expected ':'");
+        localObject[(j - 1)] = 5;
+        j = nextNonWhitespace(true);
+        if (j != 58) {
+          if (j == 61)
+          {
+            checkLenient();
+            if ((this.pos < this.limit) || (fillBuffer(1)))
+            {
+              localObject = this.buffer;
+              j = this.pos;
+              if (localObject[j] == '>') {
+                this.pos = (j + 1);
+              }
+            }
+          }
+          else
+          {
+            throw syntaxError("Expected ':'");
+          }
         }
-        checkLenient();
-        if (((this.pos >= this.limit) && (!fillBuffer(1))) || (this.buffer[this.pos] != '>')) {
-          break;
-        }
-        this.pos += 1;
-        break;
       }
-      if (i == 6)
+      else if (i == 6)
       {
         if (this.lenient) {
           consumeNonExecutePrefix();
         }
         this.stack[(this.stackSize - 1)] = 7;
-        break;
       }
-      if (i == 7)
+      else if (i == 7)
       {
         if (nextNonWhitespace(false) == -1)
         {
@@ -1001,43 +993,122 @@ public class JsonReader
         }
         checkLenient();
         this.pos -= 1;
-        break;
       }
-      if (i != 8) {
-        break;
-      }
-      throw new IllegalStateException("JsonReader is closed");
-      if (i == 1)
+      else
       {
-        this.peeked = 4;
-        return 4;
+        if (i == 8) {
+          break label471;
+        }
       }
-      if ((i == 1) || (i == 2))
+    }
+    j = nextNonWhitespace(true);
+    if (j != 34)
+    {
+      if (j != 39)
       {
+        if ((j != 44) && (j != 59)) {
+          if (j != 91)
+          {
+            if (j != 93)
+            {
+              if (j != 123)
+              {
+                this.pos -= 1;
+                i = peekKeyword();
+                if (i != 0) {
+                  return i;
+                }
+                i = peekNumber();
+                if (i != 0) {
+                  return i;
+                }
+                if (isLiteral(this.buffer[this.pos]))
+                {
+                  checkLenient();
+                  this.peeked = 10;
+                  return 10;
+                }
+                throw syntaxError("Expected value");
+              }
+              this.peeked = 1;
+              return 1;
+            }
+            if (i == 1)
+            {
+              this.peeked = 4;
+              return 4;
+            }
+          }
+          else
+          {
+            this.peeked = 3;
+            return 3;
+          }
+        }
+        if ((i != 1) && (i != 2)) {
+          throw syntaxError("Unexpected value");
+        }
         checkLenient();
         this.pos -= 1;
         this.peeked = 7;
         return 7;
       }
-      throw syntaxError("Unexpected value");
       checkLenient();
       this.peeked = 8;
       return 8;
-      this.peeked = 9;
-      return 9;
-      this.peeked = 3;
-      return 3;
-      this.peeked = 1;
-      return 1;
-      j = peekNumber();
-      i = j;
-    } while (j != 0);
-    if (!isLiteral(this.buffer[this.pos])) {
-      throw syntaxError("Expected value");
     }
-    checkLenient();
-    this.peeked = 10;
-    return 10;
+    this.peeked = 9;
+    return 9;
+    label471:
+    throw new IllegalStateException("JsonReader is closed");
+    label482:
+    this.stack[(this.stackSize - 1)] = 4;
+    if (i == 5)
+    {
+      j = nextNonWhitespace(true);
+      if (j != 44)
+      {
+        if (j != 59)
+        {
+          if (j == 125)
+          {
+            this.peeked = 2;
+            return 2;
+          }
+          throw syntaxError("Unterminated object");
+        }
+        checkLenient();
+      }
+    }
+    j = nextNonWhitespace(true);
+    if (j != 34)
+    {
+      if (j != 39)
+      {
+        if (j != 125)
+        {
+          checkLenient();
+          this.pos -= 1;
+          if (isLiteral((char)j))
+          {
+            this.peeked = 14;
+            return 14;
+          }
+          throw syntaxError("Expected name");
+        }
+        if (i != 5)
+        {
+          this.peeked = 2;
+          return 2;
+        }
+        throw syntaxError("Expected name");
+      }
+      checkLenient();
+      this.peeked = 12;
+      return 12;
+    }
+    this.peeked = 13;
+    return 13;
   }
   
   public void endArray()
@@ -1050,13 +1121,17 @@ public class JsonReader
     if (i == 4)
     {
       this.stackSize -= 1;
-      int[] arrayOfInt = this.pathIndices;
+      localObject = this.pathIndices;
       i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject[i] += 1;
       this.peeked = 0;
       return;
     }
-    throw new IllegalStateException("Expected END_ARRAY but was " + peek() + locationString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected END_ARRAY but was ");
+    ((StringBuilder)localObject).append(peek());
+    ((StringBuilder)localObject).append(locationString());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public void endObject()
@@ -1069,37 +1144,49 @@ public class JsonReader
     if (i == 2)
     {
       this.stackSize -= 1;
-      this.pathNames[this.stackSize] = null;
-      int[] arrayOfInt = this.pathIndices;
-      i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject = this.pathNames;
+      i = this.stackSize;
+      localObject[i] = null;
+      localObject = this.pathIndices;
+      i -= 1;
+      localObject[i] += 1;
       this.peeked = 0;
       return;
     }
-    throw new IllegalStateException("Expected END_OBJECT but was " + peek() + locationString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected END_OBJECT but was ");
+    ((StringBuilder)localObject).append(peek());
+    ((StringBuilder)localObject).append(locationString());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public String getPath()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append('$');
-    int i = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('$');
     int j = this.stackSize;
-    if (i < j)
+    int i = 0;
+    while (i < j)
     {
-      switch (this.stack[i])
+      int k = this.stack[i];
+      if ((k != 1) && (k != 2))
       {
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append('[').append(this.pathIndices[i]).append(']');
-        continue;
-        localStringBuilder.append('.');
-        if (this.pathNames[i] != null) {
-          localStringBuilder.append(this.pathNames[i]);
+        if ((k == 3) || (k == 4) || (k == 5))
+        {
+          localStringBuilder.append('.');
+          String[] arrayOfString = this.pathNames;
+          if (arrayOfString[i] != null) {
+            localStringBuilder.append(arrayOfString[i]);
+          }
         }
       }
+      else
+      {
+        localStringBuilder.append('[');
+        localStringBuilder.append(this.pathIndices[i]);
+        localStringBuilder.append(']');
+      }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
@@ -1124,7 +1211,14 @@ public class JsonReader
     int i = this.lineNumber;
     int j = this.pos;
     int k = this.lineStart;
-    return " at line " + (i + 1) + " column " + (j - k + 1) + " path " + getPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" at line ");
+    localStringBuilder.append(i + 1);
+    localStringBuilder.append(" column ");
+    localStringBuilder.append(j - k + 1);
+    localStringBuilder.append(" path ");
+    localStringBuilder.append(getPath());
+    return localStringBuilder.toString();
   }
   
   public boolean nextBoolean()
@@ -1134,24 +1228,27 @@ public class JsonReader
     if (j == 0) {
       i = doPeek();
     }
-    int[] arrayOfInt;
     if (i == 5)
     {
       this.peeked = 0;
-      arrayOfInt = this.pathIndices;
+      localObject = this.pathIndices;
       i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject[i] += 1;
       return true;
     }
     if (i == 6)
     {
       this.peeked = 0;
-      arrayOfInt = this.pathIndices;
+      localObject = this.pathIndices;
       i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject[i] += 1;
       return false;
     }
-    throw new IllegalStateException("Expected a boolean but was " + peek() + locationString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected a boolean but was ");
+    ((StringBuilder)localObject).append(peek());
+    ((StringBuilder)localObject).append(locationString());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public double nextDouble()
@@ -1164,9 +1261,9 @@ public class JsonReader
     if (i == 15)
     {
       this.peeked = 0;
-      arrayOfInt = this.pathIndices;
+      localObject = this.pathIndices;
       i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject[i] += 1;
       return this.peekedLong;
     }
     if (i == 16)
@@ -1174,39 +1271,46 @@ public class JsonReader
       this.peekedString = new String(this.buffer, this.pos, this.peekedNumberLength);
       this.pos += this.peekedNumberLength;
     }
-    double d;
-    do
+    else if ((i != 8) && (i != 9))
     {
-      for (;;)
+      if (i == 10)
       {
-        this.peeked = 11;
-        d = Double.parseDouble(this.peekedString);
-        if ((this.lenient) || ((!Double.isNaN(d)) && (!Double.isInfinite(d)))) {
-          break label283;
-        }
-        throw new MalformedJsonException("JSON forbids NaN and infinities: " + d + locationString());
-        if ((i == 8) || (i == 9))
-        {
-          if (i == 8) {}
-          for (char c = '\'';; c = '"')
-          {
-            this.peekedString = nextQuotedValue(c);
-            break;
-          }
-        }
-        if (i != 10) {
-          break;
-        }
         this.peekedString = nextUnquotedValue();
       }
-    } while (i == 11);
-    throw new IllegalStateException("Expected a double but was " + peek() + locationString());
-    label283:
+      else if (i != 11)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Expected a double but was ");
+        ((StringBuilder)localObject).append(peek());
+        ((StringBuilder)localObject).append(locationString());
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
+      }
+    }
+    else
+    {
+      char c;
+      if (i == 8) {
+        c = '\'';
+      } else {
+        c = '"';
+      }
+      this.peekedString = nextQuotedValue(c);
+    }
+    this.peeked = 11;
+    double d = Double.parseDouble(this.peekedString);
+    if ((!this.lenient) && ((Double.isNaN(d)) || (Double.isInfinite(d))))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("JSON forbids NaN and infinities: ");
+      ((StringBuilder)localObject).append(d);
+      ((StringBuilder)localObject).append(locationString());
+      throw new MalformedJsonException(((StringBuilder)localObject).toString());
+    }
     this.peekedString = null;
     this.peeked = 0;
-    int[] arrayOfInt = this.pathIndices;
+    Object localObject = this.pathIndices;
     i = this.stackSize - 1;
-    arrayOfInt[i] += 1;
+    localObject[i] += 1;
     return d;
   }
   
@@ -1217,66 +1321,86 @@ public class JsonReader
     if (j == 0) {
       i = doPeek();
     }
-    int[] arrayOfInt1;
     if (i == 15)
     {
-      i = (int)this.peekedLong;
-      if (this.peekedLong != i) {
-        throw new NumberFormatException("Expected an int but was " + this.peekedLong + locationString());
+      long l = this.peekedLong;
+      i = (int)l;
+      if (l == i)
+      {
+        this.peeked = 0;
+        localObject = this.pathIndices;
+        j = this.stackSize - 1;
+        localObject[j] += 1;
+        return i;
       }
-      this.peeked = 0;
-      arrayOfInt1 = this.pathIndices;
-      j = this.stackSize - 1;
-      arrayOfInt1[j] += 1;
-      return i;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Expected an int but was ");
+      ((StringBuilder)localObject).append(this.peekedLong);
+      ((StringBuilder)localObject).append(locationString());
+      throw new NumberFormatException(((StringBuilder)localObject).toString());
     }
     if (i == 16)
     {
       this.peekedString = new String(this.buffer, this.pos, this.peekedNumberLength);
       this.pos += this.peekedNumberLength;
     }
-    for (;;)
+    else
     {
-      this.peeked = 11;
-      double d = Double.parseDouble(this.peekedString);
-      i = (int)d;
-      if (i == d) {
-        break label375;
-      }
-      throw new NumberFormatException("Expected an int but was " + this.peekedString + locationString());
-      if ((i != 8) && (i != 9) && (i != 10)) {
-        break label337;
-      }
-      if (i != 10) {
-        break;
-      }
-      this.peekedString = nextUnquotedValue();
-      try
+      if ((i != 8) && (i != 9) && (i != 10))
       {
-        i = Integer.parseInt(this.peekedString);
-        this.peeked = 0;
-        arrayOfInt1 = this.pathIndices;
-        j = this.stackSize - 1;
-        arrayOfInt1[j] += 1;
-        return i;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Expected an int but was ");
+        ((StringBuilder)localObject).append(peek());
+        ((StringBuilder)localObject).append(locationString());
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
       }
-      catch (NumberFormatException localNumberFormatException) {}
+      if (i == 10)
+      {
+        this.peekedString = nextUnquotedValue();
+      }
+      else
+      {
+        char c;
+        if (i == 8) {
+          c = '\'';
+        } else {
+          c = '"';
+        }
+        this.peekedString = nextQuotedValue(c);
+      }
     }
-    if (i == 8) {}
-    for (char c = '\'';; c = '"')
+    try
     {
-      this.peekedString = nextQuotedValue(c);
-      break;
+      i = Integer.parseInt(this.peekedString);
+      this.peeked = 0;
+      localObject = this.pathIndices;
+      j = this.stackSize - 1;
+      localObject[j] += 1;
+      return i;
     }
-    label337:
-    throw new IllegalStateException("Expected an int but was " + peek() + locationString());
-    label375:
-    this.peekedString = null;
-    this.peeked = 0;
-    int[] arrayOfInt2 = this.pathIndices;
-    j = this.stackSize - 1;
-    arrayOfInt2[j] += 1;
-    return i;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label340:
+      double d;
+      break label340;
+    }
+    this.peeked = 11;
+    d = Double.parseDouble(this.peekedString);
+    i = (int)d;
+    if (i == d)
+    {
+      this.peekedString = null;
+      this.peeked = 0;
+      localObject = this.pathIndices;
+      j = this.stackSize - 1;
+      localObject[j] += 1;
+      return i;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected an int but was ");
+    ((StringBuilder)localObject).append(this.peekedString);
+    ((StringBuilder)localObject).append(locationString());
+    throw new NumberFormatException(((StringBuilder)localObject).toString());
   }
   
   public long nextLong()
@@ -1286,13 +1410,12 @@ public class JsonReader
     if (j == 0) {
       i = doPeek();
     }
-    int[] arrayOfInt1;
     if (i == 15)
     {
       this.peeked = 0;
-      arrayOfInt1 = this.pathIndices;
+      localObject = this.pathIndices;
       i = this.stackSize - 1;
-      arrayOfInt1[i] += 1;
+      localObject[i] += 1;
       return this.peekedLong;
     }
     if (i == 16)
@@ -1300,49 +1423,64 @@ public class JsonReader
       this.peekedString = new String(this.buffer, this.pos, this.peekedNumberLength);
       this.pos += this.peekedNumberLength;
     }
-    long l;
-    for (;;)
+    else
     {
-      this.peeked = 11;
-      double d = Double.parseDouble(this.peekedString);
-      l = d;
-      if (l == d) {
-        break label321;
-      }
-      throw new NumberFormatException("Expected a long but was " + this.peekedString + locationString());
-      if ((i != 8) && (i != 9) && (i != 10)) {
-        break label283;
-      }
-      if (i != 10) {
-        break;
-      }
-      this.peekedString = nextUnquotedValue();
-      try
+      if ((i != 8) && (i != 9) && (i != 10))
       {
-        l = Long.parseLong(this.peekedString);
-        this.peeked = 0;
-        arrayOfInt1 = this.pathIndices;
-        i = this.stackSize - 1;
-        arrayOfInt1[i] += 1;
-        return l;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Expected a long but was ");
+        ((StringBuilder)localObject).append(peek());
+        ((StringBuilder)localObject).append(locationString());
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
       }
-      catch (NumberFormatException localNumberFormatException) {}
+      if (i == 10)
+      {
+        this.peekedString = nextUnquotedValue();
+      }
+      else
+      {
+        char c;
+        if (i == 8) {
+          c = '\'';
+        } else {
+          c = '"';
+        }
+        this.peekedString = nextQuotedValue(c);
+      }
     }
-    if (i == 8) {}
-    for (char c = '\'';; c = '"')
+    try
     {
-      this.peekedString = nextQuotedValue(c);
-      break;
+      l = Long.parseLong(this.peekedString);
+      this.peeked = 0;
+      localObject = this.pathIndices;
+      i = this.stackSize - 1;
+      localObject[i] += 1;
+      return l;
     }
-    label283:
-    throw new IllegalStateException("Expected a long but was " + peek() + locationString());
-    label321:
-    this.peekedString = null;
-    this.peeked = 0;
-    int[] arrayOfInt2 = this.pathIndices;
-    i = this.stackSize - 1;
-    arrayOfInt2[i] += 1;
-    return l;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      long l;
+      label271:
+      double d;
+      break label271;
+    }
+    this.peeked = 11;
+    d = Double.parseDouble(this.peekedString);
+    l = d;
+    if (l == d)
+    {
+      this.peekedString = null;
+      this.peeked = 0;
+      localObject = this.pathIndices;
+      i = this.stackSize - 1;
+      localObject[i] += 1;
+      return l;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected a long but was ");
+    ((StringBuilder)localObject).append(this.peekedString);
+    ((StringBuilder)localObject).append(locationString());
+    throw new NumberFormatException(((StringBuilder)localObject).toString());
   }
   
   public String nextName()
@@ -1352,28 +1490,30 @@ public class JsonReader
     if (j == 0) {
       i = doPeek();
     }
-    String str;
-    if (i == 14) {
-      str = nextUnquotedValue();
-    }
-    for (;;)
+    if (i == 14)
     {
-      this.peeked = 0;
-      this.pathNames[(this.stackSize - 1)] = str;
-      return str;
-      if (i == 12)
-      {
-        str = nextQuotedValue('\'');
-      }
-      else
-      {
-        if (i != 13) {
-          break;
-        }
-        str = nextQuotedValue('"');
-      }
+      localObject = nextUnquotedValue();
     }
-    throw new IllegalStateException("Expected a name but was " + peek() + locationString());
+    else if (i == 12)
+    {
+      localObject = nextQuotedValue('\'');
+    }
+    else
+    {
+      if (i != 13) {
+        break label78;
+      }
+      localObject = nextQuotedValue('"');
+    }
+    this.peeked = 0;
+    this.pathNames[(this.stackSize - 1)] = localObject;
+    return localObject;
+    label78:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected a name but was ");
+    ((StringBuilder)localObject).append(peek());
+    ((StringBuilder)localObject).append(locationString());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public void nextNull()
@@ -1386,12 +1526,16 @@ public class JsonReader
     if (i == 7)
     {
       this.peeked = 0;
-      int[] arrayOfInt = this.pathIndices;
+      localObject = this.pathIndices;
       i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
+      localObject[i] += 1;
       return;
     }
-    throw new IllegalStateException("Expected null but was " + peek() + locationString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected null but was ");
+    ((StringBuilder)localObject).append(peek());
+    ((StringBuilder)localObject).append(locationString());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public String nextString()
@@ -1401,44 +1545,46 @@ public class JsonReader
     if (j == 0) {
       i = doPeek();
     }
-    String str;
-    if (i == 10) {
-      str = nextUnquotedValue();
-    }
-    for (;;)
+    if (i == 10)
     {
-      this.peeked = 0;
-      int[] arrayOfInt = this.pathIndices;
-      i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
-      return str;
-      if (i == 8)
-      {
-        str = nextQuotedValue('\'');
-      }
-      else if (i == 9)
-      {
-        str = nextQuotedValue('"');
-      }
-      else if (i == 11)
-      {
-        str = this.peekedString;
-        this.peekedString = null;
-      }
-      else if (i == 15)
-      {
-        str = Long.toString(this.peekedLong);
-      }
-      else
-      {
-        if (i != 16) {
-          break;
-        }
-        str = new String(this.buffer, this.pos, this.peekedNumberLength);
-        this.pos += this.peekedNumberLength;
-      }
+      localObject = nextUnquotedValue();
     }
-    throw new IllegalStateException("Expected a string but was " + peek() + locationString());
+    else if (i == 8)
+    {
+      localObject = nextQuotedValue('\'');
+    }
+    else if (i == 9)
+    {
+      localObject = nextQuotedValue('"');
+    }
+    else if (i == 11)
+    {
+      localObject = this.peekedString;
+      this.peekedString = null;
+    }
+    else if (i == 15)
+    {
+      localObject = Long.toString(this.peekedLong);
+    }
+    else
+    {
+      if (i != 16) {
+        break label167;
+      }
+      localObject = new String(this.buffer, this.pos, this.peekedNumberLength);
+      this.pos += this.peekedNumberLength;
+    }
+    this.peeked = 0;
+    int[] arrayOfInt = this.pathIndices;
+    i = this.stackSize - 1;
+    arrayOfInt[i] += 1;
+    return localObject;
+    label167:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Expected a string but was ");
+    ((StringBuilder)localObject).append(peek());
+    ((StringBuilder)localObject).append(locationString());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public JsonToken peek()
@@ -1452,33 +1598,33 @@ public class JsonReader
     {
     default: 
       throw new AssertionError();
-    case 1: 
-      return JsonToken.BEGIN_OBJECT;
-    case 2: 
-      return JsonToken.END_OBJECT;
-    case 3: 
-      return JsonToken.BEGIN_ARRAY;
-    case 4: 
-      return JsonToken.END_ARRAY;
+    case 17: 
+      return JsonToken.END_DOCUMENT;
+    case 15: 
+    case 16: 
+      return JsonToken.NUMBER;
     case 12: 
     case 13: 
     case 14: 
       return JsonToken.NAME;
-    case 5: 
-    case 6: 
-      return JsonToken.BOOLEAN;
-    case 7: 
-      return JsonToken.NULL;
     case 8: 
     case 9: 
     case 10: 
     case 11: 
       return JsonToken.STRING;
-    case 15: 
-    case 16: 
-      return JsonToken.NUMBER;
+    case 7: 
+      return JsonToken.NULL;
+    case 5: 
+    case 6: 
+      return JsonToken.BOOLEAN;
+    case 4: 
+      return JsonToken.END_ARRAY;
+    case 3: 
+      return JsonToken.BEGIN_ARRAY;
+    case 2: 
+      return JsonToken.END_OBJECT;
     }
-    return JsonToken.END_DOCUMENT;
+    return JsonToken.BEGIN_OBJECT;
   }
   
   public final void setLenient(boolean paramBoolean)
@@ -1489,78 +1635,86 @@ public class JsonReader
   public void skipValue()
   {
     int j = 0;
-    int i = this.peeked;
-    int k = i;
-    if (i == 0) {
-      k = doPeek();
-    }
-    if (k == 3)
+    label187:
+    do
     {
-      push(1);
-      i = j + 1;
-    }
-    for (;;)
-    {
-      this.peeked = 0;
-      j = i;
-      if (i != 0) {
-        break;
+      i = this.peeked;
+      int k = i;
+      if (i == 0) {
+        k = doPeek();
       }
-      int[] arrayOfInt = this.pathIndices;
-      i = this.stackSize - 1;
-      arrayOfInt[i] += 1;
-      this.pathNames[(this.stackSize - 1)] = "null";
-      return;
-      if (k == 1)
+      if (k == 3) {
+        push(1);
+      }
+      for (;;)
       {
-        push(3);
         i = j + 1;
+        break label187;
+        if (k != 1) {
+          break;
+        }
+        push(3);
       }
-      else if (k == 4)
+      if (k == 4) {}
+      for (this.stackSize -= 1;; this.stackSize -= 1)
       {
-        this.stackSize -= 1;
         i = j - 1;
+        break label187;
+        if (k != 2) {
+          break;
+        }
       }
-      else if (k == 2)
+      if ((k != 14) && (k != 10))
       {
-        this.stackSize -= 1;
-        i = j - 1;
+        if ((k != 8) && (k != 12))
+        {
+          if ((k != 9) && (k != 13))
+          {
+            i = j;
+            if (k == 16)
+            {
+              this.pos += this.peekedNumberLength;
+              i = j;
+            }
+          }
+          else
+          {
+            skipQuotedValue('"');
+            i = j;
+          }
+        }
+        else
+        {
+          skipQuotedValue('\'');
+          i = j;
+        }
       }
-      else if ((k == 14) || (k == 10))
+      else
       {
         skipUnquotedValue();
         i = j;
       }
-      else if ((k == 8) || (k == 12))
-      {
-        skipQuotedValue('\'');
-        i = j;
-      }
-      else if ((k == 9) || (k == 13))
-      {
-        skipQuotedValue('"');
-        i = j;
-      }
-      else
-      {
-        i = j;
-        if (k == 16)
-        {
-          this.pos += this.peekedNumberLength;
-          i = j;
-        }
-      }
-    }
+      this.peeked = 0;
+      j = i;
+    } while (i != 0);
+    int[] arrayOfInt = this.pathIndices;
+    int i = this.stackSize;
+    j = i - 1;
+    arrayOfInt[j] += 1;
+    this.pathNames[(i - 1)] = "null";
   }
   
   public String toString()
   {
-    return getClass().getSimpleName() + locationString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(locationString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.stream.JsonReader
  * JD-Core Version:    0.7.0.1
  */

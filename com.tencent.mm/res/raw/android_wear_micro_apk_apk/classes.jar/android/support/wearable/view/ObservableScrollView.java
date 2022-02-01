@@ -7,7 +7,7 @@ import android.widget.ScrollView;
 public class ObservableScrollView
   extends ScrollView
 {
-  private r Ds;
+  private r Fh;
   
   public ObservableScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -16,14 +16,14 @@ public class ObservableScrollView
   
   public final void a(r paramr)
   {
-    this.Ds = paramr;
+    this.Fh = paramr;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.Ds != null) {
-      this.Ds.fp();
+    if (this.Fh != null) {
+      this.Fh.fy();
     }
   }
 }

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/q1"
+<RelativeLayout android:id="@id/afj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b9d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/l5" android:layout_marginRight="@dimen/l2">
-        <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/w_" android:textColorHint="@color/s3" android:gravity="top" android:id="@id/k6" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" style="@style/lb" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_gravity="bottom|center|right" android:id="@id/b8l" android:padding="@dimen/ng" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/lq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center" android:layout_width="14.0dip" android:layout_height="14.0dip" style="@style/a74" />
+        <TextView android:gravity="center" android:id="@id/afk" android:text="@string/b5c" style="@style/hb" />
     </LinearLayout>
-    <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l6">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/a4_" android:layout_gravity="bottom|center|right" android:id="@id/ben" android:padding="@dimen/ng" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/em9" />
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

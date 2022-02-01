@@ -8,7 +8,7 @@ public final class RespSetUserState
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  public RespHeader stHeader;
+  public RespHeader stHeader = null;
   
   public RespSetUserState() {}
   
@@ -32,7 +32,7 @@ public final class RespSetUserState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.RespSetUserState
  * JD-Core Version:    0.7.0.1
  */

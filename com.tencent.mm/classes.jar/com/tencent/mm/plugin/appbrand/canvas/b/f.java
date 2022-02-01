@@ -11,25 +11,25 @@ public final class f
 {
   public final boolean a(Path paramPath, BasePathActionArg paramBasePathActionArg)
   {
-    AppMethodBeat.i(103684);
+    AppMethodBeat.i(145367);
     paramPath.close();
-    AppMethodBeat.o(103684);
+    AppMethodBeat.o(145367);
     return true;
   }
   
   public final boolean a(Path paramPath, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103683);
+    AppMethodBeat.i(145366);
     paramPath.close();
-    AppMethodBeat.o(103683);
+    AppMethodBeat.o(145366);
     return true;
   }
   
-  public final BasePathActionArg ayi()
+  public final BasePathActionArg ckk()
   {
-    AppMethodBeat.i(103685);
+    AppMethodBeat.i(145368);
     PathClosePathActionArg localPathClosePathActionArg = new PathClosePathActionArg();
-    AppMethodBeat.o(103685);
+    AppMethodBeat.o(145368);
     return localPathClosePathActionArg;
   }
   
@@ -40,7 +40,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.f
  * JD-Core Version:    0.7.0.1
  */

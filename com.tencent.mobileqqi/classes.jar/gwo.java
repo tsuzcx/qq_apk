@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.jsp.TroopAssistantFeedsJsHandler;
 
 public class gwo
-  implements Comparator
+  implements TroopMemberApiClient.Callback
 {
-  public gwo(TroopMessageProcessor paramTroopMessageProcessor) {}
+  public gwo(TroopAssistantFeedsJsHandler paramTroopAssistantFeedsJsHandler, String paramString1, String paramString2) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void a(Bundle paramBundle)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    if (paramBundle != null)
+    {
+      if (paramBundle.getBoolean("ret", false)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.a(this.jdField_a_of_type_JavaLangString, this.b);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -16,19 +16,21 @@ public class AndroidMediaFormat
   @TargetApi(16)
   public int getInteger(String paramString)
   {
-    if (this.mMediaFormat == null) {
+    MediaFormat localMediaFormat = this.mMediaFormat;
+    if (localMediaFormat == null) {
       return 0;
     }
-    return this.mMediaFormat.getInteger(paramString);
+    return localMediaFormat.getInteger(paramString);
   }
   
   @TargetApi(16)
   public String getString(String paramString)
   {
-    if (this.mMediaFormat == null) {
+    MediaFormat localMediaFormat = this.mMediaFormat;
+    if (localMediaFormat == null) {
       return null;
     }
-    return this.mMediaFormat.getString(paramString);
+    return localMediaFormat.getString(paramString);
   }
   
   @TargetApi(16)
@@ -37,20 +39,19 @@ public class AndroidMediaFormat
     StringBuilder localStringBuilder = new StringBuilder(128);
     localStringBuilder.append(getClass().getName());
     localStringBuilder.append('{');
-    if (this.mMediaFormat != null) {
-      localStringBuilder.append(this.mMediaFormat.toString());
-    }
-    for (;;)
-    {
-      localStringBuilder.append('}');
-      return localStringBuilder.toString();
+    MediaFormat localMediaFormat = this.mMediaFormat;
+    if (localMediaFormat != null) {
+      localStringBuilder.append(localMediaFormat.toString());
+    } else {
       localStringBuilder.append("null");
     }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.misc.AndroidMediaFormat
  * JD-Core Version:    0.7.0.1
  */

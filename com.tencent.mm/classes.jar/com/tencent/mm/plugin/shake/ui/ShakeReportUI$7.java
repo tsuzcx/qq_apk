@@ -1,37 +1,25 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.h;
 
 final class ShakeReportUI$7
-  implements View.OnClickListener
+  implements Runnable
 {
   ShakeReportUI$7(ShakeReportUI paramShakeReportUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(24784);
-    if (!ShakeReportUI.u(this.qRs))
-    {
-      AppMethodBeat.o(24784);
-      return;
+    AppMethodBeat.i(273565);
+    if (ShakeReportUI.h(this.PEm) != null) {
+      ShakeReportUI.h(this.PEm).setVisibility(8);
     }
-    ShakeReportUI.b(this.qRs, false);
-    ShakeReportUI.c(this.qRs, true);
-    ShakeReportUI.d(this.qRs, false);
-    paramView = this.qRs.getContext();
-    String str = this.qRs.getString(2131303593);
-    ShakeReportUI.7.1 local1 = new ShakeReportUI.7.1(this);
-    ShakeReportUI.7.2 local2 = new ShakeReportUI.7.2(this);
-    h.a(paramView, null, new String[] { str }, "", local1, local2);
-    AppMethodBeat.o(24784);
+    AppMethodBeat.o(273565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeReportUI.7
  * JD-Core Version:    0.7.0.1
  */

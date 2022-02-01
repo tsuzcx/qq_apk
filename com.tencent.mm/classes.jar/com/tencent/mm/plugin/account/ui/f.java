@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
 public final class f
   extends SecurityImage.b
 {
-  private static f gEM = null;
+  private static f qbp = null;
   public String account = null;
-  public String gEK = null;
-  public int gEL = 0;
-  public String gwh = null;
-  public byte[] gwi = null;
-  public String gwj = null;
-  public String gwk = null;
+  public String pRA = null;
+  public String pRx = null;
+  public byte[] pRy = null;
+  public String pRz = null;
+  public String qbn = null;
+  public int qbo = 0;
   
   public static void a(f paramf)
   {
-    gEM = paramf;
+    qbp = paramf;
   }
   
-  public static String arv()
+  public static String bYd()
   {
-    if (gEM != null) {
-      return gEM.account;
+    if (qbp != null) {
+      return qbp.account;
     }
     return null;
   }
   
-  public static String arw()
+  public static String bYe()
   {
-    if (gEM != null) {
-      return gEM.gwh;
+    if (qbp != null) {
+      return qbp.pRx;
     }
     return null;
   }
   
-  public final void apW()
+  public final void bWF()
   {
-    AppMethodBeat.i(125006);
-    if (!bo.isNullOrNil(this.gEK))
+    AppMethodBeat.i(128184);
+    if (!Util.isNullOrNil(this.qbn))
     {
-      locals = new s(this.account, this.gEK, this.zgW.getSecCodeType(), "", "", "", 0, "", false, true);
-      g.Rc().a(locals, 0);
-      AppMethodBeat.o(125006);
+      localu = new u(this.account, this.qbn, this.adNR.getSecCodeType(), "", "", "", 0, "", false, true);
+      h.aZW().a(localu, 0);
+      AppMethodBeat.o(128184);
       return;
     }
-    s locals = new s(this.account, this.gwh, this.zgW.getSecCodeType(), "", "", "", 0, "", false, false);
-    g.Rc().a(locals, 0);
-    AppMethodBeat.o(125006);
+    u localu = new u(this.account, this.pRx, this.adNR.getSecCodeType(), "", "", "", 0, "", false, false);
+    h.aZW().a(localu, 0);
+    AppMethodBeat.o(128184);
   }
 }
 

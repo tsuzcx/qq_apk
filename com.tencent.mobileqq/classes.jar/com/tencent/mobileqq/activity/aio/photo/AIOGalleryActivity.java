@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aghk;
-import aghl;
-import aghn;
-import aghx;
-import agki;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -15,86 +10,93 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
-import aofm;
-import axsw;
-import axsz;
-import bexu;
-import blqh;
+import android.view.MotionEvent;
+import com.tencent.aelight.camera.qqstory.api.IAECaptureContext;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryManager;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.QQLiveImage;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.dc.DCAIOPreview;
+import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import mbt;
-import yqz;
-import zin;
-import zje;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class AIOGalleryActivity
   extends PeakActivity
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  public agki a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  axsw jdField_a_of_type_Axsw;
-  axsz jdField_a_of_type_Axsz;
-  public String a;
-  private yqz jdField_a_of_type_Yqz;
-  zje jdField_a_of_type_Zje = new aghl(this);
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 1;
-  BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-  public boolean b;
-  public boolean c = true;
-  public boolean d = false;
+  private TroopMemberApiClient B;
+  GalleryManager a = new AIOGalleryActivity.AIOGalleryManager(this);
+  IAIOImageProvider b;
+  BroadcastReceiver c = null;
+  BroadcastReceiver d = null;
+  DCAIOPreview e;
+  DCAIOPreviewProgressive f;
+  boolean g = false;
+  int h;
+  public String i = null;
+  public boolean j = false;
+  boolean k = true;
+  int l = 1;
+  long m = -1L;
+  boolean n = false;
   
-  public AIOGalleryActivity()
+  public DCAIOPreview b()
   {
-    this.jdField_a_of_type_Long = -1L;
+    if (this.e == null) {
+      this.e = new DCAIOPreview(this);
+    }
+    return this.e;
   }
   
-  public axsw a()
+  protected boolean cd_()
   {
-    if (this.jdField_a_of_type_Axsw == null) {
-      this.jdField_a_of_type_Axsw = new axsw(this);
-    }
-    return this.jdField_a_of_type_Axsw;
+    return false;
   }
   
-  public axsz a()
+  public DCAIOPreviewProgressive d()
   {
-    if (this.jdField_a_of_type_Axsz == null) {
-      this.jdField_a_of_type_Axsz = new axsz(this);
+    if (this.f == null) {
+      this.f = new DCAIOPreviewProgressive(this);
     }
-    return this.jdField_a_of_type_Axsz;
+    return this.f;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public void finish()
   {
-    zin localzin = this.jdField_a_of_type_Zje.a();
-    if (aghx.class.isInstance(localzin)) {
-      ((aghx)localzin).g();
+    AbstractGalleryScene localAbstractGalleryScene = this.a.c();
+    if (AIOGalleryScene.class.isInstance(localAbstractGalleryScene)) {
+      ((AIOGalleryScene)localAbstractGalleryScene).f();
     }
     QQLiveImage.releaseAll(this);
     super.finish();
     overridePendingTransition(0, 0);
   }
   
-  public boolean isWrapContent()
-  {
-    return false;
-  }
-  
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Zje.a(paramInt1, paramInt2, paramIntent);
+    this.a.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    if (!this.jdField_a_of_type_Zje.b()) {
+    if (!this.a.i()) {
       super.onBackPressed();
     }
     QQLiveImage.releaseAll(this);
@@ -103,156 +105,158 @@ public class AIOGalleryActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_Zje.a(paramConfiguration);
+    this.a.a(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
-    this.mActNeedImmersive = false;
+    this.z = false;
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Yqz = yqz.a();
-    this.jdField_a_of_type_Yqz.a();
-    aghh.a = getResources().getDisplayMetrics().density;
-    ShortVideoUtils.a(blqh.a());
-    this.jdField_a_of_type_Axsw = new axsw(this);
-    this.jdField_a_of_type_Axsz = new axsz(this);
+    this.B = TroopMemberApiClient.a();
+    this.B.e();
+    AIOConstants.a = getResources().getDisplayMetrics().density;
+    ShortVideoUtils.loadShortVideoSo(((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
+    this.e = new DCAIOPreview(this);
+    this.f = new DCAIOPreviewProgressive(this);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("extra.GROUP_UIN");
-    this.jdField_b_of_type_Boolean = paramBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY");
+    if (paramBundle != null)
+    {
+      this.i = paramBundle.getString("extra.GROUP_UIN");
+      this.j = paramBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY");
+    }
     try
     {
-      this.jdField_a_of_type_Zje.a(this);
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new aghk(this);
-      paramBundle = new IntentFilter();
-      paramBundle.addAction("tencent.av.v2q.StartVideoChat");
+      this.a.b(this);
     }
     catch (Exception paramBundle)
     {
-      for (;;)
-      {
-        try
-        {
-          registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, paramBundle);
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-        paramBundle = paramBundle;
-        if (QLog.isColorLevel()) {
-          QLog.e("AIOGalleryActivity", 2, "", paramBundle);
-        }
-        finish();
+      if (QLog.isColorLevel()) {
+        QLog.e("AIOGalleryActivity", 2, "", paramBundle);
       }
+      finish();
+    }
+    this.d = new AIOGalleryActivity.1(this);
+    paramBundle = new IntentFilter();
+    paramBundle.addAction("tencent.av.v2q.StartVideoChat");
+    try
+    {
+      registerReceiver(this.d, paramBundle);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AIOGalleryActivity", 2, "onDestroy()");
     }
     super.onDestroy();
-    this.jdField_a_of_type_Zje.c(this);
-    if (this.jdField_a_of_type_Agki != null) {}
+    this.a.d(this);
+    if (this.b != null) {}
     try
     {
-      if ((!this.jdField_b_of_type_Boolean) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false))) {
-        this.jdField_a_of_type_Agki.a();
-      }
-      for (;;)
-      {
-        label62:
-        if (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null)
-        {
-          unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-        }
-        if (this.jdField_a_of_type_Axsw != null)
-        {
-          this.jdField_a_of_type_Axsw.b(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Axsw.a();
-        }
-        if (this.jdField_a_of_type_Axsz != null) {
-          this.jdField_a_of_type_Axsz.a();
-        }
-        this.jdField_a_of_type_Yqz.b();
-        QQLiveImage.releaseAll(this);
-        return;
-        this.jdField_a_of_type_Agki.c();
+      if ((!this.j) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false))) {
+        this.b.a();
+      } else {
+        this.b.c();
       }
     }
     catch (Exception localException)
     {
-      break label62;
+      label79:
+      Object localObject;
+      break label79;
     }
+    localObject = this.d;
+    if (localObject != null)
+    {
+      unregisterReceiver((BroadcastReceiver)localObject);
+      this.d = null;
+    }
+    localObject = this.e;
+    if (localObject != null)
+    {
+      ((DCAIOPreview)localObject).a(this.h);
+      this.e.a();
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((DCAIOPreviewProgressive)localObject).a();
+    }
+    this.B.f();
+    QQLiveImage.releaseAll(this);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Zje.a(paramInt, paramKeyEvent)) {
+    if (!this.a.a(paramInt, paramKeyEvent)) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     return true;
   }
   
-  public void onPause()
+  protected void onPause()
   {
-    mbt.a(BaseApplicationImpl.getContext(), false);
-    bexu.a(BaseApplicationImpl.getContext(), true, 52);
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), true, 52);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(BaseApplicationImpl.getContext(), 2, true);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
     QQLiveImage.pauseAll(this);
     super.onPause();
-    if ((Build.MODEL.equals("Coolpad 5930")) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)) {}
-    try
+    if (Build.MODEL.equals("Coolpad 5930"))
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Zje.b();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AIOGalleryActivity", 2, localException.getMessage());
+      BroadcastReceiver localBroadcastReceiver = this.c;
+      if (localBroadcastReceiver != null) {
+        try
+        {
+          unregisterReceiver(localBroadcastReceiver);
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("AIOGalleryActivity", 2, localException.getMessage());
+          }
         }
       }
     }
+    this.a.j();
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
-    mbt.a(BaseApplicationImpl.getContext(), true);
-    bexu.a(BaseApplicationImpl.getContext(), false, 52);
-    aofm.a(BaseApplicationImpl.getContext(), 2, false);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), true);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 52);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(BaseApplicationImpl.getContext(), 2, false);
     com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
     AbstractGifImage.resumeAll();
     ApngImage.playByTag(0);
     QQLiveImage.resumeAll(this);
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aghn(this);
+      this.c = new AIOGalleryActivity.ScreenBroadcastReceiver(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      registerReceiver(this.c, localIntentFilter);
     }
-    this.jdField_a_of_type_Zje.c();
+    this.a.k();
   }
   
-  public void onStart()
+  protected void onStart()
   {
     super.onStart();
     QQLiveImage.onForeground(this);
   }
   
-  public void onStop()
+  protected void onStop()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AIOGalleryActivity", 2, "onStop()");
@@ -266,13 +270,13 @@ public class AIOGalleryActivity
   {
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Zje.b(this);
+      this.a.c(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity
  * JD-Core Version:    0.7.0.1
  */

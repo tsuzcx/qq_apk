@@ -1,81 +1,64 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.clv;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.am.s;
+import com.tencent.mm.app.t;
+import com.tencent.mm.app.t.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bw.a;
+import com.tencent.mm.network.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public final class b
-  extends m
-  implements k
 {
-  private f callback;
-  private List<String> meE;
+  public static a Pnv;
+  private static b Pnw;
+  public boolean oTC = false;
   
-  public b(List<String> paramList)
+  public static long ahE(String paramString)
   {
-    this.meE = paramList;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(126841);
-    this.callback = paramf;
-    paramf = new b.a();
-    cu localcu = new cu();
-    ArrayList localArrayList = new ArrayList();
-    if (this.meE != null)
+    AppMethodBeat.i(73761);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+    long l1 = Util.nowMilliSecond();
+    try
     {
-      i = 0;
-      while (i < this.meE.size())
+      long l2 = localSimpleDateFormat.parse(paramString).getTime();
+      l1 = l2;
+    }
+    catch (ParseException localParseException)
+    {
+      for (;;)
       {
-        clv localclv = new clv();
-        localclv.jJA = ((String)this.meE.get(i));
-        localArrayList.add(localclv);
-        i += 1;
+        Log.e("MicroMsg.FixToolsUplogModel", "dateToTimeStamp failed. date:%s, stack:%s", new Object[] { paramString, Util.getStack() });
       }
     }
-    localcu.wph.addAll(localArrayList);
-    paramf.fsX = localcu;
-    paramf.fsY = new cv();
-    paramf.uri = "/cgi-bin/micromsg-bin/addtrustedfriends";
-    paramf.funcId = 583;
-    paramf.reqCmdId = 0;
-    paramf.reqCmdId = 0;
-    int i = dispatch(parame, paramf.ado(), this);
-    AppMethodBeat.o(126841);
-    return i;
+    AppMethodBeat.o(73761);
+    return l1;
   }
   
-  public final int getType()
+  public static b gUU()
   {
-    return 583;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(126840);
-    updateDispatchIdNew(paramInt1);
-    if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ab.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(73760);
+    if (Pnw == null) {
+      Pnw = new b();
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(126840);
+    b localb = Pnw;
+    AppMethodBeat.o(73760);
+    return localb;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void aiS(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.b
  * JD-Core Version:    0.7.0.1
  */

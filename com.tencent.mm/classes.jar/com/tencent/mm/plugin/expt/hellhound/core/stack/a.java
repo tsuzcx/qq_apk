@@ -8,14 +8,14 @@ public enum a
   
   static
   {
-    AppMethodBeat.i(73357);
-    lZI = new a("CREATE", 0, 0);
-    lZJ = new a("RESUME", 1, 1);
-    lZK = new a("PAUSE", 2, 2);
-    lZL = new a("STOP", 3, 3);
-    lZM = new a("DESTROY", 4, 4);
-    lZN = new a[] { lZI, lZJ, lZK, lZL, lZM };
-    AppMethodBeat.o(73357);
+    AppMethodBeat.i(121877);
+    zBo = new a("CREATE", 0, 0);
+    zBp = new a("RESUME", 1, 1);
+    zBq = new a("PAUSE", 2, 2);
+    zBr = new a("STOP", 3, 3);
+    zBs = new a("DESTROY", 4, 4);
+    zBt = new a[] { zBo, zBp, zBq, zBr, zBs };
+    AppMethodBeat.o(121877);
   }
   
   private a(int paramInt)

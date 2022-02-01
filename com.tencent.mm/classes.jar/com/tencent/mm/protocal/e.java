@@ -7,9 +7,9 @@ public class e
 {
   static
   {
-    AppMethodBeat.i(58790);
+    AppMethodBeat.i(133040);
     Assert.assertTrue("giveup rtType now ! Use the funcid !", true);
-    AppMethodBeat.o(58790);
+    AppMethodBeat.o(133040);
   }
 }
 

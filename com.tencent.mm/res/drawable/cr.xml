@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/panel_pic_icon_shade_pressed" />
-    <item android:state_selected="true" android:drawable="@raw/panel_pic_icon_shade_pressed" />
-    <item android:drawable="@raw/panel_pic_icon_shade_normal" />
-</selector>
+    <solid android:color="#ffe0e0e0" />
+    <size android:height="20.0dip" android:width="20.0dip" />
+</shape>

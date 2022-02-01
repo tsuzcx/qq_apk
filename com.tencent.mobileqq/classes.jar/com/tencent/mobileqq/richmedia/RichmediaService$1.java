@@ -2,8 +2,6 @@ package com.tencent.mobileqq.richmedia;
 
 import android.os.Bundle;
 import android.os.RemoteException;
-import axnj;
-import axnm;
 
 final class RichmediaService$1
   implements Runnable
@@ -12,32 +10,35 @@ final class RichmediaService$1
   
   public void run()
   {
-    if (RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService != null)
+    if (RichmediaService.a != null)
     {
-      axnj localaxnj = RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService.jdField_a_of_type_Axnj;
-      if (localaxnj != null) {
+      ICallBack localICallBack = RichmediaService.a.f;
+      if (localICallBack != null) {
         try
         {
-          axnm.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
-          localaxnj.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-          axnm.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
+          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
+          localICallBack.b(this.a, this.b);
+          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
           return;
         }
         catch (RemoteException localRemoteException)
         {
-          axnm.a("RichmediaService", "sendICallBackRequest cb.sendRequest ipc fail, RemoteException : " + localRemoteException.getMessage());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("sendICallBackRequest cb.sendRequest ipc fail, RemoteException : ");
+          localStringBuilder.append(localRemoteException.getMessage());
+          LOG.a("RichmediaService", localStringBuilder.toString());
           return;
         }
       }
-      axnm.a("RichmediaService", "sendICallBackRequest service.mClientCallBack is null");
+      LOG.a("RichmediaService", "sendICallBackRequest service.mClientCallBack is null");
       return;
     }
-    axnm.a("RichmediaService", "sendICallBackRequest Richmedia Service is null");
+    LOG.a("RichmediaService", "sendICallBackRequest Richmedia Service is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService.1
  * JD-Core Version:    0.7.0.1
  */

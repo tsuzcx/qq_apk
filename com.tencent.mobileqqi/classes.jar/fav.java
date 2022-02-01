@@ -1,15 +1,20 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import wifiphoto.WifiPhotoDataCenter;
 
 public class fav
-  implements Runnable
+  extends Thread
 {
-  public fav(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public fav(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.g(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
+    DataLineHandler.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("wifiphoto", 2, "openWifiPhoto begin sendWifiPhotoBasicInfo");
+    }
+    DataLineHandler.b(this.a);
+    DataLineHandler.c(this.a);
   }
 }
 

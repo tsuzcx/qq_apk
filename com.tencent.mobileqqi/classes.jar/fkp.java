@@ -1,41 +1,42 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.proxy.TroopInfoProxy;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class fkp
-  implements Runnable
+public final class fkp
+  implements Parcelable.Creator
 {
-  public fkp(RecentUserProxy paramRecentUserProxy, SharedPreferences paramSharedPreferences) {}
-  
-  public void run()
+  public TroopInfoProxy a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentUserProxy", 2, "checkNewFriendUpgrade | start");
-    }
-    Object localObject1 = null;
-    for (;;)
-    {
-      int i;
-      synchronized (RecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy))
-      {
-        Iterator localIterator = RecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy).iterator();
-        if (localIterator.hasNext())
-        {
-          RecentUser localRecentUser = (RecentUser)localIterator.next();
-          if ((localRecentUser != null) && (AppConstants.R.equals(localRecentUser.uin))) {
-            localObject1 = localRecentUser;
-          }
-        }
-        else if (localObject1 != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.b((RecentUser)localObject1);
-        }
-      }
-    }
+    TroopInfo localTroopInfo = new TroopInfo();
+    localTroopInfo.uin = paramParcel.readString();
+    localTroopInfo.timeSec = paramParcel.readLong();
+    localTroopInfo.troopuin = paramParcel.readString();
+    localTroopInfo.troopcode = paramParcel.readString();
+    localTroopInfo.troopowneruin = paramParcel.readString();
+    localTroopInfo.troopname = paramParcel.readString();
+    localTroopInfo.troopface = ((short)paramParcel.readInt());
+    localTroopInfo.troopmemo = paramParcel.readString();
+    localTroopInfo.fingertroopmemo = paramParcel.readString();
+    localTroopInfo.troopmask = paramParcel.readInt();
+    localTroopInfo.trooptype = paramParcel.readInt();
+    localTroopInfo.troopCreateTime = paramParcel.readLong();
+    localTroopInfo.dwGroupFlag = paramParcel.readLong();
+    localTroopInfo.troopmask = paramParcel.readInt();
+    localTroopInfo.cGroupOption = ((short)paramParcel.readInt());
+    localTroopInfo.wMemberMax = paramParcel.readInt();
+    localTroopInfo.wSpecialClass = paramParcel.readInt();
+    localTroopInfo.cGroupLevel = ((short)paramParcel.readInt());
+    localTroopInfo.wMemberNum = paramParcel.readInt();
+    localTroopInfo.Administrator = paramParcel.readString();
+    localTroopInfo.dwGroupClassExt = paramParcel.readLong();
+    localTroopInfo.dwGroupFlagExt = paramParcel.readLong();
+    return new TroopInfoProxy(localTroopInfo);
+  }
+  
+  public TroopInfoProxy[] a(int paramInt)
+  {
+    return new TroopInfoProxy[paramInt];
   }
 }
 

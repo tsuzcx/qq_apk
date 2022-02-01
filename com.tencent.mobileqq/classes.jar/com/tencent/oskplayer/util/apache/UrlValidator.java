@@ -85,13 +85,12 @@ public class UrlValidator
   public UrlValidator(String[] paramArrayOfString, RegexValidator paramRegexValidator, long paramLong)
   {
     this.options = paramLong;
-    if (isOn(1L)) {
+    if (isOn(1L))
+    {
       this.allowedSchemes = Collections.EMPTY_SET;
     }
-    for (;;)
+    else
     {
-      this.authorityValidator = paramRegexValidator;
-      return;
       String[] arrayOfString = paramArrayOfString;
       if (paramArrayOfString == null) {
         arrayOfString = DEFAULT_SCHEMES;
@@ -99,6 +98,7 @@ public class UrlValidator
       this.allowedSchemes = new HashSet();
       this.allowedSchemes.addAll(Arrays.asList(arrayOfString));
     }
+    this.authorityValidator = paramRegexValidator;
   }
   
   public static UrlValidator getInstance()
@@ -108,18 +108,18 @@ public class UrlValidator
   
   private boolean isOff(long paramLong)
   {
-    return (this.options & paramLong) == 0L;
+    return (paramLong & this.options) == 0L;
   }
   
   private boolean isOn(long paramLong)
   {
-    return (this.options & paramLong) > 0L;
+    return (paramLong & this.options) > 0L;
   }
   
   protected int countToken(String paramString1, String paramString2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while (i != -1)
     {
       int k = paramString2.indexOf(paramString1, i);
@@ -135,63 +135,59 @@ public class UrlValidator
   
   public boolean isValid(String paramString)
   {
-    if (paramString == null) {}
-    String str2;
-    do
-    {
-      while ((!isValidPath(paramString.group(5))) || (!isValidQuery(paramString.group(7))) || (!isValidFragment(paramString.group(9))))
-      {
-        String str1;
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-              if (PlayerUtils.isLocalFile(paramString)) {
-                return true;
-              }
-            } while (!ASCII_PATTERN.matcher(paramString).matches());
-            paramString = URL_PATTERN.matcher(paramString);
-          } while (!paramString.matches());
-          str1 = paramString.group(2);
-        } while (!isValidScheme(str1));
-        str2 = paramString.group(4);
-        if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
-          break;
-        }
-      }
+    if (paramString == null) {
+      return false;
+    }
+    if (PlayerUtils.isLocalFile(paramString)) {
       return true;
-    } while (isValidAuthority(str2));
-    return false;
+    }
+    if (!ASCII_PATTERN.matcher(paramString).matches()) {
+      return false;
+    }
+    paramString = URL_PATTERN.matcher(paramString);
+    if (!paramString.matches()) {
+      return false;
+    }
+    String str1 = paramString.group(2);
+    if (!isValidScheme(str1)) {
+      return false;
+    }
+    String str2 = paramString.group(4);
+    if (((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) && (!isValidAuthority(str2))) {
+      return false;
+    }
+    if (!isValidPath(paramString.group(5))) {
+      return false;
+    }
+    if (!isValidQuery(paramString.group(7))) {
+      return false;
+    }
+    return isValidFragment(paramString.group(9));
   }
   
   protected boolean isValidAuthority(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
-      String str;
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            if ((this.authorityValidator != null) && (this.authorityValidator.isValid(paramString))) {
-              return true;
-            }
-            paramString = AUTHORITY_PATTERN.matcher(paramString);
-          } while (!paramString.matches());
-          str = paramString.group(1);
-        } while ((!DomainValidator.getInstance(isOn(8L)).isValid(str)) && (!InetAddressValidator.getInstance().isValid(str)));
-        str = paramString.group(2);
-      } while ((str != null) && (!PORT_PATTERN.matcher(str).matches()));
-      paramString = paramString.group(3);
-    } while ((paramString != null) && (paramString.trim().length() > 0));
-    return true;
+    if (paramString == null) {
+      return false;
+    }
+    Object localObject = this.authorityValidator;
+    if ((localObject != null) && (((RegexValidator)localObject).isValid(paramString))) {
+      return true;
+    }
+    paramString = AUTHORITY_PATTERN.matcher(paramString);
+    if (!paramString.matches()) {
+      return false;
+    }
+    localObject = paramString.group(1);
+    if ((!DomainValidator.getInstance(isOn(8L)).isValid((String)localObject)) && (!InetAddressValidator.getInstance().isValid((String)localObject))) {
+      return false;
+    }
+    localObject = paramString.group(2);
+    if ((localObject != null) && (!PORT_PATTERN.matcher((CharSequence)localObject).matches())) {
+      return false;
+    }
+    paramString = paramString.group(3);
+    return (paramString == null) || (paramString.trim().length() <= 0);
   }
   
   protected boolean isValidFragment(String paramString)
@@ -204,24 +200,19 @@ public class UrlValidator
   
   protected boolean isValidPath(String paramString)
   {
-    if (paramString == null) {}
-    int i;
-    int j;
-    int k;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!PATH_PATTERN.matcher(paramString).matches());
-        i = countToken("//", paramString);
-      } while ((isOff(2L)) && (i > 0));
-      j = countToken("/", paramString);
-      k = countToken("..", paramString);
-    } while ((k > 0) && (j - i - 1 <= k));
-    return true;
+    if (paramString == null) {
+      return false;
+    }
+    if (!PATH_PATTERN.matcher(paramString).matches()) {
+      return false;
+    }
+    int i = countToken("//", paramString);
+    if ((isOff(2L)) && (i > 0)) {
+      return false;
+    }
+    int j = countToken("/", paramString);
+    int k = countToken("..", paramString);
+    return (k <= 0) || (j - i - 1 > k);
   }
   
   protected boolean isValidQuery(String paramString)
@@ -234,16 +225,18 @@ public class UrlValidator
   
   protected boolean isValidScheme(String paramString)
   {
-    if (paramString == null) {}
-    while ((!SCHEME_PATTERN.matcher(paramString).matches()) || ((isOff(1L)) && (!this.allowedSchemes.contains(paramString)))) {
+    if (paramString == null) {
       return false;
     }
-    return true;
+    if (!SCHEME_PATTERN.matcher(paramString).matches()) {
+      return false;
+    }
+    return (!isOff(1L)) || (this.allowedSchemes.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.util.apache.UrlValidator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,170 @@
 package com.tencent.mobileqq.flutter.container;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import arxi;
-import arxj;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import io.flutter.embedding.engine.FlutterShellArgs;
 
 public class QFlutterContainerFragment
-  extends PublicBaseFragment
-  implements arxi
+  extends QPublicBaseFragment
+  implements LifecycleOwner, IQFlutterContainerHost
 {
-  private arxj a;
+  private LifecycleRegistry a;
+  protected QFlutterContainerDelegate b;
   
-  public Activity a()
+  public QFlutterContainerFragment()
   {
-    return getActivity();
+    setArguments(new Bundle());
+    this.a = new LifecycleRegistry(this);
   }
   
-  public Bundle a()
+  @Nullable
+  public View a()
+  {
+    return null;
+  }
+  
+  @NonNull
+  public FlutterShellArgs c()
+  {
+    String[] arrayOfString = getArguments().getStringArray("initialization_args");
+    if (arrayOfString == null) {
+      arrayOfString = new String[0];
+    }
+    return new FlutterShellArgs(arrayOfString);
+  }
+  
+  @Nullable
+  public Bundle d()
   {
     return getArguments();
   }
   
-  public FragmentManager a()
+  public boolean e()
   {
-    return getChildFragmentManager();
+    return false;
   }
   
-  public void onCreate(Bundle paramBundle)
+  @NonNull
+  public Context getContext()
   {
-    super.onCreate(paramBundle);
-    this.a = new arxj(this);
-    this.a.a(paramBundle);
+    return getQBaseActivity();
+  }
+  
+  @NonNull
+  public Lifecycle getLifecycle()
+  {
+    return this.a;
+  }
+  
+  public void onActivityCreated(Bundle paramBundle)
+  {
+    super.onActivityCreated(paramBundle);
+    this.b.a(paramBundle);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.b.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void onAttach(Activity paramActivity)
+  {
+    super.onAttach(paramActivity);
+    this.b = new QFlutterContainerDelegate(this);
+    this.b.a();
+  }
+  
+  public boolean onBackEvent()
+  {
+    return super.onBackEvent();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.a != null) {
-      return this.a.a();
-    }
-    return null;
+    super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = this.b.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
-  public void onDestroy()
+  public void onDestroyView()
   {
-    super.onDestroy();
-    if (this.a != null) {
-      this.a.d();
-    }
+    super.onDestroyView();
+    this.b.f();
+  }
+  
+  public void onDetach()
+  {
+    super.onDetach();
+    this.b.g();
+    this.b.h();
+    this.b = null;
+  }
+  
+  public void onLowMemory()
+  {
+    super.onLowMemory();
+    this.b.j();
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    super.onNewIntent(paramIntent);
+    this.b.a(paramIntent);
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.a != null) {
-      this.a.c();
-    }
+    this.b.d();
   }
   
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    if (this.a != null) {
-      this.a.e();
-    }
+    this.b.k();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.a != null) {
-      this.a.b();
-    }
+    this.b.c();
   }
   
-  public void onViewCreated(View paramView, Bundle paramBundle)
+  public void onSaveInstanceState(Bundle paramBundle)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    super.onSaveInstanceState(paramBundle);
+    this.b.b(paramBundle);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    this.b.b();
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    this.b.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

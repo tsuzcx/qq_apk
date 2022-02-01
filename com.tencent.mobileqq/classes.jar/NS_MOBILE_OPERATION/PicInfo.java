@@ -14,29 +14,29 @@ public final class PicInfo
   static Map<String, String> cache_through_to_adapt_server;
   static byte[] cache_vectPicBin;
   public String albumid = "";
-  public int hdheight;
+  public int hdheight = 0;
   public String hdid = "";
-  public int hdwidth;
+  public int hdwidth = 0;
   public String imageId = "";
-  public int is_appext_pic;
+  public int is_appext_pic = 0;
   public boolean ishd = true;
-  public Map<String, String> mapWaterMarkParams;
-  public Map<String, String> pic_extend;
+  public Map<String, String> mapWaterMarkParams = null;
+  public Map<String, String> pic_extend = null;
   public String pic_url = "";
-  public int picheight;
+  public int picheight = 0;
   public String picmd5 = "";
   public String pictureid = "";
-  public int pictype;
-  public int picwidth;
+  public int pictype = 0;
+  public int picwidth = 0;
   public String quan_key = "";
   public String richval = "";
   public String sloc = "";
-  public int sourceType;
+  public int sourceType = 0;
   public String strWaterMarkID = "";
   public String strWaterMarkMemo = "";
-  public Map<String, String> through_to_adapt_server;
-  public long uploadtime;
-  public byte[] vectPicBin;
+  public Map<String, String> through_to_adapt_server = null;
+  public long uploadtime = 0L;
+  public byte[] vectPicBin = null;
   public String video_id = "";
   
   static
@@ -112,68 +112,84 @@ public final class PicInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 0);
+    Object localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.pictureid != null) {
-      paramJceOutputStream.write(this.pictureid, 1);
+    localObject = this.pictureid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.sloc != null) {
-      paramJceOutputStream.write(this.sloc, 2);
+    localObject = this.sloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.pictype, 3);
     paramJceOutputStream.write(this.picheight, 4);
     paramJceOutputStream.write(this.picwidth, 5);
     paramJceOutputStream.write(this.ishd, 6);
-    if (this.hdid != null) {
-      paramJceOutputStream.write(this.hdid, 7);
+    localObject = this.hdid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.hdheight, 8);
     paramJceOutputStream.write(this.hdwidth, 9);
-    if (this.strWaterMarkID != null) {
-      paramJceOutputStream.write(this.strWaterMarkID, 10);
+    localObject = this.strWaterMarkID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strWaterMarkMemo != null) {
-      paramJceOutputStream.write(this.strWaterMarkMemo, 11);
+    localObject = this.strWaterMarkMemo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.mapWaterMarkParams != null) {
-      paramJceOutputStream.write(this.mapWaterMarkParams, 12);
+    localObject = this.mapWaterMarkParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 13);
+    localObject = this.pic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.is_appext_pic, 14);
-    if (this.richval != null) {
-      paramJceOutputStream.write(this.richval, 15);
+    localObject = this.richval;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.vectPicBin != null) {
-      paramJceOutputStream.write(this.vectPicBin, 16);
+    localObject = this.vectPicBin;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
     paramJceOutputStream.write(this.uploadtime, 17);
     paramJceOutputStream.write(this.sourceType, 18);
-    if (this.imageId != null) {
-      paramJceOutputStream.write(this.imageId, 19);
+    localObject = this.imageId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.picmd5 != null) {
-      paramJceOutputStream.write(this.picmd5, 20);
+    localObject = this.picmd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.through_to_adapt_server != null) {
-      paramJceOutputStream.write(this.through_to_adapt_server, 21);
+    localObject = this.through_to_adapt_server;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 21);
     }
-    if (this.video_id != null) {
-      paramJceOutputStream.write(this.video_id, 22);
+    localObject = this.video_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 22);
     }
-    if (this.quan_key != null) {
-      paramJceOutputStream.write(this.quan_key, 23);
+    localObject = this.quan_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.pic_extend != null) {
-      paramJceOutputStream.write(this.pic_extend, 24);
+    localObject = this.pic_extend;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 24);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.PicInfo
  * JD-Core Version:    0.7.0.1
  */

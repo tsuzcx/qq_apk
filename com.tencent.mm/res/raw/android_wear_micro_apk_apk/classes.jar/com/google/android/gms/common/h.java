@@ -13,14 +13,14 @@ import com.google.android.gms.internal.ch;
 
 public class h
 {
-  public static final int Hi = n.Hi;
-  private static final h Ll = new h();
+  public static final int IX = n.IX;
+  private static final h Na = new h();
   
   private static String g(Context paramContext, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gcore_");
-    localStringBuilder.append(Hi);
+    localStringBuilder.append(IX);
     localStringBuilder.append("-");
     if (!TextUtils.isEmpty(paramString)) {
       localStringBuilder.append(paramString);
@@ -33,7 +33,7 @@ public class h
     if (paramContext != null) {}
     try
     {
-      localStringBuilder.append(ch.u(paramContext).getPackageInfo(paramContext.getPackageName(), 0).versionCode);
+      localStringBuilder.append(ch.v(paramContext).getPackageInfo(paramContext.getPackageName(), 0).versionCode);
       label94:
       return localStringBuilder.toString();
     }
@@ -43,9 +43,9 @@ public class h
     }
   }
   
-  public static void l(Context paramContext)
+  public static void m(Context paramContext)
   {
-    n.l(paramContext);
+    n.m(paramContext);
   }
   
   public PendingIntent a(Context paramContext, int paramInt1, int paramInt2)
@@ -70,17 +70,12 @@ public class h
       return null;
     case 1: 
     case 2: 
-      if ((paramContext != null) && (g.j(paramContext))) {
-        return aj.hB();
+      if ((paramContext != null) && (g.k(paramContext))) {
+        return aj.hL();
       }
       return aj.b("com.google.android.gms", g(paramContext, paramString));
     }
     return aj.m("com.google.android.gms");
-  }
-  
-  public boolean aZ(int paramInt)
-  {
-    return n.bj(paramInt);
   }
   
   public boolean b(Context paramContext, int paramInt)
@@ -88,15 +83,20 @@ public class h
     return n.b(paramContext, paramInt);
   }
   
+  public boolean bt(int paramInt)
+  {
+    return n.bD(paramInt);
+  }
+  
   @Deprecated
-  public Intent ba(int paramInt)
+  public Intent bu(int paramInt)
   {
     return a(null, paramInt, null);
   }
   
-  public String bb(int paramInt)
+  public String bv(int paramInt)
   {
-    return n.bb(paramInt);
+    return n.bv(paramInt);
   }
   
   public int d(Context paramContext)

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import arxg;
-import arxo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.flutter.config.QFlutterDPC;
+import com.tencent.mobileqq.flutter.download.QFlutterInstaller;
 import com.tencent.qphone.base.util.QLog;
 
-public final class SpecialCareUtils$1
+final class SpecialCareUtils$1
   implements Runnable
 {
-  public SpecialCareUtils$1(QQAppInterface paramQQAppInterface) {}
+  SpecialCareUtils$1(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (arxg.a().a())
+    if (QFlutterDPC.a().c())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SpecialCareUtils", 2, "preLoadSpecialCareSettingPage");
       }
-      arxo.a(this.a, null);
+      QFlutterInstaller.a(this.a, null);
     }
   }
 }

@@ -21,12 +21,13 @@ public final class qqstory_del_message$ReqDelOneMessage
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "vid", "comment_uid", "comment_type", "comment_info", "remind_uid" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), null, Long.valueOf(0L) }, ReqDelOneMessage.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "vid", "comment_uid", "comment_type", "comment_info", "remind_uid" }, new Object[] { localByteStringMicro, localLong, Integer.valueOf(0), null, localLong }, ReqDelOneMessage.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_del_message.ReqDelOneMessage
  * JD-Core Version:    0.7.0.1
  */

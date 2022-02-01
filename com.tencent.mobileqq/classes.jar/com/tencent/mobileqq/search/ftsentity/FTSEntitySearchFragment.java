@@ -1,45 +1,28 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import android.os.Bundle;
-import ayjn;
-import aylh;
-import aylk;
-import ayln;
-import ayug;
-import ayuv;
-import ayvm;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.base.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.base.adapter.BaseMvpAdapter;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.base.model.SearchRespData;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class FTSEntitySearchFragment
   extends BaseSearchFragment
 {
-  public static FTSEntitySearchFragment a(String paramString)
+  public static FTSEntitySearchFragment b(String paramString)
   {
     FTSEntitySearchFragment localFTSEntitySearchFragment = new FTSEntitySearchFragment();
     Bundle localBundle = new Bundle(1);
     localBundle.putString("keyword", paramString);
     localFTSEntitySearchFragment.setArguments(localBundle);
     return localFTSEntitySearchFragment;
-  }
-  
-  public ayjn a()
-  {
-    return new aylh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
-  }
-  
-  public ayug a()
-  {
-    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return aylk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
-  }
-  
-  public String a()
-  {
-    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return aylk.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public void a(String paramString)
@@ -49,73 +32,94 @@ public class FTSEntitySearchFragment
   
   public void a(List paramList, int paramInt)
   {
-    int i = 0;
     super.a(paramList, paramInt);
-    String str;
-    StringBuilder localStringBuilder;
-    if (!this.b)
+    if (!this.j)
     {
-      str = "" + this.c;
-      localStringBuilder = new StringBuilder().append("");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(this.q);
+      localObject = ((StringBuilder)localObject).toString();
+      paramInt = 0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
       if (paramList != null) {
-        break label93;
+        paramInt = paramList.size();
       }
-    }
-    label93:
-    for (paramInt = i;; paramInt = paramList.size())
-    {
-      ayvm.a("talk", "exp_page", new String[] { str, paramInt });
-      this.b = true;
-      return;
+      localStringBuilder.append(paramInt);
+      SearchUtils.a("talk", "exp_page", new String[] { localObject, localStringBuilder.toString() });
+      this.j = true;
     }
   }
   
-  public void a(List paramList, ayuv paramayuv)
+  public void a(List paramList, SearchRespData paramSearchRespData)
   {
-    if (paramayuv.a(this.c)) {
-      a(paramList, paramayuv.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
+    if (paramSearchRespData.a(this.q))
+    {
+      a(paramList, paramSearchRespData.b);
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramayuv.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
+    if (QLog.isColorLevel()) {
+      QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.a, " keyword2:", this.q });
+    }
+  }
+  
+  protected BaseMvpAdapter b()
+  {
+    return new FTSEntitySearchFragment.1(this, this.l, this.n);
+  }
+  
+  protected ISearchEngine c()
+  {
+    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getQBaseActivity();
+    return FTSEntitySearchUtils.a((QQAppInterface)this.p, localBaseSearchActivity.j);
+  }
+  
+  protected String d()
+  {
+    BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getQBaseActivity();
+    return FTSEntitySearchUtils.a(localBaseSearchActivity, localBaseSearchActivity.j);
+  }
+  
+  protected String e()
+  {
+    return HardCodeUtil.a(2131899285);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (getArguments() != null) {
-      this.c = getArguments().getString("keyword");
+      this.q = getArguments().getString("keyword");
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Ayug.c();
+    this.o.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Ayug.d();
+    this.o.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    ((ayln)this.jdField_a_of_type_Ayug).f();
+    ((FTSMessageSearchEngine)this.o).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((ayln)this.jdField_a_of_type_Ayug).g();
+    ((FTSMessageSearchEngine)this.o).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment
  * JD-Core Version:    0.7.0.1
  */

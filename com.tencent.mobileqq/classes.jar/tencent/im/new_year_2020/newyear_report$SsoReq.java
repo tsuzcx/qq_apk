@@ -12,7 +12,7 @@ public final class newyear_report$SsoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.new_year_2020.newyear_report.SsoReq
  * JD-Core Version:    0.7.0.1
  */

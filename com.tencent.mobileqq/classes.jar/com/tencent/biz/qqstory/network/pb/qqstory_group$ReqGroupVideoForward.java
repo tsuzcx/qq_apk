@@ -19,13 +19,14 @@ public final class qqstory_group$ReqGroupVideoForward
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "type", "forward_to", "vid", "time" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0) }, ReqGroupVideoForward.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "type", "forward_to", "vid", "time" }, new Object[] { localInteger, Long.valueOf(0L), localByteStringMicro, localInteger }, ReqGroupVideoForward.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoForward
  * JD-Core Version:    0.7.0.1
  */

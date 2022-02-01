@@ -11,17 +11,17 @@ public final class ii
   {
     this.a = paramString1;
     this.b = paramString2;
-    if (paramArrayOfString == null) {
+    if (paramArrayOfString == null)
+    {
       paramString1 = null;
     }
-    for (;;)
+    else
     {
-      this.d = paramString1;
-      this.c = paramInt;
-      return;
       paramString1 = new String[paramArrayOfString.length];
       System.arraycopy(paramArrayOfString, 0, paramString1, 0, paramString1.length);
     }
+    this.d = paramString1;
+    this.c = paramInt;
   }
 }
 

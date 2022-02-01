@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class WidgetInfo
   extends JceStruct
 {
-  static int cache_category = 0;
-  static int cache_src = 0;
+  static int cache_category;
+  static int cache_src;
   static CommWidgetInfo cache_stCommWidgetInfo = new CommWidgetInfo();
   static EventWidgetInfo cache_stEventWidgetInfo = new EventWidgetInfo();
   public int category = 0;
-  public int src;
-  public CommWidgetInfo stCommWidgetInfo;
-  public EventWidgetInfo stEventWidgetInfo;
+  public int src = 0;
+  public CommWidgetInfo stCommWidgetInfo = null;
+  public EventWidgetInfo stEventWidgetInfo = null;
   
   public WidgetInfo() {}
   
@@ -38,17 +38,19 @@ public final class WidgetInfo
   {
     paramJceOutputStream.write(this.category, 0);
     paramJceOutputStream.write(this.src, 1);
-    if (this.stCommWidgetInfo != null) {
-      paramJceOutputStream.write(this.stCommWidgetInfo, 2);
+    Object localObject = this.stCommWidgetInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stEventWidgetInfo != null) {
-      paramJceOutputStream.write(this.stEventWidgetInfo, 3);
+    localObject = this.stEventWidgetInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.WidgetInfo
  * JD-Core Version:    0.7.0.1
  */

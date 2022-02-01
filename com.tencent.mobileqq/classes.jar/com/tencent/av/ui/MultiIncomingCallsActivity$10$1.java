@@ -9,15 +9,15 @@ class MultiIncomingCallsActivity$10$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$10.this$0.c()) {
+    if (this.b.this$0.e()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$10.this$0.a.setDisPlayList(this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.this$0.s.setDisPlayList(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

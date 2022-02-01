@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class d
   extends JceStruct
@@ -124,17 +125,20 @@ public final class d
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 1);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.c, 2);
     paramJceOutputStream.write(this.d, 3);
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
     paramJceOutputStream.write(this.f, 5);
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
     paramJceOutputStream.write(this.h, 7);
     paramJceOutputStream.write(this.i, 8);
@@ -144,24 +148,30 @@ public final class d
     paramJceOutputStream.write(this.m, 12);
     paramJceOutputStream.write(this.n, 13);
     paramJceOutputStream.write(this.o, 14);
-    if (this.p != null) {
-      paramJceOutputStream.write(this.p, 15);
+    localObject = this.p;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.q != null) {
-      paramJceOutputStream.write(this.q, 16);
+    localObject = this.q;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.r, 17);
-    if (this.s != null) {
-      paramJceOutputStream.write(this.s, 18);
+    localObject = this.s;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 18);
     }
-    if (this.t != null) {
-      paramJceOutputStream.write(this.t, 19);
+    localObject = this.t;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.u != null) {
-      paramJceOutputStream.write(this.u, 20);
+    localObject = this.u;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.v != null) {
-      paramJceOutputStream.write(this.v, 21);
+    localObject = this.v;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 21);
     }
     paramJceOutputStream.write(this.w, 22);
     paramJceOutputStream.write(this.x, 23);
@@ -171,7 +181,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.a.d
  * JD-Core Version:    0.7.0.1
  */

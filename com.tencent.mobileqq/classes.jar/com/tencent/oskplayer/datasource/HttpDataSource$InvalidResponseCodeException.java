@@ -11,14 +11,14 @@ public final class HttpDataSource$InvalidResponseCodeException
   
   public HttpDataSource$InvalidResponseCodeException(int paramInt, Map<String, List<String>> paramMap, DataSpec paramDataSpec)
   {
-    super("Response code: " + paramInt, paramDataSpec);
+    super(localStringBuilder.toString(), paramDataSpec);
     this.responseCode = paramInt;
     this.headerFields = paramMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.HttpDataSource.InvalidResponseCodeException
  * JD-Core Version:    0.7.0.1
  */

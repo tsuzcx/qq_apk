@@ -1,81 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ado
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public int jJS;
-  public String wJF;
-  public int wJL;
+  public String YBL;
+  public boolean ZlY;
+  public long mMJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51425);
+    AppMethodBeat.i(257566);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wJF != null) {
-        paramVarArgs.e(1, this.wJF);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.wJL);
-      paramVarArgs.aO(3, this.jJS);
-      AppMethodBeat.o(51425);
+      paramVarArgs.bv(2, this.mMJ);
+      if (this.YBL != null) {
+        paramVarArgs.g(3, this.YBL);
+      }
+      paramVarArgs.di(4, this.ZlY);
+      AppMethodBeat.o(257566);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wJF == null) {
-        break label306;
+      if (this.BaseRequest == null) {
+        break label432;
       }
     }
-    label306:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wJF) + 0;; paramInt = 0)
+    label432:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.wJL);
-      int j = e.a.a.b.b.a.bl(3, this.jJS);
-      AppMethodBeat.o(51425);
-      return paramInt + i + j;
+      int i = paramInt + i.a.a.b.b.a.q(2, this.mMJ);
+      paramInt = i;
+      if (this.YBL != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.YBL);
+      }
+      i = i.a.a.b.b.a.ko(4);
+      AppMethodBeat.o(257566);
+      return paramInt + (i + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(51425);
+        AppMethodBeat.o(257566);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ado localado = (ado)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(51425);
+          AppMethodBeat.o(257566);
           return -1;
         case 1: 
-          localado.wJF = locala.CLY.readString();
-          AppMethodBeat.o(51425);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localado.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257566);
           return 0;
         case 2: 
-          localado.wJL = locala.CLY.sl();
-          AppMethodBeat.o(51425);
+          localado.mMJ = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(257566);
+          return 0;
+        case 3: 
+          localado.YBL = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(257566);
           return 0;
         }
-        localado.jJS = locala.CLY.sl();
-        AppMethodBeat.o(51425);
+        localado.ZlY = ((i.a.a.a.a)localObject).ajGk.aai();
+        AppMethodBeat.o(257566);
         return 0;
       }
-      AppMethodBeat.o(51425);
+      AppMethodBeat.o(257566);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ado
  * JD-Core Version:    0.7.0.1
  */

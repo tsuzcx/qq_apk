@@ -1,52 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.AppConstants;
+import android.content.res.Resources;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.maproam.widget.RoamingMapView;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class gbn
+class gbn
   implements Runnable
 {
-  public gbn(RoamingActivity paramRoamingActivity) {}
+  gbn(gbm paramgbm, long paramLong1, long paramLong2, long paramLong3, String paramString) {}
   
   public void run()
   {
-    Object localObject = new File(AppConstants.aO + "roamconfig");
-    try
+    Object localObject;
+    if ((this.jdField_a_of_type_Long >= this.b * 1000L) && (this.jdField_a_of_type_Long <= this.c * 1000L))
     {
-      HttpDownloadUtil.a(this.a.b, "http://imgcache.qq.com/club/mobile/roam/roam_guide.json", (File)localObject);
-      String str = FileUtils.a((File)localObject);
-      ((File)localObject).delete();
-      if (str != null)
-      {
-        localObject = new JSONArray(str);
-        if (((JSONArray)localObject).length() > 0)
-        {
-          localObject = ((JSONArray)localObject).getJSONObject(0);
-          long l1 = ((JSONObject)localObject).optLong("begin_time", 0L);
-          long l2 = ((JSONObject)localObject).optLong("end_time", 0L);
-          this.a.jdField_g_of_type_Int = ((JSONObject)localObject).optInt("svip_lat", 0);
-          this.a.C = ((JSONObject)localObject).optInt("svip_lon", 0);
-          this.a.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("svip_place_name", "");
-          localObject = ((JSONObject)localObject).optString("svip_guide_text", "");
-          if (QLog.isColorLevel()) {
-            QLog.i("IphoneTitleBarActivity", 2, "beginTime:" + l1 + ", endTime:" + l2 + ", mSvipLat:" + this.a.jdField_g_of_type_Int + ", mSvipLon:" + this.a.C + ", svipGuildText:" + (String)localObject);
-          }
-          long l3 = System.currentTimeMillis();
-          new Handler(Looper.getMainLooper()).post(new gbo(this, l3, l1, l2, (String)localObject));
-        }
+      this.jdField_a_of_type_Gbm.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+      if (this.jdField_a_of_type_Gbm.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.a() == 1) {
+        this.jdField_a_of_type_Gbm.a.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       }
-      return;
+      TextView localTextView = this.jdField_a_of_type_Gbm.a.d;
+      if (!VipUtils.a(this.jdField_a_of_type_Gbm.a.b)) {
+        break label182;
+      }
+      localObject = this.jdField_a_of_type_JavaLangString;
+      label109:
+      localTextView.setText((CharSequence)localObject);
+      localObject = this.jdField_a_of_type_Gbm.a.jdField_a_of_type_AndroidWidgetButton;
+      if (!VipUtils.a(this.jdField_a_of_type_Gbm.a.b)) {
+        break label201;
+      }
     }
-    catch (Exception localException)
+    label182:
+    label201:
+    for (int i = 2131562171;; i = 2131562277)
     {
-      this.a.a = Boolean.valueOf(false);
-      localException.printStackTrace();
+      ((Button)localObject).setText(i);
+      return;
+      this.jdField_a_of_type_Gbm.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+      this.jdField_a_of_type_Gbm.a.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      break;
+      localObject = this.jdField_a_of_type_Gbm.a.getResources().getText(2131562017);
+      break label109;
     }
   }
 }

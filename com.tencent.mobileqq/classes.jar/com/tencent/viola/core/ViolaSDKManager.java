@@ -6,11 +6,13 @@ import android.util.SparseArray;
 import com.tencent.viola.adapter.IBridgeAdapter;
 import com.tencent.viola.adapter.IHttpAdapter;
 import com.tencent.viola.adapter.ILogAdapter;
+import com.tencent.viola.adapter.IMultiV8ViolaRuntimeAdapter;
 import com.tencent.viola.adapter.VComponentAdapter;
 import com.tencent.viola.adapter.VWebSocketAdapter;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.commons.ViolaThread;
+import com.tencent.viola.experiment.IExperimentConfigManager;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -40,8 +42,10 @@ public class ViolaSDKManager
   private SparseArray<WeakReference<ViolaInstance>> mCurrentViolaInstanceArray = new SparseArray();
   private ViolaDomManager mDomMgr;
   private ThreadPoolExecutor mExecutorService;
+  private IExperimentConfigManager mExperimentConfigManager;
   private IHttpAdapter mHttpAdapter;
   private ILogAdapter mLogAdapter;
+  private IMultiV8ViolaRuntimeAdapter mMultiV8ViolaRuntimeAdapter;
   private ViolaRenderManager mRenderMgr;
   private IReportDelegate mReportDelegate;
   private BlockingQueue<Runnable> mTaskQueue;
@@ -61,28 +65,33 @@ public class ViolaSDKManager
     KEEP_ALIVE_TIME = 1;
     KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS;
     this.mTaskQueue = new LinkedBlockingQueue(100);
-    this.mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.mTaskQueue);
+    int i = NUMBER_OF_CORES;
+    this.mExecutorService = new ThreadPoolExecutor(i, i * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.mTaskQueue, new NamedThreadFactory("violaThreadPool"));
   }
   
   public static String getCurInstanceId()
   {
-    if ((instanceIdList != null) && (instanceIdList.size() > 0)) {
-      return (String)instanceIdList.get(instanceIdList.size() - 1);
+    List localList = instanceIdList;
+    if ((localList != null) && (localList.size() > 0))
+    {
+      localList = instanceIdList;
+      return (String)localList.get(localList.size() - 1);
     }
     return null;
   }
   
   public static ViolaSDKManager getInstance()
   {
-    if (sManager == null) {}
-    try
-    {
-      if (sManager == null) {
-        sManager = new ViolaSDKManager();
+    if (sManager == null) {
+      try
+      {
+        if (sManager == null) {
+          sManager = new ViolaSDKManager();
+        }
       }
-      return sManager;
+      finally {}
     }
-    finally {}
+    return sManager;
   }
   
   public void addJsErrorCount()
@@ -112,36 +121,32 @@ public class ViolaSDKManager
   @Deprecated
   void createInstance(ViolaInstance paramViolaInstance, String paramString1, Map<String, Object> paramMap, String paramString2)
   {
-    this.mRenderMgr.registerInstance(paramViolaInstance);
     if (paramViolaInstance != null)
     {
-      this.mRenderMgr.registerInstance(paramViolaInstance);
-      if (instanceIdList != null) {
-        instanceIdList.add(paramViolaInstance.getInstanceId());
-      }
+      registerInstanceAndId(paramViolaInstance);
       String str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
         str = "";
       }
       ViolaLogUtils.e("ViolaSDKManager", "violaInstance createInstance start!");
-      this.mBridgeMgr.createInstance(paramViolaInstance.getInstanceId(), paramString1, paramMap, str);
+      this.mBridgeMgr.createInstance(paramViolaInstance.getRuntimeName(), paramViolaInstance.getInstanceId(), paramString1, paramMap, str);
     }
   }
   
   void createInstanceJSSource(ViolaInstance paramViolaInstance, String paramString1, String paramString2, String paramString3)
   {
-    ViolaLogUtils.d("debugForTimeCost", "createInstanceJSSource : " + System.currentTimeMillis());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("createInstanceJSSource : ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ViolaLogUtils.d("debugForTimeCost", ((StringBuilder)localObject).toString());
     if (paramViolaInstance != null)
     {
-      this.mRenderMgr.registerInstance(paramViolaInstance);
-      if (instanceIdList != null) {
-        instanceIdList.add(paramViolaInstance.getInstanceId());
-      }
-      String str = paramString3;
+      registerInstanceAndId(paramViolaInstance);
+      localObject = paramString3;
       if (TextUtils.isEmpty(paramString3)) {
-        str = "";
+        localObject = "";
       }
-      this.mBridgeMgr.createInstanceBySource(paramViolaInstance.getInstanceId(), paramString1, paramString2, str);
+      this.mBridgeMgr.createInstanceBySource(paramViolaInstance.getRuntimeName(), paramViolaInstance.getInstanceId(), paramString1, paramString2, (String)localObject);
     }
   }
   
@@ -150,29 +155,37 @@ public class ViolaSDKManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.mAudioPlayerManager != null)
+    Object localObject = this.mAudioPlayerManager;
+    if (localObject != null)
     {
-      this.mAudioPlayerManager.release();
+      ((AudioPlayerManager)localObject).release();
       this.mAudioPlayerManager = null;
     }
-    if (instanceIdList != null)
+    localObject = instanceIdList;
+    if (localObject != null)
     {
-      instanceIdList.remove(paramString);
-      ViolaLogUtils.d("ViolaSDKManager", "violaInstance destroy,instanceId=" + paramString);
+      ((List)localObject).remove(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("violaInstance destroy,instanceId=");
+      ((StringBuilder)localObject).append(paramString);
+      ViolaLogUtils.d("ViolaSDKManager", ((StringBuilder)localObject).toString());
     }
-    ViolaBridgeManager localViolaBridgeManager = this.mBridgeMgr;
-    if ((instanceIdList == null) || (instanceIdList.size() == 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localViolaBridgeManager.destroyInstance(paramString, bool);
-      if (this.mRenderMgr != null) {
-        this.mRenderMgr.destroyInstance(paramString);
-      }
-      if (this.mDomMgr == null) {
-        break;
-      }
-      this.mDomMgr.destroyInstance(paramString);
-      return;
+    localObject = this.mBridgeMgr;
+    List localList = instanceIdList;
+    boolean bool;
+    if ((localList != null) && (localList.size() != 0)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    ((ViolaBridgeManager)localObject).destroyInstance(paramString, bool);
+    localObject = this.mRenderMgr;
+    if (localObject != null) {
+      ((ViolaRenderManager)localObject).destroyInstance(paramString);
+    }
+    localObject = this.mDomMgr;
+    if (localObject != null) {
+      ((ViolaDomManager)localObject).destroyInstance(paramString);
     }
   }
   
@@ -200,10 +213,11 @@ public class ViolaSDKManager
   {
     if (this.mCurrentInstanceHashcodeArray.size() > 0)
     {
-      int i = ((Integer)this.mCurrentInstanceHashcodeArray.get(this.mCurrentInstanceHashcodeArray.size() - 1)).intValue();
-      WeakReference localWeakReference = (WeakReference)this.mCurrentViolaInstanceArray.get(i, null);
-      if (localWeakReference != null) {
-        return (ViolaInstance)localWeakReference.get();
+      Object localObject = this.mCurrentInstanceHashcodeArray;
+      int i = ((Integer)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1)).intValue();
+      localObject = (WeakReference)this.mCurrentViolaInstanceArray.get(i, null);
+      if (localObject != null) {
+        return (ViolaInstance)((WeakReference)localObject).get();
       }
     }
     return null;
@@ -212,6 +226,11 @@ public class ViolaSDKManager
   public ViolaDomManager getDomManager()
   {
     return this.mDomMgr;
+  }
+  
+  public IExperimentConfigManager getExperimentConfigManager()
+  {
+    return this.mExperimentConfigManager;
   }
   
   public IHttpAdapter getHttpAdapter()
@@ -230,6 +249,11 @@ public class ViolaSDKManager
   public ILogAdapter getLogAdapter()
   {
     return this.mLogAdapter;
+  }
+  
+  public IMultiV8ViolaRuntimeAdapter getMultiV8ViolaRuntimeAdapter()
+  {
+    return this.mMultiV8ViolaRuntimeAdapter;
   }
   
   public ViolaRenderManager getRenderManager()
@@ -308,7 +332,10 @@ public class ViolaSDKManager
     }
     catch (Exception paramRunnable)
     {
-      ViolaLogUtils.e("ViolaSDKManager", "postOnThreadPool,error:" + paramRunnable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("postOnThreadPool,error:");
+      localStringBuilder.append(paramRunnable.getMessage());
+      ViolaLogUtils.e("ViolaSDKManager", localStringBuilder.toString());
     }
   }
   
@@ -333,6 +360,21 @@ public class ViolaSDKManager
     this.mBridgeMgr.registerComponents(paramList);
   }
   
+  public void registerInstanceAndId(ViolaInstance paramViolaInstance)
+  {
+    if (paramViolaInstance != null)
+    {
+      if (TextUtils.isEmpty(paramViolaInstance.getInstanceId())) {
+        return;
+      }
+      this.mRenderMgr.registerInstance(paramViolaInstance);
+      List localList = instanceIdList;
+      if ((localList != null) && (!localList.contains(paramViolaInstance.getInstanceId()))) {
+        instanceIdList.add(paramViolaInstance.getInstanceId());
+      }
+    }
+  }
+  
   public void registerModules(Map<String, Object> paramMap)
   {
     this.mBridgeMgr.registerModules(paramMap);
@@ -355,15 +397,14 @@ public class ViolaSDKManager
       this.mCurrentViolaInstanceArray.put(paramViolaInstance.hashCode(), new WeakReference(paramViolaInstance));
       if (!this.mCurrentInstanceHashcodeArray.contains(Integer.valueOf(paramViolaInstance.hashCode())))
       {
-        if (this.mCurrentInstanceHashcodeArray.size() <= 0) {
-          break label66;
+        if (this.mCurrentInstanceHashcodeArray.size() > 0)
+        {
+          this.mCurrentInstanceHashcodeArray.add(0, Integer.valueOf(paramViolaInstance.hashCode()));
+          return;
         }
-        this.mCurrentInstanceHashcodeArray.add(0, Integer.valueOf(paramViolaInstance.hashCode()));
+        this.mCurrentInstanceHashcodeArray.add(Integer.valueOf(paramViolaInstance.hashCode()));
       }
     }
-    return;
-    label66:
-    this.mCurrentInstanceHashcodeArray.add(Integer.valueOf(paramViolaInstance.hashCode()));
   }
   
   void setInitConfig(InitConfig paramInitConfig)
@@ -373,6 +414,8 @@ public class ViolaSDKManager
     this.mReportDelegate = paramInitConfig.getReportDelegate();
     this.mWebsocketAdapter = paramInitConfig.getWebsocketAdapter();
     this.mLogAdapter = paramInitConfig.getLogAdapter();
+    this.mExperimentConfigManager = paramInitConfig.getConfigManager();
+    this.mMultiV8ViolaRuntimeAdapter = paramInitConfig.getMultiV8ViolaRuntimeAdapter();
   }
   
   public void setReportDelegate(IReportDelegate paramIReportDelegate)
@@ -399,7 +442,7 @@ public class ViolaSDKManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKManager
  * JD-Core Version:    0.7.0.1
  */

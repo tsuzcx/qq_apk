@@ -1,13 +1,10 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class hnd
@@ -17,55 +14,35 @@ public class hnd
   
   public void run()
   {
-    DownloadInfo localDownloadInfo;
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
     try
     {
-      if (!CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
+      DownloadInfo localDownloadInfo = this.a.b("com.tencent.mobileqqi");
+      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_h_of_type_Int == 0))
       {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        for (;;)
+        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
+        if (localDownloadInfo.f == 0) {
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.c);
+        }
+        for (String str = localTMAssistantDownloadTaskInfo.mSavePath; localTMAssistantDownloadTaskInfo == null; str = localDownloadInfo.k)
         {
-          if (!localIterator.hasNext()) {
-            break label174;
-          }
-          localDownloadInfo = (DownloadInfo)localIterator.next();
-          if (localDownloadInfo.jdField_h_of_type_Int != 0) {
-            break label135;
-          }
-          if (localDownloadInfo.f != 0) {
-            break;
-          }
-          String str = localDownloadInfo.c;
-          label77:
-          if (this.a.a(str) == null)
-          {
-            this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-            DownloadDBHelper.a().a(localDownloadInfo.b);
-          }
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.jdField_h_of_type_JavaLangString);
+        }
+        if ((localTMAssistantDownloadTaskInfo.mState == 4) && (AppUtil.b(str) <= CommonDataAdapter.a().a()))
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "checkDownloadList>>>", localException);
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
     }
-    label135:
-    label174:
-    do
-    {
-      localObject = localDownloadInfo.jdField_h_of_type_JavaLangString;
-      break label77;
-      if (this.a.a(localDownloadInfo) != null) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-      DownloadDBHelper.a().a(localDownloadInfo.b);
-      break;
-    } while (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 200);
-    Object localObject = CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
-    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 

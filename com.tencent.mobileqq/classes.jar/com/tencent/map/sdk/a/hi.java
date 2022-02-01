@@ -38,68 +38,72 @@ public final class hi
   
   public final hi a(List<GeoPoint> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 2)) {
-      throw new IllegalArgumentException("参数points不能小于2!");
-    }
-    this.b = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if ((paramList != null) && (paramList.size() >= 2))
     {
-      GeoPoint localGeoPoint = (GeoPoint)localIterator.next();
-      if (localGeoPoint != null) {
-        this.b.add(localGeoPoint);
+      this.b = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        GeoPoint localGeoPoint = (GeoPoint)localIterator.next();
+        if (localGeoPoint != null) {
+          this.b.add(localGeoPoint);
+        }
       }
-    }
-    if (this.b.size() < 2) {
+      if (this.b.size() >= 2)
+      {
+        this.a = new ArrayList(paramList.size());
+        this.a.addAll(this.b);
+        return this;
+      }
       throw new IllegalArgumentException("参数points存在null值");
     }
-    this.a = new ArrayList(paramList.size());
-    this.a.addAll(this.b);
-    return this;
+    paramList = new IllegalArgumentException("参数points不能小于2!");
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public final hi a(int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-      throw new IllegalArgumentException("参数startIndexes不能为空!");
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+    {
+      this.c = paramArrayOfInt;
+      return this;
     }
-    this.c = paramArrayOfInt;
-    return this;
+    throw new IllegalArgumentException("参数startIndexes不能为空!");
   }
   
   public final hi a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int i2 = 0;
-    if ((paramArrayOfInt1 == null) || (paramArrayOfInt1.length <= 0) || (paramArrayOfInt2 == null) || (paramArrayOfInt2.length <= 0)) {
-      throw new IllegalArgumentException("参数colors 、borderColors为空，或者两者长度不同");
-    }
-    if (!this.h) {
-      this.d = paramArrayOfInt1;
-    }
-    for (;;)
+    if ((paramArrayOfInt1 != null) && (paramArrayOfInt1.length > 0) && (paramArrayOfInt2 != null) && (paramArrayOfInt2.length > 0))
     {
-      return this;
+      if (!this.h)
+      {
+        this.d = paramArrayOfInt1;
+        return this;
+      }
+      int i1 = paramArrayOfInt2.length;
+      int i3 = paramArrayOfInt1.length;
+      int i2 = 0;
       int[] arrayOfInt = paramArrayOfInt2;
-      if (paramArrayOfInt2.length < paramArrayOfInt1.length)
+      if (i1 < i3)
       {
         arrayOfInt = new int[paramArrayOfInt1.length];
         i1 = 0;
-        if (i1 < paramArrayOfInt1.length)
+        while (i1 < paramArrayOfInt1.length)
         {
           if (i1 < paramArrayOfInt2.length) {
             arrayOfInt[i1] = paramArrayOfInt2[i1];
-          }
-          for (;;)
-          {
-            i1 += 1;
-            break;
+          } else {
             arrayOfInt[i1] = paramArrayOfInt2[(paramArrayOfInt2.length - 1)];
           }
+          i1 += 1;
         }
       }
       paramArrayOfInt2 = new ArrayList();
       this.d = new int[paramArrayOfInt1.length];
-      int i1 = 0;
+      i1 = 0;
       while (i1 < paramArrayOfInt1.length)
       {
         hi.a locala = new hi.a(this, paramArrayOfInt1[i1], arrayOfInt[i1]);
@@ -109,7 +113,7 @@ public final class hi
         this.d[i1] = paramArrayOfInt2.indexOf(locala);
         i1 += 1;
       }
-      int i3 = paramArrayOfInt2.size();
+      i3 = paramArrayOfInt2.size();
       this.e = new int[i3];
       this.f = new int[i3];
       i1 = i2;
@@ -119,6 +123,12 @@ public final class hi
         this.f[i1] = ((hi.a)paramArrayOfInt2.get(i1)).a;
         i1 += 1;
       }
+      return this;
+    }
+    paramArrayOfInt1 = new IllegalArgumentException("参数colors 、borderColors为空，或者两者长度不同");
+    for (;;)
+    {
+      throw paramArrayOfInt1;
     }
   }
   
@@ -133,18 +143,16 @@ public final class hi
   
   public final hi b(int[] paramArrayOfInt)
   {
-    int i2 = 0;
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-      throw new IllegalArgumentException("参数colors不能为空!");
-    }
-    if (!this.h) {
-      this.d = paramArrayOfInt;
-    }
-    for (;;)
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
     {
-      return this;
+      if (!this.h)
+      {
+        this.d = paramArrayOfInt;
+        return this;
+      }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Integer.valueOf(this.z));
+      int i2 = 0;
       int i1 = 0;
       while (i1 < paramArrayOfInt.length)
       {
@@ -163,6 +171,12 @@ public final class hi
         this.e[i1] = ((Integer)localArrayList.get(i1)).intValue();
         i1 += 1;
       }
+      return this;
+    }
+    paramArrayOfInt = new IllegalArgumentException("参数colors不能为空!");
+    for (;;)
+    {
+      throw paramArrayOfInt;
     }
   }
 }

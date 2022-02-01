@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ebn" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentTop="true" />
-    <TextView android:id="@id/awv" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/e3f" style="@style/lf" />
-    <TextView android:id="@id/ebo" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f2i" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="100.0dip" android:src="@raw/icons_filled_error" app:iconColor="@color/Orange_100" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/g_" android:gravity="center_horizontal" android:id="@id/kn3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:lineSpacingExtra="5.0dip" />
 </LinearLayout>

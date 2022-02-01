@@ -5,7 +5,7 @@
   "stepCounterMaxStep5m": 1500,
   "deviceStepSwitch": 1,
   "extStepApiSwitch": 0,
-  "stepExtConfig" : {
+  "extStepApiConfig" : {
     "version" : 1,
     "interval": 7200
   },

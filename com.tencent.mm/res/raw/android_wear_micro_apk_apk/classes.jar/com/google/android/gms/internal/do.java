@@ -7,17 +7,55 @@ import java.nio.ReadOnlyBufferException;
 
 public final class do
 {
-  private final ByteBuffer Rq;
+  private final ByteBuffer Tf;
   
   private do(ByteBuffer paramByteBuffer)
   {
-    this.Rq = paramByteBuffer;
-    this.Rq.order(ByteOrder.LITTLE_ENDIAN);
+    this.Tf = paramByteBuffer;
+    this.Tf.order(ByteOrder.LITTLE_ENDIAN);
   }
   
   private do(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this(ByteBuffer.wrap(paramArrayOfByte, paramInt1, paramInt2));
+  }
+  
+  private static int a(CharSequence paramCharSequence, int paramInt)
+  {
+    int m = paramCharSequence.length();
+    int i = 0;
+    if (paramInt < m)
+    {
+      int n = paramCharSequence.charAt(paramInt);
+      int j;
+      if (n < 2048)
+      {
+        i += (127 - n >>> 31);
+        j = paramInt;
+      }
+      for (;;)
+      {
+        paramInt = j + 1;
+        break;
+        int k = i + 2;
+        i = k;
+        j = paramInt;
+        if (55296 <= n)
+        {
+          i = k;
+          j = paramInt;
+          if (n <= 57343)
+          {
+            if (Character.codePointAt(paramCharSequence, paramInt) < 65536) {
+              throw new IllegalArgumentException(39 + "Unpaired surrogate at index " + paramInt);
+            }
+            j = paramInt + 1;
+            i = k;
+          }
+        }
+      }
+    }
+    return i;
   }
   
   private static int a(CharSequence paramCharSequence, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -108,6 +146,14 @@ public final class do
     return paramInt1;
   }
   
+  private void a(byte paramByte)
+  {
+    if (!this.Tf.hasRemaining()) {
+      throw new dp(this.Tf.position(), this.Tf.limit());
+    }
+    this.Tf.put(paramByte);
+  }
+  
   private static void a(CharSequence paramCharSequence, ByteBuffer paramByteBuffer)
   {
     if (paramByteBuffer.isReadOnly()) {
@@ -129,25 +175,23 @@ public final class do
     b(paramCharSequence, paramByteBuffer);
   }
   
-  public static int ab(int paramInt1, int paramInt2)
+  public static int ad(int paramInt1, int paramInt2)
   {
-    int i = bw(paramInt1);
+    int i = bQ(paramInt1);
     if (paramInt2 >= 0) {}
-    for (paramInt1 = by(paramInt2);; paramInt1 = 10) {
+    for (paramInt1 = bS(paramInt2);; paramInt1 = 10) {
       return paramInt1 + i;
     }
   }
   
   public static int b(int paramInt, long paramLong)
   {
-    return bw(paramInt) + c(paramLong);
+    return bQ(paramInt) + e(paramLong);
   }
   
   public static int b(int paramInt, dw paramdw)
   {
-    paramInt = bw(paramInt);
-    int i = paramdw.kj();
-    return paramInt + (i + by(i));
+    return bQ(paramInt) * 2 + paramdw.ks();
   }
   
   public static do b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -206,12 +250,12 @@ public final class do
     }
   }
   
-  public static int bw(int paramInt)
+  public static int bQ(int paramInt)
   {
-    return by(dz.ad(paramInt, 0));
+    return bS(dz.af(paramInt, 0));
   }
   
-  public static int by(int paramInt)
+  public static int bS(int paramInt)
   {
     if ((paramInt & 0xFFFFFF80) == 0) {
       return 1;
@@ -228,17 +272,43 @@ public final class do
     return 5;
   }
   
-  public static int bz(int paramInt)
+  public static int bT(int paramInt)
   {
     return paramInt << 1 ^ paramInt >> 31;
   }
   
-  public static int c(int paramInt, String paramString)
+  public static int c(int paramInt, dw paramdw)
   {
-    return bw(paramInt) + r(paramString);
+    paramInt = bQ(paramInt);
+    int i = paramdw.ks();
+    return paramInt + (i + bS(i));
   }
   
-  public static int c(long paramLong)
+  public static int c(int paramInt, String paramString)
+  {
+    return bQ(paramInt) + r(paramString);
+  }
+  
+  public static do c(byte[] paramArrayOfByte)
+  {
+    return b(paramArrayOfByte, 0, paramArrayOfByte.length);
+  }
+  
+  private void d(long paramLong)
+  {
+    for (;;)
+    {
+      if ((0xFFFFFF80 & paramLong) == 0L)
+      {
+        a((byte)(int)paramLong);
+        return;
+      }
+      a((byte)((int)paramLong & 0x7F | 0x80));
+      paramLong >>>= 7;
+    }
+  }
+  
+  public static int e(long paramLong)
   {
     if ((0xFFFFFF80 & paramLong) == 0L) {
       return 1;
@@ -270,92 +340,39 @@ public final class do
     return 10;
   }
   
-  public static do c(byte[] paramArrayOfByte)
-  {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length);
-  }
-  
-  private void d(long paramLong)
-  {
-    for (;;)
-    {
-      if ((0xFFFFFF80 & paramLong) == 0L)
-      {
-        bv((int)paramLong);
-        return;
-      }
-      bv((int)paramLong & 0x7F | 0x80);
-      paramLong >>>= 7;
-    }
-  }
-  
   private static int i(CharSequence paramCharSequence)
   {
-    int k = 0;
-    int n = paramCharSequence.length();
+    int m = paramCharSequence.length();
     int j = 0;
-    while ((j < n) && (paramCharSequence.charAt(j) < '')) {
+    while ((j < m) && (paramCharSequence.charAt(j) < '')) {
       j += 1;
     }
     for (;;)
     {
       int i;
-      if (j < n)
+      int k = i;
+      if (j < m)
       {
-        int m = paramCharSequence.charAt(j);
-        if (m < 2048)
+        k = paramCharSequence.charAt(j);
+        if (k < 2048)
         {
-          i += (127 - m >>> 31);
+          i += (127 - k >>> 31);
           j += 1;
         }
         else
         {
-          int i2 = paramCharSequence.length();
-          if (j < i2)
-          {
-            int i3 = paramCharSequence.charAt(j);
-            if (i3 < 2048)
-            {
-              k += (127 - i3 >>> 31);
-              m = j;
-            }
-            for (;;)
-            {
-              j = m + 1;
-              break;
-              int i1 = k + 2;
-              k = i1;
-              m = j;
-              if (55296 <= i3)
-              {
-                k = i1;
-                m = j;
-                if (i3 <= 57343)
-                {
-                  if (Character.codePointAt(paramCharSequence, j) < 65536) {
-                    throw new IllegalArgumentException(39 + "Unpaired surrogate at index " + j);
-                  }
-                  m = j + 1;
-                  k = i1;
-                }
-              }
-            }
-          }
-          i = k + i;
+          k = i + a(paramCharSequence, j);
         }
       }
       else
       {
-        for (;;)
+        if (k < m)
         {
-          if (i < n)
-          {
-            long l = i;
-            throw new IllegalArgumentException(54 + "UTF-8 length does not fit in int: " + (l + 4294967296L));
-          }
-          return i;
+          long l = k;
+          throw new IllegalArgumentException(54 + "UTF-8 length does not fit in int: " + (l + 4294967296L));
         }
-        i = n;
+        return k;
+        i = m;
       }
     }
   }
@@ -363,131 +380,127 @@ public final class do
   public static int r(String paramString)
   {
     int i = i(paramString);
-    return i + by(i);
+    return i + bS(i);
   }
   
   public final void a(int paramInt, long paramLong)
   {
-    ac(paramInt, 0);
+    ae(paramInt, 0);
     d(paramLong);
   }
   
   public final void a(int paramInt, dw paramdw)
   {
-    ac(paramInt, 2);
+    ae(paramInt, 2);
     b(paramdw);
   }
   
-  public final void aa(int paramInt1, int paramInt2)
+  public final void ac(int paramInt1, int paramInt2)
   {
-    ac(paramInt1, 0);
+    ae(paramInt1, 0);
     if (paramInt2 >= 0)
     {
-      bx(paramInt2);
+      bR(paramInt2);
       return;
     }
     d(paramInt2);
   }
   
-  public final void ac(int paramInt1, int paramInt2)
+  public final void ae(int paramInt1, int paramInt2)
   {
-    bx(dz.ad(paramInt1, paramInt2));
-  }
-  
-  public final void b(int paramInt, float paramFloat)
-  {
-    ac(paramInt, 5);
-    paramInt = Float.floatToIntBits(paramFloat);
-    if (this.Rq.remaining() < 4) {
-      throw new dp(this.Rq.position(), this.Rq.limit());
-    }
-    this.Rq.putInt(paramInt);
+    bR(dz.af(paramInt1, paramInt2));
   }
   
   public final void b(int paramInt, String paramString)
   {
-    ac(paramInt, 2);
+    ae(paramInt, 2);
     int i;
     try
     {
-      paramInt = by(paramString.length());
-      if (paramInt != by(paramString.length() * 3)) {
+      paramInt = bS(paramString.length());
+      if (paramInt != bS(paramString.length() * 3)) {
         break label156;
       }
-      i = this.Rq.position();
-      if (this.Rq.remaining() < paramInt) {
-        throw new dp(paramInt + i, this.Rq.limit());
+      i = this.Tf.position();
+      if (this.Tf.remaining() < paramInt) {
+        throw new dp(paramInt + i, this.Tf.limit());
       }
     }
     catch (BufferOverflowException paramString)
     {
-      dp localdp = new dp(this.Rq.position(), this.Rq.limit());
+      dp localdp = new dp(this.Tf.position(), this.Tf.limit());
       localdp.initCause(paramString);
       throw localdp;
     }
-    this.Rq.position(i + paramInt);
-    a(paramString, this.Rq);
-    int j = this.Rq.position();
-    this.Rq.position(i);
-    bx(j - i - paramInt);
-    this.Rq.position(j);
+    this.Tf.position(i + paramInt);
+    a(paramString, this.Tf);
+    int j = this.Tf.position();
+    this.Tf.position(i);
+    bR(j - i - paramInt);
+    this.Tf.position(j);
     return;
     label156:
-    bx(i(paramString));
-    a(paramString, this.Rq);
+    bR(i(paramString));
+    a(paramString, this.Tf);
   }
   
   public final void b(dw paramdw)
   {
-    bx(paramdw.ki());
+    bR(paramdw.kr());
     paramdw.a(this);
   }
   
-  public final void bv(int paramInt)
+  public final void bP(int paramInt)
   {
-    byte b = (byte)paramInt;
-    if (!this.Rq.hasRemaining()) {
-      throw new dp(this.Rq.position(), this.Rq.limit());
-    }
-    this.Rq.put(b);
+    a((byte)paramInt);
   }
   
-  public final void bx(int paramInt)
+  public final void bR(int paramInt)
   {
     for (;;)
     {
       if ((paramInt & 0xFFFFFF80) == 0)
       {
-        bv(paramInt);
+        a((byte)paramInt);
         return;
       }
-      bv(paramInt & 0x7F | 0x80);
+      a((byte)(paramInt & 0x7F | 0x80));
       paramInt >>>= 7;
     }
+  }
+  
+  public final void c(int paramInt, float paramFloat)
+  {
+    ae(paramInt, 5);
+    paramInt = Float.floatToIntBits(paramFloat);
+    if (this.Tf.remaining() < 4) {
+      throw new dp(this.Tf.position(), this.Tf.limit());
+    }
+    this.Tf.putInt(paramInt);
   }
   
   public final void d(byte[] paramArrayOfByte)
   {
     int i = paramArrayOfByte.length;
-    if (this.Rq.remaining() >= i)
+    if (this.Tf.remaining() >= i)
     {
-      this.Rq.put(paramArrayOfByte, 0, i);
+      this.Tf.put(paramArrayOfByte, 0, i);
       return;
     }
-    throw new dp(this.Rq.position(), this.Rq.limit());
+    throw new dp(this.Tf.position(), this.Tf.limit());
   }
   
-  public final void e(long paramLong)
+  public final void f(long paramLong)
   {
-    if (this.Rq.remaining() < 8) {
-      throw new dp(this.Rq.position(), this.Rq.limit());
+    if (this.Tf.remaining() < 8) {
+      throw new dp(this.Tf.position(), this.Tf.limit());
     }
-    this.Rq.putLong(paramLong);
+    this.Tf.putLong(paramLong);
   }
   
-  public final void jY()
+  public final void kh()
   {
-    if (this.Rq.remaining() != 0) {
+    if (this.Tf.remaining() != 0) {
       throw new IllegalStateException("Did not write as much data as expected.");
     }
   }

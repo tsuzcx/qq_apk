@@ -4,13 +4,13 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.util.SparseArray;
 import android.view.MotionEvent;
-import android.view.MotionEvent.PointerCoords;
-import android.view.MotionEvent.PointerProperties;
 import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import io.flutter.embedding.engine.mutatorsstack.FlutterMutatorView;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewResizeRequest;
 import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewTouch;
@@ -20,58 +20,90 @@ import io.flutter.plugin.editing.TextInputPlugin;
 import io.flutter.view.TextureRegistry;
 import io.flutter.view.TextureRegistry.SurfaceTextureEntry;
 import java.util.HashMap;
-import java.util.List;
 
 class PlatformViewsController$1
   implements PlatformViewsChannel.PlatformViewsHandler
 {
   PlatformViewsController$1(PlatformViewsController paramPlatformViewsController) {}
   
-  private void ensureValidAndroidVersion()
+  private void ensureValidAndroidVersion(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 20) {
+    if (Build.VERSION.SDK_INT >= paramInt) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Trying to use platform views with API ");
     localStringBuilder.append(Build.VERSION.SDK_INT);
     localStringBuilder.append(", required API level is: ");
-    localStringBuilder.append(20);
-    Log.e("PlatformViewsController", localStringBuilder.toString());
-    throw new IllegalStateException("An attempt was made to use platform views on a version of Android that platform views does not support.");
+    localStringBuilder.append(paramInt);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public void clearFocus(int paramInt)
   {
-    ((VirtualDisplayController)PlatformViewsController.access$100(this.this$0).get(Integer.valueOf(paramInt))).getView().clearFocus();
+    ensureValidAndroidVersion(20);
+    ((VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramInt))).getView().clearFocus();
+  }
+  
+  public void createAndroidViewForPlatformView(@NonNull PlatformViewsChannel.PlatformViewCreationRequest paramPlatformViewCreationRequest)
+  {
+    ensureValidAndroidVersion(19);
+    if (PlatformViewsController.access$000(paramPlatformViewCreationRequest.direction))
+    {
+      PlatformViewFactory localPlatformViewFactory = PlatformViewsController.access$100(this.this$0).getFactory(paramPlatformViewCreationRequest.viewType);
+      if (localPlatformViewFactory != null)
+      {
+        localObject = null;
+        if (paramPlatformViewCreationRequest.params != null) {
+          localObject = localPlatformViewFactory.getCreateArgsCodec().decodeMessage(paramPlatformViewCreationRequest.params);
+        }
+        localObject = localPlatformViewFactory.create(PlatformViewsController.access$200(this.this$0), paramPlatformViewCreationRequest.viewId, localObject);
+        PlatformViewsController.access$300(this.this$0).put(paramPlatformViewCreationRequest.viewId, localObject);
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Trying to create a platform view of unregistered type: ");
+      ((StringBuilder)localObject).append(paramPlatformViewCreationRequest.viewType);
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Trying to create a view with unknown direction value: ");
+    ((StringBuilder)localObject).append(paramPlatformViewCreationRequest.direction);
+    ((StringBuilder)localObject).append("(view id: ");
+    ((StringBuilder)localObject).append(paramPlatformViewCreationRequest.viewId);
+    ((StringBuilder)localObject).append(")");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   @TargetApi(17)
-  public long createPlatformView(@NonNull PlatformViewsChannel.PlatformViewCreationRequest paramPlatformViewCreationRequest)
+  public long createVirtualDisplayForPlatformView(@NonNull PlatformViewsChannel.PlatformViewCreationRequest paramPlatformViewCreationRequest)
   {
-    ensureValidAndroidVersion();
+    ensureValidAndroidVersion(20);
     if (PlatformViewsController.access$000(paramPlatformViewCreationRequest.direction))
     {
-      if (!PlatformViewsController.access$100(this.this$0).containsKey(Integer.valueOf(paramPlatformViewCreationRequest.viewId)))
+      if (!this.this$0.vdControllers.containsKey(Integer.valueOf(paramPlatformViewCreationRequest.viewId)))
       {
-        PlatformViewFactory localPlatformViewFactory = PlatformViewsController.access$200(this.this$0).getFactory(paramPlatformViewCreationRequest.viewType);
+        PlatformViewFactory localPlatformViewFactory = PlatformViewsController.access$100(this.this$0).getFactory(paramPlatformViewCreationRequest.viewType);
         if (localPlatformViewFactory != null)
         {
           localObject = null;
           if (paramPlatformViewCreationRequest.params != null) {
             localObject = localPlatformViewFactory.getCreateArgsCodec().decodeMessage(paramPlatformViewCreationRequest.params);
           }
-          int i = PlatformViewsController.access$300(this.this$0, paramPlatformViewCreationRequest.logicalWidth);
-          int j = PlatformViewsController.access$300(this.this$0, paramPlatformViewCreationRequest.logicalHeight);
-          PlatformViewsController.access$400(this.this$0, i, j);
-          TextureRegistry.SurfaceTextureEntry localSurfaceTextureEntry = PlatformViewsController.access$500(this.this$0).createSurfaceTexture();
-          localObject = VirtualDisplayController.create(PlatformViewsController.access$600(this.this$0), PlatformViewsController.access$700(this.this$0), localPlatformViewFactory, localSurfaceTextureEntry, i, j, paramPlatformViewCreationRequest.viewId, localObject, new _..Lambda.PlatformViewsController.1.yCLpCrkCk5PKTxnfIMt18jB15HI(this, paramPlatformViewCreationRequest));
+          int i = PlatformViewsController.access$500(this.this$0, paramPlatformViewCreationRequest.logicalWidth);
+          int j = PlatformViewsController.access$500(this.this$0, paramPlatformViewCreationRequest.logicalHeight);
+          PlatformViewsController.access$600(this.this$0, i, j);
+          TextureRegistry.SurfaceTextureEntry localSurfaceTextureEntry = PlatformViewsController.access$700(this.this$0).createSurfaceTexture();
+          localObject = VirtualDisplayController.create(PlatformViewsController.access$200(this.this$0), PlatformViewsController.access$800(this.this$0), localPlatformViewFactory, localSurfaceTextureEntry, i, j, paramPlatformViewCreationRequest.viewId, localObject, new PlatformViewsController.1.1(this, paramPlatformViewCreationRequest));
           if (localObject != null)
           {
-            PlatformViewsController.access$100(this.this$0).put(Integer.valueOf(paramPlatformViewCreationRequest.viewId), localObject);
+            if (PlatformViewsController.access$1000(this.this$0) != null) {
+              ((VirtualDisplayController)localObject).onFlutterViewAttached(PlatformViewsController.access$1000(this.this$0));
+            }
+            this.this$0.vdControllers.put(Integer.valueOf(paramPlatformViewCreationRequest.viewId), localObject);
             localObject = ((VirtualDisplayController)localObject).getView();
             ((View)localObject).setLayoutDirection(paramPlatformViewCreationRequest.direction);
-            PlatformViewsController.access$800(this.this$0).put(((View)localObject).getContext(), localObject);
+            PlatformViewsController.access$1100(this.this$0).put(((View)localObject).getContext(), localObject);
             return localSurfaceTextureEntry.id();
           }
           localObject = new StringBuilder();
@@ -100,18 +132,37 @@ class PlatformViewsController$1
     throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
-  public void disposePlatformView(int paramInt)
+  public void disposeAndroidViewForPlatformView(int paramInt)
   {
-    ensureValidAndroidVersion();
-    Object localObject = (VirtualDisplayController)PlatformViewsController.access$100(this.this$0).get(Integer.valueOf(paramInt));
+    PlatformView localPlatformView = (PlatformView)PlatformViewsController.access$300(this.this$0).get(paramInt);
+    FlutterMutatorView localFlutterMutatorView = (FlutterMutatorView)PlatformViewsController.access$400(this.this$0).get(paramInt);
+    if (localPlatformView != null)
+    {
+      if (localFlutterMutatorView != null) {
+        localFlutterMutatorView.removeView(localPlatformView.getView());
+      }
+      PlatformViewsController.access$300(this.this$0).remove(paramInt);
+      localPlatformView.dispose();
+    }
+    if (localFlutterMutatorView != null)
+    {
+      ((ViewGroup)localFlutterMutatorView.getParent()).removeView(localFlutterMutatorView);
+      PlatformViewsController.access$400(this.this$0).remove(paramInt);
+    }
+  }
+  
+  public void disposeVirtualDisplayForPlatformView(int paramInt)
+  {
+    ensureValidAndroidVersion(20);
+    Object localObject = (VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
-      if (PlatformViewsController.access$900(this.this$0) != null) {
-        PlatformViewsController.access$900(this.this$0).clearPlatformViewClient(paramInt);
+      if (PlatformViewsController.access$1200(this.this$0) != null) {
+        PlatformViewsController.access$1200(this.this$0).clearPlatformViewClient(paramInt);
       }
-      PlatformViewsController.access$800(this.this$0).remove(((VirtualDisplayController)localObject).getView().getContext());
+      PlatformViewsController.access$1100(this.this$0).remove(((VirtualDisplayController)localObject).getView().getContext());
       ((VirtualDisplayController)localObject).dispose();
-      PlatformViewsController.access$100(this.this$0).remove(Integer.valueOf(paramInt));
+      this.this$0.vdControllers.remove(Integer.valueOf(paramInt));
       return;
     }
     localObject = new StringBuilder();
@@ -122,32 +173,42 @@ class PlatformViewsController$1
   
   public void onTouch(@NonNull PlatformViewsChannel.PlatformViewTouch paramPlatformViewTouch)
   {
-    ensureValidAndroidVersion();
-    float f = PlatformViewsController.access$600(this.this$0).getResources().getDisplayMetrics().density;
-    Object localObject = (MotionEvent.PointerProperties[])PlatformViewsController.access$1200(paramPlatformViewTouch.rawPointerPropertiesList).toArray(new MotionEvent.PointerProperties[paramPlatformViewTouch.pointerCount]);
-    MotionEvent.PointerCoords[] arrayOfPointerCoords = (MotionEvent.PointerCoords[])PlatformViewsController.access$1300(paramPlatformViewTouch.rawPointerCoords, f).toArray(new MotionEvent.PointerCoords[paramPlatformViewTouch.pointerCount]);
-    if (PlatformViewsController.access$100(this.this$0).containsKey(Integer.valueOf(paramPlatformViewTouch.viewId)))
+    int i = paramPlatformViewTouch.viewId;
+    float f = PlatformViewsController.access$200(this.this$0).getResources().getDisplayMetrics().density;
+    ensureValidAndroidVersion(20);
+    MotionEvent localMotionEvent;
+    if (this.this$0.vdControllers.containsKey(Integer.valueOf(i)))
     {
-      ((VirtualDisplayController)PlatformViewsController.access$100(this.this$0).get(Integer.valueOf(paramPlatformViewTouch.viewId))).getView().dispatchTouchEvent(MotionEvent.obtain(paramPlatformViewTouch.downTime.longValue(), paramPlatformViewTouch.eventTime.longValue(), paramPlatformViewTouch.action, paramPlatformViewTouch.pointerCount, (MotionEvent.PointerProperties[])localObject, arrayOfPointerCoords, paramPlatformViewTouch.metaState, paramPlatformViewTouch.buttonState, paramPlatformViewTouch.xPrecision, paramPlatformViewTouch.yPrecision, paramPlatformViewTouch.deviceId, paramPlatformViewTouch.edgeFlags, paramPlatformViewTouch.source, paramPlatformViewTouch.flags));
+      localMotionEvent = this.this$0.toMotionEvent(f, paramPlatformViewTouch, true);
+      ((VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramPlatformViewTouch.viewId))).dispatchTouchEvent(localMotionEvent);
       return;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Sending touch to an unknown view with id: ");
-    ((StringBuilder)localObject).append(paramPlatformViewTouch.viewId);
-    throw new IllegalStateException(((StringBuilder)localObject).toString());
+    if (PlatformViewsController.access$300(this.this$0).get(i) != null)
+    {
+      localMotionEvent = this.this$0.toMotionEvent(f, paramPlatformViewTouch, false);
+      paramPlatformViewTouch = ((PlatformView)PlatformViewsController.access$300(this.this$0).get(paramPlatformViewTouch.viewId)).getView();
+      if (paramPlatformViewTouch != null) {
+        paramPlatformViewTouch.dispatchTouchEvent(localMotionEvent);
+      }
+      return;
+    }
+    paramPlatformViewTouch = new StringBuilder();
+    paramPlatformViewTouch.append("Sending touch to an unknown view with id: ");
+    paramPlatformViewTouch.append(i);
+    throw new IllegalStateException(paramPlatformViewTouch.toString());
   }
   
   public void resizePlatformView(@NonNull PlatformViewsChannel.PlatformViewResizeRequest paramPlatformViewResizeRequest, @NonNull Runnable paramRunnable)
   {
-    ensureValidAndroidVersion();
-    VirtualDisplayController localVirtualDisplayController = (VirtualDisplayController)PlatformViewsController.access$100(this.this$0).get(Integer.valueOf(paramPlatformViewResizeRequest.viewId));
+    ensureValidAndroidVersion(20);
+    VirtualDisplayController localVirtualDisplayController = (VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramPlatformViewResizeRequest.viewId));
     if (localVirtualDisplayController != null)
     {
-      int i = PlatformViewsController.access$300(this.this$0, paramPlatformViewResizeRequest.newLogicalWidth);
-      int j = PlatformViewsController.access$300(this.this$0, paramPlatformViewResizeRequest.newLogicalHeight);
-      PlatformViewsController.access$400(this.this$0, i, j);
-      PlatformViewsController.access$1000(this.this$0, localVirtualDisplayController);
-      localVirtualDisplayController.resize(i, j, new PlatformViewsController.1.1(this, localVirtualDisplayController, paramRunnable));
+      int i = PlatformViewsController.access$500(this.this$0, paramPlatformViewResizeRequest.newLogicalWidth);
+      int j = PlatformViewsController.access$500(this.this$0, paramPlatformViewResizeRequest.newLogicalHeight);
+      PlatformViewsController.access$600(this.this$0, i, j);
+      PlatformViewsController.access$1300(this.this$0, localVirtualDisplayController);
+      localVirtualDisplayController.resize(i, j, new PlatformViewsController.1.2(this, localVirtualDisplayController, paramRunnable));
       return;
     }
     paramRunnable = new StringBuilder();
@@ -159,10 +220,10 @@ class PlatformViewsController$1
   @TargetApi(17)
   public void setDirection(int paramInt1, int paramInt2)
   {
-    ensureValidAndroidVersion();
     if (PlatformViewsController.access$000(paramInt2))
     {
-      localObject = ((VirtualDisplayController)PlatformViewsController.access$100(this.this$0).get(Integer.valueOf(paramInt1))).getView();
+      ensureValidAndroidVersion(20);
+      localObject = ((VirtualDisplayController)this.this$0.vdControllers.get(Integer.valueOf(paramInt1))).getView();
       if (localObject != null)
       {
         ((View)localObject).setLayoutDirection(paramInt2);
@@ -184,7 +245,7 @@ class PlatformViewsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformViewsController.1
  * JD-Core Version:    0.7.0.1
  */

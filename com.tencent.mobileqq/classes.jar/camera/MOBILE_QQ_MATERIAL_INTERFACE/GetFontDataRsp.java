@@ -8,8 +8,8 @@ public final class GetFontDataRsp
   extends JceStruct
 {
   static byte[] cache_FontData = (byte[])new byte[1];
-  public int Code;
-  public byte[] FontData;
+  public int Code = 0;
+  public byte[] FontData = null;
   
   static
   {
@@ -33,14 +33,15 @@ public final class GetFontDataRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Code, 0);
-    if (this.FontData != null) {
-      paramJceOutputStream.write(this.FontData, 1);
+    byte[] arrayOfByte = this.FontData;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp
  * JD-Core Version:    0.7.0.1
  */

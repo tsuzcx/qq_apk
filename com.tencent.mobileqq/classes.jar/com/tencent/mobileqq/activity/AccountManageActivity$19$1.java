@@ -11,36 +11,37 @@ class AccountManageActivity$19$1
   
   public void run()
   {
-    int i = 0;
     try
     {
-      this.a.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.a);
-      label22:
-      if (!this.a.this$0.jdField_a_of_type_Boolean) {
+      this.a.this$0.a.removeViewAt(this.a.c);
+      label20:
+      boolean bool = this.a.this$0.k;
+      int i = 0;
+      if (!bool) {
         this.a.this$0.a(false);
       }
       AccountManageActivity.a(this.a.this$0, null);
-      int j = this.a.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      int j = this.a.this$0.a.getChildCount();
       while (i < j)
       {
-        View localView = this.a.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        View localView = this.a.this$0.a.getChildAt(i);
         if (localView.getTag() != null) {
           localView.setTag(Integer.valueOf(i));
         }
         i += 1;
       }
-      this.a.this$0.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.this$0.g.dismiss();
       return;
     }
     catch (Exception localException)
     {
-      break label22;
+      break label20;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.19.1
  * JD-Core Version:    0.7.0.1
  */

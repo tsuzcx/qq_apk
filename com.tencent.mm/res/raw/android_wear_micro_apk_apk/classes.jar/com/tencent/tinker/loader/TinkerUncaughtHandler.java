@@ -7,15 +7,15 @@ import java.io.File;
 public class TinkerUncaughtHandler
   implements Thread.UncaughtExceptionHandler
 {
-  private final File akW;
-  private final Thread.UncaughtExceptionHandler akX;
+  private final File aow;
+  private final Thread.UncaughtExceptionHandler aox;
   private final Context context;
   
   public TinkerUncaughtHandler(Context paramContext)
   {
     this.context = paramContext;
-    this.akX = Thread.getDefaultUncaughtExceptionHandler();
-    this.akW = f.O(paramContext);
+    this.aox = Thread.getDefaultUncaughtExceptionHandler();
+    this.aow = f.P(paramContext);
   }
   
   /* Error */
@@ -34,18 +34,18 @@ public class TinkerUncaughtHandler
     //   21: invokestatic 67	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   24: pop
     //   25: aload_0
-    //   26: getfield 27	com/tencent/tinker/loader/TinkerUncaughtHandler:akX	Ljava/lang/Thread$UncaughtExceptionHandler;
+    //   26: getfield 27	com/tencent/tinker/loader/TinkerUncaughtHandler:aox	Ljava/lang/Thread$UncaughtExceptionHandler;
     //   29: aload_1
     //   30: aload_2
     //   31: invokeinterface 69 3 0
     //   36: aload_0
-    //   37: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:akW	Ljava/io/File;
+    //   37: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:aow	Ljava/io/File;
     //   40: ifnull +42 -> 82
     //   43: invokestatic 25	java/lang/Thread:getDefaultUncaughtExceptionHandler	()Ljava/lang/Thread$UncaughtExceptionHandler;
     //   46: instanceof 2
     //   49: ifeq +33 -> 82
     //   52: aload_0
-    //   53: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:akW	Ljava/io/File;
+    //   53: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:aow	Ljava/io/File;
     //   56: invokevirtual 75	java/io/File:getParentFile	()Ljava/io/File;
     //   59: astore_1
     //   60: aload_1
@@ -64,7 +64,7 @@ public class TinkerUncaughtHandler
     //   87: new 88	java/io/FileWriter
     //   90: dup
     //   91: aload_0
-    //   92: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:akW	Ljava/io/File;
+    //   92: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:aow	Ljava/io/File;
     //   95: iconst_0
     //   96: invokespecial 91	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
     //   99: invokespecial 94	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
@@ -78,7 +78,7 @@ public class TinkerUncaughtHandler
     //   112: invokespecial 49	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   115: aload_0
     //   116: getfield 19	com/tencent/tinker/loader/TinkerUncaughtHandler:context	Landroid/content/Context;
-    //   119: invokestatic 102	com/tencent/tinker/loader/a/k:T	(Landroid/content/Context;)Ljava/lang/String;
+    //   119: invokestatic 102	com/tencent/tinker/loader/a/k:V	(Landroid/content/Context;)Ljava/lang/String;
     //   122: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   128: invokevirtual 105	java/io/PrintWriter:println	(Ljava/lang/String;)V
@@ -89,7 +89,7 @@ public class TinkerUncaughtHandler
     //   135: invokestatic 108	com/tencent/tinker/loader/a/k:a	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   138: invokevirtual 105	java/io/PrintWriter:println	(Ljava/lang/String;)V
     //   141: aload_3
-    //   142: invokestatic 112	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   142: invokestatic 112	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   145: invokestatic 118	android/os/Process:myPid	()I
     //   148: invokestatic 122	android/os/Process:killProcess	(I)V
     //   151: return
@@ -110,13 +110,13 @@ public class TinkerUncaughtHandler
     //   180: invokestatic 67	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   183: pop
     //   184: aload_2
-    //   185: invokestatic 112	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   185: invokestatic 112	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   188: goto -43 -> 145
     //   191: astore_2
     //   192: aconst_null
     //   193: astore_1
     //   194: aload_1
-    //   195: invokestatic 112	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   195: invokestatic 112	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   198: aload_2
     //   199: athrow
     //   200: astore_2

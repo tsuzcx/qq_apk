@@ -7,28 +7,33 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
-import zii;
-import zij;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.util.LogUtil;
 
 public class QZoneConfigProvider
   extends ContentProvider
-  implements zij
+  implements QZoneConfigConst
 {
-  private static final UriMatcher jdField_a_of_type_AndroidContentUriMatcher = ;
-  private zii jdField_a_of_type_Zii;
+  public static ConcurrentHashMap<String, QZConfigSqliteManager> a = new ConcurrentHashMap();
+  private static final UriMatcher k = a();
+  public Object j = new Object();
   
   private int a(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    int i = this.jdField_a_of_type_Zii.d(paramString, paramArrayOfString);
+    int i = b().d(paramString, paramArrayOfString);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
   
   private int a(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    int i = this.jdField_a_of_type_Zii.a(paramUri, "table_qz_unread", paramArrayOfContentValues);
+    int i = b().a(paramUri, "table_qz_unread", paramArrayOfContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
@@ -49,136 +54,221 @@ public class QZoneConfigProvider
   
   private Cursor a(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Zii.c(paramArrayOfString);
+    return b().c(paramArrayOfString);
   }
   
   private Cursor a(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Zii.b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return b().b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri a(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "cookie");
-    paramUri = this.jdField_a_of_type_Zii.d(paramUri, paramContentValues);
+    paramUri = b().d(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private int b(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    int i = this.jdField_a_of_type_Zii.a(paramUri, "qz_navigator_bar", paramArrayOfContentValues);
+    int i = b().a(paramUri, "qz_navigator_bar", paramArrayOfContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
   
   private Cursor b(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Zii.a(paramArrayOfString);
+    return b().a(paramArrayOfString);
   }
   
   private Cursor b(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Zii.c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return b().c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri b(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "check_time");
-    paramUri = this.jdField_a_of_type_Zii.e(paramUri, paramContentValues);
+    paramUri = b().e(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
+  private QZConfigSqliteManager b()
+  {
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    try
+    {
+      if (!"Success".equals(BaseApplicationImpl.sInjectResult))
+      {
+        localObject1 = localObject2;
+        localObject3 = new StringBuilder();
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append(" sIsDexInjectFinish = ");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append(BaseApplicationImpl.sInjectResult);
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append("  isUserAllow = ");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append(PrivacyPolicyHelper.d());
+        localObject1 = localObject2;
+        QLog.e("QZoneConfigProvider", 1, ((StringBuilder)localObject3).toString());
+        return null;
+      }
+      localObject1 = localObject2;
+      if (BaseApplicationImpl.getApplication() != null)
+      {
+        localObject1 = localObject2;
+        if (BaseApplicationImpl.getApplication().getRuntime() != null)
+        {
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
+          {
+            localObject1 = localObject2;
+            localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+            localObject1 = localObject2;
+            if (a.get(localObject2) != null)
+            {
+              localObject1 = localObject2;
+              return (QZConfigSqliteManager)a.get(localObject2);
+            }
+            localObject1 = localObject2;
+            localObject3 = this.j;
+            localObject1 = localObject2;
+            try
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("new QZConfigSqliteManager  uin=");
+              ((StringBuilder)localObject1).append(LogUtil.getSafePrintUin((String)localObject2));
+              QLog.e("QZoneConfigProvider", 1, ((StringBuilder)localObject1).toString());
+              localObject1 = new QZConfigSqliteManager(getContext(), (String)localObject2);
+              a.put(localObject2, localObject1);
+              return localObject1;
+            }
+            finally
+            {
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+      localObject1 = localObject2;
+      Object localObject3 = new StringBuilder();
+      localObject1 = localObject2;
+      ((StringBuilder)localObject3).append("  uin=");
+      localObject1 = localObject2;
+      ((StringBuilder)localObject3).append(LogUtil.getSafePrintUin(""));
+      localObject1 = localObject2;
+      QLog.e("QZoneConfigProvider", 1, new Object[] { "getmSqlManager", ((StringBuilder)localObject3).toString() });
+      return null;
+    }
+    catch (Throwable localThrowable)
+    {
+      label288:
+      break label288;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("  uin= ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.e("QZoneConfigProvider", 1, new Object[] { "getmSqlManager init erro", ((StringBuilder)localObject2).toString() });
+    return null;
+  }
+  
   private Cursor c(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_Zii.b(paramArrayOfString);
+    return b().b(paramArrayOfString);
   }
   
   private Cursor c(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Zii.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return b().a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri c(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "updatelog");
-    paramUri = this.jdField_a_of_type_Zii.f(paramUri, paramContentValues);
+    paramUri = b().f(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Cursor d(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_Zii.d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return b().d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri d(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Zii.a(paramUri, paramContentValues);
+    paramUri = b().a(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri e(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Zii.c(paramUri, paramContentValues);
+    paramUri = b().c(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri f(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Zii.b(paramUri, paramContentValues);
+    paramUri = b().b(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri g(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_Zii.g(paramUri, paramContentValues);
+    paramUri = b().g(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   public int bulkInsert(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    int i = k.match(paramUri);
+    if (i != 1)
     {
-    default: 
-      QZLog.e("QZoneConfigProvider", 1, new Object[] { "uri:", paramUri, "not used right" });
-      return 0;
-    case 9: 
-      return a(paramUri, paramArrayOfContentValues);
-    case 8: 
+      if (i != 8)
+      {
+        if (i != 9)
+        {
+          QZLog.e("QZoneConfigProvider", 1, new Object[] { "uri:", paramUri, "not used right" });
+          return 0;
+        }
+        return a(paramUri, paramArrayOfContentValues);
+      }
       return b(paramUri, paramArrayOfContentValues);
     }
-    return this.jdField_a_of_type_Zii.a(paramUri, "qz_configs", paramArrayOfContentValues);
+    return b().a(paramUri, "qz_configs", paramArrayOfContentValues);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    switch (k.match(paramUri))
     {
     case 7: 
     default: 
       return 0;
-    case 1: 
-      return this.jdField_a_of_type_Zii.a(paramString, paramArrayOfString);
-    case 2: 
-      return this.jdField_a_of_type_Zii.a();
-    case 3: 
-      return this.jdField_a_of_type_Zii.c();
-    case 4: 
-      return this.jdField_a_of_type_Zii.b(paramString, paramArrayOfString);
-    case 6: 
-      return this.jdField_a_of_type_Zii.d();
-    case 5: 
-      return this.jdField_a_of_type_Zii.b();
+    case 9: 
+      return a(paramUri, paramString, paramArrayOfString);
     case 8: 
-      return this.jdField_a_of_type_Zii.c(paramString, paramArrayOfString);
+      return b().c(paramString, paramArrayOfString);
+    case 6: 
+      return b().g();
+    case 5: 
+      return b().e();
+    case 4: 
+      return b().b(paramString, paramArrayOfString);
+    case 3: 
+      return b().f();
+    case 2: 
+      return b().d();
     }
-    return a(paramUri, paramString, paramArrayOfString);
+    return b().a(paramString, paramArrayOfString);
   }
   
   public String getType(Uri paramUri)
@@ -188,31 +278,39 @@ public class QZoneConfigProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    int i = k.match(paramUri);
+    if (i != 1)
     {
-    case 6: 
-    case 7: 
-    default: 
-      return null;
-    case 1: 
-      return d(paramUri, paramContentValues);
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5)
+            {
+              if (i != 8)
+              {
+                if (i != 9) {
+                  return null;
+                }
+                return g(paramUri, paramContentValues);
+              }
+              return f(paramUri, paramContentValues);
+            }
+            return b(paramUri, paramContentValues);
+          }
+          return e(paramUri, paramContentValues);
+        }
+        return c(paramUri, paramContentValues);
+      }
       return a(paramUri, paramContentValues);
-    case 3: 
-      return c(paramUri, paramContentValues);
-    case 4: 
-      return e(paramUri, paramContentValues);
-    case 5: 
-      return b(paramUri, paramContentValues);
-    case 8: 
-      return f(paramUri, paramContentValues);
     }
-    return g(paramUri, paramContentValues);
+    return d(paramUri, paramContentValues);
   }
   
   public boolean onCreate()
   {
-    this.jdField_a_of_type_Zii = new zii(getContext());
     return true;
   }
   
@@ -220,28 +318,43 @@ public class QZoneConfigProvider
   {
     try
     {
-      switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+      int i = k.match(paramUri);
+      if (i != 1)
       {
-      case 1: 
-        return a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5)
+              {
+                if (i != 8)
+                {
+                  if (i != 9) {
+                    return null;
+                  }
+                  return d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+                }
+                return c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+              }
+              return c(paramArrayOfString1);
+            }
+            return b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+          }
+          return a(paramArrayOfString1);
+        }
+        return b(paramArrayOfString1);
       }
+      paramUri = a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+      return paramUri;
     }
     catch (Throwable paramUri)
     {
-      if (!QLog.isColorLevel()) {
-        break label138;
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneConfigProvider", 2, "query异常", paramUri);
       }
-      QLog.e("QZoneConfigProvider", 2, "query异常", paramUri);
-      return null;
     }
-    return b(paramArrayOfString1);
-    return a(paramArrayOfString1);
-    return b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
-    return c(paramArrayOfString1);
-    return c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
-    paramUri = d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
-    return paramUri;
-    label138:
     return null;
   }
   
@@ -252,7 +365,7 @@ public class QZoneConfigProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.config.provider.QZoneConfigProvider
  * JD-Core Version:    0.7.0.1
  */

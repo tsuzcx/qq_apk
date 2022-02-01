@@ -102,15 +102,16 @@ public class Matrix3
   
   public Matrix3 idt()
   {
-    this.val[0] = 1.0F;
-    this.val[1] = 0.0F;
-    this.val[2] = 0.0F;
-    this.val[3] = 0.0F;
-    this.val[4] = 1.0F;
-    this.val[5] = 0.0F;
-    this.val[6] = 0.0F;
-    this.val[7] = 0.0F;
-    this.val[8] = 1.0F;
+    float[] arrayOfFloat = this.val;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = 1.0F;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 1.0F;
     return this;
   }
   
@@ -119,55 +120,61 @@ public class Matrix3
     if (paramFloat == 0.0F) {
       return this;
     }
-    float f = 0.01745329F * paramFloat;
-    paramFloat = (float)Math.cos(f);
-    f = (float)Math.sin(f);
-    this.tmp[0] = paramFloat;
-    this.tmp[1] = f;
-    this.tmp[2] = 0.0F;
-    this.tmp[3] = (-f);
-    this.tmp[4] = paramFloat;
-    this.tmp[5] = 0.0F;
-    this.tmp[6] = 0.0F;
-    this.tmp[7] = 0.0F;
-    this.tmp[8] = 1.0F;
-    a(this.val, this.tmp);
+    double d = paramFloat * 0.01745329F;
+    paramFloat = (float)Math.cos(d);
+    float f = (float)Math.sin(d);
+    float[] arrayOfFloat = this.tmp;
+    arrayOfFloat[0] = paramFloat;
+    arrayOfFloat[1] = f;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = (-f);
+    arrayOfFloat[4] = paramFloat;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 1.0F;
+    a(this.val, arrayOfFloat);
     return this;
   }
   
   public Matrix3 scale(float paramFloat1, float paramFloat2)
   {
-    this.tmp[0] = paramFloat1;
-    this.tmp[1] = 0.0F;
-    this.tmp[2] = 0.0F;
-    this.tmp[3] = 0.0F;
-    this.tmp[4] = paramFloat2;
-    this.tmp[5] = 0.0F;
-    this.tmp[6] = 0.0F;
-    this.tmp[7] = 0.0F;
-    this.tmp[8] = 1.0F;
-    a(this.val, this.tmp);
+    float[] arrayOfFloat = this.tmp;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = paramFloat2;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 1.0F;
+    a(this.val, arrayOfFloat);
     return this;
   }
   
   public Matrix3 scale(Vector2 paramVector2)
   {
     this.tmp[0] = paramVector2.x;
-    this.tmp[1] = 0.0F;
-    this.tmp[2] = 0.0F;
-    this.tmp[3] = 0.0F;
-    this.tmp[4] = paramVector2.y;
-    this.tmp[5] = 0.0F;
-    this.tmp[6] = 0.0F;
-    this.tmp[7] = 0.0F;
-    this.tmp[8] = 1.0F;
-    a(this.val, this.tmp);
+    float[] arrayOfFloat = this.tmp;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = paramVector2.y;
+    paramVector2 = this.tmp;
+    paramVector2[5] = 0.0F;
+    paramVector2[6] = 0.0F;
+    paramVector2[7] = 0.0F;
+    paramVector2[8] = 1.0F;
+    a(this.val, paramVector2);
     return this;
   }
   
   public Matrix3 set(Matrix3 paramMatrix3)
   {
-    System.arraycopy(paramMatrix3.val, 0, this.val, 0, this.val.length);
+    paramMatrix3 = paramMatrix3.val;
+    float[] arrayOfFloat = this.val;
+    System.arraycopy(paramMatrix3, 0, arrayOfFloat, 0, arrayOfFloat.length);
     return this;
   }
   
@@ -187,59 +194,83 @@ public class Matrix3
   
   public String toString()
   {
-    return "[" + this.val[0] + "|" + this.val[3] + "|" + this.val[6] + "]\n[" + this.val[1] + "|" + this.val[4] + "|" + this.val[7] + "]\n[" + this.val[2] + "|" + this.val[5] + "|" + this.val[8] + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.val[0]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[3]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[6]);
+    localStringBuilder.append("]\n[");
+    localStringBuilder.append(this.val[1]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[4]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[7]);
+    localStringBuilder.append("]\n[");
+    localStringBuilder.append(this.val[2]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[5]);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.val[8]);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public Matrix3 translate(float paramFloat1, float paramFloat2)
   {
-    this.tmp[0] = 1.0F;
-    this.tmp[1] = 0.0F;
-    this.tmp[2] = 0.0F;
-    this.tmp[3] = 0.0F;
-    this.tmp[4] = 1.0F;
-    this.tmp[5] = 0.0F;
-    this.tmp[6] = paramFloat1;
-    this.tmp[7] = paramFloat2;
-    this.tmp[8] = 1.0F;
-    a(this.val, this.tmp);
+    float[] arrayOfFloat = this.tmp;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = 1.0F;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = paramFloat1;
+    arrayOfFloat[7] = paramFloat2;
+    arrayOfFloat[8] = 1.0F;
+    a(this.val, arrayOfFloat);
     return this;
   }
   
   public Matrix3 translate(Vector2 paramVector2)
   {
-    this.tmp[0] = 1.0F;
-    this.tmp[1] = 0.0F;
-    this.tmp[2] = 0.0F;
-    this.tmp[3] = 0.0F;
-    this.tmp[4] = 1.0F;
-    this.tmp[5] = 0.0F;
-    this.tmp[6] = paramVector2.x;
+    float[] arrayOfFloat = this.tmp;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = 1.0F;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = paramVector2.x;
     this.tmp[7] = paramVector2.y;
-    this.tmp[8] = 1.0F;
-    a(this.val, this.tmp);
+    paramVector2 = this.tmp;
+    paramVector2[8] = 1.0F;
+    a(this.val, paramVector2);
     return this;
   }
   
   public Matrix3 transpose()
   {
-    float f1 = this.val[1];
-    float f2 = this.val[2];
-    float f3 = this.val[3];
-    float f4 = this.val[5];
-    float f5 = this.val[6];
-    float f6 = this.val[7];
-    this.val[3] = f1;
-    this.val[6] = f2;
-    this.val[1] = f3;
-    this.val[7] = f4;
-    this.val[2] = f5;
-    this.val[5] = f6;
+    float[] arrayOfFloat = this.val;
+    float f1 = arrayOfFloat[1];
+    float f2 = arrayOfFloat[2];
+    float f3 = arrayOfFloat[3];
+    float f4 = arrayOfFloat[5];
+    float f5 = arrayOfFloat[6];
+    float f6 = arrayOfFloat[7];
+    arrayOfFloat[3] = f1;
+    arrayOfFloat[6] = f2;
+    arrayOfFloat[1] = f3;
+    arrayOfFloat[7] = f4;
+    arrayOfFloat[2] = f5;
+    arrayOfFloat[5] = f6;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.Matrix3
  * JD-Core Version:    0.7.0.1
  */

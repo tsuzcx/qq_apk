@@ -1,96 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class csx
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public String gFE;
-  public String userName;
-  public int ybW;
-  public int ybX;
-  public int ybY;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(5258);
+    AppMethodBeat.i(258288);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.ybW);
-      paramVarArgs.aO(2, this.ybX);
-      paramVarArgs.aO(3, this.ybY);
-      if (this.userName != null) {
-        paramVarArgs.e(4, this.userName);
-      }
-      if (this.gFE != null) {
-        paramVarArgs.e(5, this.gFE);
-      }
-      AppMethodBeat.o(5258);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = e.a.a.b.b.a.bl(1, this.ybW) + 0 + e.a.a.b.b.a.bl(2, this.ybX) + e.a.a.b.b.a.bl(3, this.ybY);
-      paramInt = i;
-      if (this.userName != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.userName);
-      }
-      i = paramInt;
-      if (this.gFE != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.gFE);
-      }
-      AppMethodBeat.o(5258);
-      return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(5258);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      csx localcsx = (csx)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(5258);
-        return -1;
-      case 1: 
-        localcsx.ybW = locala.CLY.sl();
-        AppMethodBeat.o(5258);
-        return 0;
-      case 2: 
-        localcsx.ybX = locala.CLY.sl();
-        AppMethodBeat.o(5258);
-        return 0;
-      case 3: 
-        localcsx.ybY = locala.CLY.sl();
-        AppMethodBeat.o(5258);
-        return 0;
-      case 4: 
-        localcsx.userName = locala.CLY.readString();
-        AppMethodBeat.o(5258);
-        return 0;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localcsx.gFE = locala.CLY.readString();
-      AppMethodBeat.o(5258);
+      AppMethodBeat.o(258288);
       return 0;
     }
-    AppMethodBeat.o(5258);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label284;
+      }
+    }
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(258288);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(258288);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        csx localcsx = (csx)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(258288);
+          return -1;
+        }
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          kc localkc = new kc();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localkc.parseFrom((byte[])localObject);
+          }
+          localcsx.BaseRequest = localkc;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(258288);
+        return 0;
+      }
+      AppMethodBeat.o(258288);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.csx
  * JD-Core Version:    0.7.0.1
  */

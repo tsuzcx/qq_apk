@@ -1,14 +1,19 @@
-import android.media.SoundPool;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-class etw
-  implements Runnable
+public class etw
+  implements View.OnClickListener
 {
-  etw(etv parametv) {}
+  public etw(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.m(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+    VoipDialInterfaceActivity.a(this.a).setCursorVisible(true);
+    VoipDialInterfaceActivity.b(this.a).setCursorVisible(false);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(VoipDialInterfaceActivity.b(this.a).getWindowToken(), 0);
   }
 }
 

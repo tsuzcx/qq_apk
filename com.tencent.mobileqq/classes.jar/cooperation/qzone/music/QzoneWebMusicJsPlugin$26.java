@@ -9,12 +9,12 @@ class QzoneWebMusicJsPlugin$26
   
   public void run()
   {
-    QzoneWebMusicJsPlugin.access$800(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    QzoneWebMusicJsPlugin.access$800(this.this$0, this.val$type, this.val$bundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.26
  * JD-Core Version:    0.7.0.1
  */

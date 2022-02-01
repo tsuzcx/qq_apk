@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.v4.util.ArraySet;
 import android.util.Log;
-import android.util.Pair;
+import androidx.collection.ArraySet;
+import androidx.core.util.Pair;
 import com.tencent.mobileqq.dinifly.utils.MeanCalculator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,49 +49,45 @@ public class PerformanceTracker
   
   public void logRenderTimes()
   {
-    if (!this.enabled) {}
-    for (;;)
-    {
+    if (!this.enabled) {
       return;
-      List localList = getSortedRenderTimes();
-      Log.d("LOTTIE", "Render times:");
-      int i = 0;
-      while (i < localList.size())
-      {
-        Pair localPair = (Pair)localList.get(i);
-        Log.d("LOTTIE", String.format("\t\t%30s:%.2f", new Object[] { localPair.first, localPair.second }));
-        i += 1;
-      }
+    }
+    List localList = getSortedRenderTimes();
+    Log.d("LOTTIE", "Render times:");
+    int i = 0;
+    while (i < localList.size())
+    {
+      Pair localPair = (Pair)localList.get(i);
+      Log.d("LOTTIE", String.format("\t\t%30s:%.2f", new Object[] { localPair.first, localPair.second }));
+      i += 1;
     }
   }
   
   public void recordRenderTime(String paramString, float paramFloat)
   {
-    if (!this.enabled) {}
-    for (;;)
-    {
+    if (!this.enabled) {
       return;
-      MeanCalculator localMeanCalculator2 = (MeanCalculator)this.layerRenderTimes.get(paramString);
-      MeanCalculator localMeanCalculator1 = localMeanCalculator2;
-      if (localMeanCalculator2 == null)
-      {
-        localMeanCalculator1 = new MeanCalculator();
-        this.layerRenderTimes.put(paramString, localMeanCalculator1);
-      }
-      localMeanCalculator1.add(paramFloat);
-      if (paramString.equals("__container"))
-      {
-        paramString = this.frameListeners.iterator();
-        while (paramString.hasNext()) {
-          ((PerformanceTracker.FrameListener)paramString.next()).onFrameRendered(paramFloat);
-        }
+    }
+    MeanCalculator localMeanCalculator2 = (MeanCalculator)this.layerRenderTimes.get(paramString);
+    MeanCalculator localMeanCalculator1 = localMeanCalculator2;
+    if (localMeanCalculator2 == null)
+    {
+      localMeanCalculator1 = new MeanCalculator();
+      this.layerRenderTimes.put(paramString, localMeanCalculator1);
+    }
+    localMeanCalculator1.add(paramFloat);
+    if (paramString.equals("__container"))
+    {
+      paramString = this.frameListeners.iterator();
+      while (paramString.hasNext()) {
+        ((PerformanceTracker.FrameListener)paramString.next()).onFrameRendered(paramFloat);
       }
     }
   }
   
   public void removeFrameListener(PerformanceTracker.FrameListener paramFrameListener)
   {
-    this.frameListeners.add(paramFrameListener);
+    this.frameListeners.remove(paramFrameListener);
   }
   
   void setEnabled(boolean paramBoolean)

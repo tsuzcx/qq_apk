@@ -1,28 +1,22 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IDrawableLoadedCallBack;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class MiniAppProxyImpl$5
-  implements URLDrawable.URLDrawableListener
+  implements EIPCResultCallback
 {
-  MiniAppProxyImpl$5(MiniAppProxyImpl paramMiniAppProxyImpl, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack) {}
+  MiniAppProxyImpl$5(MiniAppProxyImpl paramMiniAppProxyImpl) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.val$callBack.onLoadSuccessed(paramURLDrawable);
+    QLog.e("MiniAppProxyImpl", 2, " upload action callback ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

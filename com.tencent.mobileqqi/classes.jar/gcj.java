@@ -1,36 +1,14 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class gcj
-  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  private gcj(RoamSearchDialog paramRoamSearchDialog) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 3)
-    {
-      RoamSearchDialog.a(this.a);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        RoamSearchDialog.a(this.a);
-      }
-      return true;
-    }
-    return false;
-  }
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

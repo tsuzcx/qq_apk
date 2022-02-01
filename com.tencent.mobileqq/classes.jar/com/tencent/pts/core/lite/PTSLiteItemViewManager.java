@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
+@Deprecated
 public class PTSLiteItemViewManager
 {
   public final String TAG = "PTSLiteItemViewManager";
@@ -28,35 +29,36 @@ public class PTSLiteItemViewManager
   
   private void bindData(PTSItemData paramPTSItemData, PTSItemView paramPTSItemView)
   {
-    if ((paramPTSItemData == null) || (paramPTSItemView == null))
+    if ((paramPTSItemData != null) && (paramPTSItemView != null))
     {
-      PTSLog.e("PTSLiteItemViewManager", "[bindData] error, itemData or ptsItemView is null.");
+      String str = paramPTSItemData.getItemID();
+      if (TextUtils.isEmpty(str))
+      {
+        PTSLog.e("PTSLiteItemViewManager", "[bindData] error, itemId is null.");
+        return;
+      }
+      PTSAppInstance localPTSAppInstance2 = (PTSAppInstance)this.itemIdToAppInstanceMap.get(str);
+      PTSAppInstance localPTSAppInstance1 = localPTSAppInstance2;
+      if (localPTSAppInstance2 == null)
+      {
+        localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.context).withRootView(paramPTSItemView).withRootNodeType(1).withItemData(paramPTSItemData).withPageName(paramPTSItemData.getPageName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withLiteItemViewManager(this).build();
+        this.itemIdToAppInstanceMap.put(str, localPTSAppInstance1);
+      }
+      paramPTSItemView.bindData(localPTSAppInstance1);
+      PTSThreadUtil.runOnSubThread(new PTSLiteItemViewManager.1(this, paramPTSItemData, localPTSAppInstance1));
       return;
     }
-    String str = paramPTSItemData.getItemID();
-    if (TextUtils.isEmpty(str))
-    {
-      PTSLog.e("PTSLiteItemViewManager", "[bindData] error, itemId is null.");
-      return;
-    }
-    PTSAppInstance localPTSAppInstance2 = (PTSAppInstance)this.itemIdToAppInstanceMap.get(str);
-    PTSAppInstance localPTSAppInstance1 = localPTSAppInstance2;
-    if (localPTSAppInstance2 == null)
-    {
-      localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.context).withRootView(paramPTSItemView).withRootNodeType(1).withItemData(paramPTSItemData).withAppName(paramPTSItemData.getAppName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withLiteItemViewManager(this).build();
-      this.itemIdToAppInstanceMap.put(str, localPTSAppInstance1);
-    }
-    paramPTSItemView.bindData(localPTSAppInstance1);
-    PTSThreadUtil.runOnSubThread(new PTSLiteItemViewManager.1(this, paramPTSItemData, localPTSAppInstance1));
+    PTSLog.e("PTSLiteItemViewManager", "[bindData] error, itemData or ptsItemView is null.");
   }
   
   private void destroyAppInstance()
   {
-    if (this.itemIdToAppInstanceMap != null)
+    Object localObject = this.itemIdToAppInstanceMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.itemIdToAppInstanceMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((PTSAppInstance)localIterator.next()).onDestroy();
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PTSAppInstance)((Iterator)localObject).next()).onDestroy();
       }
       this.itemIdToAppInstanceMap.clear();
     }
@@ -70,12 +72,13 @@ public class PTSLiteItemViewManager
   
   public PTSItemView getView(View paramView, PTSItemData paramPTSItemData)
   {
-    if ((paramView instanceof PTSItemView)) {}
-    for (paramView = (PTSItemView)paramView;; paramView = new PTSItemView(this.context))
-    {
-      bindData(paramPTSItemData, paramView);
-      return paramView;
+    if ((paramView instanceof PTSItemView)) {
+      paramView = (PTSItemView)paramView;
+    } else {
+      paramView = new PTSItemView(this.context);
     }
+    bindData(paramPTSItemData, paramView);
+    return paramView;
   }
   
   public void setLiteEventListener(IPTSLiteEventListener paramIPTSLiteEventListener)
@@ -85,26 +88,46 @@ public class PTSLiteItemViewManager
   
   public void triggerLiteEvent(int paramInt, String paramString, HashMap<String, String> paramHashMap, View paramView)
   {
-    if (this.liteEventListener == null)
+    IPTSLiteEventListener localIPTSLiteEventListener = this.liteEventListener;
+    if (localIPTSLiteEventListener == null)
     {
       PTSLog.i("PTSLiteItemViewManager", "[triggerLiteEvent], liteEventListener is null.");
       return;
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      PTSLog.i("PTSLiteItemViewManager", "[triggerLiteEvent] unknown, eventType = " + paramInt);
-      return;
-    case 1: 
-      this.liteEventListener.onTapEventTriggered(paramString, paramHashMap, paramView);
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              paramString = new StringBuilder();
+              paramString.append("[triggerLiteEvent] unknown, eventType = ");
+              paramString.append(paramInt);
+              PTSLog.i("PTSLiteItemViewManager", paramString.toString());
+              return;
+            }
+            localIPTSLiteEventListener.onScrollViewItemExposureTriggered(paramString, paramHashMap, paramView, null);
+            return;
+          }
+          localIPTSLiteEventListener.onSwiperDragTriggered(paramString, paramHashMap, paramView, null);
+          return;
+        }
+        localIPTSLiteEventListener.onSwiperItemExposureTriggered(paramString, paramHashMap, paramView, null);
+        return;
+      }
+      localIPTSLiteEventListener.onExposureTriggered(paramString, paramHashMap, paramView, null);
       return;
     }
-    this.liteEventListener.onExposureTriggered(paramString, paramHashMap, paramView);
+    localIPTSLiteEventListener.onTapEventTriggered(paramString, paramHashMap, paramView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.lite.PTSLiteItemViewManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/j4h" android:background="@color/pv" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/b2z" android:background="@drawable/vw" android:layout_width="fill_parent" android:layout_height="@dimen/f1" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/dj" android:text="@string/eg" android:singleLine="true" style="@style/ln" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jc">
+        <RelativeLayout android:layout_gravity="center" android:id="@id/bdp" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/l89" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+            <ImageView android:id="@id/l7w" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+            <ViewStub android:id="@id/jle" android:layout="@layout/c07" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/k1h" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/l7b" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a6h" />
+    </LinearLayout>
+</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>

@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahma;
-import alxr;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.newfriend.api.INewFriendService;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2
+class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2
   implements Runnable
 {
-  public NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2(ahma paramahma) {}
+  NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter paramSysMsgSuspiciousAdapter) {}
   
   public void run()
   {
-    List localList = ahma.a(this.this$0).b();
+    List localList = NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.d(this.this$0).getAllSysSuspiciousMsg();
     ThreadManager.getUIHandler().post(new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.2.1(this, localList));
   }
 }

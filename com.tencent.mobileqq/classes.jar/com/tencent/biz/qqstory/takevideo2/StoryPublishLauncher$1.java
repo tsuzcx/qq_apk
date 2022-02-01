@@ -1,22 +1,21 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import wxe;
-import xpk;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-public class StoryPublishLauncher$1
+class StoryPublishLauncher$1
   implements Runnable
 {
-  public StoryPublishLauncher$1(xpk paramxpk, boolean paramBoolean) {}
+  StoryPublishLauncher$1(StoryPublishLauncher paramStoryPublishLauncher, boolean paramBoolean) {}
   
   public void run()
   {
-    boolean bool = xpk.b();
-    wxe.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
+    boolean bool = StoryPublishLauncher.d();
+    SLog.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.1
  * JD-Core Version:    0.7.0.1
  */

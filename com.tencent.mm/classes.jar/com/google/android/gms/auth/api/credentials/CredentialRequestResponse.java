@@ -8,9 +8,9 @@ public class CredentialRequestResponse
 {
   public Credential getCredential()
   {
-    AppMethodBeat.i(50328);
+    AppMethodBeat.i(88223);
     Credential localCredential = ((CredentialRequestResult)getResult()).getCredential();
-    AppMethodBeat.o(50328);
+    AppMethodBeat.o(88223);
     return localCredential;
   }
 }

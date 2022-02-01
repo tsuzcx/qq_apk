@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="280.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/im6" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#9a888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:text="已显示全部" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

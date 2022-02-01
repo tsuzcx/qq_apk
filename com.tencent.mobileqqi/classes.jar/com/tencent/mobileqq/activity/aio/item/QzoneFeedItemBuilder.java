@@ -25,8 +25,8 @@ import com.tencent.mobileqq.international.LocaleString;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import eai;
 import eaj;
-import eak;
 
 public class QzoneFeedItemBuilder
   extends AbstractChatItemBuilder
@@ -36,33 +36,33 @@ public class QzoneFeedItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  private View a(View paramView, eak parameak)
+  private View a(View paramView, eaj parameaj)
   {
     View localView = paramView;
     if (paramView == null)
     {
       localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903114, null);
-      parameak.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131231265));
-      parameak.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231264));
-      parameak.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131230795));
-      parameak.c = ((TextView)localView.findViewById(2131230796));
-      parameak.d = ((TextView)localView.findViewById(2131231267));
-      parameak.e = ((TextView)localView.findViewById(2131231270));
-      parameak.f = ((TextView)localView.findViewById(2131231271));
-      parameak.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131231269));
-      parameak.g = ((TextView)localView.findViewById(2131231266));
-      parameak.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131231268));
-      parameak.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+      parameaj.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131231264));
+      parameaj.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231263));
+      parameaj.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131230795));
+      parameaj.c = ((TextView)localView.findViewById(2131230796));
+      parameaj.d = ((TextView)localView.findViewById(2131231266));
+      parameaj.e = ((TextView)localView.findViewById(2131231269));
+      parameaj.f = ((TextView)localView.findViewById(2131231270));
+      parameaj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131231268));
+      parameaj.g = ((TextView)localView.findViewById(2131231265));
+      parameaj.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131231267));
+      parameaj.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
     }
     localView.setContentDescription(null);
-    parameak.jdField_a_of_type_JavaLangStringBuilder.replace(0, parameak.jdField_a_of_type_JavaLangStringBuilder.length(), "");
+    parameaj.jdField_a_of_type_JavaLangStringBuilder.replace(0, parameaj.jdField_a_of_type_JavaLangStringBuilder.length(), "");
     return localView;
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramMessageRecord = (MessageForQzoneFeed)paramMessageRecord;
-    paramViewHolder = (eak)paramViewHolder;
+    paramViewHolder = (eaj)paramViewHolder;
     paramView = a(paramView, paramViewHolder);
     paramViewHolder.jdField_a_of_type_Long = paramMessageRecord.uniseq;
     paramViewHolder.jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
@@ -116,7 +116,7 @@ public class QzoneFeedItemBuilder
     }
     for (;;)
     {
-      paramViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new eaj(this, paramMessageRecord));
+      paramViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new eai(this, paramMessageRecord));
       paramViewHolder.jdField_a_of_type_JavaLangStringBuilder.append(paramOnLongClickAndTouchListener);
       if (paramMessageRecord.feedTime > 0L) {
         paramViewHolder.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131558903, new Object[] { paramLinearLayout }));
@@ -177,7 +177,7 @@ public class QzoneFeedItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new eak(this);
+    return new eaj(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

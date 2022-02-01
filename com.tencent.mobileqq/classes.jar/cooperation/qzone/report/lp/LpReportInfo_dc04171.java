@@ -1,11 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import bjdl;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc04171
   implements LpReportInfo
@@ -41,19 +40,26 @@ public class LpReportInfo_dc04171
   
   public String getSimpleInfo()
   {
-    return "dc041171:" + this.mUrl + "," + this.mBytesRefer + "," + this.mPlatform;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc041171:");
+    localStringBuilder.append(this.mUrl);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.mBytesRefer);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.mPlatform);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     LpReportUtils.safePut(localHashMap, "appid", this.mAppid);
     LpReportUtils.safePut(localHashMap, "subappid", this.mSubAppid);
     LpReportUtils.safePut(localHashMap, "os_type", "Android");
     LpReportUtils.safePut(localHashMap, "app_name", "QQ");
     LpReportUtils.safePut(localHashMap, "device_name", Build.MODEL);
-    LpReportUtils.safePut(localHashMap, "imei", bjdl.a().a());
+    LpReportUtils.safePut(localHashMap, "imei", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getIMEI());
     LpReportUtils.safePut(localHashMap, "guid", this.mGuid);
     LpReportUtils.safePut(localHashMap, "url", this.mUrl);
     LpReportUtils.safePut(localHashMap, "qq_pf_to", this.mQQPfTo);
@@ -68,7 +74,7 @@ public class LpReportInfo_dc04171
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04171
  * JD-Core Version:    0.7.0.1
  */

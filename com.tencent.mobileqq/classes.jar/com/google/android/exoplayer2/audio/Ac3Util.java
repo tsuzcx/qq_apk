@@ -32,18 +32,27 @@ public final class Ac3Util
   private static int getAc3SyncframeSize(int paramInt1, int paramInt2)
   {
     int i = paramInt2 / 2;
-    if ((paramInt1 < 0) || (paramInt1 >= SAMPLE_RATE_BY_FSCOD.length) || (paramInt2 < 0) || (i >= SYNCFRAME_SIZE_WORDS_BY_HALF_FRMSIZECOD_44_1.length)) {
-      return -1;
+    if (paramInt1 >= 0)
+    {
+      int[] arrayOfInt1 = SAMPLE_RATE_BY_FSCOD;
+      if ((paramInt1 < arrayOfInt1.length) && (paramInt2 >= 0))
+      {
+        int[] arrayOfInt2 = SYNCFRAME_SIZE_WORDS_BY_HALF_FRMSIZECOD_44_1;
+        if (i < arrayOfInt2.length)
+        {
+          paramInt1 = arrayOfInt1[paramInt1];
+          if (paramInt1 == 44100) {
+            return (arrayOfInt2[i] + paramInt2 % 2) * 2;
+          }
+          paramInt2 = BITRATE_BY_HALF_FRMSIZECOD[i];
+          if (paramInt1 == 32000) {
+            return paramInt2 * 6;
+          }
+          return paramInt2 * 4;
+        }
+      }
     }
-    paramInt1 = SAMPLE_RATE_BY_FSCOD[paramInt1];
-    if (paramInt1 == 44100) {
-      return (SYNCFRAME_SIZE_WORDS_BY_HALF_FRMSIZECOD_44_1[i] + paramInt2 % 2) * 2;
-    }
-    paramInt2 = BITRATE_BY_HALF_FRMSIZECOD[i];
-    if (paramInt1 == 32000) {
-      return paramInt2 * 6;
-    }
-    return paramInt2 * 4;
+    return -1;
   }
   
   public static Format parseAc3AnnexFFormat(ParsableByteArray paramParsableByteArray, String paramString1, String paramString2, DrmInitData paramDrmInitData)
@@ -61,258 +70,7 @@ public final class Ac3Util
   
   public static Ac3Util.Ac3SyncFrameInfo parseAc3SyncframeInfo(ParsableBitArray paramParsableBitArray)
   {
-    int j = paramParsableBitArray.getPosition();
-    paramParsableBitArray.skipBits(40);
-    int i4;
-    label92:
-    int i2;
-    int i5;
-    int i3;
-    if (paramParsableBitArray.readBits(5) == 16)
-    {
-      i = 1;
-      paramParsableBitArray.setPosition(j);
-      j = -1;
-      if (i == 0) {
-        break label852;
-      }
-      paramParsableBitArray.skipBits(16);
-      n = paramParsableBitArray.readBits(2);
-      paramParsableBitArray.skipBits(3);
-      i1 = (paramParsableBitArray.readBits(11) + 1) * 2;
-      i4 = paramParsableBitArray.readBits(2);
-      if (i4 != 3) {
-        break label583;
-      }
-      j = 3;
-      i = SAMPLE_RATE_BY_FSCOD2[paramParsableBitArray.readBits(2)];
-      k = 6;
-      i2 = k * 256;
-      i5 = paramParsableBitArray.readBits(3);
-      bool = paramParsableBitArray.readBit();
-      i3 = CHANNEL_COUNT_BY_ACMOD[i5];
-      if (!bool) {
-        break label605;
-      }
-      m = 1;
-      label128:
-      i3 = m + i3;
-      paramParsableBitArray.skipBits(10);
-      if (paramParsableBitArray.readBit()) {
-        paramParsableBitArray.skipBits(8);
-      }
-      if (i5 == 0)
-      {
-        paramParsableBitArray.skipBits(5);
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(8);
-        }
-      }
-      if ((n == 1) && (paramParsableBitArray.readBit())) {
-        paramParsableBitArray.skipBits(16);
-      }
-      if (paramParsableBitArray.readBit())
-      {
-        if (i5 > 2) {
-          paramParsableBitArray.skipBits(2);
-        }
-        if (((i5 & 0x1) != 0) && (i5 > 2)) {
-          paramParsableBitArray.skipBits(6);
-        }
-        if ((i5 & 0x4) != 0) {
-          paramParsableBitArray.skipBits(6);
-        }
-        if ((bool) && (paramParsableBitArray.readBit())) {
-          paramParsableBitArray.skipBits(5);
-        }
-        if (n == 0)
-        {
-          if (paramParsableBitArray.readBit()) {
-            paramParsableBitArray.skipBits(6);
-          }
-          if ((i5 == 0) && (paramParsableBitArray.readBit())) {
-            paramParsableBitArray.skipBits(6);
-          }
-          if (paramParsableBitArray.readBit()) {
-            paramParsableBitArray.skipBits(6);
-          }
-          m = paramParsableBitArray.readBits(2);
-          if (m != 1) {
-            break label611;
-          }
-          paramParsableBitArray.skipBits(5);
-          label330:
-          if (i5 < 2)
-          {
-            if (paramParsableBitArray.readBit()) {
-              paramParsableBitArray.skipBits(14);
-            }
-            if ((i5 == 0) && (paramParsableBitArray.readBit())) {
-              paramParsableBitArray.skipBits(14);
-            }
-          }
-          if (paramParsableBitArray.readBit())
-          {
-            if (j != 0) {
-              break label822;
-            }
-            paramParsableBitArray.skipBits(5);
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramParsableBitArray.readBit())
-      {
-        paramParsableBitArray.skipBits(5);
-        if (i5 == 2) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (i5 >= 6) {
-          paramParsableBitArray.skipBits(2);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(8);
-        }
-        if ((i5 == 0) && (paramParsableBitArray.readBit())) {
-          paramParsableBitArray.skipBits(8);
-        }
-        if (i4 < 3) {
-          paramParsableBitArray.skipBit();
-        }
-      }
-      if ((n == 0) && (j != 3)) {
-        paramParsableBitArray.skipBit();
-      }
-      if ((n == 2) && ((j == 3) || (paramParsableBitArray.readBit()))) {
-        paramParsableBitArray.skipBits(6);
-      }
-      String str2 = "audio/eac3";
-      str1 = str2;
-      if (paramParsableBitArray.readBit())
-      {
-        str1 = str2;
-        if (paramParsableBitArray.readBits(6) == 1)
-        {
-          str1 = str2;
-          if (paramParsableBitArray.readBits(8) == 1) {
-            str1 = "audio/eac3-joc";
-          }
-        }
-      }
-      k = i;
-      i = n;
-      n = i2;
-      m = i1;
-      j = i3;
-      return new Ac3Util.Ac3SyncFrameInfo(str1, i, j, k, m, n, null);
-      i = 0;
-      break;
-      label583:
-      j = paramParsableBitArray.readBits(2);
-      k = BLOCKS_PER_SYNCFRAME_BY_NUMBLKSCOD[j];
-      i = SAMPLE_RATE_BY_FSCOD[i4];
-      break label92;
-      label605:
-      m = 0;
-      break label128;
-      label611:
-      if (m == 2)
-      {
-        paramParsableBitArray.skipBits(12);
-        break label330;
-      }
-      if (m != 3) {
-        break label330;
-      }
-      m = paramParsableBitArray.readBits(5);
-      if (paramParsableBitArray.readBit())
-      {
-        paramParsableBitArray.skipBits(5);
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(4);
-        }
-        if (paramParsableBitArray.readBit())
-        {
-          if (paramParsableBitArray.readBit()) {
-            paramParsableBitArray.skipBits(4);
-          }
-          if (paramParsableBitArray.readBit()) {
-            paramParsableBitArray.skipBits(4);
-          }
-        }
-      }
-      if (paramParsableBitArray.readBit())
-      {
-        paramParsableBitArray.skipBits(5);
-        if (paramParsableBitArray.readBit())
-        {
-          paramParsableBitArray.skipBits(7);
-          if (paramParsableBitArray.readBit()) {
-            paramParsableBitArray.skipBits(8);
-          }
-        }
-      }
-      paramParsableBitArray.skipBits((m + 2) * 8);
-      paramParsableBitArray.byteAlign();
-      break label330;
-      label822:
-      m = 0;
-      while (m < k)
-      {
-        if (paramParsableBitArray.readBit()) {
-          paramParsableBitArray.skipBits(5);
-        }
-        m += 1;
-      }
-    }
-    label852:
-    String str1 = "audio/ac3";
-    paramParsableBitArray.skipBits(32);
-    int k = paramParsableBitArray.readBits(2);
-    int m = getAc3SyncframeSize(k, paramParsableBitArray.readBits(6));
-    paramParsableBitArray.skipBits(8);
-    int i = paramParsableBitArray.readBits(3);
-    if (((i & 0x1) != 0) && (i != 1)) {
-      paramParsableBitArray.skipBits(2);
-    }
-    if ((i & 0x4) != 0) {
-      paramParsableBitArray.skipBits(2);
-    }
-    if (i == 2) {
-      paramParsableBitArray.skipBits(2);
-    }
-    k = SAMPLE_RATE_BY_FSCOD[k];
-    int n = 1536;
-    boolean bool = paramParsableBitArray.readBit();
-    int i1 = CHANNEL_COUNT_BY_ACMOD[i];
-    if (bool) {}
-    for (i = 1;; i = 0)
-    {
-      i1 += i;
-      i = j;
-      j = i1;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static int parseAc3SyncframeSize(byte[] paramArrayOfByte)
@@ -334,30 +92,30 @@ public final class Ac3Util
     if ((m & 0x1) != 0) {
       i = j + 1;
     }
-    if (((paramParsableByteArray.readUnsignedByte() & 0x1E) >> 1 > 0) && ((paramParsableByteArray.readUnsignedByte() & 0x2) != 0)) {
-      i += 2;
-    }
-    for (;;)
+    j = i;
+    if ((paramParsableByteArray.readUnsignedByte() & 0x1E) >> 1 > 0)
     {
-      String str2 = "audio/eac3";
-      String str1 = str2;
-      if (paramParsableByteArray.bytesLeft() > 0)
-      {
-        str1 = str2;
-        if ((paramParsableByteArray.readUnsignedByte() & 0x1) != 0) {
-          str1 = "audio/eac3-joc";
-        }
+      j = i;
+      if ((0x2 & paramParsableByteArray.readUnsignedByte()) != 0) {
+        j = i + 2;
       }
-      return Format.createAudioSampleFormat(paramString1, str1, null, -1, -1, i, k, null, paramDrmInitData, 0, paramString2);
     }
+    if ((paramParsableByteArray.bytesLeft() > 0) && ((paramParsableByteArray.readUnsignedByte() & 0x1) != 0)) {
+      paramParsableByteArray = "audio/eac3-joc";
+    } else {
+      paramParsableByteArray = "audio/eac3";
+    }
+    return Format.createAudioSampleFormat(paramString1, paramParsableByteArray, null, -1, -1, j, k, null, paramDrmInitData, 0, paramString2);
   }
   
   public static int parseEAc3SyncframeAudioSampleCount(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer.get(paramByteBuffer.position() + 4) & 0xC0) >> 6 == 3) {}
-    for (int i = 6;; i = BLOCKS_PER_SYNCFRAME_BY_NUMBLKSCOD[((paramByteBuffer.get(paramByteBuffer.position() + 4) & 0x30) >> 4)]) {
-      return i * 256;
+    int j = paramByteBuffer.get(paramByteBuffer.position() + 4);
+    int i = 6;
+    if ((j & 0xC0) >> 6 != 3) {
+      i = BLOCKS_PER_SYNCFRAME_BY_NUMBLKSCOD[((paramByteBuffer.get(paramByteBuffer.position() + 4) & 0x30) >> 4)];
     }
+    return i * 256;
   }
   
   public static int parseTrueHdSyncframeAudioSampleCount(ByteBuffer paramByteBuffer)
@@ -370,15 +128,15 @@ public final class Ac3Util
   
   public static int parseTrueHdSyncframeAudioSampleCount(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte[4] != -8) || (paramArrayOfByte[5] != 114) || (paramArrayOfByte[6] != 111) || (paramArrayOfByte[7] != -70)) {
-      return 0;
+    if ((paramArrayOfByte[4] == -8) && (paramArrayOfByte[5] == 114) && (paramArrayOfByte[6] == 111) && (paramArrayOfByte[7] == -70)) {
+      return 40 << (paramArrayOfByte[8] & 0x7);
     }
-    return 40 << (paramArrayOfByte[8] & 0x7);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.Ac3Util
  * JD-Core Version:    0.7.0.1
  */

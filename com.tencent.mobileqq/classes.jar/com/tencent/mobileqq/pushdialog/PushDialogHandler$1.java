@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.pushdialog;
 
-import awyu;
-import awzc;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class PushDialogHandler$1
+class PushDialogHandler$1
   implements Runnable
 {
-  public PushDialogHandler$1(awzc paramawzc, BaseChatPie paramBaseChatPie, PushDialogTemplate paramPushDialogTemplate) {}
+  PushDialogHandler$1(PushDialogHandler paramPushDialogHandler, BaseChatPie paramBaseChatPie, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate != null)) {
-      ((awyu)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(42)).a(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate, 102, 101);
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (this.b != null)) {
+      ((AIOPushDialogHelper)localBaseChatPie.q(42)).a(this.b, 102, 101);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SaveTrafficHandler;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class fgf
-  extends Handler
+  extends Thread
 {
-  public fgf(SaveTrafficHandler paramSaveTrafficHandler, Looper paramLooper)
+  public fgf(SaveTrafficHandler paramSaveTrafficHandler, String paramString, int paramInt)
   {
-    super(paramLooper);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    boolean bool;
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a() != null)
     {
-    default: 
-      bool = false;
-      paramMessage = this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    }
-    for (;;)
-    {
-      if (!paramMessage.hasNext()) {
-        break label182;
-      }
-      try
-      {
-        Object localObject = (Map.Entry)paramMessage.next();
-        if (localObject == null) {
-          continue;
-        }
-        ((Integer)((Map.Entry)localObject).getKey()).intValue();
-        localObject = (fgh)((Map.Entry)localObject).getValue();
-        if (localObject == null) {
-          continue;
-        }
-        if (((fgh)localObject).a == bool) {
-          break label152;
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject);
-        paramMessage.remove();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      continue;
-      bool = true;
-      break;
-      bool = false;
-      break;
-      label152:
-      if (localException.b) {
-        return;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localException);
-      paramMessage.remove();
-    }
-    label182:
-    if ((SaveTrafficHandler.c != bool) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.h))
-    {
-      int i = this.a.a();
-      paramMessage = new fgh(this.a, i, bool);
-      Handler localHandler = this.a.jdField_a_of_type_AndroidOsHandler;
-      if (bool) {}
-      for (long l = 300000L;; l = 5000L)
-      {
-        localHandler.postDelayed(paramMessage, l);
-        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), paramMessage);
-        return;
-      }
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a(), 0).edit();
+      localEditor.putInt("key_savetrafficseq", this.jdField_a_of_type_Int);
+      localEditor.commit();
     }
   }
 }

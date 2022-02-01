@@ -38,10 +38,10 @@ public class TestMethod
   protected Class<? extends Throwable> getExpectedException()
   {
     Test localTest = (Test)this.method.getAnnotation(Test.class);
-    if ((localTest == null) || (localTest.expected() == Test.None.class)) {
-      return null;
+    if ((localTest != null) && (localTest.expected() != Test.None.class)) {
+      return localTest.expected();
     }
-    return localTest.expected();
+    return null;
   }
   
   public long getTimeout()
@@ -65,12 +65,12 @@ public class TestMethod
   
   boolean isUnexpected(Throwable paramThrowable)
   {
-    return !getExpectedException().isAssignableFrom(paramThrowable.getClass());
+    return getExpectedException().isAssignableFrom(paramThrowable.getClass()) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.TestMethod
  * JD-Core Version:    0.7.0.1
  */

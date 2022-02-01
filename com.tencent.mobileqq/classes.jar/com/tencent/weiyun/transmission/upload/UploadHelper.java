@@ -29,55 +29,57 @@ public final class UploadHelper
   
   public static String convertErrorMessage(int paramInt, String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (paramInt != 0)
     {
-      str = paramString;
+      localObject = paramString;
       if (TextUtils.isEmpty(paramString))
       {
-        str = ErrorCodeUtil.getErrorMsg(paramInt);
-        paramString = str;
-        if (TextUtils.isEmpty(str)) {
+        localObject = ErrorCodeUtil.getErrorMsg(paramInt);
+        paramString = (String)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
           paramString = ErrorCodeUtil.getErrorMsg(1810014);
         }
-        str = "(" + paramInt + ")" + paramString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(")");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return str;
+    return localObject;
   }
   
   private static boolean isNetworkChange()
   {
     long l = SystemClock.elapsedRealtime() - sNetworkChangeTime;
-    TsLog.d("UploadHelper", "change wait time = " + l);
-    if (60000L > l) {}
-    int i;
-    do
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("change wait time = ");
+    localStringBuilder.append(l);
+    TsLog.d("UploadHelper", localStringBuilder.toString());
+    if (60000L > l) {
       return true;
-      i = NetworkUtils.getNetworkTypeDiff4G(WeiyunTransmissionGlobal.getInstance().getContext());
-    } while (sCurrNetworkType != i);
-    return false;
+    }
+    int i = NetworkUtils.getNetworkTypeDiff4G(WeiyunTransmissionGlobal.getInstance().getContext());
+    return sCurrNetworkType != i;
   }
   
   public static int parseUploadResponse(UploadResponse paramUploadResponse)
   {
-    int i;
     if (paramUploadResponse == null) {
-      i = 1810024;
+      return 1810024;
     }
-    do
+    int j = paramUploadResponse.code();
+    int i = j;
+    if (UploadError.isCurlError(j))
     {
-      int j;
-      do
-      {
-        return i;
-        j = paramUploadResponse.code();
-        i = j;
-      } while (!UploadError.isCurlError(j));
       i = j;
-    } while (!isNetworkChange());
-    return 1810003;
+      if (isNetworkChange()) {
+        i = 1810003;
+      }
+    }
+    return i;
   }
   
   public static void releaseWakeLockIfExist()
@@ -98,7 +100,7 @@ public final class UploadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadHelper
  * JD-Core Version:    0.7.0.1
  */

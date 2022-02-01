@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingTop="@dimen/lb" android:paddingBottom="@dimen/dl" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ac3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/abt" android:layout_width="209.0dip" android:layout_height="209.0dip" android:scaleType="fitXY" />
-        <Button android:textSize="@dimen/m2" android:textColor="@color/a6q" android:ellipsize="end" android:gravity="center" android:id="@id/abn" android:background="@drawable/gu" android:visibility="gone" android:layout_width="141.0dip" android:layout_height="35.0dip" android:text="@string/ah8" android:singleLine="true" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <TextView android:textSize="@dimen/du" android:textColor="@color/h6" android:ellipsize="end" android:gravity="center" android:id="@id/abo" android:background="@drawable/l_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m4" android:maxLines="3" android:layout_below="@id/ac3" android:layout_centerHorizontal="true" />
-    <View android:id="@id/abp" android:background="@drawable/m2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/dv" android:layout_marginTop="@dimen/l2" android:layout_marginRight="@dimen/dv" android:layout_below="@id/abo" android:layerType="software" />
-</RelativeLayout>
+    <ScrollView android:scrollbars="none" style="@style/o8">
+        <LinearLayout android:gravity="center_horizontal" style="@style/lj">
+            <ImageView android:id="@id/jdf" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_u" />
+            <TextView android:id="@id/jde" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/aj8" android:lineSpacingExtra="4.0dip" style="@style/lk" />
+            <Button android:textSize="20.0dip" android:id="@id/a99" android:visibility="gone" android:text="@string/aj7" style="@style/og" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

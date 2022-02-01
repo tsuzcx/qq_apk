@@ -11,11 +11,11 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import dxa;
 import dxb;
 import dxc;
-import dxd;
-import dxf;
-import dxr;
+import dxe;
+import dxq;
 
 public class BubbleAnimation
   extends AIOAnimationConatiner.AIOAnimator
@@ -26,11 +26,11 @@ public class BubbleAnimation
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private BubbleInfo.CommonAttrs jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs;
-  private dxr jdField_a_of_type_Dxr;
+  private dxq jdField_a_of_type_Dxq;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private BubbleInfo.CommonAttrs jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs;
-  private dxr jdField_b_of_type_Dxr;
+  private dxq jdField_b_of_type_Dxq;
   
   static
   {
@@ -40,8 +40,8 @@ public class BubbleAnimation
   public BubbleAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ChatXListView paramChatXListView)
   {
     super(paramInt, paramAIOAnimationConatiner, paramChatXListView);
-    this.jdField_a_of_type_Dxr = new dxr(paramChatXListView.getResources());
-    this.jdField_b_of_type_Dxr = new dxr(paramChatXListView.getResources());
+    this.jdField_a_of_type_Dxq = new dxq(paramChatXListView.getResources());
+    this.jdField_b_of_type_Dxq = new dxq(paramChatXListView.getResources());
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
@@ -70,18 +70,18 @@ public class BubbleAnimation
       if (!((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())
       {
         bool1 = true;
-        this.jdField_a_of_type_Dxr.a(bool1);
+        this.jdField_a_of_type_Dxq.a(bool1);
         if (this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs != null)
         {
           if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_b_of_type_JavaLangString)) {
             break label1057;
           }
-          localObject = this.jdField_b_of_type_Dxr;
+          localObject = this.jdField_b_of_type_Dxq;
           if (bool1) {
             break label1051;
           }
           bool2 = true;
-          ((dxr)localObject).a(bool2);
+          ((dxq)localObject).a(bool2);
         }
         localObject = a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.f, this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_AndroidGraphicsRect.bottom, bool1);
         i = localObject[1];
@@ -163,7 +163,7 @@ public class BubbleAnimation
             break;
             bool2 = false;
             break label309;
-            this.jdField_b_of_type_Dxr.a(bool1);
+            this.jdField_b_of_type_Dxq.a(bool1);
             break label316;
             m = localObject[0] - this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_AndroidGraphicsRect.right;
             k = m;
@@ -184,7 +184,7 @@ public class BubbleAnimation
               QLog.d(jdField_a_of_type_JavaLangString, 2, "bindView mLinkView dx=" + j + ",dy=" + i);
             }
           }
-          this.jdField_a_of_type_AndroidOsHandler.post(new dxb(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new dxa(this));
           return false;
         }
         return bool1;
@@ -299,14 +299,14 @@ public class BubbleAnimation
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(paramInt);
-      if ((!this.jdField_a_of_type_Dxr.a()) && (this.jdField_a_of_type_AndroidViewView.getBottom() > 0) && (this.jdField_a_of_type_AndroidViewView.getTop() < this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeight())) {}
+      if ((!this.jdField_a_of_type_Dxq.a()) && (this.jdField_a_of_type_AndroidViewView.getBottom() > 0) && (this.jdField_a_of_type_AndroidViewView.getTop() < this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeight())) {}
     }
     for (int i = 1;; i = 0)
     {
       if (this.jdField_b_of_type_AndroidViewView != null)
       {
         this.jdField_b_of_type_AndroidViewView.offsetTopAndBottom(paramInt);
-        if ((!this.jdField_b_of_type_Dxr.a()) && (this.jdField_b_of_type_AndroidViewView.getBottom() > 0))
+        if ((!this.jdField_b_of_type_Dxq.a()) && (this.jdField_b_of_type_AndroidViewView.getBottom() > 0))
         {
           paramInt = j;
           if (this.jdField_b_of_type_AndroidViewView.getTop() < this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeight()) {
@@ -318,7 +318,7 @@ public class BubbleAnimation
       {
         label112:
         if (paramInt != 0) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new dxc(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new dxb(this));
         }
         return;
       }
@@ -355,10 +355,10 @@ public class BubbleAnimation
       this.jdField_b_of_type_Int = k;
       this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs = ((BubbleInfo.CommonAttrs)paramVarArgs.first);
       this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs = ((BubbleInfo.CommonAttrs)paramVarArgs.second);
-      this.jdField_a_of_type_Dxr.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.e);
+      this.jdField_a_of_type_Dxq.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.e);
       if (k != 0)
       {
-        paramVarArgs = this.jdField_a_of_type_Dxr;
+        paramVarArgs = this.jdField_a_of_type_Dxq;
         if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_b_of_type_Boolean)
         {
           i = 1;
@@ -367,16 +367,16 @@ public class BubbleAnimation
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView = new dxd(this, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Dxr);
+        this.jdField_a_of_type_AndroidViewView = new dxc(this, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Dxq);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
-        this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_Dxr.getIntrinsicWidth(), this.jdField_a_of_type_Dxr.getIntrinsicHeight());
+        this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_Dxq.getIntrinsicWidth(), this.jdField_a_of_type_Dxq.getIntrinsicHeight());
         if ((this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs != null) && (this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_ArrayOfJavaLangString != null))
         {
-          this.jdField_b_of_type_Dxr.a(this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.e);
+          this.jdField_b_of_type_Dxq.a(this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.e);
           if (k != 0)
           {
-            paramVarArgs = this.jdField_b_of_type_Dxr;
+            paramVarArgs = this.jdField_b_of_type_Dxq;
             if (!this.jdField_b_of_type_ComTencentMobileqqBubbleBubbleInfo$CommonAttrs.jdField_b_of_type_Boolean) {
               break label391;
             }
@@ -384,10 +384,10 @@ public class BubbleAnimation
             label292:
             paramVarArgs.a(i);
           }
-          this.jdField_b_of_type_AndroidViewView = new dxf(this, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
-          this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_b_of_type_Dxr);
+          this.jdField_b_of_type_AndroidViewView = new dxe(this, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
+          this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_b_of_type_Dxq);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_b_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
-          this.jdField_b_of_type_AndroidViewView.layout(0, 0, this.jdField_b_of_type_Dxr.getIntrinsicWidth(), this.jdField_b_of_type_Dxr.getIntrinsicHeight());
+          this.jdField_b_of_type_AndroidViewView.layout(0, 0, this.jdField_b_of_type_Dxq.getIntrinsicWidth(), this.jdField_b_of_type_Dxq.getIntrinsicHeight());
         }
       }
     }
@@ -404,11 +404,11 @@ public class BubbleAnimation
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Dxr != null) {
-      this.jdField_a_of_type_Dxr.a();
+    if (this.jdField_a_of_type_Dxq != null) {
+      this.jdField_a_of_type_Dxq.a();
     }
-    if (this.jdField_b_of_type_Dxr != null) {
-      this.jdField_b_of_type_Dxr.a();
+    if (this.jdField_b_of_type_Dxq != null) {
+      this.jdField_b_of_type_Dxq.a();
     }
   }
 }

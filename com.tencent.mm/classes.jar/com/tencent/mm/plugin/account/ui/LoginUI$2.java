@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.nx;
+import com.tencent.mm.sdk.event.IListener;
 
-final class LoginUI$2
-  implements View.OnClickListener
+class LoginUI$2
+  extends IListener<nx>
 {
-  LoginUI$2(LoginUI paramLoginUI) {}
-  
-  public final void onClick(View paramView)
+  LoginUI$2(LoginUI paramLoginUI, q paramq)
   {
-    AppMethodBeat.i(125027);
-    LoginUI.c(this.gFf);
-    AppMethodBeat.o(125027);
+    super(paramq);
+    AppMethodBeat.i(304902);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(304902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.2
  * JD-Core Version:    0.7.0.1
  */

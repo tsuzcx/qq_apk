@@ -5,26 +5,25 @@ import android.view.ViewGroup;
 
 public final class ad
 {
-  static final ag kU = new ag();
+  static final ag mQ = new ag();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      kU = new af();
+      mQ = new af();
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      kU = new ae();
+      mQ = new ae();
       return;
     }
   }
   
-  @Deprecated
-  public static void b(ViewGroup paramViewGroup)
+  public static boolean a(ViewGroup paramViewGroup)
   {
-    paramViewGroup.setMotionEventSplittingEnabled(false);
+    return mQ.a(paramViewGroup);
   }
 }
 

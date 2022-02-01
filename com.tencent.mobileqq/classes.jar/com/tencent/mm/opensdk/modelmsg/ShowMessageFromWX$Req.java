@@ -19,10 +19,11 @@ public class ShowMessageFromWX$Req
   
   public boolean checkArgs()
   {
-    if (this.message == null) {
+    WXMediaMessage localWXMediaMessage = this.message;
+    if (localWXMediaMessage == null) {
       return false;
     }
-    return this.message.checkArgs();
+    return localWXMediaMessage.checkArgs();
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -49,7 +50,7 @@ public class ShowMessageFromWX$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req
  * JD-Core Version:    0.7.0.1
  */

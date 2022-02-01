@@ -8,16 +8,16 @@ public final class MsgType0x210SubMsgType0x13
   extends JceStruct
 {
   static byte[] cache_bytes_buf;
-  public byte[] bytes_buf;
-  public long uint32_dst_app_id;
-  public long uint32_dst_inst_id;
-  public long uint32_index;
-  public long uint32_size;
-  public long uint32_src_app_id;
-  public long uint32_src_inst_id;
-  public long uint32_type;
-  public long uint64_dst_uin;
-  public long uint64_sessionid;
+  public byte[] bytes_buf = null;
+  public long uint32_dst_app_id = 0L;
+  public long uint32_dst_inst_id = 0L;
+  public long uint32_index = 0L;
+  public long uint32_size = 0L;
+  public long uint32_src_app_id = 0L;
+  public long uint32_src_inst_id = 0L;
+  public long uint32_type = 0L;
+  public long uint64_dst_uin = 0L;
+  public long uint64_sessionid = 0L;
   
   public MsgType0x210SubMsgType0x13() {}
   
@@ -65,14 +65,15 @@ public final class MsgType0x210SubMsgType0x13
     paramJceOutputStream.write(this.uint32_size, 6);
     paramJceOutputStream.write(this.uint32_index, 7);
     paramJceOutputStream.write(this.uint32_type, 8);
-    if (this.bytes_buf != null) {
-      paramJceOutputStream.write(this.bytes_buf, 9);
+    byte[] arrayOfByte = this.bytes_buf;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x13
  * JD-Core Version:    0.7.0.1
  */

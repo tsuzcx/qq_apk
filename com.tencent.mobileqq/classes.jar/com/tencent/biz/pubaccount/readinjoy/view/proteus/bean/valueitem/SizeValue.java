@@ -19,17 +19,18 @@ public class SizeValue
   
   public static int getLayoutSize(int paramInt, double paramDouble)
   {
-    switch (paramInt)
+    if (paramInt != 1001)
     {
-    case 1003: 
-    default: 
-      return Utils.rp2px(paramDouble);
-    case 1001: 
-      return -1;
-    case 1002: 
+      if (paramInt != 1002)
+      {
+        if (paramInt != 1004) {
+          return Utils.rp2px(paramDouble);
+        }
+        return Utils.dp2px(paramDouble);
+      }
       return -2;
     }
-    return Utils.dp2px(paramDouble);
+    return -1;
   }
   
   public int getLayoutSize()
@@ -39,7 +40,7 @@ public class SizeValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.valueitem.SizeValue
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.google.android.gms.common.logging;
 
-import android.annotation.SuppressLint;
 import android.util.Log;
 import com.google.android.gms.common.internal.GmsLogger;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -15,7 +14,7 @@ public class Logger
   
   private Logger(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89880);
+    AppMethodBeat.i(4902);
     this.zzud = paramString2;
     this.mTag = paramString1;
     this.zzvd = new GmsLogger(paramString1);
@@ -24,71 +23,71 @@ public class Logger
       i += 1;
     }
     this.zzve = i;
-    AppMethodBeat.o(89880);
+    AppMethodBeat.o(4902);
   }
   
   public Logger(String paramString, String... paramVarArgs) {}
   
   public void d(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89886);
+    AppMethodBeat.i(4908);
     if (isLoggable(3)) {
       format(paramString, paramVarArgs);
     }
-    AppMethodBeat.o(89886);
+    AppMethodBeat.o(4908);
   }
   
   public void d(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89885);
+    AppMethodBeat.i(4907);
     if (isLoggable(3)) {
       format(paramString, paramVarArgs);
     }
-    AppMethodBeat.o(89885);
+    AppMethodBeat.o(4907);
   }
   
   public void e(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89892);
+    AppMethodBeat.i(4914);
     format(paramString, paramVarArgs);
-    AppMethodBeat.o(89892);
+    AppMethodBeat.o(4914);
   }
   
   public void e(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89891);
+    AppMethodBeat.i(4913);
     format(paramString, paramVarArgs);
-    AppMethodBeat.o(89891);
+    AppMethodBeat.o(4913);
   }
   
   public String elidePii(Object paramObject)
   {
-    AppMethodBeat.i(89882);
+    AppMethodBeat.i(4904);
     boolean bool = this.zzvd.canLogPii();
     if (paramObject == null)
     {
-      AppMethodBeat.o(89882);
+      AppMethodBeat.o(4904);
       return "<NULL>";
     }
     paramObject = paramObject.toString().trim();
     if (paramObject.isEmpty())
     {
-      AppMethodBeat.o(89882);
+      AppMethodBeat.o(4904);
       return "<EMPTY>";
     }
     if (bool)
     {
-      AppMethodBeat.o(89882);
+      AppMethodBeat.o(4904);
       return paramObject;
     }
     paramObject = String.format("<ELLIDED:%s>", new Object[] { Integer.valueOf(paramObject.hashCode()) });
-    AppMethodBeat.o(89882);
+    AppMethodBeat.o(4904);
     return paramObject;
   }
   
   protected String format(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89896);
+    AppMethodBeat.i(4918);
     String str = paramString;
     if (paramVarArgs != null)
     {
@@ -98,7 +97,7 @@ public class Logger
       }
     }
     paramString = this.zzud.concat(str);
-    AppMethodBeat.o(89896);
+    AppMethodBeat.o(4918);
     return paramString;
   }
   
@@ -109,16 +108,16 @@ public class Logger
   
   public void i(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89888);
+    AppMethodBeat.i(4910);
     format(paramString, paramVarArgs);
-    AppMethodBeat.o(89888);
+    AppMethodBeat.o(4910);
   }
   
   public void i(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89887);
+    AppMethodBeat.i(4909);
     format(paramString, paramVarArgs);
-    AppMethodBeat.o(89887);
+    AppMethodBeat.o(4909);
   }
   
   public boolean isLoggable(int paramInt)
@@ -128,71 +127,70 @@ public class Logger
   
   public boolean isPiiLoggable()
   {
-    AppMethodBeat.i(89881);
+    AppMethodBeat.i(4903);
     boolean bool = this.zzvd.canLogPii();
-    AppMethodBeat.o(89881);
+    AppMethodBeat.o(4903);
     return bool;
   }
   
   public void v(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89884);
+    AppMethodBeat.i(4906);
     if (isLoggable(2)) {
       format(paramString, paramVarArgs);
     }
-    AppMethodBeat.o(89884);
+    AppMethodBeat.o(4906);
   }
   
   public void v(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89883);
+    AppMethodBeat.i(4905);
     if (isLoggable(2)) {
       format(paramString, paramVarArgs);
     }
-    AppMethodBeat.o(89883);
+    AppMethodBeat.o(4905);
   }
   
   public void w(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89890);
+    AppMethodBeat.i(4912);
     format(paramString, paramVarArgs);
-    AppMethodBeat.o(89890);
+    AppMethodBeat.o(4912);
   }
   
   public void w(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89889);
+    AppMethodBeat.i(4911);
     format(paramString, paramVarArgs);
-    AppMethodBeat.o(89889);
+    AppMethodBeat.o(4911);
   }
   
   public void w(Throwable paramThrowable) {}
   
   public void wtf(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89894);
+    AppMethodBeat.i(4916);
     Log.wtf(this.mTag, format(paramString, paramVarArgs), paramThrowable);
-    AppMethodBeat.o(89894);
+    AppMethodBeat.o(4916);
   }
   
-  @SuppressLint({"WtfWithoutException"})
   public void wtf(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89893);
+    AppMethodBeat.i(4915);
     Log.wtf(this.mTag, format(paramString, paramVarArgs));
-    AppMethodBeat.o(89893);
+    AppMethodBeat.o(4915);
   }
   
   public void wtf(Throwable paramThrowable)
   {
-    AppMethodBeat.i(89895);
+    AppMethodBeat.i(4917);
     Log.wtf(this.mTag, paramThrowable);
-    AppMethodBeat.o(89895);
+    AppMethodBeat.o(4917);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.logging.Logger
  * JD-Core Version:    0.7.0.1
  */

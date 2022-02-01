@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dating;
 
-import auwz;
-import azri;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -14,10 +14,10 @@ final class NearbyTransitActivity$4
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    azri.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, "actEnterHotChatAIO", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, localHashMap, "");
+    localHashMap.put("param_FailCode", String.valueOf(this.a));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.b, "actEnterHotChatAIO", this.c, this.d, this.a, localHashMap, "");
     if (QLog.isDevelopLevel()) {
-      auwz.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
+      NearbyUtils.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
     }
   }
 }

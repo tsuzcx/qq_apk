@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import cgm;
 import cgn;
-import cgo;
-import cgq;
+import cgp;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.biz.qrcode.activity.QRLoginActivity;
 import com.tencent.biz.qrcode.util.QRUtils;
@@ -38,13 +38,13 @@ public class DevlockQuickLoginActivity
   static final long jdField_a_of_type_Long = 16L;
   static final String jdField_a_of_type_JavaLangString = "DevlockQuickLoginActivity";
   public static final String b = "QR_CODE_STRING";
-  Handler jdField_a_of_type_AndroidOsHandler = new cgn(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new cgm(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   public ImageView a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cgq(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cgp(this);
   byte[] jdField_a_of_type_ArrayOfByte;
   TextView b;
   TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -142,7 +142,7 @@ public class DevlockQuickLoginActivity
     {
     default: 
       return;
-    case 2131231380: 
+    case 2131231379: 
       super.finish();
       super.overridePendingTransition(0, 2130968599);
       return;
@@ -212,11 +212,11 @@ public class DevlockQuickLoginActivity
     super.setTitle(2131562700);
     this.k.setVisibility(4);
     super.c(2131561842, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232590));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232591));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232952));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232953));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232954));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232589));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232590));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232951));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232952));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232953));
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -227,7 +227,7 @@ public class DevlockQuickLoginActivity
     if (QLog.isColorLevel()) {
       QLog.d("DevlockQuickLoginActivity", 2, "onCreate qrCodeSting=" + this.jdField_c_of_type_JavaLangString + " mainTip=" + this.d + " smallTip=" + this.e);
     }
-    ThreadManager.b(new cgo(this));
+    ThreadManager.b(new cgn(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.e());
     this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131563285));
     this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131563270));

@@ -19,10 +19,9 @@ public final class InvertedLuminanceSource
   public byte[] getMatrix()
   {
     byte[] arrayOfByte1 = this.delegate.getMatrix();
-    int i = getWidth();
-    int j = getHeight() * i;
+    int j = getWidth() * getHeight();
     byte[] arrayOfByte2 = new byte[j];
-    i = 0;
+    int i = 0;
     while (i < j)
     {
       arrayOfByte2[i] = ((byte)(255 - (arrayOfByte1[i] & 0xFF)));
@@ -71,7 +70,7 @@ public final class InvertedLuminanceSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.InvertedLuminanceSource
  * JD-Core Version:    0.7.0.1
  */

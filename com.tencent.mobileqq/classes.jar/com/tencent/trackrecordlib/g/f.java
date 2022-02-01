@@ -6,7 +6,7 @@ import android.content.IntentFilter;
 
 public class f
 {
-  private static final String a = f.class.getSimpleName();
+  private static final String a = "f";
   private static BroadcastReceiver b;
   
   public static void a(Context paramContext)
@@ -21,14 +21,18 @@ public class f
   
   public static void b(Context paramContext)
   {
-    if ((paramContext != null) && (b != null)) {
-      paramContext.unregisterReceiver(b);
+    if (paramContext != null)
+    {
+      BroadcastReceiver localBroadcastReceiver = b;
+      if (localBroadcastReceiver != null) {
+        paramContext.unregisterReceiver(localBroadcastReceiver);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.g.f
  * JD-Core Version:    0.7.0.1
  */

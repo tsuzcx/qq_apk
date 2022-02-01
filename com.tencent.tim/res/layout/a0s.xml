@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/jm" android:paddingLeft="@dimen/ajk" android:paddingTop="@dimen/aln" android:paddingRight="@dimen/ajk" android:paddingBottom="@dimen/all" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a0k" />
+    <RelativeLayout android:id="@id/idf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0dip" android:id="@id/ajm" android:background="@drawable/a3b" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="15.0dip" android:layout_centerVertical="true" />
+        <com.tencent.widget.ThemeImageView android:id="@id/dxv" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/bxg" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ecz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/idf" android:layout_toRightOf="@id/icv">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ed0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/alu" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@id/k65" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/k64" android:background="@drawable/a3a" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
+            <com.tencent.mobileqq.widget.ThemeSquareImageView android:id="@id/duc" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="4.0dip" android:scaleType="centerCrop" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/ecy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ed0" />
+    </LinearLayout>
+    <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/aft" android:background="@drawable/common_btn_blue" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="10.0dip" android:text="@string/prf" android:layout_toRightOf="@id/icv" android:layout_below="@id/ecz" android:layout_alignParentBottom="true" />
+</RelativeLayout>

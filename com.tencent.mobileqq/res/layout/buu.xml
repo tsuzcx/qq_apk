@@ -17,7 +17,6 @@
     <ViewStub android:id="@id/c6j" android:layout="@layout/btl" android:inflatedId="@id/c6i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <com.qzone.module.feedcomponent.ui.AudioFeedBubble android:id="@id/a0a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginTop="-20.0dip" android:layout_marginRight="@dimen/pt" />
     <com.qzone.module.feedcomponent.ui.canvasui.CanvasLeftThumbView android:id="@id/c58" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginRight="@dimen/pt" />
-    <com.qzone.module.feedcomponent.ui.TouchFlipImageView android:id="@id/c55" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginTop="@dimen/p6" android:layout_marginRight="@dimen/pt" />
     <com.qzone.module.feedcomponent.ui.QbossPsvAdvView android:id="@id/c5_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <com.qzone.module.feedcomponent.ui.FeedVideoView android:id="@id/c4k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
     <com.qzone.feed.panorama.PanoramaLayout android:id="@id/c7t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
@@ -32,7 +31,6 @@
     <com.qzone.module.feedcomponent.ui.FeedVideoView android:id="@id/c5a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <com.qzone.module.feedcomponent.ui.canvasui.CanvasMakeDynamicView android:id="@id/c78" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <com.qzone.feed.panorama.PanoramaLayout android:id="@id/c7u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.qzone.module.feedcomponent.ui.TouchFlipImageView android:id="@id/c56" android:paddingTop="@dimen/p6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginRight="@dimen/pt" />
     <ViewStub android:id="@id/c8v" android:layout="@layout/btk" android:inflatedId="@id/c4g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginTop="@dimen/p6" android:layout_marginRight="@dimen/pt" />
     <ViewStub android:id="@id/c7x" android:layout="@layout/btn" android:inflatedId="@id/c7w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" />
     <ViewStub android:id="@id/c5w" android:layout="@layout/bti" android:inflatedId="@id/c5v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" />

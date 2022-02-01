@@ -2,54 +2,84 @@ package com.tencent.beacon.qimei;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import com.tencent.beacon.core.BeaconIdJNI;
-import com.tencent.beacon.core.d.h;
+import android.support.annotation.WorkerThread;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class QimeiSDK
+  implements com.tencent.beacon.a.a.d
 {
+  public static final String TAG = "[Qimei]";
   private static volatile QimeiSDK instance;
+  private String appKey;
   private String beaconId = "";
   private Context mContext;
-  private b qimeiModule;
+  private String oaID = "";
+  private String omgID = "";
+  private final List<IAsyncQimeiListener> qimeiListeners = Collections.synchronizedList(new ArrayList(3));
   
   public static QimeiSDK getInstance()
   {
-    if (instance == null) {}
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new QimeiSDK();
+        }
+      }
+      finally {}
+    }
+    return instance;
+  }
+  
+  private boolean isInit()
+  {
     try
     {
-      if (instance == null) {
-        instance = new QimeiSDK();
+      Context localContext = this.mContext;
+      if (localContext != null) {
+        return true;
       }
-      return instance;
+      com.tencent.beacon.base.util.c.d("[qimei] QimeiSdk not init", new Object[0]);
+      return false;
     }
     finally {}
   }
   
-  private boolean isInit(Context paramContext)
+  private boolean isUpdateQimei()
   {
+    Qimei localQimei = getQimei();
     boolean bool = true;
-    if (paramContext == null) {}
-    for (;;)
+    if (localQimei != null)
     {
-      try
+      if (localQimei.isEmpty()) {
+        return true;
+      }
+      if ((!e.c()) && (!e.a()))
       {
-        com.tencent.beacon.core.d.b.d("[qimei] init context is null!", new Object[0]);
+        if (!e.b())
+        {
+          if (com.tencent.beacon.a.c.b.h()) {
+            return true;
+          }
+          bool = false;
+        }
         return bool;
       }
-      finally {}
-      if (this.mContext != null) {
-        com.tencent.beacon.core.d.b.a("[qimei] QimeiSdk has been initialized", new Object[0]);
-      } else {
-        bool = false;
-      }
+      com.tencent.beacon.base.util.c.d("[qimei] isQIMEIReqZeroPeak or Qimei disable", new Object[0]);
+      return false;
     }
+    return true;
   }
   
   public String getAppKey()
   {
     try
     {
-      String str = com.tencent.beacon.core.b.b.a(this.mContext).b();
+      String str = this.appKey;
       return str;
     }
     finally
@@ -60,118 +90,145 @@ public class QimeiSDK
   }
   
   @Deprecated
-  public String getBeaconIdInfo(Context paramContext)
+  public String getBeaconIdInfo()
   {
     try
     {
-      if (h.a(this.beaconId)) {
-        this.beaconId = BeaconIdJNI.a(paramContext, Build.VERSION.SDK_INT);
+      if (TextUtils.isEmpty(this.beaconId)) {
+        this.beaconId = com.tencent.beacon.b.a.a(Build.VERSION.SDK_INT);
       }
-      paramContext = this.beaconId;
-      return paramContext;
+      String str = this.beaconId;
+      return str;
     }
     finally {}
   }
   
-  public void getQimei(IAsyncQimeiListener paramIAsyncQimeiListener)
+  public Context getContext()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        String str = getQimeiInternal();
-        if (!h.a(str))
-        {
-          paramIAsyncQimeiListener.onQimeiDispatch(str);
-          return;
-        }
-        if (this.qimeiModule == null)
-        {
-          com.tencent.beacon.core.d.b.d("[qimei] QimeiModule is null, QimeiSDK has not initialized !", new Object[0]);
-          paramIAsyncQimeiListener.onQimeiDispatch("");
-        }
-        else
-        {
-          this.qimeiModule.a(paramIAsyncQimeiListener);
-        }
-      }
-      finally {}
+      Context localContext = this.mContext;
+      return localContext;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  /* Error */
+  @Deprecated
+  public String getOAID()
+  {
+    return "";
+  }
+  
+  public String getOmgID()
+  {
+    return this.omgID;
+  }
+  
+  public Qimei getQimei()
+  {
+    if (com.tencent.beacon.a.c.c.d().c() == null) {
+      return null;
+    }
+    return a.a().b();
+  }
+  
+  public void getQimei(IAsyncQimeiListener paramIAsyncQimeiListener)
+  {
+    try
+    {
+      com.tencent.beacon.a.b.a.a().a(new d(this, paramIAsyncQimeiListener));
+      return;
+    }
+    finally
+    {
+      paramIAsyncQimeiListener = finally;
+      throw paramIAsyncQimeiListener;
+    }
+  }
+  
   @Deprecated
   public String getQimeiInternal()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 86	com/tencent/beacon/qimei/QimeiSDK:qimeiModule	Lcom/tencent/beacon/qimei/b;
-    //   6: ifnull +24 -> 30
-    //   9: aload_0
-    //   10: getfield 86	com/tencent/beacon/qimei/QimeiSDK:qimeiModule	Lcom/tencent/beacon/qimei/b;
-    //   13: invokevirtual 95	com/tencent/beacon/qimei/b:c	()Ljava/lang/String;
-    //   16: astore_2
-    //   17: aload_2
-    //   18: invokestatic 61	com/tencent/beacon/core/d/h:a	(Ljava/lang/String;)Z
-    //   21: istore_1
-    //   22: iload_1
-    //   23: ifne +7 -> 30
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: aload_2
-    //   29: areturn
-    //   30: aload_0
-    //   31: getfield 38	com/tencent/beacon/qimei/QimeiSDK:mContext	Landroid/content/Context;
-    //   34: ifnull +14 -> 48
-    //   37: aload_0
-    //   38: getfield 38	com/tencent/beacon/qimei/QimeiSDK:mContext	Landroid/content/Context;
-    //   41: invokestatic 99	com/tencent/beacon/qimei/d:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   44: astore_2
-    //   45: goto -19 -> 26
-    //   48: ldc 18
-    //   50: astore_2
-    //   51: goto -25 -> 26
-    //   54: astore_2
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: aload_2
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	QimeiSDK
-    //   21	2	1	bool	boolean
-    //   16	35	2	str	String
-    //   54	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	22	54	finally
-    //   30	45	54	finally
+    try
+    {
+      if (!isInit()) {
+        return "";
+      }
+      Object localObject1 = a.a().b();
+      if (!TextUtils.isEmpty(((Qimei)localObject1).getQimeiOld()))
+      {
+        localObject1 = ((Qimei)localObject1).getQimeiOld();
+        return localObject1;
+      }
+      return "";
+    }
+    finally {}
   }
   
   public QimeiSDK init(Context paramContext)
   {
     try
     {
-      if (!isInit(paramContext))
+      if (!isInit())
       {
+        com.tencent.beacon.base.util.c.a("[Qimei]", "QimeiSDK init!", new Object[0]);
         this.mContext = paramContext;
-        b.a(this.mContext).a();
+        com.tencent.beacon.a.a.b.a().a(1, this);
+        boolean bool = isUpdateQimei();
+        com.tencent.beacon.base.util.c.a("[Qimei]", "isUpdate Qimei: %s", new Object[] { Boolean.valueOf(bool) });
+        if (bool) {
+          com.tencent.beacon.a.b.a.a().a(new c(paramContext));
+        }
       }
       return this;
     }
-    finally
-    {
-      paramContext = finally;
-      throw paramContext;
+    finally {}
+  }
+  
+  public void logQimeiCallbackError(Throwable paramThrowable)
+  {
+    com.tencent.beacon.base.util.c.b("[qimei] onQimeiDispatch error!", new Object[] { paramThrowable.getMessage() });
+    com.tencent.beacon.base.util.c.a(paramThrowable);
+    com.tencent.beacon.a.b.d.b().a("514", "QimeiDispatch error", paramThrowable);
+  }
+  
+  @WorkerThread
+  public void onEvent(com.tencent.beacon.a.a.c arg1)
+  {
+    if (???.a == 1) {
+      synchronized (this.qimeiListeners)
+      {
+        Qimei localQimei = a.a().b();
+        if ((localQimei != null) && (localQimei.isEmpty())) {
+          return;
+        }
+        Iterator localIterator = this.qimeiListeners.iterator();
+        while (localIterator.hasNext())
+        {
+          IAsyncQimeiListener localIAsyncQimeiListener = (IAsyncQimeiListener)localIterator.next();
+          try
+          {
+            localIAsyncQimeiListener.onQimeiDispatch(localQimei);
+          }
+          catch (Throwable localThrowable)
+          {
+            logQimeiCallbackError(localThrowable);
+          }
+        }
+        this.qimeiListeners.clear();
+        return;
+      }
     }
   }
   
   public QimeiSDK setAppKey(String paramString)
   {
-    if (!h.a(paramString)) {
-      com.tencent.beacon.core.b.b.a = paramString;
+    if (!TextUtils.isEmpty(paramString)) {
+      this.appKey = paramString;
     }
     return this;
   }
@@ -180,8 +237,8 @@ public class QimeiSDK
   {
     try
     {
-      com.tencent.beacon.core.d.b.a = paramBoolean;
-      com.tencent.beacon.core.d.b.c = paramBoolean;
+      com.tencent.beacon.base.util.c.a(paramBoolean);
+      com.tencent.beacon.base.util.c.b(paramBoolean);
       return this;
     }
     finally
@@ -191,22 +248,20 @@ public class QimeiSDK
     }
   }
   
+  @Deprecated
+  public void setOAID(String paramString) {}
+  
   public QimeiSDK setOmgId(String paramString)
   {
-    if (!h.a(paramString)) {
-      com.tencent.beacon.core.b.c.a = paramString;
+    if (!TextUtils.isEmpty(paramString)) {
+      this.omgID = paramString;
     }
     return this;
-  }
-  
-  protected void setQimeiModule(b paramb)
-  {
-    this.qimeiModule = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.qimei.QimeiSDK
  * JD-Core Version:    0.7.0.1
  */

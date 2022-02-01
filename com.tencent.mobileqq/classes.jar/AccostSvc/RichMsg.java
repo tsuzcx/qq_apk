@@ -10,10 +10,10 @@ public final class RichMsg
 {
   static ArrayList<MsgItem> cache_VecMsg;
   static UserInfo cache_stSender;
-  public ArrayList<MsgItem> VecMsg;
-  public int iActionID;
+  public ArrayList<MsgItem> VecMsg = null;
+  public int iActionID = 0;
   public String sAction = "";
-  public UserInfo stSender;
+  public UserInfo stSender = null;
   
   public RichMsg() {}
   
@@ -45,18 +45,20 @@ public final class RichMsg
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.VecMsg, 0);
-    if (this.sAction != null) {
-      paramJceOutputStream.write(this.sAction, 1);
+    Object localObject = this.sAction;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.stSender != null) {
-      paramJceOutputStream.write(this.stSender, 2);
+    localObject = this.stSender;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.iActionID, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.RichMsg
  * JD-Core Version:    0.7.0.1
  */

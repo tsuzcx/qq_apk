@@ -69,41 +69,41 @@ public abstract interface IGmsCallbacks
       
       public void onAccountValidationComplete(int paramInt, Bundle paramBundle)
       {
-        AppMethodBeat.i(89671);
+        AppMethodBeat.i(4693);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeInt(paramInt);
         zzc.zza(localParcel, paramBundle);
         transactAndReadExceptionReturnVoid(2, localParcel);
-        AppMethodBeat.o(89671);
+        AppMethodBeat.o(4693);
       }
       
       public void onPostInitComplete(int paramInt, IBinder paramIBinder, Bundle paramBundle)
       {
-        AppMethodBeat.i(89670);
+        AppMethodBeat.i(4692);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeInt(paramInt);
         localParcel.writeStrongBinder(paramIBinder);
         zzc.zza(localParcel, paramBundle);
         transactAndReadExceptionReturnVoid(1, localParcel);
-        AppMethodBeat.o(89670);
+        AppMethodBeat.o(4692);
       }
       
       public void onPostInitCompleteWithConnectionInfo(int paramInt, IBinder paramIBinder, ConnectionInfo paramConnectionInfo)
       {
-        AppMethodBeat.i(89672);
+        AppMethodBeat.i(4694);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeInt(paramInt);
         localParcel.writeStrongBinder(paramIBinder);
         zzc.zza(localParcel, paramConnectionInfo);
         transactAndReadExceptionReturnVoid(3, localParcel);
-        AppMethodBeat.o(89672);
+        AppMethodBeat.o(4694);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.IGmsCallbacks
  * JD-Core Version:    0.7.0.1
  */

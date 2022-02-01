@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.widget.TimePickerView.TimePickerListener;
 
 public class cgb
-  implements DialogInterface.OnClickListener
+  implements TimePickerView.TimePickerListener
 {
   public cgb(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.a(paramInt1, paramInt2, paramInt3);
+  }
 }
 
 

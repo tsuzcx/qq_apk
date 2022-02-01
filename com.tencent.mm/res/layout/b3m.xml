@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/f8z" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.video.VideoView android:id="@id/f90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:id="@id/f9_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/l6" style="@style/na" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/arh" android:background="@drawable/aaw" android:padding="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv">
+        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/a1q" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:src="@drawable/b__" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="72.0dip" android:layout_marginStart="@dimen/cd">
+            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="@dimen/hr" android:textColor="@color/a7d" android:ellipsize="end" android:gravity="center|left|top" android:id="@id/hg1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="小赖你个小子算什么" android:singleLine="true" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_marginStart="@dimen/cp">
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/g5j" android:background="@drawable/ab3" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginEnd="2.0dip" />
+                    <TextView android:textSize="@dimen/bd" android:textColor="@color/a7d" android:gravity="center|left" android:id="@id/g5k" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/g0y" android:layout_weight="1.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textColor="@color/m5" android:ellipsize="end" android:id="@id/c48" android:layout_marginTop="@dimen/df" android:text="我是设备名我是设备名我是设备名你好" android:singleLine="true" style="@style/zn" />
+        </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

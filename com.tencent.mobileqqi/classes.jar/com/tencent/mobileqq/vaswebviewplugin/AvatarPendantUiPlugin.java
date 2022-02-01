@@ -41,7 +41,7 @@ public class AvatarPendantUiPlugin
       paramString = null;
       return paramString;
     }
-    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "6.0.2.6602").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
+    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "6.0.3.6604").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
     if (super.getInfoIntent().getBooleanExtra("key_update_flag", false)) {}
     for (paramString = "1";; paramString = "0")
     {

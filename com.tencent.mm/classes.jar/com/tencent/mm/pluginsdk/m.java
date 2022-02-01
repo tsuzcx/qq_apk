@@ -3,83 +3,117 @@ package com.tencent.mm.pluginsdk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.tencent.mm.ai.g;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi.a;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.pluginsdk.ui.applet.y.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.ui.MMWizardActivity;
+import com.tencent.mm.ui.tools.b.a;
+import com.tencent.mm.ui.widget.a.e;
 
 @Deprecated
 public abstract interface m
 {
-  public abstract void BO();
+  public abstract void a(Activity paramActivity, Intent paramIntent, int paramInt);
   
-  public abstract void BQ();
+  public abstract void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, b.a parama);
   
-  public abstract void BR();
+  public abstract void a(Activity paramActivity, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3);
   
-  public abstract Intent BS();
+  public abstract void a(Context paramContext, Intent paramIntent1, Intent paramIntent2);
   
-  public abstract boolean BT();
+  public abstract void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, y.a parama);
   
-  public abstract void BU();
+  public abstract void a(Intent paramIntent, int paramInt, MMActivity.a parama, MMActivity paramMMActivity);
   
-  public abstract boolean BV();
+  public abstract void a(Intent paramIntent, int paramInt, MMActivity paramMMActivity);
   
-  public abstract String H(String paramString1, String paramString2);
+  public abstract void a(Intent paramIntent1, int paramInt, MMActivity paramMMActivity, Intent paramIntent2);
   
-  public abstract Bitmap a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract void a(Intent paramIntent, Activity paramActivity);
   
-  public abstract com.tencent.mm.ai.m a(g paramg);
+  public abstract void a(Intent paramIntent, Activity paramActivity, int paramInt);
   
-  public abstract void a(Context paramContext, ad paramad, bi.a parama, Bundle paramBundle, String paramString);
+  public abstract void a(Intent paramIntent, Context paramContext);
   
-  public abstract void a(Context paramContext, bi.a parama, Bundle paramBundle);
+  public abstract void a(Intent paramIntent, MMActivity.a parama, MMActivity paramMMActivity);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5);
+  public abstract void a(MMWizardActivity paramMMWizardActivity, Intent paramIntent);
   
-  public abstract void a(Intent paramIntent, String paramString);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, Context paramContext, String paramString, int paramInt1, int paramInt2);
   
-  public abstract void a(bdt parambdt, String paramString);
+  public abstract boolean a(Context paramContext, String paramString, Object... paramVarArgs);
   
-  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong);
+  public abstract void aDA();
   
-  public abstract boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString);
+  public abstract void b(Intent paramIntent, Activity paramActivity);
   
-  public abstract boolean a(ad paramad);
+  public abstract void b(Intent paramIntent, Context paramContext);
   
-  public abstract boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString);
+  public abstract boolean b(Context paramContext, String paramString, Bundle paramBundle);
   
-  public abstract void bh(Context paramContext);
+  public abstract void c(Intent paramIntent, Context paramContext);
   
-  public abstract com.tencent.mm.ai.m bs(boolean paramBoolean);
+  public abstract void cH(Context paramContext);
   
-  public abstract String dE(String paramString);
+  public abstract e cI(Context paramContext);
   
-  public abstract boolean dF(String paramString);
+  public abstract Intent cJ(Context paramContext);
   
-  public abstract boolean dG(String paramString);
+  public abstract void cK(Context paramContext);
   
-  public abstract void dH(String paramString);
+  public abstract void cL(Context paramContext);
   
-  public abstract String f(Context paramContext, String paramString1, String paramString2);
+  public abstract void d(Context paramContext, Intent paramIntent);
   
-  public abstract void gf(int paramInt);
+  public abstract void d(Intent paramIntent, Context paramContext);
   
-  public abstract boolean n(Activity paramActivity);
+  public abstract void e(Context paramContext, Intent paramIntent);
   
-  public abstract void o(Activity paramActivity);
+  public abstract void e(Intent paramIntent, Context paramContext);
   
-  public abstract String t(Context paramContext, String paramString);
+  public abstract void f(Context paramContext, Intent paramIntent);
   
-  public abstract String t(String paramString, int paramInt);
+  public abstract void f(Intent paramIntent, Context paramContext);
   
-  public abstract boolean u(Context paramContext, String paramString);
+  public abstract void g(Context paramContext, Intent paramIntent);
+  
+  public abstract void g(Intent paramIntent, Context paramContext);
+  
+  public abstract void h(Context paramContext, Intent paramIntent);
+  
+  public abstract void h(Intent paramIntent, Context paramContext);
+  
+  public abstract void i(Intent paramIntent, Context paramContext);
+  
+  public abstract void iH(String paramString);
+  
+  public abstract void j(Intent paramIntent, Context paramContext);
+  
+  public abstract void k(Intent paramIntent, Context paramContext);
+  
+  public abstract void l(Intent paramIntent, Context paramContext);
+  
+  public abstract void m(Intent paramIntent, Context paramContext);
+  
+  public abstract void n(Intent paramIntent, Context paramContext);
+  
+  public abstract void o(Intent paramIntent, Context paramContext);
+  
+  public abstract void p(Intent paramIntent, Context paramContext);
+  
+  public abstract void q(Intent paramIntent, Context paramContext);
+  
+  public abstract void r(Intent paramIntent, Context paramContext);
+  
+  public abstract void s(Intent paramIntent, Context paramContext);
+  
+  public abstract void z(Context paramContext, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.m
  * JD-Core Version:    0.7.0.1
  */

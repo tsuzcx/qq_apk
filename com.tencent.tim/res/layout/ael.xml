@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer android:orientation="vertical" android:id="@id/jv9" android:layout_width="fill_parent" android:layout_height="46.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip">
+            <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/e84" />
+            <LinearLayout android:gravity="center|right" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <EditText android:textSize="17.0sp" android:textColor="@color/tr" android:textColorHint="@color/wb" android:gravity="center|right" android:id="@id/fc0" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="@string/e85" android:singleLine="true" android:maxLength="4" android:inputType="number" />
+            </LinearLayout>
+            <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="12.0dip" android:text="@string/e7t" />
+        </LinearLayout>
+    </com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer>
+    <View style="@style/sr" />
+    <LinearLayout android:gravity="center_vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="46.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:text="@string/e7k" />
+        <LinearLayout android:gravity="center|right" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <EditText android:textSize="17.0sp" android:textColor="@color/tr" android:textColorHint="@color/wb" android:gravity="center|right" android:id="@id/ro" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="@string/e7m" android:singleLine="true" android:maxLength="7" android:inputType="numberDecimal" />
+        </LinearLayout>
+        <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="12.0dip" android:text="@string/ehr" />
+    </LinearLayout>
+</LinearLayout>

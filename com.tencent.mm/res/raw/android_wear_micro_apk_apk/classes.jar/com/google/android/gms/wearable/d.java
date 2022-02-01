@@ -5,7 +5,7 @@ import com.google.android.gms.common.api.w;
 public abstract interface d
   extends w
 {
-  public abstract Channel kr();
+  public abstract Channel kA();
 }
 
 

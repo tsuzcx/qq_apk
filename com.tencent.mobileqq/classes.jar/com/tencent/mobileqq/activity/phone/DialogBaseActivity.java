@@ -1,139 +1,93 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aimp;
-import aimq;
-import aimr;
-import aims;
-import aimt;
-import alud;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
-import azqs;
-import bdgm;
-import bdjz;
-import bety;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
 {
-  private aimt jdField_a_of_type_Aimt;
-  private View jdField_a_of_type_AndroidViewView;
-  public bety a;
-  public PhoneContactManagerImp a;
+  static final int MSG_FINISH = 2;
+  static final int MSG_PROGRESS = 1;
+  public static final int RESULT_START_NUMBER = 2;
+  public static final int RESULT_USER_CANCEL = 1;
+  private View mContentView;
+  protected IPhoneContactService mPhoneContactService;
+  private DialogBaseActivity.UiHandler mUiHandler;
+  QQProgressDialog progressDialog;
   
-  public void a(int paramInt, long paramLong, boolean paramBoolean)
+  protected boolean dismissProgressDialog()
   {
-    Object localObject = this.jdField_a_of_type_Aimt;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    boolean bool;
+    if (this.mUiHandler.hasMessages(1))
     {
-      localObject = ((aimt)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Aimt.sendMessageDelayed((Message)localObject, paramLong);
-      return;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (!isFinishing()) {
-      QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Bety == null))
-    {
-      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bety.setOnDismissListener(new aims(this));
-      this.jdField_a_of_type_Bety.c(paramInt);
-      this.jdField_a_of_type_Bety.setCancelable(paramBoolean);
-      this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bety.show();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    a(0, paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (!isFinishing()) {
-      bdgm.a(this, 231, paramString1, paramString2, new aimp(this), null).show();
-    }
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    String str3;
-    String str1;
-    if (!isFinishing())
-    {
-      azqs.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      str3 = getResources().getString(2131695161);
-      if (!paramBoolean) {
-        break label103;
-      }
-      str1 = alud.a(2131703638);
-      if (!paramBoolean) {
-        break label112;
-      }
-    }
-    label103:
-    label112:
-    for (String str2 = alud.a(2131703641);; str2 = alud.a(2131703639))
-    {
-      bdgm.a(this, 230, str1, str3, alud.a(2131703640), str2, new aimq(this, paramBoolean), new aimr(this, paramBoolean)).show();
-      return;
-      str1 = alud.a(2131703637);
-      break;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    a(getResources().getString(paramInt));
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Aimt.hasMessages(1))
-    {
-      this.jdField_a_of_type_Aimt.removeMessages(1);
+      this.mUiHandler.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Bety != null)
+    else
     {
-      this.jdField_a_of_type_Bety.cancel();
-      this.jdField_a_of_type_Bety.setOnDismissListener(null);
-      this.jdField_a_of_type_Bety = null;
-      return true;
+      bool = false;
+    }
+    QQProgressDialog localQQProgressDialog = this.progressDialog;
+    if (localQQProgressDialog != null)
+    {
+      localQQProgressDialog.cancel();
+      this.progressDialog.setOnDismissListener(null);
+      this.progressDialog = null;
+      bool = true;
     }
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Aimt = new aimt(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(11));
+    this.mUiHandler = new DialogBaseActivity.UiHandler(this);
+    this.mPhoneContactService = ((IPhoneContactService)this.app.getRuntimeService(IPhoneContactService.class));
     return true;
+  }
+  
+  void doShowProgressDialog(int paramInt, boolean paramBoolean)
+  {
+    if ((!isFinishing()) && (this.progressDialog == null))
+    {
+      this.progressDialog = new QQProgressDialog(this, getTitleBarHeight());
+      this.progressDialog.setOnDismissListener(new DialogBaseActivity.4(this));
+      this.progressDialog.c(paramInt);
+      this.progressDialog.setCancelable(paramBoolean);
+      this.progressDialog.setCanceledOnTouchOutside(false);
+      this.progressDialog.show();
+    }
   }
   
   public View findViewById(int paramInt)
   {
-    View localView1 = null;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    View localView1 = this.mContentView;
+    if (localView1 != null) {
+      localView1 = localView1.findViewById(paramInt);
+    } else {
+      localView1 = null;
     }
     View localView2 = localView1;
     if (localView1 == null) {
@@ -142,14 +96,82 @@ public class DialogBaseActivity
     return localView2;
   }
   
-  public void setContentView(int paramInt)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    this.jdField_a_of_type_AndroidViewView = setContentViewB(paramInt);
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public String setLastActivityName()
+  public void setContentView(int paramInt)
+  {
+    this.mContentView = setContentViewB(paramInt);
+  }
+  
+  protected String setLastActivityName()
   {
     return null;
+  }
+  
+  protected void showConfirmFinish(String paramString1, String paramString2)
+  {
+    if (!isFinishing()) {
+      DialogUtil.a(this, 231, paramString1, paramString2, new DialogBaseActivity.1(this), null).show();
+    }
+  }
+  
+  void showConfirmSkipDialog(boolean paramBoolean)
+  {
+    if (!isFinishing())
+    {
+      ReportController.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
+      String str1 = getResources().getString(2131892450);
+      int i;
+      if (paramBoolean) {
+        i = 2131901367;
+      } else {
+        i = 2131901366;
+      }
+      String str2 = HardCodeUtil.a(i);
+      if (paramBoolean) {
+        i = 2131901370;
+      } else {
+        i = 2131901368;
+      }
+      String str3 = HardCodeUtil.a(i);
+      DialogUtil.a(this, 230, str2, str1, HardCodeUtil.a(2131901369), str3, new DialogBaseActivity.2(this, paramBoolean), new DialogBaseActivity.3(this, paramBoolean)).show();
+    }
+  }
+  
+  protected void showFetalAndFinish(int paramInt, long paramLong)
+  {
+    if (!isFinishing())
+    {
+      showToast(paramInt);
+      this.mUiHandler.sendEmptyMessageDelayed(2, paramLong);
+    }
+  }
+  
+  protected void showProgressDialog(int paramInt, long paramLong, boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  protected void showToast(int paramInt)
+  {
+    showToast(getResources().getString(paramInt));
+  }
+  
+  protected void showToast(int paramInt, String paramString)
+  {
+    if (!isFinishing()) {
+      QQToast.makeText(this, paramInt, paramString, 0).show(getTitleBarHeight());
+    }
+  }
+  
+  protected void showToast(String paramString)
+  {
+    showToast(0, paramString);
   }
 }
 

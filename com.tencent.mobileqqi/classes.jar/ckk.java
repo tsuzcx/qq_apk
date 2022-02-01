@@ -1,19 +1,29 @@
 import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
+import com.tencent.mobileqq.emoticon.EmoticonController;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
 public class ckk
-  extends EmoticonPackageDownloadListener
+  implements DragSortListView.DropListener
 {
   public ckk(EmosmActivity paramEmosmActivity) {}
   
-  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void a_(int paramInt1, int paramInt2)
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (EmosmActivity.a(this.a) == null) {
-      return;
+    if (paramInt1 != paramInt2)
+    {
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)EmosmActivity.a(this.a).getItem(paramInt1);
+      EmosmActivity.a(this.a).remove(localEmoticonPackage);
+      EmosmActivity.a(this.a).setNotifyOnChange(true);
+      EmosmActivity.a(this.a).insert(localEmoticonPackage, paramInt2);
+      EmoticonController.a(this.a.b).a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.c = true;
+      StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "Ep_order");
     }
-    this.a.runOnUiThread(EmosmActivity.a(this.a));
   }
 }
 

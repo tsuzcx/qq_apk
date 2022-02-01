@@ -5,70 +5,78 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import swo;
 
 class PreloadManager$FeedslistDownlaodImageThread
   implements Runnable
 {
   PreloadManager$FeedslistDownlaodImageThread(PreloadManager paramPreloadManager) {}
   
-  swo a()
+  PreloadManager.ImgStruct a()
   {
-    Object localObject1 = this.this$0.a;
+    Object localObject1 = this.this$0.d;
     int i = 3;
-    while (i > 0)
+    label150:
+    for (;;)
     {
+      if (i > 0) {}
       try
       {
-        swo localswo;
+        PreloadManager.ImgStruct localImgStruct;
         do
         {
-          Iterator localIterator = PreloadManager.a(this.this$0).values().iterator();
+          Iterator localIterator = PreloadManager.d(this.this$0).values().iterator();
           Object localObject3;
           while (!((Iterator)localObject3).hasNext())
           {
             if (!localIterator.hasNext()) {
-              break;
+              break label150;
             }
             localObject3 = (ArrayList)localIterator.next();
             if ((localObject3 == null) || (((ArrayList)localObject3).size() == 0)) {
-              return null;
+              break;
             }
             localObject3 = ((ArrayList)localObject3).iterator();
           }
-          localswo = (swo)((Iterator)localObject3).next();
-          if (localswo == null) {
+          localImgStruct = (PreloadManager.ImgStruct)((Iterator)localObject3).next();
+          if (localImgStruct == null) {
             return null;
           }
-        } while ((PreloadManager.a(localswo.jdField_a_of_type_JavaLangString) != 0) || (localswo.jdField_a_of_type_Int != i));
-        return localswo;
+        } while ((PreloadManager.c(localImgStruct.a) != 0) || (localImgStruct.b != i));
+        return localImgStruct;
+        return null;
       }
-      finally {}
-      i -= 1;
+      finally
+      {
+        for (;;)
+        {
+          throw localObject2;
+        }
+        i -= 1;
+      }
+      return null;
     }
-    return null;
   }
   
   public void run()
   {
-    this.this$0.b = true;
+    this.this$0.c = true;
     for (;;)
     {
-      swo localswo = a();
-      if (localswo == null) {
+      PreloadManager.ImgStruct localImgStruct = a();
+      if (localImgStruct == null) {
         break;
       }
       if (NetworkState.getNetworkType() != 1) {
         return;
       }
-      this.this$0.b(localswo.jdField_a_of_type_JavaLangString);
+      this.this$0.g(localImgStruct.a);
     }
-    this.this$0.b = false;
+    this.this$0.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.FeedslistDownlaodImageThread
  * JD-Core Version:    0.7.0.1
  */

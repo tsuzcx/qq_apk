@@ -131,25 +131,23 @@ public final class ObjectAnimator
   
   void initAnimation()
   {
-    int j;
-    int i;
     if (!this.mInitialized)
     {
       if ((this.mProperty == null) && (AnimatorProxy.NEEDS_PROXY) && ((this.mTarget instanceof View)) && (PROXY_PROPERTIES.containsKey(this.mPropertyName))) {
         setProperty((Property)PROXY_PROPERTIES.get(this.mPropertyName));
       }
-      j = this.mValues.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j)
+      int j = this.mValues.length;
+      int i = 0;
+      for (;;)
       {
-        super.initAnimation();
-        return;
+        if (i >= j)
+        {
+          super.initAnimation();
+          return;
+        }
+        this.mValues[i].setupSetterAndGetter(this.mTarget);
+        i += 1;
       }
-      this.mValues[i].setupSetterAndGetter(this.mTarget);
-      i += 1;
     }
   }
   
@@ -161,47 +159,50 @@ public final class ObjectAnimator
   
   public void setFloatValues(float... paramVarArgs)
   {
-    if ((this.mValues == null) || (this.mValues.length == 0))
+    if ((this.mValues != null) && (this.mValues.length != 0))
     {
-      if (this.mProperty != null)
-      {
-        setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.mProperty, paramVarArgs) });
-        return;
-      }
-      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.mPropertyName, paramVarArgs) });
+      super.setFloatValues(paramVarArgs);
       return;
     }
-    super.setFloatValues(paramVarArgs);
+    Property localProperty = this.mProperty;
+    if (localProperty != null)
+    {
+      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(localProperty, paramVarArgs) });
+      return;
+    }
+    setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.mPropertyName, paramVarArgs) });
   }
   
   public void setIntValues(int... paramVarArgs)
   {
-    if ((this.mValues == null) || (this.mValues.length == 0))
+    if ((this.mValues != null) && (this.mValues.length != 0))
     {
-      if (this.mProperty != null)
-      {
-        setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.mProperty, paramVarArgs) });
-        return;
-      }
-      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.mPropertyName, paramVarArgs) });
+      super.setIntValues(paramVarArgs);
       return;
     }
-    super.setIntValues(paramVarArgs);
+    Property localProperty = this.mProperty;
+    if (localProperty != null)
+    {
+      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(localProperty, paramVarArgs) });
+      return;
+    }
+    setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.mPropertyName, paramVarArgs) });
   }
   
   public void setObjectValues(Object... paramVarArgs)
   {
-    if ((this.mValues == null) || (this.mValues.length == 0))
+    if ((this.mValues != null) && (this.mValues.length != 0))
     {
-      if (this.mProperty != null)
-      {
-        setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject(this.mProperty, null, paramVarArgs) });
-        return;
-      }
-      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject(this.mPropertyName, null, paramVarArgs) });
+      super.setObjectValues(paramVarArgs);
       return;
     }
-    super.setObjectValues(paramVarArgs);
+    Property localProperty = this.mProperty;
+    if (localProperty != null)
+    {
+      setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject(localProperty, null, paramVarArgs) });
+      return;
+    }
+    setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject(this.mPropertyName, null, paramVarArgs) });
   }
   
   public void setProperty(Property paramProperty)
@@ -237,17 +238,15 @@ public final class ObjectAnimator
   
   public void setTarget(Object paramObject)
   {
-    if (this.mTarget != paramObject)
+    Object localObject = this.mTarget;
+    if (localObject != paramObject)
     {
-      Object localObject = this.mTarget;
       this.mTarget = paramObject;
-      if ((localObject == null) || (paramObject == null) || (localObject.getClass() != paramObject.getClass())) {}
+      if ((localObject != null) && (paramObject != null) && (localObject.getClass() == paramObject.getClass())) {
+        return;
+      }
+      this.mInitialized = false;
     }
-    else
-    {
-      return;
-    }
-    this.mInitialized = false;
   }
   
   public void setupEndValues()
@@ -287,27 +286,32 @@ public final class ObjectAnimator
   
   public String toString()
   {
-    String str1 = "ObjectAnimator@" + Integer.toHexString(hashCode()) + ", target " + this.mTarget;
-    String str2 = str1;
-    int i;
-    if (this.mValues != null) {
-      i = 0;
-    }
-    for (;;)
+    Object localObject = new StringBuilder("ObjectAnimator@");
+    ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
+    ((StringBuilder)localObject).append(", target ");
+    ((StringBuilder)localObject).append(this.mTarget);
+    localObject = ((StringBuilder)localObject).toString();
+    if (this.mValues != null)
     {
-      if (i >= this.mValues.length)
+      int i = 0;
+      for (;;)
       {
-        str2 = str1;
-        return str2;
+        if (i >= this.mValues.length) {
+          return localObject;
+        }
+        localObject = new StringBuilder(String.valueOf(localObject));
+        ((StringBuilder)localObject).append("\n    ");
+        ((StringBuilder)localObject).append(this.mValues[i].toString());
+        localObject = ((StringBuilder)localObject).toString();
+        i += 1;
       }
-      str1 = str1 + "\n    " + this.mValues[i].toString();
-      i += 1;
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.nineoldandroids.animation.ObjectAnimator
  * JD-Core Version:    0.7.0.1
  */

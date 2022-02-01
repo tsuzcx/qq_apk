@@ -1,133 +1,310 @@
 package com.tencent.ad.tangram.device;
 
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
+import android.provider.Settings.System;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
+import com.tencent.ad.tangram.util.e;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static final String TAG = "AdMacAddress";
-  private static String macAddress;
+  private static final String TAG = "AdDevice";
+  private static String androidId;
+  private static String deviceId;
+  private static Map<Integer, String> deviceIdList = new ConcurrentHashMap();
+  private static String imei;
+  private static Map<Integer, String> imeiList = new ConcurrentHashMap();
+  private static String meid;
+  private static Map<Integer, String> meidList = new ConcurrentHashMap();
   
-  public static String get(Context paramContext)
+  public static String getAndroidId(Context paramContext)
   {
-    if (!TextUtils.isEmpty(macAddress)) {
-      return macAddress;
+    if (!TextUtils.isEmpty(androidId)) {
+      return androidId;
     }
-    if (Build.VERSION.SDK_INT < 23) {
-      paramContext = getByWifiInfo(paramContext);
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramContext)) {
-        macAddress = paramContext;
-      }
-      return macAddress;
-      if ((Build.VERSION.SDK_INT >= 23) && (Build.VERSION.SDK_INT <= 28)) {
-        paramContext = getByInterface();
-      } else {
-        paramContext = null;
-      }
-    }
-  }
-  
-  public static String getByInterface()
-  {
     try
     {
-      Object localObject1 = NetworkInterface.getNetworkInterfaces();
-      while (((Enumeration)localObject1).hasMoreElements()) {
-        if (localObject1 != null)
+      paramContext = Settings.System.getString(paramContext.getApplicationContext().getContentResolver(), "android_id");
+      if (!TextUtils.isEmpty(paramContext)) {
+        androidId = paramContext;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AdDevice", "getAndroidId", paramContext);
+    }
+    return androidId;
+  }
+  
+  public static String getAndroidIdCache(Context paramContext)
+  {
+    return androidId;
+  }
+  
+  public static String getDeviceId(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty((CharSequence)deviceIdList.get(Integer.valueOf(paramInt)))) {
+      return (String)deviceIdList.get(Integer.valueOf(paramInt));
+    }
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT >= 23) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
         {
-          Object localObject2 = (NetworkInterface)((Enumeration)localObject1).nextElement();
-          if ((localObject2 != null) && (((NetworkInterface)localObject2).getName().equalsIgnoreCase("wlan0")))
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
           {
-            localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
-            if (localObject1 == null) {
-              return null;
-            }
-            localObject2 = new StringBuilder();
-            int j = localObject1.length;
-            int i = 0;
-            while (i < j)
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
             {
-              ((StringBuilder)localObject2).append(String.format("%02X:", new Object[] { Byte.valueOf(localObject1[i]) }));
-              i += 1;
+              paramContext = PhoneInfoMonitor.getDeviceId(paramContext, paramInt);
+              if (!TextUtils.isEmpty(paramContext)) {
+                deviceIdList.put(Integer.valueOf(paramInt), paramContext);
+              }
             }
-            if (((StringBuilder)localObject2).length() > 0) {
-              ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
-            }
-            localObject1 = ((StringBuilder)localObject2).toString();
-            return localObject1;
           }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdDevice", "getDeviceId", paramContext);
         }
       }
     }
-    catch (Throwable localThrowable)
-    {
-      AdLog.e("AdMacAddress", "getByInterface", localThrowable);
-    }
-    return null;
+    return (String)deviceIdList.get(Integer.valueOf(paramInt));
   }
   
-  public static String getByWifiInfo(Context paramContext)
+  public static String getDeviceId(Context paramContext, boolean paramBoolean)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if (!TextUtils.isEmpty(deviceId)) {
+      return deviceId;
+    }
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (paramContext != null))
     {
-      Object localObject = null;
-      do
-      {
-        for (;;)
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
         {
-          return localObject;
-          paramContext = paramContext.getApplicationContext();
-          if (paramContext == null) {
-            break;
-          }
-          paramContext = paramContext.getSystemService("wifi");
-          if (!(paramContext instanceof WifiManager)) {
-            break;
-          }
-          paramContext = (WifiManager)WifiManager.class.cast(paramContext);
-          if (paramContext == null) {
-            break;
-          }
-          try
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
           {
-            paramContext = paramContext.getConnectionInfo();
-            if (paramContext == null) {
-              break;
-            }
-            paramContext = paramContext.getMacAddress();
-          }
-          catch (Throwable paramContext)
-          {
-            for (;;)
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
             {
-              AdLog.e("AdMacAddress", "getByWifiInfo error", paramContext);
-              paramContext = null;
+              paramContext = PhoneInfoMonitor.getDeviceId(paramContext);
+              if (!TextUtils.isEmpty(paramContext)) {
+                deviceId = paramContext;
+              }
             }
           }
         }
-        localObject = paramContext;
-      } while (!TextUtils.isEmpty(paramContext));
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdDevice", "getDeviceId", paramContext);
+        }
+      }
     }
+    return deviceId;
   }
   
-  public static String getMacAddressCache(Context paramContext)
+  public static String getDeviceIdCache(Context paramContext)
   {
-    return macAddress;
+    return deviceId;
+  }
+  
+  public static String getDeviceIdCache(Context paramContext, int paramInt)
+  {
+    return (String)deviceIdList.get(Integer.valueOf(paramInt));
+  }
+  
+  public static String getImei(Context paramContext)
+  {
+    return imei;
+  }
+  
+  public static String getImei(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty((CharSequence)imeiList.get(Integer.valueOf(paramInt)))) {
+      return (String)imeiList.get(Integer.valueOf(paramInt));
+    }
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT >= 26) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
+          {
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
+            {
+              paramContext = PhoneInfoMonitor.getImei(paramContext, paramInt);
+              if (!TextUtils.isEmpty(paramContext)) {
+                imeiList.put(Integer.valueOf(paramInt), paramContext);
+              }
+            }
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdDevice", "getImei", paramContext);
+        }
+      }
+    }
+    return (String)imeiList.get(Integer.valueOf(paramInt));
+  }
+  
+  public static String getImei(Context paramContext, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty(imei)) {
+      return imei;
+    }
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT >= 26) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
+          {
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
+            {
+              paramContext = PhoneInfoMonitor.getImei(paramContext);
+              if (!TextUtils.isEmpty(paramContext)) {
+                imei = paramContext;
+              }
+            }
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdDevice", "getImei", paramContext);
+        }
+      }
+    }
+    return imei;
+  }
+  
+  public static String getImeiCache(Context paramContext, int paramInt)
+  {
+    return (String)imeiList.get(Integer.valueOf(paramInt));
+  }
+  
+  public static String getMeid(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty((CharSequence)meidList.get(Integer.valueOf(paramInt)))) {
+      return (String)meidList.get(Integer.valueOf(paramInt));
+    }
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT >= 26) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
+          {
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
+            {
+              paramContext = paramContext.getMeid(paramInt);
+              if (!TextUtils.isEmpty(paramContext)) {
+                meidList.put(Integer.valueOf(paramInt), paramContext);
+              }
+            }
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdDevice", "getMeid", paramContext);
+        }
+      }
+    }
+    return (String)meidList.get(Integer.valueOf(paramInt));
+  }
+  
+  public static String getMeid(Context paramContext, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty(meid)) {
+      return meid;
+    }
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT >= 26) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
+          {
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
+            {
+              paramContext = paramContext.getMeid();
+              if (!TextUtils.isEmpty(paramContext)) {
+                meid = paramContext;
+              }
+            }
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdDevice", "getMeid", paramContext);
+        }
+      }
+    }
+    return meid;
+  }
+  
+  public static String getMeidCache(Context paramContext)
+  {
+    return meid;
+  }
+  
+  public static String getMeidCache(Context paramContext, int paramInt)
+  {
+    return (String)meidList.get(Integer.valueOf(paramInt));
+  }
+  
+  public static int getPhoneType(Context paramContext)
+  {
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
+          {
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
+            {
+              int i = paramContext.getPhoneType();
+              return i;
+            }
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdDevice", "getPhoneType", paramContext);
+        }
+      }
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.device.c
  * JD-Core Version:    0.7.0.1
  */

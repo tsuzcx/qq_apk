@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TmplWebViewMMUI
@@ -14,7 +13,7 @@ public class TmplWebViewMMUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebViewMMUI
  * JD-Core Version:    0.7.0.1
  */

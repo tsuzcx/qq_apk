@@ -1,58 +1,37 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class aq
+  extends MAutoStorage<ap>
 {
-  public static aq uWt;
-  public boolean hasInit;
-  public e uWu = null;
+  public static final String[] SQL_CREATE;
   
   static
   {
-    AppMethodBeat.i(6745);
-    uWt = new aq();
-    AppMethodBeat.o(6745);
+    AppMethodBeat.i(79031);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ap.info, "WebviewLocalData") };
+    AppMethodBeat.o(79031);
   }
   
-  public static aq dcc()
+  public aq(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return uWt;
+    super(paramISQLiteDatabase, ap.info, "WebviewLocalData", null);
   }
   
-  public final void setNetWorkState(int paramInt)
+  public static int bs(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(6744);
-    if (this.uWu == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ab.i("MicroMsg.WebViewVideoProxy", "set networkd state = %d, callbacker == null ? %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      if (this.uWu == null) {
-        break label107;
-      }
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("webview_video_proxy_net_state", paramInt);
-      try
-      {
-        this.uWu.i(5005, localBundle);
-        AppMethodBeat.o(6744);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.WebViewVideoProxy", "set network state failed : %s", new Object[] { localException.getMessage() });
-      }
-    }
-    label107:
-    AppMethodBeat.o(6744);
+    AppMethodBeat.i(79030);
+    int i = (paramString1 + paramString2 + paramString3).hashCode();
+    AppMethodBeat.o(79030);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.aq
  * JD-Core Version:    0.7.0.1
  */

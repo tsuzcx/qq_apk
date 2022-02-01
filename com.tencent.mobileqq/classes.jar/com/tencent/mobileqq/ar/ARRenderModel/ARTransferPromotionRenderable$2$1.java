@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amtd;
-import amvq;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARNativeBridge;
 
 class ARTransferPromotionRenderable$2$1
   implements Runnable
 {
-  ARTransferPromotionRenderable$2$1(ARTransferPromotionRenderable.2 param2) {}
+  ARTransferPromotionRenderable$2$1(ARTransferPromotionRenderable.2 param2, float[] paramArrayOfFloat) {}
   
   public void run()
   {
-    if ((amvq.a(this.a.this$0) != null) && (amvq.a(this.a.this$0).a()))
+    if ((6 == ARTransferPromotionRenderable.b(this.b.a)) && (this.b.a.b <= 4))
     {
-      amvq.a(this.a.this$0).a();
-      QLog.d("ARTransferPromotionRenderable", 2, "mRepeatCheckRunnable run ");
+      ARNativeBridge localARNativeBridge = ARTransferPromotionRenderable.c(this.b.a);
+      float[] arrayOfFloat = this.a;
+      localARNativeBridge.native_setARWorldCupQuaternion(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.2.1
  * JD-Core Version:    0.7.0.1
  */

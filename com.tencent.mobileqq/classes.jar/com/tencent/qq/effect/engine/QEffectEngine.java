@@ -36,81 +36,69 @@ public class QEffectEngine
   
   public static QEffectEngine getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new QEffectEngine();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new QEffectEngine();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   public String getCacheFileDir(Context paramContext)
   {
-    if (this.mCacheFileDir == null) {
+    String str = this.mCacheFileDir;
+    if (str == null) {
       return paramContext.getExternalCacheDir().getAbsolutePath();
     }
-    return this.mCacheFileDir;
+    return str;
   }
   
   public IQEffect getEffectView(Context paramContext, int paramInt)
   {
     Class localClass = (Class)this.mEffectMap.get(paramInt);
-    if (localClass != null) {}
-    try
-    {
-      paramContext = (IQEffect)localClass.getDeclaredConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
-      return paramContext;
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      paramContext.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramContext)
-    {
-      for (;;)
+    if (localClass != null) {
+      try
+      {
+        paramContext = (IQEffect)localClass.getDeclaredConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+        return paramContext;
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
+      catch (NoSuchMethodException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
+      catch (InstantiationException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
+      catch (IllegalAccessException paramContext)
       {
         paramContext.printStackTrace();
       }
     }
-    catch (NoSuchMethodException paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-    }
+    return null;
   }
   
   public int getFileType(String paramString)
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this.mFileTypeMap.size())
     {
-      int j = k;
-      if (i < this.mFileTypeMap.size())
-      {
-        j = this.mFileTypeMap.keyAt(i);
-        String str = (String)this.mFileTypeMap.get(j);
-        if ((str == null) || (!str.equals(paramString))) {}
-      }
-      else
-      {
+      int j = this.mFileTypeMap.keyAt(i);
+      String str = (String)this.mFileTypeMap.get(j);
+      if ((str != null) && (str.equals(paramString))) {
         return j;
       }
       i += 1;
     }
+    return 0;
   }
   
   public GravitySensor getGravitySensor()
@@ -139,40 +127,51 @@ public class QEffectEngine
   
   public void onAttachedToWindow(IQEffect paramIQEffect)
   {
-    if (!paramIQEffect.isGravityEnable()) {}
-    do
-    {
+    if (!paramIQEffect.isGravityEnable()) {
       return;
-      this.mSensorCount += 1;
-      if (((paramIQEffect instanceof View)) && (!this.mGravitySensor.isInit())) {
-        this.mGravitySensor.init(((View)paramIQEffect).getContext());
-      }
-    } while (!(paramIQEffect instanceof GravitySensor.GravitySensorListener));
-    this.mGravitySensor.addListener((GravitySensor.GravitySensorListener)paramIQEffect);
+    }
+    this.mSensorCount += 1;
+    if (((paramIQEffect instanceof View)) && (!this.mGravitySensor.isInit())) {
+      this.mGravitySensor.init(((View)paramIQEffect).getContext());
+    }
+    if ((paramIQEffect instanceof GravitySensor.GravitySensorListener)) {
+      this.mGravitySensor.addListener((GravitySensor.GravitySensorListener)paramIQEffect);
+    }
   }
   
   public void onDetachedFromWindow(IQEffect paramIQEffect)
   {
     paramIQEffect.stop();
-    if (!paramIQEffect.isGravityEnable()) {}
-    int i;
-    do
-    {
+    if (!paramIQEffect.isGravityEnable()) {
       return;
-      if ((paramIQEffect instanceof GravitySensor.GravitySensorListener)) {
-        this.mGravitySensor.removeListener((GravitySensor.GravitySensorListener)paramIQEffect);
+    }
+    if ((paramIQEffect instanceof GravitySensor.GravitySensorListener)) {
+      this.mGravitySensor.removeListener((GravitySensor.GravitySensorListener)paramIQEffect);
+    }
+    int i = this.mSensorCount - 1;
+    this.mSensorCount = i;
+    if (i <= 0)
+    {
+      paramIQEffect = this.mGravitySensor;
+      if (paramIQEffect != null)
+      {
+        this.mSensorCount = 0;
+        paramIQEffect.destroy();
       }
-      i = this.mSensorCount - 1;
-      this.mSensorCount = i;
-    } while ((i > 0) || (this.mGravitySensor == null));
-    this.mSensorCount = 0;
-    this.mGravitySensor.destroy();
+    }
   }
   
   public void registerEffect(int paramInt, String paramString, Class<? extends IQEffect> paramClass)
   {
-    if (this.mEffectMap.get(paramInt) != null) {
-      Log.e("QEffectEngine", paramInt + " is already register," + paramClass.getSimpleName() + " will override");
+    StringBuilder localStringBuilder;
+    if (this.mEffectMap.get(paramInt) != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" is already register,");
+      localStringBuilder.append(paramClass.getSimpleName());
+      localStringBuilder.append(" will override");
+      Log.e("QEffectEngine", localStringBuilder.toString());
     }
     if (paramString.indexOf(",") > 0)
     {
@@ -181,8 +180,8 @@ public class QEffectEngine
       int i = 0;
       while (i < j)
       {
-        Object localObject = paramString[i];
-        this.mFileTypeMap.put(paramInt, localObject);
+        localStringBuilder = paramString[i];
+        this.mFileTypeMap.put(paramInt, localStringBuilder);
         i += 1;
       }
     }
@@ -207,7 +206,7 @@ public class QEffectEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.engine.QEffectEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
 
 public class chv
-  extends FriendListObserver
+  implements DialogInterface.OnDismissListener
 {
-  public chv(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public chv(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager, FriendListObserver paramFriendListObserver) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.getHandler().postDelayed(new chw(this), 150L);
   }
 }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|top" android:orientation="vertical" android:background="@drawable/b2n" android:layout_width="136.0dip" android:layout_height="136.0dip" android:minWidth="136.0dip" android:minHeight="136.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="20.0dip" android:src="@raw/wechat_wallet_authenticate" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/al6" android:id="@id/c6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/lix" />
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ProgressBar android:id="@id/i7z" android:layout_width="26.0dip" android:layout_height="6.0dip" android:max="100" android:progress="0" style="@style/a0v" />
+    </LinearLayout>
+</LinearLayout>

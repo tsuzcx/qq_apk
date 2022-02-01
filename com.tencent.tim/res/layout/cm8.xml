@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:fadingEdge="none" android:fillViewport="true" style="@style/afa"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/na2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="17.0sp" android:textColor="@color/aik" android:id="@id/n0l" android:text="@string/xet" style="@style/aea" />
+    </LinearLayout>
+</LinearLayout>

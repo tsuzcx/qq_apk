@@ -55,6 +55,11 @@
     <dimen name="a17">10.0dip</dimen>
     <dimen name="a1_">6.5dip</dimen>
     <dimen name="a1b">114.0dip</dimen>
+    <dimen name="b40">17.0dip</dimen>
+    <dimen name="b41">48.0dip</dimen>
+    <dimen name="b42">48.0dip</dimen>
+    <dimen name="b43">4.0dip</dimen>
+    <dimen name="b44">8.0dip</dimen>
     <dimen name="aaq">35.0dip</dimen>
     <dimen name="aar">53.0dip</dimen>
     <dimen name="ab2">116.0dip</dimen>
@@ -123,11 +128,6 @@
     <dimen name="b3w">92.0dip</dimen>
     <dimen name="b3x">12.0sp</dimen>
     <dimen name="b3y">155.0dip</dimen>
-    <dimen name="b40">17.0dip</dimen>
-    <dimen name="b41">48.0dip</dimen>
-    <dimen name="b42">48.0dip</dimen>
-    <dimen name="b43">4.0dip</dimen>
-    <dimen name="b44">8.0dip</dimen>
     <dimen name="b45">60.0dip</dimen>
     <dimen name="b47">28.0dip</dimen>
     <dimen name="b48">42.0dip</dimen>

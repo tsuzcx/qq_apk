@@ -25,14 +25,15 @@ public final class WordsSecurity$SecurityRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72 }, new String[] { "ret_code", "sys_beat_level", "dirty_word_beat", "ret_text", "dirty_word_tips", "credit_beat", "user_score", "required_score", "real_auth" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SecurityRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72 }, new String[] { "ret_code", "sys_beat_level", "dirty_word_beat", "ret_text", "dirty_word_tips", "credit_beat", "user_score", "required_score", "real_auth" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger }, SecurityRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.WordsSecurity.SecurityRsp
  * JD-Core Version:    0.7.0.1
  */

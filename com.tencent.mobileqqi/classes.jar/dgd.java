@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.EUCountryUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class dgd
-  implements DialogInterface.OnClickListener
+public class dgd
+  implements Runnable
 {
-  dgd(dgb paramdgb) {}
+  public dgd(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    String str = RegisterPhoneNumActivity.a(this.a.a).getText().toString();
-    QLog.e("testt", 2, "Register cancel uin: " + str);
-    EUCountryUtils.a(str, false);
-    paramDialogInterface.dismiss();
+    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setDividerGone();
+    dge localdge = new dge(this);
+    dgf localdgf = new dgf(this);
+    localQQCustomDialog.setPositiveButton(2131561875, localdge);
+    localQQCustomDialog.setNegativeButton(2131561746, localdgf);
+    localQQCustomDialog.show();
   }
 }
 

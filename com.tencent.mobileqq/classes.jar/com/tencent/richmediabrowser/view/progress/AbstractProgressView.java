@@ -1,13 +1,13 @@
 package com.tencent.richmediabrowser.view.progress;
 
-import android.app.Activity;
+import android.content.Context;
 import com.tencent.richmediabrowser.view.BrowserBaseScene;
 
 public abstract interface AbstractProgressView
 {
   public abstract void hide();
   
-  public abstract void init(Activity paramActivity, BrowserBaseScene paramBrowserBaseScene);
+  public abstract void init(Context paramContext, BrowserBaseScene paramBrowserBaseScene);
   
   public abstract boolean isShow();
   
@@ -23,7 +23,7 @@ public abstract interface AbstractProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.progress.AbstractProgressView
  * JD-Core Version:    0.7.0.1
  */

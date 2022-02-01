@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aevn;
-
-public class SigTlpAnimation$1
+class SigTlpAnimation$1
   implements Runnable
 {
-  public SigTlpAnimation$1(aevn paramaevn) {}
+  SigTlpAnimation$1(SigTlpAnimation paramSigTlpAnimation) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class SigTlpAnimation$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,156 +1,277 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import android.app.Activity;
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.mmdata.rpt.mz;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.shake.b.f;
-import com.tencent.mm.plugin.shake.b.g;
-import com.tencent.mm.plugin.shake.b.m;
+import com.tencent.mm.plugin.shake.model.f;
+import com.tencent.mm.plugin.shake.model.g;
+import com.tencent.mm.plugin.shake.model.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.i;
 import com.tencent.mm.ui.tools.l;
 
 public class ShakeMsgListUI
   extends MMActivity
 {
+  private int Mpv;
+  private int Mpw;
+  private g PCo;
+  private d PCp;
+  private ListView PCq;
   private int from;
-  private long jDz;
-  private n.d jSn;
-  private TextView kQD;
   private int limit;
   private int mType;
-  private int pdM;
-  private int pdN;
-  private g qPX;
-  private d qPY;
-  private ListView qPZ;
+  private long vaU;
+  private u.i vzr;
+  private TextView xbR;
   
   public ShakeMsgListUI()
   {
-    AppMethodBeat.i(24758);
-    this.qPX = null;
+    AppMethodBeat.i(28429);
+    this.PCo = null;
     this.limit = 0;
-    this.pdM = 0;
-    this.pdN = 0;
-    this.jSn = new ShakeMsgListUI.6(this);
-    AppMethodBeat.o(24758);
+    this.Mpv = 0;
+    this.Mpw = 0;
+    this.vzr = new u.i()
+    {
+      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(28428);
+        paramAnonymousMenuItem = ShakeMsgListUI.a(ShakeMsgListUI.this);
+        long l = ShakeMsgListUI.j(ShakeMsgListUI.this);
+        String str = "svrid = '" + String.valueOf(l) + "'";
+        Log.i("MicroMsg.ShakeMessageStorage", "delBySvrId = ".concat(String.valueOf(paramAnonymousMenuItem.db.delete(paramAnonymousMenuItem.getTableName(), str, null))));
+        ShakeMsgListUI.b(ShakeMsgListUI.this).onNotifyChange(null, null);
+        AppMethodBeat.o(28428);
+      }
+    };
+    AppMethodBeat.o(28429);
   }
   
-  private void clW()
+  private void gXK()
   {
-    AppMethodBeat.i(24764);
-    this.kQD.setText(2131303609);
-    this.kQD.setVisibility(0);
+    AppMethodBeat.i(28435);
+    this.xbR.setText(R.l.gVE);
+    this.xbR.setVisibility(0);
     enableOptionMenu(false);
-    AppMethodBeat.o(24764);
+    AppMethodBeat.o(28435);
   }
   
   public int getLayoutId()
   {
-    return 2130970715;
+    return R.i.goe;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(24762);
+    AppMethodBeat.i(28433);
     setMMTitle(getIntent().getStringExtra("shake_msg_list_title"));
-    setBackBtn(new ShakeMsgListUI.1(this));
-    addTextOptionMenu(0, getString(2131296891), new ShakeMsgListUI.2(this));
-    this.kQD = ((TextView)findViewById(2131821852));
-    if (this.pdM == 0) {
-      clW();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(28422);
+        ShakeMsgListUI.this.hideVKB();
+        ShakeMsgListUI.this.finish();
+        AppMethodBeat.o(28422);
+        return true;
+      }
+    });
+    addTextOptionMenu(0, getString(R.l.app_clear), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(28424);
+        k.a(ShakeMsgListUI.this.getContext(), true, ShakeMsgListUI.this.getString(R.l.gVD), "", ShakeMsgListUI.this.getString(R.l.say_hi_clean_all_btn), ShakeMsgListUI.this.getString(R.l.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(28423);
+            paramAnonymous2DialogInterface = ShakeMsgListUI.a(ShakeMsgListUI.this);
+            paramAnonymous2DialogInterface.db.delete(paramAnonymous2DialogInterface.getTableName(), null, null);
+            ShakeMsgListUI.b(ShakeMsgListUI.this).aNy();
+            ShakeMsgListUI.c(ShakeMsgListUI.this);
+            paramAnonymous2DialogInterface = new mz();
+            com.tencent.mm.plugin.shake.a locala = com.tencent.mm.plugin.shake.a.PyM;
+            com.tencent.mm.plugin.shake.a.a(202, paramAnonymous2DialogInterface);
+            AppMethodBeat.o(28423);
+          }
+        }, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
+        });
+        AppMethodBeat.o(28424);
+        return true;
+      }
+    });
+    this.xbR = ((TextView)findViewById(R.h.empty_msg_tip_tv));
+    if (this.Mpv == 0) {
+      gXK();
     }
-    this.qPZ = ((ListView)findViewById(2131827710));
-    Object localObject = getLayoutInflater().inflate(2130970596, null);
-    ((View)localObject).setOnClickListener(new ShakeMsgListUI.3(this, (View)localObject));
-    if ((this.pdM > 0) && (this.limit < this.pdM)) {
-      this.qPZ.addFooterView((View)localObject);
+    this.PCq = ((ListView)findViewById(R.h.fWt));
+    Object localObject = getLayoutInflater().inflate(R.i.say_hi_list_footer, null);
+    ((View)localObject).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(28425);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        ShakeMsgListUI.d(ShakeMsgListUI.this);
+        ShakeMsgListUI.b(ShakeMsgListUI.this).ajh(ShakeMsgListUI.e(ShakeMsgListUI.this));
+        if (ShakeMsgListUI.f(ShakeMsgListUI.this) <= ShakeMsgListUI.e(ShakeMsgListUI.this)) {
+          ShakeMsgListUI.g(ShakeMsgListUI.this).removeFooterView(this.Mpz);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(28425);
+      }
+    });
+    if ((this.Mpv > 0) && (this.limit < this.Mpv)) {
+      this.PCq.addFooterView((View)localObject);
     }
-    this.qPY = new d(this);
-    this.qPY.qPU = this.limit;
-    this.qPZ.setAdapter(this.qPY);
-    this.qPZ.setOnItemClickListener(new ShakeMsgListUI.4(this));
+    this.PCp = new d(this);
+    this.PCp.PCl = this.limit;
+    this.PCq.setAdapter(this.PCp);
+    this.PCq.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(28426);
+        b localb = new b();
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+        paramAnonymousAdapterView = (f)ShakeMsgListUI.b(ShakeMsgListUI.this).getItem(paramAnonymousInt);
+        if (!Util.isNullOrNil(paramAnonymousAdapterView.field_tag))
+        {
+          h.OAn.kvStat(11316, ShakeMsgListUI.h(ShakeMsgListUI.this) + "," + paramAnonymousAdapterView.field_tag);
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.field_tag);
+          c.b(ShakeMsgListUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+          paramAnonymousAdapterView = new mz();
+          paramAnonymousView = com.tencent.mm.plugin.shake.a.PyM;
+          com.tencent.mm.plugin.shake.a.a(201, paramAnonymousAdapterView);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(28426);
+      }
+    });
     localObject = new l(this);
-    this.qPZ.setOnItemLongClickListener(new ShakeMsgListUI.5(this, (l)localObject));
-    AppMethodBeat.o(24762);
+    this.PCq.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    {
+      public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(28427);
+        if (paramAnonymousInt < ShakeMsgListUI.g(ShakeMsgListUI.this).getHeaderViewsCount())
+        {
+          Log.w("MicroMsg.ShakeMsgListUI", "on header view long click, ignore");
+          AppMethodBeat.o(28427);
+          return true;
+        }
+        this.vzu.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeMsgListUI.this.getContext(), ShakeMsgListUI.i(ShakeMsgListUI.this));
+        AppMethodBeat.o(28427);
+        return true;
+      }
+    });
+    AppMethodBeat.o(28433);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(24759);
+    AppMethodBeat.i(28430);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("shake_msg_type", 0);
-    this.qPX = m.clo();
-    this.pdN = this.qPX.bbZ();
+    this.PCo = m.gXe();
+    this.Mpw = this.PCo.dkF();
     int i;
-    if (this.pdN == 0)
+    if (this.Mpw == 0)
     {
       i = 8;
       this.limit = i;
-      this.pdM = this.qPX.getCount();
+      this.Mpv = this.PCo.getCount();
       this.from = getIntent().getIntExtra("shake_msg_from", 1);
       if (this.from != 1) {
-        break label190;
+        break label191;
       }
-      h.qsU.e(11313, new Object[] { Integer.valueOf(this.pdN), e.cmo() });
+      h.OAn.b(11313, new Object[] { Integer.valueOf(this.Mpw), e.gYf() });
     }
     for (;;)
     {
-      paramBundle = this.qPX;
+      paramBundle = this.PCo;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("status", Integer.valueOf(1));
       paramBundle.db.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "1" });
       initView();
-      AppMethodBeat.o(24759);
+      AppMethodBeat.o(28430);
       return;
-      i = this.pdN;
+      i = this.Mpw;
       break;
-      label190:
-      h.qsU.e(11315, new Object[] { Integer.valueOf(this.pdN), e.cmo() });
+      label191:
+      h.OAn.b(11315, new Object[] { Integer.valueOf(this.Mpw), e.gYf() });
     }
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(24763);
+    AppMethodBeat.i(28434);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.jDz = ((f)this.qPY.getItem(paramView.position)).field_svrid;
-    paramContextMenu.add(paramView.position, 0, 0, 2131296901);
-    AppMethodBeat.o(24763);
+    this.vaU = ((f)this.PCp.getItem(paramView.position)).field_svrid;
+    paramContextMenu.add(paramView.position, 0, 0, R.l.app_delete);
+    AppMethodBeat.o(28434);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(24761);
-    this.qPY.bKb();
+    AppMethodBeat.i(28432);
+    this.PCp.fSd();
     super.onDestroy();
-    AppMethodBeat.o(24761);
+    AppMethodBeat.o(28432);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(24760);
+    AppMethodBeat.i(28431);
     super.onResume();
-    if (this.pdM != this.qPX.getCount())
+    if (this.Mpv != this.PCo.getCount())
     {
-      this.pdM = this.qPX.getCount();
-      if (this.pdM == 0) {
-        clW();
+      this.Mpv = this.PCo.getCount();
+      if (this.Mpv == 0) {
+        gXK();
       }
-      this.qPY.Ku();
+      this.PCp.aNy();
     }
-    this.qPY.notifyDataSetChanged();
-    AppMethodBeat.o(24760);
+    this.PCp.notifyDataSetChanged();
+    AppMethodBeat.o(28431);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -161,7 +282,7 @@ public class ShakeMsgListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeMsgListUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.biz.videostory.widget.easylyric;
 
-import zbe;
-
 class SingleLyricView$7
   implements Runnable
 {
@@ -9,12 +7,12 @@ class SingleLyricView$7
   
   public void run()
   {
-    SingleLyricView.a(this.this$0, zbe.a().a(this.a, this.b));
+    SingleLyricView.a(this.this$0, LyricParserHelper.a().a(this.a, this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.SingleLyricView.7
  * JD-Core Version:    0.7.0.1
  */

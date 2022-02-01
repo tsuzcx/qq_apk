@@ -11,7 +11,7 @@ public abstract class zzact
     return 0;
   }
   
-  public boolean jm()
+  public boolean jv()
   {
     return false;
   }

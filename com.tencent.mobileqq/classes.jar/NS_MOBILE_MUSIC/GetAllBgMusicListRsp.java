@@ -49,8 +49,9 @@ public final class GetAllBgMusicListRsp
     paramJceOutputStream.write(this.green_diamond_flag, 0);
     paramJceOutputStream.write(this.music_can_play, 1);
     paramJceOutputStream.write(this.all_music_nums, 2);
-    if (this.all_music_list != null) {
-      paramJceOutputStream.write(this.all_music_list, 3);
+    ArrayList localArrayList = this.all_music_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
     paramJceOutputStream.write(this.wifi_auto_play, 4);
     paramJceOutputStream.write(this.play_mode_flag, 5);
@@ -58,7 +59,7 @@ public final class GetAllBgMusicListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MUSIC.GetAllBgMusicListRsp
  * JD-Core Version:    0.7.0.1
  */

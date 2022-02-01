@@ -1,18 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 
 public class elm
   implements View.OnClickListener
 {
-  public elm(MyBusinessActivity paramMyBusinessActivity) {}
+  public elm(PhoneFrameActivity paramPhoneFrameActivity) {}
   
   public void onClick(View paramView)
   {
-    BindNumberBusinessActivity.a(this.a, "", true);
-    ReportController.b(this.a.b, "CliOper", "", "", "0X800421C", "0X800421C", 0, 0, "", "", "", "");
+    paramView = this.a.a.a();
+    if ((paramView != null) && (paramView.u == 11))
+    {
+      ForwardOperations.a(this.a, false, "shareToQQ", paramView.a);
+      com.tencent.mobileqq.app.PhoneContactManagerImp.c = false;
+    }
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

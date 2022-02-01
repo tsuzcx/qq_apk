@@ -1,73 +1,40 @@
 package com.tencent.xweb.xwalk;
 
-import android.webkit.ValueCallback;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.i;
-import com.tencent.xweb.m;
-import org.xwalk.core.XWalkJavascriptResult;
+import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
+import org.xwalk.core.XWalkCookieManager;
 
 public final class f
+  implements CookieInternal.ICookieSyncManagerInternal
 {
-  public static final class e
-    extends i
+  private XWalkCookieManager aioL;
+  
+  public f()
   {
-    public XWalkJavascriptResult BJA;
-    
-    public e(XWalkJavascriptResult paramXWalkJavascriptResult)
-    {
-      this.BJA = paramXWalkJavascriptResult;
-    }
-    
-    public final void cancel()
-    {
-      AppMethodBeat.i(85224);
-      this.BJA.cancel();
-      AppMethodBeat.o(85224);
-    }
-    
-    public final void confirm()
-    {
-      AppMethodBeat.i(85223);
-      this.BJA.confirm();
-      AppMethodBeat.o(85223);
-    }
-    
-    public final void confirmWithResult(String paramString)
-    {
-      AppMethodBeat.i(85222);
-      this.BJA.confirmWithResult(paramString);
-      AppMethodBeat.o(85222);
-    }
+    AppMethodBeat.i(154262);
+    AppMethodBeat.o(154262);
   }
   
-  public static final class h
-    implements m
+  public final void init(Context paramContext)
   {
-    ValueCallback<Boolean> BJC;
-    
-    public h(ValueCallback<Boolean> paramValueCallback)
-    {
-      this.BJC = paramValueCallback;
+    AppMethodBeat.i(212841);
+    this.aioL = new XWalkCookieManager();
+    AppMethodBeat.o(212841);
+  }
+  
+  public final void sync()
+  {
+    AppMethodBeat.i(154263);
+    if (this.aioL != null) {
+      this.aioL.flushCookieStore();
     }
-    
-    public final void cancel()
-    {
-      AppMethodBeat.i(85228);
-      this.BJC.onReceiveValue(Boolean.FALSE);
-      AppMethodBeat.o(85228);
-    }
-    
-    public final void proceed()
-    {
-      AppMethodBeat.i(85227);
-      this.BJC.onReceiveValue(Boolean.TRUE);
-      AppMethodBeat.o(85227);
-    }
+    AppMethodBeat.o(154263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.f
  * JD-Core Version:    0.7.0.1
  */

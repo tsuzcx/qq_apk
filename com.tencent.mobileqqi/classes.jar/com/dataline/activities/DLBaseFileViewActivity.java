@@ -127,28 +127,28 @@ public class DLBaseFileViewActivity
     {
       i(2130903486);
       x();
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231448));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232362));
-      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)findViewById(2131232363));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232364));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231777));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232375));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231520));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232377));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231447));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232361));
+      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)findViewById(2131232362));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232363));
+      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231776));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232374));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231519));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232376));
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362080));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232378));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232376));
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232366));
-      this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231506));
-      this.f = ((TextView)findViewById(2131232367));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232368));
-      this.g = ((TextView)findViewById(2131232713));
-      this.h = ((TextView)findViewById(2131232712));
-      this.i = ((TextView)findViewById(2131232714));
-      this.j = ((TextView)findViewById(2131232365));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232715));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232377));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232375));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232365));
+      this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231505));
+      this.f = ((TextView)findViewById(2131232366));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232367));
+      this.g = ((TextView)findViewById(2131232712));
+      this.h = ((TextView)findViewById(2131232711));
+      this.i = ((TextView)findViewById(2131232713));
+      this.j = ((TextView)findViewById(2131232364));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232714));
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.e = ((TextView)findViewById(2131232716));
+      this.e = ((TextView)findViewById(2131232715));
       this.e.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new c(this));
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new d(this));
@@ -656,7 +656,7 @@ public class DLBaseFileViewActivity
     {
     default: 
       return;
-    case 2131232713: 
+    case 2131232712: 
       switch (k.a[this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState.ordinal()])
       {
       default: 
@@ -669,17 +669,17 @@ public class DLBaseFileViewActivity
       }
       m();
       return;
-    case 2131232712: 
+    case 2131232711: 
       FileViewerFacade.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_b_of_type_JavaLangString);
       return;
-    case 2131232368: 
-    case 2131232378: 
+    case 2131232367: 
+    case 2131232377: 
       i();
       return;
-    case 2131231777: 
+    case 2131231776: 
       j();
       return;
-    case 2131232715: 
+    case 2131232714: 
       k();
       return;
     }

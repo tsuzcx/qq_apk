@@ -17,52 +17,52 @@ public final class d
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(77272);
+    AppMethodBeat.i(40541);
     if (paramObject == null)
     {
-      AppMethodBeat.o(77272);
+      AppMethodBeat.o(40541);
       return false;
     }
     if (paramObject == this)
     {
-      AppMethodBeat.o(77272);
+      AppMethodBeat.o(40541);
       return true;
     }
     if (!(paramObject instanceof d))
     {
-      AppMethodBeat.o(77272);
+      AppMethodBeat.o(40541);
       return false;
     }
     paramObject = (d)paramObject;
     if ((paramObject.key.equals(this.key)) && (paramObject.value.equals(this.value)))
     {
-      AppMethodBeat.o(77272);
+      AppMethodBeat.o(40541);
       return true;
     }
-    AppMethodBeat.o(77272);
+    AppMethodBeat.o(40541);
     return false;
-  }
-  
-  public final String erG()
-  {
-    AppMethodBeat.i(77271);
-    String str = c.encode(this.key).concat("=").concat(c.encode(this.value));
-    AppMethodBeat.o(77271);
-    return str;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(77273);
+    AppMethodBeat.i(40542);
     int i = this.key.hashCode();
     int j = this.value.hashCode();
-    AppMethodBeat.o(77273);
+    AppMethodBeat.o(40542);
     return i + j;
+  }
+  
+  public final String kJP()
+  {
+    AppMethodBeat.i(40540);
+    String str = c.cg(this.key).concat("=").concat(c.cg(this.value));
+    AppMethodBeat.o(40540);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.d
  * JD-Core Version:    0.7.0.1
  */

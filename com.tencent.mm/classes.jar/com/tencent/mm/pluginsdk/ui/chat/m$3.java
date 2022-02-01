@@ -1,39 +1,50 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.MotionEvent;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 final class m$3
-  implements AdapterView.OnItemClickListener
+  implements RecyclerView.k
 {
   m$3(m paramm) {}
   
-  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(62456);
-    if (this.vZl.vZh == null) {}
-    for (paramAdapterView = null;; paramAdapterView = this.vZl.vZh.ur(paramInt))
+    AppMethodBeat.i(245413);
+    switch (paramMotionEvent.getAction())
     {
-      if ((paramAdapterView != null) && (this.vZl.vZc != null) && (this.vZl.vWL != null))
-      {
-        this.vZl.vZc.B(paramAdapterView);
-        this.vZl.vWL.clear();
-        h.qsU.e(10994, new Object[] { Integer.valueOf(1), this.vZl.vZd, "", Integer.valueOf(paramInt), paramAdapterView.Al(), Integer.valueOf(this.vZl.vZh.getCount()) });
-      }
-      this.vZl.vZa.dismiss();
-      AppMethodBeat.o(62456);
-      return;
     }
+    for (;;)
+    {
+      AppMethodBeat.o(245413);
+      return false;
+      this.YkH.mHandler.sendEmptyMessage(20002);
+      continue;
+      this.YkH.mHandler.sendEmptyMessageDelayed(20001, 3000L);
+    }
+  }
+  
+  public final void aX(boolean paramBoolean) {}
+  
+  public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(245417);
+    b localb = new b();
+    localb.cH(paramRecyclerView);
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aYj());
+    a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V");
+    AppMethodBeat.o(245417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.m.3
  * JD-Core Version:    0.7.0.1
  */

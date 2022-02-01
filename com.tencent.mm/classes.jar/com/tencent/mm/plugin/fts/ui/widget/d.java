@@ -1,63 +1,20 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.tools.q;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import kotlin.Metadata;
 
-public final class d
-  extends q
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputProxy;", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputHelper$StateListener;", "getContentTV", "Landroid/widget/TextView;", "getLoadingView", "Landroid/widget/ProgressBar;", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface d
+  extends c.a
 {
-  public boolean ncj;
+  public abstract TextView dcE();
   
-  public final void a(FragmentActivity paramFragmentActivity, Menu paramMenu)
-  {
-    AppMethodBeat.i(62204);
-    if (paramFragmentActivity == null)
-    {
-      ab.w("MicroMsg.FTSVoiceSearchViewHelper", "on add search menu, activity is null");
-      AppMethodBeat.o(62204);
-      return;
-    }
-    if (this.Axf == null) {
-      this.Axf = new FTSActionBarSearchView(paramFragmentActivity);
-    }
-    super.a(paramFragmentActivity, paramMenu);
-    AppMethodBeat.o(62204);
-  }
-  
-  public final boolean amZ()
-  {
-    return this.ncj;
-  }
-  
-  public final void setCursorVisible(boolean paramBoolean)
-  {
-    AppMethodBeat.i(62205);
-    ((FTSActionBarSearchView)this.Axf).setCursorVisible(paramBoolean);
-    AppMethodBeat.o(62205);
-  }
-  
-  public final void setSearchContent(String paramString)
-  {
-    AppMethodBeat.i(62206);
-    try
-    {
-      super.setSearchContent(paramString);
-      AppMethodBeat.o(62206);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.FTSVoiceSearchViewHelper", "setSearchContent exception: " + paramString.getMessage());
-      AppMethodBeat.o(62206);
-    }
-  }
+  public abstract ProgressBar fyw();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.d
  * JD-Core Version:    0.7.0.1
  */

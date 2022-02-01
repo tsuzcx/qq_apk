@@ -42,27 +42,16 @@ class eo$c
   public boolean cW()
   {
     long l2 = Math.abs(System.currentTimeMillis() - this.nG);
-    long l1;
-    if (this.oS > 0L)
-    {
-      l1 = this.oS;
-      if (l2 < l1) {
-        break label50;
-      }
-    }
-    label50:
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {}
-      return bool;
+    long l1 = this.oS;
+    if (l1 <= 0L) {
       l1 = 180000L;
-      break;
     }
+    return l2 >= l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.eo.c
  * JD-Core Version:    0.7.0.1
  */

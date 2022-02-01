@@ -20,12 +20,9 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bhtb;
-import bhuw;
-import bhux;
-import bhuy;
-import biby;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.ReflectionUtil;
+import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 
 public abstract class AdapterView<T extends Adapter>
@@ -42,29 +39,29 @@ public abstract class AdapterView<T extends Adapter>
   static final int SYNC_SELECTED_POSITION = 0;
   public static final String TAG = "XListView";
   boolean mBlockLayoutRequests = false;
-  public boolean mDataChanged;
+  boolean mDataChanged;
   private boolean mDesiredFocusableInTouchModeState;
   private boolean mDesiredFocusableState;
   private View mEmptyView;
   @ViewDebug.ExportedProperty(category="scrolling")
-  public int mFirstPosition;
+  public int mFirstPosition = 0;
   boolean mInLayout = false;
   @ViewDebug.ExportedProperty(category="list")
-  public int mItemCount;
+  protected int mItemCount;
   int mLayoutHeight;
-  public boolean mNeedSync = false;
+  boolean mNeedSync = false;
   @ViewDebug.ExportedProperty(category="list")
-  public int mNextSelectedPosition = -1;
-  public long mNextSelectedRowId = -9223372036854775808L;
-  public int mOldItemCount;
+  int mNextSelectedPosition = -1;
+  long mNextSelectedRowId = -9223372036854775808L;
+  int mOldItemCount;
   protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  bhuw mOnItemClickListener;
-  bhux mOnItemLongClickListener;
-  bhuy mOnItemSelectedListener;
+  AdapterView.OnItemClickListener mOnItemClickListener;
+  AdapterView.OnItemLongClickListener mOnItemLongClickListener;
+  AdapterView.OnItemSelectedListener mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
-  public int mSelectedPosition = -1;
-  public long mSelectedRowId = -9223372036854775808L;
+  protected int mSelectedPosition = -1;
+  long mSelectedRowId = -9223372036854775808L;
   private AdapterView<T>.SelectionNotifier mSelectionNotifier;
   int mSpecificBottom;
   int mSpecificTop;
@@ -111,7 +108,11 @@ public abstract class AdapterView<T extends Adapter>
       int i = Class.forName("com.android.internal.R$styleable").getField(paramString).getInt(null);
       return i;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label16:
+      break label16;
+    }
     return -1;
   }
   
@@ -122,14 +123,18 @@ public abstract class AdapterView<T extends Adapter>
       paramString = (int[])Class.forName("com.android.internal.R$styleable").getField(paramString).get(null);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label22:
+      break label22;
+    }
     return new int[0];
   }
   
   private boolean isScrollableForAccessibility()
   {
-    boolean bool2 = false;
     Adapter localAdapter = getAdapter();
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (localAdapter != null)
     {
@@ -152,7 +157,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    biby.a(paramString);
+    TraceUtils.traceBegin(paramString);
   }
   
   public static void traceEnd() {}
@@ -162,26 +167,31 @@ public abstract class AdapterView<T extends Adapter>
     if (isInFilterMode()) {
       paramBoolean = false;
     }
+    View localView;
     if (paramBoolean)
     {
-      if (this.mEmptyView != null)
+      localView = this.mEmptyView;
+      if (localView != null)
       {
-        this.mEmptyView.setVisibility(0);
+        localView.setVisibility(0);
         setVisibility(8);
       }
-      for (;;)
+      else
       {
-        if (this.mDataChanged) {
-          onLayout(false, this.mLeft, this.mTop, this.mRight, this.mBottom);
-        }
-        return;
         setVisibility(0);
       }
+      if (this.mDataChanged) {
+        onLayout(false, getLeft(), getTop(), getRight(), getBottom());
+      }
     }
-    if (this.mEmptyView != null) {
-      this.mEmptyView.setVisibility(8);
+    else
+    {
+      localView = this.mEmptyView;
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+      setVisibility(0);
     }
-    setVisibility(0);
   }
   
   public void addView(View paramView)
@@ -209,55 +219,46 @@ public abstract class AdapterView<T extends Adapter>
     return (super.canAnimate()) && (this.mItemCount > 0);
   }
   
-  public void checkFocus()
+  void checkFocus()
   {
-    boolean bool2 = false;
     Adapter localAdapter = getAdapter();
+    boolean bool2 = false;
     int i;
-    if ((localAdapter == null) || (localAdapter.getCount() == 0))
-    {
+    if ((localAdapter != null) && (localAdapter.getCount() != 0)) {
+      i = 0;
+    } else {
       i = 1;
-      if ((i != 0) && (!isInFilterMode())) {
-        break label111;
-      }
-      i = 1;
-      label38:
-      if ((i == 0) || (!this.mDesiredFocusableInTouchModeState)) {
-        break label116;
-      }
-      bool1 = true;
-      label51:
-      super.setFocusableInTouchMode(bool1);
-      if ((i == 0) || (!this.mDesiredFocusableState)) {
-        break label121;
-      }
     }
-    label111:
-    label116:
-    label121:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      super.setFocusable(bool1);
-      if (this.mEmptyView != null)
-      {
-        if (localAdapter != null)
-        {
-          bool1 = bool2;
-          if (!localAdapter.isEmpty()) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-        updateEmptyStatus(bool1);
-      }
-      return;
+    if ((i != 0) && (!isInFilterMode())) {
       i = 0;
-      break;
-      i = 0;
-      break label38;
+    } else {
+      i = 1;
+    }
+    boolean bool1;
+    if ((i != 0) && (this.mDesiredFocusableInTouchModeState)) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break label51;
+    }
+    super.setFocusableInTouchMode(bool1);
+    if ((i != 0) && (this.mDesiredFocusableState)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    super.setFocusable(bool1);
+    if (this.mEmptyView != null)
+    {
+      if (localAdapter != null)
+      {
+        bool1 = bool2;
+        if (!localAdapter.isEmpty()) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      updateEmptyStatus(bool1);
     }
   }
   
@@ -289,77 +290,64 @@ public abstract class AdapterView<T extends Adapter>
   
   int findSyncPosition()
   {
-    int i2 = this.mItemCount;
-    int n;
-    if (i2 == 0)
-    {
-      n = -1;
-      return n;
+    int i = this.mItemCount;
+    if (i == 0) {
+      return -1;
     }
     long l1 = this.mSyncRowId;
-    int i = this.mSyncPosition;
+    int j = this.mSyncPosition;
     if (l1 == -9223372036854775808L) {
       return -1;
     }
-    i = Math.min(i2 - 1, Math.max(0, i));
+    j = Math.max(0, j);
+    int i2 = i - 1;
+    int m = Math.min(i2, j);
     long l2 = SystemClock.uptimeMillis();
-    int j = 0;
     Adapter localAdapter = getAdapter();
-    label72:
-    int i1;
-    int k;
-    if (localAdapter == null)
-    {
+    if (localAdapter == null) {
       return -1;
-      if ((i1 != 0) || ((j != 0) && (n == 0)))
+    }
+    i = m;
+    int k = i;
+    j = i;
+    for (i = m;; i = j)
+    {
+      for (m = 0;; m = 1)
       {
-        k += 1;
-        j = 0;
+        int n;
+        int i1;
+        do
+        {
+          if (SystemClock.uptimeMillis() > l2 + 100L) {
+            break label206;
+          }
+          if (localAdapter.getItemId(i) == l1) {
+            return i;
+          }
+          if (j == i2) {
+            n = 1;
+          } else {
+            n = 0;
+          }
+          if (k == 0) {
+            i1 = 1;
+          } else {
+            i1 = 0;
+          }
+          if ((n != 0) && (i1 != 0)) {
+            return -1;
+          }
+          if ((i1 != 0) || ((m != 0) && (n == 0))) {
+            break;
+          }
+        } while ((n == 0) && ((m != 0) || (i1 != 0)));
+        k -= 1;
         i = k;
       }
+      j += 1;
     }
-    for (;;)
-    {
-      int m;
-      if (SystemClock.uptimeMillis() <= l2 + 100L)
-      {
-        n = i;
-        if (localAdapter.getItemId(i) == l1) {
-          break;
-        }
-        if (k != i2 - 1) {
-          break label155;
-        }
-        n = 1;
-        if (m != 0) {
-          break label161;
-        }
-      }
-      label155:
-      label161:
-      for (i1 = 1;; i1 = 0)
-      {
-        if ((n == 0) || (i1 == 0)) {
-          break label165;
-        }
-        return -1;
-        n = 0;
-        break;
-      }
-      label165:
-      break label72;
-      if ((n != 0) || ((j == 0) && (i1 == 0)))
-      {
-        m -= 1;
-        j = 1;
-        i = m;
-        continue;
-        m = i;
-        n = i;
-        k = i;
-        i = n;
-      }
-    }
+    label206:
+    return -1;
   }
   
   public abstract T getAdapter();
@@ -383,19 +371,19 @@ public abstract class AdapterView<T extends Adapter>
   public Object getItemAtPosition(int paramInt)
   {
     Adapter localAdapter = getAdapter();
-    if ((localAdapter == null) || (paramInt < 0)) {
-      return null;
+    if ((localAdapter != null) && (paramInt >= 0)) {
+      return localAdapter.getItem(paramInt);
     }
-    return localAdapter.getItem(paramInt);
+    return null;
   }
   
   public long getItemIdAtPosition(int paramInt)
   {
     Adapter localAdapter = getAdapter();
-    if ((localAdapter == null) || (paramInt < 0)) {
-      return -9223372036854775808L;
+    if ((localAdapter != null) && (paramInt >= 0)) {
+      return localAdapter.getItemId(paramInt);
     }
-    return localAdapter.getItemId(paramInt);
+    return -9223372036854775808L;
   }
   
   public int getLastVisiblePosition()
@@ -403,17 +391,17 @@ public abstract class AdapterView<T extends Adapter>
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final bhuw getOnItemClickListener()
+  public final AdapterView.OnItemClickListener getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final bhux getOnItemLongClickListener()
+  public final AdapterView.OnItemLongClickListener getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final bhuy getOnItemSelectedListener()
+  public final AdapterView.OnItemSelectedListener getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -431,26 +419,29 @@ public abstract class AdapterView<T extends Adapter>
         }
         paramView = localView;
       }
-      j = getChildCount();
-    }
-    catch (ClassCastException paramView)
-    {
-      return -1;
-    }
-    catch (NullPointerException paramView)
-    {
-      return -1;
-    }
-    int j;
-    int i = 0;
-    while (i < j)
-    {
-      if (getChildAt(i).equals(paramView)) {
-        return i + this.mFirstPosition;
+      int j = getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        if (getChildAt(i).equals(paramView)) {
+          return this.mFirstPosition + i;
+        }
+        i += 1;
       }
-      i += 1;
+      return -1;
     }
+    catch (ClassCastException|NullPointerException paramView) {}
     return -1;
+  }
+  
+  protected int getQQGroupFlag()
+  {
+    return ((Integer)ReflectionUtil.a(this, "android.view.ViewGroup", "mGroupFlags", Integer.valueOf(0))).intValue();
+  }
+  
+  protected int getQQPersistentDrawingCache()
+  {
+    return ((Integer)ReflectionUtil.a(this, "android.view.ViewGroup", "mPersistentDrawingCache", Integer.valueOf(0))).intValue();
   }
   
   public Object getSelectedItem()
@@ -482,19 +473,22 @@ public abstract class AdapterView<T extends Adapter>
     if (this.mVerticalScrollFactor == 0.0F)
     {
       TypedValue localTypedValue = new TypedValue();
-      if (!getContext().getTheme().resolveAttribute(16842829, localTypedValue, true)) {
+      if (getContext().getTheme().resolveAttribute(16842829, localTypedValue, true)) {
+        this.mVerticalScrollFactor = localTypedValue.getDimension(getContext().getResources().getDisplayMetrics());
+      } else {
         throw new IllegalStateException("Expected theme to define listPreferredItemHeight.");
       }
-      this.mVerticalScrollFactor = localTypedValue.getDimension(getContext().getResources().getDisplayMetrics());
     }
     return this.mVerticalScrollFactor;
   }
   
   void handleDataChanged()
   {
-    int m = this.mItemCount;
+    int k = this.mItemCount;
+    int m = 1;
     int i;
-    if (m > 0) {
+    if (k > 0)
+    {
       if (this.mNeedSync)
       {
         this.mNeedSync = false;
@@ -503,83 +497,81 @@ public abstract class AdapterView<T extends Adapter>
         {
           setNextSelectedPositionInt(i);
           i = 1;
-          if (i == 0)
-          {
-            int k = getSelectedItemPosition();
-            int j = k;
-            if (k >= m) {
-              j = m - 1;
-            }
-            k = j;
-            if (j < 0) {
-              k = 0;
-            }
-            j = lookForSelectablePosition(k, true);
-            if (j >= 0) {
-              break label153;
-            }
-            j = lookForSelectablePosition(k, false);
-            label97:
-            if (j >= 0)
-            {
-              setNextSelectedPositionInt(j);
-              checkSelectionChanged();
-              i = 1;
-            }
-          }
+          break label55;
+        }
+      }
+      i = 0;
+      label55:
+      if (i == 0)
+      {
+        int j = getSelectedItemPosition();
+        if (j >= k) {
+          j = k - 1;
+        }
+        k = j;
+        if (j < 0) {
+          k = 0;
+        }
+        int n = lookForSelectablePosition(k, true);
+        j = n;
+        if (n < 0) {
+          j = lookForSelectablePosition(k, false);
+        }
+        if (j >= 0)
+        {
+          setNextSelectedPositionInt(j);
+          checkSelectionChanged();
+          i = m;
+          break label131;
         }
       }
     }
-    for (;;)
+    else
     {
-      if (i == 0)
-      {
-        this.mSelectedPosition = -1;
-        this.mSelectedRowId = -9223372036854775808L;
-        this.mNextSelectedPosition = -1;
-        this.mNextSelectedRowId = -9223372036854775808L;
-        this.mNeedSync = false;
-        checkSelectionChanged();
-      }
-      return;
-      continue;
-      label153:
-      break label97;
       i = 0;
-      break;
-      i = 0;
+    }
+    label131:
+    if (i == 0)
+    {
+      this.mSelectedPosition = -1;
+      this.mSelectedRowId = -9223372036854775808L;
+      this.mNextSelectedPosition = -1;
+      this.mNextSelectedRowId = -9223372036854775808L;
+      this.mNeedSync = false;
+      checkSelectionChanged();
     }
   }
   
   protected void invalidateParentCaches()
   {
-    if ((getParent() instanceof View)) {}
-    try
-    {
-      Field localField = View.class.getDeclaredField("mPrivateFlags");
-      localField.setAccessible(true);
-      int i = localField.getInt(getParent());
-      localField.set(getParent(), Integer.valueOf(i | 0x80000000));
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("XListView", 2, localException.getMessage(), localException);
+    if ((getParent() instanceof View)) {
+      try
+      {
+        Field localField = ReflectionUtil.a("android.view.View", "mPrivateFlags");
+        localField.setAccessible(true);
+        int i = localField.getInt(getParent());
+        localField.set(getParent(), Integer.valueOf(i | 0x80000000));
+        return;
       }
-      ((View)getParent()).invalidate();
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("XListView", 2, localException.getMessage(), localException);
+        }
+        ((View)getParent()).invalidate();
+      }
     }
   }
   
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((bhtb.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
+    if ((VersionUtils.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
       ((View)getParent()).invalidate();
     }
   }
   
-  protected boolean isInFilterMode()
+  boolean isInFilterMode()
   {
     return false;
   }
@@ -587,7 +579,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(14)
   public boolean isInScrollingContainer()
   {
-    if (bhtb.d()) {
+    if (VersionUtils.d()) {
       for (ViewParent localViewParent = getParent(); (localViewParent != null) && ((localViewParent instanceof ViewGroup)); localViewParent = localViewParent.getParent()) {
         if (((ViewGroup)localViewParent).shouldDelayChildPressedState()) {
           return true;
@@ -600,6 +592,11 @@ public abstract class AdapterView<T extends Adapter>
   int lookForSelectablePosition(int paramInt, boolean paramBoolean)
   {
     return paramInt;
+  }
+  
+  public void offsetChildrenTopAndBottomWrap(int paramInt)
+  {
+    ReflectionUtil.a(this, "android.view.ViewGroup", "offsetChildrenTopAndBottom", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
   }
   
   protected void onDetachedFromWindow()
@@ -629,19 +626,15 @@ public abstract class AdapterView<T extends Adapter>
     try
     {
       super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-      paramAccessibilityNodeInfo.setScrollable(isScrollableForAccessibility());
-      View localView = getSelectedView();
-      if (localView != null) {
-        paramAccessibilityNodeInfo.setEnabled(localView.isEnabled());
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
+    }
+    paramAccessibilityNodeInfo.setScrollable(isScrollableForAccessibility());
+    View localView = getSelectedView();
+    if (localView != null) {
+      paramAccessibilityNodeInfo.setEnabled(localView.isEnabled());
     }
   }
   
@@ -673,7 +666,6 @@ public abstract class AdapterView<T extends Adapter>
   
   public boolean performItemClick(View paramView, int paramInt, long paramLong)
   {
-    boolean bool = false;
     if (this.mOnItemClickListener != null)
     {
       playSoundEffect(0);
@@ -681,43 +673,42 @@ public abstract class AdapterView<T extends Adapter>
         paramView.sendAccessibilityEvent(1);
       }
       this.mOnItemClickListener.onItemClick(this, paramView, paramInt, paramLong);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
-  public void rememberSyncState()
+  void rememberSyncState()
   {
     if (getChildCount() > 0)
     {
       this.mNeedSync = true;
       this.mSyncHeight = this.mLayoutHeight;
-      if (this.mSelectedPosition >= 0)
+      int i = this.mSelectedPosition;
+      if (i >= 0)
       {
-        localView = getChildAt(this.mSelectedPosition - this.mFirstPosition);
+        localView = getChildAt(i - this.mFirstPosition);
         this.mSyncRowId = this.mNextSelectedRowId;
         this.mSyncPosition = this.mNextSelectedPosition;
         if (localView != null) {
           this.mSpecificTop = localView.getTop();
         }
         this.mSyncMode = 0;
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    View localView = getChildAt(0);
-    Adapter localAdapter = getAdapter();
-    if ((this.mFirstPosition >= 0) && (this.mFirstPosition < localAdapter.getCount())) {}
-    for (this.mSyncRowId = localAdapter.getItemId(this.mFirstPosition);; this.mSyncRowId = -1L)
-    {
+      View localView = getChildAt(0);
+      Adapter localAdapter = getAdapter();
+      i = this.mFirstPosition;
+      if ((i >= 0) && (i < localAdapter.getCount())) {
+        this.mSyncRowId = localAdapter.getItemId(this.mFirstPosition);
+      } else {
+        this.mSyncRowId = -1L;
+      }
       this.mSyncPosition = this.mFirstPosition;
       if (localView != null) {
         this.mSpecificTop = localView.getTop();
       }
       this.mSyncMode = 1;
-      return;
     }
   }
   
@@ -736,26 +727,23 @@ public abstract class AdapterView<T extends Adapter>
     throw new UnsupportedOperationException("removeViewAt(int) is not supported in AdapterView");
   }
   
-  protected void selectionChanged()
+  void selectionChanged()
   {
-    if (this.mOnItemSelectedListener != null)
-    {
-      if ((!this.mInLayout) && (!this.mBlockLayoutRequests)) {
-        break label78;
+    if (this.mOnItemSelectedListener != null) {
+      if ((!this.mInLayout) && (!this.mBlockLayoutRequests))
+      {
+        fireOnSelected();
       }
-      if (this.mSelectionNotifier == null) {
-        this.mSelectionNotifier = new AdapterView.SelectionNotifier(this, null);
+      else
+      {
+        if (this.mSelectionNotifier == null) {
+          this.mSelectionNotifier = new AdapterView.SelectionNotifier(this, null);
+        }
+        post(this.mSelectionNotifier);
       }
-      post(this.mSelectionNotifier);
     }
-    for (;;)
-    {
-      if ((this.mSelectedPosition != -1) && (isShown()) && (!isInTouchMode())) {
-        sendAccessibilityEvent(4);
-      }
-      return;
-      label78:
-      fireOnSelected();
+    if ((this.mSelectedPosition != -1) && (isShown()) && (!isInTouchMode())) {
+      sendAccessibilityEvent(4);
     }
   }
   
@@ -765,79 +753,76 @@ public abstract class AdapterView<T extends Adapter>
   {
     this.mEmptyView = paramView;
     paramView = getAdapter();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      updateEmptyStatus(bool);
-      return;
+    boolean bool;
+    if ((paramView != null) && (!paramView.isEmpty())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    updateEmptyStatus(bool);
   }
   
   public void setFocusable(boolean paramBoolean)
   {
-    boolean bool = true;
     Adapter localAdapter = getAdapter();
+    boolean bool = true;
     int i;
-    if ((localAdapter == null) || (localAdapter.getCount() == 0))
-    {
-      i = 1;
-      this.mDesiredFocusableState = paramBoolean;
-      if (!paramBoolean) {
-        this.mDesiredFocusableInTouchModeState = false;
-      }
-      if (!paramBoolean) {
-        break label69;
-      }
-      paramBoolean = bool;
-      if (i != 0) {
-        if (!isInFilterMode()) {
-          break label69;
-        }
-      }
-    }
-    label69:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      super.setFocusable(paramBoolean);
-      return;
+    if ((localAdapter != null) && (localAdapter.getCount() != 0)) {
       i = 0;
-      break;
+    } else {
+      i = 1;
     }
+    this.mDesiredFocusableState = paramBoolean;
+    if (!paramBoolean) {
+      this.mDesiredFocusableInTouchModeState = false;
+    }
+    if (paramBoolean)
+    {
+      paramBoolean = bool;
+      if (i == 0) {
+        break label71;
+      }
+      if (isInFilterMode())
+      {
+        paramBoolean = bool;
+        break label71;
+      }
+    }
+    paramBoolean = false;
+    label71:
+    super.setFocusable(paramBoolean);
   }
   
   public void setFocusableInTouchMode(boolean paramBoolean)
   {
-    boolean bool = true;
     Adapter localAdapter = getAdapter();
+    boolean bool2 = false;
     int i;
-    if ((localAdapter == null) || (localAdapter.getCount() == 0))
-    {
-      i = 1;
-      this.mDesiredFocusableInTouchModeState = paramBoolean;
-      if (paramBoolean) {
-        this.mDesiredFocusableState = true;
-      }
-      if (!paramBoolean) {
-        break label69;
-      }
-      paramBoolean = bool;
-      if (i != 0) {
-        if (!isInFilterMode()) {
-          break label69;
-        }
-      }
-    }
-    label69:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      super.setFocusableInTouchMode(paramBoolean);
-      return;
+    if ((localAdapter != null) && (localAdapter.getCount() != 0)) {
       i = 0;
-      break;
+    } else {
+      i = 1;
     }
+    this.mDesiredFocusableInTouchModeState = paramBoolean;
+    if (paramBoolean) {
+      this.mDesiredFocusableState = true;
+    }
+    boolean bool1 = bool2;
+    if (paramBoolean) {
+      if (i != 0)
+      {
+        bool1 = bool2;
+        if (!isInFilterMode()) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    super.setFocusableInTouchMode(bool1);
   }
   
-  public void setNextSelectedPositionInt(int paramInt)
+  void setNextSelectedPositionInt(int paramInt)
   {
     this.mNextSelectedPosition = paramInt;
     this.mNextSelectedRowId = getItemIdAtPosition(paramInt);
@@ -853,25 +838,30 @@ public abstract class AdapterView<T extends Adapter>
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(bhuw parambhuw)
+  public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.mOnItemClickListener = parambhuw;
+    this.mOnItemClickListener = paramOnItemClickListener;
   }
   
-  public void setOnItemLongClickListener(bhux parambhux)
+  public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = parambhux;
+    this.mOnItemLongClickListener = paramOnItemLongClickListener;
   }
   
-  public void setOnItemSelectedListener(bhuy parambhuy)
+  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.mOnItemSelectedListener = parambhuy;
+    this.mOnItemSelectedListener = paramOnItemSelectedListener;
   }
   
-  public void setSelectedPositionInt(int paramInt)
+  protected void setQQGroupFlag(int paramInt)
+  {
+    ReflectionUtil.b(this, "android.view.ViewGroup", "mGroupFlags", Integer.valueOf(paramInt));
+  }
+  
+  void setSelectedPositionInt(int paramInt)
   {
     this.mSelectedPosition = paramInt;
     this.mSelectedRowId = getItemIdAtPosition(paramInt);
@@ -881,7 +871,7 @@ public abstract class AdapterView<T extends Adapter>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AdapterView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ public final class RespondHeader
   extends JceStruct
 {
   public String account = "";
-  public int cmd;
+  public int cmd = 0;
   public String ksid = "";
-  public int requestID;
-  public int result;
-  public int svrSeqNo;
+  public int requestID = 0;
+  public int result = 0;
+  public int svrSeqNo = 0;
   public String tips = "";
-  public int ver;
+  public int ver = 0;
   
   public RespondHeader() {}
   
@@ -51,14 +51,15 @@ public final class RespondHeader
     paramJceOutputStream.write(this.svrSeqNo, 4);
     paramJceOutputStream.write(this.result, 5);
     paramJceOutputStream.write(this.ksid, 6);
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 7);
+    String str = this.tips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RespondHeader
  * JD-Core Version:    0.7.0.1
  */

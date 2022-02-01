@@ -1,43 +1,49 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import bkhg;
+import android.view.MotionEvent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
+import cooperation.vip.webview.controller.BaseTranslucentController;
 import mqq.app.AppRuntime;
 
 public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
-  private static volatile long jdField_a_of_type_Long;
-  private bkhg jdField_a_of_type_Bkhg;
+  private static volatile long b;
+  private BaseTranslucentController a;
   
-  private bkhg a()
+  private BaseTranslucentController a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
     {
-      switch (localIntent.getIntExtra("translucent_controller", 0))
-      {
-      default: 
-        return new bkhg(this);
+      if (localIntent.getIntExtra("translucent_controller", 0) != 0) {
+        return new BaseTranslucentController(this);
       }
-      return new bkhg(this);
+      return new BaseTranslucentController(this);
     }
-    return new bkhg(this);
+    return new BaseTranslucentController(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long > 60000L)
+    if (l - b > 60000L)
     {
-      QLog.e("WebLog_QQBrowserActivity", 1, "  nowCallTime =" + l + "gLastLoadToolsProcessTime =" + jdField_a_of_type_Long);
-      jdField_a_of_type_Long = l;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("  nowCallTime =");
+      localStringBuilder.append(l);
+      localStringBuilder.append("gLastLoadToolsProcessTime =");
+      localStringBuilder.append(b);
+      QLog.e("WebLog_QQBrowserActivity", 1, localStringBuilder.toString());
+      b = l;
       b(paramQQAppInterface);
     }
   }
@@ -45,36 +51,35 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public static void b(QQAppInterface paramQQAppInterface)
   {
     QLog.i("WebLog_QQBrowserActivity", 1, "preloadToolsProcessImpl running");
-    Object localObject = null;
     if (paramQQAppInterface == null)
     {
-      paramQQAppInterface = localObject;
-      if (BaseApplicationImpl.getApplication() != null)
-      {
-        paramQQAppInterface = localObject;
-        if (BaseApplicationImpl.getApplication().getRuntime() == null) {}
+      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
+        paramQQAppInterface = (IWebProcessManagerService)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IWebProcessManagerService.class, "multi");
+      } else {
+        paramQQAppInterface = null;
       }
     }
-    for (paramQQAppInterface = (WebProcessManager)BaseApplicationImpl.getApplication().getRuntime().getManager(13);; paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(13))
-    {
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(1);
-      }
-      return;
+    else {
+      paramQQAppInterface = (IWebProcessManagerService)paramQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
+    }
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.startWebProcess(1, null);
     }
   }
   
-  public void a(WebView paramWebView, String paramString)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.e();
-    }
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Bkhg != null) && (this.jdField_a_of_type_Bkhg.a())) {
+    BaseTranslucentController localBaseTranslucentController = this.a;
+    if ((localBaseTranslucentController != null) && (localBaseTranslucentController.f())) {
       super.doOnBackPressed();
     }
   }
@@ -82,45 +87,65 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.a();
+    paramBundle = this.a;
+    if (paramBundle != null) {
+      paramBundle.a();
     }
     return bool;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.d();
+    BaseTranslucentController localBaseTranslucentController = this.a;
+    if (localBaseTranslucentController != null) {
+      localBaseTranslucentController.d();
     }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.b();
+    BaseTranslucentController localBaseTranslucentController = this.a;
+    if (localBaseTranslucentController != null) {
+      localBaseTranslucentController.b();
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.c();
+    BaseTranslucentController localBaseTranslucentController = this.a;
+    if (localBaseTranslucentController != null) {
+      localBaseTranslucentController.c();
     }
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    this.jdField_a_of_type_Bkhg = a();
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    this.a = a();
     super.onCreate(paramBundle);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    paramWebView = this.a;
+    if (paramWebView != null) {
+      paramWebView.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

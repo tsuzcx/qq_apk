@@ -1,29 +1,17 @@
-import android.os.Handler;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import com.tencent.open.appcenter.QZoneAppCenterActivity;
 import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
 
 public class hka
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
   public hka(QZoneAppCenterActivity paramQZoneAppCenterActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    LogUtility.b("AppViewBaseActivity", "button onClick!!!");
-    if (TextUtils.isEmpty(QZoneAppCenterActivity.a(this.a)))
-    {
-      this.a.d();
-      this.a.e = "";
-      this.a.f = "";
-      QZoneAppCenterActivity.a(this.a);
-      QZoneAppCenterActivity.a(this.a).sendEmptyMessage(3);
-      return;
-    }
-    this.a.a.loadUrl("javascript:JsBridge.callback(\"" + QZoneAppCenterActivity.b(this.a) + "\");void(0);");
+    LogUtility.c(QZoneAppCenterActivity.c, "webView onLongClick");
+    return true;
   }
 }
 

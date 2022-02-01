@@ -1,257 +1,93 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.h;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.g.a.lt;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.protocal.protobuf.dr;
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.z;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.cp.g;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.protocal.protobuf.aeo;
+import com.tencent.mm.protocal.protobuf.gkt;
+import com.tencent.mm.protocal.protobuf.gkv;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Objects;
+import junit.framework.Assert;
 
 public final class r
-  extends p
+  extends com.tencent.mm.plugin.appbrand.networking.b<gkv>
 {
-  public r(com.tencent.mm.sdk.e.e parame)
+  final c rr;
+  
+  public r(String paramString1, String paramString2)
   {
-    super(parame);
-    AppMethodBeat.i(129901);
-    Cursor localCursor;
-    if (ayz())
+    this(paramString1, paramString2, null, 0, localaeo);
+    AppMethodBeat.i(44853);
+    AppMethodBeat.o(44853);
+  }
+  
+  public r(String paramString1, String paramString2, String paramString3, int paramInt, aeo paramaeo)
+  {
+    super(paramString2, paramString1);
+    AppMethodBeat.i(323362);
+    if ((BuildInfo.DEBUG) && (Util.isNullOrNil(paramString1)) && (Util.isNullOrNil(paramString2))) {
+      Assert.fail("username and appId should not be null or nil!");
+    }
+    if ((BuildInfo.DEBUG) && (!Util.isNullOrNil(paramString1)) && (!paramString1.endsWith("@app"))) {
+      Assert.fail("username should end with '@app', call @smoothieli to fix this");
+    }
+    com.tencent.mm.am.c.a locala = new com.tencent.mm.am.c.a();
+    gkt localgkt = new gkt();
+    localgkt.aaLU = paramString1;
+    Object localObject;
+    if (Util.isNullOrNil(paramString1))
     {
-      parame = (f)parame;
-      if (!com.tencent.mm.kernel.g.RL().Ru().getBoolean(ac.a.yDn, false))
-      {
-        ab.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "before fix");
-        localCursor = parame.a("select appInfo from WxaAttributesTable", null, 2);
-        if ((localCursor == null) || (localCursor.isClosed()))
-        {
-          ab.e("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "try fix but db not working");
-          AppMethodBeat.o(129901);
-          return;
-        }
-        if (!localCursor.moveToFirst()) {
-          break label362;
-        }
-        Object localObject1 = new LinkedList();
-        Object localObject2 = localCursor.getString(0);
-        if (!bo.isNullOrNil((String)localObject2)) {}
-        for (;;)
-        {
-          try
-          {
-            localObject3 = new JSONObject((String)localObject2);
-            localObject2 = ((JSONObject)localObject3).optString("Appid");
-            localObject3 = ((JSONObject)localObject3).optString("RoundedSquareIconUrl");
-            if (!bo.isNullOrNil((String)localObject2))
-            {
-              boolean bool = bo.isNullOrNil((String)localObject3);
-              if (!bool) {
-                continue;
-              }
-            }
-          }
-          catch (Exception localException)
-          {
-            Object localObject3;
-            long l;
-            ContentValues localContentValues;
-            continue;
-            parame.nY(l);
-            ab.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "fix done");
-          }
-          if (localCursor.moveToNext()) {
-            break;
-          }
-          localCursor.close();
-          l = parame.kr(Thread.currentThread().getId());
-          localObject1 = ((List)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            continue;
-          }
-          localObject2 = (Pair)((Iterator)localObject1).next();
-          parame.update("WxaAttributesTable", (ContentValues)((Pair)localObject2).second, "appId=?", new String[] { (String)((Pair)localObject2).first });
-          continue;
-          localContentValues = new ContentValues(1);
-          localContentValues.put("roundedSquareIconURL", (String)localObject3);
-          ((List)localObject1).add(Pair.create(localObject2, localContentValues));
-        }
+      localObject = n.cfc().e(paramString2, new String[] { "syncVersion" });
+      if (localObject == null) {
+        localObject = new com.tencent.mm.bx.b(new byte[0]);
       }
     }
     for (;;)
     {
-      if (!localCursor.isClosed()) {
-        localCursor.close();
-      }
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yDn, Boolean.TRUE);
-      AppMethodBeat.o(129901);
+      localgkt.YRt = ((com.tencent.mm.bx.b)localObject);
+      localgkt.acgG = paramString2;
+      localgkt.aaLT = paramString3;
+      localgkt.acgH = paramInt;
+      localgkt.YMR = ((aeo)Objects.requireNonNull(paramaeo));
+      locala.otE = localgkt;
+      locala.otF = new gkv();
+      locala.funcId = 1151;
+      locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/wxaattrsync";
+      localObject = locala.bEF();
+      this.rr = ((c)localObject);
+      c((c)localObject);
+      Log.i("MicroMsg.CgiWxaAttrSync", "<init> hash:%d, username:%s, appId:%s, cleanUpdate:%b, instanceId:%s, scene:%d, source:%s", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2, Boolean.FALSE, paramString3, Integer.valueOf(paramInt), com.tencent.mm.ak.a.b(paramaeo) });
+      AppMethodBeat.o(323362);
       return;
-      label362:
-      ab.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "no contacts available");
+      localObject = ac.d((WxaAttributes)localObject);
+      continue;
+      localObject = ac.d(n.cfc().d(paramString1, new String[] { "syncVersion" }));
     }
   }
   
-  protected final boolean a(WxaAttributes paramWxaAttributes, daa paramdaa)
+  public final f<b.a<gkv>> ckO()
   {
-    AppMethodBeat.i(129904);
-    boolean bool = super.a(paramWxaAttributes, paramdaa);
-    if ((bool) && ("WxaAppInfo".equals(paramdaa.wxP))) {}
-    try
+    AppMethodBeat.i(323366);
+    if (!com.tencent.mm.plugin.appbrand.networking.a.ff(((gkt)c.b.b(this.rr.otB)).acgG, ((gkt)c.b.b(this.rr.otB)).aaLU))
     {
-      paramdaa = n.s(new JSONObject(paramdaa.qsu));
-      m.b(paramWxaAttributes.field_appId, paramdaa.wpH);
-      label54:
-      AppMethodBeat.o(129904);
-      return bool;
+      f localf = g.c(new com.tencent.mm.vending.g.c.a() {});
+      AppMethodBeat.o(323366);
+      return localf;
     }
-    catch (Exception paramWxaAttributes)
-    {
-      break label54;
-    }
-  }
-  
-  public final boolean a(String paramString, b paramb, List<daa> paramList)
-  {
-    AppMethodBeat.i(129902);
-    if (!com.tencent.mm.kernel.g.RJ().eHg)
-    {
-      ab.e("MicroMsg.WxaAttrStorageWC", "flushAttrs username[%s], account().isInitializedNotifyAllDone()==FALSE", new Object[] { paramString });
-      AppMethodBeat.o(129902);
-      return false;
-    }
-    bool = super.a(paramString, paramb, paramList);
-    Object localObject = d(paramString, new String[0]);
-    if (localObject == null)
-    {
-      ab.e("MicroMsg.WxaAttrStorageWC", "flushAttrs, get NULL record with username[%s]", new Object[] { paramString });
-      AppMethodBeat.o(129902);
-      return bool;
-    }
-    paramString = ((WxaAttributes)localObject).ayE();
-    if ((paramString != null) && (paramString.bDd == 0)) {
-      com.tencent.mm.plugin.appbrand.app.g.auM().a(((WxaAttributes)localObject).field_appId, ((WxaAttributes)localObject).ayE());
-    }
-    if (bool) {}
-    try
-    {
-      if (!com.tencent.mm.kernel.g.RG()) {
-        break label366;
-      }
-      paramList = ((WxaAttributes)localObject).field_username;
-      paramb = ((WxaAttributes)localObject).field_nickname;
-      str = ((WxaAttributes)localObject).field_bigHeadURL;
-      localObject = ((WxaAttributes)localObject).field_smallHeadURL;
-      paramString = o.adg().rj(paramList);
-      if (paramString != null) {
-        break label408;
-      }
-      paramString = new h();
-      i = 1;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          String str;
-          paramString.jq(com.tencent.mm.platformtools.g.wr(paramb));
-          try
-          {
-            paramString.jr(com.tencent.mm.platformtools.g.wq(paramb));
-            i = 1;
-            if (i != 0) {
-              ((j)com.tencent.mm.kernel.g.E(j.class)).YA().W(paramString);
-            }
-            AppMethodBeat.o(129902);
-            return bool;
-            paramString = paramString;
-            ab.printErrStackTrace("MicroMsg.WxaAttrStorageWC", paramString, "flushContactInMainDB", new Object[0]);
-            continue;
-          }
-          catch (UnsatisfiedLinkError paramb)
-          {
-            continue;
-          }
-        }
-        catch (UnsatisfiedLinkError paramList)
-        {
-          continue;
-        }
-        int i = 0;
-        continue;
-        continue;
-        i = 0;
-      }
-    }
-    if (!bo.nullAsNil((String)localObject).equals(paramString.acY()))
-    {
-      paramString.fsk = ((String)localObject);
-      i = 1;
-    }
-    if (!bo.nullAsNil(str).equals(paramString.acX()))
-    {
-      paramString.fsl = str;
-      i = 1;
-    }
-    if (i != 0)
-    {
-      paramString.username = paramList;
-      paramString.cM(true);
-      paramString.bsY = 31;
-      o.adg().b(paramString);
-    }
-    paramString = ((j)com.tencent.mm.kernel.g.E(j.class)).YA().arw(paramList);
-    if (paramString == null)
-    {
-      paramString = new ad();
-      if ((int)paramString.euF == 0)
-      {
-        paramString.setUsername(paramList);
-        i = 1;
-        if (!paramb.equals(paramString.field_nickname)) {
-          paramString.jp(paramb);
-        }
-      }
-    }
-  }
-  
-  protected final boolean k(String paramString, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(129903);
-    paramBoolean = super.k(paramString, paramInt, paramBoolean);
-    if (paramBoolean)
-    {
-      WxaAttributes localWxaAttributes = d(paramString, new String[] { "appOpt" });
-      lt locallt = new lt();
-      locallt.cBL.cmx = paramString;
-      locallt.cBL.cBM = localWxaAttributes.field_appOpt;
-      com.tencent.mm.sdk.b.a.ymk.l(locallt);
-    }
-    AppMethodBeat.o(129903);
-    return paramBoolean;
+    AppMethodBeat.o(323366);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/j3l" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/j3o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/j3n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/j3k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:gravity="bottom" android:id="@id/j3p" android:layout_width="fill_parent" android:layout_height="128.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/j3m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentEnd="true" />
+    <FrameLayout android:id="@id/j3g" android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:layout_alignParentBottom="true" />
+</RelativeLayout>

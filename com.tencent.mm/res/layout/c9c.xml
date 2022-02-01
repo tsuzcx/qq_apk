@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/khr" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/bs0" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/bry" android:layout_width="wrap_content" android:layout_height="270.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a7q" android:gravity="end|center" android:id="@id/k9f" android:background="@color/y6" android:layout_width="fill_parent" android:layout_height="@dimen/d0" android:text="Stream Info" android:paddingEnd="@dimen/df" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a7q" android:gravity="center_vertical" android:id="@id/epy" android:background="@color/y6" android:layout_width="fill_parent" android:layout_height="@dimen/d0" android:paddingStart="@dimen/df" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/i1s" android:background="@color/y6" android:layout_width="fill_parent" android:layout_height="180.0dip" />
+        </LinearLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/cmy" android:background="@drawable/a5q" android:layout_width="@dimen/cv" android:layout_height="@dimen/d4">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="12.0dip" android:layout_height="16.0dip" android:src="@raw/icons_filled_arrow" android:elevation="@dimen/df" app:iconColor="@color/az" />
+        </FrameLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="end|center" android:id="@id/cmx" android:background="@drawable/a5p" android:layout_width="@dimen/cv" android:layout_height="@dimen/d4" android:layout_marginEnd="@dimen/cv">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="12.0dip" android:layout_height="16.0dip" android:src="@raw/icons_filled_arrow" android:rotation="180.0" android:elevation="@dimen/df" app:iconColor="@color/az" />
+    </FrameLayout>
+</FrameLayout>

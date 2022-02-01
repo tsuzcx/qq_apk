@@ -1,85 +1,125 @@
 package com.tencent.mm.plugin.wallet_core.ui.cashier;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class WcPayCashierDetailItemLayout
   extends LinearLayout
 {
-  private static final int kHI;
-  private static final int uuK;
-  private static final int uuL;
-  public TextView ldI;
-  public TextView qkT;
-  public CdnImageView uuM;
-  public CdnImageView uuN;
+  private static final int VUf;
+  private static final int VUg;
+  private static final int wSj;
+  public TextView Olf;
+  public CdnImageView VUh;
+  public CdnImageView VUi;
+  public TextView xGl;
   
   static
   {
-    AppMethodBeat.i(142533);
-    kHI = a.fromDPToPix(ah.getContext(), 288);
-    uuK = a.fromDPToPix(ah.getContext(), 20);
-    uuL = a.fromDPToPix(ah.getContext(), 11);
-    AppMethodBeat.o(142533);
+    AppMethodBeat.i(71333);
+    wSj = a.fromDPToPix(MMApplicationContext.getContext(), 288);
+    VUf = a.fromDPToPix(MMApplicationContext.getContext(), 20);
+    VUg = a.fromDPToPix(MMApplicationContext.getContext(), 11);
+    AppMethodBeat.o(71333);
   }
   
   public WcPayCashierDetailItemLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(47753);
+    AppMethodBeat.i(71327);
     init();
-    AppMethodBeat.o(47753);
+    AppMethodBeat.o(71327);
   }
   
   public WcPayCashierDetailItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(47754);
+    AppMethodBeat.i(71328);
     init();
-    AppMethodBeat.o(47754);
+    AppMethodBeat.o(71328);
   }
   
   public WcPayCashierDetailItemLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(47755);
+    AppMethodBeat.i(71329);
     init();
-    AppMethodBeat.o(47755);
+    AppMethodBeat.o(71329);
   }
   
   private void init()
   {
-    AppMethodBeat.i(47756);
-    View.inflate(getContext(), 2130971277, this);
-    this.qkT = ((TextView)findViewById(2131829444));
-    this.uuM = ((CdnImageView)findViewById(2131829445));
-    this.ldI = ((TextView)findViewById(2131829446));
-    this.uuN = ((CdnImageView)findViewById(2131829447));
-    AppMethodBeat.o(47756);
-  }
-  
-  public final void K(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(142532);
-    this.ldI.setText(paramCharSequence);
-    post(new WcPayCashierDetailItemLayout.2(this));
-    AppMethodBeat.o(142532);
-  }
-  
-  public final void cWh()
-  {
-    AppMethodBeat.i(142531);
-    if (this.ldI.getVisibility() != 8) {
-      post(new WcPayCashierDetailItemLayout.1(this));
+    AppMethodBeat.i(71330);
+    View.inflate(getContext(), a.g.wc_pay_cashier_detail_item, this);
+    this.Olf = ((TextView)findViewById(a.f.wpci_left_tv));
+    this.VUh = ((CdnImageView)findViewById(a.f.wpci_middle_iv));
+    this.xGl = ((TextView)findViewById(a.f.wpci_right_tv));
+    this.VUi = ((CdnImageView)findViewById(a.f.wpci_right_arrow_iv));
+    Drawable localDrawable = this.VUi.getDrawable();
+    if (localDrawable != null) {
+      localDrawable.setColorFilter(getResources().getColor(a.c.BW_50), PorterDuff.Mode.SRC_ATOP);
     }
-    AppMethodBeat.o(142531);
+    AppMethodBeat.o(71330);
+  }
+  
+  public final void av(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(71332);
+    this.xGl.setText(paramCharSequence);
+    post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(71326);
+        Layout localLayout = WcPayCashierDetailItemLayout.this.xGl.getLayout();
+        if ((localLayout != null) && (localLayout.getLineCount() > 1)) {
+          WcPayCashierDetailItemLayout.this.xGl.setMaxWidth((int)localLayout.getLineWidth(0));
+        }
+        AppMethodBeat.o(71326);
+      }
+    });
+    AppMethodBeat.o(71332);
+  }
+  
+  public final void ilo()
+  {
+    AppMethodBeat.i(71331);
+    if (this.xGl.getVisibility() != 8) {
+      post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(71325);
+          int j = WcPayCashierDetailItemLayout.this.Olf.getWidth();
+          int i = j;
+          if (WcPayCashierDetailItemLayout.this.VUh.getVisibility() != 8) {
+            i = j + WcPayCashierDetailItemLayout.VUf;
+          }
+          j = i;
+          if (WcPayCashierDetailItemLayout.this.VUi.getVisibility() != 8) {
+            j = i + WcPayCashierDetailItemLayout.VUg;
+          }
+          i = WcPayCashierDetailItemLayout.wSj;
+          WcPayCashierDetailItemLayout.this.xGl.setMaxWidth(i - j);
+          AppMethodBeat.o(71325);
+        }
+      });
+    }
+    AppMethodBeat.o(71331);
   }
 }
 

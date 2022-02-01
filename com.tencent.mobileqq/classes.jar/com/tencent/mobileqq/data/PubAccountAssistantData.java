@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class PubAccountAssistantData
-  extends awge
+  extends Entity
 {
   public int mDistance;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public int mType;
-  @awhs
+  @unique
   public String mUin;
 }
 

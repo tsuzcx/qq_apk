@@ -34,24 +34,17 @@ public class gi
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
+    paramContext = null;
     try
     {
-      paramContext = hb.e(paramString.getBytes("gbk"), null);
-      if (paramContext != null)
-      {
-        paramContext = de.encodeToString(paramContext, 0);
-        return paramContext;
+      paramString = hb.e(paramString.getBytes("gbk"), null);
+      if (paramString != null) {
+        paramContext = de.encodeToString(paramString, 0);
       }
+      return paramContext;
     }
-    catch (Exception paramContext)
-    {
-      return null;
-    }
-    catch (UnsupportedEncodingException paramContext)
-    {
-      label33:
-      break label33;
-    }
+    catch (UnsupportedEncodingException|Exception paramContext) {}
+    return null;
   }
   
   public static String c(Context paramContext, String paramString)
@@ -67,40 +60,35 @@ public class gi
         paramContext = new String(paramContext, "gbk");
         return paramContext;
       }
-    }
-    catch (UnsupportedEncodingException paramContext)
-    {
       return null;
     }
-    catch (Exception paramContext)
-    {
-      label37:
-      break label37;
-    }
+    catch (UnsupportedEncodingException|Exception paramContext) {}
+    return null;
   }
   
   public static final String k(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuffer.append(0);
+      StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+        if (str.length() < 2) {
+          localStringBuffer.append(0);
+        }
+        localStringBuffer.append(str.toUpperCase());
+        i += 1;
       }
-      localStringBuffer.append(str.toUpperCase());
-      i += 1;
+      return localStringBuffer.toString();
     }
-    return localStringBuffer.toString();
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gi
  * JD-Core Version:    0.7.0.1
  */

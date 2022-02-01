@@ -8,8 +8,8 @@ public final class FaceInfo
   extends JceStruct
 {
   static byte[] cache_vFaceID;
-  public int uAddTimeStamp;
-  public byte[] vFaceID;
+  public int uAddTimeStamp = 0;
+  public byte[] vFaceID = null;
   
   public FaceInfo() {}
   
@@ -38,7 +38,7 @@ public final class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

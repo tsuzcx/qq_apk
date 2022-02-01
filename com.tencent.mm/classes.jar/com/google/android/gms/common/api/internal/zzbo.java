@@ -21,33 +21,33 @@ public final class zzbo<O extends Api.ApiOptions>
   
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60843);
+    AppMethodBeat.i(11335);
     paramT = this.zzks.doRead(paramT);
-    AppMethodBeat.o(60843);
+    AppMethodBeat.o(11335);
     return paramT;
   }
   
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60844);
+    AppMethodBeat.i(11336);
     paramT = this.zzks.doWrite(paramT);
-    AppMethodBeat.o(60844);
+    AppMethodBeat.o(11336);
     return paramT;
   }
   
   public final Context getContext()
   {
-    AppMethodBeat.i(60846);
+    AppMethodBeat.i(11338);
     Context localContext = this.zzks.getApplicationContext();
-    AppMethodBeat.o(60846);
+    AppMethodBeat.o(11338);
     return localContext;
   }
   
   public final Looper getLooper()
   {
-    AppMethodBeat.i(60845);
+    AppMethodBeat.i(11337);
     Looper localLooper = this.zzks.getLooper();
-    AppMethodBeat.o(60845);
+    AppMethodBeat.o(11337);
     return localLooper;
   }
   
@@ -57,7 +57,7 @@ public final class zzbo<O extends Api.ApiOptions>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzbo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiez;
-import aifv;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QZoneHelper;
 
-public class MainAssistObserver$5$1
+class MainAssistObserver$5$1
   implements Runnable
 {
-  public MainAssistObserver$5$1(aifv paramaifv) {}
+  MainAssistObserver$5$1(MainAssistObserver.5 param5, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.a.a.a(39, null);
+    QZoneHelper.preloadQzone(this.a, "MainAssistObserver");
   }
 }
 

@@ -13,15 +13,21 @@ public final class member_lbs$GPS
   public static final int INT64_LATITUDE_FIELD_NUMBER = 1;
   public static final int INT64_LONGITUDE_FIELD_NUMBER = 2;
   public static final int UINT32_GPS_TYPE_FIELD_NUMBER = 4;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "int64_latitude", "int64_longitude", "int64_altitude", "uint32_gps_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, GPS.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field int64_altitude = PBField.initInt64(0L);
   public final PBInt64Field int64_latitude = PBField.initInt64(0L);
   public final PBInt64Field int64_longitude = PBField.initInt64(0L);
   public final PBUInt32Field uint32_gps_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "int64_latitude", "int64_longitude", "int64_altitude", "uint32_gps_type" }, new Object[] { localLong, localLong, localLong, Integer.valueOf(0) }, GPS.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.GPS
  * JD-Core Version:    0.7.0.1
  */

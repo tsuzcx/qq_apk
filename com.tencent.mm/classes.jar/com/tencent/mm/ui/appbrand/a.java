@@ -1,215 +1,164 @@
 package com.tencent.mm.ui.appbrand;
 
-import android.content.Context;
-import android.view.MenuItem;
-import android.view.View;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
-import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
-import com.tencent.mm.plugin.appbrand.service.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.widget.b.d;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.service.f;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.by.b;
+import com.tencent.mm.storage.cc;
+import java.util.Map;
 
 public final class a
+  implements f
 {
-  public String appId;
-  Context context;
-  public WxaExposedParams iOe;
-  d iwc;
-  public boolean jvs;
-  public int scene;
-  public String username;
-  a.h zgi;
-  public String zgj;
+  private static String TAG = "MicroMsg.AppBrandConversationService";
   
-  public a(Context paramContext)
+  private static void b(bb parambb1, bb parambb2)
   {
-    AppMethodBeat.i(29945);
-    this.iOe = new WxaExposedParams.a().ayJ();
-    this.appId = "";
-    this.zgj = "";
-    this.context = paramContext;
-    AppMethodBeat.o(29945);
-  }
-  
-  public static String aH(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(29949);
-    try
-    {
-      paramString1 = String.format("https://mp.weixin.qq.com/mp/wacomplain?action=show&appid=%s&pageid=%s&from=%d&&business_appid=%s#wechat_redirect", new Object[] { q.encode(bo.nullAsNil(paramString1), "UTF-8"), q.encode(bo.nullAsNil(paramString2), "UTF-8"), Integer.valueOf(10), q.encode(bo.nullAsNil(paramString3), "UTF-8") });
-      AppMethodBeat.o(29949);
-      return paramString1;
-    }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      ab.e("MicroMsg.AppBrandServiceActionSheet", "buildExposeUrl encode fail, invalid arguments");
-      AppMethodBeat.o(29949);
-    }
-    return "";
-  }
-  
-  final String getAppId()
-  {
-    AppMethodBeat.i(29947);
-    if (bo.isNullOrNil(this.username))
-    {
-      AppMethodBeat.o(29947);
-      return null;
-    }
-    if (bo.isNullOrNil(this.appId))
-    {
-      localObject = ((i)g.E(i.class)).Ae(this.username);
-      if (localObject != null) {
-        this.appId = ((WxaAttributes)localObject).field_appId;
+    Object localObject3 = null;
+    AppMethodBeat.i(249665);
+    Object localObject2 = ((n)h.ax(n.class)).bzG().a(4, null, "appbrandcustomerservicemsg");
+    Object localObject1;
+    if (localObject2 != null) {
+      if ((((Cursor)localObject2).getCount() > 0) && (((Cursor)localObject2).moveToFirst()))
+      {
+        localObject1 = new bb();
+        ((bb)localObject1).convertFrom((Cursor)localObject2);
+        ((Cursor)localObject2).close();
       }
     }
-    Object localObject = this.appId;
-    AppMethodBeat.o(29947);
-    return localObject;
-  }
-  
-  final void ht(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(29948);
-    if (bo.isNullOrNil(getAppId()))
+    for (localObject2 = localObject1;; localObject2 = null)
     {
-      AppMethodBeat.o(29948);
-      return;
-    }
-    ab.d("MicroMsg.AppBrandServiceActionSheet", "stev report(%s), appId : %s, scene %s, sceneId %s, action %s", new Object[] { Integer.valueOf(13918), this.appId, Integer.valueOf(paramInt1), this.zgj, Integer.valueOf(paramInt2) });
-    h.qsU.e(13918, new Object[] { getAppId(), Integer.valueOf(paramInt1), this.zgj, Integer.valueOf(paramInt2), Long.valueOf(bo.aox()) });
-    AppMethodBeat.o(29948);
-  }
-  
-  public final void show(int paramInt)
-  {
-    AppMethodBeat.i(29946);
-    this.iwc = new d(this.context, 1, true);
-    switch (paramInt)
-    {
-    default: 
-      AppMethodBeat.o(29946);
-      return;
-    case 1: 
-      this.zgi = new a();
-      if (this.zgi == null) {
-        ab.e("MicroMsg.AppBrandServiceActionSheet", "resetTitleView, state is null");
+      if (localObject2 != null)
+      {
+        Log.e(TAG, "The lastest app brand conversation username is %s", new Object[] { ((bd)localObject2).field_username });
+        localObject1 = ((n)h.ax(n.class)).gaZ().aLG(((bd)localObject2).field_username);
       }
-      break;
-    }
-    for (;;)
-    {
-      this.iwc.sao = new a.2(this);
-      this.iwc.sap = new a.1(this);
-      this.iwc.crd();
-      AppMethodBeat.o(29946);
-      return;
-      this.zgi = new b();
-      break;
-      this.zgi = new a.f(this);
-      break;
-      this.zgi = new a.g(this);
-      break;
-      this.zgi = new d();
-      break;
-      this.zgi = new a.e(this);
-      break;
-      View localView = this.zgi.dDv();
-      if (localView != null) {
-        this.iwc.G(localView, false);
+      for (;;)
+      {
+        if ((localObject1 != null) && (((fi)localObject1).field_msgId > 0L))
+        {
+          parambb2.bG((cc)localObject1);
+          parambb2.setContent(((fi)localObject1).field_talker + ":" + ((fi)localObject1).field_content);
+          parambb2.BE(Integer.toString(((cc)localObject1).getType()));
+          by.b localb = ((n)h.ax(n.class)).bzG().aDH();
+          PString localPString1;
+          PInt localPInt;
+          if (localb != null)
+          {
+            PString localPString2 = new PString();
+            localPString1 = new PString();
+            localPInt = new PInt();
+            if (localObject2 == null) {
+              break label413;
+            }
+            ((cc)localObject1).BS(((bd)localObject2).field_parentRef);
+            label258:
+            ((cc)localObject1).setContent(parambb2.field_content);
+            localb.a((cc)localObject1, localPString2, localPString1, localPInt, true);
+            int i = ((cc)localObject1).getType();
+            localObject1 = ((fi)localObject1).field_content;
+            parambb1 = localObject3;
+            if (!Util.isNullOrNil((String)localObject1)) {}
+            switch (i)
+            {
+            default: 
+              parambb1 = localObject3;
+              label323:
+              localObject1 = Util.nullAsNil(localPString2.value);
+              if (!Util.isNullOrNil(parambb1)) {
+                break;
+              }
+            }
+          }
+          for (parambb1 = "";; parambb1 = " " + Util.nullAsNil(parambb1))
+          {
+            parambb2.BF(((String)localObject1).concat(parambb1));
+            parambb2.BG(localPString1.value);
+            parambb2.pJ(localPInt.value);
+            AppMethodBeat.o(249665);
+            return;
+            if (parambb1 == null) {
+              break label515;
+            }
+            Log.e(TAG, "The lastest app brand conversation is null");
+            localObject1 = ((n)h.ax(n.class)).gaZ().aLG(parambb1.field_username);
+            break;
+            label413:
+            if (parambb1 == null) {
+              break label258;
+            }
+            ((cc)localObject1).BS(parambb1.field_parentRef);
+            break label258;
+            localObject1 = XmlParser.parseXml((String)localObject1, "msg", null);
+            parambb1 = localObject3;
+            if (localObject1 == null) {
+              break label323;
+            }
+            parambb1 = (String)((Map)localObject1).get(".msg.appmsg.title");
+            Log.d(TAG, "[oneliang][parseConversationMsgContentTitle] title:%s", new Object[] { parambb1 });
+            break label323;
+          }
+        }
+        Log.e(TAG, "the last of msg is null'");
+        parambb2.jaJ();
+        AppMethodBeat.o(249665);
+        return;
+        label515:
+        localObject1 = null;
       }
+      localObject1 = null;
+      break;
     }
   }
   
-  public final class a
-    extends a.c
+  public final boolean bRX()
   {
-    public a()
+    AppMethodBeat.i(249672);
+    if (((n)h.ax(n.class)).bzG().bxM("appbrandcustomerservicemsg") == null)
     {
-      super();
+      AppMethodBeat.o(249672);
+      return false;
     }
-    
-    public final void onCreateMMMenu(l paraml)
-    {
-      AppMethodBeat.i(29928);
-      super.onCreateMMMenu(paraml);
-      paraml.e(2, a.this.context.getString(2131296851));
-      paraml.e(8, a.this.context.getString(2131296849));
-      paraml.e(7, a.a(a.this));
-      AppMethodBeat.o(29928);
-    }
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(29929);
-      super.onMMMenuItemSelected(paramMenuItem, paramInt);
-      AppMethodBeat.o(29929);
-    }
+    AppMethodBeat.o(249672);
+    return true;
   }
   
-  public final class b
-    extends a.c
+  public final void e(bb parambb)
   {
-    public b()
+    AppMethodBeat.i(249675);
+    bb localbb = ((n)h.ax(n.class)).bzG().bxM("appbrandcustomerservicemsg");
+    if (localbb == null)
     {
-      super();
+      Log.i(TAG, "create parentConv");
+      localbb = new bb("appbrandcustomerservicemsg");
+      localbb.jaJ();
+      b(parambb, localbb);
+      ((n)h.ax(n.class)).bzG().h(localbb);
+      AppMethodBeat.o(249675);
+      return;
     }
-    
-    public final void onCreateMMMenu(l paraml)
-    {
-      AppMethodBeat.i(29930);
-      super.onCreateMMMenu(paraml);
-      paraml.e(3, a.this.context.getString(2131296853));
-      paraml.e(8, a.this.context.getString(2131296849));
-      paraml.e(7, a.a(a.this));
-      AppMethodBeat.o(29930);
-    }
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(29931);
-      super.onMMMenuItemSelected(paramMenuItem, paramInt);
-      AppMethodBeat.o(29931);
-    }
-  }
-  
-  public final class d
-    extends a.c
-  {
-    public d()
-    {
-      super();
-    }
-    
-    public final void onCreateMMMenu(l paraml)
-    {
-      AppMethodBeat.i(29935);
-      super.onCreateMMMenu(paraml);
-      paraml.e(2, a.this.context.getString(2131296851));
-      paraml.e(8, a.this.context.getString(2131296849));
-      paraml.e(7, a.a(a.this));
-      AppMethodBeat.o(29935);
-    }
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(29936);
-      super.onMMMenuItemSelected(paramMenuItem, paramInt);
-      AppMethodBeat.o(29936);
-    }
+    Log.i(TAG, "appBrandSuperConv is created");
+    localbb.BH(null);
+    b(parambb, localbb);
+    ((n)h.ax(n.class)).bzG().c(localbb, "appbrandcustomerservicemsg");
+    AppMethodBeat.o(249675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class QZoneShareActivity$23
   
   public void run()
   {
-    QZoneShareActivity.d(this.this$0);
+    QZoneShareActivity.access$500(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.23
  * JD-Core Version:    0.7.0.1
  */

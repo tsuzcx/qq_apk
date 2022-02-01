@@ -1,52 +1,44 @@
-import android.os.Build.VERSION;
 import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Looper;
+import android.os.Message;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class dbz
-  implements View.OnTouchListener
+  extends Handler
 {
-  public dbz(QQLSActivity paramQQLSActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public dbz(QQLSActivity paramQQLSActivity, Looper paramLooper)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (Build.VERSION.SDK_INT < 16) {
-        if (QQLSActivity.a(this.a) != null) {
-          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
-        }
-      }
-    }
-    while (paramMotionEvent.getAction() != 1)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      return false;
-      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
+    default: 
+    case 0: 
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "singlelist  click doble");
-        }
-        if (QQLSActivity.a(this.a) != null)
-        {
-          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
-          QQLSActivity.a(this.a, true);
-        }
+        return;
+      } while (QQLSActivity.b(this.a));
+      if (hasMessages(0)) {
+        removeMessages(0);
       }
-      for (;;)
-      {
-        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.e("QQLSActivity", 2, "singlelist  click once");
-        }
-        paramView = QQLSActivity.a(this.a).obtainMessage(0);
-        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+      QQLSActivity.c(this.a);
+      if (QQLSActivity.a(this.a) != null) {
+        ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
       }
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131563331), 0).show();
+      return;
+    case 1: 
+      this.a.b();
+      this.a.finish();
+      return;
     }
-    QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
-    return false;
+    this.a.finish();
   }
 }
 

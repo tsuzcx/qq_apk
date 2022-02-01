@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.c;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,70 +13,58 @@ public class JsApiGetABTestConfig$GetABTestConfigTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<GetABTestConfigTask> CREATOR;
-  private String hxH;
-  private Map<String, String> hxI;
+  private String ryg;
+  private Map<String, String> ryh;
   
   static
   {
-    AppMethodBeat.i(130421);
-    CREATOR = new JsApiGetABTestConfig.GetABTestConfigTask.1();
-    AppMethodBeat.o(130421);
+    AppMethodBeat.i(45479);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(45479);
   }
   
   JsApiGetABTestConfig$GetABTestConfigTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(130416);
-    this.hxI = new HashMap();
-    f(paramParcel);
-    AppMethodBeat.o(130416);
+    AppMethodBeat.i(45475);
+    this.ryh = new HashMap();
+    h(paramParcel);
+    AppMethodBeat.o(45475);
   }
   
-  JsApiGetABTestConfig$GetABTestConfigTask(String paramString)
+  public final void asn()
   {
-    AppMethodBeat.i(138127);
-    this.hxI = new HashMap();
-    this.hxH = paramString;
-    AppMethodBeat.o(138127);
-  }
-  
-  public final void ata()
-  {
-    AppMethodBeat.i(130417);
-    ab.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me(this.hxH);
-    if (localc.isValid()) {
-      this.hxI.putAll(localc.dvN());
+    AppMethodBeat.i(45476);
+    Log.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
+    c localc = com.tencent.mm.model.newabtest.d.bEt().Fd(this.ryg);
+    if ((localc != null) && (localc.isValid())) {
+      this.ryh.putAll(localc.iWZ());
     }
-    aBp();
-    AppMethodBeat.o(130417);
+    cpA();
+    AppMethodBeat.o(45476);
   }
   
-  public final void atb()
-  {
-    AppMethodBeat.i(130418);
-    AppMethodBeat.o(130418);
-  }
+  public final void bQr() {}
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(130419);
-    this.hxI.clear();
-    this.hxI.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
-    this.hxH = paramParcel.readString();
-    AppMethodBeat.o(130419);
+    AppMethodBeat.i(45477);
+    this.ryh.clear();
+    this.ryh.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
+    this.ryg = paramParcel.readString();
+    AppMethodBeat.o(45477);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(130420);
-    paramParcel.writeMap(this.hxI);
-    paramParcel.writeString(this.hxH);
-    AppMethodBeat.o(130420);
+    AppMethodBeat.i(45478);
+    paramParcel.writeMap(this.ryh);
+    paramParcel.writeString(this.ryg);
+    AppMethodBeat.o(45478);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiGetABTestConfig.GetABTestConfigTask
  * JD-Core Version:    0.7.0.1
  */

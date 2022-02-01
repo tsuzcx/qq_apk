@@ -27,41 +27,34 @@ public class TraeAudioSessionHost
   {
     this.mLock.lock();
     int i = 0;
-    TraeAudioSessionHost.SessionInfo localSessionInfo;
-    if (i < this._sessionInfoList.size())
+    while (i < this._sessionInfoList.size())
     {
       localSessionInfo = (TraeAudioSessionHost.SessionInfo)this._sessionInfoList.get(i);
-      if (localSessionInfo.sessionId != paramLong) {}
-    }
-    for (;;)
-    {
-      this.mLock.unlock();
-      return localSessionInfo;
+      if (localSessionInfo.sessionId == paramLong) {
+        break label56;
+      }
       i += 1;
-      break;
-      localSessionInfo = null;
     }
+    TraeAudioSessionHost.SessionInfo localSessionInfo = null;
+    label56:
+    this.mLock.unlock();
+    return localSessionInfo;
   }
   
   public void remove(long paramLong)
   {
     this.mLock.lock();
     int i = 0;
-    for (;;)
+    while (i < this._sessionInfoList.size())
     {
-      if (i < this._sessionInfoList.size())
+      if (((TraeAudioSessionHost.SessionInfo)this._sessionInfoList.get(i)).sessionId == paramLong)
       {
-        if (((TraeAudioSessionHost.SessionInfo)this._sessionInfoList.get(i)).sessionId == paramLong) {
-          this._sessionInfoList.remove(i);
-        }
-      }
-      else
-      {
-        this.mLock.unlock();
-        return;
+        this._sessionInfoList.remove(i);
+        break;
       }
       i += 1;
     }
+    this.mLock.unlock();
   }
   
   public void sendToAudioSessionMessage(Intent paramIntent)
@@ -78,7 +71,7 @@ public class TraeAudioSessionHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.audio.TraeAudioSessionHost
  * JD-Core Version:    0.7.0.1
  */

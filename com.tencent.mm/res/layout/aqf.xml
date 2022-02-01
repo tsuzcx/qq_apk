@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/bdr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/image_download_fail_icon" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/en" android:id="@id/bds" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cg8" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/a7o"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/jms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/db">
+            <FrameLayout android:id="@id/djq" android:background="@drawable/a1i" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cv" android:layout_centerVertical="true" android:layout_alignParentStart="true">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/djp" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_8" />
+            </FrameLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/deg" android:visibility="gone" android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cv" android:src="@raw/icons_outlined_back" android:layout_centerVertical="true" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+            <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/FG_1" android:id="@id/jmu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:text="{title}" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/jmt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 
 public final class a
 {
-  private static a b = null;
+  private static a b;
   private Context a;
   private ExecutorService c;
   
@@ -42,48 +42,73 @@ public final class a
       if (localObject != null)
       {
         String str2 = ((PackageInfo)localObject).applicationInfo.sourceDir;
-        Log.i("ProtocolHelper", "packageName: " + paramString);
-        Log.i("ProtocolHelper", "localPath: " + str2);
+        localObject = new StringBuilder("packageName: ");
+        ((StringBuilder)localObject).append(paramString);
+        Log.i("ProtocolHelper", ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder("localPath: ");
+        ((StringBuilder)localObject).append(str2);
+        Log.i("ProtocolHelper", ((StringBuilder)localObject).toString());
         long l1 = System.currentTimeMillis();
         StringBuilder localStringBuilder = new StringBuilder();
         localObject = a().a;
+        boolean bool = "mounted".equals(Environment.getExternalStorageState());
         String str1;
-        if (("mounted".equals(Environment.getExternalStorageState())) && (Environment.getExternalStorageDirectory().canWrite()))
+        if ((bool) && (Environment.getExternalStorageDirectory().canWrite()))
         {
-          localObject = new File(Environment.getExternalStorageDirectory().getPath() + "/mfcache");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getPath());
+          ((StringBuilder)localObject).append("/mfcache");
+          localObject = new File(((StringBuilder)localObject).toString());
           if (!((File)localObject).exists()) {
             ((File)localObject).mkdirs();
           }
           str1 = ((File)localObject).getAbsolutePath();
           localObject = str1;
-          if (!str1.endsWith("/")) {
-            localObject = str1 + "/";
+          if (!str1.endsWith("/"))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str1);
+            ((StringBuilder)localObject).append("/");
           }
         }
-        for (;;)
+        else
         {
-          paramString = (String)localObject + paramString + ".cache";
-          new e(str2, paramString).a();
-          paramString = c.b(paramString);
-          long l2 = System.currentTimeMillis();
-          Log.i("ProtocolHelper", "old_md5: cost=" + (l2 - l1) + "; md5=" + paramString);
-          if (paramString == null) {
+          for (;;)
+          {
+            localObject = ((StringBuilder)localObject).toString();
             break;
+            str1 = ((Context)localObject).getFilesDir().getAbsolutePath();
+            localObject = str1;
+            if (str1.endsWith("/")) {
+              break;
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str1);
+            ((StringBuilder)localObject).append("/");
           }
+        }
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(".cache");
+        paramString = localStringBuilder.toString();
+        new e(str2, paramString).a();
+        paramString = c.b(paramString);
+        long l2 = System.currentTimeMillis();
+        localObject = new StringBuilder("old_md5: cost=");
+        ((StringBuilder)localObject).append(l2 - l1);
+        ((StringBuilder)localObject).append("; md5=");
+        ((StringBuilder)localObject).append(paramString);
+        Log.i("ProtocolHelper", ((StringBuilder)localObject).toString());
+        if (paramString != null) {
           return paramString;
-          str1 = ((Context)localObject).getFilesDir().getAbsolutePath();
-          localObject = str1;
-          if (!str1.endsWith("/")) {
-            localObject = str1 + "/";
-          }
         }
       }
-      return "";
     }
     catch (PackageManager.NameNotFoundException paramString)
     {
       paramString.printStackTrace();
     }
+    return "";
   }
   
   public final void a(Context paramContext)
@@ -95,7 +120,8 @@ public final class a
   public final void a(Runnable paramRunnable)
   {
     Log.i("ProtocolHelper", "startNewTask");
-    if ((this.c != null) && (!this.c.isShutdown()))
+    ExecutorService localExecutorService = this.c;
+    if ((localExecutorService != null) && (!localExecutorService.isShutdown()))
     {
       Log.i("ProtocolHelper", "threadPool.execute");
       this.c.execute(paramRunnable);
@@ -132,16 +158,17 @@ public final class a
   public final void c()
   {
     Log.i("ProtocolHelper", "threadPool.shutdown()");
-    if (this.c != null)
+    ExecutorService localExecutorService = this.c;
+    if (localExecutorService != null)
     {
-      this.c.shutdown();
+      localExecutorService.shutdown();
       this.c = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.a
  * JD-Core Version:    0.7.0.1
  */

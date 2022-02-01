@@ -15,37 +15,45 @@ public final class x
       return false;
     }
     String str;
-    if (paramString == null) {
+    if (paramString == null)
+    {
       str = "null";
     }
-    for (;;)
+    else
     {
-      switch (paramInt)
-      {
-      case 4: 
-      default: 
-        return false;
-      case 0: 
-        Log.i(b, str);
-        return true;
-        str = paramString;
-        if (paramVarArgs != null)
-        {
+      str = paramString;
+      if (paramVarArgs != null) {
+        if (paramVarArgs.length == 0) {
           str = paramString;
-          if (paramVarArgs.length != 0) {
-            str = String.format(Locale.US, paramString, paramVarArgs);
-          }
+        } else {
+          str = String.format(Locale.US, paramString, paramVarArgs);
         }
-        break;
       }
     }
-    Log.i(a, str);
-    return true;
-    Log.d(b, str);
-    return true;
-    Log.w(b, str);
-    return true;
-    Log.e(b, str);
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 5) {
+              return false;
+            }
+            Log.i(a, str);
+            return true;
+          }
+          Log.e(b, str);
+          return true;
+        }
+        Log.w(b, str);
+        return true;
+      }
+      Log.d(b, str);
+      return true;
+    }
+    Log.i(b, str);
     return true;
   }
   
@@ -102,7 +110,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.x
  * JD-Core Version:    0.7.0.1
  */

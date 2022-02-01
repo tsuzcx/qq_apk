@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/biw" android:layout_height="@dimen/biw"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.qqmail.qmui.view.QMUIProgressBar android:orientation="vertical" android:id="@id/g1f" android:layout_width="@dimen/biw" android:layout_height="@dimen/biw" android:layout_centerInParent="true" app:background_color="@color/att" app:progress_color="@color/aty" app:progress_type="oag" app:stroke_width="2.0dip" />
+    <ImageView android:id="@id/o16" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/gfe" android:scaleType="center" />
+</RelativeLayout>

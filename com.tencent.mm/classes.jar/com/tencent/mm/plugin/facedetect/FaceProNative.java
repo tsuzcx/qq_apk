@@ -1,14 +1,19 @@
 package com.tencent.mm.plugin.facedetect;
 
-import android.support.annotation.Keep;
+import android.graphics.Rect;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
+import com.tencent.mm.k.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expansions.e;
+import com.tencent.mm.plugin.facedetect.model.k;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,40 +35,62 @@ public class FaceProNative
   
   static
   {
-    AppMethodBeat.i(49);
+    AppMethodBeat.i(103569);
     hasDetectInit = false;
-    k.a("FacePro", FaceProNative.class.getClassLoader());
-    k.a("wechatvoicereco", FaceProNative.class.getClassLoader());
-    k.a("wechatxlog", FaceProNative.class.getClassLoader());
-    nativeInit();
+    tryLoadLibrary();
     cachedStr = null;
     lastCheckTime = -1L;
-    AppMethodBeat.o(49);
+    AppMethodBeat.o(103569);
   }
   
   public FaceProNative()
   {
-    AppMethodBeat.i(44);
-    NativeConstructor();
-    AppMethodBeat.o(44);
+    AppMethodBeat.i(103563);
+    if (PluginFace.isEnabled())
+    {
+      tryLoadLibrary();
+      NativeConstructor();
+    }
+    AppMethodBeat.o(103563);
   }
   
   private native void NativeConstructor();
   
   private native void NativeDestructor();
   
+  public static native String addVerifyData2Jpg(String paramString1, String paramString2, String paramString3);
+  
   public static void checkInitDetectFace()
   {
-    AppMethodBeat.i(47);
+    AppMethodBeat.i(103566);
     try
     {
-      ab.b("MicroMsg.FaceProNative", "checkInitDetectFace, hasDetectInit: %s", new Object[] { Boolean.valueOf(hasDetectInit) });
-      al.d(new FaceProNative.1());
+      Log.printInfoStack("MicroMsg.FaceProNative", "checkInitDetectFace, hasDetectInit: %s", new Object[] { Boolean.valueOf(hasDetectInit) });
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(103548);
+          if ((!FaceProNative.hasDetectInit) && (PluginFace.isEnabled()))
+          {
+            int i = FaceProNative.nativeFacedetectInitBin(y.bi(k.dPb(), 0, -1));
+            if (i == -1)
+            {
+              Log.w("MicroMsg.FaceProNative", "detectFaceCnt init failed: %s", new Object[] { k.dPb() });
+              AppMethodBeat.o(103548);
+              return;
+            }
+            Log.i("MicroMsg.FaceProNative", "detectFaceCnt init:%d, %s", new Object[] { Integer.valueOf(i), k.dPb() });
+            FaceProNative.hasDetectInit = true;
+          }
+          AppMethodBeat.o(103548);
+        }
+      });
       return;
     }
     finally
     {
-      AppMethodBeat.o(47);
+      AppMethodBeat.o(103566);
     }
   }
   
@@ -74,15 +101,14 @@ public class FaceProNative
   
   public static native int engineVersion();
   
-  @Keep
   public static String[] getDynamicValue(String paramString)
   {
-    AppMethodBeat.i(48);
+    AppMethodBeat.i(103568);
     if (System.currentTimeMillis() - lastCheckTime >= 3600000L)
     {
       lastCheckTime = System.currentTimeMillis();
-      paramString = ((a)g.E(a.class)).Nq().getValue(paramString);
-      if (bo.isNullOrNil(paramString)) {}
+      paramString = ((a)h.ax(a.class)).aRC().getValue(paramString);
+      if (Util.isNullOrNil(paramString)) {}
     }
     try
     {
@@ -102,11 +128,11 @@ public class FaceProNative
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.FaceProNative", paramString, "hy: array resolve failed", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.FaceProNative", paramString, "hy: array resolve failed", new Object[0]);
       }
     }
     paramString = cachedStr;
-    AppMethodBeat.o(48);
+    AppMethodBeat.o(103568);
     return paramString;
   }
   
@@ -118,14 +144,27 @@ public class FaceProNative
   
   public static native boolean nativeInit();
   
-  public void destroy()
+  private static void tryLoadLibrary()
   {
-    AppMethodBeat.i(45);
-    NativeDestructor();
-    AppMethodBeat.o(45);
+    AppMethodBeat.i(103567);
+    if (PluginFace.isEnabled())
+    {
+      e.tryLoadLibrary("wechatvoicereco");
+      e.tryLoadLibrary("wechatxlog");
+    }
+    AppMethodBeat.o(103567);
   }
   
-  public native FaceProNative.FaceStatus engineFaceProcess(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public void destroy()
+  {
+    AppMethodBeat.i(103564);
+    if (PluginFace.isEnabled()) {
+      NativeDestructor();
+    }
+    AppMethodBeat.o(103564);
+  }
+  
+  public native FaceStatus engineFaceProcess(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   public native int[] engineGetAllMotions();
   
@@ -151,15 +190,89 @@ public class FaceProNative
   
   protected void finalize()
   {
-    AppMethodBeat.i(46);
+    AppMethodBeat.i(103565);
     super.finalize();
-    NativeDestructor();
-    AppMethodBeat.o(46);
+    if (PluginFace.isEnabled()) {
+      NativeDestructor();
+    }
+    AppMethodBeat.o(103565);
+  }
+  
+  public static class FaceStatus
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<FaceStatus> CREATOR;
+    public Rect facerect;
+    public float pitch;
+    public int result;
+    public float roll;
+    public float[] xys;
+    public float yaw;
+    
+    static
+    {
+      AppMethodBeat.i(103562);
+      CREATOR = new Parcelable.Creator()
+      {
+        public FaceProNative.FaceStatus createFromParcel(Parcel paramAnonymousParcel)
+        {
+          AppMethodBeat.i(103556);
+          paramAnonymousParcel = new FaceProNative.FaceStatus(paramAnonymousParcel);
+          AppMethodBeat.o(103556);
+          return paramAnonymousParcel;
+        }
+        
+        public FaceProNative.FaceStatus[] newArray(int paramAnonymousInt)
+        {
+          return new FaceProNative.FaceStatus[paramAnonymousInt];
+        }
+      };
+      AppMethodBeat.o(103562);
+    }
+    
+    public FaceStatus() {}
+    
+    protected FaceStatus(Parcel paramParcel)
+    {
+      AppMethodBeat.i(103559);
+      this.result = paramParcel.readInt();
+      this.facerect = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
+      this.xys = paramParcel.createFloatArray();
+      this.pitch = paramParcel.readFloat();
+      this.yaw = paramParcel.readFloat();
+      this.roll = paramParcel.readFloat();
+      AppMethodBeat.o(103559);
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public String toString()
+    {
+      AppMethodBeat.i(103561);
+      String str = "FaceStatus{result=" + this.result + ", facerect=" + this.facerect + ", pitch=" + this.pitch + ", yaw=" + this.yaw + ", roll=" + this.roll + '}';
+      AppMethodBeat.o(103561);
+      return str;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(103560);
+      paramParcel.writeInt(this.result);
+      paramParcel.writeParcelable(this.facerect, paramInt);
+      paramParcel.writeFloatArray(this.xys);
+      paramParcel.writeFloat(this.pitch);
+      paramParcel.writeFloat(this.yaw);
+      paramParcel.writeFloat(this.roll);
+      AppMethodBeat.o(103560);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.FaceProNative
  * JD-Core Version:    0.7.0.1
  */

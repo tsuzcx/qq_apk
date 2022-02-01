@@ -1,20 +1,4 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-public class fja
-  implements Comparator
-{
-  public fja(C2CMessageProcessor paramC2CMessageProcessor) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return 1;
-    }
-    return -1;
-  }
-}
+public class fja {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

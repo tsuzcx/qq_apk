@@ -1,30 +1,53 @@
 package com.tencent.token;
 
-import java.util.concurrent.Future;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
-public class am
+public final class am
+  extends JceStruct
 {
-  private Future a;
+  static ArrayList f;
+  static ArrayList g;
+  static ArrayList h;
+  public int a = 0;
+  public int b = 0;
+  public ArrayList c = null;
+  public ArrayList d = null;
+  public ArrayList e = null;
   
-  public am(Future paramFuture)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramFuture;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, true);
+    if (f == null)
+    {
+      f = new ArrayList();
+      f.add("");
+    }
+    this.c = ((ArrayList)paramJceInputStream.read(f, 2, true));
+    if (g == null)
+    {
+      g = new ArrayList();
+      g.add("");
+    }
+    this.d = ((ArrayList)paramJceInputStream.read(g, 3, true));
+    if (h == null)
+    {
+      h = new ArrayList();
+      h.add("");
+    }
+    this.e = ((ArrayList)paramJceInputStream.read(h, 4, true));
   }
   
-  public boolean a()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    boolean bool = false;
-    if (this.a != null) {}
-    try
-    {
-      bool = this.a.cancel(false);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return false;
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
+    paramJceOutputStream.write(this.e, 4);
   }
 }
 

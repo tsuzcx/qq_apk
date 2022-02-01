@@ -1,9 +1,9 @@
 package io.flutter.embedding.engine.dart;
 
 import android.content.res.AssetManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -19,6 +19,10 @@ public class DartExecutor
   @NonNull
   private final AssetManager assetManager;
   @NonNull
+  private final BinaryMessenger binaryMessenger;
+  @NonNull
+  private final DartMessenger dartMessenger;
+  @NonNull
   private final FlutterJNI flutterJNI;
   private boolean isApplicationRunning = false;
   private final BinaryMessenger.BinaryMessageHandler isolateChannelMessageHandler = new DartExecutor.1(this);
@@ -26,15 +30,14 @@ public class DartExecutor
   private String isolateServiceId;
   @Nullable
   private DartExecutor.IsolateServiceIdListener isolateServiceIdListener;
-  @NonNull
-  private final DartMessenger messenger;
   
   public DartExecutor(@NonNull FlutterJNI paramFlutterJNI, @NonNull AssetManager paramAssetManager)
   {
     this.flutterJNI = paramFlutterJNI;
     this.assetManager = paramAssetManager;
-    this.messenger = new DartMessenger(paramFlutterJNI);
-    this.messenger.setMessageHandler("flutter/isolate", this.isolateChannelMessageHandler);
+    this.dartMessenger = new DartMessenger(paramFlutterJNI);
+    this.dartMessenger.setMessageHandler("flutter/isolate", this.isolateChannelMessageHandler);
+    this.binaryMessenger = new DartExecutor.DefaultBinaryMessenger(this.dartMessenger, null);
   }
   
   public void executeDartCallback(@NonNull DartExecutor.DartCallback paramDartCallback)
@@ -67,6 +70,12 @@ public class DartExecutor
     this.isApplicationRunning = true;
   }
   
+  @NonNull
+  public BinaryMessenger getBinaryMessenger()
+  {
+    return this.binaryMessenger;
+  }
+  
   @Nullable
   public String getIsolateServiceId()
   {
@@ -76,7 +85,7 @@ public class DartExecutor
   @UiThread
   public int getPendingChannelResponseCount()
   {
-    return this.messenger.getPendingChannelResponseCount();
+    return this.dartMessenger.getPendingChannelResponseCount();
   }
   
   public boolean isExecutingDart()
@@ -84,10 +93,17 @@ public class DartExecutor
     return this.isApplicationRunning;
   }
   
+  public void notifyLowMemoryWarning()
+  {
+    if (this.flutterJNI.isAttached()) {
+      this.flutterJNI.notifyLowMemoryWarning();
+    }
+  }
+  
   public void onAttachedToJNI()
   {
     Log.v("DartExecutor", "Attached to JNI. Registering the platform message handler for this Dart execution context.");
-    this.flutterJNI.setPlatformMessageHandler(this.messenger);
+    this.flutterJNI.setPlatformMessageHandler(this.dartMessenger);
   }
   
   public void onDetachedFromJNI()
@@ -96,35 +112,43 @@ public class DartExecutor
     this.flutterJNI.setPlatformMessageHandler(null);
   }
   
+  @Deprecated
   @UiThread
   public void send(@NonNull String paramString, @Nullable ByteBuffer paramByteBuffer)
   {
-    this.messenger.send(paramString, paramByteBuffer, null);
+    this.binaryMessenger.send(paramString, paramByteBuffer);
   }
   
+  @Deprecated
   @UiThread
   public void send(@NonNull String paramString, @Nullable ByteBuffer paramByteBuffer, @Nullable BinaryMessenger.BinaryReply paramBinaryReply)
   {
-    this.messenger.send(paramString, paramByteBuffer, paramBinaryReply);
+    this.binaryMessenger.send(paramString, paramByteBuffer, paramBinaryReply);
   }
   
   public void setIsolateServiceIdListener(@Nullable DartExecutor.IsolateServiceIdListener paramIsolateServiceIdListener)
   {
     this.isolateServiceIdListener = paramIsolateServiceIdListener;
-    if ((this.isolateServiceIdListener != null) && (this.isolateServiceId != null)) {
-      this.isolateServiceIdListener.onIsolateServiceIdAvailable(this.isolateServiceId);
+    paramIsolateServiceIdListener = this.isolateServiceIdListener;
+    if (paramIsolateServiceIdListener != null)
+    {
+      String str = this.isolateServiceId;
+      if (str != null) {
+        paramIsolateServiceIdListener.onIsolateServiceIdAvailable(str);
+      }
     }
   }
   
+  @Deprecated
   @UiThread
   public void setMessageHandler(@NonNull String paramString, @Nullable BinaryMessenger.BinaryMessageHandler paramBinaryMessageHandler)
   {
-    this.messenger.setMessageHandler(paramString, paramBinaryMessageHandler);
+    this.binaryMessenger.setMessageHandler(paramString, paramBinaryMessageHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor
  * JD-Core Version:    0.7.0.1
  */

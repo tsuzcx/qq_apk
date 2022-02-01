@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
 
-public class ftt
-  implements Runnable
+public final class ftt
+  extends Handler
 {
-  public ftt(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
-  
-  public void run()
+  public ftt(Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataThumbnailInfo);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    ((FileTransferObserver)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
   }
 }
 

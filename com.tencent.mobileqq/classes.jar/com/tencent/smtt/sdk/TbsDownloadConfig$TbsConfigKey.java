@@ -8,6 +8,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_APP_VERSIONNAME = "app_versionname";
   public static final String KEY_BACKUPCORE_DELFILELIST = "backupcore_delfilelist";
   public static final String KEY_COUNT_REQUEST_FAIL_IN_24HOURS = "count_request_fail_in_24hours";
+  public static final String KEY_CPUTYPE_OTHER_STABLE_CORE = "tbs_cpu_type_other_stable_core";
   public static final String KEY_DECOUPLECOREVERSION = "tbs_decouplecoreversion";
   public static final String KEY_DESkEY_TOKEN = "tbs_deskey_token";
   public static final String KEY_DEVICE_CPUABI = "device_cpuabi";
@@ -42,7 +43,6 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_TBSDOWNLOADURL = "tbs_downloadurl";
   public static final String KEY_TBSDOWNLOAD_FLOW = "tbs_downloadflow";
   public static final String KEY_TBSDOWNLOAD_STARTTIME = "tbs_downloadstarttime";
-  public static final String KEY_TBS_CORE_LOAD_RENAME_FILE_LOCK_ENABLE = "tbs_core_load_rename_file_lock_enable";
   public static final String KEY_TBS_CORE_LOAD_RENAME_FILE_LOCK_WAIT_ENABLE = "tbs_core_load_rename_file_lock_wait_enable";
   public static final String KEY_TBS_DOWNLOAD_V = "tbs_download_version";
   public static final String KEY_TBS_DOWNLOAD_V_TYPE = "tbs_download_version_type";
@@ -51,7 +51,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig.TbsConfigKey
  * JD-Core Version:    0.7.0.1
  */

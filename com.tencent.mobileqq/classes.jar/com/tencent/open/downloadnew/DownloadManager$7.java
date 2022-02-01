@@ -1,57 +1,58 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfmy;
-import bfok;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
-public class DownloadManager$7
+class DownloadManager$7
   implements Runnable
 {
-  public DownloadManager$7(bfok parambfok, DownloadInfo paramDownloadInfo) {}
+  DownloadManager$7(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.h(this.a.d);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        bflp.c("DownloadManager_", "onDownloadError taskInfo != null！info.writeCodeState = " + this.a.j);
-        this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        this.this$0.e(this.a);
-        if (this.a.j != 0) {
-          break label184;
-        }
-        this.this$0.a(4, this.a);
-        if (!this.a.jdField_c_of_type_JavaLangString.equals("1101070898"))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDownloadError taskInfo != null！info.writeCodeState = ");
+        localStringBuilder.append(this.a.D);
+        LogUtility.c("DownloadManager_", localStringBuilder.toString());
+        this.a.q = localTMAssistantDownloadTaskInfo.mSavePath;
+        this.a.E = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+        this.this$0.f(this.a);
+        if (this.a.D == 0)
         {
-          long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-          this.this$0.a(this.a, l);
+          this.this$0.a(4, this.a);
+          if (!this.a.c.equals("1101070898"))
+          {
+            long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+            this.this$0.a(this.a, l);
+          }
+        }
+        else
+        {
+          LogUtility.c("DownloadManager_", "onDownloadError taskInfo == null");
+          DownloadManager.a(this.this$0, this.a);
+          return;
         }
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        label184:
-        bflp.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      LogUtility.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      StaticAnalyz.a("300", this.a.h, this.a.c, this.a.F);
+      if (this.a.w) {
+        this.this$0.d(this.a);
       }
     }
-    bfmy.a("300", this.a.h, this.a.jdField_c_of_type_JavaLangString, this.a.o);
-    if (this.a.a) {
-      this.this$0.c(this.a);
-    }
-    return;
-    bflp.c("DownloadManager_", "onDownloadError taskInfo == null");
-    bfok.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.7
  * JD-Core Version:    0.7.0.1
  */

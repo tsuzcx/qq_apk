@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/m2t" android:layout_width="26.0dip" android:layout_height="26.0dip" android:src="@raw/icons_arrow_down" android:layout_marginStart="16.0dip" />
+        <TextView android:textSize="@dimen/a_" android:textColor="@color/BW_F_Alpha_0_8" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择要提醒的人" android:lineSpacingExtra="0.0sp" app:layout_constraintBottom_toBottomOf="@id/m2t" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="@id/m2t" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/m21" android:background="@drawable/cb2" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginTop="20.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/m3_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_100_Alpha_0_3" />
+            <com.tencent.mm.ui.base.MMClearEditText android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:textColorHint="@color/BW_100_Alpha_0_5" android:gravity="center|left" android:id="@id/lz3" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/hy" android:hint="@string/a2o" android:maxLines="1" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/m40" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_100_Alpha_0_3" />
+            <TextView android:textColor="@color/BW_100_Alpha_0_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a2o" android:layout_marginStart="6.0dip" />
+        </LinearLayout>
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/m72" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="1.0" android:overScrollMode="never" />
+</LinearLayout>

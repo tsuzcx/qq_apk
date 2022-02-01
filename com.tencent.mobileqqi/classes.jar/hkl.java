@@ -1,43 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import com.tencent.open.appcommon.js.AppInterface;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppDialog;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
-public class hkl
-  implements DialogInterface.OnClickListener
+class hkl
+  implements Runnable
 {
-  public hkl(AppInterface paramAppInterface, String paramString) {}
+  hkl(hkk paramhkk, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = "";
-    if (paramInt == 2131560009)
+    try
     {
-      StaticAnalyz.a("200", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-      paramDialogInterface = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity).edit();
-      paramDialogInterface.putBoolean("qqsetting_package_scan_flag", false);
-      paramDialogInterface.commit();
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
+      if ((this.jdField_a_of_type_Hkk.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_Hkk.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
       }
-      paramDialogInterface = "javascript:QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'0'});void(0);";
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.mHandler.post(new hkm(this, paramDialogInterface));
       return;
-      if (paramInt == 2131560008)
-      {
-        if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
-          this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
-        }
-        paramDialogInterface = "javascript:QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'1'});void(0);";
-      }
+    }
+    catch (Exception localException)
+    {
+      LogUtility.a(BaseInterface.TAG, "webview loadUrl>>> ", localException);
     }
   }
 }

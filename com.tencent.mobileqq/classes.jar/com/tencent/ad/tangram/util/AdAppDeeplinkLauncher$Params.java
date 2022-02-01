@@ -16,37 +16,36 @@ public final class AdAppDeeplinkLauncher$Params
   
   Intent getIntent()
   {
-    Object localObject1 = null;
-    if (!isValid()) {}
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject2 = AdUriUtil.parse(this.deeplink);
-      } while (localObject2 == null);
-      localObject2 = new Intent("android.intent.action.VIEW", (Uri)localObject2);
-      if (!TextUtils.isEmpty(this.packageName)) {
-        ((Intent)localObject2).setPackage(this.packageName);
-      }
-      if ((this.extrasForIntent != null) && (!this.extrasForIntent.isEmpty())) {
-        ((Intent)localObject2).putExtras(this.extrasForIntent);
-      }
-      localObject1 = localObject2;
-    } while (this.addflags == -2147483648);
-    ((Intent)localObject2).addFlags(this.addflags);
-    return localObject2;
+    if (!isValid()) {
+      return null;
+    }
+    Object localObject = AdUriUtil.parse(this.deeplink);
+    if (localObject == null) {
+      return null;
+    }
+    localObject = new Intent("android.intent.action.VIEW", (Uri)localObject);
+    if (!TextUtils.isEmpty(this.packageName)) {
+      ((Intent)localObject).setPackage(this.packageName);
+    }
+    Bundle localBundle = this.extrasForIntent;
+    if ((localBundle != null) && (!localBundle.isEmpty())) {
+      ((Intent)localObject).putExtras(this.extrasForIntent);
+    }
+    int i = this.addflags;
+    if (i != -2147483648) {
+      ((Intent)localObject).addFlags(i);
+    }
+    return localObject;
   }
   
   boolean isValid()
   {
-    return !TextUtils.isEmpty(this.deeplink);
+    return TextUtils.isEmpty(this.deeplink) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Params
  * JD-Core Version:    0.7.0.1
  */

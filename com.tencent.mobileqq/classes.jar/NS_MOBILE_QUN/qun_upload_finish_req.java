@@ -60,11 +60,13 @@ public final class qun_upload_finish_req
     paramJceOutputStream.write(this.batchid, 2);
     paramJceOutputStream.write(this.photototal, 3);
     paramJceOutputStream.write(this.photosucc, 4);
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 5);
+    Object localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 6);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.retry_count, 7);
     paramJceOutputStream.write(this.albumtype, 8);
@@ -72,7 +74,7 @@ public final class qun_upload_finish_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_upload_finish_req
  * JD-Core Version:    0.7.0.1
  */

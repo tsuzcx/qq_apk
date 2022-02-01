@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/avatar_bg_deep" />
+    <com.tencent.mm.wear.app.ui.widget.RecordView android:id="@id/record_view" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.wear.app.ui.widget.WearTextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/tip_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="{tip}" android:layout_centerHorizontal="true" android:lineSpacingExtra="3.0dip" />
+</RelativeLayout>

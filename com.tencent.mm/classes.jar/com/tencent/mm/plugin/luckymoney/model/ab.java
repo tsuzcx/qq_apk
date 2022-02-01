@@ -1,71 +1,75 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.g.c;
+import com.tencent.mm.g.d;
+import com.tencent.mm.g.g.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
 
 public final class ab
-  extends aa
+  implements g.a
 {
-  public ab(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  ab.a Ktv;
+  String Ktw;
+  boolean Ktx = true;
+  String ytQ = null;
+  
+  public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(42389);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("appId", paramString1);
-    localHashMap.put("timeStamp", paramString2);
-    localHashMap.put("nonceStr", paramString3);
-    if (paramString4 != null) {
-      localHashMap.put("package", URLEncoder.encode(paramString4));
+    AppMethodBeat.i(65240);
+    Log.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+    if ((paramd != null) && (this.ytQ.equals(paramString)) && (!Util.isNullOrNil(paramd.field_fileId)))
+    {
+      Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer success, sceneResult.field_retCode:" + paramd.field_retCode);
+      if ((paramInt == 0) && (paramd.field_retCode == 0)) {
+        if (this.Ktx)
+        {
+          Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, upload callback success");
+          Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
+          if (this.Ktv != null) {
+            this.Ktv.cp(this.Ktw, true);
+          }
+        }
+      }
     }
-    localHashMap.put("signType", paramString5);
-    if (paramString6 != null) {
-      localHashMap.put("paySign", URLEncoder.encode(paramString6));
+    for (;;)
+    {
+      AppMethodBeat.o(65240);
+      return 0;
+      Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, download callback success");
+      break;
+      Log.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail");
+      if (this.Ktv != null)
+      {
+        this.Ktv.cp(this.Ktw, false);
+        continue;
+        if ((paramd != null) && (this.ytQ.equals(paramString)) && (paramd.field_retCode != 0))
+        {
+          Log.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail, sceneResult.field_retCode:" + paramd.field_retCode);
+          if (this.Ktv != null) {
+            this.Ktv.cp(this.Ktw, false);
+          }
+        }
+        else if (paramc != null)
+        {
+          Log.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: upload progressing....");
+        }
+      }
     }
-    localHashMap.put("way", "3");
-    if (paramString7 != null) {
-      localHashMap.put("jsapiH5Url", URLEncoder.encode(paramString7));
-    }
-    setRequestData(localHashMap);
-    AppMethodBeat.o(42389);
   }
   
-  public ab(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
-  {
-    AppMethodBeat.i(42390);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("appId", paramString1);
-    localHashMap.put("timeStamp", paramString2);
-    localHashMap.put("nonceStr", paramString3);
-    if (paramString4 != null) {
-      localHashMap.put("package", URLEncoder.encode(paramString4));
-    }
-    localHashMap.put("signType", paramString5);
-    if (paramString6 != null) {
-      localHashMap.put("paySign", URLEncoder.encode(paramString6));
-    }
-    localHashMap.put("way", "4");
-    if (paramString7 != null) {
-      localHashMap.put("androidSign", URLEncoder.encode(paramString7));
-    }
-    if (paramString8 != null) {
-      localHashMap.put("androidPackage", URLEncoder.encode(paramString8));
-    }
-    setRequestData(localHashMap);
-    AppMethodBeat.o(42390);
-  }
+  public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
   
-  public final int bhH()
+  public final byte[] h(String paramString, byte[] paramArrayOfByte)
   {
-    return 2;
+    return null;
   }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ab
  * JD-Core Version:    0.7.0.1
  */

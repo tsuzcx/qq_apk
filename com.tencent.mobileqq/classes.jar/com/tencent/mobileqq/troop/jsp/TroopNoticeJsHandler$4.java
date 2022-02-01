@@ -1,23 +1,30 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bcgq;
 import com.tencent.smtt.sdk.WebView;
 
-public class TroopNoticeJsHandler$4
+class TroopNoticeJsHandler$4
   implements Runnable
 {
-  public TroopNoticeJsHandler$4(bcgq parambcgq, WebView paramWebView, String paramString1, String paramString2) {}
+  TroopNoticeJsHandler$4(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
+    WebView localWebView = this.a;
+    if (localWebView != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript: ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("(");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(")");
+      localWebView.loadUrl(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler.4
  * JD-Core Version:    0.7.0.1
  */

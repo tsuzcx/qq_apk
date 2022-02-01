@@ -57,16 +57,16 @@ public class BigHeadMaskSmooth
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glViewport(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());
     this.blurFeather.init(paramInt2, paramInt3);
-    if (this.blurFeather.getProgram() != 0) {
+    if (this.blurFeather.getProgram() != 0)
+    {
       this.blurFeather.drawTexture(this.mOrgTextureId, paramArrayOfFloat, null);
     }
-    for (;;)
+    else
     {
-      this.mRenderFBO.unbind();
-      return;
       GLES20.glGetError();
       this.mRenderFBO.setUserTextureId(this.mOrgTextureId);
     }
+    this.mRenderFBO.unbind();
   }
   
   public int getOutputTexture()
@@ -76,7 +76,7 @@ public class BigHeadMaskSmooth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadMaskSmooth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,71 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i.i;
-import com.tencent.mm.plugin.appbrand.i.p;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.n.i;
+import com.tencent.mm.plugin.appbrand.n.s;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class d
   implements MMSightRecordView.f
 {
-  private final c hAC;
-  final p hIY;
-  boolean hIZ;
-  int hJa;
+  private final f qNp;
+  final s rQo;
+  boolean rQp;
+  int rQq;
   
-  public d(c paramc)
+  public d(f paramf)
   {
-    AppMethodBeat.i(130968);
-    this.hAC = paramc;
-    this.hIY = ((p)this.hAC.aAO().v(p.class));
-    this.hJa = -2147483648;
-    AppMethodBeat.o(130968);
+    AppMethodBeat.i(46217);
+    this.qNp = paramf;
+    this.rQo = ((s)this.qNp.getJsRuntime().Z(s.class));
+    this.rQq = -2147483648;
+    AppMethodBeat.o(46217);
   }
   
   public final void a(MMSightRecordView paramMMSightRecordView)
   {
-    AppMethodBeat.i(130969);
-    this.hIZ = false;
+    AppMethodBeat.i(46218);
+    this.rQp = false;
     if (paramMMSightRecordView != null) {
       paramMMSightRecordView.a(null, null);
     }
-    if (this.hJa != -2147483648)
+    if (this.rQq != -2147483648)
     {
-      this.hIY.oy(this.hJa);
-      this.hJa = -2147483648;
+      this.rQo.BM(this.rQq);
+      this.rQq = -2147483648;
     }
-    AppMethodBeat.o(130969);
+    AppMethodBeat.o(46218);
   }
   
-  public final void aCP()
+  public final void crP()
   {
-    AppMethodBeat.i(130970);
-    if (!this.hIZ)
+    AppMethodBeat.i(46219);
+    if (!this.rQp)
     {
-      ab.i("MicroMsg.FrameDataCallbackHelper", "onDateUpdate not need callback");
-      AppMethodBeat.o(130970);
+      Log.i("MicroMsg.FrameDataCallbackHelper", "onDateUpdate not need callback");
+      AppMethodBeat.o(46219);
       return;
     }
-    this.hAC.a(new d.a(this));
-    AppMethodBeat.o(130970);
+    new a().i(this.qNp).cpV();
+    AppMethodBeat.o(46219);
+  }
+  
+  public final class a
+    extends bc
+  {
+    private static final int CTRL_INDEX = 637;
+    public static final String NAME = "onCameraFrame";
+    
+    public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.d
  * JD-Core Version:    0.7.0.1
  */

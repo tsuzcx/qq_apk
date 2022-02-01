@@ -8,33 +8,33 @@ public final class zzk
   extends zza
 {
   public static final Parcelable.Creator<zzk> CREATOR = new ch();
-  private final String Gt;
-  private final String UD;
-  private final String UE;
-  private final String UF;
-  private final String UG;
-  private final String UH;
-  private final byte UI;
-  private final byte UJ;
-  private final byte UK;
-  private final byte UL;
-  private final String UM;
-  private int de;
+  private final String Ii;
+  private final byte WA;
+  private final String WB;
+  private final String Ws;
+  private final String Wt;
+  private final String Wu;
+  private final String Wv;
+  private final String Ww;
+  private final byte Wx;
+  private final byte Wy;
+  private final byte Wz;
+  private int eS;
   
   public zzk(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, String paramString7)
   {
-    this.de = paramInt;
-    this.UD = paramString1;
-    this.UE = paramString2;
-    this.UF = paramString3;
-    this.UG = paramString4;
-    this.UH = paramString5;
-    this.Gt = paramString6;
-    this.UI = paramByte1;
-    this.UJ = paramByte2;
-    this.UK = paramByte3;
-    this.UL = paramByte4;
-    this.UM = paramString7;
+    this.eS = paramInt;
+    this.Ws = paramString1;
+    this.Wt = paramString2;
+    this.Wu = paramString3;
+    this.Wv = paramString4;
+    this.Ww = paramString5;
+    this.Ii = paramString6;
+    this.Wx = paramByte1;
+    this.Wy = paramByte2;
+    this.Wz = paramByte3;
+    this.WA = paramByte4;
+    this.WB = paramString7;
   }
   
   public final boolean equals(Object paramObject)
@@ -47,109 +47,109 @@ public final class zzk
         return false;
       }
       paramObject = (zzk)paramObject;
-      if (this.de != paramObject.de) {
+      if (this.eS != paramObject.eS) {
         return false;
       }
-      if (this.UI != paramObject.UI) {
+      if (this.Wx != paramObject.Wx) {
         return false;
       }
-      if (this.UJ != paramObject.UJ) {
+      if (this.Wy != paramObject.Wy) {
         return false;
       }
-      if (this.UK != paramObject.UK) {
+      if (this.Wz != paramObject.Wz) {
         return false;
       }
-      if (this.UL != paramObject.UL) {
+      if (this.WA != paramObject.WA) {
         return false;
       }
-      if (!this.UD.equals(paramObject.UD)) {
+      if (!this.Ws.equals(paramObject.Ws)) {
         return false;
       }
-      if (this.UE != null)
+      if (this.Wt != null)
       {
-        if (this.UE.equals(paramObject.UE)) {}
+        if (this.Wt.equals(paramObject.Wt)) {}
       }
       else {
-        while (paramObject.UE != null) {
+        while (paramObject.Wt != null) {
           return false;
         }
       }
-      if (!this.UF.equals(paramObject.UF)) {
+      if (!this.Wu.equals(paramObject.Wu)) {
         return false;
       }
-      if (!this.UG.equals(paramObject.UG)) {
+      if (!this.Wv.equals(paramObject.Wv)) {
         return false;
       }
-      if (!this.UH.equals(paramObject.UH)) {
+      if (!this.Ww.equals(paramObject.Ww)) {
         return false;
       }
-      if (this.Gt != null)
+      if (this.Ii != null)
       {
-        if (this.Gt.equals(paramObject.Gt)) {}
+        if (this.Ii.equals(paramObject.Ii)) {}
       }
       else {
-        while (paramObject.Gt != null) {
+        while (paramObject.Ii != null) {
           return false;
         }
       }
-      if (this.UM != null) {
-        return this.UM.equals(paramObject.UM);
+      if (this.WB != null) {
+        return this.WB.equals(paramObject.WB);
       }
-    } while (paramObject.UM == null);
+    } while (paramObject.WB == null);
     return false;
   }
   
   public final String getDisplayName()
   {
-    if (this.Gt == null) {
-      return this.UD;
+    if (this.Ii == null) {
+      return this.Ws;
     }
-    return this.Gt;
+    return this.Ii;
   }
   
   public final int getId()
   {
-    return this.de;
+    return this.eS;
   }
   
   public final String getPackageName()
   {
-    return this.UM;
+    return this.WB;
   }
   
   public final String getTitle()
   {
-    return this.UG;
+    return this.Wv;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    int m = this.de;
-    int n = this.UD.hashCode();
+    int m = this.eS;
+    int n = this.Ws.hashCode();
     int i;
     int i1;
     int i2;
     int i3;
-    if (this.UE != null)
+    if (this.Wt != null)
     {
-      i = this.UE.hashCode();
-      i1 = this.UF.hashCode();
-      i2 = this.UG.hashCode();
-      i3 = this.UH.hashCode();
-      if (this.Gt == null) {
+      i = this.Wt.hashCode();
+      i1 = this.Wu.hashCode();
+      i2 = this.Wv.hashCode();
+      i3 = this.Ww.hashCode();
+      if (this.Ii == null) {
         break label187;
       }
     }
     label187:
-    for (int j = this.Gt.hashCode();; j = 0)
+    for (int j = this.Ii.hashCode();; j = 0)
     {
-      int i4 = this.UI;
-      int i5 = this.UJ;
-      int i6 = this.UK;
-      int i7 = this.UL;
-      if (this.UM != null) {
-        k = this.UM.hashCode();
+      int i4 = this.Wx;
+      int i5 = this.Wy;
+      int i6 = this.Wz;
+      int i7 = this.WA;
+      if (this.WB != null) {
+        k = this.WB.hashCode();
       }
       return (((((j + ((((i + ((m + 31) * 31 + n) * 31) * 31 + i1) * 31 + i2) * 31 + i3) * 31) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + k;
       i = 0;
@@ -157,60 +157,60 @@ public final class zzk
     }
   }
   
-  public final String kP()
+  public final String kY()
   {
-    return this.UD;
+    return this.Ws;
   }
   
-  public final String kQ()
+  public final String kZ()
   {
-    return this.UE;
+    return this.Wt;
   }
   
-  public final String kR()
+  public final String la()
   {
-    return this.UF;
+    return this.Wu;
   }
   
-  public final String kS()
+  public final String lb()
   {
-    return this.UH;
+    return this.Ww;
   }
   
-  public final byte kT()
+  public final byte lc()
   {
-    return this.UI;
+    return this.Wx;
   }
   
-  public final byte kU()
+  public final byte ld()
   {
-    return this.UJ;
+    return this.Wy;
   }
   
-  public final byte kV()
+  public final byte le()
   {
-    return this.UK;
+    return this.Wz;
   }
   
-  public final byte kW()
+  public final byte lf()
   {
-    return this.UL;
+    return this.WA;
   }
   
   public final String toString()
   {
-    int i = this.de;
-    String str1 = this.UD;
-    String str2 = this.UE;
-    String str3 = this.UF;
-    String str4 = this.UG;
-    String str5 = this.UH;
-    String str6 = this.Gt;
-    int j = this.UI;
-    int k = this.UJ;
-    int m = this.UK;
-    int n = this.UL;
-    String str7 = this.UM;
+    int i = this.eS;
+    String str1 = this.Ws;
+    String str2 = this.Wt;
+    String str3 = this.Wu;
+    String str4 = this.Wv;
+    String str5 = this.Ww;
+    String str6 = this.Ii;
+    int j = this.Wx;
+    int k = this.Wy;
+    int m = this.Wz;
+    int n = this.WA;
+    String str7 = this.WB;
     return String.valueOf(str1).length() + 211 + String.valueOf(str2).length() + String.valueOf(str3).length() + String.valueOf(str4).length() + String.valueOf(str5).length() + String.valueOf(str6).length() + String.valueOf(str7).length() + "AncsNotificationParcelable{, id=" + i + ", appId='" + str1 + "', dateTime='" + str2 + "', notificationText='" + str3 + "', title='" + str4 + "', subtitle='" + str5 + "', displayName='" + str6 + "', eventId=" + j + ", eventFlags=" + k + ", categoryId=" + m + ", categoryCount=" + n + ", packageName='" + str7 + "'}";
   }
   

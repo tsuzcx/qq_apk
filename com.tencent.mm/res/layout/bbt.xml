@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <View android:id="@id/hqu" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        <ListView android:id="@id/j9w" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hqu" style="@style/na" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bpe" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hqu">
+            <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/bpd" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <Button android:id="@id/j9c" android:layout_marginRight="@dimen/m2" android:text="@string/gpq" style="@style/or" />
+        </LinearLayout>
+        <ImageView android:id="@id/jfm" android:background="@drawable/btb" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bpe" />
+        <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/j9z" android:visibility="gone" android:layout_width="@dimen/e" android:layout_height="wrap_content" android:layout_below="@id/bpe" android:layout_alignParentRight="true" />
+        <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/j9v" android:background="@color/al2" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/g" android:paddingRight="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bpe">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include layout="@layout/bwh" />
+                <com.tencent.mm.ui.base.MMTagPanel android:id="@id/bp9" android:paddingTop="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/m2" flowlayout:verticalSpacing="@dimen/g" />
+            </LinearLayout>
+        </com.tencent.mm.ui.contact.LabelContainerView>
+        <LinearLayout android:gravity="center_horizontal" android:id="@id/hh0" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bpe">
+            <TextView android:id="@id/hgy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/gmp" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

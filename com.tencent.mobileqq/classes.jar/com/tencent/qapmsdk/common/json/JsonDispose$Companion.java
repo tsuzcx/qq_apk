@@ -29,7 +29,13 @@ public final class JsonDispose$Companion
       }
       catch (JSONException localJSONException)
       {
-        Logger.INSTANCE.e(new String[] { "QAPM_common_JsonDispose", localJSONException + ": copy json key " + str + " error" });
+        Logger localLogger = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localJSONException);
+        localStringBuilder.append(": copy json key ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" error");
+        localLogger.e(new String[] { "QAPM_common_JsonDispose", localStringBuilder.toString() });
       }
     }
     return paramJSONObject2;
@@ -37,7 +43,7 @@ public final class JsonDispose$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.json.JsonDispose.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,57 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import java.util.Comparator;
+import EncounterSvc.RespEncounterInfo;
+import EncounterSvc.RespGetEncounterV2;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.maproam.RoamMapController;
+import com.tencent.mobileqq.maproam.data.PersonalInfo;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class gbg
-  implements Comparator
+  extends LBSObserver
 {
-  public gbg(TroopAssistantManager paramTroopAssistantManager) {}
+  public gbg(RoamMapController paramRoamMapController, int paramInt, ArrayList paramArrayList) {}
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  protected void a(boolean paramBoolean1, String arg2, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
+    if (paramBoolean1) {
+      if (paramRespGetEncounterV2 == null) {
+        break label198;
+      }
     }
-    if (l1 == l2) {
-      return 0;
+    label198:
+    for (paramRespGetEncounterV2 = paramRespGetEncounterV2.vEncounterInfos;; paramRespGetEncounterV2 = null)
+    {
+      if ((paramRespGetEncounterV2 != null) && (!paramRespGetEncounterV2.isEmpty()))
+      {
+        paramInt3 = paramRespGetEncounterV2.size();
+        paramInt1 = Math.min(this.jdField_a_of_type_Int, paramInt3);
+        paramInt2 = 0;
+        if ((paramInt2 < paramInt1) && (paramInt2 < paramInt3))
+        {
+          RespEncounterInfo localRespEncounterInfo = (RespEncounterInfo)paramRespGetEncounterV2.get(paramInt2);
+          String str = String.valueOf(localRespEncounterInfo.lEctID);
+          if (???.equals(str)) {
+            paramInt1 += 1;
+          }
+          for (;;)
+          {
+            paramInt2 += 1;
+            break;
+            PersonalInfo localPersonalInfo = new PersonalInfo();
+            localPersonalInfo.lEctID = str;
+            localPersonalInfo.uid = localRespEncounterInfo.uid;
+            localPersonalInfo.enc_id = localRespEncounterInfo.enc_id;
+            localPersonalInfo.seg = Arrays.toString(localRespEncounterInfo.sig);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localPersonalInfo);
+          }
+        }
+      }
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqMaproamRoamMapController.a)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMaproamRoamMapController.a.notifyAll();
+        return;
+      }
     }
-    return -1;
   }
 }
 

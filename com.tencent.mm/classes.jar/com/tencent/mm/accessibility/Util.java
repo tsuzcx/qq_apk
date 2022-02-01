@@ -10,30 +10,30 @@ public class Util
 {
   public static Activity getActivityOfView(View paramView)
   {
-    AppMethodBeat.i(118645);
+    AppMethodBeat.i(160019);
     if (paramView == null)
     {
-      AppMethodBeat.o(118645);
+      AppMethodBeat.o(160019);
       return null;
     }
     for (paramView = paramView.getContext(); (paramView instanceof ContextWrapper); paramView = ((ContextWrapper)paramView).getBaseContext()) {
       if ((paramView instanceof Activity))
       {
         paramView = (Activity)paramView;
-        AppMethodBeat.o(118645);
+        AppMethodBeat.o(160019);
         return paramView;
       }
     }
-    AppMethodBeat.o(118645);
+    AppMethodBeat.o(160019);
     return null;
   }
   
   public static String getViewIdName(View paramView)
   {
-    AppMethodBeat.i(118646);
+    AppMethodBeat.i(160020);
     if (paramView == null)
     {
-      AppMethodBeat.o(118646);
+      AppMethodBeat.o(160020);
       return "NO_ID";
     }
     int i = paramView.getId();
@@ -62,12 +62,12 @@ public class Util
         localStringBuilder.append("/");
         localStringBuilder.append((String)localObject);
       }
-      catch (Throwable paramView)
+      finally
       {
         continue;
       }
       paramView = localStringBuilder.toString();
-      AppMethodBeat.o(118646);
+      AppMethodBeat.o(160020);
       return paramView;
       paramView = "app";
       continue;
@@ -82,7 +82,7 @@ public class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.accessibility.Util
  * JD-Core Version:    0.7.0.1
  */

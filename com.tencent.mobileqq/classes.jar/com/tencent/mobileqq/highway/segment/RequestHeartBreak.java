@@ -9,7 +9,7 @@ public class RequestHeartBreak
   extends HwRequest
 {
   public int connId;
-  public boolean isUrgent;
+  public boolean isUrgent = false;
   
   public RequestHeartBreak(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean)
   {
@@ -24,11 +24,17 @@ public class RequestHeartBreak
   
   public String dumpBaseInfo()
   {
-    StringBuilder localStringBuilder = new StringBuilder("DUMP_REQ [TYPE_HEARTBREAK] Info: ");
-    localStringBuilder.append(super.dumpBaseInfo());
-    localStringBuilder.append(" ConnId:" + this.connId);
-    localStringBuilder.append(" Urgent:" + this.isUrgent);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder("DUMP_REQ [TYPE_HEARTBREAK] Info: ");
+    localStringBuilder1.append(super.dumpBaseInfo());
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" ConnId:");
+    localStringBuilder2.append(this.connId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" Urgent:");
+    localStringBuilder2.append(this.isUrgent);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
   
   public int getPriority()
@@ -53,7 +59,7 @@ public class RequestHeartBreak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestHeartBreak
  * JD-Core Version:    0.7.0.1
  */

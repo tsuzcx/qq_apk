@@ -1,10 +1,8 @@
 package com.google.android.gms.internal.measurement;
 
 import android.net.Uri;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public final class zzew
 {
   private static final zzxc zzagc;
@@ -63,7 +61,7 @@ public final class zzew
   
   static
   {
-    AppMethodBeat.i(68750);
+    AppMethodBeat.i(1273);
     String str = String.valueOf(Uri.encode("com.google.android.gms.measurement"));
     if (str.length() != 0) {}
     for (str = "content://com.google.android.gms.phenotype/".concat(str);; str = new String("content://com.google.android.gms.phenotype/"))
@@ -121,14 +119,14 @@ public final class zzew
       zzaia = zzex.zzb("measurement.run_on_worker_inline", true, false);
       zzaib = zzex.zzb("measurement.audience.dynamic_filters", false, false);
       zzaic = zzex.zzb("measurement.reset_analytics.persist_time", false, false);
-      AppMethodBeat.o(68750);
+      AppMethodBeat.o(1273);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzew
  * JD-Core Version:    0.7.0.1
  */

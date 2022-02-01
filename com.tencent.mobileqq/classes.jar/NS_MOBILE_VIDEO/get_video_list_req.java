@@ -30,17 +30,19 @@ public final class get_video_list_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.attach_info_new != null) {
-      paramJceOutputStream.write(this.attach_info_new, 1);
+    String str = this.attach_info_new;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.attach_info_old != null) {
-      paramJceOutputStream.write(this.attach_info_old, 2);
+    str = this.attach_info_old;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.get_video_list_req
  * JD-Core Version:    0.7.0.1
  */

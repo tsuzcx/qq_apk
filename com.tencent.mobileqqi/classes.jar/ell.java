@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
+import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ell
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public ell(MyBusinessActivity paramMyBusinessActivity) {}
   
-  public ell(DialogBaseActivity paramDialogBaseActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localDialogBaseActivity.a(paramMessage.arg1);
-      return;
-    }
-    localDialogBaseActivity.finish();
+    BindNumberBusinessActivity.a(this.a, "", true);
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800421C", "0X800421C", 0, 0, "", "", "", "");
   }
 }
 

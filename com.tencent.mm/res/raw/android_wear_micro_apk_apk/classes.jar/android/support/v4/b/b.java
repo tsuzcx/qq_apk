@@ -9,17 +9,16 @@ import java.util.Set;
 public final class b<E>
   implements Collection<E>, Set<E>
 {
-  private static final int[] iR = new int[0];
-  private static final Object[] iS = new Object[0];
-  static Object[] iT;
-  static int iU;
-  static Object[] iV;
-  static int iW;
-  int e = 0;
-  g<E, E> iP;
-  final boolean iX = false;
-  int[] iY = iR;
-  Object[] iZ = iS;
+  private static final int[] kP = new int[0];
+  private static final Object[] kQ = new Object[0];
+  private static Object[] kR;
+  private static int kS;
+  private static Object[] kT;
+  private static int kU;
+  private g<E, E> kN;
+  private int[] kV = kP;
+  private Object[] kW = kQ;
+  private int m = 0;
   
   public b()
   {
@@ -28,19 +27,62 @@ public final class b<E>
   
   private b(byte paramByte) {}
   
+  private void A(int paramInt)
+  {
+    if (paramInt == 8) {}
+    for (;;)
+    {
+      try
+      {
+        if (kT != null)
+        {
+          Object[] arrayOfObject1 = kT;
+          this.kW = arrayOfObject1;
+          kT = (Object[])arrayOfObject1[0];
+          this.kV = ((int[])arrayOfObject1[1]);
+          arrayOfObject1[1] = null;
+          arrayOfObject1[0] = null;
+          kU -= 1;
+          return;
+        }
+        this.kV = new int[paramInt];
+        this.kW = new Object[paramInt];
+        return;
+      }
+      finally {}
+      if (paramInt == 4) {
+        try
+        {
+          if (kR != null)
+          {
+            Object[] arrayOfObject2 = kR;
+            this.kW = arrayOfObject2;
+            kR = (Object[])arrayOfObject2[0];
+            this.kV = ((int[])arrayOfObject2[1]);
+            arrayOfObject2[1] = null;
+            arrayOfObject2[0] = null;
+            kS -= 1;
+            return;
+          }
+        }
+        finally {}
+      }
+    }
+  }
+  
   private static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
   {
     if (paramArrayOfInt.length == 8) {
       try
       {
-        if (iW < 10)
+        if (kU < 10)
         {
-          paramArrayOfObject[0] = iV;
+          paramArrayOfObject[0] = kT;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt -= 1;
           break label113;
-          iV = paramArrayOfObject;
-          iW += 1;
+          kT = paramArrayOfObject;
+          kU += 1;
         }
         return;
       }
@@ -54,14 +96,14 @@ public final class b<E>
     {
       try
       {
-        if (iU < 10)
+        if (kS < 10)
         {
-          paramArrayOfObject[0] = iT;
+          paramArrayOfObject[0] = kR;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt -= 1;
           break label130;
-          iT = paramArrayOfObject;
-          iU += 1;
+          kR = paramArrayOfObject;
+          kS += 1;
         }
         return;
       }
@@ -84,11 +126,11 @@ public final class b<E>
     }
   }
   
-  private int bi()
+  private int bz()
   {
-    int m = this.e;
+    int n = this.m;
     int i;
-    if (m == 0) {
+    if (n == 0) {
       i = -1;
     }
     int j;
@@ -97,15 +139,15 @@ public final class b<E>
       do
       {
         return i;
-        j = c.a(this.iY, m, 0);
+        j = c.a(this.kV, n, 0);
         i = j;
       } while (j < 0);
       i = j;
-    } while (this.iZ[j] == null);
+    } while (this.kW[j] == null);
     int k = j + 1;
-    while ((k < m) && (this.iY[k] == 0))
+    while ((k < n) && (this.kV[k] == 0))
     {
-      if (this.iZ[k] == null) {
+      if (this.kW[k] == null) {
         return k;
       }
       k += 1;
@@ -113,11 +155,11 @@ public final class b<E>
     j -= 1;
     for (;;)
     {
-      if ((j < 0) || (this.iY[j] != 0)) {
+      if ((j < 0) || (this.kV[j] != 0)) {
         break label115;
       }
       i = j;
-      if (this.iZ[j] == null) {
+      if (this.kW[j] == null) {
         break;
       }
       j -= 1;
@@ -128,9 +170,9 @@ public final class b<E>
   
   private int indexOf(Object paramObject, int paramInt)
   {
-    int m = this.e;
+    int n = this.m;
     int i;
-    if (m == 0) {
+    if (n == 0) {
       i = -1;
     }
     int j;
@@ -139,15 +181,15 @@ public final class b<E>
       do
       {
         return i;
-        j = c.a(this.iY, m, paramInt);
+        j = c.a(this.kV, n, paramInt);
         i = j;
       } while (j < 0);
       i = j;
-    } while (paramObject.equals(this.iZ[j]));
+    } while (paramObject.equals(this.kW[j]));
     int k = j + 1;
-    while ((k < m) && (this.iY[k] == paramInt))
+    while ((k < n) && (this.kV[k] == paramInt))
     {
-      if (paramObject.equals(this.iZ[k])) {
+      if (paramObject.equals(this.kW[k])) {
         return k;
       }
       k += 1;
@@ -155,11 +197,11 @@ public final class b<E>
     j -= 1;
     for (;;)
     {
-      if ((j < 0) || (this.iY[j] != paramInt)) {
+      if ((j < 0) || (this.kV[j] != paramInt)) {
         break label150;
       }
       i = j;
-      if (paramObject.equals(this.iZ[j])) {
+      if (paramObject.equals(this.kW[j])) {
         break;
       }
       j -= 1;
@@ -168,104 +210,55 @@ public final class b<E>
     return k ^ 0xFFFFFFFF;
   }
   
-  private void q(int paramInt)
-  {
-    if (paramInt == 8) {}
-    for (;;)
-    {
-      try
-      {
-        if (iV != null)
-        {
-          Object[] arrayOfObject1 = iV;
-          this.iZ = arrayOfObject1;
-          iV = (Object[])arrayOfObject1[0];
-          this.iY = ((int[])arrayOfObject1[1]);
-          arrayOfObject1[1] = null;
-          arrayOfObject1[0] = null;
-          iW -= 1;
-          return;
-        }
-        this.iY = new int[paramInt];
-        this.iZ = new Object[paramInt];
-        return;
-      }
-      finally {}
-      if (paramInt == 4) {
-        try
-        {
-          if (iT != null)
-          {
-            Object[] arrayOfObject2 = iT;
-            this.iZ = arrayOfObject2;
-            iT = (Object[])arrayOfObject2[0];
-            this.iY = ((int[])arrayOfObject2[1]);
-            arrayOfObject2[1] = null;
-            arrayOfObject2[0] = null;
-            iU -= 1;
-            return;
-          }
-        }
-        finally {}
-      }
-    }
-  }
-  
   public final boolean add(E paramE)
   {
+    int k = 8;
     int i;
     int j;
     if (paramE == null)
     {
-      i = bi();
+      i = bz();
       j = 0;
-      if (i >= 0) {
-        return false;
-      }
     }
-    else
+    while (i >= 0)
     {
-      if (this.iX) {}
-      for (i = System.identityHashCode(paramE);; i = paramE.hashCode())
-      {
-        k = indexOf(paramE, i);
-        j = i;
-        i = k;
-        break;
-      }
+      return false;
+      j = paramE.hashCode();
+      i = indexOf(paramE, j);
     }
-    int k = i ^ 0xFFFFFFFF;
-    if (this.e >= this.iY.length)
+    int n = i ^ 0xFFFFFFFF;
+    if (this.m >= this.kV.length)
     {
-      if (this.e < 8) {
-        break label240;
+      if (this.m < 8) {
+        break label227;
       }
-      i = this.e + (this.e >> 1);
+      i = this.m + (this.m >> 1);
     }
     for (;;)
     {
-      int[] arrayOfInt = this.iY;
-      Object[] arrayOfObject = this.iZ;
-      q(i);
-      if (this.iY.length > 0)
+      Object localObject = this.kV;
+      Object[] arrayOfObject = this.kW;
+      A(i);
+      if (this.kV.length > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.iY, 0, arrayOfInt.length);
-        System.arraycopy(arrayOfObject, 0, this.iZ, 0, arrayOfObject.length);
+        System.arraycopy(localObject, 0, this.kV, 0, localObject.length);
+        System.arraycopy(arrayOfObject, 0, this.kW, 0, arrayOfObject.length);
       }
-      a(arrayOfInt, arrayOfObject, this.e);
-      if (k < this.e)
+      a((int[])localObject, arrayOfObject, this.m);
+      if (n < this.m)
       {
-        System.arraycopy(this.iY, k, this.iY, k + 1, this.e - k);
-        System.arraycopy(this.iZ, k, this.iZ, k + 1, this.e - k);
+        localObject = this.kV;
+        System.arraycopy(localObject, n, localObject, n + 1, this.m - n);
+        localObject = this.kW;
+        System.arraycopy(localObject, n, localObject, n + 1, this.m - n);
       }
-      this.iY[k] = j;
-      this.iZ[k] = paramE;
-      this.e += 1;
+      this.kV[n] = j;
+      this.kW[n] = paramE;
+      this.m += 1;
       return true;
-      label240:
-      if (this.e >= 4) {
-        i = 8;
-      } else {
+      label227:
+      i = k;
+      if (this.m < 4) {
         i = 4;
       }
     }
@@ -274,18 +267,18 @@ public final class b<E>
   public final boolean addAll(Collection<? extends E> paramCollection)
   {
     boolean bool = false;
-    int i = this.e + paramCollection.size();
-    if (this.iY.length < i)
+    int i = this.m + paramCollection.size();
+    if (this.kV.length < i)
     {
-      int[] arrayOfInt = this.iY;
-      Object[] arrayOfObject = this.iZ;
-      q(i);
-      if (this.e > 0)
+      int[] arrayOfInt = this.kV;
+      Object[] arrayOfObject = this.kW;
+      A(i);
+      if (this.m > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.iY, 0, this.e);
-        System.arraycopy(arrayOfObject, 0, this.iZ, 0, this.e);
+        System.arraycopy(arrayOfInt, 0, this.kV, 0, this.m);
+        System.arraycopy(arrayOfObject, 0, this.kW, 0, this.m);
       }
-      a(arrayOfInt, arrayOfObject, this.e);
+      a(arrayOfInt, arrayOfObject, this.m);
     }
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
@@ -296,12 +289,12 @@ public final class b<E>
   
   public final void clear()
   {
-    if (this.e != 0)
+    if (this.m != 0)
     {
-      a(this.iY, this.iZ, this.e);
-      this.iY = iR;
-      this.iZ = iS;
-      this.e = 0;
+      a(this.kV, this.kW, this.m);
+      this.kV = kP;
+      this.kW = kQ;
+      this.m = 0;
     }
   }
   
@@ -336,9 +329,9 @@ public final class b<E>
         int i = 0;
         try
         {
-          while (i < this.e)
+          while (i < this.m)
           {
-            boolean bool = paramObject.contains(this.iZ[i]);
+            boolean bool = paramObject.contains(this.kW[i]);
             if (!bool) {
               return false;
             }
@@ -360,13 +353,13 @@ public final class b<E>
   
   public final int hashCode()
   {
-    int[] arrayOfInt = this.iY;
-    int k = this.e;
+    int[] arrayOfInt = this.kV;
+    int k = this.m;
     int j = 0;
-    int m;
-    for (int i = 0; j < k; i = m + i)
+    int n;
+    for (int i = 0; j < k; i = n + i)
     {
-      m = arrayOfInt[j];
+      n = arrayOfInt[j];
       j += 1;
     }
     return i;
@@ -375,71 +368,68 @@ public final class b<E>
   public final int indexOf(Object paramObject)
   {
     if (paramObject == null) {
-      return bi();
+      return bz();
     }
-    if (this.iX) {}
-    for (int i = System.identityHashCode(paramObject);; i = paramObject.hashCode()) {
-      return indexOf(paramObject, i);
-    }
+    return indexOf(paramObject, paramObject.hashCode());
   }
   
   public final boolean isEmpty()
   {
-    return this.e <= 0;
+    return this.m <= 0;
   }
   
   public final Iterator<E> iterator()
   {
-    if (this.iP == null) {
-      this.iP = new g()
+    if (this.kN == null) {
+      this.kN = new g()
       {
         protected final E a(int paramAnonymousInt, E paramAnonymousE)
         {
           throw new UnsupportedOperationException("not a map");
         }
         
-        protected final void a(E paramAnonymousE1, E paramAnonymousE2)
+        protected final Object b(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          return b.d(b.this)[paramAnonymousInt1];
+        }
+        
+        protected final void b(E paramAnonymousE1, E paramAnonymousE2)
         {
           b.this.add(paramAnonymousE1);
         }
         
-        protected final Object b(int paramAnonymousInt1, int paramAnonymousInt2)
+        protected final int bw()
         {
-          return b.this.iZ[paramAnonymousInt1];
+          return b.c(b.this);
         }
         
-        protected final int bf()
-        {
-          return b.this.e;
-        }
-        
-        protected final Map<E, E> bg()
+        protected final Map<E, E> bx()
         {
           throw new UnsupportedOperationException("not a map");
         }
         
-        protected final void bh()
+        protected final void by()
         {
           b.this.clear();
         }
         
-        protected final int j(Object paramAnonymousObject)
+        protected final int q(Object paramAnonymousObject)
         {
           return b.this.indexOf(paramAnonymousObject);
         }
         
-        protected final int k(Object paramAnonymousObject)
+        protected final int r(Object paramAnonymousObject)
         {
           return b.this.indexOf(paramAnonymousObject);
         }
         
-        protected final void p(int paramAnonymousInt)
+        protected final void z(int paramAnonymousInt)
         {
           b.this.removeAt(paramAnonymousInt);
         }
       };
     }
-    return this.iP.bk().iterator();
+    return this.kN.bB().iterator();
   }
   
   public final boolean remove(Object paramObject)
@@ -466,55 +456,55 @@ public final class b<E>
   public final E removeAt(int paramInt)
   {
     int i = 8;
-    Object localObject = this.iZ[paramInt];
-    if (this.e <= 1)
+    Object localObject = this.kW[paramInt];
+    if (this.m <= 1)
     {
-      a(this.iY, this.iZ, this.e);
-      this.iY = iR;
-      this.iZ = iS;
-      this.e = 0;
+      a(this.kV, this.kW, this.m);
+      this.kV = kP;
+      this.kW = kQ;
+      this.m = 0;
     }
     int[] arrayOfInt;
     Object[] arrayOfObject;
     do
     {
       return localObject;
-      if ((this.iY.length <= 8) || (this.e >= this.iY.length / 3)) {
+      if ((this.kV.length <= 8) || (this.m >= this.kV.length / 3)) {
         break;
       }
-      if (this.e > 8) {
-        i = this.e + (this.e >> 1);
+      if (this.m > 8) {
+        i = this.m + (this.m >> 1);
       }
-      arrayOfInt = this.iY;
-      arrayOfObject = this.iZ;
-      q(i);
-      this.e -= 1;
+      arrayOfInt = this.kV;
+      arrayOfObject = this.kW;
+      A(i);
+      this.m -= 1;
       if (paramInt > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.iY, 0, paramInt);
-        System.arraycopy(arrayOfObject, 0, this.iZ, 0, paramInt);
+        System.arraycopy(arrayOfInt, 0, this.kV, 0, paramInt);
+        System.arraycopy(arrayOfObject, 0, this.kW, 0, paramInt);
       }
-    } while (paramInt >= this.e);
-    System.arraycopy(arrayOfInt, paramInt + 1, this.iY, paramInt, this.e - paramInt);
-    System.arraycopy(arrayOfObject, paramInt + 1, this.iZ, paramInt, this.e - paramInt);
+    } while (paramInt >= this.m);
+    System.arraycopy(arrayOfInt, paramInt + 1, this.kV, paramInt, this.m - paramInt);
+    System.arraycopy(arrayOfObject, paramInt + 1, this.kW, paramInt, this.m - paramInt);
     return localObject;
-    this.e -= 1;
-    if (paramInt < this.e)
+    this.m -= 1;
+    if (paramInt < this.m)
     {
-      System.arraycopy(this.iY, paramInt + 1, this.iY, paramInt, this.e - paramInt);
-      System.arraycopy(this.iZ, paramInt + 1, this.iZ, paramInt, this.e - paramInt);
+      System.arraycopy(this.kV, paramInt + 1, this.kV, paramInt, this.m - paramInt);
+      System.arraycopy(this.kW, paramInt + 1, this.kW, paramInt, this.m - paramInt);
     }
-    this.iZ[this.e] = null;
+    this.kW[this.m] = null;
     return localObject;
   }
   
   public final boolean retainAll(Collection<?> paramCollection)
   {
     boolean bool = false;
-    int i = this.e - 1;
+    int i = this.m - 1;
     while (i >= 0)
     {
-      if (!paramCollection.contains(this.iZ[i]))
+      if (!paramCollection.contains(this.kW[i]))
       {
         removeAt(i);
         bool = true;
@@ -526,26 +516,26 @@ public final class b<E>
   
   public final int size()
   {
-    return this.e;
+    return this.m;
   }
   
   public final Object[] toArray()
   {
-    Object[] arrayOfObject = new Object[this.e];
-    System.arraycopy(this.iZ, 0, arrayOfObject, 0, this.e);
+    Object[] arrayOfObject = new Object[this.m];
+    System.arraycopy(this.kW, 0, arrayOfObject, 0, this.m);
     return arrayOfObject;
   }
   
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
-    if (paramArrayOfT.length < this.e) {
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.e);
+    if (paramArrayOfT.length < this.m) {
+      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.m);
     }
     for (;;)
     {
-      System.arraycopy(this.iZ, 0, paramArrayOfT, 0, this.e);
-      if (paramArrayOfT.length > this.e) {
-        paramArrayOfT[this.e] = null;
+      System.arraycopy(this.kW, 0, paramArrayOfT, 0, this.m);
+      if (paramArrayOfT.length > this.m) {
+        paramArrayOfT[this.m] = null;
       }
       return paramArrayOfT;
     }
@@ -556,15 +546,15 @@ public final class b<E>
     if (isEmpty()) {
       return "{}";
     }
-    StringBuilder localStringBuilder = new StringBuilder(this.e * 14);
+    StringBuilder localStringBuilder = new StringBuilder(this.m * 14);
     localStringBuilder.append('{');
     int i = 0;
-    if (i < this.e)
+    if (i < this.m)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      Object localObject = this.iZ[i];
+      Object localObject = this.kW[i];
       if (localObject != this) {
         localStringBuilder.append(localObject);
       }
@@ -581,7 +571,7 @@ public final class b<E>
   
   public final E valueAt(int paramInt)
   {
-    return this.iZ[paramInt];
+    return this.kW[paramInt];
   }
 }
 

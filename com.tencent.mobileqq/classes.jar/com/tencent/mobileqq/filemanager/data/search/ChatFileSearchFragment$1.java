@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import ayug;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
 import mqq.os.MqqHandler;
 
 class ChatFileSearchFragment$1
@@ -13,7 +13,7 @@ class ChatFileSearchFragment$1
   {
     if (!ChatFileSearchFragment.a(this.this$0))
     {
-      this.this$0.a.a();
+      this.this$0.o.a();
       ChatFileSearchFragment.a(this.this$0, true);
       ThreadManager.getUIHandler().post(new ChatFileSearchFragment.1.1(this));
     }
@@ -21,7 +21,7 @@ class ChatFileSearchFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

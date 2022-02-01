@@ -9,9 +9,13 @@ public class ThreadManager
   
   static void checkMainThread(String paramString)
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new IllegalThreadStateException(paramString + " need to be invoke in main thread.");
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" need to be invoke in main thread.");
+    throw new IllegalThreadStateException(localStringBuilder.toString());
   }
   
   static void executeOnUiThread(Runnable paramRunnable)
@@ -26,20 +30,21 @@ public class ThreadManager
   
   public static Handler getUiHandler()
   {
-    if (sUiHandler == null) {}
-    try
-    {
-      if (sUiHandler == null) {
-        sUiHandler = new Handler(Looper.getMainLooper());
+    if (sUiHandler == null) {
+      try
+      {
+        if (sUiHandler == null) {
+          sUiHandler = new Handler(Looper.getMainLooper());
+        }
       }
-      return sUiHandler;
+      finally {}
     }
-    finally {}
+    return sUiHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.webbundle.sdk.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

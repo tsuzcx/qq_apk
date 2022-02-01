@@ -23,6 +23,7 @@ public abstract interface WebViewConstants$WV
   public static final long HIDE_SHARE_TO_WECHAT = 16384L;
   public static final long HIDE_SYSTEM_BROWSER = 256L;
   public static final long HIDE_VIEW_PUB_ACCOUNT = 64L;
+  public static final long HIDE_WATCH_WORD = 2L;
   public static final long IGNORE_LOGIN_WEB = 1048576L;
   public static final long LOCK_LANDSCAPE = 2048L;
   @Deprecated
@@ -36,7 +37,7 @@ public abstract interface WebViewConstants$WV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.WebViewConstants.WV
  * JD-Core Version:    0.7.0.1
  */

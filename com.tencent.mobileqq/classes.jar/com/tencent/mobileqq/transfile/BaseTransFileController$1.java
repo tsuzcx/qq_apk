@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.transfile;
 
-import aoks;
-import aorl;
-import bard;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.RichmediaIpv6ConifgBean;
 
-public class BaseTransFileController$1
+class BaseTransFileController$1
   implements Runnable
 {
-  public BaseTransFileController$1(bard parambard) {}
+  BaseTransFileController$1(BaseTransFileController paramBaseTransFileController) {}
   
   public void run()
   {
-    this.this$0.a = ((aorl)aoks.a().a(538));
+    this.this$0.mRichmediaIpv6ConifgBean = ((RichmediaIpv6ConifgBean)QConfigManager.b().b(538));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BaseTransFileController.1
  * JD-Core Version:    0.7.0.1
  */

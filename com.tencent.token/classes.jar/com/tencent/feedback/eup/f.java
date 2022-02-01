@@ -13,13 +13,29 @@ public final class f
   extends i
 {
   private static f b;
-  private CrashStrategyBean c;
-  private CrashStrategyBean d;
-  private c e;
-  private CrashHandleListener f;
+  private CrashStrategyBean c = null;
+  private CrashStrategyBean d = null;
+  private c e = null;
+  private CrashHandleListener f = null;
   private final boolean g;
   
-  private f(Context paramContext, String paramString, boolean paramBoolean, com.tencent.feedback.upload.e parame, UploadHandleListener paramUploadHandleListener, CrashHandleListener paramCrashHandleListener, CrashStrategyBean paramCrashStrategyBean) {}
+  private f(Context paramContext, String paramString, boolean paramBoolean, com.tencent.feedback.upload.e parame, UploadHandleListener paramUploadHandleListener, CrashHandleListener paramCrashHandleListener, CrashStrategyBean paramCrashStrategyBean)
+  {
+    super(paramContext, paramString, 3, 530, 510, parame, new d(localContext1), paramUploadHandleListener);
+    if (paramCrashStrategyBean != null)
+    {
+      com.tencent.feedback.common.e.b("rqdp{  cus eupstrategy} %s", new Object[] { paramCrashStrategyBean });
+      this.c = paramCrashStrategyBean;
+    }
+    else
+    {
+      com.tencent.feedback.common.e.b("rqdp{  default eupstrategy}", new Object[0]);
+      this.c = new CrashStrategyBean();
+    }
+    this.e = c.a(this.a);
+    this.f = paramCrashHandleListener;
+    this.g = paramBoolean;
+  }
   
   public static f a(Context paramContext, String paramString, boolean paramBoolean, com.tencent.feedback.upload.e parame, UploadHandleListener paramUploadHandleListener, CrashHandleListener paramCrashHandleListener, CrashStrategyBean paramCrashStrategyBean)
   {
@@ -64,33 +80,31 @@ public final class f
       com.tencent.feedback.common.e.c("rqdp{  instance == null}", new Object[0]);
       return false;
     }
-    if (((f)localObject).a()) {}
-    for (;;)
-    {
+    if (((f)localObject).a()) {
       try
       {
         localObject = ((f)localObject).u();
-        if (localObject != null) {
-          break label122;
+        if (localObject == null)
+        {
+          com.tencent.feedback.common.e.c("rqdp{  imposiable chandler null!}", new Object[0]);
+          return false;
         }
-        com.tencent.feedback.common.e.c("rqdp{  imposiable chandler null!}", new Object[0]);
-        return false;
       }
       catch (Throwable paramThread)
       {
-        if (com.tencent.feedback.common.e.a(paramThread)) {
-          continue;
+        if (!com.tencent.feedback.common.e.a(paramThread)) {
+          paramThread.printStackTrace();
         }
-        paramThread.printStackTrace();
         com.tencent.feedback.common.e.d("rqdp{  handleCatchException error} %s", new Object[] { paramThread.toString() });
       }
-      return ((c)localObject).a(paramThread, paramThrowable, paramString, paramArrayOfByte, false);
-      paramThread = paramThread.getName();
-      continue;
+    }
+    for (paramThread = paramThread.getName();; paramThread = null)
+    {
+      boolean bool = ((c)localObject).a(paramThread, paramThrowable, paramString, paramArrayOfByte, false);
+      return bool;
       return false;
-      label122:
-      if (paramThread == null) {
-        paramThread = null;
+      if (paramThread != null) {
+        break;
       }
     }
   }
@@ -111,27 +125,25 @@ public final class f
   
   public static AbstractUploadDatas m()
   {
-    AbstractUploadDatas localAbstractUploadDatas = null;
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = o();
-        if (!bool) {
-          return localAbstractUploadDatas;
-        }
-        if (b == null)
-        {
-          com.tencent.feedback.common.e.c("rqdp{  instance == null}", new Object[0]);
-          continue;
-        }
-        if (!b.a()) {
-          continue;
-        }
+      boolean bool = o();
+      if (!bool) {
+        return null;
       }
-      finally {}
-      g localg = g.a(b.a);
+      if (b == null)
+      {
+        com.tencent.feedback.common.e.c("rqdp{  instance == null}", new Object[0]);
+        return null;
+      }
+      if (b.a())
+      {
+        g localg = g.a(b.a);
+        return localg;
+      }
+      return null;
     }
+    finally {}
   }
   
   public static boolean n()
@@ -151,23 +163,22 @@ public final class f
   
   public static boolean o()
   {
-    boolean bool1 = false;
     f localf = l();
-    if (localf == null) {
-      com.tencent.feedback.common.e.d("rqdp{  not init eup}", new Object[0]);
-    }
-    do
+    if (localf == null)
     {
-      boolean bool2;
-      do
-      {
-        return bool1;
-        bool2 = localf.a();
-        bool1 = bool2;
-      } while (!bool2);
+      com.tencent.feedback.common.e.d("rqdp{  not init eup}", new Object[0]);
+      return false;
+    }
+    boolean bool2 = localf.a();
+    boolean bool1 = bool2;
+    if (bool2)
+    {
       bool1 = bool2;
-    } while (!localf.t());
-    return localf.b();
+      if (localf.t()) {
+        bool1 = localf.b();
+      }
+    }
+    return bool1;
   }
   
   private boolean t()
@@ -212,99 +223,77 @@ public final class f
     }
   }
   
-  /* Error */
   public final void b(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_1
-    //   4: invokespecial 155	com/tencent/feedback/common/i:b	(Z)V
-    //   7: aload_0
-    //   8: invokevirtual 104	com/tencent/feedback/eup/f:a	()Z
-    //   11: ifeq +13 -> 24
-    //   14: aload_0
-    //   15: getfield 31	com/tencent/feedback/eup/f:e	Lcom/tencent/feedback/eup/c;
-    //   18: invokevirtual 157	com/tencent/feedback/eup/c:a	()V
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 31	com/tencent/feedback/eup/f:e	Lcom/tencent/feedback/eup/c;
-    //   28: invokevirtual 159	com/tencent/feedback/eup/c:b	()V
-    //   31: goto -10 -> 21
-    //   34: astore_2
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	39	0	this	f
-    //   0	39	1	paramBoolean	boolean
-    //   34	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	34	finally
-    //   24	31	34	finally
+    try
+    {
+      super.b(paramBoolean);
+      if (a())
+      {
+        this.e.a();
+        return;
+      }
+      this.e.b();
+      return;
+    }
+    finally {}
   }
   
   public final void e()
   {
-    int i = -1;
     super.e();
     Context localContext = this.a;
     com.tencent.feedback.common.e.b("rqdp{  EUPDAO.deleteEup() start}", new Object[0]);
-    if (localContext == null) {
-      com.tencent.feedback.common.e.c("rqdp{  deleteEup() context is null arg}", new Object[0]);
-    }
-    for (;;)
+    int i;
+    if (localContext == null)
     {
-      com.tencent.feedback.common.e.b("remove fail updata num :%d", new Object[] { Integer.valueOf(i) });
-      if (k() == 1) {
-        BuglyBroadcastRecevier.brocastProcessLaunch(this.a);
-      }
-      return;
+      com.tencent.feedback.common.e.c("rqdp{  deleteEup() context is null arg}", new Object[0]);
+      i = -1;
+    }
+    else
+    {
       i = l.a(localContext, new int[] { 1, 2 }, -1L, 9223372036854775807L, 3, -1);
+    }
+    com.tencent.feedback.common.e.b("remove fail updata num :%d", new Object[] { Integer.valueOf(i) });
+    if (k() == 1) {
+      BuglyBroadcastRecevier.brocastProcessLaunch(this.a);
     }
   }
   
   public final void f()
   {
-    int i = -1;
     super.f();
     Context localContext = this.a;
     com.tencent.feedback.common.e.b("rqdp{  EUPDAO.deleteEup() start}", new Object[0]);
-    if (localContext == null) {
-      com.tencent.feedback.common.e.c("rqdp{  deleteEup() context is null arg}", new Object[0]);
-    }
-    for (;;)
+    int i;
+    if (localContext == null)
     {
-      com.tencent.feedback.common.e.b("rqdp{  eup clear} %d ", new Object[] { Integer.valueOf(i) });
-      com.tencent.feedback.common.e.b("rqdp{  eup strategy clear} %d ", new Object[] { Integer.valueOf(a.b(this.a, 510)) });
-      return;
+      com.tencent.feedback.common.e.c("rqdp{  deleteEup() context is null arg}", new Object[0]);
+      i = -1;
+    }
+    else
+    {
       i = l.a(localContext, new int[] { 1, 2 }, -1L, 9223372036854775807L, -1, -1);
     }
+    com.tencent.feedback.common.e.b("rqdp{  eup clear} %d ", new Object[] { Integer.valueOf(i) });
+    com.tencent.feedback.common.e.b("rqdp{  eup strategy clear} %d ", new Object[] { Integer.valueOf(a.b(this.a, 510)) });
   }
   
   public final int g()
   {
-    int i = 0;
     CrashStrategyBean localCrashStrategyBean = s();
     if ((localCrashStrategyBean != null) && (super.g() >= 0))
     {
       if (!localCrashStrategyBean.isMerged())
       {
         com.tencent.feedback.common.e.b("rqdp{  in no merge}", new Object[0]);
-        i = b.b(this.a);
+        return b.b(this.a);
       }
-      do
-      {
-        return i;
-        com.tencent.feedback.common.e.b("rqdp{  in merge}", new Object[0]);
-      } while (!b.a(this.a));
-      return 1;
+      com.tencent.feedback.common.e.b("rqdp{  in merge}", new Object[0]);
+      if (b.a(this.a)) {
+        return 1;
+      }
+      return 0;
     }
     return -1;
   }
@@ -315,23 +304,23 @@ public final class f
     {
       g localg = g.a(this.a);
       com.tencent.feedback.upload.e locale = c();
-      if ((localg == null) || (locale == null))
-      {
-        com.tencent.feedback.common.e.c("rqdp{  upDatas or uphandler null!}", new Object[0]);
-        return false;
-      }
-      try
-      {
-        locale.a(localg);
-        return true;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (!com.tencent.feedback.common.e.a(localThrowable)) {
-          localThrowable.printStackTrace();
+      if ((localg != null) && (locale != null)) {
+        try
+        {
+          locale.a(localg);
+          return true;
         }
-        com.tencent.feedback.common.e.d("rqdp{  upload eupdata error} %s", new Object[] { localThrowable.toString() });
+        catch (Throwable localThrowable)
+        {
+          if (!com.tencent.feedback.common.e.a(localThrowable)) {
+            localThrowable.printStackTrace();
+          }
+          com.tencent.feedback.common.e.d("rqdp{  upload eupdata error} %s", new Object[] { localThrowable.toString() });
+          return false;
+        }
       }
+      com.tencent.feedback.common.e.c("rqdp{  upDatas or uphandler null!}", new Object[0]);
+      return false;
     }
     return false;
   }

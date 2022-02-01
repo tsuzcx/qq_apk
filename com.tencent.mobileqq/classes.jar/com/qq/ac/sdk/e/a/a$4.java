@@ -19,14 +19,14 @@ final class a$4
     return this.a.b();
   }
   
-  public final Map<String, String> i()
+  protected final Map<String, String> i()
   {
     return this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.ac.sdk.e.a.a.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/qzone_phonetail_bg2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.CommonLine android:id="@id/phone_label_footer_top_line" android:background="@color/color_background" android:layout_width="fill_parent" android:layout_height="10.0px" />
+    <RelativeLayout android:id="@id/phone_label_open_qzvip_layout" android:background="@drawable/qzone_setting_phone_label_footer_item_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/phone_label_footer_top_line">
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/phone_label_footer_diamond" android:background="@drawable/qzone_open_vip_yellowdiamond" android:layout_width="22.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:layout_centerVertical="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_phonetail_vip" android:id="@id/seal_guide_button_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tobe_vip" android:layout_toRightOf="@id/phone_label_footer_diamond" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView android:textSize="18.0sp" android:textColor="@color/qzone_skin_color_linksel" android:id="@id/phone_label_feedback" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="20.0dip" android:text="机型识别错误上报" android:layout_below="@id/phone_label_open_qzvip_layout" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <TextView android:id="@id/phone_label_blank" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_below="@id/phone_label_feedback" />
+</RelativeLayout>

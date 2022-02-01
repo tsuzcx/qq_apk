@@ -9,12 +9,18 @@ class AvatarPendantJsPlugin$1$1
   
   public void run()
   {
-    this.this$1.this$0.callJs(this.this$1.val$callbackId + "(" + this.val$result.toString() + ");");
+    AvatarPendantJsPlugin localAvatarPendantJsPlugin = this.this$1.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$1.val$callbackId);
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.val$result.toString());
+    localStringBuilder.append(");");
+    localAvatarPendantJsPlugin.callJs(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

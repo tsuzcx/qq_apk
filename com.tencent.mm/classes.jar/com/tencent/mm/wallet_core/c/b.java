@@ -1,223 +1,183 @@
 package com.tencent.mm.wallet_core.c;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tenpay.ndk.CertUtil;
-import com.tenpay.ndk.CertUtil.EventListener;
-import com.tenpay.ndk.MessageDigestUtil;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
+import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
+import com.tencent.mm.wallet_core.tenpay.model.n;
+import org.json.JSONObject;
 
 public final class b
+  implements com.tencent.mm.am.h
 {
-  private static b AWF = null;
-  static boolean bRB = false;
-  private boolean AWG;
-  private CertUtil.EventListener AWH;
+  static ITenpaySave.RetryPayInfo retryPayInfo;
+  private n agTM;
+  private int agTO = 0;
+  private com.tencent.mm.am.h agTP;
   
-  public b()
+  public b(com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(142652);
-    this.AWG = false;
-    this.AWH = new b.1(this);
-    AppMethodBeat.o(142652);
+    this.agTP = paramh;
   }
   
-  public static boolean F(String paramString1, String paramString2, boolean paramBoolean)
+  private void a(int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(49029);
-    Object localObject1 = "";
-    if (paramBoolean)
+    AppMethodBeat.i(72838);
+    Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback errCode = " + paramInt2 + "errType = " + paramInt1);
+    if ((this.agTM != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      localObject1 = new MessageDigestUtil();
-      g.RM();
-      g.RJ();
-      Object localObject2 = p.getString(a.getUin());
-      String str = (String)localObject2 + "_pUI6cNqzLt2Z3mQSrYuF09XSGsBtTIcUgp9jcWZ7F7BBs8/DFVFMKiwbtaRPOiLE";
-      localObject2 = new byte[16];
-      localObject1 = ((MessageDigestUtil)localObject1).getSHA256Hex(str.getBytes()).getBytes();
-      int i = 0;
-      while ((i < 16) && (i < localObject1.length))
+      Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mScene !=null");
+      this.agTM.onGYNetEnd(paramInt2, paramString, paramJSONObject);
+      this.agTP.onSceneEnd(paramInt1, paramInt2, paramString, this.agTM);
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback reset");
+      this.agTO = 0;
+      AppMethodBeat.o(72838);
+      return;
+      if (this.agTP != null)
       {
-        localObject2[i] = localObject1[i];
-        i += 1;
+        Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mRealCallback !=null");
+        this.agTP.onSceneEnd(paramInt1, paramInt2, paramString, this.agTM);
       }
-      localObject1 = new String((byte[])localObject2);
     }
-    ab.d("MicroMsg.CertUtilWx", "setTokens stack v2 useSm4 %s sm4Key %s %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1, bo.dtY().toString() });
-    paramBoolean = CertUtil.getInstance().setTokens(paramString1, paramString2, paramBoolean, (String)localObject1);
-    ab.d("MicroMsg.CertUtilWx", "setTokens result ret:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(49029);
-    return paramBoolean;
   }
   
-  public static int avW(String paramString)
+  private boolean canRetry()
   {
-    AppMethodBeat.i(49032);
-    int i = CertUtil.getInstance().getTokenCount(paramString);
-    ab.d("MicroMsg.CertUtilWx", "getTokenCount ret: %d stack %s", new Object[] { Integer.valueOf(i), bo.dtY().toString() });
-    AppMethodBeat.o(49032);
-    return i;
-  }
-  
-  public static void clean()
-  {
-    AppMethodBeat.i(49035);
-    ab.d("MicroMsg.CertUtilWx", "clean allcrt stack %s", new Object[] { bo.dtY().toString() });
-    CertUtil.getInstance().clearAllCert();
-    AppMethodBeat.o(49035);
-  }
-  
-  public static void clearCert(String paramString)
-  {
-    AppMethodBeat.i(49034);
-    ab.d("MicroMsg.CertUtilWx", "clearCert stack %s", new Object[] { bo.dtY().toString() });
-    CertUtil.getInstance().clearCert(paramString);
-    AppMethodBeat.o(49034);
-  }
-  
-  public static void clearToken(String paramString)
-  {
-    AppMethodBeat.i(49031);
-    ab.d("MicroMsg.CertUtilWx", "clearToken stack %s", new Object[] { bo.dtY().toString() });
-    CertUtil.getInstance().clearToken(paramString);
-    AppMethodBeat.o(49031);
-  }
-  
-  public static b dSi()
-  {
-    AppMethodBeat.i(49022);
-    if (AWF == null) {
-      AWF = new b();
-    }
-    b localb = AWF;
-    AppMethodBeat.o(49022);
-    return localb;
-  }
-  
-  public static String genUserSig(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(49028);
-    ab.d("MicroMsg.CertUtilWx", "genUserSig stack %s", new Object[] { bo.dtY().toString() });
-    paramString1 = CertUtil.getInstance().genUserSig(paramString1, paramString2);
-    AppMethodBeat.o(49028);
-    return paramString1;
-  }
-  
-  public static String genUserSig(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(155102);
-    ab.d("MicroMsg.CertUtilWx", "genUserSig stack %s", new Object[] { bo.dtY().toString() });
-    paramString = CertUtil.getInstance().genUserSig(paramString, paramArrayOfByte);
-    AppMethodBeat.o(155102);
-    return paramString;
-  }
-  
-  public static int getLastError()
-  {
-    AppMethodBeat.i(49033);
-    ab.d("MicroMsg.CertUtilWx", "getLastError stack %s", new Object[] { bo.dtY().toString() });
-    int i = CertUtil.getInstance().getLastError();
-    AppMethodBeat.o(49033);
-    return i;
-  }
-  
-  public static String getToken(String paramString)
-  {
-    AppMethodBeat.i(49030);
-    ab.d("MicroMsg.CertUtilWx", "getToken stack %s", new Object[] { bo.dtY().toString() });
-    paramString = CertUtil.getInstance().getToken(paramString);
-    AppMethodBeat.o(49030);
-    return paramString;
-  }
-  
-  public static boolean isCertExist(String paramString)
-  {
-    AppMethodBeat.i(49027);
-    ab.d("MicroMsg.CertUtilWx", "isCertExist stack %s", new Object[] { bo.dtY().toString() });
-    h.qsU.idkeyStat(414L, 5L, 1L, true);
-    boolean bool = CertUtil.getInstance().isCertExist(paramString);
-    h.qsU.idkeyStat(414L, 6L, 1L, true);
-    AppMethodBeat.o(49027);
-    return bool;
-  }
-  
-  public final boolean dSj()
-  {
-    AppMethodBeat.i(49026);
-    ab.d("MicroMsg.CertUtilWx", "importCertNone");
-    try
+    AppMethodBeat.i(72834);
+    int i = jPc();
+    if (this.agTO >= i)
     {
-      this.AWG = false;
+      AppMethodBeat.o(72834);
       return false;
     }
-    finally
-    {
-      AppMethodBeat.o(49026);
-    }
+    AppMethodBeat.o(72834);
+    return true;
   }
   
-  public final String eY(String paramString, int paramInt)
+  private void f(int paramInt1, int paramInt2, p paramp)
   {
-    AppMethodBeat.i(49024);
-    ab.i("MicroMsg.CertUtilWx", "getCertApplyCSR lock %s %s", new Object[] { bo.dtY().toString(), Integer.valueOf(paramInt) });
-    try
+    AppMethodBeat.i(72840);
+    a(paramInt1, paramInt2, retryPayInfo.agUa, ((n)paramp).agUm);
+    AppMethodBeat.o(72840);
+  }
+  
+  private static int jPc()
+  {
+    AppMethodBeat.i(72835);
+    if ((retryPayInfo != null) && (retryPayInfo.gtp()))
     {
-      if (this.AWG)
-      {
-        ab.i("MicroMsg.CertUtilWx", "isCert_Wating");
-        return "";
+      int i = retryPayInfo.abvX;
+      AppMethodBeat.o(72835);
+      return i;
+    }
+    AppMethodBeat.o(72835);
+    return 0;
+  }
+  
+  public final boolean c(n paramn)
+  {
+    AppMethodBeat.i(72836);
+    if ((retryPayInfo != null) && (retryPayInfo.gtp())) {}
+    int k;
+    for (int i = retryPayInfo.agTZ;; i = 0)
+    {
+      k = jPc();
+      this.agTO += 1;
+      if (this.agTO <= k) {
+        break;
       }
-      this.AWG = true;
-      paramString = CertUtil.getInstance().getCertApplyCSR(paramString, paramInt);
-      return paramString;
+      AppMethodBeat.o(72836);
+      return false;
     }
-    finally
+    this.agTM = paramn;
+    this.agTM.setHasRetried(true);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(385, this);
+    this.agTM.resetForRetry();
+    int m = this.agTO;
+    if (this.agTO >= k) {}
+    for (int j = 1;; j = 0)
     {
-      AppMethodBeat.o(49024);
+      paramn.updateConfig(m, j);
+      Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doLoopDelayScene,delay = %s queryOrderCount %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(paramn, i * 1000);
+      AppMethodBeat.o(72836);
+      return true;
     }
   }
   
-  public final boolean importCert(String paramString1, String paramString2)
+  public final void destory()
   {
-    AppMethodBeat.i(49025);
-    ab.i("MicroMsg.CertUtilWx", "importCert  cid %s cert %s stack %s", new Object[] { paramString1, paramString2, bo.dtY().toString() });
-    try
-    {
-      this.AWG = false;
-      boolean bool = CertUtil.getInstance().importCert(paramString1, paramString2);
-      ab.i("MicroMsg.CertUtilWx", "importCert %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(49025);
-      return bool;
-    }
-    finally
-    {
-      AppMethodBeat.o(49025);
-    }
+    AppMethodBeat.i(72837);
+    this.agTP = null;
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(385, this);
+    AppMethodBeat.o(72837);
   }
   
-  public final void init(Context paramContext)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(49023);
-    if (bRB)
+    AppMethodBeat.i(72839);
+    Log.d("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramp });
+    if ((paramp instanceof n))
     {
-      AppMethodBeat.o(49023);
-      return;
+      if ((paramp instanceof ITenpaySave))
+      {
+        ITenpaySave.RetryPayInfo localRetryPayInfo = ((ITenpaySave)paramp).getRetryPayInfo();
+        if (localRetryPayInfo.gtp()) {
+          retryPayInfo = localRetryPayInfo;
+        }
+      }
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.b(385, this);
+      if (((n)paramp).ishasCGiRetried())
+      {
+        if (this.agTM.checkPaySuccess())
+        {
+          Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess ok");
+          a(paramInt1, paramInt2, paramString, ((n)paramp).agUm);
+          AppMethodBeat.o(72839);
+          return;
+        }
+        if ((this.agTM.canPayRetry()) && (canRetry()))
+        {
+          Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try isServerDelayQuery true svrcanRetry %s localCanRetry %s", new Object[] { Boolean.valueOf(this.agTM.canPayRetry()), Boolean.valueOf(canRetry()) });
+          if (!c(this.agTM))
+          {
+            f(paramInt1, paramInt2, paramp);
+            AppMethodBeat.o(72839);
+          }
+        }
+        else if (((n)paramp).checkRecSrvResp())
+        {
+          Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try svr no resp");
+          if (!c(this.agTM))
+          {
+            f(paramInt1, paramInt2, paramp);
+            AppMethodBeat.o(72839);
+          }
+        }
+        else
+        {
+          paramString = retryPayInfo.agUa;
+          Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess error %s", new Object[] { paramString });
+          a(paramInt1, paramInt2, paramString, ((n)paramp).agUm);
+        }
+      }
     }
-    ab.d("MicroMsg.CertUtilWx", "init  %s", new Object[] { bo.dtY().toString() });
-    CertUtil.getInstance().init(paramContext, this.AWH);
-    bRB = true;
-    AppMethodBeat.o(49023);
+    AppMethodBeat.o(72839);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.b
  * JD-Core Version:    0.7.0.1
  */

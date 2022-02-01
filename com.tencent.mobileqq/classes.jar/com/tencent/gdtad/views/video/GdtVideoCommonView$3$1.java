@@ -1,20 +1,18 @@
 package com.tencent.gdtad.views.video;
 
-import aauq;
-
-public class GdtVideoCommonView$3$1
+class GdtVideoCommonView$3$1
   implements Runnable
 {
-  public GdtVideoCommonView$3$1(aauq paramaauq) {}
+  GdtVideoCommonView$3$1(GdtVideoCommonView.3 param3) {}
   
   public void run()
   {
-    GdtVideoCommonView.a(this.a.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView, this.a.jdField_a_of_type_AndroidContentContext);
+    GdtVideoCommonView.a(this.a.b, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.3.1
  * JD-Core Version:    0.7.0.1
  */

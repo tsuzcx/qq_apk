@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_marginBottom="28.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip">
+        <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:id="@id/duw" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/jqj" android:scaleType="fitCenter" app:round_radius="4.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/o85" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/jqm" android:scaleType="fitCenter" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="18.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffc7c7c7" android:ellipsize="end" android:id="@id/k5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:lines="1" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/qk8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:lines="1" />
+    </LinearLayout>
+</LinearLayout>

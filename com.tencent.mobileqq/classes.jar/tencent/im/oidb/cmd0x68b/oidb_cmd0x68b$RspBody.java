@@ -24,13 +24,14 @@ public final class oidb_cmd0x68b$RspBody
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 90, 98, 104, 114, 122, 128, 138, 802 }, new String[] { "uint64_uin", "rspChannelArticle", "rspTopicList", "rpt_obsolete_topicid_list", "rspRedBonusInfo", "msg_rsp_get_follow_tab_data", "uint64_client_swithes", "msg_rsp_trace", "bytes_new_style_params" }, new Object[] { Long.valueOf(0L), null, null, Long.valueOf(0L), null, null, Long.valueOf(0L), null, localByteStringMicro }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 90, 98, 104, 114, 122, 128, 138, 802 }, new String[] { "uint64_uin", "rspChannelArticle", "rspTopicList", "rpt_obsolete_topicid_list", "rspRedBonusInfo", "msg_rsp_get_follow_tab_data", "uint64_client_swithes", "msg_rsp_trace", "bytes_new_style_params" }, new Object[] { localLong, null, null, localLong, null, null, localLong, null, localByteStringMicro }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,161 +1,239 @@
 package com.tencent.mm.network;
 
-import com.tencent.mars.mm.MMLogic;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
-public final class u
+public abstract interface u
+  extends IInterface
 {
-  public static void ak(List<String> paramList)
+  public abstract void a(boolean paramBoolean1, float paramFloat1, float paramFloat2, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void a(boolean paramBoolean1, float paramFloat1, float paramFloat2, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean3, int paramInt4, int paramInt5, int paramInt6);
+  
+  public static abstract class a
+    extends Binder
+    implements u
   {
-    int k = 1;
-    AppMethodBeat.i(154760);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.MMDisasterInfoHandle", "compareDisasterHost");
-    if (paramList.size() == 0)
+    public a()
     {
-      AppMethodBeat.o(154760);
-      return;
+      attachInterface(this, "com.tencent.mm.network.ISpeedTestCallback_AIDL");
     }
-    Object localObject1 = ab.anF();
-    if (localObject1 == null)
+    
+    public static u bQX()
     {
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.MMDisasterInfoHandle", "autoAuth is null");
-      AppMethodBeat.o(154760);
-      return;
+      return a.pnZ;
     }
-    localObject1 = ((t)localObject1).gdz;
-    if (localObject1 == null)
+    
+    public static u v(IBinder paramIBinder)
     {
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.MMDisasterInfoHandle", "accinfo is null");
-      AppMethodBeat.o(154760);
-      return;
+      if (paramIBinder == null) {
+        return null;
+      }
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.network.ISpeedTestCallback_AIDL");
+      if ((localIInterface != null) && ((localIInterface instanceof u))) {
+        return (u)localIInterface;
+      }
+      return new a(paramIBinder);
     }
-    Object localObject2;
-    int i;
-    if (!((a)localObject1).vZ("main"))
+    
+    public IBinder asBinder()
     {
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        if (((a)localObject1).ab(((String)((Iterator)localObject2).next()).getBytes())) {
-          i = 1;
+      return this;
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      boolean bool1;
+      float f1;
+      float f2;
+      boolean bool2;
+      switch (paramInt1)
+      {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.network.ISpeedTestCallback_AIDL");
+        return true;
+      case 1: 
+        paramParcel1.enforceInterface("com.tencent.mm.network.ISpeedTestCallback_AIDL");
+        if (paramParcel1.readInt() != 0)
+        {
+          bool1 = true;
+          f1 = paramParcel1.readFloat();
+          f2 = paramParcel1.readFloat();
+          if (paramParcel1.readInt() == 0) {
+            break label128;
+          }
+        }
+        label128:
+        for (bool2 = true;; bool2 = false)
+        {
+          a(bool1, f1, f2, bool2, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+          paramParcel2.writeNoException();
+          return true;
+          bool1 = false;
+          break;
         }
       }
-    }
-    for (;;)
-    {
-      Object localObject3;
-      int j;
-      if (i != 0)
+      paramParcel1.enforceInterface("com.tencent.mm.network.ISpeedTestCallback_AIDL");
+      label172:
+      int i;
+      if (paramParcel1.readInt() != 0)
       {
-        ((a)localObject1).anf();
+        bool1 = true;
+        f1 = paramParcel1.readFloat();
+        f2 = paramParcel1.readFloat();
+        if (paramParcel1.readInt() == 0) {
+          break label242;
+        }
+        bool2 = true;
+        paramInt1 = paramParcel1.readInt();
+        paramInt2 = paramParcel1.readInt();
+        i = paramParcel1.readInt();
+        if (paramParcel1.readInt() == 0) {
+          break label248;
+        }
+      }
+      label242:
+      label248:
+      for (boolean bool3 = true;; bool3 = false)
+      {
+        a(bool1, f1, f2, bool2, paramInt1, paramInt2, i, bool3, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
+        bool1 = false;
+        break;
+        bool2 = false;
+        break label172;
+      }
+    }
+    
+    static final class a
+      implements u
+    {
+      public static u pnZ;
+      private IBinder mRemote;
+      
+      a(IBinder paramIBinder)
+      {
+        this.mRemote = paramIBinder;
+      }
+      
+      public final void a(boolean paramBoolean1, float paramFloat1, float paramFloat2, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
+      {
+        AppMethodBeat.i(241150);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
         try
         {
-          ab.anD().post(new u.1());
-          com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.MMDisasterInfoHandle", "main disaster disasterOccur ");
-          e.qrI.idkeyStat(148L, 124L, 1L, false);
-          AppMethodBeat.o(154760);
-          return;
-          i = 0;
-          continue;
-          localObject2 = new String[20];
-          MMLogic.getLocalHostList((String[])localObject2, "main");
-          localObject2 = new ArrayList(Arrays.asList((Object[])localObject2));
-          if (((ArrayList)localObject2).size() <= 0) {
-            break label531;
-          }
-          int m = ((ArrayList)localObject2).size();
-          localObject3 = paramList.iterator();
-          i = 0;
-          label302:
-          while (((Iterator)localObject3).hasNext())
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.ISpeedTestCallback_AIDL");
+          if (paramBoolean1)
           {
-            String str = (String)((Iterator)localObject3).next();
-            j = 0;
-            for (;;)
-            {
-              if (j >= m) {
-                break label302;
-              }
-              if ((((ArrayList)localObject2).get(j) != null) && (((String)((ArrayList)localObject2).get(j)).equals(str)))
-              {
-                i = 1;
-                break;
-              }
-              j += 1;
+            i = 1;
+            localParcel1.writeInt(i);
+            localParcel1.writeFloat(paramFloat1);
+            localParcel1.writeFloat(paramFloat2);
+            if (!paramBoolean2) {
+              break label149;
             }
           }
-        }
-        catch (Exception paramList)
-        {
-          for (;;)
+          label149:
+          for (int i = 1;; i = 0)
           {
-            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bo.l(paramList) });
+            localParcel1.writeInt(i);
+            localParcel1.writeInt(paramInt1);
+            localParcel1.writeInt(paramInt2);
+            localParcel1.writeInt(paramInt3);
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (u.a.bQX() == null)) {
+              break label155;
+            }
+            u.a.bQX().a(paramBoolean1, paramFloat1, paramFloat2, paramBoolean2, paramInt1, paramInt2, paramInt3);
+            return;
+            i = 0;
+            break;
           }
+          label155:
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(241150);
         }
       }
-      else
+      
+      public final void a(boolean paramBoolean1, float paramFloat1, float paramFloat2, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean3, int paramInt4, int paramInt5, int paramInt6)
       {
-        if (!((a)localObject1).vZ("axhost"))
+        AppMethodBeat.i(241155);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
         {
-          paramList = paramList.iterator();
-          while (paramList.hasNext()) {
-            if (((a)localObject1).rq((String)paramList.next())) {
-              i = k;
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.ISpeedTestCallback_AIDL");
+          if (paramBoolean1)
+          {
+            i = 1;
+            localParcel1.writeInt(i);
+            localParcel1.writeFloat(paramFloat1);
+            localParcel1.writeFloat(paramFloat2);
+            if (!paramBoolean2) {
+              break label193;
+            }
+            i = 1;
+            label56:
+            localParcel1.writeInt(i);
+            localParcel1.writeInt(paramInt1);
+            localParcel1.writeInt(paramInt2);
+            localParcel1.writeInt(paramInt3);
+            if (!paramBoolean3) {
+              break label199;
             }
           }
-        }
-        for (;;)
-        {
-          if (i != 0)
+          label193:
+          label199:
+          for (int i = 1;; i = 0)
           {
-            ((a)localObject1).anf();
-            ab.anF().wd("");
-            e.qrI.idkeyStat(148L, 125L, 1L, false);
-            com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.MMDisasterInfoHandle", "ax disaster disasterOccur ");
+            localParcel1.writeInt(i);
+            localParcel1.writeInt(paramInt4);
+            localParcel1.writeInt(paramInt5);
+            localParcel1.writeInt(paramInt6);
+            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (u.a.bQX() == null)) {
+              break label205;
+            }
+            u.a.bQX().a(paramBoolean1, paramFloat1, paramFloat2, paramBoolean2, paramInt1, paramInt2, paramInt3, paramBoolean3, paramInt4, paramInt5, paramInt6);
+            return;
+            i = 0;
+            break;
+            i = 0;
+            break label56;
           }
-          AppMethodBeat.o(154760);
+          label205:
+          localParcel2.readException();
           return;
-          continue;
-          localObject2 = new String[20];
-          MMLogic.getLocalHostList((String[])localObject2, "axhost");
-          localObject2 = new ArrayList(Arrays.asList((Object[])localObject2));
-          k = ((ArrayList)localObject2).size();
-          paramList = paramList.iterator();
-          label523:
-          while (paramList.hasNext())
-          {
-            localObject3 = (String)paramList.next();
-            j = 0;
-            for (;;)
-            {
-              if (j >= k) {
-                break label523;
-              }
-              if ((((ArrayList)localObject2).get(j) != null) && (((String)((ArrayList)localObject2).get(j)).equals(localObject3)))
-              {
-                i = 1;
-                break;
-              }
-              j += 1;
-            }
-          }
         }
-        continue;
-        label531:
-        i = 0;
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(241155);
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.u
  * JD-Core Version:    0.7.0.1
  */

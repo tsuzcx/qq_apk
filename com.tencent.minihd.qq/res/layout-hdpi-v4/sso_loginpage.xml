@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/login_bg_item_nie" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_mountain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/login_moutain" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/face" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="120.0dip" android:src="@drawable/login_default_avatar_login" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/input_container" android:layout_width="320.0dip" android:layout_height="wrap_content" android:layout_marginTop="56.0dip" android:layout_below="@id/face" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/accountContainer" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:gravity="center_vertical" android:id="@id/account" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/account_hint" android:maxLines="1" android:ems="10" android:singleLine="true" android:layout_alignParentTop="true" style="@style/new_login_input_font">
+                <requestFocus />
+            </EditText>
+            <View android:id="@id/delicon" android:background="@drawable/del" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:background="@color/white" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="8.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <EditText android:gravity="center_vertical" android:id="@id/password" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/password" android:maxLines="1" android:maxLength="16" android:inputType="textPassword" android:imeOptions="actionDone" style="@style/new_login_input_font" />
+            <View android:id="@id/del_pass_icon" android:background="@drawable/del" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:background="@color/white" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="8.0dip" />
+    </LinearLayout>
+    <Button android:enabled="false" android:textColor="@color/white" android:id="@id/open_login_btn" android:background="@drawable/login_btn_shape" android:layout_width="320.0dip" android:layout_height="48.0dip" android:layout_marginTop="40.0dip" android:text="@string/login" android:layout_below="@id/input_container" android:layout_centerHorizontal="true" style="@style/new_login_button" />
+    <EditText android:id="@id/focus_edit" android:layout_width="0.0dip" android:layout_height="0.0dip" android:hint="focus_edit" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/white" android:id="@id/txtPhoneNumLogin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginBottom="16.0dip" android:text="@string/sms_login_text" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

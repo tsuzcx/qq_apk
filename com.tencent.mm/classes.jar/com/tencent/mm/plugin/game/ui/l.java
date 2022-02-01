@@ -12,14 +12,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.o;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.game.h.d;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -29,113 +31,113 @@ public final class l
   public l(Context paramContext)
   {
     super(paramContext);
-    this.nAO = 2130969780;
+    this.ISw = h.f.HZQ;
   }
   
   protected final void a(c paramc, m.b paramb)
   {
-    AppMethodBeat.i(112014);
-    paramb.nBi.removeAllViews();
-    if (!bo.isNullOrNil(paramc.nlX))
+    AppMethodBeat.i(42203);
+    paramb.ISQ.removeAllViews();
+    if (!Util.isNullOrNil(paramc.ICj))
     {
-      View localView = View.inflate(this.mContext, 2130969761, null);
-      ImageView localImageView = (ImageView)localView.findViewById(2131824650);
-      com.tencent.mm.at.a.a locala = o.ahG();
-      paramc = paramc.nlX;
+      View localView = View.inflate(this.mContext, h.f.HZD, null);
+      ImageView localImageView = (ImageView)localView.findViewById(h.e.HVA);
+      com.tencent.mm.modelimage.loader.a locala = r.bKe();
+      paramc = paramc.ICj;
       c.a locala1 = new c.a();
-      locala1.eNL = true;
-      locala.a(paramc, localImageView, locala1.ahY());
-      paramb.nBi.addView(localView, new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(this.mContext, 100)));
+      locala1.oKo = true;
+      locala.a(paramc, localImageView, locala1.bKx());
+      paramb.ISQ.addView(localView, new ViewGroup.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(this.mContext, 100)));
     }
-    AppMethodBeat.o(112014);
+    AppMethodBeat.o(42203);
   }
   
   protected final void a(c paramc, m.b paramb, int paramInt)
   {
-    AppMethodBeat.i(112013);
-    paramb.nAZ.setText(paramc.position);
-    Object localObject = paramb.nAZ;
+    AppMethodBeat.i(42202);
+    paramb.ISH.setText(paramc.position);
+    Object localObject = paramb.ISH;
     int i;
-    if (this.nAQ)
+    if (this.ISy)
     {
       i = 0;
       ((TextView)localObject).setVisibility(i);
-      localObject = Qp(paramc.field_appId);
+      localObject = aHb(paramc.field_appId);
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
         break label323;
       }
-      paramb.nBa.setImageBitmap((Bitmap)localObject);
+      paramb.ISI.setImageBitmap((Bitmap)localObject);
       label84:
-      paramb.nAb.setText(paramc.field_appName);
-      if (!bo.isNullOrNil(paramc.nlT)) {
+      paramb.IRM.setText(paramc.field_appName);
+      if (!Util.isNullOrNil(paramc.ICf)) {
         break label336;
       }
-      paramb.nBc.setVisibility(8);
+      paramb.ISK.setVisibility(8);
       label114:
-      if (!bo.isNullOrNil(paramc.nlU)) {
+      if (!Util.isNullOrNil(paramc.ICg)) {
         break label358;
       }
-      paramb.nBd.setVisibility(8);
+      paramb.ISL.setVisibility(8);
       label133:
-      if (bo.es(paramc.nme)) {
+      if (Util.isNullOrNil(paramc.ICp)) {
         break label380;
       }
-      paramb.nBb.setVisibility(0);
-      paramb.nBb.setText((CharSequence)paramc.nme.get(0));
+      paramb.ISJ.setVisibility(0);
+      paramb.ISJ.setText((CharSequence)paramc.ICp.get(0));
     }
     for (;;)
     {
-      paramb.nBf.setTextSize(this.nxr);
-      paramb.nBe.setOnClickListener(this.nyh);
-      paramb.nBf.setOnClickListener(this.nyh);
-      paramb.nBe.setTag(paramc);
-      paramb.nBf.setTag(paramc);
-      this.nxw.a(paramb.nBf, paramb.nBe, paramc, (k)this.nAT.get(paramc.field_appId));
-      paramb.nBg.setData(paramc.nmc);
-      paramb.nBh.removeAllViews();
-      paramc = (View)this.nAU.get(paramInt);
+      paramb.ISN.setTextSize(this.IPf);
+      paramb.ISM.setOnClickListener(this.IPV);
+      paramb.ISN.setOnClickListener(this.IPV);
+      paramb.ISM.setTag(paramc);
+      paramb.ISN.setTag(paramc);
+      this.IPk.a(paramb.ISN, paramb.ISM, paramc, (com.tencent.mm.plugin.game.model.l)this.ISB.get(paramc.field_appId));
+      paramb.ISO.setData(paramc.ICn);
+      paramb.ISP.removeAllViews();
+      paramc = (View)this.ISC.get(paramInt);
       if (paramc != null)
       {
         if ((paramc.getParent() instanceof ViewGroup)) {
           ((ViewGroup)paramc.getParent()).removeAllViews();
         }
-        paramb.nBh.addView(paramc);
+        paramb.ISP.addView(paramc);
       }
-      AppMethodBeat.o(112013);
+      AppMethodBeat.o(42202);
       return;
       i = 8;
       break;
       label323:
-      paramb.nBa.setImageResource(2130838963);
+      paramb.ISI.setImageResource(h.d.HTo);
       break label84;
       label336:
-      paramb.nBc.setVisibility(0);
-      paramb.nBc.setText(paramc.nlT);
+      paramb.ISK.setVisibility(0);
+      paramb.ISK.setText(paramc.ICf);
       break label114;
       label358:
-      paramb.nBd.setVisibility(0);
-      paramb.nBd.setText(paramc.nlU);
+      paramb.ISL.setVisibility(0);
+      paramb.ISL.setText(paramc.ICg);
       break label133;
       label380:
-      if (!bo.isNullOrNil(paramc.nmh))
+      if (!Util.isNullOrNil(paramc.ICs))
       {
-        paramb.nBb.setVisibility(0);
-        paramb.nBb.setText(paramc.nmh);
+        paramb.ISJ.setVisibility(0);
+        paramb.ISJ.setText(paramc.ICs);
       }
       try
       {
-        paramb.nBb.setBackgroundDrawable(e.dR(Color.parseColor(paramc.nmi), com.tencent.mm.cb.a.fromDPToPix(this.mContext, 10)));
+        paramb.ISJ.setBackgroundDrawable(e.gx(Color.parseColor(paramc.ICt), com.tencent.mm.cd.a.fromDPToPix(this.mContext, 10)));
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        ab.e("MicroMsg.GameLibraryListAdapter", localIllegalArgumentException.getMessage());
-        paramb.nBb.setVisibility(8);
+        Log.e("MicroMsg.GameLibraryListAdapter", localIllegalArgumentException.getMessage());
+        paramb.ISJ.setVisibility(8);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ab.e("MicroMsg.GameLibraryListAdapter", localException.getMessage());
+          Log.e("MicroMsg.GameLibraryListAdapter", localException.getMessage());
         }
       }
     }
@@ -143,7 +145,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.l
  * JD-Core Version:    0.7.0.1
  */

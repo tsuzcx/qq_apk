@@ -2,13 +2,13 @@
 <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/common_xlistview" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080934" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205cf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="77.0dip" />
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0802dd" android:padding="0.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080933" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205cf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="77.0dip" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0802dc" android:padding="0.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
         <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
         <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
         <TextView android:id="@id/ivTitleBtnRightText" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0fa8" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024b" />
     </RelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080935" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00ad" android:layout_alignParentBottom="true" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f080936" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030287" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080937" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080934" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00ad" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f080935" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030287" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080936" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

@@ -21,21 +21,21 @@ public class ServiceDownloadTaskManager
   
   public ServiceDownloadTaskManager(ArrayList<ServiceDownloadTask> paramArrayList)
   {
-    AppMethodBeat.i(75796);
+    AppMethodBeat.i(102042);
     this.mServiceTaskList = new ArrayList();
     this.mListener = null;
     if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
       this.mServiceTaskList.addAll(paramArrayList);
     }
-    AppMethodBeat.o(75796);
+    AppMethodBeat.o(102042);
   }
   
   public void OnDownloadProgressChanged(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75807);
+    AppMethodBeat.i(102053);
     if (this.mListener == null)
     {
-      AppMethodBeat.o(75807);
+      AppMethodBeat.o(102053);
       return;
     }
     Object localObject = findDownloadTask(paramString);
@@ -53,15 +53,15 @@ public class ServiceDownloadTaskManager
         }
       }
     }
-    AppMethodBeat.o(75807);
+    AppMethodBeat.o(102053);
   }
   
   public void OnDownloadStateChanged(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(75806);
+    AppMethodBeat.i(102052);
     if (this.mListener == null)
     {
-      AppMethodBeat.o(75806);
+      AppMethodBeat.o(102052);
       return;
     }
     Object localObject = findDownloadTask(paramString1);
@@ -76,15 +76,15 @@ public class ServiceDownloadTaskManager
         this.mListener.OnDownloadStateChanged(localServiceDownloadTask.mClientKey, paramString1, paramInt1, paramInt2, paramString2, paramBoolean1, paramBoolean2);
       }
     }
-    AppMethodBeat.o(75806);
+    AppMethodBeat.o(102052);
   }
   
   public void cancelDownload(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75800);
+    AppMethodBeat.i(102046);
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(75800);
+      AppMethodBeat.o(102046);
       return;
     }
     TMLog.i("ServiceDownloadTaskManager", "cancelDownload,clientKey:".concat(String.valueOf(paramString1)));
@@ -102,7 +102,7 @@ public class ServiceDownloadTaskManager
         TMLog.i("ServiceDownloadTaskManager", "cancelDownload,clientKey:" + paramString1 + ",taskItem is the only on cancelAll");
         ApkDownloadManager.getInstance().cancelDownload(paramString2);
       }
-      AppMethodBeat.o(75800);
+      AppMethodBeat.o(102046);
       return;
       TMLog.w("ServiceDownloadTaskManager", "cancelDownload,clientKey:" + paramString1 + ",taskItem is null");
     }
@@ -114,10 +114,10 @@ public class ServiceDownloadTaskManager
     {
       try
       {
-        AppMethodBeat.i(75803);
+        AppMethodBeat.i(102049);
         if ((paramString1 == null) || (paramString2 == null))
         {
-          AppMethodBeat.o(75803);
+          AppMethodBeat.o(102049);
           paramString1 = null;
           return paramString1;
         }
@@ -128,11 +128,11 @@ public class ServiceDownloadTaskManager
           if ((localServiceDownloadTask.mClientKey == null) || (!localServiceDownloadTask.mClientKey.equals(paramString1)) || (!localServiceDownloadTask.mUrl.equals(paramString2))) {
             continue;
           }
-          AppMethodBeat.o(75803);
+          AppMethodBeat.o(102049);
           paramString1 = localServiceDownloadTask;
           continue;
         }
-        AppMethodBeat.o(75803);
+        AppMethodBeat.o(102049);
       }
       finally {}
       paramString1 = null;
@@ -146,11 +146,11 @@ public class ServiceDownloadTaskManager
       ArrayList localArrayList;
       try
       {
-        AppMethodBeat.i(75804);
+        AppMethodBeat.i(102050);
         if (paramString == null)
         {
           paramString = null;
-          AppMethodBeat.o(75804);
+          AppMethodBeat.o(102050);
           return paramString;
         }
         localArrayList = new ArrayList();
@@ -164,7 +164,7 @@ public class ServiceDownloadTaskManager
           localArrayList.add(localServiceDownloadTask);
           continue;
         }
-        AppMethodBeat.o(75804);
+        AppMethodBeat.o(102050);
       }
       finally {}
       paramString = localArrayList;
@@ -173,12 +173,12 @@ public class ServiceDownloadTaskManager
   
   public TMAssistantDownloadTaskInfo getDownloadTaskInfo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75797);
+    AppMethodBeat.i(102043);
     paramString1 = ApkDownloadManager.getInstance().queryDownloadInfo(paramString2);
     if (paramString1 != null)
     {
       paramString1 = new TMAssistantDownloadTaskInfo(paramString1.mURL, TMAssistantFile.getSaveFilePath(paramString1.mFileName), paramString1.mStatus, paramString1.mReceivedBytes, paramString1.getTotalSize(), paramString1.mContentType);
-      AppMethodBeat.o(75797);
+      AppMethodBeat.o(102043);
       return paramString1;
     }
     Object localObject;
@@ -188,7 +188,7 @@ public class ServiceDownloadTaskManager
       paramString1 = TMAssistantFile.getSaveFilePath((String)localObject);
       localObject = new TMAssistantFile((String)localObject, (String)localObject);
       paramString1 = new TMAssistantDownloadTaskInfo(paramString2, paramString1, 4, ((TMAssistantFile)localObject).length(), ((TMAssistantFile)localObject).length(), "application/vnd.android.package-archive");
-      AppMethodBeat.o(75797);
+      AppMethodBeat.o(102043);
       return paramString1;
     }
     if (DownloadHelper.isDownloadFileExisted(paramString2, "application/tm.android.apkdiff"))
@@ -197,20 +197,20 @@ public class ServiceDownloadTaskManager
       paramString1 = TMAssistantFile.getSaveFilePath((String)localObject);
       localObject = new TMAssistantFile((String)localObject, (String)localObject);
       paramString1 = new TMAssistantDownloadTaskInfo(paramString2, paramString1, 4, ((TMAssistantFile)localObject).length(), ((TMAssistantFile)localObject).length(), "application/tm.android.apkdiff");
-      AppMethodBeat.o(75797);
+      AppMethodBeat.o(102043);
       return paramString1;
     }
     removeDownloadTask(paramString2);
-    AppMethodBeat.o(75797);
+    AppMethodBeat.o(102043);
     return null;
   }
   
   public void pauseDownload(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75799);
+    AppMethodBeat.i(102045);
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(75799);
+      AppMethodBeat.o(102045);
       return;
     }
     TMLog.i("ServiceDownloadTaskManager", "pauseDownload,clientKey:".concat(String.valueOf(paramString1)));
@@ -234,7 +234,7 @@ public class ServiceDownloadTaskManager
     for (;;)
     {
       TMLog.i("ServiceDownloadTaskManager", "pauseDownload end,clientKey:".concat(String.valueOf(paramString1)));
-      AppMethodBeat.o(75799);
+      AppMethodBeat.o(102045);
       return;
       TMLog.w("ServiceDownloadTaskManager", "pauseDownload,clientKey:" + paramString1 + ",taskItem is null");
     }
@@ -242,9 +242,9 @@ public class ServiceDownloadTaskManager
   
   public void registerApkDownloadManagerListener()
   {
-    AppMethodBeat.i(75801);
+    AppMethodBeat.i(102047);
     ApkDownloadManager.getInstance().AddDownloadListener(this);
-    AppMethodBeat.o(75801);
+    AppMethodBeat.o(102047);
   }
   
   protected void removeDownloadTask(String paramString)
@@ -254,10 +254,10 @@ public class ServiceDownloadTaskManager
       ArrayList localArrayList;
       try
       {
-        AppMethodBeat.i(75805);
+        AppMethodBeat.i(102051);
         if (paramString == null)
         {
-          AppMethodBeat.o(75805);
+          AppMethodBeat.o(102051);
           return;
         }
         localArrayList = new ArrayList();
@@ -278,7 +278,7 @@ public class ServiceDownloadTaskManager
       finally {}
       this.mServiceTaskList.removeAll(localArrayList);
       label100:
-      AppMethodBeat.o(75805);
+      AppMethodBeat.o(102051);
     }
   }
   
@@ -289,10 +289,10 @@ public class ServiceDownloadTaskManager
   
   public int startDownload(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(75798);
+    AppMethodBeat.i(102044);
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(75798);
+      AppMethodBeat.o(102044);
       return 3;
     }
     TMLog.i("ServiceDownloadTaskManager", "startDownload,clientKey:".concat(String.valueOf(paramString1)));
@@ -300,7 +300,7 @@ public class ServiceDownloadTaskManager
     {
       TMLog.i("ServiceDownloadTaskManager", "startDownload,clientKey:" + paramString1 + ",taskItem isn't null");
       paramInt = ApkDownloadManager.getInstance().startDownload(paramString2, paramString3, paramLong, paramInt, paramString4, paramString5, paramMap);
-      AppMethodBeat.o(75798);
+      AppMethodBeat.o(102044);
       return paramInt;
     }
     Object localObject = findDownloadTask(paramString2);
@@ -341,7 +341,7 @@ public class ServiceDownloadTaskManager
             this.mListener.OnDownloadStateChanged(paramString1, paramString2, localServiceDownloadTask1.mState, 0, null, false, false);
           }
           TMLog.i("ServiceDownloadTaskManager", "startDownload,clientKey:" + paramString1 + ",newTask is downloading, state = " + localServiceDownloadTask1.mState);
-          AppMethodBeat.o(75798);
+          AppMethodBeat.o(102044);
           return 0;
           if (i == 1) {
             localServiceDownloadTask1.mState = 1;
@@ -350,21 +350,21 @@ public class ServiceDownloadTaskManager
       }
       TMLog.i("ServiceDownloadTaskManager", "startDownload,clientKey:" + paramString1 + ",start newTask download");
       paramInt = ApkDownloadManager.getInstance().startDownload(paramString2, paramString3, paramLong, paramInt, paramString4, paramString5, paramMap);
-      AppMethodBeat.o(75798);
+      AppMethodBeat.o(102044);
       return paramInt;
     }
   }
   
   public void unRegisterApkDownloadManagerListener()
   {
-    AppMethodBeat.i(75802);
+    AppMethodBeat.i(102048);
     ApkDownloadManager.getInstance().RemoveDownloadListener(this);
-    AppMethodBeat.o(75802);
+    AppMethodBeat.o(102048);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.taskmanager.ServiceDownloadTaskManager
  * JD-Core Version:    0.7.0.1
  */

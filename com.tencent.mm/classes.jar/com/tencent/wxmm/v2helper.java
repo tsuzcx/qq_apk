@@ -34,9 +34,11 @@ public class v2helper
   public static final int AUDIO_RECORDER_SUCCESS = 0;
   public static final int BUESINESS_TYPE_PSTN = 4;
   public static final int BUESINESS_TYPE_VOIP = 0;
+  public static final int EMethodAudioRecordAction = 928;
   public static final int EMethodEhanceHeadsetEC = 416;
   public static final int EMethodEnableSpeakerEnhanceEC = 419;
   public static final int EMethodGetIosMicAbCheckFlag = 430;
+  public static final int EMethodGetNetworkQuality = 929;
   public static final int EMethodGraspMicAttempt = 403;
   public static final int EMethodHeadSetPlug = 425;
   public static final int EMethodInputVolumeScaleEnable = 414;
@@ -86,6 +88,23 @@ public class v2helper
   public static final int HANGUP_REASON_MANUAL = 1;
   public static final int HANGUP_REASON_PHONE_BROKEN = 6;
   public static final int HANGUP_REASON_REPLY_BY_OTHER = 9;
+  public static final int MultiTalkErrTypeAuthFailed = 1;
+  public static final int MultiTalkErrTypeDeviceFailed = 4;
+  public static final int MultiTalkErrTypeEngineFailed = 3;
+  public static final int MultiTalkErrTypeEnterFailed = 2;
+  public static final int MultiTalkErrTypeEnterInvalidRoomFailed = 12;
+  public static final int MultiTalkErrTypeEnterLocationFailed = 9;
+  public static final int MultiTalkErrTypeEnterMoreMemContainPreviousRoomFailedFromBanner = 13;
+  public static final int MultiTalkErrTypeEnterMoreMemContainPreviousRoomFailedFromOther = 14;
+  public static final int MultiTalkErrTypeEnterOverloadFailed = 11;
+  public static final int MultiTalkErrTypeEnterSecurityFailed = 10;
+  public static final int MultiTalkErrTypeIncomingCallWaitTimerOut = 6;
+  public static final int MultiTalkErrTypeInviteFailed = 5;
+  public static final int MultiTalkErrTypeInviteOverLimit = 15;
+  public static final int MultiTalkErrTypeInviteUnknownError = 16;
+  public static final int MultiTalkErrTypeOutGoingCallWaitTimerOut = 7;
+  public static final int MultiTalkErrTypeSuccess = 0;
+  public static final int MultiTalkErrTypeTalkingFailed = 8;
   public static final int ROOM_TYPE_AUDIO = 2;
   public static final int ROOM_TYPE_UNKNOWN = 0;
   public static final int ROOM_TYPE_VIDEO = 1;
@@ -94,6 +113,38 @@ public class v2helper
   public static final int TYPE_IPCALL = 1;
   public static final int TYPE_MultiTalk = 3;
   public static final int TYPE_VOIP = 0;
+  public static final int USER_STATUS_ACKED = 3;
+  public static final int USER_STATUS_BUSY = 6;
+  public static final int USER_STATUS_CALLEE = 2;
+  public static final int USER_STATUS_CANCEL = 5;
+  public static final int USER_STATUS_EXIT = 4;
+  public static final int USER_STATUS_JOINED = 1;
+  public static final int USER_STATUS_NORSP = 8;
+  public static final int USER_STATUS_REJECT = 7;
+  public static final int USER_STATUS_UNKNOWN = 0;
+  public static final int VFMT_BGRA = 11;
+  public static final int VFMT_D530 = 9;
+  public static final int VFMT_END = 256;
+  public static final int VFMT_MASK1 = 31;
+  public static final int VFMT_MASK2 = 63;
+  public static final int VFMT_MIRROR = 64;
+  public static final int VFMT_NV12 = 10;
+  public static final int VFMT_NV21 = 7;
+  public static final int VFMT_RGB24 = 3;
+  public static final int VFMT_RGB32 = 4;
+  public static final int VFMT_RGB565 = 2;
+  public static final int VFMT_ROTATE = 32;
+  public static final int VFMT_SCREEN = 128;
+  public static final int VFMT_UYVY = 8;
+  public static final int VFMT_YUV420 = 1;
+  public static final int VFMT_YUY2 = 5;
+  public static final int VFMT_YV12 = 6;
+  public static final int VFMT_i264 = 18;
+  public static final int VFMT_i265 = 19;
+  public static final int VIDEO_RATIO_1_1 = 2;
+  public static final int VIDEO_RATIO_1_2 = 3;
+  public static final int VIDEO_RATIO_3_4 = 0;
+  public static final int VIDEO_RATIO_6_19 = 1;
   public static final int VOICE_CHANNELS = 1;
   public static final int VOICE_FRAME_BYTES = 640;
   public static final int VOICE_FRAME_DURATION = 20;
@@ -105,19 +156,50 @@ public class v2helper
   public static final int WXCONF_ERR_AUTHKEY_EXPIRED = 4;
   public static final int WXCONF_ERR_FREQ_LIMITED = 3;
   public static final int WXCONF_ERR_INVALID_CALL = 1;
+  public static final int WXCONF_ERR_JOIN_IMROOM_FAIL = 14;
+  public static final int WXCONF_ERR_KV_CONFLICT = 16;
+  public static final int WXCONF_ERR_MEMBER_CNT_LIMIT = 10;
   public static final int WXCONF_ERR_NETWORK_FAIL = 2;
   public static final int WXCONF_ERR_NOT_FRIEND = 5;
-  public static final int WXCONF_ERR_REMOTE_NOT_SUPPORT = 11;
-  public static final int WXCONF_ERR_ROOM_CLOSED = 10;
+  public static final int WXCONF_ERR_NOT_IN_IMROOM = 13;
+  public static final int WXCONF_ERR_OVERLOAD = 18;
+  public static final int WXCONF_ERR_REPLY_BY_OTHER = 15;
+  public static final int WXCONF_ERR_ROOM_CLOSED = 11;
+  public static final int WXCONF_ERR_ROOM_EXIST = 17;
   public static final int WXCONF_ERR_UNKNOWN = 0;
-  public static final int WXCONF_EVENT_AUTHKEY_EXPIRED = 8;
-  public static final int WXCONF_EVENT_CALL_BROKEN = 6;
-  public static final int WXCONF_EVENT_CALL_END = 7;
-  public static final int WXCONF_EVENT_JOIN_FAIL = 2;
-  public static final int WXCONF_EVENT_JOIN_SUCC = 1;
-  public static final int WXCONF_EVENT_MEMBER_CHANGE = 3;
-  public static final int WXCONF_EVENT_TALK_FAIL = 5;
-  public static final int WXCONF_EVENT_TALK_SUCC = 4;
+  public static final int WXCONF_ERR_USER_NOT_EXIST = 12;
+  public static final int WXCONF_ERR_VERIFY_TOKEN = 19;
+  public static final int WXCONF_EVENT_ACCEPT_FAIL = 15;
+  public static final int WXCONF_EVENT_ACCEPT_SUCC = 14;
+  public static final int WXCONF_EVENT_ACCEPT_TIMEOUT = 16;
+  public static final int WXCONF_EVENT_ACK_FAIL = 13;
+  public static final int WXCONF_EVENT_ACK_SUCC = 12;
+  public static final int WXCONF_EVENT_ADD_FAIL = 19;
+  public static final int WXCONF_EVENT_ADD_SUCC = 18;
+  public static final int WXCONF_EVENT_AUTHKEY_EXPIRED = 26;
+  public static final int WXCONF_EVENT_AVMEMBER_CHANGE = 21;
+  public static final int WXCONF_EVENT_CALL_BROKEN = 24;
+  public static final int WXCONF_EVENT_CALL_END = 25;
+  public static final int WXCONF_EVENT_INIT_FAIL = 2;
+  public static final int WXCONF_EVENT_INIT_SUCC = 1;
+  public static final int WXCONF_EVENT_INVITE_FAIL = 6;
+  public static final int WXCONF_EVENT_INVITE_SUCC = 5;
+  public static final int WXCONF_EVENT_INVITE_TIMEOUT = 7;
+  public static final int WXCONF_EVENT_JOIN_FAIL = 4;
+  public static final int WXCONF_EVENT_JOIN_SUCC = 3;
+  public static final int WXCONF_EVENT_MEMBER_CHANGE = 20;
+  public static final int WXCONF_EVENT_RECV_CMDMSG = 28;
+  public static final int WXCONF_EVENT_RECV_INVITE = 8;
+  public static final int WXCONF_EVENT_RECV_INVITE_BUSY = 9;
+  public static final int WXCONF_EVENT_RECV_NOTIFY_FAIL = 11;
+  public static final int WXCONF_EVENT_RECV_SIMU_CALL = 10;
+  public static final int WXCONF_EVENT_REPLY_BY_OTHER = 17;
+  public static final int WXCONF_EVENT_SOCKET_BINDTO_NETWORK = 27;
+  public static final int WXCONF_EVENT_START_PUBLISH_RET = 29;
+  public static final int WXCONF_EVENT_STOP_PUBLISH_RET = 30;
+  public static final int WXCONF_EVENT_SWITCHAV_FAIL = 31;
+  public static final int WXCONF_EVENT_TALK_FAIL = 23;
+  public static final int WXCONF_EVENT_TALK_SUCC = 22;
   public static final int WXVOIP_ERR_AUTHKEY_EXPIRED = 4;
   public static final int WXVOIP_ERR_FREQ_LIMITED = 3;
   public static final int WXVOIP_ERR_INVALID_CALL = 1;
@@ -162,46 +244,46 @@ public class v2helper
   
   public static void Logd(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(35419);
+    AppMethodBeat.i(40797);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
-    AppMethodBeat.o(35419);
+    AppMethodBeat.o(40797);
   }
   
   public static void Loge(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(35417);
+    AppMethodBeat.i(40795);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
-    AppMethodBeat.o(35417);
+    AppMethodBeat.o(40795);
   }
   
   public static void Logi(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(35418);
+    AppMethodBeat.i(40796);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
-    AppMethodBeat.o(35418);
+    AppMethodBeat.o(40796);
   }
   
   public static void Logw(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(35420);
+    AppMethodBeat.i(40798);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
-    AppMethodBeat.o(35420);
+    AppMethodBeat.o(40798);
   }
   
   public static void closeLogFile()
   {
-    AppMethodBeat.i(35416);
+    AppMethodBeat.i(40794);
     if (mOutputStream != null) {}
     try
     {
       mOutputStream.close();
       label18:
       mOutputStream = null;
-      AppMethodBeat.o(35416);
+      AppMethodBeat.o(40794);
       return;
     }
     catch (Exception localException)
@@ -212,61 +294,61 @@ public class v2helper
   
   public static void flushLogFile()
   {
-    AppMethodBeat.i(35415);
+    AppMethodBeat.i(40793);
     if (mOutputStream == null)
     {
-      AppMethodBeat.o(35415);
+      AppMethodBeat.o(40793);
       return;
     }
     try
     {
       mOutputStream.flush();
-      AppMethodBeat.o(35415);
+      AppMethodBeat.o(40793);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(35415);
+      AppMethodBeat.o(40793);
     }
   }
   
   public static void outputJniLog(byte[] paramArrayOfByte, String paramString, int paramInt)
   {
-    AppMethodBeat.i(35421);
+    AppMethodBeat.i(40799);
     paramArrayOfByte = new String(paramArrayOfByte);
     if (!paramString.equals("MicroMsg.v2Core"))
     {
       writeLogToFile(paramString + ":" + paramArrayOfByte + " \n");
-      AppMethodBeat.o(35421);
+      AppMethodBeat.o(40799);
       return;
     }
     writeLogToFile(paramString + ":" + paramArrayOfByte);
-    AppMethodBeat.o(35421);
+    AppMethodBeat.o(40799);
   }
   
   public static void writeLogToFile(String paramString)
   {
-    AppMethodBeat.i(35414);
+    AppMethodBeat.i(40792);
     if (mOutputStream == null)
     {
-      AppMethodBeat.o(35414);
+      AppMethodBeat.o(40792);
       return;
     }
     try
     {
       mOutputStream.write(paramString.getBytes());
-      AppMethodBeat.o(35414);
+      AppMethodBeat.o(40792);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(35414);
+      AppMethodBeat.o(40792);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wxmm.v2helper
  * JD-Core Version:    0.7.0.1
  */

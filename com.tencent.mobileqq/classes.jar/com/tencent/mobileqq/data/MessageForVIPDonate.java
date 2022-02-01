@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import amrf;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForVIPDonate
@@ -14,11 +14,15 @@ public class MessageForVIPDonate
   {
     try
     {
-      this.donateMsg = ((VIPDonateMsg)amrf.a(this.msgData));
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageForVIPDonate", 2, "doParse :VIPDonateMsg = " + this.donateMsg);
+      this.donateMsg = ((VIPDonateMsg)MessagePkgUtils.a(this.msgData));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doParse :VIPDonateMsg = ");
+        localStringBuilder.append(this.donateMsg);
+        QLog.d("MessageForVIPDonate", 2, localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -28,7 +32,8 @@ public class MessageForVIPDonate
   
   public String getSummaryMsg()
   {
-    if ((this.donateMsg != null) && (!TextUtils.isEmpty(this.donateMsg.brief))) {
+    VIPDonateMsg localVIPDonateMsg = this.donateMsg;
+    if ((localVIPDonateMsg != null) && (!TextUtils.isEmpty(localVIPDonateMsg.brief))) {
       return this.donateMsg.brief;
     }
     return "[QQ会员赠送]";
@@ -39,22 +44,25 @@ public class MessageForVIPDonate
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.donateMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageForVIPDonate", 2, "prewrite :VIPDonateMsg = " + this.donateMsg);
+    if (this.donateMsg != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("prewrite :VIPDonateMsg = ");
+        localStringBuilder.append(this.donateMsg);
+        QLog.d("MessageForVIPDonate", 2, localStringBuilder.toString());
       }
-    }
-    while (!QLog.isColorLevel()) {
       try
       {
-        this.msgData = amrf.a(this.donateMsg);
+        this.msgData = MessagePkgUtils.a(this.donateMsg);
         return;
       }
       catch (Exception localException)
@@ -63,7 +71,9 @@ public class MessageForVIPDonate
         return;
       }
     }
-    QLog.d("MessageForVIPDonate", 2, "prewrite :VIPDonateMsg = null");
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForVIPDonate", 2, "prewrite :VIPDonateMsg = null");
+    }
   }
 }
 

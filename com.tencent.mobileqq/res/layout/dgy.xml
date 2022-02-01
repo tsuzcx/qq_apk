@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0sp" android:id="@id/qrh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" />
+    <TextView android:id="@id/qre" android:text="savePath" android:layout_below="@id/qrh" style="@style/5_" />
+    <TextView android:id="@id/qrd" android:text="fileSize" android:layout_below="@id/qre" style="@style/5_" />
+    <TextView android:id="@id/qrf" android:text="speed" android:layout_below="@id/qrd" style="@style/5_" />
+    <TextView android:id="@id/qrg" android:text="state" android:layout_below="@id/qrf" style="@style/5_" />
+    <ProgressBar android:id="@id/g1f" android:layout_width="330.0dip" android:layout_height="13.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/qrg" style="?android:progressBarStyleHorizontal" />
+    <Button android:id="@id/mo1" android:text="启动" android:layout_below="@id/g1f" style="@style/59" />
+    <Button android:id="@id/mq5" android:text="暂停" android:layout_toRightOf="@id/mo1" android:layout_below="@id/g1f" style="@style/59" />
+    <Button android:id="@id/mnu" android:text="删除" android:layout_toRightOf="@id/mq5" android:layout_below="@id/g1f" style="@style/59" />
+    <Button android:id="@id/mo3" android:text="更新" android:layout_toRightOf="@id/mnu" android:layout_below="@id/g1f" style="@style/59" />
+</RelativeLayout>

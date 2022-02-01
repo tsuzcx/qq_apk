@@ -1,9 +1,14 @@
 package com.tencent.mm.plugin.auth.a;
 
+import com.tencent.mm.protocal.j.h;
+import com.tencent.mm.protocal.j.i;
+import com.tencent.mm.protocal.x.b;
+
 public abstract interface b
-  extends com.tencent.mm.kernel.b.a
 {
-  public abstract com.tencent.mm.vending.b.b addHandleAuthResponse(a parama);
+  public abstract void onAuthResponse(j.h paramh, j.i parami, boolean paramBoolean);
+  
+  public abstract void onRegResponse(x.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2);
 }
 
 

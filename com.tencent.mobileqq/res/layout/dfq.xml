@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/p2b" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="260.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bra" android:layout_marginRight="@dimen/bra">
+        <TextView android:textSize="12.0dip" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/mse" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bra" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/pxb" android:layout_centerVertical="true" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/pxb" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.timi.game.profile.api.ui.ProfileMessageView android:id="@id/p2c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bra" android:layout_marginTop="8.0dip" android:layout_marginRight="@dimen/bra" android:layout_below="@id/qed" />
+    <View android:id="@id/lft" android:background="#fff7f7f7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="10.0dip" android:layout_below="@id/p2c" />
+    <TextView android:textSize="15.0dip" android:textColor="#fff5a300" android:gravity="center" android:id="@id/4s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/zg4" android:layout_below="@id/lft" />
+</RelativeLayout>

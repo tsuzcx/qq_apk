@@ -13,26 +13,36 @@ class DBFixManager$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-    String str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (((SharedPreferences)localObject).getBoolean(str + DBFixManager.d, false))
+    Object localObject = this.this$0.a.getApplication().getSharedPreferences(DBFixManager.d, 0);
+    String str = this.this$0.a.getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(DBFixManager.f);
+    if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false))
     {
-      this.this$0.a();
-      if ((((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new DBFixManager.1.1(this));
+      this.this$0.b();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(DBFixManager.g);
+      if ((((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) < DBFixManager.h) && (DBFixManager.j))
+      {
+        this.this$0.a.runOnUiThread(new DBFixManager.1.1(this));
+        return;
       }
+      QLog.d(DBFixManager.f(), 1, "DBFixDialogUI 1, max count, delete db");
+      this.this$0.b(false);
+      this.this$0.c();
+      localObject = ((SharedPreferences)localObject).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(DBFixManager.f);
+      ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(DBFixManager.g);
+      ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString());
+      ((SharedPreferences.Editor)localObject).apply();
     }
-    else
-    {
-      return;
-    }
-    QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
-    this.this$0.b(false);
-    this.this$0.b();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 

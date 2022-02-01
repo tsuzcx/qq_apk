@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodLinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="16.0sp" android:gravity="top" android:id="@id/d9q" android:background="@null" android:paddingLeft="14.0dip" android:paddingTop="10.0dip" android:paddingRight="14.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/en9" android:lines="3" android:lineSpacingExtra="5.0sp" />
+    <View android:id="@id/jta" android:background="@drawable/skin_setting_strip_line_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/d9s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/d9t" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/d9u" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:background="@drawable/skin_setting_strip_line_theme_version2" android:layout_width="fill_parent" android:layout_height="2.0px" />
+    <com.tencent.mobileqq.troop.widget.PublishItemBar android:orientation="horizontal" android:id="@id/d9o" android:paddingLeft="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" />
+    <FrameLayout android:background="#fff0f0f0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.widget.InputMethodLinearLayout>

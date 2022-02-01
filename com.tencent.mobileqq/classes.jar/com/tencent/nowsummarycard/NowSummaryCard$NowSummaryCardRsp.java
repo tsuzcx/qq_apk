@@ -21,13 +21,14 @@ public final class NowSummaryCard$NowSummaryCardRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "jce_data", "id", "id_type", "ret_code", "err_msg" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "" }, NowSummaryCardRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "jce_data", "id", "id_type", "ret_code", "err_msg" }, new Object[] { localByteStringMicro, Long.valueOf(0L), localInteger, localInteger, "" }, NowSummaryCardRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.nowsummarycard.NowSummaryCard.NowSummaryCardRsp
  * JD-Core Version:    0.7.0.1
  */

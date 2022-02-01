@@ -1,10 +1,15 @@
 package com.tencent.ttpic.openapi.model.cosfun;
 
+import com.tencent.ttpic.openapi.filter.CustomFilterItem;
+import java.util.List;
+
 public class CosFun$CosFunItem
 {
   private int backgroundMode1;
   private int backgroundMode2;
+  private boolean clampToEdge;
   private String crazyFacePath;
+  public List<CustomFilterItem> customFilterItemList;
   private int duration;
   public String externalTriggerWords;
   private int freezeDuration;
@@ -12,10 +17,12 @@ public class CosFun$CosFunItem
   private String id;
   private CosFun.PagIndexList pagIndexList;
   private String pagPath;
+  public List<String> textureMaterialsForGAN;
   private int transDuration;
   private int transReverseDuration;
   private int transReverseStart;
   private int transStart;
+  private int transType;
   private int triggerType;
   private int waitInterval;
   
@@ -34,9 +41,19 @@ public class CosFun$CosFunItem
     return this.crazyFacePath;
   }
   
+  public List<CustomFilterItem> getCustomFilterItemList()
+  {
+    return this.customFilterItemList;
+  }
+  
   public int getDuration()
   {
     return this.duration;
+  }
+  
+  public String getExternalTriggerWords()
+  {
+    return this.externalTriggerWords;
   }
   
   public int getFreezeDuration()
@@ -64,6 +81,11 @@ public class CosFun$CosFunItem
     return this.pagPath;
   }
   
+  public List<String> getTextureMaterialsForGAN()
+  {
+    return this.textureMaterialsForGAN;
+  }
+  
   public int getTransDuration()
   {
     return this.transDuration;
@@ -84,6 +106,11 @@ public class CosFun$CosFunItem
     return this.transStart;
   }
   
+  public int getTransType()
+  {
+    return this.transType;
+  }
+  
   public int getTriggerType()
   {
     return this.triggerType;
@@ -92,6 +119,11 @@ public class CosFun$CosFunItem
   public int getWaitInterval()
   {
     return this.waitInterval;
+  }
+  
+  public boolean isClampToEdge()
+  {
+    return this.clampToEdge;
   }
   
   public void setBackgroundMode1(int paramInt)
@@ -104,9 +136,19 @@ public class CosFun$CosFunItem
     this.backgroundMode2 = paramInt;
   }
   
+  public void setClampToEdge(boolean paramBoolean)
+  {
+    this.clampToEdge = paramBoolean;
+  }
+  
   public void setCrazyFacePath(String paramString)
   {
     this.crazyFacePath = paramString;
+  }
+  
+  public void setCustomFilterItemList(List<CustomFilterItem> paramList)
+  {
+    this.customFilterItemList = paramList;
   }
   
   public void setDuration(int paramInt)
@@ -144,6 +186,11 @@ public class CosFun$CosFunItem
     this.pagPath = paramString;
   }
   
+  public void setTextureMaterialsForGAN(List<String> paramList)
+  {
+    this.textureMaterialsForGAN = paramList;
+  }
+  
   public void setTransDuration(int paramInt)
   {
     this.transDuration = paramInt;
@@ -164,6 +211,11 @@ public class CosFun$CosFunItem
     this.transStart = paramInt;
   }
   
+  public void setTransType(int paramInt)
+  {
+    this.transType = paramInt;
+  }
+  
   public void setTriggerType(int paramInt)
   {
     this.triggerType = paramInt;
@@ -176,7 +228,7 @@ public class CosFun$CosFunItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunItem
  * JD-Core Version:    0.7.0.1
  */

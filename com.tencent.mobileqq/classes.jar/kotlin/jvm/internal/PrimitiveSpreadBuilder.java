@@ -39,25 +39,28 @@ public abstract class PrimitiveSpreadBuilder<T>
   
   protected final int size()
   {
-    int i = 0;
     int m = this.size - 1;
-    if (m <= 0)
+    int k = 0;
+    int j = 0;
+    if (m >= 0)
     {
-      int j = 0;
-      Object localObject = this.spreads[i];
-      if (localObject != null) {}
-      for (k = getSize(localObject);; k = 1)
+      int i = 0;
+      for (;;)
       {
+        Object localObject = this.spreads[i];
+        if (localObject != null) {
+          k = getSize(localObject);
+        } else {
+          k = 1;
+        }
         j += k;
         k = j;
         if (i == m) {
-          return k;
+          break;
         }
         i += 1;
-        break;
       }
     }
-    int k = 0;
     return k;
   }
   
@@ -67,49 +70,53 @@ public abstract class PrimitiveSpreadBuilder<T>
     Intrinsics.checkParameterIsNotNull(paramT1, "values");
     Intrinsics.checkParameterIsNotNull(paramT2, "result");
     int i1 = this.size - 1;
-    if (i1 <= 0)
+    int i = 0;
+    int j;
+    if (i1 >= 0)
     {
       int m = 0;
-      n = 0;
-      int i;
-      for (j = 0;; j = i)
+      int n = 0;
+      for (i = 0;; i = j)
       {
         Object localObject = this.spreads[m];
-        int k = n;
-        i = j;
+        k = n;
+        j = i;
         if (localObject != null)
         {
-          i = j;
+          j = i;
           if (n < m)
           {
-            System.arraycopy(paramT1, n, paramT2, j, m - n);
-            i = j + (m - n);
+            j = m - n;
+            System.arraycopy(paramT1, n, paramT2, i, j);
+            j = i + j;
           }
-          j = getSize(localObject);
-          System.arraycopy(localObject, 0, paramT2, i, j);
-          i += j;
+          i = getSize(localObject);
+          System.arraycopy(localObject, 0, paramT2, j, i);
+          j += i;
           k = m + 1;
         }
-        n = k;
-        j = i;
         if (m == i1) {
           break;
         }
         m += 1;
         n = k;
       }
+      i = k;
     }
-    int n = 0;
-    int j = 0;
-    if (n < this.size) {
-      System.arraycopy(paramT1, n, paramT2, j, this.size - n);
+    else
+    {
+      j = 0;
+    }
+    int k = this.size;
+    if (i < k) {
+      System.arraycopy(paramT1, i, paramT2, j, k - i);
     }
     return paramT2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.PrimitiveSpreadBuilder
  * JD-Core Version:    0.7.0.1
  */

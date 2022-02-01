@@ -1,9 +1,7 @@
 package com.google.android.gms.common.api.internal;
 
 import android.app.Activity;
-import com.google.android.gms.common.annotation.KeepForSdkWithMembers;
 
-@KeepForSdkWithMembers
 public abstract class ActivityLifecycleObserver
 {
   public static final ActivityLifecycleObserver of(Activity paramActivity)
@@ -15,7 +13,7 @@ public abstract class ActivityLifecycleObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.ActivityLifecycleObserver
  * JD-Core Version:    0.7.0.1
  */

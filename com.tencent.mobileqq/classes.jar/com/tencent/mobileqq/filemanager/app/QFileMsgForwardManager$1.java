@@ -1,15 +1,11 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.text.TextUtils;
-import aque;
-import aquy;
-import aqva;
-import aqvb;
-import arcj;
-import arrr;
-import azqs;
-import bdin;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.msgforward.QFileMsgForwardRequest;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -17,70 +13,108 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class QFileMsgForwardManager$1
+class QFileMsgForwardManager$1
   implements Runnable
 {
-  public QFileMsgForwardManager$1(aque paramaque, arcj paramarcj) {}
+  QFileMsgForwardManager$1(QFileMsgForwardManager paramQFileMsgForwardManager, QFileMsgForwardRequest paramQFileMsgForwardRequest) {}
   
   public void run()
   {
-    boolean bool = bdin.g(null);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "isNetworkAvailable:" + bool);
+    boolean bool1 = NetworkUtil.isNetworkAvailable(null);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("isNetworkAvailable:");
+      ((StringBuilder)localObject1).append(bool1);
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
     }
     String str1 = this.a.a();
     String str2 = this.a.b();
-    int i = this.a.a();
-    HashMap localHashMap = this.a.a();
-    if ((localHashMap == null) || (localHashMap.isEmpty()))
+    int i = this.a.c();
+    Object localObject2 = this.a.d();
+    if ((localObject2 != null) && (!((HashMap)localObject2).isEmpty()))
     {
-      this.a.a(0, new ArrayList(), new ArrayList());
-      return;
-    }
-    aqvb localaqvb = new aqvb(this.this$0, str1, this.a, localHashMap);
-    Iterator localIterator1 = localHashMap.keySet().iterator();
-    long l1 = 0L;
-    if (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((ArrayList)localHashMap.get((String)localIterator1.next())).iterator();
-      long l2 = l1;
-      for (;;)
+      QFileMsgForwardManager.QFileUploadRequest localQFileUploadRequest = new QFileMsgForwardManager.QFileUploadRequest(this.this$0, str1, this.a, (HashMap)localObject2);
+      Iterator localIterator1 = ((HashMap)localObject2).keySet().iterator();
+      long l2 = 0L;
+      if (localIterator1.hasNext())
       {
-        l1 = l2;
-        if (!localIterator2.hasNext()) {
-          break;
-        }
-        Object localObject = (MessageRecord)localIterator2.next();
-        if ((arrr.a((MessageRecord)localObject)) && (aque.a(this.this$0, (MessageRecord)localObject)))
+        Iterator localIterator2 = ((ArrayList)((HashMap)localObject2).get((String)localIterator1.next())).iterator();
+        long l1 = l2;
+        localObject1 = localObject2;
+        boolean bool2 = bool1;
+        for (;;)
         {
-          aquy localaquy = aque.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
-          if (localaquy == null) {
-            break label301;
+          bool1 = bool2;
+          localObject2 = localObject1;
+          l2 = l1;
+          if (!localIterator2.hasNext()) {
+            break;
           }
-          localaqvb.a(localaquy);
-          if (!bool) {
-            localaquy.a.a("", true);
+          localObject2 = (MessageRecord)localIterator2.next();
+          if ((FileManagerUtil.a((MessageRecord)localObject2)) && (QFileMsgForwardManager.a(this.this$0, (MessageRecord)localObject2)))
+          {
+            QFileMsgForwardManager.FileUploadTask localFileUploadTask = QFileMsgForwardManager.a(this.this$0, str2, i, str1, (MessageRecord)localObject2);
+            if (localFileUploadTask != null)
+            {
+              localQFileUploadRequest.a(localFileUploadTask);
+              if (!bool2) {
+                localFileUploadTask.c.a("", true);
+              }
+              localObject2 = ((MessageRecord)localObject2).getExtInfoFromExtStr("_m_ForwardSize");
+              l2 = l1;
+              if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+                l2 = l1 + Long.valueOf((String)localObject2).longValue();
+              }
+            }
+            else
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("addMultiRequest : createUploadTask failed. forwardMsgSeq[");
+              ((StringBuilder)localObject1).append(str1);
+              ((StringBuilder)localObject1).append("] toUin[");
+              ((StringBuilder)localObject1).append(str2);
+              ((StringBuilder)localObject1).append("] toType[");
+              ((StringBuilder)localObject1).append(i);
+              ((StringBuilder)localObject1).append("] ");
+              QLog.i("FileMultiMsgManager<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
+              this.a.a(1, new ArrayList(), new ArrayList());
+            }
           }
-          localObject = ((MessageRecord)localObject).getExtInfoFromExtStr("_m_ForwardSize");
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            l2 += Long.valueOf((String)localObject).longValue();
+          else
+          {
+            l2 = l1;
           }
+          l1 = l2;
         }
       }
-      label301:
-      QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : createUploadTask failed. forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] ");
-      this.a.a(1, new ArrayList(), new ArrayList());
-      return;
-    }
-    if (localaqvb.a() > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localaqvb.a() + "]");
+      if (localQFileUploadRequest.d() > 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("addMultiRequest : forwardMsgSeq[");
+          ((StringBuilder)localObject1).append(str1);
+          ((StringBuilder)localObject1).append("] toUin[");
+          ((StringBuilder)localObject1).append(str2);
+          ((StringBuilder)localObject1).append("] toType[");
+          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append("] uploadCount[");
+          ((StringBuilder)localObject1).append(localQFileUploadRequest.d());
+          ((StringBuilder)localObject1).append("]");
+          QLog.i("FileMultiMsgManager<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
+        }
+        localObject1 = new DecimalFormat("0.00");
+        double d = l2;
+        Double.isNaN(d);
+        localObject1 = ((DecimalFormat)localObject1).format(d / 1024.0D / 1024.0D);
+        ReportController.b(QFileMsgForwardManager.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", (String)localObject1, "");
+        QFileMsgForwardManager.b(this.this$0).put(str1, localQFileUploadRequest);
+        localQFileUploadRequest.a();
+        return;
       }
-      str2 = new DecimalFormat("0.00").format(l1 / 1024.0D / 1024.0D);
-      azqs.b(aque.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
-      aque.a(this.this$0).put(str1, localaqvb);
-      localaqvb.a();
+      this.a.a(0, new ArrayList(), new ArrayList());
       return;
     }
     this.a.a(0, new ArrayList(), new ArrayList());
@@ -88,7 +122,7 @@ public class QFileMsgForwardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.1
  * JD-Core Version:    0.7.0.1
  */

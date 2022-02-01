@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/grv" android:layout_width="296.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/z55" android:singleLine="true" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/z51" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="16.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/e7d" android:background="@drawable/grw" android:layout_width="120.5dip" android:layout_height="40.0dip" android:text="@string/z53" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/i_w" android:background="@drawable/grx" android:layout_width="120.5dip" android:layout_height="40.0dip" android:layout_marginLeft="22.0dip" android:text="@string/z54" />
+    </LinearLayout>
+</LinearLayout>

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class LbsShare$Shop
   extends MessageMicro<Shop>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 72, 80 }, new String[] { "id", "name", "logo", "url", "detail", "discount", "price", "soldnum", "has_tuan", "has_quan" }, new Object[] { "", "", "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, Shop.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField detail = PBField.initString("");
   public final PBStringField discount = PBField.initString("");
   public final PBUInt32Field has_quan = PBField.initUInt32(0);
@@ -20,10 +20,16 @@ public final class LbsShare$Shop
   public final PBStringField price = PBField.initString("");
   public final PBStringField soldnum = PBField.initString("");
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 72, 80 }, new String[] { "id", "name", "logo", "url", "detail", "discount", "price", "soldnum", "has_tuan", "has_quan" }, new Object[] { "", "", "", "", "", "", "", "", localInteger, localInteger }, Shop.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.LbsShare.Shop
  * JD-Core Version:    0.7.0.1
  */

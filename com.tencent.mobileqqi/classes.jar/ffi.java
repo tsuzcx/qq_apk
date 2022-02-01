@@ -1,22 +1,16 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class ffi
-  implements Runnable
+  extends BroadcastReceiver
 {
   public ffi(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = (PhoneContactManager)this.a.getManager(10);
-    if (localObject != null) {
-      ((PhoneContactManager)localObject).a(false);
-    }
-    localObject = (RecommendTroopManagerImp)this.a.getManager(19);
-    if (localObject != null) {
-      ((RecommendTroopManagerImp)localObject).a();
-    }
+    this.a.a(paramContext);
   }
 }
 

@@ -1,115 +1,113 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.ckx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.widget.b.d;
+import androidx.recyclerview.widget.RecyclerView.v;
+import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class h
   extends RecyclerView.v
   implements a
 {
-  protected View.OnClickListener qaq = new h.1(this);
-  public ckx tfm;
-  public b tim;
-  private boolean tin;
+  public foh TIW;
+  public b TLM;
+  private boolean TLN;
+  protected View.OnClickListener dpY = new h.1(this);
   
   public h(View paramView, b paramb)
   {
     super(paramView);
-    this.tim = paramb;
-    ep(paramView);
+    this.TLM = paramb;
+    ko(paramView);
+  }
+  
+  public void FD(boolean paramBoolean)
+  {
+    this.TLM.a(this.TIW);
   }
   
   protected final void a(b paramb, Context paramContext, f paramf, int paramInt)
   {
-    ckx localckx = paramb.cJs().GI(paramInt);
-    ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.cJf(), localckx, paramInt, 5, "");
-    if (localckx != null)
+    foh localfoh = paramb.hNK().apc(paramInt);
+    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.hNz(), localfoh, paramInt, 5, "");
+    if (localfoh != null)
     {
-      if (this.tim.cJh().cKj())
+      if (this.TLM.hNB().fjy())
       {
-        this.tim.cJh().crn();
-        this.tin = true;
+        this.TLM.hNB().bck();
+        this.TLN = true;
       }
-      d locald = new d(paramContext, 1, false);
-      locald.sao = new h.2(this);
-      locald.sap = new h.3(this, paramf, paramContext, localckx, paramb, paramInt);
-      locald.AGQ = new h.4(this);
-      locald.crd();
+      com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f(paramContext, 1, false);
+      localf.Vtg = new h.2(this);
+      localf.GAC = new h.3(this, paramf, paramContext, localfoh, paramb, paramInt);
+      localf.aeLi = new h.4(this);
+      localf.dDn();
     }
   }
   
-  public void cIZ()
+  public final void d(foh paramfoh)
   {
-    this.tim.cIZ();
+    this.TIW = paramfoh;
+    Log.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramfoh.title });
+    hOh();
   }
   
-  public boolean cJK()
+  public abstract View getWowView();
+  
+  public void hNt()
+  {
+    this.TLM.hNt();
+  }
+  
+  public void hNu()
+  {
+    this.TLM.hNu();
+  }
+  
+  public int hNv()
+  {
+    return KJ() - this.TLM.hNG().hNP();
+  }
+  
+  public boolean hOg()
   {
     return false;
   }
   
-  public abstract void cJL();
+  public abstract void hOh();
   
-  public abstract f cJM();
+  public abstract f hOi();
   
-  public void cJa()
+  public void ko(View paramView) {}
+  
+  protected void kp(View paramView)
   {
-    this.tim.cJa();
-  }
-  
-  public int cJb()
-  {
-    return jN() - this.tim.cJm().getHeadersCount();
-  }
-  
-  public final void d(ckx paramckx)
-  {
-    this.tfm = paramckx;
-    ab.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramckx.title });
-    cJL();
-  }
-  
-  public void ep(View paramView) {}
-  
-  protected void eq(View paramView)
-  {
-    if (this.tim.cJk() != cJb())
+    if (this.TLM.hND() != hNv())
     {
-      this.tim.cJd().tjK = 2;
-      this.tim.Gz(cJb());
-      com.tencent.mm.plugin.websearch.api.a.a.kS(4);
-      this.tim.cJd().g(this.tfm);
-      ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.tim.cJf(), this.tfm, cJb(), 2, "");
+      this.TLM.hNx().TNo = 2;
+      this.TLM.aoT(hNv());
+      com.tencent.mm.plugin.websearch.api.a.a.rG(4);
+      this.TLM.hNx().k(this.TIW);
+      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.TLM.hNz(), this.TIW, hNv(), 2, "");
     }
     do
     {
       return;
-      er(paramView);
-    } while (!cJK());
-    cJa();
-    this.tim.cJa();
-    cIZ();
-    this.tim.cIZ();
+      kq(paramView);
+    } while (!hOg());
+    hNu();
+    this.TLM.hNu();
+    hNt();
+    this.TLM.hNt();
   }
   
-  public void er(View paramView) {}
-  
-  public abstract View getWowView();
-  
-  public void mA(boolean paramBoolean)
-  {
-    this.tim.cJq();
-  }
+  public void kq(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.h
  * JD-Core Version:    0.7.0.1
  */

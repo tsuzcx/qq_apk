@@ -2,79 +2,79 @@ package com.tencent.mm.plugin.expt.hellhound.core.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
 {
-  public static void Mg(String paramString)
+  public static byte[] ard(String paramString)
   {
-    AppMethodBeat.i(152259);
+    AppMethodBeat.i(121858);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(152259);
-      return;
-    }
-    as.apq("_hellhound_mmkv").putLong(paramString, -1L);
-    AppMethodBeat.o(152259);
-  }
-  
-  public static byte[] getBytes(String paramString)
-  {
-    AppMethodBeat.i(73353);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(73353);
+      AppMethodBeat.o(121858);
       return null;
     }
-    paramString = as.apq("_hellhound_mmkv").decodeBytes(paramString);
-    AppMethodBeat.o(73353);
+    paramString = MultiProcessMMKV.getMMKV("_hellhound_mmkv").decodeBytes(paramString);
+    AppMethodBeat.o(121858);
     return paramString;
+  }
+  
+  public static void are(String paramString)
+  {
+    AppMethodBeat.i(121859);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(121859);
+      return;
+    }
+    MultiProcessMMKV.getMMKV("_hellhound_mmkv").putLong(paramString, -1L);
+    AppMethodBeat.o(121859);
   }
   
   public static String getString(String paramString)
   {
-    AppMethodBeat.i(152261);
+    AppMethodBeat.i(121861);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(152261);
+      AppMethodBeat.o(121861);
       return null;
     }
-    paramString = as.apq("_hellhound_mmkv").getString(paramString, null);
-    AppMethodBeat.o(152261);
+    paramString = MultiProcessMMKV.getMMKV("_hellhound_mmkv").getString(paramString, null);
+    AppMethodBeat.o(121861);
     return paramString;
   }
   
   public static void putString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(152260);
+    AppMethodBeat.i(121860);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(152260);
+      AppMethodBeat.o(121860);
       return;
     }
     String str = paramString2;
     if (paramString2 == null) {
       str = "";
     }
-    as.apq("_hellhound_mmkv").putString(paramString1, str);
-    AppMethodBeat.o(152260);
+    MultiProcessMMKV.getMMKV("_hellhound_mmkv").putString(paramString1, str);
+    AppMethodBeat.o(121860);
   }
   
-  public static void v(String paramString, byte[] paramArrayOfByte)
+  public static void u(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73352);
+    AppMethodBeat.i(121857);
     if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null))
     {
-      AppMethodBeat.o(73352);
+      AppMethodBeat.o(121857);
       return;
     }
-    as.apq("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
-    AppMethodBeat.o(73352);
+    MultiProcessMMKV.getMMKV("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
+    AppMethodBeat.o(121857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.a.b
  * JD-Core Version:    0.7.0.1
  */

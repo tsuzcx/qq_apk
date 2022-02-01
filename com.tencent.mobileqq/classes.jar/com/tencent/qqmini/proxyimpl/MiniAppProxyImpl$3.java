@@ -1,28 +1,23 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
+import com.tencent.qqmini.sdk.launcher.core.action.Action;
+import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
 
-class MiniAppProxyImpl$3
-  implements EIPCResultCallback
+final class MiniAppProxyImpl$3
+  implements Action<Object>
 {
-  MiniAppProxyImpl$3(MiniAppProxyImpl paramMiniAppProxyImpl, MiniAppInfo paramMiniAppInfo) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public Object perform(BaseRuntime paramBaseRuntime)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == -100))
-    {
-      AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.3.1(this));
-      return;
-    }
-    MiniAppProxyImpl.access$500(this.this$0, this.val$miniAppInfo);
+    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(paramBaseRuntime.getMiniAppInfo(), (Bundle)null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <View android:id="@id/qq_nearpeople_mask" android:background="#66000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.widget.ExpandableEntranceLayout android:layout_gravity="bottom|center|right" android:id="@id/qq_nearpeople_entrance" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" custom:gravity="bottom|right|center" custom:expandRadius="70.0dip" custom:childSize="40.0dip" custom:toDegree="180" custom:fromDegree="270" custom:onAnimDuration="300" custom:offAnimDuration="300">
+        <ImageView android:id="@id/qq_nearpeople_entrance_turnbrand" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_entrance_turnbrand_selector" android:contentDescription="本功能未支持，无障碍化建设中" />
+        <ImageView android:id="@id/qq_nearpeople_entrance_roaming" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_entrance_roaming_selector" android:contentDescription="漫游按钮" />
+    </com.tencent.mobileqq.widget.ExpandableEntranceLayout>
+    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:layout_gravity="bottom|center|right" android:id="@id/qq_nearpeople_entrance_roaming_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="184.0dip" android:text="漫游" />
+    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:layout_gravity="bottom|center|right" android:id="@id/qq_nearpeople_entrance_turnbrand_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="100.0dip" android:text="@string/nearpeople_turnbrand_title" />
+    <TextView android:layout_gravity="bottom|center|right" android:id="@id/qq_nearpeople_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="60.0dip" style="@style/CustomNoteTxt" />
+</FrameLayout>

@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/mv6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@drawable/bi6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <FrameLayout android:id="@id/mv4" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="320.0dip" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
-            <TextView android:textSize="14.0sp" android:textColor="@color/al_" android:layout_gravity="center_horizontal" android:id="@id/mva" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="拖动蓝框截取封面" android:alpha="0.35" />
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/mv9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="51.0dip" android:text="00:00" />
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="69.0dip">
-                <com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout android:id="@id/mv8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <android.support.v7.widget.RecyclerView android:id="@id/mv_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:foreground="@color/fw" />
-                    <ImageView android:id="@id/mv5" android:background="@drawable/bjc" android:padding="3.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
-                </com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout>
-                <com.tencent.biz.pubaccount.readinjoy.view.VideoMeasureScaleView android:id="@id/mv7" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginTop="6.0dip" />
-            </LinearLayout>
-        </FrameLayout>
-    </LinearLayout>
+    <com.tencent.mobileqq.widget.QQBlurView android:id="@id/ac8" android:layout_width="fill_parent" android:layout_height="107.0dip" />
+    <FrameLayout android:id="@id/ljj" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="107.0dip">
+        <Button android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_gravity="center_horizontal" android:id="@id/lgr" android:background="@drawable/b9l" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="13.0dip" android:text="@string/x8b" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ljh" android:background="@drawable/b9n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="12.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/lip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bi8" />
+            <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/x8c" android:includeFontPadding="false" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="18.0dip">
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/lbi" android:background="@drawable/bi5" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="6.0dip" android:checked="false" android:button="@null" />
+            <TextView android:textSize="@dimen/ayk" android:textColor="#ff999999" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x8a" />
+            <TextView android:textSize="@dimen/ayk" android:textColor="#ff0099ff" android:id="@id/qr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x8f" />
+        </LinearLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/ldf" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="78.0dip">
+        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Space style="@style/abs" />
+            <ImageView android:id="@id/lob" android:background="@drawable/bjc" android:layout_width="@dimen/bd8" android:layout_height="@dimen/bd8" />
+            <Space style="@style/abs" />
+            <View android:background="#ffe3e5e8" android:layout_width="0.5dip" android:layout_height="48.0dip" />
+            <Space style="@style/abs" />
+            <ImageView android:id="@id/lnp" android:layout_width="@dimen/bd8" android:layout_height="@dimen/bd8" android:src="@drawable/bjt" />
+            <Space style="@style/abs" />
+            <View android:background="#ffe3e5e8" android:layout_width="0.5dip" android:layout_height="48.0dip" />
+            <Space style="@style/abs" />
+            <ImageView android:id="@id/lck" android:layout_width="@dimen/bd8" android:layout_height="@dimen/bd8" android:src="@drawable/bj4" />
+            <Space style="@style/abs" />
+        </LinearLayout>
+    </FrameLayout>
 </FrameLayout>

@@ -1,73 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import a.f.b.j;
-import a.l;
-import android.os.Build.VERSION;
-import org.json.JSONObject;
-
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxaSharedKT;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxConfigPart;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "TAG", "", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "generatePreloadConfig", "generateWxConfig", "injectWxConfig", "__wxConfig", "callback", "Landroid/webkit/ValueCallback;", "put", "obj", "key", "val", "", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "scheduleToUiThreadDelayed", "delayMs", "", "luggage-wxa-app_release"})
-public abstract class i
-  extends d
-  implements h
+public abstract interface i
 {
-  private final String TAG = "AppBrandComponentWxaSharedKT";
+  public abstract void a(b paramb);
   
-  public final void A(Runnable paramRunnable)
+  public abstract void a(c paramc);
+  
+  public abstract void a(d paramd);
+  
+  public abstract void b(b paramb);
+  
+  public abstract void b(c paramc);
+  
+  public abstract void b(d paramd);
+  
+  public static abstract interface a
   {
-    com.tencent.mm.plugin.appbrand.i locali = getRuntime();
-    if (locali != null) {
-      locali.A(paramRunnable);
-    }
+    public abstract boolean onBackPressed();
   }
   
-  public JSONObject auh()
+  public static abstract interface b
   {
-    JSONObject localJSONObject = new JSONObject();
-    e(localJSONObject);
-    b(localJSONObject, "preload", Boolean.TRUE);
-    return localJSONObject;
+    public abstract void onBackground();
   }
   
-  public final void b(JSONObject paramJSONObject, String paramString, Object paramObject)
+  public static abstract interface c
   {
-    j.q(paramJSONObject, "obj");
-    j.q(paramString, "key");
-    try
-    {
-      paramJSONObject.put(paramString, paramObject);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      com.tencent.luggage.g.d.printErrStackTrace(this.TAG, (Throwable)paramJSONObject, "put with key(" + paramString + ')', new Object[0]);
-    }
+    public abstract void onDestroy();
   }
   
-  public void e(JSONObject paramJSONObject)
+  public static abstract interface d
   {
-    j.q(paramJSONObject, "config");
-    b(paramJSONObject, "platform", "android");
-    b(paramJSONObject, "system", "Android " + Build.VERSION.RELEASE);
+    public abstract void onForeground();
   }
   
-  public final void k(Runnable paramRunnable, long paramLong)
+  public static abstract interface e
   {
-    com.tencent.mm.plugin.appbrand.i locali = getRuntime();
-    if (locali != null) {
-      locali.k(paramRunnable, paramLong);
-    }
+    public abstract void arj();
   }
   
-  public JSONObject wE()
+  public static abstract interface f
   {
-    JSONObject localJSONObject = new JSONObject();
-    e(localJSONObject);
-    return localJSONObject;
+    public abstract void onReady();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i
  * JD-Core Version:    0.7.0.1
  */

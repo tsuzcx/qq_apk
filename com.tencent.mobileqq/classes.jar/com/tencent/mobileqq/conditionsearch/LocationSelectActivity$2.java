@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.conditionsearch;
 
 import android.os.Build.VERSION;
-import aohs;
 
-public class LocationSelectActivity$2
+class LocationSelectActivity$2
   implements Runnable
 {
   LocationSelectActivity$2(LocationSelectActivity paramLocationSelectActivity) {}
@@ -12,7 +11,7 @@ public class LocationSelectActivity$2
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.this$0.requestPermissions(new aohs(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      this.this$0.requestPermissions(new LocationSelectActivity.2.1(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
     LocationSelectActivity.a(this.this$0);
@@ -20,7 +19,7 @@ public class LocationSelectActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2
  * JD-Core Version:    0.7.0.1
  */

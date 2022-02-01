@@ -33,16 +33,20 @@ public class BatchGetUserInfoRequest
   
   public static INTERFACE.StBatchGetUserInfoRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StBatchGetUserInfoRsp localStBatchGetUserInfoRsp = new INTERFACE.StBatchGetUserInfoRsp();
+    Object localObject = new INTERFACE.StBatchGetUserInfoRsp();
     try
     {
-      localStBatchGetUserInfoRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStBatchGetUserInfoRsp;
+      ((INTERFACE.StBatchGetUserInfoRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BatchGetUserInfoRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("BatchGetUserInfoRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -55,7 +59,7 @@ public class BatchGetUserInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BatchGetUserInfoRequest
  * JD-Core Version:    0.7.0.1
  */

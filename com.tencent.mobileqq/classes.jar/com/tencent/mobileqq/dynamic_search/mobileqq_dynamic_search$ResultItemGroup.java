@@ -23,10 +23,11 @@ public final class mobileqq_dynamic_search$ResultItemGroup
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56 }, new String[] { "group_mask", "group_name", "result_items", "total_result_count", "more_url", "more_name", "group_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, null, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, ResultItemGroup.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56 }, new String[] { "group_mask", "group_name", "result_items", "total_result_count", "more_url", "more_name", "group_id" }, new Object[] { localInteger, localByteStringMicro1, null, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, localInteger }, ResultItemGroup.class);
   }
 }
 

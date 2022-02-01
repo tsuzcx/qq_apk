@@ -15,28 +15,28 @@ class UploadManager$6
   
   public Void run(ThreadPool.JobContext arg1)
   {
-    ArrayList localArrayList;
-    if (UploadManager.access$500().get() == -1L) {
-      localArrayList = new ArrayList();
-    }
-    synchronized (UploadManager.access$600(this.this$0))
+    if (UploadManager.access$500().get() == -1L)
     {
-      localArrayList.addAll(UploadManager.access$600(this.this$0).values());
-      if (!localArrayList.isEmpty())
+      ArrayList localArrayList = new ArrayList();
+      synchronized (UploadManager.access$600(this.this$0))
       {
-        Collections.sort(localArrayList);
-        ??? = (UploadJobContext)localArrayList.get(0);
-        if ((???.statusInfo().canRunning()) && (UploadManager.access$500().compareAndSet(-1L, ???.dbId()))) {
-          UploadManager.access$700(this.this$0).processor(???);
+        localArrayList.addAll(UploadManager.access$600(this.this$0).values());
+        if (!localArrayList.isEmpty())
+        {
+          Collections.sort(localArrayList);
+          ??? = (UploadJobContext)localArrayList.get(0);
+          if ((???.statusInfo().canRunning()) && (UploadManager.access$500().compareAndSet(-1L, ???.dbId()))) {
+            UploadManager.access$700(this.this$0).processor(???);
+          }
         }
       }
-      return null;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadManager.6
  * JD-Core Version:    0.7.0.1
  */

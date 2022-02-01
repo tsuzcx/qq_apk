@@ -20,11 +20,11 @@ import org.xml.sax.InputSource;
 public class TVKVideoInfoCheckTime
 {
   private static int CURRENT_HOST_URL_RETRY_MAX_COUNT = 3;
-  private static final String TAG = "MediaPlayerMgr[TVKVideoInfoCheckTime]";
+  public static final String TAG = "MediaPlayerMgr[TVKVideoInfoCheckTime]";
   private static TVKVideoInfoCheckTime mCheckTime;
-  public static long mElapsedRealTime;
-  public static String mRandKey;
-  public static long mServerTime = 0L;
+  public static long mElapsedRealTime = 0L;
+  public static String mRandKey = "";
+  public static long mServerTime;
   private ITVKHttpProcessor.ITVKHttpCallback mCheckTimeCb = new TVKVideoInfoCheckTime.1(this);
   private int mCurrentHostUrlRetryCount = 0;
   private boolean mIsSuccess = false;
@@ -33,31 +33,24 @@ public class TVKVideoInfoCheckTime
   private boolean mUseBkurl = false;
   private long mstartRequestMS = 0L;
   
-  static
-  {
-    mElapsedRealTime = 0L;
-    mRandKey = "";
-  }
-  
   private void executeRequest()
   {
-    if ((!this.mUseBkurl) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT)) {
-      if (this.mUseBkurl) {
-        break label129;
-      }
-    }
-    label129:
-    for (boolean bool = true;; bool = false)
+    boolean bool = this.mUseBkurl;
+    if ((!bool) && (this.mCurrentHostUrlRetryCount == CURRENT_HOST_URL_RETRY_MAX_COUNT))
     {
-      this.mUseBkurl = bool;
+      this.mUseBkurl = (bool ^ true);
       this.mCurrentHostUrlRetryCount = 0;
-      if (this.mCurrentHostUrlRetryCount >= CURRENT_HOST_URL_RETRY_MAX_COUNT) {
-        break;
-      }
-      this.mCurrentHostUrlRetryCount += 1;
+    }
+    int i = this.mCurrentHostUrlRetryCount;
+    if (i < CURRENT_HOST_URL_RETRY_MAX_COUNT)
+    {
+      this.mCurrentHostUrlRetryCount = (i + 1);
       this.mRetryTime += 1;
       Map localMap = getRequestParams();
-      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][checkTime] request time:" + this.mCurrentHostUrlRetryCount);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[VideoInfo][checkTime] request time:");
+      localStringBuilder.append(this.mCurrentHostUrlRetryCount);
+      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", localStringBuilder.toString());
       this.mstartRequestMS = SystemClock.elapsedRealtime();
       TVKVideoInfoHttpProcessor.getInstance().addToRequestQueue(this.mCurrentHostUrlRetryCount, getCheckTimeUrl(), localMap, getHeaders(), this.mCheckTimeCb);
       return;
@@ -67,19 +60,21 @@ public class TVKVideoInfoCheckTime
   
   private String getCheckTimeUrl()
   {
-    if (this.mUseBkurl) {}
-    for (String str1 = TVKVideoInfoEnum.CHECK_TIEM_BK_SERVER;; str1 = TVKVideoInfoEnum.CHECK_TIEM_SERVER)
-    {
-      String str2 = str1;
-      if (!this.mRetryWithoutHttps)
-      {
-        str2 = str1;
-        if (TVKVideoInfoConfig.getInstance().isEnableHttps()) {
-          str2 = str1.replaceFirst("http", "https");
-        }
-      }
-      return str2;
+    String str1;
+    if (this.mUseBkurl) {
+      str1 = TVKVideoInfoEnum.CHECK_TIEM_BK_SERVER;
+    } else {
+      str1 = TVKVideoInfoEnum.CHECK_TIEM_SERVER;
     }
+    String str2 = str1;
+    if (!this.mRetryWithoutHttps)
+    {
+      str2 = str1;
+      if (TVKVideoInfoConfig.getInstance().isEnableHttps()) {
+        str2 = str1.replaceFirst("http", "https");
+      }
+    }
+    return str2;
   }
   
   private Map<String, String> getHeaders()
@@ -115,24 +110,34 @@ public class TVKVideoInfoCheckTime
   {
     try
     {
-      Object localObject = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(paramString)));
-      paramString = ((Document)localObject).getElementsByTagName("s");
-      NodeList localNodeList = ((Document)localObject).getElementsByTagName("t");
-      localObject = ((Document)localObject).getElementsByTagName("rand");
-      if ((paramString.getLength() > 0) && (localNodeList.getLength() > 0) && (((NodeList)localObject).getLength() > 0) && (paramString.item(0).getFirstChild().getNodeValue().equals("o")))
+      Object localObject2 = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(paramString)));
+      paramString = ((Document)localObject2).getElementsByTagName("s");
+      localObject1 = ((Document)localObject2).getElementsByTagName("t");
+      localObject2 = ((Document)localObject2).getElementsByTagName("rand");
+      if ((paramString.getLength() > 0) && (((NodeList)localObject1).getLength() > 0) && (((NodeList)localObject2).getLength() > 0) && (paramString.item(0).getFirstChild().getNodeValue().equals("o")))
       {
-        mServerTime = TVKUtils.optLong(localNodeList.item(0).getFirstChild().getNodeValue(), 0L);
-        mRandKey = ((NodeList)localObject).item(0).getFirstChild().getNodeValue();
+        mServerTime = TVKUtils.optLong(((NodeList)localObject1).item(0).getFirstChild().getNodeValue(), 0L);
+        mRandKey = ((NodeList)localObject2).item(0).getFirstChild().getNodeValue();
         mElapsedRealTime = SystemClock.elapsedRealtime();
-        TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][TVKCGICheckTime]serverTime:" + mServerTime + " randKey:" + mRandKey + " elapsedRealTime:" + mElapsedRealTime);
+        paramString = new StringBuilder();
+        paramString.append("[VideoInfo][TVKCGICheckTime]serverTime:");
+        paramString.append(mServerTime);
+        paramString.append(" randKey:");
+        paramString.append(mRandKey);
+        paramString.append(" elapsedRealTime:");
+        paramString.append(mElapsedRealTime);
+        TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", paramString.toString());
         this.mIsSuccess = true;
         return true;
       }
+      return false;
     }
     catch (Exception paramString)
     {
-      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][checkTime]parse xml error:" + paramString.toString());
-      return false;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[VideoInfo][checkTime]parse xml error:");
+      ((StringBuilder)localObject1).append(paramString.toString());
+      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", ((StringBuilder)localObject1).toString());
     }
     return false;
   }
@@ -152,7 +157,7 @@ public class TVKVideoInfoCheckTime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoCheckTime
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,178 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.traceroute.b.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMProgressBar;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
 
 public class NetworkDiagnoseUI
   extends MMActivity
 {
-  private ak handler;
-  private TextView mBO;
-  private int oNy;
-  private final int tnH;
-  private int tnI;
-  private a tnJ;
-  private MMProgressBar tnK;
-  private ap tnL;
+  private TextView AmI;
+  private int Lbt;
+  private final int TRB;
+  private int TRC;
+  private a TRD;
+  private MMProgressBar TRE;
+  private MTimerHandler TRF;
+  private MMHandler handler;
   
   public NetworkDiagnoseUI()
   {
-    AppMethodBeat.i(26034);
-    this.tnH = 100;
-    this.oNy = 0;
-    this.tnI = 0;
-    this.tnL = new ap(new NetworkDiagnoseUI.1(this), true);
-    this.handler = new NetworkDiagnoseUI.2(this);
-    AppMethodBeat.o(26034);
+    AppMethodBeat.i(29717);
+    this.TRB = 100;
+    this.Lbt = 0;
+    this.TRC = 0;
+    this.TRF = new MTimerHandler(new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(29706);
+        NetworkDiagnoseUI.a(NetworkDiagnoseUI.this, NetworkDiagnoseUI.a(NetworkDiagnoseUI.this) + 1);
+        NetworkDiagnoseUI.b(NetworkDiagnoseUI.this, NetworkDiagnoseUI.b(NetworkDiagnoseUI.this));
+        if (NetworkDiagnoseUI.b(NetworkDiagnoseUI.this) < 100)
+        {
+          NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(NetworkDiagnoseUI.b(NetworkDiagnoseUI.this));
+          AppMethodBeat.o(29706);
+          return true;
+        }
+        NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(100);
+        AppMethodBeat.o(29706);
+        return false;
+      }
+    }, true);
+    this.handler = new MMHandler()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(29707);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(29707);
+          return;
+          if (NetworkDiagnoseUI.b(NetworkDiagnoseUI.this) < 95) {
+            NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(95);
+          }
+          NetworkDiagnoseUI.d(NetworkDiagnoseUI.this).hPd();
+          AppMethodBeat.o(29707);
+          return;
+          NetworkDiagnoseUI.e(NetworkDiagnoseUI.this);
+          if (NetworkDiagnoseUI.b(NetworkDiagnoseUI.this) < 95) {
+            NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(95);
+          }
+          NetworkDiagnoseUI.d(NetworkDiagnoseUI.this).hPd();
+          AppMethodBeat.o(29707);
+          return;
+          NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(100);
+          NetworkDiagnoseUI.a(NetworkDiagnoseUI.this, false);
+          AppMethodBeat.o(29707);
+          return;
+          NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(100);
+          NetworkDiagnoseUI.a(NetworkDiagnoseUI.this, true);
+        }
+      }
+    };
+    AppMethodBeat.o(29717);
   }
   
-  private void cKL()
+  private void hPi()
   {
-    AppMethodBeat.i(26040);
-    h.a(this, 2131298493, 2131298957, 2131297115, 2131297014, new NetworkDiagnoseUI.7(this), new NetworkDiagnoseUI.8(this));
-    AppMethodBeat.o(26040);
+    AppMethodBeat.i(29723);
+    k.a(this, R.l.gAu, R.l.gEk, R.l.app_yes, R.l.app_no, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(29716);
+        NetworkDiagnoseUI.e(NetworkDiagnoseUI.this);
+        NetworkDiagnoseUI.this.finish();
+        AppMethodBeat.o(29716);
+      }
+    }, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+    });
+    AppMethodBeat.o(29723);
   }
   
   public int getLayoutId()
   {
-    return 2130970355;
+    return R.i.gmw;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(26036);
-    this.mBO = ((TextView)findViewById(2131826531));
-    this.tnK = ((MMProgressBar)findViewById(2131826530));
-    this.tnK.setOnProgressChangedListener(new NetworkDiagnoseUI.3(this));
+    AppMethodBeat.i(29719);
+    this.AmI = ((TextView)findViewById(R.h.fUR));
+    this.TRE = ((MMProgressBar)findViewById(R.h.fFu));
+    this.TRE.setOnProgressChangedListener(new NetworkDiagnoseUI.3(this));
     setMMTitle("");
     setBackBtn(new NetworkDiagnoseUI.4(this));
-    new ak().postDelayed(new NetworkDiagnoseUI.5(this), 200L);
-    AppMethodBeat.o(26036);
+    new MMHandler().postDelayed(new NetworkDiagnoseUI.5(this), 200L);
+    AppMethodBeat.o(29719);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(26035);
+    AppMethodBeat.i(29718);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(26035);
+    AppMethodBeat.o(29718);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(26039);
+    AppMethodBeat.i(29722);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      cKL();
-      AppMethodBeat.o(26039);
+      hPi();
+      AppMethodBeat.o(29722);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(26039);
+    AppMethodBeat.o(29722);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(26037);
-    this.tnK.setAutoProgress(false);
+    AppMethodBeat.i(29720);
+    this.TRE.setAutoProgress(false);
     super.onPause();
-    AppMethodBeat.o(26037);
+    AppMethodBeat.o(29720);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(26038);
-    aw.aaz();
+    AppMethodBeat.i(29721);
+    bh.bCz();
     if (!c.isSDCardAvailable())
     {
-      t.ii(this);
-      AppMethodBeat.o(26038);
+      aa.j(this, null);
+      AppMethodBeat.o(29721);
       return;
     }
-    this.tnK.setAutoProgress(true);
+    this.TRE.setAutoProgress(true);
     super.onResume();
-    AppMethodBeat.o(26038);
+    AppMethodBeat.o(29721);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -115,7 +183,7 @@ public class NetworkDiagnoseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.widget.TabBarView;
 
 public class hhx
-  extends Handler
+  implements View.OnClickListener
 {
-  public hhx(TabBarView paramTabBarView) {}
+  public hhx(TabBarView paramTabBarView, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      TabBarView.a(this.a, 0.0F);
-      TabBarView.a(this.a, 0.1D);
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (TabBarView.a(this.a) < 1.0F)
-      {
-        TabBarView.a(this.a, 0.1D);
-        this.a.invalidate();
-        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
-      return;
-    }
-    TabBarView.a(this.a, 1.0F);
-    TabBarView.a(this.a, TabBarView.a(this.a), TabBarView.b(this.a));
-    TabBarView.a(this.a, TabBarView.b(this.a));
-    this.a.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

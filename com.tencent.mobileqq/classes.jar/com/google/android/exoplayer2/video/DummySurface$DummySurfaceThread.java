@@ -38,130 +38,117 @@ class DummySurface$DummySurfaceThread
   
   private void initInternal(int paramInt)
   {
-    boolean bool2 = true;
+    boolean bool2 = false;
     this.display = EGL14.eglGetDisplay(0);
-    Object localObject;
-    int[] arrayOfInt;
-    if (this.display != null)
-    {
+    if (this.display != null) {
       bool1 = true;
-      Assertions.checkState(bool1, "eglGetDisplay failed");
-      localObject = new int[2];
-      Assertions.checkState(EGL14.eglInitialize(this.display, (int[])localObject, 0, (int[])localObject, 1), "eglInitialize failed");
-      localObject = new EGLConfig[1];
-      arrayOfInt = new int[1];
-      if ((!EGL14.eglChooseConfig(this.display, new int[] { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12327, 12344, 12339, 4, 12344 }, 0, (EGLConfig[])localObject, 0, 1, arrayOfInt, 0)) || (arrayOfInt[0] <= 0) || (localObject[0] == null)) {
-        break label372;
-      }
-      bool1 = true;
-      label200:
-      Assertions.checkState(bool1, "eglChooseConfig failed");
-      arrayOfInt = localObject[0];
-      if (paramInt != 0) {
-        break label377;
-      }
-      localObject = new int[3];
-      Object tmp223_221 = localObject;
-      tmp223_221[0] = 12440;
-      Object tmp229_223 = tmp223_221;
-      tmp229_223[1] = 2;
-      Object tmp233_229 = tmp229_223;
-      tmp233_229[2] = 12344;
-      tmp233_229;
-      label240:
-      this.context = EGL14.eglCreateContext(this.display, arrayOfInt, EGL14.EGL_NO_CONTEXT, (int[])localObject, 0);
-      if (this.context == null) {
-        break label414;
-      }
-      bool1 = true;
-      label268:
-      Assertions.checkState(bool1, "eglCreateContext failed");
-      if (paramInt != 1) {
-        break label419;
-      }
-      localObject = EGL14.EGL_NO_SURFACE;
-      Assertions.checkState(EGL14.eglMakeCurrent(this.display, (EGLSurface)localObject, (EGLSurface)localObject, this.context), "eglMakeCurrent failed");
-      GLES20.glGenTextures(1, this.textureIdHolder, 0);
-      this.surfaceTexture = new SurfaceTexture(this.textureIdHolder[0]);
-      this.surfaceTexture.setOnFrameAvailableListener(this);
-      localObject = this.surfaceTexture;
-      if (paramInt == 0) {
-        break label552;
-      }
+    } else {
+      bool1 = false;
     }
-    label414:
-    label419:
-    label547:
-    label552:
-    for (boolean bool1 = bool2;; bool1 = false)
+    Assertions.checkState(bool1, "eglGetDisplay failed");
+    Object localObject = new int[2];
+    Assertions.checkState(EGL14.eglInitialize(this.display, (int[])localObject, 0, (int[])localObject, 1), "eglInitialize failed");
+    localObject = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    if ((EGL14.eglChooseConfig(this.display, new int[] { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12327, 12344, 12339, 4, 12344 }, 0, (EGLConfig[])localObject, 0, 1, arrayOfInt, 0)) && (arrayOfInt[0] > 0) && (localObject[0] != null)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkState(bool1, "eglChooseConfig failed");
+    arrayOfInt = localObject[0];
+    if (paramInt == 0)
     {
-      this.surface = new DummySurface(this, (SurfaceTexture)localObject, bool1, null);
-      return;
-      bool1 = false;
-      break;
-      label372:
-      bool1 = false;
-      break label200;
-      label377:
+      localObject = new int[3];
+      Object tmp233_231 = localObject;
+      tmp233_231[0] = 12440;
+      Object tmp239_233 = tmp233_231;
+      tmp239_233[1] = 2;
+      Object tmp243_239 = tmp239_233;
+      tmp243_239[2] = 12344;
+      tmp243_239;
+    }
+    else
+    {
       localObject = new int[5];
-      tmp384_382 = localObject;
-      tmp384_382[0] = 12440;
-      tmp390_384 = tmp384_382;
-      tmp390_384[1] = 2;
-      tmp394_390 = tmp390_384;
-      tmp394_390[2] = 12992;
-      tmp400_394 = tmp394_390;
-      tmp400_394[3] = 1;
-      tmp404_400 = tmp400_394;
-      tmp404_400[4] = 12344;
-      tmp404_400;
-      break label240;
+      Object tmp260_258 = localObject;
+      tmp260_258[0] = 12440;
+      Object tmp266_260 = tmp260_258;
+      tmp266_260[1] = 2;
+      Object tmp270_266 = tmp266_260;
+      tmp270_266[2] = 12992;
+      Object tmp276_270 = tmp270_266;
+      tmp276_270[3] = 1;
+      Object tmp280_276 = tmp276_270;
+      tmp280_276[4] = 12344;
+      tmp280_276;
+    }
+    this.context = EGL14.eglCreateContext(this.display, arrayOfInt, EGL14.EGL_NO_CONTEXT, (int[])localObject, 0);
+    if (this.context != null) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break label268;
+    }
+    Assertions.checkState(bool1, "eglCreateContext failed");
+    if (paramInt == 1)
+    {
+      localObject = EGL14.EGL_NO_SURFACE;
+    }
+    else
+    {
       if (paramInt == 2)
       {
         localObject = new int[7];
-        tmp432_430 = localObject;
-        tmp432_430[0] = 12375;
-        tmp438_432 = tmp432_430;
-        tmp438_432[1] = 1;
-        tmp442_438 = tmp438_432;
-        tmp442_438[2] = 12374;
-        tmp448_442 = tmp442_438;
-        tmp448_442[3] = 1;
-        tmp452_448 = tmp448_442;
-        tmp452_448[4] = 12992;
-        tmp458_452 = tmp452_448;
-        tmp458_452[5] = 1;
-        tmp462_458 = tmp458_452;
-        tmp462_458[6] = 12344;
-        tmp462_458;
-        label470:
-        this.pbuffer = EGL14.eglCreatePbufferSurface(this.display, arrayOfInt, (int[])localObject, 0);
-        if (this.pbuffer == null) {
-          break label547;
-        }
+        Object tmp352_350 = localObject;
+        tmp352_350[0] = 12375;
+        Object tmp358_352 = tmp352_350;
+        tmp358_352[1] = 1;
+        Object tmp362_358 = tmp358_352;
+        tmp362_358[2] = 12374;
+        Object tmp368_362 = tmp362_358;
+        tmp368_362[3] = 1;
+        Object tmp372_368 = tmp368_362;
+        tmp372_368[4] = 12992;
+        Object tmp378_372 = tmp372_368;
+        tmp378_372[5] = 1;
+        Object tmp382_378 = tmp378_372;
+        tmp382_378[6] = 12344;
+        tmp382_378;
       }
-      for (bool1 = true;; bool1 = false)
+      else
       {
-        Assertions.checkState(bool1, "eglCreatePbufferSurface failed");
-        localObject = this.pbuffer;
-        break;
         localObject = new int[5];
-        tmp517_515 = localObject;
-        tmp517_515[0] = 12375;
-        tmp523_517 = tmp517_515;
-        tmp523_517[1] = 1;
-        tmp527_523 = tmp523_517;
-        tmp527_523[2] = 12374;
-        tmp533_527 = tmp527_523;
-        tmp533_527[3] = 1;
-        tmp537_533 = tmp533_527;
-        tmp537_533[4] = 12344;
-        tmp537_533;
-        break label470;
+        Object tmp400_398 = localObject;
+        tmp400_398[0] = 12375;
+        Object tmp406_400 = tmp400_398;
+        tmp406_400[1] = 1;
+        Object tmp410_406 = tmp406_400;
+        tmp410_406[2] = 12374;
+        Object tmp416_410 = tmp410_406;
+        tmp416_410[3] = 1;
+        Object tmp420_416 = tmp416_410;
+        tmp420_416[4] = 12344;
+        tmp420_416;
       }
+      this.pbuffer = EGL14.eglCreatePbufferSurface(this.display, arrayOfInt, (int[])localObject, 0);
+      if (this.pbuffer != null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      Assertions.checkState(bool1, "eglCreatePbufferSurface failed");
+      localObject = this.pbuffer;
     }
+    Assertions.checkState(EGL14.eglMakeCurrent(this.display, (EGLSurface)localObject, (EGLSurface)localObject, this.context), "eglMakeCurrent failed");
+    GLES20.glGenTextures(1, this.textureIdHolder, 0);
+    this.surfaceTexture = new SurfaceTexture(this.textureIdHolder[0]);
+    this.surfaceTexture.setOnFrameAvailableListener(this);
+    localObject = this.surfaceTexture;
+    boolean bool1 = bool2;
+    if (paramInt != 0) {
+      bool1 = true;
+    }
+    this.surface = new DummySurface(this, (SurfaceTexture)localObject, bool1, null);
   }
   
   private void releaseInternal()
@@ -173,15 +160,18 @@ class DummySurface$DummySurfaceThread
         this.surfaceTexture.release();
         GLES20.glDeleteTextures(1, this.textureIdHolder, 0);
       }
+      Object localObject1;
       return;
     }
     finally
     {
-      if (this.pbuffer != null) {
-        EGL14.eglDestroySurface(this.display, this.pbuffer);
+      Object localObject3 = this.pbuffer;
+      if (localObject3 != null) {
+        EGL14.eglDestroySurface(this.display, (EGLSurface)localObject3);
       }
-      if (this.context != null) {
-        EGL14.eglDestroyContext(this.display, this.context);
+      localObject3 = this.context;
+      if (localObject3 != null) {
+        EGL14.eglDestroyContext(this.display, (EGLContext)localObject3);
       }
       this.pbuffer = null;
       this.context = null;
@@ -197,172 +187,197 @@ class DummySurface$DummySurfaceThread
     // Byte code:
     //   0: aload_1
     //   1: getfield 154	android/os/Message:what	I
-    //   4: tableswitch	default:+28 -> 32, 1:+30->34, 2:+129->133, 3:+138->142
-    //   33: ireturn
-    //   34: aload_0
-    //   35: aload_1
-    //   36: getfield 157	android/os/Message:arg1	I
-    //   39: invokespecial 159	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:initInternal	(I)V
-    //   42: aload_0
-    //   43: monitorenter
-    //   44: aload_0
-    //   45: invokevirtual 164	java/lang/Object:notify	()V
-    //   48: aload_0
-    //   49: monitorexit
-    //   50: iconst_1
-    //   51: ireturn
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
+    //   4: istore_2
+    //   5: iload_2
+    //   6: iconst_1
+    //   7: if_icmpeq +59 -> 66
+    //   10: iload_2
+    //   11: iconst_2
+    //   12: if_icmpeq +45 -> 57
+    //   15: iload_2
+    //   16: iconst_3
+    //   17: if_icmpeq +5 -> 22
+    //   20: iconst_1
+    //   21: ireturn
+    //   22: aload_0
+    //   23: invokespecial 156	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:releaseInternal	()V
+    //   26: aload_0
+    //   27: invokevirtual 160	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:quit	()Z
+    //   30: pop
+    //   31: iconst_1
+    //   32: ireturn
+    //   33: astore_1
+    //   34: goto +16 -> 50
+    //   37: astore_1
+    //   38: ldc 162
+    //   40: ldc 164
+    //   42: aload_1
+    //   43: invokestatic 170	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   46: pop
+    //   47: goto -21 -> 26
+    //   50: aload_0
+    //   51: invokevirtual 160	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:quit	()Z
+    //   54: pop
     //   55: aload_1
     //   56: athrow
-    //   57: astore_1
-    //   58: ldc 166
-    //   60: ldc 168
-    //   62: aload_1
-    //   63: invokestatic 174	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   66: pop
-    //   67: aload_0
-    //   68: aload_1
-    //   69: putfield 176	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:initException	Ljava/lang/RuntimeException;
-    //   72: aload_0
-    //   73: monitorenter
+    //   57: aload_0
+    //   58: getfield 115	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:surfaceTexture	Landroid/graphics/SurfaceTexture;
+    //   61: invokevirtual 173	android/graphics/SurfaceTexture:updateTexImage	()V
+    //   64: iconst_1
+    //   65: ireturn
+    //   66: aload_0
+    //   67: aload_1
+    //   68: getfield 176	android/os/Message:arg1	I
+    //   71: invokespecial 178	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:initInternal	(I)V
     //   74: aload_0
-    //   75: invokevirtual 164	java/lang/Object:notify	()V
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: iconst_1
-    //   81: ireturn
-    //   82: astore_1
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_1
-    //   86: athrow
-    //   87: astore_1
-    //   88: ldc 166
-    //   90: ldc 168
-    //   92: aload_1
-    //   93: invokestatic 174	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   96: pop
-    //   97: aload_0
+    //   75: monitorenter
+    //   76: aload_0
+    //   77: invokevirtual 183	java/lang/Object:notify	()V
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: iconst_1
+    //   83: ireturn
+    //   84: astore_1
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_1
+    //   88: athrow
+    //   89: astore_1
+    //   90: goto +63 -> 153
+    //   93: astore_1
+    //   94: ldc 162
+    //   96: ldc 185
     //   98: aload_1
-    //   99: putfield 178	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:initError	Ljava/lang/Error;
-    //   102: aload_0
-    //   103: monitorenter
-    //   104: aload_0
-    //   105: invokevirtual 164	java/lang/Object:notify	()V
+    //   99: invokestatic 170	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   102: pop
+    //   103: aload_0
+    //   104: aload_1
+    //   105: putfield 187	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:initError	Ljava/lang/Error;
     //   108: aload_0
-    //   109: monitorexit
-    //   110: iconst_1
-    //   111: ireturn
-    //   112: astore_1
-    //   113: aload_0
-    //   114: monitorexit
-    //   115: aload_1
-    //   116: athrow
-    //   117: astore_1
-    //   118: aload_0
-    //   119: monitorenter
-    //   120: aload_0
-    //   121: invokevirtual 164	java/lang/Object:notify	()V
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload_1
-    //   127: athrow
-    //   128: astore_1
-    //   129: aload_0
-    //   130: monitorexit
-    //   131: aload_1
-    //   132: athrow
+    //   109: monitorenter
+    //   110: aload_0
+    //   111: invokevirtual 183	java/lang/Object:notify	()V
+    //   114: aload_0
+    //   115: monitorexit
+    //   116: iconst_1
+    //   117: ireturn
+    //   118: astore_1
+    //   119: aload_0
+    //   120: monitorexit
+    //   121: aload_1
+    //   122: athrow
+    //   123: astore_1
+    //   124: ldc 162
+    //   126: ldc 185
+    //   128: aload_1
+    //   129: invokestatic 170	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   132: pop
     //   133: aload_0
-    //   134: getfield 107	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:surfaceTexture	Landroid/graphics/SurfaceTexture;
-    //   137: invokevirtual 181	android/graphics/SurfaceTexture:updateTexImage	()V
-    //   140: iconst_1
-    //   141: ireturn
-    //   142: aload_0
-    //   143: invokespecial 183	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:releaseInternal	()V
-    //   146: aload_0
-    //   147: invokevirtual 187	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:quit	()Z
-    //   150: pop
-    //   151: iconst_1
-    //   152: ireturn
-    //   153: astore_1
-    //   154: ldc 166
-    //   156: ldc 189
-    //   158: aload_1
-    //   159: invokestatic 174	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   162: pop
-    //   163: aload_0
-    //   164: invokevirtual 187	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:quit	()Z
-    //   167: pop
-    //   168: iconst_1
-    //   169: ireturn
-    //   170: astore_1
-    //   171: aload_0
-    //   172: invokevirtual 187	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:quit	()Z
-    //   175: pop
-    //   176: aload_1
-    //   177: athrow
+    //   134: aload_1
+    //   135: putfield 189	com/google/android/exoplayer2/video/DummySurface$DummySurfaceThread:initException	Ljava/lang/RuntimeException;
+    //   138: aload_0
+    //   139: monitorenter
+    //   140: aload_0
+    //   141: invokevirtual 183	java/lang/Object:notify	()V
+    //   144: aload_0
+    //   145: monitorexit
+    //   146: iconst_1
+    //   147: ireturn
+    //   148: astore_1
+    //   149: aload_0
+    //   150: monitorexit
+    //   151: aload_1
+    //   152: athrow
+    //   153: aload_0
+    //   154: monitorenter
+    //   155: aload_0
+    //   156: invokevirtual 183	java/lang/Object:notify	()V
+    //   159: aload_0
+    //   160: monitorexit
+    //   161: aload_1
+    //   162: athrow
+    //   163: astore_1
+    //   164: aload_0
+    //   165: monitorexit
+    //   166: goto +5 -> 171
+    //   169: aload_1
+    //   170: athrow
+    //   171: goto -2 -> 169
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	this	DummySurfaceThread
-    //   0	178	1	paramMessage	Message
+    //   0	174	0	this	DummySurfaceThread
+    //   0	174	1	paramMessage	Message
+    //   4	14	2	i	int
     // Exception table:
     //   from	to	target	type
-    //   44	50	52	finally
-    //   53	55	52	finally
-    //   34	42	57	java/lang/RuntimeException
-    //   74	80	82	finally
-    //   83	85	82	finally
-    //   34	42	87	java/lang/Error
-    //   104	110	112	finally
-    //   113	115	112	finally
-    //   34	42	117	finally
-    //   58	72	117	finally
-    //   88	102	117	finally
-    //   120	126	128	finally
-    //   129	131	128	finally
-    //   142	146	153	java/lang/Throwable
-    //   142	146	170	finally
-    //   154	163	170	finally
+    //   22	26	33	finally
+    //   38	47	33	finally
+    //   22	26	37	java/lang/Throwable
+    //   76	82	84	finally
+    //   85	87	84	finally
+    //   66	74	89	finally
+    //   94	108	89	finally
+    //   124	138	89	finally
+    //   66	74	93	java/lang/Error
+    //   110	116	118	finally
+    //   119	121	118	finally
+    //   66	74	123	java/lang/RuntimeException
+    //   140	146	148	finally
+    //   149	151	148	finally
+    //   155	161	163	finally
+    //   164	166	163	finally
   }
   
   public DummySurface init(int paramInt)
   {
-    int i = 0;
     start();
     this.handler = new Handler(getLooper(), this);
-    try
+    for (;;)
     {
-      this.handler.obtainMessage(1, paramInt, 0).sendToTarget();
-      paramInt = i;
-      while ((this.surface == null) && (this.initException == null))
+      try
       {
-        Error localError = this.initError;
-        if (localError != null) {
-          break;
-        }
-        try
+        localObject1 = this.handler;
+        int i = 0;
+        ((Handler)localObject1).obtainMessage(1, paramInt, 0).sendToTarget();
+        paramInt = i;
+        if ((this.surface == null) && (this.initException == null))
         {
-          wait();
+          localObject1 = this.initError;
+          if (localObject1 != null) {
+            break;
+          }
         }
-        catch (InterruptedException localInterruptedException)
-        {
-          paramInt = 1;
-        }
       }
-      if (paramInt != 0) {
-        Thread.currentThread().interrupt();
+      finally
+      {
+        Object localObject1;
+        continue;
+        throw localObject2;
+        continue;
       }
-      if (this.initException != null) {
-        throw this.initException;
+      try
+      {
+        wait();
       }
+      catch (InterruptedException localInterruptedException)
+      {
+        continue;
+      }
+      paramInt = 1;
     }
-    finally {}
-    if (this.initError != null) {
-      throw this.initError;
+    if (paramInt != 0) {
+      Thread.currentThread().interrupt();
     }
-    return this.surface;
+    localObject1 = this.initException;
+    if (localObject1 == null)
+    {
+      localObject1 = this.initError;
+      if (localObject1 == null) {
+        return this.surface;
+      }
+      throw ((Throwable)localObject1);
+    }
+    throw ((Throwable)localObject1);
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
@@ -377,7 +392,7 @@ class DummySurface$DummySurfaceThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.DummySurface.DummySurfaceThread
  * JD-Core Version:    0.7.0.1
  */

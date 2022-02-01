@@ -1,29 +1,37 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afyv;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qwallet.plugin.IQWalletHelper;
+import cooperation.qwallet.plugin.impl.QWalletHelperDelegate;
 
-public class QQWalletMsgItemBuilder$1
+class QQWalletMsgItemBuilder$1
   implements Runnable
 {
-  public QQWalletMsgItemBuilder$1(afyv paramafyv, int paramInt) {}
+  QQWalletMsgItemBuilder$1(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder, int paramInt) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidContentContext == null) {}
-    while (QWalletHelper.isQWalletProcessExist(this.this$0.jdField_a_of_type_AndroidContentContext)) {
+    if (this.this$0.e == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(afyv.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.a);
+    if (!QWalletHelperDelegate.isQWalletProcessExist(this.this$0.e))
+    {
+      if (QLog.isColorLevel())
+      {
+        String str = QQWalletMsgItemBuilder.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("preload qwallet process by qqWalletMsg isTroop=");
+        localStringBuilder.append(this.a);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).preloadQWallet(this.this$0.d, 0, "qwallet_red");
     }
-    QWalletHelper.preloadQWallet(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "qwallet_red");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

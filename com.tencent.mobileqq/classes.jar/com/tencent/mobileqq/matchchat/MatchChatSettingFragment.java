@@ -2,7 +2,6 @@ package com.tencent.mobileqq.matchchat;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,36 +9,47 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import aqbe;
-import aqbl;
-import aqfk;
-import auav;
-import azqs;
-import bdin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.qqexpand.manager.IExpandLimitChatManager;
+import com.tencent.mobileqq.qqexpand.network.ExpandObserver;
+import com.tencent.mobileqq.qqexpand.network.IExpandHandler;
+import com.tencent.mobileqq.qqexpand.utils.IExpandReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 public class MatchChatSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private aqbl jdField_a_of_type_Aqbl = new auav(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private QQAppInterface a;
+  private FormSwitchItem b;
+  private Button c;
+  private ExpandObserver d = new MatchChatSettingFragment.1(this);
   
   private void a()
   {
-    boolean bool = aqfk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).booleanValue();
+    boolean bool = ((IExpandLimitChatManager)this.a.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER)).a(this.a);
     a(bool);
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "initDefaultValue chatSwitchOpen:" + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initDefaultValue chatSwitchOpen:");
+      localStringBuilder.append(bool);
+      QLog.i("MatchChatSettingFragment", 2, localStringBuilder.toString());
     }
-    ((aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    ((IExpandHandler)this.a.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).c(this.a.getCurrentUin());
   }
   
   private void a(View paramView)
@@ -47,92 +57,106 @@ public class MatchChatSettingFragment
     if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131373595));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373594));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.b = ((FormSwitchItem)paramView.findViewById(2131442494));
+    this.c = ((Button)paramView.findViewById(2131442493));
+    this.b.setOnCheckedChangeListener(this);
+    this.c.setOnClickListener(this);
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+    this.b.setOnCheckedChangeListener(null);
+    this.b.setChecked(paramBoolean);
+    this.b.setOnCheckedChangeListener(this);
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if ((getActivity().getAppRuntime() instanceof QQAppInterface))
+    if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      this.a = ((QQAppInterface)getBaseActivity().getAppRuntime());
+      paramLayoutInflater = this.a;
+      if (paramLayoutInflater != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aqbl);
+        paramLayoutInflater.addObserver(this.d);
         a(this.mContentView);
         a();
       }
     }
+    else
+    {
+      paramLayoutInflater = new StringBuilder();
+      paramLayoutInflater.append("error runtime?");
+      paramLayoutInflater.append(getQBaseActivity().getAppRuntime());
+      QLog.w("MatchChatSettingFragment", 1, paramLayoutInflater.toString());
+    }
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131562560;
+    return 2131629181;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
-    int i = 1;
-    if (paramCompoundButton == this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-    {
-      if (bdin.d(getActivity()))
+    if (paramCompoundButton == this.b.getSwitch()) {
+      if (NetworkUtil.isNetSupport(getBaseActivity()))
       {
-        ((aqbe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramBoolean);
+        ((IExpandHandler)this.a.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).b(this.a.getCurrentUin(), paramBoolean);
+        ReportController.b(this.a, "dc00898", "", "", "0X800A690", "0X800A690", paramBoolean ^ true, 0, "", "", "", "");
+        HashMap localHashMap = new HashMap();
+        String str;
         if (paramBoolean) {
-          i = 0;
+          str = "1";
+        } else {
+          str = "0";
         }
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A690", "0X800A690", i, 0, "", "", "", "");
+        localHashMap.put("ext_int1", str);
+        ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#message_setting_page#dnd_mode", true, -1L, -1L, localHashMap, true, true);
+      }
+      else
+      {
+        a(paramBoolean ^ true);
+        QQToast.makeText(getBaseActivity(), 2131892114, 0).show();
       }
     }
-    else {
-      return;
-    }
-    if (!paramBoolean) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      a(paramBoolean);
-      QQToast.a(getActivity(), 2131694780, 0).a();
-      return;
-    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (paramView.getId() == 2131442493) {
+      ThreadManagerV2.excute(new MatchChatSettingFragment.2(this), 16, null, true);
     }
-    ThreadManagerV2.excute(new MatchChatSettingFragment.2(this), 16, null, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public View onCreateCenterView()
+  protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131699469));
+    setTitle(getBaseActivity().getString(2131897002));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aqbl);
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this.d);
+    }
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("expose#message_setting_page#view", true, -1L, -1L, null, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatSettingFragment
  * JD-Core Version:    0.7.0.1
  */

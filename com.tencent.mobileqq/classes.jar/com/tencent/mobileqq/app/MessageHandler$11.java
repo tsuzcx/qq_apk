@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aujr;
-import bdhb;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.utils.FileUtils;
 
 class MessageHandler$11
   implements Runnable
@@ -10,12 +10,12 @@ class MessageHandler$11
   
   public void run()
   {
-    bdhb.a(aujr.a, true);
+    FileUtils.delete(AIOShareActionSheet.d, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.11
  * JD-Core Version:    0.7.0.1
  */

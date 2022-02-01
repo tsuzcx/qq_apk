@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import android.media.SoundPool;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class evm
-  implements View.OnClickListener
+class evm
+  implements Runnable
 {
-  public evm(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  evm(evl paramevl) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a("7");
-    VoipDialInterfaceActivity.a(this.a, '7');
-    if (VoipDialInterfaceActivity.b(this.a)) {
-      new Thread(new evn(this)).start();
-    }
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.g(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
   }
 }
 

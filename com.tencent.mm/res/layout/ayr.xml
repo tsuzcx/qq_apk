@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:paddingTop="@dimen/m1" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/etw" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@drawable/b8" android:scaleType="fitCenter" android:contentDescription="@string/eta" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/etx" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@raw/album_wesee_icon_normal" android:scaleType="fitCenter" android:contentDescription="@string/etb" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ety" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@drawable/b2" android:scaleType="fitCenter" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/etz" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@drawable/b9" android:scaleType="fitCenter" />
-        </LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:src="@raw/ic_chat_list_empty" />
+        <TextView android:textSize="@dimen/aqj" android:textStyle="bold" android:textColor="@color/xo" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:text="@string/fd0" />
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

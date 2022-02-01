@@ -15,8 +15,13 @@ public class StreetViewParam
   public fn buildParameters()
   {
     fn localfn = new fn();
-    if (this.b != null) {
-      localfn.b("location", this.b.latitude + "," + this.b.longitude);
+    if (this.b != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b.latitude);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.b.longitude);
+      localfn.b("location", localStringBuilder.toString());
     }
     if (!TextUtils.isEmpty(this.c)) {
       localfn.b("poi", this.c);
@@ -24,8 +29,9 @@ public class StreetViewParam
     if (!TextUtils.isEmpty(this.a)) {
       localfn.b("id", this.a);
     }
-    if (this.d > 0) {
-      localfn.b("radius", String.valueOf(this.d));
+    int i = this.d;
+    if (i > 0) {
+      localfn.b("radius", String.valueOf(i));
     }
     return localfn;
   }
@@ -61,7 +67,7 @@ public class StreetViewParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.StreetViewParam
  * JD-Core Version:    0.7.0.1
  */

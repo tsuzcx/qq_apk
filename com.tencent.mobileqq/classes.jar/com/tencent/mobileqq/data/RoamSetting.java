@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 
+@KeepClassConstructor
 public class RoamSetting
-  extends awge
+  extends Entity
 {
   public static final String SETTING_REVISION = "setting_revision";
-  @awhs
+  @unique
   public String path;
   public String value;
   
@@ -21,18 +23,24 @@ public class RoamSetting
   
   public static int getIntValue(RoamSetting paramRoamSetting, int paramInt)
   {
-    if (paramRoamSetting == null) {}
-    while ((paramRoamSetting.value == null) || (paramRoamSetting.value.length() == 0)) {
+    if (paramRoamSetting == null) {
       return paramInt;
     }
-    try
+    String str = paramRoamSetting.value;
+    if (str != null)
     {
-      int i = Integer.parseInt(paramRoamSetting.value);
-      return i;
-    }
-    catch (Exception paramRoamSetting)
-    {
-      paramRoamSetting.printStackTrace();
+      if (str.length() == 0) {
+        return paramInt;
+      }
+      try
+      {
+        int i = Integer.parseInt(paramRoamSetting.value);
+        return i;
+      }
+      catch (Exception paramRoamSetting)
+      {
+        paramRoamSetting.printStackTrace();
+      }
     }
     return paramInt;
   }

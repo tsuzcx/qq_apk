@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/apm" android:layout_width="fill_parent" android:layout_height="@dimen/bz" android:layout_marginTop="@dimen/cd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/cly" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_centerVertical="true" android:importantForAccessibility="no" android:layout_marginStart="@dimen/cp" custom:radius="4.799988dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_toStartOf="@id/iv3" android:layout_toEndOf="@id/cly">
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/clz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:importantForAccessibility="yes" android:layout_marginStart="@dimen/cp" />
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginStart="@dimen/df">
+            <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center" android:id="@id/ium" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+            <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:ellipsize="end" android:layout_gravity="center" android:id="@id/clx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="167.0dip" android:maxLines="1" android:singleLine="true" android:importantForAccessibility="yes" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/iv3" android:background="@drawable/apn" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerVertical="true" android:contentDescription="@string/i4v" android:layout_marginEnd="@dimen/cd" android:layout_toStartOf="@id/iuz">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iv4" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:contentDescription="@string/i4v" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/iuz" android:background="@drawable/apn" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerVertical="true" android:contentDescription="@string/i56" android:layout_marginEnd="@dimen/cd" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iv0" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:contentDescription="@string/i56" />
+    </LinearLayout>
+</RelativeLayout>

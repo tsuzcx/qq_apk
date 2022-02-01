@@ -1,55 +1,82 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.m.k.c;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.kernel.c.c;
+import com.tencent.mm.kernel.c.d;
+import com.tencent.mm.kernel.c.d.a;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class ah
+  extends d
 {
-  private static k.c gSi;
-  private static k.c gSj;
+  private final Set<Class<? extends a>> qxx;
+  private volatile d.a qxy;
   
-  static
+  public ah()
   {
-    AppMethodBeat.i(129165);
-    gSi = new ah.1();
-    gSj = new ah.2();
-    AppMethodBeat.o(129165);
-  }
-  
-  public static k.c aun()
-  {
-    return gSi;
-  }
-  
-  public static k.c auo()
-  {
-    return gSj;
-  }
-  
-  private static Boolean aup()
-  {
-    AppMethodBeat.i(129162);
-    Object localObject = com.tencent.mm.sdk.platformtools.ah.dsR().getString("appbrandgame_open_wcwss", "");
-    if ((localObject != null) && (((String)localObject).equalsIgnoreCase("wcwss")))
+    AppMethodBeat.i(134622);
+    this.qxx = Collections.newSetFromMap(new ConcurrentHashMap());
+    super.a(new d.a()
     {
-      localObject = Boolean.TRUE;
-      AppMethodBeat.o(129162);
-      return localObject;
+      public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
+      {
+        AppMethodBeat.i(134621);
+        d.a locala = ah.b(ah.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousa);
+        }
+        AppMethodBeat.o(134621);
+      }
+      
+      public final void a(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134619);
+        ah.a(ah.this).add(paramAnonymousClass);
+        d.a locala = ah.b(ah.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134619);
+      }
+      
+      public final void b(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134620);
+        d.a locala = ah.b(ah.this);
+        if (locala != null) {
+          locala.b(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134620);
+      }
+    });
+    AppMethodBeat.o(134622);
+  }
+  
+  public final void a(d.a parama)
+  {
+    this.qxy = parama;
+  }
+  
+  public final void unregisterAll()
+  {
+    AppMethodBeat.i(134623);
+    Object localObject = new HashSet(this.qxx);
+    this.qxx.clear();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      super.ay((Class)((Iterator)localObject).next());
     }
-    if ((localObject != null) && (((String)localObject).equalsIgnoreCase("websocket")))
-    {
-      localObject = Boolean.FALSE;
-      AppMethodBeat.o(129162);
-      return localObject;
-    }
-    AppMethodBeat.o(129162);
-    return null;
+    AppMethodBeat.o(134623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ah
  * JD-Core Version:    0.7.0.1
  */

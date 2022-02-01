@@ -9,11 +9,11 @@ public final class GetResourceReqV2
   extends JceStruct
 {
   static ArrayList<GetResourceReqInfoV2> cache_vecResReqInfo = new ArrayList();
-  public byte cReqVer;
-  public int iAppid;
+  public byte cReqVer = 0;
+  public int iAppid = 0;
   public int iPluginType = 64;
   public String strModel = "";
-  public ArrayList<GetResourceReqInfoV2> vecResReqInfo;
+  public ArrayList<GetResourceReqInfoV2> vecResReqInfo = null;
   
   static
   {
@@ -45,8 +45,9 @@ public final class GetResourceReqV2
   {
     paramJceOutputStream.write(this.vecResReqInfo, 1);
     paramJceOutputStream.write(this.iPluginType, 2);
-    if (this.strModel != null) {
-      paramJceOutputStream.write(this.strModel, 3);
+    String str = this.strModel;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iAppid, 4);
     paramJceOutputStream.write(this.cReqVer, 5);
@@ -54,7 +55,7 @@ public final class GetResourceReqV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceReqV2
  * JD-Core Version:    0.7.0.1
  */

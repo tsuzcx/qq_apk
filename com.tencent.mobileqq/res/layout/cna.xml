@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/opr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/bg1">
+        <ImageView android:id="@id/opp" android:layout_width="@dimen/bgr" android:layout_height="@dimen/bgq" android:layout_marginTop="@dimen/bgy" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <ImageView android:id="@id/opt" android:layout_width="@dimen/bgr" android:layout_height="@dimen/bgq" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opp" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <ImageView android:id="@id/opq" android:layout_width="@dimen/bgu" android:layout_height="@dimen/bgs" android:layout_marginTop="@dimen/bgt" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opt" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <Button android:id="@id/ops" android:background="@android:color/transparent" android:layout_width="@dimen/bgw" android:layout_height="@dimen/bgw" android:layout_marginBottom="@dimen/bgv" android:layout_alignBottom="@id/opq" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/opn" android:layout_width="@dimen/bfu" android:layout_height="@dimen/bfu" android:layout_marginTop="@dimen/bgx" android:src="@drawable/grb" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opq" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center" android:id="@id/opl" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/bg1">
+        <ImageView android:id="@id/opk" android:layout_width="@dimen/bgu" android:layout_height="@dimen/bgs" android:layout_marginTop="@dimen/bgy" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <ImageView android:id="@id/opo" android:layout_width="@dimen/bfw" android:layout_height="@dimen/bfv" android:layout_marginTop="@dimen/bg2" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opk" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <TextView android:textSize="@dimen/bfz" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/opm" android:layout_width="@dimen/bg0" android:layout_height="@dimen/bfx" android:layout_marginTop="@dimen/bfy" android:text="@string/xeh" android:layout_below="@id/opo" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</FrameLayout>

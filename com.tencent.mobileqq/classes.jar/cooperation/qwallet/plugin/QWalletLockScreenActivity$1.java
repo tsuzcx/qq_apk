@@ -14,11 +14,12 @@ class QWalletLockScreenActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2)
     {
-    default: 
-      return;
-    case 9: 
+      if (i != 9) {
+        return;
+      }
       QWalletLockScreenActivity.access$000(this.this$0);
       return;
     }
@@ -28,7 +29,7 @@ class QWalletLockScreenActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLockScreenActivity.1
  * JD-Core Version:    0.7.0.1
  */

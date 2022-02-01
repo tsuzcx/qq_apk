@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rlCommenTitle" style="@style/title_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ivTitleName" style="@style/title_bar_title" />
+    <RelativeLayout android:id="@id/qb_troop_title_ani" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="0.0dip" android:layout_toRightOf="@id/ivTitleName" android:layout_centerVertical="true">
+        <ImageView android:id="@id/qb_troop_arrow_imageView" android:focusable="false" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="1.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <View android:id="@id/qb_troop_flagView" android:background="@null" android:visibility="invisible" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/skin_notification" android:gravity="center" android:id="@id/qb_troop_upload_num" android:background="@drawable/skin_tips_newmessage" android:layout_width="14.0dip" android:layout_height="17.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="20.0dip" android:text="6" android:singleLine="true" android:includeFontPadding="false" android:layout_alignTop="@id/qb_troop_flagView" android:layout_alignRight="@id/qb_troop_flagView" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/title_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="96.0dip" android:layout_marginBottom="5.0dip" android:layout_centerInParent="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/title_top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/title_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_below="@id/title_top" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+    <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeftButton" style="@style/title_bar_left_btn_2" />
+    <include android:id="@id/rl_title_right_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/qvip_pay_commen_title_rightview" />
+</RelativeLayout>

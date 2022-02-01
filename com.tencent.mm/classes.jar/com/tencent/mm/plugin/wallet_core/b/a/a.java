@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.wallet_core.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.b.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.wallet_core.model.aa;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,85 +18,99 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
+  private Map<String, String> Kvm;
+  public boolean VmI;
+  private Map<String, String> VmJ;
+  public v Vxt;
   public String mReqKey;
-  private Map<String, String> plK;
-  private Map<String, String> tVp;
   private String token;
   
-  public a(Authen paramAuthen)
+  public a(Authen paramAuthen, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(46483);
+    AppMethodBeat.i(69882);
     this.mReqKey = null;
     this.token = null;
-    this.plK = new HashMap();
-    this.tVp = new HashMap();
-    setPayInfo(paramAuthen.pVo, this.plK, this.tVp);
-    this.plK.put("flag", paramAuthen.bsY);
-    this.plK.put("bank_type", paramAuthen.poq);
-    this.plK.put("mobile_area", paramAuthen.ufm);
-    if (!bo.isNullOrNil(paramAuthen.ueW)) {
-      this.plK.put("passwd", paramAuthen.ueW);
+    this.Kvm = new HashMap();
+    this.VmJ = new HashMap();
+    setPayInfo(paramAuthen.Nxi, this.Kvm, this.VmJ);
+    this.Kvm.put("flag", paramAuthen.eQp);
+    this.Kvm.put("bank_type", paramAuthen.hAk);
+    this.Kvm.put("mobile_area", paramAuthen.VCP);
+    this.Kvm.put("session_id", paramString2);
+    if (!Util.isNullOrNil(paramAuthen.VCA)) {
+      this.Kvm.put("passwd", paramAuthen.VCA);
     }
-    if (!bo.isNullOrNil(paramAuthen.token)) {
-      this.plK.put("token", paramAuthen.token);
+    if (!Util.isNullOrNil(paramAuthen.token)) {
+      this.Kvm.put("token", paramAuthen.token);
     }
-    if (!bo.isNullOrNil(paramAuthen.tSv))
+    if (!Util.isNullOrNil(paramAuthen.VjF))
     {
-      g.RM();
-      p localp = new p(bo.a((Integer)g.RL().Ru().get(9, null), 0));
-      this.plK.put("import_code", paramAuthen.tSv);
-      this.plK.put("qqid", localp.toString());
-      if (paramAuthen.ueY > 0) {
-        this.plK.put("cre_type", paramAuthen.ueY);
+      h.baF();
+      paramString2 = new p(Util.nullAs((Integer)h.baE().ban().d(9, null), 0));
+      this.Kvm.put("import_code", paramAuthen.VjF);
+      this.Kvm.put("qqid", paramString2.toString());
+      if (paramAuthen.VCC > 0) {
+        this.Kvm.put("cre_type", paramAuthen.VCC);
       }
-      this.plK.put("bind_serailno", paramAuthen.por);
+      this.Kvm.put("bind_serailno", paramAuthen.MDt);
     }
-    if (!bo.isNullOrNil(paramAuthen.ufe))
+    if (!Util.isNullOrNil(paramAuthen.VCH))
     {
-      this.plK.put("first_name", paramAuthen.ufe);
-      this.plK.put("last_name", paramAuthen.uff);
-      this.plK.put("country", paramAuthen.country);
-      this.plK.put("area", paramAuthen.province);
-      this.plK.put("city", paramAuthen.city);
-      this.plK.put("address", paramAuthen.fBq);
-      this.plK.put("phone_number", paramAuthen.nLs);
-      this.plK.put("zip_code", paramAuthen.gKS);
-      this.plK.put("email", paramAuthen.dqF);
-      this.plK.put("language", aa.dsG());
+      this.Kvm.put("first_name", paramAuthen.VCH);
+      this.Kvm.put("last_name", paramAuthen.VCI);
+      this.Kvm.put("country", paramAuthen.country);
+      this.Kvm.put("area", paramAuthen.province);
+      this.Kvm.put("city", paramAuthen.city);
+      this.Kvm.put("address", paramAuthen.oDI);
+      this.Kvm.put("phone_number", paramAuthen.JFm);
+      this.Kvm.put("zip_code", paramAuthen.qhL);
+      this.Kvm.put("email", paramAuthen.kab);
+      this.Kvm.put("language", LocaleUtil.getApplicationLanguage());
     }
-    if (!bo.isNullOrNil(paramAuthen.ueu)) {
-      this.plK.put("true_name", paramAuthen.ueu);
+    if (!Util.isNullOrNil(paramAuthen.VBL)) {
+      this.Kvm.put("true_name", paramAuthen.VBL);
     }
-    if (!bo.isNullOrNil(paramAuthen.ueX)) {
-      this.plK.put("identify_card", paramAuthen.ueX);
+    if (!Util.isNullOrNil(paramAuthen.VCB)) {
+      this.Kvm.put("identify_card", paramAuthen.VCB);
     }
-    if (paramAuthen.ueY > 0) {
-      this.plK.put("cre_type", paramAuthen.ueY);
+    if (paramAuthen.VCC > 0) {
+      this.Kvm.put("cre_type", paramAuthen.VCC);
     }
-    if (!bo.isNullOrNil(paramAuthen.ubQ)) {
-      this.plK.put("mobile_no", paramAuthen.ubQ);
+    if (!Util.isNullOrNil(paramAuthen.VxX)) {
+      this.Kvm.put("mobile_no", paramAuthen.VxX);
     }
-    this.plK.put("bank_card_id", paramAuthen.ueZ);
-    if (!bo.isNullOrNil(paramAuthen.ufa)) {
-      this.plK.put("cvv2", paramAuthen.ufa);
+    this.Kvm.put("bank_card_id", paramAuthen.VCD);
+    if (!Util.isNullOrNil(paramAuthen.VCE)) {
+      this.Kvm.put("cvv2", paramAuthen.VCE);
     }
-    if (!bo.isNullOrNil(paramAuthen.ufb)) {
-      this.plK.put("valid_thru", paramAuthen.ufb);
+    if (!Util.isNullOrNil(paramAuthen.VCF)) {
+      this.Kvm.put("valid_thru", paramAuthen.VCF);
     }
-    if ((paramAuthen.bsY == 1) || (paramAuthen.bsY == 2))
+    if ((paramAuthen.eQp == 1) || (paramAuthen.eQp == 2))
     {
-      this.plK.put("creid_renewal", String.valueOf(paramAuthen.ueC));
-      this.plK.put("birth_date", paramAuthen.ueE);
-      this.plK.put("cre_expire_date", paramAuthen.ufn);
+      this.Kvm.put("creid_renewal", String.valueOf(paramAuthen.VBV));
+      this.Kvm.put("birth_date", paramAuthen.VCa);
+      this.Kvm.put("cre_expire_date", paramAuthen.VBW);
     }
-    if (x.dSp())
+    if (((paramAuthen.eQp == 2) || (paramAuthen.eQp == 5)) && (paramAuthen.VCQ == 1) && (!Util.isNullOrNil(paramAuthen.Vyh)))
     {
-      this.tVp.put("uuid_for_bindcard", x.dSr());
-      this.tVp.put("bindcard_scene", x.dSq());
+      this.Kvm.put("verify_user_token", "1");
+      this.Kvm.put("usertoken", paramAuthen.Vyh);
     }
-    setRequestData(this.plK);
-    setWXRequestData(this.tVp);
-    AppMethodBeat.o(46483);
+    if ((!Util.isNullOrNil(paramAuthen.VCR)) && (paramAuthen.VCR.isEmpty())) {
+      this.Kvm.put("checkpayjsapi_token", paramAuthen.VCR);
+    }
+    if (aa.jOO())
+    {
+      this.VmJ.put("uuid_for_bindcard", aa.getBindCardUuid());
+      this.VmJ.put("bindcard_scene", aa.jOP());
+    }
+    if (!Util.isNullOrNil(paramString1)) {
+      this.Kvm.put("has_underage_alert", paramString1);
+    }
+    setRequestData(this.Kvm);
+    setWXRequestData(this.VmJ);
+    AppMethodBeat.o(69882);
   }
   
   public final int getFuncId()
@@ -120,28 +135,30 @@ public final class a
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46485);
+    AppMethodBeat.i(69884);
     if (paramJSONObject != null)
     {
       this.mReqKey = paramJSONObject.optString("req_key");
       this.token = paramJSONObject.optString("token");
+      this.Vxt = v.ct(paramJSONObject);
     }
-    AppMethodBeat.o(46485);
+    AppMethodBeat.o(69884);
   }
   
   public final boolean resend()
   {
-    AppMethodBeat.i(46484);
+    AppMethodBeat.i(69883);
     super.resend();
-    this.plK.put("is_repeat_send", "1");
-    setRequestData(this.plK);
-    AppMethodBeat.o(46484);
+    this.Kvm.put("is_repeat_send", "1");
+    setRequestData(this.Kvm);
+    this.VmI = true;
+    AppMethodBeat.o(69883);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.b.a.a
  * JD-Core Version:    0.7.0.1
  */

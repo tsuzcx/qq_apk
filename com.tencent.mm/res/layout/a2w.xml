@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/r_" style="@style/nk">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/sg" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:layout_marginRight="@dimen/g2" />
-        <TextView android:layout_gravity="center_vertical" android:id="@id/nj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{tip}" android:layout_weight="1.0" style="@style/ln" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/g32" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/ahb" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/az8" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+    <include android:visibility="gone" layout="@layout/a2i" />
+</LinearLayout>

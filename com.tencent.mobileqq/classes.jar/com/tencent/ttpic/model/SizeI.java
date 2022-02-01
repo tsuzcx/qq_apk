@@ -15,15 +15,17 @@ public class SizeI
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (SizeI)paramObject;
-    } while ((this.width == paramObject.width) && (this.height == paramObject.height));
+      return (this.width == paramObject.width) && (this.height == paramObject.height);
+    }
     return false;
   }
   
@@ -34,12 +36,17 @@ public class SizeI
   
   public String toString()
   {
-    return "width = " + this.width + ", height = " + this.height;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("width = ");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height = ");
+    localStringBuilder.append(this.height);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.model.SizeI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class cyd
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cyd(NotificationActivity paramNotificationActivity) {}
+  public cyd(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    paramView = new Intent(this.a, QvipSpecialCarePersonActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "Special_remind", "Clk_special_remind", 80, 0, "", "", "", "");
+    PreferenceManager.getDefaultSharedPreferences(this.a).edit().putBoolean("spcial_care_qq_setting", false).commit();
+    NotifyPushSettingActivity.a(this.a).setRightIcon(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyd
  * JD-Core Version:    0.7.0.1
  */

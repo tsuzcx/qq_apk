@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.ar;
 
-import amxd;
-import ando;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
+import com.tencent.mobileqq.ar.arengine.ARReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -13,14 +12,14 @@ public class ARNativeBridge
   public static final int ANIMATION_TYPE_MAIN = 3;
   public static final int ANIMATION_TYPE_SWIPE_LEFT = 1;
   public static final int ANIMATION_TYPE_SWIPE_RIGHT = 2;
-  private static boolean globalInitialized;
-  private static boolean loadSoSuccess;
+  private static boolean globalInitialized = false;
+  private static boolean loadSoSuccess = false;
   private static boolean needCheckMd5 = true;
   public static int sIdCount;
-  public String basePath;
+  public String basePath = null;
   public int id;
   public ARGLSurfaceView mAttached;
-  public int mCurrentActiveId;
+  public int mCurrentActiveId = 0;
   public ARNativeBridge.ActionCallback sActionCallback;
   
   public ARNativeBridge()
@@ -38,56 +37,42 @@ public class ARNativeBridge
   
   private static boolean initSoEnvirontMent()
   {
-    boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = amxd.a("ArMapEngine836", needCheckMd5);
-    if (!bool3) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      needCheckMd5 = bool1;
-      if (bool3) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ARNativeBridge", 2, "native so is not exist!");
-      }
+    bool = ArNativeSoLoader.a("ArMapEngine836", needCheckMd5);
+    needCheckMd5 = bool ^ true;
+    if (!bool) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARNativeBridge", 2, "initSoEnvirontMent, globalInitialzed=" + globalInitialized);
-    }
-    if (!globalInitialized) {
+    if (!globalInitialized)
+    {
+      bool = true;
       globalInitialized = true;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        int i = amxd.a("ArMapEngine836");
-        if (i != 0) {
-          continue;
-        }
-        bool1 = bool2;
-        loadSoSuccess = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ARNativeBridge", 2, "initSoEnvirontMent, result=" + i);
-        }
+      if (ArNativeSoLoader.c("ArMapEngine836") != 0) {
+        break label116;
       }
-      catch (Throwable localThrowable)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ARNativeBridge", 2, "initSoEnvirontMent", localThrowable);
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
-      }
-      ando.a().f(System.currentTimeMillis() - l, loadSoSuccess);
-      return loadSoSuccess;
-      bool1 = false;
     }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        StringBuilder localStringBuilder;
+        continue;
+        bool = false;
+      }
+    }
+    loadSoSuccess = bool;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initSoEnvirontMent loadSoSuccess = ");
+      localStringBuilder.append(loadSoSuccess);
+      QLog.d("AREngine", 2, localStringBuilder.toString());
+    }
+    ARReport.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+    return loadSoSuccess;
   }
   
   public static boolean loadNativeLibrary()
@@ -113,24 +98,25 @@ public class ARNativeBridge
   
   public static void qqColorLog(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        do
-        {
+        if (paramInt != 3) {
           return;
-        } while (!QLog.isColorLevel());
-        QLog.d(paramString1, 2, paramString2);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.w(paramString1, 2, paramString2);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e(paramString1, 2, paramString2);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e(paramString1, 2, paramString2);
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.w(paramString1, 2, paramString2);
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
   }
   
   private static native void setAssetManager(AssetManager paramAssetManager, String paramString);
@@ -141,12 +127,22 @@ public class ARNativeBridge
   
   public void fNativeDoActionCallback(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine", 2, "fNativeDoActionCallback action=" + paramInt1 + ", params=" + paramString1 + ", callbackId=" + paramInt2 + ", result=" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fNativeDoActionCallback action=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", params=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", callbackId=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", result=");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("AREngine", 2, ((StringBuilder)localObject).toString());
     }
-    ARNativeBridge.ActionCallback localActionCallback = this.sActionCallback;
-    if (localActionCallback != null) {
-      localActionCallback.callback(paramInt1, paramString1, paramInt2, paramString2);
+    Object localObject = this.sActionCallback;
+    if (localObject != null) {
+      ((ARNativeBridge.ActionCallback)localObject).callback(paramInt1, paramString1, paramInt2, paramString2);
     }
   }
   
@@ -387,7 +383,7 @@ public class ARNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARNativeBridge
  * JD-Core Version:    0.7.0.1
  */

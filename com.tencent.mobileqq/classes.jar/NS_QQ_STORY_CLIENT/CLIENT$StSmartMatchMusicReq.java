@@ -30,14 +30,16 @@ public final class CLIENT$StSmartMatchMusicReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 49, 57, 64, 72, 81, 89, 96 }, new String[] { "extInfo", "videoBuff", "videoDuration", "dataType", "vecPicBuff", "fLat", "fLon", "videoType", "cameraType", "videoLat", "videoLon", "videoTime" }, new Object[] { null, localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Double.valueOf(0.0D), Double.valueOf(0.0D), Integer.valueOf(0), Integer.valueOf(0), Double.valueOf(0.0D), Double.valueOf(0.0D), Long.valueOf(0L) }, StSmartMatchMusicReq.class);
+    Double localDouble = Double.valueOf(0.0D);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 49, 57, 64, 72, 81, 89, 96 }, new String[] { "extInfo", "videoBuff", "videoDuration", "dataType", "vecPicBuff", "fLat", "fLon", "videoType", "cameraType", "videoLat", "videoLon", "videoTime" }, new Object[] { null, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localDouble, localDouble, localInteger, localInteger, localDouble, localDouble, Long.valueOf(0L) }, StSmartMatchMusicReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicReq
  * JD-Core Version:    0.7.0.1
  */

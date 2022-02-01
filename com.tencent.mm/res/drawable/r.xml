@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/pv" android:insetRight="@dimen/pv" android:insetTop="@dimen/pw" android:insetBottom="@dimen/pu"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <selector>
-        <item android:state_enabled="false" android:drawable="@drawable/aaw" />
-        <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/aaw" />
-        <item android:drawable="@drawable/aav" />
-    </selector>
-</inset>
+    <item android:state_pressed="true" android:drawable="@color/a1e" />
+    <item android:state_selected="true" android:drawable="@color/a1e" />
+    <item android:drawable="@color/al2" />
+</selector>

@@ -16,7 +16,7 @@ public class CdnLogic$GetCdnScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mars.cdn.CdnLogic.GetCdnScene
  * JD-Core Version:    0.7.0.1
  */

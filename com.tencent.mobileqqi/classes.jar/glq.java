@@ -1,63 +1,17 @@
-import com.tencent.mobileqq.subaccount.logic.SubAccountGetMessageControll;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
+import java.util.TimerTask;
 
-public class glq
-  implements Runnable
+class glq
+  extends TimerTask
 {
-  private Timer jdField_a_of_type_JavaUtilTimer = null;
-  byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  
-  private glq(SubAccountGetMessageControll paramSubAccountGetMessageControll) {}
-  
-  private void a(boolean paramBoolean)
-  {
-    paramBoolean = SubAccountGetMessageControll.b(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountGetMessageControll, paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "LoopCycleGetMessage.startGetMsg: isOK = " + paramBoolean);
-    }
-    if (!paramBoolean) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer.purge();
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
-      }
-      this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new glr(this), SubAccountGetMessageControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountGetMessageControll) * 1000L);
-      return;
-    }
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer.purge();
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
-      }
-      return;
-    }
-  }
+  glq(glp paramglp) {}
   
   public void run()
   {
-    try
-    {
-      a(false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "LoopCycleGetMessage.startGetMsg: start get msg");
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    glp.a(this.a, false);
   }
 }
 

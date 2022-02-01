@@ -8,32 +8,32 @@ import com.google.android.exoplayer2.h.t.c;
 public abstract class a
   implements t.c
 {
-  protected final g aBo;
-  public final j aQI;
-  public final Format aQJ;
-  public final int aQK;
-  public final Object aQL;
-  public final long aQM;
-  public final long aQN;
+  protected final g cLk;
+  public final j daF;
+  public final Format daG;
+  public final int daH;
+  public final Object daI;
+  public final long daJ;
+  public final long daK;
   public final int type;
   
   public a(g paramg, j paramj, int paramInt1, Format paramFormat, int paramInt2, Object paramObject, long paramLong1, long paramLong2)
   {
-    this.aBo = ((g)com.google.android.exoplayer2.i.a.checkNotNull(paramg));
-    this.aQI = ((j)com.google.android.exoplayer2.i.a.checkNotNull(paramj));
+    this.cLk = ((g)com.google.android.exoplayer2.i.a.checkNotNull(paramg));
+    this.daF = ((j)com.google.android.exoplayer2.i.a.checkNotNull(paramj));
     this.type = paramInt1;
-    this.aQJ = paramFormat;
-    this.aQK = paramInt2;
-    this.aQL = paramObject;
-    this.aQM = paramLong1;
-    this.aQN = paramLong2;
+    this.daG = paramFormat;
+    this.daH = paramInt2;
+    this.daI = paramObject;
+    this.daJ = paramLong1;
+    this.daK = paramLong2;
   }
   
-  public abstract long pt();
+  public abstract long To();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a.a
  * JD-Core Version:    0.7.0.1
  */

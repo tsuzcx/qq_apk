@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.book;
 
-import ahdq;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,8 +10,8 @@ import android.widget.ScrollView;
 public class ResizeLayout
   extends ScrollView
 {
-  private ahdq jdField_a_of_type_Ahdq;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean a = true;
+  private ResizeLayout.OnResizeListener b;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,7 +20,7 @@ public class ResizeLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -29,31 +28,31 @@ public class ResizeLayout
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (isInEditMode()) {}
-    for (;;)
-    {
+    if (isInEditMode()) {
       return;
-      super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-      if (paramInt2 > paramInt4) {}
-      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Ahdq != null; this.jdField_a_of_type_Boolean = true)
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
-        return;
-      }
+    }
+    super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (paramInt2 > paramInt4) {
+      this.a = false;
+    } else {
+      this.a = true;
+    }
+    if (this.b != null) {
+      new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnResizeListener(ahdq paramahdq)
+  public void setOnResizeListener(ResizeLayout.OnResizeListener paramOnResizeListener)
   {
-    this.jdField_a_of_type_Ahdq = paramahdq;
+    this.b = paramOnResizeListener;
   }
 }
 

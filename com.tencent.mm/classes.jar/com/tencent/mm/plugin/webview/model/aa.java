@@ -1,63 +1,73 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bpf;
-import com.tencent.mm.protocal.protobuf.bpg;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.webview.k.b;
+import com.tencent.mm.protocal.protobuf.ejg;
+import com.tencent.mm.protocal.protobuf.ejh;
+import java.util.LinkedList;
 
 public final class aa
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f eGj;
-  public final b rr;
+  private h mAY;
+  private final c rr;
+  private long startTime;
   
-  public aa(String paramString)
+  public aa(int paramInt1, String paramString, LinkedList<String> paramLinkedList, int paramInt2)
   {
-    AppMethodBeat.i(6637);
-    b.a locala = new b.a();
-    locala.fsX = new bpf();
-    locala.fsY = new bpg();
-    locala.uri = "/cgi-bin/mmbiz-bin/qrconnect_authorize";
-    locala.funcId = 2543;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((bpf)this.rr.fsV.fta).xvQ = paramString;
-    AppMethodBeat.o(6637);
+    AppMethodBeat.i(78924);
+    this.startTime = 0L;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ejg();
+    ((c.a)localObject).otF = new ejh();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/qrconnect_authorize_confirm";
+    ((c.a)localObject).funcId = 1137;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ejg)c.b.b(this.rr.otB);
+    ((ejg)localObject).abaP = paramInt1;
+    ((ejg)localObject).abaO = paramString;
+    ((ejg)localObject).abaQ = paramLinkedList;
+    ((ejg)localObject).ZqK = paramInt2;
+    AppMethodBeat.o(78924);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(6639);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6639);
+    AppMethodBeat.i(78926);
+    this.startTime = System.currentTimeMillis();
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(78926);
     return i;
   }
   
   public final int getType()
   {
-    return 2543;
+    return 1137;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(6638);
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(6638);
+    AppMethodBeat.i(78925);
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    b.XsD.bt(4, (int)(System.currentTimeMillis() - this.startTime), paramInt3);
+    AppMethodBeat.o(78925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.aa
  * JD-Core Version:    0.7.0.1
  */

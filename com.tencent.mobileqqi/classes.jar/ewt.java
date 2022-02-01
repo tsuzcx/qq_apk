@@ -1,14 +1,21 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
+import com.tencent.mobileqq.activity.voip.VoipHistoryInterface;
+import java.util.Comparator;
 
-class ewt
-  implements View.OnLongClickListener
+public class ewt
+  implements Comparator
 {
-  ewt(ews paramews) {}
+  public ewt(VoipHistoryInterface paramVoipHistoryInterface) {}
   
-  public boolean onLongClick(View paramView)
+  public int a(VoipHistoryAllType paramVoipHistoryAllType1, VoipHistoryAllType paramVoipHistoryAllType2)
   {
-    return false;
+    if (paramVoipHistoryAllType1.time > paramVoipHistoryAllType2.time) {
+      return -1;
+    }
+    if (paramVoipHistoryAllType1.time < paramVoipHistoryAllType2.time) {
+      return 1;
+    }
+    return 0;
   }
 }
 

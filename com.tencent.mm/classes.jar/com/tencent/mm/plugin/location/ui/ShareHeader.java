@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.location.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -9,78 +8,79 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
 import com.tencent.mm.ui.base.MMImageButton;
 
 public class ShareHeader
   extends LinearLayout
 {
+  private ViewGroup Kfh;
+  private MMImageButton Kfi;
+  private MMImageButton Kfj;
   private Context mContext;
-  private ViewGroup ocW;
-  private MMImageButton ocX;
-  private MMImageButton ocY;
   private TextView titleTv;
   
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(113486);
+    AppMethodBeat.i(55886);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(113486);
+    AppMethodBeat.o(55886);
   }
   
-  @TargetApi(11)
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113485);
+    AppMethodBeat.i(55885);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(113485);
+    AppMethodBeat.o(55885);
   }
   
   private void init()
   {
-    AppMethodBeat.i(113487);
-    View localView = View.inflate(this.mContext, 2130970722, this);
-    this.ocW = ((ViewGroup)localView.findViewById(2131826116));
-    this.ocX = ((MMImageButton)localView.findViewById(2131827759));
-    this.ocY = ((MMImageButton)localView.findViewById(2131827761));
-    this.titleTv = ((TextView)localView.findViewById(2131820680));
-    AppMethodBeat.o(113487);
+    AppMethodBeat.i(55887);
+    View localView = View.inflate(this.mContext, a.f.share_header, this);
+    this.Kfh = ((ViewGroup)localView.findViewById(a.e.header_bar));
+    this.Kfi = ((MMImageButton)localView.findViewById(a.e.title_left_button));
+    this.Kfj = ((MMImageButton)localView.findViewById(a.e.title_right_button));
+    this.titleTv = ((TextView)localView.findViewById(a.e.title));
+    AppMethodBeat.o(55887);
   }
   
   public ViewGroup getHeaderBar()
   {
-    return this.ocW;
+    return this.Kfh;
   }
   
   public void setOnLeftClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(113488);
-    this.ocX.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(113488);
+    AppMethodBeat.i(55888);
+    this.Kfi.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(55888);
   }
   
   public void setOnRightClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(113489);
-    this.ocY.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(113489);
+    AppMethodBeat.i(55889);
+    this.Kfj.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(55889);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(113490);
+    AppMethodBeat.i(55890);
     this.titleTv.setText(paramString);
-    AppMethodBeat.o(113490);
+    AppMethodBeat.o(55890);
   }
   
   public void setTitleColor(int paramInt)
   {
-    AppMethodBeat.i(113491);
+    AppMethodBeat.i(55891);
     this.titleTv.setTextColor(paramInt);
-    AppMethodBeat.o(113491);
+    AppMethodBeat.o(55891);
   }
 }
 

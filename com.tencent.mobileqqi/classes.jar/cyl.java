@@ -3,7 +3,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cyl
   implements CompoundButton.OnCheckedChangeListener
@@ -12,13 +11,12 @@ public class cyl
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    NotifyPushSettingActivity.e(this.a).setContentDescription("退出后仍接收消息通知");
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_receivemsg_whenexit_key", paramBoolean);
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_lock_screen_whenexit_key", paramBoolean);
     paramCompoundButton = this.a.b;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, "", "", "", "");
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, i, "", "", "", "");
       return;
     }
   }

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class MiniAppMidasPay$StMiniGetBalanceReq
   extends MessageMicro<StMiniGetBalanceReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 66, 74, 82, 88, 98 }, new String[] { "extInfo", "openid", "appid", "offer_id", "ts", "zone_id", "pf", "pfkey", "sig", "qq_sig", "sandbox_env", "openkey" }, new Object[] { null, "", "", "", Long.valueOf(0L), "", "", "", "", "", Long.valueOf(0L), "" }, StMiniGetBalanceReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appid = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBStringField offer_id = PBField.initString("");
@@ -23,10 +23,16 @@ public final class MiniAppMidasPay$StMiniGetBalanceReq
   public final PBStringField sig = PBField.initString("");
   public final PBInt64Field ts = PBField.initInt64(0L);
   public final PBStringField zone_id = PBField.initString("");
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 66, 74, 82, 88, 98 }, new String[] { "extInfo", "openid", "appid", "offer_id", "ts", "zone_id", "pf", "pfkey", "sig", "qq_sig", "sandbox_env", "openkey" }, new Object[] { null, "", "", "", localLong, "", "", "", "", "", localLong, "" }, StMiniGetBalanceReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_APP_PAY.MiniAppMidasPay.StMiniGetBalanceReq
  * JD-Core Version:    0.7.0.1
  */

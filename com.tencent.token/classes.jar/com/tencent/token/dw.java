@@ -1,238 +1,265 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.UserTask;
-import com.tencent.token.utils.w;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Typeface;
 
-public class dw
-  extends cf
+class dw
+  implements ds.a
 {
-  static dw a;
-  int b;
-  private final String c = "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2";
-  private final String d = "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt";
-  private int e;
-  private String f;
-  private String g;
-  private String h;
-  private String i;
-  private int j;
-  
-  public static dw a()
+  /* Error */
+  protected static Typeface a(Context paramContext, java.io.InputStream paramInputStream)
   {
-    if (a == null) {
-      a = new dw();
-    }
-    return a;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 26	com/tencent/token/dx:a	(Landroid/content/Context;)Ljava/io/File;
+    //   4: astore_0
+    //   5: aload_0
+    //   6: ifnonnull +5 -> 11
+    //   9: aconst_null
+    //   10: areturn
+    //   11: aload_0
+    //   12: aload_1
+    //   13: invokestatic 29	com/tencent/token/dx:a	(Ljava/io/File;Ljava/io/InputStream;)Z
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifne +10 -> 28
+    //   21: aload_0
+    //   22: invokevirtual 35	java/io/File:delete	()Z
+    //   25: pop
+    //   26: aconst_null
+    //   27: areturn
+    //   28: aload_0
+    //   29: invokevirtual 39	java/io/File:getPath	()Ljava/lang/String;
+    //   32: invokestatic 45	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   35: astore_1
+    //   36: aload_0
+    //   37: invokevirtual 35	java/io/File:delete	()Z
+    //   40: pop
+    //   41: aload_1
+    //   42: areturn
+    //   43: astore_1
+    //   44: aload_0
+    //   45: invokevirtual 35	java/io/File:delete	()Z
+    //   48: pop
+    //   49: aload_1
+    //   50: athrow
+    //   51: aload_0
+    //   52: invokevirtual 35	java/io/File:delete	()Z
+    //   55: pop
+    //   56: aconst_null
+    //   57: areturn
+    //   58: astore_1
+    //   59: goto -8 -> 51
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	62	0	paramContext	Context
+    //   0	62	1	paramInputStream	java.io.InputStream
+    //   16	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   11	17	43	finally
+    //   28	36	43	finally
+    //   11	17	58	java/lang/RuntimeException
+    //   28	36	58	java/lang/RuntimeException
   }
   
-  private void f()
+  private static <T> T a(T[] paramArrayOfT, int paramInt, a<T> parama)
   {
-    this.e = 0;
-    this.f = "";
-    this.g = "";
-    this.h = "";
-    this.i = "";
-    this.j = 0;
-  }
-  
-  public f a(int paramInt)
-  {
-    f();
-    f localf = new f();
-    Object localObject3 = do.a();
-    if (!((do)localObject3).a(localf)) {
-      return localf;
+    int i;
+    if ((paramInt & 0x1) == 0) {
+      i = 400;
+    } else {
+      i = 700;
     }
-    if (((do)localObject3).e() == null)
-    {
-      localf.b(103);
-      return localf;
+    int i1;
+    if ((paramInt & 0x2) != 0) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
-    Object localObject2 = ((do)localObject3).k();
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    int n = paramArrayOfT.length;
+    Object localObject = null;
+    paramInt = 0;
+    int k;
+    for (int j = 2147483647; paramInt < n; j = k)
     {
-      localObject1 = ((do)localObject3).r();
-      if (!((f)localObject1).b())
-      {
-        localf.a((f)localObject1);
-        return localf;
+      T ? = paramArrayOfT[paramInt];
+      int m = Math.abs(parama.b(?) - i);
+      if (parama.a(?) == i1) {
+        k = 0;
+      } else {
+        k = 1;
       }
-      localObject2 = ((do)localObject3).k();
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      m = m * 2 + k;
+      if (localObject != null)
       {
-        localf.b(103);
-        return localf;
-      }
-    }
-    boolean bool = w.a(RqdApplication.l(), "de.robv.android.xposed.installer");
-    long l = ((QQUser)localObject1).mUin;
-    if (bool) {}
-    for (int k = 1;; k = 0)
-    {
-      localObject1 = w.a(new Object[] { "uin", Long.valueOf(l), "action_type", Integer.valueOf(paramInt), "nosafe", Integer.valueOf(k) });
-      if (localObject1 != null) {
-        break;
-      }
-      localf.a(10000, "encrypt  failed");
-      return null;
-    }
-    localObject2 = "?aq_base_sid=" + ((do)localObject3).g() + "&data=" + (String)localObject1;
-    localObject1 = new gk();
-    h.b("&nosafe: " + bool);
-    localObject2 = c.e() + "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2" + (String)localObject2;
-    localObject3 = ((gk)localObject1).a((String)localObject2);
-    if (localObject3 == null)
-    {
-      localf.a(((gk)localObject1).a());
-      h.c("client request url: " + (String)localObject2 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
-    }
-    try
-    {
-      localObject1 = new JSONObject(new String((byte[])localObject3));
-      paramInt = ((JSONObject)localObject1).getInt("err");
-      if (paramInt != 0)
-      {
-        localObject1 = ((JSONObject)localObject1).getString("info");
-        localf.a(paramInt, (String)localObject1, (String)localObject1);
-        h.c("query2ndVerify, errcode: " + paramInt + ", info: " + (String)localObject1);
+        k = j;
+        if (j <= m) {}
       }
       else
       {
-        localObject1 = w.c(((JSONObject)localObject1).getString("data"));
-        if (localObject1 != null)
-        {
-          localObject1 = new JSONObject(new String((byte[])localObject1));
-          this.e = ((JSONObject)localObject1).getInt("need_2nd_verify");
-          if (this.e == 1)
-          {
-            this.f = ((JSONObject)localObject1).getString("verify_tips");
-            this.g = ((JSONObject)localObject1).getString("verify_input_tips");
-            this.h = ((JSONObject)localObject1).getString("cancel_btn_text");
-            this.i = ((JSONObject)localObject1).getString("confirm_btn_text");
-            this.j = ((JSONObject)localObject1).getInt("verify_type");
-          }
-          localf.c();
-        }
+        localObject = ?;
+        k = m;
       }
+      paramInt += 1;
     }
-    catch (JSONException localJSONException)
-    {
-      h.c("parse json failed: " + localJSONException.toString());
-      localf.a(10020, "JSONException:" + localJSONException.toString());
-      break label710;
-      localf.b(10022);
-      return localf;
-    }
-    catch (Exception localException)
-    {
-      h.c("unknown err: " + localException.toString());
-      localf.a(10021, "JSONException:" + localException.toString());
-    }
-    label710:
-    return localf;
+    return localObject;
   }
   
-  public f a(String paramString, int paramInt)
+  /* Error */
+  public Typeface a(Context paramContext, Resources paramResources, int paramInt1, java.lang.String paramString, int paramInt2)
   {
-    f localf = new f();
-    Object localObject1 = do.a();
-    if ((localObject1 == null) || (((do)localObject1).e() == null))
-    {
-      localf.b(110);
-      return localf;
-    }
-    int k = (int)(cx.c().s() / 1000L);
-    int m = cw.a + 1;
-    cw.a = m;
-    this.b = m;
-    Object localObject2 = a(do.a().c(), new String[] { "input_data", paramString, "op_time", String.valueOf(k), "seq_id", String.valueOf(this.b), "uin", String.valueOf(((do)localObject1).e().mUin), "verify_type", Integer.toString(this.j), "action_type", Integer.toString(paramInt) });
-    if (localObject2 == null)
-    {
-      localf.a(10000, "encrypt imei failed");
-      return localf;
-    }
-    paramString = new gk();
-    localObject1 = "?aq_base_sid=" + ((do)localObject1).g() + "&data=" + (String)localObject2;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt" + (String)localObject1;
-    localObject2 = paramString.a((String)localObject1);
-    if (localObject2 == null)
-    {
-      localf.a(paramString.a());
-      h.c("client request url: " + (String)localObject1 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
-    }
-    try
-    {
-      paramString = new JSONObject(new String((byte[])localObject2));
-      paramInt = paramString.getInt("err");
-      if (paramInt != 0)
-      {
-        paramString = paramString.getString("info");
-        localf.a(paramInt, paramString, paramString);
-        return localf;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      h.c("parse json failed: " + paramString.toString());
-      localf.a(10020, "JSONException:" + paramString.toString());
-      return localf;
-      paramInt = new JSONObject(new String(w.c(paramString.getString("data")))).getInt("seq_id");
-      if (this.b != paramInt)
-      {
-        localf.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + paramInt + ",right = " + this.b);
-        return localf;
-      }
-    }
-    catch (Exception paramString)
-    {
-      h.c("unknown err: " + paramString.toString());
-      localf.a(10021, "JSONException:" + paramString.toString());
-      return localf;
-    }
-    do.a().m();
-    localf.c();
-    return localf;
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 26	com/tencent/token/dx:a	(Landroid/content/Context;)Ljava/io/File;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnonnull +5 -> 11
+    //   9: aconst_null
+    //   10: areturn
+    //   11: aload_1
+    //   12: aload_2
+    //   13: iload_3
+    //   14: invokestatic 66	com/tencent/token/dx:a	(Ljava/io/File;Landroid/content/res/Resources;I)Z
+    //   17: istore 6
+    //   19: iload 6
+    //   21: ifne +10 -> 31
+    //   24: aload_1
+    //   25: invokevirtual 35	java/io/File:delete	()Z
+    //   28: pop
+    //   29: aconst_null
+    //   30: areturn
+    //   31: aload_1
+    //   32: invokevirtual 39	java/io/File:getPath	()Ljava/lang/String;
+    //   35: invokestatic 45	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   38: astore_2
+    //   39: aload_1
+    //   40: invokevirtual 35	java/io/File:delete	()Z
+    //   43: pop
+    //   44: aload_2
+    //   45: areturn
+    //   46: astore_2
+    //   47: aload_1
+    //   48: invokevirtual 35	java/io/File:delete	()Z
+    //   51: pop
+    //   52: aload_2
+    //   53: athrow
+    //   54: aload_1
+    //   55: invokevirtual 35	java/io/File:delete	()Z
+    //   58: pop
+    //   59: aconst_null
+    //   60: areturn
+    //   61: astore_2
+    //   62: goto -8 -> 54
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	this	dw
+    //   0	65	1	paramContext	Context
+    //   0	65	2	paramResources	Resources
+    //   0	65	3	paramInt1	int
+    //   0	65	4	paramString	java.lang.String
+    //   0	65	5	paramInt2	int
+    //   17	3	6	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   11	19	46	finally
+    //   31	39	46	finally
+    //   11	19	61	java/lang/RuntimeException
+    //   31	39	61	java/lang/RuntimeException
   }
   
-  public void a(int paramInt, Handler paramHandler)
+  public Typeface a(Context paramContext, dn.b paramb, Resources paramResources, int paramInt)
   {
-    if (paramHandler == null) {
-      return;
+    paramb = (dn.c)a(paramb.a, paramInt, new a() {});
+    if (paramb == null) {
+      return null;
     }
-    new dx(this, paramInt, paramHandler).c(new String[] { "" });
+    return ds.a(paramContext, paramResources, paramb.d, paramb.a, paramInt);
   }
   
-  public String b()
+  /* Error */
+  public Typeface a(Context paramContext, ek.b[] paramArrayOfb, int paramInt)
   {
-    return this.g;
+    // Byte code:
+    //   0: aload_2
+    //   1: arraylength
+    //   2: istore 4
+    //   4: aconst_null
+    //   5: astore 5
+    //   7: iload 4
+    //   9: ifgt +5 -> 14
+    //   12: aconst_null
+    //   13: areturn
+    //   14: aload_0
+    //   15: aload_2
+    //   16: iload_3
+    //   17: invokevirtual 96	com/tencent/token/dw:a	([Lcom/tencent/token/ek$b;I)Lcom/tencent/token/ek$b;
+    //   20: astore_2
+    //   21: aload_1
+    //   22: invokevirtual 102	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   25: aload_2
+    //   26: getfield 107	com/tencent/token/ek$b:a	Landroid/net/Uri;
+    //   29: invokevirtual 113	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   32: astore_2
+    //   33: aload_1
+    //   34: aload_2
+    //   35: invokestatic 115	com/tencent/token/dw:a	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
+    //   38: astore_1
+    //   39: aload_2
+    //   40: invokestatic 118	com/tencent/token/dx:a	(Ljava/io/Closeable;)V
+    //   43: aload_1
+    //   44: areturn
+    //   45: astore 5
+    //   47: aload_2
+    //   48: astore_1
+    //   49: aload 5
+    //   51: astore_2
+    //   52: goto +7 -> 59
+    //   55: astore_2
+    //   56: aload 5
+    //   58: astore_1
+    //   59: aload_1
+    //   60: invokestatic 118	com/tencent/token/dx:a	(Ljava/io/Closeable;)V
+    //   63: aload_2
+    //   64: athrow
+    //   65: aconst_null
+    //   66: astore_2
+    //   67: aload_2
+    //   68: invokestatic 118	com/tencent/token/dx:a	(Ljava/io/Closeable;)V
+    //   71: aconst_null
+    //   72: areturn
+    //   73: astore_1
+    //   74: goto -9 -> 65
+    //   77: astore_1
+    //   78: goto -11 -> 67
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	81	0	this	dw
+    //   0	81	1	paramContext	Context
+    //   0	81	2	paramArrayOfb	ek.b[]
+    //   0	81	3	paramInt	int
+    //   2	6	4	i	int
+    //   5	1	5	localObject1	Object
+    //   45	12	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   33	39	45	finally
+    //   21	33	55	finally
+    //   21	33	73	java/io/IOException
+    //   33	39	77	java/io/IOException
   }
   
-  public String c()
+  protected final ek.b a(ek.b[] paramArrayOfb, int paramInt)
   {
-    return this.f;
+    (ek.b)a(paramArrayOfb, paramInt, new a() {});
   }
   
-  public String d()
+  static abstract interface a<T>
   {
-    return this.h;
-  }
-  
-  public String e()
-  {
-    return this.i;
+    public abstract boolean a(T paramT);
+    
+    public abstract int b(T paramT);
   }
 }
 

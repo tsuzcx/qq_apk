@@ -14,13 +14,13 @@ import java.util.Map;
 
 public final class o
 {
-  private final Uri IG;
-  private final n Ss;
+  private final Uri Kv;
+  private final n Uh;
   
   private o(l paraml)
   {
-    this.IG = paraml.getUri();
-    this.Ss = b((l)paraml.freeze());
+    this.Kv = paraml.getUri();
+    this.Uh = b((l)paraml.freeze());
   }
   
   public static o a(l paraml)
@@ -33,7 +33,7 @@ public final class o
   
   private static n b(l paraml)
   {
-    if ((paraml.getData() == null) && (paraml.kv().size() > 0)) {
+    if ((paraml.getData() == null) && (paraml.kE().size() > 0)) {
       throw new IllegalArgumentException("Cannot create DataMapItem from a DataItem  that wasn't made with DataMapItem.");
     }
     if (paraml.getData() == null) {
@@ -42,7 +42,7 @@ public final class o
     try
     {
       localObject1 = new ArrayList();
-      j = paraml.kv().size();
+      j = paraml.kE().size();
       i = 0;
     }
     catch (dv localdv)
@@ -70,7 +70,7 @@ public final class o
     }
     if (i < j)
     {
-      localObject2 = (m)paraml.kv().get(Integer.toString(i));
+      localObject2 = (m)paraml.kE().get(Integer.toString(i));
       if (localObject2 == null)
       {
         localObject1 = String.valueOf(paraml);
@@ -79,9 +79,9 @@ public final class o
     }
   }
   
-  public final n kx()
+  public final n kG()
   {
-    return this.Ss;
+    return this.Uh;
   }
 }
 

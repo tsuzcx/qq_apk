@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bckv;
-
-public final class HWTroopUtils$2
+final class HWTroopUtils$2
   implements Runnable
 {
-  public HWTroopUtils$2(bckv parambckv, int paramInt) {}
+  HWTroopUtils$2(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bckv.a(this.jdField_a_of_type_Int);
+    this.a.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HWTroopUtils.2
  * JD-Core Version:    0.7.0.1
  */

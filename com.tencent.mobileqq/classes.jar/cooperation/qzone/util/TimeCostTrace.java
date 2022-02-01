@@ -19,8 +19,8 @@ public class TimeCostTrace
   public static final String TRACE_CODE_REFRESH_MORE = "101";
   public static HashMap<String, TimeCostTrace> map;
   public boolean isColdBoot;
-  public long mFirstTime;
-  public int sceneId;
+  public long mFirstTime = 0L;
+  public int sceneId = 0;
   private String tag;
   private Map<String, long[]> timeMap = new ConcurrentHashMap();
   
@@ -51,22 +51,24 @@ public class TimeCostTrace
   
   public static void removeTrace(String paramString)
   {
-    if (map == null) {}
-    TimeCostTrace localTimeCostTrace;
-    do
-    {
+    Object localObject = map;
+    if (localObject == null) {
       return;
-      localTimeCostTrace = (TimeCostTrace)map.get(paramString);
-    } while (localTimeCostTrace == null);
-    localTimeCostTrace.destroy();
-    map.remove(paramString);
+    }
+    localObject = (TimeCostTrace)((HashMap)localObject).get(paramString);
+    if (localObject != null)
+    {
+      ((TimeCostTrace)localObject).destroy();
+      map.remove(paramString);
+    }
   }
   
   public void destroy()
   {
-    if (this.timeMap != null)
+    Map localMap = this.timeMap;
+    if (localMap != null)
     {
-      this.timeMap.clear();
+      localMap.clear();
       this.mFirstTime = 0L;
       this.sceneId = 0;
       this.isColdBoot = false;
@@ -75,59 +77,71 @@ public class TimeCostTrace
   
   public String dumpStepCost()
   {
-    if ((this.timeMap == null) || (this.timeMap.size() <= 0)) {
-      return "";
-    }
-    Object localObject = new StringBuilder();
-    Iterator localIterator = this.timeMap.keySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.timeMap;
+    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
     {
-      String str = (String)localIterator.next();
-      long[] arrayOfLong = (long[])this.timeMap.get(str);
-      if (arrayOfLong != null)
+      localObject1 = new StringBuilder();
+      Object localObject2 = this.timeMap.keySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        ((StringBuilder)localObject).append(str).append(":");
-        if (arrayOfLong.length > 0)
+        localObject3 = (String)((Iterator)localObject2).next();
+        long[] arrayOfLong = (long[])this.timeMap.get(localObject3);
+        if (arrayOfLong != null)
         {
-          ((StringBuilder)localObject).append(arrayOfLong[0] - this.mFirstTime);
-          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject1).append((String)localObject3);
+          ((StringBuilder)localObject1).append(":");
+          if (arrayOfLong.length > 0)
+          {
+            ((StringBuilder)localObject1).append(arrayOfLong[0] - this.mFirstTime);
+            ((StringBuilder)localObject1).append(",");
+          }
+          if (arrayOfLong.length > 1) {
+            ((StringBuilder)localObject1).append(arrayOfLong[1] - this.mFirstTime);
+          }
+          ((StringBuilder)localObject1).append(";");
         }
-        if (arrayOfLong.length > 1) {
-          ((StringBuilder)localObject).append(arrayOfLong[1] - this.mFirstTime);
-        }
-        ((StringBuilder)localObject).append(";");
       }
+      localObject1 = ((StringBuilder)localObject1).substring(0, ((StringBuilder)localObject1).length() - 1);
+      localObject2 = this.tag;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("dump step cost detail:");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
+      return localObject1;
     }
-    localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1);
-    QLog.i(this.tag, 1, "dump step cost detail:" + (String)localObject);
-    return localObject;
+    return "";
   }
   
   public String dumpStepCostV2()
   {
-    if ((this.timeMap == null) || (this.timeMap.size() <= 0)) {
-      return "";
-    }
-    localJSONObject = new JSONObject();
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll(this.timeMap);
-    try
+    Object localObject = this.timeMap;
+    if (localObject != null)
     {
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        long[] arrayOfLong = (long[])localHashMap.get(str);
-        if ((arrayOfLong != null) && (arrayOfLong.length > 1)) {
-          localJSONObject.put(str, arrayOfLong[1] - arrayOfLong[0]);
-        }
+      if (((Map)localObject).size() <= 0) {
+        return "";
       }
-      return localJSONObject.toString();
+      localObject = new JSONObject();
+      HashMap localHashMap = new HashMap();
+      localHashMap.putAll(this.timeMap);
+      try
+      {
+        Iterator localIterator = localHashMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          long[] arrayOfLong = (long[])localHashMap.get(str);
+          if ((arrayOfLong != null) && (arrayOfLong.length > 1)) {
+            ((JSONObject)localObject).put(str, arrayOfLong[1] - arrayOfLong[0]);
+          }
+        }
+        return ((JSONObject)localObject).toString();
+      }
+      catch (Exception localException)
+      {
+        QZLog.d("qzone_launch", 4, "", localException);
+      }
     }
-    catch (Exception localException)
-    {
-      QZLog.d("qzone_launch", 4, "", localException);
-    }
+    return "";
   }
   
   public long getStepCost(String paramString)
@@ -157,19 +171,20 @@ public class TimeCostTrace
   
   public long getTimeCost()
   {
-    long l1;
-    if ((this.timeMap == null) || (this.mFirstTime <= 0L) || (this.sceneId < 0)) {
-      l1 = -1L;
-    }
-    long l2;
-    do
+    if ((this.timeMap != null) && (this.mFirstTime > 0L) && (this.sceneId >= 0))
     {
-      return l1;
-      l2 = currentTime() - this.mFirstTime;
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d(this.tag, 2, "getTimeCost:" + l2);
-    return l2;
+      long l = currentTime() - this.mFirstTime;
+      if (QLog.isColorLevel())
+      {
+        String str = this.tag;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTimeCost:");
+        localStringBuilder.append(l);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      return l;
+    }
+    return -1L;
   }
   
   public Map<String, long[]> getTimeMap()
@@ -199,66 +214,80 @@ public class TimeCostTrace
   
   public void startStep(String paramString, long paramLong)
   {
-    if (this.sceneId < 0) {}
-    do
+    if (this.sceneId < 0) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    long l = paramLong;
+    if (paramLong <= 0L) {
+      l = currentTime();
+    }
+    Object localObject2 = (long[])this.timeMap.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      do
-      {
-        return;
-      } while (TextUtils.isEmpty(paramString));
-      long l = paramLong;
-      if (paramLong <= 0L) {
-        l = currentTime();
-      }
-      long[] arrayOfLong2 = (long[])this.timeMap.get(paramString);
-      long[] arrayOfLong1 = arrayOfLong2;
-      if (arrayOfLong2 == null)
-      {
-        arrayOfLong1 = new long[5];
-        this.timeMap.put(paramString, arrayOfLong1);
-      }
-      arrayOfLong1[0] = l;
-      arrayOfLong1[2] = Thread.currentThread().getId();
-      arrayOfLong1[3] = Debug.threadCpuTimeNanos();
-    } while (!QLog.isColorLevel());
-    QLog.i(this.tag, 1, paramString + " start");
+      localObject1 = new long[5];
+      this.timeMap.put(paramString, localObject1);
+    }
+    localObject1[0] = l;
+    localObject1[2] = Thread.currentThread().getId();
+    localObject1[3] = Debug.threadCpuTimeNanos();
+    if (!QLog.isColorLevel()) {
+      return;
+    }
+    localObject1 = this.tag;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" start");
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
   }
   
   public void stopStep(String paramString)
   {
-    if (this.sceneId < 0) {}
-    long l2;
-    long l3;
-    long l1;
-    do
+    if (this.sceneId < 0) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    long l2 = currentTime();
+    Object localObject2 = (long[])this.timeMap.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      do
-      {
-        return;
-      } while (TextUtils.isEmpty(paramString));
-      l2 = currentTime();
-      long[] arrayOfLong2 = (long[])this.timeMap.get(paramString);
-      long[] arrayOfLong1 = arrayOfLong2;
-      if (arrayOfLong2 == null)
-      {
-        arrayOfLong1 = new long[5];
-        this.timeMap.put(paramString, arrayOfLong1);
-      }
-      arrayOfLong1[1] = l2;
-      arrayOfLong1[4] = Debug.threadCpuTimeNanos();
-      l3 = Thread.currentThread().getId();
+      localObject1 = new long[5];
+      this.timeMap.put(paramString, localObject1);
+    }
+    localObject1[1] = l2;
+    localObject1[4] = Debug.threadCpuTimeNanos();
+    long l1;
+    if (Thread.currentThread().getId() == localObject1[2]) {
+      l1 = localObject1[4] - localObject1[3];
+    } else {
       l1 = -1L;
-      if (l3 == arrayOfLong1[2]) {
-        l1 = arrayOfLong1[4] - arrayOfLong1[3];
-      }
-      l3 = arrayOfLong1[0];
-    } while ((!QLog.isColorLevel()) || (l3 <= 0L));
-    QLog.d(this.tag, 1, paramString + " stop, cpuTime(ns):" + l1 + " ,cost:" + (l2 - l3));
+    }
+    long l3 = localObject1[0];
+    if (!QLog.isColorLevel()) {
+      return;
+    }
+    if (l3 > 0L)
+    {
+      localObject1 = this.tag;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" stop, cpuTime(ns):");
+      ((StringBuilder)localObject2).append(l1);
+      ((StringBuilder)localObject2).append(" ,cost:");
+      ((StringBuilder)localObject2).append(l2 - l3);
+      QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.TimeCostTrace
  * JD-Core Version:    0.7.0.1
  */

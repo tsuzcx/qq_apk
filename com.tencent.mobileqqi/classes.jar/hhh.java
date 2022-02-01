@@ -1,38 +1,26 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.QLog;
 
 public class hhh
-  extends Handler
+  extends Toast
 {
-  public hhh(QQProgressNotifier paramQQProgressNotifier) {}
-  
-  public void handleMessage(Message paramMessage)
+  public hhh(Context paramContext)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
+    super(paramContext);
+  }
+  
+  public void show()
+  {
+    try
     {
-      do
-      {
-        return;
-      } while (paramMessage.what != 2);
-      this.a.a();
-    } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-    if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-    {
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.a.setResult(-1, paramMessage);
-    }
-    for (;;)
-    {
-      this.a.a.finish();
+      super.show();
       return;
-      this.a.a.setResult(-1);
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QQToast", 2, "", localThrowable);
     }
   }
 }

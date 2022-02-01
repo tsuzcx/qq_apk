@@ -78,7 +78,7 @@ public abstract class EmoticonPanelViewBinder
       localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903234, null);
       try
       {
-        ((ImageView)((View)localObject).findViewById(2131231702)).setImageResource(2130837629);
+        ((ImageView)((View)localObject).findViewById(2131231701)).setImageResource(2130837629);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {

@@ -1,13 +1,37 @@
 package com.tencent.mobileqq.dating;
 
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+
 class MsgBoxListActivity$5
   implements Runnable
 {
-  MsgBoxListActivity$5(MsgBoxListActivity paramMsgBoxListActivity) {}
+  MsgBoxListActivity$5(MsgBoxListActivity paramMsgBoxListActivity, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    this.this$0.c();
+    Object localObject = new Rect();
+    this.a.setEnabled(true);
+    this.a.getHitRect((Rect)localObject);
+    ((Rect)localObject).top -= this.b;
+    ((Rect)localObject).bottom += this.c;
+    ((Rect)localObject).left -= this.d;
+    ((Rect)localObject).right += this.e;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" bounds.top=");
+      localStringBuilder.append(((Rect)localObject).top);
+      localStringBuilder.append("bounds.bottom=");
+      localStringBuilder.append(((Rect)localObject).bottom);
+      QLog.d("TouchDelegate", 2, localStringBuilder.toString());
+    }
+    localObject = new TouchDelegate((Rect)localObject, this.a);
+    if (View.class.isInstance(this.a.getParent())) {
+      ((View)this.a.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    }
   }
 }
 

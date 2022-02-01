@@ -21,7 +21,7 @@ import java.io.InputStream;
 
 public final class b
 {
-  private static DisplayMetrics ajl = null;
+  private static DisplayMetrics amN = null;
   
   public static Bitmap a(Context paramContext, Bitmap paramBitmap, int paramInt)
   {
@@ -115,10 +115,10 @@ public final class b
     {
       try
       {
-        if (ajl == null) {
-          ajl = MMApplication.getContext().getResources().getDisplayMetrics();
+        if (amN == null) {
+          amN = MMApplication.getContext().getResources().getDisplayMetrics();
         }
-        paramConfig = ajl;
+        paramConfig = amN;
         int j = paramInt1;
         int i = paramInt2;
         if (paramInt1 > paramConfig.widthPixels)

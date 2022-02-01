@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afyu;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 
 class QQStoryItemBuilder$5
   implements Runnable
 {
-  QQStoryItemBuilder$5(QQStoryItemBuilder paramQQStoryItemBuilder, afyu paramafyu) {}
+  QQStoryItemBuilder$5(QQStoryItemBuilder paramQQStoryItemBuilder, QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(1);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.a();
+    QQStoryItemBuilder.QQStoryMsgHolder localQQStoryMsgHolder = this.a;
+    localQQStoryMsgHolder.C = true;
+    localQQStoryMsgHolder.x.setDrawStatus(1);
+    this.a.x.setVisibility(0);
+    this.a.x.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

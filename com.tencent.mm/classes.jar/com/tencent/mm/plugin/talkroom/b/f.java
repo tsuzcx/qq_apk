@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.talkroom.b;
 
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.m;
 
 public abstract class f
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  public abstract String cHO();
+  public abstract String hCL();
   
-  public abstract int cHP();
+  public abstract int hCM();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.b.f
  * JD-Core Version:    0.7.0.1
  */

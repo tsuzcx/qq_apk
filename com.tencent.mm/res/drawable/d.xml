@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/awc" />
-    <item android:state_pressed="true" android:drawable="@drawable/awc" />
-    <item android:state_selected="true" android:drawable="@drawable/awc" />
-    <item android:drawable="@drawable/awb" />
-</selector>
+<vector android:height="24.0dip" android:width="24.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt">
+    <path android:name="strike_through" android:pathData="@string/hgr" android:strokeColor="@android:color/white" android:strokeWidth="1.8" android:strokeLineCap="square" />
+    <group>
+        <clip-path android:name="eye_mask" android:pathData="@string/hgp" />
+        <path android:name="eye" android:fillColor="@android:color/white" android:pathData="@string/hgo" />
+    </group>
+</vector>

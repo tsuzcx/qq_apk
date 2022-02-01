@@ -4,16 +4,6 @@ import java.io.UnsupportedEncodingException;
 
 public class de
 {
-  static
-  {
-    if (!de.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      cF = bool;
-      return;
-    }
-  }
-  
   public static byte[] decode(String paramString, int paramInt)
   {
     return decode(paramString.getBytes(), paramInt);
@@ -27,15 +17,16 @@ public class de
   public static byte[] decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     de.b localb = new de.b(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localb.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
+    if (localb.a(paramArrayOfByte, paramInt1, paramInt2, true))
+    {
+      if (localb.jX == localb.jW.length) {
+        return localb.jW;
+      }
+      paramArrayOfByte = new byte[localb.jX];
+      System.arraycopy(localb.jW, 0, paramArrayOfByte, 0, localb.jX);
+      return paramArrayOfByte;
     }
-    if (localb.jX == localb.jW.length) {
-      return localb.jW;
-    }
-    paramArrayOfByte = new byte[localb.jX];
-    System.arraycopy(localb.jW, 0, paramArrayOfByte, 0, localb.jX);
-    return paramArrayOfByte;
+    throw new IllegalArgumentException("bad base-64");
   }
   
   public static byte[] encode(byte[] paramArrayOfByte, int paramInt)
@@ -47,52 +38,54 @@ public class de
   {
     de.c localc = new de.c(paramInt3, null);
     int i = paramInt2 / 3 * 4;
-    int j;
-    if (localc.kf)
+    boolean bool = localc.kf;
+    int j = 2;
+    int k;
+    if (bool)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
-      i = paramInt3;
-      if (localc.kg)
-      {
-        i = paramInt3;
-        if (paramInt2 > 0)
+    }
+    else
+    {
+      k = paramInt2 % 3;
+      paramInt3 = i;
+      if (k != 0) {
+        if (k != 1)
         {
-          j = (paramInt2 - 1) / 57;
-          if (!localc.kh) {
-            break label186;
+          if (k != 2) {
+            paramInt3 = i;
+          } else {
+            paramInt3 = i + 3;
           }
+        }
+        else {
+          paramInt3 = i + 2;
         }
       }
     }
-    label186:
-    for (i = 2;; i = 1)
+    i = paramInt3;
+    if (localc.kg)
     {
-      i = paramInt3 + i * (j + 1);
-      localc.jW = new byte[i];
-      localc.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((cF) || (localc.jX == i)) {
-        break label192;
-      }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
+      i = paramInt3;
+      if (paramInt2 > 0)
       {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
-        break;
+        k = (paramInt2 - 1) / 57;
+        if (localc.kh) {
+          i = j;
+        } else {
+          i = 1;
+        }
+        i = paramInt3 + (k + 1) * i;
       }
     }
-    label192:
+    localc.jW = new byte[i];
+    localc.a(paramArrayOfByte, paramInt1, paramInt2, true);
+    if ((!cF) && (localc.jX != i)) {
+      throw new AssertionError();
+    }
     return localc.jW;
   }
   
@@ -111,7 +104,7 @@ public class de
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.de
  * JD-Core Version:    0.7.0.1
  */

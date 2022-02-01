@@ -10,44 +10,43 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bhtc;
-import zja;
+import com.tencent.util.ViscousFluidInterpolator;
 
 public class AnimationView
   extends View
 {
-  float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 3;
-  long jdField_a_of_type_Long = 0L;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator = new AccelerateDecelerateInterpolator();
-  bhtc jdField_a_of_type_Bhtc = new bhtc();
-  private zja jdField_a_of_type_Zja;
+  private AnimationLister A;
+  private Rect B;
+  private Rect C;
+  private Rect D = new Rect();
+  private RectF E = new RectF();
+  private Rect F = new Rect();
   public boolean a;
-  float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 3;
-  private long jdField_b_of_type_Long;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  boolean jdField_b_of_type_Boolean = false;
-  float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long = 350L;
-  private Rect jdField_c_of_type_AndroidGraphicsRect;
-  boolean jdField_c_of_type_Boolean = false;
-  float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private Rect jdField_d_of_type_AndroidGraphicsRect;
-  boolean jdField_d_of_type_Boolean = true;
-  float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private Rect jdField_e_of_type_AndroidGraphicsRect;
-  private boolean jdField_e_of_type_Boolean;
-  private Rect jdField_f_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_f_of_type_Boolean;
-  private Rect g = new Rect();
+  ViscousFluidInterpolator b = new ViscousFluidInterpolator();
+  AccelerateDecelerateInterpolator c = new AccelerateDecelerateInterpolator();
+  boolean d = false;
+  boolean e = false;
+  boolean f = true;
+  long g = 0L;
+  float h;
+  float i;
+  float j;
+  float k;
+  float l;
+  Paint m = new Paint(6);
+  private int n = 3;
+  private int o = 3;
+  private long p;
+  private long q = 350L;
+  private boolean r;
+  private boolean s;
+  private Drawable t;
+  private Rect u;
+  private Rect v;
+  private Rect w;
+  private int x;
+  private int y;
+  private int z;
   
   public AnimationView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -56,337 +55,369 @@ public class AnimationView
   
   private void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_AndroidGraphicsRect = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.copyBounds();
-    this.g = new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.g);
+    this.g = System.currentTimeMillis();
+    this.d = true;
+    this.w = this.t.copyBounds();
+    this.F = new Rect(0, 0, this.t.getIntrinsicWidth(), this.t.getIntrinsicHeight());
+    this.t.setBounds(this.F);
   }
   
   private void a(Canvas paramCanvas)
   {
-    switch (this.jdField_a_of_type_Int)
+    int i1 = this.n;
+    if (i1 != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if ((this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_b_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+      if (i1 != 2)
       {
-        this.jdField_a_of_type_Int = 3;
-        this.jdField_e_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Zja != null) {
-          this.jdField_a_of_type_Zja.b();
+        if (i1 != 3) {
+          return;
         }
-        super.onDraw(paramCanvas);
-        return;
-      }
-      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Int = 2;
-      paramCanvas.save();
-    case 2: 
-      float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
-      if (f1 >= 1.0F) {
-        this.jdField_a_of_type_Int = 3;
-      }
-      f1 = Math.min(f1, 1.0F);
-      f1 = 1.0F - this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(f1);
-      Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
-      Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
-      int[] arrayOfInt = new int[2];
-      getLocationInWindow(arrayOfInt);
-      localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
-      int i = localRect2.width();
-      int j = localRect2.height();
-      float f2 = localRect1.width();
-      float f3 = localRect1.height();
-      float f4 = f2 / i;
-      float f5 = f3 / j;
-      paramCanvas.save();
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-        paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f5) * f1);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f2 = (i - j) / 2.0F;
-          paramCanvas.translate(-f2 * f1, 0.0F);
-          paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + f2 * f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * f2, localRect2.bottom - arrayOfInt[1]);
+        this.r = false;
+        localObject = this.A;
+        if (localObject != null) {
+          ((AnimationLister)localObject).g();
         }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        paramCanvas.save();
+        this.t.setBounds(this.v);
+        this.t.draw(paramCanvas);
         paramCanvas.restore();
-        invalidate();
-        return;
-        paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * (i - f2 / f5), localRect2.bottom - arrayOfInt[1]);
-        continue;
-        if (this.jdField_c_of_type_Int == 2)
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f4) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - (1.0F - f4) * f1);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            f2 = (j - i) / 2.0F;
-            paramCanvas.translate(0.0F, -f2 * f1);
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1] + f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * f2);
-          }
-          else
-          {
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * (j - f3 / f4));
-          }
-        }
-        else
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - f1 * (1.0F - f5));
-        }
+        this.t.setBounds(this.w);
       }
     }
-    this.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Zja != null) {
-      this.jdField_a_of_type_Zja.b();
+    else
+    {
+      if ((this.u == null) || (this.v == null) || (this.t == null)) {
+        break label890;
+      }
+      this.p = SystemClock.uptimeMillis();
+      this.n = 2;
+      paramCanvas.save();
     }
+    float f1 = (float)(SystemClock.uptimeMillis() - this.p) / (float)this.q;
+    if (f1 >= 1.0F) {
+      this.n = 3;
+    }
+    f1 = Math.min(f1, 1.0F);
+    f1 = 1.0F - this.c.getInterpolation(f1);
+    Object localObject = this.u;
+    Rect localRect = this.v;
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    localRect = new Rect(localRect.left + arrayOfInt[0], localRect.top + arrayOfInt[1], localRect.right + arrayOfInt[0], localRect.bottom + arrayOfInt[1]);
+    i1 = localRect.width();
+    int i2 = localRect.height();
+    float f2 = ((Rect)localObject).width();
+    float f3 = ((Rect)localObject).height();
+    float f4 = i1;
+    float f5 = f2 / f4;
+    float f6 = i2;
+    float f7 = f3 / f6;
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    int i3 = this.x;
+    if (i3 == 1)
+    {
+      paramCanvas.translate((((Rect)localObject).left - arrayOfInt[0] - (localRect.left - arrayOfInt[0]) * f7) * f1, (((Rect)localObject).top - arrayOfInt[1] - (localRect.top - arrayOfInt[1]) * f7) * f1);
+      f3 = 1.0F - (1.0F - f7) * f1;
+      paramCanvas.scale(f3, f3);
+      if (this.a)
+      {
+        f3 = (i1 - i2) / 2.0F;
+        paramCanvas.translate(-f3 * f1, 0.0F);
+        f2 = localRect.left - arrayOfInt[0];
+        f1 = f3 * f1;
+        paramCanvas.clipRect(f2 + f1, localRect.top - arrayOfInt[1], localRect.right - arrayOfInt[0] - f1, localRect.bottom - arrayOfInt[1]);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect.left - arrayOfInt[0], localRect.top - arrayOfInt[1], localRect.right - arrayOfInt[0] - (f4 - f2 / f7) * f1, localRect.bottom - arrayOfInt[1]);
+      }
+    }
+    else if (i3 == 2)
+    {
+      paramCanvas.translate((((Rect)localObject).left - arrayOfInt[0] - (localRect.left - arrayOfInt[0]) * f5) * f1, (((Rect)localObject).top - arrayOfInt[1] - (localRect.top - arrayOfInt[1]) * f5) * f1);
+      f2 = 1.0F - (1.0F - f5) * f1;
+      paramCanvas.scale(f2, f2);
+      if (this.a)
+      {
+        f4 = (i2 - i1) / 2.0F;
+        paramCanvas.translate(0.0F, -f4 * f1);
+        f2 = localRect.left - arrayOfInt[0];
+        f3 = localRect.top - arrayOfInt[1];
+        f1 = f4 * f1;
+        paramCanvas.clipRect(f2, f3 + f1, localRect.right - arrayOfInt[0], localRect.bottom - arrayOfInt[1] - f1);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect.left - arrayOfInt[0], localRect.top - arrayOfInt[1], localRect.right - arrayOfInt[0], localRect.bottom - arrayOfInt[1] - (f6 - f3 / f5) * f1);
+      }
+    }
+    else
+    {
+      paramCanvas.translate((((Rect)localObject).left - arrayOfInt[0] - (localRect.left - arrayOfInt[0]) * f5) * f1, (((Rect)localObject).top - arrayOfInt[1] - (localRect.top - arrayOfInt[1]) * f7) * f1);
+      paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f7) * f1);
+    }
+    this.t.setBounds(this.v);
+    this.t.draw(paramCanvas);
     paramCanvas.restore();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
+    invalidate();
+    return;
+    label890:
+    this.n = 3;
+    this.r = false;
+    localObject = this.A;
+    if (localObject != null) {
+      ((AnimationLister)localObject).g();
+    }
+    super.onDraw(paramCanvas);
   }
   
   private void b(Canvas paramCanvas)
   {
-    switch (this.jdField_b_of_type_Int)
+    int i1 = this.o;
+    if (i1 != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (i1 != 2)
       {
-        return;
-        if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_b_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
-          break;
+        if (i1 != 3) {
+          return;
         }
-        this.jdField_b_of_type_Int = 3;
-        this.jdField_f_of_type_Boolean = false;
-        super.onDraw(paramCanvas);
-      } while (this.jdField_a_of_type_Zja == null);
-      this.jdField_a_of_type_Zja.e();
-      return;
-      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_b_of_type_Int = 2;
-    case 2: 
-      float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
-      if (f1 >= 1.0F) {
-        this.jdField_b_of_type_Int = 3;
-      }
-      f1 = Math.min(f1, 1.0F);
-      f1 = this.jdField_a_of_type_Bhtc.getInterpolation(f1);
-      Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
-      Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
-      int[] arrayOfInt = new int[2];
-      getLocationInWindow(arrayOfInt);
-      localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
-      int i = localRect2.right - localRect2.left;
-      int j = localRect2.bottom - localRect2.top;
-      float f2 = localRect1.right - localRect1.left + this.jdField_d_of_type_Int;
-      float f3 = localRect1.bottom - localRect1.top + this.jdField_e_of_type_Int;
-      float f4 = f2 / i;
-      float f5 = f3 / j;
-      paramCanvas.save();
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.jdField_d_of_type_Int - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - this.jdField_e_of_type_Int - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-        paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f5) * f1);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f2 = (i - j) / 2.0F;
-          paramCanvas.translate(-f2 * f1, 0.0F);
-          paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + f2 * f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1 * f2, localRect2.bottom - arrayOfInt[1]);
+        paramCanvas = this.A;
+        if (paramCanvas != null) {
+          paramCanvas.j();
         }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        paramCanvas.restore();
-        invalidate();
-        return;
-        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.jdField_d_of_type_Int / (1.0F - (1.0F - f5) * f1) * f1, localRect2.top - arrayOfInt[1] + this.jdField_e_of_type_Int / (1.0F - (1.0F - f5) * f1) * f1, localRect2.right - arrayOfInt[0] - f1 * (i - f2 / f5), localRect2.bottom - arrayOfInt[1]);
-        continue;
-        if (this.jdField_c_of_type_Int == 2)
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.jdField_d_of_type_Int - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - this.jdField_e_of_type_Int - (localRect2.top - arrayOfInt[1]) * f4) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - (1.0F - f4) * f1);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            f2 = (j - i) / 2.0F;
-            paramCanvas.translate(0.0F, -f2 * f1);
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0], localRect2.top - arrayOfInt[1] + f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * f2);
-          }
-          else
-          {
-            paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.jdField_d_of_type_Int / (1.0F - (1.0F - f4) * f1) * f1, localRect2.top - arrayOfInt[1] + this.jdField_e_of_type_Int / (1.0F - (1.0F - f4) * f1) * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1 * (j - f3 / f4));
-          }
-        }
-        else
-        {
-          paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f4) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f5) * f1);
-          paramCanvas.scale(1.0F - (1.0F - f4) * f1, 1.0F - f1 * (1.0F - f5));
-        }
+        this.s = false;
+        this.t.setBounds(this.w);
       }
     }
-    if (this.jdField_a_of_type_Zja != null) {
-      this.jdField_a_of_type_Zja.e();
+    else
+    {
+      if ((this.u == null) || (this.v == null) || (this.t == null)) {
+        break label952;
+      }
+      this.p = SystemClock.uptimeMillis();
+      this.o = 2;
     }
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
+    float f1 = (float)(SystemClock.uptimeMillis() - this.p) / (float)this.q;
+    if (f1 >= 1.0F) {
+      this.o = 3;
+    }
+    f1 = Math.min(f1, 1.0F);
+    f1 = this.b.getInterpolation(f1);
+    Rect localRect1 = this.u;
+    Rect localRect2 = this.v;
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    localRect2 = new Rect(localRect2.left + arrayOfInt[0], localRect2.top + arrayOfInt[1], localRect2.right + arrayOfInt[0], localRect2.bottom + arrayOfInt[1]);
+    i1 = localRect2.right - localRect2.left;
+    int i2 = localRect2.bottom - localRect2.top;
+    float f2 = localRect1.right - localRect1.left + this.y;
+    float f3 = localRect1.bottom - localRect1.top + this.z;
+    float f4 = i1;
+    float f5 = f2 / f4;
+    float f6 = i2;
+    float f7 = f3 / f6;
+    paramCanvas.save();
+    int i3 = this.x;
+    if (i3 == 1)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.y - (localRect2.left - arrayOfInt[0]) * f7) * f1, (localRect1.top - arrayOfInt[1] - this.z - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      f3 = 1.0F - (1.0F - f7) * f1;
+      paramCanvas.scale(f3, f3);
+      if (this.a)
+      {
+        f3 = (i1 - i2) / 2.0F;
+        paramCanvas.translate(-f3 * f1, 0.0F);
+        f2 = localRect2.left - arrayOfInt[0];
+        f1 = f3 * f1;
+        paramCanvas.clipRect(f2 + f1, localRect2.top - arrayOfInt[1], localRect2.right - arrayOfInt[0] - f1, localRect2.bottom - arrayOfInt[1]);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.y / f3 * f1, localRect2.top - arrayOfInt[1] + this.z / f3 * f1, localRect2.right - arrayOfInt[0] - (f4 - f2 / f7) * f1, localRect2.bottom - arrayOfInt[1]);
+      }
+    }
+    else if (i3 == 2)
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - this.y - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - this.z - (localRect2.top - arrayOfInt[1]) * f5) * f1);
+      f2 = 1.0F - (1.0F - f5) * f1;
+      paramCanvas.scale(f2, f2);
+      if (this.a)
+      {
+        f4 = (i2 - i1) / 2.0F;
+        paramCanvas.translate(0.0F, -f4 * f1);
+        f2 = localRect2.left - arrayOfInt[0];
+        f3 = localRect2.top - arrayOfInt[1];
+        f1 = f4 * f1;
+        paramCanvas.clipRect(f2, f3 + f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - f1);
+      }
+      else
+      {
+        paramCanvas.clipRect(localRect2.left - arrayOfInt[0] + this.y / f2 * f1, localRect2.top - arrayOfInt[1] + this.z / f2 * f1, localRect2.right - arrayOfInt[0], localRect2.bottom - arrayOfInt[1] - (f6 - f3 / f5) * f1);
+      }
+    }
+    else
+    {
+      paramCanvas.translate((localRect1.left - arrayOfInt[0] - (localRect2.left - arrayOfInt[0]) * f5) * f1, (localRect1.top - arrayOfInt[1] - (localRect2.top - arrayOfInt[1]) * f7) * f1);
+      paramCanvas.scale(1.0F - (1.0F - f5) * f1, 1.0F - (1.0F - f7) * f1);
+    }
+    this.t.setBounds(this.v);
+    this.t.draw(paramCanvas);
+    paramCanvas.restore();
+    invalidate();
+    return;
+    label952:
+    this.o = 3;
+    this.s = false;
+    super.onDraw(paramCanvas);
+    paramCanvas = this.A;
+    if (paramCanvas != null) {
+      paramCanvas.j();
+    }
   }
   
   private void c(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    float f1;
-    if (this.jdField_a_of_type_Long > 0L)
+    if (this.g > 0L)
     {
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      this.jdField_e_of_type_Float = ((float)l / (float)this.jdField_c_of_type_Long);
-      if (!this.jdField_d_of_type_Boolean) {
-        break label468;
+      long l1 = System.currentTimeMillis() - this.g;
+      this.l = ((float)l1 / (float)this.q);
+      if (this.f) {
+        this.l = this.c.getInterpolation(this.l);
+      } else {
+        this.l = this.b.getInterpolation(this.l);
       }
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(this.jdField_e_of_type_Float);
-      f1 = 1.0F - this.jdField_e_of_type_Float;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        if (l > this.jdField_c_of_type_Long) {
-          break label486;
+      float f1 = 1.0F - this.l;
+      if (this.d) {
+        if (l1 <= this.q)
+        {
+          this.h = (this.B.top * f1 + this.C.top * this.l);
+          this.i = (this.B.bottom * f1 + this.C.bottom * this.l);
+          this.j = (this.B.left * f1 + this.C.left * this.l);
+          this.k = (this.B.right * f1 + this.C.right * this.l);
+          this.D.set((int)this.j, (int)this.h, (int)this.k, (int)this.i);
+          this.h = (this.u.top * f1 + this.v.top * this.l);
+          this.i = (this.u.bottom * f1 + this.v.bottom * this.l);
+          this.j = (this.u.left * f1 + this.v.left * this.l);
+          this.k = (this.u.right * f1 + this.v.right * this.l);
+          this.E.set(this.j, this.h, this.k, this.i);
         }
-        this.jdField_a_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.top * f1 + this.jdField_e_of_type_AndroidGraphicsRect.top * this.jdField_e_of_type_Float);
-        this.jdField_b_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.bottom * f1 + this.jdField_e_of_type_AndroidGraphicsRect.bottom * this.jdField_e_of_type_Float);
-        this.jdField_c_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.left * f1 + this.jdField_e_of_type_AndroidGraphicsRect.left * this.jdField_e_of_type_Float);
-        this.jdField_d_of_type_Float = (this.jdField_d_of_type_AndroidGraphicsRect.right * f1 + this.jdField_e_of_type_AndroidGraphicsRect.right * this.jdField_e_of_type_Float);
-        this.jdField_f_of_type_AndroidGraphicsRect.set((int)this.jdField_c_of_type_Float, (int)this.jdField_a_of_type_Float, (int)this.jdField_d_of_type_Float, (int)this.jdField_b_of_type_Float);
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.top * f1 + this.jdField_b_of_type_AndroidGraphicsRect.top * this.jdField_e_of_type_Float);
-        this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.bottom * f1 + this.jdField_b_of_type_AndroidGraphicsRect.bottom * this.jdField_e_of_type_Float);
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.left * f1 + this.jdField_b_of_type_AndroidGraphicsRect.left * this.jdField_e_of_type_Float);
-        this.jdField_d_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.right * f1 + this.jdField_b_of_type_AndroidGraphicsRect.right * this.jdField_e_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.jdField_d_of_type_Float, this.jdField_b_of_type_Float);
+        else
+        {
+          this.d = false;
+          AnimationLister localAnimationLister = this.A;
+          if (localAnimationLister != null) {
+            if (this.f) {
+              localAnimationLister.g();
+            } else {
+              localAnimationLister.j();
+            }
+          }
+        }
       }
-    }
-    for (;;)
-    {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_f_of_type_AndroidGraphicsRect.width();
-      float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_f_of_type_AndroidGraphicsRect.height();
-      paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsRectF.left - this.jdField_f_of_type_AndroidGraphicsRect.left * f1, this.jdField_a_of_type_AndroidGraphicsRectF.top - this.jdField_f_of_type_AndroidGraphicsRect.top * f2);
+      f1 = this.E.width() / this.D.width();
+      float f2 = this.E.height() / this.D.height();
+      paramCanvas.translate(this.E.left - this.D.left * f1, this.E.top - this.D.top * f2);
       paramCanvas.scale(f1, f2);
-      paramCanvas.clipRect(this.jdField_f_of_type_AndroidGraphicsRect);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.clipRect(this.D);
+      this.t.draw(paramCanvas);
       invalidate();
-      paramCanvas.restore();
-      return;
-      label468:
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_Bhtc.getInterpolation(this.jdField_e_of_type_Float);
-      break;
-      label486:
-      this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Zja != null) {
-        if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_Zja.b();
-        } else {
-          this.jdField_a_of_type_Zja.e();
-        }
-      }
     }
+    paramCanvas.restore();
   }
   
   public void a(Drawable paramDrawable, Rect paramRect1, Rect paramRect2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_AndroidGraphicsRect = paramDrawable.copyBounds();
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect1;
-    this.jdField_b_of_type_AndroidGraphicsRect = paramRect2;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Int = paramInt3;
-    this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Zja != null) {
-      this.jdField_a_of_type_Zja.d();
+    this.o = 1;
+    this.s = true;
+    this.t = paramDrawable;
+    this.w = paramDrawable.copyBounds();
+    this.u = paramRect1;
+    this.v = paramRect2;
+    this.x = paramInt1;
+    this.y = paramInt2;
+    this.z = paramInt3;
+    this.q = paramLong;
+    paramDrawable = this.A;
+    if (paramDrawable != null) {
+      paramDrawable.i();
     }
     invalidate();
   }
   
   public void a(Drawable paramDrawable, Rect paramRect1, Rect paramRect2, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_AndroidGraphicsRect = paramDrawable.copyBounds();
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect1;
-    this.jdField_b_of_type_AndroidGraphicsRect = paramRect2;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Zja != null) {
-      this.jdField_a_of_type_Zja.c();
+    this.n = 1;
+    this.r = true;
+    this.t = paramDrawable;
+    this.w = paramDrawable.copyBounds();
+    this.u = paramRect1;
+    this.v = paramRect2;
+    this.x = paramInt;
+    this.q = paramLong;
+    paramDrawable = this.A;
+    if (paramDrawable != null) {
+      paramDrawable.h();
     }
     invalidate();
   }
   
   public void a(Drawable paramDrawable, Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, long paramLong)
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
+    this.e = true;
+    this.f = true;
     int[] arrayOfInt = new int[2];
     getLocationInWindow(arrayOfInt);
     paramRect3 = new Rect(paramRect3);
     paramRect3.offset(arrayOfInt[0], -arrayOfInt[1]);
-    this.jdField_d_of_type_AndroidGraphicsRect = paramRect1;
-    this.jdField_e_of_type_AndroidGraphicsRect = paramRect2;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect3;
-    this.jdField_b_of_type_AndroidGraphicsRect = paramRect4;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_Long = paramLong;
+    this.B = paramRect1;
+    this.C = paramRect2;
+    this.u = paramRect3;
+    this.v = paramRect4;
+    this.t = paramDrawable;
+    this.q = paramLong;
     a();
-    if (this.jdField_a_of_type_Zja != null) {
-      this.jdField_a_of_type_Zja.c();
+    paramDrawable = this.A;
+    if (paramDrawable != null) {
+      paramDrawable.h();
     }
   }
   
   public void b(Drawable paramDrawable, Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, long paramLong)
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
+    this.e = true;
+    this.f = false;
     int[] arrayOfInt = new int[2];
     getLocationInWindow(arrayOfInt);
     paramRect3 = new Rect(paramRect3);
     paramRect3.offset(arrayOfInt[0], -arrayOfInt[1]);
-    this.jdField_d_of_type_AndroidGraphicsRect = paramRect2;
-    this.jdField_e_of_type_AndroidGraphicsRect = paramRect1;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect4;
-    this.jdField_b_of_type_AndroidGraphicsRect = paramRect3;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_Long = paramLong;
+    this.B = paramRect2;
+    this.C = paramRect1;
+    this.u = paramRect4;
+    this.v = paramRect3;
+    this.t = paramDrawable;
+    this.q = paramLong;
     a();
-    if (this.jdField_a_of_type_Zja != null) {
-      this.jdField_a_of_type_Zja.d();
+    paramDrawable = this.A;
+    if (paramDrawable != null) {
+      paramDrawable.i();
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.e)
     {
       c(paramCanvas);
       return;
     }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.r)
     {
       a(paramCanvas);
       return;
     }
-    if (this.jdField_f_of_type_Boolean)
+    if (this.s)
     {
       b(paramCanvas);
       return;
@@ -394,14 +425,14 @@ public class AnimationView
     super.onDraw(paramCanvas);
   }
   
-  public void setAnimationListener(zja paramzja)
+  public void setAnimationListener(AnimationLister paramAnimationLister)
   {
-    this.jdField_a_of_type_Zja = paramzja;
+    this.A = paramAnimationLister;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AnimationView
  * JD-Core Version:    0.7.0.1
  */

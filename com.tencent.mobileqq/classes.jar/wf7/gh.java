@@ -47,26 +47,31 @@ public class gh
   
   public static gh a(IThreadPool paramIThreadPool, com.tencent.wifisdk.services.common.api.b paramb, e parame)
   {
-    if (sc == null) {}
-    try
-    {
-      if ((sc == null) && (paramIThreadPool != null) && (paramb != null) && (parame != null)) {
-        sc = new gh(paramIThreadPool, paramb, parame);
+    if (sc == null) {
+      try
+      {
+        if ((sc == null) && (paramIThreadPool != null) && (paramb != null) && (parame != null)) {
+          sc = new gh(paramIThreadPool, paramb, parame);
+        }
       }
-      return sc;
+      finally {}
     }
-    finally {}
+    return sc;
   }
   
   private Handler getHandler()
   {
-    if ((this.mHandler == null) && (this.sd != null))
+    if (this.mHandler == null)
     {
-      HandlerThread localHandlerThread = this.sd.newFreeHandlerThread("ConchHandler", 5);
-      if (localHandlerThread != null)
+      Object localObject = this.sd;
+      if (localObject != null)
       {
-        localHandlerThread.start();
-        this.mHandler = new gh.3(this, localHandlerThread.getLooper());
+        localObject = ((IThreadPool)localObject).newFreeHandlerThread("ConchHandler", 5);
+        if (localObject != null)
+        {
+          ((HandlerThread)localObject).start();
+          this.mHandler = new gh.3(this, ((HandlerThread)localObject).getLooper());
+        }
       }
     }
     return this.mHandler;
@@ -92,18 +97,26 @@ public class gh
         }
         return true;
       }
+      return false;
     }
-    return false;
   }
   
   public ConchPushInfo av(int paramInt)
   {
     try
     {
-      ConchPushInfo localConchPushInfo = ConchPushInfo.a(this.se.getString("id_" + paramInt));
-      return localConchPushInfo;
+      Object localObject = this.se;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("id_");
+      localStringBuilder.append(paramInt);
+      localObject = ConchPushInfo.a(((e)localObject).getString(localStringBuilder.toString()));
+      return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label42:
+      break label42;
+    }
     return null;
   }
   
@@ -119,7 +132,7 @@ public class gh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gh
  * JD-Core Version:    0.7.0.1
  */

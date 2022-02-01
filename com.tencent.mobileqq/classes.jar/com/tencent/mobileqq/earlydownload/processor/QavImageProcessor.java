@@ -1,0 +1,27 @@
+package com.tencent.mobileqq.earlydownload.processor;
+
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
+import com.tencent.mobileqq.earlydownload.handler.QavImageHandler;
+import com.tencent.mobileqq.earlydownload.inject.BaseEarlyHandlerProcessor;
+import mqq.app.AppRuntime;
+
+public class QavImageProcessor
+  extends BaseEarlyHandlerProcessor
+{
+  public EarlyHandler a(AppRuntime paramAppRuntime)
+  {
+    return new QavImageHandler((QQAppInterface)paramAppRuntime);
+  }
+  
+  public String a()
+  {
+    return "qq.android.qav.image2";
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.earlydownload.processor.QavImageProcessor
+ * JD-Core Version:    0.7.0.1
+ */

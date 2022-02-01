@@ -1,13 +1,23 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
 
 public class dxc
-  implements Runnable
+  extends View
 {
-  public dxc(BubbleAnimation paramBubbleAnimation) {}
-  
-  public void run()
+  public dxc(BubbleAnimation paramBubbleAnimation, Context paramContext)
   {
-    this.a.d();
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((BubbleAnimation.a(this.a).a()) && (BubbleAnimation.b(this.a).a())) {
+      BubbleAnimation.a(this.a).post(new dxd(this));
+    }
+    return true;
   }
 }
 

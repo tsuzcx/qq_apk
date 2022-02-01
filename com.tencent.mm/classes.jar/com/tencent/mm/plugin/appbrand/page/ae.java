@@ -1,127 +1,64 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.net.http.SslCertificate;
-import android.net.http.SslCertificate.DName;
-import android.os.Build.VERSION;
-import android.webkit.URLUtil;
-import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.ax;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.m.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.ByteArrayInputStream;
-import java.lang.reflect.Field;
-import java.nio.ByteBuffer;
-import java.security.cert.X509Certificate;
 
-public class ae
+public final class ae
 {
-  v bBK;
-  private n iyv;
-  String iyw;
-  
-  public ae(v paramv)
+  public static String aeP(String paramString)
   {
-    this.bBK = paramv;
+    AppMethodBeat.i(135207);
+    int i = paramString.indexOf("<page>");
+    int j = paramString.indexOf("</page>");
+    if ((i == -1) || (j == -i))
+    {
+      AppMethodBeat.o(135207);
+      return "";
+    }
+    paramString = paramString.substring(i + 6, j);
+    AppMethodBeat.o(135207);
+    return paramString;
   }
   
-  public final WebResourceResponse Ep(String paramString)
+  public static String aeQ(String paramString)
   {
-    Object localObject1 = null;
-    AppMethodBeat.i(87313);
-    if (paramString == null)
+    AppMethodBeat.i(135208);
+    int i = paramString.indexOf("<style>");
+    int j = paramString.indexOf("</style>");
+    if ((i == -1) || (j == -i))
     {
-      AppMethodBeat.o(87313);
-      return null;
+      AppMethodBeat.o(135208);
+      return "";
     }
-    if (!this.bBK.isRunning())
-    {
-      AppMethodBeat.o(87313);
-      return null;
-    }
-    Object localObject2 = this.iyw;
-    if (paramString.startsWith((String)localObject2))
-    {
-      localObject2 = ax.e(this.bBK.getRuntime(), paramString.replaceFirst((String)localObject2, ""));
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        ab.e("Luggage.AppBrandWebViewClient", "getAppResourceResponse %s not found", new Object[] { paramString });
-        localObject2 = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(new byte[0]));
-        localObject1 = localObject2;
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-          ((WebResourceResponse)localObject2).setStatusCodeAndReasonPhrase(404, "NotFound");
-          localObject1 = localObject2;
-        }
-      }
-    }
-    for (;;)
-    {
-      ab.i("Luggage.AppBrandWebViewClient", "tryInterceptWebViewRequest, reqURL = %s", new Object[] { paramString });
-      AppMethodBeat.o(87313);
-      return localObject1;
-      if ((URLUtil.isAboutUrl(paramString)) || (URLUtil.isHttpUrl(paramString)) || (URLUtil.isHttpsUrl(paramString)))
-      {
-        AppMethodBeat.o(87313);
-        return null;
-      }
-      localObject2 = new com.tencent.mm.plugin.appbrand.s.j();
-      this.bBK.getRuntime().wX().b(paramString, (com.tencent.mm.plugin.appbrand.s.j)localObject2);
-      if (((com.tencent.mm.plugin.appbrand.s.j)localObject2).value != null) {
-        localObject1 = new WebResourceResponse("", "", new com.tencent.luggage.g.a((ByteBuffer)((com.tencent.mm.plugin.appbrand.s.j)localObject2).value));
-      }
-    }
+    paramString = paramString.substring(i + 7, j);
+    AppMethodBeat.o(135208);
+    return paramString;
   }
   
-  public final boolean a(SslCertificate paramSslCertificate)
+  public static String aeR(String paramString)
   {
-    AppMethodBeat.i(87312);
-    if (this.bBK.getRuntime() == null)
+    AppMethodBeat.i(135209);
+    String str = "";
+    int i = 0;
+    int j = paramString.indexOf("<script>", i);
+    int k = paramString.indexOf("</script>", i);
+    if ((j != -1) && (k != -1) && (k > j))
     {
-      AppMethodBeat.o(87312);
-      return false;
-    }
-    if (this.iyv == null) {
-      this.iyv = com.tencent.mm.plugin.appbrand.m.j.b((com.tencent.mm.plugin.appbrand.m.a)this.bBK.getRuntime().U(com.tencent.mm.plugin.appbrand.m.a.class));
-    }
-    ab.d("Luggage.AppBrandWebViewClient", "subjectDN: ".concat(String.valueOf(paramSslCertificate.getIssuedTo().getDName())));
-    for (;;)
-    {
-      try
+      StringBuilder localStringBuilder = new StringBuilder().append(str);
+      if (i > 0) {}
+      for (str = ";";; str = "")
       {
-        Field localField = paramSslCertificate.getClass().getDeclaredField("mX509Certificate");
-        localField.setAccessible(true);
-        paramSslCertificate = (X509Certificate)localField.get(paramSslCertificate);
-      }
-      catch (Exception paramSslCertificate)
-      {
-        ab.e("Luggage.AppBrandWebViewClient", "Certificate check failed: ", new Object[] { paramSslCertificate });
-        boolean bool = false;
-        continue;
-      }
-      try
-      {
-        this.iyv.checkServerTrusted(new X509Certificate[] { paramSslCertificate }, "generic");
-        bool = true;
-      }
-      catch (Exception paramSslCertificate)
-      {
-        ab.e("Luggage.AppBrandWebViewClient", "Certificate check failed: ".concat(String.valueOf(paramSslCertificate)));
-        bool = false;
+        str = str + paramString.substring(j + 8, k);
+        i = k + 9;
+        break;
       }
     }
-    AppMethodBeat.o(87312);
-    return bool;
+    AppMethodBeat.o(135209);
+    return str;
   }
-  
-  public void bF(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ae
  * JD-Core Version:    0.7.0.1
  */

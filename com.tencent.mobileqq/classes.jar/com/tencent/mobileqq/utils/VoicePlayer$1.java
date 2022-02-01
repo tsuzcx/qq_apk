@@ -1,50 +1,52 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Handler;
-import bdpb;
-import bdpc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class VoicePlayer$1
+class VoicePlayer$1
   implements Runnable
 {
   int a = 0;
   
-  public VoicePlayer$1(bdpb parambdpb) {}
+  VoicePlayer$1(VoicePlayer paramVoicePlayer) {}
   
   public void run()
   {
-    if ((bdpb.a(this.this$0) == 4) || (bdpb.a(this.this$0) == 5) || (bdpb.a(this.this$0) == 6) || (bdpb.a(this.this$0) == 8)) {
-      this.a = 0;
-    }
-    do
+    if ((VoicePlayer.a(this.this$0) != 4) && (VoicePlayer.a(this.this$0) != 5) && (VoicePlayer.a(this.this$0) != 6) && (VoicePlayer.a(this.this$0) != 8))
     {
-      return;
-      if (bdpb.a(this.this$0) == 3)
+      if (VoicePlayer.a(this.this$0) == 3)
       {
-        this.a = bdpb.b(this.this$0);
+        this.a = VoicePlayer.b(this.this$0);
         return;
       }
-    } while (bdpb.a(this.this$0) == null);
-    int k = bdpb.c(this.this$0);
-    int i = bdpb.b(this.this$0);
-    if (i < this.a) {
-      i = this.a;
-    }
-    for (;;)
-    {
-      int j = k;
-      if (this.a != 0)
+      if (VoicePlayer.c(this.this$0) == null) {
+        return;
+      }
+      int k = VoicePlayer.d(this.this$0);
+      int j = VoicePlayer.b(this.this$0);
+      int m = this.a;
+      int i = j;
+      if (j < m) {
+        i = m;
+      }
+      m = this.a;
+      j = k;
+      if (m != 0)
       {
         j = k;
-        if (this.a == i)
+        if (m == i)
         {
           j = k;
-          if (this.a > k - 200)
+          if (m > k - 200)
           {
-            QLog.d("Q.profilecard.VoicePlayer", 2, "change duration from " + i + " to " + i);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("change duration from ");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append(" to ");
+            ((StringBuilder)localObject).append(i);
+            QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
             j = i;
           }
         }
@@ -52,21 +54,21 @@ public class VoicePlayer$1
       if (i > this.a) {
         this.a = i;
       }
-      Iterator localIterator = bdpb.a(this.this$0).iterator();
-      while (localIterator.hasNext()) {
-        ((bdpc)localIterator.next()).a(bdpb.a(this.this$0), j, i);
+      Object localObject = VoicePlayer.e(this.this$0).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((VoicePlayer.VoicePlayerListener)((Iterator)localObject).next()).a(VoicePlayer.f(this.this$0), j, i);
       }
-      if (bdpb.a(this.this$0) == null) {
-        break;
+      if (VoicePlayer.g(this.this$0) != null) {
+        VoicePlayer.g(this.this$0).postDelayed(this, 50L);
       }
-      bdpb.a(this.this$0).postDelayed(this, 50L);
       return;
     }
+    this.a = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VoicePlayer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.game.api;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.game.model.b;
-import com.tencent.mm.plugin.game.model.q;
-import com.tencent.mm.plugin.game.model.t;
+import org.json.JSONArray;
 
 public abstract interface d
   extends a
 {
-  public abstract b bEP();
+  public abstract String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean, int paramInt3);
   
-  public abstract t bEQ();
+  public abstract String aFn(String paramString);
   
-  public abstract q bER();
+  public abstract JSONArray b(JSONArray paramJSONArray, boolean paramBoolean);
+  
+  public abstract void c(JSONArray paramJSONArray, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.d
  * JD-Core Version:    0.7.0.1
  */

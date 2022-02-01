@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/sns_shoot_addphoto_button_pressed" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/sns_shoot_addphoto_button_pressed" />
-    <item android:state_focused="false" android:drawable="@raw/sns_shoot_addphoto_button_normal" />
-</selector>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:startColor="#ccffab06" android:endColor="#ccff7c00" android:angle="315.0" />
+            <size android:height="@dimen/cv" />
+            <corners android:radius="@dimen/cd" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#33000000" />
+            <size android:height="@dimen/cv" />
+            <corners android:radius="@dimen/cd" />
+        </shape>
+    </item>
+</layer-list>

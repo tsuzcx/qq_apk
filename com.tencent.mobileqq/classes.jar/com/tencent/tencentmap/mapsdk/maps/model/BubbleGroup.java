@@ -16,75 +16,83 @@ public class BubbleGroup
   
   public int addBubble(BubbleOptions paramBubbleOptions)
   {
-    if (this.a == null) {}
-    kg localkg;
-    do
-    {
+    kg localkg = this.a;
+    if (localkg == null) {
       return -1;
-      localkg = this.a;
-    } while (localkg.a == null);
+    }
+    if (localkg.a == null) {
+      return -1;
+    }
     return localkg.a.a(paramBubbleOptions, localkg);
   }
   
   public void clearBubbleGroup()
   {
-    if (this.a == null) {
+    kg localkg = this.a;
+    if (localkg == null) {
       return;
     }
-    this.a.a();
+    localkg.a();
   }
   
   public boolean containsBubble(int paramInt)
   {
-    if (this.a == null) {}
-    kg localkg;
-    do
-    {
+    kg localkg = this.a;
+    if (localkg == null) {
       return false;
-      localkg = this.a;
-    } while (localkg.a == null);
+    }
+    if (localkg.a == null) {
+      return false;
+    }
     return localkg.a.b(paramInt);
   }
   
   public List<Integer> getBubbleIds()
   {
-    if (this.a == null) {}
-    kg localkg;
-    do
-    {
+    kg localkg = this.a;
+    if (localkg == null) {
       return null;
-      localkg = this.a;
-    } while (localkg.a == null);
+    }
+    if (localkg.a == null) {
+      return null;
+    }
     return localkg.a.b();
   }
   
   public boolean remove(int paramInt)
   {
-    if (this.a == null) {}
-    kg localkg;
-    do
-    {
+    kg localkg = this.a;
+    if (localkg == null) {
       return false;
-      localkg = this.a;
-    } while (localkg.a == null);
+    }
+    if (localkg.a == null) {
+      return false;
+    }
     return localkg.a.a(paramInt);
   }
   
   public boolean updateBubble(int paramInt, BubbleOptions paramBubbleOptions)
   {
-    if ((this.a == null) || (paramBubbleOptions == null)) {}
-    kg localkg;
-    do
+    kg localkg = this.a;
+    if (localkg != null)
     {
-      return false;
-      localkg = this.a;
-    } while ((localkg.a == null) || (paramBubbleOptions == null));
-    return localkg.a.a(paramInt, paramBubbleOptions);
+      if (paramBubbleOptions == null) {
+        return false;
+      }
+      if (localkg.a != null)
+      {
+        if (paramBubbleOptions == null) {
+          return false;
+        }
+        return localkg.a.a(paramInt, paramBubbleOptions);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.BubbleGroup
  * JD-Core Version:    0.7.0.1
  */

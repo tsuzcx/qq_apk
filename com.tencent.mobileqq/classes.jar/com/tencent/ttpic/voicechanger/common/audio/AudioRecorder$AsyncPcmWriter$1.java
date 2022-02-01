@@ -35,24 +35,24 @@ class AudioRecorder$AsyncPcmWriter$1
       }
       return;
     }
-    catch (IOException localIOException1)
+    catch (Exception localException)
     {
-      LogUtils.w(AudioRecorder.access$000(), "", localIOException1, new Object[0]);
-      AudioRecorder.AsyncPcmWriter.access$402(this.this$1, false);
+      LogUtils.d(AudioRecorder.access$000(), "onRecord ERROR: ", localException, new Object[0]);
       try
       {
         AudioRecorder.AsyncPcmWriter.access$200(this.this$1).close();
         return;
       }
-      catch (IOException localIOException2)
+      catch (IOException localIOException1)
       {
-        LogUtils.d(AudioRecorder.access$000(), "can't close?", localIOException2, new Object[0]);
+        LogUtils.d(AudioRecorder.access$000(), "can't close?", localIOException1, new Object[0]);
         return;
       }
     }
-    catch (Exception localException)
+    catch (IOException localIOException2)
     {
-      LogUtils.d(AudioRecorder.access$000(), "onRecord ERROR: ", localException, new Object[0]);
+      LogUtils.w(AudioRecorder.access$000(), "", localIOException2, new Object[0]);
+      AudioRecorder.AsyncPcmWriter.access$402(this.this$1, false);
       try
       {
         AudioRecorder.AsyncPcmWriter.access$200(this.this$1).close();
@@ -67,7 +67,7 @@ class AudioRecorder$AsyncPcmWriter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorder.AsyncPcmWriter.1
  * JD-Core Version:    0.7.0.1
  */

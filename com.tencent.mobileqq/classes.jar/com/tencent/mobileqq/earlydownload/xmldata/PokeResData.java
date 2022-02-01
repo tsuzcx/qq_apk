@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aplz;
-
 public class PokeResData
   extends XmlData
 {
-  @aplz(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public long SoLength;
-  @aplz(a=true, b=true)
+  @saveInSP(a=true, b=true)
   public String SoMD5 = "";
   
   public String getSharedPreferencesName()

@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.cedit.api.c;
+import com.tencent.mm.ui.widget.pulldown.f.a;
 
 final class SnsUploadUI$9
-  implements DialogInterface.OnClickListener
+  implements f.a
 {
   SnsUploadUI$9(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void Wm(int paramInt)
   {
-    AppMethodBeat.i(145659);
-    paramDialogInterface.dismiss();
-    AppMethodBeat.o(145659);
+    AppMethodBeat.i(369951);
+    if (paramInt != 0)
+    {
+      SnsUploadUI.a(this.REd).onPause();
+      SnsUploadUI.M(this.REd);
+    }
+    AppMethodBeat.o(369951);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.9
  * JD-Core Version:    0.7.0.1
  */

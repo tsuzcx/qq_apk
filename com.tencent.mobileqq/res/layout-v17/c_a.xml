@@ -11,6 +11,7 @@
         <RelativeLayout android:id="@id/lzc" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/mb6" android:layout_width="fill_parent" android:layout_height="0.0dip" />
             <TextView android:textSize="11.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/lov" android:background="@drawable/hiz" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="27.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="20.0dip" android:text="跳过广告" android:layout_alignParentRight="true" android:layout_marginEnd="20.0dip" />
+            <View android:id="@id/o_g" android:visibility="gone" android:layout_width="90.0dip" android:layout_height="52.0dip" android:layout_marginTop="45.0dip" android:layout_alignLeft="@id/lov" android:layout_alignParentRight="true" android:layout_alignStart="@id/lov" android:layout_alignParentEnd="true" />
             <ImageView android:id="@id/lza" android:background="@drawable/hiy" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/hzf" android:scaleType="center" android:layout_toLeftOf="@id/lov" android:layout_alignTop="@id/lov" android:layout_alignBottom="@id/lov" />
         </RelativeLayout>
     </RelativeLayout>

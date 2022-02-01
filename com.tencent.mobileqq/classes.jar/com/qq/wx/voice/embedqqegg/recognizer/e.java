@@ -13,36 +13,41 @@ final class e
     if (this.a.b == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 100)
     {
-    default: 
-      return;
-    case 100: 
-      paramMessage = (VoiceRecordState)paramMessage.obj;
-      this.a.b.onGetVoiceRecordState(paramMessage);
-      return;
-    case 200: 
+      if (i != 200)
+      {
+        if (i != 300)
+        {
+          if (i != 400) {
+            return;
+          }
+          if (this.a.a != null) {
+            this.a.a.a();
+          }
+          paramMessage = (Integer)paramMessage.obj;
+          this.a.b.onGetError(paramMessage.intValue());
+          return;
+        }
+        paramMessage = (VoiceRecognizerResult)paramMessage.obj;
+        if ((!paramMessage.isHalf) && ((!InfoRecognizer.f) || ((InfoRecognizer.f) && (paramMessage.isEnd))) && (this.a.a != null)) {
+          this.a.a.b();
+        }
+        this.a.b.onGetResult(paramMessage);
+        return;
+      }
       paramMessage = (Integer)paramMessage.obj;
       this.a.b.onVolumeChanged(paramMessage.intValue());
       return;
-    case 300: 
-      paramMessage = (VoiceRecognizerResult)paramMessage.obj;
-      if ((!paramMessage.isHalf) && ((!InfoRecognizer.f) || ((InfoRecognizer.f) && (paramMessage.isEnd))) && (this.a.a != null)) {
-        this.a.a.b();
-      }
-      this.a.b.onGetResult(paramMessage);
-      return;
     }
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    paramMessage = (Integer)paramMessage.obj;
-    this.a.b.onGetError(paramMessage.intValue());
+    paramMessage = (VoiceRecordState)paramMessage.obj;
+    this.a.b.onGetVoiceRecordState(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.embedqqegg.recognizer.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,62 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.widget.b.d;
-import java.util.Map;
+import com.tencent.mm.R.h;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.s;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import com.tencent.mm.ui.widget.textview.a.e;
+import com.tencent.mm.ui.widget.textview.a.f;
 
 final class x$a
-  implements View.OnClickListener
+  extends c.a
 {
-  private x$a(x paramx) {}
+  protected TextView Aoo;
+  com.tencent.mm.ui.widget.b.a GAa;
+  a.f aeMh;
+  protected TextView aeNs;
+  protected MMNeat7extView aeQs;
+  com.tencent.mm.ui.widget.textview.a aeQt;
+  l aeQu;
+  a.e aeQv;
+  ViewStub aeQw;
+  ChattingItemTranslate aeQx;
+  View hDw;
+  protected ImageView stateIV;
   
-  public final void onClick(View paramView)
+  public final View getMainContainerView()
   {
-    AppMethodBeat.i(33155);
-    if (!(paramView.getTag() instanceof bi))
-    {
-      ab.w("MicroMsg.ChattingItemDyeingTemplate", "BizMoreViewOnClickListener#onClick, tag not msg.");
-      AppMethodBeat.o(33155);
-      return;
-    }
-    bi localbi = (bi)paramView.getTag();
-    if (localbi == null)
-    {
-      ab.w("MicroMsg.ChattingItemDyeingTemplate", "BizMoreViewOnClickListener#onClick, msg null.");
-      AppMethodBeat.o(33155);
-      return;
-    }
-    Object localObject = br.F(localbi.field_content, "msg");
-    if ((localObject == null) || (((Map)localObject).size() == 0))
-    {
-      ab.w("MicroMsg.ChattingItemDyeingTemplate", "BizMoreViewOnClickListener#onClick, values null.");
-      AppMethodBeat.o(33155);
-      return;
-    }
-    localObject = bo.nullAsNil((String)((Map)localObject).get(".msg.fromusername"));
-    d locald = new d(paramView.getContext(), 1, false);
-    locald.sao = new x.a.1(this, paramView);
-    locald.sap = new x.a.2(this, paramView, localbi, (String)localObject);
-    locald.crd();
-    AppMethodBeat.o(33155);
+    return this.aeQs;
+  }
+  
+  public final a lz(View paramView)
+  {
+    AppMethodBeat.i(36935);
+    super.create(paramView);
+    this.aeQs = ((MMNeat7extView)paramView.findViewById(R.h.fxy));
+    this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.gbo));
+    this.stateIV = ((ImageView)paramView.findViewById(R.h.fAj));
+    this.Aoo = ((TextView)paramView.findViewById(R.h.fwZ));
+    this.aeNs = ((TextView)paramView.findViewById(R.h.fwD));
+    this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    this.hDw = paramView.findViewById(R.h.fxw);
+    this.aeQw = ((ViewStub)paramView.findViewById(R.h.gaF));
+    this.aeQu = new l(this.aeQs, new s(this.aeQs.getContext()));
+    AppMethodBeat.o(36935);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.x.a
  * JD-Core Version:    0.7.0.1
  */

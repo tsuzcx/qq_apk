@@ -24,149 +24,179 @@ public final class PTSFileUtil
   
   public static String getFileContent(String paramString, Context paramContext, boolean paramBoolean)
   {
-    if ((PTSLog.isColorLevel()) || (PTSLog.isDebug())) {
-      PTSLog.i("PTSFileUtil", "[getFileContent], filePath = " + paramString + ", useAssets = " + paramBoolean);
+    if ((PTSLog.isColorLevel()) || (PTSLog.isDebug()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getFileContent], filePath = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", useAssets = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      PTSLog.i("PTSFileUtil", ((StringBuilder)localObject).toString());
     }
-    String str = "";
     if (TextUtils.isEmpty(paramString))
     {
       PTSLog.i("PTSFileUtil", "[getFileContent] filePath is empty.");
-      paramString = str;
-      return paramString;
+      return "";
     }
-    str = (String)sFileContentMap.get(paramString);
-    if (TextUtils.isEmpty(str)) {
+    Object localObject = (String)sFileContentMap.get(paramString);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
       paramContext = loadFile(paramString, paramContext, paramBoolean);
     }
-    for (;;)
+    else if (!PTSLog.isColorLevel())
     {
-      paramString = paramContext;
-      if (!TextUtils.isEmpty(paramContext)) {
-        break;
-      }
-      PTSLog.e("PTSFileUtil", "[getFileContent] res is empty.");
-      return paramContext;
-      if (!PTSLog.isColorLevel())
-      {
-        paramContext = str;
-        if (!PTSLog.isDebug()) {}
-      }
-      else
-      {
-        PTSLog.i("PTSFileUtil", "[getFileContent] hit cache, key = " + paramString);
-        paramContext = str;
-      }
+      paramContext = (Context)localObject;
+      if (!PTSLog.isDebug()) {}
     }
+    else
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("[getFileContent] hit cache, key = ");
+      paramContext.append(paramString);
+      PTSLog.i("PTSFileUtil", paramContext.toString());
+      paramContext = (Context)localObject;
+    }
+    if (TextUtils.isEmpty(paramContext)) {
+      PTSLog.e("PTSFileUtil", "[getFileContent] res is empty.");
+    }
+    return paramContext;
   }
   
   public static String getFilePath(String paramString1, String paramString2, String paramString3)
   {
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = "";
+      return "";
     }
-    do
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString3);
+    paramString1 = localStringBuilder.toString();
+    if (TextUtils.isEmpty(paramString2)) {
       return paramString1;
-      paramString3 = paramString1 + File.separator + paramString1 + paramString3;
-      paramString1 = paramString3;
-    } while (TextUtils.isEmpty(paramString2));
-    if (paramString2.endsWith(File.separator)) {
-      return paramString2 + paramString3;
     }
-    return paramString2 + File.separator + paramString3;
+    if (paramString2.endsWith(File.separator))
+    {
+      paramString3 = new StringBuilder();
+      paramString3.append(paramString2);
+      paramString3.append(paramString1);
+      return paramString3.toString();
+    }
+    paramString3 = new StringBuilder();
+    paramString3.append(paramString2);
+    paramString3.append(File.separator);
+    paramString3.append(paramString1);
+    return paramString3.toString();
   }
   
   public static boolean isFileInMap(String paramString)
   {
     boolean bool;
     if (!TextUtils.isEmpty(paramString)) {
-      if (!TextUtils.isEmpty((CharSequence)sFileContentMap.get(paramString))) {
-        bool = true;
-      }
+      bool = TextUtils.isEmpty((CharSequence)sFileContentMap.get(paramString)) ^ true;
+    } else {
+      bool = false;
     }
-    for (;;)
+    if ((PTSLog.isColorLevel()) || (PTSLog.isDebug()))
     {
-      if ((PTSLog.isColorLevel()) || (PTSLog.isDebug())) {
-        PTSLog.i("PTSFileUtil", "[isFileInMap], filePath= " + paramString + ", isExist = " + bool);
-      }
-      return bool;
-      bool = false;
-      continue;
-      bool = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[isFileInMap], filePath= ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", isExist = ");
+      localStringBuilder.append(bool);
+      PTSLog.i("PTSFileUtil", localStringBuilder.toString());
     }
+    return bool;
   }
   
   public static String loadFile(String paramString, Context paramContext, boolean paramBoolean)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     String str = "";
-    if (TextUtils.isEmpty(paramString))
+    if (bool)
     {
       PTSLog.i("PTSFileUtil", "[loadFile] filePath is empty.");
       return "";
     }
-    if (paramBoolean) {
-      if (paramContext == null) {
-        break label310;
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = str;
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getAssets().open(paramString);
+          localObject = new byte[paramContext.available()];
+          paramContext.read((byte[])localObject);
+          paramContext.close();
+          localObject = new String((byte[])localObject);
+        }
+        catch (IOException paramContext)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("loadFile exception, e = ");
+          ((StringBuilder)localObject).append(paramContext);
+          PTSLog.e("PTSFileUtil", ((StringBuilder)localObject).toString());
+          localObject = str;
+        }
       }
     }
-    for (;;)
+    else
     {
+      paramContext = new StringBuilder();
+      paramContext.append("[loadFile], filePath = ");
+      paramContext.append(paramString);
+      PTSLog.i("PTSFileUtil", paramContext.toString());
+      paramContext = new File(paramString);
+      localObject = str;
       try
       {
-        paramContext = paramContext.getAssets().open(paramString);
-        localObject = new byte[paramContext.available()];
-        paramContext.read((byte[])localObject);
-        paramContext.close();
-        paramContext = new String((byte[])localObject);
-        if (!TextUtils.isEmpty(paramContext)) {
-          break label275;
+        if (paramContext.exists())
+        {
+          paramContext = new FileInputStream(paramContext);
+          localObject = new byte[paramContext.available()];
+          paramContext.read((byte[])localObject);
+          paramContext.close();
+          localObject = new String((byte[])localObject);
         }
-        PTSLog.e("PTSFileUtil", "[loadFile] res is empty, filePath = " + paramString);
-        return paramContext;
-      }
-      catch (IOException paramContext)
-      {
-        PTSLog.e("PTSFileUtil", "loadFile exception, e = " + paramContext);
-        paramContext = str;
-        continue;
-      }
-      PTSLog.i("PTSFileUtil", "[loadFile], filePath = " + paramString);
-      Object localObject = new File(paramString);
-      paramContext = str;
-      try
-      {
-        if (!((File)localObject).exists()) {
-          continue;
-        }
-        paramContext = new FileInputStream((File)localObject);
-        localObject = new byte[paramContext.available()];
-        paramContext.read((byte[])localObject);
-        paramContext.close();
-        paramContext = new String((byte[])localObject);
-      }
-      catch (IOException paramContext)
-      {
-        PTSLog.e("PTSFileUtil", "[loadFile], e = " + paramContext);
-        paramContext = str;
       }
       catch (Throwable paramContext)
       {
-        PTSLog.e("PTSFileUtil", "[loadFile], t = " + paramContext);
-        paramContext = str;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[loadFile], t = ");
+        ((StringBuilder)localObject).append(paramContext);
+        PTSLog.e("PTSFileUtil", ((StringBuilder)localObject).toString());
+        localObject = str;
       }
-      continue;
-      label275:
-      PTSLog.i("PTSFileUtil", "[loadFile] succeed, filePath = " + paramString);
-      sFileContentMap.put(paramString, paramContext);
-      return paramContext;
-      label310:
-      paramContext = "";
+      catch (IOException paramContext)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[loadFile], e = ");
+        ((StringBuilder)localObject).append(paramContext);
+        PTSLog.e("PTSFileUtil", ((StringBuilder)localObject).toString());
+        localObject = str;
+      }
     }
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("[loadFile] res is empty, filePath = ");
+      paramContext.append(paramString);
+      PTSLog.e("PTSFileUtil", paramContext.toString());
+      return localObject;
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("[loadFile] succeed, filePath = ");
+    paramContext.append(paramString);
+    PTSLog.i("PTSFileUtil", paramContext.toString());
+    sFileContentMap.put(paramString, localObject);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.utils.PTSFileUtil
  * JD-Core Version:    0.7.0.1
  */

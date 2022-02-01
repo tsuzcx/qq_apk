@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.transvoice.ui;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$PanelDragOpeMode;", "", "(Ljava/lang/String;I)V", "MODE_ONLY_PANEL", "MODE_WITH_KEYBOARD", "plugin-transvoice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$PanelDragOpeMode;", "", "(Ljava/lang/String;I)V", "MODE_ONLY_PANEL", "MODE_WITH_KEYBOARD", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
  enum b$c
 {
   static
   {
-    AppMethodBeat.i(155226);
-    c localc1 = new c("MODE_ONLY_PANEL", 0);
-    tqG = localc1;
-    c localc2 = new c("MODE_WITH_KEYBOARD", 1);
-    tqH = localc2;
-    tqI = new c[] { localc1, localc2 };
-    AppMethodBeat.o(155226);
+    AppMethodBeat.i(102561);
+    TWx = new c("MODE_ONLY_PANEL", 0);
+    TWy = new c("MODE_WITH_KEYBOARD", 1);
+    TWz = new c[] { TWx, TWy };
+    AppMethodBeat.o(102561);
   }
   
   private b$c() {}

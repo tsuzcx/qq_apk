@@ -10,8 +10,8 @@ public final class s_tab_list
 {
   static ArrayList<s_tab_list_item> cache_lst_hide;
   static ArrayList<s_tab_list_item> cache_lst_show = new ArrayList();
-  public ArrayList<s_tab_list_item> lst_hide;
-  public ArrayList<s_tab_list_item> lst_show;
+  public ArrayList<s_tab_list_item> lst_hide = null;
+  public ArrayList<s_tab_list_item> lst_show = null;
   
   static
   {
@@ -44,7 +44,7 @@ public final class s_tab_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_tab_list
  * JD-Core Version:    0.7.0.1
  */

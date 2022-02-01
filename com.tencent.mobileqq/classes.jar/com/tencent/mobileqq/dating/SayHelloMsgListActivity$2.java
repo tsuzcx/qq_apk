@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.dating;
 
-import auwm;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.INearbyRelevantHandler;
 import java.util.List;
 
 class SayHelloMsgListActivity$2
@@ -11,7 +12,7 @@ class SayHelloMsgListActivity$2
   
   public void run()
   {
-    ((auwm)this.this$0.app.a(66)).a(this.a);
+    ((INearbyRelevantHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER)).a(this.a);
   }
 }
 

@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class TransReqContext$1
-  implements Parcelable.Creator
+  implements Parcelable.Creator<TransReqContext>
 {
-  public TransReqContext createFromParcel(Parcel paramParcel)
+  public final TransReqContext createFromParcel(Parcel paramParcel)
   {
     return new TransReqContext(paramParcel, null);
   }
   
-  public TransReqContext[] newArray(int paramInt)
+  public final TransReqContext[] newArray(int paramInt)
   {
     return new TransReqContext[paramInt];
   }

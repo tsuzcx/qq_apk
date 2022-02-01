@@ -1,62 +1,103 @@
 package android.support.v7.widget;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.ActionProvider;
-import android.support.v7.appcompat.R.dimen;
-import android.support.v7.appcompat.R.id;
-import android.support.v7.appcompat.R.layout;
-import android.support.v7.appcompat.R.string;
-import android.support.v7.appcompat.R.styleable;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.AccessibilityDelegate;
 import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.token.fa;
+import com.tencent.token.fw;
+import com.tencent.token.hg.d;
+import com.tencent.token.hg.f;
+import com.tencent.token.hg.g;
+import com.tencent.token.hg.h;
+import com.tencent.token.hg.j;
+import com.tencent.token.io;
+import com.tencent.token.iv;
+import com.tencent.token.iv.a;
+import com.tencent.token.iv.c;
+import com.tencent.token.jl;
+import com.tencent.token.jw;
+import java.util.List;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ActivityChooserView
   extends ViewGroup
-  implements ActivityChooserModel.ActivityChooserModelClient
 {
-  private static final String LOG_TAG = "ActivityChooserView";
-  private final View mActivityChooserContent;
-  private final Drawable mActivityChooserContentBackground;
-  final ActivityChooserView.ActivityChooserViewAdapter mAdapter;
-  private final ActivityChooserView.Callbacks mCallbacks;
-  private int mDefaultActionButtonContentDescription;
-  final FrameLayout mDefaultActivityButton;
-  private final ImageView mDefaultActivityButtonImage;
-  final FrameLayout mExpandActivityOverflowButton;
-  private final ImageView mExpandActivityOverflowButtonImage;
-  int mInitialActivityCount = 4;
-  private boolean mIsAttachedToWindow;
-  boolean mIsSelectingDefaultActivity;
-  private final int mListPopupMaxWidth;
-  private ListPopupWindow mListPopupWindow;
-  final DataSetObserver mModelDataSetObserver = new ActivityChooserView.1(this);
-  PopupWindow.OnDismissListener mOnDismissListener;
-  private final ViewTreeObserver.OnGlobalLayoutListener mOnGlobalLayoutListener = new ActivityChooserView.2(this);
-  ActionProvider mProvider;
-  
-  public ActivityChooserView(Context paramContext)
+  final a a;
+  final View b;
+  final Drawable c;
+  final FrameLayout d;
+  final FrameLayout e;
+  final ImageView f;
+  fa g;
+  final DataSetObserver h = new DataSetObserver()
   {
-    this(paramContext, null);
-  }
+    public final void onChanged()
+    {
+      super.onChanged();
+      ActivityChooserView.this.a.notifyDataSetChanged();
+    }
+    
+    public final void onInvalidated()
+    {
+      super.onInvalidated();
+      ActivityChooserView.this.a.notifyDataSetInvalidated();
+    }
+  };
+  PopupWindow.OnDismissListener i;
+  boolean j;
+  int k = 4;
+  int l;
+  private final b m;
+  private final ImageView n;
+  private final int o;
+  private final ViewTreeObserver.OnGlobalLayoutListener p = new ViewTreeObserver.OnGlobalLayoutListener()
+  {
+    public final void onGlobalLayout()
+    {
+      if (ActivityChooserView.this.c())
+      {
+        if (!ActivityChooserView.this.isShown())
+        {
+          ActivityChooserView.this.getListPopupWindow().c();
+          return;
+        }
+        ActivityChooserView.this.getListPopupWindow().b();
+        if (ActivityChooserView.this.g != null) {
+          ActivityChooserView.this.g.a(true);
+        }
+      }
+    }
+  };
+  private ListPopupWindow q;
+  private boolean r;
   
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -66,258 +107,527 @@ public class ActivityChooserView
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ActivityChooserView, paramInt, 0);
-    this.mInitialActivityCount = ((TypedArray)localObject).getInt(R.styleable.ActivityChooserView_initialActivityCount, 4);
-    paramAttributeSet = ((TypedArray)localObject).getDrawable(R.styleable.ActivityChooserView_expandActivityOverflowButtonDrawable);
+    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, hg.j.ActivityChooserView, paramInt, 0);
+    this.k = ((TypedArray)localObject).getInt(hg.j.ActivityChooserView_initialActivityCount, 4);
+    paramAttributeSet = ((TypedArray)localObject).getDrawable(hg.j.ActivityChooserView_expandActivityOverflowButtonDrawable);
     ((TypedArray)localObject).recycle();
-    LayoutInflater.from(getContext()).inflate(R.layout.abc_activity_chooser_view, this, true);
-    this.mCallbacks = new ActivityChooserView.Callbacks(this);
-    this.mActivityChooserContent = findViewById(R.id.activity_chooser_view_content);
-    this.mActivityChooserContentBackground = this.mActivityChooserContent.getBackground();
-    this.mDefaultActivityButton = ((FrameLayout)findViewById(R.id.default_activity_button));
-    this.mDefaultActivityButton.setOnClickListener(this.mCallbacks);
-    this.mDefaultActivityButton.setOnLongClickListener(this.mCallbacks);
-    this.mDefaultActivityButtonImage = ((ImageView)this.mDefaultActivityButton.findViewById(R.id.image));
-    localObject = (FrameLayout)findViewById(R.id.expand_activities_button);
-    ((FrameLayout)localObject).setOnClickListener(this.mCallbacks);
-    ((FrameLayout)localObject).setAccessibilityDelegate(new ActivityChooserView.3(this));
-    ((FrameLayout)localObject).setOnTouchListener(new ActivityChooserView.4(this, (View)localObject));
-    this.mExpandActivityOverflowButton = ((FrameLayout)localObject);
-    this.mExpandActivityOverflowButtonImage = ((ImageView)((FrameLayout)localObject).findViewById(R.id.image));
-    this.mExpandActivityOverflowButtonImage.setImageDrawable(paramAttributeSet);
-    this.mAdapter = new ActivityChooserView.ActivityChooserViewAdapter(this);
-    this.mAdapter.registerDataSetObserver(new ActivityChooserView.5(this));
+    LayoutInflater.from(getContext()).inflate(hg.g.abc_activity_chooser_view, this, true);
+    this.m = new b();
+    this.b = findViewById(hg.f.activity_chooser_view_content);
+    this.c = this.b.getBackground();
+    this.e = ((FrameLayout)findViewById(hg.f.default_activity_button));
+    this.e.setOnClickListener(this.m);
+    this.e.setOnLongClickListener(this.m);
+    this.f = ((ImageView)this.e.findViewById(hg.f.image));
+    localObject = (FrameLayout)findViewById(hg.f.expand_activities_button);
+    ((FrameLayout)localObject).setOnClickListener(this.m);
+    ((FrameLayout)localObject).setAccessibilityDelegate(new View.AccessibilityDelegate()
+    {
+      public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+      {
+        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+        paramAnonymousView = fw.a(paramAnonymousAccessibilityNodeInfo);
+        if (Build.VERSION.SDK_INT >= 19) {
+          paramAnonymousView.a.setCanOpenPopup(true);
+        }
+      }
+    });
+    ((FrameLayout)localObject).setOnTouchListener(new jl((View)localObject)
+    {
+      public final io a()
+      {
+        return ActivityChooserView.this.getListPopupWindow();
+      }
+      
+      public final boolean b()
+      {
+        ActivityChooserView.this.a();
+        return true;
+      }
+      
+      public final boolean c()
+      {
+        ActivityChooserView.this.b();
+        return true;
+      }
+    });
+    this.d = ((FrameLayout)localObject);
+    this.n = ((ImageView)((FrameLayout)localObject).findViewById(hg.f.image));
+    this.n.setImageDrawable(paramAttributeSet);
+    this.a = new a();
+    this.a.registerDataSetObserver(new DataSetObserver()
+    {
+      public final void onChanged()
+      {
+        super.onChanged();
+        ActivityChooserView localActivityChooserView = ActivityChooserView.this;
+        if (localActivityChooserView.a.getCount() > 0) {
+          localActivityChooserView.d.setEnabled(true);
+        } else {
+          localActivityChooserView.d.setEnabled(false);
+        }
+        int i = localActivityChooserView.a.a.a();
+        int j = localActivityChooserView.a.a.c();
+        if ((i != 1) && ((i <= 1) || (j <= 0)))
+        {
+          localActivityChooserView.e.setVisibility(8);
+        }
+        else
+        {
+          localActivityChooserView.e.setVisibility(0);
+          Object localObject = localActivityChooserView.a.a.b();
+          PackageManager localPackageManager = localActivityChooserView.getContext().getPackageManager();
+          localActivityChooserView.f.setImageDrawable(((ResolveInfo)localObject).loadIcon(localPackageManager));
+          if (localActivityChooserView.l != 0)
+          {
+            localObject = ((ResolveInfo)localObject).loadLabel(localPackageManager);
+            localObject = localActivityChooserView.getContext().getString(localActivityChooserView.l, new Object[] { localObject });
+            localActivityChooserView.e.setContentDescription((CharSequence)localObject);
+          }
+        }
+        if (localActivityChooserView.e.getVisibility() == 0)
+        {
+          localActivityChooserView.b.setBackgroundDrawable(localActivityChooserView.c);
+          return;
+        }
+        localActivityChooserView.b.setBackgroundDrawable(null);
+      }
+    });
     paramContext = paramContext.getResources();
-    this.mListPopupMaxWidth = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
+    this.o = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(hg.d.abc_config_prefDialogWidth));
   }
   
-  public boolean dismissPopup()
+  final void a(int paramInt)
   {
-    if (isShowingPopup())
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final boolean a()
+  {
+    if (!getListPopupWindow().q.isShowing())
     {
-      getListPopupWindow().dismiss();
+      if (!this.r) {
+        return false;
+      }
+      this.j = false;
+      a(this.k);
+      return true;
+    }
+    return false;
+  }
+  
+  public final boolean b()
+  {
+    if (getListPopupWindow().q.isShowing())
+    {
+      getListPopupWindow().c();
       ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
       if (localViewTreeObserver.isAlive()) {
-        localViewTreeObserver.removeGlobalOnLayoutListener(this.mOnGlobalLayoutListener);
+        localViewTreeObserver.removeGlobalOnLayoutListener(this.p);
       }
     }
     return true;
   }
   
-  public ActivityChooserModel getDataModel()
+  public final boolean c()
   {
-    return this.mAdapter.getDataModel();
+    return getListPopupWindow().q.isShowing();
+  }
+  
+  public iv getDataModel()
+  {
+    return this.a.a;
   }
   
   ListPopupWindow getListPopupWindow()
   {
-    if (this.mListPopupWindow == null)
+    if (this.q == null)
     {
-      this.mListPopupWindow = new ListPopupWindow(getContext());
-      this.mListPopupWindow.setAdapter(this.mAdapter);
-      this.mListPopupWindow.setAnchorView(this);
-      this.mListPopupWindow.setModal(true);
-      this.mListPopupWindow.setOnItemClickListener(this.mCallbacks);
-      this.mListPopupWindow.setOnDismissListener(this.mCallbacks);
+      this.q = new ListPopupWindow(getContext());
+      this.q.a(this.a);
+      ListPopupWindow localListPopupWindow = this.q;
+      localListPopupWindow.k = this;
+      localListPopupWindow.f();
+      localListPopupWindow = this.q;
+      b localb = this.m;
+      localListPopupWindow.l = localb;
+      localListPopupWindow.a(localb);
     }
-    return this.mListPopupWindow;
-  }
-  
-  public boolean isShowingPopup()
-  {
-    return getListPopupWindow().isShowing();
+    return this.q;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ActivityChooserModel localActivityChooserModel = this.mAdapter.getDataModel();
-    if (localActivityChooserModel != null) {
-      localActivityChooserModel.registerObserver(this.mModelDataSetObserver);
+    iv localiv = this.a.a;
+    if (localiv != null) {
+      localiv.registerObserver(this.h);
     }
-    this.mIsAttachedToWindow = true;
+    this.r = true;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Object localObject = this.mAdapter.getDataModel();
+    Object localObject = this.a.a;
     if (localObject != null) {
-      ((ActivityChooserModel)localObject).unregisterObserver(this.mModelDataSetObserver);
+      ((iv)localObject).unregisterObserver(this.h);
     }
     localObject = getViewTreeObserver();
     if (((ViewTreeObserver)localObject).isAlive()) {
-      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this.mOnGlobalLayoutListener);
+      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this.p);
     }
-    if (isShowingPopup()) {
-      dismissPopup();
+    if (c()) {
+      b();
     }
-    this.mIsAttachedToWindow = false;
+    this.r = false;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.mActivityChooserContent.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    if (!isShowingPopup()) {
-      dismissPopup();
+    this.b.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    if (!c()) {
+      b();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    View localView = this.mActivityChooserContent;
-    int i = paramInt2;
-    if (this.mDefaultActivityButton.getVisibility() != 0) {
-      i = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt2), 1073741824);
+    View localView = this.b;
+    int i1 = paramInt2;
+    if (this.e.getVisibility() != 0) {
+      i1 = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt2), 1073741824);
     }
-    measureChild(localView, paramInt1, i);
+    measureChild(localView, paramInt1, i1);
     setMeasuredDimension(localView.getMeasuredWidth(), localView.getMeasuredHeight());
   }
   
-  public void setActivityChooserModel(ActivityChooserModel paramActivityChooserModel)
+  public void setActivityChooserModel(iv paramiv)
   {
-    this.mAdapter.setDataModel(paramActivityChooserModel);
-    if (isShowingPopup())
+    a locala = this.a;
+    iv localiv = locala.c.a.a;
+    if ((localiv != null) && (locala.c.isShown())) {
+      localiv.unregisterObserver(locala.c.h);
+    }
+    locala.a = paramiv;
+    if ((paramiv != null) && (locala.c.isShown())) {
+      paramiv.registerObserver(locala.c.h);
+    }
+    locala.notifyDataSetChanged();
+    if (getListPopupWindow().q.isShowing())
     {
-      dismissPopup();
-      showPopup();
+      b();
+      a();
     }
   }
   
   public void setDefaultActionButtonContentDescription(int paramInt)
   {
-    this.mDefaultActionButtonContentDescription = paramInt;
+    this.l = paramInt;
   }
   
   public void setExpandActivityOverflowButtonContentDescription(int paramInt)
   {
     String str = getContext().getString(paramInt);
-    this.mExpandActivityOverflowButtonImage.setContentDescription(str);
+    this.n.setContentDescription(str);
   }
   
   public void setExpandActivityOverflowButtonDrawable(Drawable paramDrawable)
   {
-    this.mExpandActivityOverflowButtonImage.setImageDrawable(paramDrawable);
+    this.n.setImageDrawable(paramDrawable);
   }
   
   public void setInitialActivityCount(int paramInt)
   {
-    this.mInitialActivityCount = paramInt;
+    this.k = paramInt;
   }
   
   public void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.mOnDismissListener = paramOnDismissListener;
+    this.i = paramOnDismissListener;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setProvider(ActionProvider paramActionProvider)
+  public void setProvider(fa paramfa)
   {
-    this.mProvider = paramActionProvider;
+    this.g = paramfa;
   }
   
-  public boolean showPopup()
+  public static class InnerLayout
+    extends LinearLayout
   {
-    if ((isShowingPopup()) || (!this.mIsAttachedToWindow)) {
-      return false;
-    }
-    this.mIsSelectingDefaultActivity = false;
-    showPopupUnchecked(this.mInitialActivityCount);
-    return true;
-  }
-  
-  void showPopupUnchecked(int paramInt)
-  {
-    if (this.mAdapter.getDataModel() == null) {
-      throw new IllegalStateException("No data model. Did you call #setDataModel?");
-    }
-    getViewTreeObserver().addOnGlobalLayoutListener(this.mOnGlobalLayoutListener);
-    boolean bool;
-    int i;
-    label60:
-    label92:
-    ListPopupWindow localListPopupWindow;
-    if (this.mDefaultActivityButton.getVisibility() == 0)
+    private static final int[] a = { 16842964 };
+    
+    public InnerLayout(Context paramContext, AttributeSet paramAttributeSet)
     {
-      bool = true;
-      int j = this.mAdapter.getActivityCount();
-      if (!bool) {
-        break label208;
-      }
-      i = 1;
-      if ((paramInt == 2147483647) || (j <= i + paramInt)) {
-        break label213;
-      }
-      this.mAdapter.setShowFooterView(true);
-      this.mAdapter.setMaxActivityCount(paramInt - 1);
-      localListPopupWindow = getListPopupWindow();
-      if (!localListPopupWindow.isShowing())
+      super(paramAttributeSet);
+      paramContext = jw.a(paramContext, paramAttributeSet, a);
+      setBackgroundDrawable(paramContext.a(0));
+      paramContext.a.recycle();
+    }
+  }
+  
+  final class a
+    extends BaseAdapter
+  {
+    iv a;
+    boolean b;
+    private int d = 4;
+    private boolean e;
+    private boolean f;
+    
+    a() {}
+    
+    public final int a()
+    {
+      int k = this.d;
+      this.d = 2147483647;
+      int i = 0;
+      int m = View.MeasureSpec.makeMeasureSpec(0, 0);
+      int n = View.MeasureSpec.makeMeasureSpec(0, 0);
+      int i1 = getCount();
+      View localView = null;
+      int j = 0;
+      while (i < i1)
       {
-        if ((!this.mIsSelectingDefaultActivity) && (bool)) {
-          break label232;
+        localView = getView(i, localView, null);
+        localView.measure(m, n);
+        j = Math.max(j, localView.getMeasuredWidth());
+        i += 1;
+      }
+      this.d = k;
+      return j;
+    }
+    
+    public final void a(int paramInt)
+    {
+      if (this.d != paramInt)
+      {
+        this.d = paramInt;
+        notifyDataSetChanged();
+      }
+    }
+    
+    public final void a(boolean paramBoolean)
+    {
+      if (this.f != paramBoolean)
+      {
+        this.f = paramBoolean;
+        notifyDataSetChanged();
+      }
+    }
+    
+    public final void a(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      if ((this.b != paramBoolean1) || (this.e != paramBoolean2))
+      {
+        this.b = paramBoolean1;
+        this.e = paramBoolean2;
+        notifyDataSetChanged();
+      }
+    }
+    
+    public final int getCount()
+    {
+      int j = this.a.a();
+      int i = j;
+      if (!this.b)
+      {
+        i = j;
+        if (this.a.b() != null) {
+          i = j - 1;
         }
-        this.mAdapter.setShowDefaultActivity(true, bool);
       }
+      j = Math.min(i, this.d);
+      i = j;
+      if (this.f) {
+        i = j + 1;
+      }
+      return i;
     }
-    for (;;)
+    
+    public final Object getItem(int paramInt)
     {
-      localListPopupWindow.setContentWidth(Math.min(this.mAdapter.measureContentWidth(), this.mListPopupMaxWidth));
-      localListPopupWindow.show();
-      if (this.mProvider != null) {
-        this.mProvider.subUiVisibilityChanged(true);
+      switch (getItemViewType(paramInt))
+      {
+      default: 
+        throw new IllegalArgumentException();
+      case 1: 
+        return null;
       }
-      localListPopupWindow.getListView().setContentDescription(getContext().getString(R.string.abc_activitychooserview_choose_application));
-      localListPopupWindow.getListView().setSelector(new ColorDrawable(0));
-      return;
-      bool = false;
-      break;
-      label208:
-      i = 0;
-      break label60;
-      label213:
-      this.mAdapter.setShowFooterView(false);
-      this.mAdapter.setMaxActivityCount(paramInt);
-      break label92;
-      label232:
-      this.mAdapter.setShowDefaultActivity(false, false);
+      int i = paramInt;
+      if (!this.b)
+      {
+        i = paramInt;
+        if (this.a.b() != null) {
+          i = paramInt + 1;
+        }
+      }
+      return this.a.a(i);
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      if ((this.f) && (paramInt == getCount() - 1)) {
+        return 1;
+      }
+      return 0;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      View localView;
+      switch (getItemViewType(paramInt))
+      {
+      default: 
+        throw new IllegalArgumentException();
+      case 1: 
+        if (paramView != null)
+        {
+          localView = paramView;
+          if (paramView.getId() == 1) {}
+        }
+        else
+        {
+          localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(hg.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
+          localView.setId(1);
+          ((TextView)localView.findViewById(hg.f.title)).setText(ActivityChooserView.this.getContext().getString(hg.h.abc_activity_chooser_view_see_all));
+        }
+        return localView;
+      }
+      if (paramView != null)
+      {
+        localView = paramView;
+        if (paramView.getId() == hg.f.list_item) {}
+      }
+      else
+      {
+        localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(hg.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
+      }
+      paramView = ActivityChooserView.this.getContext().getPackageManager();
+      paramViewGroup = (ImageView)localView.findViewById(hg.f.icon);
+      ResolveInfo localResolveInfo = (ResolveInfo)getItem(paramInt);
+      paramViewGroup.setImageDrawable(localResolveInfo.loadIcon(paramView));
+      ((TextView)localView.findViewById(hg.f.title)).setText(localResolveInfo.loadLabel(paramView));
+      if ((this.b) && (paramInt == 0) && (this.e))
+      {
+        localView.setActivated(true);
+        return localView;
+      }
+      localView.setActivated(false);
+      return localView;
+    }
+    
+    public final int getViewTypeCount()
+    {
+      return 3;
     }
   }
   
-  void updateAppearance()
+  final class b
+    implements View.OnClickListener, View.OnLongClickListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
   {
-    if (this.mAdapter.getCount() > 0)
+    b() {}
+    
+    public final void onClick(View paramView)
     {
-      this.mExpandActivityOverflowButton.setEnabled(true);
-      int i = this.mAdapter.getActivityCount();
-      int j = this.mAdapter.getHistorySize();
-      if ((i != 1) && ((i <= 1) || (j <= 0))) {
-        break label161;
-      }
-      this.mDefaultActivityButton.setVisibility(0);
-      Object localObject = this.mAdapter.getDefaultActivity();
-      PackageManager localPackageManager = getContext().getPackageManager();
-      this.mDefaultActivityButtonImage.setImageDrawable(((ResolveInfo)localObject).loadIcon(localPackageManager));
-      if (this.mDefaultActionButtonContentDescription != 0)
+      if (paramView == ActivityChooserView.this.e)
       {
-        localObject = ((ResolveInfo)localObject).loadLabel(localPackageManager);
-        localObject = getContext().getString(this.mDefaultActionButtonContentDescription, new Object[] { localObject });
-        this.mDefaultActivityButton.setContentDescription((CharSequence)localObject);
+        ActivityChooserView.this.b();
+        paramView = ActivityChooserView.this.a.a.b();
+        int i = ActivityChooserView.this.a.a.a(paramView);
+        paramView = ActivityChooserView.this.a.a.b(i);
+        if (paramView != null)
+        {
+          paramView.addFlags(524288);
+          ActivityChooserView.this.getContext().startActivity(paramView);
+        }
+        return;
       }
+      if (paramView == ActivityChooserView.this.d)
+      {
+        paramView = ActivityChooserView.this;
+        paramView.j = false;
+        paramView.a(paramView.k);
+        return;
+      }
+      throw new IllegalArgumentException();
     }
-    for (;;)
+    
+    public final void onDismiss()
     {
-      if (this.mDefaultActivityButton.getVisibility() != 0) {
-        break label173;
+      if (ActivityChooserView.this.i != null) {
+        ActivityChooserView.this.i.onDismiss();
       }
-      this.mActivityChooserContent.setBackgroundDrawable(this.mActivityChooserContentBackground);
-      return;
-      this.mExpandActivityOverflowButton.setEnabled(false);
-      break;
-      label161:
-      this.mDefaultActivityButton.setVisibility(8);
+      if (ActivityChooserView.this.g != null) {
+        ActivityChooserView.this.g.a(false);
+      }
     }
-    label173:
-    this.mActivityChooserContent.setBackgroundDrawable(null);
+    
+    public final void onItemClick(AdapterView<?> arg1, View paramView, int paramInt, long paramLong)
+    {
+      switch (((ActivityChooserView.a)???.getAdapter()).getItemViewType(paramInt))
+      {
+      default: 
+        throw new IllegalArgumentException();
+      case 1: 
+        ActivityChooserView.this.a(2147483647);
+        return;
+      }
+      ActivityChooserView.this.b();
+      if (ActivityChooserView.this.j) {
+        if (paramInt > 0) {
+          paramView = ActivityChooserView.this.a.a;
+        }
+      }
+      for (;;)
+      {
+        synchronized (paramView.b)
+        {
+          paramView.d();
+          iv.a locala1 = (iv.a)paramView.c.get(paramInt);
+          iv.a locala2 = (iv.a)paramView.c.get(0);
+          if (locala2 == null) {
+            break label261;
+          }
+          f = locala2.b - locala1.b + 5.0F;
+          paramView.a(new iv.c(new ComponentName(locala1.a.activityInfo.packageName, locala1.a.activityInfo.name), System.currentTimeMillis(), f));
+          return;
+        }
+        return;
+        if (!ActivityChooserView.this.a.b) {
+          paramInt += 1;
+        }
+        ??? = ActivityChooserView.this.a.a.b(paramInt);
+        if (??? != null)
+        {
+          ???.addFlags(524288);
+          ActivityChooserView.this.getContext().startActivity(???);
+        }
+        return;
+        label261:
+        float f = 1.0F;
+      }
+    }
+    
+    public final boolean onLongClick(View paramView)
+    {
+      if (paramView == ActivityChooserView.this.e)
+      {
+        if (ActivityChooserView.this.a.getCount() > 0)
+        {
+          paramView = ActivityChooserView.this;
+          paramView.j = true;
+          paramView.a(paramView.k);
+        }
+        return true;
+      }
+      throw new IllegalArgumentException();
+    }
   }
 }
 

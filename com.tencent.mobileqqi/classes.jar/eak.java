@@ -1,28 +1,22 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.richstatus.MovieDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class eak
-  extends AbstractChatItemBuilder.ViewHolder
+  implements View.OnClickListener
 {
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  public URLImageView a;
-  public String a;
-  public ViewGroup b;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public eak(RichStatItemBuilder paramRichStatItemBuilder, int paramInt1, int paramInt2, String paramString1, String paramString2) {}
   
-  public eak(QzoneFeedItemBuilder paramQzoneFeedItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOSign", 2, "actionId is:" + this.jdField_a_of_type_Int + ",dataId is:" + this.jdField_b_of_type_Int);
+    }
+    MovieDetailActivity.a((BaseActivity)RichStatItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+  }
 }
 
 

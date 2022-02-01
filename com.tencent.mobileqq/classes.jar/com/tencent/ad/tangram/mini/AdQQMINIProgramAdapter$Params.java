@@ -14,12 +14,20 @@ public final class AdQQMINIProgramAdapter$Params
   
   public boolean isValid()
   {
-    return (this.context != null) && (this.context.get() != null) && (this.ad != null) && (this.ad.isValid()) && (!TextUtils.isEmpty(this.ad.getUrlForLandingPage()));
+    Object localObject = this.context;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
+    {
+      localObject = this.ad;
+      if ((localObject != null) && (((Ad)localObject).isValid()) && (!TextUtils.isEmpty(this.ad.getUrlForLandingPage()))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params
  * JD-Core Version:    0.7.0.1
  */

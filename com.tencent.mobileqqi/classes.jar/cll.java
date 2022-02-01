@@ -3,11 +3,11 @@ import com.tencent.mobileqq.activity.ForwardOperations;
 class cll
   implements Runnable
 {
-  cll(clk paramclk) {}
+  cll(clj paramclj) {}
   
   public void run()
   {
-    this.a.a.a(1004, 1, null, 0, null);
+    this.a.a.a(1005, 1, null, 0, null);
   }
 }
 

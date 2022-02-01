@@ -2,8 +2,8 @@
 <RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/a6v" android:background="@color/fu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/a72" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <ImageView android:id="@id/d7_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="420.0dip" android:scaleType="fitCenter" />
-        <ImageView android:id="@id/hongbao_close_iv" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ad5" android:layout_below="@id/d7_" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/a72" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true">
+        <ImageView android:id="@id/d7_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/hongbao_close_iv" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:src="@drawable/j0o" android:layout_below="@id/d7_" android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </RelativeLayout>

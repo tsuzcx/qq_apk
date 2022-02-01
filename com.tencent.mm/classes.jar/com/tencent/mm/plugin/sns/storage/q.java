@@ -1,200 +1,152 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.protocal.protobuf.ayx;
-import com.tencent.mm.protocal.protobuf.cec;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.autogen.b.hj;
+import com.tencent.mm.plugin.sns.cover.a.b;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.vfs.y;
+import java.io.IOException;
 
 public final class q
-  extends j<p>
+  extends hj
+  implements b
 {
-  public static final String[] SQL_CREATE;
-  public h fnw;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public String QYG = "";
+  public String QYH;
   
   static
   {
-    AppMethodBeat.i(37975);
-    SQL_CREATE = new String[] { j.getCreateSQLs(p.info, "SnsReportKv") };
-    AppMethodBeat.o(37975);
+    AppMethodBeat.i(306562);
+    info = hj.aJm();
+    AppMethodBeat.o(306562);
   }
   
-  public q(h paramh)
+  public final String bud()
   {
-    super(paramh, p.info, "SnsReportKv", p.INDEX_CREATE);
-    this.fnw = paramh;
+    AppMethodBeat.i(306570);
+    if (y.ZC(this.field_localThumb))
+    {
+      str = this.field_localThumb;
+      AppMethodBeat.o(306570);
+      return str;
+    }
+    String str = this.field_thumbUrl;
+    AppMethodBeat.o(306570);
+    return str;
   }
   
-  private int a(cec paramcec, int paramInt)
+  public final String gUr()
   {
-    AppMethodBeat.i(37973);
+    AppMethodBeat.i(306565);
+    if ((this.field_type == 1) || (this.field_type == 6) || (this.field_type == 0))
+    {
+      if (y.ZC(this.field_localImage))
+      {
+        str = this.field_localImage;
+        AppMethodBeat.o(306565);
+        return str;
+      }
+      if (!TextUtils.isEmpty(this.field_imageBgUrl))
+      {
+        str = this.field_imageBgUrl;
+        AppMethodBeat.o(306565);
+        return str;
+      }
+    }
+    String str = bud();
+    AppMethodBeat.o(306565);
+    return str;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public final FinderObject getFinderObject()
+  {
+    AppMethodBeat.i(306572);
+    FinderObject localFinderObject = new FinderObject();
+    if (this.field_finderObject != null) {}
     try
     {
-      paramcec = paramcec.toByteArray();
-      p localp = new p();
-      localp.field_value = paramcec;
-      localp.field_logtime = System.currentTimeMillis();
-      localp.field_logsize = paramInt;
-      localp.field_offset = 0;
-      paramcec = localp.convertTo();
-      paramInt = (int)this.fnw.a("SnsReportKv", "", paramcec);
-      ab.d("MicroMsg.SnsKvReportStg", "SnsKvReport Insert result ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(37973);
-      return paramInt;
+      localFinderObject.parseFrom(this.field_finderObject);
+      AppMethodBeat.o(306572);
+      return localFinderObject;
     }
-    catch (Exception paramcec)
+    catch (IOException localIOException)
     {
-      AppMethodBeat.o(37973);
-    }
-    return 0;
-  }
-  
-  public final int a(cec paramcec)
-  {
-    AppMethodBeat.i(37972);
-    cec localcec = new cec();
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    if (k < paramcec.wok.size())
-    {
-      ayx localayx = (ayx)paramcec.wok.get(k);
-      if (localayx.xop.pW.length + j > 51200)
-      {
-        a(localcec, j);
-        i += 1;
-        localcec.wok.clear();
-        j = 0;
-      }
       for (;;)
       {
-        k += 1;
-        break;
-        j += localayx.xop.pW.length;
-        localcec.wok.add(localayx);
+        Log.printErrStackTrace("MicroMsg.SnsCover", localIOException, "FinderObject parseFrom error", new Object[0]);
       }
     }
-    k = i;
-    if (localcec.wok.size() > 0)
-    {
-      k = i + 1;
-      a(localcec, j);
-    }
-    AppMethodBeat.o(37972);
-    return k;
   }
   
-  public final cec fE(int paramInt1, int paramInt2)
+  public final String getUserName()
   {
-    AppMethodBeat.i(37974);
-    Object localObject = "select rowid, *  from SnsReportKv";
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramInt2 > 0) {
-      localObject = "select rowid, *  from SnsReportKv" + " where rowid <= " + paramInt2;
-    }
-    Cursor localCursor = this.fnw.a((String)localObject, null, 0);
-    cec localcec = new cec();
-    ArrayList localArrayList = new ArrayList();
-    localStringBuffer.append("target size " + paramInt1 + " current maxcolid " + paramInt2);
-    if (localCursor.moveToFirst()) {
-      paramInt2 = 0;
-    }
-    for (;;)
+    return this.field_userName;
+  }
+  
+  public final String getVideoPath()
+  {
+    AppMethodBeat.i(306569);
+    if (y.ZC(this.field_localVideo))
     {
-      p localp = new p();
-      localp.convertFrom(localCursor);
-      i = localp.field_offset;
-      localStringBuffer.append("|offset: ".concat(String.valueOf(i)));
-      localObject = new cec();
+      str = this.field_localVideo;
+      AppMethodBeat.o(306569);
+      return str;
+    }
+    String str = this.field_videoBgUrl;
+    AppMethodBeat.o(306569);
+    return str;
+  }
+  
+  public final Long hen()
+  {
+    AppMethodBeat.i(306581);
+    long l = this.field_finderCheckTime;
+    AppMethodBeat.o(306581);
+    return Long.valueOf(l);
+  }
+  
+  public final Long heo()
+  {
+    AppMethodBeat.i(369893);
+    long l = this.field_snsBgId;
+    AppMethodBeat.o(369893);
+    return Long.valueOf(l);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(306590);
+    Object localObject = new FinderObject();
+    if (this.field_finderObject != null) {}
+    try
+    {
+      ((FinderObject)localObject).parseFrom(this.field_finderObject);
+      localObject = "SnsCover{field_userName='" + this.field_userName + '\'' + ", field_type=" + this.field_type + ", field_snsBgId=" + t.uA(this.field_snsBgId) + ", field_thumbUrl='" + this.field_thumbUrl + '\'' + ", field_imageBgUrl='" + this.field_imageBgUrl + '\'' + ", field_videoBgUrl='" + this.field_videoBgUrl + '\'' + ", field_localThumb='" + this.field_localThumb + '\'' + ", field_localImage='" + this.field_localImage + '\'' + ", field_localVideo='" + this.field_localVideo + '\'' + ", field_finderObject=" + t.uA(((FinderObject)localObject).id) + ", field_finderCheckTime=" + this.field_finderCheckTime + ", field_success=" + this.field_success + ", systemRowid=" + this.systemRowid + ", reportExtraInfo=" + this.QYG + '}';
+      AppMethodBeat.o(306590);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
       for (;;)
       {
-        try
-        {
-          ((cec)localObject).parseFrom(localp.field_value);
-        }
-        catch (Exception localException2)
-        {
-          ayx localayx;
-          continue;
-          i = 0;
-          continue;
-          i = 1;
-          continue;
-        }
-        try
-        {
-          if (i >= ((cec)localObject).wok.size()) {
-            continue;
-          }
-          localayx = (ayx)((cec)localObject).wok.get(i);
-          if (localayx.xop.pW.length + paramInt2 > paramInt1)
-          {
-            if (paramInt2 != 0) {
-              continue;
-            }
-            localArrayList.add(Integer.valueOf(localp.rCV));
-            ab.i("MicroMsg.SnsKvReportStg", "error by server for the mini size " + paramInt1 + " vlauesize " + localayx.xop.pW.length);
-            continue;
-            localStringBuffer.append("|read end on " + localp.rCV + " and get size " + paramInt2);
-            if ((i != 0) && (localp.field_offset <= ((cec)localObject).wok.size()))
-            {
-              update(localp.rCV, localp);
-              localStringBuffer.append("|update new offset " + localp.field_offset);
-              if (i == 0) {
-                continue;
-              }
-              ab.i("MicroMsg.SnsKvReportStg", "read info " + localStringBuffer.toString());
-              localCursor.close();
-              localObject = localArrayList.iterator();
-              if (!((Iterator)localObject).hasNext()) {
-                continue;
-              }
-              delete(((Integer)((Iterator)localObject).next()).intValue());
-              continue;
-            }
-          }
-          else
-          {
-            localp.field_offset = (i + 1);
-            localcec.wok.add(localayx);
-            int j = paramInt2 + localayx.xop.pW.length;
-            i += 1;
-            paramInt2 = j;
-            continue;
-          }
-          localStringBuffer.append("|read full ");
-          localArrayList.add(Integer.valueOf(localp.rCV));
-          continue;
-          if (localCursor.moveToNext()) {
-            break;
-          }
-        }
-        catch (Exception localException1)
-        {
-          ab.printErrStackTrace("MicroMsg.SnsKvReportStg", localException1, "", new Object[0]);
-          localArrayList.add(Integer.valueOf(localp.rCV));
-          ab.i("MicroMsg.SnsKvReportStg", "error paser then delete " + localp.rCV);
-        }
+        Log.printErrStackTrace("MicroMsg.SnsCover", localIOException, "FinderObject parseFrom error", new Object[0]);
       }
     }
-    for (;;)
-    {
-      break;
-    }
-    AppMethodBeat.o(37974);
-    return localcec;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.q
  * JD-Core Version:    0.7.0.1
  */

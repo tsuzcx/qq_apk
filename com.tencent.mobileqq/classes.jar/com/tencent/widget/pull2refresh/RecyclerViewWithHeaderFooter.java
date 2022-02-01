@@ -10,11 +10,6 @@ import android.support.v7.widget.RecyclerView.RecycledViewPool;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import bien;
-import bifb;
-import biff;
-import bifg;
-import bifh;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,11 +17,11 @@ import java.util.List;
 public class RecyclerViewWithHeaderFooter
   extends RecyclerViewCompat
 {
-  private biff jdField_a_of_type_Biff;
-  private bifg jdField_a_of_type_Bifg;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
-  private final List<View> b = new ArrayList();
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver contentDataObserver;
+  private final List<View> mFooters = new ArrayList();
+  private final List<View> mHeaders = new ArrayList();
+  public boolean mInterceptTouchEvent = false;
+  private RecyclerViewHeaderViewAdapter.OnBindHeaderObserver onBindHeaderObserver;
   
   public RecyclerViewWithHeaderFooter(Context paramContext)
   {
@@ -43,37 +38,47 @@ public class RecyclerViewWithHeaderFooter
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(View paramView)
+  public void addFooterView(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
+    this.mFooters.add(paramView);
   }
   
-  public boolean a(View paramView)
+  public void addHeaderView(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramView);
+    this.mHeaders.add(paramView);
   }
   
-  public void b(View paramView)
+  public RecyclerViewHeaderViewAdapter.ContentDataObserver getContentDataObserver()
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramView);
+    return this.contentDataObserver;
   }
   
-  public int c()
+  public int getFooterViewsCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.mFooters;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
-  public void c(View paramView)
+  public int getHeaderViewsCount()
   {
-    this.b.add(paramView);
+    List localList = this.mHeaders;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public boolean hasHeader(View paramView)
+  {
+    return this.mHeaders.contains(paramView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mInterceptTouchEvent)
     {
       super.onInterceptTouchEvent(paramMotionEvent);
       return true;
@@ -83,83 +88,105 @@ public class RecyclerViewWithHeaderFooter
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mInterceptTouchEvent)
     {
       if (paramMotionEvent.getAction() == 1) {
-        this.jdField_a_of_type_Boolean = false;
+        this.mInterceptTouchEvent = false;
       }
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
+  public void removeFooterView(View paramView)
+  {
+    this.mFooters.remove(paramView);
+  }
+  
+  public void removeHeaderView(View paramView)
+  {
+    this.mHeaders.remove(paramView);
+  }
+  
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
+    if (this.mHeaders.size() <= 0)
     {
       localObject = paramAdapter;
-      if (this.b.size() <= 0) {}
+      if (this.mFooters.size() <= 0) {}
     }
     else
     {
-      localObject = new bifb(paramAdapter);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = new RecyclerViewHeaderViewAdapter(paramAdapter);
+      Iterator localIterator = this.mHeaders.iterator();
       while (localIterator.hasNext()) {
-        ((bifb)localObject).a((View)localIterator.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).addHeader((View)localIterator.next());
       }
-      localIterator = this.b.iterator();
+      localIterator = this.mFooters.iterator();
       while (localIterator.hasNext()) {
-        ((bifb)localObject).c((View)localIterator.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).addFooter((View)localIterator.next());
       }
-      ((bifb)localObject).setHasStableIds(paramAdapter.hasStableIds());
+      ((RecyclerViewHeaderViewAdapter)localObject).setHasStableIds(paramAdapter.hasStableIds());
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramAdapter = (GridLayoutManager)getLayoutManager();
-        paramAdapter.setSpanSizeLookup(new bien((bifb)localObject, paramAdapter));
+        paramAdapter.setSpanSizeLookup(new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramAdapter));
       }
-      if (this.jdField_a_of_type_Biff != null) {
-        ((bifb)localObject).a(this.jdField_a_of_type_Biff);
+      paramAdapter = this.contentDataObserver;
+      if (paramAdapter != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).setContentDataObserver(paramAdapter);
       }
-      if (this.jdField_a_of_type_Bifg != null) {
-        ((bifb)localObject).a(this.jdField_a_of_type_Bifg);
+      paramAdapter = this.onBindHeaderObserver;
+      if (paramAdapter != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).setOnBindHeaderObserver(paramAdapter);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
   }
   
+  public RecyclerViewWithHeaderFooter setContentDataObserver(RecyclerViewHeaderViewAdapter.ContentDataObserver paramContentDataObserver)
+  {
+    this.contentDataObserver = paramContentDataObserver;
+    RecyclerView.Adapter localAdapter = getAdapter();
+    if ((localAdapter != null) && ((localAdapter instanceof RecyclerViewHeaderViewAdapter))) {
+      ((RecyclerViewHeaderViewAdapter)localAdapter).setContentDataObserver(paramContentDataObserver);
+    }
+    return this;
+  }
+  
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
     super.setLayoutManager(paramLayoutManager);
-    if ((getAdapter() != null) && ((getAdapter() instanceof bifb)))
+    if ((getAdapter() != null) && ((getAdapter() instanceof RecyclerViewHeaderViewAdapter)))
     {
-      Object localObject = (bifb)getAdapter();
+      Object localObject = (RecyclerViewHeaderViewAdapter)getAdapter();
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramLayoutManager = (GridLayoutManager)getLayoutManager();
-        localObject = new bien((bifb)localObject, paramLayoutManager);
-        ((bien)localObject).a(paramLayoutManager.getSpanSizeLookup());
+        localObject = new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramLayoutManager);
+        ((HeaderSpanSizeLookup)localObject).setSpanSizeLookup(paramLayoutManager.getSpanSizeLookup());
         paramLayoutManager.setSpanSizeLookup((GridLayoutManager.SpanSizeLookup)localObject);
       }
     }
   }
   
-  public void setOnBindHeaderObserver(bifg parambifg)
+  public void setOnBindHeaderObserver(RecyclerViewHeaderViewAdapter.OnBindHeaderObserver paramOnBindHeaderObserver)
   {
-    this.jdField_a_of_type_Bifg = parambifg;
-    if ((getAdapter() instanceof bifb)) {
-      ((bifb)getAdapter()).a(parambifg);
+    this.onBindHeaderObserver = paramOnBindHeaderObserver;
+    if ((getAdapter() instanceof RecyclerViewHeaderViewAdapter)) {
+      ((RecyclerViewHeaderViewAdapter)getAdapter()).setOnBindHeaderObserver(paramOnBindHeaderObserver);
     }
   }
   
   public void setRecycledViewPool(RecyclerView.RecycledViewPool paramRecycledViewPool)
   {
-    super.setRecycledViewPool(new bifh(this));
+    super.setRecycledViewPool(new RecyclerViewWithHeaderFooter.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

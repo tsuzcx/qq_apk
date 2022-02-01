@@ -30,7 +30,7 @@ public class RealTimeProcessVarianceFilter
   {
     this.blendAlpha = paramFloat;
     addParam(new UniformParam.FloatParam("blurAlpha", paramFloat));
-    addParam(new UniformParam.FloatParam("sharpen", 0.4F * paramFloat));
+    addParam(new UniformParam.FloatParam("sharpen", paramFloat * 0.4F));
   }
   
   public void setSize(float paramFloat1, float paramFloat2)
@@ -51,7 +51,7 @@ public class RealTimeProcessVarianceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.RealTimeProcessVarianceFilter
  * JD-Core Version:    0.7.0.1
  */

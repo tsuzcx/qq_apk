@@ -1,6 +1,7 @@
 package cooperation.qzone.music;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.music.BroadcastMusicInfo;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
@@ -13,70 +14,73 @@ class QzoneWebMusicJsPlugin$25
   
   public void run()
   {
-    if (QzoneWebMusicJsPlugin.access$500(this.this$0)) {
-      for (;;)
+    if (QzoneWebMusicJsPlugin.access$500(this.this$0)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject1;
+      Object localObject2;
+      if (this.val$bundle != null)
       {
-        try
+        localObject1 = (SongInfo)this.val$bundle.getParcelable("param.song");
+        if ((localObject1 != null) && (((SongInfo)localObject1).m == 9) && (((SongInfo)localObject1).o != null))
         {
-          localJSONObject1 = new JSONObject();
-          if (this.a == null) {
-            continue;
+          int i = this.val$bundle.getInt("param.state");
+          localJSONObject.put("code", 0);
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("uin", this.val$bundle.getLong("param.uin"));
+          ((JSONObject)localObject2).put("detailUrl", ((SongInfo)localObject1).o.c);
+          ((JSONObject)localObject2).put("broadcastID", ((SongInfo)localObject1).o.a);
+          ((JSONObject)localObject2).put("broadcastName", ((SongInfo)localObject1).o.b);
+          if (i == 2) {
+            ((JSONObject)localObject2).put("state", "playing");
+          } else if (i == 1) {
+            ((JSONObject)localObject2).put("state", "buffering");
+          } else {
+            ((JSONObject)localObject2).put("state", "paused");
           }
-          SongInfo localSongInfo = (SongInfo)this.a.getParcelable("param.song");
-          if ((localSongInfo == null) || (localSongInfo.b != 9) || (localSongInfo.a == null)) {
-            continue;
-          }
-          i = this.a.getInt("param.state");
-          localJSONObject1.put("code", 0);
-          localJSONObject2 = new JSONObject();
-          localJSONObject2.put("uin", this.a.getLong("param.uin"));
-          localJSONObject2.put("detailUrl", localSongInfo.a.detailUrl);
-          localJSONObject2.put("broadcastID", localSongInfo.a.broadcastID);
-          localJSONObject2.put("broadcastName", localSongInfo.a.broadcastName);
-          if (i != 2) {
-            continue;
-          }
-          localJSONObject2.put("state", "playing");
+          localJSONObject.put("data", localObject2);
         }
-        catch (Exception localException)
+        else
         {
-          JSONObject localJSONObject1;
-          int i;
-          JSONObject localJSONObject2;
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.e(QzoneWebMusicJsPlugin.access$600(this.this$0), 2, "callNetWorkInterfaceForGetttingLiveInfo error");
-          return;
-          localJSONObject2.put("state", "paused");
-          continue;
-          localException.put("code", 1);
-          continue;
-          QzoneWebMusicJsPlugin.access$700().a(localException);
+          localJSONObject.put("code", 1);
         }
-        localJSONObject1.put("data", localJSONObject2);
-        if (QLog.isColorLevel()) {
-          QLog.e(QzoneWebMusicJsPlugin.access$600(this.this$0), 2, "callNetWorkInterfaceForGetttingLiveInfo  isDestroy " + this.this$0.isDestroy + "  result " + localJSONObject1.toString());
-        }
-        if ((this.this$0.isDestroy) || (QzoneWebMusicJsPlugin.access$700() == null)) {
-          return;
-        }
-        if (!QzoneWebMusicJsPlugin.access$700().a) {
-          continue;
-        }
-        this.this$0.callJs4OpenApi(QzoneWebMusicJsPlugin.access$700(), 0, localJSONObject1.toString());
-        return;
-        if (i != 1) {
-          continue;
-        }
-        localJSONObject2.put("state", "buffering");
       }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = QzoneWebMusicJsPlugin.access$600(this.this$0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("callNetWorkInterfaceForGetttingLiveInfo  isDestroy ");
+        ((StringBuilder)localObject2).append(this.this$0.isDestroy);
+        ((StringBuilder)localObject2).append("  result ");
+        ((StringBuilder)localObject2).append(localJSONObject.toString());
+        QLog.e((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+      }
+      if ((this.this$0.isDestroy) || (QzoneWebMusicJsPlugin.access$700() == null)) {
+        break label353;
+      }
+      if (QzoneWebMusicJsPlugin.access$700().c)
+      {
+        this.this$0.callJs4OpenApi(QzoneWebMusicJsPlugin.access$700(), 0, localJSONObject.toString());
+        return;
+      }
+      QzoneWebMusicJsPlugin.access$700().a(localJSONObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      label334:
+      label353:
+      break label334;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(QzoneWebMusicJsPlugin.access$600(this.this$0), 2, "callNetWorkInterfaceForGetttingLiveInfo error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.25
  * JD-Core Version:    0.7.0.1
  */

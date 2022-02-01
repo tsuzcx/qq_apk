@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/dialogQbShareSuccess" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/dialogBase_width" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/resultContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:minHeight="100.0dip">
+        <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/black" android:gravity="center" android:id="@id/resultTitle" android:layout_width="wrap_content" android:layout_height="@dimen/qzone_share_result_title_height" android:singleLine="true" android:drawablePadding="8.0dip" />
+        <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/gray" android:ellipsize="end" android:gravity="center" android:id="@id/resultSummary" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="2.0dip" android:maxLines="2" />
+    </LinearLayout>
+    <View android:background="@color/dialog_gray" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_divider_width" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/btnLayout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogBtn1" android:background="@drawable/common_dialog_btn_left" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="@string/share_aio_dialog_btn_back" android:singleLine="true" android:layout_weight="1.0" />
+        <View android:background="@color/dialog_gray" android:layout_width="@dimen/dialogBase_divider_width" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogBtn2" android:background="@drawable/common_dialog_btn_right" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="@string/share_aio_dialog_btn_stay" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

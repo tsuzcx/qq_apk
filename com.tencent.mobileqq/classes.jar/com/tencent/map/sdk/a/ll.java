@@ -40,71 +40,82 @@ public final class ll
   
   public final void a()
   {
-    if (this.k == true) {}
-    do
-    {
+    if (this.k == true) {
       return;
-      this.k = true;
-      if (this.i == null) {
-        this.i = e();
-      }
-      if (this.d != null) {
-        this.d.setVisible(true);
-      }
-      if (this.e != null) {
-        this.e.setVisible(true);
-      }
-    } while (this.j == null);
-    this.j.activate(this.i);
+    }
+    this.k = true;
+    if (this.i == null) {
+      this.i = e();
+    }
+    Object localObject = this.d;
+    if (localObject != null) {
+      ((Marker)localObject).setVisible(true);
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      ((Circle)localObject).setVisible(true);
+    }
+    localObject = this.j;
+    if (localObject != null) {
+      ((LocationSource)localObject).activate(this.i);
+    }
   }
   
   public final void a(LocationSource paramLocationSource)
   {
     this.j = paramLocationSource;
-    if ((!this.k) || (paramLocationSource == null)) {
-      return;
+    if (this.k)
+    {
+      if (paramLocationSource == null) {
+        return;
+      }
+      this.j.activate(this.i);
     }
-    this.j.activate(this.i);
   }
   
   public final void a(MyLocationStyle paramMyLocationStyle)
   {
     this.g = paramMyLocationStyle;
-    if (this.e != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      this.e.setFillColor(paramMyLocationStyle.getFillColor());
+      ((Circle)localObject).setFillColor(paramMyLocationStyle.getFillColor());
       this.e.setStrokeColor(paramMyLocationStyle.getStrokeColor());
       this.e.setStrokeWidth(paramMyLocationStyle.getStrokeWidth());
     }
-    if (this.d != null)
+    localObject = this.d;
+    if (localObject != null)
     {
-      this.d.setIcon(paramMyLocationStyle.getMyLocationIcon());
+      ((Marker)localObject).setIcon(paramMyLocationStyle.getMyLocationIcon());
       this.d.setAnchor(paramMyLocationStyle.getAnchorU(), paramMyLocationStyle.getAnchorV());
     }
   }
   
   public final void b()
   {
-    if (this.d != null)
+    Object localObject = this.d;
+    if (localObject != null)
     {
-      this.d.setVisible(false);
+      ((Marker)localObject).setVisible(false);
       this.d.remove();
       this.d = null;
     }
-    if (this.e != null)
+    localObject = this.e;
+    if (localObject != null)
     {
-      this.e.setVisible(false);
+      ((Circle)localObject).setVisible(false);
       this.e.remove();
       this.e = null;
     }
-    if (!this.k) {}
-    do
-    {
+    if (!this.k) {
       return;
-      this.k = false;
-      this.i = null;
-    } while (this.j == null);
-    this.j.deactivate();
+    }
+    this.k = false;
+    this.i = null;
+    localObject = this.j;
+    if (localObject != null) {
+      ((LocationSource)localObject).deactivate();
+    }
   }
   
   public final boolean c()
@@ -114,15 +125,16 @@ public final class ll
   
   public final Location d()
   {
-    if (this.h == null) {
+    Location localLocation = this.h;
+    if (localLocation == null) {
       return null;
     }
-    return new Location(this.h);
+    return new Location(localLocation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ll
  * JD-Core Version:    0.7.0.1
  */

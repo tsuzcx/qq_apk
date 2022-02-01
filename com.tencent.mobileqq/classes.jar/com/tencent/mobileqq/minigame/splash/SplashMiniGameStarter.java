@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
 
 public class SplashMiniGameStarter
 {
@@ -24,10 +23,10 @@ public class SplashMiniGameStarter
   private static String appVersionInConfig;
   public static SplashMiniGameData curData;
   public static HashMap<String, SplashMiniGameData> dataMap;
-  public static boolean hasClickJumpBtn;
-  public static boolean hasJumped;
-  public static boolean hasPreloaded;
-  public static boolean needJump;
+  public static boolean hasClickJumpBtn = false;
+  public static boolean hasJumped = false;
+  public static boolean hasPreloaded = false;
+  public static boolean needJump = false;
   private static ArrayList<String> syncPlayList = new ArrayList();
   
   public static void clearAllConfig()
@@ -37,12 +36,23 @@ public class SplashMiniGameStarter
   
   private static String getFilePath(String paramString)
   {
-    File localFile = new File("/data/data/com.tencent.mobileqq/files/minigame/splash/" + paramString);
-    if (localFile.exists()) {
-      return "/data/data/com.tencent.mobileqq/files/minigame/splash/" + paramString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/minigame/splash/");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/minigame/splash/");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
     }
-    if (localFile.mkdirs()) {
-      return "/data/data/com.tencent.mobileqq/files/minigame/splash/" + paramString;
+    if (((File)localObject).mkdirs())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/minigame/splash/");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
     }
     return null;
   }
@@ -56,45 +66,106 @@ public class SplashMiniGameStarter
     }
     HashMap localHashMap = new HashMap();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       String str = localSharedPreferences.getString(Integer.toString(i), "");
-      if (TextUtils.isEmpty(str)) {}
-      for (;;)
+      if (!TextUtils.isEmpty(str))
       {
-        i += 1;
-        break;
         SplashMiniGameData localSplashMiniGameData = new SplashMiniGameData();
-        localSplashMiniGameData.enable = localSharedPreferences.getInt("enable_" + str, 0);
-        localSplashMiniGameData.guide = localSharedPreferences.getInt("guide_" + str, 0);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("enable_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.enable = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 0);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("guide_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.guide = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 0);
         localSplashMiniGameData.appId = str;
-        localSplashMiniGameData.videoUrl = localSharedPreferences.getString("video_url_" + str, "");
-        localSplashMiniGameData.videoDuration = localSharedPreferences.getInt("video_duration_" + str, 10);
-        localSplashMiniGameData.videoMute = localSharedPreferences.getInt("video_mute_" + str, 1);
-        localSplashMiniGameData.picUrl = localSharedPreferences.getString("pic_url_" + str, "");
-        localSplashMiniGameData.desc = localSharedPreferences.getString("desc_" + str, "");
-        localSplashMiniGameData.developerDesc = localSharedPreferences.getString("developer_desc_" + str, "");
-        localSplashMiniGameData.downloadUrl = localSharedPreferences.getString("download_url_" + str, "");
-        localSplashMiniGameData.fileSize = localSharedPreferences.getInt("file_size_" + str, 0);
-        localSplashMiniGameData.iconUrl = localSharedPreferences.getString("icon_url_" + str, "");
-        localSplashMiniGameData.version = localSharedPreferences.getString("version_" + str, "");
-        localSplashMiniGameData.name = localSharedPreferences.getString("name_" + str, "");
-        localSplashMiniGameData.isPlayed = Boolean.valueOf(localSharedPreferences.getBoolean("isplayed_" + str, false));
-        localSplashMiniGameData.videoLocalPath = localSharedPreferences.getString("videoLocalPath_" + str, "");
-        localSplashMiniGameData.picLocalPath = localSharedPreferences.getString("picLocalPath_" + str, "");
-        localSplashMiniGameData.startTime = localSharedPreferences.getLong("startTime_" + str, 0L);
-        localSplashMiniGameData.endTime = localSharedPreferences.getLong("endTime_" + str, 0L);
-        localSplashMiniGameData.priority = localSharedPreferences.getInt("priority_" + str, 10);
-        Set localSet = localSharedPreferences.getStringSet("request_DomainList_" + str, null);
-        if (localSet != null) {
-          localSplashMiniGameData.requestDomianList = new ArrayList(localSet);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("video_url_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.videoUrl = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("video_duration_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.videoDuration = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 10);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("video_mute_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.videoMute = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("pic_url_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.picUrl = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("desc_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.desc = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("developer_desc_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.developerDesc = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("download_url_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.downloadUrl = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("file_size_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.fileSize = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 0);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("icon_url_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.iconUrl = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("version_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.version = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("name_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.name = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isplayed_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.isPlayed = Boolean.valueOf(localSharedPreferences.getBoolean(((StringBuilder)localObject).toString(), false));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("videoLocalPath_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.videoLocalPath = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("picLocalPath_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.picLocalPath = localSharedPreferences.getString(((StringBuilder)localObject).toString(), "");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startTime_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.startTime = localSharedPreferences.getLong(((StringBuilder)localObject).toString(), 0L);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("endTime_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.endTime = localSharedPreferences.getLong(((StringBuilder)localObject).toString(), 0L);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("priority_");
+        ((StringBuilder)localObject).append(str);
+        localSplashMiniGameData.priority = localSharedPreferences.getInt(((StringBuilder)localObject).toString(), 10);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("request_DomainList_");
+        ((StringBuilder)localObject).append(str);
+        localObject = localSharedPreferences.getStringSet(((StringBuilder)localObject).toString(), null);
+        if (localObject != null) {
+          localSplashMiniGameData.requestDomianList = new ArrayList((Collection)localObject);
         }
-        localSet = localSharedPreferences.getStringSet("downloadFile_DomainList_" + str, null);
-        if (localSet != null) {
-          localSplashMiniGameData.downloadFileDomianList = new ArrayList(localSet);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("downloadFile_DomainList_");
+        ((StringBuilder)localObject).append(str);
+        localObject = localSharedPreferences.getStringSet(((StringBuilder)localObject).toString(), null);
+        if (localObject != null) {
+          localSplashMiniGameData.downloadFileDomianList = new ArrayList((Collection)localObject);
         }
         localHashMap.put(str, localSplashMiniGameData);
       }
+      i += 1;
     }
     appVersionInConfig = localSharedPreferences.getString("appVersion", "");
     return localHashMap;
@@ -103,46 +174,67 @@ public class SplashMiniGameStarter
   public static boolean needShow()
   {
     dataMap = loadConfig();
-    if ((dataMap == null) || (dataMap.size() == 0)) {
-      return false;
-    }
-    long l = System.currentTimeMillis() / 1000L;
-    Iterator localIterator = dataMap.values().iterator();
-    while (localIterator.hasNext())
+    Object localObject = dataMap;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      SplashMiniGameData localSplashMiniGameData = (SplashMiniGameData)localIterator.next();
-      if ((localSplashMiniGameData.enable == 1) && (l > localSplashMiniGameData.startTime) && (l < localSplashMiniGameData.endTime) && (!localSplashMiniGameData.isPlayed.booleanValue()) && (!TextUtils.isEmpty(localSplashMiniGameData.videoLocalPath)) && (!TextUtils.isEmpty(localSplashMiniGameData.picLocalPath)) && (new File(localSplashMiniGameData.videoLocalPath).exists()) && (new File(localSplashMiniGameData.picLocalPath).exists())) {
-        if (curData == null)
+      if (((HashMap)localObject).size() == 0) {
+        return false;
+      }
+      long l = System.currentTimeMillis() / 1000L;
+      localObject = dataMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        SplashMiniGameData localSplashMiniGameData1 = (SplashMiniGameData)((Iterator)localObject).next();
+        if ((localSplashMiniGameData1.enable == 1) && (l > localSplashMiniGameData1.startTime) && (l < localSplashMiniGameData1.endTime) && (!localSplashMiniGameData1.isPlayed.booleanValue()) && (!TextUtils.isEmpty(localSplashMiniGameData1.videoLocalPath)) && (!TextUtils.isEmpty(localSplashMiniGameData1.picLocalPath)) && (new File(localSplashMiniGameData1.videoLocalPath).exists()) && (new File(localSplashMiniGameData1.picLocalPath).exists()))
         {
-          curData = localSplashMiniGameData;
-        }
-        else if (curData.priority >= localSplashMiniGameData.priority)
-        {
-          syncPlayList.add(curData.appId);
-          curData = localSplashMiniGameData;
+          SplashMiniGameData localSplashMiniGameData2 = curData;
+          if (localSplashMiniGameData2 == null)
+          {
+            curData = localSplashMiniGameData1;
+          }
+          else if (localSplashMiniGameData2.priority >= localSplashMiniGameData1.priority)
+          {
+            syncPlayList.add(curData.appId);
+            curData = localSplashMiniGameData1;
+          }
         }
       }
+      localObject = curData;
+      if ((localObject != null) && (((SplashMiniGameData)localObject).guide == 1)) {
+        setNeedShowGuideInConf(false);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("michael curData:");
+      ((StringBuilder)localObject).append(curData);
+      QLog.d("SplashMiniGameStarter", 2, ((StringBuilder)localObject).toString());
+      bool1 = bool2;
+      if (curData != null) {
+        bool1 = true;
+      }
     }
-    if ((curData != null) && (curData.guide == 1)) {
-      setNeedShowGuideInConf(false);
-    }
-    QLog.d("SplashMiniGameStarter", 2, "michael curData:" + curData);
-    return curData != null;
+    return bool1;
   }
   
   public static boolean needShowGuide()
   {
+    boolean bool2 = hasJumped;
     boolean bool1 = true;
-    if ((hasJumped) && (curData != null) && (curData.guide == 1)) {}
-    for (;;)
+    if (bool2)
     {
-      boolean bool2 = bool1;
-      if (!bool1) {
-        bool2 = BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).getBoolean("needshowguide", false);
-      }
-      return bool2;
+      SplashMiniGameData localSplashMiniGameData = curData;
+      if ((localSplashMiniGameData != null) && (localSplashMiniGameData.guide == 1)) {}
+    }
+    else
+    {
       bool1 = false;
     }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).getBoolean("needshowguide", false);
+    }
+    return bool2;
   }
   
   public static void preloadGameProcess()
@@ -184,7 +276,8 @@ public class SplashMiniGameStarter
   public static void setHasJumped()
   {
     hasJumped = true;
-    if ((curData != null) && (curData.guide == 1)) {
+    SplashMiniGameData localSplashMiniGameData = curData;
+    if ((localSplashMiniGameData != null) && (localSplashMiniGameData.guide == 1)) {
       setNeedShowGuideInConf(true);
     }
   }
@@ -194,32 +287,19 @@ public class SplashMiniGameStarter
     if (curData != null)
     {
       SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit();
-      Object localObject = "isplayed_" + curData.appId;
-      label68:
-      String str;
-      if (!paramBoolean)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isplayed_");
+      ((StringBuilder)localObject).append(curData.appId);
+      localEditor.putBoolean(((StringBuilder)localObject).toString(), paramBoolean ^ true);
+      localObject = syncPlayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        bool = true;
-        localEditor.putBoolean((String)localObject, bool);
-        localObject = syncPlayList.iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break label139;
-        }
-        str = (String)((Iterator)localObject).next();
-        str = "isplayed_" + str;
-        if (paramBoolean) {
-          break label134;
-        }
+        String str = (String)((Iterator)localObject).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isplayed_");
+        localStringBuilder.append(str);
+        localEditor.putBoolean(localStringBuilder.toString(), paramBoolean ^ true);
       }
-      label134:
-      for (boolean bool = true;; bool = false)
-      {
-        localEditor.putBoolean(str, bool);
-        break label68;
-        bool = false;
-        break;
-      }
-      label139:
       localEditor.commit();
     }
   }
@@ -233,7 +313,7 @@ public class SplashMiniGameStarter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter
  * JD-Core Version:    0.7.0.1
  */

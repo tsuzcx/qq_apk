@@ -9,7 +9,7 @@ public final class RspTopic
 {
   static byte[] cache_strRspTopic;
   public short shShowPos = 4;
-  public byte[] strRspTopic;
+  public byte[] strRspTopic = null;
   
   public RspTopic() {}
   
@@ -38,7 +38,7 @@ public final class RspTopic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.RspTopic
  * JD-Core Version:    0.7.0.1
  */

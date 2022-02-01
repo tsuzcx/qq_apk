@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ciw;
-import com.tencent.mm.protocal.protobuf.cix;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.fks;
+import com.tencent.mm.protocal.protobuf.fkt;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
+  public int Utk;
+  private h callback;
   public int mStatus;
-  private final b rr;
-  public int tro;
+  private final c rr;
   
   public i(int paramInt)
   {
-    AppMethodBeat.i(26101);
-    b.a locala = new b.a();
-    locala.fsX = new ciw();
-    locala.fsY = new cix();
+    AppMethodBeat.i(29782);
+    c.a locala = new c.a();
+    locala.otE = new fks();
+    locala.otF = new fkt();
     locala.uri = "/cgi-bin/micromsg-bin/switchopvoiceprint";
     locala.funcId = 615;
-    locala.reqCmdId = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((ciw)this.rr.fsV.fta).cut = paramInt;
-    AppMethodBeat.o(26101);
+    this.rr = locala.bEF();
+    ((fks)c.b.b(this.rr.otB)).hId = paramInt;
+    AppMethodBeat.o(29782);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(26102);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(26102);
+    AppMethodBeat.i(29783);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(29783);
     return i;
   }
   
@@ -52,26 +52,26 @@ public final class i
     return 615;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26103);
-    ab.d("MicroMsg.NetSceneSwitchOpVoicePrint", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (cix)((b)paramq).fsW.fta;
+    AppMethodBeat.i(29784);
+    Log.d("MicroMsg.NetSceneSwitchOpVoicePrint", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    params = (fkt)c.c.b(((c)params).otC);
     if ((paramInt2 != 0) && (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(26103);
+      AppMethodBeat.o(29784);
       return;
     }
-    this.mStatus = paramq.xCL;
-    this.tro = paramq.xTf;
+    this.mStatus = params.abnq;
+    this.Utk = params.abLs;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(26103);
+    AppMethodBeat.o(29784);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.i
  * JD-Core Version:    0.7.0.1
  */

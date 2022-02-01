@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class st_report_info
   extends JceStruct
 {
-  public int report_first_page;
-  public int report_second_page;
+  public int report_first_page = 0;
+  public int report_second_page = 0;
   
   public st_report_info() {}
   
@@ -32,7 +32,7 @@ public final class st_report_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.st_report_info
  * JD-Core Version:    0.7.0.1
  */

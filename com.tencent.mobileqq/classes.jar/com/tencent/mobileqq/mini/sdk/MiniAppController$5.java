@@ -16,17 +16,18 @@ final class MiniAppController$5
   {
     super.onReceiveResult(paramInt, paramBundle);
     MiniAppLauncher.MiniAppLaunchListener localMiniAppLaunchListener = this.val$listener;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localMiniAppLaunchListener.onLaunchResult(bool, paramBundle);
-      return;
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localMiniAppLaunchListener.onLaunchResult(bool, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController.5
  * JD-Core Version:    0.7.0.1
  */

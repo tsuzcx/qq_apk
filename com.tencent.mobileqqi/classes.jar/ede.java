@@ -1,39 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.data.CircleBuddy;
-import java.util.ArrayList;
 
 public class ede
-  extends BaseAdapter
 {
-  private ede(CircleMemberListActivity paramCircleMemberListActivity) {}
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.a();
-    }
-    this.a.a(paramViewGroup, (CircleBuddy)this.a.a.get(paramInt));
-    return paramViewGroup;
-  }
+  public int a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public CircleBuddy a;
+  public Button b;
+  public TextView b;
 }
 
 

@@ -14,24 +14,30 @@ class HWVideoDecoder$PlayHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.arg1)
+    int i = paramMessage.arg1;
+    if (i != 0)
     {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      this.this$0.handlePlay();
-      return;
-    case 2: 
-      this.this$0.handleSeek(paramMessage.arg2);
-      return;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          this.this$0.handleSeekNext(paramMessage.arg2);
+          return;
+        }
+        this.this$0.handleSeek(paramMessage.arg2);
+      }
     }
-    this.this$0.handleSeekNext(paramMessage.arg2);
+    else {
+      this.this$0.handlePlay();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWVideoDecoder.PlayHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,34 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.ui.applet.SecurityImage;
+import com.tencent.mm.ui.applet.SecurityImage.b;
+import com.tencent.mm.ui.base.k;
 
-public final class c
-  extends BaseAdapter
-  implements Filterable
+public abstract class c
+  extends SecurityImage.b
 {
-  private List<String> gCn;
-  private ArrayList<String> gCo;
-  private c.a gCp;
-  private String gCq;
-  private Context mContext;
-  private final Object mLock;
+  SecurityImage pRw = null;
+  p pYR = null;
   
-  public c(Context paramContext, String[] paramArrayOfString, String paramString)
-  {
-    AppMethodBeat.i(124719);
-    this.mLock = new Object();
-    this.mContext = paramContext;
-    this.gCn = Arrays.asList(paramArrayOfString);
-    this.gCq = paramString;
-    AppMethodBeat.o(124719);
-  }
+  public abstract p a(p paramp, String paramString);
   
-  private String getItem(int paramInt)
+  public final void bWF()
   {
-    AppMethodBeat.i(124721);
-    String str = (String)this.gCn.get(paramInt);
-    AppMethodBeat.o(124721);
-    return str;
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(124720);
-    int i = this.gCn.size();
-    AppMethodBeat.o(124720);
-    return i;
-  }
-  
-  public final Filter getFilter()
-  {
-    AppMethodBeat.i(124723);
-    if (this.gCp == null) {
-      this.gCp = new c.a(this, (byte)0);
-    }
-    c.a locala = this.gCp;
-    AppMethodBeat.o(124723);
-    return locala;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(124722);
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.mContext, 2130968794, null);
-      paramViewGroup = new c.b();
-      paramViewGroup.euY = ((TextView)paramView.findViewById(2131821592));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = getItem(paramInt);
-      paramViewGroup.euY.setText(str);
-      paramView.setBackgroundResource(2130838445);
-      AppMethodBeat.o(124722);
-      return paramView;
-      paramViewGroup = (c.b)paramView.getTag();
-    }
+    h.aZW().a(a(this.pYR, ""), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.c
  * JD-Core Version:    0.7.0.1
  */

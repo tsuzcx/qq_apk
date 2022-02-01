@@ -21,13 +21,14 @@ public final class Oidb_0xaef$SearchDocReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48 }, new String[] { "group_code", "key_word", "start", "limit", "search_type", "file_type" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SearchDocReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48 }, new String[] { "group_code", "key_word", "start", "limit", "search_type", "file_type" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger, localInteger, localInteger }, SearchDocReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xaef.Oidb_0xaef.SearchDocReq
  * JD-Core Version:    0.7.0.1
  */

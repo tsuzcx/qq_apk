@@ -1,33 +1,12 @@
 package com.tencent.mm.emoji.a;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
-final class e$a
-  extends k
-  implements a<y>
-{
-  public static final a ewA;
-  
-  static
-  {
-    AppMethodBeat.i(63238);
-    ewA = new a();
-    AppMethodBeat.o(63238);
-  }
-  
-  e$a()
-  {
-    super(0);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class e$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.a.e.a
  * JD-Core Version:    0.7.0.1
  */

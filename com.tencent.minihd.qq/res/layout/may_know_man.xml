@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/may_known_man_content_bar" android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <com.tencent.widget.XListView android:id="@id/may_known_man_content_list" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0px" android:listSelector="@color/transparent" android:cacheColorHint="@color/transparent" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/may_known_man_content_empty_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/font_size_small" android:textStyle="bold" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center" android:id="@id/may_known_man_content_empty_bar_text" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/mayknowman_no_man" android:drawableTop="@drawable/no_result" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/aw5" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center" android:id="@id/a5r" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:scaleType="fitXY" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/hbs" android:visibility="gone" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:src="@raw/icons_outlined_pay_cards" app:iconColor="@color/FG_2" />
+        <TextView android:textAppearance="@style/nx" android:ellipsize="marquee" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:maxWidth="200.0dip" android:singleLine="true" />
+        <TextView android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/a78" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_filled_done" app:iconColor="@color/Brand" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip">
+        <TextView android:ellipsize="end" android:id="@id/ka_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="10" style="@style/zn" />
+        <com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout android:orientation="vertical" android:id="@id/cxy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/llm" android:layout_marginLeft="40.0dip" android:layout_marginTop="@dimen/i6" style="@style/i7" />
+</LinearLayout>

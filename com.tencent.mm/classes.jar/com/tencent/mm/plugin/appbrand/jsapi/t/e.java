@@ -1,69 +1,64 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.e.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.ad.7;
+import com.tencent.mm.plugin.appbrand.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiHideNavigationBar;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app-jsapi_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends a
+  extends c<g>
 {
-  public static final int CTRL_INDEX = 33;
-  public static final String NAME = "playVoice";
-  e.c ifl;
+  @Deprecated
+  public static final int CTRL_INDEX = 578;
+  @Deprecated
+  public static final String NAME = "hideNavigationBar";
+  private static final e.a snL;
   
-  protected final void a(c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, JSONObject paramJSONObject, int paramInt)
+  static
   {
-    AppMethodBeat.i(145921);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(138286);
+    snL = new e.a((byte)0);
+    AppMethodBeat.o(138286);
+  }
+  
+  private static final void a(g paramg, int paramInt, e parame)
+  {
+    AppMethodBeat.i(327723);
+    s.u(parame, "this$0");
+    ad localad;
+    if ((paramg instanceof ad)) {
+      localad = (ad)paramg;
+    }
+    while (localad == null)
     {
-      ab.e("MicroMsg.JsApiStartPlayVoice", "playVoice invalid data");
-      paramc1.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(145921);
+      s.u(parame, "this$0");
+      paramg.callback(paramInt, parame.ZP("fail:page don't exist"));
+      AppMethodBeat.o(327723);
       return;
+      if ((paramg instanceof y)) {
+        localad = ((y)paramg).getCurrentPageView();
+      } else {
+        localad = null;
+      }
     }
-    paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bo.isNullOrNil(paramJSONObject))
-    {
-      ab.e("MicroMsg.JsApiStartPlayVoice", "filePath is null", new Object[] { getName() });
-      paramc1.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(145921);
-      return;
-    }
-    paramJSONObject = paramc1.wX().zg(paramJSONObject);
-    if ((paramJSONObject == null) || (!paramJSONObject.exists()))
-    {
-      ab.e("MicroMsg.JsApiStartPlayVoice", "file is null, return");
-      paramc1.h(paramInt, j("file is not exist", null));
-      AppMethodBeat.o(145921);
-      return;
-    }
-    if (this.ifl == null)
-    {
-      localObject = paramc1.getAppId();
-      this.ifl = new e.1(this, paramc, (String)localObject);
-      com.tencent.mm.plugin.appbrand.e.a((String)localObject, this.ifl);
-    }
-    Object localObject = new e.2(this, paramc1, paramInt, paramc);
-    paramc.a((c.b)localObject);
-    paramJSONObject = paramc.CU(paramJSONObject.getAbsolutePath());
-    ab.i("MicroMsg.JsApiStartPlayVoice", "play:%s", new Object[] { paramJSONObject });
-    if (!paramJSONObject.isSuccess())
-    {
-      ab.e("MicroMsg.JsApiStartPlayVoice", "play fail %s", new Object[] { paramJSONObject });
-      paramc1.h(paramInt, "fail:" + paramJSONObject.errMsg);
-      paramc.b((c.b)localObject);
-    }
-    AppMethodBeat.o(145921);
+    localad.V(new ad.7(localad));
+    paramg.callback(paramInt, parame.ZP("ok"));
+    AppMethodBeat.o(327723);
+  }
+  
+  public final boolean cpE()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.e
  * JD-Core Version:    0.7.0.1
  */

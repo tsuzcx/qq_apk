@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.listentogether.ui;
 
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.OnJoinListenTogetherCallback;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class BaseListenTogetherPanel$4
-  implements Runnable
+class BaseListenTogetherPanel$4
+  implements OnJoinListenTogetherCallback
 {
-  public BaseListenTogetherPanel$4(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  BaseListenTogetherPanel$4(BaseListenTogetherPanel paramBaseListenTogetherPanel, int paramInt, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
-    }
+    ListenTogetherManager.a(this.c.a.d).a(this.c.b, this.a, this.b, 1000);
+    String str1 = this.c.m.a;
+    String str2 = this.c.m.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c.m.b);
+    localStringBuilder.append("");
+    ReportController.b(null, "dc00899", str1, "", "music_tab", "clk_join", 0, 0, str2, "", localStringBuilder.toString(), "");
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.4
  * JD-Core Version:    0.7.0.1
  */

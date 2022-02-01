@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/dd2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.DoubleTabView android:id="@id/dc4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.ui.base.CustomViewPager android:id="@id/dc5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <org.libpag.PAGView android:layout_gravity="center_horizontal" android:id="@id/h6m" android:visibility="gone" android:layout_width="@dimen/db" android:layout_height="@dimen/by" />
+        <TextView android:textSize="20.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/h6n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/dfx" />
+    </LinearLayout>
+</FrameLayout>

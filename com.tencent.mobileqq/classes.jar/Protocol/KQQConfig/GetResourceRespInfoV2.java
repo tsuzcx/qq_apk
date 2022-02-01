@@ -11,13 +11,13 @@ public final class GetResourceRespInfoV2
   implements Cloneable
 {
   public byte cCanChangeState = 1;
-  public byte cDefaultState;
-  public byte cPush;
-  public byte cStatus;
+  public byte cDefaultState = 0;
+  public byte cPush = 0;
+  public byte cStatus = 0;
   public int iPluginType = 64;
-  public short sLanType;
-  public short sPriority;
-  public short sResSubType;
+  public short sLanType = 0;
+  public short sPriority = 0;
+  public short sResSubType = 0;
   public String strNewPluginDesc = "";
   public String strNewPluginURL = "";
   public String strPkgName = "";
@@ -26,18 +26,8 @@ public final class GetResourceRespInfoV2
   public String strResName = "";
   public String strResURL_big = "";
   public String strResURL_small = "";
-  public long uiNewVer;
-  public long uiResId;
-  
-  static
-  {
-    if (!GetResourceRespInfoV2.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public long uiNewVer = 0L;
+  public long uiResId = 0L;
   
   public GetResourceRespInfoV2() {}
   
@@ -70,18 +60,17 @@ public final class GetResourceRespInfoV2
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -132,13 +121,84 @@ public final class GetResourceRespInfoV2
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (GetResourceRespInfoV2)paramObject;
-    } while ((!JceUtil.equals(this.strPkgName, paramObject.strPkgName)) || (!JceUtil.equals(this.uiNewVer, paramObject.uiNewVer)) || (!JceUtil.equals(this.sResSubType, paramObject.sResSubType)) || (!JceUtil.equals(this.sLanType, paramObject.sLanType)) || (!JceUtil.equals(this.sPriority, paramObject.sPriority)) || (!JceUtil.equals(this.strResName, paramObject.strResName)) || (!JceUtil.equals(this.strResDesc, paramObject.strResDesc)) || (!JceUtil.equals(this.strResURL_big, paramObject.strResURL_big)) || (!JceUtil.equals(this.strResURL_small, paramObject.strResURL_small)) || (!JceUtil.equals(this.strResConf, paramObject.strResConf)) || (!JceUtil.equals(this.cDefaultState, paramObject.cDefaultState)) || (!JceUtil.equals(this.cCanChangeState, paramObject.cCanChangeState)) || (!JceUtil.equals(this.uiResId, paramObject.uiResId)) || (!JceUtil.equals(this.cStatus, paramObject.cStatus)) || (!JceUtil.equals(this.cPush, paramObject.cPush)) || (!JceUtil.equals(this.iPluginType, paramObject.iPluginType)) || (!JceUtil.equals(this.strNewPluginDesc, paramObject.strNewPluginDesc)) || (!JceUtil.equals(this.strNewPluginURL, paramObject.strNewPluginURL)));
-    return true;
+    }
+    paramObject = (GetResourceRespInfoV2)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.strPkgName, paramObject.strPkgName))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.uiNewVer, paramObject.uiNewVer))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.sResSubType, paramObject.sResSubType))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.sLanType, paramObject.sLanType))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.sPriority, paramObject.sPriority))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.strResName, paramObject.strResName))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.strResDesc, paramObject.strResDesc))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.strResURL_big, paramObject.strResURL_big))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.strResURL_small, paramObject.strResURL_small))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.strResConf, paramObject.strResConf))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.cDefaultState, paramObject.cDefaultState))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.cCanChangeState, paramObject.cCanChangeState))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.uiResId, paramObject.uiResId))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.cStatus, paramObject.cStatus))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.cPush, paramObject.cPush))
+                                {
+                                  bool1 = bool2;
+                                  if (JceUtil.equals(this.iPluginType, paramObject.iPluginType))
+                                  {
+                                    bool1 = bool2;
+                                    if (JceUtil.equals(this.strNewPluginDesc, paramObject.strNewPluginDesc))
+                                    {
+                                      bool1 = bool2;
+                                      if (JceUtil.equals(this.strNewPluginURL, paramObject.strNewPluginURL)) {
+                                        bool1 = true;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -379,17 +439,19 @@ public final class GetResourceRespInfoV2
     paramJceOutputStream.write(this.cStatus, 14);
     paramJceOutputStream.write(this.cPush, 15);
     paramJceOutputStream.write(this.iPluginType, 16);
-    if (this.strNewPluginDesc != null) {
-      paramJceOutputStream.write(this.strNewPluginDesc, 17);
+    String str = this.strNewPluginDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
-    if (this.strNewPluginURL != null) {
-      paramJceOutputStream.write(this.strNewPluginURL, 18);
+    str = this.strNewPluginURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceRespInfoV2
  * JD-Core Version:    0.7.0.1
  */

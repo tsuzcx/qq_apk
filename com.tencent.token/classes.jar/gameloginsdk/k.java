@@ -1,29 +1,43 @@
 package gameloginsdk;
 
 import android.content.Context;
-import com.tencent.token.c;
-import tmsdk.common.a;
+import android.text.TextUtils;
+import com.tencent.token.arn;
+import com.tencent.token.ks;
 
 public class k
 {
-  static c a;
+  static ks a;
   
   private static void a(int paramInt1, String paramString, int paramInt2)
   {
-    a.a(paramInt1, paramString, paramInt2);
+    ks localks = a;
+    localks.a = paramInt1;
+    localks.b = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localks.c = paramInt2;
+      return;
+    }
+    throw new RuntimeException("appVersion couldn't be null or empty");
   }
   
   public static boolean a(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
     try
     {
-      a.a(paramContext);
-      a = new c(paramContext);
-      a.a(a, paramInt2);
+      arn.a(paramContext);
+      paramContext = new ks(paramContext);
+      a = paramContext;
+      arn.a(paramContext, paramInt2);
       a(paramInt1, paramString, paramInt2);
       return true;
     }
-    catch (UnsatisfiedLinkError paramContext) {}
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      label30:
+      break label30;
+    }
     return false;
   }
 }

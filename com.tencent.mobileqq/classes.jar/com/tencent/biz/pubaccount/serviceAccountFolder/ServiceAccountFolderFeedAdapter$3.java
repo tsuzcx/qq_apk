@@ -1,41 +1,47 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import ssj;
-import ssk;
 
-public class ServiceAccountFolderFeedAdapter$3
+class ServiceAccountFolderFeedAdapter$3
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$3(ssk paramssk, ssj paramssj) {}
+  ServiceAccountFolderFeedAdapter$3(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
   
   public void run()
   {
-    try
+    for (;;)
     {
-      if (ssk.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
+      try
       {
-        String str2 = this.a.jdField_a_of_type_JavaLangString;
-        String str3 = this.a.c;
-        if (this.a.jdField_a_of_type_JavaLangCharSequence == null) {}
-        for (String str1 = "";; str1 = this.a.jdField_a_of_type_JavaLangCharSequence.toString())
-        {
-          azqs.b(null, "dc00898", "", str2, "auth_page", "left_delete", 0, 0, "", "", str3, str1);
-          return;
+        if (!ServiceAccountFolderFeedAdapter.a(this.this$0, this.a.b)) {
+          break label98;
+        }
+        str2 = this.a.b;
+        str3 = this.a.h;
+        if (this.a.i == null) {
+          str1 = "";
+        } else {
+          str1 = this.a.i.toString();
         }
       }
+      catch (Exception localException)
+      {
+        String str2;
+        String str3;
+        String str1;
+        QLog.e("ServiceAccountFolderFeedAdapter", 2, QLog.getStackTraceString(localException));
+      }
+      ReportController.b(null, "dc00898", "", str2, "auth_page", "left_delete", 0, 0, "", "", str3, str1);
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ServiceAccountFolderFeedAdapter", 2, QLog.getStackTraceString(localException));
+      label98:
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.3
  * JD-Core Version:    0.7.0.1
  */

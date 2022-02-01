@@ -21,13 +21,14 @@ public final class nowlive$LiveInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50 }, new String[] { "live_url", "room_name", "room_cover", "live_statue", "audience", "vid" }, new Object[] { "", "", "", Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, LiveInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50 }, new String[] { "live_url", "room_name", "room_cover", "live_statue", "audience", "vid" }, new Object[] { "", "", "", localInteger, localInteger, localByteStringMicro }, LiveInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.nowlive.nowlive.LiveInfo
  * JD-Core Version:    0.7.0.1
  */

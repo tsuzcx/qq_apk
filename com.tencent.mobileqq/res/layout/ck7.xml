@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/py8" android:background="@color/avo" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mx1" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/mwt" android:layout_width="244.0dip" android:layout_height="406.0dip" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/mww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/evk" android:layout_below="@id/mwt" android:layout_centerHorizontal="true" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textColor="#ff613610" android:gravity="center" android:id="@id/mx0" android:paddingBottom="15.0dip" android:layout_width="207.0dip" android:layout_height="74.0dip" android:text="@string/wmj" android:layout_alignBottom="@id/mwt" android:layout_centerHorizontal="true" />
-        <LinearLayout android:id="@id/mwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="140.0dip" android:layout_centerHorizontal="true">
-            <TextView android:textSize="50.0dip" android:textStyle="bold" android:textColor="#ffffecc6" android:id="@id/mwv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.68" />
-            <TextView android:textSize="16.0dip" android:textColor="#ffffecc6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wmh" />
-        </LinearLayout>
-        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="14.0dip" android:textColor="#ffffecc6" android:id="@id/mwx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wmo" android:layout_below="@id/mwu" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/mws" android:background="@drawable/bl2" android:padding="2.0dip" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginBottom="65.0dip" android:src="@drawable/exy" android:layout_above="@id/mx0" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="13.0dip" android:textColor="#ffffecc6" android:id="@id/mx2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="45.0dip" android:maxWidth="180.0dip" android:text="nickname" android:singleLine="true" android:layout_above="@id/mx0" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/mx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:text="wording" android:layout_above="@id/mx0" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+    <Button android:textSize="@dimen/bmn" android:textColor="@drawable/gt7" android:gravity="center|left" android:id="@id/mnt" android:background="@android:color/transparent" android:paddingLeft="@dimen/bmp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/xn9" />
+    <TextView android:textSize="@dimen/bmq" android:textColor="@color/avr" android:gravity="center" android:id="@id/k4v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mo2" android:layout_toRightOf="@id/mnt" android:layout_centerVertical="true" />
+    <Button android:textSize="@dimen/bmn" android:textColor="@drawable/gt7" android:gravity="center|right" android:id="@id/mo2" android:background="@android:color/transparent" android:paddingRight="@dimen/bmp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/xne" android:layout_alignParentRight="true" />
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.tencent.mm.ui.applet;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 
 public class StrokeScrollBar
@@ -13,29 +14,29 @@ public class StrokeScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Kr()
+  public final void aNw()
   {
-    AppMethodBeat.i(29979);
-    this.nSx = new String[18];
+    AppMethodBeat.i(33837);
+    this.JMk = new String[18];
     int i = 0;
-    while (i < this.nSx.length)
+    while (i < this.JMk.length)
     {
-      this.nSx[i] = (Integer.toString(i + 3) + "劃");
+      this.JMk[i] = (Integer.toString(i + 3) + "劃");
       i += 1;
     }
-    this.nSv = 2.0F;
-    this.nSw = 79;
-    AppMethodBeat.o(29979);
+    this.JMi = 2.0F;
+    this.JMj = 79;
+    AppMethodBeat.o(33837);
   }
   
   public int getToastLayoutId()
   {
-    return 2130970735;
+    return R.i.gom;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.applet.StrokeScrollBar
  * JD-Core Version:    0.7.0.1
  */

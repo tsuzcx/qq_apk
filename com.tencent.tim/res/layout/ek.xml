@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerView android:id="@id/i24" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.biz.subscribe.account_folder.passive_bubble.PassiveBubbleView android:id="@id/fip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/i24" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/skin_black_theme_version2" android:id="@id/j73" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="10.0dip" android:text="@string/kar" android:layout_below="@id/fip" />
+</merge>

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apod;
-import apol;
+import com.tencent.mobileqq.emosm.api.IEmoticonFromGroupDBManagerService;
 
-public class EmoticonFromGroupManager$4
+class EmoticonFromGroupManager$4
   implements Runnable
 {
-  public EmoticonFromGroupManager$4(apod paramapod) {}
+  EmoticonFromGroupManager$4(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
   
   public void run()
   {
-    apod.a(this.this$0).b = (apol.a - this.this$0.b());
+    EmoticonFromGroupManager.b(this.this$0).setCountOfSpare(FavEmoConstant.a - this.this$0.d());
   }
 }
 

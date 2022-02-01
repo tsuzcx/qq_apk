@@ -2,17 +2,16 @@ package com.tencent.mobileqq.dating;
 
 import EncounterSvc.RespEncounterInfo;
 import android.view.View;
-import apih;
-import avud;
+import com.tencent.mobileqq.nearpeople.IChatPushCarrier;
 
-public class MsgBoxListActivity$1$2
+class MsgBoxListActivity$1$2
   implements Runnable
 {
-  public MsgBoxListActivity$1$2(apih paramapih, View paramView, RespEncounterInfo paramRespEncounterInfo) {}
+  MsgBoxListActivity$1$2(MsgBoxListActivity.1 param1, View paramView, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apih.a.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_EncounterSvcRespEncounterInfo);
+    this.c.a.chatPushCarrierHelper.a(this.a, this.b);
   }
 }
 

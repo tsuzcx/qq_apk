@@ -8,7 +8,7 @@ public final class bmp4_set_rsp
   extends JceStruct
 {
   public String errmsg = "";
-  public int retCode;
+  public int retCode = 0;
   
   public bmp4_set_rsp() {}
   
@@ -27,14 +27,15 @@ public final class bmp4_set_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.retCode, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    String str = this.errmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.bmp4_set_rsp
  * JD-Core Version:    0.7.0.1
  */

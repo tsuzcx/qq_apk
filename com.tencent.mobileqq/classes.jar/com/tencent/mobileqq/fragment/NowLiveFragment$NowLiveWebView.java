@@ -8,31 +8,31 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import ashu;
-import auwq;
-import auwz;
-import beej;
-import belw;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.webview.AbsWebView;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
-import myl;
 
-public final class NowLiveFragment$NowLiveWebView
-  extends beej
+final class NowLiveFragment$NowLiveWebView
+  extends AbsWebView
   implements TouchWebView.OnScrollChangedListener
 {
   public int a;
-  public boolean a;
-  public boolean b;
-  boolean c = false;
+  public boolean b = false;
+  public boolean c = false;
+  boolean d = false;
   
   public NowLiveFragment$NowLiveWebView(NowLiveFragment paramNowLiveFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
@@ -42,44 +42,50 @@ public final class NowLiveFragment$NowLiveWebView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {}
-    for (long l = System.currentTimeMillis();; l = 0L)
+    long l;
+    if (this.e.b != null) {
+      l = System.currentTimeMillis();
+    } else {
+      l = 0L;
+    }
+    this.b = true;
+    AuthorizeConfig.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(NearbyActivity.nearByTabUrl);
+    localStringBuilder.append(this.e.g);
+    localStringBuilder.append("&_t=");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getUrlJsonToStr(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getLiveTabWebViewUrlByJson()));
+    this.mUrl = localStringBuilder.toString();
+    this.mWebview = new TouchWebView(this.mContext);
+    this.mWebview.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    buildBaseWebView(this.mInterface);
+    this.d = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+    if (this.d) {
+      this.mWebview.setMask(true);
+    }
+    this.mWebview.setBackgroundColor(-1);
+    this.mWebview.setOnScrollChangedListener(this);
+    setTimeBeforeLoadUrl(System.currentTimeMillis());
+    if (QLog.isDevelopLevel()) {
+      NearbyUtils.a("WebSpeedTrace", "AbsWebView mTimeBeforeLoadUrl", new Object[] { Long.valueOf(getTimeBeforeLoadUrl()) });
+    }
+    this.mWebview.loadUrl(this.mUrl);
+    if (QLog.isColorLevel()) {
+      NearbyUtils.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.mUrl });
+    }
+    if ((this.e.b != null) && (this.e.b.mNowInitWebViewTime == 0L))
     {
-      this.jdField_a_of_type_Boolean = true;
-      myl.a();
-      this.mUrl = (NearbyActivity.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_JavaLangString + "&_t=" + System.currentTimeMillis() + auwq.a(auwq.b()));
-      this.mWebview = new TouchWebView(this.mContext);
-      this.mWebview.getSettings().setMediaPlaybackRequiresUserGesture(false);
-      buildBaseWebView(this.mInterface);
-      this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-      if (this.c) {
-        this.mWebview.setMask(true);
-      }
-      this.mWebview.setBackgroundColor(-1);
-      this.mWebview.setOnScrollChangedListener(this);
-      setmTimeBeforeLoadUrl(System.currentTimeMillis());
+      this.e.b.mNowInitWebViewTime = (System.currentTimeMillis() - l);
       if (QLog.isDevelopLevel()) {
-        auwz.a("WebSpeedTrace", "AbsWebView mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
+        NearbyUtils.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.e.b.mNowInitWebViewTime) });
       }
-      this.mWebview.loadUrl(this.mUrl);
-      if (QLog.isColorLevel()) {
-        auwz.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.mUrl });
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f == 0L))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f = (System.currentTimeMillis() - l);
-        if (QLog.isDevelopLevel()) {
-          auwz.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f) });
-        }
-      }
-      if (NowLiveFragment.b()) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(NowLiveFragment.a(), 5000L);
-      return;
+    }
+    if (!NowLiveFragment.i()) {
+      this.e.l.postDelayed(NowLiveFragment.j(), 5000L);
     }
   }
   
@@ -96,7 +102,7 @@ public final class NowLiveFragment$NowLiveWebView
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
     if (paramArrayList != null) {
-      paramArrayList.add(new belw());
+      paramArrayList.add(new WebViewJumpPlugin());
     }
   }
   
@@ -112,30 +118,30 @@ public final class NowLiveFragment$NowLiveWebView
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu != null)
+    if (this.e.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.a();
+      this.e.aj.b(false).c(true);
+      this.e.aj.a();
     }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu != null)
+    this.c = true;
+    if (this.e.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Ashu.a();
+      this.e.aj.b(true).c(true);
+      this.e.aj.a();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b.getVisibility() != 8)) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b.setVisibility(8);
+    if ((this.e.a != null) && (this.e.a.getVisibility() != 8)) {
+      this.e.a.setVisibility(8);
     }
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     if (this.mWebview != null) {
-      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
+      this.a = this.mWebview.getWebScrollY();
     }
   }
   
@@ -146,14 +152,14 @@ public final class NowLiveFragment$NowLiveWebView
     {
       paramWebView = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
       paramWebView.addFlags(268435456);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.startActivity(paramWebView);
+      this.e.startActivity(paramWebView);
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView
  * JD-Core Version:    0.7.0.1
  */

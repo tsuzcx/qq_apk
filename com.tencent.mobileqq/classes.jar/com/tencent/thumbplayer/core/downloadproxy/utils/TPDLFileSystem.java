@@ -65,7 +65,11 @@ public class TPDLFileSystem
     if (paramContext == null) {
       return null;
     }
-    return new File(paramContext.getAbsolutePath() + File.separator + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return new File(localStringBuilder.toString());
   }
   
   public static File getExternalCacheFile(Context paramContext, String paramString1, String paramString2)
@@ -83,7 +87,17 @@ public class TPDLFileSystem
     if (localFile == null) {
       return null;
     }
-    return new File(localFile.getAbsolutePath() + File.separator + "Android" + File.separator + "data" + File.separator + paramContext.getPackageName() + File.separator + "files");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("Android");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("data");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("files");
+    return new File(localStringBuilder.toString());
   }
   
   public static File getExternalDirectory(Context paramContext, String paramString)
@@ -93,7 +107,9 @@ public class TPDLFileSystem
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContext.getAbsolutePath()).append(File.separator).append(paramString);
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
     return new File(localStringBuilder.toString());
   }
   
@@ -117,7 +133,11 @@ public class TPDLFileSystem
     if (paramContext == null) {
       return null;
     }
-    return new File(paramContext.getAbsolutePath() + File.separator + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return new File(localStringBuilder.toString());
   }
   
   public static File getInternalCacheFile(Context paramContext, String paramString1, String paramString2)
@@ -141,7 +161,9 @@ public class TPDLFileSystem
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContext.getAbsolutePath()).append(File.separator).append(paramString);
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
     return new File(localStringBuilder.toString());
   }
   
@@ -198,7 +220,7 @@ public class TPDLFileSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TPDLFileSystem
  * JD-Core Version:    0.7.0.1
  */

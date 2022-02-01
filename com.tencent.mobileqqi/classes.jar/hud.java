@@ -1,21 +1,28 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
 import com.tencent.qqconnect.wtlogin.Login;
 
 public class hud
-  implements TextView.OnEditorActionListener
+  implements View.OnFocusChangeListener
 {
   public hud(Login paramLogin) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramInt == 6)
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
     {
-      this.a.e();
-      return true;
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      }
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
     }
-    return false;
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

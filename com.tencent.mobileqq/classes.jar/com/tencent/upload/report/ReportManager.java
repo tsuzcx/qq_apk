@@ -29,15 +29,16 @@ public class ReportManager
   
   public static ReportManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ReportManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ReportManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static void report(Report paramReport)
@@ -45,7 +46,11 @@ public class ReportManager
     long l1 = paramReport.endTime;
     long l2 = paramReport.startTime;
     float f = (float)paramReport.fileSize * 1.0F * 1000.0F / (float)((l1 - l2) * 1024L);
-    UploadLog.d("ReportManager", "[speed]" + f + "kb/s");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[speed]");
+    localStringBuilder.append(f);
+    localStringBuilder.append("kb/s");
+    UploadLog.d("ReportManager", localStringBuilder.toString());
     UploadGlobalConfig.getUploadReport().onUploadReport(paramReport);
   }
   
@@ -77,7 +82,7 @@ public class ReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.report.ReportManager
  * JD-Core Version:    0.7.0.1
  */

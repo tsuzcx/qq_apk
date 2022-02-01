@@ -32,7 +32,7 @@ public class tlv_t196
   public Boolean verify()
   {
     if (this._body_len < 5) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = this._head_len;
     this._state = util.buf_to_int8(this._buf, i);
@@ -40,7 +40,7 @@ public class tlv_t196
     i = util.buf_to_int16(this._buf, j);
     j += 2;
     if (j - this._head_len + i > this._body_len) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._cn = new byte[i];
     System.arraycopy(this._buf, j, this._cn, 0, i);
@@ -48,11 +48,11 @@ public class tlv_t196
     i = util.buf_to_int16(this._buf, j);
     j += 2;
     if (j - this._head_len + i > this._body_len) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._mobile = new byte[i];
     System.arraycopy(this._buf, j, this._mobile, 0, i);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

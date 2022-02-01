@@ -32,16 +32,6 @@ public final class p
   public String t = "";
   public String u = "";
   
-  static
-  {
-    if (!p.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      v = bool;
-      return;
-    }
-  }
-  
   public p()
   {
     a(this.a);
@@ -104,18 +94,20 @@ public final class p
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (v) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (v) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void d(String paramString)
@@ -156,13 +148,96 @@ public final class p
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (p)paramObject;
-    } while ((!JceUtil.equals(this.a, paramObject.a)) || (!JceUtil.equals(this.b, paramObject.b)) || (!JceUtil.equals(this.c, paramObject.c)) || (!JceUtil.equals(this.d, paramObject.d)) || (!JceUtil.equals(this.e, paramObject.e)) || (!JceUtil.equals(this.f, paramObject.f)) || (!JceUtil.equals(this.g, paramObject.g)) || (!JceUtil.equals(this.h, paramObject.h)) || (!JceUtil.equals(this.i, paramObject.i)) || (!JceUtil.equals(this.j, paramObject.j)) || (!JceUtil.equals(this.k, paramObject.k)) || (!JceUtil.equals(this.l, paramObject.l)) || (!JceUtil.equals(this.m, paramObject.m)) || (!JceUtil.equals(this.n, paramObject.n)) || (!JceUtil.equals(this.o, paramObject.o)) || (!JceUtil.equals(this.p, paramObject.p)) || (!JceUtil.equals(this.q, paramObject.q)) || (!JceUtil.equals(this.r, paramObject.r)) || (!JceUtil.equals(this.s, paramObject.s)) || (!JceUtil.equals(this.t, paramObject.t)) || (!JceUtil.equals(this.u, paramObject.u)));
-    return true;
+    }
+    paramObject = (p)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.a, paramObject.a))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.b, paramObject.b))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.c, paramObject.c))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.d, paramObject.d))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.e, paramObject.e))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.f, paramObject.f))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.g, paramObject.g))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.h, paramObject.h))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.i, paramObject.i))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.j, paramObject.j))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.k, paramObject.k))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.l, paramObject.l))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.m, paramObject.m))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.n, paramObject.n))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.o, paramObject.o))
+                                {
+                                  bool1 = bool2;
+                                  if (JceUtil.equals(this.p, paramObject.p))
+                                  {
+                                    bool1 = bool2;
+                                    if (JceUtil.equals(this.q, paramObject.q))
+                                    {
+                                      bool1 = bool2;
+                                      if (JceUtil.equals(this.r, paramObject.r))
+                                      {
+                                        bool1 = bool2;
+                                        if (JceUtil.equals(this.s, paramObject.s))
+                                        {
+                                          bool1 = bool2;
+                                          if (JceUtil.equals(this.t, paramObject.t))
+                                          {
+                                            bool1 = bool2;
+                                            if (JceUtil.equals(this.u, paramObject.u)) {
+                                              bool1 = true;
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void f(String paramString)
@@ -270,51 +345,63 @@ public final class p
     paramJceOutputStream.write(this.c, 2);
     paramJceOutputStream.write(this.d, 3);
     paramJceOutputStream.write(this.e, 4);
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    String str = this.f;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    str = this.g;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.h, 7);
-    if (this.i != null) {
-      paramJceOutputStream.write(this.i, 8);
+    str = this.i;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.j != null) {
-      paramJceOutputStream.write(this.j, 9);
+    str = this.j;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.k != null) {
-      paramJceOutputStream.write(this.k, 10);
+    str = this.k;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.l != null) {
-      paramJceOutputStream.write(this.l, 11);
+    str = this.l;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.m, 12);
-    if (this.n != null) {
-      paramJceOutputStream.write(this.n, 13);
+    str = this.n;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
     paramJceOutputStream.write(this.o, 14);
-    if (this.p != null) {
-      paramJceOutputStream.write(this.p, 15);
+    str = this.p;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
     paramJceOutputStream.write(this.q, 16);
-    if (this.r != null) {
-      paramJceOutputStream.write(this.r, 17);
+    str = this.r;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
-    if (this.s != null) {
-      paramJceOutputStream.write(this.s, 18);
+    str = this.s;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
-    if (this.t != null) {
-      paramJceOutputStream.write(this.t, 19);
+    str = this.t;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
-    if (this.u != null) {
-      paramJceOutputStream.write(this.u, 20);
+    str = this.u;
+    if (str != null) {
+      paramJceOutputStream.write(str, 20);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.p
  * JD-Core Version:    0.7.0.1
  */

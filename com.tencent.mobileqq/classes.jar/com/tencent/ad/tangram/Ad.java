@@ -1,11 +1,14 @@
 package com.tencent.ad.tangram;
 
 import android.support.annotation.Keep;
+import java.util.List;
 
 @Keep
 public abstract interface Ad
 {
   public abstract boolean disableAutoDownload();
+  
+  public abstract boolean disableLaunchApp();
   
   public abstract long getAId();
   
@@ -33,17 +36,39 @@ public abstract interface Ad
   
   public abstract String getAppPackageUrl();
   
+  public abstract String getAppRightInfoUrl();
+  
+  public abstract int getBannerInvalidClickXPercent();
+  
+  public abstract int getBannerInvalidClickYPercent();
+  
+  public abstract String getBusinessIdForXiJingOffline();
+  
   public abstract String getCanvas();
+  
+  public abstract String getCanvasForXiJingOffline();
   
   public abstract int getCreativeSize();
   
   public abstract int getDestType();
+  
+  public abstract List<?> getFeedbackItems();
+  
+  public abstract int getInnerShowType();
+  
+  public abstract String getJSONKeyForXiJingOffline();
+  
+  public abstract String getJSONUrlForXiJingOffline();
+  
+  public abstract long getMinIntervalMillisBetweenExposureAndClick();
   
   public abstract String getPosId();
   
   public abstract String getProductId();
   
   public abstract int getProductType();
+  
+  public abstract int getRelationTarget();
   
   public abstract String getTencent_video_id();
   
@@ -55,9 +80,13 @@ public abstract interface Ad
   
   public abstract String getUrlForEffect();
   
+  public abstract String getUrlForFeedBack();
+  
   public abstract String getUrlForImpression();
   
   public abstract String getUrlForLandingPage();
+  
+  public abstract String getUrlForXiJingOffline();
   
   public abstract String getVia();
   
@@ -65,29 +94,43 @@ public abstract interface Ad
   
   public abstract String getVideoUrl2();
   
+  public abstract boolean isAppPreOrder();
+  
   public abstract boolean isAppProductType();
   
   public abstract boolean isAppXiJing();
   
   public abstract boolean isAppXiJingDefault();
   
+  public abstract boolean isAppXiJingFengling();
+  
+  public abstract boolean isAppXiJingOffline();
+  
   public abstract boolean isCanvas();
   
-  public abstract boolean isHitCanvasVideoCeilingExp();
+  public abstract boolean isHitFirstLoadImageExp();
   
-  public abstract boolean isHitJumpExperiment();
+  public abstract boolean isJDProductType();
   
   public abstract boolean isQQMINIProgram();
   
   public abstract boolean isValid();
   
+  public abstract boolean isVideoOnTopDisabled();
+  
   public abstract boolean isVideoSplice();
   
+  public abstract boolean isWebXiJing();
+  
+  public abstract boolean isWebXiJingOffline();
+  
   public abstract void setActionSetId(long paramLong);
+  
+  public abstract void setCanvasForXiJingOffline(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.Ad
  * JD-Core Version:    0.7.0.1
  */

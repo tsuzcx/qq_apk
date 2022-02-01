@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:padding="@dimen/i6" android:layout_width="255.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bro" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginTop="153.0dip" android:src="@raw/face_id_icon" android:layout_centerHorizontal="true" />
-    <Button android:enabled="false" android:id="@id/brp" android:layout_width="180.0dip" android:layout_height="40.0dip" android:layout_marginTop="205.0dip" android:text="@string/boy" android:layout_below="@id/bro" android:layout_centerHorizontal="true" style="@style/nr" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="200.0dip" android:layout_height="118.0dip" android:src="@drawable/c3h" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/bwr" />
+</LinearLayout>

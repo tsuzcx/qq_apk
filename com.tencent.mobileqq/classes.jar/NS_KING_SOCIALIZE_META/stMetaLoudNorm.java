@@ -59,50 +59,63 @@ public final class stMetaLoudNorm
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.input_i != null) {
-      paramJceOutputStream.write(this.input_i, 0);
+    String str = this.input_i;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.input_tp != null) {
-      paramJceOutputStream.write(this.input_tp, 1);
+    str = this.input_tp;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.input_lra != null) {
-      paramJceOutputStream.write(this.input_lra, 2);
+    str = this.input_lra;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.input_thresh != null) {
-      paramJceOutputStream.write(this.input_thresh, 3);
+    str = this.input_thresh;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.output_i != null) {
-      paramJceOutputStream.write(this.output_i, 4);
+    str = this.output_i;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.output_tp != null) {
-      paramJceOutputStream.write(this.output_tp, 5);
+    str = this.output_tp;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.output_lra != null) {
-      paramJceOutputStream.write(this.output_lra, 6);
+    str = this.output_lra;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.output_thresh != null) {
-      paramJceOutputStream.write(this.output_thresh, 7);
+    str = this.output_thresh;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.normalization_type != null) {
-      paramJceOutputStream.write(this.normalization_type, 8);
+    str = this.normalization_type;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.target_offset != null) {
-      paramJceOutputStream.write(this.target_offset, 9);
+    str = this.target_offset;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.weishi_i != null) {
-      paramJceOutputStream.write(this.weishi_i, 10);
+    str = this.weishi_i;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.weishi_tp != null) {
-      paramJceOutputStream.write(this.weishi_tp, 11);
+    str = this.weishi_tp;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.weishi_lra != null) {
-      paramJceOutputStream.write(this.weishi_lra, 12);
+    str = this.weishi_lra;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaLoudNorm
  * JD-Core Version:    0.7.0.1
  */

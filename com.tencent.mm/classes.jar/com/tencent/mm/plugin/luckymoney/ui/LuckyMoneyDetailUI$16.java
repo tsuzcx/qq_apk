@@ -1,36 +1,24 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.s;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.ui.widget.a.j.a;
 
 final class LuckyMoneyDetailUI$16
-  implements DialogInterface.OnCancelListener
+  implements j.a
 {
-  LuckyMoneyDetailUI$16(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
+  LuckyMoneyDetailUI$16(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, j paramj) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick()
   {
-    AppMethodBeat.i(42665);
-    if ((LuckyMoneyDetailUI.F(this.otz) != null) && (LuckyMoneyDetailUI.F(this.otz).isShowing())) {
-      LuckyMoneyDetailUI.F(this.otz).dismiss();
-    }
-    this.otz.orz.forceCancel();
-    if ((LuckyMoneyDetailUI.G(this.otz).getVisibility() == 8) || (LuckyMoneyDetailUI.H(this.otz).getVisibility() == 4))
-    {
-      ab.i("MicroMsg.LuckyMoneyDetailUI", "user cancel & finish");
-      this.otz.finish();
-    }
-    AppMethodBeat.o(42665);
+    AppMethodBeat.i(284450);
+    this.xpj.cyW();
+    AppMethodBeat.o(284450);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.16
  * JD-Core Version:    0.7.0.1
  */

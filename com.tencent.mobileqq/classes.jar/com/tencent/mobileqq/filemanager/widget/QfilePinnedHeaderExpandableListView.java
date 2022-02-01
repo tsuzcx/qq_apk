@@ -6,27 +6,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import aqnh;
-import aqox;
-import arvg;
+import com.tencent.mobileqq.filemanager.activity.adapter.DelDownloadHolder;
+import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
 import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class QfilePinnedHeaderExpandableListView
   extends FPSPinnedHeaderExpandableListView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private arvg jdField_a_of_type_Arvg;
-  private final String jdField_a_of_type_JavaLangString = "QfilePinnedHeaderExpandableListView<FileAssistant>";
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = -1;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
-  private int e;
+  private float a;
+  private float b;
+  private float c;
+  private boolean d;
+  private int e = -1;
+  private int f = -1;
+  private int g = -1;
+  private int h = -1;
+  private QfilePinnedHeaderExpandableListView.OnSelectListener i;
+  private boolean j;
+  private int k;
+  private boolean l = false;
   
   public QfilePinnedHeaderExpandableListView(Context paramContext)
   {
@@ -52,45 +50,43 @@ public class QfilePinnedHeaderExpandableListView
   
   private void a(Context paramContext)
   {
-    setSelector(2131167140);
+    setSelector(2131168376);
     setGroupIndicator(null);
   }
   
   public int[] a(int paramInt1, int paramInt2)
   {
-    int i = getFirstVisiblePosition();
-    Object localObject = (ViewGroup)getChildAt(pointToPosition(paramInt1, paramInt2) - i);
+    int m = getFirstVisiblePosition();
+    Object localObject = (ViewGroup)getChildAt(pointToPosition(paramInt1, paramInt2) - m);
     if (localObject == null) {
       return null;
     }
     paramInt2 = ((ViewGroup)localObject).getChildCount();
-    if (this.e == 0) {
+    m = this.k;
+    if (m == 0) {
       return null;
     }
-    if (paramInt1 > this.e * paramInt2) {
+    if (paramInt1 > m * paramInt2) {
       paramInt1 = paramInt2 - 1;
+    } else {
+      paramInt1 /= m;
     }
-    for (;;)
-    {
-      localObject = ((ViewGroup)localObject).getChildAt(paramInt1);
-      if (localObject != null) {
-        break;
-      }
+    localObject = ((ViewGroup)localObject).getChildAt(paramInt1);
+    if (localObject == null) {
       return null;
-      paramInt1 /= this.e;
     }
     localObject = ((View)localObject).getTag();
     if (localObject != null)
     {
-      if ((localObject instanceof aqnh))
+      if ((localObject instanceof ImageHolder))
       {
-        localObject = (aqnh)localObject;
-        return new int[] { ((aqnh)localObject).jdField_b_of_type_Int, ((aqnh)localObject).jdField_a_of_type_Int };
+        localObject = (ImageHolder)localObject;
+        return new int[] { ((ImageHolder)localObject).h, ((ImageHolder)localObject).g };
       }
-      if (aqox.class.isInstance(localObject))
+      if (DelDownloadHolder.class.isInstance(localObject))
       {
-        localObject = (aqox)localObject;
-        return new int[] { ((aqox)localObject).jdField_b_of_type_Int, ((aqox)localObject).jdField_a_of_type_Int };
+        localObject = (DelDownloadHolder)localObject;
+        return new int[] { ((DelDownloadHolder)localObject).i, ((DelDownloadHolder)localObject).h };
       }
     }
     return null;
@@ -98,193 +94,218 @@ public class QfilePinnedHeaderExpandableListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.j)
     {
-      i = paramMotionEvent.getAction();
-      if ((i != 2) || (!this.jdField_d_of_type_Boolean)) {}
-    }
-    boolean bool;
-    do
-    {
-      for (;;)
-      {
+      int m = paramMotionEvent.getAction();
+      if ((m == 2) && (this.l)) {
         return true;
-        float f1 = paramMotionEvent.getX();
-        float f2 = paramMotionEvent.getY();
-        switch (i & 0xFF)
-        {
-        default: 
-        case 2: 
-        case 0: 
-          while (!this.jdField_d_of_type_Boolean)
+      }
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      m &= 0xFF;
+      if (m != 0)
+      {
+        if (m != 1) {
+          if (m != 2)
           {
-            return super.onInterceptTouchEvent(paramMotionEvent);
-            float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
-            if ((f3 > Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) && (f3 > this.jdField_c_of_type_Float))
-            {
-              this.jdField_d_of_type_Boolean = true;
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_b_of_type_Float = f2;
-              continue;
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_b_of_type_Float = f2;
-              int[] arrayOfInt = a((int)f1, (int)f2);
-              if (arrayOfInt != null)
-              {
-                i = arrayOfInt[0];
-                this.jdField_c_of_type_Int = i;
-                this.jdField_a_of_type_Int = i;
-                i = arrayOfInt[1];
-                this.jdField_d_of_type_Int = i;
-                this.jdField_b_of_type_Int = i;
-              }
+            if (m != 3) {
+              break label233;
             }
           }
+          else
+          {
+            float f3 = Math.abs(f1 - this.a);
+            if ((f3 <= Math.abs(f2 - this.b) * 1.73F) || (f3 <= this.c)) {
+              break label233;
+            }
+            this.l = true;
+            this.a = f1;
+            this.b = f2;
+            break label233;
+          }
+        }
+        boolean bool = this.l;
+        this.l = false;
+        this.g = -1;
+        this.e = -1;
+        this.h = -1;
+        this.f = -1;
+        this.d = false;
+        if (bool) {
+          return true;
         }
       }
-      bool = this.jdField_d_of_type_Boolean;
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_d_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_a_of_type_Boolean = false;
-    } while (!bool);
-    return true;
+      else
+      {
+        this.a = f1;
+        this.b = f2;
+        int[] arrayOfInt = a((int)f1, (int)f2);
+        if (arrayOfInt != null)
+        {
+          m = arrayOfInt[0];
+          this.g = m;
+          this.e = m;
+          m = arrayOfInt[1];
+          this.h = m;
+          this.f = m;
+        }
+      }
+      label233:
+      if (this.l) {
+        return true;
+      }
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
-    float f1;
-    float f2;
-    label130:
-    int j;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.j)
     {
-      i = paramMotionEvent.getAction();
-      f1 = paramMotionEvent.getX();
-      f2 = paramMotionEvent.getY();
-      switch (i & 0xFF)
+      int m = paramMotionEvent.getAction();
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      m &= 0xFF;
+      if (m != 0)
       {
-      default: 
-      case 2: 
-        for (;;)
-        {
-          if (this.jdField_d_of_type_Boolean)
+        if (m != 1) {
+          if (m != 2)
           {
-            return true;
-            if (!this.jdField_d_of_type_Boolean)
+            if (m != 3) {
+              break label461;
+            }
+          }
+          else
+          {
+            if (!this.l)
             {
-              float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
-              if ((f3 > Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) && (f3 > this.jdField_c_of_type_Float))
+              float f3 = Math.abs(f1 - this.a);
+              if ((f3 > Math.abs(f2 - this.b) * 1.73F) && (f3 > this.c))
               {
-                this.jdField_d_of_type_Boolean = true;
-                this.jdField_a_of_type_Float = f1;
-                this.jdField_b_of_type_Float = f2;
+                this.l = true;
+                this.a = f1;
+                this.b = f2;
               }
+              else
+              {
+                localObject = this.i;
+                if (localObject != null) {
+                  ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(true);
+                }
+              }
+            }
+            if (!this.l) {
+              break label461;
+            }
+            int n;
+            if (!this.d)
+            {
+              m = this.e;
+              if (m != -1)
+              {
+                n = this.f;
+                if (n != -1)
+                {
+                  localObject = this.i;
+                  if (localObject != null) {
+                    ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(m, n);
+                  }
+                  this.d = true;
+                }
+              }
+            }
+            localObject = a((int)f1, (int)f2);
+            if (localObject != null)
+            {
+              n = localObject[0];
+              m = localObject[1];
             }
             else
             {
-              if (!this.jdField_d_of_type_Boolean) {
-                continue;
-              }
-              if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
-              {
-                if (this.jdField_a_of_type_Arvg != null) {
-                  this.jdField_a_of_type_Arvg.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-                }
-                this.jdField_a_of_type_Boolean = true;
-              }
-              int[] arrayOfInt = a((int)f1, (int)f2);
-              if (arrayOfInt == null) {
-                break label461;
-              }
-              j = arrayOfInt[0];
-              i = arrayOfInt[1];
+              m = -1;
+              n = -1;
             }
+            if ((n == -1) || (m == -1)) {
+              break label461;
+            }
+            if (!this.d)
+            {
+              this.g = n;
+              this.e = n;
+              this.h = m;
+              this.f = m;
+              localObject = this.i;
+              if (localObject != null) {
+                ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(this.e, this.f);
+              }
+              this.d = true;
+              break label461;
+            }
+            this.g = n;
+            this.h = m;
+            localObject = this.i;
+            if (localObject == null) {
+              break label461;
+            }
+            ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(this.e, this.f, this.g, this.h);
+            break label461;
           }
         }
+        boolean bool = this.l;
+        Object localObject = this.i;
+        if (localObject != null)
+        {
+          if (bool) {
+            ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).b(this.g, this.h);
+          }
+          this.i.a(false);
+        }
+        this.g = -1;
+        this.e = -1;
+        this.h = -1;
+        this.f = -1;
+        this.l = false;
+        this.d = false;
+        if (bool) {
+          return true;
+        }
       }
-    }
-    while ((j != -1) && (i != -1))
-    {
-      if (!this.jdField_a_of_type_Boolean)
+      else
       {
-        this.jdField_c_of_type_Int = j;
-        this.jdField_a_of_type_Int = j;
-        this.jdField_d_of_type_Int = i;
-        this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_Arvg != null) {
-          this.jdField_a_of_type_Arvg.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        break;
-        if (this.jdField_a_of_type_Arvg == null) {
-          break label130;
-        }
-        this.jdField_a_of_type_Arvg.a(true);
-        break label130;
+        this.a = f1;
+        this.b = f2;
       }
-      this.jdField_c_of_type_Int = j;
-      this.jdField_d_of_type_Int = i;
-      if (this.jdField_a_of_type_Arvg == null) {
-        break;
-      }
-      this.jdField_a_of_type_Arvg.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-      break;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      break;
-      boolean bool = this.jdField_d_of_type_Boolean;
-      if (this.jdField_a_of_type_Arvg != null)
-      {
-        if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_Arvg.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-        }
-        this.jdField_a_of_type_Arvg.a(false);
-      }
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_d_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = false;
-      if (!bool) {
-        break;
-      }
-      return true;
-      return super.onTouchEvent(paramMotionEvent);
       label461:
-      i = -1;
-      j = -1;
+      if (this.l) {
+        return true;
+      }
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setGridSize(int paramInt)
   {
-    this.e = paramInt;
+    this.k = paramInt;
   }
   
-  public void setOnIndexChangedListener(arvg paramarvg)
+  public void setOnIndexChangedListener(QfilePinnedHeaderExpandableListView.OnSelectListener paramOnSelectListener)
   {
-    this.jdField_a_of_type_Arvg = paramarvg;
+    this.i = paramOnSelectListener;
   }
   
   public void setTouchSlop(Context paramContext)
   {
-    this.jdField_c_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
+    this.c = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
   }
   
   public void setWhetherImageTab(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

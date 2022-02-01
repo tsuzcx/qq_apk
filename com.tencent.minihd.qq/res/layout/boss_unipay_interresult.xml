@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/boss_unipay_id_head" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_height="80.0dip" android:layout_weight="100.0" style="@style/boss_unipay_linear">
+        <LinearLayout android:orientation="horizontal" style="@style/boss_unipay_bar.result">
+            <LinearLayout style="@style/boss_unipay_bar.result">
+                <View android:id="@id/boss_unipay_id_interresult_warnning" style="@style/boss_unipay_ic_warn" />
+                <View android:id="@id/boss_unipay_id_interresult_fail" android:layout_marginLeft="15.0dip" style="@style/boss_unipay_ic_wrong" />
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/boss_unipay_c_em1" android:id="@id/boss_unipay_id_interresult_tipsline1" android:text="系统尚未查询到" style="@style/boss_unipay_tx.big" />
+                    <TextView android:textColor="@color/boss_unipay_c_em" android:id="@id/boss_unipay_id_interresult_tipsline2" android:text="请稍后查询" style="@style/boss_unipay_tx.big" />
+                    <LinearLayout android:id="@id/boss_unipay_id_interresult_orderlayout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textColor="@color/boss_unipay_c_em" android:id="@id/boss_unipay_id_interresult_orderinfo" android:text="订单号:123456789123" style="@style/boss_unipay_tx" />
+                        <TextView android:textColor="@color/boss_unipay_c_blue" android:autoLink="all" android:id="@id/boss_unipay_id_interresult_ordercopy" android:text="@string/boss_unipay_str_copy" style="@style/boss_unipay_tx" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/boss_unipay_id_interresult_moretips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textColor="@color/boss_unipay_c_thin1" android:id="@id/boss_unipay_id_interresult_moretipstxt" android:text="请注意查收和回复短信" style="@style/boss_unipay_tx.middle" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/boss_unipay_line" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/boss_unipay_id_BottomBtn" android:text="重新查询(XX秒后)" style="@style/boss_unipay_btn_main" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:layout_marginBottom="15.0dip" style="@style/boss_unipay_foot_help">
+        <TextView android:textSize="12.0sp" android:layout_width="fill_parent" android:text="@string/boss_unipay_service" style="@style/boss_unipay_tx.thin" />
+        <LinearLayout style="@style/boss_unipay_bar">
+            <TextView android:textSize="12.0sp" android:text="@string/boss_unipay_service_call" style="@style/boss_unipay_tx.thin" />
+            <TextView android:textSize="12.0sp" android:autoLink="all" android:id="@id/boss_unipay_id_telnum" android:layout_width="105.0dip" android:text="@string/boss_unipay_service_phone" style="@style/boss_unipay_tx_link" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

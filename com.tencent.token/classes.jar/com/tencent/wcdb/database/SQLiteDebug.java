@@ -1,107 +1,138 @@
 package com.tencent.wcdb.database;
 
-import android.util.Printer;
+import android.annotation.SuppressLint;
+import com.tencent.token.aiz;
 import com.tencent.wcdb.support.Log;
 import java.util.ArrayList;
 
 public final class SQLiteDebug
 {
-  private static final String TAG = "WCDB.SQLiteDebug";
-  private static volatile int sLastErrorLine;
-  private static volatile ArrayList sLastIOTraceStats;
+  private static volatile int a;
+  private static volatile ArrayList<IOTraceStats> b;
   
   static {}
   
-  static void collectLastIOTraceStats(SQLiteConnection paramSQLiteConnection)
+  static void a(SQLiteConnection paramSQLiteConnection)
   {
     try
     {
-      sLastErrorLine = nativeGetLastErrorLine();
-      ArrayList localArrayList = new ArrayList();
-      long l = paramSQLiteConnection.getNativeHandle(null);
+      a = nativeGetLastErrorLine();
+      localObject = new ArrayList();
+      long l = paramSQLiteConnection.a(null);
       if (l != 0L)
       {
-        nativeGetIOTraceStats(l, localArrayList);
-        paramSQLiteConnection.endNativeHandle(null);
+        nativeGetIOTraceStats(l, (ArrayList)localObject);
+        paramSQLiteConnection.a();
       }
-      sLastIOTraceStats = localArrayList;
+      b = (ArrayList)localObject;
       return;
     }
     catch (RuntimeException paramSQLiteConnection)
     {
-      Log.e("WCDB.SQLiteDebug", "Cannot collect I/O trace statistics: " + paramSQLiteConnection.getMessage());
+      Object localObject = new StringBuilder("Cannot collect I/O trace statistics: ");
+      ((StringBuilder)localObject).append(paramSQLiteConnection.getMessage());
+      Log.a("WCDB.SQLiteDebug", ((StringBuilder)localObject).toString());
     }
   }
   
-  static void collectLastIOTraceStats(SQLiteDatabase paramSQLiteDatabase)
+  public static void a(SQLiteDatabase paramSQLiteDatabase)
   {
     try
     {
-      sLastErrorLine = nativeGetLastErrorLine();
-      ArrayList localArrayList = new ArrayList();
-      long l = paramSQLiteDatabase.acquireNativeConnectionHandle("collectIoStat", false, false);
-      if (l != 0L) {
-        nativeGetIOTraceStats(l, localArrayList);
+      a = nativeGetLastErrorLine();
+      localObject = new ArrayList();
+      aiz localaiz = paramSQLiteDatabase.b();
+      localaiz.a(null, 2, null);
+      long l = localaiz.a.a("collectIoStat");
+      if (l != 0L)
+      {
+        if (l != 0L) {
+          nativeGetIOTraceStats(l, (ArrayList)localObject);
+        }
+        paramSQLiteDatabase = paramSQLiteDatabase.b();
+        if (paramSQLiteDatabase.a != null) {
+          paramSQLiteDatabase.a.a();
+        }
+        paramSQLiteDatabase.b();
+        b = (ArrayList)localObject;
+        return;
       }
-      paramSQLiteDatabase.releaseNativeConnection(l, null);
-      sLastIOTraceStats = localArrayList;
-      return;
+      throw new IllegalStateException("SQLiteConnection native handle not initialized.");
     }
     catch (RuntimeException paramSQLiteDatabase)
     {
-      Log.e("WCDB.SQLiteDebug", "Cannot collect I/O trace statistics: " + paramSQLiteDatabase.getMessage());
+      Object localObject = new StringBuilder("Cannot collect I/O trace statistics: ");
+      ((StringBuilder)localObject).append(paramSQLiteDatabase.getMessage());
+      Log.a("WCDB.SQLiteDebug", ((StringBuilder)localObject).toString());
     }
   }
   
-  public static void dump(Printer paramPrinter, String[] paramArrayOfString)
+  public static final boolean a(long paramLong)
   {
-    boolean bool = false;
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (paramArrayOfString[i].equals("-v")) {
-        bool = true;
-      }
-      i += 1;
-    }
-    SQLiteDatabase.dumpAll(paramPrinter, bool);
+    return paramLong > 300L;
   }
   
-  public static SQLiteDebug.PagerStats getDatabaseInfo()
-  {
-    SQLiteDebug.PagerStats localPagerStats = new SQLiteDebug.PagerStats();
-    nativeGetPagerStats(localPagerStats);
-    localPagerStats.dbStats = SQLiteDatabase.getDbStats();
-    return localPagerStats;
-  }
-  
-  public static int getLastErrorLine()
-  {
-    return sLastErrorLine;
-  }
-  
-  public static ArrayList getLastIOTraceStats()
-  {
-    return sLastIOTraceStats;
-  }
-  
-  private static native void nativeGetIOTraceStats(long paramLong, ArrayList paramArrayList);
+  private static native void nativeGetIOTraceStats(long paramLong, ArrayList<IOTraceStats> paramArrayList);
   
   private static native int nativeGetLastErrorLine();
   
-  private static native void nativeGetPagerStats(SQLiteDebug.PagerStats paramPagerStats);
+  private static native void nativeGetPagerStats(PagerStats paramPagerStats);
   
   private static native void nativeSetIOTraceFlags(int paramInt);
   
-  public static void setIOTraceFlags(int paramInt)
+  public static class DbStats
   {
-    nativeSetIOTraceFlags(paramInt);
+    public String cache;
+    public String dbName;
+    public long dbSize;
+    public int lookaside;
+    public long pageSize;
+    
+    public DbStats(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      this.dbName = paramString;
+      this.pageSize = (paramLong2 / 1024L);
+      this.dbSize = (paramLong1 * paramLong2 / 1024L);
+      this.lookaside = paramInt1;
+      paramString = new StringBuilder();
+      paramString.append(paramInt2);
+      paramString.append("/");
+      paramString.append(paramInt3);
+      paramString.append("/");
+      paramString.append(paramInt4);
+      this.cache = paramString.toString();
+    }
   }
   
-  public static final boolean shouldLogSlowQuery(long paramLong)
+  public static class IOTraceStats
   {
-    return paramLong > 300L;
+    public String dbName;
+    public String journalMode;
+    public long lastJournalReadOffset;
+    public byte[] lastJournalReadPage;
+    public long lastJournalWriteOffset;
+    public byte[] lastJournalWritePage;
+    public long lastReadOffset;
+    public byte[] lastReadPage;
+    public long lastWriteOffset;
+    public byte[] lastWritePage;
+    public long pageCount;
+    public long pageSize;
+    public String path;
+    
+    @SuppressLint({"DefaultLocale"})
+    public String toString()
+    {
+      return String.format("[%s | %s] pageSize: %d, pageCount: %d, journal: %s, lastRead: %d, lastWrite: %d, lastJournalRead: %d, lastJournalWrite: %d", new Object[] { this.dbName, this.path, Long.valueOf(this.pageSize), Long.valueOf(this.pageCount), this.journalMode, Long.valueOf(this.lastReadOffset), Long.valueOf(this.lastWriteOffset), Long.valueOf(this.lastJournalReadOffset), Long.valueOf(this.lastJournalWriteOffset) });
+    }
+  }
+  
+  public static class PagerStats
+  {
+    public ArrayList<SQLiteDebug.DbStats> dbStats;
+    public int largestMemAlloc;
+    public int memoryUsed;
+    public int pageCacheOverflow;
   }
 }
 

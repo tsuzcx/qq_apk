@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/az8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/c74" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/lh9" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="22.0dip" android:textColor="@color/aks" android:id="@id/lh7" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:src="@color/abn" />
+            </LinearLayout>
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/lh_" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/lh8" android:background="@drawable/p5" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:src="@color/abn" />
+                <TextView android:textSize="20.0dip" android:textColor="@color/aks" android:id="@id/lh7" android:paddingTop="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/z9" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

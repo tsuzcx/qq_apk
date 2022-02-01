@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/acu" layout="@layout/l3" />
-    <ImageView android:id="@id/ac8" android:visibility="visible" android:layout_width="@dimen/vm" android:layout_height="@dimen/vm" android:src="@drawable/bet" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <View android:id="@id/acv" android:background="@drawable/m2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/dv" android:layout_marginRight="@dimen/dv" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/acu" android:layerType="software" />
-    <ImageView android:id="@id/acw" android:background="@drawable/hf" android:padding="4.0dip" android:visibility="gone" android:layout_width="26.599976dip" android:layout_height="26.599976dip" android:layout_marginTop="@dimen/la" android:layout_marginRight="@dimen/la" android:src="@drawable/b0t" android:layout_alignTop="@id/acu" android:layout_alignRight="@id/acu" />
-</RelativeLayout>
+    <ScrollView android:scrollbars="none" style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:id="@id/jdm" android:text="@string/akb" style="@style/n_" />
+            <View style="@style/n5" />
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" style="@style/lj">
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bu_" android:background="@drawable/agw" android:layout_width="wrap_content" android:layout_height="50.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/bu7" android:layout_width="48.0dip" android:layout_height="wrap_content" android:singleLine="true" />
+                    <TextView android:textSize="8.0dip" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/bub" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/bvv" android:singleLine="true" />
+                </LinearLayout>
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/a9p" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:hint="@string/alo" android:inputType="phone" style="@style/n9" />
+            </LinearLayout>
+            <Button android:id="@id/a9z" android:visibility="gone" android:text="@string/alh" style="@style/or" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

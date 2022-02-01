@@ -42,18 +42,18 @@ public final class MatchGroup
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof MatchGroup))
       {
         paramObject = (MatchGroup)paramObject;
-        if ((!Intrinsics.areEqual(this.value, paramObject.value)) || (!Intrinsics.areEqual(this.range, paramObject.range))) {}
+        if ((Intrinsics.areEqual(this.value, paramObject.value)) && (Intrinsics.areEqual(this.range, paramObject.range))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -70,28 +70,36 @@ public final class MatchGroup
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.value;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.range;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.range;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "MatchGroup(value=" + this.value + ", range=" + this.range + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MatchGroup(value=");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(", range=");
+    localStringBuilder.append(this.range);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.MatchGroup
  * JD-Core Version:    0.7.0.1
  */

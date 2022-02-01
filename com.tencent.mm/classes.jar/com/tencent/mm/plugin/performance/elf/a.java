@@ -5,34 +5,34 @@ import java.util.HashMap;
 
 public final class a
 {
-  public static HashMap<Class, AbstractProcessChecker> bSA;
+  public static HashMap<Class, AbstractProcessChecker> map;
   
   static
   {
-    AppMethodBeat.i(111068);
-    bSA = new HashMap();
-    AppMethodBeat.o(111068);
+    AppMethodBeat.i(124995);
+    map = new HashMap();
+    AppMethodBeat.o(124995);
   }
   
-  public static <T extends AbstractProcessChecker> T an(Class<? extends AbstractProcessChecker> paramClass)
+  public static <T extends AbstractProcessChecker> T bY(Class<? extends AbstractProcessChecker> paramClass)
   {
-    AppMethodBeat.i(111067);
-    if (bSA.containsKey(paramClass))
+    AppMethodBeat.i(124994);
+    if (map.containsKey(paramClass))
     {
-      paramClass = (AbstractProcessChecker)bSA.get(paramClass);
-      AppMethodBeat.o(111067);
+      paramClass = (AbstractProcessChecker)map.get(paramClass);
+      AppMethodBeat.o(124994);
       return paramClass;
     }
     try
     {
       AbstractProcessChecker localAbstractProcessChecker = (AbstractProcessChecker)paramClass.newInstance();
-      bSA.put(paramClass, localAbstractProcessChecker);
-      AppMethodBeat.o(111067);
+      map.put(paramClass, localAbstractProcessChecker);
+      AppMethodBeat.o(124994);
       return localAbstractProcessChecker;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(111067);
+      AppMethodBeat.o(124994);
       return null;
     }
     catch (InstantiationException paramClass)
@@ -44,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.mini.share;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
-import bety;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,27 +14,29 @@ final class MiniProgramOpenSdkUtil$2
   
   public void run()
   {
-    this.val$outInfo.isTimeout = true;
+    MiniProgramOpenSdkUtil.TimeOutInfo localTimeOutInfo = this.val$outInfo;
+    localTimeOutInfo.isTimeout = true;
     try
     {
-      if ((this.val$outInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
+      if ((localTimeOutInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
         this.val$outInfo.progressDialog.dismiss();
       }
-      QQToast.a(this.val$context, alud.a(2131692308), 0).b(this.val$context.getResources().getDimensionPixelSize(2131298914));
-      if (((this.val$context instanceof JumpActivity)) && (!((JumpActivity)this.val$context).isFinishing())) {
-        MiniProgramOpenSdkUtil.access$100(this.val$context);
-      }
+      QQToast.makeText(this.val$context, HardCodeUtil.a(2131889091), 0).show(this.val$context.getResources().getDimensionPixelSize(2131299920));
+      MiniProgramOpenSdkUtil.access$100(this.val$context);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("MiniProgramOpenSdkUtil", 1, "forwardShare timeoutRunnable has Exception" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forwardShare timeoutRunnable has Exception");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.e("MiniProgramOpenSdkUtil", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -46,8 +46,8 @@ public final class RandomTrackSelection
   
   public void updateSelectedTrack(long paramLong1, long paramLong2, long paramLong3)
   {
-    int m = 0;
     paramLong1 = SystemClock.elapsedRealtime();
+    int m = 0;
     int i = 0;
     int k;
     for (int j = 0; i < this.length; j = k)
@@ -63,33 +63,27 @@ public final class RandomTrackSelection
     {
       j = 0;
       i = m;
-    }
-    for (;;)
-    {
-      if (i < this.length)
+      while (i < this.length)
       {
         k = j;
-        if (isBlacklisted(i, paramLong1)) {
-          break label129;
+        if (!isBlacklisted(i, paramLong1))
+        {
+          if (this.selectedIndex == j)
+          {
+            this.selectedIndex = i;
+            return;
+          }
+          k = j + 1;
         }
-        if (this.selectedIndex == j) {
-          this.selectedIndex = i;
-        }
+        i += 1;
+        j = k;
       }
-      else
-      {
-        return;
-      }
-      k = j + 1;
-      label129:
-      i += 1;
-      j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.RandomTrackSelection
  * JD-Core Version:    0.7.0.1
  */

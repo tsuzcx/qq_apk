@@ -1,77 +1,160 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.ai.g;
+import com.tencent.mm.am.i;
 import com.tencent.mm.jniinterface.AesEcb;
 import com.tencent.mm.plugin.backup.i.ad;
 import com.tencent.mm.plugin.backup.i.ae;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class d
   extends com.tencent.mm.plugin.backup.g.b
 {
   private static int progress;
-  private int fsd;
   public String id;
-  private g jIi;
-  private ad jIk;
-  private ae jIl;
-  private String jIm;
   private byte[] key;
   private int offset;
+  private int osy;
   private int start;
+  private i vfE;
+  private ad vfG;
+  private ae vfH;
+  private String vfI;
   
-  public d(String paramString1, String paramString2, int paramInt1, int paramInt2, g paramg, byte[] paramArrayOfByte)
+  public d(String paramString1, String paramString2, int paramInt1, int paramInt2, i parami, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(17887);
-    this.jIk = new ad();
-    this.jIl = new ae();
-    this.jIi = null;
+    AppMethodBeat.i(21944);
+    this.vfG = new ad();
+    this.vfH = new ae();
+    this.vfE = null;
     this.start = 0;
     this.offset = 0;
     if (paramInt1 == 1) {}
-    for (this.jIm = (paramString1 + "backupItem/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.Gi(paramString2));; this.jIm = (paramString1 + "backupMeida/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.Gi(paramString2)))
+    for (this.vfI = (paramString1 + "backupItem/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.ahL(paramString2));; this.vfI = (paramString1 + "backupMeida/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.ahL(paramString2)))
     {
       this.id = paramString2;
-      this.jIk.jKw = paramString2;
-      this.jIk.jKx = paramInt1;
-      this.fsd = paramInt2;
-      ab.i("MicroMsg.BakSceneRestoreData", "BakSceneRestoreData init, %s, type:%d, totalLen:%d", new Object[] { this.jIk.jKw, Integer.valueOf(this.jIk.jKx), Integer.valueOf(this.fsd) });
-      this.jIi = paramg;
+      this.vfG.vhN = paramString2;
+      this.vfG.vhO = paramInt1;
+      this.osy = paramInt2;
+      Log.i("MicroMsg.BakSceneRestoreData", "BakSceneRestoreData init, %s, type:%d, totalLen:%d", new Object[] { this.vfG.vhN, Integer.valueOf(this.vfG.vhO), Integer.valueOf(this.osy) });
+      this.vfE = parami;
       this.key = paramArrayOfByte;
-      AppMethodBeat.o(17887);
+      AppMethodBeat.o(21944);
       return;
     }
   }
   
   public static void setProgress(int paramInt)
   {
-    AppMethodBeat.i(17889);
-    ab.i("MicroMsg.BakSceneRestoreData", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(21946);
+    Log.i("MicroMsg.BakSceneRestoreData", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
     progress = paramInt;
-    AppMethodBeat.o(17889);
+    AppMethodBeat.o(21946);
   }
   
-  public final com.tencent.mm.bv.a aUl()
+  public final void Fo(int paramInt)
   {
-    return this.jIl;
+    AppMethodBeat.i(21947);
+    Log.i("MicroMsg.BakSceneRestoreData", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.vfH.vhN, Integer.valueOf(this.vfH.vhO), Integer.valueOf(this.vfH.vhQ), Integer.valueOf(this.vfH.vhR), Integer.valueOf(this.vfH.vhk) });
+    if ((this.vfH.vhk != 0) && (this.vfH.vhk != 10))
+    {
+      u(4, this.vfH.vhk, "error");
+      AppMethodBeat.o(21947);
+      return;
+    }
+    if ((this.vfH.vhQ != this.start) || (this.vfH.vhR != this.offset))
+    {
+      Log.e("MicroMsg.BakSceneRestoreData", "err local:%d, %d;   server:%d,%d", new Object[] { Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.vfH.vhQ), Integer.valueOf(this.vfH.vhR) });
+      u(3, -1, "error");
+      AppMethodBeat.o(21947);
+      return;
+    }
+    this.vfE.a(this.vfG.vhR - this.vfG.vhQ, this.osy, this);
+    byte[] arrayOfByte = this.vfH.vgA.Op;
+    Object localObject;
+    boolean bool;
+    if (this.key != null)
+    {
+      localObject = this.key;
+      if (this.offset == this.osy)
+      {
+        bool = true;
+        arrayOfByte = AesEcb.aesCryptEcb(arrayOfByte, (byte[])localObject, false, bool);
+      }
+    }
+    for (;;)
+    {
+      localObject = this.vfI;
+      String str = this.id;
+      u localu = new u((String)localObject + str);
+      long l1;
+      label355:
+      long l2;
+      if (localu.jKS())
+      {
+        l1 = localu.length();
+        y.e((String)localObject + str, arrayOfByte, arrayOfByte.length);
+        localu = new u((String)localObject + str);
+        if (!localu.jKS()) {
+          break label587;
+        }
+        l2 = localu.length();
+        label428:
+        if (l1 == l2)
+        {
+          Log.e("MicroMsg.BakSceneRestoreData", "append failed and try again:%s", new Object[] { (String)localObject + str });
+          y.e((String)localObject + str, arrayOfByte, arrayOfByte.length);
+        }
+        if (arrayOfByte != null) {
+          break label593;
+        }
+      }
+      label587:
+      label593:
+      for (paramInt = 0;; paramInt = arrayOfByte.length)
+      {
+        Log.i("MicroMsg.BakSceneRestoreData", "onSceneEnd appendbuf len:%d", new Object[] { Integer.valueOf(paramInt) });
+        if (this.offset != this.osy) {
+          break label600;
+        }
+        Log.i("MicroMsg.BakSceneRestoreData", "recover cmoplete:%s  %d", new Object[] { this.id, Integer.valueOf(this.osy) });
+        u(0, 0, "success");
+        AppMethodBeat.o(21947);
+        return;
+        bool = false;
+        break;
+        l1 = 0L;
+        break label355;
+        l2 = 0L;
+        break label428;
+      }
+      label600:
+      cWw();
+      AppMethodBeat.o(21947);
+      return;
+    }
   }
   
-  public final com.tencent.mm.bv.a aUm()
+  public final com.tencent.mm.bx.a cWm()
   {
-    return this.jIk;
+    return this.vfH;
   }
   
-  public final boolean aUv()
+  public final com.tencent.mm.bx.a cWn()
+  {
+    return this.vfG;
+  }
+  
+  public final boolean cWw()
   {
     long l = 524288L;
-    AppMethodBeat.i(17888);
-    ab.i("MicroMsg.BakSceneRestoreData", "doSecne");
-    int i = this.fsd;
-    if (this.jIk.jKx == 2) {
-      if (this.fsd - this.offset > 524288L) {
+    AppMethodBeat.i(21945);
+    Log.i("MicroMsg.BakSceneRestoreData", "doSecne");
+    int i = this.osy;
+    if (this.vfG.vhO == 2) {
+      if (this.osy - this.offset > 524288L) {
         i = (int)l;
       }
     }
@@ -79,13 +162,13 @@ public final class d
     {
       this.start = this.offset;
       this.offset = (i + this.start);
-      this.jIk.jKz = this.start;
-      this.jIk.jKA = this.offset;
-      this.jIk.jKC = progress;
-      boolean bool = super.aUv();
-      AppMethodBeat.o(17888);
+      this.vfG.vhQ = this.start;
+      this.vfG.vhR = this.offset;
+      this.vfG.vhT = progress;
+      boolean bool = super.cWw();
+      AppMethodBeat.o(21945);
       return bool;
-      l = this.fsd - this.offset;
+      l = this.osy - this.offset;
       break;
     }
   }
@@ -94,93 +177,10 @@ public final class d
   {
     return 7;
   }
-  
-  public final void rt(int paramInt)
-  {
-    AppMethodBeat.i(17890);
-    ab.i("MicroMsg.BakSceneRestoreData", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.jIl.jKw, Integer.valueOf(this.jIl.jKx), Integer.valueOf(this.jIl.jKz), Integer.valueOf(this.jIl.jKA), Integer.valueOf(this.jIl.jJS) });
-    if ((this.jIl.jJS != 0) && (this.jIl.jJS != 10))
-    {
-      n(4, this.jIl.jJS, "error");
-      AppMethodBeat.o(17890);
-      return;
-    }
-    if ((this.jIl.jKz != this.start) || (this.jIl.jKA != this.offset))
-    {
-      ab.e("MicroMsg.BakSceneRestoreData", "err local:%d, %d;   server:%d,%d", new Object[] { Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.jIl.jKz), Integer.valueOf(this.jIl.jKA) });
-      n(3, -1, "error");
-      AppMethodBeat.o(17890);
-      return;
-    }
-    this.jIi.a(this.jIk.jKA - this.jIk.jKz, this.fsd, this);
-    byte[] arrayOfByte = this.jIl.jJh.pW;
-    Object localObject;
-    boolean bool;
-    if (this.key != null)
-    {
-      localObject = this.key;
-      if (this.offset == this.fsd)
-      {
-        bool = true;
-        arrayOfByte = AesEcb.aesCryptEcb(arrayOfByte, (byte[])localObject, false, bool);
-      }
-    }
-    for (;;)
-    {
-      localObject = this.jIm;
-      String str = this.id;
-      File localFile = new File((String)localObject + str);
-      long l1;
-      label355:
-      long l2;
-      if (localFile.exists())
-      {
-        l1 = localFile.length();
-        e.b((String)localObject, str, arrayOfByte);
-        localFile = new File((String)localObject + str);
-        if (!localFile.exists()) {
-          break label549;
-        }
-        l2 = localFile.length();
-        label409:
-        if (l1 == l2)
-        {
-          ab.e("MicroMsg.BakSceneRestoreData", "append failed and try again:%s", new Object[] { (String)localObject + str });
-          e.b((String)localObject, str, arrayOfByte);
-        }
-        if (arrayOfByte != null) {
-          break label555;
-        }
-      }
-      label549:
-      label555:
-      for (paramInt = 0;; paramInt = arrayOfByte.length)
-      {
-        ab.i("MicroMsg.BakSceneRestoreData", "onSceneEnd appendbuf len:%d", new Object[] { Integer.valueOf(paramInt) });
-        if (this.offset != this.fsd) {
-          break label562;
-        }
-        ab.i("MicroMsg.BakSceneRestoreData", "recover cmoplete:%s  %d", new Object[] { this.id, Integer.valueOf(this.fsd) });
-        n(0, 0, "success");
-        AppMethodBeat.o(17890);
-        return;
-        bool = false;
-        break;
-        l1 = 0L;
-        break label355;
-        l2 = 0L;
-        break label409;
-      }
-      label562:
-      aUv();
-      AppMethodBeat.o(17890);
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.c.d
  * JD-Core Version:    0.7.0.1
  */

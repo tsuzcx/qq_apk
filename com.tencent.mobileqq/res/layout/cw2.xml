@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/myj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" layout="@layout/cw6" />
+    <View android:id="@id/qsw" android:layout_width="fill_parent" android:layout_height="0.100000024dip" android:layout_marginTop="20.0dip" />
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/p7d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="bottom" android:id="@id/p7j" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="59.0dip" android:layout_marginRight="12.0dip" android:text="@string/xyb" android:maxLines="2" android:includeFontPadding="false" />
+</LinearLayout>

@@ -11,15 +11,15 @@ final class CompressPreviewUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(68239);
-    this.pMs.onKeyDown(4, null);
-    AppMethodBeat.o(68239);
+    AppMethodBeat.i(122964);
+    this.Nnn.onKeyDown(4, null);
+    AppMethodBeat.o(122964);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.CompressPreviewUI.2
  * JD-Core Version:    0.7.0.1
  */

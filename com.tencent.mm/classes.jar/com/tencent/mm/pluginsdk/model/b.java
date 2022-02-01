@@ -1,93 +1,109 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.g.a.jh;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf.b;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.brandservice.api.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k.k;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizFinderLiveChecker;", "Lcom/tencent/mm/plugin/brandservice/api/IBizFinderLiveChecker;", "scene", "", "(I)V", "getScene", "()I", "updateTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "checkBizFinderLives", "", "bizUserName", "", "startCheck", "stopCheck", "Companion", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements e
+  implements a
 {
-  public final void a(e.c paramc) {}
+  private static final String TAG;
+  public static final a XPr;
+  final int scene;
+  private MTimerHandler vXz;
   
-  public final e.b b(e.a parama)
+  static
   {
-    AppMethodBeat.i(27234);
-    cm localcm = parama.eyJ;
-    if ((localcm == null) || (localcm.nqW != 47))
+    AppMethodBeat.i(244733);
+    XPr = new a((byte)0);
+    TAG = "MicroMsg.BizFinderLiveChecker";
+    AppMethodBeat.o(244733);
+  }
+  
+  public b(int paramInt)
+  {
+    this.scene = paramInt;
+  }
+  
+  private static final boolean a(b paramb, String paramString)
+  {
+    AppMethodBeat.i(244731);
+    s.u(paramb, "this$0");
+    s.u(paramString, "bizUserName");
+    Log.d(TAG, "checkBizFinderLives");
+    c localc = c.XPt;
+    c.a(paramString, false, paramb.scene, (q)new b(paramb));
+    AppMethodBeat.o(244731);
+    return true;
+  }
+  
+  public final void aiO(String paramString)
+  {
+    AppMethodBeat.i(244750);
+    if (paramString == null)
     {
-      ab.f("MicroMsg.EmojiExtension", "parseEmojiMsg failed, invalid cmdAM");
-      AppMethodBeat.o(27234);
-      return null;
+      AppMethodBeat.o(244750);
+      return;
     }
-    Object localObject1 = aa.a(localcm.woP);
-    Object localObject2 = aa.a(localcm.woQ);
-    aw.aaz();
-    if (((String)c.Ru().get(2, null)).equals(localObject1))
+    if (this.vXz != null)
     {
-      localObject1 = localObject2;
-      localObject2 = aa.a(localcm.woR);
-      ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((String)localObject1, (String)localObject2, localcm.pIG, localcm.woU, parama);
-      localObject1 = com.tencent.mm.model.bf.pA(localcm.woU);
-      if (localObject1 != null)
-      {
-        ab.i("MicroMsg.EmojiExtension", "bizClientMsgId = %s", new Object[] { ((bf.b)localObject1).fmH });
-        if ((((bf.b)localObject1).fmL != null) && (((bf.b)localObject1).scene == 1))
-        {
-          parama = aa.a(localcm.woP);
-          aw.aaz();
-          c.Ru().set(73729, Integer.valueOf(1));
-          localObject2 = new com.tencent.mm.storage.bf();
-          ((com.tencent.mm.storage.bf)localObject2).field_content = ah.getContext().getString(2131301780);
-          ((com.tencent.mm.storage.bf)localObject2).field_createtime = bo.aox();
-          ((com.tencent.mm.storage.bf)localObject2).field_imgpath = "";
-          ((com.tencent.mm.storage.bf)localObject2).field_sayhicontent = ((com.tencent.mm.storage.bf)localObject2).field_content;
-          ((com.tencent.mm.storage.bf)localObject2).field_sayhiuser = parama;
-          ((com.tencent.mm.storage.bf)localObject2).field_scene = 18;
-          if (localcm.jJS <= 3) {
-            break label372;
-          }
-        }
+      AppMethodBeat.o(244750);
+      return;
+    }
+    Object localObject = c.XPt;
+    localObject = c.iGU();
+    c localc = c.XPt;
+    long l = k.qu(MMKVSlotManager.decodeInt$default((MMKVSlotManager)localObject, c.bpe(paramString), 0, 2, null), 10) * 1000 / 2L;
+    Log.d(TAG, s.X("startCheck interval = ", Long.valueOf(l)));
+    this.vXz = new MTimerHandler(s.X(paramString, "-live-UpdateTimer"), new b..ExternalSyntheticLambda0(this, paramString), true);
+    paramString = this.vXz;
+    if (paramString != null) {
+      paramString.startTimer(0L, l);
+    }
+    AppMethodBeat.o(244750);
+  }
+  
+  public final void stopCheck()
+  {
+    AppMethodBeat.i(244757);
+    if (this.vXz != null)
+    {
+      Log.d(TAG, "stopCheck");
+      MTimerHandler localMTimerHandler = this.vXz;
+      if (localMTimerHandler != null) {
+        localMTimerHandler.stopTimer();
       }
+      this.vXz = null;
     }
-    label372:
-    for (int i = localcm.jJS;; i = 3)
+    AppMethodBeat.o(244757);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizFinderLiveChecker$Companion;", "", "()V", "TAG", "", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "bizUserName", "", "exportId", "isChange", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements q<String, String, Boolean, ah>
+  {
+    b(b paramb)
     {
-      ((com.tencent.mm.storage.bf)localObject2).field_status = i;
-      ((com.tencent.mm.storage.bf)localObject2).field_svrid = localcm.pIG;
-      ((com.tencent.mm.storage.bf)localObject2).field_talker = parama;
-      ((com.tencent.mm.storage.bf)localObject2).field_type = localcm.nqW;
-      ((com.tencent.mm.storage.bf)localObject2).field_isSend = 0;
-      ((com.tencent.mm.storage.bf)localObject2).field_sayhiencryptuser = parama;
-      ((com.tencent.mm.storage.bf)localObject2).field_ticket = ((bf.b)localObject1).fmL;
-      com.tencent.mm.bi.d.alj().a((com.tencent.mm.storage.bf)localObject2);
-      localObject1 = new jh();
-      ((jh)localObject1).cyK.cyL = parama;
-      a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
-      AppMethodBeat.o(27234);
-      return null;
-      break;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.b
  * JD-Core Version:    0.7.0.1
  */

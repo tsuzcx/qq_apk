@@ -16,25 +16,25 @@ public final class IdentityProviders
   
   public static final String getIdentityProviderForAccount(Account paramAccount)
   {
-    AppMethodBeat.i(50354);
+    AppMethodBeat.i(88249);
     Preconditions.checkNotNull(paramAccount, "account cannot be null");
     if ("com.google".equals(paramAccount.type))
     {
-      AppMethodBeat.o(50354);
+      AppMethodBeat.o(88249);
       return "https://accounts.google.com";
     }
     if ("com.facebook.auth.login".equals(paramAccount.type))
     {
-      AppMethodBeat.o(50354);
+      AppMethodBeat.o(88249);
       return "https://www.facebook.com";
     }
-    AppMethodBeat.o(50354);
+    AppMethodBeat.o(88249);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.IdentityProviders
  * JD-Core Version:    0.7.0.1
  */

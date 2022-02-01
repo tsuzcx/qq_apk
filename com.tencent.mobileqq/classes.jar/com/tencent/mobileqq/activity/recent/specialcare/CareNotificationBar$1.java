@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import ajmw;
-import android.view.View;
+import com.tencent.mobileqq.banner.BannerListener;
 
-public class CareNotificationBar$1
-  implements Runnable
+class CareNotificationBar$1
+  implements BannerListener
 {
-  public CareNotificationBar$1(ajmw paramajmw) {}
+  CareNotificationBar$1(CareNotificationBar paramCareNotificationBar) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (ajmw.a(this.this$0) == null) {}
-    while (ajmw.a(this.this$0).getVisibility() != 0) {
-      return;
-    }
-    ajmw.a(this.this$0).clearAnimation();
-    ajmw.a(this.this$0).startAnimation(ajmw.a(this.this$0));
-    ajmw.a(this.this$0).setVisibility(8);
+    this.a.d();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.d();
   }
 }
 

@@ -2,14 +2,16 @@ package io.flutter.embedding.engine;
 
 import android.app.Activity;
 import android.app.Service;
-import android.arch.lifecycle.Lifecycle;
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
 import io.flutter.Log;
+import io.flutter.embedding.engine.loader.FlutterLoader;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.embedding.engine.plugins.PluginRegistry;
@@ -52,7 +54,7 @@ class FlutterEnginePluginRegistry
   @Nullable
   private FlutterEnginePluginRegistry.FlutterEngineContentProviderPluginBinding contentProviderPluginBinding;
   @NonNull
-  private final FlutterEngineAndroidLifecycle flutterEngineAndroidLifecycle;
+  private final FlutterEngine flutterEngine;
   private boolean isWaitingForActivityReattachment = false;
   @NonNull
   private final FlutterPlugin.FlutterPluginBinding pluginBinding;
@@ -65,32 +67,32 @@ class FlutterEnginePluginRegistry
   @Nullable
   private FlutterEnginePluginRegistry.FlutterEngineServicePluginBinding servicePluginBinding;
   
-  FlutterEnginePluginRegistry(@NonNull Context paramContext, @NonNull FlutterEngine paramFlutterEngine, @NonNull FlutterEngineAndroidLifecycle paramFlutterEngineAndroidLifecycle)
+  FlutterEnginePluginRegistry(@NonNull Context paramContext, @NonNull FlutterEngine paramFlutterEngine, @NonNull FlutterLoader paramFlutterLoader)
   {
-    this.flutterEngineAndroidLifecycle = paramFlutterEngineAndroidLifecycle;
-    this.pluginBinding = new FlutterPlugin.FlutterPluginBinding(paramContext, paramFlutterEngine, paramFlutterEngineAndroidLifecycle);
+    this.flutterEngine = paramFlutterEngine;
+    this.pluginBinding = new FlutterPlugin.FlutterPluginBinding(paramContext, paramFlutterEngine, paramFlutterEngine.getDartExecutor(), paramFlutterEngine.getRenderer(), paramFlutterEngine.getPlatformViewsController().getRegistry(), new FlutterEnginePluginRegistry.DefaultFlutterAssets(paramFlutterLoader, null));
   }
   
   private void detachFromAndroidComponent()
   {
-    if (isAttachedToActivity()) {
-      detachFromActivity();
-    }
-    do
+    if (isAttachedToActivity())
     {
+      detachFromActivity();
       return;
-      if (isAttachedToService())
-      {
-        detachFromService();
-        return;
-      }
-      if (isAttachedToBroadcastReceiver())
-      {
-        detachFromBroadcastReceiver();
-        return;
-      }
-    } while (!isAttachedToContentProvider());
-    detachFromContentProvider();
+    }
+    if (isAttachedToService())
+    {
+      detachFromService();
+      return;
+    }
+    if (isAttachedToBroadcastReceiver())
+    {
+      detachFromBroadcastReceiver();
+      return;
+    }
+    if (isAttachedToContentProvider()) {
+      detachFromContentProvider();
+    }
   }
   
   private boolean isAttachedToActivity()
@@ -115,6 +117,17 @@ class FlutterEnginePluginRegistry
   
   public void add(@NonNull FlutterPlugin paramFlutterPlugin)
   {
+    if (has(paramFlutterPlugin.getClass()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Attempted to register plugin (");
+      ((StringBuilder)localObject).append(paramFlutterPlugin);
+      ((StringBuilder)localObject).append(") but it was already registered with this FlutterEngine (");
+      ((StringBuilder)localObject).append(this.flutterEngine);
+      ((StringBuilder)localObject).append(").");
+      Log.w("FlutterEnginePluginRegistry", ((StringBuilder)localObject).toString());
+      return;
+    }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Adding plugin: ");
     ((StringBuilder)localObject).append(paramFlutterPlugin);
@@ -170,34 +183,27 @@ class FlutterEnginePluginRegistry
     localStringBuilder.append(paramActivity);
     localStringBuilder.append(".");
     String str;
-    if (this.isWaitingForActivityReattachment)
-    {
+    if (this.isWaitingForActivityReattachment) {
       str = " This is after a config change.";
-      localStringBuilder.append(str);
-      Log.v("FlutterEnginePluginRegistry", localStringBuilder.toString());
-      detachFromAndroidComponent();
-      this.activity = paramActivity;
-      this.activityPluginBinding = new FlutterEnginePluginRegistry.FlutterEngineActivityPluginBinding(paramActivity);
-      this.flutterEngineAndroidLifecycle.setBackingLifecycle(paramLifecycle);
-      this.pluginBinding.getFlutterEngine().getPlatformViewsController().attach(paramActivity, this.pluginBinding.getFlutterEngine().getRenderer(), this.pluginBinding.getFlutterEngine().getDartExecutor());
-      paramActivity = this.activityAwarePlugins.values().iterator();
+    } else {
+      str = "";
     }
-    for (;;)
+    localStringBuilder.append(str);
+    Log.v("FlutterEnginePluginRegistry", localStringBuilder.toString());
+    detachFromAndroidComponent();
+    this.activity = paramActivity;
+    this.activityPluginBinding = new FlutterEnginePluginRegistry.FlutterEngineActivityPluginBinding(paramActivity, paramLifecycle);
+    this.flutterEngine.getPlatformViewsController().attach(paramActivity, this.flutterEngine.getRenderer(), this.flutterEngine.getDartExecutor());
+    paramActivity = this.activityAwarePlugins.values().iterator();
+    while (paramActivity.hasNext())
     {
-      if (!paramActivity.hasNext()) {
-        break label196;
-      }
       paramLifecycle = (ActivityAware)paramActivity.next();
-      if (this.isWaitingForActivityReattachment)
-      {
+      if (this.isWaitingForActivityReattachment) {
         paramLifecycle.onReattachedToActivityForConfigChanges(this.activityPluginBinding);
-        continue;
-        str = "";
-        break;
+      } else {
+        paramLifecycle.onAttachedToActivity(this.activityPluginBinding);
       }
-      paramLifecycle.onAttachedToActivity(this.activityPluginBinding);
     }
-    label196:
     this.isWaitingForActivityReattachment = false;
   }
   
@@ -231,7 +237,7 @@ class FlutterEnginePluginRegistry
     }
   }
   
-  public void attachToService(@NonNull Service paramService, @NonNull Lifecycle paramLifecycle, boolean paramBoolean)
+  public void attachToService(@NonNull Service paramService, @Nullable Lifecycle paramLifecycle, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Attaching to a Service: ");
@@ -239,8 +245,7 @@ class FlutterEnginePluginRegistry
     Log.v("FlutterEnginePluginRegistry", localStringBuilder.toString());
     detachFromAndroidComponent();
     this.service = paramService;
-    this.servicePluginBinding = new FlutterEnginePluginRegistry.FlutterEngineServicePluginBinding(paramService);
-    this.flutterEngineAndroidLifecycle.setBackingLifecycle(paramLifecycle);
+    this.servicePluginBinding = new FlutterEnginePluginRegistry.FlutterEngineServicePluginBinding(paramService, paramLifecycle);
     paramService = this.serviceAwarePlugins.values().iterator();
     while (paramService.hasNext()) {
       ((ServiceAware)paramService.next()).onAttachedToService(this.servicePluginBinding);
@@ -249,9 +254,8 @@ class FlutterEnginePluginRegistry
   
   public void destroy()
   {
-    Log.d("FlutterEnginePluginRegistry", "Destroying.");
+    Log.v("FlutterEnginePluginRegistry", "Destroying.");
     detachFromAndroidComponent();
-    this.flutterEngineAndroidLifecycle.destroy();
     removeAll();
   }
   
@@ -267,8 +271,7 @@ class FlutterEnginePluginRegistry
       while (((Iterator)localObject).hasNext()) {
         ((ActivityAware)((Iterator)localObject).next()).onDetachedFromActivity();
       }
-      this.pluginBinding.getFlutterEngine().getPlatformViewsController().detach();
-      this.flutterEngineAndroidLifecycle.setBackingLifecycle(null);
+      this.flutterEngine.getPlatformViewsController().detach();
       this.activity = null;
       this.activityPluginBinding = null;
       return;
@@ -289,8 +292,7 @@ class FlutterEnginePluginRegistry
       while (((Iterator)localObject).hasNext()) {
         ((ActivityAware)((Iterator)localObject).next()).onDetachedFromActivityForConfigChanges();
       }
-      this.pluginBinding.getFlutterEngine().getPlatformViewsController().detach();
-      this.flutterEngineAndroidLifecycle.setBackingLifecycle(null);
+      this.flutterEngine.getPlatformViewsController().detach();
       this.activity = null;
       this.activityPluginBinding = null;
       return;
@@ -342,7 +344,6 @@ class FlutterEnginePluginRegistry
       while (((Iterator)localObject).hasNext()) {
         ((ServiceAware)((Iterator)localObject).next()).onDetachedFromService();
       }
-      this.flutterEngineAndroidLifecycle.setBackingLifecycle(null);
       this.service = null;
       this.servicePluginBinding = null;
       return;
@@ -407,6 +408,28 @@ class FlutterEnginePluginRegistry
     }
     Log.e("FlutterEnginePluginRegistry", "Attempted to notify ActivityAware plugins of onRequestPermissionsResult, but no Activity was attached.");
     return false;
+  }
+  
+  public void onRestoreInstanceState(@Nullable Bundle paramBundle)
+  {
+    Log.v("FlutterEnginePluginRegistry", "Forwarding onRestoreInstanceState() to plugins.");
+    if (isAttachedToActivity())
+    {
+      this.activityPluginBinding.onRestoreInstanceState(paramBundle);
+      return;
+    }
+    Log.e("FlutterEnginePluginRegistry", "Attempted to notify ActivityAware plugins of onRestoreInstanceState, but no Activity was attached.");
+  }
+  
+  public void onSaveInstanceState(@NonNull Bundle paramBundle)
+  {
+    Log.v("FlutterEnginePluginRegistry", "Forwarding onSaveInstanceState() to plugins.");
+    if (isAttachedToActivity())
+    {
+      this.activityPluginBinding.onSaveInstanceState(paramBundle);
+      return;
+    }
+    Log.e("FlutterEnginePluginRegistry", "Attempted to notify ActivityAware plugins of onSaveInstanceState, but no Activity was attached.");
   }
   
   public void onUserLeaveHint()
@@ -478,7 +501,7 @@ class FlutterEnginePluginRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEnginePluginRegistry
  * JD-Core Version:    0.7.0.1
  */

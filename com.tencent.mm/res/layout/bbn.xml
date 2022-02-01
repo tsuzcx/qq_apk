@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/gp9" android:background="@color/k1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ListView android:id="@id/gp8" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" style="@style/na" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <ScrollView android:id="@id/gp7" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:layout_marginTop="@dimen/hw" android:src="@raw/mass_send_icon" />
+                <TextView android:gravity="center" android:layout_marginLeft="@dimen/ls" android:layout_marginTop="@dimen/i9" android:layout_marginRight="@dimen/ls" android:text="@string/gpl" android:lineSpacingExtra="4.0dip" style="@style/lk" />
+                <Button android:id="@id/gpp" android:layout_marginLeft="@dimen/ls" android:layout_marginTop="@dimen/i_" android:layout_marginRight="@dimen/ls" android:text="@string/gpf" style="@style/og" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/gpo" android:background="@drawable/b4g" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/gpn" android:layout_margin="@dimen/m2" android:text="@string/gpf" style="@style/oi" />
+    </LinearLayout>
+</LinearLayout>

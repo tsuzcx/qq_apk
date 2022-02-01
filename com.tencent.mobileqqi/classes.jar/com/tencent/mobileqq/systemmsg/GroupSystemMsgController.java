@@ -17,10 +17,10 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import glu;
 import glv;
 import glw;
 import glx;
-import gly;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,7 +36,7 @@ public class GroupSystemMsgController
   private static final int jdField_c_of_type_Int = 5000;
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new glx(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new glw(this, Looper.getMainLooper());
   private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler = null;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private final String jdField_a_of_type_JavaLangString = GroupSystemMsgController.class.getName();
@@ -154,7 +154,7 @@ public class GroupSystemMsgController
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramQQAppInterface.a(new glv(this, paramQQAppInterface, paramInt));
+    paramQQAppInterface.a(new glu(this, paramQQAppInterface, paramInt));
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -164,7 +164,7 @@ public class GroupSystemMsgController
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface.a(new glw(this, paramQQAppInterface, paramString));
+    paramQQAppInterface.a(new glv(this, paramQQAppInterface, paramString));
   }
   
   public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
@@ -192,7 +192,7 @@ public class GroupSystemMsgController
   {
     this.d = paramBoolean;
     this.jdField_b_of_type_JavaLangString = paramQQAppInterface.a();
-    paramQQAppInterface.a(new gly(this, paramQQAppInterface, paramBoolean));
+    paramQQAppInterface.a(new glx(this, paramQQAppInterface, paramBoolean));
   }
   
   public boolean a()

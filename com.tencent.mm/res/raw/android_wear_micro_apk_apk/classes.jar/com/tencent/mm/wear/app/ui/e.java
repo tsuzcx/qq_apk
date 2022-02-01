@@ -9,20 +9,20 @@ public enum e
     this.value = paramInt;
   }
   
-  public static e bU(int paramInt)
+  public static e cq(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return aeT;
+      return aiv;
     case 1: 
-      return aeU;
+      return aiw;
     case 2: 
-      return aeV;
+      return aix;
     case 3: 
-      return aeW;
+      return aiy;
     }
-    return aeX;
+    return aiz;
   }
   
   public final int value()

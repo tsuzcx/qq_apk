@@ -14,31 +14,31 @@ public class zzj
   extends zza
 {
   public static final Parcelable.Creator<zzj> CREATOR = new ab();
-  final int JX;
-  int JY;
-  String JZ;
-  IBinder Ka;
-  Scope[] Kb;
-  Bundle Kc;
-  Account Kd;
-  zzc[] Ke;
+  final int LM;
+  int LN;
+  String LO;
+  IBinder LP;
+  Scope[] LQ;
+  Bundle LR;
+  Account LS;
+  zzc[] LT;
   final int version;
   
   public zzj(int paramInt)
   {
     this.version = 3;
-    this.JY = h.Hi;
-    this.JX = paramInt;
+    this.LN = h.IX;
+    this.LM = paramInt;
   }
   
   zzj(int paramInt1, int paramInt2, int paramInt3, String paramString, IBinder paramIBinder, Scope[] paramArrayOfScope, Bundle paramBundle, Account paramAccount, zzc[] paramArrayOfzzc)
   {
     this.version = paramInt1;
-    this.JX = paramInt2;
-    this.JY = paramInt3;
+    this.LM = paramInt2;
+    this.LN = paramInt3;
     if ("com.google.android.gms".equals(paramString))
     {
-      this.JZ = "com.google.android.gms";
+      this.LO = "com.google.android.gms";
       if (paramInt1 >= 2) {
         break label92;
       }
@@ -47,16 +47,16 @@ public class zzj
         paramString = a.a(al.f(paramIBinder));
       }
     }
-    for (this.Kd = paramString;; this.Kd = paramAccount)
+    for (this.LS = paramString;; this.LS = paramAccount)
     {
-      this.Kb = paramArrayOfScope;
-      this.Kc = paramBundle;
-      this.Ke = paramArrayOfzzc;
+      this.LQ = paramArrayOfScope;
+      this.LR = paramBundle;
+      this.LT = paramArrayOfzzc;
       return;
-      this.JZ = paramString;
+      this.LO = paramString;
       break;
       label92:
-      this.Ka = paramIBinder;
+      this.LP = paramIBinder;
     }
   }
   

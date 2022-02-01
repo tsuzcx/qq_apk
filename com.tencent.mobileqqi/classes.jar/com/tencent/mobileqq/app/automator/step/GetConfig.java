@@ -9,7 +9,7 @@ import com.tencent.mobileqq.config.AboutConfig;
 import com.tencent.mobileqq.config.LebaConfig;
 import com.tencent.mobileqq.config.ResourcePluginListener;
 import cooperation.plugin.IPluginManager;
-import fhx;
+import fhw;
 import protocol.KQQConfig.GetResourceReqInfo;
 
 public class GetConfig
@@ -33,7 +33,7 @@ public class GetConfig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new fhx(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new fhw(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.a(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.b(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
     }

@@ -13,10 +13,10 @@ public class TencentLocationUtils
   
   public static boolean contains(TencentLocation paramTencentLocation1, double paramDouble, TencentLocation paramTencentLocation2)
   {
-    if ((paramTencentLocation1 == null) || (paramTencentLocation2 == null)) {
-      throw new NullPointerException();
+    if ((paramTencentLocation1 != null) && (paramTencentLocation2 != null)) {
+      return distanceBetween(paramTencentLocation1, paramTencentLocation2) <= paramDouble;
     }
-    return distanceBetween(paramTencentLocation1, paramTencentLocation2) <= paramDouble;
+    throw new NullPointerException();
   }
   
   public static double distanceBetween(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
@@ -26,10 +26,10 @@ public class TencentLocationUtils
   
   public static double distanceBetween(TencentLocation paramTencentLocation1, TencentLocation paramTencentLocation2)
   {
-    if ((paramTencentLocation1 == null) || (paramTencentLocation2 == null)) {
-      throw new NullPointerException();
+    if ((paramTencentLocation1 != null) && (paramTencentLocation2 != null)) {
+      return fp.a(paramTencentLocation1.getLatitude(), paramTencentLocation1.getLongitude(), paramTencentLocation2.getLatitude(), paramTencentLocation2.getLongitude());
     }
-    return fp.a(paramTencentLocation1.getLatitude(), paramTencentLocation1.getLongitude(), paramTencentLocation2.getLatitude(), paramTencentLocation2.getLongitude());
+    throw new NullPointerException();
   }
   
   public static boolean isFromGps(TencentLocation paramTencentLocation)
@@ -50,16 +50,17 @@ public class TencentLocationUtils
   
   public static boolean isSupportGps(Context paramContext)
   {
-    if (paramContext == null) {
-      throw new NullPointerException();
+    if (paramContext != null)
+    {
+      fm.a();
+      return (fm.a(paramContext) & 0x10) == 0;
     }
-    fm.a();
-    return (fm.a(paramContext) & 0x10) == 0;
+    throw new NullPointerException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationUtils
  * JD-Core Version:    0.7.0.1
  */

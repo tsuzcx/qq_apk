@@ -8,7 +8,7 @@ public final class HexDumpUtils
 {
   public static byte[] bytesFromString(String paramString)
   {
-    AppMethodBeat.i(90210);
+    AppMethodBeat.i(5232);
     paramString = new StringTokenizer(paramString, " \t\n");
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     while (paramString.hasMoreTokens()) {
@@ -18,21 +18,21 @@ public final class HexDumpUtils
       }
       catch (NumberFormatException paramString)
       {
-        AppMethodBeat.o(90210);
+        AppMethodBeat.o(5232);
         return null;
       }
     }
     paramString = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(90210);
+    AppMethodBeat.o(5232);
     return paramString;
   }
   
   public static String dump(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(90209);
+    AppMethodBeat.i(5231);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramInt1 < 0) || (paramInt2 <= 0) || (paramInt1 + paramInt2 > paramArrayOfByte.length))
     {
-      AppMethodBeat.o(90209);
+      AppMethodBeat.o(5231);
       return null;
     }
     int i = 57;
@@ -59,7 +59,7 @@ public final class HexDumpUtils
         k -= 1;
         m = j + 1;
         if ((!paramBoolean) || ((m != 16) && (k != 0))) {
-          break label350;
+          break label352;
         }
         n = 16 - m;
         if (n <= 0) {
@@ -98,27 +98,27 @@ public final class HexDumpUtils
           c = '.';
         }
       }
-      label350:
+      label352:
       if ((m != 16) && (k != 0)) {
-        break label397;
+        break label400;
       }
       localStringBuilder.append('\n');
     }
-    label397:
+    label400:
     for (j = 0;; j = m)
     {
       paramInt1 += 1;
       m = i;
       break;
       paramArrayOfByte = localStringBuilder.toString();
-      AppMethodBeat.o(90209);
+      AppMethodBeat.o(5231);
       return paramArrayOfByte;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.HexDumpUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,24 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiGetBackgroundAudioState;
-import com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiGetMusicPlayerState;
-import com.tencent.mm.plugin.appbrand.jsapi.audio.d;
-import com.tencent.mm.plugin.appbrand.jsapi.audio.f;
-import com.tencent.mm.plugin.appbrand.jsapi.audio.k;
-import com.tencent.mm.plugin.appbrand.jsapi.b.e;
-import com.tencent.mm.plugin.appbrand.jsapi.q.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.q.c.a;
-import java.util.Collection;
-import java.util.HashSet;
+import android.app.Activity;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 
-public class j
-  implements g
+public abstract interface j
 {
-  public static final j iCe;
-  protected Collection<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>> iCf;
-  protected Collection<Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b>> iCg;
+  public abstract void a(Activity paramActivity, f paramf, String paramString, a parama);
   
-  static
-  {
-    AppMethodBeat.i(102307);
-    iCe = new j();
-    AppMethodBeat.o(102307);
-  }
+  public abstract boolean a(Activity paramActivity, f paramf, String paramString);
   
-  protected j()
-  {
-    AppMethodBeat.i(102304);
-    this.iCf = new HashSet();
-    this.iCg = new HashSet();
-    this.iCf.add(b.a.class);
-    this.iCf.add(c.a.class);
-    this.iCg.add(e.class);
-    this.iCg.add(com.tencent.mm.plugin.appbrand.jsapi.l.b.class);
-    this.iCg.add(f.class);
-    this.iCg.add(JsApiGetMusicPlayerState.class);
-    this.iCg.add(JsApiGetBackgroundAudioState.class);
-    this.iCg.add(d.class);
-    this.iCg.add(f.class);
-    this.iCg.add(k.class);
-    this.iCg.add(com.tencent.mm.plugin.appbrand.jsapi.audio.g.class);
-    AppMethodBeat.o(102304);
-  }
+  public abstract boolean cGU();
   
-  public final boolean a(com.tencent.mm.plugin.appbrand.jsapi.b paramb)
+  public static abstract interface a
   {
-    AppMethodBeat.i(102305);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(102305);
-      return false;
-    }
-    boolean bool = ad(paramb.getClass());
-    AppMethodBeat.o(102305);
-    return bool;
-  }
-  
-  public final boolean ad(Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b> paramClass)
-  {
-    AppMethodBeat.i(102306);
-    if (paramClass == null)
-    {
-      AppMethodBeat.o(102306);
-      return false;
-    }
-    if ((this.iCg.contains(paramClass)) || (this.iCf.contains(paramClass)))
-    {
-      AppMethodBeat.o(102306);
-      return true;
-    }
-    AppMethodBeat.o(102306);
-    return false;
+    public abstract void onPermissionResult(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.j
  * JD-Core Version:    0.7.0.1
  */

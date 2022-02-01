@@ -12,10 +12,14 @@ public final class iw
   
   public final byte[] a(String paramString)
   {
-    if ((nl.a(paramString)) || (!paramString.startsWith("tileOverlay")) || (this.a == null)) {
-      return null;
+    if ((!nl.a(paramString)) && (paramString.startsWith("tileOverlay")))
+    {
+      iy localiy = this.a;
+      if (localiy != null) {
+        return localiy.a(paramString);
+      }
     }
-    return this.a.a(paramString);
+    return null;
   }
 }
 

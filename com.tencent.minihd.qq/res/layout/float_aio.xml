@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.flaotaio.SlipFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center|right|top" android:layout_width="341.0dip" android:layout_height="@dimen/float_aio_height" android:layout_marginTop="70.0dip">
+        <FrameLayout android:id="@id/float_aio_layout" android:background="@drawable/float_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="35.0dip">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/float_aio_title_bar_height">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/float_title_text_bar" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="32.0dip">
+                        <TextView android:textSize="12.0sp" android:textColor="@android:color/black" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/float_aio_title_nick" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                        <TextView android:textSize="12.0sp" android:textColor="#6d000000" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/float_aio_sub_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" />
+                    </LinearLayout>
+                    <ImageView android:layout_gravity="center|right" android:id="@id/float_aio_title_open_qq" android:layout_width="22.0dip" android:layout_height="22.0dip" />
+                </FrameLayout>
+                <FrameLayout android:id="@id/chat_content" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                    <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/listView1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="normal" android:divider="@null" />
+                    <FrameLayout android:id="@id/float_emoji_container" android:background="#fff9f9f9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </FrameLayout>
+                <RelativeLayout android:id="@id/float_aio_bottom" android:paddingTop="14.0dip" android:paddingRight="42.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/float_aio_bottom_input_height">
+                    <ImageView android:id="@id/float_emo_img" android:background="@null" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@drawable/float_emo_selector" android:scaleType="center" />
+                    <com.tencent.widget.XEditText android:textSize="16.0sp" android:textColor="@color/skin_input" android:textColorHint="@color/skin_input_hint" android:gravity="center_vertical" android:id="@id/float_aio_input" android:background="@null" android:layout_width="fill_parent" android:layout_height="44.0dip" android:hint="快速回复" android:layout_toRightOf="@id/float_emo_img" android:inputType="textMultiLine" android:textSelectHandle="@drawable/text_select_handle_middle" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/gray" android:ellipsize="end" android:gravity="center" android:id="@id/gag_input_btn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:singleLine="true" android:layout_toRightOf="@id/float_emo_img" />
+                    <View android:background="#ff41c1f0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <FrameLayout android:id="@id/progress_layout" android:background="#82000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ProgressBar android:layout_gravity="center" android:id="@id/tenpay_loading_bar" style="@style/qb_tenpay_loading_big" />
+            </FrameLayout>
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/fake_container" android:background="@drawable/float_send_bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:layout_marginBottom="6.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/fake_img" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/h001" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <ImageView android:layout_gravity="bottom|center|right" android:id="@id/float_aio_send" android:background="@drawable/float_send_bg_selector" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/float_send" android:scaleType="center" />
+        <View android:id="@id/float_msg_bubble_bg" android:background="@drawable/float_aio_friend_bubble" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <FrameLayout android:id="@id/float_aio_msg" android:paddingLeft="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="77.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/float_aio_msg_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="要不你再看看之后的进度青草不说话青草不说话" android:singleLine="true" />
+        </FrameLayout>
+        <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:id="@id/float_aio_msg_prefix" android:paddingLeft="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="77.0dip" android:text="[特别关心]" />
+    </FrameLayout>
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/aio_face_img" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="70.0dip" android:layout_marginRight="317.0dip" android:src="@drawable/h001" android:scaleType="fitXY" />
+</com.tencent.mobileqq.activity.flaotaio.SlipFrameLayout>

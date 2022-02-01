@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/bly" style="@style/ho" />
-        <TextView android:id="@id/blz" style="@style/hn" />
-        <TextView android:id="@id/bm0" style="@style/hp" />
-    </LinearLayout>
-</LinearLayout>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/acm" android:background="@color/a" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:orientation="vertical" android:id="@id/aal" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip">
+        <com.google.android.material.appbar.CollapsingToolbarLayout android:paddingBottom="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="j40|cmt" app:titleEnabled="false">
+            <include android:id="@id/a_z" layout="@layout/wy" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+        <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileTabLayout android:id="@id/ab5" android:layout_width="fill_parent" android:layout_height="46.0dip" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.tencent.mm.plugin.profile.ui.tab.view.BizProfileViewPager android:id="@id/bj1" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a4l" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

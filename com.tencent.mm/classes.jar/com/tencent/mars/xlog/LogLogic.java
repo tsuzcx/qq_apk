@@ -2,7 +2,7 @@ package com.tencent.mars.xlog;
 
 import android.os.Debug;
 import android.os.Process;
-import com.tencent.mm.protocal.d;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,20 +11,13 @@ import java.io.InputStreamReader;
 
 public class LogLogic
 {
-  static long printVMSizeTime;
+  private static ICallBack callBack = null;
+  
+  public static native void addLogRule(int paramInt, String paramString1, String paramString2);
   
   public static String appendMemLog(String paramString)
   {
-    if (d.whI) {
-      return paramString;
-    }
-    long l = System.currentTimeMillis();
-    if (l - printVMSizeTime > 120000L)
-    {
-      printVMSizeTime = l;
-      return String.format("[%s] %s", new Object[] { getVmStatus(), paramString });
-    }
-    return String.format("[%sK] %s", new Object[] { Long.valueOf(getDalvikHeap()), paramString });
+    return paramString;
   }
   
   public static String convertStreamToString(InputStream paramInputStream)
@@ -83,28 +76,28 @@ public class LogLogic
   public static String getStringFromFile(String paramString)
   {
     paramString = new File(paramString);
-    FileInputStream localFileInputStream;
+    BufferedInputStream localBufferedInputStream;
     try
     {
-      localFileInputStream = new FileInputStream(paramString);
-      if (localFileInputStream == null) {
-        break label40;
+      localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+      if (localBufferedInputStream == null) {
+        break label47;
       }
     }
     finally
     {
       try
       {
-        paramString = convertStreamToString(localFileInputStream);
-        localFileInputStream.close();
+        paramString = convertStreamToString(localBufferedInputStream);
+        localBufferedInputStream.close();
         return paramString;
       }
       finally {}
       paramString = finally;
-      localFileInputStream = null;
+      localBufferedInputStream = null;
     }
-    localFileInputStream.close();
-    label40:
+    localBufferedInputStream.close();
+    label47:
     throw paramString;
   }
   
@@ -153,13 +146,33 @@ public class LogLogic
     return localStringBuilder.toString();
   }
   
+  public static void hitLogRuleCallback(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  {
+    if (callBack == null) {
+      return;
+    }
+    callBack.hitLogRuleCallback(paramString1, paramString2, paramString3, paramInt, paramString4);
+  }
+  
   public static native void initIPxxLogInfo();
   
+  public static native void removeLogRule(String paramString);
+  
+  public static void setCallBack(ICallBack paramICallBack)
+  {
+    callBack = paramICallBack;
+  }
+  
   public static native void setIPxxLogML(int paramInt1, int paramInt2);
+  
+  public static abstract interface ICallBack
+  {
+    public abstract void hitLogRuleCallback(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.xlog.LogLogic
  * JD-Core Version:    0.7.0.1
  */

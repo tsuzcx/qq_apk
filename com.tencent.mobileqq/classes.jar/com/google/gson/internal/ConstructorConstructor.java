@@ -35,7 +35,11 @@ public final class ConstructorConstructor
       paramClass = new ConstructorConstructor.3(this, paramClass);
       return paramClass;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label33:
+      break label33;
+    }
     return null;
   }
   
@@ -84,28 +88,24 @@ public final class ConstructorConstructor
   public <T> ObjectConstructor<T> get(TypeToken<T> paramTypeToken)
   {
     Type localType = paramTypeToken.getType();
-    Class localClass = paramTypeToken.getRawType();
-    paramTypeToken = (InstanceCreator)this.instanceCreators.get(localType);
-    if (paramTypeToken != null) {
-      paramTypeToken = new ConstructorConstructor.1(this, paramTypeToken, localType);
+    paramTypeToken = paramTypeToken.getRawType();
+    Object localObject = (InstanceCreator)this.instanceCreators.get(localType);
+    if (localObject != null) {
+      return new ConstructorConstructor.1(this, (InstanceCreator)localObject, localType);
     }
-    ObjectConstructor localObjectConstructor;
-    do
-    {
-      do
-      {
-        return paramTypeToken;
-        paramTypeToken = (InstanceCreator)this.instanceCreators.get(localClass);
-        if (paramTypeToken != null) {
-          return new ConstructorConstructor.2(this, paramTypeToken, localType);
-        }
-        localObjectConstructor = newDefaultConstructor(localClass);
-        paramTypeToken = localObjectConstructor;
-      } while (localObjectConstructor != null);
-      localObjectConstructor = newDefaultImplementationConstructor(localType, localClass);
-      paramTypeToken = localObjectConstructor;
-    } while (localObjectConstructor != null);
-    return newUnsafeAllocator(localType, localClass);
+    localObject = (InstanceCreator)this.instanceCreators.get(paramTypeToken);
+    if (localObject != null) {
+      return new ConstructorConstructor.2(this, (InstanceCreator)localObject, localType);
+    }
+    localObject = newDefaultConstructor(paramTypeToken);
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = newDefaultImplementationConstructor(localType, paramTypeToken);
+    if (localObject != null) {
+      return localObject;
+    }
+    return newUnsafeAllocator(localType, paramTypeToken);
   }
   
   public String toString()
@@ -115,7 +115,7 @@ public final class ConstructorConstructor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.ConstructorConstructor
  * JD-Core Version:    0.7.0.1
  */

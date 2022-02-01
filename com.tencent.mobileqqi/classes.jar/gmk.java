@@ -1,47 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
 import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
 
-public class gmk
-  implements ShareAppLogHelper.OnGetLocalLogListener
+class gmk
+  implements DialogInterface.OnClickListener
 {
-  public gmk(ShareAppLogActivity paramShareAppLogActivity) {}
+  gmk(gmj paramgmj) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShareAppLogActivity.a(this.a);
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230).setTitle("警告").setMessage(ShareAppLogActivity.a(this.a).a(paramInt));
-    localQQCustomDialog.setPositiveButton("继续", new gml(this));
-    localQQCustomDialog.setNegativeButton("取消", new gmm(this));
-    localQQCustomDialog.show();
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      ShareAppLogActivity.a(this.a, paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      QQToast.a(this.a.getApplicationContext(), "发送失败!", 0).a();
-      return;
-    }
-    finally
-    {
-      ShareAppLogActivity.a(this.a);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    ShareAppLogActivity.a(this.a);
-    QQToast.a(this.a.getApplicationContext(), ShareAppLogActivity.a(this.a).a(paramInt), 0).a();
+    ShareAppLogActivity.a(this.a.a).a(false);
+    ShareAppLogActivity.b(this.a.a);
   }
 }
 

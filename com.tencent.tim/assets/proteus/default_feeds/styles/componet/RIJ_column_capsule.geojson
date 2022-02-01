@@ -1,0 +1,98 @@
+{
+    "view_type":"UIView",
+    "view_id":"id_column_capsule",
+    "layout_type":"layout_linear",
+    "direction":"horizontal",
+    "margin_top":"-6",
+    "margin_bottom":"10",
+    "margin_left":"12",
+    "event_type": "cmd_column_capsule_click",
+    "height":{
+        "type":"relative",
+        "value":"24"
+    },
+    "visible_depend_on_children": "YES",
+    "width":{
+        "type":"wrap_content"
+    },
+    "attributes":{
+        "setBackgroundColorString:": "#F5F6FA"
+    },
+    "subviews":[
+        {
+            "view_type":"UIImageView",
+            "view_id":"id_capsule_icon",
+            "align_parent_center_vertical": "YES",
+            "margin_left":"8.75",
+            "height":{
+                "type":"relative",
+                "value":"12"
+            },
+            "width":{
+                "type":"relative",
+                "value":"12"
+            },
+            "attributes":{
+                "loadImageWithPath:":"$column_title_icon"
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_column_capsule_label",
+            "layout_type":"layout_relative",
+            "margin_left":"2",
+            "height":{
+                "type":"relative",
+                "value":"16"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "align_parent_center_vertical": "YES",
+            "attributes":{
+                "setTextColorString:":"#5E5E5E",
+                "setText:":"$column_name_text",
+                "setFontSizeString:":"12",
+                "setNumberOfLinesString:":"1"
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_column_capsule_title_label",
+            "margin_left":"4",
+            "height":{
+                "type":"relative",
+                "value":"16"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "align_parent_center_vertical": "YES",
+            "attributes":{
+                "setTextColorString:":"#136CE9",
+                "setText:" : "$column_title",
+                "setFontSizeString:":"12",
+                "setNumberOfLinesString:":"1"
+            }
+        },
+        {
+            "view_type":"UIImageView",
+            "visible_depend_on_brother": "id_column_capsule_title_label",
+            "view_id":"id_column_capsule_arrow",
+            "align_parent_center_vertical": "YES",
+            "margin_left":"2",
+            "margin_right":"6",
+            "height":{
+                "type":"relative",
+                "value":"12"
+            },
+            "width":{
+                "type":"relative",
+                "value":"12"
+            },
+            "attributes":{
+                "loadImageWithPath:":"column_arrow.png"
+            }
+        }
+    ]
+}

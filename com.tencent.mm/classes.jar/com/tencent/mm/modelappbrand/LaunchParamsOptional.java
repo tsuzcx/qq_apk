@@ -4,33 +4,38 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.launching.params.AppBrandWeishiParams;
+import com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams;
 
 public final class LaunchParamsOptional
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParamsOptional> CREATOR;
-  public String bCY;
-  public String bCZ;
-  public AppBrandWeishiParams bDa;
-  public String fpV;
+  public String eoT;
+  public String eoU;
+  public AppBrandWeishiParams eoW;
+  public String eoY;
+  public String opW;
+  public int opX;
   
   static
   {
-    AppMethodBeat.i(101708);
+    AppMethodBeat.i(146921);
     CREATOR = new LaunchParamsOptional.1();
-    AppMethodBeat.o(101708);
+    AppMethodBeat.o(146921);
   }
   
   public LaunchParamsOptional() {}
   
   private LaunchParamsOptional(Parcel paramParcel)
   {
-    AppMethodBeat.i(101707);
-    this.bCY = paramParcel.readString();
-    this.bCZ = paramParcel.readString();
-    this.bDa = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
-    AppMethodBeat.o(101707);
+    AppMethodBeat.i(146920);
+    this.eoT = paramParcel.readString();
+    this.eoU = paramParcel.readString();
+    this.eoW = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.opX = paramParcel.readInt();
+    this.eoY = paramParcel.readString();
+    this.opW = paramParcel.readString();
+    AppMethodBeat.o(146920);
   }
   
   public final int describeContents()
@@ -40,16 +45,19 @@ public final class LaunchParamsOptional
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(101706);
-    paramParcel.writeString(this.bCY);
-    paramParcel.writeString(this.bCZ);
-    paramParcel.writeParcelable(this.bDa, paramInt);
-    AppMethodBeat.o(101706);
+    AppMethodBeat.i(146919);
+    paramParcel.writeString(this.eoT);
+    paramParcel.writeString(this.eoU);
+    paramParcel.writeParcelable(this.eoW, paramInt);
+    paramParcel.writeInt(this.opX);
+    paramParcel.writeString(this.eoY);
+    paramParcel.writeString(this.opW);
+    AppMethodBeat.o(146919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.LaunchParamsOptional
  * JD-Core Version:    0.7.0.1
  */

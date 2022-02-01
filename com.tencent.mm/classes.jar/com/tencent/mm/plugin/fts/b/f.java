@@ -1,157 +1,158 @@
 package com.tencent.mm.plugin.fts.b;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ak;
-import com.tencent.mm.model.b;
-import com.tencent.mm.plugin.fts.PluginFTS;
-import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import java.io.File;
+import com.tencent.mm.message.b.b;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.wcdb.database.SQLiteException;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.ArrayList;
 
 public final class f
-  implements ak
+  extends com.tencent.mm.plugin.fts.a.a
 {
-  public final void gu(long paramLong)
+  private SQLiteStatement HwF;
+  
+  public static Cursor c(j paramj)
   {
-    AppMethodBeat.i(136788);
-    Object localObject;
-    if (!g.RG())
-    {
-      localObject = new b();
-      AppMethodBeat.o(136788);
-      throw ((Throwable)localObject);
-    }
-    try
-    {
-      localObject = ((PluginFTS)g.G(PluginFTS.class)).getFTSIndexDB();
-      if (localObject == null)
-      {
-        g.RM();
-        boolean bool = new File(g.RL().cachePath, "FTS5IndexMicroMsg_encrypt.db").exists();
-        if (!bool)
-        {
-          AppMethodBeat.o(136788);
-          return;
-        }
-        g.RM();
-        localObject = new com.tencent.mm.plugin.fts.d(g.RL().cachePath);
-        ((com.tencent.mm.plugin.fts.d)localObject).deleteMsgById(paramLong);
-        ((com.tencent.mm.plugin.fts.d)localObject).close();
-        com.tencent.luggage.g.d.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteSingleMsg by create new ftsIndexDB");
-        AppMethodBeat.o(136788);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      com.tencent.luggage.g.d.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", localException, "syncDeleteSingleMsg", new Object[0]);
-      AppMethodBeat.o(136788);
-      return;
-    }
-    localException.deleteMsgById(paramLong);
-    AppMethodBeat.o(136788);
+    AppMethodBeat.i(265424);
+    paramj = paramj.Hte;
+    paramj = ((b)com.tencent.mm.kernel.h.az(b.class)).getNotifyMessageRecordStorage().Ho(paramj);
+    AppMethodBeat.o(265424);
+    return paramj;
   }
   
-  public final void pk(String paramString)
+  public final Cursor a(j paramj, String paramString)
   {
-    AppMethodBeat.i(136790);
-    com.tencent.luggage.g.d.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete mark talker msg delete %s", new Object[] { paramString });
-    if (!g.RG())
-    {
-      paramString = new b();
-      AppMethodBeat.o(136790);
-      throw paramString;
+    AppMethodBeat.i(265445);
+    paramj = paramj.fxx();
+    String str1 = fxn();
+    String str2 = fxo();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SELECT ").append(str1).append(".docid, type, subtype, entity_id, aux_index, timestamp, talker FROM ").append(str1).append(" JOIN ").append(str2).append(" ON (").append(str1).append(".docid = ").append(str2).append(".rowid) WHERE ").append(str2).append(" MATCH '").append(paramj).append("' AND aux_index = 'notifymessage' AND status >= 0 ");
+    if (!Util.isNullOrNil(paramString)) {
+      localStringBuilder.append("AND talker = ? ");
     }
+    localStringBuilder.append("ORDER BY timestamp desc;");
+    paramj = null;
+    if (!Util.isNullOrNil(paramString))
+    {
+      paramj = new String[1];
+      paramj[0] = paramString;
+    }
+    paramj = this.HqR.rawQuery(localStringBuilder.toString(), paramj);
+    AppMethodBeat.o(265445);
+    return paramj;
+  }
+  
+  public final void a(int paramInt, long paramLong1, String paramString1, long paramLong2, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(265456);
     try
     {
-      Object localObject2 = ((PluginFTS)g.G(PluginFTS.class)).getFTSIndexDB();
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        g.RM();
-        boolean bool = new File(g.RL().cachePath, "FTS5IndexMicroMsg_encrypt.db").exists();
-        if (!bool)
-        {
-          AppMethodBeat.o(136790);
-          return;
-        }
-        g.RM();
-        localObject1 = new com.tencent.mm.plugin.fts.d(g.RL().cachePath);
-        com.tencent.luggage.g.d.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncMarkTalkerMsgDelete by create new ftsIndexDB");
-      }
-      long l = System.currentTimeMillis();
-      localObject2 = String.format("UPDATE %s SET status=? WHERE aux_index=?;", new Object[] { "FTS5MetaMessage" });
-      ((com.tencent.mm.plugin.fts.d)localObject1).mPC.execSQL((String)localObject2, new String[] { "-1", paramString });
-      ab.i("MicroMsg.FTS.FTSIndexDB", "markStatusByTalker use time %d talker %s status %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString, Integer.valueOf(-1) });
-      AppMethodBeat.o(136790);
+      fxq().bindString(1, paramString2);
+      fxq().execute();
+      this.HwF.bindLong(1, 524288L);
+      this.HwF.bindLong(2, paramInt);
+      this.HwF.bindLong(3, paramLong1);
+      this.HwF.bindString(4, paramString1);
+      this.HwF.bindLong(5, paramLong2);
+      this.HwF.bindString(6, paramString3);
+      this.HwF.execute();
+      AppMethodBeat.o(265456);
       return;
     }
-    catch (Exception paramString)
+    catch (SQLiteException paramString2)
     {
-      com.tencent.luggage.g.d.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", paramString, "syncDeleteTalkerMsg", new Object[0]);
-      AppMethodBeat.o(136790);
+      Log.e("MicroMsg.FTS.FTS5ServiceNotifyStorage", String.format("Failed inserting index: 0x%x, %d, %d, %s, %d", new Object[] { Integer.valueOf(524288), Integer.valueOf(paramInt), Long.valueOf(paramLong1), paramString1, Long.valueOf(paramLong2) }));
+      paramString1 = fxp().simpleQueryForString();
+      if ((paramString1 != null) && (paramString1.length() > 0)) {
+        Log.e("MicroMsg.FTS.FTS5ServiceNotifyStorage", ">> ".concat(String.valueOf(paramString1)));
+      }
+      AppMethodBeat.o(265456);
+      throw paramString2;
     }
   }
   
-  public final void v(String paramString, long paramLong)
+  public final void a(int[] paramArrayOfInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(136789);
-    com.tencent.luggage.g.d.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete fts talker msg %s %s", new Object[] { paramString, h.formatTime("yyyy-MM-dd HH:mm:ss", paramLong / 1000L) });
-    if (!g.RG())
+    AppMethodBeat.i(265442);
+    ArrayList localArrayList = new ArrayList(4);
+    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.G(paramArrayOfInt) + " AND entity_id=? AND timestamp=?;", new Object[] { fxn() });
+    paramArrayOfInt = this.HqR.rawQuery(paramArrayOfInt, new String[] { Long.toString(paramLong1), Long.toString(paramLong2) });
+    while (paramArrayOfInt.moveToNext()) {
+      localArrayList.add(Long.valueOf(paramArrayOfInt.getLong(0)));
+    }
+    paramArrayOfInt.close();
+    hP(localArrayList);
+    AppMethodBeat.o(265442);
+  }
+  
+  public final void aXv()
+  {
+    AppMethodBeat.i(265428);
+    if (aXw())
     {
-      paramString = new b();
-      AppMethodBeat.o(136789);
-      throw paramString;
+      this.HqR.aG(-111L, 1L);
+      this.HqR.aG(-201L, 9223372036854775807L);
     }
-    long l;
-    try
+    this.HqR.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_timestamp ON %s(timestamp);", new Object[] { fxn(), fxn() }));
+    this.HqR.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_talker ON %s(talker);", new Object[] { fxn(), fxn() }));
+    String str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, talker) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?);", new Object[] { fxn() });
+    this.HwF = this.HqR.compileStatement(str);
+    AppMethodBeat.o(265428);
+  }
+  
+  public final boolean aXw()
+  {
+    AppMethodBeat.i(265448);
+    if (!iV(-111, 1))
     {
-      com.tencent.mm.plugin.fts.d locald2 = ((PluginFTS)g.G(PluginFTS.class)).getFTSIndexDB();
-      com.tencent.mm.plugin.fts.d locald1 = locald2;
-      if (locald2 == null)
-      {
-        g.RM();
-        boolean bool = new File(g.RL().cachePath, "FTS5IndexMicroMsg_encrypt.db").exists();
-        if (!bool)
-        {
-          AppMethodBeat.o(136789);
-          return;
-        }
-        g.RM();
-        locald1 = new com.tencent.mm.plugin.fts.d(g.RL().cachePath);
-        com.tencent.luggage.g.d.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteTalkerMsg by create new ftsIndexDB");
-      }
-      l = System.currentTimeMillis();
-      locald1.execSQL(String.format("DELETE FROM %s WHERE rowid IN (SELECT docid FROM %s WHERE aux_index=? AND timestamp <= ?);", new Object[] { "FTS5IndexMessage", "FTS5MetaMessage" }), new String[] { paramString, String.valueOf(paramLong) });
-      locald1.execSQL(String.format("DELETE FROM %s WHERE aux_index=? AND timestamp <= ?", new Object[] { "FTS5MetaMessage" }), new String[] { paramString, String.valueOf(paramLong) });
-      l = System.currentTimeMillis() - l;
-      ab.i("MicroMsg.FTS.FTSIndexDB", "deleteTalkerMsgByTimestamp use time %d talker %s timestamp %s", new Object[] { Long.valueOf(l), paramString, h.formatTime("yyyy-MM-dd HH:mm:ss", paramLong / 1000L) });
-      com.tencent.mm.plugin.report.e.qrI.idkeyStat(729L, 10L, 1L, false);
-      if (l > 500L)
-      {
-        com.tencent.mm.plugin.report.e.qrI.idkeyStat(79L, 11L, 1L, false);
-        AppMethodBeat.o(136789);
-        return;
-      }
+      AppMethodBeat.o(265448);
+      return true;
     }
-    catch (Exception paramString)
-    {
-      com.tencent.luggage.g.d.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", paramString, "syncDeleteTalkerMsg", new Object[0]);
-      AppMethodBeat.o(136789);
-      return;
-    }
-    if (l > 1000L)
-    {
-      com.tencent.mm.plugin.report.e.qrI.idkeyStat(79L, 12L, 1L, false);
-      AppMethodBeat.o(136789);
-      return;
-    }
-    if (l > 10000L) {
-      com.tencent.mm.plugin.report.e.qrI.idkeyStat(79L, 13L, 1L, false);
-    }
-    AppMethodBeat.o(136789);
+    AppMethodBeat.o(265448);
+    return false;
+  }
+  
+  public final boolean aXx()
+  {
+    AppMethodBeat.i(265432);
+    this.HwF.close();
+    boolean bool = super.aXx();
+    AppMethodBeat.o(265432);
+    return bool;
+  }
+  
+  public final String dRh()
+  {
+    AppMethodBeat.i(265452);
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, talker TEXT);", new Object[] { fxn() });
+    AppMethodBeat.o(265452);
+    return str;
+  }
+  
+  public final String getName()
+  {
+    return "FTS5NotifyServiceStorage";
+  }
+  
+  public final int getPriority()
+  {
+    return 1536;
+  }
+  
+  public final String getTableName()
+  {
+    return "ServiceNotify";
+  }
+  
+  public final int getType()
+  {
+    return 1536;
   }
 }
 

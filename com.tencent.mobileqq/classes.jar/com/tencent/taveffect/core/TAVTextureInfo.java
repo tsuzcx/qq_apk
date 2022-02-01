@@ -24,7 +24,11 @@ public class TAVTextureInfo
   
   public String formatSize()
   {
-    return this.width + "*" + this.height;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.width);
+    localStringBuilder.append("*");
+    localStringBuilder.append(this.height);
+    return localStringBuilder.toString();
   }
   
   public long getFrameTimeUs()
@@ -99,7 +103,7 @@ public class TAVTextureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.core.TAVTextureInfo
  * JD-Core Version:    0.7.0.1
  */

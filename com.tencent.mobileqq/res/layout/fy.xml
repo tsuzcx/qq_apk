@@ -2,5 +2,5 @@
 <FrameLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="251.0dip" android:layout_height="131.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/mf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:layout_gravity="center" android:id="@id/ms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hz4" />
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:layout_gravity="center" android:id="@id/72" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hz4" />
 </FrameLayout>

@@ -1,6 +1,5 @@
 package com.google.android.gms.measurement;
 
-import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import com.google.android.gms.internal.measurement.zzjc;
 import com.google.android.gms.internal.measurement.zzjg;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(24)
 public final class AppMeasurementJobService
   extends JobService
   implements zzjg
@@ -17,51 +15,51 @@ public final class AppMeasurementJobService
   
   private final zzjc<AppMeasurementJobService> zzfq()
   {
-    AppMethodBeat.i(77163);
+    AppMethodBeat.i(87668);
     if (this.zzade == null) {
       this.zzade = new zzjc(this);
     }
     zzjc localzzjc = this.zzade;
-    AppMethodBeat.o(77163);
+    AppMethodBeat.o(87668);
     return localzzjc;
   }
   
   public final boolean callServiceStopSelfResult(int paramInt)
   {
-    AppMethodBeat.i(77169);
+    AppMethodBeat.i(87674);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(77169);
+    AppMethodBeat.o(87674);
     throw localUnsupportedOperationException;
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(77164);
+    AppMethodBeat.i(87669);
     super.onCreate();
     zzfq().onCreate();
-    AppMethodBeat.o(77164);
+    AppMethodBeat.o(87669);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(77165);
+    AppMethodBeat.i(87670);
     zzfq().onDestroy();
     super.onDestroy();
-    AppMethodBeat.o(77165);
+    AppMethodBeat.o(87670);
   }
   
   public final void onRebind(Intent paramIntent)
   {
-    AppMethodBeat.i(77168);
+    AppMethodBeat.i(87673);
     zzfq().onRebind(paramIntent);
-    AppMethodBeat.o(77168);
+    AppMethodBeat.o(87673);
   }
   
   public final boolean onStartJob(JobParameters paramJobParameters)
   {
-    AppMethodBeat.i(77166);
+    AppMethodBeat.i(87671);
     boolean bool = zzfq().onStartJob(paramJobParameters);
-    AppMethodBeat.o(77166);
+    AppMethodBeat.o(87671);
     return bool;
   }
   
@@ -72,25 +70,24 @@ public final class AppMeasurementJobService
   
   public final boolean onUnbind(Intent paramIntent)
   {
-    AppMethodBeat.i(77167);
+    AppMethodBeat.i(87672);
     boolean bool = zzfq().onUnbind(paramIntent);
-    AppMethodBeat.o(77167);
+    AppMethodBeat.o(87672);
     return bool;
   }
   
-  @TargetApi(24)
   public final void zza(JobParameters paramJobParameters, boolean paramBoolean)
   {
-    AppMethodBeat.i(77170);
+    AppMethodBeat.i(87675);
     jobFinished(paramJobParameters, false);
-    AppMethodBeat.o(77170);
+    AppMethodBeat.o(87675);
   }
   
   public final void zzb(Intent paramIntent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.measurement.AppMeasurementJobService
  * JD-Core Version:    0.7.0.1
  */

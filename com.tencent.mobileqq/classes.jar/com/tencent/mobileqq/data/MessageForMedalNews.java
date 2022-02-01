@@ -36,21 +36,21 @@ public class MessageForMedalNews
       this.seq = localJSONObject.optLong("seq");
       this.myLevel = localJSONObject.optInt("myLevel");
       this.id = localJSONObject.optInt("id");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MessageForMedalNews", 4, "doParse:" + this.msg);
-      }
-      this.isread = true;
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MessageForMedalNews", 2, "doParse", localJSONException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MessageForMedalNews", 2, "doParse", localJSONException);
       }
     }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doParse:");
+      localStringBuilder.append(this.msg);
+      QLog.i("MessageForMedalNews", 4, localStringBuilder.toString());
+    }
+    this.isread = true;
   }
   
   public boolean msgEquals(MessageForMedalNews paramMessageForMedalNews)

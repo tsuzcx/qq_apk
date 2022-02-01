@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class downloadConfig
   extends JceStruct
 {
-  public boolean appStoreSwitch;
+  public boolean appStoreSwitch = false;
   public String downloadUrl = "";
-  public boolean enableRock;
+  public boolean enableRock = false;
   public String packageName = "";
-  public boolean preload;
+  public boolean preload = false;
   public String preloadDownloadUrl = "";
   public String qqDownloadUrl = "";
-  public int vendorId;
-  public int versionCode;
+  public int vendorId = 0;
+  public int versionCode = 0;
   
   public downloadConfig() {}
   
@@ -47,33 +47,60 @@ public final class downloadConfig
   
   public String toString()
   {
-    return "downloadConfig {preload=" + this.preload + ", appStoreSwitch=" + this.appStoreSwitch + ", packageName='" + this.packageName + '\'' + ", downloadUrl='" + this.downloadUrl + '\'' + ", vendorId=" + this.vendorId + ", versionCode=" + this.versionCode + ", preloadDownloadUrl='" + this.preloadDownloadUrl + '\'' + ", enableRock=" + this.enableRock + ", qqDownloadUrl=" + this.qqDownloadUrl + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("downloadConfig {preload=");
+    localStringBuilder.append(this.preload);
+    localStringBuilder.append(", appStoreSwitch=");
+    localStringBuilder.append(this.appStoreSwitch);
+    localStringBuilder.append(", packageName='");
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadUrl='");
+    localStringBuilder.append(this.downloadUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", vendorId=");
+    localStringBuilder.append(this.vendorId);
+    localStringBuilder.append(", versionCode=");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append(", preloadDownloadUrl='");
+    localStringBuilder.append(this.preloadDownloadUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", enableRock=");
+    localStringBuilder.append(this.enableRock);
+    localStringBuilder.append(", qqDownloadUrl=");
+    localStringBuilder.append(this.qqDownloadUrl);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.preload, 0);
     paramJceOutputStream.write(this.appStoreSwitch, 1);
-    if (this.packageName != null) {
-      paramJceOutputStream.write(this.packageName, 2);
+    String str = this.packageName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.downloadUrl != null) {
-      paramJceOutputStream.write(this.downloadUrl, 3);
+    str = this.downloadUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.vendorId, 4);
     paramJceOutputStream.write(this.versionCode, 5);
-    if (this.preloadDownloadUrl != null) {
-      paramJceOutputStream.write(this.preloadDownloadUrl, 6);
+    str = this.preloadDownloadUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.enableRock, 7);
-    if (this.qqDownloadUrl != null) {
-      paramJceOutputStream.write(this.qqDownloadUrl, 8);
+    str = this.qqDownloadUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.downloadConfig
  * JD-Core Version:    0.7.0.1
  */

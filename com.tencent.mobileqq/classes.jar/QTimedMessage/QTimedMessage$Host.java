@@ -17,13 +17,14 @@ public final class QTimedMessage$Host
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_cmlb_id", "bytes_ip", "uint32_port" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, Host.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_cmlb_id", "bytes_ip", "uint32_port" }, new Object[] { localInteger, localByteStringMicro, localInteger }, Host.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QTimedMessage.QTimedMessage.Host
  * JD-Core Version:    0.7.0.1
  */

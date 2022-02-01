@@ -14,12 +14,13 @@ import java.util.List;
 public final class j
   implements e
 {
-  private a adG = new a();
-  private List<s> adH = new ArrayList();
-  private com.tencent.mm.wear.app.f.b adI;
-  private h adJ;
-  private k adK;
-  private com.tencent.mm.wear.app.f.d adL = new com.tencent.mm.wear.app.f.d()
+  private e agS;
+  private a ahi = new a();
+  private List<s> ahj = new ArrayList();
+  private com.tencent.mm.wear.app.f.b ahk;
+  private h ahl;
+  private k ahm;
+  private com.tencent.mm.wear.app.f.d ahn = new com.tencent.mm.wear.app.f.d()
   {
     public final void b(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
     {
@@ -31,11 +32,11 @@ public final class j
       {
         localac.h(paramAnonymousArrayOfByte);
         label27:
-        paramAnonymousArrayOfByte = new File(com.tencent.mm.wear.app.b.h.mi(), localac.VO + ".amr");
-        boolean bool = c.a(paramAnonymousArrayOfByte, localac.Wo.getBytes());
-        com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "save voice file result %b %d %s", new Object[] { Boolean.valueOf(bool), Long.valueOf(localac.VO), paramAnonymousArrayOfByte.getAbsolutePath() });
+        paramAnonymousArrayOfByte = new File(com.tencent.mm.wear.app.b.h.mU(), localac.XJ + ".amr");
+        boolean bool = c.a(paramAnonymousArrayOfByte, localac.Yj.getBytes());
+        com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "save voice file result %b %d %s", new Object[] { Boolean.valueOf(bool), Long.valueOf(localac.XJ), paramAnonymousArrayOfByte.getAbsolutePath() });
         if (bool) {
-          j.a(j.this, localac.VO);
+          j.a(j.this, localac.XJ);
         }
         return;
       }
@@ -45,23 +46,22 @@ public final class j
       }
     }
   };
-  private e adq;
   
-  private void E(boolean paramBoolean)
+  private void H(boolean paramBoolean)
   {
-    if (this.adH.size() == 0)
+    if (this.ahj.size() == 0)
     {
-      this.adG.mF();
+      this.ahi.nr();
       return;
     }
-    s locals = (s)this.adH.remove(0);
-    if (!locals.VW) {
-      locals.VW = true;
+    s locals = (s)this.ahj.remove(0);
+    if (!locals.XR) {
+      locals.XR = true;
     }
-    while (new File(com.tencent.mm.wear.app.b.h.mi(), String.valueOf(locals.VO) + ".amr").exists())
+    while (a(locals))
     {
-      com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "voice file exist %d", new Object[] { Long.valueOf(locals.VO) });
-      i(locals.VO);
+      com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "voice file exist %d", new Object[] { Long.valueOf(locals.XJ) });
+      l(locals.XJ);
       return;
       if (!paramBoolean)
       {
@@ -69,89 +69,94 @@ public final class j
         return;
       }
     }
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "voice file not exist %d", new Object[] { Long.valueOf(locals.VO) });
-    if (this.adI != null)
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "voice file not exist %d", new Object[] { Long.valueOf(locals.XJ) });
+    if (this.ahk != null)
     {
-      this.adI.cancel();
-      this.adI.a(null);
+      this.ahk.cancel();
+      this.ahk.a(null);
     }
     ab localab = new ab();
-    localab.VO = locals.VO;
+    localab.XJ = locals.XJ;
     try
     {
-      this.adI = new com.tencent.mm.wear.app.f.b(11031, localab.toByteArray());
-      this.adI.a(this.adL);
-      com.tencent.mm.wear.app.b.h.mc().a(this.adI);
+      this.ahk = new com.tencent.mm.wear.app.f.b(11031, localab.toByteArray());
+      this.ahk.a(this.ahn);
+      com.tencent.mm.wear.app.b.h.mP().a(this.ahk);
       return;
     }
     catch (IOException localIOException) {}
   }
   
-  private void i(long paramLong)
+  private static boolean a(s params)
   {
-    if (g.K(new File(com.tencent.mm.wear.app.b.h.mi(), paramLong + ".amr").getAbsolutePath()))
+    return new File(com.tencent.mm.wear.app.b.h.mU(), String.valueOf(params.XJ) + ".amr").exists();
+  }
+  
+  private void l(long paramLong)
+  {
+    if (g.j(paramLong))
     {
-      if (this.adJ != null)
+      if (this.ahl != null)
       {
-        this.adJ.mG();
-        this.adJ = null;
+        this.ahl.ns();
+        this.ahl = null;
       }
-      this.adJ = new h();
-      this.adJ.a(this);
-      this.adJ.h(paramLong);
+      this.ahl = new h();
+      this.ahl.a(this);
+      this.ahl.k(paramLong);
     }
-    while (!g.J(new File(com.tencent.mm.wear.app.b.h.mi(), paramLong + ".amr").getAbsolutePath())) {
+    while (!g.i(paramLong)) {
       return;
     }
-    if (this.adK != null)
+    if (this.ahm != null)
     {
-      this.adK.mG();
-      this.adK = null;
+      this.ahm.ns();
+      this.ahm = null;
     }
-    this.adK = new k();
-    this.adK.a(this);
-    this.adK.a(new File(com.tencent.mm.wear.app.b.h.mi(), paramLong + ".amr").getAbsolutePath(), paramLong);
+    this.ahm = new k();
+    this.ahm.a(this);
+    this.ahm.k(paramLong);
     com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "voice file arm header", new Object[0]);
   }
   
   public final void a(e parame)
   {
-    this.adq = parame;
+    this.agS = parame;
   }
   
   public final void c(int paramInt, long paramLong)
   {
-    if (this.adq != null) {
-      this.adq.c(paramInt, paramLong);
+    if (this.agS != null) {
+      this.agS.c(paramInt, paramLong);
     }
     if (paramInt == 0) {
-      E(false);
-    }
-  }
-  
-  public final void f(long paramLong)
-  {
-    if (this.adq != null) {
-      this.adq.f(paramLong);
+      H(false);
     }
   }
   
   public final void finish()
   {
-    if (this.adI != null)
+    if (this.ahk != null)
     {
-      this.adI.cancel();
-      this.adI.a(null);
+      this.ahk.cancel();
+      this.ahk.a(null);
     }
-    mG();
-    this.adH.clear();
+    ns();
+    this.ahj.clear();
+  }
+  
+  public final void g(long paramLong)
+  {
+    if (this.agS != null) {
+      this.agS.g(paramLong);
+    }
   }
   
   public final void k(List<s> paramList)
   {
-    mG();
+    ns();
     if (paramList.size() == 0) {}
-    while (!this.adG.requestFocus()) {
+    while (!this.ahi.requestFocus()) {
       return;
     }
     int i = 0;
@@ -161,55 +166,55 @@ public final class j
       if (i < paramList.size())
       {
         locals = (s)paramList.get(i);
-        if (locals.VN.equals(com.tencent.mm.wear.app.b.h.mb().lT().Vm)) {
+        if (locals.XI.equals(com.tencent.mm.wear.app.b.h.mO().mG().Xh)) {
           break label122;
         }
       }
       label122:
       for (int j = 1; i == 0; j = 0)
       {
-        this.adH.add(locals);
+        this.ahj.add(locals);
         if (j != 0) {
           break label143;
         }
-        com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "ready play list size %d", new Object[] { Integer.valueOf(this.adH.size()) });
-        E(true);
+        com.tencent.mm.wear.a.c.d.c("MicroMsg.VoiceMsgAutoPlay", "ready play list size %d", new Object[] { Integer.valueOf(this.ahj.size()) });
+        H(true);
         return;
       }
       if (j != 0) {
-        this.adH.add(locals);
+        this.ahj.add(locals);
       }
       label143:
       i += 1;
     }
   }
   
-  public final void mG()
+  public final void ns()
   {
-    if (this.adI != null) {
-      this.adI.cancel();
+    if (this.ahk != null) {
+      this.ahk.cancel();
     }
-    if (this.adJ != null)
+    if (this.ahl != null)
     {
-      this.adJ.mG();
-      this.adJ = null;
+      this.ahl.ns();
+      this.ahl = null;
     }
-    if (this.adK != null)
+    if (this.ahm != null)
     {
-      this.adK.mG();
-      this.adK = null;
+      this.ahm.ns();
+      this.ahm = null;
     }
-    this.adH.clear();
-    this.adG.mF();
+    this.ahj.clear();
+    this.ahi.nr();
   }
   
-  public final long mH()
+  public final long nt()
   {
-    if ((this.adJ != null) && (this.adJ.isPlaying())) {
-      return this.adJ.mH();
+    if ((this.ahl != null) && (this.ahl.isPlaying())) {
+      return this.ahl.nt();
     }
-    if ((this.adK != null) && (this.adK.isPlaying())) {
-      return this.adK.mH();
+    if ((this.ahm != null) && (this.ahm.isPlaying())) {
+      return this.ahm.nt();
     }
     return -1L;
   }

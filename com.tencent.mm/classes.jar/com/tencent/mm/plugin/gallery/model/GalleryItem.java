@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import android.os.Parcelable.Creator;
-
 public final class GalleryItem {}
 
 

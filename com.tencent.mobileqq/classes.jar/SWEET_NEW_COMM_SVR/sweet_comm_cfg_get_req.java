@@ -11,8 +11,8 @@ public final class sweet_comm_cfg_get_req
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
   static ArrayList<Integer> cache_vec_cfg = new ArrayList();
-  public sweet_req_comm req_comm;
-  public ArrayList<Integer> vec_cfg;
+  public sweet_req_comm req_comm = null;
+  public ArrayList<Integer> vec_cfg = null;
   
   static
   {
@@ -41,7 +41,7 @@ public final class sweet_comm_cfg_get_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_req
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/eb2" android:paddingLeft="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ebe" android:layout_width="fill_parent" android:layout_height="@dimen/az">
+        <com.tencent.mm.ui.base.MaskLayout android:id="@id/eax" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginRight="@dimen/cd">
+            <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?uy" android:paddingRight="@dimen/e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="center_vertical" android:id="@id/ko8" android:paddingRight="@dimen/i6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gz" android:singleLine="true" style="@style/ma" />
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:gravity="center" android:id="@id/ebc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

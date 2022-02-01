@@ -19,13 +19,14 @@ public final class oidb_cmd0xb83$TagInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 25, 32 }, new String[] { "uint64_tag_id", "bytes_tag_name", "double_tag_score", "uint64_channel" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Double.valueOf(0.0D), Long.valueOf(0L) }, TagInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 25, 32 }, new String[] { "uint64_tag_id", "bytes_tag_name", "double_tag_score", "uint64_channel" }, new Object[] { localLong, localByteStringMicro, Double.valueOf(0.0D), localLong }, TagInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.TagInfo
  * JD-Core Version:    0.7.0.1
  */

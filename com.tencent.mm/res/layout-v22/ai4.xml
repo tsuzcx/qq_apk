@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6">
+        <FrameLayout android:layout_gravity="center_horizontal" android:background="@drawable/a0a" android:layout_width="@dimen/d9" android:layout_height="@dimen/d9">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_reward" app:iconColor="@android:color/white" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/g7v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cv" android:layout_marginHorizontal="@dimen/cv" />
+        <TextView android:textSize="@dimen/hp" android:textColor="@color/BW_0_Alpha_0_9" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/dtl" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/g83" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/sf" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/cd" android:text="@string/dtr" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_arrow" android:layout_marginStart="@dimen/bv" app:iconColor="@color/sf" />
+        </LinearLayout>
+        <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d4" android:layout_marginRight="@dimen/d0" android:layout_marginBottom="@dimen/cp" android:layout_marginHorizontal="@dimen/d0" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g7q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginRight="@dimen/d0" android:layout_marginBottom="@dimen/df" android:layout_marginHorizontal="@dimen/d0">
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/dc" android:text="@string/dto" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/g7s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/d0" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginRight="@dimen/d0" android:layout_marginHorizontal="@dimen/d0">
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/dc" android:text="@string/dtq" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/g7u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/d0" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/d0" android:layout_marginHorizontal="@dimen/d0">
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/dc" android:text="@string/dtn" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/g7r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/d0" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/d0" android:layout_marginHorizontal="@dimen/d0">
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/dc" android:text="@string/dtp" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/g7t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/d0" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:text="@string/duf" />
+</FrameLayout>

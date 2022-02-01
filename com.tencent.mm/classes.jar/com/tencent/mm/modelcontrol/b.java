@@ -1,18 +1,96 @@
 package com.tencent.mm.modelcontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
+import com.tencent.mm.k.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
 public final class b
 {
-  private static boolean H(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean NB(String paramString)
+  {
+    AppMethodBeat.i(150445);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(150445);
+      return false;
+    }
+    try
+    {
+      int j = bIa();
+      paramString = paramString.split(";");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        String[] arrayOfString1 = paramString[i].split("-");
+        String[] arrayOfString2 = arrayOfString1[0].split(":");
+        int k = Util.safeParseInt(arrayOfString2[0]);
+        int m = Util.safeParseInt(arrayOfString2[1]);
+        arrayOfString1 = arrayOfString1[1].split(":");
+        int n = Util.safeParseInt(arrayOfString1[0]);
+        boolean bool = ai(m + k * 60, Util.safeParseInt(arrayOfString1[1]) + n * 60, j);
+        if (bool)
+        {
+          AppMethodBeat.o(150445);
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.BusyTimeControlLogic", paramString, "", new Object[0]);
+      Log.e("MicroMsg.BusyTimeControlLogic", "checkNeedToControl error : " + paramString.toString());
+      AppMethodBeat.o(150445);
+    }
+  }
+  
+  public static boolean aU(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(150446);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(150446);
+      return false;
+    }
+    try
+    {
+      int j = bIa();
+      paramString = paramString.split(";");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        String[] arrayOfString1 = paramString[i].split("-");
+        String[] arrayOfString2 = arrayOfString1[0].split(":");
+        int k = Util.safeParseInt(arrayOfString2[0]);
+        int m = Util.safeParseInt(arrayOfString2[1]);
+        arrayOfString1 = arrayOfString1[1].split(":");
+        int n = Util.safeParseInt(arrayOfString1[0]);
+        boolean bool = ai(m + k * 60, Util.safeParseInt(arrayOfString1[1]) + n * 60 + paramInt, j);
+        if (bool)
+        {
+          AppMethodBeat.o(150446);
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.BusyTimeControlLogic", paramString, "", new Object[0]);
+      Log.e("MicroMsg.BusyTimeControlLogic", "checkNeedToControl error : " + paramString.toString());
+      AppMethodBeat.o(150446);
+    }
+  }
+  
+  private static boolean ai(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 < paramInt2) {
       if ((paramInt3 >= paramInt2) || (paramInt3 < paramInt1)) {}
@@ -25,67 +103,28 @@ public final class b
     return false;
   }
   
-  public static boolean W(String paramString, int paramInt)
+  public static boolean bHZ()
   {
-    AppMethodBeat.i(78088);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(78088);
-      return false;
-    }
-    try
-    {
-      int j = afR();
-      paramString = paramString.split(";");
-      int i = 0;
-      while (i < paramString.length)
-      {
-        String[] arrayOfString1 = paramString[i].split("-");
-        String[] arrayOfString2 = arrayOfString1[0].split(":");
-        int k = bo.apV(arrayOfString2[0]);
-        int m = bo.apV(arrayOfString2[1]);
-        arrayOfString1 = arrayOfString1[1].split(":");
-        int n = bo.apV(arrayOfString1[0]);
-        boolean bool = H(m + k * 60, bo.apV(arrayOfString1[1]) + n * 60 + paramInt, j);
-        if (bool)
-        {
-          AppMethodBeat.o(78088);
-          return true;
-        }
-        i += 1;
-      }
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      ab.printErrStackTrace("MicroMsg.BusyTimeControlLogic", paramString, "", new Object[0]);
-      ab.e("MicroMsg.BusyTimeControlLogic", "checkNeedToControl error : " + paramString.toString());
-      AppMethodBeat.o(78088);
-    }
-  }
-  
-  public static boolean afQ()
-  {
-    AppMethodBeat.i(78086);
-    String str = ((a)g.E(a.class)).Nq().getValue("C2CImgNotAutoDownloadTimeRange");
-    ab.i("MicroMsg.BusyTimeControlLogic", "C2CImgNotAutoDownloadTimeRange value: ".concat(String.valueOf(str)));
-    boolean bool = sM(str);
-    AppMethodBeat.o(78086);
+    AppMethodBeat.i(150444);
+    String str = ((a)h.ax(a.class)).aRC().getValue("C2CImgNotAutoDownloadTimeRange");
+    Log.i("MicroMsg.BusyTimeControlLogic", "C2CImgNotAutoDownloadTimeRange value: ".concat(String.valueOf(str)));
+    boolean bool = NB(str);
+    AppMethodBeat.o(150444);
     return bool;
   }
   
-  private static int afR()
+  private static int bIa()
   {
-    AppMethodBeat.i(78089);
+    AppMethodBeat.i(150447);
     String[] arrayOfString = new SimpleDateFormat("HH:mm").format(new Date()).split(":");
-    int i = bo.apV(arrayOfString[0]);
-    int j = bo.apV(arrayOfString[1]) + i * 60 - ((int)afS() - 8) * 60;
+    int i = Util.safeParseInt(arrayOfString[0]);
+    int j = Util.safeParseInt(arrayOfString[1]) + i * 60 - ((int)bIb() - 8) * 60;
     if (j < 0) {
       i = j + 1440;
     }
     for (;;)
     {
-      AppMethodBeat.o(78089);
+      AppMethodBeat.o(150447);
       return i;
       i = j;
       if (j >= 1440) {
@@ -94,56 +133,17 @@ public final class b
     }
   }
   
-  public static long afS()
+  public static long bIb()
   {
-    AppMethodBeat.i(78090);
+    AppMethodBeat.i(150448);
     long l = (int)(TimeZone.getDefault().getRawOffset() / 60000L) / 60L;
-    AppMethodBeat.o(78090);
+    AppMethodBeat.o(150448);
     return l;
-  }
-  
-  public static boolean sM(String paramString)
-  {
-    AppMethodBeat.i(78087);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(78087);
-      return false;
-    }
-    try
-    {
-      int j = afR();
-      paramString = paramString.split(";");
-      int i = 0;
-      while (i < paramString.length)
-      {
-        String[] arrayOfString1 = paramString[i].split("-");
-        String[] arrayOfString2 = arrayOfString1[0].split(":");
-        int k = bo.apV(arrayOfString2[0]);
-        int m = bo.apV(arrayOfString2[1]);
-        arrayOfString1 = arrayOfString1[1].split(":");
-        int n = bo.apV(arrayOfString1[0]);
-        boolean bool = H(m + k * 60, bo.apV(arrayOfString1[1]) + n * 60, j);
-        if (bool)
-        {
-          AppMethodBeat.o(78087);
-          return true;
-        }
-        i += 1;
-      }
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      ab.printErrStackTrace("MicroMsg.BusyTimeControlLogic", paramString, "", new Object[0]);
-      ab.e("MicroMsg.BusyTimeControlLogic", "checkNeedToControl error : " + paramString.toString());
-      AppMethodBeat.o(78087);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.b
  * JD-Core Version:    0.7.0.1
  */

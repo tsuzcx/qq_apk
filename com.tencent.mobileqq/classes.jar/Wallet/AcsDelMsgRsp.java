@@ -8,7 +8,7 @@ public final class AcsDelMsgRsp
   extends JceStruct
 {
   public String err_str = "";
-  public int ret_code;
+  public int ret_code = 0;
   
   public AcsDelMsgRsp() {}
   
@@ -27,14 +27,15 @@ public final class AcsDelMsgRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.err_str != null) {
-      paramJceOutputStream.write(this.err_str, 1);
+    String str = this.err_str;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsDelMsgRsp
  * JD-Core Version:    0.7.0.1
  */

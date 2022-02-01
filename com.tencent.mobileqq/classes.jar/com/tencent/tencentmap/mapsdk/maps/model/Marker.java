@@ -58,8 +58,9 @@ public final class Marker
   
   public final String getContentDescription()
   {
-    if (this.b != null) {
-      return this.b.getContentDescription();
+    MarkerOptions localMarkerOptions = this.b;
+    if (localMarkerOptions != null) {
+      return localMarkerOptions.getContentDescription();
     }
     return null;
   }
@@ -72,12 +73,13 @@ public final class Marker
   public final int getHeight(Context paramContext)
   {
     BitmapDescriptor localBitmapDescriptor = this.b.getIcon();
-    if (localBitmapDescriptor == null) {}
-    do
-    {
+    if (localBitmapDescriptor == null) {
       return 0;
-      paramContext = localBitmapDescriptor.getFormater().a(paramContext);
-    } while (paramContext == null);
+    }
+    paramContext = localBitmapDescriptor.getFormater().a(paramContext);
+    if (paramContext == null) {
+      return 0;
+    }
     return paramContext.getHeight();
   }
   
@@ -115,29 +117,29 @@ public final class Marker
   {
     Object localObject1 = this.e;
     Object localObject2 = this.c;
-    if (((km)localObject1).a != null) {}
-    for (localObject1 = ((km)localObject1).a.d((String)localObject2);; localObject1 = null)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.b.getPosition();
-      }
-      return localObject2;
+    if (((km)localObject1).a != null) {
+      localObject1 = ((km)localObject1).a.d((String)localObject2);
+    } else {
+      localObject1 = null;
     }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.b.getPosition();
+    }
+    return localObject2;
   }
   
   public final float getRotation()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return 0.0F;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    return localkm.a.i(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      return localkm.a.i(str);
+    }
+    return 0.0F;
   }
   
   public final String getSnippet()
@@ -158,19 +160,21 @@ public final class Marker
   public final int getWidth(Context paramContext)
   {
     BitmapDescriptor localBitmapDescriptor = this.b.getIcon();
-    if (localBitmapDescriptor == null) {}
-    do
-    {
+    if (localBitmapDescriptor == null) {
       return 0;
-      paramContext = localBitmapDescriptor.getFormater().a(paramContext);
-    } while (paramContext == null);
+    }
+    paramContext = localBitmapDescriptor.getFormater().a(paramContext);
+    if (paramContext == null) {
+      return 0;
+    }
     return paramContext.getWidth();
   }
   
   public final float getZIndex()
   {
-    if (this.b != null) {
-      return this.b.getZIndex();
+    MarkerOptions localMarkerOptions = this.b;
+    if (localMarkerOptions != null) {
+      return localMarkerOptions.getZIndex();
     }
     return 0.0F;
   }
@@ -182,30 +186,27 @@ public final class Marker
   
   public final void hideInfoWindow()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.f(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      localkm.a.f(str);
+    }
   }
   
   public final boolean isClickable()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return false;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    return localkm.a.k(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      return localkm.a.k(str);
+    }
+    return false;
   }
   
   public final boolean isDraggable()
@@ -215,10 +216,11 @@ public final class Marker
   
   public final boolean isFastLoad()
   {
-    if (this.b == null) {
+    MarkerOptions localMarkerOptions = this.b;
+    if (localMarkerOptions == null) {
       return false;
     }
-    return this.b.isFastLoad();
+    return localMarkerOptions.isFastLoad();
   }
   
   public final boolean isInMapCenterState()
@@ -238,16 +240,15 @@ public final class Marker
   
   public final boolean isInfoWindowShown()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return false;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    return localkm.a.h(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      return localkm.a.h(str);
+    }
+    return false;
   }
   
   public final boolean isVisible()
@@ -265,38 +266,34 @@ public final class Marker
   
   public final void refreshInfoWindow()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.g(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      localkm.a.g(str);
+    }
   }
   
   public final void remove()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.a(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      localkm.a.a(str);
+    }
   }
   
   public final void setAlpha(float paramFloat)
   {
-    if (this.e == null) {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
     }
-    km localkm = this.e;
     String str = this.c;
     if (localkm.a != null) {
       localkm.a.b(str, paramFloat);
@@ -306,85 +303,78 @@ public final class Marker
   
   public final void setAnchor(float paramFloat1, float paramFloat2)
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    if (this.e == null) {
       return;
-      this.b.anchor(paramFloat1, paramFloat2);
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.a(str, paramFloat1, paramFloat2);
+    }
+    this.b.anchor(paramFloat1, paramFloat2);
+    km localkm = this.e;
+    String str = this.c;
+    if (localkm.a != null) {
+      localkm.a.a(str, paramFloat1, paramFloat2);
+    }
   }
   
   public final void setAnimation(Animation paramAnimation)
   {
-    if ((this.e == null) || (paramAnimation == null)) {}
-    km localkm;
-    String str;
-    do
+    km localkm = this.e;
+    if (localkm != null)
     {
-      return;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.a(str, paramAnimation);
+      if (paramAnimation == null) {
+        return;
+      }
+      String str = this.c;
+      if (localkm.a != null) {
+        localkm.a.a(str, paramAnimation);
+      }
+    }
   }
   
   public final void setClickable(boolean paramBoolean)
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.c(str, paramBoolean);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      localkm.a.c(str, paramBoolean);
+    }
   }
   
   public final void setContentDescription(String paramString)
   {
-    if (this.b != null) {
-      this.b.contentDescription(paramString);
+    MarkerOptions localMarkerOptions = this.b;
+    if (localMarkerOptions != null) {
+      localMarkerOptions.contentDescription(paramString);
     }
   }
   
   public final void setDraggable(boolean paramBoolean)
   {
-    boolean bool3 = false;
-    if (this.e == null) {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
     }
-    this.e.b();
-    km localkm1 = this.e;
-    String str1 = this.c;
+    localkm.b();
+    localkm = this.e;
+    String str = this.c;
+    boolean bool3 = false;
     boolean bool2 = bool3;
-    km localkm2;
-    String str2;
     if (!paramBoolean)
     {
-      localkm2 = this.e;
-      str2 = this.c;
-      if (localkm2.a == null) {
-        break label97;
+      boolean bool1;
+      if (localkm.a != null) {
+        bool1 = localkm.a.l(str);
+      } else {
+        bool1 = false;
       }
-    }
-    label97:
-    for (boolean bool1 = localkm2.a.l(str2);; bool1 = false)
-    {
       bool2 = bool3;
       if (bool1) {
         bool2 = true;
       }
-      localkm1.a(str1, bool2);
-      this.b.draggable(paramBoolean);
-      return;
     }
+    localkm.a(str, bool2);
+    this.b.draggable(paramBoolean);
   }
   
   public final void setFastLoad(boolean paramBoolean)
@@ -412,24 +402,16 @@ public final class Marker
   {
     this.e.a(this.c, paramBoolean);
     if (this.b.isDraggable()) {
-      if (paramBoolean) {
-        break label34;
-      }
-    }
-    label34:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      setDraggable(paramBoolean);
-      return;
+      setDraggable(paramBoolean ^ true);
     }
   }
   
   public final void setIcon(BitmapDescriptor paramBitmapDescriptor)
   {
-    if (this.e == null) {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
     }
-    km localkm = this.e;
     String str = this.c;
     if (localkm.a != null) {
       localkm.a.a(str, paramBitmapDescriptor);
@@ -439,10 +421,10 @@ public final class Marker
   
   public final void setInMapCenterState(boolean paramBoolean)
   {
-    if (this.e == null) {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
     }
-    km localkm = this.e;
     String str = this.c;
     if (localkm.a != null) {
       localkm.a.b(str, paramBoolean);
@@ -478,15 +460,18 @@ public final class Marker
   
   public final void setLevel(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return;
+      }
+      km localkm = this.e;
+      String str = this.c;
+      if (localkm.a != null) {
+        localkm.a.a(str, paramInt);
+      }
+      this.b.level(paramInt);
     }
-    km localkm = this.e;
-    String str = this.c;
-    if (localkm.a != null) {
-      localkm.a.a(str, paramInt);
-    }
-    this.b.level(paramInt);
   }
   
   public final void setMarkerOptions(MarkerOptions paramMarkerOptions)
@@ -512,23 +497,26 @@ public final class Marker
   
   public final void setPosition(LatLng paramLatLng)
   {
-    if ((this.e == null) || (paramLatLng == null)) {
-      return;
-    }
     km localkm = this.e;
-    String str = this.c;
-    if (localkm.a != null) {
-      localkm.a.a(str, paramLatLng);
+    if (localkm != null)
+    {
+      if (paramLatLng == null) {
+        return;
+      }
+      String str = this.c;
+      if (localkm.a != null) {
+        localkm.a.a(str, paramLatLng);
+      }
+      this.b.position(paramLatLng);
     }
-    this.b.position(paramLatLng);
   }
   
   public final void setRotation(float paramFloat)
   {
-    if (this.e == null) {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
     }
-    km localkm = this.e;
     String str = this.c;
     if (localkm.a != null) {
       localkm.a.a(str, paramFloat);
@@ -538,16 +526,15 @@ public final class Marker
   
   public final void setSnippet(String paramString)
   {
-    if (this.e == null) {}
-    String str;
-    do
-    {
+    if (this.e == null) {
       return;
-      this.b.snippet(paramString);
-      paramString = this.e;
-      str = this.c;
-    } while (paramString.a == null);
-    paramString.a.b(str);
+    }
+    this.b.snippet(paramString);
+    paramString = this.e;
+    String str = this.c;
+    if (paramString.a != null) {
+      paramString.a.b(str);
+    }
   }
   
   public final void setTag(Object paramObject)
@@ -557,24 +544,23 @@ public final class Marker
   
   public final void setTitle(String paramString)
   {
-    if (this.e == null) {}
-    String str;
-    do
-    {
+    if (this.e == null) {
       return;
-      this.b.title(paramString);
-      paramString = this.e;
-      str = this.c;
-    } while (paramString.a == null);
-    paramString.a.c(str);
+    }
+    this.b.title(paramString);
+    paramString = this.e;
+    String str = this.c;
+    if (paramString.a != null) {
+      paramString.a.c(str);
+    }
   }
   
   public final void setVisible(boolean paramBoolean)
   {
-    if (this.e == null) {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
     }
-    km localkm = this.e;
     String str = this.c;
     if (localkm.a != null) {
       localkm.a.a(str, paramBoolean);
@@ -594,35 +580,32 @@ public final class Marker
   
   public final void showInfoWindow()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    localkm.a.e(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      localkm.a.e(str);
+    }
   }
   
   public final boolean startAnimation()
   {
-    if (this.e == null) {}
-    km localkm;
-    String str;
-    do
-    {
+    km localkm = this.e;
+    if (localkm == null) {
       return false;
-      localkm = this.e;
-      str = this.c;
-    } while (localkm.a == null);
-    return localkm.a.j(str);
+    }
+    String str = this.c;
+    if (localkm.a != null) {
+      return localkm.a.j(str);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Marker
  * JD-Core Version:    0.7.0.1
  */

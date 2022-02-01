@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface b
   extends IInterface
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean);
+  public abstract void C(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void u(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean);
   
   public static abstract class a
     extends Binder
@@ -20,6 +20,23 @@ public abstract interface b
     public a()
     {
       attachInterface(this, "com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
+    }
+    
+    public static b bRF()
+    {
+      return a.pqx;
+    }
+    
+    public static b w(IBinder paramIBinder)
+    {
+      if (paramIBinder == null) {
+        return null;
+      }
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
+      if ((localIInterface != null) && ((localIInterface instanceof b))) {
+        return (b)localIInterface;
+      }
+      return new a(paramIBinder);
     }
     
     public IBinder asBinder()
@@ -52,113 +69,25 @@ public abstract interface b
         }
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
-      u(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+      C(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }
     
-    public static final class a
+    static final class a
       implements b
     {
+      public static b pqx;
       private IBinder mRemote;
       
-      public a(IBinder paramIBinder)
+      a(IBinder paramIBinder)
       {
         this.mRemote = paramIBinder;
       }
       
-      /* Error */
-      public final void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean)
+      public final void C(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
       {
-        // Byte code:
-        //   0: iconst_1
-        //   1: istore 7
-        //   3: ldc 21
-        //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   8: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   11: astore 8
-        //   13: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   16: astore 9
-        //   18: aload 8
-        //   20: ldc 35
-        //   22: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   25: aload 8
-        //   27: iload_1
-        //   28: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   31: aload 8
-        //   33: iload_2
-        //   34: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   37: aload 8
-        //   39: aload_3
-        //   40: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   43: aload 8
-        //   45: iload 4
-        //   47: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   50: aload 8
-        //   52: aload 5
-        //   54: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   57: iload 6
-        //   59: ifeq +49 -> 108
-        //   62: iload 7
-        //   64: istore_1
-        //   65: aload 8
-        //   67: iload_1
-        //   68: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   71: aload_0
-        //   72: getfield 18	com/tencent/mm/network/a/b$a$a:mRemote	Landroid/os/IBinder;
-        //   75: iconst_1
-        //   76: aload 8
-        //   78: aload 9
-        //   80: iconst_0
-        //   81: invokeinterface 51 5 0
-        //   86: pop
-        //   87: aload 9
-        //   89: invokevirtual 54	android/os/Parcel:readException	()V
-        //   92: aload 9
-        //   94: invokevirtual 57	android/os/Parcel:recycle	()V
-        //   97: aload 8
-        //   99: invokevirtual 57	android/os/Parcel:recycle	()V
-        //   102: ldc 21
-        //   104: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   107: return
-        //   108: iconst_0
-        //   109: istore_1
-        //   110: goto -45 -> 65
-        //   113: astore_3
-        //   114: aload 9
-        //   116: invokevirtual 57	android/os/Parcel:recycle	()V
-        //   119: aload 8
-        //   121: invokevirtual 57	android/os/Parcel:recycle	()V
-        //   124: ldc 21
-        //   126: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   129: aload_3
-        //   130: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	131	0	this	a
-        //   0	131	1	paramInt1	int
-        //   0	131	2	paramInt2	int
-        //   0	131	3	paramString1	String
-        //   0	131	4	paramInt3	int
-        //   0	131	5	paramString2	String
-        //   0	131	6	paramBoolean	boolean
-        //   1	62	7	i	int
-        //   11	109	8	localParcel1	Parcel
-        //   16	99	9	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   18	57	113	finally
-        //   65	92	113	finally
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final void u(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-      {
-        AppMethodBeat.i(58714);
+        AppMethodBeat.i(132964);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -168,7 +97,11 @@ public abstract interface b
           localParcel1.writeInt(paramInt2);
           localParcel1.writeInt(paramInt3);
           localParcel1.writeInt(paramInt4);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.bRF() != null))
+          {
+            b.a.bRF().C(paramInt1, paramInt2, paramInt3, paramInt4);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -176,15 +109,54 @@ public abstract interface b
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58714);
+          AppMethodBeat.o(132964);
         }
+      }
+      
+      public final void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean)
+      {
+        AppMethodBeat.i(132963);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
+          localParcel1.writeInt(paramInt1);
+          localParcel1.writeInt(paramInt2);
+          localParcel1.writeString(paramString1);
+          localParcel1.writeInt(paramInt3);
+          localParcel1.writeString(paramString2);
+          if (paramBoolean) {}
+          for (int i = 1;; i = 0)
+          {
+            localParcel1.writeInt(i);
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.bRF() == null)) {
+              break;
+            }
+            b.a.bRF().a(paramInt1, paramInt2, paramString1, paramInt3, paramString2, paramBoolean);
+            return;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132963);
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.a.b
  * JD-Core Version:    0.7.0.1
  */

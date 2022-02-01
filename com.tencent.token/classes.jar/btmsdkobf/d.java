@@ -11,46 +11,43 @@ public class d
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
-    if ((paramContext == null) || (paramIntent == null)) {}
-    label130:
-    label135:
-    for (;;)
+    if ((paramContext != null) && (paramIntent != null))
     {
-      return;
+      boolean bool = false;
       int i = paramIntent.getIntExtra("openIdNotifyFlag", 0);
-      e.b("shouldUpdateId, notifyFlag : " + i);
-      if (i == 1) {
-        if (!TextUtils.equals(paramIntent.getStringExtra("openIdPackage"), paramContext.getPackageName())) {}
-      }
-      for (;;)
+      e.b("shouldUpdateId, notifyFlag : ".concat(String.valueOf(i)));
+      if (i == 1)
       {
-        if (!bool) {
-          break label135;
+        if (!TextUtils.equals(paramIntent.getStringExtra("openIdPackage"), paramContext.getPackageName())) {
+          break label94;
         }
-        paramContext = paramIntent.getStringExtra("openIdType");
-        paramContext = e.b().c(paramContext);
-        if (paramContext == null) {
-          break;
-        }
-        paramContext.a();
-        return;
-        do
-        {
-          ArrayList localArrayList;
-          do
-          {
-            bool = false;
-            break;
-            if (i != 2) {
-              break label130;
-            }
-            localArrayList = paramIntent.getStringArrayListExtra("openIdPackageList");
-          } while (localArrayList == null);
-          bool = localArrayList.contains(paramContext.getPackageName());
-          break;
-        } while (i != 0);
       }
+      else
+      {
+        if (i == 2)
+        {
+          ArrayList localArrayList = paramIntent.getStringArrayListExtra("openIdPackageList");
+          if (localArrayList == null) {
+            break label94;
+          }
+          bool = localArrayList.contains(paramContext.getPackageName());
+          break label94;
+        }
+        if (i != 0) {
+          break label94;
+        }
+      }
+      bool = true;
+      label94:
+      if (!bool) {
+        return;
+      }
+      paramContext = paramIntent.getStringExtra("openIdType");
+      paramContext = e.b().c(paramContext);
+      if (paramContext == null) {
+        return;
+      }
+      paramContext.a();
     }
   }
 }

@@ -27,6 +27,7 @@ public class ImageUploadResult
   public String sOriPhotoID = "";
   public String sOriUrl = "";
   public String sPhotoID = "";
+  public String sPhotoMD5 = "";
   public String sSURL = "";
   public String sSloc = "";
   public byte[] vBusiNessData = null;
@@ -61,11 +62,12 @@ public class ImageUploadResult
     this.waterTemplate = paramUploadPicInfoRsp.waterTemplate;
     this.iBusiNessType = paramUploadPicInfoRsp.iBusiNessType;
     this.vBusiNessData = paramUploadPicInfoRsp.vBusiNessDataRsp;
+    this.sPhotoMD5 = paramUploadPicInfoRsp.sPhotoMD5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.ImageUploadResult
  * JD-Core Version:    0.7.0.1
  */

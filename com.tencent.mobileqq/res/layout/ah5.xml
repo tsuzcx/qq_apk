@@ -2,7 +2,7 @@
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/icon" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="15.0dip" android:scaleType="fitXY" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/jm8" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="7.0dip" android:text="@string/q5d" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/jm8" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="7.0dip" android:text="@string/q5d" />
     <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
     <ImageView android:id="@id/a2p" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" />
     <ImageView android:id="@id/a2r" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="6.0dip" />

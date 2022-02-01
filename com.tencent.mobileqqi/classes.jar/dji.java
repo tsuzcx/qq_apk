@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SpaceGateActivity;
-import com.tencent.mobileqq.widget.SlipLimitedListView;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class dji
-  implements View.OnClickListener
+  extends FriendListObserver
 {
   public dji(SpaceGateActivity paramSpaceGateActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (SpaceGateActivity.a(this.a) != null) {
-      SpaceGateActivity.a(this.a).b();
+    if (paramBoolean) {
+      this.a.a(0);
     }
-    SpaceGateActivity.a(this.a).a("");
-    SpaceGateActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a(0);
+    }
   }
 }
 

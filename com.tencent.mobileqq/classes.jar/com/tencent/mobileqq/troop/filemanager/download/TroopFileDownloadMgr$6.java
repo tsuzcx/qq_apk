@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
 import android.os.Bundle;
-import bbwf;
-import java.util.UUID;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public class TroopFileDownloadMgr$6
+class TroopFileDownloadMgr$6
   implements Runnable
 {
-  public TroopFileDownloadMgr$6(bbwf parambbwf, UUID paramUUID, Bundle paramBundle) {}
+  TroopFileDownloadMgr$6(TroopFileDownloadMgr paramTroopFileDownloadMgr, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
   public void run()
   {
-    bbwf.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
+    TroopFileDownloadMgr.b(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.6
  * JD-Core Version:    0.7.0.1
  */

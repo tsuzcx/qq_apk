@@ -18,43 +18,42 @@ public final class CoroutineIntrinsics
   {
     Intrinsics.checkParameterIsNotNull(paramCoroutineContext, "context");
     Intrinsics.checkParameterIsNotNull(paramContinuation, "continuation");
-    Object localObject = (ContinuationInterceptor)paramCoroutineContext.get((CoroutineContext.Key)ContinuationInterceptor.Key);
-    paramCoroutineContext = paramContinuation;
-    if (localObject != null)
+    paramCoroutineContext = (ContinuationInterceptor)paramCoroutineContext.get((CoroutineContext.Key)ContinuationInterceptor.Key);
+    if (paramCoroutineContext != null)
     {
-      localObject = ((ContinuationInterceptor)localObject).interceptContinuation(paramContinuation);
-      paramCoroutineContext = paramContinuation;
-      if (localObject != null) {
-        paramCoroutineContext = (CoroutineContext)localObject;
+      paramCoroutineContext = paramCoroutineContext.interceptContinuation(paramContinuation);
+      if (paramCoroutineContext != null) {
+        return paramCoroutineContext;
       }
     }
-    return paramCoroutineContext;
+    return paramContinuation;
   }
   
   @NotNull
   public static final <T> Continuation<T> normalizeContinuation(@NotNull Continuation<? super T> paramContinuation)
   {
     Intrinsics.checkParameterIsNotNull(paramContinuation, "continuation");
-    if (!(paramContinuation instanceof CoroutineImpl)) {}
-    for (Object localObject1 = null;; localObject1 = paramContinuation)
-    {
-      Object localObject2 = (CoroutineImpl)localObject1;
+    if (!(paramContinuation instanceof CoroutineImpl)) {
+      localObject1 = null;
+    } else {
       localObject1 = paramContinuation;
-      if (localObject2 != null)
-      {
-        localObject2 = ((CoroutineImpl)localObject2).getFacade();
-        localObject1 = paramContinuation;
-        if (localObject2 != null) {
-          localObject1 = localObject2;
-        }
-      }
-      return localObject1;
     }
+    Object localObject2 = (CoroutineImpl)localObject1;
+    Object localObject1 = paramContinuation;
+    if (localObject2 != null)
+    {
+      localObject2 = ((CoroutineImpl)localObject2).getFacade();
+      localObject1 = paramContinuation;
+      if (localObject2 != null) {
+        localObject1 = localObject2;
+      }
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.experimental.jvm.internal.CoroutineIntrinsics
  * JD-Core Version:    0.7.0.1
  */

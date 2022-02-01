@@ -8,7 +8,7 @@ import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 public class TransReqContext
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new TransReqContext.1();
+  public static final Parcelable.Creator<TransReqContext> CREATOR = new TransReqContext.1();
   public byte[] _body;
   public int _subcmd = 0;
   public int _type = 0;
@@ -84,12 +84,14 @@ public class TransReqContext
   
   public void setWtST(WloginSigInfo paramWloginSigInfo)
   {
-    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {}
-    while ((paramWloginSigInfo.wtSessionTicket == null) || (paramWloginSigInfo.wtSessionTicketKey == null)) {
+    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {
       return;
     }
-    this.wtSessionTicket = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
-    this.wtSessionTicketKey = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
+    if ((paramWloginSigInfo.wtSessionTicket != null) && (paramWloginSigInfo.wtSessionTicketKey != null))
+    {
+      this.wtSessionTicket = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
+      this.wtSessionTicketKey = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
+    }
   }
   
   public void set_body(byte[] paramArrayOfByte)

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.data.TroopBarAbsDataEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import gvm;
+import gvl;
 
 public class TroopBarPostLayoutRelativeGroup
   extends TroopBarPostAbsLayout
@@ -25,7 +25,7 @@ public class TroopBarPostLayoutRelativeGroup
     if (paramView == null)
     {
       paramView = paramLayoutInflater.inflate(2130903452, null);
-      paramLayoutInflater = (gvm)a(paramView);
+      paramLayoutInflater = (gvl)a(paramView);
       paramView.setTag(paramLayoutInflater);
     }
     for (;;)
@@ -42,13 +42,13 @@ public class TroopBarPostLayoutRelativeGroup
       localTextView.setOnClickListener(this);
       localTextView.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130838512));
       return paramView;
-      paramLayoutInflater = (gvm)paramView.getTag();
+      paramLayoutInflater = (gvl)paramView.getTag();
     }
   }
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gvm(this, paramView);
+    return new gvl(this, paramView);
   }
   
   public void onClick(View paramView)

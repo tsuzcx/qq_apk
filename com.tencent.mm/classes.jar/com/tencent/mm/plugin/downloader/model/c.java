@@ -1,167 +1,259 @@
 package com.tencent.mm.plugin.downloader.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.g.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.downloader.f.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.Vector;
 
 public final class c
 {
-  private static Vector<m> kYk;
-  private static m kYl;
+  private static Vector<m> xnq;
+  private static m xnr;
   
   static
   {
-    AppMethodBeat.i(2395);
-    kYk = new Vector();
-    AppMethodBeat.o(2395);
+    AppMethodBeat.i(88950);
+    xnq = new Vector();
+    AppMethodBeat.o(88950);
   }
   
   public static void a(m paramm)
   {
-    AppMethodBeat.i(2384);
-    if ((paramm != null) && (!kYk.contains(paramm))) {
-      kYk.add(paramm);
+    AppMethodBeat.i(88939);
+    if ((paramm != null) && (!xnq.contains(paramm))) {
+      xnq.add(paramm);
     }
-    AppMethodBeat.o(2384);
+    AppMethodBeat.o(88939);
   }
   
   public static void b(m paramm)
   {
-    AppMethodBeat.i(2385);
+    AppMethodBeat.i(88940);
     if (paramm != null) {
-      kYk.remove(paramm);
+      xnq.remove(paramm);
     }
-    AppMethodBeat.o(2385);
+    AppMethodBeat.o(88940);
   }
   
-  public static void bjh()
+  public final void b(final long paramLong1, String paramString, final long paramLong2, final long paramLong3)
   {
-    kYl = null;
+    AppMethodBeat.i(267133);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88937);
+        m[] arrayOfm = c.duq();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].a(paramLong1, paramLong2, paramLong3, this.xnv);
+          i += 1;
+        }
+        AppMethodBeat.o(88937);
+      }
+    });
+    AppMethodBeat.o(267133);
   }
   
-  public static void c(m paramm)
+  public final void c(final long paramLong, String paramString, final boolean paramBoolean)
   {
-    kYl = paramm;
-  }
-  
-  public final void c(long paramLong, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(2389);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskFinished: %d", new Object[] { Long.valueOf(paramLong) });
-    e.iM(paramLong);
-    a locala = d.iJ(paramLong);
+    AppMethodBeat.i(88944);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskFinished: %d", new Object[] { Long.valueOf(paramLong) });
+    e.ld(paramLong);
+    a locala = d.la(paramLong);
     if (locala != null) {
-      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+      com.tencent.mm.plugin.downloader.a.c.w(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
     }
-    al.d(new c.4(this, paramLong, paramString, paramBoolean));
-    AppMethodBeat.o(2389);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88934);
+        m[] arrayOfm = c.duq();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].b(paramLong, paramBoolean, this.xnt);
+          i += 1;
+        }
+        if (c.dur() != null) {
+          c.dur().b(paramLong, paramBoolean, this.xnt);
+        }
+        AppMethodBeat.o(88934);
+      }
+    });
+    AppMethodBeat.o(88944);
   }
   
   public final void d(final long paramLong, int paramInt, final boolean paramBoolean)
   {
-    AppMethodBeat.i(2390);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskFailed: %d, errCode : %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    e.iM(paramLong);
-    a locala = d.iJ(paramLong);
+    AppMethodBeat.i(88945);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskFailed: %d, errCode : %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    e.ld(paramLong);
+    a locala = d.la(paramLong);
     if (locala != null) {
-      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+      com.tencent.mm.plugin.downloader.a.c.w(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
     }
-    al.d(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(2380);
-        m[] arrayOfm = c.bji();
+        AppMethodBeat.i(88935);
+        m[] arrayOfm = c.duq();
         int j = arrayOfm.length;
         int i = 0;
         while (i < j)
         {
-          arrayOfm[i].b(paramLong, paramBoolean, this.kYn);
+          arrayOfm[i].c(paramLong, paramBoolean, this.xnt);
           i += 1;
         }
-        if (c.bjj() != null) {
-          c.bjj().b(paramLong, paramBoolean, this.kYn);
+        if (c.dur() != null) {
+          c.dur().c(paramLong, paramBoolean, this.xnt);
         }
-        AppMethodBeat.o(2380);
+        AppMethodBeat.o(88935);
       }
     });
-    AppMethodBeat.o(2390);
+    AppMethodBeat.o(88945);
   }
   
-  public final void iF(final long paramLong)
+  public final void kX(final long paramLong)
   {
-    AppMethodBeat.i(2388);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskRemoved: %d", new Object[] { Long.valueOf(paramLong) });
-    a locala = d.iJ(paramLong);
+    AppMethodBeat.i(88943);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskRemoved: %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = d.la(paramLong);
     if (locala != null) {
-      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+      com.tencent.mm.plugin.downloader.a.c.w(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
     }
-    al.d(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(2378);
-        m[] arrayOfm = c.bji();
+        AppMethodBeat.i(88933);
+        m[] arrayOfm = c.duq();
         int j = arrayOfm.length;
         int i = 0;
         while (i < j)
         {
-          arrayOfm[i].onTaskRemoved(paramLong);
+          arrayOfm[i].jF(paramLong);
           i += 1;
         }
-        if (c.bjj() != null) {
-          c.bjj().onTaskRemoved(paramLong);
+        if (c.dur() != null) {
+          c.dur().jF(paramLong);
         }
-        AppMethodBeat.o(2378);
+        AppMethodBeat.o(88933);
       }
     });
-    AppMethodBeat.o(2388);
+    AppMethodBeat.o(88943);
   }
   
-  public final void iG(long paramLong)
+  public final void kY(final long paramLong)
   {
-    AppMethodBeat.i(2391);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskPaused: %d", new Object[] { Long.valueOf(paramLong) });
-    a locala = d.iJ(paramLong);
+    AppMethodBeat.i(88946);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskPaused: %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = d.la(paramLong);
     if (locala != null) {
-      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+      com.tencent.mm.plugin.downloader.a.c.w(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
     }
-    al.d(new c.6(this, paramLong));
-    AppMethodBeat.o(2391);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88936);
+        m[] arrayOfm = c.duq();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].jG(paramLong);
+          i += 1;
+        }
+        if (c.dur() != null) {
+          c.dur().jG(paramLong);
+        }
+        AppMethodBeat.o(88936);
+      }
+    });
+    AppMethodBeat.o(88946);
   }
   
-  public final void iH(long paramLong)
+  public final void kZ(final long paramLong)
   {
-    AppMethodBeat.i(2392);
-    al.d(new c.7(this, paramLong));
-    AppMethodBeat.o(2392);
+    AppMethodBeat.i(88948);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyMd5Checking: %d", new Object[] { Long.valueOf(paramLong) });
+    e.lc(paramLong);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88938);
+        m[] arrayOfm = c.duq();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].jH(paramLong);
+          i += 1;
+        }
+        AppMethodBeat.o(88938);
+      }
+    });
+    AppMethodBeat.o(88948);
   }
   
-  public final void iI(long paramLong)
+  public final void x(final long paramLong, String paramString)
   {
-    AppMethodBeat.i(2393);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyMd5Checking: %d", new Object[] { Long.valueOf(paramLong) });
-    e.iL(paramLong);
-    al.d(new c.8(this, paramLong));
-    AppMethodBeat.o(2393);
+    AppMethodBeat.i(88941);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskStarted: %d, %s", new Object[] { Long.valueOf(paramLong), paramString });
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88931);
+        m[] arrayOfm = c.duq();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].v(paramLong, this.val$path);
+          i += 1;
+        }
+        if (c.dur() != null) {
+          c.dur().v(paramLong, this.val$path);
+        }
+        AppMethodBeat.o(88931);
+      }
+    });
+    AppMethodBeat.o(88941);
   }
   
-  public final void j(long paramLong, String paramString)
+  public final void y(final long paramLong, String paramString)
   {
-    AppMethodBeat.i(2386);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskStarted: %d, %s", new Object[] { Long.valueOf(paramLong), paramString });
-    al.d(new c.1(this, paramLong, paramString));
-    AppMethodBeat.o(2386);
-  }
-  
-  public final void k(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(2387);
-    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskResumed: %d, %s", new Object[] { Long.valueOf(paramLong), paramString });
-    al.d(new c.2(this, paramLong, paramString));
-    AppMethodBeat.o(2387);
+    AppMethodBeat.i(88942);
+    Log.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskResumed: %d, %s", new Object[] { Long.valueOf(paramLong), paramString });
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88932);
+        m[] arrayOfm = c.duq();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].w(paramLong, this.val$path);
+          i += 1;
+        }
+        if (c.dur() != null) {
+          c.dur().w(paramLong, this.val$path);
+        }
+        AppMethodBeat.o(88932);
+      }
+    });
+    AppMethodBeat.o(88942);
   }
 }
 

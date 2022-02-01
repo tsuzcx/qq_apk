@@ -70,7 +70,11 @@ public final class EmptyList
   @NotNull
   public Void get(int paramInt)
   {
-    throw ((Throwable)new IndexOutOfBoundsException("Empty list doesn't contain element at index " + paramInt + '.'));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Empty list doesn't contain element at index ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public int getSize()
@@ -115,10 +119,13 @@ public final class EmptyList
   @NotNull
   public ListIterator listIterator(int paramInt)
   {
-    if (paramInt != 0) {
-      throw ((Throwable)new IndexOutOfBoundsException("Index: " + paramInt));
+    if (paramInt == 0) {
+      return (ListIterator)EmptyIterator.INSTANCE;
     }
-    return (ListIterator)EmptyIterator.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Index: ");
+    localStringBuilder.append(paramInt);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public Void remove(int paramInt)
@@ -157,7 +164,12 @@ public final class EmptyList
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
       return (List)this;
     }
-    throw ((Throwable)new IndexOutOfBoundsException("fromIndex: " + paramInt1 + ", toIndex: " + paramInt2));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fromIndex: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", toIndex: ");
+    localStringBuilder.append(paramInt2);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public Object[] toArray()
@@ -178,7 +190,7 @@ public final class EmptyList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.EmptyList
  * JD-Core Version:    0.7.0.1
  */

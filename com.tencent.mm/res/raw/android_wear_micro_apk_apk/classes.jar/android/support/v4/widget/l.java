@@ -1,88 +1,93 @@
 package android.support.v4.widget;
 
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.OverScroller;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v4.view.a;
+import android.support.v4.view.a.b;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityRecord;
+import android.widget.ScrollView;
 
-@Deprecated
-public final class l
+final class l
+  extends a
 {
-  OverScroller oY;
-  
-  private l(Context paramContext, Interpolator paramInterpolator)
+  public final void a(View paramView, b paramb)
   {
-    if (paramInterpolator != null) {}
-    for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
+    super.a(paramView, paramb);
+    paramView = (NestedScrollView)paramView;
+    paramb.setClassName(ScrollView.class.getName());
+    if (paramView.isEnabled())
     {
-      this.oY = paramContext;
+      int i = paramView.cq();
+      if (i > 0)
+      {
+        paramb.setScrollable(true);
+        if (paramView.getScrollY() > 0) {
+          paramb.addAction(8192);
+        }
+        if (paramView.getScrollY() < i) {
+          paramb.addAction(4096);
+        }
+      }
+    }
+  }
+  
+  public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramView = (NestedScrollView)paramView;
+    paramAccessibilityEvent.setClassName(ScrollView.class.getName());
+    if (paramView.cq() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityEvent.setScrollable(bool);
+      paramAccessibilityEvent.setScrollX(paramView.getScrollX());
+      paramAccessibilityEvent.setScrollY(paramView.getScrollY());
+      int i = paramView.getScrollX();
+      if (Build.VERSION.SDK_INT >= 15) {
+        paramAccessibilityEvent.setMaxScrollX(i);
+      }
+      i = paramView.cq();
+      if (Build.VERSION.SDK_INT >= 15) {
+        paramAccessibilityEvent.setMaxScrollY(i);
+      }
       return;
     }
   }
   
-  @Deprecated
-  public static l a(Context paramContext, Interpolator paramInterpolator)
+  public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
   {
-    return new l(paramContext, paramInterpolator);
-  }
-  
-  @Deprecated
-  public final void abortAnimation()
-  {
-    this.oY.abortAnimation();
-  }
-  
-  @Deprecated
-  public final void c(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.oY.startScroll(0, 0, paramInt1, paramInt2, paramInt3);
-  }
-  
-  @Deprecated
-  public final boolean computeScrollOffset()
-  {
-    return this.oY.computeScrollOffset();
-  }
-  
-  @Deprecated
-  public final void f(int paramInt1, int paramInt2)
-  {
-    this.oY.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-  }
-  
-  @Deprecated
-  public final float getCurrVelocity()
-  {
-    return this.oY.getCurrVelocity();
-  }
-  
-  @Deprecated
-  public final int getCurrX()
-  {
-    return this.oY.getCurrX();
-  }
-  
-  @Deprecated
-  public final int getCurrY()
-  {
-    return this.oY.getCurrY();
-  }
-  
-  @Deprecated
-  public final int getFinalX()
-  {
-    return this.oY.getFinalX();
-  }
-  
-  @Deprecated
-  public final int getFinalY()
-  {
-    return this.oY.getFinalY();
-  }
-  
-  @Deprecated
-  public final boolean isFinished()
-  {
-    return this.oY.isFinished();
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    paramView = (NestedScrollView)paramView;
+    if (!paramView.isEnabled()) {
+      return false;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 4096: 
+      paramInt = Math.min(paramView.getHeight() - paramView.getPaddingBottom() - paramView.getPaddingTop() + paramView.getScrollY(), paramView.cq());
+      if (paramInt != paramView.getScrollY())
+      {
+        paramView.Z(paramInt);
+        return true;
+      }
+      return false;
+    }
+    paramInt = paramView.getHeight();
+    int i = paramView.getPaddingBottom();
+    int j = paramView.getPaddingTop();
+    paramInt = Math.max(paramView.getScrollY() - (paramInt - i - j), 0);
+    if (paramInt != paramView.getScrollY())
+    {
+      paramView.Z(paramInt);
+      return true;
+    }
+    return false;
   }
 }
 

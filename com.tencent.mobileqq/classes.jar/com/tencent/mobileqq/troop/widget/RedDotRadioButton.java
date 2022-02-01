@@ -15,10 +15,10 @@ import com.tencent.qphone.base.util.QLog;
 public class RedDotRadioButton
   extends RadioButton
 {
-  private float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-  private int jdField_a_of_type_Int = (int)(this.jdField_a_of_type_Float * 9.0F + 0.5D);
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  private Drawable a = null;
+  private boolean b = false;
+  private float c = getResources().getDisplayMetrics().density;
+  private int d;
   
   public RedDotRadioButton(Context paramContext)
   {
@@ -28,57 +28,73 @@ public class RedDotRadioButton
   public RedDotRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    double d1 = this.c * 9.0F;
+    Double.isNaN(d1);
+    this.d = ((int)(d1 + 0.5D));
   }
   
   public RedDotRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    double d1 = this.c * 9.0F;
+    Double.isNaN(d1);
+    this.d = ((int)(d1 + 0.5D));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849801);
+    this.b = paramBoolean;
+    if ((this.b) && (this.a == null)) {
+      this.a = getResources().getDrawable(2130852588);
     }
     invalidate();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if (this.b)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
-      Paint.FontMetrics localFontMetrics = getPaint().getFontMetrics();
-      float f1 = Layout.getDesiredWidth(getText(), getPaint());
-      float f2 = localFontMetrics.descent;
-      float f3 = localFontMetrics.ascent;
-      int j = getWidth();
-      int i = getHeight();
-      float f4 = j / 2;
-      int k = (int)Math.ceil(f1 / 2.0F + f4 - this.jdField_a_of_type_Float * 2.0F);
-      j = (int)Math.ceil(i / 2 - (f2 - f3) / 2.0F - this.jdField_a_of_type_Int + 4.0F * this.jdField_a_of_type_Float);
-      if (QLog.isColorLevel()) {
-        QLog.i(RedDotRadioButton.class.getSimpleName(), 2, "reddot y:" + j);
+      Object localObject = this.a;
+      if (localObject != null)
+      {
+        ((Drawable)localObject).setState(getDrawableState());
+        localObject = getPaint().getFontMetrics();
+        float f1 = Layout.getDesiredWidth(getText(), getPaint());
+        float f2 = ((Paint.FontMetrics)localObject).descent;
+        float f3 = ((Paint.FontMetrics)localObject).ascent;
+        int j = getWidth();
+        int i = getHeight();
+        int k = (int)Math.ceil(j / 2 + f1 / 2.0F - this.c * 2.0F);
+        j = (int)Math.ceil(i / 2 - (f2 - f3) / 2.0F - this.d + this.c * 4.0F);
+        if (QLog.isColorLevel())
+        {
+          localObject = RedDotRadioButton.class.getSimpleName();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("reddot y:");
+          localStringBuilder.append(j);
+          QLog.i((String)localObject, 2, localStringBuilder.toString());
+        }
+        i = j;
+        if (j < 0) {
+          i = 0;
+        }
+        localObject = this.a;
+        j = this.d;
+        ((Drawable)localObject).setBounds(k, i, k + j, j + i);
+        this.a.draw(paramCanvas);
       }
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(k, i, this.jdField_a_of_type_Int + k, this.jdField_a_of_type_Int + i);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotRadioButton
  * JD-Core Version:    0.7.0.1
  */

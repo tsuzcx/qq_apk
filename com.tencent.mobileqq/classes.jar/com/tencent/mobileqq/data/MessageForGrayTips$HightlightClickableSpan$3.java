@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import ammy;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
@@ -13,16 +13,21 @@ class MessageForGrayTips$HightlightClickableSpan$3
   
   public void run()
   {
-    ammy.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
+    MsgNotifyPushDialog.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
     try
     {
-      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(ammy.a);
+      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(MsgNotifyPushDialog.n);
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MessageForGrayTips", 2, "MsgNotifyPushDialog.pushOpenNotifyIntent==null " + localException.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MsgNotifyPushDialog.pushOpenNotifyIntent==null ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("MessageForGrayTips", 2, localStringBuilder.toString());
+      }
     }
   }
 }

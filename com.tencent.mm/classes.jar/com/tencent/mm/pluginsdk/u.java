@@ -1,46 +1,46 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class u
 {
-  private static boolean vJH = false;
+  private static boolean XOb = false;
+  public boolean XOa = false;
   public String mTag = "";
-  public boolean vJG = false;
   
   public u(String paramString)
   {
     this.mTag = paramString;
   }
   
-  public static void dkT()
+  public static void iGJ()
   {
-    vJH = true;
+    XOb = true;
   }
   
-  public final boolean jdMethod_do(String paramString)
+  public final boolean hZ(String paramString)
   {
-    AppMethodBeat.i(105838);
-    if (vJH)
+    AppMethodBeat.i(141158);
+    if (XOb)
     {
-      ab.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
-      AppMethodBeat.o(105838);
+      Log.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
+      AppMethodBeat.o(141158);
       return false;
     }
-    if (this.vJG)
+    if (this.XOa)
     {
-      ab.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
-      AppMethodBeat.o(105838);
+      Log.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
+      AppMethodBeat.o(141158);
       return true;
     }
-    AppMethodBeat.o(105838);
+    AppMethodBeat.o(141158);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.u
  * JD-Core Version:    0.7.0.1
  */

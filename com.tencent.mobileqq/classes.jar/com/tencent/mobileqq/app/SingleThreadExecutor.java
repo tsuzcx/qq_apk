@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.app;
 
-import amdp;
 import android.support.annotation.NonNull;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.annotation.concurrent.GuardedBy;
 
-public class SingleThreadExecutor
-  extends amdp
+class SingleThreadExecutor
+  extends ThreadManagerExecutor
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
   @GuardedBy("lock")
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private final Queue<Runnable> a = new LinkedList();
   @GuardedBy("lock")
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b = false;
+  private final Object c = new Object();
   
-  public SingleThreadExecutor(int paramInt)
+  SingleThreadExecutor(int paramInt)
   {
     super(paramInt);
   }
@@ -23,21 +22,24 @@ public class SingleThreadExecutor
   public void execute(@NonNull Runnable arg1)
   {
     SingleThreadExecutor.Task localTask = new SingleThreadExecutor.Task(this, ???, null);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.b)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         super.execute(localTask);
-        return;
       }
-      this.jdField_a_of_type_JavaUtilQueue.offer(localTask);
+      else
+      {
+        this.a.offer(localTask);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SingleThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

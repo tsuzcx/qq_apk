@@ -36,14 +36,15 @@ public final class FileUpdateReq
   {
     paraml.a(this.sName, 0);
     paraml.a(this.iVersion, 1);
-    if (this.sMd5 != null) {
-      paraml.a(this.sMd5, 2);
+    String str = this.sMd5;
+    if (str != null) {
+      paraml.a(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.conf.FileUpdateReq
  * JD-Core Version:    0.7.0.1
  */

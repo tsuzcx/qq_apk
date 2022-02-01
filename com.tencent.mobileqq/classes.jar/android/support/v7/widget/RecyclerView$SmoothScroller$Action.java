@@ -34,9 +34,9 @@ public class RecyclerView$SmoothScroller$Action
   
   private void runIfNecessary(RecyclerView paramRecyclerView)
   {
-    if (this.mJumpToPosition >= 0)
+    int i = this.mJumpToPosition;
+    if (i >= 0)
     {
-      int i = this.mJumpToPosition;
       this.mJumpToPosition = -1;
       RecyclerView.access$6300(paramRecyclerView, i);
       this.changed = false;
@@ -45,23 +45,23 @@ public class RecyclerView$SmoothScroller$Action
     if (this.changed)
     {
       validate();
-      if (this.mInterpolator == null) {
+      if (this.mInterpolator == null)
+      {
         if (this.mDuration == -2147483648) {
           RecyclerView.access$6000(paramRecyclerView).smoothScrollBy(this.mDx, this.mDy);
+        } else {
+          RecyclerView.access$6000(paramRecyclerView).smoothScrollBy(this.mDx, this.mDy, this.mDuration);
         }
       }
-      for (;;)
-      {
-        this.consecutiveUpdates += 1;
-        if (this.consecutiveUpdates > 10) {
-          Log.e("RecyclerView", "Smooth Scroll action is being updated too frequently. Make sure you are not changing it unless necessary");
-        }
-        this.changed = false;
-        return;
-        RecyclerView.access$6000(paramRecyclerView).smoothScrollBy(this.mDx, this.mDy, this.mDuration);
-        continue;
+      else {
         RecyclerView.access$6000(paramRecyclerView).smoothScrollBy(this.mDx, this.mDy, this.mDuration, this.mInterpolator);
       }
+      this.consecutiveUpdates += 1;
+      if (this.consecutiveUpdates > 10) {
+        Log.e("RecyclerView", "Smooth Scroll action is being updated too frequently. Make sure you are not changing it unless necessary");
+      }
+      this.changed = false;
+      return;
     }
     this.consecutiveUpdates = 0;
   }
@@ -71,9 +71,10 @@ public class RecyclerView$SmoothScroller$Action
     if ((this.mInterpolator != null) && (this.mDuration < 1)) {
       throw new IllegalStateException("If you provide an interpolator, you must set a positive duration");
     }
-    if (this.mDuration < 1) {
-      throw new IllegalStateException("Scroll duration must be a positive number");
+    if (this.mDuration >= 1) {
+      return;
     }
+    throw new IllegalStateException("Scroll duration must be a positive number");
   }
   
   public int getDuration()

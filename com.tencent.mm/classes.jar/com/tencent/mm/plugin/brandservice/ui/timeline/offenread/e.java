@@ -1,27 +1,35 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bha;
-import com.tencent.mm.protocal.protobuf.bhd;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.protobuf.fnc;
 
-public final class e
+public class e
+  extends fnc
 {
-  public HashMap<String, bhd> jZv;
-  public LinkedList<bha> jZw;
+  public boolean nXh = false;
+  public int position;
+  public int type;
+  public long uWw;
+  public int vPP;
+  public boolean vPQ;
+  public boolean vPR = false;
+  public String vPS;
+  public boolean vPT;
+  public long vPU;
+  public int vPV;
   
   public e()
   {
-    AppMethodBeat.i(14345);
-    this.jZv = new HashMap();
-    this.jZw = new LinkedList();
-    AppMethodBeat.o(14345);
+    this.type = 1;
+  }
+  
+  public e(int paramInt)
+  {
+    this.type = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.e
  * JD-Core Version:    0.7.0.1
  */

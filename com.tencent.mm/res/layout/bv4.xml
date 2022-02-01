@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/j1k" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/j1u" android:background="#99000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:layout_gravity="center" android:text="@string/idh" style="@style/th" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.scanner.ui.widget.ScanScrollTabView android:layout_gravity="bottom" android:id="@id/j28" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:gravity="center" android:id="@id/j1s" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:id="@id/j1t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/idg" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:text="@string/ibl" android:layout_below="@id/j1t" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.scanner.ui.widget.ScanInfoMaskView android:id="@id/j1n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.scanner.ui.component.ScanUITopOpButtonComponent android:id="@id/krh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

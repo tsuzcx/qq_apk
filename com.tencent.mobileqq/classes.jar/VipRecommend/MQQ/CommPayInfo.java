@@ -10,8 +10,8 @@ public final class CommPayInfo
 {
   static ArrayList<PayParam> cache_payParams;
   static RecParam cache_recParam;
-  public ArrayList<PayParam> payParams;
-  public RecParam recParam;
+  public ArrayList<PayParam> payParams = null;
+  public RecParam recParam = null;
   
   public CommPayInfo() {}
   
@@ -44,7 +44,7 @@ public final class CommPayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VipRecommend.MQQ.CommPayInfo
  * JD-Core Version:    0.7.0.1
  */

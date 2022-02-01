@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class stSetSwitchReq
   extends JceStruct
 {
-  public int op;
-  public long uin;
+  public int op = 0;
+  public long uin = 0L;
   
   public stSetSwitchReq() {}
   
@@ -32,7 +32,7 @@ public final class stSetSwitchReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_WEISHI_QQ_PROFILE.stSetSwitchReq
  * JD-Core Version:    0.7.0.1
  */

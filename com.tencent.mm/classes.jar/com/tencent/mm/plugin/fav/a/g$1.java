@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class g$1
   implements g.a
 {
   public final void log(String paramString)
   {
-    AppMethodBeat.i(102630);
-    ab.d("MicroMsg.FavItemInfo", paramString);
-    AppMethodBeat.o(102630);
+    AppMethodBeat.i(103370);
+    Log.d("MicroMsg.FavItemInfo", paramString);
+    AppMethodBeat.o(103370);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.g.1
  * JD-Core Version:    0.7.0.1
  */

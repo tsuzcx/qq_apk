@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ady" />
-    <item android:drawable="@drawable/adx" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/x4" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/ahm" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/UN_BW_0_Alpha_0_0_5" />
+        </shape>
+    </item>
 </selector>

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bdgk;
-import bjhc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.base.inter.IDownloadConfig;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.UploadEnv;
 import java.util.HashMap;
 import java.util.Properties;
 import mqq.app.AppRuntime;
@@ -34,15 +34,18 @@ class MiniDownloadConfig
   
   public long getCurrentUin()
   {
-    long l = 0L;
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     if (!TextUtils.isEmpty(str)) {}
     try
     {
-      l = Long.parseLong(str);
+      long l = Long.parseLong(str);
       return l;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return 0L;
   }
   
@@ -68,7 +71,7 @@ class MiniDownloadConfig
   
   public int getNetworkStackType()
   {
-    return bjhc.a(1);
+    return UploadEnv.getIpStack(1);
   }
   
   public int getOperator()
@@ -103,7 +106,7 @@ class MiniDownloadConfig
   
   public String getVersion()
   {
-    return bdgk.c();
+    return DeviceInfoUtil.e();
   }
   
   public boolean isFromQzoneAlbum(String paramString)
@@ -134,7 +137,7 @@ class MiniDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

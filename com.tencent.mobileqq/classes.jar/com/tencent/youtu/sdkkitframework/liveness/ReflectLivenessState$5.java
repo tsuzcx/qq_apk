@@ -1,18 +1,20 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import java.util.HashMap;
+import com.tencent.youtu.ytagreflectlivecheck.notice.YTReflectNotice;
 
 class ReflectLivenessState$5
-  extends HashMap<String, Object>
+  implements YTReflectNotice
 {
-  ReflectLivenessState$5(ReflectLivenessState paramReflectLivenessState)
+  ReflectLivenessState$5(ReflectLivenessState paramReflectLivenessState) {}
+  
+  public void onDelayCalc()
   {
-    put("ui_tips", "fl_pose_keep");
+    ReflectLivenessState.access$102(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ReflectLivenessState.5
  * JD-Core Version:    0.7.0.1
  */

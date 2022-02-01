@@ -5,11 +5,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.clean.c.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.R.l;
+import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 final class b$4
   implements AdapterView.OnItemClickListener
@@ -18,53 +18,60 @@ final class b$4
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(18749);
-    ab.i("MicroMsg.CleanChattingDetailAdapter", "Click Item position=%d, count=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kHM.getCount()) });
-    if ((paramInt < 0) || (paramInt >= this.kHM.getCount()))
+    AppMethodBeat.i(22859);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramAdapterView);
+    localb.cH(paramView);
+    localb.sc(paramInt);
+    localb.hB(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+    Log.i("MicroMsg.CleanChattingDetailAdapter", "Click Item position=%d, count=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.wSn.getCount()) });
+    if ((paramInt < 0) || (paramInt >= this.wSn.getCount()))
     {
-      AppMethodBeat.o(18749);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+      AppMethodBeat.o(22859);
       return;
     }
-    paramAdapterView = this.kHM.tB(paramInt);
+    paramAdapterView = this.wSn.IZ(paramInt);
     paramView = new Intent();
     switch (paramAdapterView.type)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(18749);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+      AppMethodBeat.o(22859);
       return;
       paramView.setAction("android.intent.action.VIEW");
-      k.a(b.e(this.kHM), paramView, e.avH(paramAdapterView.filePath), "video/*");
+      FileProviderHelper.setIntentDataAndType(b.e(this.wSn), paramView, new u(paramAdapterView.filePath), "video/*", false);
       try
       {
-        b.e(this.kHM).startActivity(Intent.createChooser(paramView, b.e(this.kHM).getString(2131304541)));
-        AppMethodBeat.o(18749);
-        return;
+        paramAdapterView = b.e(this.wSn);
+        paramView = Intent.createChooser(paramView, b.e(this.wSn).getString(R.l.video_title));
+        paramView = new com.tencent.mm.hellhoundlib.b.a().cG(paramView);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAdapterView, paramView.aYi(), "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAdapterView.startActivity((Intent)paramView.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAdapterView, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      catch (Exception paramAdapterView)
-      {
-        AppMethodBeat.o(18749);
-        return;
-      }
-      paramView.putExtra("key_title", b.e(this.kHM).getString(2131298380));
+      catch (Exception paramAdapterView) {}
+      continue;
+      paramView.putExtra("key_title", b.e(this.wSn).getString(R.l.gAk));
       paramView.putExtra("show_menu", false);
-      if (e.cN(paramAdapterView.filePath)) {}
+      if (y.ZC(paramAdapterView.filePath)) {}
       for (paramAdapterView = paramAdapterView.filePath;; paramAdapterView = paramAdapterView.thumbPath)
       {
         paramView.putExtra("key_image_path", paramAdapterView);
-        d.f(b.e(this.kHM), ".ui.tools.ShowImageUI", paramView);
-        AppMethodBeat.o(18749);
-        return;
+        com.tencent.mm.br.c.g(b.e(this.wSn), ".ui.tools.ShowImageUI", paramView);
+        break;
       }
-      paramView.putExtra("app_msg_id", paramAdapterView.cpg);
-      d.f(b.e(this.kHM), ".ui.chatting.AppAttachDownloadUI", paramView);
+      paramView.putExtra("app_msg_id", paramAdapterView.hCz);
+      com.tencent.mm.br.c.g(b.e(this.wSn), ".ui.chatting.AppAttachDownloadUI", paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.b.4
  * JD-Core Version:    0.7.0.1
  */

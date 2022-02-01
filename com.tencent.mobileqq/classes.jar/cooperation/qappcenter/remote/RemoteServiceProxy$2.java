@@ -1,18 +1,17 @@
 package cooperation.qappcenter.remote;
 
-import bisj;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class RemoteServiceProxy$2
+class RemoteServiceProxy$2
   extends Thread
 {
-  public RemoteServiceProxy$2(bisj parambisj) {}
+  RemoteServiceProxy$2(RemoteServiceProxy paramRemoteServiceProxy) {}
   
   public void run()
   {
-    while (!this.this$0.a.isEmpty())
+    while (!this.this$0.c.isEmpty())
     {
-      SendMsg localSendMsg = (SendMsg)this.this$0.a.poll();
+      SendMsg localSendMsg = (SendMsg)this.this$0.c.poll();
       if (localSendMsg != null) {
         try
         {
@@ -20,7 +19,11 @@ public class RemoteServiceProxy$2
         }
         catch (Exception localException)
         {
-          RecvMsg localRecvMsg = this.this$0.a(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
+          RemoteServiceProxy localRemoteServiceProxy = this.this$0;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("sendMsgToServiceFailed，");
+          localStringBuilder.append(localException.toString());
+          RecvMsg localRecvMsg = localRemoteServiceProxy.a(localSendMsg, localStringBuilder.toString());
           this.this$0.a(localSendMsg, localRecvMsg);
         }
       }
@@ -29,7 +32,7 @@ public class RemoteServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qappcenter.remote.RemoteServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

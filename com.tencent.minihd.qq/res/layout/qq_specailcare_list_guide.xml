@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/qq_nearpeople_turnbrand_guide_mask" android:background="#bf000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/guideimage" android:layout_width="200.0dip" android:layout_height="200.0dip" android:src="@drawable/qq_specialcare_guide" android:scaleType="fitXY" android:contentDescription="@string/qq_specail_care_guide_bottom" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/bottomtip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="@string/qq_specail_care_guide_bottom" android:maxLines="2" android:contentDescription="@null" android:textAlignment="center" />
+        <Button android:gravity="center" android:id="@id/knowbtn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="@string/shortcut_tips_know" style="@style/LogoutButtonBlue" />
+    </LinearLayout>
+</FrameLayout>

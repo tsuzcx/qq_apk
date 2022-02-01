@@ -1,27 +1,26 @@
 package cooperation.qqfav.globalsearch;
 
-import ayuh;
-import ayuu;
-import bivz;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import java.util.List;
 
 class FavoriteSearchEngine$SearchRunnable
   implements Runnable
 {
-  ayuh<bivz> jdField_a_of_type_Ayuh;
-  ayuu jdField_a_of_type_Ayuu;
+  SearchRequest a;
+  ISearchListener<FavoriteSearchResultModel> b;
   
   private FavoriteSearchEngine$SearchRunnable(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
   public void run()
   {
-    ayuu localayuu = this.jdField_a_of_type_Ayuu;
-    String str = this.jdField_a_of_type_Ayuu.a;
-    List localList = this.this$0.a(localayuu);
+    SearchRequest localSearchRequest = this.a;
+    String str = localSearchRequest.a;
+    List localList = this.this$0.a(localSearchRequest);
     try
     {
-      if ((this.jdField_a_of_type_Ayuh != null) && (localayuu == this.jdField_a_of_type_Ayuu) && (str.equals(this.jdField_a_of_type_Ayuu.a))) {
-        this.jdField_a_of_type_Ayuh.a(localList, 1);
+      if ((this.b != null) && (localSearchRequest == this.a) && (str.equals(this.a.a))) {
+        this.b.a(localList, 1);
       }
       return;
     }
@@ -30,7 +29,7 @@ class FavoriteSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -39,11 +39,14 @@ public class TTNLMeansDenoiseFilterGroup
     if (paramList.size() == 0) {
       return paramFrame;
     }
-    float f = getResizeScale(paramFrame.width, paramFrame.height);
-    int j = (int)(paramFrame.width * f);
-    int k = (int)(f * paramFrame.height);
+    float f1 = getResizeScale(paramFrame.width, paramFrame.height);
+    int j = (int)(paramFrame.width * f1);
+    int k = (int)(paramFrame.height * f1);
     this.mResizeFilter.RenderProcess(paramFrame.getTextureId(), j, k, -1, 0.0D, this.mResizeFrame);
-    this.mMeansMaskFilter.updateSize(j, k);
+    TTNLMeansMaskFilter localTTNLMeansMaskFilter = this.mMeansMaskFilter;
+    f1 = j;
+    float f2 = k;
+    localTTNLMeansMaskFilter.updateSize(f1, f2);
     this.mMeansMaskFilter.updateGlobalAttribute();
     this.mMeansMaskFilter.RenderProcess(this.mResizeFrame.getTextureId(), j, k, -1, 0.0D, this.mMeansMaskFrame);
     int i = 0;
@@ -55,11 +58,11 @@ public class TTNLMeansDenoiseFilterGroup
       this.mMeansMaskFilter.RenderProcess(this.mResizeFrame.getTextureId(), j, k, -1, 0.0D, this.mMeansMaskFrame);
       i += 1;
     }
-    this.mDirectionalBlurFilter.setTexOffset(1.0F / j, 0.0F);
+    this.mDirectionalBlurFilter.setTexOffset(1.0F / f1, 0.0F);
     this.mDirectionalBlurFilter.RenderProcess(this.mMeansMaskFrame.getTextureId(), j, k, -1, 0.0D, this.mBlurFrameTemp);
-    this.mDirectionalBlurFilter.setTexOffset(0.0F, 1.0F / k);
+    this.mDirectionalBlurFilter.setTexOffset(0.0F, 1.0F / f2);
     this.mDirectionalBlurFilter.RenderProcess(this.mBlurFrameTemp.getTextureId(), j, k, -1, 0.0D, this.mBlurFrame);
-    this.mMeansDenoiseFilter.updateSize(j, k);
+    this.mMeansDenoiseFilter.updateSize(f1, f2);
     this.mMeansDenoiseFilter.updateTexture(this.mBlurFrame.getTextureId());
     this.mMeansDenoiseFilter.RenderProcess(this.mResizeFrame.getTextureId(), j, k, -1, 0.0D, this.mMeasDenoiseFrame);
     this.mMeansMixFilter.setMaskTexture(this.mBlurFrame.getTextureId());
@@ -83,11 +86,11 @@ public class TTNLMeansDenoiseFilterGroup
   
   public void clear()
   {
-    this.mResizeFilter.ClearGLSL();
+    this.mResizeFilter.clearGLSL();
     this.mMeansMaskFilter.clearGLSLSelf();
-    this.mDirectionalBlurFilter.ClearGLSL();
-    this.mMeansDenoiseFilter.ClearGLSL();
-    this.mMeansMixFilter.ClearGLSL();
+    this.mDirectionalBlurFilter.clearGLSL();
+    this.mMeansDenoiseFilter.clearGLSL();
+    this.mMeansMixFilter.clearGLSL();
     this.mResizeFrame.clear();
     this.mMeansMaskFrame.clear();
     this.mBlurFrameTemp.clear();
@@ -98,9 +101,10 @@ public class TTNLMeansDenoiseFilterGroup
   
   public Frame render(Frame paramFrame)
   {
+    List localList = this.mAllFacePoints;
     Frame localFrame = paramFrame;
-    if (this.mAllFacePoints != null) {
-      localFrame = render(paramFrame, this.mAllFacePoints);
+    if (localList != null) {
+      localFrame = render(paramFrame, localList);
     }
     return localFrame;
   }
@@ -126,7 +130,7 @@ public class TTNLMeansDenoiseFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTNLMeansDenoiseFilterGroup
  * JD-Core Version:    0.7.0.1
  */

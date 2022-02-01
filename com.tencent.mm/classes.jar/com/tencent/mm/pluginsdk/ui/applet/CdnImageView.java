@@ -2,37 +2,39 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Message;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.at.c;
-import com.tencent.mm.at.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.b.g;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.modelimage.e;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.f.a;
+import com.tencent.mm.ui.i.a;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import com.tencent.threadpool.i.d;
 
 public class CdnImageView
   extends MMImageView
   implements a
 {
-  private static final String uxL;
-  private int eRu;
-  private int eRv;
-  private ak handler;
+  private d McB;
+  private String YbJ;
+  private String YbK;
+  private boolean YbL;
+  private boolean YbM;
+  private MMHandler handler;
+  private float nrd;
+  private int nxO;
+  private int nxP;
   private String url;
-  private String vTd;
-  private String vTe;
-  private boolean vTf;
-  private boolean vTg;
-  
-  static
-  {
-    AppMethodBeat.i(79730);
-    uxL = com.tencent.mm.compatible.util.e.eQz + "wallet/images/";
-    AppMethodBeat.o(79730);
-  }
   
   public CdnImageView(Context paramContext)
   {
@@ -47,151 +49,219 @@ public class CdnImageView
   public CdnImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(79718);
+    AppMethodBeat.i(152166);
     this.url = null;
-    this.vTg = false;
-    this.handler = new CdnImageView.1(this);
-    AppMethodBeat.o(79718);
+    this.YbM = false;
+    this.handler = new MMHandler()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(152164);
+        Object localObject = Util.nullAs(paramAnonymousMessage.getData().getString("k_url"), "");
+        CdnImageView.a(CdnImageView.this, Util.nullAs(CdnImageView.c(CdnImageView.this), ""));
+        if ((Util.isNullOrNil(CdnImageView.c(CdnImageView.this))) && (Util.isNullOrNil((String)localObject)))
+        {
+          CdnImageView.this.setImageBitmap(null);
+          CdnImageView.this.setImageBitmapCompleted(null);
+          AppMethodBeat.o(152164);
+          return;
+        }
+        if (!CdnImageView.c(CdnImageView.this).equals(localObject))
+        {
+          Log.d("MicroMsg.CdnImageView", "hy: url not equal. abort this msg");
+          AppMethodBeat.o(152164);
+          return;
+        }
+        paramAnonymousMessage = paramAnonymousMessage.getData().getByteArray("k_data");
+        if ((paramAnonymousMessage == null) || (paramAnonymousMessage.length == 0))
+        {
+          Log.e("MicroMsg.CdnImageView", "handleMsg fail, data is null");
+          AppMethodBeat.o(152164);
+          return;
+        }
+        localObject = BitmapUtil.decodeByteArray(paramAnonymousMessage);
+        r.bJZ();
+        e.g(CdnImageView.c(CdnImageView.this), (Bitmap)localObject);
+        if (CdnImageView.d(CdnImageView.this)) {
+          CdnImageView.a(CdnImageView.this, (Bitmap)localObject);
+        }
+        paramAnonymousMessage = (Message)localObject;
+        if (localObject != null)
+        {
+          paramAnonymousMessage = (Message)localObject;
+          if (CdnImageView.e(CdnImageView.this) > 0)
+          {
+            paramAnonymousMessage = (Message)localObject;
+            if (CdnImageView.f(CdnImageView.this) > 0) {
+              paramAnonymousMessage = BitmapUtil.extractThumbNail((Bitmap)localObject, CdnImageView.f(CdnImageView.this), CdnImageView.e(CdnImageView.this), true, false);
+            }
+          }
+        }
+        localObject = paramAnonymousMessage;
+        if (CdnImageView.g(CdnImageView.this))
+        {
+          localObject = paramAnonymousMessage;
+          if (paramAnonymousMessage != null) {
+            if (CdnImageView.h(CdnImageView.this) <= 0.0F) {
+              break label305;
+            }
+          }
+        }
+        label305:
+        for (localObject = BitmapUtil.getRoundedCornerBitmap(paramAnonymousMessage, false, paramAnonymousMessage.getWidth() * CdnImageView.h(CdnImageView.this));; localObject = BitmapUtil.getRoundedCornerBitmap(paramAnonymousMessage, false, paramAnonymousMessage.getWidth() * 0.5F))
+        {
+          if (localObject != null) {
+            CdnImageView.this.setImageBitmap((Bitmap)localObject);
+          }
+          CdnImageView.this.setImageBitmapCompleted((Bitmap)localObject);
+          AppMethodBeat.o(152164);
+          return;
+        }
+      }
+    };
+    AppMethodBeat.o(152166);
   }
   
-  private void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  private void b(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
-    AppMethodBeat.i(79724);
+    AppMethodBeat.i(152172);
     this.url = paramString1;
-    this.eRu = paramInt1;
-    this.eRv = paramInt2;
-    this.vTd = paramString2;
-    if (!bo.isNullOrNil(this.vTd))
+    this.nxO = paramInt1;
+    this.nxP = paramInt2;
+    if (!Util.isNullOrNil(paramString2)) {
+      this.YbJ = paramString2;
+    }
+    if (!Util.isNullOrNil(this.YbJ))
     {
-      paramString2 = com.tencent.mm.sdk.platformtools.d.aoV(this.vTd);
+      paramString2 = BitmapUtil.getBitmapNative(this.YbJ);
       if ((paramString2 != null) && (paramString2.getWidth() > 0) && (paramString2.getHeight() > 0))
       {
         setImageBitmap(paramString2);
         setImageBitmapCompleted(paramString2);
-        AppMethodBeat.o(79724);
+        AppMethodBeat.o(152172);
         return;
       }
     }
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
       setVisibility(8);
-      AppMethodBeat.o(79724);
+      AppMethodBeat.o(152172);
       return;
     }
     if (paramString1.startsWith("http"))
     {
-      er(paramString1, paramInt3);
-      AppMethodBeat.o(79724);
+      iA(paramString1, paramInt3);
+      AppMethodBeat.o(152172);
       return;
     }
-    aml(paramString1);
-    AppMethodBeat.o(79724);
+    bqW(paramString1);
+    AppMethodBeat.o(152172);
   }
   
-  private void aml(String paramString)
+  private void bqW(String paramString)
   {
-    AppMethodBeat.i(79726);
-    if (!com.tencent.mm.vfs.e.cN(paramString))
+    AppMethodBeat.i(152174);
+    if (!y.ZC(paramString))
     {
       setVisibility(8);
-      AppMethodBeat.o(79726);
+      AppMethodBeat.o(152174);
       return;
     }
-    if ((this.eRu <= 0) || (this.eRv <= 0)) {}
-    for (paramString = com.tencent.mm.sdk.platformtools.d.aoV(paramString); paramString == null; paramString = com.tencent.mm.sdk.platformtools.d.d(paramString, this.eRu, this.eRv, true))
+    if ((this.nxO <= 0) || (this.nxP <= 0)) {}
+    for (paramString = BitmapUtil.getBitmapNative(paramString); paramString == null; paramString = BitmapUtil.extractThumbNail(paramString, this.nxP, this.nxO, true))
     {
       setVisibility(8);
-      AppMethodBeat.o(79726);
+      AppMethodBeat.o(152174);
       return;
     }
     Object localObject = paramString;
-    if (this.vTf)
+    if (this.YbL)
     {
       localObject = paramString;
       if (paramString != null) {
-        localObject = com.tencent.mm.sdk.platformtools.d.a(paramString, false, paramString.getWidth() * 0.5F);
-      }
-    }
-    setImageBitmap((Bitmap)localObject);
-    setImageBitmapCompleted((Bitmap)localObject);
-    AppMethodBeat.o(79726);
-  }
-  
-  private boolean dnw()
-  {
-    AppMethodBeat.i(79727);
-    try
-    {
-      Object localObject1 = getCacheFilePath();
-      ab.d("MicroMsg.CdnImageView", "useSdcardCache, path: %s", new Object[] { localObject1 });
-      if (com.tencent.mm.vfs.e.cN((String)localObject1))
-      {
-        Object localObject2 = com.tencent.mm.sdk.platformtools.d.aoV((String)localObject1);
-        ab.d("MicroMsg.CdnImageView", "get bitmap from cache path: %s", new Object[] { localObject2 });
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-          if (this.eRu > 0)
-          {
-            localObject1 = localObject2;
-            if (this.eRv > 0) {
-              localObject1 = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject2, this.eRv, this.eRu, true, false);
-            }
-          }
-          localObject2 = localObject1;
-          if (this.vTf)
-          {
-            localObject2 = localObject1;
-            if (localObject1 != null) {
-              localObject2 = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() * 0.5F);
-            }
-          }
-          setImageBitmap((Bitmap)localObject2);
-          setImageBitmapCompleted((Bitmap)localObject2);
-          AppMethodBeat.o(79727);
-          return true;
+        if (this.nrd <= 0.0F) {
+          break label132;
         }
       }
     }
-    catch (Exception localException)
+    label132:
+    for (localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * this.nrd);; localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * 0.5F))
     {
-      ab.printErrStackTrace("MicroMsg.CdnImageView", localException, "setBitmapFromLocalCache error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(79727);
+      setImageBitmap((Bitmap)localObject);
+      setImageBitmapCompleted((Bitmap)localObject);
+      AppMethodBeat.o(152174);
+      return;
     }
-    return false;
   }
   
-  private void er(String paramString, int paramInt)
+  private String getAccImagesPath()
   {
-    AppMethodBeat.i(79728);
-    o.ahB();
-    Object localObject = c.lK(paramString);
+    AppMethodBeat.i(152177);
+    String str = b.bmz() + "wallet_images/";
+    AppMethodBeat.o(152177);
+    return str;
+  }
+  
+  private String getCacheFilePath()
+  {
+    AppMethodBeat.i(152173);
+    String str;
+    if (!Util.isNullOrNil(this.YbJ)) {
+      str = this.YbJ;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(152173);
+      return str;
+      if (!Util.isNullOrNil(this.YbK))
+      {
+        str = this.YbK + g.getMessageDigest(this.url.getBytes());
+      }
+      else
+      {
+        y.bDX(getAccImagesPath());
+        str = getAccImagesPath() + g.getMessageDigest(this.url.getBytes());
+      }
+    }
+  }
+  
+  private void iA(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(152176);
+    r.bJZ();
+    Object localObject = e.Eo(paramString);
     if (localObject != null)
     {
       paramString = (String)localObject;
-      if (this.eRu > 0)
+      if (this.nxO > 0)
       {
         paramString = (String)localObject;
-        if (this.eRv > 0) {
-          paramString = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject, this.eRu, this.eRv, true, false);
+        if (this.nxP > 0) {
+          paramString = BitmapUtil.extractThumbNail((Bitmap)localObject, this.nxP, this.nxO, true, false);
         }
       }
       localObject = paramString;
-      if (this.vTf)
+      if (this.YbL)
       {
         localObject = paramString;
         if (paramString != null) {
-          localObject = com.tencent.mm.sdk.platformtools.d.a(paramString, false, paramString.getWidth() * 0.5F);
+          if (this.nrd <= 0.0F) {
+            break label107;
+          }
         }
       }
-      setImageBitmap((Bitmap)localObject);
-      setImageBitmapCompleted((Bitmap)localObject);
-      AppMethodBeat.o(79728);
-      return;
+      label107:
+      for (localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * this.nrd);; localObject = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() * 0.5F))
+      {
+        setImageBitmap((Bitmap)localObject);
+        setImageBitmapCompleted((Bitmap)localObject);
+        AppMethodBeat.o(152176);
+        return;
+      }
     }
-    if ((this.vTg) && (dnw()))
+    if ((this.YbM) && (iLk()))
     {
-      AppMethodBeat.o(79728);
+      AppMethodBeat.o(152176);
       return;
     }
     if (paramInt > 0) {
@@ -199,96 +269,148 @@ public class CdnImageView
     }
     for (;;)
     {
-      com.tencent.mm.sdk.g.d.post(new CdnImageView.a(paramString, this.handler), "CdnImageView_download");
-      AppMethodBeat.o(79728);
+      this.McB = h.ahAA.bn(new CdnImageView.a(paramString, this.handler));
+      AppMethodBeat.o(152176);
       return;
       setImageBitmap(null);
     }
   }
   
-  private String getCacheFilePath()
+  private boolean iLk()
   {
-    AppMethodBeat.i(79725);
-    String str;
-    if (!bo.isNullOrNil(this.vTd)) {
-      str = this.vTd;
-    }
-    for (;;)
+    AppMethodBeat.i(152175);
+    try
     {
-      AppMethodBeat.o(79725);
-      return str;
-      if (!bo.isNullOrNil(this.vTe))
+      Object localObject1 = getCacheFilePath();
+      Log.d("MicroMsg.CdnImageView", "useSdcardCache, path: %s", new Object[] { localObject1 });
+      if (y.ZC((String)localObject1))
       {
-        str = this.vTe + g.w(this.url.getBytes());
+        Object localObject2 = BitmapUtil.getBitmapNative((String)localObject1);
+        Log.d("MicroMsg.CdnImageView", "get bitmap from cache path: %s", new Object[] { localObject2 });
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+          if (this.nxO > 0)
+          {
+            localObject1 = localObject2;
+            if (this.nxP > 0) {
+              localObject1 = BitmapUtil.extractThumbNail((Bitmap)localObject2, this.nxP, this.nxO, true, false);
+            }
+          }
+          localObject2 = localObject1;
+          if (this.YbL)
+          {
+            localObject2 = localObject1;
+            if (localObject1 != null) {
+              if (this.nrd <= 0.0F) {
+                break label149;
+              }
+            }
+          }
+          label149:
+          for (localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() * this.nrd);; localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, ((Bitmap)localObject1).getWidth() * 0.5F))
+          {
+            setImageBitmap((Bitmap)localObject2);
+            setImageBitmapCompleted((Bitmap)localObject2);
+            AppMethodBeat.o(152175);
+            return true;
+          }
+        }
       }
-      else
-      {
-        com.tencent.mm.vfs.e.um(uxL);
-        str = uxL + g.w(this.url.getBytes());
-      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.CdnImageView", localException, "setBitmapFromLocalCache error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(152175);
     }
   }
   
-  public final void ax(String paramString, int paramInt1, int paramInt2)
+  public final void aW(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(79721);
-    o(paramString, paramInt1, paramInt2, -1);
-    AppMethodBeat.o(79721);
+    AppMethodBeat.i(152169);
+    w(paramString, paramInt1, paramInt2, -1);
+    AppMethodBeat.o(152169);
   }
   
-  public final void eq(String paramString, int paramInt)
+  public final void iz(String paramString, int paramInt)
   {
-    AppMethodBeat.i(79720);
-    o(paramString, 0, 0, paramInt);
-    AppMethodBeat.o(79720);
+    AppMethodBeat.i(152168);
+    w(paramString, 0, 0, paramInt);
+    AppMethodBeat.o(152168);
   }
   
-  public final void hV(String paramString1, String paramString2)
+  protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(79722);
-    a(paramString1, -1, 0, 0, paramString2);
-    AppMethodBeat.o(79722);
+    AppMethodBeat.i(245403);
+    super.onDetachedFromWindow();
+    if (this.McB != null) {
+      this.McB.cancel(false);
+    }
+    AppMethodBeat.o(245403);
   }
   
-  public final void o(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public final void pm(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(79723);
-    a(paramString, paramInt1, paramInt2, paramInt3, null);
-    AppMethodBeat.o(79723);
+    AppMethodBeat.i(152170);
+    b(paramString1, -1, 0, 0, paramString2);
+    AppMethodBeat.o(152170);
   }
   
   public void setImageBitmapCompleted(Bitmap paramBitmap) {}
   
   public void setImgSavedDir(String paramString)
   {
-    this.vTe = paramString;
+    AppMethodBeat.i(245379);
+    String str = paramString;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (!paramString.endsWith("/")) {
+        str = paramString + "/";
+      }
+    }
+    this.YbK = str;
+    AppMethodBeat.o(245379);
   }
   
   public void setImgSavedPath(String paramString)
   {
-    this.vTd = paramString;
+    this.YbJ = paramString;
   }
   
   public void setRoundCorner(boolean paramBoolean)
   {
-    this.vTf = paramBoolean;
+    this.YbL = paramBoolean;
+  }
+  
+  public void setRoundCornerRate(float paramFloat)
+  {
+    this.nrd = paramFloat;
   }
   
   public void setUrl(String paramString)
   {
-    AppMethodBeat.i(79719);
-    o(paramString, 0, 0, -1);
-    AppMethodBeat.o(79719);
+    AppMethodBeat.i(152167);
+    w(paramString, 0, 0, -1);
+    AppMethodBeat.o(152167);
   }
   
   public void setUseSdcardCache(boolean paramBoolean)
   {
-    this.vTg = paramBoolean;
+    this.YbM = paramBoolean;
+  }
+  
+  public final void w(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(152171);
+    b(paramString, paramInt1, paramInt2, paramInt3, null);
+    AppMethodBeat.o(152171);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.CdnImageView
  * JD-Core Version:    0.7.0.1
  */

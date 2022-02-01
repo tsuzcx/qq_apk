@@ -19,27 +19,19 @@ public final class a
   
   public static int a(int paramInt, boolean paramBoolean)
   {
-    int i = 0;
     int[] arrayOfInt;
-    int j;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       arrayOfInt = g;
-      j = arrayOfInt[0];
-      if (paramInt == 0) {}
+    } else {
+      arrayOfInt = h;
     }
-    else
-    {
-      for (;;)
+    int i = 0;
+    int j = arrayOfInt[0];
+    if (paramInt != 0) {
+      while (i < arrayOfInt.length)
       {
-        if (i >= arrayOfInt.length) {
-          return j;
-        }
-        if ((paramInt == arrayOfInt[i]) && (i != arrayOfInt.length - 1))
-        {
+        if ((paramInt == arrayOfInt[i]) && (i != arrayOfInt.length - 1)) {
           return arrayOfInt[(i + 1)];
-          arrayOfInt = h;
-          break;
         }
         i += 1;
       }
@@ -59,16 +51,24 @@ public final class a
   
   public final String toString()
   {
-    boolean bool = false;
-    if ((this.b == b.e) || (this.b == b.f) || (this.b == b.j) || (this.b == b.c) || (this.b == b.h)) {
+    boolean bool;
+    if ((this.b != b.e) && (this.b != b.f) && (this.b != b.j) && (this.b != b.c) && (this.b != b.h)) {
+      bool = false;
+    } else {
       bool = true;
     }
-    return this.c + ":" + (this.b - 1) + ":" + com.tencent.hlyyb.common.b.b.a(this.a, bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b - 1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(com.tencent.hlyyb.common.b.b.a(this.a, bool));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.d.a
  * JD-Core Version:    0.7.0.1
  */

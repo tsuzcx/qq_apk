@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.matchchat;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MatchChatSettingFragment$2$1
@@ -10,15 +10,15 @@ class MatchChatSettingFragment$2$1
   
   public void run()
   {
-    FragmentActivity localFragmentActivity = this.a.this$0.getActivity();
-    if (localFragmentActivity != null) {
-      QQToast.a(localFragmentActivity, 2131699471, 0).a();
+    BaseActivity localBaseActivity = this.a.this$0.getBaseActivity();
+    if (localBaseActivity != null) {
+      QQToast.makeText(localBaseActivity, 2131897004, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatSettingFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emosm;
 
-import apmj;
 import java.util.List;
 
 class CustomEmotionRoamingDBManagerBase$4$1
@@ -10,7 +9,7 @@ class CustomEmotionRoamingDBManagerBase$4$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCustomEmotionRoamingDBManagerBase$4.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.b.a.a(this.a);
   }
 }
 

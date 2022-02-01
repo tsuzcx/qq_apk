@@ -1,57 +1,124 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
-import java.util.concurrent.TimeUnit;
-import okio.f;
+import android.view.View;
+import android.view.animation.Interpolator;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class hu
-  extends hq
+public final class hu
 {
-  private long f;
-  
-  hu(ho paramho, long paramLong)
+  final ArrayList<fr> a = new ArrayList();
+  fs b;
+  boolean c;
+  private long d = -1L;
+  private Interpolator e;
+  private final ft f = new ft()
   {
-    super(paramho, null);
-    this.f = paramLong;
-    if (this.f == 0L) {
-      a(true, null);
-    }
-  }
-  
-  public long a(f paramf, long paramLong)
-  {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.b) {
-      throw new IllegalStateException("closed");
-    }
-    if (this.f == 0L) {
-      return -1L;
-    }
-    paramLong = super.a(paramf, Math.min(this.f, paramLong));
-    if (paramLong == -1L)
+    private boolean b = false;
+    private int c = 0;
+    
+    public final void a(View paramAnonymousView)
     {
-      paramf = new ProtocolException("unexpected end of stream");
-      a(false, paramf);
-      throw paramf;
+      if (this.b) {
+        return;
+      }
+      this.b = true;
+      if (hu.this.b != null) {
+        hu.this.b.a(null);
+      }
     }
-    this.f -= paramLong;
-    if (this.f == 0L) {
-      a(true, null);
+    
+    public final void b(View paramAnonymousView)
+    {
+      int i = this.c + 1;
+      this.c = i;
+      if (i == hu.this.a.size())
+      {
+        if (hu.this.b != null) {
+          hu.this.b.b(null);
+        }
+        this.c = 0;
+        this.b = false;
+        hu.this.c = false;
+      }
     }
-    return paramLong;
+  };
+  
+  public final hu a(Interpolator paramInterpolator)
+  {
+    if (!this.c) {
+      this.e = paramInterpolator;
+    }
+    return this;
   }
   
-  public void close()
+  public final hu a(fr paramfr)
   {
-    if (this.b) {
+    if (!this.c) {
+      this.a.add(paramfr);
+    }
+    return this;
+  }
+  
+  public final hu a(fr paramfr1, fr paramfr2)
+  {
+    this.a.add(paramfr1);
+    paramfr2.b(paramfr1.a());
+    this.a.add(paramfr2);
+    return this;
+  }
+  
+  public final hu a(fs paramfs)
+  {
+    if (!this.c) {
+      this.b = paramfs;
+    }
+    return this;
+  }
+  
+  public final void a()
+  {
+    if (this.c) {
       return;
     }
-    if ((this.f != 0L) && (!gn.a(this, 100, TimeUnit.MILLISECONDS))) {
-      a(false, null);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      fr localfr = (fr)localIterator.next();
+      long l = this.d;
+      if (l >= 0L) {
+        localfr.a(l);
+      }
+      Interpolator localInterpolator = this.e;
+      if (localInterpolator != null) {
+        localfr.a(localInterpolator);
+      }
+      if (this.b != null) {
+        localfr.a(this.f);
+      }
+      localfr.c();
     }
-    this.b = true;
+    this.c = true;
+  }
+  
+  public final void b()
+  {
+    if (!this.c) {
+      return;
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((fr)localIterator.next()).b();
+    }
+    this.c = false;
+  }
+  
+  public final hu c()
+  {
+    if (!this.c) {
+      this.d = 250L;
+    }
+    return this;
   }
 }
 

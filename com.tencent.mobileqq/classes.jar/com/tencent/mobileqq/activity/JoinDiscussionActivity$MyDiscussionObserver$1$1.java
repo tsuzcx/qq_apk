@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import adfd;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
@@ -11,12 +10,12 @@ class JoinDiscussionActivity$MyDiscussionObserver$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$MyDiscussionObserver$1.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.a.a.c.setImageBitmap(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.MyDiscussionObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

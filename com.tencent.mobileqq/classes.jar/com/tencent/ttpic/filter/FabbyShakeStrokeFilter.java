@@ -133,18 +133,18 @@ public class FabbyShakeStrokeFilter
   public void updateUTime()
   {
     this.uTime += 1.0F;
-    if (this.uTime > 10000.0F) {}
-    for (float f = 0.0F;; f = this.uTime)
-    {
-      this.uTime = f;
-      addParam(new UniformParam.FloatParam("u_time", this.uTime * 2.0F));
-      return;
+    float f2 = this.uTime;
+    float f1 = f2;
+    if (f2 > 10000.0F) {
+      f1 = 0.0F;
     }
+    this.uTime = f1;
+    addParam(new UniformParam.FloatParam("u_time", this.uTime * 2.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyShakeStrokeFilter
  * JD-Core Version:    0.7.0.1
  */

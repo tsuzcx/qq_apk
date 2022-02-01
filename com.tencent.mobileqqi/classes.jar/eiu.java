@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
-import mqq.app.permission.PermissionCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class eiu
-  implements PermissionCallback
+class eiu
+  implements PermissionDialogCallback
 {
-  public eiu(MainAssistObserver paramMainAssistObserver, SplashActivity paramSplashActivity) {}
+  eiu(eit parameit) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    new PermissionsDialog().a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, paramInt, paramArrayOfString, new eiv(this));
-  }
+  public void a() {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public void b() {}
 }
 
 

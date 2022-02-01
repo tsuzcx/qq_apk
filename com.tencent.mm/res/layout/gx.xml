@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="#ff969696" android:gravity="left" android:id="@id/uo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="@dimen/ll" android:text="@string/a9t" />
+    <RelativeLayout android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="@dimen/i5">
+        <ImageView android:id="@id/a1r" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_centerVertical="true" android:layout_marginStart="@dimen/i6" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_toLeftOf="@id/x4" android:layout_toRightOf="@id/a1r" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/x4" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/i9" />
+        <View android:id="@id/x6" android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_alignParentBottom="true" android:layout_alignStart="@id/kob" />
+    </RelativeLayout>
 </LinearLayout>

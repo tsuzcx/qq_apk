@@ -11,12 +11,21 @@ public class Utils
   
   public static int dp2px(double paramDouble)
   {
-    if (sDensity < 0.0F) {}
-    for (float f = 1.0F; paramDouble >= 0.0D; f = sDensity) {
-      return (int)(f * paramDouble + 0.5D);
+    float f2 = sDensity;
+    float f1 = f2;
+    if (f2 < 0.0F) {
+      f1 = 1.0F;
+    }
+    if (paramDouble >= 0.0D)
+    {
+      d = f1;
+      Double.isNaN(d);
+      return (int)(paramDouble * d + 0.5D);
     }
     paramDouble = -paramDouble;
-    return -(int)(f * paramDouble + 0.5D);
+    double d = f1;
+    Double.isNaN(d);
+    return -(int)(paramDouble * d + 0.5D);
   }
   
   public static void init(float paramFloat, int paramInt)
@@ -74,12 +83,29 @@ public class Utils
   
   public static boolean isThreeUnknown(String paramString)
   {
-    if ((paramString != null) && (paramString.length() != 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null)
     {
-      int i = paramString.length();
-      return (paramString.charAt(0) == '@') && (paramString.charAt(1) == '{') && (paramString.charAt(i - 1) == '}');
+      bool1 = bool2;
+      if (paramString.length() != 0)
+      {
+        int i = paramString.length();
+        bool1 = bool2;
+        if (paramString.charAt(0) == '@')
+        {
+          bool1 = bool2;
+          if (paramString.charAt(1) == '{')
+          {
+            bool1 = bool2;
+            if (paramString.charAt(i - 1) == '}') {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public static int parseColor(String paramString)
@@ -89,21 +115,31 @@ public class Utils
       int i = Integer.valueOf(Color.parseColor(paramString)).intValue();
       return i;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label13:
+      break label13;
+    }
     return 0;
   }
   
   public static int px2dp(float paramFloat)
   {
-    if (sDensity < 0.0F) {}
-    for (float f = 1.0F;; f = sDensity) {
-      return (int)(paramFloat / f + 0.5F);
+    float f2 = sDensity;
+    float f1 = f2;
+    if (f2 < 0.0F) {
+      f1 = 1.0F;
     }
+    return (int)(paramFloat / f1 + 0.5F);
   }
   
   public static int rp2px(double paramDouble)
   {
-    return (int)(sScreenWidth * paramDouble / UED_SCREEN + 0.5D);
+    double d1 = sScreenWidth;
+    Double.isNaN(d1);
+    double d2 = UED_SCREEN;
+    Double.isNaN(d2);
+    return (int)(paramDouble * d1 / d2 + 0.5D);
   }
   
   public static int rp2px(int paramInt, double paramDouble)
@@ -143,13 +179,16 @@ public class Utils
     if ((paramObject instanceof Number)) {
       return Double.valueOf(((Number)paramObject).doubleValue());
     }
-    if ((paramObject instanceof String)) {
-      try
-      {
-        paramObject = Double.valueOf((String)paramObject);
-        return paramObject;
-      }
-      catch (NumberFormatException paramObject) {}
+    if ((paramObject instanceof String)) {}
+    try
+    {
+      paramObject = Double.valueOf((String)paramObject);
+      return paramObject;
+    }
+    catch (NumberFormatException paramObject)
+    {
+      label47:
+      break label47;
     }
     return null;
   }
@@ -165,13 +204,16 @@ public class Utils
     if ((paramObject instanceof Number)) {
       return Float.valueOf(((Number)paramObject).floatValue());
     }
-    if ((paramObject instanceof String)) {
-      try
-      {
-        paramObject = Float.valueOf((String)paramObject);
-        return paramObject;
-      }
-      catch (NumberFormatException paramObject) {}
+    if ((paramObject instanceof String)) {}
+    try
+    {
+      paramObject = Float.valueOf((String)paramObject);
+      return paramObject;
+    }
+    catch (NumberFormatException paramObject)
+    {
+      label65:
+      break label65;
     }
     return null;
   }
@@ -184,13 +226,16 @@ public class Utils
     if ((paramObject instanceof Number)) {
       return Integer.valueOf(((Number)paramObject).intValue());
     }
-    if ((paramObject instanceof String)) {
-      try
-      {
-        int i = (int)Double.parseDouble((String)paramObject);
-        return Integer.valueOf(i);
-      }
-      catch (NumberFormatException paramObject) {}
+    if ((paramObject instanceof String)) {}
+    try
+    {
+      int i = (int)Double.parseDouble((String)paramObject);
+      return Integer.valueOf(i);
+    }
+    catch (NumberFormatException paramObject)
+    {
+      label51:
+      break label51;
     }
     return null;
   }
@@ -203,13 +248,16 @@ public class Utils
     if ((paramObject instanceof Number)) {
       return Long.valueOf(((Number)paramObject).longValue());
     }
-    if ((paramObject instanceof String)) {
-      try
-      {
-        long l = Double.parseDouble((String)paramObject);
-        return Long.valueOf(l);
-      }
-      catch (NumberFormatException paramObject) {}
+    if ((paramObject instanceof String)) {}
+    try
+    {
+      long l = Double.parseDouble((String)paramObject);
+      return Long.valueOf(l);
+    }
+    catch (NumberFormatException paramObject)
+    {
+      label51:
+      break label51;
     }
     return null;
   }
@@ -227,7 +275,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

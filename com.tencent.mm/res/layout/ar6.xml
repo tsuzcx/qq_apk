@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cv" android:paddingEnd="@dimen/cv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/ea2" android:text="@string/e2s" android:layout_centerHorizontal="true" style="@style/rd" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/dc">
+        <TextView android:textSize="@dimen/hn" android:ellipsize="end" android:gravity="start|center" android:id="@id/e8k" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/es5" android:includeFontPadding="false" style="@style/zp" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/hzc" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/e8g" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/koy" android:visibility="visible" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" />
+            <TextView android:textSize="@dimen/io" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="start|center" android:id="@id/kpt" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:maxLines="1" android:layout_toRightOf="@id/koy" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <FrameLayout android:id="@id/e8h" android:paddingTop="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <EditText android:id="@id/e8i" android:padding="@dimen/cd" android:visibility="visible" android:maxWidth="@dimen/db" android:hint="给朋友留言" style="@style/hp" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/e8e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" android:layout_marginBottom="@dimen/dc">
+            <TextView android:textSize="@dimen/io" android:textColor="@color/Orange" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/e8f" android:background="@drawable/a4e" android:visibility="visible" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/cz8" android:layout_marginEnd="@dimen/cp" />
+            <TextView android:textSize="@dimen/io" android:textColor="@color/al4" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/e8j" android:background="@drawable/a3y" android:visibility="visible" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/es4" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

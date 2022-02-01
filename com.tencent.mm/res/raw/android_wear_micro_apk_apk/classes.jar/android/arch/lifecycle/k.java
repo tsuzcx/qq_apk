@@ -1,36 +1,22 @@
 package android.arch.lifecycle;
 
-import java.lang.reflect.Method;
-
 final class k
 {
-  final int K;
-  final Method L;
+  g O;
+  GenericLifecycleObserver V;
   
-  k(int paramInt, Method paramMethod)
+  k(h paramh, g paramg)
   {
-    this.K = paramInt;
-    this.L = paramMethod;
-    this.L.setAccessible(true);
+    this.V = m.c(paramh);
+    this.O = paramg;
   }
   
-  public final boolean equals(Object paramObject)
+  final void b(i parami, f paramf)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (k)paramObject;
-    } while ((this.K == paramObject.K) && (this.L.getName().equals(paramObject.L.getName())));
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    return this.K * 31 + this.L.getName().hashCode();
+    g localg = j.b(paramf);
+    this.O = j.a(this.O, localg);
+    this.V.a(parami, paramf);
+    this.O = localg;
   }
 }
 

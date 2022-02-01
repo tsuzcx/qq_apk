@@ -1,17 +1,17 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.sqlitelint.R.id;
+import com.tencent.sqlitelint.R.layout;
+import com.tencent.sqlitelint.R.string;
 import com.tencent.sqlitelint.SQLiteLintIssue;
 import com.tencent.sqlitelint.behaviour.persistence.IssueStorage;
 import com.tencent.sqlitelint.util.SLog;
@@ -29,31 +29,20 @@ public class CheckResultActivity
   
   private void initView()
   {
-    AppMethodBeat.i(94045);
-    setTitle(getString(2131306136, new Object[] { SQLiteLintUtil.extractDbName(this.mDbLabel) }));
-    ListView localListView = (ListView)findViewById(2131821002);
+    AppMethodBeat.i(52889);
+    Object localObject = SQLiteLintUtil.extractDbName(this.mDbLabel);
+    setTitle(getString(R.string.check_result_title, new Object[] { localObject }));
+    localObject = (ListView)findViewById(R.id.list);
     this.mAdapter = new CheckResultListAdapter();
-    localListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(94036);
-        paramAnonymousAdapterView = (SQLiteLintIssue)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("issue", paramAnonymousAdapterView);
-        paramAnonymousView.setClass(CheckResultActivity.this.getBaseContext(), IssueDetailActivity.class);
-        CheckResultActivity.this.startActivity(paramAnonymousView);
-        AppMethodBeat.o(94036);
-      }
-    });
-    localListView.setAdapter(this.mAdapter);
+    ((ListView)localObject).setOnItemClickListener(new CheckResultActivity.1(this));
+    ((ListView)localObject).setAdapter(this.mAdapter);
     this.mAdapter.notifyDataSetChanged();
-    AppMethodBeat.o(94045);
+    AppMethodBeat.o(52889);
   }
   
   private void refreshData()
   {
-    AppMethodBeat.i(94044);
+    AppMethodBeat.i(52888);
     List localList = IssueStorage.getIssueListByDb(this.mDbLabel);
     if (this.mCheckResultList == null) {
       this.mCheckResultList = localList;
@@ -62,7 +51,7 @@ public class CheckResultActivity
     {
       SLog.d("MpApp.CheckResultActivity", "refreshData size %d", new Object[] { Integer.valueOf(this.mCheckResultList.size()) });
       this.mAdapter.notifyDataSetChanged();
-      AppMethodBeat.o(94044);
+      AppMethodBeat.o(52888);
       return;
       this.mCheckResultList.clear();
       this.mCheckResultList.addAll(localList);
@@ -71,25 +60,25 @@ public class CheckResultActivity
   
   protected int getLayoutId()
   {
-    return 2130968622;
+    return R.layout.activity_check_result;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(94042);
+    AppMethodBeat.i(52886);
     super.onCreate(paramBundle);
     this.mDbLabel = getIntent().getStringExtra("db_label");
     initView();
     refreshData();
-    AppMethodBeat.o(94042);
+    AppMethodBeat.o(52886);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(94043);
+    AppMethodBeat.i(52887);
     super.onNewIntent(paramIntent);
     refreshData();
-    AppMethodBeat.o(94043);
+    AppMethodBeat.o(52887);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -105,29 +94,29 @@ public class CheckResultActivity
     
     CheckResultListAdapter()
     {
-      AppMethodBeat.i(94037);
+      AppMethodBeat.i(52881);
       this.mInflater = LayoutInflater.from(CheckResultActivity.this);
-      AppMethodBeat.o(94037);
+      AppMethodBeat.o(52881);
     }
     
     public int getCount()
     {
-      AppMethodBeat.i(94038);
+      AppMethodBeat.i(52882);
       if (CheckResultActivity.this.mCheckResultList == null)
       {
-        AppMethodBeat.o(94038);
+        AppMethodBeat.o(52882);
         return 0;
       }
       int i = CheckResultActivity.this.mCheckResultList.size();
-      AppMethodBeat.o(94038);
+      AppMethodBeat.o(52882);
       return i;
     }
     
     public SQLiteLintIssue getItem(int paramInt)
     {
-      AppMethodBeat.i(94039);
+      AppMethodBeat.i(52883);
       SQLiteLintIssue localSQLiteLintIssue = (SQLiteLintIssue)CheckResultActivity.this.mCheckResultList.get(paramInt);
-      AppMethodBeat.o(94039);
+      AppMethodBeat.o(52883);
       return localSQLiteLintIssue;
     }
     
@@ -138,14 +127,14 @@ public class CheckResultActivity
     
     public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(94040);
+      AppMethodBeat.i(52884);
       if (paramView == null)
       {
-        paramView = this.mInflater.inflate(2130971077, paramViewGroup, false);
+        paramView = this.mInflater.inflate(R.layout.view_check_result_item, paramViewGroup, false);
         paramViewGroup = new CheckResultActivity.ViewHolder();
-        paramViewGroup.checkResultTv = ((TextView)paramView.findViewById(2131828214));
-        paramViewGroup.diagnosisLevelTv = ((TextView)paramView.findViewById(2131821005));
-        paramViewGroup.timeTv = ((TextView)paramView.findViewById(2131821004));
+        paramViewGroup.checkResultTv = ((TextView)paramView.findViewById(R.id.result_tv));
+        paramViewGroup.diagnosisLevelTv = ((TextView)paramView.findViewById(R.id.diagnosis_level_tv));
+        paramViewGroup.timeTv = ((TextView)paramView.findViewById(R.id.time_tv));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
@@ -154,7 +143,7 @@ public class CheckResultActivity
         paramViewGroup.checkResultTv.setText(String.format("%d、%s", new Object[] { Integer.valueOf(paramInt + 1), localSQLiteLintIssue.desc }));
         paramViewGroup.timeTv.setText(SQLiteLintUtil.formatTime("yyyy-MM-dd HH:mm", localSQLiteLintIssue.createTime));
         paramViewGroup.diagnosisLevelTv.setText(SQLiteLintIssue.getLevelText(localSQLiteLintIssue.level, CheckResultActivity.this.getBaseContext()));
-        AppMethodBeat.o(94040);
+        AppMethodBeat.o(52884);
         return paramView;
         paramViewGroup = (CheckResultActivity.ViewHolder)paramView.getTag();
       }
@@ -170,7 +159,7 @@ public class CheckResultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckResultActivity
  * JD-Core Version:    0.7.0.1
  */

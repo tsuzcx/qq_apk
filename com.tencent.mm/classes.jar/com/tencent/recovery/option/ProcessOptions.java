@@ -4,32 +4,48 @@ import com.tencent.recovery.config.Express;
 
 public class ProcessOptions
 {
-  private Express BiD;
-  public int eBM;
+  private Express express;
+  private int timeout;
+  
+  public Express getExpress()
+  {
+    return this.express;
+  }
+  
+  public int getTimeout()
+  {
+    return this.timeout;
+  }
   
   public static final class Builder
   {
-    public Express BiD;
-    private int eBM;
+    private Express express;
+    private int timeout;
     
-    public final Builder dUt()
+    public final ProcessOptions build()
     {
-      this.eBM = 10000;
+      ProcessOptions localProcessOptions = new ProcessOptions();
+      ProcessOptions.access$002(localProcessOptions, this.timeout);
+      ProcessOptions.access$102(localProcessOptions, this.express);
+      return localProcessOptions;
+    }
+    
+    public final Builder setExpress(Express paramExpress)
+    {
+      this.express = paramExpress;
       return this;
     }
     
-    public final ProcessOptions dUu()
+    public final Builder setTimeout(int paramInt)
     {
-      ProcessOptions localProcessOptions = new ProcessOptions();
-      ProcessOptions.a(localProcessOptions, this.eBM);
-      ProcessOptions.a(localProcessOptions, this.BiD);
-      return localProcessOptions;
+      this.timeout = paramInt;
+      return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.option.ProcessOptions
  * JD-Core Version:    0.7.0.1
  */

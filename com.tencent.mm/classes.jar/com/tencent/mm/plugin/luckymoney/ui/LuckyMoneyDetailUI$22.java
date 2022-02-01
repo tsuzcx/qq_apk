@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.model.c.a;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.plugin.wallet_core.ui.s.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class LuckyMoneyDetailUI$22
-  implements c.a
+  implements s.a
 {
   LuckyMoneyDetailUI$22(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final void a(boolean paramBoolean, EmojiInfo paramEmojiInfo)
+  public final void eS(View paramView)
   {
-    AppMethodBeat.i(42672);
-    al.d(new LuckyMoneyDetailUI.22.1(this, paramEmojiInfo, paramBoolean));
-    AppMethodBeat.o(42672);
+    AppMethodBeat.i(284373);
+    Log.i("MicroMsg.LuckyMoneyDetailUI", "SpanClick");
+    AppMethodBeat.o(284373);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.22
  * JD-Core Version:    0.7.0.1
  */

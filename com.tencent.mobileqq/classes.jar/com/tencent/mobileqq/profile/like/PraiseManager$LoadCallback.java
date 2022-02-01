@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.profile.like;
 
-import awsr;
-import awss;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -12,62 +10,53 @@ public class PraiseManager$LoadCallback
   implements Runnable
 {
   public int a;
-  public String a;
   public int b;
+  public String c;
   
   public PraiseManager$LoadCallback(PraiseManager paramPraiseManager, int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void run()
   {
-    for (;;)
+    Object localObject2;
+    synchronized (this.this$0.d)
     {
-      WeakReference[] arrayOfWeakReference;
-      synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
+      boolean bool = this.this$0.d.isEmpty();
+      int i = 0;
+      if (!bool)
       {
-        if (this.this$0.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label186;
-        }
-        arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.this$0.jdField_a_of_type_JavaUtilList.size());
-        this.this$0.jdField_a_of_type_JavaUtilList.toArray(arrayOfWeakReference);
-        if (arrayOfWeakReference == null) {
-          break label185;
-        }
-      }
-      try
-      {
-        int j = arrayOfWeakReference.length;
-        int i = 0;
-        while (i < j)
-        {
-          ??? = arrayOfWeakReference[i];
-          if ((??? != null) && (???.get() != null)) {
-            ((awss)???.get()).a(this.jdField_a_of_type_Int, (awsr)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+        WeakReference[] arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.d.get(0)).getClass(), this.this$0.d.size());
+        this.this$0.d.toArray(arrayOfWeakReference);
+        if (arrayOfWeakReference != null) {
+          try
+          {
+            int j = arrayOfWeakReference.length;
+            while (i < j)
+            {
+              ??? = arrayOfWeakReference[i];
+              if ((??? != null) && (???.get() != null)) {
+                ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.a, (PraiseInfo)this.this$0.c.get(Integer.valueOf(this.a)), this.b, this.c);
+              }
+              i += 1;
+            }
+            return;
           }
-          i += 1;
-          continue;
-          localObject1 = finally;
-          throw localObject1;
+          catch (Exception localException)
+          {
+            QLog.e("PraiseManager", 1, "LoadCallback failed", localException);
+          }
         }
       }
-      catch (Exception localException)
-      {
-        QLog.e("PraiseManager", 1, "LoadCallback failed", localException);
-      }
-      label185:
-      return;
-      label186:
-      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager.LoadCallback
  * JD-Core Version:    0.7.0.1
  */

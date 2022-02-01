@@ -21,7 +21,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ReflectedMethods;
 import com.tencent.qphone.base.util.QLog;
-import fbn;
+import fbm;
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -403,11 +403,11 @@ public class DeviceProfileManager
     //   17: iload_2
     //   18: ireturn
     //   19: invokestatic 531	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Handler;
-    //   22: new 533	fbm
+    //   22: new 533	fbl
     //   25: dup
     //   26: aload_0
     //   27: aload_1
-    //   28: invokespecial 536	fbm:<init>	(Lcom/tencent/mobileqq/app/DeviceProfileManager;Lcom/tencent/mobileqq/pb/PBRepeatField;)V
+    //   28: invokespecial 536	fbl:<init>	(Lcom/tencent/mobileqq/app/DeviceProfileManager;Lcom/tencent/mobileqq/pb/PBRepeatField;)V
     //   31: invokevirtual 542	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   34: pop
     //   35: iconst_1
@@ -437,10 +437,10 @@ public class DeviceProfileManager
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
     }
-    fbn localfbn = new fbn(null);
+    fbm localfbm = new fbm(null);
     try
     {
-      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes("utf-8"))), localfbn);
+      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes("utf-8"))), localfbm);
       return true;
     }
     catch (Exception paramString)
@@ -449,7 +449,7 @@ public class DeviceProfileManager
         QLog.e(jdField_a_of_type_JavaLangString, 2, "pareseDCPXML: " + paramString.getMessage());
       }
       paramString.printStackTrace();
-      fbn.jdField_a_of_type_JavaUtilHashMap = null;
+      fbm.jdField_a_of_type_JavaUtilHashMap = null;
     }
     return false;
   }

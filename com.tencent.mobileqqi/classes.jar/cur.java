@@ -1,58 +1,45 @@
-import android.text.TextUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cur
-  extends WtloginObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
   public cur(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    int j = 1;
+    int i = 1;
+    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
     {
-      if (QLog.isColorLevel())
+      paramCompoundButton = this.a.b;
+      if (paramBoolean)
       {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+        SettingCloneUtil.writeValue(this.a, this.a.b.a(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+        this.a.b.m();
       }
-      LoginInfoActivity.a(this.a, paramDevlockInfo);
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+    }
+    while (paramCompoundButton != LoginInfoActivity.b(this.a).a()) {
+      for (;;)
+      {
+        return;
+        i = 0;
+      }
+    }
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (i = j;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
       return;
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-      if (paramDevlockInfo == null) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
-    }
-    LoginInfoActivity.b(this.a);
-    paramDevlockInfo = this.a.getString(2131562568);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
-    {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
-      }
-    }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.d());
   }
 }
 

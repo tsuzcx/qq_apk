@@ -16,12 +16,27 @@ public class PhotoWallUploadResult
   
   public String toString()
   {
-    return "url=" + this.url + ",ctime=" + this.ctime + ",filekey=" + this.filekey + ",publish_code=" + this.publish_code + ",burl=" + this.burl + ",murl=" + this.murl + ",surl=" + this.surl;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(",ctime=");
+    localStringBuilder.append(this.ctime);
+    localStringBuilder.append(",filekey=");
+    localStringBuilder.append(this.filekey);
+    localStringBuilder.append(",publish_code=");
+    localStringBuilder.append(this.publish_code);
+    localStringBuilder.append(",burl=");
+    localStringBuilder.append(this.burl);
+    localStringBuilder.append(",murl=");
+    localStringBuilder.append(this.murl);
+    localStringBuilder.append(",surl=");
+    localStringBuilder.append(this.surl);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.PhotoWallUploadResult
  * JD-Core Version:    0.7.0.1
  */

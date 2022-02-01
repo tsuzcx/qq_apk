@@ -51,8 +51,7 @@
                             "setNumberOfLinesString:":"1",
                             "setTextColorString:":"#262626",
                             "setText:":"-1",
-                            "setBoldFontSizeString:":"18",
-                            "setFrameString:":"-1"
+                            "setBoldFontSizeString:":"18"
                         }
                     },
                     {
@@ -91,7 +90,6 @@
                             "value":"18"
                         },
                         "attributes":{
-                            "setFrameString:":"-1",
                             "setImageWithURLString:lineup:":[
                                 "-1",
                                 "-1"
@@ -126,7 +124,6 @@
                                     "type":"match_parent"
                                 },
                                 "attributes":{
-                                    "setFrameString:":"-1",
                                     "setImageWithURLString:lineup:":[
                                         "-1",
                                         "-1"
@@ -232,7 +229,6 @@
                                             "value":"18"
                                         },
                                         "attributes":{
-                                            "setFrameString:":"-1",
                                             "setImageWithURLString:lineup:":[
                                                 "-1",
                                                 "-1"
@@ -279,7 +275,6 @@
                                                             "value":"15"
                                                         },
                                                         "attributes":{
-                                                            "setFrameString:":"-1",
                                                             "setImageWithURLString:lineup:":[
                                                                 "-1",
                                                                 "-1"
@@ -352,7 +347,6 @@
                                                             "value":"15"
                                                         },
                                                         "attributes":{
-                                                            "setFrameString:":"-1",
                                                             "setImageWithURLString:lineup:":[
                                                                 "-1",
                                                                 "-1"

@@ -2,7 +2,10 @@ package com.tencent.weiyun.transmission;
 
 import android.app.Application;
 import android.content.Context;
+import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.WifiLock;
+import android.os.Build.VERSION;
+import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.text.TextUtils;
 import com.tencent.weiyun.transmission.db.OfflineFileHelper;
@@ -34,160 +37,70 @@ public final class WeiyunTransmissionGlobal
     return (WeiyunTransmissionGlobal)sInstance.get(null);
   }
   
-  /* Error */
   public void acquireWakeLockIfNot()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: getstatic 34	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:LOCK	Ljava/util/concurrent/locks/Lock;
-    //   5: astore_2
-    //   6: aload_2
-    //   7: monitorenter
-    //   8: aload_0
-    //   9: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   12: astore_3
-    //   13: aload_3
-    //   14: ifnonnull +25 -> 39
-    //   17: aload_0
-    //   18: aload_0
-    //   19: getfield 64	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mContext	Landroid/app/Application;
-    //   22: ldc 66
-    //   24: invokevirtual 72	android/app/Application:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   27: checkcast 74	android/os/PowerManager
-    //   30: iconst_1
-    //   31: ldc 10
-    //   33: invokevirtual 78	android/os/PowerManager:newWakeLock	(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
-    //   36: putfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   39: aload_0
-    //   40: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   43: ifnull +40 -> 83
-    //   46: aload_0
-    //   47: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   50: invokevirtual 83	android/os/PowerManager$WakeLock:acquire	()V
-    //   53: ldc 10
-    //   55: new 85	java/lang/StringBuilder
-    //   58: dup
-    //   59: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   62: ldc 88
-    //   64: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: aload_0
-    //   68: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   71: invokevirtual 96	android/os/PowerManager$WakeLock:isHeld	()Z
-    //   74: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   83: aload_0
-    //   84: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   87: astore_3
-    //   88: aload_3
-    //   89: ifnonnull +37 -> 126
-    //   92: aload_0
-    //   93: getfield 64	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mContext	Landroid/app/Application;
-    //   96: ldc 111
-    //   98: invokevirtual 72	android/app/Application:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   101: checkcast 113	android/net/wifi/WifiManager
-    //   104: astore_3
-    //   105: getstatic 119	android/os/Build$VERSION:SDK_INT	I
-    //   108: bipush 12
-    //   110: if_icmplt +5 -> 115
-    //   113: iconst_3
-    //   114: istore_1
-    //   115: aload_0
-    //   116: aload_3
-    //   117: iload_1
-    //   118: ldc 10
-    //   120: invokevirtual 123	android/net/wifi/WifiManager:createWifiLock	(ILjava/lang/String;)Landroid/net/wifi/WifiManager$WifiLock;
-    //   123: putfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   126: aload_0
-    //   127: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   130: astore_3
-    //   131: aload_3
-    //   132: ifnull +40 -> 172
-    //   135: aload_0
-    //   136: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   139: invokevirtual 126	android/net/wifi/WifiManager$WifiLock:acquire	()V
-    //   142: ldc 10
-    //   144: new 85	java/lang/StringBuilder
-    //   147: dup
-    //   148: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   151: ldc 128
-    //   153: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: aload_0
-    //   157: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   160: invokevirtual 129	android/net/wifi/WifiManager$WifiLock:isHeld	()Z
-    //   163: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   169: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   172: aload_2
-    //   173: monitorexit
-    //   174: return
-    //   175: astore_3
-    //   176: aload_0
-    //   177: aconst_null
-    //   178: putfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   181: ldc 10
-    //   183: ldc 131
-    //   185: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   188: goto -149 -> 39
-    //   191: astore_3
-    //   192: aload_2
-    //   193: monitorexit
-    //   194: aload_3
-    //   195: athrow
-    //   196: astore_3
-    //   197: aload_0
-    //   198: aconst_null
-    //   199: putfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   202: ldc 10
-    //   204: ldc 133
-    //   206: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   209: goto -83 -> 126
-    //   212: astore_3
-    //   213: ldc 10
-    //   215: new 85	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   222: ldc 135
-    //   224: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload_0
-    //   228: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   231: invokevirtual 129	android/net/wifi/WifiManager$WifiLock:isHeld	()Z
-    //   234: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   243: goto -71 -> 172
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	246	0	this	WeiyunTransmissionGlobal
-    //   1	117	1	i	int
-    //   5	188	2	localLock	Lock
-    //   12	120	3	localObject1	Object
-    //   175	1	3	localThrowable1	java.lang.Throwable
-    //   191	4	3	localObject2	Object
-    //   196	1	3	localThrowable2	java.lang.Throwable
-    //   212	1	3	localThrowable3	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   17	39	175	java/lang/Throwable
-    //   8	13	191	finally
-    //   17	39	191	finally
-    //   39	83	191	finally
-    //   83	88	191	finally
-    //   92	105	191	finally
-    //   105	113	191	finally
-    //   115	126	191	finally
-    //   126	131	191	finally
-    //   135	172	191	finally
-    //   172	174	191	finally
-    //   176	188	191	finally
-    //   192	194	191	finally
-    //   197	209	191	finally
-    //   213	243	191	finally
-    //   92	105	196	java/lang/Throwable
-    //   105	113	196	java/lang/Throwable
-    //   115	126	196	java/lang/Throwable
-    //   135	172	212	java/lang/Throwable
+    synchronized (LOCK)
+    {
+      Object localObject1 = this.mWakeLock;
+      int i = 1;
+      if (localObject1 == null) {}
+      try
+      {
+        this.mWakeLock = ((PowerManager)this.mContext.getSystemService("power")).newWakeLock(1, "WeiyunTransmissionGlobal");
+      }
+      catch (Throwable localThrowable1)
+      {
+        label42:
+        break label42;
+      }
+      this.mWakeLock = null;
+      TsLog.d("WeiyunTransmissionGlobal", "Wakelock new failed :(");
+      if (this.mWakeLock != null)
+      {
+        this.mWakeLock.acquire();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Wakelock acquired :) held=");
+        ((StringBuilder)localObject1).append(this.mWakeLock.isHeld());
+        TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = this.mWifiLock;
+      if (localObject1 == null) {}
+      try
+      {
+        localObject1 = (WifiManager)this.mContext.getSystemService("wifi");
+        if (Build.VERSION.SDK_INT >= 12) {
+          i = 3;
+        }
+        this.mWifiLock = ((WifiManager)localObject1).createWifiLock(i, "WeiyunTransmissionGlobal");
+      }
+      catch (Throwable localThrowable2)
+      {
+        label150:
+        label217:
+        break label150;
+      }
+      this.mWifiLock = null;
+      TsLog.d("WeiyunTransmissionGlobal", "WifiLock new failed :(");
+      localObject1 = this.mWifiLock;
+      if (localObject1 != null) {}
+      try
+      {
+        this.mWifiLock.acquire();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("WifiLock acquired :) held=");
+        ((StringBuilder)localObject1).append(this.mWifiLock.isHeld());
+        TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      }
+      catch (Throwable localThrowable3)
+      {
+        break label217;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("WifiLock acquire failed :( held=");
+      ((StringBuilder)localObject1).append(this.mWifiLock.isHeld());
+      TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      return;
+    }
   }
   
   public WeiyunTransmissionGlobal.AppInfo getAppInfo()
@@ -212,37 +125,38 @@ public final class WeiyunTransmissionGlobal
   
   public List<String> getOfflinePath(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return new ArrayList(0);
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      return OfflineFileHelper.getOfflineFilePath(paramString1, paramString2, paramString3);
     }
-    return OfflineFileHelper.getOfflineFilePath(paramString1, paramString2, paramString3);
+    return new ArrayList(0);
   }
   
   public UploadManager getUploadManager()
   {
-    if (this.mUploadManager == null) {
-      throw new IllegalStateException("Please call WeiyunLiteGlobal.initTransmission(...) in advance.");
+    UploadManager localUploadManager = this.mUploadManager;
+    if (localUploadManager != null) {
+      return localUploadManager;
     }
-    return this.mUploadManager;
+    throw new IllegalStateException("Please call WeiyunLiteGlobal.initTransmission(...) in advance.");
   }
   
   public void initTransmission(WeiyunTransmissionGlobal.AppInfo paramAppInfo, Application paramApplication, WeiyunTransmissionGlobal.HostInterface paramHostInterface, ILog paramILog)
   {
-    if ((paramAppInfo == null) || (paramApplication == null) || (paramHostInterface == null)) {
-      try
-      {
-        throw new IllegalArgumentException("The params appInfo, context and hostInterface should be no-null.");
-      }
-      finally {}
+    if ((paramAppInfo != null) && (paramApplication != null) && (paramHostInterface != null)) {}
+    try
+    {
+      this.mAppInfo = paramAppInfo;
+      this.mContext = paramApplication;
+      this.mHostInterface = paramHostInterface;
+      TsLog.setLog(paramILog);
+      NetworkUtils.setNetworkInfoProvider(new WeiyunTransmissionGlobal.2(this));
+      WeiyunTransmissionStatus.getInstance().initGlobalStatus(paramApplication);
+      this.mUploadManager = UploadManager.getInstance();
+      this.mUploadManager.init();
+      return;
     }
-    this.mAppInfo = paramAppInfo;
-    this.mContext = paramApplication;
-    this.mHostInterface = paramHostInterface;
-    TsLog.setLog(paramILog);
-    NetworkUtils.setNetworkInfoProvider(new WeiyunTransmissionGlobal.2(this));
-    WeiyunTransmissionStatus.getInstance().initGlobalStatus(paramApplication);
-    this.mUploadManager = UploadManager.getInstance();
-    this.mUploadManager.init();
+    finally {}
+    throw new IllegalArgumentException("The params appInfo, context and hostInterface should be no-null.");
   }
   
   public boolean isNativeUpload()
@@ -250,115 +164,55 @@ public final class WeiyunTransmissionGlobal
     return UploadNative.getInstance().isLoaded();
   }
   
-  /* Error */
   public void releaseWakeLockIfExist()
   {
-    // Byte code:
-    //   0: getstatic 34	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:LOCK	Ljava/util/concurrent/locks/Lock;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: monitorenter
-    //   6: aload_0
-    //   7: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   10: astore_2
-    //   11: aload_2
-    //   12: ifnull +40 -> 52
-    //   15: aload_0
-    //   16: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   19: invokevirtual 227	android/os/PowerManager$WakeLock:release	()V
-    //   22: ldc 10
-    //   24: new 85	java/lang/StringBuilder
-    //   27: dup
-    //   28: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   31: ldc 229
-    //   33: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_0
-    //   37: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   40: invokevirtual 96	android/os/PowerManager$WakeLock:isHeld	()Z
-    //   43: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   52: aload_0
-    //   53: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   56: astore_2
-    //   57: aload_2
-    //   58: ifnull +40 -> 98
-    //   61: aload_0
-    //   62: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   65: invokevirtual 230	android/net/wifi/WifiManager$WifiLock:release	()V
-    //   68: ldc 10
-    //   70: new 85	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   77: ldc 232
-    //   79: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: aload_0
-    //   83: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   86: invokevirtual 129	android/net/wifi/WifiManager$WifiLock:isHeld	()Z
-    //   89: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   98: aload_1
-    //   99: monitorexit
-    //   100: return
-    //   101: astore_2
-    //   102: ldc 10
-    //   104: new 85	java/lang/StringBuilder
-    //   107: dup
-    //   108: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   111: ldc 234
-    //   113: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: aload_0
-    //   117: getfield 43	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWakeLock	Landroid/os/PowerManager$WakeLock;
-    //   120: invokevirtual 96	android/os/PowerManager$WakeLock:isHeld	()Z
-    //   123: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   126: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   132: goto -80 -> 52
-    //   135: astore_2
-    //   136: aload_1
-    //   137: monitorexit
-    //   138: aload_2
-    //   139: athrow
-    //   140: astore_2
-    //   141: ldc 10
-    //   143: new 85	java/lang/StringBuilder
-    //   146: dup
-    //   147: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   150: ldc 236
-    //   152: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: aload_0
-    //   156: getfield 45	com/tencent/weiyun/transmission/WeiyunTransmissionGlobal:mWifiLock	Landroid/net/wifi/WifiManager$WifiLock;
-    //   159: invokevirtual 129	android/net/wifi/WifiManager$WifiLock:isHeld	()Z
-    //   162: invokevirtual 99	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   165: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   168: invokestatic 109	com/tencent/weiyun/transmission/utils/TsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: goto -73 -> 98
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	WeiyunTransmissionGlobal
-    //   3	134	1	localLock	Lock
-    //   10	48	2	localObject1	Object
-    //   101	1	2	localThrowable1	java.lang.Throwable
-    //   135	4	2	localObject2	Object
-    //   140	1	2	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   15	52	101	java/lang/Throwable
-    //   6	11	135	finally
-    //   15	52	135	finally
-    //   52	57	135	finally
-    //   61	98	135	finally
-    //   98	100	135	finally
-    //   102	132	135	finally
-    //   136	138	135	finally
-    //   141	171	135	finally
-    //   61	98	140	java/lang/Throwable
+    synchronized (LOCK)
+    {
+      Object localObject1 = this.mWakeLock;
+      if (localObject1 != null) {}
+      try
+      {
+        this.mWakeLock.release();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Wakelock released :) held=");
+        ((StringBuilder)localObject1).append(this.mWakeLock.isHeld());
+        TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      }
+      catch (Throwable localThrowable1)
+      {
+        label61:
+        break label61;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Wakelock release failed :( held=");
+      ((StringBuilder)localObject1).append(this.mWakeLock.isHeld());
+      TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      localObject1 = this.mWifiLock;
+      if (localObject1 != null) {}
+      try
+      {
+        this.mWifiLock.release();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("WifiLock released :) held=");
+        ((StringBuilder)localObject1).append(this.mWifiLock.isHeld());
+        TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      }
+      catch (Throwable localThrowable2)
+      {
+        label152:
+        break label152;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("WifiLock release failed :( held=");
+      ((StringBuilder)localObject1).append(this.mWifiLock.isHeld());
+      TsLog.d("WeiyunTransmissionGlobal", ((StringBuilder)localObject1).toString());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.WeiyunTransmissionGlobal
  * JD-Core Version:    0.7.0.1
  */

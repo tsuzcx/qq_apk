@@ -10,19 +10,19 @@ public class zzd
   extends zza
 {
   public static final Parcelable.Creator<zzd> CREATOR = new k();
-  final int Hc;
-  final IBinder Jd;
-  final Scope[] Jj;
-  Integer Jm;
-  Integer Jn;
+  final int IR;
+  final IBinder KS;
+  final Scope[] KY;
+  Integer Lb;
+  Integer Lc;
   
   zzd(int paramInt, IBinder paramIBinder, Scope[] paramArrayOfScope, Integer paramInteger1, Integer paramInteger2)
   {
-    this.Hc = paramInt;
-    this.Jd = paramIBinder;
-    this.Jj = paramArrayOfScope;
-    this.Jm = paramInteger1;
-    this.Jn = paramInteger2;
+    this.IR = paramInt;
+    this.KS = paramIBinder;
+    this.KY = paramArrayOfScope;
+    this.Lb = paramInteger1;
+    this.Lc = paramInteger2;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

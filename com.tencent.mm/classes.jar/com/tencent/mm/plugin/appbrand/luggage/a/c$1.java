@@ -4,23 +4,23 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import com.tencent.mm.plugin.appbrand.canvas.e.a;
-import com.tencent.mm.plugin.appbrand.e.a.c;
+import com.tencent.mm.plugin.appbrand.f.a.b;
 
 final class c$1
-  implements a.c
+  implements a.b
 {
   c$1(c paramc, e.a parama, d paramd, String paramString) {}
   
-  public final void C(Bitmap paramBitmap)
+  public final void W(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(132091);
-    if ((this.hok == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
+    AppMethodBeat.i(47472);
+    if ((this.rlc == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(132091);
+      AppMethodBeat.o(47472);
       return;
     }
-    this.hok.a(this.hol);
-    AppMethodBeat.o(132091);
+    this.rlc.a(this.rld);
+    AppMethodBeat.o(47472);
   }
 }
 

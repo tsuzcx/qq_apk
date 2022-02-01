@@ -45,56 +45,82 @@ public class QQAVImageToneCurveFilter
   
   private ArrayList<Double> createSecondDerivative(Point[] paramArrayOfPoint)
   {
-    int j = paramArrayOfPoint.length;
-    if (j <= 1) {
+    int k = paramArrayOfPoint.length;
+    if (k <= 1) {
       return null;
     }
-    double[][] arrayOfDouble = (double[][])Array.newInstance(Double.TYPE, new int[] { j, 3 });
-    double[] arrayOfDouble1 = new double[j];
+    double[][] arrayOfDouble = (double[][])Array.newInstance(Double.TYPE, new int[] { k, 3 });
+    double[] arrayOfDouble1 = new double[k];
     arrayOfDouble[0][1] = 4607182418800017408L;
     arrayOfDouble[0][0] = 0L;
     arrayOfDouble[0][2] = 0L;
-    int i = 1;
-    while (i < j - 1)
+    int j;
+    double d1;
+    for (int i = 1;; i = j)
     {
+      j = k - 1;
+      if (i >= j) {
+        break;
+      }
       Point localPoint1 = paramArrayOfPoint[(i - 1)];
       Point localPoint2 = paramArrayOfPoint[i];
-      Point localPoint3 = paramArrayOfPoint[(i + 1)];
-      arrayOfDouble[i][0] = ((localPoint2.x - localPoint1.x) / 6.0D);
-      arrayOfDouble[i][1] = ((localPoint3.x - localPoint1.x) / 3.0D);
-      arrayOfDouble[i][2] = ((localPoint3.x - localPoint2.x) / 6.0D);
-      arrayOfDouble1[i] = ((localPoint3.y - localPoint2.y) / (localPoint3.x - localPoint2.x) - (localPoint2.y - localPoint1.y) / (localPoint2.x - localPoint1.x));
-      i += 1;
+      j = i + 1;
+      Point localPoint3 = paramArrayOfPoint[j];
+      double[] arrayOfDouble2 = arrayOfDouble[i];
+      d1 = localPoint2.x - localPoint1.x;
+      Double.isNaN(d1);
+      arrayOfDouble2[0] = (d1 / 6.0D);
+      arrayOfDouble2 = arrayOfDouble[i];
+      d1 = localPoint3.x - localPoint1.x;
+      Double.isNaN(d1);
+      arrayOfDouble2[1] = (d1 / 3.0D);
+      arrayOfDouble2 = arrayOfDouble[i];
+      d1 = localPoint3.x - localPoint2.x;
+      Double.isNaN(d1);
+      arrayOfDouble2[2] = (d1 / 6.0D);
+      d1 = localPoint3.y - localPoint2.y;
+      double d2 = localPoint3.x - localPoint2.x;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+      d2 = localPoint2.y - localPoint1.y;
+      double d3 = localPoint2.x - localPoint1.x;
+      Double.isNaN(d2);
+      Double.isNaN(d3);
+      arrayOfDouble1[i] = (d1 - d2 / d3);
     }
     arrayOfDouble1[0] = 0.0D;
-    arrayOfDouble1[(j - 1)] = 0.0D;
-    arrayOfDouble[(j - 1)][1] = 4607182418800017408L;
-    arrayOfDouble[(j - 1)][0] = 0L;
-    arrayOfDouble[(j - 1)][2] = 0L;
+    arrayOfDouble1[j] = 0.0D;
+    arrayOfDouble[j][1] = 4607182418800017408L;
+    arrayOfDouble[j][0] = 0L;
+    arrayOfDouble[j][2] = 0L;
     i = 1;
-    double d;
-    while (i < j)
+    while (i < k)
     {
-      d = arrayOfDouble[i][0] / arrayOfDouble[(i - 1)][1];
+      d1 = arrayOfDouble[i][0];
+      j = i - 1;
+      d1 /= arrayOfDouble[j][1];
       paramArrayOfPoint = arrayOfDouble[i];
-      paramArrayOfPoint[1] -= arrayOfDouble[(i - 1)][2] * d;
+      paramArrayOfPoint[1] -= arrayOfDouble[j][2] * d1;
       arrayOfDouble[i][0] = 0L;
-      arrayOfDouble1[i] -= d * arrayOfDouble1[(i - 1)];
+      arrayOfDouble1[i] -= d1 * arrayOfDouble1[j];
       i += 1;
     }
-    i = j - 2;
+    i = k - 2;
     while (i >= 0)
     {
-      d = arrayOfDouble[i][2] / arrayOfDouble[(i + 1)][1];
+      d1 = arrayOfDouble[i][2];
+      j = i + 1;
+      d1 /= arrayOfDouble[j][1];
       paramArrayOfPoint = arrayOfDouble[i];
-      paramArrayOfPoint[1] -= arrayOfDouble[(i + 1)][0] * d;
+      paramArrayOfPoint[1] -= arrayOfDouble[j][0] * d1;
       arrayOfDouble[i][2] = 0L;
-      arrayOfDouble1[i] -= d * arrayOfDouble1[(i + 1)];
+      arrayOfDouble1[i] -= d1 * arrayOfDouble1[j];
       i -= 1;
     }
-    paramArrayOfPoint = new ArrayList(j);
     i = 0;
-    while (i < j)
+    paramArrayOfPoint = new ArrayList(k);
+    while (i < k)
     {
       paramArrayOfPoint.add(Double.valueOf(arrayOfDouble1[i] / arrayOfDouble[i][1]));
       i += 1;
@@ -104,64 +130,69 @@ public class QQAVImageToneCurveFilter
   
   private ArrayList<Float> createSplineCurve(PointF[] paramArrayOfPointF)
   {
-    if ((paramArrayOfPointF == null) || (paramArrayOfPointF.length <= 0)) {
-      return null;
-    }
-    Object localObject1 = (PointF[])paramArrayOfPointF.clone();
-    Arrays.sort((Object[])localObject1, new QQAVImageToneCurveFilter.2(this));
-    Object localObject2 = new Point[localObject1.length];
-    int i = 0;
-    Point localPoint;
-    while (i < paramArrayOfPointF.length)
+    Object localObject1 = null;
+    if (paramArrayOfPointF != null)
     {
-      localPoint = localObject1[i];
-      localObject2[i] = new Point((int)(localPoint.x * 255.0F), (int)(localPoint.y * 255.0F));
-      i += 1;
-    }
-    localObject1 = createSplineCurve2((Point[])localObject2);
-    if (localObject1 == null) {
-      return null;
-    }
-    paramArrayOfPointF = (Point)((ArrayList)localObject1).get(0);
-    if (paramArrayOfPointF.x > 0)
-    {
-      i = paramArrayOfPointF.x;
-      while (i >= 0)
-      {
-        ((ArrayList)localObject1).add(0, new Point(i, 0));
-        i -= 1;
+      if (paramArrayOfPointF.length <= 0) {
+        return null;
       }
-    }
-    paramArrayOfPointF = (Point)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1);
-    if (paramArrayOfPointF.x < 255)
-    {
-      i = paramArrayOfPointF.x + 1;
-      while (i <= 255)
+      localObject1 = (PointF[])paramArrayOfPointF.clone();
+      Arrays.sort((Object[])localObject1, new QQAVImageToneCurveFilter.2(this));
+      Object localObject2 = new Point[localObject1.length];
+      int i = 0;
+      Point localPoint;
+      while (i < paramArrayOfPointF.length)
       {
-        ((ArrayList)localObject1).add(new Point(i, 255));
+        localPoint = localObject1[i];
+        localObject2[i] = new Point((int)(localPoint.x * 255.0F), (int)(localPoint.y * 255.0F));
         i += 1;
       }
-    }
-    paramArrayOfPointF = new ArrayList(((ArrayList)localObject1).size());
-    localObject1 = ((ArrayList)localObject1).iterator();
-    float f;
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Point)((Iterator)localObject1).next();
-      localPoint = new Point(((Point)localObject2).x, ((Point)localObject2).x);
-      f = (float)Math.sqrt(Math.pow(localPoint.x - ((Point)localObject2).x, 2.0D) + Math.pow(localPoint.y - ((Point)localObject2).y, 2.0D));
-      if (localPoint.y <= ((Point)localObject2).y) {
-        break label351;
+      localObject1 = createSplineCurve2((Point[])localObject2);
+      if (localObject1 == null) {
+        return null;
       }
-      f = -f;
+      paramArrayOfPointF = (Point)((ArrayList)localObject1).get(0);
+      if (paramArrayOfPointF.x > 0)
+      {
+        i = paramArrayOfPointF.x;
+        while (i >= 0)
+        {
+          ((ArrayList)localObject1).add(0, new Point(i, 0));
+          i -= 1;
+        }
+      }
+      paramArrayOfPointF = (Point)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1);
+      if (paramArrayOfPointF.x < 255)
+      {
+        i = paramArrayOfPointF.x;
+        for (;;)
+        {
+          i += 1;
+          if (i > 255) {
+            break;
+          }
+          ((ArrayList)localObject1).add(new Point(i, 255));
+        }
+      }
+      paramArrayOfPointF = new ArrayList(((ArrayList)localObject1).size());
+      localObject2 = ((ArrayList)localObject1).iterator();
+      for (;;)
+      {
+        localObject1 = paramArrayOfPointF;
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        localObject1 = (Point)((Iterator)localObject2).next();
+        localPoint = new Point(((Point)localObject1).x, ((Point)localObject1).x);
+        float f2 = (float)Math.sqrt(Math.pow(localPoint.x - ((Point)localObject1).x, 2.0D) + Math.pow(localPoint.y - ((Point)localObject1).y, 2.0D));
+        float f1 = f2;
+        if (localPoint.y > ((Point)localObject1).y) {
+          f1 = -f2;
+        }
+        paramArrayOfPointF.add(Float.valueOf(f1));
+      }
     }
-    label351:
-    for (;;)
-    {
-      paramArrayOfPointF.add(Float.valueOf(f));
-      break;
-      return paramArrayOfPointF;
-    }
+    return localObject1;
   }
   
   private ArrayList<Point> createSplineCurve2(Point[] paramArrayOfPoint)
@@ -170,49 +201,55 @@ public class QQAVImageToneCurveFilter
     if (localArrayList == null) {
       return null;
     }
-    int k = localArrayList.size();
-    if (k < 1) {
+    int j = localArrayList.size();
+    if (j < 1) {
       return null;
     }
-    double[] arrayOfDouble = new double[k];
+    double[] arrayOfDouble = new double[j];
+    int k = 0;
     int i = 0;
-    while (i < k)
+    while (i < j)
     {
       arrayOfDouble[i] = ((Double)localArrayList.get(i)).doubleValue();
       i += 1;
     }
-    localArrayList = new ArrayList(k + 1);
-    i = 0;
-    while (i < k - 1)
+    localArrayList = new ArrayList(j + 1);
+    int m;
+    for (i = k;; i = m)
     {
-      Point localPoint1 = paramArrayOfPoint[i];
-      Point localPoint2 = paramArrayOfPoint[(i + 1)];
-      int j = localPoint1.x;
-      if (j < localPoint2.x)
-      {
-        double d1 = (j - localPoint1.x) / (localPoint2.x - localPoint1.x);
-        double d2 = 1.0D - d1;
-        double d5 = localPoint2.x - localPoint1.x;
-        double d3 = localPoint1.y;
-        double d4 = localPoint2.y;
-        d5 = d5 * d5 / 6.0D;
-        double d6 = arrayOfDouble[i];
-        d2 = ((d1 * d1 * d1 - d1) * arrayOfDouble[(i + 1)] + (d2 * d2 * d2 - d2) * d6) * d5 + (d3 * d2 + d4 * d1);
-        if (d2 > 255.0D) {
-          d1 = 255.0D;
-        }
-        for (;;)
-        {
-          localArrayList.add(new Point(j, (int)Math.round(d1)));
-          j += 1;
-          break;
-          d1 = d2;
-          if (d2 < 0.0D) {
-            d1 = 0.0D;
-          }
-        }
+      Object localObject2 = paramArrayOfPoint;
+      if (i >= j - 1) {
+        break;
       }
-      i += 1;
+      Object localObject1 = localObject2[i];
+      m = i + 1;
+      localObject2 = localObject2[m];
+      k = localObject1.x;
+      while (k < ((Point)localObject2).x)
+      {
+        double d1 = k - localObject1.x;
+        double d2 = ((Point)localObject2).x - localObject1.x;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        d2 = 1.0D - d1;
+        double d3 = ((Point)localObject2).x - localObject1.x;
+        double d4 = localObject1.y;
+        Double.isNaN(d4);
+        double d5 = ((Point)localObject2).y;
+        Double.isNaN(d5);
+        Double.isNaN(d3);
+        Double.isNaN(d3);
+        d1 = d4 * d2 + d5 * d1 + d3 * d3 / 6.0D * ((d2 * d2 * d2 - d2) * arrayOfDouble[i] + (d1 * d1 * d1 - d1) * arrayOfDouble[m]);
+        d2 = 0.0D;
+        if (d1 > 255.0D) {
+          d1 = 255.0D;
+        } else if (d1 < 0.0D) {
+          d1 = d2;
+        }
+        localArrayList.add(new Point(k, (int)Math.round(d1)));
+        k += 1;
+      }
     }
     if (localArrayList.size() == 255) {
       localArrayList.add(paramArrayOfPoint[(paramArrayOfPoint.length - 1)]);
@@ -222,7 +259,8 @@ public class QQAVImageToneCurveFilter
   
   private short readShort(InputStream paramInputStream)
   {
-    return (short)(paramInputStream.read() << 8 | paramInputStream.read());
+    int i = paramInputStream.read();
+    return (short)(paramInputStream.read() | i << 8);
   }
   
   private void updateToneCurveTexture()
@@ -337,7 +375,7 @@ public class QQAVImageToneCurveFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageToneCurveFilter
  * JD-Core Version:    0.7.0.1
  */

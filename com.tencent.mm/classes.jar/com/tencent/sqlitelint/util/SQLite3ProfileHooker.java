@@ -10,30 +10,30 @@ public final class SQLite3ProfileHooker
   
   private static boolean doHook()
   {
-    AppMethodBeat.i(94117);
+    AppMethodBeat.i(52961);
     if (!hookOpenSQLite3Profile())
     {
       SLog.i("SQLiteLint.SQLite3ProfileHooker", "doHook hookOpenSQLite3Profile failed", new Object[0]);
-      AppMethodBeat.o(94117);
+      AppMethodBeat.o(52961);
       return false;
     }
     boolean bool = nativeDoHook();
-    AppMethodBeat.o(94117);
+    AppMethodBeat.o(52961);
     return bool;
   }
   
   private static boolean doUnHook()
   {
-    AppMethodBeat.i(94118);
+    AppMethodBeat.i(52962);
     unHookOpenSQLite3Profile();
     nativeStopProfile();
-    AppMethodBeat.o(94118);
+    AppMethodBeat.o(52962);
     return true;
   }
   
   public static void hook()
   {
-    AppMethodBeat.i(94115);
+    AppMethodBeat.i(52959);
     SLog.i("SQLiteLint.SQLite3ProfileHooker", "hook sIsTryHook: %b", new Object[] { Boolean.valueOf(sIsTryHook) });
     nativeStartProfile();
     if (!sIsTryHook)
@@ -41,12 +41,12 @@ public final class SQLite3ProfileHooker
       SLog.i("SQLiteLint.SQLite3ProfileHooker", "hook hookRet: %b", new Object[] { Boolean.valueOf(doHook()) });
       sIsTryHook = true;
     }
-    AppMethodBeat.o(94115);
+    AppMethodBeat.o(52959);
   }
   
   private static boolean hookOpenSQLite3Profile()
   {
-    AppMethodBeat.i(94119);
+    AppMethodBeat.i(52963);
     try
     {
       Class localClass = Class.forName("android.database.sqlite.SQLiteDebug");
@@ -54,13 +54,13 @@ public final class SQLite3ProfileHooker
       localField.setAccessible(true);
       localField.setBoolean(localClass, true);
       localField.setAccessible(false);
-      AppMethodBeat.o(94119);
+      AppMethodBeat.o(52963);
       return true;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       SLog.e("SQLiteLint.SQLite3ProfileHooker", "prepareHookBeforeOpenDatabase: e=%s", new Object[] { localClassNotFoundException.getLocalizedMessage() });
-      AppMethodBeat.o(94119);
+      AppMethodBeat.o(52963);
       return false;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -87,18 +87,18 @@ public final class SQLite3ProfileHooker
   
   public static void unHook()
   {
-    AppMethodBeat.i(94116);
+    AppMethodBeat.i(52960);
     if (sIsTryHook)
     {
       SLog.i("SQLiteLint.SQLite3ProfileHooker", "unHook unHookRet: %b", new Object[] { Boolean.valueOf(doUnHook()) });
       sIsTryHook = false;
     }
-    AppMethodBeat.o(94116);
+    AppMethodBeat.o(52960);
   }
   
   private static boolean unHookOpenSQLite3Profile()
   {
-    AppMethodBeat.i(94120);
+    AppMethodBeat.i(52964);
     try
     {
       Class localClass = Class.forName("android.database.sqlite.SQLiteDebug");
@@ -106,13 +106,13 @@ public final class SQLite3ProfileHooker
       localField.setAccessible(true);
       localField.setBoolean(localClass, false);
       localField.setAccessible(false);
-      AppMethodBeat.o(94120);
+      AppMethodBeat.o(52964);
       return true;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       SLog.e("SQLiteLint.SQLite3ProfileHooker", "unHookOpenSQLite3Profile: e=%s", new Object[] { localClassNotFoundException.getLocalizedMessage() });
-      AppMethodBeat.o(94120);
+      AppMethodBeat.o(52964);
       return false;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -133,7 +133,7 @@ public final class SQLite3ProfileHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.util.SQLite3ProfileHooker
  * JD-Core Version:    0.7.0.1
  */

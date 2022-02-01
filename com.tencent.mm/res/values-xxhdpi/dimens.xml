@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="q0">12.0dip</dimen>
+    <dimen name="a23">90.0dip</dimen>
+    <dimen name="a2a">280.0dip</dimen>
+    <dimen name="aer">70.0dip</dimen>
+    <dimen name="aes">52.0dip</dimen>
+    <dimen name="aet">50.0dip</dimen>
+    <dimen name="aeu">20.0dip</dimen>
+    <dimen name="aev">25.0dip</dimen>
+    <dimen name="aew">8.0dip</dimen>
+    <dimen name="aex">16.0dip</dimen>
+    <dimen name="af1">39.0dip</dimen>
+    <dimen name="af5">37.0dip</dimen>
+    <dimen name="af6">24.0dip</dimen>
+    <dimen name="af7">14.0dip</dimen>
+    <dimen name="af8">12.0dip</dimen>
+    <dimen name="atp">130.0dip</dimen>
+    <dimen name="ayr">18.0dip</dimen>
+    <dimen name="ays">48.0dip</dimen>
+    <dimen name="ayt">48.0dip</dimen>
+    <dimen name="ayu">72.0dip</dimen>
+</resources>

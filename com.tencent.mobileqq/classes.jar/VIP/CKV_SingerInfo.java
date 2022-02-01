@@ -26,17 +26,19 @@ public final class CKV_SingerInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sSingerId != null) {
-      paramJceOutputStream.write(this.sSingerId, 0);
+    String str = this.sSingerId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.sSingerName != null) {
-      paramJceOutputStream.write(this.sSingerName, 1);
+    str = this.sSingerName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.CKV_SingerInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/sc_message_box_bg1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="38.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/color_hei" android:paddingLeft="14.0dip" android:paddingTop="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/sc_QQMsgNotiry_time" android:layout_weight="1.0" />
+        </LinearLayout>
+        <ImageView android:background="@drawable/sc_message_box_divider_h" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="2.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="226.0dip">
+            <LinearLayout android:id="@id/timepicker_text" android:layout_width="fill_parent" android:layout_height="36.0dip">
+                <TextView android:textSize="17.0dip" android:textColor="@color/color_hei" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/start" android:layout_weight="1.0" />
+                <TextView android:textSize="17.0dip" android:textColor="@color/color_hei" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/end" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:background="@color/sc_transparent_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/timepicker_text">
+                <LinearLayout android:orientation="vertical" android:background="@drawable/kuangkuang" android:layout_width="96.0dip" android:layout_height="180.0dip" android:layout_marginLeft="23.0dip" android:layout_marginRight="26.0dip" android:layout_marginBottom="14.0dip">
+                    <ImageView android:id="@id/begin_pluss" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/pluss" />
+                    <TextView android:textSize="28.0dip" android:textColor="#ff686868" android:gravity="center" android:layout_gravity="center" android:id="@id/begin_pluss_text" android:layout_width="76.0dip" android:layout_height="76.0dip" android:layout_marginTop="20.0dip" android:text="18" />
+                    <ImageView android:id="@id/begin_minus" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/minus" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:background="@drawable/kuangkuang" android:layout_width="96.0dip" android:layout_height="180.0dip" android:layout_marginLeft="26.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="14.0dip">
+                    <ImageView android:id="@id/end_pluss" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/pluss" />
+                    <TextView android:textSize="28.0dip" android:textColor="#ff686868" android:gravity="center" android:layout_gravity="center" android:id="@id/end_pluss_text" android:layout_width="76.0dip" android:layout_height="76.0dip" android:layout_marginTop="20.0dip" android:text="18" />
+                    <ImageView android:id="@id/end_minus" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/minus" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/sc_message_box_btn_bg" android:background="@drawable/sc_message_box_bg2" android:layout_width="fill_parent" android:layout_height="58.0dip">
+        <ImageView android:id="@id/qq_timepicker_save" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/save_picker" android:layout_weight="1.0" />
+        <ImageView android:id="@id/qq_timepicker_cancle" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cancle_picker" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

@@ -13,8 +13,8 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import hhe;
 import hhf;
-import hhg;
 
 public class QQProgressDialog
   extends Dialog
@@ -42,10 +42,10 @@ public class QQProgressDialog
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903614, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231196));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231195));
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233080));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231195));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233079));
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231194));
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.b.getDrawable());
   }
   
@@ -121,7 +121,7 @@ public class QQProgressDialog
   
   public void c(boolean paramBoolean)
   {
-    setOnKeyListener(new hhg(this, paramBoolean));
+    setOnKeyListener(new hhf(this, paramBoolean));
   }
   
   public void dismiss()
@@ -158,7 +158,7 @@ public class QQProgressDialog
   
   protected void onStart()
   {
-    this.b.postDelayed(new hhf(this), 50L);
+    this.b.postDelayed(new hhe(this), 50L);
     super.onStart();
   }
   

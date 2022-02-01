@@ -6,8 +6,6 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 import android.util.Pair;
-import com.google.android.gms.common.annotation.KeepForSdk;
-import com.google.android.gms.common.annotation.KeepName;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.PendingResult.StatusListener;
@@ -19,7 +17,6 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.api.TransformedResult;
 import com.google.android.gms.common.internal.ICancelToken;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,13 +24,10 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-@KeepForSdk
-@KeepName
 public abstract class BasePendingResult<R extends Result>
   extends PendingResult<R>
 {
   static final ThreadLocal<Boolean> zzez = new zzo();
-  @KeepName
   private zza mResultGuardian;
   private Status mStatus;
   private R zzdm;
@@ -59,14 +53,12 @@ public abstract class BasePendingResult<R extends Result>
   }
   
   @Deprecated
-  @KeepForSdk
   protected BasePendingResult(Looper paramLooper)
   {
     this.zzfb = new CallbackHandler(paramLooper);
     this.zzfc = new WeakReference(null);
   }
   
-  @KeepForSdk
   protected BasePendingResult(GoogleApiClient paramGoogleApiClient)
   {
     if (paramGoogleApiClient != null) {}
@@ -78,8 +70,6 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   protected BasePendingResult(CallbackHandler<R> paramCallbackHandler)
   {
     this.zzfb = ((CallbackHandler)Preconditions.checkNotNull(paramCallbackHandler, "CallbackHandler must not be null"));
@@ -251,7 +241,6 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
   public void cancel()
   {
     synchronized (this.zzfa)
@@ -279,7 +268,6 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
   protected abstract R createFailedResult(Status paramStatus);
   
   public boolean isCanceled()
@@ -291,13 +279,11 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
   public final boolean isReady()
   {
     return this.zzfd.getCount() == 0L;
   }
   
-  @KeepForSdk
   protected final void setCancelToken(ICancelToken paramICancelToken)
   {
     synchronized (this.zzfa)
@@ -307,7 +293,6 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
   public final void setResult(R paramR)
   {
     boolean bool2 = true;
@@ -342,7 +327,6 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
   public final void setResultCallback(ResultCallback<? super R> paramResultCallback)
   {
     boolean bool2 = true;
@@ -384,7 +368,6 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @KeepForSdk
   public final void setResultCallback(ResultCallback<? super R> paramResultCallback, long paramLong, TimeUnit paramTimeUnit)
   {
     boolean bool2 = true;
@@ -525,15 +508,14 @@ public abstract class BasePendingResult<R extends Result>
     }
   }
   
-  @VisibleForTesting
   public static class CallbackHandler<R extends Result>
     extends Handler
   {
     public CallbackHandler()
     {
       this(Looper.getMainLooper());
-      AppMethodBeat.i(60564);
-      AppMethodBeat.o(60564);
+      AppMethodBeat.i(11056);
+      AppMethodBeat.o(11056);
     }
     
     public CallbackHandler(Looper paramLooper)
@@ -543,13 +525,13 @@ public abstract class BasePendingResult<R extends Result>
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(60566);
+      AppMethodBeat.i(11058);
       switch (paramMessage.what)
       {
       default: 
         int i = paramMessage.what;
         Log.wtf("BasePendingResult", 45 + "Don't know how to handle message: " + i, new Exception());
-        AppMethodBeat.o(60566);
+        AppMethodBeat.o(11058);
         return;
       case 1: 
         Object localObject = (Pair)paramMessage.obj;
@@ -558,25 +540,25 @@ public abstract class BasePendingResult<R extends Result>
         try
         {
           paramMessage.onResult((Result)localObject);
-          AppMethodBeat.o(60566);
+          AppMethodBeat.o(11058);
           return;
         }
         catch (RuntimeException paramMessage)
         {
           BasePendingResult.zzb((Result)localObject);
-          AppMethodBeat.o(60566);
+          AppMethodBeat.o(11058);
           throw paramMessage;
         }
       }
       ((BasePendingResult)paramMessage.obj).zzb(Status.RESULT_TIMEOUT);
-      AppMethodBeat.o(60566);
+      AppMethodBeat.o(11058);
     }
     
     public final void zza(ResultCallback<? super R> paramResultCallback, R paramR)
     {
-      AppMethodBeat.i(60565);
+      AppMethodBeat.i(11057);
       sendMessage(obtainMessage(1, new Pair(paramResultCallback, paramR)));
-      AppMethodBeat.o(60565);
+      AppMethodBeat.o(11057);
     }
   }
   
@@ -586,16 +568,16 @@ public abstract class BasePendingResult<R extends Result>
     
     protected final void finalize()
     {
-      AppMethodBeat.i(60567);
+      AppMethodBeat.i(11059);
       BasePendingResult.zzb(BasePendingResult.zza(BasePendingResult.this));
       super.finalize();
-      AppMethodBeat.o(60567);
+      AppMethodBeat.o(11059);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.BasePendingResult
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/eyh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/eyg" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/f_u" style="@style/b8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/eyi" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/eya" style="@style/b6" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/eyd" android:background="@drawable/qq_business_card_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/eyh" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/grb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gt" android:layout_below="@id/eyh">
+        <TextView android:id="@id/gtc" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/f_z" style="@style/b8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/gra" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/gmk" style="@style/b6" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/gpt" android:background="@drawable/qq_business_card_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/grb" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bgy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gt" android:layout_below="@id/grb">
+        <TextView android:id="@id/bgq" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/f_n" style="@style/b8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bgl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/bg6" android:paddingTop="@dimen/gz" android:paddingRight="@dimen/gy" android:paddingBottom="@dimen/gw" android:layout_height="wrap_content" android:minHeight="@dimen/gr" style="@style/b6" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/bge" android:background="@drawable/qq_business_card_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/bgy" />
+</RelativeLayout>

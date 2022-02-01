@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.model.content;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.RepeaterContent;

@@ -2,54 +2,54 @@ package com.tencent.mm.plugin.talkroom.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
-import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public final class h
 {
-  private static final int tbK = a.tbK;
+  private static final int SMK = a.SMK;
   
-  public static String aT(Context paramContext, String paramString)
+  public static String bU(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(25846);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(29528);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(25846);
+      AppMethodBeat.o(29528);
       return null;
     }
-    aw.aaz();
-    ad localad = c.YA().arw(paramString);
-    if (localad == null)
+    bh.bCz();
+    au localau = c.bzA().JE(paramString);
+    if (localau == null)
     {
-      AppMethodBeat.o(25846);
+      AppMethodBeat.o(29528);
       return null;
     }
-    if (t.lA(paramString))
+    if (au.bwE(paramString))
     {
-      if (bo.isNullOrNil(localad.field_nickname))
+      if (Util.isNullOrNil(localau.field_nickname))
       {
-        paramContext = paramContext.getString(2131304250);
-        AppMethodBeat.o(25846);
+        paramContext = paramContext.getString(R.l.gXa);
+        AppMethodBeat.o(29528);
         return paramContext;
       }
-      paramContext = localad.Oe();
-      AppMethodBeat.o(25846);
+      paramContext = localau.aSU();
+      AppMethodBeat.o(29528);
       return paramContext;
     }
-    paramContext = s.nE(paramString);
-    AppMethodBeat.o(25846);
+    paramContext = aa.getDisplayName(paramString);
+    AppMethodBeat.o(29528);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.h
  * JD-Core Version:    0.7.0.1
  */

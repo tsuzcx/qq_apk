@@ -4,35 +4,43 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class stGlobalConfig
   extends JceStruct
 {
-  static stCallInfo cache_callinfo = new stCallInfo();
+  static stAioAction cache_aioAction = new stAioAction();
+  static stCallInfo cache_callinfo;
+  static stCommentConfig cache_commentConfig;
   static downloadConfig cache_download;
   static stJumpInfo cache_jumpinfo = new stJumpInfo();
   static stLinkConfig cache_linkConfig;
   static Map<String, String> cache_mapExt;
   static pendantConfig cache_pendant;
   static stPopWindowsConfig cache_red_dot_window;
+  static stUserAuth cache_user_auth;
   static ArrayList<stPopWindowsConfig> cache_windows_config = new ArrayList();
-  public int cache_size;
-  public stCallInfo callinfo;
-  public downloadConfig download;
+  public stAioAction aioAction = null;
+  public int cache_size = 0;
+  public stCallInfo callinfo = null;
+  public stCommentConfig commentConfig = null;
+  public downloadConfig download = null;
   public String encrypted_deviceid = "";
-  public boolean isHalfAppStoreScreen;
-  public byte is_call_weishi;
-  public byte is_direct_open;
-  public stJumpInfo jumpinfo;
-  public stLinkConfig linkConfig;
-  public int link_strategy_type;
-  public Map<String, String> mapExt;
-  public int open_4g_autodownload;
-  public pendantConfig pendant;
-  public stPopWindowsConfig red_dot_window;
-  public ArrayList<stPopWindowsConfig> windows_config;
+  public boolean isHalfAppStoreScreen = false;
+  public byte is_call_weishi = 0;
+  public byte is_direct_open = 0;
+  public stJumpInfo jumpinfo = null;
+  public stLinkConfig linkConfig = null;
+  public int link_strategy_type = 0;
+  public Map<String, String> mapExt = null;
+  public int open_4g_autodownload = 0;
+  public pendantConfig pendant = null;
+  public int playerType = 0;
+  public stPopWindowsConfig red_dot_window = null;
+  public stUserAuth user_auth = null;
+  public ArrayList<stPopWindowsConfig> windows_config = null;
   
   static
   {
@@ -44,11 +52,14 @@ public final class stGlobalConfig
     cache_red_dot_window = new stPopWindowsConfig();
     cache_mapExt = new HashMap();
     cache_mapExt.put("", "");
+    cache_callinfo = new stCallInfo();
+    cache_user_auth = new stUserAuth();
+    cache_commentConfig = new stCommentConfig();
   }
   
   public stGlobalConfig() {}
   
-  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo)
+  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo, stUserAuth paramstUserAuth, stCommentConfig paramstCommentConfig, stAioAction paramstAioAction, int paramInt4)
   {
     this.jumpinfo = paramstJumpInfo;
     this.windows_config = paramArrayList;
@@ -65,6 +76,10 @@ public final class stGlobalConfig
     this.isHalfAppStoreScreen = paramBoolean;
     this.mapExt = paramMap;
     this.callinfo = paramstCallInfo;
+    this.user_auth = paramstUserAuth;
+    this.commentConfig = paramstCommentConfig;
+    this.aioAction = paramstAioAction;
+    this.playerType = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -84,48 +99,74 @@ public final class stGlobalConfig
     this.isHalfAppStoreScreen = paramJceInputStream.read(this.isHalfAppStoreScreen, 12, false);
     this.mapExt = ((Map)paramJceInputStream.read(cache_mapExt, 13, false));
     this.callinfo = ((stCallInfo)paramJceInputStream.read(cache_callinfo, 14, false));
+    this.user_auth = ((stUserAuth)paramJceInputStream.read(cache_user_auth, 15, false));
+    this.commentConfig = ((stCommentConfig)paramJceInputStream.read(cache_commentConfig, 16, false));
+    this.aioAction = ((stAioAction)paramJceInputStream.read(cache_aioAction, 17, false));
+    this.playerType = paramJceInputStream.read(this.playerType, 18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.jumpinfo != null) {
-      paramJceOutputStream.write(this.jumpinfo, 0);
+    Object localObject = this.jumpinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.windows_config != null) {
-      paramJceOutputStream.write(this.windows_config, 1);
+    localObject = this.windows_config;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.is_call_weishi, 2);
     paramJceOutputStream.write(this.link_strategy_type, 3);
     paramJceOutputStream.write(this.open_4g_autodownload, 4);
-    if (this.pendant != null) {
-      paramJceOutputStream.write(this.pendant, 5);
+    localObject = this.pendant;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.cache_size, 6);
     paramJceOutputStream.write(this.is_direct_open, 7);
-    if (this.download != null) {
-      paramJceOutputStream.write(this.download, 8);
+    localObject = this.download;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.encrypted_deviceid != null) {
-      paramJceOutputStream.write(this.encrypted_deviceid, 9);
+    localObject = this.encrypted_deviceid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.linkConfig != null) {
-      paramJceOutputStream.write(this.linkConfig, 10);
+    localObject = this.linkConfig;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.red_dot_window != null) {
-      paramJceOutputStream.write(this.red_dot_window, 11);
+    localObject = this.red_dot_window;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
     paramJceOutputStream.write(this.isHalfAppStoreScreen, 12);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 13);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.callinfo != null) {
-      paramJceOutputStream.write(this.callinfo, 14);
+    localObject = this.callinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
+    localObject = this.user_auth;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
+    }
+    localObject = this.commentConfig;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
+    }
+    localObject = this.aioAction;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
+    }
+    paramJceOutputStream.write(this.playerType, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

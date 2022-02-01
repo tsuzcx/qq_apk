@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.text.TextUtils;
-import azus;
-import azwv;
-import azxl;
-import azzm;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -45,19 +45,24 @@ public class MessageForTroopSign
     localObject1 = ((StructMsgForGeneralShare)localObject1).mStructMsgItemLists;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      localObject1 = (azus)((List)localObject1).get(0);
-      if ((localObject1 instanceof azxl))
+      localObject1 = (AbsStructMsgElement)((List)localObject1).get(0);
+      if ((localObject1 instanceof StructMsgItemLayout2))
       {
-        Object localObject2 = (azxl)localObject1;
-        localObject1 = ((azxl)localObject2).a;
+        Object localObject2 = (StructMsgItemLayout2)localObject1;
+        localObject1 = ((StructMsgItemLayout2)localObject2).ax;
+        Object localObject3;
         try
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageForTroopSign", 2, "doParse, mCommonData=" + ((azxl)localObject2).i);
-          }
-          if (!TextUtils.isEmpty(((azxl)localObject2).i))
+          if (QLog.isColorLevel())
           {
-            localObject2 = new JSONObject(((azxl)localObject2).i);
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("doParse, mCommonData=");
+            ((StringBuilder)localObject3).append(((StructMsgItemLayout2)localObject2).k);
+            QLog.d("MessageForTroopSign", 2, ((StringBuilder)localObject3).toString());
+          }
+          if (!TextUtils.isEmpty(((StructMsgItemLayout2)localObject2).k))
+          {
+            localObject2 = new JSONObject(((StructMsgItemLayout2)localObject2).k);
             this.markType = ((JSONObject)localObject2).getInt("markType");
             this.positonType = ((JSONObject)localObject2).getInt("positonType");
             this.markIconUrl = ((JSONObject)localObject2).getString("markIconUrl");
@@ -68,53 +73,51 @@ public class MessageForTroopSign
         }
         catch (Exception localException)
         {
-          for (;;)
+          if (QLog.isColorLevel())
           {
-            String str;
-            if (QLog.isColorLevel())
-            {
-              QLog.e("MessageForTroopSign", 2, "doParse:" + localException.toString());
-              continue;
-              if ("summary".equals(str))
-              {
-                if ((localException instanceof azzm)) {
-                  this.msgContent = ((azzm)localException).b();
-                }
-              }
-              else if (("title".equals(str)) && ((localException instanceof StructMsgItemTitle))) {
-                this.msgTitle = ((StructMsgItemTitle)localException).b();
-              }
-            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("doParse:");
+            ((StringBuilder)localObject3).append(localException.toString());
+            QLog.e("MessageForTroopSign", 2, ((StringBuilder)localObject3).toString());
           }
         }
         localObject1 = ((ArrayList)localObject1).iterator();
-        for (;;)
+        while (((Iterator)localObject1).hasNext())
         {
-          if (!((Iterator)localObject1).hasNext()) {
-            break label372;
+          AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject1).next();
+          localObject3 = localAbsStructMsgElement.b;
+          if ("vote".equals(localObject3))
+          {
+            if ((localAbsStructMsgElement instanceof StructMsgItemCover)) {
+              this.msgCoverUrl = ((StructMsgItemCover)localAbsStructMsgElement).av;
+            }
           }
-          localObject2 = (azus)((Iterator)localObject1).next();
-          str = ((azus)localObject2).a;
-          if (!"vote".equals(str)) {
-            break;
+          else if ("summary".equals(localObject3))
+          {
+            if ((localAbsStructMsgElement instanceof StructMsgItemSummary)) {
+              this.msgContent = ((StructMsgItemSummary)localAbsStructMsgElement).e();
+            }
           }
-          if ((localObject2 instanceof azwv)) {
-            this.msgCoverUrl = ((azwv)localObject2).S;
+          else if (("title".equals(localObject3)) && ((localAbsStructMsgElement instanceof StructMsgItemTitle))) {
+            this.msgTitle = ((StructMsgItemTitle)localAbsStructMsgElement).e();
           }
         }
       }
     }
-    label372:
     this.msg = getSummaryMsg();
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForTroopSign", 2, "doParse:" + toString());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("doParse:");
+      ((StringBuilder)localObject1).append(toString());
+      QLog.d("MessageForTroopSign", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msgBrief)) {
-      this.msgBrief = alud.a(2131706996);
+      this.msgBrief = HardCodeUtil.a(2131904488);
     }
     return this.msgBrief;
   }
@@ -127,19 +130,32 @@ public class MessageForTroopSign
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MessageForSign{");
-    localStringBuilder.append("msgCoverUrl=").append(this.msgCoverUrl);
-    localStringBuilder.append(", msgAction=").append(this.msgAction);
-    localStringBuilder.append(", msgTitle=").append(this.msgTitle);
-    localStringBuilder.append(", msgContent=").append(this.msgContent);
-    localStringBuilder.append(", srcName=").append(this.srcName);
-    localStringBuilder.append(", srcAction=").append(this.srcAction);
-    localStringBuilder.append(", srcIconUrl=").append(this.srcIconUrl);
-    localStringBuilder.append(", msgBrief=").append(this.msgBrief);
-    localStringBuilder.append(", markType=").append(this.markType);
-    localStringBuilder.append(", positonType=").append(this.positonType);
-    localStringBuilder.append(", markIconUrl=").append(this.markIconUrl);
-    localStringBuilder.append(", markWord=").append(this.markWord);
-    localStringBuilder.append(", markDesc=").append(this.markDesc);
+    localStringBuilder.append("msgCoverUrl=");
+    localStringBuilder.append(this.msgCoverUrl);
+    localStringBuilder.append(", msgAction=");
+    localStringBuilder.append(this.msgAction);
+    localStringBuilder.append(", msgTitle=");
+    localStringBuilder.append(this.msgTitle);
+    localStringBuilder.append(", msgContent=");
+    localStringBuilder.append(this.msgContent);
+    localStringBuilder.append(", srcName=");
+    localStringBuilder.append(this.srcName);
+    localStringBuilder.append(", srcAction=");
+    localStringBuilder.append(this.srcAction);
+    localStringBuilder.append(", srcIconUrl=");
+    localStringBuilder.append(this.srcIconUrl);
+    localStringBuilder.append(", msgBrief=");
+    localStringBuilder.append(this.msgBrief);
+    localStringBuilder.append(", markType=");
+    localStringBuilder.append(this.markType);
+    localStringBuilder.append(", positonType=");
+    localStringBuilder.append(this.positonType);
+    localStringBuilder.append(", markIconUrl=");
+    localStringBuilder.append(this.markIconUrl);
+    localStringBuilder.append(", markWord=");
+    localStringBuilder.append(this.markWord);
+    localStringBuilder.append(", markDesc=");
+    localStringBuilder.append(this.markDesc);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

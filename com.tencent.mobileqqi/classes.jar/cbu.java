@@ -1,25 +1,78 @@
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class cbu
-  extends Handler
+  extends MessageObserver
 {
   public cbu(ChatHistory paramChatHistory) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (paramMessage.what == 1)
+    if (!paramBoolean1)
     {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
+      int i = 1;
+      if (paramBoolean2) {
+        i = 7;
       }
-      this.a.a = new QQProgressDialog(this.a, this.a.d());
-      this.a.a.setCancelable(false);
-      this.a.a.b(2131563004);
-      this.a.a.show();
+      paramString = this.a.a.obtainMessage(i);
+      this.a.a(paramString);
+      return;
     }
+    this.a.b.a().c();
+    paramString = this.a.a.obtainMessage(0);
+    this.a.a(paramString);
+  }
+  
+  protected void a_(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(1);
+      this.a.a(localMessage);
+      return;
+    }
+    this.a.b.a().c();
+    Message localMessage = this.a.a.obtainMessage(0);
+    this.a.a(localMessage);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    this.a.m();
+    if (!paramBoolean)
+    {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
+    }
+  }
+  
+  protected void b_(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(1);
+      this.a.a(localMessage);
+      return;
+    }
+    this.a.b.a().c();
+    Message localMessage = this.a.a.obtainMessage(0);
+    this.a.a(localMessage);
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
+      return;
+    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 

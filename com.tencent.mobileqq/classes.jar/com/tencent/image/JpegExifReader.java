@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -28,74 +29,114 @@ public class JpegExifReader
   
   private static short getInt16(boolean paramBoolean, byte[] paramArrayOfByte)
   {
+    int i;
     if (paramBoolean) {
-      return (short)(paramArrayOfByte[0] & 0xFF00 | paramArrayOfByte[1] & 0xFF);
+      i = paramArrayOfByte[0] & 0xFF00;
     }
-    return (short)(paramArrayOfByte[1] & 0xFF00 | paramArrayOfByte[0] & 0xFF);
+    for (int j = paramArrayOfByte[1];; j = paramArrayOfByte[0])
+    {
+      return (short)(i | j & 0xFF);
+      i = paramArrayOfByte[1] & 0xFF00;
+    }
   }
   
   private static int getInt32(boolean paramBoolean, byte[] paramArrayOfByte)
   {
+    int i;
     if (paramBoolean) {
-      return paramArrayOfByte[0] << 24 & 0xFF000000 | paramArrayOfByte[1] << 16 & 0xFF0000 | paramArrayOfByte[2] << 8 & 0xFF00 | paramArrayOfByte[3] & 0xFF;
+      i = paramArrayOfByte[0] << 24 & 0xFF000000 | paramArrayOfByte[1] << 16 & 0xFF0000 | paramArrayOfByte[2] << 8 & 0xFF00;
     }
-    return paramArrayOfByte[3] << 24 & 0xFF000000 | paramArrayOfByte[2] << 16 & 0xFF0000 | paramArrayOfByte[1] << 8 & 0xFF00 | paramArrayOfByte[0] & 0xFF;
+    for (int j = paramArrayOfByte[3];; j = paramArrayOfByte[0])
+    {
+      return i | j & 0xFF;
+      i = paramArrayOfByte[3] << 24 & 0xFF000000 | 0xFF0000 & paramArrayOfByte[2] << 16 | 0xFF00 & paramArrayOfByte[1] << 8;
+    }
   }
   
   public static int getRotationDegree(String paramString)
   {
-    switch (readOrientation(paramString))
+    int i = readOrientation(paramString);
+    if (i != 3)
     {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      return 0;
-    case 6: 
+      if (i != 6)
+      {
+        if (i != 8) {
+          return 0;
+        }
+        return 270;
+      }
       return 90;
-    case 3: 
-      return 180;
     }
-    return 270;
+    return 180;
   }
   
   private static int getUnsignedInt16(boolean paramBoolean, byte[] paramArrayOfByte)
   {
+    int i;
     if (paramBoolean) {
-      return paramArrayOfByte[0] << 8 & 0xFF00 | paramArrayOfByte[1] & 0xFF;
+      i = paramArrayOfByte[0] << 8 & 0xFF00;
     }
-    return paramArrayOfByte[1] << 8 & 0xFF00 | paramArrayOfByte[0] & 0xFF;
+    for (int j = paramArrayOfByte[1];; j = paramArrayOfByte[0])
+    {
+      return i | j & 0xFF;
+      i = paramArrayOfByte[1] << 8 & 0xFF00;
+    }
   }
   
   private static long getUnsignedInt32(boolean paramBoolean, byte[] paramArrayOfByte)
   {
+    long l;
     if (paramBoolean) {
-      return paramArrayOfByte[0] << 24 & 0xFF000000 | paramArrayOfByte[1] << 16 & 0xFF0000 | paramArrayOfByte[2] << 8 & 0xFF00 | paramArrayOfByte[3] & 0xFF;
+      l = paramArrayOfByte[0] << 24 & 0xFF000000 | 0xFF0000 & paramArrayOfByte[1] << 16 | 0xFF00 & paramArrayOfByte[2] << 8;
     }
-    return paramArrayOfByte[3] << 24 & 0xFF000000 | paramArrayOfByte[2] << 16 & 0xFF0000 | paramArrayOfByte[1] << 8 & 0xFF00 | paramArrayOfByte[0] & 0xFF;
+    for (int i = paramArrayOfByte[3];; i = paramArrayOfByte[0])
+    {
+      return l | i & 0xFF;
+      l = paramArrayOfByte[3] << 24 & 0xFF000000 | 0xFF0000 & paramArrayOfByte[2] << 16 | 0xFF00 & paramArrayOfByte[1] << 8;
+    }
   }
   
   private static long getValue(int paramInt, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 5: 
-    case 7: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("JpegExifReader", 2, "get value format code: " + paramInt);
+      if (paramInt != 4)
+      {
+        if (paramInt != 6)
+        {
+          if (paramInt != 8)
+          {
+            if (paramInt != 9)
+            {
+              if (URLDrawable.depImp.mLog.isColorLevel())
+              {
+                paramArrayOfByte = URLDrawable.depImp.mLog;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("get value format code: ");
+                localStringBuilder.append(paramInt);
+                paramArrayOfByte.e("JpegExifReader", 2, localStringBuilder.toString());
+              }
+              return 0L;
+            }
+            paramInt = getInt32(paramBoolean, paramArrayOfByte);
+          }
+          else
+          {
+            paramInt = getInt16(paramBoolean, paramArrayOfByte);
+          }
+        }
+        else {
+          paramInt = paramArrayOfByte[0];
+        }
       }
-      return 0L;
-    case 3: 
-      return getUnsignedInt16(paramBoolean, paramArrayOfByte);
-    case 4: 
-      return getUnsignedInt32(paramBoolean, paramArrayOfByte);
-    case 6: 
-      return paramArrayOfByte[0];
-    case 8: 
-      return getInt16(paramBoolean, paramArrayOfByte);
+      else {
+        return getUnsignedInt32(paramBoolean, paramArrayOfByte);
+      }
     }
-    return getInt32(paramBoolean, paramArrayOfByte);
+    else {
+      paramInt = getUnsignedInt16(paramBoolean, paramArrayOfByte);
+    }
+    return paramInt;
   }
   
   public static void initJpegExifReader(JpegExifReader.JpegExifReaderInterface paramJpegExifReaderInterface)
@@ -107,2218 +148,2465 @@ public class JpegExifReader
   public static boolean isCrashJpeg(String paramString)
   {
     // Byte code:
-    //   0: getstatic 139	android/os/Build$VERSION:SDK_INT	I
-    //   3: bipush 24
-    //   5: if_icmplt +9 -> 14
+    //   0: ldc 148
+    //   2: astore 16
+    //   4: getstatic 153	android/os/Build$VERSION:SDK_INT	I
+    //   7: istore_1
     //   8: iconst_0
     //   9: istore 8
-    //   11: iload 8
-    //   13: ireturn
-    //   14: invokestatic 145	android/os/SystemClock:uptimeMillis	()J
-    //   17: lstore 10
-    //   19: iconst_0
-    //   20: istore 9
-    //   22: iconst_0
-    //   23: istore 8
-    //   25: aconst_null
-    //   26: astore 14
-    //   28: iconst_0
-    //   29: istore_3
-    //   30: new 147	java/io/BufferedInputStream
+    //   11: iload_1
+    //   12: bipush 24
+    //   14: if_icmplt +5 -> 19
+    //   17: iconst_0
+    //   18: ireturn
+    //   19: invokestatic 159	android/os/SystemClock:uptimeMillis	()J
+    //   22: lstore 9
+    //   24: aconst_null
+    //   25: astore 13
+    //   27: aconst_null
+    //   28: astore 15
+    //   30: new 161	java/io/BufferedInputStream
     //   33: dup
-    //   34: new 149	java/io/FileInputStream
+    //   34: new 163	java/io/FileInputStream
     //   37: dup
     //   38: aload_0
-    //   39: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   39: invokespecial 166	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   42: sipush 1024
-    //   45: invokespecial 155	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   48: astore 15
-    //   50: iconst_0
-    //   51: istore_2
-    //   52: iload_3
-    //   53: istore_1
-    //   54: iconst_2
-    //   55: newarray byte
-    //   57: astore 14
-    //   59: iload_3
-    //   60: istore_1
-    //   61: aload 15
-    //   63: aload 14
-    //   65: iconst_0
-    //   66: iconst_2
-    //   67: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   70: iconst_2
-    //   71: if_icmpne +33 -> 104
-    //   74: aload 14
-    //   76: iconst_0
-    //   77: baload
-    //   78: sipush 255
-    //   81: iand
-    //   82: sipush 255
-    //   85: if_icmpne +198 -> 283
-    //   88: aload 14
-    //   90: iconst_1
-    //   91: baload
-    //   92: sipush 255
-    //   95: iand
-    //   96: sipush 216
-    //   99: if_icmpne +184 -> 283
-    //   102: iconst_1
-    //   103: istore_2
-    //   104: iconst_2
-    //   105: istore 4
-    //   107: iload 4
-    //   109: istore_3
-    //   110: iload_2
-    //   111: ifeq +1452 -> 1563
-    //   114: iload 4
-    //   116: istore_1
-    //   117: iconst_4
-    //   118: newarray byte
-    //   120: astore 16
-    //   122: iload 4
-    //   124: istore_1
-    //   125: aload 15
-    //   127: invokevirtual 162	java/io/BufferedInputStream:read	()I
-    //   130: sipush 255
-    //   133: iand
-    //   134: i2b
-    //   135: istore_3
-    //   136: iload 4
-    //   138: iconst_1
-    //   139: iadd
-    //   140: istore_2
-    //   141: iload_2
-    //   142: istore_1
-    //   143: aload 15
-    //   145: invokevirtual 162	java/io/BufferedInputStream:read	()I
-    //   148: sipush 255
-    //   151: iand
-    //   152: i2b
-    //   153: istore 4
-    //   155: iload 4
-    //   157: bipush 218
-    //   159: if_icmpne +129 -> 288
-    //   162: ldc 164
-    //   164: astore 14
-    //   166: iload_2
-    //   167: istore_1
-    //   168: aload 14
-    //   170: astore 16
-    //   172: iload_1
-    //   173: istore_2
-    //   174: iload 8
-    //   176: istore 7
-    //   178: aload 15
-    //   180: ifnull +18 -> 198
-    //   183: aload 15
-    //   185: invokevirtual 167	java/io/BufferedInputStream:close	()V
-    //   188: iload 8
-    //   190: istore 7
-    //   192: iload_1
-    //   193: istore_2
-    //   194: aload 14
-    //   196: astore 16
-    //   198: invokestatic 145	android/os/SystemClock:uptimeMillis	()J
-    //   201: lstore 12
-    //   203: iload 7
-    //   205: istore 8
-    //   207: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   210: ifeq -199 -> 11
-    //   213: ldc 41
-    //   215: iconst_2
-    //   216: new 98	java/lang/StringBuilder
-    //   219: dup
-    //   220: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   223: ldc 169
-    //   225: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: iload 7
-    //   230: invokevirtual 172	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   233: ldc 174
-    //   235: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: iload_2
-    //   239: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   242: ldc 176
-    //   244: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: lload 12
-    //   249: lload 10
-    //   251: lsub
-    //   252: invokevirtual 179	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   255: ldc 181
-    //   257: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload_0
-    //   261: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: ldc 183
-    //   266: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: aload 16
-    //   271: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   277: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   280: iload 7
-    //   282: ireturn
-    //   283: iconst_0
-    //   284: istore_2
-    //   285: goto -181 -> 104
-    //   288: iload_2
-    //   289: iconst_1
+    //   45: invokespecial 169	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   48: astore 14
+    //   50: iconst_2
+    //   51: newarray byte
+    //   53: astore 15
+    //   55: aload 14
+    //   57: aload 15
+    //   59: iconst_0
+    //   60: iconst_2
+    //   61: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   64: iconst_2
+    //   65: if_icmpne +38 -> 103
+    //   68: aload 15
+    //   70: iconst_0
+    //   71: baload
+    //   72: sipush 255
+    //   75: iand
+    //   76: sipush 255
+    //   79: if_icmpne +24 -> 103
+    //   82: aload 15
+    //   84: iconst_1
+    //   85: baload
+    //   86: istore_1
+    //   87: iload_1
+    //   88: sipush 255
+    //   91: iand
+    //   92: sipush 216
+    //   95: if_icmpne +8 -> 103
+    //   98: iconst_1
+    //   99: istore_1
+    //   100: goto +5 -> 105
+    //   103: iconst_0
+    //   104: istore_1
+    //   105: ldc 175
+    //   107: astore 13
+    //   109: iload_1
+    //   110: ifeq +1300 -> 1410
+    //   113: iconst_4
+    //   114: newarray byte
+    //   116: astore 17
+    //   118: iconst_2
+    //   119: istore_2
+    //   120: iload_2
+    //   121: istore_1
+    //   122: aload 14
+    //   124: invokevirtual 178	java/io/BufferedInputStream:read	()I
+    //   127: sipush 255
+    //   130: iand
+    //   131: i2b
+    //   132: istore_3
+    //   133: iload_2
+    //   134: iconst_1
+    //   135: iadd
+    //   136: istore_2
+    //   137: iload_2
+    //   138: istore_1
+    //   139: aload 14
+    //   141: invokevirtual 178	java/io/BufferedInputStream:read	()I
+    //   144: sipush 255
+    //   147: iand
+    //   148: i2b
+    //   149: istore 4
+    //   151: iload 4
+    //   153: bipush 218
+    //   155: if_icmpne +16 -> 171
+    //   158: ldc 180
+    //   160: astore 13
+    //   162: iload_2
+    //   163: istore_1
+    //   164: iload 8
+    //   166: istore 7
+    //   168: goto +1251 -> 1419
+    //   171: iload_2
+    //   172: iconst_1
+    //   173: iadd
+    //   174: istore_1
+    //   175: iload_1
+    //   176: istore_2
+    //   177: aload 14
+    //   179: aload 15
+    //   181: iconst_0
+    //   182: iconst_2
+    //   183: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   186: iconst_2
+    //   187: if_icmpeq +10 -> 197
+    //   190: ldc 182
+    //   192: astore 13
+    //   194: goto +1588 -> 1782
+    //   197: iload_1
+    //   198: iconst_2
+    //   199: iadd
+    //   200: istore_1
+    //   201: aload 15
+    //   203: iconst_0
+    //   204: baload
+    //   205: istore_2
+    //   206: aload 15
+    //   208: iconst_1
+    //   209: baload
+    //   210: sipush 255
+    //   213: iand
+    //   214: iload_2
+    //   215: bipush 8
+    //   217: ishl
+    //   218: ldc 68
+    //   220: iand
+    //   221: ior
+    //   222: iconst_2
+    //   223: isub
+    //   224: istore 5
+    //   226: iload_3
+    //   227: iconst_m1
+    //   228: if_icmpne +1569 -> 1797
+    //   231: iload 4
+    //   233: bipush 224
+    //   235: if_icmpne +1562 -> 1797
+    //   238: iload 5
+    //   240: i2l
+    //   241: lstore 11
+    //   243: iload_1
+    //   244: istore_2
+    //   245: aload 14
+    //   247: lload 11
+    //   249: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   252: lload 11
+    //   254: lcmp
+    //   255: ifne +1534 -> 1789
+    //   258: iload_1
+    //   259: iload 5
+    //   261: iadd
+    //   262: istore_2
+    //   263: goto -143 -> 120
+    //   266: iload_1
+    //   267: istore_2
+    //   268: aload 14
+    //   270: aload 17
+    //   272: iconst_0
+    //   273: iconst_4
+    //   274: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   277: iconst_4
+    //   278: if_icmpeq +10 -> 288
+    //   281: ldc 188
+    //   283: astore 13
+    //   285: goto +1497 -> 1782
+    //   288: iload_1
+    //   289: iconst_4
     //   290: iadd
     //   291: istore_2
     //   292: iload_2
     //   293: istore_1
-    //   294: aload 15
-    //   296: aload 14
-    //   298: iconst_0
-    //   299: iconst_2
-    //   300: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   303: iconst_2
-    //   304: if_icmpeq +12 -> 316
-    //   307: ldc 188
-    //   309: astore 14
-    //   311: iload_2
-    //   312: istore_1
-    //   313: goto -145 -> 168
-    //   316: iload_2
-    //   317: iconst_2
-    //   318: iadd
-    //   319: istore_2
-    //   320: aload 14
-    //   322: iconst_0
-    //   323: baload
-    //   324: bipush 8
-    //   326: ishl
-    //   327: ldc 68
-    //   329: iand
-    //   330: aload 14
-    //   332: iconst_1
-    //   333: baload
-    //   334: sipush 255
-    //   337: iand
-    //   338: ior
-    //   339: iconst_2
-    //   340: isub
-    //   341: istore 5
-    //   343: iload_3
-    //   344: iconst_m1
-    //   345: if_icmpne +1237 -> 1582
-    //   348: iload 4
-    //   350: bipush 224
-    //   352: if_icmpne +1230 -> 1582
-    //   355: iload_2
-    //   356: istore_1
-    //   357: aload 15
-    //   359: iload 5
-    //   361: i2l
-    //   362: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   365: iload 5
-    //   367: i2l
-    //   368: lcmp
-    //   369: ifne +1203 -> 1572
-    //   372: iload_2
-    //   373: iload 5
-    //   375: iadd
-    //   376: istore 4
-    //   378: goto -256 -> 122
-    //   381: iload_2
-    //   382: istore_1
-    //   383: aload 15
-    //   385: aload 16
-    //   387: iconst_0
-    //   388: iconst_4
-    //   389: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   392: iconst_4
-    //   393: if_icmpeq +12 -> 405
-    //   396: ldc 194
-    //   398: astore 14
-    //   400: iload_2
-    //   401: istore_1
-    //   402: goto -234 -> 168
-    //   405: iload_2
-    //   406: iconst_4
-    //   407: iadd
-    //   408: istore_2
-    //   409: iload_2
-    //   410: istore_1
-    //   411: ldc 22
-    //   413: new 196	java/lang/String
-    //   416: dup
-    //   417: aload 16
-    //   419: invokespecial 199	java/lang/String:<init>	([B)V
-    //   422: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   425: ifne +12 -> 437
-    //   428: ldc 204
-    //   430: astore 14
-    //   432: iload_2
-    //   433: istore_1
-    //   434: goto -266 -> 168
-    //   437: iload_2
-    //   438: istore_1
-    //   439: aload 15
-    //   441: ldc2_w 205
-    //   444: invokevirtual 209	java/io/BufferedInputStream:skip	(J)J
-    //   447: ldc2_w 205
-    //   450: lcmp
-    //   451: ifeq +12 -> 463
-    //   454: ldc 211
-    //   456: astore 14
-    //   458: iload_2
-    //   459: istore_1
-    //   460: goto -292 -> 168
-    //   463: iload_2
-    //   464: iconst_2
-    //   465: iadd
-    //   466: istore_3
-    //   467: iload_3
-    //   468: istore_1
-    //   469: aload 15
-    //   471: aload 14
-    //   473: iconst_0
-    //   474: iconst_2
-    //   475: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   478: iconst_2
-    //   479: if_icmpeq +12 -> 491
-    //   482: ldc 213
-    //   484: astore 14
-    //   486: iload_3
-    //   487: istore_1
-    //   488: goto -320 -> 168
-    //   491: iload_3
-    //   492: iconst_2
-    //   493: iadd
-    //   494: istore_2
-    //   495: iload_2
-    //   496: istore_1
-    //   497: new 196	java/lang/String
-    //   500: dup
-    //   501: aload 14
-    //   503: invokespecial 199	java/lang/String:<init>	([B)V
-    //   506: astore 17
-    //   508: iload_2
-    //   509: istore_1
-    //   510: ldc 8
-    //   512: aload 17
-    //   514: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   517: ifeq +32 -> 549
-    //   520: iconst_1
-    //   521: istore 7
-    //   523: iload_2
-    //   524: istore_1
-    //   525: aload 15
-    //   527: ldc2_w 205
-    //   530: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   533: ldc2_w 205
-    //   536: lcmp
-    //   537: ifeq +64 -> 601
+    //   294: ldc 22
+    //   296: new 190	java/lang/String
+    //   299: dup
+    //   300: aload 17
+    //   302: invokespecial 193	java/lang/String:<init>	([B)V
+    //   305: invokevirtual 196	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   308: ifne +12 -> 320
+    //   311: ldc 198
+    //   313: astore 13
+    //   315: iload_2
+    //   316: istore_1
+    //   317: goto +1495 -> 1812
+    //   320: iload_2
+    //   321: istore_1
+    //   322: aload 14
+    //   324: ldc2_w 199
+    //   327: invokevirtual 203	java/io/BufferedInputStream:skip	(J)J
+    //   330: ldc2_w 199
+    //   333: lcmp
+    //   334: ifeq +12 -> 346
+    //   337: ldc 205
+    //   339: astore 13
+    //   341: iload_2
+    //   342: istore_1
+    //   343: goto +1469 -> 1812
+    //   346: iload_2
+    //   347: iconst_2
+    //   348: iadd
+    //   349: istore_3
+    //   350: iload_3
+    //   351: istore_1
+    //   352: aload 14
+    //   354: aload 15
+    //   356: iconst_0
+    //   357: iconst_2
+    //   358: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   361: iconst_2
+    //   362: if_icmpeq +12 -> 374
+    //   365: ldc 207
+    //   367: astore 13
+    //   369: iload_3
+    //   370: istore_1
+    //   371: goto +1441 -> 1812
+    //   374: iload_3
+    //   375: iconst_2
+    //   376: iadd
+    //   377: istore_1
+    //   378: iload_1
+    //   379: istore_2
+    //   380: new 190	java/lang/String
+    //   383: dup
+    //   384: aload 15
+    //   386: invokespecial 193	java/lang/String:<init>	([B)V
+    //   389: astore 18
+    //   391: iload_1
+    //   392: istore_2
+    //   393: ldc 8
+    //   395: aload 18
+    //   397: invokevirtual 196	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   400: ifeq +9 -> 409
+    //   403: iconst_1
+    //   404: istore 7
+    //   406: goto +18 -> 424
+    //   409: iload_1
+    //   410: istore_2
+    //   411: ldc 29
+    //   413: aload 18
+    //   415: invokevirtual 196	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   418: ifeq +856 -> 1274
+    //   421: iconst_0
+    //   422: istore 7
+    //   424: iload_1
+    //   425: istore_2
+    //   426: aload 14
+    //   428: ldc2_w 199
+    //   431: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   434: ldc2_w 199
+    //   437: lcmp
+    //   438: ifeq +10 -> 448
+    //   441: ldc 209
+    //   443: astore 13
+    //   445: goto +1374 -> 1819
+    //   448: iload_1
+    //   449: istore_2
+    //   450: aload 14
+    //   452: aload 17
+    //   454: iconst_0
+    //   455: iconst_4
+    //   456: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   459: iconst_4
+    //   460: if_icmpeq +10 -> 470
+    //   463: ldc 211
+    //   465: astore 13
+    //   467: goto +1352 -> 1819
+    //   470: iload_1
+    //   471: bipush 6
+    //   473: iadd
+    //   474: istore_1
+    //   475: iload_1
+    //   476: istore_2
+    //   477: iload 7
+    //   479: aload 17
+    //   481: invokestatic 130	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
+    //   484: istore 4
+    //   486: iload 4
+    //   488: bipush 8
+    //   490: isub
+    //   491: istore 4
+    //   493: iload 4
+    //   495: ifle +1334 -> 1829
+    //   498: iload 4
+    //   500: i2l
+    //   501: lstore 11
+    //   503: iload_1
+    //   504: istore_2
+    //   505: aload 14
+    //   507: lload 11
+    //   509: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   512: lload 11
+    //   514: lcmp
+    //   515: ifeq +1311 -> 1826
+    //   518: ldc 213
+    //   520: astore 13
+    //   522: goto +22 -> 544
+    //   525: iload_1
+    //   526: istore_2
+    //   527: aload 14
+    //   529: aload 15
+    //   531: iconst_0
+    //   532: iconst_2
+    //   533: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   536: iconst_2
+    //   537: if_icmpeq +10 -> 547
     //   540: ldc 215
-    //   542: astore 14
-    //   544: iload_2
-    //   545: istore_1
-    //   546: goto -378 -> 168
-    //   549: iload_2
-    //   550: istore_1
-    //   551: ldc 29
-    //   553: aload 17
-    //   555: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   558: ifeq +9 -> 567
-    //   561: iconst_0
-    //   562: istore 7
-    //   564: goto -41 -> 523
-    //   567: iload_2
-    //   568: istore_1
-    //   569: new 98	java/lang/StringBuilder
-    //   572: dup
-    //   573: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   576: ldc 217
-    //   578: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   581: aload 17
-    //   583: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   586: ldc 219
-    //   588: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   591: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   594: astore 14
-    //   596: iload_2
-    //   597: istore_1
-    //   598: goto -430 -> 168
-    //   601: iload_2
+    //   542: astore 13
+    //   544: goto +817 -> 1361
+    //   547: iload_1
+    //   548: iload 4
+    //   550: iconst_2
+    //   551: iadd
+    //   552: iadd
+    //   553: istore_2
+    //   554: iload_2
+    //   555: istore_1
+    //   556: iload 7
+    //   558: aload 15
+    //   560: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   563: istore 5
+    //   565: iload_2
+    //   566: istore_1
+    //   567: iconst_0
+    //   568: istore 4
+    //   570: iload 4
+    //   572: iload 5
+    //   574: if_icmpge +663 -> 1237
+    //   577: iload_1
+    //   578: istore_2
+    //   579: aload 14
+    //   581: aload 15
+    //   583: iconst_0
+    //   584: iconst_2
+    //   585: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   588: iconst_2
+    //   589: if_icmpeq +10 -> 599
+    //   592: ldc 217
+    //   594: astore 13
+    //   596: goto -52 -> 544
+    //   599: iload_1
+    //   600: iconst_2
+    //   601: iadd
     //   602: istore_1
-    //   603: aload 15
-    //   605: aload 16
-    //   607: iconst_0
-    //   608: iconst_4
-    //   609: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   612: iconst_4
-    //   613: if_icmpeq +12 -> 625
-    //   616: ldc 221
-    //   618: astore 14
-    //   620: iload_2
-    //   621: istore_1
-    //   622: goto -454 -> 168
-    //   625: iload_2
-    //   626: bipush 6
-    //   628: iadd
-    //   629: istore_2
-    //   630: iload_2
-    //   631: istore_1
-    //   632: iload 7
-    //   634: aload 16
-    //   636: invokestatic 124	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
-    //   639: bipush 8
-    //   641: isub
-    //   642: istore 4
-    //   644: iload 4
-    //   646: ifle +29 -> 675
-    //   649: iload_2
-    //   650: istore_1
-    //   651: aload 15
-    //   653: iload 4
-    //   655: i2l
-    //   656: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   659: iload 4
-    //   661: i2l
-    //   662: lcmp
-    //   663: ifeq +12 -> 675
-    //   666: ldc 223
-    //   668: astore 14
-    //   670: iload_2
-    //   671: istore_1
-    //   672: goto -504 -> 168
-    //   675: iload_2
-    //   676: istore_1
-    //   677: aload 15
-    //   679: aload 14
-    //   681: iconst_0
-    //   682: iconst_2
-    //   683: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   686: iconst_2
-    //   687: if_icmpeq +12 -> 699
-    //   690: ldc 225
-    //   692: astore 14
-    //   694: iload_2
-    //   695: istore_1
-    //   696: goto -528 -> 168
-    //   699: iload_2
-    //   700: iload 4
-    //   702: iconst_2
-    //   703: iadd
-    //   704: iadd
-    //   705: istore_2
-    //   706: iload_2
-    //   707: istore_1
-    //   708: iload 7
-    //   710: aload 14
-    //   712: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   715: istore 5
-    //   717: iconst_0
-    //   718: istore 4
-    //   720: iload 4
-    //   722: iload 5
-    //   724: if_icmpge +580 -> 1304
-    //   727: iload_2
-    //   728: istore_1
-    //   729: aload 15
-    //   731: aload 14
-    //   733: iconst_0
-    //   734: iconst_2
-    //   735: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   738: iconst_2
-    //   739: if_icmpeq +12 -> 751
-    //   742: ldc 227
-    //   744: astore 14
-    //   746: iload_2
-    //   747: istore_1
-    //   748: goto -580 -> 168
-    //   751: iload_2
-    //   752: iconst_2
-    //   753: iadd
-    //   754: istore_2
-    //   755: iload_2
-    //   756: istore_1
-    //   757: iload 7
-    //   759: aload 14
-    //   761: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   764: ldc 38
-    //   766: if_icmpne +511 -> 1277
-    //   769: iload_2
-    //   770: istore_1
-    //   771: aload 15
-    //   773: aload 14
-    //   775: iconst_0
-    //   776: iconst_2
-    //   777: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   780: iconst_2
-    //   781: if_icmpeq +12 -> 793
-    //   784: ldc 229
-    //   786: astore 14
-    //   788: iload_2
-    //   789: istore_1
-    //   790: goto -622 -> 168
-    //   793: iload_2
-    //   794: iconst_2
-    //   795: iadd
-    //   796: istore_2
-    //   797: iload_2
-    //   798: istore_1
-    //   799: iload 7
-    //   801: aload 14
-    //   803: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   806: istore 4
-    //   808: iload_2
-    //   809: istore_1
-    //   810: aload 15
-    //   812: aload 16
-    //   814: iconst_0
-    //   815: iconst_4
-    //   816: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   819: iconst_4
-    //   820: if_icmpeq +12 -> 832
-    //   823: ldc 231
-    //   825: astore 14
-    //   827: iload_2
-    //   828: istore_1
-    //   829: goto -661 -> 168
-    //   832: iload_2
-    //   833: iconst_4
-    //   834: iadd
-    //   835: istore_2
-    //   836: iload_2
-    //   837: istore_1
-    //   838: iload 7
-    //   840: aload 16
-    //   842: invokestatic 124	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
-    //   845: pop
-    //   846: iload_2
-    //   847: istore_1
-    //   848: getstatic 61	com/tencent/image/JpegExifReader:BYTES_PER_FORMAT	[B
-    //   851: iload 4
-    //   853: baload
-    //   854: istore 5
-    //   856: iload_2
-    //   857: istore_1
-    //   858: aload 15
-    //   860: aload 16
-    //   862: iconst_0
-    //   863: iconst_4
-    //   864: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   867: iconst_4
-    //   868: if_icmpeq +12 -> 880
-    //   871: ldc 233
-    //   873: astore 14
-    //   875: iload_2
-    //   876: istore_1
-    //   877: goto -709 -> 168
-    //   880: iload_2
-    //   881: iconst_4
-    //   882: iadd
-    //   883: istore_2
-    //   884: iload_2
-    //   885: istore_1
-    //   886: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   889: ifeq +31 -> 920
+    //   603: iload 7
+    //   605: aload 15
+    //   607: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   610: istore_2
+    //   611: iload_2
+    //   612: ldc 38
+    //   614: if_icmpne +582 -> 1196
+    //   617: aload 14
+    //   619: aload 15
+    //   621: iconst_0
+    //   622: iconst_2
+    //   623: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   626: iconst_2
+    //   627: if_icmpeq +10 -> 637
+    //   630: ldc 219
+    //   632: astore 13
+    //   634: goto +581 -> 1215
+    //   637: iload_1
+    //   638: iconst_2
+    //   639: iadd
+    //   640: istore_2
+    //   641: iload_2
+    //   642: istore_1
+    //   643: iload 7
+    //   645: aload 15
+    //   647: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   650: istore 4
+    //   652: iload_2
+    //   653: istore_1
+    //   654: aload 14
+    //   656: aload 17
+    //   658: iconst_0
+    //   659: iconst_4
+    //   660: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   663: iconst_4
+    //   664: if_icmpeq +12 -> 676
+    //   667: ldc 221
+    //   669: astore 13
+    //   671: iload_2
+    //   672: istore_1
+    //   673: goto +1159 -> 1832
+    //   676: iload_2
+    //   677: iconst_4
+    //   678: iadd
+    //   679: istore_2
+    //   680: iload_2
+    //   681: istore_1
+    //   682: iload 7
+    //   684: aload 17
+    //   686: invokestatic 130	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
+    //   689: pop
+    //   690: iload_2
+    //   691: istore_1
+    //   692: getstatic 57	com/tencent/image/JpegExifReader:BYTES_PER_FORMAT	[B
+    //   695: iload 4
+    //   697: baload
+    //   698: istore 5
+    //   700: iload_2
+    //   701: istore_1
+    //   702: aload 14
+    //   704: aload 17
+    //   706: iconst_0
+    //   707: iconst_4
+    //   708: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   711: iconst_4
+    //   712: if_icmpeq +12 -> 724
+    //   715: ldc 223
+    //   717: astore 13
+    //   719: iload_2
+    //   720: istore_1
+    //   721: goto +1111 -> 1832
+    //   724: iload_2
+    //   725: iconst_4
+    //   726: iadd
+    //   727: istore_2
+    //   728: iload_2
+    //   729: istore_1
+    //   730: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   733: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   736: invokeinterface 108 1 0
+    //   741: ifeq +61 -> 802
+    //   744: iload_2
+    //   745: istore_1
+    //   746: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   749: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   752: astore 18
+    //   754: iload_2
+    //   755: istore_1
+    //   756: new 110	java/lang/StringBuilder
+    //   759: dup
+    //   760: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   763: astore 19
+    //   765: iload_2
+    //   766: istore_1
+    //   767: aload 19
+    //   769: ldc 225
+    //   771: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   774: pop
+    //   775: iload_2
+    //   776: istore_1
+    //   777: aload 19
+    //   779: iload 4
+    //   781: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   784: pop
+    //   785: iload_2
+    //   786: istore_1
+    //   787: aload 18
+    //   789: ldc 41
+    //   791: iconst_2
+    //   792: aload 19
+    //   794: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   797: invokeinterface 228 4 0
+    //   802: iload_2
+    //   803: istore_1
+    //   804: iload 4
+    //   806: iload 7
+    //   808: aload 17
+    //   810: invokestatic 230	com/tencent/image/JpegExifReader:getValue	(IZ[B)J
+    //   813: iload_3
+    //   814: i2l
+    //   815: ladd
+    //   816: iload_2
+    //   817: i2l
+    //   818: lsub
+    //   819: lstore 11
+    //   821: iload_2
+    //   822: istore_1
+    //   823: aload 14
+    //   825: lload 11
+    //   827: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   830: lload 11
+    //   832: lcmp
+    //   833: ifeq +12 -> 845
+    //   836: ldc 232
+    //   838: astore 13
+    //   840: iload_2
+    //   841: istore_1
+    //   842: goto +990 -> 1832
+    //   845: iload_2
+    //   846: istore_1
+    //   847: aload 14
+    //   849: aload 15
+    //   851: iconst_0
+    //   852: iconst_2
+    //   853: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   856: iconst_2
+    //   857: if_icmpeq +12 -> 869
+    //   860: ldc 234
+    //   862: astore 13
+    //   864: iload_2
+    //   865: istore_1
+    //   866: goto +966 -> 1832
+    //   869: iload_2
+    //   870: iconst_2
+    //   871: iadd
+    //   872: istore_2
+    //   873: iload_2
+    //   874: istore_1
+    //   875: iload 7
+    //   877: aload 15
+    //   879: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   882: istore 4
+    //   884: iconst_0
+    //   885: istore_3
+    //   886: iload_3
+    //   887: iload 4
+    //   889: if_icmpge +259 -> 1148
     //   892: iload_2
     //   893: istore_1
-    //   894: ldc 41
-    //   896: iconst_2
-    //   897: new 98	java/lang/StringBuilder
-    //   900: dup
-    //   901: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   904: ldc 235
-    //   906: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   909: iload 4
-    //   911: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   914: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   917: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   894: aload 14
+    //   896: aload 15
+    //   898: iconst_0
+    //   899: iconst_2
+    //   900: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   903: iconst_2
+    //   904: if_icmpeq +12 -> 916
+    //   907: ldc 236
+    //   909: astore 13
+    //   911: iload_2
+    //   912: istore_1
+    //   913: goto +922 -> 1835
+    //   916: iload_2
+    //   917: iconst_2
+    //   918: iadd
+    //   919: istore_2
     //   920: iload_2
     //   921: istore_1
-    //   922: iload 4
-    //   924: iload 7
-    //   926: aload 16
-    //   928: invokestatic 237	com/tencent/image/JpegExifReader:getValue	(IZ[B)J
-    //   931: iload_3
-    //   932: i2l
-    //   933: ladd
+    //   922: iload 7
+    //   924: aload 15
+    //   926: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   929: ldc 24
+    //   931: if_icmpne +195 -> 1126
     //   934: iload_2
-    //   935: i2l
-    //   936: lsub
-    //   937: lstore 12
-    //   939: iload_2
-    //   940: istore_1
-    //   941: aload 15
-    //   943: lload 12
-    //   945: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   948: lload 12
-    //   950: lcmp
-    //   951: ifeq +12 -> 963
-    //   954: ldc 239
-    //   956: astore 14
+    //   935: istore_1
+    //   936: aload 14
+    //   938: aload 15
+    //   940: iconst_0
+    //   941: iconst_2
+    //   942: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   945: iconst_2
+    //   946: if_icmpeq +12 -> 958
+    //   949: ldc 238
+    //   951: astore 13
+    //   953: iload_2
+    //   954: istore_1
+    //   955: goto +880 -> 1835
     //   958: iload_2
-    //   959: istore_1
-    //   960: goto -792 -> 168
-    //   963: iload_2
-    //   964: istore_1
-    //   965: aload 15
-    //   967: aload 14
-    //   969: iconst_0
-    //   970: iconst_2
-    //   971: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   974: iconst_2
-    //   975: if_icmpeq +12 -> 987
-    //   978: ldc 241
-    //   980: astore 14
-    //   982: iload_2
-    //   983: istore_1
-    //   984: goto -816 -> 168
-    //   987: iload_2
-    //   988: iconst_2
-    //   989: iadd
-    //   990: istore_2
-    //   991: iload_2
-    //   992: istore_1
-    //   993: iload 7
-    //   995: aload 14
-    //   997: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1000: istore 4
-    //   1002: iconst_0
-    //   1003: istore_3
-    //   1004: iload_3
-    //   1005: iload 4
-    //   1007: if_icmpge +240 -> 1247
-    //   1010: iload_2
-    //   1011: istore_1
-    //   1012: aload 15
-    //   1014: aload 14
-    //   1016: iconst_0
-    //   1017: iconst_2
-    //   1018: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1021: iconst_2
-    //   1022: if_icmpeq +12 -> 1034
-    //   1025: ldc 243
-    //   1027: astore 14
-    //   1029: iload_2
-    //   1030: istore_1
-    //   1031: goto -863 -> 168
-    //   1034: iload_2
-    //   1035: iconst_2
-    //   1036: iadd
-    //   1037: istore_2
-    //   1038: iload_2
-    //   1039: istore_1
-    //   1040: iload 7
-    //   1042: aload 14
-    //   1044: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1047: ldc 24
-    //   1049: if_icmpne +171 -> 1220
-    //   1052: iload_2
-    //   1053: istore_1
-    //   1054: aload 15
-    //   1056: aload 14
-    //   1058: iconst_0
-    //   1059: iconst_2
-    //   1060: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1063: iconst_2
-    //   1064: if_icmpeq +12 -> 1076
-    //   1067: ldc 245
-    //   1069: astore 14
-    //   1071: iload_2
-    //   1072: istore_1
-    //   1073: goto -905 -> 168
-    //   1076: iload_2
-    //   1077: iconst_2
-    //   1078: iadd
-    //   1079: istore_2
-    //   1080: iload_2
-    //   1081: istore_1
-    //   1082: iload 7
-    //   1084: aload 14
-    //   1086: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1089: istore 5
-    //   1091: iload_2
-    //   1092: istore_1
-    //   1093: aload 15
-    //   1095: aload 16
-    //   1097: iconst_0
-    //   1098: iconst_4
-    //   1099: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1102: iconst_4
-    //   1103: if_icmpeq +12 -> 1115
-    //   1106: ldc 247
-    //   1108: astore 14
-    //   1110: iload_2
-    //   1111: istore_1
-    //   1112: goto -944 -> 168
-    //   1115: iload_2
-    //   1116: iconst_4
-    //   1117: iadd
-    //   1118: istore_2
-    //   1119: iload_2
-    //   1120: istore_1
-    //   1121: iload 7
-    //   1123: aload 16
-    //   1125: invokestatic 124	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
-    //   1128: pop
-    //   1129: iload_2
-    //   1130: istore_1
-    //   1131: getstatic 61	com/tencent/image/JpegExifReader:BYTES_PER_FORMAT	[B
-    //   1134: iload 5
-    //   1136: baload
-    //   1137: istore 6
-    //   1139: iload_2
-    //   1140: istore_1
-    //   1141: aload 15
-    //   1143: aload 16
-    //   1145: iconst_0
-    //   1146: iconst_4
-    //   1147: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1150: iconst_4
-    //   1151: if_icmpeq +12 -> 1163
-    //   1154: ldc 249
-    //   1156: astore 14
-    //   1158: iload_2
-    //   1159: istore_1
-    //   1160: goto -992 -> 168
-    //   1163: iload_2
-    //   1164: iconst_4
-    //   1165: iadd
-    //   1166: istore_2
-    //   1167: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1170: ifeq +29 -> 1199
-    //   1173: ldc 41
-    //   1175: iconst_2
-    //   1176: new 98	java/lang/StringBuilder
-    //   1179: dup
-    //   1180: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   1183: ldc 251
-    //   1185: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1188: iload 5
-    //   1190: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1193: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1196: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1199: iload_2
-    //   1200: istore_1
-    //   1201: iload 5
-    //   1203: bipush 12
-    //   1205: if_icmpne +404 -> 1609
-    //   1208: iconst_1
-    //   1209: istore 8
-    //   1211: iload_2
-    //   1212: istore_1
-    //   1213: ldc 253
-    //   1215: astore 14
-    //   1217: goto -1049 -> 168
-    //   1220: iload_2
-    //   1221: istore_1
-    //   1222: aload 15
-    //   1224: ldc2_w 254
-    //   1227: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   1230: ldc2_w 254
-    //   1233: lcmp
-    //   1234: ifeq +370 -> 1604
-    //   1237: ldc_w 257
-    //   1240: astore 14
-    //   1242: iload_2
-    //   1243: istore_1
-    //   1244: goto -1076 -> 168
-    //   1247: iload_2
-    //   1248: istore_1
-    //   1249: iload_2
-    //   1250: istore_3
-    //   1251: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1254: ifeq +309 -> 1563
-    //   1257: iload_2
-    //   1258: istore_1
-    //   1259: ldc 41
-    //   1261: iconst_2
-    //   1262: ldc_w 259
-    //   1265: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1268: ldc 253
-    //   1270: astore 14
-    //   1272: iload_2
-    //   1273: istore_1
-    //   1274: goto -1106 -> 168
-    //   1277: iload_2
-    //   1278: istore_1
-    //   1279: aload 15
-    //   1281: ldc2_w 254
-    //   1284: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   1287: ldc2_w 254
-    //   1290: lcmp
-    //   1291: ifeq +327 -> 1618
-    //   1294: ldc_w 257
-    //   1297: astore 14
-    //   1299: iload_2
-    //   1300: istore_1
-    //   1301: goto -1133 -> 168
-    //   1304: iload_2
-    //   1305: istore_1
-    //   1306: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1309: ifeq +245 -> 1554
-    //   1312: iload_2
-    //   1313: istore_1
-    //   1314: ldc 41
-    //   1316: iconst_2
-    //   1317: ldc_w 261
-    //   1320: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1323: ldc 253
-    //   1325: astore 14
-    //   1327: iload_2
-    //   1328: istore_1
-    //   1329: goto -1161 -> 168
-    //   1332: astore 15
-    //   1334: aload 14
-    //   1336: astore 16
-    //   1338: iload_1
-    //   1339: istore_2
-    //   1340: iload 8
-    //   1342: istore 7
-    //   1344: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1347: ifeq -1149 -> 198
-    //   1350: ldc 41
-    //   1352: iconst_2
-    //   1353: ldc 253
-    //   1355: aload 15
-    //   1357: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1360: aload 14
-    //   1362: astore 16
-    //   1364: iload_1
-    //   1365: istore_2
-    //   1366: iload 8
-    //   1368: istore 7
-    //   1370: goto -1172 -> 198
-    //   1373: astore 15
-    //   1375: iconst_0
-    //   1376: istore_1
-    //   1377: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1380: ifeq +13 -> 1393
-    //   1383: ldc 41
-    //   1385: iconst_2
-    //   1386: ldc 253
+    //   959: iconst_2
+    //   960: iadd
+    //   961: istore_2
+    //   962: iload_2
+    //   963: istore_1
+    //   964: iload 7
+    //   966: aload 15
+    //   968: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   971: istore 5
+    //   973: iload_2
+    //   974: istore_1
+    //   975: aload 14
+    //   977: aload 17
+    //   979: iconst_0
+    //   980: iconst_4
+    //   981: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   984: iconst_4
+    //   985: if_icmpeq +12 -> 997
+    //   988: ldc 240
+    //   990: astore 13
+    //   992: iload_2
+    //   993: istore_1
+    //   994: goto +841 -> 1835
+    //   997: iload_2
+    //   998: iconst_4
+    //   999: iadd
+    //   1000: istore_2
+    //   1001: iload_2
+    //   1002: istore_1
+    //   1003: iload 7
+    //   1005: aload 17
+    //   1007: invokestatic 130	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
+    //   1010: pop
+    //   1011: iload_2
+    //   1012: istore_1
+    //   1013: getstatic 57	com/tencent/image/JpegExifReader:BYTES_PER_FORMAT	[B
+    //   1016: iload 5
+    //   1018: baload
+    //   1019: istore 6
+    //   1021: iload_2
+    //   1022: istore_1
+    //   1023: aload 14
+    //   1025: aload 17
+    //   1027: iconst_0
+    //   1028: iconst_4
+    //   1029: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   1032: iconst_4
+    //   1033: if_icmpeq +12 -> 1045
+    //   1036: ldc 242
+    //   1038: astore 13
+    //   1040: iload_2
+    //   1041: istore_1
+    //   1042: goto +793 -> 1835
+    //   1045: iload_2
+    //   1046: iconst_4
+    //   1047: iadd
+    //   1048: istore_2
+    //   1049: iload_2
+    //   1050: istore_1
+    //   1051: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1054: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1057: invokeinterface 108 1 0
+    //   1062: ifeq +776 -> 1838
+    //   1065: iload_2
+    //   1066: istore_1
+    //   1067: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1070: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1073: astore 18
+    //   1075: iload_2
+    //   1076: istore_1
+    //   1077: new 110	java/lang/StringBuilder
+    //   1080: dup
+    //   1081: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1084: astore 19
+    //   1086: iload_2
+    //   1087: istore_1
+    //   1088: aload 19
+    //   1090: ldc 244
+    //   1092: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1095: pop
+    //   1096: iload_2
+    //   1097: istore_1
+    //   1098: aload 19
+    //   1100: iload 5
+    //   1102: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1105: pop
+    //   1106: iload_2
+    //   1107: istore_1
+    //   1108: aload 18
+    //   1110: ldc 41
+    //   1112: iconst_2
+    //   1113: aload 19
+    //   1115: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1118: invokeinterface 228 4 0
+    //   1123: goto +715 -> 1838
+    //   1126: iload_2
+    //   1127: istore_1
+    //   1128: aload 14
+    //   1130: ldc2_w 245
+    //   1133: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   1136: ldc2_w 245
+    //   1139: lcmp
+    //   1140: ifeq +719 -> 1859
+    //   1143: iload_2
+    //   1144: istore_1
+    //   1145: goto +216 -> 1361
+    //   1148: iload_2
+    //   1149: istore_1
+    //   1150: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1153: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1156: invokeinterface 108 1 0
+    //   1161: ifeq +21 -> 1182
+    //   1164: iload_2
+    //   1165: istore_1
+    //   1166: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1169: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1172: ldc 41
+    //   1174: iconst_2
+    //   1175: ldc 248
+    //   1177: invokeinterface 228 4 0
+    //   1182: ldc 148
+    //   1184: astore 13
+    //   1186: iload_2
+    //   1187: istore_1
+    //   1188: goto +173 -> 1361
+    //   1191: astore 13
+    //   1193: goto +148 -> 1341
+    //   1196: aload 14
+    //   1198: ldc2_w 245
+    //   1201: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   1204: lstore 11
+    //   1206: lload 11
+    //   1208: ldc2_w 245
+    //   1211: lcmp
+    //   1212: ifeq +6 -> 1218
+    //   1215: goto +146 -> 1361
+    //   1218: iload_1
+    //   1219: bipush 10
+    //   1221: iadd
+    //   1222: istore_1
+    //   1223: iload 4
+    //   1225: iconst_1
+    //   1226: iadd
+    //   1227: istore 4
+    //   1229: goto -659 -> 570
+    //   1232: astore 13
+    //   1234: goto +107 -> 1341
+    //   1237: iload_1
+    //   1238: istore_2
+    //   1239: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1242: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1245: invokeinterface 108 1 0
+    //   1250: ifeq +623 -> 1873
+    //   1253: iload_1
+    //   1254: istore_2
+    //   1255: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1258: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1261: ldc 41
+    //   1263: iconst_2
+    //   1264: ldc 250
+    //   1266: invokeinterface 228 4 0
+    //   1271: goto +602 -> 1873
+    //   1274: iload_1
+    //   1275: istore_2
+    //   1276: new 110	java/lang/StringBuilder
+    //   1279: dup
+    //   1280: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1283: astore 13
+    //   1285: iload_1
+    //   1286: istore_2
+    //   1287: aload 13
+    //   1289: ldc 252
+    //   1291: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1294: pop
+    //   1295: iload_1
+    //   1296: istore_2
+    //   1297: aload 13
+    //   1299: aload 18
+    //   1301: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1304: pop
+    //   1305: iload_1
+    //   1306: istore_2
+    //   1307: aload 13
+    //   1309: ldc 254
+    //   1311: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1314: pop
+    //   1315: iload_1
+    //   1316: istore_2
+    //   1317: aload 13
+    //   1319: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1322: astore 13
+    //   1324: goto -780 -> 544
+    //   1327: astore 13
+    //   1329: goto +5 -> 1334
+    //   1332: astore 13
+    //   1334: iload_2
+    //   1335: istore_1
+    //   1336: goto +5 -> 1341
+    //   1339: astore 13
+    //   1341: aload 14
+    //   1343: astore 15
+    //   1345: aload 13
+    //   1347: astore 14
+    //   1349: aload 15
+    //   1351: astore 13
+    //   1353: goto +140 -> 1493
+    //   1356: ldc_w 256
+    //   1359: astore 13
+    //   1361: iconst_0
+    //   1362: istore 7
+    //   1364: goto +55 -> 1419
+    //   1367: astore 15
+    //   1369: aload 14
+    //   1371: astore 13
+    //   1373: iload_2
+    //   1374: istore_1
+    //   1375: aload 15
+    //   1377: astore 14
+    //   1379: goto +114 -> 1493
+    //   1382: astore 15
+    //   1384: aload 14
+    //   1386: astore 13
     //   1388: aload 15
-    //   1390: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1393: aload 14
-    //   1395: ifnull +146 -> 1541
-    //   1398: aload 14
-    //   1400: invokevirtual 167	java/io/BufferedInputStream:close	()V
-    //   1403: ldc 253
-    //   1405: astore 16
-    //   1407: iload_1
-    //   1408: istore_2
-    //   1409: iload 9
-    //   1411: istore 7
-    //   1413: goto -1215 -> 198
-    //   1416: astore 14
-    //   1418: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1421: ifeq +13 -> 1434
-    //   1424: ldc 41
-    //   1426: iconst_2
-    //   1427: ldc 253
-    //   1429: aload 14
-    //   1431: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1434: ldc 253
-    //   1436: astore 16
-    //   1438: iload_1
-    //   1439: istore_2
-    //   1440: iload 9
-    //   1442: istore 7
-    //   1444: goto -1246 -> 198
-    //   1447: astore_0
-    //   1448: aconst_null
-    //   1449: astore 15
-    //   1451: aload 15
-    //   1453: ifnull +8 -> 1461
-    //   1456: aload 15
-    //   1458: invokevirtual 167	java/io/BufferedInputStream:close	()V
-    //   1461: aload_0
-    //   1462: athrow
-    //   1463: astore 14
-    //   1465: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1468: ifeq -7 -> 1461
-    //   1471: ldc 41
-    //   1473: iconst_2
-    //   1474: ldc 253
-    //   1476: aload 14
-    //   1478: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1481: goto -20 -> 1461
-    //   1484: astore_0
-    //   1485: goto -34 -> 1451
-    //   1488: astore_0
-    //   1489: aload 14
-    //   1491: astore 15
-    //   1493: goto -42 -> 1451
-    //   1496: astore 16
-    //   1498: aload 15
-    //   1500: astore 14
-    //   1502: aload 16
-    //   1504: astore 15
-    //   1506: goto -129 -> 1377
-    //   1509: astore 14
-    //   1511: aload 15
-    //   1513: astore 16
-    //   1515: aload 14
-    //   1517: astore 15
-    //   1519: aload 16
-    //   1521: astore 14
-    //   1523: goto -146 -> 1377
-    //   1526: astore 16
-    //   1528: aload 15
-    //   1530: astore 14
-    //   1532: iload_2
-    //   1533: istore_1
-    //   1534: aload 16
-    //   1536: astore 15
-    //   1538: goto -161 -> 1377
-    //   1541: ldc 253
-    //   1543: astore 16
-    //   1545: iload_1
-    //   1546: istore_2
-    //   1547: iload 9
-    //   1549: istore 7
-    //   1551: goto -1353 -> 198
-    //   1554: ldc 253
-    //   1556: astore 14
-    //   1558: iload_2
-    //   1559: istore_1
-    //   1560: goto -1392 -> 168
-    //   1563: ldc 253
-    //   1565: astore 14
-    //   1567: iload_3
-    //   1568: istore_1
-    //   1569: goto -1401 -> 168
-    //   1572: ldc_w 266
-    //   1575: astore 14
-    //   1577: iload_2
-    //   1578: istore_1
-    //   1579: goto -1411 -> 168
-    //   1582: iload_3
-    //   1583: iconst_m1
-    //   1584: if_icmpne +10 -> 1594
-    //   1587: iload 4
-    //   1589: bipush 225
-    //   1591: if_icmpeq -1210 -> 381
-    //   1594: ldc_w 268
-    //   1597: astore 14
-    //   1599: iload_2
-    //   1600: istore_1
-    //   1601: goto -1433 -> 168
-    //   1604: iload_2
-    //   1605: bipush 10
-    //   1607: iadd
-    //   1608: istore_1
-    //   1609: iload_3
-    //   1610: iconst_1
-    //   1611: iadd
-    //   1612: istore_3
-    //   1613: iload_1
-    //   1614: istore_2
-    //   1615: goto -611 -> 1004
-    //   1618: iload_2
-    //   1619: bipush 10
-    //   1621: iadd
-    //   1622: istore_2
-    //   1623: iload 4
-    //   1625: iconst_1
-    //   1626: iadd
-    //   1627: istore 4
-    //   1629: goto -909 -> 720
+    //   1390: astore 14
+    //   1392: goto +101 -> 1493
+    //   1395: astore 15
+    //   1397: aload 14
+    //   1399: astore 13
+    //   1401: iconst_2
+    //   1402: istore_1
+    //   1403: aload 15
+    //   1405: astore 14
+    //   1407: goto +86 -> 1493
+    //   1410: ldc 148
+    //   1412: astore 13
+    //   1414: iconst_0
+    //   1415: istore 7
+    //   1417: iconst_2
+    //   1418: istore_1
+    //   1419: aload 14
+    //   1421: invokevirtual 259	java/io/BufferedInputStream:close	()V
+    //   1424: goto +37 -> 1461
+    //   1427: astore 14
+    //   1429: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1432: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1435: invokeinterface 108 1 0
+    //   1440: ifeq +21 -> 1461
+    //   1443: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1446: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1449: ldc 41
+    //   1451: iconst_2
+    //   1452: ldc 148
+    //   1454: aload 14
+    //   1456: invokeinterface 262 5 0
+    //   1461: goto +126 -> 1587
+    //   1464: astore_0
+    //   1465: goto +262 -> 1727
+    //   1468: astore 15
+    //   1470: aload 14
+    //   1472: astore 13
+    //   1474: aload 15
+    //   1476: astore 14
+    //   1478: goto +13 -> 1491
+    //   1481: astore_0
+    //   1482: aload 15
+    //   1484: astore 14
+    //   1486: goto +241 -> 1727
+    //   1489: astore 14
+    //   1491: iconst_0
+    //   1492: istore_1
+    //   1493: aload 13
+    //   1495: astore 15
+    //   1497: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1500: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1503: invokeinterface 108 1 0
+    //   1508: ifeq +25 -> 1533
+    //   1511: aload 13
+    //   1513: astore 15
+    //   1515: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1518: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1521: ldc 41
+    //   1523: iconst_2
+    //   1524: ldc 148
+    //   1526: aload 14
+    //   1528: invokeinterface 262 5 0
+    //   1533: aload 13
+    //   1535: ifnull +45 -> 1580
+    //   1538: aload 13
+    //   1540: invokevirtual 259	java/io/BufferedInputStream:close	()V
+    //   1543: goto +37 -> 1580
+    //   1546: astore 13
+    //   1548: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1551: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1554: invokeinterface 108 1 0
+    //   1559: ifeq +21 -> 1580
+    //   1562: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1565: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1568: ldc 41
+    //   1570: iconst_2
+    //   1571: ldc 148
+    //   1573: aload 13
+    //   1575: invokeinterface 262 5 0
+    //   1580: iconst_0
+    //   1581: istore 7
+    //   1583: aload 16
+    //   1585: astore 13
+    //   1587: invokestatic 159	android/os/SystemClock:uptimeMillis	()J
+    //   1590: lstore 11
+    //   1592: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1595: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1598: invokeinterface 108 1 0
+    //   1603: ifeq +121 -> 1724
+    //   1606: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1609: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1612: astore 14
+    //   1614: new 110	java/lang/StringBuilder
+    //   1617: dup
+    //   1618: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1621: astore 15
+    //   1623: aload 15
+    //   1625: ldc_w 264
+    //   1628: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1631: pop
+    //   1632: aload 15
+    //   1634: iload 7
+    //   1636: invokevirtual 267	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1639: pop
+    //   1640: aload 15
+    //   1642: ldc_w 269
+    //   1645: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1648: pop
+    //   1649: aload 15
+    //   1651: iload_1
+    //   1652: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1655: pop
+    //   1656: aload 15
+    //   1658: ldc_w 271
+    //   1661: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1664: pop
+    //   1665: aload 15
+    //   1667: lload 11
+    //   1669: lload 9
+    //   1671: lsub
+    //   1672: invokevirtual 274	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1675: pop
+    //   1676: aload 15
+    //   1678: ldc_w 276
+    //   1681: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1684: pop
+    //   1685: aload 15
+    //   1687: aload_0
+    //   1688: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1691: pop
+    //   1692: aload 15
+    //   1694: ldc_w 278
+    //   1697: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1700: pop
+    //   1701: aload 15
+    //   1703: aload 13
+    //   1705: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1708: pop
+    //   1709: aload 14
+    //   1711: ldc 41
+    //   1713: iconst_2
+    //   1714: aload 15
+    //   1716: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1719: invokeinterface 228 4 0
+    //   1724: iload 7
+    //   1726: ireturn
+    //   1727: aload 14
+    //   1729: ifnull +45 -> 1774
+    //   1732: aload 14
+    //   1734: invokevirtual 259	java/io/BufferedInputStream:close	()V
+    //   1737: goto +37 -> 1774
+    //   1740: astore 13
+    //   1742: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1745: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1748: invokeinterface 108 1 0
+    //   1753: ifeq +21 -> 1774
+    //   1756: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1759: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1762: ldc 41
+    //   1764: iconst_2
+    //   1765: ldc 148
+    //   1767: aload 13
+    //   1769: invokeinterface 262 5 0
+    //   1774: goto +5 -> 1779
+    //   1777: aload_0
+    //   1778: athrow
+    //   1779: goto -2 -> 1777
+    //   1782: iload 8
+    //   1784: istore 7
+    //   1786: goto -367 -> 1419
+    //   1789: ldc_w 280
+    //   1792: astore 13
+    //   1794: goto -12 -> 1782
+    //   1797: iload_3
+    //   1798: iconst_m1
+    //   1799: if_icmpne -443 -> 1356
+    //   1802: iload 4
+    //   1804: bipush 225
+    //   1806: if_icmpeq -1540 -> 266
+    //   1809: goto -453 -> 1356
+    //   1812: iload 8
+    //   1814: istore 7
+    //   1816: goto -397 -> 1419
+    //   1819: iload 8
+    //   1821: istore 7
+    //   1823: goto -404 -> 1419
+    //   1826: goto -1301 -> 525
+    //   1829: goto -1304 -> 525
+    //   1832: goto -471 -> 1361
+    //   1835: goto -474 -> 1361
+    //   1838: iload_2
+    //   1839: istore_1
+    //   1840: iload 5
+    //   1842: bipush 12
+    //   1844: if_icmpne +20 -> 1864
+    //   1847: ldc 148
+    //   1849: astore 13
+    //   1851: iconst_1
+    //   1852: istore 7
+    //   1854: iload_2
+    //   1855: istore_1
+    //   1856: goto -437 -> 1419
+    //   1859: iload_2
+    //   1860: bipush 10
+    //   1862: iadd
+    //   1863: istore_1
+    //   1864: iload_3
+    //   1865: iconst_1
+    //   1866: iadd
+    //   1867: istore_3
+    //   1868: iload_1
+    //   1869: istore_2
+    //   1870: goto -984 -> 886
+    //   1873: ldc 148
+    //   1875: astore 13
+    //   1877: goto -1333 -> 544
+    //   1880: astore 13
+    //   1882: goto -541 -> 1341
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1632	0	paramString	String
-    //   53	1561	1	i	int
-    //   51	1572	2	j	int
-    //   29	1584	3	k	int
-    //   105	1523	4	m	int
-    //   341	865	5	n	int
-    //   1137	1	6	i1	int
-    //   176	1374	7	bool1	boolean
-    //   9	1358	8	bool2	boolean
-    //   20	1528	9	bool3	boolean
-    //   17	233	10	l1	long
-    //   201	748	12	l2	long
-    //   26	1373	14	localObject1	Object
-    //   1416	14	14	localIOException1	IOException
-    //   1463	27	14	localIOException2	IOException
-    //   1500	1	14	localObject2	Object
-    //   1509	7	14	localThrowable1	java.lang.Throwable
-    //   1521	77	14	localObject3	Object
-    //   48	1232	15	localBufferedInputStream	java.io.BufferedInputStream
-    //   1332	24	15	localIOException3	IOException
-    //   1373	16	15	localThrowable2	java.lang.Throwable
-    //   1449	88	15	localObject4	Object
-    //   120	1317	16	localObject5	Object
-    //   1496	7	16	localThrowable3	java.lang.Throwable
-    //   1513	7	16	localObject6	Object
-    //   1526	9	16	localThrowable4	java.lang.Throwable
-    //   1543	1	16	str1	String
-    //   506	76	17	str2	String
+    //   0	1885	0	paramString	String
+    //   7	1862	1	i	int
+    //   119	1751	2	j	int
+    //   132	1736	3	k	int
+    //   149	1658	4	m	int
+    //   224	1621	5	n	int
+    //   1019	1	6	i1	int
+    //   166	1687	7	bool1	boolean
+    //   9	1811	8	bool2	boolean
+    //   22	1648	9	l1	long
+    //   241	1427	11	l2	long
+    //   25	1160	13	str1	String
+    //   1191	1	13	localThrowable1	java.lang.Throwable
+    //   1232	1	13	localThrowable2	java.lang.Throwable
+    //   1283	40	13	localObject1	Object
+    //   1327	1	13	localThrowable3	java.lang.Throwable
+    //   1332	1	13	localThrowable4	java.lang.Throwable
+    //   1339	7	13	localThrowable5	java.lang.Throwable
+    //   1351	188	13	localObject2	Object
+    //   1546	28	13	localIOException1	IOException
+    //   1585	119	13	str2	String
+    //   1740	28	13	localIOException2	IOException
+    //   1792	84	13	str3	String
+    //   1880	1	13	localThrowable6	java.lang.Throwable
+    //   48	1372	14	localObject3	Object
+    //   1427	44	14	localIOException3	IOException
+    //   1476	9	14	localThrowable7	java.lang.Throwable
+    //   1489	38	14	localThrowable8	java.lang.Throwable
+    //   1612	121	14	localILog	ILog
+    //   28	1322	15	localObject4	Object
+    //   1367	9	15	localThrowable9	java.lang.Throwable
+    //   1382	7	15	localThrowable10	java.lang.Throwable
+    //   1395	9	15	localThrowable11	java.lang.Throwable
+    //   1468	15	15	localThrowable12	java.lang.Throwable
+    //   1495	220	15	localObject5	Object
+    //   2	1582	16	str4	String
+    //   116	910	17	arrayOfByte	byte[]
+    //   389	911	18	localObject6	Object
+    //   763	351	19	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   183	188	1332	java/io/IOException
-    //   30	50	1373	java/lang/Throwable
-    //   1398	1403	1416	java/io/IOException
-    //   30	50	1447	finally
-    //   1456	1461	1463	java/io/IOException
-    //   54	59	1484	finally
-    //   61	74	1484	finally
-    //   117	122	1484	finally
-    //   125	136	1484	finally
-    //   143	155	1484	finally
-    //   294	307	1484	finally
-    //   357	372	1484	finally
-    //   383	396	1484	finally
-    //   411	428	1484	finally
-    //   439	454	1484	finally
-    //   469	482	1484	finally
-    //   497	508	1484	finally
-    //   510	520	1484	finally
-    //   525	540	1484	finally
-    //   551	561	1484	finally
-    //   569	596	1484	finally
-    //   603	616	1484	finally
-    //   632	644	1484	finally
-    //   651	666	1484	finally
-    //   677	690	1484	finally
-    //   708	717	1484	finally
-    //   729	742	1484	finally
-    //   757	769	1484	finally
-    //   771	784	1484	finally
-    //   799	808	1484	finally
-    //   810	823	1484	finally
-    //   838	846	1484	finally
-    //   848	856	1484	finally
-    //   858	871	1484	finally
-    //   886	892	1484	finally
-    //   894	920	1484	finally
-    //   922	939	1484	finally
-    //   941	954	1484	finally
-    //   965	978	1484	finally
-    //   993	1002	1484	finally
-    //   1012	1025	1484	finally
-    //   1040	1052	1484	finally
-    //   1054	1067	1484	finally
-    //   1082	1091	1484	finally
-    //   1093	1106	1484	finally
-    //   1121	1129	1484	finally
-    //   1131	1139	1484	finally
-    //   1141	1154	1484	finally
-    //   1167	1199	1484	finally
-    //   1222	1237	1484	finally
-    //   1251	1257	1484	finally
-    //   1259	1268	1484	finally
-    //   1279	1294	1484	finally
-    //   1306	1312	1484	finally
-    //   1314	1323	1484	finally
-    //   1377	1393	1488	finally
-    //   54	59	1496	java/lang/Throwable
-    //   61	74	1496	java/lang/Throwable
-    //   117	122	1496	java/lang/Throwable
-    //   125	136	1496	java/lang/Throwable
-    //   143	155	1496	java/lang/Throwable
-    //   294	307	1496	java/lang/Throwable
-    //   357	372	1496	java/lang/Throwable
-    //   383	396	1496	java/lang/Throwable
-    //   411	428	1496	java/lang/Throwable
-    //   439	454	1496	java/lang/Throwable
-    //   469	482	1496	java/lang/Throwable
-    //   993	1002	1496	java/lang/Throwable
-    //   1012	1025	1496	java/lang/Throwable
-    //   1040	1052	1496	java/lang/Throwable
-    //   1054	1067	1496	java/lang/Throwable
-    //   1082	1091	1496	java/lang/Throwable
-    //   1093	1106	1496	java/lang/Throwable
-    //   1121	1129	1496	java/lang/Throwable
-    //   1131	1139	1496	java/lang/Throwable
-    //   1141	1154	1496	java/lang/Throwable
-    //   1222	1237	1496	java/lang/Throwable
-    //   1251	1257	1496	java/lang/Throwable
-    //   1259	1268	1496	java/lang/Throwable
-    //   497	508	1509	java/lang/Throwable
-    //   510	520	1509	java/lang/Throwable
-    //   525	540	1509	java/lang/Throwable
-    //   551	561	1509	java/lang/Throwable
-    //   569	596	1509	java/lang/Throwable
-    //   603	616	1509	java/lang/Throwable
-    //   632	644	1509	java/lang/Throwable
-    //   651	666	1509	java/lang/Throwable
-    //   677	690	1509	java/lang/Throwable
-    //   708	717	1509	java/lang/Throwable
-    //   729	742	1509	java/lang/Throwable
-    //   757	769	1509	java/lang/Throwable
-    //   771	784	1509	java/lang/Throwable
-    //   799	808	1509	java/lang/Throwable
-    //   810	823	1509	java/lang/Throwable
-    //   838	846	1509	java/lang/Throwable
-    //   848	856	1509	java/lang/Throwable
-    //   858	871	1509	java/lang/Throwable
-    //   886	892	1509	java/lang/Throwable
-    //   894	920	1509	java/lang/Throwable
-    //   922	939	1509	java/lang/Throwable
-    //   941	954	1509	java/lang/Throwable
-    //   965	978	1509	java/lang/Throwable
-    //   1279	1294	1509	java/lang/Throwable
-    //   1306	1312	1509	java/lang/Throwable
-    //   1314	1323	1509	java/lang/Throwable
-    //   1167	1199	1526	java/lang/Throwable
+    //   894	907	1191	java/lang/Throwable
+    //   922	934	1191	java/lang/Throwable
+    //   936	949	1191	java/lang/Throwable
+    //   964	973	1191	java/lang/Throwable
+    //   975	988	1191	java/lang/Throwable
+    //   1003	1011	1191	java/lang/Throwable
+    //   1013	1021	1191	java/lang/Throwable
+    //   1023	1036	1191	java/lang/Throwable
+    //   1051	1065	1191	java/lang/Throwable
+    //   1067	1075	1191	java/lang/Throwable
+    //   1077	1086	1191	java/lang/Throwable
+    //   1088	1096	1191	java/lang/Throwable
+    //   1098	1106	1191	java/lang/Throwable
+    //   1108	1123	1191	java/lang/Throwable
+    //   1128	1143	1191	java/lang/Throwable
+    //   1150	1164	1191	java/lang/Throwable
+    //   1166	1182	1191	java/lang/Throwable
+    //   603	611	1232	java/lang/Throwable
+    //   617	630	1232	java/lang/Throwable
+    //   1196	1206	1232	java/lang/Throwable
+    //   505	518	1327	java/lang/Throwable
+    //   527	540	1327	java/lang/Throwable
+    //   579	592	1327	java/lang/Throwable
+    //   1239	1253	1327	java/lang/Throwable
+    //   1255	1271	1327	java/lang/Throwable
+    //   1276	1285	1327	java/lang/Throwable
+    //   1287	1295	1327	java/lang/Throwable
+    //   1297	1305	1327	java/lang/Throwable
+    //   1307	1315	1327	java/lang/Throwable
+    //   1317	1324	1327	java/lang/Throwable
+    //   380	391	1332	java/lang/Throwable
+    //   393	403	1332	java/lang/Throwable
+    //   411	421	1332	java/lang/Throwable
+    //   426	441	1332	java/lang/Throwable
+    //   450	463	1332	java/lang/Throwable
+    //   477	486	1332	java/lang/Throwable
+    //   294	311	1339	java/lang/Throwable
+    //   322	337	1339	java/lang/Throwable
+    //   352	365	1339	java/lang/Throwable
+    //   177	190	1367	java/lang/Throwable
+    //   245	258	1367	java/lang/Throwable
+    //   268	281	1367	java/lang/Throwable
+    //   122	133	1382	java/lang/Throwable
+    //   139	151	1382	java/lang/Throwable
+    //   113	118	1395	java/lang/Throwable
+    //   1419	1424	1427	java/io/IOException
+    //   50	68	1464	finally
+    //   113	118	1464	finally
+    //   122	133	1464	finally
+    //   139	151	1464	finally
+    //   177	190	1464	finally
+    //   245	258	1464	finally
+    //   268	281	1464	finally
+    //   294	311	1464	finally
+    //   322	337	1464	finally
+    //   352	365	1464	finally
+    //   380	391	1464	finally
+    //   393	403	1464	finally
+    //   411	421	1464	finally
+    //   426	441	1464	finally
+    //   450	463	1464	finally
+    //   477	486	1464	finally
+    //   505	518	1464	finally
+    //   527	540	1464	finally
+    //   556	565	1464	finally
+    //   579	592	1464	finally
+    //   603	611	1464	finally
+    //   617	630	1464	finally
+    //   643	652	1464	finally
+    //   654	667	1464	finally
+    //   682	690	1464	finally
+    //   692	700	1464	finally
+    //   702	715	1464	finally
+    //   730	744	1464	finally
+    //   746	754	1464	finally
+    //   756	765	1464	finally
+    //   767	775	1464	finally
+    //   777	785	1464	finally
+    //   787	802	1464	finally
+    //   804	821	1464	finally
+    //   823	836	1464	finally
+    //   847	860	1464	finally
+    //   875	884	1464	finally
+    //   894	907	1464	finally
+    //   922	934	1464	finally
+    //   936	949	1464	finally
+    //   964	973	1464	finally
+    //   975	988	1464	finally
+    //   1003	1011	1464	finally
+    //   1013	1021	1464	finally
+    //   1023	1036	1464	finally
+    //   1051	1065	1464	finally
+    //   1067	1075	1464	finally
+    //   1077	1086	1464	finally
+    //   1088	1096	1464	finally
+    //   1098	1106	1464	finally
+    //   1108	1123	1464	finally
+    //   1128	1143	1464	finally
+    //   1150	1164	1464	finally
+    //   1166	1182	1464	finally
+    //   1196	1206	1464	finally
+    //   1239	1253	1464	finally
+    //   1255	1271	1464	finally
+    //   1276	1285	1464	finally
+    //   1287	1295	1464	finally
+    //   1297	1305	1464	finally
+    //   1307	1315	1464	finally
+    //   1317	1324	1464	finally
+    //   50	68	1468	java/lang/Throwable
+    //   30	50	1481	finally
+    //   1497	1511	1481	finally
+    //   1515	1533	1481	finally
+    //   30	50	1489	java/lang/Throwable
+    //   1538	1543	1546	java/io/IOException
+    //   1732	1737	1740	java/io/IOException
+    //   556	565	1880	java/lang/Throwable
+    //   643	652	1880	java/lang/Throwable
+    //   654	667	1880	java/lang/Throwable
+    //   682	690	1880	java/lang/Throwable
+    //   692	700	1880	java/lang/Throwable
+    //   702	715	1880	java/lang/Throwable
+    //   730	744	1880	java/lang/Throwable
+    //   746	754	1880	java/lang/Throwable
+    //   756	765	1880	java/lang/Throwable
+    //   767	775	1880	java/lang/Throwable
+    //   777	785	1880	java/lang/Throwable
+    //   787	802	1880	java/lang/Throwable
+    //   804	821	1880	java/lang/Throwable
+    //   823	836	1880	java/lang/Throwable
+    //   847	860	1880	java/lang/Throwable
+    //   875	884	1880	java/lang/Throwable
   }
   
   /* Error */
   public static int readOrientation(String paramString)
   {
     // Byte code:
-    //   0: invokestatic 145	android/os/SystemClock:uptimeMillis	()J
+    //   0: invokestatic 159	android/os/SystemClock:uptimeMillis	()J
     //   3: lstore 6
-    //   5: getstatic 54	com/tencent/image/JpegExifReader:sIsReadDpc	Z
-    //   8: ifne +24 -> 32
-    //   11: getstatic 128	com/tencent/image/JpegExifReader:jpegExifReaderInterface	Lcom/tencent/image/JpegExifReader$JpegExifReaderInterface;
-    //   14: ifnull +18 -> 32
-    //   17: getstatic 128	com/tencent/image/JpegExifReader:jpegExifReaderInterface	Lcom/tencent/image/JpegExifReader$JpegExifReaderInterface;
-    //   20: invokeinterface 273 1 0
-    //   25: putstatic 52	com/tencent/image/JpegExifReader:sIsEnable	Z
-    //   28: iconst_1
-    //   29: putstatic 54	com/tencent/image/JpegExifReader:sIsReadDpc	Z
-    //   32: getstatic 52	com/tencent/image/JpegExifReader:sIsEnable	Z
-    //   35: ifne +51 -> 86
-    //   38: new 275	android/media/ExifInterface
-    //   41: dup
-    //   42: aload_0
-    //   43: invokespecial 276	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
-    //   46: astore_0
-    //   47: aload_0
-    //   48: ifnonnull +29 -> 77
-    //   51: iconst_0
-    //   52: istore_3
-    //   53: iload_3
-    //   54: ireturn
-    //   55: astore_0
-    //   56: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   59: ifeq +13 -> 72
-    //   62: ldc 41
-    //   64: iconst_2
-    //   65: ldc_w 278
-    //   68: aload_0
-    //   69: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   72: aconst_null
-    //   73: astore_0
-    //   74: goto -27 -> 47
-    //   77: aload_0
-    //   78: ldc_w 280
-    //   81: iconst_1
-    //   82: invokevirtual 284	android/media/ExifInterface:getAttributeInt	(Ljava/lang/String;I)I
-    //   85: ireturn
-    //   86: aconst_null
-    //   87: astore 10
-    //   89: iconst_0
-    //   90: istore_3
-    //   91: ldc 253
-    //   93: astore 9
-    //   95: new 147	java/io/BufferedInputStream
-    //   98: dup
-    //   99: new 149	java/io/FileInputStream
-    //   102: dup
-    //   103: aload_0
-    //   104: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   107: sipush 512
-    //   110: invokespecial 155	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   113: astore 12
-    //   115: iconst_0
-    //   116: istore_2
-    //   117: aload 9
-    //   119: astore 11
-    //   121: iload_3
-    //   122: istore_1
-    //   123: iconst_2
-    //   124: newarray byte
-    //   126: astore 14
-    //   128: aload 9
-    //   130: astore 11
-    //   132: iload_3
-    //   133: istore_1
-    //   134: aload 12
-    //   136: aload 14
-    //   138: iconst_0
-    //   139: iconst_2
-    //   140: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
+    //   5: getstatic 61	com/tencent/image/JpegExifReader:sIsReadDpc	Z
+    //   8: ifne +27 -> 35
+    //   11: getstatic 140	com/tencent/image/JpegExifReader:jpegExifReaderInterface	Lcom/tencent/image/JpegExifReader$JpegExifReaderInterface;
+    //   14: astore 13
+    //   16: aload 13
+    //   18: ifnull +17 -> 35
+    //   21: aload 13
+    //   23: invokeinterface 285 1 0
+    //   28: putstatic 59	com/tencent/image/JpegExifReader:sIsEnable	Z
+    //   31: iconst_1
+    //   32: putstatic 61	com/tencent/image/JpegExifReader:sIsReadDpc	Z
+    //   35: getstatic 59	com/tencent/image/JpegExifReader:sIsEnable	Z
+    //   38: istore 12
+    //   40: aconst_null
+    //   41: astore 16
+    //   43: aconst_null
+    //   44: astore 14
+    //   46: iload 12
+    //   48: ifne +65 -> 113
+    //   51: new 287	android/media/ExifInterface
+    //   54: dup
+    //   55: aload_0
+    //   56: invokespecial 288	android/media/ExifInterface:<init>	(Ljava/lang/String;)V
+    //   59: astore_0
+    //   60: goto +38 -> 98
+    //   63: astore_0
+    //   64: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   67: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   70: invokeinterface 108 1 0
+    //   75: ifeq +21 -> 96
+    //   78: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   81: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   84: ldc 41
+    //   86: iconst_2
+    //   87: ldc_w 290
+    //   90: aload_0
+    //   91: invokeinterface 262 5 0
+    //   96: aconst_null
+    //   97: astore_0
+    //   98: aload_0
+    //   99: ifnonnull +5 -> 104
+    //   102: iconst_0
+    //   103: ireturn
+    //   104: aload_0
+    //   105: ldc_w 292
+    //   108: iconst_1
+    //   109: invokevirtual 296	android/media/ExifInterface:getAttributeInt	(Ljava/lang/String;I)I
+    //   112: ireturn
+    //   113: new 161	java/io/BufferedInputStream
+    //   116: dup
+    //   117: new 163	java/io/FileInputStream
+    //   120: dup
+    //   121: aload_0
+    //   122: invokespecial 166	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   125: sipush 512
+    //   128: invokespecial 169	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   131: astore 15
+    //   133: iconst_2
+    //   134: newarray byte
+    //   136: astore 17
+    //   138: aload 15
+    //   140: aload 17
+    //   142: iconst_0
     //   143: iconst_2
-    //   144: if_icmpne +33 -> 177
-    //   147: aload 14
-    //   149: iconst_0
-    //   150: baload
-    //   151: sipush 255
-    //   154: iand
-    //   155: sipush 255
-    //   158: if_icmpne +231 -> 389
-    //   161: aload 14
-    //   163: iconst_1
-    //   164: baload
-    //   165: sipush 255
-    //   168: iand
-    //   169: sipush 216
-    //   172: if_icmpne +217 -> 389
-    //   175: iconst_1
-    //   176: istore_2
-    //   177: iconst_2
-    //   178: istore_3
-    //   179: aload 9
-    //   181: astore 13
-    //   183: iload_3
-    //   184: istore 4
-    //   186: iload_2
-    //   187: ifeq +1567 -> 1754
-    //   190: aload 9
-    //   192: astore 11
-    //   194: iload_3
-    //   195: istore_1
-    //   196: iconst_4
-    //   197: newarray byte
+    //   144: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   147: istore_1
+    //   148: iload_1
+    //   149: iconst_2
+    //   150: if_icmpne +36 -> 186
+    //   153: aload 17
+    //   155: iconst_0
+    //   156: baload
+    //   157: sipush 255
+    //   160: iand
+    //   161: sipush 255
+    //   164: if_icmpne +22 -> 186
+    //   167: aload 17
+    //   169: iconst_1
+    //   170: baload
+    //   171: sipush 255
+    //   174: iand
+    //   175: sipush 216
+    //   178: if_icmpne +8 -> 186
+    //   181: iconst_1
+    //   182: istore_1
+    //   183: goto +5 -> 188
+    //   186: iconst_0
+    //   187: istore_1
+    //   188: iload_1
+    //   189: ifeq +1397 -> 1586
+    //   192: iconst_4
+    //   193: newarray byte
+    //   195: astore 18
+    //   197: ldc 148
     //   199: astore 13
-    //   201: iload_3
+    //   201: iconst_2
     //   202: istore_2
-    //   203: aload 9
-    //   205: astore 11
-    //   207: iload_2
-    //   208: istore_1
-    //   209: aload 12
-    //   211: invokevirtual 162	java/io/BufferedInputStream:read	()I
-    //   214: sipush 255
-    //   217: iand
-    //   218: i2b
-    //   219: istore_3
+    //   203: iload_2
+    //   204: istore_1
+    //   205: aload 15
+    //   207: invokevirtual 178	java/io/BufferedInputStream:read	()I
+    //   210: sipush 255
+    //   213: iand
+    //   214: i2b
+    //   215: istore_3
+    //   216: iload_2
+    //   217: iconst_1
+    //   218: iadd
+    //   219: istore_2
     //   220: iload_2
-    //   221: iconst_1
-    //   222: iadd
-    //   223: istore_2
-    //   224: aload 9
-    //   226: astore 11
-    //   228: iload_2
-    //   229: istore_1
-    //   230: aload 12
-    //   232: invokevirtual 162	java/io/BufferedInputStream:read	()I
-    //   235: sipush 255
-    //   238: iand
-    //   239: i2b
-    //   240: istore 4
-    //   242: iload 4
-    //   244: bipush 218
-    //   246: if_icmpne +148 -> 394
-    //   249: ldc 164
-    //   251: astore 9
-    //   253: iload_2
-    //   254: istore_1
-    //   255: iconst_1
-    //   256: istore_2
-    //   257: aload 9
-    //   259: astore 11
-    //   261: iload_1
-    //   262: istore 4
-    //   264: iload_2
-    //   265: istore_3
-    //   266: aload 12
-    //   268: ifnull +1474 -> 1742
-    //   271: aload 12
-    //   273: invokevirtual 167	java/io/BufferedInputStream:close	()V
+    //   221: istore_1
+    //   222: aload 15
+    //   224: invokevirtual 178	java/io/BufferedInputStream:read	()I
+    //   227: sipush 255
+    //   230: iand
+    //   231: i2b
+    //   232: istore 4
+    //   234: iload 4
+    //   236: bipush 218
+    //   238: if_icmpne +12 -> 250
+    //   241: ldc 180
+    //   243: astore 13
+    //   245: iload_2
+    //   246: istore_1
+    //   247: goto +1345 -> 1592
+    //   250: iload_2
+    //   251: iconst_1
+    //   252: iadd
+    //   253: istore_1
+    //   254: iload_1
+    //   255: istore_2
+    //   256: aload 15
+    //   258: aload 17
+    //   260: iconst_0
+    //   261: iconst_2
+    //   262: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   265: iconst_2
+    //   266: if_icmpeq +10 -> 276
+    //   269: ldc 182
+    //   271: astore 13
+    //   273: goto +1788 -> 2061
     //   276: iload_1
-    //   277: istore_3
-    //   278: iload_2
+    //   277: iconst_2
+    //   278: iadd
     //   279: istore_1
-    //   280: iload_3
-    //   281: istore_2
-    //   282: invokestatic 145	android/os/SystemClock:uptimeMillis	()J
-    //   285: lload 6
-    //   287: lsub
-    //   288: lstore 6
-    //   290: getstatic 128	com/tencent/image/JpegExifReader:jpegExifReaderInterface	Lcom/tencent/image/JpegExifReader$JpegExifReaderInterface;
-    //   293: ifnull +21 -> 314
-    //   296: getstatic 128	com/tencent/image/JpegExifReader:jpegExifReaderInterface	Lcom/tencent/image/JpegExifReader$JpegExifReaderInterface;
-    //   299: aconst_null
-    //   300: ldc 34
-    //   302: iconst_1
-    //   303: lload 6
-    //   305: iload_2
-    //   306: i2l
-    //   307: aconst_null
-    //   308: aconst_null
-    //   309: invokeinterface 288 10 0
-    //   314: iload_1
-    //   315: istore_3
-    //   316: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   319: ifeq -266 -> 53
-    //   322: ldc 41
-    //   324: iconst_2
-    //   325: new 98	java/lang/StringBuilder
-    //   328: dup
-    //   329: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   332: ldc_w 290
-    //   335: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   338: iload_1
-    //   339: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   342: ldc 174
-    //   344: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   347: iload_2
-    //   348: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   351: ldc 176
-    //   353: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: lload 6
-    //   358: invokevirtual 179	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   361: ldc 181
-    //   363: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: aload_0
-    //   367: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   370: ldc_w 292
-    //   373: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: aload 9
-    //   378: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   384: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   387: iload_1
-    //   388: ireturn
-    //   389: iconst_0
-    //   390: istore_2
-    //   391: goto -214 -> 177
-    //   394: iload_2
-    //   395: iconst_1
-    //   396: iadd
-    //   397: istore_2
-    //   398: aload 9
-    //   400: astore 11
-    //   402: iload_2
-    //   403: istore_1
-    //   404: aload 12
-    //   406: aload 14
-    //   408: iconst_0
-    //   409: iconst_2
-    //   410: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   413: iconst_2
-    //   414: if_icmpeq +14 -> 428
-    //   417: ldc 188
-    //   419: astore 9
-    //   421: iload_2
-    //   422: istore_1
-    //   423: iconst_1
-    //   424: istore_2
-    //   425: goto -168 -> 257
-    //   428: iload_2
-    //   429: iconst_2
-    //   430: iadd
-    //   431: istore_2
-    //   432: aload 14
-    //   434: iconst_0
-    //   435: baload
-    //   436: bipush 8
-    //   438: ishl
-    //   439: ldc 68
-    //   441: iand
-    //   442: aload 14
-    //   444: iconst_1
-    //   445: baload
-    //   446: sipush 255
-    //   449: iand
-    //   450: ior
-    //   451: iconst_2
-    //   452: isub
-    //   453: istore 5
-    //   455: iload_3
-    //   456: iconst_m1
-    //   457: if_icmpne +39 -> 496
-    //   460: iload 4
-    //   462: bipush 224
-    //   464: if_icmpne +32 -> 496
-    //   467: aload 9
-    //   469: astore 11
-    //   471: iload_2
-    //   472: istore_1
-    //   473: aload 12
-    //   475: iload 5
-    //   477: i2l
-    //   478: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   481: iload 5
-    //   483: i2l
-    //   484: lcmp
-    //   485: ifne +1290 -> 1775
-    //   488: iload_2
-    //   489: iload 5
-    //   491: iadd
-    //   492: istore_2
-    //   493: goto -290 -> 203
-    //   496: iload_3
-    //   497: iconst_m1
-    //   498: if_icmpne +1289 -> 1787
-    //   501: iload 4
-    //   503: bipush 225
-    //   505: if_icmpeq +1282 -> 1787
-    //   508: iload 4
-    //   510: bipush 225
-    //   512: if_icmple +121 -> 633
-    //   515: iload 4
-    //   517: bipush 239
-    //   519: if_icmpge +114 -> 633
-    //   522: aload 9
-    //   524: astore 11
-    //   526: iload_2
-    //   527: istore_1
-    //   528: aload 12
-    //   530: iload 5
-    //   532: i2l
-    //   533: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   536: iload 5
-    //   538: i2l
-    //   539: lcmp
-    //   540: ifne +51 -> 591
-    //   543: aload 9
-    //   545: astore 11
-    //   547: iload_2
-    //   548: istore_1
-    //   549: new 98	java/lang/StringBuilder
-    //   552: dup
-    //   553: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   556: aload 9
-    //   558: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: ldc_w 294
-    //   564: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   567: iload 4
-    //   569: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   572: ldc_w 296
-    //   575: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   578: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   581: astore 9
-    //   583: iload_2
-    //   584: iload 5
-    //   586: iadd
-    //   587: istore_2
-    //   588: goto -385 -> 203
-    //   591: aload 9
-    //   593: astore 11
-    //   595: iload_2
-    //   596: istore_1
-    //   597: new 98	java/lang/StringBuilder
-    //   600: dup
-    //   601: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   604: ldc_w 294
-    //   607: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   610: iload 4
-    //   612: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   615: ldc_w 298
-    //   618: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   624: astore 9
-    //   626: iload_2
-    //   627: istore_1
-    //   628: iconst_1
-    //   629: istore_2
-    //   630: goto -373 -> 257
-    //   633: aload 9
-    //   635: astore 11
-    //   637: iload_2
-    //   638: istore_1
-    //   639: new 98	java/lang/StringBuilder
-    //   642: dup
-    //   643: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   646: ldc_w 300
-    //   649: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   652: iload 4
-    //   654: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   657: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   660: astore 9
-    //   662: iload_2
-    //   663: istore_1
-    //   664: iconst_1
-    //   665: istore_2
-    //   666: goto -409 -> 257
-    //   669: aload 9
-    //   671: astore 11
-    //   673: iload_2
-    //   674: istore_1
-    //   675: aload 12
-    //   677: aload 13
-    //   679: iconst_0
-    //   680: iconst_4
-    //   681: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   684: iconst_4
-    //   685: if_icmpeq +14 -> 699
-    //   688: ldc 194
-    //   690: astore 9
-    //   692: iload_2
-    //   693: istore_1
-    //   694: iconst_1
+    //   280: aload 17
+    //   282: iconst_0
+    //   283: baload
+    //   284: istore_2
+    //   285: aload 17
+    //   287: iconst_1
+    //   288: baload
+    //   289: sipush 255
+    //   292: iand
+    //   293: iload_2
+    //   294: bipush 8
+    //   296: ishl
+    //   297: ldc 68
+    //   299: iand
+    //   300: ior
+    //   301: iconst_2
+    //   302: isub
+    //   303: istore 5
+    //   305: iload_3
+    //   306: iconst_m1
+    //   307: if_icmpne +46 -> 353
+    //   310: iload 4
+    //   312: bipush 224
+    //   314: if_icmpne +39 -> 353
+    //   317: iload 5
+    //   319: i2l
+    //   320: lstore 8
+    //   322: iload_1
+    //   323: istore_2
+    //   324: aload 15
+    //   326: lload 8
+    //   328: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   331: lload 8
+    //   333: lcmp
+    //   334: ifne +11 -> 345
+    //   337: iload_1
+    //   338: iload 5
+    //   340: iadd
+    //   341: istore_2
+    //   342: goto +1722 -> 2064
+    //   345: ldc_w 280
+    //   348: astore 13
+    //   350: goto +1711 -> 2061
+    //   353: iload_3
+    //   354: iconst_m1
+    //   355: if_icmpne +1712 -> 2067
+    //   358: iload 4
+    //   360: bipush 225
+    //   362: if_icmpeq +1705 -> 2067
+    //   365: iload 4
+    //   367: bipush 225
+    //   369: if_icmple +143 -> 512
+    //   372: iload 4
+    //   374: bipush 239
+    //   376: if_icmpge +136 -> 512
+    //   379: iload 5
+    //   381: i2l
+    //   382: lstore 8
+    //   384: aload 15
+    //   386: lload 8
+    //   388: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   391: lstore 10
+    //   393: lload 10
+    //   395: lload 8
+    //   397: lcmp
+    //   398: ifne +65 -> 463
+    //   401: new 110	java/lang/StringBuilder
+    //   404: dup
+    //   405: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   408: astore 14
+    //   410: aload 14
+    //   412: aload 13
+    //   414: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: pop
+    //   418: aload 14
+    //   420: ldc_w 298
+    //   423: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload 14
+    //   429: iload 4
+    //   431: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   434: pop
+    //   435: aload 14
+    //   437: ldc_w 300
+    //   440: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: pop
+    //   444: aload 14
+    //   446: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   449: astore 14
+    //   451: iload_1
+    //   452: iload 5
+    //   454: iadd
+    //   455: istore_2
+    //   456: aload 14
+    //   458: astore 13
+    //   460: goto +1604 -> 2064
+    //   463: new 110	java/lang/StringBuilder
+    //   466: dup
+    //   467: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   470: astore 14
+    //   472: aload 14
+    //   474: ldc_w 298
+    //   477: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: pop
+    //   481: aload 14
+    //   483: iload 4
+    //   485: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   488: pop
+    //   489: aload 14
+    //   491: ldc_w 302
+    //   494: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   497: pop
+    //   498: aload 14
+    //   500: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   503: astore 14
+    //   505: aload 14
+    //   507: astore 13
+    //   509: goto +1030 -> 1539
+    //   512: new 110	java/lang/StringBuilder
+    //   515: dup
+    //   516: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   519: astore 14
+    //   521: aload 14
+    //   523: ldc_w 304
+    //   526: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   529: pop
+    //   530: aload 14
+    //   532: iload 4
+    //   534: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   537: pop
+    //   538: aload 14
+    //   540: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   543: astore 14
+    //   545: aload 14
+    //   547: astore 13
+    //   549: goto +990 -> 1539
+    //   552: aload 15
+    //   554: aload 18
+    //   556: iconst_0
+    //   557: iconst_4
+    //   558: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   561: iconst_4
+    //   562: if_icmpeq +10 -> 572
+    //   565: ldc 188
+    //   567: astore 13
+    //   569: goto +970 -> 1539
+    //   572: ldc 22
+    //   574: new 190	java/lang/String
+    //   577: dup
+    //   578: aload 18
+    //   580: invokespecial 193	java/lang/String:<init>	([B)V
+    //   583: invokevirtual 196	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   586: ifne +10 -> 596
+    //   589: ldc 198
+    //   591: astore 13
+    //   593: goto +946 -> 1539
+    //   596: aload 15
+    //   598: ldc2_w 199
+    //   601: invokevirtual 203	java/io/BufferedInputStream:skip	(J)J
+    //   604: ldc2_w 199
+    //   607: lcmp
+    //   608: ifeq +10 -> 618
+    //   611: ldc 205
+    //   613: astore 13
+    //   615: goto +924 -> 1539
+    //   618: iload_1
+    //   619: iconst_2
+    //   620: iadd
+    //   621: istore_1
+    //   622: iload_1
+    //   623: istore_2
+    //   624: aload 15
+    //   626: aload 17
+    //   628: iconst_0
+    //   629: iconst_2
+    //   630: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   633: iconst_2
+    //   634: if_icmpeq +10 -> 644
+    //   637: ldc 207
+    //   639: astore 13
+    //   641: goto +1445 -> 2086
+    //   644: iload_1
+    //   645: iconst_2
+    //   646: iadd
+    //   647: istore_1
+    //   648: iload_1
+    //   649: istore_2
+    //   650: new 190	java/lang/String
+    //   653: dup
+    //   654: aload 17
+    //   656: invokespecial 193	java/lang/String:<init>	([B)V
+    //   659: astore 14
+    //   661: iload_1
+    //   662: istore_2
+    //   663: ldc 8
+    //   665: aload 14
+    //   667: invokevirtual 196	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   670: ifeq +9 -> 679
+    //   673: iconst_1
+    //   674: istore 12
+    //   676: goto +18 -> 694
+    //   679: iload_1
+    //   680: istore_2
+    //   681: ldc 29
+    //   683: aload 14
+    //   685: invokevirtual 196	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   688: ifeq +782 -> 1470
+    //   691: iconst_0
+    //   692: istore 12
+    //   694: iload_1
     //   695: istore_2
-    //   696: goto -439 -> 257
-    //   699: aload 9
-    //   701: astore 11
-    //   703: iload_2
-    //   704: istore_1
-    //   705: ldc 22
-    //   707: new 196	java/lang/String
-    //   710: dup
-    //   711: aload 13
-    //   713: invokespecial 199	java/lang/String:<init>	([B)V
-    //   716: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   719: ifne +14 -> 733
-    //   722: ldc 204
-    //   724: astore 9
-    //   726: iload_2
-    //   727: istore_1
-    //   728: iconst_1
-    //   729: istore_2
-    //   730: goto -473 -> 257
-    //   733: aload 9
-    //   735: astore 11
-    //   737: iload_2
-    //   738: istore_1
-    //   739: aload 12
-    //   741: ldc2_w 205
-    //   744: invokevirtual 209	java/io/BufferedInputStream:skip	(J)J
-    //   747: ldc2_w 205
-    //   750: lcmp
-    //   751: ifeq +14 -> 765
-    //   754: ldc 211
-    //   756: astore 9
-    //   758: iload_2
-    //   759: istore_1
-    //   760: iconst_1
-    //   761: istore_2
-    //   762: goto -505 -> 257
-    //   765: iload_2
-    //   766: iconst_2
-    //   767: iadd
-    //   768: istore_2
-    //   769: aload 9
-    //   771: astore 11
-    //   773: iload_2
-    //   774: istore_1
-    //   775: aload 12
-    //   777: aload 14
-    //   779: iconst_0
-    //   780: iconst_2
-    //   781: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   784: iconst_2
-    //   785: if_icmpeq +14 -> 799
-    //   788: ldc 213
-    //   790: astore 9
-    //   792: iload_2
-    //   793: istore_1
-    //   794: iconst_1
-    //   795: istore_2
-    //   796: goto -539 -> 257
-    //   799: iload_2
-    //   800: iconst_2
-    //   801: iadd
-    //   802: istore_2
-    //   803: aload 9
-    //   805: astore 11
-    //   807: iload_2
-    //   808: istore_1
-    //   809: new 196	java/lang/String
-    //   812: dup
-    //   813: aload 14
-    //   815: invokespecial 199	java/lang/String:<init>	([B)V
-    //   818: astore 10
-    //   820: aload 9
-    //   822: astore 11
-    //   824: iload_2
-    //   825: istore_1
-    //   826: ldc 8
-    //   828: aload 10
-    //   830: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   833: ifeq +38 -> 871
-    //   836: iconst_1
-    //   837: istore 8
-    //   839: aload 9
-    //   841: astore 11
-    //   843: iload_2
-    //   844: istore_1
-    //   845: aload 12
-    //   847: ldc2_w 205
-    //   850: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   853: ldc2_w 205
-    //   856: lcmp
-    //   857: ifeq +76 -> 933
-    //   860: ldc 215
-    //   862: astore 9
+    //   696: aload 15
+    //   698: ldc2_w 199
+    //   701: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   704: ldc2_w 199
+    //   707: lcmp
+    //   708: ifeq +10 -> 718
+    //   711: ldc 209
+    //   713: astore 13
+    //   715: goto +1371 -> 2086
+    //   718: iload_1
+    //   719: istore_2
+    //   720: aload 15
+    //   722: aload 18
+    //   724: iconst_0
+    //   725: iconst_4
+    //   726: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   729: iconst_4
+    //   730: if_icmpeq +10 -> 740
+    //   733: ldc 211
+    //   735: astore 13
+    //   737: goto +1349 -> 2086
+    //   740: iload_1
+    //   741: bipush 6
+    //   743: iadd
+    //   744: istore_2
+    //   745: iload_2
+    //   746: istore_1
+    //   747: iload 12
+    //   749: aload 18
+    //   751: invokestatic 130	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
+    //   754: bipush 8
+    //   756: isub
+    //   757: istore_3
+    //   758: iload_3
+    //   759: ifle +29 -> 788
+    //   762: iload_3
+    //   763: i2l
+    //   764: lstore 6
+    //   766: iload_2
+    //   767: istore_1
+    //   768: aload 15
+    //   770: lload 6
+    //   772: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   775: lload 6
+    //   777: lcmp
+    //   778: ifeq +10 -> 788
+    //   781: ldc 213
+    //   783: astore 13
+    //   785: goto +1308 -> 2093
+    //   788: iload_2
+    //   789: istore_1
+    //   790: aload 15
+    //   792: aload 17
+    //   794: iconst_0
+    //   795: iconst_2
+    //   796: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   799: iconst_2
+    //   800: if_icmpeq +10 -> 810
+    //   803: ldc 215
+    //   805: astore 13
+    //   807: goto +1286 -> 2093
+    //   810: iload_2
+    //   811: iload_3
+    //   812: iconst_2
+    //   813: iadd
+    //   814: iadd
+    //   815: istore_2
+    //   816: iload_2
+    //   817: istore_1
+    //   818: iload 12
+    //   820: aload 17
+    //   822: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   825: istore 4
+    //   827: iload_2
+    //   828: istore_1
+    //   829: iconst_0
+    //   830: istore_3
+    //   831: iload_3
+    //   832: iload 4
+    //   834: if_icmpge +1297 -> 2131
+    //   837: iload_1
+    //   838: istore_2
+    //   839: aload 15
+    //   841: aload 17
+    //   843: iconst_0
+    //   844: iconst_2
+    //   845: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   848: iconst_2
+    //   849: if_icmpeq +11 -> 860
+    //   852: ldc_w 306
+    //   855: astore 13
+    //   857: goto +1229 -> 2086
+    //   860: iload_1
+    //   861: iconst_2
+    //   862: iadd
+    //   863: istore_2
     //   864: iload_2
     //   865: istore_1
-    //   866: iconst_1
-    //   867: istore_2
-    //   868: goto -611 -> 257
-    //   871: aload 9
-    //   873: astore 11
-    //   875: iload_2
-    //   876: istore_1
-    //   877: ldc 29
-    //   879: aload 10
-    //   881: invokevirtual 202	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   884: ifeq +9 -> 893
-    //   887: iconst_0
-    //   888: istore 8
-    //   890: goto -51 -> 839
-    //   893: aload 9
-    //   895: astore 11
-    //   897: iload_2
-    //   898: istore_1
-    //   899: new 98	java/lang/StringBuilder
-    //   902: dup
-    //   903: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   906: ldc 217
-    //   908: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   911: aload 10
-    //   913: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   916: ldc 219
-    //   918: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   921: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   924: astore 9
-    //   926: iload_2
-    //   927: istore_1
-    //   928: iconst_1
-    //   929: istore_2
-    //   930: goto -673 -> 257
-    //   933: aload 9
-    //   935: astore 11
-    //   937: iload_2
-    //   938: istore_1
-    //   939: aload 12
-    //   941: aload 13
-    //   943: iconst_0
-    //   944: iconst_4
-    //   945: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   948: iconst_4
-    //   949: if_icmpeq +14 -> 963
-    //   952: ldc 221
-    //   954: astore 9
-    //   956: iload_2
-    //   957: istore_1
-    //   958: iconst_1
-    //   959: istore_2
-    //   960: goto -703 -> 257
-    //   963: iload_2
-    //   964: bipush 6
-    //   966: iadd
-    //   967: istore_2
-    //   968: aload 9
-    //   970: astore 11
-    //   972: iload_2
-    //   973: istore_1
-    //   974: iload 8
-    //   976: aload 13
-    //   978: invokestatic 124	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
-    //   981: bipush 8
-    //   983: isub
-    //   984: istore_3
-    //   985: iload_3
-    //   986: ifle +33 -> 1019
-    //   989: aload 9
-    //   991: astore 11
-    //   993: iload_2
-    //   994: istore_1
-    //   995: aload 12
-    //   997: iload_3
-    //   998: i2l
-    //   999: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   1002: iload_3
-    //   1003: i2l
-    //   1004: lcmp
-    //   1005: ifeq +14 -> 1019
-    //   1008: ldc 223
-    //   1010: astore 9
-    //   1012: iload_2
-    //   1013: istore_1
-    //   1014: iconst_1
-    //   1015: istore_2
-    //   1016: goto -759 -> 257
-    //   1019: aload 9
-    //   1021: astore 11
-    //   1023: iload_2
-    //   1024: istore_1
-    //   1025: aload 12
-    //   1027: aload 14
-    //   1029: iconst_0
-    //   1030: iconst_2
-    //   1031: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1034: iconst_2
-    //   1035: if_icmpeq +14 -> 1049
-    //   1038: ldc 225
-    //   1040: astore 9
-    //   1042: iload_2
-    //   1043: istore_1
-    //   1044: iconst_1
-    //   1045: istore_2
-    //   1046: goto -789 -> 257
-    //   1049: iload_2
-    //   1050: iload_3
-    //   1051: iconst_2
-    //   1052: iadd
-    //   1053: iadd
-    //   1054: istore_2
-    //   1055: aload 9
-    //   1057: astore 11
-    //   1059: iload_2
-    //   1060: istore_1
-    //   1061: iload 8
-    //   1063: aload 14
-    //   1065: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1068: istore 5
-    //   1070: iconst_0
-    //   1071: istore 4
-    //   1073: aload 9
-    //   1075: astore 10
+    //   866: aload 13
+    //   868: astore 16
+    //   870: iload 12
+    //   872: aload 17
+    //   874: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   877: sipush 274
+    //   880: if_icmpne +479 -> 1359
+    //   883: iload_2
+    //   884: istore_1
+    //   885: aload 13
+    //   887: astore 16
+    //   889: aload 15
+    //   891: aload 17
+    //   893: iconst_0
+    //   894: iconst_2
+    //   895: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   898: iconst_2
+    //   899: if_icmpeq +13 -> 912
+    //   902: ldc_w 308
+    //   905: astore 13
+    //   907: iload_2
+    //   908: istore_1
+    //   909: goto +1201 -> 2110
+    //   912: iload_2
+    //   913: iconst_2
+    //   914: iadd
+    //   915: istore_2
+    //   916: iload_2
+    //   917: istore_1
+    //   918: aload 13
+    //   920: astore 16
+    //   922: iload 12
+    //   924: aload 17
+    //   926: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   929: istore_3
+    //   930: iload_2
+    //   931: istore_1
+    //   932: aload 13
+    //   934: astore 16
+    //   936: aload 15
+    //   938: aload 18
+    //   940: iconst_0
+    //   941: iconst_4
+    //   942: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   945: iconst_4
+    //   946: if_icmpeq +12 -> 958
+    //   949: ldc 221
+    //   951: astore 13
+    //   953: iload_2
+    //   954: istore_1
+    //   955: goto +1155 -> 2110
+    //   958: iload_2
+    //   959: iconst_4
+    //   960: iadd
+    //   961: istore_2
+    //   962: iload_2
+    //   963: istore_1
+    //   964: aload 13
+    //   966: astore 16
+    //   968: iload 12
+    //   970: aload 18
+    //   972: invokestatic 130	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
+    //   975: getstatic 57	com/tencent/image/JpegExifReader:BYTES_PER_FORMAT	[B
+    //   978: iload_3
+    //   979: baload
+    //   980: imul
+    //   981: istore 4
+    //   983: iload 4
+    //   985: iconst_4
+    //   986: if_icmple +91 -> 1077
+    //   989: iload_2
+    //   990: istore_1
+    //   991: aload 13
+    //   993: astore 16
+    //   995: new 110	java/lang/StringBuilder
+    //   998: dup
+    //   999: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1002: astore 14
+    //   1004: iload_2
+    //   1005: istore_1
+    //   1006: aload 13
+    //   1008: astore 16
+    //   1010: aload 14
+    //   1012: ldc_w 310
+    //   1015: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1018: pop
+    //   1019: iload_2
+    //   1020: istore_1
+    //   1021: aload 13
+    //   1023: astore 16
+    //   1025: aload 14
+    //   1027: iload_3
+    //   1028: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1031: pop
+    //   1032: iload_2
+    //   1033: istore_1
+    //   1034: aload 13
+    //   1036: astore 16
+    //   1038: aload 14
+    //   1040: ldc_w 312
+    //   1043: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1046: pop
+    //   1047: iload_2
+    //   1048: istore_1
+    //   1049: aload 13
+    //   1051: astore 16
+    //   1053: aload 14
+    //   1055: iload 4
+    //   1057: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1060: pop
+    //   1061: iload_2
+    //   1062: istore_1
+    //   1063: aload 13
+    //   1065: astore 16
+    //   1067: aload 14
+    //   1069: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1072: astore 13
+    //   1074: goto +315 -> 1389
     //   1077: iload_2
-    //   1078: istore_3
-    //   1079: iload 4
-    //   1081: iload 5
-    //   1083: if_icmpge +206 -> 1289
-    //   1086: aload 9
-    //   1088: astore 11
-    //   1090: iload_2
-    //   1091: istore_1
-    //   1092: aload 12
-    //   1094: aload 14
-    //   1096: iconst_0
-    //   1097: iconst_2
-    //   1098: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1101: iconst_2
-    //   1102: if_icmpeq +15 -> 1117
-    //   1105: ldc_w 302
-    //   1108: astore 9
-    //   1110: iload_2
-    //   1111: istore_1
-    //   1112: iconst_1
-    //   1113: istore_2
-    //   1114: goto -857 -> 257
-    //   1117: iload_2
-    //   1118: iconst_2
-    //   1119: iadd
-    //   1120: istore_2
-    //   1121: aload 9
-    //   1123: astore 11
-    //   1125: iload_2
-    //   1126: istore_1
-    //   1127: iload 8
-    //   1129: aload 14
-    //   1131: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1134: sipush 274
-    //   1137: if_icmpne +377 -> 1514
-    //   1140: aload 9
-    //   1142: astore 11
-    //   1144: iload_2
-    //   1145: istore_1
-    //   1146: aload 12
-    //   1148: aload 14
-    //   1150: iconst_0
-    //   1151: iconst_2
-    //   1152: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1155: iconst_2
-    //   1156: if_icmpeq +15 -> 1171
-    //   1159: ldc_w 304
-    //   1162: astore 9
-    //   1164: iload_2
-    //   1165: istore_1
-    //   1166: iconst_1
-    //   1167: istore_2
-    //   1168: goto -911 -> 257
-    //   1171: iload_2
-    //   1172: iconst_2
-    //   1173: iadd
-    //   1174: istore_2
-    //   1175: aload 9
-    //   1177: astore 11
-    //   1179: iload_2
-    //   1180: istore_1
-    //   1181: iload 8
-    //   1183: aload 14
-    //   1185: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1188: istore 4
-    //   1190: aload 9
-    //   1192: astore 11
-    //   1194: iload_2
+    //   1078: istore_1
+    //   1079: aload 13
+    //   1081: astore 16
+    //   1083: aload 15
+    //   1085: aload 18
+    //   1087: iconst_0
+    //   1088: iconst_4
+    //   1089: invokevirtual 173	java/io/BufferedInputStream:read	([BII)I
+    //   1092: iconst_4
+    //   1093: if_icmpeq +13 -> 1106
+    //   1096: ldc_w 314
+    //   1099: astore 13
+    //   1101: iload_2
+    //   1102: istore_1
+    //   1103: goto +1007 -> 2110
+    //   1106: iload_2
+    //   1107: iconst_4
+    //   1108: iadd
+    //   1109: istore_2
+    //   1110: iload_3
+    //   1111: iconst_3
+    //   1112: if_icmpeq +145 -> 1257
+    //   1115: iload_3
+    //   1116: iconst_4
+    //   1117: if_icmpeq +120 -> 1237
+    //   1120: iload_3
+    //   1121: bipush 6
+    //   1123: if_icmpeq +979 -> 2102
+    //   1126: iload_3
+    //   1127: bipush 8
+    //   1129: if_icmpeq +89 -> 1218
+    //   1132: iload_3
+    //   1133: bipush 9
+    //   1135: if_icmpeq +64 -> 1199
+    //   1138: iload_2
+    //   1139: istore_1
+    //   1140: aload 13
+    //   1142: astore 16
+    //   1144: new 110	java/lang/StringBuilder
+    //   1147: dup
+    //   1148: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1151: astore 14
+    //   1153: iload_2
+    //   1154: istore_1
+    //   1155: aload 13
+    //   1157: astore 16
+    //   1159: aload 14
+    //   1161: ldc_w 316
+    //   1164: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1167: pop
+    //   1168: iload_2
+    //   1169: istore_1
+    //   1170: aload 13
+    //   1172: astore 16
+    //   1174: aload 14
+    //   1176: iload_3
+    //   1177: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1180: pop
+    //   1181: iload_2
+    //   1182: istore_1
+    //   1183: aload 13
+    //   1185: astore 16
+    //   1187: aload 14
+    //   1189: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1192: astore 13
+    //   1194: iconst_1
     //   1195: istore_1
-    //   1196: aload 12
-    //   1198: aload 13
-    //   1200: iconst_0
-    //   1201: iconst_4
-    //   1202: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1205: iconst_4
-    //   1206: if_icmpeq +14 -> 1220
-    //   1209: ldc 231
-    //   1211: astore 9
-    //   1213: iload_2
+    //   1196: goto +77 -> 1273
+    //   1199: iload_2
+    //   1200: istore_1
+    //   1201: aload 13
+    //   1203: astore 16
+    //   1205: iload 12
+    //   1207: aload 18
+    //   1209: invokestatic 130	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
+    //   1212: istore_3
+    //   1213: iload_3
     //   1214: istore_1
-    //   1215: iconst_1
-    //   1216: istore_2
-    //   1217: goto -960 -> 257
-    //   1220: iload_2
-    //   1221: iconst_4
-    //   1222: iadd
-    //   1223: istore_3
-    //   1224: aload 9
-    //   1226: astore 11
-    //   1228: iload_3
-    //   1229: istore_1
-    //   1230: iload 8
-    //   1232: aload 13
-    //   1234: invokestatic 124	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
-    //   1237: getstatic 61	com/tencent/image/JpegExifReader:BYTES_PER_FORMAT	[B
-    //   1240: iload 4
-    //   1242: baload
-    //   1243: imul
-    //   1244: istore_2
-    //   1245: iload_2
-    //   1246: iconst_4
-    //   1247: if_icmple +87 -> 1334
-    //   1250: aload 9
-    //   1252: astore 11
-    //   1254: iload_3
-    //   1255: istore_1
-    //   1256: new 98	java/lang/StringBuilder
-    //   1259: dup
-    //   1260: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   1263: ldc_w 306
-    //   1266: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1269: iload 4
-    //   1271: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1274: ldc_w 308
-    //   1277: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1280: iload_2
-    //   1281: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1284: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1287: astore 10
-    //   1289: aload 10
-    //   1291: astore 11
-    //   1293: iload_3
-    //   1294: istore_1
-    //   1295: aload 10
-    //   1297: astore 13
-    //   1299: iload_3
-    //   1300: istore 4
-    //   1302: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1305: ifeq +449 -> 1754
-    //   1308: aload 10
-    //   1310: astore 11
-    //   1312: iload_3
-    //   1313: istore_1
-    //   1314: ldc 41
-    //   1316: iconst_2
-    //   1317: ldc_w 261
-    //   1320: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1323: aload 10
-    //   1325: astore 9
-    //   1327: iload_3
-    //   1328: istore_1
-    //   1329: iconst_1
-    //   1330: istore_2
-    //   1331: goto -1074 -> 257
-    //   1334: aload 9
-    //   1336: astore 11
-    //   1338: iload_3
-    //   1339: istore_1
-    //   1340: aload 12
-    //   1342: aload 13
-    //   1344: iconst_0
-    //   1345: iconst_4
-    //   1346: invokevirtual 159	java/io/BufferedInputStream:read	([BII)I
-    //   1349: iconst_4
-    //   1350: if_icmpeq +461 -> 1811
-    //   1353: ldc_w 310
-    //   1356: astore 9
-    //   1358: iload_3
-    //   1359: istore_1
-    //   1360: iconst_1
-    //   1361: istore_2
-    //   1362: goto -1105 -> 257
-    //   1365: aload 9
-    //   1367: astore 11
-    //   1369: iload_2
-    //   1370: istore_1
-    //   1371: new 98	java/lang/StringBuilder
-    //   1374: dup
-    //   1375: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   1378: ldc_w 312
-    //   1381: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1384: iload 4
-    //   1386: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1389: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1392: astore 9
-    //   1394: iconst_1
-    //   1395: istore_1
-    //   1396: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1399: ifeq +367 -> 1766
-    //   1402: ldc 41
-    //   1404: iconst_2
-    //   1405: new 98	java/lang/StringBuilder
-    //   1408: dup
-    //   1409: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   1412: ldc_w 314
-    //   1415: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1418: iload_1
-    //   1419: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1422: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1425: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1428: iload_1
-    //   1429: istore_3
-    //   1430: iload_2
-    //   1431: istore_1
-    //   1432: iload_3
-    //   1433: istore_2
-    //   1434: goto -1177 -> 257
-    //   1437: aload 9
-    //   1439: astore 11
+    //   1215: goto +58 -> 1273
+    //   1218: iload_2
+    //   1219: istore_1
+    //   1220: aload 13
+    //   1222: astore 16
+    //   1224: iload 12
+    //   1226: aload 18
+    //   1228: invokestatic 132	com/tencent/image/JpegExifReader:getInt16	(Z[B)S
+    //   1231: istore_3
+    //   1232: iload_3
+    //   1233: istore_1
+    //   1234: goto +39 -> 1273
+    //   1237: iload_2
+    //   1238: istore_1
+    //   1239: aload 13
+    //   1241: astore 16
+    //   1243: iload 12
+    //   1245: aload 18
+    //   1247: invokestatic 134	com/tencent/image/JpegExifReader:getUnsignedInt32	(Z[B)J
+    //   1250: l2i
+    //   1251: istore_3
+    //   1252: iload_3
+    //   1253: istore_1
+    //   1254: goto +19 -> 1273
+    //   1257: iload_2
+    //   1258: istore_1
+    //   1259: aload 13
+    //   1261: astore 16
+    //   1263: iload 12
+    //   1265: aload 18
+    //   1267: invokestatic 136	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
+    //   1270: istore_3
+    //   1271: iload_3
+    //   1272: istore_1
+    //   1273: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1276: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1279: invokeinterface 108 1 0
+    //   1284: ifeq +51 -> 1335
+    //   1287: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1290: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1293: astore 14
+    //   1295: new 110	java/lang/StringBuilder
+    //   1298: dup
+    //   1299: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1302: astore 16
+    //   1304: aload 16
+    //   1306: ldc_w 318
+    //   1309: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1312: pop
+    //   1313: aload 16
+    //   1315: iload_1
+    //   1316: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1319: pop
+    //   1320: aload 14
+    //   1322: ldc 41
+    //   1324: iconst_2
+    //   1325: aload 16
+    //   1327: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1330: invokeinterface 228 4 0
+    //   1335: iload_1
+    //   1336: istore_3
+    //   1337: iload_2
+    //   1338: istore_1
+    //   1339: iload_3
+    //   1340: istore_2
+    //   1341: lload 8
+    //   1343: lstore 6
+    //   1345: goto +249 -> 1594
+    //   1348: astore 16
+    //   1350: iload_1
+    //   1351: istore_3
+    //   1352: iload_2
+    //   1353: istore_1
+    //   1354: iload_3
+    //   1355: istore_2
+    //   1356: goto +340 -> 1696
+    //   1359: iload_2
+    //   1360: istore_1
+    //   1361: aload 13
+    //   1363: astore 16
+    //   1365: aload 15
+    //   1367: ldc2_w 245
+    //   1370: invokestatic 186	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
+    //   1373: ldc2_w 245
+    //   1376: lcmp
+    //   1377: ifeq +742 -> 2119
+    //   1380: ldc 175
+    //   1382: astore 13
+    //   1384: iload_2
+    //   1385: istore_1
+    //   1386: goto +724 -> 2110
+    //   1389: iload_2
+    //   1390: istore_3
+    //   1391: aload 13
+    //   1393: astore 14
+    //   1395: iload_2
+    //   1396: istore_1
+    //   1397: aload 13
+    //   1399: astore 16
+    //   1401: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1404: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1407: invokeinterface 108 1 0
+    //   1412: ifeq +31 -> 1443
+    //   1415: iload_2
+    //   1416: istore_1
+    //   1417: aload 13
+    //   1419: astore 16
+    //   1421: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1424: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1427: ldc 41
+    //   1429: iconst_2
+    //   1430: ldc 250
+    //   1432: invokeinterface 228 4 0
+    //   1437: aload 13
+    //   1439: astore 14
     //   1441: iload_2
-    //   1442: istore_1
-    //   1443: iload 8
-    //   1445: aload 13
-    //   1447: invokestatic 118	com/tencent/image/JpegExifReader:getUnsignedInt16	(Z[B)I
-    //   1450: istore_3
-    //   1451: iload_3
-    //   1452: istore_1
-    //   1453: goto -57 -> 1396
-    //   1456: aload 9
-    //   1458: astore 11
-    //   1460: iload_2
-    //   1461: istore_1
-    //   1462: iload 8
-    //   1464: aload 13
-    //   1466: invokestatic 120	com/tencent/image/JpegExifReader:getUnsignedInt32	(Z[B)J
-    //   1469: l2i
-    //   1470: istore_3
-    //   1471: iload_3
-    //   1472: istore_1
-    //   1473: goto -77 -> 1396
-    //   1476: aload 9
-    //   1478: astore 11
-    //   1480: iload_2
-    //   1481: istore_1
-    //   1482: iload 8
-    //   1484: aload 13
-    //   1486: invokestatic 122	com/tencent/image/JpegExifReader:getInt16	(Z[B)S
-    //   1489: istore_3
-    //   1490: iload_3
-    //   1491: istore_1
-    //   1492: goto -96 -> 1396
-    //   1495: aload 9
-    //   1497: astore 11
-    //   1499: iload_2
-    //   1500: istore_1
-    //   1501: iload 8
-    //   1503: aload 13
-    //   1505: invokestatic 124	com/tencent/image/JpegExifReader:getInt32	(Z[B)I
-    //   1508: istore_3
-    //   1509: iload_3
-    //   1510: istore_1
-    //   1511: goto -115 -> 1396
-    //   1514: aload 9
-    //   1516: astore 11
-    //   1518: iload_2
-    //   1519: istore_1
-    //   1520: aload 12
-    //   1522: ldc2_w 254
-    //   1525: invokestatic 192	com/tencent/image/JpegExifReader:skip	(Ljava/io/InputStream;J)J
-    //   1528: ldc2_w 254
-    //   1531: lcmp
-    //   1532: ifeq +15 -> 1547
-    //   1535: ldc_w 257
-    //   1538: astore 9
-    //   1540: iload_2
-    //   1541: istore_1
-    //   1542: iconst_1
-    //   1543: istore_2
-    //   1544: goto -1287 -> 257
-    //   1547: iload_2
-    //   1548: bipush 10
-    //   1550: iadd
-    //   1551: istore_2
-    //   1552: iload 4
-    //   1554: iconst_1
-    //   1555: iadd
-    //   1556: istore 4
-    //   1558: goto -485 -> 1073
-    //   1561: astore 10
-    //   1563: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1566: ifeq +13 -> 1579
-    //   1569: ldc 41
-    //   1571: iconst_2
-    //   1572: ldc 253
-    //   1574: aload 10
-    //   1576: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1579: iload_2
-    //   1580: istore_3
-    //   1581: iload_1
-    //   1582: istore_2
-    //   1583: iload_3
-    //   1584: istore_1
-    //   1585: goto -1303 -> 282
-    //   1588: astore 11
-    //   1590: ldc 253
-    //   1592: astore 9
-    //   1594: iconst_0
-    //   1595: istore_2
-    //   1596: iconst_1
-    //   1597: istore_1
-    //   1598: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1601: ifeq +13 -> 1614
-    //   1604: ldc 41
-    //   1606: iconst_2
-    //   1607: ldc 253
-    //   1609: aload 11
-    //   1611: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1614: aload 9
-    //   1616: astore 11
-    //   1618: iload_2
-    //   1619: istore 4
-    //   1621: iload_1
-    //   1622: istore_3
-    //   1623: aload 10
-    //   1625: ifnull +117 -> 1742
-    //   1628: aload 10
-    //   1630: invokevirtual 167	java/io/BufferedInputStream:close	()V
-    //   1633: goto -1351 -> 282
-    //   1636: astore 10
-    //   1638: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1641: ifeq +13 -> 1654
-    //   1644: ldc 41
-    //   1646: iconst_2
-    //   1647: ldc 253
-    //   1649: aload 10
-    //   1651: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1654: goto -1372 -> 282
-    //   1657: astore_0
-    //   1658: aconst_null
-    //   1659: astore 12
-    //   1661: aload 12
-    //   1663: ifnull +8 -> 1671
-    //   1666: aload 12
-    //   1668: invokevirtual 167	java/io/BufferedInputStream:close	()V
-    //   1671: aload_0
-    //   1672: athrow
-    //   1673: astore 9
-    //   1675: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1678: ifeq -7 -> 1671
-    //   1681: ldc 41
-    //   1683: iconst_2
-    //   1684: ldc 253
-    //   1686: aload 9
-    //   1688: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1691: goto -20 -> 1671
-    //   1694: astore_0
-    //   1695: goto -34 -> 1661
-    //   1698: astore_0
-    //   1699: aload 10
-    //   1701: astore 12
-    //   1703: goto -42 -> 1661
-    //   1706: astore 9
-    //   1708: aload 12
-    //   1710: astore 10
-    //   1712: aload 9
-    //   1714: astore 12
-    //   1716: aload 11
-    //   1718: astore 9
-    //   1720: iconst_1
-    //   1721: istore_3
-    //   1722: iload_1
-    //   1723: istore_2
-    //   1724: iload_3
-    //   1725: istore_1
-    //   1726: aload 12
-    //   1728: astore 11
-    //   1730: goto -132 -> 1598
-    //   1733: astore 11
-    //   1735: aload 12
-    //   1737: astore 10
-    //   1739: goto -141 -> 1598
-    //   1742: aload 11
-    //   1744: astore 9
-    //   1746: iload 4
-    //   1748: istore_2
-    //   1749: iload_3
-    //   1750: istore_1
-    //   1751: goto -1469 -> 282
-    //   1754: aload 13
-    //   1756: astore 9
-    //   1758: iload 4
-    //   1760: istore_1
-    //   1761: iconst_1
-    //   1762: istore_2
-    //   1763: goto -1506 -> 257
-    //   1766: iload_1
+    //   1442: istore_3
+    //   1443: iload_3
+    //   1444: istore_1
+    //   1445: aload 14
+    //   1447: astore 13
+    //   1449: lload 8
+    //   1451: lstore 6
+    //   1453: goto +139 -> 1592
+    //   1456: astore 14
+    //   1458: aload 16
+    //   1460: astore 13
+    //   1462: goto +205 -> 1667
+    //   1465: astore 14
+    //   1467: goto +200 -> 1667
+    //   1470: iload_1
+    //   1471: istore_2
+    //   1472: new 110	java/lang/StringBuilder
+    //   1475: dup
+    //   1476: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1479: astore 16
+    //   1481: iload_1
+    //   1482: istore_2
+    //   1483: aload 16
+    //   1485: ldc 252
+    //   1487: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1490: pop
+    //   1491: iload_1
+    //   1492: istore_2
+    //   1493: aload 16
+    //   1495: aload 14
+    //   1497: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1500: pop
+    //   1501: iload_1
+    //   1502: istore_2
+    //   1503: aload 16
+    //   1505: ldc 254
+    //   1507: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1510: pop
+    //   1511: iload_1
+    //   1512: istore_2
+    //   1513: aload 16
+    //   1515: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1518: astore 14
+    //   1520: aload 14
+    //   1522: astore 13
+    //   1524: goto +562 -> 2086
+    //   1527: astore 14
+    //   1529: iload_2
+    //   1530: istore_1
+    //   1531: goto +136 -> 1667
+    //   1534: ldc_w 256
+    //   1537: astore 13
+    //   1539: goto +53 -> 1592
+    //   1542: astore 14
+    //   1544: lload 6
+    //   1546: lstore 8
+    //   1548: goto +119 -> 1667
+    //   1551: astore 14
+    //   1553: iload_2
+    //   1554: istore_1
+    //   1555: lload 6
+    //   1557: lstore 8
+    //   1559: goto +108 -> 1667
+    //   1562: astore 14
+    //   1564: lload 6
+    //   1566: lstore 8
+    //   1568: goto +122 -> 1690
+    //   1571: astore 14
+    //   1573: ldc 148
+    //   1575: astore 13
+    //   1577: iconst_2
+    //   1578: istore_1
+    //   1579: lload 6
+    //   1581: lstore 8
+    //   1583: goto +107 -> 1690
+    //   1586: ldc 148
+    //   1588: astore 13
+    //   1590: iconst_2
+    //   1591: istore_1
+    //   1592: iconst_1
+    //   1593: istore_2
+    //   1594: aload 15
+    //   1596: invokevirtual 259	java/io/BufferedInputStream:close	()V
+    //   1599: iload_1
+    //   1600: istore 4
+    //   1602: aload 13
+    //   1604: astore 14
+    //   1606: iload_2
+    //   1607: istore_3
+    //   1608: lload 6
+    //   1610: lstore 10
+    //   1612: goto +227 -> 1839
+    //   1615: astore 15
+    //   1617: iload_1
+    //   1618: istore 4
+    //   1620: aload 13
+    //   1622: astore 14
+    //   1624: iload_2
+    //   1625: istore_3
+    //   1626: lload 6
+    //   1628: lstore 10
+    //   1630: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1633: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1636: invokeinterface 108 1 0
+    //   1641: ifeq +198 -> 1839
+    //   1644: goto +164 -> 1808
+    //   1647: astore_0
+    //   1648: aload 15
+    //   1650: astore 14
+    //   1652: goto +354 -> 2006
+    //   1655: astore 14
+    //   1657: iconst_0
+    //   1658: istore_1
+    //   1659: ldc 148
+    //   1661: astore 13
+    //   1663: lload 6
+    //   1665: lstore 8
+    //   1667: goto +23 -> 1690
+    //   1670: astore_0
+    //   1671: goto +335 -> 2006
+    //   1674: astore 14
+    //   1676: iconst_0
+    //   1677: istore_1
+    //   1678: ldc 148
+    //   1680: astore 13
+    //   1682: lload 6
+    //   1684: lstore 8
+    //   1686: aload 16
+    //   1688: astore 15
+    //   1690: iconst_1
+    //   1691: istore_2
+    //   1692: aload 14
+    //   1694: astore 16
+    //   1696: aload 15
+    //   1698: astore 14
+    //   1700: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1703: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1706: invokeinterface 108 1 0
+    //   1711: ifeq +25 -> 1736
+    //   1714: aload 15
+    //   1716: astore 14
+    //   1718: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1721: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1724: ldc 41
+    //   1726: iconst_2
+    //   1727: ldc 148
+    //   1729: aload 16
+    //   1731: invokeinterface 262 5 0
+    //   1736: iload_1
+    //   1737: istore 4
+    //   1739: aload 13
+    //   1741: astore 14
+    //   1743: iload_2
+    //   1744: istore_3
+    //   1745: lload 8
+    //   1747: lstore 10
+    //   1749: aload 15
+    //   1751: ifnull +88 -> 1839
+    //   1754: aload 15
+    //   1756: invokevirtual 259	java/io/BufferedInputStream:close	()V
+    //   1759: iload_1
+    //   1760: istore 4
+    //   1762: aload 13
+    //   1764: astore 14
+    //   1766: iload_2
     //   1767: istore_3
-    //   1768: iload_2
-    //   1769: istore_1
-    //   1770: iload_3
-    //   1771: istore_2
-    //   1772: goto -1515 -> 257
-    //   1775: ldc_w 266
-    //   1778: astore 9
-    //   1780: iload_2
-    //   1781: istore_1
-    //   1782: iconst_1
-    //   1783: istore_2
-    //   1784: goto -1527 -> 257
-    //   1787: iload_3
-    //   1788: iconst_m1
-    //   1789: if_icmpne +10 -> 1799
-    //   1792: iload 4
-    //   1794: bipush 225
-    //   1796: if_icmpeq -1127 -> 669
-    //   1799: ldc_w 268
-    //   1802: astore 9
-    //   1804: iload_2
-    //   1805: istore_1
-    //   1806: iconst_1
-    //   1807: istore_2
-    //   1808: goto -1551 -> 257
-    //   1811: iload_3
-    //   1812: iconst_4
-    //   1813: iadd
-    //   1814: istore_2
-    //   1815: iload 4
-    //   1817: tableswitch	default:+43 -> 1860, 3:+-380->1437, 4:+-361->1456, 5:+-452->1365, 6:+46->1863, 7:+-452->1365, 8:+-341->1476, 9:+-322->1495
-    //   1861: impdep1
-    //   1862: sipush 6413
-    //   1865: iconst_0
-    //   1866: baload
-    //   1867: istore_1
-    //   1868: goto -472 -> 1396
+    //   1768: lload 8
+    //   1770: lstore 10
+    //   1772: goto +67 -> 1839
+    //   1775: astore 15
+    //   1777: iload_1
+    //   1778: istore 4
+    //   1780: aload 13
+    //   1782: astore 14
+    //   1784: iload_2
+    //   1785: istore_3
+    //   1786: lload 8
+    //   1788: lstore 10
+    //   1790: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1793: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1796: invokeinterface 108 1 0
+    //   1801: ifeq +38 -> 1839
+    //   1804: lload 8
+    //   1806: lstore 6
+    //   1808: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1811: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1814: ldc 41
+    //   1816: iconst_2
+    //   1817: ldc 148
+    //   1819: aload 15
+    //   1821: invokeinterface 262 5 0
+    //   1826: lload 6
+    //   1828: lstore 10
+    //   1830: iload_2
+    //   1831: istore_3
+    //   1832: aload 13
+    //   1834: astore 14
+    //   1836: iload_1
+    //   1837: istore 4
+    //   1839: invokestatic 159	android/os/SystemClock:uptimeMillis	()J
+    //   1842: lload 10
+    //   1844: lsub
+    //   1845: lstore 6
+    //   1847: getstatic 140	com/tencent/image/JpegExifReader:jpegExifReaderInterface	Lcom/tencent/image/JpegExifReader$JpegExifReaderInterface;
+    //   1850: astore 13
+    //   1852: aload 13
+    //   1854: ifnull +21 -> 1875
+    //   1857: aload 13
+    //   1859: aconst_null
+    //   1860: ldc 34
+    //   1862: iconst_1
+    //   1863: lload 6
+    //   1865: iload 4
+    //   1867: i2l
+    //   1868: aconst_null
+    //   1869: aconst_null
+    //   1870: invokeinterface 322 10 0
+    //   1875: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1878: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1881: invokeinterface 108 1 0
+    //   1886: ifeq +118 -> 2004
+    //   1889: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   1892: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   1895: astore 13
+    //   1897: new 110	java/lang/StringBuilder
+    //   1900: dup
+    //   1901: invokespecial 111	java/lang/StringBuilder:<init>	()V
+    //   1904: astore 15
+    //   1906: aload 15
+    //   1908: ldc_w 324
+    //   1911: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1914: pop
+    //   1915: aload 15
+    //   1917: iload_3
+    //   1918: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1921: pop
+    //   1922: aload 15
+    //   1924: ldc_w 269
+    //   1927: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1930: pop
+    //   1931: aload 15
+    //   1933: iload 4
+    //   1935: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1938: pop
+    //   1939: aload 15
+    //   1941: ldc_w 271
+    //   1944: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1947: pop
+    //   1948: aload 15
+    //   1950: lload 6
+    //   1952: invokevirtual 274	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1955: pop
+    //   1956: aload 15
+    //   1958: ldc_w 276
+    //   1961: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1964: pop
+    //   1965: aload 15
+    //   1967: aload_0
+    //   1968: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1971: pop
+    //   1972: aload 15
+    //   1974: ldc_w 326
+    //   1977: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1980: pop
+    //   1981: aload 15
+    //   1983: aload 14
+    //   1985: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1988: pop
+    //   1989: aload 13
+    //   1991: ldc 41
+    //   1993: iconst_2
+    //   1994: aload 15
+    //   1996: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1999: invokeinterface 228 4 0
+    //   2004: iload_3
+    //   2005: ireturn
+    //   2006: aload 14
+    //   2008: ifnull +45 -> 2053
+    //   2011: aload 14
+    //   2013: invokevirtual 259	java/io/BufferedInputStream:close	()V
+    //   2016: goto +37 -> 2053
+    //   2019: astore 13
+    //   2021: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   2024: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   2027: invokeinterface 108 1 0
+    //   2032: ifeq +21 -> 2053
+    //   2035: getstatic 96	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   2038: getfield 102	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   2041: ldc 41
+    //   2043: iconst_2
+    //   2044: ldc 148
+    //   2046: aload 13
+    //   2048: invokeinterface 262 5 0
+    //   2053: goto +5 -> 2058
+    //   2056: aload_0
+    //   2057: athrow
+    //   2058: goto -2 -> 2056
+    //   2061: goto -469 -> 1592
+    //   2064: goto -1861 -> 203
+    //   2067: lload 6
+    //   2069: lstore 8
+    //   2071: iload_3
+    //   2072: iconst_m1
+    //   2073: if_icmpne -539 -> 1534
+    //   2076: iload 4
+    //   2078: bipush 225
+    //   2080: if_icmpeq -1528 -> 552
+    //   2083: goto -549 -> 1534
+    //   2086: lload 8
+    //   2088: lstore 6
+    //   2090: goto -498 -> 1592
+    //   2093: iload_2
+    //   2094: istore_1
+    //   2095: lload 8
+    //   2097: lstore 6
+    //   2099: goto -507 -> 1592
+    //   2102: aload 18
+    //   2104: iconst_0
+    //   2105: baload
+    //   2106: istore_1
+    //   2107: goto -834 -> 1273
+    //   2110: iload_1
+    //   2111: istore_3
+    //   2112: aload 13
+    //   2114: astore 14
+    //   2116: goto -673 -> 1443
+    //   2119: iload_2
+    //   2120: bipush 10
+    //   2122: iadd
+    //   2123: istore_1
+    //   2124: iload_3
+    //   2125: iconst_1
+    //   2126: iadd
+    //   2127: istore_3
+    //   2128: goto -1297 -> 831
+    //   2131: iload_1
+    //   2132: istore_2
+    //   2133: goto -744 -> 1389
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1871	0	paramString	String
-    //   122	1746	1	i	int
-    //   116	1699	2	j	int
-    //   52	1762	3	k	int
-    //   184	1632	4	m	int
-    //   453	631	5	n	int
-    //   3	354	6	l	long
-    //   837	665	8	bool	boolean
-    //   93	1522	9	localObject1	Object
-    //   1673	14	9	localIOException1	IOException
-    //   1706	7	9	localThrowable1	java.lang.Throwable
-    //   1718	85	9	localObject2	Object
-    //   87	1237	10	localObject3	Object
-    //   1561	68	10	localIOException2	IOException
-    //   1636	64	10	localIOException3	IOException
-    //   1710	28	10	localObject4	Object
-    //   119	1398	11	localObject5	Object
-    //   1588	22	11	localThrowable2	java.lang.Throwable
-    //   1616	113	11	localObject6	Object
-    //   1733	10	11	localThrowable3	java.lang.Throwable
-    //   113	1623	12	localObject7	Object
-    //   181	1683	13	localObject8	Object
-    //   126	1058	14	arrayOfByte	byte[]
+    //   0	2136	0	paramString	String
+    //   147	1985	1	i	int
+    //   202	1931	2	j	int
+    //   215	1913	3	k	int
+    //   232	1849	4	m	int
+    //   303	152	5	n	int
+    //   3	2095	6	l1	long
+    //   320	1776	8	l2	long
+    //   391	1452	10	l3	long
+    //   38	1226	12	bool	boolean
+    //   14	1976	13	localObject1	Object
+    //   2019	94	13	localIOException1	IOException
+    //   44	1402	14	localObject2	Object
+    //   1456	1	14	localThrowable1	java.lang.Throwable
+    //   1465	31	14	localThrowable2	java.lang.Throwable
+    //   1518	3	14	str	String
+    //   1527	1	14	localThrowable3	java.lang.Throwable
+    //   1542	1	14	localThrowable4	java.lang.Throwable
+    //   1551	1	14	localThrowable5	java.lang.Throwable
+    //   1562	1	14	localThrowable6	java.lang.Throwable
+    //   1571	1	14	localThrowable7	java.lang.Throwable
+    //   1604	47	14	localObject3	Object
+    //   1655	1	14	localThrowable8	java.lang.Throwable
+    //   1674	19	14	localThrowable9	java.lang.Throwable
+    //   1698	417	14	localObject4	Object
+    //   131	1464	15	localBufferedInputStream	java.io.BufferedInputStream
+    //   1615	34	15	localIOException2	IOException
+    //   1688	67	15	localObject5	Object
+    //   1775	45	15	localIOException3	IOException
+    //   1904	91	15	localStringBuilder	StringBuilder
+    //   41	1285	16	localObject6	Object
+    //   1348	1	16	localThrowable10	java.lang.Throwable
+    //   1363	367	16	localObject7	Object
+    //   136	789	17	arrayOfByte1	byte[]
+    //   195	1908	18	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
-    //   38	47	55	java/io/IOException
-    //   271	276	1561	java/io/IOException
-    //   95	115	1588	java/lang/Throwable
-    //   1628	1633	1636	java/io/IOException
-    //   95	115	1657	finally
-    //   1666	1671	1673	java/io/IOException
-    //   123	128	1694	finally
-    //   134	147	1694	finally
-    //   196	201	1694	finally
-    //   209	220	1694	finally
-    //   230	242	1694	finally
-    //   404	417	1694	finally
-    //   473	488	1694	finally
-    //   528	543	1694	finally
-    //   549	583	1694	finally
-    //   597	626	1694	finally
-    //   639	662	1694	finally
-    //   675	688	1694	finally
-    //   705	722	1694	finally
-    //   739	754	1694	finally
-    //   775	788	1694	finally
-    //   809	820	1694	finally
-    //   826	836	1694	finally
-    //   845	860	1694	finally
-    //   877	887	1694	finally
-    //   899	926	1694	finally
-    //   939	952	1694	finally
-    //   974	985	1694	finally
-    //   995	1008	1694	finally
-    //   1025	1038	1694	finally
-    //   1061	1070	1694	finally
-    //   1092	1105	1694	finally
-    //   1127	1140	1694	finally
-    //   1146	1159	1694	finally
-    //   1181	1190	1694	finally
-    //   1196	1209	1694	finally
-    //   1230	1245	1694	finally
-    //   1256	1289	1694	finally
-    //   1302	1308	1694	finally
-    //   1314	1323	1694	finally
-    //   1340	1353	1694	finally
-    //   1371	1394	1694	finally
-    //   1396	1428	1694	finally
-    //   1443	1451	1694	finally
-    //   1462	1471	1694	finally
-    //   1482	1490	1694	finally
-    //   1501	1509	1694	finally
-    //   1520	1535	1694	finally
-    //   1598	1614	1698	finally
-    //   123	128	1706	java/lang/Throwable
-    //   134	147	1706	java/lang/Throwable
-    //   196	201	1706	java/lang/Throwable
-    //   209	220	1706	java/lang/Throwable
-    //   230	242	1706	java/lang/Throwable
-    //   404	417	1706	java/lang/Throwable
-    //   473	488	1706	java/lang/Throwable
-    //   528	543	1706	java/lang/Throwable
-    //   549	583	1706	java/lang/Throwable
-    //   597	626	1706	java/lang/Throwable
-    //   639	662	1706	java/lang/Throwable
-    //   675	688	1706	java/lang/Throwable
-    //   705	722	1706	java/lang/Throwable
-    //   739	754	1706	java/lang/Throwable
-    //   775	788	1706	java/lang/Throwable
-    //   809	820	1706	java/lang/Throwable
-    //   826	836	1706	java/lang/Throwable
-    //   845	860	1706	java/lang/Throwable
-    //   877	887	1706	java/lang/Throwable
-    //   899	926	1706	java/lang/Throwable
-    //   939	952	1706	java/lang/Throwable
-    //   974	985	1706	java/lang/Throwable
-    //   995	1008	1706	java/lang/Throwable
-    //   1025	1038	1706	java/lang/Throwable
-    //   1061	1070	1706	java/lang/Throwable
-    //   1092	1105	1706	java/lang/Throwable
-    //   1127	1140	1706	java/lang/Throwable
-    //   1146	1159	1706	java/lang/Throwable
-    //   1181	1190	1706	java/lang/Throwable
-    //   1196	1209	1706	java/lang/Throwable
-    //   1230	1245	1706	java/lang/Throwable
-    //   1256	1289	1706	java/lang/Throwable
-    //   1302	1308	1706	java/lang/Throwable
-    //   1314	1323	1706	java/lang/Throwable
-    //   1340	1353	1706	java/lang/Throwable
-    //   1371	1394	1706	java/lang/Throwable
-    //   1443	1451	1706	java/lang/Throwable
-    //   1462	1471	1706	java/lang/Throwable
-    //   1482	1490	1706	java/lang/Throwable
-    //   1501	1509	1706	java/lang/Throwable
-    //   1520	1535	1706	java/lang/Throwable
-    //   1396	1428	1733	java/lang/Throwable
+    //   51	60	63	java/io/IOException
+    //   1273	1335	1348	java/lang/Throwable
+    //   870	883	1456	java/lang/Throwable
+    //   889	902	1456	java/lang/Throwable
+    //   922	930	1456	java/lang/Throwable
+    //   936	949	1456	java/lang/Throwable
+    //   968	983	1456	java/lang/Throwable
+    //   995	1004	1456	java/lang/Throwable
+    //   1010	1019	1456	java/lang/Throwable
+    //   1025	1032	1456	java/lang/Throwable
+    //   1038	1047	1456	java/lang/Throwable
+    //   1053	1061	1456	java/lang/Throwable
+    //   1067	1074	1456	java/lang/Throwable
+    //   1083	1096	1456	java/lang/Throwable
+    //   1144	1153	1456	java/lang/Throwable
+    //   1159	1168	1456	java/lang/Throwable
+    //   1174	1181	1456	java/lang/Throwable
+    //   1187	1194	1456	java/lang/Throwable
+    //   1205	1213	1456	java/lang/Throwable
+    //   1224	1232	1456	java/lang/Throwable
+    //   1243	1252	1456	java/lang/Throwable
+    //   1263	1271	1456	java/lang/Throwable
+    //   1365	1380	1456	java/lang/Throwable
+    //   1401	1415	1456	java/lang/Throwable
+    //   1421	1437	1456	java/lang/Throwable
+    //   747	758	1465	java/lang/Throwable
+    //   768	781	1465	java/lang/Throwable
+    //   790	803	1465	java/lang/Throwable
+    //   818	827	1465	java/lang/Throwable
+    //   624	637	1527	java/lang/Throwable
+    //   650	661	1527	java/lang/Throwable
+    //   663	673	1527	java/lang/Throwable
+    //   681	691	1527	java/lang/Throwable
+    //   696	711	1527	java/lang/Throwable
+    //   720	733	1527	java/lang/Throwable
+    //   839	852	1527	java/lang/Throwable
+    //   1472	1481	1527	java/lang/Throwable
+    //   1483	1491	1527	java/lang/Throwable
+    //   1493	1501	1527	java/lang/Throwable
+    //   1503	1511	1527	java/lang/Throwable
+    //   1513	1520	1527	java/lang/Throwable
+    //   384	393	1542	java/lang/Throwable
+    //   401	451	1542	java/lang/Throwable
+    //   463	505	1542	java/lang/Throwable
+    //   512	545	1542	java/lang/Throwable
+    //   552	565	1542	java/lang/Throwable
+    //   572	589	1542	java/lang/Throwable
+    //   596	611	1542	java/lang/Throwable
+    //   256	269	1551	java/lang/Throwable
+    //   324	337	1551	java/lang/Throwable
+    //   205	216	1562	java/lang/Throwable
+    //   222	234	1562	java/lang/Throwable
+    //   192	197	1571	java/lang/Throwable
+    //   1594	1599	1615	java/io/IOException
+    //   133	148	1647	finally
+    //   192	197	1647	finally
+    //   205	216	1647	finally
+    //   222	234	1647	finally
+    //   256	269	1647	finally
+    //   324	337	1647	finally
+    //   384	393	1647	finally
+    //   401	451	1647	finally
+    //   463	505	1647	finally
+    //   512	545	1647	finally
+    //   552	565	1647	finally
+    //   572	589	1647	finally
+    //   596	611	1647	finally
+    //   624	637	1647	finally
+    //   650	661	1647	finally
+    //   663	673	1647	finally
+    //   681	691	1647	finally
+    //   696	711	1647	finally
+    //   720	733	1647	finally
+    //   747	758	1647	finally
+    //   768	781	1647	finally
+    //   790	803	1647	finally
+    //   818	827	1647	finally
+    //   839	852	1647	finally
+    //   870	883	1647	finally
+    //   889	902	1647	finally
+    //   922	930	1647	finally
+    //   936	949	1647	finally
+    //   968	983	1647	finally
+    //   995	1004	1647	finally
+    //   1010	1019	1647	finally
+    //   1025	1032	1647	finally
+    //   1038	1047	1647	finally
+    //   1053	1061	1647	finally
+    //   1067	1074	1647	finally
+    //   1083	1096	1647	finally
+    //   1144	1153	1647	finally
+    //   1159	1168	1647	finally
+    //   1174	1181	1647	finally
+    //   1187	1194	1647	finally
+    //   1205	1213	1647	finally
+    //   1224	1232	1647	finally
+    //   1243	1252	1647	finally
+    //   1263	1271	1647	finally
+    //   1273	1335	1647	finally
+    //   1365	1380	1647	finally
+    //   1401	1415	1647	finally
+    //   1421	1437	1647	finally
+    //   1472	1481	1647	finally
+    //   1483	1491	1647	finally
+    //   1493	1501	1647	finally
+    //   1503	1511	1647	finally
+    //   1513	1520	1647	finally
+    //   133	148	1655	java/lang/Throwable
+    //   113	133	1670	finally
+    //   1700	1714	1670	finally
+    //   1718	1736	1670	finally
+    //   113	133	1674	java/lang/Throwable
+    //   1754	1759	1775	java/io/IOException
+    //   2011	2016	2019	java/io/IOException
   }
   
   private static long skip(InputStream paramInputStream, long paramLong)
   {
     long l1 = paramLong;
-    for (;;)
+    while (l1 > 0L)
     {
-      if (l1 > 0L)
+      long l2 = paramInputStream.skip(l1);
+      if (l2 > 0L) {
+        l1 -= l2;
+      } else if (l2 == 0L)
       {
-        long l2 = paramInputStream.skip(l1);
-        if (l2 > 0L)
-        {
-          l1 -= l2;
-          continue;
+        if (paramInputStream.read() != -1) {
+          l1 -= 1L;
         }
-        if (l2 != 0L) {
-          break;
-        }
-        if (paramInputStream.read() != -1) {}
       }
-      else
-      {
-        return paramLong - l1;
+      else {
+        throw new IOException("skip() return a negative value.");
       }
-      l1 -= 1L;
     }
-    throw new IOException("skip() return a negative value.");
+    return paramLong - l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.JpegExifReader
  * JD-Core Version:    0.7.0.1
  */

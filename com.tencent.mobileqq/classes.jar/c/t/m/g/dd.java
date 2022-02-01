@@ -30,21 +30,26 @@ public final class dd
   private dd(File paramFile, byte paramByte)
   {
     this.d = paramFile;
-    if (paramFile == null) {}
-    for (File localFile = null;; localFile = paramFile.getParentFile())
+    Object localObject;
+    if (paramFile == null) {
+      localObject = null;
+    } else {
+      localObject = paramFile.getParentFile();
+    }
+    if (((localObject != null) && (((File)localObject).exists())) || (((File)localObject).mkdirs()))
     {
-      if (((localFile != null) && (localFile.exists())) || (localFile.mkdirs()))
+      this.h = paramFile.getAbsolutePath();
+      this.c = 5120;
+      if (co.e())
       {
-        this.h = paramFile.getAbsolutePath();
-        this.c = 5120;
-        if (co.e()) {
-          co.a("create file:" + paramFile.getAbsolutePath() + ",bufSize:5120");
-        }
-        this.b = new StringBuilder(5120);
-        this.e = new FileOutputStream(paramFile, true);
-        this.f = new BufferedOutputStream(this.e, 5120);
+        localObject = new StringBuilder("create file:");
+        ((StringBuilder)localObject).append(paramFile.getAbsolutePath());
+        ((StringBuilder)localObject).append(",bufSize:5120");
+        co.a(((StringBuilder)localObject).toString());
       }
-      return;
+      this.b = new StringBuilder(5120);
+      this.e = new FileOutputStream(paramFile, true);
+      this.f = new BufferedOutputStream(this.e, 5120);
     }
   }
   
@@ -57,8 +62,13 @@ public final class dd
       }
       a(this.b.toString().getBytes("UTF-8"));
       this.b.setLength(0);
-      if (co.e()) {
-        co.a(this.d.getAbsolutePath() + " close(). length=" + this.d.length());
+      if (co.e())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.d.getAbsolutePath());
+        localStringBuilder.append(" close(). length=");
+        localStringBuilder.append(this.d.length());
+        co.a(localStringBuilder.toString());
       }
       this.f.close();
       this.e.close();
@@ -80,20 +90,16 @@ public final class dd
   
   public final void a(byte[] paramArrayOfByte)
   {
-    for (;;)
+    synchronized (this.a)
     {
-      synchronized (this.a)
-      {
-        if (this.f == null) {
-          return;
-        }
-        if (this.g == null)
-        {
-          this.f.write(paramArrayOfByte);
-          return;
-        }
+      if (this.f == null) {
+        return;
       }
-      paramArrayOfByte = this.g.a(paramArrayOfByte);
+      if (this.g != null) {
+        paramArrayOfByte = this.g.a(paramArrayOfByte);
+      }
+      this.f.write(paramArrayOfByte);
+      return;
     }
   }
   
@@ -108,7 +114,7 @@ public final class dd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dd
  * JD-Core Version:    0.7.0.1
  */

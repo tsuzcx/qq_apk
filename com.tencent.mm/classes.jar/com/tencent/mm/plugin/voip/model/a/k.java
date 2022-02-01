@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.protocal.protobuf.cfw;
-import com.tencent.mm.protocal.protobuf.ctg;
-import com.tencent.mm.protocal.protobuf.cth;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.protocal.protobuf.fgu;
+import com.tencent.mm.protocal.protobuf.gbn;
+import com.tencent.mm.protocal.protobuf.gbo;
 
 public final class k
-  extends n<ctg, cth>
+  extends n<gbn, gbo>
 {
-  public k(cfw paramcfw)
+  public k(fgu paramfgu)
   {
-    AppMethodBeat.i(4730);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ctg();
-    ((b.a)localObject).fsY = new cth();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipspeedtest";
-    ((b.a)localObject).funcId = 765;
-    ((b.a)localObject).reqCmdId = 765;
-    ((b.a)localObject).respCmdId = 1000000765;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ctg)this.rr.fsV.fta;
-    ((ctg)localObject).wQP = paramcfw.wQP;
-    ((ctg)localObject).xQo = paramcfw.xQo;
-    ((ctg)localObject).wLO = paramcfw.wLO;
-    ((ctg)localObject).xQp = paramcfw.xQp;
-    ((ctg)localObject).xQq = paramcfw.xQq;
-    ((ctg)localObject).xQr = paramcfw.xQr;
-    ((ctg)localObject).xQs = paramcfw.xQs;
-    ((ctg)localObject).xQt = paramcfw.xQt;
-    ((ctg)localObject).xQu = paramcfw.xQu;
-    ((ctg)localObject).xQv = paramcfw.xQv;
-    ((ctg)localObject).xQw = paramcfw.xQw;
-    ((ctg)localObject).xQx = paramcfw.xQx;
-    ((ctg)localObject).xQy = paramcfw.xQy;
-    AppMethodBeat.o(4730);
-  }
-  
-  public final f cOp()
-  {
-    AppMethodBeat.i(4731);
-    k.1 local1 = new k.1(this);
-    AppMethodBeat.o(4731);
-    return local1;
+    AppMethodBeat.i(115250);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new gbn();
+    ((c.a)localObject).otF = new gbo();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/voipspeedtest";
+    ((c.a)localObject).funcId = 765;
+    ((c.a)localObject).otG = 765;
+    ((c.a)localObject).respCmdId = 1000000765;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (gbn)c.b.b(this.rr.otB);
+    ((gbn)localObject).Zvz = paramfgu.Zvz;
+    ((gbn)localObject).abGP = paramfgu.abGP;
+    ((gbn)localObject).ZkT = paramfgu.ZkT;
+    ((gbn)localObject).abGQ = paramfgu.abGQ;
+    ((gbn)localObject).abGR = paramfgu.abGR;
+    ((gbn)localObject).abGS = paramfgu.abGS;
+    ((gbn)localObject).abGT = paramfgu.abGT;
+    ((gbn)localObject).abGU = paramfgu.abGU;
+    ((gbn)localObject).abGV = paramfgu.abGV;
+    ((gbn)localObject).abGW = paramfgu.abGW;
+    ((gbn)localObject).abGX = paramfgu.abGX;
+    ((gbn)localObject).abGY = paramfgu.abGY;
+    ((gbn)localObject).abGZ = paramfgu.abGZ;
+    AppMethodBeat.o(115250);
   }
   
   public final int getType()
   {
     return 765;
   }
+  
+  public final h hYT()
+  {
+    AppMethodBeat.i(115251);
+    k.1 local1 = new k.1(this);
+    AppMethodBeat.o(115251);
+    return local1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.k
  * JD-Core Version:    0.7.0.1
  */

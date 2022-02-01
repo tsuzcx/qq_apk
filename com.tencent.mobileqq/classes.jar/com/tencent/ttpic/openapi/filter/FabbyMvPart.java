@@ -69,22 +69,19 @@ public class FabbyMvPart
   public PointF getAnchor(float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
     PointF localPointF = getAnchor(paramFloat);
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       paramFloat = localPointF.x * 2.0F - 1.0F;
-      localPointF.x = paramFloat;
-      if (!paramBoolean2) {
-        break label59;
-      }
-    }
-    label59:
-    for (paramFloat = localPointF.y * 2.0F - 1.0F;; paramFloat = localPointF.y)
-    {
-      localPointF.y = paramFloat;
-      return localPointF;
+    } else {
       paramFloat = localPointF.x;
-      break;
     }
+    localPointF.x = paramFloat;
+    if (paramBoolean2) {
+      paramFloat = localPointF.y * 2.0F - 1.0F;
+    } else {
+      paramFloat = localPointF.y;
+    }
+    localPointF.y = paramFloat;
+    return localPointF;
   }
   
   public double getBlurAngle(float paramFloat)
@@ -153,22 +150,19 @@ public class FabbyMvPart
   public PointF getTranslate(float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
     PointF localPointF = getTranslate(paramFloat);
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       paramFloat = localPointF.x * 2.0F - 1.0F;
-      localPointF.x = paramFloat;
-      if (!paramBoolean2) {
-        break label59;
-      }
-    }
-    label59:
-    for (paramFloat = localPointF.y * 2.0F - 1.0F;; paramFloat = localPointF.y)
-    {
-      localPointF.y = paramFloat;
-      return localPointF;
+    } else {
       paramFloat = localPointF.x;
-      break;
     }
+    localPointF.x = paramFloat;
+    if (paramBoolean2) {
+      paramFloat = localPointF.y * 2.0F - 1.0F;
+    } else {
+      paramFloat = localPointF.y;
+    }
+    localPointF.y = paramFloat;
+    return localPointF;
   }
   
   public boolean isUseScaleHeightY(float paramFloat)
@@ -188,7 +182,7 @@ public class FabbyMvPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FabbyMvPart
  * JD-Core Version:    0.7.0.1
  */

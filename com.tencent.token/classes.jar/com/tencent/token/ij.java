@@ -1,96 +1,153 @@
 package com.tencent.token;
 
-import java.security.GeneralSecurityException;
-import java.security.Principal;
-import java.security.cert.X509Certificate;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.List;
-import javax.net.ssl.SSLPeerUnverifiedException;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow.OnDismissListener;
 
-public final class ij
-  extends il
+public class ij
 {
-  private final in a;
-  
-  public ij(in paramin)
+  protected View a;
+  protected int b = 8388611;
+  PopupWindow.OnDismissListener c;
+  private final Context d;
+  private final id e;
+  private final boolean f;
+  private final int g;
+  private final int h;
+  private boolean i;
+  private ik.a j;
+  private ii k;
+  private final PopupWindow.OnDismissListener l = new PopupWindow.OnDismissListener()
   {
-    this.a = paramin;
+    public final void onDismiss()
+    {
+      ij.this.d();
+    }
+  };
+  
+  public ij(Context paramContext, id paramid, View paramView, boolean paramBoolean, int paramInt)
+  {
+    this(paramContext, paramid, paramView, paramBoolean, paramInt, 0);
   }
   
-  private boolean a(X509Certificate paramX509Certificate1, X509Certificate paramX509Certificate2)
+  public ij(Context paramContext, id paramid, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (!paramX509Certificate1.getIssuerDN().equals(paramX509Certificate2.getSubjectDN())) {
+    this.d = paramContext;
+    this.e = paramid;
+    this.a = paramView;
+    this.f = paramBoolean;
+    this.g = paramInt1;
+    this.h = paramInt2;
+  }
+  
+  public final ii a()
+  {
+    if (this.k == null)
+    {
+      Object localObject = ((WindowManager)this.d.getSystemService("window")).getDefaultDisplay();
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 17) {
+        ((Display)localObject).getRealSize(localPoint);
+      } else {
+        ((Display)localObject).getSize(localPoint);
+      }
+      int m;
+      if (Math.min(localPoint.x, localPoint.y) >= this.d.getResources().getDimensionPixelSize(hg.d.abc_cascading_menus_min_smallest_width)) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if (m != 0) {
+        localObject = new ia(this.d, this.a, this.g, this.h, this.f);
+      } else {
+        localObject = new ip(this.d, this.e, this.a, this.g, this.h, this.f);
+      }
+      ((ii)localObject).a(this.e);
+      ((ii)localObject).a(this.l);
+      ((ii)localObject).a(this.a);
+      ((ii)localObject).a(this.j);
+      ((ii)localObject).a(this.i);
+      ((ii)localObject).a(this.b);
+      this.k = ((ii)localObject);
+    }
+    return this.k;
+  }
+  
+  final void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    ii localii = a();
+    localii.c(paramBoolean2);
+    if (paramBoolean1)
+    {
+      int m = paramInt1;
+      if ((fb.a(this.b, fo.c(this.a)) & 0x7) == 5) {
+        m = paramInt1 + this.a.getWidth();
+      }
+      localii.b(m);
+      localii.c(paramInt2);
+      paramInt1 = (int)(this.d.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
+      localii.e = new Rect(m - paramInt1, paramInt2 - paramInt1, m + paramInt1, paramInt2 + paramInt1);
+    }
+    localii.b();
+  }
+  
+  public final void a(ik.a parama)
+  {
+    this.j = parama;
+    ii localii = this.k;
+    if (localii != null) {
+      localii.a(parama);
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.i = paramBoolean;
+    ii localii = this.k;
+    if (localii != null) {
+      localii.a(paramBoolean);
+    }
+  }
+  
+  public final boolean b()
+  {
+    if (e()) {
+      return true;
+    }
+    if (this.a == null) {
       return false;
     }
-    try
-    {
-      paramX509Certificate1.verify(paramX509Certificate2.getPublicKey());
-      return true;
-    }
-    catch (GeneralSecurityException paramX509Certificate1) {}
-    return false;
+    a(0, 0, false, false);
+    return true;
   }
   
-  public List a(List paramList, String paramString)
+  public final void c()
   {
-    paramList = new ArrayDeque(paramList);
-    paramString = new ArrayList();
-    paramString.add(paramList.removeFirst());
-    int j = 0;
-    int i = 0;
-    if (j < 9)
-    {
-      X509Certificate localX509Certificate1 = (X509Certificate)paramString.get(paramString.size() - 1);
-      Object localObject = this.a.a(localX509Certificate1);
-      if (localObject != null)
-      {
-        if ((paramString.size() > 1) || (!localX509Certificate1.equals(localObject))) {
-          paramString.add(localObject);
-        }
-        if (a((X509Certificate)localObject, (X509Certificate)localObject)) {
-          return paramString;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        localObject = paramList.iterator();
-        X509Certificate localX509Certificate2;
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
-        } while (!a(localX509Certificate1, localX509Certificate2));
-        ((Iterator)localObject).remove();
-        paramString.add(localX509Certificate2);
-      }
-      if (i != 0) {
-        return paramString;
-      }
-      throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed " + localX509Certificate1);
+    if (e()) {
+      this.k.c();
     }
-    throw new SSLPeerUnverifiedException("Certificate chain too long: " + paramString);
   }
   
-  public boolean equals(Object paramObject)
+  protected void d()
   {
-    if (paramObject == this) {}
-    while (((paramObject instanceof ij)) && (((ij)paramObject).a.equals(this.a))) {
-      return true;
+    this.k = null;
+    PopupWindow.OnDismissListener localOnDismissListener = this.c;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss();
     }
-    return false;
   }
   
-  public int hashCode()
+  public final boolean e()
   {
-    return this.a.hashCode();
+    ii localii = this.k;
+    return (localii != null) && (localii.d());
   }
 }
 

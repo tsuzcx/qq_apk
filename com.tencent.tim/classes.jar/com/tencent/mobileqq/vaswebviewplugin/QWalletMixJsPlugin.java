@@ -1,0 +1,273 @@
+package com.tencent.mobileqq.vaswebviewplugin;
+
+import affz;
+import afjy;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import aqmr;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.Client.b;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.a;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.FakeUrl;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+import wih;
+import wii;
+
+public class QWalletMixJsPlugin
+  extends VasWebviewJsPlugin
+{
+  private static final String METHOD_ACTION_DELETE_NOTIFY = "delete";
+  private static final String METHOD_ACTION_NPTITY_SUBSCRIBE = "subscribe";
+  private static final String METHOD_NAME_QQ_NOTIFY = "qqNotify";
+  public static final String OBJECT_NAME_QWALLET_MIX = "qw_mix";
+  private static final String TAG = QWalletMixJsPlugin.class.getSimpleName();
+  public static SparseArray<String> mFirstUrls = new SparseArray();
+  public static ArrayList<Integer> mSequence = new ArrayList();
+  private AppInterface app;
+  private String mCallback;
+  private Context mContext;
+  private FakeUrl mFakeUrl;
+  private Handler mMainHandler = new Handler(Looper.getMainLooper());
+  private wii mReminderDataManager;
+  
+  public QWalletMixJsPlugin()
+  {
+    this.mPluginNameSpace = "qw_mix";
+  }
+  
+  private void deleteNotify(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("msgid");
+    paramJSONObject = paramJSONObject.optString("busiid");
+    if ((aqmr.isEmpty(str)) || (aqmr.isEmpty(str)))
+    {
+      handJsError("4", "params error");
+      return;
+    }
+    wih.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
+  }
+  
+  private void doCallback(String paramString)
+  {
+    doCallback(this.mCallback, paramString);
+  }
+  
+  private void doCallback(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      callJs(paramString1, new String[] { paramString2 });
+    }
+  }
+  
+  private void handJsError(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TAG, 2, "handJsError: " + paramString2);
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("retcode", paramString1);
+      localJSONObject.put("retmsg", paramString2);
+      doCallback(localJSONObject.toString());
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  private void handJsResult(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("retcode", paramInt);
+      doCallback(localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  private boolean handleQQNotifyJsAPi(String paramString)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      paramString = localJSONObject.optString("action");
+      localJSONObject = localJSONObject.optJSONObject("params");
+      if ("subscribe".equals(paramString)) {
+        subscribeNotify(localJSONObject);
+      } else if ("delete".equals(paramString)) {
+        deleteNotify(localJSONObject);
+      }
+    }
+    catch (Exception paramString) {}
+    return true;
+  }
+  
+  private void notifydelMsgUI(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("busiid", paramString1);
+    localBundle.putString("msgid", paramString2);
+    paramString1 = affz.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    afjy.a().cq(paramString1);
+  }
+  
+  private void parseCallback(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramString.toLowerCase().indexOf("callback") < 0)) {
+      return;
+    }
+    try
+    {
+      this.mCallback = new JSONObject(paramString).optString("callback");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void subscribeNotify(JSONObject paramJSONObject)
+  {
+    String str1 = paramJSONObject.optString("msgid");
+    paramJSONObject = paramJSONObject.optString("busiid");
+    if ((aqmr.isEmpty(str1)) || (aqmr.isEmpty(str1))) {
+      handJsError("4", "params error");
+    }
+    while (this.mRuntime == null) {
+      return;
+    }
+    String str2 = Uri.parse(this.mRuntime.getWebView().getUrl()).getHost();
+    QQNotifySettingInnerFragment.e(this.mRuntime.getActivity(), str1, paramJSONObject, str2);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      paramString1 = TAG;
+      localStringBuilder = new StringBuilder().append("handleJsRequeste pkgName :").append(paramString2).append(" method: ").append(paramString3);
+      if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+        break label136;
+      }
+    }
+    label136:
+    for (paramJsBridgeListener = " arg: " + paramVarArgs[0];; paramJsBridgeListener = "")
+    {
+      QLog.i(paramString1, 2, paramJsBridgeListener);
+      if ((!"qw_mix".equals(paramString2)) || (!"qqNotify".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+        break;
+      }
+      parseCallback(paramVarArgs[0]);
+      return handleQQNotifyJsAPi(paramVarArgs[0]);
+    }
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d(TAG, 2, "resultCode: " + paramInt + " requestCode: " + getRequestCode(paramByte));
+    }
+    if ((paramInt == -1) && (getRequestCode(paramByte) == 48128)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("retcode", paramIntent.getIntExtra("errorCode", 0));
+      localJSONObject.put("retmsg", paramIntent.getStringExtra("msg"));
+      doCallback(localJSONObject.toString());
+      return;
+    }
+    catch (JSONException paramIntent)
+    {
+      paramIntent.printStackTrace();
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (this.mRuntime != null)
+    {
+      Activity localActivity = this.mRuntime.getActivity();
+      if (localActivity != null)
+      {
+        this.app = this.mRuntime.a();
+        if (QLog.isColorLevel()) {
+          QLog.d(TAG, 2, "is QQAppInterface: " + (this.app instanceof QQAppInterface));
+        }
+        this.mReminderDataManager = new wii(this.app);
+        wih.e(this.app);
+        this.mContext = localActivity.getApplicationContext();
+      }
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.mRuntime != null) && (this.mRuntime.getActivity() != null))
+    {
+      Activity localActivity = this.mRuntime.getActivity();
+      mFirstUrls.remove(localActivity.hashCode());
+      mSequence.remove(Integer.valueOf(localActivity.hashCode()));
+    }
+    if (this.mMainHandler != null) {
+      this.mMainHandler.removeCallbacksAndMessages(null);
+    }
+    wih.clear();
+    super.onDestroy();
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    if ((this.mRuntime != null) && (this.mRuntime.getActivity() != null))
+    {
+      Activity localActivity = this.mRuntime.getActivity();
+      Intent localIntent = localActivity.getIntent();
+      if (localIntent != null)
+      {
+        String str = localIntent.getStringExtra("homepage");
+        paramCustomWebView = str;
+        if (TextUtils.isEmpty(str)) {
+          paramCustomWebView = localIntent.getStringExtra("url");
+        }
+        if (paramCustomWebView != null)
+        {
+          mFirstUrls.append(localActivity.hashCode(), paramCustomWebView);
+          mSequence.add(0, Integer.valueOf(localActivity.hashCode()));
+        }
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin
+ * JD-Core Version:    0.7.0.1
+ */

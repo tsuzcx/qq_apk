@@ -10,32 +10,41 @@ public class WXAPIFactory
   
   private WXAPIFactory()
   {
-    AppMethodBeat.i(128079);
-    RuntimeException localRuntimeException = new RuntimeException(getClass().getSimpleName() + " should not be instantiated");
-    AppMethodBeat.o(128079);
+    AppMethodBeat.i(3767);
+    RuntimeException localRuntimeException = new RuntimeException(WXAPIFactory.class.getSimpleName() + " should not be instantiated");
+    AppMethodBeat.o(3767);
     throw localRuntimeException;
   }
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(128077);
+    AppMethodBeat.i(3765);
     paramContext = createWXAPI(paramContext, paramString, true);
-    AppMethodBeat.o(128077);
+    AppMethodBeat.o(3765);
     return paramContext;
   }
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(128078);
+    AppMethodBeat.i(3766);
     Log.d("MicroMsg.PaySdk.WXFactory", "createWXAPI, appId = " + paramString + ", checkSignature = " + paramBoolean);
-    paramContext = new WXApiImplV10(paramContext, paramString, paramBoolean);
-    AppMethodBeat.o(128078);
+    paramContext = createWXAPI(paramContext, paramString, paramBoolean, 2);
+    AppMethodBeat.o(3766);
+    return paramContext;
+  }
+  
+  public static IWXAPI createWXAPI(Context paramContext, String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(242918);
+    Log.d("MicroMsg.PaySdk.WXFactory", "createWXAPI, appId = " + paramString + ", checkSignature = " + paramBoolean + ", launchMode = " + paramInt);
+    paramContext = new WXApiImplV10(paramContext, paramString, paramBoolean, paramInt);
+    AppMethodBeat.o(242918);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.WXAPIFactory
  * JD-Core Version:    0.7.0.1
  */

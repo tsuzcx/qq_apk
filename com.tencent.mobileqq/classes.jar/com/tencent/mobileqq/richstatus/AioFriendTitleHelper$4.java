@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.richstatus;
 
-import alto;
-import aybg;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-public class AioFriendTitleHelper$4
+class AioFriendTitleHelper$4
   implements Runnable
 {
-  public AioFriendTitleHelper$4(aybg paramaybg) {}
+  AioFriendTitleHelper$4(AioFriendTitleHelper paramAioFriendTitleHelper) {}
   
   public void run()
   {
-    ((alto)aybg.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(aybg.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((FriendsManager)AioFriendTitleHelper.a(this.this$0).d.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(AioFriendTitleHelper.a(this.this$0).ah.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.AioFriendTitleHelper.4
  * JD-Core Version:    0.7.0.1
  */

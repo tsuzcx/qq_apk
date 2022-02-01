@@ -24,25 +24,19 @@ class NativeBlurProcess
     int i = 0;
     while (i < j)
     {
-      localArrayList1.add(new NativeBlurProcess.NativeTask(paramBitmap, (int)paramFloat, j, i, 1));
-      localArrayList2.add(new NativeBlurProcess.NativeTask(paramBitmap, (int)paramFloat, j, i, 2));
+      int k = (int)paramFloat;
+      localArrayList1.add(new NativeBlurProcess.NativeTask(paramBitmap, k, j, i, 1));
+      localArrayList2.add(new NativeBlurProcess.NativeTask(paramBitmap, k, j, i, 2));
       i += 1;
     }
     try
     {
       StackBlurManager.EXECUTOR.invokeAll(localArrayList1);
-      try
-      {
-        StackBlurManager.EXECUTOR.invokeAll(localArrayList2);
-        return paramBitmap;
-      }
-      catch (InterruptedException localInterruptedException1)
-      {
-        return paramBitmap;
-      }
+      StackBlurManager.EXECUTOR.invokeAll(localArrayList2);
       return paramBitmap;
     }
-    catch (InterruptedException localInterruptedException2) {}
+    catch (InterruptedException localInterruptedException) {}
+    return paramBitmap;
   }
   
   public String toString()
@@ -52,7 +46,7 @@ class NativeBlurProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.enrique.stackblur.NativeBlurProcess
  * JD-Core Version:    0.7.0.1
  */

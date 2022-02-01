@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@color/w_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/kwd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <Button android:textSize="16.0dip" android:textColor="#ff404040" android:id="@id/a43" android:background="@drawable/go0" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="33.0dip" android:layout_marginRight="33.0dip" android:layout_marginBottom="30.0dip" android:text="返回" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/mmc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:layout_above="@id/a43">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/d39" android:background="@drawable/dxx" android:layout_width="61.0dip" android:layout_height="61.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/q1k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#a3ffffff" android:layout_gravity="center_horizontal" android:id="@id/r0k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" />
+    </LinearLayout>
+    <View android:id="@id/j1z" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <include android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/j1z" layout="@layout/ccl" />
+</RelativeLayout>

@@ -1,16 +1,29 @@
 package com.tencent.mm.plugin.appbrand.game.b.a;
 
-import com.tencent.mm.protocal.protobuf.dbv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.jn;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class a
-  extends dbv
+  extends jn
 {
-  public String ese;
-  public int gXd;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  
+  static
+  {
+    AppMethodBeat.i(45095);
+    info = jn.aJm();
+    AppMethodBeat.o(45095);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b.a.a
  * JD-Core Version:    0.7.0.1
  */

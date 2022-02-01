@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.os.Bundle;
-import anhy;
-import anhz;
 
-public class ScanEntryProviderContainerView$1$1$1
+class ScanEntryProviderContainerView$1$1$1
   implements Runnable
 {
-  public ScanEntryProviderContainerView$1$1$1(anhz paramanhz) {}
+  ScanEntryProviderContainerView$1$1$1(ScanEntryProviderContainerView.1.1 param1) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("fromSource", 1);
-    this.a.jdField_a_of_type_Anhy.a.a(this.a.jdField_a_of_type_JavaLangInteger.intValue(), localBundle);
+    this.a.b.a.a(this.a.a.intValue(), localBundle);
+    ScanEntryProviderContainerView.c(this.a.b.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.1.1.1
  * JD-Core Version:    0.7.0.1
  */

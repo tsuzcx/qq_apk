@@ -1,29 +1,16 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import com.tencent.halley.common.j;
-
 public final class ah
 {
-  private long a;
-  private int b;
-  private String c;
+  public int a;
+  public int b;
+  public Object c;
   
-  public ah(long paramLong, int paramInt, String paramString)
+  public ah(int paramInt1, int paramInt2, Object paramObject)
   {
-    this.a = paramLong;
-    this.b = paramInt;
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.c = "";
-      return;
-    }
-    this.c = j.b(paramString);
-  }
-  
-  public final String a()
-  {
-    return this.a + "," + this.b + "," + this.c;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramObject;
   }
 }
 

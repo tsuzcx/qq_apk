@@ -8,18 +8,17 @@ public final class SQLiteCustomFunction
   
   public SQLiteCustomFunction(String paramString, int paramInt, SQLiteDatabase.CustomFunction paramCustomFunction)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("name must not be null.");
+    if (paramString != null)
+    {
+      this.name = paramString;
+      this.numArgs = paramInt;
+      this.callback = paramCustomFunction;
+      return;
     }
-    this.name = paramString;
-    this.numArgs = paramInt;
-    this.callback = paramCustomFunction;
+    throw new IllegalArgumentException("name must not be null.");
   }
   
-  private void dispatchCallback(String[] paramArrayOfString)
-  {
-    this.callback.callback(paramArrayOfString);
-  }
+  private void dispatchCallback(String[] paramArrayOfString) {}
 }
 
 

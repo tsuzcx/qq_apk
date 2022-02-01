@@ -5,14 +5,14 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ScrollView;
+import androidx.core.widget.NestedScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WrapScollview
-  extends ScrollView
+  extends NestedScrollView
 {
+  private boolean RGz = true;
   private View contentView;
-  private boolean sdo = true;
   
   public WrapScollview(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,23 +24,23 @@ public class WrapScollview
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected int computeScrollDeltaToGetChildRectOnScreen(Rect paramRect)
+  public final int n(Rect paramRect)
   {
-    AppMethodBeat.i(39931);
-    if (!this.sdo)
+    AppMethodBeat.i(99806);
+    if (!this.RGz)
     {
-      AppMethodBeat.o(39931);
+      AppMethodBeat.o(99806);
       return 0;
     }
-    int i = super.computeScrollDeltaToGetChildRectOnScreen(paramRect);
-    AppMethodBeat.o(39931);
+    int i = super.n(paramRect);
+    AppMethodBeat.o(99806);
     return i;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = 1;
-    AppMethodBeat.i(39930);
+    AppMethodBeat.i(99805);
     if (this.contentView != null)
     {
       View localView = this.contentView;
@@ -55,13 +55,13 @@ public class WrapScollview
       if ((j < f1) && (f1 < k + j) && (m < f2) && (f2 < n + m)) {}
       while (i != 0)
       {
-        AppMethodBeat.o(39930);
+        AppMethodBeat.o(99805);
         return false;
         i = 0;
       }
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(39930);
+    AppMethodBeat.o(99805);
     return bool;
   }
   
@@ -72,12 +72,12 @@ public class WrapScollview
   
   public void setDoComputeScrollDeltaToGetChildRectOnScreen(boolean paramBoolean)
   {
-    this.sdo = paramBoolean;
+    this.RGz = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.WrapScollview
  * JD-Core Version:    0.7.0.1
  */

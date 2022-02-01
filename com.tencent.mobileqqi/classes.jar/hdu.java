@@ -1,12 +1,14 @@
-import java.util.Comparator;
-
-public final class hdu
-  implements Comparator
+public class hdu
 {
-  public int a(hdv paramhdv1, hdv paramhdv2)
-  {
-    return (paramhdv1.c - paramhdv2.c) * 100 + (paramhdv1.e - paramhdv2.e) * 10 + (paramhdv1.d - paramhdv2.d);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

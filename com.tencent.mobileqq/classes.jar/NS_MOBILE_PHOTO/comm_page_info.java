@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class comm_page_info
   extends JceStruct
 {
-  public boolean has_more;
+  public boolean has_more = false;
   public String page_str = "";
   
   public comm_page_info() {}
@@ -26,15 +26,16 @@ public final class comm_page_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.page_str != null) {
-      paramJceOutputStream.write(this.page_str, 0);
+    String str = this.page_str;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.has_more, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.comm_page_info
  * JD-Core Version:    0.7.0.1
  */

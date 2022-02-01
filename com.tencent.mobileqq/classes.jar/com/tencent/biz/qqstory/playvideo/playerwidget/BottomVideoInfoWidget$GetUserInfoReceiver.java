@@ -1,0 +1,36 @@
+package com.tencent.biz.qqstory.playvideo.playerwidget;
+
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class BottomVideoInfoWidget$GetUserInfoReceiver
+  extends QQUIEventReceiver<BottomVideoInfoWidget, GetUserInfoHandler.UpdateUserInfoEvent>
+{
+  public BottomVideoInfoWidget$GetUserInfoReceiver(@NonNull BottomVideoInfoWidget paramBottomVideoInfoWidget)
+  {
+    super(paramBottomVideoInfoWidget);
+  }
+  
+  public void a(@NonNull BottomVideoInfoWidget paramBottomVideoInfoWidget, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  {
+    if (paramUpdateUserInfoEvent.g.isSuccess())
+    {
+      SLog.a(paramBottomVideoInfoWidget.i, "receive user info event. %s.", paramUpdateUserInfoEvent.toString());
+      paramBottomVideoInfoWidget.x();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.GetUserInfoReceiver
+ * JD-Core Version:    0.7.0.1
+ */

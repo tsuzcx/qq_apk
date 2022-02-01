@@ -28,7 +28,11 @@ public abstract class OutBaseJsPlugin
   
   protected String gernerateStateResultParams(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    return JSONUtil.append(paramJSONObject, "errMsg", paramString1 + ":" + paramString2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramString2);
+    return JSONUtil.append(paramJSONObject, "errMsg", localStringBuilder.toString()).toString();
   }
   
   public abstract Set<String> getEventMap();
@@ -38,11 +42,6 @@ public abstract class OutBaseJsPlugin
     return "";
   }
   
-  public void handleNativeResponse(String paramString1, String paramString2, int paramInt)
-  {
-    MiniAppController.getInstance().handleNativeResponse(this, paramString1, paramString2, paramInt);
-  }
-  
   public void onDestroy()
   {
     this.isDestroy = true;
@@ -50,7 +49,7 @@ public abstract class OutBaseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.OutBaseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

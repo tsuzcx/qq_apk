@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ public class RecentItemImaxADData
   extends RecentItemChatMsgData
 {
   private static final String TAG = "RecentItemImaxADData";
-  public String mHeaderUrl;
+  public String mHeaderUrl = null;
   
   public RecentItemImaxADData(RecentUser paramRecentUser)
   {
@@ -23,15 +23,16 @@ public class RecentItemImaxADData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {}
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (paramContext == null) {
+        return;
+      }
       super.a(paramQQAppInterface, paramContext);
-      paramQQAppInterface = paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade();
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.a(this.mUser.uin, this.mUser.getType());
+        paramQQAppInterface = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
         if (paramQQAppInterface != null)
         {
           paramContext = paramQQAppInterface.getExtInfoFromExtStr("recent_list_advertisement_message_name");
@@ -47,18 +48,47 @@ public class RecentItemImaxADData
       if (this.mUnreadNum > 0) {
         this.mUnreadNum = 1;
       }
-      if (AppSetting.c)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(this.mTitleName).append(",");
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+        paramQQAppInterface.append(this.mTitleName);
+        paramQQAppInterface.append(",");
+        if (this.mMsgExtroInfo != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(this.mMsgExtroInfo);
+          paramContext.append(",");
+          paramQQAppInterface.append(paramContext.toString());
         }
-        paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(",");
+        paramQQAppInterface.append(this.mShowTime);
         this.mContentDesc = paramQQAppInterface.toString();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RecentItemImaxADData", 2, "mTitleName:" + this.mTitleName + ", mDisplayTime:" + this.mDisplayTime + ", mUnreadNum:" + this.mUnreadNum + ", mUnreadFlag:" + this.mUnreadFlag + ", mShowTime:" + this.mShowTime + ", mStatus:" + this.mStatus + ", mMsgExtroInfo:" + this.mMsgExtroInfo + ", mExtraInfoColor:" + this.mExtraInfoColor + ", mLastMsg:" + this.mLastMsg);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("mTitleName:");
+        paramQQAppInterface.append(this.mTitleName);
+        paramQQAppInterface.append(", mDisplayTime:");
+        paramQQAppInterface.append(this.mDisplayTime);
+        paramQQAppInterface.append(", mUnreadNum:");
+        paramQQAppInterface.append(this.mUnreadNum);
+        paramQQAppInterface.append(", mUnreadFlag:");
+        paramQQAppInterface.append(this.mUnreadFlag);
+        paramQQAppInterface.append(", mShowTime:");
+        paramQQAppInterface.append(this.mShowTime);
+        paramQQAppInterface.append(", mStatus:");
+        paramQQAppInterface.append(this.mStatus);
+        paramQQAppInterface.append(", mMsgExtroInfo:");
+        paramQQAppInterface.append(this.mMsgExtroInfo);
+        paramQQAppInterface.append(", mExtraInfoColor:");
+        paramQQAppInterface.append(this.mExtraInfoColor);
+        paramQQAppInterface.append(", mLastMsg:");
+        paramQQAppInterface.append(this.mLastMsg);
+        QLog.d("RecentItemImaxADData", 2, paramQQAppInterface.toString());
+      }
+    }
   }
 }
 

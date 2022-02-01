@@ -29,20 +29,20 @@ class QWalletCommonJsPlugin$QWVideoJsPlugin$MyVideoView
   {
     if (paramBoolean)
     {
-      this.playState |= 1 << paramInt;
+      this.playState = (1 << paramInt | this.playState);
       return;
     }
-    this.playState &= (1 << paramInt ^ 0xFFFFFFFF);
+    this.playState = ((1 << paramInt ^ 0xFFFFFFFF) & this.playState);
   }
   
   boolean testFlag(int paramInt)
   {
-    return (this.playState & 1 << paramInt) != 0;
+    return (1 << paramInt & this.playState) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin.MyVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import cah;
+import cag;
+import cai;
 import caj;
 import cak;
-import cal;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.biz.game.LauchGameAppListHelper;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
@@ -112,9 +112,9 @@ public class ChatActivityUtils
       return null;
     }
     paramContext = LayoutInflater.from(paramContext).inflate(2130903127, null);
-    UpScrollHideView localUpScrollHideView = (UpScrollHideView)paramContext.findViewById(2131231323);
-    TextView localTextView = (TextView)localUpScrollHideView.findViewById(2131231324);
-    Button localButton = (Button)localUpScrollHideView.findViewById(2131231325);
+    UpScrollHideView localUpScrollHideView = (UpScrollHideView)paramContext.findViewById(2131231322);
+    TextView localTextView = (TextView)localUpScrollHideView.findViewById(2131231323);
+    Button localButton = (Button)localUpScrollHideView.findViewById(2131231324);
     if (paramString1 != null) {
       localTextView.setText(paramString1);
     }
@@ -419,7 +419,7 @@ public class ChatActivityUtils
   
   public static void a(Context paramContext)
   {
-    DialogUtil.a(paramContext, 230, paramContext.getString(2131562372), paramContext.getString(2131562125), new cal(), null).show();
+    DialogUtil.a(paramContext, 230, paramContext.getString(2131562372), paramContext.getString(2131562125), new cak(), null).show();
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -565,14 +565,14 @@ public class ChatActivityUtils
     Dialog localDialog = new Dialog(paramContext, 2131624452);
     Handler localHandler = new Handler();
     View localView = LayoutInflater.from(paramContext).inflate(2130903092, null);
-    cah localcah = new cah(localDialog);
-    localView.setOnClickListener(new caj(localHandler, localcah));
+    cag localcag = new cag(localDialog);
+    localView.setOnClickListener(new cai(localHandler, localcag));
     TextView localTextView = (TextView)localView.findViewById(2131231132);
     ((LinearLayout.LayoutParams)localTextView.getLayoutParams()).topMargin = paramContext.getResources().getDimensionPixelSize(2131427376);
     localTextView.setText(paramString);
     paramContext = new AlphaAnimation(0.1F, 0.9F);
     paramContext.setDuration(500L);
-    paramContext.setAnimationListener(new cak(localHandler, localcah, paramLong));
+    paramContext.setAnimationListener(new caj(localHandler, localcag, paramLong));
     localTextView.startAnimation(paramContext);
     localDialog.setContentView(localView, new ViewGroup.LayoutParams(-1, -1));
     try

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aghr;
-
 class AIOGalleryAdapter$1
   implements Runnable
 {
@@ -9,14 +7,14 @@ class AIOGalleryAdapter$1
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a(1);
+    if (this.this$0.o != null) {
+      this.this$0.o.a(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

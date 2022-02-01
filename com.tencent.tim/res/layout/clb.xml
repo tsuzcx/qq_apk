@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mxh" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <CheckBox android:id="@id/mxc" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:duplicateParentState="true" android:layout_marginLeft="@dimen/bj_" android:layout_marginRight="@dimen/bja" style="@style/ahv" />
+        <ImageView android:id="@id/cgn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bjc" android:scaleType="centerInside" android:minWidth="30.0dip" android:contentDescription="@string/x7f" />
+        <com.tencent.qqmail.view.QMAvatarView android:id="@id/b6" android:visibility="gone" android:layout_marginRight="@dimen/bjc" qm:avatar_view_type="o0z" style="@style/a_x" />
+        <ImageView android:id="@id/mxe" android:visibility="gone" android:layout_width="@dimen/bm2" android:layout_height="@dimen/bm2" android:layout_marginLeft="7.0dip" android:layout_marginRight="17.0dip" android:contentDescription="@string/x7l" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/mxi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mxk" android:layout_toRightOf="@id/mxh" android:layout_centerVertical="true">
+        <TextView android:id="@id/mxl" style="@style/adf" />
+        <TextView android:id="@id/jvk" android:visibility="gone" style="@style/ade" />
+    </LinearLayout>
+    <com.tencent.qqmail.popularize.view.PopularizeFolderSubItems android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/mxk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mxj" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/mxj" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <TextView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mxm" android:visibility="gone" android:layout_marginRight="@dimen/bje" style="@style/ai9" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/mxb" android:contentDescription="@string/wrz" style="@style/adt" />
+        <ImageView android:id="@id/mxd" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gpc" android:scaleType="center" android:contentDescription="@null" />
+    </LinearLayout>
+</merge>

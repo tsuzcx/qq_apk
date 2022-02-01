@@ -41,25 +41,31 @@ public class SegmentVideoInfo$StreamInfo
     if (this.segmentInfos == null) {
       this.segmentInfos = new ArrayList();
     }
-    if (this.segmentInfos.isEmpty()) {}
-    int j;
-    for (int i = 0;; i = ((SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i - 1)).duration + j)
+    int i;
+    if (this.segmentInfos.isEmpty())
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.segmentInfos.add(new SegmentVideoInfo.SegmentInfo(paramString, i, paramInt));
-      }
-      return;
+      i = 0;
+    }
+    else
+    {
       i = this.segmentInfos.size();
-      j = ((SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i - 1)).offset;
+      ArrayList localArrayList = this.segmentInfos;
+      i -= 1;
+      int j = ((SegmentVideoInfo.SegmentInfo)localArrayList.get(i)).offset;
+      i = ((SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i)).duration + j;
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      this.segmentInfos.add(new SegmentVideoInfo.SegmentInfo(paramString, i, paramInt));
     }
   }
   
   public int getCount()
   {
-    if (this.segmentInfos == null) {
+    ArrayList localArrayList = this.segmentInfos;
+    if (localArrayList == null) {
       return 0;
     }
-    return this.segmentInfos.size();
+    return localArrayList.size();
   }
   
   public VideoDecoderType.DecoderType getDecoderTypeSuggest()
@@ -69,51 +75,57 @@ public class SegmentVideoInfo$StreamInfo
   
   public SegmentVideoInfo.SegmentInfo getSegment(int paramInt)
   {
-    if ((this.segmentInfos == null) || (paramInt < 0) || (paramInt >= getCount())) {
-      return null;
+    if ((this.segmentInfos != null) && (paramInt >= 0) && (paramInt < getCount())) {
+      return (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(paramInt);
     }
-    return (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(paramInt);
+    return null;
   }
   
   public int getSegmentIndex(long paramLong)
   {
-    int i = 0;
-    if ((this.segmentInfos == null) || (this.segmentInfos.isEmpty())) {
-      i = -1;
-    }
-    int j;
-    do
+    Object localObject = this.segmentInfos;
+    if (localObject != null)
     {
-      return i;
-      j = getCount();
-    } while (j == 1);
-    i = 0;
-    while (i < j)
-    {
-      SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i);
-      if (localSegmentInfo == null) {
+      if (((ArrayList)localObject).isEmpty()) {
         return -1;
       }
-      int k = localSegmentInfo.offset;
-      if (localSegmentInfo.duration + k > paramLong) {
-        return i;
+      int j = getCount();
+      int i = 0;
+      if (j == 1) {
+        return 0;
       }
-      i += 1;
+      while (i < j)
+      {
+        localObject = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i);
+        if (localObject == null) {
+          return -1;
+        }
+        if (((SegmentVideoInfo.SegmentInfo)localObject).offset + ((SegmentVideoInfo.SegmentInfo)localObject).duration > paramLong) {
+          return i;
+        }
+        i += 1;
+      }
     }
     return -1;
   }
   
   public int getTotalDuration()
   {
-    if ((this.segmentInfos == null) || (this.segmentInfos.isEmpty())) {
-      return 0;
+    Object localObject = this.segmentInfos;
+    int i = 0;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).isEmpty()) {
+        return 0;
+      }
+      localObject = this.segmentInfos;
+      localObject = (SegmentVideoInfo.SegmentInfo)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+      if (localObject == null) {
+        return 0;
+      }
+      i = ((SegmentVideoInfo.SegmentInfo)localObject).offset + ((SegmentVideoInfo.SegmentInfo)localObject).duration;
     }
-    SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(this.segmentInfos.size() - 1);
-    if (localSegmentInfo == null) {
-      return 0;
-    }
-    int i = localSegmentInfo.offset;
-    return localSegmentInfo.duration + i;
+    return i;
   }
   
   public String getUrl()
@@ -123,47 +135,76 @@ public class SegmentVideoInfo$StreamInfo
   
   public boolean isValid()
   {
-    if ((this.segmentInfos == null) || (this.segmentInfos.isEmpty()))
+    Object localObject1 = this.segmentInfos;
+    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
     {
-      PlayerUtils.log(6, "SegmentVideoInfo", "segmentInfos is null or empty");
-      return false;
-    }
-    int i = 0;
-    while (i < this.segmentInfos.size())
-    {
-      SegmentVideoInfo.SegmentInfo localSegmentInfo1 = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i);
-      if (localSegmentInfo1 == null)
+      int i = 0;
+      while (i < this.segmentInfos.size())
       {
-        PlayerUtils.log(6, "SegmentVideoInfo", "segment index=" + i + " segment is null");
-        return false;
-      }
-      if (TextUtils.isEmpty(localSegmentInfo1.url))
-      {
-        PlayerUtils.log(6, "SegmentVideoInfo", "segment index=" + i + " url is empty");
-        return false;
-      }
-      if (localSegmentInfo1.offset < 0)
-      {
-        PlayerUtils.log(6, "SegmentVideoInfo", "segment index=" + i + " segmentInfo.offset=" + localSegmentInfo1.offset);
-        return false;
-      }
-      if (localSegmentInfo1.duration < 0)
-      {
-        PlayerUtils.log(6, "SegmentVideoInfo", "segment index=" + i + " segmentInfo.duration=" + localSegmentInfo1.duration);
-        return false;
-      }
-      if (i > 0)
-      {
-        SegmentVideoInfo.SegmentInfo localSegmentInfo2 = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i - 1);
-        if (localSegmentInfo2.offset + localSegmentInfo2.duration != localSegmentInfo1.offset)
+        localObject1 = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i);
+        if (localObject1 == null)
         {
-          PlayerUtils.log(6, "SegmentVideoInfo", "segment index=" + i + " segmentInfo.offset=" + localSegmentInfo1.offset + " before.offset=" + localSegmentInfo2.offset + " before.duration=" + localSegmentInfo2.duration);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("segment index=");
+          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append(" segment is null");
+          PlayerUtils.log(6, "SegmentVideoInfo", ((StringBuilder)localObject1).toString());
           return false;
         }
+        if (TextUtils.isEmpty(((SegmentVideoInfo.SegmentInfo)localObject1).url))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("segment index=");
+          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append(" url is empty");
+          PlayerUtils.log(6, "SegmentVideoInfo", ((StringBuilder)localObject1).toString());
+          return false;
+        }
+        Object localObject2;
+        if (((SegmentVideoInfo.SegmentInfo)localObject1).offset < 0)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("segment index=");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(" segmentInfo.offset=");
+          ((StringBuilder)localObject2).append(((SegmentVideoInfo.SegmentInfo)localObject1).offset);
+          PlayerUtils.log(6, "SegmentVideoInfo", ((StringBuilder)localObject2).toString());
+          return false;
+        }
+        if (((SegmentVideoInfo.SegmentInfo)localObject1).duration < 0)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("segment index=");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(" segmentInfo.duration=");
+          ((StringBuilder)localObject2).append(((SegmentVideoInfo.SegmentInfo)localObject1).duration);
+          PlayerUtils.log(6, "SegmentVideoInfo", ((StringBuilder)localObject2).toString());
+          return false;
+        }
+        if (i > 0)
+        {
+          localObject2 = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i - 1);
+          if (((SegmentVideoInfo.SegmentInfo)localObject2).offset + ((SegmentVideoInfo.SegmentInfo)localObject2).duration != ((SegmentVideoInfo.SegmentInfo)localObject1).offset)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("segment index=");
+            localStringBuilder.append(i);
+            localStringBuilder.append(" segmentInfo.offset=");
+            localStringBuilder.append(((SegmentVideoInfo.SegmentInfo)localObject1).offset);
+            localStringBuilder.append(" before.offset=");
+            localStringBuilder.append(((SegmentVideoInfo.SegmentInfo)localObject2).offset);
+            localStringBuilder.append(" before.duration=");
+            localStringBuilder.append(((SegmentVideoInfo.SegmentInfo)localObject2).duration);
+            PlayerUtils.log(6, "SegmentVideoInfo", localStringBuilder.toString());
+            return false;
+          }
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    return true;
+    PlayerUtils.log(6, "SegmentVideoInfo", "segmentInfos is null or empty");
+    return false;
   }
   
   public void setDecoderTypeSuggest(VideoDecoderType.DecoderType paramDecoderType)
@@ -173,56 +214,60 @@ public class SegmentVideoInfo$StreamInfo
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(32).append("[");
-    if (this.segmentInfos == null)
+    StringBuilder localStringBuilder = new StringBuilder(32);
+    localStringBuilder.append("[");
+    Object localObject = this.segmentInfos;
+    if (localObject == null)
     {
       localStringBuilder.append("null");
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
     }
-    Iterator localIterator = this.segmentInfos.iterator();
-    label49:
-    SegmentVideoInfo.SegmentInfo localSegmentInfo;
-    if (localIterator.hasNext())
+    else
     {
-      localSegmentInfo = (SegmentVideoInfo.SegmentInfo)localIterator.next();
-      if (localSegmentInfo != null) {
-        break label89;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)((Iterator)localObject).next();
+        if (localSegmentInfo == null)
+        {
+          localStringBuilder.append("{null}");
+        }
+        else
+        {
+          localStringBuilder.append("{url=");
+          localStringBuilder.append(localSegmentInfo.url);
+          localStringBuilder.append(", duration=");
+          localStringBuilder.append(localSegmentInfo.duration);
+          localStringBuilder.append(", offset=");
+          localStringBuilder.append(localSegmentInfo.offset);
+          localStringBuilder.append("}");
+        }
+        localStringBuilder.append(", ");
       }
-      localStringBuilder.append("{null}");
     }
-    for (;;)
-    {
-      localStringBuilder.append(", ");
-      break label49;
-      break;
-      label89:
-      localStringBuilder.append("{url=").append(localSegmentInfo.url);
-      localStringBuilder.append(", duration=").append(localSegmentInfo.duration);
-      localStringBuilder.append(", offset=").append(localSegmentInfo.offset).append("}");
-    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void updateDuration()
   {
-    if ((this.segmentInfos == null) || (this.segmentInfos.isEmpty())) {}
-    label89:
-    for (;;)
+    Object localObject = this.segmentInfos;
+    if (localObject != null)
     {
-      return;
+      if (((ArrayList)localObject).isEmpty()) {
+        return;
+      }
       int i = 1;
-      for (;;)
+      while (i < this.segmentInfos.size())
       {
-        if (i >= this.segmentInfos.size()) {
-          break label89;
-        }
-        SegmentVideoInfo.SegmentInfo localSegmentInfo1 = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i);
-        SegmentVideoInfo.SegmentInfo localSegmentInfo2 = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i - 1);
-        if ((localSegmentInfo1 == null) || (localSegmentInfo2 == null)) {
+        localObject = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i);
+        SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)this.segmentInfos.get(i - 1);
+        if (localObject == null) {
           break;
         }
-        int j = localSegmentInfo2.offset;
-        localSegmentInfo1.offset = (localSegmentInfo2.duration + j);
+        if (localSegmentInfo == null) {
+          return;
+        }
+        ((SegmentVideoInfo.SegmentInfo)localObject).offset = (localSegmentInfo.offset + localSegmentInfo.duration);
         i += 1;
       }
     }
@@ -230,7 +275,7 @@ public class SegmentVideoInfo$StreamInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.model.SegmentVideoInfo.StreamInfo
  * JD-Core Version:    0.7.0.1
  */

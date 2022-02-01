@@ -6,25 +6,24 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import apjb;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
 public class InputBar
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private apjb jdField_a_of_type_Apjb;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean;
+  private ListView a;
   private int b;
   private int c;
   private int d;
   private int e;
   private int f;
-  private int g;
+  private boolean g = false;
   private int h;
+  private int i;
+  private View j;
+  private int k = 0;
+  private InputBar.IIputBarCallback l;
   
   public InputBar(Context paramContext)
   {
@@ -40,46 +39,60 @@ public class InputBar
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.h == 0) {
-      this.h = paramInt4;
-    }
-    do
+    paramInt1 = this.k;
+    Object localObject;
+    if (paramInt1 == 0)
     {
-      do
-      {
-        while (!this.jdField_a_of_type_Boolean)
-        {
-          return;
-          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Apjb != null)) {
-            this.jdField_a_of_type_Apjb.a();
-          }
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.e("InputBar", 4, "inputBar onLayout top is: " + paramInt2 + "changed is: " + paramBoolean);
-        }
-      } while (paramInt2 <= 0);
-      if (this.d <= 0)
-      {
-        this.d = paramInt2;
-        this.g = paramInt2;
-        return;
+      this.k = paramInt4;
+    }
+    else if (paramInt4 == paramInt1)
+    {
+      localObject = this.l;
+      if (localObject != null) {
+        ((InputBar.IIputBarCallback)localObject).a();
       }
-      if ((paramInt2 != this.d) && (paramInt2 == this.g))
-      {
-        if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_ComTencentWidgetListView.removeFooterView(this.jdField_a_of_type_AndroidViewView);
-        }
-        this.d = paramInt2;
-        return;
+    }
+    if (!this.g) {
+      return;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("inputBar onLayout top is: ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("changed is: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.e("InputBar", 4, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt2 <= 0) {
+      return;
+    }
+    paramInt1 = this.e;
+    if (paramInt1 <= 0)
+    {
+      this.e = paramInt2;
+      this.i = paramInt2;
+      return;
+    }
+    if ((paramInt2 != paramInt1) && (paramInt2 == this.i))
+    {
+      localObject = this.j;
+      if (localObject != null) {
+        this.a.removeFooterView((View)localObject);
       }
-    } while ((paramInt2 == this.d) || (paramInt2 == this.g));
-    getHandler().post(new InputBar.1(this, paramInt2));
-    this.d = paramInt2;
+      this.e = paramInt2;
+      return;
+    }
+    if ((paramInt2 != this.e) && (paramInt2 != this.i))
+    {
+      getHandler().post(new InputBar.1(this, paramInt2));
+      this.e = paramInt2;
+    }
   }
   
-  public void setmCallback(apjb paramapjb)
+  public void setmCallback(InputBar.IIputBarCallback paramIIputBarCallback)
   {
-    this.jdField_a_of_type_Apjb = paramapjb;
+    this.l = paramIIputBarCallback;
   }
 }
 

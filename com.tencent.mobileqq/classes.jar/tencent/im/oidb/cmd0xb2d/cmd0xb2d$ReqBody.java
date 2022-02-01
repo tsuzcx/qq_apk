@@ -23,15 +23,16 @@ public final class cmd0xb2d$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 56 }, new String[] { "bytes_gallery_rowkey", "bytes_gallery_rowkey_list", "int32_source", "msg_page_req", "bytes_context", "uint32_need_social_info", "uint32_need_attch_comments" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 56 }, new String[] { "bytes_gallery_rowkey", "bytes_gallery_rowkey_list", "int32_source", "msg_page_req", "bytes_context", "uint32_need_social_info", "uint32_need_attch_comments" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, null, localByteStringMicro3, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb2d.cmd0xb2d.ReqBody
  * JD-Core Version:    0.7.0.1
  */

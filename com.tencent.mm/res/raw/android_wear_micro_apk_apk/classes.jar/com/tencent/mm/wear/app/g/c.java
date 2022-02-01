@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 final class c
   implements Runnable
 {
-  private boolean adQ;
+  private boolean ahs;
   
   private c(b paramb) {}
   
@@ -16,8 +16,8 @@ final class c
     {
       for (;;)
       {
-        a locala = (a)b.a(this.aiO).take();
-        if (this.adQ) {
+        a locala = (a)b.a(this.amq).take();
+        if (this.ahs) {
           break;
         }
         if (locala != null) {
@@ -44,8 +44,8 @@ final class c
   
   public final void stop()
   {
-    this.adQ = true;
-    b.a(this.aiO).add(new d(this, (byte)0));
+    this.ahs = true;
+    b.a(this.amq).add(new d(this, (byte)0));
   }
 }
 

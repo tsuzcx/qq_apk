@@ -22,6 +22,7 @@ public class PluginBaseInfoHelper$PluginInfoParser
   private static final String TAG_PLUGIN_INFO = "PluginInfo";
   private static final String TAG_PROCESSES = "Processes";
   private static final String TAG_STATE = "State";
+  private static final String TAG_SUB_TYPE = "SubType";
   private static final String TAG_TYPE = "Type";
   private static final String TAG_UPDATE_TYPE = "UpdateType";
   private static final String TAG_URL = "URL";
@@ -58,6 +59,9 @@ public class PluginBaseInfoHelper$PluginInfoParser
     localXmlSerializer.startTag("", "Type");
     localXmlSerializer.text(String.valueOf(paramPluginBaseInfo.mType));
     localXmlSerializer.endTag("", "Type");
+    localXmlSerializer.startTag("", "SubType");
+    localXmlSerializer.text(String.valueOf(paramPluginBaseInfo.mSubType));
+    localXmlSerializer.endTag("", "SubType");
     localXmlSerializer.startTag("", "PackageName");
     localXmlSerializer.text(paramPluginBaseInfo.mPackageName);
     localXmlSerializer.endTag("", "PackageName");
@@ -70,13 +74,12 @@ public class PluginBaseInfoHelper$PluginInfoParser
     localXmlSerializer.startTag("", "State");
     localXmlSerializer.text(String.valueOf(paramPluginBaseInfo.mState));
     localXmlSerializer.endTag("", "State");
-    String str1 = "";
-    String str2 = str1;
     if (paramPluginBaseInfo.mProcesses != null)
     {
       String[] arrayOfString = paramPluginBaseInfo.mProcesses;
       int j = arrayOfString.length;
       int i = 0;
+      String str1 = "";
       for (;;)
       {
         str2 = str1;
@@ -84,10 +87,15 @@ public class PluginBaseInfoHelper$PluginInfoParser
           break;
         }
         str2 = arrayOfString[i];
-        str1 = str1 + str2 + "|";
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str2);
+        localStringBuilder.append("|");
+        str1 = localStringBuilder.toString();
         i += 1;
       }
     }
+    String str2 = "";
     localXmlSerializer.startTag("", "Processes");
     localXmlSerializer.text(str2);
     localXmlSerializer.endTag("", "Processes");
@@ -98,15 +106,16 @@ public class PluginBaseInfoHelper$PluginInfoParser
     localXmlSerializer.text(String.valueOf(paramPluginBaseInfo.mInstallType));
     localXmlSerializer.endTag("", "InstallType");
     localXmlSerializer.startTag("", "InstalledPath");
-    if (paramPluginBaseInfo.mInstalledPath == null) {}
-    for (paramPluginBaseInfo = "";; paramPluginBaseInfo = paramPluginBaseInfo.mInstalledPath)
-    {
-      localXmlSerializer.text(paramPluginBaseInfo);
-      localXmlSerializer.endTag("", "InstalledPath");
-      localXmlSerializer.endTag("", "PluginInfo");
-      localXmlSerializer.endDocument();
-      return localStringWriter.toString();
+    if (paramPluginBaseInfo.mInstalledPath == null) {
+      paramPluginBaseInfo = "";
+    } else {
+      paramPluginBaseInfo = paramPluginBaseInfo.mInstalledPath;
     }
+    localXmlSerializer.text(paramPluginBaseInfo);
+    localXmlSerializer.endTag("", "InstalledPath");
+    localXmlSerializer.endTag("", "PluginInfo");
+    localXmlSerializer.endDocument();
+    return localStringWriter.toString();
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -122,94 +131,99 @@ public class PluginBaseInfoHelper$PluginInfoParser
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
     paramString1 = this.mBuilder.toString();
-    if ("ID".equals(paramString2)) {
-      this.mResult.mID = paramString1;
-    }
-    do
+    if ("ID".equals(paramString2))
     {
+      this.mResult.mID = paramString1;
       return;
-      if ("Name".equals(paramString2))
+    }
+    if ("Name".equals(paramString2))
+    {
+      this.mResult.mName = paramString1;
+      return;
+    }
+    if ("Version".equals(paramString2))
+    {
+      this.mResult.mVersion = paramString1;
+      return;
+    }
+    if ("URL".equals(paramString2))
+    {
+      this.mResult.mURL = paramString1;
+      return;
+    }
+    if ("MD5".equals(paramString2))
+    {
+      this.mResult.mMD5 = paramString1;
+      return;
+    }
+    if ("Finger".equals(paramString2))
+    {
+      this.mResult.mFingerPrint = paramString1;
+      return;
+    }
+    if ("Type".equals(paramString2))
+    {
+      this.mResult.mType = Integer.valueOf(paramString1).intValue();
+      return;
+    }
+    if ("SubType".equals(paramString2))
+    {
+      this.mResult.mSubType = Integer.valueOf(paramString1).intValue();
+      return;
+    }
+    if ("PackageName".equals(paramString2))
+    {
+      this.mResult.mPackageName = paramString1;
+      return;
+    }
+    if ("CurVersion".equals(paramString2))
+    {
+      this.mResult.mCurVersion = Long.parseLong(paramString1);
+      return;
+    }
+    if ("Length".equals(paramString2))
+    {
+      this.mResult.mLength = Long.parseLong(paramString1);
+      return;
+    }
+    if ("State".equals(paramString2))
+    {
+      this.mResult.mState = Integer.parseInt(paramString1);
+      return;
+    }
+    if ("Processes".equals(paramString2))
+    {
+      if (paramString1 != null)
       {
-        this.mResult.mName = paramString1;
+        this.mResult.mProcesses = paramString1.split("\\|");
         return;
       }
-      if ("Version".equals(paramString2))
+      this.mResult.mProcesses = new String[0];
+      return;
+    }
+    if ("UpdateType".equals(paramString2))
+    {
+      this.mResult.mUpdateType = Integer.parseInt(paramString1);
+      return;
+    }
+    if ("InstallType".equals(paramString2))
+    {
+      this.mResult.mInstallType = Integer.parseInt(paramString1);
+      return;
+    }
+    if ("InstalledPath".equals(paramString2))
+    {
+      if ((paramString1 != null) && (paramString1.length() != 0))
       {
-        this.mResult.mVersion = paramString1;
-        return;
-      }
-      if ("URL".equals(paramString2))
-      {
-        this.mResult.mURL = paramString1;
-        return;
-      }
-      if ("MD5".equals(paramString2))
-      {
-        this.mResult.mMD5 = paramString1;
-        return;
-      }
-      if ("Finger".equals(paramString2))
-      {
-        this.mResult.mFingerPrint = paramString1;
-        return;
-      }
-      if ("Type".equals(paramString2))
-      {
-        this.mResult.mType = Integer.valueOf(paramString1).intValue();
-        return;
-      }
-      if ("PackageName".equals(paramString2))
-      {
-        this.mResult.mPackageName = paramString1;
-        return;
-      }
-      if ("CurVersion".equals(paramString2))
-      {
-        this.mResult.mCurVersion = Long.parseLong(paramString1);
-        return;
-      }
-      if ("Length".equals(paramString2))
-      {
-        this.mResult.mLength = Long.parseLong(paramString1);
-        return;
-      }
-      if ("State".equals(paramString2))
-      {
-        this.mResult.mState = Integer.parseInt(paramString1);
-        return;
-      }
-      if ("Processes".equals(paramString2))
-      {
-        if (paramString1 != null)
-        {
-          this.mResult.mProcesses = paramString1.split("\\|");
-          return;
-        }
-        this.mResult.mProcesses = new String[0];
-        return;
-      }
-      if ("UpdateType".equals(paramString2))
-      {
-        this.mResult.mUpdateType = Integer.parseInt(paramString1);
-        return;
-      }
-      if ("InstallType".equals(paramString2))
-      {
-        this.mResult.mInstallType = Integer.parseInt(paramString1);
-        return;
-      }
-      if ("InstalledPath".equals(paramString2))
-      {
-        if ((paramString1 == null) || (paramString1.length() == 0))
-        {
-          this.mResult.mInstalledPath = null;
-          return;
-        }
         this.mResult.mInstalledPath = paramString1;
         return;
       }
-    } while ((!"ForceUrl".equals(paramString2)) || (paramString1 == null) || (paramString1.length() <= 0));
-    this.mResult.mForceUrl = 1;
+      this.mResult.mInstalledPath = null;
+      return;
+    }
+    if (("ForceUrl".equals(paramString2)) && (paramString1 != null) && (paramString1.length() > 0)) {
+      this.mResult.mForceUrl = 1;
+    }
   }
   
   public PluginBaseInfo getResult()
@@ -241,7 +255,7 @@ public class PluginBaseInfoHelper$PluginInfoParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper.PluginInfoParser
  * JD-Core Version:    0.7.0.1
  */

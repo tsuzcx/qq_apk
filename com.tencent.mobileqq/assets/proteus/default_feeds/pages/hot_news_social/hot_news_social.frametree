@@ -1,0 +1,286 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n\n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card",
+                "pts:round-corner-card": ""
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "\n\n  \n\n  \n\n",
+                    "attributes": {
+                        "viewID": "2",
+                        "class": "bkg",
+                        "pts:on-tap": "{{$RIJArticle.rowKey}}",
+                        "pts:on-exposure": "{{$RIJArticle.rowKey}}",
+                        "data-event-type": "allInOneJump",
+                        "data-jump-url": "{{jump_url}}",
+                        "data-feeds_type": "6538"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "750rpx",
+                        "padding-top": "10rpx",
+                        "flex-direction": "column"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n\n    \n\n  ",
+                            "attributes": {
+                                "viewID": "3",
+                                "class": "banner"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "padding": "0rpx 24rpx",
+                                "padding-top": "0rpx",
+                                "padding-right": "24rpx",
+                                "padding-bottom": "0rpx",
+                                "padding-left": "24rpx"
+                            },
+                            "children": [
+                                {
+                                    "tag": "view",
+                                    "content": "\n      \n    ",
+                                    "attributes": {
+                                        "viewID": "5",
+                                        "class": "banner-middle"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "margin-top": "12rpx",
+                                        "flex-direction": "column"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "text",
+                                            "content": "{{datas[0].banner_middle_title}}",
+                                            "attributes": {
+                                                "viewID": "8",
+                                                "class": "banner-middle-title"
+                                            },
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "display": "-webkit-box",
+                                                "overflow": "hidden",
+                                                "font-size": "17px",
+                                                "font-weight": "bold"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "tag": "view",
+                            "content": "\n\n    \n\n    \n\n  ",
+                            "attributes": {
+                                "viewID": "4",
+                                "class": "shadow-wrap"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "position": "relative",
+                                "width": "750rpx",
+                                "height": "560rpx"
+                            },
+                            "children": [
+                                {
+                                    "tag": "img",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "6",
+                                        "class": "shadow",
+                                        "mode": "scaletoFill",
+                                        "src": "https://pub.idqqimg.com/pc/misc/files/20210325/297c30a934fc40ab9cc06b8c0b4c369b.png"
+                                    },
+                                    "styles": {
+                                        "position": "absolute",
+                                        "width": "750rpx",
+                                        "height": "560rpx",
+                                        "top": "0rpx"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n\n      \n\n      \n\n      \n\n    ",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "class": "content"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "absolute",
+                                        "width": "750rpx",
+                                        "padding": "20rpx 24rpx 28rpx 24rpx",
+                                        "flex-direction": "column",
+                                        "margin-top": "5rpx",
+                                        "padding-top": "20rpx",
+                                        "padding-right": "24rpx",
+                                        "padding-bottom": "28rpx",
+                                        "padding-left": "24rpx",
+                                        "border-radius": "10rpx"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "view",
+                                            "content": "\n        \n      ",
+                                            "attributes": {
+                                                "viewID": "9",
+                                                "class": "content-top"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "width": "100%",
+                                                "position": "relative"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "12",
+                                                        "class": "content-top-cover",
+                                                        "src": "{{datas[0].content_top_cover_url}}",
+                                                        "mode": "aspectFill"
+                                                    },
+                                                    "styles": {
+                                                        "width": "100%",
+                                                        "height": "300rpx",
+                                                        "border-top-left-radius": "10rpx",
+                                                        "border-top-right-radius": "10rpx"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n        \n      ",
+                                            "attributes": {
+                                                "viewID": "10",
+                                                "class": "content-middle"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "padding": "14rpx 20rpx",
+                                                "padding-top": "14rpx",
+                                                "padding-right": "20rpx",
+                                                "padding-bottom": "14rpx",
+                                                "padding-left": "20rpx",
+                                                "height": "134rpx"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{datas[0].content_middle_title}}",
+                                                    "attributes": {
+                                                        "viewID": "13",
+                                                        "class": "content-middle-title"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "color": "rgb(36, 36, 36)",
+                                                        "font-size": "18px"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n        \n      ",
+                                            "attributes": {
+                                                "viewID": "11",
+                                                "class": "content-bottom"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "padding": "10rpx 20rpx",
+                                                "padding-top": "10rpx",
+                                                "padding-right": "20rpx",
+                                                "padding-bottom": "10rpx",
+                                                "padding-left": "20rpx",
+                                                "height": "44rpx",
+                                                "align-items": "center"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "img",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "14",
+                                                        "class": "avatar",
+                                                        "src": "https://pub.idqqimg.com/pc/misc/files/20210323/d02076c5472a40dfa47e6c05d2b800ec.png",
+                                                        "mode": "scaletoFill"
+                                                    },
+                                                    "styles": {
+                                                        "width": "40rpx",
+                                                        "height": "32rpx",
+                                                        "margin-left": "5rpx",
+                                                        "margin-right": "4rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{datas[0].friend_brief}}",
+                                                    "attributes": {
+                                                        "viewID": "15",
+                                                        "class": "friend-brief"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "height": "40rpx",
+                                                        "margin-left": "8rpx",
+                                                        "color": "rgb(127, 127, 127)",
+                                                        "font-size": "14px",
+                                                        "-webkit-line-clamp": "1"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

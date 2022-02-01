@@ -8,7 +8,7 @@ public final class AllowDomainInfo
   extends JceStruct
 {
   public String allow_domain_regex = "";
-  public int open_type;
+  public int open_type = 0;
   
   public AllowDomainInfo() {}
   
@@ -26,20 +26,28 @@ public final class AllowDomainInfo
   
   public String toString()
   {
-    return "AllowDomainInfo{allow_domain_regex='" + this.allow_domain_regex + '\'' + ", open_type=" + this.open_type + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AllowDomainInfo{allow_domain_regex='");
+    localStringBuilder.append(this.allow_domain_regex);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", open_type=");
+    localStringBuilder.append(this.open_type);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.allow_domain_regex != null) {
-      paramJceOutputStream.write(this.allow_domain_regex, 0);
+    String str = this.allow_domain_regex;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.open_type, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AllowDomainInfo
  * JD-Core Version:    0.7.0.1
  */

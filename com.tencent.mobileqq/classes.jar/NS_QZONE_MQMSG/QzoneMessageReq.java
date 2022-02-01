@@ -10,11 +10,11 @@ public final class QzoneMessageReq
   extends JceStruct
 {
   static Map<String, String> cache_ext = new HashMap();
-  public Map<String, String> ext;
-  public long num;
-  public int scence;
+  public Map<String, String> ext = null;
+  public long num = 0L;
+  public int scence = 0;
   public String trace_info = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -46,15 +46,16 @@ public final class QzoneMessageReq
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.trace_info, 1);
     paramJceOutputStream.write(this.num, 2);
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 3);
+    Map localMap = this.ext;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
     paramJceOutputStream.write(this.scence, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.QzoneMessageReq
  * JD-Core Version:    0.7.0.1
  */

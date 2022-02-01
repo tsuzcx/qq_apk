@@ -22,14 +22,15 @@ public final class TroopTips0x857$AIOGrayTipsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48, 56 }, new String[] { "opt_uint32_show_lastest", "opt_bytes_content", "opt_uint32_remind", "opt_bytes_brief", "uint64_receiver_uin", "uint32_reliao_admin_opt", "uint32_robot_group_opt" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, AIOGrayTipsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48, 56 }, new String[] { "opt_uint32_show_lastest", "opt_bytes_content", "opt_uint32_remind", "opt_bytes_brief", "uint64_receiver_uin", "uint32_reliao_admin_opt", "uint32_robot_group_opt" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, Long.valueOf(0L), localInteger, localInteger }, AIOGrayTipsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.AIOGrayTipsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class WeatherInfoReq
   extends JceStruct
 {
   public String city = "";
-  public int iAppId;
+  public int iAppId = 0;
   public String strSessionKey = "";
   
   public WeatherInfoReq() {}
@@ -36,7 +36,7 @@ public final class WeatherInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.WeatherInfoReq
  * JD-Core Version:    0.7.0.1
  */

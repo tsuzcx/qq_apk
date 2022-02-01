@@ -2,7 +2,10 @@ package btmsdkobf;
 
 import android.content.Context;
 import android.os.Debug;
+import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,36 +21,64 @@ public class en
 {
   private static long oH = 0L;
   private static long oI = 0L;
-  private static es.a oK = new iu();
-  private static ArrayList ox = new ArrayList();
+  private static es.a oK = new es.a()
+  {
+    public final void a(es.c paramAnonymousc)
+    {
+      Iterator localIterator = en.dd().iterator();
+      while (localIterator.hasNext()) {
+        ((es.a)localIterator.next()).a(paramAnonymousc);
+      }
+    }
+    
+    public final void a(es.c paramAnonymousc, int paramAnonymousInt)
+    {
+      Iterator localIterator = en.dd().iterator();
+      while (localIterator.hasNext()) {
+        ((es.a)localIterator.next()).a(paramAnonymousc, paramAnonymousInt);
+      }
+    }
+    
+    public final void b(es.c paramAnonymousc)
+    {
+      Iterator localIterator = en.dd().iterator();
+      while (localIterator.hasNext()) {
+        ((es.a)localIterator.next()).b(paramAnonymousc);
+      }
+    }
+  };
+  private static ArrayList<es.a> ox = new ArrayList();
   private Object V = new Object();
-  protected ArrayList oA = new ArrayList();
-  protected HashMap oB = new HashMap();
+  protected ArrayList<a> oA = new ArrayList();
+  protected HashMap<a, Thread> oB = new HashMap();
   private int oC = cU();
   protected el oD = null;
   private boolean oE = false;
   private HandlerThread oF;
-  private iw oG;
+  private b oG;
   private volatile boolean oJ = false;
-  private ArrayList ow = new ArrayList();
-  protected PriorityBlockingQueue oy = new PriorityBlockingQueue(5);
-  protected LinkedList oz = new LinkedList();
+  private ArrayList<es.b> ow = new ArrayList();
+  protected PriorityBlockingQueue<Runnable> oy = new PriorityBlockingQueue(5);
+  protected LinkedList<a> oz = new LinkedList();
   
   public en(Context paramContext)
   {
-    eg.f("ThreadPool", "core pool size: " + this.oC);
+    paramContext = new StringBuilder("core pool size: ");
+    paramContext.append(this.oC);
+    eg.f("ThreadPool", paramContext.toString());
     this.oD = new el(0, this.oC + 2, 3L, TimeUnit.SECONDS, this.oy, new ThreadPoolExecutor.CallerRunsPolicy());
     this.oD.a(this);
     this.oF = new HandlerThread("TMS_THREAD_POOL_HANDLER");
     this.oF.start();
-    this.oG = new iw(this, this.oF.getLooper());
+    this.oG = new b(this.oF.getLooper());
   }
   
   private int cU()
   {
-    int i = Runtime.getRuntime().availableProcessors() * 4 + 2;
-    if (i > 16) {
-      return 16;
+    int j = Runtime.getRuntime().availableProcessors() * 4 + 2;
+    int i = j;
+    if (j > 16) {
+      i = 16;
     }
     return i;
   }
@@ -68,35 +99,39 @@ public class en
           Iterator localIterator = this.oz.iterator();
           if ((localIterator != null) && (localIterator.hasNext()))
           {
-            iv localiv = (iv)localIterator.next();
+            a locala = (a)localIterator.next();
             localIterator.remove();
             cX();
-            this.oD.execute(localiv);
+            this.oD.execute(locala);
             localIterator = ox.iterator();
-            if (localIterator.hasNext()) {
-              ((es.a)localIterator.next()).a(localiv.a(), this.oD.getActiveCount());
+            while (localIterator.hasNext()) {
+              ((es.a)localIterator.next()).a(locala.a, this.oD.getActiveCount());
             }
           }
         }
+        if (!this.oz.isEmpty()) {
+          this.oG.sendEmptyMessage(1);
+        }
+        return;
       }
-      if (this.oz.isEmpty()) {
-        break label163;
-      }
+      StringBuilder localStringBuilder;
+      return;
     }
     catch (Throwable localThrowable)
     {
-      eg.h("ThreadPool", "executeTask (Throwable):" + localThrowable.toString());
-      return;
+      localStringBuilder = new StringBuilder("executeTask (Throwable):");
+      localStringBuilder.append(localThrowable.toString());
+      eg.h("ThreadPool", localStringBuilder.toString());
     }
-    this.oG.sendEmptyMessage(1);
-    label163:
   }
   
   private void cX()
   {
-    if (this.oD.getCorePoolSize() < this.oC)
+    int i = this.oD.getCorePoolSize();
+    int j = this.oC;
+    if (i < j)
     {
-      this.oD.setCorePoolSize(this.oC);
+      this.oD.setCorePoolSize(j);
       this.oD.setMaximumPoolSize(this.oC);
     }
   }
@@ -120,7 +155,7 @@ public class en
   {
     synchronized (this.V)
     {
-      paramRunnable = new iv(this, paramInt, paramRunnable, paramString, paramLong, paramBoolean, paramObject);
+      paramRunnable = new a(paramInt, paramRunnable, paramString, paramLong, paramBoolean, paramObject);
       this.oz.add(paramRunnable);
       this.oA.add(paramRunnable);
       this.oG.sendEmptyMessage(1);
@@ -139,15 +174,15 @@ public class en
     {
       synchronized (this.V)
       {
-        paramRunnable = (iv)paramRunnable;
+        paramRunnable = (a)paramRunnable;
         Iterator localIterator = this.oB.keySet().iterator();
         if (localIterator != null)
         {
           if (!localIterator.hasNext()) {
-            break label294;
+            break label297;
           }
-          iv localiv = (iv)localIterator.next();
-          if ((localiv == null) || (!localiv.equals(paramRunnable))) {
+          a locala = (a)localIterator.next();
+          if ((locala == null) || (!locala.equals(paramRunnable))) {
             continue;
           }
           localIterator.remove();
@@ -155,126 +190,131 @@ public class en
           if (i != 0)
           {
             long l1 = System.currentTimeMillis();
-            long l2 = paramRunnable.a().oV;
-            paramRunnable.a().oV = (l1 - l2);
+            long l2 = paramRunnable.a.oV;
+            paramRunnable.a.oV = (l1 - l2);
             l1 = Debug.threadCpuTimeNanos();
-            l2 = paramRunnable.a().oW;
-            paramRunnable.a().oW = (l1 - l2);
+            l2 = paramRunnable.a.oW;
+            paramRunnable.a.oW = (l1 - l2);
             localIterator = ox.iterator();
-            if (localIterator.hasNext()) {
-              ((es.a)localIterator.next()).b(paramRunnable.a());
+            if (localIterator.hasNext())
+            {
+              ((es.a)localIterator.next()).b(paramRunnable.a);
+              continue;
             }
           }
         }
-      }
-      int i = this.oD.getActiveCount();
-      int j = this.oD.getQueue().size();
-      int k = this.oD.getCorePoolSize();
-      if ((i == 1) && (j == 0))
-      {
-        if (k > 0)
+        i = this.oD.getActiveCount();
+        int j = this.oD.getQueue().size();
+        int k = this.oD.getCorePoolSize();
+        if ((i == 1) && (j == 0))
         {
-          this.oC = cU();
-          this.oD.setCorePoolSize(0);
-          this.oD.setMaximumPoolSize(this.oC + 2);
+          if (k > 0)
+          {
+            this.oC = cU();
+            this.oD.setCorePoolSize(0);
+            this.oD.setMaximumPoolSize(this.oC + 2);
+          }
+          paramRunnable = this.ow.iterator();
+          if (paramRunnable.hasNext())
+          {
+            ((es.b)paramRunnable.next()).dm();
+            continue;
+          }
+          this.oE = false;
         }
-        paramRunnable = this.ow.iterator();
-        while (paramRunnable.hasNext()) {
-          ((es.b)paramRunnable.next()).dm();
-        }
-        this.oE = false;
+        return;
       }
-      return;
-      label294:
-      i = 0;
+      label297:
+      int i = 0;
     }
   }
   
   public void b(Runnable paramRunnable, String paramString, long paramLong, boolean paramBoolean, Object paramObject)
   {
-    for (;;)
+    synchronized (this.V)
     {
-      synchronized (this.V)
+      paramRunnable = new a(2147483647, paramRunnable, paramString, paramLong, paramBoolean, paramObject);
+      this.oA.add(paramRunnable);
+      this.oD.execute(paramRunnable);
+      if ((this.oD.getActiveCount() >= this.oC) && (this.oC < cV()))
       {
-        paramRunnable = new iv(this, 2147483647, paramRunnable, paramString, paramLong, paramBoolean, paramObject);
-        this.oA.add(paramRunnable);
-        this.oD.execute(paramRunnable);
-        if ((this.oD.getActiveCount() >= this.oC) && (this.oC < cV()))
-        {
-          this.oC += 1;
-          this.oD.setCorePoolSize(this.oC);
-          this.oD.setMaximumPoolSize(this.oC);
-          eg.f("ThreadPool", "expand urgent core pool size: " + this.oC);
-          paramString = ox.iterator();
-          if (!paramString.hasNext()) {
-            break;
-          }
-          ((es.a)paramString.next()).a(paramRunnable.a(), this.oD.getActiveCount());
-        }
+        this.oC += 1;
+        this.oD.setCorePoolSize(this.oC);
+        this.oD.setMaximumPoolSize(this.oC);
+        paramString = new StringBuilder("expand urgent core pool size: ");
+        paramString.append(this.oC);
+        eg.f("ThreadPool", paramString.toString());
       }
-      cX();
+      else
+      {
+        cX();
+      }
+      paramString = ox.iterator();
+      while (paramString.hasNext()) {
+        ((es.a)paramString.next()).a(paramRunnable.a, this.oD.getActiveCount());
+      }
+      return;
     }
   }
   
   public void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
-    int i = 10;
     for (;;)
     {
-      Iterator localIterator;
       int j;
       synchronized (this.V)
       {
-        localIterator = this.oA.iterator();
-        if (localIterator == null) {
-          break label251;
-        }
-        paramRunnable = (iv)paramRunnable;
-        j = paramRunnable.a().priority;
-        if (j < 1)
+        Iterator localIterator = this.oA.iterator();
+        if (localIterator != null)
         {
+          paramRunnable = (a)paramRunnable;
+          j = paramRunnable.a.priority;
+          if (j > 0) {
+            break label247;
+          }
           i = 1;
           paramThread.setPriority(i);
-          if (!localIterator.hasNext()) {
-            break label255;
+          j = 0;
+          i = j;
+          if (localIterator.hasNext())
+          {
+            a locala = (a)localIterator.next();
+            if ((locala == null) || (!locala.equals(paramRunnable))) {
+              continue;
+            }
+            localIterator.remove();
+            i = 1;
           }
-          iv localiv = (iv)localIterator.next();
-          if ((localiv == null) || (!localiv.equals(paramRunnable))) {
-            continue;
+          if (i != 0)
+          {
+            if (!this.oE)
+            {
+              localIterator = this.ow.iterator();
+              if (localIterator.hasNext())
+              {
+                ((es.b)localIterator.next()).dl();
+                continue;
+              }
+            }
+            localIterator = ox.iterator();
+            if (localIterator.hasNext())
+            {
+              ((es.a)localIterator.next()).a(paramRunnable.a);
+              continue;
+            }
+            paramRunnable.a.oV = System.currentTimeMillis();
+            paramRunnable.a.oW = Debug.threadCpuTimeNanos();
+            this.oB.put(paramRunnable, paramThread);
+            paramThread.setName(paramRunnable.a.name);
+            this.oE = true;
           }
-          localIterator.remove();
-          i = 1;
-          if (i == 0) {
-            break label251;
-          }
-          if (this.oE) {
-            break label165;
-          }
-          localIterator = this.ow.iterator();
-          if (!localIterator.hasNext()) {
-            break label165;
-          }
-          ((es.b)localIterator.next()).dl();
         }
-      }
-      if (j <= 10)
-      {
-        i = j;
-        continue;
-        label165:
-        localIterator = ox.iterator();
-        while (localIterator.hasNext()) {
-          ((es.a)localIterator.next()).a(paramRunnable.a());
-        }
-        paramRunnable.a().oV = System.currentTimeMillis();
-        paramRunnable.a().oW = Debug.threadCpuTimeNanos();
-        this.oB.put(paramRunnable, paramThread);
-        paramThread.setName(paramRunnable.a().name);
-        this.oE = true;
-        label251:
         return;
-        label255:
-        i = 0;
+      }
+      label247:
+      int i = j;
+      if (j > 10) {
+        i = 10;
       }
     }
   }
@@ -288,6 +328,81 @@ public class en
       oH = 0L;
       eg.f("ThreadPool", "wake up threa pool");
       return;
+    }
+  }
+  
+  final class a
+    implements Comparable<a>, Runnable
+  {
+    es.c a = new es.c();
+    
+    public a(int paramInt, Runnable paramRunnable, String paramString, long paramLong, boolean paramBoolean, Object paramObject)
+    {
+      if (paramString != null)
+      {
+        this$1 = paramString;
+        if (paramString.length() != 0) {}
+      }
+      else
+      {
+        this$1 = paramRunnable.getClass().getName();
+      }
+      paramString = this.a;
+      paramString.oT = 1;
+      paramString.priority = paramInt;
+      paramString.name = en.this;
+      paramString.de = paramLong;
+      paramString.oY = paramRunnable;
+      paramString.oX = paramBoolean;
+      paramString.oZ = paramObject;
+      paramString.oU = System.currentTimeMillis();
+    }
+    
+    public final void run()
+    {
+      try
+      {
+        if ((this.a != null) && (this.a.oY != null)) {
+          this.a.oY.run();
+        }
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder("run (Throwable):");
+        localStringBuilder.append(localThrowable.toString());
+        eg.h("ThreadPool", localStringBuilder.toString());
+      }
+    }
+  }
+  
+  final class b
+    extends Handler
+  {
+    public b(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      if (paramMessage.what != 1) {
+        return;
+      }
+      removeMessages(paramMessage.what);
+      if (en.a(en.this))
+      {
+        eg.f("ThreadPool", "thread pool is pause");
+        long l = System.currentTimeMillis();
+        if ((en.db() > 0L) && (Math.abs(en.dc() - l) > en.db()))
+        {
+          eg.f("ThreadPool", "thread pool is auto wakeup");
+          en.this.cY();
+        }
+        sendEmptyMessageDelayed(1, 1000L);
+        return;
+      }
+      en.b(en.this);
     }
   }
 }

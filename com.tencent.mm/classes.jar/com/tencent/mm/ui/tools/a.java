@@ -1,190 +1,394 @@
 package com.tencent.mm.ui.tools;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.text.format.DateFormat;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.base.h;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.widget.WXActionMenuView;
+import com.tencent.mm.ui.widget.WXActionMenuView.a;
+import com.tencent.mm.ui.widget.WXActionMenuView.b;
+import com.tencent.mm.ui.y;
+import java.lang.reflect.Method;
+import java.util.List;
 
 public final class a
 {
-  public static void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(107596);
-    b(paramActivity, paramIntent1, paramIntent2, paramString, paramInt, null);
-    AppMethodBeat.o(107596);
-  }
+  public s Vtk;
+  public int afCZ;
+  public WXActionMenuView.a afDa;
+  public boolean afDb;
+  private int afDc;
+  private int afDd;
+  private ViewGroup afDe;
   
-  public static void b(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt, a.a parama)
+  public a(Activity paramActivity, WXActionMenuView.a parama)
   {
-    AppMethodBeat.i(107597);
-    if ((paramIntent1 == null) || (paramIntent1.getData() == null))
+    AppMethodBeat.i(251036);
+    this.afDb = false;
+    this.Vtk = new s(paramActivity);
+    this.afDa = parama;
+    parama = paramActivity.getResources();
+    if (nD(paramActivity)) {}
+    for (int i = a.e.DefaultActionbarHeightLand;; i = a.e.DefaultActionbarHeightPort)
     {
-      if (paramIntent1 == null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ab.e("MicroMsg.AsyncObtainImage", "param error, %b", new Object[] { Boolean.valueOf(bool) });
-        AppMethodBeat.o(107597);
-        return;
-      }
-    }
-    if (!paramIntent1.getData().toString().startsWith("content://com.google.android.gallery3d"))
-    {
-      paramIntent1 = i(paramActivity, paramIntent1, paramString);
-      ab.i("MicroMsg.AsyncObtainImage", "resolvePhotoFromIntent, filePath:%s", new Object[] { paramIntent1 });
-      if (!bo.isNullOrNil(paramIntent1))
-      {
-        if (parama != null) {
-          paramIntent2.putExtra("CropImage_OutputPath", parama.acd(paramIntent1));
-        }
-        paramIntent2.putExtra("CropImage_ImgPath", paramIntent1);
-        paramActivity.startActivityForResult(paramIntent2, paramInt);
-      }
-      AppMethodBeat.o(107597);
+      this.afCZ = com.tencent.mm.compatible.util.a.c(paramActivity, (int)parama.getDimension(i));
+      this.afDc = (this.afCZ * 3);
+      this.afDd = ((int)paramActivity.getResources().getDimension(a.e.back_icon_common_width));
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "mDefaultNormalActionbarHeight: %s, needTitleCenterMode: %s.", new Object[] { Integer.valueOf(this.afCZ), Boolean.valueOf(this.afDa.afWk) });
+      AppMethodBeat.o(251036);
       return;
     }
-    new a.2(paramIntent1, paramActivity, paramString, parama, paramIntent2, paramInt).execute(new Integer[] { Integer.valueOf(0) });
-    AppMethodBeat.o(107597);
   }
   
-  public static String i(Context paramContext, Intent paramIntent, String paramString)
+  private int a(ViewGroup paramViewGroup, Activity paramActivity, int paramInt, View paramView)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    AppMethodBeat.i(107598);
-    if ((paramContext == null) || (paramIntent == null) || (paramString == null))
+    AppMethodBeat.i(251042);
+    int k = paramViewGroup.getMeasuredWidth();
+    int j = ma(paramView);
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "getAvailableWidth, padding is %s, maxPadding: %s, minPadding: %s, backWidth:%s, visibleItemCount:%s.", new Object[] { Integer.valueOf(k), Integer.valueOf(this.afDc), Integer.valueOf(this.afDd), Integer.valueOf(j), Integer.valueOf(paramInt) });
+    if (this.afDc == 0)
     {
-      ab.e("MicroMsg.AsyncObtainImage", "resolvePhotoFromIntent fail, invalid argument");
-      AppMethodBeat.o(107598);
-      return null;
+      paramViewGroup = paramActivity.getResources();
+      if (nD(paramActivity))
+      {
+        i = a.e.DefaultActionbarHeightLand;
+        this.afCZ = ((int)paramViewGroup.getDimension(i));
+        this.afDc = (this.afCZ * 3);
+      }
     }
-    Uri localUri = Uri.parse(paramIntent.toURI());
-    Cursor localCursor = paramContext.getContentResolver().query(localUri, null, null, null, null);
-    if ((localCursor != null) && (localCursor.getCount() > 0))
+    else
     {
-      ab.i("MicroMsg.AsyncObtainImage", "resolve photo from cursor");
-      paramContext = localObject2;
+      if (k <= this.afDc) {
+        break label181;
+      }
     }
-    label393:
-    label396:
+    label181:
+    for (int i = this.afCZ * paramInt;; i = k)
+    {
+      paramInt = i;
+      if (i < this.afDd) {
+        paramInt = this.afDd;
+      }
+      i = paramInt;
+      if (j > paramInt) {
+        i = j;
+      }
+      AppMethodBeat.o(251042);
+      return i;
+      i = a.e.DefaultActionbarHeightPort;
+      break;
+    }
+  }
+  
+  private void a(ActionBar paramActionBar, int paramInt)
+  {
+    AppMethodBeat.i(251050);
+    if (!this.afDa.afWk)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "checkTitleSize, no need TitleCenterMode.");
+      AppMethodBeat.o(251050);
+      return;
+    }
+    paramActionBar = paramActionBar.getCustomView().findViewById(a.g.actionbar_center_layout);
+    if (paramActionBar == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "checkTitleSize, centerLayout is null");
+      AppMethodBeat.o(251050);
+      return;
+    }
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "checkTitleSize, padding = %s.", new Object[] { Integer.valueOf(paramInt) });
+    paramInt = Math.min(this.afDc, paramInt);
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "checkTitleSize, min padding = %s.", new Object[] { Integer.valueOf(paramInt) });
+    paramActionBar.setPadding(paramInt, 0, paramInt, 0);
+    AppMethodBeat.o(251050);
+  }
+  
+  private static void a(AppCompatActivity paramAppCompatActivity, y paramy, Menu paramMenu)
+  {
+    AppMethodBeat.i(251045);
+    if (paramy.jjN())
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "clearMenu, isFromFragment");
+      paramMenu.clear();
+      AppMethodBeat.o(251045);
+      return;
+    }
+    paramAppCompatActivity = paramAppCompatActivity.getSupportFragmentManager().getFragments();
+    if ((paramAppCompatActivity == null) || (paramAppCompatActivity.size() <= 0))
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "clearMenu, iFragment no has size");
+      paramMenu.clear();
+      AppMethodBeat.o(251045);
+      return;
+    }
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "clearMenu, fragments.size(): %s.", new Object[] { Integer.valueOf(paramAppCompatActivity.size()) });
+    int i = 0;
+    boolean bool1 = false;
+    boolean bool2;
     for (;;)
     {
-      try
-      {
-        if (!localUri.toString().startsWith("content://com.google.android.gallery3d")) {
-          continue;
-        }
-        paramContext = localObject2;
-        paramIntent = v(paramString, d.n(paramIntent.getData()));
-        paramContext = paramIntent;
-      }
-      catch (Exception paramIntent)
-      {
-        ab.printErrStackTrace("MicroMsg.AsyncObtainImage", paramIntent, "resolve photo error.", new Object[0]);
-        continue;
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      AppMethodBeat.o(107598);
-      return paramContext;
-      paramContext = localObject2;
-      localCursor.moveToFirst();
-      paramContext = localObject2;
-      paramIntent = localCursor.getString(localCursor.getColumnIndex("_data"));
-      paramContext = paramIntent;
-      ab.i("MicroMsg.AsyncObtainImage", "photo from resolver, path:".concat(String.valueOf(paramIntent)));
-      paramContext = paramIntent;
-      continue;
-      if (paramIntent.getData() != null)
-      {
-        paramString = paramIntent.getData().getPath();
-        paramContext = paramString;
-        if (!bo.isNullOrNil(paramString))
-        {
-          paramContext = paramString;
-          if (!new File(paramString).exists()) {
-            paramContext = null;
-          }
-        }
-        ab.i("MicroMsg.AsyncObtainImage", "photo file from data, path:".concat(String.valueOf(paramContext)));
-        if (!bo.isNullOrNil(paramContext)) {
-          break label396;
-        }
-        paramContext = paramIntent.getData().getHost();
-        if ((bo.isNullOrNil(paramContext)) || (new File(paramContext).exists())) {
-          break label393;
-        }
-        paramContext = localObject1;
-      }
-      for (;;)
-      {
-        ab.i("MicroMsg.AsyncObtainImage", "photo file from data, host:".concat(String.valueOf(paramContext)));
+      bool2 = bool1;
+      if (i >= paramAppCompatActivity.size()) {
         break;
-        if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("inline-data")))
-        {
-          paramContext = v(paramString, (Bitmap)paramIntent.getExtras().get("data"));
-          ab.i("MicroMsg.AsyncObtainImage", "resolve photo from action-inline-data:%s", new Object[] { paramContext });
+      }
+      paramy = (Fragment)paramAppCompatActivity.get(i);
+      if ((paramy instanceof MMFragment))
+      {
+        bool1 = z((MMFragment)paramy);
+        Log.i("MicroMsg.ActionBarMenuViewHelper", "clearMenu, getHasOptionMenu: %s.", new Object[] { Boolean.valueOf(bool1) });
+        bool2 = bool1;
+        if (bool1) {
           break;
         }
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        ab.e("MicroMsg.AsyncObtainImage", "resolve photo from intent failed");
-        AppMethodBeat.o(107598);
-        return null;
       }
+      i += 1;
     }
+    if (!bool2) {
+      paramMenu.clear();
+    }
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "clearMenu, iFragment has size, noNeedClear: %s.", new Object[] { Boolean.valueOf(bool2) });
+    AppMethodBeat.o(251045);
   }
   
-  public static String v(String paramString, Bitmap paramBitmap)
+  public static boolean a(Activity paramActivity, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(107599);
+    AppMethodBeat.i(251048);
+    if (paramActivity != null)
+    {
+      paramActivity.onOptionsItemSelected(paramMenuItem);
+      AppMethodBeat.o(251048);
+      return true;
+    }
+    AppMethodBeat.o(251048);
+    return false;
+  }
+  
+  private int ma(View paramView)
+  {
+    AppMethodBeat.i(251040);
+    View localView = paramView.findViewById(a.g.actionbar_up_indicator);
+    int i = (int)paramView.getResources().getDimension(a.e.back_icon_common_width);
+    if (localView != null) {
+      i = localView.getMeasuredWidth();
+    }
+    if (i > this.afDd)
+    {
+      AppMethodBeat.o(251040);
+      return i;
+    }
+    i = this.afDd;
+    AppMethodBeat.o(251040);
+    return i;
+  }
+  
+  private static boolean nD(Context paramContext)
+  {
+    AppMethodBeat.i(251038);
+    if (paramContext.getResources().getConfiguration().orientation == 2)
+    {
+      AppMethodBeat.o(251038);
+      return true;
+    }
+    AppMethodBeat.o(251038);
+    return false;
+  }
+  
+  private static boolean z(Fragment paramFragment)
+  {
+    AppMethodBeat.i(251046);
     try
     {
-      Object localObject = g.w(DateFormat.format("yyyy-MM-dd-HH-mm-ss", System.currentTimeMillis()).toString().getBytes()) + ".jpg";
-      paramString = paramString + (String)localObject;
-      localObject = new File(paramString);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).createNewFile();
-      }
-      localObject = new BufferedOutputStream(new FileOutputStream((File)localObject));
-      paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
-      ((BufferedOutputStream)localObject).close();
-      ab.i("MicroMsg.AsyncObtainImage", "photo image from data, path:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(107599);
-      return paramString;
+      Object localObject = paramFragment.getClass().newInstance();
+      boolean bool = ((Boolean)paramFragment.getClass().getMethod("hasOptionsMenu", new Class[0]).invoke(localObject, new Object[0])).booleanValue();
+      AppMethodBeat.o(251046);
+      return bool;
     }
-    catch (IOException paramString)
+    catch (Exception paramFragment)
     {
-      ab.printErrStackTrace("MicroMsg.AsyncObtainImage", paramString, "saveBmp Error.", new Object[0]);
-      AppMethodBeat.o(107599);
+      AppMethodBeat.o(251046);
     }
-    return null;
+    return false;
+  }
+  
+  public final void a(AppCompatActivity paramAppCompatActivity, Menu paramMenu, y paramy)
+  {
+    AppMethodBeat.i(251061);
+    this.afDb = false;
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu");
+    if (paramAppCompatActivity == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, activity is null | mActionBar is null.");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    if (paramMenu == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, menu = null");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    if (this.afDa.afWl)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, useOrginalSysMode.");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    int i = 0;
+    int j = 0;
+    Object localObject;
+    while (j < paramMenu.size())
+    {
+      localObject = paramMenu.getItem(j);
+      int k = i;
+      if (localObject != null)
+      {
+        k = i;
+        if (((MenuItem)localObject).isVisible()) {
+          k = i + 1;
+        }
+      }
+      j += 1;
+      i = k;
+    }
+    if ((i >= this.afDa.afWj) && (this.afDa.afWk))
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, menu is null visibleItemCount: %s", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(251061);
+      return;
+    }
+    ActionBar localActionBar = paramy.getSupportActionBar();
+    if (localActionBar == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, actionBar is null");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    View localView = localActionBar.getCustomView();
+    if (localView == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, customView is null");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    ViewGroup localViewGroup = (ViewGroup)localView.findViewById(a.g.custom_menu_container);
+    if (localViewGroup == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, WXMenus is null");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    if (!paramy.jjN())
+    {
+      this.Vtk.adRW.clear();
+      localViewGroup.removeAllViews();
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, is no FromFragment.");
+    }
+    if (paramMenu.size() <= 0)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, menu size is 0");
+      AppMethodBeat.o(251061);
+      return;
+    }
+    this.Vtk.adRW.clear();
+    localViewGroup.removeAllViews();
+    this.afDb = true;
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, menu = " + paramMenu.size());
+    j = 0;
+    while (j < paramMenu.size())
+    {
+      localObject = paramMenu.getItem(j);
+      if (localObject != null)
+      {
+        this.Vtk.j((MenuItem)localObject);
+        if (!((MenuItem)localObject).isVisible()) {
+          Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menuItem is unenble.");
+        }
+      }
+      else
+      {
+        j += 1;
+        continue;
+      }
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "on create options menu, menuItem is %s, searchViewHelper: %s.,", new Object[] { localObject, paramy.lMw });
+      if ((((MenuItem)localObject).getItemId() == a.g.menu_search) && (paramy.lMw != null)) {}
+      for (localObject = WXActionMenuView.a(paramAppCompatActivity, (MenuItem)localObject, this.afDa, new WXActionMenuView.b()
+          {
+            public final boolean b(Activity paramAnonymousActivity, MenuItem paramAnonymousMenuItem)
+            {
+              AppMethodBeat.i(251146);
+              boolean bool = a.a(paramAnonymousActivity, paramAnonymousMenuItem);
+              AppMethodBeat.o(251146);
+              return bool;
+            }
+          }, paramy);; localObject = WXActionMenuView.a(paramAppCompatActivity, (MenuItem)localObject, this.afDa, new WXActionMenuView.b()
+          {
+            public final boolean b(Activity paramAnonymousActivity, MenuItem paramAnonymousMenuItem)
+            {
+              AppMethodBeat.i(251145);
+              boolean bool = a.a(paramAnonymousActivity, paramAnonymousMenuItem);
+              AppMethodBeat.o(251145);
+              return bool;
+            }
+          }))
+      {
+        localViewGroup.addView((View)localObject);
+        break;
+      }
+    }
+    this.afDe = localViewGroup;
+    i = a(localViewGroup, paramAppCompatActivity, i, localView);
+    a(paramAppCompatActivity, paramy, paramMenu);
+    a(localActionBar, i);
+    AppMethodBeat.o(251061);
+  }
+  
+  public final void b(ActionBar paramActionBar)
+  {
+    AppMethodBeat.i(251055);
+    Log.i("MicroMsg.ActionBarMenuViewHelper", "resetStatus, actionBar is %s.", new Object[] { paramActionBar });
+    this.afDb = false;
+    this.Vtk.adRW.clear();
+    if (paramActionBar == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "resetStatus, actionBar is null");
+      AppMethodBeat.o(251055);
+      return;
+    }
+    paramActionBar = paramActionBar.getCustomView();
+    if (paramActionBar == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "resetStatus, customView is null");
+      AppMethodBeat.o(251055);
+      return;
+    }
+    paramActionBar = (ViewGroup)paramActionBar.findViewById(a.g.custom_menu_container);
+    if (paramActionBar == null)
+    {
+      Log.i("MicroMsg.ActionBarMenuViewHelper", "resetStatus, WXMenus is null");
+      AppMethodBeat.o(251055);
+      return;
+    }
+    paramActionBar.removeAllViews();
+    AppMethodBeat.o(251055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.a
  * JD-Core Version:    0.7.0.1
  */

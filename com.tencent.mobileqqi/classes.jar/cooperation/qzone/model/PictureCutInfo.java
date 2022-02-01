@@ -4,12 +4,12 @@ import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import icq;
+import icp;
 
 public class PictureCutInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new icq();
+  public static final Parcelable.Creator CREATOR = new icp();
   public int a;
   public Rect a;
   public int b = 0;

@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 public final class i
 {
-  public long cNd;
+  public String Kmn;
+  public int Kmo;
+  public int Kmp;
+  public String Kmq;
+  public String Kmr;
+  public String Kms;
+  public boolean Kmt;
+  public long ihV;
   public String nickname;
-  public String oiD;
-  public int oiE;
-  public int oiF;
-  public String oiG;
-  public String oiH;
-  public String oiI;
-  public boolean oiJ;
   public String username;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.a.i
  * JD-Core Version:    0.7.0.1
  */

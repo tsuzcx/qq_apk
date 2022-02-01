@@ -15,14 +15,14 @@ class TMSDKWifiManager$a
   public void a(int paramInt, CurrentSessionItem paramCurrentSessionItem)
   {
     paramCurrentSessionItem = hm.g(paramCurrentSessionItem);
-    if (paramCurrentSessionItem != null) {}
-    for (paramCurrentSessionItem = hm.x(paramCurrentSessionItem);; paramCurrentSessionItem = null)
-    {
-      Iterator localIterator = TMSDKWifiManager.c(this.qs).iterator();
-      while (localIterator.hasNext()) {
-        ((TMSDKWifiEventListener)localIterator.next()).onConnectionStateChanged(paramInt, paramCurrentSessionItem);
-      }
-      return;
+    if (paramCurrentSessionItem != null) {
+      paramCurrentSessionItem = hm.x(paramCurrentSessionItem);
+    } else {
+      paramCurrentSessionItem = null;
+    }
+    Iterator localIterator = TMSDKWifiManager.c(this.qs).iterator();
+    while (localIterator.hasNext()) {
+      ((TMSDKWifiEventListener)localIterator.next()).onConnectionStateChanged(paramInt, paramCurrentSessionItem);
     }
   }
   
@@ -86,7 +86,7 @@ class TMSDKWifiManager$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.wifisdk.TMSDKWifiManager.a
  * JD-Core Version:    0.7.0.1
  */

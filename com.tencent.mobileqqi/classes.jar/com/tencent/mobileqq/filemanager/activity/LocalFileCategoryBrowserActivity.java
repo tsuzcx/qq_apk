@@ -24,11 +24,11 @@ import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
 import com.tencent.mobileqq.widget.GridListView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
+import fsg;
 import fsh;
 import fsi;
 import fsj;
 import fsk;
-import fsl;
 import java.util.ArrayList;
 
 public class LocalFileCategoryBrowserActivity
@@ -59,7 +59,7 @@ public class LocalFileCategoryBrowserActivity
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = null;
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fsl(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fsk(this);
   }
   
   private int a(int paramInt)
@@ -165,7 +165,7 @@ public class LocalFileCategoryBrowserActivity
   private void j()
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    new fsk(this).execute(new Void[0]);
+    new fsj(this).execute(new Void[0]);
   }
   
   private void k()
@@ -179,7 +179,7 @@ public class LocalFileCategoryBrowserActivity
     setContentView(2130903498);
     this.jdField_b_of_type_Int = getIntent().getBundleExtra("bundle").getInt("category");
     this.jdField_b_of_type_ComTencentMobileqqAppBaseActivity = this;
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232568));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232567));
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131230904));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = new NoFileRelativeLayout(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131558714);
@@ -201,9 +201,9 @@ public class LocalFileCategoryBrowserActivity
     {
       k();
       j();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(new fsh(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnScrollListener(new fsi(this));
-      this.jdField_a_of_type_ComTencentWidgetXListView.getViewTreeObserver().addOnGlobalLayoutListener(new fsj(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(new fsg(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnScrollListener(new fsh(this));
+      this.jdField_a_of_type_ComTencentWidgetXListView.getViewTreeObserver().addOnGlobalLayoutListener(new fsi(this));
       return true;
       this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileCategoryAdapter = new LocalFileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilArrayList);

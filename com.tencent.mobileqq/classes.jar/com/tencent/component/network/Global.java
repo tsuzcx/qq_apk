@@ -1,6 +1,7 @@
 package com.tencent.component.network;
 
 import android.content.Context;
+import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.module.common.NetworkState;
 
 public class Global
@@ -16,13 +17,21 @@ public class Global
   public static void init(Context paramContext)
   {
     sContext = paramContext;
-    NetworkManager.init(getContext());
-    NetworkState.g().setContext(getContext());
+    try
+    {
+      NetworkManager.init(getContext());
+      NetworkState.g().setContext(getContext());
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QDLog.e("downloader", "", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.Global
  * JD-Core Version:    0.7.0.1
  */

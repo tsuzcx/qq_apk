@@ -13,18 +13,18 @@ public final class stReqHeader
   static stAuth cache_authInfo = new stAuth();
   static Map<String, String> cache_mapExt = new HashMap();
   private static final long serialVersionUID = 0L;
-  public int appid;
-  public int appversion;
+  public int appid = 0;
+  public int appversion = 0;
   @Nullable
-  public stAuth authInfo;
+  public stAuth authInfo = null;
   @Nullable
   public String device_info = "";
   @Nullable
   public String h265key = "";
-  public int iAppVersion;
-  public int iChid;
+  public int iAppVersion = 0;
+  public int iChid = 0;
   @Nullable
-  public Map<String, String> mapExt;
+  public Map<String, String> mapExt = null;
   @Nullable
   public String person_id = "";
   @Nullable
@@ -185,39 +185,47 @@ public final class stReqHeader
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.authInfo != null) {
-      paramJceOutputStream.write(this.authInfo, 0);
+    Object localObject = this.authInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.iChid, 1);
-    if (this.person_id != null) {
-      paramJceOutputStream.write(this.person_id, 2);
+    localObject = this.person_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.platform != null) {
-      paramJceOutputStream.write(this.platform, 3);
+    localObject = this.platform;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.appversion, 4);
-    if (this.user_ip != null) {
-      paramJceOutputStream.write(this.user_ip, 5);
+    localObject = this.user_ip;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strQua != null) {
-      paramJceOutputStream.write(this.strQua, 6);
+    localObject = this.strQua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.device_info != null) {
-      paramJceOutputStream.write(this.device_info, 7);
+    localObject = this.device_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.h265key != null) {
-      paramJceOutputStream.write(this.h265key, 8);
+    localObject = this.h265key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.appid, 9);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 10);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
     paramJceOutputStream.write(this.iAppVersion, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_PUBLIC.stReqHeader
  * JD-Core Version:    0.7.0.1
  */

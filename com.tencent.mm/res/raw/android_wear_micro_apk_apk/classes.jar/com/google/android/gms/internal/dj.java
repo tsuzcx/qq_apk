@@ -3,22 +3,22 @@ package com.google.android.gms.internal;
 public final class dj
   extends dq<dj>
 {
-  public dk[] QO = dk.jO();
+  public dk[] SD = dk.jX();
   
   public dj()
   {
-    this.Rr = null;
-    this.RB = -1;
+    this.Tg = null;
+    this.Tq = -1;
   }
   
   public final void a(do paramdo)
   {
-    if ((this.QO != null) && (this.QO.length > 0))
+    if ((this.SD != null) && (this.SD.length > 0))
     {
       int i = 0;
-      while (i < this.QO.length)
+      while (i < this.SD.length)
       {
-        dk localdk = this.QO[i];
+        dk localdk = this.SD[i];
         if (localdk != null) {
           paramdo.a(1, localdk);
         }
@@ -38,47 +38,47 @@ public final class dj
         return false;
       }
       paramObject = (dj)paramObject;
-      if (!du.equals(this.QO, paramObject.QO)) {
+      if (!du.equals(this.SD, paramObject.SD)) {
         return false;
       }
-      if ((this.Rr != null) && (!this.Rr.isEmpty())) {
+      if ((this.Tg != null) && (!this.Tg.isEmpty())) {
         break;
       }
-    } while ((paramObject.Rr == null) || (paramObject.Rr.isEmpty()));
+    } while ((paramObject.Tg == null) || (paramObject.Tg.isEmpty()));
     return false;
-    return this.Rr.equals(paramObject.Rr);
+    return this.Tg.equals(paramObject.Tg);
   }
   
   public final int hashCode()
   {
     int j = getClass().getName().hashCode();
-    int k = du.hashCode(this.QO);
-    if ((this.Rr == null) || (this.Rr.isEmpty())) {}
-    for (int i = 0;; i = this.Rr.hashCode()) {
+    int k = du.hashCode(this.SD);
+    if ((this.Tg == null) || (this.Tg.isEmpty())) {}
+    for (int i = 0;; i = this.Tg.hashCode()) {
       return i + ((j + 527) * 31 + k) * 31;
     }
   }
   
-  protected final int jN()
+  protected final int jW()
   {
-    int i = super.jN();
+    int i = super.jW();
     int k = i;
-    if (this.QO != null)
+    if (this.SD != null)
     {
       k = i;
-      if (this.QO.length > 0)
+      if (this.SD.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.QO.length) {
+          if (j >= this.SD.length) {
             break;
           }
-          dk localdk = this.QO[j];
+          dk localdk = this.SD[j];
           k = i;
           if (localdk != null) {
-            k = i + do.b(1, localdk);
+            k = i + do.c(1, localdk);
           }
           j += 1;
           i = k;

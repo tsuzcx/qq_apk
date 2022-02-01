@@ -2,106 +2,172 @@ package com.tencent.mm.modelvoice;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.compatible.e.ac;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.util.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.PhoneStatusWatcher;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
 public final class u
   implements d
 {
-  boolean fZY;
   String fileName;
-  MediaPlayer gaO;
-  com.tencent.mm.compatible.util.b gaP;
-  d.a gaf;
-  d.b gag;
+  boolean pdV;
+  MediaPlayer peU;
+  com.tencent.mm.compatible.util.b peV;
+  d.a pej;
+  d.b pek;
   int status;
   
   public u()
   {
-    AppMethodBeat.i(55841);
+    AppMethodBeat.i(130095);
     this.fileName = "";
-    this.gaf = null;
-    this.gag = null;
+    this.pej = null;
+    this.pek = null;
     this.status = 0;
-    this.fZY = true;
-    this.gaO = new k();
-    amz();
-    amA();
-    ab.d("MicroMsg.VoicePlayer", "VoicePlayer");
-    AppMethodBeat.o(55841);
+    this.pdV = true;
+    this.peU = new k();
+    bPo();
+    bPp();
+    Log.d("MicroMsg.VoicePlayer", "VoicePlayer");
+    AppMethodBeat.o(130095);
   }
   
   public u(Context paramContext)
   {
     this();
-    AppMethodBeat.i(55842);
-    this.gaP = new com.tencent.mm.compatible.util.b(paramContext);
-    ab.d("MicroMsg.VoicePlayer", "VoicePlayer context");
-    AppMethodBeat.o(55842);
+    AppMethodBeat.i(130096);
+    this.peV = new com.tencent.mm.compatible.util.b(paramContext);
+    Log.d("MicroMsg.VoicePlayer", "VoicePlayer context");
+    AppMethodBeat.o(130096);
   }
   
-  private void amA()
+  private void bPo()
   {
-    AppMethodBeat.i(55844);
-    this.gaO.setOnErrorListener(new u.2(this));
-    AppMethodBeat.o(55844);
+    AppMethodBeat.i(130097);
+    this.peU.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+    {
+      public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
+      {
+        AppMethodBeat.i(130093);
+        Log.d("MicroMsg.VoicePlayer", "OnCompletionListener");
+        if ((u.this.peV != null) && (u.this.pdV))
+        {
+          Log.d("MicroMsg.VoicePlayer", "OnCompletionListener abandonFocus");
+          u.this.peV.aPS();
+        }
+        if (u.this.pej != null)
+        {
+          Log.d("MicroMsg.VoicePlayer", "OnCompletionListener onCompletion");
+          u.this.pej.onCompletion();
+        }
+        try
+        {
+          Log.d("MicroMsg.VoicePlayer", "OnCompletionListener release");
+          u.this.peU.reset();
+          u.this.peU.release();
+          u.this.status = 0;
+          AppMethodBeat.o(130093);
+          return;
+        }
+        catch (Exception paramAnonymousMediaPlayer)
+        {
+          Log.e("MicroMsg.VoicePlayer", "setCompletion File[" + u.this.fileName + "] ErrMsg[" + paramAnonymousMediaPlayer.getStackTrace() + "]");
+          AppMethodBeat.o(130093);
+        }
+      }
+    });
+    AppMethodBeat.o(130097);
   }
   
-  private void amz()
+  private void bPp()
   {
-    AppMethodBeat.i(55843);
-    this.gaO.setOnCompletionListener(new u.1(this));
-    AppMethodBeat.o(55843);
+    AppMethodBeat.i(130098);
+    this.peU.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    {
+      public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(130094);
+        Log.d("MicroMsg.VoicePlayer", "OnErrorListener");
+        if ((u.this.peV != null) && (u.this.pdV))
+        {
+          Log.d("MicroMsg.VoicePlayer", "OnErrorListener abandonFocus");
+          u.this.peV.aPS();
+        }
+        if (u.this.pek != null)
+        {
+          Log.d("MicroMsg.VoicePlayer", "OnErrorListener onError");
+          u.this.pek.atR();
+        }
+        try
+        {
+          Log.d("MicroMsg.VoicePlayer", "OnErrorListener release");
+          u.this.peU.reset();
+          u.this.peU.release();
+          u.this.status = -1;
+          AppMethodBeat.o(130094);
+          return false;
+        }
+        catch (Exception paramAnonymousMediaPlayer)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.VoicePlayer", "setErrorListener File[" + u.this.fileName + "] ErrMsg[" + paramAnonymousMediaPlayer.getStackTrace() + "]");
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(130098);
   }
   
-  private boolean e(String paramString, boolean paramBoolean, int paramInt)
+  private boolean d(String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(55848);
+    AppMethodBeat.i(130102);
     if (this.status != 0)
     {
-      ab.e("MicroMsg.VoicePlayer", "startPlay error status:" + this.status);
-      AppMethodBeat.o(55848);
+      Log.e("MicroMsg.VoicePlayer", "startPlay error status:" + this.status);
+      AppMethodBeat.o(130102);
       return false;
     }
-    ab.i("MicroMsg.VoicePlayer", "startPlay speakerOn:%s,seekTo:%s,", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.VoicePlayer", "startPlay speakerOn:%s,seekTo:%s,", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     this.fileName = paramString;
     try
     {
-      h(paramBoolean, paramInt);
+      k(paramBoolean, paramInt);
       this.status = 1;
-      AppMethodBeat.o(55848);
+      AppMethodBeat.o(130102);
       return true;
     }
     catch (Exception paramString)
     {
       try
       {
-        h(true, paramInt);
+        k(true, paramInt);
       }
       catch (Exception localException)
       {
-        ab.e("MicroMsg.VoicePlayer", "startPlay File[" + this.fileName + "] failed");
-        ab.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bo.l(paramString) });
+        Log.e("MicroMsg.VoicePlayer", "startPlay File[" + this.fileName + "] failed");
+        Log.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         this.status = -1;
-        AppMethodBeat.o(55848);
+        AppMethodBeat.o(130102);
       }
     }
     return false;
   }
   
-  private void h(boolean paramBoolean, int paramInt)
+  private void k(boolean paramBoolean, int paramInt)
   {
     int j = 3;
-    AppMethodBeat.i(55849);
-    if (!e.cN(this.fileName))
+    AppMethodBeat.i(130103);
+    if (!y.ZC(this.fileName))
     {
-      AppMethodBeat.o(55849);
+      AppMethodBeat.o(130103);
       return;
     }
     int i;
@@ -113,258 +179,186 @@ public final class u
     {
       try
       {
-        ab.d("MicroMsg.VoicePlayer", "playImp speakerOn:%s,seekTo:%s,type:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i) });
-        if (!ac.erv.emD) {
+        Log.d("MicroMsg.VoicePlayer", "playImp speakerOn:%s,seekTo:%s,type:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i) });
+        if (!af.lXZ.lQS) {
           break label249;
         }
-        ac.erv.dump();
-        if (ac.erv.emK != 1) {
+        af.lXZ.aQ();
+        if (af.lXZ.lQZ != 1) {
           break label249;
         }
         i = j;
-        if ((this.gaP != null) && (this.fZY))
+        if ((this.peV != null) && (this.pdV))
         {
-          ab.d("MicroMsg.VoicePlayer", "playImp audioFocusHelper.requestFocus");
-          this.gaP.requestFocus();
+          Log.d("MicroMsg.VoicePlayer", "playImp audioFocusHelper.requestFocus");
+          this.peV.requestFocus();
         }
-        this.gaO.setAudioStreamType(i);
-        this.gaO.setDataSource(this.fileName);
-        this.gaO.prepare();
+        this.peU.setAudioStreamType(i);
+        this.peU.setDataSource(this.fileName);
+        this.peU.prepare();
         if (paramInt > 0) {
-          this.gaO.seekTo(paramInt);
+          this.peU.seekTo(paramInt);
         }
-        this.gaO.start();
-        AppMethodBeat.o(55849);
+        this.peU.start();
+        AppMethodBeat.o(130103);
         return;
       }
       catch (Exception localException)
       {
-        ab.e("MicroMsg.VoicePlayer", "playImp : fail, exception = " + localException.getMessage());
-        ab.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bo.l(localException) });
-        if ((this.gaP == null) || (!this.fZY)) {
+        Log.e("MicroMsg.VoicePlayer", "playImp : fail, exception = " + localException.getMessage());
+        Log.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+        if ((this.peV == null) || (!this.pdV)) {
           continue;
         }
-        this.gaP.Mh();
-        AppMethodBeat.o(55849);
+        this.peV.aPS();
+        AppMethodBeat.o(130103);
         return;
       }
       i = 0;
     }
   }
   
-  public final boolean Eo()
+  public final void a(d.a parama)
   {
-    AppMethodBeat.i(55851);
-    if (this.status != 2)
-    {
-      ab.e("MicroMsg.VoicePlayer", "resume not STATUS_PAUSE error status:" + this.status);
-      AppMethodBeat.o(55851);
-      return false;
-    }
-    try
-    {
-      ab.d("MicroMsg.VoicePlayer", "resume mediaPlayer.start()");
-      this.gaO.start();
-      if ((this.gaP != null) && (this.fZY))
-      {
-        ab.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
-        this.gaP.requestFocus();
-      }
-      this.status = 1;
-      AppMethodBeat.o(55851);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.VoicePlayer", "resume File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-      this.status = -1;
-      return false;
-    }
-    finally
-    {
-      if ((this.gaP != null) && (this.fZY))
-      {
-        ab.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
-        this.gaP.requestFocus();
-      }
-      AppMethodBeat.o(55851);
-    }
+    this.pej = parama;
   }
   
-  public final double Er()
+  public final void a(d.b paramb)
   {
-    AppMethodBeat.i(55853);
+    this.pek = paramb;
+  }
+  
+  public final void a(d.c paramc)
+  {
+    AppMethodBeat.i(234471);
+    Log.e("MicroMsg.VoicePlayer", "seek not support");
+    AppMethodBeat.o(234471);
+  }
+  
+  public final double aGG()
+  {
+    AppMethodBeat.i(130107);
     if ((this.status != 1) && (this.status != 2))
     {
-      AppMethodBeat.o(55853);
+      AppMethodBeat.o(130107);
       return 0.0D;
     }
     int i;
     int j;
     try
     {
-      i = this.gaO.getCurrentPosition();
-      j = this.gaO.getDuration();
+      i = this.peU.getCurrentPosition();
+      j = this.peU.getDuration();
       if (j == 0)
       {
-        ab.e("MicroMsg.VoicePlayer", "getDuration File[" + this.fileName + "] Failed");
-        AppMethodBeat.o(55853);
+        Log.e("MicroMsg.VoicePlayer", "getDuration File[" + this.fileName + "] Failed");
+        AppMethodBeat.o(130107);
         return 0.0D;
       }
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.VoicePlayer", "getNowProgress File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-      Ez();
-      AppMethodBeat.o(55853);
+      Log.e("MicroMsg.VoicePlayer", "getNowProgress File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      stop();
+      AppMethodBeat.o(130107);
       return 0.0D;
     }
     double d = i / j;
-    AppMethodBeat.o(55853);
+    AppMethodBeat.o(130107);
     return d;
   }
   
-  public final boolean Ez()
+  public final void bOU()
   {
-    AppMethodBeat.i(55852);
-    if ((this.status != 1) && (this.status != 2))
-    {
-      ab.e("MicroMsg.VoicePlayer", "stop not STATUS_PLAYING or STATUS_PAUSE error status:" + this.status);
-      AppMethodBeat.o(55852);
-      return false;
-    }
-    try
-    {
-      ab.d("MicroMsg.VoicePlayer", "stop mediaPlayer.stop()");
-      this.gaO.stop();
-      this.gaO.release();
-      if ((this.gaP != null) && (this.fZY))
-      {
-        ab.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
-        this.gaP.Mh();
-      }
-      this.status = 0;
-      AppMethodBeat.o(55852);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.VoicePlayer", "stop File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-      this.status = -1;
-      return false;
-    }
-    finally
-    {
-      if ((this.gaP != null) && (this.fZY))
-      {
-        ab.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
-        this.gaP.Mh();
-      }
-      AppMethodBeat.o(55852);
-    }
+    this.pdV = false;
   }
   
-  public final boolean T(String paramString, boolean paramBoolean)
+  public final void c(b.a parama)
   {
-    AppMethodBeat.i(55846);
-    paramBoolean = e(paramString, paramBoolean, 0);
-    AppMethodBeat.o(55846);
+    AppMethodBeat.i(130108);
+    if ((this.peV != null) && (parama != null)) {
+      this.peV.a(parama);
+    }
+    AppMethodBeat.o(130108);
+  }
+  
+  public final boolean c(String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(130101);
+    paramBoolean = d(paramString, paramBoolean, paramInt);
+    AppMethodBeat.o(130101);
     return paramBoolean;
   }
   
-  public final void a(d.a parama)
+  public final boolean ea(long paramLong)
   {
-    this.gaf = parama;
+    AppMethodBeat.i(234468);
+    Log.e("MicroMsg.VoicePlayer", "seek not support");
+    AppMethodBeat.o(234468);
+    return false;
   }
   
-  public final void a(d.b paramb)
+  public final void ed(boolean paramBoolean)
   {
-    this.gag = paramb;
-  }
-  
-  public final void ami()
-  {
-    this.fZY = false;
-  }
-  
-  public final void b(b.a parama)
-  {
-    AppMethodBeat.i(55854);
-    if ((this.gaP != null) && (parama != null)) {
-      this.gaP.a(parama);
+    AppMethodBeat.i(130099);
+    Log.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
+    if (this.peU == null)
+    {
+      AppMethodBeat.o(130099);
+      return;
     }
-    AppMethodBeat.o(55854);
+    if (PhoneStatusWatcher.isCalling())
+    {
+      Log.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
+      AppMethodBeat.o(130099);
+      return;
+    }
+    int i = this.peU.getCurrentPosition();
+    stop();
+    this.peU = new k();
+    bPo();
+    bPp();
+    d(this.fileName, paramBoolean, i);
+    AppMethodBeat.o(130099);
   }
   
-  public final boolean bw(boolean paramBoolean)
+  public final boolean em(boolean paramBoolean)
   {
-    AppMethodBeat.i(55850);
+    AppMethodBeat.i(130104);
     if (this.status != 1)
     {
-      ab.e("MicroMsg.VoicePlayer", "pause not STATUS_PLAYING error status:" + this.status);
-      AppMethodBeat.o(55850);
+      Log.e("MicroMsg.VoicePlayer", "pause not STATUS_PLAYING error status:" + this.status);
+      AppMethodBeat.o(130104);
       return false;
     }
     try
     {
-      ab.d("MicroMsg.VoicePlayer", "pause mediaPlayer.pause()");
-      this.gaO.pause();
-      if ((this.gaP != null) && (paramBoolean) && (this.fZY))
+      Log.d("MicroMsg.VoicePlayer", "pause mediaPlayer.pause()");
+      this.peU.pause();
+      if ((this.peV != null) && (paramBoolean) && (this.pdV))
       {
-        ab.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
-        this.gaP.Mh();
+        Log.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
+        this.peV.aPS();
       }
       this.status = 2;
-      AppMethodBeat.o(55850);
+      AppMethodBeat.o(130104);
       return true;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.VoicePlayer", "pause File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      Log.e("MicroMsg.VoicePlayer", "pause File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
       this.status = -1;
       return false;
     }
     finally
     {
-      if ((this.gaP != null) && (paramBoolean) && (this.fZY))
+      if ((this.peV != null) && (paramBoolean) && (this.pdV))
       {
-        ab.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
-        this.gaP.Mh();
+        Log.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
+        this.peV.aPS();
       }
-      AppMethodBeat.o(55850);
+      AppMethodBeat.o(130104);
     }
-  }
-  
-  public final void bx(boolean paramBoolean)
-  {
-    AppMethodBeat.i(55845);
-    ab.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
-    if (this.gaO == null)
-    {
-      AppMethodBeat.o(55845);
-      return;
-    }
-    if (ax.Ep())
-    {
-      ab.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
-      AppMethodBeat.o(55845);
-      return;
-    }
-    int i = this.gaO.getCurrentPosition();
-    Ez();
-    this.gaO = new k();
-    amz();
-    amA();
-    e(this.fileName, paramBoolean, i);
-    AppMethodBeat.o(55845);
-  }
-  
-  public final boolean d(String paramString, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(55847);
-    paramBoolean = e(paramString, paramBoolean, paramInt);
-    AppMethodBeat.o(55847);
-    return paramBoolean;
   }
   
   public final int getStatus()
@@ -376,10 +370,89 @@ public final class u
   {
     return this.status == 1;
   }
+  
+  public final boolean resume()
+  {
+    AppMethodBeat.i(130105);
+    if (this.status != 2)
+    {
+      Log.e("MicroMsg.VoicePlayer", "resume not STATUS_PAUSE error status:" + this.status);
+      AppMethodBeat.o(130105);
+      return false;
+    }
+    try
+    {
+      Log.d("MicroMsg.VoicePlayer", "resume mediaPlayer.start()");
+      this.peU.start();
+      if ((this.peV != null) && (this.pdV))
+      {
+        Log.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
+        this.peV.requestFocus();
+      }
+      this.status = 1;
+      AppMethodBeat.o(130105);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.VoicePlayer", "resume File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      this.status = -1;
+      return false;
+    }
+    finally
+    {
+      if ((this.peV != null) && (this.pdV))
+      {
+        Log.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
+        this.peV.requestFocus();
+      }
+      AppMethodBeat.o(130105);
+    }
+  }
+  
+  public final boolean stop()
+  {
+    AppMethodBeat.i(130106);
+    if ((this.status != 1) && (this.status != 2))
+    {
+      Log.e("MicroMsg.VoicePlayer", "stop not STATUS_PLAYING or STATUS_PAUSE error status:" + this.status);
+      AppMethodBeat.o(130106);
+      return false;
+    }
+    try
+    {
+      Log.d("MicroMsg.VoicePlayer", "stop mediaPlayer.stop()");
+      this.peU.stop();
+      this.peU.release();
+      if ((this.peV != null) && (this.pdV))
+      {
+        Log.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
+        this.peV.aPS();
+      }
+      this.status = 0;
+      AppMethodBeat.o(130106);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.VoicePlayer", "stop File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      this.status = -1;
+      return false;
+    }
+    finally
+    {
+      if ((this.peV != null) && (this.pdV))
+      {
+        Log.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
+        this.peV.aPS();
+      }
+      AppMethodBeat.o(130106);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.modelvoice.u
  * JD-Core Version:    0.7.0.1
  */

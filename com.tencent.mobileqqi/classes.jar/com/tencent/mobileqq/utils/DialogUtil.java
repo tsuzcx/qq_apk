@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import hbt;
+import hbs;
 
 public class DialogUtil
 {
@@ -43,7 +43,7 @@ public class DialogUtil
     ImageView localImageView = (ImageView)paramContext.findViewById(2131230758);
     localTextView.setText(paramInt1);
     localImageView.setImageResource(paramInt2);
-    new Handler().postDelayed(new hbt(paramContext), paramLong);
+    new Handler().postDelayed(new hbs(paramContext), paramLong);
     return paramContext;
   }
   

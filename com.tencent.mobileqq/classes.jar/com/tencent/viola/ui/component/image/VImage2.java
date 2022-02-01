@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.viola.adapter.VComponentAdapter;
@@ -43,10 +44,12 @@ public class VImage2
   private static final String WEB_BASE64_PREFIX_JPEG = "data:image/jpeg;base64,";
   private static final String WEB_BASE64_PREFIX_JPG = "data:image/jpg;base64,";
   private static final String WEB_BASE64_PREFIX_PNG = "data:image/png;base64,";
+  private static ImageCacheManager cacheManager;
   private boolean mHasSetPlaceHolder;
   private String mImageUrl;
   private VImage2.NullDrawableChecker mNullDrawableChecker;
   private String mPlaceHolderUrl;
+  private boolean useCacheWrap;
   
   public VImage2(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -64,26 +67,79 @@ public class VImage2
     if (localView == null) {
       return;
     }
-    localView.post(new VImage2.1(this, localView, paramBoolean, paramString));
+    localView.getViewTreeObserver().addOnPreDrawListener(new VImage2.1(this, localView, paramBoolean, paramString));
+  }
+  
+  private static void ensureImageCacheManager()
+  {
+    if (cacheManager == null) {
+      cacheManager = new ImageCacheManager();
+    }
+  }
+  
+  private void finishLoadBase64(Bitmap paramBitmap, String paramString, Bundle paramBundle)
+  {
+    ViolaSDKManager.getInstance().postOnUiThread(new VImage2.3(this, paramBitmap, paramString, paramBundle));
+  }
+  
+  public static ImageView.ScaleType getResizeMode(String paramString)
+  {
+    ImageView.ScaleType localScaleType = ImageView.ScaleType.FIT_XY;
+    if (TextUtils.isEmpty(paramString)) {
+      return localScaleType;
+    }
+    int i = -1;
+    int j = paramString.hashCode();
+    if (j != -1881872635)
+    {
+      if (j != 94852023)
+      {
+        if ((j == 951526612) && (paramString.equals("contain"))) {
+          i = 1;
+        }
+      }
+      else if (paramString.equals("cover")) {
+        i = 0;
+      }
+    }
+    else if (paramString.equals("stretch")) {
+      i = 2;
+    }
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return localScaleType;
+        }
+        return ImageView.ScaleType.FIT_XY;
+      }
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
   }
   
   private boolean isAutoSize()
   {
-    if (this.mDomObj == null) {}
-    Object localObject;
-    do
+    if (this.mDomObj == null) {
+      return false;
+    }
+    Object localObject = this.mDomObj.getAttributes();
+    if (((Attr)localObject).containsKey("autosize"))
     {
-      do
-      {
+      if ("none".equals(((Attr)localObject).get("autosize").toString())) {
         return false;
-        localObject = this.mDomObj.getAttributes();
-      } while ((!((Attr)localObject).containsKey("autosize")) || ("none".equals(((Attr)localObject).get("autosize").toString())));
+      }
       localObject = this.mDomObj.getStyle();
-    } while (((((Style)localObject).containsKey("width")) && (((Style)localObject).containsKey("height"))) || ((!((Style)localObject).containsKey("width")) && (!((Style)localObject).containsKey("height"))));
-    return true;
+      if ((((Style)localObject).containsKey("width")) && (((Style)localObject).containsKey("height"))) {
+        return false;
+      }
+      return (((Style)localObject).containsKey("width")) || (((Style)localObject).containsKey("height"));
+    }
+    return false;
   }
   
-  private boolean isBase64(String paramString)
+  public static boolean isBase64(String paramString)
   {
     return (paramString.startsWith("data:image/jpg;base64,")) || (paramString.startsWith("data:image/png;base64,")) || (paramString.startsWith("data:image/jpeg;base64,"));
   }
@@ -95,29 +151,38 @@ public class VImage2
   
   private boolean isRequestNow()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (!isMounted()) {}
-    Object localObject;
-    do
-    {
+    boolean bool1 = isMounted();
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      localObject = getHostView();
-    } while (localObject == null);
+    }
+    Object localObject = getHostView();
+    if (localObject == null) {
+      return false;
+    }
     if (this.mDomObj != null)
     {
       localObject = this.mDomObj.getStyle();
-      if ((((Style)localObject).getWidth(this.mDomObj.getViewPortWidth()) != 0.0F) && (((Style)localObject).getHeight(this.mDomObj.getViewPortWidth()) != 0.0F)) {}
-      for (;;)
+      bool1 = bool2;
+      if (((Style)localObject).getWidth(this.mDomObj.getViewPortWidth()) != 0.0F)
       {
-        return bool1;
-        bool1 = false;
+        bool1 = bool2;
+        if (((Style)localObject).getHeight(this.mDomObj.getViewPortWidth()) != 0.0F) {
+          bool1 = true;
+        }
       }
-    }
-    if ((((View)localObject).getHeight() != 0) && (((View)localObject).getWidth() != 0)) {}
-    for (bool1 = bool2;; bool1 = false) {
       return bool1;
     }
+    bool1 = bool3;
+    if (((View)localObject).getHeight() != 0)
+    {
+      bool1 = bool3;
+      if (((View)localObject).getWidth() != 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private void loadFromBase64(String paramString, boolean paramBoolean)
@@ -131,30 +196,39 @@ public class VImage2
   private void nowRequest(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
     VImageView2 localVImageView2 = (VImageView2)getHostView();
-    VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
-    if ((localVImageView2 == null) || (localVComponentAdapter == null)) {
+    if (tryRecordRequestImage(paramString, paramInt1, paramInt2, paramBoolean)) {
       return;
     }
-    localVImageView2.setImageDrawable(null);
-    boolean bool = isNeedRealImageSize();
-    if (isBase64(paramString))
+    VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+    if (localVImageView2 != null)
     {
+      if (localVComponentAdapter == null) {
+        return;
+      }
+      if ((!paramBoolean) || (!useCacheWrap())) {
+        localVImageView2.setImageDrawable(null);
+      }
+      boolean bool = isNeedRealImageSize();
+      if (isBase64(paramString))
+      {
+        if (!paramBoolean) {
+          localVImageView2.setImageStartTs(System.currentTimeMillis());
+        }
+        loadFromBase64(paramString, bool);
+        return;
+      }
       if (!paramBoolean) {
         localVImageView2.setImageStartTs(System.currentTimeMillis());
       }
-      loadFromBase64(paramString, bool);
-      return;
+      localVComponentAdapter.requestImage(paramString, paramInt1, paramInt2, bool, this, isGif(), localVImageView2.getScaleType());
     }
-    if (!paramBoolean) {
-      localVImageView2.setImageStartTs(System.currentTimeMillis());
-    }
-    localVComponentAdapter.requestImage(paramString, paramInt1, paramInt2, bool, this, isGif());
   }
   
   private void removeCheckMsg()
   {
-    if (this.mNullDrawableChecker != null) {
-      this.mNullDrawableChecker.removeCheckMsg();
+    VImage2.NullDrawableChecker localNullDrawableChecker = this.mNullDrawableChecker;
+    if (localNullDrawableChecker != null) {
+      localNullDrawableChecker.removeCheckMsg();
     }
   }
   
@@ -164,21 +238,22 @@ public class VImage2
     {
       if (this.mDomObj != null)
       {
-        Style localStyle = this.mDomObj.getStyle();
-        int i = (int)localStyle.getWidth(this.mDomObj.getViewPortWidth());
-        int j = (int)localStyle.getHeight(this.mDomObj.getViewPortWidth());
-        if ((i == 0) || (j == 0)) {
-          break label95;
+        localObject = this.mDomObj.getStyle();
+        int i = (int)((Style)localObject).getWidth(this.mDomObj.getViewPortWidth());
+        int j = (int)((Style)localObject).getHeight(this.mDomObj.getViewPortWidth());
+        if ((i != 0) && (j != 0)) {
+          nowRequest(i, j, paramBoolean, paramString);
+        } else {
+          nowRequest(((VImageView2)getHostView()).getWidth(), ((VImageView2)getHostView()).getHeight(), paramBoolean, paramString);
         }
-        nowRequest(i, j, paramBoolean, paramString);
       }
-      for (;;)
-      {
-        ViolaLogUtils.d("VImage2", "request now, url: " + paramString);
-        return;
-        label95:
-        nowRequest(((VImageView2)getHostView()).getWidth(), ((VImageView2)getHostView()).getHeight(), paramBoolean, paramString);
-      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("request now, url: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", hashCode: ");
+      ((StringBuilder)localObject).append(hashCode());
+      ViolaLogUtils.d("VImage2", ((StringBuilder)localObject).toString());
+      return;
     }
     deferredRequest(paramBoolean, paramString);
   }
@@ -186,200 +261,272 @@ public class VImage2
   private void setImage(Object paramObject)
   {
     VImageView2 localVImageView2 = (VImageView2)getHostView();
-    if (localVImageView2 == null) {}
-    do
-    {
+    if (localVImageView2 == null) {
       return;
-      if ((paramObject instanceof Bitmap))
-      {
-        localVImageView2.setImageBitmap((Bitmap)paramObject);
-        return;
-      }
-    } while (!(paramObject instanceof Drawable));
-    localVImageView2.setImageDrawable((Drawable)paramObject);
+    }
+    if ((paramObject instanceof Bitmap))
+    {
+      localVImageView2.setImageBitmap((Bitmap)paramObject);
+      return;
+    }
+    if ((paramObject instanceof Drawable)) {
+      localVImageView2.setImageDrawable((Drawable)paramObject);
+    }
   }
   
   private void setImageResize(String paramString)
   {
-    ((VImageView2)getHostView()).setScaleType(getResizeMode(paramString));
+    if (getHostView() != null) {
+      ((VImageView2)getHostView()).setScaleType(getResizeMode(paramString));
+    }
   }
   
   private void setResult(Object paramObject, String paramString, boolean paramBoolean)
   {
-    if ((paramObject == null) || (getHostView() == null)) {}
-    VImageView2 localVImageView2;
-    do
+    if (paramObject != null)
     {
-      return;
-      localVImageView2 = (VImageView2)getHostView();
-      if (!paramBoolean) {
-        break;
+      if (getHostView() == null) {
+        return;
       }
-    } while ((localVImageView2.getDrawable() != null) || (this.mHasSetPlaceHolder));
-    localVImageView2.setNeedFading(false);
-    setImage(paramObject);
-    this.mHasSetPlaceHolder = true;
-    return;
-    this.mHasSetPlaceHolder = true;
-    localVImageView2.setNeedFading(true);
-    localVImageView2.setUrl(paramString);
-    setImage(paramObject);
+      VImageView2 localVImageView2 = (VImageView2)getHostView();
+      if (paramBoolean)
+      {
+        if ((localVImageView2.getDrawable() == null) && (!this.mHasSetPlaceHolder))
+        {
+          localVImageView2.setNeedFading(false);
+          setImage(paramObject);
+          this.mHasSetPlaceHolder = true;
+        }
+      }
+      else
+      {
+        this.mHasSetPlaceHolder = true;
+        localVImageView2.setNeedFading(true);
+        localVImageView2.setUrl(paramString);
+        setImage(paramObject);
+      }
+    }
   }
   
   private void tryCalSizeAndUpdate(Bundle paramBundle)
   {
-    if (!isAutoSize()) {}
-    int j;
+    if (!isAutoSize()) {
+      return;
+    }
+    Object localObject1 = (VImageView2)getHostView();
     int i;
-    do
+    int j;
+    Object localObject3;
+    Object localObject2;
+    int n;
+    int i2;
+    if (localObject1 != null)
     {
-      do
-      {
+      if (((VImageView2)localObject1).getLayoutParams() == null) {
         return;
-        localObject1 = (VImageView2)getHostView();
-      } while ((localObject1 == null) || (((VImageView2)localObject1).getLayoutParams() == null));
-      j = ((VImageView2)localObject1).getNaturalWidth();
-      i = ((VImageView2)localObject1).getNaturalHeight();
+      }
+      i = ((VImageView2)localObject1).getNaturalWidth();
+      j = ((VImageView2)localObject1).getNaturalHeight();
       if (paramBundle != null)
       {
-        j = paramBundle.getInt(ImageAdapterHolder.BUNDLE_WIDTH, 0);
-        i = paramBundle.getInt(ImageAdapterHolder.BUNDLE_HEIGHT, 0);
+        i = paramBundle.getInt(ImageAdapterHolder.BUNDLE_WIDTH, 0);
+        j = paramBundle.getInt(ImageAdapterHolder.BUNDLE_HEIGHT, 0);
       }
-    } while ((j == 0) || (i == 0));
-    Object localObject2 = this.mDomObj.getAttributes().get("autosize").toString();
-    paramBundle = ((VImageView2)localObject1).getLayoutParams();
-    int m = paramBundle.width;
-    int n = paramBundle.height;
-    Object localObject1 = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
-    int k;
-    label287:
-    int i1;
-    for (;;)
-    {
-      try
+      if (i != 0)
       {
-        if (!"width".equals(localObject2)) {
-          break label384;
-        }
-        k = (int)this.mDomObj.flexStyle.maxHeight;
-        if (k == 0) {
-          break label717;
-        }
-        if (i > k)
-        {
-          j = (int)(k / i * j);
-          if (n != 0) {
-            break label726;
-          }
-          i = k;
-          m = (int)(i / k * j);
-          if ((m == paramBundle.width) && (i == paramBundle.height)) {
-            break;
-          }
-          m = (int)FlexConvertUtils.px2dip(m);
-          ((JSONObject)localObject1).put("width", m + "dp");
-          ((JSONObject)localObject1).put("height", (int)FlexConvertUtils.px2dip(i) + "dp");
-          i = k;
-          localJSONObject.put("style", localObject1);
-          paramBundle = new MethodUpdateElement(getRef(), localJSONObject);
-          ViolaSDKManager.getInstance().getDomManager().postAction(getInstance().getInstanceId(), paramBundle, false);
-          ViolaLogUtils.d("VImage2", " for image width :" + j + ",height:" + i);
+        if (j == 0) {
           return;
         }
+        localObject3 = this.mDomObj.getAttributes().get("autosize").toString();
+        localObject2 = ((VImageView2)localObject1).getLayoutParams();
+        n = ((ViewGroup.LayoutParams)localObject2).width;
+        i2 = ((ViewGroup.LayoutParams)localObject2).height;
+        paramBundle = new JSONObject();
+        localObject1 = new JSONObject();
+      }
+    }
+    for (;;)
+    {
+      int i3;
+      try
+      {
+        boolean bool = "width".equals(localObject3);
+        float f;
+        if (bool)
+        {
+          n = (int)this.mDomObj.flexStyle.maxHeight;
+          k = i;
+          m = j;
+          i1 = i2;
+          if (n != 0)
+          {
+            if (j <= n) {
+              break label832;
+            }
+            i = (int)(n / j * i);
+            if (i2 != 0) {
+              break label818;
+            }
+            j = n;
+            break label848;
+          }
+          f = i1;
+          i = (int)(f / m * k);
+          if ((i == ((ViewGroup.LayoutParams)localObject2).width) && (i1 == ((ViewGroup.LayoutParams)localObject2).height)) {
+            return;
+          }
+          i = (int)FlexConvertUtils.px2dip(i);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append("dp");
+          paramBundle.put("width", ((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((int)FlexConvertUtils.px2dip(f));
+          ((StringBuilder)localObject2).append("dp");
+          paramBundle.put("height", ((StringBuilder)localObject2).toString());
+          i1 = m;
+        }
+        else
+        {
+          k = i;
+          i1 = j;
+          if ("height".equals(localObject3))
+          {
+            i3 = (int)this.mDomObj.flexStyle.maxWidth;
+            m = i;
+            i1 = j;
+            k = n;
+            if (i3 != 0)
+            {
+              if (i <= i3) {
+                break label873;
+              }
+              i1 = (int)(i3 / i * j);
+              if (n != 0) {
+                break label862;
+              }
+              k = i3;
+              break label866;
+              m = i;
+              i1 = j;
+              k = i2;
+              if (getDomObject().getAttributes().containsKey("autoScaleWidth"))
+              {
+                localObject3 = getDomObject().getAttributes().get("autoScaleWidth");
+                m = i;
+                i1 = j;
+                k = i2;
+                if (localObject3 != null)
+                {
+                  bool = TextUtils.isEmpty(localObject3.toString());
+                  m = i;
+                  i1 = j;
+                  k = i2;
+                  if (!bool)
+                  {
+                    m = i;
+                    i1 = j;
+                    k = i2;
+                    try
+                    {
+                      if (i2 >= Integer.parseInt(localObject3.toString()))
+                      {
+                        k = Math.min((int)getDomObject().getParent().getLayoutWidth(), i3);
+                        m = i;
+                        i1 = j;
+                      }
+                    }
+                    catch (NumberFormatException localNumberFormatException)
+                    {
+                      StringBuilder localStringBuilder = new StringBuilder();
+                      localStringBuilder.append("AUTO_SCALE_WIDTH NumberFormatException");
+                      localStringBuilder.append(localNumberFormatException.getMessage());
+                      ViolaLogUtils.e("VImage2", localStringBuilder.toString());
+                      k = i2;
+                      i1 = j;
+                      m = i;
+                    }
+                  }
+                }
+              }
+            }
+            f = k;
+            i = (int)(f / m * i1);
+            if ((i == ((ViewGroup.LayoutParams)localObject2).height) && (k == ((ViewGroup.LayoutParams)localObject2).width)) {
+              return;
+            }
+            i = (int)FlexConvertUtils.px2dip(i);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((int)FlexConvertUtils.px2dip(f));
+            ((StringBuilder)localObject2).append("dp");
+            paramBundle.put("width", ((StringBuilder)localObject2).toString());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(i);
+            ((StringBuilder)localObject2).append("dp");
+            paramBundle.put("height", ((StringBuilder)localObject2).toString());
+            k = m;
+          }
+        }
+        ((JSONObject)localObject1).put("style", paramBundle);
+        paramBundle = new MethodUpdateElement(getRef(), (JSONObject)localObject1);
+        ViolaSDKManager.getInstance().getDomManager().postAction(getInstance().getInstanceId(), paramBundle, false);
+        paramBundle = new StringBuilder();
+        paramBundle.append(" for image width :");
+        paramBundle.append(k);
+        paramBundle.append(",height:");
+        paramBundle.append(i1);
+        ViolaLogUtils.d("VImage2", paramBundle.toString());
+        return;
       }
       catch (JSONException paramBundle)
       {
         paramBundle.printStackTrace();
-        return;
       }
-      if (n != 0) {
-        break label717;
-      }
-      k = i;
+      return;
+      label818:
+      int m = n;
+      int k = i;
+      int i1 = i2;
       continue;
-      label384:
-      if (!"height".equals(localObject2)) {
-        break label714;
-      }
-      i1 = (int)this.mDomObj.flexStyle.maxWidth;
-      n = m;
-      if (i1 == 0) {
-        break label696;
-      }
-      if (j <= i1) {
-        break label732;
-      }
-      float f = i1 / j;
-      i = (int)(i * f);
-      if (m != 0) {
-        break label703;
-      }
-      k = i1;
-      j = i1;
-      label450:
-      m = (int)(k / j * i);
-      if ((m == paramBundle.height) && (k == paramBundle.width)) {
-        break;
-      }
-      m = (int)FlexConvertUtils.px2dip(m);
-      ((JSONObject)localObject1).put("width", (int)FlexConvertUtils.px2dip(k) + "dp");
-      ((JSONObject)localObject1).put("height", m + "dp");
-    }
-    for (;;)
-    {
-      for (;;)
+      label832:
+      k = i;
+      m = j;
+      i1 = i2;
+      if (i2 == 0)
       {
-        n = k;
-        if (getDomObject().getAttributes().containsKey("autoScaleWidth"))
-        {
-          localObject2 = getDomObject().getAttributes().get("autoScaleWidth");
-          n = k;
-          if (localObject2 != null)
-          {
-            boolean bool = TextUtils.isEmpty(localObject2.toString());
-            n = k;
-            if (!bool)
-            {
-              m = k;
-              try
-              {
-                if (k >= Integer.parseInt(localObject2.toString())) {
-                  m = Math.min((int)getDomObject().getParent().getLayoutWidth(), i1);
-                }
-                k = m;
-              }
-              catch (NumberFormatException localNumberFormatException)
-              {
-                ViolaLogUtils.e("VImage2", "AUTO_SCALE_WIDTH NumberFormatException" + localNumberFormatException.getMessage());
-                n = k;
-              }
-            }
-          }
+        label848:
+        i1 = j;
+        k = i;
+        m = j;
+        continue;
+        label862:
+        k = n;
+        label866:
+        m = i3;
+        continue;
+        label873:
+        i2 = n;
+        if (n == 0) {
+          i2 = i;
         }
       }
-      label696:
-      k = n;
-      break label450;
-      label703:
-      k = m;
-      j = i1;
-      break label450;
-      label714:
-      break label287;
-      label717:
-      k = i;
-      i = n;
-      break;
-      label726:
-      i = n;
-      break;
-      label732:
-      k = m;
-      if (m == 0) {
-        k = j;
-      }
     }
+  }
+  
+  private boolean tryRecordRequestImage(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      if (!useCacheWrap()) {
+        return false;
+      }
+      if (this.mHost == null) {
+        return false;
+      }
+      ensureImageCacheManager();
+      return cacheManager.recordRequest((VImageView2)this.mHost, paramString, paramInt1, paramInt2, getBlurRadius(), this.mDomObj.getStyle());
+    }
+    return false;
   }
   
   public int getBlurRadius()
@@ -387,45 +534,9 @@ public class VImage2
     if (this.mDomObj == null) {
       return 0;
     }
-    return (int)((int)FlexConvertUtils.converPxByViewportToRealPx(this.mDomObj.getAttributes().get("blurRadius"), 750) * 2.3D);
-  }
-  
-  public ImageView.ScaleType getResizeMode(String paramString)
-  {
-    ImageView.ScaleType localScaleType = ImageView.ScaleType.FIT_XY;
-    if (TextUtils.isEmpty(paramString)) {
-      return localScaleType;
-    }
-    int i = -1;
-    switch (paramString.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return localScaleType;
-      case 0: 
-        return ImageView.ScaleType.CENTER_CROP;
-        if (paramString.equals("cover"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("contain"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("stretch")) {
-              i = 2;
-            }
-          }
-        }
-        break;
-      }
-    }
-    return ImageView.ScaleType.FIT_CENTER;
-    return ImageView.ScaleType.FIT_XY;
+    double d = (int)FlexConvertUtils.converPxByViewportToRealPx(this.mDomObj.getAttributes().get("blurRadius"), 750);
+    Double.isNaN(d);
+    return (int)(d * 2.3D);
   }
   
   public int getScaleRadioForBlur()
@@ -450,11 +561,18 @@ public class VImage2
   {
     paramContext = new VImageView2(paramContext);
     paramContext.bindComponent(this);
+    paramContext.initBorderInfo(this.mDomObj);
     paramContext.setScaleType(ImageView.ScaleType.FIT_XY);
-    if (Build.VERSION.SDK_INT >= 16) {
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = true;
+    if (i >= 16) {
       paramContext.setCropToPadding(true);
     }
     this.mNullDrawableChecker = new VImage2.NullDrawableChecker(this);
+    if ((this.mDomObj == null) || (!ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("cacheWrap")))) {
+      bool = false;
+    }
+    this.useCacheWrap = bool;
     return paramContext;
   }
   
@@ -463,46 +581,119 @@ public class VImage2
     return false;
   }
   
+  public void onActivityDestroy()
+  {
+    if ((cacheManager != null) && (useCacheWrap())) {
+      cacheManager.clear();
+    }
+  }
+  
   public void onCancel()
   {
-    ViolaLogUtils.e("VImage2", "onCancel, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCancel, hashCode: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.mImageUrl);
+    ViolaLogUtils.e("VImage2", localStringBuilder.toString());
     this.mImageUrl = null;
     removeCheckMsg();
+    tryRemoveCache();
+  }
+  
+  public void onDrawableLoadFinish(String paramString, Drawable paramDrawable, ImageCacheManager.ImageCacheKey paramImageCacheKey)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (paramString.equals(this.mPlaceHolderUrl)) {
+      return;
+    }
+    onGetDrawable(paramImageCacheKey, paramDrawable);
   }
   
   public void onError()
   {
     tryFireEvent(false, null);
-    ViolaLogUtils.e("VImage2", "onError, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onError, hashCode: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.mImageUrl);
+    ViolaLogUtils.e("VImage2", localStringBuilder.toString());
     this.mImageUrl = null;
     removeCheckMsg();
+    tryRemoveCache();
+  }
+  
+  public void onGetDrawable(ImageCacheManager.ImageCacheKey paramImageCacheKey, Drawable paramDrawable)
+  {
+    if (useCacheWrap())
+    {
+      if (paramImageCacheKey == null) {
+        return;
+      }
+      ensureImageCacheManager();
+      cacheManager.onGetDrawable(paramImageCacheKey, paramDrawable);
+    }
+  }
+  
+  public void onRecycler()
+  {
+    tryRemoveCache();
   }
   
   public void onSuccess(Object paramObject, String paramString, Bundle paramBundle)
   {
     removeCheckMsg();
-    if (((VImageView2)getHostView() == null) || (paramString == null)) {
-      return;
-    }
-    if (paramString.equals(this.mImageUrl)) {}
-    for (boolean bool = false;; bool = true)
+    if ((VImageView2)getHostView() != null)
     {
+      if (paramString == null) {
+        return;
+      }
+      boolean bool;
+      if (paramString.equals(this.mImageUrl))
+      {
+        bool = false;
+      }
+      else
+      {
+        if (!paramString.equals(this.mPlaceHolderUrl)) {
+          break label138;
+        }
+        bool = true;
+      }
       setResult(paramObject, paramString, bool);
       if (!bool)
       {
         tryCalSizeAndUpdate(paramBundle);
         tryFireEvent(true, paramBundle);
       }
-      ViolaLogUtils.d("VImage2", "onSuccess, url: " + paramString + ", hashCode: " + hashCode() + ", isPlaceHolder: " + bool);
+      paramObject = new StringBuilder();
+      paramObject.append("onSuccess, url: ");
+      paramObject.append(paramString);
+      paramObject.append(", hashCode: ");
+      paramObject.append(hashCode());
+      paramObject.append(", isPlaceHolder: ");
+      paramObject.append(bool);
+      ViolaLogUtils.d("VImage2", paramObject.toString());
       return;
-      if (!paramString.equals(this.mPlaceHolderUrl)) {
-        break;
-      }
+      label138:
+      tryRemoveCache();
+      paramObject = new StringBuilder();
+      paramObject.append("url has change, hashCode: ");
+      paramObject.append(hashCode());
+      paramObject.append(", requestUrl: ");
+      paramObject.append(paramString);
+      paramObject.append(", imageUrl: ");
+      paramObject.append(this.mImageUrl);
+      paramObject.append(", placeHolder: ");
+      paramObject.append(this.mPlaceHolderUrl);
+      ViolaLogUtils.e("VImage2", paramObject.toString());
     }
-    ViolaLogUtils.d("VImage2", "url has change, hashCode: " + hashCode() + ", requestUrl: " + paramString + ", imageUrl: " + this.mImageUrl + ", placeHolder: " + this.mPlaceHolderUrl);
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
     if ((!super.resetAttr(paramString)) && (paramString.equals("resize")))
     {
@@ -523,6 +714,14 @@ public class VImage2
     this.mImageUrl = null;
     this.mPlaceHolderUrl = null;
     this.mHasSetPlaceHolder = false;
+    this.useCacheWrap = false;
+  }
+  
+  public void resetComponent(DomObject paramDomObject)
+  {
+    if (this.mHost != null) {
+      ((VImageView2)this.mHost).initBorderInfo(paramDomObject);
+    }
   }
   
   @VComponentProp(name="alphaAnim")
@@ -589,6 +788,11 @@ public class VImage2
     }
   }
   
+  public void setHasSetPlaceHolder(boolean paramBoolean)
+  {
+    this.mHasSetPlaceHolder = paramBoolean;
+  }
+  
   @VComponentProp(name="placeholder")
   public void setPlaceholder(String paramString)
   {
@@ -613,40 +817,40 @@ public class VImage2
     Object localObject = (VImageView2)getHostView();
     if (localObject == null)
     {
-      localObject = new StringBuilder().append("hostView is null, src: ");
-      if (paramString != null)
-      {
-        localObject = ((StringBuilder)localObject).append(paramString).append(", cache url: ");
-        if (this.mImageUrl == null) {
-          break label75;
-        }
-        paramString = this.mImageUrl;
-        label54:
-        ViolaLogUtils.e("VImage2", paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hostView is null, src: ");
+      if (paramString == null) {
+        paramString = "null";
+      }
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", cache url: ");
+      paramString = this.mImageUrl;
+      if (paramString == null) {
+        paramString = "";
+      }
+      ((StringBuilder)localObject).append(paramString);
+      ViolaLogUtils.e("VImage2", ((StringBuilder)localObject).toString());
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      ViolaLogUtils.e("VImage2", "url is null");
+      return;
+    }
+    if (!paramString.equals(this.mImageUrl))
+    {
+      this.mImageUrl = paramString;
+      requestImage(false, this.mImageUrl);
+      removeCheckMsg();
+      return;
+    }
+    if (((VImageView2)localObject).getDrawable() == null)
+    {
+      paramString = this.mNullDrawableChecker;
+      if (paramString != null) {
+        paramString.sendCheckMsg();
       }
     }
-    label75:
-    do
-    {
-      return;
-      paramString = "null";
-      break;
-      paramString = "";
-      break label54;
-      if (TextUtils.isEmpty(paramString))
-      {
-        ViolaLogUtils.e("VImage2", "url is null");
-        return;
-      }
-      if (!paramString.equals(this.mImageUrl))
-      {
-        this.mImageUrl = paramString;
-        requestImage(false, this.mImageUrl);
-        removeCheckMsg();
-        return;
-      }
-    } while ((((VImageView2)localObject).getDrawable() != null) || (this.mNullDrawableChecker == null));
-    this.mNullDrawableChecker.sendCheckMsg();
   }
   
   protected void tryFireEvent(boolean paramBoolean, Bundle paramBundle)
@@ -655,6 +859,7 @@ public class VImage2
       return;
     }
     Object localObject = (VImageView2)getHostView();
+    int k = 0;
     int i;
     int j;
     if (localObject != null)
@@ -662,50 +867,66 @@ public class VImage2
       i = ((VImageView2)localObject).getNaturalWidth();
       j = ((VImageView2)localObject).getNaturalHeight();
     }
-    for (;;)
+    else
     {
-      if (paramBundle != null)
-      {
-        i = paramBundle.getInt(ImageAdapterHolder.BUNDLE_WIDTH);
-        j = paramBundle.getInt(ImageAdapterHolder.BUNDLE_HEIGHT);
-      }
-      for (;;)
-      {
-        try
-        {
-          paramBundle = new JSONObject();
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("width", i);
-          ((JSONObject)localObject).put("height", j);
-          if (paramBoolean)
-          {
-            i = 1;
-            paramBundle.put("success", i);
-            paramBundle.put("image", localObject);
-            localObject = new JSONArray();
-            String str = this.mDomObj.getRef();
-            if (!TextUtils.isEmpty(str)) {
-              ((JSONArray)localObject).put(str);
-            }
-            ((JSONArray)localObject).put("finish");
-            fireEvent("finish", localObject, paramBundle);
-            return;
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          return;
-        }
-        i = 0;
-      }
       j = 0;
       i = 0;
     }
+    if (paramBundle != null)
+    {
+      i = paramBundle.getInt(ImageAdapterHolder.BUNDLE_WIDTH);
+      j = paramBundle.getInt(ImageAdapterHolder.BUNDLE_HEIGHT);
+    }
+    try
+    {
+      paramBundle = new JSONObject();
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("width", i);
+      ((JSONObject)localObject).put("height", j);
+      i = k;
+      if (paramBoolean) {
+        i = 1;
+      }
+      paramBundle.put("success", i);
+      paramBundle.put("image", localObject);
+      localObject = new JSONArray();
+      String str = this.mDomObj.getRef();
+      if (!TextUtils.isEmpty(str)) {
+        ((JSONArray)localObject).put(str);
+      }
+      ((JSONArray)localObject).put("finish");
+      fireEvent("finish", localObject, paramBundle);
+      return;
+    }
+    catch (Exception paramBundle) {}
+  }
+  
+  public void tryRemoveCache()
+  {
+    if ((useCacheWrap()) && (this.mHost != null))
+    {
+      ensureImageCacheManager();
+      cacheManager.removeCache(((VImageView2)this.mHost).getCacheKey());
+    }
+  }
+  
+  public void tryRemoveCache(ImageCacheManager.ImageCacheKey paramImageCacheKey)
+  {
+    if (useCacheWrap())
+    {
+      ensureImageCacheManager();
+      cacheManager.removeCache(paramImageCacheKey);
+    }
+  }
+  
+  public boolean useCacheWrap()
+  {
+    return (getInstance() != null) && (getInstance().isSupportNativeVue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.image.VImage2
  * JD-Core Version:    0.7.0.1
  */

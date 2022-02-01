@@ -1,109 +1,37 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import android.os.Message;
-import apon;
-import apoo;
-import appr;
-import apqh;
-import awge;
-import awgf;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.VipComicFavorEmoStructMsgInfo;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
+import com.tencent.mobileqq.mini.api.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MessengerService$IncomingHandler$18
-  extends IPicDownloadListener
+class MessengerService$IncomingHandler$18
+  implements MiniAppLaunchListener
 {
-  public MessengerService$IncomingHandler$18(apqh paramapqh, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, apon paramapon, awgf paramawgf, appr paramappr, QQAppInterface paramQQAppInterface) {}
+  MessengerService$IncomingHandler$18(MessengerService.IncomingHandler paramIncomingHandler, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramList2 != null) {}
-    do
+    if (paramBundle != null)
     {
-      Object localObject2;
-      do
+      Bundle localBundle = new Bundle();
+      try
       {
-        try
-        {
-          if (!paramList2.isEmpty())
-          {
-            this.val$result.put("code", 1);
-            this.val$result.put("message", "not all success");
-            this.val$data.put("failedNum", paramList2.size());
-            if (paramList1 != null)
-            {
-              this.val$data.put("succeedNum", paramList1.size());
-              this.val$data.put("remainNum", this.val$remainNum - paramList1.size());
-            }
-            this.val$result.put("data", this.val$data);
-            this.val$reqbundle.putString("result", this.val$result.toString());
-            this.val$service.a(this.val$reqbundle);
-            if ((paramList2 == null) || (paramList2.isEmpty())) {
-              continue;
-            }
-            paramList2 = paramList2.iterator();
-            while (paramList2.hasNext())
-            {
-              localObject1 = (CustomEmotionData)paramList2.next();
-              localObject2 = (VipComicFavorEmoStructMsgInfo)this.val$emoStructMsgInfoMap.get(((CustomEmotionData)localObject1).md5);
-              this.val$fdb.a((CustomEmotionBase)localObject1);
-              if (localObject2 != null) {
-                this.val$entityManager.b((awge)localObject2);
-              }
-            }
-          }
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+        if (!paramBoolean) {
+          localJSONObject.put("msg", paramBundle.getString("errMsg"));
         }
-        catch (JSONException paramList1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
-            }
-            return;
-            this.val$result.put("code", 0);
-            this.val$result.put("message", "ok");
-            this.val$data.put("failedNum", 0);
-          }
-        }
-        catch (Exception paramList1)
-        {
-          while (!QLog.isColorLevel()) {}
-          QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
-          return;
-        }
-      } while ((paramList1 == null) || (paramList1.isEmpty()));
-      paramList2 = new ArrayList();
-      Object localObject1 = paramList1.iterator();
-      while (((Iterator)localObject1).hasNext())
+        localBundle.putString("result", localJSONObject.toString());
+        this.a.putBundle("response", localBundle);
+        this.b.a(this.a);
+        return;
+      }
+      catch (Throwable paramBundle)
       {
-        localObject2 = (CustomEmotionData)((Iterator)localObject1).next();
-        localObject2 = (VipComicFavorEmoStructMsgInfo)this.val$emoStructMsgInfoMap.get(((CustomEmotionData)localObject2).md5);
-        if (localObject2 != null) {
-          paramList2.add(localObject2);
-        }
+        QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
       }
-      this.val$vipComicMqqManager.a(paramList2, true);
-      paramList2 = this.val$qqApp.getHandler(ChatActivity.class);
-      if (paramList2 != null) {
-        paramList2.obtainMessage(10).sendToTarget();
-      }
-      paramList2 = (apoo)this.val$qqApp.getManager(103);
-    } while (paramList2 == null);
-    paramList2.b(paramList1);
+    }
   }
 }
 

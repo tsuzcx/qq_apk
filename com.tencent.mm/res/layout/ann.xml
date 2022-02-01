@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/dw7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-        <TextView android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/dw8" android:background="@color/a6q" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/dgo" android:layout_weight="1.0" style="@style/lf" />
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/kxu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="阿婆牛杂(天河南二路)" android:layout_marginStart="@dimen/cv" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kxt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="3.5公里 | 天河区天河南二路与天祥街交叉路口东北…" android:maxLines="1" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g1g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lqk" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6t" android:src="@raw/icons_filled_time" android:layout_marginStart="@dimen/cv" app:iconColor="@color/Blue" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lqj" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6t" android:src="@raw/icons_filled_error" android:layout_marginStart="@dimen/cv" app:iconColor="@color/Orange_100" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kxq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eh4" android:maxLines="1" android:layout_marginStart="@dimen/bv" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lqi" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6s" android:src="@raw/icons_outlined_arrow" android:layout_marginEnd="@dimen/cp" app:iconColor="@color/FG_1" />
     </LinearLayout>
-    <TextView android:textColor="@color/h6" android:id="@id/cmk" android:visibility="gone" android:text="@string/dgm" style="@style/lf" />
-</FrameLayout>
+    <View android:id="@id/l3j" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="@dimen/a6s" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+</LinearLayout>

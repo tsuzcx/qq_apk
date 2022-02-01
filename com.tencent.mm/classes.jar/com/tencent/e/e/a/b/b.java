@@ -8,36 +8,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends JceStruct
 {
-  public int Blp = 0;
-  public float Blq = 0.0F;
-  public String bYu = "";
-  public String feA = "";
+  public int ahuF = 0;
+  public float ahuG = 0.0F;
+  public String hEl = "";
+  public String hTs = "";
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114577);
-    this.feA = paramJceInputStream.readString(0, true);
-    this.Blp = paramJceInputStream.read(this.Blp, 1, true);
-    this.Blq = paramJceInputStream.read(this.Blq, 2, true);
-    this.bYu = paramJceInputStream.readString(3, false);
-    AppMethodBeat.o(114577);
+    AppMethodBeat.i(138418);
+    this.hTs = paramJceInputStream.readString(0, true);
+    this.ahuF = paramJceInputStream.read(this.ahuF, 1, true);
+    this.ahuG = paramJceInputStream.read(this.ahuG, 2, true);
+    this.hEl = paramJceInputStream.readString(3, false);
+    AppMethodBeat.o(138418);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114576);
-    paramJceOutputStream.write(this.feA, 0);
-    paramJceOutputStream.write(this.Blp, 1);
-    paramJceOutputStream.write(this.Blq, 2);
-    if (this.bYu != null) {
-      paramJceOutputStream.write(this.bYu, 3);
+    AppMethodBeat.i(138417);
+    paramJceOutputStream.write(this.hTs, 0);
+    paramJceOutputStream.write(this.ahuF, 1);
+    paramJceOutputStream.write(this.ahuG, 2);
+    if (this.hEl != null) {
+      paramJceOutputStream.write(this.hEl, 3);
     }
-    AppMethodBeat.o(114576);
+    AppMethodBeat.o(138417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.e.a.b.b
  * JD-Core Version:    0.7.0.1
  */

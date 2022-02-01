@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.account.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jn;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.nx;
+import com.tencent.mm.sdk.event.IListener;
 
-final class LoginHistoryUI$1
-  extends c<jn>
+class LoginHistoryUI$1
+  extends IListener<nx>
 {
-  LoginHistoryUI$1(LoginHistoryUI paramLoginHistoryUI)
+  LoginHistoryUI$1(LoginHistoryUI paramLoginHistoryUI, q paramq)
   {
-    AppMethodBeat.i(124913);
-    this.__eventId = jn.class.getName().hashCode();
-    AppMethodBeat.o(124913);
+    super(paramq);
+    AppMethodBeat.i(304928);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(304928);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.1
  * JD-Core Version:    0.7.0.1
  */

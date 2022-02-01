@@ -1,16 +1,15 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
 
 public class caz
-  extends MessageObserver
+  implements View.OnClickListener
 {
   public caz(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean);
-    ChatForEnterpriseActivity.a(this.a).sendEmptyMessage(0);
+    paramView.setVisibility(8);
   }
 }
 

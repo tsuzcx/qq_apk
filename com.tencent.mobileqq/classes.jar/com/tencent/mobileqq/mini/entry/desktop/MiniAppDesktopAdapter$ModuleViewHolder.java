@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.app.Activity;
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -16,7 +16,7 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExpos
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppModuleInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.lang.ref.WeakReference;
 
 class MiniAppDesktopAdapter$ModuleViewHolder
@@ -31,55 +31,65 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131370503));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370502));
+    this.mModuleText = ((TextView)paramView.findViewById(2131438477));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131438476));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
   {
     this.mModuleText.setText(paramDesktopAppModuleInfo.moduleTitle);
     AppInterface localAppInterface = MiniAppUtils.getAppInterface();
-    if (localAppInterface != null)
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166981));
-      this.mMoreMiniApp.setImageResource(2130849586);
+      this.mMoreMiniApp.setImageResource(2130841863);
+      this.mModuleText.setTextColor(-1);
+    }
+    else
+    {
+      this.mMoreMiniApp.setImageResource(2130841862);
+      this.mModuleText.setTextColor(-16578534);
     }
     int j = paramDesktopAppModuleInfo.getModuleType();
-    if ((j == 1) || (j == 2))
+    if ((j != 1) && (j != 2))
     {
-      int i;
-      if (paramDesktopAppModuleInfo.appStoreInfo != null)
-      {
-        this.mAppStoreInfo = paramDesktopAppModuleInfo.appStoreInfo;
-        this.mMoreMiniApp.setVisibility(0);
-        paramDesktopAppModuleInfo = new MiniAppConfig(paramDesktopAppModuleInfo.appStoreInfo);
-        Object localObject = paramDesktopAppModuleInfo.launchParam;
-        if (j == 1)
-        {
-          i = 3005;
-          ((LaunchParam)localObject).scene = i;
-          localObject = new MiniAppExposureManager.MiniAppModuleExposureData(paramDesktopAppModuleInfo, "page_view", "expo");
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.mAppStoreInfo.appId).append("_").append(this.mAppStoreInfo.verType).append("_").append(j).append("_").append(paramDesktopAppModuleInfo.launchParam.scene);
-          paramDesktopAppModuleInfo = localStringBuilder.toString();
-          ((MiniAppExposureManager)localAppInterface.getManager(322)).putReportDataToMap(paramDesktopAppModuleInfo, (MiniAppExposureManager.BaseExposureReport)localObject);
-        }
-      }
-      for (;;)
-      {
-        this.mMoreMiniApp.setOnClickListener(new MiniAppDesktopAdapter.ModuleViewHolder.1(this, j));
-        return;
-        i = 3004;
-        break;
-        this.mMoreMiniApp.setVisibility(8);
-      }
+      this.mMoreMiniApp.setVisibility(8);
+      return;
     }
-    this.mMoreMiniApp.setVisibility(8);
+    if (paramDesktopAppModuleInfo.appStoreInfo != null)
+    {
+      this.mAppStoreInfo = paramDesktopAppModuleInfo.appStoreInfo;
+      this.mMoreMiniApp.setVisibility(0);
+      paramDesktopAppModuleInfo = new MiniAppConfig(paramDesktopAppModuleInfo.appStoreInfo);
+      Object localObject = paramDesktopAppModuleInfo.launchParam;
+      int i;
+      if (j == 1) {
+        i = 3005;
+      } else {
+        i = 3004;
+      }
+      ((LaunchParam)localObject).scene = i;
+      localObject = new MiniAppExposureManager.MiniAppModuleExposureData(paramDesktopAppModuleInfo, "page_view", "expo");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mAppStoreInfo.appId);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.mAppStoreInfo.verType);
+      localStringBuilder.append("_");
+      localStringBuilder.append(j);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramDesktopAppModuleInfo.launchParam.scene);
+      paramDesktopAppModuleInfo = localStringBuilder.toString();
+      ((MiniAppExposureManager)localAppInterface.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).putReportDataToMap(paramDesktopAppModuleInfo, (MiniAppExposureManager.BaseExposureReport)localObject);
+    }
+    else
+    {
+      this.mMoreMiniApp.setVisibility(8);
+    }
+    this.mMoreMiniApp.setOnClickListener(new MiniAppDesktopAdapter.ModuleViewHolder.1(this, j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.ModuleViewHolder
  * JD-Core Version:    0.7.0.1
  */

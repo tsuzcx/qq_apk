@@ -31,7 +31,7 @@ public class RealTimeProcessVarianceFilterAndDenoise
   {
     this.blendAlpha = paramFloat;
     addParam(new UniformParam.FloatParam("blurAlpha", paramFloat));
-    addParam(new UniformParam.FloatParam("sharpen", 0.4F * paramFloat));
+    addParam(new UniformParam.FloatParam("sharpen", paramFloat * 0.4F));
   }
   
   public void setDenoiseTexture(int paramInt)
@@ -57,7 +57,7 @@ public class RealTimeProcessVarianceFilterAndDenoise
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.RealTimeProcessVarianceFilterAndDenoise
  * JD-Core Version:    0.7.0.1
  */

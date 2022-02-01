@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class TCampusSchoolInfo
   extends JceStruct
 {
-  public int iIsValidForCertified;
-  public long uSchoolId;
-  public long uTimestamp;
+  public int iIsValidForCertified = 0;
+  public long uSchoolId = 0L;
+  public long uTimestamp = 0L;
   
   public TCampusSchoolInfo() {}
   
@@ -36,7 +36,7 @@ public final class TCampusSchoolInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TCampusSchoolInfo
  * JD-Core Version:    0.7.0.1
  */

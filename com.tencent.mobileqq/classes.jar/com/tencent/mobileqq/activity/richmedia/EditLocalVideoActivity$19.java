@@ -9,7 +9,7 @@ class EditLocalVideoActivity$19
   
   public void run()
   {
-    EditLocalVideoActivity.b(this.this$0).setVisibility(8);
+    EditLocalVideoActivity.s(this.this$0).setVisibility(8);
   }
 }
 

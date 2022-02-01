@@ -11,13 +11,13 @@ public final class f
 {
   public f(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(48663);
+    AppMethodBeat.i(72307);
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
     localHashMap.put("passwd", paramString3);
     setRequestData(localHashMap);
-    AppMethodBeat.o(48663);
+    AppMethodBeat.o(72307);
   }
   
   public final int getTenpayCgicmd()
@@ -29,7 +29,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.f
  * JD-Core Version:    0.7.0.1
  */

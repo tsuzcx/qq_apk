@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:id="@id/e76" android:background="@color/y_" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
-        <LinearLayout android:orientation="vertical" android:id="@id/e77" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center" android:id="@id/e78" android:background="#fffbfbfb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="13.0dip" android:textColor="#ff888888" android:id="@id/e79" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="24.0dip" android:text="" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:paddingTop="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="15.0dip" android:layout_gravity="center_horizontal" android:id="@id/e7_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-                <ImageView android:layout_gravity="center_horizontal" android:id="@id/e7a" android:background="@color/a3x" android:layout_width="145.0dip" android:layout_height="145.0dip" android:layout_marginTop="10.0dip" android:scaleType="centerCrop" />
-                <View android:background="@color/tf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="20.0dip" />
-                <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/e7b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <LinearLayout android:orientation="horizontal" android:id="@id/e7c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip">
-                    <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/bkg" android:scaleType="fitXY" />
-                    <TextView android:textSize="14.0dip" android:id="@id/e7d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="false" />
-                </LinearLayout>
-                <Button android:id="@id/e7e" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="35.0dip" android:text="@string/du4" style="@style/nq" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<FrameLayout android:id="@id/e7g" android:layout_width="fill_parent" android:layout_height="@dimen/ck"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/esw" android:layout_width="fill_parent" android:layout_height="122.0dip" android:layout_marginTop="@dimen/cv" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" app:cornerRadius="@dimen/bv">
+        <ImageView android:id="@id/a8d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/a8m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/ahb" />
+        <TextView android:textSize="15.0dip" android:textColor="#a3ffffff" android:id="@id/et0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/ep0" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/esu" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_filled_close" android:layout_marginEnd="@dimen/cd" android:layout_alignParentEnd="true" app:iconColor="#a3ffffff" />
+        <View android:id="@id/esv" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_alignParentEnd="true" />
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="@dimen/d4" android:layout_height="50.0dip" android:layout_marginTop="@dimen/cd" android:layout_below="@id/et0" android:layout_marginStart="@dimen/cd" app:cornerRadius="@dimen/bt">
+            <ImageView android:id="@id/esy" android:layout_width="@dimen/d4" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <TextView android:textSize="15.0dip" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/esx" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="@dimen/cd" android:maxLines="2" android:layout_below="@id/et0" android:layout_marginStart="@dimen/da" android:layout_marginEnd="@dimen/cd" />
+        <ProgressBar android:id="@id/esz" android:layout_width="fill_parent" android:layout_height="@dimen/bt" android:progress="30" android:layout_weight="1.0" android:layout_alignParentBottom="true" style="@style/jz" />
+    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+</FrameLayout>

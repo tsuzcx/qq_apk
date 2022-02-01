@@ -13,31 +13,33 @@ class PipeLinearLayout$1
   public void run()
   {
     PipeLinearLayout.a(this.this$0);
-    Object localObject;
-    if (PipeLinearLayout.a(this.this$0).size() == 0)
+    if (PipeLinearLayout.b(this.this$0).size() == 0)
     {
-      localObject = new StringBuilder(PipeLinearLayout.a(this.this$0)).append("等").append(PipeLinearLayout.a(this.this$0).getText());
-      if (!PipeLinearLayout.a(this.this$0)) {}
-    }
-    do
-    {
-      return;
-      PipeLinearLayout.a(this.this$0).post(new PipeLinearLayout.1.1(this, (StringBuilder)localObject));
-      return;
-      localObject = new ArrayList();
-      Iterator localIterator = PipeLinearLayout.a(this.this$0).iterator();
-      while (localIterator.hasNext())
-      {
-        Long localLong = (Long)localIterator.next();
-        ((ArrayList)localObject).add(PipeLinearLayout.a(this.this$0, localLong.longValue()));
+      localObject = new StringBuilder(PipeLinearLayout.c(this.this$0));
+      ((StringBuilder)localObject).append("等");
+      ((StringBuilder)localObject).append(PipeLinearLayout.d(this.this$0).getText());
+      if (PipeLinearLayout.e(this.this$0)) {
+        return;
       }
-    } while (PipeLinearLayout.a(this.this$0));
-    PipeLinearLayout.a(this.this$0).post(new PipeLinearLayout.1.2(this, (ArrayList)localObject));
+      PipeLinearLayout.f(this.this$0).post(new PipeLinearLayout.1.1(this, (StringBuilder)localObject));
+      return;
+    }
+    Object localObject = new ArrayList();
+    Iterator localIterator = PipeLinearLayout.b(this.this$0).iterator();
+    while (localIterator.hasNext())
+    {
+      Long localLong = (Long)localIterator.next();
+      ((ArrayList)localObject).add(PipeLinearLayout.a(this.this$0, localLong.longValue()));
+    }
+    if (PipeLinearLayout.e(this.this$0)) {
+      return;
+    }
+    PipeLinearLayout.f(this.this$0).post(new PipeLinearLayout.1.2(this, (ArrayList)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.PipeLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

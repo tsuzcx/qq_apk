@@ -9,37 +9,39 @@ public final class stTroopMemberInfo
 {
   static QzoneUserInfo cache_qzusrinfo = new QzoneUserInfo();
   static byte[] cache_vecGroupHonor = (byte[])new byte[1];
-  public byte Age;
-  public short FaceId;
-  public byte Gender;
-  public long MemberUin;
+  static byte[] cache_vecName;
+  public byte Age = 0;
+  public short FaceId = 0;
+  public byte Gender = 0;
+  public long MemberUin = 0L;
   public String Nick = "";
   public byte Status = 20;
   public String bytes_job = "";
-  public byte cApolloFlag;
-  public byte cConcerned;
-  public byte cGender;
-  public byte cRichCardNameVer;
-  public byte cShielded;
-  public long dwApolloTimestamp;
-  public long dwBigClubFlag;
-  public long dwBigClubLevel;
-  public long dwCreditLevel;
-  public long dwFlag;
-  public long dwFlagExt;
-  public long dwGlobalGroupLevel;
-  public long dwGlobalGroupPoint;
-  public long dwJoinTime;
-  public long dwLastSpeakTime;
-  public long dwMemberLevel;
-  public long dwNameplate;
-  public long dwPoint;
-  public long dwShutupTimestap;
-  public long dwSpecialTitleExpireTime;
-  public long dwTitleId;
-  public long dwVipLevel;
-  public long dwVipType;
-  public QzoneUserInfo qzusrinfo;
+  public byte cApolloFlag = 0;
+  public byte cConcerned = 0;
+  public byte cGender = 0;
+  public byte cRichCardNameVer = 0;
+  public byte cRichFlag = 0;
+  public byte cShielded = 0;
+  public long dwApolloTimestamp = 0L;
+  public long dwBigClubFlag = 0L;
+  public long dwBigClubLevel = 0L;
+  public long dwCreditLevel = 0L;
+  public long dwFlag = 0L;
+  public long dwFlagExt = 0L;
+  public long dwGlobalGroupLevel = 0L;
+  public long dwGlobalGroupPoint = 0L;
+  public long dwJoinTime = 0L;
+  public long dwLastSpeakTime = 0L;
+  public long dwMemberLevel = 0L;
+  public long dwNameplate = 0L;
+  public long dwPoint = 0L;
+  public long dwShutupTimestap = 0L;
+  public long dwSpecialTitleExpireTime = 0L;
+  public long dwTitleId = 0L;
+  public long dwVipLevel = 0L;
+  public long dwVipType = 0L;
+  public QzoneUserInfo qzusrinfo = null;
   public String sEmail = "";
   public String sMemo = "";
   public String sName = "";
@@ -47,16 +49,19 @@ public final class stTroopMemberInfo
   public String sShowName = "";
   public String sSpecialTitle = "";
   public String strAutoRemark = "";
-  public byte[] vecGroupHonor;
+  public byte[] vecGroupHonor = null;
+  public byte[] vecName = null;
   
   static
   {
     ((byte[])cache_vecGroupHonor)[0] = 0;
+    cache_vecName = (byte[])new byte[1];
+    ((byte[])cache_vecName)[0] = 0;
   }
   
   public stTroopMemberInfo() {}
   
-  public stTroopMemberInfo(long paramLong1, short paramShort, byte paramByte1, byte paramByte2, String paramString1, byte paramByte3, String paramString2, String paramString3, byte paramByte4, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, byte paramByte5, byte paramByte6, String paramString8, long paramLong9, String paramString9, byte paramByte7, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, QzoneUserInfo paramQzoneUserInfo, byte paramByte8, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, byte[] paramArrayOfByte)
+  public stTroopMemberInfo(long paramLong1, short paramShort, byte paramByte1, byte paramByte2, String paramString1, byte paramByte3, String paramString2, String paramString3, byte paramByte4, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, byte paramByte5, byte paramByte6, String paramString8, long paramLong9, String paramString9, byte paramByte7, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, QzoneUserInfo paramQzoneUserInfo, byte paramByte8, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte9)
   {
     this.MemberUin = paramLong1;
     this.FaceId = paramShort;
@@ -96,7 +101,9 @@ public final class stTroopMemberInfo
     this.dwBigClubLevel = paramLong17;
     this.dwBigClubFlag = paramLong18;
     this.dwNameplate = paramLong19;
-    this.vecGroupHonor = paramArrayOfByte;
+    this.vecGroupHonor = paramArrayOfByte1;
+    this.vecName = paramArrayOfByte2;
+    this.cRichFlag = paramByte9;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -140,6 +147,8 @@ public final class stTroopMemberInfo
     this.dwBigClubFlag = paramJceInputStream.read(this.dwBigClubFlag, 37, false);
     this.dwNameplate = paramJceInputStream.read(this.dwNameplate, 38, false);
     this.vecGroupHonor = ((byte[])paramJceInputStream.read(cache_vecGroupHonor, 39, false));
+    this.vecName = ((byte[])paramJceInputStream.read(cache_vecName, 40, false));
+    this.cRichFlag = paramJceInputStream.read(this.cRichFlag, 41, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -150,24 +159,30 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.Gender, 3);
     paramJceOutputStream.write(this.Nick, 4);
     paramJceOutputStream.write(this.Status, 5);
-    if (this.sShowName != null) {
-      paramJceOutputStream.write(this.sShowName, 6);
+    Object localObject = this.sShowName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.sName != null) {
-      paramJceOutputStream.write(this.sName, 8);
+    localObject = this.sName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.cGender, 9);
-    if (this.sPhone != null) {
-      paramJceOutputStream.write(this.sPhone, 10);
+    localObject = this.sPhone;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.sEmail != null) {
-      paramJceOutputStream.write(this.sEmail, 11);
+    localObject = this.sEmail;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.sMemo != null) {
-      paramJceOutputStream.write(this.sMemo, 12);
+    localObject = this.sMemo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strAutoRemark != null) {
-      paramJceOutputStream.write(this.strAutoRemark, 13);
+    localObject = this.strAutoRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.dwMemberLevel, 14);
     paramJceOutputStream.write(this.dwJoinTime, 15);
@@ -178,12 +193,14 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwPoint, 20);
     paramJceOutputStream.write(this.cConcerned, 21);
     paramJceOutputStream.write(this.cShielded, 22);
-    if (this.sSpecialTitle != null) {
-      paramJceOutputStream.write(this.sSpecialTitle, 23);
+    localObject = this.sSpecialTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
     paramJceOutputStream.write(this.dwSpecialTitleExpireTime, 24);
-    if (this.bytes_job != null) {
-      paramJceOutputStream.write(this.bytes_job, 25);
+    localObject = this.bytes_job;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
     }
     paramJceOutputStream.write(this.cApolloFlag, 26);
     paramJceOutputStream.write(this.dwApolloTimestamp, 27);
@@ -191,8 +208,9 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwTitleId, 29);
     paramJceOutputStream.write(this.dwShutupTimestap, 30);
     paramJceOutputStream.write(this.dwGlobalGroupPoint, 31);
-    if (this.qzusrinfo != null) {
-      paramJceOutputStream.write(this.qzusrinfo, 32);
+    localObject = this.qzusrinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 32);
     }
     paramJceOutputStream.write(this.cRichCardNameVer, 33);
     paramJceOutputStream.write(this.dwVipType, 34);
@@ -200,14 +218,20 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwBigClubLevel, 36);
     paramJceOutputStream.write(this.dwBigClubFlag, 37);
     paramJceOutputStream.write(this.dwNameplate, 38);
-    if (this.vecGroupHonor != null) {
-      paramJceOutputStream.write(this.vecGroupHonor, 39);
+    localObject = this.vecGroupHonor;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 39);
     }
+    localObject = this.vecName;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 40);
+    }
+    paramJceOutputStream.write(this.cRichFlag, 41);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.stTroopMemberInfo
  * JD-Core Version:    0.7.0.1
  */

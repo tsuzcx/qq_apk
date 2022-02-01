@@ -1,170 +1,94 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.autogen.b.ay;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.pointers.PLong;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class ao
-  extends k
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.c
+  extends MAutoStorage<ay>
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS DeletedConversationInfo ( userName TEXT  PRIMARY KEY , lastSeq LONG  , reserved1 INT  , reserved2 LONG  , reserved3 TEXT  ) ", "CREATE INDEX IF NOT EXISTS createTimeIndex  ON DeletedConversationInfo ( reserved2 )" };
-  private final f<String, Long> eka;
-  private h fnw;
+  public static final String[] SQL_CREATE;
+  private static ao acGT;
+  public ISQLiteDatabase db;
   
-  public ao(h paramh)
+  static
   {
-    AppMethodBeat.i(1273);
-    this.eka = new com.tencent.mm.memory.a.c(50);
-    this.fnw = paramh;
-    AppMethodBeat.o(1273);
+    AppMethodBeat.i(248609);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(an.info, "CleanDeleteItem") };
+    AppMethodBeat.o(248609);
   }
   
-  public final long Ta(String paramString)
+  private ao(com.tencent.mm.storagebase.h paramh)
   {
-    AppMethodBeat.i(1275);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1275);
-      return 0L;
-    }
-    Object localObject = "select lastSeq from DeletedConversationInfo where userName = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.DeletedConversationInfoStorage", "getLastPushSeq failed ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1275);
-      return 0L;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      long l = ((Cursor)localObject).getLong(0);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1275);
-      return l;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1275);
-    return 0L;
-  }
-  
-  public final long Tb(String paramString)
-  {
-    AppMethodBeat.i(1278);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1278);
-      return 0L;
-    }
-    Object localObject = (Long)this.eka.get(paramString);
-    long l;
-    if (localObject != null)
-    {
-      l = ((Long)localObject).longValue();
-      AppMethodBeat.o(1278);
-      return l;
-    }
-    localObject = "select reserved2 from DeletedConversationInfo where userName = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      ab.i("MicroMsg.DeletedConversationInfoStorage", "getCreateTime failed ".concat(String.valueOf(paramString)));
-      this.eka.f(paramString, Long.valueOf(0L));
-      AppMethodBeat.o(1278);
-      return 0L;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      l = ((Cursor)localObject).getLong(0);
-      this.eka.f(paramString, Long.valueOf(l));
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(1278);
-      return l;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(1278);
-    return 0L;
-  }
-  
-  public final boolean ad(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1274);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1274);
-      return false;
-    }
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("userName", paramString);
-    localContentValues.put("lastSeq", Long.valueOf(paramLong));
-    localContentValues.put("reserved2", Long.valueOf(Tb(paramString)));
-    if ((int)this.fnw.replace("DeletedConversationInfo", "userName", localContentValues) != -1)
-    {
-      doNotify(paramString);
-      AppMethodBeat.o(1274);
-      return true;
-    }
-    AppMethodBeat.o(1274);
-    return false;
-  }
-  
-  public final boolean ae(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(1276);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(1276);
-      return false;
-    }
-    this.eka.f(paramString, Long.valueOf(paramLong));
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("userName", paramString);
-    localContentValues.put("lastSeq", Long.valueOf(Ta(paramString)));
-    localContentValues.put("reserved2", Long.valueOf(paramLong));
-    if ((int)this.fnw.replace("DeletedConversationInfo", "userName", localContentValues) != -1)
-    {
-      doNotify(paramString);
-      AppMethodBeat.o(1276);
-      return true;
-    }
-    AppMethodBeat.o(1276);
-    return false;
-  }
-  
-  public final List<String> bPU()
-  {
-    AppMethodBeat.i(1277);
+    super(paramh, an.info, "CleanDeleteItem", null);
+    AppMethodBeat.i(248599);
+    this.db = paramh;
+    long l1 = System.currentTimeMillis();
+    long l2 = paramh.beginTransaction(Thread.currentThread().getId());
+    long l3 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = this.fnw.a("select userName,reserved2 from DeletedConversationInfo where reserved2 > 0", null, 2);
-    if (localCursor == null)
+    localArrayList.addAll(Arrays.asList(new String[] { "CREATE INDEX IF NOT EXISTS ID ON CleanDeleteItem ( id )" }));
+    int i = 0;
+    while (i < localArrayList.size())
     {
-      AppMethodBeat.o(1277);
-      return localArrayList;
+      paramh.execSQL("CleanDeleteItem", (String)localArrayList.get(i));
+      i += 1;
     }
-    if (localCursor.moveToFirst()) {
-      do
-      {
-        String str = localCursor.getString(0);
-        long l = localCursor.getLong(1);
-        this.eka.f(str, Long.valueOf(l));
-        localArrayList.add(str);
-      } while (localCursor.moveToNext());
+    Log.d("MicroMsg.CleanDeleteItemStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
+    paramh.endTransaction(l2);
+    Log.i("MicroMsg.CleanDeleteItemStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(248599);
+  }
+  
+  public static ao iZt()
+  {
+    AppMethodBeat.i(248604);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (acGT == null) {
+      acGT = new ao(com.tencent.mm.kernel.h.baE().mCN);
     }
-    localCursor.close();
-    AppMethodBeat.o(1277);
-    return localArrayList;
+    ao localao = acGT;
+    AppMethodBeat.o(248604);
+    return localao;
+  }
+  
+  public final void a(long paramLong, PLong paramPLong1, PLong paramPLong2)
+  {
+    AppMethodBeat.i(248616);
+    Object localObject = String.format("SELECT * FROM %s", new Object[] { "CleanDeleteItem" });
+    Log.i("MicroMsg.CleanDeleteItemStorage", "calculateFreeSpaceSize, sql = ".concat(String.valueOf(localObject)));
+    localObject = rawQuery((String)localObject, new String[0]);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(248616);
+      return;
+    }
+    while (((Cursor)localObject).moveToNext())
+    {
+      an localan = new an();
+      localan.convertFrom((Cursor)localObject);
+      if (localan.field_deleteTime - localan.field_modifyTime < paramLong) {
+        paramPLong2.value += localan.field_size;
+      }
+      paramPLong1.value += localan.field_size;
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(248616);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.ao
  * JD-Core Version:    0.7.0.1
  */

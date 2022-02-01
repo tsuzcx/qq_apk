@@ -38,8 +38,13 @@ public class TestResult
       while (localIterator.hasNext()) {
         ((TestListener)localIterator.next()).addError(paramTest, paramThrowable);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramTest;
+    }
   }
   
   public void addFailure(Test paramTest, AssertionFailedError paramAssertionFailedError)
@@ -51,8 +56,13 @@ public class TestResult
       while (localIterator.hasNext()) {
         ((TestListener)localIterator.next()).addFailure(paramTest, paramAssertionFailedError);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramTest;
+    }
   }
   
   public void addListener(TestListener paramTestListener)
@@ -175,18 +185,18 @@ public class TestResult
       paramProtectable.protect();
       return;
     }
-    catch (AssertionFailedError paramProtectable)
+    catch (Throwable paramProtectable)
     {
-      addFailure(paramTest, paramProtectable);
+      addError(paramTest, paramProtectable);
       return;
     }
     catch (ThreadDeath paramTest)
     {
       throw paramTest;
     }
-    catch (Throwable paramProtectable)
+    catch (AssertionFailedError paramProtectable)
     {
-      addError(paramTest, paramProtectable);
+      addFailure(paramTest, paramProtectable);
     }
   }
   
@@ -209,7 +219,7 @@ public class TestResult
     int i = paramTest.countTestCases();
     try
     {
-      this.fRunTests = (i + this.fRunTests);
+      this.fRunTests += i;
       Iterator localIterator = cloneListeners().iterator();
       while (localIterator.hasNext()) {
         ((TestListener)localIterator.next()).startTest(paramTest);
@@ -217,6 +227,10 @@ public class TestResult
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramTest;
+    }
   }
   
   public void stop()
@@ -233,48 +247,33 @@ public class TestResult
     }
   }
   
-  /* Error */
   public boolean wasSuccessful()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 142	junit/framework/TestResult:failureCount	()I
-    //   6: ifne +18 -> 24
-    //   9: aload_0
-    //   10: invokevirtual 144	junit/framework/TestResult:errorCount	()I
-    //   13: istore_1
-    //   14: iload_1
-    //   15: ifne +9 -> 24
-    //   18: iconst_1
-    //   19: istore_2
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: iload_2
-    //   23: ireturn
-    //   24: iconst_0
-    //   25: istore_2
-    //   26: goto -6 -> 20
-    //   29: astore_3
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_3
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	TestResult
-    //   13	2	1	i	int
-    //   19	7	2	bool	boolean
-    //   29	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	29	finally
+    try
+    {
+      if (failureCount() == 0)
+      {
+        int i = errorCount();
+        if (i == 0)
+        {
+          bool = true;
+          break label25;
+        }
+      }
+      boolean bool = false;
+      label25:
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     junit.framework.TestResult
  * JD-Core Version:    0.7.0.1
  */

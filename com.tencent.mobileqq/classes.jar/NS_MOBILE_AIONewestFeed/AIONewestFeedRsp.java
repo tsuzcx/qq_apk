@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,11 +13,11 @@ public final class AIONewestFeedRsp
 {
   static Map<String, String> cache_mapEx;
   static ArrayList<NewestFeedInfo> cache_uFeedInfos = new ArrayList();
-  public Map<String, String> mapEx;
-  public ArrayList<NewestFeedInfo> uFeedInfos;
-  public long uOpFlag;
-  public long uOpuin;
-  public long uTime;
+  public Map<String, String> mapEx = null;
+  public ArrayList<NewestFeedInfo> uFeedInfos = null;
+  public long uOpFlag = 0L;
+  public long uOpuin = 0L;
+  public long uTime = 0L;
   
   static
   {
@@ -50,18 +51,20 @@ public final class AIONewestFeedRsp
   {
     paramJceOutputStream.write(this.uOpuin, 0);
     paramJceOutputStream.write(this.uTime, 1);
-    if (this.uFeedInfos != null) {
-      paramJceOutputStream.write(this.uFeedInfos, 2);
+    Object localObject = this.uFeedInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.uOpFlag, 3);
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 4);
+    localObject = this.mapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.AIONewestFeedRsp
  * JD-Core Version:    0.7.0.1
  */

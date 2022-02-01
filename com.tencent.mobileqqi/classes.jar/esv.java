@@ -1,16 +1,37 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class esv
 {
   public int a;
-  public ImageView a;
-  public TextView a;
   public String a;
-  public TextView b;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  private esv(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
+  public static esv a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return new esv();
+    }
+    esv localesv = new esv();
+    try
+    {
+      localesv.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localesv.jdField_a_of_type_JavaLangString = paramJSONObject.getString("soundName");
+      localesv.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localesv.jdField_b_of_type_JavaLangString = paramJSONObject.getString("soundVersion");
+      localesv.c = paramJSONObject.getString("soundUrl");
+      localesv.d = paramJSONObject.getString("whiteList");
+      return localesv;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localesv;
+  }
 }
 
 

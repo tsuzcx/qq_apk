@@ -1,125 +1,137 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.bx.a.a.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.d;
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class b
-  extends a
-  implements d.a
+  implements j.a, j.b
 {
-  Bitmap jVm;
-  private float vPS;
+  public final j.a XXP;
+  private final HashMap<String, j.a> lYy;
   
-  private b(String paramString)
+  public b(j.a parama)
   {
-    super(a.b.dmT(), paramString);
-    AppMethodBeat.i(79665);
-    this.vPS = 0.5F;
-    this.jVm = null;
-    AppMethodBeat.o(79665);
+    AppMethodBeat.i(245054);
+    this.lYy = new HashMap();
+    this.XXP = parama;
+    AppMethodBeat.o(245054);
   }
   
-  public b(String paramString, float paramFloat)
+  private j.a bqC(String paramString)
   {
-    this(paramString);
-    this.vPS = paramFloat;
-  }
-  
-  private void a(Canvas paramCanvas, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(79668);
-    Rect localRect2 = getBounds();
-    Rect localRect1 = null;
-    if ((this.vQR > 1.0F) || (this.oKs))
+    AppMethodBeat.i(245058);
+    if (paramString == null)
     {
-      int i = paramBitmap.getHeight() / 15 / 2;
-      int j = paramBitmap.getWidth() / 15 / 2;
-      localRect1 = new Rect(j, i, paramBitmap.getWidth() - j, paramBitmap.getHeight() - i);
+      paramString = this.XXP;
+      AppMethodBeat.o(245058);
+      return paramString;
     }
-    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.feS);
-    AppMethodBeat.o(79668);
-  }
-  
-  public final void LQ(int paramInt)
-  {
-    AppMethodBeat.i(138584);
-    this.feS.setAlpha(paramInt);
-    AppMethodBeat.o(138584);
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    Bitmap localBitmap = null;
-    AppMethodBeat.i(79667);
-    String str = this.tag + "-" + this.vPS;
-    com.tencent.mm.bx.a.a locala = a.a.yio;
-    if (locala != null) {
-      localBitmap = a.a.yio.RY(str);
-    }
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    synchronized (this.lYy)
     {
-      a(paramCanvas, localBitmap);
-      AppMethodBeat.o(79667);
-      return;
-    }
-    if (this.vQN) {}
-    for (localBitmap = this.pFL.b(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1); localBitmap != null; localBitmap = this.pFL.dt(this.tag))
-    {
-      localBitmap = d.a(localBitmap, false, this.vPS * localBitmap.getWidth());
-      if (locala != null) {
-        locala.p(str, localBitmap);
-      }
-      if ((localBitmap == null) || (localBitmap.isRecycled())) {
-        break label271;
-      }
-      a(paramCanvas, localBitmap);
-      AppMethodBeat.o(79667);
-      return;
-    }
-    if (((localBitmap != null) && (!localBitmap.isRecycled())) || (this.jVm == null)) {}
-    try
-    {
-      this.jVm = BackwardSupportUtil.b.b(ah.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
-      this.jVm = d.a(this.jVm, false, this.vPS * this.jVm.getWidth());
-      localBitmap = this.jVm;
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-        a(paramCanvas, localBitmap);
-      }
-      label271:
-      AppMethodBeat.o(79667);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      Iterator localIterator = this.lYy.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        ab.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (paramString.endsWith((String)localEntry.getKey()))
+        {
+          paramString = (j.a)localEntry.getValue();
+          AppMethodBeat.o(245058);
+          return paramString;
+        }
       }
+      paramString = this.XXP;
+      AppMethodBeat.o(245058);
+      return paramString;
     }
   }
   
-  public final void re(String paramString)
+  public final void a(j paramj)
   {
-    AppMethodBeat.i(79666);
-    super.re(paramString);
-    AppMethodBeat.o(79666);
+    AppMethodBeat.i(245073);
+    bqC(paramj.getTag()).a(paramj);
+    this.XXP.a(paramj);
+    AppMethodBeat.o(245073);
+  }
+  
+  public final boolean a(String paramString, j.a parama)
+  {
+    AppMethodBeat.i(245061);
+    synchronized (this.lYy)
+    {
+      if (this.lYy.put(paramString, parama) == null)
+      {
+        bool = true;
+        AppMethodBeat.o(245061);
+        return bool;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public final Bitmap aCj()
+  {
+    AppMethodBeat.i(245070);
+    Bitmap localBitmap = this.XXP.aCj();
+    AppMethodBeat.o(245070);
+    return localBitmap;
+  }
+  
+  public final boolean ayI(String paramString)
+  {
+    AppMethodBeat.i(245074);
+    j.a locala = bqC(paramString);
+    if ((locala instanceof j.b))
+    {
+      boolean bool = ((j.b)locala).ayI(paramString);
+      AppMethodBeat.o(245074);
+      return bool;
+    }
+    AppMethodBeat.o(245074);
+    return true;
+  }
+  
+  public final Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(245063);
+    paramString = bqC(paramString).b(paramString, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(245063);
+    return paramString;
+  }
+  
+  public final void bqB(String paramString)
+  {
+    AppMethodBeat.i(245062);
+    synchronized (this.lYy)
+    {
+      this.lYy.remove(paramString);
+      AppMethodBeat.o(245062);
+      return;
+    }
+  }
+  
+  public final Bitmap ik(String paramString)
+  {
+    AppMethodBeat.i(245067);
+    paramString = bqC(paramString).ik(paramString);
+    AppMethodBeat.o(245067);
+    return paramString;
+  }
+  
+  public final Bitmap loadBitmap(String paramString)
+  {
+    AppMethodBeat.i(245066);
+    paramString = bqC(paramString).loadBitmap(paramString);
+    AppMethodBeat.o(245066);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.b
  * JD-Core Version:    0.7.0.1
  */

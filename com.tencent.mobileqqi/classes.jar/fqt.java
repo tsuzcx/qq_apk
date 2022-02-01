@@ -1,41 +1,29 @@
-import android.os.AsyncTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class fqt
-  extends AsyncTask
+  implements View.OnClickListener
 {
   public fqt(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    return Integer.valueOf(FileCategoryUtil.e(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    FMLocalFileActivity.b(this.a);
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
-      if (localFileCategoryEntity.G == 4)
-      {
-        localFileCategoryEntity.F = paramInteger.intValue();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+    if (!this.a.c()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.b, 2, "click too fast , wait a minute.");
       }
     }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    FMLocalFileActivity.a(this.a);
+    do
+    {
+      return;
+      this.a.d();
+      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 

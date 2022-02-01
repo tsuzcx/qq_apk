@@ -1,14 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aeqq;
-import aijq;
-import aijx;
-import aike;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -19,33 +14,52 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.activity.aio.ChatBackground;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ForegroundNotifyManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class MiniChatFragment
   extends PublicBaseFragment
 {
-  private float jdField_a_of_type_Float = 0.85F;
-  int jdField_a_of_type_Int;
-  protected aijq a;
-  protected SessionInfo a;
+  private static boolean e = false;
+  protected SessionInfo a = new SessionInfo();
+  protected MiniPie b;
+  int c;
+  private float d = 0.85F;
   
-  public MiniChatFragment()
+  private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    if (paramInt2 == 28) {
+      ReportHelperKt.a("0X800AFCE", ForegroundNotifyManager.a(getBaseActivity().app).b(paramInt1));
+    }
   }
   
-  private Window a(Activity paramActivity)
+  private static void a(boolean paramBoolean)
+  {
+    e = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    return e;
+  }
+  
+  private Window b(Activity paramActivity)
   {
     return paramActivity.getWindow();
   }
   
-  private WindowManager a(Activity paramActivity)
+  private WindowManager c(Activity paramActivity)
   {
     return paramActivity.getWindowManager();
   }
@@ -55,20 +69,25 @@ public class MiniChatFragment
     return paramActivity.getIntent();
   }
   
-  public SessionInfo a()
+  public SessionInfo b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    return this.a;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    Display localDisplay = a(getActivity()).getDefaultDisplay();
+    Display localDisplay = c(getBaseActivity()).getDefaultDisplay();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    paramMotionEvent.offsetLocation((f1 - localDisplay.getWidth() * (1.0F - this.jdField_a_of_type_Float) / 2.0F) / this.jdField_a_of_type_Float - f1, (f2 - localDisplay.getHeight() * (1.0F - this.jdField_a_of_type_Float) / 2.0F) / this.jdField_a_of_type_Float - f2);
-    if ((!super.dispatchTouchEvent(paramMotionEvent)) && (f2 > this.jdField_a_of_type_Int))
+    float f3 = localDisplay.getWidth();
+    float f4 = this.d;
+    f3 = (f1 - f3 * (1.0F - f4) / 2.0F) / f4;
+    f4 = localDisplay.getHeight();
+    float f5 = this.d;
+    paramMotionEvent.offsetLocation(f3 - f1, (f2 - f4 * (1.0F - f5) / 2.0F) / f5 - f2);
+    if ((!super.dispatchTouchEvent(paramMotionEvent)) && (f2 > this.c))
     {
-      getActivity().finish();
+      getBaseActivity().finish();
       return true;
     }
     return false;
@@ -78,13 +97,13 @@ public class MiniChatFragment
   {
     try
     {
-      Object localObject = a(paramActivity);
+      Object localObject = b(paramActivity);
       ((Window)localObject).setFormat(-3);
       WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-      Display localDisplay = a(paramActivity).getDefaultDisplay();
+      Display localDisplay = c(paramActivity).getDefaultDisplay();
       float f = a(paramActivity).getFloatExtra("minaio_height_ration", 0.56F);
       localLayoutParams.height = ((int)(localDisplay.getHeight() * f));
-      this.jdField_a_of_type_Int = localLayoutParams.height;
+      this.c = localLayoutParams.height;
       int i = a(paramActivity).getIntExtra("key_mini_from", 0);
       if ((i == 2) || (i == 5))
       {
@@ -93,15 +112,15 @@ public class MiniChatFragment
       }
       ((Window)localObject).setAttributes(localLayoutParams);
       localObject = ((Window)localObject).getDecorView();
-      if (aike.a())
+      if (MiniPieHelper.e())
       {
-        this.jdField_a_of_type_Float = a(paramActivity).getFloatExtra("minaio_scaled_ration", 0.95F);
-        ((View)localObject).setScaleX(this.jdField_a_of_type_Float);
-        ((View)localObject).setScaleY(this.jdField_a_of_type_Float);
+        this.d = a(paramActivity).getFloatExtra("minaio_scaled_ration", 0.95F);
+        ((View)localObject).setScaleX(this.d);
+        ((View)localObject).setScaleY(this.d);
         QLog.i("MiniChatFragment", 2, "surport scale ");
         return;
       }
-      this.jdField_a_of_type_Float = 1.0F;
+      this.d = 1.0F;
       QLog.i("MiniChatFragment", 2, "not surport scale ");
       return;
     }
@@ -125,8 +144,9 @@ public class MiniChatFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.r();
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.t();
     }
     return true;
   }
@@ -134,120 +154,149 @@ public class MiniChatFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (getActivity().app == null) {
-      paramLayoutInflater = null;
-    }
-    do
+    paramBundle = getBaseActivity().app;
+    Object localObject1 = null;
+    if (paramBundle == null)
     {
-      return paramLayoutInflater;
-      paramBundle = a(getActivity());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("uin");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = paramBundle.getIntExtra("uintype", -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramBundle.getStringExtra("uinname");
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)))
+      paramLayoutInflater = localObject1;
+    }
+    else
+    {
+      paramBundle = a(getBaseActivity());
+      this.a.b = paramBundle.getStringExtra("uin");
+      this.a.a = paramBundle.getIntExtra("uintype", -1);
+      this.a.e = paramBundle.getStringExtra("uinname");
+      int i = this.a.a;
+      boolean bool = true;
+      if ((i == 1) && (TextUtils.isEmpty(this.a.e)))
       {
-        localObject = (TroopManager)getActivity().app.getManager(52);
-        if (localObject != null)
+        localObject2 = (TroopManager)getBaseActivity().app.getManager(QQManagerFactory.TROOP_MANAGER);
+        if (localObject2 != null)
         {
-          localObject = ((TroopManager)localObject).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-          if (localObject != null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ((TroopInfo)localObject).troopname;
+          localObject2 = ((TroopManager)localObject2).g(this.a.b);
+          if (localObject2 != null) {
+            this.a.e = ((TroopInfo)localObject2).troopname;
           }
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f = paramBundle.getIntExtra("key_mini_from", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq = new aeqq();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849475);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165304);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(getActivity());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Long = paramBundle.getLongExtra("key_mini_aio_msg_shmsgseq", 0L);
-      int i = paramBundle.getIntExtra("key_mini_from", 0);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      if (i == 5) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((SessionInfo)localObject).m = bool;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c = paramBundle.getLongExtra("key_mini_aio_barrage_time_location", 0L);
-        i = paramBundle.getIntExtra("key_mini_msgtab_businame", 0);
-        if (i > 0)
-        {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a();
-          paramBundle = (Bundle)localObject;
-          if (localObject == null) {
-            paramBundle = new Bundle();
-          }
-          paramBundle.putInt("key_mini_msgtab_businame", i);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a(paramBundle);
-        }
-        this.jdField_a_of_type_Aijq = aijx.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
-        if (this.jdField_a_of_type_Aijq != null) {
-          break;
-        }
-        getActivity().finish();
-        return null;
+      this.a.B = paramBundle.getIntExtra("key_mini_from", 0);
+      Object localObject2 = this.a;
+      ((SessionInfo)localObject2).c = ((SessionInfo)localObject2).b;
+      this.a.H = new ChatBackground();
+      this.a.H.c = getResources().getDrawable(2130852164);
+      this.a.H.b = getResources().getColorStateList(2131165558);
+      this.a.r = ChatTextSizeSettingActivity.a(getBaseActivity());
+      this.a.D = paramBundle.getLongExtra("key_mini_aio_msg_shmsgseq", 0L);
+      i = paramBundle.getIntExtra("key_mini_from", 0);
+      localObject2 = this.a;
+      if (i != 5) {
+        bool = false;
       }
-      paramViewGroup = this.jdField_a_of_type_Aijq.a(paramLayoutInflater, null, paramViewGroup);
-      this.jdField_a_of_type_Aijq.a();
-      paramLayoutInflater = paramViewGroup;
-    } while (paramViewGroup != null);
-    getActivity().finish();
-    return null;
+      ((SessionInfo)localObject2).F = bool;
+      this.a.E = paramBundle.getLongExtra("key_mini_aio_barrage_time_location", 0L);
+      i = paramBundle.getIntExtra("key_mini_msgtab_businame", 0);
+      if (i > 0)
+      {
+        localObject2 = this.a.b();
+        paramBundle = (Bundle)localObject2;
+        if (localObject2 == null) {
+          paramBundle = new Bundle();
+        }
+        paramBundle.putInt("key_mini_msgtab_businame", i);
+        this.a.a(paramBundle);
+      }
+      this.b = MiniPieFactory.a(getBaseActivity(), this.a, getBaseActivity().app);
+      if (this.b == null)
+      {
+        getBaseActivity().finish();
+        paramLayoutInflater = localObject1;
+      }
+      else
+      {
+        a(this.a.a, i);
+        paramLayoutInflater = this.b.a(paramLayoutInflater, null, paramViewGroup);
+        this.b.a();
+        if (paramLayoutInflater == null)
+        {
+          getBaseActivity().finish();
+          paramLayoutInflater = localObject1;
+        }
+      }
+    }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.p();
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.r();
     }
+  }
+  
+  public void onFinish()
+  {
+    if (a(getBaseActivity()).getIntExtra("key_mini_exit_anim", 0) == 1) {
+      getBaseActivity().overridePendingTransition(0, 2130772012);
+    }
+    super.onFinish();
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.j();
+    paramIntent = this.b;
+    if (paramIntent != null) {
+      paramIntent.l();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.m();
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.o();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.k();
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.m();
     }
   }
   
   public void onStart()
   {
+    a(true);
     super.onStart();
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.n();
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.p();
     }
   }
   
   public void onStop()
   {
+    a(false);
     super.onStop();
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.o();
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.q();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Aijq != null) {
-      this.jdField_a_of_type_Aijq.c(paramBoolean);
+    MiniPie localMiniPie = this.b;
+    if (localMiniPie != null) {
+      localMiniPie.c(paramBoolean);
     }
   }
 }

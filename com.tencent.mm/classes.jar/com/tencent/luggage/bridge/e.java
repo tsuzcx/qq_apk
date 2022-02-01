@@ -9,27 +9,27 @@ class e
 {
   protected e(b paramb)
   {
-    AppMethodBeat.i(90717);
-    this.bxJ = paramb;
-    this.bxK = new JSONObject();
-    AppMethodBeat.o(90717);
+    AppMethodBeat.i(140317);
+    this.eie = paramb;
+    this.eif = new JSONObject();
+    AppMethodBeat.o(140317);
   }
   
-  final void c(Map<String, Object> paramMap)
+  final void d(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(90718);
-    this.bxK = new JSONObject(paramMap);
-    AppMethodBeat.o(90718);
+    this.eif = paramJSONObject;
   }
   
-  final void c(JSONObject paramJSONObject)
+  final void i(Map<String, Object> paramMap)
   {
-    this.bxK = paramJSONObject;
+    AppMethodBeat.i(140318);
+    this.eif = new JSONObject(paramMap);
+    AppMethodBeat.o(140318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.e
  * JD-Core Version:    0.7.0.1
  */

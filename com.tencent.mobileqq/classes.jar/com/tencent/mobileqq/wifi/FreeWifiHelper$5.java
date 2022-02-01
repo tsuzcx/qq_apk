@@ -2,47 +2,49 @@ package com.tencent.mobileqq.wifi;
 
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
-import bdgm;
-import bdjz;
-import bezm;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class FreeWifiHelper$5
+final class FreeWifiHelper$5
   implements Runnable
 {
-  public FreeWifiHelper$5(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnClickListener paramOnClickListener3, int paramInt) {}
+  FreeWifiHelper$5(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnClickListener paramOnClickListener3, int paramInt) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692800);
-    bdgm.a(this.jdField_a_of_type_AndroidAppActivity, 0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.d, str, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener).show();
-    if (this.jdField_a_of_type_Int == 1)
+    String str = this.a.getString(2131889635);
+    DialogUtil.a(this.a, 0, this.b, this.c, this.d, this.e, str, this.f, this.g, this.h).show();
+    int j = this.i;
+    if (j == 1)
     {
-      bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398667);
-      bezm.a("0X80094F2");
-    }
-    do
-    {
+      FreeWifiHelper.b(this.a, 398667);
+      FreeWifiHelper.a("0X80094F2");
       return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 5))
+    }
+    if ((j != 2) && (j != 5))
+    {
+      if (j == 3)
       {
-        bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398667);
-        bezm.a("0X80094F1");
+        FreeWifiHelper.b(this.a, 398670);
+        FreeWifiHelper.a("0X80094F3");
         return;
       }
-      if (this.jdField_a_of_type_Int == 3)
+      if (j == 4)
       {
-        bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398670);
-        bezm.a("0X80094F3");
-        return;
+        FreeWifiHelper.b(this.a, 398689);
+        FreeWifiHelper.a("0X80094F1");
       }
-    } while (this.jdField_a_of_type_Int != 4);
-    bezm.b(this.jdField_a_of_type_AndroidAppActivity, 398689);
-    bezm.a("0X80094F1");
+    }
+    else
+    {
+      FreeWifiHelper.b(this.a, 398667);
+      FreeWifiHelper.a("0X80094F1");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.5
  * JD-Core Version:    0.7.0.1
  */

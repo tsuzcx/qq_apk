@@ -16,7 +16,7 @@ public final class VipVoiceChange$subCmd0x1RspAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.voiceChange.VipVoiceChange.subCmd0x1RspAuth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/c21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:layout_centerVertical="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f1s" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/m2" android:src="@raw/icons_outlined_voice" android:layout_toRightOf="@id/c21" android:layout_centerVertical="true" app:iconColor="@color/Brand" />
+    <FrameLayout android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/kb6" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_marginLeft="@dimen/ig" />
+    </FrameLayout>
+</RelativeLayout>

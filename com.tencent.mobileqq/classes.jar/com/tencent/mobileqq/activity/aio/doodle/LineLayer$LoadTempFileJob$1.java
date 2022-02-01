@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afau;
 import android.graphics.Bitmap;
 import java.lang.ref.WeakReference;
 
@@ -11,18 +10,18 @@ class LineLayer$LoadTempFileJob$1
   
   public void run()
   {
-    if (LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob) != null)
+    if (LineLayer.LoadTempFileJob.a(this.c) != null)
     {
-      afau localafau = (afau)LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob).get();
-      if (localafau != null) {
-        localafau.a(LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob), this.jdField_a_of_type_Int, LineLayer.LoadTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      LoadTempFileJobListener localLoadTempFileJobListener = (LoadTempFileJobListener)LineLayer.LoadTempFileJob.a(this.c).get();
+      if (localLoadTempFileJobListener != null) {
+        localLoadTempFileJobListener.a(LineLayer.LoadTempFileJob.b(this.c), this.a, LineLayer.LoadTempFileJob.c(this.c), this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer.LoadTempFileJob.1
  * JD-Core Version:    0.7.0.1
  */

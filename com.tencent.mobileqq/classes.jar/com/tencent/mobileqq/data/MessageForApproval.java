@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -52,65 +52,74 @@ public class MessageForApproval
       parse();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    try
     {
-      int i;
-      Object localObject;
-      try
+      arrayOfString = this.title.split("\002");
+      localStringBuilder.append("申请");
+      j = arrayOfString.length;
+      i = 0;
+      localObject1 = "";
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        String[] arrayOfString = this.title.split("\002");
-        localStringBuilder.append("申请");
-        int j = arrayOfString.length;
-        i = 0;
-        String str1 = "";
-        if (i < j)
-        {
-          localObject = arrayOfString[i];
-          if (((String)localObject).startsWith("000"))
-          {
-            String str3 = ((String)localObject).substring(3);
-            localObject = str3;
-            if (alud.a(2131707003).equalsIgnoreCase(str3)) {
-              localObject = alud.a(2131706962);
-            }
-            localStringBuilder.append((String)localObject);
-          }
-          else if (((String)localObject).startsWith("001"))
-          {
-            localStringBuilder.append(((String)localObject).substring(3));
-          }
-        }
+        String[] arrayOfString;
+        int j;
+        int i;
+        Object localObject1;
+        Object localObject2;
+        String str;
+        label217:
+        continue;
+        i += 1;
       }
-      catch (Exception localException)
+    }
+    if (i < j)
+    {
+      localObject2 = arrayOfString[i];
+      if (((String)localObject2).startsWith("000"))
       {
+        str = ((String)localObject2).substring(3);
+        localObject2 = str;
+        if (HardCodeUtil.a(2131904495).equalsIgnoreCase(str)) {
+          localObject2 = HardCodeUtil.a(2131904455);
+        }
+        localStringBuilder.append((String)localObject2);
+      }
+      else if (((String)localObject2).startsWith("001"))
+      {
+        localStringBuilder.append(((String)localObject2).substring(3));
+      }
+      else if (((String)localObject2).startsWith("002"))
+      {
+        localStringBuilder.append(((String)localObject2).substring(3));
+      }
+      else if (((String)localObject2).startsWith("003"))
+      {
+        localObject1 = ((String)localObject2).substring(3);
+      }
+    }
+    else
+    {
+      if ("1".equalsIgnoreCase((String)localObject1) == true)
+      {
+        localStringBuilder.append("(含周末)");
+        break label217;
         if (QLog.isDevelopLevel()) {
           localStringBuilder.append("解析出错了，快查!");
         }
       }
-      for (;;)
-      {
-        return alud.a(2131706982) + localStringBuilder.toString();
-        if (((String)localObject).startsWith("002"))
-        {
-          localStringBuilder.append(((String)localObject).substring(3));
-          break;
-        }
-        if (!((String)localObject).startsWith("003")) {
-          break;
-        }
-        String str2 = ((String)localObject).substring(3);
-        break;
-        if ("1".equalsIgnoreCase(str2) == true) {
-          localStringBuilder.append("(含周末)");
-        }
-      }
-      i += 1;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904474));
+      ((StringBuilder)localObject1).append(localStringBuilder.toString());
+      return ((StringBuilder)localObject1).toString();
     }
   }
   
   public String getSummaryMsg()
   {
-    return alud.a(2131706998);
+    return HardCodeUtil.a(2131904490);
   }
 }
 

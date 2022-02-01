@@ -12,39 +12,46 @@ class cr$2
   
   public void run()
   {
-    cr.a(this.hW, "syncCurrentSession run | logIdGroupId=" + this.hX);
+    Object localObject1 = this.hW;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("syncCurrentSession run | logIdGroupId=");
+    ((StringBuilder)localObject2).append(this.hX);
+    cr.a((cr)localObject1, ((StringBuilder)localObject2).toString());
     if (((d)ao.c().i(4)).k())
     {
-      cr.a(this.hW, this.hX + " syncCurrentSession| wifimanager connecting , ignore");
+      localObject1 = this.hW;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.hX);
+      ((StringBuilder)localObject2).append(" syncCurrentSession| wifimanager connecting , ignore");
+      cr.a((cr)localObject1, ((StringBuilder)localObject2).toString());
       return;
     }
-    Object localObject = this.hW.getActiveNetworkInfo();
+    localObject1 = this.hW.getActiveNetworkInfo();
     WifiInfo localWifiInfo = ca.getConnectionInfo();
-    NetworkInfo.DetailedState localDetailedState = cl.a((NetworkInfo)localObject, localWifiInfo);
+    NetworkInfo.DetailedState localDetailedState = cl.a((NetworkInfo)localObject1, localWifiInfo);
     cr localcr = this.hW;
-    StringBuilder localStringBuilder = new StringBuilder().append("syncCurrentSession networkInfo=");
-    if (localObject != null)
-    {
-      localObject = ((NetworkInfo)localObject).toString();
-      localStringBuilder = localStringBuilder.append((String)localObject).append(", wifiInfo=");
-      if (localWifiInfo == null) {
-        break label180;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("syncCurrentSession networkInfo=");
+    localObject2 = "null";
+    if (localObject1 != null) {
+      localObject1 = ((NetworkInfo)localObject1).toString();
+    } else {
+      localObject1 = "null";
     }
-    label180:
-    for (localObject = localWifiInfo.toString();; localObject = "null")
-    {
-      cr.a(localcr, (String)localObject);
-      cr.a(this.hW, this.hX, localDetailedState, localWifiInfo);
-      return;
-      localObject = "null";
-      break;
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(", wifiInfo=");
+    localObject1 = localObject2;
+    if (localWifiInfo != null) {
+      localObject1 = localWifiInfo.toString();
     }
+    localStringBuilder.append((String)localObject1);
+    cr.a(localcr, localStringBuilder.toString());
+    cr.a(this.hW, this.hX, localDetailedState, localWifiInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cr.2
  * JD-Core Version:    0.7.0.1
  */

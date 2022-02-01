@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -12,30 +14,40 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static Set<String> iBm;
+  private static volatile Set<String> tEh;
   
   static
   {
-    AppMethodBeat.i(102245);
+    AppMethodBeat.i(147598);
     HashSet localHashSet = new HashSet();
-    iBm = localHashSet;
+    tEh = localHashSet;
     localHashSet.add("operateLivePlayer");
-    iBm.add("operateLivePusher");
-    AppMethodBeat.o(102245);
+    tEh.add("operateLivePusher");
+    tEh.add("operateXWebLivePlayer");
+    tEh.add("operateXWebLivePusher");
+    Collections.addAll(tEh, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
+    AppMethodBeat.o(147598);
   }
   
-  static int c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
+  public static void afo(String paramString)
   {
-    AppMethodBeat.i(102244);
-    if ((paramc instanceof v)) {}
-    for (boolean bool = true; !bool; bool = iBm.contains(paramString1))
+    AppMethodBeat.i(169512);
+    tEh.add(paramString);
+    AppMethodBeat.o(169512);
+  }
+  
+  static int e(f paramf, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(147597);
+    if ((paramf instanceof ad)) {}
+    for (boolean bool = true; !bool; bool = tEh.contains(paramString1))
     {
-      AppMethodBeat.o(102244);
+      AppMethodBeat.o(147597);
       return -2147483648;
     }
-    if (bo.isNullOrNil(paramString2))
+    if (Util.isNullOrNil(paramString2))
     {
-      AppMethodBeat.o(102244);
+      AppMethodBeat.o(147597);
       return -2147483648;
     }
     try
@@ -44,26 +56,26 @@ public final class c
       bool = paramString2.has("permissionBytes");
       if (!bool)
       {
-        AppMethodBeat.o(102244);
+        AppMethodBeat.o(147597);
         return -2147483648;
       }
       paramString2 = paramString2.getJSONArray("permissionBytes");
       if (paramString2.length() < 3)
       {
-        ab.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
-        AppMethodBeat.o(102244);
+        Log.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
+        AppMethodBeat.o(147597);
         return -2147483648;
       }
     }
-    catch (Exception paramc)
+    catch (Exception paramf)
     {
-      ab.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
-      AppMethodBeat.o(102244);
+      Log.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramf.getMessage() });
+      AppMethodBeat.o(147597);
       return -2147483648;
     }
     int i;
-    if ((paramc instanceof r)) {
-      switch (c.1.gYx[((r)paramc).getRuntime().gPL.gYj.awr().ordinal()])
+    if ((paramf instanceof y)) {
+      switch (1.qKW[((y)paramf).getRuntime().qsB.qKC.chD().ordinal()])
       {
       default: 
         i = paramString2.optInt(0, -2147483648);
@@ -71,8 +83,8 @@ public final class c
     }
     for (;;)
     {
-      ab.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
-      AppMethodBeat.o(102244);
+      Log.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
+      AppMethodBeat.o(147597);
       return i;
       i = paramString2.optInt(2, -2147483648);
       continue;

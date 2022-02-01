@@ -1,62 +1,61 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
-import berl;
-import betd;
-import bete;
-import betf;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProfileCardVideoCoverShowView
   extends FrameLayout
-  implements AdapterView.OnItemClickListener, berl
+  implements AdapterView.OnItemClickListener, OverScrollCallbackHorizontalListView.Listener
 {
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new betd(this);
-  private bete jdField_a_of_type_Bete;
-  private OverScrollCallbackHorizontalListView jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
-  private ArrayList<betf> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private OverScrollCallbackHorizontalListView a;
+  private ArrayList<ProfileCardVideoCoverShowView.DataItem> b = new ArrayList(10);
+  private ProfileCardVideoCoverShowView.Callback c;
+  private BaseAdapter d = new ProfileCardVideoCoverShowView.1(this);
   
   public ProfileCardVideoCoverShowView(@NonNull Context paramContext)
   {
     super(paramContext);
-    a();
+    c();
   }
   
   public ProfileCardVideoCoverShowView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    c();
   }
   
   public ProfileCardVideoCoverShowView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    c();
   }
   
-  private void a()
+  private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131561165, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView = ((OverScrollCallbackHorizontalListView)findViewById(2131369559));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setDividerWidth(aepi.a(2.0F, getResources()));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(1);
+    LayoutInflater.from(getContext()).inflate(2131627668, this, true);
+    this.a = ((OverScrollCallbackHorizontalListView)findViewById(2131437317));
+    this.a.setListener(this);
+    this.a.setDividerWidth(AIOUtils.b(2.0F, getResources()));
+    this.a.setAdapter(this.d);
+    this.a.setOnItemClickListener(this);
+    this.a.setOverScrollMode(1);
   }
   
   public void a(OverScrollCallbackHorizontalListView paramOverScrollCallbackHorizontalListView)
@@ -64,69 +63,86 @@ public class ProfileCardVideoCoverShowView
     if (QLog.isColorLevel()) {
       QLog.i("ProfileCardMicroVideoContentView", 2, "onOverScrollRight");
     }
-    if (this.jdField_a_of_type_Bete != null) {
-      this.jdField_a_of_type_Bete.a(this);
+    paramOverScrollCallbackHorizontalListView = this.c;
+    if (paramOverScrollCallbackHorizontalListView != null) {
+      paramOverScrollCallbackHorizontalListView.a(this);
     }
+  }
+  
+  public Pair<ArrayList<String>, ArrayList<String>> getIdList()
+  {
+    ArrayList localArrayList1 = new ArrayList(this.b.size());
+    ArrayList localArrayList2 = new ArrayList(this.b.size());
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      ProfileCardVideoCoverShowView.DataItem localDataItem = (ProfileCardVideoCoverShowView.DataItem)localIterator.next();
+      localArrayList1.add(localDataItem.d);
+      localArrayList2.add(localDataItem.e);
+    }
+    return new Pair(localArrayList1, localArrayList2);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCardMicroVideoContentView", 2, "onItemClick " + paramInt);
-    }
-    if (this.jdField_a_of_type_Bete != null) {
-      this.jdField_a_of_type_Bete.a(this, paramView, (betf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-    }
-  }
-  
-  public void setCallback(bete parambete)
-  {
-    this.jdField_a_of_type_Bete = parambete;
-  }
-  
-  public void setData(List<betf> paramList)
-  {
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("setData list=");
-      if (paramList == null)
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onItemClick ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("ProfileCardMicroVideoContentView", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((ProfileCardVideoCoverShowView.Callback)localObject).a(this, paramView, (ProfileCardVideoCoverShowView.DataItem)this.b.get(paramInt));
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
+  
+  public void setCallback(ProfileCardVideoCoverShowView.Callback paramCallback)
+  {
+    this.c = paramCallback;
+  }
+  
+  public void setData(List<ProfileCardVideoCoverShowView.DataItem> paramList)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setData list=");
+      Object localObject;
+      if (paramList == null) {
         localObject = "null";
-        QLog.i("ProfileCardMicroVideoContentView", 2, localObject);
+      } else {
+        localObject = Integer.valueOf(paramList.size());
+      }
+      localStringBuilder.append(localObject);
+      QLog.i("ProfileCardMicroVideoContentView", 2, localStringBuilder.toString());
+    }
+    this.b.clear();
+    if ((paramList != null) && (paramList.size() > 0)) {
+      this.b.addAll(paramList);
+    }
+    if ((paramList != null) && (paramList.size() != 0))
+    {
+      int i = getResources().getDisplayMetrics().widthPixels;
+      int j = AIOUtils.b(114.0F, getResources());
+      if (paramList.size() > i * 1.0F / j) {
+        this.a.setOverScrollMode(0);
+      } else {
+        this.a.setOverScrollMode(1);
       }
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      if ((paramList != null) && (paramList.size() > 0)) {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      }
-      if ((paramList != null) && (paramList.size() != 0)) {
-        break label116;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(1);
+      this.a.setOverScrollMode(1);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-      return;
-      localObject = Integer.valueOf(paramList.size());
-      break;
-      label116:
-      int i = getResources().getDisplayMetrics().widthPixels;
-      int j = aepi.a(114.0F, getResources());
-      if (paramList.size() > i * 1.0F / j) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(0);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(1);
-      }
-    }
+    this.d.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView
  * JD-Core Version:    0.7.0.1
  */

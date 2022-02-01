@@ -2,63 +2,72 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cd;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.goi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.io.IOException;
 
 public final class o
-  extends cd
+  extends MAutoStorage<n>
 {
-  public static c.a info;
+  public static final String[] SQL_CREATE;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(62868);
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "reqType";
-    locala.yrM.put("reqType", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" reqType TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "reqType";
-    locala.columns[1] = "cache";
-    locala.yrM.put("cache", "BLOB default '' ");
-    localStringBuilder.append(" cache BLOB default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(62868);
+    AppMethodBeat.i(105120);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(n.info, "EmotionRewardInfo") };
+    AppMethodBeat.o(105120);
   }
   
-  public o(Cursor paramCursor)
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(62867);
-    if (paramCursor == null)
+    super(paramISQLiteDatabase, n.info, "EmotionRewardInfo", null);
+    this.db = paramISQLiteDatabase;
+  }
+  
+  public final goi bzk(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(105119);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(62867);
-      return;
+      Log.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
+      AppMethodBeat.o(105119);
+      return null;
     }
-    convertFrom(paramCursor);
-    AppMethodBeat.o(62867);
-  }
-  
-  public o(String paramString, byte[] paramArrayOfByte)
-  {
-    this.field_reqType = paramString;
-    this.field_cache = paramArrayOfByte;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return null;
+    Cursor localCursor = this.db.query("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    paramString = localObject;
+    if (localCursor != null)
+    {
+      paramString = localObject;
+      if (!localCursor.moveToFirst()) {}
+    }
+    try
+    {
+      paramString = new goi();
+      paramString.parseFrom(localCursor.getBlob(0));
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(105119);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+        paramString = localObject;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.o
  * JD-Core Version:    0.7.0.1
  */

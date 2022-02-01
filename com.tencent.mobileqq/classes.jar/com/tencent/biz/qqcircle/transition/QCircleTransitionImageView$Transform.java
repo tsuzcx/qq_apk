@@ -6,177 +6,206 @@ import android.graphics.RectF;
 import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 import android.widget.Scroller;
-import uao;
-import uar;
-import uau;
+import com.tencent.biz.qqcircle.utils.ImmersiveUtils;
 
 class QCircleTransitionImageView$Transform
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
-  Scroller jdField_a_of_type_AndroidWidgetScroller;
-  uao jdField_a_of_type_Uao;
-  uar jdField_a_of_type_Uar = new uar(this.this$0, null);
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  Scroller jdField_b_of_type_AndroidWidgetScroller;
+  boolean a;
+  OverScroller b;
+  Scroller c;
+  Scroller d;
+  QCircleTransitionImageView.ClipCalculate e;
+  int f;
+  int g;
+  RectF h = new RectF();
+  QCircleTransitionImageView.InterpolatorProxy i = new QCircleTransitionImageView.InterpolatorProxy(this.this$0, null);
   
   QCircleTransitionImageView$Transform(QCircleTransitionImageView paramQCircleTransitionImageView)
   {
     paramQCircleTransitionImageView = paramQCircleTransitionImageView.getContext();
-    this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(paramQCircleTransitionImageView, this.jdField_a_of_type_Uar);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramQCircleTransitionImageView, this.jdField_a_of_type_Uar);
-    this.jdField_b_of_type_AndroidWidgetScroller = new Scroller(paramQCircleTransitionImageView, this.jdField_a_of_type_Uar);
+    this.b = new OverScroller(paramQCircleTransitionImageView, this.i);
+    this.c = new Scroller(paramQCircleTransitionImageView, this.i);
+    this.d = new Scroller(paramQCircleTransitionImageView, this.i);
   }
   
-  private void b()
+  private void f()
   {
-    QCircleTransitionImageView.b(this.this$0).reset();
-    QCircleTransitionImageView.b(this.this$0).postTranslate(-QCircleTransitionImageView.d(this.this$0).left, -QCircleTransitionImageView.d(this.this$0).top);
-    QCircleTransitionImageView.b(this.this$0).postTranslate(QCircleTransitionImageView.a(this.this$0).x, QCircleTransitionImageView.a(this.this$0).y);
-    QCircleTransitionImageView.b(this.this$0).postTranslate(-QCircleTransitionImageView.a(this.this$0), -QCircleTransitionImageView.b(this.this$0));
-    QCircleTransitionImageView.b(this.this$0).postScale(QCircleTransitionImageView.c(this.this$0), QCircleTransitionImageView.c(this.this$0), QCircleTransitionImageView.b(this.this$0).x, QCircleTransitionImageView.b(this.this$0).y);
-    QCircleTransitionImageView.b(this.this$0).postTranslate(QCircleTransitionImageView.b(this.this$0), QCircleTransitionImageView.c(this.this$0));
-    QCircleTransitionImageView.a(this.this$0);
+    QCircleTransitionImageView.k(this.this$0).reset();
+    QCircleTransitionImageView.k(this.this$0).postTranslate(-QCircleTransitionImageView.l(this.this$0).left, -QCircleTransitionImageView.l(this.this$0).top);
+    QCircleTransitionImageView.k(this.this$0).postTranslate(QCircleTransitionImageView.m(this.this$0).x, QCircleTransitionImageView.m(this.this$0).y);
+    QCircleTransitionImageView.k(this.this$0).postTranslate(-QCircleTransitionImageView.n(this.this$0), -QCircleTransitionImageView.o(this.this$0));
+    QCircleTransitionImageView.k(this.this$0).postScale(QCircleTransitionImageView.p(this.this$0), QCircleTransitionImageView.p(this.this$0), QCircleTransitionImageView.q(this.this$0).x, QCircleTransitionImageView.q(this.this$0).y);
+    QCircleTransitionImageView.k(this.this$0).postTranslate(QCircleTransitionImageView.e(this.this$0), QCircleTransitionImageView.h(this.this$0));
+    QCircleTransitionImageView.r(this.this$0);
   }
   
-  private void c()
+  private void g()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       this.this$0.post(this);
     }
   }
   
   void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    c();
+    this.a = true;
+    g();
   }
   
   void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll((int)(paramFloat1 * 10000.0F), 0, (int)((paramFloat2 - paramFloat1) * 10000.0F), 0, QCircleTransitionImageView.a(this.this$0));
+    this.c.startScroll((int)(paramFloat1 * 10000.0F), 0, (int)((paramFloat2 - paramFloat1) * 10000.0F), 0, QCircleTransitionImageView.a(this.this$0));
   }
   
-  void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, uao paramuao)
+  void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, QCircleTransitionImageView.ClipCalculate paramClipCalculate)
   {
-    this.jdField_b_of_type_AndroidWidgetScroller.startScroll((int)(paramFloat1 * 10000.0F), (int)(paramFloat2 * 10000.0F), (int)(paramFloat3 * 10000.0F), (int)(10000.0F * paramFloat4), paramInt);
-    this.jdField_a_of_type_Uao = paramuao;
+    this.d.startScroll((int)(paramFloat1 * 10000.0F), (int)(paramFloat2 * 10000.0F), (int)(paramFloat3 * 10000.0F), (int)(paramFloat4 * 10000.0F), paramInt);
+    this.e = paramClipCalculate;
   }
   
   void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetOverScroller.startScroll(0, 0, paramInt3, paramInt4, QCircleTransitionImageView.a(this.this$0));
+    this.f = 0;
+    this.g = 0;
+    this.b.startScroll(0, 0, paramInt3, paramInt4, QCircleTransitionImageView.a(this.this$0));
   }
   
   public void a(Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_Uar.a(paramInterpolator);
+    this.i.a(paramInterpolator);
+  }
+  
+  boolean a(boolean paramBoolean)
+  {
+    if (this.b.computeScrollOffset())
+    {
+      int j = this.b.getCurrX();
+      int k = this.f;
+      int m = this.b.getCurrY();
+      int n = this.g;
+      QCircleTransitionImageView localQCircleTransitionImageView = this.this$0;
+      QCircleTransitionImageView.a(localQCircleTransitionImageView, QCircleTransitionImageView.e(localQCircleTransitionImageView) + (j - k));
+      localQCircleTransitionImageView = this.this$0;
+      QCircleTransitionImageView.b(localQCircleTransitionImageView, QCircleTransitionImageView.h(localQCircleTransitionImageView) + (m - n));
+      this.f = this.b.getCurrX();
+      this.g = this.b.getCurrY();
+      paramBoolean = false;
+    }
+    return paramBoolean;
+  }
+  
+  void b()
+  {
+    this.this$0.removeCallbacks(this);
+    this.c.abortAnimation();
+    this.a = false;
+  }
+  
+  boolean b(boolean paramBoolean)
+  {
+    if (this.c.computeScrollOffset())
+    {
+      QCircleTransitionImageView.a(this.this$0, this.c.getCurrX() / 10000.0F);
+      paramBoolean = false;
+    }
+    return paramBoolean;
+  }
+  
+  void c()
+  {
+    if (QCircleTransitionImageView.b(this.this$0) != null)
+    {
+      QCircleTransitionImageView.b(this.this$0).a();
+      QCircleTransitionImageView.a(this.this$0, null);
+    }
+  }
+  
+  void d()
+  {
+    QCircleTransitionImageView localQCircleTransitionImageView;
+    int j;
+    if (QCircleTransitionImageView.c(this.this$0))
+    {
+      if (QCircleTransitionImageView.d(this.this$0).left > 0.0F)
+      {
+        localQCircleTransitionImageView = this.this$0;
+        QCircleTransitionImageView.a(localQCircleTransitionImageView, (int)(QCircleTransitionImageView.e(localQCircleTransitionImageView) - QCircleTransitionImageView.d(this.this$0).left));
+      }
+      else if (QCircleTransitionImageView.d(this.this$0).right < QCircleTransitionImageView.f(this.this$0).width())
+      {
+        localQCircleTransitionImageView = this.this$0;
+        QCircleTransitionImageView.a(localQCircleTransitionImageView, QCircleTransitionImageView.e(localQCircleTransitionImageView) - (int)(QCircleTransitionImageView.f(this.this$0).width() - QCircleTransitionImageView.d(this.this$0).right));
+      }
+      j = 1;
+    }
+    else
+    {
+      j = 0;
+    }
+    if (QCircleTransitionImageView.g(this.this$0))
+    {
+      if (QCircleTransitionImageView.d(this.this$0).top > 0.0F)
+      {
+        localQCircleTransitionImageView = this.this$0;
+        QCircleTransitionImageView.b(localQCircleTransitionImageView, (int)(QCircleTransitionImageView.h(localQCircleTransitionImageView) - QCircleTransitionImageView.d(this.this$0).top));
+      }
+      else if (QCircleTransitionImageView.d(this.this$0).bottom < QCircleTransitionImageView.f(this.this$0).height())
+      {
+        localQCircleTransitionImageView = this.this$0;
+        QCircleTransitionImageView.b(localQCircleTransitionImageView, QCircleTransitionImageView.h(localQCircleTransitionImageView) - (int)(QCircleTransitionImageView.f(this.this$0).height() - QCircleTransitionImageView.d(this.this$0).bottom));
+      }
+      j = 1;
+    }
+    if (j != 0) {
+      f();
+    }
+  }
+  
+  void e()
+  {
+    if ((this.d.computeScrollOffset()) || (QCircleTransitionImageView.i(this.this$0) != null))
+    {
+      float f1 = this.d.getCurrX() / 10000.0F;
+      float f2 = this.d.getCurrY() / 10000.0F;
+      QCircleTransitionImageView.j(this.this$0).setScale(f1, f2, (QCircleTransitionImageView.d(this.this$0).left + QCircleTransitionImageView.d(this.this$0).right) / 2.0F, this.e.a());
+      QCircleTransitionImageView.j(this.this$0).mapRect(this.h, QCircleTransitionImageView.d(this.this$0));
+      RectF localRectF;
+      if (f1 == 1.0F)
+      {
+        localRectF = this.h;
+        localRectF.left = 0.0F;
+        localRectF.right = ImmersiveUtils.b();
+      }
+      if (f2 == 1.0F)
+      {
+        localRectF = this.h;
+        localRectF.top = 0.0F;
+        localRectF.bottom = ImmersiveUtils.c();
+      }
+      QCircleTransitionImageView.a(this.this$0, this.h);
+    }
   }
   
   public void run()
   {
-    int j = 1;
-    int k = 0;
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()) {
-      QCircleTransitionImageView.a(this.this$0, this.jdField_a_of_type_AndroidWidgetScroller.getCurrX() / 10000.0F);
-    }
-    for (int i = 0;; i = 1)
+    boolean bool = a(b(true));
+    e();
+    if (!bool)
     {
-      if (this.jdField_a_of_type_AndroidWidgetOverScroller.computeScrollOffset())
-      {
-        i = this.jdField_a_of_type_AndroidWidgetOverScroller.getCurrX();
-        int m = this.jdField_a_of_type_Int;
-        int n = this.jdField_a_of_type_AndroidWidgetOverScroller.getCurrY();
-        int i1 = this.jdField_b_of_type_Int;
-        QCircleTransitionImageView.a(this.this$0, i - m + QCircleTransitionImageView.b(this.this$0));
-        QCircleTransitionImageView.b(this.this$0, n - i1 + QCircleTransitionImageView.c(this.this$0));
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetOverScroller.getCurrX();
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetOverScroller.getCurrY();
-        i = 0;
-      }
-      if ((this.jdField_b_of_type_AndroidWidgetScroller.computeScrollOffset()) || (QCircleTransitionImageView.a(this.this$0) != null))
-      {
-        float f1 = this.jdField_b_of_type_AndroidWidgetScroller.getCurrX() / 10000.0F;
-        float f2 = this.jdField_b_of_type_AndroidWidgetScroller.getCurrY() / 10000.0F;
-        QCircleTransitionImageView.a(this.this$0).setScale(f1, f2, (QCircleTransitionImageView.b(this.this$0).left + QCircleTransitionImageView.b(this.this$0).right) / 2.0F, this.jdField_a_of_type_Uao.a());
-        QCircleTransitionImageView.a(this.this$0).mapRect(this.jdField_a_of_type_AndroidGraphicsRectF, QCircleTransitionImageView.b(this.this$0));
-        if (f1 == 1.0F)
-        {
-          this.jdField_a_of_type_AndroidGraphicsRectF.left = QCircleTransitionImageView.c(this.this$0).left;
-          this.jdField_a_of_type_AndroidGraphicsRectF.right = QCircleTransitionImageView.c(this.this$0).right;
-        }
-        if (f2 == 1.0F)
-        {
-          this.jdField_a_of_type_AndroidGraphicsRectF.top = QCircleTransitionImageView.c(this.this$0).top;
-          this.jdField_a_of_type_AndroidGraphicsRectF.bottom = QCircleTransitionImageView.c(this.this$0).bottom;
-        }
-        QCircleTransitionImageView.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsRectF);
-      }
-      if (i == 0)
-      {
-        b();
-        c();
-        return;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      i = k;
-      if (QCircleTransitionImageView.a(this.this$0))
-      {
-        if (QCircleTransitionImageView.b(this.this$0).left > 0.0F)
-        {
-          QCircleTransitionImageView.a(this.this$0, (int)(QCircleTransitionImageView.b(this.this$0) - QCircleTransitionImageView.b(this.this$0).left));
-          label417:
-          i = 1;
-        }
-      }
-      else
-      {
-        if (!QCircleTransitionImageView.b(this.this$0)) {
-          break label658;
-        }
-        if (QCircleTransitionImageView.b(this.this$0).top <= 0.0F) {
-          break label587;
-        }
-        QCircleTransitionImageView.b(this.this$0, (int)(QCircleTransitionImageView.c(this.this$0) - QCircleTransitionImageView.b(this.this$0).top));
-        i = j;
-      }
-      label658:
-      for (;;)
-      {
-        if (i != 0) {
-          b();
-        }
-        this.this$0.invalidate();
-        if (QCircleTransitionImageView.a(this.this$0) == null) {
-          break;
-        }
-        QCircleTransitionImageView.a(this.this$0).a();
-        QCircleTransitionImageView.a(this.this$0, null);
-        return;
-        if (QCircleTransitionImageView.b(this.this$0).right >= QCircleTransitionImageView.c(this.this$0).width()) {
-          break label417;
-        }
-        QCircleTransitionImageView.a(this.this$0, QCircleTransitionImageView.b(this.this$0) - (int)(QCircleTransitionImageView.c(this.this$0).width() - QCircleTransitionImageView.b(this.this$0).right));
-        break label417;
-        label587:
-        i = j;
-        if (QCircleTransitionImageView.b(this.this$0).bottom < QCircleTransitionImageView.c(this.this$0).height())
-        {
-          QCircleTransitionImageView.b(this.this$0, QCircleTransitionImageView.c(this.this$0) - (int)(QCircleTransitionImageView.c(this.this$0).height() - QCircleTransitionImageView.b(this.this$0).bottom));
-          i = j;
-        }
-      }
+      f();
+      g();
+      return;
     }
+    this.a = false;
+    d();
+    this.this$0.invalidate();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.transition.QCircleTransitionImageView.Transform
  * JD-Core Version:    0.7.0.1
  */

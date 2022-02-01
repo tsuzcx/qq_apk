@@ -21,52 +21,56 @@ class a
   
   private static long a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    long l = 0L;
+    long l1 = 0L;
     if (paramInt2 > 4) {
       paramInt2 = paramInt1 + 4;
+    } else {
+      paramInt2 += paramInt1;
     }
     while (paramInt1 < paramInt2)
     {
-      l = l << 8 | paramArrayOfByte[paramInt1] & 0xFF;
+      long l2 = paramArrayOfByte[paramInt1] & 0xFF;
       paramInt1 += 1;
-      continue;
-      paramInt2 = paramInt1 + paramInt2;
+      l1 = l1 << 8 | l2;
     }
-    return 0xFFFFFFFF & l;
+    return 0xFFFFFFFF & l1;
   }
   
   private void a()
   {
-    this.f = 0;
     byte[] arrayOfByte;
-    int m;
-    if (this.f < 8)
+    for (this.f = 0;; this.f += 1)
     {
+      m = this.f;
+      if (m >= 8) {
+        break;
+      }
       if (this.i)
       {
         arrayOfByte = this.a;
-        m = this.f;
-        arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.b[this.f]));
+        arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.b[m]));
       }
-      for (;;)
+      else
       {
-        this.f += 1;
-        break;
         arrayOfByte = this.a;
-        m = this.f;
-        arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.c[(this.e + this.f)]));
+        arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.c[(this.e + m)]));
       }
     }
     System.arraycopy(a(this.a), 0, this.c, this.d, 8);
-    for (this.f = 0; this.f < 8; this.f += 1)
+    for (this.f = 0;; this.f = (m + 1))
     {
+      m = this.f;
+      if (m >= 8) {
+        break;
+      }
       arrayOfByte = this.c;
-      m = this.d + this.f;
-      arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.b[this.f]));
+      int n = this.d + m;
+      arrayOfByte[n] = ((byte)(arrayOfByte[n] ^ this.b[m]));
     }
     System.arraycopy(this.a, 0, this.b, 0, 8);
-    this.e = this.d;
-    this.d += 8;
+    int m = this.d;
+    this.e = m;
+    this.d = (m + 8);
     this.f = 0;
     this.i = false;
   }
@@ -76,40 +80,41 @@ class a
     int m = 16;
     for (;;)
     {
-      long l3;
+      long l1;
       long l2;
       long l4;
       long l5;
       long l6;
       long l7;
-      long l1;
+      long l3;
       try
       {
-        l3 = a(paramArrayOfByte, 0, 4);
+        l1 = a(paramArrayOfByte, 0, 4);
         l2 = a(paramArrayOfByte, 4, 4);
         l4 = a(this.h, 0, 4);
         l5 = a(this.h, 4, 4);
         l6 = a(this.h, 8, 4);
         l7 = a(this.h, 12, 4);
-        l1 = 0L;
+        l3 = 0L;
       }
       catch (IOException paramArrayOfByte)
       {
         DataOutputStream localDataOutputStream;
-        return null;
+        continue;
       }
       paramArrayOfByte = new ByteArrayOutputStream(8);
       localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-      localDataOutputStream.writeInt((int)l3);
+      localDataOutputStream.writeInt((int)l1);
       localDataOutputStream.writeInt((int)l2);
       localDataOutputStream.close();
       paramArrayOfByte = paramArrayOfByte.toByteArray();
       return paramArrayOfByte;
+      return null;
       while (m > 0)
       {
-        l1 = l1 + (0x9E3779B9 & 0xFFFFFFFF) & 0xFFFFFFFF;
-        l3 = l3 + ((l2 << 4) + l4 ^ l2 + l1 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
-        l2 = l2 + ((l3 << 4) + l6 ^ l3 + l1 ^ (l3 >>> 5) + l7) & 0xFFFFFFFF;
+        l3 = l3 + 2654435769L & 0xFFFFFFFF;
+        l1 = l1 + ((l2 << 4) + l4 ^ l2 + l3 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
+        l2 = l2 + ((l1 << 4) + l6 ^ l1 + l3 ^ (l1 >>> 5) + l7) & 0xFFFFFFFF;
         m -= 1;
       }
     }
@@ -120,41 +125,42 @@ class a
     int m = 16;
     for (;;)
     {
-      long l3;
       long l2;
+      long l1;
       long l4;
       long l5;
       long l6;
       long l7;
-      long l1;
+      long l3;
       try
       {
-        l3 = a(paramArrayOfByte, paramInt, 4);
-        l2 = a(paramArrayOfByte, paramInt + 4, 4);
+        l2 = a(paramArrayOfByte, paramInt, 4);
+        l1 = a(paramArrayOfByte, paramInt + 4, 4);
         l4 = a(this.h, 0, 4);
         l5 = a(this.h, 4, 4);
         l6 = a(this.h, 8, 4);
         l7 = a(this.h, 12, 4);
-        l1 = 0xE3779B90 & 0xFFFFFFFF;
+        l3 = 3816266640L;
         paramInt = m;
       }
       catch (IOException paramArrayOfByte)
       {
         DataOutputStream localDataOutputStream;
-        return null;
+        continue;
       }
       paramArrayOfByte = new ByteArrayOutputStream(8);
       localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-      localDataOutputStream.writeInt((int)l3);
       localDataOutputStream.writeInt((int)l2);
+      localDataOutputStream.writeInt((int)l1);
       localDataOutputStream.close();
       paramArrayOfByte = paramArrayOfByte.toByteArray();
       return paramArrayOfByte;
+      return null;
       while (paramInt > 0)
       {
-        l2 = l2 - ((l3 << 4) + l6 ^ l3 + l1 ^ (l3 >>> 5) + l7) & 0xFFFFFFFF;
-        l3 = l3 - ((l2 << 4) + l4 ^ l2 + l1 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
-        l1 = l1 - (0x9E3779B9 & 0xFFFFFFFF) & 0xFFFFFFFF;
+        l1 = l1 - ((l2 << 4) + l6 ^ l2 + l3 ^ (l2 >>> 5) + l7) & 0xFFFFFFFF;
+        l2 = l2 - ((l1 << 4) + l4 ^ l1 + l3 ^ (l1 >>> 5) + l5) & 0xFFFFFFFF;
+        l3 = l3 - 2654435769L & 0xFFFFFFFF;
         paramInt -= 1;
       }
     }
@@ -167,14 +173,18 @@ class a
   
   private boolean b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    for (this.f = 0; this.f < 8; this.f += 1)
+    int m;
+    for (this.f = 0;; this.f = (m + 1))
     {
-      if (this.j + this.f >= paramInt2) {
+      m = this.f;
+      if (m >= 8) {
+        break;
+      }
+      if (this.j + m >= paramInt2) {
         return true;
       }
       byte[] arrayOfByte = this.b;
-      int m = this.f;
-      arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ paramArrayOfByte[(this.d + paramInt1 + this.f)]));
+      arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ paramArrayOfByte[(this.d + paramInt1 + m)]));
     }
     this.b = b(this.b);
     if (this.b == null) {
@@ -202,18 +212,24 @@ class a
     this.h = paramArrayOfByte2;
     this.i = true;
     this.f = ((paramInt2 + 10) % 8);
-    if (this.f != 0) {
-      this.f = (8 - this.f);
+    int m = this.f;
+    if (m != 0) {
+      this.f = (8 - m);
     }
     this.c = new byte[this.f + paramInt2 + 10];
     this.a[0] = ((byte)(b() & 0xF8 | this.f));
-    int m = 1;
-    while (m <= this.f)
+    m = 1;
+    int n;
+    for (;;)
     {
+      n = this.f;
+      if (m > n) {
+        break;
+      }
       this.a[m] = ((byte)(b() & 0xFF));
       m += 1;
     }
-    this.f += 1;
+    this.f = (n + 1);
     m = 0;
     while (m < 8)
     {
@@ -221,12 +237,17 @@ class a
       m += 1;
     }
     this.g = 1;
-    while (this.g <= 2)
+    for (;;)
     {
-      if (this.f < 8)
+      m = paramInt1;
+      n = paramInt2;
+      if (this.g > 2) {
+        break;
+      }
+      m = this.f;
+      if (m < 8)
       {
         paramArrayOfByte2 = this.a;
-        m = this.f;
         this.f = (m + 1);
         paramArrayOfByte2[m] = ((byte)(b() & 0xFF));
         this.g += 1;
@@ -235,147 +256,157 @@ class a
         a();
       }
     }
-    if (paramInt2 > 0)
+    while (n > 0)
     {
-      if (this.f >= 8) {
-        break label414;
+      int i1 = this.f;
+      paramInt2 = m;
+      paramInt1 = n;
+      if (i1 < 8)
+      {
+        paramArrayOfByte2 = this.a;
+        this.f = (i1 + 1);
+        paramArrayOfByte2[i1] = paramArrayOfByte1[m];
+        paramInt1 = n - 1;
+        paramInt2 = m + 1;
       }
-      paramArrayOfByte2 = this.a;
-      int n = this.f;
-      this.f = (n + 1);
-      m = paramInt1 + 1;
-      paramArrayOfByte2[n] = paramArrayOfByte1[paramInt1];
-      paramInt2 -= 1;
-      paramInt1 = m;
-    }
-    label414:
-    for (;;)
-    {
+      m = paramInt2;
+      n = paramInt1;
       if (this.f == 8)
       {
         a();
-        break;
-        this.g = 1;
-        while (this.g <= 7)
-        {
-          if (this.f < 8)
-          {
-            paramArrayOfByte1 = this.a;
-            paramInt1 = this.f;
-            this.f = (paramInt1 + 1);
-            paramArrayOfByte1[paramInt1] = 0;
-            this.g += 1;
-          }
-          if (this.f == 8) {
-            a();
-          }
-        }
-        return this.c;
+        m = paramInt2;
+        n = paramInt1;
       }
-      break;
     }
+    this.g = 1;
+    for (;;)
+    {
+      paramInt1 = this.g;
+      if (paramInt1 > 7) {
+        break;
+      }
+      paramInt2 = this.f;
+      if (paramInt2 < 8)
+      {
+        paramArrayOfByte1 = this.a;
+        this.f = (paramInt2 + 1);
+        paramArrayOfByte1[paramInt2] = 0;
+        this.g = (paramInt1 + 1);
+      }
+      if (this.f == 8) {
+        a();
+      }
+    }
+    return this.c;
   }
   
   protected byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
+    int i1 = 0;
     this.e = 0;
     this.d = 0;
     this.h = paramArrayOfByte2;
     paramArrayOfByte2 = new byte[paramInt1 + 8];
-    if ((paramInt2 % 8 != 0) || (paramInt2 < 16)) {
-      return null;
-    }
-    this.b = a(paramArrayOfByte1, paramInt1);
-    this.f = (this.b[0] & 0x7);
-    int n = paramInt2 - this.f - 10;
-    if (n < 0) {
-      return null;
-    }
-    int m = paramInt1;
-    while (m < paramArrayOfByte2.length)
+    if (paramInt2 % 8 == 0)
     {
-      paramArrayOfByte2[m] = 0;
-      m += 1;
-    }
-    this.c = new byte[n];
-    this.e = 0;
-    this.d = 8;
-    this.j = 8;
-    this.f += 1;
-    this.g = 1;
-    for (;;)
-    {
-      if (this.g <= 2)
-      {
-        if (this.f < 8)
-        {
-          this.f += 1;
-          this.g += 1;
-        }
-        if (this.f != 8) {
-          continue;
-        }
-        if (!b(paramArrayOfByte1, paramInt1, paramInt2)) {
-          return null;
-        }
+      if (paramInt2 < 16) {
+        return null;
       }
-      else
+      this.b = a(paramArrayOfByte1, paramInt1);
+      this.f = (this.b[0] & 0x7);
+      int i2 = paramInt2 - this.f - 10;
+      if (i2 < 0) {
+        return null;
+      }
+      int m = paramInt1;
+      while (m < paramArrayOfByte2.length)
       {
-        m = n;
-        int i1 = 0;
-        for (;;)
+        paramArrayOfByte2[m] = 0;
+        m += 1;
+      }
+      this.c = new byte[i2];
+      this.e = 0;
+      this.d = 8;
+      this.j = 8;
+      this.f += 1;
+      this.g = 1;
+      int i3;
+      int n;
+      byte[] arrayOfByte;
+      for (;;)
+      {
+        i3 = this.g;
+        n = i1;
+        m = i2;
+        arrayOfByte = paramArrayOfByte2;
+        if (i3 > 2) {
+          break;
+        }
+        m = this.f;
+        if (m < 8)
         {
-          int i2;
-          if (m != 0)
-          {
-            i2 = i1;
-            n = m;
-            if (this.f < 8)
-            {
-              this.c[i1] = ((byte)(paramArrayOfByte2[(this.e + paramInt1 + this.f)] ^ this.b[this.f]));
-              i2 = i1 + 1;
-              n = m - 1;
-              this.f += 1;
-            }
-            i1 = i2;
-            m = n;
-            if (this.f != 8) {
-              continue;
-            }
-            this.e = (this.d - 8);
-            if (!b(paramArrayOfByte1, paramInt1, paramInt2)) {
-              return null;
-            }
-          }
-          else
-          {
-            for (this.g = 1; this.g < 8; this.g += 1)
-            {
-              if (this.f < 8)
-              {
-                if ((paramArrayOfByte2[(this.e + paramInt1 + this.f)] ^ this.b[this.f]) != 0) {
-                  return null;
-                }
-                this.f += 1;
-              }
-              if (this.f == 8)
-              {
-                this.e = this.d;
-                if (!b(paramArrayOfByte1, paramInt1, paramInt2)) {
-                  return null;
-                }
-                paramArrayOfByte2 = paramArrayOfByte1;
-              }
-            }
-            return this.c;
+          this.f = (m + 1);
+          this.g = (i3 + 1);
+        }
+        if (this.f == 8)
+        {
+          if (!b(paramArrayOfByte1, paramInt1, paramInt2)) {
+            return null;
           }
           paramArrayOfByte2 = paramArrayOfByte1;
-          i1 = i2;
-          m = n;
         }
       }
-      paramArrayOfByte2 = paramArrayOfByte1;
+      while (m != 0)
+      {
+        i3 = this.f;
+        i2 = n;
+        i1 = m;
+        if (i3 < 8)
+        {
+          this.c[n] = ((byte)(arrayOfByte[(this.e + paramInt1 + i3)] ^ this.b[i3]));
+          i2 = n + 1;
+          i1 = m - 1;
+          this.f = (i3 + 1);
+        }
+        n = i2;
+        m = i1;
+        if (this.f == 8)
+        {
+          this.e = (this.d - 8);
+          if (!b(paramArrayOfByte1, paramInt1, paramInt2)) {
+            return null;
+          }
+          arrayOfByte = paramArrayOfByte1;
+          n = i2;
+          m = i1;
+        }
+      }
+      this.g = 1;
+      while (this.g < 8)
+      {
+        m = this.f;
+        if (m < 8)
+        {
+          if ((arrayOfByte[(this.e + paramInt1 + m)] ^ this.b[m]) != 0) {
+            return null;
+          }
+          this.f = (m + 1);
+        }
+        paramArrayOfByte2 = arrayOfByte;
+        if (this.f == 8)
+        {
+          this.e = this.d;
+          if (!b(paramArrayOfByte1, paramInt1, paramInt2)) {
+            return null;
+          }
+          paramArrayOfByte2 = paramArrayOfByte1;
+        }
+        this.g += 1;
+        arrayOfByte = paramArrayOfByte2;
+      }
+      return this.c;
     }
+    return null;
   }
   
   protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)

@@ -1,194 +1,60 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.protocal.protobuf.cot;
-import com.tencent.mm.protocal.protobuf.cou;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.au;
+import com.tencent.mm.platformtools.o.a;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.Locale;
 
 public final class r
+  extends au
 {
-  public static final r.c hbP;
-  
-  static
+  public final String getTag()
   {
-    AppMethodBeat.i(129643);
-    hbP = new r.c();
-    AppMethodBeat.o(129643);
+    return "MicroMsg.AppBrandPluginCodeTransfer";
   }
   
-  private static void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public final void vb(int paramInt)
   {
-    long l = 0L;
-    AppMethodBeat.i(129635);
-    z localz = g.RL().Ru();
-    ac.a locala = ac.a.yDa;
-    if (!paramBoolean) {}
-    for (paramLong1 = l;; paramLong1 = Math.max(0L, paramLong1) + l)
+    AppMethodBeat.i(44547);
+    try
     {
-      localz.set(locala, Long.valueOf(paramLong1));
-      localz = g.RL().Ru();
-      locala = ac.a.yDc;
-      if (!paramBoolean) {
-        paramLong2 = 9223372036854775807L;
-      }
-      localz.set(locala, Long.valueOf(paramLong2));
-      AppMethodBeat.o(129635);
-      return;
-      l = bo.aox();
-    }
-  }
-  
-  public static boolean axm()
-  {
-    AppMethodBeat.i(129636);
-    q.axe();
-    if (!g.RG())
-    {
-      AppMethodBeat.o(129636);
-      return false;
-    }
-    boolean bool = ((Boolean)g.RL().Ru().get(ac.a.yDd, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(129636);
-    return bool;
-  }
-  
-  static a axn()
-  {
-    int i = 0;
-    AppMethodBeat.i(129637);
-    if (!axo())
-    {
-      localObject = a.hbQ;
-      AppMethodBeat.o(129637);
-      return localObject;
-    }
-    int j = ((Integer)g.RL().Ru().get(ac.a.yCU, Integer.valueOf(0))).intValue();
-    Object localObject = a.values();
-    int k = localObject.length;
-    while (i < k)
-    {
-      a locala = localObject[i];
-      if (locala.value == j)
-      {
-        AppMethodBeat.o(129637);
-        return locala;
-      }
-      i += 1;
-    }
-    localObject = a.hbQ;
-    AppMethodBeat.o(129637);
-    return localObject;
-  }
-  
-  public static boolean axo()
-  {
-    AppMethodBeat.i(129638);
-    if (!g.RG())
-    {
-      AppMethodBeat.o(129638);
-      return false;
-    }
-    long l = ((Long)g.RL().Ru().get(ac.a.yCR, Long.valueOf(0L))).longValue();
-    if (l > bo.aox()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if ((!bool) && (l > 0L))
-      {
-        g.RL().Ru().set(ac.a.yCR, Long.valueOf(0L));
-        r.e locale = r.e.hcb;
-        r.e.axu();
-      }
-      AppMethodBeat.o(129638);
-      return bool;
-    }
-  }
-  
-  static void axp()
-  {
-    AppMethodBeat.i(129639);
-    q.axe();
-    if (!g.RG())
-    {
-      AppMethodBeat.o(129639);
+      String str = String.format(Locale.US, "where %s like '%%$%s' or %s like '%%$%s'", new Object[] { "appId", "__WITHOUT_CODELIB__", "appId", "__CODELIB__" });
+      str = String.format(Locale.US, "delete from %s %s", new Object[] { "AppBrandWxaPkgManifestRecord", str });
+      n.ceZ().cfa().execSQL("AppBrandWxaPkgManifestRecord", str);
+      h.baE().ban().set(at.a.acNG, Boolean.TRUE);
+      AppMethodBeat.o(44547);
       return;
     }
-    r.e locale = r.e.hcb;
-    if (!((Boolean)g.RL().Ru().get(ac.a.yCX, Boolean.FALSE)).booleanValue())
+    catch (Exception localException)
     {
-      r.e.a((String)g.RL().Ru().get(ac.a.yCS, ""), ((Long)g.RL().Ru().get(ac.a.yCT, Long.valueOf(0L))).longValue(), 0, r.e.axw());
-      g.RL().Ru().set(ac.a.yCX, Boolean.TRUE);
-    }
-    AppMethodBeat.o(129639);
-  }
-  
-  public static void axq()
-  {
-    AppMethodBeat.i(129640);
-    if (!g.RG())
-    {
-      AppMethodBeat.o(129640);
-      return;
-    }
-    if (axo())
-    {
-      c(false, 0L);
-      a(false, 0L, 0L);
-      r.e locale = r.e.hcb;
-      r.e.a((String)g.RL().Ru().get(ac.a.yCS, ""), ((Long)g.RL().Ru().get(ac.a.yCT, Long.valueOf(0L))).longValue(), 2, r.e.axw());
-    }
-    AppMethodBeat.o(129640);
-  }
-  
-  private static void c(boolean paramBoolean, long paramLong)
-  {
-    AppMethodBeat.i(129634);
-    if (!paramBoolean)
-    {
-      g.RL().Ru().set(ac.a.yCR, Long.valueOf(0L));
-      AppMethodBeat.o(129634);
-      return;
-    }
-    if (paramLong == 0L) {}
-    for (paramLong = 9223372036854775807L;; paramLong = bo.aox() + Math.max(0L, paramLong))
-    {
-      g.RL().Ru().set(ac.a.yCR, Long.valueOf(paramLong));
-      g.RL().Ru().set(ac.a.yDd, Boolean.TRUE);
-      g.RL().Ru().set(ac.a.yCX, Boolean.FALSE);
-      r.e locale = r.e.hcb;
-      r.e.a((String)g.RL().Ru().get(ac.a.yCS, ""), ((Long)g.RL().Ru().get(ac.a.yCT, Long.valueOf(0L))).longValue(), 1, r.e.axw());
-      AppMethodBeat.o(129634);
-      return;
+      Log.printErrStackTrace("MicroMsg.AppBrandPluginCodeTransfer", localException, "transfer failed", new Object[0]);
+      AppMethodBeat.o(44547);
     }
   }
   
-  public static enum a
+  public final boolean vc(int paramInt)
   {
-    public final int value;
-    
-    static
+    AppMethodBeat.i(44548);
+    boolean bool = h.baE().ban().getBoolean(at.a.acNG, false);
+    Log.d("MicroMsg.AppBrandPluginCodeTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    if (!bool)
     {
-      AppMethodBeat.i(129619);
-      hbQ = new a("NONE", 0, 0);
-      hbR = new a("REDDOT", 1, 1);
-      hbS = new a("NEW", 2, 2);
-      hbT = new a[] { hbQ, hbR, hbS };
-      AppMethodBeat.o(129619);
+      AppMethodBeat.o(44548);
+      return true;
     }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    AppMethodBeat.o(44548);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.r
  * JD-Core Version:    0.7.0.1
  */

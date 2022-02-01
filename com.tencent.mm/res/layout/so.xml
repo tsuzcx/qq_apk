@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="@dimen/m2" android:textColor="@color/io" android:id="@id/azb" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acy" android:layout_alignParentLeft="true" />
-        <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b_e" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acz" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <com.tencent.mm.ui.widget.picker.CustomDatePicker android:gravity="center" android:layout_gravity="center" android:id="@id/b_f" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="250.0dip" android:layout_height="200.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h3">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/b8v" style="@style/ha" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/l1e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cd" style="@style/a85" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/b8x" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <RelativeLayout android:orientation="horizontal" android:id="@id/b49" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewTo android:layout_gravity="right" android:id="@id/b4c" android:background="@null" android:layout_marginLeft="@dimen/a45" android:layout_marginRight="@dimen/a45" style="@style/ib" />
+                <ProgressBar android:id="@id/b4k" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:indeterminateDrawable="@drawable/anj" android:layout_centerInParent="true" />
+                <TextView android:textSize="@dimen/mi" android:textColor="@color/al6" android:gravity="right" android:id="@id/b8p" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/m7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/lo" android:layout_alignLeft="@id/b4c" android:layout_alignRight="@id/b4c" android:layout_alignBottom="@id/b4c" />
+                <ImageView android:id="@id/b8w" android:background="@null" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/qk" />
 </LinearLayout>

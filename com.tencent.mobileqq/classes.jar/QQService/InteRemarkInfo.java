@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class InteRemarkInfo
   extends JceStruct
 {
-  public long Source;
+  public long Source = 0L;
   public String StrValue = "";
   
   public InteRemarkInfo() {}
@@ -32,7 +32,7 @@ public final class InteRemarkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.InteRemarkInfo
  * JD-Core Version:    0.7.0.1
  */

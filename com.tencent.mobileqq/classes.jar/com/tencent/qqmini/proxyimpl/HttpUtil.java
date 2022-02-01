@@ -3,7 +3,7 @@ package com.tencent.qqmini.proxyimpl;
 import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.plato.mqq.network.ProgressRequestBody;
-import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +12,7 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
@@ -22,104 +23,14 @@ import okhttp3.Request;
 import okhttp3.Request.Builder;
 import okhttp3.RequestBody;
 import okhttp3.internal.http.HttpMethod;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HttpUtil
 {
-  public static final int LOCAL_RET_CODE_ABORTED = -5;
-  public static final int LOCAL_RET_CODE_CLIENT_PROTOCOL_EXP = 8;
-  public static final int LOCAL_RET_CODE_CONNECT = -2;
-  public static final int LOCAL_RET_CODE_CONNECT_CLOSED_EXP = 14;
-  public static final int LOCAL_RET_CODE_CONNECT_NOT_OPEN = 50007;
-  public static final int LOCAL_RET_CODE_CONNECT_POOL_TIMEOUT_EXP = 13;
-  public static final int LOCAL_RET_CODE_CONNECT_REFUSED = 50006;
-  public static final int LOCAL_RET_CODE_CONNECT_TIMEOUT_EXP = 10;
-  public static final int LOCAL_RET_CODE_CONTENT_LENGTH_VALID = 50002;
-  public static final int LOCAL_RET_CODE_EXCEPTION = -1;
-  public static final int LOCAL_RET_CODE_EXP = 4;
-  public static final int LOCAL_RET_CODE_FNF_EXP = 1;
-  public static final int LOCAL_RET_CODE_ILLEGAL_FORMAT_360WIFI = 50001;
-  public static final int LOCAL_RET_CODE_ILL_EXP = 5;
-  public static final int LOCAL_RET_CODE_IO_EXP = 2;
-  public static final int LOCAL_RET_CODE_METHOD_NOT_SUPPORT = -3;
-  public static final int LOCAL_RET_CODE_NETWORK_UNREACHABLE = 50004;
-  public static final int LOCAL_RET_CODE_NOSPACE_LEFT_ON_DEVICE = 50003;
-  public static final int LOCAL_RET_CODE_NO_HTTP_RSP_EXP = 11;
-  public static final int LOCAL_RET_CODE_NO_ROUTE_TO_HOST = 50005;
-  public static final int LOCAL_RET_CODE_OOM_ERR = 3;
-  public static final int LOCAL_RET_CODE_SOCKET_EXP = 6;
-  public static final int LOCAL_RET_CODE_SOCKET_TO_EXP = 7;
-  public static final int LOCAL_RET_CODE_SSL_HANDSHAKE_EXP = 15;
-  public static final int LOCAL_RET_CODE_SSL_PEER_UNVERIFIED_EXP = 12;
-  public static final int LOCAL_RET_CODE_UNKNOW_HOST_EXP = 9;
-  public static final int LOCAL_RET_CODE_URL_INVALID = -4;
-  
-  public static RequestBody buildMultiPartBody(String paramString1, Map<String, String> paramMap, String paramString2, String paramString3, UploaderProxy.UploadListener paramUploadListener)
+  public static int a(Throwable paramThrowable, int paramInt)
   {
-    MultipartBody.Builder localBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
-    if (paramMap != null)
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localBuilder.addFormDataPart(str, (String)paramMap.get(str));
-      }
-    }
-    paramMap = new File(paramString1);
-    paramUploadListener = new ProgressRequestBody(RequestBody.create(MediaType.parse(getContentType(paramString1)), paramMap), new HttpUtil.1(paramUploadListener));
-    paramString1 = paramString3;
-    if (TextUtils.isEmpty(paramString3)) {
-      paramString1 = paramMap.getName();
-    }
-    localBuilder.addFormDataPart(paramString2, paramString1, paramUploadListener);
-    return localBuilder.build();
-  }
-  
-  public static Request buildRequest(String paramString1, Map<String, String> paramMap, String paramString2, MediaType paramMediaType, byte[] paramArrayOfByte)
-  {
-    Request.Builder localBuilder = new Request.Builder();
-    if (paramMap != null)
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localBuilder.addHeader(str, (String)paramMap.get(str));
-      }
-    }
-    localBuilder.url(paramString1);
-    if ("GET".equals(paramString2)) {
-      localBuilder.get();
-    }
-    for (;;)
-    {
-      return localBuilder.build();
-      paramString1 = null;
-      if (HttpMethod.requiresRequestBody(paramString2))
-      {
-        paramString1 = paramArrayOfByte;
-        if (paramArrayOfByte == null) {
-          paramString1 = new byte[0];
-        }
-        paramString1 = RequestBody.create(paramMediaType, paramString1);
-      }
-      localBuilder.method(paramString2, paramString1);
-    }
-  }
-  
-  private static String getContentType(String paramString)
-  {
-    if ((paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg"))) {
-      return "image/jpg";
-    }
-    if (paramString.endsWith(".png")) {
-      return "image/png";
-    }
-    return "application/octet-stream";
-  }
-  
-  public static int getRetCodeFrom(Throwable paramThrowable, int paramInt)
-  {
+    int i = paramInt;
     if (paramThrowable != null)
     {
       if ((paramThrowable instanceof SSLPeerUnverifiedException)) {
@@ -168,16 +79,108 @@ public class HttpUtil
       if ((paramThrowable instanceof Exception)) {
         return 4;
       }
+      i = paramInt;
       if ((paramThrowable instanceof OutOfMemoryError)) {
-        return 3;
+        i = 3;
       }
     }
-    return paramInt;
+    return i;
+  }
+  
+  private static String a(String paramString)
+  {
+    if ((!paramString.endsWith(".jpg")) && (!paramString.endsWith(".jpeg")))
+    {
+      if (paramString.endsWith(".png")) {
+        return "image/png";
+      }
+      return "application/octet-stream";
+    }
+    return "image/jpg";
+  }
+  
+  public static Request a(String paramString1, Map<String, String> paramMap, String paramString2, MediaType paramMediaType, byte[] paramArrayOfByte)
+  {
+    Request.Builder localBuilder = new Request.Builder();
+    if (paramMap != null)
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localBuilder.addHeader(str, (String)paramMap.get(str));
+      }
+    }
+    localBuilder.url(paramString1);
+    if ("GET".equals(paramString2))
+    {
+      localBuilder.get();
+    }
+    else
+    {
+      paramString1 = null;
+      if (HttpMethod.requiresRequestBody(paramString2))
+      {
+        paramString1 = paramArrayOfByte;
+        if (paramArrayOfByte == null) {
+          paramString1 = new byte[0];
+        }
+        paramString1 = RequestBody.create(paramMediaType, paramString1);
+      }
+      localBuilder.method(paramString2, paramString1);
+    }
+    return localBuilder.build();
+  }
+  
+  public static RequestBody a(String paramString1, Map<String, String> paramMap, String paramString2, String paramString3, UploaderProxy.UploadListener paramUploadListener)
+  {
+    MultipartBody.Builder localBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+    if (paramMap != null)
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localBuilder.addFormDataPart(str, (String)paramMap.get(str));
+      }
+    }
+    paramMap = new File(paramString1);
+    paramUploadListener = new ProgressRequestBody(RequestBody.create(MediaType.parse(a(paramString1)), paramMap), new HttpUtil.1(paramUploadListener));
+    paramString1 = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString1 = paramMap.getName();
+    }
+    localBuilder.addFormDataPart(paramString2, paramString1, paramUploadListener);
+    return localBuilder.build();
+  }
+  
+  public static JSONObject a(Map<String, String> paramMap)
+  {
+    JSONObject localJSONObject;
+    if ((paramMap != null) && (paramMap.size() > 0))
+    {
+      localJSONObject = new JSONObject();
+      paramMap = paramMap.entrySet().iterator();
+    }
+    for (;;)
+    {
+      Map.Entry localEntry;
+      if (paramMap.hasNext()) {
+        localEntry = (Map.Entry)paramMap.next();
+      }
+      try
+      {
+        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+      }
+      catch (JSONException localJSONException) {}
+      return localJSONObject;
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

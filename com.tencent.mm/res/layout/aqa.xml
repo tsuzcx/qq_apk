@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:id="@id/e8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/du6" android:alpha="0.46" />
-    <View android:background="@drawable/a09" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="15.0dip" android:layerType="software" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dtk" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:gravity="right" android:id="@id/e8y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dtg" />
-            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="14.0dip" android:textColor="@color/rv" android:gravity="right" android:id="@id/e8z" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" wallet:walletTypeFace="e7" />
-        </LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/kob" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginBottom="@dimen/cp" android:text="@string/epi" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/koc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="13.0dip" android:text="@string/epi" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+        <ImageView android:id="@id/a1p" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/b__" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/hg0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bv" />
+        <FrameLayout android:id="@id/aew" android:background="@drawable/an6" android:paddingLeft="@dimen/bv" android:paddingTop="1.0dip" android:paddingRight="@dimen/bv" android:paddingBottom="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bv">
+            <TextView android:textSize="@dimen/a3" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d1y" />
+        </FrameLayout>
     </LinearLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="1.0px" />
 </LinearLayout>

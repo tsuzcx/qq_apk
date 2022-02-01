@@ -1,29 +1,22 @@
 package com.tencent.mobileqq.pic;
 
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.structmsg.api.IMsgStructing;
 
 class PicPreDownloader$4
   implements Runnable
 {
-  PicPreDownloader$4(PicPreDownloader paramPicPreDownloader, MessageForPic paramMessageForPic, int paramInt1, int paramInt2) {}
+  PicPreDownloader$4(PicPreDownloader paramPicPreDownloader, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    if (!this.this$0.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PIC_TAG_PRELOAD", 2, "productAysnc(): cannot predownload");
-      }
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -1);
-      return;
-    }
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, this.b);
+    ((IMsgStructing)QRoute.api(IMsgStructing.class)).consumeStructMsgPicPre(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.4
  * JD-Core Version:    0.7.0.1
  */

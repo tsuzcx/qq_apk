@@ -1,91 +1,93 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import apvi;
-import apvl;
-import apwv;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class EmoticonPanelMallHelper$4$1
+class EmoticonPanelMallHelper$4$1
   implements Runnable
 {
-  public EmoticonPanelMallHelper$4$1(apvl paramapvl, EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  EmoticonPanelMallHelper$4$1(EmoticonPanelMallHelper.4 param4, EmoticonPackage paramEmoticonPackage, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter;
+    Object localObject = ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPageAdapter();
     if (localObject != null) {
-      ((EmotionPanelViewPagerAdapter)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+      ((EmotionPanelViewPagerAdapter)localObject).onDownload(this.val$ep.epId);
     }
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x2) > 0) && (this.jdField_a_of_type_Int == 0))
+    if (((this.val$ep.extraFlags & 0x2) > 0) && (this.val$resultCode == 0))
     {
-      this.jdField_a_of_type_Apvl.a.a.a().i = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags &= 0xFFFFFFFD;
-      this.jdField_a_of_type_Apvl.a.a.d(EmoticonPanelController.jdField_b_of_type_Int);
-    }
-    label98:
-    do
-    {
-      do
-      {
-        break label98;
-        do
-        {
-          return;
-        } while ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 3) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 5));
-        if (this.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        if (this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage))
-        {
-          this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
-          return;
-        }
-        this.jdField_a_of_type_Apvl.a.a.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Apvl.a.a.a().i = false;
-        this.jdField_a_of_type_Apvl.a.a.d = false;
-      } while ((this.jdField_a_of_type_Apvl.a.a.a().getVisibility() != 0) || (this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelMallHelper", 2, "Emoticon pkg downloaded in panel, refresh");
-      }
-      localObject = this.jdField_a_of_type_Apvl.a.a.jdField_b_of_type_JavaUtilList;
-    } while (localObject == null);
-    int i = 0;
-    label291:
-    if (i < ((List)localObject).size())
-    {
-      EmoticonPackage localEmoticonPackage = ((apwv)((List)localObject).get(i)).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-      if ((localEmoticonPackage == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(localEmoticonPackage.epId))) {}
-    }
-    for (;;)
-    {
-      int j = i;
-      if (this.jdField_a_of_type_Apvl.a.a.i)
-      {
-        j = i;
-        if (EmoticonPanelController.jdField_b_of_type_Int >= 0) {
-          j = EmoticonPanelController.jdField_b_of_type_Int;
-        }
-      }
-      this.jdField_a_of_type_Apvl.a.a.d(j);
-      this.jdField_a_of_type_Apvl.a.a.c = false;
+      ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanel().mSecondTabInited = false;
+      localObject = this.val$ep;
+      ((EmoticonPackage)localObject).extraFlags &= 0xFFFFFFFD;
+      ((EmoticonPanelController)this.this$1.this$0.mPanelController).switchTabMode(BasePanelModel.sLastSelectedSecondTabIndex);
       return;
-      i += 1;
-      break label291;
-      if (this.jdField_a_of_type_Int == 11000)
-      {
-        QQToast.a(this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_AndroidContentContext.getString(2131689995), 1).b(this.jdField_a_of_type_Apvl.a.a.f);
+    }
+    if (this.val$ep.jobType != 3)
+    {
+      if (this.val$ep.jobType == 5) {
         return;
       }
-      if (this.jdField_a_of_type_Int != 11001) {
-        break;
+      int i = this.val$resultCode;
+      if (i == 0)
+      {
+        if (((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelModel().addEmoPkgList.contains(this.val$ep))
+        {
+          ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelModel().addEmoPkgList.remove(this.val$ep);
+          return;
+        }
+        ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelView().mMarketPgkDownloaded = false;
+        ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanel().mSecondTabInited = false;
+        ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelView().isNeedResetX = false;
+        if ((((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanel().getVisibility() == 0) && (((EmoticonPanelController)this.this$1.this$0.mPanelController).app != null))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("EmoticonPanelMallHelper", 2, "Emoticon pkg downloaded in panel, refresh");
+          }
+          localObject = ((EmoticonPanelController)this.this$1.this$0.mPanelController).getPanelDataList();
+          if (localObject == null) {
+            return;
+          }
+          int j = 0;
+          while (j < ((List)localObject).size())
+          {
+            EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)((List)localObject).get(j)).emotionPkg;
+            if ((localEmoticonPackage != null) && (this.val$ep.epId.equals(localEmoticonPackage.epId))) {
+              break label399;
+            }
+            j += 1;
+          }
+          j = 0;
+          label399:
+          i = j;
+          if (this.this$1.this$0.isClickNoChangeTab)
+          {
+            i = j;
+            if (BasePanelModel.sLastSelectedSecondTabIndex >= 0) {
+              i = BasePanelModel.sLastSelectedSecondTabIndex;
+            }
+          }
+          j = ((EmoticonPanelController)this.this$1.this$0.mPanelController).findIndexByPanelType(12);
+          if (BasePanelModel.sLastSelectedSecondTabIndex == j) {
+            i = j;
+          }
+          ((EmoticonPanelController)this.this$1.this$0.mPanelController).switchTabMode(i);
+          ((EmoticonPanelController)this.this$1.this$0.mPanelController).getBasePanelView().mNeedUpdate = false;
+        }
       }
-      QQToast.a(this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apvl.a.a.jdField_a_of_type_AndroidContentContext.getString(2131689996), 1).b(this.jdField_a_of_type_Apvl.a.a.f);
-      return;
-      i = 0;
+      else
+      {
+        if (i == 11000)
+        {
+          QQToast.makeText(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131886536), 1).show(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+          return;
+        }
+        if (i == 11001) {
+          QQToast.makeText(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131886537), 1).show(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+        }
+      }
     }
   }
 }

@@ -3,11 +3,13 @@ package com.facebook.yoga.android;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.SparseArray;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
@@ -18,10 +20,15 @@ import com.facebook.yoga.YogaDisplay;
 import com.facebook.yoga.YogaEdge;
 import com.facebook.yoga.YogaFlexDirection;
 import com.facebook.yoga.YogaJustify;
+import com.facebook.yoga.YogaMeasureFunction;
+import com.facebook.yoga.YogaMeasureMode;
+import com.facebook.yoga.YogaMeasureOutput;
 import com.facebook.yoga.YogaNode;
+import com.facebook.yoga.YogaNodeFactory;
 import com.facebook.yoga.YogaOverflow;
 import com.facebook.yoga.YogaPositionType;
 import com.facebook.yoga.YogaWrap;
+import com.tencent.kinda.R.styleable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,23 +52,23 @@ public class YogaLayout
   public YogaLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(144213);
-    this.mYogaNode = new YogaNode();
+    AppMethodBeat.i(18237);
+    this.mYogaNode = YogaNodeFactory.create();
     this.mYogaNodes = new HashMap();
     this.mYogaNode.setData(this);
-    this.mYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
+    this.mYogaNode.setMeasureFunction(new ViewMeasureFunction());
     if (paramAttributeSet != null) {}
-    for (paramContext = new YogaLayout.LayoutParams(paramContext, paramAttributeSet);; paramContext = (YogaLayout.LayoutParams)generateDefaultLayoutParams())
+    for (paramContext = new LayoutParams(paramContext, paramAttributeSet);; paramContext = (LayoutParams)generateDefaultLayoutParams())
     {
       applyLayoutParams(paramContext, this.mYogaNode, this);
-      AppMethodBeat.o(144213);
+      AppMethodBeat.o(18237);
       return;
     }
   }
   
-  protected static void applyLayoutParams(YogaLayout.LayoutParams paramLayoutParams, YogaNode paramYogaNode, View paramView)
+  protected static void applyLayoutParams(LayoutParams paramLayoutParams, YogaNode paramYogaNode, View paramView)
   {
-    AppMethodBeat.i(144230);
+    AppMethodBeat.i(18254);
     if ((Build.VERSION.SDK_INT >= 17) && (paramView.getResources().getConfiguration().getLayoutDirection() == 1)) {
       paramYogaNode.setDirection(YogaDirection.RTL);
     }
@@ -84,124 +91,124 @@ public class YogaLayout
     {
       j = paramLayoutParams.numericAttributes.keyAt(i);
       f = ((Float)paramLayoutParams.numericAttributes.valueAt(i)).floatValue();
-      if (j == 0) {
+      if (j == R.styleable.yoga_yg_alignContent) {
         paramYogaNode.setAlignContent(YogaAlign.fromInt(Math.round(f)));
       }
       for (;;)
       {
         i += 1;
         break;
-        if (j == 1) {
+        if (j == R.styleable.yoga_yg_alignItems) {
           paramYogaNode.setAlignItems(YogaAlign.fromInt(Math.round(f)));
-        } else if (j == 2) {
+        } else if (j == R.styleable.yoga_yg_alignSelf) {
           paramYogaNode.setAlignSelf(YogaAlign.fromInt(Math.round(f)));
-        } else if (j == 3) {
+        } else if (j == R.styleable.yoga_yg_aspectRatio) {
           paramYogaNode.setAspectRatio(f);
-        } else if (j == 4) {
+        } else if (j == R.styleable.yoga_yg_borderLeft) {
           paramYogaNode.setBorder(YogaEdge.LEFT, f);
-        } else if (j == 5) {
+        } else if (j == R.styleable.yoga_yg_borderTop) {
           paramYogaNode.setBorder(YogaEdge.TOP, f);
-        } else if (j == 6) {
+        } else if (j == R.styleable.yoga_yg_borderRight) {
           paramYogaNode.setBorder(YogaEdge.RIGHT, f);
-        } else if (j == 7) {
+        } else if (j == R.styleable.yoga_yg_borderBottom) {
           paramYogaNode.setBorder(YogaEdge.BOTTOM, f);
-        } else if (j == 8) {
+        } else if (j == R.styleable.yoga_yg_borderStart) {
           paramYogaNode.setBorder(YogaEdge.START, f);
-        } else if (j == 9) {
+        } else if (j == R.styleable.yoga_yg_borderEnd) {
           paramYogaNode.setBorder(YogaEdge.END, f);
-        } else if (j == 10) {
+        } else if (j == R.styleable.yoga_yg_borderHorizontal) {
           paramYogaNode.setBorder(YogaEdge.HORIZONTAL, f);
-        } else if (j == 11) {
+        } else if (j == R.styleable.yoga_yg_borderVertical) {
           paramYogaNode.setBorder(YogaEdge.VERTICAL, f);
-        } else if (j == 12) {
+        } else if (j == R.styleable.yoga_yg_borderAll) {
           paramYogaNode.setBorder(YogaEdge.ALL, f);
-        } else if (j == 13) {
+        } else if (j == R.styleable.yoga_yg_direction) {
           paramYogaNode.setDirection(YogaDirection.fromInt(Math.round(f)));
-        } else if (j == 14) {
+        } else if (j == R.styleable.yoga_yg_display) {
           paramYogaNode.setDisplay(YogaDisplay.fromInt(Math.round(f)));
-        } else if (j == 15) {
+        } else if (j == R.styleable.yoga_yg_flex) {
           paramYogaNode.setFlex(f);
-        } else if (j == 16) {
+        } else if (j == R.styleable.yoga_yg_flexBasis) {
           paramYogaNode.setFlexBasis(f);
-        } else if (j == 17) {
+        } else if (j == R.styleable.yoga_yg_flexDirection) {
           paramYogaNode.setFlexDirection(YogaFlexDirection.fromInt(Math.round(f)));
-        } else if (j == 18) {
+        } else if (j == R.styleable.yoga_yg_flexGrow) {
           paramYogaNode.setFlexGrow(f);
-        } else if (j == 19) {
+        } else if (j == R.styleable.yoga_yg_flexShrink) {
           paramYogaNode.setFlexShrink(f);
-        } else if (j == 20) {
+        } else if (j == R.styleable.yoga_yg_height) {
           paramYogaNode.setHeight(f);
-        } else if (j == 22) {
+        } else if (j == R.styleable.yoga_yg_marginLeft) {
           paramYogaNode.setMargin(YogaEdge.LEFT, f);
-        } else if (j == 21) {
+        } else if (j == R.styleable.yoga_yg_justifyContent) {
           paramYogaNode.setJustifyContent(YogaJustify.fromInt(Math.round(f)));
-        } else if (j == 23) {
+        } else if (j == R.styleable.yoga_yg_marginTop) {
           paramYogaNode.setMargin(YogaEdge.TOP, f);
-        } else if (j == 24) {
+        } else if (j == R.styleable.yoga_yg_marginRight) {
           paramYogaNode.setMargin(YogaEdge.RIGHT, f);
-        } else if (j == 25) {
+        } else if (j == R.styleable.yoga_yg_marginBottom) {
           paramYogaNode.setMargin(YogaEdge.BOTTOM, f);
-        } else if (j == 26) {
+        } else if (j == R.styleable.yoga_yg_marginStart) {
           paramYogaNode.setMargin(YogaEdge.START, f);
-        } else if (j == 27) {
+        } else if (j == R.styleable.yoga_yg_marginEnd) {
           paramYogaNode.setMargin(YogaEdge.END, f);
-        } else if (j == 28) {
+        } else if (j == R.styleable.yoga_yg_marginHorizontal) {
           paramYogaNode.setMargin(YogaEdge.HORIZONTAL, f);
-        } else if (j == 29) {
+        } else if (j == R.styleable.yoga_yg_marginVertical) {
           paramYogaNode.setMargin(YogaEdge.VERTICAL, f);
-        } else if (j == 30) {
+        } else if (j == R.styleable.yoga_yg_marginAll) {
           paramYogaNode.setMargin(YogaEdge.ALL, f);
-        } else if (j == 31) {
+        } else if (j == R.styleable.yoga_yg_maxHeight) {
           paramYogaNode.setMaxHeight(f);
-        } else if (j == 32) {
+        } else if (j == R.styleable.yoga_yg_maxWidth) {
           paramYogaNode.setMaxWidth(f);
-        } else if (j == 33) {
+        } else if (j == R.styleable.yoga_yg_minHeight) {
           paramYogaNode.setMinHeight(f);
-        } else if (j == 34) {
+        } else if (j == R.styleable.yoga_yg_minWidth) {
           paramYogaNode.setMinWidth(f);
-        } else if (j == 35) {
+        } else if (j == R.styleable.yoga_yg_overflow) {
           paramYogaNode.setOverflow(YogaOverflow.fromInt(Math.round(f)));
-        } else if (j == 36) {
+        } else if (j == R.styleable.yoga_yg_paddingLeft) {
           paramYogaNode.setPadding(YogaEdge.LEFT, f);
-        } else if (j == 37) {
+        } else if (j == R.styleable.yoga_yg_paddingTop) {
           paramYogaNode.setPadding(YogaEdge.TOP, f);
-        } else if (j == 38) {
+        } else if (j == R.styleable.yoga_yg_paddingRight) {
           paramYogaNode.setPadding(YogaEdge.RIGHT, f);
-        } else if (j == 39) {
+        } else if (j == R.styleable.yoga_yg_paddingBottom) {
           paramYogaNode.setPadding(YogaEdge.BOTTOM, f);
-        } else if (j == 40) {
+        } else if (j == R.styleable.yoga_yg_paddingStart) {
           paramYogaNode.setPadding(YogaEdge.START, f);
-        } else if (j == 41) {
+        } else if (j == R.styleable.yoga_yg_paddingEnd) {
           paramYogaNode.setPadding(YogaEdge.END, f);
-        } else if (j == 42) {
+        } else if (j == R.styleable.yoga_yg_paddingHorizontal) {
           paramYogaNode.setPadding(YogaEdge.HORIZONTAL, f);
-        } else if (j == 43) {
+        } else if (j == R.styleable.yoga_yg_paddingVertical) {
           paramYogaNode.setPadding(YogaEdge.VERTICAL, f);
-        } else if (j == 44) {
+        } else if (j == R.styleable.yoga_yg_paddingAll) {
           paramYogaNode.setPadding(YogaEdge.ALL, f);
-        } else if (j == 45) {
+        } else if (j == R.styleable.yoga_yg_positionLeft) {
           paramYogaNode.setPosition(YogaEdge.LEFT, f);
-        } else if (j == 46) {
+        } else if (j == R.styleable.yoga_yg_positionTop) {
           paramYogaNode.setPosition(YogaEdge.TOP, f);
-        } else if (j == 47) {
+        } else if (j == R.styleable.yoga_yg_positionRight) {
           paramYogaNode.setPosition(YogaEdge.RIGHT, f);
-        } else if (j == 48) {
+        } else if (j == R.styleable.yoga_yg_positionBottom) {
           paramYogaNode.setPosition(YogaEdge.BOTTOM, f);
-        } else if (j == 49) {
+        } else if (j == R.styleable.yoga_yg_positionStart) {
           paramYogaNode.setPosition(YogaEdge.START, f);
-        } else if (j == 50) {
+        } else if (j == R.styleable.yoga_yg_positionEnd) {
           paramYogaNode.setPosition(YogaEdge.END, f);
-        } else if (j == 51) {
+        } else if (j == R.styleable.yoga_yg_positionHorizontal) {
           paramYogaNode.setPosition(YogaEdge.HORIZONTAL, f);
-        } else if (j == 52) {
+        } else if (j == R.styleable.yoga_yg_positionVertical) {
           paramYogaNode.setPosition(YogaEdge.VERTICAL, f);
-        } else if (j == 53) {
+        } else if (j == R.styleable.yoga_yg_positionAll) {
           paramYogaNode.setPosition(YogaEdge.ALL, f);
-        } else if (j == 54) {
+        } else if (j == R.styleable.yoga_yg_positionType) {
           paramYogaNode.setPositionType(YogaPositionType.fromInt(Math.round(f)));
-        } else if (j == 55) {
+        } else if (j == R.styleable.yoga_yg_width) {
           paramYogaNode.setWidth(f);
-        } else if (j == 56) {
+        } else if (j == R.styleable.yoga_yg_wrap) {
           paramYogaNode.setWrap(YogaWrap.fromInt(Math.round(f)));
         }
       }
@@ -213,17 +220,17 @@ public class YogaLayout
       paramView = (String)paramLayoutParams.stringAttributes.valueAt(i);
       if (paramView.equals("auto"))
       {
-        if (j == 22) {
+        if (j == R.styleable.yoga_yg_marginLeft) {
           paramYogaNode.setMarginAuto(YogaEdge.LEFT);
         }
       }
       else {
-        label1240:
+        label1306:
         if (paramView.endsWith("%"))
         {
           f = Float.parseFloat(paramView.substring(0, paramView.length() - 1));
-          if (j != 16) {
-            break label1422;
+          if (j != R.styleable.yoga_yg_flexBasis) {
+            break label1497;
           }
           paramYogaNode.setFlexBasisPercent(f);
         }
@@ -232,132 +239,134 @@ public class YogaLayout
       {
         i += 1;
         break;
-        if (j == 23)
+        if (j == R.styleable.yoga_yg_marginTop)
         {
           paramYogaNode.setMarginAuto(YogaEdge.TOP);
-          break label1240;
+          break label1306;
         }
-        if (j == 24)
+        if (j == R.styleable.yoga_yg_marginRight)
         {
           paramYogaNode.setMarginAuto(YogaEdge.RIGHT);
-          break label1240;
+          break label1306;
         }
-        if (j == 25)
+        if (j == R.styleable.yoga_yg_marginBottom)
         {
           paramYogaNode.setMarginAuto(YogaEdge.BOTTOM);
-          break label1240;
+          break label1306;
         }
-        if (j == 26)
+        if (j == R.styleable.yoga_yg_marginStart)
         {
           paramYogaNode.setMarginAuto(YogaEdge.START);
-          break label1240;
+          break label1306;
         }
-        if (j == 27)
+        if (j == R.styleable.yoga_yg_marginEnd)
         {
           paramYogaNode.setMarginAuto(YogaEdge.END);
-          break label1240;
+          break label1306;
         }
-        if (j == 28)
+        if (j == R.styleable.yoga_yg_marginHorizontal)
         {
           paramYogaNode.setMarginAuto(YogaEdge.HORIZONTAL);
-          break label1240;
+          break label1306;
         }
-        if (j == 29)
+        if (j == R.styleable.yoga_yg_marginVertical)
         {
           paramYogaNode.setMarginAuto(YogaEdge.VERTICAL);
-          break label1240;
+          break label1306;
         }
-        if (j != 30) {
-          break label1240;
+        if (j != R.styleable.yoga_yg_marginAll) {
+          break label1306;
         }
         paramYogaNode.setMarginAuto(YogaEdge.ALL);
-        break label1240;
-        label1422:
-        if (j == 20) {
+        break label1306;
+        label1497:
+        if (j == R.styleable.yoga_yg_height) {
           paramYogaNode.setHeightPercent(f);
-        } else if (j == 22) {
+        } else if (j == R.styleable.yoga_yg_marginLeft) {
           paramYogaNode.setMarginPercent(YogaEdge.LEFT, f);
-        } else if (j == 23) {
+        } else if (j == R.styleable.yoga_yg_marginTop) {
           paramYogaNode.setMarginPercent(YogaEdge.TOP, f);
-        } else if (j == 24) {
+        } else if (j == R.styleable.yoga_yg_marginRight) {
           paramYogaNode.setMarginPercent(YogaEdge.RIGHT, f);
-        } else if (j == 25) {
+        } else if (j == R.styleable.yoga_yg_marginBottom) {
           paramYogaNode.setMarginPercent(YogaEdge.BOTTOM, f);
-        } else if (j == 26) {
+        } else if (j == R.styleable.yoga_yg_marginStart) {
           paramYogaNode.setMarginPercent(YogaEdge.START, f);
-        } else if (j == 27) {
+        } else if (j == R.styleable.yoga_yg_marginEnd) {
           paramYogaNode.setMarginPercent(YogaEdge.END, f);
-        } else if (j == 28) {
+        } else if (j == R.styleable.yoga_yg_marginHorizontal) {
           paramYogaNode.setMarginPercent(YogaEdge.HORIZONTAL, f);
-        } else if (j == 29) {
+        } else if (j == R.styleable.yoga_yg_marginVertical) {
           paramYogaNode.setMarginPercent(YogaEdge.VERTICAL, f);
-        } else if (j == 30) {
+        } else if (j == R.styleable.yoga_yg_marginAll) {
           paramYogaNode.setMarginPercent(YogaEdge.ALL, f);
-        } else if (j == 31) {
+        } else if (j == R.styleable.yoga_yg_maxHeight) {
           paramYogaNode.setMaxHeightPercent(f);
-        } else if (j == 32) {
+        } else if (j == R.styleable.yoga_yg_maxWidth) {
           paramYogaNode.setMaxWidthPercent(f);
-        } else if (j == 33) {
+        } else if (j == R.styleable.yoga_yg_minHeight) {
           paramYogaNode.setMinHeightPercent(f);
-        } else if (j == 34) {
+        } else if (j == R.styleable.yoga_yg_minWidth) {
           paramYogaNode.setMinWidthPercent(f);
-        } else if (j == 36) {
+        } else if (j == R.styleable.yoga_yg_paddingLeft) {
           paramYogaNode.setPaddingPercent(YogaEdge.LEFT, f);
-        } else if (j == 37) {
+        } else if (j == R.styleable.yoga_yg_paddingTop) {
           paramYogaNode.setPaddingPercent(YogaEdge.TOP, f);
-        } else if (j == 38) {
+        } else if (j == R.styleable.yoga_yg_paddingRight) {
           paramYogaNode.setPaddingPercent(YogaEdge.RIGHT, f);
-        } else if (j == 39) {
+        } else if (j == R.styleable.yoga_yg_paddingBottom) {
           paramYogaNode.setPaddingPercent(YogaEdge.BOTTOM, f);
-        } else if (j == 40) {
+        } else if (j == R.styleable.yoga_yg_paddingStart) {
           paramYogaNode.setPaddingPercent(YogaEdge.START, f);
-        } else if (j == 41) {
+        } else if (j == R.styleable.yoga_yg_paddingEnd) {
           paramYogaNode.setPaddingPercent(YogaEdge.END, f);
-        } else if (j == 42) {
+        } else if (j == R.styleable.yoga_yg_paddingHorizontal) {
           paramYogaNode.setPaddingPercent(YogaEdge.HORIZONTAL, f);
-        } else if (j == 43) {
+        } else if (j == R.styleable.yoga_yg_paddingVertical) {
           paramYogaNode.setPaddingPercent(YogaEdge.VERTICAL, f);
-        } else if (j == 44) {
+        } else if (j == R.styleable.yoga_yg_paddingAll) {
           paramYogaNode.setPaddingPercent(YogaEdge.ALL, f);
-        } else if (j == 45) {
+        } else if (j == R.styleable.yoga_yg_positionLeft) {
           paramYogaNode.setPositionPercent(YogaEdge.LEFT, f);
-        } else if (j == 46) {
+        } else if (j == R.styleable.yoga_yg_positionTop) {
           paramYogaNode.setPositionPercent(YogaEdge.TOP, f);
-        } else if (j == 47) {
+        } else if (j == R.styleable.yoga_yg_positionRight) {
           paramYogaNode.setPositionPercent(YogaEdge.RIGHT, f);
-        } else if (j == 48) {
+        } else if (j == R.styleable.yoga_yg_positionBottom) {
           paramYogaNode.setPositionPercent(YogaEdge.BOTTOM, f);
-        } else if (j == 49) {
+        } else if (j == R.styleable.yoga_yg_positionStart) {
           paramYogaNode.setPositionPercent(YogaEdge.START, f);
-        } else if (j == 50) {
+        } else if (j == R.styleable.yoga_yg_positionEnd) {
           paramYogaNode.setPositionPercent(YogaEdge.END, f);
-        } else if (j == 51) {
+        } else if (j == R.styleable.yoga_yg_positionHorizontal) {
           paramYogaNode.setPositionPercent(YogaEdge.HORIZONTAL, f);
-        } else if (j == 52) {
+        } else if (j == R.styleable.yoga_yg_positionVertical) {
           paramYogaNode.setPositionPercent(YogaEdge.VERTICAL, f);
-        } else if (j == 53) {
+        } else if (j == R.styleable.yoga_yg_positionAll) {
           paramYogaNode.setPositionPercent(YogaEdge.ALL, f);
-        } else if (j == 55) {
+        } else if (j == R.styleable.yoga_yg_width) {
           paramYogaNode.setWidthPercent(f);
         }
       }
     }
-    AppMethodBeat.o(144230);
+    AppMethodBeat.o(18254);
   }
   
   private void applyLayoutRecursive(YogaNode paramYogaNode, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(144226);
+    AppMethodBeat.i(18250);
     View localView = (View)paramYogaNode.getData();
     if ((localView != null) && (localView != this))
     {
       if (localView.getVisibility() == 8)
       {
-        AppMethodBeat.o(144226);
+        AppMethodBeat.o(18250);
         return;
       }
+      i = Math.round(paramYogaNode.getLayoutX() + paramFloat1);
+      j = Math.round(paramYogaNode.getLayoutY() + paramFloat2);
       localView.measure(View.MeasureSpec.makeMeasureSpec(Math.round(paramYogaNode.getLayoutWidth()), 1073741824), View.MeasureSpec.makeMeasureSpec(Math.round(paramYogaNode.getLayoutHeight()), 1073741824));
-      localView.layout(Math.round(paramYogaNode.getLayoutX() + paramFloat1), Math.round(paramYogaNode.getLayoutY() + paramFloat2), Math.round(paramYogaNode.getLayoutX() + paramFloat1 + paramYogaNode.getLayoutWidth()), Math.round(paramYogaNode.getLayoutY() + paramFloat2 + paramYogaNode.getLayoutHeight()));
+      localView.layout(i, j, localView.getMeasuredWidth() + i, localView.getMeasuredHeight() + j);
     }
     int j = paramYogaNode.getChildCount();
     int i = 0;
@@ -375,12 +384,12 @@ public class YogaLayout
         }
       }
     }
-    AppMethodBeat.o(144226);
+    AppMethodBeat.o(18250);
   }
   
   private void createLayout(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(144229);
+    AppMethodBeat.i(18253);
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt2);
     paramInt1 = View.MeasureSpec.getMode(paramInt1);
@@ -400,20 +409,20 @@ public class YogaLayout
     if (paramInt2 == 0) {
       this.mYogaNode.setHeightAuto();
     }
-    this.mYogaNode.calculateLayout(1.0E+021F, 1.0E+021F);
-    AppMethodBeat.o(144229);
+    this.mYogaNode.calculateLayout((0.0F / 0.0F), (0.0F / 0.0F));
+    AppMethodBeat.o(18253);
   }
   
   private void removeViewFromYogaTree(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(144225);
+    AppMethodBeat.i(18249);
     YogaNode localYogaNode1 = (YogaNode)this.mYogaNodes.get(paramView);
     if (localYogaNode1 == null)
     {
-      AppMethodBeat.o(144225);
+      AppMethodBeat.o(18249);
       return;
     }
-    YogaNode localYogaNode2 = localYogaNode1.getParent();
+    YogaNode localYogaNode2 = localYogaNode1.getOwner();
     int i = 0;
     for (;;)
     {
@@ -428,93 +437,92 @@ public class YogaLayout
         localYogaNode1.setData(null);
         this.mYogaNodes.remove(paramView);
         if (paramBoolean) {
-          this.mYogaNode.calculateLayout(1.0E+021F, 1.0E+021F);
+          this.mYogaNode.calculateLayout((0.0F / 0.0F), (0.0F / 0.0F));
         }
-        AppMethodBeat.o(144225);
+        AppMethodBeat.o(18249);
         return;
       }
       i += 1;
     }
   }
   
-  public YogaNode addView(View paramView, YogaNode paramYogaNode)
-  {
-    AppMethodBeat.i(144216);
-    this.mYogaNode.setMeasureFunction(null);
-    if (!(paramView instanceof YogaLayout))
-    {
-      paramYogaNode.setData(paramView);
-      paramYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
-    }
-    this.mYogaNodes.put(paramView, paramYogaNode);
-    this.mYogaNode.addChildAt(paramYogaNode, this.mYogaNode.getChildCount());
-    super.addView(paramView, getChildCount(), new YogaLayout.LayoutParams(-1, -1));
-    AppMethodBeat.o(144216);
-    return paramYogaNode;
-  }
-  
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(144215);
+    AppMethodBeat.i(18239);
     this.mYogaNode.setMeasureFunction(null);
     if ((paramView instanceof VirtualYogaLayout))
     {
       ((VirtualYogaLayout)paramView).transferChildren(this);
       paramView = ((VirtualYogaLayout)paramView).getYogaNode();
       this.mYogaNode.addChildAt(paramView, this.mYogaNode.getChildCount());
-      AppMethodBeat.o(144215);
+      AppMethodBeat.o(18239);
       return;
     }
     super.addView(paramView, paramInt, paramLayoutParams);
     if (this.mYogaNodes.containsKey(paramView))
     {
-      AppMethodBeat.o(144215);
+      AppMethodBeat.o(18239);
       return;
     }
     if ((paramView instanceof YogaLayout))
     {
       paramLayoutParams = ((YogaLayout)paramView).getYogaNode();
-      applyLayoutParams((YogaLayout.LayoutParams)paramView.getLayoutParams(), paramLayoutParams, paramView);
+      applyLayoutParams((LayoutParams)paramView.getLayoutParams(), paramLayoutParams, paramView);
       this.mYogaNodes.put(paramView, paramLayoutParams);
       this.mYogaNode.addChildAt(paramLayoutParams, this.mYogaNode.getChildCount());
-      AppMethodBeat.o(144215);
+      AppMethodBeat.o(18239);
       return;
     }
     if (this.mYogaNodes.containsKey(paramView)) {}
-    for (paramLayoutParams = (YogaNode)this.mYogaNodes.get(paramView);; paramLayoutParams = new YogaNode())
+    for (paramLayoutParams = (YogaNode)this.mYogaNodes.get(paramView);; paramLayoutParams = YogaNodeFactory.create())
     {
       paramLayoutParams.setData(paramView);
-      paramLayoutParams.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
+      paramLayoutParams.setMeasureFunction(new ViewMeasureFunction());
       break;
     }
   }
   
+  public void addView(View paramView, YogaNode paramYogaNode)
+  {
+    AppMethodBeat.i(208217);
+    this.mYogaNode.setMeasureFunction(null);
+    if (!(paramView instanceof YogaLayout))
+    {
+      paramYogaNode.setData(paramView);
+      paramYogaNode.setMeasureFunction(new ViewMeasureFunction());
+    }
+    this.mYogaNodes.put(paramView, paramYogaNode);
+    this.mYogaNode.addChildAt(paramYogaNode, this.mYogaNode.getChildCount());
+    super.addView(paramView, getChildCount(), new LayoutParams(-1, -1));
+    AppMethodBeat.o(208217);
+  }
+  
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof YogaLayout.LayoutParams;
+    return paramLayoutParams instanceof LayoutParams;
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(144232);
-    YogaLayout.LayoutParams localLayoutParams = new YogaLayout.LayoutParams(-1, -1);
-    AppMethodBeat.o(144232);
+    AppMethodBeat.i(18256);
+    LayoutParams localLayoutParams = new LayoutParams(-1, -1);
+    AppMethodBeat.o(18256);
     return localLayoutParams;
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(144231);
-    paramAttributeSet = new YogaLayout.LayoutParams(getContext(), paramAttributeSet);
-    AppMethodBeat.o(144231);
+    AppMethodBeat.i(18255);
+    paramAttributeSet = new LayoutParams(getContext(), paramAttributeSet);
+    AppMethodBeat.o(18255);
     return paramAttributeSet;
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(144233);
-    paramLayoutParams = new YogaLayout.LayoutParams(paramLayoutParams);
-    AppMethodBeat.o(144233);
+    AppMethodBeat.i(18257);
+    paramLayoutParams = new LayoutParams(paramLayoutParams);
+    AppMethodBeat.o(18257);
     return paramLayoutParams;
   }
   
@@ -525,19 +533,19 @@ public class YogaLayout
   
   public YogaNode getYogaNodeForView(View paramView)
   {
-    AppMethodBeat.i(144214);
+    AppMethodBeat.i(18238);
     paramView = (YogaNode)this.mYogaNodes.get(paramView);
-    AppMethodBeat.o(144214);
+    AppMethodBeat.o(18238);
     return paramView;
   }
   
   public void invalidate(View paramView)
   {
-    AppMethodBeat.i(144224);
+    AppMethodBeat.i(18248);
     if (this.mYogaNodes.containsKey(paramView))
     {
       ((YogaNode)this.mYogaNodes.get(paramView)).dirty();
-      AppMethodBeat.o(144224);
+      AppMethodBeat.o(18248);
       return;
     }
     int j = this.mYogaNode.getChildCount();
@@ -551,32 +559,32 @@ public class YogaLayout
       i += 1;
     }
     invalidate();
-    AppMethodBeat.o(144224);
+    AppMethodBeat.o(18248);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(144227);
+    AppMethodBeat.i(18251);
     if (!(getParent() instanceof YogaLayout)) {
       createLayout(View.MeasureSpec.makeMeasureSpec(paramInt3 - paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt4 - paramInt2, 1073741824));
     }
     applyLayoutRecursive(this.mYogaNode, 0.0F, 0.0F);
-    AppMethodBeat.o(144227);
+    AppMethodBeat.o(18251);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(144228);
+    AppMethodBeat.i(18252);
     if (!(getParent() instanceof YogaLayout)) {
       createLayout(paramInt1, paramInt2);
     }
     setMeasuredDimension(Math.round(this.mYogaNode.getLayoutWidth()), Math.round(this.mYogaNode.getLayoutHeight()));
-    AppMethodBeat.o(144228);
+    AppMethodBeat.o(18252);
   }
   
   public void removeAllViews()
   {
-    AppMethodBeat.i(144222);
+    AppMethodBeat.i(18246);
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -585,12 +593,12 @@ public class YogaLayout
       i += 1;
     }
     super.removeAllViews();
-    AppMethodBeat.o(144222);
+    AppMethodBeat.o(18246);
   }
   
   public void removeAllViewsInLayout()
   {
-    AppMethodBeat.i(144223);
+    AppMethodBeat.i(18247);
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -599,36 +607,36 @@ public class YogaLayout
       i += 1;
     }
     super.removeAllViewsInLayout();
-    AppMethodBeat.o(144223);
+    AppMethodBeat.o(18247);
   }
   
   public void removeView(View paramView)
   {
-    AppMethodBeat.i(144217);
+    AppMethodBeat.i(18241);
     removeViewFromYogaTree(paramView, false);
     super.removeView(paramView);
-    AppMethodBeat.o(144217);
+    AppMethodBeat.o(18241);
   }
   
   public void removeViewAt(int paramInt)
   {
-    AppMethodBeat.i(144218);
+    AppMethodBeat.i(18242);
     removeViewFromYogaTree(getChildAt(paramInt), false);
     super.removeViewAt(paramInt);
-    AppMethodBeat.o(144218);
+    AppMethodBeat.o(18242);
   }
   
   public void removeViewInLayout(View paramView)
   {
-    AppMethodBeat.i(144219);
+    AppMethodBeat.i(18243);
     removeViewFromYogaTree(paramView, true);
     super.removeViewInLayout(paramView);
-    AppMethodBeat.o(144219);
+    AppMethodBeat.o(18243);
   }
   
   public void removeViews(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(144220);
+    AppMethodBeat.i(18244);
     int i = paramInt1;
     while (i < paramInt1 + paramInt2)
     {
@@ -636,12 +644,12 @@ public class YogaLayout
       i += 1;
     }
     super.removeViews(paramInt1, paramInt2);
-    AppMethodBeat.o(144220);
+    AppMethodBeat.o(18244);
   }
   
   public void removeViewsInLayout(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(144221);
+    AppMethodBeat.i(18245);
     int i = paramInt1;
     while (i < paramInt1 + paramInt2)
     {
@@ -649,12 +657,125 @@ public class YogaLayout
       i += 1;
     }
     super.removeViewsInLayout(paramInt1, paramInt2);
-    AppMethodBeat.o(144221);
+    AppMethodBeat.o(18245);
+  }
+  
+  public static class LayoutParams
+    extends ViewGroup.LayoutParams
+  {
+    SparseArray<Float> numericAttributes;
+    SparseArray<String> stringAttributes;
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+      AppMethodBeat.i(18234);
+      this.numericAttributes = new SparseArray();
+      this.stringAttributes = new SparseArray();
+      if (paramInt1 >= 0) {
+        this.numericAttributes.put(R.styleable.yoga_yg_width, Float.valueOf(paramInt1));
+      }
+      if (paramInt2 >= 0) {
+        this.numericAttributes.put(R.styleable.yoga_yg_height, Float.valueOf(paramInt2));
+      }
+      AppMethodBeat.o(18234);
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      AppMethodBeat.i(18235);
+      this.numericAttributes = new SparseArray();
+      this.stringAttributes = new SparseArray();
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.yoga);
+      if (this.width >= 0) {
+        this.numericAttributes.put(R.styleable.yoga_yg_width, Float.valueOf(this.width));
+      }
+      if (this.height >= 0) {
+        this.numericAttributes.put(R.styleable.yoga_yg_height, Float.valueOf(this.height));
+      }
+      int j = paramContext.getIndexCount();
+      int i = 0;
+      if (i < j)
+      {
+        int k = paramContext.getIndex(i);
+        paramAttributeSet = new TypedValue();
+        paramContext.getValue(k, paramAttributeSet);
+        if (paramAttributeSet.type == 5) {
+          this.numericAttributes.put(k, Float.valueOf(paramContext.getDimensionPixelSize(k, 0)));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (paramAttributeSet.type == 3) {
+            this.stringAttributes.put(k, paramContext.getString(k));
+          } else {
+            this.numericAttributes.put(k, Float.valueOf(paramContext.getFloat(k, 0.0F)));
+          }
+        }
+      }
+      paramContext.recycle();
+      AppMethodBeat.o(18235);
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+      AppMethodBeat.i(18233);
+      if ((paramLayoutParams instanceof LayoutParams))
+      {
+        this.numericAttributes = ((LayoutParams)paramLayoutParams).numericAttributes.clone();
+        this.stringAttributes = ((LayoutParams)paramLayoutParams).stringAttributes.clone();
+        AppMethodBeat.o(18233);
+        return;
+      }
+      this.numericAttributes = new SparseArray();
+      this.stringAttributes = new SparseArray();
+      if (paramLayoutParams.width >= 0) {
+        this.numericAttributes.put(R.styleable.yoga_yg_width, Float.valueOf(this.width));
+      }
+      if (paramLayoutParams.height >= 0) {
+        this.numericAttributes.put(R.styleable.yoga_yg_height, Float.valueOf(this.height));
+      }
+      AppMethodBeat.o(18233);
+    }
+  }
+  
+  public static class ViewMeasureFunction
+    implements YogaMeasureFunction
+  {
+    private int viewMeasureSpecFromYogaMeasureMode(YogaMeasureMode paramYogaMeasureMode)
+    {
+      if (paramYogaMeasureMode == YogaMeasureMode.AT_MOST) {
+        return -2147483648;
+      }
+      if (paramYogaMeasureMode == YogaMeasureMode.EXACTLY) {
+        return 1073741824;
+      }
+      return 0;
+    }
+    
+    public long measure(YogaNode paramYogaNode, float paramFloat1, YogaMeasureMode paramYogaMeasureMode1, float paramFloat2, YogaMeasureMode paramYogaMeasureMode2)
+    {
+      AppMethodBeat.i(18236);
+      paramYogaNode = (View)paramYogaNode.getData();
+      if ((paramYogaNode == null) || ((paramYogaNode instanceof YogaLayout)))
+      {
+        l = YogaMeasureOutput.make(0, 0);
+        AppMethodBeat.o(18236);
+        return l;
+      }
+      paramYogaNode.measure(View.MeasureSpec.makeMeasureSpec((int)paramFloat1, viewMeasureSpecFromYogaMeasureMode(paramYogaMeasureMode1)), View.MeasureSpec.makeMeasureSpec((int)paramFloat2, viewMeasureSpecFromYogaMeasureMode(paramYogaMeasureMode2)));
+      long l = YogaMeasureOutput.make(paramYogaNode.getMeasuredWidth(), paramYogaNode.getMeasuredHeight());
+      AppMethodBeat.o(18236);
+      return l;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.facebook.yoga.android.YogaLayout
  * JD-Core Version:    0.7.0.1
  */

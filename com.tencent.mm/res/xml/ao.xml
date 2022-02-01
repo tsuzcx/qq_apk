@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.FriendSnsPreference newtip:key="album_dyna_photo_ui_title" newtip:title="@string/jc0" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/bk0" android:key="join_rank" android:defaultValue="true" />
+    <com.tencent.mm.ui.FinderIconViewTipPreference newtip:icon="@raw/icons_outlined_finder_icon" newtip:iconColor="@color/Orange" newtip:key="find_friends_by_finder" newtip:path="finder" newtip:title="@string/cvu" />
+    <com.tencent.mm.ui.findmore.preference.FinderLivePreference newtip:icon="@raw/icons_outlined_float_window_on" newtip:iconColor="@color/a_f" newtip:key="find_friends_by_finder_live" newtip:title="@string/cvv" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/bk2" android:key="notify_rank" android:defaultValue="true" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/bk1" android:key="notify_like" android:defaultValue="true" />
+    <NormalIconPreference newtip:icon="@raw/icons_outlined_scan" newtip:iconColor="@color/Indigo" newtip:key="find_friends_by_qrcode" newtip:title="@string/cw6" />
+    <NormalIconPreference newtip:icon="@raw/icons_outlined_shake" newtip:iconColor="@color/Indigo" newtip:key="find_friends_by_shake" newtip:title="@string/j5c" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.findmore.preference.FinderLiveAboveLookPreference newtip:icon="@raw/icons_outlined_float_window_on" newtip:iconColor="@color/a_f" newtip:key="find_friends_by_finder_live_above_look" newtip:title="@string/cvv" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="@raw/icons_outlined_news" newtip:iconColor="@color/Yellow" newtip:key="find_friends_by_look" newtip:path="topstories" newtip:title="@string/cwc" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="@raw/icons_outlined_searchlogo" newtip:iconColor="@color/Red" newtip:key="find_friends_by_search" newtip:path="search" newtip:title="@string/cwh" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.findmore.preference.FinderNearbyV3Preference newtip:icon="@raw/icons_outlined_live_nearby" newtip:iconColor="@color/Indigo" newtip:key="find_friends_by_near_v3" newtip:title="@string/cw1" />
+    <com.tencent.mm.ui.findmore.preference.FinderNearbyLiveFriendsPreference newtip:icon="@raw/icons_outlined_live_nearby" newtip:iconColor="@color/Indigo" newtip:key="find_live_friends_by_near" newtip:title="@string/h6g" />
+    <NormalIconPreference newtip:icon="@raw/icons_outlined_nearby" newtip:iconColor="@color/Indigo" newtip:key="find_friends_by_near" newtip:title="@string/h66" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="@raw/my_life_around_default_icon" newtip:key="my_life_around" newtip:path="dining_nearby" newtip:title="@string/FF_Entry_Nearby" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="@raw/icons_outlined_shop" newtip:iconColor="@color/Red" newtip:key="jd_market_entrance" newtip:path="shopping" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:icon="?go" newtip:key="more_tab_game_recommend" newtip:path="game" newtip:title="@string/fbh" />
+    <PreferenceSmallCategory />
+    <NormalIconPreference newtip:icon="@raw/icons_outlined_miniprogram" newtip:iconColor="@color/Purple" newtip:key="app_brand_entrance" newtip:title="@string/nl" />
+    <PreferenceSmallCategory />
+    <NormalIconPreference newtip:icon="@raw/icons_outlined_wechatout" newtip:iconColor="@color/Brand" newtip:key="ip_call_entrance" newtip:title="@string/fua" />
     <PreferenceSmallCategory />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/bj6" android:key="black_contact_list" android:layout="@layout/afi" />
 </PreferenceScreen>

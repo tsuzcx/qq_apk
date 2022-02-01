@@ -1,17 +1,22 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.f.a.b;
-import a.l;
-import a.y;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CancellableContinuation;", "T", "Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "cancel", "cause", "", "completeResume", "", "token", "", "initCancellability", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "tryResume", "value", "idempotent", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "tryResumeWithException", "exception", "resumeUndispatched", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Ljava/lang/Object;)V", "resumeUndispatchedWithException", "kotlinx-coroutines-core"})
-public abstract interface i<T>
-  extends c<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/BlockingEventLoop;", "Lkotlinx/coroutines/EventLoopImplBase;", "thread", "Ljava/lang/Thread;", "(Ljava/lang/Thread;)V", "getThread", "()Ljava/lang/Thread;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class i
+  extends bn
 {
-  public abstract void a(w paramw, T paramT);
+  private final Thread thread;
   
-  public abstract void k(b<? super Throwable, y> paramb);
+  public i(Thread paramThread)
+  {
+    this.thread = paramThread;
+  }
+  
+  protected final Thread getThread()
+  {
+    return this.thread;
+  }
 }
 
 

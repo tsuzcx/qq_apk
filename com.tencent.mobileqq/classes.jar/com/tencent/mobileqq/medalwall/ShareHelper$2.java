@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.medalwall;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class ShareHelper$2
+  implements DialogInterface.OnDismissListener
+{
+  ShareHelper$2(ShareHelper paramShareHelper, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    DialogInterface.OnDismissListener localOnDismissListener = this.a;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.medalwall.ShareHelper.2
+ * JD-Core Version:    0.7.0.1
+ */

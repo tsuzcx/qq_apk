@@ -1,0 +1,37 @@
+{
+	"ReadInjoy_article_link_text_cell": {
+		"view_type": "container",
+		"direction": "vertical",
+		"height": {
+
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "relative",
+			"value": "375"
+		},
+		"subviews": [{
+			"view_type": "ReadInJoyLinkClickableLabel",
+			"view_id": "id_article_paragraph",
+			"event_type": "cmd_article_link_click",
+			"margin_left": "15",
+			"margin_right": "15",
+			"margin_top": "16",
+			"height": {
+				"type": "wrap_content"
+			},
+			"width": {
+				"type": "relative",
+				"value": "345"
+			},
+			"attributes": {
+				"setRichText:": "$id_attribute_text",
+				"setFrameString:": "-1",
+				"setTextColorString:": "#3a7ed4",
+				"setFontSizeString:": "$attribute_text_size",
+				"setLineSpace:": "13",
+				"setAttatchInfo:": "$jump_url"
+			}
+		}]
+	}
+}

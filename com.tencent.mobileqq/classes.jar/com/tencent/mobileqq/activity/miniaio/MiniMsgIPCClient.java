@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aija;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,7 +17,7 @@ public class MiniMsgIPCClient
   public static final String MODULE_NAME = "mini_msg_client_module";
   public static final String TAG = "mini_msg_IPCClient";
   private static MiniMsgIPCClient sInstance;
-  private ConcurrentHashMap<Integer, aija> mBusinessInfoMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, MiniMsgBusinessInfo> mBusinessInfoMap = new ConcurrentHashMap();
   private MiniMsgUser mMiniUser;
   
   public MiniMsgIPCClient(String paramString)
@@ -28,15 +27,16 @@ public class MiniMsgIPCClient
   
   public static MiniMsgIPCClient getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MiniMsgIPCClient("mini_msg_client_module");
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MiniMsgIPCClient("mini_msg_client_module");
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static Bundle getModuleBundle()
@@ -73,19 +73,19 @@ public class MiniMsgIPCClient
     paramString = getInstance().mBusinessInfoMap;
     if (!paramString.containsKey(Integer.valueOf(paramInt)))
     {
-      aija localaija = new aija();
-      localaija.a = paramInt;
-      paramString.put(Integer.valueOf(paramInt), localaija);
+      MiniMsgBusinessInfo localMiniMsgBusinessInfo = new MiniMsgBusinessInfo();
+      localMiniMsgBusinessInfo.a = paramInt;
+      paramString.put(Integer.valueOf(paramInt), localMiniMsgBusinessInfo);
       paramString = getInstance();
-    }
-    try
-    {
-      QIPCClientHelper.getInstance().register(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("mini_msg_IPCClient", 1, "register ipc module error.", paramString);
+      try
+      {
+        QIPCClientHelper.getInstance().register(paramString);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("mini_msg_IPCClient", 1, "register ipc module error.", paramString);
+      }
     }
   }
   
@@ -107,9 +107,9 @@ public class MiniMsgIPCClient
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_clear_business", localBundle, null);
   }
   
-  public aija getBusinessInfo(int paramInt)
+  public MiniMsgBusinessInfo getBusinessInfo(int paramInt)
   {
-    return (aija)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
+    return (MiniMsgBusinessInfo)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
   }
   
   public MiniMsgUser getMiniUser()
@@ -119,8 +119,12 @@ public class MiniMsgIPCClient
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_IPCClient", 2, "onCall.action = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall.action = ");
+      localStringBuilder.append(paramString);
+      QLog.d("mini_msg_IPCClient", 2, localStringBuilder.toString());
     }
     if ("action_sync_unreadcount".equals(paramString))
     {

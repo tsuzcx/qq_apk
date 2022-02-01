@@ -2,85 +2,97 @@ package com.tencent.mobileqq.emosm;
 
 import android.os.Handler;
 import android.os.Message;
-import apms;
-import apnj;
-import aupw;
-import bdhj;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.multimsg.save.FileSaveErrorInfo;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import ey;
 import java.io.File;
+import mqq.app.MobileQQ;
 
-public class MultiEmotionSaveManager$1
+class MultiEmotionSaveManager$1
   implements Runnable
 {
-  public MultiEmotionSaveManager$1(apnj paramapnj, File paramFile1, File paramFile2, String paramString1, String paramString2, apms paramapms) {}
+  MultiEmotionSaveManager$1(MultiEmotionSaveManager paramMultiEmotionSaveManager, File paramFile1, File paramFile2, String paramString, EmotionSaveResult paramEmotionSaveResult) {}
   
   public void run()
   {
-    j = 1;
+    int j = 1;
     int k = 0;
-    for (;;)
+    try
     {
-      try
+      StringBuilder localStringBuilder1;
+      if (this.a != null)
       {
-        if (this.jdField_a_of_type_JavaIoFile != null)
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("MultiEmotionSaveManager", 2, "savePhotoToSysAlbum...destFile=" + this.jdField_a_of_type_JavaIoFile);
-          }
-          if (!this.jdField_a_of_type_JavaIoFile.getParentFile().exists())
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("savePhotoToSysAlbum...destFile=");
+          localStringBuilder1.append(this.a);
+          QLog.i("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
+        }
+        if (!this.a.getParentFile().exists())
+        {
+          boolean bool = this.a.getParentFile().mkdir();
+          if (QLog.isColorLevel())
           {
-            boolean bool = this.jdField_a_of_type_JavaIoFile.getParentFile().mkdir();
-            if (QLog.isColorLevel()) {
-              QLog.i("MultiEmotionSaveManager", 2, "savePhotoToSysAlbum...destFile.getParentFile() not exist mkdir=" + bool);
-            }
+            localStringBuilder1 = new StringBuilder();
+            localStringBuilder1.append("savePhotoToSysAlbum...destFile.getParentFile() not exist mkdir=");
+            localStringBuilder1.append(bool);
+            QLog.i("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
           }
         }
-        if ((this.jdField_a_of_type_JavaIoFile == null) || (!ey.a(this.jdField_b_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile))) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("MultiEmotionSaveManager", 2, "savePhotoToSysAlbum...path=" + this.jdField_a_of_type_JavaLangString);
-        }
-        bdhj.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        i = 1;
-        if (i == 0) {
-          continue;
-        }
       }
-      catch (Exception localException)
+      if ((this.a != null) && (FileUtils.copyFile(this.b, this.a)))
       {
-        Object localObject;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("savePhotoToSysAlbum...path=");
+          localStringBuilder1.append(this.c);
+          QLog.e("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
         }
-        QLog.e("MultiEmotionSaveManager", 2, "save exception = " + localException.getMessage());
-        this.jdField_a_of_type_Apms.b = 10005;
-        this.jdField_a_of_type_Apms.c = aupw.a(this.jdField_a_of_type_Apms.b);
-        continue;
-        j = 2;
-        continue;
-        int i = -1;
-        continue;
+        BaseImageUtil.b(MobileQQ.getContext(), this.a.getAbsolutePath());
+        i = 1;
+        break label365;
       }
-      localObject = this.jdField_a_of_type_Apms;
-      if (i == 0) {
-        continue;
+      if ((QLog.isColorLevel()) && (this.a != null))
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("copyFile error destFile = ");
+        localStringBuilder1.append(this.a.getAbsolutePath());
+        QLog.e("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
       }
-      i = k;
-      ((apms)localObject).a = i;
-      localObject = apnj.a(this.this$0).obtainMessage(j);
-      ((Message)localObject).obj = this.jdField_a_of_type_Apms;
-      apnj.a(this.this$0).sendMessage((Message)localObject);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("MultiEmotionSaveManager", 2, "copyFile error destFileName = " + this.jdField_b_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_Apms.b = 10004;
-      this.jdField_a_of_type_Apms.c = aupw.a(this.jdField_a_of_type_Apms.b);
-      i = 0;
+      this.d.e = 10004;
+      this.d.f = FileSaveErrorInfo.a(this.d.e);
     }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("save exception = ");
+        localStringBuilder2.append(localException.getMessage());
+        QLog.e("MultiEmotionSaveManager", 2, localStringBuilder2.toString());
+      }
+      localObject = this.d;
+      ((EmotionSaveResult)localObject).e = 10005;
+      ((EmotionSaveResult)localObject).f = FileSaveErrorInfo.a(((EmotionSaveResult)localObject).e);
+    }
+    int i = 0;
+    label365:
+    if (i == 0) {
+      j = 2;
+    }
+    Object localObject = this.d;
+    if (i != 0) {
+      i = k;
+    } else {
+      i = -1;
+    }
+    ((EmotionSaveResult)localObject).d = i;
+    localObject = MultiEmotionSaveManager.a(this.this$0).obtainMessage(j);
+    ((Message)localObject).obj = this.d;
+    MultiEmotionSaveManager.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 

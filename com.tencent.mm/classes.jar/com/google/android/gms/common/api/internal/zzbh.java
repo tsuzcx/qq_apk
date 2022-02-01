@@ -10,14 +10,14 @@ final class zzbh
   
   public final void onBackgroundStateChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(60836);
+    AppMethodBeat.i(11328);
     GoogleApiManager.zza(this.zzjy).sendMessage(GoogleApiManager.zza(this.zzjy).obtainMessage(1, Boolean.valueOf(paramBoolean)));
-    AppMethodBeat.o(60836);
+    AppMethodBeat.o(11328);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzbh
  * JD-Core Version:    0.7.0.1
  */

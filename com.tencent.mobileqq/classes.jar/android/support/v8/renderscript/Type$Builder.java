@@ -20,13 +20,15 @@ public class Type$Builder
   
   public Type create()
   {
-    if (this.mDimZ > 0)
-    {
-      if ((this.mDimX < 1) || (this.mDimY < 1)) {
-        throw new RSInvalidStateException("Both X and Y dimension required when Z is present.");
+    if (this.mDimZ > 0) {
+      if ((this.mDimX >= 1) && (this.mDimY >= 1))
+      {
+        if (this.mDimFaces) {
+          throw new RSInvalidStateException("Cube maps not supported with 3D types.");
+        }
       }
-      if (this.mDimFaces) {
-        throw new RSInvalidStateException("Cube maps not supported with 3D types.");
+      else {
+        throw new RSInvalidStateException("Both X and Y dimension required when Z is present.");
       }
     }
     if ((this.mDimY > 0) && (this.mDimX < 1)) {
@@ -39,19 +41,24 @@ public class Type$Builder
       throw new RSInvalidStateException("YUV only supports basic 2D.");
     }
     Object localObject = this.mRS;
-    if (RenderScript.isNative) {}
-    for (localObject = TypeThunker.create((RenderScriptThunker)this.mRS, this.mElement, this.mDimX, this.mDimY, this.mDimZ, this.mDimMipmaps, this.mDimFaces, this.mYuv);; localObject = new Type(this.mRS.nTypeCreate(this.mElement.getID(this.mRS), this.mDimX, this.mDimY, this.mDimZ, this.mDimMipmaps, this.mDimFaces, this.mYuv), this.mRS))
+    if (RenderScript.isNative)
     {
-      ((Type)localObject).mElement = this.mElement;
-      ((Type)localObject).mDimX = this.mDimX;
-      ((Type)localObject).mDimY = this.mDimY;
-      ((Type)localObject).mDimZ = this.mDimZ;
-      ((Type)localObject).mDimMipmaps = this.mDimMipmaps;
-      ((Type)localObject).mDimFaces = this.mDimFaces;
-      ((Type)localObject).mDimYuv = this.mYuv;
-      ((Type)localObject).calcElementCount();
-      return localObject;
+      localObject = TypeThunker.create((RenderScriptThunker)this.mRS, this.mElement, this.mDimX, this.mDimY, this.mDimZ, this.mDimMipmaps, this.mDimFaces, this.mYuv);
     }
+    else
+    {
+      localObject = this.mRS;
+      localObject = new Type(((RenderScript)localObject).nTypeCreate(this.mElement.getID((RenderScript)localObject), this.mDimX, this.mDimY, this.mDimZ, this.mDimMipmaps, this.mDimFaces, this.mYuv), this.mRS);
+    }
+    ((Type)localObject).mElement = this.mElement;
+    ((Type)localObject).mDimX = this.mDimX;
+    ((Type)localObject).mDimY = this.mDimY;
+    ((Type)localObject).mDimZ = this.mDimZ;
+    ((Type)localObject).mDimMipmaps = this.mDimMipmaps;
+    ((Type)localObject).mDimFaces = this.mDimFaces;
+    ((Type)localObject).mDimYuv = this.mYuv;
+    ((Type)localObject).calcElementCount();
+    return localObject;
   }
   
   public Builder setFaces(boolean paramBoolean)
@@ -68,27 +75,27 @@ public class Type$Builder
   
   public Builder setX(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new RSIllegalArgumentException("Values of less than 1 for Dimension X are not valid.");
+    if (paramInt >= 1)
+    {
+      this.mDimX = paramInt;
+      return this;
     }
-    this.mDimX = paramInt;
-    return this;
+    throw new RSIllegalArgumentException("Values of less than 1 for Dimension X are not valid.");
   }
   
   public Builder setY(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new RSIllegalArgumentException("Values of less than 1 for Dimension Y are not valid.");
+    if (paramInt >= 1)
+    {
+      this.mDimY = paramInt;
+      return this;
     }
-    this.mDimY = paramInt;
-    return this;
+    throw new RSIllegalArgumentException("Values of less than 1 for Dimension Y are not valid.");
   }
   
   public Builder setYuvFormat(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 17) && (paramInt != 842094169)) {
       throw new RSIllegalArgumentException("Only NV21 and YV12 are supported..");
     }
     this.mYuv = paramInt;
@@ -97,16 +104,17 @@ public class Type$Builder
   
   public Builder setZ(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new RSIllegalArgumentException("Values of less than 1 for Dimension Z are not valid.");
+    if (paramInt >= 1)
+    {
+      this.mDimZ = paramInt;
+      return this;
     }
-    this.mDimZ = paramInt;
-    return this;
+    throw new RSIllegalArgumentException("Values of less than 1 for Dimension Z are not valid.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Type.Builder
  * JD-Core Version:    0.7.0.1
  */

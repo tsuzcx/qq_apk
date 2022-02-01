@@ -1,0 +1,72 @@
+{
+	"gpuModels": [
+		{
+			"gpu": "Mali-T860",
+			"filamentSupport": false,
+			"filamentWhiteList": [
+				"OPPO XXX"
+			]
+		},
+		{
+			"gpu": "Mali-T720",
+			"filamentSupport": false
+		},
+		{
+			"gpu": "GE8320",
+			"filamentSupport": false
+		}
+	],
+
+	"deviceModels": [
+		{
+			"device": "VIVO_vivo_Y71",
+			"gpuSegment": false,
+			"shareGLContextError": true
+		},
+		{
+			"device": "VIVO_vivo_Y51A",
+			"gpuSegment": false,
+			"shareGLContextError": true
+		},
+		{
+			"device": "VIVO_vivo_V3Max_A",
+			"gpuSegment": false,
+			"shareGLContextError": true,
+			"aiSupport": false
+		},
+		{
+			"device": "OPPO_OPPO_A33",
+			"gpuSegment": false,
+			"shareGLContextError": true,
+			"aiSupport": false
+		},
+		{
+			"device": "VIVO_vivo_Y79",
+			"kapuSupport": false
+		},
+		{
+			"device": "HUAWEI_VKY-L09",
+			"gpuSegment": false,
+			"kapuSupport": false
+		},
+		{
+			"device": "MOA-AL00",
+			"kapuSupport": false
+		},
+		{
+			"device": "HUAWEI_BND-AL10",
+			"gpuSegment": false,
+			"kapuSupport": false
+		},
+		{
+			"device": "HUAWEI_BND-AL00",
+			"gpuSegment": false,
+			"kapuSupport": false
+		},
+		{
+			"device": "HUAWEI",
+			"gpuSegment": false,
+			"haircolor": false
+		}
+	]
+}

@@ -22,7 +22,9 @@ public class d
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      localStringBuilder.append(localObject2).append("=").append(paramMap.get(localObject2));
+      localStringBuilder.append(localObject2);
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramMap.get(localObject2));
       if (i < j - 1) {
         localStringBuilder.append(paramString);
       }
@@ -33,35 +35,27 @@ public class d
   
   public static Map<String, String> a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramString1 = null;
-      return paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
     }
-    String[] arrayOfString = paramString1.split(paramString2);
+    paramString1 = paramString1.split(paramString2);
     paramString2 = new HashMap();
-    int j = arrayOfString.length;
+    int j = paramString1.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      paramString1 = paramString2;
-      if (i >= j) {
-        break;
-      }
-      paramString1 = arrayOfString[i];
+      Object localObject = paramString1[i];
       try
       {
-        paramString2.put(paramString1.substring(0, paramString1.indexOf("=")), paramString1.substring(paramString1.indexOf("=") + 1));
-        i += 1;
+        paramString2.put(localObject.substring(0, localObject.indexOf("=")), localObject.substring(localObject.indexOf("=") + 1));
       }
-      catch (Exception paramString1)
+      catch (Exception localException)
       {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-        }
+        localException.printStackTrace();
       }
+      i += 1;
     }
+    return paramString2;
   }
   
   public static <T> boolean a(List<T> paramList)
@@ -79,7 +73,9 @@ public class d
     if (paramList == null) {
       return "NULL";
     }
-    StringBuilder localStringBuilder = new StringBuilder("size = ").append(paramList.size()).append("data = [");
+    StringBuilder localStringBuilder = new StringBuilder("size = ");
+    localStringBuilder.append(paramList.size());
+    localStringBuilder.append("data = [");
     int j = paramList.size();
     int i = 0;
     while (i < j)
@@ -96,7 +92,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.d
  * JD-Core Version:    0.7.0.1
  */

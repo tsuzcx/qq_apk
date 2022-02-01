@@ -11,7 +11,7 @@ public final class m<F, S>
     this.second = paramS;
   }
   
-  private static boolean d(Object paramObject1, Object paramObject2)
+  private static boolean e(Object paramObject1, Object paramObject2)
   {
     return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
@@ -23,7 +23,7 @@ public final class m<F, S>
     {
       return false;
       paramObject = (m)paramObject;
-    } while ((!d(paramObject.first, this.first)) || (!d(paramObject.second, this.second)));
+    } while ((!e(paramObject.first, this.first)) || (!e(paramObject.second, this.second)));
     return true;
   }
   

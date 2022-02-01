@@ -1,31 +1,26 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import kotlin.Metadata;
 
-public final class g
-  extends j<f>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/ContainerAnimateType;", "", "(Ljava/lang/String;I)V", "INITIAL_HEIGHT", "FULL_SCREEN", "DISMISS", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum g
 {
-  public static final String[] fkl;
-  public static final String[] fkm;
-  
   static
   {
-    AppMethodBeat.i(70650);
-    fkl = new String[] { j.getCreateSQLs(f.fkk, "DynamicMsgCacheData") };
-    fkm = new String[0];
-    AppMethodBeat.o(70650);
+    AppMethodBeat.i(323930);
+    uxF = new g("INITIAL_HEIGHT", 0);
+    uxG = new g("FULL_SCREEN", 1);
+    uxH = new g("DISMISS", 2);
+    uxI = new g[] { uxF, uxG, uxH };
+    AppMethodBeat.o(323930);
   }
   
-  public g(e parame)
-  {
-    super(parame, f.fkk, "DynamicMsgCacheData", fkm);
-  }
+  private g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.g
  * JD-Core Version:    0.7.0.1
  */

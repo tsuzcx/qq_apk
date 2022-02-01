@@ -2,12 +2,11 @@ package com.tencent.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bibm;
 
 public class SwitchExtend
   extends Switch
 {
-  private bibm a;
+  private SwitchExtend.OnSwitchListener a;
   
   public SwitchExtend(Context paramContext)
   {
@@ -16,7 +15,7 @@ public class SwitchExtend
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet, 2131034963);
+    super(paramContext, paramAttributeSet, 2131036033);
   }
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -26,20 +25,21 @@ public class SwitchExtend
   
   public boolean performClick()
   {
-    if ((this.a == null) || (this.a.a(this))) {
-      return super.performClick();
+    SwitchExtend.OnSwitchListener localOnSwitchListener = this.a;
+    if ((localOnSwitchListener != null) && (!localOnSwitchListener.a(this))) {
+      return false;
     }
-    return false;
+    return super.performClick();
   }
   
-  public void setOnSwitchListener(bibm parambibm)
+  public void setOnSwitchListener(SwitchExtend.OnSwitchListener paramOnSwitchListener)
   {
-    this.a = parambibm;
+    this.a = paramOnSwitchListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.SwitchExtend
  * JD-Core Version:    0.7.0.1
  */

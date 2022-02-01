@@ -11,14 +11,14 @@ public final class qun_get_photo_list_ex_rsp
 {
   static Album cache_albuminfo = new Album();
   static ArrayList<s_picdata> cache_photolist = new ArrayList();
-  public Album albuminfo;
-  public int appid;
-  public int imaxfetch;
-  public int index;
-  public int indexInVec;
-  public long left_finish;
-  public ArrayList<s_picdata> photolist;
-  public long right_finish;
+  public Album albuminfo = null;
+  public int appid = 0;
+  public int imaxfetch = 0;
+  public int index = 0;
+  public int indexInVec = 0;
+  public long left_finish = 0L;
+  public ArrayList<s_picdata> photolist = null;
+  public long right_finish = 0L;
   
   static
   {
@@ -66,7 +66,7 @@ public final class qun_get_photo_list_ex_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_get_photo_list_ex_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,46 @@ public abstract class h
   implements Serializable
 {
   @Deprecated
-  public static final h atM = a.atM;
+  public static final h cBJ = a.cBJ;
   @Deprecated
-  public static final h atN = a.atN;
+  public static final h cBK = a.cBK;
   @Deprecated
-  public static final h atO = a.atO;
+  public static final h cBL = a.cBL;
+  
+  public String PF()
+  {
+    throw new UnsupportedOperationException("Not a string: " + toString());
+  }
+  
+  public b Pc()
+  {
+    throw new UnsupportedOperationException("Not an array: " + toString());
+  }
+  
+  public boolean Pd()
+  {
+    throw new UnsupportedOperationException("Not a boolean: " + toString());
+  }
+  
+  public int Pe()
+  {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+  
+  public long Pf()
+  {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+  
+  public double Pg()
+  {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+  
+  public e Ph()
+  {
+    throw new UnsupportedOperationException("Not an object: " + toString());
+  }
   
   public final String a(l paraml)
   {
@@ -70,49 +105,14 @@ public abstract class h
     return false;
   }
   
-  public b lH()
-  {
-    throw new UnsupportedOperationException("Not an array: " + toString());
-  }
-  
-  public boolean lI()
-  {
-    throw new UnsupportedOperationException("Not a boolean: " + toString());
-  }
-  
-  public int lJ()
-  {
-    throw new UnsupportedOperationException("Not a number: " + toString());
-  }
-  
-  public long lK()
-  {
-    throw new UnsupportedOperationException("Not a number: " + toString());
-  }
-  
-  public double lL()
-  {
-    throw new UnsupportedOperationException("Not a number: " + toString());
-  }
-  
-  public e lM()
-  {
-    throw new UnsupportedOperationException("Not an object: " + toString());
-  }
-  
-  public String mk()
-  {
-    throw new UnsupportedOperationException("Not a string: " + toString());
-  }
-  
   public String toString()
   {
-    return a(l.aus);
+    return a(l.cCp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.eclipsesource.a.h
  * JD-Core Version:    0.7.0.1
  */

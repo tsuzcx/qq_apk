@@ -14,8 +14,6 @@ final class hr$1
   
   public final void run()
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
     hr.a(this.a).clear();
     hr.b(this.a).clear();
     hr.c(this.a).clear();
@@ -23,64 +21,54 @@ final class hr$1
     {
       Object localObject1 = hr.d(this.a);
       ((pn)localObject1).aw.clear();
-      Object localObject4 = kd.b(((pt)localObject1).az.b.h.a(new DoublePoint(0.0D, 0.0D)));
-      Object localObject5 = kd.b(((pt)localObject1).az.b.h.a(new DoublePoint(((pn)localObject1).getWidth(), ((pn)localObject1).getHeight())));
-      Iterator localIterator = ((pn)localObject1).i.iterator();
-      while (localIterator.hasNext())
+      Object localObject2 = kd.b(((pt)localObject1).az.b.h.a(new DoublePoint(0.0D, 0.0D)));
+      Object localObject3 = kd.b(((pt)localObject1).az.b.h.a(new DoublePoint(((pn)localObject1).getWidth(), ((pn)localObject1).getHeight())));
+      Object localObject4 = ((pn)localObject1).i.iterator();
+      while (((Iterator)localObject4).hasNext())
       {
-        Object localObject6 = (mu)localIterator.next();
-        if ((localObject6 instanceof ms))
+        localObject5 = (mu)((Iterator)localObject4).next();
+        if ((localObject5 instanceof ms))
         {
-          localObject6 = (ms)localObject6;
-          if (pn.a(((ms)localObject6).G.getPosition(), new fw[] { localObject4, localObject5 })) {
-            ((pn)localObject1).aw.add(localObject6);
+          localObject5 = (ms)localObject5;
+          if (pn.a(((ms)localObject5).G.getPosition(), new fw[] { localObject2, localObject3 })) {
+            ((pn)localObject1).aw.add(localObject5);
           }
         }
       }
       localObject4 = ((pn)localObject1).aw;
-      localObject5 = hr.d(this.a);
+      Object localObject5 = hr.d(this.a);
       ((pn)localObject5).ax.clear();
       localObject1 = ((pt)localObject5).az;
-      if (((pm)localObject1).b == null)
+      lw locallw = ((pm)localObject1).b;
+      localObject3 = null;
+      localObject2 = null;
+      if (locallw == null) {}
+      do
       {
         localObject1 = null;
-        ((pn)localObject5).ax = ((List)localObject1);
-        localObject5 = ((pn)localObject5).ax;
-        localObject1 = localObject3;
-        if (localObject4 != null)
-        {
-          localObject3 = ((List)localObject4).iterator();
-          localObject1 = localObject2;
-        }
-      }
-      else
+        break;
+        localObject1 = ((pm)localObject1).b;
+      } while (((lw)localObject1).a == null);
+      localObject1 = ((lw)localObject1).a.w();
+      ((pn)localObject5).ax = ((List)localObject1);
+      localObject5 = ((pn)localObject5).ax;
+      localObject1 = localObject3;
+      if (localObject4 != null)
       {
-        for (;;)
+        localObject3 = ((List)localObject4).iterator();
+        localObject1 = localObject2;
+        while (((Iterator)localObject3).hasNext())
         {
-          if (!((Iterator)localObject3).hasNext()) {
-            break label401;
-          }
           localObject2 = (ms)((Iterator)localObject3).next();
           localObject4 = ((ms)localObject2).k();
-          if (!nl.a((String)localObject4))
-          {
-            if (((String)localObject4).startsWith("我的位置"))
-            {
+          if (!nl.a((String)localObject4)) {
+            if (((String)localObject4).startsWith("我的位置")) {
               localObject1 = localObject2;
-              continue;
-              localObject1 = ((pm)localObject1).b;
-              if (((lw)localObject1).a == null)
-              {
-                localObject1 = null;
-                break;
-              }
-              localObject1 = ((lw)localObject1).a.w();
-              break;
+            } else {
+              hr.b(this.a).add(new hs(hr.d(this.a), (ms)localObject2));
             }
-            hr.b(this.a).add(new hs(hr.d(this.a), (ms)localObject2));
           }
         }
-        label401:
         Collections.sort(hr.b(this.a));
         hr.a(this.a).addAll(hr.b(this.a));
       }

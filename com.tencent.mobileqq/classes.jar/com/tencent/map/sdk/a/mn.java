@@ -46,8 +46,12 @@ public final class mn
     this.B = paramInt2;
     if (paramGeoPoint != null)
     {
-      this.e = (paramGeoPoint.getLongitudeE6() / 1000000.0D);
-      this.f = (paramGeoPoint.getLatitudeE6() / 1000000.0D);
+      double d1 = paramGeoPoint.getLongitudeE6();
+      Double.isNaN(d1);
+      this.e = (d1 / 1000000.0D);
+      d1 = paramGeoPoint.getLatitudeE6();
+      Double.isNaN(d1);
+      this.f = (d1 / 1000000.0D);
     }
     a(paramString, paramVarArgs);
   }
@@ -64,21 +68,24 @@ public final class mn
     this.z = new RectF(f1, -f2, 0.0F, 0.0F);
     this.g -= f1;
     this.h -= f2;
-    this.F = (-this.C * this.g);
-    this.G = (this.C + this.F);
-    this.H = (this.D * this.h);
-    this.I = (this.H - this.D);
+    paramInt1 = this.C;
+    this.F = (-paramInt1 * this.g);
+    this.G = (paramInt1 + this.F);
+    paramInt1 = this.D;
+    this.H = (paramInt1 * this.h);
+    this.I = (this.H - paramInt1);
   }
   
   private Bitmap c(int paramInt)
   {
-    if (this.d == null) {
+    Bitmap[] arrayOfBitmap = this.d;
+    if (arrayOfBitmap == null) {
       return null;
     }
-    if ((paramInt < 0) || (paramInt >= this.d.length)) {
-      return this.d[0];
+    if ((paramInt >= 0) && (paramInt < arrayOfBitmap.length)) {
+      return arrayOfBitmap[paramInt];
     }
-    return this.d[paramInt];
+    return this.d[0];
   }
   
   public final Bitmap a()
@@ -117,26 +124,24 @@ public final class mn
   
   public final void a(String paramString, Bitmap... paramVarArgs)
   {
-    if (paramVarArgs == null) {}
-    for (;;)
-    {
+    if (paramVarArgs == null) {
       return;
-      try
-      {
-        this.i = true;
-        a(true);
-        this.b = paramString;
-        this.d = paramVarArgs;
-        if ((this.E < 0) || (this.E >= paramVarArgs.length)) {
-          this.E = 0;
-        }
-        if (paramVarArgs[this.E] == null) {
-          continue;
-        }
+    }
+    try
+    {
+      this.i = true;
+      a(true);
+      this.b = paramString;
+      this.d = paramVarArgs;
+      if ((this.E < 0) || (this.E >= paramVarArgs.length)) {
+        this.E = 0;
+      }
+      if (paramVarArgs[this.E] != null) {
         a(paramVarArgs[this.E].getWidth(), paramVarArgs[this.E].getHeight());
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
   public final void a(boolean paramBoolean)
@@ -171,11 +176,10 @@ public final class mn
   
   public final boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof mn)) {}
-    while (this.a != ((mn)paramObject).a) {
+    if (!(paramObject instanceof mn)) {
       return false;
     }
-    return true;
+    return this.a == ((mn)paramObject).a;
   }
   
   public final int hashCode()
@@ -185,7 +189,7 @@ public final class mn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mn
  * JD-Core Version:    0.7.0.1
  */

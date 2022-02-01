@@ -8,10 +8,10 @@ import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.widget.XListView;
+import eop;
 import eoq;
 import eor;
 import eos;
-import eot;
 
 public class LocalSearchBar
 {
@@ -26,16 +26,16 @@ public class LocalSearchBar
   {
     this.jdField_a_of_type_Long = 0L;
     paramXListView = paramBaseActivity.getLayoutInflater().inflate(2130903944, paramXListView, false);
-    paramXListView.findViewById(2131233086).setVisibility(8);
+    paramXListView.findViewById(2131233085).setVisibility(8);
     IphoneTitleBarActivity.b(paramXListView);
     this.jdField_a_of_type_AndroidViewView = paramView1;
     this.b = paramView2;
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener = paramOnRecentUserOpsListener;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    paramXListView = (EditText)paramXListView.findViewById(2131233087);
+    paramXListView = (EditText)paramXListView.findViewById(2131233086);
     paramXListView.setFocusableInTouchMode(false);
     paramXListView.setCursorVisible(false);
-    paramXListView.setOnClickListener(new eoq(this));
+    paramXListView.setOnClickListener(new eop(this));
   }
   
   public void a()
@@ -45,11 +45,11 @@ public class LocalSearchBar
     }
     System.currentTimeMillis();
     this.b.getHeight();
-    eor localeor = new eor(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new eos(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b, 4, localeor);
+    eoq localeoq = new eoq(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new eor(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b, 4, localeoq);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new eot(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new eos(this));
   }
   
   /* Error */

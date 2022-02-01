@@ -12,18 +12,22 @@ class EditLocalVideoActivity$21
   {
     try
     {
-      if ((EditLocalVideoActivity.a(this.this$0).isPlaying()) && (EditLocalVideoActivity.b(this.this$0))) {
-        EditLocalVideoActivity.a(this.this$0).pause();
+      if ((EditLocalVideoActivity.q(this.this$0).isPlaying()) && (EditLocalVideoActivity.t(this.this$0))) {
+        EditLocalVideoActivity.q(this.this$0).pause();
       }
-      if (EditLocalVideoActivity.c(this.this$0) == 0) {
-        EditLocalVideoActivity.a(this.this$0).setPlayDuration(this.a, this.b - this.a);
+      if (EditLocalVideoActivity.u(this.this$0) != 0) {
+        break label75;
       }
+      EditLocalVideoActivity.q(this.this$0).setPlayDuration(this.a, this.b - this.a);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      QLog.w("EditLocalVideoActivity", 2, "Illegal state: onFramesClipChanged");
+      label67:
+      label75:
+      break label67;
     }
+    QLog.w("EditLocalVideoActivity", 2, "Illegal state: onFramesClipChanged");
   }
 }
 

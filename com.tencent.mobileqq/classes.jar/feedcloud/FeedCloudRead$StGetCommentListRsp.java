@@ -22,13 +22,14 @@ public final class FeedCloudRead$StGetCommentListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50 }, new String[] { "extInfo", "vecComment", "totalNum", "isFinish", "feedAttchInfo", "busiRspData" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro }, StGetCommentListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50 }, new String[] { "extInfo", "vecComment", "totalNum", "isFinish", "feedAttchInfo", "busiRspData" }, new Object[] { null, null, localInteger, localInteger, "", localByteStringMicro }, StGetCommentListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetCommentListRsp
  * JD-Core Version:    0.7.0.1
  */

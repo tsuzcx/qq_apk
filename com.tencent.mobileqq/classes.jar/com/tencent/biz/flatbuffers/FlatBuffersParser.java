@@ -2,310 +2,317 @@ package com.tencent.biz.flatbuffers;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Looper;
-import android.text.TextUtils;
-import bdgk;
-import bdhb;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SoLoadUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 import mqq.app.AppRuntime;
-import myl;
+import mqq.app.MobileQQ;
 
 public class FlatBuffersParser
 {
   public static volatile boolean a = true;
-  public static volatile boolean b;
+  public static volatile boolean b = false;
   public static volatile boolean c;
-  
-  public static long a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).getLong("lastCrash", 0L);
-  }
-  
-  public static String a()
-  {
-    return BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "FlatBuffers" + File.separator;
-  }
-  
-  public static void a()
-  {
-    if (!b()) {
-      myl.a(false).b();
-    }
-  }
   
   public static void a(File paramFile, boolean paramBoolean)
   {
-    label271:
-    label293:
-    label306:
-    for (;;)
+    try
     {
-      try
+      long l1 = System.currentTimeMillis();
+      long l2 = IOUtil.getCRC32Value(paramFile);
+      long l3 = System.currentTimeMillis();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("so file size: ");
+      localStringBuilder.append(paramFile.length());
+      localStringBuilder.append(" crc32: ");
+      localStringBuilder.append(Long.toHexString(l2));
+      localStringBuilder.append(" crcSpent: ");
+      localStringBuilder.append(l3 - l1);
+      QLog.i("FlatBuffersParser", 1, localStringBuilder.toString());
+      l2 = g();
+      if (l1 - l2 < 86400000L)
       {
-        long l1 = System.currentTimeMillis();
-        long l2 = IOUtil.getCRC32Value(paramFile);
-        long l3 = System.currentTimeMillis();
-        QLog.i("FlatBuffersParser", 1, "so file size: " + paramFile.length() + " crc32: " + Long.toHexString(l2) + " crcSpent: " + (l3 - l1));
-        l2 = a();
-        if (l1 - l2 < 86400000L)
-        {
-          QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary have lastCrash " + l2);
-          return;
-        }
-        if (l2 != 0L)
-        {
-          QLog.i("FlatBuffersParser", 1, "FlatBuffers lastCrash " + l2 + " is out of date, try deleteFlatbuffers.");
-          d();
-          g();
-          f();
-          continue;
-        }
-        if (!paramFile.exists()) {
-          continue;
-        }
+        paramFile = new StringBuilder();
+        paramFile.append("FlatBuffers loadLibrary have lastCrash ");
+        paramFile.append(l2);
+        QLog.i("FlatBuffersParser", 1, paramFile.toString());
+        return;
       }
-      finally {}
+      if (l2 != 0L)
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("FlatBuffers lastCrash ");
+        paramFile.append(l2);
+        paramFile.append(" is out of date, try deleteFlatbuffers.");
+        QLog.i("FlatBuffersParser", 1, paramFile.toString());
+        f();
+        k();
+        j();
+        return;
+      }
+      boolean bool = paramFile.exists();
+      if (!bool) {
+        return;
+      }
       if (paramBoolean) {
-        c();
+        e();
       }
       try
       {
         QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary startLoad stl");
         QLog.flushLog();
-        if (!SoLoadUtil.a(BaseApplicationImpl.getContext(), "stlport_shared", 0, false)) {
-          break label293;
+        if (SoLoadUtil.a(MobileQQ.getContext(), "stlport_shared", 0, false))
+        {
+          QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary startLoad FlatBuffers");
+          System.load(paramFile.getAbsolutePath());
+          if ((paramBoolean) && (new FlatBuffersParser().a("{x:1,y:2}", "table Pos {\n\tx:float;\n\ty:float;\n}\nroot_type Pos;") == null))
+          {
+            QLog.e("FlatBuffersParser", 1, "FlatBuffers test parser failed.");
+            return;
+          }
+          QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary success");
+          c = true;
         }
-        QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary startLoad FlatBuffers");
-        System.load(paramFile.getAbsolutePath());
-        if ((!paramBoolean) || (new FlatBuffersParser().a("{x:1,y:2}", "table Pos {\n\tx:float;\n\ty:float;\n}\nroot_type Pos;") != null)) {
-          break label271;
+        else
+        {
+          QLog.i("FlatBuffersParser", 1, "FlatBuffers load stl failed");
+          c = false;
         }
-        QLog.e("FlatBuffersParser", 1, "FlatBuffers test parser failed.");
+        if (paramBoolean) {
+          f();
+        }
       }
       catch (Throwable paramFile)
       {
         QLog.e("FlatBuffersParser", 1, "", paramFile);
       }
-      continue;
-      QLog.i("FlatBuffersParser", 1, "FlatBuffers loadLibrary success");
-      for (c = true;; c = false)
-      {
-        if (!paramBoolean) {
-          break label306;
-        }
-        d();
-        break;
-        QLog.i("FlatBuffersParser", 1, "FlatBuffers load stl failed");
-      }
+      return;
     }
+    finally {}
   }
   
   public static void a(boolean paramBoolean)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).edit();
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).edit();
     a = paramBoolean;
-    QLog.i("FlatBuffersParser", 1, "FlatBuffersParser setEnable : " + a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FlatBuffersParser setEnable : ");
+    localStringBuilder.append(a);
+    QLog.i("FlatBuffersParser", 1, localStringBuilder.toString());
     localEditor.putBoolean("isEnabled", a);
     localEditor.commit();
-    a();
+    b();
   }
   
   public static boolean a()
   {
-    return (b()) && (c);
+    return (d()) && (c);
   }
   
   public static void b()
   {
-    a = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).getBoolean("isEnabled", true);
-    QLog.i("FlatBuffersParser", 1, "FlatBuffersParser updateEnable : " + a);
+    if (!d()) {
+      AuthorizeConfig.a(false).d();
+    }
   }
   
   public static void b(boolean paramBoolean)
   {
     b = paramBoolean;
-    QLog.i("FlatBuffersParser", 1, "FlatBuffersParser setRuntimeDisable : " + b);
-    a();
-  }
-  
-  public static boolean b()
-  {
-    return (!b) && (a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FlatBuffersParser setRuntimeDisable : ");
+    localStringBuilder.append(b);
+    QLog.i("FlatBuffersParser", 1, localStringBuilder.toString());
+    b();
   }
   
   public static void c()
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).edit();
-    localEditor.putLong("lastCrash", System.currentTimeMillis());
-    localEditor.commit();
+    a = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).getBoolean("isEnabled", true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FlatBuffersParser updateEnable : ");
+    localStringBuilder.append(a);
+    QLog.i("FlatBuffersParser", 1, localStringBuilder.toString());
   }
   
-  public static boolean c()
+  public static boolean d()
   {
-    boolean bool1 = VideoEnvironment.c();
-    boolean bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        String[] arrayOfString = Build.SUPPORTED_ABIS;
-        int j = arrayOfString.length;
-        int i = 0;
-        for (;;)
-        {
-          bool2 = bool1;
-          if (i >= j) {
-            break;
-          }
-          String str = arrayOfString[i];
-          bool2 = bool1;
-          if (!TextUtils.isEmpty(str))
-          {
-            bool2 = bool1;
-            if (str.toLowerCase().contains("x86")) {
-              bool2 = true;
-            }
-          }
-          i += 1;
-          bool1 = bool2;
-        }
-      }
-    }
-    if (!bool2)
-    {
-      QLog.d("FlatBuffersParser", 1, "os.arch: " + System.getProperty("os.arch"));
-      QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + bdgk.g());
-      QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI: " + Build.CPU_ABI);
-      QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI2: " + Build.CPU_ABI2);
-      QLog.d("FlatBuffersParser", 1, "isX86: " + bool2);
-      if (Build.VERSION.SDK_INT >= 21) {
-        QLog.d("FlatBuffersParser", 1, "Build.SUPPORTED_ABIS: " + Arrays.toString(Build.SUPPORTED_ABIS));
-      }
-    }
-    return bool2;
-  }
-  
-  public static void d()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("flatbuffers_pref", 4).edit();
-    localEditor.remove("lastCrash");
-    localEditor.commit();
+    return (!b) && (a);
   }
   
   public static void e()
   {
-    boolean bool = true;
-    String str3;
-    Object localObject;
-    try
-    {
-      String str1 = a();
-      QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip start, rootPath = " + str1);
-      str3 = str1 + "libFlatBuffersParser.zip";
-      if (!new File(str3).exists()) {
-        break label349;
-      }
-      localObject = str1 + "unzip" + File.separator;
-      QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip real start");
-      try
-      {
-        bdhb.a(str3, (String)localObject, false);
-        QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip success");
-        localObject = new File((String)localObject + "libFlatBuffersParser.so");
-        if (((File)localObject).exists()) {
-          break label189;
-        }
-        QLog.e("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed, unzipFile not exist");
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          QLog.e("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed", localIOException);
-        }
-      }
-      return;
-    }
-    finally {}
-    label189:
-    QLog.i("FlatBuffersParser", 1, "zipFileLen " + new File(str3).length() + " unzipFileLen " + ((File)localObject).length());
-    File localFile = new File(str2 + "libFlatBuffersParser.so");
-    if (localFile.exists())
-    {
-      bool = localFile.delete();
-      QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip already have so file, delete return " + bool);
-    }
-    if (bool)
-    {
-      bool = ((File)localObject).renameTo(localFile);
-      QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip unzipFile rename to soFile return " + bool);
-    }
-    for (;;)
-    {
-      d();
-      f();
-      break;
-      label349:
-      QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed no zip file found");
-    }
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).edit();
+    localEditor.putLong("lastCrash", System.currentTimeMillis());
+    localEditor.commit();
   }
   
   public static void f()
   {
-    
-    if ((b()) && (!c))
-    {
-      if (!c()) {
-        break label35;
-      }
-      QLog.d("FlatBuffersParser", 1, "is x86 cpu, not support.");
-      b(true);
-    }
-    label35:
-    File localFile;
-    AppRuntime localAppRuntime;
-    boolean bool;
-    do
-    {
-      return;
-      localFile = new File(a() + "libFlatBuffersParser.so");
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      bool = localAppRuntime instanceof QQAppInterface;
-      if (localFile.exists()) {
-        break;
-      }
-    } while (!bool);
-    QLog.i("FlatBuffersParser", 1, "loadLibrary: libFlatBuffersParser.so not exist, try to download.");
-    VasQuickUpdateManager.getFileFromLocal(localAppRuntime, 1004L, "libFlatBuffersParser", a() + "libFlatBuffersParser.zip", true, null);
-    return;
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      a(localFile, bool);
-      return;
-    }
-    ThreadManager.post(new FlatBuffersParser.1(localFile, bool), 5, null, false);
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).edit();
+    localEditor.remove("lastCrash");
+    localEditor.commit();
   }
   
-  public static void g()
+  public static long g()
   {
-    String str = a();
-    boolean bool1 = new File(str + "libFlatBuffersParser.zip").delete();
-    boolean bool2 = new File(str + "libFlatBuffersParser.so").delete();
-    QLog.i("FlatBuffersParser", 1, "zipDeleted: " + bool1 + " soDeleted: " + bool2);
+    return MobileQQ.getContext().getSharedPreferences("flatbuffers_pref", 4).getLong("lastCrash", 0L);
+  }
+  
+  public static String h()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MobileQQ.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("FlatBuffers");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static void i()
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = h();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("FlatBuffersParser.unzip start, rootPath = ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        QLog.i("FlatBuffersParser", 1, ((StringBuilder)localObject3).toString());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append("libFlatBuffersParser.zip");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        if (new File((String)localObject3).exists())
+        {
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject1);
+          ((StringBuilder)localObject4).append("unzip");
+          ((StringBuilder)localObject4).append(File.separator);
+          localObject4 = ((StringBuilder)localObject4).toString();
+          QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip real start");
+          try
+          {
+            FileUtils.uncompressZip((String)localObject3, (String)localObject4, false);
+            QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip success");
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject4);
+            localStringBuilder.append("libFlatBuffersParser.so");
+            localObject4 = new File(localStringBuilder.toString());
+            if (!((File)localObject4).exists())
+            {
+              QLog.e("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed, unzipFile not exist");
+              return;
+            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("zipFileLen ");
+            localStringBuilder.append(new File((String)localObject3).length());
+            localStringBuilder.append(" unzipFileLen ");
+            localStringBuilder.append(((File)localObject4).length());
+            QLog.i("FlatBuffersParser", 1, localStringBuilder.toString());
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((StringBuilder)localObject3).append("libFlatBuffersParser.so");
+            localObject1 = new File(((StringBuilder)localObject3).toString());
+            if (!((File)localObject1).exists()) {
+              break label419;
+            }
+            bool = ((File)localObject1).delete();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("FlatBuffersParser.unzip already have so file, delete return ");
+            ((StringBuilder)localObject3).append(bool);
+            QLog.i("FlatBuffersParser", 1, ((StringBuilder)localObject3).toString());
+            if (!bool) {
+              continue;
+            }
+            bool = ((File)localObject4).renameTo((File)localObject1);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("FlatBuffersParser.unzip unzipFile rename to soFile return ");
+            ((StringBuilder)localObject1).append(bool);
+            QLog.i("FlatBuffersParser", 1, ((StringBuilder)localObject1).toString());
+          }
+          catch (IOException localIOException)
+          {
+            QLog.e("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed", localIOException);
+            return;
+          }
+        }
+        else
+        {
+          QLog.i("FlatBuffersParser", 1, "FlatBuffersParser.unzip failed no zip file found");
+        }
+        f();
+        j();
+        return;
+      }
+      finally {}
+      label419:
+      boolean bool = true;
+    }
+  }
+  
+  public static void j()
+  {
+    
+    if ((d()) && (!c))
+    {
+      if (DeviceInfoUtil.N())
+      {
+        QLog.d("FlatBuffersParser", 1, "is x86 cpu, not support.");
+        b(true);
+        return;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(h());
+      ((StringBuilder)localObject1).append("libFlatBuffersParser.so");
+      Object localObject2 = new File(((StringBuilder)localObject1).toString());
+      localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (!((File)localObject2).exists())
+      {
+        QLog.i("FlatBuffersParser", 1, "loadLibrary: libFlatBuffersParser.so not exist, try to download.");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(h());
+        ((StringBuilder)localObject2).append("libFlatBuffersParser.zip");
+        VasUpdateUtil.a((AppRuntime)localObject1, 1004L, "libFlatBuffersParser", ((StringBuilder)localObject2).toString(), true, null);
+        return;
+      }
+      if (Looper.myLooper() != Looper.getMainLooper())
+      {
+        a((File)localObject2, true);
+        return;
+      }
+      ThreadManager.post(new FlatBuffersParser.1((File)localObject2), 5, null, false);
+    }
+  }
+  
+  public static void k()
+  {
+    Object localObject = h();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("libFlatBuffersParser.zip");
+    boolean bool1 = new File(localStringBuilder.toString()).delete();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("libFlatBuffersParser.so");
+    boolean bool2 = new File(localStringBuilder.toString()).delete();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("zipDeleted: ");
+    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(" soDeleted: ");
+    ((StringBuilder)localObject).append(bool2);
+    QLog.i("FlatBuffersParser", 1, ((StringBuilder)localObject).toString());
   }
   
   private native byte[] parseJsonNative(String paramString1, String paramString2);
@@ -321,7 +328,7 @@ public class FlatBuffersParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.FlatBuffersParser
  * JD-Core Version:    0.7.0.1
  */

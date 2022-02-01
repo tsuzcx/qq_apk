@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupNickItem
   extends JceStruct
 {
-  public int itemid;
+  public int itemid = 0;
   public String url = "";
   
   public GroupNickItem() {}
@@ -27,14 +27,15 @@ public final class GroupNickItem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.itemid, 0);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 1);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ColorNick.QC.GroupNickItem
  * JD-Core Version:    0.7.0.1
  */

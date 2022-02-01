@@ -1,96 +1,69 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
+import android.os.Bundle;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.plugin.webview.luggage.c.b;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ad
-  extends bi<e>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(final b<g>.a paramb)
   {
-    int j = 1;
-    AppMethodBeat.i(6330);
-    ab.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
-    JSONObject localJSONObject = b.BJ(paramString);
+    AppMethodBeat.i(78565);
+    final JSONObject localJSONObject = paramb.eiZ.eif;
     if (localJSONObject == null)
     {
-      ab.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
-      parama.c("fail_null_data", null);
-      AppMethodBeat.o(6330);
+      paramb.a("invalid_params", null);
+      AppMethodBeat.o(78565);
       return;
     }
-    String str2 = localJSONObject.optString("targetAppId");
-    String str3 = localJSONObject.optString("currentUrl");
-    String str1 = localJSONObject.optString("preVerifyAppId");
-    paramString = str1;
-    if (bo.isNullOrNil(str1)) {
-      paramString = localJSONObject.optString("referrerAppId");
-    }
-    if (bo.isNullOrNil(str2))
+    Object localObject = localJSONObject.optJSONArray("urls");
+    if ((localObject == null) || (((JSONArray)localObject).length() == 0))
     {
-      parama.c("invalid_targetAppId", null);
-      AppMethodBeat.o(6330);
+      Log.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      paramb.a("invalid_url", null);
+      AppMethodBeat.o(78565);
       return;
     }
-    if (bo.isNullOrNil(paramString))
-    {
-      parama.c("invalid_referrerAppId", null);
-      AppMethodBeat.o(6330);
-      return;
-    }
-    str1 = bo.nullAsNil(localJSONObject.optString("envVersion"));
-    int i = -1;
-    switch (str1.hashCode())
-    {
-    default: 
-      switch (i)
-      {
-      }
-      break;
-    }
-    for (j = 0;; j = 2)
-    {
-      str1 = localJSONObject.optString("path");
-      ((j)g.E(j.class)).b(paramContext, str3, paramString, str2, j, str1, 0);
-      parama.c(null, null);
-      AppMethodBeat.o(6330);
-      return;
-      if (!str1.equals("develop")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!str1.equals("trial")) {
-        break;
-      }
-      i = 1;
-      break;
-    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("current", localJSONObject.optString("current"));
+    com.tencent.mm.plugin.webview.modeltools.k.a((Map)localObject, ((g)paramb.eiY).WFO);
+    j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(localJSONObject.toString()), a.class, new f() {});
+    AppMethodBeat.o(78565);
   }
   
-  public final void b(a<e>.a parama) {}
-  
-  public final int bjL()
+  public final int dgI()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "launchMiniProgram";
+    return "imagePreview";
   }
+  
+  static class a
+    implements d<IPCString, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ad
  * JD-Core Version:    0.7.0.1
  */

@@ -23,73 +23,69 @@ public final class jg
     localjg.a = paramJSONObject.optLong("create");
     localjg.b = paramJSONObject.optLong("destroy");
     JSONObject localJSONObject1 = paramJSONObject.optJSONObject("mapLoad");
-    Object localObject1;
     if (localJSONObject1 == null)
     {
       localObject1 = null;
-      localjg.c = ((jg.d)localObject1);
-      localObject1 = paramJSONObject.optJSONObject("oversea");
-      if (localObject1 != null) {
-        break label330;
-      }
-      paramJSONObject = localObject2;
     }
-    for (;;)
+    else
     {
-      localjg.d = paramJSONObject;
-      return localjg;
       jg.d locald = new jg.d();
       locald.a = localJSONObject1.optBoolean("loadSuccess");
       locald.b = localJSONObject1.optLong("loadSuccessTime");
       locald.c = localJSONObject1.optLong("firstLoadTime");
       Object localObject3 = localJSONObject1.optJSONObject("configUpdate");
-      int i;
-      label185:
-      JSONObject localJSONObject2;
       if (localObject3 == null)
       {
         localObject1 = null;
-        locald.d = ((jg.b)localObject1);
-        localObject3 = localJSONObject1.optJSONArray("tileErrors");
-        if ((localObject3 == null) || (((JSONArray)localObject3).length() <= 0)) {
-          break label309;
-        }
-        locald.e = new CopyOnWriteArraySet();
-        i = 0;
-        if (i >= ((JSONArray)localObject3).length()) {
-          break label309;
-        }
-        localJSONObject2 = ((JSONArray)localObject3).optJSONObject(i);
-        if (localJSONObject2 != null) {
-          break label265;
-        }
-        localObject1 = null;
       }
-      for (;;)
+      else
       {
-        if (localObject1 != null) {
-          locald.e.add(localObject1);
-        }
-        i += 1;
-        break label185;
         localObject1 = new jg.b();
         ((jg.b)localObject1).a = ((JSONObject)localObject3).optBoolean("success");
         ((jg.b)localObject1).b = ((JSONObject)localObject3).optLong("loadBeginTime");
-        break;
-        label265:
-        localObject1 = new jg.g();
-        ((jg.g)localObject1).a = localJSONObject2.optLong("time");
-        ((jg.g)localObject1).b = localJSONObject2.optString("tid");
-        ((jg.g)localObject1).c = localJSONObject2.optInt("netError");
       }
-      label309:
+      locald.d = ((jg.b)localObject1);
+      localObject3 = localJSONObject1.optJSONArray("tileErrors");
+      if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
+      {
+        locald.e = new CopyOnWriteArraySet();
+        int i = 0;
+        while (i < ((JSONArray)localObject3).length())
+        {
+          JSONObject localJSONObject2 = ((JSONArray)localObject3).optJSONObject(i);
+          if (localJSONObject2 == null)
+          {
+            localObject1 = null;
+          }
+          else
+          {
+            localObject1 = new jg.g();
+            ((jg.g)localObject1).a = localJSONObject2.optLong("time");
+            ((jg.g)localObject1).b = localJSONObject2.optString("tid");
+            ((jg.g)localObject1).c = localJSONObject2.optInt("netError");
+          }
+          if (localObject1 != null) {
+            locald.e.add(localObject1);
+          }
+          i += 1;
+        }
+      }
       locald.f = jg.a.a(localJSONObject1.optJSONObject("configError"));
       localObject1 = locald;
-      break;
-      label330:
+    }
+    localjg.c = ((jg.d)localObject1);
+    Object localObject1 = paramJSONObject.optJSONObject("oversea");
+    if (localObject1 == null)
+    {
+      paramJSONObject = localObject2;
+    }
+    else
+    {
       paramJSONObject = new jg.f();
       paramJSONObject.a = ((JSONObject)localObject1).optInt("wtc");
     }
+    localjg.d = paramJSONObject;
+    return localjg;
   }
   
   protected final JSONObject a()
@@ -140,8 +136,9 @@ public final class jg
   {
     jg.b localb = new jg.b((byte)0);
     localb.a = paramBoolean;
-    if (paramLong - this.a > 0L) {
-      localb.b = (paramLong - this.a);
+    long l = this.a;
+    if (paramLong - l > 0L) {
+      localb.b = (paramLong - l);
     }
     this.c.d = localb;
   }

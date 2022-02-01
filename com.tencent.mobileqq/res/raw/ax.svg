@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="39px" viewBox="0 0 21 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch Beta 50.1 (55040) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow_left</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="arrow_left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.327411709">
+        <g id="箭头" transform="translate(36.000000, 36.000000) rotate(-180.000000) translate(-36.000000, -36.000000) " fill="#000000">
+            <path d="M72,68.8107978 L68.8775469,72 L51.8834538,54.6426218 C50.7248834,53.4592845 50.7194412,51.5462741 51.8834538,50.3573782 L68.8775469,33 L72,36.1892022 L56.0305826,52.5 L72,68.8107978 Z" id="Combined-Shape" transform="translate(61.500000, 52.500000) scale(-1, 1) translate(-61.500000, -52.500000) "></path>
+        </g>
+    </g>
+</svg>

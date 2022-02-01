@@ -24,7 +24,19 @@ final class ClosedFloatRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof ClosedFloatRange)) && (((isEmpty()) && (((ClosedFloatRange)paramObject).isEmpty())) || ((this._start == ((ClosedFloatRange)paramObject)._start) && (this._endInclusive == ((ClosedFloatRange)paramObject)._endInclusive)));
+    if ((paramObject instanceof ClosedFloatRange)) {
+      if ((!isEmpty()) || (!((ClosedFloatRange)paramObject).isEmpty()))
+      {
+        float f = this._start;
+        paramObject = (ClosedFloatRange)paramObject;
+        if ((f != paramObject._start) || (this._endInclusive != paramObject._endInclusive)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -60,12 +72,16 @@ final class ClosedFloatRange
   @NotNull
   public String toString()
   {
-    return this._start + ".." + this._endInclusive;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this._start);
+    localStringBuilder.append("..");
+    localStringBuilder.append(this._endInclusive);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.ClosedFloatRange
  * JD-Core Version:    0.7.0.1
  */

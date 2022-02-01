@@ -36,12 +36,12 @@ public class TopicViewItem
   
   public int a(float paramFloat)
   {
-    return (int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem
  * JD-Core Version:    0.7.0.1
  */

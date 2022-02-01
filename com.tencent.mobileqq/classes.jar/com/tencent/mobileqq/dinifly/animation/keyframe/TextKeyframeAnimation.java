@@ -14,6 +14,9 @@ public class TextKeyframeAnimation
   
   DocumentData getValue(Keyframe<DocumentData> paramKeyframe, float paramFloat)
   {
+    if ((paramFloat == 1.0F) && (paramKeyframe.endValue != null)) {
+      return (DocumentData)paramKeyframe.endValue;
+    }
     return (DocumentData)paramKeyframe.startValue;
   }
 }

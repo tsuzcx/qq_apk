@@ -1,24 +1,26 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.storage.bz;
 
 public abstract interface g
-  extends a
+  extends IStorage
 {
-  public abstract void a(int paramInt, a parama);
+  public abstract long aLA(String paramString);
   
-  public abstract void a(j.b paramb);
+  public abstract void aLy(String paramString);
   
-  public abstract void b(int paramInt, a parama);
+  public abstract void aLz(String paramString);
   
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt, j.b paramb);
-  }
+  public abstract void cju();
+  
+  public abstract int dkF();
+  
+  public abstract bz gbh();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.a.g
  * JD-Core Version:    0.7.0.1
  */

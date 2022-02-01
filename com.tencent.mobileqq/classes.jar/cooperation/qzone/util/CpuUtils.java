@@ -17,7 +17,9 @@ public class CpuUtils
     }
   }
   
-  public static long a()
+  private static native long getCpuFeatures();
+  
+  public static long getCpuProperty()
   {
     try
     {
@@ -30,12 +32,10 @@ public class CpuUtils
     }
     return 0L;
   }
-  
-  private static native long getCpuFeatures();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.CpuUtils
  * JD-Core Version:    0.7.0.1
  */

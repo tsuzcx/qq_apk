@@ -1,61 +1,76 @@
 package android.support.v4.a.a;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.util.Log;
+import java.lang.reflect.Method;
 
 public final class a
 {
-  static final f fY = new f();
+  private static Method hV;
+  private static boolean hW;
   
-  static
+  public static Drawable a(Drawable paramDrawable)
   {
-    if (Build.VERSION.SDK_INT >= 23)
+    if (Build.VERSION.SDK_INT >= 23) {}
+    do
     {
-      fY = new e();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      fY = new d();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      fY = new c();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      fY = new b();
-      return;
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, ColorStateList paramColorStateList)
-  {
-    fY.a(paramDrawable, paramColorStateList);
-  }
-  
-  public static void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
-  {
-    fY.a(paramDrawable, paramMode);
-  }
-  
-  public static boolean a(Drawable paramDrawable)
-  {
-    return fY.a(paramDrawable);
+      do
+      {
+        do
+        {
+          return paramDrawable;
+          if (Build.VERSION.SDK_INT < 21) {
+            break;
+          }
+        } while ((paramDrawable instanceof b));
+        return new h(paramDrawable);
+        if (Build.VERSION.SDK_INT < 19) {
+          break;
+        }
+      } while ((paramDrawable instanceof b));
+      return new f(paramDrawable);
+    } while ((paramDrawable instanceof b));
+    return new c(paramDrawable);
   }
   
   public static boolean a(Drawable paramDrawable, int paramInt)
   {
-    return fY.a(paramDrawable, paramInt);
-  }
-  
-  public static Drawable b(Drawable paramDrawable)
-  {
-    return fY.b(paramDrawable);
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramDrawable.setLayoutDirection(paramInt);
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      if (!hW) {}
+      try
+      {
+        Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
+        hV = localMethod;
+        localMethod.setAccessible(true);
+        hW = true;
+        if (hV != null) {
+          try
+          {
+            hV.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
+            return true;
+          }
+          catch (Exception paramDrawable)
+          {
+            Log.i("DrawableCompat", "Failed to invoke setLayoutDirection(int) via reflection", paramDrawable);
+            hV = null;
+          }
+        }
+        return false;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        for (;;)
+        {
+          Log.i("DrawableCompat", "Failed to retrieve setLayoutDirection(int) method", localNoSuchMethodException);
+        }
+      }
+    }
+    return false;
   }
 }
 

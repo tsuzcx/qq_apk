@@ -11,17 +11,17 @@ public final class ShortField
     this.data = paramShort;
   }
   
-  public short get()
+  public final short get()
   {
     return this.data;
   }
   
-  public Number getNumber()
+  public final Number getNumber()
   {
     return Short.valueOf(this.data);
   }
   
-  public void set(short paramShort)
+  public final void set(short paramShort)
   {
     this.data = paramShort;
   }

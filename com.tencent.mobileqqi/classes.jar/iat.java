@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.IQlinkService.Stub;
+import cooperation.qlink.QlinkServiceProxy;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class iat
-  implements DialogInterface.OnDismissListener
+public class iat
+  implements ServiceConnection
 {
-  public iat(DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public iat(QlinkServiceProxy paramQlinkServiceProxy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (this.a != null) {
-      this.a.onDismiss(paramDialogInterface);
-    }
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
+    QlinkServiceProxy.a(this.a, false);
+    QlinkServiceProxy.a(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
+    QlinkServiceProxy.a(this.a, null);
+    QlinkServiceProxy.a(this.a, false);
   }
 }
 

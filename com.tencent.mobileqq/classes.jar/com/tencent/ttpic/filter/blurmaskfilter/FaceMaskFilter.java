@@ -15,13 +15,13 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.model.FaceMaskItem;
-import com.tencent.ttpic.model.FaceMaskItem.FACE_MASK_TYPE;
+import com.tencent.ttpic.model.FaceMaskItem.FaceMaskType;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.filter.FaceLineFilter;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import com.tencent.view.RendererUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -65,8 +65,12 @@ public class FaceMaskFilter
     super("attribute vec4 position;\n\nattribute vec4 inputGrayTextureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvoid main() {\n    gl_Position = position;\n    grayTextureCoordinate  = inputGrayTextureCoordinate.xy;\n}\n", "precision highp float;\n varying vec2 grayTextureCoordinate;\n uniform sampler2D inputImageTexture2;\n void main() {\n    vec4 graycolor= texture2D(inputImageTexture2, grayTextureCoordinate);\n    float grayColorR=1.0-graycolor.r;\n    if(graycolor.r<0.981){\n        gl_FragColor = vec4(grayColorR,grayColorR,grayColorR,1.0);\n    }\n }");
     if ((paramFaceMaskItem != null) && (paramFaceMaskItem.isValid))
     {
-      if ((paramFaceMaskItem.faceMaskType == FaceMaskItem.FACE_MASK_TYPE.SINGLE_MASK.value) && (paramFaceMaskItem.faceMaskImgPath != null)) {
-        this.mMaskPath = (paramFaceMaskItem.faceMaskImgPath + "0.png");
+      if ((paramFaceMaskItem.faceMaskType == FaceMaskItem.FaceMaskType.SINGLE_MASK.value) && (paramFaceMaskItem.faceMaskImgPath != null))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramFaceMaskItem.faceMaskImgPath);
+        localStringBuilder.append("0.png");
+        this.mMaskPath = localStringBuilder.toString();
       }
       this.mMaskBlurStrength = ((float)paramFaceMaskItem.featherStrength);
       this.mMaskSizeValue = ((float)paramFaceMaskItem.faceMaskSize);
@@ -83,49 +87,50 @@ public class FaceMaskFilter
   
   private float[] facePointInit(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
   {
-    int n = 88;
-    if ((CollectionUtils.isEmpty(paramList)) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    boolean bool = CollectionUtils.isEmpty(paramList);
+    int i = 0;
+    if ((!bool) && (paramInt1 > 0) && (paramInt2 > 0))
     {
-      localObject = new float[0];
-      return localObject;
-    }
-    Object localObject = (PointF)paramList.get(88);
-    paramArrayOfFloat[0] = (((PointF)localObject).x / paramInt1 * 2.0F - 1.0F);
-    paramArrayOfFloat[1] = (((PointF)localObject).y / paramInt2 * 2.0F - 1.0F);
-    localObject = (PointF)paramList.get(86);
-    paramArrayOfFloat[2] = (((PointF)localObject).x / paramInt1 * 2.0F - 1.0F);
-    paramArrayOfFloat[3] = (((PointF)localObject).y / paramInt2 * 2.0F - 1.0F);
-    int j = 0;
-    int i = 4;
-    int k;
-    int m;
-    for (;;)
-    {
-      k = n;
-      m = i;
-      if (j >= 19) {
-        break;
+      int k = 88;
+      PointF localPointF = (PointF)paramList.get(88);
+      float f2 = localPointF.x;
+      float f1 = paramInt1;
+      paramArrayOfFloat[0] = (f2 / f1 * 2.0F - 1.0F);
+      f2 = localPointF.y;
+      float f3 = paramInt2;
+      paramArrayOfFloat[1] = (f2 / f3 * 2.0F - 1.0F);
+      localPointF = (PointF)paramList.get(86);
+      paramArrayOfFloat[2] = (localPointF.x / f1 * 2.0F - 1.0F);
+      paramArrayOfFloat[3] = (localPointF.y / f3 * 2.0F - 1.0F);
+      paramInt1 = 4;
+      paramInt2 = i;
+      int j;
+      for (;;)
+      {
+        i = k;
+        j = paramInt1;
+        if (paramInt2 >= 19) {
+          break;
+        }
+        localPointF = (PointF)paramList.get(paramInt2);
+        i = paramInt1 + 1;
+        paramArrayOfFloat[paramInt1] = (localPointF.x / f1 * 2.0F - 1.0F);
+        paramInt1 = i + 1;
+        paramArrayOfFloat[i] = (localPointF.y / f3 * 2.0F - 1.0F);
+        paramInt2 += 1;
       }
-      localObject = (PointF)paramList.get(j);
-      k = i + 1;
-      paramArrayOfFloat[i] = (((PointF)localObject).x / paramInt1 * 2.0F - 1.0F);
-      i = k + 1;
-      paramArrayOfFloat[k] = (((PointF)localObject).y / paramInt2 * 2.0F - 1.0F);
-      j += 1;
-    }
-    for (;;)
-    {
-      localObject = paramArrayOfFloat;
-      if (k <= 86) {
-        break;
+      while (i > 86)
+      {
+        localPointF = (PointF)paramList.get(i);
+        paramInt1 = j + 1;
+        paramArrayOfFloat[j] = (localPointF.x / f1 * 2.0F - 1.0F);
+        j = paramInt1 + 1;
+        paramArrayOfFloat[paramInt1] = (localPointF.y / f3 * 2.0F - 1.0F);
+        i -= 1;
       }
-      localObject = (PointF)paramList.get(k);
-      i = m + 1;
-      paramArrayOfFloat[m] = (((PointF)localObject).x / paramInt1 * 2.0F - 1.0F);
-      m = i + 1;
-      paramArrayOfFloat[i] = (((PointF)localObject).y / paramInt2 * 2.0F - 1.0F);
-      k -= 1;
+      return paramArrayOfFloat;
     }
+    return new float[0];
   }
   
   private Bitmap featherBitmap(Bitmap paramBitmap, float paramFloat)
@@ -155,43 +160,51 @@ public class FaceMaskFilter
   
   private float[] resizePoints(float[] paramArrayOfFloat, float paramFloat)
   {
-    float f2 = 0.0F;
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 2)) {}
-    for (;;)
+    if (paramArrayOfFloat != null)
     {
-      return paramArrayOfFloat;
-      int j = paramArrayOfFloat.length / 2;
-      int k;
-      if ((this.sumXy == null) || (this.sumXy[0] < 1.E-005D) || (this.sumXy[1] < 1.E-005D))
+      if (paramArrayOfFloat.length < 2) {
+        return paramArrayOfFloat;
+      }
+      int k = paramArrayOfFloat.length / 2;
+      float[] arrayOfFloat = this.sumXy;
+      int j = 0;
+      float f2;
+      float f1;
+      if ((arrayOfFloat != null) && (arrayOfFloat[0] >= 1.E-005D) && (arrayOfFloat[1] >= 1.E-005D))
+      {
+        f2 = arrayOfFloat[0];
+        f1 = arrayOfFloat[1];
+      }
+      else
       {
         i = 0;
-        for (f1 = 0.0F;; f1 = f3 + f1)
+        f1 = 0.0F;
+        f2 = 0.0F;
+        while (i < k)
         {
-          f3 = f2;
-          f4 = f1;
-          if (i >= j) {
-            break;
-          }
-          k = i * 2;
-          f3 = paramArrayOfFloat[k];
-          f4 = paramArrayOfFloat[(k + 1)];
+          int m = i * 2;
+          f1 += paramArrayOfFloat[m];
+          f2 += paramArrayOfFloat[(m + 1)];
           i += 1;
-          f2 = f4 + f2;
         }
+        f3 = f2;
+        f2 = f1;
+        f1 = f3;
       }
-      float f4 = this.sumXy[0];
-      float f3 = this.sumXy[1];
-      float f1 = f4 / j;
-      f2 = f3 / j;
-      int i = 0;
-      while (i < j)
+      float f3 = k;
+      f2 /= f3;
+      f1 /= f3;
+      int i = j;
+      while (i < k)
       {
-        k = i * 2;
-        paramArrayOfFloat[k] = ((paramArrayOfFloat[k] - f1) * paramFloat + f1);
-        paramArrayOfFloat[(k + 1)] = ((paramArrayOfFloat[(k + 1)] - f2) * paramFloat + f2);
+        j = i * 2;
+        paramArrayOfFloat[j] = ((paramArrayOfFloat[j] - f2) * paramFloat + f2);
+        j += 1;
+        paramArrayOfFloat[j] = ((paramArrayOfFloat[j] - f1) * paramFloat + f1);
         i += 1;
       }
     }
+    return paramArrayOfFloat;
   }
   
   public void apply()
@@ -207,13 +220,16 @@ public class FaceMaskFilter
   public void clear()
   {
     clearGLSLSelf();
-    if (this.mMaskFrame != null) {
-      this.mMaskFrame.clear();
+    Object localObject = this.mMaskFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
-    if (this.mCopyFilter != null) {
-      this.mCopyFilter.ClearGLSL();
+    localObject = this.mCopyFilter;
+    if (localObject != null) {
+      ((BaseFilter)localObject).clearGLSL();
     }
-    if ((this.mGrayBitmap != null) && (!this.mGrayBitmap.isRecycled())) {
+    localObject = this.mGrayBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
       this.mGrayBitmap.recycle();
     }
   }
@@ -221,28 +237,31 @@ public class FaceMaskFilter
   public void initAttribParams()
   {
     setPositions(GlUtil.ORIGIN_POSITION_COORDS);
-    this.mVertexs = FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices);
+    this.mVertexs = FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FeatureType.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices);
     addAttribParam("inputGrayTextureCoordinate", this.mVertexs);
   }
   
   public void initParams()
   {
-    this.mGrayBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP);
-    if (this.mGrayBitmap != null)
+    this.mGrayBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FeatureType.FACE_HEAD_CROP);
+    Object localObject = this.mGrayBitmap;
+    if (localObject != null)
     {
-      this.grayImageWidth = this.mGrayBitmap.getWidth();
+      this.grayImageWidth = ((Bitmap)localObject).getWidth();
       this.grayImageHeight = this.mGrayBitmap.getHeight();
-      if (this.mMaskPath != null)
+      localObject = this.mMaskPath;
+      if (localObject != null)
       {
-        Bitmap localBitmap = loadImg(this.mMaskPath);
-        if ((localBitmap != null) && (!localBitmap.isRecycled()))
+        localObject = loadImg((String)localObject);
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
         {
           this.mGrayBitmap.recycle();
-          this.mGrayBitmap = localBitmap;
+          this.mGrayBitmap = ((Bitmap)localObject);
         }
       }
-      if (this.mMaskBlurStrength > 1.0F) {
-        this.mGrayBitmap = featherBitmap(this.mGrayBitmap, this.mMaskBlurStrength);
+      float f = this.mMaskBlurStrength;
+      if (f > 1.0F) {
+        this.mGrayBitmap = featherBitmap(this.mGrayBitmap, f);
       }
       addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", this.mGrayBitmap, 33986, true));
     }
@@ -304,12 +323,12 @@ public class FaceMaskFilter
       LogUtils.i(TAG, "已经保存");
       return;
     }
-    catch (FileNotFoundException paramBitmap)
+    catch (IOException paramBitmap)
     {
       paramBitmap.printStackTrace();
       return;
     }
-    catch (IOException paramBitmap)
+    catch (FileNotFoundException paramBitmap)
     {
       paramBitmap.printStackTrace();
     }
@@ -327,22 +346,48 @@ public class FaceMaskFilter
   
   public void updateAndResizeFacePoints(List<PointF> paramList, float paramFloat)
   {
-    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    paramList = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramList), 3.0F);
+    double d1 = this.width;
+    double d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    int i = (int)(d1 * d2);
+    d1 = this.height;
+    d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    setPositions(FaceOffUtil.initFacePositions(paramList, i, (int)(d1 * d2), this.faceVertices));
     setCoordNum(690);
   }
   
   public void updateFacePoints(List<PointF> paramList)
   {
-    paramList = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList), 3.0F);
-    if ((this.mMaskSizeValue > 0.9D) && (this.mMaskSizeValue < 1.1D)) {
-      setPositions(FaceOffUtil.initFacePositions(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-    }
-    for (;;)
+    paramList = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramList), 3.0F);
+    float f = this.mMaskSizeValue;
+    double d1;
+    double d2;
+    int i;
+    if ((f > 0.9D) && (f < 1.1D))
     {
-      setCoordNum(690);
-      return;
-      setPositions(resizePoints(FaceOffUtil.initFacePositions(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, this.sumXy), this.mMaskSizeValue));
+      d1 = this.width;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      i = (int)(d1 * d2);
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      setPositions(FaceOffUtil.initFacePositions(paramList, i, (int)(d1 * d2), this.faceVertices));
     }
+    else
+    {
+      d1 = this.width;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      i = (int)(d1 * d2);
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      setPositions(resizePoints(FaceOffUtil.initFacePositions(paramList, i, (int)(d1 * d2), this.faceVertices, this.sumXy), this.mMaskSizeValue));
+    }
+    setCoordNum(690);
   }
   
   public void updatePoints(List<List<PointF>> paramList)
@@ -364,9 +409,16 @@ public class FaceMaskFilter
       setCoordNum(4);
       return;
     }
-    paramList = VideoMaterialUtil.copyList((List)paramList.get(0));
+    paramList = VideoMaterial.copyList((List)paramList.get(0));
     FaceOffUtil.getFullCoords(paramList, 2.0F);
-    setPositions(facePointInit(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    double d1 = this.width;
+    double d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    int i = (int)(d1 * d2);
+    d1 = this.height;
+    d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    setPositions(facePointInit(paramList, i, (int)(d1 * d2), this.faceVertices));
     setCoordNum(23);
   }
   
@@ -379,7 +431,7 @@ public class FaceMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.FaceMaskFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,23 +16,23 @@ public final class zzdb
   
   public final String getDataItemKey()
   {
-    AppMethodBeat.i(71189);
+    AppMethodBeat.i(101172);
     String str = getString("asset_key");
-    AppMethodBeat.o(71189);
+    AppMethodBeat.o(101172);
     return str;
   }
   
   public final String getId()
   {
-    AppMethodBeat.i(71188);
+    AppMethodBeat.i(101171);
     String str = getString("asset_id");
-    AppMethodBeat.o(71188);
+    AppMethodBeat.o(101171);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzdb
  * JD-Core Version:    0.7.0.1
  */

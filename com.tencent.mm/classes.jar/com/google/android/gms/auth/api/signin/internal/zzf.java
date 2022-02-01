@@ -1,7 +1,7 @@
 package com.google.android.gms.auth.api.signin.internal;
 
 import android.content.Context;
-import android.support.v4.content.a;
+import androidx.h.b.a;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.internal.SignInConnectionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -20,15 +20,15 @@ public final class zzf
   public zzf(Context paramContext, Set<GoogleApiClient> paramSet)
   {
     super(paramContext);
-    AppMethodBeat.i(50421);
+    AppMethodBeat.i(88316);
     this.zzet = new Semaphore(0);
     this.zzeu = paramSet;
-    AppMethodBeat.o(50421);
+    AppMethodBeat.o(88316);
   }
   
   private final Void zzm()
   {
-    AppMethodBeat.i(50422);
+    AppMethodBeat.i(88317);
     Iterator localIterator = this.zzeu.iterator();
     int i = 0;
     if (localIterator.hasNext())
@@ -45,7 +45,7 @@ public final class zzf
       try
       {
         this.zzet.tryAcquire(i, 5L, TimeUnit.SECONDS);
-        AppMethodBeat.o(50422);
+        AppMethodBeat.o(88317);
         return null;
       }
       catch (InterruptedException localInterruptedException)
@@ -60,22 +60,22 @@ public final class zzf
   
   public final void onComplete()
   {
-    AppMethodBeat.i(50424);
+    AppMethodBeat.i(88319);
     this.zzet.release();
-    AppMethodBeat.o(50424);
+    AppMethodBeat.o(88319);
   }
   
   public final void onStartLoading()
   {
-    AppMethodBeat.i(50423);
+    AppMethodBeat.i(88318);
     this.zzet.drainPermits();
     forceLoad();
-    AppMethodBeat.o(50423);
+    AppMethodBeat.o(88318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zzf
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public final class ResponeUploadAddressBook
   extends JceStruct
 {
   static byte[] cache_sessionSid;
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   public ResponeUploadAddressBook() {}
   
@@ -38,7 +38,7 @@ public final class ResponeUploadAddressBook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeUploadAddressBook
  * JD-Core Version:    0.7.0.1
  */

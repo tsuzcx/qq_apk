@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class LBSInfo
   extends JceStruct
@@ -12,10 +13,10 @@ public final class LBSInfo
   static GPS cache_stGps;
   static ArrayList<Cell> cache_vCells;
   static ArrayList<Wifi> cache_vWifis;
-  public Attr stAttr;
-  public GPS stGps;
-  public ArrayList<Cell> vCells;
-  public ArrayList<Wifi> vWifis;
+  public Attr stAttr = null;
+  public GPS stGps = null;
+  public ArrayList<Cell> vCells = null;
+  public ArrayList<Wifi> vWifis = null;
   
   public LBSInfo() {}
   
@@ -56,23 +57,27 @@ public final class LBSInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 0);
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vWifis != null) {
-      paramJceOutputStream.write(this.vWifis, 1);
+    localObject = this.vWifis;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.vCells != null) {
-      paramJceOutputStream.write(this.vCells, 2);
+    localObject = this.vCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stAttr != null) {
-      paramJceOutputStream.write(this.stAttr, 3);
+    localObject = this.stAttr;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.LBSInfo
  * JD-Core Version:    0.7.0.1
  */

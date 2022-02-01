@@ -8,7 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import dyf;
+import dye;
 
 public class ViewPagerRadioGroup
   extends RadioGroup
@@ -26,18 +26,18 @@ public class ViewPagerRadioGroup
   
   private RadioButton a()
   {
-    dyf localdyf = new dyf(this, getContext());
-    localdyf.setButtonDrawable(2130837975);
-    localdyf.setGravity(17);
+    dye localdye = new dye(this, getContext());
+    localdye.setButtonDrawable(2130837975);
+    localdye.setGravity(17);
     Resources localResources = getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams(AIOUtils.a(10.0F, localResources), AIOUtils.a(10.0F, localResources));
     localLayoutParams.gravity = 17;
     int i = AIOUtils.a(3.0F, localResources);
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localdyf.setLayoutParams(localLayoutParams);
-    localdyf.setClickable(true);
-    return localdyf;
+    localdye.setLayoutParams(localLayoutParams);
+    localdye.setClickable(true);
+    return localdye;
   }
   
   public void a(int paramInt1, int paramInt2)

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,9 +16,9 @@ public final class del_batch_photo_req
   static ArrayList<String> cache_vids;
   public String albumid = "";
   public int appid = 4;
-  public Map<Integer, String> busi_param;
-  public ArrayList<String> picid_list;
-  public ArrayList<String> vids;
+  public Map<Integer, String> busi_param = null;
+  public ArrayList<String> picid_list = null;
+  public ArrayList<String> vids = null;
   
   static
   {
@@ -52,18 +53,20 @@ public final class del_batch_photo_req
   {
     paramJceOutputStream.write(this.albumid, 0);
     paramJceOutputStream.write(this.picid_list, 1);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 2);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.appid, 3);
-    if (this.vids != null) {
-      paramJceOutputStream.write(this.vids, 4);
+    localObject = this.vids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.del_batch_photo_req
  * JD-Core Version:    0.7.0.1
  */

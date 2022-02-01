@@ -2,20 +2,27 @@ package com.tencent.token.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 public class UtilsMbInfoFeedbackMobileUsingSuccActivity
   extends BaseActivity
 {
   private void initUI()
   {
-    findViewById(2131559365).setOnClickListener(new adn(this));
+    findViewById(2131165508).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        UtilsMbInfoFeedbackMobileUsingSuccActivity.this.finish();
+      }
+    });
     this.mBackArrow.setVisibility(4);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968793);
+    setContentView(2131296488);
     initUI();
   }
 }

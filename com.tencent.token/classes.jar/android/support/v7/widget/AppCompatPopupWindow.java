@@ -1,72 +1,71 @@
 package android.support.v7.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Build.VERSION;
-import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
-import android.support.v4.widget.PopupWindowCompat;
-import android.support.v7.appcompat.R.styleable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
+import com.tencent.token.gn;
+import com.tencent.token.hg.j;
+import com.tencent.token.jw;
 
 class AppCompatPopupWindow
   extends PopupWindow
 {
-  private static final boolean COMPAT_OVERLAP_ANCHOR;
-  private boolean mOverlapAnchor;
+  private static final boolean a;
+  private boolean b;
   
   static
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (boolean bool = true;; bool = false)
-    {
-      COMPAT_OVERLAP_ANCHOR = bool;
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    a = bool;
   }
   
-  public AppCompatPopupWindow(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt)
+  public AppCompatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    init(paramContext, paramAttributeSet, paramInt, 0);
+    a(paramContext, paramAttributeSet, paramInt, 0);
   }
   
-  public AppCompatPopupWindow(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
+  public AppCompatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    init(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    a(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  private void init(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.PopupWindow, paramInt1, paramInt2);
-    if (paramContext.hasValue(R.styleable.PopupWindow_overlapAnchor)) {
-      setSupportOverlapAnchor(paramContext.getBoolean(R.styleable.PopupWindow_overlapAnchor, false));
+    paramContext = jw.a(paramContext, paramAttributeSet, hg.j.PopupWindow, paramInt1, paramInt2);
+    if (paramContext.f(hg.j.PopupWindow_overlapAnchor)) {
+      a(paramContext.a(hg.j.PopupWindow_overlapAnchor, false));
     }
-    setBackgroundDrawable(paramContext.getDrawable(R.styleable.PopupWindow_android_popupBackground));
-    paramContext.recycle();
+    setBackgroundDrawable(paramContext.a(hg.j.PopupWindow_android_popupBackground));
+    paramContext.a.recycle();
   }
   
-  private void setSupportOverlapAnchor(boolean paramBoolean)
+  private void a(boolean paramBoolean)
   {
-    if (COMPAT_OVERLAP_ANCHOR)
+    if (a)
     {
-      this.mOverlapAnchor = paramBoolean;
+      this.b = paramBoolean;
       return;
     }
-    PopupWindowCompat.setOverlapAnchor(this, paramBoolean);
+    gn.a(this, paramBoolean);
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (COMPAT_OVERLAP_ANCHOR)
+    if (a)
     {
       i = paramInt2;
-      if (this.mOverlapAnchor) {
+      if (this.b) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -76,10 +75,10 @@ class AppCompatPopupWindow
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt2;
-    if (COMPAT_OVERLAP_ANCHOR)
+    if (a)
     {
       i = paramInt2;
-      if (this.mOverlapAnchor) {
+      if (this.b) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -88,14 +87,10 @@ class AppCompatPopupWindow
   
   public void update(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((COMPAT_OVERLAP_ANCHOR) && (this.mOverlapAnchor)) {
+    if ((a) && (this.b)) {
       paramInt2 -= paramView.getHeight();
     }
-    for (;;)
-    {
-      super.update(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
-    }
+    super.update(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
   }
 }
 

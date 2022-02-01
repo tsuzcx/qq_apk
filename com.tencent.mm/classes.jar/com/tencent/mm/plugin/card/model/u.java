@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.buc;
-import com.tencent.mm.protocal.protobuf.bud;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.eqk;
+import com.tencent.mm.protocal.protobuf.eql;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class u
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private h callback;
+  private final c rr;
   
   public u(float paramFloat1, float paramFloat2, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(87876);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new buc();
-    ((b.a)localObject).fsY = new bud();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/reportlocation";
-    ((b.a)localObject).funcId = 1253;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (buc)this.rr.fsV.fta;
-    ((buc)localObject).latitude = paramFloat1;
-    ((buc)localObject).longitude = paramFloat2;
-    ((buc)localObject).cHn = paramString1;
-    ((buc)localObject).kml = paramString2;
-    ((buc)localObject).xHu = paramInt;
-    AppMethodBeat.o(87876);
+    AppMethodBeat.i(112818);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eqk();
+    ((c.a)localObject).otF = new eql();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/reportlocation";
+    ((c.a)localObject).funcId = 1253;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (eqk)c.b.b(this.rr.otB);
+    ((eqk)localObject).latitude = paramFloat1;
+    ((eqk)localObject).longitude = paramFloat2;
+    ((eqk)localObject).iaI = paramString1;
+    ((eqk)localObject).wsy = paramString2;
+    ((eqk)localObject).abuj = paramInt;
+    AppMethodBeat.o(112818);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(87877);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87877);
+    AppMethodBeat.i(112819);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(112819);
     return i;
   }
   
@@ -54,12 +54,12 @@ public final class u
     return 1253;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87878);
-    ab.i("MicroMsg.NetSceneCardReportLocation", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(112820);
+    Log.i("MicroMsg.NetSceneCardReportLocation", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(87878);
+    AppMethodBeat.o(112820);
   }
 }
 

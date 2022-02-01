@@ -59,18 +59,20 @@ public final class edit_batch_photo_req
     paramJceOutputStream.write(this.albumid, 0);
     paramJceOutputStream.write(this.picid_list, 1);
     paramJceOutputStream.write(this.PhotoInfo, 2);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 3);
+    Map localMap = this.busi_param;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
     paramJceOutputStream.write(this.operatype, 4);
-    if (this.picid_time_list != null) {
-      paramJceOutputStream.write(this.picid_time_list, 5);
+    localMap = this.picid_time_list;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.edit_batch_photo_req
  * JD-Core Version:    0.7.0.1
  */

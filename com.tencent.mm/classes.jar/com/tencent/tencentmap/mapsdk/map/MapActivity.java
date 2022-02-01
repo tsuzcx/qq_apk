@@ -3,23 +3,24 @@ package com.tencent.tencentmap.mapsdk.map;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class MapActivity
-  extends Activity
+  extends HellActivity
 {
   private List<MapView> mapViewList = new ArrayList();
   private Bundle mysavedInstanceState;
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.mysavedInstanceState = paramBundle;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     Iterator localIterator = this.mapViewList.iterator();
@@ -33,7 +34,7 @@ public abstract class MapActivity
     this.mapViewList.clear();
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
     Iterator localIterator = this.mapViewList.iterator();
@@ -59,7 +60,7 @@ public abstract class MapActivity
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     Iterator localIterator = this.mapViewList.iterator();
@@ -85,7 +86,7 @@ public abstract class MapActivity
     }
   }
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
     Iterator localIterator = this.mapViewList.iterator();
@@ -113,7 +114,7 @@ public abstract class MapActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.MapActivity
  * JD-Core Version:    0.7.0.1
  */

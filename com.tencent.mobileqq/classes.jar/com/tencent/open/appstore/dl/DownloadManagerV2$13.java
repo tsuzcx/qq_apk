@@ -1,65 +1,83 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bfkr;
-import bflp;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import java.util.Map;
 
-public class DownloadManagerV2$13
+class DownloadManagerV2$13
   implements Runnable
 {
-  public DownloadManagerV2$13(bfkr parambfkr, String paramString, Map paramMap, int paramInt, DownloadInfo paramDownloadInfo1, DownloadInfo paramDownloadInfo2) {}
+  DownloadManagerV2$13(DownloadManagerV2 paramDownloadManagerV2, String paramString, Map paramMap, int paramInt, DownloadInfo paramDownloadInfo1, DownloadInfo paramDownloadInfo2) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bflp.b("DownloadManagerV2", "startDownload download file, url = " + this.jdField_a_of_type_JavaLangString + "params = " + this.jdField_a_of_type_JavaUtilMap);
-    }
-    do
+    boolean bool = TextUtils.isEmpty(this.a);
+    int j = 3;
+    int i = j;
+    if (!bool)
     {
-      for (;;)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startDownload download file, url = ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("params = ");
+      localStringBuilder.append(this.b);
+      LogUtility.b("DownloadManagerV2", localStringBuilder.toString());
+      try
       {
-        try
+        if (this.c == 0)
         {
-          int i;
-          if (this.jdField_a_of_type_Int == 0)
-          {
-            i = bfkr.a(this.this$0).startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/vnd.android.package-archive", this.jdField_a_of_type_JavaUtilMap);
-            bflp.b("DownloadManagerV2", "startDownloadTask downloadSDKClient result=" + i + " url=" + this.jdField_a_of_type_JavaLangString);
-            if (i == 0) {
-              break;
-            }
-            bfkr.a(this.this$0, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, i, "");
-            return;
-          }
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(3));
-            i = bfkr.a(this.this$0).startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/tm.android.apkdiff", this.jdField_a_of_type_JavaUtilMap);
-          }
-          else
-          {
-            bflp.a("DownloadManagerV2", "startDownload download unapk file, url = " + this.jdField_a_of_type_JavaLangString + ",filename = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e);
-            i = bfkr.a(this.this$0).startDownloadTask(this.jdField_a_of_type_JavaLangString, 0, "resource/tm.android.unknown", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f, this.jdField_a_of_type_JavaUtilMap);
-            continue;
-            i = 3;
-          }
+          i = DownloadManagerV2.e(this.this$0).startDownloadTask(this.a, "application/vnd.android.package-archive", this.b);
         }
-        catch (Exception localException)
+        else if (this.c == 1)
         {
-          bflp.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+          this.b.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(3));
+          i = DownloadManagerV2.e(this.this$0).startDownloadTask(this.a, "application/tm.android.apkdiff", this.b);
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startDownload download unapk file, url = ");
+          localStringBuilder.append(this.a);
+          localStringBuilder.append(",filename = ");
+          localStringBuilder.append(this.d.e);
+          LogUtility.a("DownloadManagerV2", localStringBuilder.toString());
+          i = DownloadManagerV2.e(this.this$0).startDownloadTask(this.a, 0, "resource/tm.android.unknown", this.d.f, this.b);
         }
       }
-    } while ((this.b != this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) || (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a() != 20));
-    this.this$0.a(20, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      catch (Exception localException)
+      {
+        LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+        i = j;
+      }
+    }
+    for (;;)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startDownloadTask downloadSDKClient result=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" url=");
+      ((StringBuilder)localObject).append(this.a);
+      LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject).toString());
+      if (i != 0)
+      {
+        DownloadManagerV2.a(this.this$0, this.d, i, "");
+        return;
+      }
+      localObject = this.e;
+      DownloadInfo localDownloadInfo = this.d;
+      if ((localObject == localDownloadInfo) && (localDownloadInfo.a() == 20)) {
+        this.this$0.a(20, this.d);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.13
  * JD-Core Version:    0.7.0.1
  */

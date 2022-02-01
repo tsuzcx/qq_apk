@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
     <TextView android:textSize="16.0sp" android:textColor="@color/fl" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/a8n" />
-    <CheckBox android:textSize="16.0sp" android:textColor="@color/fl" android:id="@id/delRoamMsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:checked="true" android:button="@drawable/nj" android:text="@string/aju" />
+    <CheckBox android:textSize="16.0sp" android:textColor="@color/fl" android:id="@id/delRoamMsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:checked="true" android:button="@drawable/0x" android:text="@string/aju" />
 </LinearLayout>

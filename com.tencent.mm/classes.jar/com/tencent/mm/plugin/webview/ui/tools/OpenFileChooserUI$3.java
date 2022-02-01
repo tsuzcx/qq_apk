@@ -1,20 +1,30 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.pluginsdk.ui.tools.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.u.i;
 
 final class OpenFileChooserUI$3
-  implements DialogInterface.OnClickListener
+  implements u.i
 {
   OpenFileChooserUI$3(OpenFileChooserUI paramOpenFileChooserUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(7444);
-    this.vbg.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
-    AppMethodBeat.o(7444);
+    AppMethodBeat.i(175750);
+    boolean bool = b.a(this.WSM.getContext(), "android.permission.CAMERA", 16, "");
+    Log.i("MicroMsg.OpenFileChooserUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.WSM.getContext() });
+    if (!bool)
+    {
+      AppMethodBeat.o(175750);
+      return;
+    }
+    t.d(this.WSM.getContext(), OpenFileChooserUI.a(this.WSM), "microMsg." + System.currentTimeMillis() + ".jpg", 2);
+    AppMethodBeat.o(175750);
   }
 }
 

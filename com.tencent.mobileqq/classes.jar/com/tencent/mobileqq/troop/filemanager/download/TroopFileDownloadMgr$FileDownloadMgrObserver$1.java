@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bbwi;
-
-public class TroopFileDownloadMgr$FileDownloadMgrObserver$1
+class TroopFileDownloadMgr$FileDownloadMgrObserver$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(bbwi parambbwi, Object paramObject) {}
+  TroopFileDownloadMgr$FileDownloadMgrObserver$1(TroopFileDownloadMgr.FileDownloadMgrObserver paramFileDownloadMgrObserver, Object paramObject) {}
   
   public void run()
   {
-    bbwi.a(this.this$0, this.a);
+    TroopFileDownloadMgr.FileDownloadMgrObserver.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/b31" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/q8_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/0x">
+            <LinearLayout android:gravity="center_vertical" android:background="@drawable/gvd" android:paddingLeft="@dimen/2r" android:paddingRight="@dimen/2r" android:layout_width="fill_parent" android:layout_height="@dimen/0x">
+                <TextView android:textSize="@dimen/3c" android:textColor="@color/di" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/wjd" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                <include android:id="@id/q86" layout="@layout/cnt" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/2h" android:textColor="@color/dg" android:id="@id/q88" android:paddingTop="@dimen/2s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/2r" android:text="@string/wjc" />
+        <com.tencent.mm.msgsubscription.ui.MaxRecyclerView android:id="@id/q85" android:background="@drawable/gvd" android:paddingTop="1.0px" android:paddingBottom="1.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/3q" android:nestedScrollingEnabled="false" />
+    </LinearLayout>
+</ScrollView>

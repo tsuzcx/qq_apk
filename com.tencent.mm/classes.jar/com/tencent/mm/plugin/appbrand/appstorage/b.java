@@ -1,256 +1,177 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import a.y;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandEncryptKVStorageTransferABTest;", "", "()V", "PHASES_FINISH", "", "PHASES_NONE", "PHASES_ROLLBACK", "PHASES_TEST", "TAG", "", "isNeedTransfer", "", "phases", "isFinishPhases", "isRollbackPhases", "load", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends j<a>
-  implements m
 {
-  public static final String[] SQL_CREATE;
-  private e gVl;
-  private a.f.a.b<String, String> gYY;
-  private a.f.a.m<String, String, y> gYZ;
+  public static final b qLK;
+  private static volatile boolean qLL;
+  private static volatile int qLM;
   
   static
   {
-    AppMethodBeat.i(101779);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "AppBrandKVData"), "DROP TABLE IF EXISTS AppBrandStorageKVData;" };
-    AppMethodBeat.o(101779);
+    AppMethodBeat.i(323132);
+    b localb = new b();
+    qLK = localb;
+    localb.Td();
+    AppMethodBeat.o(323132);
   }
   
-  public b(e parame)
+  /* Error */
+  private void Td()
   {
-    super(parame, a.info, "AppBrandKVData", null);
-    AppMethodBeat.i(101763);
-    this.gYY = new b.1(this);
-    this.gYZ = new b.2(this);
-    this.gVl = parame;
-    AppMethodBeat.o(101763);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 56
+    //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 58
+    //   9: ldc 60
+    //   11: invokestatic 65	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: ldc 67
+    //   16: invokestatic 73	com/tencent/mm/kernel/h:ax	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   19: checkcast 67	com/tencent/mm/plugin/expt/b/c
+    //   22: getstatic 79	com/tencent/mm/plugin/expt/b/c$a:zxg	Lcom/tencent/mm/plugin/expt/b/c$a;
+    //   25: iconst_0
+    //   26: invokeinterface 83 3 0
+    //   31: istore_1
+    //   32: iload_1
+    //   33: putstatic 85	com/tencent/mm/plugin/appbrand/appstorage/b:qLM	I
+    //   36: iload_1
+    //   37: ifeq +51 -> 88
+    //   40: iconst_1
+    //   41: istore_2
+    //   42: iload_2
+    //   43: putstatic 87	com/tencent/mm/plugin/appbrand/appstorage/b:qLL	Z
+    //   46: ldc 58
+    //   48: new 89	java/lang/StringBuilder
+    //   51: dup
+    //   52: ldc 91
+    //   54: invokespecial 94	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   57: getstatic 87	com/tencent/mm/plugin/appbrand/appstorage/b:qLL	Z
+    //   60: invokevirtual 98	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   63: ldc 100
+    //   65: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: getstatic 85	com/tencent/mm/plugin/appbrand/appstorage/b:qLM	I
+    //   71: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: invokestatic 65	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   80: ldc 56
+    //   82: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: return
+    //   88: iconst_0
+    //   89: istore_2
+    //   90: goto -48 -> 42
+    //   93: astore_3
+    //   94: aload_0
+    //   95: monitorexit
+    //   96: aload_3
+    //   97: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	this	b
+    //   31	6	1	i	int
+    //   41	49	2	bool	boolean
+    //   93	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	36	93	finally
+    //   42	85	93	finally
   }
   
-  private int K(int paramInt, String paramString)
+  /* Error */
+  public final boolean chR()
   {
-    AppMethodBeat.i(101772);
-    a locala = new a();
-    locala.field_key = r.m(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@");
-    if (super.get(locala, new String[0]))
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 85	com/tencent/mm/plugin/appbrand/appstorage/b:qLM	I
+    //   5: istore_1
+    //   6: iload_1
+    //   7: iconst_3
+    //   8: if_icmpne +9 -> 17
+    //   11: iconst_1
+    //   12: istore_2
+    //   13: aload_0
+    //   14: monitorexit
+    //   15: iload_2
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: istore_2
+    //   19: goto -6 -> 13
+    //   22: astore_3
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: aload_3
+    //   26: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	27	0	this	b
+    //   5	4	1	i	int
+    //   12	7	2	bool	boolean
+    //   22	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	6	22	finally
+  }
+  
+  /* Error */
+  public final boolean chS()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 85	com/tencent/mm/plugin/appbrand/appstorage/b:qLM	I
+    //   5: istore_1
+    //   6: iload_1
+    //   7: iconst_2
+    //   8: if_icmpne +9 -> 17
+    //   11: iconst_1
+    //   12: istore_2
+    //   13: aload_0
+    //   14: monitorexit
+    //   15: iload_2
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: istore_2
+    //   19: goto -6 -> 13
+    //   22: astore_3
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: aload_3
+    //   26: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	27	0	this	b
+    //   5	4	1	i	int
+    //   12	7	2	bool	boolean
+    //   22	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	6	22	finally
+  }
+  
+  public final boolean chT()
+  {
+    try
     {
-      paramInt = bo.getInt(locala.field_data, 0);
-      AppMethodBeat.o(101772);
-      return paramInt;
+      boolean bool = qLL;
+      return bool;
     }
-    AppMethodBeat.o(101772);
-    return 0;
-  }
-  
-  private void aB(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(101770);
-    r.b(paramString, paramInt, this.gYY, this.gYZ);
-    AppMethodBeat.o(101770);
-  }
-  
-  private void e(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(101774);
-    a locala = new a();
-    locala.field_key = r.m(paramInt1, paramString, "@@@TOTAL@DATA@SIZE@@@");
-    locala.field_data = String.valueOf(paramInt2);
-    super.replace(locala);
-    AppMethodBeat.o(101774);
-  }
-  
-  private int f(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(101775);
-    paramInt2 = Math.max(0, K(paramInt1, paramString) + paramInt2);
-    e(paramInt1, paramString, paramInt2);
-    AppMethodBeat.o(101775);
-    return paramInt2;
-  }
-  
-  private int yU(String paramString)
-  {
-    AppMethodBeat.i(101776);
-    paramString = this.gVl.a("AppBrandKVData", new String[] { "size" }, "key = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst())
+    finally
     {
-      int i = paramString.getInt(0);
-      paramString.close();
-      AppMethodBeat.o(101776);
-      return i;
+      localObject = finally;
+      throw localObject;
     }
-    paramString.close();
-    AppMethodBeat.o(101776);
-    return 0;
-  }
-  
-  public final void I(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(101767);
-    if (paramInt == 0) {}
-    for (String str = paramString + "__";; str = paramInt + "__" + paramString + "__")
-    {
-      aB(paramString, paramInt);
-      this.gVl.delete("AppBrandKVData", String.format("%s like ? escape ? OR %s=?", new Object[] { "key", "key" }), new String[] { str.replace("_", "\\_") + "%", "\\", r.m(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@") });
-      AppMethodBeat.o(101767);
-      return;
-    }
-  }
-  
-  public final Object[] J(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(101771);
-    if (paramInt == 0) {}
-    Object localObject1;
-    Object localObject2;
-    for (String str = paramString + "__";; str = paramInt + "__" + paramString + "__")
-    {
-      localObject1 = this.gVl;
-      localObject2 = str.replace("_", "\\_") + "%";
-      localObject1 = ((e)localObject1).a("AppBrandKVData", new String[] { "key" }, "key like ? escape ?", new String[] { localObject2, "\\" }, null, null, null, 2);
-      localObject2 = new ArrayList();
-      while (((Cursor)localObject1).moveToNext()) {
-        ((ArrayList)localObject2).add(((Cursor)localObject1).getString(0).replace(str, ""));
-      }
-    }
-    ((Cursor)localObject1).close();
-    int i = K(paramInt, paramString);
-    paramInt = r.L(paramInt, paramString);
-    AppMethodBeat.o(101771);
-    return new Object[] { localObject2, Integer.valueOf(i), Integer.valueOf(paramInt) };
-  }
-  
-  public final m.a b(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(101765);
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
-    {
-      paramString1 = m.a.gZX;
-      AppMethodBeat.o(101765);
-      return paramString1;
-    }
-    String str = r.c(paramInt, paramString1, paramString2, "__");
-    int i = yU(str);
-    int j = r.bB(paramString2, paramString3);
-    int k = j - i;
-    if (K(paramInt, paramString1) + k >= r.L(paramInt, paramString1)) {}
-    for (i = 1; i != 0; i = 0)
-    {
-      paramString1 = m.a.gZZ;
-      AppMethodBeat.o(101765);
-      return paramString1;
-    }
-    paramString2 = new a();
-    paramString2.field_key = str;
-    paramString2.field_data = paramString3;
-    paramString2.field_dataType = paramString4;
-    paramString2.field_size = j;
-    if (super.replace(paramString2))
-    {
-      r.a(paramString1, paramInt, this.gYY, this.gYZ);
-      f(paramInt, paramString1, k);
-      paramString1 = m.a.gZV;
-      AppMethodBeat.o(101765);
-      return paramString1;
-    }
-    paramString1 = m.a.gZW;
-    AppMethodBeat.o(101765);
-    return paramString1;
-  }
-  
-  public final Object[] k(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(101764);
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
-    {
-      paramString1 = m.a.gZX;
-      AppMethodBeat.o(101764);
-      return new Object[] { paramString1 };
-    }
-    Object localObject = new a();
-    ((a)localObject).field_key = r.c(paramInt, paramString1, paramString2, "__");
-    if (super.get((c)localObject, new String[0]))
-    {
-      paramString1 = m.a.gZV;
-      paramString2 = ((a)localObject).field_data;
-      localObject = ((a)localObject).field_dataType;
-      AppMethodBeat.o(101764);
-      return new Object[] { paramString1, paramString2, localObject };
-    }
-    paramString1 = r.hab;
-    AppMethodBeat.o(101764);
-    return paramString1;
-  }
-  
-  public final m.a l(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(101766);
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
-    {
-      paramString1 = m.a.gZX;
-      AppMethodBeat.o(101766);
-      return paramString1;
-    }
-    paramString2 = r.c(paramInt, paramString1, paramString2, "__");
-    int i = f(paramInt, paramString1, -yU(paramString2));
-    a locala = new a();
-    locala.field_key = paramString2;
-    super.delete(locala, new String[0]);
-    if (i <= 0) {
-      aB(paramString1, paramInt);
-    }
-    paramString1 = m.a.gZV;
-    AppMethodBeat.o(101766);
-    return paramString1;
-  }
-  
-  public final void yR(String paramString)
-  {
-    AppMethodBeat.i(101768);
-    int i = 0;
-    while (i <= 1)
-    {
-      I(i, paramString);
-      i += 1;
-    }
-    AppMethodBeat.o(101768);
-  }
-  
-  public final int[] yS(String paramString)
-  {
-    AppMethodBeat.i(101769);
-    paramString = r.a(paramString, this.gYY, this.gYZ);
-    AppMethodBeat.o(101769);
-    return paramString;
-  }
-  
-  public final int yT(String paramString)
-  {
-    AppMethodBeat.i(101773);
-    int[] arrayOfInt = yS(paramString);
-    int k = arrayOfInt.length;
-    int j = 0;
-    int m;
-    for (int i = 0; j < k; i = m + i)
-    {
-      m = K(arrayOfInt[j], paramString);
-      j += 1;
-    }
-    AppMethodBeat.o(101773);
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 class fyv
   implements Runnable
 {
-  fyv(fys paramfys, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  fyv(fyr paramfyr) {}
   
   public void run()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Fys.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Fys.a);
+    UniformDownloaderAppBabySdk.c(this.a.a);
+    UniformDownloaderAppBabySdk.a(this.a.a);
   }
 }
 

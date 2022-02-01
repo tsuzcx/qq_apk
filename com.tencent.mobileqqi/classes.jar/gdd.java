@@ -1,49 +1,28 @@
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
+import com.tencent.mobileqq.musicgene.BitmapBlur;
 import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 
 public class gdd
-  extends Handler
+  implements Runnable
 {
-  public gdd(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public gdd(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, String paramString, File paramFile) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    Object localObject1 = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, this.jdField_a_of_type_JavaLangString);
+    if (localObject1 != null)
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
+      Object localObject2 = BitmapBlur.a((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), true);
+      MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, (Bitmap)localObject2);
+      localObject1 = Message.obtain(MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin));
+      ((Message)localObject1).obj = localObject2;
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("BUNDLE_KEY_FILE_PATH", this.jdField_a_of_type_JavaIoFile.getPath());
+      ((Message)localObject1).setData((Bundle)localObject2);
+      ((Message)localObject1).sendToTarget();
     }
   }
 }

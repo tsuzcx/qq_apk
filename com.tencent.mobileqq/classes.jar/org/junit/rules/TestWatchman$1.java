@@ -32,43 +32,44 @@ class TestWatchman$1
     //   37: invokevirtual 41	org/junit/rules/TestWatchman:finished	(Lorg/junit/runners/model/FrameworkMethod;)V
     //   40: return
     //   41: astore_1
-    //   42: aload_1
-    //   43: athrow
-    //   44: astore_1
-    //   45: aload_0
-    //   46: getfield 14	org/junit/rules/TestWatchman$1:this$0	Lorg/junit/rules/TestWatchman;
-    //   49: aload_0
-    //   50: getfield 16	org/junit/rules/TestWatchman$1:val$method	Lorg/junit/runners/model/FrameworkMethod;
-    //   53: invokevirtual 41	org/junit/rules/TestWatchman:finished	(Lorg/junit/runners/model/FrameworkMethod;)V
-    //   56: aload_1
-    //   57: athrow
-    //   58: astore_1
-    //   59: aload_0
-    //   60: getfield 14	org/junit/rules/TestWatchman$1:this$0	Lorg/junit/rules/TestWatchman;
-    //   63: aload_1
-    //   64: aload_0
-    //   65: getfield 16	org/junit/rules/TestWatchman$1:val$method	Lorg/junit/runners/model/FrameworkMethod;
-    //   68: invokevirtual 45	org/junit/rules/TestWatchman:failed	(Ljava/lang/Throwable;Lorg/junit/runners/model/FrameworkMethod;)V
-    //   71: aload_1
-    //   72: athrow
+    //   42: goto +21 -> 63
+    //   45: astore_1
+    //   46: aload_0
+    //   47: getfield 14	org/junit/rules/TestWatchman$1:this$0	Lorg/junit/rules/TestWatchman;
+    //   50: aload_1
+    //   51: aload_0
+    //   52: getfield 16	org/junit/rules/TestWatchman$1:val$method	Lorg/junit/runners/model/FrameworkMethod;
+    //   55: invokevirtual 45	org/junit/rules/TestWatchman:failed	(Ljava/lang/Throwable;Lorg/junit/runners/model/FrameworkMethod;)V
+    //   58: aload_1
+    //   59: athrow
+    //   60: astore_1
+    //   61: aload_1
+    //   62: athrow
+    //   63: aload_0
+    //   64: getfield 14	org/junit/rules/TestWatchman$1:this$0	Lorg/junit/rules/TestWatchman;
+    //   67: aload_0
+    //   68: getfield 16	org/junit/rules/TestWatchman$1:val$method	Lorg/junit/runners/model/FrameworkMethod;
+    //   71: invokevirtual 41	org/junit/rules/TestWatchman:finished	(Lorg/junit/runners/model/FrameworkMethod;)V
+    //   74: aload_1
+    //   75: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	73	0	this	1
-    //   41	2	1	localAssumptionViolatedException	org.junit.internal.AssumptionViolatedException
-    //   44	13	1	localObject	java.lang.Object
-    //   58	14	1	localThrowable	java.lang.Throwable
+    //   0	76	0	this	1
+    //   41	1	1	localObject	java.lang.Object
+    //   45	14	1	localThrowable	java.lang.Throwable
+    //   60	15	1	localAssumptionViolatedException	org.junit.internal.AssumptionViolatedException
     // Exception table:
     //   from	to	target	type
-    //   11	29	41	org/junit/internal/AssumptionViolatedException
-    //   11	29	44	finally
-    //   42	44	44	finally
-    //   59	73	44	finally
-    //   11	29	58	java/lang/Throwable
+    //   11	29	41	finally
+    //   46	60	41	finally
+    //   61	63	41	finally
+    //   11	29	45	java/lang/Throwable
+    //   11	29	60	org/junit/internal/AssumptionViolatedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.rules.TestWatchman.1
  * JD-Core Version:    0.7.0.1
  */

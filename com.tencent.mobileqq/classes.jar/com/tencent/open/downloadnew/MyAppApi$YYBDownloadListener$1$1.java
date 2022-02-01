@@ -1,6 +1,5 @@
 package com.tencent.open.downloadnew;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -11,9 +10,10 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfbm;
-import bflp;
-import bflz;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.ToastUtil;
 
 class MyAppApi$YYBDownloadListener$1$1
   implements Runnable
@@ -22,35 +22,41 @@ class MyAppApi$YYBDownloadListener$1$1
   
   public void run()
   {
-    if (bfbm.a().a() != null)
+    if (CommonDataAdapter.a().b() != null)
     {
       Object localObject1 = new DisplayMetrics();
-      ((WindowManager)bfbm.a().a().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
+      ((WindowManager)CommonDataAdapter.a().b().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
       int i = ((DisplayMetrics)localObject1).widthPixels;
       float f = ((DisplayMetrics)localObject1).density;
       Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      localObject1 = new RelativeLayout(bfbm.a().a());
+      localObject1 = new RelativeLayout(CommonDataAdapter.a().b());
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((RelativeLayout)localObject1).setBackgroundColor(-855638017);
       ((RelativeLayout)localObject1).setGravity(17);
-      ((RelativeLayout)localObject1).setPadding((int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F));
-      localObject2 = new TextView(bfbm.a().a());
-      ((TextView)localObject2).setWidth((int)(i * 0.9D));
-      ((TextView)localObject2).setHeight((int)(96.0F * f + 0.5F));
-      ((TextView)localObject2).setBackgroundColor(bfbm.a().a().getResources().getColor(2131167140));
-      ((TextView)localObject2).setText(2131720892);
-      ((TextView)localObject2).setTextColor(bfbm.a().a().getResources().getColor(2131165307));
+      int j = (int)(10.0F * f + 0.5F);
+      ((RelativeLayout)localObject1).setPadding(j, j, j, j);
+      localObject2 = new TextView(CommonDataAdapter.a().b());
+      double d = i;
+      Double.isNaN(d);
+      ((TextView)localObject2).setWidth((int)(d * 0.9D));
+      ((TextView)localObject2).setHeight((int)(f * 96.0F + 0.5F));
+      ((TextView)localObject2).setBackgroundColor(CommonDataAdapter.a().b().getResources().getColor(2131168376));
+      ((TextView)localObject2).setText(2131917317);
+      ((TextView)localObject2).setTextColor(CommonDataAdapter.a().b().getResources().getColor(2131165564));
       ((TextView)localObject2).setSingleLine();
       ((TextView)localObject2).setGravity(17);
       ((RelativeLayout)localObject1).addView((View)localObject2);
-      bflz.a().a((View)localObject1, 1);
-      bflp.c("MyAppApi", alud.a(2131707440) + System.currentTimeMillis());
+      ToastUtil.a().a((View)localObject1, 1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904921));
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      LogUtility.c("MyAppApi", ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.1.1
  * JD-Core Version:    0.7.0.1
  */

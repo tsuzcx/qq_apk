@@ -10,23 +10,23 @@ public final class ResourceUtils
   
   static
   {
-    AppMethodBeat.i(89720);
+    AppMethodBeat.i(4742);
     zzuw = new Uri.Builder().scheme("android.resource").authority("com.google.android.gms").appendPath("drawable").build();
-    AppMethodBeat.o(89720);
+    AppMethodBeat.o(4742);
   }
   
   public static Uri getDrawableUri(String paramString)
   {
-    AppMethodBeat.i(89719);
+    AppMethodBeat.i(4741);
     Preconditions.checkNotNull(paramString, "Resource name must not be null.");
     paramString = zzuw.buildUpon().appendPath(paramString).build();
-    AppMethodBeat.o(89719);
+    AppMethodBeat.o(4741);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ResourceUtils
  * JD-Core Version:    0.7.0.1
  */

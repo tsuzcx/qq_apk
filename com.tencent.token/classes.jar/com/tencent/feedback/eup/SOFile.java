@@ -8,12 +8,14 @@ public class SOFile
   
   public SOFile(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
-      throw new RuntimeException("SOFile args should not be null!");
+    if ((paramString1 != null) && (paramString2 != null) && (paramString3 != null))
+    {
+      this.fileName = paramString1;
+      this.arch = paramString2;
+      this.sha1 = paramString3;
+      return;
     }
-    this.fileName = paramString1;
-    this.arch = paramString2;
-    this.sha1 = paramString3;
+    throw new RuntimeException("SOFile args should not be null!");
   }
 }
 

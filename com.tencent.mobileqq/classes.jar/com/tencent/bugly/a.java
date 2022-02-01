@@ -31,7 +31,9 @@ public abstract class a
       while (paramInt1 < paramInt2)
       {
         String str = arrayOfString[paramInt1];
-        paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS " + str);
+        StringBuilder localStringBuilder = new StringBuilder("DROP TABLE IF EXISTS ");
+        localStringBuilder.append(str);
+        paramSQLiteDatabase.execSQL(localStringBuilder.toString());
         paramInt1 += 1;
       }
       onDbCreate(paramSQLiteDatabase);
@@ -58,7 +60,9 @@ public abstract class a
       while (paramInt1 < paramInt2)
       {
         String str = arrayOfString[paramInt1];
-        paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS " + str);
+        StringBuilder localStringBuilder = new StringBuilder("DROP TABLE IF EXISTS ");
+        localStringBuilder.append(str);
+        paramSQLiteDatabase.execSQL(localStringBuilder.toString());
         paramInt1 += 1;
       }
       onDbCreate(paramSQLiteDatabase);
@@ -76,7 +80,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.a
  * JD-Core Version:    0.7.0.1
  */

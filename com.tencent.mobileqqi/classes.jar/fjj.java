@@ -1,36 +1,59 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.OfflineFileMessageProcessor;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import com.tencent.mobileqq.service.message.TransMsgContext;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import OnlinePushPack.MsgInfo;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.TimerTask;
 
 public class fjj
-  implements fiw
+  extends TimerTask
 {
-  public fjj(OfflineFileMessageProcessor paramOfflineFileMessageProcessor, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
+  public fjj(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
   
-  public ToServiceMsg a()
+  public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putByte("sendType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", 1025);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
-    TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localToServiceMsg.putWupBuffer(MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 9, this.jdField_a_of_type_JavaLangString, localTransMsgContext, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
-    return localToServiceMsg;
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(this.jdField_a_of_type_Long));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "陌生人uin包括自己,移出");
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      FriendManager localFriendManager = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a.getManager(8);
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        String str2 = (String)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i)).second;
+        String str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "coptype 9 server showName empty");
+          }
+          str1 = localFriendManager.d(String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
+        }
+        if (i == 0) {
+          localStringBuilder.append(str1);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localStringBuilder.append("、" + str1);
+        }
+      }
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
+      }
+      OnLinePushMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
+    }
   }
 }
 

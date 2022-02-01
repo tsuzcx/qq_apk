@@ -13,19 +13,17 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import mqe;
-import mqf;
 
 public class QavRecordButtonView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private mqf jdField_a_of_type_Mqf;
+  private Paint a = null;
+  private RectF b = null;
+  private Rect c = null;
+  private int d = 1;
+  private float e = 0.0F;
+  private Bitmap f = null;
+  private QavRecordButtonView.ShowStateChangeListener g;
   
   public QavRecordButtonView(Context paramContext)
   {
@@ -52,34 +50,26 @@ public class QavRecordButtonView
       Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), paramInt);
       return localBitmap;
     }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QavRecordButtonView", 1, "decodeBitmap Throwable", localThrowable);
+    }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       QLog.e("QavRecordButtonView", 1, "decodeBitmap oom", localOutOfMemoryError);
-      return null;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("QavRecordButtonView", 1, "decodeBitmap Throwable", localThrowable);
-      }
-    }
+    return null;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130841887);
-    super.setOnTouchListener(new mqe(this));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.STROKE);
+    this.b = new RectF();
+    this.c = new Rect();
+    this.f = a(2130843248);
+    super.setOnTouchListener(new QavRecordButtonView.1(this));
   }
   
   public void draw(Canvas paramCanvas)
@@ -87,28 +77,33 @@ public class QavRecordButtonView
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    switch (this.jdField_a_of_type_Int)
+    int k = this.d;
+    if ((k != 1) && (k != 2))
     {
-    case 1: 
-    case 2: 
-    default: 
-      return;
+      if (k != 3) {
+        return;
+      }
+      Object localObject = this.f;
+      if (localObject != null)
+      {
+        this.c.set(0, 0, ((Bitmap)localObject).getWidth(), this.f.getHeight());
+        this.b.set(0.0F, 0.0F, i, j);
+        paramCanvas.drawBitmap(this.f, this.c, this.b, this.a);
+      }
+      float f1 = i;
+      float f2 = 0.08571429F * f1;
+      f1 = Math.min(i, j) / 2 - f2 - f1 * 0.002857143F;
+      this.a.setStrokeWidth(f2);
+      localObject = this.b;
+      f2 = i / 2;
+      float f3 = j / 2;
+      ((RectF)localObject).set(f2 - f1, f3 - f1, f2 + f1, f3 + f1);
+      f1 = this.e;
+      this.a.setColor(-1);
+      paramCanvas.drawArc(this.b, 0.0F, 360.0F, false, this.a);
+      this.a.setColor(-48606);
+      paramCanvas.drawArc(this.b, -90.0F, 360.0F - (1.0F - f1) * 360.0F, false, this.a);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    float f1 = 0.08571429F * i;
-    float f2 = Math.min(i, j) / 2 - f1 - 0.002857143F * i;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i / 2 - f2, j / 2 - f2, i / 2 + f2, j / 2 + f2);
-    f1 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-48606);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F - 360.0F * (1.0F - f1), false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   protected void drawableStateChanged()
@@ -116,60 +111,73 @@ public class QavRecordButtonView
     super.drawableStateChanged();
   }
   
-  public void setListener(mqf parammqf)
+  public int getShowState()
   {
-    this.jdField_a_of_type_Mqf = parammqf;
+    return this.d;
+  }
+  
+  public void setListener(QavRecordButtonView.ShowStateChangeListener paramShowStateChangeListener)
+  {
+    this.g = paramShowStateChangeListener;
   }
   
   public void setProgress(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Float = Math.min(1.0F, Math.max((float)paramLong1 * 1.0F / (float)paramLong2, 0.0F));
-    if (this.jdField_a_of_type_Int == 3) {
+    this.e = Math.min(1.0F, Math.max((float)paramLong1 * 1.0F / (float)paramLong2, 0.0F));
+    if (this.d == 3) {
       invalidate();
     }
   }
   
   public void setShowState(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordButtonView", 2, "setShowState, state=" + paramInt + ", talkBack=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setShowState, state=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", talkBack=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("QavRecordButtonView", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (paramInt == this.d) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    switch (this.jdField_a_of_type_Int)
+    this.d = paramInt;
+    paramInt = this.d;
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      invalidate();
-      if (this.jdField_a_of_type_Mqf == null) {
-        break;
-      }
-      this.jdField_a_of_type_Mqf.e(this.jdField_a_of_type_Int);
-      return;
-      super.setAlpha(1.0F);
-      if (paramBoolean)
+      if (paramInt != 2)
       {
-        super.setContentDescription("");
-        continue;
-        if (paramBoolean)
+        if (paramInt == 3)
         {
-          super.setContentDescription(getResources().getString(2131696244));
-          continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131696245));
+            super.setContentDescription(getResources().getString(2131893538));
           }
-          this.jdField_a_of_type_Float = 0.0F;
+          this.e = 0.0F;
         }
       }
+      else if (paramBoolean) {
+        super.setContentDescription(getResources().getString(2131893537));
+      }
+    }
+    else
+    {
+      super.setAlpha(1.0F);
+      if (paramBoolean) {
+        super.setContentDescription("");
+      }
+    }
+    invalidate();
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((QavRecordButtonView.ShowStateChangeListener)localObject).e(this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

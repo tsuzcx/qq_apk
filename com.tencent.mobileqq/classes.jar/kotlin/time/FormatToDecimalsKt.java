@@ -49,47 +49,46 @@ public final class FormatToDecimalsKt
   {
     Object localObject2 = scientificFormat;
     Object localObject1 = ((ThreadLocal)localObject2).get();
-    DecimalFormat localDecimalFormat;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      localDecimalFormat = (DecimalFormat)localObject1;
-      if ((paramDouble < 1) && (paramDouble > -1)) {
-        break label86;
-      }
-    }
-    label86:
-    for (localObject2 = rootPositiveExpFormatSymbols;; localObject2 = rootNegativeExpFormatSymbols)
-    {
-      localDecimalFormat.setDecimalFormatSymbols((DecimalFormatSymbols)localObject2);
-      localObject1 = ((DecimalFormat)localObject1).format(paramDouble);
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "scientificFormat.getOrSe… }\n        .format(value)");
-      return localObject1;
       localObject1 = new DecimalFormat("0E0", rootNegativeExpFormatSymbols);
       ((DecimalFormat)localObject1).setMinimumFractionDigits(2);
       ((ThreadLocal)localObject2).set(localObject1);
-      break;
     }
+    localObject2 = (DecimalFormat)localObject1;
+    if ((paramDouble < 1) && (paramDouble > -1)) {
+      localObject1 = rootNegativeExpFormatSymbols;
+    } else {
+      localObject1 = rootPositiveExpFormatSymbols;
+    }
+    ((DecimalFormat)localObject2).setDecimalFormatSymbols((DecimalFormatSymbols)localObject1);
+    localObject1 = ((DecimalFormat)localObject2).format(paramDouble);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "scientificFormat.getOrSe… }\n        .format(value)");
+    return localObject1;
   }
   
   @NotNull
   public static final String formatToExactDecimals(double paramDouble, int paramInt)
   {
-    ThreadLocal localThreadLocal;
-    if (paramInt < precisionFormats.length)
+    Object localObject1 = precisionFormats;
+    if (paramInt < localObject1.length)
     {
-      localThreadLocal = precisionFormats[paramInt];
-      localObject = localThreadLocal.get();
-      if (localObject == null) {}
+      Object localObject2 = localObject1[paramInt];
+      localObject1 = localObject2.get();
+      if (localObject1 == null)
+      {
+        localObject1 = createFormatForDecimals(paramInt);
+        localObject2.set(localObject1);
+      }
+      localObject1 = (DecimalFormat)localObject1;
     }
-    for (Object localObject = (DecimalFormat)localObject;; localObject = createFormatForDecimals(paramInt))
+    else
     {
-      localObject = ((DecimalFormat)localObject).format(paramDouble);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "format.format(value)");
-      return localObject;
-      localObject = createFormatForDecimals(paramInt);
-      localThreadLocal.set(localObject);
-      break;
+      localObject1 = createFormatForDecimals(paramInt);
     }
+    localObject1 = ((DecimalFormat)localObject1).format(paramDouble);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "format.format(value)");
+    return localObject1;
   }
   
   @NotNull
@@ -104,7 +103,7 @@ public final class FormatToDecimalsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.time.FormatToDecimalsKt
  * JD-Core Version:    0.7.0.1
  */

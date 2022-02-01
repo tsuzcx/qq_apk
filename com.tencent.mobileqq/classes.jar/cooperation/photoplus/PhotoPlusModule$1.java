@@ -1,21 +1,20 @@
 package cooperation.photoplus;
 
 import android.os.Bundle;
-import biqg;
 import cooperation.photoplus.sticker.Sticker;
 import eipc.EIPCResult;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 
-public class PhotoPlusModule$1
+class PhotoPlusModule$1
   implements Runnable
 {
-  public PhotoPlusModule$1(biqg parambiqg, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
+  PhotoPlusModule$1(PhotoPlusModule paramPhotoPlusModule, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a();
+    Object localObject = this.a.a();
     JSONArray localJSONArray = new JSONArray();
     if (localObject != null)
     {
@@ -30,12 +29,12 @@ public class PhotoPlusModule$1
     }
     localObject = new Bundle();
     ((Bundle)localObject).putString("param_sticker_templates", localJSONArray.toString());
-    this.this$0.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult((Bundle)localObject));
+    this.this$0.callbackResult(this.b, EIPCResult.createSuccessResult((Bundle)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusModule.1
  * JD-Core Version:    0.7.0.1
  */

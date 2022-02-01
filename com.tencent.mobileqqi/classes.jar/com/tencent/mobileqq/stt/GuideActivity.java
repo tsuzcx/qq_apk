@@ -40,7 +40,7 @@ public class GuideActivity
     paramBundle.setOnTouchListener(this);
     paramBundle.setBackgroundResource(2130839083);
     setContentView(paramBundle);
-    paramBundle = (ImageView)findViewById(2131233166);
+    paramBundle = (ImageView)findViewById(2131233165);
     if (i == 2) {}
     for (;;)
     {
@@ -48,7 +48,7 @@ public class GuideActivity
       {
         paramBundle.setImageBitmap(BitmapFactory.decodeStream(new FileInputStream(new File(this.b.a().getFilesDir(), "VoiceToTextMask"))));
         paramBundle.setOnTouchListener(this);
-        ((ImageView)findViewById(2131233167)).setOnTouchListener(this);
+        ((ImageView)findViewById(2131233166)).setOnTouchListener(this);
         return true;
       }
       catch (Throwable paramBundle)

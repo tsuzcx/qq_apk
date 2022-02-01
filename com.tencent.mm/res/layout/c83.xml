@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/k95" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jwc" android:background="@drawable/aun" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignParentStart="true">
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/g_" android:id="@id/jwj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jhk" android:layout_centerVertical="true" android:paddingStart="12.0dip" />
+        <ImageView android:id="@id/jwd" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_marginEnd="12.0dip" android:layout_toEndOf="@id/jwj" />
+        <TextView android:id="@id/jwk" android:background="@drawable/ave" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_marginEnd="12.0dip" android:layout_toEndOf="@id/jwj" style="@style/zh" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.story.ui.view.StoryHeaderStageGroup android:id="@id/jwe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:layout_below="@id/jwc" />
+    <LinearLayout android:orientation="vertical" android:id="@id/jwi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jwe" android:paddingStart="12.0dip" android:paddingEnd="12.0dip">
+        <View android:background="@color/adk" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="16.0dip" />
+    </LinearLayout>
+</RelativeLayout>

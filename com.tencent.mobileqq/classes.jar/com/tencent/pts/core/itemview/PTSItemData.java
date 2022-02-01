@@ -11,11 +11,11 @@ public class PTSItemData
 {
   public static final Parcelable.Creator<PTSItemData> CREATOR = new PTSItemData.1();
   public static final String TAG = "PTSItemData";
-  private String appName;
   private String frameTreeJson;
   private String itemId;
   private String jsonData;
   private String pageJs;
+  private String pageName;
   
   public int describeContents()
   {
@@ -24,15 +24,23 @@ public class PTSItemData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if ((paramObject instanceof PTSItemData)) {
-      return (TextUtils.equals(this.itemId, ((PTSItemData)paramObject).getItemID())) && (TextUtils.equals(this.jsonData, ((PTSItemData)paramObject).getJSONData()));
+    boolean bool3 = paramObject instanceof PTSItemData;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      String str = this.itemId;
+      paramObject = (PTSItemData)paramObject;
+      bool1 = bool2;
+      if (TextUtils.equals(str, paramObject.getItemID()))
+      {
+        bool1 = bool2;
+        if (TextUtils.equals(this.jsonData, paramObject.getJSONData())) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
-  }
-  
-  public String getAppName()
-  {
-    return this.appName;
+    return bool1;
   }
   
   public String getFrameTreeJson()
@@ -55,10 +63,15 @@ public class PTSItemData
     return this.pageJs;
   }
   
+  public String getPageName()
+  {
+    return this.pageName;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.itemId);
-    paramParcel.writeString(this.appName);
+    paramParcel.writeString(this.pageName);
     paramParcel.writeString(this.jsonData);
     paramParcel.writeString(this.frameTreeJson);
     paramParcel.writeString(this.pageJs);
@@ -66,7 +79,7 @@ public class PTSItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemData
  * JD-Core Version:    0.7.0.1
  */

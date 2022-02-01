@@ -13,9 +13,9 @@ public class IPCString
   
   static
   {
-    AppMethodBeat.i(114163);
-    CREATOR = new IPCString.1();
-    AppMethodBeat.o(114163);
+    AppMethodBeat.i(158874);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(158874);
   }
   
   public IPCString() {}
@@ -32,10 +32,10 @@ public class IPCString
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(114162);
+    AppMethodBeat.i(158873);
     if (paramObject == this)
     {
-      AppMethodBeat.o(114162);
+      AppMethodBeat.o(158873);
       return true;
     }
     if ((paramObject instanceof IPCString))
@@ -43,19 +43,19 @@ public class IPCString
       paramObject = (IPCString)paramObject;
       if ((this.value == paramObject.value) || ((this.value != null) && (this.value.equals(paramObject.value))))
       {
-        AppMethodBeat.o(114162);
+        AppMethodBeat.o(158873);
         return true;
       }
-      AppMethodBeat.o(114162);
+      AppMethodBeat.o(158873);
       return false;
     }
     if ((paramObject instanceof String))
     {
       boolean bool = paramObject.equals(this.value);
-      AppMethodBeat.o(114162);
+      AppMethodBeat.o(158873);
       return bool;
     }
-    AppMethodBeat.o(114162);
+    AppMethodBeat.o(158873);
     return false;
   }
   
@@ -66,14 +66,14 @@ public class IPCString
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(114161);
+    AppMethodBeat.i(158872);
     paramParcel.writeString(this.value);
-    AppMethodBeat.o(114161);
+    AppMethodBeat.o(158872);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.type.IPCString
  * JD-Core Version:    0.7.0.1
  */

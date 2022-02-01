@@ -9,7 +9,7 @@ public final class CircleFriendInfo
 {
   public String source = "";
   public String strRemark = "";
-  public long uin;
+  public long uin = 0L;
   
   public CircleFriendInfo() {}
   
@@ -31,14 +31,15 @@ public final class CircleFriendInfo
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.strRemark, 1);
-    if (this.source != null) {
-      paramJceOutputStream.write(this.source, 2);
+    String str = this.source;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.CircleFriendInfo
  * JD-Core Version:    0.7.0.1
  */

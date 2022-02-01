@@ -42,20 +42,20 @@ public class TroopBarPostLayoutBanner$BannerItemViewHolder
     this.jdField_a_of_type_AndroidWidgetProgressBar = null;
     this.jdField_a_of_type_ComTencentImageURLImageView = null;
     this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232474));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131232475);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232476));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232478));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232477));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232479));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232480));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131232483));
-    this.d = ((TextView)paramView.findViewById(2131232485));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232481);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232486);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232484));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131232487));
-    this.e = ((TextView)paramView.findViewById(2131232482));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232473));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131232474);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232475));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232477));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232476));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232478));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232479));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131232482));
+    this.d = ((TextView)paramView.findViewById(2131232484));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232480);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232485);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232483));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131232486));
+    this.e = ((TextView)paramView.findViewById(2131232481));
   }
 }
 

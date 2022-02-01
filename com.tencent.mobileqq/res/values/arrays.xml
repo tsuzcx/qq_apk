@@ -11,6 +11,18 @@
         <item>@string/cvy</item>
         <item>@string/cvz</item>
     </string-array>
+    <integer-array name="0">
+        <item>4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <string-array name="1">
+        <item>好友</item>
+        <item>情侣</item>
+        <item>闺蜜</item>
+        <item>基友</item>
+    </string-array>
     <string-array name="d">
         <item>屏蔽所有群消息</item>
     </string-array>
@@ -28,6 +40,7 @@
         <item>拨打免费电话</item>
         <item>发送短信</item>
         <item>取消</item>
+        <item>对方手机号未验证，请谨慎拨打</item>
     </string-array>
     <string-array name="h">
         <item>拨打电话</item>
@@ -79,11 +92,6 @@
         <item>骑行</item>
         <item>其他交通工具</item>
         <item>交通工具不限</item>
-    </string-array>
-    <string-array name="p">
-        <item>@string/fgb</item>
-        <item>@string/fhs</item>
-        <item>@string/fez</item>
     </string-array>
     <string-array name="q">
         <item>限男生</item>
@@ -240,6 +248,20 @@
         <item>拍照</item>
         <item>从相册选择</item>
     </string-array>
+    <string-array name="2">
+        <item>"我打游戏超厉害！精通五路
+声音很温柔的，一起开黑给你听"</item>
+        <item>"一起唠唠嗑，倾诉小心事，打游戏，踩空间都ok
+无雷放心加"</item>
+        <item>"可盐可甜，喜欢哼歌
+回收野王 旧野王 各种别人不要的野王！我们一起摘星星⭐"</item>
+        <item>"最近弹架子鼓，时差选手阴间作息
+喜欢沙雕越傻越好"</item>
+        <item>"dd个固聊，能每天聊聊天……
+难道只有学电焊，才能让姐姐眼前一亮吗？"</item>
+        <item>"刚买了单反|随便拍拍
+钢琴|会发一些我自己弹的好听的曲子"</item>
+    </string-array>
     <string-array name="ah">
         <item>China 中国大陆 86 11 常用地区</item>
         <item>Hong Kong 中国香港 852 8 常用地区</item>
@@ -379,12 +401,17 @@
         <item></item>
         <item>资料卡设置</item>
         <item>消息列表</item>
+        <item>创建专属形象</item>
     </string-array>
     <string-array name="aw">
         <item>未填写</item>
         <item>老师</item>
         <item>家长</item>
         <item>学生</item>
+    </string-array>
+    <string-array name="3">
+        <item>appbrand</item>
+        <item>support</item>
     </string-array>
     <string-array name="ax">
         <item>授权给好友</item>
@@ -838,6 +865,13 @@
         <item>从相册选择</item>
         <item>拍照</item>
     </string-array>
+    <string-array name="4">
+        <item>XFilesPDFReader</item>
+        <item>XFilesPPTReader</item>
+        <item>XFilesWordReader</item>
+        <item>XFilesExcelReader</item>
+        <item>FullScreenVideo</item>
+    </string-array>
     <string-array name="bd">
         <item>0.5</item>
         <item>1.0</item>
@@ -859,7 +893,7 @@
         <item>收到的评论</item>
         <item>已结束的约会</item>
     </string-array>
-    <string-array name="bk">
+    <string-array name="5">
         <item>\#33C573FF</item>
         <item>\#33FF80CA</item>
         <item>\#33FF5967</item>
@@ -870,7 +904,7 @@
         <item>\#3300CAFC</item>
         <item>\#3340A0FF</item>
     </string-array>
-    <string-array name="bl">
+    <string-array name="6">
         <item>\#AB6ADB</item>
         <item>\#F173BC</item>
         <item>\#E85D69</item>
@@ -890,6 +924,16 @@
         <item>个人头像违规</item>
         <item>昵称违规</item>
         <item>内容违规</item>
+    </string-array>
+    <string-array name="7">
+        <item>哈哈哈</item>
+        <item>在吗</item>
+        <item>宝贝</item>
+        <item>拜拜</item>
+        <item>为什么</item>
+        <item>我不知道</item>
+        <item>笑死我了</item>
+        <item>爱你</item>
     </string-array>
     <string-array name="bj">
         <item>" · "</item>
@@ -1036,5 +1080,26 @@
     </string-array>
     <string-array name="c9">
         <item>接收群消息</item>
+    </string-array>
+    <string-array name="8">
+        <item>tools</item>
+        <item>toolsmp</item>
+        <item>appbrand</item>
+        <item>support</item>
+        <item>mm</item>
+    </string-array>
+    <string-array name="9">
+        <item>tools</item>
+        <item>toolsmp</item>
+        <item>appbrand</item>
+        <item>support</item>
+        <item>mm</item>
+        <item>all</item>
+    </string-array>
+    <string-array name="bk">
+        <item>xwalk.pak</item>
+        <item>xwalk_100_percent.pak</item>
+        <item>icudtl.dat</item>
+        <item>xweb_fullscreen_video.js</item>
     </string-array>
 </resources>

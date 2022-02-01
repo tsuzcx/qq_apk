@@ -5,13 +5,15 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface f
   extends a
 {
-  public abstract boolean c(String paramString1, long paramLong, String paramString2);
+  public abstract void Z(long paramLong, String paramString);
   
-  public abstract void kW(long paramLong);
+  public abstract void aa(long paramLong, String paramString);
+  
+  public abstract void tl(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.f
  * JD-Core Version:    0.7.0.1
  */

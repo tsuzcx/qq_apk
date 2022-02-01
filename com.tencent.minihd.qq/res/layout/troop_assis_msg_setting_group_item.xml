@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@id/tams_group_item" android:background="@drawable/card_shadow_head" android:paddingLeft="@dimen/qq_form_item_padding" android:paddingTop="32.0dip" android:paddingBottom="@dimen/qq_setting_table_item2txt_16px" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/group_notify_receive_and_notify2" style="@style/table_biaoti_14sp_808080_for_redesign"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.utils;
 
 import java.util.HashMap;
 
-public final class PhoneCodeUtils$2
+final class PhoneCodeUtils$2
   extends HashMap<String, String>
 {
-  public PhoneCodeUtils$2(int paramInt)
+  PhoneCodeUtils$2(int paramInt)
   {
     super(paramInt);
     put("zh-cn", "86");
@@ -30,7 +30,7 @@ public final class PhoneCodeUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PhoneCodeUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mobileqq.mini.servlet;
 
 import NS_MINI_INTERFACE.INTERFACE.StPlugin;
 import NS_MINI_INTERFACE.INTERFACE.StVerifyPluginRsp;
-import aasd;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +32,7 @@ public class MiniAppVerifyPluginServlet
     localStVerifyPluginRsp.mergeFrom(paramArrayOfByte);
     if (paramBundle.getLong("retCode") == 0L)
     {
-      paramArrayOfByte = aasd.a(localStVerifyPluginRsp.pluginList);
+      paramArrayOfByte = GdtJsonPbUtil.a(localStVerifyPluginRsp.pluginList);
       if (paramArrayOfByte != null) {
         paramBundle.putString("plugin_profile", paramArrayOfByte.toString());
       }
@@ -66,14 +66,14 @@ public class MiniAppVerifyPluginServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.VerifyPlugin");
-    paramPacket.putSendData(bdpd.a((byte[])localObject1));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppVerifyPluginServlet
  * JD-Core Version:    0.7.0.1
  */

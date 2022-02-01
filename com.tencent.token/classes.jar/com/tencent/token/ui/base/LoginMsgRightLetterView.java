@@ -8,32 +8,27 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.token.cg;
+import com.tencent.token.sn;
 
 public class LoginMsgRightLetterView
   extends View
 {
-  bw a;
+  a a;
   Paint b = new Paint();
   private int c = -1;
   private float d;
   private String[] e;
   private int f = -1;
   
-  public LoginMsgRightLetterView(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
   public LoginMsgRightLetterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.d = paramContext.getResources().getDimension(2131296400);
-    this.e = cg.a().f;
+    this.d = paramContext.getResources().getDimension(2131034251);
+    this.e = sn.a().f;
     this.b.setTypeface(Typeface.DEFAULT_BOLD);
     this.b.setAntiAlias(true);
     this.b.setTextSize(this.d);
-    this.b.setColor(paramContext.getResources().getColor(2131492958));
+    this.b.setColor(paramContext.getResources().getColor(2130968691));
   }
   
   public LoginMsgRightLetterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -47,27 +42,32 @@ public class LoginMsgRightLetterView
     float f1 = paramMotionEvent.getY();
     int j = this.c;
     paramMotionEvent = this.a;
-    int k = (int)(f1 / getHeight() * this.e.length);
+    f1 /= getHeight();
+    String[] arrayOfString = this.e;
+    int k = (int)(f1 * arrayOfString.length);
     switch (i)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if ((j != k) && (paramMotionEvent != null) && (k >= 0) && (k < this.e.length))
+    default: 
+      break;
+    case 2: 
+      if ((j != k) && (paramMotionEvent != null) && (k >= 0) && (k < arrayOfString.length))
       {
         paramMotionEvent.a(k);
         this.c = k;
-        continue;
-        if ((j != k) && (paramMotionEvent != null) && (k >= 0) && (k < this.e.length))
-        {
-          paramMotionEvent.a(k);
-          this.c = k;
-          continue;
-          this.c = -1;
-        }
       }
+      break;
+    case 1: 
+      this.c = -1;
+      break;
+    case 0: 
+      if ((j != k) && (paramMotionEvent != null) && (k >= 0) && (k < arrayOfString.length))
+      {
+        paramMotionEvent.a(k);
+        this.c = k;
+      }
+      break;
     }
+    return true;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -79,11 +79,16 @@ public class LoginMsgRightLetterView
       this.f = (i / this.e.length);
     }
     i = 0;
-    while (i < this.e.length)
+    for (;;)
     {
+      String[] arrayOfString = this.e;
+      if (i >= arrayOfString.length) {
+        break;
+      }
       float f1 = j / 2;
-      float f2 = this.b.measureText(this.e[i]) / 2.0F;
-      float f3 = this.f * i + this.f * 3 / 4;
+      float f2 = this.b.measureText(arrayOfString[i]) / 2.0F;
+      int k = this.f;
+      float f3 = k * i + k * 3 / 4;
       paramCanvas.drawText(this.e[i], f1 - f2, f3, this.b);
       i += 1;
     }
@@ -94,9 +99,14 @@ public class LoginMsgRightLetterView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnTouchingLetterChangedListener(bw parambw)
+  public void setOnTouchingLetterChangedListener(a parama)
   {
-    this.a = parambw;
+    this.a = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

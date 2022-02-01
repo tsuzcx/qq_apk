@@ -29,16 +29,17 @@ public final class HotPicMsg$ImgInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 64, 72, 80, 90, 96, 104, 114 }, new String[] { "bytes_file_md5", "uint32_file_type", "uint64_file_size", "uint32_file_width", "uint32_file_height", "bytes_pic_down_url", "bytes_thumb_file_md5", "uint64_thumb_file_size", "uint32_thumb_file_width", "uint32_thumb_file_height", "bytes_thumb_down_url", "uint32_pic_index", "uint32_source_type", "msg_third_party_info" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), null }, ImgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 64, 72, 80, 90, 96, 104, 114 }, new String[] { "bytes_file_md5", "uint32_file_type", "uint64_file_size", "uint32_file_width", "uint32_file_height", "bytes_pic_down_url", "bytes_thumb_file_md5", "uint64_thumb_file_size", "uint32_thumb_file_width", "uint32_thumb_file_height", "bytes_thumb_down_url", "uint32_pic_index", "uint32_source_type", "msg_third_party_info" }, new Object[] { localByteStringMicro1, localInteger, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro4, localInteger, localInteger, null }, ImgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.ImgInfo
  * JD-Core Version:    0.7.0.1
  */

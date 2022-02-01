@@ -12,39 +12,41 @@ public final class jh$2
   
   public final void run()
   {
-    or.a("statistic data:" + this.a);
+    Object localObject = new StringBuilder("statistic data:");
+    ((StringBuilder)localObject).append(this.a);
+    or.a(((StringBuilder)localObject).toString());
     try
     {
-      Object localObject = this.a.getBytes("UTF-8");
-      try
-      {
-        localObject = ((StatisticRequest)((nk)MapServiceManager.getService(nk.class)).c()).report(pz.a, jh.b(this.b), fz.g(), jh.c(this.b), fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.1", fz.f(), "androidsdk", fz.b(), (byte[])localObject);
-        if (localObject == null) {
-          break label170;
-        }
-        or.a("Post statistic data with response:" + new String(((NetResponse)localObject).data, ((NetResponse)localObject).charset));
-        i = 1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          byte[] arrayOfByte;
-          or.b(localException.getMessage());
-          int i = 0;
-        }
-      }
-      if (i == 0) {
-        jh.a(this.b, this.a);
-      }
-      return;
+      localObject = this.a.getBytes("UTF-8");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
+      label39:
+      int j;
+      int i;
+      break label39;
+    }
+    localObject = this.a.getBytes();
+    j = 0;
+    try
+    {
+      localObject = ((StatisticRequest)((nk)MapServiceManager.getService(nk.class)).c()).report(pz.a, jh.b(this.b), fz.g(), jh.c(this.b), fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.2", fz.f(), "androidsdk", fz.b(), (byte[])localObject);
+      i = j;
+      if (localObject != null)
       {
-        arrayOfByte = this.a.getBytes();
+        StringBuilder localStringBuilder = new StringBuilder("Post statistic data with response:");
+        localStringBuilder.append(new String(((NetResponse)localObject).data, ((NetResponse)localObject).charset));
+        or.a(localStringBuilder.toString());
+        i = 1;
       }
+    }
+    catch (Exception localException)
+    {
+      or.b(localException.getMessage());
+      i = j;
+    }
+    if (i == 0) {
+      jh.a(this.b, this.a);
     }
   }
 }

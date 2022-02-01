@@ -4,44 +4,45 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetFriendListResp
   extends JceStruct
 {
-  static int cache_reqtype = 0;
+  static int cache_reqtype;
   static int cache_result;
   static FriendInfo cache_stSelfInfo = new FriendInfo();
   static FriendListSubSrvRspCode cache_stSubSrvRspCode = new FriendListSubSrvRspCode();
   static ArrayList<FriendInfo> cache_vecFriendInfo = new ArrayList();
   static ArrayList<GroupInfo> cache_vecGroupInfo;
   static ArrayList<GroupInfo> cache_vecMSFGroupInfo;
-  public byte cHasOtherRespFlag;
-  public byte cRespType;
-  public byte cShowPcIcon;
-  public short errorCode;
-  public short friend_count;
-  public short getfriendCount;
-  public byte getgroupCount;
-  public byte group_count;
-  public byte groupid;
-  public byte groupstartIndex;
-  public byte ifGetGroupInfo;
-  public byte ifReflush;
-  public short online_friend_count;
-  public int reqtype;
-  public int result;
-  public long serverTime;
-  public short sqqOnLine_count;
-  public FriendInfo stSelfInfo;
-  public FriendListSubSrvRspCode stSubSrvRspCode;
-  public short startIndex;
-  public short totoal_friend_count;
-  public short totoal_group_count;
-  public long uin;
-  public ArrayList<FriendInfo> vecFriendInfo;
-  public ArrayList<GroupInfo> vecGroupInfo;
-  public ArrayList<GroupInfo> vecMSFGroupInfo;
-  public short wGetExtSnsRspCode;
+  public byte cHasOtherRespFlag = 0;
+  public byte cRespType = 0;
+  public byte cShowPcIcon = 0;
+  public short errorCode = 0;
+  public short friend_count = 0;
+  public short getfriendCount = 0;
+  public byte getgroupCount = 0;
+  public byte group_count = 0;
+  public byte groupid = 0;
+  public byte groupstartIndex = 0;
+  public byte ifGetGroupInfo = 0;
+  public byte ifReflush = 0;
+  public short online_friend_count = 0;
+  public int reqtype = 0;
+  public int result = 0;
+  public long serverTime = 0L;
+  public short sqqOnLine_count = 0;
+  public FriendInfo stSelfInfo = null;
+  public FriendListSubSrvRspCode stSubSrvRspCode = null;
+  public short startIndex = 0;
+  public short totoal_friend_count = 0;
+  public short totoal_group_count = 0;
+  public long uin = 0L;
+  public ArrayList<FriendInfo> vecFriendInfo = null;
+  public ArrayList<GroupInfo> vecGroupInfo = null;
+  public ArrayList<GroupInfo> vecMSFGroupInfo = null;
+  public short wGetExtSnsRspCode = 0;
   
   static
   {
@@ -136,32 +137,36 @@ public final class GetFriendListResp
     paramJceOutputStream.write(this.getgroupCount, 11);
     paramJceOutputStream.write(this.totoal_group_count, 12);
     paramJceOutputStream.write(this.group_count, 13);
-    if (this.vecGroupInfo != null) {
-      paramJceOutputStream.write(this.vecGroupInfo, 14);
+    Object localObject = this.vecGroupInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
     paramJceOutputStream.write(this.result, 15);
     paramJceOutputStream.write(this.errorCode, 16);
     paramJceOutputStream.write(this.online_friend_count, 17);
     paramJceOutputStream.write(this.serverTime, 18);
     paramJceOutputStream.write(this.sqqOnLine_count, 19);
-    if (this.vecMSFGroupInfo != null) {
-      paramJceOutputStream.write(this.vecMSFGroupInfo, 20);
+    localObject = this.vecMSFGroupInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 20);
     }
     paramJceOutputStream.write(this.cRespType, 21);
     paramJceOutputStream.write(this.cHasOtherRespFlag, 22);
-    if (this.stSelfInfo != null) {
-      paramJceOutputStream.write(this.stSelfInfo, 23);
+    localObject = this.stSelfInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 23);
     }
     paramJceOutputStream.write(this.cShowPcIcon, 24);
     paramJceOutputStream.write(this.wGetExtSnsRspCode, 25);
-    if (this.stSubSrvRspCode != null) {
-      paramJceOutputStream.write(this.stSubSrvRspCode, 26);
+    localObject = this.stSubSrvRspCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 26);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetFriendListResp
  * JD-Core Version:    0.7.0.1
  */

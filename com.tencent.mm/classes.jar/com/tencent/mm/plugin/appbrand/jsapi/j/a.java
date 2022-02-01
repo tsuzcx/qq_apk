@@ -1,82 +1,145 @@
 package com.tencent.mm.plugin.appbrand.jsapi.j;
 
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.m.p.c;
-import java.util.HashMap;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.u;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.threadpool.i;
+import org.json.JSONObject;
 
 public final class a
-  extends ai
 {
-  private static final int CTRL_INDEX = 530;
-  private static final String NAME = "onLocalServiceEvent";
-  private static a hTI;
+  private static int qvo = -1;
+  private static int qvp = 0;
+  private static boolean qvq = false;
+  public static int[] rZf = { ba.i.appbrand_handoffFail_NotSupported, ba.i.appbrand_handoffFail_NotSupported, ba.i.appbrand_handoffFail_InvalidLogin, ba.i.appbrand_handoffFail_LowVersion, ba.i.appbrand_handoffFail_NotSupported };
   
-  static
+  public static void ab(Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(108018);
-    hTI = new a();
-    AppMethodBeat.o(108018);
-  }
-  
-  public static void a(c paramc, p.c paramc1)
-  {
-    AppMethodBeat.i(108013);
-    a(paramc, paramc1, "found");
-    AppMethodBeat.o(108013);
-  }
-  
-  private static void a(c paramc, p.c paramc1, String paramString)
-  {
-    try
+    AppMethodBeat.i(329743);
+    com.tencent.threadpool.h.ahAA.bk(new Runnable()
     {
-      AppMethodBeat.i(108017);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("event", paramString);
-      if ((TextUtils.equals(paramString, "found")) || (TextUtils.equals(paramString, "lost")) || (TextUtils.equals(paramString, "resolveFail")))
+      public final void run()
       {
-        localHashMap.put("serviceType", paramc1.itH);
-        localHashMap.put("serviceName", paramc1.itG);
-        if (!TextUtils.equals(paramString, "resolveFail"))
-        {
-          localHashMap.put("ip", paramc1.ip);
-          localHashMap.put("port", Integer.valueOf(paramc1.port));
-          localHashMap.put("attributes", paramc1.itF);
-        }
+        AppMethodBeat.i(329742);
+        Toast localToast = Toast.makeText(a.this, "", 3000);
+        View localView = View.inflate(a.this, a.h.text_toast, null);
+        ((TextView)localView.findViewById(a.g.toast_text)).setText(paramString);
+        localToast.setGravity(17, 0, 0);
+        localToast.setView(localView);
+        localToast.show();
+        AppMethodBeat.o(329742);
       }
-      hTI.x(localHashMap).j(paramc).aBz();
-      AppMethodBeat.o(108017);
-      return;
+    });
+    AppMethodBeat.o(329743);
+  }
+  
+  public static void eK(Context paramContext)
+  {
+    AppMethodBeat.i(329738);
+    com.tencent.threadpool.h.ahAA.bk(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(329741);
+        Toast localToast = Toast.makeText(a.this, "", 3000);
+        View localView = View.inflate(a.this, a.h.center_toast, null);
+        ((WeImageView)localView.findViewById(a.g.toast_img)).setImageResource(ba.h.icons_outlined_colorful_handoff_success);
+        final TextView localTextView = (TextView)localView.findViewById(a.g.toast_text);
+        localTextView.setText(a.this.getString(ba.i.appbrand_handoffOk));
+        localTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+        {
+          public final void onGlobalLayout()
+          {
+            AppMethodBeat.i(329733);
+            if (localTextView.getLineCount() > 1) {
+              localTextView.setTextSize(0, com.tencent.mm.cd.a.br(a.this, a.e.DescTextSize));
+            }
+            localTextView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            AppMethodBeat.o(329733);
+          }
+        });
+        localToast.setGravity(17, 0, 0);
+        localToast.setView(localView);
+        localToast.show();
+        AppMethodBeat.o(329741);
+      }
+    });
+    AppMethodBeat.o(329738);
+  }
+  
+  public static int p(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(329735);
+    qvo = u.Uy(paramString2).qvo;
+    qvp = u.Uy(paramString2).qvp;
+    boolean bool = u.Uy(paramString2).qvq;
+    qvq = bool;
+    if ((!bool) || (qvo == -1) || (qvp == 0))
+    {
+      Log.i(paramString1, "invalid login,isWXOnline: %b , iconType : %d ,clientVersion: %d", new Object[] { Boolean.valueOf(qvq), Integer.valueOf(qvo), Integer.valueOf(qvp) });
+      AppMethodBeat.o(329735);
+      return 2;
     }
-    finally {}
-  }
-  
-  public static void b(c paramc, p.c paramc1)
-  {
-    AppMethodBeat.i(108014);
-    a(paramc, paramc1, "lost");
-    AppMethodBeat.o(108014);
-  }
-  
-  public static void c(c paramc, p.c paramc1)
-  {
-    AppMethodBeat.i(108015);
-    a(paramc, paramc1, "resolveFail");
-    AppMethodBeat.o(108015);
-  }
-  
-  public static void t(c paramc)
-  {
-    AppMethodBeat.i(108016);
-    a(paramc, null, "stopScan");
-    AppMethodBeat.o(108016);
+    if ((qvo == 1) || (qvo == 2))
+    {
+      JSONObject localJSONObject = com.tencent.mm.plugin.webview.luggage.c.c.ZL(((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zsd, ""));
+      if (qvo == 2) {}
+      String str;
+      for (paramString2 = "mac_appbrand";; paramString2 = "windows_appbrand")
+      {
+        str = paramString2;
+        if (paramBoolean) {
+          str = paramString2 + "_game";
+        }
+        paramString2 = str + "_version";
+        if ((localJSONObject != null) && (localJSONObject.has(str)) && (localJSONObject.has(paramString2))) {
+          break;
+        }
+        Log.i(paramString1, "xclient data format wrong ,jsonObject:".concat(String.valueOf(localJSONObject)));
+        AppMethodBeat.o(329735);
+        return 4;
+      }
+      int i = localJSONObject.optInt(str, 0);
+      int j = localJSONObject.optInt(paramString2, 0);
+      if ((1 != i) || (j == 0))
+      {
+        Log.i(paramString1, "pc not supported ,iconType: %d ,isGame :%b", new Object[] { Integer.valueOf(qvo), Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(329735);
+        return 4;
+      }
+      if (qvp < j)
+      {
+        Log.i(paramString1, "version is old,clientVersion: %d ,isGame :%b", new Object[] { Integer.valueOf(qvp), Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(329735);
+        return 3;
+      }
+    }
+    else
+    {
+      Log.i(paramString1, "invalid login,iconType:" + qvo);
+      AppMethodBeat.o(329735);
+      return 2;
+    }
+    AppMethodBeat.o(329735);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a
  * JD-Core Version:    0.7.0.1
  */

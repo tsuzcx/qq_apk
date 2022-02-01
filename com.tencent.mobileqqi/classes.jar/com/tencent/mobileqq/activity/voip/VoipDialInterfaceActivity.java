@@ -60,7 +60,8 @@ import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import etv;
+import etu;
+import etw;
 import etx;
 import ety;
 import etz;
@@ -83,36 +84,35 @@ import eup;
 import euq;
 import eur;
 import eus;
-import eut;
+import euu;
 import euv;
-import euw;
+import eux;
 import euy;
-import euz;
+import eva;
 import evb;
-import evc;
+import evd;
 import eve;
-import evf;
+import evg;
 import evh;
 import evi;
-import evj;
+import evk;
 import evl;
-import evm;
+import evn;
 import evo;
-import evp;
+import evq;
 import evr;
-import evs;
+import evt;
 import evu;
-import evv;
+import evw;
 import evx;
 import evy;
-import evz;
+import ewa;
 import ewb;
-import ewc;
+import ewd;
 import ewe;
 import ewf;
 import ewg;
 import ewh;
-import ewi;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -137,7 +137,7 @@ public class VoipDialInterfaceActivity
   private Dialog jdField_a_of_type_AndroidAppDialog;
   private NotificationManager jdField_a_of_type_AndroidAppNotificationManager;
   private PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ewi(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ewh(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
@@ -163,7 +163,7 @@ public class VoipDialInterfaceActivity
   public VoipDialInterface a;
   public PhoneContact a;
   private PhoneContactManager jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ewg(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ewf(this);
   protected String a;
   WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
   private boolean jdField_a_of_type_Boolean = false;
@@ -405,8 +405,8 @@ public class VoipDialInterfaceActivity
   
   private void s()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new etv(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new euh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new etu(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new eug(this);
   }
   
   private void t()
@@ -557,7 +557,7 @@ public class VoipDialInterfaceActivity
   
   public void a(boolean paramBoolean)
   {
-    new Thread(new ewh(this, paramBoolean)).start();
+    new Thread(new ewg(this, paramBoolean)).start();
   }
   
   public void b(View paramView)
@@ -599,8 +599,8 @@ public class VoipDialInterfaceActivity
     localBuilder.setMessage(2131559889);
     localBuilder.setTitle(2131559890);
     new String();
-    localBuilder.setPositiveButton(getString(2131559891), new eus(this));
-    localBuilder.setNegativeButton(getString(2131559892), new evi(this));
+    localBuilder.setPositiveButton(getString(2131559891), new eur(this));
+    localBuilder.setNegativeButton(getString(2131559892), new evh(this));
     localBuilder.create().show();
   }
   
@@ -632,8 +632,8 @@ public class VoipDialInterfaceActivity
     localBuilder.setMessage(2131559893);
     localBuilder.setTitle(2131559894);
     new String();
-    localBuilder.setPositiveButton(getString(2131559895), new evy(this));
-    localBuilder.setNegativeButton(getString(2131559896), new ewf(this));
+    localBuilder.setPositiveButton(getString(2131559895), new evx(this));
+    localBuilder.setNegativeButton(getString(2131559896), new ewe(this));
     localBuilder.create().show();
   }
   
@@ -757,42 +757,42 @@ public class VoipDialInterfaceActivity
     }
     for (int i1 = this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDialInterface.a();; i1 = -1)
     {
-      this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234831));
+      this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234830));
       this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234757));
+      this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234756));
       this.jdField_c_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234761));
+      this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234760));
       this.jdField_d_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234765));
+      this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234764));
       this.jdField_e_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234769));
+      this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234768));
       this.jdField_f_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234773));
+      this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234772));
       this.jdField_g_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_h_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234777));
+      this.jdField_h_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234776));
       this.jdField_h_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_i_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234781));
+      this.jdField_i_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234780));
       this.jdField_i_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_j_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234785));
+      this.jdField_j_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234784));
       this.jdField_j_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_k_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234789));
+      this.jdField_k_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234788));
       this.jdField_k_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_l_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234793));
+      this.jdField_l_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234792));
       this.jdField_l_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_m_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234797));
+      this.jdField_m_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234796));
       this.jdField_m_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234801));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234800));
       if (this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont == null)
       {
-        this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont = ((EditTextAutoResizeFont)findViewById(2131234811));
+        this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont = ((EditTextAutoResizeFont)findViewById(2131234810));
         this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setInputType(0);
-        this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setOnClickListener(new etx(this));
+        this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setOnClickListener(new etw(this));
       }
       if (this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont = ((EditTextAutoResizeFont)findViewById(2131234812));
+        this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont = ((EditTextAutoResizeFont)findViewById(2131234811));
         this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setInputType(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setOnClickListener(new ety(this));
+        this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setOnClickListener(new etx(this));
         this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setFocusable(true);
         this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setFocusableInTouchMode(true);
         this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setOtherCtrl(this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont);
@@ -801,15 +801,15 @@ public class VoipDialInterfaceActivity
       Object localObject;
       if (this.jdField_a_of_type_AndroidWidgetTextView == null)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234815));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232997));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234814));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232996));
         if (this.jdField_a_of_type_JavaLangString == null) {
           break label1946;
         }
         if (this.jdField_a_of_type_JavaLangString.compareTo("86") == 0)
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131561809));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new etz(this));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ety(this));
         }
       }
       else
@@ -868,7 +868,7 @@ public class VoipDialInterfaceActivity
       label1989:
       for (i1 = 1;; i1 = 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.addTextChangedListener(new eua(this));
+        this.jdField_a_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.addTextChangedListener(new etz(this));
         if (this.jdField_a_of_type_JavaLangString != null) {
           this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.setText("+" + this.jdField_a_of_type_JavaLangString);
         }
@@ -880,128 +880,128 @@ public class VoipDialInterfaceActivity
           ((InputMethodManager)localObject).hideSoftInputFromWindow(this.jdField_b_of_type_ComTencentMobileqqActivityVoipEditTextAutoResizeFont.getWindowToken(), 0);
           if (this.jdField_g_of_type_AndroidViewView == null)
           {
-            this.jdField_g_of_type_AndroidViewView = findViewById(2131234804);
-            this.jdField_g_of_type_AndroidViewView.setOnClickListener(new eub(this));
+            this.jdField_g_of_type_AndroidViewView = findViewById(2131234803);
+            this.jdField_g_of_type_AndroidViewView.setOnClickListener(new eua(this));
           }
           if (this.jdField_b_of_type_AndroidWidgetImageView == null)
           {
-            this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234807));
-            this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new euc(this));
+            this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234806));
+            this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new eub(this));
           }
           if (this.jdField_b_of_type_AndroidWidgetLinearLayout == null)
           {
-            this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234815));
-            this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new eud(this));
+            this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234814));
+            this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new euc(this));
           }
           if (this.jdField_t_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_t_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234830));
-            this.jdField_t_of_type_AndroidWidgetImageButton.setOnClickListener(new eue(this));
+            this.jdField_t_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234829));
+            this.jdField_t_of_type_AndroidWidgetImageButton.setOnClickListener(new eud(this));
           }
           if (this.jdField_h_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_h_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234817));
+            this.jdField_h_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234816));
             this.jdField_h_of_type_AndroidWidgetImageButton.setTag("1");
             this.jdField_h_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_h_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_i_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_i_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234818));
+            this.jdField_i_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234817));
             this.jdField_i_of_type_AndroidWidgetImageButton.setTag("2");
             this.jdField_i_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_i_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_j_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_j_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234819));
+            this.jdField_j_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234818));
             this.jdField_j_of_type_AndroidWidgetImageButton.setTag("3");
             this.jdField_j_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_j_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_k_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_k_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234820));
+            this.jdField_k_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234819));
             this.jdField_k_of_type_AndroidWidgetImageButton.setTag("4");
             this.jdField_k_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_k_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_l_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_l_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234821));
+            this.jdField_l_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234820));
             this.jdField_l_of_type_AndroidWidgetImageButton.setTag("5");
             this.jdField_l_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_l_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_m_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_m_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234822));
+            this.jdField_m_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234821));
             this.jdField_m_of_type_AndroidWidgetImageButton.setTag("6");
             this.jdField_m_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_m_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_n_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_n_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234823));
+            this.jdField_n_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234822));
             this.jdField_n_of_type_AndroidWidgetImageButton.setTag("7");
             this.jdField_n_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_n_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_o_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_o_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234824));
+            this.jdField_o_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234823));
             this.jdField_o_of_type_AndroidWidgetImageButton.setTag("8");
             this.jdField_o_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_o_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_p_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_p_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234825));
+            this.jdField_p_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234824));
             this.jdField_p_of_type_AndroidWidgetImageButton.setTag("9");
             this.jdField_p_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_p_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_r_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_r_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234827));
+            this.jdField_r_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234826));
             this.jdField_r_of_type_AndroidWidgetImageButton.setTag("0");
             this.jdField_r_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_r_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_q_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_q_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234826));
+            this.jdField_q_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234825));
             this.jdField_q_of_type_AndroidWidgetImageButton.setTag("*");
             this.jdField_q_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_q_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_s_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_s_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234828));
+            this.jdField_s_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234827));
             this.jdField_s_of_type_AndroidWidgetImageButton.setTag("#");
             this.jdField_s_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             this.jdField_s_of_type_AndroidWidgetImageButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
           if (this.jdField_g_of_type_AndroidWidgetImageButton == null)
           {
-            this.jdField_g_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234814));
-            this.jdField_g_of_type_AndroidWidgetImageButton.setOnLongClickListener(new euf(this));
-            this.jdField_g_of_type_AndroidWidgetImageButton.setOnClickListener(new eug(this));
+            this.jdField_g_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234813));
+            this.jdField_g_of_type_AndroidWidgetImageButton.setOnLongClickListener(new eue(this));
+            this.jdField_g_of_type_AndroidWidgetImageButton.setOnClickListener(new euf(this));
           }
           if (this.jdField_a_of_type_AndroidWidgetButton == null)
           {
-            this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234808));
-            this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new eui(this));
+            this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131234807));
+            this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new euh(this));
           }
           if (this.jdField_b_of_type_AndroidWidgetButton == null)
           {
-            this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131234829));
-            this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new euj(this));
+            this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131234828));
+            this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new eui(this));
           }
           if (this.jdField_c_of_type_AndroidWidgetButton == null)
           {
-            this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131234810));
-            this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new euk(this));
+            this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131234809));
+            this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new euj(this));
           }
           if ((i1 != 0) && ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3))) {
             i();
@@ -1028,38 +1028,38 @@ public class VoipDialInterfaceActivity
     this.jdField_e_of_type_Boolean = false;
     this.jdField_l_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidSupportV7AppActionBar.hide();
-    this.jdField_o_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234753));
+    this.jdField_o_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234752));
     this.jdField_o_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_p_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234757));
+    this.jdField_p_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234756));
     this.jdField_p_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_q_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234761));
+    this.jdField_q_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234760));
     this.jdField_q_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_r_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234765));
+    this.jdField_r_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234764));
     this.jdField_r_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_s_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234769));
+    this.jdField_s_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234768));
     this.jdField_s_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_t_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234773));
+    this.jdField_t_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234772));
     this.jdField_t_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_u_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234777));
+    this.jdField_u_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234776));
     this.jdField_u_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_v_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234781));
+    this.jdField_v_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234780));
     this.jdField_v_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_w_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234785));
+    this.jdField_w_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234784));
     this.jdField_w_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_x_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234789));
+    this.jdField_x_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234788));
     this.jdField_x_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_y_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234793));
+    this.jdField_y_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234792));
     this.jdField_y_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_z_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234797));
+    this.jdField_z_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234796));
     this.jdField_z_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_n_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234713));
+    this.jdField_n_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131234712));
     if (this.jdField_d_of_type_Int != 3) {
       a(false);
     }
     this.jdField_j_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     if (this.jdField_e_of_type_AndroidWidgetTextView == null) {
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234751));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234750));
     }
     this.jdField_e_of_type_AndroidWidgetTextView.setText("");
     label554:
@@ -1067,7 +1067,7 @@ public class VoipDialInterfaceActivity
     boolean bool;
     if (this.jdField_b_of_type_AndroidWidgetTextView == null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234752));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234751));
       if (this.jdField_a_of_type_AndroidContentSharedPreferences == null)
       {
         this.jdField_a_of_type_AndroidContentSharedPreferences = getSharedPreferences("voip_show_tips_in_callingui", 1);
@@ -1086,26 +1086,26 @@ public class VoipDialInterfaceActivity
     {
       if (this.jdField_b_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234719));
-        this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(new eul(this));
+        this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234718));
+        this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(new euk(this));
       }
       if (this.jdField_a_of_type_AndroidWidgetImageButton != null) {
         break label2232;
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234724));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234723));
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new eum(this));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new eul(this));
       if (this.jdField_c_of_type_AndroidWidgetImageButton != null) {
         break label2243;
       }
-      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234717));
+      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234716));
       this.jdField_c_of_type_AndroidWidgetImageButton.setEnabled(false);
-      this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(new eun(this));
+      this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(new eum(this));
       this.jdField_c_of_type_AndroidWidgetImageButton.setBackgroundResource(2130840380);
       if (this.jdField_f_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_f_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234715));
-        this.jdField_f_of_type_AndroidWidgetImageButton.setOnClickListener(new euo(this));
+        this.jdField_f_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234714));
+        this.jdField_f_of_type_AndroidWidgetImageButton.setOnClickListener(new eun(this));
         this.jdField_f_of_type_AndroidWidgetImageButton.setBackgroundResource(2130840389);
       }
       if (this.jdField_d_of_type_Int == 3)
@@ -1145,59 +1145,59 @@ public class VoipDialInterfaceActivity
       label810:
       if (this.jdField_d_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_d_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234716));
+        this.jdField_d_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234715));
         this.jdField_d_of_type_AndroidWidgetImageButton.setEnabled(false);
-        this.jdField_d_of_type_AndroidWidgetImageButton.setOnClickListener(new eup(this));
+        this.jdField_d_of_type_AndroidWidgetImageButton.setOnClickListener(new euo(this));
         ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "CallTab_external", "Call_Interface", 0, 1, 0, "1", "", "", "");
       }
       if (this.jdField_e_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_e_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234742));
-        this.jdField_e_of_type_AndroidWidgetImageButton.setOnClickListener(new euq(this));
-        this.jdField_e_of_type_AndroidWidgetImageButton.setOnTouchListener(new eur(this));
+        this.jdField_e_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234741));
+        this.jdField_e_of_type_AndroidWidgetImageButton.setOnClickListener(new eup(this));
+        this.jdField_e_of_type_AndroidWidgetImageButton.setOnTouchListener(new euq(this));
       }
       if (this.jdField_a_of_type_AndroidViewView != null) {
         break label2344;
       }
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131234743);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131234742);
       this.jdField_d_of_type_AndroidWidgetImageButton.setEnabled(false);
       label963:
       if (this.jdField_b_of_type_AndroidViewView == null) {
-        this.jdField_b_of_type_AndroidViewView = findViewById(2131234723);
+        this.jdField_b_of_type_AndroidViewView = findViewById(2131234722);
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       this.jdField_c_of_type_Long = 0L;
       this.jdField_i_of_type_Boolean = false;
       if (this.jdField_c_of_type_AndroidViewView == null) {
-        this.jdField_c_of_type_AndroidViewView = findViewById(2131234714);
+        this.jdField_c_of_type_AndroidViewView = findViewById(2131234713);
       }
       if (this.jdField_d_of_type_AndroidViewView == null) {
-        this.jdField_d_of_type_AndroidViewView = findViewById(2131234729);
+        this.jdField_d_of_type_AndroidViewView = findViewById(2131234728);
       }
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
       if (this.jdField_c_of_type_AndroidWidgetTextView == null) {
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234749));
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234748));
       }
       if (this.jdField_d_of_type_AndroidWidgetTextView == null) {
-        this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234750));
+        this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234749));
       }
       if (this.jdField_f_of_type_AndroidWidgetTextView == null) {
-        this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234725));
+        this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234724));
       }
       if (this.jdField_g_of_type_AndroidWidgetTextView == null) {
-        this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234726));
+        this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234725));
       }
       if (this.jdField_h_of_type_AndroidWidgetTextView == null) {
-        this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234727));
+        this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234726));
       }
       if (this.jdField_c_of_type_AndroidWidgetImageView == null) {
-        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234728));
+        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234727));
       }
       if (this.jdField_d_of_type_AndroidWidgetImageView == null) {
-        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234745));
+        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234744));
       }
       if (this.jdField_e_of_type_AndroidWidgetImageView == null) {
-        this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234748));
+        this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234747));
       }
       if (this.jdField_d_of_type_AndroidWidgetImageView != null)
       {
@@ -1246,78 +1246,78 @@ public class VoipDialInterfaceActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234747));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234746));
       if (this.jdField_u_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_u_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234730));
-        this.jdField_u_of_type_AndroidWidgetImageButton.setOnClickListener(new eut(this));
-        this.jdField_u_of_type_AndroidWidgetImageButton.setOnTouchListener(new euv(this));
+        this.jdField_u_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234729));
+        this.jdField_u_of_type_AndroidWidgetImageButton.setOnClickListener(new eus(this));
+        this.jdField_u_of_type_AndroidWidgetImageButton.setOnTouchListener(new euu(this));
       }
       if (this.jdField_v_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_v_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234731));
-        this.jdField_v_of_type_AndroidWidgetImageButton.setOnClickListener(new euw(this));
-        this.jdField_v_of_type_AndroidWidgetImageButton.setOnTouchListener(new euy(this));
+        this.jdField_v_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234730));
+        this.jdField_v_of_type_AndroidWidgetImageButton.setOnClickListener(new euv(this));
+        this.jdField_v_of_type_AndroidWidgetImageButton.setOnTouchListener(new eux(this));
       }
       if (this.jdField_w_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_w_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234732));
-        this.jdField_w_of_type_AndroidWidgetImageButton.setOnClickListener(new euz(this));
-        this.jdField_w_of_type_AndroidWidgetImageButton.setOnTouchListener(new evb(this));
+        this.jdField_w_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234731));
+        this.jdField_w_of_type_AndroidWidgetImageButton.setOnClickListener(new euy(this));
+        this.jdField_w_of_type_AndroidWidgetImageButton.setOnTouchListener(new eva(this));
       }
       if (this.jdField_x_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_x_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234733));
-        this.jdField_x_of_type_AndroidWidgetImageButton.setOnClickListener(new evc(this));
-        this.jdField_x_of_type_AndroidWidgetImageButton.setOnTouchListener(new eve(this));
+        this.jdField_x_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234732));
+        this.jdField_x_of_type_AndroidWidgetImageButton.setOnClickListener(new evb(this));
+        this.jdField_x_of_type_AndroidWidgetImageButton.setOnTouchListener(new evd(this));
       }
       if (this.jdField_y_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_y_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234734));
-        this.jdField_y_of_type_AndroidWidgetImageButton.setOnClickListener(new evf(this));
-        this.jdField_y_of_type_AndroidWidgetImageButton.setOnTouchListener(new evh(this));
+        this.jdField_y_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234733));
+        this.jdField_y_of_type_AndroidWidgetImageButton.setOnClickListener(new eve(this));
+        this.jdField_y_of_type_AndroidWidgetImageButton.setOnTouchListener(new evg(this));
       }
       if (this.jdField_z_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_z_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234735));
-        this.jdField_z_of_type_AndroidWidgetImageButton.setOnClickListener(new evj(this));
-        this.jdField_z_of_type_AndroidWidgetImageButton.setOnTouchListener(new evl(this));
+        this.jdField_z_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234734));
+        this.jdField_z_of_type_AndroidWidgetImageButton.setOnClickListener(new evi(this));
+        this.jdField_z_of_type_AndroidWidgetImageButton.setOnTouchListener(new evk(this));
       }
       if (this.A == null)
       {
-        this.A = ((ImageButton)findViewById(2131234736));
-        this.A.setOnClickListener(new evm(this));
-        this.A.setOnTouchListener(new evo(this));
+        this.A = ((ImageButton)findViewById(2131234735));
+        this.A.setOnClickListener(new evl(this));
+        this.A.setOnTouchListener(new evn(this));
       }
       if (this.B == null)
       {
-        this.B = ((ImageButton)findViewById(2131234737));
-        this.B.setOnClickListener(new evp(this));
-        this.B.setOnTouchListener(new evr(this));
+        this.B = ((ImageButton)findViewById(2131234736));
+        this.B.setOnClickListener(new evo(this));
+        this.B.setOnTouchListener(new evq(this));
       }
       if (this.C == null)
       {
-        this.C = ((ImageButton)findViewById(2131234738));
-        this.C.setOnClickListener(new evs(this));
-        this.C.setOnTouchListener(new evu(this));
+        this.C = ((ImageButton)findViewById(2131234737));
+        this.C.setOnClickListener(new evr(this));
+        this.C.setOnTouchListener(new evt(this));
       }
       if (this.D == null)
       {
-        this.D = ((ImageButton)findViewById(2131234739));
-        this.D.setOnClickListener(new evv(this));
-        this.D.setOnTouchListener(new evx(this));
+        this.D = ((ImageButton)findViewById(2131234738));
+        this.D.setOnClickListener(new evu(this));
+        this.D.setOnTouchListener(new evw(this));
       }
       if (this.E == null)
       {
-        this.E = ((ImageButton)findViewById(2131234740));
-        this.E.setOnClickListener(new evz(this));
-        this.E.setOnTouchListener(new ewb(this));
+        this.E = ((ImageButton)findViewById(2131234739));
+        this.E.setOnClickListener(new evy(this));
+        this.E.setOnTouchListener(new ewa(this));
       }
       if (this.F == null)
       {
-        this.F = ((ImageButton)findViewById(2131234741));
-        this.F.setOnClickListener(new ewc(this));
-        this.F.setOnTouchListener(new ewe(this));
+        this.F = ((ImageButton)findViewById(2131234740));
+        this.F.setOnClickListener(new ewb(this));
+        this.F.setOnTouchListener(new ewd(this));
       }
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
@@ -1651,7 +1651,7 @@ public class VoipDialInterfaceActivity
       if (QLog.isColorLevel()) {
         QLog.d("script", 2, "VOIP_ VoipDialInterfaceActivity onCreate() End");
       }
-      paramBundle = (ImageView)findViewById(2131234755);
+      paramBundle = (ImageView)findViewById(2131234754);
       try
       {
         new BitmapFactory.Options().inJustDecodeBounds = true;
@@ -1671,7 +1671,7 @@ public class VoipDialInterfaceActivity
   {
     if (this.jdField_d_of_type_Int == -1)
     {
-      MenuItem localMenuItem = paramMenu.add(0, 2131234807, 0, "");
+      MenuItem localMenuItem = paramMenu.add(0, 2131234806, 0, "");
       localMenuItem.setIcon(2130840482);
       localMenuItem.setTitle(getString(2131559881));
       MenuItemCompat.setShowAsAction(localMenuItem, 1);

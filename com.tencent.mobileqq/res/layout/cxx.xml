@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/mn1" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nni" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/akz" android:layout_marginBottom="@dimen/akz" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/yaa" />
+    <ListView android:id="@id/mng" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/gw" android:choiceMode="singleChoice" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+</LinearLayout>

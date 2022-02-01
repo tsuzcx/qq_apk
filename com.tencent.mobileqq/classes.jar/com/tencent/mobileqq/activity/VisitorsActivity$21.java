@@ -12,16 +12,16 @@ class VisitorsActivity$21
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
+    this.a.reset();
     this.b.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.reset();
-    this.this$0.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    this.c.reset();
+    this.d.reset();
+    this.this$0.L.startAnimation(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.21
  * JD-Core Version:    0.7.0.1
  */

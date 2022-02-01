@@ -49,7 +49,7 @@ class HttpPoolEntry
   
   public boolean isClosed()
   {
-    return !((OperatedClientConnection)getConnection()).isOpen();
+    return ((OperatedClientConnection)getConnection()).isOpen() ^ true;
   }
   
   public boolean isExpired(long paramLong)
@@ -64,7 +64,7 @@ class HttpPoolEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.http.HttpPoolEntry
  * JD-Core Version:    0.7.0.1
  */

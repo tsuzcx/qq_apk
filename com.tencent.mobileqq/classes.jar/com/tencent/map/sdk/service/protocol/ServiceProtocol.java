@@ -63,12 +63,11 @@ public abstract class ServiceProtocol
   
   private static ServiceProtocol a(Context paramContext, InputStream paramInputStream)
   {
-    ByteArrayOutputStream localByteArrayOutputStream;
     if (paramInputStream != null) {
       try
       {
         byte[] arrayOfByte = new byte[1024];
-        localByteArrayOutputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
         for (;;)
         {
           int i = paramInputStream.read(arrayOfByte);
@@ -77,15 +76,15 @@ public abstract class ServiceProtocol
           }
           localByteArrayOutputStream.write(arrayOfByte, 0, i);
         }
-        return new nb();
+        paramContext = buildFromJson(paramContext, new String(localByteArrayOutputStream.toByteArray(), Charset.forName("UTF-8")));
+        return paramContext;
       }
       catch (IOException paramContext)
       {
         paramContext.printStackTrace();
       }
     }
-    paramContext = buildFromJson(paramContext, new String(localByteArrayOutputStream.toByteArray(), Charset.forName("UTF-8")));
-    return paramContext;
+    return new nb();
   }
   
   private static String a(Context paramContext)
@@ -94,22 +93,24 @@ public abstract class ServiceProtocol
       return "";
     }
     String str = paramContext.getPackageName();
+    Object localObject = null;
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(str, 128);
-      if ((paramContext == null) || (paramContext.metaData == null)) {
-        return "";
-      }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
+      paramContext.printStackTrace();
+      paramContext = localObject;
     }
-    return paramContext.metaData.getString("TencentMapSDK");
+    if (paramContext != null)
+    {
+      if (paramContext.metaData == null) {
+        return "";
+      }
+      return paramContext.metaData.getString("TencentMapSDK");
+    }
+    return "";
   }
   
   public static <S extends nc> boolean allow(Class<S> paramClass)
@@ -143,8 +144,8 @@ public abstract class ServiceProtocol
   {
     for (;;)
     {
+      boolean bool2;
       int j;
-      boolean bool;
       try
       {
         paramString = new JSONObject(paramString);
@@ -176,14 +177,15 @@ public abstract class ServiceProtocol
                   localObject2 = (ne)paramContext.a.get(localObject2);
                   if (localObject2 != null)
                   {
+                    bool2 = true;
                     j = ((JSONObject)localObject1).optInt("status", 1);
                     String str = ((JSONObject)localObject1).optString("host", null);
                     localObject1 = ((JSONObject)localObject1).optString("host_test", null);
                     if (j == 0) {
-                      continue;
+                      break label271;
                     }
-                    bool = true;
-                    ((mz)localObject2).b = bool;
+                    bool1 = true;
+                    ((mz)localObject2).b = bool1;
                     if (!TextUtils.isEmpty(str)) {
                       ((ne)localObject2).c = str;
                     }
@@ -192,15 +194,11 @@ public abstract class ServiceProtocol
                     }
                     ((ne)localObject2).d = ((String)localObject1);
                     break label277;
-                    ((mz)localObject2).a = bool;
+                    ((mz)localObject2).a = bool1;
                   }
                 }
               }
               i += 1;
-              continue;
-              bool = false;
-              continue;
-              bool = false;
               continue;
             }
           }
@@ -212,9 +210,14 @@ public abstract class ServiceProtocol
         paramContext.printStackTrace();
       }
       return new nb();
+      label271:
+      boolean bool1 = false;
+      continue;
       label277:
       if (j == 2) {
-        bool = true;
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
   }
@@ -229,46 +232,44 @@ public abstract class ServiceProtocol
   public final <S extends nc> S newService(Class<S> paramClass)
   {
     Object localObject = a.iterator();
-    ServiceProtocol.a locala;
-    while (((Iterator)localObject).hasNext())
+    for (;;)
     {
-      locala = (ServiceProtocol.a)((Iterator)localObject).next();
-      if (locala.b == paramClass)
+      if (((Iterator)localObject).hasNext())
       {
-        localObject = locala.c;
-        if (localObject == null) {
-          break;
+        ServiceProtocol.a locala = (ServiceProtocol.a)((Iterator)localObject).next();
+        if (locala.b == paramClass)
+        {
+          localObject = locala.c;
+          if (localObject != null) {
+            try
+            {
+              ((Method)localObject).setAccessible(true);
+              localObject = ((Method)localObject).invoke(this, new Object[] { locala.a });
+              if (localObject.getClass() == paramClass)
+              {
+                paramClass = (nc)localObject;
+                locala.d = paramClass.a();
+                return paramClass;
+              }
+            }
+            catch (InvocationTargetException paramClass)
+            {
+              paramClass.printStackTrace();
+            }
+            catch (IllegalAccessException paramClass)
+            {
+              paramClass.printStackTrace();
+            }
+          }
         }
       }
     }
-    try
-    {
-      ((Method)localObject).setAccessible(true);
-      localObject = ((Method)localObject).invoke(this, new Object[] { locala.a });
-      if (localObject.getClass() == paramClass)
-      {
-        paramClass = (nc)localObject;
-        locala.d = paramClass.a();
-        return paramClass;
-      }
-    }
-    catch (IllegalAccessException paramClass)
-    {
-      paramClass.printStackTrace();
-      return null;
-    }
-    catch (InvocationTargetException paramClass)
-    {
-      for (;;)
-      {
-        paramClass.printStackTrace();
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.ServiceProtocol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,223 +1,120 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqw;
-import aiqy;
-import aitd;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aofm;
-import azqs;
-import bexu;
-import bhvx;
-import bnle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.mobileqq.activity.photo.album.preview.AbstractPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.preview.PhotoPreviewCustomization;
+import com.tencent.mobileqq.activity.photo.album.preview.view.PreviewScene;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
+import com.tencent.mobileqq.qqalbum.IPhotoLogicFactory;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.theme.ThemeNavigationBarUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.BubblePopupWindow;
-import com.tencent.widget.DragView;
 import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
-import mbt;
+import mqq.app.MobileQQ;
 
+@RoutePage(desc="相册图片预览页面", path="/base/album/photopreview")
 public class NewPhotoPreviewActivity
   extends AbstractPhotoPreviewActivity
-  implements bhvx
 {
-  public aiqw a;
-  public View a;
-  public BubblePopupWindow a;
-  public DragView a;
-  public HorizontalListView a;
+  public boolean mEnableLiuHai;
+  public BubblePopupWindow popup;
+  public NewPhotoSelectedThumbAdapter selectedPhotoAdapter;
+  View selectedPhotoListDivider;
+  HorizontalListView selectedPhotoListView;
   
-  public void F()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    Object localObject = this.adapter.getItem(getCurrentSelectedPostion());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    if (QLog.isDevelopLevel())
     {
-      localObject = getMediaInfoTemp((String)localObject);
-      if (localObject != null)
-      {
-        if (((LocalMediaInfo)localObject).mMediaType != 0) {
-          break label77;
-        }
-        localObject = "0X8009AB2";
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        azqs.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
-      }
-      this.mPhotoPreviewLogic.onBackPressed(true);
-      return;
-      label77:
-      if (((LocalMediaInfo)localObject).mMediaType == 1) {
-        localObject = "0X8009AB3";
-      } else {
-        localObject = null;
-      }
+      paramIntent = new StringBuilder();
+      paramIntent.append("[PhotoPreviewActivity] [onActivityResult] requestCode = ");
+      paramIntent.append(paramInt1);
+      paramIntent.append("  resultCode:");
+      paramIntent.append(paramInt2);
+      paramIntent.append("  ok:");
+      paramIntent.append(-1);
+      QLog.d("QQAlbum", 4, paramIntent.toString());
     }
   }
   
-  public void G()
+  public boolean doOnCreate(Bundle paramBundle)
   {
-    if (this.rootLayout != null)
-    {
-      Drawable localDrawable = this.rootLayout.getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha(255);
-      }
+    LiuHaiUtils.f(this);
+    LiuHaiUtils.f(this);
+    if (LiuHaiUtils.c()) {
+      LiuHaiUtils.g(this);
     }
-    this.topBar.setVisibility(0);
-    if (this.mPhotoPreviewLogic.needShowMultiPhoto())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    }
+    this.mNeedStatusTrans = false;
+    this.mActNeedImmersive = false;
+    boolean bool = super.doOnCreate(paramBundle);
+    this.mPhotoPreviewCustomization.s().mRoot.setFitsSystemWindows(true);
+    return bool;
   }
   
-  public void H() {}
-  
-  protected void a()
+  public void doOnDestroy()
   {
-    int i = 0;
-    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365489));
-    this.jdField_a_of_type_ComTencentWidgetDragView.setGestureChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
-    Rect localRect = (Rect)getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND");
-    if (localRect != null)
-    {
-      if (this.mEnableLiuHai) {
-        i = bnle.a;
-      }
-      localRect.top -= i;
-      localRect.bottom -= i;
-      if ((this.mPhotoPreviewData.paths != null) && (-1 != this.mPhotoPreviewData.firstSelectedPostion) && (this.mPhotoPreviewData.paths.get(this.mPhotoPreviewData.firstSelectedPostion) != null))
-      {
-        LocalMediaInfo localLocalMediaInfo = getMediaInfo((String)this.mPhotoPreviewData.paths.get(this.mPhotoPreviewData.firstSelectedPostion));
-        if (localLocalMediaInfo != null) {
-          localLocalMediaInfo.thumbRect = localRect;
-        }
-      }
-      this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(localRect);
-      return;
+    BubblePopupWindow localBubblePopupWindow = this.popup;
+    if (localBubblePopupWindow != null) {
+      localBubblePopupWindow.dismiss();
     }
-    this.jdField_a_of_type_ComTencentWidgetDragView.setEnableDrag(false);
+    super.doOnDestroy();
   }
   
-  public void a(float paramFloat)
+  public void doOnPause()
   {
-    if (this.rootLayout != null)
-    {
-      Drawable localDrawable = this.rootLayout.getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
-    }
-    if (paramFloat < 0.8F)
-    {
-      this.topBar.setVisibility(4);
-      this.bottomBar.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(4);
-    }
+    super.doOnPause();
+    SmallScreenUtils.a(MobileQQ.getContext(), false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(MobileQQ.getContext(), true);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(MobileQQ.getContext(), 2, true);
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt2 == -1)
-    {
-      setResult(-1, paramIntent);
-      finish();
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt2 == -1)
-    {
-      setResult(-1, paramIntent);
-      finish();
-    }
-  }
-  
-  public void c(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt2 == -1) {
-      AIOLongShotHelper.a(this, paramIntent);
-    }
-    while ((paramIntent == null) || (!paramIntent.getBooleanExtra("NOCANCEL4DATALIN", false))) {
-      return;
-    }
-    setResult(-1, paramIntent);
-    finish();
-  }
-  
-  public PhotoPreviewLogic generateLogic()
+  public PhotoPreviewCustomization<? extends OtherCommonData> generateCustomization()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoPreviewLogic localPhotoPreviewLogic = aitd.a(i, this);
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "generateLogic:" + localPhotoPreviewLogic.getClass().getName() + " enterFrom:" + i);
+    PhotoPreviewCustomization localPhotoPreviewCustomization = ((IPhotoLogicFactory)QRoute.api(IPhotoLogicFactory.class)).createPhotoPreviewLogic(this, getIntent());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("generateLogic:");
+      localStringBuilder.append(localPhotoPreviewCustomization.getClass().getName());
+      localStringBuilder.append(" enterFrom:");
+      localStringBuilder.append(i);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
     }
-    return localPhotoPreviewLogic;
+    return localPhotoPreviewCustomization;
   }
   
-  public Class getBackActivity()
+  public void initNavigationBarColor()
   {
-    return NewPhotoListActivity.class;
+    ThemeNavigationBarUtil.a(getWindow(), -16777216);
   }
   
-  public void hideMenuBar()
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    super.hideMenuBar();
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-  }
-  
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PhotoPreviewActivity", 4, "[PhotoPreviewActivity] [onActivityResult] requestCode = " + paramInt1 + "  resultCode:" + paramInt2 + "  ok:" + -1);
-    }
-    this.mPhotoPreviewLogic.onActivityResult(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    bnle.a(this);
-    if (bnle.c()) {
-      bnle.b(this);
-    }
-    super.onCreate(paramBundle);
-    a();
-    if (this.mPhotoPreviewLogic.mPhotoCommonData.myUin == null) {
-      this.mPhotoPreviewLogic.mPhotoCommonData.myUin = this.lastLoginUin;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    super.onDestroy();
-  }
-  
-  public void onPause()
-  {
-    super.onPause();
-    mbt.a(BaseApplicationImpl.getContext(), false);
-    bexu.a(BaseApplicationImpl.getContext(), true);
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 

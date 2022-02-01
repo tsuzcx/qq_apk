@@ -1,529 +1,603 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.ai.w.a;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.g.a.hf;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao.a;
-import com.tencent.mm.model.ao.b;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.an.af;
+import com.tencent.mm.an.f;
+import com.tencent.mm.autogen.a.kw;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.rr;
-import com.tencent.mm.protocal.protobuf.rs;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.chatting.ChattingUI;
+import com.tencent.mm.ui.contact.e;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class CheckCanSubscribeBizUI
   extends MMActivity
-  implements com.tencent.mm.ai.f, k.a, n.b
+  implements com.tencent.mm.am.h, MStorage.IOnStorageChange, MStorageEx.IOnStorageChange
 {
+  private int advI;
+  private LinkedList<etl> advJ;
+  private boolean advK = false;
+  private boolean advL = false;
+  private boolean advM = false;
+  private boolean advN = false;
+  private String advO;
+  private int advP = 0;
   private String appId;
-  private int cpt;
-  private String csM;
   private String extInfo;
-  private boolean fon = false;
   private int fromScene;
-  private String mVw;
+  private String hGw;
+  private String hHa;
+  private boolean ooe = false;
+  private String pPi;
   private int scene;
-  private String toUserName;
-  private int yUH;
-  private LinkedList<bwc> yUI;
-  private boolean yUJ = false;
-  private boolean yUK = false;
-  private boolean yUL = false;
-  private boolean yUM = false;
-  private String yUN;
-  private int yUO = 0;
+  private int source;
   
-  private boolean aAj()
+  private void bSo()
   {
-    AppMethodBeat.i(29149);
+    AppMethodBeat.i(32980);
+    Log.e("MicroMsg.CheckCanSubscribeBizUI", "showErrToast");
+    Toast.makeText(this, R.l.regbyqq_auth_err_title, 1).show();
+    dGQ();
+    AppMethodBeat.o(32980);
+  }
+  
+  private boolean cod()
+  {
+    AppMethodBeat.i(32974);
     Intent localIntent = getIntent();
     if (localIntent == null)
     {
-      ab.e("MicroMsg.CheckCanSubscribeBizUI", "intent is null.");
-      AppMethodBeat.o(29149);
+      Log.e("MicroMsg.CheckCanSubscribeBizUI", "intent is null.");
+      AppMethodBeat.o(32974);
       return false;
     }
     this.appId = localIntent.getStringExtra("appId");
-    this.toUserName = localIntent.getStringExtra("toUserName");
-    if (bo.isNullOrNil(this.toUserName))
+    this.hHa = localIntent.getStringExtra("toUserName");
+    if (Util.isNullOrNil(this.hHa))
     {
-      ab.e("MicroMsg.CheckCanSubscribeBizUI", "toUserName is null.");
-      AppMethodBeat.o(29149);
+      Log.e("MicroMsg.CheckCanSubscribeBizUI", "toUserName is null.");
+      AppMethodBeat.o(32974);
       return false;
     }
     this.extInfo = localIntent.getStringExtra("extInfo");
-    this.cpt = localIntent.getIntExtra("source", -1);
+    this.source = localIntent.getIntExtra("source", -1);
     this.scene = localIntent.getIntExtra("scene", 0);
-    this.yUO = localIntent.getIntExtra("jump_profile_type", 0);
-    switch (this.cpt)
+    this.advP = localIntent.getIntExtra("jump_profile_type", 0);
+    switch (this.source)
     {
     default: 
-      ab.e("MicroMsg.CheckCanSubscribeBizUI", "source(%d) is invalidated.", new Object[] { Integer.valueOf(this.cpt) });
-      AppMethodBeat.o(29149);
+      Log.e("MicroMsg.CheckCanSubscribeBizUI", "source(%d) is invalidated.", new Object[] { Integer.valueOf(this.source) });
+      AppMethodBeat.o(32974);
       return false;
     case 1: 
-      if (bo.isNullOrNil(this.appId))
+      if (Util.isNullOrNil(this.appId))
       {
-        ab.e("MicroMsg.CheckCanSubscribeBizUI", "appId is null.");
-        AppMethodBeat.o(29149);
+        Log.e("MicroMsg.CheckCanSubscribeBizUI", "appId is null.");
+        AppMethodBeat.o(32974);
         return false;
       }
       this.fromScene = 68;
       ArrayList localArrayList = localIntent.getStringArrayListExtra("androidPackNameList");
       if ((localArrayList == null) || (localArrayList.size() == 0))
       {
-        ab.e("MicroMsg.CheckCanSubscribeBizUI", "androidPackNameList is null or nil.");
-        AppMethodBeat.o(29149);
+        Log.e("MicroMsg.CheckCanSubscribeBizUI", "androidPackNameList is null or nil.");
+        AppMethodBeat.o(32974);
         return false;
       }
-      this.yUI = new LinkedList();
+      this.advJ = new LinkedList();
       int i = 0;
       while (i < localArrayList.size())
       {
         String str = (String)localArrayList.get(i);
-        if (!bo.isNullOrNil(str))
+        if (!Util.isNullOrNil(str))
         {
-          ab.i("MicroMsg.CheckCanSubscribeBizUI", "packName(%d) : %s", new Object[] { Integer.valueOf(i), str });
-          this.yUI.add(aa.wA(str));
+          Log.i("MicroMsg.CheckCanSubscribeBizUI", "packName(%d) : %s", new Object[] { Integer.valueOf(i), str });
+          this.advJ.add(w.Sk(str));
         }
         i += 1;
       }
-      if (this.yUI.size() == 0)
+      if (this.advJ.size() == 0)
       {
-        ab.e("MicroMsg.CheckCanSubscribeBizUI", "androidPackNameList is nil.");
-        AppMethodBeat.o(29149);
+        Log.e("MicroMsg.CheckCanSubscribeBizUI", "androidPackNameList is nil.");
+        AppMethodBeat.o(32974);
         return false;
       }
-      this.yUH = this.yUI.size();
+      this.advI = this.advJ.size();
     }
     for (;;)
     {
-      this.csM = localIntent.getStringExtra("fromURL");
-      AppMethodBeat.o(29149);
+      this.hGw = localIntent.getStringExtra("fromURL");
+      AppMethodBeat.o(32974);
       return true;
       this.fromScene = 69;
     }
   }
   
-  private void bqK()
+  private void dGQ()
   {
-    AppMethodBeat.i(29156);
-    if (this.cpt == 1) {
-      LauncherUI.hG(this);
+    AppMethodBeat.i(32981);
+    if (this.source == 1) {
+      LauncherUI.mK(this);
     }
-    AppMethodBeat.o(29156);
+    AppMethodBeat.o(32981);
   }
   
-  private void dAQ()
+  private void iKS()
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(29151);
-        ab.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess..,canJump = " + this.yUJ);
+        AppMethodBeat.i(32976);
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess..,canJump = " + this.advK);
         if (this.scene == 1)
         {
+          Log.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess  MM_CHECK_CAN_SUBSCRIBE_BIZ_SCENE_WEBVIEW");
           Intent localIntent1 = new Intent();
-          localIntent1.putExtra("rawUrl", this.yUN);
-          com.tencent.mm.bq.d.b(this, "webview", ".ui.tools.WebViewUI", localIntent1);
+          localIntent1.putExtra("rawUrl", this.advO);
+          com.tencent.mm.br.c.b(this, "webview", ".ui.tools.WebViewUI", localIntent1);
           finish();
-          AppMethodBeat.o(29151);
+          AppMethodBeat.o(32976);
           return;
         }
-        if ((this.scene != 0) || (this.yUO != 1)) {
-          break label179;
+        if ((this.scene != 0) || (this.advP != 1)) {
+          break label210;
         }
-        if (this.yUL)
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess  MM_CHECK_CAN_SUBSCRIBE_BIZ_SCENE_PROFILE  extInfo:" + this.extInfo);
+        if (this.advM)
         {
-          ab.i("MicroMsg.CheckCanSubscribeBizUI", "has jump ignore this scene");
-          AppMethodBeat.o(29151);
+          Log.i("MicroMsg.CheckCanSubscribeBizUI", "has jump ignore this scene");
+          AppMethodBeat.o(32976);
           continue;
         }
-        this.yUL = true;
+        this.advM = true;
       }
       finally {}
-      aw.Rc().a(233, this);
-      Object localObject2 = new com.tencent.mm.modelsimple.j(this.extInfo, null, 4, 0, (int)System.currentTimeMillis(), new byte[0]);
-      aw.Rc().a((com.tencent.mm.ai.m)localObject2, 0);
-      AppMethodBeat.o(29151);
+      bh.aZW().a(233, this);
+      Object localObject2 = new com.tencent.mm.modelsimple.n(this.extInfo, null, 4, 0, com.tencent.mm.modelsimple.n.bMd(), new byte[0]);
+      bh.aZW().a((p)localObject2, 0);
+      AppMethodBeat.o(32976);
       continue;
-      label179:
-      if ((dAR()) && (this.yUJ))
+      label210:
+      if ((jhK()) && (this.advK))
       {
-        if (!this.yUL)
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess  jumpToChattingUI");
+        if (!this.advM)
         {
-          ab.i("MicroMsg.CheckCanSubscribeBizUI", "jump to ChattingUI");
-          localObject2 = new Intent().putExtra("Chat_User", this.toUserName);
+          Log.i("MicroMsg.CheckCanSubscribeBizUI", "jump to ChattingUI");
+          localObject2 = new Intent().putExtra("Chat_User", this.hHa);
           ((Intent)localObject2).putExtra("finish_direct", true);
-          if (bo.isNullOrNil(this.toUserName)) {
-            com.tencent.mm.ui.contact.e.a((Intent)localObject2, this.toUserName);
+          if (Util.isNullOrNil(this.hHa)) {
+            e.a((Intent)localObject2, this.hHa);
           }
           ((Intent)localObject2).setClass(this, ChattingUI.class);
-          if (!this.yUK)
+          if (!this.advL)
           {
             setResult(-1);
-            this.yUL = true;
-            startActivity((Intent)localObject2);
+            this.advM = true;
+            localObject2 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject2);
+            com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/ui/CheckCanSubscribeBizUI", "jumpToChattingUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/CheckCanSubscribeBizUI", "jumpToChattingUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             finish();
           }
         }
-        AppMethodBeat.o(29151);
+        AppMethodBeat.o(32976);
+      }
+      else if (this.advK)
+      {
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess  jumpToContactInfoUI");
+        if (!this.advM)
+        {
+          Log.i("MicroMsg.CheckCanSubscribeBizUI", "jump to ContactInfoUI");
+          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(this.hHa);
+          Intent localIntent2 = new Intent();
+          localIntent2.putExtra("Contact_Scene", this.fromScene);
+          localIntent2.putExtra("Verify_ticket", this.pPi);
+          localIntent2.putExtra("force_get_contact", true);
+          localIntent2.putExtra("key_use_new_contact_profile", true);
+          if (localObject2 != null)
+          {
+            localIntent2.putExtra("Contact_Alias", ((au)localObject2).aJs());
+            localIntent2.putExtra("Contact_Nick", ((az)localObject2).field_nickname);
+            localIntent2.putExtra("Contact_Signature", ((az)localObject2).signature);
+            localIntent2.putExtra("Contact_RegionCode", ((az)localObject2).kaj);
+            localIntent2.putExtra("Contact_Sex", ((az)localObject2).sex);
+            localIntent2.putExtra("Contact_VUser_Info", ((az)localObject2).verifyInfo);
+            localIntent2.putExtra("Contact_VUser_Info_Flag", ((az)localObject2).field_verifyFlag);
+            localIntent2.putExtra("Contact_KWeibo_flag", ((az)localObject2).field_weiboFlag);
+            localIntent2.putExtra("Contact_KWeibo", ((az)localObject2).kai);
+            localIntent2.putExtra("Contact_KWeiboNick", ((az)localObject2).field_weiboNickname);
+          }
+          e.t(localIntent2, this.hHa);
+          if (!this.advL)
+          {
+            setResult(-1);
+            this.advM = true;
+            com.tencent.mm.br.c.b(this, "profile", ".ui.ContactInfoUI", localIntent2);
+            finish();
+          }
+        }
+        AppMethodBeat.o(32976);
       }
       else
       {
-        if ((this.yUJ) && (!this.yUL))
-        {
-          ab.i("MicroMsg.CheckCanSubscribeBizUI", "jump to ContactInfoUI");
-          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.toUserName);
-          Intent localIntent2 = new Intent();
-          localIntent2.putExtra("Contact_Scene", this.fromScene);
-          localIntent2.putExtra("Verify_ticket", this.mVw);
-          if (localObject2 != null)
-          {
-            localIntent2.putExtra("Contact_Alias", ((ad)localObject2).Hq());
-            localIntent2.putExtra("Contact_Nick", ((aq)localObject2).field_nickname);
-            localIntent2.putExtra("Contact_Signature", ((aq)localObject2).signature);
-            localIntent2.putExtra("Contact_RegionCode", ((aq)localObject2).dqQ);
-            localIntent2.putExtra("Contact_Sex", ((aq)localObject2).dqC);
-            localIntent2.putExtra("Contact_VUser_Info", ((aq)localObject2).dqP);
-            localIntent2.putExtra("Contact_VUser_Info_Flag", ((aq)localObject2).field_verifyFlag);
-            localIntent2.putExtra("Contact_KWeibo_flag", ((aq)localObject2).field_weiboFlag);
-            localIntent2.putExtra("Contact_KWeibo", ((aq)localObject2).dqO);
-            localIntent2.putExtra("Contact_KWeiboNick", ((aq)localObject2).field_weiboNickname);
-          }
-          com.tencent.mm.ui.contact.e.r(localIntent2, this.toUserName);
-          if (!this.yUK)
-          {
-            setResult(-1);
-            this.yUL = true;
-            com.tencent.mm.bq.d.b(this, "profile", ".ui.ContactInfoUI", localIntent2);
-            finish();
-          }
-        }
-        AppMethodBeat.o(29151);
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "dealSuccess  not canJump");
+        AppMethodBeat.o(32976);
       }
     }
   }
   
-  private boolean dAR()
+  private boolean jhK()
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(29152);
-        ad localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.toUserName);
-        if ((localad != null) && ((int)localad.euF != 0)) {
-          break label308;
+        AppMethodBeat.i(32977);
+        au localau = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(this.hHa);
+        if ((localau != null) && ((int)localau.maN != 0)) {
+          break label349;
         }
-        ab.w("MicroMsg.CheckCanSubscribeBizUI", "contact is null.");
-        i = 1;
-        com.tencent.mm.aj.d locald = null;
-        if (i == 0) {
-          locald = com.tencent.mm.aj.f.rS(this.toUserName);
-        }
-        if ((locald == null) || (locald.aea()))
+        StringBuilder localStringBuilder = new StringBuilder("contact is null == ");
+        if (localau == null)
         {
-          ab.e("MicroMsg.CheckCanSubscribeBizUI", "BizInfo(" + locald + ") is null or should update.");
+          bool = true;
+          Log.w("MicroMsg.CheckCanSubscribeBizUI", bool);
           i = 1;
-        }
-        if (this.yUM)
-        {
-          if (localad == null)
+          if (!this.advN) {
+            continue;
+          }
+          if (localau == null)
           {
-            this.yUJ = false;
+            Log.i("MicroMsg.CheckCanSubscribeBizUI", "hasConcerned  contact == null  return false");
+            this.advK = false;
             setResult(5);
-            dAT();
+            bSo();
             finish();
-            AppMethodBeat.o(29152);
+            AppMethodBeat.o(32977);
             bool = false;
             return bool;
           }
-          this.yUJ = true;
-          this.fon = true;
-          if (com.tencent.mm.n.a.je(localad.field_type)) {
-            break label287;
-          }
-          AppMethodBeat.o(29152);
+        }
+        else
+        {
           bool = false;
           continue;
         }
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "hasConcerned  isContact :" + d.rs(localau.field_type));
+        this.advK = true;
+        this.ooe = true;
+        if (d.rs(localau.field_type)) {
+          break label320;
+        }
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "hasConcerned  return false");
+        AppMethodBeat.o(32977);
+        bool = false;
+        continue;
         if (i != 0)
         {
-          if (this.yUJ)
+          Log.i("MicroMsg.CheckCanSubscribeBizUI", "hasConcerned  needToAddOrUpdateContact = true  canJump" + this.advK);
+          if (this.advK)
           {
             setResult(5);
-            dAT();
             finish();
-            AppMethodBeat.o(29152);
+            AppMethodBeat.o(32977);
             bool = false;
             continue;
           }
-          ao.a.flI.a(this.toUserName, "", new CheckCanSubscribeBizUI.1(this));
+          az.a.okP.a(this.hHa, "", new az.b.a()
+          {
+            public final void getContactCallBack(String paramAnonymousString, boolean paramAnonymousBoolean)
+            {
+              AppMethodBeat.i(32966);
+              Log.i("MicroMsg.CheckCanSubscribeBizUI", "hasConcerned  getContactCallBack  succ:".concat(String.valueOf(paramAnonymousBoolean)));
+              if (!paramAnonymousBoolean) {
+                new MMHandler().post(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(250658);
+                    Log.i("MicroMsg.CheckCanSubscribeBizUI", "getContactCallBack fail run");
+                    CheckCanSubscribeBizUI.a(CheckCanSubscribeBizUI.this);
+                    if ((!CheckCanSubscribeBizUI.b(CheckCanSubscribeBizUI.this)) && (!CheckCanSubscribeBizUI.this.isDestroyed())) {
+                      CheckCanSubscribeBizUI.c(CheckCanSubscribeBizUI.this);
+                    }
+                    AppMethodBeat.o(250658);
+                  }
+                });
+              }
+              AppMethodBeat.o(32966);
+            }
+          });
           continue;
         }
-        if (com.tencent.mm.n.a.je(localad.field_type)) {
-          break label287;
+        if (d.rs(localObject.field_type)) {
+          break label320;
         }
       }
       finally {}
-      ab.w("MicroMsg.CheckCanSubscribeBizUI", "is not contact.");
-      this.yUJ = true;
-      AppMethodBeat.o(29152);
+      Log.w("MicroMsg.CheckCanSubscribeBizUI", "is not contact.");
+      this.advK = true;
+      AppMethodBeat.o(32977);
       boolean bool = false;
       continue;
-      label287:
-      this.yUJ = true;
-      this.fon = true;
-      AppMethodBeat.o(29152);
+      label320:
+      Log.i("MicroMsg.CheckCanSubscribeBizUI", "hasConcerned  return true");
+      this.advK = true;
+      this.ooe = true;
+      AppMethodBeat.o(32977);
       bool = true;
       continue;
-      label308:
+      label349:
       int i = 0;
     }
   }
   
-  private void dAS()
+  private void jhL()
   {
-    AppMethodBeat.i(29154);
-    Toast.makeText(this, getString(2131304494), 1).show();
-    bqK();
-    AppMethodBeat.o(29154);
-  }
-  
-  private void dAT()
-  {
-    AppMethodBeat.i(29155);
-    Toast.makeText(this, 2131302473, 1).show();
-    bqK();
-    AppMethodBeat.o(29155);
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(29158);
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      ab.d("MicroMsg.CheckCanSubscribeBizUI", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      AppMethodBeat.o(29158);
-      return;
-    }
-    a((String)paramObject, null);
-    AppMethodBeat.o(29158);
-  }
-  
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
-  {
-    AppMethodBeat.i(29157);
-    new ak().post(new CheckCanSubscribeBizUI.3(this, paramString));
-    AppMethodBeat.o(29157);
+    AppMethodBeat.i(32979);
+    Toast.makeText(this, getString(R.l.gXC), 1).show();
+    dGQ();
+    AppMethodBeat.o(32979);
   }
   
   protected int getLayoutId()
   {
-    return 2130969950;
+    return R.i.glf;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(29144);
+    AppMethodBeat.i(32969);
     super.onCreate(paramBundle);
     hideTitleView();
-    if ((!aw.aaB()) || (aw.QP()))
+    if ((!bh.bCA()) || (bh.aZG()))
     {
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent());
       finish();
-      AppMethodBeat.o(29144);
+      AppMethodBeat.o(32969);
       return;
     }
-    aw.Rc().a(605, this);
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().a(this);
-    z.afi().add(this);
-    if (aAj())
+    bh.aZW().a(605, this);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().add(this);
+    af.bHf().add(this);
+    if (cod())
     {
+      Log.i("MicroMsg.CheckCanSubscribeBizUI", "onCreate initData  doCheckCanSubscribeBiz");
       paramBundle = this.appId;
-      String str1 = this.toUserName;
+      String str1 = this.hHa;
       String str2 = this.extInfo;
-      int i = this.yUH;
-      LinkedList localLinkedList = this.yUI;
-      String str3 = this.csM;
-      int j = this.cpt;
+      int i = this.advI;
+      LinkedList localLinkedList = this.advJ;
+      String str3 = this.hGw;
+      int j = this.source;
       int k = this.scene;
-      Object localObject = new b.a();
-      ((b.a)localObject).fsX = new rr();
-      ((b.a)localObject).fsY = new rs();
-      ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkcansubscribebiz";
-      ((b.a)localObject).funcId = 605;
-      localObject = ((b.a)localObject).ado();
-      rr localrr = (rr)((b)localObject).fsV.fta;
-      localrr.npZ = paramBundle;
-      localrr.nul = str1;
-      localrr.nuz = str2;
-      localrr.wJO = i;
-      localrr.wJP = localLinkedList;
-      localrr.wJQ = null;
-      localrr.wJR = str3;
-      localrr.niK = j;
-      localrr.Scene = k;
-      ab.i("MicroMsg.CheckCanSubscribeBizUI", "appId(%s) , toUsername(%s) , extInfo(%s) , packNum(%d), scene(%d)", new Object[] { paramBundle, str1, str2, Integer.valueOf(i), Integer.valueOf(k) });
-      w.a((b)localObject, new w.a()
+      Object localObject = new c.a();
+      ((c.a)localObject).otE = new aai();
+      ((c.a)localObject).otF = new aaj();
+      ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/checkcansubscribebiz";
+      ((c.a)localObject).funcId = 605;
+      localObject = ((c.a)localObject).bEF();
+      aai localaai = (aai)c.b.b(((com.tencent.mm.am.c)localObject).otB);
+      localaai.muA = paramBundle;
+      localaai.IMg = str1;
+      localaai.IMu = str2;
+      localaai.ZiG = i;
+      localaai.ZiH = localLinkedList;
+      localaai.ZiI = null;
+      localaai.ZiJ = str3;
+      localaai.IcB = j;
+      localaai.IJG = k;
+      Log.i("MicroMsg.CheckCanSubscribeBizUI", "appId(%s) , toUsername(%s) , extInfo(%s) , packNum(%d), scene(%d)", new Object[] { paramBundle, str1, str2, Integer.valueOf(i), Integer.valueOf(k) });
+      z.a((com.tencent.mm.am.c)localObject, new z.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, com.tencent.mm.ai.m paramAnonymousm)
+        public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, p paramAnonymousp)
         {
-          AppMethodBeat.i(29142);
-          paramAnonymousb = (rs)paramAnonymousb.fsW.fta;
-          CheckCanSubscribeBizUI.a(CheckCanSubscribeBizUI.this, paramAnonymousb.wJS);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (!bo.isNullOrNil(paramAnonymousb.wJS)) && (!bo.isNullOrNil(paramAnonymousb.nul)))
+          AppMethodBeat.i(32967);
+          paramAnonymousc = (aaj)c.c.b(paramAnonymousc.otC);
+          CheckCanSubscribeBizUI.a(CheckCanSubscribeBizUI.this, paramAnonymousc.ZiK);
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (!Util.isNullOrNil(paramAnonymousc.ZiK)) && (!Util.isNullOrNil(paramAnonymousc.IMg)))
           {
-            CheckCanSubscribeBizUI.b(CheckCanSubscribeBizUI.this, paramAnonymousb.nul);
-            CheckCanSubscribeBizUI.c(CheckCanSubscribeBizUI.this, paramAnonymousb.wJT);
-            CheckCanSubscribeBizUI.b(CheckCanSubscribeBizUI.this);
-            AppMethodBeat.o(29142);
+            Log.i("MicroMsg.CheckCanSubscribeBizUI", "RunCgi.run callback ok");
+            CheckCanSubscribeBizUI.b(CheckCanSubscribeBizUI.this, paramAnonymousc.IMg);
+            CheckCanSubscribeBizUI.c(CheckCanSubscribeBizUI.this, paramAnonymousc.ZiL);
+            CheckCanSubscribeBizUI.c(CheckCanSubscribeBizUI.this);
+            AppMethodBeat.o(32967);
             return 0;
           }
-          if (v.a.a(CheckCanSubscribeBizUI.this, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, 7))
+          if (ae.a.a(CheckCanSubscribeBizUI.this, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, 7))
           {
+            Log.e("MicroMsg.CheckCanSubscribeBizUI", "RunCgi.run callback RESULT_CODE_NORMAL_ERROR");
             CheckCanSubscribeBizUI.this.setResult(5);
             CheckCanSubscribeBizUI.this.finish();
-            AppMethodBeat.o(29142);
+            AppMethodBeat.o(32967);
             return 0;
           }
-          CheckCanSubscribeBizUI.c(CheckCanSubscribeBizUI.this);
+          Log.e("MicroMsg.CheckCanSubscribeBizUI", "RunCgi.run callback RESULT_CODE_FORBID");
+          CheckCanSubscribeBizUI.d(CheckCanSubscribeBizUI.this);
           CheckCanSubscribeBizUI.this.setResult(3);
           CheckCanSubscribeBizUI.this.finish();
-          AppMethodBeat.o(29142);
+          AppMethodBeat.o(32967);
           return 0;
         }
       });
-      AppMethodBeat.o(29144);
+      AppMethodBeat.o(32969);
       return;
     }
+    Log.i("MicroMsg.CheckCanSubscribeBizUI", "onCreate initData fail, RESULT_CODE_PARAMETER_ERROR");
     setResult(2);
-    dAT();
+    bSo();
     finish();
-    AppMethodBeat.o(29144);
+    AppMethodBeat.o(32969);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(29147);
+    AppMethodBeat.i(32972);
     super.onDestroy();
-    if (this.yUI != null) {
-      this.yUI.clear();
+    if (this.advJ != null) {
+      this.advJ.clear();
     }
-    if (aw.RG())
+    if (bh.baz())
     {
-      aw.Rc().b(605, this);
-      z.afi().remove(this);
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().b(this);
+      bh.aZW().b(605, this);
+      af.bHf().remove(this);
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().remove(this);
     }
-    AppMethodBeat.o(29147);
+    AppMethodBeat.o(32972);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(29153);
+    AppMethodBeat.i(32978);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      this.yUK = true;
-      if (this.yUL)
+      this.advL = true;
+      if (this.advM)
       {
-        AppMethodBeat.o(29153);
+        AppMethodBeat.o(32978);
         return true;
       }
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(29153);
+    AppMethodBeat.o(32978);
     return bool;
+  }
+  
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(32983);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
+    {
+      Log.d("MicroMsg.CheckCanSubscribeBizUI", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
+      AppMethodBeat.o(32983);
+      return;
+    }
+    onNotifyChange((String)paramObject, null);
+    AppMethodBeat.o(32983);
+  }
+  
+  public void onNotifyChange(final String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(32982);
+    new MMHandler().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(32968);
+        Log.d("MicroMsg.CheckCanSubscribeBizUI", "onNotifyChange toUserName = " + CheckCanSubscribeBizUI.e(CheckCanSubscribeBizUI.this) + ", userName = " + paramString);
+        if (CheckCanSubscribeBizUI.e(CheckCanSubscribeBizUI.this).equals(paramString))
+        {
+          CheckCanSubscribeBizUI.f(CheckCanSubscribeBizUI.this);
+          if (!CheckCanSubscribeBizUI.b(CheckCanSubscribeBizUI.this)) {
+            CheckCanSubscribeBizUI.c(CheckCanSubscribeBizUI.this);
+          }
+        }
+        AppMethodBeat.o(32968);
+      }
+    });
+    AppMethodBeat.o(32982);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(29148);
+    AppMethodBeat.i(32973);
     super.onPause();
-    AppMethodBeat.o(29148);
+    AppMethodBeat.o(32973);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(29146);
+    AppMethodBeat.i(32971);
     super.onResume();
-    AppMethodBeat.o(29146);
+    AppMethodBeat.o(32971);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(29150);
-    ab.d("MicroMsg.CheckCanSubscribeBizUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    if (paramm.getType() != 605)
+    AppMethodBeat.i(32975);
+    Log.d("MicroMsg.CheckCanSubscribeBizUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    if (paramp.getType() == 605)
     {
-      if (paramm.getType() == 233)
+      Log.i("MicroMsg.CheckCanSubscribeBizUI", "onSceneEnd, MMFunc_CheckCanSubscribeBiz  do nothing");
+      AppMethodBeat.o(32975);
+      return;
+    }
+    if (paramp.getType() == 233)
+    {
+      Log.i("MicroMsg.CheckCanSubscribeBizUI", "onSceneEnd, MMFunc_GetA8Key");
+      bh.aZW().b(233, this);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        aw.Rc().b(233, this);
-        if ((paramInt1 == 0) && (paramInt2 == 0))
+        paramString = (com.tencent.mm.modelsimple.n)paramp;
+        paramInt1 = paramString.bLV();
+        Log.i("MicroMsg.CheckCanSubscribeBizUI", "geta8key, action code = %d", new Object[] { Integer.valueOf(paramInt1) });
+        if (paramInt1 == 15)
         {
-          paramString = (com.tencent.mm.modelsimple.j)paramm;
-          paramInt1 = paramString.ajn();
-          ab.i("MicroMsg.CheckCanSubscribeBizUI", "geta8key, action code = %d", new Object[] { Integer.valueOf(paramInt1) });
-          if (paramInt1 == 15)
-          {
-            paramString = paramString.ajl();
-            ab.d("MicroMsg.CheckCanSubscribeBizUI", "actionCode = %s, url = %s", new Object[] { Integer.valueOf(paramInt1), paramString });
-            paramm = new hf();
-            paramm.cwn.actionCode = paramInt1;
-            paramm.cwn.result = paramString;
-            paramm.cwn.context = this;
-            com.tencent.mm.sdk.b.a.ymk.a(paramm, Looper.myLooper());
-            finish();
-            AppMethodBeat.o(29150);
-            return;
-          }
-          dAS();
-          AppMethodBeat.o(29150);
+          paramString = paramString.bLT();
+          Log.d("MicroMsg.CheckCanSubscribeBizUI", "actionCode = %s, url = %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+          paramp = new kw();
+          paramp.hMB.actionCode = paramInt1;
+          paramp.hMB.result = paramString;
+          paramp.hMB.context = this;
+          paramp.asyncPublish(Looper.myLooper());
+          finish();
+          AppMethodBeat.o(32975);
           return;
         }
-        dAS();
-        AppMethodBeat.o(29150);
+        Log.e("MicroMsg.CheckCanSubscribeBizUI", "onSceneEnd, geta8key  actionCode = ".concat(String.valueOf(paramInt1)));
+        jhL();
+        AppMethodBeat.o(32975);
         return;
       }
-      ab.e("MicroMsg.CheckCanSubscribeBizUI", "un support scene type : %d", new Object[] { Integer.valueOf(paramm.getType()) });
+      Log.e("MicroMsg.CheckCanSubscribeBizUI", "onSceneEnd, geta8key  errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      jhL();
+      AppMethodBeat.o(32975);
+      return;
     }
-    AppMethodBeat.o(29150);
+    Log.e("MicroMsg.CheckCanSubscribeBizUI", "un support scene type : %d", new Object[] { Integer.valueOf(paramp.getType()) });
+    AppMethodBeat.o(32975);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(29145);
+    AppMethodBeat.i(32970);
     super.onStart();
-    AppMethodBeat.o(29145);
+    AppMethodBeat.o(32970);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -534,7 +608,7 @@ public class CheckCanSubscribeBizUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.CheckCanSubscribeBizUI
  * JD-Core Version:    0.7.0.1
  */

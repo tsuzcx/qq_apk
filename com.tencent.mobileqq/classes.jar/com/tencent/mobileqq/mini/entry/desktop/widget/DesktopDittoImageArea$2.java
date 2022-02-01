@@ -15,8 +15,12 @@ class DesktopDittoImageArea$2
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramURLDrawable != null) {
-      QLog.e("DesktopDittoImageArea", 1, "onLoadFialed. url = " + paramURLDrawable.getURL());
+    if (paramURLDrawable != null)
+    {
+      paramThrowable = new StringBuilder();
+      paramThrowable.append("onLoadFialed. url = ");
+      paramThrowable.append(paramURLDrawable.getURL());
+      QLog.e("DesktopDittoImageArea", 1, paramThrowable.toString());
     }
   }
   
@@ -33,7 +37,7 @@ class DesktopDittoImageArea$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoImageArea.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,59 +19,80 @@ final class Debugger$RunnableImpl
   
   public void run()
   {
-    int i = -1;
     int n = Debugger.access$400(this.mModuleId);
+    int i;
+    int j;
     if (n > 0)
     {
-      int k = 0;
-      int m = 1;
-      if (k < n)
+      int m = 0;
+      i = 0;
+      int k;
+      for (j = 1; i < n; j = k)
       {
-        IDebugger localIDebugger = Debugger.access$500(this.mModuleId, k);
-        i = m;
-        if (localIDebugger != null) {
-          switch (this.mJobType)
-          {
-          default: 
-            i = m;
-          }
-        }
-        for (;;)
+        localObject = Debugger.access$500(this.mModuleId, i);
+        k = j;
+        if (localObject != null)
         {
-          k += 1;
-          m = i;
-          break;
-          j = m & localIDebugger.discardPlugin(Noumenon.sHostInterface);
-          continue;
-          j = m & localIDebugger.upgradePlugin(Noumenon.sHostInterface);
-          continue;
-          j = m & localIDebugger.cleanCache(Noumenon.sHostInterface);
+          k = this.mJobType;
+          int i1;
+          if (k != 1)
+          {
+            if (k != 2)
+            {
+              if (k != 3)
+              {
+                k = j;
+                break label116;
+              }
+              i1 = ((IDebugger)localObject).cleanCache(Noumenon.sHostInterface);
+            }
+            else
+            {
+              i1 = ((IDebugger)localObject).upgradePlugin(Noumenon.sHostInterface);
+            }
+          }
+          else {
+            i1 = ((IDebugger)localObject).discardPlugin(Noumenon.sHostInterface);
+          }
+          k = j & i1;
         }
+        label116:
+        i += 1;
       }
-      if (m == 0) {
-        break label177;
+      if (j != 0) {
+        i = m;
+      } else {
+        i = 1;
       }
     }
-    label177:
-    for (int j = 0;; j = 1)
+    else
     {
-      if (this.mCallback != null) {}
-      switch (this.mJobType)
+      i = -1;
+    }
+    Object localObject = this.mCallback;
+    if (localObject != null)
+    {
+      j = this.mJobType;
+      if (j != 1)
       {
-      default: 
+        if (j != 2)
+        {
+          if (j != 3) {
+            return;
+          }
+          ((Debugger.IDebugCallback)localObject).onCleanCache(this.mModuleId, i);
+          return;
+        }
+        ((Debugger.IDebugCallback)localObject).onUpgradePlugin(this.mModuleId, i);
         return;
       }
+      ((Debugger.IDebugCallback)localObject).onCleanPlugin(this.mModuleId, i);
     }
-    this.mCallback.onCleanPlugin(this.mModuleId, j);
-    return;
-    this.mCallback.onUpgradePlugin(this.mModuleId, j);
-    return;
-    this.mCallback.onCleanCache(this.mModuleId, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Debugger.RunnableImpl
  * JD-Core Version:    0.7.0.1
  */

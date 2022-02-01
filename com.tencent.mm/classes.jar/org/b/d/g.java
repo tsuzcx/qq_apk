@@ -12,9 +12,9 @@ import org.b.g.e;
 
 public final class g
 {
-  private String CRR;
-  private InputStream bAO;
+  private String ajYH;
   public int code;
+  private InputStream elH;
   private Map<String, String> headers;
   
   /* Error */
@@ -33,7 +33,7 @@ public final class g
     //   18: putfield 38	org/b/d/g:code	I
     //   21: aload_0
     //   22: aload_1
-    //   23: invokestatic 42	org/b/d/g:j	(Ljava/net/HttpURLConnection;)Ljava/util/Map;
+    //   23: invokestatic 42	org/b/d/g:h	(Ljava/net/HttpURLConnection;)Ljava/util/Map;
     //   26: putfield 44	org/b/d/g:headers	Ljava/util/Map;
     //   29: aload_0
     //   30: getfield 38	org/b/d/g:code	I
@@ -52,7 +52,7 @@ public final class g
     //   59: astore_1
     //   60: aload_0
     //   61: aload_1
-    //   62: putfield 50	org/b/d/g:bAO	Ljava/io/InputStream;
+    //   62: putfield 50	org/b/d/g:elH	Ljava/io/InputStream;
     //   65: ldc 21
     //   67: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: return
@@ -87,16 +87,16 @@ public final class g
     //   76	81	84	java/net/UnknownHostException
   }
   
-  private static Map<String, String> j(HttpURLConnection paramHttpURLConnection)
+  private static Map<String, String> h(HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(77243);
+    AppMethodBeat.i(40512);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = paramHttpURLConnection.getHeaderFields().keySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
       {
-        AppMethodBeat.o(77243);
+        AppMethodBeat.o(40512);
         return localHashMap;
       }
       String str = (String)localIterator.next();
@@ -106,22 +106,22 @@ public final class g
   
   public final String getBody()
   {
-    AppMethodBeat.i(77244);
-    if (this.CRR != null)
+    AppMethodBeat.i(40513);
+    if (this.ajYH != null)
     {
-      str = this.CRR;
-      AppMethodBeat.o(77244);
+      str = this.ajYH;
+      AppMethodBeat.o(40513);
       return str;
     }
-    this.CRR = e.Q(this.bAO);
-    String str = this.CRR;
-    AppMethodBeat.o(77244);
+    this.ajYH = e.ak(this.elH);
+    String str = this.ajYH;
+    AppMethodBeat.o(40513);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.g
  * JD-Core Version:    0.7.0.1
  */

@@ -95,14 +95,15 @@ public final class QmfUpstream
     paramJceOutputStream.write(this.Extra, 9);
     paramJceOutputStream.write(this.flag, 10);
     paramJceOutputStream.write(this.sessionID, 11);
-    if (this.retryinfo != null) {
-      paramJceOutputStream.write(this.retryinfo, 12);
+    RetryInfo localRetryInfo = this.retryinfo;
+    if (localRetryInfo != null) {
+      paramJceOutputStream.write(localRetryInfo, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QMF_PROTOCAL.QmfUpstream
  * JD-Core Version:    0.7.0.1
  */

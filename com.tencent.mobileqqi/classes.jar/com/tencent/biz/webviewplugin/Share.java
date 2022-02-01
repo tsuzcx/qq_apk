@@ -227,7 +227,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("6.0.2");
+    localGetAppinfoRequest.qqv.set("6.0.3");
     localGetAppinfoRequest.setHasFlag(true);
     paramContext = new NewIntent(paramContext, ProtoServlet.class);
     paramContext.putExtra("uin", paramString);
@@ -250,7 +250,7 @@ public class Share
     this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getIntent().getLongExtra("appShareID", 0L);
     if (this.jdField_a_of_type_Long > 0L)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231194));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231193));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.k, AppShareIDUtil.b(this.jdField_a_of_type_Long), this.jdField_a_of_type_MqqObserverBusinessObserver);
     }

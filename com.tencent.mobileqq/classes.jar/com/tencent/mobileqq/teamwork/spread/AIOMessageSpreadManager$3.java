@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bajc;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.TimerTask;
 
-public class AIOMessageSpreadManager$3
+class AIOMessageSpreadManager$3
   extends TimerTask
 {
-  public AIOMessageSpreadManager$3(bajc parambajc) {}
+  AIOMessageSpreadManager$3(AIOMessageSpreadManager paramAIOMessageSpreadManager) {}
   
   public void run()
   {
@@ -18,34 +17,54 @@ public class AIOMessageSpreadManager$3
     {
       long l1 = System.currentTimeMillis();
       long l2 = l1 - this.this$0.a;
+      Object localObject1;
       if (l2 >= 950L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("lastInsertTime[");
+          ((StringBuilder)localObject1).append(this.this$0.a);
+          ((StringBuilder)localObject1).append("],now[");
+          ((StringBuilder)localObject1).append(l1);
+          ((StringBuilder)localObject1).append("], dur[");
+          ((StringBuilder)localObject1).append(l2);
+          ((StringBuilder)localObject1).append("],timeOut start check!");
+          QLog.i("AIOMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
         }
-        i = bajc.a(this.this$0).size() - 1;
+        int i = AIOMessageSpreadManager.d(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)bajc.a(this.this$0).get(i);
-          this.this$0.a((ChatMessage)localMessageRecord);
+          localObject1 = (MessageRecord)AIOMessageSpreadManager.d(this.this$0).get(i);
+          this.this$0.a((ChatMessage)localObject1);
           i -= 1;
         }
         this.this$0.a = 0L;
-        bajc.a(this.this$0).clear();
+        AIOMessageSpreadManager.d(this.this$0).clear();
       }
-      while (!QLog.isColorLevel())
+      else if (QLog.isColorLevel())
       {
-        int i;
-        MessageRecord localMessageRecord;
-        return;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("lastInsertTime[");
+        ((StringBuilder)localObject1).append(this.this$0.a);
+        ((StringBuilder)localObject1).append("],now[");
+        ((StringBuilder)localObject1).append(l1);
+        ((StringBuilder)localObject1).append("], dur[");
+        ((StringBuilder)localObject1).append(l2);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("AIOMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
       }
-      QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "]");
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.3
  * JD-Core Version:    0.7.0.1
  */

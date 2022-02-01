@@ -44,7 +44,8 @@ public class TintableImageView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.a != null) && (this.a.isStateful())) {
+    ColorStateList localColorStateList = this.a;
+    if ((localColorStateList != null) && (localColorStateList.isStateful())) {
       a();
     }
   }
@@ -57,7 +58,7 @@ public class TintableImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TintableImageView
  * JD-Core Version:    0.7.0.1
  */

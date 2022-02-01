@@ -11,13 +11,14 @@ public abstract interface StyleContants$Value
   public static final String LEFT = "left";
   public static final String LOW = "low";
   public static final String NORMAL = "normal";
+  public static final float NO_EMOJI_SIZE = -1.0F;
   public static final String ORIGINAL = "original";
   public static final String RIGHT = "right";
   public static final String VISIBLE = "visible";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.StyleContants.Value
  * JD-Core Version:    0.7.0.1
  */

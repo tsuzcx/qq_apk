@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import alxa;
-
-public class MessageRoamManager$8
+class MessageRoamManager$8
   implements Runnable
 {
-  public MessageRoamManager$8(alxa paramalxa) {}
+  MessageRoamManager$8(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
-    if (alxa.a(this.this$0))
+    if (MessageRoamManager.a(this.this$0))
     {
       this.this$0.a(19, null);
       return;
@@ -19,7 +17,7 @@ public class MessageRoamManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.8
  * JD-Core Version:    0.7.0.1
  */

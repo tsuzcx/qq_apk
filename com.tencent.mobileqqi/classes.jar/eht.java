@@ -1,24 +1,36 @@
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.util.EUCountryUtils;
 
 public class eht
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public eht(MainAssistObserver paramMainAssistObserver) {}
+  public eht(MainAssistObserver paramMainAssistObserver, TextView paramTextView, eji parameji, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b == null)) {
-      return;
+    if (!this.jdField_a_of_type_AndroidWidgetTextView.getText().equals(""))
+    {
+      EUCountryUtils.c(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.b.a(), this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
+      if (EUCountryUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString())) {
+        this.jdField_a_of_type_Eji.a();
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        }
+        return;
+        this.jdField_a_of_type_Eji.b();
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b);
-    StatisticCollector.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity);
-    BaseApplicationImpl.a.post(MainAssistObserver.a(this.a));
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, 2131563356, 0).a();
   }
 }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/public_account_info" android:background="@drawable/public_account_header_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/public_account_info_container" android:paddingLeft="@dimen/public_account_header_info_paddingLeft" android:paddingTop="@dimen/public_account_header_info_paddingTop" android:paddingRight="@dimen/public_account_header_info_paddingRight" android:paddingBottom="@dimen/public_account_header_info_paddingBottom" android:layout_width="fill_parent" android:layout_height="@dimen/public_account_header_info_height">
+        <ImageView android:id="@id/icon" android:layout_width="@dimen/public_account_header_image_size" android:layout_height="@dimen/public_account_header_image_size" android:layout_marginRight="@dimen/public_account_header_image_marginRight" android:src="@drawable/icon" android:scaleType="fitCenter" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/name_container" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/public_account_header_title_size" android:textColor="@color/skin_dark_gray" android:ellipsize="none" android:id="@id/uin_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_weight="1.0" />
+                <ImageView android:id="@id/certified_icon" android:visibility="visible" android:layout_width="@dimen/public_account_header_certification_size" android:layout_height="@dimen/public_account_header_certification_size" android:layout_marginLeft="@dimen/public_account_header_certification_marginLeft" android:src="@drawable/qb_pubaccount_avatar_icon" android:scaleType="fitCenter" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/public_account_header_describe_size" android:textColor="@color/skin_gray2" android:ellipsize="none" android:id="@id/uin_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/public_account_header_describe_marginTop" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/pubaccount_header_slip" android:layout_width="fill_parent" android:layout_height="1.0px" android:src="@drawable/shape_pubaccount_button_line" />
+    <com.tencent.mobileqq.widget.PublicMenuBar android:id="@id/pub_account_header_menu_bar" android:layout_width="fill_parent" android:layout_height="@dimen/public_account_header_menu_height" />
+</LinearLayout>

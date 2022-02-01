@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/sc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/sd" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/br0" />
+        <TextView android:textColor="@color/xo" android:gravity="center|left" android:id="@id/l0o" android:background="@drawable/t6" android:padding="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i6" android:text="@string/cqh" android:drawablePadding="@dimen/m2" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ii0" android:background="@drawable/t6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/f4" android:minHeight="@dimen/f3" style="@style/jo">
+            <FrameLayout android:layout_gravity="center_vertical" android:id="@id/ihv" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.MMImageView android:id="@id/f1c" android:src="@color/al2" style="@style/jp" />
+                <ImageView android:layout_gravity="center" android:id="@id/f2o" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/shortvideo_play_btn" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/j7" android:id="@id/ko8" android:layout_marginLeft="10.0dip" style="@style/jm" />
+                <TextView android:textSize="@dimen/m_" android:textColor="@color/a9t" android:id="@id/c21" android:layout_marginLeft="10.0dip" android:maxLines="4" android:singleLine="false" style="@style/jm" />
+                <TextView android:textSize="@dimen/m_" android:id="@id/jyx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" style="@style/jg" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/sg" />
+    </LinearLayout>
+</LinearLayout>

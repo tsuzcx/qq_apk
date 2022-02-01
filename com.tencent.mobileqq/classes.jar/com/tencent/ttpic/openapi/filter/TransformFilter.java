@@ -1,5 +1,6 @@
 package com.tencent.ttpic.openapi.filter;
 
+import android.content.Context;
 import android.graphics.PointF;
 import android.text.TextUtils;
 import com.google.gson.JsonArray;
@@ -19,12 +20,12 @@ import com.tencent.ttpic.model.MeshDistortionType;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.DistortionItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.DISTORTION_ITEM_FILED;
+import com.tencent.ttpic.openapi.model.VideoMaterial.FIELD;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.DISTORTION_ITEM_FILED;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.FIELD;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.GsonUtils;
 import com.tencent.ttpic.util.TransformUtil;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.List<Landroid.graphics.PointF;>;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,10 +44,10 @@ public class TransformFilter
   private static final List<DistortionItem> EMPTY;
   private static final int XCOORD_NUM = 50;
   private static final int YCOORD_NUM = 66;
-  private static final List<Integer> chinFacePoints = Arrays.asList(new Integer[] { Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12), Integer.valueOf(13), Integer.valueOf(14) });
+  private static final List<Integer> chinFacePoints;
   private static final List<Integer> leftFacePoints;
-  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterialUtil.genFullScreenVertices(52, 68, -1.04F, 1.04F, -1.030303F, 1.030303F);
-  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterialUtil.genFullScreenVertices(52, 68, -0.02F, 1.02F, -0.01515152F, 1.015152F);
+  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterial.genFullScreenVertices(52, 68, -1.04F, 1.04F, -1.030303F, 1.030303F);
+  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterial.genFullScreenVertices(52, 68, -0.02F, 1.02F, -0.01515152F, 1.015152F);
   private static final List<Integer> rightFacePoints;
   float anotherStrength = 1.0F;
   private String dataPath;
@@ -58,6 +60,7 @@ public class TransformFilter
   private Map<String, List<DistortionItem>> mMeshCache = new HashMap();
   private int meshVersion = 2;
   private MeshDistortionType[] meshs = new MeshDistortionType[60];
+  private boolean needReCaculateFace = false;
   private float screenRatioX = 1.0F;
   private float screenRatioY = 1.0F;
   private List<StickerItem> stickerItems;
@@ -65,8 +68,16 @@ public class TransformFilter
   static
   {
     EMPTY = new ArrayList();
-    leftFacePoints = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8) });
-    rightFacePoints = Arrays.asList(new Integer[] { Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12), Integer.valueOf(13), Integer.valueOf(14), Integer.valueOf(15), Integer.valueOf(16), Integer.valueOf(17), Integer.valueOf(18) });
+    Integer localInteger1 = Integer.valueOf(4);
+    Integer localInteger2 = Integer.valueOf(5);
+    Integer localInteger3 = Integer.valueOf(6);
+    Integer localInteger4 = Integer.valueOf(7);
+    Integer localInteger5 = Integer.valueOf(8);
+    leftFacePoints = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), localInteger1, localInteger2, localInteger3, localInteger4, localInteger5 });
+    Integer localInteger6 = Integer.valueOf(10);
+    Integer localInteger7 = Integer.valueOf(11);
+    rightFacePoints = Arrays.asList(new Integer[] { localInteger6, localInteger7, Integer.valueOf(12), Integer.valueOf(13), Integer.valueOf(14), Integer.valueOf(15), Integer.valueOf(16), Integer.valueOf(17), Integer.valueOf(18) });
+    chinFacePoints = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3, localInteger4, localInteger5, Integer.valueOf(9), localInteger6, localInteger7, Integer.valueOf(12), Integer.valueOf(13), Integer.valueOf(14) });
   }
   
   public TransformFilter(FaceMeshItem paramFaceMeshItem, String paramString)
@@ -90,50 +101,61 @@ public class TransformFilter
   
   private float clamp(float paramFloat, double paramDouble1, double paramDouble2)
   {
-    float f;
-    if (paramFloat > paramDouble2) {
-      f = (float)paramDouble2;
+    double d = paramFloat;
+    if (d > paramDouble2) {
+      return (float)paramDouble2;
     }
-    do
-    {
-      return f;
-      f = paramFloat;
-    } while (paramFloat >= paramDouble1);
-    return (float)paramDouble1;
+    if (d < paramDouble1) {
+      paramFloat = (float)paramDouble1;
+    }
+    return paramFloat;
   }
   
   private List<DistortionItem> getNextFrame(int paramInt)
   {
-    String str = this.mFaceMeshItem.id + "_" + paramInt;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mFaceMeshItem.id);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramInt);
+    localObject1 = ((StringBuilder)localObject1).toString();
     ArrayList localArrayList;
-    if (!this.mMeshCache.containsKey(str))
+    if (!this.mMeshCache.containsKey(localObject1))
     {
       localArrayList = new ArrayList();
-      Object localObject = FileUtils.load(AEModule.getContext(), this.dataPath + "/" + this.mFaceMeshItem.id, str + ".json");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      Object localObject2 = AEModule.getContext();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(this.dataPath);
+      ((StringBuilder)localObject3).append("/");
+      ((StringBuilder)localObject3).append(this.mFaceMeshItem.id);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append((String)localObject1);
+      ((StringBuilder)localObject4).append(".json");
+      localObject2 = FileUtils.load((Context)localObject2, (String)localObject3, ((StringBuilder)localObject4).toString());
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         try
         {
-          localObject = GsonUtils.optJsonArray(GsonUtils.json2JsonObject((String)localObject), VideoMaterialUtil.FIELD.DISTORTION_LIST.value);
-          if (localObject != null)
+          localObject2 = GsonUtils.optJsonArray(GsonUtils.json2JsonObject((String)localObject2), VideoMaterial.FIELD.DISTORTION_LIST.value);
+          if (localObject2 != null)
           {
-            int i = Math.min(60, ((JsonArray)localObject).size());
+            int i = Math.min(60, ((JsonArray)localObject2).size());
             paramInt = 0;
             while (paramInt < i)
             {
-              DistortionItem localDistortionItem = new DistortionItem();
-              JsonObject localJsonObject = ((JsonArray)localObject).get(paramInt).getAsJsonObject();
-              localDistortionItem.position = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.POSITION.value);
-              localDistortionItem.distortion = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.DISTORTION.value);
-              localDistortionItem.direction = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.DIRECTION.value);
-              localDistortionItem.radius = ((float)GsonUtils.optDouble(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.RADIUS.value));
-              localDistortionItem.strength = ((float)GsonUtils.optDouble(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.STRENGH.value));
-              localDistortionItem.x = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.X.value);
-              localDistortionItem.y = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.Y.value);
-              localArrayList.add(localDistortionItem);
+              localObject3 = new DistortionItem();
+              localObject4 = ((JsonArray)localObject2).get(paramInt).getAsJsonObject();
+              ((DistortionItem)localObject3).position = GsonUtils.optInt((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.POSITION.value);
+              ((DistortionItem)localObject3).distortion = GsonUtils.optInt((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.DISTORTION.value);
+              ((DistortionItem)localObject3).direction = GsonUtils.optInt((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.DIRECTION.value);
+              ((DistortionItem)localObject3).radius = ((float)GsonUtils.optDouble((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.RADIUS.value));
+              ((DistortionItem)localObject3).strength = ((float)GsonUtils.optDouble((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.STRENGH.value));
+              ((DistortionItem)localObject3).x = GsonUtils.optInt((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.X.value);
+              ((DistortionItem)localObject3).y = GsonUtils.optInt((JsonObject)localObject4, VideoMaterial.DISTORTION_ITEM_FILED.Y.value);
+              localArrayList.add(localObject3);
               paramInt += 1;
             }
           }
-          this.mMeshCache.put(str, localArrayList);
+          this.mMeshCache.put(localObject1, localArrayList);
         }
         catch (Exception localException)
         {
@@ -141,23 +163,25 @@ public class TransformFilter
         }
       }
     }
-    return (List)this.mMeshCache.get(str);
+    return (List)this.mMeshCache.get(localObject1);
   }
   
   private float getStrengthAdjust()
   {
-    float f = 1.0F;
     if (DeviceInstance.getInstance().isOppoX909Device()) {
-      f = 0.2F;
+      return 0.2F;
     }
-    return f;
+    return 1.0F;
   }
   
   private float my_smoothstep(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     paramFloat1 = clamp((paramFloat3 - paramFloat1) / (paramFloat2 - paramFloat1), 0.0D, 1.0D);
-    double d = paramFloat1 * paramFloat1;
-    return (float)((3.0D - paramFloat1 * 2.0D) * d);
+    double d1 = paramFloat1 * paramFloat1;
+    double d2 = paramFloat1;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    return (float)(d1 * (3.0D - d2 * 2.0D));
   }
   
   private void updateMeshParam()
@@ -174,7 +198,7 @@ public class TransformFilter
   {
     float f2 = 1.0F;
     float f1;
-    if ((paramFloat1 >= -0.0F) || (!leftFacePoints.contains(Integer.valueOf(paramInt))))
+    if ((paramFloat1 >= 0.0F) || (!leftFacePoints.contains(Integer.valueOf(paramInt))))
     {
       f1 = f2;
       if (paramFloat1 > 0.0F)
@@ -185,7 +209,7 @@ public class TransformFilter
     }
     else
     {
-      f1 = 1.0F * Math.max(1.0F - (Math.abs(paramFloat1) - 0.0F) * 0.7F / (1.6F - 0.0F), 0.0F);
+      f1 = 1.0F * Math.max(1.0F - (Math.abs(paramFloat1) - 0.0F) * 0.7F / 1.6F, 0.0F);
     }
     paramFloat1 = f1;
     if (paramFloat2 < -0.6D)
@@ -193,8 +217,14 @@ public class TransformFilter
       paramFloat1 = f1;
       if (chinFacePoints.contains(Integer.valueOf(paramInt)))
       {
-        double d = f1;
-        paramFloat1 = (float)(Math.max(1.0D - 0.7F * (Math.abs(paramFloat2) - 0.6D), 0.0D) * d);
+        double d1 = f1;
+        double d2 = 0.7F;
+        double d3 = Math.abs(paramFloat2);
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        d2 = Math.max(1.0D - d2 * (d3 - 0.6D), 0.0D);
+        Double.isNaN(d1);
+        paramFloat1 = (float)(d1 * d2);
       }
     }
     return paramFloat1;
@@ -218,14 +248,13 @@ public class TransformFilter
   
   public void initAttribParams()
   {
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
+    setPositions(VideoMaterial.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
+    setTexCords(VideoMaterial.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
     setCoordNum(7125);
   }
   
   public void initParams()
   {
-    int i = 0;
     addParam(new UniformParam.FloatParam("screenRatioX", 0.0F));
     addParam(new UniformParam.FloatParam("screenRatioY", 0.0F));
     addParam(new UniformParam.Float4sParam("item", this.flatMesh));
@@ -236,6 +265,7 @@ public class TransformFilter
     addParam(new UniformParam.FloatParam("cos_yaw", 0.0F));
     addParam(new UniformParam.FloatParam("tan_pitch", 0.0F));
     addParam(new UniformParam.FloatParam("cos_pitch", 0.0F));
+    int i = 0;
     addParam(new UniformParam.IntParam("itemCount", 0));
     addParam(new UniformParam.IntParam("meshVersion", this.meshVersion));
     while (i < 60)
@@ -262,6 +292,11 @@ public class TransformFilter
     this.frameIndex = paramInt;
   }
   
+  public void setNeedReCaculateFace(boolean paramBoolean)
+  {
+    this.needReCaculateFace = paramBoolean;
+  }
+  
   public void stopTransform()
   {
     this.items = EMPTY;
@@ -270,504 +305,701 @@ public class TransformFilter
   
   public void updateFaceFeatures(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 131)) {
-      return;
-    }
-    float f3 = ((PointF)paramList.get(18)).x - ((PointF)paramList.get(0)).x;
-    float f4 = ((PointF)paramList.get(18)).y - ((PointF)paramList.get(0)).y;
-    float f1 = ((PointF)paramList.get(9)).x - ((PointF)paramList.get(89)).x;
-    float f2 = ((PointF)paramList.get(9)).y - ((PointF)paramList.get(89)).y;
-    f3 = (float)Math.sqrt(f3 * f3 + f4 * f4);
-    f1 = (float)Math.sqrt(f2 * f2 + f1 * f1) / f3;
-    f2 = ((PointF)paramList.get(9)).x;
-    f3 = ((PointF)paramList.get(84)).x;
-    f4 = -((PointF)paramList.get(9)).y;
-    float f5 = ((PointF)paramList.get(84)).y;
-    f2 = (float)(Math.atan2(f2 - f3, f5 + f4) + 3.141592653589793D);
-    f3 = this.height / this.width;
-    f4 = (float)(2.0D / (this.width * this.mFaceDetScale));
-    f5 = (float)(2.0D / (this.height * this.mFaceDetScale));
-    PointF localPointF1 = new PointF();
-    PointF localPointF2 = new PointF();
-    PointF localPointF3 = new PointF();
-    int i = 0;
-    label342:
-    if (i < 131) {
-      if ((i < 99) || (i > 106)) {
-        break label373;
-      }
-    }
-    for (;;)
+    Object localObject1 = this;
+    if (paramList != null)
     {
-      i += 1;
-      break label342;
-      break;
-      label373:
-      localPointF1.x = (((PointF)paramList.get(i)).x * f4 - 1.0F);
-      localPointF1.y = (((PointF)paramList.get(i)).y * f5 - 1.0F);
-      int j = 0;
-      if (j < this.meshs.length)
+      if (paramList.size() < 131) {
+        return;
+      }
+      float f3 = ((PointF)paramList.get(18)).x - ((PointF)paramList.get(0)).x;
+      float f4 = ((PointF)paramList.get(18)).y - ((PointF)paramList.get(0)).y;
+      float f1 = ((PointF)paramList.get(9)).x - ((PointF)paramList.get(89)).x;
+      float f2 = ((PointF)paramList.get(9)).y - ((PointF)paramList.get(89)).y;
+      f3 = (float)Math.sqrt(f3 * f3 + f4 * f4);
+      f1 = (float)Math.sqrt(f1 * f1 + f2 * f2) / f3;
+      f2 = ((PointF)paramList.get(9)).x;
+      f3 = ((PointF)paramList.get(84)).x;
+      f4 = -((PointF)paramList.get(9)).y;
+      float f5 = ((PointF)paramList.get(84)).y;
+      f5 = (float)(Math.atan2(f2 - f3, f4 + f5) + 3.141592653589793D);
+      float f6 = ((TransformFilter)localObject1).height / ((TransformFilter)localObject1).width;
+      double d1 = ((TransformFilter)localObject1).width;
+      double d2 = ((TransformFilter)localObject1).mFaceDetScale;
+      Double.isNaN(d1);
+      f2 = (float)(2.0D / (d1 * d2));
+      d1 = ((TransformFilter)localObject1).height;
+      d2 = ((TransformFilter)localObject1).mFaceDetScale;
+      Double.isNaN(d1);
+      f3 = (float)(2.0D / (d1 * d2));
+      PointF localPointF = new PointF();
+      Object localObject2 = new PointF();
+      localObject1 = new PointF();
+      int i = 0;
+      while (i < 131)
       {
-        if (this.meshs[j].type <= 0) {}
-        float f8;
-        float f7;
-        label777:
-        do
+        if ((i >= 99) && (i <= 106))
         {
+          f4 = f3;
+          localObject3 = localObject2;
+          localObject2 = localObject1;
+          f3 = f1;
+          localObject1 = localObject3;
+          f1 = f4;
+        }
+        else
+        {
+          localPointF.x = (((PointF)paramList.get(i)).x * f2 - 1.0F);
+          localPointF.y = (((PointF)paramList.get(i)).y * f3 - 1.0F);
+          int j = 0;
           for (;;)
           {
-            j += 1;
-            break;
-            localPointF2.x = ((this.meshs[j].point.x + this.meshs[j].offsetX) * f4 - 1.0F);
-            localPointF2.y = (((this.meshs[j].point.y + this.meshs[j].offsetY) * f5 - 1.0F) * f3);
-            localPointF3.x = localPointF1.x;
-            localPointF1.y *= f3;
-            f6 = AlgoUtils.getDistance(localPointF2, localPointF3);
-            if (f6 < this.meshs[j].radius)
+            localObject3 = this;
+            Object localObject4 = ((TransformFilter)localObject3).meshs;
+            if (j >= localObject4.length) {
+              break;
+            }
+            if (localObject4[j].type > 0)
             {
-              f8 = f6 / this.meshs[j].radius;
-              f6 = localPointF2.x - localPointF3.x;
-              f7 = (localPointF2.y - localPointF3.y) / f3;
-              if (this.meshs[j].type == 1)
+              ((PointF)localObject2).x = ((localObject3.meshs[j].point.x + localObject3.meshs[j].offsetX) * f2 - 1.0F);
+              ((PointF)localObject2).y = (((localObject3.meshs[j].point.y + localObject3.meshs[j].offsetY) * f3 - 1.0F) * f6);
+              ((PointF)localObject1).x = localPointF.x;
+              ((PointF)localObject1).y = (localPointF.y * f6);
+              f4 = AlgoUtils.getDistance((PointF)localObject2, (PointF)localObject1);
+              if (f4 < localObject3.meshs[j].radius)
               {
-                f8 = (float)(1.5D * (1.0D - Math.sin(f8 * 3.1415D * 0.5D)) * this.meshs[j].strength);
-                localPointF1.x -= f6 * f8;
-                localPointF1.y -= f8 * f7;
-              }
-              else
-              {
-                if (this.meshs[j].type != 2) {
-                  break label777;
+                float f8 = f4 / localObject3.meshs[j].radius;
+                f4 = ((PointF)localObject2).x - ((PointF)localObject1).x;
+                float f7 = (((PointF)localObject2).y - ((PointF)localObject1).y) / f6;
+                if (localObject3.meshs[j].type == 1)
+                {
+                  d1 = f8;
+                  Double.isNaN(d1);
+                  d1 = Math.sin(d1 * 3.1415D * 0.5D);
+                  d2 = localObject3.meshs[j].strength;
+                  Double.isNaN(d2);
+                  f8 = (float)(d2 * ((1.0D - d1) * 1.5D));
+                  localPointF.x -= f4 * f8;
+                  localPointF.y -= f7 * f8;
                 }
-                f8 = (float)(Math.cos(1.57075D * f8) * this.meshs[j].strength);
-                localPointF1.x = (f6 * f8 + localPointF1.x);
-                localPointF1.y = (f8 * f7 + localPointF1.y);
+                for (;;)
+                {
+                  break;
+                  if (localObject3.meshs[j].type == 2)
+                  {
+                    d1 = f8;
+                    Double.isNaN(d1);
+                    d1 = Math.cos(d1 * 1.57075D);
+                    d2 = localObject3.meshs[j].strength;
+                    Double.isNaN(d2);
+                    f8 = (float)(d1 * d2);
+                    localPointF.x += f4 * f8;
+                    localPointF.y += f7 * f8;
+                  }
+                  else if (localObject3.meshs[j].type == 3)
+                  {
+                    d1 = f8;
+                    Double.isNaN(d1);
+                    d1 = Math.cos(d1 * 1.57075D);
+                    d2 = localObject3.meshs[j].radius;
+                    Double.isNaN(d2);
+                    double d3 = f1;
+                    Double.isNaN(d3);
+                    d1 = d1 * d2 * 0.5D / d3;
+                    d2 = localObject3.meshs[j].strength;
+                    Double.isNaN(d2);
+                    f7 = (float)(d1 * d2);
+                    localObject4 = new PointF(f1, f1 / f6);
+                    if (localObject3.meshs[j].direction == 1.0F)
+                    {
+                      ((PointF)localObject4).x *= -f7;
+                      ((PointF)localObject4).y = 0.0F;
+                    }
+                    else if (localObject3.meshs[j].direction == 2.0F)
+                    {
+                      ((PointF)localObject4).x = 0.0F;
+                      ((PointF)localObject4).y *= -f7;
+                    }
+                    else if (localObject3.meshs[j].direction == 3.0F)
+                    {
+                      ((PointF)localObject4).x *= f7;
+                      ((PointF)localObject4).y = 0.0F;
+                    }
+                    else if (localObject3.meshs[j].direction == 4.0F)
+                    {
+                      ((PointF)localObject4).x = 0.0F;
+                      ((PointF)localObject4).y *= f7;
+                    }
+                    else if (localObject3.meshs[j].direction == 5.0F)
+                    {
+                      f4 = ((PointF)localObject4).x;
+                      f7 = -f7;
+                      ((PointF)localObject4).x = (f4 * f7);
+                      ((PointF)localObject4).y *= f7;
+                    }
+                    else if (localObject3.meshs[j].direction == 6.0F)
+                    {
+                      ((PointF)localObject4).x *= f7;
+                      ((PointF)localObject4).y *= -f7;
+                    }
+                    else if (localObject3.meshs[j].direction == 7.0F)
+                    {
+                      ((PointF)localObject4).x *= -f7;
+                      ((PointF)localObject4).y *= f7;
+                    }
+                    else if (localObject3.meshs[j].direction == 8.0F)
+                    {
+                      ((PointF)localObject4).x *= f7;
+                      ((PointF)localObject4).y *= f7;
+                    }
+                    else
+                    {
+                      ((PointF)localObject4).x = 0.0F;
+                      ((PointF)localObject4).y = 0.0F;
+                    }
+                    d2 = localPointF.x;
+                    d3 = ((PointF)localObject4).x;
+                    d1 = f5;
+                    double d4 = Math.cos(d1);
+                    Double.isNaN(d3);
+                    f4 = ((PointF)localObject4).y;
+                    double d5 = f4;
+                    double d6 = Math.sin(d1);
+                    Double.isNaN(d5);
+                    Double.isNaN(d2);
+                    localPointF.x = ((float)(d2 + (d3 * d4 - d5 * d6)));
+                    d2 = localPointF.y;
+                    d3 = ((PointF)localObject4).y;
+                    d4 = Math.cos(d1);
+                    Double.isNaN(d3);
+                    d5 = ((PointF)localObject4).x;
+                    d1 = Math.sin(d1);
+                    Double.isNaN(d5);
+                    d6 = f6;
+                    Double.isNaN(d6);
+                    d1 = (d3 * d4 + d5 * d1) / d6;
+                    Double.isNaN(d2);
+                    localPointF.y = ((float)(d2 + d1));
+                    break;
+                  }
+                }
               }
             }
+            j += 1;
           }
-        } while (this.meshs[j].type != 3);
-        float f6 = (float)(Math.cos(f8 * 1.57075D) * this.meshs[j].radius * 0.5D / f1 * this.meshs[j].strength);
-        PointF localPointF4 = new PointF(f1, f1 / f3);
-        if (this.meshs[j].direction == 1.0F)
-        {
-          f7 = localPointF4.x;
-          localPointF4.x = (-f6 * f7);
-          localPointF4.y = 0.0F;
+          f4 = f1;
+          f1 = f3;
+          localObject3 = localObject1;
+          ((PointF)paramList.get(i)).x = ((localPointF.x + 1.0F) / f2);
+          ((PointF)paramList.get(i)).y = ((localPointF.y + 1.0F) / f1);
+          localObject1 = localObject2;
+          f3 = f4;
+          localObject2 = localObject3;
         }
-        for (;;)
-        {
-          localPointF1.x = ((float)(localPointF1.x + (localPointF4.x * Math.cos(f2) - localPointF4.y * Math.sin(f2))));
-          double d1 = localPointF1.y;
-          double d2 = localPointF4.y;
-          double d3 = Math.cos(f2);
-          localPointF1.y = ((float)((localPointF4.x * Math.sin(f2) + d2 * d3) / f3 + d1));
-          break;
-          if (this.meshs[j].direction == 2.0F)
-          {
-            localPointF4.x = 0.0F;
-            f7 = localPointF4.y;
-            localPointF4.y = (-f6 * f7);
-          }
-          else if (this.meshs[j].direction == 3.0F)
-          {
-            localPointF4.x = (f6 * localPointF4.x);
-            localPointF4.y = 0.0F;
-          }
-          else if (this.meshs[j].direction == 4.0F)
-          {
-            localPointF4.x = 0.0F;
-            localPointF4.y = (f6 * localPointF4.y);
-          }
-          else if (this.meshs[j].direction == 5.0F)
-          {
-            localPointF4.x *= -f6;
-            f7 = localPointF4.y;
-            localPointF4.y = (-f6 * f7);
-          }
-          else if (this.meshs[j].direction == 6.0F)
-          {
-            localPointF4.x *= f6;
-            f7 = localPointF4.y;
-            localPointF4.y = (-f6 * f7);
-          }
-          else if (this.meshs[j].direction == 7.0F)
-          {
-            localPointF4.x *= -f6;
-            localPointF4.y = (f6 * localPointF4.y);
-          }
-          else if (this.meshs[j].direction == 8.0F)
-          {
-            localPointF4.x *= f6;
-            localPointF4.y = (f6 * localPointF4.y);
-          }
-          else
-          {
-            localPointF4.x = 0.0F;
-            localPointF4.y = 0.0F;
-          }
-        }
+        i += 1;
+        Object localObject3 = localObject2;
+        f4 = f1;
+        f1 = f3;
+        f3 = f4;
+        localObject2 = localObject1;
+        localObject1 = localObject3;
       }
-      ((PointF)paramList.get(i)).x = ((localPointF1.x + 1.0F) / f4);
-      ((PointF)paramList.get(i)).y = ((localPointF1.y + 1.0F) / f5);
     }
   }
   
   public void updateFaceFeatures_new(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 131) || (this.mFaceAngle == null)) {
-      return;
-    }
-    float f3 = ((PointF)paramList.get(18)).x - ((PointF)paramList.get(0)).x;
-    float f4 = ((PointF)paramList.get(18)).y - ((PointF)paramList.get(0)).y;
-    float f1 = ((PointF)paramList.get(9)).x - ((PointF)paramList.get(89)).x;
-    float f2 = ((PointF)paramList.get(9)).y - ((PointF)paramList.get(89)).y;
-    f3 = (float)Math.sqrt(f3 * f3 + f4 * f4);
-    float f7 = (float)Math.sqrt(f2 * f2 + f1 * f1) / f3;
-    f1 = ((PointF)paramList.get(9)).x;
-    f2 = ((PointF)paramList.get(84)).x;
-    f3 = -((PointF)paramList.get(9)).y;
-    f4 = ((PointF)paramList.get(84)).y;
-    f1 = (float)(Math.atan2(f1 - f2, f4 + f3) + 3.141592653589793D);
-    f2 = (float)Math.min(0.8353981633974483D, Math.max(-0.8353981633974483D, this.mFaceAngle[1] * 1.5D));
-    float f8 = (float)Math.tan(f2);
-    float f9 = (float)Math.cos(f2);
-    float f10 = (float)Math.cos(f1);
-    float f11 = (float)Math.sin(f1);
-    float f12 = this.height / this.width;
-    float f13 = (float)(2.0D / (this.width * this.mFaceDetScale));
-    float f14 = (float)(2.0D / (this.height * this.mFaceDetScale));
-    PointF localPointF1 = new PointF();
-    PointF localPointF2 = new PointF();
-    PointF localPointF3 = new PointF();
-    PointF localPointF4 = new PointF();
-    PointF localPointF5 = new PointF();
-    PointF localPointF6 = new PointF();
-    PointF localPointF7 = new PointF();
-    int i = 0;
-    label431:
-    if (i < 131) {
-      if ((i < 99) || (i > 106)) {
-        break label462;
-      }
-    }
-    for (;;)
+    Object localObject7 = paramList;
+    if ((localObject7 != null) && (paramList.size() >= 90))
     {
-      i += 1;
-      break label431;
-      break;
-      label462:
-      localPointF1.x = (((PointF)paramList.get(i)).x * f13 - 1.0F);
-      localPointF1.y = (((PointF)paramList.get(i)).y * f14 - 1.0F);
+      if (this.mFaceAngle == null) {
+        return;
+      }
+      float f3 = ((PointF)((List)localObject7).get(18)).x - ((PointF)((List)localObject7).get(0)).x;
+      float f4 = ((PointF)((List)localObject7).get(18)).y - ((PointF)((List)localObject7).get(0)).y;
+      float f1 = ((PointF)((List)localObject7).get(9)).x - ((PointF)((List)localObject7).get(89)).x;
+      float f2 = ((PointF)((List)localObject7).get(9)).y - ((PointF)((List)localObject7).get(89)).y;
+      f3 = (float)Math.sqrt(f3 * f3 + f4 * f4);
+      float f13 = (float)Math.sqrt(f1 * f1 + f2 * f2) / f3;
+      f1 = ((PointF)((List)localObject7).get(9)).x;
+      f2 = ((PointF)((List)localObject7).get(84)).x;
+      f3 = -((PointF)((List)localObject7).get(9)).y;
+      f4 = ((PointF)((List)localObject7).get(84)).y;
+      f1 = (float)(Math.atan2(f1 - f2, f3 + f4) + 3.141592653589793D);
+      double d1 = this.mFaceAngle[1];
+      Double.isNaN(d1);
+      d1 = (float)Math.min(0.8353981633974483D, Math.max(-0.8353981633974483D, d1 * 1.5D));
+      f3 = (float)Math.tan(d1);
+      float f5 = (float)Math.cos(d1);
+      d1 = f1;
+      float f14 = (float)Math.cos(d1);
+      float f15 = (float)Math.sin(d1);
+      f4 = this.height / this.width;
+      d1 = this.width;
+      double d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      f1 = (float)(2.0D / (d1 * d2));
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      f2 = (float)(2.0D / (d1 * d2));
+      PointF localPointF = new PointF();
+      Object localObject6 = new PointF();
+      Object localObject4 = new PointF();
+      Object localObject5 = new PointF();
+      Object localObject2 = new PointF();
+      Object localObject3 = new PointF();
+      Object localObject1 = new PointF();
       int j = 0;
-      if (j < this.meshs.length)
+      while (j < paramList.size())
       {
-        if (this.meshs[j].type <= 0) {}
-        for (;;)
+        if ((j >= 99) && (j <= 106))
         {
-          j += 1;
-          break;
-          localPointF2.x = ((this.meshs[j].point.x + this.meshs[j].offsetX) * f13 - 1.0F);
-          localPointF2.y = (((this.meshs[j].point.y + this.meshs[j].offsetY) * f14 - 1.0F) * f12);
-          localPointF5.x = localPointF1.x;
-          localPointF1.y *= f12;
-          localPointF5.x -= localPointF2.x;
-          localPointF5.y -= localPointF2.y;
-          localPointF4.x = (localPointF3.x * f10 + localPointF3.y * f11);
-          localPointF4.y = (localPointF3.y * f10 - localPointF3.x * f11);
-          f2 = Math.abs(localPointF4.x);
-          f1 = Math.abs(localPointF4.y);
-          if ((float)Math.sqrt(f2 * f2 + f1 * f1) * 0.5D <= this.meshs[j].radius)
+          localObject8 = localObject5;
+          localObject9 = localObject6;
+          f6 = f3;
+          f7 = f4;
+          localObject6 = localObject2;
+          localObject2 = localObject1;
+          localObject5 = localObject3;
+          localObject1 = localObject4;
+          f4 = f1;
+          localObject4 = localObject8;
+          f3 = f2;
+          localObject3 = localObject9;
+          f2 = f6;
+          f1 = f7;
+        }
+        else
+        {
+          f6 = ((PointF)((List)localObject7).get(j)).x;
+          localPointF.x = (f6 * f1 - 1.0F);
+          localPointF.y = (((PointF)((List)localObject7).get(j)).y * f2 - 1.0F);
+          int i = 0;
+          for (;;)
           {
-            f3 = f7 + localPointF4.x * f8;
-            if (f3 > 0.0D)
+            localObject7 = this.meshs;
+            if (i >= localObject7.length) {
+              break;
+            }
+            if (localObject7[i].type > 0)
             {
-              f3 = clamp(f3, 1.0D, 5.0D);
-              f2 = f3 / f7 * f2;
-              f4 = f3 / f7 * f1;
-              f1 = f2;
-              if (f3 > 2.5F) {
-                f1 = f2 / (1.0F - (1.0F - f9) * my_smoothstep(0.0F, 0.05F, f3 - 2.5F));
-              }
-              f2 = (float)Math.sqrt(f1 * f1 + f4 * f4);
-              f1 = f2;
-              if (this.meshs[j].type > 1) {
-                f1 = (float)(f2 / 1.2D);
-              }
-              if (f1 < this.meshs[j].radius)
+              ((PointF)localObject6).x = ((this.meshs[i].point.x + this.meshs[i].offsetX) * f1 - 1.0F);
+              ((PointF)localObject6).y = (((this.meshs[i].point.y + this.meshs[i].offsetY) * f2 - 1.0F) * f4);
+              ((PointF)localObject2).x = localPointF.x;
+              ((PointF)localObject2).y = (localPointF.y * f4);
+              ((PointF)localObject2).x -= ((PointF)localObject6).x;
+              ((PointF)localObject2).y -= ((PointF)localObject6).y;
+              ((PointF)localObject5).x = (((PointF)localObject4).x * f14 + ((PointF)localObject4).y * f15);
+              ((PointF)localObject5).y = (((PointF)localObject4).y * f14 - ((PointF)localObject4).x * f15);
+              f7 = Math.abs(((PointF)localObject5).x);
+              f6 = Math.abs(((PointF)localObject5).y);
+              d1 = (float)Math.sqrt(f7 * f7 + f6 * f6);
+              Double.isNaN(d1);
+              if (d1 * 0.5D <= this.meshs[i].radius)
               {
-                localPointF6.x = f9;
-                localPointF6.y = 1.0F;
-                if (f3 < 2.5D) {
-                  localPointF6.x = (1.0F - (1.0F - my_smoothstep(0.0F, 0.1F, 2.5F - f3)) * (1.0F - f9));
-                }
-                float f15 = f1 / this.meshs[j].radius;
-                f2 = this.screenRatioX;
-                f1 = this.screenRatioY;
-                f4 = 1.0F;
-                float f6 = 1.0F;
-                float f5 = 1.0F;
-                f3 = 0.5625F;
-                if (this.meshVersion < 2)
+                do
                 {
-                  f2 = 1.0F;
-                  f1 = 1.0F;
-                  f4 = 0.5625F;
-                  f6 = this.screenRatioX;
-                  f5 = this.screenRatioY;
-                  f3 = 1.0F;
+                  f8 = f13 + ((PointF)localObject5).x * f3;
+                } while (f8 <= 0.0D);
+                int k = i;
+                localObject8 = localObject2;
+                localObject7 = localObject3;
+                float f8 = clamp(f8, 1.0D, 5.0D);
+                float f9 = f8 / f13;
+                f7 *= f9;
+                f9 = f6 * f9;
+                f6 = f7;
+                if (f8 > 2.5F) {
+                  f6 = f7 / (1.0F - (1.0F - f5) * my_smoothstep(0.0F, 0.05F, f8 - 2.5F));
                 }
-                float f17 = (localPointF2.x - localPointF5.x) / f6 / 1.2F;
-                float f16 = (localPointF2.y - localPointF5.y) / f5 / 1.2F;
-                if (this.meshs[j].type == 1)
+                f7 = (float)Math.sqrt(f6 * f6 + f9 * f9);
+                f6 = f7;
+                if (this.meshs[k].type > 1)
                 {
-                  f3 = 1.2F * (1.0F - my_smoothstep(0.0F, 1.0F, f15)) * this.meshs[j].strength;
-                  f4 = f17 * f3;
-                  f3 *= f16;
-                  localPointF7.x = ((f4 * f10 + f3 * f11) * localPointF6.x);
-                  localPointF7.y = ((f3 * f10 - f4 * f11) * localPointF6.y);
-                  localPointF1.x -= (localPointF7.x * f10 - localPointF7.y * f11) / f2;
-                  localPointF1.y -= (localPointF7.y * f10 + localPointF7.x * f11) / f1;
+                  d1 = f7;
+                  Double.isNaN(d1);
+                  f6 = (float)(d1 / 1.2D);
                 }
-                else if (this.meshs[j].type == 2)
+                if (f6 < this.meshs[k].radius)
                 {
-                  f3 = (1.0F - my_smoothstep(0.0F, 1.0F, f15)) * this.meshs[j].strength;
-                  f4 = f17 * f3;
-                  f3 *= f16;
-                  localPointF7.x = ((f4 * f10 + f3 * f11) * localPointF6.x);
-                  localPointF7.y = ((f3 * f10 - f4 * f11) * localPointF6.y);
-                  localPointF1.x += (localPointF7.x * f10 - localPointF7.y * f11) / f2;
-                  localPointF1.y += (localPointF7.y * f10 + localPointF7.x * f11) / f1;
-                }
-                else
-                {
-                  if (this.meshs[j].type == 3)
+                  ((PointF)localObject7).x = f5;
+                  ((PointF)localObject7).y = 1.0F;
+                  if (f8 < 2.5D) {
+                    ((PointF)localObject7).x = (1.0F - (1.0F - f5) * (1.0F - my_smoothstep(0.0F, 0.1F, 2.5F - f8)));
+                  }
+                  float f16 = f6 / this.meshs[k].radius;
+                  float f11 = this.screenRatioX;
+                  f7 = this.screenRatioY;
+                  float f10;
+                  if (this.meshVersion < 2)
                   {
-                    f15 = 1.0F - f15 * f15;
-                    f15 = f15 * my_smoothstep(0.0F, 1.0F, f15) * this.meshs[j].radius * 0.5F * this.meshs[j].strength;
-                    localPointF7.x = (1.0F / f6);
-                    localPointF7.y = (1.0F / f5);
-                    if (this.meshs[j].direction == 1.0F)
+                    f6 = 1.0F;
+                    f12 = 1.0F;
+                    f8 = 1.0F;
+                    f9 = 0.5625F;
+                    f10 = f7;
+                    f7 = f12;
+                  }
+                  else
+                  {
+                    f6 = f11;
+                    f10 = 1.0F;
+                    f11 = 1.0F;
+                    f8 = 0.5625F;
+                    f9 = 1.0F;
+                  }
+                  float f17 = (((PointF)localObject6).x - localObject8.x) / f11 / 1.2F;
+                  float f12 = (((PointF)localObject6).y - localObject8.y) / f10 / 1.2F;
+                  if (this.meshs[k].type == 1)
+                  {
+                    f9 = (1.0F - my_smoothstep(0.0F, 1.0F, f16)) * 1.2F * this.meshs[k].strength;
+                    f8 = f17 * f9;
+                    f9 = f12 * f9;
+                    f10 = ((PointF)localObject7).x;
+                    localObject8 = localObject1;
+                    localObject8.x = ((f8 * f14 + f9 * f15) * f10);
+                    localObject8.y = (((PointF)localObject7).y * (f9 * f14 - f8 * f15));
+                    localPointF.x -= (localObject8.x * f14 - localObject8.y * f15) / f6;
+                    localPointF.y -= (localObject8.y * f14 + localObject8.x * f15) / f7;
+                  }
+                  for (;;)
+                  {
+                    break;
+                    localObject8 = localObject1;
+                    if (this.meshs[k].type == 2)
                     {
-                      localPointF7.x *= -f15;
-                      localPointF7.y = 0.0F;
+                      f8 = (1.0F - my_smoothstep(0.0F, 1.0F, f16)) * this.meshs[k].strength;
+                      f9 = f17 * f8;
+                      f8 = f12 * f8;
+                      localObject8.x = ((f9 * f14 + f8 * f15) * ((PointF)localObject7).x);
+                      localObject8.y = (((PointF)localObject7).y * (f8 * f14 - f9 * f15));
+                      localPointF.x += (localObject8.x * f14 - localObject8.y * f15) / f6;
+                      localPointF.y += (localObject8.y * f14 + localObject8.x * f15) / f7;
                     }
-                    for (;;)
+                    else if (this.meshs[k].type == 3)
                     {
-                      localPointF7.x *= localPointF6.x;
-                      localPointF7.y *= localPointF6.y;
-                      localPointF7.y = (f3 * localPointF7.y);
-                      localPointF1.x += (localPointF7.x * f10 - localPointF7.y * f11) / f2;
-                      localPointF1.y += (localPointF7.y * f10 + localPointF7.x * f11) * f4 / f1;
-                      break;
-                      if (this.meshs[j].direction == 2.0F)
+                      f12 = 1.0F - f16 * f16;
+                      f12 = f12 * my_smoothstep(0.0F, 1.0F, f12) * this.meshs[k].radius * 0.5F * this.meshs[k].strength;
+                      localObject8.x = (1.0F / f11);
+                      localObject8.y = (1.0F / f10);
+                      if (this.meshs[k].direction == 1.0F)
                       {
-                        localPointF7.x = 0.0F;
-                        localPointF7.y *= -f15;
+                        localObject8.x *= -f12;
+                        localObject8.y = 0.0F;
                       }
-                      else if (this.meshs[j].direction == 3.0F)
+                      else if (this.meshs[k].direction == 2.0F)
                       {
-                        localPointF7.x *= f15;
-                        localPointF7.y = 0.0F;
+                        localObject8.x = 0.0F;
+                        localObject8.y *= -f12;
                       }
-                      else if (this.meshs[j].direction == 4.0F)
+                      else if (this.meshs[k].direction == 3.0F)
                       {
-                        localPointF7.x = 0.0F;
-                        localPointF7.y *= f15;
+                        localObject8.x *= f12;
+                        localObject8.y = 0.0F;
                       }
-                      else if (this.meshs[j].direction == 5.0F)
+                      else if (this.meshs[k].direction == 4.0F)
                       {
-                        localPointF7.x *= -f15;
-                        localPointF7.y *= -f15;
+                        localObject8.x = 0.0F;
+                        localObject8.y *= f12;
                       }
-                      else if (this.meshs[j].direction == 6.0F)
+                      else if (this.meshs[k].direction == 5.0F)
                       {
-                        localPointF7.x *= f15;
-                        localPointF7.y *= -f15;
+                        f10 = localObject8.x;
+                        f11 = -f12;
+                        localObject8.x = (f10 * f11);
+                        localObject8.y *= f11;
                       }
-                      else if (this.meshs[j].direction == 7.0F)
+                      else if (this.meshs[k].direction == 6.0F)
                       {
-                        localPointF7.x *= -f15;
-                        localPointF7.y *= f15;
+                        localObject8.x *= f12;
+                        localObject8.y *= -f12;
                       }
-                      else if (this.meshs[j].direction == 8.0F)
+                      else if (this.meshs[k].direction == 7.0F)
                       {
-                        localPointF7.x *= f15;
-                        localPointF7.y *= f15;
+                        localObject8.x *= -f12;
+                        localObject8.y *= f12;
+                      }
+                      else if (this.meshs[k].direction == 8.0F)
+                      {
+                        localObject8.x *= f12;
+                        localObject8.y *= f12;
                       }
                       else
                       {
-                        localPointF7.x = 0.0F;
-                        localPointF7.y = 0.0F;
+                        localObject8.x = 0.0F;
+                        localObject8.y = 0.0F;
                       }
+                      localObject8.x *= ((PointF)localObject7).x;
+                      localObject8.y *= ((PointF)localObject7).y;
+                      localObject8.y *= f8;
+                      localPointF.x += (localObject8.x * f14 - localObject8.y * f15) / f6;
+                      localPointF.y += (localObject8.y * f14 + localObject8.x * f15) * f9 / f7;
                     }
-                  }
-                  if (this.meshs[j].type <= 5)
-                  {
-                    f15 = 1.0F - f15 * f15;
-                    f15 = f15 * my_smoothstep(0.0F, 1.0F, f15) * this.meshs[j].radius * 0.5F * this.meshs[j].strength;
-                    f6 = (float)Math.cos(this.meshs[j].direction) * f15 / f6;
-                    f5 = f15 * (float)Math.sin(this.meshs[j].direction) / f5;
-                    localPointF7.x = (f6 * f10 + f5 * f11);
-                    localPointF7.y = (f5 * f10 - f6 * f11);
-                    localPointF7.x *= localPointF6.x;
-                    localPointF7.y *= localPointF6.y;
-                    localPointF7.y = (f3 * localPointF7.y);
-                    localPointF1.x += (localPointF7.x * f10 - localPointF7.y * f11) / f2;
-                    localPointF1.y += (localPointF7.y * f10 + localPointF7.x * f11) * f4 / f1;
+                    else if (this.meshs[k].type <= 5)
+                    {
+                      f12 = 1.0F - f16 * f16;
+                      f12 = f12 * my_smoothstep(0.0F, 1.0F, f12) * this.meshs[k].radius * 0.5F * this.meshs[k].strength;
+                      f11 = (float)Math.cos(this.meshs[k].direction) * f12 / f11;
+                      f10 = f12 * (float)Math.sin(this.meshs[k].direction) / f10;
+                      localObject8.x = (f11 * f14 + f10 * f15);
+                      localObject8.y = (f10 * f14 - f11 * f15);
+                      localObject8.x *= ((PointF)localObject7).x;
+                      localObject8.y *= ((PointF)localObject7).y;
+                      localObject8.y *= f8;
+                      localPointF.x += (localObject8.x * f14 - localObject8.y * f15) / f6;
+                      localPointF.y += (localObject8.y * f14 + localObject8.x * f15) * f9 / f7;
+                    }
                   }
                 }
               }
             }
+            i += 1;
           }
+          localObject7 = paramList;
+          localObject8 = localObject4;
+          localObject4 = localObject5;
+          f6 = f1;
+          f7 = f2;
+          f2 = f3;
+          f1 = f4;
+          localObject9 = localObject1;
+          localObject5 = localObject3;
+          ((PointF)((List)localObject7).get(j)).x = ((localPointF.x + 1.0F) / f6);
+          ((PointF)((List)localObject7).get(j)).y = ((localPointF.y + 1.0F) / f7);
+          localObject3 = localObject6;
+          f3 = f7;
+          f4 = f6;
+          localObject1 = localObject8;
+          localObject6 = localObject2;
+          localObject2 = localObject9;
         }
+        j += 1;
+        Object localObject8 = localObject5;
+        float f6 = f4;
+        localObject5 = localObject4;
+        Object localObject9 = localObject3;
+        float f7 = f2;
+        f4 = f1;
+        localObject3 = localObject2;
+        localObject2 = localObject6;
+        localObject4 = localObject1;
+        f1 = f6;
+        localObject6 = localObject9;
+        f2 = f3;
+        f3 = f7;
+        localObject1 = localObject3;
+        localObject3 = localObject8;
       }
-      ((PointF)paramList.get(i)).x = ((localPointF1.x + 1.0F) / f13);
-      ((PointF)paramList.get(i)).y = ((localPointF1.y + 1.0F) / f14);
     }
   }
   
   public void updateParams(List<PointF> paramList, Set<Integer> paramSet, double paramDouble, float[] paramArrayOfFloat)
   {
     Arrays.fill(this.flatMesh, -1.0F);
-    Object localObject = VideoMaterialUtil.copyList(paramList);
-    if ((localObject == null) || (((List)localObject).size() < 90) || (CollectionUtils.isEmpty(this.items)) || (!VideoFilterUtil.actionTriggered(paramList, this.stickerItems, paramSet)))
+    Object localObject1 = VideoMaterial.copyList(paramList);
+    if ((localObject1 != null) && (((List)localObject1).size() >= 90) && (!CollectionUtils.isEmpty(this.items)) && (VideoFilterUtil.actionTriggered(paramList, this.stickerItems, paramSet)))
     {
+      localObject1 = TransformUtil.getFullPoints((List)localObject1);
+      float f3 = ((PointF)((List)localObject1).get(18)).x - ((PointF)((List)localObject1).get(0)).x;
+      float f4 = ((PointF)((List)localObject1).get(18)).y - ((PointF)((List)localObject1).get(0)).y;
+      float f1 = ((PointF)((List)localObject1).get(9)).x - ((PointF)((List)localObject1).get(89)).x;
+      float f2 = ((PointF)((List)localObject1).get(9)).y - ((PointF)((List)localObject1).get(89)).y;
+      float f6 = (float)Math.sqrt(f3 * f3 + f4 * f4);
+      float f7 = (float)Math.sqrt(f1 * f1 + f2 * f2) / f6;
+      f1 = ((PointF)((List)localObject1).get(9)).x;
+      f2 = ((PointF)((List)localObject1).get(84)).x;
+      f3 = -((PointF)((List)localObject1).get(9)).y;
+      f4 = ((PointF)((List)localObject1).get(84)).y;
+      f3 = (float)(Math.atan2(f1 - f2, f3 + f4) + 3.141592653589793D);
+      double d1 = ((PointF)((List)localObject1).get(9)).x * 2.0F;
+      Double.isNaN(d1);
+      d1 /= paramDouble;
+      double d2 = this.width;
+      Double.isNaN(d2);
+      f1 = (float)(d1 / d2 - 1.0D);
+      d1 = ((PointF)((List)localObject1).get(9)).y * 2.0F;
+      Double.isNaN(d1);
+      d1 /= paramDouble;
+      d2 = this.height;
+      Double.isNaN(d2);
+      PointF localPointF = new PointF(f1, (float)(d1 / d2 - 1.0D) * this.height / this.width);
+      d1 = ((PointF)((List)localObject1).get(89)).x * 2.0F;
+      Double.isNaN(d1);
+      d1 /= paramDouble;
+      d2 = this.width;
+      Double.isNaN(d2);
+      f1 = (float)(d1 / d2 - 1.0D);
+      d1 = ((PointF)((List)localObject1).get(89)).y * 2.0F;
+      Double.isNaN(d1);
+      d1 /= paramDouble;
+      d2 = this.height;
+      Double.isNaN(d2);
+      Object localObject2 = new PointF(f1, (float)(d1 / d2 - 1.0D) * this.height / this.width);
+      f1 = AlgoUtils.getDistance(localPointF, (PointF)localObject2);
+      d1 = paramArrayOfFloat[1];
+      Double.isNaN(d1);
+      d1 = (float)Math.min(0.8353981633974483D, Math.max(-0.8353981633974483D, d1 * 1.5D));
+      float f8 = (float)Math.tan(d1);
+      float f9 = (float)Math.cos(d1);
+      paramList = new PointF(((PointF)((List)localObject1).get(43)).x + (((PointF)((List)localObject1).get(9)).x - ((PointF)((List)localObject1).get(43)).x) / 3.0F, ((PointF)((List)localObject1).get(43)).y + (((PointF)((List)localObject1).get(9)).y - ((PointF)((List)localObject1).get(43)).y) / 3.0F);
+      d2 = paramList.x * 2.0F;
+      Double.isNaN(d2);
+      d2 /= paramDouble;
+      double d3 = this.width;
+      Double.isNaN(d3);
+      paramList.x = ((float)(d2 / d3 - 1.0D));
+      d2 = paramList.y * 2.0F;
+      Double.isNaN(d2);
+      d2 /= paramDouble;
+      d3 = this.height;
+      Double.isNaN(d3);
+      paramList.y = ((float)(d2 / d3 - 1.0D) * this.height / this.width);
+      paramSet = new PointF(((PointF)((List)localObject1).get(53)).x + (((PointF)((List)localObject1).get(9)).x - ((PointF)((List)localObject1).get(53)).x) / 3.0F, ((PointF)((List)localObject1).get(53)).y + (((PointF)((List)localObject1).get(9)).y - ((PointF)((List)localObject1).get(53)).y) / 3.0F);
+      d2 = paramSet.x * 2.0F;
+      Double.isNaN(d2);
+      d2 /= paramDouble;
+      d3 = this.width;
+      Double.isNaN(d3);
+      paramSet.x = ((float)(d2 / d3 - 1.0D));
+      d2 = paramSet.y * 2.0F;
+      Double.isNaN(d2);
+      d2 /= paramDouble;
+      d3 = this.height;
+      Double.isNaN(d3);
+      paramSet.y = ((float)(d2 / d3 - 1.0D) * this.height / this.width);
+      f2 = AlgoUtils.getDistance(paramList, paramSet);
+      int k = 0;
+      d2 = paramArrayOfFloat[0];
+      Double.isNaN(d2);
+      d2 = (float)Math.min(0.8353981633974483D, Math.max(-0.8353981633974483D, d2 * 1.4D));
+      f4 = (float)Math.tan(d2);
+      paramArrayOfFloat = (float[])localObject2;
+      float f10 = (float)Math.cos(d2);
+      d3 = f3;
+      float f11 = (float)Math.cos(d3);
+      float f5 = (float)Math.sin(d3);
+      int i = ((List)localObject1).size();
+      int j = 0;
+      double d4;
+      double d5;
+      while (j < this.items.size())
+      {
+        localObject2 = (DistortionItem)this.items.get(j);
+        this.meshs[j].type = ((DistortionItem)localObject2).distortion;
+        if (((DistortionItem)localObject2).position < i) {
+          this.meshs[j].point = ((PointF)((List)localObject1).get(((DistortionItem)localObject2).position));
+        }
+        float f12 = getStrengthAdjust();
+        this.meshs[j].strength = (((DistortionItem)localObject2).strength * f12 * yawPitchStrengthAdjust(f8, f4, ((DistortionItem)localObject2).position));
+        Object localObject3 = this.meshs[j];
+        d4 = ((DistortionItem)localObject2).radius * f6;
+        Double.isNaN(d4);
+        d4 /= paramDouble;
+        d5 = Math.min(this.width, this.height);
+        Double.isNaN(d5);
+        ((MeshDistortionType)localObject3).radius = ((float)(d4 / d5 / 375.0D));
+        f12 = ((DistortionItem)localObject2).x * f9;
+        float f13 = ((DistortionItem)localObject2).y * f10;
+        localObject3 = this.meshs;
+        localObject3[j].offsetX = ((f12 * f11 + f13 * f5) * f6 / 375.0F);
+        localObject3[j].offsetY = ((f12 * f5 - f13 * f11) * f6 / 375.0F);
+        localObject3[j].direction = ((DistortionItem)localObject2).direction;
+        if ((((DistortionItem)localObject2).distortion != 4) && (((DistortionItem)localObject2).distortion != 5)) {
+          break label1678;
+        }
+        localObject3 = (PointF)((List)localObject1).get(((DistortionItem)localObject2).direction);
+        f12 = (((DistortionItem)localObject2).targetDx * f11 * f9 + ((DistortionItem)localObject2).targetDy * f5 * f10) * f6 / 375.0F;
+        f13 = (((DistortionItem)localObject2).targetDx * f5 * f9 - ((DistortionItem)localObject2).targetDy * f11 * f10) * f6 / 375.0F;
+        this.meshs[j].direction = ((float)Math.atan2(((PointF)localObject3).y + f13 - this.meshs[j].point.y - this.meshs[j].offsetY, ((PointF)localObject3).x + f12 - this.meshs[j].point.x - this.meshs[j].offsetX));
+        if (((DistortionItem)localObject2).distortion == 5)
+        {
+          localObject2 = this.meshs;
+          localObject2[j].direction += 3.141593F;
+        }
+        label1678:
+        localObject2 = this.meshs;
+        localObject2[j].faceDegree = f3;
+        localObject2[j].faceRatio = f7;
+        j += 1;
+      }
+      localObject2 = paramSet;
+      i = this.items.size();
+      while (i < 60)
+      {
+        this.meshs[i].type = -1;
+        i += 1;
+      }
+      i = 0;
+      paramSet = localPointF;
+      localObject1 = paramList;
+      paramList = (List<PointF>)localObject2;
+      j = k;
+      while (i < this.items.size())
+      {
+        localObject2 = this.flatMesh;
+        k = j + 1;
+        localObject2[j] = this.meshs[i].type;
+        localObject2 = this.flatMesh;
+        j = k + 1;
+        localObject2[k] = this.meshs[i].strength;
+        d4 = (this.meshs[i].point.x + this.meshs[i].offsetX) * 2.0F;
+        Double.isNaN(d4);
+        d4 /= paramDouble;
+        d5 = this.width;
+        Double.isNaN(d5);
+        f5 = (float)(d4 / d5 - 1.0D);
+        d4 = (this.meshs[i].point.y + this.meshs[i].offsetY) * 2.0F;
+        Double.isNaN(d4);
+        d4 /= paramDouble;
+        d5 = this.height;
+        Double.isNaN(d5);
+        f6 = (float)(d4 / d5 - 1.0D);
+        localObject2 = this.flatMesh;
+        k = j + 1;
+        localObject2[j] = (this.screenRatioX * f5);
+        j = k + 1;
+        localObject2[k] = (this.screenRatioY * f6);
+        f4 = AlgoUtils.distanceOfPoint2Line(paramSet, paramArrayOfFloat, f1, new PointF(f5, this.height * f6 / this.width)) * f8;
+        f3 = f4;
+        if ((paramSet.x - paramArrayOfFloat.x) * (f6 - paramArrayOfFloat.y) - (paramSet.y - paramArrayOfFloat.y) * (f5 - paramArrayOfFloat.x) > 0.0F) {
+          f3 = -f4;
+        }
+        AlgoUtils.distanceOfPoint2Line((PointF)localObject1, paramList, f2, new PointF(f5, this.height * f6 / this.width));
+        f4 = ((PointF)localObject1).x;
+        f4 = paramList.x;
+        f4 = paramList.y;
+        f4 = ((PointF)localObject1).y;
+        f4 = paramList.y;
+        f4 = paramList.x;
+        f3 = 2.5F + f3;
+        localObject2 = this.meshs;
+        localObject2[i].radius = (localObject2[i].radius * 2.5F / f3);
+        localObject2 = this.flatMesh;
+        k = j + 1;
+        localObject2[j] = this.meshs[i].radius;
+        localObject2 = this.flatMesh;
+        j = k + 1;
+        localObject2[k] = this.meshs[i].direction;
+        localObject2 = this.flatMesh;
+        k = j + 1;
+        localObject2[j] = f3;
+        j = k + 1;
+        localObject2[k] = 0.0F;
+        i += 1;
+      }
+      addParam(new UniformParam.FloatParam("faceRatio", f7));
+      addParam(new UniformParam.FloatParam("sin_roll", (float)Math.sin(d3)));
+      addParam(new UniformParam.FloatParam("cos_roll", (float)Math.cos(d3)));
+      addParam(new UniformParam.FloatParam("tan_yaw", (float)Math.tan(d1)));
+      addParam(new UniformParam.FloatParam("cos_yaw", (float)Math.cos(d1)));
+      addParam(new UniformParam.FloatParam("tan_pitch", (float)Math.tan(d2)));
+      addParam(new UniformParam.FloatParam("cos_pitch", (float)Math.cos(d2)));
+      addParam(new UniformParam.IntParam("itemCount", this.items.size()));
       addParam(new UniformParam.Float4sParam("item", this.flatMesh));
-      addParam(new UniformParam.FloatParam("faceRatio", 1.0F));
       return;
     }
-    List localList = TransformUtil.getFullPoints((List)localObject);
-    float f1 = ((PointF)localList.get(18)).x - ((PointF)localList.get(0)).x;
-    float f4 = ((PointF)localList.get(18)).y - ((PointF)localList.get(0)).y;
-    float f2 = ((PointF)localList.get(9)).x - ((PointF)localList.get(89)).x;
-    float f3 = ((PointF)localList.get(9)).y - ((PointF)localList.get(89)).y;
-    f1 = (float)Math.sqrt(f1 * f1 + f4 * f4);
-    f3 = (float)Math.sqrt(f3 * f3 + f2 * f2) / f1;
-    f2 = ((PointF)localList.get(9)).x;
-    f4 = ((PointF)localList.get(84)).x;
-    float f5 = -((PointF)localList.get(9)).y;
-    float f6 = ((PointF)localList.get(84)).y;
-    f4 = (float)(Math.atan2(f2 - f4, f6 + f5) + 3.141592653589793D);
-    paramList = new PointF((float)(((PointF)localList.get(9)).x * 2.0F / paramDouble / this.width - 1.0D), (float)(((PointF)localList.get(9)).y * 2.0F / paramDouble / this.height - 1.0D) * this.height / this.width);
-    paramSet = new PointF((float)(((PointF)localList.get(89)).x * 2.0F / paramDouble / this.width - 1.0D), (float)(((PointF)localList.get(89)).y * 2.0F / paramDouble / this.height - 1.0D) * this.height / this.width);
-    f5 = AlgoUtils.getDistance(paramList, paramSet);
-    f6 = (float)Math.min(0.8353981633974483D, Math.max(-0.8353981633974483D, paramArrayOfFloat[1] * 1.5D));
-    float f7 = (float)Math.tan(f6);
-    f2 = (float)Math.cos(f6);
-    float f8 = ((PointF)localList.get(43)).x;
-    float f9 = (((PointF)localList.get(9)).x - ((PointF)localList.get(43)).x) / 3.0F;
-    float f10 = ((PointF)localList.get(43)).y;
-    localObject = new PointF(f8 + f9, (((PointF)localList.get(9)).y - ((PointF)localList.get(43)).y) / 3.0F + f10);
-    ((PointF)localObject).x = ((float)(2.0F * ((PointF)localObject).x / paramDouble / this.width - 1.0D));
-    ((PointF)localObject).y = ((float)(2.0F * ((PointF)localObject).y / paramDouble / this.height - 1.0D) * this.height / this.width);
-    f8 = ((PointF)localList.get(53)).x;
-    f9 = (((PointF)localList.get(9)).x - ((PointF)localList.get(53)).x) / 3.0F;
-    f10 = ((PointF)localList.get(53)).y;
-    PointF localPointF1 = new PointF(f8 + f9, (((PointF)localList.get(9)).y - ((PointF)localList.get(53)).y) / 3.0F + f10);
-    localPointF1.x = ((float)(2.0F * localPointF1.x / paramDouble / this.width - 1.0D));
-    localPointF1.y = ((float)(2.0F * localPointF1.y / paramDouble / this.height - 1.0D) * this.height / this.width);
-    f8 = AlgoUtils.getDistance((PointF)localObject, localPointF1);
-    f9 = (float)Math.min(0.8353981633974483D, Math.max(-0.8353981633974483D, paramArrayOfFloat[0] * 1.4D));
-    f10 = (float)Math.tan(f9);
-    float f11 = (float)Math.cos(f9);
-    float f12 = (float)Math.cos(f4);
-    float f13 = (float)Math.sin(f4);
-    int j = localList.size();
-    int i = 0;
-    float f14;
-    float f15;
-    while (i < this.items.size())
-    {
-      paramArrayOfFloat = (DistortionItem)this.items.get(i);
-      this.meshs[i].type = paramArrayOfFloat.distortion;
-      if (paramArrayOfFloat.position < j) {
-        this.meshs[i].point = ((PointF)localList.get(paramArrayOfFloat.position));
-      }
-      f14 = getStrengthAdjust();
-      this.meshs[i].strength = (f14 * paramArrayOfFloat.strength * yawPitchStrengthAdjust(f7, f10, paramArrayOfFloat.position));
-      this.meshs[i].radius = ((float)(paramArrayOfFloat.radius * f1 / paramDouble / Math.min(this.width, this.height) / 375.0D));
-      f14 = paramArrayOfFloat.x * f2;
-      f15 = paramArrayOfFloat.y * f11;
-      this.meshs[i].offsetX = ((f14 * f12 + f15 * f13) * f1 / 375.0F);
-      this.meshs[i].offsetY = ((f14 * f13 - f15 * f12) * f1 / 375.0F);
-      this.meshs[i].direction = paramArrayOfFloat.direction;
-      if ((paramArrayOfFloat.distortion == 4) || (paramArrayOfFloat.distortion == 5))
-      {
-        PointF localPointF2 = (PointF)localList.get(paramArrayOfFloat.direction);
-        f14 = (paramArrayOfFloat.targetDx * f12 * f2 + paramArrayOfFloat.targetDy * f13 * f11) * f1 / 375.0F;
-        f15 = (paramArrayOfFloat.targetDx * f13 * f2 - paramArrayOfFloat.targetDy * f12 * f11) * f1 / 375.0F;
-        this.meshs[i].direction = ((float)Math.atan2(f15 + localPointF2.y - this.meshs[i].point.y - this.meshs[i].offsetY, localPointF2.x + f14 - this.meshs[i].point.x - this.meshs[i].offsetX));
-        if (paramArrayOfFloat.distortion == 5) {
-          this.meshs[i].direction = (3.141593F + this.meshs[i].direction);
-        }
-      }
-      this.meshs[i].faceDegree = f4;
-      this.meshs[i].faceRatio = f3;
-      i += 1;
-    }
-    i = this.items.size();
-    while (i < 60)
-    {
-      this.meshs[i].type = -1;
-      i += 1;
-    }
-    j = 0;
-    i = 0;
-    while (i < this.items.size())
-    {
-      paramArrayOfFloat = this.flatMesh;
-      int k = j + 1;
-      paramArrayOfFloat[j] = this.meshs[i].type;
-      paramArrayOfFloat = this.flatMesh;
-      j = k + 1;
-      paramArrayOfFloat[k] = this.meshs[i].strength;
-      f11 = (float)(2.0F * (this.meshs[i].point.x + this.meshs[i].offsetX) / paramDouble / this.width - 1.0D);
-      f12 = (float)(2.0F * (this.meshs[i].point.y + this.meshs[i].offsetY) / paramDouble / this.height - 1.0D);
-      paramArrayOfFloat = this.flatMesh;
-      k = j + 1;
-      paramArrayOfFloat[j] = (this.screenRatioX * f11);
-      paramArrayOfFloat = this.flatMesh;
-      j = k + 1;
-      paramArrayOfFloat[k] = (this.screenRatioY * f12);
-      f2 = AlgoUtils.distanceOfPoint2Line(paramList, paramSet, f5, new PointF(f11, this.height * f12 / this.width)) * f7;
-      f1 = f2;
-      if ((paramList.x - paramSet.x) * (f12 - paramSet.y) - (paramList.y - paramSet.y) * (f11 - paramSet.x) > 0.0F) {
-        f1 = -f2;
-      }
-      f2 = AlgoUtils.distanceOfPoint2Line((PointF)localObject, localPointF1, f8, new PointF(f11, this.height * f12 / this.width));
-      f13 = ((PointF)localObject).x;
-      f14 = localPointF1.x;
-      f15 = localPointF1.y;
-      float f16 = ((PointF)localObject).y;
-      float f17 = localPointF1.y;
-      if ((f12 - f15) * (f13 - f14) - (f11 - localPointF1.x) * (f16 - f17) > 0.0F) {
-        f2 = -(f2 * f10);
-      }
-      f1 += 2.5F;
-      this.meshs[i].radius = (this.meshs[i].radius * 2.5F / f1);
-      paramArrayOfFloat = this.flatMesh;
-      k = j + 1;
-      paramArrayOfFloat[j] = this.meshs[i].radius;
-      paramArrayOfFloat = this.flatMesh;
-      j = k + 1;
-      paramArrayOfFloat[k] = this.meshs[i].direction;
-      paramArrayOfFloat = this.flatMesh;
-      k = j + 1;
-      paramArrayOfFloat[j] = f1;
-      paramArrayOfFloat = this.flatMesh;
-      j = k + 1;
-      paramArrayOfFloat[k] = 0.0F;
-      i += 1;
-    }
-    addParam(new UniformParam.FloatParam("faceRatio", f3));
-    addParam(new UniformParam.FloatParam("sin_roll", (float)Math.sin(f4)));
-    addParam(new UniformParam.FloatParam("cos_roll", (float)Math.cos(f4)));
-    addParam(new UniformParam.FloatParam("tan_yaw", (float)Math.tan(f6)));
-    addParam(new UniformParam.FloatParam("cos_yaw", (float)Math.cos(f6)));
-    addParam(new UniformParam.FloatParam("tan_pitch", (float)Math.tan(f9)));
-    addParam(new UniformParam.FloatParam("cos_pitch", (float)Math.cos(f9)));
-    addParam(new UniformParam.IntParam("itemCount", this.items.size()));
     addParam(new UniformParam.Float4sParam("item", this.flatMesh));
+    addParam(new UniformParam.FloatParam("faceRatio", 1.0F));
   }
   
   public void updatePreview(Object paramObject)
@@ -789,6 +1021,9 @@ public class TransformFilter
     }
     updateParams(localPTDetectInfo.facePoints, localPTDetectInfo.triggeredExpression, this.mFaceDetScale, paramObject);
     this.mFaceAngle = localPTDetectInfo.faceAngles;
+    if (this.needReCaculateFace) {
+      updateFaceFeatures_new(localPTDetectInfo.transformPoints);
+    }
   }
   
   public void updateStrength(float paramFloat)
@@ -798,27 +1033,28 @@ public class TransformFilter
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
-    float f3 = 1.0F;
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
     float f2 = this.height / this.width;
-    if (f2 > 1.0F) {}
-    for (float f1 = 1.0F;; f1 = 1.0F / f2)
-    {
-      this.screenRatioX = f1;
-      f1 = f3;
-      if (f2 > 1.0F) {
-        f1 = f2;
-      }
-      this.screenRatioY = f1;
-      addParam(new UniformParam.FloatParam("screenRatioX", this.screenRatioX));
-      addParam(new UniformParam.FloatParam("screenRatioY", this.screenRatioY));
-      return;
+    float f1;
+    if (f2 > 1.0F) {
+      f1 = 1.0F;
+    } else {
+      f1 = 1.0F / f2;
     }
+    this.screenRatioX = f1;
+    if (f2 > 1.0F) {
+      f1 = f2;
+    } else {
+      f1 = 1.0F;
+    }
+    this.screenRatioY = f1;
+    addParam(new UniformParam.FloatParam("screenRatioX", this.screenRatioX));
+    addParam(new UniformParam.FloatParam("screenRatioY", this.screenRatioY));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TransformFilter
  * JD-Core Version:    0.7.0.1
  */

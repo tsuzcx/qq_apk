@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.BasicMessageChannel;
@@ -15,6 +15,12 @@ public class LifecycleChannel
   public LifecycleChannel(@NonNull DartExecutor paramDartExecutor)
   {
     this.channel = new BasicMessageChannel(paramDartExecutor, "flutter/lifecycle", StringCodec.INSTANCE);
+  }
+  
+  public void appIsDetached()
+  {
+    Log.v("LifecycleChannel", "Sending AppLifecycleState.detached message.");
+    this.channel.send("AppLifecycleState.detached");
   }
   
   public void appIsInactive()
@@ -37,7 +43,7 @@ public class LifecycleChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.LifecycleChannel
  * JD-Core Version:    0.7.0.1
  */

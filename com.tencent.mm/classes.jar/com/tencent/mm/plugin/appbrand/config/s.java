@@ -1,355 +1,376 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.ai.x.a;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.protocal.protobuf.dab;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.protocal.protobuf.cec;
+import com.tencent.mm.protocal.protobuf.ced;
+import com.tencent.mm.protocal.protobuf.cee;
+import com.tencent.mm.protocal.protobuf.fn;
+import com.tencent.mm.protocal.protobuf.fxf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class s
 {
-  static boolean Av(String paramString)
+  private static cec Q(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(129921);
-    if (com.tencent.mm.plugin.appbrand.app.g.auF() == null)
-    {
-      ab.w("MicroMsg.WxaAttrSyncHelper", "needUpdateAttr, storage NULL");
-      AppMethodBeat.o(129921);
-      return false;
-    }
-    long l1 = bo.aox();
-    long l2 = com.tencent.mm.plugin.appbrand.app.g.auF().Ah(paramString);
-    int i = ayB();
-    ab.v("MicroMsg.WxaAttrSyncHelper", "needUpdateAttr, username(%s), currentMS(%d), lastUpdateTime(%d), freq(%d).", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i) });
-    if (l1 - l2 >= i)
-    {
-      AppMethodBeat.o(129921);
-      return true;
-    }
-    AppMethodBeat.o(129921);
-    return false;
+    AppMethodBeat.i(44868);
+    cec localcec = new cec();
+    localcec.oOI = paramString;
+    localcec.vhJ = paramInt1;
+    localcec.YGX = paramInt2;
+    AppMethodBeat.o(44868);
+    return localcec;
   }
   
-  private static boolean Aw(String paramString)
+  public static String a(final String paramString, int paramInt1, int paramInt2, c paramc, boolean paramBoolean)
   {
-    AppMethodBeat.i(129922);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(44869);
+    if (n.aqS() == null)
     {
-      AppMethodBeat.o(129922);
-      return false;
+      AppMethodBeat.o(44869);
+      return "";
     }
-    if (!com.tencent.mm.af.l.na(paramString))
+    int i = a.cn(paramString, paramInt1);
+    int j = a.co(paramString, paramInt1);
+    String str = a.cp(paramString, paramInt1);
+    boolean bool;
+    if ((j != 0) && ((Util.isNullOrNil(str)) || (j > i)))
     {
-      ab.e("MicroMsg.WxaAttrSyncHelper", "checkLogIfInvalidUsername %s, %s", new Object[] { paramString, an.l(new Throwable()) });
-      com.tencent.mm.plugin.report.e.qrI.idkeyStat(648L, 1L, 1L, false);
-      AppMethodBeat.o(129922);
-      return true;
-    }
-    AppMethodBeat.o(129922);
-    return false;
-  }
-  
-  public static void Ax(String paramString)
-  {
-    AppMethodBeat.i(129923);
-    if (Aw(paramString))
-    {
-      AppMethodBeat.o(129923);
-      return;
-    }
-    d.post(new s.1(paramString), "WxaAttrSync");
-    AppMethodBeat.o(129923);
-  }
-  
-  public static void Ay(String paramString)
-  {
-    AppMethodBeat.i(129928);
-    if (Aw(paramString))
-    {
-      AppMethodBeat.o(129928);
-      return;
-    }
-    if (Av(paramString)) {
-      ae(paramString, true);
-    }
-    AppMethodBeat.o(129928);
-  }
-  
-  static <T> Pair<T, a.a> a(String paramString, boolean paramBoolean, s.a<T> parama)
-  {
-    a.a locala = null;
-    AppMethodBeat.i(129925);
-    if ((bo.isNullOrNil(paramString)) || (!com.tencent.mm.kernel.g.RJ().eHg))
-    {
-      paramString = Pair.create(null, null);
-      AppMethodBeat.o(129925);
-      return paramString;
-    }
-    Object localObject2;
-    if (!paramBoolean)
-    {
-      localObject2 = parama.AA(paramString);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        if (!parama.bg(localObject2)) {
-          break label539;
-        }
+      bool = true;
+      Log.i("MicroMsg.CommonConfigManager", "getConfig the server_version is %d ,the local_version is %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      Log.i("MicroMsg.CommonConfigManager", "the config is \n %s \n isShouldSyncFromServer:%b", new Object[] { str, Boolean.valueOf(bool) });
+      if (!bool) {
+        break label155;
       }
-    }
-    for (Object localObject1 = localObject2;; localObject1 = null)
-    {
-      locala = x.c(parama.Az(paramString).rr);
-      if ((locala == null) || ((locala instanceof x.a)) || (locala.errType != 0) || (locala.errCode != 0))
-      {
-        int i;
-        int j;
-        if (locala == null)
+      if (paramBoolean) {
+        a(paramString, paramInt1, j, paramInt2, new b()
         {
-          i = -1;
-          if (locala != null) {
-            break label227;
-          }
-          j = -1;
-          label133:
-          if (locala != null) {
-            break label237;
-          }
-        }
-        label227:
-        label237:
-        for (localObject2 = "null resp";; localObject2 = locala.errMsg)
-        {
-          ab.e("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, errType = %d, errCode = %d, errMsg = %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(j), localObject2 });
-          localObject2 = localObject1;
-          if (localObject1 == null)
+          public final void callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc)
           {
-            localObject2 = parama.AA(paramString);
-            if (localObject2 == null) {
-              break label247;
+            AppMethodBeat.i(44855);
+            if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+            {
+              Log.e("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+              if (s.this != null) {
+                s.this.Vv("");
+              }
+              AppMethodBeat.o(44855);
+              return;
             }
-          }
-          paramString = Pair.create(localObject2, locala);
-          AppMethodBeat.o(129925);
-          return paramString;
-          i = locala.errType;
-          break;
-          j = locala.errCode;
-          break label133;
-        }
-        label247:
-        paramString = Pair.create(null, locala);
-        AppMethodBeat.o(129925);
-        return paramString;
-      }
-      localObject1 = ((dab)locala.fsN).wxO.iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (daa)((Iterator)localObject1).next();
-          if ("UserName".equalsIgnoreCase(((daa)localObject2).wxP))
-          {
-            localObject2 = ((daa)localObject2).qsu;
-            localObject1 = localObject2;
-            if (((String)localObject2).endsWith("@app")) {
-              break;
+            paramAnonymousString = (cee)c.c.b(paramAnonymousc.otC);
+            if ((paramAnonymousString.aaoq == null) || (paramAnonymousString.aaoq.size() == 0))
+            {
+              Log.e("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, AppConfigList is empty");
+              if (s.this != null) {
+                s.this.Vv("");
+              }
+              AppMethodBeat.o(44855);
+              return;
             }
+            paramAnonymousString = (fn)paramAnonymousString.aaoq.get(0);
+            Log.i("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousString.YGY, Integer.valueOf(paramAnonymousString.YGX) });
+            if (!Util.isNullOrNil(paramAnonymousString.YGY))
+            {
+              s.a.R(paramString, paramAnonymousString.vhJ, paramAnonymousString.YGX);
+              s.a.S(paramString, paramAnonymousString.vhJ, paramAnonymousString.YGX);
+              s.a.x(paramString, paramAnonymousString.vhJ, paramAnonymousString.YGY);
+              if (s.this != null)
+              {
+                s.this.Vv(paramAnonymousString.YGY);
+                AppMethodBeat.o(44855);
+              }
+            }
+            else if (s.this != null)
+            {
+              s.this.Vv("");
+            }
+            AppMethodBeat.o(44855);
           }
-        }
+        });
       }
-      for (localObject1 = (String)localObject2 + "@app";; localObject1 = null)
-      {
-        localObject2 = localObject1;
-        if (bo.isNullOrNil((String)localObject1))
-        {
-          localObject1 = parama.getUsername();
-          localObject2 = localObject1;
-          if (bo.isNullOrNil((String)localObject1))
-          {
-            ab.e("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, key %s, cgi sync fail username invalid", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-            paramString = Pair.create(null, null);
-            AppMethodBeat.o(129925);
-            return paramString;
-          }
-        }
-        ab.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync key(%s), username(%s), flushAttrs", new Object[] { paramString, localObject2 });
-        if (com.tencent.mm.plugin.appbrand.app.g.auF().a((String)localObject2, ((dab)locala.fsN).wxN, ((dab)locala.fsN).wxO)) {
-          q.ayA().doNotify("single", 3, localObject2);
-        }
-        localObject2 = parama.AA(paramString);
-        ab.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, cgi sync result %s", new Object[] { Boolean.valueOf(paramBoolean), localObject2 });
-        for (paramString = locala;; paramString = locala)
-        {
-          paramString = Pair.create(localObject2, paramString);
-          AppMethodBeat.o(129925);
-          return paramString;
-          label539:
-          ab.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, no need cgi sync, query record %s", new Object[] { Boolean.valueOf(paramBoolean), localObject2 });
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean, b<WxaAttributes> paramb)
-  {
-    AppMethodBeat.i(129927);
-    if (Aw(paramString))
-    {
-      AppMethodBeat.o(129927);
-      return;
-    }
-    Looper localLooper;
-    if ((al.isMainThread()) || (Looper.myLooper() == null)) {
-      localLooper = new al().oNc.getLooper();
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      new ak(localLooper).post(new s.5(paramString, paramBoolean, paramb, bool));
-      AppMethodBeat.o(129927);
-      return;
-      localLooper = Looper.myLooper();
-    }
-  }
-  
-  public static void a(List<String> paramList, k.a parama)
-  {
-    AppMethodBeat.i(129929);
-    if (bo.es(paramList))
-    {
-      AppMethodBeat.o(129929);
-      return;
-    }
-    if (al.isMainThread())
-    {
-      m.aNS().ac(new s.6(paramList, parama));
-      AppMethodBeat.o(129929);
-      return;
-    }
-    Object localObject = paramList;
-    if (!(paramList instanceof ArrayList))
-    {
-      if (!(paramList instanceof LinkedList)) {
-        break label110;
-      }
-      localObject = paramList;
     }
     for (;;)
     {
-      paramList = ((List)localObject).iterator();
-      while (paramList.hasNext()) {
-        if (!Av((String)paramList.next())) {
-          paramList.remove();
+      AppMethodBeat.o(44869);
+      return str;
+      bool = false;
+      break;
+      label155:
+      paramc.Vv(str);
+    }
+  }
+  
+  private static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, b paramb)
+  {
+    AppMethodBeat.i(44870);
+    LinkedList localLinkedList = new LinkedList();
+    cec localcec = new cec();
+    localcec.oOI = paramString;
+    localcec.vhJ = paramInt1;
+    localcec.YGX = paramInt2;
+    localcec.aaoo = paramInt3;
+    localLinkedList.add(localcec);
+    a(localLinkedList, paramb);
+    AppMethodBeat.o(44870);
+  }
+  
+  public static void a(String paramString, LinkedList<fxf> paramLinkedList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(44867);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.CommonConfigManager", "setVersion, app_id is null");
+      AppMethodBeat.o(44867);
+      return;
+    }
+    if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
+    {
+      Log.e("MicroMsg.CommonConfigManager", "setVersion, versionItems is empty");
+      AppMethodBeat.o(44867);
+      return;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = paramLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      fxf localfxf = (fxf)localIterator.next();
+      Log.d("MicroMsg.CommonConfigManager", "versionItem.version:%d,version.type:%d", new Object[] { Integer.valueOf(localfxf.version), Integer.valueOf(localfxf.type) });
+      int i = a.cn(paramString, localfxf.type);
+      int j = localfxf.version;
+      a.S(paramString, localfxf.type, j);
+      if (j != 0) {
+        if (j > i)
+        {
+          localLinkedList.add(Q(paramString, localfxf.type, localfxf.version));
+        }
+        else if (j == i)
+        {
+          if (Util.isNullOrNil(a.cp(paramString, localfxf.type))) {
+            localLinkedList.add(Q(paramString, localfxf.type, localfxf.version));
+          }
+        }
+        else
+        {
+          Log.i("MicroMsg.CommonConfigManager", "local_version:%d, server_version:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          if (Util.isNullOrNil(a.cp(paramString, localfxf.type))) {
+            localLinkedList.add(Q(paramString, localfxf.type, localfxf.version));
+          }
         }
       }
-      label110:
-      localObject = new LinkedList();
-      ((List)localObject).addAll(paramList);
     }
-    if (bo.es((List)localObject))
+    Log.i("MicroMsg.CommonConfigManager", "setVersion appid:%s,versionItems.size:%d,getAppConfigItems.size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()), Integer.valueOf(localLinkedList.size()) });
+    if (paramBoolean)
     {
-      AppMethodBeat.o(129929);
-      return;
+      if (localLinkedList.size() == 0)
+      {
+        AppMethodBeat.o(44867);
+        return;
+      }
+      Log.d("MicroMsg.CommonConfigManager", "setVersion appid:%s, need sync from server", new Object[] { paramString });
+      a(localLinkedList, new b()
+      {
+        public final void callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc)
+        {
+          AppMethodBeat.i(44854);
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            Log.e("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            AppMethodBeat.o(44854);
+            return;
+          }
+          paramAnonymousString = (cee)c.c.b(paramAnonymousc.otC);
+          if ((paramAnonymousString.aaoq == null) || (paramAnonymousString.aaoq.size() == 0))
+          {
+            Log.e("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, AppConfigList is empty");
+            AppMethodBeat.o(44854);
+            return;
+          }
+          Log.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer appConfigList.size:%d", new Object[] { Integer.valueOf(paramAnonymousString.aaoq.size()) });
+          paramAnonymousString = paramAnonymousString.aaoq.iterator();
+          while (paramAnonymousString.hasNext())
+          {
+            paramAnonymousc = (fn)paramAnonymousString.next();
+            Log.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousc.YGY, Integer.valueOf(paramAnonymousc.YGX) });
+            if (!Util.isNullOrNil(paramAnonymousc.YGY))
+            {
+              s.a.R(s.this, paramAnonymousc.vhJ, paramAnonymousc.YGX);
+              s.a.S(s.this, paramAnonymousc.vhJ, paramAnonymousc.YGX);
+              s.a.x(s.this, paramAnonymousc.vhJ, paramAnonymousc.YGY);
+            }
+          }
+          AppMethodBeat.o(44854);
+        }
+      });
     }
-    ab.i("MicroMsg.WxaAttrSyncHelper", "batchSync, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(((List)localObject).size()), parama.name(), Integer.valueOf(parama.intValue) });
-    int i = 0;
-    int j = 0;
-    while (i < ((List)localObject).size() / 20)
-    {
-      int k = i * 20;
-      j = k + 20;
-      b(((List)localObject).subList(k, j), parama);
-      i += 1;
-    }
-    if (j < ((List)localObject).size()) {
-      b(((List)localObject).subList(j, ((List)localObject).size()), parama);
-    }
-    AppMethodBeat.o(129929);
+    AppMethodBeat.o(44867);
   }
   
-  public static Pair<WxaAttributes, a.a> ac(String paramString, boolean paramBoolean)
+  private static void a(LinkedList<cec> paramLinkedList, b paramb)
   {
-    AppMethodBeat.i(129924);
-    paramString = a(paramString, paramBoolean, new s.a()
+    AppMethodBeat.i(44871);
+    c.a locala = new c.a();
+    locala.funcId = 1138;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getappconfig";
+    locala.otF = new cee();
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    ced localced = new ced();
+    localced.aaop = paramLinkedList;
+    locala.otE = localced;
+    z.a(locala.bEF(), new z.a()
     {
-      public final l Az(String paramAnonymousString)
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc, p paramAnonymousp)
       {
-        AppMethodBeat.i(129908);
-        paramAnonymousString = new l(null, paramAnonymousString);
-        AppMethodBeat.o(129908);
-        return paramAnonymousString;
+        AppMethodBeat.i(44856);
+        if (s.this != null) {
+          s.this.callback(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousc);
+        }
+        AppMethodBeat.o(44856);
+        return 0;
       }
-      
-      public final String getUsername()
-      {
-        AppMethodBeat.i(129907);
-        String str = q.As(this.val$appId);
-        AppMethodBeat.o(129907);
-        return str;
-      }
-    });
-    AppMethodBeat.o(129924);
-    return paramString;
+    }, true);
+    AppMethodBeat.o(44871);
   }
   
-  public static Pair<WxaAttributes, a.a> ae(String paramString, boolean paramBoolean)
+  public static void b(String paramString, LinkedList<fxf> paramLinkedList)
   {
-    AppMethodBeat.i(129926);
-    if (Aw(paramString))
+    AppMethodBeat.i(44866);
+    a(paramString, paramLinkedList, true);
+    AppMethodBeat.o(44866);
+  }
+  
+  public static final class a
+  {
+    public static void R(String paramString, int paramInt1, int paramInt2)
     {
-      paramString = new Pair(null, null);
-      AppMethodBeat.o(129926);
+      AppMethodBeat.i(44860);
+      if (n.aqS() == null)
+      {
+        AppMethodBeat.o(44860);
+        return;
+      }
+      n.aqS().dn(ck(paramString, paramInt1), String.valueOf(paramInt2));
+      AppMethodBeat.o(44860);
+    }
+    
+    public static void S(String paramString, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(44861);
+      if (n.aqS() == null)
+      {
+        AppMethodBeat.o(44861);
+        return;
+      }
+      n.aqS().dn(cl(paramString, paramInt1), String.valueOf(paramInt2));
+      AppMethodBeat.o(44861);
+    }
+    
+    public static String Xx(String paramString)
+    {
+      AppMethodBeat.i(323445);
+      paramString = String.format("%s#NotifyMessageStatus", new Object[] { paramString });
+      AppMethodBeat.o(323445);
       return paramString;
     }
-    paramString = a(paramString, paramBoolean, new s.4(paramString));
-    AppMethodBeat.o(129926);
-    return paramString;
-  }
-  
-  private static int ayB()
-  {
-    AppMethodBeat.i(129920);
-    int i = com.tencent.mm.m.g.Nq().getInt("MMBizAttrSyncFreq", 3600);
-    AppMethodBeat.o(129920);
-    return i;
-  }
-  
-  private static void b(List<String> paramList, k.a parama)
-  {
-    AppMethodBeat.i(129930);
-    if (bo.es(paramList))
+    
+    private static String ck(String paramString, int paramInt)
     {
-      AppMethodBeat.o(129930);
-      return;
+      AppMethodBeat.i(44857);
+      paramString = String.format("%s_%s_local_version", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44857);
+      return paramString;
     }
-    new k(paramList, parama).adl().i(new s.7());
-    AppMethodBeat.o(129930);
+    
+    private static String cl(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44858);
+      paramString = String.format("%s_%s_server_version", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44858);
+      return paramString;
+    }
+    
+    private static String cm(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44859);
+      paramString = String.format("%s_%s_config", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44859);
+      return paramString;
+    }
+    
+    public static int cn(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44863);
+      if (n.aqS() == null)
+      {
+        AppMethodBeat.o(44863);
+        return 0;
+      }
+      paramInt = Util.getInt(n.aqS().O(ck(paramString, paramInt), "0"), 0);
+      AppMethodBeat.o(44863);
+      return paramInt;
+    }
+    
+    public static int co(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44864);
+      if (n.aqS() == null)
+      {
+        AppMethodBeat.o(44864);
+        return 0;
+      }
+      paramInt = Util.getInt(n.aqS().O(cl(paramString, paramInt), "0"), 0);
+      AppMethodBeat.o(44864);
+      return paramInt;
+    }
+    
+    public static String cp(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44865);
+      if (n.aqS() == null)
+      {
+        AppMethodBeat.o(44865);
+        return "";
+      }
+      paramString = n.aqS().O(cm(paramString, paramInt), "");
+      AppMethodBeat.o(44865);
+      return paramString;
+    }
+    
+    public static void x(String paramString1, int paramInt, String paramString2)
+    {
+      AppMethodBeat.i(44862);
+      if (n.aqS() == null)
+      {
+        AppMethodBeat.o(44862);
+        return;
+      }
+      n.aqS().dn(cm(paramString1, paramInt), paramString2);
+      AppMethodBeat.o(44862);
+    }
   }
   
-  public static abstract interface b<T>
+  public static abstract interface b
   {
-    public abstract void g(int paramInt, T paramT);
+    public abstract void callback(int paramInt1, int paramInt2, String paramString, c paramc);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void Vv(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.s
  * JD-Core Version:    0.7.0.1
  */

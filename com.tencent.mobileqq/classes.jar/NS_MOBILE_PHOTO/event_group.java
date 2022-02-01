@@ -11,11 +11,11 @@ public final class event_group
   static ArrayList<event_card> cache_cards;
   static ArrayList<event_cloud_card> cache_cloudCards;
   static ArrayList<event_card_type> cache_types = new ArrayList();
-  public ArrayList<event_card> cards;
-  public ArrayList<event_cloud_card> cloudCards;
+  public ArrayList<event_card> cards = null;
+  public ArrayList<event_cloud_card> cloudCards = null;
   public String groupid = "";
-  public int type;
-  public ArrayList<event_card_type> types;
+  public int type = 0;
+  public ArrayList<event_card_type> types = null;
   
   static
   {
@@ -53,18 +53,20 @@ public final class event_group
   {
     paramJceOutputStream.write(this.groupid, 0);
     paramJceOutputStream.write(this.types, 1);
-    if (this.cards != null) {
-      paramJceOutputStream.write(this.cards, 2);
+    ArrayList localArrayList = this.cards;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.type, 3);
-    if (this.cloudCards != null) {
-      paramJceOutputStream.write(this.cloudCards, 4);
+    localArrayList = this.cloudCards;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_group
  * JD-Core Version:    0.7.0.1
  */

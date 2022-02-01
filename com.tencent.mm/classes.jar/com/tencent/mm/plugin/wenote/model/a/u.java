@@ -4,9 +4,9 @@ public class u
   extends o
 {
   public String content;
-  public String hPe;
+  public String sdM;
   public String title;
-  public String vxi;
+  public String xyq;
 }
 
 

@@ -1,21 +1,16 @@
 package com.tencent.mm.plugin.soter.d;
 
+import com.tencent.mm.vending.c.a;
+import com.tencent.mm.vending.g.b;
+
 public final class e
+  implements a<Boolean, Boolean>
 {
-  public String kbP = "";
-  public String son = "";
-  
-  public e() {}
-  
-  public e(String paramString1, String paramString2)
-  {
-    this.son = paramString1;
-    this.kbP = paramString2;
-  }
+  private b pGe = null;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.d.e
  * JD-Core Version:    0.7.0.1
  */

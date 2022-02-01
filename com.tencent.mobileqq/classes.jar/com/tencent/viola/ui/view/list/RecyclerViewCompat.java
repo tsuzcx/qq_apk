@@ -53,54 +53,57 @@ public class RecyclerViewCompat
   
   public boolean fling(int paramInt1, int paramInt2)
   {
-    boolean bool1 = false;
     int j = paramInt1;
     int k = paramInt2;
     if (this.mOnFlingListener != null)
     {
-      if (getLayoutManager() == null) {
-        ViolaLogUtils.e("RecyclerViewCompat", "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
-      }
-      boolean bool3;
-      boolean bool2;
-      int i;
-      do
+      Object localObject = getLayoutManager();
+      boolean bool1 = false;
+      if (localObject == null)
       {
-        do
-        {
-          return false;
-        } while (isLayoutFrozen());
-        RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
-        bool3 = localLayoutManager.canScrollHorizontally();
-        bool2 = localLayoutManager.canScrollVertically();
-        if (bool3)
-        {
-          i = paramInt1;
-          if (Math.abs(paramInt1) >= getMinFlingVelocity()) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (bool2)
-        {
-          paramInt1 = paramInt2;
-          if (Math.abs(paramInt2) >= getMinFlingVelocity()) {}
-        }
-        else
-        {
-          paramInt1 = 0;
-        }
-      } while ((i == 0) && (paramInt1 == 0));
+        ViolaLogUtils.e("RecyclerViewCompat", "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
+        return false;
+      }
+      if (isLayoutFrozen()) {
+        return false;
+      }
+      localObject = getLayoutManager();
+      boolean bool3 = ((RecyclerView.LayoutManager)localObject).canScrollHorizontally();
+      boolean bool2 = ((RecyclerView.LayoutManager)localObject).canScrollVertically();
+      int i;
+      if (bool3)
+      {
+        i = paramInt1;
+        if (Math.abs(paramInt1) >= getMinFlingVelocity()) {}
+      }
+      else
+      {
+        i = 0;
+      }
+      if (bool2)
+      {
+        paramInt1 = paramInt2;
+        if (Math.abs(paramInt2) >= getMinFlingVelocity()) {}
+      }
+      else
+      {
+        paramInt1 = 0;
+      }
+      if ((i == 0) && (paramInt1 == 0)) {
+        return false;
+      }
+      float f1 = i;
+      float f2 = paramInt1;
       j = i;
       k = paramInt1;
-      if (!dispatchNestedPreFling(i, paramInt1))
+      if (!dispatchNestedPreFling(f1, f2))
       {
         if ((bool3) || (bool2)) {
           bool1 = true;
         }
-        dispatchNestedFling(i, paramInt1, bool1);
-        if ((this.mOnFlingListener != null) && (this.mOnFlingListener.onFling(i, paramInt1))) {
+        dispatchNestedFling(f1, f2, bool1);
+        localObject = this.mOnFlingListener;
+        if ((localObject != null) && (((RecyclerViewCompat.OnCompatFlingListener)localObject).onFling(f1, f2))) {
           return true;
         }
         this.mIsInterruptedPreFling = true;
@@ -128,7 +131,7 @@ public class RecyclerViewCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.RecyclerViewCompat
  * JD-Core Version:    0.7.0.1
  */

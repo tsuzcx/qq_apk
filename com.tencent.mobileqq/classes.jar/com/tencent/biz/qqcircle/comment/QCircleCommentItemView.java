@@ -1,102 +1,92 @@
 package com.tencent.biz.qqcircle.comment;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.tencent.biz.qqcircle.QCirclePluginUtil;
+import com.tencent.biz.qqcircle.adapter.QCircleCommentReplyAdapter;
+import com.tencent.biz.qqcircle.beans.QCircleCommentItemInfo;
+import com.tencent.biz.qqcircle.beans.QCircleExtraTypeInfo;
 import com.tencent.biz.qqcircle.events.QCircleCommentPraiseUpdateEvent;
+import com.tencent.biz.qqcircle.report.QCirclePluginReportUtil;
+import com.tencent.biz.qqcircle.utils.ImmersiveUtils;
+import com.tencent.biz.qqcircle.utils.QCircleCommentHelper;
 import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
 import com.tencent.biz.qqcircle.widgets.QCircleAvatarView;
+import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
 import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqcircle.widgets.comment.DateUtils;
+import com.tencent.biz.qqcircle.widgets.comment.OnCommentElementClickListener;
+import com.tencent.biz.richframework.animation.recyclerview.EnhanceItemAnimator;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqcircle.helpers.QCircleSkinHelper;
+import cooperation.qqcircle.report.QCircleLpReportDc05501;
+import cooperation.qqcircle.report.QCircleLpReportDc05501.DataBuilder;
+import cooperation.qqcircle.report.QCircleReportBean;
 import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
-import tra;
-import tuw;
-import tux;
-import tuy;
-import xsm;
-import yha;
-import yhn;
-import yiw;
-import yiy;
+import java.util.List;
 
 public class QCircleCommentItemView
-  extends RelativeLayout
-  implements View.OnClickListener, View.OnLongClickListener, yiy
+  extends QCircleBaseWidgetView<QCircleCommentItemInfo>
+  implements View.OnClickListener, View.OnLongClickListener, SimpleEventReceiver
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private ItemReplyContainer jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer;
-  private QCircleAsyncTextView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView;
-  private QCircleAvatarView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView;
-  private QCircleCommentPraiseLayout jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout;
-  private FeedCloudMeta.StComment jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  public tuy a;
-  private yhn jdField_a_of_type_Yhn;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private QCircleAsyncTextView jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView;
-  private Drawable c;
+  private int a;
+  private OnCommentElementClickListener b;
+  private RelativeLayout c;
+  private QCircleAvatarView d;
+  private QCircleAsyncTextView e;
+  private QCircleAsyncTextView f;
+  private FeedCloudMeta.StFeed g;
+  private QCircleCommentItemInfo h;
+  private FeedCloudMeta.StComment i;
+  private Drawable j;
+  private Drawable k;
+  private Drawable l;
+  private Drawable m;
+  private QCircleCommentPraiseLayout n;
+  private TextView o;
+  private LinearLayout p;
+  private RecyclerView q;
+  private QCircleCommentReplyAdapter r;
   
-  public QCircleCommentItemView(Context paramContext)
+  public QCircleCommentItemView(@NonNull Context paramContext)
   {
-    this(paramContext, null);
-  }
-  
-  public QCircleCommentItemView(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    this(paramContext, paramAttributeSet, 0);
-  }
-  
-  public QCircleCommentItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-  {
-    super(paramContext, paramAttributeSet, paramInt);
-    a();
-    b();
+    super(paramContext);
   }
   
   private void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560522, this, true);
-    localView.setPadding(0, 0, 0, xsm.a(getContext(), 12.0F));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131364541));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)localView.findViewById(2131362973));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView = ((QCircleAsyncTextView)localView.findViewById(2131372216));
-    this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView = ((QCircleAsyncTextView)localView.findViewById(2131372209));
-    this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer = ((ItemReplyContainer)localView.findViewById(2131375657));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131375661));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout = ((QCircleCommentPraiseLayout)localView.findViewById(2131372224));
-    this.jdField_a_of_type_Tuy = new tuy();
-    this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376664));
-    this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364548));
-    this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370750));
-    this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363633));
-    this.jdField_a_of_type_Tuy.c = ((TextView)localView.findViewById(2131363687));
-    this.jdField_a_of_type_Tuy.c.setVisibility(8);
-    this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365361));
+    this.c.setOnClickListener(this);
+    this.d.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    this.f.setOnLongClickListener(this);
+    this.c.setOnLongClickListener(this);
+    QCircleCommentItemView.1 local1 = new QCircleCommentItemView.1(this, getContext(), 1, false);
+    this.q.setLayoutManager(local1);
+    this.q.setItemAnimator(new EnhanceItemAnimator());
   }
   
   private void a(FeedCloudMeta.StComment paramStComment)
@@ -104,76 +94,161 @@ public class QCircleCommentItemView
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramStComment.content.get());
     if (paramStComment.typeFlag.get() == 1)
     {
-      if (this.c == null)
+      if (this.l == null)
       {
-        this.c = getResources().getDrawable(2130843555);
-        this.c.setBounds(ImmersiveUtils.a(2.0F), 0, ImmersiveUtils.a(33.0F), ImmersiveUtils.a(14.0F));
+        this.l = QCircleSkinHelper.getInstance().getDrawable(2130845331);
+        this.l.setBounds(ImmersiveUtils.a(2.0F), ImmersiveUtils.a(1.5F), ImmersiveUtils.a(30.0F), ImmersiveUtils.a(15.5F));
       }
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, localSpannableStringBuilder.length(), this.c);
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(true);
+      this.f.a(localSpannableStringBuilder, localSpannableStringBuilder.length(), this.l);
+      this.f.a(true);
     }
-    for (;;)
+    else if (QCircleCommentHelper.a(paramStComment.typeFlag2.get(), 4))
     {
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.c();
-      this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setText(localSpannableStringBuilder);
-      return;
-      if (paramStComment.likeInfo.ownerStatus.get() == 1)
+      if (this.m == null)
       {
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)
-        {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130843554);
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(ImmersiveUtils.a(2.0F), 0, ImmersiveUtils.a(52.0F), ImmersiveUtils.a(14.0F));
-        }
-        this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, localSpannableStringBuilder.length(), this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(true);
+        this.m = getResources().getDrawable(2130845085);
+        this.m.setBounds(ImmersiveUtils.a(2.5F), ImmersiveUtils.a(0.0F), ImmersiveUtils.a(42.5F), ImmersiveUtils.a(16.0F));
       }
-      else
-      {
-        this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(false);
-      }
+      a(9, 1);
+      this.f.a(localSpannableStringBuilder, localSpannableStringBuilder.length(), this.m);
+      this.f.a(true);
     }
-  }
-  
-  private void a(FeedCloudMeta.StComment paramStComment, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Tuy != null) && (this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetLinearLayout != null))
+    else if (paramStComment.likeInfo.ownerStatus.get() == 1)
     {
-      if ((!paramBoolean) || (paramStComment == null) || (paramStComment.vecReply.size() <= 0)) {
-        break label138;
+      if (this.k == null)
+      {
+        this.k = QCircleSkinHelper.getInstance().getDrawable(2130845330);
+        this.k.setBounds(ImmersiveUtils.a(2.0F), ImmersiveUtils.a(1.5F), ImmersiveUtils.a(47.0F), ImmersiveUtils.a(15.5F));
       }
-      String str = yha.a(paramStComment.createTime.get() * 1000L);
-      this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      if (paramStComment.vecReply.size() > 0) {
-        this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetTextView.setText(tra.a(paramStComment.replyCount.get(), true) + alud.a(2131702601));
-      }
+      this.f.a(localSpannableStringBuilder, localSpannableStringBuilder.length(), this.k);
+      this.f.a(true);
     }
-    return;
-    label138:
-    this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    else
+    {
+      this.f.a(false);
+    }
+    this.f.setOnClickAtTextListener(new QCircleCommentItemView.3(this));
+    this.f.setText(localSpannableStringBuilder);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnLongClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this);
-    this.jdField_a_of_type_Tuy.c.setOnClickListener(this);
+    Object localObject = this.i;
+    if ((localObject != null) && (this.g != null))
+    {
+      QCircleAvatarView localQCircleAvatarView = this.d;
+      if (localQCircleAvatarView == null) {
+        return;
+      }
+      localQCircleAvatarView.setUser(((FeedCloudMeta.StComment)localObject).postUser);
+      localObject = new SpannableStringBuilder(this.i.postUser.nick.get());
+      if (!this.i.postUser.id.get().equals(this.g.poster.id.get()))
+      {
+        this.e.a(false);
+        this.e.setText((CharSequence)localObject);
+        return;
+      }
+      if (this.j == null)
+      {
+        this.j = QCircleSkinHelper.getInstance().getDrawable(2130845329);
+        this.j.setBounds(ImmersiveUtils.a(2.0F), ImmersiveUtils.a(1.5F), ImmersiveUtils.a(30.0F), ImmersiveUtils.a(15.5F));
+      }
+      this.e.a((SpannableStringBuilder)localObject, ((SpannableStringBuilder)localObject).length(), this.j);
+      this.e.a(true);
+      this.e.setText((CharSequence)localObject);
+    }
   }
   
-  public LinearLayout a()
+  private void c()
   {
-    return this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout = this.n;
+    if (localQCircleCommentPraiseLayout == null) {
+      return;
+    }
+    localQCircleCommentPraiseLayout.setData(1, this.g, this.i, null, true);
+    this.n.setOnClickHookListener(new QCircleCommentItemView.2(this));
   }
   
-  public FeedCloudMeta.StComment a()
+  public void a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment;
+    boolean bool = getExtraTypeInfo() instanceof QCircleExtraTypeInfo;
+    QCircleLpReportDc05501.DataBuilder localDataBuilder = null;
+    QCircleExtraTypeInfo localQCircleExtraTypeInfo;
+    if (bool)
+    {
+      localQCircleExtraTypeInfo = (QCircleExtraTypeInfo)getExtraTypeInfo();
+      localObject2 = localQCircleExtraTypeInfo.mFeed;
+    }
+    else
+    {
+      localQCircleExtraTypeInfo = null;
+      localObject2 = localQCircleExtraTypeInfo;
+    }
+    Object localObject1 = localDataBuilder;
+    if (localObject2 != null)
+    {
+      localObject1 = localDataBuilder;
+      if (((FeedCloudMeta.StFeed)localObject2).busiReport != null)
+      {
+        localObject1 = localDataBuilder;
+        if (((FeedCloudMeta.StFeed)localObject2).busiReport.has())
+        {
+          localObject1 = localDataBuilder;
+          if (((FeedCloudMeta.StFeed)localObject2).busiReport.get() != null) {
+            localObject1 = ((FeedCloudMeta.StFeed)localObject2).busiReport.get().toByteArray();
+          }
+        }
+      }
+    }
+    localDataBuilder = QCirclePluginReportUtil.b((FeedCloudMeta.StFeed)localObject2).setActionType(paramInt1).setSubActionType(paramInt2);
+    if (localObject2 != null) {
+      localObject2 = ((FeedCloudMeta.StFeed)localObject2).poster.id.get();
+    } else {
+      localObject2 = "";
+    }
+    Object localObject2 = localDataBuilder.setToUin((String)localObject2);
+    if (localQCircleExtraTypeInfo != null) {
+      paramInt1 = localQCircleExtraTypeInfo.mDataPosition;
+    } else {
+      paramInt1 = -1;
+    }
+    QCircleLpReportDc05501.report(new QCircleLpReportDc05501.DataBuilder(((QCircleLpReportDc05501.DataBuilder)localObject2).setIndex(paramInt1).setPageId(getPageId())).setReportInfo((byte[])localObject1));
+  }
+  
+  public void a(QCircleCommentItemInfo paramQCircleCommentItemInfo, int paramInt)
+  {
+    if ((this.g != null) && (paramQCircleCommentItemInfo != null))
+    {
+      if (paramQCircleCommentItemInfo.a == null) {
+        return;
+      }
+      this.a = paramInt;
+      this.h = paramQCircleCommentItemInfo;
+      this.i = paramQCircleCommentItemInfo.a;
+      b();
+      c();
+      a(this.i);
+      this.o.setText(DateUtils.a(this.i.createTime.get() * 1000L));
+      if ((this.h.b != null) && (this.h.b.size() != 0))
+      {
+        this.p.setVisibility(0);
+        if (this.r == null)
+        {
+          this.r = new QCircleCommentReplyAdapter();
+          this.q.setAdapter(this.r);
+        }
+        this.r.a(this.g, this.i, this.h.b, this.a);
+        this.r.a(this.b);
+        this.r.notifyDataSetChanged();
+        return;
+      }
+      this.p.setVisibility(8);
+    }
+  }
+  
+  public FeedCloudMeta.StComment getComment()
+  {
+    return this.i;
   }
   
   public ArrayList<Class> getEventClass()
@@ -183,157 +258,143 @@ public class QCircleCommentItemView
     return localArrayList;
   }
   
+  public int getLayoutId()
+  {
+    return 2131626774;
+  }
+  
+  protected String getLogTag()
+  {
+    return "QCircleCommentItemView";
+  }
+  
+  public QCircleCommentReplyAdapter getReplyAdapter()
+  {
+    return this.r;
+  }
+  
+  public RecyclerView getRvReplyList()
+  {
+    return this.q;
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    yiw.a().a(this);
+    SimpleEventBus.getInstance().registerReceiver(this);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    OnCommentElementClickListener localOnCommentElementClickListener;
+    FeedCloudMeta.StComment localStComment;
+    if (i1 == 2131428988)
     {
-    }
-    do
-    {
-      do
+      localOnCommentElementClickListener = this.b;
+      if (localOnCommentElementClickListener != null)
       {
-        do
-        {
-          do
-          {
-            return;
-          } while ((this.jdField_a_of_type_Yhn == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null));
-          this.jdField_a_of_type_Yhn.a(paramView, 1, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser);
-          return;
-        } while ((this.jdField_a_of_type_Yhn == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null));
-        this.jdField_a_of_type_Yhn.a(paramView, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser);
-        return;
-      } while (this.jdField_a_of_type_Yhn == null);
-      this.jdField_a_of_type_Yhn.a(paramView, 4, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-      return;
-    } while (this.jdField_a_of_type_Yhn == null);
-    this.jdField_a_of_type_Yhn.a(paramView, 13, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+        localStComment = this.i;
+        if (localStComment != null) {
+          localOnCommentElementClickListener.a(paramView, 1, this.a, localStComment.postUser);
+        }
+      }
+    }
+    else if (i1 == 2131440558)
+    {
+      localOnCommentElementClickListener = this.b;
+      if (localOnCommentElementClickListener != null)
+      {
+        localStComment = this.i;
+        if (localStComment != null) {
+          localOnCommentElementClickListener.a(paramView, 2, this.a, localStComment.postUser);
+        }
+      }
+    }
+    else if ((i1 == 2131440538) || (i1 == 2131431066))
+    {
+      localOnCommentElementClickListener = this.b;
+      if (localOnCommentElementClickListener != null) {
+        localOnCommentElementClickListener.a(paramView, 4, this.a, this.i);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yiw.a().b(this);
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
+  }
+  
+  protected void onInitView(Context paramContext, View paramView)
+  {
+    this.c = ((RelativeLayout)paramView.findViewById(2131431066));
+    this.p = ((LinearLayout)paramView.findViewById(2131444639));
+    this.d = ((QCircleAvatarView)paramView.findViewById(2131428988));
+    this.e = ((QCircleAsyncTextView)paramView.findViewById(2131440558));
+    this.f = ((QCircleAsyncTextView)paramView.findViewById(2131440538));
+    this.n = ((QCircleCommentPraiseLayout)paramView.findViewById(2131440580));
+    this.o = ((TextView)paramView.findViewById(2131431073));
+    this.q = ((RecyclerView)paramView.findViewById(2131444647));
+    a();
   }
   
   public boolean onLongClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
+    int i1 = paramView.getId();
+    if ((i1 != 2131440538) && (i1 != 2131431066)) {
       return false;
     }
-    if (this.jdField_a_of_type_Yhn != null) {
-      this.jdField_a_of_type_Yhn.b(paramView, 5, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    OnCommentElementClickListener localOnCommentElementClickListener = this.b;
+    if (localOnCommentElementClickListener != null) {
+      localOnCommentElementClickListener.b(paramView, 5, this.a, this.i);
     }
     return true;
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    if ((!(paramSimpleBaseEvent instanceof QCircleCommentPraiseUpdateEvent)) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null) || (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment == null) || (!TextUtils.equals(((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mFeedId, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()))) {}
-    while ((((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mType != 1) || (!TextUtils.equals(((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mCommentId, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get()))) {
-      return;
-    }
-    if (tra.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.ownerStatus.set(((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mPraisedStatus);
-    }
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.status.set(((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mPraisedStatus);
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.likeInfo.count.set(((QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent).mPraisedNum);
-    a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
-  }
-  
-  public void setData(FeedCloudMeta.StComment paramStComment, int paramInt1, FeedCloudMeta.StFeed paramStFeed, int paramInt2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
-    if ((paramStComment == null) || (paramStFeed == null)) {
-      return;
-    }
-    if ((paramStComment.postUser != null) && (paramStComment.postUser.nick.get() != null))
+    if (((paramSimpleBaseEvent instanceof QCircleCommentPraiseUpdateEvent)) && (this.g != null) && (this.i != null))
     {
-      if ((getContext() instanceof BaseActivity)) {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setUser(((BaseActivity)getContext()).app, paramStComment.postUser);
+      paramSimpleBaseEvent = (QCircleCommentPraiseUpdateEvent)paramSimpleBaseEvent;
+      if (!TextUtils.equals(paramSimpleBaseEvent.mFeedId, this.g.id.get())) {
+        return;
       }
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramStComment.postUser.nick.get());
-      if (paramStComment.postUser.id.get().equals(paramStFeed.poster.id.get()))
+      if ((paramSimpleBaseEvent.mType == 1) && (TextUtils.equals(paramSimpleBaseEvent.mCommentId, this.i.id.get())))
       {
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-        {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130843553);
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(ImmersiveUtils.a(2.0F), 0, ImmersiveUtils.a(33.0F), ImmersiveUtils.a(14.0F));
+        if (QCirclePluginUtil.b((FeedCloudMeta.StUser)this.g.poster.get())) {
+          this.i.likeInfo.ownerStatus.set(paramSimpleBaseEvent.mPraisedStatus);
         }
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(localSpannableStringBuilder, localSpannableStringBuilder.length(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(true);
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setText(localSpannableStringBuilder);
-      }
-    }
-    else
-    {
-      a(paramStComment);
-      this.jdField_a_of_type_Tuy.jdField_a_of_type_AndroidWidgetTextView.setText(yha.a(paramStComment.createTime.get() * 1000L));
-      a(paramStComment, false);
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size() != 0) {
-        break label301;
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout.setData(1, paramStFeed, paramStComment, null, true);
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentPraiseLayout.setOnClickHookListener(new tux(this));
-      return;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.a(false);
-      break;
-      label301:
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size() > 0)
-      {
-        if (paramInt1 == 0)
-        {
-          this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-          a(paramStComment, true);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, paramInt1, paramStFeed, paramInt2, paramBoolean);
-          this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        this.i.likeInfo.status.set(paramSimpleBaseEvent.mPraisedStatus);
+        this.i.likeInfo.count.set(paramSimpleBaseEvent.mPraisedNum);
+        a(this.i);
       }
     }
   }
   
-  public void setOnCommentElementClickListener(yhn paramyhn)
+  public void setFeed(FeedCloudMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_Yhn = paramyhn;
-    this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.setOnCommentElementClickListener(paramyhn);
-    if ((this.jdField_a_of_type_Tuy != null) && (this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetLinearLayout != null)) {
-      this.jdField_a_of_type_Tuy.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new tuw(this));
-    }
+    this.g = paramStFeed;
   }
   
-  public void setPosition(int paramInt)
+  public void setOnCommentElementClickListener(OnCommentElementClickListener paramOnCommentElementClickListener)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqcircleCommentItemReplyContainer.setPosition(paramInt);
+    this.b = paramOnCommentElementClickListener;
+  }
+  
+  public void setReportBean(QCircleReportBean paramQCircleReportBean)
+  {
+    super.setReportBean(paramQCircleReportBean);
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout = this.n;
+    if (localQCircleCommentPraiseLayout != null) {
+      localQCircleCommentPraiseLayout.setReportBean(paramQCircleReportBean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.comment.QCircleCommentItemView
  * JD-Core Version:    0.7.0.1
  */

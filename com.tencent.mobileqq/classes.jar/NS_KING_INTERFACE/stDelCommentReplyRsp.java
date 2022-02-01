@@ -12,16 +12,6 @@ public final class stDelCommentReplyRsp
 {
   public String nothing = "";
   
-  static
-  {
-    if (!stDelCommentReplyRsp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stDelCommentReplyRsp() {}
   
   public stDelCommentReplyRsp(String paramString)
@@ -36,18 +26,17 @@ public final class stDelCommentReplyRsp
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -104,14 +93,15 @@ public final class stDelCommentReplyRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nothing != null) {
-      paramJceOutputStream.write(this.nothing, 0);
+    String str = this.nothing;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stDelCommentReplyRsp
  * JD-Core Version:    0.7.0.1
  */

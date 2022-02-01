@@ -3,23 +3,23 @@ package btmsdkobf;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.token.arm;
 import com.tmsdk.base.utils.NetworkUtil;
-import tmsdk.QQPIM.ConnectType;
 
 public class cx
 {
-  private static cl he = null;
+  private static cl he;
   public static boolean iS = false;
   public static boolean iT = false;
-  private static Looper iU = null;
-  private static Looper iV = null;
+  private static Looper iU;
+  private static Looper iV;
   private static boolean iW = false;
-  private static String iX = null;
+  private static String iX;
   private static boolean iY = false;
   private static boolean iZ = false;
   private static boolean ja = false;
   private static boolean jb = false;
-  private static dc jc = null;
+  private static dc jc;
   
   public static void A(String paramString)
   {
@@ -28,7 +28,7 @@ public class cx
   
   public static void a(dc paramdc)
   {
-    eh.e("SharkHelper", "[shark_init]initSharkQueueInstance(), sharkQueue: " + paramdc);
+    eh.e("SharkHelper", "[shark_init]initSharkQueueInstance(), sharkQueue: ".concat(String.valueOf(paramdc)));
     jc = paramdc;
   }
   
@@ -64,15 +64,16 @@ public class cx
   
   public static dc bE()
   {
-    if (jc == null) {}
-    try
-    {
-      if (jc == null) {
-        jc = new dd(bF());
+    if (jc == null) {
+      try
+      {
+        if (jc == null) {
+          jc = new dd(bF());
+        }
       }
-      return jc;
+      finally {}
     }
-    finally {}
+    return jc;
   }
   
   private static long bF()
@@ -82,18 +83,19 @@ public class cx
   
   public static Looper getLooper()
   {
-    if (iU == null) {}
-    try
-    {
-      if (iU == null)
+    if (iU == null) {
+      try
       {
-        HandlerThread localHandlerThread = ee.cT().L("Shark-Looper");
-        localHandlerThread.start();
-        iU = localHandlerThread.getLooper();
+        if (iU == null)
+        {
+          HandlerThread localHandlerThread = ee.cT().L("Shark-Looper");
+          localHandlerThread.start();
+          iU = localHandlerThread.getLooper();
+        }
       }
-      return iU;
+      finally {}
     }
-    finally {}
+    return iU;
   }
   
   public static boolean i(byte[] paramArrayOfByte)
@@ -128,33 +130,46 @@ public class cx
   
   public static boolean y(int paramInt)
   {
-    return (paramInt == 152) || (paramInt == 1);
+    if (paramInt != 152) {
+      return paramInt == 1;
+    }
+    return true;
   }
   
   public static boolean y(String paramString)
   {
-    boolean bool = false;
-    if (ConnectType.CT_WIFI != NetworkUtil.getNetworkType()) {
+    if (arm.d != NetworkUtil.getNetworkType()) {
       return false;
     }
-    eh.f("SharkHelper", "[detect_conn]needWifiApprove(), from: " + paramString);
+    eh.f("SharkHelper", "[detect_conn]needWifiApprove(), from: ".concat(String.valueOf(paramString)));
     paramString = null;
     try
     {
-      String str = ef.a(new fx());
+      String str = ef.a(new ef.a()
+      {
+        public final void c(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        {
+          StringBuilder localStringBuilder = new StringBuilder("[detect_conn]needWifiApprove() callback,  need: ");
+          localStringBuilder.append(paramAnonymousBoolean1);
+          localStringBuilder.append(" receivedError: ");
+          localStringBuilder.append(paramAnonymousBoolean2);
+          eh.f("SharkHelper", localStringBuilder.toString());
+        }
+      });
       paramString = str;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        eh.h("SharkHelper", "[detect_conn]needWifiApprove(), exception: " + localThrowable.toString());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder("[detect_conn]needWifiApprove(), exception: ");
+      localStringBuilder2.append(localThrowable.toString());
+      eh.h("SharkHelper", localStringBuilder2.toString());
     }
-    if (!TextUtils.isEmpty(paramString)) {
-      bool = true;
-    }
-    eh.f("SharkHelper", "[detect_conn]needWifiApprove(),  need approve: " + bool + " approve url: " + paramString);
+    boolean bool = TextUtils.isEmpty(paramString) ^ true;
+    StringBuilder localStringBuilder1 = new StringBuilder("[detect_conn]needWifiApprove(),  need approve: ");
+    localStringBuilder1.append(bool);
+    localStringBuilder1.append(" approve url: ");
+    localStringBuilder1.append(paramString);
+    eh.f("SharkHelper", localStringBuilder1.toString());
     return bool;
   }
   
@@ -167,226 +182,264 @@ public class cx
   public static boolean z(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: ldc 57
-    //   4: new 59	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   11: ldc 187
-    //   13: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: ldc 189
-    //   18: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: ldc 191
-    //   23: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_0
-    //   27: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 155	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   36: invokestatic 196	java/lang/System:currentTimeMillis	()J
-    //   39: lstore_3
-    //   40: aconst_null
-    //   41: astore_0
-    //   42: aconst_null
-    //   43: astore 6
-    //   45: aload_0
-    //   46: astore 5
-    //   48: new 198	java/net/InetSocketAddress
-    //   51: dup
-    //   52: ldc 189
-    //   54: invokestatic 204	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
-    //   57: bipush 80
-    //   59: invokespecial 207	java/net/InetSocketAddress:<init>	(Ljava/net/InetAddress;I)V
-    //   62: astore 7
-    //   64: aload_0
-    //   65: astore 5
-    //   67: new 209	java/net/Socket
-    //   70: dup
-    //   71: invokespecial 210	java/net/Socket:<init>	()V
-    //   74: astore_0
-    //   75: aload_0
-    //   76: astore 5
-    //   78: aload_0
-    //   79: iconst_0
-    //   80: iconst_0
-    //   81: invokevirtual 214	java/net/Socket:setSoLinger	(ZI)V
-    //   84: aload_0
-    //   85: astore 5
-    //   87: aload_0
-    //   88: aload 7
-    //   90: sipush 5000
-    //   93: invokevirtual 218	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
-    //   96: iconst_1
-    //   97: istore_2
-    //   98: iload_2
-    //   99: istore_1
-    //   100: aload_0
-    //   101: ifnull +18 -> 119
-    //   104: iload_2
-    //   105: istore_1
-    //   106: aload_0
-    //   107: invokevirtual 221	java/net/Socket:isConnected	()Z
-    //   110: ifeq +9 -> 119
-    //   113: aload_0
-    //   114: invokevirtual 224	java/net/Socket:close	()V
-    //   117: iload_2
-    //   118: istore_1
-    //   119: ldc 57
-    //   121: new 59	java/lang/StringBuilder
-    //   124: dup
-    //   125: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   128: ldc 226
-    //   130: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: iload_1
-    //   134: invokevirtual 174	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   137: ldc 228
-    //   139: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: invokestatic 196	java/lang/System:currentTimeMillis	()J
-    //   145: lload_3
-    //   146: lsub
-    //   147: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 155	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: iload_1
-    //   157: ireturn
-    //   158: astore_0
-    //   159: aload_0
-    //   160: invokevirtual 234	java/lang/Throwable:printStackTrace	()V
-    //   163: iload_2
-    //   164: istore_1
-    //   165: goto -46 -> 119
-    //   168: astore 6
-    //   170: aconst_null
-    //   171: astore_0
-    //   172: aload_0
-    //   173: astore 5
-    //   175: ldc 57
-    //   177: new 59	java/lang/StringBuilder
-    //   180: dup
-    //   181: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   184: ldc 236
-    //   186: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: aload 6
-    //   191: invokevirtual 239	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   194: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: aload 6
-    //   202: invokestatic 243	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   205: iload_2
-    //   206: istore_1
-    //   207: aload_0
-    //   208: ifnull -89 -> 119
-    //   211: iload_2
-    //   212: istore_1
-    //   213: aload_0
-    //   214: invokevirtual 221	java/net/Socket:isConnected	()Z
-    //   217: ifeq -98 -> 119
-    //   220: aload_0
-    //   221: invokevirtual 224	java/net/Socket:close	()V
-    //   224: iload_2
-    //   225: istore_1
-    //   226: goto -107 -> 119
-    //   229: astore_0
-    //   230: aload_0
-    //   231: invokevirtual 234	java/lang/Throwable:printStackTrace	()V
-    //   234: iload_2
-    //   235: istore_1
-    //   236: goto -117 -> 119
-    //   239: astore 5
-    //   241: aload 6
-    //   243: astore_0
-    //   244: aload 5
-    //   246: astore 6
-    //   248: aload_0
-    //   249: astore 5
-    //   251: ldc 57
-    //   253: new 59	java/lang/StringBuilder
-    //   256: dup
-    //   257: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   260: ldc 245
-    //   262: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: aload 6
-    //   267: invokevirtual 246	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   270: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   276: aload 6
-    //   278: invokestatic 243	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   281: iload_2
-    //   282: istore_1
-    //   283: aload_0
-    //   284: ifnull -165 -> 119
-    //   287: iload_2
-    //   288: istore_1
-    //   289: aload_0
-    //   290: invokevirtual 221	java/net/Socket:isConnected	()Z
-    //   293: ifeq -174 -> 119
-    //   296: aload_0
-    //   297: invokevirtual 224	java/net/Socket:close	()V
-    //   300: iload_2
-    //   301: istore_1
-    //   302: goto -183 -> 119
-    //   305: astore_0
-    //   306: aload_0
-    //   307: invokevirtual 234	java/lang/Throwable:printStackTrace	()V
-    //   310: iload_2
-    //   311: istore_1
-    //   312: goto -193 -> 119
-    //   315: astore_0
-    //   316: aload 5
-    //   318: ifnull +16 -> 334
-    //   321: aload 5
-    //   323: invokevirtual 221	java/net/Socket:isConnected	()Z
-    //   326: ifeq +8 -> 334
-    //   329: aload 5
-    //   331: invokevirtual 224	java/net/Socket:close	()V
-    //   334: aload_0
-    //   335: athrow
-    //   336: astore 5
-    //   338: aload 5
-    //   340: invokevirtual 234	java/lang/Throwable:printStackTrace	()V
-    //   343: goto -9 -> 334
-    //   346: astore_0
-    //   347: goto -31 -> 316
-    //   350: astore 6
-    //   352: goto -104 -> 248
-    //   355: astore 6
-    //   357: goto -185 -> 172
+    //   0: new 155	java/lang/StringBuilder
+    //   3: dup
+    //   4: ldc 188
+    //   6: invokespecial 159	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   9: astore 7
+    //   11: aload 7
+    //   13: ldc 190
+    //   15: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: pop
+    //   19: aload 7
+    //   21: ldc 192
+    //   23: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload 7
+    //   29: aload_0
+    //   30: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: pop
+    //   34: ldc 38
+    //   36: aload 7
+    //   38: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 147	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 197	java/lang/System:currentTimeMillis	()J
+    //   47: lstore_1
+    //   48: iconst_0
+    //   49: istore 6
+    //   51: iconst_0
+    //   52: istore 5
+    //   54: aconst_null
+    //   55: astore 8
+    //   57: aconst_null
+    //   58: astore 9
+    //   60: aconst_null
+    //   61: astore 7
+    //   63: aload 7
+    //   65: astore_0
+    //   66: new 199	java/net/InetSocketAddress
+    //   69: dup
+    //   70: ldc 190
+    //   72: invokestatic 205	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
+    //   75: bipush 80
+    //   77: invokespecial 208	java/net/InetSocketAddress:<init>	(Ljava/net/InetAddress;I)V
+    //   80: astore 10
+    //   82: aload 7
+    //   84: astore_0
+    //   85: new 210	java/net/Socket
+    //   88: dup
+    //   89: invokespecial 211	java/net/Socket:<init>	()V
+    //   92: astore 7
+    //   94: aload 7
+    //   96: iconst_0
+    //   97: iconst_0
+    //   98: invokevirtual 215	java/net/Socket:setSoLinger	(ZI)V
+    //   101: aload 7
+    //   103: aload 10
+    //   105: sipush 5000
+    //   108: invokevirtual 219	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   111: iconst_1
+    //   112: istore 6
+    //   114: iconst_1
+    //   115: istore 5
+    //   117: iload 5
+    //   119: istore_3
+    //   120: iload 6
+    //   122: istore 4
+    //   124: aload 7
+    //   126: invokevirtual 222	java/net/Socket:isConnected	()Z
+    //   129: ifeq +231 -> 360
+    //   132: iload 5
+    //   134: istore_3
+    //   135: aload 7
+    //   137: invokevirtual 225	java/net/Socket:close	()V
+    //   140: iload 6
+    //   142: istore 4
+    //   144: goto +216 -> 360
+    //   147: astore_0
+    //   148: aload_0
+    //   149: invokevirtual 228	java/lang/Throwable:printStackTrace	()V
+    //   152: iload_3
+    //   153: istore 4
+    //   155: goto +205 -> 360
+    //   158: astore 8
+    //   160: aload 7
+    //   162: astore_0
+    //   163: aload 8
+    //   165: astore 7
+    //   167: goto +239 -> 406
+    //   170: astore 8
+    //   172: goto +21 -> 193
+    //   175: astore 8
+    //   177: goto +104 -> 281
+    //   180: astore 7
+    //   182: goto +224 -> 406
+    //   185: astore_0
+    //   186: aload 8
+    //   188: astore 7
+    //   190: aload_0
+    //   191: astore 8
+    //   193: aload 7
+    //   195: astore_0
+    //   196: new 155	java/lang/StringBuilder
+    //   199: dup
+    //   200: ldc 230
+    //   202: invokespecial 159	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   205: astore 9
+    //   207: aload 7
+    //   209: astore_0
+    //   210: aload 9
+    //   212: aload 8
+    //   214: invokevirtual 233	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   217: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload 7
+    //   223: astore_0
+    //   224: ldc 38
+    //   226: aload 9
+    //   228: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: aload 8
+    //   233: invokestatic 237	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   236: iload 6
+    //   238: istore 4
+    //   240: aload 7
+    //   242: ifnull +118 -> 360
+    //   245: iload 5
+    //   247: istore_3
+    //   248: iload 6
+    //   250: istore 4
+    //   252: aload 7
+    //   254: invokevirtual 222	java/net/Socket:isConnected	()Z
+    //   257: ifeq +103 -> 360
+    //   260: iload 5
+    //   262: istore_3
+    //   263: aload 7
+    //   265: invokevirtual 225	java/net/Socket:close	()V
+    //   268: iload 6
+    //   270: istore 4
+    //   272: goto +88 -> 360
+    //   275: astore 8
+    //   277: aload 9
+    //   279: astore 7
+    //   281: aload 7
+    //   283: astore_0
+    //   284: new 155	java/lang/StringBuilder
+    //   287: dup
+    //   288: ldc 239
+    //   290: invokespecial 159	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   293: astore 9
+    //   295: aload 7
+    //   297: astore_0
+    //   298: aload 9
+    //   300: aload 8
+    //   302: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   305: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: pop
+    //   309: aload 7
+    //   311: astore_0
+    //   312: ldc 38
+    //   314: aload 9
+    //   316: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   319: aload 8
+    //   321: invokestatic 237	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   324: iload 6
+    //   326: istore 4
+    //   328: aload 7
+    //   330: ifnull +30 -> 360
+    //   333: iload 5
+    //   335: istore_3
+    //   336: iload 6
+    //   338: istore 4
+    //   340: aload 7
+    //   342: invokevirtual 222	java/net/Socket:isConnected	()Z
+    //   345: ifeq +15 -> 360
+    //   348: iload 5
+    //   350: istore_3
+    //   351: aload 7
+    //   353: invokevirtual 225	java/net/Socket:close	()V
+    //   356: iload 6
+    //   358: istore 4
+    //   360: new 155	java/lang/StringBuilder
+    //   363: dup
+    //   364: ldc 242
+    //   366: invokespecial 159	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   369: astore_0
+    //   370: aload_0
+    //   371: iload 4
+    //   373: invokevirtual 181	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   376: pop
+    //   377: aload_0
+    //   378: ldc 244
+    //   380: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   383: pop
+    //   384: aload_0
+    //   385: invokestatic 197	java/lang/System:currentTimeMillis	()J
+    //   388: lload_1
+    //   389: lsub
+    //   390: invokevirtual 247	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   393: pop
+    //   394: ldc 38
+    //   396: aload_0
+    //   397: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   400: invokestatic 147	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   403: iload 4
+    //   405: ireturn
+    //   406: aload_0
+    //   407: ifnull +22 -> 429
+    //   410: aload_0
+    //   411: invokevirtual 222	java/net/Socket:isConnected	()Z
+    //   414: ifeq +15 -> 429
+    //   417: aload_0
+    //   418: invokevirtual 225	java/net/Socket:close	()V
+    //   421: goto +8 -> 429
+    //   424: astore_0
+    //   425: aload_0
+    //   426: invokevirtual 228	java/lang/Throwable:printStackTrace	()V
+    //   429: aload 7
+    //   431: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	360	0	paramString	String
-    //   99	213	1	bool1	boolean
-    //   1	310	2	bool2	boolean
-    //   39	107	3	l	long
-    //   46	128	5	str1	String
-    //   239	6	5	localThrowable1	Throwable
-    //   249	81	5	str2	String
-    //   336	3	5	localThrowable2	Throwable
-    //   43	1	6	localObject1	Object
-    //   168	74	6	localIOException1	java.io.IOException
-    //   246	31	6	localObject2	Object
-    //   350	1	6	localThrowable3	Throwable
-    //   355	1	6	localIOException2	java.io.IOException
-    //   62	27	7	localInetSocketAddress	java.net.InetSocketAddress
+    //   0	432	0	paramString	String
+    //   47	342	1	l	long
+    //   119	232	3	bool1	boolean
+    //   122	282	4	bool2	boolean
+    //   52	297	5	bool3	boolean
+    //   49	308	6	bool4	boolean
+    //   9	157	7	localObject1	Object
+    //   180	1	7	localObject2	Object
+    //   188	242	7	localObject3	Object
+    //   55	1	8	localObject4	Object
+    //   158	6	8	localObject5	Object
+    //   170	1	8	localThrowable	Throwable
+    //   175	12	8	localIOException1	java.io.IOException
+    //   191	41	8	str	String
+    //   275	45	8	localIOException2	java.io.IOException
+    //   58	257	9	localStringBuilder	StringBuilder
+    //   80	24	10	localInetSocketAddress	java.net.InetSocketAddress
     // Exception table:
     //   from	to	target	type
-    //   106	117	158	java/lang/Throwable
-    //   48	64	168	java/io/IOException
-    //   67	75	168	java/io/IOException
-    //   213	224	229	java/lang/Throwable
-    //   48	64	239	java/lang/Throwable
-    //   67	75	239	java/lang/Throwable
-    //   289	300	305	java/lang/Throwable
-    //   48	64	315	finally
-    //   67	75	315	finally
-    //   251	281	315	finally
-    //   321	334	336	java/lang/Throwable
-    //   78	84	346	finally
-    //   87	96	346	finally
-    //   175	205	346	finally
-    //   78	84	350	java/lang/Throwable
-    //   87	96	350	java/lang/Throwable
-    //   78	84	355	java/io/IOException
-    //   87	96	355	java/io/IOException
+    //   124	132	147	java/lang/Throwable
+    //   135	140	147	java/lang/Throwable
+    //   252	260	147	java/lang/Throwable
+    //   263	268	147	java/lang/Throwable
+    //   340	348	147	java/lang/Throwable
+    //   351	356	147	java/lang/Throwable
+    //   94	111	158	finally
+    //   94	111	170	java/lang/Throwable
+    //   94	111	175	java/io/IOException
+    //   66	82	180	finally
+    //   85	94	180	finally
+    //   196	207	180	finally
+    //   210	221	180	finally
+    //   224	236	180	finally
+    //   284	295	180	finally
+    //   298	309	180	finally
+    //   312	324	180	finally
+    //   66	82	185	java/lang/Throwable
+    //   85	94	185	java/lang/Throwable
+    //   66	82	275	java/io/IOException
+    //   85	94	275	java/io/IOException
+    //   410	421	424	java/lang/Throwable
   }
 }
 

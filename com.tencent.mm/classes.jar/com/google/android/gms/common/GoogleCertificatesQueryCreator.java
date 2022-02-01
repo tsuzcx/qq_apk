@@ -13,7 +13,7 @@ public class GoogleCertificatesQueryCreator
   
   public GoogleCertificatesQuery createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89390);
+    AppMethodBeat.i(4412);
     int i = SafeParcelReader.validateObjectHeader(paramParcel);
     boolean bool = false;
     IBinder localIBinder = null;
@@ -38,7 +38,7 @@ public class GoogleCertificatesQueryCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, i);
     paramParcel = new GoogleCertificatesQuery(str, localIBinder, bool);
-    AppMethodBeat.o(89390);
+    AppMethodBeat.o(4412);
     return paramParcel;
   }
   
@@ -49,7 +49,7 @@ public class GoogleCertificatesQueryCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GoogleCertificatesQueryCreator
  * JD-Core Version:    0.7.0.1
  */

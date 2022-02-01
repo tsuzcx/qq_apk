@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import aepi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import xsm;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 @TargetApi(14)
 public class FullScreenEmptyView
@@ -20,14 +20,14 @@ public class FullScreenEmptyView
     super(paramContext, paramAttributeSet);
   }
   
-  public int a()
+  public int getViewHeight()
   {
-    return xsm.d(super.getContext()) - aepi.a(55.0F, super.getResources()) - xsm.e(super.getContext());
+    return UIUtils.e(super.getContext()) - AIOUtils.b(55.0F, super.getResources()) - UIUtils.f(super.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.FullScreenEmptyView
  * JD-Core Version:    0.7.0.1
  */

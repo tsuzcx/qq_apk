@@ -1,27 +1,14 @@
-import android.view.View;
 import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.Callback;
-import java.lang.ref.WeakReference;
 
 public class fhj
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public WeakReference b;
+  public long a;
+  public String a;
   
-  public fhj(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, View paramView, TroopQZoneUploadAlbumHandler.Callback paramCallback)
+  public fhj(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramCallback);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public TroopQZoneUploadAlbumHandler.Callback a()
-  {
-    return (TroopQZoneUploadAlbumHandler.Callback)this.b.get();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

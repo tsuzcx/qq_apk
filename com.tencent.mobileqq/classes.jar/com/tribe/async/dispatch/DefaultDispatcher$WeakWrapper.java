@@ -18,22 +18,22 @@ class DefaultDispatcher$WeakWrapper
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof WeakWrapper));
-      localObject = (WeakWrapper)paramObject;
-      paramObject = get();
-      localObject = ((WeakWrapper)localObject).get();
-      if ((paramObject == null) && (localObject == null)) {
-        return true;
-      }
-    } while (paramObject == null);
-    return paramObject.equals(localObject);
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof WeakWrapper)) {
+      return false;
+    }
+    Object localObject = (WeakWrapper)paramObject;
+    paramObject = get();
+    localObject = ((WeakWrapper)localObject).get();
+    if ((paramObject == null) && (localObject == null)) {
+      return true;
+    }
+    if (paramObject != null) {
+      return paramObject.equals(localObject);
+    }
+    return false;
   }
   
   public Subscriber get()
@@ -49,15 +49,26 @@ class DefaultDispatcher$WeakWrapper
   public String toString()
   {
     Object localObject = get();
-    if (localObject == null) {}
-    for (localObject = this.mHashCode + "";; localObject = localObject.toString()) {
-      return "WeakWrapper_" + (String)localObject;
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mHashCode);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = localObject.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeakWrapper_");
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.dispatch.DefaultDispatcher.WeakWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -3,52 +3,53 @@ package com.tencent.open.appcommon;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bfoh;
-import bfok;
-import bfox;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public final class AppClient$1
+final class AppClient$1
   implements Runnable
 {
-  public AppClient$1(String paramString1, Bundle paramBundle1, String paramString2, Activity paramActivity, Intent paramIntent, Bundle paramBundle2) {}
+  AppClient$1(String paramString1, Bundle paramBundle1, String paramString2, Activity paramActivity, Intent paramIntent, Bundle paramBundle2) {}
   
   public void run()
   {
-    if (bfox.a().c())
+    if (MyAppApi.l().p())
     {
-      DownloadInfo localDownloadInfo = bfok.a().a(this.jdField_a_of_type_JavaLangString);
-      if (localDownloadInfo != null)
+      Object localObject = DownloadManager.b().d(this.a);
+      if (localObject != null)
       {
-        if (localDownloadInfo.jdField_c_of_type_Int == 1)
+        if (((DownloadInfo)localObject).o == 1)
         {
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.jdField_b_of_type_JavaLangString, localDownloadInfo.jdField_c_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.jdField_c_of_type_JavaLangString, localDownloadInfo.j);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.d, localDownloadInfo.k);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.i, this.jdField_b_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.f, localDownloadInfo.e);
-          this.jdField_a_of_type_AndroidOsBundle.putInt(bfoh.e, localDownloadInfo.b);
-          bfox.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
+          this.b.putString(DownloadConstants.b, ((DownloadInfo)localObject).c);
+          this.b.putString(DownloadConstants.c, ((DownloadInfo)localObject).l);
+          this.b.putString(DownloadConstants.d, ((DownloadInfo)localObject).m);
+          this.b.putString(DownloadConstants.i, this.c);
+          this.b.putString(DownloadConstants.f, ((DownloadInfo)localObject).e);
+          this.b.putInt(DownloadConstants.e, ((DownloadInfo)localObject).n);
+          MyAppApi.l().a(this.d, this.b, false, false);
           return;
         }
-        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
+        this.d.startActivityForResult(this.e, 200);
         return;
       }
-      if ((this.jdField_b_of_type_AndroidOsBundle != null) && (this.jdField_b_of_type_AndroidOsBundle.containsKey(bfoh.f)))
+      localObject = this.f;
+      if ((localObject != null) && (((Bundle)localObject).containsKey(DownloadConstants.f)))
       {
-        this.jdField_a_of_type_AndroidOsBundle.putAll(this.jdField_b_of_type_AndroidOsBundle);
-        bfox.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
+        this.b.putAll(this.f);
+        MyAppApi.l().a(this.d, this.b, false, false);
         return;
       }
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
+      this.d.startActivityForResult(this.e, 200);
       return;
     }
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
+    this.d.startActivityForResult(this.e, 200);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.1
  * JD-Core Version:    0.7.0.1
  */

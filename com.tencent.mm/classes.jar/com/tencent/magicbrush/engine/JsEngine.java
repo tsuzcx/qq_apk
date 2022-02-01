@@ -8,9 +8,9 @@ class JsEngine
 {
   static
   {
-    AppMethodBeat.i(115881);
+    AppMethodBeat.i(139986);
     b.loadLibraries();
-    AppMethodBeat.o(115881);
+    AppMethodBeat.o(139986);
   }
   
   static native void addJsInterface(long paramLong, Object paramObject, String paramString);
@@ -49,7 +49,7 @@ class JsEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.engine.JsEngine
  * JD-Core Version:    0.7.0.1
  */

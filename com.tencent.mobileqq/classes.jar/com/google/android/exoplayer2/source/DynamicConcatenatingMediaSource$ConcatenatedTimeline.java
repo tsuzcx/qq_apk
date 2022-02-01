@@ -44,13 +44,14 @@ final class DynamicConcatenatingMediaSource$ConcatenatedTimeline
   
   protected int getChildIndexByChildUid(Object paramObject)
   {
-    if (!(paramObject instanceof Integer)) {}
-    int i;
-    do
-    {
+    if (!(paramObject instanceof Integer)) {
       return -1;
-      i = this.childIndexByUid.get(((Integer)paramObject).intValue(), -1);
-    } while (i == -1);
+    }
+    int j = this.childIndexByUid.get(((Integer)paramObject).intValue(), -1);
+    int i = j;
+    if (j == -1) {
+      i = -1;
+    }
     return i;
   }
   
@@ -96,7 +97,7 @@ final class DynamicConcatenatingMediaSource$ConcatenatedTimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.DynamicConcatenatingMediaSource.ConcatenatedTimeline
  * JD-Core Version:    0.7.0.1
  */

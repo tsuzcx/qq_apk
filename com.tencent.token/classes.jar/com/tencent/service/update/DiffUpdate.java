@@ -11,30 +11,33 @@ public final class DiffUpdate
   public boolean isGradual = true;
   public String yybUrl = "";
   
-  public void display(StringBuilder paramStringBuilder, int paramInt) {}
+  public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new DiffUpdate();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.isGradual = paramJceInputStream.read(this.isGradual, 0, false);
     this.isDownloadYYB = paramJceInputStream.read(this.isDownloadYYB, 1, false);
     this.yybUrl = paramJceInputStream.readString(2, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.isGradual != true) {
-      paramJceOutputStream.write(this.isGradual, 0);
+    boolean bool = this.isGradual;
+    if (bool != true) {
+      paramJceOutputStream.write(bool, 0);
     }
-    if (this.isDownloadYYB != true) {
-      paramJceOutputStream.write(this.isDownloadYYB, 1);
+    bool = this.isDownloadYYB;
+    if (bool != true) {
+      paramJceOutputStream.write(bool, 1);
     }
-    if (this.yybUrl != null) {
-      paramJceOutputStream.write(this.yybUrl, 2);
+    String str = this.yybUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }

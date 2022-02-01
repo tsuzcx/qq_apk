@@ -9,14 +9,14 @@ final class QPictureView$1
   
   public final void run()
   {
-    AppMethodBeat.i(115498);
-    QPictureView.a(this.ffb);
-    AppMethodBeat.o(115498);
+    AppMethodBeat.i(156546);
+    QPictureView.a(this.nOJ);
+    AppMethodBeat.o(156546);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.memory.ui.QPictureView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,74 @@
 package com.tencent.mm.media.widget.a;
 
-import a.l;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/widget/camera/CameraConfig;", "", "()V", "encodeVideoBestSizeHeight", "", "getEncodeVideoBestSizeHeight", "()I", "setEncodeVideoBestSizeHeight", "(I)V", "encodeVideoBestSizeWidth", "getEncodeVideoBestSizeWidth", "setEncodeVideoBestSizeWidth", "isCpuCrop", "", "()Z", "setCpuCrop", "(Z)V", "isFrontCamera", "setFrontCamera", "previewHeight", "getPreviewHeight", "setPreviewHeight", "previewWidth", "getPreviewWidth", "setPreviewWidth", "rotateDegree", "getRotateDegree", "setRotateDegree", "cameraTextureSize", "Landroid/graphics/Point;", "toString", "", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camera/CameraConfig;", "", "()V", "encodeVideoBestSizeHeight", "", "getEncodeVideoBestSizeHeight", "()I", "setEncodeVideoBestSizeHeight", "(I)V", "encodeVideoBestSizeWidth", "getEncodeVideoBestSizeWidth", "setEncodeVideoBestSizeWidth", "isCpuCrop", "", "()Z", "setCpuCrop", "(Z)V", "isFrontCamera", "setFrontCamera", "previewHeight", "getPreviewHeight", "setPreviewHeight", "previewWidth", "getPreviewWidth", "setPreviewWidth", "rotateDegree", "getRotateDegree", "setRotateDegree", "cameraTextureSize", "Landroid/graphics/Point;", "toString", "", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static int arA;
-  private static int arz;
-  private static int eYe;
-  private static int eZU;
-  private static int eZV;
-  private static boolean eZW;
-  public static final b eZX;
   private static boolean isFrontCamera;
+  private static int nDr;
+  public static final b nGj;
+  private static int nGk;
+  private static int nGl;
+  private static boolean nGm;
+  private static int previewHeight;
+  private static int previewWidth;
   
   static
   {
-    AppMethodBeat.i(13188);
-    eZX = new b();
-    AppMethodBeat.o(13188);
+    AppMethodBeat.i(94010);
+    nGj = new b();
+    AppMethodBeat.o(94010);
   }
   
-  public static int WP()
+  public static int bsL()
   {
-    return eYe;
+    return nDr;
   }
   
-  public static int WQ()
+  public static int bsM()
   {
-    return eZU;
+    return nGk;
   }
   
-  public static int WR()
+  public static int bsN()
   {
-    return eZV;
+    return nGl;
   }
   
-  public static boolean WS()
+  public static boolean bsO()
   {
-    return isFrontCamera;
+    return nGm;
   }
   
-  public static Point WT()
+  public static Point bsP()
   {
-    AppMethodBeat.i(13187);
-    Point localPoint = new Point(arz, arA);
-    AppMethodBeat.o(13187);
+    AppMethodBeat.i(94009);
+    Point localPoint = new Point(previewWidth, previewHeight);
+    AppMethodBeat.o(94009);
     return localPoint;
-  }
-  
-  public static void cF(boolean paramBoolean)
-  {
-    eZW = paramBoolean;
   }
   
   public static int getPreviewHeight()
   {
-    return arA;
+    return previewHeight;
   }
   
   public static int getPreviewWidth()
   {
-    return arz;
+    return previewWidth;
   }
   
-  public static void kb(int paramInt)
+  public static void gw(boolean paramBoolean)
   {
-    arA = paramInt;
+    nGm = paramBoolean;
   }
   
-  public static void kc(int paramInt)
+  public static boolean isFrontCamera()
   {
-    arz = paramInt;
-  }
-  
-  public static void kd(int paramInt)
-  {
-    eYe = paramInt;
-  }
-  
-  public static void ke(int paramInt)
-  {
-    eZU = paramInt;
-  }
-  
-  public static void kf(int paramInt)
-  {
-    eZV = paramInt;
+    return isFrontCamera;
   }
   
   public static void setFrontCamera(boolean paramBoolean)
@@ -96,17 +76,42 @@ public final class b
     isFrontCamera = paramBoolean;
   }
   
+  public static void uj(int paramInt)
+  {
+    previewHeight = paramInt;
+  }
+  
+  public static void uk(int paramInt)
+  {
+    previewWidth = paramInt;
+  }
+  
+  public static void ul(int paramInt)
+  {
+    nDr = paramInt;
+  }
+  
+  public static void um(int paramInt)
+  {
+    nGk = paramInt;
+  }
+  
+  public static void un(int paramInt)
+  {
+    nGl = paramInt;
+  }
+  
   public final String toString()
   {
-    AppMethodBeat.i(13186);
-    String str = "previewHeight: " + arA + " ,previewWidth:" + arz + " ,rotateDegree: " + eYe + " ,isFrontCamera:" + isFrontCamera + ' ' + " encodeVideoBestSizeWidth : " + eZU + " , encodeVideoBestSizeHeight : " + eZV + ", isCpuCrop: " + eZW + ' ';
-    AppMethodBeat.o(13186);
+    AppMethodBeat.i(94008);
+    String str = "previewHeight: " + previewHeight + " ,previewWidth:" + previewWidth + " ,rotateDegree: " + nDr + " ,isFrontCamera:" + isFrontCamera + "  encodeVideoBestSizeWidth : " + nGk + " , encodeVideoBestSizeHeight : " + nGl + ", isCpuCrop: " + nGm + ' ';
+    AppMethodBeat.o(94008);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.a.b
  * JD-Core Version:    0.7.0.1
  */

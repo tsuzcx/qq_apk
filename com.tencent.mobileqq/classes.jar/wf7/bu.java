@@ -23,59 +23,46 @@ public class bu
   
   public static boolean ap()
   {
-    boolean bool2 = false;
     try
     {
       Object localObject = a(bz.av().t());
-      boolean bool1 = bool2;
-      int i;
       if (localObject != null)
       {
         localObject = ((ConnectivityManager)localObject).getAllNetworkInfo();
-        bool1 = bool2;
-        if (localObject != null) {
-          i = 0;
-        }
-      }
-      for (;;)
-      {
-        bool1 = bool2;
-        if (i < localObject.length)
+        if (localObject != null)
         {
-          NetworkInfo.State localState1 = localObject[i].getState();
-          NetworkInfo.State localState2 = NetworkInfo.State.CONNECTED;
-          if (localState1 == localState2) {
-            bool1 = true;
+          int i = 0;
+          while (i < localObject.length)
+          {
+            NetworkInfo.State localState1 = localObject[i].getState();
+            NetworkInfo.State localState2 = NetworkInfo.State.CONNECTED;
+            if (localState1 == localState2) {
+              return true;
+            }
+            i += 1;
           }
         }
-        else
-        {
-          return bool1;
-        }
-        i += 1;
       }
       return false;
     }
     catch (Throwable localThrowable) {}
+    return false;
   }
   
   public static boolean aq()
   {
     try
     {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)bz.av().t().getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((localNetworkInfo != null) && (localNetworkInfo.getType() == 1)) {
-        return true;
-      }
+      localNetworkInfo = ((ConnectivityManager)bz.av().t().getSystemService("connectivity")).getActiveNetworkInfo();
     }
     catch (NullPointerException localNullPointerException)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      NetworkInfo localNetworkInfo;
+      label21:
+      break label21;
     }
-    return false;
+    localNetworkInfo = null;
+    return (localNetworkInfo != null) && (localNetworkInfo.getType() == 1);
   }
   
   public static NetworkInfo ar()
@@ -85,13 +72,17 @@ public class bu
       NetworkInfo localNetworkInfo = ((ConnectivityManager)bz.av().t().getSystemService("connectivity")).getActiveNetworkInfo();
       return localNetworkInfo;
     }
-    catch (NullPointerException localNullPointerException) {}
+    catch (NullPointerException localNullPointerException)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.bu
  * JD-Core Version:    0.7.0.1
  */

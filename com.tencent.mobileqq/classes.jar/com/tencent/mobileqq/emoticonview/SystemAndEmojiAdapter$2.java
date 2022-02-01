@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apyy;
+import com.tencent.mobileqq.qqemoticon.api.IPanelController;
 
-public class SystemAndEmojiAdapter$2
+class SystemAndEmojiAdapter$2
   implements Runnable
 {
-  public SystemAndEmojiAdapter$2(apyy paramapyy, EmoticonMainPanel paramEmoticonMainPanel) {}
+  SystemAndEmojiAdapter$2(SystemAndEmojiAdapter paramSystemAndEmojiAdapter) {}
   
   public void run()
   {
-    if (this.a != null) {
-      this.a.b();
-    }
+    SystemAndEmojiAdapter.access$000(this.this$0).removePopupGuide();
   }
 }
 

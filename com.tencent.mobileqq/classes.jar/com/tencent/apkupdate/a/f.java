@@ -30,28 +30,27 @@ public final class f
       paramDataOutputStream.writeInt(a.a(0));
       paramDataOutputStream.writeInt(a.a(0));
     }
-    for (;;)
+    else
     {
-      i = paramb.j;
-      paramDataOutputStream.writeShort((short)(i >> 8 & 0xFF | (i & 0xFF) << 8));
-      i = paramb.k;
-      paramDataOutputStream.writeShort((short)(i >> 8 & 0xFF | (i & 0xFF) << 8));
-      if (paramb.j > 0) {
-        paramDataOutputStream.write(paramb.s);
-      }
-      if (paramb.k > 0) {
-        paramDataOutputStream.write(paramb.t);
-      }
-      return;
       paramDataOutputStream.writeInt(a.a(paramb.g));
       paramDataOutputStream.writeInt(a.a(paramb.h));
       paramDataOutputStream.writeInt(a.a(paramb.i));
+    }
+    i = paramb.j;
+    paramDataOutputStream.writeShort((short)(i >> 8 & 0xFF | (i & 0xFF) << 8));
+    i = paramb.k;
+    paramDataOutputStream.writeShort((short)(i >> 8 & 0xFF | (i & 0xFF) << 8));
+    if (paramb.j > 0) {
+      paramDataOutputStream.write(paramb.s);
+    }
+    if (paramb.k > 0) {
+      paramDataOutputStream.write(paramb.t);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.a.f
  * JD-Core Version:    0.7.0.1
  */

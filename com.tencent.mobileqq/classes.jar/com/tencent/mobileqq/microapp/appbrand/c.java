@@ -15,13 +15,10 @@ final class c
       JSONObject localJSONObject = new JSONObject();
       if (paramBoolean) {
         localJSONObject.put("state", "updating");
-      }
-      for (;;)
-      {
-        this.a.a("onUpdateStatusChange", localJSONObject.toString());
-        return;
+      } else {
         localJSONObject.put("state", "noUpdate");
       }
+      this.a.a("onUpdateStatusChange", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable) {}
@@ -34,13 +31,10 @@ final class c
       JSONObject localJSONObject = new JSONObject();
       if (paramBoolean) {
         localJSONObject.put("state", "updateready");
-      }
-      for (;;)
-      {
-        this.a.a("onUpdateStatusChange", localJSONObject.toString());
-        return;
+      } else {
         localJSONObject.put("state", "updatefailed");
       }
+      this.a.a("onUpdateStatusChange", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable) {}
@@ -48,7 +42,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.c
  * JD-Core Version:    0.7.0.1
  */

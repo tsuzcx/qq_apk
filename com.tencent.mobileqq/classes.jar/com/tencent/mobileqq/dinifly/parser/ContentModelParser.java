@@ -1,174 +1,178 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.support.annotation.Nullable;
-import android.util.JsonReader;
-import android.util.Log;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.content.ContentModel;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 
 class ContentModelParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "ty", "d" });
+  
   @Nullable
   static ContentModel parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    int k = 2;
     paramJsonReader.beginObject();
+    int i = 2;
     int j = 2;
-    label9:
-    label52:
-    int i;
-    if (paramJsonReader.hasNext())
+    Object localObject2;
+    for (;;)
     {
-      localObject = paramJsonReader.nextName();
-      switch (((String)localObject).hashCode())
-      {
-      default: 
-        i = -1;
+      boolean bool = paramJsonReader.hasNext();
+      localObject2 = null;
+      if (!bool) {
+        break label70;
       }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label9;
-          if (!((String)localObject).equals("ty")) {
-            break label52;
-          }
-          i = 0;
-          continue;
-          if (!((String)localObject).equals("d")) {
-            break label52;
-          }
-          i = 1;
-        }
-      }
-    }
-    for (Object localObject = paramJsonReader.nextString();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        return null;
-        j = paramJsonReader.nextInt();
+      int k = paramJsonReader.selectName(NAMES);
+      if (k == 0) {
         break;
       }
-      switch (((String)localObject).hashCode())
+      if (k != 1)
       {
-      default: 
-        i = -1;
-        switch (i)
-        {
-        default: 
-          label254:
-          Log.w("LOTTIE", "Unknown shape type " + (String)localObject);
-          paramLottieComposition = null;
-        }
-        break;
-      }
-      for (;;)
-      {
-        if (!paramJsonReader.hasNext()) {
-          break label692;
-        }
+        paramJsonReader.skipName();
         paramJsonReader.skipValue();
-        continue;
-        if (!((String)localObject).equals("gr")) {
-          break;
-        }
-        i = 0;
-        break label254;
-        if (!((String)localObject).equals("st")) {
-          break;
-        }
-        i = 1;
-        break label254;
-        if (!((String)localObject).equals("gs")) {
-          break;
-        }
-        i = k;
-        break label254;
-        if (!((String)localObject).equals("fl")) {
-          break;
-        }
-        i = 3;
-        break label254;
-        if (!((String)localObject).equals("gf")) {
-          break;
-        }
-        i = 4;
-        break label254;
-        if (!((String)localObject).equals("tr")) {
-          break;
-        }
-        i = 5;
-        break label254;
-        if (!((String)localObject).equals("sh")) {
-          break;
-        }
-        i = 6;
-        break label254;
-        if (!((String)localObject).equals("el")) {
-          break;
-        }
-        i = 7;
-        break label254;
-        if (!((String)localObject).equals("rc")) {
-          break;
-        }
-        i = 8;
-        break label254;
-        if (!((String)localObject).equals("tm")) {
-          break;
-        }
-        i = 9;
-        break label254;
-        if (!((String)localObject).equals("sr")) {
-          break;
-        }
-        i = 10;
-        break label254;
-        if (!((String)localObject).equals("mm")) {
-          break;
-        }
-        i = 11;
-        break label254;
-        if (!((String)localObject).equals("rp")) {
-          break;
-        }
-        i = 12;
-        break label254;
-        paramLottieComposition = ShapeGroupParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = ShapeStrokeParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = GradientStrokeParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = ShapeFillParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = GradientFillParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = AnimatableTransformParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = ShapePathParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = CircleShapeParser.parse(paramJsonReader, paramLottieComposition, j);
-        continue;
-        paramLottieComposition = RectangleShapeParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = ShapeTrimPathParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        paramLottieComposition = PolystarShapeParser.parse(paramJsonReader, paramLottieComposition);
-        continue;
-        localObject = MergePathsParser.parse(paramJsonReader);
-        paramLottieComposition.addWarning("Animation contains merge paths. Merge paths are only supported on KitKat+ and must be manually enabled by calling enableMergePathsForKitKatAndAbove().");
-        paramLottieComposition = (LottieComposition)localObject;
-        continue;
-        paramLottieComposition = RepeaterParser.parse(paramJsonReader, paramLottieComposition);
       }
-      label692:
-      paramJsonReader.endObject();
-      return paramLottieComposition;
+      else
+      {
+        j = paramJsonReader.nextInt();
+      }
     }
+    Object localObject1 = paramJsonReader.nextString();
+    break label73;
+    label70:
+    localObject1 = null;
+    label73:
+    if (localObject1 == null) {
+      return null;
+    }
+    switch (((String)localObject1).hashCode())
+    {
+    default: 
+      break;
+    case 3710: 
+      if (((String)localObject1).equals("tr")) {
+        i = 5;
+      }
+      break;
+    case 3705: 
+      if (((String)localObject1).equals("tm")) {
+        i = 9;
+      }
+      break;
+    case 3681: 
+      if (((String)localObject1).equals("st")) {
+        i = 1;
+      }
+      break;
+    case 3679: 
+      if (((String)localObject1).equals("sr")) {
+        i = 10;
+      }
+      break;
+    case 3669: 
+      if (((String)localObject1).equals("sh")) {
+        i = 6;
+      }
+      break;
+    case 3646: 
+      if (((String)localObject1).equals("rp")) {
+        i = 12;
+      }
+      break;
+    case 3633: 
+      if (((String)localObject1).equals("rc")) {
+        i = 8;
+      }
+      break;
+    case 3488: 
+      if (((String)localObject1).equals("mm")) {
+        i = 11;
+      }
+      break;
+    case 3308: 
+      if (!((String)localObject1).equals("gs")) {
+        break;
+      }
+      break;
+    case 3307: 
+      if (((String)localObject1).equals("gr")) {
+        i = 0;
+      }
+      break;
+    case 3295: 
+      if (((String)localObject1).equals("gf")) {
+        i = 4;
+      }
+      break;
+    case 3270: 
+      if (((String)localObject1).equals("fl")) {
+        i = 3;
+      }
+      break;
+    case 3239: 
+      if (((String)localObject1).equals("el")) {
+        i = 7;
+      }
+      break;
+    }
+    i = -1;
+    switch (i)
+    {
+    default: 
+      paramLottieComposition = new StringBuilder();
+      paramLottieComposition.append("Unknown shape type ");
+      paramLottieComposition.append((String)localObject1);
+      Logger.warning(paramLottieComposition.toString());
+      paramLottieComposition = localObject2;
+      break;
+    case 12: 
+      paramLottieComposition = RepeaterParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 11: 
+      localObject1 = MergePathsParser.parse(paramJsonReader);
+      paramLottieComposition.addWarning("Animation contains merge paths. Merge paths are only supported on KitKat+ and must be manually enabled by calling enableMergePathsForKitKatAndAbove().");
+      paramLottieComposition = (LottieComposition)localObject1;
+      break;
+    case 10: 
+      paramLottieComposition = PolystarShapeParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 9: 
+      paramLottieComposition = ShapeTrimPathParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 8: 
+      paramLottieComposition = RectangleShapeParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 7: 
+      paramLottieComposition = CircleShapeParser.parse(paramJsonReader, paramLottieComposition, j);
+      break;
+    case 6: 
+      paramLottieComposition = ShapePathParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 5: 
+      paramLottieComposition = AnimatableTransformParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 4: 
+      paramLottieComposition = GradientFillParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 3: 
+      paramLottieComposition = ShapeFillParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 2: 
+      paramLottieComposition = GradientStrokeParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 1: 
+      paramLottieComposition = ShapeStrokeParser.parse(paramJsonReader, paramLottieComposition);
+      break;
+    case 0: 
+      paramLottieComposition = ShapeGroupParser.parse(paramJsonReader, paramLottieComposition);
+    }
+    while (paramJsonReader.hasNext()) {
+      paramJsonReader.skipValue();
+    }
+    paramJsonReader.endObject();
+    return paramLottieComposition;
   }
 }
 

@@ -12,9 +12,9 @@ public final class mobile_ranking_feeds_req
   static Map<String, String> cache_mapEx = new HashMap();
   static Map<Integer, byte[]> cache_stMapRanking;
   public int iOperaType = 1;
-  public Map<String, String> mapEx;
-  public Map<Integer, byte[]> stMapRanking;
-  public long uin;
+  public Map<String, String> mapEx = null;
+  public Map<Integer, byte[]> stMapRanking = null;
+  public long uin = 0L;
   
   static
   {
@@ -47,17 +47,19 @@ public final class mobile_ranking_feeds_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.iOperaType, 1);
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 2);
+    Map localMap = this.mapEx;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
-    if (this.stMapRanking != null) {
-      paramJceOutputStream.write(this.stMapRanking, 3);
+    localMap = this.stMapRanking;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_ranking_feeds_req
  * JD-Core Version:    0.7.0.1
  */

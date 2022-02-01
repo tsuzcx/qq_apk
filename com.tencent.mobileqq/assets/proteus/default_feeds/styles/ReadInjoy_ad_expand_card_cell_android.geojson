@@ -1,0 +1,34 @@
+{
+	"platform": "android",
+	"ReadInjoy_ad_expand_card_cell": {
+		"view_type": "container",
+		"direction": "vertical",
+		"height": {
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "match_parent"
+		},
+		"subviews": [{
+				"view_type": "ReadInJoyAdExpandCardPic",
+				"view_id": "id_ad_expand_view",
+				"margin_left": "12",
+				"margin_right": "12",
+				"margin_top": "10",
+				"margin_bottom": "10",
+				"height": {
+					"type": "wrap_content"
+				},
+				"default_visible": "YES",
+				"width": {
+					"type": "relative",
+					"value": "351"
+				},
+				"event_type": "cmd_large_img_click",
+				 "attributes": {
+          "setFeedsModel:": "$article_model"
+        }
+			}
+		]
+	}
+}

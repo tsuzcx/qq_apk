@@ -1,65 +1,85 @@
 package com.tencent.mm.platformtools;
 
 import android.app.Activity;
-import android.widget.Toast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.account.ui.r.j;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends d
+  extends c
 {
   public k(Activity paramActivity)
   {
     super(paramActivity);
   }
   
-  public final boolean b(ag paramag)
+  public final boolean b(aa paramaa)
   {
-    AppMethodBeat.i(124536);
-    ab.d("MicroMsg.ErrorClientProcessor", "handleOpenUrl");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124536);
+    AppMethodBeat.i(127709);
+    Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleOpenUrl");
+    com.tencent.mm.ui.base.k.a(this.activity, paramaa.content, "", this.activity.getString(r.j.app_i_known), null);
+    AppMethodBeat.o(127709);
     return true;
   }
   
-  public final boolean c(ag paramag)
+  public final boolean c(aa paramaa)
   {
-    AppMethodBeat.i(124537);
-    ab.d("MicroMsg.ErrorClientProcessor", "handleIgnore");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124537);
+    AppMethodBeat.i(127710);
+    Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleIgnore");
+    com.tencent.mm.ui.base.k.a(this.activity, paramaa.content, "", this.activity.getString(r.j.app_i_known), null);
+    AppMethodBeat.o(127710);
     return true;
   }
   
-  public final boolean d(ag paramag)
+  public final boolean d(aa paramaa)
   {
-    AppMethodBeat.i(124538);
-    ab.d("MicroMsg.ErrorClientProcessor", "handleFalseLast");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124538);
+    AppMethodBeat.i(127711);
+    Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleFalseLast");
+    com.tencent.mm.ui.base.k.a(this.activity, paramaa.content, "", this.activity.getString(r.j.app_i_known), null);
+    AppMethodBeat.o(127711);
     return true;
   }
   
-  public final boolean e(ag paramag)
+  public final boolean e(aa paramaa)
   {
-    AppMethodBeat.i(124539);
-    ab.d("MicroMsg.ErrorClientProcessor", "handleFalseCancel");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124539);
+    AppMethodBeat.i(127712);
+    Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleFalseCancel");
+    com.tencent.mm.ui.base.k.a(this.activity, paramaa.content, "", this.activity.getString(r.j.app_i_known), null);
+    AppMethodBeat.o(127712);
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean f(aa paramaa)
   {
-    AppMethodBeat.i(124535);
-    ab.i("MicroMsg.ErrorClientProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    AppMethodBeat.o(124535);
+    AppMethodBeat.i(234055);
+    Log.d("MicroMsg.ErrorMsgBoxProcessor", "handleDoneBack");
+    final Activity localActivity = this.activity;
+    com.tencent.mm.ui.base.k.a(this.activity, paramaa.content, "", this.activity.getString(r.j.app_i_known), new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(234002);
+        localActivity.finish();
+        AppMethodBeat.o(234002);
+      }
+    });
+    AppMethodBeat.o(234055);
+    return true;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(127708);
+    Log.i("MicroMsg.ErrorMsgBoxProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.o(127708);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.k
  * JD-Core Version:    0.7.0.1
  */

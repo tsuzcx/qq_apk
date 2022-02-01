@@ -63,7 +63,18 @@ public class TVKNetVideoInfo$AudioTrackInfo
   
   public boolean isSameAudio(AudioTrackInfo paramAudioTrackInfo)
   {
-    return ((paramAudioTrackInfo == null) && (TextUtils.isEmpty(this.mAudioTrack))) || ((paramAudioTrackInfo != null) && (TextUtils.isEmpty(paramAudioTrackInfo.getAudioTrack())) && (TextUtils.isEmpty(this.mAudioTrack))) || ((paramAudioTrackInfo != null) && (this.mAudioTrack != null) && (this.mAudioTrack.equals(paramAudioTrackInfo.getAudioTrack())));
+    if (((paramAudioTrackInfo != null) || (!TextUtils.isEmpty(this.mAudioTrack))) && ((paramAudioTrackInfo == null) || (!TextUtils.isEmpty(paramAudioTrackInfo.getAudioTrack())) || (!TextUtils.isEmpty(this.mAudioTrack))))
+    {
+      if (paramAudioTrackInfo != null)
+      {
+        String str = this.mAudioTrack;
+        if ((str == null) || (!str.equals(paramAudioTrackInfo.getAudioTrack()))) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
   }
   
   public int isVip()
@@ -99,12 +110,13 @@ public class TVKNetVideoInfo$AudioTrackInfo
   public void setAudioUrlList(ArrayList<String> paramArrayList)
   {
     this.mAudioUrlList = paramArrayList;
-    if ((this.mAudioUrlList == null) || (this.mAudioUrlList.size() == 0))
+    paramArrayList = this.mAudioUrlList;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      this.mAudioPlayUrl = null;
+      this.mAudioPlayUrl = ((String)this.mAudioUrlList.get(0));
       return;
     }
-    this.mAudioPlayUrl = ((String)this.mAudioUrlList.get(0));
+    this.mAudioPlayUrl = null;
   }
   
   public void setKeyId(String paramString)
@@ -119,7 +131,7 @@ public class TVKNetVideoInfo$AudioTrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKNetVideoInfo.AudioTrackInfo
  * JD-Core Version:    0.7.0.1
  */

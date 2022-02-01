@@ -1,10 +1,5 @@
 package cooperation.qzone.statistic.access.concept;
 
-import bjsw;
-import bjsy;
-import bjta;
-import bjtd;
-import bjtf;
 import cooperation.qzone.statistic.access.WnsKeys;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,206 +8,95 @@ import java.util.List;
 public class Collector
   implements Runnable
 {
-  protected volatile long a;
-  protected bjsw a;
-  protected bjsy a;
-  protected bjta a;
-  protected bjtd a;
-  protected bjtf a;
-  protected Thread a;
-  protected List<Statistic> a;
-  protected volatile boolean a;
-  protected long b;
-  protected volatile boolean b;
-  protected volatile boolean c;
+  public static final String TAG = "Statistic.Collector";
+  protected Assembler assembler = Assembler.Array;
+  protected Condition condition = Condition.Always;
+  protected Deliverer deliverer = Deliverer.Console;
+  protected volatile boolean flush = false;
+  protected volatile boolean isWorking = true;
+  protected List<Statistic> lastStatistics = new ArrayList();
+  protected volatile long latestWorkTime = 0L;
+  protected volatile boolean needForceDeliver = false;
+  protected Sampler sampler = Sampler.All;
+  protected long sleepTimespan = 3000L;
+  protected StatisticFolder statisticFolder = new StatisticFolder();
+  protected Thread thread;
   
-  public Collector()
+  public void collect(Statistic paramStatistic)
   {
-    this.jdField_a_of_type_Bjsy = bjsy.jdField_a_of_type_Bjsy;
-    this.jdField_a_of_type_Bjtd = bjtd.jdField_a_of_type_Bjtd;
-    this.jdField_a_of_type_Bjsw = bjsw.jdField_a_of_type_Bjsw;
-    this.jdField_a_of_type_Bjta = bjta.jdField_a_of_type_Bjta;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_Bjtf = new bjtf();
+    this.statisticFolder.put(paramStatistic);
   }
   
-  public long a()
+  public void doWork()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public bjsw a()
-  {
-    return this.jdField_a_of_type_Bjsw;
-  }
-  
-  public bjta a()
-  {
-    return this.jdField_a_of_type_Bjta;
-  }
-  
-  public bjtd a()
-  {
-    return this.jdField_a_of_type_Bjtd;
-  }
-  
-  public bjtf a()
-  {
-    return this.jdField_a_of_type_Bjtf;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaLangThread != null) && (this.jdField_a_of_type_JavaLangThread.isAlive()))
+    haveArest();
+    if ((this.condition.meet(this)) || (this.flush))
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangThread.interrupt();
-    }
-    this.jdField_a_of_type_JavaLangThread = new Thread(this, "com.qzone.statistic.access.concept");
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangThread.setName("Statistic.Collector");
-    if (!this.jdField_a_of_type_JavaLangThread.isAlive()) {
-      this.jdField_a_of_type_JavaLangThread.start();
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(bjsw parambjsw)
-  {
-    this.jdField_a_of_type_Bjsw = parambjsw;
-  }
-  
-  public void a(bjsy parambjsy)
-  {
-    this.jdField_a_of_type_Bjsy = parambjsy;
-  }
-  
-  public void a(bjta parambjta)
-  {
-    this.jdField_a_of_type_Bjta = parambjta;
-  }
-  
-  public void a(bjtd parambjtd)
-  {
-    this.jdField_a_of_type_Bjtd = parambjtd;
-  }
-  
-  public void a(Statistic paramStatistic)
-  {
-    this.jdField_a_of_type_Bjtf.a(paramStatistic);
-  }
-  
-  public boolean a()
-  {
-    return !this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void c()
-  {
-    boolean bool = true;
-    e();
-    List localList;
-    Object localObject1;
-    if ((this.jdField_a_of_type_Bjsy.a(this)) || (this.c))
-    {
-      this.c = false;
-      localList = this.jdField_a_of_type_Bjtf.a();
+      int j = 0;
+      this.flush = false;
+      List localList = this.statisticFolder.pollAll();
       if ((localList != null) && (localList.size() > 0))
       {
-        if (this.jdField_b_of_type_Boolean) {
-          i = 1;
-        }
-        for (;;)
+        boolean bool2 = this.needForceDeliver;
+        boolean bool1 = true;
+        if (bool2) {}
+        while (getSampler() == null)
         {
-          localObject1 = localList.iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((Statistic)((Iterator)localObject1).next()).setValue(WnsKeys.Frequency, Integer.valueOf(i));
-          }
-          if (a() == null) {
-            i = 1;
-          } else {
-            i = a().a();
-          }
+          i = 1;
+          break;
+        }
+        int i = getSampler().getFrequency();
+        Object localObject1 = localList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((Statistic)((Iterator)localObject1).next()).setValue(WnsKeys.Frequency, Integer.valueOf(i));
         }
         localObject1 = localList.toArray();
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-          localList.addAll(this.jdField_a_of_type_JavaUtilList);
+        if (this.lastStatistics.size() > 0) {
+          localList.addAll(this.lastStatistics);
         }
-        this.jdField_a_of_type_JavaUtilList.clear();
-        int j = localObject1.length;
+        this.lastStatistics.clear();
+        int k = localObject1.length;
         i = 0;
-        while (i < j)
+        while (i < k)
         {
           Object localObject2 = localObject1[i];
-          this.jdField_a_of_type_JavaUtilList.add((Statistic)localObject2);
+          this.lastStatistics.add((Statistic)localObject2);
           i += 1;
         }
-        localObject1 = a().a(localList);
+        localObject1 = getAssembler().assemble(localList);
         if ((localObject1 != null) && (((String)localObject1).length() > 0))
         {
-          if (!this.jdField_b_of_type_Boolean) {
-            break label284;
+          if ((!this.needForceDeliver) && (getSampler() != null)) {
+            bool1 = getSampler().sample();
           }
-          this.jdField_b_of_type_Boolean = false;
-          if (!bool) {
-            break label302;
+          this.needForceDeliver = false;
+          i = j;
+          if (bool1) {
+            i = getDeliverer().deliver((String)localObject1, localList.size());
           }
+          if (i == 0) {
+            this.lastStatistics.clear();
+          }
+          recordLatestWorkTime();
         }
       }
     }
-    label284:
-    label302:
-    for (int i = a().a((String)localObject1, localList.size());; i = 0)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_JavaUtilList.clear();
-      }
-      d();
-      return;
-      if (a() == null) {
-        break;
-      }
-      bool = a().a();
-      break;
+  }
+  
+  public void flush()
+  {
+    this.flush = true;
+    Thread localThread = this.thread;
+    if ((localThread != null) && (localThread.isAlive())) {
+      this.thread.interrupt();
     }
   }
   
-  public void d()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void e()
-  {
-    if (this.jdField_b_of_type_Long > 0L) {}
-    try
-    {
-      Thread.sleep(this.jdField_b_of_type_Long);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
-  }
-  
-  public void f()
-  {
-    this.c = true;
-    if ((this.jdField_a_of_type_JavaLangThread != null) && (this.jdField_a_of_type_JavaLangThread.isAlive())) {
-      this.jdField_a_of_type_JavaLangThread.interrupt();
-    }
-  }
-  
-  public void g()
+  public void forceDeliver()
   {
     try
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.needForceDeliver = true;
       return;
     }
     finally
@@ -222,17 +106,126 @@ public class Collector
     }
   }
   
+  public Assembler getAssembler()
+  {
+    return this.assembler;
+  }
+  
+  public Condition getCondition()
+  {
+    return this.condition;
+  }
+  
+  public Deliverer getDeliverer()
+  {
+    return this.deliverer;
+  }
+  
+  public long getLatestWorkTime()
+  {
+    return this.latestWorkTime;
+  }
+  
+  public Sampler getSampler()
+  {
+    return this.sampler;
+  }
+  
+  public long getSleepTimespan()
+  {
+    return this.sleepTimespan;
+  }
+  
+  public StatisticFolder getStatistics()
+  {
+    return this.statisticFolder;
+  }
+  
+  public void haveArest()
+  {
+    long l = this.sleepTimespan;
+    if (l > 0L) {}
+    try
+    {
+      Thread.sleep(l);
+      return;
+    }
+    catch (InterruptedException localInterruptedException) {}
+  }
+  
+  public boolean isStopped()
+  {
+    return this.isWorking ^ true;
+  }
+  
+  public void onStop()
+  {
+    doWork();
+  }
+  
+  public void recordLatestWorkTime()
+  {
+    this.latestWorkTime = System.currentTimeMillis();
+  }
+  
   public void run()
   {
-    while (this.jdField_a_of_type_Boolean) {
-      c();
+    while (this.isWorking) {
+      doWork();
     }
-    b();
+    onStop();
+  }
+  
+  public void setAssembler(Assembler paramAssembler)
+  {
+    this.assembler = paramAssembler;
+  }
+  
+  public void setCondition(Condition paramCondition)
+  {
+    this.condition = paramCondition;
+  }
+  
+  public void setDeliverer(Deliverer paramDeliverer)
+  {
+    this.deliverer = paramDeliverer;
+  }
+  
+  public void setSampler(Sampler paramSampler)
+  {
+    this.sampler = paramSampler;
+  }
+  
+  public void setSleepTimespan(long paramLong)
+  {
+    this.sleepTimespan = paramLong;
+  }
+  
+  public void setStatistics(StatisticFolder paramStatisticFolder)
+  {
+    this.statisticFolder = paramStatisticFolder;
+  }
+  
+  public void startWork()
+  {
+    Thread localThread = this.thread;
+    if ((localThread != null) && (localThread.isAlive()))
+    {
+      this.isWorking = false;
+      this.thread.interrupt();
+    }
+    this.thread = new Thread(this, "com.qzone.statistic.access.concept");
+    this.isWorking = true;
+    this.thread.setName("Statistic.Collector");
+    if (!this.thread.isAlive()) {
+      this.thread.start();
+    }
+    this.latestWorkTime = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.Collector
  * JD-Core Version:    0.7.0.1
  */

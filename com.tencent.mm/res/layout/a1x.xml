@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/c0b" android:background="@color/zm" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:text="{A}" style="@style/mo" />
-    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mp">
-        <ImageView android:id="@id/c0c" android:background="@raw/default_avatar" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/c0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{QQ/Mobile/Google昵称}" android:singleLine="true" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/rf" android:id="@id/c0e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{微信昵称}" android:singleLine="true" />
-        </LinearLayout>
-        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/c0f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="75.0dip" android:minHeight="30.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/t_" android:gravity="center" android:layout_gravity="center" android:id="@id/c0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:minHeight="30.0dip" android:text="@string/c3d" />
-            <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/c0h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-        </FrameLayout>
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center" android:layout_gravity="center" android:id="@id/yt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/yr" android:background="?kw" android:padding="4.0dip" android:layout_width="@dimen/a52" android:layout_height="@dimen/a52" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/ys" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="12.0sp" android:textColor="?kx" android:id="@id/ys" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/yr" />
+    <FrameLayout android:id="@id/cek" android:background="#46ffffff" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_margin="4.0dip" app:layout_constraintBottom_toBottomOf="@id/yr" app:layout_constraintEnd_toEndOf="@id/yr" app:layout_constraintStart_toStartOf="@id/yr" app:layout_constraintTop_toTopOf="@id/yr">
+        <ProgressBar android:layout_gravity="center" android:id="@id/cei" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a87" />
+        <ImageView android:layout_gravity="center" android:id="@id/cee" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/av9" android:contentDescription="@string/c4s" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

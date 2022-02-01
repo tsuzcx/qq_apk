@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerRelativeLayout android:id="@id/esh" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/esi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
-    <include android:id="@id/esj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" layout="@layout/auw" />
-    <LinearLayout android:orientation="vertical" android:id="@id/esk" android:paddingLeft="20.0dip" android:paddingTop="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/esl" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/esm" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-    </LinearLayout>
-    <RelativeLayout android:orientation="vertical" android:id="@id/esn" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/eso" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_alignParentTop="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/esp" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_below="@id/eso" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/esq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/esp">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/bdt" />
-            <TextView android:textSize="10.0sp" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="center" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/en7" android:maxLines="1" />
-        </LinearLayout>
+    <RelativeLayout android:id="@id/elo" style="@style/k7">
+        <ImageView android:id="@id/elr" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginRight="@dimen/ln" android:layout_alignParentLeft="true" />
+        <TextView android:id="@id/elm" android:layout_marginLeft="5.0dip" android:minHeight="24.0dip" android:layout_alignTop="@id/elr" android:layout_alignParentRight="true" style="@style/m_" />
+        <TextView android:gravity="center_vertical" android:id="@id/elt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="24.0dip" android:layout_toLeftOf="@id/elm" android:layout_toRightOf="@id/elr" android:layout_alignTop="@id/elr" style="@style/ma" />
+        <TextView android:gravity="center_vertical" android:id="@id/elp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minHeight="24.0dip" android:singleLine="true" android:layout_toRightOf="@id/elr" android:layout_alignLeft="@id/elt" android:layout_alignBottom="@id/elr" style="@style/m_" />
+        <TextView android:gravity="center_vertical" android:id="@id/elu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="3.0dip" android:maxLines="2" android:singleLine="false" android:layout_below="@id/elr" android:layout_alignParentLeft="true" style="@style/m_" />
     </RelativeLayout>
-    <com.tencent.mm.plugin.sns.ui.widget.SnsDrawGestureView android:id="@id/esr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
-</com.tencent.mm.ui.widget.RoundedCornerRelativeLayout>
+</FrameLayout>

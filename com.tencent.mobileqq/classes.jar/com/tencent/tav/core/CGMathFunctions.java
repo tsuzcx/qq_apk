@@ -14,48 +14,51 @@ public class CGMathFunctions
   
   public static CGRect initGLViewportFill(CGSize paramCGSize1, CGSize paramCGSize2)
   {
-    float f4 = 0.0F;
-    float f3 = paramCGSize2.height;
-    float f5 = paramCGSize2.width;
-    float f1 = paramCGSize1.height;
-    float f2 = paramCGSize1.width;
-    if (f2 / f1 > f5 / f3)
+    float f2 = paramCGSize2.height;
+    float f4 = paramCGSize2.width;
+    float f3 = paramCGSize1.height;
+    float f1 = paramCGSize1.width;
+    if (f1 / f3 > f4 / f2)
     {
-      f5 = f3 * f2 / f5;
-      f3 = (f1 - f5) / 2.0F;
-      f1 = f5;
+      f4 = f2 * f1 / f4;
+      f2 = (f3 - f4) / 2.0F;
+      f3 = f4;
+      f4 = 0.0F;
     }
-    for (;;)
+    else
     {
-      return new CGRect(new PointF(f4, f3), new CGSize(f2, f1));
-      f3 = f5 * f1 / f3;
-      f4 = (f2 - f3) / 2.0F;
-      f2 = f3;
-      f3 = 0.0F;
+      f4 = f4 * f3 / f2;
+      float f5 = (f1 - f4) / 2.0F;
+      f2 = 0.0F;
+      f1 = f4;
+      f4 = f5;
     }
+    return new CGRect(new PointF(f4, f2), new CGSize(f1, f3));
   }
   
   public static CGRect initGLViewportFit(CGSize paramCGSize1, CGSize paramCGSize2)
   {
-    float f4 = 0.0F;
-    float f3 = paramCGSize2.height;
-    float f5 = paramCGSize2.width;
-    float f1 = paramCGSize1.height;
-    float f2 = paramCGSize1.width;
-    if (f2 / f1 > f5 / f3)
+    float f1 = paramCGSize2.height;
+    float f3 = paramCGSize2.width;
+    float f2 = paramCGSize1.height;
+    float f4 = paramCGSize1.width;
+    float f5;
+    if (f4 / f2 > f3 / f1)
     {
-      f5 = f5 * f1 / f3;
-      f4 = (f2 - f5) / 2.0F;
-      f3 = 0.0F;
-      f2 = f5;
+      f5 = f3 * f2 / f1;
+      f3 = (f4 - f5) / 2.0F;
+      f1 = 0.0F;
+      f4 = f5;
     }
-    for (;;)
+    else
     {
-      return new CGRect(new PointF(f4, f3), new CGSize(f2, f1));
-      f5 = f3 * f2 / f5;
-      f3 = (f1 - f5) / 2.0F;
+      f1 = f1 * f4 / f3;
+      f5 = (f2 - f1) / 2.0F;
+      f3 = 0.0F;
+      f2 = f1;
       f1 = f5;
     }
+    return new CGRect(new PointF(f3, f1), new CGSize(f4, f2));
   }
   
   private static CGRect rectFill(CGRect paramCGRect1, CGRect paramCGRect2)
@@ -75,13 +78,14 @@ public class CGMathFunctions
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
-    if (f2 > f1) {
-      paramCGSize1.width *= f2;
-    }
-    while (f1 <= f2) {
+    if (f2 > f1)
+    {
+      localCGSize.width = (f2 * paramCGSize1.width);
       return localCGSize;
     }
-    localCGSize.height = (f1 * paramCGSize1.height);
+    if (f1 > f2) {
+      localCGSize.height = (f1 * paramCGSize1.height);
+    }
     return localCGSize;
   }
   
@@ -90,13 +94,14 @@ public class CGMathFunctions
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
-    if (f2 < f1) {
-      localCGSize.width = Math.round(paramCGSize1.width * f2);
-    }
-    while (f1 >= f2) {
+    if (f2 < f1)
+    {
+      localCGSize.width = Math.round(f2 * paramCGSize1.width);
       return localCGSize;
     }
-    localCGSize.height = Math.round(f1 * paramCGSize1.height);
+    if (f1 < f2) {
+      localCGSize.height = Math.round(f1 * paramCGSize1.height);
+    }
     return localCGSize;
   }
   
@@ -114,7 +119,7 @@ public class CGMathFunctions
     float f2 = paramCGRect2.size.height / paramCGRect1.size.height;
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
-    localMatrix.postTranslate(paramCGRect2.origin.x - f1 * paramCGRect1.origin.x, paramCGRect2.origin.y - f2 * paramCGRect1.origin.y);
+    localMatrix.postTranslate(paramCGRect2.origin.x - paramCGRect1.origin.x * f1, paramCGRect2.origin.y - paramCGRect1.origin.y * f2);
     return localMatrix;
   }
   
@@ -135,7 +140,7 @@ public class CGMathFunctions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.CGMathFunctions
  * JD-Core Version:    0.7.0.1
  */

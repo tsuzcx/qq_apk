@@ -28,8 +28,8 @@ public class IndexInjectAnalysisService
   
   public InjectConstructor<?> getInjectConstructor(Class<?> paramClass)
   {
-    Object localObject = null;
     Iterator localIterator = this.indexInfos.iterator();
+    Object localObject = null;
     while (localIterator.hasNext())
     {
       InjectConstructor localInjectConstructor = ((IndexInjectInfoService)localIterator.next()).getDeclareInjectConstructor(paramClass);
@@ -74,7 +74,7 @@ public class IndexInjectAnalysisService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.index.IndexInjectAnalysisService
  * JD-Core Version:    0.7.0.1
  */

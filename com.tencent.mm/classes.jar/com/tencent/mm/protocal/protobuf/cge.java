@@ -1,187 +1,107 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cge
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public int fQC;
-  public int fQD;
-  public int fQE;
-  public int fQF;
-  public int opType;
-  public long timeStamp;
-  public String xQT;
-  public String xQU;
-  public String xQV;
-  public String xQW;
+  public String wuy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94628);
+    AppMethodBeat.i(114003);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xQT == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
-        AppMethodBeat.o(94628);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(114003);
         throw paramVarArgs;
       }
-      if (this.xQU == null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.xQV == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
+      if (this.wuy != null) {
+        paramVarArgs.g(2, this.wuy);
       }
-      if (this.xQW == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
-      }
-      paramVarArgs.aO(1, this.opType);
-      paramVarArgs.aO(2, this.fQF);
-      paramVarArgs.aO(3, this.fQC);
-      paramVarArgs.am(4, this.timeStamp);
-      paramVarArgs.aO(5, this.fQD);
-      paramVarArgs.aO(6, this.fQE);
-      if (this.xQT != null) {
-        paramVarArgs.e(7, this.xQT);
-      }
-      if (this.xQU != null) {
-        paramVarArgs.e(8, this.xQU);
-      }
-      if (this.xQV != null) {
-        paramVarArgs.e(9, this.xQV);
-      }
-      if (this.xQW != null) {
-        paramVarArgs.e(10, this.xQW);
-      }
-      AppMethodBeat.o(94628);
+      AppMethodBeat.o(114003);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label392;
+      }
+    }
+    label392:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(1, this.opType) + 0 + e.a.a.b.b.a.bl(2, this.fQF) + e.a.a.b.b.a.bl(3, this.fQC) + e.a.a.b.b.a.p(4, this.timeStamp) + e.a.a.b.b.a.bl(5, this.fQD) + e.a.a.b.b.a.bl(6, this.fQE);
-      paramInt = i;
-      if (this.xQT != null) {
-        paramInt = i + e.a.a.b.b.a.f(7, this.xQT);
+      int i = paramInt;
+      if (this.wuy != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.wuy);
       }
-      i = paramInt;
-      if (this.xQU != null) {
-        i = paramInt + e.a.a.b.b.a.f(8, this.xQU);
-      }
-      paramInt = i;
-      if (this.xQV != null) {
-        paramInt = i + e.a.a.b.b.a.f(9, this.xQV);
-      }
-      i = paramInt;
-      if (this.xQW != null) {
-        i = paramInt + e.a.a.b.b.a.f(10, this.xQW);
-      }
-      AppMethodBeat.o(94628);
+      AppMethodBeat.o(114003);
       return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(114003);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(114003);
+        return 0;
       }
-      if (this.xQT == null)
+      if (paramInt == 3)
       {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        cge localcge = (cge)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(114003);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localcge.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(114003);
+          return 0;
+        }
+        localcge.wuy = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(114003);
+        return 0;
       }
-      if (this.xQU == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
-      }
-      if (this.xQV == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
-      }
-      if (this.xQW == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
-        AppMethodBeat.o(94628);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(94628);
-      return 0;
+      AppMethodBeat.o(114003);
+      return -1;
     }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      cge localcge = (cge)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(94628);
-        return -1;
-      case 1: 
-        localcge.opType = locala.CLY.sl();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 2: 
-        localcge.fQF = locala.CLY.sl();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 3: 
-        localcge.fQC = locala.CLY.sl();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 4: 
-        localcge.timeStamp = locala.CLY.sm();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 5: 
-        localcge.fQD = locala.CLY.sl();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 6: 
-        localcge.fQE = locala.CLY.sl();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 7: 
-        localcge.xQT = locala.CLY.readString();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 8: 
-        localcge.xQU = locala.CLY.readString();
-        AppMethodBeat.o(94628);
-        return 0;
-      case 9: 
-        localcge.xQV = locala.CLY.readString();
-        AppMethodBeat.o(94628);
-        return 0;
-      }
-      localcge.xQW = locala.CLY.readString();
-      AppMethodBeat.o(94628);
-      return 0;
-    }
-    AppMethodBeat.o(94628);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cge
  * JD-Core Version:    0.7.0.1
  */

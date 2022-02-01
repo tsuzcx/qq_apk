@@ -4,10 +4,12 @@ import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeMapping;
 import com.tencent.tav.coremedia.CMTimeRange;
 import java.net.URL;
+import java.util.HashMap;
 
 public class CompositionTrackSegment
   extends AssetTrackSegment
 {
+  private HashMap<String, Object> extraInfo;
   private String sourcePath;
   private int sourceTrackID;
   private int sourceType;
@@ -26,6 +28,11 @@ public class CompositionTrackSegment
     this.sourceType = paramInt2;
     this.sourceTrackID = paramInt1;
     this.empty = false;
+  }
+  
+  public HashMap<String, Object> getExtraInfo()
+  {
+    return this.extraInfo;
   }
   
   public String getSourcePath()
@@ -48,9 +55,23 @@ public class CompositionTrackSegment
     return this.url;
   }
   
+  public void setExtraInfo(HashMap<String, Object> paramHashMap)
+  {
+    this.extraInfo = paramHashMap;
+  }
+  
   public String toString()
   {
-    return "CompositionTrackSegment{sourcePath='" + this.sourcePath + '\'' + ", sourceTrackID=" + this.sourceTrackID + ", timeMapping=" + this.timeMapping + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CompositionTrackSegment{sourcePath='");
+    localStringBuilder.append(this.sourcePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", sourceTrackID=");
+    localStringBuilder.append(this.sourceTrackID);
+    localStringBuilder.append(", timeMapping=");
+    localStringBuilder.append(this.timeMapping);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void updateTargetTimeRange(CMTimeRange paramCMTimeRange)
@@ -62,7 +83,7 @@ public class CompositionTrackSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.asset.CompositionTrackSegment
  * JD-Core Version:    0.7.0.1
  */

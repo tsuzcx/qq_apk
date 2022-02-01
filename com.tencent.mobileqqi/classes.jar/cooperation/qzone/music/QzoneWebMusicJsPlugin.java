@@ -19,13 +19,13 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
+import icq;
 import icr;
 import ics;
 import ict;
 import icu;
 import icv;
 import icw;
-import icx;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -190,7 +190,7 @@ public class QzoneWebMusicJsPlugin
         paramJsBridgeListener = this.mRuntime.a();
         if ((paramJsBridgeListener != null) && (needPlayTips()))
         {
-          showPlayTips(paramJsBridgeListener, new icr(this, paramVarArgs), new ics(this));
+          showPlayTips(paramJsBridgeListener, new icq(this, paramVarArgs), new icr(this));
           this.isFlowWarningVisible = true;
         }
         for (;;)
@@ -204,7 +204,7 @@ public class QzoneWebMusicJsPlugin
         paramJsBridgeListener = this.mRuntime.a();
         if ((paramJsBridgeListener != null) && (needPlayTips()))
         {
-          showPlayTips(paramJsBridgeListener, new ict(this, paramVarArgs), new icu(this));
+          showPlayTips(paramJsBridgeListener, new ics(this, paramVarArgs), new ict(this));
           this.isFlowWarningVisible = true;
         }
         for (;;)
@@ -323,7 +323,7 @@ public class QzoneWebMusicJsPlugin
         paramString = this.mRuntime.a();
       } while ((paramString == null) || (paramString.isFinishing()) || (this.isShowing) || (!bool) || (!needPlayTips()));
       pausePlay();
-      showPlayTips(paramString, new icw(this), new icx(this));
+      showPlayTips(paramString, new icv(this), new icw(this));
       this.isShowing = true;
       return;
       if (paramString.equals("cmd.getPlayMode"))
@@ -528,14 +528,14 @@ public class QzoneWebMusicJsPlugin
       boolean bool = ((JSONObject)localObject).getBoolean("visible");
       if ((this.mRuntime.a() instanceof QQBrowserActivity))
       {
-        localObject = (TextView)this.mRuntime.a().findViewById(2131231380);
+        localObject = (TextView)this.mRuntime.a().findViewById(2131231379);
         if (bool) {}
         try
         {
           ((TextView)localObject).setVisibility(0);
           ((TextView)localObject).setTextColor(Color.parseColor("#" + str));
           ((TextView)localObject).setText(paramString);
-          ((TextView)localObject).setOnClickListener(new icv(this));
+          ((TextView)localObject).setOnClickListener(new icu(this));
           return;
         }
         catch (Exception paramString)

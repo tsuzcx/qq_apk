@@ -1,17 +1,20 @@
-import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import java.util.TimerTask;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class gvs
-  extends TimerTask
+class gvs
+  implements Runnable
 {
-  public gvs(TroopCreateLogic paramTroopCreateLogic) {}
+  gvs(gvr paramgvr) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new gvt(this));
+    BaseActivity localBaseActivity = (BaseActivity)this.a.a.a;
+    if (localBaseActivity != null) {
+      QQToast.a(localBaseActivity, localBaseActivity.getString(2131560417), 0).b(localBaseActivity.d());
     }
+    this.a.cancel();
+    this.a.a.a();
   }
 }
 

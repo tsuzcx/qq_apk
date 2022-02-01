@@ -22,15 +22,15 @@ public final class zzaa
   
   public zzaa()
   {
-    AppMethodBeat.i(60676);
+    AppMethodBeat.i(11168);
     this.zzgw = Collections.synchronizedMap(new WeakHashMap());
     this.zzgx = Collections.synchronizedMap(new WeakHashMap());
-    AppMethodBeat.o(60676);
+    AppMethodBeat.o(11168);
   }
   
   private final void zza(boolean paramBoolean, Status paramStatus)
   {
-    AppMethodBeat.i(60682);
+    AppMethodBeat.i(11174);
     Object localObject2;
     synchronized (this.zzgw)
     {
@@ -48,7 +48,7 @@ public final class zzaa
           ((BasePendingResult)((Map.Entry)???).getKey()).zzb(paramStatus);
           continue;
           paramStatus = finally;
-          AppMethodBeat.o(60682);
+          AppMethodBeat.o(11174);
           throw paramStatus;
         }
       }
@@ -61,54 +61,54 @@ public final class zzaa
         ((TaskCompletionSource)((Map.Entry)localObject2).getKey()).trySetException(new ApiException(paramStatus));
       }
     }
-    AppMethodBeat.o(60682);
+    AppMethodBeat.o(11174);
   }
   
   final void zza(BasePendingResult<? extends Result> paramBasePendingResult, boolean paramBoolean)
   {
-    AppMethodBeat.i(60677);
+    AppMethodBeat.i(11169);
     this.zzgw.put(paramBasePendingResult, Boolean.valueOf(paramBoolean));
     paramBasePendingResult.addStatusListener(new zzab(this, paramBasePendingResult));
-    AppMethodBeat.o(60677);
+    AppMethodBeat.o(11169);
   }
   
   final <TResult> void zza(TaskCompletionSource<TResult> paramTaskCompletionSource, boolean paramBoolean)
   {
-    AppMethodBeat.i(60678);
+    AppMethodBeat.i(11170);
     this.zzgx.put(paramTaskCompletionSource, Boolean.valueOf(paramBoolean));
     paramTaskCompletionSource.getTask().addOnCompleteListener(new zzac(this, paramTaskCompletionSource));
-    AppMethodBeat.o(60678);
+    AppMethodBeat.o(11170);
   }
   
   final boolean zzaj()
   {
-    AppMethodBeat.i(60679);
+    AppMethodBeat.i(11171);
     if ((!this.zzgw.isEmpty()) || (!this.zzgx.isEmpty()))
     {
-      AppMethodBeat.o(60679);
+      AppMethodBeat.o(11171);
       return true;
     }
-    AppMethodBeat.o(60679);
+    AppMethodBeat.o(11171);
     return false;
   }
   
   public final void zzak()
   {
-    AppMethodBeat.i(60680);
+    AppMethodBeat.i(11172);
     zza(false, GoogleApiManager.zzjj);
-    AppMethodBeat.o(60680);
+    AppMethodBeat.o(11172);
   }
   
   public final void zzal()
   {
-    AppMethodBeat.i(60681);
+    AppMethodBeat.i(11173);
     zza(true, zzck.zzmm);
-    AppMethodBeat.o(60681);
+    AppMethodBeat.o(11173);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzaa
  * JD-Core Version:    0.7.0.1
  */

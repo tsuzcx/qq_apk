@@ -58,14 +58,17 @@ public final class s_quote_photo_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    Object localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 1);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.uuid != null) {
-      paramJceOutputStream.write(this.uuid, 2);
+    localObject = this.uuid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.msgtime, 3);
     paramJceOutputStream.write(this.groupUin, 4);
@@ -73,14 +76,15 @@ public final class s_quote_photo_info
     paramJceOutputStream.write(this.chatSrcUin, 6);
     paramJceOutputStream.write(this.chatDstUin, 7);
     paramJceOutputStream.write(this.qunPicFileID, 8);
-    if (this.mapAttr != null) {
-      paramJceOutputStream.write(this.mapAttr, 9);
+    localObject = this.mapAttr;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.s_quote_photo_info
  * JD-Core Version:    0.7.0.1
  */

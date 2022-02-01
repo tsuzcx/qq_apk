@@ -9,9 +9,9 @@ public final class SetGroupReq
 {
   static int cache_reqtype;
   static byte[] cache_vecBody;
-  public int reqtype;
-  public long uin;
-  public byte[] vecBody;
+  public int reqtype = 0;
+  public long uin = 0L;
+  public byte[] vecBody = null;
   
   public SetGroupReq() {}
   
@@ -43,7 +43,7 @@ public final class SetGroupReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.SetGroupReq
  * JD-Core Version:    0.7.0.1
  */

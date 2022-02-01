@@ -36,29 +36,19 @@ public class ThreadPool
     if (paramInt1 <= 0) {
       paramInt1 = 1;
     }
-    for (;;)
-    {
-      if (paramInt2 <= paramInt1) {
-        paramInt2 = paramInt1;
-      }
-      for (;;)
-      {
-        this.mNetworkCounter.value = paramInt2;
-        this.mExecutor = new SmartThreadExecutor(new ThreadPoolExecutor(paramInt1, paramInt2, 10L, TimeUnit.SECONDS, paramBlockingQueue, new PriorityThreadFactory(paramString, 10)));
-        return;
-      }
+    if (paramInt2 <= paramInt1) {
+      paramInt2 = paramInt1;
     }
+    this.mNetworkCounter.value = paramInt2;
+    this.mExecutor = new SmartThreadExecutor(new ThreadPoolExecutor(paramInt1, paramInt2, 10L, TimeUnit.SECONDS, paramBlockingQueue, new PriorityThreadFactory(paramString, 10)));
   }
   
   public ThreadPool(Executor paramExecutor)
   {
-    if (paramExecutor != null) {}
-    for (;;)
-    {
-      this.mExecutor = new SmartThreadExecutor(paramExecutor);
-      return;
+    if (paramExecutor == null) {
       paramExecutor = new ThreadPoolExecutor(2, 2, 10L, TimeUnit.SECONDS, new PriorityBlockingQueue(), new PriorityThreadFactory("thread_pool", 10));
     }
+    this.mExecutor = new SmartThreadExecutor(paramExecutor);
   }
   
   public <T> Future<T> submit(ThreadPool.Job<T> paramJob)
@@ -75,7 +65,7 @@ public class ThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.ThreadPool
  * JD-Core Version:    0.7.0.1
  */

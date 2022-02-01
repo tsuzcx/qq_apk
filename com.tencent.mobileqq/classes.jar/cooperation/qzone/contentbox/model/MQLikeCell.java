@@ -9,11 +9,11 @@ public class MQLikeCell
   implements Serializable
 {
   public static final String TAG = "QZoneMsgManager.MQLikeCell";
-  public int appid;
-  public long hostUin;
+  public int appid = 0;
+  public long hostUin = 0L;
   public String likeKey = "";
-  public boolean liked;
-  public int totalLike;
+  public boolean liked = false;
+  public int totalLike = 0;
   
   public static MQLikeCell parseFromJson(JSONObject paramJSONObject)
   {
@@ -39,19 +39,18 @@ public class MQLikeCell
   
   public static MQLikeCell readFrom(LikInfo paramLikInfo)
   {
-    boolean bool = true;
     MQLikeCell localMQLikeCell = new MQLikeCell();
     localMQLikeCell.totalLike = paramLikInfo.totalLik;
     localMQLikeCell.likeKey = paramLikInfo.likeKey;
     localMQLikeCell.appid = paramLikInfo.appid;
     localMQLikeCell.hostUin = paramLikInfo.hostUin;
-    if (paramLikInfo.hasDoLik == 1) {}
-    for (;;)
-    {
-      localMQLikeCell.liked = bool;
-      return localMQLikeCell;
+    int i = paramLikInfo.hasDoLik;
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    localMQLikeCell.liked = bool;
+    return localMQLikeCell;
   }
   
   public JSONObject convertToJson()
@@ -75,7 +74,7 @@ public class MQLikeCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQLikeCell
  * JD-Core Version:    0.7.0.1
  */

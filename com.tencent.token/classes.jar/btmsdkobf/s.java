@@ -10,24 +10,26 @@ public final class s
   public long aB = 0L;
   public long aC = 0L;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new s();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.aB = paramJceInputStream.read(this.aB, 0, false);
     this.aC = paramJceInputStream.read(this.aC, 1, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.aB != 0L) {
-      paramJceOutputStream.write(this.aB, 0);
+    long l = this.aB;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.aC != 0L) {
-      paramJceOutputStream.write(this.aC, 1);
+    l = this.aC;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
   }
 }

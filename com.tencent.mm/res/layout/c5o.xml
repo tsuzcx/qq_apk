@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView android:id="@id/a1p" android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:layout_marginStart="@dimen/cp" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0_5" android:gravity="center_vertical" android:id="@id/h_k" android:layout_width="wrap_content" android:layout_height="@dimen/d_" android:text="name" />
+        <View android:background="@color/FG_3" android:layout_width="wrap_content" android:layout_height="@dimen/bo" />
+    </LinearLayout>
+</LinearLayout>

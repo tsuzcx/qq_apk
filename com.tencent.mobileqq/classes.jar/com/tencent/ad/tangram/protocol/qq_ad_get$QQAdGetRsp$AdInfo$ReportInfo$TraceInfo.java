@@ -7,13 +7,14 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$ReportInfo$TraceInfo
   public String net_log_req_id;
   public long noco_id = 0L;
   public String product_id;
+  public int quality_product_id = 0;
   public String traceid;
   public String via;
   public String view_id;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo
  * JD-Core Version:    0.7.0.1
  */

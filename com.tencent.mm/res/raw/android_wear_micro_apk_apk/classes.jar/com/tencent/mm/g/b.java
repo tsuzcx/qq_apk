@@ -3,12 +3,12 @@ package com.tencent.mm.g;
 public final class b
   extends com.tencent.mm.d.a
 {
-  public int Ys;
-  public int Yt;
-  public int Yu;
-  public int Yv = -1;
-  public int Yw;
-  public int Yx;
+  public int abS;
+  public int abT;
+  public int abU;
+  public int abV = -1;
+  public int abW;
+  public int abX;
   public int size;
   
   protected final int a(int paramInt, Object... paramVarArgs)
@@ -16,24 +16,24 @@ public final class b
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aq(1, this.Ys);
-      paramVarArgs.aq(2, this.Yt);
-      paramVarArgs.aq(3, this.Yu);
-      paramVarArgs.aq(41, this.Yv);
-      paramVarArgs.aq(5, this.Yw);
-      paramVarArgs.aq(6, this.Yx);
-      paramVarArgs.aq(7, this.size);
+      paramVarArgs.at(1, this.abS);
+      paramVarArgs.at(2, this.abT);
+      paramVarArgs.at(3, this.abU);
+      paramVarArgs.at(41, this.abV);
+      paramVarArgs.at(5, this.abW);
+      paramVarArgs.at(6, this.abX);
+      paramVarArgs.at(7, this.size);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.ak(1, this.Ys) + 0 + a.a.a.a.ak(2, this.Yt) + a.a.a.a.ak(3, this.Yu) + a.a.a.a.ak(41, this.Yv) + a.a.a.a.ak(5, this.Yw) + a.a.a.a.ak(6, this.Yx) + a.a.a.a.ak(7, this.size);
+      return a.a.a.a.an(1, this.abS) + 0 + a.a.a.a.an(2, this.abT) + a.a.a.a.an(3, this.abU) + a.a.a.a.an(41, this.abV) + a.a.a.a.an(5, this.abW) + a.a.a.a.an(6, this.abX) + a.a.a.a.an(7, this.size);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -47,25 +47,25 @@ public final class b
       default: 
         return -1;
       case 1: 
-        localb.Ys = locala.ot();
+        localb.abS = locala.pg();
         return 0;
       case 2: 
-        localb.Yt = locala.ot();
+        localb.abT = locala.pg();
         return 0;
       case 3: 
-        localb.Yu = locala.ot();
+        localb.abU = locala.pg();
         return 0;
       case 41: 
-        localb.Yv = locala.ot();
+        localb.abV = locala.pg();
         return 0;
       case 5: 
-        localb.Yw = locala.ot();
+        localb.abW = locala.pg();
         return 0;
       case 6: 
-        localb.Yx = locala.ot();
+        localb.abX = locala.pg();
         return 0;
       }
-      localb.size = locala.ot();
+      localb.size = locala.pg();
       return 0;
     }
     return -1;

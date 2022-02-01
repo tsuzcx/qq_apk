@@ -4,45 +4,43 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import ayle;
-import aylf;
-import aylg;
-import ayli;
-import aylk;
-import ayln;
-import ayuh;
-import ayuv;
-import bdbb;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
+import com.tencent.mobileqq.fts.v1.FTSEntity;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRespData;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.ListView;
 import java.util.List;
 
 public class FTSEntitySearchDetailFragment
-  extends Fragment
-  implements Handler.Callback, ayuh<ayli>
+  extends BaseFragment
+  implements Handler.Callback, ISearchListener<FTSEntitySearchResultDetailModel>
 {
-  private static List<FTSEntity> jdField_a_of_type_JavaUtilList;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ayle jdField_a_of_type_Ayle;
-  aylg jdField_a_of_type_Aylg;
-  private bdbb jdField_a_of_type_Bdbb;
-  FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private String jdField_a_of_type_JavaLangString;
-  private String jdField_b_of_type_JavaLangString;
-  private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private List<ayli> c;
+  private static List<FTSEntity> c;
+  FTSEntitySearchDetailActivity a;
+  FTSEntitySearchEngine b;
+  private TextView d;
+  private ListView e;
+  private String f;
+  private String g;
+  private List<FTSEntity> h;
+  private List<FTSEntitySearchResultDetailModel> i;
+  private BaseMvpFTSEntityAdapter j;
+  private IFaceDecoder k;
+  private Handler l = new Handler(this);
   
   public static FTSEntitySearchDetailFragment a(String paramString1, String paramString2, List<FTSEntity> paramList)
   {
-    jdField_a_of_type_JavaUtilList = paramList;
+    c = paramList;
     paramList = new FTSEntitySearchDetailFragment();
     Bundle localBundle = new Bundle();
     localBundle.putString("original_keyword", paramString1);
@@ -51,70 +49,69 @@ public class FTSEntitySearchDetailFragment
     return paramList;
   }
   
-  private void b(List<ayli> paramList)
+  private void b(List<FTSEntitySearchResultDetailModel> paramList)
   {
-    this.jdField_a_of_type_Ayle.a(paramList);
+    this.j.a(paramList);
   }
   
-  public void a(List<ayli> paramList) {}
+  public void a(List<FTSEntitySearchResultDetailModel> paramList) {}
   
-  public void a(List<ayli> paramList, int paramInt)
+  public void a(List<FTSEntitySearchResultDetailModel> paramList, int paramInt)
   {
-    this.c = paramList;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-1);
+    this.i = paramList;
+    this.l.removeMessages(-1);
+    this.l.sendEmptyMessage(-1);
   }
   
-  public void a(List<ayli> paramList, ayuv paramayuv)
+  public void a(List<FTSEntitySearchResultDetailModel> paramList, SearchRespData paramSearchRespData)
   {
-    if (paramayuv.a(this.jdField_a_of_type_JavaLangString)) {
-      a(paramList, paramayuv.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
+    if (paramSearchRespData.a(this.f))
+    {
+      a(paramList, paramSearchRespData.b);
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramayuv.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_a_of_type_JavaLangString });
+    if (QLog.isColorLevel()) {
+      QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.a, " keyword2:", this.f });
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    if (paramMessage.what == -1) {
+      b(this.i);
     }
-    for (;;)
-    {
-      return true;
-      b(this.c);
-    }
+    return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_b_of_type_JavaUtilList = jdField_a_of_type_JavaUtilList;
-    jdField_a_of_type_JavaUtilList = null;
+    this.h = c;
+    c = null;
     paramBundle = getArguments();
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("original_keyword");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("segment_keyword");
-    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = ((FTSEntitySearchDetailActivity)getActivity());
-    this.jdField_a_of_type_Aylg = aylk.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
+    this.f = paramBundle.getString("original_keyword");
+    this.g = paramBundle.getString("segment_keyword");
+    this.a = ((FTSEntitySearchDetailActivity)getBaseActivity());
+    this.b = FTSEntitySearchUtils.a(this.a.app, this.a.a);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559253, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367565));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369519));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625297, paramViewGroup, false);
+    this.d = ((TextView)paramLayoutInflater.findViewById(2131434940));
+    this.e = ((ListView)paramLayoutInflater.findViewById(2131437272));
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
+    IFaceDecoder localIFaceDecoder = this.k;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
-    jdField_a_of_type_JavaUtilList = null;
+    c = null;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -122,31 +119,32 @@ public class FTSEntitySearchDetailFragment
     super.onViewCreated(paramView, paramBundle);
     try
     {
-      paramView = aylk.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_b_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      this.jdField_a_of_type_Bdbb = new bdbb(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app);
-      this.jdField_a_of_type_Ayle = new aylf(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ayle);
-      this.jdField_a_of_type_Aylg.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_Ayle.a();
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && (!ayln.a(this.jdField_a_of_type_JavaLangString)))
+      paramView = FTSEntitySearchUtils.a(this.a, this.h.size(), this.f, this.a.a);
+      this.d.setText(paramView);
+      this.k = ((IQQAvatarService)this.a.app.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.a.app);
+      this.j = new FTSEntitySearchDetailFragment.1(this, this.e, this.k, this.h, this.g, this.a);
+      this.e.setAdapter(this.j);
+      this.b.a(this.g, this.h);
+      this.j.a();
+      if ((this.f != null) && (this.f.length() > 0) && (!FTSMessageSearchEngine.a(this.f)))
       {
-        this.jdField_a_of_type_Aylg.a();
-        paramView = aylk.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(0));
-        this.jdField_a_of_type_Aylg.b(paramView, this);
+        this.b.a();
+        paramView = FTSEntitySearchUtils.a(this.a.a, this.g, (FTSEntity)this.h.get(0));
+        this.b.b(paramView, this);
+        return;
       }
-      return;
     }
     catch (NullPointerException paramView)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("FTSEntitySearchDetailFragment", 2, "onViewCreated: ", paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("FTSEntitySearchDetailFragment", 2, "onViewCreated: ", paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment
  * JD-Core Version:    0.7.0.1
  */

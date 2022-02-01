@@ -1,25 +1,23 @@
 package com.tencent.av.business.manager;
 
-import bdhb;
-import ljk;
-import ljl;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class Checker$1
+class Checker$1
   implements Runnable
 {
-  public Checker$1(ljk paramljk, ljl paramljl, String paramString) {}
+  Checker$1(Checker paramChecker, Checker.ItemRecord paramItemRecord, String paramString) {}
   
   public void run()
   {
-    if (bdhb.a(this.jdField_a_of_type_Ljl.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ljl);
+    if (FileUtils.fileExists(this.a.c)) {
+      this.this$0.a(this.b, this.a);
     }
-    ljk.a(this.this$0);
+    Checker.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.Checker.1
  * JD-Core Version:    0.7.0.1
  */

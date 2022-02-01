@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path name="external" path="" />
-    <root-path name="root_path" path="" />
-</paths>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:key="settings_auth" android:layout="@layout/bdi" android:title="@string/d1e" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_original" android:layout="@layout/bdi" android:title="@string/eg1" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_live_income" android:layout="@layout/bdi" android:title="@string/dp5" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_live_task" android:layout="@layout/bdi" android:title="@string/eos" />
+    <Preference android:key="setting_live_lottery_history" android:layout="@layout/bdi" android:title="@string/dxo" />
+    <Preference android:key="setting_live_settle_to_agency" android:layout="@layout/bdi" android:title="@string/e6z" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_shop" android:layout="@layout/bdi" android:title="@string/epk" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_creater_guide" android:layout="@layout/bdi" android:title="@string/eoq" />
+</PreferenceScreen>

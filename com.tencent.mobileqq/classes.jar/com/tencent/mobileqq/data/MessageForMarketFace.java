@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import amrf;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import tencent.im.msg.im_msg_body.MarketFace;
@@ -15,11 +16,11 @@ public class MessageForMarketFace
   extends ChatMessage
 {
   public static final String TAG = "MessageForMarketFace";
-  public MarkFaceMessage mMarkFaceMessage;
+  public MarkFaceMessage mMarkFaceMessage = null;
   public int msgVia;
-  public boolean needToPlay;
+  public boolean needToPlay = false;
   public float playProgress;
-  public String sendFaceName;
+  public String sendFaceName = null;
   public String timeStr;
   
   public static MessageForMarketFace parsePb(im_msg_body.MarketFace paramMarketFace)
@@ -43,15 +44,15 @@ public class MessageForMarketFace
   {
     try
     {
-      this.mMarkFaceMessage = ((MarkFaceMessage)amrf.a(this.msgData));
-      if ((EmojiStickerManager.e) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
+      this.mMarkFaceMessage = ((MarkFaceMessage)MessagePkgUtils.a(this.msgData));
+      if ((((IEmosmService)QRoute.api(IEmosmService.class)).getEmojiStickerSwitch()) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
       {
         if (this.msgtype == -2007) {
           this.msgtype = -2058;
         }
         this.mMarkFaceMessage.stickerInfo.isDisplayed = this.isread;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -80,18 +81,22 @@ public class MessageForMarketFace
   
   public String getSummaryMsg()
   {
-    if ((this.mMarkFaceMessage != null) && (!TextUtils.isEmpty(this.mMarkFaceMessage.faceName)))
+    Object localObject = this.mMarkFaceMessage;
+    if ((localObject != null) && (!TextUtils.isEmpty(((MarkFaceMessage)localObject).faceName)))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[").append(this.mMarkFaceMessage.faceName).append("]");
-      return localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.mMarkFaceMessage.faceName);
+      ((StringBuilder)localObject).append("]");
+      return ((StringBuilder)localObject).toString();
     }
-    return alud.a(2131706984);
+    return HardCodeUtil.a(2131897794);
   }
   
   public boolean isNewSoundType()
   {
-    return (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.voicePrintItems != null) && (!this.mMarkFaceMessage.voicePrintItems.isEmpty());
+    MarkFaceMessage localMarkFaceMessage = this.mMarkFaceMessage;
+    return (localMarkFaceMessage != null) && (localMarkFaceMessage.voicePrintItems != null) && (!this.mMarkFaceMessage.voicePrintItems.isEmpty());
   }
   
   public boolean isSupportReply()
@@ -104,22 +109,24 @@ public class MessageForMarketFace
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.mMarkFaceMessage != null) {}
-    try
-    {
-      this.msgData = amrf.a(this.mMarkFaceMessage);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MessageForMarketFace", 1, "prewrite: ", localException);
+    MarkFaceMessage localMarkFaceMessage = this.mMarkFaceMessage;
+    if (localMarkFaceMessage != null) {
+      try
+      {
+        this.msgData = MessagePkgUtils.a(localMarkFaceMessage);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("MessageForMarketFace", 1, "prewrite: ", localException);
+      }
     }
   }
 }

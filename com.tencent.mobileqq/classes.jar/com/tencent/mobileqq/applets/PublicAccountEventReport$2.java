@@ -1,28 +1,20 @@
 package com.tencent.mobileqq.applets;
 
-import amrz;
-import android.text.TextUtils;
-import azqs;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.weather.api.IWeatherCommApi;
 
-public final class PublicAccountEventReport$2
+final class PublicAccountEventReport$2
   implements Runnable
 {
-  public PublicAccountEventReport$2(String paramString1, String paramString2, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  PublicAccountEventReport$2(IWeatherCommApi paramIWeatherCommApi, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_b_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      amrz.a(str1, 101, str2, bool);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, this.jdField_b_of_type_JavaLangString);
-      }
-      return;
+    String str = ServiceAccountFolderManager.a().c();
+    if (this.a.isWeatherPA(str)) {
+      PublicAccountEventReport.b(this.b, this.c);
     }
   }
 }

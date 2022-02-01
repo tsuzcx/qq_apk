@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 public class MessageForArkApp$Size
 {
-  public int height;
-  public int width;
+  public int height = 0;
+  public int width = 0;
   
   public MessageForArkApp$Size(int paramInt1, int paramInt2)
   {

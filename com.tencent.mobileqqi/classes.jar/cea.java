@@ -1,35 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cea
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cea(ChatSettingForTroop paramChatSettingForTroop) {}
+  public cea(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {}
-    label116:
+    switch (paramView.getId())
+    {
+    default: 
+      this.a.e = 0;
+    }
     for (;;)
     {
+      this.a.a(this.a.e);
+      ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.e), "", "", "");
       return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l != 0) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label116;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l = 0;
-        DBUtils.a(this.a.b.a(), "troop_notification_new", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.j > 0) {
-          break;
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-        return;
-      }
+      this.a.e = 1;
+      continue;
+      this.a.e = 2;
+      continue;
+      this.a.e = 3;
     }
   }
 }

@@ -11,9 +11,9 @@ public class ShareData
   implements Parcelable
 {
   public static final Parcelable.Creator<ShareData> CREATOR = new ShareData.1();
-  protected final String TAG = "ShareData";
+  protected static final String TAG = "ShareData";
   public boolean isLocalPic;
-  public MiniAppInfo miniAppInfo;
+  protected MiniAppInfo miniAppInfo;
   public boolean needShareCallback;
   public boolean shareInMiniProcess;
   public int shareItemId;
@@ -34,33 +34,27 @@ public class ShareData
     this.title = paramParcel.readString();
     this.summary = paramParcel.readString();
     this.sharePicPath = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
-    {
+    int i = paramParcel.readInt();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      this.isLocalPic = bool1;
-      this.targetUrl = paramParcel.readString();
-      if (paramParcel.readInt() != 1) {
-        break label135;
-      }
+    } else {
+      bool1 = false;
+    }
+    this.isLocalPic = bool1;
+    this.targetUrl = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {
       bool1 = true;
-      label93:
-      this.needShareCallback = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label140;
-      }
-    }
-    label135:
-    label140:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.shareInMiniProcess = bool1;
-      this.miniAppInfo = ((MiniAppInfo)paramParcel.readParcelable(MiniAppInfo.class.getClassLoader()));
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label93;
     }
+    this.needShareCallback = bool1;
+    boolean bool1 = bool2;
+    if (paramParcel.readInt() == 1) {
+      bool1 = true;
+    }
+    this.shareInMiniProcess = bool1;
+    this.miniAppInfo = ((MiniAppInfo)paramParcel.readParcelable(MiniAppInfo.class.getClassLoader()));
   }
   
   public int describeContents()
@@ -100,45 +94,12 @@ public class ShareData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    paramParcel.writeInt(this.shareSource);
-    paramParcel.writeInt(this.shareTarget);
-    paramParcel.writeInt(this.shareItemId);
-    paramParcel.writeString(this.title);
-    paramParcel.writeString(this.summary);
-    paramParcel.writeString(this.sharePicPath);
-    if (this.isLocalPic)
-    {
-      paramInt = 1;
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.targetUrl);
-      if (!this.needShareCallback) {
-        break label115;
-      }
-      paramInt = 1;
-      label81:
-      paramParcel.writeInt(paramInt);
-      if (!this.shareInMiniProcess) {
-        break label120;
-      }
-    }
-    label115:
-    label120:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeParcelable(this.miniAppInfo, 0);
-      return;
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label81;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ShareData
  * JD-Core Version:    0.7.0.1
  */

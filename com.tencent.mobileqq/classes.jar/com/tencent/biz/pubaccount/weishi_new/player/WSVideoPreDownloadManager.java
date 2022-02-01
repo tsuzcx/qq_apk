@@ -2,196 +2,176 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.AbsWSPlayerInfo;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerFactory;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerPreDownloader;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerPreDownloader.Listener;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.WSPlayerWrapHelper;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import thn;
-import thq;
-import ths;
-import thv;
-import thw;
-import thx;
-import tlo;
 
 public class WSVideoPreDownloadManager
-  implements ths
+  implements WSVideoPluginInstall.OnVideoPluginInstallListener
 {
-  public Context a;
-  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
-  private final String jdField_a_of_type_JavaLangString = "2";
-  private List<thx> jdField_a_of_type_JavaUtilList;
-  private Set<String> jdField_a_of_type_JavaUtilSet;
-  private thq jdField_a_of_type_Thq;
-  private thw jdField_a_of_type_Thw;
-  private String b;
+  private Context a;
+  private WSVideoPluginInstall b;
+  private WSVideoPreDownloadManager.PreDownloadController c;
+  private IWSPlayerPreDownloader.Listener d;
+  private IWSPlayerPreDownloader e;
+  private IWSPlayerFactory f;
+  private String g;
+  private Set<String> h = null;
+  private List<WSVideoPreDownloadManager.VideoPreDownloadParam> i = null;
   
   public WSVideoPreDownloadManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Thq = new thq();
-    this.jdField_a_of_type_Thq.a(this);
-    if (!this.jdField_a_of_type_Thq.a())
+    this.a = paramContext;
+    this.b = new WSVideoPluginInstall();
+    this.b.a(this);
+    if (!this.b.b())
     {
-      this.jdField_a_of_type_Thq.a();
+      this.b.a();
       return;
     }
     c();
-    e();
+    d();
   }
   
-  private void a(String paramString1, int paramInt, String paramString2)
+  private AbsWSPlayerInfo a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "innerDoPreDownload() 开始预下载 duration=" + paramInt + ", url=" + paramString1);
+    Object localObject = this.f;
+    if (localObject == null) {
+      return null;
     }
-    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (localTVK_ICacheMgr == null) {
-      if (QLog.isColorLevel()) {
-        tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "innerDoPreDownload() start preload ERROR cacheMgr == null!");
-      }
-    }
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo;
-    do
+    localObject = ((IWSPlayerFactory)localObject).a();
+    ((AbsWSPlayerInfo)localObject).a(WSPlayerUtils.b(paramString), paramString, 101, paramInt);
+    return localObject;
+  }
+  
+  private void a(WSVideoPreDownloadManager.VideoPreDownloadParam paramVideoPreDownloadParam)
+  {
+    if (paramVideoPreDownloadParam != null)
     {
-      return;
-      paramString2 = new TVK_UserInfo(paramString2, "");
-      localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, "", "");
-      localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
-      localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", thn.jdField_a_of_type_JavaLangString);
-      if (paramInt > 0) {
-        localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(paramInt));
+      if (TextUtils.isEmpty(paramVideoPreDownloadParam.b)) {
+        return;
       }
-    } while (TextUtils.isEmpty(paramString1));
-    tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "preLoadVideoByUrl() 正式开始预下载 url=" + paramString1);
-    paramInt = localTVK_ICacheMgr.preLoadVideoByUrlWithResult(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, localTVK_PlayerVideoInfo);
-    tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "preLoadVideoByUrl() result=" + paramInt);
-  }
-  
-  private void a(List<thx> paramList)
-  {
-    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadSerialTask(this, paramList), 5, null, true);
+      IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
+      if (localIWSPlayerPreDownloader == null)
+      {
+        WSLog.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][innerDoPreDownload] start preload ERROR preDownloader == null!");
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSVideoPreDownloadManager.java][innerDoPreDownload] START DOWNLOAD!! duration:");
+      localStringBuilder.append(paramVideoPreDownloadParam.d);
+      localStringBuilder.append(", title:");
+      localStringBuilder.append(paramVideoPreDownloadParam.c);
+      localStringBuilder.append(", url:");
+      localStringBuilder.append(paramVideoPreDownloadParam.b);
+      WSLog.e("WS_VIDEO_PRE_DL", localStringBuilder.toString());
+      if (!TextUtils.isEmpty(paramVideoPreDownloadParam.b)) {
+        localIWSPlayerPreDownloader.a(a(paramVideoPreDownloadParam.b, paramVideoPreDownloadParam.d));
+      }
+    }
   }
   
   private void c()
   {
-    d();
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
-    }
-    if (QLog.isColorLevel()) {
-      tlo.b("WS_VIDEO_WSVideoPreDownloadManager", 2, "VideoPreDownloadController initCacheMgr mFactory=" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory + ", mCacheMgr=" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr);
-    }
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null)) {}
+    this.f = WSPlayerWrapHelper.a().b();
+    this.e = this.f.a(BaseApplicationImpl.getContext());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSVideoPreDownloadManager.java][initCacheMgr] mPreDownloader=");
+    ((StringBuilder)localObject).append(this.e);
+    WSLog.e("WS_VIDEO_PRE_DL", ((StringBuilder)localObject).toString());
+    localObject = this.e;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (this.e == null) {
+      return;
+    }
+    this.h = new HashSet();
+    this.i = new ArrayList();
+    WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][initSerialPreDownload] setPreloadCallback");
+    this.e.a(new WSVideoPreDownloadManager.2(this));
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) {
-      return;
+    WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][releaseSerialPreDownload]");
+    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
+    if (localIWSPlayerPreDownloader != null)
+    {
+      localIWSPlayerPreDownloader.a(null);
+      localIWSPlayerPreDownloader.b();
     }
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (QLog.isColorLevel()) {
-      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "initSerialPreDownload() 设置mCacheMgr回调");
-    }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new thv(this));
   }
   
   private void f()
   {
-    if (QLog.isColorLevel()) {
-      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "releaseSerialPreDownload()");
-    }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null)
+    List localList = this.i;
+    if ((localList != null) && (localList.size() > 0))
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.releasePreload(thn.jdField_a_of_type_Int);
-    }
-  }
-  
-  private void g()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (localList.size() > 0)) {}
-    label64:
-    while (!QLog.isColorLevel())
-    {
-      for (;;)
+      WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam;
+      try
       {
+        localVideoPreDownloadParam = (WSVideoPreDownloadManager.VideoPreDownloadParam)localList.get(0);
         try
         {
-          localthx1 = (thx)localList.get(0);
-          localthx2 = localthx1;
+          localList.remove(0);
         }
-        catch (Exception localException1)
-        {
-          try
-          {
-            localList.remove(0);
-            localthx2 = localthx1;
-            if ((localthx2 != null) && (!TextUtils.isEmpty(localthx2.b))) {
-              break;
-            }
-            g();
-            return;
-          }
-          catch (Exception localException2)
-          {
-            thx localthx1;
-            thx localthx2;
-            int i;
-            break label64;
-          }
-          localException1 = localException1;
-          localthx1 = null;
-        }
-        if (QLog.isColorLevel())
-        {
-          tlo.d("WS_VIDEO_WSVideoPreDownloadManager", 2, "preDownloadVideoNotAlreadyList.remove(0) ERROR = " + localException1.getMessage());
-          localthx2 = localthx1;
-        }
+        catch (Exception localException1) {}
+        localStringBuilder2 = new StringBuilder();
       }
-      this.b = localthx2.b;
-      i = localthx2.jdField_a_of_type_Int;
-      if (a(this.b))
+      catch (Exception localException2)
       {
-        if (QLog.isColorLevel()) {
-          tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "innerDoPreDownload() 缓冲已存在，跳过, videoUrl=" + localthx2.b);
+        localVideoPreDownloadParam = null;
+      }
+      StringBuilder localStringBuilder2;
+      localStringBuilder2.append("[WSVideoPreDownloadManager.java][preDownloadNotAlreadyVideo] remove(0) ERROR = ");
+      localStringBuilder2.append(localException2.getMessage());
+      WSLog.d("WS_VIDEO_PRE_DL", localStringBuilder2.toString());
+      if ((localVideoPreDownloadParam != null) && (!TextUtils.isEmpty(localVideoPreDownloadParam.b)))
+      {
+        this.g = localVideoPreDownloadParam.b;
+        if (a(this.g))
+        {
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("[WSVideoPreDownloadManager.java][preDownloadNotAlreadyVideo] checkIsCached is TRUE! videoTitle:");
+          localStringBuilder1.append(localVideoPreDownloadParam.c);
+          WSLog.e("WS_VIDEO_PRE_DL", localStringBuilder1.toString());
+          this.g = null;
+          f();
+          return;
         }
-        this.b = null;
-        g();
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[WSVideoPreDownloadManager.java][preDownloadNotAlreadyVideo] checkIsCached is FALSE! videoTitle:");
+        localStringBuilder1.append(localVideoPreDownloadParam.c);
+        WSLog.e("WS_VIDEO_PRE_DL", localStringBuilder1.toString());
+        a(localVideoPreDownloadParam);
         return;
       }
-      a(localthx2.b, i, localthx2.jdField_a_of_type_JavaLangString);
+      f();
       return;
     }
-    tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "已完成预下载，队列为空");
+    WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][preDownloadNotAlreadyVideo] preDownload finish! PreDownloadList empty.");
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      tlo.b("WS_VIDEO_WSVideoPreDownloadManager", 2, "destroy()");
-    }
+    WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][destroy]");
     ThreadManager.post(new WSVideoPreDownloadManager.1(this), 5, null, true);
-    if (this.jdField_a_of_type_Thq != null)
+    WSVideoPluginInstall localWSVideoPluginInstall = this.b;
+    if (localWSVideoPluginInstall != null)
     {
-      this.jdField_a_of_type_Thq.b();
-      this.jdField_a_of_type_Thq = null;
+      localWSVideoPluginInstall.c();
+      this.b = null;
     }
   }
   
@@ -202,100 +182,80 @@ public class WSVideoPreDownloadManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Thw == null) {}
-    do
-    {
-      List localList;
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) {
-          break;
-        }
-        localList = this.jdField_a_of_type_Thw.a(paramInt, paramBoolean);
-      } while ((localList == null) || (localList.size() <= 0));
-      if (QLog.isColorLevel()) {
-        tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "requestPreDownload() 外部触发预下载逻辑 size = " + localList.size());
-      }
-      a(localList);
+    Object localObject = this.c;
+    if (localObject == null) {
       return;
-    } while (!QLog.isColorLevel());
-    tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "requestPreDownload() is off or mCacheMgr is null, return;");
+    }
+    if (this.e != null)
+    {
+      localObject = ((WSVideoPreDownloadManager.PreDownloadController)localObject).a(paramInt, paramBoolean);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(">>>>>>[WSVideoPreDownloadManager.java][requestPreDownload] START!! preDownloadList size:");
+        localStringBuilder.append(((List)localObject).size());
+        WSLog.f("WS_VIDEO_PRE_DL", localStringBuilder.toString());
+        ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadSerialTask(this, (List)localObject), 5, null, true);
+      }
+    }
+    else
+    {
+      WSLog.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][requestPreDownload] is off or mPreDownloader is null, return!");
+    }
   }
   
-  public void a(thw paramthw)
+  public void a(WSVideoPreDownloadManager.PreDownloadController paramPreDownloadController)
   {
-    this.jdField_a_of_type_Thw = paramthw;
+    this.c = paramPreDownloadController;
+  }
+  
+  public void a(IWSPlayerPreDownloader.Listener paramListener)
+  {
+    this.d = paramListener;
   }
   
   public void a(boolean paramBoolean)
   {
     c();
-    e();
+    d();
   }
   
   public boolean a(String paramString)
   {
-    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-    if (localTVK_ICacheMgr == null) {
+    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
+    boolean bool2 = false;
+    if (localIWSPlayerPreDownloader == null) {
       return false;
     }
-    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, "", "");
-    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", thn.jdField_a_of_type_JavaLangString);
-    String[] arrayOfString = new String[6];
-    arrayOfString[0] = "msd";
-    arrayOfString[1] = "hd";
-    arrayOfString[2] = "fhd";
-    arrayOfString[3] = "mp4";
-    arrayOfString[4] = "shd";
-    arrayOfString[5] = "sd";
-    int i = 0;
-    int m = arrayOfString.length;
-    int j = 0;
-    while (j < m)
+    Set localSet = this.h;
+    boolean bool1;
+    if (!localIWSPlayerPreDownloader.b(a(paramString, 0)))
     {
-      String str = arrayOfString[j];
-      try
+      bool1 = bool2;
+      if (localSet != null)
       {
-        int k = localTVK_ICacheMgr.isVideoCached(this.jdField_a_of_type_AndroidContentContext, paramString, localTVK_UserInfo, localTVK_PlayerVideoInfo, str);
-        i = k;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            tlo.b("WS_VIDEO_WSVideoPreDownloadManager", 2, "checkIsVideoCached()-isVideoCached Exception url=" + paramString + ", cacheMgr.isVideoCached Exception=" + localException.getMessage());
-          }
-        }
-        j += 1;
-      }
-      if ((i == 2) || (i == 1))
-      {
-        if (QLog.isColorLevel()) {
-          tlo.b("WS_VIDEO_WSVideoPreDownloadManager", 2, "checkIsVideoCached() cacheStatus=" + i + ", definition=" + str + ", return TRUE, url=" + paramString);
-        }
-        return true;
+        bool1 = bool2;
+        if (!localSet.contains(paramString)) {}
       }
     }
-    if (QLog.isColorLevel()) {
-      tlo.b("WS_VIDEO_WSVideoPreDownloadManager", 2, paramString + " checkIsVideoCached() return FALSE");
+    else
+    {
+      bool1 = true;
     }
-    return false;
+    return bool1;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(thn.jdField_a_of_type_Int);
+    IWSPlayerPreDownloader localIWSPlayerPreDownloader = this.e;
+    if (localIWSPlayerPreDownloader != null) {
+      localIWSPlayerPreDownloader.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager
  * JD-Core Version:    0.7.0.1
  */

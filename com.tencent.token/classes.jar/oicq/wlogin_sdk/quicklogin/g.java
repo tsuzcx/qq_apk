@@ -9,7 +9,7 @@ final class g
 {
   g(WebView paramWebView, String paramString1, String paramString2) {}
   
-  public void run()
+  public final void run()
   {
     if (Build.VERSION.SDK_INT >= 19)
     {
@@ -19,15 +19,23 @@ final class g
         this.a.evaluateJavascript(this.c, null);
         return;
       }
-      catch (Exception localException)
+      catch (Error localError)
       {
-        util.LOGI("evaluateJavascript function can't use:" + Build.VERSION.SDK_INT + " message " + localException.getMessage(), "");
+        localStringBuilder = new StringBuilder("evaluateJavascript function can't use:");
+        localStringBuilder.append(Build.VERSION.SDK_INT);
+        localStringBuilder.append(" message ");
+        localStringBuilder.append(localError.getMessage());
+        util.LOGI(localStringBuilder.toString(), "");
         this.a.loadUrl(this.c);
         return;
       }
-      catch (Error localError)
+      catch (Exception localException)
       {
-        util.LOGI("evaluateJavascript function can't use:" + Build.VERSION.SDK_INT + " message " + localError.getMessage(), "");
+        StringBuilder localStringBuilder = new StringBuilder("evaluateJavascript function can't use:");
+        localStringBuilder.append(Build.VERSION.SDK_INT);
+        localStringBuilder.append(" message ");
+        localStringBuilder.append(localException.getMessage());
+        util.LOGI(localStringBuilder.toString(), "");
         this.a.loadUrl(this.c);
         return;
       }

@@ -1,41 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.widget.XListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class csx
-  implements Runnable
+public class csx
+  extends Handler
 {
-  csx(csw paramcsw, String paramString) {}
+  public csx(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int j;
-    int i;
-    if ((LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a) != null) && (LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a) != null))
+    switch (paramMessage.what)
     {
-      j = LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a).getChildCount();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        LebaListMgrAdapter.ViewHolder localViewHolder = (LebaListMgrAdapter.ViewHolder)LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a).getChildAt(i).getTag();
-        if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.a != null) && (Utils.a(localViewHolder.a.a.strPkgName, this.jdField_a_of_type_JavaLangString))) {
-          LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a).a(localViewHolder);
-        }
-      }
-      else
+    case 14826: 
+    default: 
+    case 14825: 
+      do
       {
         return;
+      } while (this.a.isFinishing());
+      try
+      {
+        this.a.dismissDialog(0);
+        return;
       }
-      i += 1;
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
+    }
+    this.a.finish();
   }
 }
 

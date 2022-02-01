@@ -1,57 +1,99 @@
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PointF;
+import android.graphics.Rect;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentTroopMenuOption;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class eoy
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public eoy(RecentTroopMenuOption paramRecentTroopMenuOption, int paramInt, String paramString, ActionSheet paramActionSheet) {}
+  public static final int a = 40;
+  private List jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  public void OnClick(View paramView, int paramInt)
+  public eoy(DragRelativeLayout paramDragRelativeLayout, List paramList)
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.b = -1;
+  }
+  
+  public Bitmap a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.b >= 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(RecentTroopMenuOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562449, 1500);
+      localObject1 = localObject2;
+      if (this.b >= DragRelativeLayout.a().length) {}
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
-      return;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = -1;
-      }
-      while ((paramInt != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "data_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(paramInt - 1), "", "");
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.getResources(), DragRelativeLayout.a()[this.b]);
+      return localObject1;
     }
-    catch (Exception paramView)
+    catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("RecentTroopMenuOption", 2, paramView.toString());
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localThrowable, localThrowable);
+    }
+    return null;
+  }
+  
+  public PointF a()
+  {
+    PointF localPointF = new PointF();
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
+      Rect localRect = new Rect();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.getGlobalVisibleRect(localRect);
+      int i = localRect.left;
+      int j = localRect.top;
+      localView.getGlobalVisibleRect(localRect);
+      localRect.left -= i;
+      localRect.top -= j;
+      localRect.right -= i;
+      localRect.bottom -= j;
+      localPointF.set(localRect.centerX(), localRect.centerY());
+    }
+    return localPointF;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    {
+      if (this == DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout)) {
+        DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
+      }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
+      }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.invalidate();
+      return;
+      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
+      if (this.b == DragRelativeLayout.a().length)
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        this.b = -1;
+      }
+      else
+      {
+        localView.setVisibility(4);
+        this.b += 1;
+      }
     }
   }
 }

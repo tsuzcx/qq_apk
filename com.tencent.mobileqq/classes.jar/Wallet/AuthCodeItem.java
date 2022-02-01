@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class AuthCodeItem
   extends JceStruct
 {
-  public long appid;
+  public long appid = 0L;
   public String authCode = "";
-  public long expireTime;
+  public long expireTime = 0L;
   public String urlDomain = "";
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -24,17 +24,19 @@ public final class AuthCodeItem
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.expireTime, 1);
-    if (this.urlDomain != null) {
-      paramJceOutputStream.write(this.urlDomain, 2);
+    String str = this.urlDomain;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.authCode != null) {
-      paramJceOutputStream.write(this.authCode, 3);
+    str = this.authCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AuthCodeItem
  * JD-Core Version:    0.7.0.1
  */

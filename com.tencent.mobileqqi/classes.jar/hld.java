@@ -1,15 +1,27 @@
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.open.applist.H5ConfirmDialog;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hld
   implements View.OnClickListener
 {
-  public hld(H5ConfirmDialog paramH5ConfirmDialog) {}
+  public hld(QZoneAppListActivity paramQZoneAppListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
+    LogUtility.b("QZoneAppListActivity", "button onClick!!!");
+    if (TextUtils.isEmpty(QZoneAppListActivity.a(this.a)))
+    {
+      this.a.d();
+      QZoneAppListActivity.a(this.a);
+      QZoneAppListActivity.a(this.a).sendEmptyMessage(3);
+      return;
+    }
+    this.a.a.loadUrl("javascript:JsBridge.callback(\"" + QZoneAppListActivity.b(this.a) + "\");void(0);");
   }
 }
 

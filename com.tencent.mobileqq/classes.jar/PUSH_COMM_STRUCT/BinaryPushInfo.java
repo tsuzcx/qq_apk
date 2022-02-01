@@ -8,9 +8,9 @@ public final class BinaryPushInfo
   extends JceStruct
 {
   static byte[] cache_pushBuffer = (byte[])new byte[1];
-  public long compressType;
-  public byte[] pushBuffer;
-  public long pushType;
+  public long compressType = 0L;
+  public byte[] pushBuffer = null;
+  public long pushType = 0L;
   
   static
   {
@@ -37,14 +37,15 @@ public final class BinaryPushInfo
   {
     paramJceOutputStream.write(this.pushType, 0);
     paramJceOutputStream.write(this.compressType, 1);
-    if (this.pushBuffer != null) {
-      paramJceOutputStream.write(this.pushBuffer, 2);
+    byte[] arrayOfByte = this.pushBuffer;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PUSH_COMM_STRUCT.BinaryPushInfo
  * JD-Core Version:    0.7.0.1
  */

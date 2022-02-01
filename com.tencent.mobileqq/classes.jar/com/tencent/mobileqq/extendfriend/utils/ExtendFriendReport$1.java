@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import aqhg;
-import azri;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ExtendFriendReport$1
+class ExtendFriendReport$1
   implements Runnable
 {
-  public ExtendFriendReport$1(aqhg paramaqhg, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  ExtendFriendReport$1(ExtendFriendReport paramExtendFriendReport, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
   
   public void run()
   {
     try
     {
-      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
       return;
     }
     catch (Exception localException) {}

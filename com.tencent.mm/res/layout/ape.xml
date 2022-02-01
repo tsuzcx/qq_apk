@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dhq" android:paddingLeft="@dimen/i0" android:paddingTop="28.0dip" android:paddingRight="@dimen/i0" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="#1a000000" android:layout_width="wrap_content" android:layout_height="1.0px" android:layout_weight="1.0" />
-        <View android:background="@drawable/o9" android:layout_width="3.0dip" android:layout_height="3.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
-        <View android:background="#1a000000" android:layout_width="wrap_content" android:layout_height="1.0px" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e2m" android:paddingTop="64.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/e2n" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" />
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/ko" android:textColor="@color/rv" android:id="@id/e2o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" style="@style/g9" />
-    </LinearLayout>
-</LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/i6r" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>

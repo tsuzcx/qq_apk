@@ -1,0 +1,7 @@
+public abstract interface wvr {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes15.jar
+ * Qualified Name:     wvr
+ * JD-Core Version:    0.7.0.1
+ */

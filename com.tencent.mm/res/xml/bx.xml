@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/e9x" />
-    <CheckBoxPreference android:title="@string/e9w" android:key="settings_auto_mul_terminal_sync" android:defaultValue="false" />
-    <PreferenceTitleCategory android:title="@string/eft" />
-    <CheckBoxPreference android:title="@string/efs" android:key="settings_take_photo_auto_save_photo" android:defaultValue="false" />
-    <CheckBoxPreference android:title="@string/efu" android:key="settings_take_photo_auto_save_video" android:defaultValue="false" />
-    <PreferenceTitleCategory android:title="@string/ees" android:key="settings_sns_auto_play_tip" />
-    <CheckBoxPreference android:title="@string/eer" android:key="settings_sns_auto_play_switch" android:defaultValue="true" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:defaultValue="false" android:key="follow_system" android:summary="@string/imu" android:title="@string/zy" />
+    <PreferenceTitleCategory android:key="manual_title" android:title="@string/imv" />
+    <SelectPreference android:key="normal_mode" android:title="@string/inj" />
+    <SelectPreference android:key="dark_mode" android:title="@string/iri" />
 </PreferenceScreen>

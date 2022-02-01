@@ -81,55 +81,65 @@ public class FlutterWebView
       Object localObject = (String)localIterator.next();
       int i = -1;
       int j = ((String)localObject).hashCode();
-      if (j != -1151668596) {
-        if (j != -1069908877) {
-          if (j != 311430650) {
-            if (j == 858297331) {}
-          }
-        }
-      }
-      for (;;)
+      if (j != -1151668596)
       {
-        switch (i)
+        if (j != -1069908877)
         {
-        default: 
-          paramMap = new StringBuilder();
-          paramMap.append("Unknown WebView setting: ");
-          paramMap.append((String)localObject);
-          throw new IllegalArgumentException(paramMap.toString());
-          if (((String)localObject).equals("hasNavigationDelegate"))
+          if (j != 311430650)
           {
-            i = 1;
-            continue;
-            if (((String)localObject).equals("userAgent"))
-            {
-              i = 3;
-              continue;
-              if (((String)localObject).equals("debuggingEnabled"))
-              {
-                i = 2;
-                continue;
-                if (((String)localObject).equals("jsMode")) {
-                  i = 0;
-                }
-              }
+            if ((j == 858297331) && (((String)localObject).equals("hasNavigationDelegate"))) {
+              i = 1;
             }
           }
-          break;
+          else if (((String)localObject).equals("userAgent")) {
+            i = 3;
+          }
+        }
+        else if (((String)localObject).equals("debuggingEnabled")) {
+          i = 2;
         }
       }
-      updateUserAgent((String)paramMap.get(localObject));
-      continue;
-      boolean bool = ((Boolean)paramMap.get(localObject)).booleanValue();
-      localObject = this.webView;
-      InputAwareWebView.setWebContentsDebuggingEnabled(bool);
-      continue;
-      bool = ((Boolean)paramMap.get(localObject)).booleanValue();
-      localObject = this.flutterWebViewClient.createWebViewClient(bool);
-      this.webView.setWebViewClient((WebViewClient)localObject);
-      this.webView.setWebChromeClient(this.flutterWebViewClient.createWebChromeClient());
-      continue;
-      updateJsMode(((Integer)paramMap.get(localObject)).intValue());
+      else if (((String)localObject).equals("jsMode")) {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        boolean bool;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i == 3)
+            {
+              updateUserAgent((String)paramMap.get(localObject));
+            }
+            else
+            {
+              paramMap = new StringBuilder();
+              paramMap.append("Unknown WebView setting: ");
+              paramMap.append((String)localObject);
+              throw new IllegalArgumentException(paramMap.toString());
+            }
+          }
+          else
+          {
+            bool = ((Boolean)paramMap.get(localObject)).booleanValue();
+            localObject = this.webView;
+            InputAwareWebView.setWebContentsDebuggingEnabled(bool);
+          }
+        }
+        else
+        {
+          bool = ((Boolean)paramMap.get(localObject)).booleanValue();
+          localObject = this.flutterWebViewClient.createWebViewClient(bool);
+          this.webView.setWebViewClient((WebViewClient)localObject);
+          this.webView.setWebChromeClient(this.flutterWebViewClient.createWebChromeClient());
+        }
+      }
+      else
+      {
+        updateJsMode(((Integer)paramMap.get(localObject)).intValue());
+      }
     }
   }
   
@@ -235,29 +245,37 @@ public class FlutterWebView
   private void updateAutoMediaPlaybackPolicy(int paramInt)
   {
     boolean bool = true;
-    if (paramInt != 1) {}
-    for (;;)
-    {
-      this.webView.getSettings().setMediaPlaybackRequiresUserGesture(bool);
-      return;
+    if (paramInt == 1) {
       bool = false;
     }
+    this.webView.getSettings().setMediaPlaybackRequiresUserGesture(bool);
   }
   
   private void updateJsMode(int paramInt)
   {
-    switch (paramInt)
+    boolean bool;
+    Object localObject;
+    if (paramInt != 0)
     {
-    default: 
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Trying to set unknown JavaScript mode: ");
-      localStringBuilder.append(paramInt);
-      throw new IllegalArgumentException(localStringBuilder.toString());
-    case 1: 
-      this.webView.getSettings().setJavaScriptEnabled(true);
-      return;
+      bool = true;
+      if (paramInt == 1)
+      {
+        localObject = this.webView.getSettings();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Trying to set unknown JavaScript mode: ");
+        ((StringBuilder)localObject).append(paramInt);
+        throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+      }
     }
-    this.webView.getSettings().setJavaScriptEnabled(false);
+    else
+    {
+      localObject = this.webView.getSettings();
+      bool = false;
+    }
+    ((WebSettings)localObject).setJavaScriptEnabled(bool);
   }
   
   private void updateSettings(MethodCall paramMethodCall, MethodChannel.Result paramResult)
@@ -306,116 +324,125 @@ public class FlutterWebView
   public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
     String str = paramMethodCall.method;
-    label124:
-    int i;
     switch (str.hashCode())
     {
     default: 
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        paramResult.notImplemented();
-        return;
-        if (!str.equals("getTitle")) {
-          break label124;
-        }
+      break;
+    case 1966196898: 
+      if (str.equals("getTitle")) {
         i = 12;
-        continue;
-        if (!str.equals("evaluateJavascript")) {
-          break label124;
-        }
+      }
+      break;
+    case 1937913574: 
+      if (str.equals("evaluateJavascript")) {
         i = 8;
-        continue;
-        if (!str.equals("removeJavascriptChannels")) {
-          break label124;
-        }
+      }
+      break;
+    case 651673601: 
+      if (str.equals("removeJavascriptChannels")) {
         i = 10;
-        continue;
-        if (!str.equals("loadUrl")) {
-          break label124;
-        }
+      }
+      break;
+    case 336631465: 
+      if (str.equals("loadUrl")) {
         i = 0;
-        continue;
-        if (!str.equals("canGoBack")) {
-          break label124;
-        }
+      }
+      break;
+    case -317054497: 
+      if (str.equals("canGoBack")) {
         i = 2;
-        continue;
-        if (!str.equals("goForward")) {
-          break label124;
-        }
+      }
+      break;
+    case -318289731: 
+      if (str.equals("goForward")) {
         i = 5;
-        continue;
-        if (!str.equals("clearCache")) {
-          break label124;
-        }
+      }
+      break;
+    case -759238347: 
+      if (str.equals("clearCache")) {
         i = 11;
-        continue;
-        if (!str.equals("reload")) {
-          break label124;
-        }
+      }
+      break;
+    case -934641255: 
+      if (str.equals("reload")) {
         i = 6;
-        continue;
-        if (!str.equals("canGoForward")) {
-          break label124;
-        }
+      }
+      break;
+    case -1067273523: 
+      if (str.equals("canGoForward")) {
         i = 3;
-        continue;
-        if (!str.equals("currentUrl")) {
-          break label124;
-        }
+      }
+      break;
+    case -1088982730: 
+      if (str.equals("currentUrl")) {
         i = 7;
-        continue;
-        if (!str.equals("goBack")) {
-          break label124;
-        }
+      }
+      break;
+    case -1241591313: 
+      if (str.equals("goBack")) {
         i = 4;
-        continue;
-        if (!str.equals("addJavascriptChannels")) {
-          break label124;
-        }
+      }
+      break;
+    case -1707388194: 
+      if (str.equals("addJavascriptChannels")) {
         i = 9;
-        continue;
-        if (!str.equals("updateSettings")) {
-          break label124;
-        }
+      }
+      break;
+    case -1990164468: 
+      if (str.equals("updateSettings")) {
         i = 1;
       }
+      break;
     }
-    getTitle(paramResult);
-    return;
-    clearCache(paramResult);
-    return;
-    removeJavaScriptChannels(paramMethodCall, paramResult);
-    return;
-    addJavaScriptChannels(paramMethodCall, paramResult);
-    return;
-    evaluateJavaScript(paramMethodCall, paramResult);
-    return;
-    currentUrl(paramResult);
-    return;
-    reload(paramResult);
-    return;
-    goForward(paramResult);
-    return;
-    goBack(paramResult);
-    return;
-    canGoForward(paramResult);
-    return;
-    canGoBack(paramResult);
-    return;
-    updateSettings(paramMethodCall, paramResult);
-    return;
+    int i = -1;
+    switch (i)
+    {
+    default: 
+      paramResult.notImplemented();
+      return;
+    case 12: 
+      getTitle(paramResult);
+      return;
+    case 11: 
+      clearCache(paramResult);
+      return;
+    case 10: 
+      removeJavaScriptChannels(paramMethodCall, paramResult);
+      return;
+    case 9: 
+      addJavaScriptChannels(paramMethodCall, paramResult);
+      return;
+    case 8: 
+      evaluateJavaScript(paramMethodCall, paramResult);
+      return;
+    case 7: 
+      currentUrl(paramResult);
+      return;
+    case 6: 
+      reload(paramResult);
+      return;
+    case 5: 
+      goForward(paramResult);
+      return;
+    case 4: 
+      goBack(paramResult);
+      return;
+    case 3: 
+      canGoForward(paramResult);
+      return;
+    case 2: 
+      canGoBack(paramResult);
+      return;
+    case 1: 
+      updateSettings(paramMethodCall, paramResult);
+      return;
+    }
     loadUrl(paramMethodCall, paramResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.FlutterWebView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,6 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-public abstract interface g
-{
-  public abstract int computeVerticalScrollOffset();
-  
-  public abstract int computeVerticalScrollRange();
-}
+public abstract interface g {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

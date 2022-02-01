@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08070f" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080710" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203a4" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0d0052" />
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08070e" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08070f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203a4" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0d0052" />
 </RelativeLayout>

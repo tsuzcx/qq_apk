@@ -15,27 +15,27 @@ public class zzayx
   implements Comparable<zzayx>
 {
   public static final Parcelable.Creator<zzayx> CREATOR = new cm();
-  public final int Qh;
-  public final zzayz[] Qi;
-  public final String[] Qj;
-  public final Map<String, zzayz> Qk;
+  public final int RW;
+  public final zzayz[] RX;
+  public final String[] RY;
+  public final Map<String, zzayz> RZ;
   
   public zzayx(int paramInt, zzayz[] paramArrayOfzzayz, String[] paramArrayOfString)
   {
-    this.Qh = paramInt;
-    this.Qi = paramArrayOfzzayz;
-    this.Qk = new TreeMap();
+    this.RW = paramInt;
+    this.RX = paramArrayOfzzayz;
+    this.RZ = new TreeMap();
     int i = paramArrayOfzzayz.length;
     paramInt = 0;
     while (paramInt < i)
     {
       zzayz localzzayz = paramArrayOfzzayz[paramInt];
-      this.Qk.put(localzzayz.name, localzzayz);
+      this.RZ.put(localzzayz.name, localzzayz);
       paramInt += 1;
     }
-    this.Qj = paramArrayOfString;
-    if (this.Qj != null) {
-      Arrays.sort(this.Qj);
+    this.RY = paramArrayOfString;
+    if (this.RY != null) {
+      Arrays.sort(this.RY);
     }
   }
   
@@ -50,13 +50,13 @@ public class zzayx
       {
         paramObject = (zzayx)paramObject;
         bool1 = bool2;
-        if (this.Qh == paramObject.Qh)
+        if (this.RW == paramObject.RW)
         {
           bool1 = bool2;
-          if (b.b(this.Qk, paramObject.Qk))
+          if (b.c(this.RZ, paramObject.RZ))
           {
             bool1 = bool2;
-            if (Arrays.equals(this.Qj, paramObject.Qj)) {
+            if (Arrays.equals(this.RY, paramObject.RY)) {
               bool1 = true;
             }
           }
@@ -69,10 +69,10 @@ public class zzayx
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Configuration(");
-    localStringBuilder.append(this.Qh);
+    localStringBuilder.append(this.RW);
     localStringBuilder.append(", ");
     localStringBuilder.append("(");
-    Object localObject = this.Qk.values().iterator();
+    Object localObject = this.RZ.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       localStringBuilder.append((zzayz)((Iterator)localObject).next());
@@ -81,9 +81,9 @@ public class zzayx
     localStringBuilder.append(")");
     localStringBuilder.append(", ");
     localStringBuilder.append("(");
-    if (this.Qj != null)
+    if (this.RY != null)
     {
-      localObject = this.Qj;
+      localObject = this.RY;
       int j = localObject.length;
       int i = 0;
       while (i < j)

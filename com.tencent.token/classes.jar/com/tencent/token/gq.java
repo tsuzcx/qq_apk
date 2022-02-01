@@ -1,11 +1,13 @@
 package com.tencent.token;
 
-public final class gq
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+
+public abstract interface gq
 {
-  public static String a()
-  {
-    return "okhttp/3.11.0";
-  }
+  public abstract void setSupportButtonTintList(ColorStateList paramColorStateList);
+  
+  public abstract void setSupportButtonTintMode(PorterDuff.Mode paramMode);
 }
 
 

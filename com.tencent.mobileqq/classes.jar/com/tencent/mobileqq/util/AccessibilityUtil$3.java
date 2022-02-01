@@ -3,10 +3,10 @@ package com.tencent.mobileqq.util;
 import android.os.Build.VERSION;
 import android.view.View;
 
-public final class AccessibilityUtil$3
+final class AccessibilityUtil$3
   implements Runnable
 {
-  public AccessibilityUtil$3(View paramView) {}
+  AccessibilityUtil$3(View paramView) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public final class AccessibilityUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtil.3
  * JD-Core Version:    0.7.0.1
  */

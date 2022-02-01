@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import agxl;
-import agxn;
-
-public class StickerBubbleAnimationViewHolder$2$1
+class StickerBubbleAnimationViewHolder$2$1
   implements Runnable
 {
-  public StickerBubbleAnimationViewHolder$2$1(agxn paramagxn) {}
+  StickerBubbleAnimationViewHolder$2$1(StickerBubbleAnimationViewHolder.2 param2) {}
   
   public void run()
   {
-    this.a.a.a(agxl.a(this.a.a));
+    this.a.a.a(StickerBubbleAnimationViewHolder.b(this.a.a));
   }
 }
 

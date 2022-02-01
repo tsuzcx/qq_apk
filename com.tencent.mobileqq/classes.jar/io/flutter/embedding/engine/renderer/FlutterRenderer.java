@@ -3,9 +3,9 @@ package io.flutter.embedding.engine.renderer;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.Surface;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.view.TextureRegistry;
@@ -18,16 +18,20 @@ public class FlutterRenderer
   implements TextureRegistry
 {
   private static final String TAG = "FlutterRenderer";
+  @NonNull
   private final FlutterJNI flutterJNI;
-  private boolean hasRenderedFirstFrame = false;
+  @NonNull
+  private final FlutterUiDisplayListener flutterUiDisplayListener = new FlutterRenderer.1(this);
+  private boolean isDisplayingFlutterUi = false;
+  @NonNull
   private final AtomicLong nextTextureId = new AtomicLong(0L);
-  private final OnFirstFrameRenderedListener onFirstFrameRenderedListener = new FlutterRenderer.1(this);
-  private FlutterRenderer.RenderSurface renderSurface;
+  @Nullable
+  private Surface surface;
   
   public FlutterRenderer(@NonNull FlutterJNI paramFlutterJNI)
   {
     this.flutterJNI = paramFlutterJNI;
-    this.flutterJNI.addOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
+    this.flutterJNI.addIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
   }
   
   private void markTextureFrameAvailable(long paramLong)
@@ -45,28 +49,14 @@ public class FlutterRenderer
     this.flutterJNI.unregisterTexture(paramLong);
   }
   
-  public void addOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void addIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
-    this.flutterJNI.addOnFirstFrameRenderedListener(paramOnFirstFrameRenderedListener);
-    if (this.hasRenderedFirstFrame) {
-      paramOnFirstFrameRenderedListener.onFirstFrameRendered();
+    this.flutterJNI.addIsDisplayingFlutterUiListener(paramFlutterUiDisplayListener);
+    if (this.isDisplayingFlutterUi) {
+      paramFlutterUiDisplayListener.onFlutterUiDisplayed();
     }
   }
   
-  public void attachToRenderSurface(@NonNull FlutterRenderer.RenderSurface paramRenderSurface)
-  {
-    Log.v("FlutterRenderer", "Attaching to RenderSurface.");
-    if (this.renderSurface != null)
-    {
-      Log.v("FlutterRenderer", "Already attached to a RenderSurface. Detaching from old one and attaching to new one.");
-      detachFromRenderSurface();
-    }
-    this.renderSurface = paramRenderSurface;
-    this.renderSurface.attachToRenderer(this);
-    this.flutterJNI.setRenderSurface(paramRenderSurface);
-  }
-  
-  @TargetApi(16)
   public TextureRegistry.SurfaceTextureEntry createSurfaceTexture()
   {
     Log.v("FlutterRenderer", "Creating a SurfaceTexture.");
@@ -79,18 +69,6 @@ public class FlutterRenderer
     Log.v("FlutterRenderer", localStringBuilder.toString());
     registerTexture(localSurfaceTextureRegistryEntry.id(), localSurfaceTexture);
     return localSurfaceTextureRegistryEntry;
-  }
-  
-  public void detachFromRenderSurface()
-  {
-    Log.v("FlutterRenderer", "Detaching from RenderSurface.");
-    if (this.renderSurface != null)
-    {
-      this.renderSurface.detachFromRenderer();
-      this.renderSurface = null;
-      surfaceDestroyed();
-      this.flutterJNI.setRenderSurface(null);
-    }
   }
   
   public void dispatchPointerDataPacket(@NonNull ByteBuffer paramByteBuffer, int paramInt)
@@ -108,24 +86,19 @@ public class FlutterRenderer
     return this.flutterJNI.getBitmap();
   }
   
-  public boolean hasRenderedFirstFrame()
+  public boolean isDisplayingFlutterUi()
   {
-    return this.hasRenderedFirstFrame;
-  }
-  
-  public boolean isAttachedTo(@NonNull FlutterRenderer.RenderSurface paramRenderSurface)
-  {
-    return this.renderSurface == paramRenderSurface;
+    return this.isDisplayingFlutterUi;
   }
   
   public boolean isSoftwareRenderingEnabled()
   {
-    return FlutterJNI.nativeGetIsSoftwareRenderingEnabled();
+    return this.flutterJNI.getIsSoftwareRenderingEnabled();
   }
   
-  public void removeOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void removeIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
-    this.flutterJNI.removeOnFirstFrameRenderedListener(paramOnFirstFrameRenderedListener);
+    this.flutterJNI.removeIsDisplayingFlutterUiListener(paramFlutterUiDisplayListener);
   }
   
   public void setAccessibilityFeatures(int paramInt)
@@ -173,24 +146,39 @@ public class FlutterRenderer
     this.flutterJNI.setViewportMetrics(paramViewportMetrics.devicePixelRatio, paramViewportMetrics.width, paramViewportMetrics.height, paramViewportMetrics.paddingTop, paramViewportMetrics.paddingRight, paramViewportMetrics.paddingBottom, paramViewportMetrics.paddingLeft, paramViewportMetrics.viewInsetTop, paramViewportMetrics.viewInsetRight, paramViewportMetrics.viewInsetBottom, paramViewportMetrics.viewInsetLeft, paramViewportMetrics.systemGestureInsetTop, paramViewportMetrics.systemGestureInsetRight, paramViewportMetrics.systemGestureInsetBottom, paramViewportMetrics.systemGestureInsetLeft);
   }
   
+  public void startRenderingToSurface(@NonNull Surface paramSurface)
+  {
+    if (this.surface != null) {
+      stopRenderingToSurface();
+    }
+    this.surface = paramSurface;
+    this.flutterJNI.onSurfaceCreated(paramSurface);
+  }
+  
+  public void stopRenderingToSurface()
+  {
+    this.flutterJNI.onSurfaceDestroyed();
+    this.surface = null;
+    if (this.isDisplayingFlutterUi) {
+      this.flutterUiDisplayListener.onFlutterUiNoLongerDisplayed();
+    }
+    this.isDisplayingFlutterUi = false;
+  }
+  
   public void surfaceChanged(int paramInt1, int paramInt2)
   {
     this.flutterJNI.onSurfaceChanged(paramInt1, paramInt2);
   }
   
-  public void surfaceCreated(@NonNull Surface paramSurface)
+  public void swapSurface(@NonNull Surface paramSurface)
   {
-    this.flutterJNI.onSurfaceCreated(paramSurface);
-  }
-  
-  public void surfaceDestroyed()
-  {
-    this.flutterJNI.onSurfaceDestroyed();
+    this.surface = paramSurface;
+    this.flutterJNI.onSurfaceWindowChanged(paramSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.renderer.FlutterRenderer
  * JD-Core Version:    0.7.0.1
  */

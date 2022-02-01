@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dck
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public dck(QQMapActivity paramQQMapActivity) {}
+  public dck(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if ((this.a.i) && (!this.a.j) && (!this.a.h)) {
-      this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new dcl(this));
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.a.j = false;
   }
 }
 

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.apollo.game;
 
-import akud;
 import android.os.Process;
-import bdgk;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ApolloGameStateMachine$1
@@ -12,20 +11,20 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    akud localakud2 = ApolloGameStateMachine.jdField_a_of_type_Akud;
-    akud localakud1 = localakud2;
-    if (localakud2 == null) {
-      localakud1 = new akud();
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.a;
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
+    if (localHardwareInfo2 == null) {
+      localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
     }
-    localakud1.b = bdgk.a(Process.myPid());
-    localakud1.c = bdgk.f();
-    ApolloGameStateMachine.jdField_a_of_type_Akud = localakud1;
-    ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    localHardwareInfo1.f = DeviceInfoUtil.a(Process.myPid());
+    localHardwareInfo1.g = DeviceInfoUtil.s();
+    ApolloGameStateMachine.a = localHardwareInfo1;
+    ApolloGameStateMachine.b.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.report.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ayu;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.dfl;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b$a
   extends l.d
   implements l.b
 {
-  public ayu qrU;
+  public dfl Ozt;
   
   public b$a()
   {
-    AppMethodBeat.i(72669);
-    this.qrU = new ayu();
-    AppMethodBeat.o(72669);
+    AppMethodBeat.i(143785);
+    this.Ozt = new dfl();
+    AppMethodBeat.o(143785);
   }
   
   public final int getCmdId()
@@ -34,12 +34,12 @@ public final class b$a
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(72670);
-    setRsaInfo(aa.dqF());
-    this.qrU.wvN = new SKBuiltinBuffer_t().setBuffer(bo.dtR());
-    this.qrU.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.qrU.toByteArray();
-    AppMethodBeat.o(72670);
+    AppMethodBeat.i(143786);
+    setRsaInfo(ac.iQd());
+    this.Ozt.YOj = new gol().df(Util.getUuidRandom());
+    this.Ozt.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.Ozt.toByteArray();
+    AppMethodBeat.o(143786);
     return arrayOfByte;
   }
 }

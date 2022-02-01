@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyGrid android:id="@id/a01" android:fadingEdgeLength="0.0dip" android:layout_width="300.0dip" android:layout_height="300.0dip" android:listSelector="@drawable/w6" android:cacheColorHint="#00000000"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="#ffede6d3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <View android:background="@drawable/aea" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/ahj" android:layout_marginRight="@dimen/ahj" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:background="@color/a2m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ahh" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/ahh">
+            <ImageView android:id="@id/an2" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bzb" />
+            <ListView android:id="@id/ang" android:background="@color/a2m" android:paddingLeft="@dimen/ahi" android:paddingRight="@dimen/ahi" android:paddingBottom="30.0dip" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="46.0dip" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@color/abn" android:dividerHeight="@dimen/bq" android:footerDividersEnabled="false" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/an1" android:background="@drawable/adz" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/ahf" android:layout_marginLeft="@dimen/ahj" android:layout_marginRight="@dimen/ahj" android:layout_alignParentBottom="true">
+            <ImageView android:background="@drawable/bz8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/anl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mm.ui.KeyboardLinearLayout>

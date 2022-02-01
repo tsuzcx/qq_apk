@@ -21,14 +21,14 @@ public class GridInScrollView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(53524);
+    AppMethodBeat.i(109085);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
-    AppMethodBeat.o(53524);
+    AppMethodBeat.o(109085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.GridInScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,35 +9,35 @@ import com.tencent.mm.wear.app.b.h;
 
 public final class a
 {
-  private AudioManager adn;
-  private AudioManager.OnAudioFocusChangeListener ado = new AudioManager.OnAudioFocusChangeListener()
+  private AudioManager agP;
+  private AudioManager.OnAudioFocusChangeListener agQ = new AudioManager.OnAudioFocusChangeListener()
   {
     public final void onAudioFocusChange(int paramAnonymousInt)
     {
       d.c("MicroMsg.WearAudioFocusHelper", "focus change %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
       if ((paramAnonymousInt == -2) || (paramAnonymousInt == -3) || (paramAnonymousInt == -1))
       {
-        d.e("MicroMsg.WearAudioFocusHelper", "audio focus lossTransient", new Object[0]);
-        h.md().mv().mG();
+        d.d("MicroMsg.WearAudioFocusHelper", "audio focus lossTransient", new Object[0]);
+        h.mQ().nh().ns();
       }
     }
   };
   
-  public final void mF()
+  public final void nr()
   {
-    if (this.adn == null) {
-      this.adn = ((AudioManager)MMApplication.getContext().getSystemService("audio"));
+    if (this.agP == null) {
+      this.agP = ((AudioManager)MMApplication.getContext().getSystemService("audio"));
     }
     d.c("MicroMsg.WearAudioFocusHelper", "abandonFocus", new Object[0]);
-    this.adn.abandonAudioFocus(this.ado);
+    this.agP.abandonAudioFocus(this.agQ);
   }
   
   public final boolean requestFocus()
   {
-    if (this.adn == null) {
-      this.adn = ((AudioManager)MMApplication.getContext().getSystemService("audio"));
+    if (this.agP == null) {
+      this.agP = ((AudioManager)MMApplication.getContext().getSystemService("audio"));
     }
-    int i = this.adn.requestAudioFocus(this.ado, 3, 2);
+    int i = this.agP.requestAudioFocus(this.agQ, 3, 2);
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {

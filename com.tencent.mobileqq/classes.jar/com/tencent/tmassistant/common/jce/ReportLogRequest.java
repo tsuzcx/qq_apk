@@ -42,21 +42,24 @@ public final class ReportLogRequest
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.logType, 0);
-    if (this.logData != null) {
-      paramJceOutputStream.write(this.logData, 1);
+    Object localObject = this.logData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.hostUserId != null) {
-      paramJceOutputStream.write(this.hostUserId, 2);
+    localObject = this.hostUserId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.hostAppPackageName != null) {
-      paramJceOutputStream.write(this.hostAppPackageName, 3);
+    localObject = this.hostAppPackageName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.hostAppVersion, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.ReportLogRequest
  * JD-Core Version:    0.7.0.1
  */

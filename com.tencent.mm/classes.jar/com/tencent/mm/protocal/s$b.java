@@ -1,35 +1,55 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.aqm;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class s$b
-  extends l.e
-  implements l.c
+  extends l.d
+  implements l.b
 {
-  public bgb wiL;
+  private boolean MtT;
+  public aqm Yyt;
   
-  public s$b()
+  public s$b(boolean paramBoolean)
   {
-    AppMethodBeat.i(58854);
-    this.wiL = new bgb();
-    AppMethodBeat.o(58854);
-  }
-  
-  public final int fromProtoBuf(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(58855);
-    this.wiL = ((bgb)new bgb().parseFrom(paramArrayOfByte));
-    l.a(this, this.wiL.getBaseResponse());
-    int i = this.wiL.getBaseResponse().Ret;
-    AppMethodBeat.o(58855);
-    return i;
+    AppMethodBeat.i(149120);
+    this.MtT = true;
+    this.Yyt = new aqm();
+    this.MtT = paramBoolean;
+    AppMethodBeat.o(149120);
   }
   
   public final int getCmdId()
   {
-    return 1000000027;
+    return 0;
+  }
+  
+  public final int getFuncId()
+  {
+    if (this.MtT) {
+      return 3789;
+    }
+    return 3644;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(149121);
+    this.Yyt.setBaseRequest(l.a(this));
+    if (this.MtT)
+    {
+      arrayOfByte = Util.getUuidRandom();
+      setRsaInfo(ac.iQc());
+      this.Yyt.ZxD = b.cX(arrayOfByte);
+      if (!f.Yxs) {
+        setPassKey(arrayOfByte);
+      }
+    }
+    byte[] arrayOfByte = this.Yyt.toByteArray();
+    AppMethodBeat.o(149121);
+    return arrayOfByte;
   }
 }
 

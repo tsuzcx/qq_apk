@@ -1,22 +1,20 @@
 package com.google.android.gms.common.api.internal;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.google.android.gms.common.annotation.KeepForSdk;
+import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
 public class LifecycleActivity
 {
   private final Object zzkz;
   
   public LifecycleActivity(Activity paramActivity)
   {
-    AppMethodBeat.i(89480);
+    AppMethodBeat.i(4502);
     Preconditions.checkNotNull(paramActivity, "Activity must not be null");
     this.zzkz = paramActivity;
-    AppMethodBeat.o(89480);
+    AppMethodBeat.o(4502);
   }
   
   public final boolean zzbv()
@@ -41,7 +39,7 @@ public class LifecycleActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.LifecycleActivity
  * JD-Core Version:    0.7.0.1
  */

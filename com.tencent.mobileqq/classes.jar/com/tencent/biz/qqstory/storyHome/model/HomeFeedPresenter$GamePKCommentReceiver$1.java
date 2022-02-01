@@ -1,45 +1,40 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
+import com.tencent.biz.qqstory.comment.GamePKCommentEvent;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import utn;
-import uux;
-import uwa;
-import woy;
-import wpr;
-import wpz;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.SuperManager;
 
-public class HomeFeedPresenter$GamePKCommentReceiver$1
+class HomeFeedPresenter$GamePKCommentReceiver$1
   implements Runnable
 {
-  public HomeFeedPresenter$GamePKCommentReceiver$1(wpz paramwpz, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry, utn paramutn) {}
+  HomeFeedPresenter$GamePKCommentReceiver$1(HomeFeedPresenter.GamePKCommentReceiver paramGamePKCommentReceiver, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry, GamePKCommentEvent paramGamePKCommentEvent) {}
   
   public void run()
   {
-    uux localuux = (uux)uwa.a(17);
-    int i;
-    if (wpr.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
+    if (HomeFeedPresenter.a(this.a))
     {
-      CommentEntry localCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-      if (this.jdField_a_of_type_Utn.b == 0)
-      {
+      CommentEntry localCommentEntry = this.b;
+      int i;
+      if (this.c.e == 0) {
         i = 3;
-        localCommentEntry.type = i;
-        localuux.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      } else {
+        i = 4;
       }
+      localCommentEntry.type = i;
+      localCommentManager.a(this.b);
     }
-    for (;;)
+    else
     {
-      ((woy)uwa.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      return;
-      i = 4;
-      break;
-      localuux.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localCommentManager.b(this.b);
     }
+    ((FeedManager)SuperManager.a(11)).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public final class stRspHeader
   extends JceStruct
 {
   static Map<String, String> cache_mapExt = new HashMap();
-  public int iRet;
+  public int iRet = 0;
   @Nullable
-  public Map<String, String> mapExt;
+  public Map<String, String> mapExt = null;
   public String sErrmsg = "";
   
   static
@@ -47,14 +47,15 @@ public final class stRspHeader
   {
     paramJceOutputStream.write(this.iRet, 0);
     paramJceOutputStream.write(this.sErrmsg, 1);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 2);
+    Map localMap = this.mapExt;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_PUBLIC.stRspHeader
  * JD-Core Version:    0.7.0.1
  */

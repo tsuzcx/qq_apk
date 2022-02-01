@@ -28,27 +28,28 @@ public class SoLoader
   
   private static int LoadExtractedShortVideoFilterLib(String paramString)
   {
-    int i;
     if (paramString == null) {
-      i = -1;
+      return -1;
     }
-    do
+    if (!new File(paramString).exists()) {
+      return -2;
+    }
+    try
     {
-      return i;
-      if (!new File(paramString).exists()) {
-        return -2;
-      }
-      try
+      System.load(paramString);
+      return 0;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      if (SLog.isEnable())
       {
-        System.load(paramString);
-        return 0;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("LoadExtractedShortVideoFilterLib, path:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", exp:");
+        SLog.e("SoLoader", localStringBuilder.toString(), localUnsatisfiedLinkError);
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        i = -3;
-      }
-    } while (!SLog.isEnable());
-    SLog.e("SoLoader", "LoadExtractedShortVideoFilterLib, path:" + paramString + ", exp:", localUnsatisfiedLinkError);
+    }
     return -3;
   }
   
@@ -69,8 +70,14 @@ public class SoLoader
     if (str == null) {
       return false;
     }
-    isQmcfSoExist = FileUtils.fileExists(str + "libQMCF.so");
-    boolean bool = FileUtils.fileExists(str + SV_SO_QMCF_SNPE[4]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("libQMCF.so");
+    isQmcfSoExist = FileUtils.fileExists(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(SV_SO_QMCF_SNPE[4]);
+    boolean bool = FileUtils.fileExists(localStringBuilder.toString());
     if (SLog.isEnable()) {
       SLog.i("SoLoader", String.format("isQmcfSoExist, qmcf[%s], snpe[%s]", new Object[] { Boolean.valueOf(isQmcfSoExist), Boolean.valueOf(bool) }));
     }
@@ -84,40 +91,51 @@ public class SoLoader
   
   private static boolean loadArtFilterSo()
   {
-    boolean bool = false;
     if (isLoadArtFilterSuccess()) {
-      bool = true;
+      return true;
     }
-    while (SdkContext.getInstance().getResources() == null) {
-      return bool;
+    if (SdkContext.getInstance().getResources() == null) {
+      return false;
     }
     String str = SdkContext.getInstance().getResources().getArtFilterResource().getSoPathDir();
-    if ((SV_SO_LOAD_STATUS_artfilter == 0) || (FileUtils.fileExists(str + SV_SO_QMCF_SNPE[3]))) {}
+    Object localObject;
+    if (SV_SO_LOAD_STATUS_artfilter != 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(SV_SO_QMCF_SNPE[3]);
+      if (!FileUtils.fileExists(((StringBuilder)localObject).toString())) {}
+    }
     try
     {
       System.loadLibrary("c++_shared");
       if (SLog.isEnable()) {
         SLog.i("SoLoader", "load c++_shared success");
       }
-      label92:
+      label100:
       int i = 0;
       while (i < SV_SO_QMCF_SNPE.length)
       {
-        if (SV_SO_QMCF_SNPE_LOAD_STATUS[i] != 0) {
-          SV_SO_QMCF_SNPE_LOAD_STATUS[i] = LoadExtractedShortVideoFilterLib(str + SV_SO_QMCF_SNPE[i]);
+        localObject = SV_SO_QMCF_SNPE_LOAD_STATUS;
+        if (localObject[i] != 0)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(SV_SO_QMCF_SNPE[i]);
+          localObject[i] = LoadExtractedShortVideoFilterLib(localStringBuilder.toString());
         }
         if (SLog.isEnable()) {
           SLog.i("SoLoader", String.format("loadSnpeSo, idx[%d], bSuc[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(SV_SO_QMCF_SNPE_LOAD_STATUS[i]) }));
         }
         i += 1;
       }
-      int[] arrayOfInt = SV_SO_QMCF_SNPE_LOAD_STATUS;
-      int k = arrayOfInt.length;
+      localObject = SV_SO_QMCF_SNPE_LOAD_STATUS;
+      int k = localObject.length;
       i = 0;
       int j = 1;
       while (i < k)
       {
-        if (arrayOfInt[i] != 0) {
+        if (localObject[i] != 0) {
           j = 0;
         }
         i += 1;
@@ -125,8 +143,11 @@ public class SoLoader
       if (j != 0) {
         QmcfManager.hasSNPESo = true;
       }
-      SV_SO_LOAD_STATUS_artfilter = LoadExtractedShortVideoFilterLib(str + "libQMCF.so");
-      bool = isLoadArtFilterSuccess();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("libQMCF.so");
+      SV_SO_LOAD_STATUS_artfilter = LoadExtractedShortVideoFilterLib(((StringBuilder)localObject).toString());
+      boolean bool = isLoadArtFilterSuccess();
       if (SLog.isEnable()) {
         SLog.i("SoLoader", String.format("loadArtFilterSo, bSuc[%s], snpeSuc[%s], soPath[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(QmcfManager.hasSNPESo), str }));
       }
@@ -134,7 +155,7 @@ public class SoLoader
     }
     catch (Error localError)
     {
-      break label92;
+      break label100;
     }
   }
   
@@ -154,7 +175,7 @@ public class SoLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.SoLoader
  * JD-Core Version:    0.7.0.1
  */

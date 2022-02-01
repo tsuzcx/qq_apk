@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/profile_tips_set_card" android:layout_width="fill_parent" android:layout_height="@dimen/info_card_tips_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/qq_profilecard_name_text_size12" android:textColor="@color/white" android:gravity="center|left" android:id="@id/guide_tips" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:drawableLeft="@drawable/qvip_profile_tips_setcard" android:drawablePadding="8.0dip" android:layout_weight="1.0" />
+    <ImageView android:id="@id/guide_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qvip_profile_tips_arrow" android:contentDescription="@string/contentdes_profile_guide_bar" />
+</LinearLayout>

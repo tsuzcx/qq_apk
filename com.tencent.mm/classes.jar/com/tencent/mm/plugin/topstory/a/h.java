@@ -1,30 +1,28 @@
 package com.tencent.mm.plugin.topstory.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.compatible.util.r;
+import com.tencent.mm.model.br;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.plugin.websearch.api.a.a;
 import com.tencent.mm.plugin.websearch.api.a.b;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.protocal.protobuf.adl;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.cko;
-import com.tencent.mm.protocal.protobuf.ckv;
-import com.tencent.mm.protocal.protobuf.ckw;
-import com.tencent.mm.protocal.protobuf.ckx;
-import com.tencent.mm.protocal.protobuf.cyl;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.eqy;
+import com.tencent.mm.protocal.protobuf.fnt;
+import com.tencent.mm.protocal.protobuf.fod;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.protocal.protobuf.gib;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,127 +30,97 @@ import java.util.Set;
 
 public final class h
 {
-  public static void Gw(int paramInt)
+  public static void a(fnt paramfnt, String paramString, long paramLong)
   {
-    AppMethodBeat.i(96372);
-    switch (paramInt)
+    AppMethodBeat.i(90992);
+    if ((paramfnt.abNF.size() > 0) && ("clickTopStory".equals(((fod)paramfnt.abNF.get(0)).name))) {}
+    for (long l = paramLong - ((fod)paramfnt.abNF.get(0)).timestamp;; l = 0L)
     {
-    default: 
-      b.kS(b.uLi);
-    }
-    for (;;)
-    {
-      a.kS(7);
-      AppMethodBeat.o(96372);
-      return;
-      b.kS(b.uKU);
-      continue;
-      b.kS(b.uKV);
-      continue;
-      b.kS(b.uKW);
-      continue;
-      b.kS(b.uKX);
-      continue;
-      b.kS(b.uKY);
-      continue;
-      b.kS(b.uKZ);
-      continue;
-      b.kS(b.uLa);
-      continue;
-      b.kS(b.uLb);
-      continue;
-      b.kS(b.uLc);
-      continue;
-      b.kS(b.uLd);
-      continue;
-      b.kS(b.uLe);
-      continue;
-      b.kS(b.uLf);
-      continue;
-      b.kS(b.uLg);
-    }
-  }
-  
-  public static void a(cko paramcko, String paramString, long paramLong)
-  {
-    AppMethodBeat.i(96370);
-    if ((paramcko.xUu.size() > 0) && ("clickTopStory".equals(((ckv)paramcko.xUu.get(0)).name))) {}
-    for (long l = paramLong - ((ckv)paramcko.xUu.get(0)).timestamp;; l = 0L)
-    {
-      int i = aa.Jf(1);
-      paramcko = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramcko.scene), paramcko.xUt, paramcko.cpW, Integer.valueOf(i), paramString, Long.valueOf(paramLong), Integer.valueOf(paramcko.tft), Integer.valueOf(paramcko.xUv), paramcko.xUx, Long.valueOf(l), paramcko.xUy });
-      ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryHomeUIAction 15466 %s", new Object[] { paramcko });
-      com.tencent.mm.plugin.report.service.h.qsU.kvStat(15466, paramcko);
-      AppMethodBeat.o(96370);
+      int i = aj.asY(1);
+      paramfnt = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramfnt.scene), paramfnt.zIO, paramfnt.sessionId, Integer.valueOf(i), paramString, Long.valueOf(paramLong), Integer.valueOf(paramfnt.TJd), Integer.valueOf(paramfnt.tBy), paramfnt.GtP, Long.valueOf(l), paramfnt.abNG });
+      Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryHomeUIAction 15466 %s", new Object[] { paramfnt });
+      com.tencent.mm.plugin.report.service.h.OAn.kvStat(15466, paramfnt);
+      AppMethodBeat.o(90992);
       return;
     }
   }
   
-  public static final void a(ckw paramckw, long paramLong, ckx paramckx)
+  public static final void a(foe paramfoe, long paramLong, foh paramfoh)
   {
-    AppMethodBeat.i(96375);
+    AppMethodBeat.i(90997);
     int i;
     long l;
     if (paramLong > 0L)
     {
-      i = paramckw.scene;
+      i = paramfoe.scene;
       paramLong /= 1000L;
-      l = paramckw.xUO;
-      if (paramckx == null) {
+      l = paramfoe.abOj;
+      if (paramfoh == null) {
         break label156;
       }
     }
     label156:
-    for (paramckx = paramckx.xVd;; paramckx = paramckw.xUL)
+    for (paramfoh = paramfoh.abOy;; paramfoh = paramfoe.abOg)
     {
-      paramckw = String.format("videoflowbrowsereport=1&scene=%s&staytime=%s&channelid=%s&pageid=%s&nettype=%s&source=%s&expand=%s&searchid=%s", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), Long.valueOf(l), Integer.valueOf(3), "", Integer.valueOf(2), paramckx, paramckw.hng });
-      ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoPageBrowseTime 15018 %s", new Object[] { paramckw });
-      paramckx = new buo();
-      paramckx.xHP = paramckw;
-      paramckw = new w(paramckx);
-      g.Rc().a(paramckw, 0);
-      AppMethodBeat.o(96375);
+      paramfoe = String.format("videoflowbrowsereport=1&scene=%s&staytime=%s&channelid=%s&pageid=%s&nettype=%s&source=%s&expand=%s&searchid=%s", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), Long.valueOf(l), Integer.valueOf(3), "", Integer.valueOf(2), paramfoh, paramfoe.mpa });
+      Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoPageBrowseTime 15018 %s", new Object[] { paramfoe });
+      paramfoh = new eqy();
+      paramfoh.abuE = paramfoe;
+      paramfoe = new ae(paramfoh);
+      com.tencent.mm.kernel.h.aZW().a(paramfoe, 0);
+      AppMethodBeat.o(90997);
       return;
     }
   }
   
-  public static void a(ckw paramckw, ckx paramckx, String paramString1, String paramString2, String paramString3)
+  public static final void a(foe paramfoe, foh paramfoh, int paramInt)
   {
-    AppMethodBeat.i(96369);
-    paramckw = String.format("videosharereport=1&scene=%s&searchid=%s&docid=%s&cdnsourcetype=%s&videoid=%s&optype=%s&fromuser=%s&touser=%s&channelid=%s&optypes=%s&expand=%s", new Object[] { Integer.valueOf(paramckw.scene), paramckw.hng, paramckx.uKI, Integer.valueOf(paramckx.xVr), paramckx.xVa, Integer.valueOf(0), paramString2, paramString3, Long.valueOf(paramckw.xUO), paramString1, paramckx.xVd });
-    ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare 15035 %s", new Object[] { paramckw });
-    paramckx = new buo();
-    paramckx.xHP = paramckw;
-    ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare:".concat(String.valueOf(paramckw)));
-    paramckw = new w(paramckx);
-    g.Rc().a(paramckw, 0);
-    AppMethodBeat.o(96369);
+    AppMethodBeat.i(177107);
+    eqy localeqy = new eqy();
+    localeqy.abuE = String.format("logname=videopoint&scene=%s&docid=%s&searchid=%s&vid=%s&actiontype=%s&itemtype=%s", new Object[] { Integer.valueOf(paramfoe.scene), paramfoh.HsD, paramfoe.mpa, paramfoh.Ido, Integer.valueOf(paramInt), Integer.valueOf(paramfoh.abOz) });
+    Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportVideoPointAction %s", new Object[] { localeqy.abuE });
+    paramfoe = new com.tencent.mm.plugin.websearch.api.z(localeqy);
+    com.tencent.mm.kernel.h.aZW().a(paramfoe, 0);
+    AppMethodBeat.o(177107);
   }
   
-  public static void a(ckw paramckw, ckx paramckx, Set<adl> paramSet, int paramInt)
+  public static void a(foe paramfoe, foh paramfoh, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(96374);
+    AppMethodBeat.i(90991);
+    paramfoe = String.format("videosharereport=1&scene=%s&searchid=%s&docid=%s&cdnsourcetype=%s&videoid=%s&optype=%s&fromuser=%s&touser=%s&channelid=%s&optypes=%s&expand=%s", new Object[] { Integer.valueOf(paramfoe.scene), paramfoe.mpa, paramfoh.HsD, Integer.valueOf(paramfoh.abOI), paramfoh.Ido, Integer.valueOf(0), paramString2, paramString3, Long.valueOf(paramfoe.abOj), paramString1, paramfoh.abOy });
+    Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare 15035 %s", new Object[] { paramfoe });
+    paramfoh = new eqy();
+    paramfoh.abuE = paramfoe;
+    Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare:".concat(String.valueOf(paramfoe)));
+    paramfoe = new ae(paramfoh);
+    com.tencent.mm.kernel.h.aZW().a(paramfoe, 0);
+    AppMethodBeat.o(90991);
+  }
+  
+  public static void a(foe paramfoe, foh paramfoh, Set<ass> paramSet, int paramInt)
+  {
+    AppMethodBeat.i(90996);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("isfeedback=1");
     localStringBuffer.append("&feedtype=0");
     localStringBuffer.append("&businesstype=2");
     localStringBuffer.append("&itemtype=");
-    localStringBuffer.append(paramckx.xVe);
+    localStringBuffer.append(paramfoh.abOz);
     localStringBuffer.append("&scene=");
-    localStringBuffer.append(paramckw.scene);
+    localStringBuffer.append(paramfoe.scene);
     localStringBuffer.append("&searchid=");
-    localStringBuffer.append(paramckw.hng);
+    localStringBuffer.append(paramfoe.mpa);
     localStringBuffer.append("&clicktime=");
     localStringBuffer.append(System.currentTimeMillis());
     localStringBuffer.append("&docid=");
-    localStringBuffer.append(paramckx.uKI);
+    localStringBuffer.append(paramfoh.HsD);
     localStringBuffer.append("&docpos=");
     localStringBuffer.append(paramInt);
     localStringBuffer.append("&reasonid=");
     Object localObject = paramSet.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      localStringBuffer.append(((adl)((Iterator)localObject).next()).id);
+      localStringBuffer.append(((ass)((Iterator)localObject).next()).id);
       localStringBuffer.append("#");
     }
     localStringBuffer.append("&reasonwording=");
@@ -160,53 +128,53 @@ public final class h
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
-      ((StringBuffer)localObject).append(((adl)paramSet.next()).cyA);
+      ((StringBuffer)localObject).append(((ass)paramSet.next()).wording);
       ((StringBuffer)localObject).append("#");
     }
     try
     {
-      localStringBuffer.append(q.encode(((StringBuffer)localObject).toString(), "utf8"));
-      label289:
+      localStringBuffer.append(r.as(((StringBuffer)localObject).toString(), "utf8"));
+      label280:
       localStringBuffer.append("&offset=");
       localStringBuffer.append(paramInt);
       localStringBuffer.append("&sessionid=");
-      localStringBuffer.append(aa.IZ(paramckw.scene));
+      localStringBuffer.append(aj.asV(paramfoe.scene));
       localStringBuffer.append("&reserveexpand=");
-      localStringBuffer.append(paramckx.xVf);
-      ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportFeedBackClick %s", new Object[] { localStringBuffer.toString() });
-      paramckw = new buo();
-      paramckw.xHP = localStringBuffer.toString();
-      paramckw = new w(paramckw);
-      g.Rc().a(paramckw, 0);
-      AppMethodBeat.o(96374);
+      localStringBuffer.append(paramfoh.abOA);
+      Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportFeedBackClick %s", new Object[] { localStringBuffer.toString() });
+      paramfoe = new eqy();
+      paramfoe.abuE = localStringBuffer.toString();
+      paramfoe = new ae(paramfoe);
+      com.tencent.mm.kernel.h.aZW().a(paramfoe, 0);
+      AppMethodBeat.o(90996);
       return;
     }
     catch (UnsupportedEncodingException paramSet)
     {
-      break label289;
+      break label280;
     }
   }
   
-  public static void a(ckx paramckx, int paramInt1, String paramString, int paramInt2)
+  public static void a(foh paramfoh, int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(96373);
+    AppMethodBeat.i(90995);
     int i;
-    if (at.isWifi(ah.getContext()))
+    if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
     {
       i = 2;
-      if (paramckx == null) {
+      if (paramfoh == null) {
         break label122;
       }
     }
     label122:
-    for (paramckx = paramckx.uKI;; paramckx = "")
+    for (paramfoh = paramfoh.HsD;; paramfoh = "")
     {
-      paramckx = String.format("%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, paramckx, Integer.valueOf(i), Integer.valueOf(paramInt2) });
-      ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportKvTopStoryVideoPlayError %s", new Object[] { paramckx });
-      e.qrI.kvStat(15248, paramckx);
-      AppMethodBeat.o(96373);
+      paramfoh = String.format("%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, paramfoh, Integer.valueOf(i), Integer.valueOf(paramInt2) });
+      Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportKvTopStoryVideoPlayError %s", new Object[] { paramfoh });
+      f.Ozc.kvStat(15248, paramfoh);
+      AppMethodBeat.o(90995);
       return;
-      if (!at.isConnected(ah.getContext()))
+      if (!NetStatusUtil.isConnected(MMApplicationContext.getContext()))
       {
         i = 1;
         break;
@@ -216,103 +184,155 @@ public final class h
     }
   }
   
-  public static void a(cyl paramcyl, bi parambi)
+  public static void a(gib paramgib, cc paramcc)
   {
-    AppMethodBeat.i(96371);
+    AppMethodBeat.i(90993);
     Object localObject1;
     Object localObject2;
     int i;
-    if (t.lA(parambi.field_talker)) {
-      if (parambi.field_isSend == 1)
+    if (au.bwE(paramcc.field_talker)) {
+      if (paramcc.field_isSend == 1)
       {
-        localObject1 = r.Zn();
-        localObject2 = parambi.field_talker;
+        localObject1 = com.tencent.mm.model.z.bAM();
+        localObject2 = paramcc.field_talker;
         i = 2;
-        parambi = (bi)localObject1;
+        paramcc = (cc)localObject1;
         localObject1 = new StringBuffer();
         ((StringBuffer)localObject1).append("isShareClick=1");
         ((StringBuffer)localObject1).append("&relevant_vid=");
-        ((StringBuffer)localObject1).append(paramcyl.uJi);
+        ((StringBuffer)localObject1).append(paramgib.WoZ);
         ((StringBuffer)localObject1).append("&relevant_pre_searchid=");
-        ((StringBuffer)localObject1).append(paramcyl.uJk);
+        ((StringBuffer)localObject1).append(paramgib.Wpb);
         ((StringBuffer)localObject1).append("&relevant_shared_openid=");
-        ((StringBuffer)localObject1).append(paramcyl.uJl);
+        ((StringBuffer)localObject1).append(paramgib.Wpc);
         ((StringBuffer)localObject1).append("&rec_category=");
-        if (paramcyl.uJu <= 0L) {
+        if (paramgib.Wpl <= 0L) {
           break label320;
         }
-        ((StringBuffer)localObject1).append(paramcyl.uJu);
+        ((StringBuffer)localObject1).append(paramgib.Wpl);
       }
     }
     for (;;)
     {
       ((StringBuffer)localObject1).append("&source=");
-      ((StringBuffer)localObject1).append(paramcyl.source);
+      ((StringBuffer)localObject1).append(paramgib.source);
       ((StringBuffer)localObject1).append("&fromUser=");
-      ((StringBuffer)localObject1).append(parambi);
+      ((StringBuffer)localObject1).append(paramcc);
       ((StringBuffer)localObject1).append("&fromScene=");
       ((StringBuffer)localObject1).append(i);
       ((StringBuffer)localObject1).append("&targetInfo=");
       ((StringBuffer)localObject1).append((String)localObject2);
       ((StringBuffer)localObject1).append("&expand=");
-      ((StringBuffer)localObject1).append(paramcyl.uJj);
-      ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryClickShareItem 15371 %s", new Object[] { ((StringBuffer)localObject1).toString() });
-      paramcyl = new buo();
-      paramcyl.xHP = ((StringBuffer)localObject1).toString();
-      paramcyl = new w(paramcyl);
-      g.Rc().a(paramcyl, 0);
-      AppMethodBeat.o(96371);
+      ((StringBuffer)localObject1).append(paramgib.Wpa);
+      Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryClickShareItem 15371 %s", new Object[] { ((StringBuffer)localObject1).toString() });
+      paramgib = new eqy();
+      paramgib.abuE = ((StringBuffer)localObject1).toString();
+      paramgib = new ae(paramgib);
+      com.tencent.mm.kernel.h.aZW().a(paramgib, 0);
+      AppMethodBeat.o(90993);
       return;
-      localObject1 = bf.pu(parambi.field_content);
+      localObject1 = br.JJ(paramcc.field_content);
       break;
-      if (parambi.field_isSend == 1)
+      if (paramcc.field_isSend == 1)
       {
-        localObject2 = r.Zn();
-        localObject1 = parambi.field_talker;
-        parambi = (bi)localObject2;
+        localObject2 = com.tencent.mm.model.z.bAM();
+        localObject1 = paramcc.field_talker;
+        paramcc = (cc)localObject2;
       }
       for (;;)
       {
         i = 1;
         localObject2 = localObject1;
         break;
-        parambi = parambi.field_talker;
-        localObject1 = r.Zn();
+        paramcc = paramcc.field_talker;
+        localObject1 = com.tencent.mm.model.z.bAM();
       }
       label320:
-      ((StringBuffer)localObject1).append(paramcyl.uJm);
+      ((StringBuffer)localObject1).append(paramgib.Wpd);
     }
   }
   
-  public static final void c(String paramString1, String paramString2, int paramInt, long paramLong)
+  public static void aoM(int paramInt)
   {
-    AppMethodBeat.i(96377);
-    if ((!bo.isNullOrNil(paramString1)) && (paramString1.startsWith("wrd"))) {
+    AppMethodBeat.i(90994);
+    switch (paramInt)
+    {
+    default: 
+      b.rG(b.Fug);
+    }
+    for (;;)
+    {
+      a.rG(7);
+      AppMethodBeat.o(90994);
+      return;
+      b.rG(b.FtT);
+      continue;
+      b.rG(b.FtU);
+      continue;
+      b.rG(b.FtV);
+      continue;
+      b.rG(b.FtW);
+      continue;
+      b.rG(b.FtX);
+      continue;
+      b.rG(b.FtY);
+      continue;
+      b.rG(b.FtZ);
+      continue;
+      b.rG(b.Fua);
+      continue;
+      b.rG(b.Fub);
+      continue;
+      b.rG(b.Fuc);
+      continue;
+      b.rG(b.Fud);
+      continue;
+      b.rG(b.Fue);
+      continue;
+      b.rG(b.Fuf);
+    }
+  }
+  
+  public static final void ber(String paramString)
+  {
+    AppMethodBeat.i(271666);
+    Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryWebViewVisitTime %s", new Object[] { paramString });
+    eqy localeqy = new eqy();
+    localeqy.abuE = paramString;
+    paramString = new ae(localeqy);
+    com.tencent.mm.kernel.h.aZW().a(paramString, 0);
+    AppMethodBeat.o(271666);
+  }
+  
+  public static final void g(String paramString1, String paramString2, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(90999);
+    if ((!Util.isNullOrNil(paramString1)) && (paramString1.startsWith("wrd"))) {
       try
       {
-        paramString1 = String.format("%s,%s,%s,%s", new Object[] { q.encode(paramString2, "utf8"), Integer.valueOf(paramInt), paramString1, Long.valueOf(paramLong) });
-        ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "kvReportTopStoryOpenWebViewError 15728 %s", new Object[] { paramString1 });
-        com.tencent.mm.plugin.report.service.h.qsU.kvStat(15728, paramString1);
-        AppMethodBeat.o(96377);
+        paramString1 = String.format("%s,%s,%s,%s", new Object[] { r.as(paramString2, "utf8"), Integer.valueOf(paramInt), paramString1, Long.valueOf(paramLong) });
+        Log.i("MicroMsg.TopStory.TopStoryReportApiLogic", "kvReportTopStoryOpenWebViewError 15728 %s", new Object[] { paramString1 });
+        com.tencent.mm.plugin.report.service.h.OAn.kvStat(15728, paramString1);
+        AppMethodBeat.o(90999);
         return;
       }
       catch (UnsupportedEncodingException paramString1) {}
     }
-    AppMethodBeat.o(96377);
+    AppMethodBeat.o(90999);
   }
   
-  public static final void dA(String paramString, int paramInt)
+  public static final void hw(String paramString, int paramInt)
   {
-    AppMethodBeat.i(96376);
-    if ((!bo.isNullOrNil(paramString)) && (paramString.startsWith("wrd"))) {
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(900L, paramInt, 1L, false);
+    AppMethodBeat.i(90998);
+    if ((!Util.isNullOrNil(paramString)) && (paramString.startsWith("wrd"))) {
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(900L, paramInt, 1L, false);
     }
-    AppMethodBeat.o(96376);
+    AppMethodBeat.o(90998);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 public class SlipLimitedListView
   extends SlideDetectListView
 {
-  private Rect a = new Rect();
+  private Rect p = new Rect();
   
   public SlipLimitedListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,33 +19,29 @@ public class SlipLimitedListView
   
   protected boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
     if ((paramView instanceof ViewGroup))
     {
       paramView = (ViewGroup)paramView;
-      i = 0;
-    }
-    for (;;)
-    {
-      View localView;
-      if (i < paramView.getChildCount())
+      int i = 0;
+      while (i < paramView.getChildCount())
       {
-        localView = paramView.getChildAt(i);
+        View localView = paramView.getChildAt(i);
         if ((localView instanceof WorkSpaceView))
         {
           paramView = (WorkSpaceView)localView;
-          paramView.getGlobalVisibleRect(this.a);
+          paramView.getGlobalVisibleRect(this.p);
+          if (paramView.isShown()) {
+            return this.p.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
+          }
+          return false;
         }
+        if (((localView instanceof ViewGroup)) && (a((ViewGroup)localView, paramMotionEvent))) {
+          return true;
+        }
+        i += 1;
       }
-      else
-      {
-        return (paramView.isShown()) && (this.a.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
-      }
-      if (((localView instanceof ViewGroup)) && (a((ViewGroup)localView, paramMotionEvent))) {
-        return true;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -58,7 +54,7 @@ public class SlipLimitedListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlipLimitedListView
  * JD-Core Version:    0.7.0.1
  */

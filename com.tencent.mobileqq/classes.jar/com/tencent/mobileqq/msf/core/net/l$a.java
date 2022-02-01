@@ -14,15 +14,23 @@ public class l$a
 {
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkChannelManager", 2, "onRequestNetwork " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRequestNetwork ");
+      localStringBuilder.append(paramInt);
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
   }
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkChannelManager", 2, "onUnregisterNetwork " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUnregisterNetwork ");
+      localStringBuilder.append(paramInt);
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
   }
   
@@ -33,21 +41,21 @@ public class l$a
       return;
     }
     localObject = ((ConnectivityManager)localObject).getNetworkInfo(paramNetwork);
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onAvailable network: ").append(paramNetwork.toString()).append(" ");
-      if (localObject == null) {
-        break label104;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAvailable network: ");
+      localStringBuilder.append(paramNetwork.toString());
+      localStringBuilder.append(" ");
+      if (localObject != null) {
+        localObject = ((NetworkInfo)localObject).toString();
+      } else {
+        localObject = "netInfo is null";
       }
+      localStringBuilder.append((String)localObject);
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
-    label104:
-    for (localObject = ((NetworkInfo)localObject).toString();; localObject = "netInfo is null")
-    {
-      QLog.d("NetworkChannelManager", 2, (String)localObject);
-      if (l.a() == null) {
-        break;
-      }
+    if (l.a() != null) {
       try
       {
         l.a().onAvailable(paramNetwork);
@@ -56,82 +64,107 @@ public class l$a
       catch (Exception paramNetwork)
       {
         QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
-        return;
       }
     }
   }
   
   public void onCapabilitiesChanged(Network paramNetwork, NetworkCapabilities paramNetworkCapabilities)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkChannelManager", 2, "onCapabilitiesChanged " + paramNetwork.toString() + " " + paramNetworkCapabilities.toString());
-    }
-    if (l.a() != null) {}
-    try
+    if (QLog.isColorLevel())
     {
-      l.a().onCapabilitiesChanged(paramNetwork, paramNetworkCapabilities);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCapabilitiesChanged ");
+      localStringBuilder.append(paramNetwork.toString());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramNetworkCapabilities.toString());
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
-    catch (Exception paramNetwork)
-    {
-      QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+    if (l.a() != null) {
+      try
+      {
+        l.a().onCapabilitiesChanged(paramNetwork, paramNetworkCapabilities);
+        return;
+      }
+      catch (Exception paramNetwork)
+      {
+        QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+      }
     }
   }
   
   public void onLinkPropertiesChanged(Network paramNetwork, LinkProperties paramLinkProperties)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkChannelManager", 2, "onLinkPropertiesChanged " + paramNetwork.toString() + " " + paramLinkProperties.toString());
-    }
-    if (l.a() != null) {}
-    try
+    if (QLog.isColorLevel())
     {
-      l.a().onLinkPropertiesChanged(paramNetwork, paramLinkProperties);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLinkPropertiesChanged ");
+      localStringBuilder.append(paramNetwork.toString());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramLinkProperties.toString());
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
-    catch (Exception paramNetwork)
-    {
-      QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+    if (l.a() != null) {
+      try
+      {
+        l.a().onLinkPropertiesChanged(paramNetwork, paramLinkProperties);
+        return;
+      }
+      catch (Exception paramNetwork)
+      {
+        QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+      }
     }
   }
   
   public void onLosing(Network paramNetwork, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkChannelManager", 2, "onLosing " + paramNetwork.toString() + " " + paramInt);
-    }
-    if (l.a() != null) {}
-    try
+    if (QLog.isColorLevel())
     {
-      l.a().onLosing(paramNetwork, paramInt);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLosing ");
+      localStringBuilder.append(paramNetwork.toString());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
-    catch (Exception paramNetwork)
-    {
-      QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+    if (l.a() != null) {
+      try
+      {
+        l.a().onLosing(paramNetwork, paramInt);
+        return;
+      }
+      catch (Exception paramNetwork)
+      {
+        QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+      }
     }
   }
   
   public void onLost(Network paramNetwork)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkChannelManager", 2, "onLost " + paramNetwork.toString());
-    }
-    if (l.a() != null) {}
-    try
+    if (QLog.isColorLevel())
     {
-      l.a().onLost(paramNetwork);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLost ");
+      localStringBuilder.append(paramNetwork.toString());
+      QLog.d("NetworkChannelManager", 2, localStringBuilder.toString());
     }
-    catch (Exception paramNetwork)
-    {
-      QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+    if (l.a() != null) {
+      try
+      {
+        l.a().onLost(paramNetwork);
+        return;
+      }
+      catch (Exception paramNetwork)
+      {
+        QLog.w("NetworkChannelManager", 1, paramNetwork.getMessage(), paramNetwork);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.l.a
  * JD-Core Version:    0.7.0.1
  */

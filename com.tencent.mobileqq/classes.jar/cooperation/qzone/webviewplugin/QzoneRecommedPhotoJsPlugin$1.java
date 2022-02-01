@@ -1,22 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
-import bjys;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneRecommedPhotoJsPlugin$1
+class QzoneRecommedPhotoJsPlugin$1
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$1(bjys parambjys) {}
+  QzoneRecommedPhotoJsPlugin$1(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
   
   public void run()
   {
-    bjqu.a().a().q();
+    RemoteHandleManager.getInstance().getSender().getEventVideoAlbumState();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

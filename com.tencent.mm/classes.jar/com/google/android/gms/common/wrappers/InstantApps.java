@@ -16,13 +16,13 @@ public class InstantApps
     {
       try
       {
-        AppMethodBeat.i(90306);
+        AppMethodBeat.i(5327);
         Context localContext = paramContext.getApplicationContext();
         boolean bool;
         if ((zzaay != null) && (zzaaz != null) && (zzaay == localContext))
         {
           bool = zzaaz.booleanValue();
-          AppMethodBeat.o(90306);
+          AppMethodBeat.o(5327);
           return bool;
         }
         zzaaz = null;
@@ -31,7 +31,7 @@ public class InstantApps
           zzaaz = Boolean.valueOf(localContext.getPackageManager().isInstantApp());
           zzaay = localContext;
           bool = zzaaz.booleanValue();
-          AppMethodBeat.o(90306);
+          AppMethodBeat.o(5327);
         }
         else
         {
@@ -52,7 +52,7 @@ public class InstantApps
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.wrappers.InstantApps
  * JD-Core Version:    0.7.0.1
  */

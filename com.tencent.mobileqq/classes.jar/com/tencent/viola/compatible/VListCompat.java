@@ -46,14 +46,14 @@ public class VListCompat
   {
     JSONObject localJSONObject1 = getScrollParam(-1);
     JSONObject localJSONObject2 = new JSONObject();
-    VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
-    if (localVRecyclerView == null) {
+    Object localObject = (VRecyclerView)getHostView();
+    if (localObject == null) {
       return localJSONObject1;
     }
     try
     {
-      float f1 = -localVRecyclerView.getContentOffsetX();
-      float f2 = -localVRecyclerView.getContentOffsetY();
+      float f1 = -((VRecyclerView)localObject).getContentOffsetX();
+      float f2 = -((VRecyclerView)localObject).getContentOffsetY();
       localJSONObject2.put("x", px2dp(f1));
       localJSONObject2.put("y", px2dp(f2));
       localJSONObject1.put("contentOffset", localJSONObject2);
@@ -61,11 +61,12 @@ public class VListCompat
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.d("VListCompat", "getDragParam error: " + localJSONException.getMessage());
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDragParam error: ");
+      ((StringBuilder)localObject).append(localJSONException.getMessage());
+      ViolaLogUtils.d("VListCompat", ((StringBuilder)localObject).toString());
     }
+    return localJSONObject1;
   }
   
   private PointF getPositionInList(RecyclerView paramRecyclerView, View paramView)
@@ -92,51 +93,49 @@ public class VListCompat
       return localJSONObject;
     }
     boolean bool = ((VRecyclerList)this.component).isVertical();
-    int j;
     int i;
+    int j;
     if (bool)
     {
-      j = -localVRecyclerView.getContentOffsetY();
-      i = localVRecyclerView.getHeight() + j;
+      i = -localVRecyclerView.getContentOffsetY();
+      j = localVRecyclerView.getHeight();
     }
-    for (;;)
+    else
     {
-      if (paramInt != -1)
-      {
-        j = -paramInt;
-        if (!bool) {
-          break label184;
-        }
-        i = localVRecyclerView.getHeight() + j;
-      }
-      try
-      {
-        for (;;)
-        {
-          paramInt = localVRecyclerView.getFirstVisibleItemPosition();
-          int k = localVRecyclerView.getLastVisibleItemPosition();
-          localJSONObject.put("startEdgePos", px2dp(j));
-          localJSONObject.put("endEdgePos", px2dp(i));
-          localJSONObject.put("firstVisibleRowIndex", paramInt);
-          localJSONObject.put("lastVisibleRowIndex", k);
-          localJSONObject.put("scrollState", this.scrollState);
-          localJSONObject.put("visibleRowFrames", getVisibleRowFrames(localVRecyclerView));
-          return localJSONObject;
-          j = -localVRecyclerView.getContentOffsetX();
-          i = localVRecyclerView.getWidth() + j;
-          break;
-          label184:
-          i = localVRecyclerView.getWidth() + j;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ViolaLogUtils.d("VListCompat", "getScrollParam error: " + localException.getMessage());
-        }
-      }
+      i = -localVRecyclerView.getContentOffsetX();
+      j = localVRecyclerView.getWidth();
     }
+    j += i;
+    if (paramInt != -1)
+    {
+      i = -paramInt;
+      if (bool) {
+        paramInt = localVRecyclerView.getHeight();
+      } else {
+        paramInt = localVRecyclerView.getWidth();
+      }
+      j = i + paramInt;
+    }
+    try
+    {
+      paramInt = localVRecyclerView.getFirstVisibleItemPosition();
+      int k = localVRecyclerView.getLastVisibleItemPosition();
+      localJSONObject.put("startEdgePos", px2dp(i));
+      localJSONObject.put("endEdgePos", px2dp(j));
+      localJSONObject.put("firstVisibleRowIndex", paramInt);
+      localJSONObject.put("lastVisibleRowIndex", k);
+      localJSONObject.put("scrollState", this.scrollState);
+      localJSONObject.put("visibleRowFrames", getVisibleRowFrames(localVRecyclerView));
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getScrollParam error: ");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.d("VListCompat", localStringBuilder.toString());
+    }
+    return localJSONObject;
   }
   
   private JSONArray getVisibleRowFrames(RecyclerView paramRecyclerView)
@@ -144,48 +143,69 @@ public class VListCompat
     JSONArray localJSONArray = new JSONArray();
     int j = paramRecyclerView.getChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      View localView = paramRecyclerView.getChildAt(i);
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        View localView = paramRecyclerView.getChildAt(i);
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          PointF localPointF = getPositionInList(paramRecyclerView, localView);
-          localJSONObject.put("x", px2dp(localPointF.x));
-          localJSONObject.put("y", px2dp(localPointF.y));
-          localJSONObject.put("width", px2dp(localView.getWidth()));
-          localJSONObject.put("height", px2dp(localView.getHeight()));
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            ViolaLogUtils.d("VListCompat", "getVisibleRowFrames error: " + localJSONException.getMessage());
-          }
-        }
+        localObject = getPositionInList(paramRecyclerView, localView);
+        localJSONObject.put("x", px2dp(((PointF)localObject).x));
+        localJSONObject.put("y", px2dp(((PointF)localObject).y));
+        localJSONObject.put("width", px2dp(localView.getWidth()));
+        localJSONObject.put("height", px2dp(localView.getHeight()));
       }
+      catch (JSONException localJSONException)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getVisibleRowFrames error: ");
+        ((StringBuilder)localObject).append(localJSONException.getMessage());
+        ViolaLogUtils.d("VListCompat", ((StringBuilder)localObject).toString());
+      }
+      localJSONArray.put(localJSONObject);
+      i += 1;
     }
     return localJSONArray;
   }
   
   private boolean needBeginEvent(int paramInt)
   {
-    return ((this.scrollState == 0) && (paramInt == 1)) || ((this.scrollState == 2) && (paramInt == 1));
+    int i = this.scrollState;
+    boolean bool = true;
+    if ((i != 0) || (paramInt != 1))
+    {
+      if ((this.scrollState == 2) && (paramInt == 1)) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private boolean needEndEvent(int paramInt)
   {
-    return (this.scrollState == 1) && ((paramInt == 2) || (paramInt == 0));
+    int i = this.scrollState;
+    boolean bool = true;
+    if (i == 1)
+    {
+      if (paramInt == 2) {
+        return bool;
+      }
+      if (paramInt == 0) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
   }
   
   private boolean needFireScroll()
   {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.lastScrollTs;
+    Object localObject = this.dom.getAttributes().get("scrollEventThrottle");
     boolean bool = false;
-    if (System.currentTimeMillis() - this.lastScrollTs >= ViolaUtils.getInt(this.dom.getAttributes().get("scrollEventThrottle"), 0)) {
+    if (l1 - l2 >= ViolaUtils.getInt(localObject, 0)) {
       bool = true;
     }
     return bool;
@@ -205,17 +225,18 @@ public class VListCompat
   
   private void onHeaderOrFooterMove(int paramInt)
   {
-    if (paramInt == 0) {}
-    do
+    if (paramInt == 0) {
+      return;
+    }
+    paramInt = this.scrollState;
+    if ((1 != paramInt) && (2 != paramInt) && (!this.isInStickState))
     {
-      do
-      {
-        return;
-      } while ((1 == this.scrollState) || (2 == this.scrollState) || (this.isInStickState));
       this.scrollState = 1;
       tryFireExposedEvent();
-    } while (!isContainEvent("kdScrollBeginDrag"));
-    fireEvent("kdScrollBeginDrag", getDragParam());
+      if (isContainEvent("kdScrollBeginDrag")) {
+        fireEvent("kdScrollBeginDrag", getDragParam());
+      }
+    }
   }
   
   private void onHeaderOrFooterStateFinish()
@@ -307,18 +328,13 @@ public class VListCompat
   {
     if ((needBeginEvent(paramInt)) && (isContainEvent("kdScrollBeginDrag"))) {
       fireEvent("kdScrollBeginDrag", getDragParam());
+    } else if ((needEndEvent(paramInt)) && (isContainEvent("kdScrollEndDrag"))) {
+      fireEvent("kdScrollEndDrag", getDragParam());
     }
-    for (;;)
+    if (this.scrollState != paramInt)
     {
-      if (this.scrollState != paramInt)
-      {
-        this.scrollState = paramInt;
-        tryFireExposedEvent();
-      }
-      return;
-      if ((needEndEvent(paramInt)) && (isContainEvent("kdScrollEndDrag"))) {
-        fireEvent("kdScrollEndDrag", getDragParam());
-      }
+      this.scrollState = paramInt;
+      tryFireExposedEvent();
     }
   }
   
@@ -340,7 +356,7 @@ public class VListCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.compatible.VListCompat
  * JD-Core Version:    0.7.0.1
  */

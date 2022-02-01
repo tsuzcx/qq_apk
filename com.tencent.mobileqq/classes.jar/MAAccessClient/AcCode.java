@@ -32,21 +32,24 @@ public final class AcCode
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 0);
+    String str = this.imei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 1);
+    str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.random != null) {
-      paramJceOutputStream.write(this.random, 2);
+    str = this.random;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.versionCode, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.AcCode
  * JD-Core Version:    0.7.0.1
  */

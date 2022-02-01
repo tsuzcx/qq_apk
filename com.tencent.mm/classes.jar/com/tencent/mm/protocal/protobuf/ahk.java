@@ -1,231 +1,137 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 import java.util.LinkedList;
 
 public final class ahk
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public String kwJ;
-  public String signature;
-  public String uho;
-  public String wAE;
-  public String wOf;
-  public String wZM;
-  public String wZN;
+  public dtm Zqu;
+  public LinkedList<aki> Zqv;
+  public LinkedList<fxx> Zqw;
+  public String Zqx;
+  
+  public ahk()
+  {
+    AppMethodBeat.i(91431);
+    this.Zqv = new LinkedList();
+    this.Zqw = new LinkedList();
+    AppMethodBeat.o(91431);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(11765);
+    AppMethodBeat.i(91432);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wOf == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.Zqu != null)
       {
-        paramVarArgs = new b("Not all required fields were included: corp_id");
-        AppMethodBeat.o(11765);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.Zqu.computeSize());
+        this.Zqu.writeFields(paramVarArgs);
       }
-      if (this.wZM == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: group_id");
-        AppMethodBeat.o(11765);
-        throw paramVarArgs;
+      paramVarArgs.e(2, 8, this.Zqv);
+      paramVarArgs.e(3, 8, this.Zqw);
+      if (this.Zqx != null) {
+        paramVarArgs.g(4, this.Zqx);
       }
-      if (this.uho == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: time_stamp");
-        AppMethodBeat.o(11765);
-        throw paramVarArgs;
-      }
-      if (this.kwJ == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: nonce_str");
-        AppMethodBeat.o(11765);
-        throw paramVarArgs;
-      }
-      if (this.signature == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: signature");
-        AppMethodBeat.o(11765);
-        throw paramVarArgs;
-      }
-      if (this.wAE == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: from_url");
-        AppMethodBeat.o(11765);
-        throw paramVarArgs;
-      }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      if (this.wOf != null) {
-        paramVarArgs.e(2, this.wOf);
-      }
-      if (this.wZM != null) {
-        paramVarArgs.e(3, this.wZM);
-      }
-      if (this.uho != null) {
-        paramVarArgs.e(4, this.uho);
-      }
-      if (this.kwJ != null) {
-        paramVarArgs.e(5, this.kwJ);
-      }
-      if (this.signature != null) {
-        paramVarArgs.e(6, this.signature);
-      }
-      if (this.wAE != null) {
-        paramVarArgs.e(7, this.wAE);
-      }
-      if (this.wZN != null) {
-        paramVarArgs.e(8, this.wZN);
-      }
-      AppMethodBeat.o(11765);
+      AppMethodBeat.o(91432);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label1052;
+      if (this.Zqu == null) {
+        break label580;
       }
     }
-    label1052:
-    for (int i = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label580:
+    for (paramInt = i.a.a.a.qC(1, this.Zqu.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + i.a.a.a.c(2, 8, this.Zqv) + i.a.a.a.c(3, 8, this.Zqw);
       paramInt = i;
-      if (this.wOf != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wOf);
+      if (this.Zqx != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Zqx);
       }
-      i = paramInt;
-      if (this.wZM != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.wZM);
-      }
-      paramInt = i;
-      if (this.uho != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.uho);
-      }
-      i = paramInt;
-      if (this.kwJ != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.kwJ);
-      }
-      paramInt = i;
-      if (this.signature != null) {
-        paramInt = i + e.a.a.b.b.a.f(6, this.signature);
-      }
-      i = paramInt;
-      if (this.wAE != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.wAE);
-      }
-      paramInt = i;
-      if (this.wZN != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.wZN);
-      }
-      AppMethodBeat.o(11765);
+      AppMethodBeat.o(91432);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Zqv.clear();
+        this.Zqw.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.wOf == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: corp_id");
-          AppMethodBeat.o(11765);
-          throw paramVarArgs;
-        }
-        if (this.wZM == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: group_id");
-          AppMethodBeat.o(11765);
-          throw paramVarArgs;
-        }
-        if (this.uho == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: time_stamp");
-          AppMethodBeat.o(11765);
-          throw paramVarArgs;
-        }
-        if (this.kwJ == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: nonce_str");
-          AppMethodBeat.o(11765);
-          throw paramVarArgs;
-        }
-        if (this.signature == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: signature");
-          AppMethodBeat.o(11765);
-          throw paramVarArgs;
-        }
-        if (this.wAE == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: from_url");
-          AppMethodBeat.o(11765);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(11765);
+        AppMethodBeat.o(91432);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         ahk localahk = (ahk)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(11765);
+          AppMethodBeat.o(91432);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localahk.BaseRequest = ((hq)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new dtm();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((dtm)localObject2).parseFrom((byte[])localObject1);
+            }
+            localahk.Zqu = ((dtm)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(11765);
+          AppMethodBeat.o(91432);
           return 0;
         case 2: 
-          localahk.wOf = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(11765);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new aki();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((aki)localObject2).parseFrom((byte[])localObject1);
+            }
+            localahk.Zqv.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91432);
           return 0;
         case 3: 
-          localahk.wZM = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(11765);
-          return 0;
-        case 4: 
-          localahk.uho = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(11765);
-          return 0;
-        case 5: 
-          localahk.kwJ = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(11765);
-          return 0;
-        case 6: 
-          localahk.signature = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(11765);
-          return 0;
-        case 7: 
-          localahk.wAE = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(11765);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fxx();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fxx)localObject2).parseFrom((byte[])localObject1);
+            }
+            localahk.Zqw.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91432);
           return 0;
         }
-        localahk.wZN = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(11765);
+        localahk.Zqx = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(91432);
         return 0;
       }
-      AppMethodBeat.o(11765);
+      AppMethodBeat.o(91432);
       return -1;
     }
   }

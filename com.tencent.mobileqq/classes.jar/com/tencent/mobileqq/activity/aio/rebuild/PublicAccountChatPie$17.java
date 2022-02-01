@@ -1,40 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class PublicAccountChatPie$17
-  implements Runnable
+class PublicAccountChatPie$17
+  implements Animation.AnimationListener
 {
-  public PublicAccountChatPie$17(agti paramagti, List paramList) {}
+  PublicAccountChatPie$17(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
-        if (QLog.isColorLevel()) {
-          QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "saveReadedToDB uin=" + this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " uniseq=" + localChatMessage.uniseq + " extstr=" + localChatMessage.extStr);
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 4, localException.getMessage());
-      }
-    }
+    paramAnimation = this.a;
+    paramAnimation.bz = false;
+    paramAnimation.bx = 0;
+    paramAnimation.bA = false;
+    paramAnimation.ci = false;
+    paramAnimation.cg = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.a(paramAnimation.bl, PublicAccountChatPie.n(this.a));
   }
 }
 

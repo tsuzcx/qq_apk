@@ -12,22 +12,28 @@ public final class b
   {
     this.a = paramLong;
     this.b = paramInt;
-    if (TextUtils.isEmpty(paramString))
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = com.tencent.hlyyb.common.b.b.b(paramString))
     {
-      this.c = "";
+      this.c = paramString;
       return;
     }
-    this.c = com.tencent.hlyyb.common.b.b.b(paramString);
   }
   
   public final String a()
   {
-    return this.a + "," + this.b + "," + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.c.b
  * JD-Core Version:    0.7.0.1
  */

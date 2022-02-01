@@ -14,10 +14,12 @@ class hu$1
   {
     ArrayList localArrayList = new ArrayList();
     LinkedList localLinkedList;
+    hu localhu;
     if ((hu.a(this.ui) & 0x1) != 0)
     {
       localLinkedList = hu.a(this.ui, 1);
-      hu.a(this.ui, localLinkedList, hu.b(this.ui));
+      localhu = this.ui;
+      hu.a(localhu, localLinkedList, hu.b(localhu));
       if (hj.a(localLinkedList))
       {
         hu.a(this.ui, localLinkedList);
@@ -33,7 +35,8 @@ class hu$1
     if ((hu.a(this.ui) & 0x2) != 0)
     {
       localLinkedList = hu.a(this.ui, 2);
-      hu.a(this.ui, localLinkedList, hu.b(this.ui));
+      localhu = this.ui;
+      hu.a(localhu, localLinkedList, hu.b(localhu));
       if (hj.a(localLinkedList))
       {
         hu.b(this.ui, localLinkedList);
@@ -52,7 +55,7 @@ class hu$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hu.1
  * JD-Core Version:    0.7.0.1
  */

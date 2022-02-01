@@ -24,18 +24,13 @@ public class QQAVImageBoxFilter
     long l = (System.currentTimeMillis() - this.mStartTimeMills) % 10000L;
     if (l < 4000L) {
       this.mCurrentBoxNum = 2;
+    } else if (l < 8000L) {
+      this.mCurrentBoxNum = 3;
+    } else if (l < 10000L) {
+      this.mCurrentBoxNum = 1;
     }
-    for (;;)
-    {
-      setFloat(this.mBoxNumLocation, this.mCurrentBoxNum);
-      super.onDraw2(paramInt1, paramInt2);
-      return;
-      if (l < 8000L) {
-        this.mCurrentBoxNum = 3;
-      } else if (l < 10000L) {
-        this.mCurrentBoxNum = 1;
-      }
-    }
+    setFloat(this.mBoxNumLocation, this.mCurrentBoxNum);
+    super.onDraw2(paramInt1, paramInt2);
   }
   
   public void onInit()
@@ -56,7 +51,7 @@ public class QQAVImageBoxFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageBoxFilter
  * JD-Core Version:    0.7.0.1
  */

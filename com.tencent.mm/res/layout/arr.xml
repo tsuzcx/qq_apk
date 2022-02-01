@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="#f2222222" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="center" android:layout_gravity="center" android:id="@id/ec2" android:padding="@dimen/l2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/q4" style="MMFontPreferenceLarge" />
-    <ListView android:textColor="@color/a8h" android:id="@id/ec3" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-</LinearLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="400.0dip" android:src="@drawable/bt0" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/az" android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="216.0dip" android:text="@string/ety" />
+    <Button android:layout_gravity="bottom|center" android:id="@id/ck5" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="144.0dip" android:text="@string/etw" style="@style/og" />
+</FrameLayout>

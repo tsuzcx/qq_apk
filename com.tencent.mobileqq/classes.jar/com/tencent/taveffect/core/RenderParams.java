@@ -73,12 +73,26 @@ public class RenderParams
   
   public String toString()
   {
-    return "RenderParams{renderWidth=" + this.renderWidth + ", renderHeight=" + this.renderHeight + ", vertexMatrix=" + this.vertexMatrix + ", textureMatrix=" + this.textureMatrix + ", rectangle=" + this.rectangle + ", opacity=" + this.opacity + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RenderParams{renderWidth=");
+    localStringBuilder.append(this.renderWidth);
+    localStringBuilder.append(", renderHeight=");
+    localStringBuilder.append(this.renderHeight);
+    localStringBuilder.append(", vertexMatrix=");
+    localStringBuilder.append(this.vertexMatrix);
+    localStringBuilder.append(", textureMatrix=");
+    localStringBuilder.append(this.textureMatrix);
+    localStringBuilder.append(", rectangle=");
+    localStringBuilder.append(this.rectangle);
+    localStringBuilder.append(", opacity=");
+    localStringBuilder.append(this.opacity);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.core.RenderParams
  * JD-Core Version:    0.7.0.1
  */

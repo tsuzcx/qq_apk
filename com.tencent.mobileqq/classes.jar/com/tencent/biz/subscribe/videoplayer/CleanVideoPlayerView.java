@@ -2,7 +2,6 @@ package com.tencent.biz.subscribe.videoplayer;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import vwa;
 
 public class CleanVideoPlayerView
   extends VideoPlayerView
@@ -14,19 +13,14 @@ public class CleanVideoPlayerView
     setCleanMode(true);
   }
   
-  public void a()
+  public void h()
   {
-    super.a();
-  }
-  
-  public void a(vwa paramvwa)
-  {
-    super.a(paramvwa);
+    super.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView
  * JD-Core Version:    0.7.0.1
  */

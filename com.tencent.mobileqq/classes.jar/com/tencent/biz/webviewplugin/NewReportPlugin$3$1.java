@@ -1,7 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import bety;
-import zdv;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class NewReportPlugin$3$1
   implements Runnable
@@ -10,13 +9,13 @@ class NewReportPlugin$3$1
   
   public void run()
   {
-    zdv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a);
-    this.this$0.jdField_a_of_type_Bety.dismiss();
+    NewReportPlugin.a(this.this$0.b, this.a);
+    this.this$0.j.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

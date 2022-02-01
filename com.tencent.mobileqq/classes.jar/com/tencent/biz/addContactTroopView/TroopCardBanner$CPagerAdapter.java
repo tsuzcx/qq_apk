@@ -1,10 +1,10 @@
 package com.tencent.biz.addContactTroopView;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -24,9 +24,9 @@ public class TroopCardBanner$CPagerAdapter
   
   public int getCount()
   {
-    if ((this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard != null) && (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get().size() > 0))
+    if ((this.a.e != null) && (this.a.e.rpt_banner_items.get().size() > 0))
     {
-      if (1 == this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get().size()) {
+      if (1 == this.a.e.rpt_banner_items.get().size()) {
         return 1;
       }
       return 2147483647;
@@ -36,9 +36,9 @@ public class TroopCardBanner$CPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramInt %= this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size();
-    ImageView localImageView = new ImageView(this.a.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageDrawable(URLDrawable.getDrawable(((popclassifc.BannerItem)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.get(paramInt)).str_pic_url.get(), null));
+    paramInt %= this.a.e.rpt_banner_items.size();
+    ImageView localImageView = new ImageView(this.a.b);
+    localImageView.setImageDrawable(URLDrawable.getDrawable(((popclassifc.BannerItem)this.a.e.rpt_banner_items.get(paramInt)).str_pic_url.get(), null));
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     paramViewGroup.addView(localImageView, -1, -1);
     localImageView.setTag(Integer.valueOf(paramInt));
@@ -54,7 +54,7 @@ public class TroopCardBanner$CPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardBanner.CPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

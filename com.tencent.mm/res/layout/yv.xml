@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavCapacityPanel android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<ScrollView android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_marginTop="40.0dip" android:src="@raw/fix_tools_recover" />
+        <LinearLayout android:orientation="vertical" android:id="@id/k0w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/a7b" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:text="@string/bww" />
+            <Button android:id="@id/k0n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/br" android:text="@string/bwx" style="@style/og" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/c8r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/a7b" android:gravity="center" android:id="@id/i8b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" />
+            <ProgressBar android:id="@id/i7t" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:progress="0" style="@style/o0" />
+            <Button android:id="@id/apy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/br" android:text="@string/bwz" style="@style/ok" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

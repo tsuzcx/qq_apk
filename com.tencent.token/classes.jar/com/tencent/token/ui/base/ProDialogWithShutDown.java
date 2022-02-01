@@ -2,14 +2,15 @@ package com.tencent.token.ui.base;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.cw;
-import com.tencent.token.global.h;
 
 public class ProDialogWithShutDown
   extends Dialog
@@ -20,43 +21,52 @@ public class ProDialogWithShutDown
   private String d;
   private boolean e;
   
-  public ProDialogWithShutDown(Activity paramActivity, int paramInt, View.OnClickListener paramOnClickListener, String paramString)
+  public ProDialogWithShutDown(Activity paramActivity, View.OnClickListener paramOnClickListener, String paramString)
   {
-    super(paramActivity, paramInt);
+    super(paramActivity, 2131558791);
     this.a = paramActivity;
     this.c = paramOnClickListener;
     this.d = paramString;
   }
   
-  private void a()
-  {
-    h.c("dismiss and cancel request");
-    if (this.a != null) {
-      cw.a().a(this.a.getClass().getName());
-    }
-  }
-  
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
+    Object localObject = this.a;
+    if ((localObject != null) && ((localObject == null) || (!((Activity)localObject).isFinishing())))
     {
-      dismiss();
+      super.onCreate(paramBundle);
+      setContentView(2131296413);
+      getWindow().setBackgroundDrawableResource(2131099877);
+      if (this.e)
+      {
+        paramBundle = (TextView)findViewById(2131165859);
+        localObject = this.d;
+        if ((localObject != null) && (((String)localObject).length() > 0)) {
+          paramBundle.setText(this.d);
+        }
+      }
+      ((ImageView)findViewById(2131165857)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      this.b = ((ImageView)findViewById(2131165858));
+      this.b.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          ProDialogWithShutDown.this.dismiss();
+        }
+      });
+      setOnDismissListener(new DialogInterface.OnDismissListener()
+      {
+        public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+        {
+          ProDialogWithShutDown.a(ProDialogWithShutDown.this);
+          if (ProDialogWithShutDown.b(ProDialogWithShutDown.this) != null) {
+            ProDialogWithShutDown.b(ProDialogWithShutDown.this).onClick(ProDialogWithShutDown.c(ProDialogWithShutDown.this));
+          }
+        }
+      });
       return;
     }
-    super.onCreate(paramBundle);
-    setContentView(2130968718);
-    getWindow().setBackgroundDrawableResource(2130837730);
-    if (this.e)
-    {
-      paramBundle = (TextView)findViewById(2131559125);
-      if ((this.d != null) && (this.d.length() > 0)) {
-        paramBundle.setText(this.d);
-      }
-    }
-    ((ImageView)findViewById(2131559124)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
-    this.b = ((ImageView)findViewById(2131559127));
-    this.b.setOnClickListener(new cb(this));
-    setOnDismissListener(new cc(this));
+    dismiss();
   }
 }
 

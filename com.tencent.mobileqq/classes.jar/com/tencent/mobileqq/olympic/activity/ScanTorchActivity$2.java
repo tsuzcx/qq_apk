@@ -7,12 +7,12 @@ class ScanTorchActivity$2
   
   public void run()
   {
-    this.this$0.j();
+    this.this$0.updateQRRect();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ScanTorchActivity.2
  * JD-Core Version:    0.7.0.1
  */

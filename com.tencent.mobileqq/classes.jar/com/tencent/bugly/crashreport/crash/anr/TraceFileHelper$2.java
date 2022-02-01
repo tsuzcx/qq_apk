@@ -18,9 +18,10 @@ final class TraceFileHelper$2
   public final boolean a(long paramLong1, long paramLong2, String paramString)
   {
     x.c("new process %s", new Object[] { paramString });
-    this.a.a = paramLong1;
-    this.a.b = paramString;
-    this.a.c = paramLong2;
+    TraceFileHelper.a locala = this.a;
+    locala.a = paramLong1;
+    locala.b = paramString;
+    locala.c = paramLong2;
     return this.b;
   }
   
@@ -30,13 +31,16 @@ final class TraceFileHelper$2
     if (this.a.d == null) {
       this.a.d = new HashMap();
     }
-    this.a.d.put(paramString1, new String[] { paramString2, paramString3, paramInt });
+    Map localMap = this.a.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localMap.put(paramString1, new String[] { paramString2, paramString3, localStringBuilder.toString() });
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.anr.TraceFileHelper.2
  * JD-Core Version:    0.7.0.1
  */

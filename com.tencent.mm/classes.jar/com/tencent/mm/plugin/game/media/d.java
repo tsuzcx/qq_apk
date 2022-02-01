@@ -1,77 +1,132 @@
 package com.tencent.mm.plugin.game.media;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bz;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public final class d
-  extends bz
+  extends MAutoStorage<c>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
   
   static
   {
-    AppMethodBeat.i(151806);
-    c.a locala = new c.a();
-    locala.yrK = new Field[10];
-    locala.columns = new String[11];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "taskId";
-    locala.yrM.put("taskId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" taskId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "taskId";
-    locala.columns[1] = "createTime";
-    locala.yrM.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "publishSource";
-    locala.yrM.put("publishSource", "INTEGER");
-    localStringBuilder.append(" publishSource INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "mediaType";
-    locala.yrM.put("mediaType", "INTEGER");
-    localStringBuilder.append(" mediaType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "localIdList";
-    locala.yrM.put("localIdList", "TEXT");
-    localStringBuilder.append(" localIdList TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "mediaList";
-    locala.yrM.put("mediaList", "TEXT");
-    localStringBuilder.append(" mediaList TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "BusinessData";
-    locala.yrM.put("BusinessData", "TEXT");
-    localStringBuilder.append(" BusinessData TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "uploadState";
-    locala.yrM.put("uploadState", "INTEGER default '0' ");
-    localStringBuilder.append(" uploadState INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "publishState";
-    locala.yrM.put("publishState", "INTEGER default '0' ");
-    localStringBuilder.append(" publishState INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "compressImg";
-    locala.yrM.put("compressImg", "INTEGER default 'true' ");
-    localStringBuilder.append(" compressImg INTEGER default 'true' ");
-    locala.columns[10] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(151806);
+    AppMethodBeat.i(40950);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "GameHaowanMedia") };
+    AppMethodBeat.o(40950);
   }
   
-  public final c.a getDBInfo()
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return info;
+    super(paramISQLiteDatabase, c.info, "GameHaowanMedia", null);
+  }
+  
+  public final c aGu(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(40947);
+    paramString = String.format("select * from %s where %s=\"%s\"", new Object[] { "GameHaowanMedia", "localId", paramString });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "get, sql: ".concat(String.valueOf(paramString)));
+    Cursor localCursor = rawQuery(paramString, new String[0]);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(40947);
+      return null;
+    }
+    paramString = localObject;
+    if (localCursor.moveToNext())
+    {
+      paramString = new c();
+      paramString.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(40947);
+    return paramString;
+  }
+  
+  public final Map<String, c> bq(LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(40948);
+    paramLinkedList = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.by(paramLinkedList) });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchGet, sql: ".concat(String.valueOf(paramLinkedList)));
+    paramLinkedList = rawQuery(paramLinkedList, new String[0]);
+    if (paramLinkedList == null)
+    {
+      AppMethodBeat.o(40948);
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    while (paramLinkedList.moveToNext())
+    {
+      c localc = new c();
+      localc.convertFrom(paramLinkedList);
+      localHashMap.put(localc.field_localId, localc);
+    }
+    paramLinkedList.close();
+    AppMethodBeat.o(40948);
+    return localHashMap;
+  }
+  
+  public final void br(LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(40949);
+    Object localObject = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.by(paramLinkedList) });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchGet, sql: ".concat(String.valueOf(localObject)));
+    Cursor localCursor = rawQuery((String)localObject, new String[0]);
+    if (localCursor == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      if (!Util.isNullOrNil((List)localObject)) {
+        a.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(40946);
+            Iterator localIterator = this.Iyt.iterator();
+            while (localIterator.hasNext())
+            {
+              c localc = (c)localIterator.next();
+              if (localc != null)
+              {
+                com.tencent.mm.plugin.game.commlib.e.c.remove(localc.field_filePath);
+                com.tencent.mm.plugin.game.commlib.e.c.remove(localc.field_thumbPath);
+                com.tencent.mm.plugin.game.commlib.e.c.remove(localc.field_compressPath);
+              }
+            }
+            AppMethodBeat.o(40946);
+          }
+        });
+      }
+      paramLinkedList = String.format("delete from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.by(paramLinkedList) });
+      Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchDelete, sql: ".concat(String.valueOf(paramLinkedList)));
+      execSQL("GameHaowanMedia", paramLinkedList);
+      AppMethodBeat.o(40949);
+      return;
+      localObject = new LinkedList();
+      while (localCursor.moveToNext())
+      {
+        c localc = new c();
+        localc.convertFrom(localCursor);
+        ((LinkedList)localObject).add(localc);
+      }
+      localCursor.close();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.d
  * JD-Core Version:    0.7.0.1
  */

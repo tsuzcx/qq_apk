@@ -7,43 +7,48 @@ import java.util.TimerTask;
 class PanoramaGuideAnimate$2
   extends TimerTask
 {
-  private float a = 0.15F;
-  private float b = 0.4666667F;
+  private float rotateOffest = 0.15F;
+  private float translationOffest = 0.4666667F;
   
   PanoramaGuideAnimate$2(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
   
   public void run()
   {
-    if (PanoramaGuideAnimate.a(this.this$0) == 0)
+    PanoramaGuideAnimate localPanoramaGuideAnimate;
+    if (PanoramaGuideAnimate.access$600(this.this$0) == 0)
     {
-      PanoramaGuideAnimate.b(this.this$0, PanoramaGuideAnimate.a(this.this$0) + this.a);
-      PanoramaGuideAnimate.c(this.this$0, PanoramaGuideAnimate.b(this.this$0) - this.b);
+      localPanoramaGuideAnimate = this.this$0;
+      PanoramaGuideAnimate.access$002(localPanoramaGuideAnimate, PanoramaGuideAnimate.access$000(localPanoramaGuideAnimate) + this.rotateOffest);
+      localPanoramaGuideAnimate = this.this$0;
+      PanoramaGuideAnimate.access$202(localPanoramaGuideAnimate, PanoramaGuideAnimate.access$200(localPanoramaGuideAnimate) - this.translationOffest);
     }
-    for (;;)
+    else
     {
-      if ((PanoramaGuideAnimate.a(this.this$0) >= 45.0F) || (PanoramaGuideAnimate.b(this.this$0) <= -140.0F)) {
-        PanoramaGuideAnimate.a(this.this$0, 1);
-      }
-      if ((PanoramaGuideAnimate.a(this.this$0) > -45.0F) && (PanoramaGuideAnimate.b(this.this$0) < 140.0F)) {
-        break;
-      }
-      if (PanoramaGuideAnimate.a(this.this$0) != null) {
-        PanoramaGuideAnimate.a(this.this$0).cancel();
-      }
-      if (PanoramaGuideAnimate.a(this.this$0) != null) {
-        PanoramaGuideAnimate.a(this.this$0).cancel();
-      }
-      PanoramaGuideAnimate.a(this.this$0).sendEmptyMessage(292);
+      localPanoramaGuideAnimate = this.this$0;
+      PanoramaGuideAnimate.access$002(localPanoramaGuideAnimate, PanoramaGuideAnimate.access$000(localPanoramaGuideAnimate) - this.rotateOffest);
+      localPanoramaGuideAnimate = this.this$0;
+      PanoramaGuideAnimate.access$202(localPanoramaGuideAnimate, PanoramaGuideAnimate.access$200(localPanoramaGuideAnimate) + this.translationOffest);
+    }
+    if ((PanoramaGuideAnimate.access$000(this.this$0) >= 45.0F) || (PanoramaGuideAnimate.access$200(this.this$0) <= -140.0F)) {
+      PanoramaGuideAnimate.access$602(this.this$0, 1);
+    }
+    if ((PanoramaGuideAnimate.access$000(this.this$0) > -45.0F) && (PanoramaGuideAnimate.access$200(this.this$0) < 140.0F))
+    {
+      PanoramaGuideAnimate.access$500(this.this$0).sendEmptyMessage(291);
       return;
-      PanoramaGuideAnimate.b(this.this$0, PanoramaGuideAnimate.a(this.this$0) - this.a);
-      PanoramaGuideAnimate.c(this.this$0, PanoramaGuideAnimate.b(this.this$0) + this.b);
     }
-    PanoramaGuideAnimate.a(this.this$0).sendEmptyMessage(291);
+    if (PanoramaGuideAnimate.access$700(this.this$0) != null) {
+      PanoramaGuideAnimate.access$700(this.this$0).cancel();
+    }
+    if (PanoramaGuideAnimate.access$800(this.this$0) != null) {
+      PanoramaGuideAnimate.access$800(this.this$0).cancel();
+    }
+    PanoramaGuideAnimate.access$500(this.this$0).sendEmptyMessage(292);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaGuideAnimate.2
  * JD-Core Version:    0.7.0.1
  */

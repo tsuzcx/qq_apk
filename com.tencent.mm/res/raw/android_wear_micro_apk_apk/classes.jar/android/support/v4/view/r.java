@@ -4,66 +4,65 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewParent;
 import java.util.WeakHashMap;
 
 public final class r
 {
-  static final ab kG = new ab();
+  static final ab mC = new ab();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      kG = new aa();
+      mC = new aa();
       return;
     }
     if (Build.VERSION.SDK_INT >= 24)
     {
-      kG = new z();
+      mC = new z();
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      kG = new y();
+      mC = new y();
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      kG = new x();
+      mC = new x();
       return;
     }
     if (Build.VERSION.SDK_INT >= 19)
     {
-      kG = new w();
+      mC = new w();
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      kG = new v();
+      mC = new v();
       return;
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      kG = new u();
+      mC = new u();
       return;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      kG = new t();
+      mC = new t();
       return;
     }
     if (Build.VERSION.SDK_INT >= 15)
     {
-      kG = new s();
+      mC = new s();
       return;
     }
   }
   
   public static av a(View paramView, av paramav)
   {
-    return kG.a(paramView, paramav);
+    return mC.a(paramView, paramav);
   }
   
   @Deprecated
@@ -74,17 +73,17 @@ public final class r
   
   public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    kG.a(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+    mC.a(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public static void a(View paramView, Paint paramPaint)
   {
-    kG.a(paramView, paramPaint);
+    mC.a(paramView, paramPaint);
   }
   
   public static void a(View paramView, Drawable paramDrawable)
   {
-    kG.a(paramView, paramDrawable);
+    mC.a(paramView, paramDrawable);
   }
   
   public static void a(View paramView, a parama)
@@ -94,28 +93,22 @@ public final class r
   
   public static void a(View paramView, n paramn)
   {
-    kG.a(paramView, paramn);
+    mC.a(paramView, paramn);
   }
   
   public static void a(View paramView, Runnable paramRunnable, long paramLong)
   {
-    kG.a(paramView, paramRunnable, paramLong);
+    mC.a(paramView, paramRunnable, paramLong);
   }
   
-  public static void a(ViewGroup paramViewGroup)
+  public static void a(View paramView, String paramString)
   {
-    ab.a(paramViewGroup, true);
-  }
-  
-  @Deprecated
-  public static boolean a(View paramView, int paramInt)
-  {
-    return paramView.canScrollHorizontally(paramInt);
+    mC.a(paramView, paramString);
   }
   
   public static av b(View paramView, av paramav)
   {
-    return kG.b(paramView, paramav);
+    return mC.b(paramView, paramav);
   }
   
   @Deprecated
@@ -126,19 +119,7 @@ public final class r
   
   public static void b(View paramView, Runnable paramRunnable)
   {
-    kG.b(paramView, paramRunnable);
-  }
-  
-  @Deprecated
-  public static boolean b(View paramView, int paramInt)
-  {
-    return paramView.canScrollVertically(paramInt);
-  }
-  
-  @Deprecated
-  public static int c(View paramView)
-  {
-    return paramView.getOverScrollMode();
+    mC.b(paramView, paramRunnable);
   }
   
   @Deprecated
@@ -147,133 +128,166 @@ public final class r
     paramView.setAlpha(paramFloat);
   }
   
-  public static void c(View paramView, int paramInt)
+  @Deprecated
+  public static int d(View paramView)
   {
-    kG.c(paramView, paramInt);
+    return paramView.getOverScrollMode();
   }
   
   public static void d(View paramView, float paramFloat)
   {
-    kG.d(paramView, paramFloat);
+    mC.d(paramView, paramFloat);
   }
   
-  public static void d(View paramView, int paramInt)
+  @Deprecated
+  public static boolean d(View paramView, int paramInt)
   {
-    kG.d(paramView, paramInt);
-  }
-  
-  public static boolean d(View paramView)
-  {
-    return ab.d(paramView);
-  }
-  
-  public static void e(View paramView, int paramInt)
-  {
-    kG.e(paramView, paramInt);
+    return paramView.canScrollHorizontally(paramInt);
   }
   
   public static boolean e(View paramView)
   {
-    return kG.e(paramView);
-  }
-  
-  public static void f(View paramView)
-  {
-    kG.f(paramView);
-  }
-  
-  public static int g(View paramView)
-  {
-    return kG.g(paramView);
+    return ab.e(paramView);
   }
   
   @Deprecated
-  public static float h(View paramView)
+  public static boolean e(View paramView, int paramInt)
+  {
+    return paramView.canScrollVertically(paramInt);
+  }
+  
+  public static void f(View paramView, int paramInt)
+  {
+    mC.f(paramView, paramInt);
+  }
+  
+  public static boolean f(View paramView)
+  {
+    return mC.f(paramView);
+  }
+  
+  public static void g(View paramView)
+  {
+    mC.g(paramView);
+  }
+  
+  public static void g(View paramView, int paramInt)
+  {
+    mC.g(paramView, paramInt);
+  }
+  
+  public static int h(View paramView)
+  {
+    return mC.h(paramView);
+  }
+  
+  public static void h(View paramView, int paramInt)
+  {
+    mC.h(paramView, paramInt);
+  }
+  
+  @Deprecated
+  public static float i(View paramView)
   {
     return paramView.getAlpha();
   }
   
-  public static int i(View paramView)
+  public static int j(View paramView)
   {
-    return kG.i(paramView);
+    return mC.j(paramView);
   }
   
-  public static ViewParent j(View paramView)
+  public static ViewParent k(View paramView)
   {
-    return kG.j(paramView);
-  }
-  
-  @Deprecated
-  public static float k(View paramView)
-  {
-    return paramView.getTranslationX();
+    return mC.k(paramView);
   }
   
   @Deprecated
   public static float l(View paramView)
   {
-    return paramView.getTranslationY();
+    return paramView.getTranslationX();
   }
   
-  public static int m(View paramView)
+  @Deprecated
+  public static float m(View paramView)
   {
-    return kG.m(paramView);
+    return paramView.getTranslationY();
   }
   
   public static int n(View paramView)
   {
-    return kG.n(paramView);
+    return mC.n(paramView);
   }
   
-  public static as o(View paramView)
+  public static int o(View paramView)
   {
-    ab localab = kG;
-    if (localab.kP == null) {
-      localab.kP = new WeakHashMap();
+    return mC.o(paramView);
+  }
+  
+  public static as p(View paramView)
+  {
+    ab localab = mC;
+    if (localab.mM == null) {
+      localab.mM = new WeakHashMap();
     }
-    as localas2 = (as)localab.kP.get(paramView);
+    as localas2 = (as)localab.mM.get(paramView);
     as localas1 = localas2;
     if (localas2 == null)
     {
       localas1 = new as(paramView);
-      localab.kP.put(paramView, localas1);
+      localab.mM.put(paramView, localas1);
     }
     return localas1;
   }
   
-  public static float p(View paramView)
+  public static float q(View paramView)
   {
-    return kG.p(paramView);
+    return mC.q(paramView);
   }
   
-  public static String q(View paramView)
+  public static String r(View paramView)
   {
-    return kG.q(paramView);
+    return mC.r(paramView);
   }
   
-  public static boolean r(View paramView)
+  public static void s(View paramView)
   {
-    return kG.r(paramView);
-  }
-  
-  public static boolean s(View paramView)
-  {
-    return kG.s(paramView);
+    mC.s(paramView);
   }
   
   public static boolean t(View paramView)
   {
-    return kG.t(paramView);
+    return mC.t(paramView);
   }
   
-  public static void u(View paramView)
+  public static boolean u(View paramView)
   {
-    kG.u(paramView);
+    return mC.u(paramView);
   }
   
   public static boolean v(View paramView)
   {
-    return kG.v(paramView);
+    return mC.v(paramView);
+  }
+  
+  public static void w(View paramView)
+  {
+    mC.w(paramView);
+  }
+  
+  public static boolean x(View paramView)
+  {
+    return mC.x(paramView);
+  }
+  
+  public static float y(View paramView)
+  {
+    return mC.y(paramView);
+  }
+  
+  public static boolean z(View paramView)
+  {
+    return mC.z(paramView);
   }
 }
 

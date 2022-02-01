@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.profile;
 
 import android.graphics.Bitmap;
-import awqw;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ProfileCardShareHelper$3$1
@@ -11,18 +10,18 @@ class ProfileCardShareHelper$3$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0.c();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.b.this$0.c();
+    if (this.a != null)
     {
-      awqw.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, awqw.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), awqw.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      ProfileCardShareHelper.a(this.b.this$0, ProfileCardShareHelper.a(this.b.this$0), ProfileCardShareHelper.i(this.b.this$0), this.a);
       return;
     }
-    QQToast.a(awqw.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131720032, 1).a();
+    QQToast.makeText(ProfileCardShareHelper.j(this.b.this$0), 1, 2131916545, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

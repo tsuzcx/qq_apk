@@ -1,24 +1,34 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 
-final class ChannelProxyImpl$7
-  implements MiniAppCmdInterface
+class ChannelProxyImpl$7
+  implements IActivityResultListener
 {
-  ChannelProxyImpl$7(AsyncResult paramAsyncResult) {}
+  ChannelProxyImpl$7(ChannelProxyImpl paramChannelProxyImpl, IActivityResultManager paramIActivityResultManager, AsyncResult paramAsyncResult) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.val$result != null) {
-      this.val$result.onReceiveResult(paramBoolean, paramJSONObject);
+    boolean bool = false;
+    if (paramInt1 == 9)
+    {
+      this.a.removeActivityResultListener(this);
+      paramIntent = this.b;
+      if (paramInt2 == 0) {
+        bool = true;
+      }
+      paramIntent.onReceiveResult(bool, null);
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.7
  * JD-Core Version:    0.7.0.1
  */

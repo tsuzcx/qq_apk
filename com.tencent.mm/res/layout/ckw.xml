@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/lyu" android:focusable="true" android:clickable="true" android:layout_width="264.0dip" android:layout_height="176.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/ce6" android:layout_width="fill_parent" android:layout_height="140.0dip" />
+    <LinearLayout android:id="@id/lys" android:layout_width="fill_parent" android:layout_height="@dimen/d1">
+        <TextView android:textSize="@dimen/ce" android:textColor="@color/gb" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/lyr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_marginStart="@dimen/cd" />
+    </LinearLayout>
+    <ImageView android:id="@id/he4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_l" android:scaleType="centerInside" />
+</LinearLayout>

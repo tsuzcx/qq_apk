@@ -4,61 +4,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static boolean aiB()
+  public static boolean OL(String paramString)
   {
-    AppMethodBeat.i(137254);
-    if ((a.aiy()) && (!a.aiw()))
+    AppMethodBeat.i(137007);
+    f localf = a.bLn();
+    if ((localf != null) && (localf.oOB.equals(paramString)))
     {
-      a.KQ();
-      AppMethodBeat.o(137254);
+      AppMethodBeat.o(137007);
       return true;
     }
-    AppMethodBeat.o(137254);
+    AppMethodBeat.o(137007);
     return false;
   }
   
-  public static boolean aiC()
+  public static boolean bLp()
   {
-    AppMethodBeat.i(137255);
-    if (a.aiw())
+    AppMethodBeat.i(137004);
+    if ((a.bLm()) && (!a.bLk()))
     {
-      a.KP();
-      AppMethodBeat.o(137255);
+      a.bLh();
+      AppMethodBeat.o(137004);
       return true;
     }
-    AppMethodBeat.o(137255);
+    AppMethodBeat.o(137004);
     return false;
   }
   
-  public static boolean aiD()
+  public static boolean bLq()
   {
-    AppMethodBeat.i(137256);
-    if (a.aiy())
+    AppMethodBeat.i(137005);
+    if (a.bLk())
     {
-      a.aiu();
-      AppMethodBeat.o(137256);
+      a.bLg();
+      AppMethodBeat.o(137005);
       return true;
     }
-    AppMethodBeat.o(137256);
+    AppMethodBeat.o(137005);
     return false;
   }
   
-  public static boolean tR(String paramString)
+  public static boolean bLr()
   {
-    AppMethodBeat.i(137257);
-    e locale = a.aiz();
-    if ((locale != null) && (locale.fKp.equals(paramString)))
+    AppMethodBeat.i(137006);
+    if (a.bLm())
     {
-      AppMethodBeat.o(137257);
+      a.bLi();
+      AppMethodBeat.o(137006);
       return true;
     }
-    AppMethodBeat.o(137257);
+    AppMethodBeat.o(137006);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aw.b
  * JD-Core Version:    0.7.0.1
  */

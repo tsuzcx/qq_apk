@@ -61,6 +61,7 @@ public final class group_feeds$GroupFeedsMessage$MessageContent
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -84,12 +85,12 @@ public final class group_feeds$GroupFeedsMessage$MessageContent
     ByteStringMicro localByteStringMicro21 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro22 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro23 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 69, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 200, 210, 216, 226, 234, 242, 248, 314, 320, 330 }, new String[] { "enum_content_type", "bytes_content_value", "bytes_pic_size", "bytes_pic_path", "bytes_pic_id", "bytes_pic_url", "bytes_music_user_rank", "uint32_music_id", "bytes_music_name", "bytes_music_url_for_accept", "bytes_music_url_for_refuse", "bytes_file_name", "bytes_file_url", "bytes_file_ori", "bytes_pic_md5", "bytes_video_swf_url", "bytes_video_original_url", "bytes_video_id", "bytes_video_introduction", "int32_face_idx", "bytes_video_source", "uint64_file_size", "bytes_file_content_sha", "bytes_file_triple_sha", "bytes_file_md5", "uint32_file_attr", "bytes_object_message_brief", "uint32_group_msg_seq", "bytes_file_uuid" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, localByteStringMicro15, localByteStringMicro16, localByteStringMicro17, Integer.valueOf(0), localByteStringMicro18, Long.valueOf(0L), localByteStringMicro19, localByteStringMicro20, localByteStringMicro21, Integer.valueOf(0), localByteStringMicro22, Integer.valueOf(0), localByteStringMicro23 }, MessageContent.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 69, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 200, 210, 216, 226, 234, 242, 248, 314, 320, 330 }, new String[] { "enum_content_type", "bytes_content_value", "bytes_pic_size", "bytes_pic_path", "bytes_pic_id", "bytes_pic_url", "bytes_music_user_rank", "uint32_music_id", "bytes_music_name", "bytes_music_url_for_accept", "bytes_music_url_for_refuse", "bytes_file_name", "bytes_file_url", "bytes_file_ori", "bytes_pic_md5", "bytes_video_swf_url", "bytes_video_original_url", "bytes_video_id", "bytes_video_introduction", "int32_face_idx", "bytes_video_source", "uint64_file_size", "bytes_file_content_sha", "bytes_file_triple_sha", "bytes_file_md5", "uint32_file_attr", "bytes_object_message_brief", "uint32_group_msg_seq", "bytes_file_uuid" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localInteger, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, localByteStringMicro15, localByteStringMicro16, localByteStringMicro17, localInteger, localByteStringMicro18, Long.valueOf(0L), localByteStringMicro19, localByteStringMicro20, localByteStringMicro21, localInteger, localByteStringMicro22, localInteger, localByteStringMicro23 }, MessageContent.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.group_feeds.group_feeds.GroupFeedsMessage.MessageContent
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gef;
+import gee;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -73,7 +73,7 @@ public class Utils
     return paramBitmap;
   }
   
-  private static gef a(int paramInt1, int paramInt2)
+  private static gee a(int paramInt1, int paramInt2)
   {
     int i = 0;
     int j = 1;
@@ -88,11 +88,11 @@ public class Utils
     }
     for (;;)
     {
-      gef localgef = new gef(null);
-      localgef.a = paramInt2;
-      localgef.b = paramInt1;
-      Logger.a("compress.Utils", "getType()", " type=" + localgef);
-      return localgef;
+      gee localgee = new gee(null);
+      localgee.a = paramInt2;
+      localgee.b = paramInt1;
+      Logger.a("compress.Utils", "getType()", " type=" + localgee);
+      return localgee;
       paramInt1 = 2;
       paramInt2 = 2;
       continue;
@@ -706,10 +706,10 @@ public class Utils
     if (localOptions.outWidth > localOptions.outHeight) {
       j = localOptions.outWidth;
     }
-    gef localgef;
+    gee localgee;
     for (int i = localOptions.outHeight;; i = localOptions.outWidth)
     {
-      localgef = a(i, j);
+      localgee = a(i, j);
       if (a(localOptions, PhotoPreviewConstant.j)) {
         break;
       }
@@ -749,7 +749,7 @@ public class Utils
         k = ((Bitmap)localObject2).getWidth();
         j = ((Bitmap)localObject2).getHeight();
         Logger.a("compress.Utils", "compressAIOThumbnail()", paramString3 + " sample after W:" + k + " H:" + j);
-        switch (localgef.b)
+        switch (localgee.b)
         {
         case 2: 
         case 4: 
@@ -766,7 +766,7 @@ public class Utils
             break label1638;
           }
           bool2 = true;
-          Logger.a("compress.Utils", "compressAIOThumbnail()", paramString3 + " sample after W:" + n + " H:" + i1 + " isLongImg:" + a(0, 0) + " type:" + localgef + " needRotate:" + bool2);
+          Logger.a("compress.Utils", "compressAIOThumbnail()", paramString3 + " sample after W:" + n + " H:" + i1 + " isLongImg:" + a(0, 0) + " type:" + localgee + " needRotate:" + bool2);
           if (j <= i) {
             break label913;
           }
@@ -774,7 +774,7 @@ public class Utils
           m = i;
           k = PhotoPreviewConstant.j;
           i2 = PhotoPreviewConstant.i;
-          switch (localgef.a)
+          switch (localgee.a)
           {
           default: 
             bool1 = false;
@@ -825,7 +825,7 @@ public class Utils
           }
           ((Bitmap)localObject2).recycle();
           localOutOfMemoryError2.printStackTrace();
-          Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " cut 3:1 createBitmap OutOfMemoryError, type:" + localgef);
+          Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " cut 3:1 createBitmap OutOfMemoryError, type:" + localgee);
           continue;
         }
         n = ((Bitmap)localObject2).getWidth();
@@ -881,7 +881,7 @@ public class Utils
               }
               localBitmap.recycle();
               paramString1.printStackTrace();
-              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: cut createBitmap OutOfMemoryError, type:" + localgef);
+              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: cut createBitmap OutOfMemoryError, type:" + localgee);
               return false;
             }
             paramString1 = paramString1;
@@ -889,7 +889,7 @@ public class Utils
               ((Bitmap)localObject2).recycle();
             }
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: scale or rotate createBitmap OutOfMemoryError, type:" + localgef);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: scale or rotate createBitmap OutOfMemoryError, type:" + localgee);
             return false;
           }
           j = k;
@@ -922,7 +922,7 @@ public class Utils
                 }
                 ((Bitmap)localObject2).recycle();
                 paramString1.printStackTrace();
-                Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 2: scale or rotate createBitmap OutOfMemoryError, type:" + localgef);
+                Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 2: scale or rotate createBitmap OutOfMemoryError, type:" + localgee);
                 return false;
               }
             }
@@ -945,7 +945,7 @@ public class Utils
               ((Bitmap)localObject2).recycle();
             }
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 3: rotate createBitmap OutOfMemoryError, type:" + localgef);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 3: rotate createBitmap OutOfMemoryError, type:" + localgee);
             return false;
           }
         }
@@ -983,7 +983,7 @@ public class Utils
               }
               paramString1.recycle();
               paramString2.printStackTrace();
-              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: cut createBitmap OutOfMemoryError, type:" + localgef);
+              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: cut createBitmap OutOfMemoryError, type:" + localgee);
               return false;
             }
             paramString1 = paramString1;
@@ -991,7 +991,7 @@ public class Utils
               ((Bitmap)localObject2).recycle();
             }
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: rotate createBitmap OutOfMemoryError, type:" + localgef);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: rotate createBitmap OutOfMemoryError, type:" + localgee);
             return false;
           }
           i = m;

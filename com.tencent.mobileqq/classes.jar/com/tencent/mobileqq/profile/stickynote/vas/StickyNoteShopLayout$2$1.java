@@ -2,7 +2,6 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.view.View;
-import awtw;
 
 class StickyNoteShopLayout$2$1
   implements Runnable
@@ -11,14 +10,14 @@ class StickyNoteShopLayout$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0.findViewById(2131378765).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0.findViewById(2131367997).setVisibility(8);
-    StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, false);
+    this.b.this$0.findViewById(2131448421).setVisibility(8);
+    this.b.this$0.findViewById(2131435441).setVisibility(8);
+    StickyNoteShopLayout.b(this.b.this$0).a(this.a.vItems, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.2.1
  * JD-Core Version:    0.7.0.1
  */

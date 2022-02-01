@@ -5,164 +5,247 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.o;
-import com.tencent.mm.plugin.emoji.a.a.e;
-import com.tencent.mm.plugin.emoji.e.g;
-import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.emoji.g.c;
+import com.tencent.mm.plugin.emoji.h.c;
+import com.tencent.mm.plugin.emoji.h.d;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.LinkedList;
+import java.util.List;
 
 public class f
   extends com.tencent.mm.plugin.emoji.a.a.a
 {
-  private final String TAG = "MicroMsg.emoji.EmojiStoreMainAdapter";
-  public boolean lei = false;
-  public boolean lej = true;
-  public boolean lek = false;
-  public boolean lel = true;
+  private final String TAG;
+  public boolean xGK;
+  public boolean xGL;
+  public boolean xGM;
+  public boolean xGN;
+  private List<String> xGO;
   
   public f(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(179051);
+    this.TAG = "MicroMsg.emoji.EmojiStoreMainAdapter";
+    this.xGK = false;
+    this.xGL = true;
+    this.xGM = false;
+    this.xGN = true;
+    this.xGO = new LinkedList();
+    AppMethodBeat.o(179051);
   }
+  
+  public void JZ(int paramInt) {}
+  
+  public void Ka(int paramInt) {}
+  
+  public void Kb(int paramInt) {}
   
   public View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = 1;
-    AppMethodBeat.i(52749);
-    f.a locala = (f.a)paramView.getTag();
-    paramViewGroup = uj(paramInt);
-    if (this.lek)
+    int j = 1;
+    int i = 0;
+    AppMethodBeat.i(108325);
+    a locala = (a)paramView.getTag();
+    paramViewGroup = Kd(paramInt);
+    if (this.xGM)
     {
-      paramViewGroup.lfg = true;
-      paramViewGroup.lfe = false;
-      paramViewGroup.lff = false;
+      paramViewGroup.xHL = true;
+      paramViewGroup.xHJ = false;
+      paramViewGroup.xHK = false;
     }
-    EmotionBannerSet localEmotionBannerSet;
-    label128:
+    Object localObject;
+    label138:
     boolean bool;
+    label200:
+    View localView;
     if ((locala != null) && (paramViewGroup != null))
     {
-      paramViewGroup.lff = this.lel;
-      localEmotionBannerSet = paramViewGroup.lfb;
-      if (localEmotionBannerSet != null) {
-        break label240;
+      paramViewGroup.xHK = this.xGN;
+      localObject = paramViewGroup.xHF;
+      if (localObject != null) {
+        break label301;
       }
-      locala.uf(0);
+      locala.JY(0);
       paramInt = 0;
       if (paramInt == 0)
       {
-        paramViewGroup = paramViewGroup.lfa;
-        if (paramViewGroup != null)
+        localObject = paramViewGroup.xHE;
+        if (localObject != null)
         {
-          locala.setTitle(paramViewGroup.PackName);
-          if (!com.tencent.mm.plugin.emoji.h.a.g(paramViewGroup)) {
-            break label363;
+          locala.setTitle(((cjb)localObject).Zul);
+          if (!c.i((cjb)localObject)) {
+            break label424;
           }
-          o.ahG().a("", locala.bko());
-          locala.bkp();
-          bool = e.ea(paramViewGroup.PackType, 2);
-          if (TextUtils.isEmpty(paramViewGroup.TagUri)) {
-            break label392;
+          r.bKe().loadImage("", locala.dxW());
+          locala.JV(h.d.icon_002_cover);
+          bool = com.tencent.mm.plugin.emoji.a.a.e.f((cjb)localObject);
+          if (TextUtils.isEmpty(((cjb)localObject).akkB)) {
+            break label456;
           }
-          locala.bkq().setImageDrawable(null);
-          locala.bkq().setVisibility(0);
-          o.ahG().a(paramViewGroup.TagUri, locala.bkq(), g.dK("", paramViewGroup.TagUri));
-          label190:
-          if (!bkG()) {
-            break label421;
+          locala.dxX().setImageDrawable(null);
+          locala.dxX().setVisibility(0);
+          r.bKe().a(((cjb)localObject).akkB, locala.dxX(), com.tencent.mm.plugin.emoji.mgr.e.gJ("", ((cjb)localObject).akkB));
+          localView = locala.xGc;
+          if (!this.xGO.contains(((cjb)localObject).ProductID)) {
+            break label488;
           }
         }
       }
     }
-    label392:
-    label421:
-    for (paramViewGroup = paramViewGroup.ExptDesc;; paramViewGroup = paramViewGroup.Introduce)
+    label301:
+    label456:
+    label488:
+    for (paramInt = i;; paramInt = 8)
     {
-      locala.Kh(paramViewGroup);
-      if ((this.lei) && (locala.ldA != null)) {
-        locala.ldA.setBackgroundResource(2130838447);
+      localView.setVisibility(paramInt);
+      if ((paramViewGroup.xHG == null) || (!com.tencent.mm.plugin.emoji.a.a.e.gO(paramViewGroup.xHG.akke, 128))) {
+        break label494;
       }
-      AppMethodBeat.o(52749);
+      locala.anL(paramViewGroup.xHG.akkt);
+      if ((this.xGK) && (locala.xFZ != null)) {
+        locala.xFZ.setBackgroundResource(h.d.comm_list_item_selector_no_divider);
+      }
+      AppMethodBeat.o(108325);
       return paramView;
-      label240:
-      locala.setTitle(localEmotionBannerSet.Title);
-      locala.Kh(localEmotionBannerSet.Desc);
-      if (!bo.isNullOrNil(localEmotionBannerSet.IconUrl)) {
-        o.ahG().a(localEmotionBannerSet.IconUrl, locala.bko(), g.dK("", localEmotionBannerSet.IconUrl));
+      locala.setTitle(((anj)localObject).hAP);
+      locala.anK(((anj)localObject).IGG);
+      if (!Util.isNullOrNil(((anj)localObject).IHo)) {
+        r.bKe().a(((anj)localObject).IHo, locala.dxW(), com.tencent.mm.plugin.emoji.mgr.e.gJ("", ((anj)localObject).IHo));
       }
-      if (!bo.isNullOrNil(localEmotionBannerSet.TagUrl))
+      if (!Util.isNullOrNil(((anj)localObject).akjW))
       {
-        o.ahG().a(localEmotionBannerSet.TagUrl, locala.bkq(), g.dK("", localEmotionBannerSet.TagUrl));
-        locala.ue(0);
+        r.bKe().a(((anj)localObject).akjW, locala.dxX(), com.tencent.mm.plugin.emoji.mgr.e.gJ("", ((anj)localObject).akjW));
+        locala.JW(0);
       }
       for (;;)
       {
-        locala.uf(8);
-        paramInt = i;
+        locala.JY(8);
+        paramInt = j;
         break;
-        locala.ue(8);
+        locala.JW(8);
       }
-      label363:
-      o.ahG().a(paramViewGroup.IconUrl, locala.bko(), g.dK(paramViewGroup.ProductID, paramViewGroup.IconUrl));
-      break label128;
+      r.bKe().a(((cjb)localObject).IHo, locala.dxW(), com.tencent.mm.plugin.emoji.mgr.e.gJ(((cjb)localObject).ProductID, ((cjb)localObject).IHo));
+      break label138;
       if (bool)
       {
-        locala.ue(0);
-        locala.bkr();
-        break label190;
+        locala.JW(0);
+        locala.JX(h.d.emotionstore_newtips);
+        break label200;
       }
-      locala.ue(8);
-      break label190;
+      locala.JW(8);
+      break label200;
     }
-  }
-  
-  public int bkC()
-  {
-    return 0;
-  }
-  
-  public int bkD()
-  {
-    return 0;
-  }
-  
-  public int bkE()
-  {
-    return 0;
-  }
-  
-  protected boolean bkG()
-  {
-    return false;
+    label424:
+    label494:
+    if (!Util.isNullOrNil(((cjb)localObject).akkC)) {}
+    for (paramViewGroup = ((cjb)localObject).akkC;; paramViewGroup = ((cjb)localObject).akkA)
+    {
+      locala.anK(paramViewGroup);
+      break;
+    }
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(52748);
+    AppMethodBeat.i(108324);
     super.clear();
-    AppMethodBeat.o(52748);
+    AppMethodBeat.o(108324);
   }
   
   public final a d(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(52747);
-    paramContext = new f.a(this, paramContext, paramView);
-    paramContext.a(this.leP);
-    AppMethodBeat.o(52747);
+    AppMethodBeat.i(108323);
+    paramContext = new a(paramContext, paramView);
+    paramContext.a(this.xHs);
+    AppMethodBeat.o(108323);
     return paramContext;
   }
   
-  public void ug(int paramInt) {}
+  public int dyh()
+  {
+    return 0;
+  }
   
-  public void uh(int paramInt) {}
+  public int dyi()
+  {
+    return 0;
+  }
   
-  public void ui(int paramInt) {}
+  public int dyj()
+  {
+    return 0;
+  }
+  
+  public final void fa(List<String> paramList)
+  {
+    AppMethodBeat.i(179052);
+    this.xGO.clear();
+    if (paramList != null) {
+      this.xGO.addAll(paramList);
+    }
+    AppMethodBeat.o(179052);
+  }
+  
+  public final class a
+    extends a
+  {
+    public a(Context paramContext, View paramView)
+    {
+      super(paramView);
+    }
+    
+    protected final void dxT()
+    {
+      AppMethodBeat.i(108319);
+      this.xGb.setVisibility(8);
+      dxY();
+      this.xGi.setVisibility(8);
+      this.xGm.setVisibility(8);
+      this.xGn.setVisibility(8);
+      this.xGa.setVisibility(0);
+      this.sUt.setVisibility(0);
+      this.xGk.setVisibility(0);
+      this.xGj.setVisibility(0);
+      this.xGl.setVisibility(0);
+      AppMethodBeat.o(108319);
+    }
+    
+    protected final int[] dxU()
+    {
+      AppMethodBeat.i(108320);
+      int i = com.tencent.mm.cd.a.br(getContext(), h.c.emoji_item_store_image_size);
+      AppMethodBeat.o(108320);
+      return new int[] { i, i };
+    }
+    
+    protected final int dxV()
+    {
+      AppMethodBeat.i(108321);
+      int i = com.tencent.mm.cd.a.br(getContext(), h.c.emoji_item_store_height);
+      AppMethodBeat.o(108321);
+      return i;
+    }
+    
+    protected final boolean dyb()
+    {
+      AppMethodBeat.i(108322);
+      boolean bool = f.a(f.this);
+      AppMethodBeat.o(108322);
+      return bool;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.f
  * JD-Core Version:    0.7.0.1
  */

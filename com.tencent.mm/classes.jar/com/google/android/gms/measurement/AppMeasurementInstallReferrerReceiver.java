@@ -16,9 +16,9 @@ public final class AppMeasurementInstallReferrerReceiver
   
   public final BroadcastReceiver.PendingResult doGoAsync()
   {
-    AppMethodBeat.i(77162);
+    AppMethodBeat.i(87667);
     BroadcastReceiver.PendingResult localPendingResult = goAsync();
-    AppMethodBeat.o(77162);
+    AppMethodBeat.o(87667);
     return localPendingResult;
   }
   
@@ -26,17 +26,17 @@ public final class AppMeasurementInstallReferrerReceiver
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(77161);
+    AppMethodBeat.i(87666);
     if (this.zzadd == null) {
       this.zzadd = new zzgb(this);
     }
     this.zzadd.onReceive(paramContext, paramIntent);
-    AppMethodBeat.o(77161);
+    AppMethodBeat.o(87666);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
  * JD-Core Version:    0.7.0.1
  */

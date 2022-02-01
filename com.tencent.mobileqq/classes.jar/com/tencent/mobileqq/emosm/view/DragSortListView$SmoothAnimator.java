@@ -5,35 +5,39 @@ import android.os.SystemClock;
 class DragSortListView$SmoothAnimator
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
   protected long a;
-  private boolean jdField_a_of_type_Boolean;
   private float b;
   private float c;
   private float d;
   private float e;
   private float f;
+  private float g;
+  private boolean h;
   
   public DragSortListView$SmoothAnimator(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
   {
-    this.b = paramFloat;
-    this.jdField_a_of_type_Float = paramInt;
-    paramFloat = 1.0F / (this.b * 2.0F * (1.0F - this.b));
-    this.f = paramFloat;
     this.c = paramFloat;
-    this.d = (this.b / ((this.b - 1.0F) * 2.0F));
-    this.e = (1.0F / (1.0F - this.b));
+    this.b = paramInt;
+    paramFloat = this.c;
+    float f1 = 1.0F / (paramFloat * 2.0F * (1.0F - paramFloat));
+    this.g = f1;
+    this.d = f1;
+    this.e = (paramFloat / ((paramFloat - 1.0F) * 2.0F));
+    this.f = (1.0F / (1.0F - paramFloat));
   }
   
   public float a(float paramFloat)
   {
-    if (paramFloat < this.b) {
-      return this.c * paramFloat * paramFloat;
+    float f1 = this.c;
+    if (paramFloat < f1) {
+      return this.d * paramFloat * paramFloat;
     }
-    if (paramFloat < 1.0F - this.b) {
-      return this.d + this.e * paramFloat;
+    if (paramFloat < 1.0F - f1) {
+      return this.e + this.f * paramFloat;
     }
-    return 1.0F - this.f * (paramFloat - 1.0F) * (paramFloat - 1.0F);
+    f1 = this.g;
+    paramFloat -= 1.0F;
+    return 1.0F - f1 * paramFloat * paramFloat;
   }
   
   public void a() {}
@@ -44,23 +48,23 @@ class DragSortListView$SmoothAnimator
   
   public void c()
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Boolean = false;
+    this.a = SystemClock.uptimeMillis();
+    this.h = false;
     a();
     this.this$0.post(this);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.h = true;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+    float f1 = (float)(SystemClock.uptimeMillis() - this.a) / this.b;
     if (f1 >= 1.0F)
     {
       a(1.0F, 1.0F);

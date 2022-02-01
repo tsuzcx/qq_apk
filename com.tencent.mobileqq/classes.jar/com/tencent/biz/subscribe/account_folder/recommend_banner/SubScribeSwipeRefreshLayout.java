@@ -13,18 +13,17 @@ import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import ycv;
 
 public class SubScribeSwipeRefreshLayout
   extends SwipeRefreshLayout
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private View jdField_a_of_type_AndroidViewView;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
+  private Rect a;
   private int b;
   private int c;
   private int d;
+  private int e;
+  private View f;
+  private TopGestureLayout g;
   
   public SubScribeSwipeRefreshLayout(Context paramContext)
   {
@@ -39,16 +38,16 @@ public class SubScribeSwipeRefreshLayout
   
   private void b()
   {
-    this.jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.b = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
+    if (this.g == null)
     {
       ViewGroup localViewGroup = (ViewGroup)((Activity)getContext()).getWindow().getDecorView();
       View localView = localViewGroup.getChildAt(0);
-      Object localObject = localViewGroup;
+      localObject = localViewGroup;
       if (localView != null)
       {
         localObject = localViewGroup;
@@ -58,11 +57,12 @@ public class SubScribeSwipeRefreshLayout
       }
       localObject = ((ViewGroup)localObject).getChildAt(0);
       if ((localObject instanceof TopGestureLayout)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
+        this.g = ((TopGestureLayout)localObject);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new ycv(this));
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((TopGestureLayout)localObject).setInterceptTouchEventListener(new SubScribeSwipeRefreshLayout.1(this));
     }
   }
   
@@ -70,40 +70,41 @@ public class SubScribeSwipeRefreshLayout
   {
     int i = paramMotionEvent.getAction();
     int j = paramMotionEvent.getActionIndex();
-    switch (i)
+    if (i != 0)
     {
-    case 1: 
-    default: 
-      return super.onInterceptTouchEvent(paramMotionEvent);
-    case 0: 
-      this.c = ((int)(paramMotionEvent.getX() + 0.5F));
-      this.d = ((int)(paramMotionEvent.getY() + 0.5F));
-      this.b = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
-    }
-    do
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
+      if (i != 2) {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+      }
       j = (int)(paramMotionEvent.getX() + 0.5F);
       i = (int)(paramMotionEvent.getY() + 0.5F);
-      j -= this.c;
-      i = (int)((i - this.d) * 0.6F);
-      if ((Math.abs(j) > this.jdField_a_of_type_Int) && (Math.abs(j) >= Math.abs(i))) {
+      j -= this.d;
+      i = (int)((i - this.e) * 0.6F);
+      if ((Math.abs(j) > this.b) && (Math.abs(j) >= Math.abs(i))) {
         return false;
       }
-    } while ((Math.abs(j) <= this.jdField_a_of_type_Int) || (Math.abs(i) <= Math.abs(j)));
+      if ((Math.abs(j) > this.b) && (Math.abs(i) > Math.abs(j))) {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+      }
+    }
+    else
+    {
+      this.d = ((int)(paramMotionEvent.getX() + 0.5F));
+      this.e = ((int)(paramMotionEvent.getY() + 0.5F));
+      this.c = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
+    }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void setConflictView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.f = paramView;
+    this.a = new Rect();
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,52 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.jni.utils.UtilsJni;
-import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.gi;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.storage.bs;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class w$a
   extends l.d
   implements l.b
 {
-  int funcId;
-  public gi wiS;
-  byte[] wiT;
+  public byte[] hIN = null;
+  public long oDh = -1L;
   
-  public w$a()
+  public final int getCmdId()
   {
-    AppMethodBeat.i(154522);
-    this.wiS = new gi();
-    AppMethodBeat.o(154522);
+    return 1000000190;
   }
   
   public final int getFuncId()
   {
-    return this.funcId;
+    return 268369922;
   }
   
-  public final boolean isAxAuth()
+  public final boolean getShortSupport()
   {
-    return true;
+    return false;
   }
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(154523);
-    this.wiS.setBaseRequest(l.a(this));
-    this.wiS.nGG = q.LD();
-    this.wiS.wsn = b.pgQ.AP(0);
-    this.wiS.gwS = bo.hk(ah.getContext());
-    this.wiS.jJE = d.DEVICE_NAME;
-    this.wiS.wsq = bs.dyO();
-    this.wiS.lGH = aa.dsG();
-    this.wiS.lGG = bo.dtS();
-    this.wiS.wkX = g.bWu;
-    long l = UtilsJni.CreateAxEcdhCryptoEngine(this.wiS.wsK, this.wiT, this.wiS.wsL.getBufferToBytes());
-    setEcdhEngine(l);
-    byte[] arrayOfByte = UtilsJni.AxEcdhEncrypt(l, this.wiS.toByteArray());
-    AppMethodBeat.o(154523);
+    AppMethodBeat.i(133119);
+    byte[] arrayOfByte = new byte[this.hIN.length + 8];
+    int i = (int)(Util.nowMilliSecond() - this.oDh);
+    arrayOfByte[0] = ((byte)(i >> 24 & 0xFF));
+    arrayOfByte[1] = ((byte)(i >> 16 & 0xFF));
+    arrayOfByte[2] = ((byte)(i >> 8 & 0xFF));
+    arrayOfByte[3] = ((byte)(i & 0xFF));
+    arrayOfByte[4] = ((byte)(this.hIN.length >> 24 & 0xFF));
+    arrayOfByte[5] = ((byte)(this.hIN.length >> 16 & 0xFF));
+    arrayOfByte[6] = ((byte)(this.hIN.length >> 8 & 0xFF));
+    arrayOfByte[7] = ((byte)(this.hIN.length & 0xFF));
+    System.arraycopy(this.hIN, 0, arrayOfByte, 8, this.hIN.length);
+    Util.dumpHex(arrayOfByte);
+    AppMethodBeat.o(133119);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.w.a
  * JD-Core Version:    0.7.0.1
  */

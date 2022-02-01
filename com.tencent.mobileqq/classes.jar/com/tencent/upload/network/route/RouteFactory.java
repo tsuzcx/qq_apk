@@ -49,10 +49,11 @@ public class RouteFactory
   
   public static UploadRoute getDebugRoute()
   {
-    if (sDebugServerRoute == null) {
+    DebugServerRoute localDebugServerRoute = sDebugServerRoute;
+    if (localDebugServerRoute == null) {
       return null;
     }
-    return sDebugServerRoute.getUploadRoute();
+    return localDebugServerRoute.getUploadRoute();
   }
   
   public static Map<Const.FileType, ServerRouteTable> getServerRouteTableMap()
@@ -63,49 +64,41 @@ public class RouteFactory
   public static final List<Integer> getUploadRoutePorts()
   {
     Object localObject1 = UploadGlobalConfig.getConfig();
-    Object localObject3 = ((IUploadConfig)localObject1).getUploadPort();
-    if ((localObject1 == null) || (localObject3 == null)) {
-      localObject1 = UploadConfiguration.DEF_PORTS;
-    }
-    for (;;)
+    Object localObject2 = ((IUploadConfig)localObject1).getUploadPort();
+    if ((localObject1 != null) && (localObject2 != null))
     {
-      return localObject1;
+      localObject1 = null;
       try
       {
-        localObject3 = ((String)localObject3).split(",");
-        if (localObject3 == null) {
-          return UploadConfiguration.DEF_PORTS;
+        localObject2 = ((String)localObject2).split(",");
+        localObject1 = localObject2;
+      }
+      catch (Exception localException2)
+      {
+        UploadLog.w("RouteFactory", localException2.toString());
+      }
+      if (localObject1 == null) {
+        return UploadConfiguration.DEF_PORTS;
+      }
+      ArrayList localArrayList = new ArrayList(localObject1.length);
+      try
+      {
+        int j = localObject1.length;
+        int i = 0;
+        while (i < j)
+        {
+          localArrayList.add(Integer.valueOf(Integer.parseInt(localObject1[i])));
+          i += 1;
         }
+        return localArrayList;
       }
       catch (Exception localException1)
       {
-        for (;;)
-        {
-          UploadLog.w("RouteFactory", localException1.toString());
-          localObject3 = null;
-        }
-        ArrayList localArrayList = new ArrayList(localObject3.length);
-        try
-        {
-          int j = localObject3.length;
-          int i = 0;
-          for (;;)
-          {
-            Object localObject2 = localArrayList;
-            if (i >= j) {
-              break;
-            }
-            localArrayList.add(Integer.valueOf(Integer.parseInt(localObject3[i])));
-            i += 1;
-          }
-          return UploadConfiguration.DEF_PORTS;
-        }
-        catch (Exception localException2)
-        {
-          UploadLog.w("RouteFactory", localException2.toString());
-        }
+        UploadLog.w("RouteFactory", localException1.toString());
+        return UploadConfiguration.DEF_PORTS;
       }
     }
+    return UploadConfiguration.DEF_PORTS;
   }
   
   public static boolean isDebugEnable()
@@ -120,7 +113,7 @@ public class RouteFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.route.RouteFactory
  * JD-Core Version:    0.7.0.1
  */

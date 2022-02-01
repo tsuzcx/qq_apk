@@ -1,58 +1,33 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-public final class c$a
+@Metadata(d1={""}, d2={"<anonymous>", "Ljava/util/concurrent/ConcurrentLinkedDeque;", ""}, k=3, mv={1, 5, 1}, xi=48)
+final class c$a
+  extends u
+  implements a<ConcurrentLinkedDeque<String>>
 {
-  public static final HashMap<String, Long> vJp;
+  public static final a XNs;
   
   static
   {
-    AppMethodBeat.i(114653);
-    HashMap localHashMap = new HashMap();
-    vJp = localHashMap;
-    localHashMap.put("doc", Long.valueOf(64L));
-    vJp.put("docx", Long.valueOf(128L));
-    vJp.put("ppt", Long.valueOf(256L));
-    vJp.put("pptx", Long.valueOf(512L));
-    vJp.put("xls", Long.valueOf(1024L));
-    vJp.put("xlsx", Long.valueOf(2048L));
-    vJp.put("pdf", Long.valueOf(4096L));
-    vJp.put("1", Long.valueOf(1L));
-    vJp.put("3", Long.valueOf(2L));
-    vJp.put("48", Long.valueOf(4L));
-    vJp.put("43", Long.valueOf(8L));
-    vJp.put("mp3", Long.valueOf(16L));
-    vJp.put("wav", Long.valueOf(16L));
-    vJp.put("wma", Long.valueOf(16L));
-    vJp.put("avi", Long.valueOf(8L));
-    vJp.put("rmvb", Long.valueOf(8L));
-    vJp.put("rm", Long.valueOf(8L));
-    vJp.put("mpg", Long.valueOf(8L));
-    vJp.put("mpeg", Long.valueOf(8L));
-    vJp.put("wmv", Long.valueOf(8L));
-    vJp.put("mp4", Long.valueOf(8L));
-    vJp.put("mkv", Long.valueOf(8L));
-    AppMethodBeat.o(114653);
+    AppMethodBeat.i(124764);
+    XNs = new a();
+    AppMethodBeat.o(124764);
   }
   
-  public static Long akT(String paramString)
+  c$a()
   {
-    AppMethodBeat.i(114652);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(114652);
-      return null;
-    }
-    paramString = (Long)vJp.get(paramString.toLowerCase());
-    AppMethodBeat.o(114652);
-    return paramString;
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.a
  * JD-Core Version:    0.7.0.1
  */

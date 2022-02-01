@@ -18,13 +18,8 @@ public abstract class BaseUpload
   public final int getProtocol(@Nullable URL paramURL)
   {
     int i = 1;
-    int j = 1;
-    if (paramURL != null)
-    {
-      i = j;
-      if (Intrinsics.areEqual(paramURL.getProtocol(), "http")) {
-        i = 0;
-      }
+    if (paramURL != null) {
+      i = true ^ Intrinsics.areEqual(paramURL.getProtocol(), "http");
     }
     return i;
   }
@@ -39,7 +34,7 @@ public abstract class BaseUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.reporter.BaseUpload
  * JD-Core Version:    0.7.0.1
  */

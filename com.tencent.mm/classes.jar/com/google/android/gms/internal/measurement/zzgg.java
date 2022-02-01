@@ -33,39 +33,39 @@ public final class zzgg
   
   static
   {
-    AppMethodBeat.i(69052);
+    AppMethodBeat.i(1575);
     zzalx = new AtomicLong(-9223372036854775808L);
-    AppMethodBeat.o(69052);
+    AppMethodBeat.o(1575);
   }
   
   zzgg(zzgl paramzzgl)
   {
     super(paramzzgl);
-    AppMethodBeat.i(69023);
+    AppMethodBeat.i(1546);
     this.zzalu = new Object();
     this.zzalv = new Semaphore(2);
     this.zzalq = new PriorityBlockingQueue();
     this.zzalr = new LinkedBlockingQueue();
     this.zzals = new zzgi(this, "Thread death: Uncaught exception on worker thread");
     this.zzalt = new zzgi(this, "Thread death: Uncaught exception on network thread");
-    AppMethodBeat.o(69023);
+    AppMethodBeat.o(1546);
   }
   
   public static boolean isMainThread()
   {
-    AppMethodBeat.i(69026);
+    AppMethodBeat.i(1549);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AppMethodBeat.o(69026);
+      AppMethodBeat.o(1549);
       return true;
     }
-    AppMethodBeat.o(69026);
+    AppMethodBeat.o(1549);
     return false;
   }
   
   private final void zza(zzgj<?> paramzzgj)
   {
-    AppMethodBeat.i(69032);
+    AppMethodBeat.i(1555);
     synchronized (this.zzalu)
     {
       this.zzalq.add(paramzzgj);
@@ -74,7 +74,7 @@ public final class zzgg
         this.zzalo = new zzgk(this, "Measurement Worker", this.zzalq);
         this.zzalo.setUncaughtExceptionHandler(this.zzals);
         this.zzalo.start();
-        AppMethodBeat.o(69032);
+        AppMethodBeat.o(1555);
         return;
       }
       this.zzalo.zzjn();
@@ -83,7 +83,7 @@ public final class zzgg
   
   final <T> T zza(AtomicReference<T> paramAtomicReference, long paramLong, String paramString, Runnable paramRunnable)
   {
-    AppMethodBeat.i(69031);
+    AppMethodBeat.i(1554);
     for (;;)
     {
       try
@@ -105,7 +105,7 @@ public final class zzgg
           }
           else
           {
-            AppMethodBeat.o(69031);
+            AppMethodBeat.o(1554);
             return paramRunnable;
           }
         }
@@ -126,26 +126,26 @@ public final class zzgg
       }
       finally
       {
-        AppMethodBeat.o(69031);
+        AppMethodBeat.o(1554);
       }
     }
   }
   
   public final void zzab()
   {
-    AppMethodBeat.i(69024);
+    AppMethodBeat.i(1547);
     if (Thread.currentThread() != this.zzalo)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Call expected from worker thread");
-      AppMethodBeat.o(69024);
+      AppMethodBeat.o(1547);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(69024);
+    AppMethodBeat.o(1547);
   }
   
   public final <V> Future<V> zzb(Callable<V> paramCallable)
   {
-    AppMethodBeat.i(69028);
+    AppMethodBeat.i(1551);
     zzch();
     Preconditions.checkNotNull(paramCallable);
     paramCallable = new zzgj(this, paramCallable, false, "Task exception on worker thread");
@@ -158,7 +158,7 @@ public final class zzgg
     }
     for (;;)
     {
-      AppMethodBeat.o(69028);
+      AppMethodBeat.o(1551);
       return paramCallable;
       zza(paramCallable);
     }
@@ -166,7 +166,7 @@ public final class zzgg
   
   public final <V> Future<V> zzc(Callable<V> paramCallable)
   {
-    AppMethodBeat.i(69029);
+    AppMethodBeat.i(1552);
     zzch();
     Preconditions.checkNotNull(paramCallable);
     paramCallable = new zzgj(this, paramCallable, true, "Task exception on worker thread");
@@ -175,7 +175,7 @@ public final class zzgg
     }
     for (;;)
     {
-      AppMethodBeat.o(69029);
+      AppMethodBeat.o(1552);
       return paramCallable;
       zza(paramCallable);
     }
@@ -183,16 +183,16 @@ public final class zzgg
   
   public final void zzc(Runnable paramRunnable)
   {
-    AppMethodBeat.i(69030);
+    AppMethodBeat.i(1553);
     zzch();
     Preconditions.checkNotNull(paramRunnable);
     zza(new zzgj(this, paramRunnable, false, "Task exception on worker thread"));
-    AppMethodBeat.o(69030);
+    AppMethodBeat.o(1553);
   }
   
   public final void zzd(Runnable arg1)
   {
-    AppMethodBeat.i(69033);
+    AppMethodBeat.i(1556);
     zzch();
     Preconditions.checkNotNull(???);
     zzgj localzzgj = new zzgj(this, ???, false, "Task exception on network thread");
@@ -204,7 +204,7 @@ public final class zzgg
         this.zzalp = new zzgk(this, "Measurement Network", this.zzalr);
         this.zzalp.setUncaughtExceptionHandler(this.zzalt);
         this.zzalp.start();
-        AppMethodBeat.o(69033);
+        AppMethodBeat.o(1556);
         return;
       }
       this.zzalp.zzjn();
@@ -213,14 +213,14 @@ public final class zzgg
   
   public final void zzfs()
   {
-    AppMethodBeat.i(69025);
+    AppMethodBeat.i(1548);
     if (Thread.currentThread() != this.zzalp)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Call expected from network thread");
-      AppMethodBeat.o(69025);
+      AppMethodBeat.o(1548);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(69025);
+    AppMethodBeat.o(1548);
   }
   
   protected final boolean zzhf()
@@ -230,33 +230,33 @@ public final class zzgg
   
   public final boolean zzjk()
   {
-    AppMethodBeat.i(69027);
+    AppMethodBeat.i(1550);
     if (Thread.currentThread() == this.zzalo)
     {
-      AppMethodBeat.o(69027);
+      AppMethodBeat.o(1550);
       return true;
     }
-    AppMethodBeat.o(69027);
+    AppMethodBeat.o(1550);
     return false;
   }
   
   final ExecutorService zzjl()
   {
-    AppMethodBeat.i(69034);
+    AppMethodBeat.i(1557);
     synchronized (this.zzalu)
     {
       if (this.zzaln == null) {
         this.zzaln = new ThreadPoolExecutor(0, 1, 30L, TimeUnit.SECONDS, new ArrayBlockingQueue(100));
       }
       ExecutorService localExecutorService = this.zzaln;
-      AppMethodBeat.o(69034);
+      AppMethodBeat.o(1557);
       return localExecutorService;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgg
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.feedback.upload.d;
 public class i
   implements s, x
 {
-  protected final Context a;
+  public final Context a;
   private int b;
   private int c;
   private int d;
@@ -25,34 +25,32 @@ public class i
   
   public i(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, com.tencent.feedback.upload.e parame, d paramd, UploadHandleListener paramUploadHandleListener)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if (paramContext != null)
     {
-      this.a = paramContext;
-      paramContext = c.a(this.a);
-      if ((paramString != null) && (paramString.trim().length() > 0)) {
-        paramContext.a(paramString);
-      }
-      this.b = 3;
-      this.c = 530;
-      this.d = 510;
-      this.g = parame;
-      this.h = paramd;
-      if (parame != null)
-      {
-        parame.a(paramd);
-        parame.a(paramUploadHandleListener);
-      }
-      paramContext = t.a(this.a);
-      paramContext.a(this);
-      paramContext.a(this);
-      paramContext.a(3, parame);
-      return;
       Context localContext = paramContext.getApplicationContext();
       if (localContext != null) {
         paramContext = localContext;
       }
     }
+    this.a = paramContext;
+    paramContext = c.a(this.a);
+    if ((paramString != null) && (paramString.trim().length() > 0)) {
+      paramContext.a(paramString);
+    }
+    this.b = 3;
+    this.c = 530;
+    this.d = 510;
+    this.g = parame;
+    this.h = paramd;
+    if (parame != null)
+    {
+      parame.a(paramd);
+      parame.a(paramUploadHandleListener);
+    }
+    paramContext = t.a(this.a);
+    paramContext.a(this);
+    paramContext.a(this);
+    paramContext.a(3, parame);
   }
   
   private void a(int paramInt)
@@ -103,47 +101,47 @@ public class i
     if (paramw != null)
     {
       paramw = paramw.c(this.b);
-      if (paramw != null) {
-        if ((!paramw.c()) || (!paramw.b())) {
-          break label94;
+      if (paramw != null)
+      {
+        boolean bool;
+        if ((paramw.c()) && (paramw.b())) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (a() != bool)
+        {
+          e.a("rqdp{  module} %d rqdp{  able changed }%b", new Object[] { Integer.valueOf(this.b), Boolean.valueOf(bool) });
+          b(bool);
         }
       }
-    }
-    label94:
-    for (boolean bool = true;; bool = false)
-    {
-      if (a() != bool)
-      {
-        e.a("rqdp{  module} %d rqdp{  able changed }%b", new Object[] { Integer.valueOf(this.b), Boolean.valueOf(bool) });
-        b(bool);
-      }
-      return;
     }
   }
   
   public final void a(boolean paramBoolean)
   {
-    boolean bool = true;
     Object localObject = t.a(this.a);
     if (localObject != null)
     {
       localObject = ((t)localObject).b().c(this.b);
       if ((localObject != null) && (((w.a)localObject).b() != paramBoolean))
       {
-        e.a("rqdp{  mid:}%d rqdp{  change user switch} %b", new Object[] { Integer.valueOf(this.b), Boolean.valueOf(paramBoolean) });
+        int j = this.b;
+        boolean bool = false;
+        e.a("rqdp{  mid:}%d rqdp{  change user switch} %b", new Object[] { Integer.valueOf(j), Boolean.valueOf(paramBoolean) });
         ((w.a)localObject).a(paramBoolean);
-        if ((!((w.a)localObject).b()) || (!((w.a)localObject).c())) {
-          break label100;
+        paramBoolean = bool;
+        if (((w.a)localObject).b())
+        {
+          paramBoolean = bool;
+          if (((w.a)localObject).c()) {
+            paramBoolean = true;
+          }
+        }
+        if (paramBoolean != a()) {
+          b(paramBoolean);
         }
       }
-    }
-    label100:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      if (paramBoolean != a()) {
-        b(paramBoolean);
-      }
-      return;
     }
   }
   
@@ -229,26 +227,12 @@ public class i
           bool1 = locala.d();
           boolean bool2 = localw.g();
           if (!bool1) {
-            break label360;
+            break label367;
           }
-          if (bool2)
-          {
-            bool1 = true;
-            e.b("rqdp{  needDetail} %b rqdp{  allQ:}%b rqdp{  result:}%b", new Object[] { Boolean.valueOf(locala.d()), Boolean.valueOf(localw.g()), Boolean.valueOf(bool1) });
-            if (g() <= 0) {
-              break label365;
-            }
-            j = 1;
-            if (j != 0)
-            {
-              e.b("rqdp{  asyn up module} %d", new Object[] { Integer.valueOf(this.b) });
-              b.b().a(new i.1(this));
-            }
-          }
-          else
+          if (!bool2)
           {
             if (i()) {
-              break label360;
+              break label367;
             }
             z localz = com.tencent.feedback.proguard.a.a(this.a, this.d);
             if (localz != null)
@@ -257,21 +241,47 @@ public class i
               if (locald == null)
               {
                 e.c("rqdp{  imposiable eup reshandler not ready}", new Object[0]);
-                break label360;
+                break label367;
               }
               locald.a(this.d, localz.c(), false);
             }
             if (i()) {
-              break label360;
+              break label367;
             }
-            bool1 = true;
-            continue;
+            break label362;
+            e.b("rqdp{  needDetail} %b rqdp{  allQ:}%b rqdp{  result:}%b", new Object[] { Boolean.valueOf(locala.d()), Boolean.valueOf(localw.g()), Boolean.valueOf(bool1) });
+            if (g() <= 0) {
+              break label372;
+            }
+            j = 1;
+            if (j != 0)
+            {
+              e.b("rqdp{  asyn up module} %d", new Object[] { Integer.valueOf(this.b) });
+              b.b().a(new Runnable()
+              {
+                public final void run()
+                {
+                  i.this.h();
+                }
+              });
+              return;
+            }
+            if (!bool1) {
+              break;
+            }
+            e.b("rqdp{  asyn query module }%d", new Object[] { Integer.valueOf(this.b) });
+            b.b().a(new Runnable()
+            {
+              public final void run()
+              {
+                i.this.j();
+              }
+            });
           }
-          if (!bool1) {
-            break label359;
-          }
-          e.b("rqdp{  asyn query module }%d", new Object[] { Integer.valueOf(this.b) });
-          b.b().a(new i.2(this));
+        }
+        else
+        {
+          e.b("rqdp{  disable}", new Object[0]);
           return;
         }
       }
@@ -283,13 +293,13 @@ public class i
         e.d("rqdp{  common query end error} %s", new Object[] { localThrowable.toString() });
         return;
       }
-      e.b("rqdp{  disable}", new Object[0]);
-      label359:
-      return;
-      label360:
-      boolean bool1 = false;
+      label362:
+      boolean bool1 = true;
       continue;
-      label365:
+      label367:
+      bool1 = false;
+      continue;
+      label372:
       int j = 0;
     }
   }
@@ -319,15 +329,16 @@ public class i
   
   public final boolean j()
   {
-    if (!a()) {}
-    com.tencent.feedback.upload.e locale;
-    do
-    {
+    if (!a()) {
       return false;
-      locale = c();
-    } while (locale == null);
-    locale.a(new com.tencent.feedback.upload.a(this.a, this.b, this.c));
-    return true;
+    }
+    com.tencent.feedback.upload.e locale = c();
+    if (locale != null)
+    {
+      locale.a(new com.tencent.feedback.upload.a(this.a, this.b, this.c));
+      return true;
+    }
+    return false;
   }
   
   public final int k()

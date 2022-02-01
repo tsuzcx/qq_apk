@@ -23,15 +23,12 @@ public final class MessageMicro$FieldMap
       try
       {
         this.fields[i] = paramClass.getField(paramArrayOfString[i]);
-        i += 1;
       }
       catch (Exception paramArrayOfObject)
       {
-        for (;;)
-        {
-          paramArrayOfObject.printStackTrace();
-        }
+        paramArrayOfObject.printStackTrace();
       }
+      i += 1;
     }
   }
   
@@ -77,10 +74,11 @@ public final class MessageMicro$FieldMap
     int j = 0;
     for (;;)
     {
-      if (i >= this.tags.length) {
+      int[] arrayOfInt = this.tags;
+      if (i >= arrayOfInt.length) {
         return j;
       }
-      int k = WireFormatMicro.getTagFieldNumber(this.tags[i]);
+      int k = WireFormatMicro.getTagFieldNumber(arrayOfInt[i]);
       j += ((PBField)this.fields[i].get(paramMessageMicro)).computeSize(k);
       i += 1;
     }
@@ -101,10 +99,11 @@ public final class MessageMicro$FieldMap
     int i = 0;
     for (;;)
     {
-      if (i >= this.tags.length) {
+      int[] arrayOfInt = this.tags;
+      if (i >= arrayOfInt.length) {
         return;
       }
-      int j = WireFormatMicro.getTagFieldNumber(this.tags[i]);
+      int j = WireFormatMicro.getTagFieldNumber(arrayOfInt[i]);
       ((PBField)this.fields[i].get(paramMessageMicro)).writeTo(paramCodedOutputStreamMicro, j);
       i += 1;
     }
@@ -112,7 +111,7 @@ public final class MessageMicro$FieldMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.MessageMicro.FieldMap
  * JD-Core Version:    0.7.0.1
  */

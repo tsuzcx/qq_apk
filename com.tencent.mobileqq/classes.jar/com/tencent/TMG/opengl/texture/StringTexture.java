@@ -59,20 +59,16 @@ public class StringTexture
   
   private static StringTexture newInstance(String paramString, TextPaint paramTextPaint)
   {
-    int j = 1;
     Paint.FontMetricsInt localFontMetricsInt = paramTextPaint.getFontMetricsInt();
-    int m = (int)FloatMath.ceil(paramTextPaint.measureText(paramString));
-    int k = localFontMetricsInt.bottom - localFontMetricsInt.top;
-    int i = m;
-    if (m <= 0) {
+    int i = (int)FloatMath.ceil(paramTextPaint.measureText(paramString));
+    int j = localFontMetricsInt.bottom - localFontMetricsInt.top;
+    if (i <= 0) {
       i = 1;
     }
-    if (k <= 0) {}
-    for (;;)
-    {
-      return new StringTexture(paramString, paramTextPaint, localFontMetricsInt, i, j);
-      j = k;
+    if (j <= 0) {
+      j = 1;
     }
+    return new StringTexture(paramString, paramTextPaint, localFontMetricsInt, i, j);
   }
   
   protected void onFreeBitmap(Bitmap paramBitmap)
@@ -93,7 +89,7 @@ public class StringTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.texture.StringTexture
  * JD-Core Version:    0.7.0.1
  */

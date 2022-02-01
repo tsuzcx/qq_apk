@@ -14,7 +14,7 @@
         "type": "match_parent"
     },
     "attributes": {
-        "setCornerRadiusString:":"3.0",
+        "setCornerRadiusString:":"6.0",
         "setLayerMaskBoundsString:":"1",
         "setClipsToBounds:":"1",
         "setBackgroundColorString:": "#F7F7F7"

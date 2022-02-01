@@ -1,8 +1,27 @@
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
-public class hbj
+public final class hbj
+  implements Runnable
 {
-  public static AntiFraudConfigFileUtil a = new AntiFraudConfigFileUtil(null);
+  public hbj(QQAppInterface paramQQAppInterface) {}
+  
+  public void run()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvatarPendantUtil", 2, "Bulk fetch pendant id, size=" + AvatarPendantUtil.a().size());
+    }
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.a(1);
+    if (localFriendListHandler != null)
+    {
+      String[] arrayOfString = new String[AvatarPendantUtil.a().size()];
+      localFriendListHandler.d((String[])AvatarPendantUtil.a().toArray(arrayOfString));
+    }
+    AvatarPendantUtil.a().clear();
+  }
 }
 
 

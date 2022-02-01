@@ -12,7 +12,7 @@ class WtloginHelper$2
   
   public void run()
   {
-    new RSACrypt(WtloginHelper.access$000(this.this$0)).GenRSAKey();
+    new RSACrypt(WtloginHelper.access$100(this.this$0)).GenRSAKey();
   }
 }
 

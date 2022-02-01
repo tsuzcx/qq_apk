@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/p21" android:layout_width="130.0dip" android:layout_height="315.0dip">
+        <ImageView android:layout_gravity="bottom|center" android:layout_width="93.0dip" android:layout_height="93.0dip" android:layout_marginBottom="@dimen/mp" android:src="@drawable/jer" android:scaleType="fitXY" />
+        <View android:layout_gravity="bottom|center" android:id="@id/n_q" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginBottom="33.0dip" />
+        <ImageView android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginBottom="85.0dip" android:src="@drawable/jep" android:scaleType="center" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="75.0dip">
+            <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/az1" android:background="@drawable/gwh" android:layout_width="121.0dip" android:layout_height="@dimen/nc" android:text="知道了" />
+            <TextView android:textSize="@dimen/mv" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n2" android:text="点击可进入隐私模式" />
+            <View android:layout_gravity="center_horizontal" android:background="@drawable/gwi" android:layout_width="fill_parent" android:layout_height="@dimen/mx" android:layout_marginLeft="2.0dip" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

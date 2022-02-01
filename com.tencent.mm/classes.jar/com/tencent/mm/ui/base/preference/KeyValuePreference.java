@@ -5,14 +5,19 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,23 +25,23 @@ import java.util.List;
 public class KeyValuePreference
   extends Preference
 {
+  public String JAf;
+  protected TextView MXN;
+  private int acre;
+  public boolean adZa;
+  private boolean adZb;
+  private boolean adZc;
+  private boolean adZd;
+  private int adZe;
+  public int adZf;
+  protected ImageView adZg;
+  public Drawable adZh;
+  private List<View> adZi;
+  public int adZj;
+  int adZk;
   private View contentView;
-  public float nEC;
-  protected TextView pAD;
   protected TextView titleTv;
-  public String zaD;
-  private List<View> zrA;
-  public int zrB;
-  int zrC;
-  public boolean zrr;
-  private boolean zrs;
-  private boolean zrt;
-  private boolean zru;
-  private int zrv;
-  private int zrw;
-  public int zrx;
-  protected ImageView zry;
-  public Drawable zrz;
+  public float xBL;
   
   public KeyValuePreference(Context paramContext)
   {
@@ -51,120 +56,155 @@ public class KeyValuePreference
   public KeyValuePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107201);
-    this.zrr = true;
-    this.zrs = false;
-    this.zaD = null;
-    this.zrt = false;
-    this.zru = false;
-    this.zrv = 17;
-    this.zrw = 17;
-    this.zrx = 0;
-    this.zry = null;
-    this.zrz = null;
-    this.zrA = new LinkedList();
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107201);
+    AppMethodBeat.i(142578);
+    this.adZa = true;
+    this.adZb = false;
+    this.JAf = null;
+    this.adZc = false;
+    this.adZd = false;
+    this.acre = 17;
+    this.adZe = 17;
+    this.adZf = 0;
+    this.adZg = null;
+    this.adZh = null;
+    this.adZi = new LinkedList();
+    setLayoutResource(a.h.mm_preference);
+    AppMethodBeat.o(142578);
   }
   
-  public final void OT(int paramInt)
+  public final void LG(boolean paramBoolean)
   {
-    AppMethodBeat.i(107204);
-    this.zrC = paramInt;
-    if (this.pAD != null) {
-      this.pAD.setMaxLines(this.zrC);
+    AppMethodBeat.i(142582);
+    this.adZb = paramBoolean;
+    if (this.adZb) {
+      aBp(a.h.mm_preference_submenu);
     }
-    AppMethodBeat.o(107204);
+    AppMethodBeat.o(142582);
   }
   
-  public final void dEM()
+  public final void aBm(int paramInt)
   {
-    this.zru = true;
-    this.zrw = 5;
+    AppMethodBeat.i(142581);
+    this.adZk = paramInt;
+    if (this.MXN != null) {
+      this.MXN.setMaxLines(this.adZk);
+    }
+    AppMethodBeat.o(142581);
   }
   
-  public final void dEN()
+  public final void jnp()
   {
-    AppMethodBeat.i(107206);
-    this.zrA.clear();
-    AppMethodBeat.o(107206);
+    this.adZd = true;
+    this.adZe = 5;
   }
   
-  public final void dEO()
+  public final void jnq()
   {
-    this.zrt = true;
-    this.zrv = 49;
+    AppMethodBeat.i(142583);
+    this.adZi.clear();
+    AppMethodBeat.o(142583);
   }
   
-  public final void eO(View paramView)
+  public final void jnr()
   {
-    AppMethodBeat.i(107207);
-    this.zrA.add(paramView);
-    AppMethodBeat.o(107207);
+    this.adZc = true;
+    this.acre = 49;
+  }
+  
+  public final void lh(View paramView)
+  {
+    AppMethodBeat.i(142584);
+    this.adZi.add(paramView);
+    AppMethodBeat.o(142584);
   }
   
   public void onBindView(View paramView)
   {
-    AppMethodBeat.i(107203);
+    AppMethodBeat.i(142580);
     super.onBindView(paramView);
-    this.contentView = paramView.findViewById(2131826191);
-    if (this.zsc != null) {
-      this.contentView.setOnClickListener(new KeyValuePreference.1(this));
+    this.contentView = paramView.findViewById(a.g.root_content);
+    if (this.adZO != null) {
+      this.contentView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(142576);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/preference/KeyValuePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          KeyValuePreference.this.adZO.gAW();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/preference/KeyValuePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(142576);
+        }
+      });
     }
-    if (this.zsd != null) {
-      paramView.setOnLongClickListener(new KeyValuePreference.2(this));
+    if (this.adZP != null) {
+      paramView.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public final boolean onLongClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(142577);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/preference/KeyValuePreference$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+          boolean bool = KeyValuePreference.this.adZP.gCr();
+          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/preference/KeyValuePreference$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+          AppMethodBeat.o(142577);
+          return bool;
+        }
+      });
     }
-    this.pAD = ((TextView)paramView.findViewById(16908304));
-    if (this.pAD != null)
+    this.MXN = ((TextView)paramView.findViewById(16908304));
+    if (this.MXN != null)
     {
-      this.pAD.setSingleLine(this.zrr);
-      if (this.zru) {
-        this.pAD.setGravity(this.zrw);
+      this.MXN.setSingleLine(this.adZa);
+      if (this.adZd) {
+        this.MXN.setGravity(this.adZe);
       }
     }
-    if (this.zrs) {
-      setWidgetLayoutResource(2130970254);
+    if (this.adZb) {
+      aBp(a.h.mm_preference_submenu);
     }
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    if (!bo.isNullOrNil(this.zaD)) {
-      this.titleTv.setText(this.zaD);
+    if (!Util.isNullOrNil(this.JAf)) {
+      this.titleTv.setText(this.JAf);
     }
     Object localObject;
     int i;
     if (this.titleTv != null)
     {
       localObject = this.titleTv.getLayoutParams();
-      if (this.zrB == 0)
+      if (this.adZj == 0)
       {
-        i = a.ao(this.mContext, 2131427664);
+        i = com.tencent.mm.cd.a.br(this.mContext, a.e.FixedTitleWidth);
         ((ViewGroup.LayoutParams)localObject).width = i;
         this.titleTv.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
     else
     {
-      this.zry = ((ImageView)paramView.findViewById(2131822243));
-      if (this.zrz == null) {
-        break label368;
+      this.adZg = ((ImageView)paramView.findViewById(a.g.image_iv));
+      if (this.adZh == null) {
+        break label374;
       }
-      this.zry.setVisibility(this.zrx);
-      this.zry.setImageDrawable(this.zrz);
+      this.adZg.setVisibility(this.adZf);
+      this.adZg.setImageDrawable(this.adZh);
     }
     for (;;)
     {
-      if (this.zrt)
+      if (this.adZc)
       {
-        localObject = (LinearLayout)paramView.findViewById(2131821084);
+        localObject = (LinearLayout)paramView.findViewById(a.g.container);
         if (localObject != null) {
-          ((LinearLayout)localObject).setGravity(this.zrv);
+          ((LinearLayout)localObject).setGravity(this.acre);
         }
       }
-      if (this.zrA.size() <= 0) {
-        break label380;
+      if (this.adZi.size() <= 0) {
+        break label386;
       }
-      paramView = (LinearLayout)paramView.findViewById(2131826218);
+      paramView = (LinearLayout)paramView.findViewById(a.g.summary_container);
       paramView.removeAllViews();
-      localObject = this.zrA.iterator();
+      localObject = this.adZi.iterator();
       while (((Iterator)localObject).hasNext())
       {
         View localView = (View)((Iterator)localObject).next();
@@ -174,48 +214,38 @@ public class KeyValuePreference
         }
         paramView.addView(localView);
       }
-      i = this.zrB;
+      i = this.adZj;
       break;
-      label368:
-      this.zry.setVisibility(8);
+      label374:
+      this.adZg.setVisibility(8);
     }
-    label380:
-    if (this.nEC != 0.0F)
+    label386:
+    if (this.xBL != 0.0F)
     {
-      this.titleTv.setTextSize(this.nEC);
-      this.pAD.setTextSize(this.nEC);
+      this.titleTv.setTextSize(this.xBL);
+      this.MXN.setTextSize(this.xBL);
     }
-    if (this.zrC > 0) {
-      this.pAD.setMaxLines(this.zrC);
+    if (this.adZk > 0) {
+      this.MXN.setMaxLines(this.adZk);
     }
-    AppMethodBeat.o(107203);
+    AppMethodBeat.o(142580);
   }
   
   protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107202);
+    AppMethodBeat.i(142579);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970205, localViewGroup);
-    AppMethodBeat.o(107202);
+    localLayoutInflater.inflate(a.h.mm_preference_content_keyvalue, localViewGroup);
+    AppMethodBeat.o(142579);
     return paramViewGroup;
-  }
-  
-  public final void qJ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107205);
-    this.zrs = paramBoolean;
-    if (this.zrs) {
-      setWidgetLayoutResource(2130970254);
-    }
-    AppMethodBeat.o(107205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.KeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

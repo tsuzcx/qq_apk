@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 
 final class BindLinkedInUI$6
   implements View.OnClickListener
@@ -18,16 +20,20 @@ final class BindLinkedInUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(13390);
-    paramView = (String)g.RL().Ru().get(286723, null);
-    if (!bo.isNullOrNil(paramView))
+    AppMethodBeat.i(109818);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    paramView = (String)h.baE().ban().d(286723, null);
+    if (!Util.isNullOrNil(paramView))
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramView);
-      localIntent.putExtra("geta8key_username", r.Zn());
-      d.b(this.gtf, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", paramView);
+      ((Intent)localObject).putExtra("geta8key_username", z.bAM());
+      c.b(this.pOv, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject);
     }
-    AppMethodBeat.o(13390);
+    a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(109818);
   }
 }
 

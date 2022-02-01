@@ -1,13 +1,15 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.open.applist.WebAppActivity;
 
 public class hlj
-  implements Runnable
+  implements View.OnLongClickListener
 {
   public hlj(WebAppActivity paramWebAppActivity) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    this.a.finish();
+    return true;
   }
 }
 

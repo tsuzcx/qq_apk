@@ -13,18 +13,29 @@ final class PreConnectManager$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    QDLog.e("downloader", "pre-connect onFailure: " + this.val$url);
+    paramCall = new StringBuilder();
+    paramCall.append("pre-connect onFailure: ");
+    paramCall.append(this.val$url);
+    QDLog.e("downloader", paramCall.toString());
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
     long l = System.currentTimeMillis();
-    QDLog.i("downloader", "pre-connect onResponse [timecost: " + (l - this.val$begin) + "] [url: " + this.val$url + "] [code: " + paramResponse.code() + "]");
+    paramCall = new StringBuilder();
+    paramCall.append("pre-connect onResponse [timecost: ");
+    paramCall.append(l - this.val$begin);
+    paramCall.append("] [url: ");
+    paramCall.append(this.val$url);
+    paramCall.append("] [code: ");
+    paramCall.append(paramResponse.code());
+    paramCall.append("]");
+    QDLog.i("downloader", paramCall.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.PreConnectManager.1
  * JD-Core Version:    0.7.0.1
  */

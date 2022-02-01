@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingTop="6.0dip" android:paddingRight="2.0dip" android:paddingBottom="6.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/ate"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/dvy" android:visibility="gone" android:layout_width="41.0dip" android:layout_height="21.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:scaleType="fitCenter" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip">
+            <ImageView android:id="@id/dvu" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="8.0dip" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff737373" android:layout_gravity="center_vertical" android:id="@id/kbs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/dvu" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/f8_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/so" android:layout_alignLeft="@id/kbs" android:layout_alignRight="@id/kbs" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:layout_gravity="center" android:id="@id/dqa" android:background="@drawable/b2_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="right" android:id="@id/dxs" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/skin_tips_dot" />
+</FrameLayout>

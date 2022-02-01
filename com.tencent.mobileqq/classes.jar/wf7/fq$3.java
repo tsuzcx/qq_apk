@@ -15,22 +15,17 @@ final class fq$3
   
   public void addTask(Runnable paramRunnable, String paramString, int paramInt)
   {
-    int i = 2;
+    int i = 4;
     if (paramInt == 2) {
+      paramInt = 2;
+    } else if (paramInt == 3) {
+      paramInt = 3;
+    } else if (paramInt == 4) {
       paramInt = i;
+    } else {
+      paramInt = 1;
     }
-    for (;;)
-    {
-      this.rq.addTypeTask(paramRunnable, paramInt);
-      return;
-      if (paramInt == 3) {
-        paramInt = 3;
-      } else if (paramInt == 4) {
-        paramInt = 4;
-      } else {
-        paramInt = 1;
-      }
-    }
+    this.rq.addTypeTask(paramRunnable, paramInt);
   }
   
   public Handler getSubThreadHandler()
@@ -58,7 +53,7 @@ final class fq$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fq.3
  * JD-Core Version:    0.7.0.1
  */

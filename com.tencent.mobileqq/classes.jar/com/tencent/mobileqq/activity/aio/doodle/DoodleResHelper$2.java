@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afal;
 import android.view.View;
-import aygt;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.doodle.IScribbleResMgr;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.scribble.ResCallback;
 
-public class DoodleResHelper$2
+class DoodleResHelper$2
   implements Runnable
 {
-  public DoodleResHelper$2(afal paramafal, int paramInt1, int paramInt2, View paramView, aygt paramaygt) {}
+  DoodleResHelper$2(DoodleResHelper paramDoodleResHelper, int paramInt1, int paramInt2, View paramView, ResCallback paramResCallback) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_Int == 0) {
-      ScribbleResMgr.a().a(localQQAppInterface, 1, this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aygt);
-    }
-    while ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 2)) {
+    int i = this.a;
+    if (i == 0)
+    {
+      ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).StartDownloadRes(1, this.b, this.c, this.d);
       return;
     }
-    ScribbleResMgr.a().a(localQQAppInterface, 2, this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aygt);
+    if ((i == 1) || (i == 2)) {
+      ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).StartDownloadRes(2, this.b, this.c, this.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper.2
  * JD-Core Version:    0.7.0.1
  */

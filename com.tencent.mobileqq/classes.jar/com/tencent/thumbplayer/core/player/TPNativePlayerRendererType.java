@@ -4,7 +4,7 @@ public class TPNativePlayerRendererType
 {
   public static final int TP_AUDIO_RENDERER_AAUDIO = 2;
   public static final int TP_AUDIO_RENDERER_AUDIOTRACK = 1;
-  public static final int TP_AUDIO_RENDERER_OBEO = 3;
+  public static final int TP_AUDIO_RENDERER_OBOE = 3;
   public static final int TP_AUDIO_RENDERER_OPENAL = 5;
   public static final int TP_AUDIO_RENDERER_OPENSL = 4;
   public static final int TP_RENDERER_NONE = -1;
@@ -12,7 +12,7 @@ public class TPNativePlayerRendererType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerRendererType
  * JD-Core Version:    0.7.0.1
  */

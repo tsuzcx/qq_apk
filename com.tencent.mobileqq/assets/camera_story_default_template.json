@@ -4,186 +4,30 @@
         {
             "id": "10000",
             "name": "热门",
-            "thumbUrl": "http://www.baidu.com",
+            "thumbUrl": "https://www.baidu.com",
             "materials": [
-                {
-                    "id": "video_baisemaoerduo1",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1Android.zip",
-                    "packageMd5": "e22e4483fb0591ed97cd30e3c9f8267e"
-                },
-                {
-                    "id": "video_lovehunsha",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_lovehunsha.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_lovehunshaAndroid.zip",
-                    "packageMd5": "6d8b6dd6114673bc492b8d73509a2ae9"
-                },
-                {
-                    "id": "video_zhuzhuyanjing",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjing.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjingAndroid.zip",
-                    "packageMd5": "0b2e7b1d592619582030688ff7042fca"
-                },
-                {
-                    "id": "video_liuhaifadai",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_liuhaifadai.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_liuhaifadaiAndroid.zip",
-                    "packageMd5": "7236e579a1bfce2b57a472722b9a5175"
-                },
-                {
-                    "id": "video_maoerweiba",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_maoerweiba.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_maoerweibaAndroid.zip",
-                    "packageMd5": "5badf9435c7d2c3dfedae61d526e6d3f"
-                }
+              {
+                "id": "video_baisemaoerduo",
+                "packageMd5": "960724282f3fb888b4fa7f1ccdcb8e37",
+                "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo.png",
+                "packageUrl": "https://downv6.qq.com/shadow_qqcamera/AECameraDefaultMotionItem/video_baisemaoerduo_1228.zip"
+              }
             ]
         },
-        {
-            "id": "10100",
-            "name": "装饰",
-            "thumbUrl": "http://www.baidu.com",
-            "materials": [
-                {
-                    "id": "video_zhuzhuyanjing",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjing.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_zhuzhuyanjingAndroid.zip",
-                    "packageMd5": "0b2e7b1d592619582030688ff7042fca"
+      {
+        "id": "12020",
+        "name": "特效",
+        "thumbUrl": "https://www.baidu.com",
+        "materials": [
+          {
+                "additionalFields": {
+                  "showEntry": "circleCamera"
                 },
-                {
-                    "id": "video_lovehunsha",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_lovehunsha.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_lovehunshaAndroid.zip",
-                    "packageMd5": "6d8b6dd6114673bc492b8d73509a2ae9"
-                },
-                {
-                    "id": "video_heiseemo",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_heiseemo.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_heiseemoAndroid.zip",
-                    "packageMd5": "86122baccee7328453d5784e13bf6b89"
-                },
-                {
-                    "id": "video_baisemaoerduo1",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo1Android.zip",
-                    "packageMd5": "e22e4483fb0591ed97cd30e3c9f8267e"
-                },
-                {
-                    "id": "video_maoerweiba",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_maoerweiba.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_maoerweibaAndroid.zip",
-                    "packageMd5": "5badf9435c7d2c3dfedae61d526e6d3f"
-                }
-            ]
-        },
-        {
-            "id": "10200",
-            "name": "表情包",
-            "thumbUrl": "http://www.baidu.com",
-            "materials": [
-                {
-                    "id": "video_wenzidongman2",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_wenzidongman2.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_wenzidongman2Android.zip",
-                    "packageMd5": "c27557342d06798eed7614ea849885a6"
-                },
-                {
-                    "id": "video_wenziyinyue",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_wenziyinyue.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_wenziyinyueAndroid.zip",
-                    "packageMd5": "b3a88668466b649936a66c45305d68fc"
-                },
-                {
-                    "id": "video_bad",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_bad.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_badAndroid.zip",
-                    "packageMd5": "585c9d986f74daa15c7a0bc28c918f8e"
-                },
-                {
-                    "id": "video_peifusanlian1",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_peifusanlian1.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_peifusanlian1Android.zip",
-                    "packageMd5": "b615031fc71e35c67e5e915317e7eb63"
-                },
-                {
-                    "id": "video_fengkuangdacall",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_fengkuangdacall.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_fengkuangdacallAndroid.zip",
-                    "packageMd5": "ea46cd3fc470bb19a05ac3c25e5c9fb8"
-                }
-            ]
-        },
-        {
-            "id": "10500",
-            "name": "QQ头像",
-            "thumbUrl": "http://www.baidu.com",
-            "materials": [
-                {
-                    "id": "video_qqkatongSL5",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL5.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL5Android.zip",
-                    "packageMd5": "763a7a643c8b4133d454fb75c72ed537"
-                },
-                {
-                    "id": "video_qqkatongSL6",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL6.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL6Android.zip",
-                    "packageMd5": "b2a41199ef41973fb9e5c7b2b0284b22"
-                },
-                {
-                    "id": "video_qqkatongSL4",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL4.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL4Android.zip",
-                    "packageMd5": "a8ca23418bfa8adabe2b7b0c03ad41e7"
-                },
-                {
-                    "id": "video_qqkatongSL1",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL1.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL1Android.zip",
-                    "packageMd5": "df12f2081400ebe7205f541fd67dd578"
-                },
-                {
-                    "id": "video_qqkatongSL2",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL2.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_qqkatongSL2Android.zip",
-                    "packageMd5": "aa1a2754418b70d7027a97f0191f53c1"
-                }
-            ]
-        },
-        {
-            "id": "10300",
-            "name": "趣味",
-            "thumbUrl": "http://www.baidu.com",
-            "materials": [
-                {
-                    "id": "video_houzi",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_houzi.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_houziAndroid.zip",
-                    "packageMd5": "0082076c044292d3b4b3be81e0b44ec5"
-                },
-                {
-                    "id": "video_dazuiba",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_dazuiba.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_dazuibaAndroid.zip",
-                    "packageMd5": "b97e8c00b550cea79c0096fa898de178"
-                },
-                {
-                    "id": "video_chongtianbian",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_chongtianbian.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_chongtianbianAndroid.zip",
-                    "packageMd5": "48b0e48e398441ae3cd1f494a873dab3"
-                },
-                {
-                    "id": "video_egaoshuangwanzi",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_egaoshuangwanzi.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_egaoshuangwanziAndroid.zip",
-                    "packageMd5": "3b7ae70f3287b9cc01c014f6a8075dfb"
-                },
-                {
-                    "id": "video_mawei",
-                    "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_mawei.png",
-                    "packageUrl": "http://res.tu.qq.com/qqpitu/materials/video_maweiAndroid.zip",
-                    "packageMd5": "d39522d384cd1626a97cfa2fad6924ca"
-                }
+            "id": "video_baisemaoerduo_circle",
+            "thumbUrl": "http://res.tu.qq.com/qqpitu/materials/video_baisemaoerduo.png",
+            "packageUrl": "https://downv6.qq.com/shadow_qqcamera/AECameraDefaultMotionItem/video_baisemaoerduo_circle_1228.zip",
+            "packageMd5": "84b7605faf3b9606fccd2253cf50c366"
+              }
             ]
         }
     ]

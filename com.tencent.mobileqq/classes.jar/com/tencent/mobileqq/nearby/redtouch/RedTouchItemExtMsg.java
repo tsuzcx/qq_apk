@@ -14,16 +14,25 @@ public class RedTouchItemExtMsg
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append("seq").append(":").append(this.seq).append(" ");
-    localStringBuilder.append("time").append(":").append(this.time).append(" ");
-    localStringBuilder.append("bytesData").append(":").append(this.bytesData).append(" ");
+    localStringBuilder.append("seq");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.seq);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("time");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("bytesData");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bytesData);
+    localStringBuilder.append(" ");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg
  * JD-Core Version:    0.7.0.1
  */

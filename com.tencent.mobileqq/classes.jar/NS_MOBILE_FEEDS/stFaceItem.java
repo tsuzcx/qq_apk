@@ -4,31 +4,32 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stFaceItem
   extends JceStruct
 {
-  static int cache_quanstate = 0;
+  static int cache_quanstate;
   static ArrayList<FaceRecommendInfo> cache_recommend_infos = new ArrayList();
   public boolean FromSys = true;
   public String faceUrl = "";
   public String faceid = "";
   public String groupid = "";
-  public long h;
-  public boolean is_recommend;
-  public long opertime;
+  public long h = 0L;
+  public boolean is_recommend = false;
+  public long opertime = 0L;
   public String photo_id = "";
   public String quanid = "";
-  public int quanstate;
-  public ArrayList<FaceRecommendInfo> recommend_infos;
+  public int quanstate = 0;
+  public ArrayList<FaceRecommendInfo> recommend_infos = null;
   public String target_groupid = "";
   public String targetnick = "";
-  public long targetuin;
-  public long w;
+  public long targetuin = 0L;
+  public long w = 0L;
   public String writernick = "";
-  public long writeruin;
-  public long x;
-  public long y;
+  public long writeruin = 0L;
+  public long x = 0L;
+  public long y = 0L;
   
   static
   {
@@ -93,39 +94,47 @@ public final class stFaceItem
     paramJceOutputStream.write(this.h, 4);
     paramJceOutputStream.write(this.quanstate, 5);
     paramJceOutputStream.write(this.opertime, 6);
-    if (this.faceid != null) {
-      paramJceOutputStream.write(this.faceid, 7);
+    Object localObject = this.faceid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.quanid != null) {
-      paramJceOutputStream.write(this.quanid, 8);
+    localObject = this.quanid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.targetuin, 9);
-    if (this.targetnick != null) {
-      paramJceOutputStream.write(this.targetnick, 10);
+    localObject = this.targetnick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.writeruin, 11);
-    if (this.writernick != null) {
-      paramJceOutputStream.write(this.writernick, 12);
+    localObject = this.writernick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.faceUrl != null) {
-      paramJceOutputStream.write(this.faceUrl, 13);
+    localObject = this.faceUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.FromSys, 14);
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 15);
+    localObject = this.groupid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.recommend_infos != null) {
-      paramJceOutputStream.write(this.recommend_infos, 16);
+    localObject = this.recommend_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 16);
     }
-    if (this.target_groupid != null) {
-      paramJceOutputStream.write(this.target_groupid, 17);
+    localObject = this.target_groupid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
     paramJceOutputStream.write(this.is_recommend, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.stFaceItem
  * JD-Core Version:    0.7.0.1
  */

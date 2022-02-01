@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class VipOpenInfo
   extends JceStruct
 {
-  public boolean bOpen;
-  public int iVipFlag;
+  public boolean bOpen = false;
+  public int iVipFlag = 0;
   public int iVipLevel = -1;
   public int iVipType = -1;
-  public long lNameplateId;
+  public long lNameplateId = 0L;
   
   public VipOpenInfo() {}
   
@@ -44,7 +44,7 @@ public final class VipOpenInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.VipOpenInfo
  * JD-Core Version:    0.7.0.1
  */

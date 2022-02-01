@@ -12,7 +12,9 @@ final class jk$1
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(paramRunnable, "AsyncTask High #" + this.b.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder("AsyncTask High #");
+    localStringBuilder.append(this.b.getAndIncrement());
+    paramRunnable = new Thread(paramRunnable, localStringBuilder.toString());
     paramRunnable.setPriority(6);
     return paramRunnable;
   }

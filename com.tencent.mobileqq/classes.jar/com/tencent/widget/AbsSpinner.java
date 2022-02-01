@@ -10,31 +10,28 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
-import bhuc;
-import bhuv;
-import bica;
 
 public abstract class AbsSpinner
   extends AdapterView<SpinnerAdapter>
 {
-  private static int jdField_a_of_type_Int = -2;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
-  final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  SpinnerAdapter jdField_a_of_type_AndroidWidgetSpinnerAdapter;
-  final bhuc jdField_a_of_type_Bhuc = new bhuc(this);
-  int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  private static int ABSSPINNER_ENTRIES = -2;
+  SpinnerAdapter mAdapter;
+  boolean mBlockLayoutRequests;
+  private DataSetObserver mDataSetObserver;
+  int mHeightMeasureSpec;
+  final AbsSpinner.RecycleBin mRecycler = new AbsSpinner.RecycleBin(this);
+  int mSelectionBottomPadding = 0;
+  int mSelectionLeftPadding = 0;
+  int mSelectionRightPadding = 0;
+  int mSelectionTopPadding = 0;
+  final Rect mSpinnerPadding = new Rect();
+  private Rect mTouchFrame;
+  int mWidthMeasureSpec;
   
   public AbsSpinner(Context paramContext)
   {
     super(paramContext);
-    a();
+    initAbsSpinner();
   }
   
   public AbsSpinner(Context paramContext, AttributeSet paramAttributeSet)
@@ -50,61 +47,231 @@ public abstract class AbsSpinner
   public AbsSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    initAbsSpinner();
     if (paramBoolean)
     {
-      if (jdField_a_of_type_Int == -2) {
-        jdField_a_of_type_Int = getStyleableValue("AbsSpinner_entries");
+      if (ABSSPINNER_ENTRIES == -2) {
+        ABSSPINNER_ENTRIES = getStyleableValue("AbsSpinner_entries");
       }
-      paramAttributeSet = new bica(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("AbsSpinner"), paramInt, 0));
-      CharSequence[] arrayOfCharSequence = paramAttributeSet.a(jdField_a_of_type_Int);
+      paramAttributeSet = new TypedArrayWarpper(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("AbsSpinner"), paramInt, 0));
+      CharSequence[] arrayOfCharSequence = paramAttributeSet.getTextArray(ABSSPINNER_ENTRIES);
       if (arrayOfCharSequence != null)
       {
         paramContext = new ArrayAdapter(paramContext, 17367048, arrayOfCharSequence);
         paramContext.setDropDownViewResource(17367049);
         setAdapter(paramContext);
       }
-      paramAttributeSet.a();
+      paramAttributeSet.recycle();
     }
   }
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  public static int doResolveSizeAndState(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt2);
-    paramInt2 = paramInt1;
-    switch (j)
+    if (j != -2147483648)
     {
-    default: 
       paramInt2 = paramInt1;
-    }
-    for (;;)
-    {
-      return 0xFF000000 & paramInt3 | paramInt2;
-      paramInt2 = paramInt1;
-      if (i < paramInt1)
-      {
-        paramInt2 = i | 0x1000000;
-        continue;
-        paramInt2 = i;
+      if (j != 0) {
+        if (j != 1073741824) {
+          paramInt2 = paramInt1;
+        } else {
+          paramInt2 = i;
+        }
       }
     }
+    else
+    {
+      paramInt2 = paramInt1;
+      if (i < paramInt1) {
+        paramInt2 = 0x1000000 | i;
+      }
+    }
+    return paramInt2 | 0xFF000000 & paramInt3;
   }
   
-  private void a()
+  private void initAbsSpinner()
   {
     setFocusable(true);
     setWillNotDraw(false);
   }
   
-  public int a(int paramInt1, int paramInt2)
+  protected AdapterView.AdapterDataSetObserver createObserver()
   {
-    Object localObject2 = this.jdField_b_of_type_AndroidGraphicsRect;
+    return new AdapterView.AdapterDataSetObserver(this);
+  }
+  
+  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  {
+    return new ViewGroup.LayoutParams(-1, -2);
+  }
+  
+  public SpinnerAdapter getAdapter()
+  {
+    return this.mAdapter;
+  }
+  
+  int getChildHeight(View paramView)
+  {
+    return paramView.getMeasuredHeight();
+  }
+  
+  int getChildWidth(View paramView)
+  {
+    return paramView.getMeasuredWidth();
+  }
+  
+  public int getCount()
+  {
+    return this.mItemCount;
+  }
+  
+  public View getSelectedView()
+  {
+    if ((this.mItemCount > 0) && (this.mSelectedPosition >= 0)) {
+      return getChildAt(this.mSelectedPosition - this.mFirstPosition);
+    }
+    return null;
+  }
+  
+  abstract void layout(int paramInt, boolean paramBoolean);
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    int n = View.MeasureSpec.getMode(paramInt1);
+    Object localObject = this.mSpinnerPadding;
+    int k = getPaddingLeft();
+    int j = this.mSelectionLeftPadding;
+    int i = j;
+    if (k > j) {
+      i = getPaddingLeft();
+    }
+    ((Rect)localObject).left = i;
+    localObject = this.mSpinnerPadding;
+    k = getPaddingTop();
+    j = this.mSelectionTopPadding;
+    i = j;
+    if (k > j) {
+      i = getPaddingTop();
+    }
+    ((Rect)localObject).top = i;
+    localObject = this.mSpinnerPadding;
+    k = getPaddingRight();
+    j = this.mSelectionRightPadding;
+    i = j;
+    if (k > j) {
+      i = getPaddingRight();
+    }
+    ((Rect)localObject).right = i;
+    localObject = this.mSpinnerPadding;
+    k = getPaddingBottom();
+    j = this.mSelectionBottomPadding;
+    i = j;
+    if (k > j) {
+      i = getPaddingBottom();
+    }
+    ((Rect)localObject).bottom = i;
+    if (this.mDataChanged) {
+      handleDataChanged();
+    }
+    i = getSelectedItemPosition();
+    k = 1;
+    if (i >= 0)
+    {
+      localObject = this.mAdapter;
+      if ((localObject != null) && (i < ((SpinnerAdapter)localObject).getCount()))
+      {
+        View localView = this.mRecycler.get(i);
+        localObject = localView;
+        if (localView == null) {
+          localObject = this.mAdapter.getView(i, null, this);
+        }
+        if (localObject != null) {
+          this.mRecycler.put(i, (View)localObject);
+        }
+        if (localObject != null)
+        {
+          if (((View)localObject).getLayoutParams() == null)
+          {
+            this.mBlockLayoutRequests = true;
+            ((View)localObject).setLayoutParams(generateDefaultLayoutParams());
+            this.mBlockLayoutRequests = false;
+          }
+          measureChild((View)localObject, paramInt1, paramInt2);
+          j = getChildHeight((View)localObject);
+          int i1 = this.mSpinnerPadding.top;
+          int i2 = this.mSpinnerPadding.bottom;
+          i = getChildWidth((View)localObject);
+          k = this.mSpinnerPadding.left;
+          m = this.mSpinnerPadding.right;
+          j = j + i1 + i2;
+          i = i + k + m;
+          k = 0;
+          break label375;
+        }
+      }
+    }
+    i = 0;
+    j = 0;
+    label375:
+    int m = i;
+    if (k != 0)
+    {
+      j = this.mSpinnerPadding.top;
+      k = this.mSpinnerPadding.bottom + j;
+      m = i;
+      j = k;
+      if (n == 0)
+      {
+        i = this.mSpinnerPadding.left;
+        m = this.mSpinnerPadding.right + i;
+        j = k;
+      }
+    }
+    i = Math.max(j, getSuggestedMinimumHeight());
+    j = Math.max(m, getSuggestedMinimumWidth());
+    i = doResolveSizeAndState(i, paramInt2, 0);
+    setMeasuredDimension(doResolveSizeAndState(j, paramInt1, 0), i);
+    this.mHeightMeasureSpec = paramInt2;
+    this.mWidthMeasureSpec = paramInt1;
+  }
+  
+  public void onRestoreInstanceState(Parcelable paramParcelable)
+  {
+    paramParcelable = (AbsSpinner.SavedState)paramParcelable;
+    super.onRestoreInstanceState(paramParcelable.getSuperState());
+    if (paramParcelable.selectedId >= 0L)
+    {
+      this.mDataChanged = true;
+      this.mNeedSync = true;
+      this.mSyncRowId = paramParcelable.selectedId;
+      this.mSyncPosition = paramParcelable.position;
+      this.mSyncMode = 0;
+      requestLayout();
+    }
+  }
+  
+  public Parcelable onSaveInstanceState()
+  {
+    AbsSpinner.SavedState localSavedState = new AbsSpinner.SavedState(super.onSaveInstanceState());
+    localSavedState.selectedId = getSelectedItemId();
+    if (localSavedState.selectedId >= 0L)
+    {
+      localSavedState.position = getSelectedItemPosition();
+      return localSavedState;
+    }
+    localSavedState.position = -1;
+    return localSavedState;
+  }
+  
+  public int pointToPosition(int paramInt1, int paramInt2)
+  {
+    Object localObject2 = this.mTouchFrame;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-      localObject1 = this.jdField_b_of_type_AndroidGraphicsRect;
+      this.mTouchFrame = new Rect();
+      localObject1 = this.mTouchFrame;
     }
     int i = getChildCount() - 1;
     while (i >= 0)
@@ -122,39 +289,27 @@ public abstract class AbsSpinner
     return -1;
   }
   
-  int a(View paramView)
+  void recycleAllViews()
   {
-    return paramView.getMeasuredHeight();
-  }
-  
-  public SpinnerAdapter a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetSpinnerAdapter;
-  }
-  
-  protected bhuv a()
-  {
-    return new bhuv(this);
-  }
-  
-  void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt != this.mOldSelectedPosition)
+    int j = getChildCount();
+    AbsSpinner.RecycleBin localRecycleBin = this.mRecycler;
+    int k = this.mFirstPosition;
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_c_of_type_Boolean = true;
-      int i = this.mSelectedPosition;
-      setNextSelectedPositionInt(paramInt);
-      b(paramInt - i, paramBoolean);
-      this.jdField_c_of_type_Boolean = false;
+      localRecycleBin.put(k + i, getChildAt(i));
+      i += 1;
     }
   }
   
-  int b(View paramView)
+  public void requestLayout()
   {
-    return paramView.getMeasuredWidth();
+    if (!this.mBlockLayoutRequests) {
+      super.requestLayout();
+    }
   }
   
-  void b()
+  void resetList()
   {
     this.mDataChanged = false;
     this.mNeedSync = false;
@@ -166,192 +321,25 @@ public abstract class AbsSpinner
     invalidate();
   }
   
-  abstract void b(int paramInt, boolean paramBoolean);
-  
-  void c()
-  {
-    int j = getChildCount();
-    bhuc localbhuc = this.jdField_a_of_type_Bhuc;
-    int k = this.mFirstPosition;
-    int i = 0;
-    while (i < j)
-    {
-      localbhuc.a(k + i, getChildAt(i));
-      i += 1;
-    }
-  }
-  
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
-  {
-    return new ViewGroup.LayoutParams(-1, -2);
-  }
-  
-  public int getCount()
-  {
-    return this.mItemCount;
-  }
-  
-  public View getSelectedView()
-  {
-    if ((this.mItemCount > 0) && (this.mSelectedPosition >= 0)) {
-      return getChildAt(this.mSelectedPosition - this.mFirstPosition);
-    }
-    return null;
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    int n = View.MeasureSpec.getMode(paramInt1);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-    int i;
-    label56:
-    label84:
-    label112:
-    int j;
-    int k;
-    if (this.mPaddingLeft > this.d)
-    {
-      i = this.mPaddingLeft;
-      ((Rect)localObject).left = i;
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      if (this.mPaddingTop <= this.e) {
-        break label413;
-      }
-      i = this.mPaddingTop;
-      ((Rect)localObject).top = i;
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      if (this.mPaddingRight <= this.f) {
-        break label421;
-      }
-      i = this.mPaddingRight;
-      ((Rect)localObject).right = i;
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      if (this.mPaddingBottom <= this.g) {
-        break label429;
-      }
-      i = this.mPaddingBottom;
-      ((Rect)localObject).bottom = i;
-      if (this.mDataChanged) {
-        handleDataChanged();
-      }
-      i = getSelectedItemPosition();
-      if ((i < 0) || (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter == null) || (i >= this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getCount())) {
-        break label437;
-      }
-      View localView = this.jdField_a_of_type_Bhuc.a(i);
-      localObject = localView;
-      if (localView == null) {
-        localObject = this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getView(i, null, this);
-      }
-      if (localObject != null) {
-        this.jdField_a_of_type_Bhuc.a(i, (View)localObject);
-      }
-      if (localObject == null) {
-        break label437;
-      }
-      if (((View)localObject).getLayoutParams() == null)
-      {
-        this.jdField_c_of_type_Boolean = true;
-        ((View)localObject).setLayoutParams(generateDefaultLayoutParams());
-        this.jdField_c_of_type_Boolean = false;
-      }
-      measureChild((View)localObject, paramInt1, paramInt2);
-      j = a((View)localObject) + this.jdField_a_of_type_AndroidGraphicsRect.top + this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      i = b((View)localObject) + this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidGraphicsRect.right;
-      k = 0;
-    }
-    for (;;)
-    {
-      int m = i;
-      if (k != 0)
-      {
-        k = this.jdField_a_of_type_AndroidGraphicsRect.top + this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-        m = i;
-        j = k;
-        if (n == 0)
-        {
-          m = this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidGraphicsRect.right;
-          j = k;
-        }
-      }
-      i = Math.max(j, getSuggestedMinimumHeight());
-      j = Math.max(m, getSuggestedMinimumWidth());
-      i = a(i, paramInt2, 0);
-      setMeasuredDimension(a(j, paramInt1, 0), i);
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_c_of_type_Int = paramInt1;
-      return;
-      i = this.d;
-      break;
-      label413:
-      i = this.e;
-      break label56;
-      label421:
-      i = this.f;
-      break label84;
-      label429:
-      i = this.g;
-      break label112;
-      label437:
-      k = 1;
-      i = 0;
-      j = 0;
-    }
-  }
-  
-  public void onRestoreInstanceState(Parcelable paramParcelable)
-  {
-    paramParcelable = (AbsSpinner.SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.getSuperState());
-    if (paramParcelable.jdField_a_of_type_Long >= 0L)
-    {
-      this.mDataChanged = true;
-      this.mNeedSync = true;
-      this.mSyncRowId = paramParcelable.jdField_a_of_type_Long;
-      this.mSyncPosition = paramParcelable.jdField_a_of_type_Int;
-      this.mSyncMode = 0;
-      requestLayout();
-    }
-  }
-  
-  public Parcelable onSaveInstanceState()
-  {
-    AbsSpinner.SavedState localSavedState = new AbsSpinner.SavedState(super.onSaveInstanceState());
-    localSavedState.jdField_a_of_type_Long = getSelectedItemId();
-    if (localSavedState.jdField_a_of_type_Long >= 0L)
-    {
-      localSavedState.jdField_a_of_type_Int = getSelectedItemPosition();
-      return localSavedState;
-    }
-    localSavedState.jdField_a_of_type_Int = -1;
-    return localSavedState;
-  }
-  
-  public void requestLayout()
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      super.requestLayout();
-    }
-  }
-  
   public void setAdapter(SpinnerAdapter paramSpinnerAdapter)
   {
-    int i = -1;
-    if (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter != null)
+    SpinnerAdapter localSpinnerAdapter = this.mAdapter;
+    if (localSpinnerAdapter != null)
     {
-      this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-      b();
+      localSpinnerAdapter.unregisterDataSetObserver(this.mDataSetObserver);
+      resetList();
     }
-    this.jdField_a_of_type_AndroidWidgetSpinnerAdapter = paramSpinnerAdapter;
+    this.mAdapter = paramSpinnerAdapter;
+    int i = -1;
     this.mOldSelectedPosition = -1;
     this.mOldSelectedRowId = -9223372036854775808L;
-    if (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter != null)
+    if (this.mAdapter != null)
     {
       this.mOldItemCount = this.mItemCount;
-      this.mItemCount = this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getCount();
+      this.mItemCount = this.mAdapter.getCount();
       checkFocus();
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = a();
-      this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      this.mDataSetObserver = createObserver();
+      this.mAdapter.registerDataSetObserver(this.mDataSetObserver);
       if (this.mItemCount > 0) {
         i = 0;
       }
@@ -361,14 +349,13 @@ public abstract class AbsSpinner
         checkSelectionChanged();
       }
     }
-    for (;;)
+    else
     {
-      requestLayout();
-      return;
       checkFocus();
-      b();
+      resetList();
       checkSelectionChanged();
     }
+    requestLayout();
   }
   
   public void setSelection(int paramInt)
@@ -380,17 +367,30 @@ public abstract class AbsSpinner
   
   public void setSelection(int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.mFirstPosition <= paramInt) && (paramInt <= this.mFirstPosition + getChildCount() - 1)) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    boolean bool = true;
+    if ((paramBoolean) && (this.mFirstPosition <= paramInt) && (paramInt <= this.mFirstPosition + getChildCount() - 1)) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
+    }
+    setSelectionInt(paramInt, paramBoolean);
+  }
+  
+  void setSelectionInt(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt != this.mOldSelectedPosition)
     {
-      a(paramInt, paramBoolean);
-      return;
+      this.mBlockLayoutRequests = true;
+      int i = this.mSelectedPosition;
+      setNextSelectedPositionInt(paramInt);
+      layout(paramInt - i, paramBoolean);
+      this.mBlockLayoutRequests = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner
  * JD-Core Version:    0.7.0.1
  */

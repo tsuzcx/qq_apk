@@ -1,10 +1,34 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.c;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
+import org.json.JSONObject;
 
-public abstract interface m
+public final class m
+  extends c
 {
-  public abstract void q(View paramView, int paramInt1, int paramInt2);
+  private static final int CTRL_INDEX = 448;
+  public static final String NAME = "removeScrollView";
+  
+  public final int V(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(137538);
+    int i = paramJSONObject.getInt("viewId");
+    AppMethodBeat.o(137538);
+    return i;
+  }
+  
+  public final boolean b(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(137539);
+    paramh.ic(paramJSONObject.optBoolean("independent", false)).Aj(paramInt);
+    boolean bool = super.b(paramh, paramInt, paramView, paramJSONObject);
+    AppMethodBeat.o(137539);
+    return bool;
+  }
 }
 
 

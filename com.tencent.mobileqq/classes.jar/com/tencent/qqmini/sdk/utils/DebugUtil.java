@@ -2,12 +2,15 @@ package com.tencent.qqmini.sdk.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 
+@MiniKeep
 public class DebugUtil
 {
   public static boolean getDebugEnabled(MiniAppInfo paramMiniAppInfo)
@@ -15,7 +18,11 @@ public class DebugUtil
     if (paramMiniAppInfo == null) {
       return false;
     }
-    return StorageUtil.getPreference().getBoolean(paramMiniAppInfo.appId + "_debug", false);
+    SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append("_debug");
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
   public static String getPrintableStackTrace(Throwable paramThrowable)
@@ -48,18 +55,19 @@ public class DebugUtil
       localStringBuilder.append("\n");
       i += 1;
     }
-    if ((paramThrowable instanceof InvocationTargetException)) {}
-    for (paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();; paramThrowable = paramThrowable.getCause())
-    {
-      if (paramThrowable != null)
-      {
-        localStringBuilder.append("caused by: ");
-        localStringBuilder.append(paramThrowable.toString());
-        localStringBuilder.append("\n");
-        localStringBuilder.append(getPrintableStackTrace(paramThrowable, true));
-      }
-      return localStringBuilder.toString();
+    if ((paramThrowable instanceof InvocationTargetException)) {
+      paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();
+    } else {
+      paramThrowable = paramThrowable.getCause();
     }
+    if (paramThrowable != null)
+    {
+      localStringBuilder.append("caused by: ");
+      localStringBuilder.append(paramThrowable.toString());
+      localStringBuilder.append("\n");
+      localStringBuilder.append(getPrintableStackTrace(paramThrowable, true));
+    }
+    return localStringBuilder.toString();
   }
   
   public static String getStackTrace()
@@ -88,12 +96,16 @@ public class DebugUtil
     if (paramMiniAppInfo == null) {
       return;
     }
-    StorageUtil.getPreference().edit().putBoolean(paramMiniAppInfo.appId + "_debug", paramBoolean).apply();
+    SharedPreferences.Editor localEditor = StorageUtil.getPreference().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append("_debug");
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.DebugUtil
  * JD-Core Version:    0.7.0.1
  */

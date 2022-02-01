@@ -5,23 +5,23 @@ import com.google.android.gms.wearable.m;
 public final class k
   implements m
 {
-  private final String Gq;
-  private final String Ta;
+  private final String If;
+  private final String UP;
   
   public k(m paramm)
   {
-    this.Gq = paramm.getId();
-    this.Ta = paramm.kw();
+    this.If = paramm.getId();
+    this.UP = paramm.kF();
   }
   
   public final String getId()
   {
-    return this.Gq;
+    return this.If;
   }
   
-  public final String kw()
+  public final String kF()
   {
-    return this.Ta;
+    return this.UP;
   }
   
   public final String toString()
@@ -30,17 +30,17 @@ public final class k
     localStringBuilder.append("DataItemAssetEntity[");
     localStringBuilder.append("@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    if (this.Gq == null) {
+    if (this.If == null) {
       localStringBuilder.append(",noid");
     }
     for (;;)
     {
       localStringBuilder.append(", key=");
-      localStringBuilder.append(this.Ta);
+      localStringBuilder.append(this.UP);
       localStringBuilder.append("]");
       return localStringBuilder.toString();
       localStringBuilder.append(",");
-      localStringBuilder.append(this.Gq);
+      localStringBuilder.append(this.If);
     }
   }
 }

@@ -21,29 +21,29 @@ import java.util.concurrent.atomic.AtomicReference;
 public abstract class k<R extends w>
   extends t<R>
 {
-  static final ThreadLocal<Boolean> Mr = new ThreadLocal() {};
-  private Status HS;
-  private final CountDownLatch IL = new CountDownLatch(1);
-  private volatile boolean MA;
-  private boolean MB;
-  private boolean MC;
-  private an MD;
-  private volatile bp<R> ME;
-  private boolean MF = false;
-  private final Object Ms = new Object();
-  protected final l<R> Mt;
-  protected final WeakReference<p> Mu;
-  private final ArrayList<u> Mv = new ArrayList();
-  private x<? super R> Mw;
-  private final AtomicReference<bs> Mx = new AtomicReference();
-  private R My;
-  private m Mz;
+  static final ThreadLocal<Boolean> Og = new ThreadLocal() {};
+  private Status JH;
+  private final CountDownLatch KA = new CountDownLatch(1);
+  private final Object Oh = new Object();
+  protected final l<R> Oi;
+  protected final WeakReference<p> Oj;
+  private final ArrayList<u> Ok = new ArrayList();
+  private x<? super R> Ol;
+  private final AtomicReference<bs> Om = new AtomicReference();
+  private R On;
+  private m Oo;
+  private volatile boolean Op;
+  private boolean Oq;
+  private boolean Or;
+  private an Os;
+  private volatile bp<R> Ot;
+  private boolean Ou = false;
   
   @Deprecated
   k()
   {
-    this.Mt = new l(Looper.getMainLooper());
-    this.Mu = new WeakReference(null);
+    this.Oi = new l(Looper.getMainLooper());
+    this.Oj = new WeakReference(null);
   }
   
   protected k(p paramp)
@@ -51,45 +51,45 @@ public abstract class k<R extends w>
     if (paramp != null) {}
     for (Looper localLooper = paramp.getLooper();; localLooper = Looper.getMainLooper())
     {
-      this.Mt = new l(localLooper);
-      this.Mu = new WeakReference(paramp);
+      this.Oi = new l(localLooper);
+      this.Oj = new WeakReference(paramp);
       return;
     }
   }
   
-  private boolean am()
+  private boolean aB()
   {
-    return this.IL.getCount() == 0L;
+    return this.KA.getCount() == 0L;
   }
   
   private void c(R paramR)
   {
-    this.My = paramR;
-    this.MD = null;
-    this.IL.countDown();
-    this.HS = this.My.gC();
-    if (this.MB) {
-      this.Mw = null;
+    this.On = paramR;
+    this.Os = null;
+    this.KA.countDown();
+    this.JH = this.On.gM();
+    if (this.Oq) {
+      this.Ol = null;
     }
     for (;;)
     {
-      paramR = this.Mv.iterator();
+      paramR = this.Ok.iterator();
       while (paramR.hasNext()) {
-        ((u)paramR.next()).gB();
+        ((u)paramR.next()).gL();
       }
-      if (this.Mw == null)
+      if (this.Ol == null)
       {
-        if ((this.My instanceof v)) {
-          this.Mz = new m(this, (byte)0);
+        if ((this.On instanceof v)) {
+          this.Oo = new m(this, (byte)0);
         }
       }
       else
       {
-        this.Mt.removeMessages(2);
-        this.Mt.a(this.Mw, ii());
+        this.Oi.removeMessages(2);
+        this.Oi.a(this.Ol, iq());
       }
     }
-    this.Mv.clear();
+    this.Ok.clear();
   }
   
   public static void d(w paramw)
@@ -107,20 +107,20 @@ public abstract class k<R extends w>
     }
   }
   
-  private R ii()
+  private R iq()
   {
     boolean bool = true;
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if (!this.MA)
+      if (!this.Op)
       {
         d.a(bool, "Result has already been consumed.");
-        d.a(am(), "Result is not ready.");
-        w localw = this.My;
-        this.My = null;
-        this.Mw = null;
-        this.MA = true;
-        ??? = (bs)this.Mx.getAndSet(null);
+        d.a(aB(), "Result is not ready.");
+        w localw = this.On;
+        this.On = null;
+        this.Ol = null;
+        this.Op = true;
+        ??? = (bs)this.Om.getAndSet(null);
         if (??? != null) {
           ((bs)???).c(this);
         }
@@ -132,9 +132,9 @@ public abstract class k<R extends w>
   
   private boolean isCanceled()
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      boolean bool = this.MB;
+      boolean bool = this.Oq;
       return bool;
     }
   }
@@ -149,12 +149,12 @@ public abstract class k<R extends w>
     for (;;)
     {
       d.a(bool1, "await must not be called on the UI thread when time is greater than zero.");
-      if (!this.MA)
+      if (!this.Op)
       {
         bool1 = true;
         label38:
         d.a(bool1, "Result has already been consumed.");
-        if (this.ME != null) {
+        if (this.Ot != null) {
           break label108;
         }
         bool1 = bool2;
@@ -162,11 +162,11 @@ public abstract class k<R extends w>
       }
       try
       {
-        if (!this.IL.await(paramLong, paramTimeUnit)) {
-          b(Status.HO);
+        if (!this.KA.await(paramLong, paramTimeUnit)) {
+          b(Status.JD);
         }
-        d.a(am(), "Result is not ready.");
-        return ii();
+        d.a(aB(), "Result is not ready.");
+        return iq();
         bool1 = false;
         continue;
         bool1 = false;
@@ -178,7 +178,7 @@ public abstract class k<R extends w>
       {
         for (;;)
         {
-          b(Status.HM);
+          b(Status.JB);
         }
       }
     }
@@ -187,71 +187,66 @@ public abstract class k<R extends w>
   public final void a(u paramu)
   {
     d.b(true, "Callback cannot be null.");
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if (am())
+      if (aB())
       {
-        paramu.gB();
+        paramu.gL();
         return;
       }
-      this.Mv.add(paramu);
+      this.Ok.add(paramu);
     }
   }
   
   public final void a(x<? super R> paramx)
   {
     boolean bool2 = true;
-    Object localObject = this.Ms;
-    if (paramx == null) {}
-    try
-    {
-      this.Mw = null;
-      return;
-    }
-    finally {}
-    if (!this.MA)
-    {
-      bool1 = true;
-      d.a(bool1, "Result has already been consumed.");
-      if (this.ME != null) {
-        break label77;
-      }
-    }
-    label77:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      d.a(bool1, "Cannot set callbacks if then() has been called.");
-      if (!isCanceled()) {
-        break label82;
-      }
-      return;
-      bool1 = false;
-      break;
-    }
-    label82:
-    if (am()) {
-      this.Mt.a(paramx, ii());
-    }
     for (;;)
     {
-      return;
-      this.Mw = paramx;
+      synchronized (this.Oh)
+      {
+        if (this.Op) {
+          break label90;
+        }
+        bool1 = true;
+        d.a(bool1, "Result has already been consumed.");
+        if (this.Ot != null) {
+          break label95;
+        }
+        bool1 = bool2;
+        d.a(bool1, "Cannot set callbacks if then() has been called.");
+        if (isCanceled()) {
+          return;
+        }
+        if (aB())
+        {
+          this.Oi.a(paramx, iq());
+          return;
+        }
+      }
+      this.Ol = paramx;
+      continue;
+      label90:
+      boolean bool1 = false;
+      continue;
+      label95:
+      bool1 = false;
     }
   }
   
   public final void a(bs parambs)
   {
-    this.Mx.set(parambs);
+    this.Om.set(parambs);
   }
   
   public final void b(Status paramStatus)
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if (!am())
+      if (!aB())
       {
         b(c(paramStatus));
-        this.MC = true;
+        this.Or = true;
       }
       return;
     }
@@ -262,15 +257,15 @@ public abstract class k<R extends w>
     boolean bool2 = true;
     for (;;)
     {
-      synchronized (this.Ms)
+      synchronized (this.Oh)
       {
-        if ((!this.MC) && (!this.MB))
+        if ((!this.Or) && (!this.Oq))
         {
-          if ((!am()) || (!am()))
+          if ((!aB()) || (!aB()))
           {
             bool1 = true;
             d.a(bool1, "Results have already been set");
-            if (this.MA) {
+            if (this.Op) {
               break label92;
             }
             bool1 = bool2;
@@ -295,23 +290,23 @@ public abstract class k<R extends w>
   
   public final void cancel()
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if ((this.MB) || (this.MA)) {
+      if ((this.Oq) || (this.Op)) {
         return;
       }
-      d(this.My);
-      this.MB = true;
-      c(c(Status.HP));
+      d(this.On);
+      this.Oq = true;
+      c(c(Status.JE));
       return;
     }
   }
   
-  public final boolean ig()
+  public final boolean io()
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if (((p)this.Mu.get() == null) || (!this.MF)) {
+      if (((p)this.Oj.get() == null) || (!this.Ou)) {
         cancel();
       }
       boolean bool = isCanceled();
@@ -319,12 +314,12 @@ public abstract class k<R extends w>
     }
   }
   
-  public final void ih()
+  public final void ip()
   {
-    if ((this.MF) || (((Boolean)Mr.get()).booleanValue())) {}
+    if ((this.Ou) || (((Boolean)Og.get()).booleanValue())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.MF = bool;
+      this.Ou = bool;
       return;
     }
   }

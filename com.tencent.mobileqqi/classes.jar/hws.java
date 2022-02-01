@@ -1,19 +1,23 @@
-import com.tencent.widget.TCWNumberPicker.Formatter;
-import java.util.Formatter;
+import android.os.Handler;
+import com.tencent.widget.TCWNumberPicker;
 
-public final class hws
-  implements TCWNumberPicker.Formatter
+public class hws
+  implements Runnable
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  public hws(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public String a(int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    if (TCWNumberPicker.a(this.a))
+    {
+      TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) + 1);
+      TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
+    }
+    while (!TCWNumberPicker.b(this.a)) {
+      return;
+    }
+    TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) - 1);
+    TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
   }
 }
 

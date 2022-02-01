@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/baw" android:paddingTop="@dimen/bay" android:paddingBottom="@dimen/bav" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/cyu" />
+    <include layout="@layout/cyv" />
+    <include layout="@layout/cyx" />
+</LinearLayout>

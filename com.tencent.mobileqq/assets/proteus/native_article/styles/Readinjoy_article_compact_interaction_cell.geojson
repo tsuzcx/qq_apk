@@ -1,108 +1,334 @@
 {
-  "Readinjoy_article_compact_interaction_cell": {
-    "view_type": "container",
-    "direction": "vertical",
-    "height": {
-      "type": "relative",
-      "value": "33"
-    },
-    "width": {
-      "type": "relative",
-      "value": "375"
-    },
-    "subviews": [
-      {
+    "Readinjoy_article_compact_interaction_cell":{
         "view_type":"container",
-        "default_visible":"YES",
+        "direction":"horizontal",
         "layout_type":"layout_relative",
         "height":{
-          "type":"match_parent"
+            "type":"relative",
+            "value":"62"
         },
         "width":{
-          "type":"match_parent"
+            "type":"relative",
+            "value":"375"
         },
         "subviews":[
-          {
-            "view_type": "ReadInJoyLikeButton",
-            "view_id": "id_interaction_like",
-            "default_visible": "YES",
-            "event_type":"cmd_like_click",
-            "align_parent_left": "YES",
-            "align_parent_top": "YES",
-            "margin_left": "32",
-            "margin_top": "14",
-            "height": {
-              "type": "relative",
-              "value": "19"
+            {
+                "view_type":"UIView",
+                "view_id":"id_dislike",
+                "event_type":"cmd_dislike_click",
+                "default_visible":"YES",
+                "direction":"vertical",
+                "margin_left":"24",
+                "height":{
+                    "type":"match_parent"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"44"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_interaction_dislike",
+                        "default_visible":"YES",
+                        "event_type":"cmd_dislike_click",
+                        "margin_top":"12",
+                        "align_parent_center_horizontal":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "NativeArticleDislike_gray",
+                            "setDTElementID:withParams:":[
+                                "feedback_button",
+                                {
+                                    "rowkey":"$dt_rowkey",
+                                    "content_type":"5",
+                                    "dt_pgid":"1",
+                                    "eid":"feedback_button",
+                                    "actionid":"click_feedback",
+                                    "click_type":"single"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_interaction_dislike_txt",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"2",
+                        "default_visible":"YES",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"不感兴趣",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             },
-            "width": {
-              "type": "relative",
-              "value": "90"
+            {
+                "view_type":"UIView",
+                "view_id":"id_like",
+                "right_of_view":"id_dislike",
+                "direction":"vertical",
+                "event_type":"cmd_like_click",
+                "default_visible":"YES",
+                "margin_left":"34",
+                "height":{
+                    "type":"match_parent"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"32"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_interaction_like",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"12",
+                        "default_visible":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "$like_normalstate_image",
+                            "setDTElementID:withParams:":[
+                                "like_button",
+                                {
+                                    "rowkey":"$dt_rowkey",
+                                    "content_type":"5",
+                                    "dt_pgid":"1",
+                                    "eid":"like_button",
+                                    "actionid":"$dt_actionid",
+                                    "click_type":"single"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_interaction_like_txt",
+                        "align_parent_center_horizontal":"YES",
+                        "default_visible":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$interaction_like_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             },
-            "attributes": {
-              "setFrameString:": "-1",
-              "setTitle:":"$interaction_like_count",
-              "setScaleType:":"3",
-              "setInnerMargin:": "4",
-              "setImages:colors:direction:forStates:":[["$like_normalstate_image","NativeArticleLikeEnable"],["#737373","#737373"],["0","0"],["0","1"]],
-              "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
-              "setFontSizeString:":"12"
+            {
+                "view_type":"UIView",
+                "view_id":"id_coin",
+                "default_visible":"YES",
+                "right_of_view":"id_like",
+                "event_type":"cmd_coin_click",
+                "layout_type":"layout_relative",
+                "margin_left":"33",
+                "height":{
+                    "type":"match_parent"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"47"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_interaction_coin",
+                        "align_parent_center_horizontal":"YES",
+                        "default_visible":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"relative",
+                            "value":"47"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"47"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "$coin_img_status"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_interaction_coin_txt",
+                        "default_visible":"YES",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"38",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$coin_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_favourite",
+                "right_of_view":"id_coin",
+                "direction":"vertical",
+                "default_visible":"YES",
+                "margin_left":"33",
+                "event_type":"cmd_collect_click",
+                "height":{
+                    "type":"match_parent"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"32"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_interaction_favourite",
+                        "align_parent_center_horizontal":"YES",
+                        "default_visible":"YES",
+                        "margin_top":"12",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "$collect_normalstate_image"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_interaction_favourite_txt",
+                        "align_parent_center_horizontal":"YES",
+                        "default_visible":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"收藏",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_share",
+                "default_visible":"YES",
+                "right_of_view":"id_favourite",
+                "event_type":"cmd_share_click",
+                "direction":"vertical",
+                "margin_left":"40",
+                "height":{
+                    "type":"match_parent"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"32"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIButton",
+                        "view_id":"id_interaction_share",
+                        "event_type":"cmd_share_click",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"12",
+                        "default_visible":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "setImages:colors:direction:forStates:":[
+                                [
+                                    "share_bottom_icon"
+                                ],
+                                [
+                                    "#737373"
+                                ],
+                                [
+                                    "0"
+                                ],
+                                [
+                                    "0"
+                                ]
+                            ],
+                            "setDTElementID:withParams:":[
+                                "share_button",
+                                {
+                                    "rowkey":"$dt_rowkey",
+                                    "content_type":"5",
+                                    "dt_pgid":"1",
+                                    "eid":"share_button",
+                                    "actionid":"click_share",
+                                    "click_type":"single"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_interaction_share_txt",
+                        "align_parent_center_horizontal":"YES",
+                        "default_visible":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$interaction_share_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             }
-          },
-          {
-            "view_type": "UIButton",
-            "view_id": "id_interaction_dislike",
-            "default_visible": "YES",
-            "event_type":"cmd_dislike_click",
-            "align_parent_center_horizontal": "YES",
-            "margin_top": "13",
-            "height": {
-              "type": "relative",
-              "value": "20"
-            },
-            "width": {
-              "type": "relative",
-              "value": "90"
-            },
-            "attributes": {
-              "setFrameString:": "-1",
-              "setTitle:":"不喜欢",
-              "setScaleType:":"3",
-              "setInnerMargin:": "4",
-              "setImages:colors:direction:forStates:":[["NativeArticleDislike_gray"],["#737373"],["0"],["0"]],
-              "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
-              "setFontSizeString:":"12"
-            }
-          },
-          {
-            "view_type": "UIButton",
-            "view_id": "id_interaction_share",
-            "default_visible": "YES",
-            "event_type":"cmd_share_click",
-            "align_parent_right": "YES",
-            "align_parent_top": "YES",
-            "margin_right": "32",
-            "margin_top": "14",
-            "height": {
-              "type": "relative",
-              "value": "19"
-            },
-            "width": {
-              "type": "relative",
-              "value": "90"
-            },
-            "attributes": {
-              "setFrameString:": "-1",
-              "setInnerMargin:": "4",
-              "setTitle:":"分享",
-              "setScaleType:":"3",
-              "setImages:colors:direction:forStates:":[["NativeArticleShare_gray"],["#737373"],["0"],["0"]],
-              "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
-              "setFontSizeString:":"12"
-            }
-          }
         ]
-      }
-    ]
-  }
+    }
 }

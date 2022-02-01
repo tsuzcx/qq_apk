@@ -1,5 +1,13 @@
 package com.google.android.exoplayer2.f.a;
 
+import android.graphics.Color;
+import android.text.Layout.Alignment;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import com.google.android.exoplayer2.f.h;
 import com.google.android.exoplayer2.i.l;
 import com.google.android.exoplayer2.i.m;
@@ -7,91 +15,221 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class c
   extends d
 {
-  private int aUA;
-  private final m aUb;
-  private List<com.google.android.exoplayer2.f.a> aUg;
-  private List<com.google.android.exoplayer2.f.a> aUh;
-  private final l aUv;
-  private final int aUw;
-  private final c.a[] aUx;
-  private c.a aUy;
-  private b aUz;
+  private final m ddW;
+  private List<com.google.android.exoplayer2.f.a> deb;
+  private List<com.google.android.exoplayer2.f.a> dec;
+  private final l deq;
+  private final int der;
+  private final a[] det;
+  private a deu;
+  private b dev;
+  private int dew;
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(95595);
-    this.aUb = new m();
-    this.aUv = new l();
+    AppMethodBeat.i(92763);
+    this.ddW = new m();
+    this.deq = new l();
     int i = paramInt;
     if (paramInt == -1) {
       i = 1;
     }
-    this.aUw = i;
-    this.aUx = new c.a[8];
+    this.der = i;
+    this.det = new a[8];
     paramInt = 0;
     while (paramInt < 8)
     {
-      this.aUx[paramInt] = new c.a();
+      this.det[paramInt] = new a();
       paramInt += 1;
     }
-    this.aUy = this.aUx[0];
-    pP();
-    AppMethodBeat.o(95595);
+    this.deu = this.det[0];
+    TK();
+    AppMethodBeat.o(92763);
   }
   
-  private void dV(int paramInt)
+  private List<com.google.android.exoplayer2.f.a> TJ()
   {
-    AppMethodBeat.i(95601);
+    AppMethodBeat.i(92777);
+    Object localObject = new ArrayList();
+    int i = 0;
+    while (i < 8)
+    {
+      if ((!this.det[i].isEmpty()) && (this.det[i].visible)) {
+        ((List)localObject).add(this.det[i].TT());
+      }
+      i += 1;
+    }
+    Collections.sort((List)localObject);
+    localObject = Collections.unmodifiableList((List)localObject);
+    AppMethodBeat.o(92777);
+    return localObject;
+  }
+  
+  private void TK()
+  {
+    AppMethodBeat.i(92778);
+    int i = 0;
+    while (i < 8)
+    {
+      this.det[i].reset();
+      i += 1;
+    }
+    AppMethodBeat.o(92778);
+  }
+  
+  private void TR()
+  {
+    AppMethodBeat.i(92767);
+    if (this.dev == null)
+    {
+      AppMethodBeat.o(92767);
+      return;
+    }
+    TS();
+    this.dev = null;
+    AppMethodBeat.o(92767);
+  }
+  
+  private void TS()
+  {
+    AppMethodBeat.i(92768);
+    if (this.dev.currentIndex != this.dev.deW * 2 - 1)
+    {
+      new StringBuilder("DtvCcPacket ended prematurely; size is ").append(this.dev.deW * 2 - 1).append(", but current index is ").append(this.dev.currentIndex).append(" (sequence number ").append(this.dev.deV).append("); ignoring packet");
+      AppMethodBeat.o(92768);
+      return;
+    }
+    this.deq.n(this.dev.deX, this.dev.currentIndex);
+    int j = this.deq.hQ(3);
+    int k = this.deq.hQ(5);
+    int i = j;
+    if (j == 7)
+    {
+      this.deq.hR(2);
+      i = j + this.deq.hQ(6);
+    }
+    if (k == 0)
+    {
+      if (i != 0) {
+        new StringBuilder("serviceNumber is non-zero (").append(i).append(") when blockSize is 0");
+      }
+      AppMethodBeat.o(92768);
+      return;
+    }
+    if (i != this.der)
+    {
+      AppMethodBeat.o(92768);
+      return;
+    }
+    i = 0;
+    while (this.deq.UB() > 0)
+    {
+      j = this.deq.hQ(8);
+      if (j != 16)
+      {
+        if (j <= 31)
+        {
+          ip(j);
+        }
+        else if (j <= 127)
+        {
+          iu(j);
+          i = 1;
+        }
+        else if (j <= 159)
+        {
+          iq(j);
+          i = 1;
+        }
+        else if (j <= 255)
+        {
+          iv(j);
+          i = 1;
+        }
+      }
+      else
+      {
+        j = this.deq.hQ(8);
+        if (j <= 31)
+        {
+          ir(j);
+        }
+        else if (j <= 127)
+        {
+          iw(j);
+          i = 1;
+        }
+        else if (j <= 159)
+        {
+          it(j);
+        }
+        else if (j <= 255)
+        {
+          ix(j);
+          i = 1;
+        }
+      }
+    }
+    if (i != 0) {
+      this.deb = TJ();
+    }
+    AppMethodBeat.o(92768);
+  }
+  
+  private void ip(int paramInt)
+  {
+    AppMethodBeat.i(92769);
     switch (paramInt)
     {
     default: 
       if ((paramInt >= 17) && (paramInt <= 23))
       {
-        this.aUv.dE(8);
-        AppMethodBeat.o(95601);
+        this.deq.hR(8);
+        AppMethodBeat.o(92769);
         return;
       }
       break;
     case 0: 
-      AppMethodBeat.o(95601);
+      AppMethodBeat.o(92769);
       return;
     case 3: 
-      this.aUg = pO();
-      AppMethodBeat.o(95601);
+      this.deb = TJ();
+      AppMethodBeat.o(92769);
       return;
     case 8: 
-      this.aUy.pS();
-      AppMethodBeat.o(95601);
+      this.deu.TN();
+      AppMethodBeat.o(92769);
       return;
     case 12: 
-      pP();
-      AppMethodBeat.o(95601);
+      TK();
+      AppMethodBeat.o(92769);
       return;
     case 13: 
-      this.aUy.append('\n');
-      AppMethodBeat.o(95601);
+      this.deu.h('\n');
+      AppMethodBeat.o(92769);
       return;
     case 14: 
-      AppMethodBeat.o(95601);
+      AppMethodBeat.o(92769);
       return;
     }
     if ((paramInt >= 24) && (paramInt <= 31))
     {
-      this.aUv.dE(16);
-      AppMethodBeat.o(95601);
+      this.deq.hR(16);
+      AppMethodBeat.o(92769);
       return;
     }
-    AppMethodBeat.o(95601);
+    AppMethodBeat.o(92769);
   }
   
-  private void dW(int paramInt)
+  private void iq(int paramInt)
   {
-    AppMethodBeat.i(95602);
+    AppMethodBeat.i(92770);
     switch (paramInt)
     {
     }
@@ -100,528 +238,413 @@ public final class c
     {
       do
       {
-        AppMethodBeat.o(95602);
+        AppMethodBeat.o(92770);
         return;
         paramInt -= 128;
-      } while (this.aUA == paramInt);
-      this.aUA = paramInt;
-      this.aUy = this.aUx[paramInt];
-      AppMethodBeat.o(95602);
+      } while (this.dew == paramInt);
+      this.dew = paramInt;
+      this.deu = this.det[paramInt];
+      AppMethodBeat.o(92770);
       return;
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.aUv.oj()) {
-          this.aUx[(8 - paramInt)].clear();
+        if (this.deq.Sg()) {
+          this.det[(8 - paramInt)].clear();
         }
         paramInt += 1;
       }
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.aUv.oj()) {
-          this.aUx[(8 - paramInt)].arf = true;
+        if (this.deq.Sg()) {
+          this.det[(8 - paramInt)].visible = true;
         }
         paramInt += 1;
       }
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.aUv.oj()) {
-          this.aUx[(8 - paramInt)].arf = false;
+        if (this.deq.Sg()) {
+          this.det[(8 - paramInt)].visible = false;
         }
         paramInt += 1;
       }
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
       paramInt = 1;
       if (paramInt <= 8)
       {
-        if (this.aUv.oj())
+        if (this.deq.Sg())
         {
-          locala = this.aUx[(8 - paramInt)];
-          if (locala.arf) {
+          locala = this.det[(8 - paramInt)];
+          if (locala.visible) {
             break label374;
           }
         }
         for (bool1 = true;; bool1 = false)
         {
-          locala.arf = bool1;
+          locala.visible = bool1;
           paramInt += 1;
           break;
         }
       }
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.aUv.oj()) {
-          this.aUx[(8 - paramInt)].reset();
+        if (this.deq.Sg()) {
+          this.det[(8 - paramInt)].reset();
         }
         paramInt += 1;
       }
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
-      this.aUv.dE(8);
-      AppMethodBeat.o(95602);
+      this.deq.hR(8);
+      AppMethodBeat.o(92770);
       return;
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
-      pP();
-      AppMethodBeat.o(95602);
+      TK();
+      AppMethodBeat.o(92770);
       return;
-      if (!this.aUy.aUM)
+      if (!this.deu.deI)
       {
-        this.aUv.dE(16);
-        AppMethodBeat.o(95602);
+        this.deq.hR(16);
+        AppMethodBeat.o(92770);
         return;
       }
-      this.aUv.dD(4);
-      this.aUv.dD(2);
-      this.aUv.dD(2);
-      boolean bool1 = this.aUv.oj();
-      boolean bool2 = this.aUv.oj();
-      this.aUv.dD(3);
-      this.aUv.dD(3);
-      this.aUy.h(bool1, bool2);
-      AppMethodBeat.o(95602);
+      this.deq.hQ(4);
+      this.deq.hQ(2);
+      this.deq.hQ(2);
+      boolean bool1 = this.deq.Sg();
+      boolean bool2 = this.deq.Sg();
+      this.deq.hQ(3);
+      this.deq.hQ(3);
+      this.deu.j(bool1, bool2);
+      AppMethodBeat.o(92770);
       return;
-      if (!this.aUy.aUM)
+      if (!this.deu.deI)
       {
-        this.aUv.dE(24);
-        AppMethodBeat.o(95602);
+        this.deq.hR(24);
+        AppMethodBeat.o(92770);
         return;
       }
-      paramInt = this.aUv.dD(2);
-      paramInt = c.a.l(this.aUv.dD(2), this.aUv.dD(2), this.aUv.dD(2), paramInt);
-      int i = this.aUv.dD(2);
-      i = c.a.l(this.aUv.dD(2), this.aUv.dD(2), this.aUv.dD(2), i);
-      this.aUv.dE(2);
-      c.a.r(this.aUv.dD(2), this.aUv.dD(2), this.aUv.dD(2));
-      this.aUy.aY(paramInt, i);
-      AppMethodBeat.o(95602);
+      paramInt = this.deq.hQ(2);
+      paramInt = a.t(this.deq.hQ(2), this.deq.hQ(2), this.deq.hQ(2), paramInt);
+      int i = this.deq.hQ(2);
+      i = a.t(this.deq.hQ(2), this.deq.hQ(2), this.deq.hQ(2), i);
+      this.deq.hR(2);
+      a.D(this.deq.hQ(2), this.deq.hQ(2), this.deq.hQ(2));
+      this.deu.ch(paramInt, i);
+      AppMethodBeat.o(92770);
       return;
-      if (!this.aUy.aUM)
+      if (!this.deu.deI)
       {
-        this.aUv.dE(16);
-        AppMethodBeat.o(95602);
+        this.deq.hR(16);
+        AppMethodBeat.o(92770);
         return;
       }
-      this.aUv.dE(4);
-      paramInt = this.aUv.dD(4);
-      this.aUv.dE(2);
-      this.aUv.dD(6);
-      c.a locala = this.aUy;
+      this.deq.hR(4);
+      paramInt = this.deq.hQ(4);
+      this.deq.hR(2);
+      this.deq.hQ(6);
+      a locala = this.deu;
       if (locala.row != paramInt) {
-        locala.append('\n');
+        locala.h('\n');
       }
       locala.row = paramInt;
-      AppMethodBeat.o(95602);
+      AppMethodBeat.o(92770);
       return;
-      if (!this.aUy.aUM)
+      if (!this.deu.deI)
       {
-        this.aUv.dE(32);
-        AppMethodBeat.o(95602);
+        this.deq.hR(32);
+        AppMethodBeat.o(92770);
         return;
       }
-      paramInt = this.aUv.dD(2);
-      paramInt = c.a.l(this.aUv.dD(2), this.aUv.dD(2), this.aUv.dD(2), paramInt);
-      this.aUv.dD(2);
-      c.a.r(this.aUv.dD(2), this.aUv.dD(2), this.aUv.dD(2));
-      this.aUv.oj();
-      this.aUv.oj();
-      this.aUv.dD(2);
-      this.aUv.dD(2);
-      i = this.aUv.dD(2);
-      this.aUv.dE(8);
-      this.aUy.aX(paramInt, i);
-      AppMethodBeat.o(95602);
+      paramInt = this.deq.hQ(2);
+      paramInt = a.t(this.deq.hQ(2), this.deq.hQ(2), this.deq.hQ(2), paramInt);
+      this.deq.hQ(2);
+      a.D(this.deq.hQ(2), this.deq.hQ(2), this.deq.hQ(2));
+      this.deq.Sg();
+      this.deq.Sg();
+      this.deq.hQ(2);
+      this.deq.hQ(2);
+      i = this.deq.hQ(2);
+      this.deq.hR(8);
+      this.deu.cg(paramInt, i);
+      AppMethodBeat.o(92770);
       return;
       paramInt -= 152;
-      locala = this.aUx[paramInt];
-      this.aUv.dE(2);
-      bool1 = this.aUv.oj();
-      bool2 = this.aUv.oj();
-      this.aUv.oj();
-      int j = this.aUv.dD(3);
-      boolean bool3 = this.aUv.oj();
-      int k = this.aUv.dD(7);
-      int m = this.aUv.dD(8);
-      int n = this.aUv.dD(4);
-      int i1 = this.aUv.dD(4);
-      this.aUv.dE(2);
-      this.aUv.dD(6);
-      this.aUv.dE(2);
-      int i2 = this.aUv.dD(3);
-      i = this.aUv.dD(3);
-      locala.aUM = true;
-      locala.arf = bool1;
-      locala.aUR = bool2;
+      locala = this.det[paramInt];
+      this.deq.hR(2);
+      bool1 = this.deq.Sg();
+      bool2 = this.deq.Sg();
+      this.deq.Sg();
+      int j = this.deq.hQ(3);
+      boolean bool3 = this.deq.Sg();
+      int k = this.deq.hQ(7);
+      int m = this.deq.hQ(8);
+      int n = this.deq.hQ(4);
+      int i1 = this.deq.hQ(4);
+      this.deq.hR(2);
+      this.deq.hQ(6);
+      this.deq.hR(2);
+      int i2 = this.deq.hQ(3);
+      i = this.deq.hQ(3);
+      locala.deI = true;
+      locala.visible = bool1;
+      locala.deN = bool2;
       locala.priority = j;
-      locala.aUN = bool3;
-      locala.aUO = k;
-      locala.aUP = m;
-      locala.aUQ = n;
+      locala.deJ = bool3;
+      locala.deK = k;
+      locala.deL = m;
+      locala.deM = n;
       if (locala.rowCount != i1 + 1)
       {
         locala.rowCount = (i1 + 1);
-        while (((bool2) && (locala.aUp.size() >= locala.rowCount)) || (locala.aUp.size() >= 15)) {
-          locala.aUp.remove(0);
+        while (((bool2) && (locala.dek.size() >= locala.rowCount)) || (locala.dek.size() >= 15)) {
+          locala.dek.remove(0);
         }
       }
-      if ((i2 != 0) && (locala.aUT != i2))
+      if ((i2 != 0) && (locala.deO != i2))
       {
-        locala.aUT = i2;
+        locala.deO = i2;
         j = i2 - 1;
-        locala.aX(c.a.aUI[j], c.a.aUE[j]);
+        locala.cg(a.deE[j], a.deA[j]);
       }
-      if ((i != 0) && (locala.aUU != i))
+      if ((i != 0) && (locala.deP != i))
       {
-        locala.aUU = i;
-        locala.h(false, false);
-        locala.aY(c.a.aUB, c.a.aUL[(i - 1)]);
+        locala.deP = i;
+        locala.j(false, false);
+        locala.ch(a.dex, a.deH[(i - 1)]);
       }
-    } while (this.aUA == paramInt);
-    this.aUA = paramInt;
-    this.aUy = this.aUx[paramInt];
-    AppMethodBeat.o(95602);
+    } while (this.dew == paramInt);
+    this.dew = paramInt;
+    this.deu = this.det[paramInt];
+    AppMethodBeat.o(92770);
   }
   
-  private void dX(int paramInt)
+  private void ir(int paramInt)
   {
-    AppMethodBeat.i(95603);
+    AppMethodBeat.i(92771);
     if (paramInt > 7)
     {
       if (paramInt <= 15)
       {
-        this.aUv.dE(8);
-        AppMethodBeat.o(95603);
+        this.deq.hR(8);
+        AppMethodBeat.o(92771);
         return;
       }
       if (paramInt <= 23)
       {
-        this.aUv.dE(16);
-        AppMethodBeat.o(95603);
+        this.deq.hR(16);
+        AppMethodBeat.o(92771);
         return;
       }
       if (paramInt <= 31) {
-        this.aUv.dE(24);
+        this.deq.hR(24);
       }
     }
-    AppMethodBeat.o(95603);
+    AppMethodBeat.o(92771);
   }
   
-  private void dY(int paramInt)
+  private void it(int paramInt)
   {
-    AppMethodBeat.i(95604);
+    AppMethodBeat.i(92772);
     if (paramInt <= 135)
     {
-      this.aUv.dE(32);
-      AppMethodBeat.o(95604);
+      this.deq.hR(32);
+      AppMethodBeat.o(92772);
       return;
     }
     if (paramInt <= 143)
     {
-      this.aUv.dE(40);
-      AppMethodBeat.o(95604);
+      this.deq.hR(40);
+      AppMethodBeat.o(92772);
       return;
     }
     if (paramInt <= 159)
     {
-      this.aUv.dE(2);
-      paramInt = this.aUv.dD(6);
-      this.aUv.dE(paramInt * 8);
+      this.deq.hR(2);
+      paramInt = this.deq.hQ(6);
+      this.deq.hR(paramInt * 8);
     }
-    AppMethodBeat.o(95604);
+    AppMethodBeat.o(92772);
   }
   
-  private void dZ(int paramInt)
+  private void iu(int paramInt)
   {
-    AppMethodBeat.i(95605);
+    AppMethodBeat.i(92773);
     if (paramInt == 127)
     {
-      this.aUy.append('♫');
-      AppMethodBeat.o(95605);
+      this.deu.h('♫');
+      AppMethodBeat.o(92773);
       return;
     }
-    this.aUy.append((char)(paramInt & 0xFF));
-    AppMethodBeat.o(95605);
+    this.deu.h((char)(paramInt & 0xFF));
+    AppMethodBeat.o(92773);
   }
   
-  private void ea(int paramInt)
+  private void iv(int paramInt)
   {
-    AppMethodBeat.i(95606);
-    this.aUy.append((char)(paramInt & 0xFF));
-    AppMethodBeat.o(95606);
+    AppMethodBeat.i(92774);
+    this.deu.h((char)(paramInt & 0xFF));
+    AppMethodBeat.o(92774);
   }
   
-  private void eb(int paramInt)
+  private void iw(int paramInt)
   {
-    AppMethodBeat.i(95607);
+    AppMethodBeat.i(92775);
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(95607);
+      AppMethodBeat.o(92775);
       return;
     case 32: 
-      this.aUy.append(' ');
-      AppMethodBeat.o(95607);
+      this.deu.h(' ');
+      AppMethodBeat.o(92775);
       return;
     case 33: 
-      this.aUy.append(' ');
-      AppMethodBeat.o(95607);
+      this.deu.h(' ');
+      AppMethodBeat.o(92775);
       return;
     case 37: 
-      this.aUy.append('…');
-      AppMethodBeat.o(95607);
+      this.deu.h('…');
+      AppMethodBeat.o(92775);
       return;
     case 42: 
-      this.aUy.append('Š');
-      AppMethodBeat.o(95607);
+      this.deu.h('Š');
+      AppMethodBeat.o(92775);
       return;
     case 44: 
-      this.aUy.append('Œ');
-      AppMethodBeat.o(95607);
+      this.deu.h('Œ');
+      AppMethodBeat.o(92775);
       return;
     case 48: 
-      this.aUy.append('█');
-      AppMethodBeat.o(95607);
+      this.deu.h('█');
+      AppMethodBeat.o(92775);
       return;
     case 49: 
-      this.aUy.append('‘');
-      AppMethodBeat.o(95607);
+      this.deu.h('‘');
+      AppMethodBeat.o(92775);
       return;
     case 50: 
-      this.aUy.append('’');
-      AppMethodBeat.o(95607);
+      this.deu.h('’');
+      AppMethodBeat.o(92775);
       return;
     case 51: 
-      this.aUy.append('“');
-      AppMethodBeat.o(95607);
+      this.deu.h('“');
+      AppMethodBeat.o(92775);
       return;
     case 52: 
-      this.aUy.append('”');
-      AppMethodBeat.o(95607);
+      this.deu.h('”');
+      AppMethodBeat.o(92775);
       return;
     case 53: 
-      this.aUy.append('•');
-      AppMethodBeat.o(95607);
+      this.deu.h('•');
+      AppMethodBeat.o(92775);
       return;
     case 57: 
-      this.aUy.append('™');
-      AppMethodBeat.o(95607);
+      this.deu.h('™');
+      AppMethodBeat.o(92775);
       return;
     case 58: 
-      this.aUy.append('š');
-      AppMethodBeat.o(95607);
+      this.deu.h('š');
+      AppMethodBeat.o(92775);
       return;
     case 60: 
-      this.aUy.append('œ');
-      AppMethodBeat.o(95607);
+      this.deu.h('œ');
+      AppMethodBeat.o(92775);
       return;
     case 61: 
-      this.aUy.append('℠');
-      AppMethodBeat.o(95607);
+      this.deu.h('℠');
+      AppMethodBeat.o(92775);
       return;
     case 63: 
-      this.aUy.append('Ÿ');
-      AppMethodBeat.o(95607);
+      this.deu.h('Ÿ');
+      AppMethodBeat.o(92775);
       return;
     case 118: 
-      this.aUy.append('⅛');
-      AppMethodBeat.o(95607);
+      this.deu.h('⅛');
+      AppMethodBeat.o(92775);
       return;
     case 119: 
-      this.aUy.append('⅜');
-      AppMethodBeat.o(95607);
+      this.deu.h('⅜');
+      AppMethodBeat.o(92775);
       return;
     case 120: 
-      this.aUy.append('⅝');
-      AppMethodBeat.o(95607);
+      this.deu.h('⅝');
+      AppMethodBeat.o(92775);
       return;
     case 121: 
-      this.aUy.append('⅞');
-      AppMethodBeat.o(95607);
+      this.deu.h('⅞');
+      AppMethodBeat.o(92775);
       return;
     case 122: 
-      this.aUy.append('│');
-      AppMethodBeat.o(95607);
+      this.deu.h('│');
+      AppMethodBeat.o(92775);
       return;
     case 123: 
-      this.aUy.append('┐');
-      AppMethodBeat.o(95607);
+      this.deu.h('┐');
+      AppMethodBeat.o(92775);
       return;
     case 124: 
-      this.aUy.append('└');
-      AppMethodBeat.o(95607);
+      this.deu.h('└');
+      AppMethodBeat.o(92775);
       return;
     case 125: 
-      this.aUy.append('─');
-      AppMethodBeat.o(95607);
+      this.deu.h('─');
+      AppMethodBeat.o(92775);
       return;
     case 126: 
-      this.aUy.append('┘');
-      AppMethodBeat.o(95607);
+      this.deu.h('┘');
+      AppMethodBeat.o(92775);
       return;
     }
-    this.aUy.append('┌');
-    AppMethodBeat.o(95607);
+    this.deu.h('┌');
+    AppMethodBeat.o(92775);
   }
   
-  private void ec(int paramInt)
+  private void ix(int paramInt)
   {
-    AppMethodBeat.i(95608);
+    AppMethodBeat.i(92776);
     if (paramInt == 160)
     {
-      this.aUy.append('㏄');
-      AppMethodBeat.o(95608);
+      this.deu.h('㏄');
+      AppMethodBeat.o(92776);
       return;
     }
-    this.aUy.append('_');
-    AppMethodBeat.o(95608);
+    this.deu.h('_');
+    AppMethodBeat.o(92776);
   }
   
-  private List<com.google.android.exoplayer2.f.a> pO()
+  protected final boolean TH()
   {
-    AppMethodBeat.i(95609);
-    Object localObject = new ArrayList();
-    int i = 0;
-    while (i < 8)
-    {
-      if ((!this.aUx[i].isEmpty()) && (this.aUx[i].arf)) {
-        ((List)localObject).add(this.aUx[i].pY());
-      }
-      i += 1;
-    }
-    Collections.sort((List)localObject);
-    localObject = Collections.unmodifiableList((List)localObject);
-    AppMethodBeat.o(95609);
-    return localObject;
+    return this.deb != this.dec;
   }
   
-  private void pP()
+  protected final com.google.android.exoplayer2.f.d TI()
   {
-    AppMethodBeat.i(95610);
-    int i = 0;
-    while (i < 8)
-    {
-      this.aUx[i].reset();
-      i += 1;
-    }
-    AppMethodBeat.o(95610);
-  }
-  
-  private void pW()
-  {
-    AppMethodBeat.i(95599);
-    if (this.aUz == null)
-    {
-      AppMethodBeat.o(95599);
-      return;
-    }
-    pX();
-    this.aUz = null;
-    AppMethodBeat.o(95599);
-  }
-  
-  private void pX()
-  {
-    AppMethodBeat.i(95600);
-    if (this.aUz.currentIndex != this.aUz.aVa * 2 - 1)
-    {
-      new StringBuilder("DtvCcPacket ended prematurely; size is ").append(this.aUz.aVa * 2 - 1).append(", but current index is ").append(this.aUz.currentIndex).append(" (sequence number ").append(this.aUz.aUZ).append("); ignoring packet");
-      AppMethodBeat.o(95600);
-      return;
-    }
-    this.aUv.l(this.aUz.aVb, this.aUz.currentIndex);
-    int j = this.aUv.dD(3);
-    int k = this.aUv.dD(5);
-    int i = j;
-    if (j == 7)
-    {
-      this.aUv.dE(2);
-      i = j + this.aUv.dD(6);
-    }
-    if (k == 0)
-    {
-      if (i != 0) {
-        new StringBuilder("serviceNumber is non-zero (").append(i).append(") when blockSize is 0");
-      }
-      AppMethodBeat.o(95600);
-      return;
-    }
-    if (i != this.aUw)
-    {
-      AppMethodBeat.o(95600);
-      return;
-    }
-    i = 0;
-    while (this.aUv.qI() > 0)
-    {
-      j = this.aUv.dD(8);
-      if (j != 16)
-      {
-        if (j <= 31)
-        {
-          dV(j);
-        }
-        else if (j <= 127)
-        {
-          dZ(j);
-          i = 1;
-        }
-        else if (j <= 159)
-        {
-          dW(j);
-          i = 1;
-        }
-        else if (j <= 255)
-        {
-          ea(j);
-          i = 1;
-        }
-      }
-      else
-      {
-        j = this.aUv.dD(8);
-        if (j <= 31)
-        {
-          dX(j);
-        }
-        else if (j <= 127)
-        {
-          eb(j);
-          i = 1;
-        }
-        else if (j <= 159)
-        {
-          dY(j);
-        }
-        else if (j <= 255)
-        {
-          ec(j);
-          i = 1;
-        }
-      }
-    }
-    if (i != 0) {
-      this.aUg = pO();
-    }
-    AppMethodBeat.o(95600);
+    AppMethodBeat.i(92765);
+    this.dec = this.deb;
+    f localf = new f(this.deb);
+    AppMethodBeat.o(92765);
+    return localf;
   }
   
   protected final void a(h paramh)
   {
-    AppMethodBeat.i(95598);
-    this.aUb.l(paramh.aAS.array(), paramh.aAS.limit());
-    if (this.aUb.qM() >= 3)
+    AppMethodBeat.i(92766);
+    this.ddW.n(paramh.cKQ.array(), paramh.cKQ.limit());
+    if (this.ddW.UF() >= 3)
     {
-      int k = this.aUb.readUnsignedByte() & 0x7;
+      int k = this.ddW.readUnsignedByte() & 0x7;
       int m = k & 0x3;
       if ((k & 0x4) == 4) {}
       int i;
@@ -629,31 +652,31 @@ public final class c
       b localb;
       for (k = 1;; k = 0)
       {
-        i = (byte)this.aUb.readUnsignedByte();
-        j = (byte)this.aUb.readUnsignedByte();
+        i = (byte)this.ddW.readUnsignedByte();
+        j = (byte)this.ddW.readUnsignedByte();
         if (((m != 2) && (m != 3)) || (k == 0)) {
           break;
         }
         if (m != 3) {
           break label221;
         }
-        pW();
+        TR();
         m = i & 0x3F;
         k = m;
         if (m == 0) {
           k = 64;
         }
-        this.aUz = new b((i & 0xC0) >> 6, k);
-        paramh = this.aUz.aVb;
-        localb = this.aUz;
+        this.dev = new b((i & 0xC0) >> 6, k);
+        paramh = this.dev.deX;
+        localb = this.dev;
         k = localb.currentIndex;
         localb.currentIndex = (k + 1);
         paramh[k] = j;
         label187:
-        if (this.aUz.currentIndex != this.aUz.aVa * 2 - 1) {
+        if (this.dev.currentIndex != this.dev.deW * 2 - 1) {
           break label313;
         }
-        pW();
+        TR();
         break;
       }
       label221:
@@ -661,16 +684,16 @@ public final class c
       for (boolean bool = true;; bool = false)
       {
         com.google.android.exoplayer2.i.a.checkArgument(bool);
-        if (this.aUz == null) {
+        if (this.dev == null) {
           break;
         }
-        paramh = this.aUz.aVb;
-        localb = this.aUz;
+        paramh = this.dev.deX;
+        localb = this.dev;
         k = localb.currentIndex;
         localb.currentIndex = (k + 1);
         paramh[k] = i;
-        paramh = this.aUz.aVb;
-        localb = this.aUz;
+        paramh = this.dev.deX;
+        localb = this.dev;
         k = localb.currentIndex;
         localb.currentIndex = (k + 1);
         paramh[k] = j;
@@ -679,57 +702,408 @@ public final class c
         break;
       }
     }
-    AppMethodBeat.o(95598);
+    AppMethodBeat.o(92766);
   }
   
   public final void flush()
   {
-    AppMethodBeat.i(95596);
+    AppMethodBeat.i(92764);
     super.flush();
-    this.aUg = null;
-    this.aUh = null;
-    this.aUA = 0;
-    this.aUy = this.aUx[this.aUA];
-    pP();
-    this.aUz = null;
-    AppMethodBeat.o(95596);
+    this.deb = null;
+    this.dec = null;
+    this.dew = 0;
+    this.deu = this.det[this.dew];
+    TK();
+    this.dev = null;
+    AppMethodBeat.o(92764);
   }
   
-  protected final boolean pM()
+  static final class a
   {
-    return this.aUg != this.aUh;
-  }
-  
-  protected final com.google.android.exoplayer2.f.d pN()
-  {
-    AppMethodBeat.i(95597);
-    this.aUh = this.aUg;
-    f localf = new f(this.aUg);
-    AppMethodBeat.o(95597);
-    return localf;
+    static final int[] deA;
+    private static final int[] deB;
+    private static final int[] deC;
+    private static final boolean[] deD;
+    static final int[] deE;
+    private static final int[] deF;
+    private static final int[] deG;
+    static final int[] deH;
+    public static final int dex;
+    public static final int dey;
+    public static final int dez;
+    private int backgroundColor;
+    boolean deI;
+    boolean deJ;
+    int deK;
+    int deL;
+    int deM;
+    boolean deN;
+    int deO;
+    int deP;
+    private int deQ;
+    private int deR;
+    private int deS;
+    private int deT;
+    private int deU;
+    final List<SpannableString> dek;
+    private final SpannableStringBuilder del;
+    private int den;
+    private int justification;
+    int priority;
+    int row;
+    int rowCount;
+    boolean visible;
+    
+    static
+    {
+      AppMethodBeat.i(92761);
+      dex = t(2, 2, 2, 0);
+      dey = t(0, 0, 0, 0);
+      dez = t(0, 0, 0, 3);
+      deA = new int[] { 0, 0, 0, 0, 0, 2, 0 };
+      deB = new int[] { 0, 0, 0, 0, 0, 0, 2 };
+      deC = new int[] { 3, 3, 3, 3, 3, 3, 1 };
+      deD = new boolean[] { 0, 0, 0, 1, 1, 1, 0 };
+      deE = new int[] { dey, dez, dey, dey, dez, dey, dey };
+      deF = new int[] { 0, 1, 2, 3, 4, 3, 4 };
+      deG = new int[] { 0, 0, 0, 0, 0, 3, 3 };
+      deH = new int[] { dey, dey, dey, dey, dey, dez, dez };
+      AppMethodBeat.o(92761);
+    }
+    
+    public a()
+    {
+      AppMethodBeat.i(92749);
+      this.dek = new LinkedList();
+      this.del = new SpannableStringBuilder();
+      reset();
+      AppMethodBeat.o(92749);
+    }
+    
+    public static int D(int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(92759);
+      paramInt1 = t(paramInt1, paramInt2, paramInt3, 0);
+      AppMethodBeat.o(92759);
+      return paramInt1;
+    }
+    
+    private SpannableString TP()
+    {
+      AppMethodBeat.i(92757);
+      Object localObject = new SpannableStringBuilder(this.del);
+      int i = ((SpannableStringBuilder)localObject).length();
+      if (i > 0)
+      {
+        if (this.deR != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(2), this.deR, i, 33);
+        }
+        if (this.den != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new UnderlineSpan(), this.den, i, 33);
+        }
+        if (this.deS != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(this.deT), this.deS, i, 33);
+        }
+        if (this.deU != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new BackgroundColorSpan(this.backgroundColor), this.deU, i, 33);
+        }
+      }
+      localObject = new SpannableString((CharSequence)localObject);
+      AppMethodBeat.o(92757);
+      return localObject;
+    }
+    
+    public static int t(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      int i = 255;
+      AppMethodBeat.i(92760);
+      com.google.android.exoplayer2.i.a.ck(paramInt1, 4);
+      com.google.android.exoplayer2.i.a.ck(paramInt2, 4);
+      com.google.android.exoplayer2.i.a.ck(paramInt3, 4);
+      com.google.android.exoplayer2.i.a.ck(paramInt4, 4);
+      switch (paramInt4)
+      {
+      default: 
+        paramInt4 = 255;
+        if (paramInt1 > 1)
+        {
+          paramInt1 = 255;
+          label77:
+          if (paramInt2 <= 1) {
+            break label132;
+          }
+          paramInt2 = 255;
+          label86:
+          if (paramInt3 <= 1) {
+            break label137;
+          }
+        }
+        break;
+      }
+      label132:
+      label137:
+      for (paramInt3 = i;; paramInt3 = 0)
+      {
+        paramInt1 = Color.argb(paramInt4, paramInt1, paramInt2, paramInt3);
+        AppMethodBeat.o(92760);
+        return paramInt1;
+        paramInt4 = 255;
+        break;
+        paramInt4 = 127;
+        break;
+        paramInt4 = 0;
+        break;
+        paramInt1 = 0;
+        break label77;
+        paramInt2 = 0;
+        break label86;
+      }
+    }
+    
+    public final void TN()
+    {
+      AppMethodBeat.i(92755);
+      int i = this.del.length();
+      if (i > 0) {
+        this.del.delete(i - 1, i);
+      }
+      AppMethodBeat.o(92755);
+    }
+    
+    public final b TT()
+    {
+      boolean bool = false;
+      AppMethodBeat.i(92758);
+      if (isEmpty())
+      {
+        AppMethodBeat.o(92758);
+        return null;
+      }
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      int i = 0;
+      while (i < this.dek.size())
+      {
+        localSpannableStringBuilder.append((CharSequence)this.dek.get(i));
+        localSpannableStringBuilder.append('\n');
+        i += 1;
+      }
+      localSpannableStringBuilder.append(TP());
+      Object localObject;
+      float f2;
+      float f1;
+      label190:
+      label201:
+      int j;
+      switch (this.justification)
+      {
+      default: 
+        localObject = new IllegalArgumentException("Unexpected justification value: " + this.justification);
+        AppMethodBeat.o(92758);
+        throw ((Throwable)localObject);
+      case 0: 
+      case 3: 
+        localObject = Layout.Alignment.ALIGN_NORMAL;
+        if (this.deJ)
+        {
+          f2 = this.deL / 99.0F;
+          f1 = this.deK / 99.0F;
+          if (this.deM % 3 != 0) {
+            break label311;
+          }
+          i = 0;
+          if (this.deM / 3 != 0) {
+            break label331;
+          }
+          j = 0;
+        }
+        break;
+      }
+      for (;;)
+      {
+        if (this.deQ != dey) {
+          bool = true;
+        }
+        localObject = new b(localSpannableStringBuilder, (Layout.Alignment)localObject, f1 * 0.9F + 0.05F, i, f2 * 0.9F + 0.05F, j, bool, this.deQ, this.priority);
+        AppMethodBeat.o(92758);
+        return localObject;
+        localObject = Layout.Alignment.ALIGN_OPPOSITE;
+        break;
+        localObject = Layout.Alignment.ALIGN_CENTER;
+        break;
+        f2 = this.deL / 209.0F;
+        f1 = this.deK / 74.0F;
+        break label190;
+        label311:
+        if (this.deM % 3 == 1)
+        {
+          i = 1;
+          break label201;
+        }
+        i = 2;
+        break label201;
+        label331:
+        if (this.deM / 3 == 1) {
+          j = 1;
+        } else {
+          j = 2;
+        }
+      }
+    }
+    
+    public final void cg(int paramInt1, int paramInt2)
+    {
+      this.deQ = paramInt1;
+      this.justification = paramInt2;
+    }
+    
+    public final void ch(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(92754);
+      if ((this.deS != -1) && (this.deT != paramInt1)) {
+        this.del.setSpan(new ForegroundColorSpan(this.deT), this.deS, this.del.length(), 33);
+      }
+      if (paramInt1 != dex)
+      {
+        this.deS = this.del.length();
+        this.deT = paramInt1;
+      }
+      if ((this.deU != -1) && (this.backgroundColor != paramInt2)) {
+        this.del.setSpan(new BackgroundColorSpan(this.backgroundColor), this.deU, this.del.length(), 33);
+      }
+      if (paramInt2 != dey)
+      {
+        this.deU = this.del.length();
+        this.backgroundColor = paramInt2;
+      }
+      AppMethodBeat.o(92754);
+    }
+    
+    public final void clear()
+    {
+      AppMethodBeat.i(92752);
+      this.dek.clear();
+      this.del.clear();
+      this.deR = -1;
+      this.den = -1;
+      this.deS = -1;
+      this.deU = -1;
+      this.row = 0;
+      AppMethodBeat.o(92752);
+    }
+    
+    public final void h(char paramChar)
+    {
+      AppMethodBeat.i(92756);
+      if (paramChar == '\n')
+      {
+        this.dek.add(TP());
+        this.del.clear();
+        if (this.deR != -1) {
+          this.deR = 0;
+        }
+        if (this.den != -1) {
+          this.den = 0;
+        }
+        if (this.deS != -1) {
+          this.deS = 0;
+        }
+        if (this.deU != -1) {
+          this.deU = 0;
+        }
+        while (((this.deN) && (this.dek.size() >= this.rowCount)) || (this.dek.size() >= 15)) {
+          this.dek.remove(0);
+        }
+      }
+      this.del.append(paramChar);
+      AppMethodBeat.o(92756);
+    }
+    
+    public final boolean isEmpty()
+    {
+      AppMethodBeat.i(92750);
+      if ((!this.deI) || ((this.dek.isEmpty()) && (this.del.length() == 0)))
+      {
+        AppMethodBeat.o(92750);
+        return true;
+      }
+      AppMethodBeat.o(92750);
+      return false;
+    }
+    
+    public final void j(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      AppMethodBeat.i(92753);
+      if (this.deR != -1) {
+        if (!paramBoolean1)
+        {
+          this.del.setSpan(new StyleSpan(2), this.deR, this.del.length(), 33);
+          this.deR = -1;
+        }
+      }
+      while (this.den != -1)
+      {
+        if (paramBoolean2) {
+          break label135;
+        }
+        this.del.setSpan(new UnderlineSpan(), this.den, this.del.length(), 33);
+        this.den = -1;
+        AppMethodBeat.o(92753);
+        return;
+        if (paramBoolean1) {
+          this.deR = this.del.length();
+        }
+      }
+      if (paramBoolean2) {
+        this.den = this.del.length();
+      }
+      label135:
+      AppMethodBeat.o(92753);
+    }
+    
+    public final void reset()
+    {
+      AppMethodBeat.i(92751);
+      clear();
+      this.deI = false;
+      this.visible = false;
+      this.priority = 4;
+      this.deJ = false;
+      this.deK = 0;
+      this.deL = 0;
+      this.deM = 0;
+      this.rowCount = 15;
+      this.deN = true;
+      this.justification = 0;
+      this.deO = 0;
+      this.deP = 0;
+      this.deQ = dey;
+      this.deT = dex;
+      this.backgroundColor = dey;
+      AppMethodBeat.o(92751);
+    }
   }
   
   static final class b
   {
-    public final int aUZ;
-    public final int aVa;
-    public final byte[] aVb;
     int currentIndex;
+    public final int deV;
+    public final int deW;
+    public final byte[] deX;
     
     public b(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(95594);
-      this.aUZ = paramInt1;
-      this.aVa = paramInt2;
-      this.aVb = new byte[paramInt2 * 2 - 1];
+      AppMethodBeat.i(92762);
+      this.deV = paramInt1;
+      this.deW = paramInt2;
+      this.deX = new byte[paramInt2 * 2 - 1];
       this.currentIndex = 0;
-      AppMethodBeat.o(95594);
+      AppMethodBeat.o(92762);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class DataForQboss
   extends JceStruct
 {
   static Map<Integer, tAdvDesc> cache_map_adv_desc = new HashMap();
-  public Map<Integer, tAdvDesc> map_adv_desc;
+  public Map<Integer, tAdvDesc> map_adv_desc = null;
   
   static
   {
@@ -33,14 +33,15 @@ public final class DataForQboss
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.map_adv_desc != null) {
-      paramJceOutputStream.write(this.map_adv_desc, 0);
+    Map localMap = this.map_adv_desc;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.DataForQboss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/ai6" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.immersive.QFSBlockContainer android:id="@id/nh0" android:paddingTop="52.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/d3p" />
+    <ViewStub android:id="@id/qzl" android:layout="@layout/cvm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/p_4" android:layout="@layout/cxq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bnt" />
+    <com.tencent.image.URLImageView android:layout_gravity="end|bottom|center" android:id="@id/p4_" android:visibility="gone" android:clickable="false" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="51.5dip" android:src="@drawable/qcircle_skin_feed_btn_add_operation" android:alpha="0.0" android:layout_marginEnd="25.0dip" />
+    <ViewStub android:layout_gravity="end|bottom|center" android:id="@id/p97" android:layout="@layout/cxg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip" />
+</FrameLayout>

@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 class dgf
   implements DialogInterface.OnClickListener
 {
-  dgf(dge paramdge) {}
+  dgf(dgd paramdgd) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    RegisterPhoneNumActivity.d(this.a.a);
   }
 }
 

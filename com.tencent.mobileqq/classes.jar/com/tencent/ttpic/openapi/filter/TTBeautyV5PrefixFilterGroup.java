@@ -36,63 +36,66 @@ public class TTBeautyV5PrefixFilterGroup
   
   private void updateBlurAndSharpenStrength(boolean paramBoolean, PTFaceAttr paramPTFaceAttr, int paramInt1, int paramInt2)
   {
-    float f2 = 0.0F;
-    float f1 = f2;
+    float f3 = 0.0F;
+    float f1 = 0.0F;
+    float f2 = f3;
     if (paramPTFaceAttr != null)
     {
-      f1 = f2;
+      f2 = f3;
       if (paramPTFaceAttr.getAllFacePoints() != null)
       {
-        f1 = f2;
+        f2 = f3;
         if (!paramPTFaceAttr.getAllFacePoints().isEmpty())
         {
-          f1 = f2;
+          f2 = f3;
           if (paramInt1 > 0)
           {
-            f1 = f2;
+            f2 = f3;
             if (paramInt2 > 0)
             {
               Iterator localIterator = paramPTFaceAttr.getAllFacePoints().iterator();
-              f1 = 0.0F;
-              if (localIterator.hasNext())
+              for (;;)
               {
-                RectF localRectF = AlgoUtils.getFaceRectF((List)localIterator.next());
-                if (localRectF == null) {
-                  break label264;
+                f2 = f1;
+                if (!localIterator.hasNext()) {
+                  break;
                 }
-                f2 = (float)(paramInt1 * paramPTFaceAttr.getFaceDetectScale());
-                float f3 = (float)(paramInt2 * paramPTFaceAttr.getFaceDetectScale());
-                float f4 = localRectF.width();
-                f1 = Math.max(f1, localRectF.height() * f4 / f2 / f3);
+                RectF localRectF = AlgoUtils.getFaceRectF((List)localIterator.next());
+                if (localRectF != null)
+                {
+                  double d1 = paramInt1;
+                  double d2 = paramPTFaceAttr.getFaceDetectScale();
+                  Double.isNaN(d1);
+                  f2 = (float)(d1 * d2);
+                  d1 = paramInt2;
+                  d2 = paramPTFaceAttr.getFaceDetectScale();
+                  Double.isNaN(d1);
+                  f3 = (float)(d1 * d2);
+                  f1 = Math.max(f1, localRectF.width() * localRectF.height() / f2 / f3);
+                }
               }
             }
           }
         }
       }
     }
-    label264:
-    for (;;)
+    if (this.isOverall)
     {
-      break;
-      if (this.isOverall)
-      {
-        this.mFaceSizeFactor = 1.0F;
-        f1 = this.mBlurStrength;
-        f2 = this.mFaceSizeFactor;
-        this.mSmoothFilter.setBlurStrength(f1 * f2);
-        f1 = this.mSharpenStrength * this.mFaceSizeFactor * Math.min(0.2F, this.mBlurStrength) / 0.2F;
-        this.mSmoothFilter.setSharpenStrength(f1);
-        return;
-      }
-      f1 = Math.min(0.04F, f1) / 0.04F;
-      if (paramBoolean) {}
-      for (;;)
-      {
-        this.mFaceSizeFactor = f1;
-        break;
+      this.mFaceSizeFactor = 1.0F;
+    }
+    else
+    {
+      f1 = Math.min(0.04F, f2) / 0.04F;
+      if (!paramBoolean) {
         f1 = f1 * 0.2F + this.mFaceSizeFactor * 0.8F;
       }
+      this.mFaceSizeFactor = f1;
     }
+    f1 = this.mBlurStrength;
+    f2 = this.mFaceSizeFactor;
+    this.mSmoothFilter.setBlurStrength(f1 * f2);
+    f1 = this.mSharpenStrength * this.mFaceSizeFactor * Math.min(0.2F, this.mBlurStrength) / 0.2F;
+    this.mSmoothFilter.setSharpenStrength(f1);
   }
   
   public void apply()
@@ -100,43 +103,49 @@ public class TTBeautyV5PrefixFilterGroup
     this.mBlurFilter.applyFilterChain(true, 0.0F, 0.0F);
     this.mBorderFilter.apply();
     this.mSmoothFilter.apply();
-    GLES20.glGenTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     this.lastLutPath = null;
   }
   
   public void clear()
   {
-    this.mBlurFilter.ClearGLSL();
-    this.mBorderFilter.ClearGLSL();
-    this.mSmoothFilter.ClearGLSL();
-    GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
+    this.mBlurFilter.clearGLSL();
+    this.mBorderFilter.clearGLSL();
+    this.mSmoothFilter.clearGLSL();
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.lastLutPath = null;
   }
   
   public Frame render(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
   {
-    if ((paramFrame.width == 0) || (paramFrame.height == 0)) {
-      return paramFrame;
+    if (paramFrame.width != 0)
+    {
+      if (paramFrame.height == 0) {
+        return paramFrame;
+      }
+      this.mBeautyAIParam.setBeautyParam(this.isFemale, this.age, true);
+      this.mBlurStrength = (this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.BEAUTY, this.mBlurStrength / 0.6F) * 0.6F);
+      updateBlurAndSharpenStrength(this.mForce, paramPTFaceAttr, paramFrame.width, paramFrame.height);
+      float f = Math.min(1.0F, 360.0F / Math.min(paramFrame.width, paramFrame.height));
+      int i = Math.round(paramFrame.width * f);
+      int j = Math.round(paramFrame.height * f);
+      this.mBlurFilter.updateSize(i, j);
+      paramPTFaceAttr = this.mBlurFilter.RenderProcess(paramFrame.getTextureId(), i, j);
+      this.mBorderFilter.setBlurTexture(paramPTFaceAttr.getTextureId());
+      Frame localFrame1 = this.mBorderFilter.RenderProcess(paramFrame.getTextureId(), i, j);
+      Frame localFrame2 = this.mBlurFilter.RenderProcess(localFrame1.getTextureId(), i, j);
+      this.mSmoothFilter.setBlurTexture(paramPTFaceAttr.getTextureId());
+      this.mSmoothFilter.setShowBorderTexture(localFrame2.getTextureId());
+      Frame localFrame3 = this.mSmoothFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+      paramPTFaceAttr.unlock();
+      localFrame1.unlock();
+      localFrame2.unlock();
+      paramFrame.unlock();
+      return localFrame3;
     }
-    this.mBeautyAIParam.setBeautyParam(this.isFemale, this.age, true);
-    this.mBlurStrength = (this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.BEAUTY, this.mBlurStrength / 0.6F) * 0.6F);
-    updateBlurAndSharpenStrength(this.mForce, paramPTFaceAttr, paramFrame.width, paramFrame.height);
-    float f = Math.min(1.0F, 360.0F / Math.min(paramFrame.width, paramFrame.height));
-    int i = Math.round(paramFrame.width * f);
-    int j = Math.round(f * paramFrame.height);
-    this.mBlurFilter.updateSize(i, j);
-    paramPTFaceAttr = this.mBlurFilter.RenderProcess(paramFrame.getTextureId(), i, j);
-    this.mBorderFilter.setBlurTexture(paramPTFaceAttr.getTextureId());
-    Frame localFrame1 = this.mBorderFilter.RenderProcess(paramFrame.getTextureId(), i, j);
-    Frame localFrame2 = this.mBlurFilter.RenderProcess(localFrame1.getTextureId(), i, j);
-    this.mSmoothFilter.setBlurTexture(paramPTFaceAttr.getTextureId());
-    this.mSmoothFilter.setShowBorderTexture(localFrame2.getTextureId());
-    Frame localFrame3 = this.mSmoothFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-    paramPTFaceAttr.unlock();
-    localFrame1.unlock();
-    localFrame2.unlock();
-    paramFrame.unlock();
-    return localFrame3;
+    return paramFrame;
   }
   
   public void resetToneCurveTexture()
@@ -151,10 +160,13 @@ public class TTBeautyV5PrefixFilterGroup
     i = 0;
     while (i < 256)
     {
-      this.mCurveByteArray[(i * 4)] = ((byte)this.mCurveIntArray[i]);
-      this.mCurveByteArray[(i * 4 + 1)] = ((byte)this.mCurveIntArray[i]);
-      this.mCurveByteArray[(i * 4 + 2)] = ((byte)this.mCurveIntArray[i]);
-      this.mCurveByteArray[(i * 4 + 3)] = -1;
+      byte[] arrayOfByte = this.mCurveByteArray;
+      int j = i * 4;
+      int[] arrayOfInt = this.mCurveIntArray;
+      arrayOfByte[j] = ((byte)arrayOfInt[i]);
+      arrayOfByte[(j + 1)] = ((byte)arrayOfInt[i]);
+      arrayOfByte[(j + 2)] = ((byte)arrayOfInt[i]);
+      arrayOfByte[(j + 3)] = -1;
       i += 1;
     }
     this.mCurveByteBuffer = ByteBuffer.wrap(this.mCurveByteArray);
@@ -180,16 +192,18 @@ public class TTBeautyV5PrefixFilterGroup
   
   public void setLookUpLeftPath(String paramString)
   {
-    if ((this.lastLutPath != null) && (this.lastLutPath.equals(paramString))) {}
-    do
-    {
+    String str = this.lastLutPath;
+    if ((str != null) && (str.equals(paramString))) {
       return;
-      this.lastLutPath = paramString;
-      paramString = TTPicFilterFactoryLocal.getBitmapFromEncryptedFile(paramString);
-    } while (!BitmapUtils.isLegal(paramString));
-    GlUtil.loadTexture(this.mTextures[1], paramString);
-    this.mSmoothFilter.setLookUpLeft(this.mTextures[1]);
-    BitmapUtils.recycle(paramString);
+    }
+    this.lastLutPath = paramString;
+    paramString = TTPicFilterFactoryLocal.getBitmapFromEncryptedFile(paramString);
+    if (BitmapUtils.isLegal(paramString))
+    {
+      GlUtil.loadTexture(this.mTextures[1], paramString);
+      this.mSmoothFilter.setLookUpLeft(this.mTextures[1]);
+      BitmapUtils.recycle(paramString);
+    }
   }
   
   public void setLookUpLeftTexture(int paramInt)
@@ -243,6 +257,11 @@ public class TTBeautyV5PrefixFilterGroup
     this.mSharpenStrength = paramFloat;
   }
   
+  public void setWhitenStrength(float paramFloat)
+  {
+    this.mSmoothFilter.setWhitenStrength(paramFloat);
+  }
+  
   public void updateBlurAndSharpenStrength(boolean paramBoolean)
   {
     this.mForce = paramBoolean;
@@ -250,47 +269,56 @@ public class TTBeautyV5PrefixFilterGroup
   
   public void updateToneCurveTexture(int[] paramArrayOfInt, boolean paramBoolean)
   {
-    int i;
+    int[] arrayOfInt1;
+    int j;
     if (paramBoolean)
     {
       this.mCurveStable = true;
       this.mCurveArrayAssignNeeded = false;
       System.arraycopy(paramArrayOfInt, 0, this.mCurveIntArray, 0, 256);
-      i = 0;
-      while (i < 256)
+    }
+    else
+    {
+      if (this.mCurveArrayAssignNeeded)
       {
-        this.mCurveByteArray[(i * 4)] = ((byte)this.mCurveIntArray[i]);
-        this.mCurveByteArray[(i * 4 + 1)] = ((byte)this.mCurveIntArray[i]);
-        this.mCurveByteArray[(i * 4 + 2)] = ((byte)this.mCurveIntArray[i]);
-        this.mCurveByteArray[(i * 4 + 3)] = -1;
-        i += 1;
+        this.mCurveArrayAssignNeeded = false;
+        System.arraycopy(paramArrayOfInt, 0, this.mCurveIntArray, 0, 256);
       }
-    }
-    if (this.mCurveArrayAssignNeeded)
-    {
-      this.mCurveArrayAssignNeeded = false;
-      System.arraycopy(paramArrayOfInt, 0, this.mCurveIntArray, 0, 256);
-    }
-    if (paramArrayOfInt[''] == this.mCurveIntArray['']) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
+      if (paramArrayOfInt[''] == this.mCurveIntArray['']) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
       if ((this.mCurveStable) && (!paramBoolean)) {
         this.mCurveCounter = 5;
       }
       this.mCurveStable = paramBoolean;
-      if (paramBoolean) {
-        break;
-      }
-      this.mCurveCounter = Math.max(1, this.mCurveCounter - 1);
-      int[] arrayOfInt = new int[256];
-      i = 0;
-      while (i < 256)
+      if (!paramBoolean)
       {
-        arrayOfInt[i] = ((paramArrayOfInt[i] - this.mCurveIntArray[i]) / this.mCurveCounter + this.mCurveIntArray[i]);
-        this.mCurveIntArray[i] = arrayOfInt[i];
-        i += 1;
+        this.mCurveCounter = Math.max(1, this.mCurveCounter - 1);
+        arrayOfInt1 = new int[256];
+        i = 0;
+        while (i < 256)
+        {
+          j = paramArrayOfInt[i];
+          int[] arrayOfInt2 = this.mCurveIntArray;
+          arrayOfInt1[i] = ((j - arrayOfInt2[i]) / this.mCurveCounter + arrayOfInt2[i]);
+          arrayOfInt2[i] = arrayOfInt1[i];
+          i += 1;
+        }
       }
-      break;
+    }
+    int i = 0;
+    while (i < 256)
+    {
+      paramArrayOfInt = this.mCurveByteArray;
+      j = i * 4;
+      arrayOfInt1 = this.mCurveIntArray;
+      paramArrayOfInt[j] = ((byte)arrayOfInt1[i]);
+      paramArrayOfInt[(j + 1)] = ((byte)arrayOfInt1[i]);
+      paramArrayOfInt[(j + 2)] = ((byte)arrayOfInt1[i]);
+      paramArrayOfInt[(j + 3)] = -1;
+      i += 1;
     }
     this.mCurveByteBuffer = ByteBuffer.wrap(this.mCurveByteArray);
     GLES20.glBindTexture(3553, this.mTextures[0]);
@@ -305,7 +333,7 @@ public class TTBeautyV5PrefixFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5PrefixFilterGroup
  * JD-Core Version:    0.7.0.1
  */

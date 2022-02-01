@@ -11,14 +11,14 @@ public class CardLargeView
     super(paramContext, paramAttributeSet);
   }
   
-  protected float a()
+  protected float getAspectRatio()
   {
     return 1.307692F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CardLargeView
  * JD-Core Version:    0.7.0.1
  */

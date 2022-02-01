@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import alud;
 import android.text.TextUtils;
 import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,7 +39,7 @@ public class ApkgDebugConstants
     {
       paramString = (ApkgConfig)sAppConfigs.get(paramString);
       if (paramString != null) {
-        return new MiniAppConfig(paramString, ((ApkgConfigManager)paramQQAppInterface.getManager(287)).getBaseLibInfo());
+        return new MiniAppConfig(paramString, ((ApkgConfigManager)paramQQAppInterface.getManager(QQManagerFactory.APKG_CONFIG_MANAGER)).getBaseLibInfo());
       }
     }
     return null;
@@ -53,7 +54,10 @@ public class ApkgDebugConstants
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         FormSimpleItem localFormSimpleItem = new FormSimpleItem(paramLinearLayout.getContext());
-        localFormSimpleItem.setLeftText(alud.a(2131700668) + ((ApkgConfig)localEntry.getValue()).app_name);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131898538));
+        localStringBuilder.append(((ApkgConfig)localEntry.getValue()).app_name);
+        localFormSimpleItem.setLeftText(localStringBuilder.toString());
         localFormSimpleItem.setOnClickListener(new ApkgDebugConstants.1(paramLinearLayout, localEntry));
         paramLinearLayout.addView(localFormSimpleItem);
       }
@@ -62,7 +66,7 @@ public class ApkgDebugConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.ApkgDebugConstants
  * JD-Core Version:    0.7.0.1
  */

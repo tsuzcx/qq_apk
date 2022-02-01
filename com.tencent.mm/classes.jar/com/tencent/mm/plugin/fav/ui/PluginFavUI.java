@@ -1,55 +1,74 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a.b.b;
-import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.ui.listener.FavImageServiceListener;
+import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.fts.a.n;
 
 public class PluginFavUI
   extends f
-  implements b, c
+  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c
 {
-  private com.tencent.mm.plugin.fav.ui.c.a mzd;
-  private a mze;
-  private m mzf;
+  private FavImageServiceListener AjM;
+  private FavAddItemListener AjN;
+  private FavoriteOperationListener AjO;
   
   public PluginFavUI()
   {
-    AppMethodBeat.i(74289);
-    this.mzd = new com.tencent.mm.plugin.fav.ui.c.a();
-    this.mze = new a();
-    this.mzf = new m();
-    AppMethodBeat.o(74289);
+    AppMethodBeat.i(107082);
+    this.AjM = new FavImageServiceListener();
+    this.AjN = new FavAddItemListener();
+    this.AjO = new FavoriteOperationListener();
+    AppMethodBeat.o(107082);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(74290);
-    this.mzd.alive();
-    this.mze.alive();
-    this.mzf.alive();
-    ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSTaskDaemon().a(-86016, new PluginFavUI.1(this));
-    AppMethodBeat.o(74290);
+    AppMethodBeat.i(107083);
+    this.AjM.alive();
+    this.AjN.alive();
+    this.AjO.alive();
+    ((n)h.az(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.c()
+    {
+      public final boolean aXz()
+      {
+        AppMethodBeat.i(107081);
+        Object localObject = new com.tencent.mm.plugin.fav.ui.c.d();
+        ((n)h.az(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+        localObject = new com.tencent.mm.plugin.fav.ui.c.b();
+        ((n)h.az(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+        AppMethodBeat.o(107081);
+        return true;
+      }
+      
+      public final String getName()
+      {
+        return "InitFTSFavUIPluginTask";
+      }
+    });
+    AppMethodBeat.o(107083);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(74291);
-    this.mzd.dead();
-    this.mze.dead();
-    this.mzf.dead();
-    AppMethodBeat.o(74291);
+    AppMethodBeat.i(107084);
+    this.AjM.dead();
+    this.AjN.dead();
+    this.AjO.dead();
+    AppMethodBeat.o(107084);
   }
   
   public void parallelsDependency() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.PluginFavUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,38 @@
 package com.tencent.qqmini.sdk.launcher.shell;
 
 import android.content.Context;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.launcher.Configuration;
+import com.tencent.qqmini.sdk.launcher.IUIProxy;
+import com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract interface IMiniAppEnv
 {
-  public abstract BaselibLoader getBaselibLoader();
+  public abstract IActivityResultManager getActivityResultManager();
   
-  public abstract Context getContext();
+  public abstract BaselibLoader getBaselibLoader();
   
   public abstract LoginInfo getLoginInfo();
   
   public abstract String getMenuStyle();
   
-  public abstract void init(Context paramContext);
+  public abstract IMiniServiceManager getMiniServiceManager();
   
-  public abstract void setLoginInfo(LoginInfo paramLoginInfo);
+  public abstract IReceiverProxy getReceiverProxy();
   
-  public abstract void setMenuStyle(String paramString);
+  public abstract IShareManager getShareManager();
+  
+  public abstract IUIProxy getUIProxy(MiniAppInfo paramMiniAppInfo);
+  
+  public abstract void init(Context paramContext, Configuration paramConfiguration);
+  
+  public abstract void setupWithIntent(Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv
  * JD-Core Version:    0.7.0.1
  */

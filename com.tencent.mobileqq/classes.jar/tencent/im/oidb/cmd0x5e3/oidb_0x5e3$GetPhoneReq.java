@@ -18,13 +18,14 @@ public final class oidb_0x5e3$GetPhoneReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 88, 96 }, new String[] { "rpt_bytes_phones", "uint32_req_contact_qq", "uint32_req_qq_status" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, GetPhoneReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 88, 96 }, new String[] { "rpt_bytes_phones", "uint32_req_contact_qq", "uint32_req_qq_status" }, new Object[] { localByteStringMicro, localInteger, localInteger }, GetPhoneReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e3.oidb_0x5e3.GetPhoneReq
  * JD-Core Version:    0.7.0.1
  */

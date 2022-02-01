@@ -6,6 +6,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 
 public final class au
 {
@@ -19,10 +21,14 @@ public final class au
     paramContext = (TelephonyManager)paramContext.getSystemService("phone");
     try
     {
-      paramContext = paramContext.getDeviceId();
+      paramContext = PhoneInfoMonitor.getDeviceId(paramContext);
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label17:
+      break label17;
+    }
     return "0000000000";
   }
   
@@ -36,10 +42,14 @@ public final class au
     paramContext = (TelephonyManager)paramContext.getSystemService("phone");
     try
     {
-      paramContext = paramContext.getSubscriberId();
+      paramContext = PhoneInfoMonitor.getSubscriberId(paramContext);
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label17:
+      break label17;
+    }
     return "0000000000";
   }
   
@@ -50,19 +60,17 @@ public final class au
   
   public static String c(Context paramContext)
   {
+    Object localObject = null;
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getMacAddress();
-        return paramContext;
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
+      paramContext = localObject;
+      if (localWifiInfo != null) {
+        paramContext = localWifiInfo.getMacAddress();
       }
+      return paramContext;
     }
-    catch (Exception paramContext)
-    {
-      return null;
-    }
+    catch (Exception paramContext) {}
     return null;
   }
   
@@ -75,16 +83,20 @@ public final class au
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSimSerialNumber();
+      paramContext = PhoneInfoMonitor.getSimSerialNumber((TelephonyManager)paramContext.getSystemService("phone"));
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.au
  * JD-Core Version:    0.7.0.1
  */

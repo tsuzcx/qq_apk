@@ -10,14 +10,12 @@ public class dgm
   {
     try
     {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
       {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        RegisterQQNumberActivity.a(this.a).b(2131562645);
+        RegisterQQNumberActivity.a(this.a).dismiss();
+        RegisterQQNumberActivity.a(this.a).cancel();
       }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
-      }
+      RegisterQQNumberActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

@@ -1,38 +1,25 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
 
-public final class bh
+class bh
+  implements Application.ActivityLifecycleCallbacks
 {
-  private String a;
-  private Map b;
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
-  public bh(String paramString)
-  {
-    this.a = paramString;
-    this.b = new HashMap();
-  }
+  public void onActivityDestroyed(Activity paramActivity) {}
   
-  public final bi a(String paramString)
-  {
-    return (bi)this.b.get(paramString);
-  }
+  public void onActivityPaused(Activity paramActivity) {}
   
-  public final Map a()
-  {
-    return this.b;
-  }
+  public void onActivityResumed(Activity paramActivity) {}
   
-  public final void a(bi parambi)
-  {
-    this.b.put(bi.a(parambi), parambi);
-  }
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
   
-  public final String b()
-  {
-    return this.a;
-  }
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

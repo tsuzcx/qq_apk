@@ -1,62 +1,83 @@
-import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class hzk
-  extends AbstractSet
+  implements Map.Entry
 {
-  public hzk(SoftHashMap paramSoftHashMap) {}
+  private final Object a;
+  private Object b;
   
-  public void clear()
+  public hzk(Object paramObject1, Object paramObject2)
   {
-    this.a.clear();
+    this.a = paramObject1;
+    this.b = paramObject2;
   }
   
-  public boolean contains(Object paramObject)
+  public hzk(Map.Entry paramEntry)
   {
-    return this.a.containsKey(paramObject);
+    this.a = paramEntry.getKey();
+    this.b = paramEntry.getValue();
   }
   
-  public Iterator iterator()
+  private static boolean a(Object paramObject1, Object paramObject2)
   {
-    return new hzj(this.a);
+    if (paramObject1 == null) {
+      return paramObject2 == null;
+    }
+    return paramObject1.equals(paramObject2);
   }
   
-  public boolean remove(Object paramObject)
+  public boolean equals(Object paramObject)
   {
-    if (this.a.containsKey(paramObject))
+    if (!(paramObject instanceof Map.Entry)) {}
+    do
     {
-      this.a.remove(paramObject);
-      return true;
-    }
-    return false;
+      return false;
+      paramObject = (Map.Entry)paramObject;
+    } while ((!a(this.a, paramObject.getKey())) || (!a(this.b, paramObject.getValue())));
+    return true;
   }
   
-  public int size()
+  public Object getKey()
   {
-    return this.a.size();
+    return this.a;
   }
   
-  public Object[] toArray()
+  public Object getValue()
   {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
-    }
-    return localArrayList.toArray();
+    return this.b;
   }
   
-  public Object[] toArray(Object[] paramArrayOfObject)
+  public int hashCode()
   {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
+    int j = 0;
+    int i;
+    if (this.a == null)
+    {
+      i = 0;
+      if (this.b != null) {
+        break label33;
+      }
     }
-    return localArrayList.toArray(paramArrayOfObject);
+    for (;;)
+    {
+      return i ^ j;
+      i = this.a.hashCode();
+      break;
+      label33:
+      j = this.b.hashCode();
+    }
+  }
+  
+  public Object setValue(Object paramObject)
+  {
+    Object localObject = this.b;
+    this.b = paramObject;
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return this.a + "=" + this.b;
   }
 }
 

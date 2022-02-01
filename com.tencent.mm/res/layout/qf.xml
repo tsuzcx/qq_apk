@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/l2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/m1" android:paddingBottom="@dimen/m1" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx">
-        <EditText android:gravity="center|left" android:id="@id/b30" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/gfp" android:singleLine="true" android:layout_weight="1.0" />
-        <Button android:textColor="@color/a7k" android:id="@id/b31" android:background="@drawable/gw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ne" android:minWidth="@dimen/n6" android:minHeight="@dimen/li" android:text="@string/gfo" style="@style/nx" />
+    <LinearLayout android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+        <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
     </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/n_">
-        <Button android:id="@id/b32" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gfn" android:layout_weight="1.0" style="@style/nx" />
-        <Button android:id="@id/b33" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gfw" android:layout_weight="1.0" style="@style/nx" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5.0">
-        <Button android:id="@id/b34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gfq" android:layout_weight="1.0" style="@style/z7" />
-        <Button android:id="@id/b35" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gfu" android:layout_weight="1.0" style="@style/z7" />
-        <Button android:id="@id/b36" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gft" android:layout_weight="1.0" style="@style/z7" />
-        <Button android:id="@id/b37" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gfv" android:layout_weight="1.0" style="@style/z7" />
-        <Button android:id="@id/b38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gfs" android:layout_weight="1.0" style="@style/z7" />
-    </LinearLayout>
-    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/b39" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+</RelativeLayout>

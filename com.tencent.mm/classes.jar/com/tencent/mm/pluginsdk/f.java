@@ -1,126 +1,103 @@
 package com.tencent.mm.pluginsdk;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.os.Build.VERSION;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMFragmentActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.plugin.j.a.a;
+import com.tencent.mm.plugin.j.a.b;
+import java.util.HashMap;
 
 public final class f
 {
-  public static void a(MMFragmentActivity paramMMFragmentActivity, View paramView)
+  private static HashMap<String, Integer> XND = null;
+  
+  public static int boR(String paramString)
   {
-    AppMethodBeat.i(105831);
-    if (paramMMFragmentActivity == null)
+    AppMethodBeat.i(133670);
+    if (XND == null)
     {
-      AppMethodBeat.o(105831);
-      return;
+      HashMap localHashMap = new HashMap();
+      XND = localHashMap;
+      localHashMap.put("avi", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("m4v", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("vob", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("mpeg", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("mpe", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("asx", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("asf", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("f4v", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("flv", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("mkv", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("wmv", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("wm", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("3gp", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("mp4", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("rmvb", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("rm", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("ra", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("ram", Integer.valueOf(a.b.app_attach_file_icon_video));
+      XND.put("mp3pro", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("vqf", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("cd", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("md", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("mod", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("vorbis", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("au", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("amr", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("silk", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("wma", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("mmf", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("mid", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("midi", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("mp3", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("aac", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("ape", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("aiff", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("aif", Integer.valueOf(a.b.app_attach_file_icon_music));
+      XND.put("jfif", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("tiff", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("tif", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("jpe", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("dib", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("jpeg", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("jpg", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("png", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("bmp", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("gif", Integer.valueOf(a.a.app_attach_file_icon_pic));
+      XND.put("rar", Integer.valueOf(a.b.app_attach_file_icon_rar));
+      XND.put("zip", Integer.valueOf(a.b.app_attach_file_icon_rar));
+      XND.put("7z", Integer.valueOf(a.b.app_attach_file_icon_rar));
+      XND.put("iso", Integer.valueOf(a.b.app_attach_file_icon_rar));
+      XND.put("cab", Integer.valueOf(a.b.app_attach_file_icon_rar));
+      XND.put("doc", Integer.valueOf(a.b.app_attach_file_icon_word));
+      XND.put("docx", Integer.valueOf(a.b.app_attach_file_icon_word));
+      XND.put("ppt", Integer.valueOf(a.b.app_attach_file_icon_ppt));
+      XND.put("pptx", Integer.valueOf(a.b.app_attach_file_icon_ppt));
+      XND.put("xls", Integer.valueOf(a.b.app_attach_file_icon_excel));
+      XND.put("xlsx", Integer.valueOf(a.b.app_attach_file_icon_excel));
+      XND.put("txt", Integer.valueOf(a.b.app_attach_file_icon_txt));
+      XND.put("rtf", Integer.valueOf(a.b.app_attach_file_icon_txt));
+      XND.put("pdf", Integer.valueOf(a.b.app_attach_file_icon_pdf));
+      XND.put("ofd", Integer.valueOf(a.b.app_attach_file_icon_ofd));
     }
-    if ((Build.VERSION.SDK_INT >= 16) && (paramMMFragmentActivity.getWindow() != null) && (paramMMFragmentActivity.getWindow().getDecorView() != null)) {
-      paramMMFragmentActivity.getWindow().getDecorView().post(new f.2(paramMMFragmentActivity, paramView));
-    }
-    AppMethodBeat.o(105831);
-  }
-  
-  public static void ao(Activity paramActivity)
-  {
-    AppMethodBeat.i(105828);
-    if (Build.VERSION.SDK_INT >= 16)
+    paramString = (Integer)XND.get(paramString);
+    if (paramString == null)
     {
-      if ((paramActivity instanceof AppCompatActivity))
-      {
-        ((AppCompatActivity)paramActivity).supportRequestWindowFeature(109);
-        AppMethodBeat.o(105828);
-        return;
-      }
-      paramActivity.requestWindowFeature(9);
+      i = a.b.app_attach_file_icon_unknow;
+      AppMethodBeat.o(133670);
+      return i;
     }
-    AppMethodBeat.o(105828);
+    int i = paramString.intValue();
+    AppMethodBeat.o(133670);
+    return i;
   }
   
-  public static void b(MMFragmentActivity paramMMFragmentActivity, View paramView)
+  public static int iGF()
   {
-    AppMethodBeat.i(105832);
-    if (paramMMFragmentActivity == null)
-    {
-      AppMethodBeat.o(105832);
-      return;
-    }
-    if ((Build.VERSION.SDK_INT >= 16) && (paramMMFragmentActivity.getWindow() != null) && (paramMMFragmentActivity.getWindow().getDecorView() != null)) {
-      paramMMFragmentActivity.getWindow().getDecorView().post(new f.3(paramMMFragmentActivity, paramView));
-    }
-    AppMethodBeat.o(105832);
-  }
-  
-  public static int di(Context paramContext)
-  {
-    AppMethodBeat.i(105833);
-    int i = 0;
-    Object localObject = new TypedValue();
-    if (paramContext.getTheme().resolveAttribute(2130772143, (TypedValue)localObject, true)) {
-      i = TypedValue.complexToDimensionPixelSize(((TypedValue)localObject).data, paramContext.getResources().getDisplayMetrics());
-    }
-    localObject = paramContext.getResources().getDisplayMetrics();
-    int j = i;
-    if (i <= 0) {
-      if (((DisplayMetrics)localObject).widthPixels <= ((DisplayMetrics)localObject).heightPixels) {
-        break label86;
-      }
-    }
-    label86:
-    for (j = paramContext.getResources().getDimensionPixelSize(2131427558);; j = paramContext.getResources().getDimensionPixelSize(2131427559))
-    {
-      AppMethodBeat.o(105833);
-      return j;
-    }
-  }
-  
-  public static int fK(Context paramContext)
-  {
-    AppMethodBeat.i(105827);
-    int i = 0;
-    if ((paramContext instanceof MMActivity)) {
-      i = ((MMActivity)paramContext).getTitleLocation();
-    }
-    int j = i;
-    if (i <= 0) {
-      j = paramContext.getResources().getDimensionPixelSize(2131427559);
-    }
-    AppMethodBeat.o(105827);
-    return j;
-  }
-  
-  public static void m(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(105829);
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramMMActivity.supportRequestWindowFeature(109);
-    }
-    AppMethodBeat.o(105829);
-  }
-  
-  public static void n(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(105830);
-    WeakReference localWeakReference = new WeakReference(paramMMActivity);
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramMMActivity.getWindow().getDecorView().post(new f.1(localWeakReference));
-    }
-    AppMethodBeat.o(105830);
+    return a.b.app_attach_file_icon_unknow;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f
  * JD-Core Version:    0.7.0.1
  */

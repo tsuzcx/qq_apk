@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.app.MQPIntChkHandler;
 
 public class fdi
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public fdi(MQPIntChkHandler paramMQPIntChkHandler, int paramInt) {}
+  public fdi(MQPIntChkHandler paramMQPIntChkHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
+    MQPIntChkHandler.a(this.a, false);
   }
 }
 

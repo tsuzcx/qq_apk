@@ -17,26 +17,33 @@ import java.util.Set;
 
 public class PTFaceAttr$Builder
 {
+  private List<Integer> ageList;
+  private int[] autoBrightnessCurve;
+  private int[] autoContrastCurve;
   private List<List<PointF>> bodyPoints;
-  private Frame correctFrame;
   private int[] curve;
   private byte[] data;
   private Map<String, Long> detectTimes;
+  private List<Set<Integer>> expressions;
+  private List<float[]> face3DRotationArray;
+  private List<float[]> face3DVerticesArray;
   private Map<Integer, FaceActionCounter> faceActionCounter;
   private List<float[]> faceAngles = new ArrayList();
   private double faceAverageL = 60.0D;
   private int faceDetHeight = 0;
   private int faceDetRotation = 0;
   private int faceDetWidth = 0;
-  private double faceDetectScale;
+  private double faceDetectScale = 1.0D;
   private VideoPreviewFaceOutlineDetector faceDetector;
   private Map<PTFaceAttr.PTExpression, Boolean> faceExpression;
   private List<FaceInfo> faceInfos;
   private List<float[]> faceKitVerticesArray;
   private PointF facePiont2DCenter;
+  private List<List<PointF>> facePoint94;
   private List<List<PointF>> facePoints = new ArrayList();
   private List<FaceStatus> faceStatusList;
   private List<int[]> featureIndicesArray;
+  private List<Integer> genderList;
   private Pair<Integer, int[]> histogram;
   private List<List<PointF>> irisPoints;
   private boolean isPhoneFlatHorizontal;
@@ -53,6 +60,24 @@ public class PTFaceAttr$Builder
   private long timeStamp;
   private Set<Integer> triggeredExpression = new HashSet();
   
+  public Builder ageList(List<Integer> paramList)
+  {
+    this.ageList = paramList;
+    return this;
+  }
+  
+  public Builder autoBrightnessCurve(int[] paramArrayOfInt)
+  {
+    this.autoBrightnessCurve = paramArrayOfInt;
+    return this;
+  }
+  
+  public Builder autoContrastCurve(int[] paramArrayOfInt)
+  {
+    this.autoContrastCurve = paramArrayOfInt;
+    return this;
+  }
+  
   public Builder bodyPoints(List<List<PointF>> paramList)
   {
     this.bodyPoints = paramList;
@@ -62,12 +87,6 @@ public class PTFaceAttr$Builder
   public PTFaceAttr build()
   {
     return new PTFaceAttr(this);
-  }
-  
-  public Builder correctFrame(Frame paramFrame)
-  {
-    this.correctFrame = paramFrame;
-    return this;
   }
   
   public Builder curve(int[] paramArrayOfInt)
@@ -85,6 +104,24 @@ public class PTFaceAttr$Builder
   public Builder detectTimes(Map paramMap)
   {
     this.detectTimes = paramMap;
+    return this;
+  }
+  
+  public Builder expressions(List<Set<Integer>> paramList)
+  {
+    this.expressions = paramList;
+    return this;
+  }
+  
+  public Builder face3DRotationArray(List<float[]> paramList)
+  {
+    this.face3DRotationArray = paramList;
+    return this;
+  }
+  
+  public Builder face3DVerticesArray(List<float[]> paramList)
+  {
+    this.face3DVerticesArray = paramList;
     return this;
   }
   
@@ -160,6 +197,12 @@ public class PTFaceAttr$Builder
     return this;
   }
   
+  public Builder facePoint94(List<List<PointF>> paramList)
+  {
+    this.facePoint94 = paramList;
+    return this;
+  }
+  
   public Builder facePoints(List<List<PointF>> paramList)
   {
     this.facePoints = paramList;
@@ -175,6 +218,12 @@ public class PTFaceAttr$Builder
   public Builder featureIndicesArray(List<int[]> paramList)
   {
     this.featureIndicesArray = paramList;
+    return this;
+  }
+  
+  public Builder genderList(List<Integer> paramList)
+  {
+    this.genderList = paramList;
     return this;
   }
   
@@ -270,7 +319,7 @@ public class PTFaceAttr$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr.Builder
  * JD-Core Version:    0.7.0.1
  */

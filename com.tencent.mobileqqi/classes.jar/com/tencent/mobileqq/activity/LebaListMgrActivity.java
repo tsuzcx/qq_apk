@@ -13,10 +13,10 @@ import com.tencent.mobileqq.config.LebaConfig;
 import com.tencent.mobileqq.observer.GameCenterObserver;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
-import csq;
-import css;
-import csu;
-import csw;
+import csp;
+import csr;
+import cst;
+import csv;
 
 public class LebaListMgrActivity
   extends IphoneTitleBarActivity
@@ -24,13 +24,13 @@ public class LebaListMgrActivity
   private LebaListMgrAdapter jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter;
   protected RedTouchObserver a;
   public DownloadIconsListener a;
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new css(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new csr(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   
   public LebaListMgrActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppRedTouchObserver = new csu(this);
-    this.jdField_a_of_type_ComTencentMobileqqConfigDownloadIconsListener = new csw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppRedTouchObserver = new cst(this);
+    this.jdField_a_of_type_ComTencentMobileqqConfigDownloadIconsListener = new csv(this);
   }
   
   private void d()
@@ -54,7 +54,7 @@ public class LebaListMgrActivity
     }
     this.b.o();
     if (!LebaShowListManager.a().a) {
-      ThreadManager.b(new csq(this));
+      ThreadManager.b(new csp(this));
     }
   }
   

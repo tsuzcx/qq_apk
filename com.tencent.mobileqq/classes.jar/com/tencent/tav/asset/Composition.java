@@ -37,9 +37,9 @@ public class Composition<CTrack extends CompositionTrack>
       this.tracks = new ArrayList();
     }
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      Object localObject = this.extractor.getTrackFormat(i).getString("mime");
+      localObject = this.extractor.getTrackFormat(i).getString("mime");
       int k;
       if (((String)localObject).startsWith("video/"))
       {
@@ -48,50 +48,41 @@ public class Composition<CTrack extends CompositionTrack>
         localObject = new CompositionTrack(this, k, 1, new CMTimeRange(CMTime.CMTimeZero, getVideoDuration()));
         this.tracks.add(localObject);
       }
-      for (;;)
+      else if (((String)localObject).startsWith("audio/"))
       {
-        i += 1;
-        break;
-        if (((String)localObject).startsWith("audio/"))
-        {
-          k = this.trackIndex;
-          this.trackIndex = (k + 1);
-          localObject = new CompositionTrack(this, k, 2, new CMTimeRange(CMTime.CMTimeZero, getAudioDuration()));
-          this.tracks.add(localObject);
-        }
+        k = this.trackIndex;
+        this.trackIndex = (k + 1);
+        localObject = new CompositionTrack(this, k, 2, new CMTimeRange(CMTime.CMTimeZero, getAudioDuration()));
+        this.tracks.add(localObject);
       }
+      i += 1;
     }
-    Log.e("Asset", " Composition createTracks finish, has track count: " + this.tracks);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" Composition createTracks finish, has track count: ");
+    ((StringBuilder)localObject).append(this.tracks);
+    Log.e("Asset", ((StringBuilder)localObject).toString());
   }
   
   protected CMTime getAudioDuration()
   {
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = (CompositionTrack)localIterator.next();
-      if (((CompositionTrack)localObject2).getMediaType() != 2) {
-        break label68;
+      if (((CompositionTrack)localObject2).getMediaType() == 2)
+      {
+        localObject2 = ((CompositionTrack)localObject2).getDuration();
+        if (((CMTime)localObject2).bigThan((CMTime)localObject1)) {
+          localObject1 = localObject2;
+        }
       }
-      CMTime localCMTime = ((CompositionTrack)localObject2).getDuration();
-      localObject2 = localObject1;
-      if (localCMTime.bigThan((CMTime)localObject1)) {
-        localObject2 = localCMTime;
-      }
-      localObject1 = localObject2;
     }
-    label68:
-    for (;;)
-    {
-      break;
-      return localObject1;
-    }
+    return localObject1;
   }
   
   public List<CTrack> getTracks()
   {
-    Log.e("Asset", "getTracks finish, has track count: " + this.tracks);
     return this.tracks;
   }
   
@@ -99,25 +90,18 @@ public class Composition<CTrack extends CompositionTrack>
   {
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = (CompositionTrack)localIterator.next();
-      if (((CompositionTrack)localObject2).getMediaType() != 1) {
-        break label68;
+      if (((CompositionTrack)localObject2).getMediaType() == 1)
+      {
+        localObject2 = ((CompositionTrack)localObject2).getDuration();
+        if (((CMTime)localObject2).bigThan((CMTime)localObject1)) {
+          localObject1 = localObject2;
+        }
       }
-      CMTime localCMTime = ((CompositionTrack)localObject2).getDuration();
-      localObject2 = localObject1;
-      if (localCMTime.bigThan((CMTime)localObject1)) {
-        localObject2 = localCMTime;
-      }
-      localObject1 = localObject2;
     }
-    label68:
-    for (;;)
-    {
-      break;
-      return localObject1;
-    }
+    return localObject1;
   }
   
   public void loadValuesAsynchronouslyForKeys(List<String> paramList, AsynchronousKeyValueLoading.loadCallback paramloadCallback) {}
@@ -129,12 +113,18 @@ public class Composition<CTrack extends CompositionTrack>
   
   public String toString()
   {
-    return "Composition{tracks=" + this.tracks + ", trackCount=" + this.trackCount + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Composition{\ntracks=");
+    localStringBuilder.append(this.tracks);
+    localStringBuilder.append("\ntrackCount=");
+    localStringBuilder.append(this.trackCount);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.asset.Composition
  * JD-Core Version:    0.7.0.1
  */

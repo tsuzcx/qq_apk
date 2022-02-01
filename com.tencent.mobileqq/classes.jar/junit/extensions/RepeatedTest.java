@@ -11,10 +11,12 @@ public class RepeatedTest
   public RepeatedTest(Test paramTest, int paramInt)
   {
     super(paramTest);
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Repetition count must be >= 0");
+    if (paramInt >= 0)
+    {
+      this.fTimesRepeat = paramInt;
+      return;
     }
-    this.fTimesRepeat = paramInt;
+    throw new IllegalArgumentException("Repetition count must be >= 0");
   }
   
   public int countTestCases()
@@ -25,9 +27,9 @@ public class RepeatedTest
   public void run(TestResult paramTestResult)
   {
     int i = 0;
-    for (;;)
+    while (i < this.fTimesRepeat)
     {
-      if ((i >= this.fTimesRepeat) || (paramTestResult.shouldStop())) {
+      if (paramTestResult.shouldStop()) {
         return;
       }
       super.run(paramTestResult);
@@ -37,12 +39,15 @@ public class RepeatedTest
   
   public String toString()
   {
-    return super.toString() + "(repeated)";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("(repeated)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     junit.extensions.RepeatedTest
  * JD-Core Version:    0.7.0.1
  */

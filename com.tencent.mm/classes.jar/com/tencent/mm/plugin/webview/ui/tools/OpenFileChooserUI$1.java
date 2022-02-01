@@ -1,35 +1,25 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.pluginsdk.ui.tools.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h.c;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 
 final class OpenFileChooserUI$1
-  implements h.c
+  implements u.g
 {
   OpenFileChooserUI$1(OpenFileChooserUI paramOpenFileChooserUI) {}
   
-  public final void iA(int paramInt)
+  public final void onCreateMMMenu(s params)
   {
-    AppMethodBeat.i(7442);
-    boolean bool = b.a(this.vbg.getContext(), "android.permission.CAMERA", 16, "", "");
-    ab.i("MicroMsg.OpenFileChooserUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this.vbg.getContext() });
-    if (!bool)
-    {
-      AppMethodBeat.o(7442);
-      return;
-    }
-    n.c(this.vbg.getContext(), e.esr, "microMsg." + System.currentTimeMillis() + ".jpg", 2);
-    AppMethodBeat.o(7442);
+    AppMethodBeat.i(175749);
+    params.c(1, this.WSM.getString(c.i.webview_jssdk_take_photo));
+    AppMethodBeat.o(175749);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.OpenFileChooserUI.1
  * JD-Core Version:    0.7.0.1
  */

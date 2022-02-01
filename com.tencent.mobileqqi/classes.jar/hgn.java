@@ -1,17 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
 import com.tencent.mobileqq.widget.DropdownView;
 
-class hgn
+public class hgn
   implements Runnable
 {
-  hgn(hgm paramhgm, View paramView) {}
+  public hgn(DropdownView paramDropdownView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Hgm.a.jdField_a_of_type_Hgp.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Hgm.a.b);
-    this.jdField_a_of_type_Hgm.a.jdField_a_of_type_Boolean = true;
+    this.a.a = false;
   }
 }
 

@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class dik
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
   public dik(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramDialogInterface.dismiss();
     this.a.finish();
   }
 }

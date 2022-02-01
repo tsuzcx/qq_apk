@@ -5,7 +5,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.Arrays;
 
 @TargetApi(21)
@@ -25,12 +25,11 @@ public final class TPAudioPassThroughCapabilities
       this.supportedEncodings = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
       Arrays.sort(this.supportedEncodings);
     }
-    for (;;)
+    else
     {
-      this.maxChannelCount = paramInt;
-      return;
       this.supportedEncodings = new int[0];
     }
+    this.maxChannelCount = paramInt;
   }
   
   public static TPAudioPassThroughCapabilities getCapabilities(Context paramContext)
@@ -41,24 +40,22 @@ public final class TPAudioPassThroughCapabilities
   @SuppressLint({"InlinedApi"})
   static TPAudioPassThroughCapabilities getCapabilities(Context paramContext, @Nullable Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0)) {
-      return DEFAULT_AUDIO_CAPABILITIES;
+    if ((paramIntent != null) && (paramIntent.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) != 0)) {
+      return new TPAudioPassThroughCapabilities(paramIntent.getIntArrayExtra("android.media.extra.ENCODINGS"), paramIntent.getIntExtra("android.media.extra.MAX_CHANNEL_COUNT", 8));
     }
-    return new TPAudioPassThroughCapabilities(paramIntent.getIntArrayExtra("android.media.extra.ENCODINGS"), paramIntent.getIntExtra("android.media.extra.MAX_CHANNEL_COUNT", 8));
+    return DEFAULT_AUDIO_CAPABILITIES;
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof TPAudioPassThroughCapabilities)) {
-        return false;
-      }
-      paramObject = (TPAudioPassThroughCapabilities)paramObject;
-    } while ((Arrays.equals(this.supportedEncodings, paramObject.supportedEncodings)) && (this.maxChannelCount == paramObject.maxChannelCount));
-    return false;
+    }
+    if (!(paramObject instanceof TPAudioPassThroughCapabilities)) {
+      return false;
+    }
+    paramObject = (TPAudioPassThroughCapabilities)paramObject;
+    return (Arrays.equals(this.supportedEncodings, paramObject.supportedEncodings)) && (this.maxChannelCount == paramObject.maxChannelCount);
   }
   
   public int getMaxChannelCount()
@@ -78,12 +75,18 @@ public final class TPAudioPassThroughCapabilities
   
   public String toString()
   {
-    return "AudioCapabilities[maxChannelCount=" + this.maxChannelCount + ", supportedEncodings=" + Arrays.toString(this.supportedEncodings) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioCapabilities[maxChannelCount=");
+    localStringBuilder.append(this.maxChannelCount);
+    localStringBuilder.append(", supportedEncodings=");
+    localStringBuilder.append(Arrays.toString(this.supportedEncodings));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPAudioPassThroughCapabilities
  * JD-Core Version:    0.7.0.1
  */

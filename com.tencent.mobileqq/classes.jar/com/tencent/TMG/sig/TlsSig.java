@@ -3,38 +3,40 @@ package com.tencent.TMG.sig;
 public class TlsSig
 {
   private static boolean mIsSoLoaded = false;
-  private static TlsSig sInstance = null;
+  private static TlsSig sInstance;
   
   public static TlsSig getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null)
+    if (sInstance == null) {
+      try
       {
-        loadSo();
-        if (mIsSoLoaded) {
-          sInstance = new TlsSig();
+        if (sInstance == null)
+        {
+          loadSo();
+          if (mIsSoLoaded) {
+            sInstance = new TlsSig();
+          }
         }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private static void loadSo()
   {
-    if (!mIsSoLoaded) {}
-    try
-    {
-      System.loadLibrary("qav_tlssig");
-      mIsSoLoaded = true;
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      mIsSoLoaded = false;
-      localUnsatisfiedLinkError.printStackTrace();
+    if (!mIsSoLoaded) {
+      try
+      {
+        System.loadLibrary("qav_tlssig");
+        mIsSoLoaded = true;
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        mIsSoLoaded = false;
+        localUnsatisfiedLinkError.printStackTrace();
+      }
     }
   }
   
@@ -42,7 +44,7 @@ public class TlsSig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sig.TlsSig
  * JD-Core Version:    0.7.0.1
  */

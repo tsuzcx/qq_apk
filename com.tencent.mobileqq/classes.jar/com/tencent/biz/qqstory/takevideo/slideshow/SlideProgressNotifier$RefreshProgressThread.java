@@ -1,53 +1,61 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
-import bhsw;
 import com.tencent.qphone.base.util.QLog;
-import xmo;
+import com.tencent.util.ThrowablesUtils;
 
 public class SlideProgressNotifier$RefreshProgressThread
   extends Thread
 {
-  int jdField_a_of_type_Int;
-  xmo jdField_a_of_type_Xmo;
-  boolean jdField_a_of_type_Boolean = false;
+  int a;
   int b;
   int c;
   int d;
+  boolean e = false;
+  RefreshUICallBack f;
   
-  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, xmo paramxmo)
+  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, RefreshUICallBack paramRefreshUICallBack)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    if (paramInt2 - paramInt3 > 0) {}
-    for (this.c = (paramInt1 / (paramInt2 - paramInt3));; this.c = 100)
-    {
-      this.d = paramInt3;
-      this.jdField_a_of_type_Xmo = paramxmo;
-      return;
+    paramInt2 -= paramInt3;
+    if (paramInt2 > 0) {
+      this.c = (paramInt1 / paramInt2);
+    } else {
+      this.c = 100;
     }
+    this.d = paramInt3;
+    this.f = paramRefreshUICallBack;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + bhsw.a(new RuntimeException()));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cancel progress update thread, stack trace : ");
+      localStringBuilder.append(ThrowablesUtils.a(new RuntimeException()));
+      QLog.d("QQProgressNotifier", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public void run()
   {
-    while (!this.jdField_a_of_type_Boolean) {
-      if (this.d < this.b)
+    while (!this.e)
+    {
+      int i = this.d;
+      int j = this.b;
+      if (i < j)
       {
-        if (this.jdField_a_of_type_Xmo != null)
+        RefreshUICallBack localRefreshUICallBack1 = this.f;
+        if (localRefreshUICallBack1 != null)
         {
-          this.jdField_a_of_type_Xmo.a(this.d);
+          localRefreshUICallBack1.a(i);
           this.d += 1;
           try
           {
@@ -61,18 +69,19 @@ public class SlideProgressNotifier$RefreshProgressThread
       }
       else
       {
-        this.d = this.b;
-        if (this.jdField_a_of_type_Xmo != null) {
-          this.jdField_a_of_type_Xmo.a(this.d);
+        this.d = j;
+        RefreshUICallBack localRefreshUICallBack2 = this.f;
+        if (localRefreshUICallBack2 != null) {
+          localRefreshUICallBack2.a(this.d);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier.RefreshProgressThread
  * JD-Core Version:    0.7.0.1
  */

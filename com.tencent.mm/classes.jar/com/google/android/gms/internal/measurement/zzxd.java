@@ -11,88 +11,99 @@ public final class zzxd
   
   static
   {
-    AppMethodBeat.i(3538);
-    for (localObject2 = null;; localObject2 = localObject3)
+    AppMethodBeat.i(40328);
+    for (localObject3 = null;; localObject3 = localObject4)
     {
       try
       {
-        localObject3 = zzsd();
-        if (localObject3 == null) {
-          break label60;
+        localObject4 = zzsd();
+        if (localObject4 == null) {
+          break label58;
         }
-        localObject2 = localObject3;
-        if (((Integer)localObject3).intValue() < 19) {
-          break label60;
+        localObject3 = localObject4;
+        if (((Integer)localObject4).intValue() < 19) {
+          break label58;
         }
-        localObject2 = localObject3;
+        localObject3 = localObject4;
         localObject1 = new zzxi();
-        localObject2 = localObject3;
+        localObject3 = localObject4;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
           Object localObject1;
-          label60:
-          Object localObject3 = System.err;
-          String str = zzxd.zza.class.getName();
-          ((PrintStream)localObject3).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
-          localThrowable.printStackTrace(System.err);
-          zzxd.zza localzza = new zzxd.zza();
+          label58:
+          Object localObject4 = System.err;
+          String str = zza.class.getName();
+          ((PrintStream)localObject4).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
+          localObject2.printStackTrace(System.err);
+          zza localzza = new zza();
           continue;
           int i = 0;
           continue;
-          localObject2 = localObject3;
-          localzza = new zzxd.zza();
-          localObject2 = localObject3;
+          localObject3 = localObject4;
+          localzza = new zza();
+          localObject3 = localObject4;
           continue;
-          i = localObject2.intValue();
+          i = localObject3.intValue();
         }
       }
       zzbnx = (zzxe)localObject1;
-      if (localObject2 != null) {
-        break label182;
+      if (localObject3 != null) {
+        break label180;
       }
       i = 1;
       zzbny = i;
-      AppMethodBeat.o(3538);
+      AppMethodBeat.o(40328);
       return;
-      localObject2 = localObject3;
+      localObject3 = localObject4;
       if (Boolean.getBoolean("com.google.devtools.build.android.desugar.runtime.twr_disable_mimic")) {
         break;
       }
       i = 1;
       if (i == 0) {
-        break label167;
+        break label165;
       }
-      localObject2 = localObject3;
+      localObject3 = localObject4;
       localObject1 = new zzxh();
     }
   }
   
   public static void zza(Throwable paramThrowable, PrintStream paramPrintStream)
   {
-    AppMethodBeat.i(3536);
+    AppMethodBeat.i(40326);
     zzbnx.zza(paramThrowable, paramPrintStream);
-    AppMethodBeat.o(3536);
+    AppMethodBeat.o(40326);
   }
   
   private static Integer zzsd()
   {
-    AppMethodBeat.i(3537);
+    AppMethodBeat.i(40327);
     try
     {
       Integer localInteger = (Integer)Class.forName("android.os.Build$VERSION").getField("SDK_INT").get(null);
-      AppMethodBeat.o(3537);
+      AppMethodBeat.o(40327);
       return localInteger;
     }
     catch (Exception localException)
     {
       System.err.println("Failed to retrieve value from android.os.Build$VERSION.SDK_INT due to the following exception.");
       localException.printStackTrace(System.err);
-      AppMethodBeat.o(3537);
+      AppMethodBeat.o(40327);
     }
     return null;
+  }
+  
+  static final class zza
+    extends zzxe
+  {
+    public final void zza(Throwable paramThrowable, PrintStream paramPrintStream)
+    {
+      AppMethodBeat.i(40325);
+      paramThrowable.printStackTrace(paramPrintStream);
+      AppMethodBeat.o(40325);
+    }
   }
 }
 

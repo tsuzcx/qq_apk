@@ -13,21 +13,14 @@ import com.tencent.ark.ArkViewImplement;
 public class ArkAppLoadLayout
   extends RelativeLayout
 {
-  public static int a;
-  public static Paint a;
-  public static int b;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private ArkViewImplement jdField_a_of_type_ComTencentArkArkViewImplement;
-  public boolean a;
-  int c = -2565408;
-  
-  static
-  {
-    jdField_a_of_type_Int = -2565408;
-    b = -2565408;
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  }
+  public static int a = -2565408;
+  public static int b = -2565408;
+  public static Paint c = new Paint(1);
+  int d = -2565408;
+  public boolean e = false;
+  private Path f = new Path();
+  private RectF g = new RectF();
+  private ArkViewImplement h;
   
   public ArkAppLoadLayout(Context paramContext)
   {
@@ -46,49 +39,46 @@ public class ArkAppLoadLayout
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      localPaint = jdField_a_of_type_AndroidGraphicsPaint;
-      if (!isPressed()) {
-        break label44;
+      Paint localPaint = c;
+      int i;
+      if (isPressed()) {
+        i = a;
+      } else {
+        i = this.d;
       }
-    }
-    label44:
-    for (int i = jdField_a_of_type_Int;; i = this.c)
-    {
       localPaint.setColor(i);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, jdField_a_of_type_AndroidGraphicsPaint);
-      super.draw(paramCanvas);
-      return;
+      paramCanvas.drawPath(this.f, c);
     }
+    super.draw(paramCanvas);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_ComTencentArkArkViewImplement.makePath(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPath);
+      this.g.set(0.0F, 0.0F, View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
+      this.f.reset();
+      this.h.makePath(this.g, this.f);
     }
   }
   
   public void setArkView(ArkViewImplement paramArkViewImplement)
   {
-    this.jdField_a_of_type_ComTencentArkArkViewImplement = paramArkViewImplement;
+    this.h = paramArkViewImplement;
     setWillNotDraw(false);
   }
   
   public void setBkgColorNormal(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout
  * JD-Core Version:    0.7.0.1
  */

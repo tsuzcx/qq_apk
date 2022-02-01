@@ -1,0 +1,48 @@
+package com.tencent.mobileqq.guild.animate;
+
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/guild/animate/MinimizeAnimateController$startOpenAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "isReverse", "", "onAnimationRepeat", "onAnimationStart", "qqguild-impl_release"}, k=1, mv={1, 1, 16})
+public final class MinimizeAnimateController$startOpenAnimation$1
+  implements Animator.AnimatorListener
+{
+  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationEnd(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
+  {
+    MinimizeAnimateController.a(this.a, false);
+    paramAnimator = this.a;
+    paramAnimator = MinimizeAnimateController.a(paramAnimator, MinimizeAnimateController.b(paramAnimator));
+    MinimizeAnimateController.b(this.a, (View)paramAnimator);
+    paramAnimator = MinimizeAnimateController.a(this.a);
+    if (paramAnimator != null) {
+      paramAnimator.a(2);
+    }
+  }
+  
+  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationStart(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationStart(@Nullable Animator paramAnimator, boolean paramBoolean)
+  {
+    MinimizeAnimateController.b(this.a).setVisibility(0);
+    MinimizeAnimateController.a(this.a, true);
+    paramAnimator = MinimizeAnimateController.a(this.a);
+    if (paramAnimator != null) {
+      paramAnimator.b(2);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.guild.animate.MinimizeAnimateController.startOpenAnimation.1
+ * JD-Core Version:    0.7.0.1
+ */

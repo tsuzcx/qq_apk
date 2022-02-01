@@ -23,7 +23,7 @@ import java.util.concurrent.Executor;
 
 public abstract class Downloader
 {
-  public Context mContext = null;
+  protected Context mContext = null;
   protected IPStrategy pBackupIPConfig;
   protected ContentHandler pContentHandler;
   protected IPStrategy pDirectIPConfig;
@@ -41,7 +41,7 @@ public abstract class Downloader
   protected PortConfigStrategy pPortConfigStrategy;
   protected DownloadPreprocessStrategy pProcessStrategy;
   protected ReportHandler pReportHandler;
-  public ResumeTransfer pResumeTransfer;
+  protected ResumeTransfer pResumeTransfer;
   protected FileCacheService pTmpFileCache;
   protected UrlKeyGenerator pUrlKeyGenerator;
   
@@ -102,13 +102,14 @@ public abstract class Downloader
   
   public final boolean download(String paramString, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener, Downloader.DownloadMode paramDownloadMode, DownloadRequest.OnResponseDataListener paramOnResponseDataListener)
   {
-    if ((!Utils.checkUrl(paramString)) || (paramArrayOfString == null)) {
-      return false;
+    if ((Utils.checkUrl(paramString)) && (paramArrayOfString != null))
+    {
+      paramString = new DownloadRequest(paramString, paramArrayOfString, paramBoolean1, paramDownloadListener);
+      paramString.mode = paramDownloadMode;
+      paramString.onResponseDataListener = paramOnResponseDataListener;
+      return download(paramString, paramBoolean2);
     }
-    paramString = new DownloadRequest(paramString, paramArrayOfString, paramBoolean1, paramDownloadListener);
-    paramString.mode = paramDownloadMode;
-    paramString.onResponseDataListener = paramOnResponseDataListener;
-    return download(paramString, paramBoolean2);
+    return false;
   }
   
   public void enableResumeTransfer()
@@ -123,13 +124,19 @@ public abstract class Downloader
   
   public void enableResumeTransfer(boolean paramBoolean1, String[] paramArrayOfString, boolean paramBoolean2)
   {
-    QzoneResumeTransfer localQzoneResumeTransfer = new QzoneResumeTransfer(this.mContext, "tmp_" + Utils.getCurrentProcessName(this.mContext) + "_" + this.pName, this.pTmpFileCache, true);
-    localQzoneResumeTransfer.mForceEnable = paramBoolean1;
-    localQzoneResumeTransfer.setUrlKeyGenerator(this.pUrlKeyGenerator);
+    Object localObject = this.mContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tmp_");
+    localStringBuilder.append(Utils.getCurrentProcessName(this.mContext));
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.pName);
+    localObject = new QzoneResumeTransfer((Context)localObject, localStringBuilder.toString(), this.pTmpFileCache, true);
+    ((QzoneResumeTransfer)localObject).mForceEnable = paramBoolean1;
+    ((QzoneResumeTransfer)localObject).setUrlKeyGenerator(this.pUrlKeyGenerator);
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
-      localQzoneResumeTransfer.setSupportDomains(paramArrayOfString, paramBoolean2);
+      ((QzoneResumeTransfer)localObject).setSupportDomains(paramArrayOfString, paramBoolean2);
     }
-    this.pResumeTransfer = localQzoneResumeTransfer;
+    this.pResumeTransfer = ((ResumeTransfer)localObject);
   }
   
   protected String generateStorageName(String paramString)
@@ -144,8 +151,12 @@ public abstract class Downloader
   public String generateUrlKey(String paramString)
   {
     Object localObject = this.pUrlKeyGenerator;
-    if (localObject == null) {}
-    for (localObject = paramString; TextUtils.isEmpty((CharSequence)localObject); localObject = ((UrlKeyGenerator)localObject).doGenerate(paramString)) {
+    if (localObject == null) {
+      localObject = paramString;
+    } else {
+      localObject = ((UrlKeyGenerator)localObject).doGenerate(paramString);
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return paramString;
     }
     return localObject;
@@ -166,7 +177,7 @@ public abstract class Downloader
     return this.pProcessStrategy;
   }
   
-  public abstract void preConnectHost(ArrayList<String> paramArrayList);
+  public abstract void preConnectHost(ArrayList<String> paramArrayList, String paramString);
   
   public void setBackupIPConfigStrategy(IPStrategy paramIPStrategy)
   {
@@ -256,14 +267,15 @@ public abstract class Downloader
   public void setUrlKeyGenerator(UrlKeyGenerator paramUrlKeyGenerator)
   {
     this.pUrlKeyGenerator = paramUrlKeyGenerator;
-    if (this.pResumeTransfer != null) {
-      this.pResumeTransfer.setUrlKeyGenerator(this.pUrlKeyGenerator);
+    paramUrlKeyGenerator = this.pResumeTransfer;
+    if (paramUrlKeyGenerator != null) {
+      paramUrlKeyGenerator.setUrlKeyGenerator(this.pUrlKeyGenerator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.Downloader
  * JD-Core Version:    0.7.0.1
  */

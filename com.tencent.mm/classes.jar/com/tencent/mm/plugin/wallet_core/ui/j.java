@@ -1,56 +1,50 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.Intent;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public class j
-  extends ClickableSpan
+final class j
+  extends e
 {
-  private int mBgColor;
-  public int mColor;
-  private Context mContext;
-  public j.a uqj;
-  
-  public j(Context paramContext)
+  public j(WalletCheckPwdNewUI paramWalletCheckPwdNewUI)
   {
-    AppMethodBeat.i(47362);
-    this.mContext = null;
-    this.uqj = null;
-    this.mColor = -1;
-    this.mBgColor = -1;
-    this.mContext = paramContext;
-    this.mColor = this.mContext.getResources().getColor(2131690648);
-    this.mBgColor = this.mContext.getResources().getColor(2131690605);
-    AppMethodBeat.o(47362);
+    super(paramWalletCheckPwdNewUI);
   }
   
-  public void onClick(View paramView)
+  public final void aQI(String paramString)
   {
-    AppMethodBeat.i(47363);
-    if (this.uqj != null) {
-      this.uqj.onClick(paramView);
+    AppMethodBeat.i(70680);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("encrypt_pwd", paramString);
+    this.VLr.setResult(-1, localIntent);
+    this.VLr.finish();
+    AppMethodBeat.o(70680);
+  }
+  
+  public final boolean gwr()
+  {
+    return false;
+  }
+  
+  public final void onCreate()
+  {
+    AppMethodBeat.i(70679);
+    String str = this.VLr.getIntent().getStringExtra("title");
+    if (!Util.isNullOrNil(str)) {
+      this.VLr.Vju.setText(str);
     }
-    AppMethodBeat.o(47363);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    AppMethodBeat.i(47364);
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setFakeBoldText(false);
-    paramTextPaint.setColor(this.mColor);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.bgColor = this.mBgColor;
-    AppMethodBeat.o(47364);
+    str = this.VLr.getIntent().getStringExtra("subtitle");
+    if (!Util.isNullOrNil(str)) {
+      this.VLr.Vjv.setText(str);
+    }
+    AppMethodBeat.o(70679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.j
  * JD-Core Version:    0.7.0.1
  */

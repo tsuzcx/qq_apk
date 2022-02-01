@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesk;
-import afgu;
-import afgw;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateViewFactory;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 
 public class IntimateInfoFragment
   extends PublicBaseFragment
 {
-  private afgu a;
+  private BaseIntimateView a;
   
   public void a()
   {
-    SystemBarCompact localSystemBarCompact = ((PublicFragmentActivity)getActivity()).mSystemBarComp;
+    SystemBarCompact localSystemBarCompact = ((PublicFragmentActivity)getBaseActivity()).mSystemBarComp;
     if (localSystemBarCompact != null)
     {
       localSystemBarCompact.setStatusDrawable(null);
       localSystemBarCompact.setStatusBarColor(0);
       localSystemBarCompact.setStatusColor(0);
-      if (!ThemeUtil.isNowThemeIsNight(getActivity().app, true, null)) {
-        ImmersiveUtils.a(true, getActivity().getWindow());
+      if (!ThemeUtil.isNowThemeIsNight(getBaseActivity().app, true, null)) {
+        ImmersiveUtils.setStatusTextColor(true, getBaseActivity().getWindow());
       }
     }
   }
@@ -47,21 +47,29 @@ public class IntimateInfoFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.a.a();
+    this.a.b();
     a();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = getActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
-    this.a = afgw.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
-    if ((this.a == null) || (this.a.a() == null)) {
-      return null;
+    paramLayoutInflater = getBaseActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
+    this.a = IntimateViewFactory.a(getBaseActivity().app, getBaseActivity(), getBaseActivity(), paramLayoutInflater);
+    paramLayoutInflater = this.a;
+    if ((paramLayoutInflater != null) && (paramLayoutInflater.a() != null))
+    {
+      paramLayoutInflater = this.a;
+      if ((paramLayoutInflater instanceof IntimateInfoView)) {
+        ((IntimateInfoView)paramLayoutInflater).a(2);
+      }
+      paramLayoutInflater = this.a.a();
     }
-    if ((this.a instanceof aesk)) {
-      ((aesk)this.a).a(2);
+    else
+    {
+      paramLayoutInflater = null;
     }
-    return this.a.a();
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -73,8 +81,9 @@ public class IntimateInfoFragment
   public void onPause()
   {
     super.onPause();
-    if ((this.a instanceof aesk)) {
-      ((aesk)this.a).h();
+    BaseIntimateView localBaseIntimateView = this.a;
+    if ((localBaseIntimateView instanceof IntimateInfoView)) {
+      ((IntimateInfoView)localBaseIntimateView).h();
     }
   }
   
@@ -83,9 +92,10 @@ public class IntimateInfoFragment
     super.onResume();
     this.a.b(true);
     this.a.d();
-    this.a.p();
-    if ((this.a instanceof aesk)) {
-      ((aesk)this.a).i();
+    this.a.q();
+    BaseIntimateView localBaseIntimateView = this.a;
+    if ((localBaseIntimateView instanceof IntimateInfoView)) {
+      ((IntimateInfoView)localBaseIntimateView).i();
     }
   }
   
@@ -93,13 +103,13 @@ public class IntimateInfoFragment
   {
     super.onStart();
     this.a.a(true);
-    this.a.b();
+    this.a.c();
     this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoFragment
  * JD-Core Version:    0.7.0.1
  */

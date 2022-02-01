@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="utils_code_height">56.0dip</dimen>
-    <dimen name="utils_code_layout_height">58.0dip</dimen>
-    <dimen name="utils_code_layout_width">257.0dip</dimen>
-    <dimen name="utils_code_other_layout_width">139.0dip</dimen>
-    <dimen name="utils_code_text_size">38.0sp</dimen>
-    <dimen name="utils_scan_layout_width">80.0dip</dimen>
-</resources>

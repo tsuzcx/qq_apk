@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.os.AsyncTask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.friend.a.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.account.friend.model.j;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -23,61 +23,18 @@ import org.json.JSONObject;
 final class GoogleFriendUI$c
   extends AsyncTask<Void, Void, Void>
 {
-  private String gsH;
-  private boolean gsJ;
-  private String gsL;
+  private String pNX;
+  private boolean pNZ;
+  private String pOb;
   
   public GoogleFriendUI$c(GoogleFriendUI paramGoogleFriendUI, String paramString)
   {
-    this.gsL = paramString;
+    this.pOb = paramString;
   }
   
-  private Void apA()
+  private String bWA()
   {
-    AppMethodBeat.i(13665);
-    ab.i("MicroMsg.GoogleContact.GoogleFriendUI", "doInBackground");
-    try
-    {
-      String str = apR();
-      ab.i("MicroMsg.GoogleContact.GoogleFriendUI", "refresh response:%s", new Object[] { str });
-      this.gsH = new JSONObject(str).optString("access_token");
-      this.gsJ = true;
-      AppMethodBeat.o(13665);
-      return null;
-    }
-    catch (ProtocolException localProtocolException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.GoogleContact.GoogleFriendUI", "ProtocolException:%s", new Object[] { localProtocolException.getMessage() });
-      }
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.GoogleContact.GoogleFriendUI", "MalformedURLException:%s", new Object[] { localMalformedURLException.getMessage() });
-      }
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.GoogleContact.GoogleFriendUI", "IOException:%s", new Object[] { localIOException.getMessage() });
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.GoogleContact.GoogleFriendUI", "JSONException:%s", new Object[] { localJSONException.getMessage() });
-      }
-    }
-  }
-  
-  private String apR()
-  {
-    AppMethodBeat.i(155796);
+    AppMethodBeat.i(110091);
     Object localObject1 = "";
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL("https://accounts.google.com/o/oauth2/token").openConnection();
     localHttpURLConnection.setRequestProperty("Charset", "UTF-8");
@@ -88,18 +45,18 @@ final class GoogleFriendUI$c
     localHttpURLConnection.setDoInput(true);
     localHttpURLConnection.setDoOutput(true);
     Object localObject2 = new ArrayList();
-    ((List)localObject2).add(new BasicNameValuePair("refresh_token", this.gsL));
+    ((List)localObject2).add(new BasicNameValuePair("refresh_token", this.pOb));
     ((List)localObject2).add(new BasicNameValuePair("client_id", "369820936870.apps.googleusercontent.com"));
     ((List)localObject2).add(new BasicNameValuePair("client_secret", "wcFhvo-s7wNcmQ9Zjr00H06u"));
     ((List)localObject2).add(new BasicNameValuePair("grant_type", "refresh_token"));
-    localObject2 = m.as((List)localObject2);
-    ab.i("MicroMsg.GoogleContact.GoogleFriendUI", "QueryString:%s".concat(String.valueOf(localObject2)));
+    localObject2 = j.cB((List)localObject2);
+    Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "QueryString:%s".concat(String.valueOf(localObject2)));
     Object localObject3 = new BufferedWriter(new OutputStreamWriter(localHttpURLConnection.getOutputStream(), "UTF-8"));
     ((BufferedWriter)localObject3).write((String)localObject2);
     ((BufferedWriter)localObject3).flush();
     ((BufferedWriter)localObject3).close();
     int i = localHttpURLConnection.getResponseCode();
-    ab.e("MicroMsg.GoogleContact.GoogleFriendUI", "responseCode:".concat(String.valueOf(i)));
+    Log.e("MicroMsg.GoogleContact.GoogleFriendUI", "responseCode:".concat(String.valueOf(i)));
     if (200 == i)
     {
       localObject1 = new StringBuffer();
@@ -114,31 +71,74 @@ final class GoogleFriendUI$c
       }
       ((BufferedReader)localObject2).close();
       localObject1 = ((StringBuffer)localObject1).toString();
-      ab.i("MicroMsg.GoogleContact.GoogleFriendUI", "exchange token respone:%s".concat(String.valueOf(localObject1)));
+      Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "exchange token respone:%s".concat(String.valueOf(localObject1)));
     }
     try
     {
       localHttpURLConnection.getInputStream().close();
       localHttpURLConnection.disconnect();
-      AppMethodBeat.o(155796);
+      AppMethodBeat.o(110091);
       return localObject1;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.e("MicroMsg.GoogleContact.GoogleFriendUI", localException.getMessage());
+        Log.e("MicroMsg.GoogleContact.GoogleFriendUI", localException.getMessage());
+      }
+    }
+  }
+  
+  private Void bWi()
+  {
+    AppMethodBeat.i(110090);
+    Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "doInBackground");
+    try
+    {
+      String str = bWA();
+      Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "refresh response:%s", new Object[] { str });
+      this.pNX = new JSONObject(str).optString("access_token");
+      this.pNZ = true;
+      AppMethodBeat.o(110090);
+      return null;
+    }
+    catch (ProtocolException localProtocolException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.GoogleFriendUI", "ProtocolException:%s", new Object[] { localProtocolException.getMessage() });
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.GoogleFriendUI", "MalformedURLException:%s", new Object[] { localMalformedURLException.getMessage() });
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.GoogleFriendUI", "IOException:%s", new Object[] { localIOException.getMessage() });
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.GoogleContact.GoogleFriendUI", "JSONException:%s", new Object[] { localJSONException.getMessage() });
       }
     }
   }
   
   protected final void onPreExecute()
   {
-    AppMethodBeat.i(13664);
+    AppMethodBeat.i(110089);
     super.onPreExecute();
-    ab.i("MicroMsg.GoogleContact.GoogleFriendUI", "onPreExecute");
-    this.gsJ = false;
-    AppMethodBeat.o(13664);
+    Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "onPreExecute");
+    this.pNZ = false;
+    AppMethodBeat.o(110089);
   }
 }
 

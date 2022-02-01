@@ -1,0 +1,153 @@
+{
+    "ReadInjoy_native_web_normal": {
+        "view_type": "container",
+        "layout_type": "layout_relative",
+        "padding_top": "10",
+        "padding_bottom": "10",
+        "padding_left": "15",
+        "padding_right": "15",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "match_parent"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "view_id": "id_web_container",
+                "event_type": "cmd_url_click",
+                "layout_type": "layout_relative",
+                "padding_top": "10",
+                "padding_bottom": "10",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setCornerRadiusString:": "2.0",
+                    "setBackgroundColorString:": "#F7F7F7",
+                    "setAttatchInfo:": "-1"
+                },
+                "subviews": [
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_web_pic",
+                        "margin_left": "10",
+                        "height": {
+                            "type": "relative",
+                            "value": "77"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "55"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "-1"
+                        }
+                    },
+                    {
+                        "view_type": "container",
+                        "view_id": "id_web_right_container",
+                        "layout_type": "layout_relative",
+                        "align_parent_right": "YES",
+                        "padding_right": "10",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_web_pic_right",
+                                "align_parent_center_vertical": "YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "-1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "direction": "vertical",
+                        "left_of_view": "id_web_right_container",
+                        "right_of_view": "id_web_pic",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_web_title",
+                                "margin_left": "10",
+                                "margin_right": "10",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setNumberOfLinesString:": "2",
+                                    "setTextColorString:": "#262626",
+                                    "setText:": "-1",
+                                    "setFontSizeString:": "19"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_web_summary",
+                                "margin_left": "10",
+                                "margin_right": "10",
+                                "margin_top": "8",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setNumberOfLinesString:": "2",
+                                    "setTextColorString:": "#4c4c4c",
+                                    "setText:": "-1",
+                                    "setFontSizeString:": "15"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_web_wording",
+                                "margin_left": "10",
+                                "margin_right": "10",
+                                "margin_top": "13",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setTextColorString:": "#737373",
+                                    "setText:": "-1",
+                                    "setFontSizeString:": "13"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,106 +1,59 @@
 package com.tencent.luggage.game.f;
 
+import android.graphics.Rect;
+import com.tencent.luggage.wxa.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e.c;
-import com.tencent.mm.plugin.appbrand.e.d;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.plugin.appbrand.ui.am.a;
+import com.tencent.mm.plugin.appbrand.ui.at;
+import com.tencent.mm.plugin.appbrand.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/game/ui/WAGameButtonLayoutPropertiesProvider;", "Lcom/tencent/mm/plugin/appbrand/ui/WxaMenuButtonLayoutPropertiesProvider;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "getExpectedCapsuleMarginTop", "", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "getExpectedPadding", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Padding;", "luggage-wxa-game-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class a
+  extends at
 {
-  private static a bCu;
-  public String appId;
-  private int bCm;
-  public long bCn;
-  public long bCo;
-  boolean bCp;
-  public int bCq;
-  private float bCr;
-  public CopyOnWriteArrayList<Long> bCs;
-  private final a.a bCt;
-  public e.c bCv;
-  public com.tencent.magicbrush.a mbInspector;
-  
-  public a()
+  public a(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(140547);
-    this.bCm = 0;
-    this.bCn = 0L;
-    this.bCo = 0L;
-    this.appId = "";
-    this.bCp = false;
-    this.bCq = -1;
-    this.bCr = -1.0F;
-    this.bCs = new CopyOnWriteArrayList();
-    this.bCt = new a.a((byte)0);
-    this.bCv = new e.c()
-    {
-      public final void a(e.d paramAnonymousd)
-      {
-        AppMethodBeat.i(140542);
-        ab.i("MicroMsg.MBNiReporter", "hy: onPause");
-        paramAnonymousd = a.this;
-        if (paramAnonymousd.bCp)
-        {
-          ab.i("MicroMsg.MBNiReporter", "hy: hasReported!");
-          AppMethodBeat.o(140542);
-          return;
-        }
-        d.ysm.execute(new a.5(paramAnonymousd));
-        AppMethodBeat.o(140542);
-      }
-      
-      public final void onCreate()
-      {
-        AppMethodBeat.i(140540);
-        ab.i("MicroMsg.MBNiReporter", "hy: onCreate");
-        a.e(a.this);
-        AppMethodBeat.o(140540);
-      }
-      
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(140543);
-        ab.i("MicroMsg.MBNiReporter", "hy: onDestroy");
-        a locala = a.this;
-        ab.i("MicroMsg.MBNiReporter", "hy: release!");
-        com.tencent.mm.plugin.appbrand.e.b(locala.appId, locala.bCv);
-        AppMethodBeat.o(140543);
-      }
-      
-      public final void onResume()
-      {
-        AppMethodBeat.i(140541);
-        ab.i("MicroMsg.MBNiReporter", "hy: onResume");
-        AppMethodBeat.o(140541);
-      }
-    };
-    AppMethodBeat.o(140547);
+    super(paramAppBrandRuntime);
+    AppMethodBeat.i(220106);
+    AppMethodBeat.o(220106);
   }
   
-  public static a vN()
+  public final am.a aqq()
   {
-    AppMethodBeat.i(140548);
-    if (bCu == null) {}
-    try
+    AppMethodBeat.i(130752);
+    am.a locala = super.aqq();
+    locala = new am.a(locala.left, locala.top + Do(a.c.app_brand_game_capsule_extra_margin_top), Do(a.c.app_brand_actionbar_capsule_view_right_margin_default) + Do(a.c.app_brand_game_capsule_extra_margin_right), locala.bottom);
+    AppMethodBeat.o(130752);
+    return locala;
+  }
+  
+  public final int c(y paramy)
+  {
+    AppMethodBeat.i(220111);
+    s.u(paramy, "service");
+    int j = super.c(paramy);
+    if (j <= 0)
     {
-      if (bCu == null) {
-        bCu = new a();
+      paramy = paramy.qwF.getSafeAreaInsets();
+      if (paramy == null) {}
+      for (int i = 0;; i = paramy.top)
+      {
+        i = Math.max(j, i);
+        AppMethodBeat.o(220111);
+        return i;
       }
-      a locala = bCu;
-      AppMethodBeat.o(140548);
-      return locala;
     }
-    finally
-    {
-      AppMethodBeat.o(140548);
-    }
+    AppMethodBeat.o(220111);
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.f.a
  * JD-Core Version:    0.7.0.1
  */

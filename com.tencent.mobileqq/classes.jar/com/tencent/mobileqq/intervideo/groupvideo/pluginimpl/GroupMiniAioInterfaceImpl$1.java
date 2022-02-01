@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import atgd;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherMiniAioHelper;
 
 class GroupMiniAioInterfaceImpl$1
   implements Runnable
@@ -14,7 +14,7 @@ class GroupMiniAioInterfaceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.GroupMiniAioInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

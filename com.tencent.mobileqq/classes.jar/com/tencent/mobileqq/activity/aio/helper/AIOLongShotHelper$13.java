@@ -11,7 +11,7 @@ class AIOLongShotHelper$13
   {
     try
     {
-      AIOLongShotHelper.b(this.this$0);
+      AIOLongShotHelper.d(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
@@ -22,7 +22,7 @@ class AIOLongShotHelper$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper.13
  * JD-Core Version:    0.7.0.1
  */

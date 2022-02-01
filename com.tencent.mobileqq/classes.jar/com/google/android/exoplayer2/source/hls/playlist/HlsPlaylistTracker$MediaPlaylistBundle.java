@@ -49,41 +49,45 @@ final class HlsPlaylistTracker$MediaPlaylistBundle
   
   private void processLoadedPlaylist(HlsMediaPlaylist paramHlsMediaPlaylist)
   {
-    HlsMediaPlaylist localHlsMediaPlaylist = this.playlistSnapshot;
+    HlsMediaPlaylist localHlsMediaPlaylist1 = this.playlistSnapshot;
     long l2 = SystemClock.elapsedRealtime();
     this.lastSnapshotLoadMs = l2;
-    this.playlistSnapshot = HlsPlaylistTracker.access$900(this.this$0, localHlsMediaPlaylist, paramHlsMediaPlaylist);
-    if (this.playlistSnapshot != localHlsMediaPlaylist)
+    this.playlistSnapshot = HlsPlaylistTracker.access$900(this.this$0, localHlsMediaPlaylist1, paramHlsMediaPlaylist);
+    HlsMediaPlaylist localHlsMediaPlaylist2 = this.playlistSnapshot;
+    if (localHlsMediaPlaylist2 != localHlsMediaPlaylist1)
     {
       this.playlistError = null;
       this.lastSnapshotChangeMs = l2;
-      HlsPlaylistTracker.access$1000(this.this$0, this.playlistUrl, this.playlistSnapshot);
-      if (this.playlistSnapshot == localHlsMediaPlaylist) {
-        break label235;
-      }
+      HlsPlaylistTracker.access$1000(this.this$0, this.playlistUrl, localHlsMediaPlaylist2);
     }
-    label235:
-    for (long l1 = this.playlistSnapshot.targetDurationUs;; l1 = this.playlistSnapshot.targetDurationUs / 2L)
+    else if (!localHlsMediaPlaylist2.hasEndTag)
     {
-      this.earliestNextLoadTimeMs = (C.usToMs(l1) + l2);
-      if ((this.playlistUrl == HlsPlaylistTracker.access$1300(this.this$0)) && (!this.playlistSnapshot.hasEndTag)) {
-        loadPlaylist();
-      }
-      return;
-      if (this.playlistSnapshot.hasEndTag) {
-        break;
-      }
       if (paramHlsMediaPlaylist.mediaSequence + paramHlsMediaPlaylist.segments.size() < this.playlistSnapshot.mediaSequence)
       {
         this.playlistError = new HlsPlaylistTracker.PlaylistResetException(this.playlistUrl.url, null);
-        break;
       }
-      if (l2 - this.lastSnapshotChangeMs <= C.usToMs(this.playlistSnapshot.targetDurationUs) * 3.5D) {
-        break;
+      else
+      {
+        double d1 = l2 - this.lastSnapshotChangeMs;
+        double d2 = C.usToMs(this.playlistSnapshot.targetDurationUs);
+        Double.isNaN(d2);
+        if (d1 > d2 * 3.5D)
+        {
+          this.playlistError = new HlsPlaylistTracker.PlaylistStuckException(this.playlistUrl.url, null);
+          blacklistPlaylist();
+        }
       }
-      this.playlistError = new HlsPlaylistTracker.PlaylistStuckException(this.playlistUrl.url, null);
-      blacklistPlaylist();
-      break;
+    }
+    paramHlsMediaPlaylist = this.playlistSnapshot;
+    long l1;
+    if (paramHlsMediaPlaylist != localHlsMediaPlaylist1) {
+      l1 = paramHlsMediaPlaylist.targetDurationUs;
+    } else {
+      l1 = paramHlsMediaPlaylist.targetDurationUs / 2L;
+    }
+    this.earliestNextLoadTimeMs = (l2 + C.usToMs(l1));
+    if ((this.playlistUrl == HlsPlaylistTracker.access$1300(this.this$0)) && (!this.playlistSnapshot.hasEndTag)) {
+      loadPlaylist();
     }
   }
   
@@ -94,40 +98,46 @@ final class HlsPlaylistTracker$MediaPlaylistBundle
   
   public boolean isSnapshotValid()
   {
-    if (this.playlistSnapshot == null) {}
-    long l1;
-    long l2;
-    do
-    {
+    HlsMediaPlaylist localHlsMediaPlaylist = this.playlistSnapshot;
+    boolean bool = false;
+    if (localHlsMediaPlaylist == null) {
       return false;
-      l1 = SystemClock.elapsedRealtime();
-      l2 = Math.max(30000L, C.usToMs(this.playlistSnapshot.durationUs));
-    } while ((!this.playlistSnapshot.hasEndTag) && (this.playlistSnapshot.playlistType != 2) && (this.playlistSnapshot.playlistType != 1) && (l2 + this.lastSnapshotLoadMs <= l1));
-    return true;
+    }
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = Math.max(30000L, C.usToMs(this.playlistSnapshot.durationUs));
+    if ((this.playlistSnapshot.hasEndTag) || (this.playlistSnapshot.playlistType == 2) || (this.playlistSnapshot.playlistType == 1) || (this.lastSnapshotLoadMs + l2 > l1)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void loadPlaylist()
   {
     this.blacklistUntilMs = 0L;
-    if ((this.loadPending) || (this.mediaPlaylistLoader.isLoading())) {
-      return;
-    }
-    long l = SystemClock.elapsedRealtime();
-    if (l < this.earliestNextLoadTimeMs)
+    if (!this.loadPending)
     {
-      this.loadPending = true;
-      HlsPlaylistTracker.access$600(this.this$0).postDelayed(this, this.earliestNextLoadTimeMs - l);
-      return;
+      if (this.mediaPlaylistLoader.isLoading()) {
+        return;
+      }
+      long l = SystemClock.elapsedRealtime();
+      if (l < this.earliestNextLoadTimeMs)
+      {
+        this.loadPending = true;
+        HlsPlaylistTracker.access$600(this.this$0).postDelayed(this, this.earliestNextLoadTimeMs - l);
+        return;
+      }
+      loadPlaylistImmediately();
     }
-    loadPlaylistImmediately();
   }
   
   public void maybeThrowPlaylistRefreshError()
   {
     this.mediaPlaylistLoader.maybeThrowError();
-    if (this.playlistError != null) {
-      throw this.playlistError;
+    IOException localIOException = this.playlistError;
+    if (localIOException == null) {
+      return;
     }
+    throw localIOException;
   }
   
   public void onLoadCanceled(ParsingLoadable<HlsPlaylist> paramParsingLoadable, long paramLong1, long paramLong2, boolean paramBoolean)
@@ -177,7 +187,7 @@ final class HlsPlaylistTracker$MediaPlaylistBundle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.playlist.HlsPlaylistTracker.MediaPlaylistBundle
  * JD-Core Version:    0.7.0.1
  */

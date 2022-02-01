@@ -14,9 +14,7 @@ class QQLiveImage$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     this.this$0.invalidateSelf();
@@ -24,7 +22,7 @@ class QQLiveImage$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.QQLiveImage.EventHandler
  * JD-Core Version:    0.7.0.1
  */

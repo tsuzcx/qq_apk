@@ -2,7 +2,6 @@ package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bjmm;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
@@ -15,6 +14,8 @@ import java.util.Map;
 
 public class QzoneModuleConst
 {
+  public static final String MINIGAME_MODULE_MINIGAME_LAMEMP3_SO = "libminigame_lamemp3.so";
+  public static final String MINIGAME_MODULE_WEBAUDIO_SO = "libwebAudio.so";
   public static final String QZONE_DECODE_ANIMATED_WEBP_KEY = "animatedWebp";
   public static final String QZONE_DECODE_ANIMATED_WEBP_MD5 = "4c8590a921c2722051416111dfd57122";
   public static final String QZONE_DECODE_ANIMATED_WEBP_MD5_SECONDARY_KEY = "animatedWebpMD5";
@@ -37,15 +38,15 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_AR_TAR_ENGINE_SO_MD5 = "lib_tar_so_md5";
   public static final String QZONE_MODULE_AR_TAR_ENGINE_SO_VERSION = "version";
   public static final String QZONE_MODULE_AR_TAR_ENGINE_SO_VERSION_DEFAULT = "1";
-  public static final String QZONE_MODULE_CONFIG_ANTISHAKE_SO_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170410195647_4697/pictureMarkerSo.so";
+  public static final String QZONE_MODULE_CONFIG_ANTISHAKE_SO_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20170410195647_4697/pictureMarkerSo.so";
   public static final String QZONE_MODULE_CONFIG_LIVE_AUDIO_DEFAULT_MD5 = "73bf723be02a6b71b17a0d47888c4e04";
-  public static final String QZONE_MODULE_CONFIG_LIVE_AUDIO_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20160803113848_6187/qzoneliveaudio.jar";
+  public static final String QZONE_MODULE_CONFIG_LIVE_AUDIO_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20160803113848_6187/qzoneliveaudio.jar";
   public static final String QZONE_MODULE_CONFIG_LIVE_FILTERBUNDLE_DEFAULT_MD5 = "b11e343a1096d3b6331b32e2b1bada88";
-  public static final String QZONE_MODULE_CONFIG_LIVE_FILTERBUNDLE_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20171105201346_3221/filterengine.bundle_qzone_7.6.jar";
+  public static final String QZONE_MODULE_CONFIG_LIVE_FILTERBUNDLE_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20171105201346_3221/filterengine.bundle_qzone_7.6.jar";
   public static final String QZONE_MODULE_CONFIG_LIVE_PTU_DM_DEFAULT_MD5 = "1cdaf8508cc7343f796ef21b5e65c2b6";
   public static final String QZONE_MODULE_CONFIG_LIVE_PTU_DM_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20191226133414_2167/res1_yt_facedetect.so";
   public static final String QZONE_MODULE_CONFIG_LIVE_SEG_AND_HAND_DETECT_DEFAULT_MD5 = "586bcad62ef42fc352676e485dc38d96";
-  public static final String QZONE_MODULE_CONFIG_LIVE_SEG_AND_HAND_DETECT_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20180110162244_5632/res1_yt_seg_and_hand.so";
+  public static final String QZONE_MODULE_CONFIG_LIVE_SEG_AND_HAND_DETECT_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20180110162244_5632/res1_yt_seg_and_hand.so";
   public static final String QZONE_MODULE_CONFIG_MODULE_CLASS_IDS = "module_class_ids";
   public static final String QZONE_MODULE_CONFIG_MODULE_FILE_LENGTH = "module_file_length";
   public static final String QZONE_MODULE_CONFIG_MODULE_ID = "module_id";
@@ -57,11 +58,11 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_CONFIG_MODULE_VERSION = "module_version";
   public static final String QZONE_MODULE_CONFIG_NETWORKED_MODULE = "qzone_networked_modules";
   public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_DEFAULT_MD5 = "3dcc7162dd785eb4bfa4fb6689efd7e9";
-  public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170117162505_7464/libalgo_rithm_jni.so";
+  public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20170117162505_7464/libalgo_rithm_jni.so";
   public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_MD5_SECONDARY_KEY = "libAlgorithmJniSoMD5";
   public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_URL_SECONDARY_KEY = "libAlgorithmJniSoUrl";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_MD5 = "4d5cfa42acc64e9fadecff38bdde6cbd";
-  public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170117164907_3213/filterengine.bundle.jar";
+  public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20170117164907_3213/filterengine.bundle.jar";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_MD5_SECONDARY_KEY = "libFilterEngineJarMD5";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_URL_SECONDARY_KEY = "libFilterEngineJarUrl";
   public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_64_DEFAULT_MD5 = "f12dae831c929686229d1666fffcb012";
@@ -88,7 +89,7 @@ public class QzoneModuleConst
   public static final int QZONE_MODULE_MAX_CRASH_COUNT = 2;
   private static final String QZONE_MODULE_OSKPLAYER_JAR_CRASH_KEY_WORDS_0 = "Exo2MediaPlayer";
   public static final String QZONE_MODULE_OSK_PLAYER = "osk_exoplayer2_bundle.jar";
-  public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_DEFAULT = "http://d3g.qq.com/sngapp/app/update/20170728155227_6686/osk_exoplayer2_bundle.jar|f9d35ec8e90af758354bb174abc12df4";
+  public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_DEFAULT = "https://d3g.qq.com/sngapp/app/update/20170728155227_6686/osk_exoplayer2_bundle.jar|f9d35ec8e90af758354bb174abc12df4";
   public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_SECONDARY_KEY = "libOskPlayerJarConfig";
   public static final String QZONE_MODULE_PIC_BEAUTY_SO = "libandroidndkbeauty.so";
   public static final String QZONE_MODULE_PTU_ALGORITHM_JNI_SO = "libalgo_rithm_jni.so";
@@ -96,7 +97,7 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_SUPER_RESOLUTION_JAR = "libsuperresolution.jar";
   public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_MD5 = "6b5338544a7c9baff2af16413d3d5119";
   public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_MD5_SECONDARY_KEY = "photo_classify_file_md5";
-  public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20180329102523_4877/pic_tag_sdk.jar";
+  public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20180329102523_4877/pic_tag_sdk.jar";
   public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_URL_SECONDARY_KEY = "photo_tag_classify_file";
   public static final String QZONE_MODULE_TAGCLASSIFY_SO = "tag_classify.jar";
   public static final String QZONE_MODULE_TEST_ID = "test_log.dex";
@@ -111,7 +112,7 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_VOICE_SHUOSHUO_ANIMATION = "frameanimation.jar";
   public static final String QZONE_MODULE_XMP_CORE_DEFAULT_MD5 = "a0c5ac44fc2d0e35187f0c1479db48b2";
   public static final String QZONE_MODULE_XMP_CORE_DEFAULT_MD5_SECONDARY_KEY = "XMPcoreJarMD5";
-  public static final String QZONE_MODULE_XMP_CORE_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar";
+  public static final String QZONE_MODULE_XMP_CORE_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar";
   public static final String QZONE_MODULE_XMP_CORE_DEFAULT_URL_SECONDARY_KEY = "xmpcoreUrl";
   public static final String QZONE_MODULE_XMP_CORE_JAR = "xmpcore.jar";
   private static final String QZONE_MOMULE_CRASH_TAG = "QzoneModuleCrash";
@@ -145,76 +146,44 @@ public class QzoneModuleConst
     }
   }
   
-  public static String getModuleSavePath(Context paramContext, bjmm parambjmm)
+  public static String getModuleSavePath(Context paramContext, QzoneModuleRecord paramQzoneModuleRecord)
   {
-    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambjmm.e.toLowerCase() + "_" + parambjmm.a).getAbsolutePath();
+    paramContext = paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQzoneModuleRecord.mMD5.toLowerCase());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramQzoneModuleRecord.mModuleId);
+    return new File(paramContext, localStringBuilder.toString()).getAbsolutePath();
   }
   
   private static String getSpKeyById(String paramString)
   {
-    return "qzone_module_" + paramString + "_last_crash_count";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone_module_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_last_crash_count");
+    return localStringBuilder.toString();
   }
   
-  /* Error */
   public static boolean isLoadAccordingToCrashCount(String paramString)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: ldc_w 360
-    //   8: aload_0
-    //   9: invokestatic 364	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
-    //   12: iconst_0
-    //   13: invokestatic 431	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   16: istore_1
-    //   17: ldc_w 303
-    //   20: iconst_1
-    //   21: new 394	java/lang/StringBuilder
-    //   24: dup
-    //   25: invokespecial 395	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 433
-    //   31: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: iload_1
-    //   35: invokevirtual 436	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 439	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   44: iload_1
-    //   45: iconst_2
-    //   46: if_icmpne +28 -> 74
-    //   49: iload_3
-    //   50: istore_2
-    //   51: invokestatic 443	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   54: ifeq +15 -> 69
-    //   57: ldc_w 303
-    //   60: iconst_2
-    //   61: ldc_w 445
-    //   64: invokestatic 448	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: iload_3
-    //   68: istore_2
-    //   69: ldc 2
-    //   71: monitorexit
-    //   72: iload_2
-    //   73: ireturn
-    //   74: iconst_1
-    //   75: istore_2
-    //   76: goto -7 -> 69
-    //   79: astore_0
-    //   80: ldc 2
-    //   82: monitorexit
-    //   83: aload_0
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	paramString	String
-    //   16	31	1	i	int
-    //   50	26	2	bool1	boolean
-    //   1	67	3	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   5	44	79	finally
-    //   51	67	79	finally
+    try
+    {
+      int i = LocalMultiProcConfig.getInt("Qz_setting", getSpKeyById(paramString), 0);
+      paramString = new StringBuilder();
+      paramString.append("qzone module(map sdk) crash count:");
+      paramString.append(i);
+      QLog.i("QzoneModuleConst", 1, paramString.toString());
+      if (i == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneModuleConst", 2, "crash count 1->2, disable module.");
+        }
+        return false;
+      }
+      return true;
+    }
+    finally {}
   }
   
   public static void updateCrashInfo(String paramString, boolean paramBoolean)
@@ -224,42 +193,54 @@ public class QzoneModuleConst
       QLog.e("QzoneModuleCrash", 1, "errMsg is empty");
       return;
     }
-    if ((paramBoolean) && (paramString.contains("nativeResolvePatchClass"))) {
-      QLog.e("QzoneModuleCrash", 1, "load2QQClassLoader crash, native crash caused by nativeResolvePatchClass");
-    }
-    for (int i = 1;; i = 0)
+    int i;
+    if ((paramBoolean) && (paramString.contains("nativeResolvePatchClass")))
     {
-      Iterator localIterator = sCrashKeyWords.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (paramString.contains(str))
-        {
-          paramString = (String)sKeyWords2IdMap.get(str);
-          QLog.e("QzoneModuleCrash", 1, "loaded Module get a crash, module id:" + paramString);
-          i = 1;
-        }
+      QLog.e("QzoneModuleCrash", 1, "load2QQClassLoader crash, native crash caused by nativeResolvePatchClass");
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject2 = null;
+    Iterator localIterator = sCrashKeyWords.iterator();
+    do
+    {
+      localObject1 = localObject2;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break;
       }
-      while ((i != 0) && (!TextUtils.isEmpty(paramString)))
+      localObject1 = (String)localIterator.next();
+    } while (!paramString.contains((CharSequence)localObject1));
+    Object localObject1 = (String)sKeyWords2IdMap.get(localObject1);
+    paramString = new StringBuilder();
+    paramString.append("loaded Module get a crash, module id:");
+    paramString.append((String)localObject1);
+    QLog.e("QzoneModuleCrash", 1, paramString.toString());
+    int j = 1;
+    if ((j != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+    {
+      i = LocalMultiProcConfig.getInt("Qz_setting", getSpKeyById((String)localObject1), 0);
+      if (i >= 2)
       {
-        i = LocalMultiProcConfig.getInt("Qz_setting", getSpKeyById(paramString), 0);
-        if (i >= 2)
-        {
-          QLog.e("QzoneModuleCrash", 1, "qzone module have crashed " + (i + 1) + " times,so clear qzone module crash count.moduleId:" + paramString);
-          LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById(paramString), 0);
-          return;
-        }
-        LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById(paramString), i + 1);
+        paramString = new StringBuilder();
+        paramString.append("qzone module have crashed ");
+        paramString.append(i + 1);
+        paramString.append(" times,so clear qzone module crash count.moduleId:");
+        paramString.append((String)localObject1);
+        QLog.e("QzoneModuleCrash", 1, paramString.toString());
+        LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById((String)localObject1), 0);
         return;
-        paramString = null;
       }
-      break;
+      LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById((String)localObject1), i + 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleConst
  * JD-Core Version:    0.7.0.1
  */

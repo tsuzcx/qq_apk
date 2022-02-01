@@ -6,7 +6,7 @@ public class Milestone
   
   public void disable(int paramInt)
   {
-    this.mMilestone &= (paramInt ^ 0xFFFFFFFF);
+    this.mMilestone = ((paramInt ^ 0xFFFFFFFF) & this.mMilestone);
   }
   
   public void disableAll(int... paramVarArgs)
@@ -22,7 +22,7 @@ public class Milestone
   
   public void enable(int paramInt)
   {
-    this.mMilestone |= paramInt;
+    this.mMilestone = (paramInt | this.mMilestone);
   }
   
   public void enableAll(int... paramVarArgs)
@@ -40,15 +40,16 @@ public class Milestone
   {
     StringBuilder localStringBuilder = new StringBuilder(32);
     int i = 31;
-    if (i >= 0)
+    while (i >= 0)
     {
-      if (isEnabled(1 << i)) {}
-      for (String str = "1";; str = "0")
-      {
-        localStringBuilder.append(str);
-        i -= 1;
-        break;
+      String str;
+      if (isEnabled(1 << i)) {
+        str = "1";
+      } else {
+        str = "0";
       }
+      localStringBuilder.append(str);
+      i -= 1;
     }
     return localStringBuilder.toString();
   }
@@ -70,12 +71,12 @@ public class Milestone
   
   public void toggle(int paramInt)
   {
-    this.mMilestone ^= paramInt;
+    this.mMilestone = (paramInt ^ this.mMilestone);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.image.Milestone
  * JD-Core Version:    0.7.0.1
  */

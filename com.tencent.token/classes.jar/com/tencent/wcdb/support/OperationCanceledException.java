@@ -8,7 +8,10 @@ public class OperationCanceledException
     this(null);
   }
   
-  public OperationCanceledException(String paramString) {}
+  public OperationCanceledException(String paramString)
+  {
+    super(paramString);
+  }
 }
 
 

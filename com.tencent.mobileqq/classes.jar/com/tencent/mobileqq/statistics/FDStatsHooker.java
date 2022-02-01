@@ -10,7 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class FDStatsHooker
 {
-  static long lastLogTime;
+  private static final String TAG = "FDStats";
+  static long lastLogTime = 0L;
   private static final ConcurrentHashMap<Integer, String> mStackMap = new ConcurrentHashMap(1024);
   private static ConcurrentHashMap<String, Integer> sErrorFDMap = new ConcurrentHashMap(100);
   
@@ -18,54 +19,63 @@ public class FDStatsHooker
   {
     Thread localThread = Thread.currentThread();
     StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int i = 1;
     while (i < arrayOfStackTraceElement.length)
     {
-      localStringBuilder.append(arrayOfStackTraceElement[i] + "\n");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(arrayOfStackTraceElement[i]);
+      localStringBuilder2.append("\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
       i += 1;
     }
-    if (QLog.isColorLevel()) {
+    if ((QLog.isColorLevel()) && (FDNative.a().b())) {
       QLog.d("FDStats", 2, new Object[] { "fdPath: ", paramString, " fd:", Integer.valueOf(paramInt), " thread:", localThread.getName(), " threadId:", Long.valueOf(localThread.getId()) });
     }
-    localStringBuilder.append("thread:").append(localThread.getName()).append(" id:").append(localThread.getId()).append("\n");
-    localStringBuilder.append("fd:").append(paramString).append(" id:").append(paramInt).append("\n");
-    mStackMap.put(Integer.valueOf(paramInt), localStringBuilder.toString());
+    localStringBuilder1.append("thread:");
+    localStringBuilder1.append(localThread.getName());
+    localStringBuilder1.append(" id:");
+    localStringBuilder1.append(localThread.getId());
+    localStringBuilder1.append("\n");
+    localStringBuilder1.append("fd:");
+    localStringBuilder1.append(paramString);
+    localStringBuilder1.append(" id:");
+    localStringBuilder1.append(paramInt);
+    localStringBuilder1.append("\n");
+    mStackMap.put(Integer.valueOf(paramInt), localStringBuilder1.toString());
   }
   
   public static String getAllStackTrace()
   {
-    StringBuilder localStringBuilder = new StringBuilder(2048);
+    localStringBuilder = new StringBuilder(2048);
     try
     {
-      ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap(1024);
-      Object localObject = FDNative.a().a();
-      if (localObject != null)
+      Object localObject1 = new ConcurrentHashMap(1024);
+      Object localObject2 = FDNative.a().f();
+      if (localObject2 != null)
       {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        localObject2 = ((ArrayList)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          Integer localInteger = (Integer)((Iterator)localObject).next();
-          localConcurrentHashMap.put(localInteger, mStackMap.get(localInteger));
-          continue;
-          return localStringBuilder.toString();
+          Integer localInteger = (Integer)((Iterator)localObject2).next();
+          ((ConcurrentHashMap)localObject1).put(localInteger, mStackMap.get(localInteger));
         }
       }
+      ((ConcurrentHashMap)localObject1).putAll(mStackMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("FDStats", 2, new Object[] { "curMap size:", Integer.valueOf(((ConcurrentHashMap)localObject1).size()) });
+      }
+      localObject1 = ((ConcurrentHashMap)localObject1).values().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localStringBuilder.append((String)((Iterator)localObject1).next());
+        localStringBuilder.append("\n");
+      }
+      return localStringBuilder.toString();
     }
     catch (Throwable localThrowable)
     {
       QLog.e("FDStats", 1, "getAllStackTrace ", localThrowable);
-    }
-    for (;;)
-    {
-      localThrowable.putAll(mStackMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("FDStats", 2, new Object[] { "curMap size:", Integer.valueOf(localThrowable.size()) });
-      }
-      Iterator localIterator = localThrowable.values().iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("\n");
-      }
     }
   }
   
@@ -77,22 +87,34 @@ public class FDStatsHooker
   public static void notifyErrorForFD(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     StringBuilder localStringBuilder1 = new StringBuilder(128);
-    localStringBuilder1.append("notifyErrorForFD fd:").append(paramInt1);
-    localStringBuilder1.append(" errCode:").append(paramInt2);
-    localStringBuilder1.append(" filePath:").append(paramString1);
-    localStringBuilder1.append(" method:").append(paramString2);
-    localStringBuilder1.append(" backTrace:\n").append(paramString3);
+    localStringBuilder1.append("notifyErrorForFD fd:");
+    localStringBuilder1.append(paramInt1);
+    localStringBuilder1.append(" errCode:");
+    localStringBuilder1.append(paramInt2);
+    localStringBuilder1.append(" filePath:");
+    localStringBuilder1.append(paramString1);
+    localStringBuilder1.append(" method:");
+    localStringBuilder1.append(paramString2);
+    localStringBuilder1.append(" backTrace:\n");
+    localStringBuilder1.append(paramString3);
     Object localObject = new Throwable().getStackTrace();
     StringBuilder localStringBuilder2 = new StringBuilder();
     paramInt1 = 1;
     while (paramInt1 < localObject.length)
     {
-      localStringBuilder2.append(localObject[paramInt1] + "\n");
+      localStringBuilder3 = new StringBuilder();
+      localStringBuilder3.append(localObject[paramInt1]);
+      localStringBuilder3.append("\n");
+      localStringBuilder2.append(localStringBuilder3.toString());
       paramInt1 += 1;
     }
-    localStringBuilder1.append("javaStack:\n").append(localStringBuilder2);
+    localStringBuilder1.append("javaStack:\n");
+    localStringBuilder1.append(localStringBuilder2);
     localObject = new HashMap();
-    ((HashMap)localObject).put("errCode", "" + paramInt2);
+    StringBuilder localStringBuilder3 = new StringBuilder();
+    localStringBuilder3.append("");
+    localStringBuilder3.append(paramInt2);
+    ((HashMap)localObject).put("errCode", localStringBuilder3.toString());
     ((HashMap)localObject).put("filePath", paramString1);
     ((HashMap)localObject).put("method:", paramString2);
     ((HashMap)localObject).put("backTrace", paramString3);
@@ -102,7 +124,7 @@ public class FDStatsHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsHooker
  * JD-Core Version:    0.7.0.1
  */

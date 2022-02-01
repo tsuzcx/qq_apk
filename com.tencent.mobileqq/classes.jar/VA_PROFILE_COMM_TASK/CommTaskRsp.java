@@ -8,9 +8,9 @@ public final class CommTaskRsp
   extends JceStruct
 {
   static byte[] cache_vTaskData = (byte[])new byte[1];
-  public long iRetCode;
+  public long iRetCode = 0L;
   public String sRetMsg = "";
-  public byte[] vTaskData;
+  public byte[] vTaskData = null;
   
   static
   {
@@ -36,17 +36,19 @@ public final class CommTaskRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRetCode, 0);
-    if (this.sRetMsg != null) {
-      paramJceOutputStream.write(this.sRetMsg, 1);
+    Object localObject = this.sRetMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.vTaskData != null) {
-      paramJceOutputStream.write(this.vTaskData, 2);
+    localObject = this.vTaskData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VA_PROFILE_COMM_TASK.CommTaskRsp
  * JD-Core Version:    0.7.0.1
  */

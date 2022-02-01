@@ -11,57 +11,57 @@ import java.util.regex.Pattern;
 
 final class a
 {
-  private static final Pattern aWY;
-  private final m aWZ;
-  private final StringBuilder aXa;
+  private static final Pattern dgP;
+  private final m dgQ;
+  private final StringBuilder dgR;
   
   static
   {
-    AppMethodBeat.i(95715);
-    aWY = Pattern.compile("\\[voice=\"([^\"]*)\"\\]");
-    AppMethodBeat.o(95715);
+    AppMethodBeat.i(92883);
+    dgP = Pattern.compile("\\[voice=\"([^\"]*)\"\\]");
+    AppMethodBeat.o(92883);
   }
   
   public a()
   {
-    AppMethodBeat.i(95708);
-    this.aWZ = new m();
-    this.aXa = new StringBuilder();
-    AppMethodBeat.o(95708);
+    AppMethodBeat.i(92876);
+    this.dgQ = new m();
+    this.dgR = new StringBuilder();
+    AppMethodBeat.o(92876);
   }
   
   private static void D(m paramm)
   {
-    AppMethodBeat.i(95710);
+    AppMethodBeat.i(92878);
     int i = 1;
-    while ((paramm.qM() > 0) && (i != 0)) {
+    while ((paramm.UF() > 0) && (i != 0)) {
       if ((E(paramm)) || (F(paramm))) {
         i = 1;
       } else {
         i = 0;
       }
     }
-    AppMethodBeat.o(95710);
+    AppMethodBeat.o(92878);
   }
   
   private static boolean E(m paramm)
   {
-    AppMethodBeat.i(95712);
+    AppMethodBeat.i(92880);
     int i = paramm.position;
     switch ((char)paramm.data[i])
     {
     default: 
-      AppMethodBeat.o(95712);
+      AppMethodBeat.o(92880);
       return false;
     }
-    paramm.en(1);
-    AppMethodBeat.o(95712);
+    paramm.iH(1);
+    AppMethodBeat.o(92880);
     return true;
   }
   
   private static boolean F(m paramm)
   {
-    AppMethodBeat.i(95713);
+    AppMethodBeat.i(92881);
     int i = paramm.position;
     int j = paramm.limit;
     byte[] arrayOfByte = paramm.data;
@@ -88,10 +88,10 @@ final class a
       }
       else
       {
-        paramm.en(j - paramm.position);
-        AppMethodBeat.o(95713);
+        paramm.iH(j - paramm.position);
+        AppMethodBeat.o(92881);
         return true;
-        AppMethodBeat.o(95713);
+        AppMethodBeat.o(92881);
         return false;
       }
       i = k;
@@ -100,28 +100,28 @@ final class a
   
   private static String a(m paramm, StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(95711);
+    AppMethodBeat.i(92879);
     D(paramm);
-    if (paramm.qM() == 0)
+    if (paramm.UF() == 0)
     {
-      AppMethodBeat.o(95711);
+      AppMethodBeat.o(92879);
       return null;
     }
     paramStringBuilder = b(paramm, paramStringBuilder);
     if (!"".equals(paramStringBuilder))
     {
-      AppMethodBeat.o(95711);
+      AppMethodBeat.o(92879);
       return paramStringBuilder;
     }
     paramm = (char)paramm.readUnsignedByte();
-    AppMethodBeat.o(95711);
+    AppMethodBeat.o(92879);
     return paramm;
   }
   
   private static String b(m paramm, StringBuilder paramStringBuilder)
   {
     int j = 0;
-    AppMethodBeat.i(95714);
+    AppMethodBeat.i(92882);
     paramStringBuilder.setLength(0);
     int i = paramm.position;
     int k = paramm.limit;
@@ -138,30 +138,30 @@ final class a
         j = 1;
       }
     }
-    paramm.en(i - paramm.position);
+    paramm.iH(i - paramm.position);
     paramm = paramStringBuilder.toString();
-    AppMethodBeat.o(95714);
+    AppMethodBeat.o(92882);
     return paramm;
   }
   
   public final d C(m paramm)
   {
-    AppMethodBeat.i(95709);
-    this.aXa.setLength(0);
+    AppMethodBeat.i(92877);
+    this.dgR.setLength(0);
     int i = paramm.position;
     while (!TextUtils.isEmpty(paramm.readLine())) {}
-    this.aWZ.l(paramm.data, paramm.position);
-    this.aWZ.setPosition(i);
-    Object localObject1 = this.aWZ;
-    Object localObject2 = this.aXa;
+    this.dgQ.n(paramm.data, paramm.position);
+    this.dgQ.setPosition(i);
+    Object localObject1 = this.dgQ;
+    Object localObject2 = this.dgR;
     D((m)localObject1);
-    if (((m)localObject1).qM() < 5) {
+    if (((m)localObject1).UF() < 5) {
       paramm = null;
     }
     int k;
-    while ((paramm == null) || (!"{".equals(a(this.aWZ, this.aXa))))
+    while ((paramm == null) || (!"{".equals(a(this.dgQ, this.dgR))))
     {
-      AppMethodBeat.o(95709);
+      AppMethodBeat.o(92877);
       return null;
       if (!"::cue".equals(((m)localObject1).readString(5)))
       {
@@ -213,9 +213,9 @@ final class a
       localObject1 = paramm;
       if (i != -1)
       {
-        localObject1 = aWY.matcher(paramm.substring(i));
+        localObject1 = dgP.matcher(paramm.substring(i));
         if (((Matcher)localObject1).matches()) {
-          ((d)localObject3).aXi = ((Matcher)localObject1).group(1);
+          ((d)localObject3).dgY = ((Matcher)localObject1).group(1);
         }
         localObject1 = paramm.substring(0, i);
       }
@@ -225,10 +225,10 @@ final class a
       if (i == -1) {
         break label710;
       }
-      ((d)localObject3).aXg = ((String)localObject1).substring(0, i);
-      ((d)localObject3).aXf = ((String)localObject1).substring(i + 1);
+      ((d)localObject3).dgW = ((String)localObject1).substring(0, i);
+      ((d)localObject3).cui = ((String)localObject1).substring(i + 1);
       if (paramm.length > 1) {
-        ((d)localObject3).aXh = Arrays.asList((String[])Arrays.copyOfRange(paramm, 1, paramm.length));
+        ((d)localObject3).dgX = Arrays.asList((String[])Arrays.copyOfRange(paramm, 1, paramm.length));
       }
     }
     paramm = null;
@@ -239,8 +239,8 @@ final class a
       if (j != 0) {
         break label963;
       }
-      k = this.aWZ.position;
-      localObject2 = a(this.aWZ, this.aXa);
+      k = this.dgQ.position;
+      localObject2 = a(this.dgQ, this.dgR);
       label481:
       m localm;
       Object localObject4;
@@ -253,9 +253,9 @@ final class a
         if (i != 0) {
           continue;
         }
-        this.aWZ.setPosition(k);
-        localm = this.aWZ;
-        localObject4 = this.aXa;
+        this.dgQ.setPosition(k);
+        localm = this.dgQ;
+        localObject4 = this.dgR;
         D(localm);
         str = b(localm, (StringBuilder)localObject4);
         j = i;
@@ -310,12 +310,12 @@ final class a
         if (!"color".equals(str)) {
           break label776;
         }
-        ((d)localObject3).aWA = e.aF((String)localObject1);
-        ((d)localObject3).aWB = true;
+        ((d)localObject3).dgs = e.cZ((String)localObject1);
+        ((d)localObject3).dgt = true;
         j = i;
         paramm = (m)localObject2;
         break label438;
-        ((d)localObject3).aXg = ((String)localObject1);
+        ((d)localObject3).dgW = ((String)localObject1);
         break;
         i = 0;
         break label481;
@@ -331,8 +331,8 @@ final class a
       label776:
       if ("background-color".equals(str))
       {
-        ((d)localObject3).backgroundColor = e.aF((String)localObject1);
-        ((d)localObject3).aWC = true;
+        ((d)localObject3).backgroundColor = e.cZ((String)localObject1);
+        ((d)localObject3).dgu = true;
         j = i;
         paramm = (m)localObject2;
       }
@@ -342,14 +342,14 @@ final class a
         paramm = (m)localObject2;
         if ("underline".equals(localObject1))
         {
-          ((d)localObject3).aWE = 1;
+          ((d)localObject3).dgw = 1;
           j = i;
           paramm = (m)localObject2;
         }
       }
       else if ("font-family".equals(str))
       {
-        ((d)localObject3).aWz = x.aQ((String)localObject1);
+        ((d)localObject3).fontFamily = x.ds((String)localObject1);
         j = i;
         paramm = (m)localObject2;
       }
@@ -359,7 +359,7 @@ final class a
         paramm = (m)localObject2;
         if ("bold".equals(localObject1))
         {
-          ((d)localObject3).aWF = 1;
+          ((d)localObject3).dgx = 1;
           j = i;
           paramm = (m)localObject2;
         }
@@ -374,7 +374,7 @@ final class a
           paramm = (m)localObject2;
           if ("italic".equals(localObject1))
           {
-            ((d)localObject3).aWG = 1;
+            ((d)localObject3).italic = 1;
             j = i;
             paramm = (m)localObject2;
           }
@@ -384,16 +384,16 @@ final class a
     label963:
     if ("}".equals(paramm))
     {
-      AppMethodBeat.o(95709);
+      AppMethodBeat.o(92877);
       return localObject3;
     }
-    AppMethodBeat.o(95709);
+    AppMethodBeat.o(92877);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.a
  * JD-Core Version:    0.7.0.1
  */

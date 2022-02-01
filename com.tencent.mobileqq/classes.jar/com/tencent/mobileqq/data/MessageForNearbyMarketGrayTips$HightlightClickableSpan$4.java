@@ -1,34 +1,30 @@
 package com.tencent.mobileqq.data;
 
-import apez;
-import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
-public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$4
+class MessageForNearbyMarketGrayTips$HightlightClickableSpan$4
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$4(apez paramapez, QQAppInterface paramQQAppInterface) {}
+  MessageForNearbyMarketGrayTips$HightlightClickableSpan$4(MessageForNearbyMarketGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
     }
-    azqs.b(this.a, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, apez.a(this.this$0).frienduin, "", "", "");
-    QQAppInterface localQQAppInterface;
-    if ((apez.a(this.this$0).AioType == 1) || (apez.a(this.this$0).AioType == 3))
+    ReportController.b(this.a, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).frienduin, "", "", "");
+    if ((MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).AioType == 1) || (MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).AioType == 3))
     {
-      localQQAppInterface = this.a;
-      if (apez.a(this.this$0).AioType != 0) {
-        break label122;
+      QQAppInterface localQQAppInterface = this.a;
+      String str;
+      if (MessageForNearbyMarketGrayTips.HightlightClickableSpan.b(this.this$0).AioType == 0) {
+        str = "0";
+      } else {
+        str = "1";
       }
-    }
-    label122:
-    for (String str = "0";; str = "1")
-    {
-      azqs.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
-      return;
+      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
     }
   }
 }

@@ -2,11 +2,11 @@ package com.tencent.av.smallscreen;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdne;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import lid;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class SmallScreenService$3
   implements Runnable
@@ -18,17 +18,17 @@ class SmallScreenService$3
     Object localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localObject != null)
     {
-      localObject = bdne.a(((VideoAppInterface)localObject).getApp()).edit();
-      if (this.this$0.a.b()) {
-        ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.this$0.a.a().K);
+      localObject = SharedPreUtils.B(((VideoAppInterface)localObject).getApp()).edit();
+      if (this.this$0.v.g()) {
+        ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.this$0.v.k().bB);
       }
-      ((SharedPreferences.Editor)localObject).commit();
+      ((SharedPreferences.Editor)localObject).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.3
  * JD-Core Version:    0.7.0.1
  */

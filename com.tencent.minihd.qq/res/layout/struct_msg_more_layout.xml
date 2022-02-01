@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/black" android:gravity="right" android:layout_gravity="right" android:id="@id/structmsg_more_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" android:text="@string/pa_full_text" />
+    <ImageView android:layout_gravity="center_vertical" android:background="@drawable/troop_setting_bar_click_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:contentDescription="@null" />
+</LinearLayout>

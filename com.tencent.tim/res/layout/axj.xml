@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="#ff50ffcd" android:layout_gravity="center" android:id="@id/efb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/qxm" android:shadowColor="#34000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="9.0" />
+</FrameLayout>

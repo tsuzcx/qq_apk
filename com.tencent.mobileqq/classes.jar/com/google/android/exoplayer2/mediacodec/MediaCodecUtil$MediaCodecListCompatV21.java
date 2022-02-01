@@ -12,15 +12,7 @@ final class MediaCodecUtil$MediaCodecListCompatV21
   private final int codecKind;
   private MediaCodecInfo[] mediaCodecInfos;
   
-  public MediaCodecUtil$MediaCodecListCompatV21(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.codecKind = i;
-      return;
-    }
-  }
+  public MediaCodecUtil$MediaCodecListCompatV21(boolean paramBoolean) {}
   
   private void ensureMediaCodecInfosInitialized()
   {
@@ -53,7 +45,7 @@ final class MediaCodecUtil$MediaCodecListCompatV21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.mediacodec.MediaCodecUtil.MediaCodecListCompatV21
  * JD-Core Version:    0.7.0.1
  */

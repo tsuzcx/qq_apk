@@ -11,8 +11,8 @@ public final class send_common_gift_req
 {
   static s_send_gift_item cache_giftItem = new s_send_gift_item();
   static Map<String, String> cache_mapExt = new HashMap();
-  public s_send_gift_item giftItem;
-  public Map<String, String> mapExt;
+  public s_send_gift_item giftItem = null;
+  public Map<String, String> mapExt = null;
   
   static
   {
@@ -36,14 +36,15 @@ public final class send_common_gift_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.giftItem, 0);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 1);
+    Map localMap = this.mapExt;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.send_common_gift_req
  * JD-Core Version:    0.7.0.1
  */

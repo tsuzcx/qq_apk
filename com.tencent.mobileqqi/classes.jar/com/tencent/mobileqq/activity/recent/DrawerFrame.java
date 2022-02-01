@@ -15,8 +15,8 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Scroller;
 import com.tencent.qphone.base.util.QLog;
+import eon;
 import eoo;
-import eop;
 
 public class DrawerFrame
   extends FrameLayout
@@ -102,7 +102,7 @@ public class DrawerFrame
     }
     for (this.D = (this.C + (int)(this.A * 0.8F + 0.5D));; this.D = (this.C + (int)(this.A * 0.8F + 0.5D)))
     {
-      this.jdField_a_of_type_AndroidOsHandler = new eop(this);
+      this.jdField_a_of_type_AndroidOsHandler = new eoo(this);
       this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new DrawerFrame.SmoothInterpolator());
       a(paramViewGroup1, paramViewGroup2, paramViewGroup3);
       b(1);
@@ -242,7 +242,7 @@ public class DrawerFrame
       if (this.jdField_b_of_type_AndroidViewViewGroup != null)
       {
         this.jdField_b_of_type_AndroidViewViewGroup.addView(this);
-        this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new eoo(this));
+        this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new eon(this));
       }
       if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_b_of_type_AndroidViewView == null))
       {

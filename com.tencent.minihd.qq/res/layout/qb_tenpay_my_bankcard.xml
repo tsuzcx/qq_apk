@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bank_layout" android:background="@drawable/qb_tenpay_btn_white" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="0.0dip">
+        <ImageView android:id="@id/tenpay_bankcard_logo" android:background="@drawable/qb_tenpay_bank_default" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="12.0dip" />
+        <LinearLayout android:orientation="vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_white_color" android:id="@id/tenpay_bankcard_bank_name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:singleLine="true" />
+            <LinearLayout android:gravity="center_vertical" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_gray_white_color" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="**** **** **** " />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_gray_white_color" android:id="@id/tenpay_bankcard_tail" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:duplicateParentState="true" android:layout_marginRight="15.0dip" style="@style/qb_tenpay_arrow_r" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/tel_layout" android:background="@drawable/qb_tenpay_btn_white" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="0.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_white_color" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_bank_servicephone" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_blue_wathet_color" android:gravity="right" android:id="@id/tel_num" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_weight="1.0" />
+        <ImageView android:duplicateParentState="true" style="@style/qb_tenpay_arrow_r" />
+    </LinearLayout>
+    <include layout="@layout/qb_tenpay_support_footer" />
+</LinearLayout>

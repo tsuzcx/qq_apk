@@ -1,4 +1,5 @@
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
@@ -8,24 +9,18 @@ import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 class gba
   implements Runnable
 {
-  gba(gaz paramgaz, ActionGlobalData paramActionGlobalData) {}
+  gba(gay paramgay, ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
     
-    if (this.jdField_a_of_type_Gaz.jdField_a_of_type_Int == 0) {
-      MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Gay.jdField_a_of_type_Int == 1)
     {
-      MagicfaceViewController.c(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setText("");
-      MagicfaceViewController.b(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setText("");
-      if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.h))) {
-        MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).z();
-      }
-      return;
-      MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Int);
-      MagicfaceViewController.b(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController);
+      MagicfaceViewController.a(this.jdField_a_of_type_Gay.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setBackgroundColor(0);
+      this.jdField_a_of_type_Gay.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.h)) && (PreferenceManager.getDefaultSharedPreferences(MagicfaceViewController.a(this.jdField_a_of_type_Gay.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController)).getBoolean(MagicfaceViewController.a(this.jdField_a_of_type_Gay.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).getString(2131563437), false))) {
+      MagicfaceViewController.a(this.jdField_a_of_type_Gay.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).y();
     }
   }
 }

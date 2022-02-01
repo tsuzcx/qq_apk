@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzq;
 import android.widget.TextView;
 
-public class GamePartyTipsBar$2
+class GamePartyTipsBar$2
   implements Runnable
 {
-  public GamePartyTipsBar$2(agzq paramagzq, String paramString) {}
+  GamePartyTipsBar$2(GamePartyTipsBar paramGamePartyTipsBar, String paramString) {}
   
   public void run()
   {
-    agzq.a(this.this$0).setText(this.a);
+    GamePartyTipsBar.e(this.this$0).setText(this.a);
   }
 }
 

@@ -16,18 +16,18 @@ class MiniAppDesktopAdapter$DesktopModuleListViewHolder$2
     {
       MiniAppUtils.updateMiniAppList(12);
       if ((this.this$1.mModuleInfo != null) && (this.this$1.mModuleInfo.getModuleType() == 2)) {
-        MiniAppDesktopAdapter.access$3500(this.this$1.this$0);
+        MiniAppDesktopAdapter.access$3600(this.this$1.this$0);
       }
     }
-    while (paramInt != 1) {
-      return;
+    else if (paramInt == 1)
+    {
+      MiniAppUtils.updateMiniAppList(13);
     }
-    MiniAppUtils.updateMiniAppList(13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopModuleListViewHolder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/af1" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-</LinearLayout>
+<com.google.android.material.internal.NavigationMenuItemView android:paddingLeft="?uv" android:paddingRight="?uw" android:focusable="true" android:layout_width="fill_parent" android:layout_height="?ut" android:foreground="?a1i"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

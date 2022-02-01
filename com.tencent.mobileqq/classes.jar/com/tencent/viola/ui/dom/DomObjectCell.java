@@ -23,29 +23,40 @@ public class DomObjectCell
   public String changeRef;
   public int changeType = -1;
   private boolean hasInitLazy = false;
+  private ConcurrentHashMap<String, DomObjectCell.ComponentState> mBeforeTouchUpStateMap;
   private ComponentAppearEvent mComponentAppearEvent;
+  private ArrayMap<String, Float> mReDidAppearComptDxEndMap;
+  private ArrayMap<String, Float> mReDidAppearComptDxEndOffsetMap;
+  private ArrayMap<String, Float> mReDidAppearComptDxStartMap;
+  private ArrayMap<String, Float> mReDidAppearComptDxStartOffsetMap;
+  private ArrayMap<String, Float> mReDidAppearComptDyEndMap;
+  private ArrayMap<String, Float> mReDidAppearComptDyEndOffsetMap;
+  private ArrayMap<String, Float> mReDidAppearComptDyStartMap;
+  private ArrayMap<String, Float> mReDidAppearComptDyStartOffsetMap;
   private ArrayList<String> mRegisterAppearComponentList;
-  private ArrayMap<String, Float> mRegisterDidAppearComponentDyEndMap;
-  private ArrayMap<String, Float> mRegisterDidAppearComponentDyEndOffsetMap;
-  private ArrayMap<String, Float> mRegisterDidAppearComponentDyStartMap;
-  private ArrayMap<String, Float> mRegisterDidAppearComponentDyStartOffsetMap;
   private ArrayList<String> mRegisterDidAppearComponentList;
   private ConcurrentHashMap<String, DomObjectCell.ComponentState> mRegisterDidAppearComponentStateMap;
   private ArrayList<String> mRegisterDidDisAppearComponentList;
+  private Boolean mTouchDirectionDown = Boolean.valueOf(true);
   public boolean needRefresh = false;
   private List<String> scrollEventList;
   
   public DomObjectCell()
   {
     setMeasureFunction(CELL_MEASURE_FUNCTION);
-    this.mRegisterDidAppearComponentDyStartMap = new ArrayMap();
-    this.mRegisterDidAppearComponentDyEndMap = new ArrayMap();
-    this.mRegisterDidAppearComponentDyStartOffsetMap = new ArrayMap();
-    this.mRegisterDidAppearComponentDyEndOffsetMap = new ArrayMap();
+    this.mReDidAppearComptDyStartMap = new ArrayMap();
+    this.mReDidAppearComptDyEndMap = new ArrayMap();
+    this.mReDidAppearComptDxStartMap = new ArrayMap();
+    this.mReDidAppearComptDxEndMap = new ArrayMap();
+    this.mReDidAppearComptDyStartOffsetMap = new ArrayMap();
+    this.mReDidAppearComptDyEndOffsetMap = new ArrayMap();
     this.mRegisterDidAppearComponentStateMap = new ConcurrentHashMap();
     this.mRegisterAppearComponentList = new ArrayList();
     this.mRegisterDidAppearComponentList = new ArrayList();
     this.mRegisterDidDisAppearComponentList = new ArrayList();
+    this.mReDidAppearComptDxStartOffsetMap = new ArrayMap();
+    this.mReDidAppearComptDxEndOffsetMap = new ArrayMap();
+    this.mBeforeTouchUpStateMap = new ConcurrentHashMap();
   }
   
   private void dispatchAppearEvent(String paramString1, String paramString2)
@@ -53,9 +64,50 @@ public class DomObjectCell
     if (this.mComponentAppearEvent == null) {
       this.mComponentAppearEvent = new ComponentAppearEvent(paramString1, paramString2);
     }
-    this.mComponentAppearEvent.event = paramString1;
-    this.mComponentAppearEvent.ref = paramString2;
+    ComponentAppearEvent localComponentAppearEvent = this.mComponentAppearEvent;
+    localComponentAppearEvent.event = paramString1;
+    localComponentAppearEvent.ref = paramString2;
     ViolaDispatchManager.getInstance().dispatchEvent("EVENT_NAME_COMPONENT_APPEAR", this.mComponentAppearEvent);
+  }
+  
+  public void addReDidAppearComptDxEnd(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDxEndMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDxEndOffset(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDxEndOffsetMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDxStart(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDxStartMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDxStartOffset(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDxStartOffsetMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDyEnd(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDyEndMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDyEndOffset(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDyEndOffsetMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDyStart(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDyStartMap.put(paramString, Float.valueOf(paramFloat));
+  }
+  
+  public void addReDidAppearComptDyStartOffset(float paramFloat, String paramString)
+  {
+    this.mReDidAppearComptDyStartOffsetMap.put(paramString, Float.valueOf(paramFloat));
   }
   
   public void addRegisterComponent(String paramString1, String paramString2)
@@ -73,26 +125,6 @@ public class DomObjectCell
     this.mRegisterAppearComponentList.add(paramString2);
   }
   
-  public void addRegisterDidAppearComponentDyEnd(float paramFloat, String paramString)
-  {
-    this.mRegisterDidAppearComponentDyEndMap.put(paramString, Float.valueOf(paramFloat));
-  }
-  
-  public void addRegisterDidAppearComponentDyEndOffset(float paramFloat, String paramString)
-  {
-    this.mRegisterDidAppearComponentDyEndOffsetMap.put(paramString, Float.valueOf(paramFloat));
-  }
-  
-  public void addRegisterDidAppearComponentDyStart(float paramFloat, String paramString)
-  {
-    this.mRegisterDidAppearComponentDyStartMap.put(paramString, Float.valueOf(paramFloat));
-  }
-  
-  public void addRegisterDidAppearComponentDyStartOffset(float paramFloat, String paramString)
-  {
-    this.mRegisterDidAppearComponentDyStartOffsetMap.put(paramString, Float.valueOf(paramFloat));
-  }
-  
   public void addScrollEvent(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -102,6 +134,11 @@ public class DomObjectCell
       this.scrollEventList = new ArrayList();
     }
     this.scrollEventList.add(paramString);
+  }
+  
+  public void clearComptStateWhenTouchDown()
+  {
+    this.mBeforeTouchUpStateMap.clear();
   }
   
   public void fireEvent(String paramString1, String paramString2, String paramString3)
@@ -128,29 +165,54 @@ public class DomObjectCell
     return (DomObjectCell.ComponentState)this.mRegisterDidAppearComponentStateMap.get(paramString);
   }
   
-  public ArrayMap getRegisterDidAppearComponentDyEndMap()
+  public ArrayMap getReDidAppearComptDxEndMap()
   {
-    return this.mRegisterDidAppearComponentDyEndMap;
+    return this.mReDidAppearComptDxEndMap;
   }
   
-  public ArrayMap getRegisterDidAppearComponentDyEndOffsetMap()
+  public ArrayMap getReDidAppearComptDxEndOffsetMap()
   {
-    return this.mRegisterDidAppearComponentDyEndOffsetMap;
+    return this.mReDidAppearComptDxEndOffsetMap;
   }
   
-  public ArrayMap getRegisterDidAppearComponentDyStartMap()
+  public ArrayMap getReDidAppearComptDxStartMap()
   {
-    return this.mRegisterDidAppearComponentDyStartMap;
+    return this.mReDidAppearComptDxStartMap;
   }
   
-  public ArrayMap getRegisterDidAppearComponentDyStartOffsetMap()
+  public ArrayMap getReDidAppearComptDxStartOffsetMap()
   {
-    return this.mRegisterDidAppearComponentDyStartOffsetMap;
+    return this.mReDidAppearComptDxStartOffsetMap;
+  }
+  
+  public ArrayMap getReDidAppearComptDyEndMap()
+  {
+    return this.mReDidAppearComptDyEndMap;
+  }
+  
+  public ArrayMap getReDidAppearComptDyEndOffsetMap()
+  {
+    return this.mReDidAppearComptDyEndOffsetMap;
+  }
+  
+  public ArrayMap getReDidAppearComptDyStartMap()
+  {
+    return this.mReDidAppearComptDyStartMap;
+  }
+  
+  public ArrayMap getReDidAppearComptDyStartOffsetMap()
+  {
+    return this.mReDidAppearComptDyStartOffsetMap;
   }
   
   public List<String> getScrollEventList()
   {
     return this.scrollEventList;
+  }
+  
+  public DomObjectCell.ComponentState getTouchUpComptState(String paramString)
+  {
+    return (DomObjectCell.ComponentState)this.mBeforeTouchUpStateMap.get(paramString);
   }
   
   public boolean isComponentRegisterEvent(String paramString1, String paramString2)
@@ -166,42 +228,39 @@ public class DomObjectCell
   
   public boolean isLazy()
   {
-    int i;
     if (!this.hasInitLazy)
     {
       this.hasInitLazy = true;
       Object localObject = getDomParent();
-      if ((localObject != null) && ("list".equals(((DomObject)localObject).getType())) && (localObject != null) && (((DomObject)localObject).getAttributes() != null))
+      if ((localObject != null) && ("list".equals(((DomObject)localObject).getType())))
       {
-        localObject = ((DomObject)localObject).getAttributes().entrySet().iterator();
-        i = 0;
-        if (((Iterator)localObject).hasNext())
+        int i = 0;
+        if ((localObject != null) && (((DomObject)localObject).getAttributes() != null))
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-          if (!"direction".equals((String)localEntry.getKey())) {
-            break label138;
+          localObject = ((DomObject)localObject).getAttributes().entrySet().iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+            if ("direction".equals((String)localEntry.getKey()))
+            {
+              if ("vertical".equals(ViolaUtils.getString(localEntry.getValue(), null))) {
+                lazy(true);
+              }
+              i = 1;
+            }
           }
-          if ("vertical".equals(ViolaUtils.getString(localEntry.getValue(), null))) {
+          if (i == 0) {
             lazy(true);
           }
-          i = 1;
         }
       }
     }
-    label138:
-    for (;;)
-    {
-      break;
-      if (i == 0) {
-        lazy(true);
-      }
-      return super.isLazy();
-    }
+    return super.isLazy();
   }
   
   public boolean isRegisterDidAppear()
   {
-    return this.mRegisterDidAppearComponentDyStartMap.size() > 0;
+    return (this.mReDidAppearComptDyStartMap.size() > 0) || (this.mReDidAppearComptDxStartMap.size() > 0);
   }
   
   public boolean isSetComponentStaet(String paramString)
@@ -209,7 +268,12 @@ public class DomObjectCell
     return this.mRegisterDidAppearComponentStateMap.containsKey(paramString);
   }
   
-  public void resetComponentState(String paramString)
+  public boolean needFireNextStateWhenWillAppear(String paramString, Boolean paramBoolean)
+  {
+    return ((getTouchUpComptState(paramString) == null) || (DomObjectCell.ComponentState.WILLAPPEAR.equals(getTouchUpComptState(paramString)))) && (paramBoolean == this.mTouchDirectionDown);
+  }
+  
+  public void resetComponentState(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (this.mRegisterDidAppearComponentStateMap.size() >= 0)
     {
@@ -217,12 +281,37 @@ public class DomObjectCell
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if ((getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) || (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR)))
+        if ((!getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) && (!getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR)))
         {
-          dispatchAppearEvent("didDisappear", str);
-          if (isComponentRegisterEvent("didDisappear", str)) {
+          if ((paramBoolean2) && (needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean1))))
+          {
+            if (isComponentRegisterEvent("willAppear", str)) {
+              fireEvent(paramString, "willAppear", str);
+            }
+            if (isComponentRegisterEvent("didAppear", str)) {
+              fireEvent(paramString, "didAppear", str);
+            }
+            if (isComponentRegisterEvent("didDisappear", str)) {
+              fireEvent(paramString, "didDisappear", str);
+            }
+          }
+        }
+        else
+        {
+          if (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))
+          {
+            if ((needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean1))) && (isComponentRegisterEvent("didAppear", str))) {
+              fireEvent(paramString, "didAppear", str);
+            }
+            if (isComponentRegisterEvent("didDisappear", str)) {
+              fireEvent(paramString, "didDisappear", str);
+            }
+          }
+          else if ((getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) && (isComponentRegisterEvent("didDisappear", str)))
+          {
             fireEvent(paramString, "didDisappear", str);
           }
+          dispatchAppearEvent("didDisappear", str);
         }
         this.mRegisterDidAppearComponentStateMap.put(str, DomObjectCell.ComponentState.DIDDISAPPEAR);
       }
@@ -233,10 +322,20 @@ public class DomObjectCell
   {
     this.mRegisterDidAppearComponentStateMap.put(paramString, paramComponentState);
   }
+  
+  public void setTouchDirection(boolean paramBoolean)
+  {
+    this.mTouchDirectionDown = Boolean.valueOf(paramBoolean);
+  }
+  
+  public void setTouchUpComptState(String paramString, DomObjectCell.ComponentState paramComponentState)
+  {
+    this.mBeforeTouchUpStateMap.put(paramString, paramComponentState);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectCell
  * JD-Core Version:    0.7.0.1
  */

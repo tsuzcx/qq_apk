@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupNickEmoji
   extends JceStruct
 {
-  public int itemid;
+  public int itemid = 0;
   
   public GroupNickEmoji() {}
   
@@ -28,7 +28,7 @@ public final class GroupNickEmoji
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ColorNick.QC.GroupNickEmoji
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,15 @@
 package com.tencent.ttpic.util;
 
-import android.graphics.Matrix;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 import android.util.Pair;
+import android.view.MotionEvent;
 import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
@@ -20,7 +25,21 @@ import java.util.Random;
 
 public class AlgoUtils
 {
+  private static final String TAG = "AlgoUtils";
+  private static int mAverageHistogram = -1;
   private static final Random mRandom = new Random(System.currentTimeMillis());
+  
+  private static float[] GLKVector4Subtract(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    float[] arrayOfFloat = new float[paramArrayOfFloat1.length];
+    int i = 0;
+    while (i < paramArrayOfFloat1.length)
+    {
+      paramArrayOfFloat1[i] -= paramArrayOfFloat2[i];
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
   
   public static native void RGBA2YUV420SP(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
   
@@ -36,31 +55,24 @@ public class AlgoUtils
     double d4 = d3 / 95.040000000000006D;
     d2 /= 100.0D;
     d3 = d1 / 108.89D;
-    if (d4 > 0.008855999999999999D)
-    {
+    if (d4 > 0.008855999999999999D) {
       d1 = Math.pow(d4, 0.333333D);
-      if (d2 <= 0.008855999999999999D) {
-        break label144;
-      }
-      d2 = Math.pow(d2, 0.333333D);
-      label74:
-      if (d3 <= 0.008855999999999999D) {
-        break label159;
-      }
-    }
-    label144:
-    label159:
-    for (d3 = Math.pow(d3, 0.333333D);; d3 = 7.787D * d3 + 0.137931D)
-    {
-      paramArrayOfDouble2[0] = (116.0D * d2 - 16.0D);
-      paramArrayOfDouble2[1] = ((d1 - d2) * 500.0D);
-      paramArrayOfDouble2[2] = ((d2 - d3) * 200.0D);
-      return;
+    } else {
       d1 = d4 * 7.787D + 0.137931D;
-      break;
-      d2 = 7.787D * d2 + 0.137931D;
-      break label74;
     }
+    if (d2 > 0.008855999999999999D) {
+      d2 = Math.pow(d2, 0.333333D);
+    } else {
+      d2 = d2 * 7.787D + 0.137931D;
+    }
+    if (d3 > 0.008855999999999999D) {
+      d3 = Math.pow(d3, 0.333333D);
+    } else {
+      d3 = d3 * 7.787D + 0.137931D;
+    }
+    paramArrayOfDouble2[0] = (116.0D * d2 - 16.0D);
+    paramArrayOfDouble2[1] = ((d1 - d2) * 500.0D);
+    paramArrayOfDouble2[2] = ((d2 - d3) * 200.0D);
   }
   
   public static native void YUVNV21TORGBA(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2);
@@ -74,8 +86,10 @@ public class AlgoUtils
     float f2 = (paramArrayOfFloat[1] + paramArrayOfFloat[3]) / 2.0F;
     while (i < paramArrayOfFloat.length / 2)
     {
-      paramArrayOfFloat[(i * 2)] = ((paramArrayOfFloat[(i * 2)] - f1) * paramFloat + f1);
-      paramArrayOfFloat[(i * 2 + 1)] = ((paramArrayOfFloat[(i * 2 + 1)] - f2) * paramFloat + f2);
+      int j = i * 2;
+      paramArrayOfFloat[j] = ((paramArrayOfFloat[j] - f1) * paramFloat + f1);
+      j += 1;
+      paramArrayOfFloat[j] = ((paramArrayOfFloat[j] - f2) * paramFloat + f2);
       i += 1;
     }
     return paramArrayOfFloat;
@@ -93,8 +107,10 @@ public class AlgoUtils
       paramInt = i;
       while (paramInt < paramArrayOfFloat.length / 2)
       {
-        paramArrayOfFloat[(paramInt * 2)] = ((paramArrayOfFloat[(paramInt * 2)] - f1) * paramFloat + f1);
-        paramArrayOfFloat[(paramInt * 2 + 1)] = ((paramArrayOfFloat[(paramInt * 2 + 1)] - f2) * paramFloat + f2);
+        i = paramInt * 2;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f1) * paramFloat + f1);
+        i += 1;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f2) * paramFloat + f2);
         paramInt += 1;
       }
     }
@@ -103,7 +119,8 @@ public class AlgoUtils
       paramInt = j;
       while (paramInt < paramArrayOfFloat.length / 2)
       {
-        paramArrayOfFloat[(paramInt * 2 + 1)] = ((paramArrayOfFloat[(paramInt * 2 + 1)] - f2) * paramFloat + f2);
+        i = paramInt * 2 + 1;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f2) * paramFloat + f2);
         paramInt += 1;
       }
     }
@@ -112,7 +129,8 @@ public class AlgoUtils
       paramInt = k;
       while (paramInt < paramArrayOfFloat.length / 2)
       {
-        paramArrayOfFloat[(paramInt * 2)] = ((paramArrayOfFloat[(paramInt * 2)] - f1) * paramFloat + f1);
+        i = paramInt * 2;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f1) * paramFloat + f1);
         paramInt += 1;
       }
     }
@@ -131,8 +149,10 @@ public class AlgoUtils
       paramInt = i;
       while (paramInt < paramArrayOfFloat.length / 2)
       {
-        paramArrayOfFloat[(paramInt * 2)] = ((paramArrayOfFloat[(paramInt * 2)] - f1) * paramFloat + f1);
-        paramArrayOfFloat[(paramInt * 2 + 1)] = ((paramArrayOfFloat[(paramInt * 2 + 1)] - f2) * paramFloat + f2);
+        i = paramInt * 2;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f1) * paramFloat + f1);
+        i += 1;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f2) * paramFloat + f2);
         paramInt += 1;
       }
     }
@@ -141,7 +161,8 @@ public class AlgoUtils
       paramInt = j;
       while (paramInt < paramArrayOfFloat.length / 2)
       {
-        paramArrayOfFloat[(paramInt * 2 + 1)] = ((paramArrayOfFloat[(paramInt * 2 + 1)] - f2) * paramFloat + f2);
+        i = paramInt * 2 + 1;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f2) * paramFloat + f2);
         paramInt += 1;
       }
     }
@@ -150,7 +171,8 @@ public class AlgoUtils
       paramInt = k;
       while (paramInt < paramArrayOfFloat.length / 2)
       {
-        paramArrayOfFloat[(paramInt * 2)] = ((paramArrayOfFloat[(paramInt * 2)] - f1) * paramFloat + f1);
+        i = paramInt * 2;
+        paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - f1) * paramFloat + f1);
         paramInt += 1;
       }
     }
@@ -164,13 +186,13 @@ public class AlgoUtils
   
   public static double calBrightnessAdjustment(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<List<PointF>> paramList, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (((List)paramList.get(0)).size() <= 0))
+    if ((paramList != null) && (paramList.size() > 0) && (((List)paramList.get(0)).size() > 0))
     {
-      resetBrightnessAdjustmentCurve(paramArrayOfInt2);
-      return 60.0D;
+      paramList = new ArrayList((Collection)paramList.get(0));
+      return createBrightnessCurve((int)((PointF)paramList.get(4)).x, (int)((PointF)paramList.get(14)).x, (int)((PointF)paramList.get(0)).y, (int)((PointF)paramList.get(3)).y, paramInt1, paramInt2, paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
     }
-    paramList = new ArrayList((Collection)paramList.get(0));
-    return createBrightnessCurve((int)((PointF)paramList.get(4)).x, (int)((PointF)paramList.get(14)).x, (int)((PointF)paramList.get(0)).y, (int)((PointF)paramList.get(3)).y, paramInt1, paramInt2, paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
+    resetBrightnessAdjustmentCurve(paramArrayOfInt2);
+    return 60.0D;
   }
   
   public static int[] calBrightnessCurve(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<List<PointF>> paramList)
@@ -178,45 +200,63 @@ public class AlgoUtils
     int[] arrayOfInt1 = new int[256];
     int[] arrayOfInt2 = new int[256];
     int[] arrayOfInt3 = new int[256];
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 256) || (paramInt1 <= 0) || (paramInt2 <= 0) || (CollectionUtils.isEmpty(paramList)))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 256) && (paramInt1 > 0) && (paramInt2 > 0) && (!CollectionUtils.isEmpty(paramList)))
     {
-      resetBrightnessAdjustmentCurve(arrayOfInt3);
-      return arrayOfInt3;
+      getHistogram(paramArrayOfByte, paramInt1, paramInt2, paramList, arrayOfInt1, arrayOfInt2);
+      calBrightnessAdjustment(paramArrayOfByte, paramInt1, paramInt2, paramList, arrayOfInt2, arrayOfInt3);
+      return mergeCurve(arrayOfInt2, arrayOfInt3);
     }
-    getHistogram(paramArrayOfByte, paramInt1, paramInt2, paramList, arrayOfInt1, arrayOfInt2);
-    calBrightnessAdjustment(paramArrayOfByte, paramInt1, paramInt2, paramList, arrayOfInt2, arrayOfInt3);
-    return mergeCurve(arrayOfInt2, arrayOfInt3);
+    resetBrightnessAdjustmentCurve(arrayOfInt3);
+    return arrayOfInt3;
   }
   
   private static SizeI calCutAspectSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    double d4 = paramInt1 / paramInt2;
-    double d2 = paramInt4;
-    double d3 = (int)(d2 * d4);
-    double d1 = d3;
-    if (d3 < paramInt3)
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    double d4 = d1 / d2;
+    d1 = paramInt4;
+    Double.isNaN(d1);
+    double d3 = (int)(d1 * d4);
+    d2 = paramInt3;
+    if (d3 < d2)
     {
-      d1 = paramInt3;
-      d2 = d1 / d4;
+      Double.isNaN(d2);
+      d1 = d2 / d4;
     }
-    return new SizeI((int)d1, (int)d2);
+    else
+    {
+      d2 = d3;
+    }
+    return new SizeI((int)d2, (int)d1);
   }
   
   public static SizeI calCutSize(int paramInt1, int paramInt2, double paramDouble)
   {
-    if (paramInt1 / paramInt2 >= paramDouble) {
-      return new SizeI((int)Math.round(paramInt2 * paramDouble), paramInt2);
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    if (d1 / d2 >= paramDouble)
+    {
+      Double.isNaN(d2);
+      return new SizeI((int)Math.round(d2 * paramDouble), paramInt2);
     }
-    return new SizeI(paramInt1, (int)Math.round(paramInt1 / paramDouble));
+    Double.isNaN(d1);
+    return new SizeI(paramInt1, (int)Math.round(d1 / paramDouble));
   }
   
   public static List<Integer> calFaceAvgColor(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<List<PointF>> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (((List)paramList.get(0)).size() <= 0)) {
-      return Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+    Integer localInteger = Integer.valueOf(0);
+    if ((paramList != null) && (paramList.size() > 0) && (((List)paramList.get(0)).size() > 0))
+    {
+      paramList = new ArrayList((Collection)paramList.get(0));
+      return createFaceAvgColor(paramArrayOfByte, (int)((PointF)paramList.get(4)).x, (int)((PointF)paramList.get(14)).x, (int)((PointF)paramList.get(0)).y, (int)((PointF)paramList.get(3)).y, paramInt1, paramInt2);
     }
-    paramList = new ArrayList((Collection)paramList.get(0));
-    return createFaceAvgColor(paramArrayOfByte, (int)((PointF)paramList.get(4)).x, (int)((PointF)paramList.get(14)).x, (int)((PointF)paramList.get(0)).y, (int)((PointF)paramList.get(3)).y, paramInt1, paramInt2);
+    return Arrays.asList(new Integer[] { localInteger, localInteger, localInteger });
   }
   
   private float[] calPlaneLineIntersectPoint(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4)
@@ -237,16 +277,18 @@ public class AlgoUtils
     if (f13 == 0.0F) {
       return null;
     }
-    f7 = (f7 * (f10 - f4) + f8 * (f11 - f5) + (f12 - f6) * f9) / f13;
-    return new float[] { f1 * f7 + f4, f2 * f7 + f5, f7 * f3 + f6 };
+    f7 = ((f10 - f4) * f7 + (f11 - f5) * f8 + (f12 - f6) * f9) / f13;
+    return new float[] { f4 + f1 * f7, f5 + f2 * f7, f6 + f3 * f7 };
   }
   
   public static float[] calPositions(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
   {
-    paramFloat1 = paramFloat1 / paramInt1 * 2.0F - 1.0F;
-    paramFloat2 = paramFloat2 / paramInt2 * 2.0F - 1.0F;
-    paramFloat3 = paramFloat3 / paramInt1 * 2.0F - 1.0F;
-    paramFloat4 = paramFloat4 / paramInt2 * 2.0F - 1.0F;
+    float f1 = paramInt1;
+    paramFloat1 = paramFloat1 / f1 * 2.0F - 1.0F;
+    float f2 = paramInt2;
+    paramFloat2 = paramFloat2 / f2 * 2.0F - 1.0F;
+    paramFloat3 = paramFloat3 / f1 * 2.0F - 1.0F;
+    paramFloat4 = paramFloat4 / f2 * 2.0F - 1.0F;
     return new float[] { paramFloat1, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat2, paramFloat3, paramFloat4 };
   }
   
@@ -256,40 +298,50 @@ public class AlgoUtils
     {
       SizeI localSizeI = calSpaceAspectSize(paramInt1, paramInt2, paramRect.width, paramRect.height);
       paramInt1 = paramRect.x + (paramRect.width - localSizeI.width) / 2;
-      paramInt2 = paramRect.y;
-      paramInt2 = (paramRect.height - localSizeI.height) / 2 + paramInt2;
+      paramInt2 = paramRect.y + (paramRect.height - localSizeI.height) / 2;
       paramInt5 = localSizeI.width;
       i = localSizeI.height;
-      return calPositions(paramInt1, paramInt2 + i, paramInt5 + paramInt1, paramInt2, paramInt3, paramInt4);
+      return calPositions(paramInt1, i + paramInt2, paramInt5 + paramInt1, paramInt2, paramInt3, paramInt4);
     }
     paramInt1 = paramRect.x;
     paramInt2 = paramRect.y;
     paramInt5 = paramRect.width;
     int i = paramRect.height;
-    return calPositions(paramInt1, i + paramInt2, paramInt1 + paramInt5, paramInt2, paramInt3, paramInt4);
+    return calPositions(paramInt1, i + paramInt2, paramInt5 + paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public static float[] calPositionsTriangles(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
   {
-    paramFloat1 = paramFloat1 / paramInt1 * 2.0F - 1.0F;
-    paramFloat2 = paramFloat2 / paramInt2 * 2.0F - 1.0F;
-    paramFloat3 = paramFloat3 / paramInt1 * 2.0F - 1.0F;
-    paramFloat4 = paramFloat4 / paramInt2 * 2.0F - 1.0F;
+    float f1 = paramInt1;
+    paramFloat1 = paramFloat1 / f1 * 2.0F - 1.0F;
+    float f2 = paramInt2;
+    paramFloat2 = paramFloat2 / f2 * 2.0F - 1.0F;
+    paramFloat3 = paramFloat3 / f1 * 2.0F - 1.0F;
+    paramFloat4 = paramFloat4 / f2 * 2.0F - 1.0F;
     return new float[] { paramFloat1, paramFloat2, paramFloat1, paramFloat4, paramFloat3, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat3, paramFloat2 };
   }
   
   private static SizeI calSpaceAspectSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    double d4 = paramInt1 / paramInt2;
-    double d2 = paramInt4;
-    double d3 = (int)(d2 * d4);
-    double d1 = d3;
-    if (d3 > paramInt3)
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    double d4 = d1 / d2;
+    d1 = paramInt4;
+    Double.isNaN(d1);
+    double d3 = (int)(d1 * d4);
+    d2 = paramInt3;
+    if (d3 > d2)
     {
-      d1 = paramInt3;
-      d2 = d1 / d4;
+      Double.isNaN(d2);
+      d1 = d2 / d4;
     }
-    return new SizeI((int)d1, (int)d2);
+    else
+    {
+      d2 = d3;
+    }
+    return new SizeI((int)d2, (int)d1);
   }
   
   public static float[] calTexCoords(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
@@ -306,66 +358,90 @@ public class AlgoUtils
   
   public static float[] calTexCoords(int paramInt1, int paramInt2, double paramDouble)
   {
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
     int i;
     int m;
     int k;
     int j;
-    if (paramInt1 / paramInt2 >= paramDouble)
+    if (d1 / d2 >= paramDouble)
     {
-      i = (int)(paramInt2 * paramDouble);
+      Double.isNaN(d2);
+      i = (int)(d2 * paramDouble);
       m = (paramInt1 - i) / 2;
       k = i + m;
-      i = 0;
-      j = paramInt2;
+      i = paramInt2;
+      j = 0;
     }
-    for (;;)
+    else
     {
-      float f1 = m / paramInt1;
-      float f2 = k / paramInt1;
-      float f3 = j / paramInt2;
-      float f4 = i / paramInt2;
-      return new float[] { f1, f4, f1, f3, f2, f3, f2, f4 };
-      j = (int)(paramInt1 / paramDouble);
-      i = (paramInt2 - j) / 2;
-      j += i;
-      k = paramInt1;
+      Double.isNaN(d1);
+      i = (int)(d1 / paramDouble);
+      j = (paramInt2 - i) / 2;
+      i += j;
       m = 0;
+      k = paramInt1;
     }
+    float f1 = m;
+    float f2 = paramInt1;
+    f1 /= f2;
+    f2 = k / f2;
+    float f4 = i;
+    float f3 = paramInt2;
+    f4 /= f3;
+    f3 = j / f3;
+    return new float[] { f1, f3, f1, f4, f2, f4, f2, f3 };
   }
   
   public static float[] calTexCoords(int paramInt1, int paramInt2, int paramInt3, double paramDouble)
   {
-    if ((paramInt3 == 90) || (paramInt3 == 270)) {}
-    for (;;)
+    int j;
+    int i;
+    if (paramInt3 != 90)
     {
-      int k;
-      int j;
-      int i;
-      if (paramInt2 / paramInt1 >= paramDouble)
-      {
-        paramInt3 = (int)(paramInt1 * paramDouble);
-        k = (paramInt2 - paramInt3) / 2;
-        j = paramInt3 + k;
-        paramInt3 = 0;
-        i = paramInt1;
-      }
-      for (;;)
-      {
-        float f1 = k / paramInt2;
-        float f2 = j / paramInt2;
-        float f3 = i / paramInt1;
-        float f4 = paramInt3 / paramInt1;
-        return new float[] { f1, f4, f1, f3, f2, f3, f2, f4 };
-        i = (int)(paramInt2 / paramDouble);
-        paramInt3 = (paramInt1 - i) / 2;
-        i += paramInt3;
-        j = paramInt2;
-        k = 0;
-      }
-      paramInt3 = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = paramInt3;
+      j = paramInt1;
+      i = paramInt2;
+      if (paramInt3 != 270) {}
     }
+    else
+    {
+      i = paramInt1;
+      j = paramInt2;
+    }
+    double d1 = j;
+    double d2 = i;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    int k;
+    if (d1 / d2 >= paramDouble)
+    {
+      Double.isNaN(d2);
+      paramInt1 = (int)(d2 * paramDouble);
+      k = (j - paramInt1) / 2;
+      paramInt3 = paramInt1 + k;
+      paramInt1 = i;
+      paramInt2 = 0;
+    }
+    else
+    {
+      Double.isNaN(d1);
+      paramInt1 = (int)(d1 / paramDouble);
+      paramInt2 = (i - paramInt1) / 2;
+      paramInt1 += paramInt2;
+      k = 0;
+      paramInt3 = j;
+    }
+    float f1 = k;
+    float f2 = j;
+    f1 /= f2;
+    f2 = paramInt3 / f2;
+    float f4 = paramInt1;
+    float f3 = i;
+    f4 /= f3;
+    f3 = paramInt2 / f3;
+    return new float[] { f1, f3, f1, f4, f2, f4, f2, f3 };
   }
   
   public static float[] calTexCoordsFill(android.graphics.Rect paramRect, int paramInt1, int paramInt2)
@@ -377,122 +453,240 @@ public class AlgoUtils
   
   public static float[] calTexCords(com.tencent.ttpic.openapi.model.Rect paramRect, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt3 == FILL_STYLE.CUT.value) || (paramInt3 == FILL_STYLE.FRAME_STYLE_CUT.value)) {
-      return calTexCoords(paramInt1, paramInt2, paramRect.width / paramRect.height);
+    if ((paramInt3 != FILL_STYLE.CUT.value) && (paramInt3 != FILL_STYLE.FRAME_STYLE_CUT.value)) {
+      return GlUtil.ORIGIN_TEX_COORDS;
     }
-    return GlUtil.ORIGIN_TEX_COORDS;
+    double d1 = paramRect.width;
+    double d2 = paramRect.height;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    return calTexCoords(paramInt1, paramInt2, d1 / d2);
+  }
+  
+  public static float[] calcPerspectiveProjTransformMatrix(float[] paramArrayOfFloat, int paramInt1, int paramInt2, float paramFloat)
+  {
+    float[] arrayOfFloat1 = new float[3];
+    arrayOfFloat1[0] = paramArrayOfFloat[0];
+    arrayOfFloat1[1] = paramArrayOfFloat[1];
+    arrayOfFloat1[2] = paramArrayOfFloat[2];
+    paramFloat = paramArrayOfFloat[3];
+    float[] arrayOfFloat2 = new float[2];
+    arrayOfFloat2[0] = (paramArrayOfFloat[4] * paramArrayOfFloat[3]);
+    arrayOfFloat2[1] = (paramArrayOfFloat[5] * paramArrayOfFloat[3]);
+    paramFloat *= 110.0F;
+    double d = paramInt2;
+    Double.isNaN(d);
+    float f = (float)(d / 2.0D / Math.tan(0.5235987755982988D));
+    paramArrayOfFloat = new float[16];
+    android.opengl.Matrix.setIdentityM(paramArrayOfFloat, 0);
+    android.opengl.Matrix.translateM(paramArrayOfFloat, 0, arrayOfFloat2[0] - paramInt1 * 0.5F, -(arrayOfFloat2[1] - paramInt2 * 0.5F), f);
+    android.opengl.Matrix.rotateM(paramArrayOfFloat, 0, -arrayOfFloat1[2], 0.0F, 0.0F, 1.0F);
+    android.opengl.Matrix.rotateM(paramArrayOfFloat, 0, -arrayOfFloat1[1], 0.0F, 1.0F, 0.0F);
+    android.opengl.Matrix.rotateM(paramArrayOfFloat, 0, arrayOfFloat1[0], 1.0F, 0.0F, 0.0F);
+    android.opengl.Matrix.scaleM(paramArrayOfFloat, 0, paramFloat, paramFloat, paramFloat);
+    arrayOfFloat1 = new float[4];
+    arrayOfFloat2 = new float[4];
+    float[] arrayOfFloat3 = new float[4];
+    arrayOfFloat3 = new float[16];
+    float[] arrayOfFloat4 = new float[16];
+    android.opengl.Matrix.multiplyMV(arrayOfFloat1, 0, paramArrayOfFloat, 0, new float[] { 0.0F, 0.1072727F, 1.029091F, 1.0F }, 0);
+    android.opengl.Matrix.multiplyMV(arrayOfFloat2, 0, paramArrayOfFloat, 0, new float[] { 0.0F, 0.0F, 0.0F, 1.0F }, 0);
+    arrayOfFloat1 = GLKVector4Subtract(arrayOfFloat1, arrayOfFloat2);
+    android.opengl.Matrix.setIdentityM(arrayOfFloat3, 0);
+    android.opengl.Matrix.translateM(arrayOfFloat3, 0, arrayOfFloat1[0], arrayOfFloat1[1], arrayOfFloat1[2]);
+    android.opengl.Matrix.multiplyMM(arrayOfFloat4, 0, arrayOfFloat3, 0, paramArrayOfFloat, 0);
+    return arrayOfFloat4;
+  }
+  
+  public static void calcRotateMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    float f1 = (float)Math.cos(paramArrayOfFloat1[0]);
+    float f2 = (float)Math.sin(paramArrayOfFloat1[0]);
+    float f3 = (float)Math.cos(paramArrayOfFloat1[1]);
+    float f4 = (float)Math.sin(paramArrayOfFloat1[1]);
+    float f5 = (float)Math.cos(paramArrayOfFloat1[2]);
+    float f6 = (float)Math.sin(paramArrayOfFloat1[2]);
+    paramArrayOfFloat2[0] = (f3 * f5);
+    paramArrayOfFloat2[1] = (f3 * f6);
+    paramArrayOfFloat2[2] = (-f4);
+    paramArrayOfFloat2[3] = 0.0F;
+    paramArrayOfFloat2[4] = (f5 * f4 * f2 - f1 * f6);
+    float f7 = f5 * f1;
+    paramArrayOfFloat2[5] = (f2 * f4 * f6 + f7);
+    paramArrayOfFloat2[6] = (f3 * f2);
+    paramArrayOfFloat2[7] = 0.0F;
+    paramArrayOfFloat2[8] = (f6 * f2 + f7 * f4);
+    paramArrayOfFloat2[9] = (f4 * f1 * f6 - f5 * f2);
+    paramArrayOfFloat2[10] = (f1 * f3);
+    paramArrayOfFloat2[11] = 0.0F;
+    paramArrayOfFloat2[12] = 0.0F;
+    paramArrayOfFloat2[13] = 0.0F;
+    paramArrayOfFloat2[14] = 0.0F;
+    paramArrayOfFloat2[15] = 1.0F;
+  }
+  
+  public static void calcTransformMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat)
+  {
+    float f1 = (float)Math.cos(paramArrayOfFloat1[0]);
+    float f2 = (float)Math.sin(paramArrayOfFloat1[0]);
+    float f3 = (float)Math.cos(paramArrayOfFloat1[1]);
+    float f4 = (float)Math.sin(paramArrayOfFloat1[1]);
+    float f5 = (float)Math.cos(paramArrayOfFloat1[2]);
+    float f6 = (float)Math.sin(paramArrayOfFloat1[2]);
+    paramArrayOfFloat2[0] = (f3 * f5);
+    paramArrayOfFloat2[1] = (f3 * f6);
+    paramArrayOfFloat2[2] = (-f4);
+    paramArrayOfFloat2[3] = 0.0F;
+    paramArrayOfFloat2[4] = (f5 * f4 * f2 - f1 * f6);
+    float f7 = f5 * f1;
+    paramArrayOfFloat2[5] = (f2 * f4 * f6 + f7);
+    paramArrayOfFloat2[6] = (f3 * f2);
+    paramArrayOfFloat2[7] = 0.0F;
+    paramArrayOfFloat2[8] = (f6 * f2 + f7 * f4);
+    paramArrayOfFloat2[9] = (f4 * f1 * f6 - f5 * f2);
+    paramArrayOfFloat2[10] = (f1 * f3);
+    paramArrayOfFloat2[11] = 0.0F;
+    paramArrayOfFloat2[12] = paramArrayOfFloat1[4];
+    paramArrayOfFloat2[13] = paramArrayOfFloat1[5];
+    paramArrayOfFloat2[14] = 0.0F;
+    paramArrayOfFloat2[15] = 1.0F;
+    int i = 0;
+    while (i < 15)
+    {
+      paramArrayOfFloat2[i] *= paramArrayOfFloat1[3];
+      i += 1;
+    }
+    paramArrayOfFloat2[0] /= paramFloat;
+    paramArrayOfFloat2[4] /= paramFloat;
+    paramArrayOfFloat2[8] /= paramFloat;
+    paramArrayOfFloat2[12] /= paramFloat;
+    paramArrayOfFloat2[1] /= paramFloat;
+    paramArrayOfFloat2[5] /= paramFloat;
+    paramArrayOfFloat2[9] /= paramFloat;
+    paramArrayOfFloat2[13] /= paramFloat;
   }
   
   private static double createBrightnessCurve(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    double d1 = 0.0D;
-    double d2 = 0.0D;
     double[] arrayOfDouble1 = new double[3];
     double[] arrayOfDouble2 = new double[3];
     double[] arrayOfDouble3 = new double[3];
+    double d1 = 0.0D;
+    double d2 = 0.0D;
     while (paramInt1 <= paramInt2)
     {
-      d3 = d2;
       paramInt6 = paramInt3;
-      d2 = d1;
-      d1 = d3;
       while (paramInt6 <= paramInt4)
       {
         int j = (paramInt6 * paramInt5 + paramInt1) * 4;
-        double d4 = d1;
-        d3 = d2;
+        double d4 = d2;
+        d3 = d1;
         if (j >= 0)
         {
-          d4 = d1;
-          d3 = d2;
-          if (j + 2 < paramArrayOfByte.length)
+          int k = j + 2;
+          d4 = d2;
+          d3 = d1;
+          if (k < paramArrayOfByte.length)
           {
-            int k = paramArrayOfByte[j];
-            int i = paramArrayOfByte[(j + 1)];
-            j = paramArrayOfByte[(j + 2)];
-            k = paramArrayOfInt1[(k & 0xFF)];
+            int i = paramArrayOfByte[j];
+            j = paramArrayOfByte[(j + 1)];
+            k = paramArrayOfByte[k];
             i = paramArrayOfInt1[(i & 0xFF)];
             j = paramArrayOfInt1[(j & 0xFF)];
-            arrayOfDouble1[0] = k;
-            arrayOfDouble1[1] = i;
-            arrayOfDouble1[2] = j;
+            k = paramArrayOfInt1[(k & 0xFF)];
+            arrayOfDouble1[0] = i;
+            arrayOfDouble1[1] = j;
+            arrayOfDouble1[2] = k;
             sRGB2XYZ(arrayOfDouble1, arrayOfDouble2);
             XYZ2Lab(arrayOfDouble2, arrayOfDouble3);
-            d3 = d2 + arrayOfDouble3[0];
-            d4 = d1 + 1.0D;
+            d4 = d2 + arrayOfDouble3[0];
+            d3 = d1 + 1.0D;
           }
         }
         paramInt6 += 1;
-        d1 = d4;
-        d2 = d3;
+        d2 = d4;
+        d1 = d3;
       }
       paramInt1 += 1;
-      d3 = d2;
-      d2 = d1;
-      d1 = d3;
     }
     double d3 = 60.0D;
-    if (d2 != 0.0D)
+    if (d1 != 0.0D)
     {
-      d3 = d1 / d2;
-      if ((d3 >= 60.0D) && (d3 <= 75.0D)) {
+      d3 = d2 / d1;
+      if ((d3 >= 60.0D) && (d3 <= 75.0D))
+      {
         resetBrightnessAdjustmentCurve(paramArrayOfInt2);
       }
+      else
+      {
+        if (d3 < 60.0D) {
+          paramInt1 = (int)((60.0D - d3) * 1.0D + 128.0D);
+        } else {
+          paramInt1 = (int)((75.0D - d3) * 0.8D + 128.0D);
+        }
+        getPreparedSpline(new int[] { 0, 128, 255 }, new int[] { 0, paramInt1, 255 }, paramArrayOfInt2);
+      }
     }
-    else
-    {
-      return d3;
-    }
-    if (d3 < 60.0D) {}
-    for (paramInt1 = (int)(1.0D * (60.0D - d3) + 128.0D);; paramInt1 = (int)(0.8D * (75.0D - d3) + 128.0D))
-    {
-      getPreparedSpline(new int[] { 0, 128, 255 }, new int[] { 0, paramInt1, 255 }, paramArrayOfInt2);
-      return d3;
-    }
+    return d3;
   }
   
   private static List<Integer> createFaceAvgColor(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    double d3 = 0.0D;
-    double d2 = 0.0D;
-    double d1 = 0.0D;
+    double d4 = 0.0D;
+    double d1 = d4;
+    double d2 = d1;
     paramInt6 = 0;
+    double d3 = d1;
+    d1 = d4;
     while (paramInt1 <= paramInt2)
     {
       int i = paramInt3;
       while (i <= paramInt4)
       {
-        int k = (i * paramInt5 + paramInt1) * 4;
+        int m = (i * paramInt5 + paramInt1) * 4;
         int j = paramInt6;
-        double d6 = d1;
+        double d6 = d3;
         double d5 = d2;
-        double d4 = d3;
-        if (k >= 0)
+        d4 = d1;
+        if (m >= 0)
         {
+          int k = m + 2;
           j = paramInt6;
-          d6 = d1;
+          d6 = d3;
           d5 = d2;
-          d4 = d3;
-          if (k + 2 < paramArrayOfByte.length)
+          d4 = d1;
+          if (k < paramArrayOfByte.length)
           {
-            j = paramArrayOfByte[k];
-            int m = paramArrayOfByte[(k + 1)];
-            k = paramArrayOfByte[(k + 2)];
-            d4 = d3 + (j & 0xFF);
-            d5 = d2 + (m & 0xFF);
-            d6 = d1 + (k & 0xFF);
+            j = paramArrayOfByte[m];
+            m = paramArrayOfByte[(m + 1)];
+            k = paramArrayOfByte[k];
+            d4 = j & 0xFF;
+            Double.isNaN(d4);
+            d4 = d1 + d4;
+            d1 = m & 0xFF;
+            Double.isNaN(d1);
+            d6 = d3 + d1;
+            d1 = k & 0xFF;
+            Double.isNaN(d1);
+            d5 = d2 + d1;
             j = paramInt6 + 1;
           }
         }
         i += 1;
         paramInt6 = j;
-        d1 = d6;
+        d3 = d6;
         d2 = d5;
-        d3 = d4;
+        d1 = d4;
       }
       paramInt1 += 1;
     }
-    return Arrays.asList(new Integer[] { Integer.valueOf((int)(d3 / paramInt6)), Integer.valueOf((int)(d2 / paramInt6)), Integer.valueOf((int)(d1 / paramInt6)) });
+    d4 = paramInt6;
+    Double.isNaN(d4);
+    paramInt1 = (int)(d1 / d4);
+    Double.isNaN(d4);
+    paramInt2 = (int)(d3 / d4);
+    Double.isNaN(d4);
+    return Arrays.asList(new Integer[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf((int)(d2 / d4)) });
   }
   
   public static float distanceOfPoint2Line(PointF paramPointF1, PointF paramPointF2, float paramFloat, PointF paramPointF3)
@@ -500,10 +694,23 @@ public class AlgoUtils
     float f1 = getDistance(paramPointF1, paramPointF3);
     float f2 = getDistance(paramPointF2, paramPointF3);
     float f3 = (paramFloat + f1 + f2) / 2.0F;
-    if ((f3 - paramFloat) * f3 * (f3 - f1) * (f3 - f2) < 1.0E-006D) {
+    double d = (f3 - paramFloat) * f3 * (f3 - f1) * (f3 - f2);
+    if (d < 1.0E-006D) {
       return 0.0F;
     }
-    return (float)Math.sqrt((f3 - f1) * ((f3 - paramFloat) * f3) * (f3 - f2)) * 2.0F / paramFloat;
+    return (float)Math.sqrt(d) * 2.0F / paramFloat;
+  }
+  
+  public static float[] double2FloatArray(double[] paramArrayOfDouble)
+  {
+    float[] arrayOfFloat = new float[paramArrayOfDouble.length];
+    int i = 0;
+    while (i < paramArrayOfDouble.length)
+    {
+      arrayOfFloat[i] = ((float)paramArrayOfDouble[i]);
+      i += 1;
+    }
+    return arrayOfFloat;
   }
   
   public static PointF genVector(PointF paramPointF1, PointF paramPointF2)
@@ -511,41 +718,140 @@ public class AlgoUtils
     return new PointF(paramPointF2.x - paramPointF1.x, paramPointF2.y - paramPointF1.y);
   }
   
+  public static int getAverageHistogram(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    int k = 0;
+    int i = 0;
+    int m;
+    for (int j = 0; k < paramInt1; j = m)
+    {
+      m = i;
+      int n = 0;
+      i = j;
+      j = m;
+      m = n;
+      while (m < paramInt2)
+      {
+        int i3 = (m * paramInt1 + k) * 4;
+        int i1 = j;
+        n = i;
+        if (i3 >= 0)
+        {
+          int i2 = i3 + 2;
+          i1 = j;
+          n = i;
+          if (i2 < paramArrayOfByte.length)
+          {
+            n = paramArrayOfByte[i3];
+            i1 = paramArrayOfByte[(i3 + 1)];
+            i2 = paramArrayOfByte[i2];
+            double d1 = n & 0xFF;
+            Double.isNaN(d1);
+            double d2 = i1 & 0xFF;
+            Double.isNaN(d2);
+            double d3 = i2 & 0xFF;
+            Double.isNaN(d3);
+            i1 = j + (int)(d1 * 0.299D + d2 * 0.587D + d3 * 0.114D);
+            n = i + 1;
+          }
+        }
+        m += 20;
+        j = i1;
+        i = n;
+      }
+      k += 20;
+      m = i;
+      i = j;
+    }
+    paramInt1 = i / j;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("getAverageHistogram:result:");
+    paramArrayOfByte.append(paramInt1);
+    Log.d("AlgoUtils", paramArrayOfByte.toString());
+    mAverageHistogram = paramInt1;
+    return paramInt1;
+  }
+  
   public static PointF getBetweenPoint(PointF paramPointF1, PointF paramPointF2, float paramFloat)
   {
-    if ((paramPointF1 == null) || (paramPointF2 == null)) {
-      return new PointF();
+    if ((paramPointF1 != null) && (paramPointF2 != null))
+    {
+      float f1 = paramPointF1.x;
+      float f2 = 1.0F - paramFloat;
+      return new PointF(f1 * f2 + paramPointF2.x * paramFloat, paramPointF1.y * f2 + paramPointF2.y * paramFloat);
     }
-    return new PointF(paramPointF1.x * (1.0F - paramFloat) + paramPointF2.x * paramFloat, paramPointF1.y * (1.0F - paramFloat) + paramPointF2.y * paramFloat);
+    return new PointF();
+  }
+  
+  public static int getBitmapHistogram(String paramString)
+  {
+    paramString = BitmapUtils.decodeBitmap(paramString, true);
+    int n = paramString.getWidth();
+    int i1 = paramString.getHeight();
+    int j = 0;
+    int i = 0;
+    int k = 0;
+    while (j < i1)
+    {
+      int m = 0;
+      while (m < n)
+      {
+        int i4 = paramString.getPixel(m, j);
+        int i2 = Color.red(i4);
+        int i3 = Color.green(i4);
+        i4 = Color.blue(i4);
+        double d1 = i2;
+        Double.isNaN(d1);
+        double d2 = i3;
+        Double.isNaN(d2);
+        double d3 = i4;
+        Double.isNaN(d3);
+        i += (int)(d1 * 0.299D + d2 * 0.587D + d3 * 0.114D);
+        k += 1;
+        m += 20;
+      }
+      j += 20;
+    }
+    i /= k;
+    mAverageHistogram = i;
+    return i;
   }
   
   public static PointF getCrossPoint(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
   {
-    float f3 = paramPointF1.x;
-    float f4 = paramPointF1.y;
-    float f7 = paramPointF2.x;
-    float f8 = paramPointF2.y;
-    float f5 = paramPointF3.x;
-    float f6 = paramPointF3.y;
-    float f9 = paramPointF4.x;
-    float f10 = paramPointF4.y;
-    float f1 = 3.4028235E+38F;
-    float f2 = 3.4028235E+38F;
-    int i = 0;
-    int j = 0;
-    if (Math.abs(f3 - f7) < 1.0E-008D) {
+    float f5 = paramPointF1.x;
+    float f3 = paramPointF1.y;
+    float f8 = paramPointF2.x;
+    float f9 = paramPointF2.y;
+    float f6 = paramPointF3.x;
+    float f4 = paramPointF3.y;
+    float f10 = paramPointF4.x;
+    float f11 = paramPointF4.y;
+    float f1 = f5 - f8;
+    int i;
+    if (Math.abs(f1) < 1.0E-008D) {
       i = 1;
+    } else {
+      i = 0;
     }
-    if (Math.abs(f5 - f9) < 1.0E-008D) {
+    float f7 = f6 - f10;
+    int j;
+    if (Math.abs(f7) < 1.0E-008D) {
       j = 1;
+    } else {
+      j = 0;
     }
+    float f2 = 3.4028235E+38F;
     if (i == 0) {
-      f1 = (f4 - f8) / (f3 - f7);
+      f1 = (f3 - f9) / f1;
+    } else {
+      f1 = 3.4028235E+38F;
     }
     if (j == 0) {
-      f2 = (f6 - f10) / (f5 - f9);
+      f2 = (f4 - f11) / f7;
     }
-    if (Math.abs(f1 - f2) < 1.0E-008D) {
+    f7 = f1 - f2;
+    if (Math.abs(f7) < 1.0E-008D) {
       return null;
     }
     if (i != 0)
@@ -553,68 +859,72 @@ public class AlgoUtils
       if (j != 0) {
         return null;
       }
-      if (Math.abs(f2) < 1.0E-008D)
-      {
-        f1 = f6;
-        f2 = f3;
+      if (Math.abs(f2) < 1.0E-008D) {
+        f2 = f4;
+      } else {
+        f2 = f2 * (f5 - f10) + f11;
       }
+      f1 = f5;
     }
-    while ((between(f3, f7, f2)) && (between(f4, f8, f1)) && (between(f5, f9, f2)) && (between(f6, f10, f1)))
+    else if (j != 0)
     {
-      return new PointF(f2, f1);
-      f1 = (f3 - f9) * f2 + f10;
+      if (Math.abs(f1) < 1.0E-008D) {
+        f2 = f3;
+      } else {
+        f2 = f1 * (f6 - f8) + f9;
+      }
+      f1 = f6;
+    }
+    else if (Math.abs(f1) < 1.0E-008D)
+    {
+      f1 = (f3 - f11) / f2 + f10;
       f2 = f3;
-      continue;
-      if (j != 0)
-      {
-        if (Math.abs(f1) < 1.0E-008D)
-        {
-          f1 = f4;
-          f2 = f5;
-        }
-        else
-        {
-          f1 = (f5 - f7) * f1 + f8;
-          f2 = f5;
-        }
-      }
-      else if (Math.abs(f1) < 1.0E-008D)
-      {
-        f2 = (f4 - f10) / f2 + f9;
-        f1 = f4;
-      }
-      else if (Math.abs(f2) < 1.0E-008D)
-      {
-        f2 = (f6 - f8) / f1 + f7;
-        f1 = f6;
-      }
-      else
-      {
-        f2 = (f1 * f7 - f2 * f9 + f10 - f8) / (f1 - f2);
-        f1 = (f2 - f7) * f1 + f8;
-      }
+    }
+    else if (Math.abs(f2) < 1.0E-008D)
+    {
+      f1 = (f4 - f9) / f1 + f8;
+      f2 = f4;
+    }
+    else
+    {
+      f7 = (f1 * f8 - f2 * f10 + f11 - f9) / f7;
+      f2 = f1 * (f7 - f8) + f9;
+      f1 = f7;
+    }
+    if ((between(f5, f8, f1)) && (between(f3, f9, f2)) && (between(f6, f10, f1)) && (between(f4, f11, f2))) {
+      return new PointF(f1, f2);
     }
     return null;
   }
   
   public static float getDistance(PointF paramPointF1, PointF paramPointF2)
   {
-    if ((paramPointF1 == null) || (paramPointF2 == null)) {
-      return 0.0F;
+    if ((paramPointF1 != null) && (paramPointF2 != null))
+    {
+      double d1 = paramPointF1.x - paramPointF2.x;
+      double d2 = paramPointF1.y - paramPointF2.y;
+      Double.isNaN(d1);
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      Double.isNaN(d2);
+      return (float)Math.sqrt(d1 * d1 + d2 * d2);
     }
-    double d1 = paramPointF1.x - paramPointF2.x;
-    double d2 = paramPointF1.y - paramPointF2.y;
-    return (float)Math.sqrt(d1 * d1 + d2 * d2);
+    return 0.0F;
   }
   
   public static float getDistance(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat2 == null)) {
-      return 0.0F;
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null))
+    {
+      double d1 = paramArrayOfFloat1[0] - paramArrayOfFloat2[0];
+      double d2 = paramArrayOfFloat1[1] - paramArrayOfFloat2[1];
+      Double.isNaN(d1);
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      Double.isNaN(d2);
+      return (float)Math.sqrt(d1 * d1 + d2 * d2);
     }
-    double d1 = paramArrayOfFloat1[0] - paramArrayOfFloat2[0];
-    double d2 = paramArrayOfFloat1[1] - paramArrayOfFloat2[1];
-    return (float)Math.sqrt(d1 * d1 + d2 * d2);
+    return 0.0F;
   }
   
   public static RectF getFaceRectF(List<PointF> paramList)
@@ -622,18 +932,18 @@ public class AlgoUtils
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
-      float f2 = 3.4028235E+38F;
-      float f3 = 1.4E-45F;
       float f4 = 3.4028235E+38F;
+      float f3 = 3.4028235E+38F;
+      float f2 = 1.4E-45F;
       PointF localPointF;
       for (float f1 = 1.4E-45F; paramList.hasNext(); f1 = Math.max(f1, localPointF.y))
       {
         localPointF = (PointF)paramList.next();
         f4 = Math.min(f4, localPointF.x);
-        f3 = Math.max(f3, localPointF.x);
-        f2 = Math.min(f2, localPointF.y);
+        f2 = Math.max(f2, localPointF.x);
+        f3 = Math.min(f3, localPointF.y);
       }
-      return new RectF(f4, f2, f3, f1);
+      return new RectF(f4, f3, f2, f1);
     }
     return null;
   }
@@ -641,182 +951,181 @@ public class AlgoUtils
   public static Pair<Integer, int[]> getHistogram(byte[] paramArrayOfByte, int paramInt1, int paramInt2, List<List<PointF>> paramList, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
     Arrays.fill(paramArrayOfInt1, 0);
-    int i = 0;
     int[] arrayOfInt1 = new int[256];
     int[] arrayOfInt2 = new int[256];
     android.graphics.Rect localRect = new android.graphics.Rect();
-    int j;
-    if ((paramList == null) || (paramList.size() <= 0) || (((List)paramList.get(0)).size() <= 0))
+    if ((paramList != null) && (paramList.size() > 0) && (((List)paramList.get(0)).size() > 0))
+    {
+      paramList = new ArrayList((Collection)paramList.get(0));
+      i = (int)((PointF)paramList.get(25)).x;
+      j = (int)((PointF)paramList.get(33)).x;
+      k = (int)((PointF)paramList.get(87)).y;
+      m = (int)((PointF)paramList.get(4)).y;
+      localRect.left = i;
+      localRect.right = j;
+      localRect.top = k;
+      localRect.bottom = m;
+    }
+    else
     {
       localRect.left = 0;
       localRect.right = paramInt1;
       localRect.top = 0;
       localRect.bottom = paramInt2;
-      j = 0;
     }
-    int k;
-    int m;
-    int n;
-    for (;;)
+    int j = 0;
+    int i = 0;
+    double d1;
+    double d2;
+    while (j < paramInt1)
     {
-      if (j < paramInt1)
+      if (paramInt2 > 2560)
       {
-        if (paramInt2 > 2560) {
-          LogUtils.d("GetHistogram", "illegal imageHeight = " + paramInt2);
-        }
-      }
-      else
-      {
-        j = 0;
-        paramInt2 = 0;
-        paramInt1 = 0;
-        while (paramInt1 < arrayOfInt1.length)
-        {
-          j += arrayOfInt1[paramInt1];
-          paramInt2 += arrayOfInt1[paramInt1] * paramInt1;
-          paramInt1 += 1;
-        }
-        paramList = new ArrayList((Collection)paramList.get(0));
-        j = (int)((PointF)paramList.get(25)).x;
-        k = (int)((PointF)paramList.get(33)).x;
-        m = (int)((PointF)paramList.get(87)).y;
-        n = (int)((PointF)paramList.get(4)).y;
-        localRect.left = j;
-        localRect.right = k;
-        localRect.top = m;
-        localRect.bottom = n;
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("illegal imageHeight = ");
+        paramArrayOfByte.append(paramInt2);
+        LogUtils.d("GetHistogram", paramArrayOfByte.toString());
         break;
       }
       k = 0;
-      if (k < paramInt2)
+      while (k < paramInt2)
       {
-        n = (k * paramInt1 + j) * 4;
+        i1 = (k * paramInt1 + j) * 4;
         m = i;
-        if (n >= 0)
+        if (i1 >= 0)
         {
+          n = i1 + 2;
           m = i;
-          if (n + 2 < paramArrayOfByte.length)
+          if (n < paramArrayOfByte.length)
           {
-            m = paramArrayOfByte[n] & 0xFF;
-            int i1 = paramArrayOfByte[(n + 1)] & 0xFF;
-            n = paramArrayOfByte[(n + 2)] & 0xFF;
+            m = paramArrayOfByte[i1] & 0xFF;
+            i1 = paramArrayOfByte[(i1 + 1)] & 0xFF;
+            n = paramArrayOfByte[n] & 0xFF;
             paramArrayOfInt1[m] += 1;
             paramArrayOfInt1[i1] += 1;
             paramArrayOfInt1[n] += 1;
-            double d1 = m;
-            double d2 = i1;
-            m = (int)(n * 0.11D + (d2 * 0.59D + d1 * 0.3D));
-            if (m < 256) {
-              break label518;
-            }
-          }
-        }
-        label518:
-        for (n = 255;; n = m)
-        {
-          arrayOfInt2[n] += 1;
-          if (localRect.contains(j, k))
-          {
-            n = m;
+            d1 = m;
+            Double.isNaN(d1);
+            d2 = i1;
+            Double.isNaN(d2);
+            double d3 = n;
+            Double.isNaN(d3);
+            m = (int)(d1 * 0.3D + d2 * 0.59D + d3 * 0.11D);
             if (m >= 256) {
               n = 255;
+            } else {
+              n = m;
             }
-            arrayOfInt1[n] += 1;
+            arrayOfInt2[n] += 1;
+            if (localRect.contains(j, k))
+            {
+              n = m;
+              if (m >= 256) {
+                n = 255;
+              }
+              arrayOfInt1[n] += 1;
+            }
+            m = i + 3;
           }
-          m = i + 3;
-          k += 2;
-          i = m;
-          break;
         }
+        k += 2;
+        i = m;
       }
       j += 2;
     }
-    if (j > 0) {
-      paramInt2 /= j;
-    }
-    for (;;)
+    paramInt2 = 0;
+    j = 0;
+    paramInt1 = 0;
+    while (paramInt2 < arrayOfInt1.length)
     {
-      paramInt1 = 0;
-      j = 255;
-      k = 0;
-      for (m = 0; paramInt1 < 256; m = n)
+      j += arrayOfInt1[paramInt2];
+      paramInt1 += arrayOfInt1[paramInt2] * paramInt2;
+      paramInt2 += 1;
+    }
+    if (j > 0) {
+      paramInt2 = paramInt1 / j;
+    } else {
+      paramInt2 = 255;
+    }
+    paramInt1 = 0;
+    int k = 0;
+    j = 255;
+    for (int m = 0; paramInt1 < 256; m = i1)
+    {
+      i1 = m + paramArrayOfInt1[paramInt1];
+      d1 = i1;
+      d2 = i;
+      Double.isNaN(d2);
+      m = k;
+      if (d1 >= d2 * 0.00105D)
       {
-        n = m + paramArrayOfInt1[paramInt1];
         m = k;
-        if (n >= i * 0.00105D)
-        {
-          m = k;
-          if (k == 0) {
-            m = paramInt1;
-          }
+        if (k == 0) {
+          m = paramInt1;
         }
-        k = j;
-        if (n >= i * (1.0D - 0.00105D))
-        {
-          k = j;
-          if (j == 255) {
-            k = paramInt1;
-          }
-        }
-        paramInt1 += 1;
-        j = k;
-        k = m;
       }
-      i = Math.max(Math.min(k, 32), 0);
-      m = Math.max(Math.min(j, 255), 224);
-      paramInt1 = (k - i) * 255 / (m - i);
-      n = (j - i) * 255 / (m - i);
-      if ((paramInt1 <= k) && (n >= j))
+      Double.isNaN(d2);
+      if (d1 >= d2 * 0.99895D)
       {
-        paramInt1 = 0;
-        if (paramInt1 < 256)
-        {
-          if (paramInt1 < i) {
-            paramArrayOfInt2[paramInt1] = 0;
-          }
-          for (;;)
-          {
-            paramInt1 += 1;
-            break;
-            if (paramInt1 > m) {
-              paramArrayOfInt2[paramInt1] = 255;
-            } else {
-              paramArrayOfInt2[paramInt1] = ((paramInt1 - i) * 255 / (m - i));
-            }
-          }
+        n = j;
+        if (j == 255) {
+          n = paramInt1;
         }
       }
       else
       {
-        paramInt1 = 0;
-        while (paramInt1 < 256)
-        {
-          paramArrayOfInt2[paramInt1] = paramInt1;
-          paramInt1 += 1;
-        }
+        n = j;
       }
-      return Pair.create(Integer.valueOf(paramInt2), arrayOfInt2);
-      paramInt2 = 255;
+      paramInt1 += 1;
+      k = m;
+      j = n;
     }
+    i = Math.max(Math.min(k, 32), 0);
+    m = Math.max(Math.min(j, 255), 224);
+    int n = m - i;
+    paramInt1 = (k - i) * 255 / n;
+    int i1 = (j - i) * 255 / n;
+    if ((paramInt1 <= k) && (i1 >= j)) {
+      paramInt1 = 0;
+    }
+    while (paramInt1 < 256)
+    {
+      if (paramInt1 < i) {
+        paramArrayOfInt2[paramInt1] = 0;
+      } else if (paramInt1 > m) {
+        paramArrayOfInt2[paramInt1] = 255;
+      } else {
+        paramArrayOfInt2[paramInt1] = ((paramInt1 - i) * 255 / n);
+      }
+      paramInt1 += 1;
+      continue;
+      paramInt1 = 0;
+      while (paramInt1 < 256)
+      {
+        paramArrayOfInt2[paramInt1] = paramInt1;
+        paramInt1 += 1;
+      }
+    }
+    return Pair.create(Integer.valueOf(paramInt2), arrayOfInt2);
   }
   
   public static RectF getLeftEyeRectF(List<PointF> paramList)
   {
-    float f2 = 3.4028235E+38F;
-    float f1 = 1.4E-45F;
     if ((paramList != null) && (paramList.size() > 0))
     {
       int i = 19;
-      float f3 = 1.4E-45F;
+      float f1 = 1.4E-45F;
       float f4 = 3.4028235E+38F;
+      float f2 = 3.4028235E+38F;
+      float f3 = 1.4E-45F;
       PointF localPointF;
       while (i <= 26)
       {
         localPointF = (PointF)paramList.get(i);
         f4 = Math.min(f4, localPointF.x);
-        f3 = Math.max(f3, localPointF.x);
+        f1 = Math.max(f1, localPointF.x);
         f2 = Math.min(f2, localPointF.y);
-        f1 = Math.max(f1, localPointF.y);
+        f3 = Math.max(f3, localPointF.y);
         i += 1;
       }
       i = 35;
@@ -824,22 +1133,23 @@ public class AlgoUtils
       {
         localPointF = (PointF)paramList.get(i);
         f4 = Math.min(f4, localPointF.x);
-        f3 = Math.max(f3, localPointF.x);
+        f1 = Math.max(f1, localPointF.x);
         f2 = Math.min(f2, localPointF.y);
-        f1 = Math.max(f1, localPointF.y);
+        f3 = Math.max(f3, localPointF.y);
         i += 1;
       }
-      return new RectF(f4, f2, f3, f1);
+      return new RectF(f4, f2, f1, f3);
     }
     return null;
   }
   
   public static void getPreparedSpline(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3)
   {
-    if ((paramArrayOfInt3 == null) || (paramArrayOfInt3.length < 256)) {}
-    for (;;)
+    if (paramArrayOfInt3 != null)
     {
-      return;
+      if (paramArrayOfInt3.length < 256) {
+        return;
+      }
       int i = 0;
       while (i < 256)
       {
@@ -847,51 +1157,60 @@ public class AlgoUtils
         i += 1;
       }
       double[] arrayOfDouble = secondDerivative(paramArrayOfInt1, paramArrayOfInt2);
-      i = 0;
-      while (i < paramArrayOfInt1.length - 1)
+      int n;
+      for (i = 0; i < paramArrayOfInt1.length - 1; i = n)
       {
         int k = paramArrayOfInt1[i];
-        int m = paramArrayOfInt2[i];
-        int n = paramArrayOfInt1[(i + 1)];
-        int i1 = paramArrayOfInt2[(i + 1)];
-        int j = k;
-        while (j < n)
+        int j = paramArrayOfInt2[i];
+        n = i + 1;
+        int i1 = paramArrayOfInt1[n];
+        int i2 = paramArrayOfInt2[n];
+        int m = k;
+        while (m < i1)
         {
-          double d1 = (j - k) / (n - k);
+          double d1 = m - k;
+          double d5 = i1 - k;
+          Double.isNaN(d1);
+          Double.isNaN(d5);
+          d1 /= d5;
           double d2 = 1.0D - d1;
-          double d5 = n - k;
-          double d3 = m;
-          double d4 = i1;
+          double d3 = j;
+          Double.isNaN(d3);
+          double d4 = i2;
+          Double.isNaN(d4);
+          Double.isNaN(d5);
+          Double.isNaN(d5);
           d5 = d5 * d5 / 6.0D;
           double d6 = arrayOfDouble[i];
-          double d7 = arrayOfDouble[(i + 1)];
-          if ((j >= 0) && (j < 256)) {
-            paramArrayOfInt3[j] = Math.max(0, Math.min(255, (int)(((d1 * d1 * d1 - d1) * d7 + (d2 * d2 * d2 - d2) * d6) * d5 + (d3 * d2 + d4 * d1))));
+          double d7 = arrayOfDouble[n];
+          if (m >= 0) {
+            if (m < 256) {
+              paramArrayOfInt3[m] = Math.max(0, Math.min(255, (int)(d3 * d2 + d4 * d1 + d5 * ((d2 * d2 * d2 - d2) * d6 + (d1 * d1 * d1 - d1) * d7))));
+            } else {}
           }
-          j += 1;
+          m += 1;
         }
-        i += 1;
       }
     }
   }
   
   public static RectF getRightEyeRectF(List<PointF> paramList)
   {
-    float f2 = 3.4028235E+38F;
-    float f1 = 1.4E-45F;
     if ((paramList != null) && (paramList.size() > 0))
     {
       int i = 27;
-      float f3 = 1.4E-45F;
+      float f1 = 1.4E-45F;
       float f4 = 3.4028235E+38F;
+      float f2 = 3.4028235E+38F;
+      float f3 = 1.4E-45F;
       PointF localPointF;
       while (i <= 34)
       {
         localPointF = (PointF)paramList.get(i);
         f4 = Math.min(f4, localPointF.x);
-        f3 = Math.max(f3, localPointF.x);
+        f1 = Math.max(f1, localPointF.x);
         f2 = Math.min(f2, localPointF.y);
-        f1 = Math.max(f1, localPointF.y);
+        f3 = Math.max(f3, localPointF.y);
         i += 1;
       }
       i = 45;
@@ -899,47 +1218,58 @@ public class AlgoUtils
       {
         localPointF = (PointF)paramList.get(i);
         f4 = Math.min(f4, localPointF.x);
-        f3 = Math.max(f3, localPointF.x);
+        f1 = Math.max(f1, localPointF.x);
         f2 = Math.min(f2, localPointF.y);
-        f1 = Math.max(f1, localPointF.y);
+        f3 = Math.max(f3, localPointF.y);
         i += 1;
       }
-      return new RectF(f4, f2, f3, f1);
+      return new RectF(f4, f2, f1, f3);
     }
     return null;
   }
   
+  public static int getmAverageHistogram()
+  {
+    return mAverageHistogram;
+  }
+  
   public static boolean isFace3DPointsValid(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 9)) {}
-    for (;;)
+    if (paramArrayOfFloat != null)
     {
-      return false;
-      if (!Float.isNaN(paramArrayOfFloat[0]))
+      if (paramArrayOfFloat.length < 9) {
+        return false;
+      }
+      if (Float.isNaN(paramArrayOfFloat[0])) {
+        return false;
+      }
+      PointF localPointF = new PointF(paramArrayOfFloat[0], paramArrayOfFloat[1]);
+      int i = 0;
+      while (i < paramArrayOfFloat.length / 3)
       {
-        PointF localPointF = new PointF(paramArrayOfFloat[0], paramArrayOfFloat[1]);
-        int i = 0;
-        while (i < paramArrayOfFloat.length / 3)
-        {
-          if (getDistance(new PointF(paramArrayOfFloat[(i * 3)], paramArrayOfFloat[(i * 3 + 1)]), localPointF) > 0.001F) {
-            return true;
-          }
-          i += 1;
+        int j = i * 3;
+        if (getDistance(new PointF(paramArrayOfFloat[j], paramArrayOfFloat[(j + 1)]), localPointF) > 0.001F) {
+          return true;
         }
+        i += 1;
       }
     }
+    return false;
   }
   
   public static boolean isFacePointsValid(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
-    }
-    PointF localPointF = (PointF)paramList.get(0);
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (getDistance((PointF)paramList.next(), localPointF) > 0.001F) {
-        return true;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return false;
+      }
+      PointF localPointF = (PointF)paramList.get(0);
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        if (getDistance((PointF)paramList.next(), localPointF) > 0.001F) {
+          return true;
+        }
       }
     }
     return false;
@@ -947,42 +1277,58 @@ public class AlgoUtils
   
   public static int is_skin(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 <= 45) || (paramInt2 <= 40) || (paramInt3 <= 20)) {}
-    while ((paramInt1 <= paramInt2) || (paramInt1 <= paramInt3) || (Math.max(Math.max(paramInt1, paramInt2), paramInt3) - Math.min(Math.min(paramInt1, paramInt2), paramInt3) <= 3) || (paramInt1 < paramInt2 + 3)) {
-      return 0;
+    if ((paramInt1 > 45) && (paramInt2 > 40))
+    {
+      if (paramInt3 <= 20) {
+        return 0;
+      }
+      if (paramInt1 > paramInt2)
+      {
+        if (paramInt1 <= paramInt3) {
+          return 0;
+        }
+        if (Math.max(Math.max(paramInt1, paramInt2), paramInt3) - Math.min(Math.min(paramInt1, paramInt2), paramInt3) > 3)
+        {
+          if (paramInt1 < paramInt2 + 3) {
+            return 0;
+          }
+          return 1;
+        }
+      }
     }
-    return 1;
+    return 0;
   }
   
   public static float[] linearRegression(List<PointF> paramList)
   {
-    float f3 = 0.0F;
     int i = 0;
-    float f1 = 0.0F;
     float f2 = 0.0F;
+    float f1 = 0.0F;
     while (i < paramList.size())
     {
       f2 += ((PointF)paramList.get(i)).x;
       f1 += ((PointF)paramList.get(i)).y;
       i += 1;
     }
-    float f4 = f2 / paramList.size();
-    float f5 = f1 / paramList.size();
+    float f3 = f2 / paramList.size();
+    float f4 = f1 / paramList.size();
     i = 0;
     f2 = 0.0F;
-    f1 = f3;
+    f1 = 0.0F;
     while (i < paramList.size())
     {
-      f3 = ((PointF)paramList.get(i)).x;
-      f2 += (((PointF)paramList.get(i)).y - f5) * (f3 - f4);
-      f1 += (f3 - f4) * (f3 - f4);
+      float f6 = ((PointF)paramList.get(i)).x;
+      float f5 = ((PointF)paramList.get(i)).y;
+      f6 -= f3;
+      f2 += (f5 - f4) * f6;
+      f1 += f6 * f6;
       i += 1;
     }
     f1 = f2 / f1;
-    return new float[] { f1, f5 - f1 * f4 };
+    return new float[] { f1, f4 - f3 * f1 };
   }
   
-  public static PointF mapPoint(PointF paramPointF, Matrix paramMatrix)
+  public static PointF mapPoint(PointF paramPointF, android.graphics.Matrix paramMatrix)
   {
     float[] arrayOfFloat = new float[2];
     paramMatrix.mapPoints(arrayOfFloat, new float[] { paramPointF.x, paramPointF.y });
@@ -991,7 +1337,7 @@ public class AlgoUtils
     return paramPointF;
   }
   
-  public static List<PointF> mapPoints(List<PointF> paramList, Matrix paramMatrix)
+  public static List<PointF> mapPoints(List<PointF> paramList, android.graphics.Matrix paramMatrix)
   {
     float[] arrayOfFloat1 = new float[2];
     float[] arrayOfFloat2 = new float[2];
@@ -1010,32 +1356,48 @@ public class AlgoUtils
   
   public static int[] mergeCurve(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    Object localObject;
-    if ((paramArrayOfInt1 == null) || (paramArrayOfInt2 == null))
+    if ((paramArrayOfInt1 != null) && (paramArrayOfInt2 != null))
     {
-      localObject = null;
-      return localObject;
-    }
-    int j = Math.min(paramArrayOfInt1.length, paramArrayOfInt2.length);
-    int[] arrayOfInt = new int[j];
-    int i = 0;
-    for (;;)
-    {
-      localObject = arrayOfInt;
-      if (i >= j) {
-        break;
+      int j = Math.min(paramArrayOfInt1.length, paramArrayOfInt2.length);
+      int[] arrayOfInt = new int[j];
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfInt[i] = paramArrayOfInt2[paramArrayOfInt1[i]];
+        i += 1;
       }
-      arrayOfInt[i] = paramArrayOfInt2[paramArrayOfInt1[i]];
-      i += 1;
+      return arrayOfInt;
     }
+    return null;
+  }
+  
+  public static int[] mergeCurve(int[] paramArrayOfInt1, int[] paramArrayOfInt2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramArrayOfInt1 != null) && (paramArrayOfInt2 != null))
+    {
+      int k = Math.min(paramArrayOfInt1.length, paramArrayOfInt2.length);
+      int[] arrayOfInt = new int[k];
+      int i = 0;
+      while (i < k)
+      {
+        int j = (int)(paramArrayOfInt1[i] * paramFloat1 + i * (1.0F - paramFloat1));
+        if (j < 0) {
+          j = 0;
+        }
+        arrayOfInt[i] = ((int)(paramArrayOfInt2[j] * paramFloat2 + j * (1.0F - paramFloat2)));
+        i += 1;
+      }
+      return arrayOfInt;
+    }
+    return null;
   }
   
   public static PointF middlePoint(PointF paramPointF1, PointF paramPointF2)
   {
-    if ((paramPointF1 == null) || (paramPointF2 == null)) {
-      return new PointF();
+    if ((paramPointF1 != null) && (paramPointF2 != null)) {
+      return new PointF((paramPointF1.x + paramPointF2.x) / 2.0F, (paramPointF1.y + paramPointF2.y) / 2.0F);
     }
-    return new PointF((paramPointF1.x + paramPointF2.x) / 2.0F, (paramPointF1.y + paramPointF2.y) / 2.0F);
+    return new PointF();
   }
   
   public static native void nativeRotatePlane(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3);
@@ -1072,24 +1434,20 @@ public class AlgoUtils
     int j = Math.min(Math.min(paramInt1, paramInt2), paramInt3);
     if (i == j) {
       arrayOfFloat[0] = 0.0F;
+    } else if ((i == paramInt1) && (paramInt2 >= paramInt3)) {
+      arrayOfFloat[0] = ((paramInt2 - paramInt3) * 60.0F / (i - j) / 360.0F);
+    } else if (i == paramInt1) {
+      arrayOfFloat[0] = (((paramInt2 - paramInt3) * 60.0F / (i - j) + 360.0F) / 360.0F);
+    } else if (i == paramInt2) {
+      arrayOfFloat[0] = (((paramInt3 - paramInt1) * 60.0F / (i - j) + 120.0F) / 360.0F);
+    } else {
+      arrayOfFloat[0] = (((paramInt1 - paramInt2) * 60.0F / (i - j) + 240.0F) / 360.0F);
     }
-    for (;;)
+    arrayOfFloat[2] = ((i + j) * 0.5F / 255.0F);
+    if (i == j)
     {
-      arrayOfFloat[2] = ((i + j) * 0.5F / 255.0F);
-      if (i != j) {
-        break;
-      }
       arrayOfFloat[1] = 0.0F;
       return arrayOfFloat;
-      if ((i == paramInt1) && (paramInt2 >= paramInt3)) {
-        arrayOfFloat[0] = ((paramInt2 - paramInt3) * 60.0F / (i - j) / 360.0F);
-      } else if (i == paramInt1) {
-        arrayOfFloat[0] = (((paramInt2 - paramInt3) * 60.0F / (i - j) + 360.0F) / 360.0F);
-      } else if (i == paramInt2) {
-        arrayOfFloat[0] = (((paramInt3 - paramInt1) * 60.0F / (i - j) + 120.0F) / 360.0F);
-      } else {
-        arrayOfFloat[0] = (((paramInt1 - paramInt2) * 60.0F / (i - j) + 240.0F) / 360.0F);
-      }
     }
     if (arrayOfFloat[2] <= 0.5D)
     {
@@ -1098,6 +1456,25 @@ public class AlgoUtils
     }
     arrayOfFloat[1] = ((i - j) / (2.0F - arrayOfFloat[2] * 2.0F) / 255.0F);
     return arrayOfFloat;
+  }
+  
+  public static Point rotate(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j;
+    int i;
+    if (paramInt3 != 90)
+    {
+      j = paramInt1;
+      i = paramInt2;
+      if (paramInt3 != 270) {}
+    }
+    else
+    {
+      paramInt1 += paramInt2;
+      i = paramInt1 - paramInt2;
+      j = paramInt1 - i;
+    }
+    return new Point(j, i);
   }
   
   public static List<float[]> rotateAngles(List<float[]> paramList, int paramInt)
@@ -1111,10 +1488,31 @@ public class AlgoUtils
     while (paramList.hasNext())
     {
       float[] arrayOfFloat = (float[])paramList.next();
-      if ((paramInt == 90) || (paramInt == 270)) {
-        localArrayList.add(new float[] { -arrayOfFloat[1], -arrayOfFloat[0], (float)(arrayOfFloat[2] + paramInt * 3.141592653589793D / 180.0D) });
-      } else {
-        localArrayList.add(new float[] { arrayOfFloat[0], arrayOfFloat[1], (float)(arrayOfFloat[2] + paramInt * 3.141592653589793D / 180.0D) });
+      float f1;
+      float f2;
+      double d1;
+      double d2;
+      if ((paramInt != 90) && (paramInt != 270))
+      {
+        f1 = arrayOfFloat[0];
+        f2 = arrayOfFloat[1];
+        d1 = arrayOfFloat[2];
+        d2 = paramInt;
+        Double.isNaN(d2);
+        d2 = d2 * 3.141592653589793D / 180.0D;
+        Double.isNaN(d1);
+        localArrayList.add(new float[] { f1, f2, (float)(d1 + d2) });
+      }
+      else
+      {
+        f1 = -arrayOfFloat[1];
+        f2 = -arrayOfFloat[0];
+        d1 = arrayOfFloat[2];
+        d2 = paramInt;
+        Double.isNaN(d2);
+        d2 = d2 * 3.141592653589793D / 180.0D;
+        Double.isNaN(d1);
+        localArrayList.add(new float[] { f1, f2, (float)(d1 + d2) });
       }
     }
     return localArrayList;
@@ -1127,67 +1525,72 @@ public class AlgoUtils
       return arrayOfFloat;
     }
     paramInt = (paramInt + 360) % 360;
-    if ((paramInt == 90) || (paramInt == 270)) {
-      return new float[] { -paramArrayOfFloat[1], -paramArrayOfFloat[0], (float)(paramArrayOfFloat[2] + paramInt * 3.141592653589793D / 180.0D) };
+    if ((paramInt != 90) && (paramInt != 270))
+    {
+      f1 = paramArrayOfFloat[0];
+      f2 = paramArrayOfFloat[1];
+      d1 = paramArrayOfFloat[2];
+      d2 = paramInt;
+      Double.isNaN(d2);
+      d2 = d2 * 3.141592653589793D / 180.0D;
+      Double.isNaN(d1);
+      return new float[] { f1, f2, (float)(d1 + d2) };
     }
-    return new float[] { paramArrayOfFloat[0], paramArrayOfFloat[1], (float)(paramArrayOfFloat[2] + paramInt * 3.141592653589793D / 180.0D) };
+    float f1 = -paramArrayOfFloat[1];
+    float f2 = -paramArrayOfFloat[0];
+    double d1 = paramArrayOfFloat[2];
+    double d2 = paramInt;
+    Double.isNaN(d2);
+    d2 = d2 * 3.141592653589793D / 180.0D;
+    Double.isNaN(d1);
+    return new float[] { f1, f2, (float)(d1 + d2) };
   }
   
   public static List<FaceStatus> rotateFaceStatusFor3D(List<FaceStatus> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramList != null)
     {
-      int j = 0;
       int i = paramInt3;
-      paramInt3 = j;
-      if (paramInt3 < paramList.size())
+      paramInt3 = 0;
+      while (paramInt3 < paramList.size())
       {
         FaceStatus localFaceStatus = (FaceStatus)paramList.get(paramInt3);
         i = (i + 360) % 360;
         float f;
-        label93:
-        Matrix localMatrix;
         if (i == 90)
         {
           f = localFaceStatus.pitch;
           localFaceStatus.pitch = (-localFaceStatus.yaw);
           localFaceStatus.yaw = f;
           localFaceStatus.roll += i;
-          localMatrix = new Matrix();
-          localMatrix.reset();
-          localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
-          localMatrix.postRotate(i, 0.0F, 0.0F);
-          if ((i != 90) && (i != 270)) {
-            break label316;
-          }
-          localMatrix.postTranslate(paramInt2 / 2.0F, paramInt1 / 2.0F);
         }
-        for (;;)
+        else if (i == 180)
         {
-          float[] arrayOfFloat = new float[2];
-          localMatrix.mapPoints(arrayOfFloat, new float[] { localFaceStatus.tx, localFaceStatus.ty });
-          localFaceStatus.tx = arrayOfFloat[0];
-          localFaceStatus.ty = arrayOfFloat[1];
-          paramInt3 += 1;
-          break;
-          if (i == 180)
-          {
-            localFaceStatus.pitch = (-localFaceStatus.pitch);
-            localFaceStatus.yaw = (-localFaceStatus.yaw);
-            localFaceStatus.roll += i;
-            break label93;
-          }
-          if (i != 270) {
-            break label93;
-          }
+          localFaceStatus.pitch = (-localFaceStatus.pitch);
+          localFaceStatus.yaw = (-localFaceStatus.yaw);
+          localFaceStatus.roll += i;
+        }
+        else if (i == 270)
+        {
           f = localFaceStatus.pitch;
           localFaceStatus.pitch = localFaceStatus.yaw;
           localFaceStatus.yaw = (-f);
           localFaceStatus.roll += i;
-          break label93;
-          label316:
-          localMatrix.postTranslate(paramInt1 / 2.0F, paramInt2 / 2.0F);
         }
+        android.graphics.Matrix localMatrix = new android.graphics.Matrix();
+        localMatrix.reset();
+        localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
+        localMatrix.postRotate(i, 0.0F, 0.0F);
+        if ((i != 90) && (i != 270)) {
+          localMatrix.postTranslate(paramInt1 / 2.0F, paramInt2 / 2.0F);
+        } else {
+          localMatrix.postTranslate(paramInt2 / 2.0F, paramInt1 / 2.0F);
+        }
+        float[] arrayOfFloat = new float[2];
+        localMatrix.mapPoints(arrayOfFloat, new float[] { localFaceStatus.tx, localFaceStatus.ty });
+        localFaceStatus.tx = arrayOfFloat[0];
+        localFaceStatus.ty = arrayOfFloat[1];
+        paramInt3 += 1;
       }
     }
     return paramList;
@@ -1199,128 +1602,118 @@ public class AlgoUtils
       return null;
     }
     paramInt3 = (paramInt3 + 360) % 360;
-    Matrix localMatrix = new Matrix();
+    android.graphics.Matrix localMatrix = new android.graphics.Matrix();
     localMatrix.reset();
     localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
     localMatrix.postRotate(paramInt3, 0.0F, 0.0F);
-    if ((paramInt3 == 90) || (paramInt3 == 270)) {
+    if ((paramInt3 != 90) && (paramInt3 != 270)) {
+      localMatrix.postTranslate(paramInt1 / 2.0F, paramInt2 / 2.0F);
+    } else {
       localMatrix.postTranslate(paramInt2 / 2.0F, paramInt1 / 2.0F);
     }
-    for (;;)
-    {
-      float[] arrayOfFloat = new float[2];
-      localMatrix.mapPoints(arrayOfFloat, new float[] { paramPointF.x, paramPointF.y });
-      paramPointF.x = arrayOfFloat[0];
-      paramPointF.y = arrayOfFloat[1];
-      return paramPointF;
-      localMatrix.postTranslate(paramInt1 / 2.0F, paramInt2 / 2.0F);
-    }
+    float[] arrayOfFloat = new float[2];
+    localMatrix.mapPoints(arrayOfFloat, new float[] { paramPointF.x, paramPointF.y });
+    paramPointF.x = arrayOfFloat[0];
+    paramPointF.y = arrayOfFloat[1];
+    return paramPointF;
   }
   
   public static List<PointF> rotatePoints(List<PointF> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject;
-    if (paramList == null)
-    {
-      localObject = null;
-      return localObject;
+    if (paramList == null) {
+      return null;
     }
     paramInt3 = (paramInt3 + 360) % 360;
-    Matrix localMatrix = new Matrix();
+    android.graphics.Matrix localMatrix = new android.graphics.Matrix();
     localMatrix.reset();
     localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
     localMatrix.postRotate(paramInt3, 0.0F, 0.0F);
-    if ((paramInt3 == 90) || (paramInt3 == 270)) {
+    if ((paramInt3 != 90) && (paramInt3 != 270)) {
+      localMatrix.postTranslate(paramInt1 / 2.0F, paramInt2 / 2.0F);
+    } else {
       localMatrix.postTranslate(paramInt2 / 2.0F, paramInt1 / 2.0F);
     }
-    for (;;)
+    float[] arrayOfFloat1 = new float[2];
+    float[] arrayOfFloat2 = new float[2];
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      float[] arrayOfFloat1 = new float[2];
-      float[] arrayOfFloat2 = new float[2];
-      Iterator localIterator = paramList.iterator();
-      for (;;)
-      {
-        localObject = paramList;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (PointF)localIterator.next();
-        arrayOfFloat1[0] = ((PointF)localObject).x;
-        arrayOfFloat1[1] = ((PointF)localObject).y;
-        localMatrix.mapPoints(arrayOfFloat2, arrayOfFloat1);
-        ((PointF)localObject).x = arrayOfFloat2[0];
-        ((PointF)localObject).y = arrayOfFloat2[1];
-      }
-      localMatrix.postTranslate(paramInt1 / 2.0F, paramInt2 / 2.0F);
+      PointF localPointF = (PointF)localIterator.next();
+      arrayOfFloat1[0] = localPointF.x;
+      arrayOfFloat1[1] = localPointF.y;
+      localMatrix.mapPoints(arrayOfFloat2, arrayOfFloat1);
+      localPointF.x = arrayOfFloat2[0];
+      localPointF.y = arrayOfFloat2[1];
     }
+    return paramList;
   }
   
   public static List<float[]> rotatePointsForFloat3DList(List<float[]> paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramInt4 == 0) {}
-    for (;;)
-    {
+    if (paramInt4 == 0) {
       return paramList;
-      if ((paramList != null) && (paramInt1 > 0))
+    }
+    if ((paramList != null) && (paramInt1 > 0))
+    {
+      int i = paramInt4;
+      paramInt4 = 0;
+      while (paramInt4 < paramList.size())
       {
-        int i = 0;
-        int j = paramInt4;
-        paramInt4 = i;
-        while (paramInt4 < paramList.size())
+        float[] arrayOfFloat = (float[])paramList.get(paramInt4);
+        int j = i;
+        if (arrayOfFloat != null)
         {
-          float[] arrayOfFloat = (float[])paramList.get(paramInt4);
-          i = j;
-          if (arrayOfFloat != null)
+          j = i;
+          if (arrayOfFloat.length >= paramInt1 * 3)
           {
-            i = j;
-            if (arrayOfFloat.length >= paramInt1 * 3)
+            int k = (i + 360) % 360;
+            i = 0;
+            for (;;)
             {
-              int k = (j + 360) % 360;
-              j = 0;
-              i = k;
-              if (j < arrayOfFloat.length)
-              {
-                float f1;
-                float f2;
-                float f3;
-                if (k == 90)
-                {
-                  f1 = arrayOfFloat[(j + 1)];
-                  f2 = paramInt2 - 1;
-                  f3 = arrayOfFloat[j];
-                  arrayOfFloat[j] = f1;
-                  arrayOfFloat[(j + 1)] = (f2 - f3);
-                }
-                for (;;)
-                {
-                  j += 3;
-                  break;
-                  if (k == 180)
-                  {
-                    f1 = paramInt2 - 1;
-                    f2 = arrayOfFloat[j];
-                    f3 = paramInt3 - 1;
-                    float f4 = arrayOfFloat[(j + 1)];
-                    arrayOfFloat[j] = (f1 - f2);
-                    arrayOfFloat[(j + 1)] = (f3 - f4);
-                  }
-                  else if (k == 270)
-                  {
-                    f1 = paramInt3 - 1;
-                    f2 = arrayOfFloat[(j + 1)];
-                    f3 = arrayOfFloat[j];
-                    arrayOfFloat[j] = (f1 - f2);
-                    arrayOfFloat[(j + 1)] = f3;
-                  }
-                }
+              j = k;
+              if (i >= arrayOfFloat.length) {
+                break;
               }
+              float f1;
+              float f2;
+              float f3;
+              if (k == 90)
+              {
+                j = i + 1;
+                f1 = arrayOfFloat[j];
+                f2 = paramInt2 - 1;
+                f3 = arrayOfFloat[i];
+                arrayOfFloat[i] = f1;
+                arrayOfFloat[j] = (f2 - f3);
+              }
+              else if (k == 180)
+              {
+                f1 = paramInt2 - 1;
+                f2 = arrayOfFloat[i];
+                f3 = paramInt3 - 1;
+                j = i + 1;
+                float f4 = arrayOfFloat[j];
+                arrayOfFloat[i] = (f1 - f2);
+                arrayOfFloat[j] = (f3 - f4);
+              }
+              else if (k == 270)
+              {
+                f1 = paramInt3 - 1;
+                j = i + 1;
+                f2 = arrayOfFloat[j];
+                f3 = arrayOfFloat[i];
+                arrayOfFloat[i] = (f1 - f2);
+                arrayOfFloat[j] = f3;
+              }
+              i += 3;
             }
           }
-          paramInt4 += 1;
-          j = i;
         }
+        paramInt4 += 1;
+        i = j;
       }
     }
+    return paramList;
   }
   
   public static List<List<PointF>> rotatePointsForList(List<List<PointF>> paramList, int paramInt1, int paramInt2, int paramInt3)
@@ -1344,90 +1737,116 @@ public class AlgoUtils
     double d4 = d3 / 255.0D;
     d2 /= 255.0D;
     d3 = d1 / 255.0D;
-    if (d4 <= 0.04045D)
-    {
+    if (d4 <= 0.04045D) {
       d1 = d4 / 12.92D;
-      if (d2 > 0.04045D) {
-        break label174;
-      }
-      d2 /= 12.92D;
-      label70:
-      if (d3 > 0.04045D) {
-        break label195;
-      }
-    }
-    label174:
-    label195:
-    for (d3 /= 12.92D;; d3 = Math.pow((0.055D + d3) / 1.055D, 2.4D))
-    {
-      paramArrayOfDouble2[0] = (41.240000000000002D * d1 + 35.759999999999998D * d2 + 18.050000000000001D * d3);
-      paramArrayOfDouble2[1] = (21.260000000000002D * d1 + 71.519999999999996D * d2 + 7.2D * d3);
-      paramArrayOfDouble2[2] = (d3 * 95.049999999999997D + (d2 * 11.92D + d1 * 1.93D));
-      return;
+    } else {
       d1 = Math.pow((d4 + 0.055D) / 1.055D, 2.4D);
-      break;
-      d2 = Math.pow((0.055D + d2) / 1.055D, 2.4D);
-      break label70;
     }
+    if (d2 <= 0.04045D) {
+      d2 /= 12.92D;
+    } else {
+      d2 = Math.pow((d2 + 0.055D) / 1.055D, 2.4D);
+    }
+    if (d3 <= 0.04045D) {
+      d3 /= 12.92D;
+    } else {
+      d3 = Math.pow((d3 + 0.055D) / 1.055D, 2.4D);
+    }
+    paramArrayOfDouble2[0] = (41.240000000000002D * d1 + 35.759999999999998D * d2 + 18.050000000000001D * d3);
+    paramArrayOfDouble2[1] = (21.260000000000002D * d1 + 71.519999999999996D * d2 + 7.2D * d3);
+    paramArrayOfDouble2[2] = (d1 * 1.93D + d2 * 11.92D + d3 * 95.049999999999997D);
   }
   
   public static boolean samePeople(List<PointF> paramList1, List<PointF> paramList2)
   {
-    if ((paramList1.size() < 83) || (paramList2.size() < 83)) {
-      return false;
+    int i = paramList1.size();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i >= 83)
+    {
+      if (paramList2.size() < 83) {
+        return false;
+      }
+      PointF localPointF1 = new PointF((((PointF)paramList1.get(0)).x + ((PointF)paramList1.get(18)).x) / 2.0F, (((PointF)paramList1.get(0)).y + ((PointF)paramList1.get(18)).y) / 2.0F);
+      PointF localPointF2 = new PointF((((PointF)paramList2.get(0)).x + ((PointF)paramList2.get(18)).x) / 2.0F, (((PointF)paramList2.get(0)).y + ((PointF)paramList2.get(18)).y) / 2.0F);
+      float f = Math.min(getDistance((PointF)paramList1.get(0), (PointF)paramList1.get(18)), getDistance((PointF)paramList2.get(0), (PointF)paramList2.get(18)));
+      bool1 = bool2;
+      if (getDistance(localPointF1, localPointF2) < f * 0.5F) {
+        bool1 = true;
+      }
     }
-    float f1 = ((PointF)paramList1.get(0)).x;
-    f1 = (((PointF)paramList1.get(18)).x + f1) / 2.0F;
-    float f2 = ((PointF)paramList1.get(0)).y;
-    PointF localPointF1 = new PointF(f1, (((PointF)paramList1.get(18)).y + f2) / 2.0F);
-    f1 = ((PointF)paramList2.get(0)).x;
-    f1 = (((PointF)paramList2.get(18)).x + f1) / 2.0F;
-    f2 = ((PointF)paramList2.get(0)).y;
-    PointF localPointF2 = new PointF(f1, (((PointF)paramList2.get(18)).y + f2) / 2.0F);
-    f1 = Math.min(getDistance((PointF)paramList1.get(0), (PointF)paramList1.get(18)), getDistance((PointF)paramList2.get(0), (PointF)paramList2.get(18)));
-    return getDistance(localPointF1, localPointF2) < f1 * 0.5F;
+    return bool1;
   }
   
   private static double[] secondDerivative(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int j = paramArrayOfInt1.length;
-    double[][] arrayOfDouble = (double[][])Array.newInstance(Double.TYPE, new int[] { j, 3 });
-    double[] arrayOfDouble1 = new double[j];
+    int m = paramArrayOfInt1.length;
+    double[][] arrayOfDouble = (double[][])Array.newInstance(Double.TYPE, new int[] { m, 3 });
+    double[] arrayOfDouble1 = new double[m];
+    int j = 0;
     arrayOfDouble[0][1] = 4607182418800017408L;
-    int i = 1;
-    while (i < j - 1)
+    int k;
+    double d1;
+    for (int i = 1;; i = k)
     {
-      arrayOfDouble[i][0] = ((paramArrayOfInt1[i] - paramArrayOfInt1[(i - 1)]) / 6.0D);
-      arrayOfDouble[i][1] = ((paramArrayOfInt1[(i + 1)] - paramArrayOfInt1[(i - 1)]) / 3.0D);
-      arrayOfDouble[i][2] = ((paramArrayOfInt1[(i + 1)] - paramArrayOfInt1[i]) / 6.0D);
-      arrayOfDouble1[i] = ((paramArrayOfInt2[(i + 1)] - paramArrayOfInt2[i]) / (paramArrayOfInt1[(i + 1)] - paramArrayOfInt1[i]) - (paramArrayOfInt2[i] - paramArrayOfInt2[(i - 1)]) / (paramArrayOfInt1[i] - paramArrayOfInt1[(i - 1)]));
-      i += 1;
+      k = m - 1;
+      if (i >= k) {
+        break;
+      }
+      double[] arrayOfDouble2 = arrayOfDouble[i];
+      k = paramArrayOfInt1[i];
+      int n = i - 1;
+      d1 = k - paramArrayOfInt1[n];
+      Double.isNaN(d1);
+      arrayOfDouble2[0] = (d1 / 6.0D);
+      arrayOfDouble2 = arrayOfDouble[i];
+      k = i + 1;
+      d1 = paramArrayOfInt1[k] - paramArrayOfInt1[n];
+      Double.isNaN(d1);
+      arrayOfDouble2[1] = (d1 / 3.0D);
+      arrayOfDouble2 = arrayOfDouble[i];
+      d1 = paramArrayOfInt1[k] - paramArrayOfInt1[i];
+      Double.isNaN(d1);
+      arrayOfDouble2[2] = (d1 / 6.0D);
+      d1 = paramArrayOfInt2[k] - paramArrayOfInt2[i];
+      double d2 = paramArrayOfInt1[k] - paramArrayOfInt1[i];
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+      d2 = paramArrayOfInt2[i] - paramArrayOfInt2[n];
+      double d3 = paramArrayOfInt1[i] - paramArrayOfInt1[n];
+      Double.isNaN(d2);
+      Double.isNaN(d3);
+      arrayOfDouble1[i] = (d1 - d2 / d3);
     }
-    arrayOfDouble[(j - 1)][1] = 4607182418800017408L;
+    arrayOfDouble[k][1] = 4607182418800017408L;
     i = 1;
-    double d;
-    while (i < j)
+    while (i < m)
     {
-      d = arrayOfDouble[i][0] / arrayOfDouble[(i - 1)][1];
+      d1 = arrayOfDouble[i][0];
+      k = i - 1;
+      d1 /= arrayOfDouble[k][1];
       paramArrayOfInt1 = arrayOfDouble[i];
-      paramArrayOfInt1[1] -= arrayOfDouble[(i - 1)][2] * d;
+      paramArrayOfInt1[1] -= arrayOfDouble[k][2] * d1;
       arrayOfDouble[i][0] = 0L;
-      arrayOfDouble1[i] -= d * arrayOfDouble1[(i - 1)];
+      arrayOfDouble1[i] -= d1 * arrayOfDouble1[k];
       i += 1;
     }
-    i = j - 2;
+    i = m - 2;
     while (i >= 0)
     {
-      d = arrayOfDouble[i][2] / arrayOfDouble[(i + 1)][1];
+      d1 = arrayOfDouble[i][2];
+      k = i + 1;
+      d1 /= arrayOfDouble[k][1];
       paramArrayOfInt1 = arrayOfDouble[i];
-      paramArrayOfInt1[1] -= arrayOfDouble[(i + 1)][0] * d;
+      paramArrayOfInt1[1] -= arrayOfDouble[k][0] * d1;
       arrayOfDouble[i][2] = 0L;
-      arrayOfDouble1[i] -= d * arrayOfDouble1[(i + 1)];
+      arrayOfDouble1[i] -= d1 * arrayOfDouble1[k];
       i -= 1;
     }
-    paramArrayOfInt1 = new double[j];
-    i = 0;
-    while (i < j)
+    paramArrayOfInt1 = new double[m];
+    i = j;
+    while (i < m)
     {
       arrayOfDouble1[i] /= arrayOfDouble[i][1];
       i += 1;
@@ -1435,24 +1854,38 @@ public class AlgoUtils
     return paramArrayOfInt1;
   }
   
+  public static double spacing(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getPointerCount() == 2)
+    {
+      float f1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
+      float f2 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
+      return Math.sqrt(f1 * f1 + f2 * f2);
+    }
+    return 0.0D;
+  }
+  
   public static List<Float> substract(List<Float> paramList, float[] paramArrayOfFloat)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramList == null) || (paramArrayOfFloat == null)) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < Math.min(paramList.size(), paramArrayOfFloat.length))
+    if (paramList != null)
     {
-      localArrayList.add(Float.valueOf(((Float)paramList.get(i)).floatValue() - paramArrayOfFloat[i]));
-      i += 1;
+      if (paramArrayOfFloat == null) {
+        return localArrayList;
+      }
+      int i = 0;
+      while (i < Math.min(paramList.size(), paramArrayOfFloat.length))
+      {
+        localArrayList.add(Float.valueOf(((Float)paramList.get(i)).floatValue() - paramArrayOfFloat[i]));
+        i += 1;
+      }
     }
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.AlgoUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.backup.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
+import com.tencent.mm.am.n;
 import com.tencent.mm.protocal.k.a;
 import com.tencent.mm.protocal.k.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 public final class a$a
-  extends k
+  extends n
 {
-  private final k.a jCo;
-  private final k.b jCp;
+  private final k.a uZN;
+  private final k.b uZO;
   
   public a$a()
   {
-    AppMethodBeat.i(17311);
-    this.jCo = new k.a();
-    this.jCp = new k.b();
-    AppMethodBeat.o(17311);
+    AppMethodBeat.i(21369);
+    this.uZN = new k.a();
+    this.uZO = new k.b();
+    AppMethodBeat.o(21369);
   }
   
   public final int getOptions()
@@ -28,12 +28,12 @@ public final class a$a
   
   public final l.d getReqObjImp()
   {
-    return this.jCo;
+    return this.uZN;
   }
   
   public final l.e getRespObj()
   {
-    return this.jCp;
+    return this.uZO;
   }
   
   public final int getType()
@@ -48,7 +48,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.e.a.a
  * JD-Core Version:    0.7.0.1
  */

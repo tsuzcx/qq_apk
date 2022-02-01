@@ -18,15 +18,15 @@ public class NativeSeekTable
   
   public long seek(long paramLong)
   {
-    AppMethodBeat.i(128507);
+    AppMethodBeat.i(114271);
     paramLong = this.nativeDecoder.getBytePositionOfTime(paramLong);
-    AppMethodBeat.o(128507);
+    AppMethodBeat.o(114271);
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.NativeSeekTable
  * JD-Core Version:    0.7.0.1
  */

@@ -21,63 +21,62 @@ public final class UriUtil
     }
     int j = paramString.length();
     int i = paramString.indexOf('#');
-    if (i == -1) {}
-    for (;;)
+    if (i != -1) {
+      j = i;
+    }
+    int k = paramString.indexOf('?');
+    if (k != -1)
     {
-      int k = paramString.indexOf('?');
-      if (k != -1)
+      i = k;
+      if (k <= j) {}
+    }
+    else
+    {
+      i = j;
+    }
+    int m = paramString.indexOf('/');
+    if (m != -1)
+    {
+      k = m;
+      if (m <= i) {}
+    }
+    else
+    {
+      k = i;
+    }
+    int n = paramString.indexOf(':');
+    m = n;
+    if (n > k) {
+      m = -1;
+    }
+    k = m + 2;
+    if ((k < i) && (paramString.charAt(m + 1) == '/') && (paramString.charAt(k) == '/')) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if (k != 0)
+    {
+      n = paramString.indexOf('/', m + 3);
+      if (n != -1)
       {
-        i = k;
-        if (k <= j) {}
-      }
-      else
-      {
-        i = j;
-      }
-      int m = paramString.indexOf('/');
-      if (m != -1)
-      {
-        k = m;
-        if (m <= i) {}
+        k = n;
+        if (n <= i) {}
       }
       else
       {
         k = i;
       }
-      int n = paramString.indexOf(':');
-      m = n;
-      if (n > k) {
-        m = -1;
-      }
-      if ((m + 2 < i) && (paramString.charAt(m + 1) == '/') && (paramString.charAt(m + 2) == '/'))
-      {
-        k = 1;
-        if (k == 0) {
-          break label202;
-        }
-        n = paramString.indexOf('/', m + 3);
-        if (n != -1)
-        {
-          k = n;
-          if (n <= i) {
-            break label173;
-          }
-        }
-      }
-      label173:
-      label202:
-      for (k = i;; k = m + 1)
-      {
-        arrayOfInt[0] = m;
-        arrayOfInt[1] = k;
-        arrayOfInt[2] = i;
-        arrayOfInt[3] = j;
-        return arrayOfInt;
-        k = 0;
-        break;
-      }
-      j = i;
     }
+    else
+    {
+      k = m + 1;
+    }
+    arrayOfInt[0] = m;
+    arrayOfInt[1] = k;
+    arrayOfInt[2] = i;
+    arrayOfInt[3] = j;
+    return arrayOfInt;
   }
   
   private static String removeDotSegments(StringBuilder paramStringBuilder, int paramInt1, int paramInt2)
@@ -89,52 +88,55 @@ public final class UriUtil
     if (paramStringBuilder.charAt(paramInt1) == '/') {
       i = paramInt1 + 1;
     }
-    int k = i;
     paramInt1 = i;
     int j = paramInt2;
-    paramInt2 = k;
-    if (paramInt2 <= j)
+    paramInt2 = paramInt1;
+    paramInt1 = j;
+    j = paramInt2;
+    for (;;)
     {
-      if (paramInt2 == j)
-      {
-        k = paramInt2;
-        label52:
-        if ((paramInt2 != paramInt1 + 1) || (paramStringBuilder.charAt(paramInt1) != '.')) {
-          break label122;
-        }
-        paramStringBuilder.delete(paramInt1, k);
-        j -= k - paramInt1;
-        k = paramInt1;
-        paramInt2 = paramInt1;
-        paramInt1 = k;
+      if (j > paramInt1) {
+        break label207;
       }
-      for (;;)
+      int k;
+      if (j == paramInt1)
       {
-        break;
-        if (paramStringBuilder.charAt(paramInt2) == '/')
-        {
-          k = paramInt2 + 1;
-          break label52;
-        }
-        paramInt2 += 1;
-        break;
-        label122:
-        if ((paramInt2 == paramInt1 + 2) && (paramStringBuilder.charAt(paramInt1) == '.') && (paramStringBuilder.charAt(paramInt1 + 1) == '.'))
-        {
-          paramInt2 = paramStringBuilder.lastIndexOf("/", paramInt1 - 2) + 1;
-          if (paramInt2 > i) {}
-          for (paramInt1 = paramInt2;; paramInt1 = i)
-          {
-            paramStringBuilder.delete(paramInt1, k);
-            j -= k - paramInt1;
-            paramInt1 = paramInt2;
-            break;
-          }
-        }
-        paramInt2 += 1;
-        paramInt1 = paramInt2;
+        k = j;
       }
+      else
+      {
+        if (paramStringBuilder.charAt(j) != '/') {
+          break label198;
+        }
+        k = j + 1;
+      }
+      int m = paramInt2 + 1;
+      if ((j == m) && (paramStringBuilder.charAt(paramInt2) == '.'))
+      {
+        paramStringBuilder.delete(paramInt2, k);
+        paramInt1 -= k - paramInt2;
+        break;
+      }
+      if ((j == paramInt2 + 2) && (paramStringBuilder.charAt(paramInt2) == '.') && (paramStringBuilder.charAt(m) == '.'))
+      {
+        paramInt2 = paramStringBuilder.lastIndexOf("/", paramInt2 - 2) + 1;
+        if (paramInt2 > i) {
+          j = paramInt2;
+        } else {
+          j = i;
+        }
+        paramStringBuilder.delete(j, k);
+        paramInt1 -= k - j;
+      }
+      else
+      {
+        paramInt2 = j + 1;
+      }
+      break;
+      label198:
+      j += 1;
     }
+    label207:
     return paramStringBuilder.toString();
   }
   
@@ -157,43 +159,47 @@ public final class UriUtil
       return localStringBuilder.toString();
     }
     int[] arrayOfInt = getUriIndices(str);
-    if (paramString2[3] == 0) {
-      return paramString1;
+    if (paramString2[3] == 0)
+    {
+      localStringBuilder.append(str, 0, arrayOfInt[3]);
+      localStringBuilder.append(paramString1);
+      return localStringBuilder.toString();
     }
-    if (paramString2[2] == 0) {
-      return paramString1;
+    if (paramString2[2] == 0)
+    {
+      localStringBuilder.append(str, 0, arrayOfInt[2]);
+      localStringBuilder.append(paramString1);
+      return localStringBuilder.toString();
     }
     if (paramString2[1] != 0)
     {
       i = arrayOfInt[0] + 1;
-      localStringBuilder.append(str, 0, i).append(paramString1);
+      localStringBuilder.append(str, 0, i);
+      localStringBuilder.append(paramString1);
       return removeDotSegments(localStringBuilder, paramString2[1] + i, i + paramString2[2]);
     }
-    int j;
     if (paramString1.charAt(paramString2[1]) == '/')
     {
-      localStringBuilder.append(str, 0, arrayOfInt[1]).append(paramString1);
-      i = arrayOfInt[1];
-      j = arrayOfInt[1];
-      return removeDotSegments(localStringBuilder, i, paramString2[2] + j);
+      localStringBuilder.append(str, 0, arrayOfInt[1]);
+      localStringBuilder.append(paramString1);
+      return removeDotSegments(localStringBuilder, arrayOfInt[1], arrayOfInt[1] + paramString2[2]);
     }
     if ((arrayOfInt[0] + 2 < arrayOfInt[1]) && (arrayOfInt[1] == arrayOfInt[2]))
     {
-      localStringBuilder.append(str, 0, arrayOfInt[1]).append('/').append(paramString1);
-      i = arrayOfInt[1];
-      j = arrayOfInt[1];
-      return removeDotSegments(localStringBuilder, i, paramString2[2] + j + 1);
+      localStringBuilder.append(str, 0, arrayOfInt[1]);
+      localStringBuilder.append('/');
+      localStringBuilder.append(paramString1);
+      return removeDotSegments(localStringBuilder, arrayOfInt[1], arrayOfInt[1] + paramString2[2] + 1);
     }
     int i = str.lastIndexOf('/', arrayOfInt[2] - 1);
     if (i == -1) {
       i = arrayOfInt[1];
-    }
-    for (;;)
-    {
-      localStringBuilder.append(str, 0, i).append(paramString1);
-      return removeDotSegments(localStringBuilder, arrayOfInt[1], i + paramString2[2]);
+    } else {
       i += 1;
     }
+    localStringBuilder.append(str, 0, i);
+    localStringBuilder.append(paramString1);
+    return removeDotSegments(localStringBuilder, arrayOfInt[1], i + paramString2[2]);
   }
   
   public static Uri resolveToUri(String paramString1, String paramString2)
@@ -203,7 +209,7 @@ public final class UriUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.UriUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -53,67 +53,83 @@ public class FaceLusterFilter
   
   private void clearGLResources()
   {
-    GLES20.glDeleteTextures(this.mTexture.length, this.mTexture, 0);
-    GLES20.glDeleteFramebuffers(this.mFrameBuffer.length, this.mFrameBuffer, 0);
-    GLES20.glDeleteRenderbuffers(this.mDepthBuffer.length, this.mDepthBuffer, 0);
-    this.mCopyFilter.ClearGLSL();
+    int[] arrayOfInt = this.mTexture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mFrameBuffer;
+    GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mDepthBuffer;
+    GLES20.glDeleteRenderbuffers(arrayOfInt.length, arrayOfInt, 0);
+    this.mCopyFilter.clearGLSL();
   }
   
   private void createPerspective(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float[] paramArrayOfFloat)
   {
-    float f = 1.0F / (paramFloat4 - paramFloat3);
     paramFloat1 = 1.0F / (float)Math.tan((float)(Math.toRadians(paramFloat1) * 0.5D));
     Arrays.fill(paramArrayOfFloat, 0.0F);
+    float f = 1.0F / (paramFloat4 - paramFloat3);
     paramArrayOfFloat[0] = (1.0F / paramFloat2 * paramFloat1);
     paramArrayOfFloat[5] = paramFloat1;
     paramArrayOfFloat[10] = (-(paramFloat4 + paramFloat3) * f);
     paramArrayOfFloat[11] = -1.0F;
-    paramArrayOfFloat[14] = (f * (-2.0F * paramFloat4 * paramFloat3));
+    paramArrayOfFloat[14] = (paramFloat4 * -2.0F * paramFloat3 * f);
   }
   
   private float getFov(float paramFloat)
   {
-    if ((this.width == 0) || (this.height == 0)) {
+    if ((this.width != 0) && (this.height != 0))
+    {
+      if (((paramFloat > 89.0F) && (paramFloat < 91.0F)) || ((paramFloat > 269.0F) && (paramFloat < 271.0F)))
+      {
+        double d1 = Math.tan(Math.toRadians(VideoPreviewFaceOutlineDetector.getFov() / 2.0F));
+        double d2 = this.height;
+        Double.isNaN(d2);
+        double d3 = this.width;
+        Double.isNaN(d3);
+        return (float)(Math.toDegrees(Math.atan(d1 * d2 / d3)) * 2.0D);
+      }
       return VideoPreviewFaceOutlineDetector.getFov();
-    }
-    if (((paramFloat > 89.0F) && (paramFloat < 91.0F)) || ((paramFloat > 269.0F) && (paramFloat < 271.0F))) {
-      return (float)(Math.toDegrees(Math.atan(Math.tan(Math.toRadians(VideoPreviewFaceOutlineDetector.getFov() / 2.0F)) * this.height / this.width)) * 2.0D);
     }
     return VideoPreviewFaceOutlineDetector.getFov();
   }
   
   private void initGLResources()
   {
-    GLES20.glGenTextures(this.mTexture.length, this.mTexture, 0);
-    GLES20.glGenFramebuffers(this.mFrameBuffer.length, this.mFrameBuffer, 0);
-    GLES20.glGenRenderbuffers(this.mDepthBuffer.length, this.mDepthBuffer, 0);
+    Object localObject = this.mTexture;
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    localObject = this.mFrameBuffer;
+    GLES20.glGenFramebuffers(localObject.length, (int[])localObject, 0);
+    localObject = this.mDepthBuffer;
+    GLES20.glGenRenderbuffers(localObject.length, (int[])localObject, 0);
     this.mCopyFilter.apply();
-    Bitmap localBitmap = SDKResourceLoader.getFaceLusterData().mask1;
-    if (BitmapUtils.isLegal(localBitmap)) {
-      GlUtil.loadTexture(this.mTexture[1], localBitmap);
+    localObject = SDKResourceLoader.getFaceLusterData().mask1;
+    if (BitmapUtils.isLegal((Bitmap)localObject)) {
+      GlUtil.loadTexture(this.mTexture[1], (Bitmap)localObject);
     }
   }
   
   private void updateGLResources()
   {
-    if ((this.width == 0) || (this.height == 0) || (this.mTexture[0] <= 0) || (!isValid())) {
-      return;
+    if ((this.width != 0) && (this.height != 0) && (this.mTexture[0] > 0))
+    {
+      if (!isValid()) {
+        return;
+      }
+      GLES20.glActiveTexture(33987);
+      GLES20.glBindTexture(3553, this.mTexture[0]);
+      GLES20.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glBindFramebuffer(36160, this.mFrameBuffer[0]);
+      GLES20.glBindRenderbuffer(36161, this.mDepthBuffer[0]);
+      GLES20.glRenderbufferStorage(36161, 33189, this.width, this.height);
+      GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.mDepthBuffer[0]);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.mTexture[0], 0);
+      GLES20.glCheckFramebufferStatus(36160);
+      GLES20.glBindFramebuffer(36160, 0);
+      GLES20.glBindTexture(3553, 0);
     }
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(3553, this.mTexture[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glBindFramebuffer(36160, this.mFrameBuffer[0]);
-    GLES20.glBindRenderbuffer(36161, this.mDepthBuffer[0]);
-    GLES20.glRenderbufferStorage(36161, 33189, this.width, this.height);
-    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.mDepthBuffer[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.mTexture[0], 0);
-    if (GLES20.glCheckFramebufferStatus(36160) != 36053) {}
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glBindTexture(3553, 0);
   }
   
   public void ApplyGLSLFilter()
@@ -197,94 +213,108 @@ public class FaceLusterFilter
   public void updatePreview(Object paramObject)
   {
     super.updatePreview(paramObject);
-    if ((this.faceStatus == null) || (this.faceStatus.denseFaceModel == null) || (this.faceStatus.denseFaceModel.length < 3000) || (this.faceStatus.denseFaceModel[0] == 0.0F) || (this.faceStatus.transform[15] < 1.0F)) {}
-    do
+    Object localObject = this.faceStatus;
+    if ((localObject != null) && (((FaceStatus)localObject).denseFaceModel != null) && (this.faceStatus.denseFaceModel.length >= 3000) && (this.faceStatus.denseFaceModel[0] != 0.0F))
     {
-      do
-      {
+      if (this.faceStatus.transform[15] < 1.0F) {
         return;
-      } while (!(paramObject instanceof PTDetectInfo));
-      paramObject = (PTDetectInfo)paramObject;
-    } while ((this.width == 0) || (this.height == 0) || (this.mTexture[0] <= 0) || (!isValid()));
-    int i = 0;
-    while (i < 1975)
-    {
-      int j = this.mIndices[(i * 3)];
-      int k = this.mIndices[(i * 3 + 1)];
-      int m = this.mIndices[(i * 3 + 2)];
-      this.mVertices[(i * 9)] = this.faceStatus.denseFaceModel[(j * 3)];
-      this.mVertices[(i * 9 + 1)] = this.faceStatus.denseFaceModel[(j * 3 + 1)];
-      this.mVertices[(i * 9 + 2)] = this.faceStatus.denseFaceModel[(j * 3 + 2)];
-      this.mVertices[(i * 9 + 3)] = this.faceStatus.denseFaceModel[(k * 3)];
-      this.mVertices[(i * 9 + 4)] = this.faceStatus.denseFaceModel[(k * 3 + 1)];
-      this.mVertices[(i * 9 + 5)] = this.faceStatus.denseFaceModel[(k * 3 + 2)];
-      this.mVertices[(i * 9 + 6)] = this.faceStatus.denseFaceModel[(m * 3)];
-      this.mVertices[(i * 9 + 7)] = this.faceStatus.denseFaceModel[(m * 3 + 1)];
-      this.mVertices[(i * 9 + 8)] = this.faceStatus.denseFaceModel[(m * 3 + 2)];
-      i += 1;
-    }
-    addAttribParam(new AttributeParam("position", this.mVertices, 3));
-    Matrix.rotateM(this.mExtraTempMatrix, 0, this.faceStatus.transform, 0, -paramObject.phoneAngle, 0.0F, 0.0F, 1.0F);
-    Matrix.transposeM(this.mExtraMatrix, 0, this.mExtraTempMatrix, 0);
-    float[] arrayOfFloat = this.mExtraMatrix;
-    arrayOfFloat[1] *= -1.0F;
-    arrayOfFloat = this.mExtraMatrix;
-    arrayOfFloat[2] *= -1.0F;
-    arrayOfFloat = this.mExtraMatrix;
-    arrayOfFloat[4] *= -1.0F;
-    arrayOfFloat = this.mExtraMatrix;
-    arrayOfFloat[8] *= -1.0F;
-    arrayOfFloat = this.mExtraMatrix;
-    arrayOfFloat[13] *= -1.0F;
-    arrayOfFloat = this.mExtraMatrix;
-    arrayOfFloat[14] *= -1.0F;
-    createPerspective(getFov(paramObject.phoneAngle), this.width / this.height, 1.0F, 1000.0F, this.mViewProjectionMatrix);
-    Matrix.multiplyMM(this.mWorldMatrix, 0, this.mExtraMatrix, 0, M_MATRIX, 0);
-    Matrix.multiplyMM(this.mMVPMatrix, 0, this.mViewProjectionMatrix, 0, this.mWorldMatrix, 0);
-    addParam(new UniformParam.Mat4Param("u_worldViewProjectionMatrix", this.mMVPMatrix));
-    Matrix.invertM(this.mInvWorldMatrix, 0, this.mWorldMatrix, 0);
-    Matrix.transposeM(this.mInvMatrix, 0, this.mInvWorldMatrix, 0);
-    addParam(new UniformParam.Mat4Param("u_inverseTransposeWorldViewMatrix", this.mInvMatrix));
-    float f2 = this.faceStatus.yaw;
-    float f1;
-    if ((paramObject.phoneAngle > 89.0F) && (paramObject.phoneAngle < 91.0F)) {
-      f1 = -this.faceStatus.pitch;
-    }
-    while (f1 > 15.75F)
-    {
-      addParam(new UniformParam.FloatParam("u_maskAlpha1", 0.0F));
-      addParam(new UniformParam.FloatParam("u_maskAlpha2", 1.0F));
-      return;
-      if ((paramObject.phoneAngle > 179.0F) && (paramObject.phoneAngle < 181.0F))
-      {
-        f1 = -this.faceStatus.yaw;
       }
-      else
+      if ((paramObject instanceof PTDetectInfo))
       {
-        f1 = f2;
-        if (paramObject.phoneAngle > 269.0F)
+        paramObject = (PTDetectInfo)paramObject;
+        if ((this.width != 0) && (this.height != 0) && (this.mTexture[0] > 0))
         {
-          f1 = f2;
-          if (paramObject.phoneAngle < 271.0F) {
-            f1 = this.faceStatus.pitch;
+          if (!isValid()) {
+            return;
           }
+          int i = 0;
+          while (i < 1975)
+          {
+            localObject = this.mIndices;
+            int j = i * 3;
+            int n = localObject[j];
+            int k = localObject[(j + 1)];
+            int m = localObject[(j + 2)];
+            localObject = this.mVertices;
+            j = i * 9;
+            float[] arrayOfFloat = this.faceStatus.denseFaceModel;
+            n *= 3;
+            localObject[j] = arrayOfFloat[n];
+            this.mVertices[(j + 1)] = this.faceStatus.denseFaceModel[(n + 1)];
+            this.mVertices[(j + 2)] = this.faceStatus.denseFaceModel[(n + 2)];
+            localObject = this.mVertices;
+            arrayOfFloat = this.faceStatus.denseFaceModel;
+            k *= 3;
+            localObject[(j + 3)] = arrayOfFloat[k];
+            this.mVertices[(j + 4)] = this.faceStatus.denseFaceModel[(k + 1)];
+            this.mVertices[(j + 5)] = this.faceStatus.denseFaceModel[(k + 2)];
+            localObject = this.mVertices;
+            arrayOfFloat = this.faceStatus.denseFaceModel;
+            k = m * 3;
+            localObject[(j + 6)] = arrayOfFloat[k];
+            this.mVertices[(j + 7)] = this.faceStatus.denseFaceModel[(k + 1)];
+            this.mVertices[(j + 8)] = this.faceStatus.denseFaceModel[(k + 2)];
+            i += 1;
+          }
+          addAttribParam(new AttributeParam("position", this.mVertices, 3));
+          Matrix.rotateM(this.mExtraTempMatrix, 0, this.faceStatus.transform, 0, -paramObject.phoneAngle, 0.0F, 0.0F, 1.0F);
+          Matrix.transposeM(this.mExtraMatrix, 0, this.mExtraTempMatrix, 0);
+          localObject = this.mExtraMatrix;
+          localObject[1] *= -1.0F;
+          localObject[2] *= -1.0F;
+          localObject[4] *= -1.0F;
+          localObject[8] *= -1.0F;
+          localObject[13] *= -1.0F;
+          localObject[14] *= -1.0F;
+          createPerspective(getFov(paramObject.phoneAngle), this.width / this.height, 1.0F, 1000.0F, this.mViewProjectionMatrix);
+          Matrix.multiplyMM(this.mWorldMatrix, 0, this.mExtraMatrix, 0, M_MATRIX, 0);
+          Matrix.multiplyMM(this.mMVPMatrix, 0, this.mViewProjectionMatrix, 0, this.mWorldMatrix, 0);
+          addParam(new UniformParam.Mat4Param("u_worldViewProjectionMatrix", this.mMVPMatrix));
+          Matrix.invertM(this.mInvWorldMatrix, 0, this.mWorldMatrix, 0);
+          Matrix.transposeM(this.mInvMatrix, 0, this.mInvWorldMatrix, 0);
+          addParam(new UniformParam.Mat4Param("u_inverseTransposeWorldViewMatrix", this.mInvMatrix));
+          float f2 = this.faceStatus.yaw;
+          if ((paramObject.phoneAngle > 89.0F) && (paramObject.phoneAngle < 91.0F)) {}
+          for (float f1 = this.faceStatus.pitch;; f1 = this.faceStatus.yaw)
+          {
+            f1 = -f1;
+            break label771;
+            if ((paramObject.phoneAngle <= 179.0F) || (paramObject.phoneAngle >= 181.0F)) {
+              break;
+            }
+          }
+          f1 = f2;
+          if (paramObject.phoneAngle > 269.0F)
+          {
+            f1 = f2;
+            if (paramObject.phoneAngle < 271.0F) {
+              f1 = this.faceStatus.pitch;
+            }
+          }
+          label771:
+          if (f1 > 15.75F)
+          {
+            addParam(new UniformParam.FloatParam("u_maskAlpha1", 0.0F));
+            addParam(new UniformParam.FloatParam("u_maskAlpha2", 1.0F));
+            return;
+          }
+          if (f1 > 0.0F)
+          {
+            addParam(new UniformParam.FloatParam("u_maskAlpha1", 0.0F));
+            addParam(new UniformParam.FloatParam("u_maskAlpha2", f1 / 15.75F));
+            return;
+          }
+          if (f1 > -15.75F)
+          {
+            addParam(new UniformParam.FloatParam("u_maskAlpha1", -f1 / 15.75F));
+            addParam(new UniformParam.FloatParam("u_maskAlpha2", 0.0F));
+            return;
+          }
+          addParam(new UniformParam.FloatParam("u_maskAlpha1", 1.0F));
+          addParam(new UniformParam.FloatParam("u_maskAlpha2", 0.0F));
         }
       }
     }
-    if (f1 > 0.0F)
-    {
-      addParam(new UniformParam.FloatParam("u_maskAlpha1", 0.0F));
-      addParam(new UniformParam.FloatParam("u_maskAlpha2", f1 / 15.75F));
-      return;
-    }
-    if (f1 > -15.75F)
-    {
-      addParam(new UniformParam.FloatParam("u_maskAlpha1", -f1 / 15.75F));
-      addParam(new UniformParam.FloatParam("u_maskAlpha2", 0.0F));
-      return;
-    }
-    addParam(new UniformParam.FloatParam("u_maskAlpha1", 1.0F));
-    addParam(new UniformParam.FloatParam("u_maskAlpha2", 0.0F));
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -295,7 +325,7 @@ public class FaceLusterFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceLusterFilter
  * JD-Core Version:    0.7.0.1
  */

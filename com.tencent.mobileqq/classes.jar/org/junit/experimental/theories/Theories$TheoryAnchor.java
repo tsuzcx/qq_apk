@@ -48,13 +48,18 @@ public class Theories$TheoryAnchor
   public void evaluate()
   {
     runWithAssignment(Assignments.allUnassigned(this.testMethod.getMethod(), getTestClass()));
-    if (this.testMethod.getAnnotation(Theory.class) != null) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (this.testMethod.getAnnotation(Theory.class) != null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((this.successes == 0) && (i != 0))
     {
-      if ((this.successes == 0) && (i != 0)) {
-        Assert.fail("Never found parameters that satisfied method assumptions.  Violated assumptions: " + this.fInvalidParameters);
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Never found parameters that satisfied method assumptions.  Violated assumptions: ");
+      localStringBuilder.append(this.fInvalidParameters);
+      Assert.fail(localStringBuilder.toString());
     }
   }
   
@@ -101,7 +106,7 @@ public class Theories$TheoryAnchor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.Theories.TheoryAnchor
  * JD-Core Version:    0.7.0.1
  */

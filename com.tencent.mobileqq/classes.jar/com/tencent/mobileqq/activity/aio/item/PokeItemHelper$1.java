@@ -1,21 +1,28 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxl;
 import com.immersion.stickersampleapp.HapticManager;
 
-public final class PokeItemHelper$1
+final class PokeItemHelper$1
   implements Runnable
 {
-  public PokeItemHelper$1(int paramInt) {}
+  PokeItemHelper$1(int paramInt) {}
   
   public void run()
   {
-    HapticManager.a().a(String.valueOf(this.a), afxl.e + this.a + "/" + this.a + ".hapt");
+    HapticManager localHapticManager = HapticManager.b();
+    int i = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PokeItemHelper.e);
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("/");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(".hapt");
+    localHapticManager.a(String.valueOf(i), localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemHelper.1
  * JD-Core Version:    0.7.0.1
  */

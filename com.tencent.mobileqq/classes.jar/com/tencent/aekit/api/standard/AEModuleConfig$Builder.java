@@ -5,6 +5,8 @@ import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 
 public class AEModuleConfig$Builder
 {
+  private int authMode;
+  private boolean cacheBeautyBitmaps = true;
   private boolean debugMode;
   private boolean enableDataReport = true;
   private boolean enableDefaultBasic3 = true;
@@ -12,6 +14,7 @@ public class AEModuleConfig$Builder
   private boolean enableProfiler = false;
   private boolean enableReducedMeidaLibrary = false;
   private boolean enableResourceCheck;
+  private boolean enableSoLoadCheck = true;
   private boolean isFramebufferFetchEnable = true;
   private boolean isLoadSo = true;
   private String license;
@@ -26,6 +29,18 @@ public class AEModuleConfig$Builder
   public AEModuleConfig build()
   {
     return new AEModuleConfig(this, null);
+  }
+  
+  public Builder setAuthMode(int paramInt)
+  {
+    this.authMode = paramInt;
+    return this;
+  }
+  
+  public Builder setCacheBeautyBitmaps(boolean paramBoolean)
+  {
+    this.cacheBeautyBitmaps = paramBoolean;
+    return this;
   }
   
   public Builder setEnableDataReport(boolean paramBoolean)
@@ -67,6 +82,12 @@ public class AEModuleConfig$Builder
   public Builder setEnableResourceCheck(boolean paramBoolean)
   {
     this.enableResourceCheck = paramBoolean;
+    return this;
+  }
+  
+  public Builder setEnableSoLoadCheck(boolean paramBoolean)
+  {
+    this.enableSoLoadCheck = paramBoolean;
     return this;
   }
   
@@ -132,7 +153,7 @@ public class AEModuleConfig$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModuleConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

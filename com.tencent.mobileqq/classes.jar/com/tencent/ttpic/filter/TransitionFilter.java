@@ -20,18 +20,19 @@ public class TransitionFilter
     setDataPath(paramString);
   }
   
-  public void ClearGLSL()
-  {
-    this.mBlendFilter.ClearGLSL();
-    this.mAlphaFilter.ClearGLSL();
-    this.mMoveFilter.ClearGLSL();
-  }
-  
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
   {
-    if (this.mCurrFilter != null) {
-      this.mCurrFilter.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
+    ITransitionFilter localITransitionFilter = this.mCurrFilter;
+    if (localITransitionFilter != null) {
+      localITransitionFilter.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
     }
+  }
+  
+  public void clearGLSL()
+  {
+    this.mBlendFilter.clearGLSL();
+    this.mAlphaFilter.clearGLSL();
+    this.mMoveFilter.clearGLSL();
   }
   
   public boolean needRender()
@@ -55,43 +56,45 @@ public class TransitionFilter
   
   public void setLastTex(int paramInt)
   {
-    if (this.mCurrFilter != null) {
-      this.mCurrFilter.setLastTex(paramInt);
+    ITransitionFilter localITransitionFilter = this.mCurrFilter;
+    if (localITransitionFilter != null) {
+      localITransitionFilter.setLastTex(paramInt);
     }
   }
   
   public void setMvPart(FabbyMvPart paramFabbyMvPart)
   {
-    switch (paramFabbyMvPart.transitionFunction)
+    int i = paramFabbyMvPart.transitionFunction;
+    if (i != 0)
     {
-    default: 
-      this.mCurrFilter = null;
-      return;
-    case 0: 
-      if ((paramFabbyMvPart.transitionItem != null) && (!paramFabbyMvPart.transitionItem.id.isEmpty()))
+      if ((i != 1) && (i != 2) && (i != 3) && (i != 4))
       {
-        this.mBlendFilter.setItem(paramFabbyMvPart.transitionItem);
-        this.mBlendFilter.setDuration(paramFabbyMvPart.transitionDuration);
-        this.mBlendFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
-        this.mBlendFilter.setMaskType(paramFabbyMvPart.transitionMaskType);
-        this.mCurrFilter = this.mBlendFilter;
+        if (i != 5)
+        {
+          this.mCurrFilter = null;
+          return;
+        }
+        this.mAlphaFilter.setDuration(paramFabbyMvPart.transitionDuration);
+        this.mAlphaFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
+        this.mCurrFilter = this.mAlphaFilter;
         return;
       }
-      this.mCurrFilter = null;
-      return;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
       this.mMoveFilter.setDuration(paramFabbyMvPart.transitionDuration);
       this.mMoveFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
       this.mMoveFilter.setMoveOrientation(paramFabbyMvPart.transitionFunction);
       this.mCurrFilter = this.mMoveFilter;
       return;
     }
-    this.mAlphaFilter.setDuration(paramFabbyMvPart.transitionDuration);
-    this.mAlphaFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
-    this.mCurrFilter = this.mAlphaFilter;
+    if ((paramFabbyMvPart.transitionItem != null) && (!paramFabbyMvPart.transitionItem.id.isEmpty()))
+    {
+      this.mBlendFilter.setItem(paramFabbyMvPart.transitionItem);
+      this.mBlendFilter.setDuration(paramFabbyMvPart.transitionDuration);
+      this.mBlendFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
+      this.mBlendFilter.setMaskType(paramFabbyMvPart.transitionMaskType);
+      this.mCurrFilter = this.mBlendFilter;
+      return;
+    }
+    this.mCurrFilter = null;
   }
   
   public void setRenderMode(int paramInt)
@@ -103,14 +106,15 @@ public class TransitionFilter
   
   public void updatePreview(long paramLong)
   {
-    if (this.mCurrFilter != null) {
-      this.mCurrFilter.updatePreview(paramLong);
+    ITransitionFilter localITransitionFilter = this.mCurrFilter;
+    if (localITransitionFilter != null) {
+      localITransitionFilter.updatePreview(paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransitionFilter
  * JD-Core Version:    0.7.0.1
  */

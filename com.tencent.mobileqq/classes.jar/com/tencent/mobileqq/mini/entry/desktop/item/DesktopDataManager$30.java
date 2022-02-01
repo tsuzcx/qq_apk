@@ -1,51 +1,26 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.util.Log;
-import awgf;
-import awgg;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class DesktopDataManager$30
   implements Runnable
 {
-  DesktopDataManager$30(DesktopDataManager paramDesktopDataManager, String paramString) {}
+  DesktopDataManager$30(DesktopDataManager paramDesktopDataManager, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "deleteMiniAppFromDB, app is null.");
+    int i = DesktopDataManager.access$3400(this.this$0);
+    DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).remove(this.val$old_order + i);
+    DesktopDataManager.access$1600(this.this$0).add(i + this.val$new_order, localDesktopItemInfo);
+    DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+    if (DesktopDataManager.access$1500(this.this$0) != null) {
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
     }
-    MiniAppRedDotEntity localMiniAppRedDotEntity;
-    do
-    {
-      return;
-      localMiniAppRedDotEntity = new MiniAppRedDotEntity(this.val$appId, 0, 0);
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    try
-    {
-      localMiniAppRedDotEntity.setStatus(1001);
-      if (((awgf)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
-      {
-        QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DesktopDataManager", 1, "deleteRedDotDataFromDB, exception: " + Log.getStackTraceString(localThrowable));
-      return;
-    }
-    QLog.d("DesktopDataManager", 2, "deleteRedDotDataFromDB, delete " + localThrowable.appId + " fail from db");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.30
  * JD-Core Version:    0.7.0.1
  */

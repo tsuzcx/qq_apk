@@ -57,10 +57,10 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.troop.TroopProxyActivity;
+import ebg;
 import ebh;
 import ebi;
 import ebj;
-import ebk;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -80,7 +80,7 @@ public class TroopFileItemBuilder
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ebh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ebg(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -91,7 +91,7 @@ public class TroopFileItemBuilder
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramViewGroup = (ViewGroup)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    paramOnLongClickAndTouchListener = (ebk)paramViewGroup.getTag();
+    paramOnLongClickAndTouchListener = (ebj)paramViewGroup.getTag();
     if (paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
       paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
@@ -115,8 +115,8 @@ public class TroopFileItemBuilder
         paramView = paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0);
       }
       paramView = a(this.jdField_a_of_type_AndroidContentContext, paramView);
-      paramOnLongClickAndTouchListener.d = ((TextView)paramView.findViewById(2131234548));
-      paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234547));
+      paramOnLongClickAndTouchListener.d = ((TextView)paramView.findViewById(2131234547));
+      paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234546));
       paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.setMargins(AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
@@ -144,16 +144,16 @@ public class TroopFileItemBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (ebk)paramViewHolder;
+    paramViewHolder = (ebj)paramViewHolder;
     paramChatMessage = paramView;
     if (paramView == null)
     {
       paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903105, null);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131231222));
-      paramViewHolder.b = ((TextView)paramChatMessage.findViewById(2131231223));
-      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131231224));
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramChatMessage.findViewById(2131231221));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramChatMessage.findViewById(2131231225));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131231221));
+      paramViewHolder.b = ((TextView)paramChatMessage.findViewById(2131231222));
+      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131231223));
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramChatMessage.findViewById(2131231220));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramChatMessage.findViewById(2131231224));
     }
     paramChatMessage.setOnLongClickListener(paramOnLongClickAndTouchListener);
     paramChatMessage.setOnTouchListener(paramOnLongClickAndTouchListener);
@@ -163,7 +163,7 @@ public class TroopFileItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new ebk(this);
+    return new ebj(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -211,13 +211,13 @@ public class TroopFileItemBuilder
                         {
                         default: 
                           return;
-                        case 2131234891: 
+                        case 2131234890: 
                           paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, LiteActivity.class);
                           paramContext.putExtra("dataline_forward_type", 100);
                           paramContext.putExtra("dataline_forward_path", localTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
                           this.jdField_a_of_type_AndroidContentContext.startActivity(paramContext);
                           return;
-                        case 2131234892: 
+                        case 2131234891: 
                           if (i == 0)
                           {
                             TroopFileError.a(paramContext, this.jdField_a_of_type_AndroidContentContext.getString(2131560350));
@@ -326,13 +326,13 @@ public class TroopFileItemBuilder
   
   public void a(long paramLong, Activity paramActivity, UUID paramUUID)
   {
-    paramUUID = new ebi(this, paramLong, paramUUID, paramActivity);
+    paramUUID = new ebh(this, paramLong, paramUUID, paramActivity);
     DialogUtil.a(paramActivity, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131560334), this.jdField_a_of_type_AndroidContentContext.getString(2131560377), 2131560313, 2131560314, paramUUID, paramUUID).show();
   }
   
   public void a(long paramLong, Activity paramActivity, UUID paramUUID, ChatMessage paramChatMessage)
   {
-    paramUUID = new ebj(this, paramLong, paramUUID, paramChatMessage, paramActivity);
+    paramUUID = new ebi(this, paramLong, paramUUID, paramChatMessage, paramActivity);
     DialogUtil.a(paramActivity, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131560333), this.jdField_a_of_type_AndroidContentContext.getString(2131560378), 2131560311, 2131560312, paramUUID, paramUUID).show();
   }
   
@@ -342,7 +342,7 @@ public class TroopFileItemBuilder
     d(paramView);
   }
   
-  public void a(BaseChatItemLayout paramBaseChatItemLayout, ChatMessage paramChatMessage, ebk paramebk)
+  public void a(BaseChatItemLayout paramBaseChatItemLayout, ChatMessage paramChatMessage, ebj paramebj)
   {
     MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramChatMessage;
     localMessageForTroopFile.doParse();
@@ -362,7 +362,7 @@ public class TroopFileItemBuilder
       }
       return;
     }
-    paramebk.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
+    paramebj.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
     boolean bool2 = false;
     int m = 0;
     int n = 0;
@@ -386,23 +386,23 @@ public class TroopFileItemBuilder
         if (k == 0) {
           break label1064;
         }
-        paramebk.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(j);
-        paramebk.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        paramebj.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(j);
+        paramebj.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         label270:
         if (i == 0) {
           break label1076;
         }
-        paramebk.c.setText((CharSequence)localObject);
-        paramebk.c.setVisibility(0);
+        paramebj.c.setText((CharSequence)localObject);
+        paramebj.c.setVisibility(0);
         label292:
-        paramebk.b.setText(FileUtil.a(localTroopFileStatusInfo.jdField_b_of_type_Long));
-        paramebk.b.setVisibility(0);
+        paramebj.b.setText(FileUtil.a(localTroopFileStatusInfo.jdField_b_of_type_Long));
+        paramebj.b.setVisibility(0);
         paramBaseChatItemLayout.setFailedIconVisable(bool1, this);
         paramBaseChatItemLayout = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramChatMessage.frienduin));
         if (localTroopFileStatusInfo.jdField_b_of_type_JavaLangString != null) {
           break label1114;
         }
-        FileManagerUtil.a(paramebk.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
+        FileManagerUtil.a(paramebj.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
         if (localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID == null) {
           break label1088;
         }
@@ -415,12 +415,12 @@ public class TroopFileItemBuilder
       if (m == 0) {
         break label1190;
       }
-      paramebk.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (paramebk.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() > 0) {
-        paramebk.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).setVisibility(0);
+      paramebj.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (paramebj.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() > 0) {
+        paramebj.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).setVisibility(0);
       }
-      paramebk.d.setVisibility(0);
-      paramebk.d.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131558924));
+      paramebj.d.setVisibility(0);
+      paramebj.d.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131558924));
       return;
       k = 1;
       j = 0;
@@ -541,10 +541,10 @@ public class TroopFileItemBuilder
       m = 0;
       break label248;
       label1064:
-      paramebk.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramebj.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       break label270;
       label1076:
-      paramebk.c.setVisibility(8);
+      paramebj.c.setVisibility(8);
       break label292;
       label1088:
       paramBaseChatItemLayout.a(localTroopFileStatusInfo.d, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString, localTroopFileStatusInfo.jdField_e_of_type_Int, 128);
@@ -552,20 +552,20 @@ public class TroopFileItemBuilder
       label1114:
       if ((TextUtils.isEmpty(localTroopFileStatusInfo.jdField_b_of_type_JavaLangString)) || (!FileUtils.a(localTroopFileStatusInfo.jdField_b_of_type_JavaLangString)))
       {
-        FileManagerUtil.a(paramebk.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
+        FileManagerUtil.a(paramebj.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
       }
       else
       {
         paramBaseChatItemLayout = RollangleImageView.a(localTroopFileStatusInfo.jdField_b_of_type_JavaLangString);
         if (paramBaseChatItemLayout != null) {
-          paramebk.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageBitmap(paramBaseChatItemLayout);
+          paramebj.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageBitmap(paramBaseChatItemLayout);
         } else {
-          FileManagerUtil.a(paramebk.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
+          FileManagerUtil.a(paramebj.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString);
         }
       }
     }
     label1190:
-    paramebk.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    paramebj.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
   
   public void a(ChatMessage paramChatMessage)
@@ -582,7 +582,7 @@ public class TroopFileItemBuilder
     TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
     if (localTroopFileStatusInfo == null)
     {
-      localQQCustomMenu.a(2131234903, this.jdField_a_of_type_AndroidContentContext.getString(2131560330));
+      localQQCustomMenu.a(2131234902, this.jdField_a_of_type_AndroidContentContext.getString(2131560330));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Down_press_files", 0, 0, "", localChatMessage.frienduin, "", "");
       return localQQCustomMenu.a();
     }
@@ -603,41 +603,41 @@ public class TroopFileItemBuilder
     for (;;)
     {
       return localQQCustomMenu.a();
-      localQQCustomMenu.a(2131234893, this.jdField_a_of_type_AndroidContentContext.getString(2131560321));
-      paramView = Boolean.valueOf(true);
-      break;
-      localQQCustomMenu.a(2131234895, this.jdField_a_of_type_AndroidContentContext.getString(2131560322));
-      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560324));
-      paramView = Boolean.valueOf(true);
-      break;
-      localQQCustomMenu.a(2131234901, this.jdField_a_of_type_AndroidContentContext.getString(2131560328));
-      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560324));
-      paramView = Boolean.valueOf(true);
-      break;
       localQQCustomMenu.a(2131234892, this.jdField_a_of_type_AndroidContentContext.getString(2131560321));
-      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
-      localQQCustomMenu.a(2131234899, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
-      paramView = localBoolean;
+      paramView = Boolean.valueOf(true);
       break;
       localQQCustomMenu.a(2131234894, this.jdField_a_of_type_AndroidContentContext.getString(2131560322));
-      localQQCustomMenu.a(2131234896, this.jdField_a_of_type_AndroidContentContext.getString(2131560323));
-      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
-      localQQCustomMenu.a(2131234899, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
+      localQQCustomMenu.a(2131234896, this.jdField_a_of_type_AndroidContentContext.getString(2131560324));
+      paramView = Boolean.valueOf(true);
+      break;
+      localQQCustomMenu.a(2131234900, this.jdField_a_of_type_AndroidContentContext.getString(2131560328));
+      localQQCustomMenu.a(2131234896, this.jdField_a_of_type_AndroidContentContext.getString(2131560324));
+      paramView = Boolean.valueOf(true);
+      break;
+      localQQCustomMenu.a(2131234891, this.jdField_a_of_type_AndroidContentContext.getString(2131560321));
+      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
+      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
+      paramView = localBoolean;
+      break;
+      localQQCustomMenu.a(2131234893, this.jdField_a_of_type_AndroidContentContext.getString(2131560322));
+      localQQCustomMenu.a(2131234895, this.jdField_a_of_type_AndroidContentContext.getString(2131560323));
+      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
+      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
       paramView = localBoolean;
       break;
       boolean bool = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString, localTroopFileStatusInfo.jdField_b_of_type_Long);
-      localQQCustomMenu.a(2131234902, this.jdField_a_of_type_AndroidContentContext.getString(2131560329));
-      localQQCustomMenu.a(2131234896, this.jdField_a_of_type_AndroidContentContext.getString(2131560323));
+      localQQCustomMenu.a(2131234901, this.jdField_a_of_type_AndroidContentContext.getString(2131560329));
+      localQQCustomMenu.a(2131234895, this.jdField_a_of_type_AndroidContentContext.getString(2131560323));
       paramView = localBoolean;
       if (!bool) {
         break;
       }
-      localQQCustomMenu.a(2131234904, this.jdField_a_of_type_AndroidContentContext.getString(2131560331));
+      localQQCustomMenu.a(2131234903, this.jdField_a_of_type_AndroidContentContext.getString(2131560331));
       paramView = localBoolean;
       break;
-      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
-      localQQCustomMenu.a(2131234899, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
-      localQQCustomMenu.a(2131234891, this.jdField_a_of_type_AndroidContentContext.getString(2131558554));
+      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
+      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
+      localQQCustomMenu.a(2131234890, this.jdField_a_of_type_AndroidContentContext.getString(2131558554));
       paramView = Boolean.valueOf(true);
       break;
       if (!FileUtil.a(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString))
@@ -647,20 +647,20 @@ public class TroopFileItemBuilder
         break;
       }
       if ((!TextUtils.isEmpty(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) && (FileUtils.e(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString))) {
-        localQQCustomMenu.a(2131234900, this.jdField_a_of_type_AndroidContentContext.getString(2131560327));
+        localQQCustomMenu.a(2131234899, this.jdField_a_of_type_AndroidContentContext.getString(2131560327));
       }
-      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
-      localQQCustomMenu.a(2131234899, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
-      localQQCustomMenu.a(2131234891, this.jdField_a_of_type_AndroidContentContext.getString(2131558554));
+      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
+      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
+      localQQCustomMenu.a(2131234890, this.jdField_a_of_type_AndroidContentContext.getString(2131558554));
       paramView = localBoolean;
       break;
       bool = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopFileStatusInfo.jdField_e_of_type_JavaLangString, localTroopFileStatusInfo.jdField_b_of_type_Long);
-      localQQCustomMenu.a(2131234903, this.jdField_a_of_type_AndroidContentContext.getString(2131560330));
+      localQQCustomMenu.a(2131234902, this.jdField_a_of_type_AndroidContentContext.getString(2131560330));
       if (bool) {
-        localQQCustomMenu.a(2131234904, this.jdField_a_of_type_AndroidContentContext.getString(2131560331));
+        localQQCustomMenu.a(2131234903, this.jdField_a_of_type_AndroidContentContext.getString(2131560331));
       }
-      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
-      localQQCustomMenu.a(2131234899, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
+      localQQCustomMenu.a(2131234897, this.jdField_a_of_type_AndroidContentContext.getString(2131560325));
+      localQQCustomMenu.a(2131234898, this.jdField_a_of_type_AndroidContentContext.getString(2131560326));
       paramView = localBoolean;
       break;
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Down_press_files", 0, 0, "", localChatMessage.frienduin, "", "");

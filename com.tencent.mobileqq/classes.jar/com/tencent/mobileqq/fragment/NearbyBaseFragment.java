@@ -11,82 +11,101 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import beej;
-import bhtd;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.api.IFactoryApi;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.home.INearbyTabInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webview.AbsWebView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import com.tencent.util.WeakReferenceHandler;
 
 public class NearbyBaseFragment
-  extends BaseFragment
+  extends TitlebarBaseFragment
   implements Handler.Callback
 {
-  public static int b;
-  public Handler a;
-  public NearbyActivity.TabInfo a;
-  public NearbyAppInterface a;
-  int c = 5000;
-  boolean e;
-  boolean f;
+  public static int j;
+  private boolean a = false;
+  INearbyAppInterface k;
+  Handler l = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  boolean m;
+  boolean n;
+  int o = 5000;
+  protected boolean p = false;
+  INearbyTabInfo q = null;
   
-  public NearbyBaseFragment()
+  public void a(INearbyTabInfo paramINearbyTabInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
+    this.q = paramINearbyTabInfo;
+    this.ah = paramINearbyTabInfo.getTabIndex();
   }
   
-  public beej a()
+  public AbsWebView b()
   {
     return null;
   }
   
-  public void a()
+  public void dw_()
   {
-    beej localbeej = a();
-    if ((localbeej == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
-    }
-    try
+    super.dw_();
+    if (!this.m)
     {
-      int i = localbeej.mWebview.getWebScrollY();
-      int j = localbeej.mWebview.getHeight();
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
+      if ((this.am != null) && (!this.n) && (!this.l.hasMessages(1))) {
+        this.l.sendEmptyMessage(1);
       }
-      if (i > j)
-      {
-        localbeej.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbeej), 60L);
+      this.m = true;
+    }
+  }
+  
+  public void e()
+  {
+    AbsWebView localAbsWebView = b();
+    if (localAbsWebView != null)
+    {
+      if (this.l == null) {
         return;
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return;
-    }
-    localException.mWebview.flingScroll(0, -this.c);
-  }
-  
-  public void a(NearbyActivity.TabInfo paramTabInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = paramTabInfo;
-    this.jdField_a_of_type_Int = paramTabInfo.tabIndex;
-  }
-  
-  public void aR_()
-  {
-    super.aR_();
-    if (!this.e)
-    {
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      try
+      {
+        int i = localAbsWebView.mWebview.getWebScrollY();
+        int i1 = localAbsWebView.mWebview.getHeight();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("gotoFragmentHead, scrollY=");
+          localStringBuilder.append(i);
+          localStringBuilder.append(", webH=");
+          localStringBuilder.append(i1);
+          localStringBuilder.append(", maxV=");
+          localStringBuilder.append(this.o);
+          QLog.d("NearbyBaseFragment", 2, localStringBuilder.toString());
+        }
+        if (i > i1)
+        {
+          localAbsWebView.mWebview.getView().scrollTo(0, i1);
+          this.l.postDelayed(new NearbyBaseFragment.1(this, localAbsWebView), 60L);
+          return;
+        }
+        localAbsWebView.mWebview.flingScroll(0, -this.o);
+        return;
       }
-      this.e = true;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
+  }
+  
+  protected INearbyAppInterface f()
+  {
+    return this.k;
+  }
+  
+  public boolean g()
+  {
+    return this.a;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -96,62 +115,74 @@ public class NearbyBaseFragment
   
   public void onAttach(Activity paramActivity)
   {
-    AppInterface localAppInterface = null;
     super.onAttach(paramActivity);
-    ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramActivity);
-    int i = localViewConfiguration.getScaledMaximumFlingVelocity();
-    int j = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.c = (i / 4);
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyBaseFragment", 2, "onAttach: maxVelocity=" + i + ", minVelocity=" + j);
+    Object localObject = ViewConfiguration.get(paramActivity);
+    int i = ((ViewConfiguration)localObject).getScaledMaximumFlingVelocity();
+    int i1 = ((ViewConfiguration)localObject).getScaledMinimumFlingVelocity();
+    this.o = (i / 4);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onAttach: maxVelocity=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", minVelocity=");
+      ((StringBuilder)localObject).append(i1);
+      QLog.d("NearbyBaseFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool = this.ai;
+    localObject = null;
+    if (bool)
     {
       if ((paramActivity instanceof BaseActivity)) {
-        localAppInterface = ((BaseActivity)paramActivity).getAppInterface();
+        localObject = ((BaseActivity)paramActivity).getAppInterface();
       }
-      if ((localAppInterface instanceof NearbyAppInterface)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)localAppInterface);
+      if ((localObject instanceof INearbyAppInterface)) {
+        this.k = ((INearbyAppInterface)localObject);
       }
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
+    else
+    {
+      this.k = null;
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    boolean bool2 = false;
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if ((paramBundle != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo == null))
+    if ((paramBundle != null) && (this.q == null))
     {
       paramViewGroup = paramBundle.getString("info");
-      if (!TextUtils.isEmpty(paramViewGroup))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = new NearbyActivity.TabInfo();
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.fromJson(paramViewGroup);
+      if (!TextUtils.isEmpty(paramViewGroup)) {
+        this.q = ((IFactoryApi)QRoute.api(IFactoryApi.class)).parserFormJson(paramViewGroup);
       }
     }
     if (QLog.isColorLevel())
     {
-      paramViewGroup = new StringBuilder().append("onCreateView: inState==null?");
-      if (paramBundle != null) {
-        break label165;
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("onCreateView: inState==null?");
+      boolean bool2 = false;
+      if (paramBundle == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-    }
-    label165:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      paramViewGroup = paramViewGroup.append(bool1).append(", mTabInfo==null?");
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo == null) {
+      paramViewGroup.append(bool1);
+      paramViewGroup.append(", mTabInfo==null?");
+      boolean bool1 = bool2;
+      if (this.q == null) {
         bool1 = true;
       }
-      QLog.d("NearbyBaseFragment", 2, bool1 + ", this=" + this);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (b == this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabIndex) && (!this.e)) {
-        this.e = true;
-      }
-      return paramLayoutInflater;
+      paramViewGroup.append(bool1);
+      paramViewGroup.append(", this=");
+      paramViewGroup.append(this);
+      QLog.d("NearbyBaseFragment", 2, paramViewGroup.toString());
     }
+    paramViewGroup = this.q;
+    if ((paramViewGroup != null) && (j == paramViewGroup.getTabIndex()) && (!this.m)) {
+      this.m = true;
+    }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onHiddenChanged(boolean paramBoolean)
@@ -161,37 +192,56 @@ public class NearbyBaseFragment
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    boolean bool2 = true;
     super.onSaveInstanceState(paramBundle);
-    if ((paramBundle != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null)) {
-      paramBundle.putString("info", this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.toJson());
+    Object localObject;
+    if (paramBundle != null)
+    {
+      localObject = this.q;
+      if (localObject != null) {
+        paramBundle.putString("info", ((INearbyTabInfo)localObject).toJson());
+      }
     }
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onSaveInstanceState: outState==null?");
-      if (paramBundle != null) {
-        break label102;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSaveInstanceState: outState==null?");
+      boolean bool2 = true;
+      boolean bool1;
+      if (paramBundle == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
-      paramBundle = localStringBuilder.append(bool1).append(", mTabInfo==null?");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) {
-        break label107;
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(", mTabInfo==null?");
+      if (this.q == null) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(", this=");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("NearbyBaseFragment", 2, ((StringBuilder)localObject).toString());
     }
-    label102:
-    label107:
-    for (boolean bool1 = bool2;; bool1 = false)
+  }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
+    if (QLog.isColorLevel())
     {
-      QLog.d("NearbyBaseFragment", 2, bool1 + ", this=" + this);
-      return;
-      bool1 = false;
-      break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUserVisibleHint: isVisibleToUser=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("NearbyBaseFragment", 2, localStringBuilder.toString());
     }
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

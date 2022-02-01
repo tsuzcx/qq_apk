@@ -7,12 +7,12 @@ public class UtilProxy
 {
   public static void setStatusTextColor(boolean paramBoolean, Window paramWindow)
   {
-    ImmersiveUtils.a(paramBoolean, paramWindow);
+    ImmersiveUtils.setStatusTextColor(paramBoolean, paramWindow);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.ext.UtilProxy
  * JD-Core Version:    0.7.0.1
  */

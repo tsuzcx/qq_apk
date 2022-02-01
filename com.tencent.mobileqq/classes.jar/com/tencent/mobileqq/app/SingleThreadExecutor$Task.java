@@ -17,7 +17,7 @@ class SingleThreadExecutor$Task
     this.a.run();
     synchronized (SingleThreadExecutor.a(this.this$0))
     {
-      Runnable localRunnable = (Runnable)SingleThreadExecutor.a(this.this$0).poll();
+      Runnable localRunnable = (Runnable)SingleThreadExecutor.b(this.this$0).poll();
       if (localRunnable == null) {
         SingleThreadExecutor.a(this.this$0, false);
       }
@@ -30,7 +30,7 @@ class SingleThreadExecutor$Task
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SingleThreadExecutor.Task
  * JD-Core Version:    0.7.0.1
  */

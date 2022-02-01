@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804a9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804a8" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804aa" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <android.support.v4.view.ViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804a9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a9c" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_alignParentBottom="true" />
     <com.tencent.mobileqq.widget.QQTabWidget android:id="@android:id/tabs" android:background="@drawable/skin_bottom_bar_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804ab" android:background="#7f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@android:id/tabs" android:layout_alignBottom="@android:id/tabs" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0804aa" android:background="#7f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@android:id/tabs" android:layout_alignBottom="@android:id/tabs" />
 </com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout>

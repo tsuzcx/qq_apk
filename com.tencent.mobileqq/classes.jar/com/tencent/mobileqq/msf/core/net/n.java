@@ -7,8 +7,9 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.c.a;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.d;
+import com.tencent.mobileqq.msf.core.net.b.k;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -97,98 +98,110 @@ public class n
       i1 += 1;
     }
     this.C = new AtomicInteger(0);
-    this.g = new com.tencent.mobileqq.msf.core.net.b.k(paramMsfCore);
+    this.g = new k(paramMsfCore);
     this.A = paramHandler;
   }
   
   private int a(CopyOnWriteArrayList paramCopyOnWriteArrayList, ArrayList paramArrayList, int paramInt, boolean paramBoolean)
   {
-    int i3 = -1;
-    int i2 = 0;
     int i1 = 0;
+    int i3 = 0;
     try
     {
-      while (i2 < paramCopyOnWriteArrayList.size())
+      while (i1 < paramCopyOnWriteArrayList.size())
       {
-        Object localObject = (d)paramCopyOnWriteArrayList.get(i2);
+        Object localObject = (d)paramCopyOnWriteArrayList.get(i1);
         NetConnInfoCenter.checkConnInfo();
-        if (j.a((d)localObject))
-        {
-          paramInt = 0;
-          break label306;
+        if (j.a((d)localObject)) {
+          break label334;
         }
         localObject = a(paramArrayList, (d)localObject, paramInt);
         if (((a)localObject).e == x.c)
         {
           if (!this.S.get()) {
-            break label308;
+            break label336;
           }
           this.S.set(false);
-          break label308;
+          break label336;
         }
+        int i4;
+        int i2;
         if (((a)localObject).e == x.m)
         {
-          int i4 = i2 - 1;
-          int i5 = i1 + 1;
-          if (i5 > 3)
+          i1 -= 1;
+          i3 += 1;
+          if (i3 > 3)
           {
             this.S.set(false);
-            paramInt = 2;
-            break label306;
+            return 2;
           }
-          i2 = i4;
-          i1 = i5;
+          i4 = i1;
+          i2 = i3;
           if (((a)localObject).h > 0)
           {
             Thread.sleep(((a)localObject).h);
             if ((!paramBoolean) || (k()))
             {
-              i2 = i4;
-              i1 = i5;
+              i4 = i1;
+              i2 = i3;
               if (!paramBoolean)
               {
-                i2 = i4;
-                i1 = i5;
+                i4 = i1;
+                i2 = i3;
                 if (!k()) {}
               }
             }
             else
             {
               if (!QLog.isColorLevel()) {
-                break label313;
+                break label334;
               }
               QLog.d("MSF.C.NetConnTag", 2, "NetChanged from wifi to mobile connect again");
-              break label313;
+              break label334;
             }
           }
         }
-        else if (((((a)localObject).e == x.t) || (((a)localObject).e == x.q)) && (i2 == 0) && (!this.S.get()))
+        else if (((a)localObject).e != x.t)
         {
-          b(((a)localObject).b);
+          i4 = i1;
+          i2 = i3;
+          if (((a)localObject).e != x.q) {}
         }
-        i2 += 1;
+        else
+        {
+          i4 = i1;
+          i2 = i3;
+          if (i1 == 0)
+          {
+            i4 = i1;
+            i2 = i3;
+            if (!this.S.get())
+            {
+              b(((a)localObject).b);
+              i2 = i3;
+              i4 = i1;
+            }
+          }
+        }
+        i1 = i4 + 1;
+        i3 = i2;
       }
-      return paramInt;
+      return -1;
     }
     catch (Exception paramCopyOnWriteArrayList)
     {
-      paramInt = i3;
       if (QLog.isColorLevel())
       {
-        QLog.d("MSF.C.NetConnTag", 2, "selectAndConnect error " + paramCopyOnWriteArrayList, paramCopyOnWriteArrayList);
-        return -1;
-        paramInt = -1;
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("selectAndConnect error ");
+        paramArrayList.append(paramCopyOnWriteArrayList);
+        QLog.d("MSF.C.NetConnTag", 2, paramArrayList.toString(), paramCopyOnWriteArrayList);
       }
     }
-    for (;;)
-    {
-      label306:
-      label308:
-      paramInt = 1;
-      continue;
-      label313:
-      paramInt = 0;
-    }
+    label334:
+    return 0;
+    label336:
+    return 1;
   }
   
   private a a(ArrayList paramArrayList, d paramd, int paramInt)
@@ -210,13 +223,10 @@ public class n
   {
     if (paramd.b().equalsIgnoreCase("http")) {
       this.B[paramInt].a(paramd, new c(this.f), parama);
-    }
-    for (;;)
-    {
-      p = parama.f;
-      return;
+    } else {
       this.B[paramInt].a(paramd, new w(this.f), parama);
     }
+    p = parama.f;
   }
   
   private void a(String paramString, int paramInt)
@@ -238,37 +248,53 @@ public class n
   private void a(boolean paramBoolean)
   {
     long l1 = SystemClock.elapsedRealtime();
-    StringBuffer localStringBuffer;
-    if ((this.G == 0L) || (l1 - this.G > Long.parseLong(com.tencent.mobileqq.msf.core.a.a.i())))
+    long l2 = this.G;
+    if ((l2 == 0L) || (l1 - l2 > Long.parseLong(com.tencent.mobileqq.msf.core.a.a.i())))
     {
       this.G = l1;
-      localStringBuffer = new StringBuffer();
+      StringBuffer localStringBuffer = new StringBuffer();
       d locald;
+      StringBuilder localStringBuilder;
       if (NetConnInfoCenter.isWifiConn())
       {
         localIterator = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv4"), true).iterator();
         while (localIterator.hasNext())
         {
           locald = (d)localIterator.next();
-          localStringBuffer.append(locald.b() + "//" + locald.c() + ":" + locald.f() + ",");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(locald.b());
+          localStringBuilder.append("//");
+          localStringBuilder.append(locald.c());
+          localStringBuilder.append(":");
+          localStringBuilder.append(locald.f());
+          localStringBuilder.append(",");
+          localStringBuffer.append(localStringBuilder.toString());
         }
       }
       Iterator localIterator = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv4"), true).iterator();
       while (localIterator.hasNext())
       {
         locald = (d)localIterator.next();
-        localStringBuffer.append(locald.b() + "//" + locald.c() + ":" + locald.f() + ",");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(locald.b());
+        localStringBuilder.append("//");
+        localStringBuilder.append(locald.c());
+        localStringBuilder.append(":");
+        localStringBuilder.append(locald.f());
+        localStringBuilder.append(",");
+        localStringBuffer.append(localStringBuilder.toString());
       }
-    }
-    try
-    {
-      this.f.getSsoListManager().a(this.f.sender.k(), this.f.sender.j(), 60000L, NetConnInfoCenter.isWifiConn(), localStringBuffer.toString(), paramBoolean);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MSF.C.NetConnTag", 2, localException.toString(), localException);
+      try
+      {
+        this.f.getSsoListManager().a(this.f.sender.m(), this.f.sender.l(), 60000L, NetConnInfoCenter.isWifiConn(), localStringBuffer.toString(), paramBoolean);
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, localException.toString(), localException);
+        }
+      }
     }
   }
   
@@ -276,146 +302,167 @@ public class n
   private static void b(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   7: ifeq +12 -> 19
-    //   10: ldc 19
-    //   12: iconst_2
-    //   13: ldc_w 481
-    //   16: invokestatic 262	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   19: aload_0
-    //   20: invokevirtual 487	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   23: ldc_w 489
-    //   26: invokevirtual 495	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   29: astore 4
-    //   31: aload 4
-    //   33: astore_2
-    //   34: new 497	java/io/FileOutputStream
-    //   37: dup
-    //   38: new 273	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 274	java/lang/StringBuilder:<init>	()V
-    //   45: aload_0
-    //   46: invokevirtual 501	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   49: invokevirtual 506	java/io/File:getParent	()Ljava/lang/String;
-    //   52: invokevirtual 280	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: ldc_w 508
-    //   58: invokevirtual 280	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokespecial 510	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   67: astore_0
-    //   68: sipush 1024
-    //   71: newarray byte
-    //   73: astore_3
-    //   74: aload_2
-    //   75: aload_3
-    //   76: invokevirtual 516	java/io/InputStream:read	([B)I
-    //   79: istore_1
-    //   80: iload_1
-    //   81: ifle +64 -> 145
-    //   84: aload_0
-    //   85: aload_3
-    //   86: iconst_0
+    //   0: invokestatic 249	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 19
+    //   8: iconst_2
+    //   9: ldc_w 475
+    //   12: invokestatic 254	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aconst_null
+    //   16: astore_3
+    //   17: aconst_null
+    //   18: astore 4
+    //   20: aload_0
+    //   21: invokevirtual 481	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   24: ldc_w 483
+    //   27: invokevirtual 489	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   30: astore_2
+    //   31: new 265	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 266	java/lang/StringBuilder:<init>	()V
+    //   38: astore 4
+    //   40: aload 4
+    //   42: aload_0
+    //   43: invokevirtual 493	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   46: invokevirtual 498	java/io/File:getParent	()Ljava/lang/String;
+    //   49: invokevirtual 272	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload 4
+    //   55: ldc_w 500
+    //   58: invokevirtual 272	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: new 502	java/io/FileOutputStream
+    //   65: dup
+    //   66: aload 4
+    //   68: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokespecial 504	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   74: astore_0
+    //   75: sipush 1024
+    //   78: newarray byte
+    //   80: astore_3
+    //   81: aload_2
+    //   82: aload_3
+    //   83: invokevirtual 510	java/io/InputStream:read	([B)I
+    //   86: istore_1
     //   87: iload_1
-    //   88: invokevirtual 522	java/io/OutputStream:write	([BII)V
-    //   91: goto -17 -> 74
-    //   94: astore_3
-    //   95: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   98: ifeq +30 -> 128
-    //   101: ldc 19
-    //   103: iconst_2
-    //   104: new 273	java/lang/StringBuilder
-    //   107: dup
-    //   108: invokespecial 274	java/lang/StringBuilder:<init>	()V
-    //   111: ldc_w 524
-    //   114: invokevirtual 280	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: aload_3
-    //   118: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   121: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: aload_3
-    //   125: invokestatic 290	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   128: aload_2
-    //   129: ifnull +7 -> 136
-    //   132: aload_2
-    //   133: invokevirtual 527	java/io/InputStream:close	()V
-    //   136: aload_0
-    //   137: ifnull +7 -> 144
-    //   140: aload_0
-    //   141: invokevirtual 528	java/io/OutputStream:close	()V
-    //   144: return
-    //   145: aload_2
-    //   146: ifnull +7 -> 153
-    //   149: aload_2
-    //   150: invokevirtual 527	java/io/InputStream:close	()V
-    //   153: aload_0
-    //   154: ifnull -10 -> 144
-    //   157: aload_0
-    //   158: invokevirtual 528	java/io/OutputStream:close	()V
-    //   161: return
-    //   162: astore_0
-    //   163: aconst_null
-    //   164: astore_2
-    //   165: aload_2
-    //   166: ifnull +7 -> 173
-    //   169: aload_2
-    //   170: invokevirtual 527	java/io/InputStream:close	()V
-    //   173: aload_3
-    //   174: ifnull +7 -> 181
-    //   177: aload_3
-    //   178: invokevirtual 528	java/io/OutputStream:close	()V
-    //   181: aload_0
-    //   182: athrow
-    //   183: astore_0
-    //   184: goto -19 -> 165
-    //   187: astore 4
-    //   189: aload_0
-    //   190: astore_3
-    //   191: aload 4
-    //   193: astore_0
-    //   194: goto -29 -> 165
-    //   197: astore 4
-    //   199: aload_0
-    //   200: astore_3
-    //   201: aload 4
-    //   203: astore_0
-    //   204: goto -39 -> 165
-    //   207: astore_3
-    //   208: aconst_null
-    //   209: astore_0
-    //   210: goto -115 -> 95
-    //   213: astore_3
-    //   214: aconst_null
-    //   215: astore_0
-    //   216: goto -121 -> 95
+    //   88: ifle +13 -> 101
+    //   91: aload_0
+    //   92: aload_3
+    //   93: iconst_0
+    //   94: iload_1
+    //   95: invokevirtual 516	java/io/OutputStream:write	([BII)V
+    //   98: goto -17 -> 81
+    //   101: aload_0
+    //   102: astore_3
+    //   103: aload_2
+    //   104: ifnull +111 -> 215
+    //   107: aload_2
+    //   108: invokevirtual 519	java/io/InputStream:close	()V
+    //   111: aload_0
+    //   112: astore_3
+    //   113: goto +102 -> 215
+    //   116: astore_3
+    //   117: goto +104 -> 221
+    //   120: astore_3
+    //   121: goto +16 -> 137
+    //   124: astore 4
+    //   126: aload_3
+    //   127: astore_0
+    //   128: aload 4
+    //   130: astore_3
+    //   131: goto +90 -> 221
+    //   134: astore_3
+    //   135: aconst_null
+    //   136: astore_0
+    //   137: goto +21 -> 158
+    //   140: astore 4
+    //   142: aconst_null
+    //   143: astore_2
+    //   144: aload_3
+    //   145: astore_0
+    //   146: aload 4
+    //   148: astore_3
+    //   149: goto +72 -> 221
+    //   152: astore_3
+    //   153: aconst_null
+    //   154: astore_0
+    //   155: aload 4
+    //   157: astore_2
+    //   158: invokestatic 249	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   161: ifeq +40 -> 201
+    //   164: new 265	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 266	java/lang/StringBuilder:<init>	()V
+    //   171: astore 4
+    //   173: aload 4
+    //   175: ldc_w 521
+    //   178: invokevirtual 272	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: pop
+    //   182: aload 4
+    //   184: aload_3
+    //   185: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   188: pop
+    //   189: ldc 19
+    //   191: iconst_2
+    //   192: aload 4
+    //   194: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: aload_3
+    //   198: invokestatic 282	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   201: aload_2
+    //   202: ifnull +7 -> 209
+    //   205: aload_2
+    //   206: invokevirtual 519	java/io/InputStream:close	()V
+    //   209: aload_0
+    //   210: ifnull +9 -> 219
+    //   213: aload_0
+    //   214: astore_3
+    //   215: aload_3
+    //   216: invokevirtual 522	java/io/OutputStream:close	()V
+    //   219: return
+    //   220: astore_3
+    //   221: aload_2
+    //   222: ifnull +7 -> 229
+    //   225: aload_2
+    //   226: invokevirtual 519	java/io/InputStream:close	()V
+    //   229: aload_0
+    //   230: ifnull +7 -> 237
+    //   233: aload_0
+    //   234: invokevirtual 522	java/io/OutputStream:close	()V
+    //   237: goto +5 -> 242
+    //   240: aload_3
+    //   241: athrow
+    //   242: goto -2 -> 240
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	219	0	paramContext	android.content.Context
-    //   79	9	1	i1	int
-    //   3	167	2	localObject1	Object
-    //   1	85	3	arrayOfByte	byte[]
-    //   94	84	3	localException1	Exception
-    //   190	11	3	localContext	android.content.Context
-    //   207	1	3	localException2	Exception
-    //   213	1	3	localException3	Exception
-    //   29	3	4	localInputStream	java.io.InputStream
-    //   187	5	4	localObject2	Object
-    //   197	5	4	localObject3	Object
+    //   0	245	0	paramContext	android.content.Context
+    //   86	9	1	i1	int
+    //   30	196	2	localObject1	Object
+    //   16	97	3	localObject2	Object
+    //   116	1	3	localObject3	Object
+    //   120	7	3	localException1	Exception
+    //   130	1	3	localObject4	Object
+    //   134	11	3	localException2	Exception
+    //   148	1	3	localObject5	Object
+    //   152	46	3	localException3	Exception
+    //   214	2	3	localContext	android.content.Context
+    //   220	21	3	localObject6	Object
+    //   18	49	4	localStringBuilder1	StringBuilder
+    //   124	5	4	localObject7	Object
+    //   140	16	4	localObject8	Object
+    //   171	22	4	localStringBuilder2	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   68	74	94	java/lang/Exception
-    //   74	80	94	java/lang/Exception
-    //   84	91	94	java/lang/Exception
-    //   19	31	162	finally
-    //   34	68	183	finally
-    //   68	74	187	finally
-    //   74	80	187	finally
-    //   84	91	187	finally
-    //   95	128	197	finally
-    //   19	31	207	java/lang/Exception
-    //   34	68	213	java/lang/Exception
+    //   75	81	116	finally
+    //   81	87	116	finally
+    //   91	98	116	finally
+    //   75	81	120	java/lang/Exception
+    //   81	87	120	java/lang/Exception
+    //   91	98	120	java/lang/Exception
+    //   31	75	124	finally
+    //   31	75	134	java/lang/Exception
+    //   20	31	140	finally
+    //   20	31	152	java/lang/Exception
+    //   158	201	220	finally
   }
   
   private void b(String paramString)
@@ -438,15 +485,13 @@ public class n
     {
       this.E = true;
       this.A.removeCallbacks(this.ab);
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         this.f.getStatReporter().k();
+        return;
       }
+      this.A.postDelayed(this.ab, 120000L);
     }
-    else
-    {
-      return;
-    }
-    this.A.postDelayed(this.ab, 120000L);
   }
   
   private boolean b(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, ArrayList paramArrayList, int paramInt)
@@ -460,138 +505,151 @@ public class n
     localObject2[paramInt] = l1;
     localObject1[paramInt] = l1;
     NetConnInfoCenter.checkConnInfo();
-    boolean bool1 = false;
     int i1 = 1;
-    int i2;
-    boolean bool2;
-    if (i1 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "NetChanged start connect...");
-      }
-      try
-      {
-        if ((k()) && (paramCopyOnWriteArrayList1 != null) && (paramCopyOnWriteArrayList1.size() > 0))
-        {
-          l1 = SystemClock.elapsedRealtime();
-          n = com.tencent.mobileqq.msf.core.c.k.a(false, K, l1);
-          i2 = a(paramCopyOnWriteArrayList1, paramArrayList, paramInt, true);
-          if (i2 != 0) {
-            break label560;
-          }
-          i1 = 1;
-          break label548;
-        }
-        if ((paramCopyOnWriteArrayList2 == null) || (paramCopyOnWriteArrayList2.size() <= 0)) {
-          break label542;
-        }
-        l1 = SystemClock.elapsedRealtime();
-        n = com.tencent.mobileqq.msf.core.c.k.a(false, K, l1);
-        if (r() != null)
-        {
-          localObject1 = new CopyOnWriteArrayList();
-          localObject2 = paramCopyOnWriteArrayList2.iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            d locald = (d)((Iterator)localObject2).next();
-            if (locald.f == 1)
-            {
-              ((CopyOnWriteArrayList)localObject1).add(locald);
-              continue;
-              i1 = i2;
-            }
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        i2 = 0;
-        bool2 = bool1;
-      }
-    }
+    boolean bool1 = false;
     for (;;)
     {
-      bool1 = bool2;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("MSF.C.NetConnTag", 2, "selectAndConnect error " + localException1, localException1);
-      i1 = i2;
-      bool1 = bool2;
-      break;
-      int i3 = a(localException1, paramArrayList, paramInt, false);
-      if (i3 == 0) {
-        i2 = 1;
-      }
-      for (;;)
+      int i3;
+      int i2;
+      if (i1 != 0)
       {
-        if (i3 == 1)
-        {
-          bool2 = true;
-          label315:
-          bool1 = bool2;
-          i1 = i2;
-          if (i3 != -1) {
-            break label557;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, "NetChanged start connect...");
         }
-        label378:
-        long l2;
         try
         {
-          i3 = a(paramCopyOnWriteArrayList2, paramArrayList, paramInt, false);
-          if (i3 == 0) {}
-          for (i1 = 1;; i1 = 0)
+          if ((k()) && (paramCopyOnWriteArrayList1 != null) && (paramCopyOnWriteArrayList1.size() > 0))
           {
-            if (i3 != 1) {
-              break label378;
+            l1 = SystemClock.elapsedRealtime();
+            n = com.tencent.mobileqq.msf.core.d.j.a(false, K, l1);
+            i3 = a(paramCopyOnWriteArrayList1, paramArrayList, paramInt, true);
+            if (i3 != 0) {
+              break label557;
             }
-            bool1 = true;
-            break label557;
-            i2 = 0;
-            break;
-            bool2 = false;
-            break label315;
+            i1 = 1;
+            break label560;
           }
+          if ((paramCopyOnWriteArrayList2 != null) && (paramCopyOnWriteArrayList2.size() > 0))
+          {
+            l1 = SystemClock.elapsedRealtime();
+            n = com.tencent.mobileqq.msf.core.d.j.a(false, K, l1);
+            if (r() != null)
+            {
+              localObject1 = new CopyOnWriteArrayList();
+              localObject2 = paramCopyOnWriteArrayList2.iterator();
+              while (((Iterator)localObject2).hasNext())
+              {
+                d locald = (d)((Iterator)localObject2).next();
+                if (locald.f == 1) {
+                  ((CopyOnWriteArrayList)localObject1).add(locald);
+                }
+              }
+              i3 = a((CopyOnWriteArrayList)localObject1, paramArrayList, paramInt, false);
+              if (i3 == 0) {
+                i1 = 1;
+              } else {
+                i1 = 0;
+              }
+              if (i3 == 1) {
+                bool2 = true;
+              } else {
+                bool2 = false;
+              }
+              i2 = i1;
+              bool1 = bool2;
+              if (i3 != -1) {
+                break label440;
+              }
+              try
+              {
+                i3 = a(paramCopyOnWriteArrayList2, paramArrayList, paramInt, false);
+                if (i3 == 0) {
+                  i2 = 1;
+                } else {
+                  i2 = 0;
+                }
+                if (i3 == 1) {
+                  bool1 = true;
+                } else {
+                  bool1 = false;
+                }
+              }
+              catch (Exception localException1)
+              {
+                break label379;
+              }
+            }
+            else
+            {
+              i3 = a(paramCopyOnWriteArrayList2, paramArrayList, paramInt, false);
+              if (i3 == 0) {
+                i1 = 1;
+              } else {
+                i1 = 0;
+              }
+              i2 = i1;
+              if (i3 != 1) {
+                break label576;
+              }
+              break label570;
+            }
+          }
+          else
+          {
+            i1 = 0;
+          }
+        }
+        catch (Exception localException2)
+        {
+          i1 = 0;
+          boolean bool2 = bool1;
+          label379:
+          i2 = i1;
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("selectAndConnect error ");
+            ((StringBuilder)localObject2).append(localException2);
+            QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString(), localException2);
+            bool1 = bool2;
+            i2 = i1;
+          }
+          label440:
+          i1 = i2;
+        }
+      }
+      else
+      {
+        if ((this.S.get()) && (this.U) && (!this.V) && (this.M.size() > 0))
+        {
+          this.S.set(false);
+          this.U = false;
+          this.V = false;
+          l1 = System.currentTimeMillis();
+          long l2 = this.W;
+          if (this.f.getStatReporter() != null) {
+            this.f.getStatReporter().a(b(), this.T, l1 - l2, this.M);
+          }
+          this.M.clear();
+        }
+        return bool1;
+        label557:
+        i1 = 0;
+        label560:
+        i2 = i1;
+        if (i3 == 1)
+        {
+          label570:
+          bool1 = true;
+        }
+        else
+        {
+          label576:
           bool1 = false;
+          i1 = i2;
         }
-        catch (Exception localException2) {}
       }
-      i2 = a(paramCopyOnWriteArrayList2, paramArrayList, paramInt, false);
-      if (i2 == 0) {}
-      for (i1 = 1; i2 == 1; i1 = 0)
-      {
-        bool1 = true;
-        break label557;
-      }
-      bool1 = false;
-      break label557;
-      if ((this.S.get()) && (this.U) && (!this.V) && (this.M.size() > 0))
-      {
-        this.S.set(false);
-        this.U = false;
-        this.V = false;
-        l1 = System.currentTimeMillis();
-        l2 = this.W;
-        if (this.f.getStatReporter() != null) {
-          this.f.getStatReporter().a(b(), this.T, l1 - l2, this.M);
-        }
-        this.M.clear();
-      }
-      return bool1;
-    }
-    label542:
-    i1 = 0;
-    break label557;
-    label548:
-    if (i2 == 1) {}
-    for (bool1 = true;; bool1 = false)
-    {
-      label557:
-      break;
-      label560:
-      i1 = 0;
-      break label548;
     }
   }
   
@@ -609,7 +667,7 @@ public class n
   
   private boolean q()
   {
-    boolean bool2;
+    Object localObject2;
     if (this.F.length() > 0) {
       try
       {
@@ -622,297 +680,309 @@ public class n
         locala.k = 0;
         locala.l = 0;
         locala.m = 0;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.NetConnTag", 2, "conn assigned server " + this.F);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("conn assigned server ");
+          ((StringBuilder)localObject2).append(this.F);
+          QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString());
         }
         a(d.a(this.F), locala, 0);
-        bool2 = true;
-        return bool2;
+        return true;
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.NetConnTag", 2, "conn assigned server " + this.F + " error " + localException, localException);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("conn assigned server ");
+          ((StringBuilder)localObject2).append(this.F);
+          ((StringBuilder)localObject2).append(" error ");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString(), localException);
         }
         return false;
       }
     }
     this.E = false;
     long l2 = SystemClock.elapsedRealtime();
-    long l1 = 0L;
-    boolean bool1 = this.D;
+    boolean bool = this.D;
     ArrayList localArrayList = new ArrayList();
     this.I = System.currentTimeMillis();
     this.l = this.I;
     NetConnInfoCenter.checkConnInfo();
-    int i3 = NetConnInfoCenter.getActiveNetIpFamily(true);
-    QLog.d("MSF.C.NetConnTag", 1, "mainSocketEngineOpenConn start...activeIpFamily=" + i3);
-    CopyOnWriteArrayList localCopyOnWriteArrayList1 = null;
-    CopyOnWriteArrayList localCopyOnWriteArrayList2 = null;
-    Object localObject2 = null;
-    Object localObject5 = null;
-    Object localObject3;
-    Object localObject1;
-    int i2;
-    int i1;
-    label501:
+    int i4 = NetConnInfoCenter.getActiveNetIpFamily(true);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("mainSocketEngineOpenConn start...activeIpFamily=");
+    ((StringBuilder)localObject1).append(i4);
+    QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = "Ipv6";
+    CopyOnWriteArrayList localCopyOnWriteArrayList;
     Object localObject4;
-    if ((3 == i3) && (!bool1))
+    Object localObject3;
+    int i2;
+    Object localObject5;
+    Object localObject6;
+    int i3;
+    if ((3 == i4) && (!bool))
     {
-      localObject3 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv4"), true);
-      localObject1 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv4"), true);
-      localCopyOnWriteArrayList1 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv6"), false);
-      localCopyOnWriteArrayList2 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv6"), false);
-      if (((NetConnInfoCenter.isWifiConn()) && (localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0) && (localCopyOnWriteArrayList1 != null) && (localCopyOnWriteArrayList1.size() > 0)) || ((!NetConnInfoCenter.isWifiConn()) && (localObject1 != null) && (((CopyOnWriteArrayList)localObject1).size() > 0) && (localCopyOnWriteArrayList2 != null) && (localCopyOnWriteArrayList2.size() > 0)))
-      {
-        i2 = 1;
-        if (((localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0)) || ((localObject1 != null) && (((CopyOnWriteArrayList)localObject1).size() > 0)) || ((localCopyOnWriteArrayList1 != null) && (localCopyOnWriteArrayList1.size() > 0)) || ((localCopyOnWriteArrayList2 != null) && (localCopyOnWriteArrayList2.size() > 0))) {
-          break label787;
-        }
+      localCopyOnWriteArrayList = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv4"), true);
+      localObject4 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv4"), true);
+      localObject1 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv6"), false);
+      localObject3 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv6"), false);
+      if (((NetConnInfoCenter.isWifiConn()) && (localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() > 0) && (localObject1 != null) && (((CopyOnWriteArrayList)localObject1).size() > 0)) || ((!NetConnInfoCenter.isWifiConn()) && (localObject4 != null) && (((CopyOnWriteArrayList)localObject4).size() > 0) && (localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0))) {
         i1 = 1;
-        if ((i2 != 0) || (i1 != 0)) {
-          break label1795;
+      } else {
+        i1 = 0;
+      }
+      if (((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() > 0)) || ((localObject4 != null) && (((CopyOnWriteArrayList)localObject4).size() > 0)) || ((localObject1 != null) && (((CopyOnWriteArrayList)localObject1).size() > 0)) || ((localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0))) {
+        i2 = 0;
+      } else {
+        i2 = 1;
+      }
+      if ((i1 == 0) && (i2 == 0))
+      {
+        if ((localObject1 != null) && (((CopyOnWriteArrayList)localObject1).size() > 0)) {
+          localObject5 = localObject1;
+        } else {
+          localObject5 = null;
         }
-        localObject4 = localObject2;
-        if (localCopyOnWriteArrayList1 != null)
+        localObject2 = localObject5;
+        if (localCopyOnWriteArrayList != null)
         {
-          localObject4 = localObject2;
-          if (localCopyOnWriteArrayList1.size() > 0) {
-            localObject4 = localCopyOnWriteArrayList1;
+          localObject2 = localObject5;
+          if (localCopyOnWriteArrayList.size() > 0) {
+            localObject2 = localCopyOnWriteArrayList;
           }
         }
-        localObject2 = localObject4;
-        if (localObject3 != null)
+        if ((localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0)) {
+          localObject5 = localObject3;
+        } else {
+          localObject5 = null;
+        }
+        if ((localObject4 != null) && (((CopyOnWriteArrayList)localObject4).size() > 0))
         {
+          localObject5 = localObject3;
+          localObject6 = localObject1;
+          localObject1 = localObject4;
+          i3 = i1;
+          localObject3 = localObject2;
+          i1 = i2;
           localObject2 = localObject4;
-          if (((CopyOnWriteArrayList)localObject3).size() > 0) {
-            localObject2 = localObject3;
-          }
+          localObject4 = localObject6;
         }
-        localObject4 = localObject5;
-        if (localCopyOnWriteArrayList2 != null)
+        else
         {
-          localObject4 = localObject5;
-          if (localCopyOnWriteArrayList2.size() > 0) {
-            localObject4 = localCopyOnWriteArrayList2;
-          }
+          localObject6 = localObject3;
+          Object localObject7 = localObject1;
+          localObject1 = localObject5;
+          i3 = i1;
+          localObject3 = localObject2;
+          i1 = i2;
+          localObject2 = localObject4;
+          localObject4 = localObject7;
+          localObject5 = localObject6;
         }
-        if ((localObject1 == null) || (((CopyOnWriteArrayList)localObject1).size() <= 0)) {
-          break label1772;
-        }
-        localObject5 = localObject3;
-        localObject3 = localObject1;
-        localObject4 = localObject2;
-        localObject2 = localObject1;
-        localObject1 = localObject5;
+      }
+      else
+      {
+        localObject5 = localObject1;
+        localObject6 = localObject3;
+        localObject2 = localObject4;
+        localObject1 = null;
+        localObject3 = null;
+        i3 = i1;
+        i1 = i2;
+        localObject4 = localObject5;
+        localObject5 = localObject6;
       }
     }
-    for (;;)
+    else
     {
-      if (i1 != 0)
-      {
-        QLog.d("MSF.C.NetConnTag", 1, "sso list is empty for ip family=" + i3);
-        i1 = 0;
-        bool1 = false;
-        localObject1 = localArrayList.iterator();
-        i2 = 0;
-        label661:
-        if (!((Iterator)localObject1).hasNext()) {
-          break label1312;
-        }
-        localObject2 = (a)((Iterator)localObject1).next();
-        if ((((a)localObject2).e != x.m) && (((a)localObject2).e != x.s) && (((a)localObject2).e != x.i) && (((a)localObject2).e != x.o) && (((a)localObject2).e != x.p) && (((a)localObject2).e != x.q) && (((a)localObject2).e != x.y)) {
-          break label1229;
-        }
-        this.m = (this.l - this.I);
-        i2 = 1;
-        g();
+      if (2 != i4) {
+        localObject1 = "Ipv4";
       }
-      for (;;)
+      localObject3 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", (String)localObject1), true);
+      localObject1 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", (String)localObject1), true);
+      if (((localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0)) || ((localObject1 != null) && (((CopyOnWriteArrayList)localObject1).size() > 0))) {}
+      for (i1 = 0;; i1 = 1)
       {
-        break label661;
-        i2 = 0;
+        i3 = 0;
+        localCopyOnWriteArrayList = null;
+        localObject2 = null;
+        localObject4 = null;
+        localObject5 = null;
         break;
-        label787:
-        i1 = 0;
-        break label501;
-        if (2 == i3) {}
-        for (localObject1 = "Ipv6";; localObject1 = "Ipv4")
-        {
-          localObject4 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", (String)localObject1), true);
-          localObject3 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", (String)localObject1), true);
-          if (((localObject4 != null) && (((CopyOnWriteArrayList)localObject4).size() > 0)) || ((localObject3 != null) && (((CopyOnWriteArrayList)localObject3).size() > 0))) {
-            break label1759;
-          }
-          i2 = 0;
-          localObject1 = null;
-          i1 = 1;
-          localObject2 = null;
-          break;
-        }
-        if (i2 != 0)
-        {
-          localObject4 = new StringBuilder().append("mainSocketEngineOpenConn try dual conn wifiIpv4SsoList=");
-          if (localObject1 == null)
-          {
-            localObject3 = "null";
-            label926:
-            localObject4 = ((StringBuilder)localObject4).append(localObject3).append(", mobileIpv4SsoList=");
-            if (localObject2 != null) {
-              break label1062;
-            }
-            localObject3 = "null";
-            label951:
-            localObject4 = ((StringBuilder)localObject4).append(localObject3).append(", wifiIpv6SsoList=");
-            if (localCopyOnWriteArrayList1 != null) {
-              break label1075;
-            }
-            localObject3 = "null";
-            label976:
-            localObject4 = ((StringBuilder)localObject4).append(localObject3).append(", mobileIpv6SsoList=");
-            if (localCopyOnWriteArrayList2 != null) {
-              break label1088;
-            }
-          }
-          label1062:
-          label1075:
-          label1088:
-          for (localObject3 = "null";; localObject3 = Integer.valueOf(localCopyOnWriteArrayList2.size()))
-          {
-            QLog.d("MSF.C.NetConnTag", 1, localObject3);
-            bool1 = this.i.a((CopyOnWriteArrayList)localObject1, (CopyOnWriteArrayList)localObject2, localCopyOnWriteArrayList1, localCopyOnWriteArrayList2, localArrayList);
-            l1 = SystemClock.elapsedRealtime() - l2;
-            i1 = 1;
-            break;
-            localObject3 = Integer.valueOf(((CopyOnWriteArrayList)localObject1).size());
-            break label926;
-            localObject3 = Integer.valueOf(((CopyOnWriteArrayList)localObject2).size());
-            break label951;
-            localObject3 = Integer.valueOf(localCopyOnWriteArrayList1.size());
-            break label976;
-          }
-        }
-        localObject2 = new StringBuilder().append("mainSocketEngineOpenConn try single conn wifiSsoList=");
-        if (localObject4 == null)
-        {
+      }
+    }
+    long l1;
+    if (i1 != 0)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("sso list is empty for ip family=");
+      ((StringBuilder)localObject1).append(i4);
+      QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject1).toString());
+      l1 = 0L;
+      bool = false;
+      i2 = 0;
+    }
+    else
+    {
+      localObject6 = "null";
+      if (i3 != 0)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("mainSocketEngineOpenConn try dual conn wifiIpv4SsoList=");
+        if (localCopyOnWriteArrayList == null) {
           localObject1 = "null";
-          label1126:
-          localObject2 = ((StringBuilder)localObject2).append(localObject1).append(", mobileSsoList=");
-          if (localObject3 != null) {
-            break label1216;
-          }
+        } else {
+          localObject1 = Integer.valueOf(localCopyOnWriteArrayList.size());
         }
-        label1216:
-        for (localObject1 = "null";; localObject1 = Integer.valueOf(((CopyOnWriteArrayList)localObject3).size()))
-        {
-          QLog.d("MSF.C.NetConnTag", 1, localObject1);
-          a(0);
-          bool1 = b((CopyOnWriteArrayList)localObject4, (CopyOnWriteArrayList)localObject3, localArrayList, 0);
-          l1 = SystemClock.elapsedRealtime() - l2;
-          b(false);
-          i1 = 1;
-          break;
+        ((StringBuilder)localObject3).append(localObject1);
+        ((StringBuilder)localObject3).append(", mobileIpv4SsoList=");
+        if (localObject2 == null) {
+          localObject1 = "null";
+        } else {
+          localObject1 = Integer.valueOf(((CopyOnWriteArrayList)localObject2).size());
+        }
+        ((StringBuilder)localObject3).append(localObject1);
+        ((StringBuilder)localObject3).append(", wifiIpv6SsoList=");
+        if (localObject4 == null) {
+          localObject1 = "null";
+        } else {
           localObject1 = Integer.valueOf(((CopyOnWriteArrayList)localObject4).size());
-          break label1126;
         }
-        label1229:
+        ((StringBuilder)localObject3).append(localObject1);
+        ((StringBuilder)localObject3).append(", mobileIpv6SsoList=");
+        if (localObject5 != null) {
+          localObject6 = Integer.valueOf(localObject5.size());
+        }
+        ((StringBuilder)localObject3).append(localObject6);
+        QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject3).toString());
+        bool = this.i.a(localCopyOnWriteArrayList, (CopyOnWriteArrayList)localObject2, (CopyOnWriteArrayList)localObject4, localObject5, localArrayList);
+        l1 = SystemClock.elapsedRealtime();
+        l1 -= l2;
+      }
+      else
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("mainSocketEngineOpenConn try single conn wifiSsoList=");
+        if (localObject3 == null) {
+          localObject2 = "null";
+        } else {
+          localObject2 = Integer.valueOf(((CopyOnWriteArrayList)localObject3).size());
+        }
+        ((StringBuilder)localObject4).append(localObject2);
+        ((StringBuilder)localObject4).append(", mobileSsoList=");
+        if (localObject1 != null) {
+          localObject6 = Integer.valueOf(((CopyOnWriteArrayList)localObject1).size());
+        }
+        ((StringBuilder)localObject4).append(localObject6);
+        QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject4).toString());
+        a(0);
+        bool = b((CopyOnWriteArrayList)localObject3, (CopyOnWriteArrayList)localObject1, localArrayList, 0);
+        l1 = SystemClock.elapsedRealtime();
+        b(false);
+        l1 -= l2;
+      }
+      i2 = 1;
+    }
+    localObject1 = localArrayList.iterator();
+    int i1 = 0;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (a)((Iterator)localObject1).next();
+      if ((((a)localObject2).e != x.m) && (((a)localObject2).e != x.s) && (((a)localObject2).e != x.i) && (((a)localObject2).e != x.o) && (((a)localObject2).e != x.p) && (((a)localObject2).e != x.q) && (((a)localObject2).e != x.y))
+      {
         if (this.I == 0L)
         {
           this.I = ((a)localObject2).i;
           this.l = this.I;
         }
-        if (i2 == 0) {
+        if (i1 == 0) {
           this.m = (this.l - this.I);
         }
         if (this.h == null) {
           this.h = this.f.getMsfAlarmer().a(this, 300000L);
         }
         this.H.add(localObject2);
-        i2 = 0;
+        i1 = 0;
       }
-      label1312:
-      if (!bool1)
+      else
       {
-        l1 = SystemClock.elapsedRealtime();
-        if ((NetConnInfoCenter.isWifiOrMobileConn()) && (i1 != 0))
-        {
-          a(true);
-          if (this.f.getStatReporter() != null) {
-            this.f.getStatReporter().a(false, false, false, l1 - l2, localArrayList);
-          }
+        this.m = (this.l - this.I);
+        g();
+        i1 = 1;
+      }
+    }
+    if (!bool)
+    {
+      l1 = SystemClock.elapsedRealtime();
+      if ((NetConnInfoCenter.isWifiOrMobileConn()) && (i2 != 0))
+      {
+        a(true);
+        if (this.f.getStatReporter() != null) {
+          this.f.getStatReporter().a(false, false, false, l1 - l2, localArrayList);
         }
-        NetConnInfoCenter.onOepnConnAllFailed();
-        l1 = System.currentTimeMillis();
-        if ((NetConnInfoCenter.isWifiConn()) || ((!NetConnInfoCenter.isWifiOrMobileConn()) && (NetConnInfoCenter.getCurrentAPN() == null)))
+      }
+      NetConnInfoCenter.onOepnConnAllFailed();
+      l1 = System.currentTimeMillis();
+      if ((!NetConnInfoCenter.isWifiConn()) && ((NetConnInfoCenter.isWifiOrMobileConn()) || (NetConnInfoCenter.getCurrentAPN() != null)))
+      {
+        if (l1 - com.tencent.mobileqq.msf.core.a.c.m < 60000L)
         {
-          bool2 = bool1;
-          if (l1 - com.tencent.mobileqq.msf.core.a.c.l >= 60000L) {
-            break;
-          }
           localObject1 = new StringBuffer();
-          localObject2 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv4"), true).iterator();
+          localObject2 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv4"), true).iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (d)((Iterator)localObject2).next();
-            if (localObject3 != null) {
-              ((StringBuffer)localObject1).append(((d)localObject3).toString() + ";");
+            if (localObject3 != null)
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(((d)localObject3).toString());
+              ((StringBuilder)localObject4).append(";");
+              ((StringBuffer)localObject1).append(((StringBuilder)localObject4).toString());
             }
           }
           localObject1 = ((StringBuffer)localObject1).toString();
           if (this.f.getStatReporter() != null) {
-            this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.l, (String)localObject1);
+            this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.m, (String)localObject1);
           }
-          com.tencent.mobileqq.msf.core.a.c.l = 0L;
-          return bool1;
+          com.tencent.mobileqq.msf.core.a.c.m = 0L;
+          return bool;
         }
-        bool2 = bool1;
-        if (l1 - com.tencent.mobileqq.msf.core.a.c.m >= 60000L) {
-          break;
-        }
+      }
+      else if (l1 - com.tencent.mobileqq.msf.core.a.c.l < 60000L)
+      {
         localObject1 = new StringBuffer();
-        localObject2 = this.f.getSsoListManager().a(c.a.a("Socket", "Mobile", "Ipv4"), true).iterator();
+        localObject2 = this.f.getSsoListManager().a(c.a.a("Socket", "Wifi", "Ipv4"), true).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (d)((Iterator)localObject2).next();
-          if (localObject3 != null) {
-            ((StringBuffer)localObject1).append(((d)localObject3).toString() + ";");
+          if (localObject3 != null)
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append(((d)localObject3).toString());
+            ((StringBuilder)localObject4).append(";");
+            ((StringBuffer)localObject1).append(((StringBuilder)localObject4).toString());
           }
         }
         localObject1 = ((StringBuffer)localObject1).toString();
         if (this.f.getStatReporter() != null) {
-          this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.m, (String)localObject1);
+          this.f.getStatReporter().a(false, l1 - com.tencent.mobileqq.msf.core.a.c.l, (String)localObject1);
         }
-        com.tencent.mobileqq.msf.core.a.c.m = 0L;
-        return bool1;
+        com.tencent.mobileqq.msf.core.a.c.l = 0L;
       }
-      NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
-      if (!NetConnInfoCenter.isWifiOrMobileConn()) {
-        NetConnInfoCenter.setLastConnSuccWithoutNet();
-      }
-      if ((NetConnInfoCenter.isWifiOrMobileConn()) && (this.f.getStatReporter() != null)) {
-        this.f.getStatReporter().a(false, false, bool1, l1, localArrayList);
-      }
-      return true;
-      label1759:
-      localObject2 = null;
-      i1 = 0;
-      i2 = 0;
-      localObject1 = null;
-      continue;
-      label1772:
-      localObject5 = localObject3;
-      localObject3 = localObject4;
-      localObject4 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject5;
-      continue;
-      label1795:
-      localObject5 = null;
-      localObject4 = null;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      localObject3 = localObject5;
+      return bool;
     }
+    NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
+    if (!NetConnInfoCenter.isWifiOrMobileConn()) {
+      NetConnInfoCenter.setLastConnSuccWithoutNet();
+    }
+    if ((NetConnInfoCenter.isWifiOrMobileConn()) && (this.f.getStatReporter() != null)) {
+      this.f.getStatReporter().a(false, false, bool, l1, localArrayList);
+    }
+    return true;
   }
   
   private String r()
@@ -925,37 +995,33 @@ public class n
   
   private void s()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        Object localObject1 = this.N;
-        if (localObject1 != null) {
-          return;
-        }
-        if (com.tencent.mobileqq.msf.core.a.a.T() == 0) {
-          continue;
-        }
-        localObject1 = com.tencent.mobileqq.msf.core.a.a.S();
-        if (localObject1 == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("MSF.C.NetConnTag", 2, "TcpdumpSSOVip is empty");
-          continue;
-        }
-        this.L.clear();
+      Object localObject1 = this.N;
+      if (localObject1 != null) {
+        return;
       }
-      finally {}
-      String[] arrayOfString = localObject2.split(";");
-      int i2 = arrayOfString.length;
-      int i1 = 0;
+      int i1 = com.tencent.mobileqq.msf.core.a.a.T();
+      if (i1 == 0) {
+        return;
+      }
+      localObject1 = com.tencent.mobileqq.msf.core.a.a.S();
+      if (localObject1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, "TcpdumpSSOVip is empty");
+        }
+        return;
+      }
+      this.L.clear();
+      localObject1 = ((String)localObject1).split(";");
+      int i2 = localObject1.length;
+      i1 = 0;
       while (i1 < i2)
       {
-        String str = arrayOfString[i1];
+        Object localObject3 = localObject1[i1];
         n.a locala = new n.a(this);
-        locala.a = str;
+        locala.a = localObject3;
         locala.b = 1;
         locala.c = "";
         this.L.add(locala);
@@ -964,6 +1030,12 @@ public class n
       this.N = new q(this);
       this.N.setName("checkNetConnectByConnectSSOThread");
       this.N.start();
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -974,57 +1046,63 @@ public class n
   
   private static String u()
   {
-    try
+    for (;;)
     {
-      localBufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("ps").getInputStream()));
-      localObject = localBufferedReader.readLine().split("\\s+");
-      i4 = localObject.length;
-      i2 = 0;
-      i3 = 1;
-      i1 = 0;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      int i2;
+      int i1;
+      try
       {
-        BufferedReader localBufferedReader;
+        BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("ps").getInputStream()));
+        localObject = localBufferedReader.readLine().split("\\s+");
+        int i4 = localObject.length;
+        i2 = 0;
+        i1 = 0;
+        int i3 = 1;
+        if (i2 < i4)
+        {
+          if (!localObject[i2].equalsIgnoreCase("PID")) {
+            break label266;
+          }
+          i3 = i1;
+          break label266;
+        }
+        localObject = localBufferedReader.readLine();
+        if (localObject != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(BaseApplication.getContext().getFilesDir().getParent());
+          localStringBuilder.append("/txlib/tcpdump");
+          if ((!((String)localObject).contains(localStringBuilder.toString())) || (((String)localObject).contains("sh -c"))) {
+            continue;
+          }
+          localObject = ((String)localObject).split("\\s+");
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("tcpdump uid:");
+            localStringBuilder.append(localObject[i3]);
+            QLog.d("MSF.C.NetConnTag", 2, localStringBuilder.toString());
+          }
+          localBufferedReader.close();
+          return localObject[i3];
+        }
+        localBufferedReader.close();
+      }
+      catch (IOException localIOException)
+      {
         Object localObject;
-        int i4;
-        int i2;
-        int i3;
-        int i1;
         if (QLog.isColorLevel())
         {
-          QLog.d("MSF.C.NetConnTag", 2, "Error killing tcpdump, msg=" + localIOException.getMessage());
-          continue;
-          i2 += 1;
-          i1 += 1;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Error killing tcpdump, msg=");
+          ((StringBuilder)localObject).append(localIOException.getMessage());
+          QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject).toString());
         }
       }
-    }
-    if (i2 < i4)
-    {
-      if (localObject[i2].equalsIgnoreCase("PID")) {
-        i3 = i1;
-      }
-    }
-    else
-    {
-      do
-      {
-        localObject = localBufferedReader.readLine();
-        if (localObject == null) {
-          break;
-        }
-      } while ((!((String)localObject).contains(BaseApplication.getContext().getFilesDir().getParent() + "/txlib/tcpdump")) || (((String)localObject).contains("sh -c")));
-      localObject = ((String)localObject).split("\\s+");
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "tcpdump uid:" + localObject[i3]);
-      }
-      localBufferedReader.close();
-      return localObject[i3];
-      localBufferedReader.close();
       return null;
+      label266:
+      i1 += 1;
+      i2 += 1;
     }
   }
   
@@ -1035,8 +1113,8 @@ public class n
     }
     try
     {
-      Object localObject = u();
-      if (localObject == null)
+      Object localObject1 = u();
+      if (localObject1 == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.NetConnTag", 2, "tcpdump: stopTCPDump pid not find");
@@ -1044,28 +1122,40 @@ public class n
       }
       else
       {
-        localObject = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "su", "-c", "kill " + (String)localObject }).getErrorStream()));
+        localObject2 = Runtime.getRuntime();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("kill ");
+        localStringBuilder.append((String)localObject1);
+        localObject1 = new BufferedReader(new InputStreamReader(((Runtime)localObject2).exec(new String[] { "su", "-c", localStringBuilder.toString() }).getErrorStream()));
         for (;;)
         {
-          String str = ((BufferedReader)localObject).readLine();
-          if (str == null) {
+          localObject2 = ((BufferedReader)localObject1).readLine();
+          if (localObject2 == null) {
             break;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.NetConnTag", 2, "tcpdump kill error=" + str);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("tcpdump kill error=");
+            localStringBuilder.append((String)localObject2);
+            QLog.d("MSF.C.NetConnTag", 2, localStringBuilder.toString());
           }
         }
+        ((BufferedReader)localObject1).close();
+        return;
       }
-      return;
     }
     catch (IOException localIOException)
     {
+      Object localObject2;
       if (QLog.isColorLevel())
       {
-        QLog.d("MSF.C.NetConnTag", 2, "tcpdump Error killing tcpdump, msg=" + localIOException.getMessage());
-        return;
-        localIOException.close();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("tcpdump Error killing tcpdump, msg=");
+        ((StringBuilder)localObject2).append(localIOException.getMessage());
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString());
       }
+      return;
     }
   }
   
@@ -1137,15 +1227,16 @@ public class n
   
   public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    long l2;
     if (this.I != 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.NetConnTag", 2, "firstResponseGetted getted Report now");
       }
-      l2 = -1L;
-      if (this.l >= this.I) {
-        l2 = this.l - this.I;
+      long l2 = -1L;
+      long l1 = this.l;
+      long l3 = this.I;
+      if (l1 >= l3) {
+        l2 = l1 - l3;
       }
       if (paramFromServiceMsg.getAttribute("__timestamp_net2msf") == null)
       {
@@ -1154,55 +1245,51 @@ public class n
         }
         g();
         this.m = 0L;
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    long l4 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue();
-    long l5 = this.l;
-    long l1;
-    if (paramToServiceMsg.getAttribute("__timestamp_msf2net") == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "to msg TIMESTAMP_MSF2NET not find set nFirstPacketTimeElapse to 0");
+      l3 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() - this.l;
+      if (paramToServiceMsg.getAttribute("__timestamp_msf2net") == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, "to msg TIMESTAMP_MSF2NET not find set nFirstPacketTimeElapse to 0");
+        }
+        l1 = 0L;
       }
-      l1 = 0L;
-    }
-    for (;;)
-    {
-      boolean bool = false;
-      if (paramFromServiceMsg.getServiceCmd().equals("login.auth")) {
-        bool = true;
+      else
+      {
+        long l4 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net")).longValue();
+        l1 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() - l4;
+        if ((l1 >= 0L) && (l4 != 0L)) {
+          break label300;
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("nFirstPacketTimeElapse:");
+          localStringBuilder.append(l1);
+          localStringBuilder.append(" reset 0 now TIMESTAMP_NET2MSF:");
+          localStringBuilder.append(this.f.timeFormatter.format(paramFromServiceMsg.getAttribute("__timestamp_net2msf")));
+          localStringBuilder.append(" TIMESTAMP_MSF2NET:");
+          localStringBuilder.append(this.f.timeFormatter.format(paramToServiceMsg.getAttribute("__timestamp_msf2net")));
+          QLog.d("MSF.C.NetConnTag", 2, localStringBuilder.toString());
+        }
+        l1 = 0L;
       }
+      label300:
+      boolean bool = paramFromServiceMsg.getServiceCmd().equals("login.auth");
       if (this.H.size() > 0)
       {
-        paramFromServiceMsg = (a)this.H.get(this.H.size() - 1);
+        paramFromServiceMsg = this.H;
+        paramFromServiceMsg = (a)paramFromServiceMsg.get(paramFromServiceMsg.size() - 1);
         paramFromServiceMsg.m = 1;
         paramFromServiceMsg.l = 1;
         if (this.f.getStatReporter() != null) {
-          this.f.getStatReporter().a(true, l2, l4 - l5, l1, this.m, bool, this.H, this.o);
+          this.f.getStatReporter().a(true, l2, l3, l1, this.m, bool, this.H, this.o);
         }
       }
       g();
       this.m = 0L;
       NetConnInfoCenter.onRecvFirstResp();
-      return;
-      long l6 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net")).longValue();
-      long l3 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() - l6;
-      if (l3 >= 0L)
-      {
-        l1 = l3;
-        if (l6 != 0L) {}
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.NetConnTag", 2, "nFirstPacketTimeElapse:" + l3 + " reset 0 now TIMESTAMP_NET2MSF:" + this.f.timeFormatter.format(paramFromServiceMsg.getAttribute("__timestamp_net2msf")) + " TIMESTAMP_MSF2NET:" + this.f.timeFormatter.format(paramToServiceMsg.getAttribute("__timestamp_msf2net")));
-        }
-        l1 = 0L;
-      }
     }
   }
   
@@ -1224,50 +1311,47 @@ public class n
       K = SystemClock.elapsedRealtime();
       q();
       arrayOfByte = this.f.sender.e(paramToServiceMsg);
-      QLog.d("MSF.C.NetConnTag", 1, "p ok re1: " + paramToServiceMsg.getRequestSsoSeq());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("p ok re1: ");
+      paramArrayOfByte.append(paramToServiceMsg.getRequestSsoSeq());
+      QLog.d("MSF.C.NetConnTag", 1, paramArrayOfByte.toString());
     }
-    for (;;)
+    else
     {
-      paramArrayOfByte = null;
-      if (paramToServiceMsg.getAttributes().containsKey("infoLoginMsg")) {
-        paramArrayOfByte = (ToServiceMsg)paramToServiceMsg.getAttributes().get("infoLoginMsg");
-      }
-      int i1;
-      for (;;)
-      {
-        i1 = this.B[this.C.get()].a(paramInt1, paramInt2, paramInt3, paramString3, paramString1, paramString2, paramMsfCommand, arrayOfByte, paramArrayOfByte);
-        if (i1 != -100) {
-          break label337;
-        }
-        q();
-        arrayOfByte = this.f.sender.e(paramToServiceMsg);
-        QLog.d("MSF.C.NetConnTag", 1, "p ok re2: " + paramToServiceMsg.getRequestSsoSeq());
-        if (this.B[this.C.get()].a(paramInt1, paramInt2, paramInt3, paramString3, paramString1, paramString2, paramMsfCommand, arrayOfByte, paramArrayOfByte) != -100) {
-          break;
-        }
-        return false;
-        if ("RegPrxySvc.infoLogin".equals(paramToServiceMsg.getServiceCmd())) {
-          paramArrayOfByte = paramToServiceMsg;
-        } else if ("RegPrxySvc.getOffMsg".equals(paramToServiceMsg.getServiceCmd())) {
-          paramArrayOfByte = paramToServiceMsg;
-        } else if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd())) {
-          paramArrayOfByte = paramToServiceMsg;
-        }
-      }
-      if ((this.J == 0L) && (this.I != 0L) && (this.l != 0L)) {
-        this.J = System.currentTimeMillis();
-      }
-      return true;
-      label337:
-      if (i1 == -200) {
-        return true;
-      }
-      if ((this.J == 0L) && (this.I != 0L) && (this.l != 0L)) {
-        this.J = System.currentTimeMillis();
-      }
-      return true;
       arrayOfByte = paramArrayOfByte;
     }
+    paramArrayOfByte = null;
+    if (paramToServiceMsg.getAttributes().containsKey("infoLoginMsg")) {}
+    for (paramArrayOfByte = (ToServiceMsg)paramToServiceMsg.getAttributes().get("infoLoginMsg");; paramArrayOfByte = paramToServiceMsg) {
+      do
+      {
+        break;
+      } while ((!"RegPrxySvc.infoLogin".equals(paramToServiceMsg.getServiceCmd())) && (!"RegPrxySvc.getOffMsg".equals(paramToServiceMsg.getServiceCmd())) && (!"RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd())));
+    }
+    int i1 = this.B[this.C.get()].a(paramInt1, paramInt2, paramInt3, paramString3, paramString1, paramString2, paramMsfCommand, arrayOfByte, paramArrayOfByte);
+    if (i1 == -100)
+    {
+      q();
+      arrayOfByte = this.f.sender.e(paramToServiceMsg);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("p ok re2: ");
+      localStringBuilder.append(paramToServiceMsg.getRequestSsoSeq());
+      QLog.d("MSF.C.NetConnTag", 1, localStringBuilder.toString());
+      if (this.B[this.C.get()].a(paramInt1, paramInt2, paramInt3, paramString3, paramString1, paramString2, paramMsfCommand, arrayOfByte, paramArrayOfByte) == -100) {
+        return false;
+      }
+      if ((this.J == 0L) && (this.I != 0L) && (this.l != 0L)) {
+        this.J = System.currentTimeMillis();
+      }
+      return true;
+    }
+    if (i1 == -200) {
+      return true;
+    }
+    if ((this.J == 0L) && (this.I != 0L) && (this.l != 0L)) {
+      this.J = System.currentTimeMillis();
+    }
+    return true;
   }
   
   public long b(int paramInt)
@@ -1279,16 +1363,19 @@ public class n
   {
     if (o())
     {
-      QLog.d("DualConnContext", 1, "onDualConnConnected: connId: " + paramInt + ", success: " + paramBoolean);
-      if (paramBoolean) {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDualConnConnected: connId: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", success: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("DualConnContext", 1, localStringBuilder.toString());
+      if (paramBoolean)
+      {
         this.i.a(2, paramInt, 10000L);
+        return;
       }
+      this.i.a(-1, paramInt);
     }
-    else
-    {
-      return;
-    }
-    this.i.a(-1, paramInt);
   }
   
   public boolean b()
@@ -1308,8 +1395,12 @@ public class n
   
   public m d(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.B.length)) {
-      return this.B[paramInt];
+    if (paramInt >= 0)
+    {
+      m[] arrayOfm = this.B;
+      if (paramInt < arrayOfm.length) {
+        return arrayOfm[paramInt];
+      }
     }
     return null;
   }
@@ -1326,74 +1417,75 @@ public class n
   
   public void e(int paramInt)
   {
-    a(paramInt, true);
-    this.k[paramInt] = SystemClock.elapsedRealtime();
-    if (this.i.a() != 1) {
-      QLog.d("DualConnContext", 1, "onSingleConnPing");
-    }
-    long l1;
-    long l2;
-    long l3;
-    label219:
-    label224:
-    label255:
-    do
+    int i2 = paramInt;
+    a(i2, true);
+    this.k[i2] = SystemClock.elapsedRealtime();
+    if (this.i.a() != 1)
     {
-      int i2;
-      do
+      QLog.d("DualConnContext", 1, "onSingleConnPing");
+      return;
+    }
+    int i1;
+    if (i2 == 0) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int i3 = d(paramInt).j();
+    if (i3 == 1)
+    {
+      paramInt = i1;
+    }
+    else
+    {
+      paramInt = i2;
+      i2 = i1;
+    }
+    long l1 = b(i2);
+    long l2 = b(paramInt);
+    long l3 = this.f.delayIpRace.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkDualConnPing: delayIpRace: ");
+    localStringBuilder.append(l3);
+    localStringBuilder.append(", curIpFamily: ");
+    localStringBuilder.append(i3);
+    localStringBuilder.append(", v4ConnId = ");
+    localStringBuilder.append(i2);
+    localStringBuilder.append(", v6ConnId");
+    localStringBuilder.append(paramInt);
+    QLog.d("DualConnContext", 1, localStringBuilder.toString());
+    if ((l1 > 0L) && (l2 > 0L))
+    {
+      QLog.d("DualConnContext", 1, "checkDualConnPing: all ok");
+      if (l1 + l3 <= l2)
       {
+        QLog.d("DualConnContext", 1, "checkDualConnPing: choose v4");
+        this.i.a(-1, paramInt);
+        this.i.a(3, i2);
         return;
-        int i1;
-        int i3;
-        if (paramInt == 0)
-        {
-          i1 = 1;
-          i3 = d(paramInt).j();
-          if (i3 != 1) {
-            break label219;
-          }
-          i2 = paramInt;
-          paramInt = i1;
-        }
-        for (;;)
-        {
-          l1 = b(i2);
-          l2 = b(paramInt);
-          l3 = this.f.delayIpRace.get();
-          QLog.d("DualConnContext", 1, "checkDualConnPing: delayIpRace: " + l3 + ", curIpFamily: " + i3 + ", v4ConnId = " + i2 + ", v6ConnId" + paramInt);
-          if ((l1 <= 0L) || (l2 <= 0L)) {
-            break label255;
-          }
-          QLog.d("DualConnContext", 1, "checkDualConnPing: all ok");
-          if (l1 + l3 > l2) {
-            break label224;
-          }
-          QLog.d("DualConnContext", 1, "checkDualConnPing: choose v4");
-          this.i.a(-1, paramInt);
-          this.i.a(3, i2);
-          return;
-          i1 = 0;
-          break;
-          i2 = i1;
-        }
-        QLog.d("DualConnContext", 1, "checkDualConnPing: choose v6");
-        this.i.a(-1, i2);
-        this.i.a(3, paramInt);
-        return;
-        if (l3 <= 0L) {
-          break;
-        }
-        if ((l1 > 0L) && (l2 <= 0L))
-        {
-          QLog.d("DualConnContext", 1, "checkDualConnPing: v4 ok, wait v6..");
-          this.i.a(3, i2, l3);
-          return;
-        }
-      } while ((l2 <= 0L) || (l1 > 0L));
-      QLog.d("DualConnContext", 1, "checkDualConnPing: v6 ok, close v4");
+      }
+      QLog.d("DualConnContext", 1, "checkDualConnPing: choose v6");
       this.i.a(-1, i2);
       this.i.a(3, paramInt);
       return;
+    }
+    if (l3 > 0L)
+    {
+      if ((l1 > 0L) && (l2 <= 0L))
+      {
+        QLog.d("DualConnContext", 1, "checkDualConnPing: v4 ok, wait v6..");
+        this.i.a(3, i2, l3);
+        return;
+      }
+      if ((l2 > 0L) && (l1 <= 0L))
+      {
+        QLog.d("DualConnContext", 1, "checkDualConnPing: v6 ok, close v4");
+        this.i.a(-1, i2);
+        this.i.a(3, paramInt);
+      }
+    }
+    else
+    {
       if ((l1 > 0L) && (l2 <= 0L))
       {
         QLog.d("DualConnContext", 1, "checkDualConnPing: v4 ok, close v6");
@@ -1401,9 +1493,12 @@ public class n
         this.i.a(3, i2);
         return;
       }
-    } while ((l2 <= 0L) || (l1 > 0L));
-    QLog.d("DualConnContext", 1, "checkDualConnPing: v6 ok, wait v4..");
-    this.i.a(3, paramInt, -l3);
+      if ((l2 > 0L) && (l1 <= 0L))
+      {
+        QLog.d("DualConnContext", 1, "checkDualConnPing: v6 ok, wait v4..");
+        this.i.a(3, paramInt, -l3);
+      }
+    }
   }
   
   public int f()
@@ -1434,7 +1529,9 @@ public class n
         QLog.d("MSF.C.NetConnTag", 2, "loginConnectTimeOut Report now");
       }
       long l1 = -1L;
-      if (this.l >= this.I)
+      long l2 = this.l;
+      long l3 = this.I;
+      if (l2 >= l3)
       {
         if (this.J == 0L)
         {
@@ -1445,7 +1542,7 @@ public class n
           this.m = 0L;
           return;
         }
-        l1 = this.l - this.I;
+        l1 = l2 - l3;
         this.f.sender.b.g.c();
       }
       if (this.f.getStatReporter() != null) {
@@ -1455,8 +1552,13 @@ public class n
       this.m = 0L;
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.NetConnTag", 2, "loginConnectTimeOut m_startConnectTime : " + this.I + "no need Report");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loginConnectTimeOut m_startConnectTime : ");
+      localStringBuilder.append(this.I);
+      localStringBuilder.append("no need Report");
+      QLog.d("MSF.C.NetConnTag", 2, localStringBuilder.toString());
     }
     g();
     this.m = 0L;
@@ -1466,13 +1568,14 @@ public class n
   {
     if (this.H.size() > 0)
     {
-      a locala = (a)this.H.get(this.H.size() - 1);
-      if (locala != null)
+      Object localObject = this.H;
+      localObject = (a)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+      if (localObject != null)
       {
-        locala.e = x.y;
-        locala.d = false;
-        locala.l = 0;
-        locala.m = 1;
+        ((a)localObject).e = x.y;
+        ((a)localObject).d = false;
+        ((a)localObject).l = 0;
+        ((a)localObject).m = 1;
       }
     }
   }
@@ -1516,7 +1619,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.n
  * JD-Core Version:    0.7.0.1
  */

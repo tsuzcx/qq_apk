@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class e
   extends JceStruct
@@ -18,16 +19,6 @@ public final class e
   public t b = null;
   public u c = null;
   public ArrayList<c> d = null;
-  
-  static
-  {
-    if (!e.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      i = bool;
-      return;
-    }
-  }
   
   public e()
   {
@@ -74,31 +65,48 @@ public final class e
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (i) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (i) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt) {}
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (e)paramObject;
-    } while ((!JceUtil.equals(this.a, paramObject.a)) || (!JceUtil.equals(this.b, paramObject.b)) || (!JceUtil.equals(this.c, paramObject.c)) || (!JceUtil.equals(this.d, paramObject.d)));
-    return true;
+    }
+    paramObject = (e)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.a, paramObject.a))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.b, paramObject.b))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.c, paramObject.c))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.d, paramObject.d)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -141,17 +149,19 @@ public final class e
   {
     paramJceOutputStream.write(this.a, 0);
     paramJceOutputStream.write(this.b, 1);
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,178 +1,134 @@
 package android.support.v4.app;
 
-import android.arch.lifecycle.ViewModelStore;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.util.Log;
+import com.tencent.token.bz;
+import com.tencent.token.cp;
+import com.tencent.token.cr;
+import com.tencent.token.ct;
+import com.tencent.token.cu;
 
-final class FragmentState
+public final class FragmentState
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new FragmentState.1();
-  final Bundle mArguments;
-  final String mClassName;
-  final int mContainerId;
-  final boolean mDetached;
-  final int mFragmentId;
-  final boolean mFromLayout;
-  final boolean mHidden;
-  final int mIndex;
-  Fragment mInstance;
-  final boolean mRetainInstance;
-  Bundle mSavedFragmentState;
-  final String mTag;
+  public static final Parcelable.Creator<FragmentState> CREATOR = new Parcelable.Creator() {};
+  final String a;
+  public final int b;
+  final boolean c;
+  final int d;
+  final int e;
+  final String f;
+  final boolean g;
+  final boolean h;
+  final Bundle i;
+  final boolean j;
+  public Bundle k;
+  public Fragment l;
   
   FragmentState(Parcel paramParcel)
   {
-    this.mClassName = paramParcel.readString();
-    this.mIndex = paramParcel.readInt();
-    if (paramParcel.readInt() != 0)
-    {
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
+    int m = paramParcel.readInt();
+    boolean bool2 = true;
+    boolean bool1;
+    if (m != 0) {
       bool1 = true;
-      this.mFromLayout = bool1;
-      this.mFragmentId = paramParcel.readInt();
-      this.mContainerId = paramParcel.readInt();
-      this.mTag = paramParcel.readString();
-      if (paramParcel.readInt() == 0) {
-        break label124;
-      }
-      bool1 = true;
-      label69:
-      this.mRetainInstance = bool1;
-      if (paramParcel.readInt() == 0) {
-        break label129;
-      }
-      bool1 = true;
-      label83:
-      this.mDetached = bool1;
-      this.mArguments = paramParcel.readBundle();
-      if (paramParcel.readInt() == 0) {
-        break label134;
-      }
+    } else {
+      bool1 = false;
     }
-    label129:
-    label134:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mHidden = bool1;
-      this.mSavedFragmentState = paramParcel.readBundle();
-      return;
+    this.c = bool1;
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    if (paramParcel.readInt() != 0) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
-      label124:
-      bool1 = false;
-      break label69;
-      bool1 = false;
-      break label83;
     }
+    this.g = bool1;
+    if (paramParcel.readInt() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.h = bool1;
+    this.i = paramParcel.readBundle();
+    if (paramParcel.readInt() != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.j = bool1;
+    this.k = paramParcel.readBundle();
   }
   
-  FragmentState(Fragment paramFragment)
+  public FragmentState(Fragment paramFragment)
   {
-    this.mClassName = paramFragment.getClass().getName();
-    this.mIndex = paramFragment.mIndex;
-    this.mFromLayout = paramFragment.mFromLayout;
-    this.mFragmentId = paramFragment.mFragmentId;
-    this.mContainerId = paramFragment.mContainerId;
-    this.mTag = paramFragment.mTag;
-    this.mRetainInstance = paramFragment.mRetainInstance;
-    this.mDetached = paramFragment.mDetached;
-    this.mArguments = paramFragment.mArguments;
-    this.mHidden = paramFragment.mHidden;
+    this.a = paramFragment.getClass().getName();
+    this.b = paramFragment.f;
+    this.c = paramFragment.n;
+    this.d = paramFragment.y;
+    this.e = paramFragment.z;
+    this.f = paramFragment.A;
+    this.g = paramFragment.D;
+    this.h = paramFragment.C;
+    this.i = paramFragment.h;
+    this.j = paramFragment.B;
   }
   
-  public int describeContents()
+  public final Fragment a(cr paramcr, cp paramcp, Fragment paramFragment, cu paramcu, bz parambz)
+  {
+    if (this.l == null)
+    {
+      Context localContext = paramcr.c;
+      Bundle localBundle = this.i;
+      if (localBundle != null) {
+        localBundle.setClassLoader(localContext.getClassLoader());
+      }
+      if (paramcp != null) {
+        this.l = paramcp.a(localContext, this.a, this.i);
+      } else {
+        this.l = Fragment.a(localContext, this.a, this.i);
+      }
+      paramcp = this.k;
+      if (paramcp != null)
+      {
+        paramcp.setClassLoader(localContext.getClassLoader());
+        this.l.c = this.k;
+      }
+      this.l.a(this.b, paramFragment);
+      paramcp = this.l;
+      paramcp.n = this.c;
+      paramcp.p = true;
+      paramcp.y = this.d;
+      paramcp.z = this.e;
+      paramcp.A = this.f;
+      paramcp.D = this.g;
+      paramcp.C = this.h;
+      paramcp.B = this.j;
+      paramcp.s = paramcr.f;
+      if (ct.a) {
+        new StringBuilder("Instantiated fragment ").append(this.l);
+      }
+    }
+    paramcr = this.l;
+    paramcr.v = paramcu;
+    paramcr.w = parambz;
+    return paramcr;
+  }
+  
+  public final int describeContents()
   {
     return 0;
   }
   
-  public Fragment instantiate(FragmentHostCallback paramFragmentHostCallback, FragmentContainer paramFragmentContainer, Fragment paramFragment, FragmentManagerNonConfig paramFragmentManagerNonConfig, ViewModelStore paramViewModelStore)
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    Context localContext;
-    if (this.mInstance == null)
-    {
-      localContext = paramFragmentHostCallback.getContext();
-      if (this.mArguments != null) {
-        this.mArguments.setClassLoader(localContext.getClassLoader());
-      }
-      if (paramFragmentContainer == null) {
-        break label249;
-      }
-    }
-    label249:
-    for (this.mInstance = paramFragmentContainer.instantiate(localContext, this.mClassName, this.mArguments);; this.mInstance = Fragment.instantiate(localContext, this.mClassName, this.mArguments))
-    {
-      if (this.mSavedFragmentState != null)
-      {
-        this.mSavedFragmentState.setClassLoader(localContext.getClassLoader());
-        this.mInstance.mSavedFragmentState = this.mSavedFragmentState;
-      }
-      this.mInstance.setIndex(this.mIndex, paramFragment);
-      this.mInstance.mFromLayout = this.mFromLayout;
-      this.mInstance.mRestored = true;
-      this.mInstance.mFragmentId = this.mFragmentId;
-      this.mInstance.mContainerId = this.mContainerId;
-      this.mInstance.mTag = this.mTag;
-      this.mInstance.mRetainInstance = this.mRetainInstance;
-      this.mInstance.mDetached = this.mDetached;
-      this.mInstance.mHidden = this.mHidden;
-      this.mInstance.mFragmentManager = paramFragmentHostCallback.mFragmentManager;
-      if (FragmentManagerImpl.DEBUG) {
-        Log.v("FragmentManager", "Instantiated fragment " + this.mInstance);
-      }
-      this.mInstance.mChildNonConfig = paramFragmentManagerNonConfig;
-      this.mInstance.mViewModelStore = paramViewModelStore;
-      return this.mInstance;
-    }
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    int i = 1;
-    paramParcel.writeString(this.mClassName);
-    paramParcel.writeInt(this.mIndex);
-    if (this.mFromLayout)
-    {
-      paramInt = 1;
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.mFragmentId);
-      paramParcel.writeInt(this.mContainerId);
-      paramParcel.writeString(this.mTag);
-      if (!this.mRetainInstance) {
-        break label120;
-      }
-      paramInt = 1;
-      label65:
-      paramParcel.writeInt(paramInt);
-      if (!this.mDetached) {
-        break label125;
-      }
-      paramInt = 1;
-      label79:
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeBundle(this.mArguments);
-      if (!this.mHidden) {
-        break label130;
-      }
-    }
-    label130:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeBundle(this.mSavedFragmentState);
-      return;
-      paramInt = 0;
-      break;
-      label120:
-      paramInt = 0;
-      break label65;
-      label125:
-      paramInt = 0;
-      break label79;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 

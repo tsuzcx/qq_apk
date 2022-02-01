@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:layout_gravity="center" android:orientation="vertical" android:id="@id/beo" android:background="@color/ed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.PhotoEditText android:textSize="@dimen/zt" android:textColor="@android:color/white" android:gravity="top" android:id="@id/bep" android:background="@null" android:paddingLeft="@dimen/zr" android:paddingTop="50.0dip" android:paddingRight="@dimen/zr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:height="800.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/sc" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Switch android:id="@id/beq" android:background="@drawable/ii" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="20.0dip" android:thumb="@android:color/transparent" android:track="@android:color/transparent" />
-        <com.tencent.mm.view.footer.SelectColorBar android:gravity="top" android:id="@id/ber" android:layout_width="fill_parent" android:layout_height="@dimen/xk" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.ui.chatting.ChattingAnimFrame android:id="@id/b1l" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

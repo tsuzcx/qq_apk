@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agji;
-import agjx;
 import com.tencent.common.galleryactivity.AbstractImageAdapter;
 
-public class AIOImageListScene$7
+class AIOImageListScene$7
   implements Runnable
 {
-  public AIOImageListScene$7(agji paramagji) {}
+  AIOImageListScene$7(AIOImageListScene paramAIOImageListScene) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!((agjx)this.this$0.a).a(false))) {
-      this.this$0.a.notifyDataSetChanged();
+    if ((this.this$0.q != null) && (!((AIOPhotoListAdapter)this.this$0.q).b(false))) {
+      this.this$0.q.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.7
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class StrokeTextView
   extends TextView
 {
-  private TextView a;
+  private TextView a = null;
   
   public StrokeTextView(Context paramContext)
   {
@@ -76,7 +76,7 @@ public class StrokeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.StrokeTextView
  * JD-Core Version:    0.7.0.1
  */

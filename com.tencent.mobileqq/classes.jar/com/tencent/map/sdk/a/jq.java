@@ -15,50 +15,53 @@ public final class jq
   
   public final void a()
   {
-    if (this.b != null) {
-      synchronized (this.b)
+    jp localjp = this.b;
+    if (localjp != null) {
+      try
       {
         this.b.notify();
         return;
       }
+      finally {}
     }
   }
   
   public final void b()
   {
-    jp localjp;
-    if (this.b != null)
+    jp localjp = this.b;
+    if (localjp != null)
     {
-      localjp = this.b;
       localjp.a = false;
+      try
+      {
+        localjp.notifyAll();
+        a();
+        return;
+      }
+      finally {}
     }
-    try
-    {
-      localjp.notifyAll();
-      a();
-      return;
-    }
-    finally {}
   }
   
   public final void c()
   {
-    if (this.a == null) {}
-    do
-    {
-      return;
-      this.a.c.b(this);
-    } while (this.b == null);
-    jp localjp = this.b;
-    localjp.b = true;
-    try
-    {
-      localjp.notifyAll();
-      localjp.interrupt();
-      this.b = null;
+    Object localObject1 = this.a;
+    if (localObject1 == null) {
       return;
     }
-    finally {}
+    ((lw)localObject1).c.b(this);
+    localObject1 = this.b;
+    if (localObject1 != null)
+    {
+      ((jp)localObject1).b = true;
+      try
+      {
+        localObject1.notifyAll();
+        ((jp)localObject1).interrupt();
+        this.b = null;
+        return;
+      }
+      finally {}
+    }
   }
 }
 

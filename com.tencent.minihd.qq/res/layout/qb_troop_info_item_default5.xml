@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/dotted_line" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/title" android:singleLine="true" android:layout_below="@id/dotted_line" style="@style/TroopInfoExItemTitle2" />
+    <ImageView android:id="@id/arrow" android:layout_below="@id/dotted_line" style="@style/TroopInfoExItemArrow" />
+</RelativeLayout>

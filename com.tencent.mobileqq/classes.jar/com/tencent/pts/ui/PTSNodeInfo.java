@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class PTSNodeInfo
 {
-  private final String TAG = "PTSNodeInfo";
+  private static final String TAG = "PTSNodeInfo";
   private PTSNodeAttribute attributes;
   private List<PTSNodeInfo> children;
   private String content;
@@ -45,13 +45,16 @@ public class PTSNodeInfo
   
   public void addChildren(List<PTSNodeInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      if (this.children == null) {
+        this.children = new ArrayList();
+      }
+      this.children.addAll(paramList);
     }
-    if (this.children == null) {
-      this.children = new ArrayList();
-    }
-    this.children.addAll(paramList);
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -69,18 +72,20 @@ public class PTSNodeInfo
   
   public int getChildCount()
   {
-    if (this.children == null) {
+    List localList = this.children;
+    if (localList == null) {
       return 0;
     }
-    return this.children.size();
+    return localList.size();
   }
   
   public List<PTSNodeInfo> getChildren()
   {
-    if (this.children == null) {
+    List localList = this.children;
+    if (localList == null) {
       return new ArrayList();
     }
-    return new ArrayList(this.children);
+    return new ArrayList(localList);
   }
   
   public String getContent()
@@ -115,12 +120,13 @@ public class PTSNodeInfo
   
   public boolean hasChildren()
   {
-    return (this.children != null) && (this.children.size() > 0);
+    List localList = this.children;
+    return (localList != null) && (localList.size() > 0);
   }
   
   public boolean hasParent()
   {
-    return !TextUtils.isEmpty(this.parentID);
+    return TextUtils.isEmpty(this.parentID) ^ true;
   }
   
   public boolean isContainer()
@@ -135,54 +141,101 @@ public class PTSNodeInfo
   
   public void removeChild(PTSNodeInfo paramPTSNodeInfo)
   {
-    if (this.children != null) {
-      this.children.remove(paramPTSNodeInfo);
+    List localList = this.children;
+    if (localList != null) {
+      localList.remove(paramPTSNodeInfo);
     }
   }
   
   public void setChild(int paramInt, PTSNodeInfo paramPTSNodeInfo)
   {
-    if ((this.children == null) || (paramInt < 0) || (paramInt >= this.children.size())) {
-      return;
+    List localList = this.children;
+    if ((localList != null) && (paramInt >= 0))
+    {
+      if (paramInt >= localList.size()) {
+        return;
+      }
+      this.children.set(paramInt, paramPTSNodeInfo);
     }
-    this.children.set(paramInt, paramPTSNodeInfo);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PTSNodeInfo: \n").append("uniqueID: ").append(this.uniqueID).append("\n").append("nodeType: ").append(this.nodeType).append("\n").append("isRootNode: ").append(this.isRootNode).append("\n").append("parentID: ").append(this.parentID).append("\n").append("content: ").append(this.content).append("\n");
-    localStringBuilder.append("\n").append("Styles: ").append("\n");
+    localStringBuilder.append("PTSNodeInfo: \n");
+    localStringBuilder.append("uniqueID: ");
+    localStringBuilder.append(this.uniqueID);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("nodeType: ");
+    localStringBuilder.append(this.nodeType);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("isRootNode: ");
+    localStringBuilder.append(this.isRootNode);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("parentID: ");
+    localStringBuilder.append(this.parentID);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("content: ");
+    localStringBuilder.append(this.content);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("\n");
+    localStringBuilder.append("Styles: ");
+    localStringBuilder.append("\n");
     Object localObject = this.style.entrySet().iterator();
     Map.Entry localEntry;
     while (((Iterator)localObject).hasNext())
     {
       localEntry = (Map.Entry)((Iterator)localObject).next();
-      localStringBuilder.append("style [").append((String)localEntry.getKey()).append("] = ").append(localEntry.getValue()).append("\n");
+      localStringBuilder.append("style [");
+      localStringBuilder.append((String)localEntry.getKey());
+      localStringBuilder.append("] = ");
+      localStringBuilder.append(localEntry.getValue());
+      localStringBuilder.append("\n");
     }
-    localStringBuilder.append("\n").append("Attributes: ").append("\n");
+    localStringBuilder.append("\n");
+    localStringBuilder.append("Attributes: ");
+    localStringBuilder.append("\n");
     localObject = this.attributes.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       localEntry = (Map.Entry)((Iterator)localObject).next();
-      localStringBuilder.append("attribute [").append((String)localEntry.getKey()).append("] = ").append(localEntry.getValue()).append("\n");
+      localStringBuilder.append("attribute [");
+      localStringBuilder.append((String)localEntry.getKey());
+      localStringBuilder.append("] = ");
+      localStringBuilder.append(localEntry.getValue());
+      localStringBuilder.append("\n");
     }
-    localStringBuilder.append("\n").append("EventInfo: ").append("\n");
+    localStringBuilder.append("\n");
+    localStringBuilder.append("EventInfo: ");
+    localStringBuilder.append("\n");
     localObject = this.eventInfo.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       localEntry = (Map.Entry)((Iterator)localObject).next();
-      localStringBuilder.append("eventInfo [").append((String)localEntry.getKey()).append("] = ").append((String)localEntry.getValue()).append("\n");
+      localStringBuilder.append("eventInfo [");
+      localStringBuilder.append((String)localEntry.getKey());
+      localStringBuilder.append("] = ");
+      localStringBuilder.append((String)localEntry.getValue());
+      localStringBuilder.append("\n");
     }
     if (hasChildren())
     {
-      localStringBuilder.append("\n").append("child count = ").append(getChildCount()).append("\n");
-      localStringBuilder.append("\n").append("Children: ").append("\n");
+      localStringBuilder.append("\n");
+      localStringBuilder.append("child count = ");
+      localStringBuilder.append(getChildCount());
+      localStringBuilder.append("\n");
+      localStringBuilder.append("\n");
+      localStringBuilder.append("Children: ");
+      localStringBuilder.append("\n");
       localObject = getChildren();
       int i = 0;
       while (i < ((List)localObject).size())
       {
-        localStringBuilder.append("child [").append(i).append("] = \n").append(((List)localObject).get(i)).append("\n");
+        localStringBuilder.append("child [");
+        localStringBuilder.append(i);
+        localStringBuilder.append("] = \n");
+        localStringBuilder.append(((List)localObject).get(i));
+        localStringBuilder.append("\n");
         i += 1;
       }
     }
@@ -191,7 +244,7 @@ public class PTSNodeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeInfo
  * JD-Core Version:    0.7.0.1
  */

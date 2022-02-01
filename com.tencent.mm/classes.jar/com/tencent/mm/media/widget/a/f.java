@@ -1,89 +1,100 @@
 package com.tencent.mm.media.widget.a;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
-import android.os.Looper;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.d.a.a;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.SurfaceTexture;
+import android.util.Size;
+import com.tencent.mm.media.widget.camerarecordview.d.b.a;
+import com.tencent.mm.plugin.mmsight.model.g;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/widget/camera/OpenCameraThread;", "", "()V", "TAG", "", "isTimeouted", "", "lock", "Ljava/lang/Object;", "res", "Lcom/tencent/mm/compatible/deviceinfo/CameraUtil$IImpl$OpenCameraRes;", "openCamera", "context", "Landroid/content/Context;", "nowCameraId", "", "looper", "Landroid/os/Looper;", "plugin-mediaeditor_release"})
-public final class f
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "", "onHDRCheckerResult", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "ret", "", "getOnHDRCheckerResult", "()Lkotlin/jvm/functions/Function1;", "setOnHDRCheckerResult", "(Lkotlin/jvm/functions/Function1;)V", "addFrameDataCallback", "callback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "calcScrollZoomStep", "recordButtonTopLocation", "", "stepInterval", "calculateTapArea", "Landroid/graphics/Rect;", "x", "", "y", "coefficient", "surfaceWidth", "surfaceHeight", "checkCameraOpenSucc", "scene", "configVendorTagValue", "tag", "", "value", "focusOnArea", "focusArea", "meteringArea", "focusOnFace", "faceLocation", "", "isClickScreen", "generateCameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraCurrentFocusMode", "getCameraOrientation", "getCameraPreviewFps", "getCurrentCameraId", "getFlashMode", "getPreviewSize", "Landroid/graphics/Point;", "cropSizeIfCan", "getSupportZoomRatios", "", "initCamera", "context", "Landroid/content/Context;", "useBack", "initCameraDeviceConfig", "deviceConfig", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;", "isCameraPreviewing", "onDestroy", "postFocusOnTouch", "delay", "", "release", "removeFocusOnTouch", "removeFrameDataCallback", "setCameraDisplayOrientation", "cameraId", "mScreenRotation", "setCameraPreviewFps", "fpsValue", "setDisplayScreenSize", "screenSize", "Landroid/util/Size;", "setFlashMode", "mode", "setFlashOn", "isOn", "setForceZoomTargetRatio", "ratio", "setPreviewDisplayRatio", "setReturnFrameCallback", "startPreview", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "useCpuCrop", "longSideLimit", "(Landroid/graphics/SurfaceTexture;ZLjava/lang/Float;I)V", "resolutionLimit", "surface", "Landroid/view/SurfaceHolder;", "switchCamera", "switchRecordStream", "switchVendorTag", "isChecked", "takePhoto", "dataCallback", "Landroid/graphics/Bitmap;", "bitmap", "triggerAutoFocus", "triggerCameraZoom", "zoom", "isScrollZoom", "factor", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface f
 {
-  final String TAG;
-  boolean faK;
-  d.a.a faL;
-  final Object lock;
+  public static final f.a nGE = f.a.nGF;
   
-  public f()
-  {
-    AppMethodBeat.i(13227);
-    this.TAG = "MicroMsg.SightCamera.OpenCameraThread";
-    this.lock = new Object();
-    AppMethodBeat.o(13227);
-  }
+  public abstract boolean A(Context paramContext, boolean paramBoolean);
   
-  public final d.a.a a(Context paramContext, int paramInt, Looper paramLooper)
-  {
-    AppMethodBeat.i(13226);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(13226);
-      return null;
-    }
-    long l1 = bo.aoy();
-    ??? = Thread.currentThread();
-    j.p(???, "Thread.currentThread()");
-    long l2 = ((Thread)???).getId();
-    synchronized (this.lock)
-    {
-      this.faK = false;
-      this.faL = null;
-      d.post((Runnable)new f.a(this, l2, l1, paramContext, paramInt, paramLooper), "SightCamera_openCamera");
-      try
-      {
-        this.lock.wait(30000L);
-        if (this.faL != null)
-        {
-          paramContext = this.faL;
-          if (paramContext == null) {
-            j.ebi();
-          }
-          if (paramContext.eoH != null)
-          {
-            paramContext = this.TAG;
-            long l3 = bo.aoy();
-            paramLooper = this.faL;
-            if (paramLooper == null) {
-              j.ebi();
-            }
-            ab.i(paramContext, "Open Camera Succ thread:%d Time:%d camera:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3 - l1), paramLooper.eoH });
-            paramContext = this.faL;
-            AppMethodBeat.o(13226);
-            return paramContext;
-          }
-        }
-      }
-      catch (InterruptedException paramContext)
-      {
-        for (;;)
-        {
-          ab.e(this.TAG, "Lock wait failed e:%s", new Object[] { paramContext.getMessage() });
-        }
-      }
-    }
-    this.faK = true;
-    ab.e(this.TAG, "Open Camera Timeout:%d", new Object[] { Long.valueOf(bo.aoy() - l1) });
-    AppMethodBeat.o(13226);
-    return null;
-  }
+  public abstract void G(String paramString, boolean paramBoolean);
+  
+  public abstract boolean H(kotlin.g.a.b<? super Bitmap, ah> paramb);
+  
+  public abstract void I(kotlin.g.a.b<? super Boolean, ah> paramb);
+  
+  public abstract Rect a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2);
+  
+  public abstract void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean, int paramInt);
+  
+  public abstract void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean, Float paramFloat, int paramInt);
+  
+  public abstract void a(b.a parama);
+  
+  public abstract void a(g paramg);
+  
+  public abstract void aE(String paramString, int paramInt);
+  
+  public abstract void b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract void b(g paramg);
+  
+  public abstract int boh();
+  
+  public abstract boolean bsC();
+  
+  public abstract boolean bsD();
+  
+  public abstract boolean bsE();
+  
+  public abstract void bsF();
+  
+  public abstract int bsG();
+  
+  public abstract boolean bsH();
+  
+  public abstract void btb();
+  
+  public abstract b btc();
+  
+  public abstract int btf();
+  
+  public abstract String btg();
+  
+  public abstract boolean bth();
+  
+  public abstract int ev(int paramInt1, int paramInt2);
+  
+  public abstract boolean f(Rect paramRect1, Rect paramRect2);
+  
+  public abstract int getFlashMode();
+  
+  public abstract float[] getSupportZoomRatios();
+  
+  public abstract Point gx(boolean paramBoolean);
+  
+  public abstract void gy(boolean paramBoolean);
+  
+  public abstract void h(boolean paramBoolean, int paramInt);
+  
+  public abstract void onDestroy();
+  
+  public abstract void release();
+  
+  public abstract void setDisplayScreenSize(Size paramSize);
+  
+  public abstract void setFlashMode(int paramInt);
+  
+  public abstract void setForceZoomTargetRatio(float paramFloat);
+  
+  public abstract boolean uh(int paramInt);
+  
+  public abstract void up(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -26,17 +26,19 @@ public final class GuidePaster
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.pasterId != null) {
-      paramJceOutputStream.write(this.pasterId, 1);
+    str = this.pasterId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.GuidePaster
  * JD-Core Version:    0.7.0.1
  */

@@ -20,144 +20,148 @@ import com.tencent.qphone.base.util.QLog;
 public class EmotionInvalidPanelLinearLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  public static final int BIG_EMOTION_ROWNUM = 3;
+  public static final String LOG_TAG = "ClassicEmoticonPanelView";
+  public static final int SMALL_EMOTION_ROWNUM = 4;
+  private int columnNum;
+  private Context context;
+  private EmoticonPackage emotionPkg;
+  private boolean isSmallEmotion;
+  private float mDensity;
+  private int rowNum;
+  protected int widthPixels;
   
   public EmotionInvalidPanelLinearLayout(Context paramContext, EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
-    this.jdField_a_of_type_Float = super.getContext().getResources().getDisplayMetrics().density;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 4) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.b = paramInt1;
-      this.c = paramInt2;
-      new DisplayMetrics();
-      this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-      super.setOrientation(1);
-      a();
-      return;
+    this.context = paramContext;
+    this.emotionPkg = paramEmoticonPackage;
+    this.mDensity = super.getContext().getResources().getDisplayMetrics().density;
+    boolean bool;
+    if (this.emotionPkg.jobType == 4) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isSmallEmotion = bool;
+    this.rowNum = paramInt1;
+    this.columnNum = paramInt2;
+    new DisplayMetrics();
+    this.widthPixels = paramContext.getResources().getDisplayMetrics().widthPixels;
+    super.setOrientation(1);
+    init();
   }
   
-  public void a()
+  public void init()
   {
     long l = System.currentTimeMillis();
     super.removeAllViews();
     int i = 0;
-    while (i < this.b)
+    Object localObject1;
+    while (i < this.rowNum)
     {
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      int j = (int)(72.0F * this.jdField_a_of_type_Float);
-      if (this.jdField_a_of_type_Boolean) {
-        j = (this.jdField_a_of_type_Int - (int)(18.0F * this.jdField_a_of_type_Float) * 8) / 7;
+      LinearLayout localLinearLayout = new LinearLayout(this.context);
+      float f = this.mDensity;
+      int j = (int)(f * 72.0F);
+      if (this.isSmallEmotion) {
+        j = (this.widthPixels - (int)(f * 18.0F) * 8) / 7;
       }
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, j);
       localLinearLayout.setOrientation(0);
-      label107:
-      Object localObject1;
-      Object localObject3;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localLayoutParams.topMargin = ((int)(18.0F * this.jdField_a_of_type_Float));
-        j = 0;
-        if (j >= this.c) {
-          break label629;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label276;
-        }
-        localObject1 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-        ((URLImageView)localObject1).setId(2131365668);
-        int k = (this.jdField_a_of_type_Int - (int)(18.0F * this.jdField_a_of_type_Float) * 8) / 7;
-        localObject3 = new LinearLayout.LayoutParams(k, k);
-        ((LinearLayout.LayoutParams)localObject3).leftMargin = ((int)(18.0F * this.jdField_a_of_type_Float));
-        ((URLImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        ((URLImageView)localObject1).setVisibility(8);
-        ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
-        ((URLImageView)localObject1).setAdjustViewBounds(false);
-        ((URLImageView)localObject1).setFocusable(true);
-        ((URLImageView)localObject1).setFocusableInTouchMode(true);
-        localLinearLayout.addView((View)localObject1);
+      if (this.isSmallEmotion) {
+        localLayoutParams.topMargin = ((int)(this.mDensity * 18.0F));
+      } else if (i == 0) {
+        localLayoutParams.topMargin = ((int)(this.mDensity * 16.0F));
+      } else {
+        localLayoutParams.topMargin = ((int)(this.mDensity * 14.0F));
       }
-      for (;;)
+      j = 0;
+      while (j < this.columnNum)
       {
-        j += 1;
-        break label107;
-        if (i == 0)
+        RelativeLayout localRelativeLayout;
+        if (this.isSmallEmotion)
         {
-          localLayoutParams.topMargin = ((int)(16.0F * this.jdField_a_of_type_Float));
-          break;
-        }
-        localLayoutParams.topMargin = ((int)(14.0F * this.jdField_a_of_type_Float));
-        break;
-        label276:
-        localObject3 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-        localObject1 = new LinearLayout.LayoutParams(this.jdField_a_of_type_Int / this.c, (int)(72.0F * this.jdField_a_of_type_Float));
-        ((RelativeLayout)localObject3).setFocusable(true);
-        ((RelativeLayout)localObject3).setFocusableInTouchMode(true);
-        ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        try
-        {
-          localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-          if (localObject1 != null)
-          {
-            ((TextView)localObject1).setVisibility(8);
-            ((TextView)localObject1).setId(2131365673);
-            ((TextView)localObject1).setTextSize(11.0F);
-            localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-            localLayoutParams1.addRule(12);
-            localLayoutParams1.addRule(14);
-            localLayoutParams1.topMargin = ((int)(5.0F * this.jdField_a_of_type_Float));
-            ((RelativeLayout)localObject3).addView((View)localObject1, localLayoutParams1);
-          }
-          localObject1 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-          ((URLImageView)localObject1).setId(2131365668);
-          RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams((int)(56.0F * this.jdField_a_of_type_Float), (int)(56.0F * this.jdField_a_of_type_Float));
-          localLayoutParams1.addRule(13, -1);
-          localLayoutParams1.addRule(2, 2131365673);
-          localLayoutParams1.addRule(14);
+          localObject1 = new URLImageView(this.context);
+          ((URLImageView)localObject1).setId(2131446720);
+          int k = (this.widthPixels - (int)(this.mDensity * 18.0F) * 8) / 7;
+          localObject2 = new LinearLayout.LayoutParams(k, k);
+          ((LinearLayout.LayoutParams)localObject2).leftMargin = ((int)(this.mDensity * 18.0F));
+          ((URLImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
           ((URLImageView)localObject1).setVisibility(8);
           ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
           ((URLImageView)localObject1).setAdjustViewBounds(false);
-          ((RelativeLayout)localObject3).addView((View)localObject1, localLayoutParams1);
-          localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-          ((ImageView)localObject1).setVisibility(8);
-          ((ImageView)localObject1).setId(2131365674);
-          localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams1.addRule(7, 2131365668);
-          localLayoutParams1.addRule(8, 2131365668);
-          ((RelativeLayout)localObject3).addView((View)localObject1, localLayoutParams1);
-          if (AppSetting.c) {
-            ((RelativeLayout)localObject3).setFocusable(true);
-          }
-          if (AppSetting.c) {
-            ((RelativeLayout)localObject3).setFocusable(true);
-          }
-          localLinearLayout.addView((View)localObject3);
+          ((URLImageView)localObject1).setFocusable(true);
+          ((URLImageView)localObject1).setFocusableInTouchMode(true);
+          localLinearLayout.addView((View)localObject1);
+        }
+        else
+        {
+          localRelativeLayout = new RelativeLayout(this.context);
+          localObject1 = new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(this.mDensity * 72.0F));
+          localRelativeLayout.setFocusable(true);
+          localRelativeLayout.setFocusableInTouchMode(true);
+          localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          localObject1 = null;
+        }
+        try
+        {
+          localObject2 = new TextView(this.context);
+          localObject1 = localObject2;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            Object localObject2 = null;
-          }
+          label352:
+          break label352;
         }
+        if (localObject1 != null)
+        {
+          ((TextView)localObject1).setVisibility(8);
+          ((TextView)localObject1).setId(2131442558);
+          ((TextView)localObject1).setTextSize(11.0F);
+          localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject2).addRule(12);
+          ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+          ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(this.mDensity * 5.0F));
+          localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        }
+        localObject1 = new URLImageView(this.context);
+        ((URLImageView)localObject1).setId(2131446720);
+        f = this.mDensity;
+        Object localObject2 = new RelativeLayout.LayoutParams((int)(f * 56.0F), (int)(f * 56.0F));
+        ((RelativeLayout.LayoutParams)localObject2).addRule(13, -1);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131442558);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+        ((URLImageView)localObject1).setVisibility(8);
+        ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
+        ((URLImageView)localObject1).setAdjustViewBounds(false);
+        localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        localObject1 = new ImageView(this.context);
+        ((ImageView)localObject1).setVisibility(8);
+        ((ImageView)localObject1).setId(2131442559);
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131446720);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131446720);
+        localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        if (AppSetting.e) {
+          localRelativeLayout.setFocusable(true);
+        }
+        if (AppSetting.e) {
+          localRelativeLayout.setFocusable(true);
+        }
+        localLinearLayout.addView(localRelativeLayout);
+        j += 1;
       }
-      label629:
       super.addView(localLinearLayout, localLayoutParams);
       i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ClassicEmoticonPanelView", 2, "[Performance] EmoticonLinearLayout create duration: " + (System.currentTimeMillis() - l) + "issmallemotion = " + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[Performance] EmoticonLinearLayout create duration: ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject1).append("issmallemotion = ");
+      ((StringBuilder)localObject1).append(this.isSmallEmotion);
+      QLog.d("ClassicEmoticonPanelView", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }

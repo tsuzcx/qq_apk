@@ -17,15 +17,17 @@ class ClassesInfoCache$MethodReference
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (MethodReference)paramObject;
-    } while ((this.mCallType == paramObject.mCallType) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
+      return (this.mCallType == paramObject.mCallType) && (this.mMethod.getName().equals(paramObject.mMethod.getName()));
+    }
     return false;
   }
   
@@ -38,30 +40,36 @@ class ClassesInfoCache$MethodReference
   {
     try
     {
-      switch (this.mCallType)
+      int i = this.mCallType;
+      if (i != 0)
       {
-      case 2: 
-        this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner, paramEvent });
+        if (i != 1)
+        {
+          if (i != 2) {
+            return;
+          }
+          this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner, paramEvent });
+          return;
+        }
+        this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner });
         return;
       }
-    }
-    catch (InvocationTargetException paramLifecycleOwner)
-    {
-      throw new RuntimeException("Failed to call observer method", paramLifecycleOwner.getCause());
-      this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner });
+      this.mMethod.invoke(paramObject, new Object[0]);
       return;
     }
     catch (IllegalAccessException paramLifecycleOwner)
     {
       throw new RuntimeException(paramLifecycleOwner);
     }
-    this.mMethod.invoke(paramObject, new Object[0]);
-    return;
+    catch (InvocationTargetException paramLifecycleOwner)
+    {
+      throw new RuntimeException("Failed to call observer method", paramLifecycleOwner.getCause());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.ClassesInfoCache.MethodReference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,25 @@
 package com.tencent.open.downloadnew;
 
-import bfok;
-import bfox;
-
-public class DownloadManager$1
+class DownloadManager$1
   implements Runnable
 {
-  public DownloadManager$1(bfok parambfok) {}
+  DownloadManager$1(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    if (!this.this$0.a)
+    if (!this.this$0.f)
     {
-      if (!bfox.a().b()) {
+      MyAppApi.l();
+      if (!MyAppApi.m()) {
         this.this$0.a(true);
       }
-      this.this$0.a = true;
+      this.this$0.f = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

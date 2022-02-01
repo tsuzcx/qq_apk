@@ -18,9 +18,9 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(67641);
+    AppMethodBeat.i(15452);
     b = new Random();
-    AppMethodBeat.o(67641);
+    AppMethodBeat.o(15452);
   }
   
   public c(InetAddress paramInetAddress)
@@ -36,13 +36,13 @@ public final class c
   
   private byte[] a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(67640);
+    AppMethodBeat.i(15451);
     DatagramSocket localDatagramSocket;
     try
     {
       localDatagramSocket = new DatagramSocket();
       if (localDatagramSocket == null) {
-        break label95;
+        break label97;
       }
     }
     finally
@@ -56,7 +56,7 @@ public final class c
         localDatagramSocket.receive(paramArrayOfByte);
         paramArrayOfByte = paramArrayOfByte.getData();
         localDatagramSocket.close();
-        AppMethodBeat.o(67640);
+        AppMethodBeat.o(15451);
         return paramArrayOfByte;
       }
       finally {}
@@ -64,14 +64,14 @@ public final class c
       localDatagramSocket = null;
     }
     localDatagramSocket.close();
-    label95:
-    AppMethodBeat.o(67640);
+    label97:
+    AppMethodBeat.o(15451);
     throw paramArrayOfByte;
   }
   
   public final e[] a(com.tencent.liteav.network.a.b paramb, d arg2)
   {
-    AppMethodBeat.i(67639);
+    AppMethodBeat.i(15450);
     int i;
     synchronized (b)
     {
@@ -80,18 +80,18 @@ public final class c
       if (??? == null)
       {
         paramb = new a(paramb.a, "cant get answer");
-        AppMethodBeat.o(67639);
+        AppMethodBeat.o(15450);
         throw paramb;
       }
     }
     paramb = b.a(???, i, paramb.a);
-    AppMethodBeat.o(67639);
+    AppMethodBeat.o(15450);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.a.a.c
  * JD-Core Version:    0.7.0.1
  */

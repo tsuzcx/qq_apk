@@ -1,21 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.protocal.protobuf.fcw;
 
-public final class aj
-  extends a<c>
+public abstract interface aj
+  extends b
 {
-  public static final int CTRL_INDEX = 101;
-  public static final String NAME = "getAppConfig";
+  public abstract void a(Context paramContext, String paramString1, String paramString2, fcw paramfcw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.aj
  * JD-Core Version:    0.7.0.1
  */

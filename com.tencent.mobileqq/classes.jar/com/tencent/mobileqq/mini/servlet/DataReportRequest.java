@@ -16,19 +16,25 @@ public class DataReportRequest
   
   public static APP_REPORT_TRANSFER.StDataReportRsp onResponse(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      APP_REPORT_TRANSFER.StDataReportRsp localStDataReportRsp = new APP_REPORT_TRANSFER.StDataReportRsp();
-      try
+    }
+    Object localObject = new APP_REPORT_TRANSFER.StDataReportRsp();
+    try
+    {
+      ((APP_REPORT_TRANSFER.StDataReportRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel())
       {
-        localStDataReportRsp.mergeFrom(decode(paramArrayOfByte));
-        return localStDataReportRsp;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ProtoBufRequest", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ProtoBufRequest", 2, "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
@@ -39,7 +45,7 @@ public class DataReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.DataReportRequest
  * JD-Core Version:    0.7.0.1
  */

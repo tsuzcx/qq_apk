@@ -10,7 +10,7 @@ public class faz
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileComing0x211_0x1_0x9(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileComing0x211_0x2_0xa(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahcr;
-import ajit;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class RecentAdapter$3
-  implements Runnable
+class RecentAdapter$3
+  implements BubblePopupWindow.OnDismissListener
 {
-  public RecentAdapter$3(ajit paramajit) {}
+  RecentAdapter$3(RecentAdapter paramRecentAdapter, View paramView) {}
   
-  public void run()
+  public void onDismiss()
   {
-    ((ahcr)this.this$0.a.getManager(138)).b(true);
+    this.a.setSelected(false);
   }
 }
 

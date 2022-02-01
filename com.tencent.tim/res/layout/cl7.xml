@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/mw6" android:background="@drawable/f8m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bjk">
+        <View android:layout_gravity="left" android:id="@id/mw7" android:background="@drawable/bx4" android:layout_width="0.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Button android:id="@id/nws" android:text="@string/x5f" style="@style/ad_" />
+            <Button android:id="@id/o38" android:text="@string/x5e" style="@style/ad_" />
+        </LinearLayout>
+    </FrameLayout>
+    <com.tencent.qqmail.attachment.view.CustomViewPager android:id="@id/mw8" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <include android:id="@id/nb2" android:visibility="gone" layout="@layout/cdt" />
+</LinearLayout>

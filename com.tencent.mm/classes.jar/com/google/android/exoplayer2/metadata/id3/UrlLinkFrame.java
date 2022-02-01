@@ -14,18 +14,18 @@ public final class UrlLinkFrame
   
   static
   {
-    AppMethodBeat.i(95339);
-    CREATOR = new UrlLinkFrame.1();
-    AppMethodBeat.o(95339);
+    AppMethodBeat.i(92461);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(92461);
   }
   
   UrlLinkFrame(Parcel paramParcel)
   {
     super(paramParcel.readString());
-    AppMethodBeat.i(95335);
+    AppMethodBeat.i(92457);
     this.description = paramParcel.readString();
     this.url = paramParcel.readString();
-    AppMethodBeat.o(95335);
+    AppMethodBeat.o(92457);
   }
   
   public UrlLinkFrame(String paramString1, String paramString2, String paramString3)
@@ -37,31 +37,31 @@ public final class UrlLinkFrame
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(95336);
+    AppMethodBeat.i(92458);
     if (this == paramObject)
     {
-      AppMethodBeat.o(95336);
+      AppMethodBeat.o(92458);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(95336);
+      AppMethodBeat.o(92458);
       return false;
     }
     paramObject = (UrlLinkFrame)paramObject;
-    if ((this.id.equals(paramObject.id)) && (x.e(this.description, paramObject.description)) && (x.e(this.url, paramObject.url)))
+    if ((this.id.equals(paramObject.id)) && (x.p(this.description, paramObject.description)) && (x.p(this.url, paramObject.url)))
     {
-      AppMethodBeat.o(95336);
+      AppMethodBeat.o(92458);
       return true;
     }
-    AppMethodBeat.o(95336);
+    AppMethodBeat.o(92458);
     return false;
   }
   
   public final int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(95337);
+    AppMethodBeat.i(92459);
     int k = this.id.hashCode();
     if (this.description != null) {}
     for (int i = this.description.hashCode();; i = 0)
@@ -69,23 +69,23 @@ public final class UrlLinkFrame
       if (this.url != null) {
         j = this.url.hashCode();
       }
-      AppMethodBeat.o(95337);
+      AppMethodBeat.o(92459);
       return (i + (k + 527) * 31) * 31 + j;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(95338);
+    AppMethodBeat.i(92460);
     paramParcel.writeString(this.id);
     paramParcel.writeString(this.description);
     paramParcel.writeString(this.url);
-    AppMethodBeat.o(95338);
+    AppMethodBeat.o(92460);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.UrlLinkFrame
  * JD-Core Version:    0.7.0.1
  */

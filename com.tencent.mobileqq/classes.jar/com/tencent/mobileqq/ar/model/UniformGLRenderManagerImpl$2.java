@@ -1,48 +1,48 @@
 package com.tencent.mobileqq.ar.model;
 
-import amvh;
-import amvl;
-import amvo;
-import angf;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderResourceInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenerArumentManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class UniformGLRenderManagerImpl$2
+class UniformGLRenderManagerImpl$2
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$2(angf paramangf, amvh paramamvh, amvl paramamvl) {}
+  UniformGLRenderManagerImpl$2(UniformGLRenderManagerImpl paramUniformGLRenderManagerImpl, ARBaseRender paramARBaseRender, ARRenderResourceInfo paramARRenderResourceInfo) {}
   
   public void run()
   {
-    amvh localamvh = this.jdField_a_of_type_Amvh;
-    angf localangf = this.this$0;
-    int i = angf.jdField_a_of_type_Int;
-    localangf = this.this$0;
-    localamvh.a(i, angf.b);
-    localamvh = this.this$0.jdField_a_of_type_Amvh;
-    this.this$0.jdField_a_of_type_Amvh = this.jdField_a_of_type_Amvh;
+    ARBaseRender localARBaseRender = this.a;
+    UniformGLRenderManagerImpl localUniformGLRenderManagerImpl = this.this$0;
+    int i = UniformGLRenderManagerImpl.b;
+    localUniformGLRenderManagerImpl = this.this$0;
+    localARBaseRender.a(i, UniformGLRenderManagerImpl.c);
+    localARBaseRender = this.this$0.e;
+    this.this$0.e = this.a;
     if (QLog.isColorLevel()) {
       QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
     }
-    if ((localamvh != null) && (localamvh != this.this$0.jdField_a_of_type_Amvh)) {
-      localamvh.f();
+    if ((localARBaseRender != null) && (localARBaseRender != this.this$0.e)) {
+      localARBaseRender.l();
     }
-    if (this.this$0.jdField_a_of_type_Amvh == null) {
+    if (this.this$0.e == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Amvl.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_Amvl.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Amvl.jdField_a_of_type_Long == 2048L))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.this$0.jdField_a_of_type_Amvo.a();
-      this.this$0.jdField_a_of_type_Amvo.a(bool, this.jdField_a_of_type_Amvl);
-      this.this$0.jdField_a_of_type_Amvh.c();
-      this.this$0.jdField_a_of_type_Amvh.d();
-      return;
+    boolean bool;
+    if ((this.b.b == 5) && ((this.b.c == 2L) || (this.b.c == 2048L))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.this$0.h.a();
+    this.this$0.h.a(bool, this.b);
+    this.this$0.e.i();
+    this.this$0.e.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.UniformGLRenderManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

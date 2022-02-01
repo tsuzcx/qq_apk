@@ -11,14 +11,14 @@ public class ClickFlowReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(15838);
-    c.akw().x(paramIntent);
-    AppMethodBeat.o(15838);
+    AppMethodBeat.i(19873);
+    c.bMY().l(paramIntent);
+    AppMethodBeat.o(19873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.booter.ClickFlowReceiver
  * JD-Core Version:    0.7.0.1
  */

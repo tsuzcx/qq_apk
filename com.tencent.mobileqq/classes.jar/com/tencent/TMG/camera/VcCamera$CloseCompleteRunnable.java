@@ -14,14 +14,15 @@ class VcCamera$CloseCompleteRunnable
   
   public void run()
   {
-    if ((this.mHost != null) && (this.mHost.get() != null)) {
+    WeakReference localWeakReference = this.mHost;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((VcCamera)this.mHost.get()).onCloseCamera();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.camera.VcCamera.CloseCompleteRunnable
  * JD-Core Version:    0.7.0.1
  */

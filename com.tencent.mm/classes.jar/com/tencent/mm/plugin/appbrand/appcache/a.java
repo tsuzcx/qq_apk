@@ -1,112 +1,56 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.text.TextUtils;
-import com.tencent.mm.aa.i;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
-import com.tencent.mm.plugin.appbrand.s.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.Closeable;
-import java.io.InputStream;
-import java.util.Locale;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.u;
+import com.tencent.mm.plugin.appbrand.ae.b;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public abstract class a
-  implements n
+public final class a
+  extends u
+  implements b
 {
-  volatile String gTL;
-  volatile String gTM;
-  volatile String versionName;
+  static final IAutoDBItem.MAutoDBInfo nVV;
+  public static final String[] nVW;
+  public static final String[] qDJ;
   
-  public final String avc()
+  static
   {
-    String str2;
-    String str3;
-    String str1;
-    if (TextUtils.isEmpty(this.versionName))
+    AppMethodBeat.i(180190);
+    qDJ = new String[] { "appId", "appVersion" };
+    nVV = u.aJm();
+    String str = " PRIMARY KEY ( ";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
     {
-      str2 = "";
-      str3 = "";
-      localObject4 = null;
-      localObject2 = null;
-      str1 = str3;
-      localObject3 = str2;
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
     }
-    try
-    {
-      InputStream localInputStream = openRead("WAVersion.json");
-      localObject2 = localInputStream;
-      str1 = str3;
-      localObject3 = str2;
-      localObject4 = localInputStream;
-      String str4 = d.convertStreamToString(localInputStream);
-      localObject2 = localInputStream;
-      str1 = str3;
-      localObject3 = str2;
-      localObject4 = localInputStream;
-      i locali = new i(str4);
-      localObject2 = localInputStream;
-      str1 = str3;
-      localObject3 = str2;
-      localObject4 = localInputStream;
-      str2 = locali.getString("version");
-      localObject2 = localInputStream;
-      str1 = str3;
-      localObject3 = str2;
-      localObject4 = localInputStream;
-      str3 = locali.getString("updateTime");
-      localObject2 = localInputStream;
-      str1 = str3;
-      localObject3 = str2;
-      localObject4 = localInputStream;
-      ab.i("MicroMsg.AppBrand.AbsReader", "AbsReader version parsed version = [%s] raw = [%s]", new Object[] { str2, str4 });
-      bo.b(localInputStream);
-      localObject2 = str2;
-      str1 = str3;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localObject4 = localObject2;
-        ab.printErrStackTrace("MicroMsg.AppBrand.AbsReader", localException, "get WAVersion.json failed.", new Object[0]);
-        bo.b((Closeable)localObject2);
-        localObject2 = localObject3;
-      }
-    }
-    finally
-    {
-      bo.b(localObject4);
-    }
-    localObject3 = localObject2;
-    if (localObject2 == null) {
-      localObject3 = "";
-    }
-    this.versionName = ((String)localObject3);
-    this.gTL = str1;
-    this.gTM = String.format(Locale.US, "%s (%s)", new Object[] { this.versionName, this.gTL });
-    return this.versionName;
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = nVV;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(nVV, "AppBrandSeparatedPluginsCompatMarkTable") };
+    AppMethodBeat.o(180190);
   }
   
-  public final String avd()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return this.gTM;
+    return nVV;
   }
   
-  public final String yl(String paramString)
+  public final String[] getKeys()
   {
-    Object localObject = openRead(paramString);
-    if (localObject == null) {
-      return null;
-    }
-    long l = bo.yB();
-    localObject = d.convertStreamToString((InputStream)localObject);
-    ab.v("MicroMsg.AppBrand.AbsReader", "readAsString(%s), cost %dms", new Object[] { paramString, Long.valueOf(bo.yB() - l) });
-    return localObject;
+    return qDJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.a
  * JD-Core Version:    0.7.0.1
  */

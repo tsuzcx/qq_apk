@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.adapter;
 
-import akkt;
 import java.util.ArrayList;
 
-public class RobotAdapter$5
+class RobotAdapter$5
   implements Runnable
 {
-  public RobotAdapter$5(akkt paramakkt, String paramString, boolean paramBoolean, int paramInt) {}
+  RobotAdapter$5(RobotAdapter paramRobotAdapter, String paramString, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    akkt.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString);
-    akkt.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+    RobotAdapter.e(this.this$0).contains(this.a);
+    RobotAdapter.e(this.this$0).remove(this.a);
     this.this$0.notifyDataSetChanged();
-    if (!this.jdField_a_of_type_Boolean) {
-      this.this$0.a(this.jdField_a_of_type_Int);
+    if (!this.b) {
+      this.this$0.a(this.c);
     }
   }
 }

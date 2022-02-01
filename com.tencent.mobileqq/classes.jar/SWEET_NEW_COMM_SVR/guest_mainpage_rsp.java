@@ -10,7 +10,7 @@ public final class guest_mainpage_rsp
 {
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
   public String jump_url = "";
-  public sweet_rsp_comm rsp_comm;
+  public sweet_rsp_comm rsp_comm = null;
   
   public guest_mainpage_rsp() {}
   
@@ -29,14 +29,15 @@ public final class guest_mainpage_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.rsp_comm, 0);
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 1);
+    String str = this.jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_COMM_SVR.guest_mainpage_rsp
  * JD-Core Version:    0.7.0.1
  */

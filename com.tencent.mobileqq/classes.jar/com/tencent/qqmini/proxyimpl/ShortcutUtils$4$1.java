@@ -12,12 +12,12 @@ class ShortcutUtils$4$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.e("Shortcut", 2, "confirm");
-    ShortcutUtils.openPermissionActivity(this.this$0.val$activity);
+    ShortcutUtils.b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,21 +8,21 @@ public class IDKey
   implements Parcelable
 {
   public static final Parcelable.Creator<IDKey> CREATOR = new Parcelable.Creator() {};
-  private long UW;
+  private long WL;
   private long id;
   private long value;
   
   public IDKey()
   {
     this.id = 0L;
-    this.UW = 0L;
+    this.WL = 0L;
     this.value = 0L;
   }
   
   protected IDKey(Parcel paramParcel)
   {
     this.id = paramParcel.readLong();
-    this.UW = paramParcel.readLong();
+    this.WL = paramParcel.readLong();
     this.value = paramParcel.readLong();
   }
   
@@ -34,7 +34,7 @@ public class IDKey
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeLong(this.id);
-    paramParcel.writeLong(this.UW);
+    paramParcel.writeLong(this.WL);
     paramParcel.writeLong(this.value);
   }
 }

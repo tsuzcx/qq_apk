@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public final class i
 {
-  private static final Pattern Lj = Pattern.compile("\\\\.");
-  private static final Pattern Lk = Pattern.compile("[\\\\\"/\b\f\n\r\t]");
+  private static final Pattern MY = Pattern.compile("\\\\.");
+  private static final Pattern MZ = Pattern.compile("[\\\\\"/\b\f\n\r\t]");
   
   public static String n(String paramString)
   {
@@ -15,7 +15,7 @@ public final class i
     Object localObject1;
     if (!TextUtils.isEmpty(paramString))
     {
-      localMatcher = Lk.matcher(paramString);
+      localMatcher = MZ.matcher(paramString);
       localObject1 = null;
       while (localMatcher.find())
       {

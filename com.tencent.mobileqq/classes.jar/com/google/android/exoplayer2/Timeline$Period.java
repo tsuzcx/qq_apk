@@ -83,7 +83,7 @@ public final class Timeline$Period
   
   public boolean hasPlayedAdGroup(int paramInt)
   {
-    return !this.adPlaybackState.adGroups[paramInt].hasUnplayedAds();
+    return this.adPlaybackState.adGroups[paramInt].hasUnplayedAds() ^ true;
   }
   
   public boolean isAdAvailable(int paramInt1, int paramInt2)
@@ -110,7 +110,7 @@ public final class Timeline$Period
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.Timeline.Period
  * JD-Core Version:    0.7.0.1
  */

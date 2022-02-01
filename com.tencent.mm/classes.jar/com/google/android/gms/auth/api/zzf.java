@@ -14,16 +14,16 @@ public final class zzf
   
   static
   {
-    AppMethodBeat.i(77052);
+    AppMethodBeat.i(10711);
     zzas = new Api.ClientKey();
     zzat = new zzg();
     API = new Api("Auth.PROXY_API", zzat, zzas);
-    AppMethodBeat.o(77052);
+    AppMethodBeat.o(10711);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.zzf
  * JD-Core Version:    0.7.0.1
  */

@@ -3,90 +3,99 @@ package com.tencent.mm.plugin.collect.model;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
 import com.tencent.mm.plugin.wallet_core.d.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class c
-  implements v
+  implements p
 {
-  private v.b kMO;
   private String url;
+  private p.b wXZ;
   
   public c(String paramString)
   {
-    AppMethodBeat.i(40923);
-    this.kMO = new c.1(this);
+    AppMethodBeat.i(63773);
+    this.wXZ = new p.b()
+    {
+      public final Bitmap Se(String paramAnonymousString)
+      {
+        AppMethodBeat.i(63772);
+        paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
+        AppMethodBeat.o(63772);
+        return paramAnonymousString;
+      }
+    };
     this.url = paramString;
-    AppMethodBeat.o(40923);
+    AppMethodBeat.o(63773);
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
-  
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
-    AppMethodBeat.i(40925);
-    if (v.a.gjx == parama) {}
+    AppMethodBeat.i(63775);
+    if (p.a.pAS == parama) {}
     try
     {
-      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.WX(this.url), false);
-      AppMethodBeat.o(40925);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.aRP(this.url), false);
+      AppMethodBeat.o(63775);
       return paramBitmap;
     }
     catch (IOException parama)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.WalletGetPicStrategy", parama, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WalletGetPicStrategy", parama, "", new Object[0]);
       }
     }
   }
   
-  public final void a(v.a parama, String paramString) {}
+  public final void a(p.a parama) {}
   
-  public final v.b aom()
+  public final p.b bTB()
   {
-    return this.kMO;
+    return this.wXZ;
   }
   
-  public final String aon()
+  public final String bTC()
   {
-    AppMethodBeat.i(40924);
-    String str = b.WX(this.url);
-    AppMethodBeat.o(40924);
+    AppMethodBeat.i(63774);
+    String str = b.aRP(this.url);
+    AppMethodBeat.o(63774);
     return str;
   }
   
-  public final String aoo()
+  public final String bTD()
   {
     return this.url;
   }
   
-  public final String aop()
+  public final String bTE()
   {
     return this.url;
   }
   
-  public final boolean aoq()
+  public final boolean bTF()
   {
     return true;
   }
   
-  public final boolean aor()
+  public final boolean bTG()
   {
     return false;
   }
   
-  public final Bitmap aos()
+  public final Bitmap bTH()
   {
     return null;
   }
   
-  public final void aot() {}
+  public final void bTI() {}
+  
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {
@@ -95,7 +104,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.c
  * JD-Core Version:    0.7.0.1
  */

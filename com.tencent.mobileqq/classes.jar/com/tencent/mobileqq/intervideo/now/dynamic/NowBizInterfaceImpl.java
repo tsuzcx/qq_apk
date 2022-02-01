@@ -53,7 +53,10 @@ public class NowBizInterfaceImpl
   
   public void onLiveOverIsInstalled(boolean paramBoolean)
   {
-    Log.d("Login_Exception", "getLiveOverPluginState--from-pm---onLiveOverIsInstalled=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getLiveOverPluginState--from-pm---onLiveOverIsInstalled=");
+    localStringBuilder.append(paramBoolean);
+    Log.d("Login_Exception", localStringBuilder.toString());
     ExtSdkBizAbilityImpl.getInstance().onLiveOverIsInstalled(paramBoolean);
   }
   
@@ -140,7 +143,7 @@ public class NowBizInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowBizInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

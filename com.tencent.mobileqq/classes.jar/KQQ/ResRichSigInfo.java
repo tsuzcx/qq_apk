@@ -9,9 +9,9 @@ public final class ResRichSigInfo
 {
   static byte[] cache_vbSigInfo;
   public byte cStatus = -1;
-  public long dwTime;
-  public long lUin;
-  public byte[] vbSigInfo;
+  public long dwTime = 0L;
+  public long lUin = 0L;
+  public byte[] vbSigInfo = null;
   
   public ResRichSigInfo() {}
   
@@ -41,14 +41,15 @@ public final class ResRichSigInfo
     paramJceOutputStream.write(this.cStatus, 1);
     paramJceOutputStream.write(this.lUin, 2);
     paramJceOutputStream.write(this.dwTime, 3);
-    if (this.vbSigInfo != null) {
-      paramJceOutputStream.write(this.vbSigInfo, 4);
+    byte[] arrayOfByte = this.vbSigInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ResRichSigInfo
  * JD-Core Version:    0.7.0.1
  */

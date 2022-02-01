@@ -1,36 +1,33 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import amrv;
-import aoom;
-import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import java.util.Iterator;
+import java.util.List;
 
 class DesktopDataManager$28
-  extends amrv
+  implements Runnable
 {
-  DesktopDataManager$28(DesktopDataManager paramDesktopDataManager) {}
+  DesktopDataManager$28(DesktopDataManager paramDesktopDataManager, String paramString) {}
   
-  public void onGetAppletsPushUnreadInfo(Object paramObject)
+  public void run()
   {
-    if ((aoom.h()) && ((paramObject instanceof MiniAppRedDotEntity)))
+    Iterator localIterator = DesktopDataManager.access$1600(this.this$0).iterator();
+    while (localIterator.hasNext())
     {
-      paramObject = (MiniAppRedDotEntity)paramObject;
-      this.this$0.setMiniAppPushRedDotData(paramObject);
+      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
+      if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(this.val$appId))) {
+        localIterator.remove();
+      }
     }
-  }
-  
-  public void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 1, "onReceiveAppletsMessageUnreadInfo: " + paramMap);
+    DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+    if (DesktopDataManager.access$1500(this.this$0) != null) {
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
     }
-    this.this$0.setMiniAppNoticeRedDotData(paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.28
  * JD-Core Version:    0.7.0.1
  */

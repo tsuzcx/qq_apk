@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import cle;
+import cld;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 
@@ -26,12 +26,12 @@ public class ForceLogoutActivity
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("msg");
     if ((paramBundle != null) && (paramBundle.length() > 0)) {
-      ((TextView)findViewById(2131231709)).setText(paramBundle);
+      ((TextView)findViewById(2131231708)).setText(paramBundle);
     }
     if ((str != null) && (str.length() > 0)) {
-      ((TextView)findViewById(2131231710)).setText(str);
+      ((TextView)findViewById(2131231709)).setText(str);
     }
-    ((Button)findViewById(2131231711)).setOnClickListener(new cle(this));
+    ((Button)findViewById(2131231710)).setOnClickListener(new cld(this));
     return true;
   }
 }

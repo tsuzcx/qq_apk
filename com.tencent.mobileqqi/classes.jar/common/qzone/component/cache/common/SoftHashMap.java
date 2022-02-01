@@ -1,9 +1,9 @@
 package common.qzone.component.cache.common;
 
-import hzf;
-import hzh;
-import hzk;
-import hzn;
+import hze;
+import hzg;
+import hzj;
+import hzm;
 import java.lang.ref.ReferenceQueue;
 import java.util.AbstractMap;
 import java.util.Collection;
@@ -22,7 +22,7 @@ public final class SoftHashMap
   private final ReferenceQueue jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
   private volatile transient Collection jdField_a_of_type_JavaUtilCollection = null;
   private transient Set jdField_a_of_type_JavaUtilSet = null;
-  private hzf[] jdField_a_of_type_ArrayOfHzf;
+  private hze[] jdField_a_of_type_ArrayOfHze;
   private final float jdField_b_of_type_Float;
   private volatile transient Set jdField_b_of_type_JavaUtilSet = null;
   private int c;
@@ -33,7 +33,7 @@ public final class SoftHashMap
   {
     this.jdField_b_of_type_Float = 0.75F;
     this.d = 16;
-    this.jdField_a_of_type_ArrayOfHzf = new hzf[16];
+    this.jdField_a_of_type_ArrayOfHze = new hze[16];
   }
   
   public SoftHashMap(int paramInt, float paramFloat)
@@ -52,7 +52,7 @@ public final class SoftHashMap
     while (paramInt < i) {
       paramInt <<= 1;
     }
-    this.jdField_a_of_type_ArrayOfHzf = new hzf[paramInt];
+    this.jdField_a_of_type_ArrayOfHze = new hze[paramInt];
     this.jdField_b_of_type_Float = paramFloat;
     this.d = ((int)(paramInt * paramFloat));
   }
@@ -73,90 +73,90 @@ public final class SoftHashMap
     return a(paramObject.hashCode());
   }
   
-  private hzf a(Object paramObject)
+  private hze a(Object paramObject)
   {
     Object localObject = b(paramObject);
     int i = a(localObject);
     paramObject = a();
-    for (paramObject = paramObject[a(i, paramObject.length)]; (paramObject != null) && ((hzf.a(paramObject) != i) || (!a(localObject, paramObject.get()))); paramObject = hzf.a(paramObject)) {}
+    for (paramObject = paramObject[a(i, paramObject.length)]; (paramObject != null) && ((hze.a(paramObject) != i) || (!a(localObject, paramObject.get()))); paramObject = hze.a(paramObject)) {}
     return paramObject;
   }
   
   private void a()
   {
-    hzf localhzf2 = (hzf)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-    if (localhzf2 != null)
+    hze localhze2 = (hze)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+    if (localhze2 != null)
     {
-      int i = a(hzf.a(localhzf2), this.jdField_a_of_type_ArrayOfHzf.length);
-      Object localObject1 = this.jdField_a_of_type_ArrayOfHzf[i];
+      int i = a(hze.a(localhze2), this.jdField_a_of_type_ArrayOfHze.length);
+      Object localObject1 = this.jdField_a_of_type_ArrayOfHze[i];
       Object localObject2 = localObject1;
       while (localObject1 != null)
       {
-        hzf localhzf1 = hzf.a((hzf)localObject1);
-        if (localObject1 == localhzf2)
+        hze localhze1 = hze.a((hze)localObject1);
+        if (localObject1 == localhze2)
         {
-          if (localObject2 == localhzf2) {
-            this.jdField_a_of_type_ArrayOfHzf[i] = localhzf1;
+          if (localObject2 == localhze2) {
+            this.jdField_a_of_type_ArrayOfHze[i] = localhze1;
           }
           for (;;)
           {
-            hzf.a(localhzf2, null);
-            hzf.a(localhzf2, null);
+            hze.a(localhze2, null);
+            hze.a(localhze2, null);
             this.c -= 1;
             break;
-            hzf.a(localObject2, localhzf1);
+            hze.a(localObject2, localhze1);
           }
         }
         localObject2 = localObject1;
-        localObject1 = localhzf1;
+        localObject1 = localhze1;
       }
     }
   }
   
   private void a(int paramInt)
   {
-    hzf[] arrayOfhzf1 = a();
-    if (arrayOfhzf1.length == 1073741824)
+    hze[] arrayOfhze1 = a();
+    if (arrayOfhze1.length == 1073741824)
     {
       this.d = 2147483647;
       return;
     }
-    hzf[] arrayOfhzf2 = new hzf[paramInt];
-    a(arrayOfhzf1, arrayOfhzf2);
-    this.jdField_a_of_type_ArrayOfHzf = arrayOfhzf2;
+    hze[] arrayOfhze2 = new hze[paramInt];
+    a(arrayOfhze1, arrayOfhze2);
+    this.jdField_a_of_type_ArrayOfHze = arrayOfhze2;
     if (this.c >= this.d / 2)
     {
       this.d = ((int)(paramInt * this.jdField_b_of_type_Float));
       return;
     }
     a();
-    a(arrayOfhzf2, arrayOfhzf1);
-    this.jdField_a_of_type_ArrayOfHzf = arrayOfhzf1;
+    a(arrayOfhze2, arrayOfhze1);
+    this.jdField_a_of_type_ArrayOfHze = arrayOfhze1;
   }
   
-  private void a(hzf[] paramArrayOfhzf1, hzf[] paramArrayOfhzf2)
+  private void a(hze[] paramArrayOfhze1, hze[] paramArrayOfhze2)
   {
     int i = 0;
-    while (i < paramArrayOfhzf1.length)
+    while (i < paramArrayOfhze1.length)
     {
-      Object localObject = paramArrayOfhzf1[i];
-      paramArrayOfhzf1[i] = null;
+      Object localObject = paramArrayOfhze1[i];
+      paramArrayOfhze1[i] = null;
       if (localObject != null)
       {
-        hzf localhzf = hzf.a((hzf)localObject);
-        if (((hzf)localObject).get() == null)
+        hze localhze = hze.a((hze)localObject);
+        if (((hze)localObject).get() == null)
         {
-          hzf.a((hzf)localObject, null);
-          hzf.a((hzf)localObject, null);
+          hze.a((hze)localObject, null);
+          hze.a((hze)localObject, null);
           this.c -= 1;
         }
         for (;;)
         {
-          localObject = localhzf;
+          localObject = localhze;
           break;
-          int j = a(hzf.a((hzf)localObject), paramArrayOfhzf2.length);
-          hzf.a((hzf)localObject, paramArrayOfhzf2[j]);
-          paramArrayOfhzf2[j] = localObject;
+          int j = a(hze.a((hze)localObject), paramArrayOfhze2.length);
+          hze.a((hze)localObject, paramArrayOfhze2[j]);
+          paramArrayOfhze2[j] = localObject;
         }
       }
       i += 1;
@@ -165,16 +165,16 @@ public final class SoftHashMap
   
   private boolean a()
   {
-    hzf[] arrayOfhzf = a();
+    hze[] arrayOfhze = a();
     int j;
-    for (int i = arrayOfhzf.length;; i = j)
+    for (int i = arrayOfhze.length;; i = j)
     {
       j = i - 1;
       if (i <= 0) {
         break;
       }
-      for (hzf localhzf = arrayOfhzf[j]; localhzf != null; localhzf = hzf.a(localhzf)) {
-        if (hzf.a(localhzf) == null) {
+      for (hze localhze = arrayOfhze[j]; localhze != null; localhze = hze.a(localhze)) {
+        if (hze.a(localhze) == null) {
           return true;
         }
       }
@@ -187,42 +187,42 @@ public final class SoftHashMap
     return (paramObject1 == paramObject2) || (paramObject1.equals(paramObject2));
   }
   
-  private hzf[] a()
+  private hze[] a()
   {
     a();
-    return this.jdField_a_of_type_ArrayOfHzf;
+    return this.jdField_a_of_type_ArrayOfHze;
   }
   
-  private hzf b(Object paramObject)
+  private hze b(Object paramObject)
   {
     if (!(paramObject instanceof Map.Entry)) {}
     for (;;)
     {
       return null;
-      hzf[] arrayOfhzf = a();
+      hze[] arrayOfhze = a();
       Map.Entry localEntry = (Map.Entry)paramObject;
       int i = a(b(localEntry.getKey()));
-      int j = a(i, arrayOfhzf.length);
-      paramObject = arrayOfhzf[j];
+      int j = a(i, arrayOfhze.length);
+      paramObject = arrayOfhze[j];
       Object localObject = paramObject;
       while (paramObject != null)
       {
-        hzf localhzf = hzf.a(paramObject);
-        if ((i == hzf.a(paramObject)) && (paramObject.equals(localEntry)))
+        hze localhze = hze.a(paramObject);
+        if ((i == hze.a(paramObject)) && (paramObject.equals(localEntry)))
         {
           this.e += 1;
           this.c -= 1;
           if (localObject == paramObject) {
-            arrayOfhzf[j] = localhzf;
+            arrayOfhze[j] = localhze;
           }
           for (;;)
           {
             return paramObject;
-            hzf.a(localObject, localhzf);
+            hze.a(localObject, localhze);
           }
         }
         localObject = paramObject;
-        paramObject = localhzf;
+        paramObject = localhze;
       }
     }
   }
@@ -249,11 +249,11 @@ public final class SoftHashMap
   {
     while (this.jdField_a_of_type_JavaLangRefReferenceQueue.poll() != null) {}
     this.e += 1;
-    hzf[] arrayOfhzf = this.jdField_a_of_type_ArrayOfHzf;
+    hze[] arrayOfhze = this.jdField_a_of_type_ArrayOfHze;
     int i = 0;
-    while (i < arrayOfhzf.length)
+    while (i < arrayOfhze.length)
     {
-      arrayOfhzf[i] = null;
+      arrayOfhze[i] = null;
       i += 1;
     }
     this.c = 0;
@@ -270,16 +270,16 @@ public final class SoftHashMap
     if (paramObject == null) {
       return a();
     }
-    hzf[] arrayOfhzf = a();
+    hze[] arrayOfhze = a();
     int j;
-    for (int i = arrayOfhzf.length;; i = j)
+    for (int i = arrayOfhze.length;; i = j)
     {
       j = i - 1;
       if (i <= 0) {
         break;
       }
-      for (hzf localhzf = arrayOfhzf[j]; localhzf != null; localhzf = hzf.a(localhzf)) {
-        if (paramObject.equals(hzf.a(localhzf))) {
+      for (hze localhze = arrayOfhze[j]; localhze != null; localhze = hze.a(localhze)) {
+        if (paramObject.equals(hze.a(localhze))) {
           return true;
         }
       }
@@ -293,7 +293,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new hzh(this);
+    localObject = new hzg(this);
     this.jdField_a_of_type_JavaUtilSet = ((Set)localObject);
     return localObject;
   }
@@ -303,9 +303,9 @@ public final class SoftHashMap
     Object localObject = b(paramObject);
     int i = a(localObject);
     paramObject = a();
-    for (paramObject = paramObject[a(i, paramObject.length)]; paramObject != null; paramObject = hzf.a(paramObject)) {
-      if ((hzf.a(paramObject) == i) && (a(localObject, paramObject.get()))) {
-        return hzf.a(paramObject);
+    for (paramObject = paramObject[a(i, paramObject.length)]; paramObject != null; paramObject = hze.a(paramObject)) {
+      if ((hze.a(paramObject) == i) && (a(localObject, paramObject.get()))) {
+        return hze.a(paramObject);
       }
     }
     return null;
@@ -322,7 +322,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new hzk(this);
+    localObject = new hzj(this);
     this.jdField_b_of_type_JavaUtilSet = ((Set)localObject);
     return localObject;
   }
@@ -331,25 +331,25 @@ public final class SoftHashMap
   {
     Object localObject = b(paramObject1);
     int i = a(localObject);
-    hzf[] arrayOfhzf = a();
-    int j = a(i, arrayOfhzf.length);
-    for (paramObject1 = arrayOfhzf[j]; paramObject1 != null; paramObject1 = hzf.a(paramObject1)) {
-      if ((i == hzf.a(paramObject1)) && (a(localObject, paramObject1.get())))
+    hze[] arrayOfhze = a();
+    int j = a(i, arrayOfhze.length);
+    for (paramObject1 = arrayOfhze[j]; paramObject1 != null; paramObject1 = hze.a(paramObject1)) {
+      if ((i == hze.a(paramObject1)) && (a(localObject, paramObject1.get())))
       {
-        localObject = hzf.a(paramObject1);
+        localObject = hze.a(paramObject1);
         if (paramObject2 != localObject) {
-          hzf.a(paramObject1, paramObject2);
+          hze.a(paramObject1, paramObject2);
         }
         return localObject;
       }
     }
     this.e += 1;
-    paramObject1 = arrayOfhzf[j];
-    arrayOfhzf[j] = new hzf(localObject, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue, i, paramObject1);
+    paramObject1 = arrayOfhze[j];
+    arrayOfhze[j] = new hze(localObject, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue, i, paramObject1);
     i = this.c + 1;
     this.c = i;
     if (i >= this.d) {
-      a(arrayOfhzf.length * 2);
+      a(arrayOfhze.length * 2);
     }
     return null;
   }
@@ -370,11 +370,11 @@ public final class SoftHashMap
     }
     for (;;)
     {
-      j = this.jdField_a_of_type_ArrayOfHzf.length;
+      j = this.jdField_a_of_type_ArrayOfHze.length;
       while (j < i) {
         j <<= 1;
       }
-      if (j > this.jdField_a_of_type_ArrayOfHzf.length) {
+      if (j > this.jdField_a_of_type_ArrayOfHze.length) {
         a(j);
       }
       paramMap = paramMap.entrySet().iterator();
@@ -393,28 +393,28 @@ public final class SoftHashMap
   {
     Object localObject2 = b(paramObject);
     int i = a(localObject2);
-    hzf[] arrayOfhzf = a();
-    int j = a(i, arrayOfhzf.length);
-    paramObject = arrayOfhzf[j];
+    hze[] arrayOfhze = a();
+    int j = a(i, arrayOfhze.length);
+    paramObject = arrayOfhze[j];
     Object localObject1 = paramObject;
     while (paramObject != null)
     {
-      hzf localhzf = hzf.a(paramObject);
-      if ((i == hzf.a(paramObject)) && (a(localObject2, paramObject.get())))
+      hze localhze = hze.a(paramObject);
+      if ((i == hze.a(paramObject)) && (a(localObject2, paramObject.get())))
       {
         this.e += 1;
         this.c -= 1;
         if (localObject1 == paramObject) {
-          arrayOfhzf[j] = localhzf;
+          arrayOfhze[j] = localhze;
         }
         for (;;)
         {
-          return hzf.a(paramObject);
-          hzf.a(localObject1, localhzf);
+          return hze.a(paramObject);
+          hze.a(localObject1, localhze);
         }
       }
       localObject1 = paramObject;
-      paramObject = localhzf;
+      paramObject = localhze;
     }
     return null;
   }
@@ -434,7 +434,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new hzn(this);
+    localObject = new hzm(this);
     this.jdField_a_of_type_JavaUtilCollection = ((Collection)localObject);
     return localObject;
   }

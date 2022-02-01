@@ -21,10 +21,10 @@ public class NativeDecoder
   
   public NativeDecoder()
   {
-    AppMethodBeat.i(128552);
+    AppMethodBeat.i(114340);
     this.mReadWriteLock = new ReentrantReadWriteLock();
     this.mNativePointer = 0L;
-    AppMethodBeat.o(128552);
+    AppMethodBeat.o(114340);
   }
   
   private native int nativeDecode(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
@@ -53,7 +53,7 @@ public class NativeDecoder
   
   public int decodeData(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128556);
+    AppMethodBeat.i(114344);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -63,13 +63,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128556);
+      AppMethodBeat.o(114344);
     }
   }
   
   public AudioInformation getAudioInformation()
   {
-    AppMethodBeat.i(128560);
+    AppMethodBeat.i(114348);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -79,13 +79,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128560);
+      AppMethodBeat.o(114348);
     }
   }
   
   public long getBytePositionOfTime(long paramLong)
   {
-    AppMethodBeat.i(128563);
+    AppMethodBeat.i(114351);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -95,13 +95,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128563);
+      AppMethodBeat.o(114351);
     }
   }
   
   public long getCurrentTime()
   {
-    AppMethodBeat.i(128558);
+    AppMethodBeat.i(114346);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -111,13 +111,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128558);
+      AppMethodBeat.o(114346);
     }
   }
   
   public long getDuration()
   {
-    AppMethodBeat.i(128559);
+    AppMethodBeat.i(114347);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -127,7 +127,7 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128559);
+      AppMethodBeat.o(114347);
     }
   }
   
@@ -138,7 +138,7 @@ public class NativeDecoder
   
   public long getMinBufferSize()
   {
-    AppMethodBeat.i(128562);
+    AppMethodBeat.i(114350);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -148,21 +148,21 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128562);
+      AppMethodBeat.o(114350);
     }
   }
   
   protected List<NativeLibs> getNativeLibs()
   {
-    AppMethodBeat.i(128564);
+    AppMethodBeat.i(114352);
     List localList = Arrays.asList(new NativeLibs[] { NativeLibs.audioCommon, NativeLibs.formatDetector, NativeLibs.codecFactory, NativeLibs.decoderJni, NativeLibs.cppShared, NativeLibs.stlportShared, NativeLibs.xlog, NativeLibs.FFmpeg });
-    AppMethodBeat.o(128564);
+    AppMethodBeat.o(114352);
     return localList;
   }
   
   public int init(IDataSource paramIDataSource)
   {
-    AppMethodBeat.i(128553);
+    AppMethodBeat.i(114341);
     this.mReadWriteLock.writeLock().lock();
     try
     {
@@ -184,13 +184,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.writeLock().unlock();
-      AppMethodBeat.o(128553);
+      AppMethodBeat.o(114341);
     }
   }
   
   public int init(INativeDataSource paramINativeDataSource)
   {
-    AppMethodBeat.i(128554);
+    AppMethodBeat.i(114342);
     this.mReadWriteLock.writeLock().lock();
     long l2 = -1L;
     long l1 = l2;
@@ -214,21 +214,21 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.writeLock().unlock();
-      AppMethodBeat.o(128554);
+      AppMethodBeat.o(114342);
     }
   }
   
   public int init(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(128555);
+    AppMethodBeat.i(114343);
     int i = init(new FileDataSource(paramString));
-    AppMethodBeat.o(128555);
+    AppMethodBeat.o(114343);
     return i;
   }
   
   public int release()
   {
-    AppMethodBeat.i(128561);
+    AppMethodBeat.i(114349);
     this.mReadWriteLock.writeLock().lock();
     try
     {
@@ -239,13 +239,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.writeLock().unlock();
-      AppMethodBeat.o(128561);
+      AppMethodBeat.o(114349);
     }
   }
   
   public int seekTo(int paramInt)
   {
-    AppMethodBeat.i(128557);
+    AppMethodBeat.i(114345);
     this.mReadWriteLock.readLock().lock();
     try
     {
@@ -256,13 +256,13 @@ public class NativeDecoder
     finally
     {
       this.mReadWriteLock.readLock().unlock();
-      AppMethodBeat.o(128557);
+      AppMethodBeat.o(114345);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.NativeDecoder
  * JD-Core Version:    0.7.0.1
  */

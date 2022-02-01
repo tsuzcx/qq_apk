@@ -14,9 +14,10 @@ import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAIOEntranceProxy;
 
 public class MiniAIOEntryView
-  extends RelativeLayout
+  extends MiniAIOEntranceProxy
   implements IMiniMsgUnreadCallback, MiniMsgUser.IMiniMsgActionCallback
 {
   private static final String TAG = "MiniAIOEntryView";
@@ -45,36 +46,35 @@ public class MiniAIOEntryView
   
   public void hide()
   {
-    if (this.miniAIOEntryView != null) {
-      this.miniAIOEntryView.setVisibility(8);
+    RelativeLayout localRelativeLayout = this.miniAIOEntryView;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.setVisibility(8);
     }
   }
   
   public void hideUnread()
   {
-    if (this.miniAIOUnReadView != null) {
-      this.miniAIOUnReadView.setVisibility(8);
+    TextView localTextView = this.miniAIOUnReadView;
+    if (localTextView != null) {
+      localTextView.setVisibility(8);
     }
   }
   
   public void initAppBrandRuntime()
   {
-    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559321, null));
-    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131370574));
-    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131370575));
+    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131625365, null));
+    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131438587));
+    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131438588));
     if ("black".equals(this.style)) {
-      this.miniAIOIcon.setBackgroundResource(2130840800);
+      this.miniAIOIcon.setBackgroundResource(2130841881);
+    } else {
+      this.miniAIOIcon.setBackgroundResource(2130841882);
     }
-    for (;;)
-    {
-      initMiniMsgUser();
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 36.0F), DisplayUtil.dip2px(getContext(), 36.0F));
-      localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
-      localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
-      addView(this.miniAIOEntryView, localLayoutParams);
-      return;
-      this.miniAIOIcon.setBackgroundResource(2130840801);
-    }
+    initMiniMsgUser();
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 36.0F), DisplayUtil.dip2px(getContext(), 36.0F));
+    localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
+    localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
+    addView(this.miniAIOEntryView, localLayoutParams);
   }
   
   public void initMiniMsgUser()
@@ -92,15 +92,20 @@ public class MiniAIOEntryView
     if (QLog.isColorLevel()) {
       QLog.d("MiniAIOEntryView", 2, "initMiniMsgUse");
     }
-    if (this.activity != null)
+    Activity localActivity = this.activity;
+    if (localActivity != null)
     {
-      this.mMiniMsgUser = new MiniMsgUser(this.activity, localMiniMsgUserParam);
+      this.mMiniMsgUser = new MiniMsgUser(localActivity, localMiniMsgUserParam);
       this.mMiniMsgUser.showEntry();
       this.mMiniMsgUser.onForeground();
     }
   }
   
-  public void onDestroy() {}
+  public void onDestroy()
+  {
+    this.miniAIOUnReadView = null;
+    this.miniAIOEntryView = null;
+  }
   
   public void onFromMiniAIOToAIO() {}
   
@@ -110,40 +115,43 @@ public class MiniAIOEntryView
   
   public void onPause()
   {
-    if (this.mMiniMsgUser != null)
+    MiniMsgUser localMiniMsgUser = this.mMiniMsgUser;
+    if (localMiniMsgUser != null)
     {
-      this.mMiniMsgUser.hideEntry();
+      localMiniMsgUser.hideEntry();
       this.mMiniMsgUser.onBackground();
     }
   }
   
   public void onResume()
   {
-    if (this.mMiniMsgUser != null)
+    MiniMsgUser localMiniMsgUser = this.mMiniMsgUser;
+    if (localMiniMsgUser != null)
     {
-      this.mMiniMsgUser.showEntry();
+      localMiniMsgUser.showEntry();
       this.mMiniMsgUser.onForeground();
     }
   }
   
-  public void setStyle(String paramString)
+  public void setMiniAIOStyle(String paramString)
   {
     if (this.miniAIOIcon == null) {
       return;
     }
     if ("black".equals(paramString))
     {
-      this.miniAIOIcon.setBackgroundResource(2130840800);
+      this.miniAIOIcon.setBackgroundResource(2130841881);
       return;
     }
-    this.miniAIOIcon.setBackgroundResource(2130840801);
+    this.miniAIOIcon.setBackgroundResource(2130841882);
   }
   
   public boolean show(int paramInt)
   {
-    if (this.miniAIOEntryView != null)
+    RelativeLayout localRelativeLayout = this.miniAIOEntryView;
+    if (localRelativeLayout != null)
     {
-      this.miniAIOEntryView.setVisibility(0);
+      localRelativeLayout.setVisibility(0);
       updateUnreadCount(paramInt, false);
     }
     return true;
@@ -154,27 +162,28 @@ public class MiniAIOEntryView
   public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
     TextView localTextView = this.miniAIOUnReadView;
-    if (localTextView == null) {}
-    do
-    {
-      return;
-      String str = String.valueOf(paramInt);
-      if (paramInt > 99) {
-        str = "99+";
-      }
-      localTextView.setText(str);
-    } while (paramBoolean);
-    if (paramInt <= 0)
-    {
-      localTextView.setVisibility(8);
+    if (localTextView == null) {
       return;
     }
-    localTextView.setVisibility(0);
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
+    }
+    localTextView.setText(str);
+    if (!paramBoolean)
+    {
+      if (paramInt <= 0)
+      {
+        localTextView.setVisibility(8);
+        return;
+      }
+      localTextView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.MiniAIOEntryView
  * JD-Core Version:    0.7.0.1
  */

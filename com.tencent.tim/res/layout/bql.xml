@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="375.0dip" android:layout_height="670.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.qzone.widget.AvatarImageView android:layout_gravity="bottom|center" android:id="@id/hq0" android:layout_width="105.0dip" android:layout_height="105.0dip" />
+        <TextView android:textSize="@dimen/az1" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/hq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.5dip" android:maxLines="1" />
+        <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.5dip">
+            <TextView android:textSize="26.0sp" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/hq3" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="26.0sp" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/hq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_toRightOf="@id/hq3" />
+        </RelativeLayout>
+        <TextView android:textSize="26.0sp" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/hq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="1" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/hq6" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginTop="53.5dip" android:layout_marginBottom="25.0dip" />
+    </LinearLayout>
+</RelativeLayout>

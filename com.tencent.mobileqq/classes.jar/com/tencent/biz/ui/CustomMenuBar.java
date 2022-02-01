@@ -17,35 +17,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdaq;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.biz.common.util.SubString;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.util.ArrayList;
 import java.util.List;
-import ndp;
-import yxc;
-import yxd;
-import yxe;
-import yxf;
-import yxg;
-import yxj;
-import yxk;
-import yxm;
 
 public class CustomMenuBar
   extends LinearLayout
 {
-  protected int a;
-  public Handler a;
-  public View a;
   protected ImageView a;
-  protected LinearLayout a;
-  public Runnable a;
-  protected List<yxj> a;
-  public yxg a;
-  public yxm a;
-  public boolean a;
-  private int b;
-  public boolean b;
+  protected LinearLayout b;
+  protected List<MenuItem> c = new ArrayList();
+  protected CustomMenuBar.OnMenuItemClickListener d;
+  protected PopupWindows e = null;
+  protected boolean f = false;
+  protected boolean g = false;
+  protected View h;
+  protected int i = 0;
+  Handler j = new Handler();
+  Runnable k = new CustomMenuBar.5(this);
+  private int l;
   
   public CustomMenuBar(Context paramContext)
   {
@@ -56,34 +48,30 @@ public class CustomMenuBar
   public CustomMenuBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new CustomMenuBar.5(this);
     super.setFocusable(true);
     super.setOrientation(0);
     super.setGravity(16);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849282);
-    this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getText(2131696905));
+    this.a = new ImageView(paramContext);
+    this.a.setImageResource(2130851970);
+    this.a.setClickable(true);
+    this.a.setContentDescription(paramContext.getText(2131894204));
     if (a()) {
-      setBackgroundColor(paramContext.getResources().getColor(2131167045));
+      setBackgroundColor(paramContext.getResources().getColor(2131168198));
     }
     paramAttributeSet = new LinearLayout.LayoutParams(-2, -2);
     paramAttributeSet.leftMargin = 0;
-    paramAttributeSet.rightMargin = bdaq.a(paramContext, 7.0F);
+    paramAttributeSet.rightMargin = DisplayUtil.a(paramContext, 7.0F);
     paramAttributeSet.gravity = 16;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAttributeSet);
-    super.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    paramContext = (HorizontalScrollView)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559078, null);
+    this.a.setLayoutParams(paramAttributeSet);
+    super.addView(this.a);
+    paramContext = (HorizontalScrollView)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131624756, null);
     if (Build.VERSION.SDK_INT >= 9) {
       paramContext.setOverScrollMode(2);
     }
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
     super.addView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131366387));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
+    this.b = ((LinearLayout)paramContext.findViewById(2131433200));
+    this.b.setGravity(16);
   }
   
   public static boolean a()
@@ -92,147 +80,138 @@ public class CustomMenuBar
     return (str != null) && (str.equals("1000"));
   }
   
-  View a(yxj paramyxj, String paramString)
-  {
-    String str = paramyxj.a();
-    Object localObject = paramyxj.a();
-    View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(2131559079, null);
-    ImageView localImageView2;
-    TextView localTextView;
-    ImageView localImageView1;
-    if (a())
-    {
-      localView.setBackgroundResource(2130841431);
-      localImageView2 = (ImageView)localView.findViewById(2131370203);
-      localTextView = (TextView)localView.findViewById(2131370216);
-      localImageView1 = (ImageView)localView.findViewById(2131377216);
-      if (localObject == null) {
-        break label216;
-      }
-      localImageView2.setImageDrawable((Drawable)localObject);
-      label93:
-      if (str == null) {
-        break label236;
-      }
-      if (ndp.a(str) <= 10) {
-        break label226;
-      }
-      localTextView.setText(ndp.a(str, 10, "..."));
-    }
-    int j;
-    int i;
-    for (;;)
-    {
-      localObject = paramyxj.b();
-      j = paramyxj.a();
-      if (!paramyxj.a()) {
-        break label342;
-      }
-      localImageView1.setVisibility(0);
-      localImageView1.setImageResource(2130842853);
-      localObject = new yxk(super.getContext());
-      i = 0;
-      while (i < paramyxj.b())
-      {
-        ((yxk)localObject).a(paramyxj.a(i));
-        i += 1;
-      }
-      localView.setBackgroundResource(2130839474);
-      localView.findViewById(2131370223).setVisibility(8);
-      break;
-      label216:
-      localImageView2.setVisibility(8);
-      break label93;
-      label226:
-      localTextView.setText(str);
-      continue;
-      label236:
-      localTextView.setVisibility(8);
-    }
-    ((yxk)localObject).a(new yxc(this, localImageView1, localTextView));
-    ((yxk)localObject).a(this.jdField_a_of_type_Yxg);
-    localView.setOnTouchListener(new yxd(this, localImageView1));
-    localView.setOnClickListener(new yxe(this, localImageView1, localTextView, (yxk)localObject, paramString, j, str));
-    for (;;)
-    {
-      i = this.b;
-      this.b = (i + 1);
-      if (i == 0) {
-        localView.findViewById(2131370223).setVisibility(8);
-      }
-      return localView;
-      label342:
-      localView.setOnClickListener(new yxf(this, (String)localObject, j));
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.performClick();
-  }
-  
-  public void a(yxj paramyxj, String paramString)
+  public void a(MenuItem paramMenuItem, String paramString)
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1, 1.0F);
     localLayoutParams.gravity = 17;
-    paramString = a(paramyxj, paramString);
-    this.jdField_a_of_type_JavaUtilList.add(paramyxj);
+    paramString = b(paramMenuItem, paramString);
+    this.c.add(paramMenuItem);
     paramString.setFocusable(true);
     paramString.setClickable(true);
     paramString.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramString);
+    this.b.addView(paramString);
+  }
+  
+  View b(MenuItem paramMenuItem, String paramString)
+  {
+    String str = paramMenuItem.d();
+    Object localObject = paramMenuItem.c();
+    View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(2131624757, null);
+    if (a())
+    {
+      localView.setBackgroundResource(2130842754);
+    }
+    else
+    {
+      localView.setBackgroundResource(2130840137);
+      localView.findViewById(2131438146).setVisibility(8);
+    }
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131438117);
+    TextView localTextView = (TextView)localView.findViewById(2131438139);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131446559);
+    if (localObject != null) {
+      localImageView2.setImageDrawable((Drawable)localObject);
+    } else {
+      localImageView2.setVisibility(8);
+    }
+    if (str != null)
+    {
+      if (SubString.a(str) > 10) {
+        localTextView.setText(SubString.a(str, 10, "..."));
+      } else {
+        localTextView.setText(str);
+      }
+    }
+    else {
+      localTextView.setVisibility(8);
+    }
+    localObject = paramMenuItem.e();
+    int n = paramMenuItem.a();
+    if (paramMenuItem.f())
+    {
+      m = 0;
+      localImageView1.setVisibility(0);
+      localImageView1.setImageResource(2130844348);
+      localObject = new PopupMenu(super.getContext());
+      while (m < paramMenuItem.g())
+      {
+        ((PopupMenu)localObject).a(paramMenuItem.a(m));
+        m += 1;
+      }
+      ((PopupMenu)localObject).a(new CustomMenuBar.1(this, localImageView1, localTextView));
+      ((PopupMenu)localObject).a(this.d);
+      localView.setOnTouchListener(new CustomMenuBar.2(this, localImageView1));
+      localView.setOnClickListener(new CustomMenuBar.3(this, localImageView1, localTextView, (PopupMenu)localObject, paramString, n, str));
+    }
+    else
+    {
+      localView.setOnClickListener(new CustomMenuBar.4(this, (String)localObject, n));
+    }
+    int m = this.l;
+    this.l = (m + 1);
+    if (m == 0) {
+      localView.findViewById(2131438146).setVisibility(8);
+    }
+    return localView;
   }
   
   public void b()
   {
-    this.b = 0;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.performClick();
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Yxm == null) {
+    this.l = 0;
+    this.b.removeAllViews();
+    this.c.clear();
+  }
+  
+  public void d()
+  {
+    PopupWindows localPopupWindows = this.e;
+    if (localPopupWindows == null) {
       return;
     }
-    this.jdField_a_of_type_Yxm.b();
+    localPopupWindows.b();
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (this.jdField_a_of_type_Yxm != null) {
-      this.jdField_a_of_type_Yxm.b();
+    paramConfiguration = this.e;
+    if (paramConfiguration != null) {
+      paramConfiguration.b();
     }
   }
   
   public void setCoverView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.h = paramView;
   }
   
   public void setMenuType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void setOnBackClickListner(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.a.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnMenuItemClickListener(yxg paramyxg)
+  public void setOnMenuItemClickListener(CustomMenuBar.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.jdField_a_of_type_Yxg = paramyxg;
+    this.d = paramOnMenuItemClickListener;
   }
   
   public void setSwitchIconDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.a.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.CustomMenuBar
  * JD-Core Version:    0.7.0.1
  */

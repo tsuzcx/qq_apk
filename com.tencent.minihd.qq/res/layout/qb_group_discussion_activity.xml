@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:id="@id/rl_title_bar" style="@style/title_bar">
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+        <TextView android:id="@id/ivTitleName" android:text="@string/tab_title_group" style="@style/title_bar_title" />
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/qq_contact_list_title_rightview" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:gravity="center_vertical" android:id="@id/rl_tab_bar" android:background="@drawable/skin_header_bar_bg" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mobileqq.widget.TabBarView android:id="@id/rg_list_mode" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <FrameLayout android:id="@id/inner_frame" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/qb_troop_discussion_list_options_bar" />
+    </RelativeLayout>
+</LinearLayout>

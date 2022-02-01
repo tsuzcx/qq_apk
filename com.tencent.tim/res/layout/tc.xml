@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.TabBarView2 android:id="@id/k1q" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_below="@id/jo9" app:underLine="true" app:underLineColor="@color/hd" app:underLineHeight="3.0dip" app:underLineMargin="6.0dip" app:underLineWidth="25.0dip" />
+    <include android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/is" />
+    <FrameLayout android:id="@id/k1r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/k1q" />
+</RelativeLayout>

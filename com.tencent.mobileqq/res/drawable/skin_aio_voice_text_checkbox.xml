@@ -2,6 +2,6 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/skin_pic_troop_album_icon_local_albums_checked" />
-    <item android:state_enabled="true" android:state_checked="false" android:drawable="@drawable/gyp" />
+    <item android:state_enabled="true" android:state_checked="false" android:drawable="@drawable/skin_pic_troop_album_icon_local_albums_unchecked" />
     <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/aio_voice_edit_checxbox_disable" />
 </selector>

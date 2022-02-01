@@ -1,166 +1,66 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.b;
+import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.appbrand.v8.m;
+import com.tencent.mm.appbrand.v8.m.c;
+import com.tencent.mm.plugin.appbrand.n.o;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandAdWorkerHelper;", "", "()V", "Companion", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static final LinkedHashMap<String, o> gOG;
-  public static int gOH;
-  private static final Map<String, o> gOI;
+  public static final a qqO;
   
   static
   {
-    AppMethodBeat.i(128924);
-    ah.getContext().registerComponentCallbacks(new a.1());
-    gOG = new a.2();
-    gOH = 4;
-    gOI = new HashMap();
-    AppMethodBeat.o(128924);
+    AppMethodBeat.i(316789);
+    qqO = new a((byte)0);
+    AppMethodBeat.o(316789);
   }
   
-  public static boolean a(o paramo)
+  public static final o g(m paramm)
   {
-    AppMethodBeat.i(154311);
-    synchronized (gOI)
-    {
-      boolean bool = gOG.containsValue(paramo);
-      AppMethodBeat.o(154311);
-      return bool;
-    }
+    AppMethodBeat.i(316786);
+    paramm = a.g(paramm);
+    AppMethodBeat.o(316786);
+    return paramm;
   }
   
-  static void b(o paramo)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandAdWorkerHelper$Companion;", "", "()V", "convertToAdWorkerExecutable", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonExecutable;", "engine", "Lcom/tencent/mm/appbrand/v8/V8ContextEngine;", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    AppMethodBeat.i(128919);
-    if (bo.isNullOrNil(paramo.mAppId))
+    private static final void a(ValueCallback paramValueCallback, String paramString, m.c paramc)
     {
-      ab.e("MicroMsg.AppBrandBridge", "clearRuntime with nil appId");
-      AppMethodBeat.o(128919);
-      return;
-    }
-    synchronized (gOI)
-    {
-      o localo = (o)gOI.get(paramo.mAppId);
-      if ((localo == null) || (localo == paramo))
-      {
-        gOI.remove(paramo.mAppId);
-        gOG.remove(paramo.mAppId);
-        AppMethodBeat.o(128919);
-        return;
+      AppMethodBeat.i(316690);
+      if (paramValueCallback != null) {
+        paramValueCallback.onReceiveValue(paramString);
       }
-      ab.e("MicroMsg.AppBrandBridge", "clearRuntime with mismatch instance, stack %s", new Object[] { bo.l(new Throwable()) });
+      AppMethodBeat.o(316690);
     }
-  }
-  
-  public static void c(i parami)
-  {
-    AppMethodBeat.i(143029);
-    LinkedList localLinkedList = new LinkedList();
-    synchronized (gOI)
+    
+    private static final void b(m paramm, String paramString, ValueCallback paramValueCallback)
     {
-      Iterator localIterator = gOI.values().iterator();
-      while (localIterator.hasNext())
-      {
-        o localo = (o)localIterator.next();
-        if ((localo != null) && (localo.vY()) && (localo != parami)) {
-          localLinkedList.add(localo);
-        }
-      }
+      AppMethodBeat.i(316695);
+      s.u(paramm, "$engine");
+      paramm.a(paramString, new a.a..ExternalSyntheticLambda0(paramValueCallback));
+      AppMethodBeat.o(316695);
     }
-    parami = localLinkedList.iterator();
-    while (parami.hasNext()) {
-      ((o)parami.next()).atX();
-    }
-    AppMethodBeat.o(143029);
-  }
-  
-  static void c(o paramo)
-  {
-    AppMethodBeat.i(128920);
-    if (bo.isNullOrNil(paramo.mAppId))
+    
+    public static o g(m paramm)
     {
-      ab.e("MicroMsg.AppBrandBridge", "setRuntime with nil appId");
-      AppMethodBeat.o(128920);
-      return;
+      AppMethodBeat.i(316685);
+      s.u(paramm, "engine");
+      paramm = (o)new a.a..ExternalSyntheticLambda1(paramm);
+      AppMethodBeat.o(316685);
+      return paramm;
     }
-    synchronized (gOI)
-    {
-      gOI.put(paramo.mAppId, paramo);
-      gOG.put(paramo.mAppId, paramo);
-      if (paramo.atS() != null) {
-        f.br(paramo.mAppId, paramo.atS().bCV);
-      }
-      AppMethodBeat.o(128920);
-      return;
-    }
-  }
-  
-  public static o xL(String paramString)
-  {
-    AppMethodBeat.i(128921);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(128921);
-      return null;
-    }
-    synchronized (gOI)
-    {
-      paramString = (o)gOI.get(paramString);
-      AppMethodBeat.o(128921);
-      return paramString;
-    }
-  }
-  
-  @Deprecated
-  public static AppBrandSysConfigWC xM(String paramString)
-  {
-    AppMethodBeat.i(128922);
-    paramString = xL(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(128922);
-      return null;
-    }
-    paramString = paramString.atR();
-    AppMethodBeat.o(128922);
-    return paramString;
-  }
-  
-  @Deprecated
-  public static AppBrandStatObject xN(String paramString)
-  {
-    AppMethodBeat.i(128923);
-    paramString = xL(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(128923);
-      return null;
-    }
-    paramString = paramString.wS().bDh;
-    AppMethodBeat.o(128923);
-    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

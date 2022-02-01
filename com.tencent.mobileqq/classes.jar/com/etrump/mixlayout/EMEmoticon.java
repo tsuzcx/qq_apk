@@ -14,15 +14,15 @@ public class EMEmoticon
   private static final int FLAG_LOAD_EMOTICON_CONCISE = 1;
   private static final int FLAG_LOAD_EMOTICON_DEFAULT = 0;
   private static final String TAG = "HiBoomFont.EMEmoticon";
-  private ETEngine mEngine;
-  public ETFont mFont;
+  private ETEngine mEngine = null;
+  public ETFont mFont = null;
   private int mFrameDelay;
   private int mFrameIndex = -1;
-  private int mFrameNum;
-  private int mHeight;
-  private long mNativeDescriptorHandle;
+  private int mFrameNum = 0;
+  private int mHeight = 0;
+  private long mNativeDescriptorHandle = 0L;
   public String mText;
-  private int mWidth;
+  private int mWidth = 0;
   
   public static void callbackDrawText(int paramInt1, Canvas paramCanvas, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, int paramInt3, float paramFloat6, float paramFloat7, float paramFloat8, boolean paramBoolean3, int paramInt4, float paramFloat9)
   {
@@ -36,7 +36,8 @@ public class EMEmoticon
     localPaint.setAntiAlias(true);
     localPaint.setDither(true);
     localPaint.setTextSize(paramFloat4);
-    localPaint.setAlpha((int)(255.0F * paramFloat5));
+    paramInt1 = (int)(255.0F * paramFloat5);
+    localPaint.setAlpha(paramInt1);
     if (!paramBoolean1) {
       localPaint.setStyle(Paint.Style.STROKE);
     }
@@ -44,9 +45,10 @@ public class EMEmoticon
     paramCanvas.setMatrix(paramMatrix);
     if ((paramBoolean2) && (paramBoolean1))
     {
-      paramFloat1 = paramFloat8;
       if (0.0F == paramFloat8) {
         paramFloat1 = 0.1F;
+      } else {
+        paramFloat1 = paramFloat8;
       }
       Object localObject = new float[9];
       paramMatrix.getValues((float[])localObject);
@@ -55,16 +57,18 @@ public class EMEmoticon
       paramMatrix = new Matrix();
       paramMatrix.setValues((float[])localObject);
       localObject = new Matrix();
-      float f = paramFloat6;
-      paramFloat8 = paramFloat7;
       if (paramMatrix.invert((Matrix)localObject))
       {
         paramMatrix = new float[2];
         ((Matrix)localObject).mapPoints(paramMatrix, new float[] { paramFloat6, paramFloat7 });
-        f = paramMatrix[0];
-        paramFloat8 = paramMatrix[1];
+        paramFloat6 = paramMatrix[0];
+        paramFloat5 = paramMatrix[1];
       }
-      localPaint.setShadowLayer(paramFloat1, f, paramFloat8, paramInt3);
+      else
+      {
+        paramFloat5 = paramFloat7;
+      }
+      localPaint.setShadowLayer(paramFloat1, paramFloat6, paramFloat5, paramInt3);
     }
     if (paramBoolean3)
     {
@@ -73,10 +77,10 @@ public class EMEmoticon
       paramMatrix.setColor(paramInt4);
       paramMatrix.setStrokeWidth(paramFloat9);
       paramMatrix.setTextSize(paramFloat4);
-      paramMatrix.setAlpha((int)(255.0F * paramFloat5));
-      paramCanvas.drawText(str, 0.0F, Math.abs(paramMatrix.getFontMetricsInt().ascent) + paramFloat3, paramMatrix);
+      paramMatrix.setAlpha(paramInt1);
+      paramCanvas.drawText(str, 0.0F, paramFloat3 + Math.abs(paramMatrix.getFontMetricsInt().ascent), paramMatrix);
     }
-    paramCanvas.drawText(str, paramFloat2, Math.abs(localPaint.getFontMetricsInt().ascent) + paramFloat3, localPaint);
+    paramCanvas.drawText(str, paramFloat2, paramFloat3 + Math.abs(localPaint.getFontMetricsInt().ascent), localPaint);
     paramCanvas.restore();
   }
   
@@ -92,18 +96,16 @@ public class EMEmoticon
   
   public static EMEmoticon createEmoticon(ETEngine paramETEngine, String paramString, int paramInt, ETFont paramETFont)
   {
-    if ((paramETEngine == null) || (TextUtils.isEmpty(paramString))) {
-      paramETEngine = null;
-    }
-    EMEmoticon localEMEmoticon;
-    do
+    if (paramETEngine != null)
     {
-      return paramETEngine;
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
       long l = paramETEngine.native_emoticonCreateDescriptor(paramString, createSegments(paramString, paramETFont), paramInt, paramETFont, 0);
       if (0L == l) {
         return null;
       }
-      localEMEmoticon = new EMEmoticon();
+      EMEmoticon localEMEmoticon = new EMEmoticon();
       localEMEmoticon.mEngine = paramETEngine;
       localEMEmoticon.mNativeDescriptorHandle = l;
       localEMEmoticon.mFrameNum = localEMEmoticon.mEngine.native_emoticonGetFrameNum(l);
@@ -112,79 +114,74 @@ public class EMEmoticon
       localEMEmoticon.mText = paramString;
       localEMEmoticon.mFont = paramETFont;
       localEMEmoticon.mFrameDelay = paramETEngine.native_emoticonGetFrameDelay(l, 0);
-      paramETEngine = localEMEmoticon;
-    } while (localEMEmoticon.mFrameDelay >= 50);
-    localEMEmoticon.mFrameDelay = 50;
-    return localEMEmoticon;
+      if (localEMEmoticon.mFrameDelay < 50) {
+        localEMEmoticon.mFrameDelay = 50;
+      }
+      return localEMEmoticon;
+    }
+    return null;
   }
   
   private static ETSegment[] createSegments(String paramString, ETFont paramETFont)
   {
-    int i = 0;
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    int k = -1;
-    ArrayList localArrayList = new ArrayList();
-    int n = paramString.length();
-    int j = 0;
-    int m;
-    ETSegment localETSegment;
-    if (i < n)
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      char c1 = paramString.charAt(i);
-      if ((Character.isHighSurrogate(c1)) && (i + 1 < n))
+      ArrayList localArrayList = new ArrayList();
+      int i2 = paramString.length();
+      int j = 0;
+      int i = 0;
+      int m;
+      for (int n = -1; j < i2; n = m)
       {
-        char c2 = paramString.charAt(i + 1);
-        if (Character.isLowSurrogate(c2))
+        char c1 = paramString.charAt(j);
+        ETSegment localETSegment;
+        if (Character.isHighSurrogate(c1))
         {
-          m = k + 1;
-          k = j;
-          if (i - m > 0)
+          m = j + 1;
+          if (m < i2)
           {
-            k = i - m;
-            localETSegment = createTextSegment(k, j);
-            localETSegment.textSize = paramETFont.getSize();
-            k = j + k;
-            localArrayList.add(localETSegment);
+            char c2 = paramString.charAt(m);
+            if (Character.isLowSurrogate(c2))
+            {
+              j -= n + 1;
+              k = i;
+              if (j > 0)
+              {
+                localETSegment = createTextSegment(j, i);
+                localETSegment.textSize = paramETFont.getSize();
+                k = i + j;
+                localArrayList.add(localETSegment);
+              }
+              localETSegment = createEmojiSegment(c1, c2);
+              localETSegment.textSize = paramETFont.getSize();
+              localArrayList.add(localETSegment);
+              i = m;
+              m = i;
+              i1 = i;
+              break label247;
+            }
           }
-          localETSegment = createEmojiSegment(c1, c2);
-          localETSegment.textSize = paramETFont.getSize();
-          localArrayList.add(localETSegment);
-          j = i + 1;
-          i = j;
-          m = k;
-          k = i;
-          i = m;
         }
+        int k = i;
+        int i1 = j;
+        m = n;
+        if (j + 1 == i2)
+        {
+          k = i2 - (n + 1);
+          localETSegment = createTextSegment(k, i);
+          localETSegment.textSize = paramETFont.getSize();
+          k = i + k;
+          localArrayList.add(localETSegment);
+          m = i2;
+          i1 = j;
+        }
+        label247:
+        j = i1 + 1;
+        i = k;
       }
+      return (ETSegment[])localArrayList.toArray(new ETSegment[localArrayList.size()]);
     }
-    for (;;)
-    {
-      m = j + 1;
-      j = i;
-      i = m;
-      break;
-      if (i + 1 == n)
-      {
-        m = n - (k + 1);
-        localETSegment = createTextSegment(m, j);
-        localETSegment.textSize = paramETFont.getSize();
-        localArrayList.add(localETSegment);
-        k = n;
-        m = j + m;
-        j = i;
-        i = m;
-        continue;
-        return (ETSegment[])localArrayList.toArray(new ETSegment[localArrayList.size()]);
-      }
-      else
-      {
-        m = j;
-        j = i;
-        i = m;
-      }
-    }
+    return null;
   }
   
   private static ETSegment createTextSegment(int paramInt1, int paramInt2)
@@ -215,9 +212,10 @@ public class EMEmoticon
   
   public void deleteDescriptor()
   {
-    if (this.mNativeDescriptorHandle != 0L)
+    long l = this.mNativeDescriptorHandle;
+    if (l != 0L)
     {
-      this.mEngine.native_emoticonDeleteDescriptor(this.mNativeDescriptorHandle);
+      this.mEngine.native_emoticonDeleteDescriptor(l);
       this.mNativeDescriptorHandle = 0L;
     }
   }
@@ -225,8 +223,9 @@ public class EMEmoticon
   public void drawFrame(Bitmap paramBitmap)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_emoticonDrawFrame(this.mNativeDescriptorHandle, i, this.mFont, paramBitmap);
+    ETEngine localETEngine = this.mEngine;
+    if ((localETEngine != null) && (i >= 0) && (i < this.mFrameNum)) {
+      localETEngine.native_emoticonDrawFrame(this.mNativeDescriptorHandle, i, this.mFont, paramBitmap);
     }
   }
   
@@ -247,11 +246,11 @@ public class EMEmoticon
   
   public int getHeightByIndex(int paramInt, ETFont paramETFont)
   {
-    int i = 0;
-    if (this.mEngine != null) {
-      i = this.mEngine.native_emoticonGetHeightByIndex(paramInt, paramETFont);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null) {
+      return localETEngine.native_emoticonGetHeightByIndex(paramInt, paramETFont);
     }
-    return i;
+    return 0;
   }
   
   public int getWidth()
@@ -261,11 +260,11 @@ public class EMEmoticon
   
   public int getWidthByIndex(int paramInt, ETFont paramETFont)
   {
-    int i = 0;
-    if (this.mEngine != null) {
-      i = this.mEngine.native_emoticonGetWidthByIndex(paramInt, paramETFont);
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null) {
+      return localETEngine.native_emoticonGetWidthByIndex(paramInt, paramETFont);
     }
-    return i;
+    return 0;
   }
   
   public void gotoFirstFrame()
@@ -275,10 +274,13 @@ public class EMEmoticon
   
   public void gotoFrame(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mFrameNum)) {
-      return;
+    if (paramInt >= 0)
+    {
+      if (paramInt >= this.mFrameNum) {
+        return;
+      }
+      this.mFrameIndex = paramInt;
     }
-    this.mFrameIndex = paramInt;
   }
   
   public boolean nextFrame()
@@ -294,7 +296,7 @@ public class EMEmoticon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.EMEmoticon
  * JD-Core Version:    0.7.0.1
  */

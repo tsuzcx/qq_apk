@@ -11,11 +11,11 @@ public final class stKuolieProfile
 {
   static Map<String, String> cache_extendinfo;
   static s_user cache_user = new s_user();
-  public int CommOpmask2;
-  public int CommOpmask3;
-  public int FeedsCount;
-  public Map<String, String> extendinfo;
-  public s_user user;
+  public int CommOpmask2 = 0;
+  public int CommOpmask3 = 0;
+  public int FeedsCount = 0;
+  public Map<String, String> extendinfo = null;
+  public s_user user = null;
   
   static
   {
@@ -45,20 +45,22 @@ public final class stKuolieProfile
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    Object localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.CommOpmask2, 1);
     paramJceOutputStream.write(this.FeedsCount, 2);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 3);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.CommOpmask3, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.stKuolieProfile
  * JD-Core Version:    0.7.0.1
  */

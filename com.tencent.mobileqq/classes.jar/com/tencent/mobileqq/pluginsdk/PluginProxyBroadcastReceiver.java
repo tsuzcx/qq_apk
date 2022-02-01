@@ -34,118 +34,141 @@ public class PluginProxyBroadcastReceiver
   
   private IPluginBroadcastReceiver startPluginIfNeccessary(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (!PluginStatic.isValidPluginIntent(paramIntent.getExtras()))) {}
-    for (;;)
+    Object localObject4 = null;
+    Object localObject5 = null;
+    Object localObject1 = localObject4;
+    String str1;
+    String str2;
+    Object localObject2;
+    String str3;
+    if (paramIntent != null)
     {
-      return null;
-      String str1 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-      String str2 = paramIntent.getStringExtra("pluginsdk_launchReceiver");
+      if (!PluginStatic.isValidPluginIntent(paramIntent.getExtras())) {
+        return null;
+      }
+      str1 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
+      str2 = paramIntent.getStringExtra("pluginsdk_launchReceiver");
       this.mPluginResoucesType = paramIntent.getIntExtra("userQqResources", 0);
-      Object localObject1 = paramIntent.getStringExtra("pluginsdk_pluginpath");
-      Object localObject2 = paramIntent.getStringExtra("pluginsdk_selfuin");
-      String str3 = paramIntent.getStringExtra("pluginsdk_pluginName");
+      localObject1 = paramIntent.getStringExtra("pluginsdk_pluginpath");
+      localObject2 = paramIntent.getStringExtra("pluginsdk_selfuin");
+      str3 = paramIntent.getStringExtra("pluginsdk_pluginName");
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         IPluginAdapterProxy.getProxy().currentUin = ((String)localObject2);
       }
       localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-      try
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    }
+    try
+    {
+      localObject2 = PluginUtils.getInstalledPluginPath(paramContext, str1).getCanonicalPath();
+      if (DebugHelper.sDebug)
       {
-        localObject2 = PluginUtils.getInstalledPluginPath(paramContext, str1).getCanonicalPath();
-        if (DebugHelper.sDebug) {
-          DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver.startPluginIfNeccessary Params:" + str1 + ", " + str2);
-        }
-        if ((str1 != null) && (str1.length() > 0))
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("PluginProxyBroadcastReceiver.startPluginIfNeccessary Params:");
+        ((StringBuilder)localObject1).append(str1);
+        ((StringBuilder)localObject1).append(", ");
+        ((StringBuilder)localObject1).append(str2);
+        DebugHelper.log("plugin_tag", ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = localObject4;
+      if (str1 != null)
+      {
+        localObject1 = localObject4;
+        if (str1.length() > 0)
         {
           PluginRecoverReceiver.addCarePluginId(str1);
-          localObject1 = new File((String)localObject2);
-          if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+          File localFile = new File((String)localObject2);
+          localObject1 = localObject4;
+          if (localFile.exists())
           {
-            localObject1 = (PackageInfo)PluginStatic.sPackageInfoMap.get(localObject2);
-            if (localObject1 == null)
+            localObject1 = localObject4;
+            if (localFile.isFile())
             {
-              try
+              localObject4 = (PackageInfo)PluginStatic.sPackageInfoMap.get(localObject2);
+              localObject1 = localObject4;
+              if (localObject4 == null)
               {
-                localObject3 = ApkFileParser.getPackageInfoWithException(paramContext, (String)localObject2, 129);
-                localObject1 = localObject3;
-              }
-              catch (Throwable localThrowable)
-              {
-                for (;;)
+                try
                 {
-                  try
+                  localObject1 = ApkFileParser.getPackageInfoWithException(paramContext, (String)localObject2, 129);
+                }
+                catch (Throwable localThrowable)
+                {
+                  localObject1 = localObject4;
+                  if (DebugHelper.sDebug)
                   {
-                    localObject3 = PluginStatic.getOrCreateClassLoaderByPath(paramContext, str1, (String)localObject2);
-                    paramContext = (IPluginBroadcastReceiver)((ClassLoader)localObject3).loadClass(str2).newInstance();
-                  }
-                  catch (Exception localException1)
-                  {
-                    Object localObject3;
-                    paramContext = null;
-                    paramIntent = paramContext;
-                    if (!DebugHelper.sDebug) {
-                      continue;
-                    }
-                    DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver initPlugin", localException1);
-                    paramIntent = paramContext;
-                    continue;
-                  }
-                  try
-                  {
-                    paramContext.IInit(str3, str1, (String)localObject2, this, (ClassLoader)localObject3, (PackageInfo)localObject1, this.mPluginResoucesType);
-                    PluginProxyActivity.uploadLaunchInfoWhenCreateClassLoader(str2, paramIntent);
-                    paramIntent = paramContext;
-                    return paramIntent;
-                  }
-                  catch (Exception localException2)
-                  {
-                    continue;
-                  }
-                  localThrowable = localThrowable;
-                  if (DebugHelper.sDebug) {
                     DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver failed", localThrowable);
+                    localObject1 = localObject4;
                   }
                 }
+                if (localObject1 == null) {
+                  return null;
+                }
+                PluginStatic.sPackageInfoMap.put(localObject2, localObject1);
               }
-              if (localObject1 == null) {
-                continue;
+              try
+              {
+                localObject4 = PluginStatic.getOrCreateClassLoaderByPath(paramContext, str1, (String)localObject2, true);
+                paramContext = (IPluginBroadcastReceiver)((ClassLoader)localObject4).loadClass(str2).newInstance();
+                try
+                {
+                  paramContext.IInit(str3, str1, (String)localObject2, this, (ClassLoader)localObject4, (PackageInfo)localObject1, this.mPluginResoucesType);
+                  PluginProxyActivity.uploadLaunchInfoWhenCreateClassLoader(str2, paramIntent);
+                  return paramContext;
+                }
+                catch (Exception paramIntent) {}
+                localObject1 = paramContext;
               }
-              PluginStatic.sPackageInfoMap.put(localObject2, localObject1);
+              catch (Exception paramIntent)
+              {
+                paramContext = localObject5;
+              }
+              if (DebugHelper.sDebug)
+              {
+                DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver initPlugin", paramIntent);
+                localObject1 = paramContext;
+              }
             }
           }
         }
       }
-      catch (IOException localIOException)
+      return localObject1;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          Exception localException3 = localException2;
-          continue;
-          continue;
-          paramIntent = null;
-        }
+        Object localObject3 = localObject1;
       }
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver.onReceive: " + paramIntent);
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginProxyBroadcastReceiver.onReceive: ");
+      ((StringBuilder)localObject).append(paramIntent);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
     IPluginProxyComponent.registerAccountReceiverIfNeccessary();
-    IPluginBroadcastReceiver localIPluginBroadcastReceiver = startPluginIfNeccessary(paramContext, paramIntent);
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver.startPluginIfNeccessary: " + localIPluginBroadcastReceiver);
+    Object localObject = startPluginIfNeccessary(paramContext, paramIntent);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginProxyBroadcastReceiver.startPluginIfNeccessary: ");
+      localStringBuilder.append(localObject);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
-    if (localIPluginBroadcastReceiver != null) {
-      localIPluginBroadcastReceiver.IOnReceive(paramContext, paramIntent);
+    if (localObject != null) {
+      ((IPluginBroadcastReceiver)localObject).IOnReceive(paramContext, paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

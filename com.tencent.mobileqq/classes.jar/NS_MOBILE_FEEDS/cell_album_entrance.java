@@ -10,13 +10,13 @@ public final class cell_album_entrance
   extends JceStruct
 {
   static Map<String, String> cache_busi_param = new HashMap();
-  public Map<String, String> busi_param;
+  public Map<String, String> busi_param = null;
   public int button_actiontype = -1;
   public String button_title = "";
   public String guide_icon = "";
   public String guide_title = "";
   public String guide_url = "";
-  public int iAttr;
+  public int iAttr = 0;
   public String strButtonColor = "";
   
   static
@@ -52,31 +52,37 @@ public final class cell_album_entrance
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.guide_icon != null) {
-      paramJceOutputStream.write(this.guide_icon, 0);
+    Object localObject = this.guide_icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.guide_title != null) {
-      paramJceOutputStream.write(this.guide_title, 1);
+    localObject = this.guide_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.button_title != null) {
-      paramJceOutputStream.write(this.button_title, 2);
+    localObject = this.button_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.guide_url != null) {
-      paramJceOutputStream.write(this.guide_url, 3);
+    localObject = this.guide_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.button_actiontype, 4);
     paramJceOutputStream.write(this.iAttr, 5);
-    if (this.strButtonColor != null) {
-      paramJceOutputStream.write(this.strButtonColor, 6);
+    localObject = this.strButtonColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 7);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_album_entrance
  * JD-Core Version:    0.7.0.1
  */

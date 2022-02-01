@@ -2,39 +2,39 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.g;
+import com.tencent.mm.pluginsdk.a;
+import com.tencent.mm.pluginsdk.i;
 
 public final class c
-  implements g
+  implements i
 {
-  public final o a(Context paramContext, String paramString1, int paramInt, n paramn, String paramString2)
+  public final w a(Context paramContext, String paramString, int paramInt, v paramv, a parama)
   {
-    AppMethodBeat.i(156067);
-    paramContext = new b(paramContext, paramString1, paramInt, paramn, paramString2);
-    paramContext.vSY = 4;
-    AppMethodBeat.o(156067);
+    AppMethodBeat.i(245246);
+    paramContext = new b(paramContext, paramString, paramInt, paramv, parama);
+    AppMethodBeat.o(245246);
     return paramContext;
   }
   
-  public final o a(Context paramContext, String paramString1, int paramInt, n paramn, boolean paramBoolean, String paramString2)
+  public final w a(Context paramContext, String paramString, v paramv)
   {
-    AppMethodBeat.i(27638);
-    paramContext = new b(paramContext, paramString1, paramInt, paramn, paramBoolean, paramString2);
-    AppMethodBeat.o(27638);
+    AppMethodBeat.i(31339);
+    paramContext = new b(paramContext, paramString, 0, paramv);
+    AppMethodBeat.o(31339);
     return paramContext;
   }
   
-  public final o a(Context paramContext, String paramString, n paramn)
+  public final w a(Context paramContext, String paramString, v paramv, a parama)
   {
-    AppMethodBeat.i(27636);
-    paramContext = new b(paramContext, paramString, paramn);
-    AppMethodBeat.o(27636);
+    AppMethodBeat.i(245249);
+    paramContext = new b(paramContext, paramString, paramv, parama);
+    AppMethodBeat.o(245249);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.c
  * JD-Core Version:    0.7.0.1
  */

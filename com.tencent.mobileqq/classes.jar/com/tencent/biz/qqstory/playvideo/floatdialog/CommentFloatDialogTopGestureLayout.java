@@ -7,21 +7,20 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import vqu;
-import wxj;
 
 public class CommentFloatDialogTopGestureLayout
   extends LinearLayout
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private StoryPlayerCommentListView jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
-  private vqu jdField_a_of_type_Vqu;
+  float a;
   float b;
+  private CommentFloatDialog c;
+  private StoryPlayerCommentListView d;
+  private View e;
+  private Scroller f;
   
   public CommentFloatDialogTopGestureLayout(Context paramContext)
   {
@@ -48,113 +47,114 @@ public class CommentFloatDialogTopGestureLayout
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller == null) {
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+    if (this.f == null) {
+      this.f = new Scroller(getContext());
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    View localView = this.e;
+    if (localView == null) {
       return;
     }
-    int i = this.jdField_a_of_type_AndroidViewView.getScrollX();
-    int j = this.jdField_a_of_type_AndroidViewView.getScrollY();
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, j, paramInt1 - i, paramInt2 - j, paramInt3);
+    int i = localView.getScrollX();
+    int j = this.e.getScrollY();
+    this.f.startScroll(i, j, paramInt1 - i, paramInt2 - j, paramInt3);
     invalidate();
   }
   
-  private boolean a()
+  private boolean b()
   {
+    StoryPlayerCommentListView localStoryPlayerCommentListView = this.d;
     boolean bool = false;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView == null) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.getChildCount() == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.getChildAt(0).getTop() == 0)) {
+    if ((localStoryPlayerCommentListView == null) || (localStoryPlayerCommentListView.getChildCount() == 0) || (this.d.getChildAt(0).getTop() == 0)) {
       bool = true;
     }
     return bool;
   }
   
-  private void b()
+  private void c()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    Object localObject = this.e;
+    if (localObject == null) {
       return;
     }
-    int i = Math.abs(this.jdField_a_of_type_AndroidViewView.getScrollY());
+    int i = Math.abs(((View)localObject).getScrollY());
     if (i > 200)
     {
-      if (this.jdField_a_of_type_AndroidWidgetScroller != null) {
-        this.jdField_a_of_type_AndroidWidgetScroller.setFinalY(0);
+      localObject = this.f;
+      if (localObject != null) {
+        ((Scroller)localObject).setFinalY(0);
       }
-      Object localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.e;
       ThreadManager.getUIHandler().postDelayed(new CommentFloatDialogTopGestureLayout.1(this, (View)localObject), 32L);
-      this.jdField_a_of_type_Vqu.a(i);
-      if (this.jdField_a_of_type_Vqu.a())
-      {
+      this.c.a(i);
+      boolean bool = this.c.c();
+      String str = "2";
+      if (bool) {
         localObject = "2";
-        if (!this.jdField_a_of_type_Vqu.b()) {
-          break label127;
-        }
-      }
-      label127:
-      for (String str = "2";; str = "1")
-      {
-        wxj.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
-        return;
+      } else {
         localObject = "1";
-        break;
       }
+      if (!this.c.d()) {
+        str = "1";
+      }
+      StoryReportor.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
+      return;
     }
     a(0, 0, 200);
   }
   
-  public void a(vqu paramvqu, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
+  public void a(CommentFloatDialog paramCommentFloatDialog, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
   {
-    this.jdField_a_of_type_Vqu = paramvqu;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = paramStoryPlayerCommentListView;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramCommentFloatDialog;
+    this.d = paramStoryPlayerCommentListView;
+    this.e = paramView;
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller == null) {
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+    if (this.f == null) {
+      this.f = new Scroller(getContext());
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    while (!this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()) {
+    if (this.e == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
-    postInvalidate();
+    if (this.f.computeScrollOffset())
+    {
+      this.e.scrollTo(this.f.getCurrX(), this.f.getCurrY());
+      postInvalidate();
+    }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.b != 0.0F) {}
-    for (float f = paramMotionEvent.getRawY() - this.b;; f = 0.0F)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-      if ((!a()) || (f <= 0.0F) || (paramMotionEvent.getAction() == 0)) {
-        break;
-      }
-      return true;
+    float f1;
+    if (this.b != 0.0F) {
+      f1 = paramMotionEvent.getRawY() - this.b;
+    } else {
+      f1 = 0.0F;
     }
-    return false;
+    this.a = paramMotionEvent.getRawX();
+    this.b = paramMotionEvent.getRawY();
+    return (b()) && (f1 > 0.0F) && (paramMotionEvent.getAction() != 0);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = 0.0F;
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.e == null) {
       return false;
     }
-    if (this.b != 0.0F) {
-      f = paramMotionEvent.getRawY() - this.b;
+    float f2 = this.b;
+    float f1 = 0.0F;
+    if (f2 != 0.0F) {
+      f1 = paramMotionEvent.getRawY() - this.b;
     }
-    this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+    this.a = paramMotionEvent.getRawX();
     this.b = paramMotionEvent.getRawY();
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() != 2)
     {
-    default: 
-      b();
+      c();
       return true;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidViewView.getScrollY() - f);
+    int i = (int)(this.e.getScrollY() - f1);
     if (i <= 0) {
       a(0, i, 0);
     }
@@ -163,7 +163,7 @@ public class CommentFloatDialogTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

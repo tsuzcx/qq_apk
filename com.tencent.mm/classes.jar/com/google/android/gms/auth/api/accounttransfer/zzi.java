@@ -12,9 +12,9 @@ final class zzi
   
   public final void zzd(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(76996);
+    AppMethodBeat.i(10655);
     this.zzbb.setResult(paramArrayOfByte);
-    AppMethodBeat.o(76996);
+    AppMethodBeat.o(10655);
   }
 }
 

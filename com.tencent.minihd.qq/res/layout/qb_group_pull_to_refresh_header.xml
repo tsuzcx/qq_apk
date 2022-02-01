@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/common_list_overscoll_top_bg" android:layout_width="fill_parent" android:layout_height="@dimen/refresh_header_real_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/pull_to_refresh_text_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:minHeight="30.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textColor="@color/qzone_white" android:id="@id/pull_to_refresh_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_refresh_pull" />
+        <TextView android:textColor="@color/qzone_white" android:id="@id/pull_to_refresh_sub_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/pull_to_refresh_image_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="13.0dip" android:layout_toLeftOf="@id/pull_to_refresh_text_layout" android:layout_alignParentBottom="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/pull_to_refresh_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow_2" />
+    </FrameLayout>
+    <ImageView android:id="@id/pull_to_refresh_divider" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/qzone_selector_list_divider" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/pull_to_refresh_logo" android:visibility="invisible" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/qzone_cover_logo" android:scaleType="centerCrop" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

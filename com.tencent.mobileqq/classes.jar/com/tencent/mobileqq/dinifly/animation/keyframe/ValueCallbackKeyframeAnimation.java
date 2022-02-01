@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import com.tencent.mobileqq.dinifly.value.LottieFrameInfo;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
@@ -31,7 +31,9 @@ public class ValueCallbackKeyframeAnimation<K, A>
   
   public A getValue()
   {
-    return this.valueCallback.getValueInternal(0.0F, 0.0F, this.valueCallbackValue, this.valueCallbackValue, getProgress(), getProgress(), getProgress());
+    LottieValueCallback localLottieValueCallback = this.valueCallback;
+    Object localObject = this.valueCallbackValue;
+    return localLottieValueCallback.getValueInternal(0.0F, 0.0F, localObject, localObject, getProgress(), getProgress(), getProgress());
   }
   
   A getValue(Keyframe<K> paramKeyframe, float paramFloat)
@@ -44,6 +46,11 @@ public class ValueCallbackKeyframeAnimation<K, A>
     if (this.valueCallback != null) {
       super.notifyListeners();
     }
+  }
+  
+  public void setProgress(float paramFloat)
+  {
+    this.progress = paramFloat;
   }
 }
 

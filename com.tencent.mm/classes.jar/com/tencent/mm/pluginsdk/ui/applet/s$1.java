@@ -1,36 +1,22 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 final class s$1
-  implements TextWatcher
+  implements View.OnTouchListener
 {
   s$1(s params) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(79788);
-    int j = 50 - paramEditable.length();
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    if (this.vUx.pRs != null) {
-      this.vUx.pRs.setText(String.valueOf(i));
-    }
-    AppMethodBeat.o(79788);
+    return true;
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.s.1
  * JD-Core Version:    0.7.0.1
  */

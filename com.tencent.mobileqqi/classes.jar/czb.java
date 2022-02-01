@@ -1,40 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class czb
-  extends Handler
+  implements Runnable
 {
-  private WeakReference a;
+  public czb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public czb(PeopleAroundBaseActivity paramPeopleAroundBaseActivity)
+  public void run()
   {
-    this.a = new WeakReference(paramPeopleAroundBaseActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PeopleAroundBaseActivity localPeopleAroundBaseActivity = (PeopleAroundBaseActivity)this.a.get();
-    if (localPeopleAroundBaseActivity == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      PeopleAroundBaseActivity.a(localPeopleAroundBaseActivity);
-      localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentWidgetXListView.B();
-      if (paramMessage.arg1 == 1) {
-        localPeopleAroundBaseActivity.a(1, 2131562097);
-      }
-    } while (!localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.b);
-    localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.b = false;
-    localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.notifyDataSetChanged();
+    boolean bool = this.a.b.q();
+    this.a.runOnUiThread(new czc(this, bool));
   }
 }
 

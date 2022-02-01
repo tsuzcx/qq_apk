@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/al2" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qo" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/login_auth_state_default_select" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/dz" android:id="@id/qn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iq" android:layout_centerVertical="true" />
+</LinearLayout>

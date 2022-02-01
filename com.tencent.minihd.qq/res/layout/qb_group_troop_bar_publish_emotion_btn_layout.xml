@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/layout_emotion_btn_container" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_alignTop="@id/emotion_btn_bar" style="@style/qb_group_troopBar_publish_divider_style" />
+    <FrameLayout android:id="@id/emotion_btn_bar" android:background="#ffeeeeee" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/imgBtn_emotion" android:background="@drawable/trans" android:paddingLeft="10.0dip" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_edit_face_drawable" android:contentDescription="@string/qb_group_troop_bar_publish_emotion_face_btn_description" />
+    </FrameLayout>
+    <View android:layout_alignBottom="@id/emotion_btn_bar" style="@style/qb_group_troopBar_publish_divider_style" />
+</RelativeLayout>

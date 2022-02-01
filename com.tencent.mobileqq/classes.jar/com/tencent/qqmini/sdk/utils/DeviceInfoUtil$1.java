@@ -12,12 +12,18 @@ final class DeviceInfoUtil$1
     if (paramFile.startsWith("cpu"))
     {
       int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+      while (i < paramFile.length()) {
+        if (paramFile.charAt(i) >= '0')
+        {
+          if (paramFile.charAt(i) > '9') {
+            return false;
+          }
+          i += 1;
+        }
+        else
+        {
           return false;
         }
-        i += 1;
       }
       return true;
     }
@@ -26,7 +32,7 @@ final class DeviceInfoUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.DeviceInfoUtil.1
  * JD-Core Version:    0.7.0.1
  */

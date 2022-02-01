@@ -66,25 +66,38 @@ public class dn$a
   
   private static String u(String paramString)
   {
-    String str;
-    if (TextUtils.isEmpty(paramString))
-    {
-      str = null;
-      return str;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
     int i = paramString.lastIndexOf(":");
-    if (i >= 0) {}
-    for (paramString = paramString.substring(0, i) + ":80";; paramString = paramString + ":80")
+    Object localObject;
+    if (i >= 0)
     {
-      if (paramString.length() >= "http://".length())
-      {
-        str = paramString;
-        if (paramString.substring(0, "http://".length()).equalsIgnoreCase("http://")) {
-          break;
-        }
-      }
-      return "http://" + paramString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString.substring(0, i));
+      ((StringBuilder)localObject).append(":80");
+      paramString = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(":80");
+      paramString = ((StringBuilder)localObject).toString();
+    }
+    if (paramString.length() >= 7)
+    {
+      localObject = paramString;
+      if (paramString.substring(0, 7).equalsIgnoreCase("http://")) {}
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("http://");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public boolean isValid()
@@ -95,13 +108,18 @@ public class dn$a
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("|mValidTimeMills=").append(this.lq).append("|mIsDefault=").append(this.ls).append("|mIPPortList=").append(this.lr);
+    localStringBuilder.append("|mValidTimeMills=");
+    localStringBuilder.append(this.lq);
+    localStringBuilder.append("|mIsDefault=");
+    localStringBuilder.append(this.ls);
+    localStringBuilder.append("|mIPPortList=");
+    localStringBuilder.append(this.lr);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.dn.a
  * JD-Core Version:    0.7.0.1
  */

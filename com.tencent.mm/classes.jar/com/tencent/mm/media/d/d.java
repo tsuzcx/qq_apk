@@ -1,71 +1,45 @@
 package com.tencent.mm.media.d;
 
-import a.f.a.m;
-import a.f.b.j;
-import a.l;
-import a.y;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodec.Callback;
-import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync;", "Lcom/tencent/mm/media/encoder/IAudioEncoder;", "mediaFormat", "Landroid/media/MediaFormat;", "frameEncodeCallback", "Lkotlin/Function2;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "", "frameEncodeEndCallback", "Lkotlin/Function0;", "(Landroid/media/MediaFormat;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacCallback", "com/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1", "Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1;", "inputDataSource", "", "Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$EncoderData;", "kotlin.jvm.PlatformType", "", "isInputEnd", "", "sendDataToEncoder", "pcmData", "", "pts", "", "isLast", "startEncoder", "Companion", "EncoderData", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends a
 {
-  public static final d.a eUw;
-  private List<d.b> eUt;
-  private boolean eUu;
-  private d.c eUv;
+  public static final d nyu;
   
   static
   {
-    AppMethodBeat.i(12942);
-    eUw = new d.a((byte)0);
-    AppMethodBeat.o(12942);
+    AppMethodBeat.i(93530);
+    nyu = new d();
+    AppMethodBeat.o(93530);
   }
   
-  public d(MediaFormat paramMediaFormat, m<? super ByteBuffer, ? super MediaCodec.BufferInfo, y> paramm, a.f.a.a<y> parama)
+  static double a(int paramInt1, int paramInt2, List<Long> paramList)
   {
-    super(paramMediaFormat, paramm, parama);
-    AppMethodBeat.i(12941);
-    this.eUt = Collections.synchronizedList((List)new ArrayList());
-    this.eUv = new d.c(this);
-    try
-    {
-      this.eUg.setCallback((MediaCodec.Callback)this.eUv);
-      this.eUg.start();
-      AppMethodBeat.o(12941);
-      return;
-    }
-    catch (Exception paramMediaFormat)
-    {
-      ab.printErrStackTrace("MicroMsg.MediaCodecAACEncoder", (Throwable)paramMediaFormat, "", new Object[0]);
-      AppMethodBeat.o(12941);
-    }
+    AppMethodBeat.i(93529);
+    double d = (((Number)paramList.get(paramInt1)).longValue() - ((Number)paramList.get(paramInt2)).longValue()) * 2L;
+    AppMethodBeat.o(93529);
+    return d;
   }
   
-  public final void b(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
+  static double a(int paramInt1, int paramInt2, List<Long> paramList1, List<Long> paramList2)
   {
-    AppMethodBeat.i(12940);
-    j.q(paramArrayOfByte, "data");
-    if (paramArrayOfByte != null)
-    {
-      paramArrayOfByte = new d.b(paramArrayOfByte, paramLong, paramBoolean);
-      this.eUt.add(paramArrayOfByte);
-    }
-    AppMethodBeat.o(12940);
+    AppMethodBeat.i(93528);
+    long l1 = ((Number)paramList1.get(paramInt1)).longValue();
+    long l2 = ((Number)paramList2.get(paramInt1)).longValue();
+    long l3 = ((Number)paramList2.get(paramInt1)).longValue();
+    long l4 = ((Number)paramList1.get(paramInt2)).longValue();
+    long l5 = ((Number)paramList2.get(paramInt2)).longValue();
+    double d = l1 + l3 * l2 - (((Number)paramList2.get(paramInt2)).longValue() * l5 + l4);
+    AppMethodBeat.o(93528);
+    return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.d.d
  * JD-Core Version:    0.7.0.1
  */

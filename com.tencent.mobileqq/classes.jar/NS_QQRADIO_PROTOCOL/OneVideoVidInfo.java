@@ -4,16 +4,17 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class OneVideoVidInfo
   extends JceStruct
 {
   static ArrayList<OneVideoPlayInfo> cache_play_info_vec = new ArrayList();
-  public int duration;
+  public int duration = 0;
   public String fileName = "";
   public String imageUrl = "";
-  public ArrayList<OneVideoPlayInfo> play_info_vec;
-  public int status;
+  public ArrayList<OneVideoPlayInfo> play_info_vec = null;
+  public int status = 0;
   public String vid = "";
   
   static
@@ -46,25 +47,29 @@ public final class OneVideoVidInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vid != null) {
-      paramJceOutputStream.write(this.vid, 0);
+    Object localObject = this.vid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.fileName != null) {
-      paramJceOutputStream.write(this.fileName, 1);
+    localObject = this.fileName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.duration, 2);
-    if (this.imageUrl != null) {
-      paramJceOutputStream.write(this.imageUrl, 3);
+    localObject = this.imageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.play_info_vec != null) {
-      paramJceOutputStream.write(this.play_info_vec, 4);
+    localObject = this.play_info_vec;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.status, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.OneVideoVidInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:foreground="@drawable/a7_" app:foreground="@drawable/a7_"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/ff" android:textColor="@color/rv" android:id="@id/frg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-    <Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/frh" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="3.399994dip" />
-    <TextView android:textSize="@dimen/ff" android:textColor="@color/rv" android:ellipsize="end" android:gravity="right" android:id="@id/fri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="2" />
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/frj" android:layout_width="4.799988dip" android:layout_height="8.599976dip" android:layout_marginLeft="5.5999756dip" android:src="@raw/arrow_right" />
+<LinearLayout android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@android:id/title" style="@style/ok" />
 </LinearLayout>

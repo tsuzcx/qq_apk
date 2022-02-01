@@ -1,14 +1,19 @@
-import android.graphics.drawable.Animatable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class hhf
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public hhf(QQProgressDialog paramQQProgressDialog) {}
+  public hhf(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    QQProgressDialog.a(this.a).start();
+    if ((paramInt == 84) || (paramInt == 4)) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return false;
   }
 }
 

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SourceInfo
   extends JceStruct
 {
-  public int iSource;
+  public int iSource = 0;
   public String sVersion = "";
   
   public SourceInfo() {}
@@ -27,14 +27,15 @@ public final class SourceInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iSource, 0);
-    if (this.sVersion != null) {
-      paramJceOutputStream.write(this.sVersion, 1);
+    String str = this.sVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.SourceInfo
  * JD-Core Version:    0.7.0.1
  */

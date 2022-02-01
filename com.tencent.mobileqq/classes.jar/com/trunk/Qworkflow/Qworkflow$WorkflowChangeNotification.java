@@ -34,14 +34,15 @@ public final class Qworkflow$WorkflowChangeNotification
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 18, 24, 32, 40, 50, 58, 64, 74, 80 }, new String[] { "bytes_workflow_id", "uint32_main_type", "uint32_sub_type", "uint64_author_uin", "bytes_title", "msg_summary", "enum_change_type", "msg_current_state", "uint32_data_version" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2, null, Integer.valueOf(1), null, Integer.valueOf(0) }, WorkflowChangeNotification.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 18, 24, 32, 40, 50, 58, 64, 74, 80 }, new String[] { "bytes_workflow_id", "uint32_main_type", "uint32_sub_type", "uint64_author_uin", "bytes_title", "msg_summary", "enum_change_type", "msg_current_state", "uint32_data_version" }, new Object[] { localByteStringMicro1, localInteger, localInteger, Long.valueOf(0L), localByteStringMicro2, null, Integer.valueOf(1), null, localInteger }, WorkflowChangeNotification.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.WorkflowChangeNotification
  * JD-Core Version:    0.7.0.1
  */

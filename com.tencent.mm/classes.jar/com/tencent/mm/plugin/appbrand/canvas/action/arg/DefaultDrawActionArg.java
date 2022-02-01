@@ -11,9 +11,9 @@ public class DefaultDrawActionArg
   
   static
   {
-    AppMethodBeat.i(103317);
-    CREATOR = new DefaultDrawActionArg.1();
-    AppMethodBeat.o(103317);
+    AppMethodBeat.i(145000);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145000);
   }
   
   public DefaultDrawActionArg() {}
@@ -30,7 +30,7 @@ public class DefaultDrawActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DefaultDrawActionArg
  * JD-Core Version:    0.7.0.1
  */

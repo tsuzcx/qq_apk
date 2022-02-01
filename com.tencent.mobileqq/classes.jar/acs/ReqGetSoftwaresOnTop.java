@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqGetSoftwaresOnTop
   extends JceStruct
 {
-  public int pageno;
-  public int pagesize;
-  public byte sorttype;
+  public int pageno = 0;
+  public int pagesize = 0;
+  public byte sorttype = 0;
   
   public ReqGetSoftwaresOnTop() {}
   
@@ -36,7 +36,7 @@ public final class ReqGetSoftwaresOnTop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acs.ReqGetSoftwaresOnTop
  * JD-Core Version:    0.7.0.1
  */

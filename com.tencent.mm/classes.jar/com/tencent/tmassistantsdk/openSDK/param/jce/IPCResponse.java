@@ -23,32 +23,32 @@ public final class IPCResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76001);
+    AppMethodBeat.i(102247);
     if (cache_head == null) {
       cache_head = new IPCHead();
     }
     this.head = ((IPCHead)paramJceInputStream.read(cache_head, 0, true));
     if (cache_body == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = new byte[1];
       cache_body = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      arrayOfByte[0] = 0;
     }
-    this.body = ((byte[])paramJceInputStream.read(cache_body, 1, true));
-    AppMethodBeat.o(76001);
+    this.body = paramJceInputStream.read(cache_body, 1, true);
+    AppMethodBeat.o(102247);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76000);
+    AppMethodBeat.i(102246);
     paramJceOutputStream.write(this.head, 0);
     paramJceOutputStream.write(this.body, 1);
-    AppMethodBeat.o(76000);
+    AppMethodBeat.o(102246);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCResponse
  * JD-Core Version:    0.7.0.1
  */

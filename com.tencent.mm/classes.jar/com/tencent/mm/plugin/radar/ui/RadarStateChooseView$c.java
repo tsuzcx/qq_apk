@@ -1,18 +1,51 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/animation/Animation;"}, k=3, mv={1, 5, 1}, xi=48)
 final class RadarStateChooseView$c
-  extends k
+  extends u
   implements a<Animation>
 {
   RadarStateChooseView$c(RadarStateChooseView paramRadarStateChooseView)
   {
     super(0);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/ui/RadarStateChooseView$slideInAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements Animation.AnimationListener
+  {
+    a(RadarStateChooseView paramRadarStateChooseView) {}
+    
+    public final void onAnimationEnd(Animation paramAnimation)
+    {
+      AppMethodBeat.i(267253);
+      s.u(paramAnimation, "animation");
+      RadarStateChooseView.a(this.Nts);
+      this.Nts.setVisibility(8);
+      AppMethodBeat.o(267253);
+    }
+    
+    public final void onAnimationRepeat(Animation paramAnimation)
+    {
+      AppMethodBeat.i(267255);
+      s.u(paramAnimation, "animation");
+      AppMethodBeat.o(267255);
+    }
+    
+    public final void onAnimationStart(Animation paramAnimation)
+    {
+      AppMethodBeat.i(267250);
+      s.u(paramAnimation, "animation");
+      AppMethodBeat.o(267250);
+    }
   }
 }
 

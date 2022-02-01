@@ -16,7 +16,7 @@ import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallbac
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
-import dbu;
+import dbt;
 
 public class QQBrowserActivity$NativeChromeClient
   extends WebChromeClient
@@ -105,7 +105,7 @@ public class QQBrowserActivity$NativeChromeClient
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.j)
     {
-      QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).postDelayed(new dbu(this, paramString), 50L);
+      QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).postDelayed(new dbt(this, paramString), 50L);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.setTitle(paramString);

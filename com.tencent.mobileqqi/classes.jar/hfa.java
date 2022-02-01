@@ -2,17 +2,23 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.widget.AlbumImageProxy;
-import com.tencent.mobileqq.widget.RotateBitmap;
+import com.tencent.qphone.base.util.QLog;
 
 public class hfa
-  extends Handler
+  extends Thread
 {
-  public hfa(AlbumImageProxy paramAlbumImageProxy) {}
+  public hfa(AlbumImageProxy paramAlbumImageProxy, String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = (Bitmap)paramMessage.obj;
-    this.a.setImageRotateBitmapResetBase(new RotateBitmap(paramMessage, 0), true);
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumImageProxy", 2, "AlbumImageProxy, decode Thread: filekey :" + this.jdField_a_of_type_JavaLangString);
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Message localMessage = new Message();
+    localMessage.what = 0;
+    localMessage.obj = localBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a.sendMessage(localMessage);
   }
 }
 

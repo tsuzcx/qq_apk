@@ -8,12 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.exdevice.f.b.a.e;
-import com.tencent.mm.pluginsdk.f.h;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.plugin.exdevice.g.b.a.e;
+import com.tencent.mm.pluginsdk.platformtools.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import java.util.ArrayList;
 
@@ -24,22 +29,22 @@ final class ExdeviceLikeUI$a
   
   public final int getCount()
   {
-    AppMethodBeat.i(19972);
-    if (ExdeviceLikeUI.c(this.lMP) == null)
+    AppMethodBeat.i(24041);
+    if (ExdeviceLikeUI.c(this.yAu) == null)
     {
-      AppMethodBeat.o(19972);
+      AppMethodBeat.o(24041);
       return 0;
     }
-    int i = ExdeviceLikeUI.c(this.lMP).size();
-    AppMethodBeat.o(19972);
+    int i = ExdeviceLikeUI.c(this.yAu).size();
+    AppMethodBeat.o(24041);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(19973);
-    Object localObject = ExdeviceLikeUI.c(this.lMP).get(paramInt);
-    AppMethodBeat.o(19973);
+    AppMethodBeat.i(24042);
+    Object localObject = ExdeviceLikeUI.c(this.yAu).get(paramInt);
+    AppMethodBeat.o(24042);
     return localObject;
   }
   
@@ -50,70 +55,70 @@ final class ExdeviceLikeUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(19974);
-    e locale = (e)ExdeviceLikeUI.c(this.lMP).get(paramInt);
+    AppMethodBeat.i(24043);
+    e locale = (e)ExdeviceLikeUI.c(this.yAu).get(paramInt);
     if (paramView == null) {
-      if (ExdeviceLikeUI.d(this.lMP))
+      if (ExdeviceLikeUI.d(this.yAu))
       {
-        paramView = LayoutInflater.from(this.lMP).inflate(2130969455, paramViewGroup, false);
+        paramView = LayoutInflater.from(this.yAu).inflate(R.i.gjo, paramViewGroup, false);
         paramViewGroup = new a();
-        paramViewGroup.ehv = ((ImageView)paramView.findViewById(2131823774));
-        paramViewGroup.lMQ = ((NoMeasuredTextView)paramView.findViewById(2131823776));
-        paramViewGroup.gLI = ((TextView)paramView.findViewById(2131823777));
-        paramViewGroup.timeTv = ((TextView)paramView.findViewById(2131823775));
-        paramViewGroup.lMQ.setTextSize(0, this.lMP.getResources().getDimension(2131427809));
-        paramViewGroup.lMQ.setTextColor(this.lMP.getResources().getColor(2131689763));
-        paramViewGroup.lMQ.setSingleLine(true);
-        paramViewGroup.lMQ.setShouldEllipsize(true);
+        paramViewGroup.lKK = ((ImageView)paramView.findViewById(R.h.fGV));
+        paramViewGroup.yAv = ((NoMeasuredTextView)paramView.findViewById(R.h.fHt));
+        paramViewGroup.pls = ((TextView)paramView.findViewById(R.h.fHn));
+        paramViewGroup.timeTv = ((TextView)paramView.findViewById(R.h.fHm));
+        paramViewGroup.yAv.setTextSize(0, this.yAu.getResources().getDimension(R.f.NormalTextSize));
+        paramViewGroup.yAv.setTextColor(this.yAu.getResources().getColor(R.e.normal_text_color));
+        paramViewGroup.yAv.setSingleLine(true);
+        paramViewGroup.yAv.setShouldEllipsize(true);
         paramView.setTag(paramViewGroup);
-        label172:
-        a.b.t(paramViewGroup.ehv, locale.field_username);
-        paramViewGroup.lMQ.setText(j.b(this.lMP, s.nE(locale.field_username), paramViewGroup.lMQ.getTextSize()));
-        if ((bo.isNullOrNil(locale.field_liketips)) || (paramViewGroup.gLI == null)) {
-          break label343;
+        label179:
+        a.b.B(paramViewGroup.lKK, locale.field_username);
+        paramViewGroup.yAv.setText(p.b(this.yAu, aa.getDisplayName(locale.field_username), paramViewGroup.yAv.getTextSize()));
+        if ((Util.isNullOrNil(locale.field_liketips)) || (paramViewGroup.pls == null)) {
+          break label352;
         }
-        paramViewGroup.gLI.setVisibility(0);
-        paramViewGroup.gLI.setText(locale.field_liketips);
-        label251:
+        paramViewGroup.pls.setVisibility(0);
+        paramViewGroup.pls.setText(locale.field_liketips);
+        label258:
         paramInt = (int)((System.currentTimeMillis() / 1000L - locale.field_timestamp) / 60L + 1L);
         if (paramInt > 30) {
-          break label362;
+          break label371;
         }
-        paramViewGroup.timeTv.setText(this.lMP.getString(2131299421, new Object[] { Integer.valueOf(paramInt) }));
+        paramViewGroup.timeTv.setText(this.yAu.getString(R.l.gGp, new Object[] { Integer.valueOf(paramInt) }));
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(19974);
+      AppMethodBeat.o(24043);
       return paramView;
-      paramView = LayoutInflater.from(this.lMP).inflate(2130969454, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.yAu).inflate(R.i.gjn, paramViewGroup, false);
       break;
       paramViewGroup = (a)paramView.getTag();
-      break label172;
-      label343:
-      if (paramViewGroup.gLI == null) {
-        break label251;
+      break label179;
+      label352:
+      if (paramViewGroup.pls == null) {
+        break label258;
       }
-      paramViewGroup.gLI.setVisibility(8);
-      break label251;
-      label362:
-      paramViewGroup.timeTv.setText(h.c(this.lMP, locale.field_timestamp * 1000L, true));
+      paramViewGroup.pls.setVisibility(8);
+      break label258;
+      label371:
+      paramViewGroup.timeTv.setText(f.d(this.yAu, locale.field_timestamp * 1000L, true));
     }
   }
   
   final class a
   {
-    ImageView ehv;
-    TextView gLI;
-    NoMeasuredTextView lMQ;
+    ImageView lKK;
+    TextView pls;
     TextView timeTv;
+    NoMeasuredTextView yAv;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceLikeUI.a
  * JD-Core Version:    0.7.0.1
  */

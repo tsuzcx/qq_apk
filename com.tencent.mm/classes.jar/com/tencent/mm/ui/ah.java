@@ -1,198 +1,239 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.arch.a.c.a;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnApplyWindowInsetsListener;
-import android.view.Window;
-import android.view.WindowInsets;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.WeakHashMap;
+import com.tencent.mm.aa.a.a;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.wl;
+import com.tencent.mm.blink.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.finder.extension.reddot.k;
+import com.tencent.mm.plugin.finder.extension.reddot.k.b;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
 
-@TargetApi(21)
 public final class ah
+  implements MStorageEx.IOnStorageChange
 {
-  private static final boolean zfL;
-  private static final WeakHashMap<Activity, ah> zfM;
-  final Set<View.OnApplyWindowInsetsListener> jmL;
-  private WindowInsets zfN;
+  MMFragmentActivity EzS;
+  LauncherUI.c adHh;
+  k adHi;
+  d adHj;
+  private boolean adHk;
+  private boolean adHl;
+  private Runnable adHm;
+  ah.a adHn;
+  a.a adHo;
+  MStorageEx.IOnStorageChange adHp;
+  IListener adHq;
+  final k.b adHr;
+  IListener<wl> adyp;
+  IListener adyq;
   
-  static
+  public ah()
   {
-    AppMethodBeat.i(146202);
-    if (Build.VERSION.SDK_INT < 23) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(33506);
+    this.adHk = false;
+    this.adHm = new ah.1(this);
+    this.adyq = new MainTabUnreadMgr.2(this, f.hfK);
+    this.adyp = new MainTabUnreadMgr.3(this, f.hfK);
+    this.adHo = new a.a()
     {
-      zfL = bool;
-      zfM = new WeakHashMap();
-      AppMethodBeat.o(146202);
-      return;
-    }
-  }
-  
-  private ah(final Activity paramActivity)
-  {
-    AppMethodBeat.i(146200);
-    this.jmL = new HashSet();
-    paramActivity.runOnUiThread(new Runnable()
-    {
-      public final void run()
+      public final void D(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(146195);
-        paramActivity.getWindow().getDecorView().setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
-        {
-          public final WindowInsets onApplyWindowInsets(View paramAnonymous2View, WindowInsets paramAnonymous2WindowInsets)
-          {
-            AppMethodBeat.i(146194);
-            synchronized (ah.this)
-            {
-              ah.a(ah.this, new WindowInsets(paramAnonymous2WindowInsets));
-            }
-            synchronized (ah.a(ah.this))
-            {
-              LinkedList localLinkedList = new LinkedList(ah.a(ah.this));
-              ??? = localLinkedList.iterator();
-              while (((Iterator)???).hasNext())
-              {
-                ((View.OnApplyWindowInsetsListener)((Iterator)???).next()).onApplyWindowInsets(paramAnonymous2View, paramAnonymous2WindowInsets);
-                continue;
-                paramAnonymous2View = finally;
-                AppMethodBeat.o(146194);
-                throw paramAnonymous2View;
-              }
-            }
-            paramAnonymous2View = paramAnonymous2View.onApplyWindowInsets(paramAnonymous2WindowInsets);
-            AppMethodBeat.o(146194);
-            return paramAnonymous2View;
-          }
-        });
-        AppMethodBeat.o(146195);
-      }
-    });
-    AppMethodBeat.o(146200);
-  }
-  
-  @TargetApi(21)
-  public static ah aB(Activity paramActivity)
-  {
-    AppMethodBeat.i(146197);
-    paramActivity = d(paramActivity, true);
-    AppMethodBeat.o(146197);
-    return paramActivity;
-  }
-  
-  public static WindowInsets aC(Activity paramActivity)
-  {
-    AppMethodBeat.i(146198);
-    if (zfL)
-    {
-      paramActivity = d(paramActivity, false);
-      if (paramActivity == null)
-      {
-        AppMethodBeat.o(146198);
-        return null;
-      }
-      paramActivity = paramActivity.dDr();
-      AppMethodBeat.o(146198);
-      return paramActivity;
-    }
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramActivity = paramActivity.getWindow().getDecorView().getRootWindowInsets();
-      AppMethodBeat.o(146198);
-      return paramActivity;
-    }
-    AppMethodBeat.o(146198);
-    return null;
-  }
-  
-  private static ah d(Activity paramActivity, boolean paramBoolean)
-  {
-    AppMethodBeat.i(146199);
-    synchronized (zfM)
-    {
-      ah localah2 = (ah)zfM.get(paramActivity);
-      ah localah1 = localah2;
-      if (localah2 == null)
-      {
-        localah1 = localah2;
-        if (paramBoolean)
-        {
-          localah1 = new ah(paramActivity);
-          zfM.put(paramActivity, localah1);
+        AppMethodBeat.i(33502);
+        if ((paramAnonymousInt == 262145) || (paramAnonymousInt == 262156) || (paramAnonymousInt == 262152) || (paramAnonymousInt == 266260) || (paramAnonymousInt == 266267)) {
+          ah.f(ah.this);
         }
+        if ((paramAnonymousInt == 262147) || (paramAnonymousInt == 262149) || (paramAnonymousInt == 352279) || (paramAnonymousInt == 352280)) {
+          ah.f(ah.this);
+        }
+        AppMethodBeat.o(33502);
       }
-      AppMethodBeat.o(146199);
-      return localah1;
-    }
-  }
-  
-  private WindowInsets dDr()
-  {
-    try
-    {
-      WindowInsets localWindowInsets = this.zfN;
-      return localWindowInsets;
-    }
-    finally {}
-  }
-  
-  public static void e(Application paramApplication)
-  {
-    AppMethodBeat.i(146196);
-    paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {}
-    {
-      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+      
+      public final void b(at.a paramAnonymousa)
       {
-        AppMethodBeat.i(146192);
-        this.zfO.apply(paramAnonymousActivity);
-        AppMethodBeat.o(146192);
+        AppMethodBeat.i(33503);
+        if (paramAnonymousa == at.a.acUP) {
+          ah.f(ah.this);
+        }
+        AppMethodBeat.o(33503);
       }
-      
-      public final void onActivityDestroyed(Activity paramAnonymousActivity) {}
-      
-      public final void onActivityPaused(Activity paramAnonymousActivity) {}
-      
-      public final void onActivityResumed(Activity paramAnonymousActivity) {}
-      
-      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
-      
-      public final void onActivityStarted(Activity paramAnonymousActivity)
+    };
+    this.adHp = new MStorageEx.IOnStorageChange()
+    {
+      public final void onNotifyChange(int paramAnonymousInt, MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(146193);
-        this.zfO.apply(paramAnonymousActivity);
-        AppMethodBeat.o(146193);
+        AppMethodBeat.i(33504);
+        int i = Util.nullAsInt(paramAnonymousObject, 0);
+        Log.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), paramAnonymousMStorageEx });
+        bh.bCz();
+        if ((paramAnonymousMStorageEx != c.ban()) || (i <= 0))
+        {
+          Log.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramAnonymousMStorageEx });
+          AppMethodBeat.o(33504);
+          return;
+        }
+        ah.this.jki();
+        if (i == 143618)
+        {
+          ah.e(ah.this);
+          AppMethodBeat.o(33504);
+          return;
+        }
+        if ((i == 204817) || (i == 204820)) {
+          ah.f(ah.this);
+        }
+        AppMethodBeat.o(33504);
+      }
+    };
+    this.adHq = new MainTabUnreadMgr.10(this, f.hfK);
+    this.adHr = new k.b()
+    {
+      public final void avo(String paramAnonymousString)
+      {
+        AppMethodBeat.i(369613);
+        if (ah.a(ah.this) != null) {
+          ah.a(ah.this).aX(true, paramAnonymousString);
+        }
+        AppMethodBeat.o(369613);
       }
       
-      public final void onActivityStopped(Activity paramAnonymousActivity) {}
-    });
-    AppMethodBeat.o(146196);
+      public final boolean dZA()
+      {
+        AppMethodBeat.i(249090);
+        if ((ah.a(ah.this) != null) && (ah.a(ah.this).getFriendTabUnread() <= 0) && (!ah.a(ah.this).getShowFriendPoint()))
+        {
+          AppMethodBeat.o(249090);
+          return true;
+        }
+        AppMethodBeat.o(249090);
+        return false;
+      }
+      
+      public final void dZy()
+      {
+        AppMethodBeat.i(249096);
+        ah.a(ah.this).KT(true);
+        AppMethodBeat.o(249096);
+      }
+      
+      public final void dZz()
+      {
+        AppMethodBeat.i(249099);
+        if (ah.a(ah.this) != null) {
+          ah.a(ah.this).aX(false, "");
+        }
+        ah.this.jkl();
+        AppMethodBeat.o(249099);
+      }
+      
+      public final boolean eFN()
+      {
+        AppMethodBeat.i(369612);
+        if (ah.a(ah.this) != null)
+        {
+          AppMethodBeat.o(369612);
+          return true;
+        }
+        AppMethodBeat.o(369612);
+        return false;
+      }
+    };
+    AppMethodBeat.o(33506);
   }
   
-  public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+  public final void aAu(int paramInt)
   {
-    AppMethodBeat.i(146201);
-    synchronized (this.jmL)
+    AppMethodBeat.i(33513);
+    if (this.adHj != null) {
+      this.adHj.setTo(paramInt);
+    }
+    if (this.adHi != null) {
+      this.adHi.bXr = paramInt;
+    }
+    AppMethodBeat.o(33513);
+  }
+  
+  protected final void jkg()
+  {
+    AppMethodBeat.i(33509);
+    b.aJY().arrange(new ah.8(this));
+    AppMethodBeat.o(33509);
+  }
+  
+  protected final void jkh()
+  {
+    AppMethodBeat.i(33510);
+    if (this.adHl)
     {
-      this.jmL.add(paramOnApplyWindowInsetsListener);
-      AppMethodBeat.o(146201);
+      Log.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "start  setAppTagUnreadNow");
+      jkl();
+    }
+    AppMethodBeat.o(33510);
+  }
+  
+  protected final void jki()
+  {
+    AppMethodBeat.i(33508);
+    b.aJY().arrange(new ah.7(this));
+    AppMethodBeat.o(33508);
+  }
+  
+  protected final void jkl()
+  {
+    AppMethodBeat.i(33507);
+    b.aJY().arrange(new ah.6(this));
+    AppMethodBeat.o(33507);
+  }
+  
+  public final int jkm()
+  {
+    AppMethodBeat.i(33514);
+    int j = 0;
+    int i = j;
+    if (this.adHj != null)
+    {
+      i = j;
+      if (this.adHj.getMainTabUnread() > 0) {
+        i = this.adHj.getMainTabUnread();
+      }
+    }
+    AppMethodBeat.o(33514);
+    return i;
+  }
+  
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(33512);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
+    {
+      Log.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
+      AppMethodBeat.o(33512);
       return;
     }
+    bh.bCz();
+    if (paramMStorageEx == c.bzG())
+    {
+      Log.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "Launcherui onNotifyChange event type %d, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
+      if (au.bwS((String)paramObject)) {
+        jki();
+      }
+      AppMethodBeat.o(33512);
+      return;
+    }
+    AppMethodBeat.o(33512);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.ah
  * JD-Core Version:    0.7.0.1
  */

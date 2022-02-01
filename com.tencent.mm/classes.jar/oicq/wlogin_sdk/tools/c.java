@@ -21,13 +21,13 @@ public final class c
   
   public c()
   {
-    AppMethodBeat.i(96506);
+    AppMethodBeat.i(88145);
     this.state = new long[4];
     this.count = new long[2];
     this.buffer = new byte[64];
     this.digest = new byte[16];
     md5Init();
-    AppMethodBeat.o(96506);
+    AppMethodBeat.o(88145);
   }
   
   private static void Encode(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
@@ -82,14 +82,14 @@ public final class c
   
   private static void a(long[] paramArrayOfLong, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96510);
+    AppMethodBeat.i(88149);
     int j = 0;
     int i = 0;
     for (;;)
     {
       if (j >= 64)
       {
-        AppMethodBeat.o(96510);
+        AppMethodBeat.o(88149);
         return;
       }
       paramArrayOfLong[i] = (b2iu(paramArrayOfByte[j]) | b2iu(paramArrayOfByte[(j + 1)]) << 8 | b2iu(paramArrayOfByte[(j + 2)]) << 16 | b2iu(paramArrayOfByte[(j + 3)]) << 24);
@@ -98,9 +98,18 @@ public final class c
     }
   }
   
-  public static byte[] azA(String paramString)
+  private static long b2iu(byte paramByte)
   {
-    AppMethodBeat.i(96512);
+    int i = paramByte;
+    if (paramByte < 0) {
+      i = paramByte & 0xFF;
+    }
+    return i;
+  }
+  
+  public static byte[] bKd(String paramString)
+  {
+    AppMethodBeat.i(88151);
     try
     {
       byte[] arrayOfByte = paramString.getBytes("ISO8859_1");
@@ -114,30 +123,21 @@ public final class c
       }
     }
     paramString = new c().getMD5(paramString);
-    AppMethodBeat.o(96512);
+    AppMethodBeat.o(88151);
     return paramString;
   }
   
-  private static long b2iu(byte paramByte)
+  public static byte[] dW(byte[] paramArrayOfByte)
   {
-    int i = paramByte;
-    if (paramByte < 0) {
-      i = paramByte & 0xFF;
-    }
-    return i;
-  }
-  
-  public static byte[] cQ(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(96511);
+    AppMethodBeat.i(88150);
     paramArrayOfByte = new c().getMD5(paramArrayOfByte);
-    AppMethodBeat.o(96511);
+    AppMethodBeat.o(88150);
     return paramArrayOfByte;
   }
   
   private byte[] getMD5(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96505);
+    AppMethodBeat.i(88144);
     md5Init();
     md5Update(new ByteArrayInputStream(paramArrayOfByte), paramArrayOfByte.length);
     paramArrayOfByte = new byte[8];
@@ -150,7 +150,7 @@ public final class c
       md5Update(paramArrayOfByte, 8);
       Encode(this.digest, this.state, 16);
       paramArrayOfByte = this.digest;
-      AppMethodBeat.o(96505);
+      AppMethodBeat.o(88144);
       return paramArrayOfByte;
     }
   }
@@ -180,7 +180,7 @@ public final class c
   
   private void md5Transform(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96509);
+    AppMethodBeat.i(88148);
     long l2 = this.state[0];
     long l1 = this.state[1];
     long l4 = this.state[2];
@@ -259,12 +259,12 @@ public final class c
     paramArrayOfByte[2] += l4;
     paramArrayOfByte = this.state;
     paramArrayOfByte[3] += l3;
-    AppMethodBeat.o(96509);
+    AppMethodBeat.o(88148);
   }
   
   private void md5Update(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(96508);
+    AppMethodBeat.i(88147);
     byte[] arrayOfByte = new byte[64];
     int j = (int)(this.count[0] >>> 3) & 0x3F;
     long[] arrayOfLong = this.count;
@@ -289,7 +289,7 @@ public final class c
     for (;;)
     {
       md5Memcpy(this.buffer, paramArrayOfByte, j, i, paramInt - i);
-      AppMethodBeat.o(96508);
+      AppMethodBeat.o(88147);
       return;
       md5Memcpy(arrayOfByte, paramArrayOfByte, 0, i, 64);
       md5Transform(arrayOfByte);

@@ -1,90 +1,103 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class cyp
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public cys yfG;
+  public String KuO;
+  public String KuP;
+  public int YAF;
+  public String rGU;
+  public String right_button_wording;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(63693);
+    AppMethodBeat.i(72497);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.yfG == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DownloadInfo");
-        AppMethodBeat.o(63693);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.YAF);
+      if (this.KuO != null) {
+        paramVarArgs.g(2, this.KuO);
       }
-      if (this.yfG != null)
-      {
-        paramVarArgs.iQ(4, this.yfG.computeSize());
-        this.yfG.writeFields(paramVarArgs);
+      if (this.rGU != null) {
+        paramVarArgs.g(3, this.rGU);
       }
-      AppMethodBeat.o(63693);
+      if (this.right_button_wording != null) {
+        paramVarArgs.g(4, this.right_button_wording);
+      }
+      if (this.KuP != null) {
+        paramVarArgs.g(5, this.KuP);
+      }
+      AppMethodBeat.o(72497);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.yfG == null) {
-        break label358;
-      }
-    }
-    label358:
-    for (paramInt = e.a.a.a.iP(4, this.yfG.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(63693);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        if (this.yfG == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: DownloadInfo");
-          AppMethodBeat.o(63693);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(63693);
-        return 0;
+      int i = i.a.a.b.b.a.cJ(1, this.YAF) + 0;
+      paramInt = i;
+      if (this.KuO != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.KuO);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-        cyp localcyp = (cyp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(63693);
-          return -1;
-        }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new cys();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((cys)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localcyp.yfG = ((cys)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(63693);
-        return 0;
+      i = paramInt;
+      if (this.rGU != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.rGU);
       }
-      AppMethodBeat.o(63693);
-      return -1;
+      paramInt = i;
+      if (this.right_button_wording != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.right_button_wording);
+      }
+      i = paramInt;
+      if (this.KuP != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.KuP);
+      }
+      AppMethodBeat.o(72497);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(72497);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      cyp localcyp = (cyp)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(72497);
+        return -1;
+      case 1: 
+        localcyp.YAF = locala.ajGk.aar();
+        AppMethodBeat.o(72497);
+        return 0;
+      case 2: 
+        localcyp.KuO = locala.ajGk.readString();
+        AppMethodBeat.o(72497);
+        return 0;
+      case 3: 
+        localcyp.rGU = locala.ajGk.readString();
+        AppMethodBeat.o(72497);
+        return 0;
+      case 4: 
+        localcyp.right_button_wording = locala.ajGk.readString();
+        AppMethodBeat.o(72497);
+        return 0;
+      }
+      localcyp.KuP = locala.ajGk.readString();
+      AppMethodBeat.o(72497);
+      return 0;
+    }
+    AppMethodBeat.o(72497);
+    return -1;
   }
 }
 

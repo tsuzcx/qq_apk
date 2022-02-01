@@ -1,51 +1,48 @@
 package com.tencent.gdtad.views.canvas.components.appbutton;
 
-import aase;
-import aass;
-import aatr;
-import aats;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.ad.tangram.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.statistics.GdtTraceReporter;
 
-public class GdtDownloadReportManager$1$1
+class GdtDownloadReportManager$1$1
   implements Runnable
 {
-  public GdtDownloadReportManager$1$1(aats paramaats, String paramString1, String paramString2) {}
+  GdtDownloadReportManager$1$1(GdtDownloadReportManager.1 param1, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = aatr.a(aatr.a());
+    Object localObject = GdtDownloadReportManager.d(GdtDownloadReportManager.a());
     if (localObject == null)
     {
-      aase.d("GdtDownloadReportManager", "fetch sigh MD5 failed no appbtndata:");
-      aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 284);
+      GdtLog.d("GdtDownloadReportManager", "fetch sigh MD5 failed no appbtndata:");
+      GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 284);
     }
-    for (;;)
+    else
     {
-      aatr.a(this.jdField_a_of_type_Aats.a, this.b);
-      return;
       localObject = ((AdAppBtnData)localObject).signatureMd5Molo;
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        aase.b("GdtDownloadReportManager", "fetch appbtndata sigh MD5 failed");
-        aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 284);
+        GdtLog.b("GdtDownloadReportManager", "fetch appbtndata sigh MD5 failed");
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 284);
       }
-      else if (((String)localObject).equals(this.jdField_a_of_type_JavaLangString))
+      else if (((String)localObject).equals(this.a))
       {
-        aase.b("GdtDownloadReportManager", "fetch sigh MD5 matched");
-        aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 275);
+        GdtLog.b("GdtDownloadReportManager", "fetch sigh MD5 matched");
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 275);
       }
       else
       {
-        aase.b("GdtDownloadReportManager", "fetch sigh MD5 not matched");
-        aass.a(aatr.a(this.jdField_a_of_type_Aats.a), 276);
+        GdtLog.b("GdtDownloadReportManager", "fetch sigh MD5 not matched");
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 276);
       }
     }
+    GdtDownloadReportManager.b(this.c.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1.1
  * JD-Core Version:    0.7.0.1
  */

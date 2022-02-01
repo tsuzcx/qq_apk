@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  private int aJm;
-  public int aJn;
-  public int aJo;
+  private int cTe;
+  public int cTf;
+  public int cTg;
   public byte[] data;
   
   public l() {}
@@ -14,166 +14,166 @@ public final class l
   public l(byte[] paramArrayOfByte)
   {
     this(paramArrayOfByte, paramArrayOfByte.length);
-    AppMethodBeat.i(95893);
-    AppMethodBeat.o(95893);
+    AppMethodBeat.i(93155);
+    AppMethodBeat.o(93155);
   }
   
   public l(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.aJm = paramInt;
+    this.cTe = paramInt;
   }
   
-  private void qK()
+  private void UD()
   {
-    AppMethodBeat.i(95896);
-    int i = this.aJo + 1;
-    this.aJo = i;
+    AppMethodBeat.i(93158);
+    int i = this.cTg + 1;
+    this.cTg = i;
     if (i == 8)
     {
-      this.aJo = 0;
-      this.aJn += 1;
+      this.cTg = 0;
+      this.cTf += 1;
     }
-    ok();
-    AppMethodBeat.o(95896);
+    Sh();
+    AppMethodBeat.o(93158);
   }
   
-  public final int dD(int paramInt)
+  public final boolean Sg()
   {
-    AppMethodBeat.i(95899);
-    if (paramInt == 0)
-    {
-      AppMethodBeat.o(95899);
-      return 0;
-    }
-    this.aJo += paramInt;
-    int i = 0;
-    while (this.aJo > 8)
-    {
-      this.aJo -= 8;
-      byte[] arrayOfByte = this.data;
-      j = this.aJn;
-      this.aJn = (j + 1);
-      i |= (arrayOfByte[j] & 0xFF) << this.aJo;
-    }
-    int j = this.data[this.aJn];
-    int k = this.aJo;
-    if (this.aJo == 8)
-    {
-      this.aJo = 0;
-      this.aJn += 1;
-    }
-    ok();
-    AppMethodBeat.o(95899);
-    return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
-  }
-  
-  public final void dE(int paramInt)
-  {
-    AppMethodBeat.i(95897);
-    int i = paramInt / 8;
-    this.aJn += i;
-    this.aJo = (paramInt - i * 8 + this.aJo);
-    if (this.aJo > 7)
-    {
-      this.aJn += 1;
-      this.aJo -= 8;
-    }
-    ok();
-    AppMethodBeat.o(95897);
-  }
-  
-  public final void l(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.data = paramArrayOfByte;
-    this.aJn = 0;
-    this.aJo = 0;
-    this.aJm = paramInt;
-  }
-  
-  public final void m(byte[] paramArrayOfByte, int paramInt)
-  {
-    AppMethodBeat.i(95901);
-    if (this.aJo == 0) {}
+    AppMethodBeat.i(93160);
+    if ((this.data[this.cTf] & 128 >> this.cTg) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      a.checkState(bool);
-      System.arraycopy(this.data, this.aJn, paramArrayOfByte, 0, paramInt);
-      this.aJn += paramInt;
-      ok();
-      AppMethodBeat.o(95901);
-      return;
-    }
-  }
-  
-  public final boolean oj()
-  {
-    AppMethodBeat.i(95898);
-    if ((this.data[this.aJn] & 128 >> this.aJo) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      qK();
-      AppMethodBeat.o(95898);
+      UD();
+      AppMethodBeat.o(93160);
       return bool;
     }
   }
   
-  public final void ok()
+  public final void Sh()
   {
-    AppMethodBeat.i(95902);
-    if ((this.aJn >= 0) && ((this.aJn < this.aJm) || ((this.aJn == this.aJm) && (this.aJo == 0)))) {}
+    AppMethodBeat.i(93164);
+    if ((this.cTf >= 0) && ((this.cTf < this.cTe) || ((this.cTf == this.cTe) && (this.cTg == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      AppMethodBeat.o(95902);
+      AppMethodBeat.o(93164);
       return;
     }
   }
   
-  public final int qI()
+  public final int UB()
   {
-    return (this.aJm - this.aJn) * 8 - this.aJo;
+    return (this.cTe - this.cTf) * 8 - this.cTg;
   }
   
-  public final int qJ()
+  public final int UC()
   {
-    AppMethodBeat.i(95894);
-    if (this.aJo == 0) {}
+    AppMethodBeat.i(93156);
+    if (this.cTg == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      int i = this.aJn;
-      AppMethodBeat.o(95894);
+      int i = this.cTf;
+      AppMethodBeat.o(93156);
       return i;
     }
   }
   
-  public final void qL()
+  public final void UE()
   {
-    AppMethodBeat.i(95900);
-    if (this.aJo == 0)
+    AppMethodBeat.i(93162);
+    if (this.cTg == 0)
     {
-      AppMethodBeat.o(95900);
+      AppMethodBeat.o(93162);
       return;
     }
-    this.aJo = 0;
-    this.aJn += 1;
-    ok();
-    AppMethodBeat.o(95900);
+    this.cTg = 0;
+    this.cTf += 1;
+    Sh();
+    AppMethodBeat.o(93162);
+  }
+  
+  public final int hQ(int paramInt)
+  {
+    AppMethodBeat.i(93161);
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(93161);
+      return 0;
+    }
+    this.cTg += paramInt;
+    int i = 0;
+    while (this.cTg > 8)
+    {
+      this.cTg -= 8;
+      byte[] arrayOfByte = this.data;
+      j = this.cTf;
+      this.cTf = (j + 1);
+      i |= (arrayOfByte[j] & 0xFF) << this.cTg;
+    }
+    int j = this.data[this.cTf];
+    int k = this.cTg;
+    if (this.cTg == 8)
+    {
+      this.cTg = 0;
+      this.cTf += 1;
+    }
+    Sh();
+    AppMethodBeat.o(93161);
+    return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
+  }
+  
+  public final void hR(int paramInt)
+  {
+    AppMethodBeat.i(93159);
+    int i = paramInt / 8;
+    this.cTf += i;
+    this.cTg = (paramInt - i * 8 + this.cTg);
+    if (this.cTg > 7)
+    {
+      this.cTf += 1;
+      this.cTg -= 8;
+    }
+    Sh();
+    AppMethodBeat.o(93159);
+  }
+  
+  public final void n(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.data = paramArrayOfByte;
+    this.cTf = 0;
+    this.cTg = 0;
+    this.cTe = paramInt;
+  }
+  
+  public final void p(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(93163);
+    if (this.cTg == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a.checkState(bool);
+      System.arraycopy(this.data, this.cTf, paramArrayOfByte, 0, paramInt);
+      this.cTf += paramInt;
+      Sh();
+      AppMethodBeat.o(93163);
+      return;
+    }
   }
   
   public final void setPosition(int paramInt)
   {
-    AppMethodBeat.i(95895);
-    this.aJn = (paramInt / 8);
-    this.aJo = (paramInt - this.aJn * 8);
-    ok();
-    AppMethodBeat.o(95895);
+    AppMethodBeat.i(93157);
+    this.cTf = (paramInt / 8);
+    this.cTg = (paramInt - this.cTf * 8);
+    Sh();
+    AppMethodBeat.o(93157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.l
  * JD-Core Version:    0.7.0.1
  */

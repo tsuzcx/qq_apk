@@ -4,15 +4,15 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
-import bdii;
+import com.tencent.mobileqq.utils.MessageProgressController;
 import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
+import com.tencent.mobileqq.widget.RefreshProgressRunnable;
 
 public class VideoProgressView
   extends MessageProgressView
 {
-  private boolean a = true;
-  private float g;
+  private float a = 0.0F;
+  private boolean b = true;
   
   public VideoProgressView(Context paramContext)
   {
@@ -21,91 +21,85 @@ public class VideoProgressView
   
   public void a(String paramString, float paramFloat)
   {
-    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F) && (paramFloat > this.g)) {
+    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F) && (paramFloat > this.a)) {
       setVideoCompressPercent(paramString, paramFloat);
     }
   }
   
   public boolean a()
   {
-    return this.a;
+    return this.b;
   }
   
   @TargetApi(11)
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.d == 1)
+    if (this.g == 1)
     {
       d();
       b(paramCanvas);
-      if (a())
-      {
-        a(paramCanvas, this.g);
-        if (this.c == null) {
-          break label68;
-        }
-        a(paramCanvas, this.c);
-        label49:
-        d(paramCanvas);
-        e(paramCanvas);
+      if (a()) {
+        a(paramCanvas, this.a);
+      } else {
+        c(paramCanvas);
       }
-    }
-    label68:
-    do
-    {
+      if (this.i != null) {
+        a(paramCanvas, this.i);
+      } else {
+        a(paramCanvas);
+      }
+      d(paramCanvas);
+      e(paramCanvas);
       return;
-      c(paramCanvas);
-      break;
-      a(paramCanvas);
-      break label49;
-      if (this.d == 2)
-      {
-        d();
-        f(paramCanvas);
-        return;
-      }
-    } while (this.d != 3);
-    d();
-    g(paramCanvas);
+    }
+    if (this.g == 2)
+    {
+      d();
+      f(paramCanvas);
+      return;
+    }
+    if (this.g == 3)
+    {
+      d();
+      g(paramCanvas);
+    }
   }
   
   public void setVideoCompressPercent(String paramString, float paramFloat)
   {
     if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F))
     {
-      this.g = paramFloat;
-      if (this.g >= 1.0F) {
-        break label82;
+      this.a = paramFloat;
+      boolean bool;
+      if (this.a < 1.0F) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      this.b = bool;
     }
-    MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
-    label82:
-    for (boolean bool = true;; bool = false)
+    if (this.g == 1)
     {
-      this.a = bool;
-      if (this.d == 1)
+      RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
+      if (localRefreshProgressRunnable == null)
       {
-        localRefreshProgressRunnable = bdii.a().a(paramString);
-        if (localRefreshProgressRunnable != null) {
-          break;
-        }
-        localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-        bdii.a().a(paramString, localRefreshProgressRunnable);
+        localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, this.h);
+        MessageProgressController.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
+        return;
       }
-      return;
+      localRefreshProgressRunnable.a(this, this.h);
     }
-    localRefreshProgressRunnable.a(this);
   }
   
   public void setVideoCompressStatus(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.VideoProgressView
  * JD-Core Version:    0.7.0.1
  */

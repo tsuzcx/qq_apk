@@ -10,6 +10,8 @@ public abstract interface IHeaderCallBack
   
   public abstract int getHeaderHeight();
   
+  public abstract int getHeaderWidth();
+  
   public abstract boolean getRefreshStick();
   
   public abstract void notifyVisiableChangeOnScreen(boolean paramBoolean);
@@ -30,7 +32,7 @@ public abstract interface IHeaderCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.refresh.listener.IHeaderCallBack
  * JD-Core Version:    0.7.0.1
  */

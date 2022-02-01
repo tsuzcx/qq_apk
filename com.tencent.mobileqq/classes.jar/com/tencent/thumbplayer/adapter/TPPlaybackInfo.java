@@ -11,13 +11,14 @@ public class TPPlaybackInfo
   private long audioBitRate;
   private String audioCodec;
   private int audioProfile;
-  private long bufferMs;
   private int channels;
   private String containerFormat;
   private int currentPlayClipNo;
   private long currentPositionMs;
+  private String definition;
   private long durationMs;
   private long height;
+  private long playableDurationMs;
   private long sampleRate;
   private long videoBitRate;
   private String videoCodec;
@@ -34,31 +35,31 @@ public class TPPlaybackInfo
     String[] arrayOfString = paramString.split("\n");
     HashMap localHashMap = new HashMap();
     int i = 0;
-    if (i < arrayOfString.length)
+    while (i < arrayOfString.length)
     {
-      if (arrayOfString[i].startsWith("#")) {}
-      for (;;)
+      if ((!arrayOfString[i].startsWith("#")) && (arrayOfString[i].contains("=")))
       {
-        i += 1;
-        break;
-        if (arrayOfString[i].contains("="))
+        paramString = arrayOfString[i].split("=");
+        if ((paramString != null) && (paramString.length >= 2))
         {
-          paramString = arrayOfString[i].split("=");
-          if ((paramString == null) || (paramString.length < 2)) {
-            break label102;
-          }
           localHashMap.put(paramString[0], paramString[1]);
         }
+        else
+        {
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parseInfo, ");
+          if ((paramString != null) && (paramString.length >= 1)) {
+            paramString = paramString[0];
+          } else {
+            paramString = "param null, ";
+          }
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("is empty");
+          TPLogUtil.i(str, localStringBuilder.toString());
+        }
       }
-      label102:
-      String str = TAG;
-      StringBuilder localStringBuilder = new StringBuilder().append("parseInfo, ");
-      if ((paramString != null) && (paramString.length >= 1)) {}
-      for (paramString = paramString[0];; paramString = "param null, ")
-      {
-        TPLogUtil.i(str, paramString + "is empty");
-        break;
-      }
+      i += 1;
     }
     paramString = new TPPlaybackInfo();
     if (localHashMap.containsKey("ContainerFormat")) {
@@ -88,6 +89,9 @@ public class TPPlaybackInfo
     if (localHashMap.containsKey("Channels")) {
       paramString.setChannels(Integer.valueOf((String)localHashMap.get("Channels")).intValue());
     }
+    if (localHashMap.containsKey("Definition")) {
+      paramString.setDefinition((String)localHashMap.get("Definition"));
+    }
     return paramString;
   }
   
@@ -108,7 +112,7 @@ public class TPPlaybackInfo
     this.videoLevel = 0;
     this.currentPositionMs = 0L;
     this.durationMs = 0L;
-    this.bufferMs = 0L;
+    this.playableDurationMs = 0L;
     this.currentPlayClipNo = 0;
   }
   
@@ -125,11 +129,6 @@ public class TPPlaybackInfo
   public int getAudioProfile()
   {
     return this.audioProfile;
-  }
-  
-  public long getBufferMs()
-  {
-    return this.bufferMs;
   }
   
   public int getChannels()
@@ -152,6 +151,11 @@ public class TPPlaybackInfo
     return this.currentPositionMs;
   }
   
+  public String getDefinition()
+  {
+    return this.definition;
+  }
+  
   public long getDurationMs()
   {
     return this.durationMs;
@@ -160,6 +164,11 @@ public class TPPlaybackInfo
   public long getHeight()
   {
     return this.height;
+  }
+  
+  public long getPlayableDurationMs()
+  {
+    return this.playableDurationMs;
   }
   
   public long getSampleRate()
@@ -212,11 +221,6 @@ public class TPPlaybackInfo
     this.audioProfile = paramInt;
   }
   
-  public void setBufferMs(long paramLong)
-  {
-    this.bufferMs = paramLong;
-  }
-  
   public void setChannels(int paramInt)
   {
     this.channels = paramInt;
@@ -237,6 +241,11 @@ public class TPPlaybackInfo
     this.currentPositionMs = paramLong;
   }
   
+  public void setDefinition(String paramString)
+  {
+    this.definition = paramString;
+  }
+  
   public void setDurationMs(long paramLong)
   {
     this.durationMs = paramLong;
@@ -245,6 +254,11 @@ public class TPPlaybackInfo
   public void setHeight(long paramLong)
   {
     this.height = paramLong;
+  }
+  
+  public void setPlayableDurationMs(long paramLong)
+  {
+    this.playableDurationMs = paramLong;
   }
   
   public void setSampleRate(long paramLong)
@@ -284,7 +298,7 @@ public class TPPlaybackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackInfo
  * JD-Core Version:    0.7.0.1
  */

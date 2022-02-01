@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:textColor="@android:color/black" android:id="@id/l8y" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@android:color/black" android:id="@id/ki1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="  " />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <CheckBox android:id="@id/bao" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textColor="@android:color/black" android:id="@id/ba3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" show version on top" android:layout_weight="1.0" />
+            <Button android:id="@id/aob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/bkz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Button android:id="@id/ao8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键XWeb" android:layout_weight="1.0" />
+            <Button android:id="@id/hqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键Pinus" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <Button android:id="@id/jjq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="根据配置" android:layout_weight="1.0" />
+                <Button android:id="@id/jna" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="单进程" android:layout_weight="1.0" />
+                <Button android:id="@id/jjx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="render" android:layout_weight="1.0" />
+                <Button android:id="@id/jjv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="render gpu" android:layout_weight="1.0" />
+            </LinearLayout>
+            <Button android:id="@id/ao7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键X5" />
+            <Button android:id="@id/ao6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键系统" />
+            <Button android:id="@id/ao5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键还原自动" />
+            <Button android:id="@id/aod" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="当前Dark Mode（点击切换）" />
+            <Button android:id="@id/ao3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="显示高级设置" />
+        </LinearLayout>> <LinearLayout android:orientation="vertical" android:id="@id/bky" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/b4s" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textColor="@android:color/black" android:id="@id/ki0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text=" webview core select:" />
+                <Spinner android:textColor="@android:color/black" android:entries="@array/b3" android:id="@id/jan" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <RadioGroup android:textColor="@android:color/black" android:orientation="horizontal" android:id="@id/lmg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <RadioButton android:textColor="@android:color/black" android:id="@id/z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="auto" />
+                    <RadioButton android:textColor="@android:color/black" android:id="@id/a2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xwalk" />
+                    <RadioButton android:textColor="@android:color/black" android:id="@id/a0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="sys" />
+                    <RadioButton android:textColor="@android:color/black" android:id="@id/a1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X5" />
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:background="@drawable/b4s" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="3.0dip">
+                <TextView android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="set grayvalue:" />
+                <EditText android:textColor="@android:color/black" android:id="@id/kzi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <Button android:id="@id/aol" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="kill all process" android:layout_weight="1.0" />
+            <Button android:id="@id/jjr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="kill all gpu_process" android:layout_weight="1.0" />
+            <Button android:id="@id/jjs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="kill all renderer_process" android:layout_weight="1.0" />
+            <Button android:id="@id/alh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="打开远程调试模式" />
+            <Button android:id="@id/ao9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="清理旧版xwalk" />
+            <Button android:id="@id/aoc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="使用测试config" />
+            <Button android:id="@id/ap1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="检测更新" />
+            <Button android:id="@id/aoo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载本地XWalk apk" />
+            <LinearLayout android:orientation="horizontal" android:background="@drawable/b4s" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="4.0dip">
+                <TextView android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="origin:" />
+                <EditText android:textColor="@android:color/black" android:id="@id/kis" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <Button android:id="@id/aoe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="清理" />
+            </LinearLayout>
+            <Button android:id="@id/aou" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="插件设置" />
+            <LinearLayout android:orientation="vertical" android:id="@id/hy1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="30.0dip">
+                <Button android:id="@id/aot" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="切换插件config" />
+                <Button android:id="@id/ao_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="清理所有插件" />
+                <Button android:id="@id/ap2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="检测所有插件更新" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip">
+                    <Spinner android:textColor="@android:color/black" android:entries="@array/a_" android:id="@id/jzu" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0" />
+                    <Button android:id="@id/ap3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="显式更新" android:layout_weight="1.0" />
+                    <Button android:id="@id/aoa" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="清理版本" android:layout_weight="1.0" />
+                    <Button android:id="@id/aoq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="本地32位" android:layout_weight="1.0" />
+                    <Button android:id="@id/aor" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="本地64位" android:layout_weight="1.0" />
+                </LinearLayout>
+                <TextView android:textColor="@android:color/black" android:id="@id/kik" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <CheckBox android:id="@id/bam" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textColor="@android:color/black" android:id="@id/ba4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="禁用缓存" android:layout_weight="1.0" />
+                    <CheckBox android:id="@id/ban" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textColor="@android:color/black" android:id="@id/ba5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="禁用Crash检测" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <EditText android:textSize="12.0dip" android:id="@id/cb_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="填入需要设置的格式，不填则全部设置" android:layout_weight="3.0" />
+                    <Button android:id="@id/aoh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="强制XWeb" android:layout_weight="2.0" />
+                    <Button android:id="@id/aog" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="强制X5" android:layout_weight="2.0" />
+                    <Button android:id="@id/aof" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="自动" android:layout_weight="2.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <EditText android:textSize="12.0dip" android:id="@id/cbc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="填入OfficeReader的格式，不填则全部设置" android:layout_weight="3.0" />
+                    <Button android:id="@id/ap6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="强制启用OfficeReader" android:layout_weight="2.0" />
+                    <Button android:id="@id/ap4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="强制禁用OfficeReader" android:layout_weight="2.0" />
+                    <Button android:id="@id/ap5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="自动" android:layout_weight="2.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:id="@id/aow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="刷新日志" />
+            <Button android:id="@id/aox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="保存页面" />
+            <Button android:id="@id/aop" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="载入保存页面/长按清空" />
+            <Button android:id="@id/aoy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="显示/隐藏fps" />
+            <Button android:id="@id/aos" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="页面长截图" />
+        </LinearLayout>
+        <TextView android:textColor="@android:color/black" android:id="@id/kzd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="show current version" />
+    </LinearLayout>
+</ScrollView>

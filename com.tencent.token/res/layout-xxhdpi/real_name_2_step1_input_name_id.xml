@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/baselayout" android:background="@color/background" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/zzb_tip_verify_view" />
+    <ScrollView android:orientation="vertical" android:id="@id/scrollView" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:id="@id/logo_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="15.0dip">
+                <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:src="@color/common_list_divider" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/realname_step" />
+                <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:src="@color/common_list_divider" android:layout_weight="1.0" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/font_color" android:gravity="center_vertical" android:id="@id/realname_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="15.0dip" android:text="@string/realname_2_step1_tip" />
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="20.0dip" />
+            <com.tencent.token.upload.useraction.CustomerEditText android:textSize="@dimen/text_size_17" android:id="@id/name" android:background="@android:color/white" android:paddingLeft="15.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:hint="@string/realname_2_step1_item1" android:singleLine="true" android:maxLength="20" android:drawableLeft="@drawable/realname_name" android:drawablePadding="10.0dip" />
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <com.tencent.token.upload.useraction.CustomerEditText android:textSize="@dimen/text_size_17" android:id="@id/id" android:background="@android:color/white" android:paddingLeft="15.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:hint="@string/realname_2_step1_item2" android:singleLine="true" android:drawableLeft="@drawable/realname_id" android:drawablePadding="10.0dip" />
+                <ProgressBar android:id="@id/pb_id" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignTop="@id/id" android:layout_alignRight="@id/id" android:layout_alignBottom="@id/id" style="?android:progressBarStyleSmall" />
+            </RelativeLayout>
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <TextView android:id="@id/tip_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:text="@string/wrong_id_tips_default" />
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="20.0dip" />
+            <RelativeLayout android:id="@id/scan_face_layout" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:textSize="@dimen/text_size_17" android:gravity="center" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:text="@string/realname_scan_face" android:drawableLeft="@drawable/realname_scan_face" android:drawablePadding="10.0dip" style="@style/text_view" />
+                <ImageView android:id="@id/scan_face_step" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/scan_face_ok" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/account_detail_ok" android:layout_toLeftOf="@id/scan_face_step" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="30.0dip" />
+            <RelativeLayout android:id="@id/scan_id_layout" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:textSize="@dimen/text_size_17" android:gravity="center" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:text="@string/realname_take_idphoto" android:drawableLeft="@drawable/realname_scan_id" android:drawablePadding="10.0dip" style="@style/text_view" />
+                <ImageView android:id="@id/scan_id_step" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/scan_id_ok" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/account_detail_ok" android:layout_toLeftOf="@id/scan_id_step" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <Button android:gravity="center" android:id="@id/next_btn" android:background="@drawable/gray_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="15.0dip" android:text="@string/realname_upload_info" style="@style/text_view" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

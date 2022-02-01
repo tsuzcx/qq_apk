@@ -16,19 +16,20 @@ public final class PlatformRandomKt
   public static final java.util.Random asJavaRandom(@NotNull Random paramRandom)
   {
     Intrinsics.checkParameterIsNotNull(paramRandom, "$this$asJavaRandom");
-    if (!(paramRandom instanceof AbstractPlatformRandom)) {}
-    for (Object localObject = null;; localObject = paramRandom)
-    {
-      localObject = (AbstractPlatformRandom)localObject;
-      if (localObject != null)
-      {
-        localObject = ((AbstractPlatformRandom)localObject).getImpl();
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      return (java.util.Random)new KotlinRandom(paramRandom);
+    if (!(paramRandom instanceof AbstractPlatformRandom)) {
+      localObject = null;
+    } else {
+      localObject = paramRandom;
     }
+    Object localObject = (AbstractPlatformRandom)localObject;
+    if (localObject != null)
+    {
+      localObject = ((AbstractPlatformRandom)localObject).getImpl();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (java.util.Random)new KotlinRandom(paramRandom);
   }
   
   @SinceKotlin(version="1.3")
@@ -36,19 +37,20 @@ public final class PlatformRandomKt
   public static final Random asKotlinRandom(@NotNull java.util.Random paramRandom)
   {
     Intrinsics.checkParameterIsNotNull(paramRandom, "$this$asKotlinRandom");
-    if (!(paramRandom instanceof KotlinRandom)) {}
-    for (Object localObject = null;; localObject = paramRandom)
-    {
-      localObject = (KotlinRandom)localObject;
-      if (localObject != null)
-      {
-        localObject = ((KotlinRandom)localObject).getImpl();
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      return (Random)new PlatformRandom(paramRandom);
+    if (!(paramRandom instanceof KotlinRandom)) {
+      localObject = null;
+    } else {
+      localObject = paramRandom;
     }
+    Object localObject = (KotlinRandom)localObject;
+    if (localObject != null)
+    {
+      localObject = ((KotlinRandom)localObject).getImpl();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (Random)new PlatformRandom(paramRandom);
   }
   
   @InlineOnly
@@ -59,12 +61,16 @@ public final class PlatformRandomKt
   
   public static final double doubleFromParts(int paramInt1, int paramInt2)
   {
-    return ((paramInt1 << 27) + paramInt2) / 9007199254740992L;
+    double d1 = (paramInt1 << 27) + paramInt2;
+    double d2 = 9007199254740992L;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    return d1 / d2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.random.PlatformRandomKt
  * JD-Core Version:    0.7.0.1
  */

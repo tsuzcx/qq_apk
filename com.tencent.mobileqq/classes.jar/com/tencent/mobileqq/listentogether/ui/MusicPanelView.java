@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.listentogether.ui;
 
-import aepi;
-import alud;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -10,19 +9,21 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import atpc;
-import atpk;
-import banz;
-import bcyz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.widget.SweepGradientCircleProgress;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AlphaClickableImageView;
 import com.tencent.widget.PatchedButton;
 
@@ -30,210 +31,221 @@ public class MusicPanelView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  public View.OnClickListener a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  CircleProgress jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
-  AlphaClickableImageView jdField_a_of_type_ComTencentWidgetAlphaClickableImageView;
-  PatchedButton jdField_a_of_type_ComTencentWidgetPatchedButton;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  Drawable a;
+  ImageView b;
+  AlphaClickableImageView c;
+  TextView d;
+  TextView e;
+  TextView f;
+  ImageView g;
+  ImageView h;
+  PatchedButton i;
+  SweepGradientCircleProgress j;
+  int k;
+  public View.OnClickListener l;
+  URLDrawable m;
+  private float n = 0.0F;
+  private ObjectAnimator o = null;
   
   public MusicPanelView(Context paramContext)
   {
     super(paramContext);
-    d();
+    e();
   }
   
-  private void d()
+  private void e()
   {
-    LayoutInflater.from(getContext()).inflate(2131560817, this, true);
-    setBackgroundResource(2130844393);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364775));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView = ((AlphaClickableImageView)findViewById(2131377009));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370913));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370892));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373999));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131370907));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131368991));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370910));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370909));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844406);
-    int i = aepi.a(8.0F, this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.getResources());
-    atpc.a(this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView, i, i, i, i);
-    this.jdField_a_of_type_Int = aepi.a(31.0F, getResources());
-    i = getResources().getColor(2131166888);
-    if ((ThemeUtil.curThemeId.equals("1103")) || (ThemeUtil.curThemeId.equals("2920"))) {
-      i = getResources().getColor(2131166887);
+    LayoutInflater.from(getContext()).inflate(2131627279, this, true);
+    setBackgroundResource(2130846214);
+    this.b = ((ImageView)findViewById(2131431326));
+    this.c = ((AlphaClickableImageView)findViewById(2131446327));
+    this.d = ((TextView)findViewById(2131439074));
+    this.h = ((ImageView)findViewById(2131439051));
+    this.g = ((ImageView)findViewById(2131442946));
+    this.j = ((SweepGradientCircleProgress)findViewById(2131439067));
+    this.i = ((PatchedButton)findViewById(2131436679));
+    this.e = ((TextView)findViewById(2131439071));
+    this.f = ((TextView)findViewById(2131439070));
+    this.c.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    this.i.setOnClickListener(this);
+    this.a = getResources().getDrawable(2130846230);
+    int i1 = AIOUtils.b(8.0F, this.c.getResources());
+    Object localObject = (Activity)getContext();
+    AlphaClickableImageView localAlphaClickableImageView = this.c;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((Activity)localObject).getWindow().getDecorView();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, i, 100, getResources().getColor(2131166886));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressUseAlpha(false, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(1.5F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setmShadowColor(0);
+    BaseListenTogetherPanel.a(localAlphaClickableImageView, i1, i1, i1, i1, (View)localObject);
+    this.k = AIOUtils.b(31.0F, getResources());
+    setMusicProgressDefaultShow();
   }
   
   public void a()
   {
-    if (a()) {
+    if (d()) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "Rotation", new float[] { this.jdField_a_of_type_Float - 360.0F, this.jdField_a_of_type_Float });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(10000L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(-1);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new atpk(this));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    ImageView localImageView = this.b;
+    float f1 = this.n;
+    this.o = ObjectAnimator.ofFloat(localImageView, "Rotation", new float[] { f1 - 360.0F, f1 });
+    this.o.setDuration(10000L);
+    this.o.setRepeatCount(-1);
+    this.o.setInterpolator(new LinearInterpolator());
+    this.o.addUpdateListener(new MusicPanelView.1(this));
+    this.o.start();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(paramInt);
-    this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131707424));
+    this.h.setVisibility(paramInt);
+    this.h.setContentDescription(HardCodeUtil.a(2131904907));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setVisibility(paramInt1);
+    this.c.setVisibility(paramInt1);
     if (paramInt2 == 1)
     {
-      this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setImageResource(2130844407);
-      this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setContentDescription(alud.a(2131707422));
-    }
-    while (paramInt2 != 2) {
+      this.c.setImageResource(2130846231);
+      this.c.setContentDescription(HardCodeUtil.a(2131904905));
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setImageResource(2130844408);
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableImageView.setContentDescription(alud.a(2131707420));
+    if (paramInt2 == 2)
+    {
+      this.c.setImageResource(2130846232);
+      this.c.setContentDescription(HardCodeUtil.a(2131904903));
+    }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt, CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramString);
+    this.e.setVisibility(paramInt);
+    this.e.setText(paramCharSequence);
+    this.e.setContentDescription(paramCharSequence);
   }
   
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!paramString.equals((String)this.jdField_a_of_type_AndroidWidgetImageView.getTag()))
+      if (!paramString.equals((String)this.b.getTag()))
       {
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        int i = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        int i1 = this.k;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i1;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i1;
+        Drawable localDrawable = this.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
         localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).setTag(new int[] { this.jdField_a_of_type_Int / 2 });
-        ((URLDrawable)localObject).setDecodeHandler(bcyz.z);
+        ((URLDrawable)localObject).setTag(new int[] { this.k / 2 });
+        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.z);
         ((URLDrawable)localObject).startDownload();
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramString);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
+        this.b.setImageDrawable((Drawable)localObject);
+        this.b.setTag(paramString);
+        this.m = ((URLDrawable)localObject);
       }
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTag("");
+    else
+    {
+      this.b.setImageDrawable(this.a);
+      this.b.setTag("");
+    }
   }
   
   public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(paramInt));
+    this.d.setText(paramString);
+    this.d.setContentDescription(paramString);
+    this.d.setTextColor(getResources().getColor(paramInt));
     setContentDescription(paramString);
-    banz.a().a(getContext(), this);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_AndroidAnimationObjectAnimator.isRunning();
+    AIOMusicSkin.a().a(getContext(), this);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.end();
+    ObjectAnimator localObjectAnimator = this.o;
+    if (localObjectAnimator != null) {
+      localObjectAnimator.end();
     }
-    this.jdField_a_of_type_Float = 0.0F;
+    this.n = 0.0F;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(alud.a(2131707423));
+    this.f.setVisibility(paramInt);
+    this.f.setContentDescription(HardCodeUtil.a(2131904906));
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(paramInt1);
-    if (paramInt2 < 0) {
+    this.j.setVisibility(paramInt1);
+    if (paramInt2 < 0)
+    {
       paramInt1 = 0;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(paramInt1);
-      return;
       paramInt1 = paramInt2;
       if (paramInt2 > 100) {
         paramInt1 = 100;
       }
     }
+    this.j.setProgress(paramInt1);
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) && (a())) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    if ((this.o != null) && (d())) {
+      this.o.cancel();
     }
   }
   
   public void c(int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(paramInt);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131707419));
+    this.g.setVisibility(paramInt);
+    this.g.setContentDescription(HardCodeUtil.a(2131904902));
   }
   
   public void d(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(paramInt);
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton.setContentDescription(alud.a(2131707421));
+    this.i.setVisibility(paramInt);
+    this.i.setContentDescription(HardCodeUtil.a(2131904904));
+  }
+  
+  public boolean d()
+  {
+    ObjectAnimator localObjectAnimator = this.o;
+    if (localObjectAnimator == null) {
+      return false;
+    }
+    return localObjectAnimator.isRunning();
   }
   
   public void e(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(paramInt);
+    this.j.setVisibility(paramInt);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    View.OnClickListener localOnClickListener = this.l;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    ObjectAnimator localObjectAnimator = this.o;
+    if (localObjectAnimator != null) {
+      localObjectAnimator.cancel();
     }
   }
   
@@ -246,10 +258,24 @@ public class MusicPanelView
     }
     super.setBackgroundDrawable(paramDrawable);
   }
+  
+  public void setMusicProgressDefaultShow()
+  {
+    int i1 = getResources().getColor(2131167975);
+    if ((ThemeUtil.curThemeId.equals("1103")) || (ThemeUtil.curThemeId.equals("2920"))) {
+      i1 = getResources().getColor(2131167974);
+    }
+    this.j.setBgAndProgressColor(100, i1, 100, getResources().getColor(2131167973));
+    this.j.setBgAndProgressUseAlpha(false, false);
+    this.j.setStrokeWidth(1.5F);
+    this.j.setmShadowColor(0);
+    this.j.setNeedSweepGradient(false, 0, 0);
+    this.j.setShadowRadius(AIOUtils.b(1.0F, getResources()));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.MusicPanelView
  * JD-Core Version:    0.7.0.1
  */

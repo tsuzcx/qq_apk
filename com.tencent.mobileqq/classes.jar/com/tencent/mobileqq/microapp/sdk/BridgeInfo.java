@@ -16,15 +16,16 @@ public class BridgeInfo
   
   public BaseAppBrandWebview getWebView()
   {
-    if (this.webviewRef != null) {
-      return (BaseAppBrandWebview)this.webviewRef.get();
+    WeakReference localWeakReference = this.webviewRef;
+    if (localWeakReference != null) {
+      return (BaseAppBrandWebview)localWeakReference.get();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.BridgeInfo
  * JD-Core Version:    0.7.0.1
  */

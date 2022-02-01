@@ -33,32 +33,42 @@ public abstract class AbstractCollection<E>
   
   public boolean contains(Object paramObject)
   {
-    if (((this instanceof Collection)) && (((Collection)this).isEmpty())) {
+    boolean bool1 = this instanceof Collection;
+    boolean bool2 = false;
+    if ((bool1) && (((Collection)this).isEmpty())) {
       return false;
     }
     Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      if (Intrinsics.areEqual(localIterator.next(), paramObject)) {
-        return true;
+    do
+    {
+      bool1 = bool2;
+      if (!localIterator.hasNext()) {
+        break;
       }
-    }
-    return false;
+    } while (!Intrinsics.areEqual(localIterator.next(), paramObject));
+    bool1 = true;
+    return bool1;
   }
   
   public boolean containsAll(@NotNull Collection<? extends Object> paramCollection)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
-    if (((Collection)paramCollection).isEmpty()) {
+    boolean bool1 = ((Collection)paramCollection).isEmpty();
+    boolean bool2 = true;
+    if (bool1) {
       return true;
     }
     paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext()) {
-      if (!contains(paramCollection.next())) {
-        return false;
+    do
+    {
+      bool1 = bool2;
+      if (!paramCollection.hasNext()) {
+        break;
       }
-    }
-    return true;
+    } while (contains(paramCollection.next()));
+    bool1 = false;
+    return bool1;
   }
   
   public abstract int getSize();
@@ -102,10 +112,10 @@ public abstract class AbstractCollection<E>
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "array");
     paramArrayOfT = CollectionToArray.toArray((Collection)this, paramArrayOfT);
-    if (paramArrayOfT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    if (paramArrayOfT != null) {
+      return paramArrayOfT;
     }
-    return paramArrayOfT;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
   }
   
   @NotNull
@@ -116,7 +126,7 @@ public abstract class AbstractCollection<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.AbstractCollection
  * JD-Core Version:    0.7.0.1
  */

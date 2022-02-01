@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.comment.guide.ListViewItemTopChangeView android:layout_width="fill_parent" android:layout_height="wrap_content" android:translationY="@dimen/atr"
+<com.tencent.mobileqq.kandian.biz.comment.guide.ListViewItemTopChangeView android:layout_width="fill_parent" android:layout_height="wrap_content" android:translationY="@dimen/atr"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:background="@drawable/b1j" android:layout_width="fill_parent" android:layout_height="185.0dip">
         <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="117.0dip" android:src="@drawable/glo" />
         <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:background="@drawable/sy" android:layout_width="270.0dip" android:layout_height="42.0dip" android:layout_marginTop="142.0dip" android:text="@string/pyt" />
     </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.comment.guide.ListViewItemTopChangeView>
+</com.tencent.mobileqq.kandian.biz.comment.guide.ListViewItemTopChangeView>

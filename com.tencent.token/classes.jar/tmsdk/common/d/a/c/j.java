@@ -7,30 +7,32 @@ import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
-import com.tencent.token.f;
-import com.tencent.token.g;
+import com.tencent.token.atu;
+import com.tencent.token.atv;
+import com.tencent.token.kv;
+import com.tencent.token.kw;
 import java.util.LinkedList;
 
 public class j
   extends BroadcastReceiver
 {
   private static j d = new j();
-  private boolean a;
-  private NetworkInfo.State b = NetworkInfo.State.UNKNOWN;
-  private LinkedList c = new LinkedList();
+  public LinkedList a = new LinkedList();
+  private boolean b;
+  private NetworkInfo.State c = NetworkInfo.State.UNKNOWN;
   
   public static j a()
   {
     return d;
   }
   
-  public void a(Context paramContext)
+  public final void a(Context paramContext)
   {
     try
     {
-      if (!this.a)
+      if (!this.b)
       {
-        this.a = true;
+        this.b = true;
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         localIntentFilter.setPriority(2147483647);
@@ -45,24 +47,14 @@ public class j
     }
   }
   
-  public void a(m paramm)
-  {
-    synchronized (this.c)
-    {
-      new StringBuilder().append("添加网络监听 : ").append(paramm.getClass().getName()).toString();
-      this.c.add(paramm);
-      return;
-    }
-  }
-  
-  public void b(Context paramContext)
+  public final void b(Context paramContext)
   {
     try
     {
-      if (this.a)
+      if (this.b)
       {
         paramContext.unregisterReceiver(this);
-        this.a = false;
+        this.b = false;
       }
       return;
     }
@@ -80,22 +72,26 @@ public class j
     if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
     {
       paramContext = ((NetworkInfo)paramIntent.getParcelable("networkInfo")).getState();
-      if (paramContext != NetworkInfo.State.CONNECTED) {
-        break label74;
+      if (paramContext == NetworkInfo.State.CONNECTED)
+      {
+        if (this.c.compareTo(NetworkInfo.State.DISCONNECTED) == 0)
+        {
+          kv.a();
+          kw.a(new atu(this), "无网络 -> 有网络");
+        }
+        this.c = paramContext;
+        return;
       }
-      if (this.b.compareTo(NetworkInfo.State.DISCONNECTED) == 0) {
-        f.a().a(new k(this), "无网络 -> 有网络");
+      if (paramContext == NetworkInfo.State.DISCONNECTED)
+      {
+        if (this.c.compareTo(NetworkInfo.State.CONNECTED) == 0)
+        {
+          kv.a();
+          kw.a(new atv(this), "有网络 -> 无网络");
+        }
+        this.c = paramContext;
       }
-      this.b = paramContext;
     }
-    label74:
-    while (paramContext != NetworkInfo.State.DISCONNECTED) {
-      return;
-    }
-    if (this.b.compareTo(NetworkInfo.State.CONNECTED) == 0) {
-      f.a().a(new l(this), "有网络 -> 无网络");
-    }
-    this.b = paramContext;
   }
 }
 

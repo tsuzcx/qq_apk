@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class c
 {
-  private static final String a = c.class.getSimpleName();
+  private static final String a = "c";
   private static LinkedList<String> b = new LinkedList();
   private static int c = 0;
   private static long d = 0L;
@@ -56,14 +56,24 @@ public class c
       paramb = paramb.e().toString();
       try
       {
-        if (d < c)
+        long l1 = d;
+        int i1 = c;
+        if (l1 < i1)
         {
-          b.addLast(paramb + "\r\n");
+          localLinkedList = b;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramb);
+          localStringBuilder.append("\r\n");
+          localLinkedList.addLast(localStringBuilder.toString());
           d += 1L;
           return;
         }
         b.removeFirst();
-        b.addLast(paramb + "\r\n");
+        LinkedList localLinkedList = b;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramb);
+        localStringBuilder.append("\r\n");
+        localLinkedList.addLast(localStringBuilder.toString());
         return;
       }
       catch (Throwable paramb)
@@ -134,7 +144,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 class NetStatUnit
   extends View
 {
-  protected static int max;
-  private int qFX;
-  private int total;
+  protected static long max;
+  private long Ppj;
+  private long total;
   
   public NetStatUnit(Context paramContext)
   {
@@ -31,72 +30,71 @@ class NetStatUnit
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static void CW(int paramInt)
+  private static void uj(long paramLong)
   {
-    paramInt = (paramInt / 1572864 + 1) * 1572864;
-    if (94371840 > paramInt) {
-      if (3145728 >= paramInt) {
-        break label40;
+    paramLong = (paramLong / 1572864L + 1L) * 1572864L;
+    if (94371840L > paramLong) {
+      if (3145728L >= paramLong) {
+        break label48;
       }
     }
     for (;;)
     {
-      if (paramInt > max) {
-        max = paramInt;
+      if (paramLong > max) {
+        max = paramLong;
       }
       return;
-      paramInt = 94371840;
+      paramLong = 94371840L;
       break;
-      label40:
-      paramInt = 3145728;
+      label48:
+      paramLong = 3145728L;
     }
   }
   
-  public final void fr(int paramInt1, int paramInt2)
+  public final void be(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(126970);
-    this.qFX = paramInt1;
-    this.total = paramInt2;
-    if (paramInt1 > 94371840) {
-      this.qFX = 94371840;
+    AppMethodBeat.i(173792);
+    this.Ppj = paramLong1;
+    this.total = paramLong2;
+    if (paramLong1 > 94371840L) {
+      this.Ppj = 94371840L;
     }
-    if (paramInt2 > 94371840) {
-      this.total = 94371840;
+    if (paramLong2 > 94371840L) {
+      this.total = 94371840L;
     }
-    if (paramInt1 > paramInt2) {}
+    if (paramLong1 > paramLong2) {}
     for (;;)
     {
-      CW(paramInt1);
-      AppMethodBeat.o(126970);
+      uj(paramLong1);
+      AppMethodBeat.o(173792);
       return;
-      paramInt1 = paramInt2;
+      paramLong1 = paramLong2;
     }
   }
   
-  @SuppressLint({"DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(126971);
+    AppMethodBeat.i(73901);
     super.onDraw(paramCanvas);
     Paint localPaint = new Paint();
     Rect localRect1 = new Rect();
     getDrawingRect(localRect1);
-    float f1 = localRect1.height() * this.total / max;
+    float f1 = localRect1.height() * (float)this.total / (float)max;
     float f2 = localRect1.width();
     Rect localRect2 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-7829368);
     paramCanvas.drawRect(localRect2, localPaint);
-    f1 = localRect1.height() * this.qFX / max;
+    f1 = localRect1.height() * (float)this.Ppj / (float)max;
     f2 = localRect1.width();
     localRect1 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-16711936);
     paramCanvas.drawRect(localRect1, localPaint);
-    AppMethodBeat.o(126971);
+    AppMethodBeat.o(73901);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatUnit
  * JD-Core Version:    0.7.0.1
  */

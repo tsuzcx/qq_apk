@@ -1,34 +1,18 @@
-import android.graphics.Bitmap;
 import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.LBSHandler;
 
 public class cyw
-  implements IIconListener
+  implements Runnable
 {
   public cyw(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      int i = this.a.a.getChildCount();
-      paramInt2 = 0;
-      while (paramInt2 < i)
-      {
-        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
-        {
-          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
-          if ((paramBitmap.a == paramInt1) && (paramBitmap.c != null)) {
-            PeopleAroundBaseActivity.a(this.a, paramBitmap.c, paramInt1);
-          }
-        }
-        paramInt2 += 1;
-      }
-    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131561836);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    PeopleAroundBaseActivity.a(this.a).a();
   }
 }
 

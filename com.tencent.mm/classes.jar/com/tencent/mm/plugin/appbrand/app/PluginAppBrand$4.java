@@ -1,30 +1,27 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.api.g;
-import com.tencent.mm.plugin.appbrand.ui.banner.d;
+import com.tencent.mm.plugin.appbrand.shortlink.c;
+import com.tencent.mm.pluginsdk.ui.span.p.c;
+import kotlin.g.a.a;
 
 final class PluginAppBrand$4
-  implements g
+  implements p.c
 {
   PluginAppBrand$4(PluginAppBrand paramPluginAppBrand) {}
   
-  public final void BN()
+  public final boolean ceR()
   {
-    AppMethodBeat.i(129217);
-    d.aML();
-    AppMethodBeat.o(129217);
-  }
-  
-  public final void br(boolean paramBoolean)
-  {
-    AppMethodBeat.i(129218);
-    AppMethodBeat.o(129218);
+    AppMethodBeat.i(317732);
+    c localc = c.tUX;
+    boolean bool = ((Boolean)c.cJz().invoke()).booleanValue();
+    AppMethodBeat.o(317732);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.PluginAppBrand.4
  * JD-Core Version:    0.7.0.1
  */

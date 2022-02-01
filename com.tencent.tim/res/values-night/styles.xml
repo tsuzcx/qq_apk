@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a7c" parent="@style/a7a" />
+    <style name="a7d" parent="@style/a7a" />
+    <style name="a7e" parent="@style/a7j" />
+    <style name="a7f" parent="@style/a7k" />
+    <style name="a7g" parent="@style/a7l" />
+    <style name="a7h" parent="@style/a7m" />
+    <style name="a7i" parent="@style/a7u" />
+    <style name="a83" parent="@style/a81" />
+</resources>

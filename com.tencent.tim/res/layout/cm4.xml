@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/axl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.utilities.ui.ItemScrollListView android:id="@id/nk7" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:dividerHeight="0.0dip" android:fadeScrollbars="true" />
+    <FrameLayout android:id="@id/mh6" android:background="@drawable/bk2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bon" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/mh5" android:background="@color/asx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0px">
+            <ImageButton android:id="@id/lvr" android:background="@null" android:layout_width="46.0dip" android:layout_height="fill_parent" android:src="@drawable/gp5" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/lwn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ypx" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/lvu" android:layout_width="@dimen/bop" android:layout_height="@dimen/bop" android:layout_marginTop="@dimen/boo" android:layout_marginRight="@dimen/bol" android:layout_marginBottom="@dimen/boo" android:src="@drawable/get" android:scaleType="fitXY" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

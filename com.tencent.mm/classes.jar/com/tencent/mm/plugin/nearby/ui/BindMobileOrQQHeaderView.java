@@ -8,97 +8,124 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.a.c;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
+import com.tencent.mm.plugin.nearby.b.c;
+import com.tencent.mm.plugin.nearby.b.d;
+import com.tencent.mm.plugin.nearby.b.f;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class BindMobileOrQQHeaderView
   extends LinearLayout
 {
-  private TextView pcA;
-  private WeImageView pcB;
-  private BindMobileOrQQHeaderView.a pcC;
-  private View.OnClickListener pcD;
+  private WeImageView Bqk;
+  private TextView MoK;
+  private a MoL;
+  private View.OnClickListener MoM;
   
   public BindMobileOrQQHeaderView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(55406);
-    this.pcD = new View.OnClickListener()
+    AppMethodBeat.i(89803);
+    this.MoM = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(55400);
+        AppMethodBeat.i(89797);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.J(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.abw().pL("3") != null)
+        MMWizardActivity.aQ(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.bDR().Km("3") != null)
         {
-          g.abw().pL("3").result = "1";
-          f.pQ("3");
+          g.bDR().Km("3").result = "1";
+          f.Kr("3");
         }
-        AppMethodBeat.o(55400);
+        a.a(this, "com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(89797);
       }
     };
-    this.pcC = BindMobileOrQQHeaderView.a.pcG;
-    aA(paramContext);
-    AppMethodBeat.o(55406);
+    this.MoL = a.MoP;
+    ci(paramContext);
+    AppMethodBeat.o(89803);
   }
   
   public BindMobileOrQQHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(55405);
-    this.pcD = new View.OnClickListener()
+    AppMethodBeat.i(89802);
+    this.MoM = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(55400);
+        AppMethodBeat.i(89797);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.J(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.abw().pL("3") != null)
+        MMWizardActivity.aQ(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.bDR().Km("3") != null)
         {
-          g.abw().pL("3").result = "1";
-          f.pQ("3");
+          g.bDR().Km("3").result = "1";
+          f.Kr("3");
         }
-        AppMethodBeat.o(55400);
+        a.a(this, "com/tencent/mm/plugin/nearby/ui/BindMobileOrQQHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(89797);
       }
     };
-    aA(paramContext);
-    AppMethodBeat.o(55405);
+    ci(paramContext);
+    AppMethodBeat.o(89802);
   }
   
-  private void aA(Context paramContext)
+  private void ci(Context paramContext)
   {
-    AppMethodBeat.i(55407);
-    paramContext = View.inflate(paramContext, 2130970342, this);
-    this.pcA = ((TextView)paramContext.findViewById(2131826487));
-    this.pcB = ((WeImageView)paramContext.findViewById(2131826486));
-    switch (2.pcF[this.pcC.ordinal()])
+    AppMethodBeat.i(89804);
+    paramContext = View.inflate(paramContext, b.d.Moe, this);
+    this.MoK = ((TextView)paramContext.findViewById(b.c.Mod));
+    this.Bqk = ((WeImageView)paramContext.findViewById(b.c.Mob));
+    switch (2.MoO[this.MoL.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(55407);
+      AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.pcD);
-      this.pcB.setImageResource(2131231491);
-      AppMethodBeat.o(55407);
+      setOnClickListener(this.MoM);
+      this.Bqk.setImageResource(b.f.icons_outlined_cellphone);
+      AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.pcD);
-      this.pcB.setImageResource(2131231498);
+      setOnClickListener(this.MoM);
+      this.Bqk.setImageResource(b.f.icons_outlined_contacts);
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(89801);
+      MoP = new a("Mobile", 0);
+      MoQ = new a("UploadContact", 1);
+      MoR = new a[] { MoP, MoQ };
+      AppMethodBeat.o(89801);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.BindMobileOrQQHeaderView
  * JD-Core Version:    0.7.0.1
  */

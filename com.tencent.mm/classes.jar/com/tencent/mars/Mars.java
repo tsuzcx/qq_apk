@@ -2,28 +2,37 @@ package com.tencent.mars;
 
 import android.content.Context;
 import com.tencent.mars.comm.PlatformComm;
-import com.tencent.mm.app.j.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.app.q.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Mars
 {
-  private static final j.a appForegroundListener = new j.a()
+  private static final int CertVersion_Mainland = 1;
+  private static final int CertVersion_WeChatUS = 2;
+  private static final q.a appForegroundListener = new q.a()
   {
-    public final void onAppBackground(String paramAnonymousString)
+    public void onAppBackground(String paramAnonymousString)
     {
-      BaseEvent.onForeground(false);
+      Mars.onForeground(false);
     }
     
-    public final void onAppForeground(String paramAnonymousString)
+    public void onAppForeground(String paramAnonymousString)
     {
-      BaseEvent.onForeground(true);
+      Mars.onForeground(true);
     }
   };
   private static volatile boolean hasInitialized = false;
+  public static final String libMarsBase = "wechatbase";
+  public static final String libMarsHttp = "wechathttp";
+  public static final String libMarsMM = "wechatmm";
+  public static final String libMarsNetwork = "wechatnetwork";
   private static ArrayList<String[]> libModules = new ArrayList();
+  private byte _hellAccFlag_;
   
   public static void checkLoadedModules(ArrayList<String> paramArrayList, String paramString)
   {
@@ -39,7 +48,7 @@ public class Mars
       try
       {
         String[] arrayOfString = new String[0];
-        ab.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
+        Log.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
         Arrays.sort(arrayOfString);
         libModules.add(arrayOfString);
         j = 0;
@@ -106,6 +115,19 @@ public class Mars
     }
   }
   
+  public static int currentCertVer()
+  {
+    switch (WeChatBrands.AppInfo.current().getDefaultXAgreementId())
+    {
+    case 0: 
+    case 1: 
+    case 2: 
+    default: 
+      return 1;
+    }
+    return 2;
+  }
+  
   private static boolean hasInterSection(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     boolean bool2 = false;
@@ -135,26 +157,41 @@ public class Mars
     }
   }
   
-  public static void init(Context paramContext, ak paramak)
+  public static void init(Context paramContext, MMHandler paramMMHandler)
   {
-    PlatformComm.init(paramContext, paramak);
+    PlatformComm.init(paramContext, paramMMHandler);
     hasInitialized = true;
+  }
+  
+  private static void initCert()
+  {
+    onInit(currentCertVer());
   }
   
   public static void loadDefaultMarsLibrary()
   {
     try
     {
-      System.loadLibrary("c++_shared");
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("c++_shared");
+      Object localObject2 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala.aYi(), "com/tencent/mars/Mars", "loadDefaultMarsLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mars/Mars", "loadDefaultMarsLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       return;
     }
-    catch (Throwable localThrowable) {}
+    finally {}
+  }
+  
+  public static void onCreate()
+  {
+    initCert();
+    BaseEvent.onCreate();
   }
   
   public static void onCreate(boolean paramBoolean)
   {
     if ((paramBoolean) && (hasInitialized)) {
-      BaseEvent.onCreate();
+      onCreate();
     }
     for (;;)
     {
@@ -163,20 +200,42 @@ public class Mars
       if (paramBoolean) {
         break;
       }
-      BaseEvent.onCreate();
+      onCreate();
     }
     throw new IllegalStateException("function MarsCore.init must be executed before Mars.onCreate when application firststartup.");
   }
   
   public static void onDestroy()
   {
-    BaseEvent.onDestroy();
+    onDestroyImpl();
     appForegroundListener.dead();
+  }
+  
+  private static void onDestroyImpl() {}
+  
+  public static void onExceptionCrash() {}
+  
+  public static void onForeground(boolean paramBoolean)
+  {
+    BaseEvent.onForeground(paramBoolean);
+  }
+  
+  private static void onInit(int paramInt)
+  {
+    Log.i("MicroMsg.Mars", "packerEncoderVersion %s", new Object[] { Integer.valueOf(paramInt) });
+    BaseEvent.onInitConfigBeforeOnCreate(paramInt);
+  }
+  
+  public static void onNetworkChange() {}
+  
+  public static void onSingalCrash(int paramInt)
+  {
+    BaseEvent.onSingalCrash(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.Mars
  * JD-Core Version:    0.7.0.1
  */

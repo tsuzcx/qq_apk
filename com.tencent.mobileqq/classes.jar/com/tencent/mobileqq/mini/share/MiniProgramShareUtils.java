@@ -2,25 +2,27 @@ package com.tencent.mobileqq.mini.share;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
-import alud;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdnn;
-import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.ShareQQArkHelper;
 import eipc.EIPCClient;
 import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
@@ -31,44 +33,121 @@ public class MiniProgramShareUtils
 {
   public static final String MINI_APP_SHARE_APPID = "miniAppShareAppid";
   public static final String MINI_APP_SHARE_APP_TYPE = "miniAppShareAppType";
+  public static final String MINI_APP_SHARE_CALLBACK_ID = "miniAppShareCallbackId";
   public static final String MINI_APP_SHARE_DEST_ID = "miniAppShareDestId";
   public static final String MINI_APP_SHARE_DEST_TYPE = "miniAppShareDestType";
+  public static final String MINI_APP_SHARE_EVENT = "miniAppShareEvent";
   public static final String MINI_APP_SHARE_FROM = "miniAppShareFrom";
   public static final int MINI_APP_SHARE_FROM_DETAIL = 10;
   public static final int MINI_APP_SHARE_FROM_INNER_BUTTON = 11;
   public static final int MINI_APP_SHARE_FROM_MORE_BUTTON = 12;
+  public static final int MINI_APP_SHARE_FROM_PAY = 13;
+  public static final String MINI_APP_SHARE_IS_COMPLETE = "miniAppShareIsComplete";
   public static final String MINI_APP_SHARE_SCENE = "miniAppShareScene";
+  public static final String MINI_APP_SHARE_SUB_SCENE = "miniAppShareSubScene";
+  public static final String MINI_APP_SHARE_TEMPLATE_ID = "miniAppShareTemplateId";
   public static final String MINI_APP_SHARE_TYPE = "miniAppShareType";
+  public static final String MINI_APP_SHARE_UPDATABLE_MSG_FROM = "miniAppShareUpdatableMsgFrom";
   public static final long SHARE_APPID_MISMATCHING = -1000710003L;
   public static final long SHARE_OUT_OF_LIMIT = -100070004L;
   private static final String SHARE_PATH_DETAIL = "openMiniApp/detail";
   private static final String SHARE_SCHEME = "miniapp";
-  private static final String TAG = "MiniProgramShareUtils";
+  public static final int SHARE_TARGET_QQ = 0;
+  public static final int SHARE_TARGET_QQ_DIRECTLY = 2;
+  public static final int SHARE_TARGET_QZONE = 1;
+  public static final int SHARE_TARGET_SHARE_CHAT = 5;
+  public static final int SHARE_TARGET_TO_FRIEND_LIST = 6;
+  public static final int SHARE_TARGET_WECHAT_FRIEND = 3;
+  public static final int SHARE_TARGET_WECHAT_MOMENTS = 4;
+  private static final String TAG = "MiniProgramShareUtils [miniappArkShare]";
   
-  private static String getArkPrompt(MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject)
+  private static Bundle buildShareBundle(Activity paramActivity, String paramString, int paramInt, MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    Object localObject = null;
-    if (paramJSONObject != null) {
-      localObject = paramJSONObject.optString("prompt");
+    int j = paramMiniArkShareModel.getMiniAppShareFrom();
+    String str1 = paramJSONObject.optString("appName");
+    String str2 = paramJSONObject.optString("appView");
+    Object localObject2 = paramJSONObject.optString("ver");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "0.0.0.1";
     }
-    paramJSONObject = (JSONObject)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    String str3 = paramJSONObject.optJSONObject("metaData").toString();
+    localObject2 = paramJSONObject.optJSONObject("config");
+    boolean bool = false;
+    paramJSONObject = (JSONObject)localObject2;
+    if (localObject2 == null) {}
+    for (;;)
     {
-      paramJSONObject = (JSONObject)localObject;
+      try
+      {
+        paramJSONObject = new JSONObject().put("type", "normal").put("width", 253);
+        if (!"intro".equals(str2)) {
+          break label368;
+        }
+        i = 140;
+        paramJSONObject = paramJSONObject.put("height", i).put("forward", 1).put("autoSize", 0);
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("MiniProgramShareUtils [miniappArkShare]", 2, "performShareAsArkMessage", paramJSONObject);
+        paramJSONObject = (JSONObject)localObject2;
+      }
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putBoolean("is_ark_display_share", true);
+      ((Bundle)localObject2).putString("forward_ark_app_name", str1);
+      ((Bundle)localObject2).putString("forward_ark_app_view", str2);
+      ((Bundle)localObject2).putString("forward_ark_app_prompt", paramString);
+      ((Bundle)localObject2).putString("forward_ark_app_meta", str3);
+      ((Bundle)localObject2).putString("forward_ark_app_ver", (String)localObject1);
+      ((Bundle)localObject2).putString("forward_ark_app_config", paramJSONObject.toString());
+      ((Bundle)localObject2).putBoolean("needShareCallBack", paramBoolean);
+      paramBoolean = bool;
+      if (paramInt == 5) {
+        paramBoolean = true;
+      }
+      ((Bundle)localObject2).putBoolean("miniAppNeedOnlyPreview", paramBoolean);
+      ((Bundle)localObject2).putInt("miniAppShareFrom", j);
+      ((Bundle)localObject2).putAll(QQCustomArkDialog.AppInfo.a(str1, str2, (String)localObject1, str3, paramActivity.getResources().getDisplayMetrics().scaledDensity, null, null));
+      ((Bundle)localObject2).putInt("forward_type", 27);
+      ((Bundle)localObject2).putBoolean("forwardDirect", true);
+      ((Bundle)localObject2).putString("miniAppShareAppid", paramMiniArkShareModel.getAppId());
+      ((Bundle)localObject2).putInt("miniAppShareAppType", paramMiniArkShareModel.getShareBusinessType());
+      ((Bundle)localObject2).putInt("miniAppShareScene", j);
+      ((Bundle)localObject2).putInt("miniAppShareType", paramMiniArkShareModel.getShareTarget());
+      return localObject2;
+      label368:
+      int i = 272;
+    }
+  }
+  
+  public static String getArkPrompt(MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      paramJSONObject = paramJSONObject.optString("prompt");
+    } else {
+      paramJSONObject = null;
+    }
+    Object localObject = paramJSONObject;
+    if (TextUtils.isEmpty(paramJSONObject))
+    {
+      localObject = paramJSONObject;
       if (paramMiniArkShareModel != null)
       {
-        localObject = new StringBuilder().append("[QQ小");
-        if (paramMiniArkShareModel.getShareBusinessType() != 0) {
-          break label77;
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("[QQ小");
+        int i;
+        if (paramMiniArkShareModel.getShareBusinessType() == 0) {
+          i = 2131904750;
+        } else {
+          i = 2131904751;
         }
+        paramJSONObject.append(HardCodeUtil.a(i));
+        paramJSONObject.append("]");
+        paramJSONObject.append(paramMiniArkShareModel.getTitle());
+        localObject = paramJSONObject.toString();
       }
     }
-    label77:
-    for (paramJSONObject = alud.a(2131707264);; paramJSONObject = alud.a(2131707265))
-    {
-      paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
-      return paramJSONObject;
-    }
+    return localObject;
   }
   
   public static String getLocalImagePathFromArkMeta(String paramString)
@@ -85,154 +164,109 @@ public class MiniProgramShareUtils
     }
     catch (Exception localException)
     {
-      QLog.e("MiniProgramShareUtils", 1, "getLocalImagePathFromArkMeta get an exception: " + paramString + ",e:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLocalImagePathFromArkMeta get an exception: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",e:");
+      localStringBuilder.append(localException);
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, localStringBuilder.toString());
       localException.printStackTrace();
     }
     return null;
   }
   
-  public static String jumpUrlForDetail(String paramString)
+  public static MiniProgramShare.StAdaptShareInfoReq newShareInfoRequest(MiniArkShareModel paramMiniArkShareModel, int paramInt1, int paramInt2)
   {
-    return "miniapp://openMiniApp/detail?appid=" + paramString;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static MiniProgramShare.StAdaptShareInfoReq newShareInfoRequest(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString4, String paramString5, String paramString6, String paramString7, COMM.StCommonExt paramStCommonExt, int paramInt5, String paramString8, int paramInt6, boolean paramBoolean, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    MiniProgramShare.StAdaptShareInfoReq localStAdaptShareInfoReq = new MiniProgramShare.StAdaptShareInfoReq();
-    if (paramString1 != null) {
-      localStAdaptShareInfoReq.appid.set(paramString1);
-    }
-    if (paramString2 != null) {
-      localStAdaptShareInfoReq.title.set(paramString2);
-    }
-    if (paramString3 != null) {
-      localStAdaptShareInfoReq.desc.set(paramString3);
-    }
-    localStAdaptShareInfoReq.time.set(paramInt1);
-    localStAdaptShareInfoReq.scene.set(paramInt2);
-    localStAdaptShareInfoReq.templetType.set(paramInt3);
-    localStAdaptShareInfoReq.businessType.set(paramInt4);
-    if (paramString4 != null) {
-      localStAdaptShareInfoReq.picUrl.set(paramString4);
-    }
-    if (paramString5 != null) {
-      localStAdaptShareInfoReq.vidUrl.set(paramString5);
-    }
-    if (paramString6 != null) {
-      localStAdaptShareInfoReq.jumpUrl.set(paramString6);
-    }
-    if (paramString7 != null) {
-      localStAdaptShareInfoReq.iconUrl.set(paramString7);
-    }
-    if (paramStCommonExt != null) {
-      localStAdaptShareInfoReq.extInfo.set(paramStCommonExt);
-    }
-    localStAdaptShareInfoReq.verType.set(paramInt5);
-    if (paramString8 != null) {
-      localStAdaptShareInfoReq.versionId.set(paramString8);
-    }
-    localStAdaptShareInfoReq.shareType.set(paramInt6);
-    paramString1 = localStAdaptShareInfoReq.withShareTicket;
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      paramString1.set(paramInt1);
-      if (paramString9 != null) {
-        localStAdaptShareInfoReq.webURL.set(paramString9);
-      }
-      if (paramString10 != null) {
-        localStAdaptShareInfoReq.appidRich.set(paramString10);
-      }
-      if ((paramString11 != null) && (paramString12 != null))
-      {
-        paramString1 = new MiniProgramShare.StTemplateInfo();
-        paramString1.templateId.set(paramString11);
-        paramString1.templateData.set(paramString12);
-        localStAdaptShareInfoReq.template.set(paramString1);
-      }
-      if (paramInt6 == 5) {
-        localStAdaptShareInfoReq.rcvOpenId.set(paramString13);
-      }
-      return localStAdaptShareInfoReq;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  private static boolean performShareAsArkMessage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, JSONObject paramJSONObject, int paramInt3, String paramString5, int paramInt4)
+  public static void performShareArkAsMessageFailed(int paramInt1, int paramInt2, JSONObject paramJSONObject)
   {
-    if ((TextUtils.isEmpty(paramString3)) || (paramJSONObject == null) || (paramJSONObject.isNull("appName")) || (paramJSONObject.isNull("appView")) || (paramJSONObject.isNull("metaData"))) {
-      return false;
+    boolean bool = false;
+    if (paramJSONObject != null) {
+      bool = paramJSONObject.optBoolean("needShareCallBack", false);
     }
-    String str1 = paramJSONObject.optString("appName");
-    String str2 = paramJSONObject.optString("appView");
-    paramString4 = paramJSONObject.optString("ver");
-    paramString2 = paramString4;
-    if (TextUtils.isEmpty(paramString4)) {
-      paramString2 = "0.0.0.1";
+    if (paramInt1 == 5) {
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_direct_share_fail", null, null);
+    } else if (bool) {
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_fail", null, null);
     }
-    boolean bool = paramJSONObject.optBoolean("needShareCallBack", false);
-    if ((!bool) && (paramInt3 != 5)) {
-      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-    }
-    String str3 = paramJSONObject.optJSONObject("metaData").toString();
-    paramJSONObject = paramJSONObject.optJSONObject("config");
-    paramString4 = paramJSONObject;
-    if (paramJSONObject == null) {}
-    for (;;)
+    paramJSONObject = new Bundle();
+    paramJSONObject.putString("key_mini_report_event_action_type", "user_click");
+    switch (paramInt2)
     {
-      try
-      {
-        paramString4 = new JSONObject().put("type", "normal").put("width", 253);
-        if (!"intro".equals(str2)) {
-          continue;
-        }
-        i = 140;
-        paramString4 = paramString4.put("height", i).put("forward", 1).put("autoSize", 0);
+    default: 
+      break;
+    case 12: 
+      paramJSONObject.putString("key_mini_report_event_sub_action_type", "more_button");
+      break;
+    case 11: 
+      paramJSONObject.putString("key_mini_report_event_sub_action_type", "custom_button");
+      break;
+    case 10: 
+      paramJSONObject.putString("key_mini_report_event_sub_action_type", "more_about");
+    }
+    paramJSONObject.putString("key_mini_report_event_reserves", "share_QQ");
+    paramJSONObject.putString("key_mini_report_event_reserves2", "fail");
+    QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", paramJSONObject, null);
+    ShareQQArkHelper.a();
+  }
+  
+  public static boolean performShareAsArkMessage(Activity paramActivity, String paramString, MiniArkShareModel paramMiniArkShareModel, JSONObject paramJSONObject, int paramInt)
+  {
+    if ((paramJSONObject != null) && (!paramJSONObject.isNull("appName")) && (!paramJSONObject.isNull("appView")) && (!paramJSONObject.isNull("metaData")))
+    {
+      boolean bool = paramJSONObject.optBoolean("needShareCallBack", false);
+      if ((!bool) && (paramInt != 5)) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
       }
-      catch (JSONException paramString4)
+      paramString = buildShareBundle(paramActivity, paramString, paramInt, paramMiniArkShareModel, paramJSONObject, bool);
+      paramJSONObject = paramMiniArkShareModel.getEntryModel();
+      ShareChatModel localShareChatModel = paramMiniArkShareModel.getShareChatModel();
+      paramInt = paramMiniArkShareModel.getShareTarget();
+      int i = paramMiniArkShareModel.getMiniAppShareFrom();
+      if (paramInt == 6)
       {
-        int i;
-        QLog.e("MiniProgramShareUtils", 2, "performShareAsArkMessage", paramString4);
-        paramString4 = paramJSONObject;
-        continue;
+        paramMiniArkShareModel = new Intent();
+        paramMiniArkShareModel.putExtra("public_fragment_window_feature", 1);
+        paramMiniArkShareModel.putExtras(paramString);
+        PublicFragmentActivity.Launcher.a(paramActivity, paramMiniArkShareModel, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
+        return true;
       }
-      paramJSONObject = new Bundle();
-      paramJSONObject.putString("sharePicturePath", paramString3);
-      paramJSONObject.putString("forward_ark_app_name", str1);
-      AppBrandProxy.g().sendCmd("cmd_share_ark_async_message", paramJSONObject, new MiniProgramShareUtils.1(str3, str1, str2, paramString1, paramString2, paramString4, bool, paramInt3, paramInt1, paramActivity, paramString5, paramInt4, paramInt2, paramEntryModel, paramShareChatModel));
+      if (paramJSONObject != null)
+      {
+        paramMiniArkShareModel = new Bundle();
+        paramMiniArkShareModel.putString("key_mini_report_event_action_type", "user_click");
+        paramMiniArkShareModel.putString("key_mini_report_event_sub_action_type", "custom_button");
+        paramMiniArkShareModel.putString("key_mini_report_event_reserves", "share_QQfast");
+        paramMiniArkShareModel.putString("key_mini_report_event_reserves2", "success");
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", paramMiniArkShareModel, null);
+        shareToChatDirectly(paramActivity, paramString, paramJSONObject.type, String.valueOf(paramJSONObject.uin), paramJSONObject.name, -1, true);
+        return true;
+      }
+      if (localShareChatModel != null)
+      {
+        shareToChatDirectly(paramActivity, paramString, localShareChatModel.type, String.valueOf(localShareChatModel.uin), localShareChatModel.name, -1, true);
+        return true;
+      }
+      paramMiniArkShareModel = new Intent(paramActivity, ForwardRecentActivity.class);
+      paramMiniArkShareModel.putExtras(paramString);
+      if (i == 12)
+      {
+        ForwardBaseOption.a(paramActivity, paramMiniArkShareModel, 100500, "applet");
+        return true;
+      }
+      ForwardBaseOption.a(paramActivity, paramMiniArkShareModel);
       return true;
-      i = 272;
     }
-  }
-  
-  public static void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt)
-  {
-    shareAsArkMessage(paramActivity, paramMiniArkShareModel, paramBoolean, paramInt, null);
-  }
-  
-  public static void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt, MiniProgramShareUtils.OnShareListener paramOnShareListener)
-  {
-    if (paramMiniArkShareModel == null)
-    {
-      QLog.e("MiniProgramShareUtils", 1, "shareAsArkMessage failed! miniArkShareModel is null");
-      return;
-    }
-    int j = 0;
-    int i = j;
-    if (!bdnn.a(paramMiniArkShareModel.getTemplateId()))
-    {
-      i = j;
-      if (!bdnn.a(paramMiniArkShareModel.getTemplateData())) {
-        i = 2;
-      }
-    }
-    if (!TextUtils.isEmpty(paramMiniArkShareModel.getRcvOpenId())) {
-      i = 5;
-    }
-    for (;;)
-    {
-      MiniAppCmdUtil.getInstance().getShareInfo(newShareInfoRequest(paramMiniArkShareModel.getAppId(), paramMiniArkShareModel.getTitle(), paramMiniArkShareModel.getDescription(), (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramMiniArkShareModel.getShareScene(), paramMiniArkShareModel.getShareTemplateType(), paramMiniArkShareModel.getShareBusinessType(), paramMiniArkShareModel.getPicUrl(), paramMiniArkShareModel.getVidUrl(), paramMiniArkShareModel.getJumpUrl(), paramMiniArkShareModel.getIconUrl(), null, paramMiniArkShareModel.getVersionType(), paramMiniArkShareModel.getVersionId(), i, paramBoolean, paramMiniArkShareModel.getWebURL(), paramMiniArkShareModel.getAppidRich(), paramMiniArkShareModel.getTemplateId(), paramMiniArkShareModel.getTemplateData(), paramMiniArkShareModel.getRcvOpenId()), new MiniProgramShareUtils.2(i, paramActivity, paramMiniArkShareModel, paramInt, paramOnShareListener));
-      return;
-    }
+    QLog.e("MiniProgramShareUtils [miniappArkShare]", 2, "performShareAsArkMessage Param Error!");
+    performShareArkAsMessageFailed(paramInt, paramMiniArkShareModel.getMiniAppShareFrom(), paramJSONObject);
+    return false;
   }
   
   public static void shareAsQzoneFeeds(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -247,85 +281,102 @@ public class MiniProgramShareUtils
   
   public static void shareToChatDirectly(Activity paramActivity, Bundle paramBundle, int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniProgramShareUtils", 2, "shareToChatDirectly, chatType: " + paramInt1 + ",uin: " + paramString1 + ",name: " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shareToChatDirectly, chatType: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(",uin: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(",name: ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("MiniProgramShareUtils [miniappArkShare]", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBundle == null)
     {
-      QLog.e("MiniProgramShareUtils", 1, "shareToChatDirectly shareDataBundle is null ");
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, "shareToChatDirectly shareDataBundle is null ");
       return;
     }
-    Intent localIntent = new Intent(paramActivity, TroopCreateLogicActivity.class);
-    localIntent.putExtra("key_share_from_screen_need_finish", true);
-    if (paramBoolean)
-    {
-      localIntent.putExtra("type", 9);
-      if (paramInt1 != 0) {
-        break label188;
-      }
-      paramBundle.putInt("uintype", 0);
+    Object localObject = new Intent(paramActivity, TroopCreateLogicActivity.class);
+    ((Intent)localObject).putExtra("key_share_from_screen_need_finish", true);
+    if (paramBoolean) {
+      ((Intent)localObject).putExtra("type", 9);
+    } else {
+      ((Intent)localObject).putExtra("type", 10);
     }
-    for (;;)
+    paramBundle.putInt("uintype", paramInt1);
+    paramBundle.putString("uin", String.valueOf(paramString1));
+    paramBundle.putString("uinname", paramString2);
+    paramBundle.putInt("miniAppShareDestType", paramInt1);
+    paramBundle.putString("miniAppShareDestId", paramString1);
+    ((Intent)localObject).putExtras(paramBundle);
+    if (paramInt2 != -1)
     {
-      paramBundle.putString("uin", String.valueOf(paramString1));
-      paramBundle.putString("uinname", paramString2);
-      paramBundle.putInt("miniAppShareDestType", paramInt1);
-      paramBundle.putString("miniAppShareDestId", paramString1);
-      localIntent.putExtras(paramBundle);
-      if (paramInt2 == -1) {
-        break label204;
-      }
-      paramActivity.startActivityForResult(localIntent, paramInt2);
+      paramActivity.startActivityForResult((Intent)localObject, paramInt2);
       return;
-      localIntent.putExtra("type", 10);
-      break;
-      label188:
-      if (paramInt1 == 1) {
-        paramBundle.putInt("uintype", 1);
-      }
     }
-    label204:
-    paramActivity.startActivity(localIntent);
+    paramActivity.startActivity((Intent)localObject);
+  }
+  
+  public static void shareUpdatableMsg(Context paramContext, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3)
+  {
+    Intent localIntent = new Intent(paramContext, ForwardRecentActivity.class);
+    localIntent.putExtra("forward_type", 44);
+    localIntent.putExtra("miniAppShareAppid", paramString1);
+    localIntent.putExtra("miniAppShareUpdatableMsgFrom", paramInt1);
+    localIntent.putExtra("miniAppShareTemplateId", paramString2);
+    localIntent.putExtra("miniAppShareEvent", paramString3);
+    localIntent.putExtra("miniAppShareCallbackId", paramInt2);
+    localIntent.putExtra("miniAppShareSubScene", paramInt3);
+    ForwardBaseOption.a(paramContext, localIntent);
   }
   
   public static String updateImagePathToArkMeta(String paramString1, String paramString2)
   {
+    Object localObject = paramString1;
     try
     {
       JSONObject localJSONObject1 = new JSONObject(paramString1);
+      localObject = paramString1;
       JSONArray localJSONArray = localJSONObject1.names();
+      localObject = paramString1;
       JSONObject localJSONObject2 = localJSONObject1.optJSONObject((String)localJSONArray.get(0));
+      String str = paramString1;
       if (localJSONObject2 != null)
       {
+        localObject = paramString1;
         localJSONObject2.put("preview", paramString2);
+        localObject = paramString1;
         localJSONObject1.put((String)localJSONArray.get(0), localJSONObject2);
-        paramString2 = localJSONObject1.toString();
-        paramString1 = paramString2;
+        localObject = paramString1;
+        str = localJSONObject1.toString();
       }
-      label93:
-      for (;;) {}
+      localObject = str;
+      paramString1 = new StringBuilder();
+      localObject = str;
+      paramString1.append("updateImagePathToArkMeta: ");
+      localObject = str;
+      paramString1.append(str);
+      localObject = str;
+      QLog.d("MiniProgramShareUtils [miniappArkShare]", 2, paramString1.toString());
+      return str;
     }
-    catch (Exception paramString2)
+    catch (Exception paramString1)
     {
-      try
-      {
-        QLog.d("MiniProgramShareUtils", 2, "updateImagePathToArkMeta: " + paramString1);
-        return paramString1;
-      }
-      catch (Exception paramString2)
-      {
-        break label93;
-      }
-      paramString2 = paramString2;
-      QLog.e("MiniProgramShareUtils", 1, "updateImagePathToArkMeta get an exception: " + paramString1 + ",e:" + paramString2);
-      paramString2.printStackTrace();
-      return paramString1;
+      paramString2 = new StringBuilder();
+      paramString2.append("updateImagePathToArkMeta get an exception: ");
+      paramString2.append((String)localObject);
+      paramString2.append(",e:");
+      paramString2.append(paramString1);
+      QLog.e("MiniProgramShareUtils [miniappArkShare]", 1, paramString2.toString());
+      paramString1.printStackTrace();
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils
  * JD-Core Version:    0.7.0.1
  */

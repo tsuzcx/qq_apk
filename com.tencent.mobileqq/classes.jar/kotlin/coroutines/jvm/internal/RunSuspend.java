@@ -3,7 +3,6 @@ package kotlin.coroutines.jvm.internal;
 import kotlin.Metadata;
 import kotlin.Result;
 import kotlin.ResultKt;
-import kotlin.TypeCastException;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
@@ -20,22 +19,25 @@ final class RunSuspend
   
   public final void await()
   {
-    for (;;)
+    try
     {
-      try
+      Result localResult;
+      for (;;)
       {
-        Result localResult = this.result;
+        localResult = this.result;
         if (localResult != null) {
           break;
         }
-        if (this == null) {
-          throw new TypeCastException("null cannot be cast to non-null type java.lang.Object");
-        }
+        ((Object)this).wait();
       }
-      finally {}
-      ((Object)this).wait();
+      ResultKt.throwOnFailure(localResult.unbox-impl());
+      return;
     }
-    ResultKt.throwOnFailure(localObject.unbox-impl());
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   @NotNull
@@ -55,13 +57,15 @@ final class RunSuspend
     try
     {
       this.result = Result.box-impl(paramObject);
-      if (this == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.Object");
-      }
+      ((Object)this).notifyAll();
+      paramObject = Unit.INSTANCE;
+      return;
     }
-    finally {}
-    ((Object)this).notifyAll();
-    paramObject = Unit.INSTANCE;
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
+    }
   }
   
   public final void setResult(@Nullable Result<Unit> paramResult)
@@ -71,7 +75,7 @@ final class RunSuspend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.jvm.internal.RunSuspend
  * JD-Core Version:    0.7.0.1
  */

@@ -31,37 +31,37 @@ public class LpReport_ImgPreload_dc02506
     if (this.reportMap == null) {
       return null;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    localStringBuilder = new StringBuilder();
+    try
     {
-      try
+      Iterator localIterator = this.reportMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.reportMap.keySet().iterator();
-        if (localIterator.hasNext())
+        String str1 = (String)localIterator.next();
+        String str2 = (String)this.reportMap.get(str1);
+        localStringBuilder.append(str1);
+        if (str2 != null)
         {
-          String str1 = (String)localIterator.next();
-          String str2 = (String)this.reportMap.get(str1);
-          localStringBuilder.append(str1);
-          if (str2 != null) {
-            localStringBuilder.append(":").append(str2).append("\n");
-          }
+          localStringBuilder.append(":");
+          localStringBuilder.append(str2);
+          localStringBuilder.append("\n");
         }
         else
         {
-          return localStringBuilder.toString();
+          localStringBuilder.append(":null \n");
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      localStringBuilder.append(":null \n");
+      return localStringBuilder.toString();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_ImgPreload_dc02506
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,29 @@ class SuperPlayerWrapper$WrapperIdCaptureListener
   
   public void onCaptureVideoFailed(int paramInt)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onCaptureVideoFailed, id:" + this.mId + " errorCode:" + paramInt);
-    SuperPlayerWrapper.access$500(this.this$0).onCaptureImageFailed(this.this$0, this.mId, paramInt);
+    String str = SuperPlayerWrapper.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inner listener called : onCaptureVideoFailed, id:");
+    localStringBuilder.append(this.mId);
+    localStringBuilder.append(" errorCode:");
+    localStringBuilder.append(paramInt);
+    LogUtil.i(str, localStringBuilder.toString());
+    SuperPlayerWrapper.access$1200(this.this$0).onCaptureImageFailed(this.this$0, this.mId, paramInt);
   }
   
   public void onCaptureVideoSuccess(Bitmap paramBitmap)
   {
-    LogUtil.i(SuperPlayerWrapper.access$100(this.this$0), "inner listener called : onCaptureVideoSuccess id:" + this.mId);
-    SuperPlayerWrapper.access$500(this.this$0).onCaptureImageSucceed(this.this$0, this.mId, paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap);
+    String str = SuperPlayerWrapper.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inner listener called : onCaptureVideoSuccess id:");
+    localStringBuilder.append(this.mId);
+    LogUtil.i(str, localStringBuilder.toString());
+    SuperPlayerWrapper.access$1200(this.this$0).onCaptureImageSucceed(this.this$0, this.mId, paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerWrapper.WrapperIdCaptureListener
  * JD-Core Version:    0.7.0.1
  */

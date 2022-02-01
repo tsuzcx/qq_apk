@@ -1,28 +1,19 @@
 package com.tencent.wcdb.database;
 
-import com.tencent.wcdb.CursorWindowAllocationException;
+import com.tencent.token.aiq;
 
 public class ChunkedCursorWindow
-  extends SQLiteClosable
+  extends aiq
 {
-  public static final long CHUNK_NOT_FOUND = -1L;
-  private int mNumColumns = 0;
-  long mWindowPtr;
+  long a;
   
-  public ChunkedCursorWindow(int paramInt)
+  private void a()
   {
-    this.mWindowPtr = nativeCreate(paramInt);
-    if (this.mWindowPtr == 0L) {
-      throw new CursorWindowAllocationException("Cursor window allocation failed.");
-    }
-  }
-  
-  private void dispose()
-  {
-    if (this.mWindowPtr != 0L)
+    long l = this.a;
+    if (l != 0L)
     {
-      nativeDispose(this.mWindowPtr);
-      this.mWindowPtr = 0L;
+      nativeDispose(l);
+      this.a = 0L;
     }
   }
   
@@ -52,214 +43,21 @@ public class ChunkedCursorWindow
   
   private static native boolean nativeSetNumColumns(long paramLong, int paramInt);
   
-  public void clear()
+  public final void c()
   {
-    acquireReference();
-    try
-    {
-      nativeClear(this.mWindowPtr);
-      return;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  void endRowUnsafe(long paramLong)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    nativeEndRow(this.mWindowPtr, paramLong);
-    releaseReference();
+    a();
   }
   
   protected void finalize()
   {
     try
     {
-      dispose();
+      a();
       return;
     }
     finally
     {
       super.finalize();
-    }
-  }
-  
-  public byte[] getBlob(int paramInt1, int paramInt2)
-  {
-    long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
-    }
-    try
-    {
-      byte[] arrayOfByte = nativeGetBlob(l, paramInt2);
-      return arrayOfByte;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
-  }
-  
-  byte[] getBlobUnsafe(long paramLong, int paramInt)
-  {
-    return nativeGetBlob(paramLong, paramInt);
-  }
-  
-  public double getDouble(int paramInt1, int paramInt2)
-  {
-    long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
-    }
-    try
-    {
-      double d = nativeGetDouble(l, paramInt2);
-      return d;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
-  }
-  
-  double getDoubleUnsafe(long paramLong, int paramInt)
-  {
-    return nativeGetDouble(paramLong, paramInt);
-  }
-  
-  public long getLong(int paramInt1, int paramInt2)
-  {
-    long l1 = getRowUnsafe(paramInt1);
-    if (l1 == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
-    }
-    try
-    {
-      long l2 = nativeGetLong(l1, paramInt2);
-      return l2;
-    }
-    finally
-    {
-      endRowUnsafe(l1);
-    }
-  }
-  
-  long getLongUnsafe(long paramLong, int paramInt)
-  {
-    return nativeGetLong(paramLong, paramInt);
-  }
-  
-  public int getNumChunks()
-  {
-    acquireReference();
-    try
-    {
-      int i = nativeGetNumChunks(this.mWindowPtr);
-      return i;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public int getNumColumns()
-  {
-    return this.mNumColumns;
-  }
-  
-  long getRowUnsafe(int paramInt)
-  {
-    acquireReference();
-    long l = nativeGetRow(this.mWindowPtr, paramInt);
-    if (l == 0L) {
-      releaseReference();
-    }
-    return l;
-  }
-  
-  public String getString(int paramInt1, int paramInt2)
-  {
-    long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
-    }
-    try
-    {
-      String str = nativeGetString(l, paramInt2);
-      return str;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
-  }
-  
-  String getStringUnsafe(long paramLong, int paramInt)
-  {
-    return nativeGetString(paramLong, paramInt);
-  }
-  
-  public int getType(int paramInt1, int paramInt2)
-  {
-    long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
-    }
-    try
-    {
-      paramInt1 = nativeGetType(l, paramInt2);
-      return paramInt1;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
-  }
-  
-  int getTypeUnsafe(long paramLong, int paramInt)
-  {
-    return nativeGetType(paramLong, paramInt);
-  }
-  
-  protected void onAllReferencesReleased()
-  {
-    dispose();
-  }
-  
-  public long removeChunk(int paramInt)
-  {
-    acquireReference();
-    try
-    {
-      long l = nativeRemoveChunk(this.mWindowPtr, paramInt);
-      return l;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public boolean setNumColumns(int paramInt)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativeSetNumColumns(this.mWindowPtr, paramInt);
-      if (bool) {
-        this.mNumColumns = paramInt;
-      }
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
     }
   }
 }

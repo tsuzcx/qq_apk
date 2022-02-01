@@ -19,8 +19,10 @@ public class AEOpenRenderConfig
   
   public static void checkStrictMode(boolean paramBoolean, String paramString)
   {
-    if (!strictMode) {}
-    while (paramBoolean) {
+    if (!strictMode) {
+      return;
+    }
+    if (paramBoolean) {
       return;
     }
     throw new AEOpenRenderConfig.StrictModeCheckFailedException(paramString);
@@ -48,7 +50,7 @@ public class AEOpenRenderConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.AEOpenRenderConfig
  * JD-Core Version:    0.7.0.1
  */

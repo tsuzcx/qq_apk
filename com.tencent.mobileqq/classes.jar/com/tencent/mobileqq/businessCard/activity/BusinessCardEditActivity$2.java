@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import aepi;
 import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
 
 class BusinessCardEditActivity$2
   implements Runnable
@@ -11,12 +11,12 @@ class BusinessCardEditActivity$2
   public void run()
   {
     this.a.requestFocusFromTouch();
-    aepi.a(this.a);
+    BaseAIOUtils.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.2
  * JD-Core Version:    0.7.0.1
  */

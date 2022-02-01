@@ -9,8 +9,8 @@ public final class ReqAddDiscussMember
   extends JceStruct
 {
   static ArrayList<AddDiscussMemberInfo> cache_Members;
-  public long DiscussUin;
-  public ArrayList<AddDiscussMemberInfo> Members;
+  public long DiscussUin = 0L;
+  public ArrayList<AddDiscussMemberInfo> Members = null;
   
   public ReqAddDiscussMember() {}
   
@@ -40,7 +40,7 @@ public final class ReqAddDiscussMember
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqAddDiscussMember
  * JD-Core Version:    0.7.0.1
  */

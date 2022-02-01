@@ -14,16 +14,22 @@ public final class devlock_mobile_phone$status
   public static final int U32_AUDIT_TIME_FIELD_NUMBER = 2;
   public static final int U32_BAK_MOBILE_STATE_FIELD_NUMBER = 3;
   public static final int U32_MB_MOBILE_STATE_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "u32_mb_mobile_state", "u32_audit_time", "u32_bak_mobile_state", "str_bak_mobile", "str_bak_country_code" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "" }, status.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField str_bak_country_code = PBField.initString("");
   public final PBStringField str_bak_mobile = PBField.initString("");
   public final PBUInt32Field u32_audit_time = PBField.initUInt32(0);
   public final PBUInt32Field u32_bak_mobile_state = PBField.initUInt32(0);
   public final PBUInt32Field u32_mb_mobile_state = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "u32_mb_mobile_state", "u32_audit_time", "u32_bak_mobile_state", "str_bak_mobile", "str_bak_country_code" }, new Object[] { localInteger, localInteger, localInteger, "", "" }, status.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.devlock_mobile_phone.status
  * JD-Core Version:    0.7.0.1
  */

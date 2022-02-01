@@ -1,6 +1,7 @@
 package btmsdkobf;
 
 import android.content.Context;
+import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class be
     r().a(r().fy, paramInt, paramString, true);
   }
   
-  public static String a(ArrayList paramArrayList)
+  public static String a(ArrayList<bd> paramArrayList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
@@ -52,7 +53,7 @@ public class be
   
   static String d(int paramInt)
   {
-    return "" + paramInt;
+    return String.valueOf(paramInt);
   }
   
   public static void e(int paramInt)
@@ -69,15 +70,16 @@ public class be
   
   public static be r()
   {
-    if (fw == null) {}
-    try
-    {
-      if (fw == null) {
-        fw = new be(bc.n());
+    if (fw == null) {
+      try
+      {
+        if (fw == null) {
+          fw = new be(bc.n());
+        }
       }
-      return fw;
+      finally {}
     }
-    finally {}
+    return fw;
   }
   
   public static void saveActionData(int paramInt)
@@ -105,52 +107,42 @@ public class be
       localbe.t();
       return;
     }
+    int j = 0;
+    int i = 0;
     n localn = new n();
     localn.an = new ArrayList();
     Object localObject = localbe.u();
-    int i;
-    int k;
-    int m;
     o localo;
+    StringBuilder localStringBuilder;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
-      int j = 0;
-      i = 0;
-      k = j;
-      m = i;
-      if (((Iterator)localObject).hasNext())
+      for (;;)
       {
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
         localo = (o)((Iterator)localObject).next();
-        m = localo.toByteArray().length;
-        if (m > 1024000) {
+        j = localo.toByteArray().length;
+        if (j > 1024000) {
           e(localo.ar);
         }
-        if (i + m < 1024000)
+        j += i;
+        if (j < 1024000)
         {
-          eg.f("ActionStats", "ActionData:[" + localo.ar + "]");
+          localStringBuilder = new StringBuilder("ActionData:[");
+          localStringBuilder.append(localo.ar);
+          localStringBuilder.append("]");
+          eg.f("ActionStats", localStringBuilder.toString());
           localn.an.add(localo);
-          k = j + 1;
-          j = i + m;
-          i = k;
-        }
-        for (;;)
-        {
-          k = j;
-          j = i;
-          i = k;
-          break;
-          ((Iterator)localObject).remove();
-          k = i;
           i = j;
-          j = k;
+        }
+        else
+        {
+          ((Iterator)localObject).remove();
         }
       }
-    }
-    else
-    {
-      k = 0;
-      m = 0;
     }
     localObject = localbe.v();
     if (localObject != null)
@@ -163,12 +155,17 @@ public class be
         if (i > 1024000) {
           f(localo.ar);
         }
-        if (m + i < 1024000)
+        i += j;
+        if (i < 1024000)
         {
-          eg.f("ActionStats", "StringData:[" + localo.ar + "][" + localo.at + "]");
+          localStringBuilder = new StringBuilder("StringData:[");
+          localStringBuilder.append(localo.ar);
+          localStringBuilder.append("][");
+          localStringBuilder.append(localo.at);
+          localStringBuilder.append("]");
+          eg.f("ActionStats", localStringBuilder.toString());
           localn.an.add(localo);
-          m += i;
-          k += 1;
+          j = i;
         }
         else
         {
@@ -176,14 +173,30 @@ public class be
         }
       }
     }
-    if ((localn.an == null) || (localn.an.size() <= 0))
+    if ((localn.an != null) && (localn.an.size() > 0))
     {
-      eg.e("ActionStats", "vecFeature is null");
+      localObject = bx.ar();
+      eg.e("ActionStats", "sendShark, ECmd.Cmd_CSFeature");
+      ((bx)localObject).a(3651, localn, null, 2, new cj()
+      {
+        public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+        {
+          paramAnonymousJceStruct = new StringBuilder("sendShark, ECmd.Cmd_CSFeature, retCode:[");
+          paramAnonymousJceStruct.append(paramAnonymousInt3);
+          paramAnonymousJceStruct.append("]dataRetCode:[");
+          paramAnonymousJceStruct.append(paramAnonymousInt4);
+          paramAnonymousJceStruct.append("]");
+          eg.e("ActionStats", paramAnonymousJceStruct.toString());
+          if (paramAnonymousInt3 == 0)
+          {
+            this.a.s();
+            this.a.t();
+          }
+        }
+      }, 0L);
       return;
     }
-    localObject = bx.ar();
-    eg.e("ActionStats", "sendShark, ECmd.Cmd_CSFeature");
-    ((bx)localObject).a(3651, localn, null, 2, new ex(localbe), 0L);
+    eg.e("ActionStats", "vecFeature is null");
   }
   
   public static boolean x()
@@ -191,67 +204,64 @@ public class be
     return ec.cS().getBoolean("id", true);
   }
   
-  ArrayList a(ec paramec)
+  ArrayList<o> a(ec paramec)
   {
     ArrayList localArrayList = new ArrayList();
     paramec = paramec.getAll();
-    Object localObject2;
-    if (paramec != null)
-    {
+    if (paramec != null) {
       paramec = paramec.entrySet().iterator();
-      if (paramec.hasNext()) {
-        localObject2 = (Map.Entry)paramec.next();
-      }
     }
     for (;;)
     {
-      int i;
+      Object localObject2;
+      if (paramec.hasNext()) {
+        localObject2 = (Map.Entry)paramec.next();
+      }
       try
       {
         Object localObject1 = (String)((Map.Entry)localObject2).getKey();
         localObject2 = ((Map.Entry)localObject2).getValue();
-        if ((localObject2 == null) || (!(localObject2 instanceof String))) {
-          break;
+        if ((localObject2 != null) && ((localObject2 instanceof String)))
+        {
+          localObject2 = (String)localObject2;
+          if (((String)localObject2).indexOf("$") > 0)
+          {
+            int j = Integer.valueOf((String)localObject1).intValue();
+            localObject1 = ((String)localObject2).split("\\$");
+            if ((localObject1 != null) && (localObject1.length > 0))
+            {
+              int k = localObject1.length;
+              int i = 0;
+              while (i < k)
+              {
+                localObject2 = localObject1[i].split("\\|");
+                if ((localObject2 != null) && (localObject2.length == 2))
+                {
+                  long l = Long.valueOf(localObject2[0]).longValue();
+                  localObject2 = localObject2[1];
+                  o localo = new o();
+                  localo.ar = j;
+                  localo.timestamp = ((int)(l / 1000L));
+                  localo.at = new ArrayList();
+                  localo.at.add(localObject2);
+                  localArrayList.add(localo);
+                }
+                i += 1;
+              }
+            }
+          }
         }
-        localObject2 = (String)localObject2;
-        if (((String)localObject2).indexOf("$") <= 0) {
-          break;
-        }
-        int j = Integer.valueOf((String)localObject1).intValue();
-        localObject1 = ((String)localObject2).split("\\$");
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break;
-        }
-        int k = localObject1.length;
-        i = 0;
-        if (i >= k) {
-          break;
-        }
-        localObject2 = localObject1[i].split("\\|");
-        if ((localObject2 == null) || (localObject2.length != 2)) {
-          break label264;
-        }
-        long l = Long.valueOf(localObject2[0]).longValue();
-        localObject2 = localObject2[1];
-        o localo = new o();
-        localo.ar = j;
-        localo.timestamp = ((int)(l / 1000L));
-        localo.at = new ArrayList();
-        localo.at.add(localObject2);
-        if (localo == null) {
-          break label264;
-        }
-        localArrayList.add(localo);
       }
-      catch (Exception localException) {}
-      break;
-      return localArrayList;
-      label264:
-      i += 1;
+      catch (Exception localException)
+      {
+        label258:
+        break label258;
+      }
     }
+    return localArrayList;
   }
   
-  ArrayList a(ec paramec, String paramString)
+  ArrayList<o> a(ec paramec, String paramString)
   {
     paramString = null;
     if (paramec == null) {
@@ -275,7 +285,11 @@ public class be
               localArrayList.addAll(d(Integer.valueOf(paramString).intValue(), (String)localObject));
             }
           }
-          catch (Exception paramString) {}
+          catch (Exception paramString)
+          {
+            label109:
+            break label109;
+          }
         }
       }
       return b(localArrayList);
@@ -289,17 +303,72 @@ public class be
     }
   }
   
-  void a(int paramInt1, int paramInt2)
+  void a(final int paramInt1, final int paramInt2)
   {
-    ee.cT().addTask(new cq(this, paramInt1, paramInt2), "doxxx");
+    ee.cT().addTask(new Runnable()
+    {
+      public final void run()
+      {
+        String str1 = be.d(paramInt1);
+        long l = System.currentTimeMillis();
+        String str2 = be.a(be.this).getString(str1, null);
+        if ((str2 != null) && (str2.length() > 8192)) {
+          return;
+        }
+        Object localObject1 = new ArrayList();
+        Object localObject2 = new bd();
+        ((bd)localObject2).fr = paramInt1;
+        ((bd)localObject2).ft = l;
+        ((bd)localObject2).fs = 1;
+        ((bd)localObject2).errorCode = paramInt2;
+        ((ArrayList)localObject1).add(localObject2);
+        localObject1 = be.a((ArrayList)localObject1);
+        if (localObject1 != null)
+        {
+          localObject2 = new StringBuilder();
+          if (str2 != null) {
+            ((StringBuilder)localObject2).append(str2);
+          }
+          ((StringBuilder)localObject2).append((String)localObject1);
+          be.a(be.this).putString(str1, ((StringBuilder)localObject2).toString());
+        }
+      }
+    }, "doxxx");
   }
   
-  void a(ec paramec, int paramInt, String paramString, boolean paramBoolean)
+  void a(final ec paramec, final int paramInt, final String paramString, final boolean paramBoolean)
   {
-    ee.cT().addTask(new dh(this, paramString, paramInt, paramec, paramBoolean), "doxxx");
+    ee.cT().addTask(new Runnable()
+    {
+      public final void run()
+      {
+        String str1 = paramString;
+        if (str1 != null)
+        {
+          if (str1.length() <= 0) {
+            return;
+          }
+          String str2 = be.d(paramInt);
+          str1 = paramec.getString(str2, null);
+          if ((str1 == null) || (paramBoolean)) {
+            str1 = "";
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str1);
+          localStringBuilder.append(System.currentTimeMillis());
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("$");
+          if (localStringBuilder.length() > 16384) {
+            return;
+          }
+          paramec.putString(str2, localStringBuilder.toString());
+        }
+      }
+    }, "doxxx");
   }
   
-  ArrayList b(ArrayList paramArrayList)
+  ArrayList<o> b(ArrayList<bd> paramArrayList)
   {
     if (paramArrayList == null) {
       return null;
@@ -326,25 +395,46 @@ public class be
     return localArrayList;
   }
   
-  void b(int paramInt1, int paramInt2)
+  void b(final int paramInt1, final int paramInt2)
   {
-    ee.cT().addTask(new ct(this, paramInt1, paramInt2), "doxxx");
+    ee.cT().addTask(new Runnable()
+    {
+      public final void run()
+      {
+        String str = be.d(paramInt1);
+        long l = System.currentTimeMillis();
+        Object localObject1 = new ArrayList();
+        Object localObject2 = new bd();
+        ((bd)localObject2).fr = paramInt1;
+        ((bd)localObject2).ft = l;
+        ((bd)localObject2).fs = 1;
+        ((bd)localObject2).errorCode = paramInt2;
+        ((ArrayList)localObject1).add(localObject2);
+        localObject1 = be.a((ArrayList)localObject1);
+        if (localObject1 != null)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          be.a(be.this).putString(str, ((StringBuilder)localObject2).toString());
+        }
+      }
+    }, "doxxx");
   }
   
-  ArrayList d(int paramInt, String paramString)
+  ArrayList<bd> d(int paramInt, String paramString)
   {
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     String str1 = paramString;
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return localArrayList;
-      try
+    }
+    try
+    {
+      for (;;)
       {
-        str1 = str1.substring(i + 1);
         int i = str1.indexOf(";");
         if (i == -1) {
-          continue;
+          break;
         }
         paramString = new bd();
         String str2 = str1.substring(0, i);
@@ -356,26 +446,26 @@ public class be
             paramString.ft = System.currentTimeMillis();
           }
           str2 = str2.substring(str2.indexOf("&") + 1);
-          if (str2.indexOf("&") == -1) {
-            break label198;
+          if (str2.indexOf("&") != -1)
+          {
+            paramString.fs = Integer.parseInt(str2.substring(0, str2.indexOf("&")));
+            paramString.errorCode = Integer.parseInt(str2.substring(str2.indexOf("&") + 1));
           }
-          paramString.fs = Integer.parseInt(str2.substring(0, str2.indexOf("&")));
-          paramString.errorCode = Integer.parseInt(str2.substring(str2.indexOf("&") + 1));
-        }
-        for (;;)
-        {
+          else
+          {
+            paramString.fs = Integer.parseInt(str2);
+          }
           localArrayList.add(paramString);
-          if (i != str1.length()) {
-            break;
-          }
-          return localArrayList;
-          label198:
-          paramString.fs = Integer.parseInt(str2);
         }
-        return localArrayList;
+        if (i == str1.length()) {
+          break;
+        }
+        str1 = str1.substring(i + 1);
       }
-      catch (Exception paramString) {}
+      return localArrayList;
     }
+    catch (Exception paramString) {}
+    return localArrayList;
   }
   
   public void s()
@@ -388,12 +478,12 @@ public class be
     r().fy.clear();
   }
   
-  public ArrayList u()
+  public ArrayList<o> u()
   {
     return a(this.fx, "Action");
   }
   
-  public ArrayList v()
+  public ArrayList<o> v()
   {
     return a(r().fy);
   }

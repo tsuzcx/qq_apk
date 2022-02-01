@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.WXActionMenuView android:id="@id/ei" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

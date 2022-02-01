@@ -1,24 +1,19 @@
 package com.tencent.mm.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.autogen.a.li;
+import com.tencent.mm.sdk.event.IListener;
 
-final class FindMoreFriendsUI$18
-  implements Runnable
+class FindMoreFriendsUI$18
+  extends IListener<li>
 {
-  FindMoreFriendsUI$18(FindMoreFriendsUI paramFindMoreFriendsUI) {}
-  
-  public final void run()
+  FindMoreFriendsUI$18(FindMoreFriendsUI paramFindMoreFriendsUI, q paramq)
   {
-    AppMethodBeat.i(29234);
-    FindMoreFriendsUI.a(this.yWI, r.Zr());
-    FindMoreFriendsUI.b(this.yWI, r.Zy());
-    FindMoreFriendsUI.a(this.yWI, r.Zs());
-    long l = System.currentTimeMillis();
-    FindMoreFriendsUI.x(this.yWI);
-    ab.i("MicroMsg.FindMoreFriendsUI", "[updateStatus] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(29234);
+    super(paramq);
+    AppMethodBeat.i(249102);
+    this.__eventId = li.class.getName().hashCode();
+    AppMethodBeat.o(249102);
   }
 }
 

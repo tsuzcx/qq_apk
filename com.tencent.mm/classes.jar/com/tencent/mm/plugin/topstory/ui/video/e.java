@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.ckx;
-import com.tencent.mm.sdk.platformtools.ab;
+import androidx.recyclerview.widget.RecyclerView.a;
+import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,94 +12,94 @@ import java.util.Map;
 public abstract class e
   extends RecyclerView.a<h>
 {
-  protected android.support.v4.e.n<View> thJ = new android.support.v4.e.n();
-  protected android.support.v4.e.n<View> thK = new android.support.v4.e.n();
-  public Map<ckx, h> thL = new HashMap();
-  public b thM;
+  protected androidx.b.h<View> TLk = new androidx.b.h();
+  protected androidx.b.h<View> TLl = new androidx.b.h();
+  public Map<String, WeakReference<h>> TLm = new HashMap();
+  public b TLn;
   
   public e(b paramb)
   {
-    this.thM = paramb;
+    this.TLn = paramb;
   }
   
-  public int GD(int paramInt)
+  protected void I(List<foh> paramList, boolean paramBoolean)
+  {
+    Log.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
+  }
+  
+  public int aoX(int paramInt)
   {
     return 1;
   }
   
-  public final boolean GE(int paramInt)
+  public final boolean aoY(int paramInt)
   {
-    return paramInt < this.thJ.size();
+    return paramInt < this.TLk.size();
   }
   
-  public final boolean GF(int paramInt)
+  public final boolean aoZ(int paramInt)
   {
-    return paramInt >= this.thJ.size() + this.thM.cJs().cKc();
+    return paramInt >= this.TLk.size() + this.TLn.hNK().hOz();
   }
   
-  public final void addHeaderView(View paramView)
+  public final h b(foh paramfoh)
   {
-    this.thJ.put(this.thJ.size() + 100000, paramView);
-  }
-  
-  public final h b(ckx paramckx)
-  {
-    if (this.thL.containsKey(paramckx))
+    if ((paramfoh != null) && (this.TLm.containsKey(paramfoh.Ido)) && (this.TLm.get(paramfoh.Ido) != null))
     {
-      h localh = (h)this.thL.get(paramckx);
-      if ((localh != null) && (localh.tfm != null) && (localh.tfm == paramckx)) {
+      h localh = (h)((WeakReference)this.TLm.get(paramfoh.Ido)).get();
+      if ((localh != null) && (localh.TIW != null) && (localh.TIW == paramfoh)) {
         return localh;
       }
-      this.thL.remove(paramckx);
-      ab.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
+      this.TLm.remove(paramfoh.Ido);
+      Log.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
     }
     return null;
   }
   
-  public final void cJy()
+  public final void ev(View paramView)
   {
-    this.thK.clear();
-  }
-  
-  public final void eo(View paramView)
-  {
-    this.thK.put(this.thK.size() + 200000, paramView);
-  }
-  
-  public final int getFootersCount()
-  {
-    return this.thK.size();
-  }
-  
-  public final int getHeadersCount()
-  {
-    return this.thJ.size();
+    this.TLk.put(this.TLk.size() + 100000, paramView);
   }
   
   public final int getItemCount()
   {
-    return this.thM.cJs().cKc() + this.thJ.size() + this.thK.size();
+    return this.TLn.hNK().hOz() + this.TLk.size() + this.TLl.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    if (GE(paramInt)) {
-      return this.thJ.keyAt(paramInt);
+    if (aoY(paramInt)) {
+      return this.TLk.bo(paramInt);
     }
-    if (GF(paramInt)) {
-      return this.thK.keyAt(paramInt - this.thJ.size() - this.thM.cJs().cKc());
+    if (aoZ(paramInt)) {
+      return this.TLl.bo(paramInt - this.TLk.size() - this.TLn.hNK().hOz());
     }
-    return GD(paramInt);
+    return aoX(paramInt);
   }
   
-  protected void l(List<ckx> paramList, boolean paramBoolean)
+  public final int hNP()
   {
-    ab.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
+    return this.TLk.size();
+  }
+  
+  public final int hNQ()
+  {
+    return this.TLl.size();
+  }
+  
+  public final void hNR()
+  {
+    this.TLl.clear();
+  }
+  
+  public final void kn(View paramView)
+  {
+    this.TLl.put(this.TLl.size() + 200000, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.e
  * JD-Core Version:    0.7.0.1
  */

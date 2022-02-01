@@ -18,13 +18,14 @@ public final class oidb_0xcf4$FriendInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_add_frd_days", "uint32_add_frd_source", "uint32_add_frd_sub_source", "bytes_add_frd_wording" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, FriendInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_add_frd_days", "uint32_add_frd_source", "uint32_add_frd_sub_source", "bytes_add_frd_wording" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro }, FriendInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.FriendInfo
  * JD-Core Version:    0.7.0.1
  */

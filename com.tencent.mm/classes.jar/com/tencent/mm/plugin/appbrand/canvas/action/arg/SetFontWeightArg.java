@@ -11,13 +11,13 @@ public class SetFontWeightArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontWeightArg> CREATOR;
-  public String hfd;
+  public String eJF;
   
   static
   {
-    AppMethodBeat.i(103491);
-    CREATOR = new SetFontWeightArg.1();
-    AppMethodBeat.o(103491);
+    AppMethodBeat.i(145174);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145174);
   }
   
   public SetFontWeightArg() {}
@@ -34,58 +34,58 @@ public class SetFontWeightArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103489);
+    AppMethodBeat.i(145172);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103489);
+      AppMethodBeat.o(145172);
       return true;
     }
     if (!(paramObject instanceof SetFontWeightArg))
     {
-      AppMethodBeat.o(103489);
+      AppMethodBeat.o(145172);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103489);
+      AppMethodBeat.o(145172);
       return false;
     }
     paramObject = (SetFontWeightArg)paramObject;
-    boolean bool = Objects.equals(this.hfd, paramObject.hfd);
-    AppMethodBeat.o(103489);
+    boolean bool = Objects.equals(this.eJF, paramObject.eJF);
+    AppMethodBeat.o(145172);
     return bool;
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(103486);
-    super.h(paramParcel);
-    this.hfd = paramParcel.readString();
-    AppMethodBeat.o(103486);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103490);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfd });
-    AppMethodBeat.o(103490);
+    AppMethodBeat.i(145173);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.eJF });
+    AppMethodBeat.o(145173);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void k(Parcel paramParcel)
   {
-    AppMethodBeat.i(103487);
-    super.p(paramJSONObject);
-    this.hfd = paramJSONObject.optJSONArray("data").optString(0);
-    AppMethodBeat.o(103487);
+    AppMethodBeat.i(145169);
+    super.k(paramParcel);
+    this.eJF = paramParcel.readString();
+    AppMethodBeat.o(145169);
+  }
+  
+  public final void parse(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(145170);
+    super.parse(paramJSONObject);
+    this.eJF = paramJSONObject.optJSONArray("data").optString(0);
+    AppMethodBeat.o(145170);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103488);
+    AppMethodBeat.i(145171);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.hfd);
-    AppMethodBeat.o(103488);
+    paramParcel.writeString(this.eJF);
+    AppMethodBeat.o(145171);
   }
 }
 

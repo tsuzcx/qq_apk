@@ -1,89 +1,93 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.lb;
-import com.tencent.mm.protocal.protobuf.lc;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/CameraScanCombineClientLogReporter;", "", "()V", "TAG", "", "reportAction", "", "action", "", "clientLogInfo", "Lcom/tencent/mm/plugin/scanner/model/CameraScanCombineClientLogReporter$ClientLogInfo;", "Action", "ClientLogInfo", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends m
-  implements k
 {
-  private f callback;
-  private String cqx;
-  private String kQd;
-  public b rr;
-  private int scene;
+  public static final d ORk;
   
-  public d(String paramString1, int paramInt, String paramString2)
+  static
   {
-    this.cqx = paramString1;
-    this.scene = paramInt;
-    this.kQd = paramString2;
+    AppMethodBeat.i(314391);
+    ORk = new d();
+    AppMethodBeat.o(314391);
   }
   
-  public final int doScene(e parame, f paramf)
+  public static final void UI(int paramInt)
   {
-    AppMethodBeat.i(80834);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.fsX = new lb();
-    paramf.fsY = new lc();
-    paramf.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetproductinfo";
-    paramf.funcId = 1063;
-    paramf.reqCmdId = 0;
-    paramf.respCmdId = 0;
-    this.rr = paramf.ado();
-    paramf = (lb)this.rr.fsV.fta;
-    paramf.ProductID = this.cqx;
-    paramf.Scene = this.scene;
-    paramf.wyN = this.kQd;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(80834);
-    return i;
+    AppMethodBeat.i(314377);
+    a(paramInt, null);
+    AppMethodBeat.o(314377);
   }
   
-  public final int getType()
+  public static final void a(int paramInt, a parama)
   {
-    return 1063;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(80836);
-    ab.d("MicroMsg.scanner.NetSceneGetProductInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(80836);
-  }
-  
-  public final m.b securityVerificationChecked(q paramq)
-  {
-    AppMethodBeat.i(80835);
-    paramq = (lb)((b)paramq).fsV.fta;
-    if ((paramq.Scene < 0) || (paramq.ProductID == null) || (paramq.ProductID.length() <= 0))
+    int n = 0;
+    AppMethodBeat.i(314385);
+    h localh = h.OAn;
+    int i;
+    int j;
+    label25:
+    int k;
+    label32:
+    int m;
+    if (parama == null)
     {
-      ab.e("MicroMsg.scanner.NetSceneGetProductInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(paramq.Scene) });
-      paramq = m.b.ftv;
-      AppMethodBeat.o(80835);
-      return paramq;
+      i = 0;
+      if (parama != null) {
+        break label115;
+      }
+      j = 0;
+      if (parama != null) {
+        break label123;
+      }
+      k = 0;
+      if (parama != null) {
+        break label132;
+      }
+      m = 0;
+      label39:
+      if (parama != null) {
+        break label141;
+      }
     }
-    paramq = m.b.ftu;
-    AppMethodBeat.o(80835);
-    return paramq;
+    for (;;)
+    {
+      localh.b(24657, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n) });
+      AppMethodBeat.o(314385);
+      return;
+      i = parama.OPw;
+      break;
+      label115:
+      j = parama.ORl;
+      break label25;
+      label123:
+      k = parama.ORm;
+      break label32;
+      label132:
+      m = parama.ORn;
+      break label39;
+      label141:
+      n = parama.ORo;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/CameraScanCombineClientLogReporter$ClientLogInfo;", "", "modelVersion", "", "(I)V", "imageEncodeSize", "getImageEncodeSize", "()I", "setImageEncodeSize", "imageEncodeType", "getImageEncodeType$annotations", "()V", "getImageEncodeType", "setImageEncodeType", "itemCategory", "getItemCategory", "setItemCategory", "itemStatus", "getItemStatus", "setItemStatus", "getModelVersion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    final int OPw = 0;
+    public int ORl;
+    public int ORm;
+    public int ORn;
+    public int ORo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.d
  * JD-Core Version:    0.7.0.1
  */

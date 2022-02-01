@@ -67,7 +67,7 @@ public class MpfileMenuListAdapter
         paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903521, null);
       }
       paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      ((TextView)paramViewGroup.findViewById(2131231294)).setText(paramView.jdField_a_of_type_JavaLangString);
+      ((TextView)paramViewGroup.findViewById(2131231293)).setText(paramView.jdField_a_of_type_JavaLangString);
       return paramViewGroup;
     }
     paramViewGroup = paramView;
@@ -75,8 +75,8 @@ public class MpfileMenuListAdapter
       paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903520, null);
     }
     paramView = (MpfileItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ((TextView)paramViewGroup.findViewById(2131231294)).setText(paramView.jdField_a_of_type_JavaLangString);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131231293);
+    ((TextView)paramViewGroup.findViewById(2131231293)).setText(paramView.jdField_a_of_type_JavaLangString);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131231292);
     if (MpfileItemInfo.d == paramView.h)
     {
       localImageView.setImageResource(2130838643);

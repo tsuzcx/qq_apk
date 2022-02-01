@@ -17,13 +17,14 @@ public final class msg_svc$PubGroupTmp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "to_uin", "sig", "group_uin" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L) }, PubGroupTmp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "to_uin", "sig", "group_uin" }, new Object[] { localLong, localByteStringMicro, localLong }, PubGroupTmp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PubGroupTmp
  * JD-Core Version:    0.7.0.1
  */

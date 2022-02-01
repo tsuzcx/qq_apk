@@ -8,7 +8,7 @@ import LBS_V2_PROTOCOL.Wifi_V2;
 import NS_MOBILE_OPERATION.LbsInfo;
 import android.text.TextUtils;
 import com.tencent.map.geolocation.TencentPoi;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import cooperation.qzone.model.GpsInfo4LocalImage;
 import cooperation.qzone.model.LocalImageShootInfo;
 import java.util.ArrayList;
@@ -20,24 +20,24 @@ public class LbsDataV2
   public static int LBS_REQUEST_APPID = 12103;
   public static int POI_DEFAULT_DISTANCE = 500;
   
-  public static LbsDataV2.GpsInfo convertFromSoso(SosoInterface.SosoLocation paramSosoLocation)
+  public static LbsDataV2.GpsInfo convertFromSoso(SosoLocation paramSosoLocation)
   {
     if (paramSosoLocation == null) {
       return null;
     }
     LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    localGpsInfo.accuracy = ((int)paramSosoLocation.jdField_a_of_type_Float);
-    localGpsInfo.alt = ((int)paramSosoLocation.jdField_e_of_type_Double);
-    if ((paramSosoLocation.jdField_d_of_type_Double == 0.0D) && (paramSosoLocation.jdField_c_of_type_Double == 0.0D))
+    localGpsInfo.accuracy = ((int)paramSosoLocation.accuracy);
+    localGpsInfo.alt = ((int)paramSosoLocation.altitude);
+    if ((paramSosoLocation.mLon84 == 0.0D) && (paramSosoLocation.mLat84 == 0.0D))
     {
       localGpsInfo.gpsType = 1;
-      localGpsInfo.lat = ((int)(paramSosoLocation.jdField_a_of_type_Double * 1000000.0D));
-      localGpsInfo.lon = ((int)(paramSosoLocation.b * 1000000.0D));
+      localGpsInfo.lat = ((int)(paramSosoLocation.mLat02 * 1000000.0D));
+      localGpsInfo.lon = ((int)(paramSosoLocation.mLon02 * 1000000.0D));
       return localGpsInfo;
     }
     localGpsInfo.gpsType = 0;
-    localGpsInfo.lat = ((int)(paramSosoLocation.jdField_c_of_type_Double * 1000000.0D));
-    localGpsInfo.lon = ((int)(paramSosoLocation.jdField_d_of_type_Double * 1000000.0D));
+    localGpsInfo.lat = ((int)(paramSosoLocation.mLat84 * 1000000.0D));
+    localGpsInfo.lon = ((int)(paramSosoLocation.mLon84 * 1000000.0D));
     return localGpsInfo;
   }
   
@@ -193,19 +193,19 @@ public class LbsDataV2
     return localCellInfo;
   }
   
-  public static ArrayList<LbsDataV2.PoiInfo> fromSosoLocation(SosoInterface.SosoLocation paramSosoLocation)
+  public static ArrayList<LbsDataV2.PoiInfo> fromSosoLocation(SosoLocation paramSosoLocation)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramSosoLocation != null) && (paramSosoLocation.jdField_a_of_type_JavaUtilList != null) && (!paramSosoLocation.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramSosoLocation != null) && (paramSosoLocation.poi != null) && (!paramSosoLocation.poi.isEmpty()))
     {
       int i = 0;
-      while (i < paramSosoLocation.jdField_a_of_type_JavaUtilList.size())
+      while (i < paramSosoLocation.poi.size())
       {
-        LbsDataV2.PoiInfo localPoiInfo = fromTencentPoi((TencentPoi)paramSosoLocation.jdField_a_of_type_JavaUtilList.get(i));
-        localPoiInfo.country = paramSosoLocation.jdField_c_of_type_JavaLangString;
-        localPoiInfo.province = paramSosoLocation.jdField_d_of_type_JavaLangString;
-        localPoiInfo.city = paramSosoLocation.jdField_e_of_type_JavaLangString;
-        localPoiInfo.district = paramSosoLocation.g;
+        LbsDataV2.PoiInfo localPoiInfo = fromTencentPoi((TencentPoi)paramSosoLocation.poi.get(i));
+        localPoiInfo.country = paramSosoLocation.nation;
+        localPoiInfo.province = paramSosoLocation.province;
+        localPoiInfo.city = paramSosoLocation.city;
+        localPoiInfo.district = paramSosoLocation.district;
         localArrayList.add(localPoiInfo);
         i += 1;
       }
@@ -227,20 +227,19 @@ public class LbsDataV2
       localPoiInfo.gpsInfo.lat = ((int)(d1 * 1000000.0D));
       localPoiInfo.gpsInfo.lon = ((int)(d2 * 1000000.0D));
       localPoiInfo.gpsInfo.accuracy = -1;
-      localPoiInfo.poiTypeName = paramTencentPoi.getCatalog();
-      localPoiInfo.distance = ((int)paramTencentPoi.getDistance());
-      localPoiInfo.poiId = paramTencentPoi.getUid();
-      localPoiInfo.poiName = paramTencentPoi.getName();
-      localPoiInfo.poiDefaultName = paramTencentPoi.getName();
-      return localPoiInfo;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localPoiInfo.gpsInfo = null;
-      }
+      label90:
+      break label90;
     }
+    localPoiInfo.gpsInfo = null;
+    localPoiInfo.poiTypeName = paramTencentPoi.getCatalog();
+    localPoiInfo.distance = ((int)paramTencentPoi.getDistance());
+    localPoiInfo.poiId = paramTencentPoi.getUid();
+    localPoiInfo.poiName = paramTencentPoi.getName();
+    localPoiInfo.poiDefaultName = paramTencentPoi.getName();
+    return localPoiInfo;
   }
   
   public static LbsInfo parceToLbsInfo(LbsDataV2.PoiInfo paramPoiInfo)
@@ -251,8 +250,12 @@ public class LbsDataV2
     LbsInfo localLbsInfo = new LbsInfo();
     if (paramPoiInfo.gpsInfo != null)
     {
-      localLbsInfo.lbs_x = String.valueOf(paramPoiInfo.gpsInfo.lon / 1000000.0D);
-      localLbsInfo.lbs_y = String.valueOf(paramPoiInfo.gpsInfo.lat / 1000000.0D);
+      double d = paramPoiInfo.gpsInfo.lon;
+      Double.isNaN(d);
+      localLbsInfo.lbs_x = String.valueOf(d / 1000000.0D);
+      d = paramPoiInfo.gpsInfo.lat;
+      Double.isNaN(d);
+      localLbsInfo.lbs_y = String.valueOf(d / 1000000.0D);
     }
     localLbsInfo.lbs_idnm = paramPoiInfo.poiDefaultName;
     if (TextUtils.isEmpty(localLbsInfo.lbs_idnm)) {
@@ -277,25 +280,21 @@ public class LbsDataV2
   
   public static LbsInfo parceToLbsInfo(LocalImageShootInfo paramLocalImageShootInfo)
   {
-    Object localObject;
     if (paramLocalImageShootInfo == null) {
-      localObject = null;
+      return null;
     }
-    LbsInfo localLbsInfo;
-    do
+    LbsInfo localLbsInfo = new LbsInfo();
+    if (paramLocalImageShootInfo.gpsInfo != null)
     {
-      return localObject;
-      localLbsInfo = new LbsInfo();
-      localObject = localLbsInfo;
-    } while (paramLocalImageShootInfo.a == null);
-    localLbsInfo.lbs_x = String.valueOf(paramLocalImageShootInfo.a.b);
-    localLbsInfo.lbs_y = String.valueOf(paramLocalImageShootInfo.a.jdField_a_of_type_Float);
+      localLbsInfo.lbs_x = String.valueOf(paramLocalImageShootInfo.gpsInfo.longtitude);
+      localLbsInfo.lbs_y = String.valueOf(paramLocalImageShootInfo.gpsInfo.latitude);
+    }
     return localLbsInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2
  * JD-Core Version:    0.7.0.1
  */

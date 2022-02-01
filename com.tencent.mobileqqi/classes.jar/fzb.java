@@ -8,7 +8,7 @@ public class fzb
   
   public void a()
   {
-    SendBottomBar.b(this.a);
+    this.a.b();
   }
   
   public void b() {}

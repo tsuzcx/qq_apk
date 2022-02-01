@@ -11,28 +11,31 @@ public final class t
   public int aE = 0;
   public int aF = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new t();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.aD = paramJceInputStream.read(this.aD, 0, false);
     this.aE = paramJceInputStream.read(this.aE, 1, false);
     this.aF = paramJceInputStream.read(this.aF, 2, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.aD != 0) {
-      paramJceOutputStream.write(this.aD, 0);
+    int i = this.aD;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.aE != 0) {
-      paramJceOutputStream.write(this.aE, 1);
+    i = this.aE;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.aF != 0) {
-      paramJceOutputStream.write(this.aF, 2);
+    i = this.aF;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
   }
 }

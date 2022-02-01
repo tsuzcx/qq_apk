@@ -1,27 +1,28 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bjdl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneMixApi;
 import common.config.service.QzoneConfig;
 
-public class PlatformInfor$1
+class PlatformInfor$1
   implements Runnable
 {
-  public PlatformInfor$1(bjdl parambjdl, Context paramContext) {}
+  PlatformInfor$1(PlatformInfor paramPlatformInfor, Context paramContext) {}
   
   public void run()
   {
     if (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneSharppGate", 1) == 1)
     {
-      bjdl.a(this.this$0, SharpPDec.a(this.a));
+      PlatformInfor.access$002(this.this$0, ((IQzoneMixApi)QRoute.api(IQzoneMixApi.class)).isSupportSharpP(this.val$context));
       return;
     }
-    bjdl.a(this.this$0, 0);
+    PlatformInfor.access$002(this.this$0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.PlatformInfor.1
  * JD-Core Version:    0.7.0.1
  */

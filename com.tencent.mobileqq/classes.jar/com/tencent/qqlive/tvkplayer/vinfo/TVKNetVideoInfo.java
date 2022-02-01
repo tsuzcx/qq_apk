@@ -24,7 +24,7 @@ public class TVKNetVideoInfo
   public static final String FORMAT_SD = "sd";
   public static final String FORMAT_SHD = "shd";
   public static final int TYPE_JSON = 1;
-  public static final int TYPE_PictureNode = 3;
+  public static final int TYPE_PICTURE_NODE = 3;
   public static final int TYPE_XML = 2;
   public static final int VIDEO_CODEC_FORMAT_AUDIO = 5;
   public static final int VIDEO_CODEC_FORMAT_DOLLBYVISION = 4;
@@ -89,7 +89,7 @@ public class TVKNetVideoInfo
   private int mVst = 0;
   private float mWHRadio;
   private String mWanIP;
-  ArrayList<TVKCGIVideoInfo.TVKCGIVideoWatermarkInfo> mWatermarkInfos;
+  private ArrayList<TVKCGIVideoInfo.TVKCGIVideoWatermarkInfo> mWatermarkInfos;
   
   public void addAudioTrack(TVKNetVideoInfo.AudioTrackInfo paramAudioTrackInfo)
   {
@@ -119,15 +119,22 @@ public class TVKNetVideoInfo
   
   public TVKNetVideoInfo.AudioTrackInfo getAudioTrackByTrackName(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.mAudioTrackList == null) || (this.mAudioTrackList.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.mAudioTrackList.iterator();
-    while (localIterator.hasNext())
+    if (!TextUtils.isEmpty(paramString))
     {
-      TVKNetVideoInfo.AudioTrackInfo localAudioTrackInfo = (TVKNetVideoInfo.AudioTrackInfo)localIterator.next();
-      if (TVKNetVideoInfo.AudioTrackInfo.access$000(localAudioTrackInfo).equals(paramString)) {
-        return localAudioTrackInfo;
+      Object localObject = this.mAudioTrackList;
+      if (localObject != null)
+      {
+        if (((ArrayList)localObject).size() == 0) {
+          return null;
+        }
+        localObject = this.mAudioTrackList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          TVKNetVideoInfo.AudioTrackInfo localAudioTrackInfo = (TVKNetVideoInfo.AudioTrackInfo)((Iterator)localObject).next();
+          if (TVKNetVideoInfo.AudioTrackInfo.access$000(localAudioTrackInfo).equals(paramString)) {
+            return localAudioTrackInfo;
+          }
+        }
       }
     }
     return null;
@@ -423,20 +430,22 @@ public class TVKNetVideoInfo
   
   public void removeAudioTrack(TVKNetVideoInfo.AudioTrackInfo paramAudioTrackInfo)
   {
-    if (this.mAudioTrackList == null) {
+    ArrayList localArrayList = this.mAudioTrackList;
+    if (localArrayList == null) {
       return;
     }
-    this.mAudioTrackList.remove(paramAudioTrackInfo);
+    localArrayList.remove(paramAudioTrackInfo);
   }
   
   public void removeDefinition(TVKNetVideoInfo.DefnInfo paramDefnInfo)
   {
-    if (this.mDefinitionList == null)
+    ArrayList localArrayList = this.mDefinitionList;
+    if (localArrayList == null)
     {
       this.mDefinitionList = new ArrayList();
       return;
     }
-    this.mDefinitionList.remove(paramDefnInfo);
+    localArrayList.remove(paramDefnInfo);
   }
   
   public void setCGIVideoInfo(TVKCGIVideoInfo paramTVKCGIVideoInfo)
@@ -696,7 +705,7 @@ public class TVKNetVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKNetVideoInfo
  * JD-Core Version:    0.7.0.1
  */

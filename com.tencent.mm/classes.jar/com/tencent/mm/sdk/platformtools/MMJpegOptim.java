@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.platformtools;
 
 import android.graphics.Bitmap;
 
-public class MMJpegOptim
+class MMJpegOptim
 {
   public static native boolean checkIntegrity(String paramString);
   
@@ -20,7 +20,7 @@ public class MMJpegOptim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMJpegOptim
  * JD-Core Version:    0.7.0.1
  */

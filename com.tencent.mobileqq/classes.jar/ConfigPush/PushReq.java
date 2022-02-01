@@ -8,9 +8,9 @@ public final class PushReq
   extends JceStruct
 {
   static byte[] cache_jcebuf;
-  public byte[] jcebuf;
-  public long lSeq;
-  public int type;
+  public byte[] jcebuf = null;
+  public long lSeq = 0L;
+  public int type = 0;
   
   public PushReq() {}
   
@@ -42,7 +42,7 @@ public final class PushReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.PushReq
  * JD-Core Version:    0.7.0.1
  */

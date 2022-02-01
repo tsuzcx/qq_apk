@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="3g" parent="@style/3h">
+        <item name="36">18.659973dip</item>
+        <item name="a1a">24.0dip</item>
+        <item name="a4o">3.3299866dip</item>
+    </style>
+</resources>

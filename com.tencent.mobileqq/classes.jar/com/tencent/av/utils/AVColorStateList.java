@@ -4,7 +4,6 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 
 public class AVColorStateList
-  extends ColorStateList
 {
   public static ColorStateList a(Resources paramResources, int paramInt)
   {
@@ -13,7 +12,7 @@ public class AVColorStateList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.AVColorStateList
  * JD-Core Version:    0.7.0.1
  */

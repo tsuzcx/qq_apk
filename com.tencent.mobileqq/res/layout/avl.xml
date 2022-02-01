@@ -2,7 +2,7 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:background="@drawable/qq_profilecard_info_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.image.URLImageView android:id="@id/dkn" android:layout_width="fill_parent" android:layout_height="@dimen/a0m" android:src="@color/bp" android:scaleType="centerCrop" android:layout_alignParentTop="true" />
+        <com.tencent.image.URLImageView android:id="@id/dkn" android:layout_width="fill_parent" android:layout_height="@dimen/a0m" android:src="@color/black" android:scaleType="centerCrop" android:layout_alignParentTop="true" />
         <View android:id="@id/dk8" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/dkn" />
         <View android:id="@id/c2j" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_below="@id/dk8" />
         <com.tencent.mobileqq.vas.avatar.AvatarLayout android:id="@id/dk3" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_alignBottom="@id/dk8" android:layout_centerHorizontal="true">
@@ -16,7 +16,7 @@
         <FrameLayout android:id="@id/ah" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:minHeight="@dimen/aik" android:layout_below="@id/f9c">
             <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/ag" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         </FrameLayout>
-        <com.tencent.mobileqq.widget.ProfileCardFavorShowView android:id="@id/e1j" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/ah" />
+        <com.tencent.mobileqq.profilecard.bussiness.photowall.view.ProfileCardFavorShowView android:id="@id/e1j" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/ah" />
         <View android:id="@id/e1i" android:layout_width="fill_parent" android:layout_height="53.0dip" android:layout_below="@id/e1j" />
     </RelativeLayout>
 </RelativeLayout>

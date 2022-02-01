@@ -8,52 +8,52 @@ public final class f
 {
   public static int a(ViewGroup paramViewGroup, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(40341);
+    AppMethodBeat.i(100303);
     int i = paramViewGroup.getChildCount() - 1;
     while (i >= 0)
     {
-      if (d(paramViewGroup.getChildAt(i), paramFloat1, paramFloat2))
+      if (g(paramViewGroup.getChildAt(i), paramFloat1, paramFloat2))
       {
-        AppMethodBeat.o(40341);
+        AppMethodBeat.o(100303);
         return i;
       }
       i -= 1;
     }
-    AppMethodBeat.o(40341);
+    AppMethodBeat.o(100303);
     return -1;
   }
   
-  public static boolean d(View paramView, float paramFloat1, float paramFloat2)
+  public static boolean g(View paramView, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(40342);
-    if ((paramFloat1 >= paramView.getLeft()) && (paramFloat1 <= paramView.getRight()) && (paramFloat2 >= paramView.getTop()) && (paramFloat2 <= paramView.getBottom()))
+    AppMethodBeat.i(100304);
+    if ((paramView != null) && (paramFloat1 >= paramView.getLeft()) && (paramFloat1 <= paramView.getRight()) && (paramFloat2 >= paramView.getTop()) && (paramFloat2 <= paramView.getBottom()))
     {
-      AppMethodBeat.o(40342);
+      AppMethodBeat.o(100304);
       return true;
     }
-    AppMethodBeat.o(40342);
+    AppMethodBeat.o(100304);
     return false;
   }
   
-  public static float dV(View paramView)
+  public static float jR(View paramView)
   {
-    AppMethodBeat.i(40339);
+    AppMethodBeat.i(100301);
     float f = Math.abs((paramView.getRight() - paramView.getLeft()) / 2);
-    AppMethodBeat.o(40339);
+    AppMethodBeat.o(100301);
     return f;
   }
   
-  public static float dW(View paramView)
+  public static float jS(View paramView)
   {
-    AppMethodBeat.i(40340);
+    AppMethodBeat.i(100302);
     float f = Math.abs((paramView.getBottom() - paramView.getTop()) / 2);
-    AppMethodBeat.o(40340);
+    AppMethodBeat.o(100302);
     return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,368 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: TIM-3.4.4-1198-111493.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- assets/apollo_def_rsc
+- assets/classes10.dex.MD5
+- assets/classes11.dex.MD5
+- assets/classes12.dex.MD5
+- assets/classes13.dex.MD5
+- assets/classes14.dex.MD5
+- assets/classes15.dex.MD5
+- assets/classes16.dex.MD5
+- assets/classes2.dex.MD5
+- assets/classes3.dex.MD5
+- assets/classes4.dex.MD5
+- assets/classes5.dex.MD5
+- assets/classes6.dex.MD5
+- assets/classes7.dex.MD5
+- assets/classes8.dex.MD5
+- assets/classes9.dex.MD5
+- assets/dexcount
+- assets/jni.ini
+- assets/licence_dual.conf
+- png
+- mp4
+- assets/qua.ini
+- assets/revision.txt
+- jpg
+- assets/txlib
+- assets/benchmark/high/nubia.json
+- assets/benchmark/middle/samsung.json
+- assets/benchmark/vlow/meizu.json
+- assets/mail/app.properties
+- assets/mail/build_number
+- assets/mail/channel.ini
+- gif
+- assets/plugins/PluginManifest
+- assets/proteus/comment_feeds/manifest
+- assets/proteus/commercialAd_feeds/manifest
+- assets/proteus/daily_dynamic_header/manifest
+- assets/proteus/default_feeds/pages/manifest
+- assets/proteus/default_feeds/pages/daily_triple_img_card/manifest
+- assets/proteus/default_feeds/pages/ugc_account_popup/manifest
+- assets/proteus/default_feeds/styles/globalVar/manifest
+- assets/proteus/native_article/pages/manifest
+- assets/proteus/native_article/pages/recommend_small_card/manifest
+- webp
+- r/v/bl9.gif
+- r/v/bl_.gif
+- r/v/f000.gif
+- r/v/f001.gif
+- r/v/f002.gif
+- r/v/f003.gif
+- r/v/f004.gif
+- r/v/f005.gif
+- r/v/f006.gif
+- r/v/f009.gif
+- r/v/f010.gif
+- r/v/f011.gif
+- r/v/f012.gif
+- r/v/f013.gif
+- r/v/f014.gif
+- r/v/f015.gif
+- r/v/f017.gif
+- r/v/f018.gif
+- r/v/f019.gif
+- r/v/f020.gif
+- r/v/f021.gif
+- r/v/f022.gif
+- r/v/f023.gif
+- r/v/f024.gif
+- r/v/f025.gif
+- r/v/f026.gif
+- r/v/f027.gif
+- r/v/f029.gif
+- r/v/f030.gif
+- r/v/f031.gif
+- r/v/f033.gif
+- r/v/f034.gif
+- r/v/f035.gif
+- r/v/f036.gif
+- r/v/f037.gif
+- r/v/f038.gif
+- r/v/f040.gif
+- r/v/f041.gif
+- r/v/f042.gif
+- r/v/f043.gif
+- r/v/f044.gif
+- r/v/f045.gif
+- r/v/f046.gif
+- r/v/f048.gif
+- r/v/f049.gif
+- r/v/f050.gif
+- r/v/f051.gif
+- r/v/f052.gif
+- r/v/f053.gif
+- r/v/f054.gif
+- r/v/f055.gif
+- r/v/f056.gif
+- r/v/f059.gif
+- r/v/f061.gif
+- r/v/f062.gif
+- r/v/f063.gif
+- r/v/f065.gif
+- r/v/f066.gif
+- r/v/f070.gif
+- r/v/f072.gif
+- r/v/f073.gif
+- r/v/f074.gif
+- r/v/f077.gif
+- r/v/f079.gif
+- r/v/f081.gif
+- r/v/f082.gif
+- r/v/f083.gif
+- r/v/f084.gif
+- r/v/f085.gif
+- r/v/f086.gif
+- r/v/f087.gif
+- r/v/f088.gif
+- r/v/f089.gif
+- r/v/f090.gif
+- r/v/f091.gif
+- r/v/f092.gif
+- r/v/f093.gif
+- r/v/f094.gif
+- r/v/f095.gif
+- r/v/f096.gif
+- r/v/f097.gif
+- r/v/f098.gif
+- r/v/f099.gif
+- r/v/f100.gif
+- r/v/f101.gif
+- r/v/f102.gif
+- r/v/f103.gif
+- r/v/f104.gif
+- r/v/f105.gif
+- r/v/f106.gif
+- r/v/f143.gif
+- r/v/f144.gif
+- r/v/f145.gif
+- r/v/f146.gif
+- r/v/f147.gif
+- r/v/f148.gif
+- r/v/f149.gif
+- r/v/f150.gif
+- r/v/f151.gif
+- r/v/f152.gif
+- r/v/f153.gif
+- r/v/f154.gif
+- r/v/f155.gif
+- r/v/f156.gif
+- r/v/f157.gif
+- r/v/f158.gif
+- r/v/f159.gif
+- r/v/f160.gif
+- r/v/f161.gif
+- r/v/f162.gif
+- r/v/f163.gif
+- r/v/f164.gif
+- r/v/f165.gif
+- r/v/f166.gif
+- r/v/f167.gif
+- r/v/f168.gif
+- r/v/f169.gif
+- r/v/f170.gif
+- r/v/f171.gif
+- r/v/f172.gif
+- r/v/f173.gif
+- r/v/f174.gif
+- r/v/f175.gif
+- r/v/f176.gif
+- r/v/f177.gif
+- r/v/f178.gif
+- r/v/f179.gif
+- r/v/f180.gif
+- r/v/f181.gif
+- r/v/f182.gif
+- r/v/f183.gif
+- r/v/f184.gif
+- r/v/f185.gif
+- r/v/f186.gif
+- r/v/f187.gif
+- r/v/f188.gif
+- r/v/f189.gif
+- r/v/f190.gif
+- r/v/f191.gif
+- r/v/f192.gif
+- r/v/f193.gif
+- r/v/f194.gif
+- r/v/f195.gif
+- r/v/f196.gif
+- r/v/f197.gif
+- r/v/f198.gif
+- r/v/f199.gif
+- r/v/f200.gif
+- r/v/f203.gif
+- r/v/f204.gif
+- r/v/f205.gif
+- r/v/f206.gif
+- r/v/f207.gif
+- r/v/f208.gif
+- r/v/f209.gif
+- r/v/f210.gif
+- r/v/f211.gif
+- r/v/f212.gif
+- r/v/f213.gif
+- r/v/f214.gif
+- r/v/f215.gif
+- r/v/f216.gif
+- r/v/f217.gif
+- r/v/f218.gif
+- r/v/f219.gif
+- mp3
+- r/w/a2.mp4
+- r/w/ad
+- r/w/ae
+- r/w/d.hapt
+- r/w/i.hapt
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '21'
+  targetSdkVersion: '26'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  LICENSE-junit.txt: '8'
+  android/content/pm/IPackageStatsObserver.aidl: '8'
+  com/qq/jce/wup/wup.properties: '8'
+  com/steadystate/css/parser/SACParserMessages.properties: '8'
+  com/steadystate/css/parser/SACParserMessages_de.properties: '8'
+  com/steadystate/css/parser/SACParserMessages_en.properties: '8'
+  com/tencent/moai/database/sqlite/CursorWindow.aidl: '8'
+  com/tencent/moai/database/sqlite/ICancellationSignal.aidl: '8'
+  com/tencent/mobileqq/pluginsdk/OnPluginInstallListener.aidl: '8'
+  com/tencent/mobileqq/pluginsdk/PluginBaseInfo.aidl: '8'
+  com/tencent/mobileqq/pluginsdk/RemotePluginManager.aidl: '8'
+  com/tencent/mobileqq/pluginsdk/ipc/PluginCommunicationChannel.aidl: '8'
+  com/tencent/mobileqq/pluginsdk/ipc/RemoteCallback.aidl: '8'
+  com/tencent/qg/sdk/META-INF/MANIFEST.MF: '0'
+  com/tencent/qqinterface/META-INF/MANIFEST.MF: '0'
+  com/tencent/qqmail/utilities/aidl/INotifyService.aidl: '8'
+  com/tencent/qqmail/utilities/aidl/IPushService.aidl: '8'
+  com/tencent/qqmail/utilities/qmnetwork/service/PushUser.aidl: '8'
+  com/tencent/qqmail/utilities/qmnetwork/service/ReceivePacket.aidl: '8'
+  com/tencent/qqmail/utilities/qmnetwork/service/SendPacket.aidl: '8'
+  com/tracking/sdk/META-INF/MANIFEST.MF: '0'
+  cooperation/mailplugin/ipc/IMailRemoteInterface.aidl: '8'
+  junit/runner/logo.gif: '0'
+  junit/runner/smalllogo.gif: '0'
+  moai/cache/IIndexable.java: '8'
+  moai/cache/IMapper.java: '0'
+  moai/cache/IQuery.java: '8'
+  moai/cache/IReducer.java: '8'
+  moai/cache/IVersionManager.java: '8'
+  moai/cache/QMConcurrentCache.java: '8'
+  moai/cache/QMReadWriteCache.java: '8'
+  moai/concurrent/BlockingLIFOQueue.java: '8'
+  moai/concurrent/GapQueue.java: '8'
+  moai/concurrent/MThreadFactory.java: '8'
+  moai/concurrent/Threads.java: '8'
+  moai/core/utilities/Badges.java: '8'
+  moai/core/utilities/Indexes.java: '8'
+  moai/core/utilities/Maths.java: '8'
+  moai/core/utilities/Patterns.java: '8'
+  moai/core/utilities/Utils.java: '8'
+  moai/core/utilities/appstate/AppStatuses.java: '8'
+  moai/core/utilities/appstate/GotoBackgroundWatcher.java: '8'
+  moai/core/utilities/appstate/GotoForegroundWatcher.java: '8'
+  moai/core/utilities/date/DateExtension.java: '8'
+  moai/core/utilities/deviceutil/AppInfo.java: '8'
+  moai/core/utilities/deviceutil/AppInfos.java: '8'
+  moai/core/utilities/deviceutil/DeviceInfo.java: '8'
+  moai/core/utilities/deviceutil/Devices.java: '8'
+  moai/core/utilities/string/AggregateTranslator.java: '8'
+  moai/core/utilities/string/CharSequenceTranslator.java: '8'
+  moai/core/utilities/string/Hex.java: '8'
+  moai/core/utilities/string/LookupTranslator.java: '8'
+  moai/core/utilities/string/NumericEntityUnescaper.java: '8'
+  moai/core/utilities/string/StringEscapeUtils.java: '8'
+  moai/core/utilities/string/StringExtention.java: '8'
+  moai/core/utilities/structure/Size.java: '8'
+  moai/core/watcher/WatcherDumper.java: '8'
+  moai/core/watcher/Watchers.java: '8'
+  moai/io/Archive.java: '8'
+  moai/io/BufferedDuplexReader.java: '8'
+  moai/io/Caches.java: '8'
+  moai/io/DuplexReader.java: '8'
+  moai/io/DuplexStream.java: '8'
+  moai/io/ExpandableIntBuffer.java: '8'
+  moai/io/Files.java: '8'
+  moai/io/HaffmanEncodeOutputStream.java: '8'
+  moai/io/Hashes.java: '8'
+  moai/io/SQLiteBlobInputStream.java: '8'
+  moai/io/SQLiteBlobOutputStream.java: '8'
+  moai/io/Sdcards.java: '8'
+  moai/io/SharedCharArrayWriter.java: '8'
+  moai/io/ThreadBuffer.java: '8'
+  moai/io/UnicodeBOMInputStream.java: '8'
+  moai/io/ZipDecryptInputStream.java: '8'
+  moai/log/AutoFlushFileHandler.java: '8'
+  moai/log/BuildConfig.java: '8'
+  moai/log/ByteBufferWrapper.java: '8'
+  moai/log/FileHandler.java: '8'
+  moai/log/FileHandlerDelegate.java: '8'
+  moai/log/FileOperation.java: '8'
+  moai/log/Formatter.java: '8'
+  moai/log/Handler.java: '8'
+  moai/log/LogcatHandler.java: '8'
+  moai/log/MLog.java: '8'
+  moai/log/MLogImpl.java: '8'
+  moai/log/MLogManager.java: '8'
+  moai/log/QueueFileHandler.java: '8'
+  moai/log/SimpleMLog.java: '8'
+  moai/log/TEA.java: '8'
+  moai/log/TEAFileHandler.java: '8'
+  moai/log/TruncatedFileHandler.java: '8'
+  moai/rx/ContextScheduler.java: '8'
+  moai/rx/FastjsonConverter.java: '8'
+  moai/rx/ObservableError.java: '8'
+  moai/rx/ObservableResult.java: '8'
+  moai/rx/Observables.java: '8'
+  moai/rx/OperatorNonNull.java: '8'
+  moai/rx/RxNetworkErrorHandler.java: '8'
+  moai/rx/ServiceException.java: '8'
+  moai/rx/SharedDumper.java: '8'
+  moai/rx/TransformDelayShareTo.java: '8'
+  moai/rx/TransformerDelayOrCancel.java: '8'
+  moai/rx/TransformerPerformance.java: '8'
+  moai/rx/TransformerShareTo.java: '8'
+  moai/rx/TransformerWhenComplete.java: '8'
+  moai/rx/TransformerZipResult.java: '8'
+  moai/storage/Cache.java: '8'
+  moai/storage/CacheDumper.java: '8'
+  moai/storage/Convertable.java: '8'
+  moai/storage/Domain.java: '8'
+  moai/storage/SQLiteDatabaseDumper.java: '8'
+  moai/view/SafeWebView.java: '8'
+  moai/view/moaiphoto/Compat.java: '8'
+  moai/view/moaiphoto/DefaultOnDoubleTapListener.java: '8'
+  moai/view/moaiphoto/IPhotoView.java: '8'
+  moai/view/moaiphoto/PhotoView.java: '8'
+  moai/view/moaiphoto/PhotoViewAttacher.java: '8'
+  moai/view/moaiphoto/gestures/CupcakeGestureDetector.java: '8'
+  moai/view/moaiphoto/gestures/EclairGestureDetector.java: '8'
+  moai/view/moaiphoto/gestures/FroyoGestureDetector.java: '8'
+  moai/view/moaiphoto/gestures/GestureDetector.java: '8'
+  moai/view/moaiphoto/gestures/OnGestureListener.java: '8'
+  moai/view/moaiphoto/gestures/VersionedGestureDetector.java: '8'
+  moai/view/moaiphoto/log/LogManager.java: '8'
+  moai/view/moaiphoto/log/Logger.java: '8'
+  moai/view/moaiphoto/log/LoggerDefault.java: '8'
+  moai/view/moaiphoto/scrollerproxy/GingerScroller.java: '8'
+  moai/view/moaiphoto/scrollerproxy/IcsScroller.java: '8'
+  moai/view/moaiphoto/scrollerproxy/PreGingerScroller.java: '8'
+  moai/view/moaiphoto/scrollerproxy/ScrollerProxy.java: '8'
+  okhttp3/internal/publicsuffix/publicsuffixes.gz: '0'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '1198'
+  versionName: 3.4.4

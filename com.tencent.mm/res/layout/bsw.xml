@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:id="@id/amc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="设置demo背景" style="@style/oh" />
+        <Button android:id="@id/ame" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="设置音乐播放器背景" style="@style/oh" />
+        <Button android:id="@id/amd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="设置视频号背景" style="@style/oh" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/fjs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true">
+        <Button android:id="@id/am5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPreOpen" style="@style/oh" />
+        <Button android:id="@id/am3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPostOpen" style="@style/oh" />
+        <Button android:id="@id/am4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPreClose" style="@style/oh" />
+        <Button android:id="@id/am2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPostClose" style="@style/oh" />
+    </LinearLayout>
+    <ImageView android:id="@id/fck" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_below="@id/fjs" />
+    <FrameLayout android:id="@id/fkm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/fjs" />
+</RelativeLayout>

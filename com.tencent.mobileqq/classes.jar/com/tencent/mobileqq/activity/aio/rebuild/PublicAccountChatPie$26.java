@@ -1,39 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import nrc;
-import syb;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
+import org.json.JSONObject;
 
-public class PublicAccountChatPie$26
-  implements Runnable
+class PublicAccountChatPie$26
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public PublicAccountChatPie$26(agti paramagti, AccountDetail paramAccountDetail) {}
+  PublicAccountChatPie$26(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
+    if (paramJSONObject == null) {
+      return;
     }
-    if (this.this$0.aa)
+    if (paramJSONObject.optInt("retcode", -1) == 0)
     {
-      int i = syb.a(this.a.accountFlag);
-      if ((i == -3) || (i == -4)) {
-        nrc.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.uin);
-      }
+      paramJSONObject = (TroopBindPublicAccountMgr)this.a.d.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+      paramInt = paramJSONObject.b(this.a.ah.b);
+      paramJSONObject.a(this.a.ah.b, 0, paramInt & 0xF);
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a);
-    }
-    agti.b(this.this$0, this.a);
-    agti.a(this.this$0).post(new PublicAccountChatPie.26.1(this));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

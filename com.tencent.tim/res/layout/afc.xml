@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/faj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tenpay.sdk.view.ClearableEditText android:textColorHint="#ffbbbbbb" android:id="@id/fai" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/eb9" android:layout_weight="1.0" android:inputType="textPassword" android:imeOptions="actionDone" android:imeActionLabel="@string/e5o" style="@style/t2" />
+    <Button android:textSize="14.0sp" android:layout_gravity="center" android:id="@id/fah" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/e4i" style="@style/sv" />
+</LinearLayout>

@@ -9,6 +9,7 @@
                 <include android:id="@id/f76" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
                 <include android:id="@id/f72" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
                 <include android:id="@id/f6x" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
+                <include android:id="@id/otb" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
             </LinearLayout>
             <com.tencent.widget.NegativeChildrenLayout android:id="@id/axk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </LinearLayout>

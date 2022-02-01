@@ -17,84 +17,72 @@ public class MiniProgramLpReportDC05115
   
   private static void doReport(MiniProgramLpReportDC05115.ReportModel paramReportModel)
   {
-    if (paramReportModel != null) {}
-    try
-    {
-      String str = paramReportModel.toReportRecord();
-      QLog.d("MiniProgramLpReportDC05", 2, new Object[] { "doReport ", str });
-      QLog.d("MiniProgramLpReportDC05", 2, new Object[] { "doReport ", paramReportModel.toString() });
-      Bundle localBundle = new Bundle();
-      localBundle.putStringArray("data", new String[] { str });
-      localBundle.putString("log_key", "dc05115");
-      AppBrandProxy.g().sendCmd("cmd_dc_report_log_key_data", localBundle, null);
-      paramReportModel.reset();
-      return;
-    }
-    catch (Exception paramReportModel)
-    {
-      QLog.e("MiniProgramLpReportDC05", 2, "doReport ", paramReportModel);
+    if (paramReportModel != null) {
+      try
+      {
+        String str = paramReportModel.toReportRecord();
+        QLog.d("MiniProgramLpReportDC05", 2, new Object[] { "doReport ", str });
+        QLog.d("MiniProgramLpReportDC05", 2, new Object[] { "doReport ", paramReportModel.toString() });
+        Bundle localBundle = new Bundle();
+        localBundle.putStringArray("data", new String[] { str });
+        localBundle.putString("log_key", "dc05115");
+        AppBrandProxy.g().sendCmd("cmd_dc_report_log_key_data", localBundle, null);
+        paramReportModel.reset();
+        return;
+      }
+      catch (Exception paramReportModel)
+      {
+        QLog.e("MiniProgramLpReportDC05", 2, "doReport ", paramReportModel);
+      }
     }
   }
   
   public static void reDispatchReportEvent(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    MiniProgramLpReportDC05115.ReportModel localReportModel;
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (paramString1 != null))
     {
-      localReportModel = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (localReportModel == null) {
-        break label185;
-      }
-      if (!"app_download_result".equals(paramString1)) {
-        break label68;
-      }
-      localReportModel.reportPKGDownloadResult(paramLong, paramString2);
-    }
-    label68:
-    do
-    {
-      return;
-      if (("launch_result".equals(paramString1)) && ("cold_start".equals(paramString3)))
+      MiniProgramLpReportDC05115.ReportModel localReportModel = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
+      if (localReportModel != null)
       {
-        localReportModel.reportLaunchResult(paramLong, paramString2);
-        return;
+        if ("app_download_result".equals(paramString1))
+        {
+          localReportModel.reportPKGDownloadResult(paramLong, paramString2);
+          return;
+        }
+        if (("launch_result".equals(paramString1)) && ("cold_start".equals(paramString3)))
+        {
+          localReportModel.reportLaunchResult(paramLong, paramString2);
+          return;
+        }
+        if ("game_first_launch_result".equals(paramString1))
+        {
+          MiniProgramLpReportDC05115.ReportModel.access$002(localReportModel, true);
+          return;
+        }
+        if ("game_twice_launch_result".equals(paramString1))
+        {
+          localReportModel.reportReLaunchResult(paramLong, paramString2);
+          return;
+        }
+        if ((!"minigamestaytime".equals(paramString1)) && (!"miniappstaytime".equals(paramString1)))
+        {
+          if ("steplaunchgame".equals(paramString1))
+          {
+            localReportModel.setGamePrepareCost(paramLong);
+            return;
+          }
+          if ("jsonerror".equals(paramString1)) {
+            localReportModel.setJsErrorNum();
+          }
+        }
+        else
+        {
+          localReportModel.setGameUseTime(paramLong);
+        }
       }
-      if ("game_first_launch_result".equals(paramString1))
+      else
       {
-        MiniProgramLpReportDC05115.ReportModel.access$002(localReportModel, true);
-        return;
-      }
-      if ("game_twice_launch_result".equals(paramString1))
-      {
-        localReportModel.reportReLaunchResult(paramLong, paramString2);
-        return;
-      }
-      if (("minigamestaytime".equals(paramString1)) || ("miniappstaytime".equals(paramString1)))
-      {
-        localReportModel.setGameUseTime(paramLong);
-        return;
-      }
-      if ("steplaunchgame".equals(paramString1))
-      {
-        localReportModel.setGamePrepareCost(paramLong);
-        return;
-      }
-    } while (!"jsonerror".equals(paramString1));
-    localReportModel.setJsErrorNum();
-    return;
-    label185:
-    MINI_APP_ID_REPORT_MODEL_HASH_MAP.put(paramMiniAppConfig.config.appId, new MiniProgramLpReportDC05115.ReportModel(paramMiniAppConfig));
-  }
-  
-  public static void reportCPUMemoryFPS(MiniAppConfig paramMiniAppConfig, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
-  {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
-    {
-      paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (paramMiniAppConfig != null)
-      {
-        MiniProgramLpReportDC05115.ReportModel.access$100(paramMiniAppConfig, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5);
-        doReport(paramMiniAppConfig);
+        MINI_APP_ID_REPORT_MODEL_HASH_MAP.put(paramMiniAppConfig.config.appId, new MiniProgramLpReportDC05115.ReportModel(paramMiniAppConfig));
       }
     }
   }
@@ -106,18 +94,16 @@ public class MiniProgramLpReportDC05115
       paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
       if (paramMiniAppConfig != null)
       {
-        MiniProgramLpReportDC05115.ReportModel.access$202(paramMiniAppConfig, 1L);
-        if (!(paramThrowable instanceof OutOfMemoryError)) {
-          break label72;
+        MiniProgramLpReportDC05115.ReportModel.access$102(paramMiniAppConfig, 1L);
+        int i;
+        if ((paramThrowable instanceof OutOfMemoryError)) {
+          i = 1;
+        } else {
+          i = 0;
         }
+        MiniProgramLpReportDC05115.ReportModel.access$202(paramMiniAppConfig, i);
+        doReport(paramMiniAppConfig);
       }
-    }
-    label72:
-    for (int i = 1;; i = 0)
-    {
-      MiniProgramLpReportDC05115.ReportModel.access$302(paramMiniAppConfig, i);
-      doReport(paramMiniAppConfig);
-      return;
     }
   }
   
@@ -128,45 +114,20 @@ public class MiniProgramLpReportDC05115
       paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
       if (paramMiniAppConfig != null)
       {
-        long l2 = 0L;
-        long l1 = l2;
-        if (paramDownloadResult != null)
-        {
-          l1 = l2;
-          if (paramDownloadResult.getContent() != null) {
-            l1 = paramDownloadResult.getContent().length;
-          }
+        long l;
+        if ((paramDownloadResult != null) && (paramDownloadResult.getContent() != null)) {
+          l = paramDownloadResult.getContent().length;
+        } else {
+          l = 0L;
         }
-        paramMiniAppConfig.reportDownloadRequestResult(paramLong, l1, paramBoolean);
-      }
-    }
-  }
-  
-  public static void reportDownloadResultForSDK(MiniAppConfig paramMiniAppConfig, long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
-    {
-      paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (paramMiniAppConfig != null) {
-        paramMiniAppConfig.reportDownloadRequestResult(paramLong2, paramLong1, paramBoolean);
-      }
-    }
-  }
-  
-  public static void reportHttpRequestResult(MiniAppConfig paramMiniAppConfig, int paramInt, long paramLong1, long paramLong2)
-  {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
-    {
-      paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (paramMiniAppConfig != null) {
-        paramMiniAppConfig.reportHttpRequestResult(paramLong2, paramLong1, paramInt);
+        paramMiniAppConfig.reportDownloadRequestResult(paramLong, l, paramBoolean);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05115
  * JD-Core Version:    0.7.0.1
  */

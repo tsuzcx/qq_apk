@@ -15,35 +15,34 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import bhsw;
-import bhvw;
-import bhvx;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.ThrowablesUtils;
 import java.util.ArrayList;
 
 public class DragView
   extends RelativeLayout
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, GestureDetector.OnGestureListener
 {
-  private float jdField_a_of_type_Float;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this);
-  private View jdField_a_of_type_AndroidViewView;
-  private bhvw jdField_a_of_type_Bhvw;
-  private bhvx jdField_a_of_type_Bhvx;
-  public boolean a;
-  private float jdField_b_of_type_Float;
-  private AnimatorSet jdField_b_of_type_AndroidAnimationAnimatorSet;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean = true;
-  private float jdField_e_of_type_Float;
-  private boolean jdField_e_of_type_Boolean;
-  private float f = 0.25F;
-  private float g;
+  public static final String TAG = "DragView";
+  private float alphaOffset = 0.0F;
+  private View curView;
+  private float downX = 0.0F;
+  private float downY = 0.0F;
+  private boolean enableDrag = true;
+  private boolean firstDown = false;
+  private boolean isInAnimation = false;
+  private DragView.OnDragChangeListener mDragChangeListener;
+  public boolean mFinishAnimation = false;
+  private DragView.OnGestureChangeListener mGestureChangeListener = null;
+  private GestureDetector mGestureDetector = new GestureDetector(paramContext, this);
+  private float mScrollDisX = 0.0F;
+  private float mScrollDisY = 0.0F;
+  private Rect originRect = null;
+  private AnimatorSet quitAnim;
+  private boolean ratioModify = false;
+  private AnimatorSet releaseAnim;
+  private float scale = 0.0F;
+  private float scaleThreshold = 0.25F;
   
   public DragView(Context paramContext)
   {
@@ -55,134 +54,157 @@ public class DragView
     super(paramContext, paramAttributeSet);
   }
   
-  private void a(float paramFloat)
+  private void onContentMove(float paramFloat)
   {
-    if (this.jdField_a_of_type_Bhvx != null) {
-      this.jdField_a_of_type_Bhvx.a(paramFloat);
+    DragView.OnGestureChangeListener localOnGestureChangeListener = this.mGestureChangeListener;
+    if (localOnGestureChangeListener != null) {
+      localOnGestureChangeListener.onContentMove(paramFloat);
     }
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  private void onUP(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setupStartValues();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setScaleX(1.0F);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(1.0F);
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
-    this.jdField_a_of_type_Boolean = false;
+    this.releaseAnim.setupStartValues();
+    this.releaseAnim.start();
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
+    if (this.curView != null) {
       return;
     }
     super.addView(paramView, paramInt, paramLayoutParams);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationX", new float[] { 0.0F });
-    paramLayoutParams = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { paramView, paramLayoutParams, localObjectAnimator1, localObjectAnimator2 });
+    this.curView = paramView;
+    paramView = ObjectAnimator.ofFloat(this.curView, "translationX", new float[] { 0.0F });
+    paramLayoutParams = ObjectAnimator.ofFloat(this.curView, "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.curView, "scaleX", new float[] { 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.curView, "scaleY", new float[] { 1.0F });
+    this.releaseAnim = new AnimatorSet();
+    this.releaseAnim.playTogether(new Animator[] { paramView, paramLayoutParams, localObjectAnimator1, localObjectAnimator2 });
     localObjectAnimator2.addUpdateListener(this);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this);
-    paramView = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationX", new float[] { 0.0F });
-    paramLayoutParams = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
-    localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.0F });
-    localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.0F });
-    this.jdField_b_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_b_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { paramView, paramLayoutParams, localObjectAnimator1, localObjectAnimator2 });
+    this.releaseAnim.addListener(this);
+    paramView = ObjectAnimator.ofFloat(this.curView, "translationX", new float[] { 0.0F });
+    paramLayoutParams = ObjectAnimator.ofFloat(this.curView, "translationY", new float[] { 0.0F });
+    localObjectAnimator1 = ObjectAnimator.ofFloat(this.curView, "scaleX", new float[] { 0.0F });
+    localObjectAnimator2 = ObjectAnimator.ofFloat(this.curView, "scaleY", new float[] { 0.0F });
+    this.quitAnim = new AnimatorSet();
+    this.quitAnim.playTogether(new Animator[] { paramView, paramLayoutParams, localObjectAnimator1, localObjectAnimator2 });
     localObjectAnimator2.addUpdateListener(this);
-    this.jdField_b_of_type_AndroidAnimationAnimatorSet.addListener(this);
+    this.quitAnim.addListener(this);
+  }
+  
+  public void init()
+  {
+    this.curView.setScaleX(1.0F);
+    this.curView.setScaleY(1.0F);
+    this.curView.setTranslationX(0.0F);
+    this.curView.setTranslationY(0.0F);
+    this.mFinishAnimation = false;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_b_of_type_Boolean = false;
-    if (paramAnimator == this.jdField_b_of_type_AndroidAnimationAnimatorSet)
+    this.isInAnimation = false;
+    if (paramAnimator == this.quitAnim)
     {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Bhvx != null) {
-        this.jdField_a_of_type_Bhvx.F();
+      this.mFinishAnimation = true;
+      paramAnimator = this.mGestureChangeListener;
+      if (paramAnimator != null) {
+        paramAnimator.onGestureFinish();
       }
     }
-    while ((paramAnimator != this.jdField_a_of_type_AndroidAnimationAnimatorSet) || (this.jdField_a_of_type_Bhvx == null)) {
-      return;
+    else if (paramAnimator == this.releaseAnim)
+    {
+      paramAnimator = this.mGestureChangeListener;
+      if (paramAnimator != null) {
+        paramAnimator.onResetPosition();
+      }
     }
-    this.jdField_a_of_type_Bhvx.G();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    this.isInAnimation = false;
+    onAnimationEnd(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.isInAnimation = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    this.isInAnimation = true;
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     Float localFloat2 = (Float)paramValueAnimator.getAnimatedValue();
     Float localFloat1 = localFloat2;
-    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet.getChildAnimations().contains(paramValueAnimator))
+    if (this.quitAnim.getChildAnimations().contains(paramValueAnimator))
     {
-      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-        break label128;
+      paramValueAnimator = this.originRect;
+      float f;
+      int i;
+      if (paramValueAnimator == null)
+      {
+        f = getHeight();
+        i = this.curView.getHeight();
       }
-      f1 = getHeight() / this.jdField_a_of_type_AndroidViewView.getHeight();
-      paramValueAnimator = Float.valueOf(f1 / localFloat2.floatValue());
-      if (paramValueAnimator.floatValue() <= 1.0F) {
-        break label157;
+      else
+      {
+        f = paramValueAnimator.bottom - this.originRect.top;
+        i = this.curView.getHeight();
       }
+      paramValueAnimator = Float.valueOf(f / i / localFloat2.floatValue());
+      if (paramValueAnimator.floatValue() > 1.0F) {
+        f = 1.0F;
+      } else {
+        f = paramValueAnimator.floatValue();
+      }
+      localFloat1 = Float.valueOf(1.0F - Float.valueOf(f).floatValue());
     }
-    label128:
-    label157:
-    for (float f1 = 1.0F;; f1 = paramValueAnimator.floatValue())
+    if (QLog.isColorLevel())
     {
-      localFloat1 = Float.valueOf(1.0F - Float.valueOf(f1).floatValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("DragView", 2, "onAnimationUpdate : " + localFloat1);
-      }
-      a(localFloat1.floatValue() - this.g);
-      return;
-      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top) / this.jdField_a_of_type_AndroidViewView.getHeight();
-      break;
+      paramValueAnimator = new StringBuilder();
+      paramValueAnimator.append("onAnimationUpdate : ");
+      paramValueAnimator.append(localFloat1);
+      QLog.d("DragView", 2, paramValueAnimator.toString());
     }
+    onContentMove(localFloat1.floatValue() - this.alphaOffset);
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Float = paramMotionEvent.getX();
-    this.jdField_e_of_type_Float = paramMotionEvent.getY();
-    this.jdField_a_of_type_Float = 1.0F;
+    this.mScrollDisY = 0.0F;
+    this.mScrollDisX = 0.0F;
+    this.downX = paramMotionEvent.getX();
+    this.downY = paramMotionEvent.getY();
+    this.scale = 1.0F;
     return false;
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.curView == null) {
       return false;
     }
-    paramMotionEvent1 = this.jdField_b_of_type_AndroidAnimationAnimatorSet.getChildAnimations();
-    int k;
-    if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidViewView != null) && (paramMotionEvent1 != null) && (paramMotionEvent1.size() == 4))
+    paramMotionEvent1 = this.quitAnim.getChildAnimations();
+    if ((this.originRect != null) && (this.curView != null) && (paramMotionEvent1 != null) && (paramMotionEvent1.size() == 4))
     {
-      k = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+      int k = this.curView.getWidth();
+      int m = this.curView.getHeight();
+      paramMotionEvent2 = this.mDragChangeListener;
       int j = m;
       int i = k;
-      if (this.jdField_a_of_type_Bhvw != null)
+      if (paramMotionEvent2 != null)
       {
-        paramMotionEvent2 = this.jdField_a_of_type_Bhvw.a();
+        paramMotionEvent2 = paramMotionEvent2.onModifyCurViewSize();
         j = m;
         i = k;
         if (paramMotionEvent2 != null)
@@ -191,74 +213,82 @@ public class DragView
           j = paramMotionEvent2[1];
         }
       }
-      paramMotionEvent2 = new Rect(this.jdField_a_of_type_AndroidGraphicsRect);
-      if (this.jdField_e_of_type_Boolean) {
+      paramMotionEvent2 = new Rect(this.originRect);
+      if (this.ratioModify)
+      {
         paramFloat1 = i / j;
-      }
-      try
-      {
-        paramFloat2 = this.jdField_a_of_type_AndroidGraphicsRect.width() / this.jdField_a_of_type_AndroidGraphicsRect.height();
-        if (QLog.isColorLevel()) {
-          QLog.d("DragView", 2, "sonRatio : " + paramFloat2 + "  parentRatio : " + paramFloat1 + " getWidth() : " + getWidth() + " getHeight() : " + getHeight() + " oriHeight :" + this.jdField_a_of_type_AndroidGraphicsRect.height() + " oriWidth : " + this.jdField_a_of_type_AndroidGraphicsRect.width());
-        }
-        if (paramFloat2 >= paramFloat1) {
-          break label505;
-        }
-        k = (int)(paramFloat1 * this.jdField_a_of_type_AndroidGraphicsRect.height() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
-        paramMotionEvent2.left -= k;
-        paramMotionEvent2.right = (k + paramMotionEvent2.right);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        try
         {
-          float f1;
-          float f2;
+          paramFloat2 = this.originRect.width() / this.originRect.height();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("sonRatio : ");
+            localStringBuilder.append(paramFloat2);
+            localStringBuilder.append("  parentRatio : ");
+            localStringBuilder.append(paramFloat1);
+            localStringBuilder.append(" getWidth() : ");
+            localStringBuilder.append(getWidth());
+            localStringBuilder.append(" getHeight() : ");
+            localStringBuilder.append(getHeight());
+            localStringBuilder.append(" oriHeight :");
+            localStringBuilder.append(this.originRect.height());
+            localStringBuilder.append(" oriWidth : ");
+            localStringBuilder.append(this.originRect.width());
+            QLog.d("DragView", 2, localStringBuilder.toString());
+          }
+          if (paramFloat2 < paramFloat1)
+          {
+            k = (int)(this.originRect.height() * paramFloat1 - this.originRect.width()) / 2;
+            paramMotionEvent2.left -= k;
+            paramMotionEvent2.right += k;
+          }
+          else if (paramFloat2 > paramFloat1)
+          {
+            k = (int)(this.originRect.width() / paramFloat1 - this.originRect.height()) / 2;
+            paramMotionEvent2.top -= k;
+            paramMotionEvent2.bottom += k;
+          }
+        }
+        catch (Exception localException)
+        {
           if (QLog.isColorLevel()) {
-            QLog.d("DragView", 2, bhsw.a(localException));
+            QLog.d("DragView", 2, ThrowablesUtils.a(localException));
           }
         }
       }
       paramFloat1 = (paramMotionEvent2.left + paramMotionEvent2.right) / 2 - getWidth() / 2;
       paramFloat2 = (paramMotionEvent2.top + paramMotionEvent2.bottom) / 2 - getHeight() / 2;
-      f1 = (paramMotionEvent2.right - paramMotionEvent2.left) / i;
-      f2 = (paramMotionEvent2.bottom - paramMotionEvent2.top) / j;
+      float f1 = (paramMotionEvent2.right - paramMotionEvent2.left) / i;
+      float f2 = (paramMotionEvent2.bottom - paramMotionEvent2.top) / j;
       ((ObjectAnimator)paramMotionEvent1.get(0)).setFloatValues(new float[] { paramFloat1 });
       ((ObjectAnimator)paramMotionEvent1.get(1)).setFloatValues(new float[] { paramFloat2 });
       ((ObjectAnimator)paramMotionEvent1.get(2)).setFloatValues(new float[] { f1 });
       ((ObjectAnimator)paramMotionEvent1.get(3)).setFloatValues(new float[] { f2 });
-      this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_AndroidViewView.getWidth() / 2);
-      this.jdField_a_of_type_AndroidViewView.setPivotY(this.jdField_a_of_type_AndroidViewView.getHeight() / 2);
+      paramMotionEvent1 = this.curView;
+      paramMotionEvent1.setPivotX(paramMotionEvent1.getWidth() / 2);
+      paramMotionEvent1 = this.curView;
+      paramMotionEvent1.setPivotY(paramMotionEvent1.getHeight() / 2);
     }
-    for (;;)
+    else
     {
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.setupStartValues();
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.start();
-      return true;
-      label505:
-      if (paramFloat2 <= paramFloat1) {
-        break;
-      }
-      k = (int)(this.jdField_a_of_type_AndroidGraphicsRect.width() / paramFloat1 - this.jdField_a_of_type_AndroidGraphicsRect.height()) / 2;
-      paramMotionEvent2.top -= k;
-      paramMotionEvent2.bottom = (k + paramMotionEvent2.bottom);
-      break;
-      this.jdField_a_of_type_AndroidViewView.setPivotX(getWidth() / 2);
-      this.jdField_a_of_type_AndroidViewView.setPivotY(getHeight() / 2);
+      this.curView.setPivotX(getWidth() / 2);
+      this.curView.setPivotY(getHeight() / 2);
     }
+    this.quitAnim.setupStartValues();
+    this.quitAnim.start();
+    return true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_d_of_type_Boolean) {
+    if (!this.enableDrag) {
       return false;
     }
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
+    if (paramMotionEvent.getAction() != 0) {
       return true;
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.mGestureDetector.onTouchEvent(paramMotionEvent);
     return false;
   }
   
@@ -266,108 +296,106 @@ public class DragView
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    float f1 = 0.0F;
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.curView == null) {
       return false;
     }
-    this.jdField_b_of_type_Float -= paramFloat1;
-    this.jdField_c_of_type_Float -= paramFloat2;
-    if (this.jdField_c_of_type_Float < 0.0F)
-    {
-      paramFloat1 = f1;
-      f1 = 1.0F - paramFloat1 / getHeight();
-      this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_d_of_type_Float - this.jdField_a_of_type_AndroidViewView.getLeft());
-      this.jdField_a_of_type_AndroidViewView.setPivotY(this.jdField_e_of_type_Float - this.jdField_a_of_type_AndroidViewView.getTop());
-      if (f1 <= this.f) {
-        break label178;
-      }
+    this.mScrollDisX -= paramFloat1;
+    this.mScrollDisY -= paramFloat2;
+    paramFloat2 = this.mScrollDisY;
+    paramFloat1 = paramFloat2;
+    if (paramFloat2 < 0.0F) {
+      paramFloat1 = 0.0F;
     }
-    label178:
-    for (paramFloat2 = f1;; paramFloat2 = this.f)
-    {
-      this.jdField_a_of_type_Float = paramFloat2;
-      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidViewView.setTranslationX(this.jdField_b_of_type_Float);
-      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramFloat1);
-      a(f1 - this.g);
-      return false;
-      paramFloat1 = this.jdField_c_of_type_Float;
-      break;
+    float f1 = 1.0F - paramFloat1 / getHeight();
+    paramMotionEvent1 = this.curView;
+    paramMotionEvent1.setPivotX(this.downX - paramMotionEvent1.getLeft());
+    paramMotionEvent1 = this.curView;
+    paramMotionEvent1.setPivotY(this.downY - paramMotionEvent1.getTop());
+    float f2 = this.scaleThreshold;
+    paramFloat2 = f2;
+    if (f1 > f2) {
+      paramFloat2 = f1;
     }
+    this.scale = paramFloat2;
+    this.curView.setScaleX(this.scale);
+    this.curView.setScaleY(this.scale);
+    this.curView.setTranslationX(this.mScrollDisX);
+    this.curView.setTranslationY(paramFloat1);
+    onContentMove(f1 - this.alphaOffset);
+    return false;
   }
   
   public void onShowPress(MotionEvent paramMotionEvent) {}
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bhvx != null) {
-      this.jdField_a_of_type_Bhvx.H();
+    paramMotionEvent = this.mGestureChangeListener;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.onClickDragView();
     }
     return true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool = this.isInAnimation;
     int i = 0;
-    if (this.jdField_b_of_type_Boolean) {
+    if (bool) {
       return false;
     }
     int j = paramMotionEvent.getAction();
-    if (j == 0) {
-      this.jdField_c_of_type_Boolean = true;
-    }
-    for (;;)
+    if (j == 0)
     {
-      if (paramMotionEvent.getAction() == 1) {
-        i = 1;
-      }
-      if ((!this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent)) && (i != 0)) {
-        a(paramMotionEvent);
-      }
-      return true;
-      if (j == 1)
-      {
-        this.jdField_c_of_type_Boolean = false;
-      }
-      else if ((j == 2) && (!this.jdField_c_of_type_Boolean))
-      {
-        MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        localMotionEvent.setAction(0);
-        this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(localMotionEvent);
-        this.jdField_c_of_type_Boolean = true;
-      }
+      this.firstDown = true;
     }
+    else if (j == 1)
+    {
+      this.firstDown = false;
+    }
+    else if ((j == 2) && (!this.firstDown))
+    {
+      MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      localMotionEvent.setAction(0);
+      this.mGestureDetector.onTouchEvent(localMotionEvent);
+      this.firstDown = true;
+    }
+    if (paramMotionEvent.getAction() == 1) {
+      i = 1;
+    }
+    if ((!this.mGestureDetector.onTouchEvent(paramMotionEvent)) && (i != 0)) {
+      onUP(paramMotionEvent);
+    }
+    return true;
   }
   
-  public void setDragChangeListener(bhvw parambhvw)
+  public void setDragChangeListener(DragView.OnDragChangeListener paramOnDragChangeListener)
   {
-    this.jdField_a_of_type_Bhvw = parambhvw;
+    this.mDragChangeListener = paramOnDragChangeListener;
   }
   
   public void setEnableDrag(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.enableDrag = paramBoolean;
   }
   
-  public void setGestureChangeListener(bhvx parambhvx)
+  public void setGestureChangeListener(DragView.OnGestureChangeListener paramOnGestureChangeListener)
   {
-    this.jdField_a_of_type_Bhvx = parambhvx;
+    this.mGestureChangeListener = paramOnGestureChangeListener;
   }
   
   public void setOriginRect(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.originRect = paramRect;
   }
   
   public void setRatioModify(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.ratioModify = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.DragView
  * JD-Core Version:    0.7.0.1
  */

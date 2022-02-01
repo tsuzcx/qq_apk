@@ -17,9 +17,10 @@ final class e
   public final boolean a(long paramLong1, long paramLong2, String paramString)
   {
     com.tencent.feedback.common.e.b("new process %s", new Object[] { paramString });
-    this.a.a = paramLong1;
-    this.a.b = paramString;
-    this.a.c = paramLong2;
+    f localf = this.a;
+    localf.a = paramLong1;
+    localf.b = paramString;
+    localf.c = paramLong2;
     return this.b;
   }
   
@@ -29,7 +30,7 @@ final class e
     if (this.a.d == null) {
       this.a.d = new HashMap();
     }
-    this.a.d.put(paramString1, new String[] { paramString2, paramString3, paramInt });
+    this.a.d.put(paramString1, new String[] { paramString2, paramString3, String.valueOf(paramInt) });
     return true;
   }
 }

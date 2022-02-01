@@ -1,53 +1,48 @@
 package com.tencent.superplayer.api;
 
-import com.tencent.qqlive.tvkplayer.TVideoMgr.OnTVideoLogListener;
+import com.tencent.tmediacodec.util.ILogProxy;
 
 final class SuperPlayerSDKMgr$1
-  implements TVideoMgr.OnTVideoLogListener
+  implements ILogProxy
 {
-  public int d(String paramString1, String paramString2)
+  public void d(String paramString1, String paramString2)
   {
-    if (SuperPlayerSDKMgr.access$000() != null) {
-      return SuperPlayerSDKMgr.access$000().d(paramString1, paramString2);
+    if (SuperPlayerSDKMgr.access$100() != null) {
+      SuperPlayerSDKMgr.access$100().d(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public int e(String paramString1, String paramString2)
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (SuperPlayerSDKMgr.access$000() != null) {
-      return SuperPlayerSDKMgr.access$000().e(paramString1, paramString2);
+    if (SuperPlayerSDKMgr.access$100() != null) {
+      SuperPlayerSDKMgr.access$100().e(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public int i(String paramString1, String paramString2)
+  public void i(String paramString1, String paramString2)
   {
-    if (SuperPlayerSDKMgr.access$000() != null) {
-      return SuperPlayerSDKMgr.access$000().i(paramString1, paramString2);
+    if (SuperPlayerSDKMgr.access$100() != null) {
+      SuperPlayerSDKMgr.access$100().i(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public int v(String paramString1, String paramString2)
+  public void v(String paramString1, String paramString2)
   {
-    if (SuperPlayerSDKMgr.access$000() != null) {
-      return SuperPlayerSDKMgr.access$000().v(paramString1, paramString2);
+    if (SuperPlayerSDKMgr.access$100() != null) {
+      SuperPlayerSDKMgr.access$100().v(paramString1, paramString2);
     }
-    return 0;
   }
   
-  public int w(String paramString1, String paramString2)
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (SuperPlayerSDKMgr.access$000() != null) {
-      return SuperPlayerSDKMgr.access$000().w(paramString1, paramString2);
+    if (SuperPlayerSDKMgr.access$100() != null) {
+      SuperPlayerSDKMgr.access$100().w(paramString1, paramString2);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerSDKMgr.1
  * JD-Core Version:    0.7.0.1
  */

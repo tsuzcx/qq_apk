@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -18,12 +19,15 @@ class MiniAppDesktopAdapter$6
   {
     try
     {
-      ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).checkMiniAppAdReport(this.val$miniAppInfo, this.val$position);
+      ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).checkMiniAppAdReport(this.val$miniAppInfo, this.val$position);
       return;
     }
     catch (Exception paramView)
     {
-      QLog.e("MiniAppDesktopAdapter", 1, "collectAdReport, exception: " + Log.getStackTraceString(paramView));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("collectAdReport, exception: ");
+      localStringBuilder.append(Log.getStackTraceString(paramView));
+      QLog.e("MiniAppDesktopAdapter", 1, localStringBuilder.toString());
     }
   }
   
@@ -31,7 +35,7 @@ class MiniAppDesktopAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.6
  * JD-Core Version:    0.7.0.1
  */

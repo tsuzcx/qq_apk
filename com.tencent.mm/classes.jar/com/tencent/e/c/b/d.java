@@ -8,70 +8,70 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends JceStruct
 {
-  public String Bkg = "";
-  public String Bkh = "";
-  public int Bki = 0;
-  public String Bkj = "";
-  public int Bkk = 0;
-  public String fwM = "";
+  public String ahtA = "";
+  public int ahtB = 0;
+  public String ahtC = "";
+  public String ahtz = "";
+  public String brand = "";
   public String model = "";
   public String platform = "";
+  public int root = 0;
   
   public final JceStruct newInit()
   {
-    AppMethodBeat.i(114498);
+    AppMethodBeat.i(138339);
     d locald = new d();
-    AppMethodBeat.o(114498);
+    AppMethodBeat.o(138339);
     return locald;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114500);
-    this.Bkg = paramJceInputStream.readString(0, false);
-    this.Bkh = paramJceInputStream.readString(1, false);
-    this.fwM = paramJceInputStream.readString(2, false);
+    AppMethodBeat.i(138341);
+    this.ahtz = paramJceInputStream.readString(0, false);
+    this.ahtA = paramJceInputStream.readString(1, false);
+    this.brand = paramJceInputStream.readString(2, false);
     this.model = paramJceInputStream.readString(3, false);
-    this.Bki = paramJceInputStream.read(this.Bki, 4, false);
-    this.Bkj = paramJceInputStream.readString(5, false);
+    this.ahtB = paramJceInputStream.read(this.ahtB, 4, false);
+    this.ahtC = paramJceInputStream.readString(5, false);
     this.platform = paramJceInputStream.readString(6, false);
-    this.Bkk = paramJceInputStream.read(this.Bkk, 7, false);
-    AppMethodBeat.o(114500);
+    this.root = paramJceInputStream.read(this.root, 7, false);
+    AppMethodBeat.o(138341);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114499);
-    if (this.Bkg != null) {
-      paramJceOutputStream.write(this.Bkg, 0);
+    AppMethodBeat.i(138340);
+    if (this.ahtz != null) {
+      paramJceOutputStream.write(this.ahtz, 0);
     }
-    if (this.Bkh != null) {
-      paramJceOutputStream.write(this.Bkh, 1);
+    if (this.ahtA != null) {
+      paramJceOutputStream.write(this.ahtA, 1);
     }
-    if (this.fwM != null) {
-      paramJceOutputStream.write(this.fwM, 2);
+    if (this.brand != null) {
+      paramJceOutputStream.write(this.brand, 2);
     }
     if (this.model != null) {
       paramJceOutputStream.write(this.model, 3);
     }
-    if (this.Bki != 0) {
-      paramJceOutputStream.write(this.Bki, 4);
+    if (this.ahtB != 0) {
+      paramJceOutputStream.write(this.ahtB, 4);
     }
-    if (this.Bkj != null) {
-      paramJceOutputStream.write(this.Bkj, 5);
+    if (this.ahtC != null) {
+      paramJceOutputStream.write(this.ahtC, 5);
     }
     if (this.platform != null) {
       paramJceOutputStream.write(this.platform, 6);
     }
-    if (this.Bkk != 0) {
-      paramJceOutputStream.write(this.Bkk, 7);
+    if (this.root != 0) {
+      paramJceOutputStream.write(this.root, 7);
     }
-    AppMethodBeat.o(114499);
+    AppMethodBeat.o(138340);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.c.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ public final class UserProfile
   public int iDistance = -1;
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public long lEctID;
-  public long nPicNum;
-  public long nStatus;
-  public stRishState oRishState;
+  public long lEctID = 0L;
+  public long nPicNum = 0L;
+  public long nStatus = 0L;
+  public stRishState oRishState = null;
   public long richTime;
   public RichStatus rs;
   public String strDesc = "";
   public String strLocation = "";
   public String strNick = "";
-  public byte[] vSig;
-  public short wFace;
+  public byte[] vSig = null;
+  public short wFace = 0;
   
   public UserProfile() {}
   
@@ -90,17 +90,21 @@ public final class UserProfile
     paramJceOutputStream.write(this.bSex, 2);
     paramJceOutputStream.write(this.bAge, 3);
     paramJceOutputStream.write(this.strNick, 4);
-    if (this.oRishState != null) {
-      paramJceOutputStream.write(this.oRishState, 5);
+    Object localObject = this.oRishState;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.vSig != null) {
-      paramJceOutputStream.write(this.vSig, 6);
+    localObject = this.vSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
-    if (this.strLocation != null) {
-      paramJceOutputStream.write(this.strLocation, 7);
+    localObject = this.strLocation;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strDesc != null) {
-      paramJceOutputStream.write(this.strDesc, 8);
+    localObject = this.strDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.iDistance, 9);
     paramJceOutputStream.write(this.iLat, 10);
@@ -111,7 +115,7 @@ public final class UserProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.UserProfile
  * JD-Core Version:    0.7.0.1
  */

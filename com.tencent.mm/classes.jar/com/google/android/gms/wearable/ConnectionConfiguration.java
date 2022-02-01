@@ -6,48 +6,31 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ConnectionConfigurationCreator")
-@SafeParcelable.Reserved({1})
 public class ConnectionConfiguration
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<ConnectionConfiguration> CREATOR;
-  @SafeParcelable.Field(getter="getName", id=2)
   private final String name;
-  @SafeParcelable.Field(getter="getType", id=4)
   private final int type;
-  @SafeParcelable.Field(getter="getAddress", id=3)
   private final String zzi;
-  @SafeParcelable.Field(getter="getRole", id=5)
   private final int zzj;
-  @SafeParcelable.Field(getter="isEnabled", id=6)
   private final boolean zzk;
-  @SafeParcelable.Field(getter="isConnected", id=7)
   private volatile boolean zzl;
-  @SafeParcelable.Field(getter="getPeerNodeId", id=8)
   private volatile String zzm;
-  @SafeParcelable.Field(getter="getBtlePriority", id=9)
   private boolean zzn;
-  @SafeParcelable.Field(getter="getNodeId", id=10)
   private String zzo;
   
   static
   {
-    AppMethodBeat.i(70798);
+    AppMethodBeat.i(100781);
     CREATOR = new zzg();
-    AppMethodBeat.o(70798);
+    AppMethodBeat.o(100781);
   }
   
-  @SafeParcelable.Constructor
-  ConnectionConfiguration(@SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) String paramString2, @SafeParcelable.Param(id=4) int paramInt1, @SafeParcelable.Param(id=5) int paramInt2, @SafeParcelable.Param(id=6) boolean paramBoolean1, @SafeParcelable.Param(id=7) boolean paramBoolean2, @SafeParcelable.Param(id=8) String paramString3, @SafeParcelable.Param(id=9) boolean paramBoolean3, @SafeParcelable.Param(id=10) String paramString4)
+  ConnectionConfiguration(String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString3, boolean paramBoolean3, String paramString4)
   {
     this.name = paramString1;
     this.zzi = paramString2;
@@ -62,33 +45,33 @@ public class ConnectionConfiguration
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70796);
+    AppMethodBeat.i(100779);
     if (!(paramObject instanceof ConnectionConfiguration))
     {
-      AppMethodBeat.o(70796);
+      AppMethodBeat.o(100779);
       return false;
     }
     paramObject = (ConnectionConfiguration)paramObject;
     if ((Objects.equal(this.name, paramObject.name)) && (Objects.equal(this.zzi, paramObject.zzi)) && (Objects.equal(Integer.valueOf(this.type), Integer.valueOf(paramObject.type))) && (Objects.equal(Integer.valueOf(this.zzj), Integer.valueOf(paramObject.zzj))) && (Objects.equal(Boolean.valueOf(this.zzk), Boolean.valueOf(paramObject.zzk))) && (Objects.equal(Boolean.valueOf(this.zzn), Boolean.valueOf(paramObject.zzn))))
     {
-      AppMethodBeat.o(70796);
+      AppMethodBeat.o(100779);
       return true;
     }
-    AppMethodBeat.o(70796);
+    AppMethodBeat.o(100779);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(70797);
+    AppMethodBeat.i(100780);
     int i = Objects.hashCode(new Object[] { this.name, this.zzi, Integer.valueOf(this.type), Integer.valueOf(this.zzj), Boolean.valueOf(this.zzk), Boolean.valueOf(this.zzn) });
-    AppMethodBeat.o(70797);
+    AppMethodBeat.o(100780);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(70795);
+    AppMethodBeat.i(100778);
     StringBuilder localStringBuilder = new StringBuilder("ConnectionConfiguration[ ");
     String str = String.valueOf(this.name);
     if (str.length() != 0)
@@ -132,7 +115,7 @@ public class ConnectionConfiguration
       localStringBuilder.append(str);
       localStringBuilder.append("]");
       str = localStringBuilder.toString();
-      AppMethodBeat.o(70795);
+      AppMethodBeat.o(100778);
       return str;
       str = new String("mName=");
       break;
@@ -145,7 +128,7 @@ public class ConnectionConfiguration
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(70794);
+    AppMethodBeat.i(100777);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 2, this.name, false);
     SafeParcelWriter.writeString(paramParcel, 3, this.zzi, false);
@@ -157,12 +140,12 @@ public class ConnectionConfiguration
     SafeParcelWriter.writeBoolean(paramParcel, 9, this.zzn);
     SafeParcelWriter.writeString(paramParcel, 10, this.zzo, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(70794);
+    AppMethodBeat.o(100777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.ConnectionConfiguration
  * JD-Core Version:    0.7.0.1
  */

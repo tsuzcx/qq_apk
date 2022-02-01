@@ -5,151 +5,210 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.device.ble.JNIEngineLite;
+import com.tencent.device.ble.QFindGattManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import zsz;
-import zzg;
 
 public class QFindBLEScanMgr$NotifyReceiver
   extends BroadcastReceiver
 {
+  public QFindBLEScanMgr$NotifyReceiver(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = null;
     paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("QFindBLE", 2, "QFindBLEScanMgr NotifyReceiver onReceive action=" + paramContext);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QFindBLEScanMgr NotifyReceiver onReceive action=");
+      localStringBuilder.append(paramContext);
+      QLog.i("QFindBLE", 2, localStringBuilder.toString());
     }
+    boolean bool = "com.tencent.device.ble.ACTION_GATT_SERVICES_DISCOVERED".equals(paramContext);
+    StringBuilder localStringBuilder = null;
     int i;
-    if ("com.tencent.device.ble.ACTION_GATT_SERVICES_DISCOVERED".equals(paramContext))
+    if (bool)
     {
       i = paramIntent.getExtras().getInt("com.tencent.device.ble.EXTRA_BLEID");
-      paramIntent = this.a.a.values().iterator();
-      do
+      paramIntent = this.a.r.values().iterator();
+      while (paramIntent.hasNext())
       {
-        if (!paramIntent.hasNext()) {
-          break;
+        paramContext = (BlePeerInfo)paramIntent.next();
+        if (paramContext.i == i) {
+          break label120;
         }
-        paramContext = (zzg)paramIntent.next();
-      } while (paramContext.c != i);
-    }
-    for (;;)
-    {
-      if (paramContext == null) {
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "QFindBLEScanMgr GATT_SERVICES_DISCOVERED bleId " + i + " is not in mReportedDevice");
-        }
-      }
-      label542:
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramContext = JNIEngineLite.packVerifyReq((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
-            zsz.a().a(i, paramContext);
-          } while (!QLog.isColorLevel());
-          QLog.i("QFindBLE", 2, "QFindBLEScanMgr GATT_SERVICES_DISCOVERED bleId " + i);
-          return;
-          if (!"onDeviceVerifyRsp".equals(paramContext)) {
-            break label542;
-          }
-          paramContext = paramIntent.getExtras();
-          i = paramContext.getInt("bleId");
-          paramIntent = paramContext.getByteArray("buffer");
-          Iterator localIterator = this.a.a.values().iterator();
-          do
-          {
-            paramContext = localObject;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            paramContext = (zzg)localIterator.next();
-          } while (paramContext.c != i);
-          if (paramContext != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("QFindBLE", 2, "QFindBLEScanMgr onDeviceVerifyRsp bleId " + i + " is not in mReportedDevice");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "QFindBLEScanMgr onDeviceVerifyRsp bleId " + i + ": data " + paramIntent.length);
-        }
-        if (!paramContext.jdField_a_of_type_Boolean)
-        {
-          paramContext.jdField_b_of_type_ArrayOfByte = paramIntent;
-          QFindBLEScanMgr.a(this.a, paramContext, paramContext.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo, true);
-          paramIntent = "" + paramContext.jdField_a_of_type_Int + "|" + paramContext.a();
-          paramContext.jdField_a_of_type_Boolean = true;
-          paramContext.jdField_b_of_type_Boolean = false;
-          paramIntent = (zzg)this.a.a.put(paramIntent, paramContext);
-          if (QLog.isColorLevel()) {
-            QLog.i("QFindBLE", 2, "QFindBLEScanMgr onDeviceVerifyRsp old bleId " + paramIntent.c + " ; reported = " + paramIntent.jdField_a_of_type_Boolean);
-          }
-        }
-        for (;;)
-        {
-          zsz.a().a(paramContext.a());
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.i("QFindBLE", 2, "QFindBLEScanMgr onDeviceVerifyRsp report already bleId " + i + " ; reported = " + paramContext.jdField_a_of_type_Boolean);
-          }
-        }
-      } while (!"QFIND_BLE_CONNECT_ERROR".equals(paramContext));
-      i = paramIntent.getExtras().getInt("bleId");
-      paramIntent = this.a.a.values().iterator();
-      do
-      {
-        if (!paramIntent.hasNext()) {
-          break;
-        }
-        paramContext = (zzg)paramIntent.next();
-      } while (paramContext.c != i);
-      for (;;)
-      {
-        if (paramContext == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("QFindBLE", 2, "QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR bleId " + i + " is not in mReportedDevice");
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR bleId " + i + " ; reported = " + paramContext.jdField_a_of_type_Boolean);
-        }
-        if (!paramContext.jdField_a_of_type_Boolean)
-        {
-          QFindBLEScanMgr.a(this.a, paramContext, paramContext.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo, false);
-          paramIntent = "" + paramContext.jdField_a_of_type_Int + "|" + paramContext.a();
-          paramContext.jdField_a_of_type_Boolean = true;
-          paramContext.jdField_b_of_type_Boolean = false;
-          paramContext = (zzg)this.a.a.put(paramIntent, paramContext);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("QFindBLE", 2, "QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR old bleId " + paramContext.c + " ; reported = " + paramContext.jdField_a_of_type_Boolean);
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("QFindBLE", 2, "QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR report already bleId " + i + " ; reported = " + paramContext.jdField_a_of_type_Boolean);
-        return;
-        paramContext = null;
       }
       paramContext = null;
+      label120:
+      if (paramContext == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("QFindBLEScanMgr GATT_SERVICES_DISCOVERED bleId ");
+          paramContext.append(i);
+          paramContext.append(" is not in mReportedDevice");
+          QLog.i("QFindBLE", 2, paramContext.toString());
+        }
+        return;
+      }
+      paramContext = JNIEngineLite.packVerifyReq((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
+      QFindGattManager.a().a(i, paramContext);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("QFindBLEScanMgr GATT_SERVICES_DISCOVERED bleId ");
+        paramContext.append(i);
+        QLog.i("QFindBLE", 2, paramContext.toString());
+      }
+    }
+    else
+    {
+      if ("onDeviceVerifyRsp".equals(paramContext))
+      {
+        paramContext = paramIntent.getExtras();
+        i = paramContext.getInt("bleId");
+        paramIntent = paramContext.getByteArray("buffer");
+        Iterator localIterator = this.a.r.values().iterator();
+        do
+        {
+          paramContext = localStringBuilder;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          paramContext = (BlePeerInfo)localIterator.next();
+        } while (paramContext.i != i);
+        if (paramContext == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("QFindBLEScanMgr onDeviceVerifyRsp bleId ");
+            paramContext.append(i);
+            paramContext.append(" is not in mReportedDevice");
+            QLog.i("QFindBLE", 2, paramContext.toString());
+          }
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("QFindBLEScanMgr onDeviceVerifyRsp bleId ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(": data ");
+          localStringBuilder.append(paramIntent.length);
+          QLog.i("QFindBLE", 2, localStringBuilder.toString());
+        }
+        if (!paramContext.m)
+        {
+          paramContext.k = paramIntent;
+          QFindBLEScanMgr.a(this.a, paramContext, paramContext.j, true);
+          paramIntent = new StringBuilder();
+          paramIntent.append("");
+          paramIntent.append(paramContext.e);
+          paramIntent.append("|");
+          paramIntent.append(paramContext.a());
+          paramIntent = paramIntent.toString();
+          paramContext.m = true;
+          paramContext.n = false;
+          paramIntent = (BlePeerInfo)this.a.r.put(paramIntent, paramContext);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("QFindBLEScanMgr onDeviceVerifyRsp old bleId ");
+            localStringBuilder.append(paramIntent.i);
+            localStringBuilder.append(" ; reported = ");
+            localStringBuilder.append(paramIntent.m);
+            QLog.i("QFindBLE", 2, localStringBuilder.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("QFindBLEScanMgr onDeviceVerifyRsp report already bleId ");
+          paramIntent.append(i);
+          paramIntent.append(" ; reported = ");
+          paramIntent.append(paramContext.m);
+          QLog.i("QFindBLE", 2, paramIntent.toString());
+        }
+        QFindGattManager.a().b(paramContext.a());
+        return;
+      }
+      if ("QFIND_BLE_CONNECT_ERROR".equals(paramContext))
+      {
+        i = paramIntent.getExtras().getInt("bleId");
+        paramIntent = this.a.r.values().iterator();
+        while (paramIntent.hasNext())
+        {
+          paramContext = (BlePeerInfo)paramIntent.next();
+          if (paramContext.i == i) {
+            break label702;
+          }
+        }
+        paramContext = null;
+        label702:
+        if (paramContext == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR bleId ");
+            paramContext.append(i);
+            paramContext.append(" is not in mReportedDevice");
+            QLog.i("QFindBLE", 2, paramContext.toString());
+          }
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR bleId ");
+          paramIntent.append(i);
+          paramIntent.append(" ; reported = ");
+          paramIntent.append(paramContext.m);
+          QLog.i("QFindBLE", 2, paramIntent.toString());
+        }
+        if (!paramContext.m)
+        {
+          QFindBLEScanMgr.a(this.a, paramContext, paramContext.j, false);
+          paramIntent = new StringBuilder();
+          paramIntent.append("");
+          paramIntent.append(paramContext.e);
+          paramIntent.append("|");
+          paramIntent.append(paramContext.a());
+          paramIntent = paramIntent.toString();
+          paramContext.m = true;
+          paramContext.n = false;
+          paramContext = (BlePeerInfo)this.a.r.put(paramIntent, paramContext);
+          if (QLog.isColorLevel())
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR old bleId ");
+            paramIntent.append(paramContext.i);
+            paramIntent.append(" ; reported = ");
+            paramIntent.append(paramContext.m);
+            QLog.i("QFindBLE", 2, paramIntent.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("QFindBLEScanMgr QFIND_BLE_CONNECT_ERROR report already bleId ");
+          paramIntent.append(i);
+          paramIntent.append(" ; reported = ");
+          paramIntent.append(paramContext.m);
+          QLog.i("QFindBLE", 2, paramIntent.toString());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.NotifyReceiver
  * JD-Core Version:    0.7.0.1
  */

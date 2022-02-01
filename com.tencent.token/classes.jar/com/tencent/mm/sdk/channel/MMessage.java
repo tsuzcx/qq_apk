@@ -1,38 +1,42 @@
 package com.tencent.mm.sdk.channel;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.qk;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MMessage
+public final class MMessage
 {
-  public static void send(Context paramContext, String paramString1, String paramString2)
+  public static final class Receiver
+    extends BroadcastReceiver
   {
-    send(paramContext, paramString1, "com.tencent.mm.sdk.channel.Intent.ACTION_MESSAGE", paramString2);
-  }
-  
-  public static void send(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    send(paramContext, paramString1, paramString2, paramString3, null);
-  }
-  
-  public static boolean send(Context paramContext, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
-  {
-    paramString1 = paramString1 + ".permission.MM_MESSAGE";
-    paramString2 = new Intent(paramString2);
-    if (paramBundle != null) {
-      paramString2.putExtras(paramBundle);
+    public static final Map<String, MMessage.a> a = new HashMap();
+    private final MMessage.a b = null;
+    
+    public Receiver()
+    {
+      this((byte)0);
     }
-    paramBundle = paramContext.getPackageName();
-    paramString2.putExtra("_mmessage_sdkVersion", 553910273);
-    paramString2.putExtra("_mmessage_appPackage", paramBundle);
-    paramString2.putExtra("_mmessage_content", paramString3);
-    paramString2.putExtra("_mmessage_checksum", MMessageUtil.a(paramString3, paramBundle));
-    paramContext.sendBroadcast(paramString2, paramString1);
-    Log.d("MicroMsg.SDK.MMessage", "send mm message, intent=" + paramString2 + ", perm=" + paramString1);
-    return true;
+    
+    private Receiver(byte paramByte) {}
+    
+    public final void onReceive(Context paramContext, Intent paramIntent)
+    {
+      qk.c("MicroMsg.SDK.MMessage", "receive intent=".concat(String.valueOf(paramIntent)));
+      if (this.b != null)
+      {
+        qk.c("MicroMsg.SDK.MMessage", "mm message self-handled");
+        return;
+      }
+      if ((MMessage.a)a.get(paramIntent.getAction()) != null) {
+        qk.c("MicroMsg.SDK.MMessage", "mm message handled");
+      }
+    }
   }
+  
+  public static abstract interface a {}
 }
 
 

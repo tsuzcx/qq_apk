@@ -1,16 +1,25 @@
 import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
-class dor
-  implements Runnable
+public class dor
+  extends TroopObserver
 {
-  dor(doo paramdoo) {}
+  public dor(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  protected void a(int paramInt, byte paramByte, String paramString)
   {
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
+    if (paramInt == 6) {
+      if (paramByte == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt != 2) || (paramByte != 0)) {
+      return;
+    }
+    TroopAssistantManager.a().b(paramString, this.a.b);
+    this.a.h();
   }
 }
 

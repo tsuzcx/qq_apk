@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ahuf;
 import android.util.SparseArray;
-import bdga;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ConfigUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
-public class CTEntryMng$2
+class CTEntryMng$2
   implements Runnable
 {
-  public CTEntryMng$2(ahuf paramahuf, SparseArray paramSparseArray) {}
+  CTEntryMng$2(CTEntryMng paramCTEntryMng, SparseArray paramSparseArray) {}
   
   public void run()
   {
-    String str = ahuf.a(this.this$0, this.a);
+    String str = CTEntryMng.a(this.this$0, this.a);
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveEntryRedDot value: %s", new Object[] { str }));
     }
-    bdga.a(ahuf.a(this.this$0).getApp(), ahuf.a(this.this$0).c(), "ct_entry_reddot_info", str);
+    ConfigUtil.a(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "ct_entry_reddot_info", str);
   }
 }
 

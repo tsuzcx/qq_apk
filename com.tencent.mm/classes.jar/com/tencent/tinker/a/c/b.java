@@ -3,27 +3,30 @@ package com.tencent.tinker.a.c;
 public final class b
   implements Cloneable
 {
-  private static final int[] bgZ = new int[0];
-  public int[] Bqu = new int[this.Fk.length];
-  public int[] Fk = new int[10];
-  public int mSize = 0;
+  private static final int[] dTZ = new int[0];
+  public int[] Sk;
+  public int[] ahPi;
+  public int mSize;
   
   public b()
   {
-    this((byte)0);
+    this(10);
   }
   
-  private b(byte paramByte) {}
-  
-  private static int ad(int paramInt)
+  public b(int paramInt)
   {
-    if (paramInt <= 4) {
-      return 8;
+    if (paramInt == 0) {
+      this.Sk = dTZ;
     }
-    return (paramInt >> 1) + paramInt;
+    for (this.ahPi = dTZ;; this.ahPi = new int[this.Sk.length])
+    {
+      this.mSize = 0;
+      return;
+      this.Sk = new int[paramInt];
+    }
   }
   
-  private static int b(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int i = paramInt1 - 1;
     paramInt1 = 0;
@@ -59,14 +62,22 @@ public final class b
       paramArrayOfInt[paramInt2] = paramInt3;
       return paramArrayOfInt;
     }
-    int[] arrayOfInt = new int[ad(paramInt1)];
+    int[] arrayOfInt = new int[ef(paramInt1)];
     System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt2);
     arrayOfInt[paramInt2] = paramInt3;
     System.arraycopy(paramArrayOfInt, paramInt2, arrayOfInt, paramInt2 + 1, paramArrayOfInt.length - paramInt2);
     return arrayOfInt;
   }
   
-  private b dWu()
+  private static int ef(int paramInt)
+  {
+    if (paramInt <= 4) {
+      return 8;
+    }
+    return (paramInt >> 1) + paramInt;
+  }
+  
+  private b kcb()
   {
     try
     {
@@ -77,8 +88,8 @@ public final class b
     {
       try
       {
-        localb.Fk = ((int[])this.Fk.clone());
-        localb.Bqu = ((int[])this.Bqu.clone());
+        localb.Sk = ((int[])this.Sk.clone());
+        localb.ahPi = ((int[])this.ahPi.clone());
         return localb;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -87,7 +98,7 @@ public final class b
     }
   }
   
-  public static int[] h(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int[] l(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramArrayOfInt.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + paramArrayOfInt.length + " currentSize: " + paramInt1);
@@ -95,29 +106,50 @@ public final class b
     int[] arrayOfInt = paramArrayOfInt;
     if (paramInt1 + 1 > paramArrayOfInt.length)
     {
-      arrayOfInt = new int[ad(paramInt1)];
+      arrayOfInt = new int[ef(paramInt1)];
       System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
     }
     arrayOfInt[paramInt1] = paramInt2;
     return arrayOfInt;
   }
   
-  public final int indexOfKey(int paramInt)
+  public final int aIF(int paramInt)
   {
-    return b(this.Fk, this.mSize, paramInt);
+    paramInt = a(this.Sk, this.mSize, paramInt);
+    if (paramInt < 0) {
+      return 0;
+    }
+    return this.ahPi[paramInt];
+  }
+  
+  public final int aIG(int paramInt)
+  {
+    return a(this.Sk, this.mSize, paramInt);
+  }
+  
+  public final void pX(int paramInt1, int paramInt2)
+  {
+    if ((this.mSize != 0) && (paramInt1 <= this.Sk[(this.mSize - 1)]))
+    {
+      put(paramInt1, paramInt2);
+      return;
+    }
+    this.Sk = l(this.Sk, this.mSize, paramInt1);
+    this.ahPi = l(this.ahPi, this.mSize, paramInt2);
+    this.mSize += 1;
   }
   
   public final void put(int paramInt1, int paramInt2)
   {
-    int i = b(this.Fk, this.mSize, paramInt1);
+    int i = a(this.Sk, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.Bqu[i] = paramInt2;
+      this.ahPi[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
-    this.Fk = c(this.Fk, this.mSize, i, paramInt1);
-    this.Bqu = c(this.Bqu, this.mSize, i, paramInt2);
+    this.Sk = c(this.Sk, this.mSize, i, paramInt1);
+    this.ahPi = c(this.ahPi, this.mSize, i, paramInt2);
     this.mSize += 1;
   }
   
@@ -134,9 +166,9 @@ public final class b
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.Fk[i]);
+      localStringBuilder.append(this.Sk[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.Bqu[i]);
+      localStringBuilder.append(this.ahPi[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -145,7 +177,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,72 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.protocal.protobuf.sw;
-import com.tencent.mm.protocal.protobuf.sx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.dco;
+import com.tencent.mm.protocal.protobuf.dfo;
+import com.tencent.mm.sdk.platformtools.RWCache;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 public final class h
 {
-  private final int uNE = 0;
-  private final int uNF = 1;
-  private final int uNG = 2;
-  public LinkedList<String> uVv = null;
-  public boolean uVw = false;
+  public int WKG;
+  public int WKH;
+  public int WKI;
+  public final List<dfo> WKJ;
+  public int WKK;
+  public long WKL;
   
-  public final int f(LinkedList<String> paramLinkedList, String paramString)
+  private h()
   {
-    AppMethodBeat.i(153131);
-    try
+    AppMethodBeat.i(78862);
+    this.WKG = 20480;
+    this.WKH = 30720;
+    this.WKI = 51200;
+    this.WKJ = new LinkedList();
+    this.WKK = 0;
+    this.WKL = 0L;
+    AppMethodBeat.o(78862);
+  }
+  
+  public static void mh(List<dco> paramList)
+  {
+    AppMethodBeat.i(78863);
+    if (Util.isNullOrNil(paramList))
     {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = 2;
-      b.a locala = new b.a();
-      locala.fsX = new sw();
-      locala.fsY = new sx();
-      locala.uri = "/cgi-bin/micromsg-bin/checktextlanguage";
-      locala.funcId = 528;
-      locala.reqCmdId = 0;
-      locala.respCmdId = 0;
-      sw localsw = (sw)locala.ado().fsV.fta;
-      localsw.wLo = paramLinkedList;
-      localsw.wLp = paramString;
-      paramLinkedList = new CountDownLatch(1);
-      new Bundle();
-      com.tencent.mm.ipcinvoker.wx_extension.b.a(locala.ado(), new h.1(this, arrayOfInt, paramLinkedList));
-      try
-      {
-        paramLinkedList.await(1000L, TimeUnit.MILLISECONDS);
-        ab.i("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage end");
-        int i = arrayOfInt[0];
-        AppMethodBeat.o(153131);
-        return i;
-      }
-      catch (InterruptedException paramLinkedList)
-      {
-        for (;;)
-        {
-          ab.w("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList.getMessage());
-          ab.printErrStackTrace("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList, "", new Object[0]);
-        }
-      }
-      return 2;
+      AppMethodBeat.o(78863);
+      return;
     }
-    catch (Exception paramLinkedList)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      ab.e("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage failed");
-      AppMethodBeat.o(153131);
+      dco localdco = (dco)paramList.next();
+      g localg = com.tencent.mm.plugin.webview.modeltools.g.iwb();
+      int i = localdco.ZsX;
+      long l1 = Util.nowSecond();
+      long l2 = localdco.aaIw;
+      localg.WKE.set(Integer.valueOf(i), Long.valueOf(l1 + l2));
+    }
+    com.tencent.mm.plugin.webview.modeltools.g.iwb().iuZ();
+    AppMethodBeat.o(78863);
+  }
+  
+  public static final class a
+  {
+    private static final h WKM;
+    
+    static
+    {
+      AppMethodBeat.i(78861);
+      WKM = new h((byte)0);
+      AppMethodBeat.o(78861);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.h
  * JD-Core Version:    0.7.0.1
  */

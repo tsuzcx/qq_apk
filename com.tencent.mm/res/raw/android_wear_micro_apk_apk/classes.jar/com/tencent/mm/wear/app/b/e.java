@@ -3,19 +3,19 @@ package com.tencent.mm.wear.app.b;
 public final class e
   implements Runnable
 {
-  int aaO;
-  int aaw;
+  int adX;
+  int aep;
   
-  e(d paramd, int paramInt1, int paramInt2)
+  e(d paramd, int paramInt)
   {
-    this.aaw = paramInt2;
-    this.aaO = paramInt1;
+    this.adX = paramInt;
+    this.aep = 11001;
   }
   
   public final void run()
   {
-    if (d.a(this.aaW) != null) {
-      d.a(this.aaW).af(this.aaO, this.aaw);
+    if (d.a(this.aex) != null) {
+      d.a(this.aex).ai(this.aep, this.adX);
     }
   }
 }

@@ -23,14 +23,15 @@ public final class CameraEmotionRoaming_sso$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 66 }, new String[] { "int32_result", "bytes_fail_msg", "uint32_cmd_type", "upLoad_rsp", "upLoad_state_rsp", "get_list_rsp", "del_rsp", "bytes_rsp_other" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), null, null, null, null, localByteStringMicro2 }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 66 }, new String[] { "int32_result", "bytes_fail_msg", "uint32_cmd_type", "upLoad_rsp", "upLoad_state_rsp", "get_list_rsp", "del_rsp", "bytes_rsp_other" }, new Object[] { localInteger, localByteStringMicro1, localInteger, null, null, null, null, localByteStringMicro2 }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.selfgif.CameraEmotionRoaming_sso.RspBody
  * JD-Core Version:    0.7.0.1
  */

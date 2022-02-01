@@ -9,14 +9,17 @@ import android.provider.Settings.System;
 class OrientationDetector$RotationObserver
   extends ContentObserver
 {
-  private ContentResolver mResolver;
-  
   public OrientationDetector$RotationObserver(OrientationDetector paramOrientationDetector, Handler paramHandler)
   {
     super(paramHandler);
-    if (paramOrientationDetector.getContext() != null) {
-      this.mResolver = paramOrientationDetector.getContext().getContentResolver();
+  }
+  
+  public ContentResolver getContentResolver()
+  {
+    if (this.this$0.getContext() != null) {
+      return this.this$0.getContext().getContentResolver();
     }
+    return null;
   }
   
   public void onChange(boolean paramBoolean)
@@ -31,28 +34,34 @@ class OrientationDetector$RotationObserver
       OrientationDetector.access$002(this.this$0, true);
       this.this$0.enable(true);
     }
-    for (;;)
+    else
     {
-      ViolaLogUtils.d("OrientationDetector", "RotationObserver.onChange() : rotateState=" + i);
-      return;
       OrientationDetector.access$002(this.this$0, false);
       this.this$0.enable(false);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RotationObserver.onChange() : rotateState=");
+    localStringBuilder.append(i);
+    ViolaLogUtils.d("OrientationDetector", localStringBuilder.toString());
   }
   
   public void registerObserver()
   {
-    this.mResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    if (getContentResolver() != null) {
+      getContentResolver().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    }
   }
   
   public void unregisterObserver()
   {
-    this.mResolver.unregisterContentObserver(this);
+    if (getContentResolver() != null) {
+      getContentResolver().unregisterContentObserver(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector.RotationObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,14 @@ class FaceGestureDetGLThread$1
   
   public void run()
   {
-    FaceGestureDetGLThread.access$002(this.this$0, AlgoUtils.getHistogram(this.val$data, this.val$faceDetWidth, this.val$faceDetHeight, FaceGestureDetGLThread.access$100(this.this$0).getAllFaces(), FaceGestureDetGLThread.access$200(this.this$0), FaceGestureDetGLThread.access$300(this.this$0)));
+    FaceGestureDetGLThread localFaceGestureDetGLThread = this.this$0;
+    FaceGestureDetGLThread.access$002(localFaceGestureDetGLThread, AlgoUtils.getHistogram(this.val$data, this.val$faceDetWidth, this.val$faceDetHeight, FaceGestureDetGLThread.access$100(localFaceGestureDetGLThread).getAllFaces(), FaceGestureDetGLThread.access$200(this.this$0), FaceGestureDetGLThread.access$300(this.this$0)));
     this.val$hisCdl.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.thread.FaceGestureDetGLThread.1
  * JD-Core Version:    0.7.0.1
  */

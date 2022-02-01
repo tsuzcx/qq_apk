@@ -8,12 +8,12 @@ import android.util.DisplayMetrics;
 final class ae
   extends p
 {
-  private final z Fv;
+  private final z Hk;
   
   public ae(Context paramContext, z paramz)
   {
     super(paramContext);
-    this.Fv = paramz;
+    this.Hk = paramz;
   }
   
   protected final float a(DisplayMetrics paramDisplayMetrics)
@@ -21,9 +21,9 @@ final class ae
     return 100.0F / paramDisplayMetrics.densityDpi;
   }
   
-  public final PointF ah(int paramInt)
+  public final PointF at(int paramInt)
   {
-    if (paramInt < this.Fv.fJ()) {
+    if (paramInt < this.Hk.fT()) {
       return new PointF(0.0F, -1.0F);
     }
     return new PointF(0.0F, 1.0F);

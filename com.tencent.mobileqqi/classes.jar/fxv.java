@@ -9,7 +9,8 @@ public final class fxv
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 

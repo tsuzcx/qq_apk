@@ -8,8 +8,8 @@ public final class RefreshVerifyCode
   extends JceStruct
 {
   static byte[] cache_vEncryptUsrInfo;
-  public byte bType;
-  public byte[] vEncryptUsrInfo;
+  public byte bType = 0;
+  public byte[] vEncryptUsrInfo = null;
   
   public RefreshVerifyCode() {}
   
@@ -38,7 +38,7 @@ public final class RefreshVerifyCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.RefreshVerifyCode
  * JD-Core Version:    0.7.0.1
  */

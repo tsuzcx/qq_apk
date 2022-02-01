@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import amrv;
-import aoom;
+import com.tencent.mobileqq.applets.AppletsObserver;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
 class MiniAppDesktop$RedDotAppletsObserver
-  extends amrv
+  extends AppletsObserver
 {
   private WeakReference<MiniAppDesktopLayout> layoutReference;
   
@@ -16,28 +16,37 @@ class MiniAppDesktop$RedDotAppletsObserver
     this.layoutReference = new WeakReference(paramMiniAppDesktopLayout);
   }
   
-  public void onAppletsSettingSwitchChange(int paramInt)
+  protected void onAppletsSettingSwitchChange(int paramInt)
   {
     updateAppletsSettingSwitchState(paramInt);
   }
   
   protected void updateAppletsSettingSwitchState(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppDesktop", 2, "updateAppletsSettingSwitchState:  switchState: " + paramInt);
-    }
-    if ((aoom.l()) && (this.layoutReference != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      MiniAppDesktopLayout localMiniAppDesktopLayout = (MiniAppDesktopLayout)this.layoutReference.get();
-      if (localMiniAppDesktopLayout != null) {
-        localMiniAppDesktopLayout.onChangeRedDotSwitch(paramInt, false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAppletsSettingSwitchState:  switchState: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MiniAppDesktop", 2, ((StringBuilder)localObject).toString());
+    }
+    if (MiniAppConfProcessor.m())
+    {
+      localObject = this.layoutReference;
+      if (localObject != null)
+      {
+        localObject = (MiniAppDesktopLayout)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((MiniAppDesktopLayout)localObject).onChangeRedDotSwitch(paramInt, false);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.RedDotAppletsObserver
  * JD-Core Version:    0.7.0.1
  */

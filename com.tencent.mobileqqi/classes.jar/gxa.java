@@ -1,24 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import android.os.Handler;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class gxa
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
   public gxa(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (paramBundle.getBoolean("ret"))
-    {
-      VideoPlayLogic.b(this.a);
-      return;
+    if (VideoPlayLogic.a(this.a) != null) {
+      VideoPlayLogic.c(this.a);
     }
-    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
-      VideoPlayLogic.a(this.a).dismiss();
-    }
-    this.a.a(VideoPlayLogic.a(this.a));
+    this.a.b.removeCallbacks(VideoPlayLogic.a(this.a));
   }
 }
 

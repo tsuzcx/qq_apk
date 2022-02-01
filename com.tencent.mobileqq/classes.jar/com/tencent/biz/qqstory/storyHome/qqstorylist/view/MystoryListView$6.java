@@ -9,12 +9,12 @@ class MystoryListView$6
   
   public void run()
   {
-    MystoryListView.a(this.this$0).setVisibility(0);
+    MystoryListView.j(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView.6
  * JD-Core Version:    0.7.0.1
  */

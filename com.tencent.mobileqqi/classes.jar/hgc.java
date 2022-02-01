@@ -1,40 +1,25 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.text.Selection;
-import android.text.Spannable;
+import android.text.ClipboardManager;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
 public class hgc
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  public hgc(ContainerView.SelectableTextView paramSelectableTextView) {}
+  public hgc(ContextMenuTextView paramContextMenuTextView) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
-    {
-      this.a.onTextContextMenuItem(16908321);
-      Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131559338), 0).show();
+    if ((ContextMenuTextView.a(this.a) != null) && (ContextMenuTextView.a(this.a).isShowing())) {
+      ContextMenuTextView.a(this.a).dismiss();
     }
-    for (;;)
+    if (paramView.getId() == 2131234878)
     {
-      return true;
-      try
-      {
-        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
-        this.a.onTextContextMenuItem(16908328);
-        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
-        }
-      }
+      paramView = ContextMenuTextView.a(this.a);
+      ContextMenuTextView.a(this.a);
+      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
     }
   }
 }

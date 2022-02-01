@@ -2,10 +2,6 @@ package com.tencent.thumbplayer.api;
 
 public class TPVideoFrameBuffer
 {
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_NONE = -1;
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_V_RGB565 = 37;
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_V_YUV420P = 0;
-  public static final int TP_PLAYER_AVFRAME_OUTPUT_FORMAT_V_YUVJ420P = 12;
   public byte[][] data;
   public int dstHeight;
   public int dstWidth;
@@ -75,7 +71,7 @@ public class TPVideoFrameBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoFrameBuffer
  * JD-Core Version:    0.7.0.1
  */

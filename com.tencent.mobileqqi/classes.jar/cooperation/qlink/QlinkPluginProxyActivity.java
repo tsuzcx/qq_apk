@@ -14,7 +14,7 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
-import iat;
+import ias;
 
 public class QlinkPluginProxyActivity
   extends PluginProxyActivity
@@ -39,7 +39,7 @@ public class QlinkPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    boolean bool = PluginUtils.isPluginInstalled(paramActivity, "qlink_plugin.apk", "master");
+    boolean bool = PluginUtils.isPluginInstalled(paramActivity, "qlink_plugin.apk", "603");
     if (QLog.isColorLevel()) {
       QLog.d("QlinkLog", 2, "launchPluingActivityForResult.isPluginInstalled end: " + bool);
     }
@@ -48,7 +48,7 @@ public class QlinkPluginProxyActivity
     {
       localObject = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131427376));
       ((QQProgressDialog)localObject).a(paramActivity.getString(2131559634));
-      ((QQProgressDialog)localObject).setOnDismissListener(new iat(paramOnDismissListener));
+      ((QQProgressDialog)localObject).setOnDismissListener(new ias(paramOnDismissListener));
     }
     for (paramOnDismissListener = (DialogInterface.OnDismissListener)localObject;; paramOnDismissListener = null)
     {

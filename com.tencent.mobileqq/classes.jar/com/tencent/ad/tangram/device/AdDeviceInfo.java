@@ -1,289 +1,191 @@
 package com.tencent.ad.tangram.device;
 
 import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.text.TextUtils;
+import com.tencent.ad.tangram.analysis.AdUin;
+import com.tencent.ad.tangram.experiment.AdExperimentManager;
+import com.tencent.ad.tangram.lbs.AdLocationManager;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdIPV4;
-import com.tencent.ad.tangram.net.AdIPV4.a;
-import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForIMEI;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForIMEI.Item;
-import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.protocol.qq_common.DeviceExt.HevcCompatibilityInfo;
+import com.tencent.ad.tangram.protocol.qq_common.DeviceExt.IdInfo;
+import com.tencent.ad.tangram.settings.AdSettingsManager;
+import com.tencent.ad.tangram.video.AdVideo;
+import com.tencent.ad.tangram.video.AdVideo.CodecCapability;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 @Keep
-public final class AdDeviceInfo
+public enum AdDeviceInfo
 {
-  private static final int MUID_SOURCE_DEVICE_ID = 1;
-  private static final int MUID_SOURCE_IMEI = 2;
-  private static final int MUID_SOURCE_MAC_ADDRESS = 3;
-  private static final int MUID_SOURCE_UNKNOWN = 0;
-  private static final String TAG = "AdDeviceInfo";
+  INSTANCE;
   
-  public static boolean canUseIMEI(Context paramContext)
+  public static final String NEW_DEVICE_INFO_KEY = "newDeviceInfo";
+  private static final String TAG = "AdDeviceInfo";
+  public static final String TRAFFIC_TYPE = "26";
+  private static final String WX_OPENSDK_VERSION = "com.tencent.mm.BuildInfo.OPEN_SDK_VERSION";
+  private static final String WX_PACKAGE_NAME = "com.tencent.mm";
+  private volatile boolean initialized = false;
+  
+  private AdDeviceInfo() {}
+  
+  private AdDeviceInfo.Result createV1(Context paramContext, AdDeviceInfo.Params paramParams, gdt_settings.Settings paramSettings)
   {
-    Object localObject1 = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if ((localObject1 == null) || (((gdt_settings.Settings)localObject1).settingsForIMEI.items == null) || (((gdt_settings.Settings)localObject1).settingsForIMEI.items.length <= 0)) {
-      return false;
-    }
-    localObject1 = ((gdt_settings.Settings)localObject1).settingsForIMEI.items;
-    int k = localObject1.length;
-    int j = 0;
-    label55:
-    Object localObject2;
-    int i;
-    if (j < k)
-    {
-      localObject2 = localObject1[j];
-      if ((localObject2.androidSDK != 0) && (localObject2.phoneType != 0)) {
-        if ((localObject2.androidSDK == Build.VERSION.SDK_INT) && (localObject2.phoneType == b.getPhoneType(paramContext))) {
-          i = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        return true;
-        i = 0;
-        continue;
-        if (localObject2.androidSDK != 0)
-        {
-          if (localObject2.androidSDK == Build.VERSION.SDK_INT)
-          {
-            i = 1;
-            continue;
-          }
-          i = 0;
-          continue;
-        }
-        if (localObject2.phoneType != 0)
-        {
-          if (localObject2.phoneType == b.getPhoneType(paramContext))
-          {
-            i = 1;
-            continue;
-          }
-          i = 0;
-        }
-      }
-      else
-      {
-        j += 1;
-        break label55;
-        break;
-      }
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static AdDeviceInfo.Result create(Context paramContext)
+  private static qq_common.DeviceExt.HevcCompatibilityInfo[] getHevcCompatibilityInfo()
+  {
+    Object localObject = AdVideo.INSTANCE.getHEVCMaxCapability(1);
+    if (localObject == null) {
+      return null;
+    }
+    qq_common.DeviceExt.HevcCompatibilityInfo localHevcCompatibilityInfo = new qq_common.DeviceExt.HevcCompatibilityInfo();
+    localHevcCompatibilityInfo.video_player_type = 1;
+    localHevcCompatibilityInfo.max_luma_samples = ((AdVideo.CodecCapability)localObject).lumaSamples;
+    localHevcCompatibilityInfo.max_fps = ((AdVideo.CodecCapability)localObject).framerateForLumaSamples;
+    localObject = new ArrayList();
+    ((ArrayList)localObject).add(localHevcCompatibilityInfo);
+    return (qq_common.DeviceExt.HevcCompatibilityInfo[])((ArrayList)localObject).toArray(new qq_common.DeviceExt.HevcCompatibilityInfo[((ArrayList)localObject).size()]);
+  }
+  
+  private static qq_common.DeviceExt.IdInfo[] getIdInfoArray(Map<Integer, AdDeviceIdentifier> paramMap)
+  {
+    if (paramMap != null)
+    {
+      if (paramMap.isEmpty()) {
+        return null;
+      }
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramMap.entrySet().iterator();
+      qq_common.DeviceExt.IdInfo localIdInfo;
+      while (localIterator.hasNext())
+      {
+        paramMap = (Map.Entry)localIterator.next();
+        Integer localInteger = (Integer)paramMap.getKey();
+        if ((localInteger != null) && (localInteger.intValue() != 0))
+        {
+          if (paramMap.getValue() != null) {
+            paramMap = ((AdDeviceIdentifier)paramMap.getValue()).idHash;
+          } else {
+            paramMap = null;
+          }
+          if (!TextUtils.isEmpty(paramMap))
+          {
+            localIdInfo = (qq_common.DeviceExt.IdInfo)localHashMap.get(paramMap);
+            localObject = localIdInfo;
+            if (localIdInfo == null)
+            {
+              localObject = new qq_common.DeviceExt.IdInfo();
+              ((qq_common.DeviceExt.IdInfo)localObject).id_h = paramMap;
+            }
+            int i = ((qq_common.DeviceExt.IdInfo)localObject).bitmap;
+            ((qq_common.DeviceExt.IdInfo)localObject).bitmap = (localInteger.intValue() | i);
+            localHashMap.put(paramMap, localObject);
+          }
+        }
+      }
+      paramMap = new ArrayList();
+      Object localObject = localHashMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localIdInfo = (qq_common.DeviceExt.IdInfo)((Map.Entry)((Iterator)localObject).next()).getValue();
+        if ((localIdInfo != null) && (!TextUtils.isEmpty(localIdInfo.id_h)) && (localIdInfo.bitmap != 0)) {
+          paramMap.add(localIdInfo);
+        }
+      }
+      if (paramMap.isEmpty()) {
+        return null;
+      }
+      return (qq_common.DeviceExt.IdInfo[])paramMap.toArray(new qq_common.DeviceExt.IdInfo[paramMap.size()]);
+    }
+    return null;
+  }
+  
+  private static int getWeChatAPIVer(Context paramContext)
   {
     if (paramContext == null)
     {
-      AdLog.e("AdDeviceInfo", "create error");
-      return null;
+      AdLog.e("AdDeviceInfo", "getWXAppSupportAPI: context is null");
+      return 0;
     }
-    AdDeviceInfo.Result localResult = new AdDeviceInfo.Result();
-    int k = b.getPhoneType(paramContext);
-    boolean bool;
-    if (!TextUtils.isEmpty(b.getDeviceIdCache(paramContext))) {
-      bool = true;
-    }
-    for (;;)
+    try
     {
-      long l = System.currentTimeMillis();
-      String str1 = AdDeviceIdMD5Digest.get(paramContext);
-      Object localObject1 = localResult.eventsForAnalysis;
-      int i;
-      label68:
-      String str2;
-      label118:
-      String str3;
-      label151:
-      label179:
-      label213:
-      String str4;
-      int j;
-      if (!TextUtils.isEmpty(str1))
+      if (paramContext.getPackageManager() == null)
       {
-        i = 0;
-        ((List)localObject1).add(AdReporterForAnalysis.createEventForDeviceId(paramContext, i, System.currentTimeMillis() - l, bool, k));
-        l = System.currentTimeMillis();
-        str2 = AdIMEIMD5Digest.get(paramContext);
-        localObject1 = localResult.eventsForAnalysis;
-        if (TextUtils.isEmpty(str2)) {
-          break label745;
-        }
-        i = 0;
-        ((List)localObject1).add(AdReporterForAnalysis.createEventForGetImei(paramContext, i, System.currentTimeMillis() - l, k));
-        if (TextUtils.isEmpty(c.getMacAddressCache(paramContext))) {
-          break label750;
-        }
-        bool = true;
-        l = System.currentTimeMillis();
-        str3 = AdMacAddressMD5Digest.get(paramContext);
-        localObject1 = localResult.eventsForAnalysis;
-        if (TextUtils.isEmpty(str3)) {
-          break label756;
-        }
-        i = 0;
-        ((List)localObject1).add(AdReporterForAnalysis.createEventForMacAddress(paramContext, i, System.currentTimeMillis() - l, bool));
-        if (TextUtils.isEmpty(b.getAndroidIdCache(paramContext))) {
-          break label761;
-        }
-        bool = true;
-        l = System.currentTimeMillis();
-        str4 = a.get(paramContext);
-        localObject1 = localResult.eventsForAnalysis;
-        if (TextUtils.isEmpty(str4)) {
-          break label767;
-        }
-        i = 0;
-        ((List)localObject1).add(AdReporterForAnalysis.createEventForAndroidId(paramContext, i, System.currentTimeMillis() - l, bool));
-        i = -2147483648;
-        l = System.currentTimeMillis();
-        localObject1 = AdCarrier.getCode(paramContext);
-        j = i;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+        AdLog.e("AdDeviceInfo", "getWXAppSupportAPI: getPackageManager is null");
+        return 0;
       }
-      try
+      paramContext = paramContext.getPackageManager().getApplicationInfo("com.tencent.mm", 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
       {
-        j = Integer.parseInt((String)localObject1);
-        localObject1 = localResult.eventsForAnalysis;
-        if (j != -2147483648)
-        {
-          i = 0;
-          ((List)localObject1).add(AdReporterForAnalysis.createEventCarrier(paramContext, i, System.currentTimeMillis() - l));
-          l = System.currentTimeMillis();
-          String str5 = com.qq.gdt.action.qadid.a.createQADID(paramContext);
-          localObject1 = localResult.eventsForAnalysis;
-          if (TextUtils.isEmpty(str5)) {
-            break label794;
-          }
-          i = 0;
-          ((List)localObject1).add(AdReporterForAnalysis.createEventForGetQADID(paramContext, i, System.currentTimeMillis() - l));
-          localObject1 = AdIPV4.INSTANCE.getCache();
-          if (localObject1 == null) {
-            break label799;
-          }
-          localObject1 = ((AdIPV4.a)localObject1).ip;
-          List localList = localResult.eventsForAnalysis;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label805;
-          }
-          i = 0;
-          localList.add(AdReporterForAnalysis.createEventForIPV4(paramContext, i));
-          if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
-          {
-            if (!str1.equals(str2)) {
-              break label810;
-            }
-            localResult.eventsForAnalysis.add(AdReporterForAnalysis.createEventImeiConsistency(paramContext, 0, k));
-          }
-          bool = canUseIMEI(paramContext);
-          if (TextUtils.isEmpty(str1)) {
-            break label830;
-          }
-          localResult.deviceInfo.muid = str1;
-          localResult.deviceInfo.muid_type = 1;
-          i = 1;
-          AdLog.i("AdDeviceInfo", "create muid:" + localResult.deviceInfo.muid + " muid_type:" + localResult.deviceInfo.muid_type + " muidSourceType:" + i + " canUseIMEI:" + bool);
-          localResult.eventsForAnalysis.add(AdReporterForAnalysis.createEventImeiSource(paramContext, i, k));
-          localResult.deviceInfo.conn = AdNet.getType(paramContext);
-          if (j != -2147483648) {
-            localResult.deviceInfo.carrier_code = j;
-          }
-          localResult.deviceInfo.os_ver = Build.VERSION.RELEASE;
-          localResult.deviceInfo.os_type = 2;
-          if (!TextUtils.isEmpty(Build.MANUFACTURER)) {
-            localResult.deviceInfo.manufacturer = Build.MANUFACTURER;
-          }
-          if (!TextUtils.isEmpty(Build.MODEL)) {
-            localResult.deviceInfo.device_brand_and_model = Build.MODEL;
-          }
-          if (!TextUtils.isEmpty(str5)) {
-            localResult.deviceInfo.qadid = str5;
-          }
-          localResult.deviceInfo.md5_mac = str3;
-          localResult.deviceInfo.md5_android_id = str4;
-          localResult.deviceInfo.client_ipv4 = ((String)localObject1);
-          localResult.deviceInfo.origin_network_type = AdNet.getNetworkType(paramContext);
-          return localResult;
-          bool = false;
-          continue;
-          i = 1;
-          break label68;
-          label745:
-          i = 1;
-          break label118;
-          label750:
-          bool = false;
-          break label151;
-          label756:
-          i = 1;
-          break label179;
-          label761:
-          bool = false;
-          break label213;
-          label767:
-          i = 1;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          AdLog.e("AdDeviceInfo", "create", localThrowable);
-          j = i;
-          continue;
-          i = 1;
-          continue;
-          label794:
-          i = 1;
-          continue;
-          label799:
-          Object localObject2 = null;
-          continue;
-          label805:
-          i = 1;
-          continue;
-          label810:
-          localResult.eventsForAnalysis.add(AdReporterForAnalysis.createEventImeiConsistency(paramContext, 1, k));
-          continue;
-          label830:
-          if ((!TextUtils.isEmpty(str2)) && (bool))
-          {
-            localResult.deviceInfo.muid = str2;
-            localResult.deviceInfo.muid_type = 1;
-            i = 2;
-          }
-          else if (!TextUtils.isEmpty(str3))
-          {
-            localResult.deviceInfo.muid = str3;
-            localResult.deviceInfo.muid_type = 3;
-            i = 3;
-          }
-          else
-          {
-            localResult.deviceInfo.muid_type = 0;
-            i = 0;
-          }
-        }
+        int i = paramContext.metaData.getInt("com.tencent.mm.BuildInfo.OPEN_SDK_VERSION", 0);
+        return i;
       }
     }
+    catch (Throwable paramContext)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWXAppSupportAPI: error ");
+      localStringBuilder.append(paramContext);
+      AdLog.e("AdDeviceInfo", localStringBuilder.toString());
+    }
+    return 0;
+  }
+  
+  private static boolean isHitDeviceInfoSdkV2(gdt_settings.Settings paramSettings)
+  {
+    return AdExperimentManager.INSTANCE.isHitExperiment(AdUin.INSTANCE.getUIN(), "newDeviceInfo", paramSettings);
+  }
+  
+  public AdDeviceInfo.Result create(Context paramContext, AdDeviceInfo.Params paramParams)
+  {
+    gdt_settings.Settings localSettings = AdSettingsManager.INSTANCE.getCacheByFile();
+    if (paramParams != null) {
+      paramParams.expIds = AdExperimentManager.INSTANCE.getAllExpIdsByCache(AdUin.INSTANCE.getUIN(), localSettings);
+    }
+    if (isHitDeviceInfoSdkV2(localSettings))
+    {
+      AdLog.i("AdDeviceInfo", "use new device sdk");
+      return AdDeviceInfoV2.getInstance().createV2(paramContext, paramParams, localSettings);
+    }
+    AdLog.i("AdDeviceInfo", "use old device sdk");
+    return createV1(paramContext, paramParams, localSettings);
+  }
+  
+  public void init(Context paramContext)
+  {
+    if (this.initialized) {
+      return;
+    }
+    try
+    {
+      if (this.initialized) {
+        return;
+      }
+      this.initialized = true;
+      AdIPV4.INSTANCE.init(paramContext);
+      h.INSTANCE.init(paramContext);
+      AdTAID.getInstance().init(paramContext);
+      AdLocationManager.INSTANCE.init(paramContext);
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.device.AdDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

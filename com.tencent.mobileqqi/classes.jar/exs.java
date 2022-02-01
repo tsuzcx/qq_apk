@@ -1,12 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.BuddyListAdapter.ViewTag;
+import com.tencent.mobileqq.data.Friends;
 
 public class exs
-  extends BuddyListAdapter.ViewTag
 {
-  public ImageView a;
-  public TextView a;
+  public int a;
+  public Friends a;
+  
+  public exs(Friends paramFriends, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

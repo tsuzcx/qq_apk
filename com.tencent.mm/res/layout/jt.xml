@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/aio" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ll" android:layout_marginTop="@dimen/l2" android:layout_marginRight="@dimen/ll" android:layout_marginBottom="@dimen/lb" android:text="@string/aj6" style="@style/fp" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/hf" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jv" />
+    <View android:id="@id/abp" android:background="@color/jq" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/cp" android:paddingTop="15.0dip" android:paddingRight="@dimen/cp" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:id="@id/abh" layout="@layout/ju" />
+        <View android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <include android:id="@id/abi" layout="@layout/ju" />
+    </LinearLayout>
 </LinearLayout>

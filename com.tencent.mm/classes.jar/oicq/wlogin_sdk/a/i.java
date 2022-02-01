@@ -6,32 +6,32 @@ import oicq.wlogin_sdk.tools.util;
 public final class i
   extends a
 {
-  int CNE = 6;
+  int ajHR = 6;
   
   public i()
   {
-    this.CMD = 263;
+    this.ajGQ = 263;
   }
   
-  public final byte[] erg()
+  public final byte[] kGm()
   {
-    AppMethodBeat.i(96492);
-    byte[] arrayOfByte = new byte[this.CNE];
-    util.O(arrayOfByte, 0, 0);
-    util.N(arrayOfByte, 2, 1);
-    util.O(arrayOfByte, 3, 102400);
-    util.N(arrayOfByte, 5, 1);
-    super.Wr(this.CMD);
-    super.ab(arrayOfByte, this.CNE);
-    super.ere();
-    arrayOfByte = super.era();
-    AppMethodBeat.o(96492);
+    AppMethodBeat.i(88131);
+    byte[] arrayOfByte = new byte[this.ajHR];
+    util.ag(arrayOfByte, 0, 0);
+    util.af(arrayOfByte, 2, 1);
+    util.ag(arrayOfByte, 3, 102400);
+    util.af(arrayOfByte, 5, 1);
+    super.aMR(this.ajGQ);
+    super.an(arrayOfByte, this.ajHR);
+    super.kGk();
+    arrayOfByte = super.kGg();
+    AppMethodBeat.o(88131);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.i
  * JD-Core Version:    0.7.0.1
  */

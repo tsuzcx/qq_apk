@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class PhoneContactStatusCheckView$3
   implements Runnable
 {
-  PhoneContactStatusCheckView$3(PhoneContactStatusCheckView paramPhoneContactStatusCheckView, PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  PhoneContactStatusCheckView$3(PhoneContactStatusCheckView paramPhoneContactStatusCheckView, IPhoneContactService paramIPhoneContactService) {}
   
   public void run()
   {
-    if (this.a != null)
+    IPhoneContactService localIPhoneContactService = this.a;
+    if (localIPhoneContactService != null)
     {
-      this.a.j();
-      this.a.e = true;
+      localIPhoneContactService.uploadOrUpdateContact();
+      this.a.setNeedUploadResultTip(true);
     }
   }
 }

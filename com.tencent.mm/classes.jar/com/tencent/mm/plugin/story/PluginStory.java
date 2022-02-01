@@ -2,372 +2,380 @@ package com.tencent.mm.plugin.story;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mars.comm.NetStatusUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.aw;
-import com.tencent.mm.g.b.a.ba;
-import com.tencent.mm.media.g.d.a;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.story.api.k.c;
-import com.tencent.mm.plugin.story.f.g.a;
-import com.tencent.mm.plugin.story.g.c.a;
-import com.tencent.mm.plugin.story.model.d;
-import com.tencent.mm.plugin.story.model.f.a;
-import com.tencent.mm.plugin.story.model.j.b;
-import com.tencent.mm.plugin.story.model.n.a;
-import com.tencent.mm.protocal.protobuf.cid;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.mmdata.rpt.os;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.model.y;
+import com.tencent.mm.plugin.story.api.k;
+import com.tencent.mm.plugin.story.api.l.c;
+import com.tencent.mm.plugin.story.api.o;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
+import com.tencent.mm.plugin.story.model.m.a;
+import com.tencent.mm.plugin.story.model.q;
+import com.tencent.mm.protocal.protobuf.fjk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.vfs.af;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.Metadata;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/PluginStory;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/story/api/IPluginStory;", "()V", "STORAGE_STORY", "", "STORAGE_STORY_TEMP", "addStoryPostListener", "", "listener", "Lcom/tencent/mm/plugin/story/api/IStoryPostListener;", "addStoryStatusNotifyListener", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "canPostStory", "", "checkPost", "checkReportFromChatting", "clickScene", "", "user", "configure", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "enterGallery", "unreadList", "", "execute", "getAccStoryCachePath", "getAccStoryPath", "getAccStoryTmpPath", "getContactFetcher", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher$IContactSyncFetcher;", "getFavourUserChecker", "Lcom/tencent/mm/plugin/story/api/IFavourUserChecker;", "getStoryBasicConfig", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig;", "getStoryStateFetcher", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher;", "talker", "getStoryUIFactory", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory;", "getStoryUserInfo", "Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "hasNewStory", "username", "isShowStoryCheck", "isStoryExist", "userName", "isStoryUnread", "loadStory", "roomId", "name", "preLoadVideoViewMgr", "preloadForSnsUser", "isEnter", "removeStoryPostListener", "removeStoryStatusNotifyListener", "reportWaitPlayList", "userList", "scene", "", "setPreviewEnterScene", "showStoryEntranceDialog", "context", "Landroid/content/Context;", "sessionId", "exposeOrder", "storyComment", "Lcom/tencent/mm/plugin/story/api/IStoryComment;", "updateStoryUserInfo", "userInfo", "Companion", "StoryCleanListener", "StorySynclistener", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/PluginStory;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/story/api/IPluginStory;", "()V", "STORAGE_STORY", "", "STORAGE_STORY_TEMP", "StoryMaxStorageSize", "", "addStoryPostListener", "", "listener", "Lcom/tencent/mm/plugin/story/api/IStoryPostListener;", "addStoryStatusNotifyListener", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "canPostStory", "", "checkPost", "checkReportFromChatting", "clickScene", "", "user", "configure", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "enterGallery", "unreadList", "", "execute", "getAccStoryCachePath", "getAccStoryPath", "getAccStoryTmpPath", "getContactFetcher", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher$IContactSyncFetcher;", "getFavourUserChecker", "Lcom/tencent/mm/plugin/story/api/IFavourUserChecker;", "getStoryBasicConfig", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig;", "getStoryNewFeatureConfig", "Lcom/tencent/mm/plugin/story/api/IStoryNewFeatureConfig;", "getStoryStateFetcher", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher;", "talker", "getStoryUIFactory", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory;", "getStoryUserInfo", "Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "hasNewStory", "username", "isShowStoryCheck", "isStoryExist", "userName", "isStoryUnread", "loadStory", "roomId", "name", "preLoadVideoViewMgr", "preloadForSnsUser", "isEnter", "removeStoryPostListener", "removeStoryStatusNotifyListener", "reportWaitPlayList", "userList", "scene", "setPreviewEnterScene", "showStoryEntranceDialog", "context", "Landroid/content/Context;", "sessionId", "exposeOrder", "startStoryCapture", "jumpPageFrom", "videoObjectId", "startStoryCaptureForResult", "requestCode", "storyComment", "Lcom/tencent/mm/plugin/story/api/IStoryComment;", "updateStoryUserInfo", "userInfo", "Companion", "StoryCleanListener", "StorySynclistener", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginStory
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.plugin.story.api.e
 {
-  private static final String TAG = "MicroMsg.PluginStory";
-  public static final PluginStory.a sqE;
-  private final String sqC;
-  private final String sqD;
+  public static final PluginStory.a ScJ;
+  private static final String TAG;
+  private final long ScK = 536870912L;
+  private final String ScL = "oneday/";
+  private final String ScM = "oneday/temp/";
   
   static
   {
-    AppMethodBeat.i(108938);
-    sqE = new PluginStory.a((byte)0);
+    AppMethodBeat.i(118565);
+    ScJ = new PluginStory.a((byte)0);
     TAG = "MicroMsg.PluginStory";
-    AppMethodBeat.o(108938);
+    AppMethodBeat.o(118565);
   }
   
-  public PluginStory()
+  private static final void showStoryEntranceDialog$lambda-1(com.tencent.mm.plugin.story.ui.sns.c paramc, View paramView)
   {
-    AppMethodBeat.i(155287);
-    this.sqC = "oneday/";
-    this.sqD = "oneday/temp/";
-    AppMethodBeat.o(155287);
+    AppMethodBeat.i(366930);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/PluginStory", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramc, "$dialog");
+    paramc.cancel();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/PluginStory", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(366930);
   }
   
-  public final void addStoryPostListener(com.tencent.mm.plugin.story.api.j paramj)
+  public final void addStoryPostListener(k paramk)
   {
-    AppMethodBeat.i(108921);
-    j.b localb = com.tencent.mm.plugin.story.model.j.svi;
-    j.b.cAI().a(paramj);
-    AppMethodBeat.o(108921);
+    AppMethodBeat.i(118546);
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.hvX().a(paramk);
+    AppMethodBeat.o(118546);
   }
   
-  public final void addStoryStatusNotifyListener(com.tencent.mm.plugin.story.api.l paraml)
+  public final void addStoryStatusNotifyListener(com.tencent.mm.plugin.story.api.m paramm)
   {
-    AppMethodBeat.i(108923);
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-    localObject = j.b.cAC();
-    if ((paraml != null) && (!((com.tencent.mm.plugin.story.h.g)localObject).sGA.contains(paraml))) {
-      ((com.tencent.mm.plugin.story.h.g)localObject).sGA.add(paraml);
+    AppMethodBeat.i(118548);
+    Object localObject = StoryCore.SjP;
+    localObject = StoryCore.b.hvS();
+    if ((paramm != null) && (!((com.tencent.mm.plugin.story.h.g)localObject).SsX.contains(paramm))) {
+      ((com.tencent.mm.plugin.story.h.g)localObject).SsX.add(paramm);
     }
-    AppMethodBeat.o(108923);
+    AppMethodBeat.o(118548);
   }
   
   public final boolean canPostStory()
   {
-    AppMethodBeat.i(108928);
-    d locald = d.sut;
-    boolean bool = d.canPostStory();
-    AppMethodBeat.o(108928);
+    AppMethodBeat.i(118553);
+    com.tencent.mm.plugin.story.model.d locald = com.tencent.mm.plugin.story.model.d.Sjy;
+    boolean bool = com.tencent.mm.plugin.story.model.d.canPostStory();
+    AppMethodBeat.o(118553);
     return bool;
   }
   
   public final void checkPost()
   {
-    AppMethodBeat.i(108926);
+    AppMethodBeat.i(118551);
     if (!isShowStoryCheck())
     {
-      AppMethodBeat.o(108926);
+      AppMethodBeat.o(118551);
       return;
     }
-    j.b localb = com.tencent.mm.plugin.story.model.j.svi;
-    j.b.cAI().checkPost();
-    AppMethodBeat.o(108926);
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.hvX().checkPost();
+    AppMethodBeat.o(118551);
   }
   
   public final boolean checkReportFromChatting(int paramInt, String paramString)
   {
-    AppMethodBeat.i(108929);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(118554);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(108929);
+      AppMethodBeat.o(118554);
       return false;
     }
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-    com.tencent.mm.plugin.story.h.g localg = j.b.cAC();
-    if (paramString == null) {}
-    label135:
-    label296:
-    label444:
-    for (localObject = "";; localObject = paramString)
+    Object localObject = StoryCore.SjP;
+    com.tencent.mm.plugin.story.h.g localg = StoryCore.b.hvS();
+    boolean bool2;
+    int i;
+    label66:
+    label96:
+    boolean bool1;
+    if (paramString == null)
     {
-      localObject = localg.acU((String)localObject);
-      boolean bool2 = ((com.tencent.mm.plugin.story.h.f)localObject).cEU();
-      int i;
-      if (((com.tencent.mm.plugin.story.h.f)localObject).cES() > 0L)
-      {
-        i = 1;
-        localObject = com.tencent.mm.plugin.story.g.c.sEl;
-        com.tencent.mm.plugin.story.g.c.clean();
-        localObject = com.tencent.mm.plugin.story.g.b.sDR;
-        com.tencent.mm.plugin.story.g.b.clean();
-        localObject = com.tencent.mm.plugin.story.g.b.sDR;
-        if (paramString != null) {
-          break label450;
-        }
+      localObject = "";
+      localObject = localg.bbJ((String)localObject);
+      bool2 = ((com.tencent.mm.plugin.story.h.f)localObject).hzn();
+      if (((com.tencent.mm.plugin.story.h.f)localObject).hzl() <= 0L) {
+        break label229;
       }
-      label320:
-      label450:
+      i = 1;
+      localObject = com.tencent.mm.plugin.story.g.c.SqL;
+      com.tencent.mm.plugin.story.g.c.clean();
+      localObject = com.tencent.mm.plugin.story.g.b.Sqn;
+      com.tencent.mm.plugin.story.g.b.clean();
+      localObject = com.tencent.mm.plugin.story.g.b.Sqn;
+      if (paramString != null) {
+        break label234;
+      }
+      localObject = "";
+      kotlin.g.b.s.u(localObject, "user");
+      com.tencent.mm.plugin.story.g.b.anm(paramInt);
+      com.tencent.mm.plugin.story.g.b.clean();
+      com.tencent.mm.plugin.story.g.b.Sqv = Util.nowMilliSecond();
+      if ((!NetStatusUtil.isWifi(MMApplicationContext.getContext())) && (!NetStatusUtil.is4G(MMApplicationContext.getContext()))) {
+        break label240;
+      }
+      bool1 = true;
+      label138:
+      com.tencent.mm.plugin.story.g.b.Aey = bool1;
+      if (bool1)
+      {
+        Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "chattingRight " + (String)localObject + " isWifi:" + com.tencent.mm.plugin.story.g.b.Aey);
+        com.tencent.mm.plugin.story.g.b.q(com.tencent.mm.plugin.story.g.b.ID, 1L, 1L);
+      }
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(118554);
+      return true;
+      localObject = paramString;
+      break;
+      label229:
+      i = 0;
+      break label66;
+      label234:
+      localObject = paramString;
+      break label96;
+      label240:
+      bool1 = false;
+      break label138;
+      localObject = com.tencent.mm.plugin.story.g.c.SqL;
+      if (paramString == null) {}
       for (localObject = "";; localObject = paramString)
       {
-        a.f.b.j.q(localObject, "user");
-        com.tencent.mm.plugin.story.g.b.FS(paramInt);
-        com.tencent.mm.plugin.story.g.b.clean();
-        com.tencent.mm.plugin.story.g.b.sDK = bo.aoy();
-        boolean bool1;
-        if ((NetStatusUtil.isWifi(ah.getContext())) || (NetStatusUtil.is4G(ah.getContext())))
-        {
-          bool1 = true;
-          com.tencent.mm.plugin.story.g.b.muY = bool1;
-          if (bool1)
-          {
-            ab.i("MicroMsg.StoryBrowseDetailIDKeyStat", "chattingRight " + (String)localObject + " isWifi:" + com.tencent.mm.plugin.story.g.b.muY);
-            com.tencent.mm.plugin.story.g.b.k(com.tencent.mm.plugin.story.g.b.ltw, 1L, 1L);
-          }
-          if (paramInt != 1) {
-            break label320;
-          }
-          localObject = com.tencent.mm.plugin.story.g.c.sEl;
-          if (paramString != null) {
-            break label444;
-          }
+        kotlin.g.b.s.u(localObject, "user");
+        com.tencent.mm.plugin.story.g.c.clean();
+        com.tencent.mm.plugin.story.g.c.SqR = false;
+        com.tencent.mm.plugin.story.g.c.SqM = new com.tencent.mm.plugin.story.g.c.a((String)localObject, 1);
+        Log.i("MicroMsg.StoryBrowseIDKeyStat", kotlin.g.b.s.X("chattingRight ", localObject));
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 1L, 1L);
+        if (!bool2) {
+          break;
         }
-        for (localObject = "";; localObject = paramString)
-        {
-          a.f.b.j.q(localObject, "user");
-          com.tencent.mm.plugin.story.g.c.clean();
-          com.tencent.mm.plugin.story.g.c.sEh = false;
-          com.tencent.mm.plugin.story.g.c.sEc = new c.a((String)localObject, 1);
-          ab.i("MicroMsg.StoryBrowseIDKeyStat", "chattingRight ".concat(String.valueOf(localObject)));
-          com.tencent.mm.plugin.report.service.h.qsU.j(988L, 1L, 1L);
-          if (bool2)
-          {
-            if (i == 0) {
-              break label296;
-            }
-            paramString = com.tencent.mm.plugin.story.g.c.sEl;
-            com.tencent.mm.plugin.story.g.c.cCD();
-          }
-          do
-          {
-            for (;;)
-            {
-              AppMethodBeat.o(108929);
-              return true;
-              i = 0;
-              break;
-              bool1 = false;
-              break label135;
-              localObject = com.tencent.mm.plugin.story.g.c.sEl;
-              localObject = paramString;
-              if (paramString == null) {
-                localObject = "";
-              }
-              com.tencent.mm.plugin.story.g.c.ads((String)localObject);
-            }
-          } while (paramInt != 2);
-          localObject = com.tencent.mm.plugin.story.g.c.sEl;
-          if (paramString == null) {}
-          for (localObject = "";; localObject = paramString)
-          {
-            a.f.b.j.q(localObject, "user");
-            com.tencent.mm.plugin.story.g.c.clean();
-            com.tencent.mm.plugin.story.g.c.sEh = true;
-            com.tencent.mm.plugin.story.g.c.sEc = new c.a((String)localObject, 2);
-            ab.i("MicroMsg.StoryBrowseIDKeyStat", "chattingDoubleCheck ".concat(String.valueOf(localObject)));
-            com.tencent.mm.plugin.report.service.h.qsU.j(988L, 2L, 1L);
-            if (!bool2) {
-              break;
-            }
-            if (i != 0)
-            {
-              paramString = com.tencent.mm.plugin.story.g.c.sEl;
-              com.tencent.mm.plugin.story.g.c.cCE();
-              break;
-            }
-            localObject = com.tencent.mm.plugin.story.g.c.sEl;
-            localObject = paramString;
-            if (paramString == null) {
-              localObject = "";
-            }
-            com.tencent.mm.plugin.story.g.c.adt((String)localObject);
-            break;
-          }
+        if (i == 0) {
+          break label338;
         }
+        paramString = com.tencent.mm.plugin.story.g.c.SqL;
+        com.tencent.mm.plugin.story.g.c.hxD();
+        break;
       }
+      label338:
+      localObject = com.tencent.mm.plugin.story.g.c.SqL;
+      localObject = paramString;
+      if (paramString == null) {
+        localObject = "";
+      }
+      com.tencent.mm.plugin.story.g.c.bcb((String)localObject);
+      continue;
+      localObject = com.tencent.mm.plugin.story.g.c.SqL;
+      if (paramString == null) {}
+      for (localObject = "";; localObject = paramString)
+      {
+        kotlin.g.b.s.u(localObject, "user");
+        com.tencent.mm.plugin.story.g.c.clean();
+        com.tencent.mm.plugin.story.g.c.SqR = true;
+        com.tencent.mm.plugin.story.g.c.SqM = new com.tencent.mm.plugin.story.g.c.a((String)localObject, 2);
+        Log.i("MicroMsg.StoryBrowseIDKeyStat", kotlin.g.b.s.X("chattingDoubleCheck ", localObject));
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 2L, 1L);
+        if (!bool2) {
+          break;
+        }
+        if (i == 0) {
+          break label457;
+        }
+        paramString = com.tencent.mm.plugin.story.g.c.SqL;
+        com.tencent.mm.plugin.story.g.c.hxE();
+        break;
+      }
+      label457:
+      localObject = com.tencent.mm.plugin.story.g.c.SqL;
+      localObject = paramString;
+      if (paramString == null) {
+        localObject = "";
+      }
+      com.tencent.mm.plugin.story.g.c.bcc((String)localObject);
     }
   }
   
   public final void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(108916);
-    if ((paramg != null) && (paramg.SD()))
+    AppMethodBeat.i(118541);
+    if ((paramg != null) && (paramg.bbA()))
     {
-      ab.i(TAG, "PluginStory configure");
-      pin((com.tencent.mm.kernel.b.c)new q(com.tencent.mm.plugin.story.model.j.class));
+      Log.i(TAG, "PluginStory configure");
+      pin((com.tencent.mm.kernel.b.c)new y(StoryCore.class));
+      af.b("oneday", "oneday", this.ScK, 7776000000L, 1);
+      af.a("onedayCache", "oneday", 604800000L, 102);
     }
-    AppMethodBeat.o(108916);
+    AppMethodBeat.o(118541);
   }
   
   public final void enterGallery(List<String> paramList)
   {
-    AppMethodBeat.i(108930);
-    a.f.b.j.q(paramList, "unreadList");
-    Object localObject = com.tencent.mm.plugin.story.g.c.sEl;
-    com.tencent.mm.plugin.story.g.c.dE(paramList);
-    localObject = com.tencent.mm.plugin.story.g.b.sDR;
-    com.tencent.mm.plugin.story.g.b.dE(paramList);
-    AppMethodBeat.o(108930);
+    AppMethodBeat.i(118555);
+    kotlin.g.b.s.u(paramList, "unreadList");
+    Object localObject = com.tencent.mm.plugin.story.g.c.SqL;
+    com.tencent.mm.plugin.story.g.c.lk(paramList);
+    localObject = com.tencent.mm.plugin.story.g.b.Sqn;
+    com.tencent.mm.plugin.story.g.b.lk(paramList);
+    AppMethodBeat.o(118555);
   }
   
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(108915);
-    com.tencent.mm.media.g.d.eWu = (d.a)new com.tencent.mm.media.g.i();
-    AppMethodBeat.o(108915);
+    com.tencent.mm.media.i.c.nBL = (com.tencent.mm.media.i.c.a)com.tencent.mm.media.i.g.nDb;
   }
   
   public final String getAccStoryCachePath()
   {
-    AppMethodBeat.i(108914);
-    String str = ah.getContext().getCacheDir().getAbsolutePath() + "/" + this.sqC;
-    AppMethodBeat.o(108914);
+    AppMethodBeat.i(118540);
+    String str = MMApplicationContext.getContext().getCacheDir().getAbsolutePath() + '/' + this.ScL;
+    AppMethodBeat.o(118540);
     return str;
   }
   
   public final String getAccStoryPath()
   {
-    AppMethodBeat.i(108912);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.RL();
-    a.f.b.j.p(locale, "storage()");
-    localObject = locale.getAccPath() + this.sqC;
-    AppMethodBeat.o(108912);
-    return localObject;
+    AppMethodBeat.i(118538);
+    String str = kotlin.g.b.s.X(com.tencent.mm.kernel.h.baE().mCJ, this.ScL);
+    AppMethodBeat.o(118538);
+    return str;
   }
   
   public final String getAccStoryTmpPath()
   {
-    AppMethodBeat.i(108913);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.RL();
-    a.f.b.j.p(locale, "storage()");
-    localObject = locale.getAccPath() + this.sqD;
-    AppMethodBeat.o(108913);
-    return localObject;
+    AppMethodBeat.i(118539);
+    String str = kotlin.g.b.s.X(com.tencent.mm.kernel.h.baE().mCJ, this.ScM);
+    AppMethodBeat.o(118539);
+    return str;
   }
   
-  public final k.c getContactFetcher()
+  public final l.c getContactFetcher()
   {
-    return (k.c)com.tencent.mm.plugin.story.model.f.a.szc;
+    return (l.c)com.tencent.mm.plugin.story.model.sync.a.SmO;
   }
   
   public final com.tencent.mm.plugin.story.api.b getFavourUserChecker()
   {
-    return (com.tencent.mm.plugin.story.api.b)com.tencent.mm.plugin.story.model.b.sun;
+    return (com.tencent.mm.plugin.story.api.b)com.tencent.mm.plugin.story.model.b.Sjr;
   }
   
   public final com.tencent.mm.plugin.story.api.f getStoryBasicConfig()
   {
-    return (com.tencent.mm.plugin.story.api.f)com.tencent.mm.plugin.story.c.a.a.srz;
+    return (com.tencent.mm.plugin.story.api.f)com.tencent.mm.plugin.story.c.a.a.SiJ;
   }
   
-  public final com.tencent.mm.plugin.story.api.k getStoryStateFetcher(String paramString)
+  public final com.tencent.mm.plugin.story.api.j getStoryNewFeatureConfig()
   {
-    AppMethodBeat.i(108920);
-    com.tencent.mm.plugin.story.model.f.e locale = com.tencent.mm.plugin.story.model.f.e.szO;
-    paramString = com.tencent.mm.plugin.story.model.f.e.adr(paramString);
-    AppMethodBeat.o(108920);
+    return (com.tencent.mm.plugin.story.api.j)com.tencent.mm.plugin.story.c.a.e.Sjb;
+  }
+  
+  public final com.tencent.mm.plugin.story.api.l getStoryStateFetcher(String paramString)
+  {
+    AppMethodBeat.i(118545);
+    com.tencent.mm.plugin.story.model.sync.e locale = com.tencent.mm.plugin.story.model.sync.e.SnJ;
+    paramString = com.tencent.mm.plugin.story.model.sync.e.bca(paramString);
+    AppMethodBeat.o(118545);
     return paramString;
   }
   
-  public final com.tencent.mm.plugin.story.api.m getStoryUIFactory()
+  public final com.tencent.mm.plugin.story.api.n getStoryUIFactory()
   {
-    return (com.tencent.mm.plugin.story.api.m)com.tencent.mm.plugin.story.model.r.swh;
+    return (com.tencent.mm.plugin.story.api.n)q.SkV;
   }
   
-  public final cid getStoryUserInfo()
+  public final fjk getStoryUserInfo()
   {
-    AppMethodBeat.i(108936);
-    Object localObject1 = com.tencent.mm.plugin.story.model.j.svi;
-    localObject1 = j.b.cAC();
-    Object localObject2 = com.tencent.mm.plugin.story.model.j.svi;
-    localObject2 = ((com.tencent.mm.plugin.story.h.g)localObject1).acU(j.b.coK()).cET();
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new cid();
+    AppMethodBeat.i(118561);
+    Object localObject = StoryCore.SjP;
+    localObject = StoryCore.b.hvS();
+    StoryCore.b localb = StoryCore.SjP;
+    localObject = ((com.tencent.mm.plugin.story.h.g)localObject).bbJ(StoryCore.b.hgg()).hzm();
+    if (localObject == null)
+    {
+      localObject = new fjk();
+      AppMethodBeat.o(118561);
+      return localObject;
     }
-    AppMethodBeat.o(108936);
-    return localObject1;
+    AppMethodBeat.o(118561);
+    return localObject;
   }
   
   public final boolean hasNewStory(String paramString)
   {
-    AppMethodBeat.i(108927);
-    if (!com.tencent.mm.plugin.story.api.n.isShowStoryCheck())
+    AppMethodBeat.i(118552);
+    if (!o.isShowStoryCheck())
     {
-      AppMethodBeat.o(108927);
+      AppMethodBeat.o(118552);
       return false;
     }
-    com.tencent.mm.plugin.story.model.k localk = com.tencent.mm.plugin.story.model.k.svr;
-    boolean bool = com.tencent.mm.plugin.story.model.k.acV(paramString);
-    AppMethodBeat.o(108927);
+    com.tencent.mm.plugin.story.model.j localj = com.tencent.mm.plugin.story.model.j.Skm;
+    boolean bool = com.tencent.mm.plugin.story.model.j.bbK(paramString);
+    AppMethodBeat.o(118552);
     return bool;
   }
   
   public final boolean isShowStoryCheck()
   {
-    AppMethodBeat.i(108925);
-    j.b localb = com.tencent.mm.plugin.story.model.j.svi;
-    boolean bool = j.b.cAO();
-    AppMethodBeat.o(108925);
+    AppMethodBeat.i(118550);
+    StoryCore.b localb = StoryCore.SjP;
+    boolean bool = StoryCore.b.hwd();
+    AppMethodBeat.o(118550);
     return bool;
   }
   
   public final boolean isStoryExist(String paramString)
   {
-    AppMethodBeat.i(108918);
-    if (!com.tencent.mm.plugin.story.api.n.isShowStoryCheck())
+    AppMethodBeat.i(118543);
+    if (!o.isShowStoryCheck())
     {
-      AppMethodBeat.o(108918);
+      AppMethodBeat.o(118543);
       return false;
     }
     if (paramString == null)
     {
-      AppMethodBeat.o(108918);
+      AppMethodBeat.o(118543);
       return false;
     }
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
+    Object localObject = StoryCore.SjP;
     boolean bool1;
-    if ((a.f.b.j.e(paramString, j.b.coK()) ^ true))
+    if (!kotlin.g.b.s.p(paramString, StoryCore.b.hgg()))
     {
-      localObject = com.tencent.mm.plugin.story.model.j.svi;
-      bool2 = j.b.cAC().acU(paramString).isValid();
+      localObject = StoryCore.SjP;
+      bool2 = StoryCore.b.hvS().bbJ(paramString).isValid();
       bool1 = bool2;
       if (bool2)
       {
-        ab.i(TAG, "ret1 has story!");
-        AppMethodBeat.o(108918);
+        Log.i(TAG, "ret1 has story!");
+        AppMethodBeat.o(118543);
         return true;
       }
     }
@@ -375,72 +383,89 @@ public final class PluginStory
     {
       bool1 = false;
     }
-    localObject = com.tencent.mm.plugin.story.model.n.svx;
-    int i = cb.abr();
-    localObject = com.tencent.mm.plugin.story.model.i.suJ;
-    boolean bool2 = n.a.dx(paramString, i - com.tencent.mm.plugin.story.model.i.cAp());
+    localObject = com.tencent.mm.plugin.story.model.m.Sks;
+    int i = cn.getSyncServerTimeSecond();
+    localObject = com.tencent.mm.plugin.story.model.i.SjL;
+    boolean bool2 = m.a.hk(paramString, i - com.tencent.mm.plugin.story.model.i.hvz());
     if (bool2) {
-      ab.i(TAG, "ret2 has story!");
+      Log.i(TAG, "ret2 has story!");
     }
     if ((bool1) || (bool2))
     {
-      AppMethodBeat.o(108918);
+      AppMethodBeat.o(118543);
       return true;
     }
-    AppMethodBeat.o(108918);
+    AppMethodBeat.o(118543);
     return false;
   }
   
   public final boolean isStoryUnread(String paramString)
   {
-    AppMethodBeat.i(108917);
-    f.a locala = com.tencent.mm.plugin.story.model.f.suC;
-    boolean bool = f.a.isStoryUnread(paramString);
-    AppMethodBeat.o(108917);
+    AppMethodBeat.i(118542);
+    com.tencent.mm.plugin.story.model.f.a locala = com.tencent.mm.plugin.story.model.f.SjJ;
+    boolean bool = com.tencent.mm.plugin.story.model.f.a.isStoryUnread(paramString);
+    AppMethodBeat.o(118542);
     return bool;
   }
   
   public final void loadStory(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(108919);
+    int i = 1;
+    AppMethodBeat.i(118544);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(108919);
+      AppMethodBeat.o(118544);
       return;
     }
-    if (!com.tencent.mm.plugin.story.api.n.isShowStoryCheck())
+    if (!o.isShowStoryCheck())
     {
-      AppMethodBeat.o(108919);
+      AppMethodBeat.o(118544);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-    boolean bool = bo.isEqual(paramString1, j.b.coK());
-    if ((!bool) && (!com.tencent.mm.plugin.story.api.n.czB()))
+    Object localObject = StoryCore.SjP;
+    boolean bool2 = Util.isEqual(paramString1, StoryCore.b.hgg());
+    if (!bool2)
     {
-      localObject = com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
-      a.f.b.j.p(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)localObject).YA().arw(paramString1);
-      if (localObject == null)
+      boolean bool1;
+      if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getInt("StoryOpenStrangerUserPage", 1) == 2)
       {
-        AppMethodBeat.o(108919);
-        return;
+        bool1 = true;
+        Log.i("LaunchStory", "isOpenRoomSync %s", new Object[] { Boolean.valueOf(bool1) });
+        if (bool1) {
+          break label149;
+        }
       }
-      if (!((ad)localObject).NT())
+      for (;;)
       {
-        ab.i(TAG, "filter by isOpenStrangerUserPage close ".concat(String.valueOf(paramString1)));
-        AppMethodBeat.o(108919);
-        return;
+        if (i == 0)
+        {
+          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(paramString1);
+          if (localObject == null)
+          {
+            AppMethodBeat.o(118544);
+            return;
+            bool1 = false;
+            break;
+            label149:
+            i = 0;
+            continue;
+          }
+          if (!com.tencent.mm.contact.d.rs(((az)localObject).field_type))
+          {
+            Log.i(TAG, kotlin.g.b.s.X("filter by isOpenStrangerUserPage close ", paramString1));
+            AppMethodBeat.o(118544);
+            return;
+          }
+        }
       }
     }
     localObject = paramString2;
     if (paramString2 == null) {
       localObject = "";
     }
-    paramString1 = new com.tencent.mm.plugin.story.model.a.j(paramString1, bool, (String)localObject);
-    paramString2 = com.tencent.mm.kernel.g.RK();
-    a.f.b.j.p(paramString2, "MMKernel.network()");
-    paramString2.Rc().b((com.tencent.mm.ai.m)paramString1);
-    AppMethodBeat.o(108919);
+    paramString1 = new com.tencent.mm.plugin.story.model.a.i(paramString1, bool2, (String)localObject);
+    com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)paramString1, 0);
+    AppMethodBeat.o(118544);
   }
   
   public final String name()
@@ -450,131 +475,142 @@ public final class PluginStory
   
   public final boolean preLoadVideoViewMgr(String paramString)
   {
-    AppMethodBeat.i(108932);
-    Object localObject = com.tencent.mm.plugin.story.ui.view.gallery.r.sVJ;
+    AppMethodBeat.i(118557);
+    Object localObject = com.tencent.mm.plugin.story.ui.view.gallery.l.SDE;
     localObject = paramString;
     if (paramString == null) {
       localObject = "";
     }
-    com.tencent.mm.plugin.story.ui.view.gallery.r.adM((String)localObject);
-    AppMethodBeat.o(108932);
+    com.tencent.mm.plugin.story.ui.view.gallery.l.bcx((String)localObject);
+    AppMethodBeat.o(118557);
     return true;
   }
   
   public final void preloadForSnsUser(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(108933);
+    AppMethodBeat.i(118558);
     if (paramString == null)
     {
-      AppMethodBeat.o(108933);
+      AppMethodBeat.o(118558);
       return;
     }
     if (paramBoolean) {}
-    for (int i = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lSd, 1);; i = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lSf, 0))
+    for (int i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yIE, 1);; i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yIG, 0))
     {
-      ab.i(TAG, "preloadForSnsUser: " + i + " isEnter: " + paramBoolean + " username " + paramString + ' ' + bo.dtY());
-      if (i != 1) {
-        break;
+      Log.i(TAG, "preloadForSnsUser: " + i + " isEnter: " + paramBoolean + " username " + paramString + ' ' + Util.getStack());
+      if (i == 1)
+      {
+        com.tencent.mm.plugin.story.f.f.a locala = com.tencent.mm.plugin.story.f.f.SoU;
+        paramString = com.tencent.mm.plugin.story.f.f.a.dn(paramString, false);
+        if (paramString != null) {
+          com.tencent.mm.plugin.story.ui.view.gallery.j.a(com.tencent.mm.plugin.story.ui.view.gallery.j.SCD, kotlin.a.p.listOf(paramString.Smr));
+        }
       }
-      Object localObject = com.tencent.mm.plugin.story.f.g.sBI;
-      paramString = g.a.bz(paramString, false);
-      if (paramString == null) {
-        break;
-      }
-      localObject = com.tencent.mm.plugin.story.ui.view.gallery.p.sUH;
-      com.tencent.mm.plugin.story.ui.view.gallery.p.dO(a.a.j.listOf(paramString.syr));
-      AppMethodBeat.o(108933);
+      AppMethodBeat.o(118558);
       return;
     }
-    AppMethodBeat.o(108933);
   }
   
-  public final void removeStoryPostListener(com.tencent.mm.plugin.story.api.j paramj)
+  public final void removeStoryPostListener(k paramk)
   {
-    AppMethodBeat.i(108922);
-    j.b localb = com.tencent.mm.plugin.story.model.j.svi;
-    j.b.cAI().b(paramj);
-    AppMethodBeat.o(108922);
+    AppMethodBeat.i(118547);
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.hvX().b(paramk);
+    AppMethodBeat.o(118547);
   }
   
-  public final void removeStoryStatusNotifyListener(com.tencent.mm.plugin.story.api.l paraml)
+  public final void removeStoryStatusNotifyListener(com.tencent.mm.plugin.story.api.m paramm)
   {
-    AppMethodBeat.i(108924);
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-    localObject = j.b.cAC();
-    if (paraml != null) {
-      ((com.tencent.mm.plugin.story.h.g)localObject).sGA.remove(paraml);
+    AppMethodBeat.i(118549);
+    Object localObject = StoryCore.SjP;
+    localObject = StoryCore.b.hvS();
+    if (paramm != null) {
+      ((com.tencent.mm.plugin.story.h.g)localObject).SsX.remove(paramm);
     }
-    AppMethodBeat.o(108924);
+    AppMethodBeat.o(118549);
   }
   
   public final void reportWaitPlayList(List<String> paramList, long paramLong)
   {
-    AppMethodBeat.i(108934);
-    a.f.b.j.q(paramList, "userList");
-    com.tencent.mm.plugin.story.model.k localk = com.tencent.mm.plugin.story.model.k.svr;
-    com.tencent.mm.plugin.story.model.k.reportWaitPlayList(paramList, paramLong);
-    AppMethodBeat.o(108934);
+    AppMethodBeat.i(118559);
+    kotlin.g.b.s.u(paramList, "userList");
+    com.tencent.mm.plugin.story.model.j localj = com.tencent.mm.plugin.story.model.j.Skm;
+    com.tencent.mm.plugin.story.model.j.reportWaitPlayList(paramList, paramLong);
+    AppMethodBeat.o(118559);
   }
   
   public final void setPreviewEnterScene(long paramLong)
   {
-    AppMethodBeat.i(108931);
-    com.tencent.mm.plugin.story.g.i locali = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDo().cE(paramLong);
-    AppMethodBeat.o(108931);
+    AppMethodBeat.i(118556);
+    com.tencent.mm.plugin.story.g.h localh = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hxW().jjn = paramLong;
+    AppMethodBeat.o(118556);
   }
   
   public final boolean showStoryEntranceDialog(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(108935);
-    a.f.b.j.q(paramContext, "context");
-    a.f.b.j.q(paramString, "sessionId");
-    com.tencent.mm.plugin.story.g.i locali = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDM().gj(paramString);
-    paramString = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDM().gD((int)System.currentTimeMillis());
-    paramString = com.tencent.mm.plugin.story.g.i.sFa;
-    paramString = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.FX(com.tencent.mm.plugin.story.g.i.cDM().Fz());
-    paramString = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDM().gE(paramInt);
-    paramString = new com.tencent.mm.plugin.story.ui.sns.b(paramContext);
-    paramString.setContentView((View)new com.tencent.mm.plugin.story.ui.sns.c(paramContext, (View.OnClickListener)new PluginStory.d(paramString)));
+    AppMethodBeat.i(118560);
+    kotlin.g.b.s.u(paramContext, "context");
+    kotlin.g.b.s.u(paramString, "sessionId");
+    com.tencent.mm.plugin.story.g.h localh = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hys().ww(paramString);
+    paramString = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hys().jjY = ((int)System.currentTimeMillis());
+    paramString = com.tencent.mm.plugin.story.g.h.SqZ;
+    paramString = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.anr(com.tencent.mm.plugin.story.g.h.hys().jjY);
+    paramString = com.tencent.mm.plugin.story.g.h.SqZ;
+    com.tencent.mm.plugin.story.g.h.hys().jjZ = paramInt;
+    paramString = new com.tencent.mm.plugin.story.ui.sns.c(paramContext);
+    paramString.setContentView((View)new com.tencent.mm.plugin.story.ui.sns.d(paramContext, new PluginStory..ExternalSyntheticLambda0(paramString)));
     paramString.show();
-    AppMethodBeat.o(108935);
+    AppMethodBeat.o(118560);
     return true;
+  }
+  
+  public final void startStoryCapture(Context paramContext, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(118563);
+    startStoryCaptureForResult(paramContext, paramInt, paramLong, -1);
+    AppMethodBeat.o(118563);
+  }
+  
+  public final void startStoryCaptureForResult(Context paramContext, int paramInt1, long paramLong, int paramInt2)
+  {
+    AppMethodBeat.i(118564);
+    com.tencent.mm.plugin.story.model.e.a.SmE.startStoryCapture(paramContext, paramInt1, paramLong);
+    AppMethodBeat.o(118564);
   }
   
   public final com.tencent.mm.plugin.story.api.h storyComment()
   {
-    return (com.tencent.mm.plugin.story.api.h)com.tencent.mm.plugin.story.model.b.b.sxN;
+    return (com.tencent.mm.plugin.story.api.h)com.tencent.mm.plugin.story.model.b.b.SlF;
   }
   
-  public final void updateStoryUserInfo(String paramString, cid paramcid)
+  public final void updateStoryUserInfo(String paramString, fjk paramfjk)
   {
-    AppMethodBeat.i(108937);
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-    localObject = j.b.cAC();
-    if ((paramString == null) || (paramcid == null))
+    AppMethodBeat.i(118562);
+    Object localObject = StoryCore.SjP;
+    localObject = StoryCore.b.hvS();
+    if ((paramString == null) || (paramfjk == null))
     {
-      AppMethodBeat.o(108937);
+      AppMethodBeat.o(118562);
       return;
     }
-    com.tencent.mm.plugin.story.h.f localf = ((com.tencent.mm.plugin.story.h.g)localObject).acU(paramString);
-    if (paramcid != null) {}
-    for (paramString = paramcid.toByteArray();; paramString = null)
+    com.tencent.mm.plugin.story.h.f localf = ((com.tencent.mm.plugin.story.h.g)localObject).bbJ(paramString);
+    if (paramfjk == null) {}
+    for (paramString = null;; paramString = paramfjk.toByteArray())
     {
       localf.field_userInfo = paramString;
       ((com.tencent.mm.plugin.story.h.g)localObject).b(localf);
-      AppMethodBeat.o(108937);
+      AppMethodBeat.o(118562);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.PluginStory
  * JD-Core Version:    0.7.0.1
  */

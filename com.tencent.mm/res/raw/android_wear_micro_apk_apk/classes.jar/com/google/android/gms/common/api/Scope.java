@@ -11,16 +11,16 @@ public final class Scope
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<Scope> CREATOR = new ae();
-  private final String HK;
-  final int Hc;
+  final int IR;
+  private final String Jz;
   
   Scope(int paramInt, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       throw new IllegalArgumentException(String.valueOf("scopeUri must not be null or empty"));
     }
-    this.Hc = paramInt;
-    this.HK = paramString;
+    this.IR = paramInt;
+    this.Jz = paramString;
   }
   
   public Scope(String paramString)
@@ -36,22 +36,22 @@ public final class Scope
     if (!(paramObject instanceof Scope)) {
       return false;
     }
-    return this.HK.equals(((Scope)paramObject).HK);
+    return this.Jz.equals(((Scope)paramObject).Jz);
   }
   
-  public final String gE()
+  public final String gO()
   {
-    return this.HK;
+    return this.Jz;
   }
   
   public final int hashCode()
   {
-    return this.HK.hashCode();
+    return this.Jz.hashCode();
   }
   
   public final String toString()
   {
-    return this.HK;
+    return this.Jz;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)

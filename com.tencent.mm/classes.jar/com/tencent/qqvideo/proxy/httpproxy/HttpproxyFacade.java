@@ -5,6 +5,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.qqvideo.proxy.api.IUtils;
 import com.tencent.qqvideo.proxy.common.ConfigStorage;
 import com.tencent.qqvideo.proxy.common.VcSystemInfo;
@@ -26,7 +27,7 @@ public class HttpproxyFacade
   
   public static void idKeyReport(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(124406);
+    AppMethodBeat.i(89680);
     try
     {
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
@@ -36,15 +37,15 @@ public class HttpproxyFacade
         {
           new StringBuilder("idKeyReport:id=").append(paramString1).append(",key=").append(paramString2).append(",value=").append(paramString3);
           localHttpproxyFacade.mUtils.idKeyReport(paramString1, paramString2, paramString3);
-          AppMethodBeat.o(124406);
+          AppMethodBeat.o(89680);
           return;
         }
       }
     }
-    catch (Throwable paramString1)
+    finally
     {
       print(6, TAG, "idKeyReport exception");
-      AppMethodBeat.o(124406);
+      AppMethodBeat.o(89680);
     }
   }
   
@@ -52,12 +53,12 @@ public class HttpproxyFacade
   {
     try
     {
-      AppMethodBeat.i(124402);
+      AppMethodBeat.i(89676);
       if (mInstance == null) {
         mInstance = new HttpproxyFacade();
       }
       HttpproxyFacade localHttpproxyFacade = mInstance;
-      AppMethodBeat.o(124402);
+      AppMethodBeat.o(89676);
       return localHttpproxyFacade;
     }
     finally {}
@@ -74,9 +75,9 @@ public class HttpproxyFacade
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 90
-    //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 56	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:instance	()Lcom/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade;
+    //   3: ldc 88
+    //   5: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 54	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:instance	()Lcom/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade;
     //   11: astore_1
     //   12: aload_1
     //   13: getfield 35	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:mUtils	Lcom/tencent/qqvideo/proxy/api/IUtils;
@@ -86,19 +87,19 @@ public class HttpproxyFacade
     //   23: iconst_4
     //   24: getstatic 27	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:TAG	Ljava/lang/String;
     //   27: aload_0
-    //   28: invokeinterface 92 4 0
-    //   33: ldc 90
-    //   35: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: invokeinterface 90 4 0
+    //   33: ldc 88
+    //   35: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: ldc 2
     //   40: monitorexit
     //   41: return
-    //   42: ldc 94
+    //   42: ldc 92
     //   44: aload_0
-    //   45: invokestatic 100	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   48: invokevirtual 104	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: invokestatic 98	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   48: invokevirtual 102	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   51: pop
-    //   52: ldc 90
-    //   54: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: ldc 88
+    //   54: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: goto -19 -> 38
     //   60: astore_0
     //   61: ldc 2
@@ -117,7 +118,7 @@ public class HttpproxyFacade
   
   public static void jsonReport(String paramString)
   {
-    AppMethodBeat.i(124405);
+    AppMethodBeat.i(89679);
     for (;;)
     {
       String str1;
@@ -126,9 +127,9 @@ public class HttpproxyFacade
         str1 = VcSystemInfo.getDeviceID(mContext);
         String str2 = VcSystemInfo.getOsVersion();
         int i = VcSystemInfo.getNetWorkType(mContext);
-        localObject = ((WifiManager)mContext.getSystemService("wifi")).getConnectionInfo();
+        localObject = (WifiInfo)a.a((WifiManager)mContext.getSystemService("wifi"), "com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade", "jsonReport", "(Ljava/lang/String;)V", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         if (((WifiInfo)localObject).getBSSID() == null) {
-          break label320;
+          break label335;
         }
         localObject = String.valueOf(WifiManager.calculateSignalLevel(((WifiInfo)localObject).getRssi(), 5));
         String str3 = ConfigStorage.getHttpProxyVersion();
@@ -148,12 +149,12 @@ public class HttpproxyFacade
         {
           paramString = instance();
           if (paramString.mUtils == null) {
-            break label303;
+            break label318;
           }
           if (str1.length() <= 1000)
           {
             paramString.mUtils.httpproxyReport(new String[] { str1 });
-            AppMethodBeat.o(124405);
+            AppMethodBeat.o(89679);
             return;
           }
           int j = str1.length();
@@ -164,27 +165,27 @@ public class HttpproxyFacade
           localObject = str1.substring(0, 1000);
           str1 = str1.substring(1000, i);
           paramString.mUtils.httpproxyReport(new String[] { localObject, str1 });
-          AppMethodBeat.o(124405);
+          AppMethodBeat.o(89679);
         }
       }
-      catch (Throwable paramString)
+      finally
       {
         print(6, TAG, "reportMTA exception");
-        AppMethodBeat.o(124405);
+        AppMethodBeat.o(89679);
         return;
       }
-      label303:
+      label318:
       "IUtils.MTA_Report:".concat(String.valueOf(str1));
-      AppMethodBeat.o(124405);
+      AppMethodBeat.o(89679);
       return;
-      label320:
+      label335:
       Object localObject = "";
     }
   }
   
   public static void kvReport(String paramString)
   {
-    AppMethodBeat.i(124407);
+    AppMethodBeat.i(89681);
     try
     {
       String str1 = ConfigStorage.getHttpProxyVersionCode();
@@ -204,29 +205,29 @@ public class HttpproxyFacade
       if (localHttpproxyFacade.mUtils != null)
       {
         localHttpproxyFacade.mUtils.kvReport(new String[] { paramString, str3, str1, str2, str4, str5, str6, str7, str8, str9, str10, localObject });
-        AppMethodBeat.o(124407);
+        AppMethodBeat.o(89681);
         return;
       }
     }
-    catch (Throwable paramString)
+    finally
     {
       print(6, TAG, "kvReport exception");
-      AppMethodBeat.o(124407);
+      AppMethodBeat.o(89681);
     }
   }
   
   public static void print(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(124404);
+    AppMethodBeat.i(89678);
     HttpproxyFacade localHttpproxyFacade = instance();
     if (localHttpproxyFacade.mUtils != null)
     {
       localHttpproxyFacade.mUtils.javaUtilLog(paramInt, paramString1, paramString2);
-      AppMethodBeat.o(124404);
+      AppMethodBeat.o(89678);
       return;
     }
     "IUtils.javaUtilLog not init ".concat(String.valueOf(paramString2));
-    AppMethodBeat.o(124404);
+    AppMethodBeat.o(89678);
   }
   
   public static void setContext(Context paramContext)

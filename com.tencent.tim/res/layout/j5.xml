@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/idy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mg" android:layout_marginRight="@dimen/mg"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0sp" android:textColor="@color/ja" android:id="@id/kfr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/l5w" />
+    <RelativeLayout android:id="@id/d3x" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="12.0dip" android:layout_below="@id/kfr">
+        <ImageView android:id="@id/dic" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="10.0dip" />
+        <RelativeLayout android:id="@id/jpc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/dic" android:layout_alignTop="@id/dic" android:layout_alignBottom="@id/dic">
+            <RelativeLayout android:id="@id/jou" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                <TextView android:textSize="17.0sp" android:textColor="@color/ja" android:ellipsize="end" android:id="@id/kfu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="" android:maxLines="1" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/dia" android:layout_width="8.0dip" android:layout_height="14.0dip" android:src="@drawable/cmp" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/d3y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/kfr">
+        <com.tencent.biz.widgets.GridViewForScrollView android:id="@id/d06" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" />
+    </RelativeLayout>
+    <View android:id="@id/mah" android:background="#ffe8edf5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="12.0dip" android:layout_below="@id/d3x" />
+</RelativeLayout>

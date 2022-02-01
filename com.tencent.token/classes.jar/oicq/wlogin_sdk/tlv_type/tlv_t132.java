@@ -30,14 +30,14 @@ public class tlv_t132
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._token_len = util.buf_to_int16(this._buf, this._head_len);
     if (this._token_len + 2 + 4 + 2 > this._body_len) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._openid_len = util.buf_to_int16(this._buf, this._head_len + 2 + this._token_len + 4);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

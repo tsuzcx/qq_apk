@@ -1,26 +1,14 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
 public final class a
 {
-  public byte cFps;
-  public byte cIPeriod;
-  public byte cIReqFlag;
-  public byte cResolution;
-  public byte cRsvd1;
-  public byte cSkipFlag;
-  public short iKbps;
-  public byte kJy;
-  public byte kJz;
-  public byte[] s2p;
-  
-  public a()
-  {
-    AppMethodBeat.i(145840);
-    this.s2p = new byte[10];
-    AppMethodBeat.o(145840);
-  }
+  public int format = 0;
+  public int height = 0;
+  public int heo = 0;
+  public int wTA = -1;
+  public boolean wTB = false;
+  public byte[] wTz = null;
+  public int width = 0;
 }
 
 

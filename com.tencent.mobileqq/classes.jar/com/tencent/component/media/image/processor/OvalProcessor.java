@@ -35,31 +35,34 @@ public class OvalProcessor
     try
     {
       paramDrawable = ImageManager.getInstance().getBitmap(localBitmapReference.getWidth(), localBitmapReference.getHeight(), Bitmap.Config.ARGB_8888);
-      paramDrawable.getBitmap().setHasAlpha(true);
-      Canvas localCanvas = new Canvas(paramDrawable.getBitmap());
-      RectF localRectF = new RectF(0.0F, 0.0F, localBitmapReference.getWidth(), localBitmapReference.getHeight());
-      Path localPath = new Path();
-      Paint localPaint = new Paint();
-      localPath.addOval(localRectF, Path.Direction.CW);
-      localPaint.setAntiAlias(true);
-      localCanvas.drawPath(localPath, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      localCanvas.drawBitmap(localBitmapReference.getBitmap(), null, localRectF, localPaint);
-      localBitmapReference.release();
-      return new BitmapRefDrawable(paramDrawable);
     }
     catch (OutOfMemoryError paramDrawable)
     {
-      for (;;)
-      {
-        paramDrawable = BitmapReference.getBitmapReference(Bitmap.createBitmap(localBitmapReference.getWidth(), localBitmapReference.getHeight(), Bitmap.Config.ARGB_4444));
-      }
+      label35:
+      Canvas localCanvas;
+      RectF localRectF;
+      Path localPath;
+      Paint localPaint;
+      break label35;
     }
+    paramDrawable = BitmapReference.getBitmapReference(Bitmap.createBitmap(localBitmapReference.getWidth(), localBitmapReference.getHeight(), Bitmap.Config.ARGB_4444));
+    paramDrawable.getBitmap().setHasAlpha(true);
+    localCanvas = new Canvas(paramDrawable.getBitmap());
+    localRectF = new RectF(0.0F, 0.0F, localBitmapReference.getWidth(), localBitmapReference.getHeight());
+    localPath = new Path();
+    localPaint = new Paint();
+    localPath.addOval(localRectF, Path.Direction.CW);
+    localPaint.setAntiAlias(true);
+    localCanvas.drawPath(localPath, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(localBitmapReference.getBitmap(), null, localRectF, localPaint);
+    localBitmapReference.release();
+    return new BitmapRefDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.processor.OvalProcessor
  * JD-Core Version:    0.7.0.1
  */

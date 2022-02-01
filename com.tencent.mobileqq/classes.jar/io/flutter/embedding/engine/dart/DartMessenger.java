@@ -1,8 +1,8 @@
 package io.flutter.embedding.engine.dart;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -49,20 +49,20 @@ class DartMessenger
       try
       {
         Log.v("DartMessenger", "Deferring to registered handler to process message.");
-        if (paramArrayOfByte == null) {}
-        for (paramString = null;; paramString = ByteBuffer.wrap(paramArrayOfByte))
-        {
-          ((BinaryMessenger.BinaryMessageHandler)localObject).onMessage(paramString, new DartMessenger.Reply(this.flutterJNI, paramInt));
-          return;
+        if (paramArrayOfByte == null) {
+          paramString = null;
+        } else {
+          paramString = ByteBuffer.wrap(paramArrayOfByte);
         }
-        Log.v("DartMessenger", "No registered handler for message. Responding to Dart with empty reply message.");
+        ((BinaryMessenger.BinaryMessageHandler)localObject).onMessage(paramString, new DartMessenger.Reply(this.flutterJNI, paramInt));
+        return;
       }
       catch (Exception paramString)
       {
         Log.e("DartMessenger", "Uncaught exception in binary message listener", paramString);
-        this.flutterJNI.invokePlatformMessageEmptyResponseCallback(paramInt);
-        return;
       }
+    } else {
+      Log.v("DartMessenger", "No registered handler for message. Responding to Dart with empty reply message.");
     }
     this.flutterJNI.invokePlatformMessageEmptyResponseCallback(paramInt);
   }
@@ -75,12 +75,12 @@ class DartMessenger
       try
       {
         Log.v("DartMessenger", "Invoking registered callback for reply from Dart.");
-        if (paramArrayOfByte == null) {}
-        for (paramArrayOfByte = null;; paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte))
-        {
-          localBinaryReply.reply(paramArrayOfByte);
-          return;
+        if (paramArrayOfByte == null) {
+          paramArrayOfByte = null;
+        } else {
+          paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
         }
+        localBinaryReply.reply(paramArrayOfByte);
         return;
       }
       catch (Exception paramArrayOfByte)
@@ -115,11 +115,14 @@ class DartMessenger
       this.nextReplyId = (i + 1);
       this.pendingReplies.put(Integer.valueOf(i), paramBinaryReply);
     }
-    while (paramByteBuffer == null)
+    else
+    {
+      i = 0;
+    }
+    if (paramByteBuffer == null)
     {
       this.flutterJNI.dispatchEmptyPlatformMessage(paramString, i);
       return;
-      i = 0;
     }
     this.flutterJNI.dispatchPlatformMessage(paramString, paramByteBuffer, paramByteBuffer.position(), i);
   }
@@ -146,7 +149,7 @@ class DartMessenger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartMessenger
  * JD-Core Version:    0.7.0.1
  */

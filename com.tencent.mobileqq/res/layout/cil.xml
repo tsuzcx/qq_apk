@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:background="@drawable/dsa" android:layout_width="fill_parent" android:layout_height="56.0dip" android:minHeight="56.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="18.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/mtg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="x" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
-    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="28.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/mtf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
-</merge>
+    <TextView android:textSize="17.0sp" android:textColor="@color/aqt" android:ellipsize="end" android:gravity="left" android:id="@id/mtq" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="180.0dip" android:minWidth="24.0dip" android:text="@string/zbm" android:singleLine="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/aqw" android:id="@id/mtp" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="36.0dip" android:minWidth="24.0dip" android:text="所有的新消息都通知" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/mta" android:background="@drawable/ic8" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="17.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

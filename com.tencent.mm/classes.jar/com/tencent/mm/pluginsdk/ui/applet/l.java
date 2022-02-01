@@ -1,105 +1,60 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import java.util.List;
+import com.tencent.mm.modelimage.loader.b.i;
+import com.tencent.mm.pluginsdk.model.e;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageLoadTaskListener;", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadTaskListener;", "scene", "", "(I)V", "url", "", "onAfterRun", "", "onBeforeRun", "Companion", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends BaseAdapter
+  implements i
 {
-  private List<String> gpY;
-  private Context mContext;
-  private List<String> vUp;
+  public static final l.a YbI;
+  private int scene = 1;
+  private String url = "";
   
-  public l(Context paramContext, List<String> paramList1, List<String> paramList2)
+  static
   {
-    this.mContext = paramContext;
-    this.gpY = paramList2;
-    this.vUp = paramList1;
+    AppMethodBeat.i(124896);
+    YbI = new l.a((byte)0);
+    AppMethodBeat.o(124896);
   }
   
-  private static l.a eE(View paramView)
+  public final void Ox(String paramString)
   {
-    AppMethodBeat.i(27720);
-    l.a locala = new l.a((byte)0);
-    locala.egq = ((ImageView)paramView.findViewById(2131822423));
-    locala.gzk = ((TextView)paramView.findViewById(2131822424));
-    paramView.setTag(locala);
-    AppMethodBeat.o(27720);
-    return locala;
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(27717);
-    int i = this.gpY.size();
-    AppMethodBeat.o(27717);
-    return i;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    AppMethodBeat.i(27718);
-    Object localObject = this.gpY.get(paramInt);
-    AppMethodBeat.o(27718);
-    return localObject;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(27719);
-    if (paramView == null)
+    AppMethodBeat.i(124894);
+    if (paramString == null) {}
+    for (Object localObject = "";; localObject = paramString)
     {
-      paramView = View.inflate(this.mContext, 2130969023, null);
-      paramViewGroup = eE(paramView);
+      this.url = ((String)localObject);
+      localObject = g.Ybp;
+      if (g.awm(this.scene))
+      {
+        localObject = e.XQp;
+        e.dW(8, paramString);
+        localObject = e.XQp;
+        e.dV(2, paramString);
+      }
+      AppMethodBeat.o(124894);
+      return;
     }
-    label260:
-    for (;;)
+  }
+  
+  public final void bKC()
+  {
+    AppMethodBeat.i(124895);
+    Object localObject = g.Ybp;
+    if (g.awm(this.scene))
     {
-      int i = this.gpY.size();
-      if ((paramInt >= 0) && (paramInt < this.gpY.size()) && (paramInt < this.vUp.size()))
-      {
-        paramViewGroup.egq.setVisibility(0);
-        paramViewGroup.gzk.setVisibility(0);
-        a.b.c(paramViewGroup.egq, (String)this.vUp.get(paramInt));
-        paramViewGroup.gzk.setText((CharSequence)this.gpY.get(paramInt));
-        paramViewGroup.gzk.setText(((com.tencent.mm.plugin.emoji.b.a)g.E(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, (CharSequence)this.gpY.get(paramInt), paramViewGroup.gzk.getTextSize()));
-        if ((this.gpY.size() <= 12) || (paramInt < this.gpY.size() - i % 4)) {
-          break label246;
-        }
-        paramViewGroup.gzk.setPadding(0, 0, 0, com.tencent.mm.cb.a.ao(this.mContext, 2131427565));
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(27719);
-        return paramView;
-        paramViewGroup = (l.a)paramView.getTag();
-        if (paramViewGroup != null) {
-          break label260;
-        }
-        paramViewGroup = eE(paramView);
-        break;
-        label246:
-        paramViewGroup.gzk.setPadding(0, 0, 0, 0);
-      }
+      localObject = e.XQp;
+      e.dW(2, this.url);
     }
+    AppMethodBeat.o(124895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.l
  * JD-Core Version:    0.7.0.1
  */

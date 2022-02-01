@@ -9,12 +9,12 @@ class StructMsgForAudioShare$3
   
   public void run()
   {
-    this.a.setImageResource(2130845019);
+    this.a.setImageResource(2130847050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare.3
  * JD-Core Version:    0.7.0.1
  */

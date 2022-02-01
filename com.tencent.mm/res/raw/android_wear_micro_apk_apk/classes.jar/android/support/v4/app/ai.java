@@ -1,11 +1,13 @@
 package android.support.v4.app;
 
-public abstract class ai
+final class ai
 {
-  public boolean aq()
-  {
-    return false;
-  }
+  public Fragment fJ;
+  public boolean fK;
+  public e fL;
+  public Fragment fM;
+  public boolean fN;
+  public e fO;
 }
 
 

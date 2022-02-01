@@ -13,12 +13,12 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public Map<String, a> hfN;
+  public Map<String, a> qUo;
   
   public e()
   {
-    AppMethodBeat.i(103677);
-    this.hfN = new HashMap();
+    AppMethodBeat.i(145360);
+    this.qUo = new HashMap();
     a(new h());
     a(new f());
     a(new g());
@@ -27,55 +27,55 @@ public final class e
     a(new b());
     a(new c());
     a(new j());
-    AppMethodBeat.o(103677);
+    AppMethodBeat.o(145360);
   }
   
   private void a(a parama)
   {
-    AppMethodBeat.i(103682);
-    this.hfN.put(parama.getMethod(), parama);
-    AppMethodBeat.o(103682);
+    AppMethodBeat.i(145365);
+    this.qUo.put(parama.getMethod(), parama);
+    AppMethodBeat.o(145365);
   }
   
   private boolean a(Path paramPath, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103681);
+    AppMethodBeat.i(145364);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (a)this.hfN.get(localObject);
+    localObject = (a)this.qUo.get(localObject);
     if (localObject == null)
     {
-      AppMethodBeat.o(103681);
+      AppMethodBeat.o(145364);
       return false;
     }
     boolean bool = ((a)localObject).a(paramPath, paramJSONObject);
-    AppMethodBeat.o(103681);
+    AppMethodBeat.o(145364);
     return bool;
   }
   
   private boolean b(Path paramPath, BasePathActionArg paramBasePathActionArg)
   {
-    AppMethodBeat.i(103679);
+    AppMethodBeat.i(145362);
     Object localObject = paramBasePathActionArg.method;
-    localObject = (a)this.hfN.get(localObject);
+    localObject = (a)this.qUo.get(localObject);
     if (localObject == null)
     {
-      AppMethodBeat.o(103679);
+      AppMethodBeat.o(145362);
       return false;
     }
     boolean bool = ((a)localObject).a(paramPath, paramBasePathActionArg);
-    AppMethodBeat.o(103679);
+    AppMethodBeat.o(145362);
     return bool;
   }
   
   public final Path a(PathActionArgWrapper paramPathActionArgWrapper)
   {
-    AppMethodBeat.i(103678);
+    AppMethodBeat.i(145361);
     Path localPath = new Path();
-    paramPathActionArgWrapper = paramPathActionArgWrapper.hfq;
+    paramPathActionArgWrapper = paramPathActionArgWrapper.qTR;
     if ((paramPathActionArgWrapper == null) || (paramPathActionArgWrapper.size() == 0))
     {
-      AppMethodBeat.o(103678);
+      AppMethodBeat.o(145361);
       return localPath;
     }
     paramPathActionArgWrapper = paramPathActionArgWrapper.iterator();
@@ -86,17 +86,17 @@ public final class e
         b(localPath, localBasePathActionArg);
       }
     }
-    AppMethodBeat.o(103678);
+    AppMethodBeat.o(145361);
     return localPath;
   }
   
-  public final Path g(JSONArray paramJSONArray)
+  public final Path j(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103680);
+    AppMethodBeat.i(145363);
     Path localPath = new Path();
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
-      AppMethodBeat.o(103680);
+      AppMethodBeat.o(145363);
       return localPath;
     }
     int i = 0;
@@ -108,13 +108,25 @@ public final class e
       }
       i += 1;
     }
-    AppMethodBeat.o(103680);
+    AppMethodBeat.o(145363);
     return localPath;
+  }
+  
+  public static final class a
+  {
+    public static e qUp;
+    
+    static
+    {
+      AppMethodBeat.i(145359);
+      qUp = new e();
+      AppMethodBeat.o(145359);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.e
  * JD-Core Version:    0.7.0.1
  */

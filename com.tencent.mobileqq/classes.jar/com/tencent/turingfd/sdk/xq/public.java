@@ -1,61 +1,34 @@
 package com.tencent.turingfd.sdk.xq;
 
-public class public
-  implements byte
+public abstract class public<T>
 {
-  public static final byte[] Bb = new byte[0];
-  public final String Pb;
-  public final long Qb;
-  public final int Rb;
-  public final String Tb;
-  public final String Ub;
-  public final String Vb;
+  public volatile T a;
   
-  public public(int paramInt, byte[] paramArrayOfByte)
-  {
-    this.Pb = "";
-    this.Qb = 0L;
-    this.Rb = paramInt;
-    this.Tb = "";
-    this.Ub = "";
-    this.Vb = "";
-  }
+  public abstract T a();
   
-  public public(public.do paramdo)
+  public final T b()
   {
-    this.Pb = paramdo.Pb;
-    this.Qb = paramdo.Qb;
-    this.Rb = paramdo.Rb;
-    byte[] arrayOfByte = paramdo.Sb;
-    this.Tb = paramdo.Tb;
-    this.Ub = paramdo.Ub;
-    this.Vb = paramdo.Vb;
-  }
-  
-  public static public c(int paramInt)
-  {
-    return new public(paramInt, Bb);
-  }
-  
-  public static public.do create(int paramInt)
-  {
-    return new public.do(paramInt, null);
-  }
-  
-  public static public f(String paramString)
-  {
-    public.do localdo = create(0);
-    localdo.Qb = 0L;
-    localdo.Pb = "";
-    localdo.Tb = "";
-    localdo.Ub = "";
-    localdo.Vb = paramString;
-    return localdo.build();
+    Object localObject1 = this.a;
+    if (localObject1 == null) {
+      try
+      {
+        Object localObject2 = this.a;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = a();
+          this.a = localObject1;
+        }
+        return localObject1;
+      }
+      finally {}
+    }
+    return ?;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.public
  * JD-Core Version:    0.7.0.1
  */

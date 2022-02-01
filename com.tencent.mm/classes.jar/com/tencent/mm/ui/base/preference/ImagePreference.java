@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.m;
 
 public final class ImagePreference
   extends Preference
 {
-  private ImageView pAE;
-  private e zrl;
+  private ImageView MXO;
+  private e adYS;
   
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,47 +25,47 @@ public final class ImagePreference
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107192);
-    this.pAE = null;
-    this.zrl = new e();
-    setLayoutResource(2130970234);
-    setWidgetLayoutResource(2130970254);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ImagePreference);
-    paramInt = paramContext.getResourceId(0, 0);
+    AppMethodBeat.i(142569);
+    this.MXO = null;
+    this.adYS = new e();
+    setLayoutResource(a.h.mm_preference_image);
+    aBp(a.h.mm_preference_submenu);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.ImagePreference);
+    paramInt = paramContext.getResourceId(a.m.ImagePreference_img, 0);
     if (paramInt > 0)
     {
-      paramAttributeSet = this.zrl;
+      paramAttributeSet = this.adYS;
       paramAttributeSet.resId = paramInt;
       paramAttributeSet.bitmap = null;
-      this.zrl.m(this.pAE);
+      this.adYS.z(this.MXO);
     }
     paramContext.recycle();
-    AppMethodBeat.o(107192);
+    AppMethodBeat.o(142569);
   }
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107194);
+    AppMethodBeat.i(142571);
     super.onBindView(paramView);
-    this.pAE = ((ImageView)paramView.findViewById(2131822243));
-    this.zrl.m(this.pAE);
-    AppMethodBeat.o(107194);
+    this.MXO = ((ImageView)paramView.findViewById(a.g.image_iv));
+    this.adYS.z(this.MXO);
+    AppMethodBeat.o(142571);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107193);
+    AppMethodBeat.i(142570);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131821888);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content_ll);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970234, localViewGroup);
-    AppMethodBeat.o(107193);
+    View.inflate(this.mContext, a.h.mm_preference_image, localViewGroup);
+    AppMethodBeat.o(142570);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.ImagePreference
  * JD-Core Version:    0.7.0.1
  */

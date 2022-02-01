@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/lj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/ivg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d_"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ll">
-        <EditText android:id="@id/crl" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="logId" android:inputType="number" style="@style/lb" />
-        <Button android:id="@id/m1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
-        <Button android:id="@id/crm" android:layout_marginRight="10.0dip" android:text="select log" style="@style/ny" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/crn" android:layout_width="100.0dip" android:layout_height="@dimen/nl" app:on_color="@color/a6i" app:off_color="#ff999999" app:slide_color="#ff76fef3" app:on_text="on" app:off_text="off" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ll">
-        <TextView android:textSize="@dimen/m2" android:id="@id/cro" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <ListView android:id="@id/crp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/ll" android:divider="@color/a6i" android:dividerHeight="1.0dip" />
-</LinearLayout>
+    <View android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginStart="@dimen/cw" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lr7" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_sticker" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kw4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ei_" android:maxLines="1" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" android:layout_toEndOf="@id/lr7" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
+</RelativeLayout>

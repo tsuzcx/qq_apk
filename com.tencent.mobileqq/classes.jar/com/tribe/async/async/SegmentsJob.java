@@ -27,19 +27,19 @@ public class SegmentsJob<IN, PROGRESS, OUT>
   
   protected OUT doInBackground(@NonNull JobContext paramJobContext, @Nullable IN... paramVarArgs)
   {
-    if (this.mJobSegment == null) {
-      throw new RuntimeException("Please call attachJobSegment first.");
-    }
-    this.mJobSegment.attachJobContext(paramJobContext);
-    this.mJobSegment.observe(new SegmentsJob.InnerStreamFunctionListener(this, null));
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-      this.mJobSegment.apply(paramVarArgs[0]);
-    }
-    for (;;)
+    JobSegment localJobSegment = this.mJobSegment;
+    if (localJobSegment != null)
     {
+      localJobSegment.attachJobContext(paramJobContext);
+      this.mJobSegment.observe(new SegmentsJob.InnerStreamFunctionListener(this, null));
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+        this.mJobSegment.apply(paramVarArgs[0]);
+      } else {
+        this.mJobSegment.apply(null);
+      }
       return this.mResult;
-      this.mJobSegment.apply(null);
     }
+    throw new RuntimeException("Please call attachJobSegment first.");
   }
   
   public Error getError()
@@ -59,7 +59,7 @@ public class SegmentsJob<IN, PROGRESS, OUT>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.SegmentsJob
  * JD-Core Version:    0.7.0.1
  */

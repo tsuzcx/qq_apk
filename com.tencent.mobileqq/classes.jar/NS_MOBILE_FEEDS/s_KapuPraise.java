@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class s_KapuPraise
   extends JceStruct
 {
-  public long iCount;
-  public int iItemId;
+  public long iCount = 0L;
+  public int iItemId = 0;
   public String strName = "";
   
   public s_KapuPraise() {}
@@ -31,14 +31,15 @@ public final class s_KapuPraise
   {
     paramJceOutputStream.write(this.iItemId, 0);
     paramJceOutputStream.write(this.iCount, 1);
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 2);
+    String str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_KapuPraise
  * JD-Core Version:    0.7.0.1
  */

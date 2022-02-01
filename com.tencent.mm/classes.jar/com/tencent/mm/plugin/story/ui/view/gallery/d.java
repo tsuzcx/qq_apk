@@ -1,78 +1,78 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.plugin.story.a.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.o.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollConsumer;", "()V", "currScrollType", "", "downX", "", "downY", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "getGalleryView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "setGalleryView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;)V", "totalScrollY", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "showExitHint", "", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "currScrollType", "", "downX", "", "downY", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "getGalleryView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "setGalleryView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;)V", "totalScrollY", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "showExitHint", "", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends e
+  extends a
 {
-  private static final String TAG = "MicroMsg.GalleryOverScrollConsumer";
-  public static final d.a sRW;
-  private float bTE;
-  private float bTF;
-  StoryGalleryView sHi;
-  private int sRV;
-  private int sbd;
+  public static final d.a SAw;
+  private static final String TAG;
+  private int SAx;
+  StoryGalleryView StB;
+  private float fif;
+  private float fig;
+  private int uiX;
   
   static
   {
-    AppMethodBeat.i(110725);
-    sRW = new d.a((byte)0);
+    AppMethodBeat.i(120351);
+    SAw = new d.a((byte)0);
     TAG = "MicroMsg.GalleryOverScrollConsumer";
-    AppMethodBeat.o(110725);
+    AppMethodBeat.o(120351);
   }
   
   public final boolean a(MotionEvent paramMotionEvent, boolean paramBoolean, int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = false;
-    AppMethodBeat.i(110724);
-    j.q(paramMotionEvent, "event");
+    AppMethodBeat.i(120350);
+    s.u(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(110724);
+      AppMethodBeat.o(120350);
       return bool1;
-      this.bTE = paramMotionEvent.getX();
-      this.bTF = paramMotionEvent.getY();
+      this.fif = paramMotionEvent.getX();
+      this.fig = paramMotionEvent.getY();
       continue;
       if (paramBoolean)
       {
-        this.sRV = paramInt;
+        this.SAx = paramInt;
         if (paramInt == 1) {}
         for (paramBoolean = bool2;; paramBoolean = false)
         {
-          float f = paramMotionEvent.getY() - this.bTF;
+          float f = paramMotionEvent.getY() - this.fig;
           if (f > 0.0F) {
-            break label314;
+            break label307;
           }
-          paramMotionEvent = this.sHi;
+          paramMotionEvent = this.StB;
           if (paramMotionEvent == null) {
-            break label157;
+            break label307;
           }
-          this.sbd = (-(int)f);
+          this.uiX = (-(int)f);
           paramMotionEvent.animate().cancel();
           paramMotionEvent.setTranslationY(f / 2.0F);
           bool1 = paramBoolean;
           break;
         }
-        label157:
-        bool1 = paramBoolean;
-        continue;
-        if ((this.sbd > 0) && (this.sRV == 1))
+        Context localContext;
+        if ((this.uiX > 0) && (this.SAx == 1))
         {
-          paramMotionEvent = this.sHi;
+          paramMotionEvent = this.StB;
           if (paramMotionEvent != null)
           {
             paramMotionEvent = paramMotionEvent.animate();
@@ -84,36 +84,38 @@ public final class d
               }
             }
           }
-          this.sRV = 0;
-          Context localContext = ah.getContext();
-          Object localObject = localContext.getSystemService("vibrator");
-          paramMotionEvent = localObject;
-          if (!(localObject instanceof Vibrator)) {
-            paramMotionEvent = null;
+          this.SAx = 0;
+          localContext = MMApplicationContext.getContext();
+          paramMotionEvent = localContext.getSystemService("vibrator");
+          if (!(paramMotionEvent instanceof Vibrator)) {
+            break label267;
           }
-          paramMotionEvent = (Vibrator)paramMotionEvent;
+        }
+        label267:
+        for (paramMotionEvent = (Vibrator)paramMotionEvent;; paramMotionEvent = null)
+        {
           if (paramMotionEvent != null) {
             paramMotionEvent.vibrate(10L);
           }
-          h.bL(localContext, localContext.getString(2131304137));
+          k.cZ(localContext, localContext.getString(a.g.ShA));
+          this.uiX = 0;
+          break;
         }
-        this.sbd = 0;
-        continue;
-        ab.i(TAG, "LogStory: touch cancel");
-        this.sRV = 0;
-        paramMotionEvent = this.sHi;
+        Log.i(TAG, "LogStory: touch cancel");
+        this.SAx = 0;
+        paramMotionEvent = this.StB;
         if (paramMotionEvent != null) {
           paramMotionEvent.setTranslationY(0.0F);
         }
-        this.sbd = 0;
+        this.uiX = 0;
         continue;
-        label314:
+        label307:
         bool1 = paramBoolean;
       }
     }
   }
   
-  public final int cFW()
+  public final int hAc()
   {
     return 1;
   }

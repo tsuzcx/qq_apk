@@ -1,13 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.app.Dialog;
 
-public class hbs
-  implements FileFilter
+public final class hbs
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  public hbs(Dialog paramDialog) {}
+  
+  public void run()
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
   }
 }
 

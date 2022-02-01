@@ -28,7 +28,7 @@ public class SCamera
   static final String SEP_CLIENT_VERSION_3 = "2.0.2";
   static final int SEP_VERSION_10_1 = 100100;
   static final int SEP_VERSION_10_2 = 100200;
-  private static final String TAG = SCamera.class.getSimpleName();
+  private static final String TAG = "SCamera";
   private static final int VERSION_CODE = 101;
   private static final String VERSION_NAME = "2.0.1";
   private static SCamera mSCamera;
@@ -55,66 +55,68 @@ public class SCamera
   
   private AbstractSemCamera getSemCamera()
   {
-    for (;;)
+    StringBuilder localStringBuilder;
+    label88:
+    try
     {
-      try
+      if (this.mSemCamera == null)
       {
-        if (this.mSemCamera == null)
-        {
-          int i = AbstractSemCamera.getSepPlatformVersion(this.mContext);
-          if (i < 100100) {}
-        }
-        else
-        {
-          try
-          {
-            Object localObject1 = AbstractSemCamera.getSEPClientVersion();
-            Log.i(TAG, "getSemCamera semVersion : " + (String)localObject1);
-            if (SsdkVersionCheck.compareVersion((String)localObject1, "2.0.1") >= 0) {
-              this.mSemCamera = new SemCamera10_2();
-            }
-            Log.i(TAG, "getSemCamera : " + this.mSemCamera);
-            localObject1 = this.mSemCamera;
-            return localObject1;
-          }
-          catch (Throwable localThrowable)
-          {
-            Log.i(TAG, "getSemCamera semVersion : SEP_VERSION_10_1 in caught Error:");
-            this.mSemCamera = new SemCamera10_1();
-            continue;
-          }
-        }
-        this.mSemCamera = new SemCameraDefault();
+        int i = AbstractSemCamera.getSepPlatformVersion(this.mContext);
+        if (i < 100100) {}
       }
-      finally {}
     }
+    finally {}
+    try
+    {
+      localObject1 = AbstractSemCamera.getSEPClientVersion();
+      localObject3 = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSemCamera semVersion : ");
+      localStringBuilder.append((String)localObject1);
+      Log.i((String)localObject3, localStringBuilder.toString());
+      if (SsdkVersionCheck.compareVersion((String)localObject1, "2.0.1") < 0) {
+        break label122;
+      }
+      this.mSemCamera = new SemCamera10_2();
+    }
+    catch (Throwable localThrowable)
+    {
+      break label88;
+    }
+    Log.i(TAG, "getSemCamera semVersion : SEP_VERSION_10_1 in caught Error:");
+    this.mSemCamera = new SemCamera10_1();
+    break label122;
+    this.mSemCamera = new SemCameraDefault();
+    label122:
+    Object localObject1 = TAG;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("getSemCamera : ");
+    ((StringBuilder)localObject3).append(this.mSemCamera);
+    Log.i((String)localObject1, ((StringBuilder)localObject3).toString());
+    localObject1 = this.mSemCamera;
+    return localObject1;
   }
   
   private static boolean isNonCompatibleBinary()
   {
-    boolean bool2 = false;
     String str1 = Build.MANUFACTURER;
     String str2 = Build.DEVICE;
     String str3 = Build.DISPLAY;
+    boolean bool = true;
     if ((str1 != null) && (str2 != null) && (str3 != null))
     {
-      boolean bool1 = bool2;
-      if (str1.toLowerCase().contains("samsung"))
+      if ((str1.toLowerCase().contains("samsung")) && (str2.toLowerCase().contains("beyond")))
       {
-        bool1 = bool2;
-        if (str2.toLowerCase().contains("beyond")) {
-          if (!str3.toUpperCase().endsWith("SAT"))
-          {
-            bool1 = bool2;
-            if (!str3.toUpperCase().endsWith("SAU")) {}
+        if (!str3.toUpperCase().endsWith("SAT"))
+        {
+          if (str3.toUpperCase().endsWith("SAU")) {
+            return true;
           }
-          else
-          {
-            bool1 = true;
-          }
+          bool = false;
         }
+        return bool;
       }
-      return bool1;
+      return false;
     }
     return true;
   }
@@ -125,54 +127,68 @@ public class SCamera
     {
       if (paramContext.getPackageManager().getPackageInfo("com.samsung.android.camerasdkservice", 0) == null)
       {
-        Log.d(TAG, "isSDKServiceOnDevice - " + false);
+        paramContext = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isSDKServiceOnDevice - ");
+        localStringBuilder.append(false);
+        Log.d(paramContext, localStringBuilder.toString());
         return false;
       }
+      return true;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      Log.d(TAG, "isSDKServiceOnDevice - " + false);
-      return false;
+      StringBuilder localStringBuilder;
+      break label61;
     }
     catch (NullPointerException paramContext)
     {
-      throw new IllegalArgumentException("Context is invalid");
+      label51:
+      label61:
+      break label51;
     }
-    return true;
+    throw new IllegalArgumentException("Context is invalid");
+    paramContext = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSDKServiceOnDevice - ");
+    localStringBuilder.append(false);
+    Log.d(paramContext, localStringBuilder.toString());
+    return false;
   }
   
   private boolean isSEPSupported(Context paramContext)
   {
     int i = AbstractSemCamera.getSepPlatformVersion(paramContext);
-    Log.i(TAG, " getSeCamera SEP VERSION: " + i);
+    paramContext = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" getSeCamera SEP VERSION: ");
+    localStringBuilder.append(i);
+    Log.i(paramContext, localStringBuilder.toString());
     return i >= 100100;
   }
   
   public int checkAvailability(Context paramContext)
   {
-    int j = 2;
-    if (paramContext == null) {
-      throw new IllegalArgumentException("context cannot be null");
-    }
-    int i;
-    if (!SsdkVendorCheck.isSamsungDevice()) {
-      i = 1;
-    }
-    do
+    if (paramContext != null)
     {
-      do
+      if (!SsdkVendorCheck.isSamsungDevice()) {
+        return 1;
+      }
+      if (isSDKServiceOnDevice(paramContext))
       {
-        return i;
-        i = j;
-      } while (!isSDKServiceOnDevice(paramContext));
-      i = j;
-    } while (!isSEPSupported(paramContext));
-    if (isNonCompatibleBinary())
-    {
-      Log.d(TAG, "checkAvailability: isNonCompatibleBinary - true");
+        if (!isSEPSupported(paramContext)) {
+          return 2;
+        }
+        if (isNonCompatibleBinary())
+        {
+          Log.d(TAG, "checkAvailability: isNonCompatibleBinary - true");
+          return 2;
+        }
+        return 0;
+      }
       return 2;
     }
-    return 0;
+    throw new IllegalArgumentException("context cannot be null");
   }
   
   public int getVersionCode()
@@ -187,13 +203,11 @@ public class SCamera
   
   public boolean isFeatureEnabled(Context paramContext, String paramString, int paramInt)
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("context cannot be null");
+    if (paramContext != null) {
+      if (paramString != null) {
+        this.mContext = paramContext;
+      }
     }
-    if (paramString == null) {
-      throw new IllegalArgumentException("cameraId cannot be null");
-    }
-    this.mContext = paramContext;
     try
     {
       getSemCamera();
@@ -201,28 +215,35 @@ public class SCamera
         return false;
       }
       getSemCamera();
-      if (SsdkVersionCheck.compareVersion(AbstractSemCamera.getSEPClientVersion(), "2.0.2") == 0)
-      {
-        boolean bool = paramString.equals("2");
-        if (bool) {
-          break label138;
-        }
+      if (SsdkVersionCheck.compareVersion(AbstractSemCamera.getSEPClientVersion(), "2.0.2") != 0) {
+        break label101;
       }
+      boolean bool = paramString.equals("2");
+      if (!bool) {
+        break label101;
+      }
+      return false;
     }
     catch (NoSuchMethodError localNoSuchMethodError)
     {
-      while ((paramString.equals("0")) || (paramString.equals("1"))) {}
+      label81:
+      break label81;
     }
-    if (checkAvailability(paramContext) == 0) {
-      return getSemCamera().isFeatureEnabled(paramContext, paramString, paramInt);
+    if ((!paramString.equals("0")) && (!paramString.equals("1"))) {
+      return false;
     }
-    label138:
-    return false;
+    label101:
+    if (checkAvailability(paramContext) != 0) {
+      return false;
+    }
+    return getSemCamera().isFeatureEnabled(paramContext, paramString, paramInt);
+    throw new IllegalArgumentException("cameraId cannot be null");
+    throw new IllegalArgumentException("context cannot be null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.SCamera
  * JD-Core Version:    0.7.0.1
  */

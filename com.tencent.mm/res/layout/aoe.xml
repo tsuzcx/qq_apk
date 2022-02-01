@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/nf" android:layout_gravity="center_horizontal" android:id="@id/e09" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2" />
-    <com.tencent.mm.plugin.readerapp.ui.ReaderItemListView android:orientation="vertical" android:id="@id/e0d" android:background="@drawable/js" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/a3x" android:divider="@color/tf" android:dividerHeight="1.0dip" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i5_" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/e5q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" android:paddingStart="@dimen/bv" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:id="@id/i5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/djv" android:includeFontPadding="false" android:layout_marginStart="@dimen/bv" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_arrow" android:layout_marginStart="@dimen/bv" app:iconColor="@color/FG_1" />
 </LinearLayout>

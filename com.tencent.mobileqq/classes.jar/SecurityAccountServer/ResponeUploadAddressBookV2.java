@@ -11,12 +11,12 @@ public final class ResponeUploadAddressBookV2
   static ArrayList<MobileContactsFriendInfo> cache_BindFriendContacts;
   static ArrayList<MobileContactsNotFriendInfo> cache_BindNotFriendContacts;
   static byte[] cache_sessionSid;
-  public ArrayList<MobileContactsFriendInfo> BindFriendContacts;
-  public ArrayList<MobileContactsNotFriendInfo> BindNotFriendContacts;
-  public long MaxsignTimeStamp;
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public ArrayList<MobileContactsFriendInfo> BindFriendContacts = null;
+  public ArrayList<MobileContactsNotFriendInfo> BindNotFriendContacts = null;
+  public long MaxsignTimeStamp = 0L;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   public ResponeUploadAddressBookV2() {}
   
@@ -70,7 +70,7 @@ public final class ResponeUploadAddressBookV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeUploadAddressBookV2
  * JD-Core Version:    0.7.0.1
  */

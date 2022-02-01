@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.pluginsdk.PluginTabHost android:id="@android:id/tabhost" android:background="@color/qzone_common_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TabWidget android:id="@android:id/tabs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </com.tencent.mobileqq.pluginsdk.PluginTabHost>
+    <ViewStub android:id="@id/more_operation_layout_stub" android:layout="@layout/qzone_album_more_operation_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

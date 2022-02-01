@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class o
-  extends j<n>
+  extends MAutoStorage<n>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(88088);
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "ShareCardSyncItemInfo") };
-    AppMethodBeat.o(88088);
+    AppMethodBeat.i(113027);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(n.info, "ShareCardSyncItemInfo") };
+    AppMethodBeat.o(113027);
   }
   
-  public o(e parame)
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, n.info, "ShareCardSyncItemInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, n.info, "ShareCardSyncItemInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final List<n> bcb()
+  public final List<n> dkH()
   {
-    AppMethodBeat.i(88087);
+    AppMethodBeat.i(113026);
     ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = this.db.a("select * from ShareCardSyncItemInfo where retryCount < 10", null, 2);
+    Cursor localCursor = this.db.rawQuery("select * from ShareCardSyncItemInfo where retryCount < 10", null, 2);
     while (localCursor.moveToNext())
     {
       n localn = new n();
@@ -39,14 +39,14 @@ public final class o
       localArrayList.add(localn);
     }
     localCursor.close();
-    ab.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
-    AppMethodBeat.o(88087);
+    Log.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    AppMethodBeat.o(113026);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.o
  * JD-Core Version:    0.7.0.1
  */

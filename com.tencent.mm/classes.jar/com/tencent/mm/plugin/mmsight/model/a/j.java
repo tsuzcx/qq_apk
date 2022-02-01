@@ -4,29 +4,29 @@ import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class j
   extends a<byte[]>
 {
-  private static int fYn;
-  public static final j oJp;
+  public static final j KXq;
+  private static int pch;
   
   static
   {
-    AppMethodBeat.i(60325);
-    oJp = new j();
-    fYn = 0;
-    AppMethodBeat.o(60325);
+    AppMethodBeat.i(148835);
+    KXq = new j();
+    pch = 0;
+    AppMethodBeat.o(148835);
   }
   
-  public final void O(byte[] paramArrayOfByte)
+  public final void as(byte[] paramArrayOfByte)
   {
     try
     {
-      AppMethodBeat.i(60316);
-      super.aG(paramArrayOfByte);
-      AppMethodBeat.o(60316);
+      AppMethodBeat.i(148826);
+      super.dn(paramArrayOfByte);
+      AppMethodBeat.o(148826);
       return;
     }
     finally
@@ -36,44 +36,44 @@ public final class j
     }
   }
   
-  public final long XH()
+  public final long bvE()
   {
-    AppMethodBeat.i(60318);
-    if (fYn <= 0) {
-      fYn = ((ActivityManager)ah.getContext().getSystemService("activity")).getLargeMemoryClass();
+    AppMethodBeat.i(148828);
+    if (pch <= 0) {
+      pch = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (fYn >= 512)
+    if (pch >= 512)
     {
-      AppMethodBeat.o(60318);
+      AppMethodBeat.o(148828);
       return 41943040L;
     }
-    AppMethodBeat.o(60318);
+    AppMethodBeat.o(148828);
     return 20971520L;
   }
   
-  public final long XI()
+  public final long bvF()
   {
     return 10485760L;
   }
   
-  public final void XJ()
+  public final void bvG()
   {
-    AppMethodBeat.i(60319);
-    super.XJ();
-    AppMethodBeat.o(60319);
+    AppMethodBeat.i(148829);
+    super.bvG();
+    AppMethodBeat.o(148829);
   }
   
-  public final byte[] f(Integer paramInteger)
+  public final byte[] m(Integer paramInteger)
   {
     try
     {
-      AppMethodBeat.i(60317);
-      byte[] arrayOfByte2 = (byte[])super.c(paramInteger);
+      AppMethodBeat.i(148827);
+      byte[] arrayOfByte2 = (byte[])super.h(paramInteger);
       byte[] arrayOfByte1 = arrayOfByte2;
       if (arrayOfByte2 == null) {
         arrayOfByte1 = new byte[paramInteger.intValue()];
       }
-      AppMethodBeat.o(60317);
+      AppMethodBeat.o(148827);
       return arrayOfByte1;
     }
     finally {}
@@ -81,7 +81,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.j
  * JD-Core Version:    0.7.0.1
  */

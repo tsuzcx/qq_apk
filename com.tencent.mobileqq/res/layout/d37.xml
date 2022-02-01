@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.immersive.refresh.ChrysanthemumLoadingView android:layout_gravity="center" android:id="@id/efs" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" app:pathColor="@color/al3" app:segmentLength="5.0dip" app:segmentWidth="2.0dip" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/qmh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

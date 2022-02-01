@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class CSReportProfile
   extends JceStruct
 {
-  static ArrayList cache_param = new ArrayList();
+  static ArrayList<byte[]> cache_param = new ArrayList();
   public int actionID = 0;
   public long getTime = 0L;
   public boolean isCheckKey = false;
   public int lastVerifyKey = 0;
-  public ArrayList param = null;
+  public ArrayList<byte[]> param = null;
   public int presentVerifyKey = 0;
   public int profileID = 0;
   public int profileSource = 0;
@@ -31,12 +31,12 @@ public final class CSReportProfile
     cache_param.add(arrayOfByte);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new CSReportProfile();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.profileID = paramJceInputStream.read(this.profileID, 0, true);
     this.lastVerifyKey = paramJceInputStream.read(this.lastVerifyKey, 1, true);
@@ -54,39 +54,48 @@ public final class CSReportProfile
     this.tryCount = paramJceInputStream.read(this.tryCount, 13, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.profileID, 0);
     paramJceOutputStream.write(this.lastVerifyKey, 1);
     paramJceOutputStream.write(this.presentVerifyKey, 2);
     paramJceOutputStream.write(this.param, 3);
-    if (this.actionID != 0) {
-      paramJceOutputStream.write(this.actionID, 4);
+    int i = this.actionID;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
     paramJceOutputStream.write(this.isCheckKey, 5);
-    if (this.reportType != 0) {
-      paramJceOutputStream.write(this.reportType, 6);
+    i = this.reportType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.reportTime != 0) {
-      paramJceOutputStream.write(this.reportTime, 7);
+    i = this.reportTime;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.profileSource != 0) {
-      paramJceOutputStream.write(this.profileSource, 8);
+    i = this.profileSource;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.getTime != 0L) {
-      paramJceOutputStream.write(this.getTime, 9);
+    long l = this.getTime;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 9);
     }
-    if (this.sdcardState != 0) {
-      paramJceOutputStream.write(this.sdcardState, 10);
+    i = this.sdcardState;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
-    if (this.sdcardNum != -1) {
-      paramJceOutputStream.write(this.sdcardNum, 11);
+    i = this.sdcardNum;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 11);
     }
-    if (this.reportProfileVer != 0) {
-      paramJceOutputStream.write(this.reportProfileVer, 12);
+    i = this.reportProfileVer;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
-    if (this.tryCount != 0) {
-      paramJceOutputStream.write(this.tryCount, 13);
+    i = this.tryCount;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 13);
     }
   }
 }

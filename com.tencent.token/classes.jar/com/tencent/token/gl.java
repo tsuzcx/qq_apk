@@ -1,40 +1,146 @@
 package com.tencent.token;
 
-import java.net.Socket;
-import javax.net.ssl.SSLSocket;
-import okhttp3.a;
-import okhttp3.ae;
-import okhttp3.au;
-import okhttp3.ax;
-import okhttp3.internal.connection.c;
-import okhttp3.internal.connection.d;
-import okhttp3.internal.connection.g;
-import okhttp3.o;
-import okhttp3.q;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public abstract class gl
+public final class gl
 {
-  public static gl a;
+  static final b a = new a();
   
-  public abstract int a(au paramau);
+  static
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new c();
+      return;
+    }
+  }
   
-  public abstract Socket a(o paramo, a parama, g paramg);
+  public static ColorStateList a(ImageView paramImageView)
+  {
+    return a.a(paramImageView);
+  }
   
-  public abstract c a(o paramo, a parama, g paramg, ax paramax);
+  public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
+  {
+    a.a(paramImageView, paramColorStateList);
+  }
   
-  public abstract d a(o paramo);
+  public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+  {
+    a.a(paramImageView, paramMode);
+  }
   
-  public abstract void a(ae paramae, String paramString);
+  public static PorterDuff.Mode b(ImageView paramImageView)
+  {
+    return a.b(paramImageView);
+  }
   
-  public abstract void a(ae paramae, String paramString1, String paramString2);
+  static class a
+    implements gl.b
+  {
+    public ColorStateList a(ImageView paramImageView)
+    {
+      if ((paramImageView instanceof gr)) {
+        return ((gr)paramImageView).getSupportImageTintList();
+      }
+      return null;
+    }
+    
+    public void a(ImageView paramImageView, ColorStateList paramColorStateList)
+    {
+      if ((paramImageView instanceof gr)) {
+        ((gr)paramImageView).setSupportImageTintList(paramColorStateList);
+      }
+    }
+    
+    public void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    {
+      if ((paramImageView instanceof gr)) {
+        ((gr)paramImageView).setSupportImageTintMode(paramMode);
+      }
+    }
+    
+    public PorterDuff.Mode b(ImageView paramImageView)
+    {
+      if ((paramImageView instanceof gr)) {
+        return ((gr)paramImageView).getSupportImageTintMode();
+      }
+      return null;
+    }
+  }
   
-  public abstract void a(q paramq, SSLSocket paramSSLSocket, boolean paramBoolean);
+  static abstract interface b
+  {
+    public abstract ColorStateList a(ImageView paramImageView);
+    
+    public abstract void a(ImageView paramImageView, ColorStateList paramColorStateList);
+    
+    public abstract void a(ImageView paramImageView, PorterDuff.Mode paramMode);
+    
+    public abstract PorterDuff.Mode b(ImageView paramImageView);
+  }
   
-  public abstract boolean a(a parama1, a parama2);
-  
-  public abstract boolean a(o paramo, c paramc);
-  
-  public abstract void b(o paramo, c paramc);
+  static final class c
+    extends gl.a
+  {
+    public final ColorStateList a(ImageView paramImageView)
+    {
+      return paramImageView.getImageTintList();
+    }
+    
+    public final void a(ImageView paramImageView, ColorStateList paramColorStateList)
+    {
+      paramImageView.setImageTintList(paramColorStateList);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramColorStateList = paramImageView.getDrawable();
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((paramColorStateList != null) && (i != 0))
+        {
+          if (paramColorStateList.isStateful()) {
+            paramColorStateList.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramColorStateList);
+        }
+      }
+    }
+    
+    public final void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    {
+      paramImageView.setImageTintMode(paramMode);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramMode = paramImageView.getDrawable();
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((paramMode != null) && (i != 0))
+        {
+          if (paramMode.isStateful()) {
+            paramMode.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramMode);
+        }
+      }
+    }
+    
+    public final PorterDuff.Mode b(ImageView paramImageView)
+    {
+      return paramImageView.getImageTintMode();
+    }
+  }
 }
 
 

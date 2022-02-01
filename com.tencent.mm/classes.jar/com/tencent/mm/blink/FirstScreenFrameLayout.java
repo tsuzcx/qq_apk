@@ -6,12 +6,12 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class FirstScreenFrameLayout
   extends FrameLayout
 {
-  public FirstScreenFrameLayout.a dYt;
+  public FirstScreenFrameLayout.a lqX;
   
   public FirstScreenFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,36 +25,36 @@ public class FirstScreenFrameLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(57721);
+    AppMethodBeat.i(131834);
     super.dispatchDraw(paramCanvas);
-    if (this.dYt != null) {
-      new ak(Looper.getMainLooper()).postAtFrontOfQueueV2(new Runnable()
+    if (this.lqX != null) {
+      new MMHandler(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(57720);
+          AppMethodBeat.i(131833);
           if (FirstScreenFrameLayout.a(FirstScreenFrameLayout.this) != null)
           {
-            FirstScreenFrameLayout.a(FirstScreenFrameLayout.this).HZ();
+            FirstScreenFrameLayout.a(FirstScreenFrameLayout.this).aKi();
             FirstScreenFrameLayout.b(FirstScreenFrameLayout.this);
           }
-          AppMethodBeat.o(57720);
+          AppMethodBeat.o(131833);
         }
       });
     }
-    AppMethodBeat.o(57721);
+    AppMethodBeat.o(131834);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(57722);
+    AppMethodBeat.i(131835);
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(57722);
+    AppMethodBeat.o(131835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.blink.FirstScreenFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,84 @@
 package com.tencent.mobileqq.emosm.web;
 
-import alto;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import apqh;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
+import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class MessengerService$IncomingHandler$11
-  implements Runnable
+class MessengerService$IncomingHandler$11
+  extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$11(apqh paramapqh, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$11(MessengerService.IncomingHandler paramIncomingHandler, Bundle paramBundle, IFavroamingDBManagerService paramIFavroamingDBManagerService, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
-    Bundle localBundle = new Bundle();
-    HashMap localHashMap = new HashMap();
-    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localalto != null)
+    int i = 0;
+    if (paramList2 != null) {}
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      if (!paramList2.isEmpty())
       {
-        String str = (String)localIterator.next();
-        Friends localFriends = localalto.e(str);
-        if (localFriends != null)
+        int j = paramList2.size();
+        if ((paramList1 != null) && (!paramList1.isEmpty()))
         {
-          if (!TextUtils.isEmpty(localFriends.remark)) {
-            localHashMap.put(str, localFriends.remark);
-          } else if (!TextUtils.isEmpty(localFriends.name)) {
-            localHashMap.put(str, localFriends.name);
-          } else {
-            localHashMap.put(str, "");
-          }
+          i = paramList1.size();
+          this.val$reqbundle.putInt("result", 2);
         }
-        else {
-          localHashMap.put(str, "");
+        else
+        {
+          this.val$reqbundle.putInt("result", 1);
+        }
+        Object localObject = new JSONObject();
+        ((JSONObject)localObject).put("succeedNum", i);
+        ((JSONObject)localObject).put("failedNum", j);
+        this.val$reqbundle.putString("data", ((JSONObject)localObject).toString());
+        paramList2 = paramList2.iterator();
+        while (paramList2.hasNext())
+        {
+          localObject = (CustomEmotionData)paramList2.next();
+          this.val$fdb.deleteCustomEmotion((CustomEmotionData)localObject);
         }
       }
+      this.val$reqbundle.putInt("result", 0);
+      this.val$service.a(this.val$reqbundle);
+      this.val$service.getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
+      paramList2 = this.val$qqApp.getHandler(ChatActivity.class);
+      if (paramList2 != null) {
+        paramList2.obtainMessage(10).sendToTarget();
+      }
+      paramList2 = (IFavroamingManagerService)this.val$qqApp.getRuntimeService(IFavroamingManagerService.class);
+      if ((paramList2 != null) && (paramList1 != null) && (!paramList1.isEmpty()))
+      {
+        paramList2.syncUpload(paramList1);
+        return;
+      }
     }
-    localBundle.putSerializable("friendsMap", localHashMap);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    catch (Exception paramList1)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
+        return;
+      }
+    }
+    catch (JSONException paramList1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
+      }
+    }
   }
 }
 

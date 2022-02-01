@@ -21,26 +21,26 @@ public final class BulkCursorToCursorAdaptor
   
   public BulkCursorToCursorAdaptor()
   {
-    AppMethodBeat.i(11974);
+    AppMethodBeat.i(2655);
     this.mObserverBridge = new AbstractCursor.SelfContentObserver(this);
-    AppMethodBeat.o(11974);
+    AppMethodBeat.o(2655);
   }
   
   private void throwIfCursorIsClosed()
   {
-    AppMethodBeat.i(11977);
+    AppMethodBeat.i(2658);
     if (this.mBulkCursor == null)
     {
       StaleDataException localStaleDataException = new StaleDataException("Attempted to access a cursor after it has been closed.");
-      AppMethodBeat.o(11977);
+      AppMethodBeat.o(2658);
       throw localStaleDataException;
     }
-    AppMethodBeat.o(11977);
+    AppMethodBeat.o(2658);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(11981);
+    AppMethodBeat.i(2662);
     super.close();
     if (this.mBulkCursor != null) {
       try
@@ -56,23 +56,23 @@ public final class BulkCursorToCursorAdaptor
       finally
       {
         this.mBulkCursor = null;
-        AppMethodBeat.o(11981);
+        AppMethodBeat.o(2662);
       }
     }
-    AppMethodBeat.o(11981);
+    AppMethodBeat.o(2662);
   }
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
   public final void deactivate()
   {
-    AppMethodBeat.i(11980);
+    AppMethodBeat.i(2661);
     super.deactivate();
     if (this.mBulkCursor != null) {
       try
       {
         this.mBulkCursor.deactivate();
-        AppMethodBeat.o(11980);
+        AppMethodBeat.o(2661);
         return;
       }
       catch (RemoteException localRemoteException)
@@ -80,64 +80,64 @@ public final class BulkCursorToCursorAdaptor
         Log.w("BulkCursor", "Remote process exception when deactivating");
       }
     }
-    AppMethodBeat.o(11980);
+    AppMethodBeat.o(2661);
   }
   
   public final String[] getColumnNames()
   {
-    AppMethodBeat.i(11983);
+    AppMethodBeat.i(2664);
     throwIfCursorIsClosed();
     String[] arrayOfString = this.mColumns;
-    AppMethodBeat.o(11983);
+    AppMethodBeat.o(2664);
     return arrayOfString;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(11978);
+    AppMethodBeat.i(2659);
     throwIfCursorIsClosed();
     int i = this.mCount;
-    AppMethodBeat.o(11978);
+    AppMethodBeat.o(2659);
     return i;
   }
   
   public final Bundle getExtras()
   {
-    AppMethodBeat.i(11984);
+    AppMethodBeat.i(2665);
     throwIfCursorIsClosed();
     try
     {
       Bundle localBundle = this.mBulkCursor.getExtras();
-      AppMethodBeat.o(11984);
+      AppMethodBeat.o(2665);
       return localBundle;
     }
     catch (RemoteException localRemoteException)
     {
       RuntimeException localRuntimeException = new RuntimeException(localRemoteException);
-      AppMethodBeat.o(11984);
+      AppMethodBeat.o(2665);
       throw localRuntimeException;
     }
   }
   
   public final IContentObserver getObserver()
   {
-    AppMethodBeat.i(11976);
+    AppMethodBeat.i(2657);
     try
     {
       IContentObserver localIContentObserver = (IContentObserver)this.mObserverBridge.getClass().getMethod("getContentObserver", new Class[0]).invoke(this.mObserverBridge, new Object[0]);
-      AppMethodBeat.o(11976);
+      AppMethodBeat.o(2657);
       return localIContentObserver;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(11976);
+      AppMethodBeat.o(2657);
     }
     return null;
   }
   
   public final void initialize(BulkCursorDescriptor paramBulkCursorDescriptor)
   {
-    AppMethodBeat.i(11975);
+    AppMethodBeat.i(2656);
     this.mBulkCursor = paramBulkCursorDescriptor.cursor;
     this.mColumns = paramBulkCursorDescriptor.columnNames;
     this.mRowIdColumnIndex = DatabaseUtils.findRowIdColumnIndex(this.mColumns);
@@ -146,12 +146,12 @@ public final class BulkCursorToCursorAdaptor
     if (paramBulkCursorDescriptor.window != null) {
       setWindow(paramBulkCursorDescriptor.window);
     }
-    AppMethodBeat.o(11975);
+    AppMethodBeat.o(2656);
   }
   
   public final boolean onMove(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(11979);
+    AppMethodBeat.i(2660);
     throwIfCursorIsClosed();
     try
     {
@@ -160,18 +160,18 @@ public final class BulkCursorToCursorAdaptor
       }
       while (this.mWindow == null)
       {
-        AppMethodBeat.o(11979);
+        AppMethodBeat.o(2660);
         return false;
         if (this.mWantsAllOnMoveCalls) {
           this.mBulkCursor.onMove(paramInt2);
         }
       }
-      AppMethodBeat.o(11979);
+      AppMethodBeat.o(2660);
     }
     catch (RemoteException localRemoteException)
     {
       Log.e("BulkCursor", "Unable to get window because the remote process is dead");
-      AppMethodBeat.o(11979);
+      AppMethodBeat.o(2660);
       return false;
     }
     return true;
@@ -183,7 +183,7 @@ public final class BulkCursorToCursorAdaptor
   
   public final boolean requery()
   {
-    AppMethodBeat.i(11982);
+    AppMethodBeat.i(2663);
     throwIfCursorIsClosed();
     try
     {
@@ -193,37 +193,37 @@ public final class BulkCursorToCursorAdaptor
         this.mPos = -1;
         closeWindow();
         super.requery();
-        AppMethodBeat.o(11982);
+        AppMethodBeat.o(2663);
         return true;
       }
       deactivate();
-      AppMethodBeat.o(11982);
+      AppMethodBeat.o(2663);
       return false;
     }
     catch (Exception localException)
     {
       Log.e("BulkCursor", "Unable to requery because the remote process exception " + localException.getMessage());
       deactivate();
-      AppMethodBeat.o(11982);
+      AppMethodBeat.o(2663);
     }
     return false;
   }
   
   public final Bundle respond(Bundle paramBundle)
   {
-    AppMethodBeat.i(11985);
+    AppMethodBeat.i(2666);
     throwIfCursorIsClosed();
     try
     {
       paramBundle = this.mBulkCursor.respond(paramBundle);
-      AppMethodBeat.o(11985);
+      AppMethodBeat.o(2666);
       return paramBundle;
     }
     catch (RemoteException paramBundle)
     {
       Log.w("BulkCursor", "respond() threw RemoteException, returning an empty bundle.", new Object[] { paramBundle });
       paramBundle = Bundle.EMPTY;
-      AppMethodBeat.o(11985);
+      AppMethodBeat.o(2666);
     }
     return paramBundle;
   }
@@ -234,7 +234,7 @@ public final class BulkCursorToCursorAdaptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.BulkCursorToCursorAdaptor
  * JD-Core Version:    0.7.0.1
  */

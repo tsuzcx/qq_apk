@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import alpk;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class AccountOnlineStateActivity$3
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   AccountOnlineStateActivity$3(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    alpk localalpk = (alpk)AccountOnlineStateActivity.a(this.this$0).a(2);
-    if (localalpk != null) {
-      localalpk.D();
-    }
+    ReportHelperKt.a("0X800AF9C", 2);
+    paramDialogInterface.dismiss();
+    AccountOnlineStateActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity.3
  * JD-Core Version:    0.7.0.1
  */

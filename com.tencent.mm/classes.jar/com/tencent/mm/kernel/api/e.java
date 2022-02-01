@@ -1,6 +1,6 @@
 package com.tencent.mm.kernel.api;
 
-import com.tencent.mm.cg.h;
+import com.tencent.mm.storagebase.h;
 
 public abstract interface e
 {
@@ -10,7 +10,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.api.e
  * JD-Core Version:    0.7.0.1
  */

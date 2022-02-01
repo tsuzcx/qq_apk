@@ -2,30 +2,30 @@ package com.tencent.av.ui.funchat.record;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import axvj;
-import bhtb;
+import com.tencent.mobileqq.videocodec.mediacodec.encoder.EncodeInputSurface;
 import com.tencent.qphone.base.util.QLog;
-import mqm;
+import com.tencent.util.VersionUtils;
 
-public class QavVideoAudioRecorder$1
+class QavVideoAudioRecorder$1
   implements Runnable
 {
-  public QavVideoAudioRecorder$1(mqm parammqm, axvj paramaxvj, HandlerThread paramHandlerThread) {}
+  QavVideoAudioRecorder$1(QavVideoAudioRecorder paramQavVideoAudioRecorder, EncodeInputSurface paramEncodeInputSurface, HandlerThread paramHandlerThread) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Axvj != null) {
-      this.jdField_a_of_type_Axvj.a();
+    EncodeInputSurface localEncodeInputSurface = this.a;
+    if (localEncodeInputSurface != null) {
+      localEncodeInputSurface.a();
     }
     try
     {
-      if (bhtb.h())
+      if (VersionUtils.h())
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quitSafely();
+        this.b.getLooper().quitSafely();
         QLog.i("QavVideoAudioRecorder", 1, "onDestroy quitSafely");
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
+      this.b.getLooper().quit();
       QLog.i("QavVideoAudioRecorder", 1, "onDestroy quit");
       return;
     }
@@ -37,7 +37,7 @@ public class QavVideoAudioRecorder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavVideoAudioRecorder.1
  * JD-Core Version:    0.7.0.1
  */

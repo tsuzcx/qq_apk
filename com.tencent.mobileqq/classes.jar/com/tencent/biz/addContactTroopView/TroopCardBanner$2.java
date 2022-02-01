@@ -1,6 +1,6 @@
 package com.tencent.biz.addContactTroopView;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import java.util.TimerTask;
 
 class TroopCardBanner$2
@@ -8,12 +8,12 @@ class TroopCardBanner$2
 {
   public void run()
   {
-    this.this$0.a.post(new TroopCardBanner.2.1(this));
+    this.this$0.d.post(new TroopCardBanner.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardBanner.2
  * JD-Core Version:    0.7.0.1
  */

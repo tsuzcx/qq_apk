@@ -8,13 +8,19 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class value$HomeworkLimit
   extends MessageMicro<HomeworkLimit>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "count", "ts" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, HomeworkLimit.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field count = PBField.initUInt32(0);
   public final PBUInt32Field ts = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "count", "ts" }, new Object[] { localInteger, localInteger }, HomeworkLimit.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.HomeworkLimit
  * JD-Core Version:    0.7.0.1
  */

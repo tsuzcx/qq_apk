@@ -1,307 +1,298 @@
 package com.tencent.mm.plugin.hardwareopt.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.adi;
-import com.tencent.mm.protocal.protobuf.ael;
-import com.tencent.mm.protocal.protobuf.auq;
-import com.tencent.mm.protocal.protobuf.bcy;
-import com.tencent.mm.protocal.protobuf.bde;
-import com.tencent.mm.protocal.protobuf.bww;
-import com.tencent.mm.protocal.protobuf.cgq;
-import com.tencent.mm.protocal.protobuf.ho;
-import com.tencent.mm.protocal.protobuf.nv;
-import com.tencent.mm.protocal.protobuf.uf;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.protocal.protobuf.ady;
+import com.tencent.mm.protocal.protobuf.asn;
+import com.tencent.mm.protocal.protobuf.cax;
+import com.tencent.mm.protocal.protobuf.czg;
+import com.tencent.mm.protocal.protobuf.dog;
+import com.tencent.mm.protocal.protobuf.doq;
+import com.tencent.mm.protocal.protobuf.eur;
+import com.tencent.mm.protocal.protobuf.fhy;
+import com.tencent.mm.protocal.protobuf.jx;
+import com.tencent.mm.protocal.protobuf.uy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.vending.c.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class b
-  implements com.tencent.mm.vending.c.a<Boolean, auq>
+  implements a<Boolean, czg>
 {
-  private boolean nGW = false;
+  private boolean JmI = false;
   
   public b(boolean paramBoolean)
   {
-    this.nGW = paramBoolean;
+    this.JmI = paramBoolean;
   }
   
-  private Boolean a(auq paramauq)
+  private Boolean a(czg paramczg)
   {
-    AppMethodBeat.i(59280);
-    if (!g.RJ().QU())
+    AppMethodBeat.i(55561);
+    if (!com.tencent.mm.kernel.h.baC().aZN())
     {
-      ab.e("MicroMsg.TaskReportHardwareInfo", "Account not init, just return");
-      paramauq = Boolean.FALSE;
-      AppMethodBeat.o(59280);
-      return paramauq;
+      Log.e("MicroMsg.TaskReportHardwareInfo", "Account not init, just return");
+      paramczg = Boolean.FALSE;
+      AppMethodBeat.o(55561);
+      return paramczg;
     }
-    long l1 = ((Long)g.RL().Ru().get(ac.a.yHS, Long.valueOf(-1L))).longValue();
+    long l1 = ((Long)com.tencent.mm.kernel.h.baE().ban().get(at.a.acTF, Long.valueOf(-1L))).longValue();
     long l2 = System.currentTimeMillis();
-    ab.i("MicroMsg.TaskReportHardwareInfo", "hy: last ticks: %d, current ticks: %d, interval: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1) });
-    if ((!this.nGW) && (l2 - l1 < 86400000L))
+    Log.i("MicroMsg.TaskReportHardwareInfo", "hy: last ticks: %d, current ticks: %d, interval: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1) });
+    if ((!this.JmI) && (l2 - l1 < 86400000L))
     {
-      ab.d("MicroMsg.TaskReportHardwareInfo", "hy: should not upload. too small interval");
-      paramauq = Boolean.FALSE;
-      AppMethodBeat.o(59280);
-      return paramauq;
+      Log.d("MicroMsg.TaskReportHardwareInfo", "hy: should not upload. too small interval");
+      paramczg = Boolean.FALSE;
+      AppMethodBeat.o(55561);
+      return paramczg;
     }
-    if ((!this.nGW) && ((paramauq == null) || (paramauq.xjC == null)))
+    if ((!this.JmI) && ((paramczg == null) || (paramczg.aaEg == null)))
     {
-      ab.w("MicroMsg.TaskReportHardwareInfo", "hy: error when finding hardware");
-      h.qsU.idkeyStat(661L, 1L, 1L, false);
-      paramauq = Boolean.FALSE;
-      AppMethodBeat.o(59280);
-      return paramauq;
+      Log.w("MicroMsg.TaskReportHardwareInfo", "hy: error when finding hardware");
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(661L, 1L, 1L, false);
+      paramczg = Boolean.FALSE;
+      AppMethodBeat.o(55561);
+      return paramczg;
     }
-    if ((!this.nGW) && (bo.isNullOrNil(paramauq.xjC.imei)))
-    {
-      ab.w("MicroMsg.TaskReportHardwareInfo", "hy: no imei detected. maybe not grant permission. ignore");
-      h.qsU.idkeyStat(661L, 2L, 1L, false);
-      paramauq = Boolean.FALSE;
-      AppMethodBeat.o(59280);
-      return paramauq;
-    }
-    ab.i("MicroMsg.TaskReportHardwareInfo", "hy: found hardware infos. start report");
-    h localh = h.qsU;
-    String str1 = paramauq.xjC.imei;
-    String str2 = paramauq.xjC.wul;
-    String str3 = paramauq.xjC.wum;
-    String str4 = paramauq.xjC.wun;
-    String str5 = paramauq.xjD.wDv;
-    String str6 = paramauq.xjD.wDt;
-    String str7 = paramauq.xjD.wum;
-    String str8 = paramauq.xjD.wDw;
-    int i18 = paramauq.xjD.wDu;
-    int i19 = paramauq.xjE.xsW;
-    int i20 = paramauq.xjE.xsX;
-    int i21 = paramauq.xjF.xRu;
+    Log.i("MicroMsg.TaskReportHardwareInfo", "hy: found hardware infos. start report");
+    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.OAn;
+    String str1 = paramczg.aaEg.imei;
+    String str2 = paramczg.aaEg.YMj;
+    String str3 = paramczg.aaEg.modelName;
+    String str4 = paramczg.aaEg.YMk;
+    String str5 = paramczg.aaEh.ZaV;
+    String str6 = paramczg.aaEh.ZaT;
+    String str7 = paramczg.aaEh.modelName;
+    String str8 = paramczg.aaEh.ZaW;
+    int i18 = paramczg.aaEh.ZaU;
+    int i19 = paramczg.aaEi.aaVj;
+    int i20 = paramczg.aaEi.aaVk;
+    int i21 = paramczg.aaEj.abIM;
     int i;
     int j;
-    label382:
+    label330:
     int k;
-    label395:
+    label343:
     String str9;
     int i22;
     String str10;
     int m;
-    label435:
+    label383:
     int n;
-    label448:
+    label396:
     int i1;
-    label461:
+    label409:
     int i2;
-    label474:
+    label422:
     int i3;
-    label487:
+    label435:
     int i4;
-    label500:
+    label448:
     int i5;
-    label513:
+    label461:
     int i6;
-    label526:
+    label474:
     int i7;
-    label539:
+    label487:
     int i8;
-    label552:
+    label500:
     int i9;
-    label565:
+    label513:
     int i10;
-    label578:
+    label526:
     int i11;
-    label591:
+    label539:
     int i12;
-    label604:
+    label552:
     int i13;
-    label617:
+    label565:
     int i14;
-    label630:
+    label578:
     int i15;
-    label643:
+    label591:
     int i16;
-    label656:
+    label604:
     int i23;
     int i24;
     String str11;
     String str12;
-    if (paramauq.xjF.xRv)
+    if (paramczg.aaEj.abIN)
     {
       i = 1;
-      if (!paramauq.xjJ.wXo) {
-        break label1091;
+      if (!paramczg.aaEn.aajY) {
+        break label1039;
       }
       j = 1;
-      if (!paramauq.xjJ.wXp) {
-        break label1096;
+      if (!paramczg.aaEn.aajZ) {
+        break label1044;
       }
       k = 1;
-      str9 = paramauq.xjG.xJZ;
-      i22 = paramauq.xjG.density;
-      str10 = paramauq.xjH.wME;
-      if (!paramauq.xjI.wWd) {
-        break label1102;
+      str9 = paramczg.aaEk.resolution;
+      i22 = paramczg.aaEk.oKu;
+      str10 = paramczg.aaEl.Zme;
+      if (!paramczg.aaEm.ZCv) {
+        break label1050;
       }
       m = 1;
-      if (!paramauq.xjI.wWe) {
-        break label1108;
+      if (!paramczg.aaEm.ZCw) {
+        break label1056;
       }
       n = 1;
-      if (!paramauq.xjI.wWf) {
-        break label1114;
+      if (!paramczg.aaEm.ZCx) {
+        break label1062;
       }
       i1 = 1;
-      if (!paramauq.xjI.wWg) {
-        break label1120;
+      if (!paramczg.aaEm.ZCy) {
+        break label1068;
       }
       i2 = 1;
-      if (!paramauq.xjI.wWh) {
-        break label1126;
+      if (!paramczg.aaEm.ZCz) {
+        break label1074;
       }
       i3 = 1;
-      if (!paramauq.xjI.wWi) {
-        break label1132;
+      if (!paramczg.aaEm.ZCA) {
+        break label1080;
       }
       i4 = 1;
-      if (!paramauq.xjI.wWj) {
-        break label1138;
+      if (!paramczg.aaEm.ZCB) {
+        break label1086;
       }
       i5 = 1;
-      if (!paramauq.xjI.wWu) {
-        break label1144;
+      if (!paramczg.aaEm.ZCM) {
+        break label1092;
       }
       i6 = 1;
-      if (!paramauq.xjI.wWk) {
-        break label1150;
+      if (!paramczg.aaEm.ZCC) {
+        break label1098;
       }
       i7 = 1;
-      if (!paramauq.xjI.wWl) {
-        break label1156;
+      if (!paramczg.aaEm.ZCD) {
+        break label1104;
       }
       i8 = 1;
-      if (!paramauq.xjI.wWm) {
-        break label1162;
+      if (!paramczg.aaEm.ZCE) {
+        break label1110;
       }
       i9 = 1;
-      if (!paramauq.xjI.wWn) {
-        break label1168;
+      if (!paramczg.aaEm.ZCF) {
+        break label1116;
       }
       i10 = 1;
-      if (!paramauq.xjI.wWo) {
-        break label1174;
+      if (!paramczg.aaEm.ZCG) {
+        break label1122;
       }
       i11 = 1;
-      if (!paramauq.xjI.wWp) {
-        break label1180;
+      if (!paramczg.aaEm.ZCH) {
+        break label1128;
       }
       i12 = 1;
-      if (!paramauq.xjI.wWq) {
-        break label1186;
+      if (!paramczg.aaEm.ZCI) {
+        break label1134;
       }
       i13 = 1;
-      if (!paramauq.xjI.wWr) {
-        break label1192;
+      if (!paramczg.aaEm.ZCJ) {
+        break label1140;
       }
       i14 = 1;
-      if (!paramauq.xjI.wWs) {
-        break label1198;
+      if (!paramczg.aaEm.ZCK) {
+        break label1146;
       }
       i15 = 1;
-      if (!paramauq.xjI.wWt) {
-        break label1204;
+      if (!paramczg.aaEm.ZCL) {
+        break label1152;
       }
       i16 = 1;
-      i23 = paramauq.xjE.gim;
-      i24 = paramauq.xjE.xsY;
-      str11 = paramauq.xjH.wMF;
-      str12 = ah(paramauq.xjH.wMG);
-      if (!paramauq.xjJ.wXq) {
-        break label1210;
+      i23 = paramczg.aaEi.MNT;
+      i24 = paramczg.aaEi.aaVl;
+      str11 = paramczg.aaEl.Zmf;
+      str12 = bA(paramczg.aaEl.Zmg);
+      if (!paramczg.aaEn.aaka) {
+        break label1158;
       }
     }
-    label1156:
-    label1162:
-    label1168:
-    label1174:
-    label1180:
-    label1186:
-    label1192:
-    label1198:
-    label1204:
-    label1210:
+    label1152:
+    label1158:
     for (int i17 = 1;; i17 = 0)
     {
-      localh.e(14552, new Object[] { str1, str2, str3, str4, str5, str6, str7, str8, Integer.valueOf(i18), Integer.valueOf(i19), Integer.valueOf(i20), Integer.valueOf(i21), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), str9, Integer.valueOf(i22), str10, Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(i11), Integer.valueOf(i12), Integer.valueOf(i13), Integer.valueOf(i14), Integer.valueOf(i15), Integer.valueOf(i16), Integer.valueOf(i23), Integer.valueOf(i24), str11, str12, Integer.valueOf(i17) });
-      g.RL().Ru().set(ac.a.yHS, Long.valueOf(l2));
-      h.qsU.idkeyStat(661L, 0L, 1L, false);
-      paramauq = Boolean.TRUE;
-      AppMethodBeat.o(59280);
-      return paramauq;
+      localh.b(14552, new Object[] { str1, str2, str3, str4, str5, str6, str7, str8, Integer.valueOf(i18), Integer.valueOf(i19), Integer.valueOf(i20), Integer.valueOf(i21), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), str9, Integer.valueOf(i22), str10, Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(i11), Integer.valueOf(i12), Integer.valueOf(i13), Integer.valueOf(i14), Integer.valueOf(i15), Integer.valueOf(i16), Integer.valueOf(i23), Integer.valueOf(i24), str11, str12, Integer.valueOf(i17) });
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acTF, Long.valueOf(l2));
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(661L, 0L, 1L, false);
+      paramczg = Boolean.TRUE;
+      AppMethodBeat.o(55561);
+      return paramczg;
       i = 0;
       break;
-      label1091:
+      label1039:
       j = 0;
-      break label382;
-      label1096:
+      break label330;
+      label1044:
       k = 0;
-      break label395;
-      label1102:
+      break label343;
+      label1050:
       m = 0;
-      break label435;
-      label1108:
+      break label383;
+      label1056:
       n = 0;
-      break label448;
-      label1114:
+      break label396;
+      label1062:
       i1 = 0;
-      break label461;
-      label1120:
+      break label409;
+      label1068:
       i2 = 0;
-      break label474;
-      label1126:
+      break label422;
+      label1074:
       i3 = 0;
-      break label487;
-      label1132:
+      break label435;
+      label1080:
       i4 = 0;
-      break label500;
-      label1138:
+      break label448;
+      label1086:
       i5 = 0;
-      break label513;
-      label1144:
+      break label461;
+      label1092:
       i6 = 0;
-      break label526;
-      label1150:
+      break label474;
+      label1098:
       i7 = 0;
-      break label539;
+      break label487;
+      label1104:
       i8 = 0;
-      break label552;
+      break label500;
+      label1110:
       i9 = 0;
-      break label565;
+      break label513;
+      label1116:
       i10 = 0;
-      break label578;
+      break label526;
+      label1122:
       i11 = 0;
-      break label591;
+      break label539;
+      label1128:
       i12 = 0;
-      break label604;
+      break label552;
+      label1134:
       i13 = 0;
-      break label617;
+      break label565;
+      label1140:
       i14 = 0;
-      break label630;
+      break label578;
+      label1146:
       i15 = 0;
-      break label643;
+      break label591;
       i16 = 0;
-      break label656;
+      break label604;
     }
   }
   
-  private static String ah(LinkedList<bde> paramLinkedList)
+  private static String bA(LinkedList<doq> paramLinkedList)
   {
-    AppMethodBeat.i(59281);
+    AppMethodBeat.i(55562);
     JSONArray localJSONArray1 = new JSONArray();
     if (paramLinkedList != null)
     {
@@ -314,16 +305,16 @@ public final class b
           if (!paramLinkedList.hasNext()) {
             break;
           }
-          Object localObject = (bde)paramLinkedList.next();
-          if ((localObject == null) || (bo.isNullOrNil(((bde)localObject).cfP))) {
+          Object localObject = (doq)paramLinkedList.next();
+          if ((localObject == null) || (Util.isNullOrNil(((doq)localObject).cBw))) {
             continue;
           }
           localJSONObject = new JSONObject();
-          localJSONObject.put("mimeName", ((bde)localObject).cfP);
+          localJSONObject.put("mimeName", ((doq)localObject).cBw);
           JSONArray localJSONArray2 = new JSONArray();
-          if (((bde)localObject).xtg != null)
+          if (((doq)localObject).aaVD != null)
           {
-            localObject = ((bde)localObject).xtg.iterator();
+            localObject = ((doq)localObject).aaVD.iterator();
             if (((Iterator)localObject).hasNext())
             {
               localJSONArray2.put((String)((Iterator)localObject).next());
@@ -334,24 +325,24 @@ public final class b
         }
         catch (Exception paramLinkedList)
         {
-          ab.printErrStackTrace("MicroMsg.TaskReportHardwareInfo", paramLinkedList, "hy: error when build up json", new Object[0]);
-          AppMethodBeat.o(59281);
+          Log.printErrStackTrace("MicroMsg.TaskReportHardwareInfo", paramLinkedList, "hy: error when build up json", new Object[0]);
+          AppMethodBeat.o(55562);
           return "";
         }
         localJSONArray1.put(localJSONObject);
       }
       paramLinkedList = localJSONArray1.toString();
-      AppMethodBeat.o(59281);
+      AppMethodBeat.o(55562);
       return paramLinkedList;
     }
-    ab.w("MicroMsg.TaskReportHardwareInfo", "hy: no mime info retrieved!");
-    AppMethodBeat.o(59281);
+    Log.w("MicroMsg.TaskReportHardwareInfo", "hy: no mime info retrieved!");
+    AppMethodBeat.o(55562);
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.c.b
  * JD-Core Version:    0.7.0.1
  */

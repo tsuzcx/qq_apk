@@ -1,34 +1,38 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import amfz;
-import amga;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import ayzl;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 
-public class ActivateFriendsManager$2
+class ActivateFriendsManager$2
   implements Runnable
 {
-  public ActivateFriendsManager$2(amga paramamga) {}
+  ActivateFriendsManager$2(ActivateFriendsManager paramActivateFriendsManager) {}
   
   public void run()
   {
-    long l = amga.a(this.this$0).getLong("key_last_birth_msg_stamp", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "local birth timestamp = " + l);
-    }
-    if (ayzl.a() - l > 259200L)
+    long l = ActivateFriendsManager.g(this.this$0).getLong("key_last_birth_msg_stamp", 0L);
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      amga.a(this.this$0).removeCallbacks(amga.a(this.this$0));
-      this.this$0.a = amga.b(this.this$0);
-      amfz.a(amga.a(this.this$0), false, true, false, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("local birth timestamp = ");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("ActivateFriends.Manager", 2, ((StringBuilder)localObject).toString());
+    }
+    if (MessageCache.c() - l > 259200L)
+    {
+      ActivateFriendsManager.i(this.this$0).removeCallbacks(ActivateFriendsManager.h(this.this$0));
+      localObject = this.this$0;
+      ((ActivateFriendsManager)localObject).a = ActivateFriendsManager.j((ActivateFriendsManager)localObject);
+      ActivateFriendServlet.a(ActivateFriendsManager.e(this.this$0), false, true, false, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.2
  * JD-Core Version:    0.7.0.1
  */

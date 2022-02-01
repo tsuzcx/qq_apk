@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wallet.pay.a;
 
 public final class d
 {
-  public String opC;
-  public String opD;
-  public int tVm;
-  public String tVn;
-  public String tVo;
+  public int VmF;
+  public String VmG;
+  public String VmH;
+  public String rGU;
+  public String right_button_wording;
 }
 
 

@@ -53,7 +53,6 @@
                 "value": "21"
               },
               "attributes": {
-                "setFrameString:": "-1",
                 "setTitle:": "-1",
                 "setImages:forStates:": [
                   [
@@ -80,7 +79,6 @@
                 "type": "wrap_content"
               },
               "attributes": {
-                "setFrameString:": "-1",
                 "setText:": "-1",
                 "setTextColorString:": "#797E8E",
                 "setFontSizeString:": "12",
@@ -116,7 +114,6 @@
                 "value": "21"
               },
               "attributes": {
-                "setFrameString:": "-1",
                 "setSelectedString:": "-1",
                 "setTitle:": "-1",
                 "setImages:colors:direction:forStates:": [
@@ -154,7 +151,6 @@
                 "type": "wrap_content"
               },
               "attributes": {
-                "setFrameString:": "-1",
                 "setText:": "-1",
                 "setTextColorString:": "#797E8E",
                 "setFontSizeString:": "12",
@@ -220,8 +216,7 @@
       },
       "attributes": {
         "loadQQAvatar:": "-1",
-        "setArticleModel:": "-1",
-        "setFrameString:": "-1"
+        "setArticleModel:": "-1"
       }
     },
     {
@@ -250,7 +245,6 @@
             "type": "wrap_content"
           },
           "attributes": {
-            "setFrameString:": "-1",
             "setText:": "-1",
             "setTextColorString:": "#777777",
             "setBoldFontSizeString:": "12",
@@ -273,7 +267,6 @@
       "align_parent_bottom": "YES",
       "margin_left": "12",
       "attributes": {
-        "setFrameString:": "-1",
         "setBackgroundColorString:": "#f2f2f2"
       }
     }

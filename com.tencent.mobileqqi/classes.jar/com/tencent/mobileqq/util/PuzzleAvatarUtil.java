@@ -9,7 +9,7 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import hbb;
+import hba;
 
 public class PuzzleAvatarUtil
 {
@@ -43,11 +43,11 @@ public class PuzzleAvatarUtil
     int k = 0;
     RectF localRectF = new RectF();
     Rect localRect = new Rect();
-    hbb[] arrayOfhbb = new hbb[j];
+    hba[] arrayOfhba = new hba[j];
     i = 0;
     while (i < j)
     {
-      arrayOfhbb[i] = new hbb(null);
+      arrayOfhba[i] = new hba(null);
       i += 1;
     }
     Bitmap localBitmap2 = Bitmap.createBitmap(paramInt, paramInt, Bitmap.Config.ARGB_8888);
@@ -55,10 +55,10 @@ public class PuzzleAvatarUtil
     localCanvas.drawARGB(0, 0, 0, 0);
     if (j == 1)
     {
-      arrayOfhbb[0].jdField_a_of_type_Float = 0.0F;
-      arrayOfhbb[0].jdField_a_of_type_Int = 0;
-      arrayOfhbb[0].b = 0;
-      arrayOfhbb[0].jdField_a_of_type_Boolean = true;
+      arrayOfhba[0].jdField_a_of_type_Float = 0.0F;
+      arrayOfhba[0].jdField_a_of_type_Int = 0;
+      arrayOfhba[0].b = 0;
+      arrayOfhba[0].jdField_a_of_type_Boolean = true;
     }
     for (;;)
     {
@@ -67,12 +67,12 @@ public class PuzzleAvatarUtil
       {
         Bitmap localBitmap1 = arrayOfBitmap[i];
         paramArrayOfBitmap = localBitmap1;
-        if (!arrayOfhbb[i].jdField_a_of_type_Boolean) {
-          paramArrayOfBitmap = a(localBitmap1, paramBitmap, arrayOfhbb[i].jdField_a_of_type_Float, paramFloat);
+        if (!arrayOfhba[i].jdField_a_of_type_Boolean) {
+          paramArrayOfBitmap = a(localBitmap1, paramBitmap, arrayOfhba[i].jdField_a_of_type_Float, paramFloat);
         }
         if (paramArrayOfBitmap != null)
         {
-          localRectF.set(arrayOfhbb[i].jdField_a_of_type_Int, arrayOfhbb[i].b, arrayOfhbb[i].jdField_a_of_type_Int + paramInt, arrayOfhbb[i].b + paramInt);
+          localRectF.set(arrayOfhba[i].jdField_a_of_type_Int, arrayOfhba[i].b, arrayOfhba[i].jdField_a_of_type_Int + paramInt, arrayOfhba[i].b + paramInt);
           localRect.set(0, 0, paramArrayOfBitmap.getWidth(), paramArrayOfBitmap.getHeight());
           localCanvas.drawBitmap(paramArrayOfBitmap, localRect, localRectF, localPaint);
         }
@@ -81,64 +81,64 @@ public class PuzzleAvatarUtil
       if (j == 2)
       {
         i = (int)(60.0F * f + 0.5F);
-        arrayOfhbb[0].jdField_a_of_type_Float = 0.0F;
-        arrayOfhbb[0].jdField_a_of_type_Int = 0;
-        arrayOfhbb[0].b = 0;
-        arrayOfhbb[1].jdField_a_of_type_Float = 0.0F;
-        arrayOfhbb[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfhbb[1].b = (paramInt - i);
-        arrayOfhbb[1].jdField_a_of_type_Boolean = true;
+        arrayOfhba[0].jdField_a_of_type_Float = 0.0F;
+        arrayOfhba[0].jdField_a_of_type_Int = 0;
+        arrayOfhba[0].b = 0;
+        arrayOfhba[1].jdField_a_of_type_Float = 0.0F;
+        arrayOfhba[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfhba[1].b = (paramInt - i);
+        arrayOfhba[1].jdField_a_of_type_Boolean = true;
         paramInt = i;
       }
       else if (j == 3)
       {
         i = (int)(52.0F * f + 0.5F);
-        arrayOfhbb[0].jdField_a_of_type_Float = 75.0F;
-        arrayOfhbb[0].jdField_a_of_type_Int = ((paramInt - i) / 2);
-        arrayOfhbb[0].b = ((int)(2.0F * f));
-        arrayOfhbb[1].jdField_a_of_type_Float = -165.0F;
-        arrayOfhbb[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfhbb[1].b = (paramInt - i - (int)(2.0F * f));
-        arrayOfhbb[2].jdField_a_of_type_Float = -45.0F;
-        arrayOfhbb[2].jdField_a_of_type_Int = 0;
-        arrayOfhbb[2].b = (paramInt - i - (int)(f * 2.0F));
+        arrayOfhba[0].jdField_a_of_type_Float = 75.0F;
+        arrayOfhba[0].jdField_a_of_type_Int = ((paramInt - i) / 2);
+        arrayOfhba[0].b = ((int)(2.0F * f));
+        arrayOfhba[1].jdField_a_of_type_Float = -165.0F;
+        arrayOfhba[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfhba[1].b = (paramInt - i - (int)(2.0F * f));
+        arrayOfhba[2].jdField_a_of_type_Float = -45.0F;
+        arrayOfhba[2].jdField_a_of_type_Int = 0;
+        arrayOfhba[2].b = (paramInt - i - (int)(f * 2.0F));
         paramInt = i;
       }
       else if (j == 4)
       {
         i = (int)(52.0F * f + 0.5F);
-        arrayOfhbb[0].jdField_a_of_type_Float = 135.0F;
-        arrayOfhbb[0].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfhbb[0].b = 0;
-        arrayOfhbb[1].jdField_a_of_type_Float = -135.0F;
-        arrayOfhbb[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfhbb[1].b = (paramInt - i);
-        arrayOfhbb[2].jdField_a_of_type_Float = -45.0F;
-        arrayOfhbb[2].jdField_a_of_type_Int = 0;
-        arrayOfhbb[2].b = (paramInt - i);
-        arrayOfhbb[3].jdField_a_of_type_Float = 45.0F;
-        arrayOfhbb[3].jdField_a_of_type_Int = 0;
-        arrayOfhbb[3].b = 0;
+        arrayOfhba[0].jdField_a_of_type_Float = 135.0F;
+        arrayOfhba[0].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfhba[0].b = 0;
+        arrayOfhba[1].jdField_a_of_type_Float = -135.0F;
+        arrayOfhba[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfhba[1].b = (paramInt - i);
+        arrayOfhba[2].jdField_a_of_type_Float = -45.0F;
+        arrayOfhba[2].jdField_a_of_type_Int = 0;
+        arrayOfhba[2].b = (paramInt - i);
+        arrayOfhba[3].jdField_a_of_type_Float = 45.0F;
+        arrayOfhba[3].jdField_a_of_type_Int = 0;
+        arrayOfhba[3].b = 0;
         paramInt = i;
       }
       else if (j == 5)
       {
         i = (int)(40.0F * f + 0.5F);
-        arrayOfhbb[0].jdField_a_of_type_Float = 170.0F;
-        arrayOfhbb[0].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfhbb[0].b = ((int)(24.0F * f + 0.5F));
-        arrayOfhbb[1].jdField_a_of_type_Float = -115.0F;
-        arrayOfhbb[1].jdField_a_of_type_Int = (paramInt - i - (int)(12.0F * f + 0.5F));
-        arrayOfhbb[1].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        arrayOfhbb[2].jdField_a_of_type_Float = -40.0F;
-        arrayOfhbb[2].jdField_a_of_type_Int = ((int)(12.0F * f + 0.5F));
-        arrayOfhbb[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        arrayOfhbb[3].jdField_a_of_type_Float = 25.0F;
-        arrayOfhbb[3].jdField_a_of_type_Int = 0;
-        arrayOfhbb[3].b = ((int)(24.0F * f + 0.5F));
-        arrayOfhbb[4].jdField_a_of_type_Float = 100.0F;
-        arrayOfhbb[4].jdField_a_of_type_Int = ((int)(30.0F * f + 0.5F));
-        arrayOfhbb[4].b = ((int)(f * 2.0F + 0.5F));
+        arrayOfhba[0].jdField_a_of_type_Float = 170.0F;
+        arrayOfhba[0].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfhba[0].b = ((int)(24.0F * f + 0.5F));
+        arrayOfhba[1].jdField_a_of_type_Float = -115.0F;
+        arrayOfhba[1].jdField_a_of_type_Int = (paramInt - i - (int)(12.0F * f + 0.5F));
+        arrayOfhba[1].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+        arrayOfhba[2].jdField_a_of_type_Float = -40.0F;
+        arrayOfhba[2].jdField_a_of_type_Int = ((int)(12.0F * f + 0.5F));
+        arrayOfhba[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+        arrayOfhba[3].jdField_a_of_type_Float = 25.0F;
+        arrayOfhba[3].jdField_a_of_type_Int = 0;
+        arrayOfhba[3].b = ((int)(24.0F * f + 0.5F));
+        arrayOfhba[4].jdField_a_of_type_Float = 100.0F;
+        arrayOfhba[4].jdField_a_of_type_Int = ((int)(30.0F * f + 0.5F));
+        arrayOfhba[4].b = ((int)(f * 2.0F + 0.5F));
         paramInt = i;
       }
       else
@@ -147,24 +147,24 @@ public class PuzzleAvatarUtil
         if (j >= 6)
         {
           i = (int)(36.0F * f + 0.5F);
-          arrayOfhbb[0].jdField_a_of_type_Float = 135.0F;
-          arrayOfhbb[0].b = ((int)(2.0F * f + 0.5F));
-          arrayOfhbb[0].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
-          arrayOfhbb[1].jdField_a_of_type_Float = 200.0F;
-          arrayOfhbb[1].b = ((int)(32.0F * f + 0.5F));
-          arrayOfhbb[1].jdField_a_of_type_Int = (paramInt - i);
-          arrayOfhbb[2].jdField_a_of_type_Float = -110.0F;
-          arrayOfhbb[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-          arrayOfhbb[2].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
-          arrayOfhbb[3].jdField_a_of_type_Float = -45.0F;
-          arrayOfhbb[3].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-          arrayOfhbb[3].jdField_a_of_type_Int = ((int)(15.0F * f + 0.5F));
-          arrayOfhbb[4].jdField_a_of_type_Float = 20.0F;
-          arrayOfhbb[4].b = ((int)(32.0F * f + 0.5F));
-          arrayOfhbb[4].jdField_a_of_type_Int = 0;
-          arrayOfhbb[5].jdField_a_of_type_Float = 75.0F;
-          arrayOfhbb[5].b = ((int)(2.0F * f + 0.5F));
-          arrayOfhbb[5].jdField_a_of_type_Int = ((int)(f * 15.0F + 0.5F));
+          arrayOfhba[0].jdField_a_of_type_Float = 135.0F;
+          arrayOfhba[0].b = ((int)(2.0F * f + 0.5F));
+          arrayOfhba[0].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
+          arrayOfhba[1].jdField_a_of_type_Float = 200.0F;
+          arrayOfhba[1].b = ((int)(32.0F * f + 0.5F));
+          arrayOfhba[1].jdField_a_of_type_Int = (paramInt - i);
+          arrayOfhba[2].jdField_a_of_type_Float = -110.0F;
+          arrayOfhba[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+          arrayOfhba[2].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
+          arrayOfhba[3].jdField_a_of_type_Float = -45.0F;
+          arrayOfhba[3].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+          arrayOfhba[3].jdField_a_of_type_Int = ((int)(15.0F * f + 0.5F));
+          arrayOfhba[4].jdField_a_of_type_Float = 20.0F;
+          arrayOfhba[4].b = ((int)(32.0F * f + 0.5F));
+          arrayOfhba[4].jdField_a_of_type_Int = 0;
+          arrayOfhba[5].jdField_a_of_type_Float = 75.0F;
+          arrayOfhba[5].b = ((int)(2.0F * f + 0.5F));
+          arrayOfhba[5].jdField_a_of_type_Int = ((int)(f * 15.0F + 0.5F));
         }
         paramInt = i;
       }

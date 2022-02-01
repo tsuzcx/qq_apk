@@ -1,27 +1,42 @@
 import android.text.Editable;
-import android.view.MotionEvent;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class huf
-  implements View.OnTouchListener
+  implements TextWatcher
 {
   public huf(Login paramLogin) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
-      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    if (paramCharSequence.length() == 0) {
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    }
+    for (;;)
+    {
+      long l = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.a.jdField_a_of_type_MqqManagerWtloginManager, paramCharSequence.toString());
+      if (!this.a.a(l)) {
+        break;
+      }
+      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("123457890");
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_b_of_type_AndroidWidgetEditText.setSelection(9);
+      return;
+      if (paramInt3 < 2) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
     }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
-      return false;
+    if (!"".equals(this.a.jdField_b_of_type_AndroidWidgetEditText.getText().toString())) {
+      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    return false;
+    this.a.jdField_b_of_type_Boolean = false;
   }
 }
 

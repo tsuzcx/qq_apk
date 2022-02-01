@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
-import mqq.app.permission.PermissionCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
 class byu
-  implements PermissionCallback
+  implements PermissionDialogCallback
 {
   byu(byt parambyt) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    new PermissionsDialog().a(this.a.a.a.a(), paramInt, paramArrayOfString, new byv(this));
-  }
+  public void a() {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public void b() {}
 }
 
 

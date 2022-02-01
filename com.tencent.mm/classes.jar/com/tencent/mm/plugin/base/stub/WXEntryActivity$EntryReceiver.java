@@ -7,109 +7,109 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.HandlerThread;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.api.b;
 import com.tencent.mm.plugin.game.api.b.a;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.h.a;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.pluginsdk.model.app.q;
+import com.tencent.mm.pluginsdk.model.app.u;
+import com.tencent.mm.pluginsdk.ui.tools.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
-@JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class WXEntryActivity$EntryReceiver
   extends BroadcastReceiver
 {
-  private static ak handler;
-  private String Ca;
+  private static MMHandler handler;
   private String appId;
   private String appName;
+  private String bJH;
   private Context context;
-  private int jLB;
-  private long jMr;
+  private int sdkVersion;
+  private long vsE;
   
-  private void b(f paramf)
+  private void b(com.tencent.mm.pluginsdk.model.app.g paramg)
   {
-    AppMethodBeat.i(153512);
-    if (!p.a(this.context, paramf, this.Ca, false))
+    AppMethodBeat.i(22284);
+    if (!u.a(this.context, paramg, this.bJH, false))
     {
-      ab.e("MicroMsg.WXEntryActivity", "reg fail, check app fail");
-      al.cab().alr(this.appId);
-      AppMethodBeat.o(153512);
+      Log.e("MicroMsg.WXEntryActivity", "reg fail, check app fail");
+      as.gxm().bpP(this.appId);
+      AppMethodBeat.o(22284);
       return;
     }
-    if ((paramf != null) && (paramf.vY()))
+    if ((paramg != null) && (paramg.aqJ()))
     {
-      localObject1 = b.a.bEX();
+      localObject1 = b.a.fCn();
       if (localObject1 != null) {
-        ((com.tencent.mm.plugin.game.api.b)localObject1).j(this.context, this.appId, this.Ca);
+        ((b)localObject1).o(this.context, this.appId, this.bJH);
       }
     }
     localObject1 = null;
     try
     {
       localObject2 = this.context.getPackageManager();
-      ApplicationInfo localApplicationInfo = ((PackageManager)localObject2).getApplicationInfo(this.Ca, 0);
+      ApplicationInfo localApplicationInfo = ((PackageManager)localObject2).getApplicationInfo(this.bJH, 0);
       if (localApplicationInfo == null)
       {
-        ab.e("MicroMsg.WXEntryActivity", "package not installed");
-        AppMethodBeat.o(153512);
+        Log.e("MicroMsg.WXEntryActivity", "package not installed");
+        AppMethodBeat.o(22284);
         return;
       }
       this.appName = localApplicationInfo.loadLabel((PackageManager)localObject2).toString();
       localObject2 = localApplicationInfo.loadIcon((PackageManager)localObject2);
       if (!(localObject2 instanceof BitmapDrawable)) {
-        break label628;
+        break label625;
       }
       localObject2 = ((BitmapDrawable)localObject2).getBitmap();
       localObject1 = localObject2;
     }
-    catch (IncompatibleClassChangeError paramf)
+    catch (IncompatibleClassChangeError paramg)
     {
       Object localObject2;
-      ab.printErrStackTrace("MicroMsg.Crash", paramf, "May cause dvmFindCatchBlock crash!", new Object[0]);
-      paramf = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(paramf);
-      AppMethodBeat.o(153512);
-      throw paramf;
+      Log.printErrStackTrace("MicroMsg.Crash", paramg, "May cause dvmFindCatchBlock crash!", new Object[0]);
+      paramg = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(paramg);
+      AppMethodBeat.o(22284);
+      throw paramg;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.WXEntryActivity", localThrowable, "package not installed", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WXEntryActivity", localThrowable, "package not installed", new Object[0]);
         continue;
-        boolean bool = e.cN(i.en(localThrowable, 1));
+        boolean bool = y.ZC(j.it(localThrowable, 1));
         continue;
         int i;
-        if ((paramf.field_appInfoFlag & 0x2000) != 0) {
-          if (this.jMr != paramf.field_appSupportContentType)
+        if ((paramg.field_appInfoFlag & 0x2000) != 0) {
+          if (this.vsE != paramg.field_appSupportContentType)
           {
             i = 1;
-            paramf.field_appSupportContentType = this.jMr;
+            paramg.field_appSupportContentType = this.vsE;
           }
         }
         for (;;)
         {
-          if ((paramf.field_status == 2) || (paramf.field_status == 3) || (paramf.field_status == 4) || (i != 0))
+          if ((paramg.field_status == 2) || (paramg.field_status == 3) || (paramg.field_status == 4) || (i != 0))
           {
-            if (!paramf.vY()) {
-              com.tencent.mm.pluginsdk.ui.tools.b.amD(this.appId);
+            if (!paramg.aqJ()) {
+              d.brx(this.appId);
             }
-            paramf.field_status = 0;
-            ab.d("MicroMsg.WXEntryActivity", "handleAppRegisteration, updateRet = ".concat(String.valueOf(al.cac().a(paramf, new String[0]))));
+            paramg.field_status = 0;
+            Log.d("MicroMsg.WXEntryActivity", "handleAppRegisteration, updateRet = ".concat(String.valueOf(as.gxn().a(paramg, new String[0]))));
           }
-          if (ah.isNullOrNil(paramf.field_openId))
+          if (Util.isNullOrNil(paramg.field_openId))
           {
-            ab.d("MicroMsg.WXEntryActivity", "handleAppRegisteration, trigger getAppSetting, appId = " + this.appId);
-            al.cae().xB(this.appId);
+            Log.d("MicroMsg.WXEntryActivity", "handleAppRegisteration, trigger getAppSetting, appId = " + this.appId);
+            as.gxp().add(this.appId);
           }
-          AppMethodBeat.o(153512);
+          AppMethodBeat.o(22284);
           return;
           i = 0;
           break;
@@ -118,74 +118,97 @@ public class WXEntryActivity$EntryReceiver
         localObject1 = null;
       }
     }
-    if (paramf != null)
+    if (paramg != null)
     {
-      al.cac();
+      as.gxn();
       localObject2 = this.appId;
       if ((localObject2 != null) && (((String)localObject2).length() != 0)) {
-        break label447;
+        break label444;
       }
-      ab.e("MicroMsg.AppInfoStorage", "hasIcon, appId is null");
+      Log.e("MicroMsg.AppInfoStorage", "hasIcon, appId is null");
       bool = false;
       if (bool) {}
     }
     else
     {
-      al.cac().t(this.appId, (Bitmap)localObject1);
+      as.gxn().u(this.appId, (Bitmap)localObject1);
     }
-    if (paramf == null)
+    if (paramg == null)
     {
-      paramf = new f();
-      paramf.field_appId = this.appId;
-      paramf.field_appName = "";
-      paramf.field_packageName = this.Ca;
-      paramf.field_status = 0;
-      localObject1 = p.bu(this.context, this.Ca);
+      paramg = new com.tencent.mm.pluginsdk.model.app.g();
+      paramg.field_appId = this.appId;
+      paramg.field_appName = "";
+      paramg.field_packageName = this.bJH;
+      paramg.field_status = 0;
+      localObject1 = u.cE(this.context, this.bJH);
       if (localObject1 != null) {
-        paramf.field_signature = ((String)localObject1);
+        paramg.field_signature = ((String)localObject1);
       }
-      paramf.field_modifyTime = System.currentTimeMillis();
-      paramf.field_appSupportContentType = this.jMr;
-      bool = al.cac().p(paramf);
-      com.tencent.mm.pluginsdk.ui.tools.b.amD(this.appId);
-      if ((bool) && (ah.isNullOrNil(paramf.field_openId)))
+      paramg.field_modifyTime = System.currentTimeMillis();
+      paramg.field_appSupportContentType = this.vsE;
+      bool = as.gxn().r(paramg);
+      d.brx(this.appId);
+      if ((bool) && (Util.isNullOrNil(paramg.field_openId)))
       {
-        ab.d("MicroMsg.WXEntryActivity", "handleAppRegisteration, trigger getAppSetting, appId = " + this.appId);
-        al.cae().xB(this.appId);
+        Log.d("MicroMsg.WXEntryActivity", "handleAppRegisteration, trigger getAppSetting, appId = " + this.appId);
+        as.gxp().add(this.appId);
       }
-      AppMethodBeat.o(153512);
+      AppMethodBeat.o(22284);
       return;
     }
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(final Context paramContext, final Intent paramIntent)
   {
-    AppMethodBeat.i(18196);
+    AppMethodBeat.i(22283);
     if ((paramContext == null) || (paramIntent == null))
     {
-      AppMethodBeat.o(18196);
+      AppMethodBeat.o(22283);
       return;
     }
-    com.tencent.mm.bq.d.dpU();
-    if (handler == null)
+    if (c.iPe())
     {
-      HandlerThread localHandlerThread = com.tencent.mm.sdk.g.d.aqu("WXEntryReceiver");
-      localHandlerThread.start();
-      handler = new ak(localHandlerThread.getLooper());
-    }
-    if (!g.RM().eIn.eIH)
-    {
-      g.RM().a(new WXEntryActivity.EntryReceiver.1(this, paramContext, paramIntent));
-      AppMethodBeat.o(18196);
+      Log.i("MicroMsg.WXEntryActivity", "lite version do not suport open api");
+      AppMethodBeat.o(22283);
       return;
     }
-    handler.post(new WXEntryActivity.EntryReceiver.2(this, paramContext, paramIntent));
-    AppMethodBeat.o(18196);
+    if (handler == null) {
+      handler = new MMHandler("WXEntryReceiver");
+    }
+    if (!h.baF().mDl.mDG)
+    {
+      h.baF().a(new com.tencent.mm.kernel.api.g()
+      {
+        public final void aDv()
+        {
+          AppMethodBeat.i(22280);
+          h.baF().b(this);
+          WXEntryActivity.EntryReceiver.a(WXEntryActivity.EntryReceiver.this, paramContext, paramIntent);
+          AppMethodBeat.o(22280);
+        }
+        
+        public final void dZ(boolean paramAnonymousBoolean) {}
+      });
+      AppMethodBeat.o(22283);
+      return;
+    }
+    handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(22281);
+        long l = System.currentTimeMillis();
+        WXEntryActivity.EntryReceiver.a(WXEntryActivity.EntryReceiver.this, paramContext, paramIntent);
+        Log.i("MicroMsg.WXEntryActivity", "cost:%s", new Object[] { System.currentTimeMillis() - l });
+        AppMethodBeat.o(22281);
+      }
+    });
+    AppMethodBeat.o(22283);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXEntryActivity.EntryReceiver
  * JD-Core Version:    0.7.0.1
  */

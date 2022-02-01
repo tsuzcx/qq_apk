@@ -1,39 +1,26 @@
 package com.tencent.soter.core.d;
 
 import android.os.Handler;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.CountDownLatch;
 
 public final class f
 {
-  private static Handler BmO = null;
-  CountDownLatch vJT = null;
+  private static Handler ahxy = null;
+  CountDownLatch XOm = null;
   
-  static void d(Runnable paramRunnable)
+  public final void asP()
   {
-    AppMethodBeat.i(73090);
-    if (BmO == null) {
-      BmO = new Handler(Looper.getMainLooper());
+    AppMethodBeat.i(88726);
+    if (this.XOm != null) {
+      this.XOm.countDown();
     }
-    BmO.post(paramRunnable);
-    AppMethodBeat.o(73090);
-  }
-  
-  public final void countDown()
-  {
-    AppMethodBeat.i(73089);
-    if (this.vJT != null)
-    {
-      this.vJT.countDown();
-      this.vJT = null;
-    }
-    AppMethodBeat.o(73089);
+    AppMethodBeat.o(88726);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.soter.core.d.f
  * JD-Core Version:    0.7.0.1
  */

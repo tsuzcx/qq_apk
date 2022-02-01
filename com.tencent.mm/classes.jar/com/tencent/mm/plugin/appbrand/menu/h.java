@@ -1,50 +1,69 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.d;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.report.e;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.bp;
-import com.tencent.mm.ui.base.l;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_GameLive;", "Lcom/tencent/mm/plugin/appbrand/menu/base/BaseMenuDelegate;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "attachTo", "", "context", "Landroid/content/Context;", "pageView", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "appId", "", "performItemClick", "menuInfo", "Lcom/tencent/mm/plugin/appbrand/menu/MenuInfo;", "Companion", "EventOnGameStateChange", "GameLiveStateChangeEndReason", "GameLiveStateChangeEvent", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends a
+  extends a<ah>
 {
-  h()
+  public static final h.a tjI;
+  
+  static
   {
-    super(r.iqY.ordinal());
-    AppMethodBeat.i(132211);
-    AppMethodBeat.o(132211);
+    AppMethodBeat.i(323809);
+    tjI = new h.a((byte)0);
+    AppMethodBeat.o(323809);
   }
   
-  public final void a(Context paramContext, v paramv, l paraml, String paramString)
+  public h()
   {
-    AppMethodBeat.i(132212);
-    if (bp.dud()) {
-      paraml.a(this.irp, paramContext.getResources().getColor(2131690393), paramContext.getString(2131296585));
+    super(x.tkO.ordinal());
+    AppMethodBeat.i(323803);
+    AppMethodBeat.o(323803);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_GameLive$GameLiveStateChangeEndReason;", "", "(Ljava/lang/String;I)V", "GameLiveStateChangeEndReason_Unkown", "GameLiveStateChangeEndReason_WeAppMenu", "GameLiveStateChangeEndReason_WeAppExit", "GameLiveStateChangeEndReason_JsApi", "GameLiveStateChangeEndReason_Finder", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(323894);
+      tjK = new c("GameLiveStateChangeEndReason_Unkown", 0);
+      tjL = new c("GameLiveStateChangeEndReason_WeAppMenu", 1);
+      tjM = new c("GameLiveStateChangeEndReason_WeAppExit", 2);
+      tjN = new c("GameLiveStateChangeEndReason_JsApi", 3);
+      tjO = new c("GameLiveStateChangeEndReason_Finder", 4);
+      tjP = new c[] { tjK, tjL, tjM, tjN, tjO };
+      AppMethodBeat.o(323894);
     }
-    AppMethodBeat.o(132212);
+    
+    private c() {}
   }
   
-  public final void a(Context paramContext, v paramv, String paramString, q paramq)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_GameLive$GameLiveStateChangeEvent;", "", "(Ljava/lang/String;I)V", "GameLiveStateChangeEvent_End", "GameLiveStateChangeEvent_Start", "GameLiveStateChangeEvent_PreStart", "GameLiveStateChangeEvent_Cancel", "GameLiveStateChangeEvent_MenuClick", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum d
   {
-    AppMethodBeat.i(132213);
-    paramContext = new d();
-    paramq = paramv.ws();
-    new JSONObject();
-    paramContext.h(paramq);
-    e.a(paramString, paramv.hzM, 10, "", bo.aox(), 1, 0);
-    AppMethodBeat.o(132213);
+    static
+    {
+      AppMethodBeat.i(323892);
+      tjQ = new d("GameLiveStateChangeEvent_End", 0);
+      tjR = new d("GameLiveStateChangeEvent_Start", 1);
+      tjS = new d("GameLiveStateChangeEvent_PreStart", 2);
+      tjT = new d("GameLiveStateChangeEvent_Cancel", 3);
+      tjU = new d("GameLiveStateChangeEvent_MenuClick", 4);
+      tjV = new d[] { tjQ, tjR, tjS, tjT, tjU };
+      AppMethodBeat.o(323892);
+    }
+    
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.h
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ public class AndroidXmlResourceParser
   private static final int z = 1048833;
   private ByteBuffer a;
   private boolean b = false;
-  private k c;
+  private i c;
   private int[] d;
   private AndroidXmlResourceParser.a e = new AndroidXmlResourceParser.a();
   private boolean f;
@@ -49,48 +49,53 @@ public class AndroidXmlResourceParser
   
   private final int a(int paramInt)
   {
-    if (this.g != 2) {
-      throw new IndexOutOfBoundsException("Current event is not START_TAG.");
+    if (this.g == 2)
+    {
+      int i1 = paramInt * 5;
+      if (i1 < this.k.length) {
+        return i1;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Invalid attribute index (");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(").");
+      throw new IndexOutOfBoundsException(localStringBuilder.toString());
     }
-    int i1 = paramInt * 5;
-    if (i1 >= this.k.length) {
-      throw new IndexOutOfBoundsException("Invalid attribute index (" + paramInt + ").");
-    }
-    return i1;
+    throw new IndexOutOfBoundsException("Current event is not START_TAG.");
   }
   
   private final int a(String paramString1, String paramString2)
   {
-    if ((this.c == null) || (paramString2 == null)) {}
-    label104:
-    for (;;)
+    i locali = this.c;
+    if (locali != null)
     {
-      return -1;
-      int i3 = this.c.a(paramString2);
-      if (i3 != -1)
+      if (paramString2 == null) {
+        return -1;
+      }
+      int i4 = locali.a(paramString2);
+      if (i4 == -1) {
+        return -1;
+      }
+      int i1;
+      if (paramString1 != null) {
+        i1 = this.c.a(paramString1);
+      } else {
+        i1 = -1;
+      }
+      int i3;
+      for (int i2 = 0;; i2 = i3)
       {
-        int i1;
-        int i2;
-        if (paramString1 != null)
-        {
-          i1 = this.c.a(paramString1);
-          i2 = 0;
+        paramString1 = this.k;
+        if (i2 == paramString1.length) {
+          break;
         }
-        for (;;)
-        {
-          if (i2 == this.k.length) {
-            break label104;
-          }
-          if ((i3 == this.k[(i2 + 1)]) && ((i1 == -1) || (i1 == this.k[(i2 + 0)])))
-          {
-            return i2 / 5;
-            i1 = -1;
-            break;
-          }
-          i2 += 1;
+        i3 = i2 + 1;
+        if ((i4 == paramString1[i3]) && ((i1 == -1) || (i1 == paramString1[(i2 + 0)]))) {
+          return i2 / 5;
         }
       }
     }
+    return -1;
   }
   
   private final void b()
@@ -107,121 +112,138 @@ public class AndroidXmlResourceParser
   
   private final void c()
   {
-    int i2 = 3;
     if (this.c == null)
     {
-      b.a(this.a, 524291);
-      b.b(this.a, 4);
-      this.c = k.a(this.a);
+      a.a(this.a, 524291);
+      a.b(this.a, 4);
+      this.c = i.a(this.a);
       this.e.f();
       this.b = true;
     }
-    if (this.g == 1) {
+    int i3 = this.g;
+    if (i3 == 1) {
       return;
     }
-    int i3 = this.g;
     b();
     int i1;
-    do
+    for (;;)
     {
-      int i4;
-      for (;;)
+      if (this.f)
       {
-        if (this.f)
+        this.f = false;
+        this.e.g();
+      }
+      int i2 = 3;
+      if ((i3 == 3) && (this.e.e() == 1) && (this.e.c() == 0))
+      {
+        this.g = 1;
+        return;
+      }
+      if (i3 == 0) {
+        i1 = 1048834;
+      } else {
+        i1 = this.a.getInt();
+      }
+      if (i1 == 524672)
+      {
+        i1 = this.a.getInt();
+        if ((i1 >= 8) && (i1 % 4 == 0))
         {
-          this.f = false;
-          this.e.g();
+          this.d = a.c(this.a, i1 / 4 - 2);
         }
-        if ((i3 == 3) && (this.e.e() == 1) && (this.e.c() == 0))
+        else
         {
-          this.g = 1;
-          return;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Invalid resource ids size (");
+          ((StringBuilder)localObject).append(i1);
+          ((StringBuilder)localObject).append(").");
+          throw new IOException(((StringBuilder)localObject).toString());
         }
-        if (i3 == 0) {
-          i1 = 1048834;
-        }
-        for (;;)
-        {
-          if (i1 == 524672)
-          {
-            i1 = this.a.getInt();
-            if ((i1 < 8) || (i1 % 4 != 0))
-            {
-              throw new IOException("Invalid resource ids size (" + i1 + ").");
-              i1 = this.a.getInt();
-            }
-            else
-            {
-              this.d = b.c(this.a, i1 / 4 - 2);
-              break;
-            }
-          }
-        }
+      }
+      else
+      {
         if ((i1 < 1048832) || (i1 > 1048836)) {
-          throw new IOException("Invalid chunk type (" + i1 + ").");
+          break;
         }
         if ((i1 == 1048834) && (i3 == -1))
         {
           this.g = 0;
           return;
         }
-        b.b(this.a, 4);
-        i4 = this.a.getInt();
-        b.b(this.a, 4);
-        if ((i1 != 1048832) && (i1 != 1048833)) {
-          break;
+        a.b(this.a, 4);
+        int i4 = this.a.getInt();
+        a.b(this.a, 4);
+        if ((i1 != 1048832) && (i1 != 1048833))
+        {
+          this.h = i4;
+          if (i1 == 1048834)
+          {
+            this.j = this.a.getInt();
+            this.i = this.a.getInt();
+            a.b(this.a, 4);
+            i1 = this.a.getInt();
+            this.l = ((i1 >>> 16) - 1);
+            this.m = this.a.getInt();
+            i3 = this.m;
+            this.n = ((i3 >>> 16) - 1);
+            this.m = ((0xFFFF & i3) - 1);
+            this.k = a.c(this.a, (i1 & 0xFFFF) * 5);
+            i1 = i2;
+            for (;;)
+            {
+              localObject = this.k;
+              if (i1 >= localObject.length) {
+                break;
+              }
+              localObject[i1] >>>= 24;
+              i1 += 5;
+            }
+            this.e.f();
+            this.g = 2;
+            return;
+          }
+          if (i1 == 1048835)
+          {
+            this.j = this.a.getInt();
+            this.i = this.a.getInt();
+            this.g = 3;
+            this.f = true;
+            return;
+          }
+          if (i1 == 1048836)
+          {
+            this.i = this.a.getInt();
+            a.b(this.a, 4);
+            a.b(this.a, 4);
+            this.g = 4;
+          }
         }
-        if (i1 == 1048832)
+        else if (i1 == 1048832)
         {
           i1 = this.a.getInt();
-          i4 = this.a.getInt();
-          this.e.a(i1, i4);
+          i2 = this.a.getInt();
+          this.e.a(i1, i2);
         }
         else
         {
-          b.b(this.a, 4);
-          b.b(this.a, 4);
+          a.b(this.a, 4);
+          a.b(this.a, 4);
           this.e.d();
         }
       }
-      this.h = i4;
-      if (i1 == 1048834)
-      {
-        this.j = this.a.getInt();
-        this.i = this.a.getInt();
-        b.b(this.a, 4);
-        i1 = this.a.getInt();
-        this.l = ((i1 >>> 16) - 1);
-        this.m = this.a.getInt();
-        this.n = ((this.m >>> 16) - 1);
-        this.m = ((this.m & 0xFFFF) - 1);
-        this.k = b.c(this.a, (i1 & 0xFFFF) * 5);
-        i1 = i2;
-        while (i1 < this.k.length)
-        {
-          this.k[i1] >>>= 24;
-          i1 += 5;
-        }
-        this.e.f();
-        this.g = 2;
-        return;
-      }
-      if (i1 == 1048835)
-      {
-        this.j = this.a.getInt();
-        this.i = this.a.getInt();
-        this.g = 3;
-        this.f = true;
-        return;
-      }
-    } while (i1 != 1048836);
-    this.i = this.a.getInt();
-    b.b(this.a, 4);
-    b.b(this.a, 4);
-    this.g = 4;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Invalid chunk type (");
+    ((StringBuilder)localObject).append(i1);
+    ((StringBuilder)localObject).append(").");
+    localObject = new IOException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
-  final k a()
+  final i a()
   {
     return this.c;
   }
@@ -246,11 +268,7 @@ public class AndroidXmlResourceParser
   
   public boolean getAttributeBooleanValue(int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i1 = 1; getAttributeIntValue(paramInt, i1) != 0; i1 = 0) {
-      return true;
-    }
-    return false;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean getAttributeBooleanValue(String paramString1, String paramString2, boolean paramBoolean)
@@ -273,8 +291,9 @@ public class AndroidXmlResourceParser
   public float getAttributeFloatValue(int paramInt, float paramFloat)
   {
     paramInt = a(paramInt);
-    if (this.k[(paramInt + 3)] == 4) {
-      paramFloat = Float.intBitsToFloat(this.k[(paramInt + 4)]);
+    int[] arrayOfInt = this.k;
+    if (arrayOfInt[(paramInt + 3)] == 4) {
+      return Float.intBitsToFloat(arrayOfInt[(paramInt + 4)]);
     }
     return paramFloat;
   }
@@ -290,17 +309,13 @@ public class AndroidXmlResourceParser
   
   public int getAttributeIntValue(int paramInt1, int paramInt2)
   {
-    int i1 = a(paramInt1);
-    int i2 = this.k[(i1 + 3)];
-    paramInt1 = paramInt2;
-    if (i2 >= 16)
-    {
-      paramInt1 = paramInt2;
-      if (i2 <= 31) {
-        paramInt1 = this.k[(i1 + 4)];
-      }
+    paramInt1 = a(paramInt1);
+    int[] arrayOfInt = this.k;
+    int i1 = arrayOfInt[(paramInt1 + 3)];
+    if ((i1 >= 16) && (i1 <= 31)) {
+      return arrayOfInt[(paramInt1 + 4)];
     }
-    return paramInt1;
+    return paramInt2;
   }
   
   public int getAttributeIntValue(String paramString1, String paramString2, int paramInt)
@@ -336,10 +351,11 @@ public class AndroidXmlResourceParser
   {
     paramInt = a(paramInt);
     paramInt = this.k[(paramInt + 1)];
-    if ((this.d == null) || (paramInt < 0) || (paramInt >= this.d.length)) {
-      return 0;
+    int[] arrayOfInt = this.d;
+    if ((arrayOfInt != null) && (paramInt >= 0) && (paramInt < arrayOfInt.length)) {
+      return arrayOfInt[paramInt];
     }
-    return this.d[paramInt];
+    return 0;
   }
   
   public String getAttributeNamespace(int paramInt)
@@ -366,8 +382,9 @@ public class AndroidXmlResourceParser
   public int getAttributeResourceValue(int paramInt1, int paramInt2)
   {
     paramInt1 = a(paramInt1);
-    if (this.k[(paramInt1 + 3)] == 1) {
-      paramInt2 = this.k[(paramInt1 + 4)];
+    int[] arrayOfInt = this.k;
+    if (arrayOfInt[(paramInt1 + 3)] == 1) {
+      return arrayOfInt[(paramInt1 + 4)];
     }
     return paramInt2;
   }
@@ -403,12 +420,13 @@ public class AndroidXmlResourceParser
   public String getAttributeValue(int paramInt)
   {
     paramInt = a(paramInt);
-    if (this.k[(paramInt + 3)] == 3)
+    int[] arrayOfInt = this.k;
+    if (arrayOfInt[(paramInt + 3)] == 3)
     {
-      paramInt = this.k[(paramInt + 2)];
+      paramInt = arrayOfInt[(paramInt + 2)];
       return this.c.a(paramInt);
     }
-    paramInt = this.k[(paramInt + 4)];
+    paramInt = arrayOfInt[(paramInt + 4)];
     return "";
   }
   
@@ -435,10 +453,11 @@ public class AndroidXmlResourceParser
   
   public String getClassAttribute()
   {
-    if (this.m == -1) {
+    int i1 = this.m;
+    if (i1 == -1) {
       return null;
     }
-    int i1 = a(this.m);
+    i1 = a(i1);
     i1 = this.k[(i1 + 2)];
     return this.c.a(i1);
   }
@@ -465,24 +484,27 @@ public class AndroidXmlResourceParser
   
   public String getIdAttribute()
   {
-    if (this.l == -1) {
+    int i1 = this.l;
+    if (i1 == -1) {
       return null;
     }
-    int i1 = a(this.l);
+    i1 = a(i1);
     i1 = this.k[(i1 + 2)];
     return this.c.a(i1);
   }
   
   public int getIdAttributeResourceValue(int paramInt)
   {
-    if (this.l == -1) {}
-    int i1;
-    do
-    {
+    int i1 = this.l;
+    if (i1 == -1) {
       return paramInt;
-      i1 = a(this.l);
-    } while (this.k[(i1 + 3)] != 1);
-    return this.k[(i1 + 4)];
+    }
+    i1 = a(i1);
+    int[] arrayOfInt = this.k;
+    if (arrayOfInt[(i1 + 3)] != 1) {
+      return paramInt;
+    }
+    return arrayOfInt[(i1 + 4)];
   }
   
   public String getInputEncoding()
@@ -497,10 +519,14 @@ public class AndroidXmlResourceParser
   
   public String getName()
   {
-    if ((this.i == -1) || ((this.g != 2) && (this.g != 3))) {
-      return null;
+    if (this.i != -1)
+    {
+      int i1 = this.g;
+      if ((i1 == 2) || (i1 == 3)) {
+        return this.c.a(this.i);
+      }
     }
-    return this.c.a(this.i);
+    return null;
   }
   
   public String getNamespace()
@@ -532,7 +558,10 @@ public class AndroidXmlResourceParser
   
   public String getPositionDescription()
   {
-    return "XML line #" + getLineNumber();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("XML line #");
+    localStringBuilder.append(getLineNumber());
+    return localStringBuilder.toString();
   }
   
   public String getPrefix()
@@ -548,19 +577,21 @@ public class AndroidXmlResourceParser
   
   public int getStyleAttribute()
   {
-    if (this.n == -1) {
+    int i1 = this.n;
+    if (i1 == -1) {
       return 0;
     }
-    int i1 = a(this.n);
+    i1 = a(i1);
     return this.k[(i1 + 4)];
   }
   
   public String getText()
   {
-    if ((this.i == -1) || (this.g != 4)) {
-      return null;
+    int i1 = this.i;
+    if ((i1 != -1) && (this.g == 4)) {
+      return this.c.a(i1);
     }
-    return this.c.a(this.i);
+    return null;
   }
   
   public char[] getTextCharacters(int[] paramArrayOfInt)
@@ -593,20 +624,20 @@ public class AndroidXmlResourceParser
   
   public int next()
   {
-    if (this.a == null) {
-      throw new XmlPullParserException("Parser is not opened.", this, null);
+    if (this.a != null) {
+      try
+      {
+        c();
+        int i1 = this.g;
+        return i1;
+      }
+      catch (IOException localIOException)
+      {
+        close();
+        throw localIOException;
+      }
     }
-    try
-    {
-      c();
-      int i1 = this.g;
-      return i1;
-    }
-    catch (IOException localIOException)
-    {
-      close();
-      throw localIOException;
-    }
+    throw new XmlPullParserException("Parser is not opened.", this, null);
   }
   
   public int nextTag()
@@ -620,7 +651,11 @@ public class AndroidXmlResourceParser
         i1 = next();
       }
     }
-    if ((i1 != 2) && (i1 != 3)) {
+    if (i1 != 2)
+    {
+      if (i1 == 3) {
+        return i1;
+      }
       throw new XmlPullParserException("Expected start or end tag.", this, null);
     }
     return i1;
@@ -628,28 +663,23 @@ public class AndroidXmlResourceParser
   
   public String nextText()
   {
-    if (getEventType() != 2) {
-      throw new XmlPullParserException("Parser must be on START_TAG to read next text.", this, null);
-    }
-    int i1 = next();
-    String str;
-    if (i1 == 4)
+    if (getEventType() == 2)
     {
-      str = getText();
-      if (next() != 3) {
+      int i1 = next();
+      if (i1 == 4)
+      {
+        String str = getText();
+        if (next() == 3) {
+          return str;
+        }
         throw new XmlPullParserException("Event TEXT must be immediately followed by END_TAG.", this, null);
       }
-    }
-    else
-    {
-      if (i1 != 3) {
-        break label67;
+      if (i1 == 3) {
+        return "";
       }
-      str = "";
+      throw new XmlPullParserException("Parser must be on START_TAG or TEXT to read text.", this, null);
     }
-    return str;
-    label67:
-    throw new XmlPullParserException("Parser must be on START_TAG or TEXT to read text.", this, null);
+    throw new XmlPullParserException("Parser must be on START_TAG to read next text.", this, null);
   }
   
   public int nextToken()
@@ -659,9 +689,13 @@ public class AndroidXmlResourceParser
   
   public void require(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramInt != getEventType()) || ((paramString1 != null) && (!paramString1.equals(getNamespace()))) || ((paramString2 != null) && (!paramString2.equals(getName())))) {
-      throw new XmlPullParserException(TYPES[paramInt] + " is expected.", this, null);
+    if ((paramInt == getEventType()) && ((paramString1 == null) || (paramString1.equals(getNamespace()))) && ((paramString2 == null) || (paramString2.equals(getName())))) {
+      return;
     }
+    paramString1 = new StringBuilder();
+    paramString1.append(TYPES[paramInt]);
+    paramString1.append(" is expected.");
+    throw new XmlPullParserException(paramString1.toString(), this, null);
   }
   
   public void setFeature(String paramString, boolean paramBoolean)
@@ -681,8 +715,8 @@ public class AndroidXmlResourceParser
         paramInputStream.close();
         this.a = ByteBuffer.wrap(paramString);
         this.a.order(ByteOrder.LITTLE_ENDIAN);
+        return;
       }
-      return;
     }
     catch (IOException paramInputStream)
     {
@@ -702,7 +736,7 @@ public class AndroidXmlResourceParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.AndroidXmlResourceParser
  * JD-Core Version:    0.7.0.1
  */

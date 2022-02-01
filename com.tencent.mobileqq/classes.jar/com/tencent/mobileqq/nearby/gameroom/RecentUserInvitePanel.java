@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import alud;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -15,24 +14,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import auzq;
-import auzr;
-import auzs;
-import auzv;
-import bdaq;
-import bdbk;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.Iterator;
 import java.util.List;
 
 public class RecentUserInvitePanel
   extends HorizontalScrollView
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public auzs a;
-  List<auzv> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  LinearLayout a;
+  List<InviteUser> b;
+  boolean c = false;
+  RecentUserInvitePanel.OnClickListener d;
   
   public RecentUserInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,79 +42,72 @@ public class RecentUserInvitePanel
     a();
   }
   
-  private View a()
+  private View b()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    View localView = inflate(getContext(), 2131561053, null);
-    ((ImageView)localView.findViewById(2131367565)).setImageResource(2130841063);
-    ((ImageView)localView.findViewById(2131367600)).setVisibility(8);
-    TextView localTextView = (TextView)localView.findViewById(2131370977);
+    int i = this.a.getChildCount();
+    View localView = inflate(getContext(), 2131627536, null);
+    ((ImageView)localView.findViewById(2131434940)).setImageResource(2130842220);
+    ((ImageView)localView.findViewById(2131434972)).setVisibility(8);
+    TextView localTextView = (TextView)localView.findViewById(2131439121);
     if (i == 0) {
-      localTextView.setText(alud.a(2131713606));
+      localTextView.setText(HardCodeUtil.a(2131910703));
+    } else {
+      localTextView.setText(HardCodeUtil.a(2131910704));
     }
-    for (;;)
-    {
-      localTextView.setMaxLines(2);
-      localTextView.setSingleLine(false);
-      localTextView.setGravity(1);
-      ((Button)localView.findViewById(2131368426)).setVisibility(8);
-      localView.setOnClickListener(new auzr(this));
-      return localView;
-      localTextView.setText(alud.a(2131713607));
-    }
+    localTextView.setMaxLines(2);
+    localTextView.setSingleLine(false);
+    localTextView.setGravity(1);
+    ((Button)localView.findViewById(2131435898)).setVisibility(8);
+    localView.setOnClickListener(new RecentUserInvitePanel.2(this));
+    return localView;
   }
   
-  private View a(auzv paramauzv)
+  private View b(InviteUser paramInviteUser)
   {
-    Object localObject1 = null;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    View localView = inflate(getContext(), 2131561053, null);
-    Object localObject2 = (ImageView)localView.findViewById(2131367565);
-    ImageView localImageView = (ImageView)localView.findViewById(2131367600);
-    int i;
-    if (paramauzv.jdField_a_of_type_Int == 0)
+    Object localObject2 = getContext();
+    Object localObject1 = null;
+    localObject2 = inflate((Context)localObject2, 2131627536, null);
+    Object localObject3 = (ImageView)((View)localObject2).findViewById(2131434940);
+    ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131434972);
+    if (paramInviteUser.c == 0)
     {
-      localObject1 = bdbk.a(localQQAppInterface, 1, paramauzv.jdField_a_of_type_JavaLangString);
-      i = -1;
+      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramInviteUser.a);
     }
-    for (;;)
+    else if (paramInviteUser.c == 1)
     {
-      ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-      if (i != -1) {
-        localImageView.setImageResource(i);
-      }
-      for (;;)
-      {
-        localObject2 = (TextView)localView.findViewById(2131370977);
-        localObject1 = "";
-        if (paramauzv.b != null) {
-          localObject1 = (String)TextUtils.ellipsize(paramauzv.b, ((TextView)localObject2).getPaint(), bdaq.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
-        }
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        localObject1 = (Button)localView.findViewById(2131368426);
-        ((Button)localObject1).setOnClickListener(new auzq(this, paramauzv));
-        a((View)localObject1, paramauzv.jdField_a_of_type_Boolean);
-        localView.setTag(paramauzv);
-        return localView;
-        if (paramauzv.jdField_a_of_type_Int != 1) {
-          break label220;
-        }
-        localObject1 = bdbk.a(localQQAppInterface, 4, paramauzv.jdField_a_of_type_JavaLangString);
-        i = 2130841061;
-        break;
-        localImageView.setVisibility(8);
-      }
-      label220:
-      i = -1;
+      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramInviteUser.a);
+      i = 2130842218;
+      break label101;
     }
+    int i = -1;
+    label101:
+    ((ImageView)localObject3).setImageDrawable((Drawable)localObject1);
+    if (i != -1) {
+      localImageView.setImageResource(i);
+    } else {
+      localImageView.setVisibility(8);
+    }
+    localObject3 = (TextView)((View)localObject2).findViewById(2131439121);
+    if (paramInviteUser.b != null) {
+      localObject1 = (String)TextUtils.ellipsize(paramInviteUser.b, ((TextView)localObject3).getPaint(), DisplayUtil.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
+    } else {
+      localObject1 = "";
+    }
+    ((TextView)localObject3).setText((CharSequence)localObject1);
+    localObject1 = (Button)((View)localObject2).findViewById(2131435898);
+    ((Button)localObject1).setOnClickListener(new RecentUserInvitePanel.1(this, paramInviteUser));
+    a((View)localObject1, paramInviteUser.d);
+    ((View)localObject2).setTag(paramInviteUser);
+    return localObject2;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    this.a = new LinearLayout(getContext());
+    this.a.setOrientation(0);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
+    addView(this.a, localLayoutParams);
     setHorizontalScrollBarEnabled(false);
   }
   
@@ -129,66 +118,63 @@ public class RecentUserInvitePanel
       paramView = (Button)paramView;
       if (paramBoolean)
       {
-        paramView.setText(alud.a(2131713609));
+        paramView.setText(HardCodeUtil.a(2131910706));
         paramView.setAlpha(0.5F);
+        return;
       }
+      paramView.setText(HardCodeUtil.a(2131910705));
     }
-    else
-    {
-      return;
-    }
-    paramView.setText(alud.a(2131713608));
   }
   
-  public void a(auzv paramauzv)
+  public void a(InviteUser paramInviteUser)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    while (i < this.a.getChildCount())
     {
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((localView.getTag() instanceof auzv))
+      View localView = this.a.getChildAt(i);
+      if ((localView.getTag() instanceof InviteUser))
       {
-        auzv localauzv = (auzv)localView.getTag();
-        if ((localauzv.jdField_a_of_type_Int == paramauzv.jdField_a_of_type_Int) && (localauzv.jdField_a_of_type_JavaLangString.equals(paramauzv.jdField_a_of_type_JavaLangString))) {
-          a((Button)localView.findViewById(2131368426), paramauzv.jdField_a_of_type_Boolean);
+        InviteUser localInviteUser = (InviteUser)localView.getTag();
+        if ((localInviteUser.c == paramInviteUser.c) && (localInviteUser.a.equals(paramInviteUser.a))) {
+          a((Button)localView.findViewById(2131435898), paramInviteUser.d);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List<auzv> paramList, boolean paramBoolean)
+  public void a(List<InviteUser> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.b = paramList;
+    this.c = paramBoolean;
+    this.a.removeAllViews();
     paramList = paramList.iterator();
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = a((auzv)paramList.next());
+      localObject = b((InviteUser)paramList.next());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.leftMargin = bdaq.a(getContext(), 16.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject, localLayoutParams);
+      localLayoutParams.leftMargin = DisplayUtil.a(getContext(), 16.0F);
+      this.a.addView((View)localObject, localLayoutParams);
     }
     if (paramBoolean)
     {
-      paramList = a();
+      paramList = b();
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = bdaq.a(getContext(), 16.0F);
-      ((LinearLayout.LayoutParams)localObject).rightMargin = bdaq.a(getContext(), 16.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList, (ViewGroup.LayoutParams)localObject);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(getContext(), 16.0F);
+      ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(getContext(), 16.0F);
+      this.a.addView(paramList, (ViewGroup.LayoutParams)localObject);
     }
   }
   
-  public void setOnClickListener(auzs paramauzs)
+  public void setOnClickListener(RecentUserInvitePanel.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Auzs = paramauzs;
+    this.d = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/ars" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="389.0dip" android:scaleType="fitXY" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mobileqq.gamecenter.web.view.GameContentView android:id="@id/n8v" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <RelativeLayout android:orientation="vertical" android:id="@id/bho" android:layout_width="fill_parent" android:layout_height="389.0dip">
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="386.0dip" android:layout_alignParentTop="true">
+                        <com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager android:layout_gravity="center" android:id="@id/c9m" android:layout_width="wrap_content" android:layout_height="370.0dip" android:layout_marginTop="6.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+                        <RelativeLayout android:layout_width="fill_parent" android:layout_height="8.0dip">
+                            <com.tencent.mobileqq.gamecenter.view.QQGameIndicator android:id="@id/fhp" android:layout_width="wrap_content" android:layout_height="5.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                            <ImageView android:id="@id/e_l" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            <ImageView android:id="@id/e_q" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="108.0dip" android:layout_height="34.0dip" android:layout_marginTop="20.0dip" android:layout_alignParentRight="true">
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/n8z" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                            <TextView android:textSize="10.0sp" android:textColor="#ff007dff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oa1" android:background="@drawable/shortvideo_seekbar_thumb" android:layout_width="14.0dip" android:layout_height="14.0dip" android:text="6" />
+                            <TextView android:textSize="10.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="下一条消息" android:singleLine="true" />
+                            <ImageView android:id="@id/n39" android:layout_width="6.0dip" android:layout_height="8.0dip" android:src="@drawable/gja" />
+                        </LinearLayout>
+                        <ImageView android:layout_gravity="center|right" android:id="@id/icq" android:visibility="invisible" android:layout_width="88.0dip" android:layout_height="34.0dip" android:scaleType="fitXY" />
+                    </FrameLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/eet" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/n37" android:layout_width="60.0dip" android:layout_height="55.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

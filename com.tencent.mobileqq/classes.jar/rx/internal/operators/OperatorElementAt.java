@@ -22,12 +22,17 @@ public final class OperatorElementAt<T>
   
   private OperatorElementAt(int paramInt, T paramT, boolean paramBoolean)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException(paramInt + " is out of bounds");
+    if (paramInt >= 0)
+    {
+      this.index = paramInt;
+      this.defaultValue = paramT;
+      this.hasDefault = paramBoolean;
+      return;
     }
-    this.index = paramInt;
-    this.defaultValue = paramT;
-    this.hasDefault = paramBoolean;
+    paramT = new StringBuilder();
+    paramT.append(paramInt);
+    paramT.append(" is out of bounds");
+    throw new IndexOutOfBoundsException(paramT.toString());
   }
   
   public Subscriber<? super T> call(Subscriber<? super T> paramSubscriber)
@@ -39,7 +44,7 @@ public final class OperatorElementAt<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorElementAt
  * JD-Core Version:    0.7.0.1
  */

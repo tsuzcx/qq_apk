@@ -6,7 +6,7 @@ import android.os.PowerManager;
 public class b
   implements a
 {
-  private static final String a = b.class.getSimpleName();
+  private static final String a = "b";
   private boolean b;
   private PowerManager c;
   private boolean d;
@@ -30,7 +30,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.e.b
  * JD-Core Version:    0.7.0.1
  */

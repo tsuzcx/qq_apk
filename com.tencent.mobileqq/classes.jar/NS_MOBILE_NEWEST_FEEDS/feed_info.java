@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class feed_info
   extends JceStruct
 {
-  public int appid;
-  public long has_pic;
-  public long opuin;
+  public int appid = 0;
+  public long has_pic = 0L;
+  public long opuin = 0L;
   public String strImgUrl = "";
   public String strcontent = "";
   public String strkey = "";
-  public long time;
-  public int typeId;
+  public long time = 0L;
+  public int typeId = 0;
   
   public feed_info() {}
   
@@ -48,21 +48,24 @@ public final class feed_info
     paramJceOutputStream.write(this.typeId, 1);
     paramJceOutputStream.write(this.time, 2);
     paramJceOutputStream.write(this.opuin, 3);
-    if (this.strkey != null) {
-      paramJceOutputStream.write(this.strkey, 4);
+    String str = this.strkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strcontent != null) {
-      paramJceOutputStream.write(this.strcontent, 5);
+    str = this.strcontent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.has_pic, 6);
-    if (this.strImgUrl != null) {
-      paramJceOutputStream.write(this.strImgUrl, 7);
+    str = this.strImgUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.feed_info
  * JD-Core Version:    0.7.0.1
  */

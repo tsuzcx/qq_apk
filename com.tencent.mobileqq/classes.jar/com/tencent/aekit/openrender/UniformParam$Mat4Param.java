@@ -21,12 +21,16 @@ public class UniformParam$Mat4Param
   
   public String toString()
   {
-    return this.name + " = " + Arrays.toString(this.mMatrix);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(Arrays.toString(this.mMatrix));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.UniformParam.Mat4Param
  * JD-Core Version:    0.7.0.1
  */

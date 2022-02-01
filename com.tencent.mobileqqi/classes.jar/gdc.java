@@ -1,17 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class gdc
-  extends BroadcastReceiver
+  extends Handler
 {
-  public gdc(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public gdc(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, Looper paramLooper)
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      MusicGeneWebViewPlugin.a(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject = paramMessage.getData();
+    if (localObject != null) {}
+    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    {
+      paramMessage = (Bitmap)paramMessage.obj;
+      if ((paramMessage != null) && (localObject != null))
+      {
+        localObject = new File((String)localObject);
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+      }
+      try
+      {
+        localObject = new FileOutputStream((File)localObject);
+        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
+        ((FileOutputStream)localObject).flush();
+        ((FileOutputStream)localObject).close();
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
     }
   }
 }

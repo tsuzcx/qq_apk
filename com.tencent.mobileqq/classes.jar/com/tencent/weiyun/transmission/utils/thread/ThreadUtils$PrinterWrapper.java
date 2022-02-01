@@ -26,21 +26,22 @@ final class ThreadUtils$PrinterWrapper
   
   public void println(String paramString)
   {
-    if (this.mHasPendingPrinter.getAndSet(false)) {}
-    synchronized (this.mPendingPrinters)
-    {
-      this.mWrappedPrinters.addAll(this.mPendingPrinters);
-      this.mPendingPrinters.clear();
-      ??? = this.mWrappedPrinters.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((Printer)((Iterator)???).next()).println(paramString);
+    if (this.mHasPendingPrinter.getAndSet(false)) {
+      synchronized (this.mPendingPrinters)
+      {
+        this.mWrappedPrinters.addAll(this.mPendingPrinters);
+        this.mPendingPrinters.clear();
       }
+    }
+    ??? = this.mWrappedPrinters.iterator();
+    while (((Iterator)???).hasNext()) {
+      ((Printer)((Iterator)???).next()).println(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.thread.ThreadUtils.PrinterWrapper
  * JD-Core Version:    0.7.0.1
  */

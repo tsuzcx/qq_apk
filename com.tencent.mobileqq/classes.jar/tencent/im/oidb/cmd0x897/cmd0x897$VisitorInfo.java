@@ -20,13 +20,14 @@ public final class cmd0x897$VisitorInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint64_visitor_uin", "uint32_visitor_faceid", "string_visitor_nick", "uint32_role", "uint32_guest_flag" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, VisitorInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint64_visitor_uin", "uint32_visitor_faceid", "string_visitor_nick", "uint32_role", "uint32_guest_flag" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro, localInteger, localInteger }, VisitorInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x897.cmd0x897.VisitorInfo
  * JD-Core Version:    0.7.0.1
  */

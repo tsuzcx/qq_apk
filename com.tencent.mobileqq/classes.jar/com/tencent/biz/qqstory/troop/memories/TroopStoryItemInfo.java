@@ -5,13 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.qqstory.database.TroopStoryEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import xpu;
 
 public class TroopStoryItemInfo
   extends BaseUIItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopStoryItemInfo> CREATOR = new xpu();
+  public static final Parcelable.Creator<TroopStoryItemInfo> CREATOR = new TroopStoryItemInfo.1();
   public static final int ITEM_TYPE_DAY = 1;
   public static final int ITEM_TYPE_EMPTY = 4;
   public static final int ITEM_TYPE_SHOOTING = 3;
@@ -42,7 +41,7 @@ public class TroopStoryItemInfo
   
   public TroopStoryItemInfo() {}
   
-  public TroopStoryItemInfo(Parcel paramParcel)
+  protected TroopStoryItemInfo(Parcel paramParcel)
   {
     this.troopId = paramParcel.readLong();
     this.itemType = paramParcel.readInt();
@@ -115,7 +114,35 @@ public class TroopStoryItemInfo
   
   public String toString()
   {
-    return "TroopStoryItemInfo{troopId='" + this.troopId + ", itemType=" + this.itemType + ", publishTime=" + this.publishTime + ", publishCount=" + this.publishCount + ", storyId=" + this.storyId + ", vid=" + this.vid + ", uin=" + this.uin + ", unionId=" + this.unionId + ", unionIdRole=" + this.unionIdRole + ", videoThumbUrl=" + this.videoThumbUrl + ", likeCount=" + this.likeCount + ", commentCount=" + this.commentCount + ", feedId=" + this.feedId + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopStoryItemInfo{troopId='");
+    localStringBuilder.append(this.troopId);
+    localStringBuilder.append(", itemType=");
+    localStringBuilder.append(this.itemType);
+    localStringBuilder.append(", publishTime=");
+    localStringBuilder.append(this.publishTime);
+    localStringBuilder.append(", publishCount=");
+    localStringBuilder.append(this.publishCount);
+    localStringBuilder.append(", storyId=");
+    localStringBuilder.append(this.storyId);
+    localStringBuilder.append(", vid=");
+    localStringBuilder.append(this.vid);
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", unionId=");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append(", unionIdRole=");
+    localStringBuilder.append(this.unionIdRole);
+    localStringBuilder.append(", videoThumbUrl=");
+    localStringBuilder.append(this.videoThumbUrl);
+    localStringBuilder.append(", likeCount=");
+    localStringBuilder.append(this.likeCount);
+    localStringBuilder.append(", commentCount=");
+    localStringBuilder.append(this.commentCount);
+    localStringBuilder.append(", feedId=");
+    localStringBuilder.append(this.feedId);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -140,7 +167,7 @@ public class TroopStoryItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo
  * JD-Core Version:    0.7.0.1
  */

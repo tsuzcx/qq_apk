@@ -17,278 +17,269 @@ public class VirtualViewUtils
   
   public static void clipCanvas(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    if (paramCanvas == null) {}
-    while (!isRounded(paramInt4, paramInt5, paramInt6, paramInt7)) {
+    if (paramCanvas == null) {
       return;
     }
-    float f1 = paramInt3 / 2.0F;
+    if (!isRounded(paramInt4, paramInt5, paramInt6, paramInt7)) {
+      return;
+    }
+    float f2 = paramInt3;
+    float f1 = f2 / 2.0F;
     sPath.reset();
-    Path localPath = sPath;
-    int i;
-    label71:
-    float f2;
+    Object localObject = sPath;
+    int j = 0;
+    if (paramInt4 > 0) {
+      i = paramInt4;
+    } else {
+      i = 0;
+    }
+    ((Path)localObject).moveTo(i + paramInt3, f2);
+    localObject = sPath;
+    int k = paramInt1 - paramInt3;
+    if (paramInt5 > 0) {
+      i = paramInt5;
+    } else {
+      i = 0;
+    }
+    ((Path)localObject).lineTo(k - i, f2);
+    if (paramInt5 > 0)
+    {
+      localObject = oval;
+      paramInt5 *= 2;
+      ((RectF)localObject).set(paramInt1 - paramInt5, 0.0F, paramInt1, paramInt5);
+      oval.offset(-f1, f1);
+      sPath.arcTo(oval, 270.0F, 90.0F);
+    }
+    localObject = sPath;
+    float f3 = k;
+    int i = paramInt2 - paramInt3;
+    if (paramInt7 > 0) {
+      paramInt5 = paramInt7;
+    } else {
+      paramInt5 = 0;
+    }
+    ((Path)localObject).lineTo(f3, i - paramInt5);
+    if (paramInt7 > 0)
+    {
+      localObject = oval;
+      paramInt5 = paramInt7 * 2;
+      ((RectF)localObject).set(paramInt1 - paramInt5, paramInt2 - paramInt5, paramInt1, paramInt2);
+      localObject = oval;
+      f3 = -f1;
+      ((RectF)localObject).offset(f3, f3);
+      sPath.arcTo(oval, 0.0F, 90.0F);
+    }
+    localObject = sPath;
+    if (paramInt6 > 0) {
+      paramInt1 = paramInt6;
+    } else {
+      paramInt1 = 0;
+    }
+    ((Path)localObject).lineTo(paramInt1 + paramInt3, i);
+    if (paramInt6 > 0)
+    {
+      localObject = oval;
+      paramInt1 = paramInt6 * 2;
+      ((RectF)localObject).set(0.0F, paramInt2 - paramInt1, paramInt1, paramInt2);
+      oval.offset(f1, -f1);
+      sPath.arcTo(oval, 90.0F, 90.0F);
+    }
+    localObject = sPath;
+    paramInt1 = j;
+    if (paramInt4 > 0) {
+      paramInt1 = paramInt4;
+    }
+    ((Path)localObject).lineTo(f2, paramInt3 + paramInt1);
     if (paramInt4 > 0)
     {
-      i = paramInt4;
-      localPath.moveTo(i + paramInt3, paramInt3);
-      localPath = sPath;
-      if (paramInt5 <= 0) {
-        break label387;
-      }
-      i = paramInt5;
-      localPath.lineTo(paramInt1 - paramInt3 - i, paramInt3);
-      if (paramInt5 > 0)
-      {
-        oval.set(paramInt1 - paramInt5 * 2, 0.0F, paramInt1, paramInt5 * 2);
-        oval.offset(-f1, f1);
-        sPath.arcTo(oval, 270.0F, 90.0F);
-      }
-      localPath = sPath;
-      f2 = paramInt1 - paramInt3;
-      if (paramInt7 <= 0) {
-        break label393;
-      }
-      paramInt5 = paramInt7;
-      label155:
-      localPath.lineTo(f2, paramInt2 - paramInt3 - paramInt5);
-      if (paramInt7 > 0)
-      {
-        oval.set(paramInt1 - paramInt7 * 2, paramInt2 - paramInt7 * 2, paramInt1, paramInt2);
-        oval.offset(-f1, -f1);
-        sPath.arcTo(oval, 0.0F, 90.0F);
-      }
-      localPath = sPath;
-      if (paramInt6 <= 0) {
-        break label399;
-      }
-      paramInt1 = paramInt6;
-      label235:
-      localPath.lineTo(paramInt1 + paramInt3, paramInt2 - paramInt3);
-      if (paramInt6 > 0)
-      {
-        oval.set(0.0F, paramInt2 - paramInt6 * 2, paramInt6 * 2, paramInt2);
-        oval.offset(f1, -f1);
-        sPath.arcTo(oval, 90.0F, 90.0F);
-      }
-      localPath = sPath;
-      f2 = paramInt3;
-      if (paramInt4 <= 0) {
-        break label404;
-      }
+      localObject = oval;
+      f2 = paramInt4 * 2;
+      ((RectF)localObject).set(0.0F, 0.0F, f2, f2);
+      oval.offset(f1, f1);
+      sPath.arcTo(oval, 180.0F, 90.0F);
     }
-    label387:
-    label393:
-    label399:
-    label404:
-    for (paramInt1 = paramInt4;; paramInt1 = 0)
-    {
-      localPath.lineTo(f2, paramInt1 + paramInt3);
-      if (paramInt4 > 0)
-      {
-        oval.set(0.0F, 0.0F, paramInt4 * 2, paramInt4 * 2);
-        oval.offset(f1, f1);
-        sPath.arcTo(oval, 180.0F, 90.0F);
-      }
-      paramCanvas.clipPath(sPath);
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label71;
-      paramInt5 = 0;
-      break label155;
-      paramInt1 = 0;
-      break label235;
-    }
+    paramCanvas.clipPath(sPath);
   }
   
   public static void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    if ((paramCanvas == null) || (paramPaint == null)) {
-      return;
-    }
-    float f1 = paramInt3 / 2.0F;
-    sPath.reset();
-    Path localPath = sPath;
-    int i;
-    label64:
-    float f2;
-    if (paramInt4 > 0)
+    if (paramCanvas != null)
     {
-      i = paramInt4;
-      localPath.moveTo(i + paramInt3, paramInt3);
-      localPath = sPath;
-      if (paramInt5 <= 0) {
-        break label388;
+      if (paramPaint == null) {
+        return;
       }
-      i = paramInt5;
-      localPath.lineTo(paramInt1 - paramInt3 - i, paramInt3);
+      float f2 = paramInt3;
+      float f1 = f2 / 2.0F;
+      sPath.reset();
+      Object localObject = sPath;
+      int j = 0;
+      if (paramInt4 > 0) {
+        i = paramInt4;
+      } else {
+        i = 0;
+      }
+      ((Path)localObject).moveTo(i + paramInt3, f2);
+      localObject = sPath;
+      int k = paramInt1 - paramInt3;
+      if (paramInt5 > 0) {
+        i = paramInt5;
+      } else {
+        i = 0;
+      }
+      ((Path)localObject).lineTo(k - i, f2);
       if (paramInt5 > 0)
       {
-        oval.set(paramInt1 - paramInt5 * 2, 0.0F, paramInt1, paramInt5 * 2);
+        localObject = oval;
+        paramInt5 *= 2;
+        ((RectF)localObject).set(paramInt1 - paramInt5, 0.0F, paramInt1, paramInt5);
         oval.offset(-f1, f1);
         sPath.arcTo(oval, 270.0F, 90.0F);
       }
-      localPath = sPath;
-      f2 = paramInt1 - paramInt3;
-      if (paramInt7 <= 0) {
-        break label394;
+      localObject = sPath;
+      float f3 = k;
+      int i = paramInt2 - paramInt3;
+      if (paramInt7 > 0) {
+        paramInt5 = paramInt7;
+      } else {
+        paramInt5 = 0;
       }
-      paramInt5 = paramInt7;
-      label151:
-      localPath.lineTo(f2, paramInt2 - paramInt3 - paramInt5);
+      ((Path)localObject).lineTo(f3, i - paramInt5);
       if (paramInt7 > 0)
       {
-        oval.set(paramInt1 - paramInt7 * 2, paramInt2 - paramInt7 * 2, paramInt1, paramInt2);
-        oval.offset(-f1, -f1);
+        localObject = oval;
+        paramInt5 = paramInt7 * 2;
+        ((RectF)localObject).set(paramInt1 - paramInt5, paramInt2 - paramInt5, paramInt1, paramInt2);
+        localObject = oval;
+        f3 = -f1;
+        ((RectF)localObject).offset(f3, f3);
         sPath.arcTo(oval, 0.0F, 90.0F);
       }
-      localPath = sPath;
-      if (paramInt6 <= 0) {
-        break label400;
+      localObject = sPath;
+      if (paramInt6 > 0) {
+        paramInt1 = paramInt6;
+      } else {
+        paramInt1 = 0;
       }
-      paramInt1 = paramInt6;
-      label232:
-      localPath.lineTo(paramInt1 + paramInt3, paramInt2 - paramInt3);
+      ((Path)localObject).lineTo(paramInt1 + paramInt3, i);
       if (paramInt6 > 0)
       {
-        oval.set(0.0F, paramInt2 - paramInt6 * 2, paramInt6 * 2, paramInt2);
+        localObject = oval;
+        paramInt1 = paramInt6 * 2;
+        ((RectF)localObject).set(0.0F, paramInt2 - paramInt1, paramInt1, paramInt2);
         oval.offset(f1, -f1);
         sPath.arcTo(oval, 90.0F, 90.0F);
       }
-      localPath = sPath;
-      f2 = paramInt3;
-      if (paramInt4 <= 0) {
-        break label405;
+      localObject = sPath;
+      paramInt1 = j;
+      if (paramInt4 > 0) {
+        paramInt1 = paramInt4;
       }
-    }
-    label388:
-    label394:
-    label400:
-    label405:
-    for (paramInt1 = paramInt4;; paramInt1 = 0)
-    {
-      localPath.lineTo(f2, paramInt1 + paramInt3);
+      ((Path)localObject).lineTo(f2, paramInt3 + paramInt1);
       if (paramInt4 > 0)
       {
-        oval.set(0.0F, 0.0F, paramInt4 * 2, paramInt4 * 2);
+        localObject = oval;
+        f2 = paramInt4 * 2;
+        ((RectF)localObject).set(0.0F, 0.0F, f2, f2);
         oval.offset(f1, f1);
         sPath.arcTo(oval, 180.0F, 90.0F);
       }
       paramCanvas.drawPath(sPath, paramPaint);
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label64;
-      paramInt5 = 0;
-      break label151;
-      paramInt1 = 0;
-      break label232;
     }
   }
   
   public static void drawBorder(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    if ((paramCanvas == null) || (paramPaint == null)) {
-      return;
-    }
-    float f3 = paramInt3 / 2.0F;
-    float f1;
-    label26:
-    label38:
-    label61:
-    label73:
-    float f4;
-    if (paramInt4 > 0)
+    if (paramCanvas != null)
     {
-      f1 = paramInt4;
-      if (paramInt6 <= 0) {
-        break label386;
+      if (paramPaint == null) {
+        return;
       }
-      f2 = paramInt2 - paramInt6;
-      paramCanvas.drawLine(f3, f1, f3, f2, paramPaint);
-      if (paramInt4 <= 0) {
-        break label393;
+      float f4 = paramInt3 / 2.0F;
+      float f1;
+      if (paramInt4 > 0) {
+        f1 = paramInt4;
+      } else {
+        f1 = 0.0F;
       }
-      f1 = paramInt4;
-      if (paramInt5 <= 0) {
-        break label399;
+      float f2;
+      if (paramInt6 > 0) {
+        f2 = paramInt2 - paramInt6;
+      } else {
+        f2 = paramInt2;
       }
-      f2 = paramInt1 - paramInt5;
-      paramCanvas.drawLine(f1, f3, f2, f3, paramPaint);
-      f4 = paramInt1;
-      if (paramInt5 <= 0) {
-        break label406;
+      paramCanvas.drawLine(f4, f1, f4, f2, paramPaint);
+      if (paramInt4 > 0) {
+        f1 = paramInt4;
+      } else {
+        f1 = 0.0F;
       }
-      f1 = paramInt5;
-      label100:
-      float f5 = paramInt1;
-      if (paramInt7 <= 0) {
-        break label412;
+      if (paramInt5 > 0) {
+        f2 = paramInt1 - paramInt5;
+      } else {
+        f2 = paramInt1;
       }
-      f2 = paramInt2 - paramInt7;
-      label116:
-      paramCanvas.drawLine(f4 - f3, f1, f5 - f3, f2, paramPaint);
-      if (paramInt6 <= 0) {
-        break label419;
+      paramCanvas.drawLine(f1, f4, f2, f4, paramPaint);
+      float f3 = paramInt1;
+      float f5 = f3 - f4;
+      if (paramInt5 > 0) {
+        f1 = paramInt5;
+      } else {
+        f1 = 0.0F;
       }
-      f1 = paramInt6;
-      label145:
-      f4 = paramInt2;
-      if (paramInt7 <= 0) {
-        break label425;
+      if (paramInt7 > 0) {
+        f2 = paramInt2 - paramInt7;
+      } else {
+        f2 = paramInt2;
       }
-    }
-    label386:
-    label393:
-    label399:
-    label406:
-    label412:
-    label419:
-    label425:
-    for (float f2 = paramInt1 - paramInt7;; f2 = paramInt1)
-    {
-      paramCanvas.drawLine(f1, f4 - f3, f2, paramInt2 - f3, paramPaint);
+      paramCanvas.drawLine(f5, f1, f5, f2, paramPaint);
+      if (paramInt6 > 0) {
+        f1 = paramInt6;
+      } else {
+        f1 = 0.0F;
+      }
+      f5 = paramInt2;
+      float f6 = f5 - f4;
+      if (paramInt7 > 0) {
+        f2 = paramInt1 - paramInt7;
+      } else {
+        f2 = f3;
+      }
+      paramCanvas.drawLine(f1, f6, f2, f6, paramPaint);
+      RectF localRectF;
       if (paramInt4 > 0)
       {
-        oval.set(0.0F, 0.0F, paramInt4 * 2, paramInt4 * 2);
-        oval.offset(f3, f3);
+        localRectF = oval;
+        f1 = paramInt4 * 2;
+        localRectF.set(0.0F, 0.0F, f1, f1);
+        oval.offset(f4, f4);
         paramCanvas.drawArc(oval, 180.0F, 90.0F, false, paramPaint);
       }
       if (paramInt5 > 0)
       {
-        oval.set(paramInt1 - paramInt5 * 2, 0.0F, paramInt1, paramInt5 * 2);
-        oval.offset(-f3, f3);
+        localRectF = oval;
+        paramInt3 = paramInt5 * 2;
+        localRectF.set(paramInt1 - paramInt3, 0.0F, f3, paramInt3);
+        oval.offset(-f4, f4);
         paramCanvas.drawArc(oval, 270.0F, 90.0F, false, paramPaint);
       }
       if (paramInt7 > 0)
       {
-        oval.set(paramInt1 - paramInt7 * 2, paramInt2 - paramInt7 * 2, paramInt1, paramInt2);
-        oval.offset(-f3, -f3);
+        localRectF = oval;
+        paramInt3 = paramInt7 * 2;
+        localRectF.set(paramInt1 - paramInt3, paramInt2 - paramInt3, f3, f5);
+        localRectF = oval;
+        f1 = -f4;
+        localRectF.offset(f1, f1);
         paramCanvas.drawArc(oval, 0.0F, 90.0F, false, paramPaint);
       }
-      if (paramInt6 <= 0) {
-        break;
+      if (paramInt6 > 0)
+      {
+        localRectF = oval;
+        paramInt1 = paramInt6 * 2;
+        localRectF.set(0.0F, paramInt2 - paramInt1, paramInt1, f5);
+        oval.offset(f4, -f4);
+        paramCanvas.drawArc(oval, 90.0F, 90.0F, false, paramPaint);
       }
-      oval.set(0.0F, paramInt2 - paramInt6 * 2, paramInt6 * 2, paramInt2);
-      oval.offset(f3, -f3);
-      paramCanvas.drawArc(oval, 90.0F, 90.0F, false, paramPaint);
-      return;
-      f1 = 0.0F;
-      break label26;
-      f2 = paramInt2;
-      break label38;
-      f1 = 0.0F;
-      break label61;
-      f2 = paramInt1;
-      break label73;
-      f1 = 0.0F;
-      break label100;
-      f2 = paramInt2;
-      break label116;
-      f1 = 0.0F;
-      break label145;
     }
   }
   
@@ -299,7 +290,7 @@ public class VirtualViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils
  * JD-Core Version:    0.7.0.1
  */

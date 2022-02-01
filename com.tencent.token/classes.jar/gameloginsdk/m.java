@@ -31,17 +31,17 @@ class m
   
   public void a(long paramLong, String paramString)
   {
-    if (b(paramString) != null) {}
-    n localn;
-    do
-    {
+    if (b(paramString) != null) {
       return;
-      localn = new n(this);
-      localn.a = paramLong;
-      localn.b = paramString;
-    } while (!this.a.offer(localn));
-    this.a.poll();
-    this.a.offer(localn);
+    }
+    n localn = new n(this);
+    localn.a = paramLong;
+    localn.b = paramString;
+    if (this.a.offer(localn))
+    {
+      this.a.poll();
+      this.a.offer(localn);
+    }
   }
 }
 

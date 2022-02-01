@@ -2,31 +2,18 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class crh
   implements View.OnClickListener
 {
-  public crh(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public crh(LbsBaseActivity paramLbsBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.b.d(false);
-      if ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) != null) && (LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing())) {
-        LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
-      }
+    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
+      LbsBaseActivity.b(this.a).dismiss();
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a(1, 2131562451);
-    } while ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) == null) || (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing()));
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
+    this.a.a();
   }
 }
 

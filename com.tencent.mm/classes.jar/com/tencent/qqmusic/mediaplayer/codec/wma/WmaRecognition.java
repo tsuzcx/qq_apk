@@ -14,10 +14,10 @@ public class WmaRecognition
   
   public WmaRecognition()
   {
-    AppMethodBeat.i(128584);
+    AppMethodBeat.i(114310);
     this.HEARER_LENGTH = 16;
     this.WMA_HEADER = new byte[] { 48, 38, -78, 117, -114, 102, -49, 17, -90, -39, 0, -86, 0, 98, -50, 108 };
-    AppMethodBeat.o(128584);
+    AppMethodBeat.o(114310);
   }
   
   /* Error */
@@ -175,21 +175,21 @@ public class WmaRecognition
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    AppMethodBeat.i(128586);
+    AppMethodBeat.i(114312);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.toLowerCase().contains(".wma")))
     {
       paramString = AudioFormat.AudioType.WMA;
-      AppMethodBeat.o(128586);
+      AppMethodBeat.o(114312);
       return paramString;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128586);
+    AppMethodBeat.o(114312);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.wma.WmaRecognition
  * JD-Core Version:    0.7.0.1
  */

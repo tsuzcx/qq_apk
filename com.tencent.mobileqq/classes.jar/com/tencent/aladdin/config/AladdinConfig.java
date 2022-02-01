@@ -33,7 +33,10 @@ public class AladdinConfig
     Log.d("AladdinConfig", "AladdinConfig: construct");
     this.mConfigId = paramInt;
     this.mFile = new File(paramString);
-    this.mBackupFile = new File(paramString + ".backup");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".backup");
+    this.mBackupFile = new File(localStringBuilder.toString());
     this.asyncTaskExecutor = paramAsyncTaskExecutor;
     this.mParser = paramAladdinConfigParser;
     startLoadFromDisk();
@@ -46,7 +49,11 @@ public class AladdinConfig
       {
         this.mLock.wait();
       }
-      catch (InterruptedException localInterruptedException) {}
+      catch (InterruptedException localInterruptedException)
+      {
+        label17:
+        break label17;
+      }
     }
   }
   
@@ -54,402 +61,565 @@ public class AladdinConfig
   private void loadFromDisk()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: ldc 8
-    //   5: new 60	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 100
-    //   14: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_0
-    //   18: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   21: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: aload_0
-    //   31: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
-    //   34: astore_3
-    //   35: aload_3
-    //   36: monitorenter
-    //   37: aload_0
-    //   38: getfield 39	com/tencent/aladdin/config/AladdinConfig:mLoaded	Z
-    //   41: ifeq +33 -> 74
-    //   44: ldc 8
-    //   46: new 60	java/lang/StringBuilder
-    //   49: dup
-    //   50: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   53: ldc 105
-    //   55: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: aload_0
-    //   59: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   62: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   71: aload_3
-    //   72: monitorexit
-    //   73: return
-    //   74: aload_0
-    //   75: getfield 73	com/tencent/aladdin/config/AladdinConfig:mBackupFile	Ljava/io/File;
-    //   78: invokevirtual 109	java/io/File:exists	()Z
-    //   81: ifeq +56 -> 137
-    //   84: aload_0
-    //   85: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
-    //   88: invokevirtual 112	java/io/File:delete	()Z
-    //   91: istore_1
-    //   92: aload_0
-    //   93: getfield 73	com/tencent/aladdin/config/AladdinConfig:mBackupFile	Ljava/io/File;
-    //   96: aload_0
-    //   97: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
-    //   100: invokevirtual 116	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   103: istore_2
-    //   104: ldc 8
-    //   106: new 60	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   113: ldc 118
-    //   115: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: iload_1
-    //   119: invokevirtual 121	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   122: ldc 123
-    //   124: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: iload_2
-    //   128: invokevirtual 121	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 126	com/tencent/aladdin/config/utils/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   137: aload_3
-    //   138: monitorexit
-    //   139: new 128	java/io/FileReader
-    //   142: dup
-    //   143: aload_0
-    //   144: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
-    //   147: invokespecial 131	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   150: astore 6
-    //   152: aload 6
-    //   154: astore 5
-    //   156: aload_0
-    //   157: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
-    //   160: astore 8
-    //   162: aload 6
-    //   164: astore 5
-    //   166: aload 8
-    //   168: monitorenter
-    //   169: aload_0
-    //   170: getfield 77	com/tencent/aladdin/config/AladdinConfig:mParser	Lcom/tencent/aladdin/config/parse/AladdinConfigParser;
-    //   173: aload 6
-    //   175: invokeinterface 137 2 0
-    //   180: astore_3
-    //   181: aload 8
-    //   183: monitorexit
-    //   184: aload 6
-    //   186: astore 5
-    //   188: aload 6
-    //   190: invokevirtual 140	java/io/FileReader:close	()V
-    //   193: aload_3
-    //   194: astore 4
-    //   196: aload 6
-    //   198: ifnull +11 -> 209
-    //   201: aload 6
-    //   203: invokevirtual 140	java/io/FileReader:close	()V
-    //   206: aload_3
-    //   207: astore 4
-    //   209: aload_0
-    //   210: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
+    //   0: new 60	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: ldc 100
+    //   11: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: pop
+    //   15: aload_3
+    //   16: aload_0
+    //   17: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   20: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: ldc 8
+    //   26: aload_3
+    //   27: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   33: aload_0
+    //   34: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
+    //   37: astore_3
+    //   38: aload_3
+    //   39: monitorenter
+    //   40: aload_0
+    //   41: getfield 39	com/tencent/aladdin/config/AladdinConfig:mLoaded	Z
+    //   44: ifeq +43 -> 87
+    //   47: new 60	java/lang/StringBuilder
+    //   50: dup
+    //   51: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   54: astore 4
+    //   56: aload 4
+    //   58: ldc 105
+    //   60: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: aload 4
+    //   66: aload_0
+    //   67: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   70: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: ldc 8
+    //   76: aload 4
+    //   78: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   84: aload_3
+    //   85: monitorexit
+    //   86: return
+    //   87: aload_0
+    //   88: getfield 73	com/tencent/aladdin/config/AladdinConfig:mBackupFile	Ljava/io/File;
+    //   91: invokevirtual 109	java/io/File:exists	()Z
+    //   94: ifeq +72 -> 166
+    //   97: aload_0
+    //   98: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
+    //   101: invokevirtual 112	java/io/File:delete	()Z
+    //   104: istore_1
+    //   105: aload_0
+    //   106: getfield 73	com/tencent/aladdin/config/AladdinConfig:mBackupFile	Ljava/io/File;
+    //   109: aload_0
+    //   110: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
+    //   113: invokevirtual 116	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   116: istore_2
+    //   117: new 60	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   124: astore 4
+    //   126: aload 4
+    //   128: ldc 118
+    //   130: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: pop
+    //   134: aload 4
+    //   136: iload_1
+    //   137: invokevirtual 121	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   140: pop
+    //   141: aload 4
+    //   143: ldc 123
+    //   145: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: aload 4
+    //   151: iload_2
+    //   152: invokevirtual 121	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: ldc 8
+    //   158: aload 4
+    //   160: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokestatic 126	com/tencent/aladdin/config/utils/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   166: aload_3
+    //   167: monitorexit
+    //   168: aconst_null
+    //   169: astore 8
+    //   171: aconst_null
+    //   172: astore 4
+    //   174: aconst_null
+    //   175: astore_3
+    //   176: aconst_null
+    //   177: astore 7
+    //   179: aconst_null
+    //   180: astore 6
+    //   182: aload_3
+    //   183: astore 5
+    //   185: aload_0
+    //   186: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
+    //   189: invokevirtual 109	java/io/File:exists	()Z
+    //   192: ifeq +91 -> 283
+    //   195: aload_3
+    //   196: astore 5
+    //   198: new 128	java/io/FileReader
+    //   201: dup
+    //   202: aload_0
+    //   203: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
+    //   206: invokespecial 131	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   209: astore 4
+    //   211: aload 8
     //   213: astore_3
-    //   214: aload_3
-    //   215: monitorenter
-    //   216: aload_0
-    //   217: iconst_1
-    //   218: putfield 39	com/tencent/aladdin/config/AladdinConfig:mLoaded	Z
-    //   221: aload 4
-    //   223: ifnull +475 -> 698
-    //   226: aload_0
-    //   227: aload 4
-    //   229: putfield 41	com/tencent/aladdin/config/AladdinConfig:mMap	Ljava/util/Map;
-    //   232: invokestatic 143	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
-    //   235: ifeq +45 -> 280
-    //   238: ldc 8
-    //   240: new 60	java/lang/StringBuilder
-    //   243: dup
-    //   244: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   247: ldc 145
-    //   249: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: aload_0
-    //   253: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
-    //   256: invokevirtual 148	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   259: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: ldc 150
-    //   264: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: aload_0
-    //   268: getfield 41	com/tencent/aladdin/config/AladdinConfig:mMap	Ljava/util/Map;
-    //   271: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   274: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   277: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   280: aload_0
-    //   281: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
-    //   284: invokevirtual 156	java/lang/Object:notifyAll	()V
-    //   287: aload_3
-    //   288: monitorexit
-    //   289: return
-    //   290: astore 4
-    //   292: aload_3
-    //   293: monitorexit
-    //   294: aload 4
-    //   296: athrow
-    //   297: astore 4
-    //   299: aload_3
-    //   300: monitorexit
-    //   301: aload 4
-    //   303: athrow
-    //   304: astore 7
-    //   306: aload 4
-    //   308: astore_3
-    //   309: aload_3
-    //   310: astore 4
-    //   312: aload 8
-    //   314: monitorexit
-    //   315: aload 6
-    //   317: astore 5
-    //   319: aload 7
-    //   321: athrow
-    //   322: astore 4
-    //   324: aload 6
-    //   326: astore 5
-    //   328: ldc 8
-    //   330: new 60	java/lang/StringBuilder
-    //   333: dup
-    //   334: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   337: ldc 100
-    //   339: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: aload_0
-    //   343: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   346: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   349: ldc 158
-    //   351: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   354: aload 4
-    //   356: invokevirtual 161	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   359: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   365: invokestatic 164	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   368: aload 6
-    //   370: astore 5
-    //   372: invokestatic 143	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
-    //   375: ifeq +36 -> 411
-    //   378: aload 6
-    //   380: astore 5
-    //   382: ldc 8
-    //   384: new 60	java/lang/StringBuilder
-    //   387: dup
-    //   388: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   391: ldc 100
-    //   393: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: aload_0
-    //   397: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   400: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   403: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   406: aload 4
-    //   408: invokestatic 167	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   411: aload_3
-    //   412: astore 4
-    //   414: aload 6
-    //   416: ifnull -207 -> 209
-    //   419: aload 6
-    //   421: invokevirtual 140	java/io/FileReader:close	()V
-    //   424: aload_3
-    //   425: astore 4
-    //   427: goto -218 -> 209
-    //   430: astore 5
-    //   432: ldc 8
-    //   434: new 60	java/lang/StringBuilder
-    //   437: dup
-    //   438: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   441: ldc 100
-    //   443: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   446: aload_0
-    //   447: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   450: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   453: ldc 158
-    //   455: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: aload 5
-    //   460: invokevirtual 161	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   463: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   466: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   469: invokestatic 164	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   472: aload_3
-    //   473: astore 4
-    //   475: invokestatic 143	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
-    //   478: ifeq -269 -> 209
-    //   481: ldc 8
-    //   483: new 60	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   490: ldc 100
-    //   492: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: aload_0
-    //   496: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   499: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   502: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   505: aload 5
-    //   507: invokestatic 167	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   510: aload_3
-    //   511: astore 4
-    //   513: goto -304 -> 209
-    //   516: astore 5
-    //   518: ldc 8
-    //   520: new 60	java/lang/StringBuilder
-    //   523: dup
-    //   524: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   527: ldc 100
-    //   529: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   532: aload_0
-    //   533: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   536: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   539: ldc 158
-    //   541: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   544: aload 5
-    //   546: invokevirtual 161	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   549: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: invokestatic 164	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   558: aload_3
-    //   559: astore 4
-    //   561: invokestatic 143	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
-    //   564: ifeq -355 -> 209
-    //   567: ldc 8
-    //   569: new 60	java/lang/StringBuilder
-    //   572: dup
-    //   573: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   576: ldc 100
-    //   578: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   581: aload_0
-    //   582: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   585: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   588: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   591: aload 5
-    //   593: invokestatic 167	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   596: aload_3
-    //   597: astore 4
-    //   599: goto -390 -> 209
-    //   602: astore_3
-    //   603: aconst_null
-    //   604: astore 5
-    //   606: aload 5
-    //   608: ifnull +8 -> 616
-    //   611: aload 5
-    //   613: invokevirtual 140	java/io/FileReader:close	()V
-    //   616: aload_3
-    //   617: athrow
-    //   618: astore 4
-    //   620: ldc 8
-    //   622: new 60	java/lang/StringBuilder
-    //   625: dup
-    //   626: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   629: ldc 100
-    //   631: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   634: aload_0
-    //   635: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   638: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   641: ldc 158
-    //   643: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   646: aload 4
-    //   648: invokevirtual 161	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   651: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   654: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   657: invokestatic 164	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   660: invokestatic 143	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
-    //   663: ifeq -47 -> 616
-    //   666: ldc 8
-    //   668: new 60	java/lang/StringBuilder
-    //   671: dup
-    //   672: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   675: ldc 100
-    //   677: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   680: aload_0
-    //   681: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
-    //   684: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   687: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   690: aload 4
-    //   692: invokestatic 167	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   695: goto -79 -> 616
-    //   698: aload_0
-    //   699: new 169	java/util/HashMap
-    //   702: dup
-    //   703: invokespecial 170	java/util/HashMap:<init>	()V
-    //   706: putfield 41	com/tencent/aladdin/config/AladdinConfig:mMap	Ljava/util/Map;
-    //   709: goto -477 -> 232
-    //   712: astore_3
-    //   713: goto -107 -> 606
-    //   716: astore 4
-    //   718: aconst_null
-    //   719: astore 6
-    //   721: aconst_null
-    //   722: astore_3
-    //   723: goto -399 -> 324
-    //   726: astore 4
-    //   728: aconst_null
-    //   729: astore_3
-    //   730: goto -406 -> 324
-    //   733: astore 4
-    //   735: goto -411 -> 324
-    //   738: astore 7
-    //   740: goto -431 -> 309
+    //   214: aload_0
+    //   215: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
+    //   218: astore 7
+    //   220: aload 8
+    //   222: astore_3
+    //   223: aload 7
+    //   225: monitorenter
+    //   226: aload 6
+    //   228: astore_3
+    //   229: aload_0
+    //   230: getfield 77	com/tencent/aladdin/config/AladdinConfig:mParser	Lcom/tencent/aladdin/config/parse/AladdinConfigParser;
+    //   233: aload 4
+    //   235: invokeinterface 137 2 0
+    //   240: astore 5
+    //   242: aload 5
+    //   244: astore_3
+    //   245: aload 7
+    //   247: monitorexit
+    //   248: aload 5
+    //   250: astore_3
+    //   251: aload 4
+    //   253: invokevirtual 140	java/io/FileReader:close	()V
+    //   256: aload 5
+    //   258: astore_3
+    //   259: goto +86 -> 345
+    //   262: astore 5
+    //   264: aload 7
+    //   266: monitorexit
+    //   267: aload 5
+    //   269: athrow
+    //   270: astore_3
+    //   271: aload 4
+    //   273: astore 5
+    //   275: goto +574 -> 849
+    //   278: astore 6
+    //   280: goto +208 -> 488
+    //   283: aload_3
+    //   284: astore 5
+    //   286: new 60	java/lang/StringBuilder
+    //   289: dup
+    //   290: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   293: astore 6
+    //   295: aload_3
+    //   296: astore 5
+    //   298: aload 6
+    //   300: ldc 142
+    //   302: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: pop
+    //   306: aload_3
+    //   307: astore 5
+    //   309: aload 6
+    //   311: aload_0
+    //   312: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   315: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   318: pop
+    //   319: aload_3
+    //   320: astore 5
+    //   322: aload 6
+    //   324: ldc 144
+    //   326: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: pop
+    //   330: aload_3
+    //   331: astore 5
+    //   333: ldc 8
+    //   335: aload 6
+    //   337: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   343: aconst_null
+    //   344: astore_3
+    //   345: aload_3
+    //   346: astore 5
+    //   348: aload 4
+    //   350: ifnull +381 -> 731
+    //   353: aload 4
+    //   355: invokevirtual 140	java/io/FileReader:close	()V
+    //   358: aload_3
+    //   359: astore 5
+    //   361: goto +370 -> 731
+    //   364: astore 4
+    //   366: new 60	java/lang/StringBuilder
+    //   369: dup
+    //   370: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   373: astore 5
+    //   375: aload 5
+    //   377: ldc 100
+    //   379: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: pop
+    //   383: aload 5
+    //   385: aload_0
+    //   386: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   389: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   392: pop
+    //   393: aload 5
+    //   395: ldc 146
+    //   397: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: pop
+    //   401: aload 5
+    //   403: aload 4
+    //   405: invokevirtual 149	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   408: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   411: pop
+    //   412: ldc 8
+    //   414: aload 5
+    //   416: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   419: invokestatic 152	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   422: aload_3
+    //   423: astore 5
+    //   425: invokestatic 155	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
+    //   428: ifeq +303 -> 731
+    //   431: new 60	java/lang/StringBuilder
+    //   434: dup
+    //   435: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   438: astore 5
+    //   440: aload 5
+    //   442: ldc 100
+    //   444: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   447: pop
+    //   448: aload 5
+    //   450: aload_0
+    //   451: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   454: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: ldc 8
+    //   460: aload 5
+    //   462: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   465: aload 4
+    //   467: invokestatic 158	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   470: aload_3
+    //   471: astore 5
+    //   473: goto +258 -> 731
+    //   476: astore_3
+    //   477: goto +372 -> 849
+    //   480: astore 6
+    //   482: aconst_null
+    //   483: astore_3
+    //   484: aload 7
+    //   486: astore 4
+    //   488: aload 4
+    //   490: astore 5
+    //   492: new 60	java/lang/StringBuilder
+    //   495: dup
+    //   496: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   499: astore 7
+    //   501: aload 4
+    //   503: astore 5
+    //   505: aload 7
+    //   507: ldc 100
+    //   509: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   512: pop
+    //   513: aload 4
+    //   515: astore 5
+    //   517: aload 7
+    //   519: aload_0
+    //   520: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   523: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   526: pop
+    //   527: aload 4
+    //   529: astore 5
+    //   531: aload 7
+    //   533: ldc 146
+    //   535: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   538: pop
+    //   539: aload 4
+    //   541: astore 5
+    //   543: aload 7
+    //   545: aload 6
+    //   547: invokevirtual 149	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   550: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   553: pop
+    //   554: aload 4
+    //   556: astore 5
+    //   558: ldc 8
+    //   560: aload 7
+    //   562: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   565: invokestatic 152	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   568: aload 4
+    //   570: astore 5
+    //   572: invokestatic 155	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
+    //   575: ifeq +58 -> 633
+    //   578: aload 4
+    //   580: astore 5
+    //   582: new 60	java/lang/StringBuilder
+    //   585: dup
+    //   586: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   589: astore 7
+    //   591: aload 4
+    //   593: astore 5
+    //   595: aload 7
+    //   597: ldc 100
+    //   599: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: pop
+    //   603: aload 4
+    //   605: astore 5
+    //   607: aload 7
+    //   609: aload_0
+    //   610: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   613: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   616: pop
+    //   617: aload 4
+    //   619: astore 5
+    //   621: ldc 8
+    //   623: aload 7
+    //   625: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   628: aload 6
+    //   630: invokestatic 158	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   633: aload_3
+    //   634: astore 5
+    //   636: aload 4
+    //   638: ifnull +93 -> 731
+    //   641: aload 4
+    //   643: invokevirtual 140	java/io/FileReader:close	()V
+    //   646: aload_3
+    //   647: astore 5
+    //   649: goto +82 -> 731
+    //   652: astore 4
+    //   654: new 60	java/lang/StringBuilder
+    //   657: dup
+    //   658: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   661: astore 5
+    //   663: aload 5
+    //   665: ldc 100
+    //   667: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   670: pop
+    //   671: aload 5
+    //   673: aload_0
+    //   674: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   677: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   680: pop
+    //   681: aload 5
+    //   683: ldc 146
+    //   685: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   688: pop
+    //   689: aload 5
+    //   691: aload 4
+    //   693: invokevirtual 149	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   696: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   699: pop
+    //   700: ldc 8
+    //   702: aload 5
+    //   704: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   707: invokestatic 152	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   710: aload_3
+    //   711: astore 5
+    //   713: invokestatic 155	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
+    //   716: ifeq +15 -> 731
+    //   719: new 60	java/lang/StringBuilder
+    //   722: dup
+    //   723: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   726: astore 5
+    //   728: goto -288 -> 440
+    //   731: aload_0
+    //   732: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
+    //   735: astore_3
+    //   736: aload_3
+    //   737: monitorenter
+    //   738: aload_0
+    //   739: iconst_1
+    //   740: putfield 39	com/tencent/aladdin/config/AladdinConfig:mLoaded	Z
+    //   743: aload 5
+    //   745: ifnull +12 -> 757
+    //   748: aload_0
+    //   749: aload 5
+    //   751: putfield 41	com/tencent/aladdin/config/AladdinConfig:mMap	Ljava/util/Map;
+    //   754: goto +14 -> 768
+    //   757: aload_0
+    //   758: new 160	java/util/HashMap
+    //   761: dup
+    //   762: invokespecial 161	java/util/HashMap:<init>	()V
+    //   765: putfield 41	com/tencent/aladdin/config/AladdinConfig:mMap	Ljava/util/Map;
+    //   768: invokestatic 155	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
+    //   771: ifeq +61 -> 832
+    //   774: new 60	java/lang/StringBuilder
+    //   777: dup
+    //   778: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   781: astore 4
+    //   783: aload 4
+    //   785: ldc 163
+    //   787: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   790: pop
+    //   791: aload 4
+    //   793: aload_0
+    //   794: getfield 58	com/tencent/aladdin/config/AladdinConfig:mFile	Ljava/io/File;
+    //   797: invokevirtual 166	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   800: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   803: pop
+    //   804: aload 4
+    //   806: ldc 168
+    //   808: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   811: pop
+    //   812: aload 4
+    //   814: aload_0
+    //   815: getfield 41	com/tencent/aladdin/config/AladdinConfig:mMap	Ljava/util/Map;
+    //   818: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   821: pop
+    //   822: ldc 8
+    //   824: aload 4
+    //   826: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   829: invokestatic 49	com/tencent/aladdin/config/utils/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   832: aload_0
+    //   833: getfield 35	com/tencent/aladdin/config/AladdinConfig:mLock	Ljava/lang/Object;
+    //   836: invokevirtual 174	java/lang/Object:notifyAll	()V
+    //   839: aload_3
+    //   840: monitorexit
+    //   841: return
+    //   842: astore 4
+    //   844: aload_3
+    //   845: monitorexit
+    //   846: aload 4
+    //   848: athrow
+    //   849: aload 5
+    //   851: ifnull +114 -> 965
+    //   854: aload 5
+    //   856: invokevirtual 140	java/io/FileReader:close	()V
+    //   859: goto +106 -> 965
+    //   862: astore 4
+    //   864: new 60	java/lang/StringBuilder
+    //   867: dup
+    //   868: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   871: astore 5
+    //   873: aload 5
+    //   875: ldc 100
+    //   877: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   880: pop
+    //   881: aload 5
+    //   883: aload_0
+    //   884: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   887: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   890: pop
+    //   891: aload 5
+    //   893: ldc 146
+    //   895: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   898: pop
+    //   899: aload 5
+    //   901: aload 4
+    //   903: invokevirtual 149	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   906: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   909: pop
+    //   910: ldc 8
+    //   912: aload 5
+    //   914: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   917: invokestatic 152	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   920: invokestatic 155	com/tencent/aladdin/config/utils/Log:isDebugVersion	()Z
+    //   923: ifeq +42 -> 965
+    //   926: new 60	java/lang/StringBuilder
+    //   929: dup
+    //   930: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   933: astore 5
+    //   935: aload 5
+    //   937: ldc 100
+    //   939: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   942: pop
+    //   943: aload 5
+    //   945: aload_0
+    //   946: getfield 51	com/tencent/aladdin/config/AladdinConfig:mConfigId	I
+    //   949: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   952: pop
+    //   953: ldc 8
+    //   955: aload 5
+    //   957: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   960: aload 4
+    //   962: invokestatic 158	com/tencent/aladdin/config/utils/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   965: aload_3
+    //   966: athrow
+    //   967: astore 4
+    //   969: aload_3
+    //   970: monitorexit
+    //   971: goto +6 -> 977
+    //   974: aload 4
+    //   976: athrow
+    //   977: goto -3 -> 974
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	743	0	this	AladdinConfig
-    //   91	28	1	bool1	boolean
-    //   103	25	2	bool2	boolean
-    //   602	15	3	localObject2	Object
-    //   712	1	3	localObject3	Object
-    //   722	8	3	localObject4	Object
-    //   1	227	4	localObject5	Object
-    //   290	5	4	localObject6	Object
-    //   297	10	4	localObject7	Object
-    //   310	1	4	localObject8	Object
-    //   322	85	4	localException1	java.lang.Exception
-    //   412	186	4	localObject9	Object
-    //   618	73	4	localException2	java.lang.Exception
-    //   716	1	4	localException3	java.lang.Exception
-    //   726	1	4	localException4	java.lang.Exception
-    //   733	1	4	localException5	java.lang.Exception
-    //   154	227	5	localFileReader1	java.io.FileReader
-    //   430	76	5	localException6	java.lang.Exception
-    //   516	76	5	localException7	java.lang.Exception
-    //   604	8	5	localObject10	Object
-    //   150	570	6	localFileReader2	java.io.FileReader
-    //   304	16	7	localObject11	Object
-    //   738	1	7	localObject12	Object
-    //   160	153	8	localObject13	Object
+    //   0	980	0	this	AladdinConfig
+    //   104	33	1	bool1	boolean
+    //   116	36	2	bool2	boolean
+    //   7	252	3	localObject1	Object
+    //   270	61	3	localObject2	Object
+    //   344	127	3	localObject3	Object
+    //   476	1	3	localObject4	Object
+    //   483	487	3	localObject5	Object
+    //   54	300	4	localObject6	Object
+    //   364	102	4	localException1	java.lang.Exception
+    //   486	156	4	localObject7	Object
+    //   652	40	4	localException2	java.lang.Exception
+    //   781	44	4	localStringBuilder1	StringBuilder
+    //   842	5	4	localObject8	Object
+    //   862	99	4	localException3	java.lang.Exception
+    //   967	8	4	localObject9	Object
+    //   183	74	5	localObject10	Object
+    //   262	6	5	localObject11	Object
+    //   273	683	5	localObject12	Object
+    //   180	47	6	localObject13	Object
+    //   278	1	6	localException4	java.lang.Exception
+    //   293	43	6	localStringBuilder2	StringBuilder
+    //   480	149	6	localException5	java.lang.Exception
+    //   177	447	7	localObject14	Object
+    //   169	52	8	localObject15	Object
     // Exception table:
     //   from	to	target	type
-    //   216	221	290	finally
-    //   226	232	290	finally
-    //   232	280	290	finally
-    //   280	289	290	finally
-    //   292	294	290	finally
-    //   698	709	290	finally
-    //   37	73	297	finally
-    //   74	137	297	finally
-    //   137	139	297	finally
-    //   299	301	297	finally
-    //   169	181	304	finally
-    //   312	315	304	finally
-    //   319	322	322	java/lang/Exception
-    //   419	424	430	java/lang/Exception
-    //   201	206	516	java/lang/Exception
-    //   139	152	602	finally
-    //   611	616	618	java/lang/Exception
-    //   156	162	712	finally
-    //   166	169	712	finally
-    //   188	193	712	finally
-    //   319	322	712	finally
-    //   328	368	712	finally
-    //   372	378	712	finally
-    //   382	411	712	finally
-    //   139	152	716	java/lang/Exception
-    //   156	162	726	java/lang/Exception
-    //   166	169	726	java/lang/Exception
-    //   188	193	733	java/lang/Exception
-    //   181	184	738	finally
+    //   229	242	262	finally
+    //   245	248	262	finally
+    //   264	267	262	finally
+    //   214	220	270	finally
+    //   223	226	270	finally
+    //   251	256	270	finally
+    //   267	270	270	finally
+    //   214	220	278	java/lang/Exception
+    //   223	226	278	java/lang/Exception
+    //   251	256	278	java/lang/Exception
+    //   267	270	278	java/lang/Exception
+    //   353	358	364	java/lang/Exception
+    //   185	195	476	finally
+    //   198	211	476	finally
+    //   286	295	476	finally
+    //   298	306	476	finally
+    //   309	319	476	finally
+    //   322	330	476	finally
+    //   333	343	476	finally
+    //   492	501	476	finally
+    //   505	513	476	finally
+    //   517	527	476	finally
+    //   531	539	476	finally
+    //   543	554	476	finally
+    //   558	568	476	finally
+    //   572	578	476	finally
+    //   582	591	476	finally
+    //   595	603	476	finally
+    //   607	617	476	finally
+    //   621	633	476	finally
+    //   185	195	480	java/lang/Exception
+    //   198	211	480	java/lang/Exception
+    //   286	295	480	java/lang/Exception
+    //   298	306	480	java/lang/Exception
+    //   309	319	480	java/lang/Exception
+    //   322	330	480	java/lang/Exception
+    //   333	343	480	java/lang/Exception
+    //   641	646	652	java/lang/Exception
+    //   738	743	842	finally
+    //   748	754	842	finally
+    //   757	768	842	finally
+    //   768	832	842	finally
+    //   832	841	842	finally
+    //   844	846	842	finally
+    //   854	859	862	java/lang/Exception
+    //   40	86	967	finally
+    //   87	166	967	finally
+    //   166	168	967	finally
+    //   969	971	967	finally
   }
   
   private void startLoadFromDisk()
@@ -491,8 +661,10 @@ public class AladdinConfig
       }
       catch (ClassCastException paramString)
       {
-        return null;
+        label29:
+        break label29;
       }
+      return null;
     }
   }
   
@@ -512,8 +684,10 @@ public class AladdinConfig
       }
       catch (ClassCastException paramString)
       {
-        return paramBoolean;
+        label43:
+        break label43;
       }
+      return paramBoolean;
     }
   }
   
@@ -529,8 +703,10 @@ public class AladdinConfig
       }
       catch (ClassCastException paramString)
       {
-        return paramBoolean;
+        label38:
+        break label38;
       }
+      return paramBoolean;
     }
   }
   
@@ -550,8 +726,10 @@ public class AladdinConfig
       }
       catch (ClassCastException paramString)
       {
-        return paramFloat;
+        label43:
+        break label43;
       }
+      return paramFloat;
     }
   }
   
@@ -560,24 +738,28 @@ public class AladdinConfig
     synchronized (this.mLock)
     {
       awaitLoadedLocked();
-    }
-    try
-    {
-      paramString = (String)this.mMap.get(paramString);
-      float f = paramFloat;
-      if (paramString != null) {
-        f = Float.valueOf(paramString).floatValue();
+      try
+      {
+        paramString = (String)this.mMap.get(paramString);
+        float f = paramFloat;
+        if (paramString != null) {
+          f = Float.valueOf(paramString).floatValue();
+        }
+        return f;
       }
-      return f;
-    }
-    catch (ClassCastException paramString)
-    {
+      catch (ClassCastException paramString)
+      {
+        break label51;
+      }
+      catch (NumberFormatException paramString)
+      {
+        label46:
+        label51:
+        break label46;
+      }
       return paramFloat;
-      paramString = finally;
-      throw paramString;
+      return paramFloat;
     }
-    catch (NumberFormatException paramString) {}
-    return paramFloat;
   }
   
   public int getInteger(String paramString, int paramInt)
@@ -596,8 +778,10 @@ public class AladdinConfig
       }
       catch (ClassCastException paramString)
       {
-        return paramInt;
+        label43:
+        break label43;
       }
+      return paramInt;
     }
   }
   
@@ -606,24 +790,28 @@ public class AladdinConfig
     synchronized (this.mLock)
     {
       awaitLoadedLocked();
-    }
-    try
-    {
-      paramString = (String)this.mMap.get(paramString);
-      int i = paramInt;
-      if (paramString != null) {
-        i = Integer.valueOf(paramString).intValue();
+      try
+      {
+        paramString = (String)this.mMap.get(paramString);
+        int i = paramInt;
+        if (paramString != null) {
+          i = Integer.valueOf(paramString).intValue();
+        }
+        return i;
       }
-      return i;
-    }
-    catch (ClassCastException paramString)
-    {
+      catch (ClassCastException paramString)
+      {
+        break label51;
+      }
+      catch (NumberFormatException paramString)
+      {
+        label46:
+        label51:
+        break label46;
+      }
       return paramInt;
-      paramString = finally;
-      throw paramString;
+      return paramInt;
     }
-    catch (NumberFormatException paramString) {}
-    return paramInt;
   }
   
   public <T> List<T> getList(String paramString)
@@ -634,19 +822,18 @@ public class AladdinConfig
       try
       {
         paramString = (List)this.mMap.get(paramString);
-        if (paramString != null) {}
-        for (;;)
-        {
-          return paramString;
+        if (paramString == null) {
           paramString = Collections.emptyList();
         }
-        paramString = finally;
+        return paramString;
       }
       catch (ClassCastException paramString)
       {
-        paramString = Collections.emptyList();
-        return paramString;
+        label40:
+        break label40;
       }
+      paramString = Collections.emptyList();
+      return paramString;
     }
   }
   
@@ -655,24 +842,28 @@ public class AladdinConfig
     synchronized (this.mLock)
     {
       awaitLoadedLocked();
-    }
-    try
-    {
-      paramString = (String)this.mMap.get(paramString);
-      long l = paramLong;
-      if (paramString != null) {
-        l = Long.valueOf(paramString).longValue();
+      try
+      {
+        paramString = (String)this.mMap.get(paramString);
+        long l = paramLong;
+        if (paramString != null) {
+          l = Long.valueOf(paramString).longValue();
+        }
+        return l;
       }
-      return l;
-    }
-    catch (ClassCastException paramString)
-    {
+      catch (ClassCastException paramString)
+      {
+        break label54;
+      }
+      catch (NumberFormatException paramString)
+      {
+        label49:
+        label54:
+        break label49;
+      }
       return paramLong;
-      paramString = finally;
-      throw paramString;
+      return paramLong;
     }
-    catch (NumberFormatException paramString) {}
-    return paramLong;
   }
   
   public <T> Map<String, T> getMap(String paramString)
@@ -683,19 +874,18 @@ public class AladdinConfig
       try
       {
         paramString = (Map)this.mMap.get(paramString);
-        if (paramString != null) {}
-        for (;;)
-        {
-          return paramString;
+        if (paramString == null) {
           paramString = Collections.emptyMap();
         }
-        paramString = finally;
+        return paramString;
       }
       catch (ClassCastException paramString)
       {
-        paramString = Collections.emptyMap();
-        return paramString;
+        label40:
+        break label40;
       }
+      paramString = Collections.emptyMap();
+      return paramString;
     }
   }
   
@@ -707,19 +897,18 @@ public class AladdinConfig
       try
       {
         paramString = (Set)this.mMap.get(paramString);
-        if (paramString != null) {}
-        for (;;)
-        {
-          return paramString;
+        if (paramString == null) {
           paramString = Collections.emptySet();
         }
-        paramString = finally;
+        return paramString;
       }
       catch (ClassCastException paramString)
       {
-        paramString = Collections.emptySet();
-        return paramString;
+        label40:
+        break label40;
       }
+      paramString = Collections.emptySet();
+      return paramString;
     }
   }
   
@@ -738,8 +927,10 @@ public class AladdinConfig
       }
       catch (ClassCastException paramString1)
       {
-        return paramString2;
+        label38:
+        break label38;
       }
+      return paramString2;
     }
   }
   
@@ -748,38 +939,47 @@ public class AladdinConfig
     synchronized (this.mLock)
     {
       awaitLoadedLocked();
-      String str = "AladdinConfig{mConfigId=" + this.mConfigId + ", mMap=" + this.mMap + '}';
-      return str;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("AladdinConfig{mConfigId=");
+      ((StringBuilder)localObject2).append(this.mConfigId);
+      ((StringBuilder)localObject2).append(", mMap=");
+      ((StringBuilder)localObject2).append(this.mMap);
+      ((StringBuilder)localObject2).append('}');
+      localObject2 = ((StringBuilder)localObject2).toString();
+      return localObject2;
     }
   }
   
   public boolean update(String arg1)
   {
-    boolean bool = true;
-    Map localMap = this.mParser.parse(new StringReader(???));
-    synchronized (this.mLock)
+    Object localObject3 = this.mParser.parse(new StringReader(???));
+    for (;;)
     {
-      awaitLoadedLocked();
-      this.mMap = localMap;
-      this.mLoaded = true;
-      Log.d("AladdinConfig", "run: updated, renew mMap for " + this.mConfigId);
-      this.asyncTaskExecutor.execute(new AladdinConfig.1(this, ???));
-    }
-    synchronized (this.mLock)
-    {
-      if (!this.mMap.isEmpty())
+      synchronized (this.mLock)
       {
-        return bool;
-        ??? = finally;
-        throw ???;
+        awaitLoadedLocked();
+        this.mMap = ((Map)localObject3);
+        bool = true;
+        this.mLoaded = true;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("run: updated, renew mMap for ");
+        ((StringBuilder)localObject3).append(this.mConfigId);
+        Log.d("AladdinConfig", ((StringBuilder)localObject3).toString());
+        this.asyncTaskExecutor.execute(new AladdinConfig.1(this, ???));
+        synchronized (this.mLock)
+        {
+          if (!this.mMap.isEmpty()) {
+            return bool;
+          }
+        }
       }
-      bool = false;
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aladdin.config.AladdinConfig
  * JD-Core Version:    0.7.0.1
  */

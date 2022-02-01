@@ -1,685 +1,793 @@
 package com.tencent.mm.plugin.sns.i;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.widget.AbsoluteLayout;
+import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.i;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.v;
+import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.ui.SnsCommentUI;
+import com.tencent.mm.plugin.sns.ui.bu;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class b
+  implements com.tencent.mm.plugin.sns.model.e
 {
-  c dZC;
-  int eah;
-  public int jUj;
-  public int rmA;
-  int rmB;
-  int rmC;
-  int rmD;
-  public int rmE;
-  public int rmF;
-  int rmG;
-  public int rmH;
-  public int rmI;
-  int rmJ;
-  public int rmK;
-  public int rmL;
-  public String rmM;
-  public String rmN;
-  String rmO;
-  int rmP;
-  public int rmQ;
-  public int rmR;
-  public int rmS;
-  public int rmT;
-  public int rmU;
-  public int rmV;
-  public int rmW;
-  public int rmX;
-  int rmY;
-  int rmZ;
-  public boolean rmx;
-  public long rmy;
-  public long rmz;
-  long rnA;
-  long rnB;
-  long rnC;
-  long rnD;
-  long rnE;
-  long rnF;
-  long rnG;
-  long rnH;
-  long rnI;
-  long rnJ;
-  long rnK;
-  long rnL;
-  String rnM;
-  int rnN;
-  String rnO;
-  long rnP;
-  private long rnQ;
-  long rnR;
-  private long rnS;
-  private HashSet<String> rnT;
-  HashSet<String> rnU;
-  public HashSet<String> rnV;
-  HashSet<String> rnW;
-  public HashSet<String> rnX;
-  HashSet<String> rnY;
-  HashSet<String> rnZ;
-  int rna;
-  int rnb;
-  int rnc;
-  int rnd;
-  public int rne;
-  public int rnf;
-  int rng;
-  int rnh;
-  public long rni;
-  public long rnj;
-  long rnk;
-  long rnl;
-  long rnm;
-  long rnn;
-  long rno;
-  long rnp;
-  long rnq;
-  long rnr;
-  long rns;
-  long rnt;
-  long rnu;
-  long rnv;
-  long rnw;
-  long rnx;
-  long rny;
-  long rnz;
-  public HashSet<String> roa;
-  public HashSet<String> rob;
-  HashSet<String> roc;
-  public HashSet<String> rod;
-  private HashSet<String> roe;
-  public HashSet<String> rof;
-  public HashSet<String> rog;
-  public int roh;
-  public int roi;
-  public HashSet<String> roj;
-  public HashSet<String> rok;
-  public HashSet<String> rol;
-  public HashSet<String> rom;
-  public HashSet<String> ron;
-  public HashSet<String> roo;
-  public HashSet<String> rop;
-  public HashSet<String> roq;
-  public HashSet<String> ror;
-  public HashSet<String> ros;
-  public HashSet<String> rot;
-  public HashSet<String> rou;
-  public long rov;
+  public final int QBe;
+  private com.tencent.mm.plugin.sns.ui.listener.c QBf;
+  private FrameLayout QBg;
+  AbsoluteLayout QBh;
+  protected Animation QBi;
+  protected Animation QBj;
+  private boolean QBk;
+  private int[] QBl;
+  private int[] QBm;
+  private int[] QBn;
+  private int[] QBo;
+  private int[] QBp;
+  private Map<Long, b> QBq;
+  private Map<Long, b> QBr;
+  private HashSet<Long> QBs;
+  private h QBt;
+  private HashMap<Long, Boolean> QBu;
+  private boolean hEn;
+  private Context mContext;
+  private int vpn;
   
-  public b()
+  public b(Context paramContext, com.tencent.mm.plugin.sns.ui.listener.c paramc, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(36865);
-    this.rmx = false;
-    this.rmy = -1L;
-    this.rmz = 0L;
-    this.rmA = 0;
-    this.rmB = 0;
-    this.rmC = 0;
-    this.rmD = 0;
-    this.rmE = 0;
-    this.rmF = 0;
-    this.rmG = 0;
-    this.rmH = 0;
-    this.rmI = 0;
-    this.rmJ = 0;
-    this.rmK = 0;
-    this.rmL = 0;
-    this.rmM = "";
-    this.rmN = "";
-    this.rmO = "";
-    this.rmQ = 0;
-    this.rmR = 0;
-    this.rmS = 0;
-    this.rmT = 0;
-    this.rmU = 0;
-    this.rmV = 0;
-    this.rmW = 0;
-    this.jUj = 0;
-    this.rmX = 0;
-    this.rmY = 0;
-    this.rmZ = 0;
-    this.rna = 0;
-    this.rnb = 0;
-    this.rnc = 0;
-    this.rnd = 0;
-    this.rne = 0;
-    this.rnf = 0;
-    this.rng = 0;
-    this.rnh = 0;
-    this.rni = 0L;
-    this.rnj = 0L;
-    this.rnk = 0L;
-    this.rnl = 0L;
-    this.rnm = 0L;
-    this.rnn = 0L;
-    this.rno = 0L;
-    this.rnp = 0L;
-    this.rnq = 0L;
-    this.rnr = 0L;
-    this.rns = 0L;
-    this.rnt = 0L;
-    this.rnu = 0L;
-    this.rnv = 0L;
-    this.rnw = 0L;
-    this.rnx = 0L;
-    this.rny = 0L;
-    this.rnz = 0L;
-    this.rnA = 0L;
-    this.rnB = 0L;
-    this.rnC = 0L;
-    this.rnD = 0L;
-    this.rnE = 0L;
-    this.rnF = 0L;
-    this.rnG = 0L;
-    this.rnH = 0L;
-    this.rnI = 0L;
-    this.rnJ = 0L;
-    this.rnK = 0L;
-    this.rnL = 0L;
-    this.rnP = 0L;
-    this.rnQ = 0L;
-    this.rnR = 0L;
-    this.rnS = 0L;
-    this.rnT = new HashSet();
-    this.rnU = new HashSet();
-    this.rnV = new HashSet();
-    this.rnW = new HashSet();
-    this.rnX = new HashSet();
-    this.rnY = new HashSet();
-    this.rnZ = new HashSet();
-    this.roa = new HashSet();
-    this.rob = new HashSet();
-    this.roc = new HashSet();
-    this.rod = new HashSet();
-    this.roe = new HashSet();
-    this.rof = new HashSet();
-    this.rog = new HashSet();
-    this.roh = 2147483647;
-    this.roi = 0;
-    this.roj = new HashSet();
-    this.rok = new HashSet();
-    this.rol = new HashSet();
-    this.rom = new HashSet();
-    this.ron = new HashSet();
-    this.roo = new HashSet();
-    this.rop = new HashSet();
-    this.roq = new HashSet();
-    this.ror = new HashSet();
-    this.ros = new HashSet();
-    this.rot = new HashSet();
-    this.rou = new HashSet();
-    this.dZC = new b.1(this);
-    this.rov = 0L;
-    a.ymk.c(this.dZC);
-    AppMethodBeat.o(36865);
-  }
-  
-  public b(int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    this();
-    this.eah = paramInt1;
-    this.rnM = paramString1;
-    this.rnN = paramInt2;
-    this.rnO = paramString2;
-  }
-  
-  static String f(HashSet<String> paramHashSet)
-  {
-    AppMethodBeat.i(36866);
-    StringBuffer localStringBuffer = new StringBuffer();
-    paramHashSet = paramHashSet.iterator();
-    int i = 1;
-    while (paramHashSet.hasNext())
+    AppMethodBeat.i(96098);
+    this.QBe = 14;
+    this.QBh = null;
+    this.QBk = false;
+    this.QBl = new int[] { b.j.sns_ad_abtest_001, b.j.sns_ad_abtest_002, b.j.sns_ad_abtest_003, b.j.sns_ad_abtest_004 };
+    this.QBm = new int[] { b.i.album_test_donotlook, b.i.album_test_unlike, b.i.album_test_open, b.i.album_test_close };
+    this.QBn = this.QBl;
+    this.hEn = true;
+    this.QBq = new HashMap();
+    this.QBr = new HashMap();
+    this.QBs = new HashSet();
+    this.QBt = null;
+    this.QBu = new HashMap();
+    this.vpn = -1;
+    g localg = al.hgt();
+    h localh2 = new h();
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.newabtest.d.bEt().Fd("100007");
+    h localh1;
+    if (localc == null)
     {
-      String str = (String)paramHashSet.next();
-      if (i != 0)
-      {
-        localStringBuffer.append(str);
-        i = 0;
-      }
-      else
-      {
-        localStringBuffer.append("|".concat(String.valueOf(str)));
-      }
-    }
-    paramHashSet = localStringBuffer.toString();
-    AppMethodBeat.o(36866);
-    return paramHashSet;
-  }
-  
-  public final void a(n paramn, boolean paramBoolean)
-  {
-    AppMethodBeat.i(36848);
-    if (paramn == null)
-    {
-      AppMethodBeat.o(36848);
-      return;
-    }
-    if (paramBoolean) {
-      this.rnY.add(i.j(paramn));
+      Log.i("MicroMsg.SnsABTestStrategy", "abtest is null");
+      localh1 = null;
     }
     for (;;)
     {
-      this.roc.add(paramn.field_userName);
-      this.rmD = this.roc.size();
-      if (!ag.coK().equals(paramn.field_userName)) {
+      localg.QCr = localh1;
+      this.QBt = al.hgt().hif();
+      if (this.QBt != null)
+      {
+        this.QBo = this.QBt.QCt;
+        if (!this.QBt.hig()) {
+          this.hEn = false;
+        }
+      }
+      this.mContext = paramContext;
+      this.QBf = paramc;
+      this.QBg = paramFrameLayout;
+      this.QBi = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+      this.QBi = AnimationUtils.loadAnimation(paramContext, com.tencent.mm.plugin.sns.b.a.dropdown_down);
+      this.QBj = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
+      this.QBj = AnimationUtils.loadAnimation(paramContext, com.tencent.mm.plugin.sns.b.a.dropdown_up);
+      AppMethodBeat.o(96098);
+      return;
+      if (!localc.isValid())
+      {
+        Log.i("MicroMsg.SnsABTestStrategy", "abtest is invalid");
+        localh1 = null;
+      }
+      else
+      {
+        Map localMap = localc.iWZ();
+        localh1 = localh2;
+        if (localMap != null)
+        {
+          Log.i("MicroMsg.SnsABTestStrategy", "snsabtest feed " + localc.field_expId + " " + localc.field_layerId + " " + localc.field_startTime + " " + localc.field_endTime);
+          localh2.f(localc.field_layerId, localc.field_expId, localMap);
+          localh1 = localh2;
+        }
+      }
+    }
+  }
+  
+  private static String a(a parama, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(96101);
+    if (parama == null)
+    {
+      AppMethodBeat.o(96101);
+      return "";
+    }
+    StringBuffer localStringBuffer2;
+    StringBuffer localStringBuffer1;
+    int i;
+    label51:
+    char c;
+    if (LocaleUtil.isSimplifiedChineseAppLang())
+    {
+      parama = parama.QBa;
+      localStringBuffer2 = new StringBuffer();
+      localStringBuffer1 = new StringBuffer();
+      i = 0;
+      if (i >= parama.length()) {
+        break label223;
+      }
+      c = parama.charAt(i);
+      if (c != '$') {
+        break label195;
+      }
+      if (localStringBuffer1.length() != 0) {
+        break label115;
+      }
+      localStringBuffer1.append(c);
+    }
+    label195:
+    for (;;)
+    {
+      i += 1;
+      break label51;
+      if (LocaleUtil.isTraditionalChineseAppLang())
+      {
+        parama = parama.QBb;
         break;
       }
-      ld(true);
-      AppMethodBeat.o(36848);
-      return;
-      this.rnZ.add(i.j(paramn));
-    }
-    le(true);
-    AppMethodBeat.o(36848);
-  }
-  
-  public final void gs(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(36849);
-    this.rnW.add(paramString2);
-    this.roe.add(paramString1);
-    this.rmG = this.roe.size();
-    AppMethodBeat.o(36849);
-  }
-  
-  public final void lc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36850);
-    if (paramBoolean)
-    {
-      this.rnl = System.currentTimeMillis();
-      AppMethodBeat.o(36850);
-      return;
-    }
-    if (this.rnl > 0L)
-    {
-      this.rnk += System.currentTimeMillis() - this.rnl;
-      this.rnl = 0L;
-    }
-    AppMethodBeat.o(36850);
-  }
-  
-  public final void ld(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36851);
-    if (paramBoolean)
-    {
-      this.rnn = System.currentTimeMillis();
-      AppMethodBeat.o(36851);
-      return;
-    }
-    if (this.rnn > 0L)
-    {
-      this.rnm += System.currentTimeMillis() - this.rnn;
-      this.rnn = 0L;
-    }
-    AppMethodBeat.o(36851);
-  }
-  
-  public final void le(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36852);
-    if (paramBoolean)
-    {
-      this.rnp = System.currentTimeMillis();
-      AppMethodBeat.o(36852);
-      return;
-    }
-    if (this.rnp > 0L)
-    {
-      this.rno += System.currentTimeMillis() - this.rnp;
-      this.rnp = 0L;
-    }
-    AppMethodBeat.o(36852);
-  }
-  
-  public final void lf(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36853);
-    if (paramBoolean)
-    {
-      this.rnr = System.currentTimeMillis();
-      AppMethodBeat.o(36853);
-      return;
-    }
-    if (this.rnr > 0L)
-    {
-      this.rnq += System.currentTimeMillis() - this.rnr;
-      this.rnr = 0L;
-    }
-    AppMethodBeat.o(36853);
-  }
-  
-  public final void lg(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36854);
-    if (paramBoolean)
-    {
-      this.rnt = System.currentTimeMillis();
-      AppMethodBeat.o(36854);
-      return;
-    }
-    if (this.rnt > 0L)
-    {
-      this.rns += System.currentTimeMillis() - this.rnt;
-      this.rnt = 0L;
-    }
-    AppMethodBeat.o(36854);
-  }
-  
-  public final void lh(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36855);
-    if (paramBoolean)
-    {
-      this.rnv = System.currentTimeMillis();
-      AppMethodBeat.o(36855);
-      return;
-    }
-    if (this.rnv > 0L)
-    {
-      this.rnu += System.currentTimeMillis() - this.rnv;
-      this.rnv = 0L;
-    }
-    AppMethodBeat.o(36855);
-  }
-  
-  public final void li(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36856);
-    if (paramBoolean)
-    {
-      this.rnQ = System.currentTimeMillis();
-      AppMethodBeat.o(36856);
-      return;
-    }
-    if (this.rnQ > 0L)
-    {
-      this.rnP += System.currentTimeMillis() - this.rnQ;
-      this.rnQ = 0L;
-    }
-    AppMethodBeat.o(36856);
-  }
-  
-  public final void lj(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36857);
-    if (paramBoolean)
-    {
-      this.rnS = System.currentTimeMillis();
-      AppMethodBeat.o(36857);
-      return;
-    }
-    if (this.rnS > 0L)
-    {
-      this.rnR += System.currentTimeMillis() - this.rnS;
-      this.rnS = 0L;
-    }
-    AppMethodBeat.o(36857);
-  }
-  
-  public final void lk(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36858);
-    if (paramBoolean)
-    {
-      this.rnx = System.currentTimeMillis();
-      AppMethodBeat.o(36858);
-      return;
-    }
-    if (this.rnx > 0L)
-    {
-      this.rnw += System.currentTimeMillis() - this.rnx;
-      this.rnx = 0L;
-    }
-    AppMethodBeat.o(36858);
-  }
-  
-  public final void ll(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36859);
-    if (paramBoolean)
-    {
-      this.rnz = System.currentTimeMillis();
-      AppMethodBeat.o(36859);
-      return;
-    }
-    if (this.rnz > 0L)
-    {
-      this.rny += System.currentTimeMillis() - this.rnz;
-      this.rnz = 0L;
-    }
-    AppMethodBeat.o(36859);
-  }
-  
-  public final void lm(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36860);
-    if (paramBoolean)
-    {
-      this.rnB = System.currentTimeMillis();
-      AppMethodBeat.o(36860);
-      return;
-    }
-    if (this.rnB > 0L)
-    {
-      this.rnA += System.currentTimeMillis() - this.rnB;
-      this.rnB = 0L;
-    }
-    AppMethodBeat.o(36860);
-  }
-  
-  public final void ln(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36861);
-    if (paramBoolean)
-    {
-      this.rnD = System.currentTimeMillis();
-      AppMethodBeat.o(36861);
-      return;
-    }
-    if (this.rnD > 0L)
-    {
-      this.rnC += System.currentTimeMillis() - this.rnD;
-      this.rnD = 0L;
-    }
-    AppMethodBeat.o(36861);
-  }
-  
-  public final void lo(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36862);
-    if (paramBoolean)
-    {
-      this.rnH = System.currentTimeMillis();
-      AppMethodBeat.o(36862);
-      return;
-    }
-    if (this.rnH > 0L)
-    {
-      this.rnG += System.currentTimeMillis() - this.rnH;
-      this.rnH = 0L;
-    }
-    AppMethodBeat.o(36862);
-  }
-  
-  public final void lp(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36863);
-    if (paramBoolean)
-    {
-      this.rnJ = System.currentTimeMillis();
-      AppMethodBeat.o(36863);
-      return;
-    }
-    if (this.rnJ > 0L)
-    {
-      this.rnI += System.currentTimeMillis() - this.rnJ;
-      this.rnJ = 0L;
-    }
-    AppMethodBeat.o(36863);
-  }
-  
-  public final void lq(boolean paramBoolean)
-  {
-    AppMethodBeat.i(36864);
-    if (paramBoolean)
-    {
-      this.rnL = System.currentTimeMillis();
-      AppMethodBeat.o(36864);
-      return;
-    }
-    if (this.rnL > 0L)
-    {
-      this.rnK += System.currentTimeMillis() - this.rnL;
-      this.rnL = 0L;
-    }
-    AppMethodBeat.o(36864);
-  }
-  
-  public final void lr(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.rmP = i;
-      return;
-    }
-  }
-  
-  public final void w(n paramn)
-  {
-    AppMethodBeat.i(36846);
-    if (paramn == null)
-    {
-      AppMethodBeat.o(36846);
-      return;
-    }
-    this.rnT.add(paramn.csH());
-    this.rmB = this.rnT.size();
-    AppMethodBeat.o(36846);
-  }
-  
-  public final void x(n paramn)
-  {
-    AppMethodBeat.i(36847);
-    if (paramn == null)
-    {
-      AppMethodBeat.o(36847);
-      return;
-    }
-    String str1 = paramn.csH();
-    String str2 = i.j(paramn);
-    if (this.rnU.contains(str2))
-    {
-      AppMethodBeat.o(36847);
-      return;
-    }
-    ab.i("MicroMsg.SnsBrowseInfoHelper", "onClickFeed localId:Td, snsId:%s", new Object[] { str1, str2 });
-    this.rmC += 1;
-    this.rnU.add(str2);
-    if (paramn.Ex(32)) {
-      this.rnh += 1;
-    }
-    switch (paramn.field_type)
-    {
-    }
-    while (paramn.Ex(32)) {
-      if ((paramn.csb() != null) && (paramn.csb().cqk()))
+      parama = parama.QBc;
+      break;
+      label115:
+      if (localStringBuffer1.charAt(localStringBuffer1.length() - 1) == '$')
       {
-        li(true);
-        AppMethodBeat.o(36847);
-        return;
-        this.rna += 1;
-        continue;
-        this.rnc += 1;
-        continue;
-        this.rnb += 1;
-        continue;
-        this.rnd += 1;
-        continue;
-        this.rng += 1;
-        continue;
-        if (!bo.isNullOrNil(paramn.csh().xTT)) {
-          this.rmY += 1;
-        } else {
-          this.rmZ += 1;
-        }
+        localStringBuffer2.append('$');
+        localStringBuffer1 = new StringBuffer();
       }
       else
       {
-        if (paramn.field_type == 1)
+        String str = (String)paramMap.get(localStringBuffer1.substring(1));
+        if (str == null)
         {
-          ln(true);
-          AppMethodBeat.o(36847);
-          return;
+          AppMethodBeat.o(96101);
+          return "";
         }
-        if (paramn.field_type != 15) {
-          break label444;
+        localStringBuffer2.append(str);
+        continue;
+        if (localStringBuffer1.length() == 0) {
+          localStringBuffer2.append(c);
+        } else {
+          localStringBuffer1.append(c);
         }
-        lo(true);
-        AppMethodBeat.o(36847);
-        return;
       }
     }
-    if ((paramn.csh() != null) && (!bo.isNullOrNil(paramn.csh().sbN)))
+    label223:
+    parama = localStringBuffer2.toString();
+    AppMethodBeat.o(96101);
+    return parama;
+  }
+  
+  private void a(View paramView, AbsoluteLayout paramAbsoluteLayout, final com.tencent.mm.plugin.sns.data.e parame)
+  {
+    AppMethodBeat.i(96100);
+    Object localObject1 = (ViewGroup)paramView;
+    ((ViewGroup)localObject1).removeAllViews();
+    if (this.QBt == null)
     {
-      lj(true);
-      AppMethodBeat.o(36847);
+      AppMethodBeat.o(96100);
       return;
     }
-    switch (paramn.field_type)
+    if ((parame.QmD == null) || (parame.QmD.RFh == null))
     {
+      AppMethodBeat.o(96100);
+      return;
     }
+    Object localObject2 = parame.QmD.RFh;
+    int i = 0;
+    Object localObject3 = new Paint(1);
+    int n = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 12.0F);
+    int i1 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 10.0F);
+    int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 150.0F);
+    LinkedList localLinkedList = new LinkedList();
+    int m = (int)(BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 17.0F) * com.tencent.mm.cd.a.getScaleSize(this.mContext) + i1 * 2);
+    int j = 0;
+    while (j < this.QBt.QCg.size())
+    {
+      Object localObject4 = (a)this.QBt.QCg.get(j);
+      final TextView localTextView = new TextView(this.mContext);
+      localTextView.setPadding(n, i1, n, i1);
+      localTextView.setTextSize(1, 14.0F * com.tencent.mm.cd.a.getScaleSize(this.mContext));
+      localTextView.setTextColor(this.mContext.getResources().getColor(b.c.sns_abtest_unlike_text_color));
+      localObject4 = a((a)localObject4, ((ADXml)localObject2).adArgs);
+      localTextView.setText((CharSequence)localObject4);
+      ((Paint)localObject3).setTextSize(localTextView.getTextSize());
+      ((ViewGroup)localObject1).addView(localTextView);
+      i = Math.max(i, (int)((Paint)localObject3).measureText((String)localObject4) + n * 2);
+      localTextView.setTag(Integer.valueOf(j));
+      localLinkedList.add(localTextView);
+      localTextView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(96087);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/newabtest/AdNotLikeAbTestHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+          int i = ((Integer)paramAnonymousView.getTag()).intValue();
+          localObject = (b.b)b.a(b.this).get(Long.valueOf(parame.ibq));
+          int j = ((a)b.b(b.this).QCg.get(i)).QAZ;
+          if (localObject != null) {
+            ((b.b)localObject).aZe("3:" + j + ":" + localTextView.getText());
+          }
+          if (((a)b.b(b.this).QCg.get(i)).QBd == 1)
+          {
+            paramAnonymousView = new Intent();
+            paramAnonymousView.setClass(b.c(b.this), SnsCommentUI.class);
+            paramAnonymousView.putExtra("sns_comment_type", 2);
+            paramAnonymousView.putExtra("sns_id", parame.ibq);
+            paramAnonymousView.putExtra("sns_uxinfo", ((b.b)localObject).uxInfo);
+            paramAnonymousView.putExtra("action_st_time", ((b.b)localObject).QBD);
+            paramAnonymousView.putExtra("sns_actionresult", ((b.b)localObject).QBC.toString());
+            localObject = (MMActivity)b.c(b.this);
+            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/sns/newabtest/AdNotLikeAbTestHelper$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            ((MMActivity)localObject).startActivity((Intent)paramAnonymousView.sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/sns/newabtest/AdNotLikeAbTestHelper$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            b.a(b.this).remove(Long.valueOf(parame.ibq));
+            b.this.hib();
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/newabtest/AdNotLikeAbTestHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(96087);
+            return;
+            b.this.a((b.b)localObject);
+            b.this.hib();
+          }
+        }
+      });
+      j += 1;
+    }
+    Log.i("MicroMsg.AdNotLikeAbTestHelper", "w h " + i + " " + m);
+    j = i;
+    if (i < k) {
+      j = k;
+    }
+    localObject1 = localLinkedList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (TextView)((Iterator)localObject1).next();
+      localObject3 = ((TextView)localObject2).getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject3).width = j;
+      ((ViewGroup.LayoutParams)localObject3).height = m;
+      ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    }
+    new Rect();
+    k = com.tencent.mm.pluginsdk.h.lm(this.mContext);
+    localObject1 = parame.QmD.hqD();
+    n = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 2.0F);
+    i1 = localObject1[0];
+    int i2 = localObject1[1];
+    int i3 = this.vpn;
+    parame = parame.QmD;
+    if (parame.RFa != null) {}
+    for (i = parame.RFa.getHeight();; i = 0)
+    {
+      paramAbsoluteLayout.updateViewLayout(paramView, new AbsoluteLayout.LayoutParams(-2, -2, i1 - j - n, i2 - i3 - k + m - i));
+      AppMethodBeat.o(96100);
+      return;
+    }
+  }
+  
+  public final void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean)
+  {
+    AppMethodBeat.i(96096);
+    if ((paramBoolean) && (this.hEn))
+    {
+      if (this.QBs.contains(Long.valueOf(paramLong)))
+      {
+        paramBoolean = false;
+        if (this.QBu.containsKey(Long.valueOf(paramLong))) {
+          paramBoolean = ((Boolean)this.QBu.get(Long.valueOf(paramLong))).booleanValue();
+        }
+        if (paramBoolean)
+        {
+          paramString = (b)this.QBr.get(Long.valueOf(paramLong));
+          if (paramString != null) {
+            paramString.report();
+          }
+        }
+      }
+      this.QBr.remove(Long.valueOf(paramLong));
+      this.QBs.remove(Long.valueOf(paramLong));
+    }
+    AppMethodBeat.o(96096);
+  }
+  
+  public final void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean, bu parambu)
+  {
+    AppMethodBeat.i(96095);
+    if ((paramBoolean) && (this.hEn) && (this.QBt != null) && (parambu != null))
+    {
+      this.QBs.add(Long.valueOf(paramLong));
+      paramString = new b(paramLong, this.QBt.QBF, this.QBt.sdF, parambu.edF());
+      this.QBr.put(Long.valueOf(paramLong), paramString);
+    }
+    AppMethodBeat.o(96095);
+  }
+  
+  public final void a(b paramb)
+  {
+    AppMethodBeat.i(96097);
+    this.QBq.remove(Long.valueOf(paramb.PVd));
+    paramb.report();
+    AppMethodBeat.o(96097);
+  }
+  
+  public final boolean hib()
+  {
+    AppMethodBeat.i(96102);
+    if (this.QBh != null)
+    {
+      Object localObject;
+      if ((this.QBh.getTag() instanceof a))
+      {
+        localObject = (a)this.QBh.getTag();
+        localObject = (b)this.QBq.get(Long.valueOf(((a)localObject).ibq));
+        if (localObject != null)
+        {
+          if (!((b)localObject).hid()) {
+            break label111;
+          }
+          if (((b)localObject).hic()) {
+            ((b)localObject).aZe("2:0:");
+          }
+          a((b)localObject);
+        }
+      }
+      for (;;)
+      {
+        this.QBg.removeView(this.QBh);
+        this.QBh = null;
+        AppMethodBeat.o(96102);
+        return true;
+        label111:
+        ((b)localObject).aZe("2:0:");
+        a((b)localObject);
+      }
+    }
+    this.QBk = false;
+    AppMethodBeat.o(96102);
+    return false;
+  }
+  
+  public final int jv(final View paramView)
+  {
+    AppMethodBeat.i(96099);
+    if (this.QBk)
+    {
+      AppMethodBeat.o(96099);
+      return 0;
+    }
+    if (this.QBh != null)
+    {
+      if ((this.QBh.getTag() instanceof a))
+      {
+        paramView = ((a)this.QBh.getTag()).MdP;
+        this.QBk = true;
+        paramView.startAnimation(this.QBj);
+        this.QBj.setAnimationListener(new Animation.AnimationListener()
+        {
+          public final void onAnimationEnd(Animation paramAnonymousAnimation)
+          {
+            AppMethodBeat.i(96088);
+            if (paramView != null)
+            {
+              paramView.clearAnimation();
+              paramView.setVisibility(8);
+              b.this.hib();
+            }
+            b.a(b.this, false);
+            AppMethodBeat.o(96088);
+          }
+          
+          public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+          
+          public final void onAnimationStart(Animation paramAnonymousAnimation)
+          {
+            AppMethodBeat.i(306467);
+            b.a(b.this, true);
+            AppMethodBeat.o(306467);
+          }
+        });
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(96099);
+        return 0;
+        hib();
+      }
+    }
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.sns.data.e)))
+    {
+      AppMethodBeat.o(96099);
+      return 0;
+    }
+    if ((!this.hEn) || (this.QBt == null))
+    {
+      AppMethodBeat.o(96099);
+      return 2;
+    }
+    Object localObject1 = (com.tencent.mm.plugin.sns.data.e)paramView.getTag();
+    long l = ((com.tencent.mm.plugin.sns.data.e)localObject1).ibq;
+    Object localObject2 = ((com.tencent.mm.plugin.sns.data.e)localObject1).QmD.RFh;
+    boolean bool;
+    if (this.QBu.containsKey(Long.valueOf(l))) {
+      bool = ((Boolean)this.QBu.get(Long.valueOf(l))).booleanValue();
+    }
+    while (!bool)
+    {
+      AppMethodBeat.o(96099);
+      return 2;
+      if (this.QBt == null)
+      {
+        bool = false;
+      }
+      else if (localObject2 == null)
+      {
+        bool = false;
+      }
+      else
+      {
+        i = 0;
+        for (;;)
+        {
+          if (i >= this.QBt.QCg.size()) {
+            break label322;
+          }
+          if (Util.isNullOrNil(a((a)this.QBt.QCg.get(i), ((ADXml)localObject2).adArgs)))
+          {
+            this.QBu.put(Long.valueOf(l), Boolean.FALSE);
+            bool = false;
+            break;
+          }
+          i += 1;
+        }
+        label322:
+        this.QBu.put(Long.valueOf(l), Boolean.TRUE);
+        bool = true;
+      }
+    }
+    localObject2 = ((com.tencent.mm.plugin.sns.data.e)localObject1).hES;
+    Object localObject3 = new b(((com.tencent.mm.plugin.sns.data.e)localObject1).ibq, ((com.tencent.mm.plugin.sns.data.e)localObject1).QmD.edF(), this.QBt.QBF, this.QBt.sdF, this.mContext.getString(b.j.sns_ad_tip));
+    this.QBq.put(Long.valueOf(((com.tencent.mm.plugin.sns.data.e)localObject1).ibq), localObject3);
+    if (this.QBs.contains(Long.valueOf(((com.tencent.mm.plugin.sns.data.e)localObject1).ibq))) {
+      this.QBs.remove(Long.valueOf(((com.tencent.mm.plugin.sns.data.e)localObject1).ibq));
+    }
+    this.QBh = new AbsoluteLayout(this.mContext);
+    this.QBh.setId(b.f.address);
+    new FrameLayout.LayoutParams(-1, -1);
+    this.QBg.addView(this.QBh);
+    localObject3 = af.mU(this.mContext).inflate(b.g.adabtest_unlike_tip, null);
+    Object localObject4 = new TextView[3];
+    ImageView[] arrayOfImageView = new ImageView[3];
+    localObject4[0] = ((TextView)((View)localObject3).findViewById(b.f.ad_unlike_btn_one));
+    localObject4[1] = ((TextView)((View)localObject3).findViewById(b.f.ad_unlike_btn_two));
+    localObject4[2] = ((TextView)((View)localObject3).findViewById(b.f.ad_unlike_btn_three));
+    arrayOfImageView[0] = ((ImageView)((View)localObject3).findViewById(b.f.ad_unlike_btn_right_one));
+    arrayOfImageView[1] = ((ImageView)((View)localObject3).findViewById(b.f.ad_unlike_btn_right_two));
+    arrayOfImageView[2] = ((ImageView)((View)localObject3).findViewById(b.f.ad_unlike_btn_right_three));
+    int j = 0;
+    int i = 0;
+    if (!v.uN(((com.tencent.mm.plugin.sns.data.e)localObject1).ibq))
+    {
+      k = 0;
+      for (;;)
+      {
+        j = i;
+        if (k >= this.QBo.length) {
+          break;
+        }
+        j = i;
+        if (this.QBo[k] == 3) {
+          j = i + 1;
+        }
+        k += 1;
+        i = j;
+      }
+    }
+    int k = 0;
+    i = 0;
+    while (i < this.QBo.length)
+    {
+      m = k;
+      if (this.QBo[i] == 0) {
+        m = k + 1;
+      }
+      i += 1;
+      k = m;
+    }
+    if (k + j > 0)
+    {
+      i = this.QBo.length - k - j;
+      if (i == 0)
+      {
+        AppMethodBeat.o(96099);
+        return 2;
+      }
+    }
+    for (this.QBp = new int[i];; this.QBp = new int[this.QBo.length])
+    {
+      i = 0;
+      for (k = 0; i < this.QBo.length; k = m)
+      {
+        m = k;
+        if (this.QBo[i] != 0) {
+          if (j > 0)
+          {
+            m = k;
+            if (this.QBo[i] == 3) {}
+          }
+          else
+          {
+            this.QBp[k] = this.QBo[i];
+            m = k + 1;
+          }
+        }
+        i += 1;
+      }
+    }
+    if (v.uM(((com.tencent.mm.plugin.sns.data.e)localObject1).ibq))
+    {
+      i = 0;
+      if (i < this.QBp.length)
+      {
+        if (this.QBp[i] != 3) {
+          break label1130;
+        }
+        this.QBp[i] = 4;
+      }
+    }
+    i = 0;
+    int m = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 12);
+    int n = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 8);
+    int i1 = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 12);
+    j = 0;
+    label919:
+    final int i2;
+    int i3;
+    if (j < this.QBp.length)
+    {
+      i2 = this.QBp[j];
+      i3 = this.QBp[j] - 1;
+      localObject4[j].setText(this.QBn[i3]);
+      Object localObject5 = localObject4[j];
+      Paint localPaint = new Paint();
+      String str = localObject5.getText().toString();
+      localPaint.setTextSize(localObject5.getTextSize());
+      k = (int)localPaint.measureText(str, 0, str.length()) + (m * 2 + n * 2 + i1);
+      if (k <= i) {
+        break label1446;
+      }
+      i = k;
+    }
+    label1446:
     for (;;)
     {
-      label444:
-      AppMethodBeat.o(36847);
-      return;
-      lh(true);
-      AppMethodBeat.o(36847);
-      return;
-      lm(true);
-      AppMethodBeat.o(36847);
-      return;
-      lk(true);
-      AppMethodBeat.o(36847);
-      return;
-      lm(true);
-      AppMethodBeat.o(36847);
-      return;
-      lq(true);
-      AppMethodBeat.o(36847);
-      return;
-      if (!bo.isNullOrNil(paramn.csh().xTT))
-      {
-        ll(true);
-        AppMethodBeat.o(36847);
-        return;
+      localObject4[j].setCompoundDrawablePadding(com.tencent.mm.cd.a.fromDPToPix(this.mContext, 8));
+      localObject4[j].setCompoundDrawablesWithIntrinsicBounds(this.mContext.getResources().getDrawable(this.QBm[i3]), null, null, null);
+      if (i3 == 1) {
+        arrayOfImageView[j].setVisibility(0);
       }
-      lm(true);
+      for (;;)
+      {
+        localObject4[j].setTag(localObject1);
+        localObject4[j].setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(96085);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/newabtest/AdNotLikeAbTestHelper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            b.a(b.this, i2, this.QBw, this.QBx, b.this.QBh);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/newabtest/AdNotLikeAbTestHelper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(96085);
+          }
+        });
+        j += 1;
+        break label919;
+        label1130:
+        i += 1;
+        break;
+        arrayOfImageView[j].setVisibility(8);
+      }
+      j = 0;
+      while (j < this.QBp.length)
+      {
+        localObject4[j].setMaxWidth(i);
+        j += 1;
+      }
+      j = this.QBp.length;
+      while (j < 3)
+      {
+        localObject4[j].setVisibility(8);
+        j += 1;
+      }
+      new Rect();
+      j = com.tencent.mm.pluginsdk.h.lm(this.mContext);
+      localObject4 = ((com.tencent.mm.plugin.sns.data.e)localObject1).QmD.hqD();
+      Log.d("MicroMsg.AdNotLikeAbTestHelper", "addCommentView getLocationInWindow " + localObject4[0] + "  " + localObject4[1] + " height: " + j);
+      i += com.tencent.mm.cd.a.fromDPToPix(this.mContext, 12);
+      k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 17.0F);
+      m = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 2.0F);
+      this.vpn = aw.mL(this.mContext);
+      localObject4 = new AbsoluteLayout.LayoutParams(i, -2, localObject4[0] - i - m, localObject4[1] - this.vpn - j + k);
+      localObject1 = new a((String)localObject2, (View)localObject3, ((com.tencent.mm.plugin.sns.data.e)localObject1).ibq, ((com.tencent.mm.plugin.sns.data.e)localObject1).QmD.RFh);
+      this.QBh.setTag(localObject1);
+      this.QBh.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+      ((View)localObject3).setVisibility(8);
+      this.QBk = true;
+      new MMHandler().post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(96086);
+          b.a(b.this, paramView, this.QBx);
+          AppMethodBeat.o(96086);
+        }
+      });
+      AppMethodBeat.o(96099);
+      return 1;
+    }
+  }
+  
+  final class a
+  {
+    View MdP = null;
+    String QBA;
+    ADXml QBB;
+    long ibq;
+    
+    public a(String paramString, View paramView, long paramLong, ADXml paramADXml)
+    {
+      this.QBA = paramString;
+      this.MdP = paramView;
+      this.QBB = paramADXml;
+      this.ibq = paramLong;
+    }
+  }
+  
+  static final class b
+  {
+    long PVd;
+    StringBuffer QBC;
+    long QBD;
+    long QBE;
+    String QBF;
+    String sdF;
+    String uxInfo;
+    
+    public b(long paramLong, String paramString1, String paramString2, String paramString3)
+    {
+      AppMethodBeat.i(96090);
+      this.QBC = new StringBuffer();
+      this.uxInfo = paramString1;
+      this.QBF = paramString2;
+      this.sdF = paramString3;
+      this.PVd = paramLong;
+      this.QBD = System.currentTimeMillis();
+      this.QBC.append("0:0:");
+      AppMethodBeat.o(96090);
+    }
+    
+    public b(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4)
+    {
+      AppMethodBeat.i(96089);
+      this.QBC = new StringBuffer();
+      this.uxInfo = paramString1;
+      this.QBF = paramString2;
+      this.sdF = paramString3;
+      this.PVd = paramLong;
+      this.QBD = System.currentTimeMillis();
+      this.QBC.append("1:0:".concat(String.valueOf(paramString4)));
+      AppMethodBeat.o(96089);
+    }
+    
+    public final void aZe(String paramString)
+    {
+      AppMethodBeat.i(96091);
+      Log.d("MicroMsg.AdNotLikeAbTestHelper", "addactionResult ".concat(String.valueOf(paramString)));
+      if (this.QBC.length() != 0) {
+        this.QBC.append("|");
+      }
+      this.QBC.append(paramString);
+      AppMethodBeat.o(96091);
+    }
+    
+    public final boolean hic()
+    {
+      AppMethodBeat.i(96092);
+      if ((this.QBC == null) || (this.QBC.length() == 0))
+      {
+        AppMethodBeat.o(96092);
+        return false;
+      }
+      if (this.QBC.toString().startsWith("1:0"))
+      {
+        AppMethodBeat.o(96092);
+        return true;
+      }
+      AppMethodBeat.o(96092);
+      return false;
+    }
+    
+    public final boolean hid()
+    {
+      AppMethodBeat.i(96093);
+      if ((this.QBC == null) || (this.QBC.length() == 0))
+      {
+        AppMethodBeat.o(96093);
+        return false;
+      }
+      AppMethodBeat.o(96093);
+      return true;
+    }
+    
+    public final void report()
+    {
+      AppMethodBeat.i(96094);
+      this.QBE = System.currentTimeMillis();
+      Log.d("MicroMsg.AdNotLikeAbTestHelper", "report abtestnotlike " + this.PVd + " uxinfo:" + this.uxInfo + " actionresult: " + this.QBC + " " + this.QBD + " " + this.QBE);
+      com.tencent.mm.plugin.report.service.h.OAn.b(11988, new Object[] { this.sdF, this.QBF, "", "", t.uA(this.PVd), this.uxInfo, this.QBC, Long.valueOf(this.QBD / 1000L), Long.valueOf(this.QBE / 1000L) });
+      AppMethodBeat.o(96094);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.i.b
  * JD-Core Version:    0.7.0.1
  */

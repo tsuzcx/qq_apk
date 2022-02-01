@@ -19,19 +19,25 @@ public class GetLoginCodeRequest
   
   public static INTERFACE.StGetCodeRsp onResponse(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      INTERFACE.StGetCodeRsp localStGetCodeRsp = new INTERFACE.StGetCodeRsp();
-      try
+    }
+    Object localObject = new INTERFACE.StGetCodeRsp();
+    try
+    {
+      ((INTERFACE.StGetCodeRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel())
       {
-        localStGetCodeRsp.mergeFrom(decode(paramArrayOfByte));
-        return localStGetCodeRsp;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetLoginCodeRequest", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GetLoginCodeRequest", 2, "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
@@ -42,7 +48,7 @@ public class GetLoginCodeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetLoginCodeRequest
  * JD-Core Version:    0.7.0.1
  */

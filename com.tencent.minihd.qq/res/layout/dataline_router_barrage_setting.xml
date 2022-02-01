@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:id="@id/setting_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mobileqq.widget.BounceScrollView>

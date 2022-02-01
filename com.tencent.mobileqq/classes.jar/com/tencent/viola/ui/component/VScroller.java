@@ -65,33 +65,32 @@ public class VScroller
   {
     if ((this.mRealParentView == null) && ((getContext() != null) || ((getInstance() != null) && (getInstance().getActivity() != null))))
     {
-      if (getContext() == null) {
-        break label106;
+      if (getContext() != null) {
+        this.mRealParentView = new VRefreshViewGroup(getContext());
+      } else {
+        this.mRealParentView = new VRefreshViewGroup(getInstance().getActivity());
       }
-      this.mRealParentView = new VRefreshViewGroup(getContext());
-      if (!this.mIsOverFlow) {
-        break label127;
-      }
-      this.mRealParentView.setClipToPadding(false);
-      this.mRealParentView.setClipChildren(false);
-      if (this.mHost != null)
+      if (this.mIsOverFlow)
       {
-        ((VScrollView)this.mHost).setClipToPadding(false);
-        ((VScrollView)this.mHost).setClipChildren(false);
+        this.mRealParentView.setClipToPadding(false);
+        this.mRealParentView.setClipChildren(false);
+        if (this.mHost != null)
+        {
+          ((VScrollView)this.mHost).setClipToPadding(false);
+          ((VScrollView)this.mHost).setClipChildren(false);
+        }
+      }
+      else
+      {
+        this.mRealParentView.setClipToPadding(true);
+        this.mRealParentView.setClipChildren(true);
+        if (this.mHost != null)
+        {
+          ((VScrollView)this.mHost).setClipToPadding(true);
+          ((VScrollView)this.mHost).setClipChildren(true);
+        }
       }
     }
-    label106:
-    label127:
-    do
-    {
-      return;
-      this.mRealParentView = new VRefreshViewGroup(getInstance().getActivity());
-      break;
-      this.mRealParentView.setClipToPadding(true);
-      this.mRealParentView.setClipChildren(true);
-    } while (this.mHost == null);
-    ((VScrollView)this.mHost).setClipToPadding(true);
-    ((VScrollView)this.mHost).setClipChildren(true);
   }
   
   private void dealAddScrollerChild(View paramView)
@@ -129,7 +128,10 @@ public class VScroller
       localJSONArray.put(paramDomObject);
     }
     localJSONArray.put(paramString);
-    ViolaLogUtils.d("VScroller", "mScrollEventListener callData :" + localJSONArray.toString());
+    paramDomObject = new StringBuilder();
+    paramDomObject.append("mScrollEventListener callData :");
+    paramDomObject.append(localJSONArray.toString());
+    ViolaLogUtils.d("VScroller", paramDomObject.toString());
     fireEvent(paramString, localJSONArray, localJSONObject);
   }
   
@@ -140,37 +142,36 @@ public class VScroller
   
   public void addEvent(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("loadMore"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("scroll"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("scrollEnd"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("scrollCreated")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1845399899: 
+      if (paramString.equals("loadMore")) {
+        i = 0;
       }
+      break;
+    case 1487101787: 
+      if (paramString.equals("scrollCreated")) {
+        i = 3;
+      }
+      break;
+    case 417766094: 
+      if (paramString.equals("scrollEnd")) {
+        i = 2;
+      }
+      break;
+    case -907680051: 
+      if (paramString.equals("scroll")) {
+        i = 1;
+      }
+      break;
+    }
+    int i = -1;
+    if ((i != 0) && (i != 1) && (i != 2) && (i != 3))
+    {
+      super.addEvent(paramString);
+      return;
     }
     this.mAppendEvents.add(paramString);
   }
@@ -178,15 +179,31 @@ public class VScroller
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public void addSubView(View paramView, int paramInt)
   {
-    if ((paramView == null) || (getRealView() == null)) {
-      return;
-    }
-    int i = paramInt;
-    if (paramInt >= getRealView().getChildCount()) {
-      i = -1;
-    }
-    if (i == -1)
+    if (paramView != null)
     {
+      if (getRealView() == null) {
+        return;
+      }
+      int i = paramInt;
+      if (paramInt >= getRealView().getChildCount()) {
+        i = -1;
+      }
+      if (i == -1)
+      {
+        if ((paramView instanceof VRefreshLayout))
+        {
+          setHeadView(paramView);
+          return;
+        }
+        if ((paramView instanceof VFooterLayout))
+        {
+          setFooterView(paramView);
+          return;
+        }
+        dealAddScrollerChild(paramView);
+        setContentView((VRefreshContentView.ContentViewProvider)getHostView());
+        return;
+      }
       if ((paramView instanceof VRefreshLayout))
       {
         setHeadView(paramView);
@@ -197,22 +214,9 @@ public class VScroller
         setFooterView(paramView);
         return;
       }
-      dealAddScrollerChild(paramView);
+      dealAddScrollerChild(paramView, i);
       setContentView((VRefreshContentView.ContentViewProvider)getHostView());
-      return;
     }
-    if ((paramView instanceof VRefreshLayout))
-    {
-      setHeadView(paramView);
-      return;
-    }
-    if ((paramView instanceof VFooterLayout))
-    {
-      setFooterView(paramView);
-      return;
-    }
-    dealAddScrollerChild(paramView, i);
-    setContentView((VRefreshContentView.ContentViewProvider)getHostView());
   }
   
   public void addSubViewOnIntercept(ViewGroup paramViewGroup, int paramInt)
@@ -236,16 +240,19 @@ public class VScroller
     if (this.mAppendEvents.size() > 0) {
       this.mAppendEvents.clear();
     }
-    if (this.mRealParentView != null) {
-      this.mRealParentView.onDestroy();
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup != null) {
+      localVRefreshViewGroup.onDestroy();
     }
   }
   
   public ViewGroup.LayoutParams getChildLayoutParams(VComponent paramVComponent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    ViewGroup.LayoutParams localLayoutParams = null;
+    ViewGroup.LayoutParams localLayoutParams;
     if (paramView != null) {
       localLayoutParams = paramView.getLayoutParams();
+    } else {
+      localLayoutParams = null;
     }
     if (localLayoutParams == null)
     {
@@ -254,57 +261,62 @@ public class VScroller
         paramInt5 = 0;
       }
       ((FrameLayout.LayoutParams)paramView).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-      paramVComponent = paramView;
+      return paramView;
     }
-    do
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    if (((paramView.getParent() instanceof FrameLayout)) && ((paramView.getParent().getParent() instanceof VScrollView)) && ((paramView.getParent().getParent().getParent() instanceof VRefreshViewGroup)))
     {
-      return paramVComponent;
-      localLayoutParams.width = paramInt1;
-      localLayoutParams.height = paramInt2;
-      if (((paramView.getParent() instanceof FrameLayout)) && ((paramView.getParent().getParent() instanceof VScrollView)) && ((paramView.getParent().getParent().getParent() instanceof VRefreshViewGroup)))
-      {
-        paramInt1 = ((VRefreshViewGroup)paramView.getParent().getParent().getParent()).getHeaderViewHeight();
-        ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins(paramInt3, paramInt5 - paramInt1, paramInt4, paramInt6);
-        return localLayoutParams;
-      }
-      if ((paramVComponent instanceof VFooter)) {
-        paramInt5 = 0;
-      }
-      paramVComponent = localLayoutParams;
-    } while (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams));
-    ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+      paramInt1 = ((VRefreshViewGroup)paramView.getParent().getParent().getParent()).getHeaderViewHeight();
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins(paramInt3, paramInt5 - paramInt1, paramInt4, paramInt6);
+      return localLayoutParams;
+    }
+    if ((paramVComponent instanceof VFooter)) {
+      paramInt5 = 0;
+    }
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+    }
     return localLayoutParams;
   }
   
   @JSMethod(uiThread=true)
   public void getPosition(String paramString)
   {
-    Object localObject1 = (ScrollView)getHostView();
-    float f1 = ((ScrollView)localObject1).getScrollX();
-    float f2 = ((ScrollView)localObject1).getScrollY();
-    float f3 = ((ScrollView)localObject1).getWidth();
-    float f4 = ((ScrollView)localObject1).getHeight();
-    Object localObject2 = new JSONObject();
-    localObject1 = new JSONObject();
+    Object localObject = (ScrollView)getHostView();
+    float f1 = ((ScrollView)localObject).getScrollX();
+    float f2 = ((ScrollView)localObject).getScrollY();
+    float f3 = ((ScrollView)localObject).getWidth();
+    float f4 = ((ScrollView)localObject).getHeight();
+    JSONObject localJSONObject = new JSONObject();
+    localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject2).put("x", FlexConvertUtils.px2dip(f1) + "dp");
-      ((JSONObject)localObject2).put("y", FlexConvertUtils.px2dip(f2) + "dp");
-      ((JSONObject)localObject2).put("width", FlexConvertUtils.px2dip(f3) + "dp");
-      ((JSONObject)localObject2).put("height", FlexConvertUtils.px2dip(f4) + "dp");
-      ((JSONObject)localObject1).put("frame", localObject2);
-      localObject2 = new JSONArray();
-      ((JSONArray)localObject2).put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localObject2, localObject1, true);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(f1));
+      localStringBuilder.append("dp");
+      localJSONObject.put("x", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(f2));
+      localStringBuilder.append("dp");
+      localJSONObject.put("y", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(f3));
+      localStringBuilder.append("dp");
+      localJSONObject.put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(f4));
+      localStringBuilder.append("dp");
+      localJSONObject.put("height", localStringBuilder.toString());
+      ((JSONObject)localObject).put("frame", localJSONObject);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(paramString);
+    ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localObject, true);
   }
   
   protected VScrollView initComponentHostView(@NonNull Context paramContext)
@@ -340,32 +352,40 @@ public class VScroller
   
   public void remove(VComponent paramVComponent, boolean paramBoolean)
   {
-    if ((paramVComponent == null) || (this.mChildren == null) || (this.mChildren.size() == 0)) {}
-    do
+    if ((paramVComponent != null) && (this.mChildren != null))
     {
-      return;
+      if (this.mChildren.size() == 0) {
+        return;
+      }
       this.mChildren.remove(paramVComponent);
       if ((getRealView() != null) && ((getRealView().getChildAt(0) instanceof ViewGroup))) {
         ((ViewGroup)getRealView().getChildAt(0)).removeView(paramVComponent.getHostView());
       }
-    } while (!paramBoolean);
-    paramVComponent.destroy();
+      if (paramBoolean) {
+        paramVComponent.destroy();
+      }
+    }
   }
   
   @JSMethod(uiThread=true)
   public void scrollToTop(Boolean paramBoolean)
   {
-    if (((getHostView() instanceof VScrollView)) && (this.mRealParentView != null)) {
-      this.mRealParentView.scrollerToTop(false, paramBoolean.booleanValue());
+    if ((getHostView() instanceof VScrollView))
+    {
+      VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+      if (localVRefreshViewGroup != null) {
+        localVRefreshViewGroup.scrollerToTop(false, paramBoolean.booleanValue());
+      }
     }
   }
   
   @VComponentProp(name="bouncesEnable")
   public void setBouncesEnable(Boolean paramBoolean)
   {
-    if (this.mRealParentView != null)
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup != null)
     {
-      this.mRealParentView.setAllowHeaderSliding(paramBoolean.booleanValue());
+      localVRefreshViewGroup.setAllowHeaderSliding(paramBoolean.booleanValue());
       this.mRealParentView.setAllowFooterSliding(paramBoolean.booleanValue());
     }
   }
@@ -402,45 +422,42 @@ public class VScroller
     if (this.mHost == null) {
       return;
     }
-    label37:
-    Object localObject;
     if (this.mParent == null)
     {
       paramVScrollView = new FrameLayout.LayoutParams(paramInt1, paramInt2);
       paramVScrollView.setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-      if (paramVScrollView != null) {
-        ((VScrollView)this.mHost).setLayoutParams(paramVScrollView);
-      }
     }
     else
     {
-      if (!(((VScrollView)this.mHost).getParent() instanceof VRefreshViewGroup)) {
-        break label219;
+      if ((((VScrollView)this.mHost).getParent() instanceof VRefreshViewGroup))
+      {
+        Object localObject;
+        if (((VRefreshViewGroup)((VScrollView)this.mHost).getParent()).getLayoutParams() == null)
+        {
+          localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+          ((FrameLayout.LayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+          ((VRefreshViewGroup)((VScrollView)this.mHost).getParent()).setViewGroupLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        else
+        {
+          localObject = ((VRefreshViewGroup)((VScrollView)this.mHost).getParent()).getLayoutParams();
+          ((ViewGroup.LayoutParams)localObject).height = paramInt2;
+          ((ViewGroup.LayoutParams)localObject).width = paramInt1;
+          if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
+            ((ViewGroup.MarginLayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+          }
+        }
+        paramVScrollView = this.mParent.getChildLayoutParams(this, paramVScrollView, paramInt1, paramInt2, 0, 0, 0, 0);
       }
-      if (((VRefreshViewGroup)((VScrollView)this.mHost).getParent()).getLayoutParams() != null) {
-        break label162;
+      else
+      {
+        paramVScrollView = this.mParent.getChildLayoutParams(this, paramVScrollView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
       }
-      localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
-      ((FrameLayout.LayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-      ((VRefreshViewGroup)((VScrollView)this.mHost).getParent()).setViewGroupLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    label133:
-    label162:
-    label219:
-    for (paramVScrollView = this.mParent.getChildLayoutParams(this, paramVScrollView, paramInt1, paramInt2, 0, 0, 0, 0);; paramVScrollView = this.mParent.getChildLayoutParams(this, paramVScrollView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6))
-    {
       setContentHeight(paramInt2);
       setContentWidth(paramInt1);
-      break label37;
-      break;
-      localObject = ((VRefreshViewGroup)((VScrollView)this.mHost).getParent()).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).height = paramInt2;
-      ((ViewGroup.LayoutParams)localObject).width = paramInt1;
-      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
-        break label133;
-      }
-      ((ViewGroup.MarginLayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-      break label133;
+    }
+    if (paramVScrollView != null) {
+      ((VScrollView)this.mHost).setLayoutParams(paramVScrollView);
     }
   }
   
@@ -452,87 +469,77 @@ public class VScroller
   
   public boolean setProperty(String paramString, Object paramObject)
   {
-    boolean bool = true;
-    int i;
     if (ViolaUtils.getString(paramObject, null) != null)
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != 529642498)
       {
-      default: 
-        switch (i)
-        {
+        if ((j == 1287124693) && (paramString.equals("backgroundColor"))) {
+          i = 1;
         }
-        break;
       }
-    }
-    String str;
-    do
-    {
-      bool = super.setProperty(paramString, paramObject);
-      do
-      {
-        return bool;
-        if (!paramString.equals("overflow")) {
-          break;
-        }
+      else if (paramString.equals("overflow")) {
         i = 0;
-        break;
-        if (!paramString.equals("backgroundColor")) {
-          break;
-        }
-        i = 1;
-        break;
-        paramString = ViolaUtils.getString(paramObject, null);
-      } while (TextUtils.isEmpty(paramString));
-      if (paramString.equals("visible")) {
-        this.mIsOverFlow = true;
       }
-      for (;;)
+      if (i != 0)
       {
-        setReadParentOverFlow(paramString);
-        return true;
-        if (paramString.equals("hidden")) {
-          this.mIsOverFlow = false;
+        if (i == 1)
+        {
+          String str = ViolaUtils.getString(paramObject, null);
+          if (!TextUtils.isEmpty(str))
+          {
+            if ((this.mRealParentView != null) && (!str.equals("transparent")))
+            {
+              i = ViolaUtils.getColor(str);
+              this.mRealParentView.setBackgroundColor(i);
+            }
+            return super.setProperty(paramString, paramObject);
+          }
         }
       }
-      str = ViolaUtils.getString(paramObject, null);
-    } while (TextUtils.isEmpty(str));
-    if ((this.mRealParentView != null) && (!str.equals("transparent")))
-    {
-      i = ViolaUtils.getColor(str);
-      this.mRealParentView.setBackgroundColor(i);
+      else
+      {
+        paramString = ViolaUtils.getString(paramObject, null);
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if (paramString.equals("visible")) {
+            this.mIsOverFlow = true;
+          } else if (paramString.equals("hidden")) {
+            this.mIsOverFlow = false;
+          }
+          setReadParentOverFlow(paramString);
+        }
+        return true;
+      }
     }
     return super.setProperty(paramString, paramObject);
   }
   
   public void setReadParentOverFlow(String paramString)
   {
-    if (this.mRealParentView != null)
-    {
-      if (!paramString.equals("visible")) {
-        break label63;
-      }
-      this.mRealParentView.setClipToPadding(false);
-      this.mRealParentView.setClipChildren(false);
-      if (this.mHost != null)
+    if (this.mRealParentView != null) {
+      if (paramString.equals("visible"))
       {
-        ((VScrollView)this.mHost).setClipToPadding(false);
-        ((VScrollView)this.mHost).setClipChildren(false);
+        this.mRealParentView.setClipToPadding(false);
+        this.mRealParentView.setClipChildren(false);
+        if (this.mHost != null)
+        {
+          ((VScrollView)this.mHost).setClipToPadding(false);
+          ((VScrollView)this.mHost).setClipChildren(false);
+        }
+      }
+      else if (paramString.equals("hidden"))
+      {
+        this.mRealParentView.setClipToPadding(true);
+        this.mRealParentView.setClipChildren(true);
+        if (this.mHost != null)
+        {
+          ((VScrollView)this.mHost).setClipToPadding(true);
+          ((VScrollView)this.mHost).setClipChildren(true);
+        }
       }
     }
-    label63:
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramString.equals("hidden"));
-      this.mRealParentView.setClipToPadding(true);
-      this.mRealParentView.setClipChildren(true);
-    } while (this.mHost == null);
-    ((VScrollView)this.mHost).setClipToPadding(true);
-    ((VScrollView)this.mHost).setClipChildren(true);
   }
   
   @VComponentProp(name="showScrollerIndicator", nativeReturnMethod="isVerticalScrollBarEnabled")
@@ -551,7 +558,7 @@ public class VScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VScroller
  * JD-Core Version:    0.7.0.1
  */

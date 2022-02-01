@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/gz6" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView android:id="@id/gz3" android:paddingLeft="2.0dip" android:visibility="visible" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_marginLeft="75.0dip" />
+            <ImageView android:gravity="center_horizontal" android:id="@id/gz2" android:background="@drawable/amu" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/akk" android:scaleType="center" />
+        </FrameLayout>
+        <View android:id="@id/acz" android:background="@color/a19" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</LinearLayout>

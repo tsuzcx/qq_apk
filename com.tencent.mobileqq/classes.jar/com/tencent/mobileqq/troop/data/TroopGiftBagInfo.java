@@ -2,15 +2,14 @@ package com.tencent.mobileqq.troop.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
-import bbtq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
 import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
 
 public class TroopGiftBagInfo
-  extends awge
+  extends Entity
 {
   public int amount;
   public int count;
@@ -28,16 +27,16 @@ public class TroopGiftBagInfo
   public int endFlag;
   public long endTime;
   public String ext;
-  @awhs
+  @unique
   public String giftBagId;
   public String giftName;
   public long giftOwner;
   public String giftUnit;
-  @awhp
-  public bbtq myGrabResult;
+  @notColumn
+  public TroopGiftBagPlayer myGrabResult;
   public String myGrabResultData;
-  @awhp
-  public List<bbtq> players;
+  @notColumn
+  public List<TroopGiftBagPlayer> players;
   public String playersData;
   public int remainAmount;
   public int remainCount;
@@ -59,8 +58,8 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < localList.size())
     {
-      bbtq localbbtq = new bbtq((oidb_0x6c2.Player)localList.get(i));
-      this.players.add(localbbtq);
+      TroopGiftBagPlayer localTroopGiftBagPlayer = new TroopGiftBagPlayer((oidb_0x6c2.Player)localList.get(i));
+      this.players.add(localTroopGiftBagPlayer);
       i += 1;
     }
     this.endFlag = paramGiftBagInfo.int32_end.get();
@@ -74,46 +73,43 @@ public class TroopGiftBagInfo
     this.giftUnit = paramGiftBagInfo.bytes_gift_unit.get().toStringUtf8();
     this.ext = paramGiftBagInfo.bytes_ext.get().toStringUtf8();
     if (paramPlayer != null) {
-      this.myGrabResult = new bbtq(paramPlayer);
+      this.myGrabResult = new TroopGiftBagPlayer(paramPlayer);
     }
   }
   
-  private List<bbtq> decodeBagPlayerList(String paramString)
+  private List<TroopGiftBagPlayer> decodeBagPlayerList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    for (;;)
+    localArrayList = new ArrayList();
+    try
     {
-      return paramString;
-      localArrayList = new ArrayList();
-      try
+      paramString = new JSONArray(paramString);
+      int j = paramString.length();
+      int i = 0;
+      Object localObject;
+      while (i < j)
       {
-        JSONArray localJSONArray = new JSONArray(paramString);
-        int j = localJSONArray.length();
-        int i = 0;
-        for (;;)
-        {
-          paramString = localArrayList;
-          if (i >= j) {
-            break;
-          }
-          paramString = localJSONArray.get(i);
-          bbtq localbbtq = new bbtq();
-          localbbtq.a(paramString.toString());
-          localArrayList.add(localbbtq);
-          i += 1;
-        }
-        return localArrayList;
+        localObject = paramString.get(i);
+        TroopGiftBagPlayer localTroopGiftBagPlayer = new TroopGiftBagPlayer();
+        localTroopGiftBagPlayer.a(localObject.toString());
+        localArrayList.add(localTroopGiftBagPlayer);
+        i += 1;
       }
-      catch (JSONException paramString)
-      {
-        QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " toJson error. e=" + paramString);
-      }
+      return localArrayList;
+    }
+    catch (JSONException paramString)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(getClass().getSimpleName());
+      ((StringBuilder)localObject).append(" toJson error. e=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e(".troop.send_gift", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
     this.giftBagId = paramCursor.getString(paramCursor.getColumnIndex("giftBagId"));
     this.count = paramCursor.getInt(paramCursor.getColumnIndex("count"));
@@ -131,7 +127,7 @@ public class TroopGiftBagInfo
     this.giftName = paramCursor.getString(paramCursor.getColumnIndex("giftName"));
     this.giftUnit = paramCursor.getString(paramCursor.getColumnIndex("giftUnit"));
     this.ext = paramCursor.getString(paramCursor.getColumnIndex("ext"));
-    this.myGrabResult = new bbtq();
+    this.myGrabResult = new TroopGiftBagPlayer();
     String str = paramCursor.getString(paramCursor.getColumnIndex("myGrabResultData"));
     if (!TextUtils.isEmpty(str)) {
       this.myGrabResult.a(str);
@@ -141,28 +137,30 @@ public class TroopGiftBagInfo
   
   public boolean hasGrab()
   {
-    return (this.myGrabResult != null) && (this.myGrabResult.a > 0);
+    TroopGiftBagPlayer localTroopGiftBagPlayer = this.myGrabResult;
+    return (localTroopGiftBagPlayer != null) && (localTroopGiftBagPlayer.c > 0);
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject = new JSONArray();
     int i = 0;
     while (i < this.players.size())
     {
-      localJSONArray.put(((bbtq)this.players.get(i)).a());
+      ((JSONArray)localObject).put(((TroopGiftBagPlayer)this.players.get(i)).a());
       i += 1;
     }
-    this.playersData = localJSONArray.toString();
-    if (this.myGrabResult != null) {
-      this.myGrabResultData = this.myGrabResult.a();
+    this.playersData = ((JSONArray)localObject).toString();
+    localObject = this.myGrabResult;
+    if (localObject != null) {
+      this.myGrabResultData = ((TroopGiftBagPlayer)localObject).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopGiftBagInfo
  * JD-Core Version:    0.7.0.1
  */

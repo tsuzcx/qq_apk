@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="a2">48.0dip</dimen>
-    <dimen name="a3">12.0dip</dimen>
-    <dimen name="a4">14.0dip</dimen>
-    <item type="dimen" name="a5">@dimen/f_</item>
+    <dimen name="jt">2.0dip</dimen>
+    <dimen name="ju">24.0dip</dimen>
+    <dimen name="jv">2.0dip</dimen>
+    <dimen name="jw">2.0dip</dimen>
+    <dimen name="jx">2.0dip</dimen>
+    <dimen name="jz">14.0dip</dimen>
+    <dimen name="k1">1.0dip</dimen>
+    <dimen name="k2">10.0dip</dimen>
+    <dimen name="k4">24.0dip</dimen>
+    <dimen name="k5">20.0dip</dimen>
+    <dimen name="k6">2.0dip</dimen>
+    <dimen name="k7">17.0dip</dimen>
+    <dimen name="k8">14.0dip</dimen>
+    <dimen name="k9">14.0dip</dimen>
+    <dimen name="k_">8.0dip</dimen>
+    <dimen name="kd">2.0dip</dimen>
+    <dimen name="ke">2.0dip</dimen>
+    <dimen name="kf">14.0dip</dimen>
+    <dimen name="kk">24.0dip</dimen>
+    <dimen name="kl">17.0dip</dimen>
+    <item type="dimen" name="ks">@dimen/d4</item>
+    <dimen name="nu">48.0dip</dimen>
+    <dimen name="pt">12.0dip</dimen>
+    <dimen name="pv">14.0dip</dimen>
+    <dimen name="qq">24.0dip</dimen>
+    <dimen name="qr">52.0dip</dimen>
+    <item type="dimen" name="qu">@dimen/qx</item>
+    <dimen name="qx">24.0dip</dimen>
+    <item type="dimen" name="acn">@dimen/d9</item>
+    <dimen name="aco">72.0dip</dimen>
+    <dimen name="acw">40.0dip</dimen>
+    <dimen name="acx">28.0dip</dimen>
+    <item type="dimen" name="acz">@dimen/cw</item>
+    <dimen name="ad_">32.0dip</dimen>
+    <dimen name="ade">53.0dip</dimen>
+    <dimen name="adh">53.0dip</dimen>
+    <dimen name="adl">212.0dip</dimen>
+    <dimen name="adp">160.0dip</dimen>
+    <item type="dimen" name="adq">@dimen/cw</item>
+    <item type="dimen" name="adr">@dimen/cd</item>
+    <dimen name="ae8">39.5dip</dimen>
+    <dimen name="ae_">30.0dip</dimen>
+    <dimen name="aea">14.0dip</dimen>
+    <dimen name="aeb">2.0dip</dimen>
+    <dimen name="afo">58.0dip</dimen>
+    <item type="dimen" name="afp">@dimen/cd</item>
+    <item type="dimen" name="afx">@dimen/d0</item>
+    <item type="dimen" name="afz">@dimen/cr</item>
+    <item type="dimen" name="ag3">@dimen/cr</item>
+    <dimen name="ag4">10.0dip</dimen>
+    <item type="dimen" name="ag5">@dimen/cd</item>
+    <item type="dimen" name="agj">@dimen/d0</item>
+    <item type="dimen" name="axo">@dimen/b8</item>
 </resources>

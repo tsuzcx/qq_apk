@@ -60,12 +60,12 @@ public class TemplateWithHotReloadFactory
       ProteusParserWithHotReload.getInstance().createViewTemplateFromFile(paramContext, this, paramString2);
       return;
     }
-    catch (IOException paramContext)
+    catch (JSONException paramContext)
     {
       paramContext.printStackTrace();
       return;
     }
-    catch (JSONException paramContext)
+    catch (IOException paramContext)
     {
       paramContext.printStackTrace();
     }
@@ -73,7 +73,7 @@ public class TemplateWithHotReloadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateWithHotReloadFactory
  * JD-Core Version:    0.7.0.1
  */

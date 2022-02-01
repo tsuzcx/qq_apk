@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.ar.model;
 
-import amwo;
-import anby;
-import anfx;
+import com.tencent.mobileqq.ar.ARTarget;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-public class QQARSession$21
+class QQARSession$21
   implements Runnable
 {
-  public QQARSession$21(anfx paramanfx, int paramInt) {}
+  QQARSession$21(QQARSession paramQQARSession, int paramInt) {}
   
   public void run()
   {
-    if ((anfx.b(this.this$0)) && (this.this$0.a == 2) && (anfx.a(this.this$0) != null))
+    if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.h(this.this$0) != null))
     {
-      amwo localamwo = new amwo(anfx.a(this.this$0));
-      anfx.a(this.this$0).a(0, localamwo, this.a);
+      ARTarget localARTarget = new ARTarget(QQARSession.l(this.this$0));
+      QQARSession.h(this.this$0).a(0, localARTarget, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.21
  * JD-Core Version:    0.7.0.1
  */

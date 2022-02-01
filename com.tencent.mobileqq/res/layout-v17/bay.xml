@@ -13,7 +13,7 @@
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ckr" android:scaleType="centerInside" android:layout_toLeftOf="@id/jfe" android:layout_centerVertical="true" />
     </RelativeLayout>
     <FrameLayout android:id="@id/fcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+        <include android:id="@id/bve" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/emoticon_aio_panel" />
         <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/aom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout android:id="@id/ffj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>
@@ -24,7 +24,7 @@
             <ImageView android:id="@id/g0l" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="27.0dip" android:src="@drawable/dhd" android:scaleType="centerInside" android:layout_toRightOf="@id/g04" android:layout_centerVertical="true" />
             <ImageView android:id="@id/g0m" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="27.0dip" android:src="@drawable/dhf" android:scaleType="centerInside" android:layout_toRightOf="@id/g0l" android:layout_centerVertical="true" />
             <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
-                <CheckBox android:layout_gravity="center_vertical" android:id="@id/bzv" android:layout_width="24.0dip" android:layout_height="24.0dip" android:button="@drawable/nj" android:scaleX="0.67" android:scaleY="0.67" />
+                <CheckBox android:layout_gravity="center_vertical" android:id="@id/bzv" android:layout_width="24.0dip" android:layout_height="24.0dip" android:button="@drawable/0x" android:scaleX="0.67" android:scaleY="0.67" />
                 <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:id="@id/jff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w5c" />
             </LinearLayout>
         </RelativeLayout>

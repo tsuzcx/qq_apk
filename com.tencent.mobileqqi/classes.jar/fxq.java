@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 
 public final class fxq
   implements Parcelable.Creator
 {
-  public ForwardFileInfo a(Parcel paramParcel)
+  public OfflineFileInfo a(Parcel paramParcel)
   {
-    return new ForwardFileInfo(paramParcel, null);
+    return new OfflineFileInfo(paramParcel);
   }
   
-  public ForwardFileInfo[] a(int paramInt)
+  public OfflineFileInfo[] a(int paramInt)
   {
-    return new ForwardFileInfo[paramInt];
+    return new OfflineFileInfo[paramInt];
   }
 }
 

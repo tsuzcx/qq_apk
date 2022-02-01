@@ -8,7 +8,7 @@ public final class ReqSetCardSwitch
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public ReqHead stHeader;
+  public ReqHead stHeader = null;
   public long uCloseNeighborVote = 2L;
   public long uCloseTimeGateVote = 2L;
   
@@ -40,7 +40,7 @@ public final class ReqSetCardSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqSetCardSwitch
  * JD-Core Version:    0.7.0.1
  */

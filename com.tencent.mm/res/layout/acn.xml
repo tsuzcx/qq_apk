@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/d6v" android:background="#ffefeff4" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-    <TextView android:textSize="@dimen/ko" android:textColor="#ff716f76" android:gravity="center|left" android:id="@id/d6w" android:background="@drawable/v0" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="39.0dip" />
-    <View android:id="@id/pm" android:background="@color/w5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d6x" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d6y" android:background="@drawable/uw" android:layout_width="fill_parent" android:layout_height="39.0dip">
-        <TextView android:textColor="@color/tc" android:id="@id/d6z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/czg" />
-        <ImageView android:id="@id/d70" android:layout_width="9.0dip" android:layout_height="4.0dip" android:layout_marginLeft="9.0dip" android:src="@raw/wallet_arrow_down" android:scaleType="fitXY" />
-        <View android:id="@id/d71" android:background="@drawable/a66" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="5.0dip" />
-    </LinearLayout>
-    <View android:id="@id/d72" android:background="@color/uq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+<LinearLayout android:orientation="vertical" android:id="@id/dwd" android:background="@color/a1q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/dw6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/dw9" android:background="@drawable/ac2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/dw_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/db" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv">
+                    <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:text="@string/dqm" />
+                    <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dwa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/dwb" />
+                </RelativeLayout>
+                <LinearLayout android:id="@id/dw7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d4" android:layout_below="@id/dw_" android:layout_centerHorizontal="true">
+                    <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dw8" android:background="@drawable/zq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/c9" android:text="@string/we" android:layout_marginEnd="@dimen/df" style="@style/op" />
+                    <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dwc" android:background="@drawable/zr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/c9" android:text="@string/dql" android:layout_marginStart="@dimen/df" style="@style/op" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
 </LinearLayout>

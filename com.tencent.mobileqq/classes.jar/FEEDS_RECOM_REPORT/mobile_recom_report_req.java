@@ -4,12 +4,13 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class mobile_recom_report_req
   extends JceStruct
 {
-  static int cache_op_module = 0;
-  static int cache_op_type = 0;
+  static int cache_op_module;
+  static int cache_op_type;
   static ArrayList<String> cache_vec_record_cookie = new ArrayList();
   public String cookie = "";
   public short feeds_type;
@@ -55,17 +56,19 @@ public final class mobile_recom_report_req
     paramJceOutputStream.write(this.feeds_type, 2);
     paramJceOutputStream.write(this.position_index, 3);
     paramJceOutputStream.write(this.op_type, 4);
-    if (this.cookie != null) {
-      paramJceOutputStream.write(this.cookie, 5);
+    Object localObject = this.cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.vec_record_cookie != null) {
-      paramJceOutputStream.write(this.vec_record_cookie, 6);
+    localObject = this.vec_record_cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FEEDS_RECOM_REPORT.mobile_recom_report_req
  * JD-Core Version:    0.7.0.1
  */

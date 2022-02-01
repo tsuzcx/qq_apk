@@ -8,9 +8,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import bdnn;
-import bkgp;
-import bkgq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ditto.DittoAreaView;
@@ -18,6 +15,7 @@ import com.tencent.ditto.area.DittoArea;
 import com.tencent.ditto.shell.LayoutAttrSet;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -26,18 +24,24 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposure
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.TianShuExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.desktop.GetAppListV2Scene;
+import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDittoInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
 import org.json.JSONArray;
@@ -63,293 +67,462 @@ public class DesktopDittoAreaView
   
   private int getTianShuAdId()
   {
-    if (this.dittoInfo == null) {
+    Object localObject = this.dittoInfo;
+    if (localObject == null) {
       return 0;
     }
-    int i = this.dittoInfo.appInfoMap.size();
-    if (i > 0) {}
-    for (;;)
-    {
-      int j = this.dittoInfo.currentIndex;
-      MiniAppInfo localMiniAppInfo = (MiniAppInfo)new ArrayList(this.dittoInfo.appInfoMap.values()).get(j % i);
-      if ((localMiniAppInfo == null) || (localMiniAppInfo.tianshuAdId <= 0)) {
-        break;
-      }
-      return localMiniAppInfo.tianshuAdId;
+    int i = ((DesktopDittoInfo)localObject).appInfoMap.size();
+    if (i <= 0) {
       i = 1;
+    }
+    int j = this.dittoInfo.currentIndex.get();
+    localObject = (MiniAppInfo)new ArrayList(this.dittoInfo.appInfoMap.values()).get(j % i);
+    if ((localObject != null) && (((MiniAppInfo)localObject).tianshuAdId > 0)) {
+      return ((MiniAppInfo)localObject).tianshuAdId;
     }
     return 0;
   }
   
   public void handleExposureReport()
   {
-    if (this.exposureReportingAreas.size() <= 0) {}
+    Object localObject3 = "position";
+    if (this.exposureReportingAreas.size() <= 0) {
+      return;
+    }
+    Object localObject1 = MiniAppUtils.getAppInterface();
+    if (localObject1 == null) {
+      return;
+    }
+    MiniAppExposureManager localMiniAppExposureManager = (MiniAppExposureManager)((AppInterface)localObject1).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
+    Iterator localIterator = this.exposureReportingAreas.iterator();
+    String str1 = "";
+    localObject1 = "";
+    Object localObject6;
     do
     {
-      return;
-      localObject1 = MiniAppUtils.getAppInterface();
-    } while (localObject1 == null);
-    MiniAppExposureManager localMiniAppExposureManager = (MiniAppExposureManager)((AppInterface)localObject1).getManager(322);
-    Iterator localIterator = this.exposureReportingAreas.iterator();
-    Object localObject1 = "";
-    Object localObject4;
-    label900:
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject6 = ((DittoArea)localIterator.next()).getLayoutAttr().getAttr("extendString", str1);
+    } while (TextUtils.isEmpty((CharSequence)localObject6));
     for (;;)
     {
-      if (localIterator.hasNext())
+      try
       {
-        localObject4 = ((DittoArea)localIterator.next()).getLayoutAttr().getAttr("extendString", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+        JSONObject localJSONObject = new JSONObject((String)localObject6);
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("handleExposureReport: data");
+        ((StringBuilder)localObject6).append(localJSONObject.toString());
+        QLog.e("DesktopDittoAreaView", 1, ((StringBuilder)localObject6).toString());
+        localObject6 = localJSONObject.optString("refer");
+        try
+        {
+          localObject10 = localJSONObject.optString("actionType");
+          String str2 = localJSONObject.optString("subAction");
+          String str3 = localJSONObject.optString("reservesAction");
+          localObject11 = localJSONObject.optJSONArray("report");
+          localObject9 = "appId";
+          if (localObject11 != null) {}
+          String str4;
+          int j;
+          MiniAppConfig localMiniAppConfig;
+          MiniAppExposureManager.MiniAppModuleExposureData localMiniAppModuleExposureData;
+          StringBuilder localStringBuilder;
+          Object localObject12;
+          boolean bool;
+          localObject8 = localException5;
+        }
+        catch (Exception localException1)
+        {
           for (;;)
           {
             try
             {
-              localJSONObject = new JSONObject((String)localObject4);
-              QLog.e("DesktopDittoAreaView", 1, "handleExposureReport: data" + localJSONObject.toString());
-              localObject4 = localJSONObject.optString("refer");
+              i = ((JSONArray)localObject11).length();
+              if (i > 0)
+              {
+                i = 0;
+                localObject1 = localObject6;
+              }
             }
-            catch (Exception localException3)
+            catch (Exception localException4)
             {
-              JSONObject localJSONObject;
-              String str1;
-              String str2;
-              Object localObject6;
+              Object localObject10;
+              Object localObject11;
+              Object localObject9;
               int i;
-              Object localObject5;
-              String str3;
+              Object localObject8;
+              Object localObject4;
+              Object localObject7;
               Object localObject2;
+              Exception localException3;
+              Object localObject5;
               continue;
-              i += 1;
-              continue;
-              Object localObject3 = localObject4;
             }
             try
             {
-              localObject1 = localJSONObject.optString("actionType");
-              str1 = localJSONObject.optString("subAction");
-              str2 = localJSONObject.optString("reservesAction");
-              localObject6 = localJSONObject.optJSONArray("report");
-              if ((localObject6 != null) && (((JSONArray)localObject6).length() > 0))
+              if (i >= ((JSONArray)localObject11).length()) {
+                continue;
+              }
+              localObject8 = ((JSONArray)localObject11).optJSONObject(i);
+              localObject6 = ((JSONObject)localObject8).optString((String)localObject9);
+              str4 = ((JSONObject)localObject8).optString("reserves2");
+              if (this.dittoInfo == null) {
+                continue;
+              }
+              localObject8 = (MiniAppInfo)this.dittoInfo.appInfoMap.get(localObject6);
+              localObject6 = localObject8;
+              if (localObject8 == null)
               {
-                i = 0;
-                if (i < ((JSONArray)localObject6).length())
+                localObject6 = localObject8;
+                if (localJSONObject.has((String)localObject3))
                 {
-                  localObject5 = ((JSONArray)localObject6).optJSONObject(i);
-                  localObject1 = ((JSONObject)localObject5).optString("appId");
-                  str3 = ((JSONObject)localObject5).optString("reserves2");
-                  if (this.dittoInfo != null)
-                  {
-                    localObject5 = (MiniAppInfo)this.dittoInfo.appInfoMap.get(localObject1);
-                    localObject1 = localObject5;
-                    if (localObject5 == null)
-                    {
-                      localObject1 = localObject5;
-                      if (localJSONObject.has("position"))
-                      {
-                        int j = localJSONObject.getInt("position");
-                        localObject1 = (MiniAppInfo)this.dittoInfo.appInfoList.get(j);
-                      }
-                    }
-                    if (localObject1 != null)
-                    {
-                      localObject1 = new MiniAppConfig((MiniAppInfo)localObject1);
-                      ((MiniAppConfig)localObject1).launchParam.scene = Integer.valueOf((String)localObject4).intValue();
-                      localObject5 = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject1, "page_view", "expo");
-                      StringBuilder localStringBuilder = new StringBuilder();
-                      localStringBuilder.append(((MiniAppConfig)localObject1).config.appId).append("_").append(((MiniAppConfig)localObject1).config.verType).append("_").append(this.dittoInfo.getModuleType());
-                      localMiniAppExposureManager.putReportDataToMap(localStringBuilder.toString(), (MiniAppExposureManager.BaseExposureReport)localObject5);
-                    }
-                  }
-                  if (TextUtils.isEmpty(str1)) {
-                    continue;
-                  }
-                  localMiniAppExposureManager.putReportDataToMap(str1, new MiniAppExposureManager.CardModuleExposureData("desktop", str1, str2, str3));
+                  j = localJSONObject.getInt((String)localObject3);
+                  localObject6 = (MiniAppInfo)this.dittoInfo.appInfoList.get(j);
+                }
+              }
+              if (localObject6 == null) {
+                continue;
+              }
+              localMiniAppConfig = new MiniAppConfig((MiniAppInfo)localObject6);
+              localObject6 = localMiniAppConfig.launchParam;
+              localObject8 = Integer.valueOf((String)localObject1);
+              localObject10 = localObject3;
+            }
+            catch (Exception localException8)
+            {
+              localObject8 = localObject5;
+              localObject5 = localException8;
+              continue;
+            }
+            try
+            {
+              ((LaunchParam)localObject6).scene = ((Integer)localObject8).intValue();
+              localMiniAppModuleExposureData = new MiniAppExposureManager.MiniAppModuleExposureData(localMiniAppConfig, "page_view", "expo");
+              localStringBuilder = new StringBuilder();
+              localObject12 = localObject1;
+              localObject8 = localObject10;
+              localObject6 = localObject12;
+              try
+              {
+                localStringBuilder.append(localMiniAppConfig.config.appId);
+                localObject8 = localObject10;
+                localObject6 = localObject12;
+                localStringBuilder.append("_");
+                localObject8 = localObject10;
+                localObject6 = localObject12;
+                localStringBuilder.append(localMiniAppConfig.config.verType);
+                localObject8 = localObject10;
+                localObject6 = localObject12;
+                localStringBuilder.append("_");
+                localObject8 = localObject10;
+                localObject6 = localObject12;
+                localStringBuilder.append(this.dittoInfo.getModuleType());
+                localObject8 = localObject10;
+                localObject6 = localObject12;
+                localMiniAppExposureManager.putReportDataToMap(localStringBuilder.toString(), localMiniAppModuleExposureData);
+                localObject8 = localObject3;
+                localObject6 = localObject1;
+                if (TextUtils.isEmpty(str2)) {
                   continue;
+                }
+                localObject8 = localObject3;
+                localObject6 = localObject1;
+                localMiniAppExposureManager.putReportDataToMap(str2, new MiniAppExposureManager.CardModuleExposureData("desktop", str2, str3, str4));
+              }
+              catch (Exception localException5)
+              {
+                continue;
+              }
+              localObject1 = localObject3;
+              localObject11 = "appId";
+              localObject3 = localObject6;
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localObject12 = localJSONObject.optString("reserves2");
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localObject9 = localJSONObject.optString("reserves3");
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              str4 = localJSONObject.optString("reserves4");
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              if (StringUtil.isEmpty((String)localObject10))
+              {
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                localObject9 = new MiniAppExposureManager.CardModuleExposureData("desktop", str2, str3, (String)localObject12, (String)localObject9, str4);
+              }
+              else
+              {
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                localObject9 = new MiniAppExposureManager.CardModuleExposureData((String)localObject10, str2, str3, (String)localObject12, (String)localObject9, str4);
+              }
+              localObject10 = str2;
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              if (!TextUtils.isEmpty((CharSequence)localObject12))
+              {
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                localObject10 = new StringBuilder();
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                ((StringBuilder)localObject10).append(str2);
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                ((StringBuilder)localObject10).append("_");
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                ((StringBuilder)localObject10).append((String)localObject12);
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                localObject10 = ((StringBuilder)localObject10).toString();
+              }
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localMiniAppExposureManager.putReportDataToMap((String)localObject10, (MiniAppExposureManager.BaseExposureReport)localObject9);
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localObject9 = localObject1;
+              localObject10 = localObject3;
+              if (!localJSONObject.has("dubheReportData")) {
+                continue;
+              }
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localObject9 = localJSONObject.optJSONObject("dubheReportData");
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localObject10 = ((JSONObject)localObject9).optString((String)localObject11);
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localObject11 = ((JSONObject)localObject9).optString("pageId");
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              bool = ((JSONObject)localObject9).has("useMiniAppInfoTianShuId");
+              if (bool)
+              {
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                i = getTianShuAdId();
+                if (i != 0)
+                {
+                  localObject8 = localObject1;
+                  localObject6 = localObject3;
+                  localObject9 = String.valueOf(i);
+                }
+                else
+                {
+                  localObject8 = localObject1;
+                  localObject6 = localObject3;
+                  localObject9 = ((JSONObject)localObject9).optString("itemId");
                 }
               }
               else
               {
-                localObject6 = localJSONObject.optString("reserves2");
-                localObject5 = localJSONObject.optString("reserves3");
-                str3 = localJSONObject.optString("reserves4");
-                if (!bdnn.a((String)localObject1)) {
-                  continue;
-                }
-                localObject1 = new MiniAppExposureManager.CardModuleExposureData("desktop", str1, str2, (String)localObject6, (String)localObject5, str3);
-                localObject5 = str1;
-                if (!TextUtils.isEmpty((CharSequence)localObject6)) {
-                  localObject5 = str1 + "_" + (String)localObject6;
-                }
-                localMiniAppExposureManager.putReportDataToMap((String)localObject5, (MiniAppExposureManager.BaseExposureReport)localObject1);
+                localObject8 = localObject1;
+                localObject6 = localObject3;
+                localObject9 = ((JSONObject)localObject9).optString("itemId");
               }
-              if (!localJSONObject.has("dubheReportData")) {
-                continue;
-              }
-              localObject1 = localJSONObject.optJSONObject("dubheReportData");
-              localObject5 = ((JSONObject)localObject1).optString("appId");
-              str1 = ((JSONObject)localObject1).optString("pageId");
-              if (!((JSONObject)localObject1).has("useMiniAppInfoTianShuId")) {
-                continue;
-              }
-              i = getTianShuAdId();
-              if (i == 0) {
-                continue;
-              }
-              localObject1 = String.valueOf(i);
-              localMiniAppExposureManager.putReportDataToMap((String)localObject1, new MiniAppExposureManager.TianShuExposureData((String)localObject5, str1, (String)localObject1, 101));
-              continue;
-              localObject1 = new MiniAppExposureManager.CardModuleExposureData((String)localObject1, str1, str2, (String)localObject6, (String)localObject5, str3);
-              continue;
-              QLog.e("DesktopDittoAreaView", 1, "handleExposureReport exception: " + Log.getStackTraceString((Throwable)localObject5));
+              localObject8 = localObject1;
+              localObject6 = localObject3;
+              localMiniAppExposureManager.putReportDataToMap((String)localObject9, new MiniAppExposureManager.TianShuExposureData((String)localObject10, (String)localObject11, (String)localObject9, 101));
+              localObject9 = localObject1;
+              localObject10 = localObject3;
             }
-            catch (Exception localException1)
+            catch (Exception localException6)
             {
-              localObject5 = localException1;
-              localObject2 = localObject4;
+              localObject8 = localObject10;
             }
-            break label900;
-            localObject2 = ((JSONObject)localObject2).optString("itemId");
-            continue;
-            localObject2 = ((JSONObject)localObject2).optString("itemId");
           }
+          localException1 = localException1;
         }
+        localObject4 = localException1;
       }
-      else
+      catch (Exception localException7)
       {
-        if ((this.dittoInfo == null) || (this.dittoInfo.jumpMoreInfo == null) || (TextUtils.isEmpty(this.dittoInfo.jumpMoreInfo.appId)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-          break;
-        }
+        localObject8 = localObject4;
+        localObject4 = localException7;
+      }
+      localObject7 = localException1;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("handleExposureReport exception: ");
+      ((StringBuilder)localObject2).append(Log.getStackTraceString((Throwable)localObject4));
+      QLog.e("DesktopDittoAreaView", 1, ((StringBuilder)localObject2).toString());
+      localObject10 = localObject7;
+      localObject9 = localObject8;
+      localObject2 = localObject10;
+      localObject4 = localObject9;
+      break;
+      localObject4 = this.dittoInfo;
+      if ((localObject4 != null) && (((DesktopDittoInfo)localObject4).jumpMoreInfo != null) && (!TextUtils.isEmpty(this.dittoInfo.jumpMoreInfo.appId)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
         try
         {
           localObject4 = new MiniAppConfig(this.dittoInfo.jumpMoreInfo);
           ((MiniAppConfig)localObject4).launchParam.scene = Integer.valueOf((String)localObject2).intValue();
           localObject2 = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject4, "page_view", "expo");
-          localObject5 = new StringBuilder();
-          ((StringBuilder)localObject5).append(((MiniAppConfig)localObject4).config.appId).append("_").append(((MiniAppConfig)localObject4).config.verType).append("_").append(this.dittoInfo.getModuleType());
-          localMiniAppExposureManager.putReportDataToMap(((StringBuilder)localObject5).toString(), (MiniAppExposureManager.BaseExposureReport)localObject2);
+          localObject7 = new StringBuilder();
+          ((StringBuilder)localObject7).append(((MiniAppConfig)localObject4).config.appId);
+          ((StringBuilder)localObject7).append("_");
+          ((StringBuilder)localObject7).append(((MiniAppConfig)localObject4).config.verType);
+          ((StringBuilder)localObject7).append("_");
+          ((StringBuilder)localObject7).append(this.dittoInfo.getModuleType());
+          localMiniAppExposureManager.putReportDataToMap(((StringBuilder)localObject7).toString(), (MiniAppExposureManager.BaseExposureReport)localObject2);
           return;
         }
         catch (Exception localException2)
         {
-          QLog.e("DesktopDittoAreaView", 1, "handleExposureReport, app store, exception: " + Log.getStackTraceString(localException2));
-          return;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("handleExposureReport, app store, exception: ");
+          ((StringBuilder)localObject4).append(Log.getStackTraceString(localException2));
+          QLog.e("DesktopDittoAreaView", 1, ((StringBuilder)localObject4).toString());
         }
       }
+      return;
+      continue;
+      i += 1;
+      continue;
+      localObject7 = localException2;
+      localObject11 = localObject9;
+      localException3 = localException6;
+      localObject5 = localObject7;
     }
   }
   
   public void handleUri(String paramString, DittoArea paramDittoArea, MotionEvent paramMotionEvent)
   {
-    Object localObject1;
-    Object localObject2;
-    int i;
-    Object localObject3;
-    Object localObject4;
-    label279:
-    label290:
-    label328:
-    label367:
-    int j;
-    if (!TextUtils.isEmpty(paramString))
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
       try
       {
         paramMotionEvent = new JSONObject(paramString);
-        if (paramMotionEvent.has("dubheReportData"))
+        boolean bool = paramMotionEvent.has("dubheReportData");
+        Object localObject4;
+        if (bool)
         {
           paramString = paramMotionEvent.optJSONObject("dubheReportData");
           localObject1 = paramString.optString("appId");
           localObject2 = paramString.optString("pageId");
-          if (!paramString.has("useMiniAppInfoTianShuId")) {
-            break label290;
+          bool = paramString.has("useMiniAppInfoTianShuId");
+          if (bool)
+          {
+            i = getTianShuAdId();
+            if (i != 0) {
+              paramString = String.valueOf(i);
+            } else {
+              paramString = paramString.optString("itemId");
+            }
           }
-          i = getTianShuAdId();
-          if (i == 0) {
-            break label279;
+          else
+          {
+            paramString = paramString.optString("itemId");
           }
-          paramString = String.valueOf(i);
-          break label1269;
-        }
-        for (;;)
-        {
-          localObject3 = new bkgq();
+          localObject3 = new TianShuReportData();
           localObject4 = BaseApplicationImpl.getApplication().getRuntime();
           paramDittoArea = "";
           if (localObject4 != null) {
             paramDittoArea = ((AppRuntime)localObject4).getAccount();
           }
           long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          ((bkgq)localObject3).b = (paramDittoArea + "_" + l);
-          ((bkgq)localObject3).jdField_a_of_type_Int = 1;
-          ((bkgq)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
-          ((bkgq)localObject3).f = ((String)localObject2);
-          ((bkgq)localObject3).g = paramString;
-          ((bkgq)localObject3).d = 102;
-          ((bkgq)localObject3).jdField_e_of_type_Int = 1;
-          ((bkgq)localObject3).jdField_a_of_type_Long = l;
-          bkgp.a().a((bkgq)localObject3);
-          if (!paramMotionEvent.has("appId")) {
-            break label493;
-          }
-          paramString = paramMotionEvent.optString("appId");
-          paramDittoArea = paramMotionEvent.optString("refer");
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(paramDittoArea);
+          ((StringBuilder)localObject4).append("_");
+          ((StringBuilder)localObject4).append(l);
+          ((TianShuReportData)localObject3).b = ((StringBuilder)localObject4).toString();
+          ((TianShuReportData)localObject3).c = 1;
+          ((TianShuReportData)localObject3).f = ((String)localObject1);
+          ((TianShuReportData)localObject3).g = ((String)localObject2);
+          ((TianShuReportData)localObject3).h = paramString;
+          ((TianShuReportData)localObject3).p = 102;
+          ((TianShuReportData)localObject3).q = 1;
+          ((TianShuReportData)localObject3).o = l;
+          TianShuManager.getInstance().report((TianShuReportData)localObject3);
+        }
+        bool = paramMotionEvent.has("appId");
+        paramString = null;
+        if (bool)
+        {
+          paramDittoArea = paramMotionEvent.optString("appId");
+          localObject1 = paramMotionEvent.optString("refer");
           if (this.dittoInfo == null) {
-            break label1272;
+            break label1390;
           }
-          if (!"jump_app_store".equals(paramString)) {
-            break;
-          }
-          if (this.activityWeakReference == null) {
-            break label1272;
-          }
-          MiniAppController.launchMiniAppByAppInfo((Activity)this.activityWeakReference.get(), this.dittoInfo.jumpMoreInfo, Integer.valueOf(paramDittoArea).intValue());
-          return;
-          paramString = paramString.optString("itemId");
-          break label1269;
-          paramString = paramString.optString("itemId");
-        }
-        if (this.dittoInfo.appInfoMap == null) {
-          break label1264;
-        }
-        paramString = (MiniAppInfo)this.dittoInfo.appInfoMap.get(paramString);
-        if ((paramString != null) || (!paramMotionEvent.has("position"))) {
-          break label1261;
-        }
-        i = paramMotionEvent.getInt("position");
-        paramString = (MiniAppInfo)this.dittoInfo.appInfoList.get(i);
-        if ((paramString != null) && (this.activityWeakReference != null)) {
-          MiniAppController.launchMiniAppByAppInfo((Activity)this.activityWeakReference.get(), paramString, Integer.valueOf(paramDittoArea).intValue());
-        }
-        paramString = paramMotionEvent.optString("report");
-        if ((!TextUtils.isEmpty(paramString)) && ("no".equals(paramString))) {
-          break label1272;
-        }
-        MiniProgramLpReportDC04239.reportAsync("desktop", paramMotionEvent.optString("subAction"), paramMotionEvent.optString("reservesAction"), paramMotionEvent.optString("reserves2"), paramMotionEvent.optString("reserves3"), paramMotionEvent.optString("reserves4"));
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("DesktopDittoAreaView", 1, "handleUri, exception: " + Log.getStackTraceString(paramString));
-        return;
-      }
-      label493:
-      if (paramMotionEvent.has("scheme"))
-      {
-        paramString = paramMotionEvent.optString("scheme");
-        paramDittoArea = paramMotionEvent.optString("refer");
-        i = 3011;
-        try
-        {
-          j = Integer.valueOf(paramDittoArea).intValue();
-          i = j;
-        }
-        catch (NumberFormatException paramDittoArea)
-        {
-          for (;;)
+          localObject2 = paramMotionEvent.optString("report");
+          if ("jump_app_store".equals(paramDittoArea))
           {
-            QLog.e("DesktopDittoAreaView", 1, "handleUri, get scene failed: NumberFormatException: " + Log.getStackTraceString(paramDittoArea));
-            continue;
-            if ((paramString.startsWith("http")) || (paramString.startsWith("https")))
+            if (this.activityWeakReference != null)
+            {
+              MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), this.dittoInfo.jumpMoreInfo, Integer.valueOf((String)localObject1).intValue());
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                break label1391;
+              }
+              if ("yes".equals(localObject2)) {}
+            }
+          }
+          else
+          {
+            if (this.dittoInfo.appInfoMap != null) {
+              paramString = (MiniAppInfo)this.dittoInfo.appInfoMap.get(paramDittoArea);
+            }
+            paramDittoArea = paramString;
+            if (paramString == null)
+            {
+              paramDittoArea = paramString;
+              if (paramMotionEvent.has("position"))
+              {
+                i = paramMotionEvent.getInt("position");
+                paramDittoArea = (MiniAppInfo)this.dittoInfo.appInfoList.get(i);
+              }
+            }
+            if ((paramDittoArea != null) && (this.activityWeakReference != null)) {
+              MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), paramDittoArea, Integer.valueOf((String)localObject1).intValue());
+            }
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && ("no".equals(localObject2))) {
+              return;
+            }
+          }
+          MiniProgramLpReportDC04239.reportAsync("desktop", paramMotionEvent.optString("subAction"), paramMotionEvent.optString("reservesAction"), paramMotionEvent.optString("reserves2"), paramMotionEvent.optString("reserves3"), paramMotionEvent.optString("reserves4"));
+          return;
+        }
+        bool = paramMotionEvent.has("scheme");
+        int j;
+        if (bool)
+        {
+          paramString = paramMotionEvent.optString("scheme");
+          paramDittoArea = paramMotionEvent.optString("refer");
+          i = 3011;
+          try
+          {
+            j = Integer.valueOf(paramDittoArea).intValue();
+            i = j;
+          }
+          catch (NumberFormatException paramDittoArea)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("handleUri, get scene failed: NumberFormatException: ");
+            ((StringBuilder)localObject1).append(Log.getStackTraceString(paramDittoArea));
+            QLog.e("DesktopDittoAreaView", 1, ((StringBuilder)localObject1).toString());
+          }
+          if (this.activityWeakReference.get() != null)
+          {
+            if (MiniAppLauncher.isMiniAppUrl(paramString))
+            {
+              MiniAppLauncher.startMiniApp((Context)this.activityWeakReference.get(), paramString, i, null);
+            }
+            else if ((!paramString.startsWith("http")) && (!paramString.startsWith("https")))
+            {
+              if (paramString.startsWith("mqqapi"))
+              {
+                paramDittoArea = new Intent((Context)this.activityWeakReference.get(), JumpActivity.class);
+                paramDittoArea.setData(Uri.parse(paramString));
+                ((Activity)this.activityWeakReference.get()).startActivity(paramDittoArea);
+              }
+            }
+            else
             {
               paramDittoArea = new Intent((Context)this.activityWeakReference.get(), QQBrowserActivity.class);
               paramDittoArea.putExtra("url", paramString);
@@ -357,95 +530,104 @@ public class DesktopDittoAreaView
               paramDittoArea.putExtra("startOpenPageTime", System.currentTimeMillis());
               ((Activity)this.activityWeakReference.get()).startActivity(paramDittoArea);
             }
-            else if (paramString.startsWith("mqqapi"))
-            {
-              paramDittoArea = new Intent((Context)this.activityWeakReference.get(), JumpActivity.class);
-              paramDittoArea.setData(Uri.parse(paramString));
-              ((Activity)this.activityWeakReference.get()).startActivity(paramDittoArea);
-              continue;
-              QLog.e("DesktopDittoAreaView", 1, "object.has(scheme), activityWeakReference.get() is null ?!");
-            }
           }
+          else {
+            QLog.e("DesktopDittoAreaView", 1, "object.has(scheme), activityWeakReference.get() is null ?!");
+          }
+          MiniProgramLpReportDC04239.reportAsync(paramMotionEvent.optString("actionType"), paramMotionEvent.optString("subAction"), paramMotionEvent.optString("reservesAction"), null);
+          return;
         }
-        if (this.activityWeakReference.get() != null) {
-          if (MiniAppLauncher.isMiniAppUrl(paramString))
+        if (paramMotionEvent.has("quickMatch"))
+        {
+          paramString = paramMotionEvent.optString("refer");
+          j = this.dittoInfo.appInfoMap.size();
+          if (j <= 0) {
+            break label1392;
+          }
+          i = j;
+          i = this.dittoInfo.currentIndex.get() % i;
+          paramDittoArea = (MiniAppInfo)new ArrayList(this.dittoInfo.appInfoMap.values()).get(i);
+          if (paramDittoArea != null)
           {
-            MiniAppLauncher.startMiniApp((Context)this.activityWeakReference.get(), paramString, i, null);
-            MiniProgramLpReportDC04239.reportAsync(paramMotionEvent.optString("actionType"), paramMotionEvent.optString("subAction"), paramMotionEvent.optString("reservesAction"), null);
-            return;
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("handleUri, name: ");
+            paramMotionEvent.append(paramDittoArea.name);
+            paramMotionEvent.append(", appId: ");
+            paramMotionEvent.append(paramDittoArea.appId);
+            paramMotionEvent.append(", index: ");
+            paramMotionEvent.append(i);
+            paramMotionEvent.append(", currentIndex: ");
+            paramMotionEvent.append(this.dittoInfo.currentIndex);
+            paramMotionEvent.append(", size: ");
+            paramMotionEvent.append(j);
+            QLog.d("DesktopDittoAreaView", 1, paramMotionEvent.toString());
+            MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), paramDittoArea, Integer.valueOf(paramString).intValue());
           }
-        }
-      }
-      if (paramMotionEvent.has("quickMatch"))
-      {
-        paramString = paramMotionEvent.optString("refer");
-        j = this.dittoInfo.appInfoMap.size();
-        if (j <= 0) {
-          break label1273;
-        }
-        i = j;
-        label825:
-        i = this.dittoInfo.currentIndex % i;
-        paramDittoArea = (MiniAppInfo)new ArrayList(this.dittoInfo.appInfoMap.values()).get(i);
-        if (paramDittoArea != null)
-        {
-          QLog.d("DesktopDittoAreaView", 1, "handleUri, name: " + paramDittoArea.name + ", appId: " + paramDittoArea.appId + ", index: " + i + ", currentIndex: " + this.dittoInfo.currentIndex + ", size: " + j);
-          MiniAppController.launchMiniAppByAppInfo((Activity)this.activityWeakReference.get(), paramDittoArea, Integer.valueOf(paramString).intValue());
-        }
-        for (;;)
-        {
+          else
+          {
+            paramString = new StringBuilder();
+            paramString.append("handleUri, index = ");
+            paramString.append(i);
+            paramString.append(", currentIndex: ");
+            paramString.append(this.dittoInfo.currentIndex);
+            paramString.append(", size: ");
+            paramString.append(j);
+            paramString.append(", appInfo is null.");
+            QLog.e("DesktopDittoAreaView", 1, paramString.toString());
+          }
           this.dittoInfo.incrementIndex();
           return;
-          QLog.e("DesktopDittoAreaView", 1, "handleUri, index = " + i + ", currentIndex: " + this.dittoInfo.currentIndex + ", size: " + j + ", appInfo is null.");
         }
-      }
-      if (!paramMotionEvent.has("refresh")) {
-        break label1272;
-      }
-      i = paramMotionEvent.optInt("refresh");
-      paramString = (DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336);
-      paramDittoArea = new ArrayList();
-      paramDittoArea.add(Integer.valueOf(7));
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).add(Integer.valueOf(i));
-      localObject2 = new ArrayList();
-      localObject3 = paramMotionEvent.optJSONArray("itemIds");
-      if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
-      {
-        j = ((JSONArray)localObject3).length();
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        localObject4 = ((JSONArray)localObject3).optString(i);
-        if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-          ((ArrayList)localObject2).add(localObject4);
+        if (!paramMotionEvent.has("refresh")) {
+          break label1390;
         }
-      }
-      else
-      {
-        paramString.sendModuleRequest(paramDittoArea, (ArrayList)localObject1, (ArrayList)localObject2);
+        i = paramMotionEvent.optInt("refresh");
+        paramDittoArea = (DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
+        Object localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(Integer.valueOf(7));
+        Object localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(Integer.valueOf(i));
+        paramString = new ArrayList();
+        Object localObject3 = paramMotionEvent.optJSONArray("itemIds");
+        if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
+        {
+          j = ((JSONArray)localObject3).length();
+          i = 0;
+          if (i < j)
+          {
+            localObject4 = ((JSONArray)localObject3).optString(i);
+            if (TextUtils.isEmpty((CharSequence)localObject4)) {
+              break label1398;
+            }
+            paramString.add(localObject4);
+            break label1398;
+          }
+        }
+        paramDittoArea.sendModuleRequest((ArrayList)localObject1, (ArrayList)localObject2, paramString, GetAppListV2Scene.DITTO);
         MiniProgramLpReportDC04239.reportAsync(paramMotionEvent.optString("actionType"), paramMotionEvent.optString("subAction"), paramMotionEvent.optString("reservesAction"), null);
-        QLog.d("DesktopDittoAreaView", 1, "refresh, itemIds: " + ((ArrayList)localObject2).toString());
+        paramDittoArea = new StringBuilder();
+        paramDittoArea.append("refresh, itemIds: ");
+        paramDittoArea.append(paramString.toString());
+        QLog.d("DesktopDittoAreaView", 1, paramDittoArea.toString());
         return;
-        QLog.e("DesktopDittoAreaView", 1, "handleUri, uri is null.");
-        return;
-        label1261:
-        break label367;
-        label1264:
-        paramString = null;
-        break label328;
-        label1269:
-        break;
-        label1272:
-        return;
-        label1273:
-        i = 1;
-        break label825;
       }
+      catch (Exception paramString)
+      {
+        paramDittoArea = new StringBuilder();
+        paramDittoArea.append("handleUri, exception: ");
+        paramDittoArea.append(Log.getStackTraceString(paramString));
+        QLog.e("DesktopDittoAreaView", 1, paramDittoArea.toString());
+        return;
+      }
+      QLog.e("DesktopDittoAreaView", 1, "handleUri, uri is null.");
+      label1390:
+      return;
+      label1391:
+      return;
+      label1392:
+      int i = 1;
+      continue;
+      label1398:
       i += 1;
     }
   }
@@ -457,7 +639,7 @@ public class DesktopDittoAreaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoAreaView
  * JD-Core Version:    0.7.0.1
  */

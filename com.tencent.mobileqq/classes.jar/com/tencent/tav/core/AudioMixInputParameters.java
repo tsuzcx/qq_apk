@@ -48,25 +48,20 @@ public class AudioMixInputParameters
   {
     long l1 = paramCMTime.getTimeUs();
     Iterator localIterator = this.volumeRanges.iterator();
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
       paramCMTime = (AudioMixInputParameters.VolumeRange)localIterator.next();
-    } while ((l1 < paramCMTime.timeRange.getStart().getTimeUs()) || (l1 >= paramCMTime.timeRange.getEnd().getTimeUs()));
-    for (;;)
-    {
-      if (paramCMTime == null) {
-        return 1.0F;
+      if ((l1 >= paramCMTime.timeRange.getStart().getTimeUs()) && (l1 < paramCMTime.timeRange.getEnd().getTimeUs())) {
+        break label70;
       }
-      long l2 = paramCMTime.timeRange.getStart().getTimeUs();
-      float f1 = paramCMTime.startVolume;
-      float f2 = paramCMTime.endVolume;
-      float f3 = paramCMTime.startVolume;
-      return 1.0F * (float)(l1 - l2) / (float)paramCMTime.timeRange.getDuration().getTimeUs() * (f2 - f3) + f1;
-      paramCMTime = null;
     }
+    paramCMTime = null;
+    label70:
+    if (paramCMTime == null) {
+      return 1.0F;
+    }
+    long l2 = paramCMTime.timeRange.getStart().getTimeUs();
+    return paramCMTime.startVolume + (paramCMTime.endVolume - paramCMTime.startVolume) * ((float)(l1 - l2) * 1.0F / (float)paramCMTime.timeRange.getDuration().getTimeUs());
   }
   
   public AudioMixInputParameters.VolumeRange getVolumeRampAtTimeRange(CMTime paramCMTime)
@@ -84,12 +79,23 @@ public class AudioMixInputParameters
   
   public String toString()
   {
-    return "AudioMixInputParameters{trackID=" + this.trackID + ", audioTimePitchAlgorithm='" + this.audioTimePitchAlgorithm + '\'' + ", audioTapProcessor=" + this.audioTapProcessor + ", volumeRanges=" + this.volumeRanges + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioMixInputParameters{trackID=");
+    localStringBuilder.append(this.trackID);
+    localStringBuilder.append(", audioTimePitchAlgorithm='");
+    localStringBuilder.append(this.audioTimePitchAlgorithm);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", audioTapProcessor=");
+    localStringBuilder.append(this.audioTapProcessor);
+    localStringBuilder.append(", volumeRanges=");
+    localStringBuilder.append(this.volumeRanges);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AudioMixInputParameters
  * JD-Core Version:    0.7.0.1
  */

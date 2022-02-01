@@ -1,67 +1,66 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
 import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import vxe;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 class VideoPlayerView$9
-  implements Runnable
+  implements IVideoInnerStatusListener
 {
   VideoPlayerView$9(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void notifyVideoClose(int paramInt)
   {
-    Object localObject = new FloatingScreenParams.FloatingBuilder();
-    boolean bool;
-    if ((this.this$0.a() == null) || (this.this$0.a().getViewWidth() > this.this$0.a().getViewHeight()))
+    VideoPlayerView.b(this.a, false);
+    if (VideoPlayerView.l(this.a) != null)
     {
-      bool = true;
-      localObject = ((FloatingScreenParams.FloatingBuilder)localObject).setIsHorizontal(bool).setCanMove(true).build();
-      if (FloatingScreenManager.getInstance().enterFloatingScreen(BaseApplicationImpl.getContext(), VideoPlayerView.a(this.this$0).a(), (FloatingScreenParams)localObject, 28) != 1) {
-        break label102;
-      }
-      FloatingScreenPermission.enterPermissionRequestDialog(this.this$0.getContext());
+      VideoPlayerView.l(this.a).c();
+      VideoPlayerView.a(this.a, null);
     }
-    label102:
-    do
+    VideoPlayerView.a(this.a, null);
+    this.a.g();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyVideoSeek seek ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("VideoPlayerView", 4, ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    ((VideoPlayerView)localObject).a(paramInt * ((VideoPlayerView)localObject).getSuperPlayer().getDurationMs() / 100L);
+  }
+  
+  public void notifyVideoStart()
+  {
+    if (this.a.getSuperPlayer().getCurrentPositionMs() < this.a.getSuperPlayer().getDurationMs())
     {
+      this.a.e();
       return;
-      bool = false;
-      break;
-      this.this$0.b();
-      VideoPlayerView.c(this.this$0, true);
-      if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 0))
-      {
-        VideoPlayerView.a(this.this$0).b();
-        VideoPlayerView.a(this.this$0).a();
-      }
-      if (this.this$0.a().a() >= this.this$0.a().b())
-      {
-        this.this$0.f();
-        if (VideoPlayerView.a(this.this$0) != null) {
-          VideoPlayerView.a(this.this$0).onVideoStart((int)VideoPlayerView.a(this.this$0).b());
-        }
-      }
-      if (this.this$0.a() != null)
-      {
-        VideoPlayerView.a(this.this$0).onVideoSize(this.this$0.a().getViewWidth(), this.this$0.a().getViewHeight());
-        this.this$0.d();
-      }
-    } while (VideoPlayerView.a(this.this$0) == null);
-    VideoPlayerView.a(this.this$0).getActivity().finish();
+    }
+    if (VideoPlayerView.o(this.a))
+    {
+      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
+      return;
+    }
+    this.a.getSuperPlayer().setLoopback(true);
+    this.a.j();
+    if (VideoPlayerView.m(this.a) != null) {
+      VideoPlayerView.m(this.a).onVideoStart((int)this.a.getSuperPlayer().getDurationMs());
+    }
+    QLog.d("VideoPlayerView", 4, "no more, player repeat");
+  }
+  
+  public void notifyVideoStop()
+  {
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.9
  * JD-Core Version:    0.7.0.1
  */

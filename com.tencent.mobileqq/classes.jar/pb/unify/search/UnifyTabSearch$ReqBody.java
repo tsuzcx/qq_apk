@@ -6,6 +6,8 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import unify.search.UnifySearchCommon.ExtensionRequestInfo;
+import unify.search.UnifySearchCommon.RootSearcherRequest;
 
 public final class UnifyTabSearch$ReqBody
   extends MessageMicro<ReqBody>
@@ -20,14 +22,15 @@ public final class UnifyTabSearch$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 802, 808, 816 }, new String[] { "key_word", "version", "search_request", "extension_request_info", "from_sub_hot_word_id", "from_tabbar_index" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, null, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 802, 808, 816 }, new String[] { "key_word", "version", "search_request", "extension_request_info", "from_sub_hot_word_id", "from_tabbar_index" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, null, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     pb.unify.search.UnifyTabSearch.ReqBody
  * JD-Core Version:    0.7.0.1
  */

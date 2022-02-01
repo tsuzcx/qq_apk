@@ -9,11 +9,11 @@ import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.tencent.youtu.ytagreflectlivecheck.controller.ReflectController;
 
 public class YTReflectLayout
   extends RelativeLayout
 {
+  private static String TAG = "YTReflectLayout";
   private ColorMatrixColorFilter mColorMatrixColorFilter;
   private Paint mPaint = new Paint(1);
   private Rect mRect = new Rect();
@@ -23,7 +23,7 @@ public class YTReflectLayout
     super(paramContext, paramAttributeSet);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setColor(Color.argb(200, 0, 0, 0));
-    this.mColorMatrixColorFilter = ReflectController.DEFAULT_MATRIX_COLOR_FILTER;
+    this.mColorMatrixColorFilter = new ColorMatrixColorFilter(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F });
     setWillNotDraw(false);
   }
   
@@ -43,7 +43,7 @@ public class YTReflectLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout
  * JD-Core Version:    0.7.0.1
  */

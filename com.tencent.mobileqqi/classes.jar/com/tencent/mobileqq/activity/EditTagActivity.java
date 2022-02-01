@@ -11,14 +11,14 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import cjq;
 import cjr;
 import cjs;
 import cjt;
 import cju;
 import cjv;
 import cjw;
-import cjx;
-import cjz;
+import cjy;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -46,9 +46,9 @@ public class EditTagActivity
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public cjz a;
+  public cjy a;
   private CardHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cjr(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cjq(this);
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
   public Workspace a;
@@ -61,16 +61,16 @@ public class EditTagActivity
   public EditTagActivity()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new cju(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cjt(this);
   }
   
   private void a(String paramString)
   {
-    Object localObject = findViewById(2131231376);
+    Object localObject = findViewById(2131231375);
     if ((localObject != null) && ((localObject instanceof TextView))) {
       ((TextView)localObject).setText(paramString);
     }
-    TextView localTextView = (TextView)findViewById(2131231456);
+    TextView localTextView = (TextView)findViewById(2131231455);
     localObject = getIntent().getExtras().getString("leftViewText");
     paramString = (String)localObject;
     if (localObject == null) {
@@ -79,9 +79,9 @@ public class EditTagActivity
     if (localTextView != null)
     {
       localTextView.setText(paramString);
-      localTextView.setOnClickListener(new cjv(this));
+      localTextView.setOnClickListener(new cju(this));
     }
-    b(2131562798, new cjw(this));
+    b(2131562798, new cjv(this));
     d(true);
   }
   
@@ -89,16 +89,16 @@ public class EditTagActivity
   {
     setContentView(2130903208);
     a(getString(2131562002));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231620);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231621));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231622));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231619);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231620));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231621));
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace = ((Workspace)this.jdField_a_of_type_AndroidViewView.findViewById(16908305));
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.setFocusable(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.setFocusableInTouchMode(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.setOnScreenChangeListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231624));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231625));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231626));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231623));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231624));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231625));
   }
   
   private void e()
@@ -115,8 +115,8 @@ public class EditTagActivity
       {
         a(this.jdField_b_of_type_JavaUtilArrayList.size());
         this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone());
-        this.jdField_a_of_type_Cjz = new cjz(this, this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cjz);
+        this.jdField_a_of_type_Cjy = new cjy(this, this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cjy);
       }
       f();
       return;
@@ -139,7 +139,7 @@ public class EditTagActivity
         ((GridView)localObject).setHorizontalSpacing((int)(this.jdField_a_of_type_Float * 4.0F));
         ((GridView)localObject).setVerticalSpacing((int)(this.jdField_a_of_type_Float * 4.0F));
         this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.addView((View)localObject);
-        ((GridView)localObject).setAdapter(new cjx(this, ((TagArrayByType)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.jdField_a_of_type_JavaUtilArrayList.get(i)).mTags));
+        ((GridView)localObject).setAdapter(new cjw(this, ((TagArrayByType)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.jdField_a_of_type_JavaUtilArrayList.get(i)).mTags));
         localObject = new ImageView(this);
         ((ImageView)localObject).setPadding((int)(this.jdField_a_of_type_Float * 4.0F), 0, (int)(this.jdField_a_of_type_Float * 4.0F), 0);
         ((ImageView)localObject).setImageResource(2130837966);
@@ -256,7 +256,7 @@ public class EditTagActivity
     }
     if ((localArrayList1.size() != 0) || (localArrayList2.size() != 0))
     {
-      DialogUtil.a(this, 230).setMessage(getString(2131563012)).setPositiveButton(2131563227, new cjt(this)).setNegativeButton(2131562473, new cjs(this)).show();
+      DialogUtil.a(this, 230).setMessage(getString(2131563012)).setPositiveButton(2131563227, new cjs(this)).setNegativeButton(2131562473, new cjr(this)).show();
       return true;
     }
     finish();

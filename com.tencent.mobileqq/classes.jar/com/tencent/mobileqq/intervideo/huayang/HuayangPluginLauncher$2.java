@@ -1,62 +1,64 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import alud;
 import android.os.Handler;
 import android.os.Message;
-import atbb;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class HuayangPluginLauncher$2
+class HuayangPluginLauncher$2
   implements Runnable
 {
-  public HuayangPluginLauncher$2(atbb paramatbb, boolean paramBoolean) {}
+  HuayangPluginLauncher$2(HuayangPluginLauncher paramHuayangPluginLauncher, boolean paramBoolean) {}
   
   public void run()
   {
-    long l;
-    if (atbb.a(this.this$0) == null)
+    if (HuayangPluginLauncher.access$400(this.this$0) == null)
     {
-      atbb.a(this.this$0, atbb.b(this.this$0));
+      HuayangPluginLauncher localHuayangPluginLauncher = this.this$0;
+      HuayangPluginLauncher.access$402(localHuayangPluginLauncher, HuayangPluginLauncher.access$500(localHuayangPluginLauncher));
       if (this.a)
       {
-        l = 1000L - (System.currentTimeMillis() - atbb.a(this.this$0));
-        if (l > 0L) {
-          atbb.a(this.this$0, "HuayangPluginLauncher", alud.a(2131706042) + l);
+        long l = 1000L - (System.currentTimeMillis() - HuayangPluginLauncher.access$600(this.this$0));
+        if (l > 0L)
+        {
+          localHuayangPluginLauncher = this.this$0;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(HardCodeUtil.a(2131903625));
+          localStringBuilder.append(l);
+          HuayangPluginLauncher.access$700(localHuayangPluginLauncher, "HuayangPluginLauncher", localStringBuilder.toString());
+          try
+          {
+            Thread.sleep(l);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
+          }
         }
       }
     }
-    try
+    if ((HuayangPluginLauncher.access$400(this.this$0) != null) && (HuayangPluginLauncher.access$800(this.this$0)))
     {
-      Thread.sleep(l);
-      if ((atbb.a(this.this$0) != null) && (atbb.a(this.this$0)))
+      Object localObject;
+      if (this.a)
       {
-        if (this.a)
-        {
-          Message localMessage = Message.obtain(atbb.a(this.this$0), 2);
-          atbb.a(this.this$0).sendMessage(localMessage);
-          atbb.a(this.this$0, atbb.a(this.this$0));
-          this.this$0.a = true;
-        }
+        localObject = Message.obtain(HuayangPluginLauncher.access$900(this.this$0), 2);
+        HuayangPluginLauncher.access$900(this.this$0).sendMessage((Message)localObject);
+        localObject = this.this$0;
+        HuayangPluginLauncher.access$1000((HuayangPluginLauncher)localObject, HuayangPluginLauncher.access$400((HuayangPluginLauncher)localObject));
+        this.this$0.mStartActivityCalled = true;
       }
       else
       {
-        atbb.a(this.this$0, false);
-        return;
+        localObject = this.this$0;
+        HuayangPluginLauncher.access$1100((HuayangPluginLauncher)localObject, HuayangPluginLauncher.access$400((HuayangPluginLauncher)localObject));
       }
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-        atbb.b(this.this$0, atbb.a(this.this$0));
-      }
-    }
+    HuayangPluginLauncher.access$1202(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.2
  * JD-Core Version:    0.7.0.1
  */

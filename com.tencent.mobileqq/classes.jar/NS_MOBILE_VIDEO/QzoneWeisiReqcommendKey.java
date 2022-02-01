@@ -9,7 +9,7 @@ public final class QzoneWeisiReqcommendKey
 {
   public String feed_id = "";
   public String ugckey = "";
-  public long uin;
+  public long uin = 0L;
   
   public QzoneWeisiReqcommendKey() {}
   
@@ -29,18 +29,20 @@ public final class QzoneWeisiReqcommendKey
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feed_id != null) {
-      paramJceOutputStream.write(this.feed_id, 0);
+    String str = this.feed_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 1);
+    str = this.ugckey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uin, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.QzoneWeisiReqcommendKey
  * JD-Core Version:    0.7.0.1
  */

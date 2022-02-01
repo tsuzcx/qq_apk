@@ -1,0 +1,152 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "view-wrp",
+                "pts:custom-view": "scroll-view"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "overflow": "scroll",
+                "padding": "26rpx 0px 19rpx 24rpx",
+                "padding-top": "26rpx",
+                "padding-right": "0px",
+                "padding-bottom": "19rpx",
+                "padding-left": "24rpx",
+                "width": "750rpx"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "\n    \n    \n  ",
+                    "attributes": {
+                        "viewID": "2",
+                        "wx:for": "{{subscribers}}",
+                        "wx:for-item": "subscriber",
+                        "class": "item",
+                        "pts:on-scroll-item-exposure": "{{subscriber.uin}}",
+                        "pts:on-tap": "{{subscriber.uin}}",
+                        "data-jump-url": "{{subscriber.jump_url}}",
+                        "data-avatar-status": "{{subscriber.avatar_status}}"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "flex-direction": "column",
+                        "flex-shrink": "0",
+                        "padding-right": "24rpx",
+                        "width": "142rpx"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n    ",
+                            "attributes": {
+                                "viewID": "4",
+                                "class": "avatar pts-custom-view",
+                                "pts:custom-view": "rij-avatar-view",
+                                "data-uin": "{{subscriber.uin}}",
+                                "data-avatar-url": "{{subscriber.avatar_url}}",
+                                "data-avatar-status": "{{subscriber.avatar_status}}",
+                                "data-live-ring-url": "{{(subscriber.avatar_status == 1) ? 'https://pub.idqqimg.com/pc/misc/files/20200611/0918bb15d21843e595502fcc309411ea.png' : (subscriber.avatar_status == 2 ? 'https://pub.idqqimg.com/pc/misc/files/20200611/272310d8197445d787392c8b5b3d1b28.png' : 'https://pub.idqqimg.com/pc/misc/files/20200611/e21e5bac245f4bee8dfe3a102ca75ee7.png')}}",
+                                "data-live-status-url": "{{subscriber.avatar_status == 1 ? 'https://pub.idqqimg.com/pc/misc/files/20200611/be8b95d85b624b0e89ed01a9ad67cdc3.png' : ''}}"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "height": "118rpx",
+                                "margin-bottom": "12rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{subscriber.name}}",
+                            "attributes": {
+                                "viewID": "5",
+                                "class": "title"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "font-size": "24rpx",
+                                "text-align": "center",
+                                "-webkit-line-clamp": "1",
+                                "color": "rgb(36, 36, 36)"
+                            },
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "tag": "view",
+                    "content": "\n    \n  ",
+                    "attributes": {
+                        "viewID": "3",
+                        "class": "item",
+                        "wx:if": "{{show_more}}",
+                        "pts:on-tap": "0",
+                        "pts:on-scroll-item-exposure": "0",
+                        "data-jump-url": "{{more_url}}"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "flex-direction": "column",
+                        "flex-shrink": "0",
+                        "padding-right": "24rpx",
+                        "width": "142rpx"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "6",
+                                "class": "show-more"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "justify-content": "center",
+                                "align-items": "center",
+                                "height": "118rpx"
+                            },
+                            "children": [
+                                {
+                                    "tag": "img",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "class": "show-more-image",
+                                        "src": "images/show_more.png"
+                                    },
+                                    "styles": {
+                                        "width": "42rpx",
+                                        "height": "42rpx"
+                                    },
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

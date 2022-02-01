@@ -1,20 +1,28 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import aryd;
+import com.tencent.mobileqq.flutter.ipc.FlutterSubQIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class QFlutterLauncher$2
-  implements Runnable
+class QFlutterLauncher$2
+  implements EIPCResultCallback
 {
-  public QFlutterLauncher$2(aryd paramaryd, String paramString) {}
+  QFlutterLauncher$2(QFlutterLauncher paramQFlutterLauncher) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.this$0.b(this.a);
+    if (!paramEIPCResult.isSuccess())
+    {
+      QLog.d("QFlutter.launcher", 1, "install IPC fail");
+      FlutterSubQIPCModule.c();
+      QFlutterLauncher.a(this.a, 1, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.QFlutterLauncher.2
  * JD-Core Version:    0.7.0.1
  */

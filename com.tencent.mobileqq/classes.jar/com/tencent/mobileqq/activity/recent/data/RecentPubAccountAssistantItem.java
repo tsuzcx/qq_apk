@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import aeum;
-import alzl;
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.data.PubAccountAssistantData;
@@ -25,153 +27,178 @@ public class RecentPubAccountAssistantItem
   
   public RecentPubAccountAssistantItem(PubAccountAssistantData paramPubAccountAssistantData)
   {
-    if (paramPubAccountAssistantData == null) {
-      throw new NullPointerException("PubAccountAssistantData is null");
+    if (paramPubAccountAssistantData != null)
+    {
+      this.mData = paramPubAccountAssistantData;
+      this.mUnreadFlag = 3;
+      return;
     }
-    this.mData = paramPubAccountAssistantData;
-    this.mUnreadFlag = 3;
+    throw new NullPointerException("PubAccountAssistantData is null");
   }
   
-  public int a()
+  private void a()
   {
-    return this.mData.mType;
+    if (AppSetting.e)
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder(24);
+      localStringBuilder1.append(this.mTitleName);
+      if (this.mUnreadNum != 0) {
+        if (this.mUnreadNum == 1)
+        {
+          localStringBuilder1.append("有一条未读");
+        }
+        else if (this.mUnreadNum == 2)
+        {
+          localStringBuilder1.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          localStringBuilder1.append("有");
+          localStringBuilder1.append(this.mUnreadNum);
+          localStringBuilder1.append("条未读");
+        }
+      }
+      if (this.mMsgExtroInfo != null)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(this.mMsgExtroInfo);
+        localStringBuilder2.append(",");
+        localStringBuilder1.append(localStringBuilder2.toString());
+      }
+      localStringBuilder1.append(this.mLastMsg);
+      localStringBuilder1.append(' ');
+      localStringBuilder1.append(this.mShowTime);
+      this.mContentDesc = localStringBuilder1.toString();
+    }
   }
   
-  public long a()
+  public long getLastDraftTime()
+  {
+    return this.mData.mLastDraftTime;
+  }
+  
+  public long getLastMsgTime()
   {
     return this.mData.mLastMsgTime;
   }
   
-  public String a()
+  public int getRecentUserType()
+  {
+    return this.mData.mType;
+  }
+  
+  public String getRecentUserUin()
   {
     return this.mData.mUin;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    String str = null;
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    Object localObject3 = a();
-    int i = a();
-    Object localObject1 = paramQQAppInterface.a();
-    if (localObject1 != null) {}
-    for (QQMessageFacade.Message localMessage = ((QQMessageFacade)localObject1).a((String)localObject3, i);; localMessage = null)
-    {
-      Object localObject2;
-      if (localMessage != null)
-      {
-        this.mDisplayTime = localMessage.time;
-        localObject1 = paramQQAppInterface.a();
-        if (localObject1 != null)
-        {
-          this.mUnreadNum = ((abta)localObject1).a(localMessage.frienduin, localMessage.istroop);
-          localObject1 = (alzl)paramQQAppInterface.getManager(56);
-          if (localObject1 == null) {
-            break label606;
-          }
-          localObject2 = ((alzl)localObject1).b((String)localObject3);
-          if (localObject2 == null) {
-            break label606;
-          }
-          localObject1 = ((PublicAccountInfo)localObject2).name;
-          str = ((PublicAccountInfo)localObject2).summary;
-        }
-      }
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = localObject3;
-        }
-        this.mTitleName = ((String)localObject2);
-        localObject2 = a();
-        if (localMessage != null)
-        {
-          int j = localMessage.msgtype;
-          if ((j != -3006) && (j != -5004)) {
-            a(localMessage, i, paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-          }
-        }
-        else
-        {
-          label196:
-          if ((TextUtils.isEmpty(((MsgSummary)localObject2).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject2).suffix)))
-          {
-            if (str != null) {
-              break label538;
-            }
-            str = "";
-            label227:
-            ((MsgSummary)localObject2).strContent = str;
-          }
-          a(paramQQAppInterface);
-          a(paramQQAppInterface, (MsgSummary)localObject2);
-          a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-          if (!AppSetting.c) {
-            break;
-          }
-          paramQQAppInterface = new StringBuilder(24);
-          paramQQAppInterface.append(this.mTitleName);
-          if (this.mUnreadNum != 0) {
-            break label541;
-          }
-        }
-        for (;;)
-        {
-          if (this.mMsgExtroInfo != null) {
-            paramQQAppInterface.append(this.mMsgExtroInfo + ",");
-          }
-          paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
-          this.mContentDesc = paramQQAppInterface.toString();
-          return;
-          this.mUnreadNum = 0;
-          break;
-          this.mDisplayTime = 0L;
-          this.mUnreadNum = 0;
-          break;
-          ((MsgSummary)localObject2).strContent = "";
-          localObject3 = aeum.a(localMessage);
-          if ((localObject3 == null) || (((PAMessage)localObject3).items == null) || (((PAMessage)localObject3).items.size() == 0))
-          {
-            a(localMessage, i, paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-            break label196;
-          }
-          localObject1 = ((PAMessage.Item)((PAMessage)localObject3).items.get(0)).title;
-          if ((((PAMessage.Item)((PAMessage)localObject3).items.get(0)).cover == null) && (((PAMessage.Item)((PAMessage)localObject3).items.get(0)).digestList != null)) {
-            localObject1 = (String)localObject1 + "：" + (String)((PAMessage.Item)((PAMessage)localObject3).items.get(0)).digestList.get(0);
-          }
-          for (;;)
-          {
-            ((MsgSummary)localObject2).strContent = ((CharSequence)localObject1);
-            break;
-          }
-          label538:
-          break label227;
-          label541:
-          if (this.mUnreadNum == 1) {
-            paramQQAppInterface.append("有一条未读");
-          } else if (this.mUnreadNum == 2) {
-            paramQQAppInterface.append("有两条未读");
-          } else if (this.mUnreadNum > 0) {
-            paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
-          }
-        }
-        label606:
-        localObject1 = null;
-      }
-    }
-  }
-  
-  public boolean a()
+  public boolean isUnreadMsgNumInTabNum()
   {
     return false;
   }
   
-  public long b()
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    return this.mData.mLastDraftTime;
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
+    if (localQQAppInterface != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      Object localObject3 = getRecentUserUin();
+      int i = getRecentUserType();
+      paramBaseQQAppInterface = localQQAppInterface.getMessageFacade();
+      Object localObject1 = null;
+      Object localObject2;
+      if (paramBaseQQAppInterface != null) {
+        localObject2 = paramBaseQQAppInterface.getLastMessage((String)localObject3, i);
+      } else {
+        localObject2 = null;
+      }
+      if (localObject2 != null)
+      {
+        this.mDisplayTime = ((Message)localObject2).time;
+        paramBaseQQAppInterface = localQQAppInterface.getConversationFacade();
+        if (paramBaseQQAppInterface != null) {
+          this.mUnreadNum = paramBaseQQAppInterface.a(((Message)localObject2).frienduin, ((Message)localObject2).istroop);
+        } else {
+          this.mUnreadNum = 0;
+        }
+      }
+      else
+      {
+        this.mDisplayTime = 0L;
+        this.mUnreadNum = 0;
+      }
+      paramBaseQQAppInterface = (IPublicAccountDataManager)localQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+      if (paramBaseQQAppInterface != null)
+      {
+        paramBaseQQAppInterface = (PublicAccountInfo)paramBaseQQAppInterface.findPublicAccountInfo((String)localObject3);
+        if (paramBaseQQAppInterface != null)
+        {
+          localObject1 = paramBaseQQAppInterface.name;
+          paramBaseQQAppInterface = paramBaseQQAppInterface.summary;
+          break label175;
+        }
+      }
+      paramBaseQQAppInterface = null;
+      label175:
+      if (localObject1 == null) {
+        localObject1 = localObject3;
+      }
+      this.mTitleName = ((String)localObject1);
+      localObject3 = getMsgSummaryTemp();
+      if (localObject2 != null)
+      {
+        int j = ((Message)localObject2).msgtype;
+        if ((j != -3006) && (j != -5004))
+        {
+          buildMessageBody((Message)localObject2, i, localQQAppInterface, paramContext, (MsgSummary)localObject3);
+        }
+        else
+        {
+          ((MsgSummary)localObject3).strContent = "";
+          PAMessage localPAMessage = XMLMessageUtils.a((MessageRecord)localObject2);
+          if ((localPAMessage != null) && (localPAMessage.items != null) && (localPAMessage.items.size() != 0))
+          {
+            localObject2 = ((PAMessage.Item)localPAMessage.items.get(0)).title;
+            localObject1 = localObject2;
+            if (((PAMessage.Item)localPAMessage.items.get(0)).cover == null)
+            {
+              localObject1 = localObject2;
+              if (((PAMessage.Item)localPAMessage.items.get(0)).digestList != null)
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append((String)localObject2);
+                ((StringBuilder)localObject1).append("：");
+                ((StringBuilder)localObject1).append((String)((PAMessage.Item)localPAMessage.items.get(0)).digestList.get(0));
+                localObject1 = ((StringBuilder)localObject1).toString();
+              }
+            }
+            ((MsgSummary)localObject3).strContent = ((CharSequence)localObject1);
+          }
+          else
+          {
+            buildMessageBody((Message)localObject2, i, localQQAppInterface, paramContext, (MsgSummary)localObject3);
+          }
+        }
+      }
+      if ((TextUtils.isEmpty(((MsgSummary)localObject3).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject3).suffix)))
+      {
+        localObject1 = paramBaseQQAppInterface;
+        if (paramBaseQQAppInterface == null) {
+          localObject1 = "";
+        }
+        ((MsgSummary)localObject3).strContent = ((CharSequence)localObject1);
+      }
+      dealStatus(localQQAppInterface);
+      dealDraft(localQQAppInterface, (MsgSummary)localObject3);
+      extraUpdate(localQQAppInterface, paramContext, (MsgSummary)localObject3);
+      a();
+    }
   }
 }
 

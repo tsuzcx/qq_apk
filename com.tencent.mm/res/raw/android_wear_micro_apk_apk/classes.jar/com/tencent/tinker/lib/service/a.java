@@ -5,24 +5,24 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  public Throwable aiX;
-  public boolean ajJ;
-  public String ajK;
-  public long ajL;
-  public String ajM;
+  public long aaN;
+  public Throwable amz;
+  public boolean anl;
+  public String anm;
+  public String ann;
   
   public final String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("\nPatchResult: \n");
-    localStringBuffer.append("isSuccess:" + this.ajJ + "\n");
-    localStringBuffer.append("rawPatchFilePath:" + this.ajK + "\n");
-    localStringBuffer.append("costTime:" + this.ajL + "\n");
-    if (this.ajM != null) {
-      localStringBuffer.append("patchVersion:" + this.ajM + "\n");
+    localStringBuffer.append("isSuccess:" + this.anl + "\n");
+    localStringBuffer.append("rawPatchFilePath:" + this.anm + "\n");
+    localStringBuffer.append("costTime:" + this.aaN + "\n");
+    if (this.ann != null) {
+      localStringBuffer.append("patchVersion:" + this.ann + "\n");
     }
-    if (this.aiX != null) {
-      localStringBuffer.append("Throwable:" + this.aiX.getMessage() + "\n");
+    if (this.amz != null) {
+      localStringBuffer.append("Throwable:" + this.amz.getMessage() + "\n");
     }
     return localStringBuffer.toString();
   }

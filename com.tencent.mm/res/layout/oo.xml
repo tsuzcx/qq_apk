@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="horizontal" android:background="@drawable/bqs" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/if" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="78.599976dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/a0b" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" style="@style/mp">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/awy" android:layout_width="@dimen/lv" android:layout_height="wrap_content">
-            <ImageView android:id="@id/k6" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/awz" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:src="@drawable/ap6" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:ellipsize="end" android:gravity="center|left" android:id="@id/ax0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:text="{nick}" android:singleLine="true" style="@style/ln" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/yg" android:ellipsize="end" android:gravity="center|left" android:id="@id/ax1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:singleLine="true" style="@style/ln" />
-        </LinearLayout>
-        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="3.0" />
-        <ImageButton android:layout_gravity="center_vertical" android:id="@id/ax2" android:background="@null" android:focusableInTouchMode="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/checkbox_unselected" />
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ax_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-</merge>
+</LinearLayout>

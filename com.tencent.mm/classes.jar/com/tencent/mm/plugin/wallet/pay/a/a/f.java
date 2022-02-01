@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.e;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import java.util.Map;
@@ -16,19 +15,19 @@ public final class f
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  protected final void aj(Map<String, String> paramMap)
+  protected final void bi(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(45927);
-    paramMap.put("busi_scene", this.tVs.poq);
-    AppMethodBeat.o(45927);
+    AppMethodBeat.i(69270);
+    paramMap.put("busi_scene", this.VmM.hAk);
+    AppMethodBeat.o(69270);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(45928);
-    h.qsU.idkeyStat(663L, 20L, 1L, false);
-    int i = super.doScene(parame, paramf);
-    AppMethodBeat.o(45928);
+    AppMethodBeat.i(69271);
+    com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 20L, 1L, false);
+    int i = super.doScene(paramg, paramh);
+    AppMethodBeat.o(69271);
     return i;
   }
   
@@ -44,17 +43,17 @@ public final class f
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(45929);
+    AppMethodBeat.i(69272);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0) {
-      h.qsU.idkeyStat(663L, 21L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 21L, 1L, false);
     }
-    AppMethodBeat.o(45929);
+    AppMethodBeat.o(69272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a.f
  * JD-Core Version:    0.7.0.1
  */

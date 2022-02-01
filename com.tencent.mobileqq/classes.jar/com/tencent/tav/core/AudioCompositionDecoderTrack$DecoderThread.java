@@ -16,20 +16,16 @@ class AudioCompositionDecoderTrack$DecoderThread
     super("AudioDecoderThread");
   }
   
-  public void doAction()
+  protected void doAction()
   {
     synchronized (this.nextFrameDecoderLock)
     {
-      if (Logger.LOG_VERBOSE) {
-        Logger.d("AudioCompositionDecoder", "doAction: start ");
-      }
+      Logger.v("AudioCompositionDecoder", "doAction: start ");
       this.pcmFrame = AudioCompositionDecoderTrack.access$200(this.this$0);
       if (this.pcmFrame.getSampleByteBuffer() != null) {
         this.pcmFrame.setSampleByteBuffer(this.this$0.processFrame(this.pcmFrame.getSampleByteBuffer(), AudioCompositionDecoderTrack.access$300(this.this$0), AudioCompositionDecoderTrack.access$400(this.this$0), AudioCompositionDecoderTrack.access$500(this.this$0)));
       }
-      if (Logger.LOG_VERBOSE) {
-        Logger.d("AudioCompositionDecoder", "doAction: finish ");
-      }
+      Logger.v("AudioCompositionDecoder", "doAction: finish ");
       return;
     }
   }
@@ -41,7 +37,7 @@ class AudioCompositionDecoderTrack$DecoderThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositionDecoderTrack.DecoderThread
  * JD-Core Version:    0.7.0.1
  */

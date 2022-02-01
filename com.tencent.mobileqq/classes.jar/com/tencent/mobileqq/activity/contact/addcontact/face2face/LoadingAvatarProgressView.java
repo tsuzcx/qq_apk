@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import aepi;
-import ahjz;
-import ahka;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,33 +14,34 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class LoadingAvatarProgressView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ahka jdField_a_of_type_Ahka;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF;
+  private LoadingAvatarProgressView.IProgressListener a;
+  private int b;
+  private int c;
   private int d;
-  private int e = 1500;
-  private int f;
-  private int g;
-  private int h = 30;
-  private int i;
+  private boolean e = false;
+  private Paint f;
+  private Path g;
+  private Paint h;
+  private int i = 0;
+  private float j;
+  private int k = 1500;
+  private RectF l;
+  private int m = 0;
+  private int n = 0;
+  private int o = 30;
+  private RectF p;
+  private PathMeasure q;
+  private float r;
+  private Path s;
+  private float t;
+  private int u;
+  private RectF v;
+  private Paint w;
   
   public LoadingAvatarProgressView(Context paramContext)
   {
@@ -63,142 +61,155 @@ public class LoadingAvatarProgressView
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    int j = this.jdField_a_of_type_Int * 2;
-    int k = this.jdField_b_of_type_Int * 2;
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, j, k);
+    this.s = new Path();
+    int i1 = this.b;
+    int i2 = this.c;
+    float f1 = i1 * 2;
+    float f2 = i2 * 2;
+    this.p = new RectF(0.0F, 0.0F, f1, f2);
     Object localObject = new Path();
-    ((Path)localObject).moveTo(this.jdField_a_of_type_Int, 0.0F);
-    ((Path)localObject).lineTo(j, 0.0F);
-    ((Path)localObject).lineTo(j, k);
-    ((Path)localObject).lineTo(0.0F, k);
+    ((Path)localObject).moveTo(this.b, 0.0F);
+    ((Path)localObject).lineTo(f1, 0.0F);
+    ((Path)localObject).lineTo(f1, f2);
+    ((Path)localObject).lineTo(0.0F, f2);
     ((Path)localObject).lineTo(0.0F, 0.0F);
-    ((Path)localObject).lineTo(this.jdField_a_of_type_Int, 0.0F);
+    ((Path)localObject).lineTo(this.b, 0.0F);
     ((Path)localObject).close();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure((Path)localObject, false);
-    this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
+    this.q = new PathMeasure((Path)localObject, false);
+    this.t = this.q.getLength();
     localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    ((ValueAnimator)localObject).setDuration(this.e);
-    ((ValueAnimator)localObject).addUpdateListener(new ahjz(this));
+    ((ValueAnimator)localObject).setDuration(this.k);
+    ((ValueAnimator)localObject).addUpdateListener(new LoadingAvatarProgressView.1(this));
     ((ValueAnimator)localObject).start();
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CircleLoadingView);
-    this.jdField_a_of_type_Float = paramContext.getInteger(2, 5);
-    this.jdField_a_of_type_Float = aepi.a(this.jdField_a_of_type_Float, getResources());
-    this.i = paramContext.getInteger(1, 5);
-    this.i = aepi.a(this.i, getResources());
-    this.d = paramContext.getInteger(0, -16776961);
+    this.j = paramContext.getInteger(2, 5);
+    this.j = AIOUtils.b(this.j, getResources());
+    this.u = paramContext.getInteger(1, 5);
+    this.u = AIOUtils.b(this.u, getResources());
+    this.i = paramContext.getInteger(0, -16776961);
     paramContext.recycle();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.d);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
+    this.h = new Paint();
+    this.h.setAntiAlias(true);
+    this.h.setStyle(Paint.Style.STROKE);
+    this.h.setStrokeWidth(this.j);
+    this.h.setColor(this.i);
+    this.w = new Paint();
+    this.w.setAntiAlias(true);
+    this.w.setStyle(Paint.Style.FILL);
+    this.w.setStrokeWidth(this.j);
+    this.w.setColor(this.i);
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setStyle(Paint.Style.STROKE);
+    this.f.setStrokeWidth(this.j);
+    this.f.setColor(this.i);
   }
   
   private void a(Canvas paramCanvas)
   {
-    if (this.g < 100)
+    if (this.n < 100)
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#8E8E93"));
-      paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, -90.0F, this.g * 360 / 100, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-      this.g += 2;
-      postInvalidateDelayed(this.h);
+      this.w.setStyle(Paint.Style.STROKE);
+      this.w.setColor(Color.parseColor("#8E8E93"));
+      paramCanvas.drawArc(this.v, -90.0F, this.n * 360 / 100, false, this.w);
+      this.n += 2;
+      postInvalidateDelayed(this.o);
       return;
     }
-    this.g = 0;
-    postInvalidateDelayed(this.h);
+    this.n = 0;
+    postInvalidateDelayed(this.o);
   }
   
   private void b()
   {
-    int j = aepi.a(12.0F, getResources());
-    int k = aepi.a(4.0F, getResources());
-    float f1 = this.jdField_a_of_type_Int - j + k;
-    float f2 = this.jdField_b_of_type_Int;
-    float f3 = this.jdField_a_of_type_Int - j / 2 + k;
-    float f4 = this.jdField_b_of_type_Int + j / 2;
-    float f5 = k + (this.jdField_a_of_type_Int + j * 2 / 4);
-    float f6 = this.jdField_b_of_type_Int - j * 2 / 4;
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f3, f4);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f5, f6);
+    int i4 = AIOUtils.b(12.0F, getResources());
+    int i1 = AIOUtils.b(4.0F, getResources());
+    int i2 = this.b;
+    float f1 = i2 - i4 + i1;
+    int i3 = this.c;
+    float f2 = i3;
+    int i5 = i4 / 2;
+    float f3 = i2 - i5 + i1;
+    float f4 = i5 + i3;
+    i4 = i4 * 2 / 4;
+    float f5 = i2 + i4 + i1;
+    float f6 = i3 - i4;
+    this.g = new Path();
+    this.g.reset();
+    this.g.moveTo(f1, f2);
+    this.g.lineTo(f3, f4);
+    this.g.lineTo(f5, f6);
   }
   
   private void b(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_Float < this.jdField_c_of_type_Float)
+    if (this.r < this.t)
     {
-      this.jdField_b_of_type_AndroidGraphicsPath.reset();
-      this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPathMeasure.getSegment(0.0F, this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPath, false);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-    }
-    do
-    {
+      this.s.reset();
+      this.s.lineTo(0.0F, 0.0F);
+      this.q.getSegment(0.0F, this.r, this.s, false);
+      paramCanvas.drawPath(this.s, this.h);
       return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.i, this.i, this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    } while (this.jdField_a_of_type_Ahka == null);
-    this.jdField_a_of_type_Ahka.a(this.f);
+    }
+    if (this.e)
+    {
+      this.h.setStyle(Paint.Style.FILL);
+      RectF localRectF = this.p;
+      int i1 = this.u;
+      paramCanvas.drawRoundRect(localRectF, i1, i1, this.h);
+      paramCanvas.drawPath(this.g, this.f);
+    }
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.a(this.m);
+    }
   }
   
   private void c(Canvas paramCanvas)
   {
-    if (this.f < 100)
+    int i1 = this.m;
+    if (i1 < 100)
     {
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, this.f * 360 / 100, false, this.jdField_b_of_type_AndroidGraphicsPaint);
-      this.f += 2;
-      postInvalidateDelayed(this.h);
-    }
-    do
-    {
+      paramCanvas.drawArc(this.l, -90.0F, i1 * 360 / 100, false, this.h);
+      this.m += 2;
+      postInvalidateDelayed(this.o);
       return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Math.min(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int), this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    } while (this.jdField_a_of_type_Ahka == null);
-    this.jdField_a_of_type_Ahka.a(this.f);
+    }
+    if (this.e)
+    {
+      this.h.setStyle(Paint.Style.FILL);
+      i1 = this.b;
+      float f1 = i1;
+      int i2 = this.c;
+      paramCanvas.drawCircle(f1, i2, Math.min(i1, i2), this.h);
+      paramCanvas.drawPath(this.g, this.f);
+    }
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.a(this.m);
+    }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_c_of_type_Int == 0) {
-      c(paramCanvas);
-    }
-    do
+    int i1 = this.d;
+    if (i1 == 0)
     {
+      c(paramCanvas);
       return;
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        b(paramCanvas);
-        return;
-      }
-    } while (this.jdField_c_of_type_Int != 2);
-    a(paramCanvas);
+    }
+    if (i1 == 1)
+    {
+      b(paramCanvas);
+      return;
+    }
+    if (i1 == 2) {
+      a(paramCanvas);
+    }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -206,41 +217,48 @@ public class LoadingAvatarProgressView
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getWidth();
     paramInt2 = getHeight();
-    this.jdField_a_of_type_Int = (paramInt1 / 2);
-    this.jdField_b_of_type_Int = (paramInt2 / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_Float / 2.0F, paramInt1 - this.jdField_a_of_type_Float / 2.0F, paramInt2 - this.jdField_a_of_type_Float / 2.0F);
-    this.jdField_c_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_Float / 2.0F, paramInt1 - this.jdField_a_of_type_Float / 2.0F, paramInt2 - this.jdField_a_of_type_Float / 2.0F);
+    this.b = (paramInt1 / 2);
+    this.c = (paramInt2 / 2);
+    float f3 = this.j;
+    float f4 = f3 / 2.0F;
+    float f5 = f3 / 2.0F;
+    float f1 = paramInt1;
+    float f6 = f3 / 2.0F;
+    float f2 = paramInt2;
+    this.l = new RectF(f4, f5, f1 - f6, f2 - f3 / 2.0F);
+    f3 = this.j;
+    this.v = new RectF(f3 / 2.0F, f3 / 2.0F, f1 - f3 / 2.0F, f2 - f3 / 2.0F);
     a();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       b();
     }
   }
   
   public void setAnimDuration(int paramInt)
   {
-    this.e = paramInt;
-    this.h = (paramInt / 50);
+    this.k = paramInt;
+    this.o = (paramInt / 50);
   }
   
   public void setLoadType(int paramInt)
   {
-    this.f = 0;
-    this.jdField_c_of_type_Int = paramInt;
+    this.m = 0;
+    this.d = paramInt;
   }
   
   public void setNeedCover(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public void setProgressListener(ahka paramahka)
+  public void setProgressListener(LoadingAvatarProgressView.IProgressListener paramIProgressListener)
   {
-    this.jdField_a_of_type_Ahka = paramahka;
+    this.a = paramIProgressListener;
   }
   
   public void setRoundSize(int paramInt)
   {
-    this.i = paramInt;
+    this.u = paramInt;
   }
 }
 

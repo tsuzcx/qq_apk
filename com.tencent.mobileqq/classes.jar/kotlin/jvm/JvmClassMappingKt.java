@@ -21,10 +21,10 @@ public final class JvmClassMappingKt
     paramT = paramT.annotationType();
     Intrinsics.checkExpressionValueIsNotNull(paramT, "(this as java.lang.annot…otation).annotationType()");
     paramT = getKotlinClass(paramT);
-    if (paramT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.reflect.KClass<out T>");
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.reflect.KClass<out T>");
   }
   
   @NotNull
@@ -32,10 +32,10 @@ public final class JvmClassMappingKt
   {
     Intrinsics.checkParameterIsNotNull(paramT, "$this$javaClass");
     paramT = paramT.getClass();
-    if (paramT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
   }
   
   @JvmName(name="getJavaClass")
@@ -44,10 +44,10 @@ public final class JvmClassMappingKt
   {
     Intrinsics.checkParameterIsNotNull(paramKClass, "$this$java");
     paramKClass = ((ClassBasedDeclarationContainer)paramKClass).getJClass();
-    if (paramKClass == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
+    if (paramKClass != null) {
+      return paramKClass;
     }
-    return paramKClass;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
   }
   
   @NotNull
@@ -55,144 +55,138 @@ public final class JvmClassMappingKt
   {
     Intrinsics.checkParameterIsNotNull(paramKClass, "$this$javaObjectType");
     paramKClass = ((ClassBasedDeclarationContainer)paramKClass).getJClass();
-    Object localObject;
     if (!paramKClass.isPrimitive())
     {
-      localObject = paramKClass;
-      if (paramKClass == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
+      if (paramKClass != null) {
+        return paramKClass;
       }
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
     }
-    else
-    {
-      localObject = paramKClass.getName();
-      if (localObject == null) {}
-      for (;;)
+    String str = paramKClass.getName();
+    if (str != null) {
+      switch (str.hashCode())
       {
-        localObject = paramKClass;
-        if (paramKClass != null) {
-          break;
+      default: 
+        break;
+      case 109413500: 
+        if (str.equals("short")) {
+          paramKClass = Short.class;
         }
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
-        switch (((String)localObject).hashCode())
-        {
-        default: 
-          break;
-        case -1325958191: 
-          if (((String)localObject).equals("double")) {
-            paramKClass = Double.class;
-          }
-          break;
-        case 64711720: 
-          if (((String)localObject).equals("boolean")) {
-            paramKClass = Boolean.class;
-          }
-          break;
-        case 3625364: 
-          if (((String)localObject).equals("void")) {
-            paramKClass = Void.class;
-          }
-          break;
-        case 3039496: 
-          if (((String)localObject).equals("byte")) {
-            paramKClass = Byte.class;
-          }
-          break;
-        case 3052374: 
-          if (((String)localObject).equals("char")) {
-            paramKClass = Character.class;
-          }
-          break;
-        case 109413500: 
-          if (((String)localObject).equals("short")) {
-            paramKClass = Short.class;
-          }
-          break;
-        case 97526364: 
-          if (((String)localObject).equals("float")) {
-            paramKClass = Float.class;
-          }
-          break;
-        case 104431: 
-          if (((String)localObject).equals("int")) {
-            paramKClass = Integer.class;
-          }
-          break;
-        case 3327612: 
-          if (((String)localObject).equals("long")) {
-            paramKClass = Long.class;
-          }
-          break;
+        break;
+      case 97526364: 
+        if (str.equals("float")) {
+          paramKClass = Float.class;
         }
+        break;
+      case 64711720: 
+        if (str.equals("boolean")) {
+          paramKClass = Boolean.class;
+        }
+        break;
+      case 3625364: 
+        if (str.equals("void")) {
+          paramKClass = Void.class;
+        }
+        break;
+      case 3327612: 
+        if (str.equals("long")) {
+          paramKClass = Long.class;
+        }
+        break;
+      case 3052374: 
+        if (str.equals("char")) {
+          paramKClass = Character.class;
+        }
+        break;
+      case 3039496: 
+        if (str.equals("byte")) {
+          paramKClass = Byte.class;
+        }
+        break;
+      case 104431: 
+        if (str.equals("int")) {
+          paramKClass = Integer.class;
+        }
+        break;
+      case -1325958191: 
+        if (str.equals("double")) {
+          paramKClass = Double.class;
+        }
+        break;
       }
     }
-    return localObject;
+    if (paramKClass != null) {
+      return paramKClass;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
   }
   
   @Nullable
   public static final <T> Class<T> getJavaPrimitiveType(@NotNull KClass<T> paramKClass)
   {
     Intrinsics.checkParameterIsNotNull(paramKClass, "$this$javaPrimitiveType");
-    Class localClass = ((ClassBasedDeclarationContainer)paramKClass).getJClass();
-    if (localClass.isPrimitive())
+    paramKClass = ((ClassBasedDeclarationContainer)paramKClass).getJClass();
+    if (paramKClass.isPrimitive())
     {
-      paramKClass = localClass;
-      if (localClass == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
-      }
-    }
-    else
-    {
-      paramKClass = localClass.getName();
       if (paramKClass != null) {
-        break label52;
+        return paramKClass;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<T>");
+    }
+    paramKClass = paramKClass.getName();
+    if (paramKClass != null) {
+      switch (paramKClass.hashCode())
+      {
+      default: 
+        break;
+      case 761287205: 
+        if (paramKClass.equals("java.lang.Double")) {
+          return Double.TYPE;
+        }
+        break;
+      case 399092968: 
+        if (paramKClass.equals("java.lang.Void")) {
+          return Void.TYPE;
+        }
+        break;
+      case 398795216: 
+        if (paramKClass.equals("java.lang.Long")) {
+          return Long.TYPE;
+        }
+        break;
+      case 398507100: 
+        if (paramKClass.equals("java.lang.Byte")) {
+          return Byte.TYPE;
+        }
+        break;
+      case 344809556: 
+        if (paramKClass.equals("java.lang.Boolean")) {
+          return Boolean.TYPE;
+        }
+        break;
+      case 155276373: 
+        if (paramKClass.equals("java.lang.Character")) {
+          return Character.TYPE;
+        }
+        break;
+      case -515992664: 
+        if (paramKClass.equals("java.lang.Short")) {
+          return Short.TYPE;
+        }
+        break;
+      case -527879800: 
+        if (paramKClass.equals("java.lang.Float")) {
+          return Float.TYPE;
+        }
+        break;
+      case -2056817302: 
+        if (paramKClass.equals("java.lang.Integer")) {
+          return Integer.TYPE;
+        }
+        break;
       }
     }
-    label52:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      for (;;)
-                      {
-                        paramKClass = null;
-                        return paramKClass;
-                        switch (paramKClass.hashCode())
-                        {
-                        }
-                      }
-                    } while (!paramKClass.equals("java.lang.Integer"));
-                    return Integer.TYPE;
-                  } while (!paramKClass.equals("java.lang.Float"));
-                  return Float.TYPE;
-                } while (!paramKClass.equals("java.lang.Void"));
-                return Void.TYPE;
-              } while (!paramKClass.equals("java.lang.Character"));
-              return Character.TYPE;
-            } while (!paramKClass.equals("java.lang.Long"));
-            return Long.TYPE;
-          } while (!paramKClass.equals("java.lang.Double"));
-          return Double.TYPE;
-        } while (!paramKClass.equals("java.lang.Short"));
-        return Short.TYPE;
-      } while (!paramKClass.equals("java.lang.Boolean"));
-      return Boolean.TYPE;
-    } while (!paramKClass.equals("java.lang.Byte"));
-    return Byte.TYPE;
+    return null;
   }
   
   @JvmName(name="getKotlinClass")
@@ -209,15 +203,15 @@ public final class JvmClassMappingKt
   {
     Intrinsics.checkParameterIsNotNull(paramKClass, "$this$javaClass");
     paramKClass = ((Object)paramKClass).getClass();
-    if (paramKClass == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<kotlin.reflect.KClass<T>>");
+    if (paramKClass != null) {
+      return paramKClass;
     }
-    return paramKClass;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Class<kotlin.reflect.KClass<T>>");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.JvmClassMappingKt
  * JD-Core Version:    0.7.0.1
  */

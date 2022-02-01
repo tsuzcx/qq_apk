@@ -29,7 +29,12 @@ public class ArkAppUrlChecker
       }
       return;
     }
-    finally {}
+    finally
+    {
+      label98:
+      break label98;
+    }
+    throw paramAppUrlWhiteList;
   }
   
   public int checkUrlIsValidByAppNavigationList(String paramString)
@@ -63,7 +68,7 @@ public class ArkAppUrlChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.security.ArkAppUrlChecker
  * JD-Core Version:    0.7.0.1
  */

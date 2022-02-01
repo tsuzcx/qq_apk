@@ -1,7 +1,5 @@
 package com.tencent.mm.hardcoder;
 
-import abwr;
-import abws;
 import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
@@ -53,10 +51,10 @@ public class HardCoderJNI
   public static final int SCENE_SNS_SCROLL = 701;
   public static final int SCENE_UPDATE_CHATROOM = 401;
   private static final String TAG = "HardCoder.JNI";
-  private static abwr callback;
+  private static HardCoderJNI.Callback callback;
   public static boolean checkEnv = true;
   public static boolean hcDebug;
-  public static final boolean sHCDEBUG = abws.a;
+  public static final boolean sHCDEBUG = HardCoderManager.sDebug;
   
   static
   {
@@ -81,33 +79,43 @@ public class HardCoderJNI
   
   public static void onData(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HardCoder.JNI", 2, "onData callbackType:" + paramInt1 + " timestamp:" + paramLong + " errCode:" + paramInt2 + " funcid:" + paramInt3 + " dataType:" + paramInt4);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onData callbackType:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" timestamp:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" errCode:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" funcid:");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" dataType:");
+      localStringBuilder.append(paramInt4);
+      QLog.i("HardCoder.JNI", 2, localStringBuilder.toString());
     }
     if (paramInt2 == -20001) {
-      abws.a().a();
+      HardCoderManager.getInstance().onSocketDisconnect();
     }
     if (callback != null) {}
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte);
-      callback.a(paramArrayOfByte);
-      return;
     }
     catch (Throwable paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte = "";
-      }
+      label136:
+      break label136;
     }
+    paramArrayOfByte = "";
+    callback.onANR(paramArrayOfByte);
   }
   
   public static native int registerANRCallback(int paramInt, long paramLong);
   
-  public static int registerANRCallback(abwr paramabwr)
+  public static int registerANRCallback(HardCoderJNI.Callback paramCallback)
   {
-    callback = paramabwr;
+    callback = paramCallback;
     return registerANRCallback(Process.myTid(), SystemClock.elapsedRealtime());
   }
   
@@ -144,7 +152,7 @@ public class HardCoderJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,10 @@
 package com.tencent.token;
 
-import com.tencent.halley.common.b.f;
+import android.arch.lifecycle.LiveData;
 
-public abstract interface br
-{
-  public abstract f a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract String c();
-  
-  public abstract bg d();
-  
-  public abstract int e();
-  
-  public abstract int f();
-  
-  public abstract int g();
-  
-  public abstract int h();
-}
+public class br<T>
+  extends LiveData<T>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

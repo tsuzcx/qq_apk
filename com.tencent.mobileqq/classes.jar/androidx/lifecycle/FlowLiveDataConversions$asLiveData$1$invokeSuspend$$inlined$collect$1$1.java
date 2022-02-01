@@ -1,0 +1,39 @@
+package androidx.lifecycle;
+
+import kotlin.Metadata;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.jvm.internal.ContinuationImpl;
+import kotlin.coroutines.jvm.internal.DebugMetadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"emit", "", "T", "value", "continuation", "Lkotlin/coroutines/Continuation;", "", "kotlinx/coroutines/flow/FlowKt__CollectKt$collect$3$emit$1"}, k=3, mv={1, 1, 15})
+@DebugMetadata(c="androidx.lifecycle.FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1", f="FlowLiveData.kt", i={0, 0, 0, 0}, l={136}, m="emit", n={"this", "value", "continuation", "it"}, s={"L$0", "L$1", "L$2", "L$3"})
+public final class FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1$1
+  extends ContinuationImpl
+{
+  Object L$0;
+  Object L$1;
+  Object L$2;
+  Object L$3;
+  int label;
+  
+  public FlowLiveDataConversions$asLiveData$1$invokeSuspend$$inlined$collect$1$1(FlowLiveDataConversions.asLiveData.1.invokeSuspend..inlined.collect.1 param1, Continuation paramContinuation)
+  {
+    super(paramContinuation);
+  }
+  
+  @Nullable
+  public final Object invokeSuspend(@NotNull Object paramObject)
+  {
+    this.result = paramObject;
+    this.label |= 0x80000000;
+    return this.this$0.emit(null, this);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     androidx.lifecycle.FlowLiveDataConversions.asLiveData.1.invokeSuspend..inlined.collect.1.1
+ * JD-Core Version:    0.7.0.1
+ */

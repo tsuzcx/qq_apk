@@ -15,23 +15,24 @@ final class b
   
   public final boolean a()
   {
-    boolean bool = false;
-    if (this.a != null) {}
-    try
-    {
-      bool = this.a.cancel(false);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    Future localFuture = this.a;
+    if (localFuture != null) {
+      try
+      {
+        boolean bool = localFuture.cancel(false);
+        return bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.f.b
  * JD-Core Version:    0.7.0.1
  */

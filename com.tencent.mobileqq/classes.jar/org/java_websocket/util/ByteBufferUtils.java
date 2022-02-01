@@ -11,25 +11,26 @@ public class ByteBufferUtils
   
   public static int transferByteBuffer(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2)
   {
-    if ((paramByteBuffer1 == null) || (paramByteBuffer2 == null)) {
-      throw new IllegalArgumentException();
-    }
-    int i = paramByteBuffer1.remaining();
-    int j = paramByteBuffer2.remaining();
-    if (i > j)
+    if ((paramByteBuffer1 != null) && (paramByteBuffer2 != null))
     {
-      i = Math.min(i, j);
-      paramByteBuffer1.limit(i);
+      int i = paramByteBuffer1.remaining();
+      int j = paramByteBuffer2.remaining();
+      if (i > j)
+      {
+        i = Math.min(i, j);
+        paramByteBuffer1.limit(i);
+        paramByteBuffer2.put(paramByteBuffer1);
+        return i;
+      }
       paramByteBuffer2.put(paramByteBuffer1);
       return i;
     }
-    paramByteBuffer2.put(paramByteBuffer1);
-    return i;
+    throw new IllegalArgumentException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.util.ByteBufferUtils
  * JD-Core Version:    0.7.0.1
  */

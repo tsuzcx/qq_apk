@@ -22,10 +22,10 @@ public class GetAppSimpleDetailEngine
   
   protected void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt)
   {
-    AppMethodBeat.i(75830);
+    AppMethodBeat.i(102076);
     if (paramJceStruct2 == null)
     {
-      AppMethodBeat.o(75830);
+      AppMethodBeat.o(102076);
       return;
     }
     if ((this.mListener != null) && (paramInt == 0))
@@ -39,17 +39,17 @@ public class GetAppSimpleDetailEngine
           if ((paramJceStruct1 != null) && (paramJceStruct1.size() > 0))
           {
             this.mListener.onExchangedURLSucceed(paramJceStruct1, true);
-            AppMethodBeat.o(75830);
+            AppMethodBeat.o(102076);
             return;
           }
           TMLog.w("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
           this.mListener.onExchangedURLSucceed(null, false);
-          AppMethodBeat.o(75830);
+          AppMethodBeat.o(102076);
           return;
         }
         TMLog.w("GetAppSimpleDetailHttpRequest", " 后台返回的ret错误，错误值为：" + paramJceStruct1.ret);
         this.mListener.onExchangedURLSucceed(null, false);
-        AppMethodBeat.o(75830);
+        AppMethodBeat.o(102076);
       }
     }
     else
@@ -59,27 +59,27 @@ public class GetAppSimpleDetailEngine
         this.mListener.onExchangedURLSucceed(null, false);
       }
     }
-    AppMethodBeat.o(75830);
+    AppMethodBeat.o(102076);
   }
   
   public boolean sendReuqest(ArrayList<AppDetailParam> paramArrayList)
   {
-    AppMethodBeat.i(75829);
+    AppMethodBeat.i(102075);
     GetAppSimpleDetailRequest localGetAppSimpleDetailRequest = new GetAppSimpleDetailRequest();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       localGetAppSimpleDetailRequest.appReqList = paramArrayList;
       super.sendRequest(localGetAppSimpleDetailRequest);
-      AppMethodBeat.o(75829);
+      AppMethodBeat.o(102075);
       return true;
     }
-    AppMethodBeat.o(75829);
+    AppMethodBeat.o(102075);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetAppSimpleDetailEngine
  * JD-Core Version:    0.7.0.1
  */

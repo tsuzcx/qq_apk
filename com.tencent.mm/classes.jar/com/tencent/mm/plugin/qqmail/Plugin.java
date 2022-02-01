@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.qqmail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.qqmail.b.ac;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.qqmail.a.a;
+import com.tencent.mm.plugin.qqmail.model.ab;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements c
+  implements com.tencent.mm.pluginsdk.c.d
 {
-  private a pIo;
+  private d NiZ;
   
   public Plugin()
   {
-    AppMethodBeat.i(67898);
-    this.pIo = new a();
-    AppMethodBeat.o(67898);
+    AppMethodBeat.i(122626);
+    this.NiZ = new d();
+    AppMethodBeat.o(122626);
   }
   
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(67899);
-    com.tencent.mm.plugin.qqmail.a.a locala = new com.tencent.mm.plugin.qqmail.a.a();
-    AppMethodBeat.o(67899);
+    AppMethodBeat.i(122627);
+    a locala = new a();
+    AppMethodBeat.o(122627);
     return locala;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(67900);
-    ac localac = new ac();
-    AppMethodBeat.o(67900);
-    return localac;
+    AppMethodBeat.i(122628);
+    ab localab = new ab();
+    AppMethodBeat.o(122628);
+    return localab;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
-    return this.pIo;
+    return this.NiZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.Plugin
  * JD-Core Version:    0.7.0.1
  */

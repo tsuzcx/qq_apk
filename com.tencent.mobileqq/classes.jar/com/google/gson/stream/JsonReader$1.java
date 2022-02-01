@@ -33,12 +33,16 @@ final class JsonReader$1
       paramJsonReader.peeked = 10;
       return;
     }
-    throw new IllegalStateException("Expected a name but was " + paramJsonReader.peek() + paramJsonReader.locationString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected a name but was ");
+    localStringBuilder.append(paramJsonReader.peek());
+    localStringBuilder.append(paramJsonReader.locationString());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.stream.JsonReader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,6 @@
                 "value": "331"
             },
             "attributes": {
-                "setFrameString:": "-1",
                 "setImageWithURLString:lineup:": [
                     "-1",
                     "-1"
@@ -66,7 +65,6 @@
                 "type": "wrap_content"
             },
             "attributes": {
-                "setFrameString:": "-1",
                 "setText:": "-1",
                 "setTextColorString:": "#8CFFFFFF",
                 "setFontSizeString:": "12",
@@ -88,7 +86,6 @@
                 "value": "311"
             },
             "attributes": {
-                "setFrameString:": "-1",
                 "setText:": "-1",
                 "setTextColorString:": "#FFFFFF",
                 "setBoldFontSizeString:": "17",

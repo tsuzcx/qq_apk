@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/dq" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?a0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/fz" android:background="@drawable/b9" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g0" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b5" android:contentDescription="@string/e5" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kpd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/fz">
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/khv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lb" />
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/khw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/la" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/ayv" android:paddingBottom="@dimen/ayv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <View android:id="@id/bf8" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="fill_parent" />
+        <com.google.android.material.tabs.TabLayout android:id="@id/kct" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicator="@drawable/ayz" app:tabIndicatorColor="@color/a7b" app:tabIndicatorHeight="2.0dip" app:tabMode="e_s" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/a7b" app:tabTextColor="@color/m4" />
+    </LinearLayout>
+    <RelativeLayout android:visibility="visible" android:layout_width="56.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/ksa" android:background="@drawable/b9" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/icons_outlined_me" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fds" android:visibility="gone" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zi" />
+    </RelativeLayout>
+</RelativeLayout>

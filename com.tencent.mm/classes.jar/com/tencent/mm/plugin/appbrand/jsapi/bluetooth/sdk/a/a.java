@@ -1,91 +1,89 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a;
 
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(18)
 public final class a
   extends BluetoothGattCallback
 {
-  public e hGc;
+  private final e rMt;
   
   public a(e parame)
   {
-    this.hGc = parame;
+    this.rMt = parame;
   }
   
   public final void onCharacteristicChanged(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
   {
-    AppMethodBeat.i(94224);
-    this.hGc.onCharacteristicChanged(paramBluetoothGatt, paramBluetoothGattCharacteristic);
-    AppMethodBeat.o(94224);
+    AppMethodBeat.i(144536);
+    this.rMt.onCharacteristicChanged(paramBluetoothGatt, paramBluetoothGattCharacteristic);
+    AppMethodBeat.o(144536);
   }
   
   public final void onCharacteristicRead(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
-    AppMethodBeat.i(94222);
-    this.hGc.onCharacteristicRead(paramBluetoothGatt, paramBluetoothGattCharacteristic, paramInt);
-    AppMethodBeat.o(94222);
+    AppMethodBeat.i(144534);
+    this.rMt.onCharacteristicRead(paramBluetoothGatt, paramBluetoothGattCharacteristic, paramInt);
+    AppMethodBeat.o(144534);
   }
   
   public final void onCharacteristicWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
-    AppMethodBeat.i(94223);
-    this.hGc.onCharacteristicWrite(paramBluetoothGatt, paramBluetoothGattCharacteristic, paramInt);
-    AppMethodBeat.o(94223);
+    AppMethodBeat.i(144535);
+    this.rMt.onCharacteristicWrite(paramBluetoothGatt, paramBluetoothGattCharacteristic, paramInt);
+    AppMethodBeat.o(144535);
   }
   
   public final void onConnectionStateChange(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94220);
-    this.hGc.onConnectionStateChange(paramBluetoothGatt, paramInt1, paramInt2);
-    AppMethodBeat.o(94220);
+    AppMethodBeat.i(144532);
+    this.rMt.onConnectionStateChange(paramBluetoothGatt, paramInt1, paramInt2);
+    AppMethodBeat.o(144532);
   }
   
   public final void onDescriptorRead(BluetoothGatt paramBluetoothGatt, BluetoothGattDescriptor paramBluetoothGattDescriptor, int paramInt)
   {
-    AppMethodBeat.i(94225);
-    this.hGc.onDescriptorRead(paramBluetoothGatt, paramBluetoothGattDescriptor, paramInt);
-    AppMethodBeat.o(94225);
+    AppMethodBeat.i(144537);
+    this.rMt.onDescriptorRead(paramBluetoothGatt, paramBluetoothGattDescriptor, paramInt);
+    AppMethodBeat.o(144537);
   }
   
   public final void onDescriptorWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattDescriptor paramBluetoothGattDescriptor, int paramInt)
   {
-    AppMethodBeat.i(94226);
-    this.hGc.onDescriptorWrite(paramBluetoothGatt, paramBluetoothGattDescriptor, paramInt);
-    AppMethodBeat.o(94226);
+    AppMethodBeat.i(144538);
+    this.rMt.onDescriptorWrite(paramBluetoothGatt, paramBluetoothGattDescriptor, paramInt);
+    AppMethodBeat.o(144538);
   }
   
   public final void onMtuChanged(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94229);
-    this.hGc.onMtuChanged(paramBluetoothGatt, paramInt1, paramInt2);
-    AppMethodBeat.o(94229);
+    AppMethodBeat.i(144541);
+    this.rMt.onMtuChanged(paramBluetoothGatt, paramInt1, paramInt2);
+    AppMethodBeat.o(144541);
   }
   
   public final void onReadRemoteRssi(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94228);
-    this.hGc.onReadRemoteRssi(paramBluetoothGatt, paramInt1, paramInt2);
-    AppMethodBeat.o(94228);
+    AppMethodBeat.i(144540);
+    this.rMt.onReadRemoteRssi(paramBluetoothGatt, paramInt1, paramInt2);
+    AppMethodBeat.o(144540);
   }
   
   public final void onReliableWriteCompleted(BluetoothGatt paramBluetoothGatt, int paramInt)
   {
-    AppMethodBeat.i(94227);
-    this.hGc.onReliableWriteCompleted(paramBluetoothGatt, paramInt);
-    AppMethodBeat.o(94227);
+    AppMethodBeat.i(144539);
+    this.rMt.onReliableWriteCompleted(paramBluetoothGatt, paramInt);
+    AppMethodBeat.o(144539);
   }
   
   public final void onServicesDiscovered(BluetoothGatt paramBluetoothGatt, int paramInt)
   {
-    AppMethodBeat.i(94221);
-    this.hGc.onServicesDiscovered(paramBluetoothGatt, paramInt);
-    AppMethodBeat.o(94221);
+    AppMethodBeat.i(144533);
+    this.rMt.onServicesDiscovered(paramBluetoothGatt, paramInt);
+    AppMethodBeat.o(144533);
   }
 }
 

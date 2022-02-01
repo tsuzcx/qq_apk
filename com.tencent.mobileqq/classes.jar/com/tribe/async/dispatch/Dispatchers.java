@@ -13,24 +13,22 @@ public class Dispatchers
   public static Dispatcher get(@NonNull Looper paramLooper)
   {
     AssertUtils.checkNotNull(paramLooper);
-    Object localObject2 = (Dispatcher)sDispatcherMap.get(Long.valueOf(paramLooper.getThread().getId()));
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    Dispatcher localDispatcher = (Dispatcher)sDispatcherMap.get(Long.valueOf(paramLooper.getThread().getId()));
+    Object localObject = localDispatcher;
+    if (localDispatcher == null)
     {
-      localObject2 = new DefaultDispatcher(paramLooper);
-      localObject1 = (Dispatcher)sDispatcherMap.putIfAbsent(Long.valueOf(paramLooper.getThread().getId()), localObject2);
-      if (localObject1 == null) {}
+      localObject = new DefaultDispatcher(paramLooper);
+      paramLooper = (Dispatcher)sDispatcherMap.putIfAbsent(Long.valueOf(paramLooper.getThread().getId()), localObject);
+      if (paramLooper != null) {
+        localObject = paramLooper;
+      }
     }
-    else
-    {
-      return localObject1;
-    }
-    return localObject2;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.dispatch.Dispatchers
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1" style="@style/mk"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <ImageView android:id="@id/bz2" android:src="@drawable/ag8" style="@style/jd" />
-        <TextView android:id="@id/bzn" android:text="@string/c2x" style="@style/je" />
-        <TextView android:id="@id/bzo" android:text="@string/c2y" style="@style/jf" />
-        <TextView android:id="@id/bzp" android:text="@string/c2z" style="@style/jg" />
+    <LinearLayout android:id="@id/br7" android:layout_height="@dimen/m1" style="@style/nc">
+        <TextView android:id="@android:id/title" style="@style/m4" />
     </LinearLayout>
 </LinearLayout>

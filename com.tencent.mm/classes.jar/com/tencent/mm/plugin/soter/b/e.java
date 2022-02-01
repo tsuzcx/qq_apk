@@ -1,89 +1,87 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.network.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.soter.a.f.b;
 import com.tencent.soter.a.f.e.b;
 
 public final class e
   extends d
-  implements k, com.tencent.soter.a.f.e
+  implements com.tencent.soter.a.f.e
 {
-  private f callback;
-  private com.tencent.soter.a.f.b<e.b> mGF = null;
-  private com.tencent.mm.ai.b rr;
+  private b<e.b> HgL = null;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  public final void a(com.tencent.soter.a.f.b<e.b> paramb)
+  public final void VE(int paramInt)
   {
-    this.mGF = paramb;
-  }
-  
-  public final void bzB()
-  {
-    AppMethodBeat.i(59306);
-    ab.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy:NetSceneSoterMPUpdateAuthKey authkey required");
+    AppMethodBeat.i(130814);
+    Log.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
     if (this.callback != null) {
       this.callback.onSceneEnd(4, -1, "", this);
     }
-    if (this.mGF != null) {
-      this.mGF.cW(new e.b(false));
-    }
-    AppMethodBeat.o(59306);
+    AppMethodBeat.o(130814);
   }
   
-  public final void d(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void a(b<e.b> paramb)
   {
-    AppMethodBeat.i(59305);
-    ab.d("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.HgL = paramb;
+  }
+  
+  public final void d(int paramInt1, int paramInt2, String paramString, com.tencent.mm.network.s params)
+  {
+    AppMethodBeat.i(130812);
+    Log.d("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    if (this.mGF != null)
+    if (this.HgL != null)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.mGF.cW(new e.b(true));
-        AppMethodBeat.o(59305);
+        this.HgL.hf(new e.b(true));
+        AppMethodBeat.o(130812);
         return;
       }
-      this.mGF.cW(new e.b(false));
+      this.HgL.hf(new e.b(false));
     }
-    AppMethodBeat.o(59305);
+    AppMethodBeat.o(130812);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(59304);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(59304);
+    AppMethodBeat.i(130811);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(130811);
     return i;
   }
   
   public final void execute()
   {
-    AppMethodBeat.i(59308);
-    g.Rc().a(this, 0);
-    AppMethodBeat.o(59308);
+    AppMethodBeat.i(130815);
+    com.tencent.mm.kernel.h.aZW().a(this, 0);
+    AppMethodBeat.o(130815);
+  }
+  
+  public final void fuc()
+  {
+    AppMethodBeat.i(130813);
+    Log.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy:NetSceneSoterMPUpdateAuthKey authkey required");
+    if (this.callback != null) {
+      this.callback.onSceneEnd(4, -1, "", this);
+    }
+    if (this.HgL != null) {
+      this.HgL.hf(new e.b(false));
+    }
+    AppMethodBeat.o(130813);
   }
   
   public final int getType()
   {
     return 1185;
-  }
-  
-  public final void wf(int paramInt)
-  {
-    AppMethodBeat.i(59307);
-    ab.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(4, -1, "", this);
-    }
-    AppMethodBeat.o(59307);
   }
 }
 

@@ -10,11 +10,13 @@ public final class StageConstant
   @NotNull
   public static final String QAPM_APPLAUNCH = "QAPM_APPLAUNCH";
   @NotNull
+  public static final String QAPM_APPLAUNCH_END = "QAPM_APPLAUNCH_END";
+  @NotNull
   public static final String RESOURCE_MONITOR = "RESOURCEMONITOR";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.constants.StageConstant
  * JD-Core Version:    0.7.0.1
  */

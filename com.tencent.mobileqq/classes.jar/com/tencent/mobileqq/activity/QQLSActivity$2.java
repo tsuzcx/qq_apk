@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdlz;
+import com.tencent.mobileqq.utils.QQLSSensor;
 import com.tencent.qphone.base.util.QLog;
 
 class QQLSActivity$2
@@ -10,19 +10,23 @@ class QQLSActivity$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "====shutSensor===" + Thread.currentThread().getId());
-    }
-    if (this.this$0.a != null)
+    if (QLog.isColorLevel())
     {
-      this.this$0.a.b();
-      this.this$0.a = null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("====shutSensor===");
+      localStringBuilder.append(Thread.currentThread().getId());
+      QLog.d("QQLSSensor", 2, localStringBuilder.toString());
+    }
+    if (this.this$0.j != null)
+    {
+      this.this$0.j.b();
+      this.this$0.j = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.2
  * JD-Core Version:    0.7.0.1
  */

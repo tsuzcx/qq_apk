@@ -10,24 +10,24 @@ public class CustomLruCache<K, V>
     super(paramInt);
   }
   
-  public V create(K paramK)
+  protected V create(K paramK)
   {
     return super.create(paramK);
   }
   
-  public void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2)
+  protected void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2)
   {
     super.entryRemoved(paramBoolean, paramK, paramV1, paramV2);
   }
   
-  public int sizeOf(K paramK, V paramV)
+  protected int sizeOf(K paramK, V paramV)
   {
     return super.sizeOf(paramK, paramV);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.CustomLruCache
  * JD-Core Version:    0.7.0.1
  */

@@ -25,12 +25,16 @@ final class CollectRecordDataRunnable$reportDbData$1
   public final AsyncSPEditor invoke(@NotNull DefaultPluginConfig paramDefaultPluginConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramDefaultPluginConfig, "it");
-    return BaseInfo.editor.putInt("count_plugin_" + paramDefaultPluginConfig.toString(), paramDefaultPluginConfig.curReportNum);
+    AsyncSPEditor localAsyncSPEditor = BaseInfo.editor;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("count_plugin_");
+    localStringBuilder.append(paramDefaultPluginConfig.toString());
+    return localAsyncSPEditor.putInt(localStringBuilder.toString(), paramDefaultPluginConfig.curReportNum);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.CollectRecordDataRunnable.reportDbData.1
  * JD-Core Version:    0.7.0.1
  */

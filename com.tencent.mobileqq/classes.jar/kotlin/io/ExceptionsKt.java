@@ -10,11 +10,19 @@ public final class ExceptionsKt
   private static final String constructMessage(File paramFile1, File paramFile2, String paramString)
   {
     paramFile1 = new StringBuilder(paramFile1.toString());
-    if (paramFile2 != null) {
-      paramFile1.append(" -> " + paramFile2);
+    if (paramFile2 != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" -> ");
+      localStringBuilder.append(paramFile2);
+      paramFile1.append(localStringBuilder.toString());
     }
-    if (paramString != null) {
-      paramFile1.append(": " + paramString);
+    if (paramString != null)
+    {
+      paramFile2 = new StringBuilder();
+      paramFile2.append(": ");
+      paramFile2.append(paramString);
+      paramFile1.append(paramFile2.toString());
     }
     paramFile1 = paramFile1.toString();
     Intrinsics.checkExpressionValueIsNotNull(paramFile1, "sb.toString()");
@@ -23,7 +31,7 @@ public final class ExceptionsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.ExceptionsKt
  * JD-Core Version:    0.7.0.1
  */

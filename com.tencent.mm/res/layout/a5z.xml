@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bbd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" android:importantForAccessibility="no" />
-    <FrameLayout android:layout_gravity="bottom" android:id="@id/ca4" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:layout_gravity="right" android:id="@id/ca5" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/cqg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/p9" android:gravity="center" android:id="@id/bxp" android:background="@drawable/sj" android:layout_width="@dimen/a5z" android:layout_height="@dimen/a5z" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/cql" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:background="@color/p9" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+        <View android:id="@id/cqm" android:background="@android:color/white" android:visibility="gone" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+    </RelativeLayout>
+</LinearLayout>

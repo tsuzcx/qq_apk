@@ -22,16 +22,16 @@ public class tlv_t126
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     if (this._body_len < 4) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._random_len = util.buf_to_int16(this._buf, this._head_len + 2);
     if (this._random_len + 2 + 2 > this._body_len) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

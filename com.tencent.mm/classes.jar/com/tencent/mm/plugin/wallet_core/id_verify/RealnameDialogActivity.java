@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -13,7 +14,7 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class RealnameDialogActivity
   extends WalletBaseUI
 {
-  private RealnameGuideHelper oww;
+  private RealnameGuideHelper KHD;
   private int type = 1;
   
   public int getLayoutId()
@@ -23,29 +24,47 @@ public class RealnameDialogActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(46589);
+    AppMethodBeat.i(70017);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     if ((paramBundle != null) && (paramBundle.hasExtra("key_realname_guide_helper")))
     {
-      this.oww = ((RealnameGuideHelper)paramBundle.getParcelableExtra("key_realname_guide_helper"));
+      this.KHD = ((RealnameGuideHelper)paramBundle.getParcelableExtra("key_realname_guide_helper"));
       paramBundle = new Bundle();
       paramBundle.putString("realname_verify_process_jump_plugin", "wallet_core");
       paramBundle.putString("realname_verify_process_jump_activity", ".id_verify.RealnameDialogActivity");
       paramBundle.putBoolean("process_finish_stay_orgpage", false);
-      boolean bool1 = this.oww.a(this, paramBundle, new RealnameDialogActivity.1(this), null, true);
-      boolean bool2 = this.oww.a(this, paramBundle, new RealnameDialogActivity.2(this));
+      boolean bool1 = this.KHD.a(this, paramBundle, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(70015);
+          paramAnonymousDialogInterface.dismiss();
+          RealnameDialogActivity.this.finish();
+          AppMethodBeat.o(70015);
+        }
+      }, null, true);
+      boolean bool2 = this.KHD.a(this, paramBundle, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(70016);
+          paramAnonymousDialogInterface.dismiss();
+          RealnameDialogActivity.this.finish();
+          AppMethodBeat.o(70016);
+        }
+      });
       if ((!bool1) && (!bool2)) {
         finish();
       }
-      AppMethodBeat.o(46589);
+      AppMethodBeat.o(70017);
       return;
     }
     finish();
-    AppMethodBeat.o(46589);
+    AppMethodBeat.o(70017);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }

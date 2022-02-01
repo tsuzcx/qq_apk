@@ -28,13 +28,15 @@ public final class FavoriteCKVData$KandianFavoriteItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 64, 72, 82 }, new String[] { "msg_favorite_ext_info", "rpt_bytes_cid", "uint32_type", "uint32_status", "msg_author", "uint64_create_time", "uint64_favorite_time", "uint64_modify_time", "uint64_data_sync_time", "msg_favorite_summary" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null }, KandianFavoriteItem.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 56, 64, 72, 82 }, new String[] { "msg_favorite_ext_info", "rpt_bytes_cid", "uint32_type", "uint32_status", "msg_author", "uint64_create_time", "uint64_favorite_time", "uint64_modify_time", "uint64_data_sync_time", "msg_favorite_summary" }, new Object[] { null, localByteStringMicro, localInteger, localInteger, null, localLong, localLong, localLong, localLong, null }, KandianFavoriteItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.FavoriteCKVData.KandianFavoriteItem
  * JD-Core Version:    0.7.0.1
  */

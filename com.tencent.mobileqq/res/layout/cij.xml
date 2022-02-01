@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:id="@id/mna" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/dn0" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="11.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.AnimationView android:layout_gravity="center" android:id="@id/mn_" android:background="@color/ajr" android:layout_width="45.0dip" android:layout_height="45.0dip" android:scaleType="centerCrop" />
-</FrameLayout>
+    <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="#ff222222" android:id="@id/nu3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="17.0dip" android:text="@string/x5m" />
+    <com.tencent.mobileqq.activity.recent.cur.DragFrameLayout android:id="@id/nsm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="21.0dip">
+        <com.tencent.widget.XListView android:id="@id/nsn" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:dividerHeight="0.0dip" />
+    </com.tencent.mobileqq.activity.recent.cur.DragFrameLayout>
+</LinearLayout>

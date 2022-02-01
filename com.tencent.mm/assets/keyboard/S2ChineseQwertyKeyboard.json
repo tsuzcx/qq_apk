@@ -1,0 +1,326 @@
+{
+  "config": {
+    "vWidth": "@number/ime_width",
+    "vHeight": "@number/ime_keyboard_height",
+    "line": 4,
+    "lineHeight": [
+      56,
+      56,
+      56,
+      56
+    ],
+    "lineGap": 0,
+    "paddingLeft": 2,
+    "marginTop": 0,
+    "swipeable": true
+  },
+  "keyDefaultConfig": {
+    "id": "",
+    "type": 1,
+    "drawerType": "normalType",
+    "mainText": "",
+    "mainTextSize": "@number/ime_text_size",
+    "mainTextColor": "@color/ime_key_text_color",
+    "floatText": "",
+    "floatTextSize": 8,
+    "floatTextColor": "@color/ime_text_up_bg_color",
+    "shadowHeight": 2,
+    "bgCorner": 5,
+    "bgColor": "@color/ime_key_white_color",
+    "shadowColor": "@color/ime_key_white_shadow_color",
+    "initialColor": "@color/ime_key_white_color",
+    "pressMaskColor": "@color/ime_key_pressed_mask_color",
+    "imgSrc": "",
+    "width": 34.5,
+    "height": 46,
+    "leftMargin": 2.725,
+    "leftPadding": 0,
+    "topMargin": 0,
+    "topPadding": 3,
+    "bottomMargin": 0,
+    "rightMargin": 2.725,
+    "rightPadding": 0,
+    "clickable": true,
+    "longClickable": false,
+    "clickFunctionCode": 1,
+    "longClickFunctionCode": 2,
+    "touchFunctionCode": 0,
+    "iconWidth": "@number/S2_icon_width",
+    "iconHeight": "@number/S2_icon_width",
+    "swipeable": false
+  },
+  "keys": [
+    [
+      {
+        "id": "S2_key_q",
+        "mainText": "Q",
+        "leftMargin": "@number/S2_button_margin_small",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_w",
+        "mainText": "W",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_e",
+        "mainText": "E",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_r",
+        "mainText": "R",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_t",
+        "mainText": "T",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_y",
+        "mainText": "Y",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_u",
+        "mainText": "U",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_i",
+        "mainText": "I",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_o",
+        "mainText": "O",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_p",
+        "mainText": "P",
+        "style": "@style/WxImeS2WhiteButton"
+      }
+    ],
+    [
+      {
+        "id": "S2_key_a",
+        "mainText": "A",
+        "width": "@number/S2_button_width_60_225",
+        "leftPadding": "@number/S2_button_left_right_padding_20_275",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_s",
+        "mainText": "S",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_d",
+        "mainText": "D",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_f",
+        "mainText": "F",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_g",
+        "mainText": "G",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_h",
+        "mainText": "H",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_j",
+        "mainText": "J",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_k",
+        "mainText": "K",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_l",
+        "mainText": "L",
+        "width": "@number/S2_button_width_62_285",
+        "rightPadding": "@number/S2_button_left_right_padding_22_9",
+        "style": "@style/WxImeS2WhiteButton"
+      }
+    ],
+    [
+      {
+        "id": "shift",
+        "type": "@number/key_type_function",
+        "drawerType": "imageType",
+        "iconWidth": "@number/S2_icon_width",
+        "iconHeight": "@number/S2_icon_width",
+        "leftMargin": "@number/S2_button_margin_large",
+        "width": "@number/S2_button_width_large_53",
+        "rightPadding": "@number/S2_button_left_right_padding_7",
+        "rightMargin": 0,
+        "imgSrc": "@raw/icons_outlined_capslock",
+        "bgColor": "@color/ime_key_grey_color",
+        "shadowColor": "@color/ime_key_grey_shadow_color",
+        "initialColor": "@color/ime_key_grey_color",
+        "touchFunctionCode": "@number/key_function_upper",
+        "style": "@style/WxImeS2GreyFunctionButton"
+      },
+      {
+        "id": "S2_key_z",
+        "drawerType": "floatType",
+        "leftMargin": "@number/S2_button_left_right_padding_4_225",
+        "mainText": "Z",
+        "floatText": "“",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_x",
+        "drawerType": "floatType",
+        "mainText": "X",
+        "floatText": "、",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_c",
+        "drawerType": "floatType",
+        "mainText": "C",
+        "floatText": "～",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_v",
+        "drawerType": "floatType",
+        "mainText": "V",
+        "floatText": "：",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_b",
+        "drawerType": "floatType",
+        "mainText": "B",
+        "floatText": "；",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_n",
+        "drawerType": "floatType",
+        "mainText": "N",
+        "floatText": "？",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "S2_key_m",
+        "drawerType": "floatType",
+        "mainText": "M",
+        "floatText": "！",
+        "rightMargin": "@number/S2_button_left_right_padding_4_125",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2WhiteButton"
+      },
+      {
+        "id": "delete",
+        "type": "@number/key_type_function",
+        "drawerType": "imageType",
+        "iconWidth": "@number/S2_icon_width",
+        "iconHeight": "@number/S2_icon_width",
+        "width": "@number/S2_button_width_large_53",
+        "leftPadding": "@number/S2_button_left_right_padding_7",
+        "leftMargin": 0,
+        "imgSrc": "@raw/icons_outlined_delemoji",
+        "bgColor": "@color/ime_key_grey_color",
+        "shadowColor": "@color/ime_key_grey_shadow_color",
+        "initialColor": "@color/ime_key_grey_color",
+        "touchFunctionCode": "@number/key_function_delete",
+        "style": "@style/WxImeS2GreyFunctionButton"
+      }
+    ],
+    [
+      {
+        "id": "symbol",
+        "mainText": "符",
+        "mainTextSize": "@number/ime_text_size",
+        "type": "@number/key_type_function",
+        "leftMargin": "@number/S2_button_margin_large",
+        "bgColor": "@color/ime_key_grey_color",
+        "shadowColor": "@color/ime_key_grey_shadow_color",
+        "initialColor": "@color/ime_key_grey_color",
+        "touchFunctionCode": "@number/key_function_symbol",
+        "style": "@style/WxImeS2GreyFunctionButton"
+      },
+      {
+        "id": "num",
+        "mainText": "123",
+        "mainTextSize": "@number/ime_text_size",
+        "type": "@number/key_type_function",
+        "bgColor": "@color/ime_key_grey_color",
+        "touchFunctionCode": "@number/key_function_number",
+        "style": "@style/WxImeS2GreyFunctionButton"
+      },
+      {
+        "id": "at",
+        "drawerType": "floatType",
+        "type": "@number/key_type_text_symbol",
+        "mainText": "@",
+        "floatText": "#",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2LastLineWhiteButton"
+      },
+      {
+        "id": "space",
+        "mainTextSize": "@number/ime_text_size",
+        "type": "@number/key_type_function",
+        "mainText": "空格",
+        "width": "@number/S2_button_width_75",
+        "touchFunctionCode": "@number/key_function_space",
+        "style": "@style/WxImeS2LastLineWhiteButton"
+      },
+      {
+        "id": "dot",
+        "drawerType": "floatType",
+        "type": "@number/key_type_text_symbol",
+        "mainText": "   ， ",
+        "floatText": "   。 ",
+        "longClickable": true,
+        "swipeable": "true",
+        "style": "@style/WxImeS2LastLineWhiteButton"
+      },
+      {
+        "id": "chSwitch",
+        "drawerType": "chSwitchType",
+        "type": "@number/key_type_function",
+        "touchFunctionCode": "@number/key_function_chinese_to_english",
+        "style": "@style/WxImeS2GreyFunctionButton"
+      },
+      {
+        "id": "enter",
+        "mainText": "换行",
+        "type": "@number/key_type_function",
+        "width": "@number/S2_button_width_77",
+        "mainTextSize": "@number/ime_text_size",
+        "touchFunctionCode": "@number/key_function_action",
+        "style": "@style/WxImeS2GreyFunctionButton"
+      }
+    ]
+  ]
+}

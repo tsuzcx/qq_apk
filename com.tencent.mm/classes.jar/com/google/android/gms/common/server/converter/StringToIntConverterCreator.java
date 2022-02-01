@@ -13,7 +13,7 @@ public class StringToIntConverterCreator
   
   public StringToIntConverter createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61459);
+    AppMethodBeat.i(11951);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     ArrayList localArrayList = null;
@@ -34,7 +34,7 @@ public class StringToIntConverterCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new StringToIntConverter(i, localArrayList);
-    AppMethodBeat.o(61459);
+    AppMethodBeat.o(11951);
     return paramParcel;
   }
   
@@ -45,7 +45,7 @@ public class StringToIntConverterCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.converter.StringToIntConverterCreator
  * JD-Core Version:    0.7.0.1
  */

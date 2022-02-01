@@ -5,89 +5,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aofm;
-import bexu;
-import biqn;
-import biqw;
-import bjoa;
-import bjog;
-import bjpz;
-import bjwf;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import java.io.File;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
 public class QzoneVerticalVideoPluginProxyActivity
   extends PluginProxyFragmentActivity
 {
-  private static final String jdField_a_of_type_JavaLangString = QzoneVerticalVideoPluginProxyActivity.class.getSimpleName();
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private static final String LAUNCH_NAME = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+  private static final String TAG = "QzoneVerticalVideoPluginProxyActivity";
+  private static final String[] TRANSLUCENT_NOTITLE_ACTIVITY_LIST = new String[0];
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
+  private static boolean isStringInArray(String[] paramArrayOfString, String paramString)
   {
-    Class localClass = bjwf.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
-    paramIntent.putExtra("userQqResources", 2);
-    paramIntent.putExtra("useSkinEngine", false);
-    paramIntent.putExtra("param_plugin_gesturelock", false);
-    Object localObject;
-    if (QzoneVerticalVideoDownloadActivity.useLocalPlugin("qzone_vertical_video_plugin.apk"))
+    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
-      localObject = new biqw(0);
-      ((biqw)localObject).jdField_a_of_type_JavaLangString = paramString;
-      ((biqw)localObject).e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-      ((biqw)localObject).jdField_a_of_type_JavaLangClass = localClass;
-      ((biqw)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-      ((biqw)localObject).jdField_b_of_type_Int = paramInt;
-      ((biqw)localObject).c = 15000;
-      ((biqw)localObject).f = null;
-      ((biqw)localObject).jdField_b_of_type_Boolean = false;
-      ((biqw)localObject).jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-      ((biqw)localObject).d = "QZoneVerticalVideo";
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginDebug", 2, "加载原始插件");
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
       }
-      biqn.a(paramActivity, (biqw)localObject);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
-      }
-      return;
-      if (new File(bjpz.a(paramActivity), "qzone_vertical_video_plugin.apk").exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginDebug", 2, "launchPluginActivityForResult 加载动态包:hackPluginID:qzone_vertical_video_plugin.apk");
-        }
-        localObject = new bjog(0);
-        ((bjog)localObject).jdField_a_of_type_JavaLangString = paramString;
-        ((bjog)localObject).e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-        ((bjog)localObject).jdField_a_of_type_JavaLangClass = localClass;
-        ((bjog)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-        ((bjog)localObject).jdField_b_of_type_Int = paramInt;
-        ((bjog)localObject).c = 15000;
-        ((bjog)localObject).f = null;
-        ((bjog)localObject).jdField_a_of_type_Boolean = false;
-        ((bjog)localObject).jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-        ((bjog)localObject).d = "QZoneVerticalVideo";
-        bjoa.a(paramActivity, (bjog)localObject);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e("PluginDebug", 2, "launchPluginActivityForResult 加载动态包不存在");
-      }
-    }
-  }
-  
-  private static boolean b(String[] paramArrayOfString, String paramString)
-  {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
       int j = paramArrayOfString.length;
       int i = 0;
       while (i < j)
@@ -98,9 +39,36 @@ public class QzoneVerticalVideoPluginProxyActivity
         i += 1;
       }
     }
+    return false;
   }
   
-  public void attachBaseContext(Context paramContext)
+  public static void launchPluginActivityForResult(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
+  {
+    Class localClass = QzoneVerticalVideoPluginProxyActivity.PluginProxyFactory.getPluginProxyActivityClass("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
+    paramIntent.putExtra("userQqResources", 2);
+    paramIntent.putExtra("useSkinEngine", false);
+    paramIntent.putExtra("param_plugin_gesturelock", false);
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.c = paramString;
+    localPluginParams.h = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+    localPluginParams.i = localClass;
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = paramInt;
+    localPluginParams.r = 15000;
+    localPluginParams.q = null;
+    localPluginParams.p = false;
+    localPluginParams.d = "qzone_vertical_video_plugin.apk";
+    localPluginParams.g = "QZoneVerticalVideo";
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginDebug", 2, "加载原始插件");
+    }
+    IPluginManager.a(paramActivity, localPluginParams);
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
+    }
+  }
+  
+  protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
   }
@@ -110,42 +78,42 @@ public class QzoneVerticalVideoPluginProxyActivity
     return "qzone_vertical_video_plugin.apk";
   }
   
-  public int getPluginResType()
+  protected int getPluginResType()
   {
     return 2;
   }
   
-  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
+  protected Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bjwf.a(paramString);
+    return QzoneVerticalVideoPluginProxyActivity.PluginProxyFactory.getPluginProxyActivityClass(paramString);
   }
   
-  public int getThemeResId()
+  protected int getThemeResId()
   {
     return 0;
   }
   
-  public void handleCrash(Bundle paramBundle, Throwable paramThrowable)
+  protected void handleCrash(Bundle paramBundle, Throwable paramThrowable)
   {
     super.handleCrash(paramBundle, paramThrowable);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bexu.a(BaseApplicationImpl.getContext(), false, 5);
-    aofm.a(BaseApplicationImpl.getContext(), 2, false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 5);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(BaseApplicationImpl.getContext(), 2, false);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(BaseApplicationImpl.getContext(), 2, true);
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

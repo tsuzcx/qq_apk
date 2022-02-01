@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="qzone_top_banner_outter_container"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:layout_width="288.0dip" android:layout_height="64.0dip" android:contentDescription="qzone_top_banner_inner_container">
+        <ViewStub android:id="@id/qz_feed_push_banner" android:layout="@layout/qzone_stub_feed_push_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/qz_music_banner" android:layout="@layout/qzone_stub_music_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/qz_network_banner" android:layout="@layout/qzone_stub_feedlist_notice_banner" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/qz_cover_guide_banner" android:layout="@layout/qzone_stub_cover_guide_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/qz_credit_appeal_banner" android:layout="@layout/qzone_stub_credit_appeal_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+</FrameLayout>

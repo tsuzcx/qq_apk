@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/profile_tips_netvoice" android:layout_width="fill_parent" android:layout_height="@dimen/info_card_tips_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/qq_profilecard_name_text_size12" android:textColor="@color/white" android:gravity="center_vertical" android:id="@id/info_card_netvoice" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/info_card_tips_height" android:text="@string/info_card_netvoice_tip_text" android:includeFontPadding="false" android:drawableLeft="@drawable/qq_profilecard_netvoice_tip_icon" android:drawablePadding="7.0dip" />
+</LinearLayout>

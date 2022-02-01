@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/gf"
+<RelativeLayout android:gravity="center" android:id="@id/aue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/m0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gg">
-        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
-        <RelativeLayout android:orientation="horizontal" android:id="@id/an8" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom android:id="@id/aso" android:layout_marginLeft="@dimen/a0p" android:layout_marginRight="@dimen/a0p" style="@style/hj" />
-            <ProgressBar android:id="@id/asp" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:indeterminateDrawable="@drawable/z1" android:layout_centerInParent="true" />
-            <TextView android:textSize="@dimen/nq" android:textColor="@color/a6q" android:gravity="right" android:id="@id/asq" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/ne" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/la" android:layout_alignLeft="@id/aso" android:layout_alignRight="@id/aso" android:layout_alignBottom="@id/aso" />
-            <ImageView android:id="@id/asr" android:background="@null" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+    <View android:id="@id/ah9" android:background="@color/FG_4" android:layout_width="1.0dip" android:layout_height="15.0dip" android:layout_centerInParent="true" android:layerType="software" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:gravity="center" android:id="@id/kwx" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/kww" android:layout_centerInParent="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:gravity="center" android:id="@id/kww" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/ah9" android:layout_alignParentTop="true" android:layout_centerInParent="true" />
+</RelativeLayout>

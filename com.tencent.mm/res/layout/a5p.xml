@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a6q" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/az" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/ahh" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cpw" />
-</LinearLayout>
+    <com.tencent.mm.ui.base.MMTextureView android:id="@id/ea0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/e_z" android:background="@color/UN_BW_0_Alpha_0_5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.flash.view.FaceFlashReflectMask android:id="@id/ea6" android:background="@color/az" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/cpy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bts" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.flash.view.FaceNumberLayout android:gravity="center" android:id="@id/ea2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/cou" android:layout_width="24.0dip" android:layout_height="7.0dip" android:layout_marginTop="213.0dip" android:src="@drawable/btt" android:layout_centerHorizontal="true" />
+    <ProgressBar android:id="@id/cq5" android:visibility="gone" android:layout_width="@dimen/a5v" android:layout_height="@dimen/a5v" android:layout_centerHorizontal="true" style="@style/a6s" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/az" android:id="@id/cqn" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cju" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cg">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/ea_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/bv" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/cd" android:layout_centerHorizontal="true" />
+        <com.tencent.mm.ui.base.MMAutoSizeTextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/BW_0" android:gravity="center" android:id="@id/ea9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fl_pose_not_in_rect" android:layout_below="@id/ea_" android:layout_centerHorizontal="true" android:accessibilityLiveRegion="polite" />
+        <com.tencent.mm.ui.base.MMAutoSizeTextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/BW_0" android:gravity="center" android:id="@id/ea8" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ea_" android:layout_centerHorizontal="true" android:accessibilityLiveRegion="polite" />
+    </RelativeLayout>
+</RelativeLayout>

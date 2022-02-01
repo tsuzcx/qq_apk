@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:drawable="@drawable/qcircle_skin_shape_blue_line" />
+    <item android:drawable="@drawable/trans" />
+</selector>

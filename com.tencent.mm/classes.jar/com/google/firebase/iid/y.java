@@ -20,29 +20,29 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 public final class y
   implements ServiceConnection
 {
-  private final Context bfj;
-  private final Intent bgc;
-  private final ScheduledExecutorService bgd;
-  private final Queue<u> bge;
-  private w bgf;
-  private boolean bgg;
+  private final Context dCI;
+  private final Intent dDA;
+  private final ScheduledExecutorService dDB;
+  private final Queue<u> dDC;
+  private w dDD;
+  private boolean dDE;
   
   public y(Context paramContext, String paramString)
   {
     this(paramContext, paramString, new ScheduledThreadPoolExecutor(0));
-    AppMethodBeat.i(108778);
-    AppMethodBeat.o(108778);
+    AppMethodBeat.i(4214);
+    AppMethodBeat.o(4214);
   }
   
   private y(Context paramContext, String paramString, ScheduledExecutorService paramScheduledExecutorService)
   {
-    AppMethodBeat.i(108779);
-    this.bge = new ArrayDeque();
-    this.bgg = false;
-    this.bfj = paramContext.getApplicationContext();
-    this.bgc = new Intent(paramString).setPackage(this.bfj.getPackageName());
-    this.bgd = paramScheduledExecutorService;
-    AppMethodBeat.o(108779);
+    AppMethodBeat.i(4215);
+    this.dDC = new ArrayDeque();
+    this.dDE = false;
+    this.dCI = paramContext.getApplicationContext();
+    this.dDA = new Intent(paramString).setPackage(this.dCI.getPackageName());
+    this.dDB = paramScheduledExecutorService;
+    AppMethodBeat.o(4215);
   }
   
   private final void zzc()
@@ -52,41 +52,41 @@ public final class y
       w localw;
       try
       {
-        AppMethodBeat.i(108781);
+        AppMethodBeat.i(4217);
         Log.isLoggable("EnhancedIntentService", 3);
-        if (this.bge.isEmpty()) {
-          break label287;
+        if (this.dDC.isEmpty()) {
+          break label291;
         }
         Log.isLoggable("EnhancedIntentService", 3);
-        if ((this.bgf == null) || (!this.bgf.isBinderAlive())) {
+        if ((this.dDD == null) || (!this.dDD.isBinderAlive())) {
           break;
         }
         Log.isLoggable("EnhancedIntentService", 3);
-        Object localObject = (u)this.bge.poll();
-        localw = this.bgf;
+        Object localObject = (u)this.dDC.poll();
+        localw = this.dDD;
         if (Binder.getCallingUid() != Process.myUid())
         {
           localObject = new SecurityException("Binding only allowed within app");
-          AppMethodBeat.o(108781);
+          AppMethodBeat.o(4217);
           throw ((Throwable)localObject);
         }
       }
       finally {}
       Log.isLoggable("EnhancedIntentService", 3);
-      if (localw.bfZ.i(localu.intent))
+      if (localw.dDx.i(localu.intent))
       {
         localu.finish();
       }
       else
       {
         Log.isLoggable("EnhancedIntentService", 3);
-        localw.bfZ.bfP.execute(new x(localw, localu));
+        localw.dDx.dDn.execute(new x(localw, localu));
       }
     }
     boolean bool;
     if (Log.isLoggable("EnhancedIntentService", 3))
     {
-      if (!this.bgg)
+      if (!this.dDE)
       {
         bool = true;
         new StringBuilder(39).append("binder is dead. start connection? ").append(bool);
@@ -94,39 +94,39 @@ public final class y
     }
     else
     {
-      if (this.bgg) {
-        break label279;
+      if (this.dDE) {
+        break label282;
       }
-      this.bgg = true;
+      this.dDE = true;
     }
     for (;;)
     {
       try
       {
-        bool = ConnectionTracker.getInstance().bindService(this.bfj, this.bgc, this, 65);
+        bool = ConnectionTracker.getInstance().bindService(this.dCI, this.dDA, this, 65);
         if (!bool) {
           continue;
         }
-        AppMethodBeat.o(108781);
+        AppMethodBeat.o(4217);
         return;
       }
       catch (SecurityException localSecurityException)
       {
-        label279:
-        label287:
+        label282:
+        label291:
         continue;
       }
       bool = false;
       break;
-      if (!this.bge.isEmpty())
+      if (!this.dDC.isEmpty())
       {
-        ((u)this.bge.poll()).finish();
+        ((u)this.dDC.poll()).finish();
       }
       else
       {
-        AppMethodBeat.o(108781);
+        AppMethodBeat.o(4217);
         continue;
-        AppMethodBeat.o(108781);
+        AppMethodBeat.o(4217);
       }
     }
   }
@@ -135,11 +135,11 @@ public final class y
   {
     try
     {
-      AppMethodBeat.i(108780);
+      AppMethodBeat.i(4216);
       Log.isLoggable("EnhancedIntentService", 3);
-      this.bge.add(new u(paramIntent, paramPendingResult, this.bgd));
+      this.dDC.add(new u(paramIntent, paramPendingResult, this.dDB));
       zzc();
-      AppMethodBeat.o(108780);
+      AppMethodBeat.o(4216);
       return;
     }
     finally
@@ -151,11 +151,11 @@ public final class y
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    AppMethodBeat.i(108782);
+    AppMethodBeat.i(4218);
     try
     {
-      this.bgg = false;
-      this.bgf = ((w)paramIBinder);
+      this.dDE = false;
+      this.dDD = ((w)paramIBinder);
       if (Log.isLoggable("EnhancedIntentService", 3))
       {
         paramComponentName = String.valueOf(paramComponentName);
@@ -166,25 +166,25 @@ public final class y
     }
     finally
     {
-      AppMethodBeat.o(108782);
+      AppMethodBeat.o(4218);
     }
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    AppMethodBeat.i(108783);
+    AppMethodBeat.i(4219);
     if (Log.isLoggable("EnhancedIntentService", 3))
     {
       paramComponentName = String.valueOf(paramComponentName);
       new StringBuilder(String.valueOf(paramComponentName).length() + 23).append("onServiceDisconnected: ").append(paramComponentName);
     }
     zzc();
-    AppMethodBeat.o(108783);
+    AppMethodBeat.o(4219);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.y
  * JD-Core Version:    0.7.0.1
  */

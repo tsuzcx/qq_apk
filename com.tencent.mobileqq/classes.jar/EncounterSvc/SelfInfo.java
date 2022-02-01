@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class SelfInfo
   extends JceStruct
 {
-  public int NearRanking;
-  public byte cAge;
-  public byte cSex;
-  public int charm;
-  public int charm_level;
-  public byte god_flag;
+  public int NearRanking = 0;
+  public byte cAge = 0;
+  public byte cSex = 0;
+  public int charm = 0;
+  public int charm_level = 0;
+  public byte god_flag = 0;
   public int iVoteIncrement = -1;
-  public int iVoteNum;
+  public int iVoteNum = 0;
   public String strBirthDay = "";
   public String strNick = "";
   
@@ -52,11 +52,13 @@ public final class SelfInfo
   {
     paramJceOutputStream.write(this.cSex, 0);
     paramJceOutputStream.write(this.cAge, 1);
-    if (this.strBirthDay != null) {
-      paramJceOutputStream.write(this.strBirthDay, 2);
+    String str = this.strBirthDay;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 3);
+    str = this.strNick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iVoteNum, 4);
     paramJceOutputStream.write(this.iVoteIncrement, 5);
@@ -68,7 +70,7 @@ public final class SelfInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.SelfInfo
  * JD-Core Version:    0.7.0.1
  */

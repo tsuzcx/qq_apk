@@ -49,15 +49,17 @@ public final class oidb_0x8dd$NearbyPeople
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 66, 72, 80, 88, 96, 104, 112, 120, 128, 136, 146, 154, 162, 170, 176, 184, 194, 200, 208, 224, 232, 240, 250 }, new String[] { "uint64_uin", "uint64_tinyid", "uint32_distance", "uint64_timestamp", "int32_lat", "int32_lon", "str_description", "bytes_nick", "uint32_gender", "uint32_age", "uint32_charm", "uint32_charm_level", "uint32_charm_shown", "uint32_profession", "uint32_constellation", "uint32_god_flag", "uint32_vip_type", "msg_third_line_info", "msg_anchor_info", "bytes_video_face", "bytes_picture_face", "uint32_real_video_flag", "bool_online", "msg_anchor_1v1_info", "is_authen", "index", "now_id", "logo_level", "uint32_marriage", "feed_info" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Boolean.valueOf(false), null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null }, NearbyPeople.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 66, 72, 80, 88, 96, 104, 112, 120, 128, 136, 146, 154, 162, 170, 176, 184, 194, 200, 208, 224, 232, 240, 250 }, new String[] { "uint64_uin", "uint64_tinyid", "uint32_distance", "uint64_timestamp", "int32_lat", "int32_lon", "str_description", "bytes_nick", "uint32_gender", "uint32_age", "uint32_charm", "uint32_charm_level", "uint32_charm_shown", "uint32_profession", "uint32_constellation", "uint32_god_flag", "uint32_vip_type", "msg_third_line_info", "msg_anchor_info", "bytes_video_face", "bytes_picture_face", "uint32_real_video_flag", "bool_online", "msg_anchor_1v1_info", "is_authen", "index", "now_id", "logo_level", "uint32_marriage", "feed_info" }, new Object[] { localLong, localLong, localInteger, localLong, localInteger, localInteger, "", localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null, null, localByteStringMicro2, localByteStringMicro3, localInteger, Boolean.valueOf(false), null, localInteger, localInteger, localLong, localInteger, localInteger, null }, NearbyPeople.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople
  * JD-Core Version:    0.7.0.1
  */

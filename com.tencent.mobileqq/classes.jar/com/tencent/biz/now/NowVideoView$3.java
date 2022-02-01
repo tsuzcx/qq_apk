@@ -11,39 +11,35 @@ class NowVideoView$3
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if (this.this$0.z != null) {
+      this.this$0.z.set(true);
+    } else {
+      this.this$0.z = new AtomicBoolean(true);
     }
     for (;;)
     {
-      if ((this != null) && (!this.this$0.jdField_a_of_type_Boolean))
-      {
-        if ((this.this$0.jdField_a_of_type_Long != 0L) && (System.currentTimeMillis() - this.this$0.jdField_a_of_type_Long > 2000L))
+      if (!this.this$0.l) {
+        if ((this.this$0.y != 0L) && (System.currentTimeMillis() - this.this$0.y > 2000L))
         {
           if (QLog.isColorLevel()) {
             QLog.d("NowVideoView", 2, "no draw for Now");
           }
-          this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
+          this.this$0.m.sendEmptyMessage(1003);
         }
-      }
-      else
-      {
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-        continue;
       }
       try
       {
         Thread.sleep(1000L);
       }
       catch (Exception localException) {}
+      this.this$0.z.set(false);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoView.3
  * JD-Core Version:    0.7.0.1
  */

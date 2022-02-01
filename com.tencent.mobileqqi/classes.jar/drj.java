@@ -1,60 +1,13 @@
-import android.app.Dialog;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
 
-public class drj
-  extends DiscussionObserver
+class drj
+  implements Runnable
 {
-  public drj(TroopMemberListActivity paramTroopMemberListActivity) {}
+  drj(dri paramdri, boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      TroopMemberListActivity.a(this.a, 0L);
-      this.a.c = null;
-      this.a.c(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Drx != null) {
-        this.a.jdField_a_of_type_Drx.a();
-      }
-      if (TroopMemberListActivity.a(this.a))
-      {
-        this.a.b(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Dsd != null) {
-          this.a.jdField_a_of_type_Dsd.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      return;
-      QQToast.a(this.a, 1, this.a.getString(2131562054), 0).b(this.a.d());
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2)
-  {
-    this.a.runOnUiThread(new drk(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    TroopMemberListActivity.a(this.jdField_a_of_type_Dri.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "");
   }
 }
 

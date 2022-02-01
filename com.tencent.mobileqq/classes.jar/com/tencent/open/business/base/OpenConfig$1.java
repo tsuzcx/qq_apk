@@ -1,21 +1,25 @@
 package com.tencent.open.business.base;
 
-import bfmx;
+import com.tencent.open.base.LogUtility;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class OpenConfig$1
+class OpenConfig$1
   implements Runnable
 {
-  public OpenConfig$1(bfmx parambfmx) {}
+  OpenConfig$1(OpenConfig paramOpenConfig) {}
   
   public void run()
   {
-    String str = this.this$0.a("com.tencent.open.config.json");
+    Object localObject = this.this$0.a("com.tencent.open.config.json");
     try
     {
-      this.this$0.a = new JSONObject(str);
-      bfmx.a(this.this$0, true);
+      this.this$0.e = new JSONObject((String)localObject);
+      OpenConfig.a(this.this$0, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("config=");
+      ((StringBuilder)localObject).append(this.this$0.e.toString());
+      LogUtility.c("TAMST_WAKE", ((StringBuilder)localObject).toString());
       return;
     }
     catch (JSONException localJSONException) {}
@@ -23,7 +27,7 @@ public class OpenConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.OpenConfig.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,52 @@
 package com.tencent.mm.plugin.music.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.apr;
-import com.tencent.mm.protocal.protobuf.aps;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.csd;
+import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private b fBd;
-  private apr oZP;
-  public String oZQ;
+  private csd LMY;
+  public String LMZ;
+  private h callback;
+  private com.tencent.mm.am.c oDw;
   public String playUrl;
   
   public c(String paramString)
   {
-    AppMethodBeat.i(104968);
-    this.oZQ = "";
+    AppMethodBeat.i(63099);
+    this.LMZ = "";
     this.playUrl = "";
-    b.a locala = new b.a();
+    c.a locala = new c.a();
     locala.funcId = 769;
     locala.uri = "/cgi-bin/micromsg-bin/getshakemusicurl";
-    locala.fsX = new apr();
-    locala.fsY = new aps();
-    this.fBd = locala.ado();
-    this.oZP = ((apr)this.fBd.fsV.fta);
-    this.oZP.xfv = paramString;
+    locala.otE = new csd();
+    locala.otF = new cse();
+    this.oDw = locala.bEF();
+    this.LMY = ((csd)c.b.b(this.oDw.otB));
+    this.LMY.aayu = paramString;
     this.playUrl = paramString;
-    ab.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "request music url:%s", new Object[] { paramString });
-    AppMethodBeat.o(104968);
+    Log.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "request music url:%s", new Object[] { paramString });
+    AppMethodBeat.o(63099);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(104969);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(104969);
+    AppMethodBeat.i(63100);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(63100);
     return i;
   }
   
@@ -56,32 +55,32 @@ public final class c
     return 769;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(104970);
-    ab.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(63101);
+    Log.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(104970);
+      AppMethodBeat.o(63101);
       return;
     }
-    paramq = (aps)this.fBd.fsW.fta;
+    params = (cse)c.c.b(this.oDw.otC);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (paramq != null)
+    if (params != null)
     {
-      this.oZQ = paramq.xfv;
-      ab.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "tempPlayUrl:%s", new Object[] { this.oZQ });
-      AppMethodBeat.o(104970);
+      this.LMZ = params.aayu;
+      Log.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "tempPlayUrl:%s", new Object[] { this.LMZ });
+      AppMethodBeat.o(63101);
       return;
     }
-    ab.e("MicroMsg.Music.NetSceneGetShakeMusicUrl", "response is null");
-    AppMethodBeat.o(104970);
+    Log.e("MicroMsg.Music.NetSceneGetShakeMusicUrl", "response is null");
+    AppMethodBeat.o(63101);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.b.c
  * JD-Core Version:    0.7.0.1
  */

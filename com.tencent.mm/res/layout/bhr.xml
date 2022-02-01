@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/cc7" android:layout_width="@dimen/a93" android:layout_height="@dimen/a93" android:layout_alignParentTop="true" android:contentDescription="@string/k4" android:layout_marginStart="@dimen/cv" android:layout_alignParentStart="true" />
+    <Button android:textColor="@color/ahw" android:id="@id/ccn" android:background="@color/Orange" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/a12" android:layout_alignParentRight="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_marginEnd="@dimen/cp" style="@style/oi" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/etj" android:background="@drawable/w2" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/d0" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/etk" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_half_screen_mode" app:iconColor="@android:color/black" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/BW_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gy2" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/etf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gxy" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/etg" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_help" android:layout_marginStart="@dimen/bv" app:iconColor="@color/az" />
+    </LinearLayout>
+</RelativeLayout>

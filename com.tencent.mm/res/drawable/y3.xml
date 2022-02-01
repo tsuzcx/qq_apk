@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/bdw" />
-    <item android:state_pressed="true" android:drawable="@drawable/bdw" />
-    <item android:drawable="@drawable/bdv" />
-</selector>
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#4dffffff" />
+            <corners android:radius="2.0dip" />
+            <size android:height="@dimen/bv" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#ffffffff" />
+                <corners android:radius="2.0dip" />
+                <size android:height="@dimen/bv" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -27,7 +27,7 @@ public final class Oidb_0x5cf$ReqBody
   public static final int UINT32_TYPE_FIELD_NUMBER = 3;
   public static final int UINT32_VERSION_FIELD_NUMBER = 1;
   public static final int UINT64_TOUIN_FIELD_NUMBER = 4;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 21, 24, 32, 40, 48, 58, 64, 72, 80, 88, 96, 104, 112, 122, 130 }, new String[] { "uint32_version", "fixed32_sequence", "uint32_type", "uint64_touin", "uint32_startindex", "uint32_reqnum", "str_reserve", "uint32_getFlag", "uint32_starttime", "uint32_cleartime", "uint32_need_unread_undecide_num", "uint32_need_comm_friend", "uint32_need_unread_noagree_count", "uint32_need_group_uin", "msg_del_msg_info", "msg_clr_msg_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBFixed32Field fixed32_sequence = PBField.initFixed32(0);
   public Oidb_0x5cf.ClrMsgInfo msg_clr_msg_info = new Oidb_0x5cf.ClrMsgInfo();
   public Oidb_0x5cf.DelMsgInfo msg_del_msg_info = new Oidb_0x5cf.DelMsgInfo();
@@ -44,10 +44,16 @@ public final class Oidb_0x5cf$ReqBody
   public final PBUInt32Field uint32_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_version = PBField.initUInt32(0);
   public final PBUInt64Field uint64_touin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 21, 24, 32, 40, 48, 58, 64, 72, 80, 88, 96, 104, 112, 122, 130 }, new String[] { "uint32_version", "fixed32_sequence", "uint32_type", "uint64_touin", "uint32_startindex", "uint32_reqnum", "str_reserve", "uint32_getFlag", "uint32_starttime", "uint32_cleartime", "uint32_need_unread_undecide_num", "uint32_need_comm_friend", "uint32_need_unread_noagree_count", "uint32_need_group_uin", "msg_del_msg_info", "msg_clr_msg_info" }, new Object[] { localInteger, localInteger, localInteger, Long.valueOf(0L), localInteger, localInteger, "", localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null, null }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.ReqBody
  * JD-Core Version:    0.7.0.1
  */

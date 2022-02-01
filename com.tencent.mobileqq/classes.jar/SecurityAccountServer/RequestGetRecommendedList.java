@@ -9,10 +9,10 @@ public final class RequestGetRecommendedList
 {
   static byte[] cache_sessionSid = (byte[])new byte[1];
   static int cache_type = 0;
-  public long PopVersion;
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public long PopVersion = 0L;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   public int type = 0;
   public byte version = 0;
   
@@ -55,7 +55,7 @@ public final class RequestGetRecommendedList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestGetRecommendedList
  * JD-Core Version:    0.7.0.1
  */

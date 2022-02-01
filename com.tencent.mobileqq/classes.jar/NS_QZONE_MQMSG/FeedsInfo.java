@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class FeedsInfo
   extends JceStruct
 {
-  public int appid;
-  public long hostUin;
+  public int appid = 0;
+  public long hostUin = 0L;
   public String jumpUrl = "";
   public String likekey = "";
   
@@ -34,17 +34,19 @@ public final class FeedsInfo
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.hostUin, 1);
-    if (this.likekey != null) {
-      paramJceOutputStream.write(this.likekey, 2);
+    String str = this.likekey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 3);
+    str = this.jumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

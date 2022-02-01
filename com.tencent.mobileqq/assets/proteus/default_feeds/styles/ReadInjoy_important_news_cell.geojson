@@ -80,7 +80,6 @@
                         },
                         "attributes": {
                             "setTextAlignmentString:": "2",
-                            "setFrameString:": "-1",
                             "setTextColorString:": "#A6A6A6",
                             "setText:": "-1",
                             "setFontSizeString:": "13"
@@ -109,7 +108,7 @@
                         "view_type": "ReadInjoyAsynImageView",
                         "view_id": "id_news_dot_1",
                         "align_parent_center_vertical": "YES",
-                        "margin_left": "18",
+                        "margin_left": "16",
                         "height": {
                             "type": "absolutely",
                             "value": "6"
@@ -142,7 +141,6 @@
                         },
                         "attributes": {
                             "setNumberOfLinesString:": "2",
-                            "setFrameString:": "-1",
                             "setTextColorString:": "-1",
                             "setText:": "-1",
                             "setFontSizeString:": "-1"
@@ -164,7 +162,6 @@
                     "value": "341"
                 },
                 "attributes": {
-                    "setFrameString:": "-1",
                     "setBackgroundColorString:":"#E5E5E5"
                 }
             },
@@ -189,7 +186,7 @@
                         "view_type": "ReadInjoyAsynImageView",
                         "view_id": "id_news_dot_2",
                         "align_parent_center_vertical": "YES",
-                        "margin_left": "18",
+                        "margin_left": "16",
                         "height": {
                             "type": "absolutely",
                             "value": "6"
@@ -222,7 +219,6 @@
                         },
                         "attributes": {
                             "setNumberOfLinesString:": "2",
-                            "setFrameString:": "-1",
                             "setTextColorString:": "-1",
                             "setText:": "-1",
                             "setFontSizeString:": "-1"
@@ -244,7 +240,6 @@
                     "value": "341"
                 },
                 "attributes": {
-                    "setFrameString:": "-1",
                     "setBackgroundColorString:":"#E5E5E5"
                 }
             },
@@ -269,7 +264,7 @@
                         "view_type": "ReadInjoyAsynImageView",
                         "view_id": "id_news_dot_3",
                         "align_parent_center_vertical": "YES",
-                        "margin_left": "18",
+                        "margin_left": "16",
                         "height": {
                             "type": "absolutely",
                             "value": "6"
@@ -302,7 +297,6 @@
                         },
                         "attributes": {
                             "setNumberOfLinesString:": "2",
-                            "setFrameString:": "-1",
                             "setTextColorString:": "-1",
                             "setText:": "-1",
                             "setFontSizeString:": "-1"

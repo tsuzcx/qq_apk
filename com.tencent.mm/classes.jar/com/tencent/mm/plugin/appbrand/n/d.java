@@ -1,175 +1,366 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
+import com.eclipsesource.mmv8.ScriptPartObject;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.n.a.a;
-import com.tencent.mm.plugin.appbrand.n.a.b.a;
-import com.tencent.mm.plugin.appbrand.n.a.c;
-import com.tencent.mm.plugin.appbrand.n.a.e.a;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.tencent.mm.appbrand.commonjni.AppBrandJsBridgeBinding;
+import com.tencent.mm.appbrand.v8.IJSRuntime;
+import com.tencent.mm.appbrand.v8.e;
+import com.tencent.mm.appbrand.v8.m;
+import com.tencent.mm.appbrand.v8.m.13;
+import com.tencent.mm.appbrand.v8.m.5;
+import com.tencent.mm.appbrand.v8.m.6;
+import com.tencent.mm.appbrand.v8.m.7;
+import com.tencent.mm.appbrand.v8.m.b;
+import com.tencent.mm.appbrand.v8.m.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.net.URL;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
 
-public class d
-  implements b.a, e.a
+abstract class d
+  implements g, k, l, n, q, s, u, v
 {
-  private final r gPA;
-  private final com.tencent.mm.plugin.appbrand.i.i hwG;
-  private final Map<Integer, Integer> iua;
-  private final ExecutorService mExecutorService;
+  private y sTc;
+  private AppBrandJsBridgeBinding sTd;
   
-  static
+  public void BM(int paramInt)
   {
-    AppMethodBeat.i(102180);
-    if (!d.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    czf().hmM.destroy(paramInt);
+  }
+  
+  public ByteBuffer BN(int paramInt)
+  {
+    return czf().hmM.nQ(paramInt);
+  }
+  
+  public int BO(int paramInt)
+  {
+    return czf().hmM.nO(paramInt);
+  }
+  
+  public <T extends j> T Z(Class<T> paramClass)
+  {
+    if (paramClass.isInstance(this)) {
+      return this;
+    }
+    return null;
+  }
+  
+  public void a(y paramy)
+  {
+    this.sTc = paramy;
+  }
+  
+  public void a(Runnable paramRunnable, boolean paramBoolean)
+  {
+    cze().a(paramRunnable, 0L, paramBoolean);
+  }
+  
+  public final void a(final String paramString1, final String paramString2, final int paramInt, final String paramString3, final n.a parama)
+  {
+    cze().u(new Runnable()
     {
-      $assertionsDisabled = bool;
-      AppMethodBeat.o(102180);
+      public final void run()
+      {
+        AppMethodBeat.i(144167);
+        n.b localb = null;
+        if (parama != null) {
+          localb = new n.b();
+        }
+        if (localb != null) {
+          localb.hne = System.currentTimeMillis();
+        }
+        if (d.a(d.this) == null)
+        {
+          d.a(d.this, new AppBrandJsBridgeBinding());
+          Log.i("MicroMsg.AppBrandJ2V8Context", "nativeCreateRuntime triggered by subscribeHandler");
+          d.a(d.this).createRuntime(d.this.getIsolatePtr(), d.this.aEn());
+        }
+        d.a(d.this).subscribeHandler(Util.nullAsNil(paramString1), Util.nullAsNil(paramString2), paramInt, Util.nullAsNil(paramString3));
+        if (localb != null)
+        {
+          localb.hnf = System.currentTimeMillis();
+          parama.a(localb);
+        }
+        AppMethodBeat.o(144167);
+      }
+    });
+  }
+  
+  public void a(String paramString1, String paramString2, ValueCallback<String> paramValueCallback)
+  {
+    paramValueCallback = czf();
+    paramValueCallback.hmL.u(new m.7(paramValueCallback, paramString1, paramString2));
+  }
+  
+  public void a(URL paramURL, String paramString, final ValueCallback<String> paramValueCallback)
+  {
+    if (paramURL == null)
+    {
+      evaluateJavascript(paramString, paramValueCallback);
+      return;
+    }
+    if (paramValueCallback == null) {}
+    for (paramValueCallback = null;; paramValueCallback = new m.b()
+        {
+          public final void onResult(String paramAnonymousString, m.c paramAnonymousc)
+          {
+            AppMethodBeat.i(144163);
+            paramValueCallback.onReceiveValue(paramAnonymousString);
+            AppMethodBeat.o(144163);
+          }
+        })
+    {
+      czf().a(paramURL.toString(), paramString, paramValueCallback);
       return;
     }
   }
   
-  public d(r paramr, com.tencent.mm.plugin.appbrand.i.i parami)
+  public void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, final ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(102172);
-    this.gPA = paramr;
-    this.hwG = parami;
-    this.mExecutorService = Executors.newCachedThreadPool();
-    e.a(this, paramr);
-    this.iua = new ConcurrentHashMap();
-    AppMethodBeat.o(102172);
+    Object localObject = null;
+    m localm;
+    if (paramValueCallback == null)
+    {
+      paramValueCallback = null;
+      localm = czf();
+      if (paramURL != null) {
+        break label54;
+      }
+    }
+    label54:
+    for (paramURL = localObject;; paramURL = paramURL.toString())
+    {
+      localm.a(paramURL, paramString3, paramValueCallback, paramString1, paramString2, paramInt);
+      return;
+      paramValueCallback = new m.b()
+      {
+        public final void onResult(String paramAnonymousString, m.c paramAnonymousc)
+        {
+          AppMethodBeat.i(144164);
+          paramValueCallback.onReceiveValue(paramAnonymousString);
+          AppMethodBeat.o(144164);
+        }
+      };
+      break;
+    }
   }
   
-  public final void Y(int paramInt, String paramString)
+  public void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, m.b paramb)
   {
-    AppMethodBeat.i(102175);
-    if (paramInt <= 0)
+    m localm = czf();
+    if (paramURL == null) {}
+    for (paramURL = null;; paramURL = paramURL.toString())
     {
-      AppMethodBeat.o(102175);
+      localm.a(paramURL, paramString3, paramb, paramString1, paramString2, paramInt);
       return;
     }
-    paramString = String.format("typeof gNodeController != 'undefined' && gNodeController.javaResp(%d, %s);", new Object[] { Integer.valueOf(paramInt), paramString });
-    this.hwG.evaluateJavascript(paramString, null);
-    AppMethodBeat.o(102175);
   }
   
-  public final void aIz()
+  public void a(ArrayList<ScriptPartObject> paramArrayList, URL paramURL, String paramString1, String paramString2, m.b paramb)
   {
-    AppMethodBeat.i(102173);
-    ab.i("MicroMsg.NodeJavaBroker", "shutdown");
-    this.mExecutorService.shutdown();
-    Iterator localIterator = this.iua.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      unListen(((Integer)((Map.Entry)localIterator.next()).getKey()).intValue());
-    }
-    this.iua.clear();
-    AppMethodBeat.o(102173);
-  }
-  
-  public final void d(int paramInt, Map<String, Object> paramMap)
-  {
-    AppMethodBeat.i(102179);
-    com.tencent.luggage.g.i.d(paramMap);
-    paramMap = String.format("typeof gNodeController != 'undefined' && gNodeController.javaOnTrigger(%d, %s);", new Object[] { Integer.valueOf(paramInt), new com.tencent.mm.aa.i(paramMap).toString() });
-    this.hwG.evaluateJavascript(paramMap, null);
-    AppMethodBeat.o(102179);
-  }
-  
-  @JavascriptInterface
-  public void listen(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(102177);
-    com.tencent.mm.plugin.appbrand.n.a.e locale = e.oZ(paramInt1);
-    if (locale == null)
+    m localm = czf();
+    if (paramURL == null) {}
+    for (paramURL = null;; paramURL = paramURL.toString())
     {
-      ab.e("MicroMsg.NodeJavaBroker", "listen listenerProxy null");
-      AppMethodBeat.o(102177);
+      localm.hmL.u(new m.13(localm, paramURL, paramb, paramArrayList, paramString1, paramString2));
       return;
     }
-    locale.listen(paramInt2);
-    this.iua.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
-    AppMethodBeat.o(102177);
   }
   
-  @JavascriptInterface
-  public void req(int paramInt1, String paramString, int paramInt2)
+  public long aEn()
   {
-    AppMethodBeat.i(102174);
-    ab.v("MicroMsg.NodeJavaBroker", "req: cmd:%d args:%s respId:%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2) });
-    a locala = b.oY(paramInt1);
-    if ((!$assertionsDisabled) && (locala == null))
-    {
-      paramString = new AssertionError();
-      AppMethodBeat.o(102174);
-      throw paramString;
-    }
-    if (!(locala instanceof com.tencent.mm.plugin.appbrand.n.a.b))
-    {
-      paramString = new IllegalStateException("req asynchronously, but target cmd not async!");
-      AppMethodBeat.o(102174);
-      throw paramString;
-    }
-    paramString = new d.1(this, paramInt2, (com.tencent.mm.plugin.appbrand.n.a.b)locala, paramString);
-    this.mExecutorService.execute(paramString);
-    AppMethodBeat.o(102174);
+    return czf().aEn();
   }
   
-  @JavascriptInterface
-  public String reqSync(int paramInt, String paramString)
+  public void acL(String paramString)
   {
-    AppMethodBeat.i(102176);
-    a locala = b.oY(paramInt);
-    if ((!$assertionsDisabled) && (locala == null))
-    {
-      paramString = new AssertionError();
-      AppMethodBeat.o(102176);
-      throw paramString;
-    }
-    if (!(locala instanceof com.tencent.mm.plugin.appbrand.n.a.d))
-    {
-      paramString = new IllegalStateException("req synchronously, but target cmd not sync!");
-      AppMethodBeat.o(102176);
-      throw paramString;
-    }
-    paramString = ((com.tencent.mm.plugin.appbrand.n.a.d)locala).a(paramString, new c(this.gPA));
-    AppMethodBeat.o(102176);
-    return paramString;
+    m localm = czf();
+    localm.hmL.u(new m.6(localm, paramString));
   }
   
-  @JavascriptInterface
-  public void unListen(int paramInt)
+  public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(102178);
-    Object localObject = (Integer)this.iua.get(Integer.valueOf(paramInt));
-    if (localObject == null)
+    czf().a(paramObject, paramString, JavascriptInterface.class);
+  }
+  
+  public ByteBuffer ae(int paramInt, boolean paramBoolean)
+  {
+    return czf().hlL.getBuffer(paramInt, paramBoolean);
+  }
+  
+  public boolean aoN()
+  {
+    return cze().aDX();
+  }
+  
+  public String aoO()
+  {
+    return cze().aoO();
+  }
+  
+  public void b(g paramg, String paramString)
+  {
+    if ((paramg instanceof d))
     {
-      AppMethodBeat.o(102178);
+      m localm = czf();
+      paramg = ((d)paramg).czf();
+      localm.hmL.u(new m.5(localm, paramString, paramg));
       return;
     }
-    int i = ((Integer)localObject).intValue();
-    ab.v("MicroMsg.NodeJavaBroker", "unListen: listenerType:%d listenerId:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-    localObject = e.oZ(i);
-    if (localObject == null)
+    if (paramg == null) {}
+    for (paramg = null;; paramg = paramg.getClass().getName())
     {
-      ab.e("MicroMsg.NodeJavaBroker", "unListen listenerProxy null");
-      AppMethodBeat.o(102178);
+      Log.e("MicroMsg.AppBrandJ2V8Context", "shareObject with unsupported implementation %s", new Object[] { paramg });
       return;
     }
-    ((com.tencent.mm.plugin.appbrand.n.a.e)localObject).unListen(paramInt);
-    this.iua.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(102178);
+  }
+  
+  public void bufferStoreBindTo(long paramLong1, long paramLong2)
+  {
+    czf().hlL.bufferStoreBindTo(paramLong1, paramLong2);
+  }
+  
+  public abstract IJSRuntime cze();
+  
+  protected abstract m czf();
+  
+  public y czk()
+  {
+    return this.sTc;
+  }
+  
+  public void destroy()
+  {
+    cze().u(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(144165);
+        if (d.a(d.this) != null)
+        {
+          d.a(d.this).destroyRuntime();
+          d.a(d.this, null);
+        }
+        AppMethodBeat.o(144165);
+      }
+    });
+    czf().destroy();
+  }
+  
+  public boolean doInnerLoopTask()
+  {
+    return cze().doInnerLoopTask();
+  }
+  
+  public void eb(boolean paramBoolean)
+  {
+    cze().eb(paramBoolean);
+  }
+  
+  public void evaluateJavascript(String paramString, final ValueCallback<String> paramValueCallback)
+  {
+    if (paramValueCallback == null) {}
+    for (paramValueCallback = null;; paramValueCallback = new m.b()
+        {
+          public final void onResult(String paramAnonymousString, m.c paramAnonymousc)
+          {
+            AppMethodBeat.i(144162);
+            paramValueCallback.onReceiveValue(paramAnonymousString);
+            AppMethodBeat.o(144162);
+          }
+        })
+    {
+      czf().a(paramString, paramValueCallback);
+      return;
+    }
+  }
+  
+  public long getIsolatePtr()
+  {
+    return cze().getIsolatePtr();
+  }
+  
+  public int getNativeBufferId()
+  {
+    return czf().hlL.generateId();
+  }
+  
+  public long getUVLoopPtr()
+  {
+    return cze().getUVLoopPtr();
+  }
+  
+  public final void invokeCallbackHandler(final int paramInt, final String paramString)
+  {
+    cze().u(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(144166);
+        if (d.a(d.this) == null)
+        {
+          d.a(d.this, new AppBrandJsBridgeBinding());
+          Log.i("MicroMsg.AppBrandJ2V8Context", "nativeCreateRuntime triggered by invokeCallbackHandler callbackId[%d]", new Object[] { Integer.valueOf(paramInt) });
+          d.a(d.this).createRuntime(d.this.getIsolatePtr(), d.this.aEn());
+        }
+        d.a(d.this).invokeCallbackHandler(paramInt, paramString);
+        AppMethodBeat.o(144166);
+      }
+    });
+  }
+  
+  public void nM(int paramInt)
+  {
+    cze().nM(paramInt);
+  }
+  
+  public void pause()
+  {
+    cze().pause();
+  }
+  
+  public void post(Runnable paramRunnable)
+  {
+    a(paramRunnable, false);
+  }
+  
+  public void releaseDirectByteBuffer(ByteBuffer paramByteBuffer)
+  {
+    czf().hlL.releaseDirectByteBuffer(paramByteBuffer);
+  }
+  
+  public void resume()
+  {
+    cze().resume();
+  }
+  
+  public void resumeLoopTasks()
+  {
+    cze().resumeLoopTasks();
+  }
+  
+  public void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    czf().hlL.setBuffer(paramInt, paramByteBuffer);
+  }
+  
+  public final void subscribeHandler(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    a(paramString1, paramString2, paramInt, paramString3, null);
+  }
+  
+  public boolean supportBufferStoreBindTo()
+  {
+    return czf().hlL.supportBufferStoreBindTo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n.d
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,6 @@
         "type": "wrap_content"
       },
       "attributes": {
-        "setFrameString": "-1",
         "setText:": "-1",
         "setTextColorString:": "#8C000000",
         "setFontSizeString:": "14",
@@ -39,7 +38,7 @@
     {
       "view_type": "UILabel",
       "view_id": "id_capsule_answer_content",
-      "margin_right": "12",
+      "margin_right": "16",
       "margin_bottom": "10",
       "height": {
         "type": "wrap_content"
@@ -48,7 +47,6 @@
         "type": "wrap_content"
       },
       "attributes": {
-        "setFrameString": "-1",
         "setText:": "-1",
         "setTextColorString:": "#D9000000",
         "setFontSizeString:": "14",

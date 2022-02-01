@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="274.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="13.5dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <com.tencent.image.URLImageView android:id="@id/im2" android:layout_width="17.0dip" android:layout_height="17.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="#9903081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="我们会减少该类广告的推送" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/48" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_alignParentRight="true">
+            <ImageView android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="5.0dip" android:src="@drawable/ilk" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/vi" android:layout_width="70.0dip" android:layout_height="71.0dip" android:layout_marginTop="-5.5dip" />
+    <TextView android:textSize="18.0sp" android:textColor="#ff03081a" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="看点" />
+    <TextView android:textSize="12.0sp" android:textColor="#9903081a" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="完全无广告，体验更清爽" />
+    <Button android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/47" android:background="#ff12b7f5" android:layout_width="251.0dip" android:layout_height="38.0dip" android:layout_marginTop="20.5dip" android:text="立即安装" />
+</LinearLayout>

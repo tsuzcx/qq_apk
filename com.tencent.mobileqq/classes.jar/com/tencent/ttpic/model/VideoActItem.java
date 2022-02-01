@@ -12,7 +12,7 @@ public class VideoActItem
   extends FrameSourceItem
 {
   private static final int FRAME_INTERVAL = 83;
-  private static String TAG = VideoActItem.class.getSimpleName();
+  private static String TAG = "VideoActItem";
   private ActVideoDecoder decoder;
   private String path;
   private int[] texId = new int[1];
@@ -25,26 +25,30 @@ public class VideoActItem
   
   public void clear()
   {
-    if (this.decoder != null)
+    Object localObject = this.decoder;
+    if (localObject != null)
     {
-      this.decoder.release();
+      ((ActVideoDecoder)localObject).release();
       this.decoder = null;
     }
-    GLES20.glDeleteTextures(this.texId.length, this.texId, 0);
+    localObject = this.texId;
+    GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
   }
   
   public int getOrigHeight(int paramInt)
   {
-    if (this.decoder != null) {
-      return this.decoder.getHeight();
+    ActVideoDecoder localActVideoDecoder = this.decoder;
+    if (localActVideoDecoder != null) {
+      return localActVideoDecoder.getHeight();
     }
     return 0;
   }
   
   public int getOrigWidth(int paramInt)
   {
-    if (this.decoder != null) {
-      return this.decoder.getWidth() / 2;
+    ActVideoDecoder localActVideoDecoder = this.decoder;
+    if (localActVideoDecoder != null) {
+      return localActVideoDecoder.getWidth() / 2;
     }
     return 0;
   }
@@ -56,7 +60,8 @@ public class VideoActItem
   
   public void init()
   {
-    GLES20.glGenTextures(this.texId.length, this.texId, 0);
+    int[] arrayOfInt = this.texId;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     this.decoder = new ActVideoDecoder(this.path, this.texId[0]);
     this.decoder.decodeFrame(0L);
     this.decoder.updateFrame();
@@ -64,26 +69,34 @@ public class VideoActItem
   
   public void reset()
   {
-    if (this.decoder != null) {
-      this.decoder.reset();
+    ActVideoDecoder localActVideoDecoder = this.decoder;
+    if (localActVideoDecoder != null) {
+      localActVideoDecoder.reset();
     }
   }
   
   public void update(Frame paramFrame, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, int paramInt)
   {
-    BenchUtil.benchStart(TAG + "[update]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(TAG);
+    localStringBuilder.append("[update]");
+    BenchUtil.benchStart(localStringBuilder.toString());
     super.update(paramFrame, paramLong, paramList, paramList1, paramInt);
-    if (this.decoder != null)
+    paramFrame = this.decoder;
+    if (paramFrame != null)
     {
-      this.decoder.decodeFrame(paramLong);
+      paramFrame.decodeFrame(paramLong);
       this.decoder.updateFrame();
     }
-    BenchUtil.benchEnd(TAG + "[update]");
+    paramFrame = new StringBuilder();
+    paramFrame.append(TAG);
+    paramFrame.append("[update]");
+    BenchUtil.benchEnd(paramFrame.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.model.VideoActItem
  * JD-Core Version:    0.7.0.1
  */

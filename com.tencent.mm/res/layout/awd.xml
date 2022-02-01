@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/emk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/dl"
+<LinearLayout android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/eml" android:layout_width="80.0dip" android:layout_height="80.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/emm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b7q" android:paddingTop="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ek2" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginRight="@dimen/m2" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/ek3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/ek4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

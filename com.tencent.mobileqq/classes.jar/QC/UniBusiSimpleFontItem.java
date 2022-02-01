@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class UniBusiSimpleFontItem
   extends JceStruct
 {
-  public int fontType;
+  public int fontType = 0;
   
   public UniBusiSimpleFontItem() {}
   
@@ -28,7 +28,7 @@ public final class UniBusiSimpleFontItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiSimpleFontItem
  * JD-Core Version:    0.7.0.1
  */

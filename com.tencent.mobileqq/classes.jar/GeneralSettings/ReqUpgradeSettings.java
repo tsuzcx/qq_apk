@@ -9,8 +9,8 @@ public final class ReqUpgradeSettings
   extends JceStruct
 {
   static ArrayList<Setting> cache_Settings;
-  public ArrayList<Setting> Settings;
-  public int Type;
+  public ArrayList<Setting> Settings = null;
+  public int Type = 0;
   
   public ReqUpgradeSettings() {}
   
@@ -35,14 +35,15 @@ public final class ReqUpgradeSettings
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Type, 0);
-    if (this.Settings != null) {
-      paramJceOutputStream.write(this.Settings, 1);
+    ArrayList localArrayList = this.Settings;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GeneralSettings.ReqUpgradeSettings
  * JD-Core Version:    0.7.0.1
  */

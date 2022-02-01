@@ -13,7 +13,7 @@ public @interface JsonORM$Column
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.JsonORM.Column
  * JD-Core Version:    0.7.0.1
  */

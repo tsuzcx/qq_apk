@@ -1,21 +1,15 @@
 package com.tencent.token;
 
-import com.tencent.token.global.h;
+import android.view.View;
 
 public class ft
+  implements fs
 {
-  public static void a(String paramString)
-  {
-    try
-    {
-      ga.a(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      h.c("delete database table failed: " + paramString.toString());
-    }
-  }
+  public void a(View paramView) {}
+  
+  public void b(View paramView) {}
+  
+  public void c(View paramView) {}
 }
 
 

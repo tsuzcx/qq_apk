@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:ellipsize="end" android:gravity="center|left" android:paddingLeft="@dimen/a6n" android:paddingRight="@dimen/a6o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:singleLine="true" style="@style/mw"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mm.view.HardTouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/am7" />
+    <include layout="@layout/am6" />
+</com.tencent.mm.view.HardTouchableLayout>

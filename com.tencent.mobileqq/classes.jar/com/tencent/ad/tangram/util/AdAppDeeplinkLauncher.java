@@ -16,114 +16,105 @@ public final class AdAppDeeplinkLauncher
   public static AdAppDeeplinkLauncher.Result canLaunch(Activity paramActivity, AdAppDeeplinkLauncher.Params paramParams)
   {
     AdAppDeeplinkLauncher.Result localResult = new AdAppDeeplinkLauncher.Result();
-    if ((paramActivity == null) || (!paramParams.isValid()))
+    if ((paramActivity != null) && (paramParams.isValid()))
     {
-      localResult.error = new AdError(4);
+      paramParams = paramParams.getIntent();
+      if (paramParams == null)
+      {
+        localResult.error = new AdError(201);
+        return localResult;
+      }
+      localResult.resolveInfo = AdAppUtil.resolveActivity(paramActivity, paramParams);
+      if (localResult.resolveInfo == null)
+      {
+        localResult.error = new AdError(204);
+        return localResult;
+      }
+      localResult.error = new AdError(0);
       return localResult;
     }
-    paramParams = paramParams.getIntent();
-    if (paramParams == null)
-    {
-      localResult.error = new AdError(201);
-      return localResult;
-    }
-    localResult.resolveInfo = AdAppUtil.resolveActivity(paramActivity, paramParams);
-    if (localResult.resolveInfo == null)
-    {
-      localResult.error = new AdError(204);
-      return localResult;
-    }
-    localResult.error = new AdError(0);
+    localResult.error = new AdError(4);
     return localResult;
   }
   
   public static AdAppDeeplinkLauncher.Result launch(Activity paramActivity, AdAppDeeplinkLauncher.Params paramParams)
   {
-    Object localObject3 = null;
     Object localObject1 = new AdAppDeeplinkLauncher.Result();
-    label77:
     Object localObject2;
-    if ((paramActivity == null) || (!paramParams.isValid()))
+    if ((paramActivity != null) && (paramParams.isValid()))
+    {
+      localIntent = paramParams.getIntent();
+      if (localIntent == null)
+      {
+        ((AdAppDeeplinkLauncher.Result)localObject1).error = new AdError(201);
+      }
+      else
+      {
+        localObject2 = canLaunch(paramActivity, paramParams);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          if (!((AdAppDeeplinkLauncher.Result)localObject2).isSuccess()) {
+            localObject1 = localObject2;
+          } else {
+            try
+            {
+              paramActivity.startActivity(localIntent);
+              ((AdAppDeeplinkLauncher.Result)localObject2).error = new AdError(0);
+              localObject1 = localObject2;
+            }
+            catch (Throwable paramActivity)
+            {
+              AdLog.e("AdAppDeeplinkLauncher", "launch", paramActivity);
+              ((AdAppDeeplinkLauncher.Result)localObject2).error = new AdError(202, paramActivity);
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+    }
+    else
     {
       ((AdAppDeeplinkLauncher.Result)localObject1).error = new AdError(4);
-      paramActivity = (Activity)localObject1;
-      localObject1 = paramActivity;
-      if (paramActivity == null)
-      {
-        localObject1 = new AdAppDeeplinkLauncher.Result();
-        ((AdAppDeeplinkLauncher.Result)localObject1).error = new AdError(1);
-      }
-      if (paramParams == null) {
-        break label297;
-      }
-      paramActivity = paramParams.deeplink;
-      if (paramParams == null) {
-        break label302;
-      }
-      localObject2 = paramParams.packageName;
-      label87:
-      if (paramParams == null) {
-        break label308;
-      }
     }
-    label297:
-    label302:
-    label308:
-    for (int i = paramParams.addflags;; i = -2147483648)
+    paramActivity = (Activity)localObject1;
+    if (localObject1 == null)
     {
-      for (;;)
-      {
-        int j = ((AdAppDeeplinkLauncher.Result)localObject1).getErrorCode();
-        paramParams = localObject3;
-        if (((AdAppDeeplinkLauncher.Result)localObject1).resolveInfo != null)
-        {
-          paramParams = localObject3;
-          if (((AdAppDeeplinkLauncher.Result)localObject1).resolveInfo.activityInfo != null) {
-            paramParams = ((AdAppDeeplinkLauncher.Result)localObject1).resolveInfo.activityInfo.toString();
-          }
-        }
-        AdLog.i("AdAppDeeplinkLauncher", String.format("launch \nparams deeplink:%s packageName:%s flags:%d \nresult errorCode:%d resolveInfo.activityInfo:%s", new Object[] { paramActivity, localObject2, Integer.valueOf(i), Integer.valueOf(j), paramParams }));
-        return localObject1;
-        localObject2 = paramParams.getIntent();
-        if (localObject2 == null)
-        {
-          ((AdAppDeeplinkLauncher.Result)localObject1).error = new AdError(201);
-          paramActivity = (Activity)localObject1;
-          break;
-        }
-        localObject1 = canLaunch(paramActivity, paramParams);
-        if (localObject1 != null)
-        {
-          if (!((AdAppDeeplinkLauncher.Result)localObject1).isSuccess())
-          {
-            paramActivity = (Activity)localObject1;
-            break;
-          }
-          try
-          {
-            paramActivity.startActivity((Intent)localObject2);
-            ((AdAppDeeplinkLauncher.Result)localObject1).error = new AdError(0);
-            paramActivity = (Activity)localObject1;
-          }
-          catch (Throwable paramActivity)
-          {
-            AdLog.e("AdAppDeeplinkLauncher", "launch", paramActivity);
-            ((AdAppDeeplinkLauncher.Result)localObject1).error = new AdError(202, paramActivity);
-          }
-        }
-      }
-      paramActivity = (Activity)localObject1;
-      break;
-      paramActivity = null;
-      break label77;
-      localObject2 = null;
-      break label87;
+      paramActivity = new AdAppDeeplinkLauncher.Result();
+      paramActivity.error = new AdError(1);
     }
+    Intent localIntent = null;
+    if (paramParams != null) {
+      localObject1 = paramParams.deeplink;
+    } else {
+      localObject1 = null;
+    }
+    if (paramParams != null) {
+      localObject2 = paramParams.packageName;
+    } else {
+      localObject2 = null;
+    }
+    int i;
+    if (paramParams != null) {
+      i = paramParams.addflags;
+    } else {
+      i = -2147483648;
+    }
+    int j = paramActivity.getErrorCode();
+    paramParams = localIntent;
+    if (paramActivity.resolveInfo != null)
+    {
+      paramParams = localIntent;
+      if (paramActivity.resolveInfo.activityInfo != null) {
+        paramParams = paramActivity.resolveInfo.activityInfo.toString();
+      }
+    }
+    AdLog.i("AdAppDeeplinkLauncher", String.format("launch \nparams deeplink:%s packageName:%s flags:%d \nresult errorCode:%d resolveInfo.activityInfo:%s", new Object[] { localObject1, localObject2, Integer.valueOf(i), Integer.valueOf(j), paramParams }));
+    return paramActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppDeeplinkLauncher
  * JD-Core Version:    0.7.0.1
  */

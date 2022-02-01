@@ -1,43 +1,38 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.plugin.multitalk.ui.widget.e;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideAvatarIcon", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showAvatarIcon", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
 {
-  public abstract int Ut(String paramString);
+  public abstract boolean bsA();
   
-  public abstract void a(j.a parama);
+  public abstract void ct(String paramString, boolean paramBoolean);
   
-  public abstract void a(e parame);
+  public abstract int efM();
   
-  public abstract void a(String paramString, Bitmap paramBitmap, int paramInt1, int paramInt2);
+  public abstract int[] geK();
   
-  public abstract void a(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3);
+  public abstract boolean geL();
   
-  public abstract void bIW();
+  public abstract void geM();
   
-  public abstract void bIX();
+  public abstract void geN();
   
-  public abstract void bPy();
+  public abstract void geO();
   
-  public abstract void bSE();
+  public abstract void geP();
   
-  public abstract void bSF();
+  public abstract void geQ();
   
-  public abstract void bSG();
+  public abstract void geR();
   
-  public abstract boolean bSH();
+  public abstract void geS();
   
-  public abstract void eK(int paramInt1, int paramInt2);
+  public abstract void geT();
   
-  public abstract void jx(boolean paramBoolean);
-  
-  public abstract void jy(boolean paramBoolean);
-  
-  public abstract void jz(boolean paramBoolean);
-  
-  public abstract void onError(int paramInt);
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

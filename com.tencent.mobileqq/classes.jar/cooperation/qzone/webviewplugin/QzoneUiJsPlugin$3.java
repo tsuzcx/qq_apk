@@ -1,22 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
-import bjyy;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneUiJsPlugin$3
+class QzoneUiJsPlugin$3
   implements Runnable
 {
-  public QzoneUiJsPlugin$3(bjyy parambjyy, String paramString) {}
+  QzoneUiJsPlugin$3(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
   public void run()
   {
-    bjqu.a().a().f(this.a);
+    RemoteHandleManager.getInstance().getSender().getFakeFeedVideoCover(this.val$timestamp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUiJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

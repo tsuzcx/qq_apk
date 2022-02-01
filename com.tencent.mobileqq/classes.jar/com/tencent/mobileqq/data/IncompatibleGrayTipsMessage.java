@@ -6,10 +6,10 @@ public class IncompatibleGrayTipsMessage
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  public int linkEnd;
-  public int linkStart;
-  public String msg;
-  public String url;
+  public int linkEnd = 0;
+  public int linkStart = 0;
+  public String msg = null;
+  public String url = null;
 }
 
 

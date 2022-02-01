@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afkz;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
-import bdfz;
-import bdhj;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -13,97 +12,107 @@ import java.util.Vector;
 class CustomFrameAnimationDrawable$DecodeRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList;
+  int a;
   int b;
+  String c;
+  ArrayList<Bitmap> d;
+  Resources e;
+  BitmapFactory.Options f = new BitmapFactory.Options();
   
   public CustomFrameAnimationDrawable$DecodeRunnable(int paramInt1, String paramString, int paramInt2, ArrayList<Bitmap> paramArrayList)
   {
-    this.jdField_a_of_type_Int = paramString;
-    this.jdField_a_of_type_JavaLangString = paramInt2;
+    this.a = paramString;
+    this.c = paramInt2;
     this.b = paramArrayList;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.d = localObject;
   }
   
   public void a(Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    this.e = paramResources;
   }
   
   public void run()
   {
-    String str;
-    if (CustomFrameAnimationDrawable.a(this.this$0)) {
-      str = CustomFrameAnimationDrawable.a(this.this$0).a(CustomFrameAnimationDrawable.a(this.this$0), CustomFrameAnimationDrawable.b(this.this$0), this.jdField_a_of_type_Int);
-    }
-    for (Object localObject1 = bdfz.a(str);; localObject1 = null)
+    String str1;
+    Object localObject1;
+    if (CustomFrameAnimationDrawable.a(this.this$0))
     {
-      if (localObject1 == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
-        this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inMutable = true;
-        if (CustomFrameAnimationDrawable.a(this.this$0).size() <= 0) {
-          break label251;
-        }
+      str1 = CustomFrameAnimationDrawable.d(this.this$0).a(CustomFrameAnimationDrawable.b(this.this$0), CustomFrameAnimationDrawable.c(this.this$0), this.a);
+      localObject1 = CommonImageCacheHelper.a(str1);
+    }
+    else
+    {
+      str1 = null;
+      localObject1 = str1;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = this.f;
+      ((BitmapFactory.Options)localObject2).inSampleSize = 1;
+      ((BitmapFactory.Options)localObject2).inMutable = true;
+      if (CustomFrameAnimationDrawable.e(this.this$0).size() > 0) {
+        localObject2 = (Bitmap)CustomFrameAnimationDrawable.e(this.this$0).remove(0);
+      } else {
+        localObject2 = null;
       }
-      label251:
-      Object localObject2;
-      for (Bitmap localBitmap1 = (Bitmap)CustomFrameAnimationDrawable.a(this.this$0).remove(0);; localObject2 = null)
+      if ((!CustomFrameAnimationDrawable.a(this.this$0)) && (localObject2 != null) && (!((Bitmap)localObject2).isRecycled()) && (CustomFrameAnimationDrawable.p())) {
+        this.f.inBitmap = ((Bitmap)localObject2);
+      }
+      int i = this.b;
+      if (i != 0)
       {
-        if ((!CustomFrameAnimationDrawable.a(this.this$0)) && (localBitmap1 != null) && (!localBitmap1.isRecycled()) && (CustomFrameAnimationDrawable.a())) {
-          this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inBitmap = localBitmap1;
-        }
-        if (this.b != 0) {}
-        for (;;)
+        try
         {
+          localObject2 = BaseImageUtil.a(this.e, i);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError1)
+        {
+          localObject2 = localObject1;
+          if (!QLog.isColorLevel()) {
+            break label242;
+          }
+        }
+        QLog.d("CustomFrameAnimationDrawable", 2, localOutOfMemoryError1.toString());
+        localObject2 = localObject1;
+      }
+      else
+      {
+        String str2 = this.c;
+        localObject2 = localObject1;
+        if (str2 != null) {
           try
           {
-            localBitmap1 = bdhj.a(this.jdField_a_of_type_AndroidContentResResources, this.b);
-            localObject1 = localBitmap1;
+            localObject2 = BaseImageUtil.a(str2, this.f);
           }
-          catch (OutOfMemoryError localOutOfMemoryError1)
+          catch (OutOfMemoryError localOutOfMemoryError2)
           {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("CustomFrameAnimationDrawable", 2, localOutOfMemoryError1.toString());
-            continue;
-          }
-          if (localObject1 != null)
-          {
-            if (CustomFrameAnimationDrawable.a(this.this$0)) {
-              bdfz.a(str, (Bitmap)localObject1);
-            }
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-          }
-          this.this$0.a = null;
-          return;
-          if (this.jdField_a_of_type_JavaLangString != null) {
-            try
+            localObject2 = localObject1;
+            if (QLog.isColorLevel())
             {
-              Bitmap localBitmap2 = bdhj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-              localObject1 = localBitmap2;
-            }
-            catch (OutOfMemoryError localOutOfMemoryError2)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("CustomFrameAnimationDrawable", 2, localOutOfMemoryError2.toString());
-              }
+              QLog.d("CustomFrameAnimationDrawable", 2, localOutOfMemoryError2.toString());
+              localObject2 = localObject1;
             }
           }
         }
       }
-      str = null;
     }
+    label242:
+    if (localObject2 != null)
+    {
+      if (CustomFrameAnimationDrawable.a(this.this$0)) {
+        CommonImageCacheHelper.a(str1, (Bitmap)localObject2);
+      }
+      this.d.add(localObject2);
+    }
+    this.this$0.h = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

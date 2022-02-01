@@ -5,17 +5,18 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stRecommandAlbumEx
   extends JceStruct
 {
   static Album cache_albuminfo = new Album();
   static ArrayList<s_picdata> cache_photolist = new ArrayList();
-  public Album albuminfo;
-  public int commentCnt;
-  public int likeCnt;
-  public ArrayList<s_picdata> photolist;
-  public int viewCnt;
+  public Album albuminfo = null;
+  public int commentCnt = 0;
+  public int likeCnt = 0;
+  public ArrayList<s_picdata> photolist = null;
+  public int viewCnt = 0;
   
   static
   {
@@ -45,20 +46,22 @@ public final class stRecommandAlbumEx
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.albuminfo != null) {
-      paramJceOutputStream.write(this.albuminfo, 0);
+    Object localObject = this.albuminfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.commentCnt, 1);
     paramJceOutputStream.write(this.likeCnt, 2);
-    if (this.photolist != null) {
-      paramJceOutputStream.write(this.photolist, 3);
+    localObject = this.photolist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.viewCnt, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.stRecommandAlbumEx
  * JD-Core Version:    0.7.0.1
  */

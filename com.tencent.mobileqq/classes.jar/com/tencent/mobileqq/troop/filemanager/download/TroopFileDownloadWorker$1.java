@@ -1,40 +1,58 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import arso;
-import bbvl;
-import bbwj;
-import bdhe;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.MD5;
 
-public class TroopFileDownloadWorker$1
+class TroopFileDownloadWorker$1
   implements Runnable
 {
-  public TroopFileDownloadWorker$1(bbwj parambbwj) {}
+  TroopFileDownloadWorker$1(TroopFileDownloadWorker paramTroopFileDownloadWorker) {}
   
   public void run()
   {
-    if (this.this$0.b)
+    int i;
+    if (this.this$0.g)
     {
-      bbvl.b("TroopFileDownloadWorker", bbvl.a, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. had stoped");
+      i = TroopFileTransferUtil.Log.b;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[");
+      ((StringBuilder)localObject1).append(this.this$0.f);
+      ((StringBuilder)localObject1).append("] start. had stoped");
+      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject1).toString());
       return;
     }
-    this.this$0.c();
-    String str = MD5.toMD5(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    this.this$0.d = (this.this$0.c + str);
-    str = this.this$0.c + bdhe.a(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath.getBytes()) + ".tmp";
-    if (arso.a(str) > 0L)
+    this.this$0.m();
+    Object localObject1 = MD5.toMD5(this.this$0.e.FilePath);
+    Object localObject2 = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.k);
+    localStringBuilder.append((String)localObject1);
+    ((TroopFileDownloadWorker)localObject2).l = localStringBuilder.toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.this$0.k);
+    ((StringBuilder)localObject1).append(HexUtil.bytes2HexStr(this.this$0.e.FilePath.getBytes()));
+    ((StringBuilder)localObject1).append(".tmp");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (FileUtil.f((String)localObject1) > 0L)
     {
-      bbvl.b("TroopFileDownloadWorker", bbvl.a, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. use oldVerTmpPath to resume.");
-      this.this$0.d = str;
+      i = TroopFileTransferUtil.Log.b;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      ((StringBuilder)localObject2).append(this.this$0.f);
+      ((StringBuilder)localObject2).append("] start. use oldVerTmpPath to resume.");
+      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject2).toString());
+      this.this$0.l = ((String)localObject1);
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile = this.this$0.d;
-    this.this$0.f();
+    this.this$0.e.TmpFile = this.this$0.l;
+    this.this$0.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadWorker.1
  * JD-Core Version:    0.7.0.1
  */

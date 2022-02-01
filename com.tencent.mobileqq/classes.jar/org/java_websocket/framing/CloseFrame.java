@@ -51,61 +51,79 @@ public class CloseFrame
     super.setPayload(localByteBuffer2);
   }
   
+  /* Error */
   private void validateUtf8(ByteBuffer paramByteBuffer, int paramInt)
   {
-    try
-    {
-      paramByteBuffer.position(paramByteBuffer.position() + 2);
-      this.reason = Charsetfunctions.stringUtf8(paramByteBuffer);
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      throw new InvalidDataException(1007);
-    }
-    finally
-    {
-      paramByteBuffer.position(paramInt);
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_1
+    //   2: invokevirtual 112	java/nio/ByteBuffer:position	()I
+    //   5: iconst_2
+    //   6: iadd
+    //   7: invokevirtual 90	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   10: pop
+    //   11: aload_0
+    //   12: aload_1
+    //   13: invokestatic 116	org/java_websocket/util/Charsetfunctions:stringUtf8	(Ljava/nio/ByteBuffer;)Ljava/lang/String;
+    //   16: putfield 69	org/java_websocket/framing/CloseFrame:reason	Ljava/lang/String;
+    //   19: aload_1
+    //   20: iload_2
+    //   21: invokevirtual 90	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   24: pop
+    //   25: return
+    //   26: astore_3
+    //   27: goto +14 -> 41
+    //   30: new 118	org/java_websocket/exceptions/InvalidDataException
+    //   33: dup
+    //   34: sipush 1007
+    //   37: invokespecial 120	org/java_websocket/exceptions/InvalidDataException:<init>	(I)V
+    //   40: athrow
+    //   41: aload_1
+    //   42: iload_2
+    //   43: invokevirtual 90	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   46: pop
+    //   47: aload_3
+    //   48: athrow
+    //   49: astore_3
+    //   50: goto -20 -> 30
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	CloseFrame
+    //   0	53	1	paramByteBuffer	ByteBuffer
+    //   0	53	2	paramInt	int
+    //   26	22	3	localObject	Object
+    //   49	1	3	localIllegalArgumentException	java.lang.IllegalArgumentException
+    // Exception table:
+    //   from	to	target	type
+    //   0	19	26	finally
+    //   30	41	26	finally
+    //   0	19	49	java/lang/IllegalArgumentException
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        bool1 = bool3;
-      } while (!super.equals(paramObject));
-      paramObject = (CloseFrame)paramObject;
-      bool1 = bool3;
-    } while (this.code != paramObject.code);
-    if (this.reason != null) {
-      bool1 = this.reason.equals(paramObject.reason);
-    }
-    for (;;)
-    {
-      return bool1;
-      bool1 = bool2;
-      if (paramObject.reason != null) {
-        bool1 = false;
+      if (getClass() != paramObject.getClass()) {
+        return false;
       }
+      if (!super.equals(paramObject)) {
+        return false;
+      }
+      paramObject = (CloseFrame)paramObject;
+      if (this.code != paramObject.code) {
+        return false;
+      }
+      String str = this.reason;
+      if (str != null) {
+        return str.equals(paramObject.reason);
+      }
+      return paramObject.reason == null;
     }
+    return false;
   }
   
   public int getCloseCode()
@@ -130,10 +148,14 @@ public class CloseFrame
   {
     int j = super.hashCode();
     int k = this.code;
-    if (this.reason != null) {}
-    for (int i = this.reason.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
+    String str = this.reason;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return (j * 31 + k) * 31 + i;
   }
   
   public void isValid()
@@ -145,12 +167,18 @@ public class CloseFrame
     if ((this.code == 1005) && (this.reason.length() > 0)) {
       throw new InvalidDataException(1002, "A close frame must have a closecode if it has a reason");
     }
-    if ((this.code > 1015) && (this.code < 3000)) {
+    int i = this.code;
+    if ((i > 1015) && (i < 3000)) {
       throw new InvalidDataException(1002, "Trying to send an illegal close code!");
     }
-    if ((this.code == 1006) || (this.code == 1015) || (this.code == 1005) || (this.code > 4999) || (this.code < 1000) || (this.code == 1004)) {
-      throw new InvalidFrameException("closecode must not be sent over the wire: " + this.code);
+    i = this.code;
+    if ((i != 1006) && (i != 1015) && (i != 1005) && (i <= 4999) && (i >= 1000) && (i != 1004)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("closecode must not be sent over the wire: ");
+    localStringBuilder.append(this.code);
+    throw new InvalidFrameException(localStringBuilder.toString());
   }
   
   public void setCode(int paramInt)
@@ -195,9 +223,11 @@ public class CloseFrame
     }
     catch (InvalidDataException paramByteBuffer)
     {
-      this.code = 1007;
-      this.reason = null;
+      label106:
+      break label106;
     }
+    this.code = 1007;
+    this.reason = null;
   }
   
   public void setReason(String paramString)
@@ -212,12 +242,16 @@ public class CloseFrame
   
   public String toString()
   {
-    return super.toString() + "code: " + this.code;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("code: ");
+    localStringBuilder.append(this.code);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.framing.CloseFrame
  * JD-Core Version:    0.7.0.1
  */

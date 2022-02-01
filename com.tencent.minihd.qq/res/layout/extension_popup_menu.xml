@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/card_shadow_head" android:layout_width="fill_parent" android:layout_height="18.0dip" />
+    <ScrollView android:id="@id/scrollv1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/menu_container" android:background="@drawable/card_shadow_body" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="145.0dip" />
+    </ScrollView>
+    <View android:background="@drawable/card_shadow_foot" android:layout_width="fill_parent" android:layout_height="28.0dip" />
+    <ImageView android:id="@id/arrow_down" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="-4.0dip" android:src="@drawable/extension_bar_pop_arrow" android:layout_below="@id/scrollv1" />
+</LinearLayout>

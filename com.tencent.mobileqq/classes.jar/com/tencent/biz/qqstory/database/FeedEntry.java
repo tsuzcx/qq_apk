@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class FeedEntry
-  extends awge
+  extends Entity
 {
   public String date;
   public byte[] extraInfo;
-  @awhs
+  @unique
   public String feedId;
   public int feedSourceTagType;
   public String ownerId;
@@ -26,7 +26,7 @@ public class FeedEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.FeedEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$ca
+final class c$ca
   extends c.g
 {
-  public c$ca()
+  c$ca()
   {
-    super("getGameCommInfo", "getGameCommInfo", 241, false);
+    super("getAdIdInfo", "getAdIdInfo", 375, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ca
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,39 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxh;
-import bdhb;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
-public class PokeItemAnimationManager$1
+class PokeItemAnimationManager$1
   implements Runnable
 {
   public void run()
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LzmaUtils", 2, "inFileDir:" + this.jdField_a_of_type_JavaLangString + " | outFileDir:" + this.b);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("inFileDir:");
+        localStringBuilder.append(this.a);
+        localStringBuilder.append(" | outFileDir:");
+        localStringBuilder.append(this.b);
+        QLog.d("LzmaUtils", 2, localStringBuilder.toString());
       }
-      bdhb.a(this.jdField_a_of_type_JavaLangString, this.b, false);
+      FileUtils.uncompressZip(this.a, this.b, false);
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LzmaUtils", 2, localIOException, new Object[0]);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("LzmaUtils", 2, localIOException, new Object[0]);
       }
     }
-    afxh.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
+    PokeItemAnimationManager.a(this.this$0, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import ftr;
+import ftq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +26,7 @@ public final class TroopFileViewerActivity
   static final String jdField_a_of_type_JavaLangString = "<FileAssistant>TroopFileViewerActivity";
   int jdField_a_of_type_Int = 0;
   TroopFileController jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerTroopfileTroopFileController = null;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new ftr(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new ftq(this);
   public FileManagerEntity a;
   public ForwardFileInfo a;
   List jdField_a_of_type_JavaUtilList = new ArrayList();

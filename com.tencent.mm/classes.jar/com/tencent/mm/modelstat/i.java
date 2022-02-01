@@ -1,74 +1,69 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.protocal.protobuf.bp;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cjk;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f eGj;
-  private final com.tencent.mm.ai.b rr;
+  private h mAY;
+  final c oWn;
   
-  public i(int paramInt1, String paramString, int paramInt2)
+  public i(b paramb)
   {
-    AppMethodBeat.i(35583);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bj();
-    ((b.a)localObject).fsY = new bk();
-    ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
-    ((b.a)localObject).funcId = 1295;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bj)this.rr.fsV.fta;
-    bp localbp = new bp();
-    localbp.wog = paramInt1;
-    localbp.woh = new com.tencent.mm.bv.b(paramString.getBytes());
-    localbp.woi = paramInt2;
-    ((bj)localObject).wnQ.add(localbp);
-    ab.i("MicroMsg.NetSceneAdDataReport", "init logId:%d, logStr:%s", new Object[] { Integer.valueOf(paramInt1), paramString });
-    AppMethodBeat.o(35583);
+    AppMethodBeat.i(151081);
+    c.a locala = new c.a();
+    cjk localcjk = new cjk();
+    localcjk.XKk = 0;
+    localcjk.aarX = paramb;
+    locala.otE = localcjk;
+    locala.otF = new cjl();
+    locala.uri = "/cgi-bin/mmbiz-bin/geteventsampleconf";
+    locala.funcId = 1126;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.oWn = locala.bEF();
+    AppMethodBeat.o(151081);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(35585);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(35585);
+    AppMethodBeat.i(151082);
+    Log.i("MicroMsg.NetSceneUpdateEventConfig", "start update event config");
+    setHasCallbackToQueue(true);
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.oWn, this);
+    AppMethodBeat.o(151082);
     return i;
   }
   
   public final int getType()
   {
-    return 1295;
+    return 1126;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(35584);
-    paramq = (bk)this.rr.fsW.fta;
-    ab.i("MicroMsg.NetSceneAdDataReport", "onGYNetEnd, errType = %d, errCode = %d, ret=%d, msg=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramq.ret), paramq.bjm });
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(35584);
+    AppMethodBeat.i(151083);
+    Log.i("MicroMsg.NetSceneUpdateEventConfig", "onGYNetEnd errType: %d, errCode: %d, errMsg %s, IReqResp %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, params.toString() });
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(151083);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.i
  * JD-Core Version:    0.7.0.1
  */

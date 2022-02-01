@@ -32,79 +32,117 @@ public class KcSdkShellManager
   
   public static KcSdkShellManager getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new KcSdkShellManager();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new KcSdkShellManager();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   private boolean initImpl(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, IKingCardExceptionCallback paramIKingCardExceptionCallback)
   {
     try
     {
-      if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
-        throw new IllegalThreadStateException("Must init king card sdk in work thread");
+      if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
+      {
+        Log.e("KcSdkShellManager", "init");
+        c.a(paramContext);
+        this.mIKingCardExceptionCallback = paramIKingCardExceptionCallback;
+        Thread localThread = Thread.currentThread();
+        if (localThread.getId() != Looper.getMainLooper().getThread().getId())
+        {
+          String str = localThread.getName();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("kingcardsdk_");
+          localStringBuilder.append(str);
+          localThread.setName(localStringBuilder.toString());
+        }
+        Thread.setDefaultUncaughtExceptionHandler(new KingCardUncaughtExceptionHandler(paramContext, paramIKingCardExceptionCallback));
+        return loadJPatch(paramContext, paramString1, paramString2, paramString3, paramBoolean);
       }
+      throw new IllegalThreadStateException("Must init king card sdk in work thread");
     }
     catch (Throwable paramContext)
     {
       paramContext.printStackTrace();
-      return false;
     }
-    Log.e("KcSdkShellManager", "init");
-    c.a(paramContext);
-    this.mIKingCardExceptionCallback = paramIKingCardExceptionCallback;
-    Thread localThread = Thread.currentThread();
-    if (localThread.getId() != Looper.getMainLooper().getThread().getId())
-    {
-      String str = localThread.getName();
-      localThread.setName("kingcardsdk_" + str);
-    }
-    Thread.setDefaultUncaughtExceptionHandler(new KingCardUncaughtExceptionHandler(paramContext, paramIKingCardExceptionCallback));
-    paramBoolean = loadJPatch(paramContext, paramString1, paramString2, paramString3, paramBoolean);
-    return paramBoolean;
+    return false;
   }
   
   private boolean loadJPatch(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    String str = c.a();
-    Log.e("KcSdkShellManager", "sdkPatch: " + str);
-    if (!TextUtils.isEmpty(str))
+    Object localObject = c.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sdkPatch: ");
+    localStringBuilder.append((String)localObject);
+    Log.e("KcSdkShellManager", localStringBuilder.toString());
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       Log.e("KcSdkShellManager", "?????");
-      if (loadSdk(paramContext, paramString2, paramString3, paramBoolean, str)) {
+      if (loadSdk(paramContext, paramString2, paramString3, paramBoolean, (String)localObject)) {
         return true;
       }
       Log.e("KcSdkShellManager", "load sdk patch error ");
     }
-    Log.e("KcSdkShellManager", "sdkPath:" + paramString1);
-    if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
-      return false;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sdkPath:");
+    ((StringBuilder)localObject).append(paramString1);
+    Log.e("KcSdkShellManager", ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(paramString1)) && (new File(paramString1).exists())) {
+      return loadSdk(paramContext, paramString2, paramString3, paramBoolean, paramString1);
     }
-    return loadSdk(paramContext, paramString2, paramString3, paramBoolean, paramString1);
+    return false;
   }
   
+  /* Error */
   private boolean loadSdk(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    try
-    {
-      paramBoolean = loadSdkImpl(paramContext, paramString1, paramString2, paramBoolean, paramString3);
-      return paramBoolean;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramBoolean = false;
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: aload_1
+    //   4: aload_2
+    //   5: aload_3
+    //   6: iload 4
+    //   8: aload 5
+    //   10: invokespecial 154	tmsdk/common/KcSdkShellManager:loadSdkImpl	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)Z
+    //   13: istore 4
+    //   15: aload_0
+    //   16: monitorexit
+    //   17: iload 4
+    //   19: ireturn
+    //   20: astore_1
+    //   21: goto +12 -> 33
+    //   24: astore_1
+    //   25: aload_1
+    //   26: invokevirtual 124	java/lang/Throwable:printStackTrace	()V
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: iconst_0
+    //   32: ireturn
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: aload_1
+    //   36: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	37	0	this	KcSdkShellManager
+    //   0	37	1	paramContext	Context
+    //   0	37	2	paramString1	String
+    //   0	37	3	paramString2	String
+    //   0	37	4	paramBoolean	boolean
+    //   0	37	5	paramString3	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	20	finally
+    //   25	29	20	finally
+    //   2	15	24	java/lang/Throwable
   }
   
   private boolean loadSdkImpl(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
@@ -116,22 +154,29 @@ public class KcSdkShellManager
       this.mITmsContextInterface.setTMSDKLogEnable(this.isLogEnabled);
       this.mITmsContextInterface.setPhoneInfoBridge(this.phoneInfoBridge);
       this.mITmsContextInterface.setKcConfig(this.kcConfig);
-      if (paramBoolean) {}
-      for (paramBoolean = this.mITmsContextInterface.initInBaseProcess(paramContext, paramString1, paramString2);; paramBoolean = this.mITmsContextInterface.initInOtherProcess(paramContext, paramString1, paramString2))
-      {
-        paramContext = this.mITmsContextInterface.getClass();
-        this.mIKingCardInterface = ((IKingCardInterface)paramContext.getDeclaredMethod("getKingCardManager", new Class[0]).invoke(this.mITmsContextInterface, new Object[0]));
-        this.mISimInterface = ((ISimInterface)paramContext.getDeclaredMethod("getDualSimManager", new Class[0]).invoke(this.mITmsContextInterface, new Object[0]));
-        Log.e("KcSdkShellManager", "mIKingCardInterface:" + this.mIKingCardInterface);
-        Log.e("KcSdkShellManager", "mISimInterface:" + this.mISimInterface);
-        return paramBoolean;
+      if (paramBoolean) {
+        paramBoolean = this.mITmsContextInterface.initInBaseProcess(paramContext, paramString1, paramString2);
+      } else {
+        paramBoolean = this.mITmsContextInterface.initInOtherProcess(paramContext, paramString1, paramString2);
       }
-      return false;
+      paramContext = this.mITmsContextInterface.getClass();
+      this.mIKingCardInterface = ((IKingCardInterface)paramContext.getDeclaredMethod("getKingCardManager", new Class[0]).invoke(this.mITmsContextInterface, new Object[0]));
+      this.mISimInterface = ((ISimInterface)paramContext.getDeclaredMethod("getDualSimManager", new Class[0]).invoke(this.mITmsContextInterface, new Object[0]));
+      paramContext = new StringBuilder();
+      paramContext.append("mIKingCardInterface:");
+      paramContext.append(this.mIKingCardInterface);
+      Log.e("KcSdkShellManager", paramContext.toString());
+      paramContext = new StringBuilder();
+      paramContext.append("mISimInterface:");
+      paramContext.append(this.mISimInterface);
+      Log.e("KcSdkShellManager", paramContext.toString());
+      return paramBoolean;
     }
     catch (Throwable paramContext)
     {
       paramContext.printStackTrace();
     }
+    return false;
   }
   
   public IKingCardExceptionCallback getKingCardExceptionCallback()
@@ -208,22 +253,24 @@ public class KcSdkShellManager
   public void setPhoneInfoBridge(IPhoneInfoBridge paramIPhoneInfoBridge)
   {
     this.phoneInfoBridge = paramIPhoneInfoBridge;
-    if (this.mITmsContextInterface != null) {
-      this.mITmsContextInterface.setPhoneInfoBridge(paramIPhoneInfoBridge);
+    ITmsContextInterface localITmsContextInterface = this.mITmsContextInterface;
+    if (localITmsContextInterface != null) {
+      localITmsContextInterface.setPhoneInfoBridge(paramIPhoneInfoBridge);
     }
   }
   
   public void setTMSDKLogEnable(boolean paramBoolean)
   {
     this.isLogEnabled = paramBoolean;
-    if (this.mITmsContextInterface != null) {
-      this.mITmsContextInterface.setTMSDKLogEnable(true);
+    ITmsContextInterface localITmsContextInterface = this.mITmsContextInterface;
+    if (localITmsContextInterface != null) {
+      localITmsContextInterface.setTMSDKLogEnable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tmsdk.common.KcSdkShellManager
  * JD-Core Version:    0.7.0.1
  */

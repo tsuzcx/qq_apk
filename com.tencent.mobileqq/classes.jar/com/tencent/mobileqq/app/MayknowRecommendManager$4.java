@@ -1,46 +1,43 @@
 package com.tencent.mobileqq.app;
 
-import alwd;
-import android.os.Bundle;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.phonecontact.listener.IPhoneContactListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class MayknowRecommendManager$4
-  implements Runnable
+class MayknowRecommendManager$4
+  implements IPhoneContactListener
 {
-  public MayknowRecommendManager$4(alwd paramalwd, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  MayknowRecommendManager$4(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    alwd.a(this.this$0, this.jdField_a_of_type_Int);
-    for (;;)
+    boolean bool1 = MayknowRecommendManager.l(this.a);
+    MayknowRecommendManager.a(this.a, false);
+    boolean bool2 = this.a.m();
+    if (QLog.isColorLevel())
     {
-      synchronized (alwd.b(this.this$0))
-      {
-        ArrayList localArrayList = (ArrayList)alwd.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
-        if ((localArrayList == null) || (localArrayList.isEmpty()))
-        {
-          i = 1;
-          if (i != 0) {
-            break label124;
-          }
-          bool = this.this$0.b(this.b);
-          if (bool) {
-            ((FriendListHandler)alwd.a(this.this$0).a(1)).a(this.b, this.jdField_a_of_type_Int, null, true, this.jdField_a_of_type_AndroidOsBundle);
-          }
-          return;
-        }
-      }
-      int i = 0;
-      continue;
-      label124:
-      boolean bool = true;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onBindStateChanged last:");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append("  now:");
+      localStringBuilder.append(bool2);
+      QLog.i("MayknowRecommendManager", 2, localStringBuilder.toString());
+    }
+    if (bool1 != bool2) {
+      ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(90, true, null);
     }
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.4
  * JD-Core Version:    0.7.0.1
  */

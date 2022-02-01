@@ -12,13 +12,13 @@ public final class event_photo
   static Map<String, String> cache_ext;
   static lbs_info cache_lbs = new lbs_info();
   static byte[] cache_longTag;
-  public Map<String, String> ext;
-  public lbs_info lbs;
-  public byte[] longTag;
-  public long modifytime;
+  public Map<String, String> ext = null;
+  public lbs_info lbs = null;
+  public byte[] longTag = null;
+  public long modifytime = 0L;
   public String picid = "";
-  public long shoottime;
-  public long tag;
+  public long shoottime = 0L;
+  public long tag = 0L;
   
   static
   {
@@ -54,24 +54,27 @@ public final class event_photo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picid != null) {
-      paramJceOutputStream.write(this.picid, 0);
+    Object localObject = this.picid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.shoottime, 1);
     paramJceOutputStream.write(this.lbs, 2);
     paramJceOutputStream.write(this.tag, 3);
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 4);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
     paramJceOutputStream.write(this.modifytime, 5);
-    if (this.longTag != null) {
-      paramJceOutputStream.write(this.longTag, 6);
+    localObject = this.longTag;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_photo
  * JD-Core Version:    0.7.0.1
  */

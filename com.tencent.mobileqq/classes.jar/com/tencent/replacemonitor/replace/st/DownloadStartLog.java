@@ -9,17 +9,23 @@ public class DownloadStartLog
   
   public String build()
   {
-    return super.build() + "|" + this.downloadStartTime + "|" + d.a(this.externalParams, "&");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.build());
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.downloadStartTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append(d.a(this.externalParams, "&"));
+    return localStringBuilder.toString();
   }
   
-  public int getType()
+  protected int getType()
   {
     return 5002;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.st.DownloadStartLog
  * JD-Core Version:    0.7.0.1
  */

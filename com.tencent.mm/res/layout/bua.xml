@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/iv_" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center" android:id="@id/iur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/io3" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/iuo" android:background="@drawable/apq" android:layout_width="fill_parent" android:layout_height="@dimen/bz" android:layout_marginTop="@dimen/d0" custom:cornerRadius="8.0dip">
+        <RelativeLayout android:id="@id/ne" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz">
+            <ImageView android:id="@id/iul" android:background="@drawable/ro" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:scaleType="centerCrop" />
+            <LinearLayout android:id="@id/i9n" android:background="@drawable/aiu" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_alignParentBottom="true" android:layout_alignParentStart="true">
+                <ImageView android:layout_gravity="start|bottom|center" android:id="@id/i9m" android:visibility="visible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginBottom="4.0dip" android:layout_marginStart="4.0dip" />
+                <TextView android:textSize="8.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="start|bottom|center" android:id="@id/i9o" android:layout_width="wrap_content" android:layout_height="10.0dip" android:layout_marginBottom="2.0dip" android:layout_marginStart="2.0dip" />
+            </LinearLayout>
+            <FrameLayout android:id="@id/n9" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="start|center" android:id="@id/ium" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/iuu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cp" android:layout_toEndOf="@id/ne">
+            <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/ivb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/iun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:gravity="center" android:layout_gravity="center" android:id="@id/iuq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/d6" android:text="@string/inz" android:textAlignment="center" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+</LinearLayout>

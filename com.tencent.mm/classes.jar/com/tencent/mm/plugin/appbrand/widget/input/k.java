@@ -1,536 +1,736 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.support.v4.view.t;
+import android.app.Activity;
+import android.os.Build.VERSION;
 import android.text.Layout;
 import android.view.View;
 import android.widget.EditText;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.bd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.lang.ref.Reference;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 public class k
-  implements f.c
+  implements i.c
 {
-  private static final k jlJ;
-  private static final android.support.v4.e.a<com.tencent.mm.plugin.appbrand.page.v, k> jlQ;
-  private final com.tencent.mm.plugin.appbrand.page.v bCk;
-  final Map<k.a, k> jlI;
-  private final int jlK;
-  private final int jlL;
-  private int jlM;
-  private boolean jlN;
-  private int jlO;
-  private int jlP;
-  private final Runnable jlR;
-  private final Runnable jlS;
+  private static final k uGf;
+  private static final androidx.b.a<ad, k> uGo;
+  private final ad enX;
+  final Map<a, k> uGe;
+  private final int uGg;
+  private final int uGh;
+  private int uGi;
+  private boolean uGj;
+  private boolean uGk;
+  private int uGl;
+  private Queue<b> uGm;
+  private int uGn;
+  private final Runnable uGp;
+  private final Runnable uGq;
   
   static
   {
-    AppMethodBeat.i(123673);
-    jlJ = new k.1();
-    jlQ = new android.support.v4.e.a();
-    AppMethodBeat.o(123673);
+    AppMethodBeat.i(136407);
+    uGf = new k.1();
+    uGo = new androidx.b.a();
+    AppMethodBeat.o(136407);
   }
   
   private k()
   {
-    AppMethodBeat.i(123660);
-    this.jlI = new android.support.v4.e.a();
-    this.jlL = 5;
-    this.jlM = 0;
-    this.jlN = false;
-    this.jlO = -1;
-    this.jlP = 0;
-    this.jlR = new k.2(this);
-    this.jlS = new Runnable()
+    AppMethodBeat.i(136394);
+    this.uGe = new androidx.b.a();
+    this.uGh = 5;
+    this.uGi = 0;
+    this.uGj = false;
+    this.uGk = true;
+    this.uGl = -1;
+    this.uGm = new LinkedList();
+    this.uGn = 0;
+    this.uGp = new Runnable()
     {
-      private int aQS()
+      public final void run()
       {
-        AppMethodBeat.i(123657);
-        View localView = k.b(k.this);
-        if (localView != null)
+        AppMethodBeat.i(136387);
+        if (!k.a(k.this).isRunning())
         {
-          int i = localView.getScrollY();
-          AppMethodBeat.o(123657);
-          return i;
+          AppMethodBeat.o(136387);
+          return;
         }
-        AppMethodBeat.o(123657);
-        return 0;
+        Object localObject = k.b(k.this);
+        if (localObject != null)
+        {
+          ((View)localObject).scrollTo(0, 0);
+          if (k.c(k.this) != 0)
+          {
+            localObject = k.a(k.this).tti;
+            if (localObject != null)
+            {
+              localObject = ((bd)localObject).getContentView();
+              if (localObject != null) {
+                ((View)localObject).scrollBy(((View)localObject).getScrollX(), -k.c(k.this));
+              }
+            }
+          }
+          k.d(k.this);
+        }
+        AppMethodBeat.o(136387);
       }
-      
-      private void b(aa paramAnonymousaa, int paramAnonymousInt)
+    };
+    this.uGq = new Runnable()
+    {
+      private void Eo(int paramAnonymousInt)
       {
-        AppMethodBeat.i(123656);
-        al.d(new k.3.1(this, paramAnonymousaa, paramAnonymousInt));
-        AppMethodBeat.o(123656);
-      }
-      
-      private void qt(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(123658);
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.AppBrandInputPageOffsetHelper", "[TextAreaHeight] offsetRoot %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        AppMethodBeat.i(136392);
+        Log.d("MicroMsg.AppBrandInputPageOffsetHelper", "[TextAreaHeight] offsetRoot %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         View localView = k.b(k.this);
         if (localView != null)
         {
           localView.scrollTo(0, paramAnonymousInt);
-          k.k(k.this);
+          k.m(k.this);
         }
-        AppMethodBeat.o(123658);
+        AppMethodBeat.o(136392);
       }
       
-      public final void run()
+      private void b(final ae paramAnonymousae, final int paramAnonymousInt)
       {
-        AppMethodBeat.i(123655);
-        com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] offsetRunner enter");
-        Object localObject = o.s(k.a(k.this));
-        if (localObject == null)
+        AppMethodBeat.i(136390);
+        Log.e("MicroMsg.AppBrandInputPageOffsetHelper", "sendKeyboardEvent: %b", new Object[] { Boolean.valueOf(k.f(k.this)) });
+        if (!k.f(k.this))
         {
-          AppMethodBeat.o(123655);
+          AppMethodBeat.o(136390);
           return;
         }
-        if (!k.a(k.this).isRunning())
+        MMHandlerThread.postToMainThread(new Runnable()
         {
-          AppMethodBeat.o(123655);
-          return;
-        }
-        k.a(k.this, 0);
-        if ((((aa)localObject).getInputPanel() == null) || (((aa)localObject).aQw() == null))
-        {
-          AppMethodBeat.o(123655);
-          return;
-        }
-        EditText localEditText = ((aa)localObject).aQw();
-        View localView = ((aa)localObject).getInputPanel();
-        if (com.tencent.mm.plugin.appbrand.t.v.cy(localEditText))
-        {
-          b((aa)localObject, 0);
-          AppMethodBeat.o(123655);
-          return;
-        }
-        if (!((ac)localView).aRd())
-        {
-          com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panel height %d, tryCount %d", new Object[] { Integer.valueOf(localView.getHeight()), Integer.valueOf(k.e(k.this)) });
-          if (k.f(k.this) < 5)
+          public final void run()
           {
-            k.g(k.this);
-            AppMethodBeat.o(123655);
+            AppMethodBeat.i(136388);
+            paramAnonymousae.Ej(paramAnonymousInt);
+            AppMethodBeat.o(136388);
           }
-        }
-        else
-        {
-          k.h(k.this);
-          com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panelHeight %d", new Object[] { Integer.valueOf(localView.getHeight()) });
-        }
-        b((aa)localObject, localView.getHeight());
-        if (!((aa)localObject).aQz())
-        {
-          com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] beginOffset, no need adjust position, notify height %d", new Object[] { Integer.valueOf(localView.getHeight()) });
-          AppMethodBeat.o(123655);
-          return;
-        }
-        int[] arrayOfInt = new int[2];
-        localEditText.getLocationOnScreen(arrayOfInt);
-        int k = arrayOfInt[1];
-        com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] inputHeight %d, inputTop %d, inputAttached %B", new Object[] { Integer.valueOf(localEditText.getHeight()), Integer.valueOf(k), Boolean.valueOf(t.aw(localEditText)) });
-        k.i(k.this);
-        int i = localEditText.getHeight() + k;
-        localView.getLocationOnScreen(arrayOfInt);
-        int n = arrayOfInt[1];
-        int j;
-        int m;
-        if ((((ab)localEditText).aQX()) && (localEditText.getLayout() != null))
-        {
-          j = k + ((ab)localEditText).qz(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart()));
-          m = k + ((ab)localEditText).qz(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart()) + 1);
-          if (j - k >= localEditText.getHeight())
-          {
-            j = i - localEditText.getLineHeight();
-            if (m - k < localEditText.getHeight()) {}
-          }
-        }
-        for (;;)
-        {
-          k = i;
-          if (!k.a(k.this).aJx()) {
-            k = i + ((aa)localObject).aQA();
-          }
-          if (n != k)
-          {
-            if (j < k.j(k.this))
-            {
-              localObject = k.a(k.this).iuy;
-              if (localObject != null)
-              {
-                localView = ((ap)localObject).getContentView();
-                if ((localView != null) && (localEditText != null)) {}
-              }
-              else
-              {
-                AppMethodBeat.o(123655);
-                return;
-              }
-              i = -(((ap)localObject).getWebScrollY() - localEditText.getTop());
-              localView.scrollBy(localView.getScrollX(), i);
-              AppMethodBeat.o(123655);
-              return;
-            }
-            i = Math.max(-aQS(), Math.min(k - n, j - k.j(k.this)));
-            localObject = k.a(k.this).iuy;
-            if (localObject != null)
-            {
-              localView = ((ap)localObject).getContentView();
-              if ((localView != null) && (localEditText != null)) {}
-            }
-            else
-            {
-              AppMethodBeat.o(123655);
-              return;
-            }
-            if (((ab)localEditText).aRb())
-            {
-              qt(aQS() + i);
-              AppMethodBeat.o(123655);
-              return;
-            }
-            j = ((ap)localObject).getHeight();
-            k = ((ap)localObject).getWebScrollY();
-            m = g.pO(((ap)localObject).getContentHeight());
-            n = localEditText.getHeight();
-            localEditText.getTop();
-            if ((!((ab)localEditText).aQX()) && (localEditText.getTop() + n - k <= j))
-            {
-              qt(aQS() + i);
-              AppMethodBeat.o(123655);
-              return;
-            }
-            j = Math.max(0, Math.min(m - k - j, i));
-            localView.scrollBy(localView.getScrollX(), j);
-            k.a(k.this, j);
-            qt(i - j + aQS());
-          }
-          AppMethodBeat.o(123655);
-          return;
-          i = m;
-          continue;
-          break;
-          j = k;
-        }
+        });
+        AppMethodBeat.o(136390);
       }
-    };
-    this.bCk = null;
-    this.jlK = 0;
-    AppMethodBeat.o(123660);
-  }
-  
-  private k(com.tencent.mm.plugin.appbrand.page.v paramv)
-  {
-    AppMethodBeat.i(123661);
-    this.jlI = new android.support.v4.e.a();
-    this.jlL = 5;
-    this.jlM = 0;
-    this.jlN = false;
-    this.jlO = -1;
-    this.jlP = 0;
-    this.jlR = new k.2(this);
-    this.jlS = new Runnable()
-    {
-      private int aQS()
+      
+      private int cRd()
       {
-        AppMethodBeat.i(123657);
+        AppMethodBeat.i(136391);
         View localView = k.b(k.this);
         if (localView != null)
         {
           int i = localView.getScrollY();
-          AppMethodBeat.o(123657);
+          AppMethodBeat.o(136391);
           return i;
         }
-        AppMethodBeat.o(123657);
+        AppMethodBeat.o(136391);
         return 0;
-      }
-      
-      private void b(aa paramAnonymousaa, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(123656);
-        al.d(new k.3.1(this, paramAnonymousaa, paramAnonymousInt));
-        AppMethodBeat.o(123656);
-      }
-      
-      private void qt(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(123658);
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.AppBrandInputPageOffsetHelper", "[TextAreaHeight] offsetRoot %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        View localView = k.b(k.this);
-        if (localView != null)
-        {
-          localView.scrollTo(0, paramAnonymousInt);
-          k.k(k.this);
-        }
-        AppMethodBeat.o(123658);
       }
       
       public final void run()
       {
-        AppMethodBeat.i(123655);
-        com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] offsetRunner enter");
-        Object localObject = o.s(k.a(k.this));
-        if (localObject == null)
+        AppMethodBeat.i(136389);
+        Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] offsetRunner enter");
+        Object localObject2 = o.G(k.a(k.this));
+        if (localObject2 == null)
         {
-          AppMethodBeat.o(123655);
+          k.e(k.this);
+          AppMethodBeat.o(136389);
           return;
         }
         if (!k.a(k.this).isRunning())
         {
-          AppMethodBeat.o(123655);
+          k.e(k.this);
+          AppMethodBeat.o(136389);
           return;
         }
         k.a(k.this, 0);
-        if ((((aa)localObject).getInputPanel() == null) || (((aa)localObject).aQw() == null))
+        if ((((ae)localObject2).getInputPanel() == null) || (((ae)localObject2).cQE() == null))
         {
-          AppMethodBeat.o(123655);
+          k.e(k.this);
+          AppMethodBeat.o(136389);
           return;
         }
-        EditText localEditText = ((aa)localObject).aQw();
-        View localView = ((aa)localObject).getInputPanel();
-        if (com.tencent.mm.plugin.appbrand.t.v.cy(localEditText))
+        EditText localEditText = ((ae)localObject2).cQE();
+        Object localObject1 = ((ae)localObject2).getInputPanel();
+        if ((Build.VERSION.SDK_INT >= 24) && (localEditText != null))
         {
-          b((aa)localObject, 0);
-          AppMethodBeat.o(123655);
-          return;
-        }
-        if (!((ac)localView).aRd())
-        {
-          com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panel height %d, tryCount %d", new Object[] { Integer.valueOf(localView.getHeight()), Integer.valueOf(k.e(k.this)) });
-          if (k.f(k.this) < 5)
+          localObject3 = AndroidContextUtil.castActivityOrNull(localEditText.getContext());
+          if ((localObject3 != null) && (((Activity)localObject3).isInMultiWindowMode()))
           {
-            k.g(k.this);
-            AppMethodBeat.o(123655);
-          }
-        }
-        else
-        {
-          k.h(k.this);
-          com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panelHeight %d", new Object[] { Integer.valueOf(localView.getHeight()) });
-        }
-        b((aa)localObject, localView.getHeight());
-        if (!((aa)localObject).aQz())
-        {
-          com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] beginOffset, no need adjust position, notify height %d", new Object[] { Integer.valueOf(localView.getHeight()) });
-          AppMethodBeat.o(123655);
-          return;
-        }
-        int[] arrayOfInt = new int[2];
-        localEditText.getLocationOnScreen(arrayOfInt);
-        int k = arrayOfInt[1];
-        com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] inputHeight %d, inputTop %d, inputAttached %B", new Object[] { Integer.valueOf(localEditText.getHeight()), Integer.valueOf(k), Boolean.valueOf(t.aw(localEditText)) });
-        k.i(k.this);
-        int i = localEditText.getHeight() + k;
-        localView.getLocationOnScreen(arrayOfInt);
-        int n = arrayOfInt[1];
-        int j;
-        int m;
-        if ((((ab)localEditText).aQX()) && (localEditText.getLayout() != null))
-        {
-          j = k + ((ab)localEditText).qz(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart()));
-          m = k + ((ab)localEditText).qz(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart()) + 1);
-          if (j - k >= localEditText.getHeight())
-          {
-            j = i - localEditText.getLineHeight();
-            if (m - k < localEditText.getHeight()) {}
+            i = 1;
+            if (i == 0) {
+              break label195;
+            }
+            b((ae)localObject2, 0);
           }
         }
         for (;;)
         {
-          k = i;
-          if (!k.a(k.this).aJx()) {
-            k = i + ((aa)localObject).aQA();
-          }
-          if (n != k)
+          k.e(k.this);
+          AppMethodBeat.o(136389);
+          return;
+          i = 0;
+          break;
+          label195:
+          if (!((ag)localObject1).cRp())
           {
-            if (j < k.j(k.this))
+            Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panel height %d, tryCount %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()), Integer.valueOf(k.g(k.this)) });
+            if (k.h(k.this) < 5)
             {
-              localObject = k.a(k.this).iuy;
-              if (localObject != null)
+              k.i(k.this);
+              AppMethodBeat.o(136389);
+            }
+          }
+          else
+          {
+            k.j(k.this);
+            Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panelHeight %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()) });
+          }
+          b((ae)localObject2, ((View)localObject1).getHeight());
+          if (!((ae)localObject2).cQL())
+          {
+            Log.i("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] beginOffset, no need adjust position, notify height %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()) });
+          }
+          else
+          {
+            if ((!(k.a(k.this).qwF instanceof com.tencent.mm.plugin.appbrand.platform.window.a.o)) || (!k.a(k.this).cdZ())) {
+              break label397;
+            }
+            Log.i("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] beginOffset, in landscape skip adjust position, notify height %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()) });
+          }
+        }
+        label397:
+        Object localObject3 = new int[2];
+        localEditText.getLocationOnScreen((int[])localObject3);
+        int k = localObject3[1];
+        Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] inputHeight %d, inputTop %d, inputAttached %B", new Object[] { Integer.valueOf(localEditText.getHeight()), Integer.valueOf(k), Boolean.valueOf(z.ay(localEditText)) });
+        k.k(k.this);
+        int i = localEditText.getHeight() + k;
+        ((View)localObject1).getLocationOnScreen((int[])localObject3);
+        int n = localObject3[1];
+        if ((localEditText instanceof q)) {}
+        for (localObject1 = ((q)localEditText).getAdjustKeyboardTo();; localObject1 = null)
+        {
+          int m;
+          int j;
+          if ((((af)localEditText).cRj()) && (localEditText.getLayout() != null) && (!"bottom".equals(localObject1)))
+          {
+            m = localEditText.getScrollY();
+            j = ((af)localEditText).Eu(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart())) + k - m;
+            m = ((af)localEditText).Eu(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart()) + 1) + k - m;
+            if (j - k >= localEditText.getHeight())
+            {
+              j = i - localEditText.getLineHeight();
+              label619:
+              if (m - k < localEditText.getHeight()) {}
+            }
+          }
+          for (;;)
+          {
+            k = i;
+            if (!k.a(k.this).cdZ()) {
+              k = i + ((ae)localObject2).cQM();
+            }
+            if (n == k) {
+              break;
+            }
+            if (j < k.l(k.this))
+            {
+              localObject1 = k.a(k.this).tti;
+              if (localObject1 != null)
               {
-                localView = ((ap)localObject).getContentView();
-                if ((localView != null) && (localEditText != null)) {}
+                localObject2 = ((bd)localObject1).getContentView();
+                if ((localObject2 != null) && (localEditText != null)) {
+                  break label722;
+                }
               }
-              else
+              for (;;)
               {
-                AppMethodBeat.o(123655);
+                k.e(k.this);
+                AppMethodBeat.o(136389);
                 return;
+                label722:
+                i = -(((bd)localObject1).getWebScrollY() - localEditText.getTop());
+                ((View)localObject2).scrollBy(((View)localObject2).getScrollX(), i);
               }
-              i = -(((ap)localObject).getWebScrollY() - localEditText.getTop());
-              localView.scrollBy(localView.getScrollX(), i);
-              AppMethodBeat.o(123655);
-              return;
             }
-            i = Math.max(-aQS(), Math.min(k - n, j - k.j(k.this)));
-            localObject = k.a(k.this).iuy;
-            if (localObject != null)
+            i = Math.max(-cRd(), Math.min(k - n, j - k.l(k.this)));
+            localObject1 = k.a(k.this).tti;
+            if (localObject1 == null) {
+              break;
+            }
+            localObject2 = ((bd)localObject1).getContentView();
+            if ((localObject2 == null) || (localEditText == null)) {
+              break;
+            }
+            if (((af)localEditText).cRn())
             {
-              localView = ((ap)localObject).getContentView();
-              if ((localView != null) && (localEditText != null)) {}
+              Eo(cRd() + i);
+              break;
             }
-            else
-            {
-              AppMethodBeat.o(123655);
-              return;
-            }
-            if (((ab)localEditText).aRb())
-            {
-              qt(aQS() + i);
-              AppMethodBeat.o(123655);
-              return;
-            }
-            j = ((ap)localObject).getHeight();
-            k = ((ap)localObject).getWebScrollY();
-            m = g.pO(((ap)localObject).getContentHeight());
+            j = ((bd)localObject1).getHeight();
+            k = ((bd)localObject1).getWebScrollY();
+            m = i.DC(((bd)localObject1).getContentHeight());
             n = localEditText.getHeight();
             localEditText.getTop();
-            if ((!((ab)localEditText).aQX()) && (localEditText.getTop() + n - k <= j))
+            if ((!((af)localEditText).cRj()) && (localEditText.getTop() + n - k <= j))
             {
-              qt(aQS() + i);
-              AppMethodBeat.o(123655);
-              return;
+              Eo(cRd() + i);
+              break;
             }
             j = Math.max(0, Math.min(m - k - j, i));
-            localView.scrollBy(localView.getScrollX(), j);
+            ((View)localObject2).scrollBy(((View)localObject2).getScrollX(), j);
             k.a(k.this, j);
-            qt(i - j + aQS());
+            Eo(i - j + cRd());
+            break;
+            i = m;
+            continue;
+            break label619;
+            j = k;
           }
-          AppMethodBeat.o(123655);
-          return;
-          i = m;
-          continue;
-          break;
-          j = k;
         }
       }
     };
-    this.bCk = paramv;
-    this.bCk.a(this);
-    this.jlK = com.tencent.mm.ui.statusbar.a.aG(com.tencent.mm.sdk.f.a.hr(paramv.mContext));
-    AppMethodBeat.o(123661);
+    this.enX = null;
+    this.uGg = 0;
+    AppMethodBeat.o(136394);
   }
   
-  public static k a(Reference<com.tencent.mm.plugin.appbrand.page.v> paramReference)
+  private k(ad paramad)
   {
-    AppMethodBeat.i(123662);
+    AppMethodBeat.i(136395);
+    this.uGe = new androidx.b.a();
+    this.uGh = 5;
+    this.uGi = 0;
+    this.uGj = false;
+    this.uGk = true;
+    this.uGl = -1;
+    this.uGm = new LinkedList();
+    this.uGn = 0;
+    this.uGp = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136387);
+        if (!k.a(k.this).isRunning())
+        {
+          AppMethodBeat.o(136387);
+          return;
+        }
+        Object localObject = k.b(k.this);
+        if (localObject != null)
+        {
+          ((View)localObject).scrollTo(0, 0);
+          if (k.c(k.this) != 0)
+          {
+            localObject = k.a(k.this).tti;
+            if (localObject != null)
+            {
+              localObject = ((bd)localObject).getContentView();
+              if (localObject != null) {
+                ((View)localObject).scrollBy(((View)localObject).getScrollX(), -k.c(k.this));
+              }
+            }
+          }
+          k.d(k.this);
+        }
+        AppMethodBeat.o(136387);
+      }
+    };
+    this.uGq = new Runnable()
+    {
+      private void Eo(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(136392);
+        Log.d("MicroMsg.AppBrandInputPageOffsetHelper", "[TextAreaHeight] offsetRoot %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        View localView = k.b(k.this);
+        if (localView != null)
+        {
+          localView.scrollTo(0, paramAnonymousInt);
+          k.m(k.this);
+        }
+        AppMethodBeat.o(136392);
+      }
+      
+      private void b(final ae paramAnonymousae, final int paramAnonymousInt)
+      {
+        AppMethodBeat.i(136390);
+        Log.e("MicroMsg.AppBrandInputPageOffsetHelper", "sendKeyboardEvent: %b", new Object[] { Boolean.valueOf(k.f(k.this)) });
+        if (!k.f(k.this))
+        {
+          AppMethodBeat.o(136390);
+          return;
+        }
+        MMHandlerThread.postToMainThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(136388);
+            paramAnonymousae.Ej(paramAnonymousInt);
+            AppMethodBeat.o(136388);
+          }
+        });
+        AppMethodBeat.o(136390);
+      }
+      
+      private int cRd()
+      {
+        AppMethodBeat.i(136391);
+        View localView = k.b(k.this);
+        if (localView != null)
+        {
+          int i = localView.getScrollY();
+          AppMethodBeat.o(136391);
+          return i;
+        }
+        AppMethodBeat.o(136391);
+        return 0;
+      }
+      
+      public final void run()
+      {
+        AppMethodBeat.i(136389);
+        Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] offsetRunner enter");
+        Object localObject2 = o.G(k.a(k.this));
+        if (localObject2 == null)
+        {
+          k.e(k.this);
+          AppMethodBeat.o(136389);
+          return;
+        }
+        if (!k.a(k.this).isRunning())
+        {
+          k.e(k.this);
+          AppMethodBeat.o(136389);
+          return;
+        }
+        k.a(k.this, 0);
+        if ((((ae)localObject2).getInputPanel() == null) || (((ae)localObject2).cQE() == null))
+        {
+          k.e(k.this);
+          AppMethodBeat.o(136389);
+          return;
+        }
+        EditText localEditText = ((ae)localObject2).cQE();
+        Object localObject1 = ((ae)localObject2).getInputPanel();
+        if ((Build.VERSION.SDK_INT >= 24) && (localEditText != null))
+        {
+          localObject3 = AndroidContextUtil.castActivityOrNull(localEditText.getContext());
+          if ((localObject3 != null) && (((Activity)localObject3).isInMultiWindowMode()))
+          {
+            i = 1;
+            if (i == 0) {
+              break label195;
+            }
+            b((ae)localObject2, 0);
+          }
+        }
+        for (;;)
+        {
+          k.e(k.this);
+          AppMethodBeat.o(136389);
+          return;
+          i = 0;
+          break;
+          label195:
+          if (!((ag)localObject1).cRp())
+          {
+            Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panel height %d, tryCount %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()), Integer.valueOf(k.g(k.this)) });
+            if (k.h(k.this) < 5)
+            {
+              k.i(k.this);
+              AppMethodBeat.o(136389);
+            }
+          }
+          else
+          {
+            k.j(k.this);
+            Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp], panelHeight %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()) });
+          }
+          b((ae)localObject2, ((View)localObject1).getHeight());
+          if (!((ae)localObject2).cQL())
+          {
+            Log.i("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] beginOffset, no need adjust position, notify height %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()) });
+          }
+          else
+          {
+            if ((!(k.a(k.this).qwF instanceof com.tencent.mm.plugin.appbrand.platform.window.a.o)) || (!k.a(k.this).cdZ())) {
+              break label397;
+            }
+            Log.i("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] beginOffset, in landscape skip adjust position, notify height %d", new Object[] { Integer.valueOf(((View)localObject1).getHeight()) });
+          }
+        }
+        label397:
+        Object localObject3 = new int[2];
+        localEditText.getLocationOnScreen((int[])localObject3);
+        int k = localObject3[1];
+        Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] inputHeight %d, inputTop %d, inputAttached %B", new Object[] { Integer.valueOf(localEditText.getHeight()), Integer.valueOf(k), Boolean.valueOf(z.ay(localEditText)) });
+        k.k(k.this);
+        int i = localEditText.getHeight() + k;
+        ((View)localObject1).getLocationOnScreen((int[])localObject3);
+        int n = localObject3[1];
+        if ((localEditText instanceof q)) {}
+        for (localObject1 = ((q)localEditText).getAdjustKeyboardTo();; localObject1 = null)
+        {
+          int m;
+          int j;
+          if ((((af)localEditText).cRj()) && (localEditText.getLayout() != null) && (!"bottom".equals(localObject1)))
+          {
+            m = localEditText.getScrollY();
+            j = ((af)localEditText).Eu(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart())) + k - m;
+            m = ((af)localEditText).Eu(localEditText.getLayout().getLineForOffset(localEditText.getSelectionStart()) + 1) + k - m;
+            if (j - k >= localEditText.getHeight())
+            {
+              j = i - localEditText.getLineHeight();
+              label619:
+              if (m - k < localEditText.getHeight()) {}
+            }
+          }
+          for (;;)
+          {
+            k = i;
+            if (!k.a(k.this).cdZ()) {
+              k = i + ((ae)localObject2).cQM();
+            }
+            if (n == k) {
+              break;
+            }
+            if (j < k.l(k.this))
+            {
+              localObject1 = k.a(k.this).tti;
+              if (localObject1 != null)
+              {
+                localObject2 = ((bd)localObject1).getContentView();
+                if ((localObject2 != null) && (localEditText != null)) {
+                  break label722;
+                }
+              }
+              for (;;)
+              {
+                k.e(k.this);
+                AppMethodBeat.o(136389);
+                return;
+                label722:
+                i = -(((bd)localObject1).getWebScrollY() - localEditText.getTop());
+                ((View)localObject2).scrollBy(((View)localObject2).getScrollX(), i);
+              }
+            }
+            i = Math.max(-cRd(), Math.min(k - n, j - k.l(k.this)));
+            localObject1 = k.a(k.this).tti;
+            if (localObject1 == null) {
+              break;
+            }
+            localObject2 = ((bd)localObject1).getContentView();
+            if ((localObject2 == null) || (localEditText == null)) {
+              break;
+            }
+            if (((af)localEditText).cRn())
+            {
+              Eo(cRd() + i);
+              break;
+            }
+            j = ((bd)localObject1).getHeight();
+            k = ((bd)localObject1).getWebScrollY();
+            m = i.DC(((bd)localObject1).getContentHeight());
+            n = localEditText.getHeight();
+            localEditText.getTop();
+            if ((!((af)localEditText).cRj()) && (localEditText.getTop() + n - k <= j))
+            {
+              Eo(cRd() + i);
+              break;
+            }
+            j = Math.max(0, Math.min(m - k - j, i));
+            ((View)localObject2).scrollBy(((View)localObject2).getScrollX(), j);
+            k.a(k.this, j);
+            Eo(i - j + cRd());
+            break;
+            i = m;
+            continue;
+            break label619;
+            j = k;
+          }
+        }
+      }
+    };
+    this.enX = paramad;
+    this.enX.a(this);
+    this.uGg = com.tencent.mm.ui.statusbar.a.cg(paramad.getActivity());
+    AppMethodBeat.o(136395);
+  }
+  
+  public static k D(ad paramad)
+  {
+    AppMethodBeat.i(136397);
+    if ((paramad == null) || (!paramad.isRunning()))
+    {
+      Log.printDebugStack("MicroMsg.AppBrandInputPageOffsetHelper", " obtain with invalid page ".concat(String.valueOf(paramad)), new Object[0]);
+      paramad = uGf;
+      AppMethodBeat.o(136397);
+      return paramad;
+    }
+    k localk2 = (k)uGo.get(paramad);
+    k localk1 = localk2;
+    if (localk2 == null)
+    {
+      localk1 = new k(paramad);
+      uGo.put(paramad, localk1);
+    }
+    AppMethodBeat.o(136397);
+    return localk1;
+  }
+  
+  public static k a(Reference<ad> paramReference)
+  {
+    AppMethodBeat.i(136396);
     if (paramReference == null) {}
-    for (paramReference = null;; paramReference = (com.tencent.mm.plugin.appbrand.page.v)paramReference.get())
+    for (paramReference = null;; paramReference = (ad)paramReference.get())
     {
-      paramReference = p(paramReference);
-      AppMethodBeat.o(123662);
+      paramReference = D(paramReference);
+      AppMethodBeat.o(136396);
       return paramReference;
     }
   }
   
-  private void fr(boolean paramBoolean)
+  private void cRc()
   {
-    AppMethodBeat.i(123664);
+    AppMethodBeat.i(324512);
+    if (!this.uGm.isEmpty())
+    {
+      this.uGm.poll();
+      if (!this.uGm.isEmpty())
+      {
+        b localb = (b)this.uGm.peek();
+        e(localb.uGu, localb.uGv, true);
+      }
+    }
+    AppMethodBeat.o(324512);
+  }
+  
+  private void lD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(136398);
     if (paramBoolean)
     {
-      this.jlM = 0;
-      this.jlN = false;
+      this.uGi = 0;
+      this.uGj = false;
     }
-    if (!this.bCk.isRunning())
+    if ((this.enX == null) || (!this.enX.isRunning()))
     {
-      AppMethodBeat.o(123664);
+      cRc();
+      AppMethodBeat.o(136398);
       return;
     }
-    if (this.jlN)
+    if (this.uGj)
     {
-      this.jlM = 0;
-      AppMethodBeat.o(123664);
+      this.uGi = 0;
+      cRc();
+      AppMethodBeat.o(136398);
       return;
     }
-    if (this.jlM == 0)
+    if (this.uGi == 0)
     {
-      com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] post, attached %B", new Object[] { Boolean.valueOf(t.aw(this.bCk.hmw)) });
-      this.bCk.hmw.post(this.jlS);
-      AppMethodBeat.o(123664);
+      Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] post, attached %B", new Object[] { Boolean.valueOf(z.ay(this.enX.getContentView())) });
+      this.enX.getContentView().post(this.uGq);
+      AppMethodBeat.o(136398);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] postOnAnimation, attached %B", new Object[] { Boolean.valueOf(t.aw(this.bCk.hmw)) });
-    this.bCk.hmw.postOnAnimationDelayed(this.jlS, 100L);
-    AppMethodBeat.o(123664);
+    Log.v("MicroMsg.AppBrandInputPageOffsetHelper", "[scrollUp] postOnAnimation, attached %B", new Object[] { Boolean.valueOf(z.ay(this.enX.getContentView())) });
+    this.enX.getContentView().postOnAnimationDelayed(this.uGq, 100L);
+    AppMethodBeat.o(136398);
   }
   
-  public static k p(com.tencent.mm.plugin.appbrand.page.v paramv)
+  public void Em(int paramInt)
   {
-    AppMethodBeat.i(123663);
-    if ((paramv == null) || (!paramv.isRunning()))
-    {
-      com.tencent.mm.sdk.platformtools.ab.a("MicroMsg.AppBrandInputPageOffsetHelper", " obtain with invalid page ".concat(String.valueOf(paramv)), new Object[0]);
-      paramv = jlJ;
-      AppMethodBeat.o(123663);
-      return paramv;
-    }
-    k localk2 = (k)jlQ.get(paramv);
-    k localk1 = localk2;
-    if (localk2 == null)
-    {
-      localk1 = new k(paramv);
-      jlQ.put(paramv, localk1);
-    }
-    AppMethodBeat.o(123663);
-    return localk1;
+    AppMethodBeat.i(136399);
+    e(paramInt, true, false);
+    AppMethodBeat.o(136399);
   }
   
-  public final void a(k.a parama)
+  public void En(int paramInt)
   {
-    AppMethodBeat.i(123659);
+    AppMethodBeat.i(136400);
+    if (this.enX.isRunning())
+    {
+      if (paramInt != this.uGl)
+      {
+        Log.w("MicroMsg.AppBrandInputPageOffsetHelper", "requestScrollDown, skip last-ticket %d, pass-in-ticket %d", new Object[] { Integer.valueOf(this.uGl), Integer.valueOf(paramInt) });
+        AppMethodBeat.o(136400);
+        return;
+      }
+      this.uGj = true;
+      this.uGk = true;
+      this.enX.getContentView().post(this.uGp);
+    }
+    AppMethodBeat.o(136400);
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(136393);
     if (parama == null)
     {
-      AppMethodBeat.o(123659);
+      AppMethodBeat.o(136393);
       return;
     }
-    this.jlI.remove(parama);
-    AppMethodBeat.o(123659);
+    this.uGe.remove(parama);
+    AppMethodBeat.o(136393);
+  }
+  
+  final void e(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(324572);
+    if (!paramBoolean2) {
+      this.uGm.offer(new b(paramInt, paramBoolean1));
+    }
+    if ((this.uGm.size() <= 1) || (paramBoolean2))
+    {
+      this.uGl = paramInt;
+      this.uGk = paramBoolean1;
+      lD(true);
+    }
+    AppMethodBeat.o(324572);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(123667);
-    this.bCk.b(this);
-    jlQ.remove(this.bCk);
-    AppMethodBeat.o(123667);
+    AppMethodBeat.i(136401);
+    this.enX.b(this);
+    uGo.remove(this.enX);
+    AppMethodBeat.o(136401);
   }
   
-  public void qr(int paramInt)
+  public static abstract interface a
   {
-    AppMethodBeat.i(123665);
-    this.jlO = paramInt;
-    fr(true);
-    AppMethodBeat.o(123665);
+    public abstract void cRe();
+    
+    public abstract void cRf();
   }
   
-  public void qs(int paramInt)
+  static final class b
   {
-    AppMethodBeat.i(123666);
-    if (!this.bCk.isRunning())
+    public int uGu;
+    public boolean uGv;
+    
+    public b(int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.o(123666);
-      return;
+      this.uGu = paramInt;
+      this.uGv = paramBoolean;
     }
-    if (paramInt != this.jlO)
-    {
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.AppBrandInputPageOffsetHelper", "requestScrollDown, skip last-ticket %d, pass-in-ticket %d", new Object[] { Integer.valueOf(this.jlO), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(123666);
-      return;
-    }
-    this.jlN = true;
-    this.bCk.hmw.post(this.jlR);
-    AppMethodBeat.o(123666);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.k
  * JD-Core Version:    0.7.0.1
  */

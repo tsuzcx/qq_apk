@@ -31,31 +31,50 @@ public class QCircleTransitionInnerLayout
   
   public void a(boolean paramBoolean)
   {
-    QLog.d("QCircleTransitionInnerLayout", 1, "setDisallowIntercept:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDisallowIntercept:");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("QCircleTransitionInnerLayout", 1, localStringBuilder.toString());
     this.a = paramBoolean;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    StringBuilder localStringBuilder;
+    if (i != 0)
     {
+      if ((i == 1) || (i == 2))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramMotionEvent.getAction());
+        localStringBuilder.append(":dispatchTouchEvent mDisallowIntercept:");
+        localStringBuilder.append(this.a);
+        QLog.d("QCircleTransitionInnerLayout", 1, localStringBuilder.toString());
+        if (getParent() != null) {
+          getParent().requestDisallowInterceptTouchEvent(this.a);
+        }
+      }
     }
-    for (;;)
+    else
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      QLog.d("QCircleTransitionInnerLayout", 1, "dispatchTouchEvent mDisallowIntercept:true");
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      QLog.d("QCircleTransitionInnerLayout", 1, "dispatchTouchEvent mDisallowIntercept:" + this.a);
-      getParent().requestDisallowInterceptTouchEvent(this.a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMotionEvent.getAction());
+      localStringBuilder.append(":dispatchTouchEvent mDisallowIntercept:");
+      localStringBuilder.append(true);
+      QLog.d("QCircleTransitionInnerLayout", 1, localStringBuilder.toString());
+      if (getParent() != null) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout
  * JD-Core Version:    0.7.0.1
  */

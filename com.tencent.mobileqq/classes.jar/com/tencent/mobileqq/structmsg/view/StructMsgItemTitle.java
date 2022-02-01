@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import azuu;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsgTextElement;
+import com.tencent.mobileqq.utils.QQTheme;
 
 public class StructMsgItemTitle
-  extends azuu
+  extends AbsStructMsgTextElement
 {
-  public boolean c;
-  public boolean d;
-  public int k;
+  public int aM = 0;
+  public boolean aN = false;
+  public boolean aO = false;
   
   public StructMsgItemTitle()
   {
@@ -21,56 +22,59 @@ public class StructMsgItemTitle
     super(paramString, "title");
   }
   
-  public Class<? extends TextView> a()
-  {
-    if (this.d) {
-      return StructMsgItemTitle.TitleTextView.class;
-    }
-    return super.a();
-  }
-  
-  public String a()
-  {
-    return "Title";
-  }
-  
   public void a(AbsShareMsg paramAbsShareMsg)
   {
-    paramAbsShareMsg.mContentTitle = this.Y;
+    paramAbsShareMsg.mContentTitle = this.aA;
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    this.c = paramBoolean;
-    this.k = paramInt;
+    this.aN = paramBoolean;
+    this.aM = paramInt;
+  }
+  
+  public String b()
+  {
+    return "Title";
   }
   
   public void b(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.aO = paramBoolean;
   }
   
-  public int c()
+  protected Class<? extends TextView> c()
   {
-    return 2131379043;
+    if (this.aO) {
+      return StructMsgItemTitle.TitleTextView.class;
+    }
+    return super.c();
   }
   
-  public int e()
+  protected int f()
   {
-    if ((this.c) && (this.k != 0)) {
+    return 2131448814;
+  }
+  
+  public int i()
+  {
+    if ((this.aN) && (this.aM != 0)) {
+      return -1;
+    }
+    if ((QQTheme.isNowSimpleUI()) && (QQTheme.isNowThemeIsNight())) {
       return -1;
     }
     return -16777216;
   }
   
-  public int f()
+  public int j()
   {
     return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTitle
  * JD-Core Version:    0.7.0.1
  */

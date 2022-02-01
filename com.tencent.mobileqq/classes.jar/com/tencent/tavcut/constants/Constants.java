@@ -1,18 +1,19 @@
 package com.tencent.tavcut.constants;
 
-public class Constants
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tavcut/constants/Constants;", "", "()V", "FILE_EMPTY_TEMPLATE", "", "RESOURCE_LOOP_INFINITY", "", "lib_tavcut_release"}, k=1, mv={1, 1, 16})
+public final class Constants
 {
-  public static final String EMPTY_STRING = "";
-  public static final int IMAGE_EXPORT_DEFAULT_QUALITY = 100;
-  public static final int NOT_SET = -1;
-  public static final int RET_CODE_FAILED = -1;
-  public static final int RET_CODE_SUCCESS = 0;
-  public static final int RET_PAG_SO_LOAD_FAILED = -2;
-  public static final int RET_TAVKIT_SO_LOAD_FAILED = -1;
+  @NotNull
+  public static final String FILE_EMPTY_TEMPLATE = "empty_template.json";
+  public static final Constants INSTANCE = new Constants();
+  public static final int RESOURCE_LOOP_INFINITY = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavcut.constants.Constants
  * JD-Core Version:    0.7.0.1
  */

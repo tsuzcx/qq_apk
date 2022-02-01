@@ -31,14 +31,15 @@ public final class GetMusicListReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.music_id != null) {
-      paramJceOutputStream.write(this.music_id, 0);
+    ArrayList localArrayList = this.music_id;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MUSIC.GetMusicListReq
  * JD-Core Version:    0.7.0.1
  */

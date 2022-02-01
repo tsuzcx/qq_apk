@@ -54,889 +54,816 @@ class QGJavaScriptView$GLThread
     //   25: aload_0
     //   26: iconst_0
     //   27: putfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
-    //   30: iconst_0
-    //   31: istore 10
-    //   33: aconst_null
-    //   34: astore 22
+    //   30: aconst_null
+    //   31: astore 24
+    //   33: iconst_0
+    //   34: istore 6
     //   36: iconst_0
-    //   37: istore_2
-    //   38: iconst_0
-    //   39: istore 5
-    //   41: aconst_null
-    //   42: astore 21
-    //   44: iconst_0
-    //   45: istore_3
-    //   46: iconst_0
-    //   47: istore_1
-    //   48: aconst_null
-    //   49: astore 20
-    //   51: iconst_0
-    //   52: istore 4
-    //   54: iconst_0
-    //   55: istore 6
-    //   57: iconst_0
-    //   58: istore 7
-    //   60: iconst_0
-    //   61: istore 8
-    //   63: iconst_0
-    //   64: istore 9
+    //   37: istore 4
+    //   39: iconst_0
+    //   40: istore 16
+    //   42: aconst_null
+    //   43: astore 22
+    //   45: iconst_0
+    //   46: istore 5
+    //   48: iconst_0
+    //   49: istore_3
+    //   50: iconst_0
+    //   51: istore 11
+    //   53: iconst_0
+    //   54: istore 13
+    //   56: iconst_0
+    //   57: istore 12
+    //   59: aconst_null
+    //   60: astore 25
+    //   62: iconst_0
+    //   63: istore_2
+    //   64: iconst_0
+    //   65: istore_1
     //   66: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   69: astore 24
-    //   71: aload 24
+    //   69: astore 27
+    //   71: aload 27
     //   73: monitorenter
-    //   74: iload 10
-    //   76: istore 11
-    //   78: iload 9
-    //   80: istore 12
-    //   82: iload 8
-    //   84: istore 9
-    //   86: iload 7
-    //   88: istore 10
-    //   90: iload 6
-    //   92: istore 8
-    //   94: iload 5
-    //   96: istore 13
-    //   98: aload_0
-    //   99: getfield 88	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mShouldExit	Z
-    //   102: ifeq +63 -> 165
-    //   105: aload_0
-    //   106: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
-    //   109: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   112: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
-    //   115: astore 20
-    //   117: aload 20
-    //   119: ifnull +15 -> 134
-    //   122: aload 20
-    //   124: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
-    //   127: aload 22
-    //   129: invokeinterface 104 2 0
-    //   134: aload 24
-    //   136: monitorexit
-    //   137: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   140: astore 20
-    //   142: aload 20
-    //   144: monitorenter
-    //   145: aload_0
-    //   146: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
+    //   74: iload 16
+    //   76: istore 7
+    //   78: iload 4
+    //   80: istore 8
+    //   82: aload_0
+    //   83: getfield 88	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mShouldExit	Z
+    //   86: ifeq +63 -> 149
+    //   89: aload_0
+    //   90: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
+    //   93: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   96: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
+    //   99: astore 22
+    //   101: aload 22
+    //   103: ifnull +15 -> 118
+    //   106: aload 22
+    //   108: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
+    //   111: aload 24
+    //   113: invokeinterface 104 2 0
+    //   118: aload 27
+    //   120: monitorexit
+    //   121: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   124: astore 22
+    //   126: aload 22
+    //   128: monitorenter
+    //   129: aload_0
+    //   130: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
+    //   133: aload_0
+    //   134: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
+    //   137: aload 22
+    //   139: monitorexit
+    //   140: return
+    //   141: astore 23
+    //   143: aload 22
+    //   145: monitorexit
+    //   146: aload 23
+    //   148: athrow
     //   149: aload_0
-    //   150: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
-    //   153: aload 20
-    //   155: monitorexit
-    //   156: return
-    //   157: astore 21
-    //   159: aload 20
-    //   161: monitorexit
-    //   162: aload 21
-    //   164: athrow
-    //   165: aload_0
-    //   166: getfield 44	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEventQueue	Ljava/util/ArrayList;
-    //   169: invokevirtual 114	java/util/ArrayList:isEmpty	()Z
-    //   172: ifne +125 -> 297
-    //   175: aload_0
-    //   176: getfield 44	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEventQueue	Ljava/util/ArrayList;
-    //   179: iconst_0
-    //   180: invokevirtual 118	java/util/ArrayList:remove	(I)Ljava/lang/Object;
-    //   183: checkcast 120	java/lang/Runnable
-    //   186: astore 23
-    //   188: iload_1
-    //   189: istore 5
-    //   191: iload_3
-    //   192: istore_1
-    //   193: aload 21
-    //   195: astore 20
-    //   197: iload 13
-    //   199: istore 7
-    //   201: iload_2
-    //   202: istore_3
-    //   203: iload 10
-    //   205: istore 6
-    //   207: iload 4
-    //   209: istore_2
-    //   210: aload 23
-    //   212: astore 21
-    //   214: iload 11
-    //   216: istore 10
-    //   218: iload 5
-    //   220: istore 4
-    //   222: iload 12
-    //   224: istore 5
-    //   226: aload 24
-    //   228: monitorexit
-    //   229: aload 21
-    //   231: ifnull +763 -> 994
-    //   234: aload 21
-    //   236: invokeinterface 123 1 0
-    //   241: iload_1
-    //   242: istore 13
-    //   244: iload 4
-    //   246: istore_1
-    //   247: aconst_null
-    //   248: astore 23
-    //   250: iload_2
-    //   251: istore 4
-    //   253: iload 6
-    //   255: istore 11
-    //   257: iload 5
-    //   259: istore 12
-    //   261: aload 20
-    //   263: astore 21
-    //   265: aload 23
-    //   267: astore 20
-    //   269: iload_3
-    //   270: istore_2
-    //   271: iload 13
-    //   273: istore_3
-    //   274: iload 7
-    //   276: istore 5
-    //   278: iload 8
-    //   280: istore 6
-    //   282: iload 11
-    //   284: istore 7
-    //   286: iload 9
-    //   288: istore 8
-    //   290: iload 12
-    //   292: istore 9
-    //   294: goto -228 -> 66
-    //   297: iconst_0
-    //   298: istore 19
-    //   300: aload_0
-    //   301: getfield 125	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mPaused	Z
-    //   304: aload_0
-    //   305: getfield 127	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestPaused	Z
-    //   308: if_icmpeq +52 -> 360
-    //   311: aload_0
-    //   312: getfield 127	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestPaused	Z
-    //   315: istore 19
+    //   150: getfield 44	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEventQueue	Ljava/util/ArrayList;
+    //   153: invokevirtual 114	java/util/ArrayList:isEmpty	()Z
+    //   156: ifne +39 -> 195
+    //   159: aload_0
+    //   160: getfield 44	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEventQueue	Ljava/util/ArrayList;
+    //   163: iconst_0
+    //   164: invokevirtual 118	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   167: checkcast 120	java/lang/Runnable
+    //   170: astore 26
+    //   172: iload 8
+    //   174: istore 4
+    //   176: iload 7
+    //   178: istore 16
+    //   180: iload 11
+    //   182: istore 7
+    //   184: iload 13
+    //   186: istore 19
+    //   188: iload 12
+    //   190: istore 20
+    //   192: goto +594 -> 786
+    //   195: aload_0
+    //   196: getfield 122	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mPaused	Z
+    //   199: aload_0
+    //   200: getfield 124	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestPaused	Z
+    //   203: if_icmpeq +1137 -> 1340
+    //   206: aload_0
+    //   207: getfield 124	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestPaused	Z
+    //   210: istore 21
+    //   212: aload_0
+    //   213: aload_0
+    //   214: getfield 124	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestPaused	Z
+    //   217: putfield 122	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mPaused	Z
+    //   220: aload_0
+    //   221: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
+    //   224: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   227: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
+    //   230: astore 23
+    //   232: aload 23
+    //   234: ifnull +15 -> 249
+    //   237: aload 23
+    //   239: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
+    //   242: aload 24
+    //   244: invokeinterface 127 2 0
+    //   249: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   252: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   255: goto +3 -> 258
+    //   258: iload 7
+    //   260: istore 4
+    //   262: aload_0
+    //   263: getfield 134	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mShouldReleaseEglContext	Z
+    //   266: ifeq +19 -> 285
+    //   269: aload_0
+    //   270: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
+    //   273: aload_0
+    //   274: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
+    //   277: aload_0
+    //   278: iconst_0
+    //   279: putfield 134	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mShouldReleaseEglContext	Z
+    //   282: iconst_1
+    //   283: istore 4
+    //   285: iload 6
+    //   287: istore 14
+    //   289: iload 6
+    //   291: ifeq +14 -> 305
+    //   294: aload_0
+    //   295: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
+    //   298: aload_0
+    //   299: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
+    //   302: iconst_0
+    //   303: istore 14
+    //   305: iload 21
+    //   307: ifeq +14 -> 321
+    //   310: aload_0
+    //   311: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
+    //   314: ifeq +7 -> 321
     //   317: aload_0
-    //   318: aload_0
-    //   319: getfield 127	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestPaused	Z
-    //   322: putfield 125	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mPaused	Z
-    //   325: aload_0
-    //   326: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
-    //   329: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   332: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
-    //   335: astore 23
-    //   337: aload 23
-    //   339: ifnull +15 -> 354
-    //   342: aload 23
-    //   344: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
-    //   347: aload 22
-    //   349: invokeinterface 130 2 0
-    //   354: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   357: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   360: iload 4
-    //   362: istore 5
-    //   364: aload_0
-    //   365: getfield 137	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mShouldReleaseEglContext	Z
-    //   368: ifeq +19 -> 387
-    //   371: aload_0
-    //   372: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
-    //   375: aload_0
-    //   376: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
+    //   318: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
+    //   321: iload 21
+    //   323: ifeq +49 -> 372
+    //   326: aload_0
+    //   327: getfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
+    //   330: ifeq +42 -> 372
+    //   333: aload_0
+    //   334: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
+    //   337: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   340: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
+    //   343: astore 23
+    //   345: aload 23
+    //   347: ifnonnull +9 -> 356
+    //   350: iconst_0
+    //   351: istore 21
+    //   353: goto +10 -> 363
+    //   356: aload 23
+    //   358: getfield 137	com/tencent/qg/sdk/QGJavaScriptView:mPreserveEGLContextOnPause	Z
+    //   361: istore 21
+    //   363: iload 21
+    //   365: ifne +7 -> 372
+    //   368: aload_0
+    //   369: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
+    //   372: aload_0
+    //   373: getfield 139	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHasSurface	Z
+    //   376: ifne +41 -> 417
     //   379: aload_0
-    //   380: iconst_0
-    //   381: putfield 137	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mShouldReleaseEglContext	Z
-    //   384: iconst_1
-    //   385: istore 5
-    //   387: iload 10
-    //   389: istore 7
-    //   391: iload 10
-    //   393: ifeq +14 -> 407
-    //   396: aload_0
-    //   397: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
-    //   400: aload_0
-    //   401: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
-    //   404: iconst_0
-    //   405: istore 7
-    //   407: iload 19
-    //   409: ifeq +14 -> 423
-    //   412: aload_0
-    //   413: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
-    //   416: ifeq +7 -> 423
-    //   419: aload_0
-    //   420: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
-    //   423: iload 19
-    //   425: ifeq +39 -> 464
-    //   428: aload_0
-    //   429: getfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
-    //   432: ifeq +32 -> 464
-    //   435: aload_0
-    //   436: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
-    //   439: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   442: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
-    //   445: astore 23
-    //   447: aload 23
-    //   449: ifnonnull +355 -> 804
+    //   380: getfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
+    //   383: ifne +34 -> 417
+    //   386: aload_0
+    //   387: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
+    //   390: ifeq +956 -> 1346
+    //   393: aload_0
+    //   394: iconst_0
+    //   395: putfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
+    //   398: goto +3 -> 401
+    //   401: aload_0
+    //   402: iconst_1
+    //   403: putfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
+    //   406: aload_0
+    //   407: iconst_0
+    //   408: putfield 143	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSurfaceIsBad	Z
+    //   411: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   414: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   417: aload_0
+    //   418: getfield 139	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHasSurface	Z
+    //   421: ifeq +21 -> 442
+    //   424: aload_0
+    //   425: getfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
+    //   428: ifeq +14 -> 442
+    //   431: aload_0
+    //   432: iconst_0
+    //   433: putfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
+    //   436: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   439: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   442: iload 8
+    //   444: istore 15
+    //   446: iload 8
+    //   448: ifeq +22 -> 470
+    //   451: aload_0
     //   452: iconst_0
-    //   453: istore 19
-    //   455: iload 19
-    //   457: ifne +7 -> 464
-    //   460: aload_0
-    //   461: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
-    //   464: aload_0
-    //   465: getfield 139	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHasSurface	Z
-    //   468: ifne +38 -> 506
-    //   471: aload_0
-    //   472: getfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
-    //   475: ifne +31 -> 506
-    //   478: aload_0
-    //   479: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
-    //   482: ifeq +8 -> 490
-    //   485: aload_0
-    //   486: iconst_0
-    //   487: putfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
-    //   490: aload_0
-    //   491: iconst_1
-    //   492: putfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
-    //   495: aload_0
-    //   496: iconst_0
-    //   497: putfield 143	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSurfaceIsBad	Z
-    //   500: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   503: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   506: aload_0
-    //   507: getfield 139	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHasSurface	Z
-    //   510: ifeq +21 -> 531
-    //   513: aload_0
-    //   514: getfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
-    //   517: ifeq +14 -> 531
-    //   520: aload_0
+    //   453: putfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
+    //   456: aload_0
+    //   457: iconst_1
+    //   458: putfield 145	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRenderComplete	Z
+    //   461: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   464: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   467: iconst_0
+    //   468: istore 15
+    //   470: aload_0
+    //   471: getfield 48	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishDrawingRunnable	Ljava/lang/Runnable;
+    //   474: ifnull +875 -> 1349
+    //   477: aload_0
+    //   478: getfield 48	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishDrawingRunnable	Ljava/lang/Runnable;
+    //   481: astore 23
+    //   483: aload_0
+    //   484: aconst_null
+    //   485: putfield 48	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishDrawingRunnable	Ljava/lang/Runnable;
+    //   488: goto +3 -> 491
+    //   491: aload_0
+    //   492: invokespecial 148	com/tencent/qg/sdk/QGJavaScriptView$GLThread:readyToDraw	()Z
+    //   495: ifeq +735 -> 1230
+    //   498: aload_0
+    //   499: getfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
+    //   502: istore 21
+    //   504: iload 4
+    //   506: istore 8
+    //   508: iload_2
+    //   509: istore 9
+    //   511: iload 21
+    //   513: ifne +57 -> 570
+    //   516: iload 4
+    //   518: ifeq +12 -> 530
     //   521: iconst_0
-    //   522: putfield 141	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWaitingForSurface	Z
-    //   525: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   528: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   531: iload 13
-    //   533: istore 6
-    //   535: iload 13
-    //   537: ifeq +22 -> 559
-    //   540: aload_0
-    //   541: iconst_0
-    //   542: putfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
-    //   545: iconst_0
-    //   546: istore 6
-    //   548: aload_0
-    //   549: iconst_1
-    //   550: putfield 145	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRenderComplete	Z
-    //   553: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   556: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   559: aload_0
-    //   560: getfield 48	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishDrawingRunnable	Ljava/lang/Runnable;
-    //   563: ifnull +1012 -> 1575
-    //   566: aload_0
-    //   567: getfield 48	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishDrawingRunnable	Ljava/lang/Runnable;
-    //   570: astore 21
-    //   572: aload_0
-    //   573: aconst_null
-    //   574: putfield 48	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishDrawingRunnable	Ljava/lang/Runnable;
-    //   577: aload_0
-    //   578: invokespecial 148	com/tencent/qg/sdk/QGJavaScriptView$GLThread:readyToDraw	()Z
-    //   581: ifeq +305 -> 886
-    //   584: iload 5
-    //   586: istore 4
-    //   588: iload 11
-    //   590: istore 10
-    //   592: aload_0
-    //   593: getfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
-    //   596: ifne +15 -> 611
-    //   599: iload 5
-    //   601: ifeq +213 -> 814
-    //   604: iconst_0
-    //   605: istore 4
-    //   607: iload 11
-    //   609: istore 10
-    //   611: iload 8
-    //   613: istore 13
-    //   615: iload 9
-    //   617: istore 5
-    //   619: iload 12
-    //   621: istore 11
-    //   623: aload_0
-    //   624: getfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
-    //   627: ifeq +36 -> 663
-    //   630: iload 8
-    //   632: istore 13
-    //   634: iload 9
-    //   636: istore 5
-    //   638: iload 12
-    //   640: istore 11
-    //   642: aload_0
-    //   643: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
-    //   646: ifne +17 -> 663
-    //   649: aload_0
-    //   650: iconst_1
-    //   651: putfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
-    //   654: iconst_1
-    //   655: istore 11
-    //   657: iconst_1
-    //   658: istore 5
-    //   660: iconst_1
-    //   661: istore 13
-    //   663: aload 21
-    //   665: astore 23
-    //   667: iload 4
-    //   669: istore 14
-    //   671: iload 13
-    //   673: istore 18
-    //   675: iload 5
-    //   677: istore 15
-    //   679: iload 11
-    //   681: istore 16
-    //   683: iload 10
-    //   685: istore 17
-    //   687: aload_0
-    //   688: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
-    //   691: ifeq +262 -> 953
-    //   694: aload_0
-    //   695: getfield 46	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSizeChanged	Z
-    //   698: ifeq +874 -> 1572
-    //   701: iconst_1
-    //   702: istore 13
-    //   704: aload_0
-    //   705: getfield 50	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWidth	I
-    //   708: istore_3
-    //   709: aload_0
-    //   710: getfield 52	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHeight	I
-    //   713: istore_2
-    //   714: aload_0
-    //   715: iconst_1
-    //   716: putfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
-    //   719: iconst_1
-    //   720: istore 11
-    //   722: aload_0
-    //   723: iconst_0
-    //   724: putfield 46	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSizeChanged	Z
-    //   727: aload_0
-    //   728: iconst_0
-    //   729: putfield 54	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestRender	Z
-    //   732: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   735: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   738: aload_0
-    //   739: getfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
-    //   742: ifeq +773 -> 1515
-    //   745: iload_3
-    //   746: istore_1
-    //   747: iconst_1
-    //   748: istore 14
-    //   750: iload 11
-    //   752: istore_3
-    //   753: iload 5
-    //   755: istore 9
-    //   757: iload 7
-    //   759: istore 11
-    //   761: iload 13
-    //   763: istore 8
-    //   765: iload 4
-    //   767: istore 12
-    //   769: aload 20
-    //   771: astore 23
-    //   773: iload_3
-    //   774: istore 5
-    //   776: iload 6
-    //   778: istore 7
-    //   780: iload 14
-    //   782: istore 4
-    //   784: aload 21
-    //   786: astore 20
-    //   788: aload 23
-    //   790: astore 21
-    //   792: iload_2
-    //   793: istore_3
-    //   794: iload 12
-    //   796: istore_2
-    //   797: iload 11
-    //   799: istore 6
-    //   801: goto -575 -> 226
-    //   804: aload 23
-    //   806: getfield 151	com/tencent/qg/sdk/QGJavaScriptView:mPreserveEGLContextOnPause	Z
-    //   809: istore 19
-    //   811: goto -356 -> 455
-    //   814: aload_0
-    //   815: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
-    //   818: invokevirtual 154	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:start	()V
-    //   821: aload_0
-    //   822: iconst_1
-    //   823: putfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
-    //   826: iconst_1
-    //   827: istore 10
-    //   829: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   832: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   835: iload 5
-    //   837: istore 4
-    //   839: goto -228 -> 611
-    //   842: astore 20
-    //   844: aload 24
-    //   846: monitorexit
-    //   847: aload 20
-    //   849: athrow
-    //   850: astore 21
-    //   852: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   855: astore 20
-    //   857: aload 20
-    //   859: monitorenter
-    //   860: aload_0
-    //   861: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
-    //   864: aload_0
-    //   865: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
-    //   868: aload 20
-    //   870: monitorexit
-    //   871: aload 21
-    //   873: athrow
-    //   874: astore 20
-    //   876: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   879: aload_0
-    //   880: invokevirtual 160	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:releaseEglContextLocked	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
-    //   883: aload 20
-    //   885: athrow
-    //   886: aload 21
-    //   888: astore 23
-    //   890: iload 5
-    //   892: istore 14
-    //   894: iload 8
-    //   896: istore 18
-    //   898: iload 9
-    //   900: istore 15
-    //   902: iload 12
-    //   904: istore 16
-    //   906: iload 11
-    //   908: istore 17
-    //   910: aload 21
-    //   912: ifnull +41 -> 953
-    //   915: ldc 162
-    //   917: ldc 164
-    //   919: invokestatic 170	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   922: pop
-    //   923: aload 21
-    //   925: invokeinterface 123 1 0
-    //   930: aconst_null
-    //   931: astore 23
-    //   933: iload 11
-    //   935: istore 17
-    //   937: iload 12
-    //   939: istore 16
-    //   941: iload 9
-    //   943: istore 15
-    //   945: iload 8
-    //   947: istore 18
-    //   949: iload 5
-    //   951: istore 14
-    //   953: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   956: invokevirtual 173	java/lang/Object:wait	()V
-    //   959: aload 23
-    //   961: astore 21
-    //   963: iload 14
-    //   965: istore 4
-    //   967: iload 6
-    //   969: istore 13
-    //   971: iload 18
-    //   973: istore 8
-    //   975: iload 7
-    //   977: istore 10
-    //   979: iload 15
-    //   981: istore 9
-    //   983: iload 16
-    //   985: istore 12
-    //   987: iload 17
-    //   989: istore 11
-    //   991: goto -893 -> 98
-    //   994: iload 5
-    //   996: ifeq +516 -> 1512
-    //   999: aload_0
-    //   1000: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
-    //   1003: invokevirtual 176	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:createSurface	()Z
-    //   1006: ifeq +365 -> 1371
-    //   1009: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   1012: astore 23
-    //   1014: aload 23
-    //   1016: monitorenter
-    //   1017: aload_0
-    //   1018: iconst_1
-    //   1019: putfield 178	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishedCreatingEglSurface	Z
-    //   1022: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   1025: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   1028: aload 23
-    //   1030: monitorexit
-    //   1031: iconst_0
-    //   1032: istore 5
-    //   1034: iload 9
-    //   1036: ifeq +473 -> 1509
-    //   1039: aload_0
-    //   1040: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
-    //   1043: invokevirtual 182	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:createGL	()Ljavax/microedition/khronos/opengles/GL;
-    //   1046: checkcast 184	javax/microedition/khronos/opengles/GL10
-    //   1049: astore 22
-    //   1051: iconst_0
-    //   1052: istore 9
-    //   1054: iload 10
-    //   1056: istore 11
-    //   1058: iload 10
-    //   1060: ifeq +50 -> 1110
-    //   1063: aload_0
-    //   1064: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
-    //   1067: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1070: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
-    //   1073: astore 23
-    //   1075: aload 23
-    //   1077: ifnull +508 -> 1585
-    //   1080: ldc 186
-    //   1082: invokestatic 192	android/os/Trace:beginSection	(Ljava/lang/String;)V
-    //   1085: aload 23
-    //   1087: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
-    //   1090: aload 22
-    //   1092: aload_0
-    //   1093: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
-    //   1096: getfield 196	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:mEglConfig	Ljavax/microedition/khronos/egl/EGLConfig;
-    //   1099: invokeinterface 200 3 0
-    //   1104: invokestatic 203	android/os/Trace:endSection	()V
-    //   1107: goto +478 -> 1585
-    //   1110: iload 8
-    //   1112: istore 10
-    //   1114: iload 8
-    //   1116: ifeq +45 -> 1161
-    //   1119: aload_0
-    //   1120: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
-    //   1123: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1126: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
-    //   1129: astore 23
-    //   1131: aload 23
-    //   1133: ifnull +458 -> 1591
-    //   1136: ldc 205
-    //   1138: invokestatic 192	android/os/Trace:beginSection	(Ljava/lang/String;)V
-    //   1141: aload 23
-    //   1143: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
-    //   1146: aload 22
-    //   1148: iload_1
-    //   1149: iload_3
-    //   1150: invokeinterface 209 4 0
-    //   1155: invokestatic 203	android/os/Trace:endSection	()V
-    //   1158: goto +433 -> 1591
-    //   1161: aload_0
-    //   1162: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
-    //   1165: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1168: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
-    //   1171: astore 24
-    //   1173: aload 20
-    //   1175: astore 23
-    //   1177: aload 24
-    //   1179: ifnull +42 -> 1221
-    //   1182: ldc 211
-    //   1184: invokestatic 192	android/os/Trace:beginSection	(Ljava/lang/String;)V
-    //   1187: aload 24
-    //   1189: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
-    //   1192: aload 22
-    //   1194: invokeinterface 214 2 0
-    //   1199: aload 20
-    //   1201: astore 23
-    //   1203: aload 20
-    //   1205: ifnull +13 -> 1218
-    //   1208: aload 20
-    //   1210: invokeinterface 123 1 0
-    //   1215: aconst_null
-    //   1216: astore 23
-    //   1218: invokestatic 203	android/os/Trace:endSection	()V
-    //   1221: aload_0
-    //   1222: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
-    //   1225: invokevirtual 218	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:getError	()I
-    //   1228: istore 12
-    //   1230: iload 6
-    //   1232: istore 8
-    //   1234: iload 12
-    //   1236: lookupswitch	default:+361->1597, 12288:+63->1299, 12302:+251->1487
-    //   1265: <illegal opcode>
-    //   1266: ldc 222
-    //   1268: iload 12
-    //   1270: invokestatic 226	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:logEglErrorAsWarning	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   522: istore 8
+    //   524: iload_2
+    //   525: istore 9
+    //   527: goto +43 -> 570
+    //   530: aload_0
+    //   531: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
+    //   534: invokevirtual 151	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:start	()V
+    //   537: aload_0
+    //   538: iconst_1
+    //   539: putfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
+    //   542: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   545: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   548: iconst_1
+    //   549: istore 9
+    //   551: iload 4
+    //   553: istore 8
+    //   555: goto +15 -> 570
+    //   558: astore 22
+    //   560: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   563: aload_0
+    //   564: invokevirtual 157	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:releaseEglContextLocked	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
+    //   567: aload 22
+    //   569: athrow
+    //   570: iload 5
+    //   572: istore 10
+    //   574: iload_3
+    //   575: istore 4
+    //   577: iload_1
+    //   578: istore_2
+    //   579: aload_0
+    //   580: getfield 78	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglContext	Z
+    //   583: ifeq +32 -> 615
+    //   586: iload 5
+    //   588: istore 10
+    //   590: iload_3
+    //   591: istore 4
+    //   593: iload_1
+    //   594: istore_2
+    //   595: aload_0
+    //   596: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
+    //   599: ifne +16 -> 615
+    //   602: aload_0
+    //   603: iconst_1
+    //   604: putfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
+    //   607: iconst_1
+    //   608: istore 10
+    //   610: iconst_1
+    //   611: istore 4
+    //   613: iconst_1
+    //   614: istore_2
+    //   615: iload 8
+    //   617: istore 18
+    //   619: iload 10
+    //   621: istore 17
+    //   623: iload 4
+    //   625: istore 16
+    //   627: iload 9
+    //   629: istore 7
+    //   631: iload_2
+    //   632: istore 6
+    //   634: aload_0
+    //   635: getfield 80	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHaveEglSurface	Z
+    //   638: ifeq +757 -> 1395
+    //   641: aload_0
+    //   642: getfield 46	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSizeChanged	Z
+    //   645: ifeq +711 -> 1356
+    //   648: aload_0
+    //   649: getfield 50	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWidth	I
+    //   652: istore 13
+    //   654: aload_0
+    //   655: getfield 52	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mHeight	I
+    //   658: istore 12
+    //   660: aload_0
+    //   661: iconst_1
+    //   662: putfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
+    //   665: aload_0
+    //   666: iconst_0
+    //   667: putfield 46	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSizeChanged	Z
+    //   670: iconst_1
+    //   671: istore 17
+    //   673: iconst_1
+    //   674: istore 18
+    //   676: goto +3 -> 679
+    //   679: aload_0
+    //   680: iconst_0
+    //   681: putfield 54	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mRequestRender	Z
+    //   684: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   687: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   690: aload 23
+    //   692: astore 22
+    //   694: iload 14
+    //   696: istore 6
+    //   698: iload 15
+    //   700: istore 4
+    //   702: iload 8
+    //   704: istore 16
+    //   706: iload 10
+    //   708: istore 5
+    //   710: iload 17
+    //   712: istore_3
+    //   713: iload 11
+    //   715: istore 7
+    //   717: iload 13
+    //   719: istore 19
+    //   721: iload 12
+    //   723: istore 20
+    //   725: aload 25
+    //   727: astore 26
+    //   729: iload 9
+    //   731: istore_2
+    //   732: iload 18
+    //   734: istore_1
+    //   735: aload_0
+    //   736: getfield 58	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mWantRenderNotification	Z
+    //   739: ifeq +47 -> 786
+    //   742: iconst_1
+    //   743: istore 7
+    //   745: iload 18
+    //   747: istore_1
+    //   748: iload 9
+    //   750: istore_2
+    //   751: aload 25
+    //   753: astore 26
+    //   755: iload 12
+    //   757: istore 20
+    //   759: iload 13
+    //   761: istore 19
+    //   763: iload 17
+    //   765: istore_3
+    //   766: iload 10
+    //   768: istore 5
+    //   770: iload 8
+    //   772: istore 16
+    //   774: iload 15
+    //   776: istore 4
+    //   778: iload 14
+    //   780: istore 6
+    //   782: aload 23
+    //   784: astore 22
+    //   786: aload 27
+    //   788: monitorexit
+    //   789: aload 26
+    //   791: ifnull +28 -> 819
+    //   794: aload 26
+    //   796: invokeinterface 160 1 0
+    //   801: aconst_null
+    //   802: astore 25
+    //   804: iload 7
+    //   806: istore 11
+    //   808: iload 19
+    //   810: istore 13
+    //   812: iload 20
+    //   814: istore 12
+    //   816: goto -750 -> 66
+    //   819: iload_1
+    //   820: istore 8
+    //   822: iload_1
+    //   823: ifeq +87 -> 910
+    //   826: aload_0
+    //   827: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
+    //   830: invokevirtual 163	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:createSurface	()Z
+    //   833: ifeq +39 -> 872
+    //   836: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   839: astore 23
+    //   841: aload 23
+    //   843: monitorenter
+    //   844: aload_0
+    //   845: iconst_1
+    //   846: putfield 165	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishedCreatingEglSurface	Z
+    //   849: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   852: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   855: aload 23
+    //   857: monitorexit
+    //   858: iconst_0
+    //   859: istore 8
+    //   861: goto +49 -> 910
+    //   864: astore 22
+    //   866: aload 23
+    //   868: monitorexit
+    //   869: aload 22
+    //   871: athrow
+    //   872: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   875: astore 23
+    //   877: aload 23
+    //   879: monitorenter
+    //   880: aload_0
+    //   881: iconst_1
+    //   882: putfield 165	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishedCreatingEglSurface	Z
+    //   885: aload_0
+    //   886: iconst_1
+    //   887: putfield 143	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSurfaceIsBad	Z
+    //   890: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   893: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   896: aload 23
+    //   898: monitorexit
+    //   899: goto +467 -> 1366
+    //   902: astore 22
+    //   904: aload 23
+    //   906: monitorexit
+    //   907: aload 22
+    //   909: athrow
+    //   910: iload 5
+    //   912: istore 9
+    //   914: iload 5
+    //   916: ifeq +18 -> 934
+    //   919: aload_0
+    //   920: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
+    //   923: invokevirtual 169	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:createGL	()Ljavax/microedition/khronos/opengles/GL;
+    //   926: checkcast 171	javax/microedition/khronos/opengles/GL10
+    //   929: astore 24
+    //   931: iconst_0
+    //   932: istore 9
+    //   934: iload_2
+    //   935: istore_1
+    //   936: iload_2
+    //   937: ifeq +58 -> 995
+    //   940: aload_0
+    //   941: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
+    //   944: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   947: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
+    //   950: astore 23
+    //   952: aload 23
+    //   954: ifnull +431 -> 1385
+    //   957: ldc 173
+    //   959: invokestatic 179	android/os/Trace:beginSection	(Ljava/lang/String;)V
+    //   962: aload 23
+    //   964: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
+    //   967: aload 24
+    //   969: aload_0
+    //   970: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
+    //   973: getfield 183	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:mEglConfig	Ljavax/microedition/khronos/egl/EGLConfig;
+    //   976: invokeinterface 187 3 0
+    //   981: invokestatic 190	android/os/Trace:endSection	()V
+    //   984: goto +401 -> 1385
+    //   987: astore 22
+    //   989: invokestatic 190	android/os/Trace:endSection	()V
+    //   992: aload 22
+    //   994: athrow
+    //   995: iload_3
+    //   996: istore_2
+    //   997: iload_3
+    //   998: ifeq +55 -> 1053
+    //   1001: aload_0
+    //   1002: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
+    //   1005: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1008: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
+    //   1011: astore 23
+    //   1013: aload 23
+    //   1015: ifnull +375 -> 1390
+    //   1018: ldc 192
+    //   1020: invokestatic 179	android/os/Trace:beginSection	(Ljava/lang/String;)V
+    //   1023: aload 23
+    //   1025: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
+    //   1028: aload 24
+    //   1030: iload 19
+    //   1032: iload 20
+    //   1034: invokeinterface 196 4 0
+    //   1039: invokestatic 190	android/os/Trace:endSection	()V
+    //   1042: goto +348 -> 1390
+    //   1045: astore 22
+    //   1047: invokestatic 190	android/os/Trace:endSection	()V
+    //   1050: aload 22
+    //   1052: athrow
+    //   1053: aload_0
+    //   1054: getfield 60	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mGLSurfaceViewWeakRef	Ljava/lang/ref/WeakReference;
+    //   1057: invokevirtual 94	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1060: checkcast 82	com/tencent/qg/sdk/QGJavaScriptView
+    //   1063: astore 25
+    //   1065: aload 22
+    //   1067: astore 23
+    //   1069: aload 25
+    //   1071: ifnull +53 -> 1124
+    //   1074: ldc 198
+    //   1076: invokestatic 179	android/os/Trace:beginSection	(Ljava/lang/String;)V
+    //   1079: aload 25
+    //   1081: getfield 98	com/tencent/qg/sdk/QGJavaScriptView:mRenderer	Lcom/tencent/qg/sdk/QGJavaScriptView$Renderer;
+    //   1084: aload 24
+    //   1086: invokeinterface 201 2 0
+    //   1091: aload 22
+    //   1093: astore 23
+    //   1095: aload 22
+    //   1097: ifnull +13 -> 1110
+    //   1100: aload 22
+    //   1102: invokeinterface 160 1 0
+    //   1107: aconst_null
+    //   1108: astore 23
+    //   1110: invokestatic 190	android/os/Trace:endSection	()V
+    //   1113: goto +11 -> 1124
+    //   1116: astore 22
+    //   1118: invokestatic 190	android/os/Trace:endSection	()V
+    //   1121: aload 22
+    //   1123: athrow
+    //   1124: aload 23
+    //   1126: astore 22
+    //   1128: aload_0
+    //   1129: getfield 76	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mEglHelper	Lcom/tencent/qg/sdk/QGJavaScriptView$EglHelper;
+    //   1132: invokevirtual 205	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:getError	()I
+    //   1135: istore_3
+    //   1136: iload_3
+    //   1137: sipush 12288
+    //   1140: if_icmpeq +57 -> 1197
+    //   1143: iload_3
+    //   1144: sipush 12302
+    //   1147: if_icmpeq +44 -> 1191
+    //   1150: ldc 207
+    //   1152: ldc 209
+    //   1154: iload_3
+    //   1155: invokestatic 213	com/tencent/qg/sdk/QGJavaScriptView$EglHelper:logEglErrorAsWarning	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   1158: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   1161: astore 23
+    //   1163: aload 23
+    //   1165: monitorenter
+    //   1166: aload_0
+    //   1167: iconst_1
+    //   1168: putfield 143	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSurfaceIsBad	Z
+    //   1171: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   1174: invokevirtual 132	java/lang/Object:notifyAll	()V
+    //   1177: aload 23
+    //   1179: monitorexit
+    //   1180: goto +17 -> 1197
+    //   1183: astore 22
+    //   1185: aload 23
+    //   1187: monitorexit
+    //   1188: aload 22
+    //   1190: athrow
+    //   1191: iconst_1
+    //   1192: istore 6
+    //   1194: goto +3 -> 1197
+    //   1197: iload 7
+    //   1199: istore 10
+    //   1201: iload 7
+    //   1203: ifeq +9 -> 1212
+    //   1206: iconst_1
+    //   1207: istore 4
+    //   1209: iconst_0
+    //   1210: istore 10
+    //   1212: iload 9
+    //   1214: istore 5
+    //   1216: iload_2
+    //   1217: istore_3
+    //   1218: iload 10
+    //   1220: istore 7
+    //   1222: iload_1
+    //   1223: istore_2
+    //   1224: iload 8
+    //   1226: istore_1
+    //   1227: goto +139 -> 1366
+    //   1230: iload 4
+    //   1232: istore 18
+    //   1234: iload 5
+    //   1236: istore 17
+    //   1238: iload_3
+    //   1239: istore 16
+    //   1241: iload_2
+    //   1242: istore 7
+    //   1244: iload_1
+    //   1245: istore 6
+    //   1247: aload 23
+    //   1249: ifnull +146 -> 1395
+    //   1252: ldc 215
+    //   1254: ldc 217
+    //   1256: invokestatic 223	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   1259: pop
+    //   1260: aload 23
+    //   1262: invokeinterface 160 1 0
+    //   1267: aconst_null
+    //   1268: astore 22
+    //   1270: goto +3 -> 1273
     //   1273: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   1276: astore 20
-    //   1278: aload 20
-    //   1280: monitorenter
-    //   1281: aload_0
-    //   1282: iconst_1
-    //   1283: putfield 143	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSurfaceIsBad	Z
-    //   1286: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   1289: invokevirtual 135	java/lang/Object:notifyAll	()V
-    //   1292: aload 20
-    //   1294: monitorexit
-    //   1295: iload 6
-    //   1297: istore 8
-    //   1299: iload 4
-    //   1301: ifeq +277 -> 1578
-    //   1304: iconst_1
-    //   1305: istore 6
-    //   1307: iconst_0
-    //   1308: istore 4
-    //   1310: aload 21
-    //   1312: astore 20
-    //   1314: iload_2
-    //   1315: istore 12
-    //   1317: iload 8
-    //   1319: istore 7
-    //   1321: iload 9
-    //   1323: istore 8
-    //   1325: iload 5
-    //   1327: istore 9
-    //   1329: iload_3
-    //   1330: istore_2
-    //   1331: iload 6
-    //   1333: istore 5
-    //   1335: iload 4
-    //   1337: istore 6
-    //   1339: aload 23
-    //   1341: astore 21
-    //   1343: iload_1
-    //   1344: istore_3
-    //   1345: iload 12
-    //   1347: istore 4
-    //   1349: iload 6
-    //   1351: istore_1
-    //   1352: iload 10
-    //   1354: istore 6
-    //   1356: iload 11
-    //   1358: istore 10
-    //   1360: goto -1294 -> 66
-    //   1363: astore 20
-    //   1365: aload 23
-    //   1367: monitorexit
-    //   1368: aload 20
-    //   1370: athrow
-    //   1371: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   1374: astore 23
-    //   1376: aload 23
-    //   1378: monitorenter
-    //   1379: aload_0
-    //   1380: iconst_1
-    //   1381: putfield 178	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mFinishedCreatingEglSurface	Z
-    //   1384: aload_0
-    //   1385: iconst_1
-    //   1386: putfield 143	com/tencent/qg/sdk/QGJavaScriptView$GLThread:mSurfaceIsBad	Z
-    //   1389: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   1392: invokevirtual 135	java/lang/Object:notifyAll	()V
+    //   1276: invokevirtual 226	java/lang/Object:wait	()V
+    //   1279: iload 14
+    //   1281: istore 6
+    //   1283: iload 15
+    //   1285: istore 8
+    //   1287: iload 4
+    //   1289: istore 7
+    //   1291: goto -1209 -> 82
+    //   1294: astore 22
+    //   1296: aload 27
+    //   1298: monitorexit
+    //   1299: aload 22
+    //   1301: athrow
+    //   1302: astore 23
+    //   1304: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   1307: astore 22
+    //   1309: aload 22
+    //   1311: monitorenter
+    //   1312: aload_0
+    //   1313: invokespecial 107	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglSurfaceLocked	()V
+    //   1316: aload_0
+    //   1317: invokespecial 110	com/tencent/qg/sdk/QGJavaScriptView$GLThread:stopEglContextLocked	()V
+    //   1320: aload 22
+    //   1322: monitorexit
+    //   1323: aload 23
+    //   1325: athrow
+    //   1326: astore 23
+    //   1328: aload 22
+    //   1330: monitorexit
+    //   1331: goto +6 -> 1337
+    //   1334: aload 23
+    //   1336: athrow
+    //   1337: goto -3 -> 1334
+    //   1340: iconst_0
+    //   1341: istore 21
+    //   1343: goto -1085 -> 258
+    //   1346: goto -945 -> 401
+    //   1349: aload 22
+    //   1351: astore 23
+    //   1353: goto -862 -> 491
+    //   1356: iload 4
+    //   1358: istore 17
+    //   1360: iload_2
+    //   1361: istore 18
+    //   1363: goto -684 -> 679
+    //   1366: iload 7
+    //   1368: istore 11
+    //   1370: iload 19
+    //   1372: istore 13
+    //   1374: iload 20
+    //   1376: istore 12
+    //   1378: aload 26
+    //   1380: astore 25
+    //   1382: goto -1316 -> 66
+    //   1385: iconst_0
+    //   1386: istore_1
+    //   1387: goto -392 -> 995
+    //   1390: iconst_0
+    //   1391: istore_2
+    //   1392: goto -339 -> 1053
     //   1395: aload 23
-    //   1397: monitorexit
-    //   1398: iload_1
-    //   1399: istore 13
-    //   1401: iload 4
-    //   1403: istore_1
-    //   1404: aload 21
-    //   1406: astore 23
-    //   1408: iload_2
-    //   1409: istore 4
-    //   1411: iload 6
-    //   1413: istore 11
-    //   1415: iload 5
-    //   1417: istore 12
-    //   1419: aload 20
-    //   1421: astore 21
-    //   1423: aload 23
-    //   1425: astore 20
-    //   1427: iload_3
-    //   1428: istore_2
-    //   1429: iload 13
-    //   1431: istore_3
-    //   1432: iload 7
-    //   1434: istore 5
-    //   1436: iload 8
-    //   1438: istore 6
-    //   1440: iload 11
-    //   1442: istore 7
-    //   1444: iload 9
-    //   1446: istore 8
-    //   1448: iload 12
-    //   1450: istore 9
-    //   1452: goto -1386 -> 66
-    //   1455: astore 20
-    //   1457: aload 23
-    //   1459: monitorexit
-    //   1460: aload 20
-    //   1462: athrow
-    //   1463: astore 20
-    //   1465: invokestatic 203	android/os/Trace:endSection	()V
-    //   1468: aload 20
-    //   1470: athrow
-    //   1471: astore 20
-    //   1473: invokestatic 203	android/os/Trace:endSection	()V
-    //   1476: aload 20
-    //   1478: athrow
-    //   1479: astore 20
-    //   1481: invokestatic 203	android/os/Trace:endSection	()V
-    //   1484: aload 20
-    //   1486: athrow
-    //   1487: iconst_1
-    //   1488: istore 8
-    //   1490: goto -191 -> 1299
-    //   1493: astore 21
-    //   1495: aload 20
-    //   1497: monitorexit
-    //   1498: aload 21
-    //   1500: athrow
-    //   1501: astore 21
-    //   1503: aload 20
-    //   1505: monitorexit
-    //   1506: aload 21
-    //   1508: athrow
-    //   1509: goto -455 -> 1054
-    //   1512: goto -478 -> 1034
-    //   1515: iload 11
-    //   1517: istore 14
-    //   1519: iload 5
-    //   1521: istore 9
-    //   1523: iload 7
-    //   1525: istore 11
-    //   1527: iload 13
-    //   1529: istore 8
-    //   1531: iload 4
-    //   1533: istore 12
-    //   1535: aload 20
-    //   1537: astore 23
-    //   1539: iload_1
-    //   1540: istore 4
-    //   1542: iload_3
-    //   1543: istore_1
-    //   1544: iload 14
-    //   1546: istore 5
-    //   1548: iload 6
-    //   1550: istore 7
-    //   1552: aload 21
-    //   1554: astore 20
-    //   1556: aload 23
-    //   1558: astore 21
-    //   1560: iload_2
-    //   1561: istore_3
-    //   1562: iload 12
-    //   1564: istore_2
-    //   1565: iload 11
-    //   1567: istore 6
-    //   1569: goto -1343 -> 226
-    //   1572: goto -845 -> 727
-    //   1575: goto -998 -> 577
-    //   1578: iload 7
-    //   1580: istore 6
-    //   1582: goto -272 -> 1310
-    //   1585: iconst_0
-    //   1586: istore 11
-    //   1588: goto -478 -> 1110
-    //   1591: iconst_0
-    //   1592: istore 10
-    //   1594: goto -433 -> 1161
-    //   1597: goto -333 -> 1264
+    //   1397: astore 22
+    //   1399: iload 18
+    //   1401: istore 4
+    //   1403: iload 17
+    //   1405: istore 5
+    //   1407: iload 16
+    //   1409: istore_3
+    //   1410: iload 7
+    //   1412: istore_2
+    //   1413: iload 6
+    //   1415: istore_1
+    //   1416: goto -143 -> 1273
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1600	0	this	GLThread
-    //   47	1497	1	i	int
-    //   37	1528	2	j	int
-    //   45	1517	3	k	int
-    //   52	1489	4	m	int
-    //   39	1508	5	n	int
-    //   55	1526	6	i1	int
-    //   58	1521	7	i2	int
-    //   61	1469	8	i3	int
-    //   64	1458	9	i4	int
-    //   31	1562	10	i5	int
-    //   76	1511	11	i6	int
-    //   80	1483	12	i7	int
-    //   96	1432	13	i8	int
-    //   669	876	14	i9	int
-    //   677	303	15	i10	int
-    //   681	303	16	i11	int
-    //   685	303	17	i12	int
-    //   673	299	18	i13	int
-    //   298	512	19	bool	boolean
-    //   49	738	20	localObject1	Object
-    //   842	6	20	localObject2	Object
-    //   855	14	20	localGLThreadManager	QGJavaScriptView.GLThreadManager
-    //   874	335	20	localRuntimeException	java.lang.RuntimeException
-    //   1363	57	20	localObject4	Object
-    //   1425	1	20	localObject5	Object
-    //   1455	6	20	localObject6	Object
-    //   1463	6	20	localObject7	Object
-    //   1471	6	20	localObject8	Object
-    //   1479	57	20	localObject9	Object
-    //   1554	1	20	localObject10	Object
-    //   42	1	21	localObject11	Object
-    //   157	37	21	localObject12	Object
-    //   212	579	21	localObject13	Object
-    //   850	74	21	localObject14	Object
-    //   961	461	21	localObject15	Object
-    //   1493	6	21	localObject16	Object
-    //   1501	52	21	localObject17	Object
-    //   1558	1	21	localObject18	Object
-    //   34	1159	22	localGL10	javax.microedition.khronos.opengles.GL10
-    //   69	1119	24	localObject20	Object
+    //   0	1419	0	this	GLThread
+    //   65	1351	1	i	int
+    //   63	1350	2	j	int
+    //   49	1361	3	k	int
+    //   37	1365	4	m	int
+    //   46	1360	5	n	int
+    //   34	1380	6	i1	int
+    //   76	1335	7	i2	int
+    //   80	1206	8	i3	int
+    //   509	704	9	i4	int
+    //   572	647	10	i5	int
+    //   51	1318	11	i6	int
+    //   57	1320	12	i7	int
+    //   54	1319	13	i8	int
+    //   287	993	14	i9	int
+    //   444	840	15	i10	int
+    //   40	1368	16	i11	int
+    //   621	783	17	i12	int
+    //   617	783	18	i13	int
+    //   186	1185	19	i14	int
+    //   190	1185	20	i15	int
+    //   210	1132	21	bool	boolean
+    //   43	101	22	localObject1	Object
+    //   558	10	22	localRuntimeException	java.lang.RuntimeException
+    //   692	93	22	localObject2	Object
+    //   864	6	22	localObject3	Object
+    //   902	6	22	localObject4	Object
+    //   987	6	22	localObject5	Object
+    //   1045	56	22	localObject6	Object
+    //   1116	6	22	localObject7	Object
+    //   1126	1	22	localObject8	Object
+    //   1183	6	22	localObject9	Object
+    //   1268	1	22	localObject10	Object
+    //   1294	6	22	localObject11	Object
+    //   1307	91	22	localObject12	Object
+    //   141	6	23	localObject13	Object
+    //   230	1031	23	localObject14	Object
+    //   1302	22	23	localObject15	Object
+    //   1326	9	23	localObject16	Object
+    //   1351	45	23	localObject17	Object
+    //   31	1054	24	localGL10	javax.microedition.khronos.opengles.GL10
+    //   60	1321	25	localObject18	Object
+    //   170	1209	26	localObject19	Object
+    //   69	1228	27	localGLThreadManager	QGJavaScriptView.GLThreadManager
     // Exception table:
     //   from	to	target	type
-    //   145	156	157	finally
-    //   159	162	157	finally
-    //   98	117	842	finally
-    //   122	134	842	finally
-    //   134	137	842	finally
-    //   165	188	842	finally
-    //   226	229	842	finally
-    //   300	337	842	finally
-    //   342	354	842	finally
-    //   354	360	842	finally
-    //   364	384	842	finally
-    //   396	404	842	finally
-    //   412	423	842	finally
-    //   428	447	842	finally
-    //   460	464	842	finally
-    //   464	490	842	finally
-    //   490	506	842	finally
-    //   506	531	842	finally
-    //   540	545	842	finally
-    //   548	559	842	finally
-    //   559	577	842	finally
-    //   577	584	842	finally
-    //   592	599	842	finally
-    //   623	630	842	finally
-    //   642	654	842	finally
-    //   687	701	842	finally
-    //   704	719	842	finally
-    //   722	727	842	finally
-    //   727	745	842	finally
-    //   804	811	842	finally
-    //   814	821	842	finally
-    //   821	826	842	finally
-    //   829	835	842	finally
-    //   844	847	842	finally
-    //   876	886	842	finally
-    //   915	930	842	finally
-    //   953	959	842	finally
-    //   66	74	850	finally
-    //   234	241	850	finally
-    //   847	850	850	finally
-    //   999	1017	850	finally
-    //   1039	1051	850	finally
-    //   1063	1075	850	finally
-    //   1104	1107	850	finally
-    //   1119	1131	850	finally
-    //   1155	1158	850	finally
-    //   1161	1173	850	finally
-    //   1218	1221	850	finally
-    //   1221	1230	850	finally
-    //   1264	1281	850	finally
-    //   1368	1371	850	finally
-    //   1371	1379	850	finally
-    //   1460	1463	850	finally
-    //   1465	1471	850	finally
-    //   1473	1479	850	finally
-    //   1481	1487	850	finally
-    //   1498	1501	850	finally
-    //   814	821	874	java/lang/RuntimeException
-    //   1017	1031	1363	finally
-    //   1365	1368	1363	finally
-    //   1379	1398	1455	finally
-    //   1457	1460	1455	finally
-    //   1080	1104	1463	finally
-    //   1136	1155	1471	finally
-    //   1182	1199	1479	finally
-    //   1208	1215	1479	finally
-    //   1281	1295	1493	finally
-    //   1495	1498	1493	finally
-    //   860	871	1501	finally
-    //   1503	1506	1501	finally
+    //   129	140	141	finally
+    //   143	146	141	finally
+    //   530	537	558	java/lang/RuntimeException
+    //   844	858	864	finally
+    //   866	869	864	finally
+    //   880	899	902	finally
+    //   904	907	902	finally
+    //   957	981	987	finally
+    //   1018	1039	1045	finally
+    //   1074	1091	1116	finally
+    //   1100	1107	1116	finally
+    //   1166	1180	1183	finally
+    //   1185	1188	1183	finally
+    //   82	101	1294	finally
+    //   106	118	1294	finally
+    //   118	121	1294	finally
+    //   149	172	1294	finally
+    //   195	232	1294	finally
+    //   237	249	1294	finally
+    //   249	255	1294	finally
+    //   262	282	1294	finally
+    //   294	302	1294	finally
+    //   310	321	1294	finally
+    //   326	345	1294	finally
+    //   356	363	1294	finally
+    //   368	372	1294	finally
+    //   372	398	1294	finally
+    //   401	417	1294	finally
+    //   417	442	1294	finally
+    //   451	467	1294	finally
+    //   470	488	1294	finally
+    //   491	504	1294	finally
+    //   530	537	1294	finally
+    //   537	548	1294	finally
+    //   560	570	1294	finally
+    //   579	586	1294	finally
+    //   595	607	1294	finally
+    //   634	670	1294	finally
+    //   679	690	1294	finally
+    //   735	742	1294	finally
+    //   786	789	1294	finally
+    //   1252	1267	1294	finally
+    //   1273	1279	1294	finally
+    //   1296	1299	1294	finally
+    //   66	74	1302	finally
+    //   794	801	1302	finally
+    //   826	844	1302	finally
+    //   869	872	1302	finally
+    //   872	880	1302	finally
+    //   907	910	1302	finally
+    //   919	931	1302	finally
+    //   940	952	1302	finally
+    //   981	984	1302	finally
+    //   989	995	1302	finally
+    //   1001	1013	1302	finally
+    //   1039	1042	1302	finally
+    //   1047	1053	1302	finally
+    //   1053	1065	1302	finally
+    //   1110	1113	1302	finally
+    //   1118	1124	1302	finally
+    //   1128	1136	1302	finally
+    //   1150	1166	1302	finally
+    //   1188	1191	1302	finally
+    //   1299	1302	1302	finally
+    //   1312	1323	1326	finally
+    //   1328	1331	1326	finally
   }
   
   private boolean readyToDraw()
   {
-    return (!this.mPaused) && (this.mHasSurface) && (!this.mSurfaceIsBad) && (this.mWidth > 0) && (this.mHeight > 0) && ((this.mRequestRender) || (this.mRenderMode == 1));
+    boolean bool2 = this.mPaused;
+    boolean bool1 = true;
+    if ((!bool2) && (this.mHasSurface) && (!this.mSurfaceIsBad) && (this.mWidth > 0) && (this.mHeight > 0))
+    {
+      if (this.mRequestRender) {
+        return bool1;
+      }
+      if (this.mRenderMode == 1) {
+        return true;
+      }
+    }
+    bool1 = false;
+    return bool1;
   }
   
   private void stopEglContextLocked()
@@ -978,23 +905,24 @@ class QGJavaScriptView$GLThread
     {
       this.mRequestPaused = true;
       QGJavaScriptView.sGLThreadManager.notifyAll();
-      for (;;)
+      while (!this.mExited)
       {
-        if (!this.mExited)
-        {
-          boolean bool = this.mPaused;
-          if (!bool) {
-            try
-            {
-              QGJavaScriptView.sGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = this.mPaused;
+        if (bool) {
+          break;
         }
+        try
+        {
+          QGJavaScriptView.sGLThreadManager.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label42:
+          break label42;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1006,23 +934,24 @@ class QGJavaScriptView$GLThread
       this.mRequestRender = true;
       this.mRenderComplete = false;
       QGJavaScriptView.sGLThreadManager.notifyAll();
-      for (;;)
+      while ((!this.mExited) && (this.mPaused))
       {
-        if ((!this.mExited) && (this.mPaused))
-        {
-          boolean bool = this.mRenderComplete;
-          if (!bool) {
-            try
-            {
-              QGJavaScriptView.sGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = this.mRenderComplete;
+        if (bool) {
+          break;
         }
+        try
+        {
+          QGJavaScriptView.sGLThreadManager.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label59:
+          break label59;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1039,37 +968,38 @@ class QGJavaScriptView$GLThread
         return;
       }
       QGJavaScriptView.sGLThreadManager.notifyAll();
-      for (;;)
+      while ((!this.mExited) && (!this.mPaused) && (!this.mRenderComplete))
       {
-        if ((!this.mExited) && (!this.mPaused) && (!this.mRenderComplete))
-        {
-          boolean bool = ableToDraw();
-          if (bool) {
-            try
-            {
-              QGJavaScriptView.sGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = ableToDraw();
+        if (!bool) {
+          break;
         }
+        try
+        {
+          QGJavaScriptView.sGLThreadManager.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label89:
+          break label89;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
   public void queueEvent(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {
-      throw new IllegalArgumentException("r must not be null");
+    if (paramRunnable != null) {
+      synchronized (QGJavaScriptView.sGLThreadManager)
+      {
+        this.mEventQueue.add(paramRunnable);
+        QGJavaScriptView.sGLThreadManager.notifyAll();
+        return;
+      }
     }
-    synchronized (QGJavaScriptView.sGLThreadManager)
-    {
-      this.mEventQueue.add(paramRunnable);
-      QGJavaScriptView.sGLThreadManager.notifyAll();
-      return;
-    }
+    throw new IllegalArgumentException("r must not be null");
   }
   
   public void requestExitAndWait()
@@ -1081,17 +1011,21 @@ class QGJavaScriptView$GLThread
       for (;;)
       {
         boolean bool = this.mExited;
-        if (!bool) {
-          try
-          {
-            QGJavaScriptView.sGLThreadManager.wait();
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
+        if (bool) {
+          break;
         }
+        try
+        {
+          QGJavaScriptView.sGLThreadManager.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label35:
+          break label35;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1131,58 +1065,62 @@ class QGJavaScriptView$GLThread
   public void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: new 267	java/lang/StringBuilder
-    //   4: dup
-    //   5: invokespecial 268	java/lang/StringBuilder:<init>	()V
-    //   8: ldc_w 270
-    //   11: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: aload_0
-    //   15: invokevirtual 278	com/tencent/qg/sdk/QGJavaScriptView$GLThread:getId	()J
-    //   18: invokevirtual 281	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokevirtual 288	com/tencent/qg/sdk/QGJavaScriptView$GLThread:setName	(Ljava/lang/String;)V
-    //   27: bipush 236
-    //   29: invokestatic 294	android/os/Process:setThreadPriority	(I)V
-    //   32: aload_0
-    //   33: invokespecial 296	com/tencent/qg/sdk/QGJavaScriptView$GLThread:guardedRun	()V
-    //   36: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   39: aload_0
-    //   40: invokevirtual 299	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:threadExiting	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
-    //   43: return
-    //   44: astore_1
-    //   45: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   48: aload_0
-    //   49: invokevirtual 299	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:threadExiting	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
-    //   52: return
-    //   53: astore_1
-    //   54: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
-    //   57: aload_0
-    //   58: invokevirtual 299	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:threadExiting	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
-    //   61: aload_1
-    //   62: athrow
+    //   0: new 267	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 268	java/lang/StringBuilder:<init>	()V
+    //   7: astore_1
+    //   8: aload_1
+    //   9: ldc_w 270
+    //   12: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: pop
+    //   16: aload_1
+    //   17: aload_0
+    //   18: invokevirtual 278	com/tencent/qg/sdk/QGJavaScriptView$GLThread:getId	()J
+    //   21: invokevirtual 281	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   24: pop
+    //   25: aload_0
+    //   26: aload_1
+    //   27: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokevirtual 288	com/tencent/qg/sdk/QGJavaScriptView$GLThread:setName	(Ljava/lang/String;)V
+    //   33: bipush 236
+    //   35: invokestatic 294	android/os/Process:setThreadPriority	(I)V
+    //   38: aload_0
+    //   39: invokespecial 296	com/tencent/qg/sdk/QGJavaScriptView$GLThread:guardedRun	()V
+    //   42: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   45: aload_0
+    //   46: invokevirtual 299	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:threadExiting	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
+    //   49: return
+    //   50: astore_1
+    //   51: getstatic 86	com/tencent/qg/sdk/QGJavaScriptView:sGLThreadManager	Lcom/tencent/qg/sdk/QGJavaScriptView$GLThreadManager;
+    //   54: aload_0
+    //   55: invokevirtual 299	com/tencent/qg/sdk/QGJavaScriptView$GLThreadManager:threadExiting	(Lcom/tencent/qg/sdk/QGJavaScriptView$GLThread;)V
+    //   58: aload_1
+    //   59: athrow
+    //   60: astore_1
+    //   61: goto -19 -> 42
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	63	0	this	GLThread
-    //   44	1	1	localInterruptedException	InterruptedException
-    //   53	9	1	localObject	Object
+    //   0	64	0	this	GLThread
+    //   7	20	1	localStringBuilder	java.lang.StringBuilder
+    //   50	9	1	localObject	Object
+    //   60	1	1	localInterruptedException	InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   32	36	44	java/lang/InterruptedException
-    //   32	36	53	finally
+    //   38	42	50	finally
+    //   38	42	60	java/lang/InterruptedException
   }
   
   public void setRenderMode(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > 1)) {
-      throw new IllegalArgumentException("renderMode");
+    if ((paramInt >= 0) && (paramInt <= 1)) {
+      synchronized (QGJavaScriptView.sGLThreadManager)
+      {
+        this.mRenderMode = paramInt;
+        QGJavaScriptView.sGLThreadManager.notifyAll();
+        return;
+      }
     }
-    synchronized (QGJavaScriptView.sGLThreadManager)
-    {
-      this.mRenderMode = paramInt;
-      QGJavaScriptView.sGLThreadManager.notifyAll();
-      return;
-    }
+    throw new IllegalArgumentException("renderMode");
   }
   
   public void surfaceCreated()
@@ -1192,23 +1130,24 @@ class QGJavaScriptView$GLThread
       this.mHasSurface = true;
       this.mFinishedCreatingEglSurface = false;
       QGJavaScriptView.sGLThreadManager.notifyAll();
-      for (;;)
+      while ((this.mWaitingForSurface) && (!this.mFinishedCreatingEglSurface))
       {
-        if ((this.mWaitingForSurface) && (!this.mFinishedCreatingEglSurface))
-        {
-          boolean bool = this.mExited;
-          if (!bool) {
-            try
-            {
-              QGJavaScriptView.sGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = this.mExited;
+        if (bool) {
+          break;
         }
+        try
+        {
+          QGJavaScriptView.sGLThreadManager.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label54:
+          break label54;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1218,23 +1157,24 @@ class QGJavaScriptView$GLThread
     {
       this.mHasSurface = false;
       QGJavaScriptView.sGLThreadManager.notifyAll();
-      for (;;)
+      while (!this.mWaitingForSurface)
       {
-        if (!this.mWaitingForSurface)
-        {
-          boolean bool = this.mExited;
-          if (!bool) {
-            try
-            {
-              QGJavaScriptView.sGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+        boolean bool = this.mExited;
+        if (bool) {
+          break;
         }
+        try
+        {
+          QGJavaScriptView.sGLThreadManager.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label42:
+          break label42;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1245,7 +1185,7 @@ class QGJavaScriptView$GLThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.QGJavaScriptView.GLThread
  * JD-Core Version:    0.7.0.1
  */

@@ -3,44 +3,44 @@ package com.tencent.mm.e.a;
 public final class s
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public long VO;
-  public String VT;
-  public int VU;
-  public long VV;
-  public boolean VW;
-  public com.tencent.mm.d.b VX;
-  public String Vx;
+  public String XI;
+  public long XJ;
+  public String XO;
+  public int XP;
+  public long XQ;
+  public boolean XR;
+  public com.tencent.mm.d.b XS;
+  public String Xs;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VT == null) {
+      if (this.XO == null) {
         throw new a.a.a.b("Not all required fields were included: Nickname");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new a.a.a.b("Not all required fields were included: Content");
       }
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new a.a.a.b("Not all required fields were included: Talker");
       }
-      paramVarArgs.g(1, this.VO);
-      if (this.VT != null) {
-        paramVarArgs.d(2, this.VT);
+      paramVarArgs.g(1, this.XJ);
+      if (this.XO != null) {
+        paramVarArgs.d(2, this.XO);
       }
-      if (this.Vx != null) {
-        paramVarArgs.d(3, this.Vx);
+      if (this.Xs != null) {
+        paramVarArgs.d(3, this.Xs);
       }
-      paramVarArgs.aq(4, this.VU);
-      if (this.VN != null) {
-        paramVarArgs.d(5, this.VN);
+      paramVarArgs.at(4, this.XP);
+      if (this.XI != null) {
+        paramVarArgs.d(5, this.XI);
       }
-      paramVarArgs.g(6, this.VV);
-      paramVarArgs.g(7, this.VW);
-      if (this.VX != null) {
-        paramVarArgs.c(8, this.VX);
+      paramVarArgs.g(6, this.XQ);
+      paramVarArgs.h(7, this.XR);
+      if (this.XS != null) {
+        paramVarArgs.c(8, this.XS);
       }
       paramInt = 0;
     }
@@ -51,39 +51,39 @@ public final class s
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.e(1, this.VO) + 0;
+      i = a.a.a.b.b.a.f(1, this.XJ) + 0;
       paramInt = i;
-      if (this.VT != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.VT);
+      if (this.XO != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.XO);
       }
       i = paramInt;
-      if (this.Vx != null) {
-        i = paramInt + a.a.a.b.b.a.e(3, this.Vx);
+      if (this.Xs != null) {
+        i = paramInt + a.a.a.b.b.a.e(3, this.Xs);
       }
-      i += a.a.a.a.ak(4, this.VU);
+      i += a.a.a.a.an(4, this.XP);
       paramInt = i;
-      if (this.VN != null) {
-        paramInt = i + a.a.a.b.b.a.e(5, this.VN);
+      if (this.XI != null) {
+        paramInt = i + a.a.a.b.b.a.e(5, this.XI);
       }
-      i = paramInt + a.a.a.a.e(6, this.VV) + (a.a.a.b.b.a.cp(7) + 1);
+      i = paramInt + a.a.a.b.b.a.f(6, this.XQ) + (a.a.a.b.b.a.cK(7) + 1);
       paramInt = i;
-    } while (this.VX == null);
-    return i + a.a.a.a.a(8, this.VX);
+    } while (this.XS == null);
+    return i + a.a.a.b.b.a.b(8, this.XS);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.VT == null) {
+      if (this.XO == null) {
         throw new a.a.a.b("Not all required fields were included: Nickname");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new a.a.a.b("Not all required fields were included: Content");
       }
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new a.a.a.b("Not all required fields were included: Talker");
       }
       return 0;
@@ -97,28 +97,28 @@ public final class s
       default: 
         return -1;
       case 1: 
-        locals.VO = locala.ow();
+        locals.XJ = locala.pj();
         return 0;
       case 2: 
-        locals.VT = locala.ou();
+        locals.XO = locala.ph();
         return 0;
       case 3: 
-        locals.Vx = locala.ou();
+        locals.Xs = locala.ph();
         return 0;
       case 4: 
-        locals.VU = locala.ot();
+        locals.XP = locala.pg();
         return 0;
       case 5: 
-        locals.VN = locala.ou();
+        locals.XI = locala.ph();
         return 0;
       case 6: 
-        locals.VV = locala.ow();
+        locals.XQ = locala.pj();
         return 0;
       case 7: 
-        locals.VW = locala.ov();
+        locals.XR = locala.pi();
         return 0;
       }
-      locals.VX = locala.ox();
+      locals.XS = locala.pk();
       return 0;
     }
     return -1;

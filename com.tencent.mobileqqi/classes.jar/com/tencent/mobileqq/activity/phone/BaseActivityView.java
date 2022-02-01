@@ -20,12 +20,12 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import ejw;
 import ejx;
 import ejy;
 import ejz;
 import eka;
 import ekb;
-import ekc;
 
 @SuppressLint({"ViewConstructor"})
 public class BaseActivityView
@@ -46,7 +46,7 @@ public class BaseActivityView
   public PhoneContactManagerImp a;
   public QQAppInterface a;
   public QQProgressDialog a;
-  private ekc jdField_a_of_type_Ekc;
+  private ekb jdField_a_of_type_Ekb;
   protected boolean a;
   protected View b;
   public TextView b;
@@ -84,7 +84,7 @@ public class BaseActivityView
   
   private void j()
   {
-    DialogUtil.a(getContext(), 231, getResources().getString(2131558949), getResources().getString(2131558950), new ekb(this), null).show();
+    DialogUtil.a(getContext(), 231, getResources().getString(2131558949), getResources().getString(2131558950), new eka(this), null).show();
   }
   
   protected View a(int paramInt)
@@ -109,7 +109,7 @@ public class BaseActivityView
     }
     for (;;)
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ejx(this));
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ejw(this));
       this.jdField_d_of_type_Boolean = false;
       return;
       if (this.jdField_b_of_type_Boolean)
@@ -143,18 +143,18 @@ public class BaseActivityView
     if (!a())
     {
       b(paramInt);
-      this.jdField_a_of_type_Ekc.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Ekb.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Ekc;
+    Object localObject = this.jdField_a_of_type_Ekb;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localObject = ((ekc)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Ekc.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((ekb)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Ekb.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -188,7 +188,7 @@ public class BaseActivityView
     if (paramIntent != null) {
       this.jdField_b_of_type_Boolean = paramIntent.getBooleanExtra("call_by_select_member", false);
     }
-    this.jdField_a_of_type_Ekc = new ekc(this);
+    this.jdField_a_of_type_Ekb = new ekb(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame = paramPhoneInnerFrame;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame.jdField_d_of_type_Boolean = this.jdField_c_of_type_Boolean;
     paramIntent = paramPhoneInnerFrame.b();
@@ -200,7 +200,7 @@ public class BaseActivityView
   protected void a(String paramString1, String paramString2)
   {
     if (!a()) {
-      DialogUtil.a(getContext(), 231, paramString1, paramString2, new ejy(this), null).show();
+      DialogUtil.a(getContext(), 231, paramString1, paramString2, new ejx(this), null).show();
     }
   }
   
@@ -221,9 +221,9 @@ public class BaseActivityView
     if ((!a()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), a());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new ejz(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new ejy(this));
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(new eka(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(new ejz(this));
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
@@ -261,7 +261,7 @@ public class BaseActivityView
   
   public void g()
   {
-    this.jdField_a_of_type_Ekc.removeMessages(1);
+    this.jdField_a_of_type_Ekb.removeMessages(1);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
@@ -277,8 +277,8 @@ public class BaseActivityView
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-      this.jdField_a_of_type_Ekc.removeMessages(3);
-      this.jdField_a_of_type_Ekc.sendEmptyMessageDelayed(3, 120000L);
+      this.jdField_a_of_type_Ekb.removeMessages(3);
+      this.jdField_a_of_type_Ekb.sendEmptyMessageDelayed(3, 120000L);
     }
   }
   
@@ -286,7 +286,7 @@ public class BaseActivityView
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      this.jdField_a_of_type_Ekc.removeMessages(3);
+      this.jdField_a_of_type_Ekb.removeMessages(3);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);

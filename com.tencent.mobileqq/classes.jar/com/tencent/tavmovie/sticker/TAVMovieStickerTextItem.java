@@ -54,24 +54,27 @@ public class TAVMovieStickerTextItem
   public void setFontPath(String paramString)
   {
     this.fontPath = paramString;
-    if (this.textItem != null) {
-      this.textItem.setFontPath(this.fontPath);
+    paramString = this.textItem;
+    if (paramString != null) {
+      paramString.setFontPath(this.fontPath);
     }
   }
   
   public void setText(String paramString)
   {
     this.text = paramString;
-    if (this.textItem != null) {
-      this.textItem.setText(this.text);
+    paramString = this.textItem;
+    if (paramString != null) {
+      paramString.setText(this.text);
     }
   }
   
   public void setTextColor(int paramInt)
   {
     this.textColor = paramInt;
-    if (this.textItem != null) {
-      this.textItem.setTextColor(this.textColor);
+    TAVStickerTextItem localTAVStickerTextItem = this.textItem;
+    if (localTAVStickerTextItem != null) {
+      localTAVStickerTextItem.setTextColor(this.textColor);
     }
   }
   
@@ -82,7 +85,7 @@ public class TAVMovieStickerTextItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.sticker.TAVMovieStickerTextItem
  * JD-Core Version:    0.7.0.1
  */

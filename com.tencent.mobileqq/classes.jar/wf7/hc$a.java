@@ -24,70 +24,81 @@ class hc$a
   
   public void run()
   {
-    Object localObject1 = null;
-    for (;;)
+    try
     {
-      try
+      this.sK.set(true);
+      this.sI = new gm(hc.a(this.sL).getApplicationContext());
+      if ((Environment.getExternalStorageState().equals("mounted")) && (dj.f(gv.dE())))
       {
-        this.sK.set(true);
-        this.sI = new gm(hc.a(this.sL).getApplicationContext());
-        if ((!Environment.getExternalStorageState().equals("mounted")) || (!dj.f(gv.dE()))) {
-          continue;
-        }
-        String str = Environment.getExternalStorageDirectory().getPath() + File.separator + hc.sF;
-        Object localObject2 = new File(str);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append(hc.sF);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = new File((String)localObject1);
         if (!((File)localObject2).exists()) {
           ((File)localObject2).mkdirs();
         }
-        this.sI.M(str);
-        str = this.sH + ".apk";
-        this.sI.N(str);
-        this.sI.a(new hc.a.1(this));
-        if (this.sI.a(this.sH, this.sG, false, null) == 0)
-        {
-          str = this.sI.eX();
-          localObject2 = gq.T(str);
-          if (localObject2 != null)
-          {
-            localObject1 = new File(str);
-            DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-            localDisplayMetrics.setToDefaults();
-            localObject1 = gq.a(localObject2, (File)localObject1, str, localDisplayMetrics, 0);
-          }
-          if (localObject1 != null) {
-            continue;
-          }
-          localObject1 = new File(str);
-          if (((File)localObject1).exists()) {
-            ((File)localObject1).delete();
-          }
-          if (this.sJ != null) {
-            this.sJ.ay(-207);
-          }
-        }
+        this.sI.M((String)localObject1);
       }
-      catch (Exception localException)
+      else
       {
-        if (this.sJ == null) {
-          continue;
-        }
-        this.sJ.ay(-999);
-        continue;
-        if (this.sJ == null) {
-          continue;
-        }
-        this.sJ.aa(this.sI.eX());
-        continue;
+        this.sI.M(hc.a(this.sL).getFilesDir().getAbsolutePath());
       }
-      this.sK.set(false);
-      return;
-      this.sI.M(hc.a(this.sL).getFilesDir().getAbsolutePath());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.sH);
+      ((StringBuilder)localObject1).append(".apk");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      this.sI.N((String)localObject1);
+      this.sI.a(new hc.a.1(this));
+      Object localObject2 = this.sI;
+      Object localObject3 = this.sH;
+      Object localObject4 = this.sG;
+      localObject1 = null;
+      if (((gm)localObject2).a((String)localObject3, (String)localObject4, false, null) != 0) {
+        break label364;
+      }
+      localObject2 = this.sI.eX();
+      localObject3 = gq.T((String)localObject2);
+      if (localObject3 != null)
+      {
+        localObject1 = new File((String)localObject2);
+        localObject4 = new DisplayMetrics();
+        ((DisplayMetrics)localObject4).setToDefaults();
+        localObject1 = gq.a(localObject3, (File)localObject1, (String)localObject2, (DisplayMetrics)localObject4, 0);
+      }
+      if (localObject1 == null)
+      {
+        localObject1 = new File((String)localObject2);
+        if (((File)localObject1).exists()) {
+          ((File)localObject1).delete();
+        }
+        if (this.sJ != null) {
+          this.sJ.ay(-207);
+        }
+      }
+      else if (this.sJ != null)
+      {
+        this.sJ.aa(this.sI.eX());
+      }
     }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      label346:
+      label364:
+      break label346;
+    }
+    localObject1 = this.sJ;
+    if (localObject1 != null) {
+      ((hc.b)localObject1).ay(-999);
+    }
+    this.sK.set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hc.a
  * JD-Core Version:    0.7.0.1
  */

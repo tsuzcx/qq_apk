@@ -43,19 +43,24 @@ final class u
           StatServiceImpl.c(this.b);
           return;
         }
+        ??? = StatServiceImpl.f();
+        localObject2 = new StringBuilder("Starttime for PageID:");
+        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).append(" not found, lost onResume()?");
+        ((StatLogger)???).e(((StringBuilder)localObject2).toString());
+        return;
       }
-      StatServiceImpl.f().e("Starttime for PageID:" + this.b + " not found, lost onResume()?");
+      return;
     }
     catch (Throwable localThrowable)
     {
       StatServiceImpl.f().e(localThrowable);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.u
  * JD-Core Version:    0.7.0.1
  */

@@ -14,91 +14,77 @@ import junit.framework.Assert;
 public abstract class a
   implements e
 {
-  public boolean aKX = false;
-  public boolean arI = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.arI;
-  private final Handler bTu = new Handler(Looper.getMainLooper());
-  public boolean hFR = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFR;
-  public boolean hFT = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFT;
-  public long hGA = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFX;
-  public j hGB;
-  protected d hGv;
-  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b hGw;
-  public b hGx;
-  private Runnable hGy = new Runnable()
+  public volatile boolean cUO = false;
+  public boolean debug = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.cqY().debug;
+  protected final Handler mainHandler = new Handler(Looper.getMainLooper());
+  public boolean rMf = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.cqY().rMf;
+  public boolean rMh = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.cqY().rMh;
+  public d rNd;
+  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b rNe;
+  public b rNf;
+  private final Runnable rNg = new Runnable()
   {
     public final void run()
     {
-      AppMethodBeat.i(94277);
-      if (a.this.aKX)
+      AppMethodBeat.i(144589);
+      if (a.this.cUO)
       {
-        AppMethodBeat.o(94277);
+        AppMethodBeat.o(144589);
         return;
       }
-      a.this.a(j.hHc);
+      a.this.onResult(k.rNN);
       a.this.done();
-      AppMethodBeat.o(94277);
+      AppMethodBeat.o(144589);
     }
   };
-  public long hGz = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFO;
-  
-  private void aCq()
-  {
-    Assert.assertNotNull(this.hGv);
-    Assert.assertNotNull(this.hGw);
-    Assert.assertNotNull(this.hGx);
-  }
+  public long rNh = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.cqY().rMc;
+  public long rNi = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.cqY().rMl;
+  public k rNj;
+  protected int rNk = hashCode();
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b paramb)
   {
-    this.hGw = paramb;
+    this.rNe = paramb;
   }
   
-  public final void a(d paramd)
+  public void a(k paramk) {}
+  
+  public abstract void crh();
+  
+  public final void doAction()
   {
-    this.hGv = paramd;
+    Assert.assertNotNull(this.rNd);
+    Assert.assertNotNull(this.rNe);
+    Assert.assertNotNull(this.rNf);
+    this.mainHandler.postDelayed(this.rNg, this.rNh);
+    crh();
   }
-  
-  public final void a(j paramj)
-  {
-    this.hGB = paramj;
-    if (this.hFR)
-    {
-      this.bTu.post(new a.2(this, paramj));
-      return;
-    }
-    this.hGx.a(paramj);
-  }
-  
-  public abstract void aCo();
-  
-  public final void aCp()
-  {
-    aCq();
-    this.bTu.postDelayed(this.hGy, this.hGz);
-    aCo();
-  }
-  
-  public void b(j paramj) {}
   
   public final void done()
   {
-    this.bTu.removeCallbacks(this.hGy);
-    this.aKX = true;
-    b(this.hGB);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.hGw;
-    Object localObject = this.hGB;
+    this.mainHandler.removeCallbacks(this.rNg);
+    this.cUO = true;
+    a(this.rNj);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.rNe;
+    Object localObject = this.rNj;
     if (localObject != null) {}
     for (;;)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectDispatcher", "actionCompleteCallback action:%s result:%s", new Object[] { this, localObject });
-      if (!this.hFT) {
+      if (!this.rMh) {
         break;
       }
-      localb.aCn();
+      localb.crb();
       return;
       localObject = "";
     }
-    localb.hGf.remove(this);
+    localObject = localb.rMw;
+    if (localObject != null)
+    {
+      ((List)localObject).remove(this);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectDispatcher", "actionCompleteCallback, runActions is null", new Object[0]);
   }
   
   public abstract String getName();
@@ -115,22 +101,41 @@ public abstract class a
   
   public void onDescriptorWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattDescriptor paramBluetoothGattDescriptor, int paramInt) {}
   
-  public final void onMtuChanged(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2) {}
+  public void onMtuChanged(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2) {}
   
-  public final void onReadRemoteRssi(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2) {}
+  public void onReadRemoteRssi(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2) {}
   
   public final void onReliableWriteCompleted(BluetoothGatt paramBluetoothGatt, int paramInt) {}
+  
+  public final void onResult(final k paramk)
+  {
+    this.rNj = paramk;
+    if (this.rMf)
+    {
+      this.mainHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(144590);
+          a.this.rNf.onResult(paramk);
+          AppMethodBeat.o(144590);
+        }
+      });
+      return;
+    }
+    this.rNf.onResult(paramk);
+  }
   
   public void onServicesDiscovered(BluetoothGatt paramBluetoothGatt, int paramInt) {}
   
   public String toString()
   {
-    return "Action{action='" + getName() + '\'' + ", debug=" + this.arI + ", mainThread=" + this.hFR + ", serial=" + this.hFT + '}';
+    return "Action#" + this.rNk + "{action='" + getName() + '\'' + ", debug=" + this.debug + ", mainThread=" + this.rMf + ", serial=" + this.rMh + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
  * JD-Core Version:    0.7.0.1
  */

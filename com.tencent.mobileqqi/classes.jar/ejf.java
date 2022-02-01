@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.EUCountryUtils;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.widget.TimePickerView;
 
-class ejf
-  implements ejj
+public class ejf
+  implements View.OnClickListener
 {
-  ejf(eje parameje) {}
+  public ejf(MainAssistObserver paramMainAssistObserver, TextView paramTextView, Button paramButton) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.f();
-  }
-  
-  public void b()
-  {
-    EUCountryUtils.a(this.a.a.a.b.a(), 1);
-    EUCountryUtils.b(this.a.a.a.b.a(), 1);
-    MainAssistObserver.a(this.a.a, -1);
+    int i = ProfileUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
+    int j = ProfileUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
+    int k = ProfileUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
+    new TimePickerView(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, i, j, k, new ejg(this)).b();
   }
 }
 

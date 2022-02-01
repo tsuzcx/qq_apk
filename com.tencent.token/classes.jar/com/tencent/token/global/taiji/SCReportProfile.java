@@ -10,24 +10,26 @@ public final class SCReportProfile
   public String msg = "";
   public int retCode = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new SCReportProfile();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.msg = paramJceInputStream.readString(0, false);
     this.retCode = paramJceInputStream.read(this.retCode, 1, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 0);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.retCode != 0) {
-      paramJceOutputStream.write(this.retCode, 1);
+    int i = this.retCode;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
   }
 }

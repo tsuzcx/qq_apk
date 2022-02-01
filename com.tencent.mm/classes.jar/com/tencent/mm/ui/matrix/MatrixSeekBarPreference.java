@@ -21,14 +21,14 @@ public class MatrixSeekBarPreference
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(156722);
+    AppMethodBeat.i(38880);
     super.onBindView(paramView);
-    AppMethodBeat.o(156722);
+    AppMethodBeat.o(38880);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSeekBarPreference
  * JD-Core Version:    0.7.0.1
  */

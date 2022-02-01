@@ -1,41 +1,68 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kw;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.mm.ui.chatting.f.d.a;
 
-public final class ah
+public abstract interface ah
 {
-  private static ah zBX;
-  int zBY = 0;
+  public abstract void a(d.a parama);
   
-  public static ah dGU()
-  {
-    AppMethodBeat.i(153833);
-    if (zBX == null) {
-      zBX = new ah();
-    }
-    ah localah = zBX;
-    AppMethodBeat.o(153833);
-    return localah;
-  }
+  public abstract void aBQ(int paramInt);
   
-  public final void Pw(int paramInt)
-  {
-    AppMethodBeat.i(153834);
-    if (this.zBY > 0)
-    {
-      this.zBY -= 1;
-      AppMethodBeat.o(153834);
-      return;
-    }
-    ab.i("MicroMsg.OrzChattingLifecycle", "notifyChattingStatus [%d]", new Object[] { Integer.valueOf(paramInt) });
-    kw localkw = new kw();
-    localkw.cBa.cBb = paramInt;
-    a.ymk.l(localkw);
-    AppMethodBeat.o(153834);
-  }
+  public abstract void aDM();
+  
+  public abstract void b(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2);
+  
+  public abstract void b(Context paramContext, String paramString1, String paramString2, DialogInterface.OnCancelListener paramOnCancelListener);
+  
+  public abstract int cST();
+  
+  public abstract void dcZ();
+  
+  public abstract void ev(View paramView);
+  
+  public abstract boolean gPQ();
+  
+  public abstract View getChildAt(int paramInt);
+  
+  public abstract int getFirstVisiblePosition();
+  
+  public abstract int getLastVisiblePosition();
+  
+  public abstract ListView getListView();
+  
+  public abstract void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean hideVKB();
+  
+  public abstract int joT();
+  
+  public abstract void jpJ();
+  
+  public abstract void jpK();
+  
+  public abstract void jpL();
+  
+  public abstract void jpQ();
+  
+  public abstract void jpS();
+  
+  public abstract void r(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public abstract boolean removeOptionMenu(int paramInt);
+  
+  public abstract void scrollToPosition(int paramInt);
+  
+  public abstract void setKeepScreenOn(boolean paramBoolean);
+  
+  public abstract void showOptionMenu(int paramInt, boolean paramBoolean);
+  
+  public abstract void showOptionMenu(boolean paramBoolean);
+  
+  public abstract void updateOptionMenuIcon(int paramInt1, int paramInt2);
 }
 
 

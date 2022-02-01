@@ -3,28 +3,35 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjkx;
 
 public class KingCardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<KingCardInfo> CREATOR = new bjkx();
-  public String a;
-  public boolean a;
-  public String b;
+  public static final Parcelable.Creator<KingCardInfo> CREATOR = new KingCardInfo.1();
+  public String buttonTitle;
+  public String jumpUrl;
+  public boolean showGuide;
   
   public KingCardInfo() {}
   
-  public KingCardInfo(Parcel paramParcel)
+  protected KingCardInfo(Parcel paramParcel)
   {
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.b = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.showGuide = bool;
+    this.buttonTitle = paramParcel.readString();
+    this.jumpUrl = paramParcel.readString();
+  }
+  
+  public KingCardInfo(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    this.showGuide = paramBoolean;
+    this.buttonTitle = paramString1;
+    this.jumpUrl = paramString2;
   }
   
   public int describeContents()
@@ -34,24 +41,27 @@ public class KingCardInfo
   
   public String toString()
   {
-    return "KingCardInfo [showGuide=" + this.jdField_a_of_type_Boolean + ", buttonTitle=" + this.jdField_a_of_type_JavaLangString + ", jumpUrl=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KingCardInfo [showGuide=");
+    localStringBuilder.append(this.showGuide);
+    localStringBuilder.append(", buttonTitle=");
+    localStringBuilder.append(this.buttonTitle);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeString(this.b);
-      return;
-    }
+    paramParcel.writeByte((byte)this.showGuide);
+    paramParcel.writeString(this.buttonTitle);
+    paramParcel.writeString(this.jumpUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.KingCardInfo
  * JD-Core Version:    0.7.0.1
  */

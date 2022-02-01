@@ -10,8 +10,8 @@ class ChatHistoryC2CDateFragment$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.this$0.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.this$0.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.a, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.b, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.b.this$0.t != null) {
+      this.b.this$0.t.a(this.b.a, this.b.b, this.a);
     }
   }
 }

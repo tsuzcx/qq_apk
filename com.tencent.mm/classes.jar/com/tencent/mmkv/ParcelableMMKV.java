@@ -11,40 +11,40 @@ public final class ParcelableMMKV
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelableMMKV> CREATOR;
-  String AZZ;
-  int Baa;
-  int Bab;
-  String Bac;
+  final String agZU;
+  int agZV;
+  int agZW;
+  String cryptKey;
   
   static
   {
-    AppMethodBeat.i(124055);
+    AppMethodBeat.i(13546);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(124055);
+    AppMethodBeat.o(13546);
   }
   
   public ParcelableMMKV(MMKV paramMMKV)
   {
-    AppMethodBeat.i(124053);
-    this.Baa = -1;
-    this.Bab = -1;
-    this.Bac = null;
-    this.AZZ = paramMMKV.mmapID();
-    this.Baa = paramMMKV.ashmemFD();
-    this.Bab = paramMMKV.ashmemMetaFD();
-    this.Bac = paramMMKV.cryptKey();
-    AppMethodBeat.o(124053);
+    AppMethodBeat.i(13544);
+    this.agZV = -1;
+    this.agZW = -1;
+    this.cryptKey = null;
+    this.agZU = paramMMKV.mmapID();
+    this.agZV = paramMMKV.ashmemFD();
+    this.agZW = paramMMKV.ashmemMetaFD();
+    this.cryptKey = paramMMKV.cryptKey();
+    AppMethodBeat.o(13544);
   }
   
   private ParcelableMMKV(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.Baa = -1;
-    this.Bab = -1;
-    this.Bac = null;
-    this.AZZ = paramString1;
-    this.Baa = paramInt1;
-    this.Bab = paramInt2;
-    this.Bac = paramString2;
+    this.agZV = -1;
+    this.agZW = -1;
+    this.cryptKey = null;
+    this.agZU = paramString1;
+    this.agZV = paramInt1;
+    this.agZW = paramInt2;
+    this.cryptKey = paramString2;
   }
   
   public final int describeContents()
@@ -54,30 +54,30 @@ public final class ParcelableMMKV
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(124054);
+    AppMethodBeat.i(13545);
     try
     {
-      paramParcel.writeString(this.AZZ);
-      ParcelFileDescriptor localParcelFileDescriptor1 = ParcelFileDescriptor.fromFd(this.Baa);
-      ParcelFileDescriptor localParcelFileDescriptor2 = ParcelFileDescriptor.fromFd(this.Bab);
+      paramParcel.writeString(this.agZU);
+      ParcelFileDescriptor localParcelFileDescriptor1 = ParcelFileDescriptor.fromFd(this.agZV);
+      ParcelFileDescriptor localParcelFileDescriptor2 = ParcelFileDescriptor.fromFd(this.agZW);
       paramInt |= 0x1;
       localParcelFileDescriptor1.writeToParcel(paramParcel, paramInt);
       localParcelFileDescriptor2.writeToParcel(paramParcel, paramInt);
-      if (this.Bac != null) {
-        paramParcel.writeString(this.Bac);
+      if (this.cryptKey != null) {
+        paramParcel.writeString(this.cryptKey);
       }
-      AppMethodBeat.o(124054);
+      AppMethodBeat.o(13545);
       return;
     }
     catch (IOException paramParcel)
     {
-      AppMethodBeat.o(124054);
+      AppMethodBeat.o(13545);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mmkv.ParcelableMMKV
  * JD-Core Version:    0.7.0.1
  */

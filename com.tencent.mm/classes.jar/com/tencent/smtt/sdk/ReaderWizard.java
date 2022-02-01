@@ -14,29 +14,29 @@ public class ReaderWizard
   
   public ReaderWizard(TbsReaderView.ReaderCallback paramReaderCallback)
   {
-    AppMethodBeat.i(64061);
+    AppMethodBeat.i(55121);
     this.a = null;
     this.b = null;
     this.a = a();
     this.b = paramReaderCallback;
-    AppMethodBeat.o(64061);
+    AppMethodBeat.o(55121);
   }
   
   private static DexLoader a()
   {
-    AppMethodBeat.i(64062);
-    bl localbl = o.a(true).c();
+    AppMethodBeat.i(55122);
+    TbsWizard localTbsWizard = g.a(true).c();
     DexLoader localDexLoader = null;
-    if (localbl != null) {
-      localDexLoader = localbl.b();
+    if (localTbsWizard != null) {
+      localDexLoader = localTbsWizard.dexLoader();
     }
-    AppMethodBeat.o(64062);
+    AppMethodBeat.o(55122);
     return localDexLoader;
   }
   
   public static Drawable getResDrawable(int paramInt)
   {
-    AppMethodBeat.i(64059);
+    AppMethodBeat.i(55119);
     Object localObject = a();
     if (localObject != null)
     {
@@ -45,14 +45,14 @@ public class ReaderWizard
     }
     for (localObject = (Drawable)localObject;; localObject = null)
     {
-      AppMethodBeat.o(64059);
+      AppMethodBeat.o(55119);
       return localObject;
     }
   }
   
   public static String getResString(int paramInt)
   {
-    AppMethodBeat.i(64060);
+    AppMethodBeat.i(55120);
     Object localObject = a();
     if (localObject != null)
     {
@@ -61,14 +61,14 @@ public class ReaderWizard
     }
     for (localObject = (String)localObject;; localObject = "")
     {
-      AppMethodBeat.o(64060);
+      AppMethodBeat.o(55120);
       return localObject;
     }
   }
   
   public static boolean isSupportCurrentPlatform(Context paramContext)
   {
-    AppMethodBeat.i(64057);
+    AppMethodBeat.i(55117);
     DexLoader localDexLoader = a();
     if (localDexLoader != null)
     {
@@ -77,14 +77,14 @@ public class ReaderWizard
     }
     for (boolean bool = ((Boolean)paramContext).booleanValue();; bool = false)
     {
-      AppMethodBeat.o(64057);
+      AppMethodBeat.o(55117);
       return bool;
     }
   }
   
   public static boolean isSupportExt(String paramString)
   {
-    AppMethodBeat.i(64058);
+    AppMethodBeat.i(55118);
     DexLoader localDexLoader = a();
     if (localDexLoader != null)
     {
@@ -93,71 +93,72 @@ public class ReaderWizard
     }
     for (boolean bool = ((Boolean)paramString).booleanValue();; bool = false)
     {
-      AppMethodBeat.o(64058);
+      AppMethodBeat.o(55118);
       return bool;
     }
   }
   
   public boolean checkPlugin(Object paramObject, Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(64065);
+    AppMethodBeat.i(55125);
     if (this.a == null)
     {
-      AppMethodBeat.o(64065);
+      AppMethodBeat.o(55125);
       return false;
     }
     paramObject = this.a.invokeMethod(paramObject, "com.tencent.tbs.reader.TbsReader", "checkPlugin", new Class[] { Context.class, String.class, Boolean.class }, new Object[] { paramContext, paramString, Boolean.valueOf(paramBoolean) });
     if (!(paramObject instanceof Boolean))
     {
-      AppMethodBeat.o(64065);
+      AppMethodBeat.o(55125);
       return false;
     }
     paramBoolean = ((Boolean)paramObject).booleanValue();
-    AppMethodBeat.o(64065);
+    AppMethodBeat.o(55125);
     return paramBoolean;
   }
   
   public void destroy(Object paramObject)
   {
-    AppMethodBeat.i(64070);
+    AppMethodBeat.i(55130);
     this.b = null;
     if ((this.a == null) || (paramObject == null))
     {
-      AppMethodBeat.o(64070);
+      AppMethodBeat.o(55130);
       return;
     }
     this.a.invokeMethod(paramObject, "com.tencent.tbs.reader.TbsReader", "destroy", new Class[0], new Object[0]);
-    AppMethodBeat.o(64070);
+    AppMethodBeat.o(55130);
   }
   
   public void doCommand(Object paramObject1, Integer paramInteger, Object paramObject2, Object paramObject3)
   {
-    AppMethodBeat.i(64069);
+    AppMethodBeat.i(55129);
+    new StringBuilder("doAction actionType:").append(paramInteger).append(" args").append(paramObject2).append(" result").append(paramObject3);
     if (this.a == null)
     {
-      AppMethodBeat.o(64069);
+      AppMethodBeat.o(55129);
       return;
     }
     DexLoader localDexLoader = this.a;
     paramInteger = new Integer(paramInteger.intValue());
     localDexLoader.invokeMethod(paramObject1, "com.tencent.tbs.reader.TbsReader", "doCommand", new Class[] { Integer.class, Object.class, Object.class }, new Object[] { paramInteger, paramObject2, paramObject3 });
-    AppMethodBeat.o(64069);
+    AppMethodBeat.o(55129);
   }
   
   public Object getTbsReader()
   {
-    AppMethodBeat.i(64063);
+    AppMethodBeat.i(55123);
     Object localObject = this.a.newInstance("com.tencent.tbs.reader.TbsReader", new Class[0], new Object[0]);
-    AppMethodBeat.o(64063);
+    AppMethodBeat.o(55123);
     return localObject;
   }
   
   public boolean initTbsReader(Object paramObject, Context paramContext)
   {
-    AppMethodBeat.i(64064);
+    AppMethodBeat.i(55124);
     if ((this.a == null) || (paramObject == null))
     {
-      AppMethodBeat.o(64064);
+      AppMethodBeat.o(55124);
       return false;
     }
     DexLoader localDexLoader1 = this.a;
@@ -165,64 +166,65 @@ public class ReaderWizard
     paramObject = localDexLoader1.invokeMethod(paramObject, "com.tencent.tbs.reader.TbsReader", "init", new Class[] { Context.class, DexLoader.class, Object.class }, new Object[] { paramContext, localDexLoader2, this });
     if (!(paramObject instanceof Boolean))
     {
-      AppMethodBeat.o(64064);
+      AppMethodBeat.o(55124);
       return false;
     }
     boolean bool = ((Boolean)paramObject).booleanValue();
-    AppMethodBeat.o(64064);
+    AppMethodBeat.o(55124);
     return bool;
   }
   
   public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(64068);
+    AppMethodBeat.i(55128);
+    new StringBuilder("onCallBackAction actionType:").append(paramInteger).append(" args").append(paramObject1).append(" result").append(paramObject2);
     if (this.b != null) {
       this.b.onCallBackAction(paramInteger, paramObject1, paramObject2);
     }
-    AppMethodBeat.o(64068);
+    AppMethodBeat.o(55128);
   }
   
   public void onSizeChanged(Object paramObject, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(64067);
+    AppMethodBeat.i(55127);
     if (this.a == null)
     {
-      AppMethodBeat.o(64067);
+      AppMethodBeat.o(55127);
       return;
     }
     this.a.invokeMethod(paramObject, "com.tencent.tbs.reader.TbsReader", "onSizeChanged", new Class[] { Integer.class, Integer.class }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(64067);
+    AppMethodBeat.o(55127);
   }
   
   public boolean openFile(Object paramObject, Context paramContext, Bundle paramBundle, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(64066);
+    AppMethodBeat.i(55126);
     if (this.a == null)
     {
-      AppMethodBeat.o(64066);
+      AppMethodBeat.o(55126);
       return false;
     }
     paramObject = this.a.invokeMethod(paramObject, "com.tencent.tbs.reader.TbsReader", "openFile", new Class[] { Context.class, Bundle.class, FrameLayout.class }, new Object[] { paramContext, paramBundle, paramFrameLayout });
     if (!(paramObject instanceof Boolean))
     {
-      AppMethodBeat.o(64066);
+      AppMethodBeat.o(55126);
       return false;
     }
     boolean bool = ((Boolean)paramObject).booleanValue();
-    AppMethodBeat.o(64066);
+    AppMethodBeat.o(55126);
     return bool;
   }
   
   public void userStatistics(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(64071);
+    AppMethodBeat.i(55131);
     if (this.a == null)
     {
-      AppMethodBeat.o(64071);
+      AppMethodBeat.o(55131);
       return;
     }
     this.a.invokeMethod(paramObject, "com.tencent.tbs.reader.TbsReader", "userStatistics", new Class[] { String.class }, new Object[] { paramString });
-    AppMethodBeat.o(64071);
+    AppMethodBeat.o(55131);
   }
 }
 

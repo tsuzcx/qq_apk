@@ -11,9 +11,9 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.LongSparseArray;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
@@ -58,7 +58,6 @@ public class GradientFillContent
   private final Path path = new Path();
   private final List<PathContent> paths = new ArrayList();
   private final LongSparseArray<RadialGradient> radialGradientCache = new LongSparseArray();
-  private final Matrix shaderMatrix = new Matrix();
   private final BaseKeyframeAnimation<PointF, PointF> startPointAnimation;
   private final GradientType type;
   
@@ -87,32 +86,35 @@ public class GradientFillContent
   
   private int[] applyDynamicColorsIfNeeded(int[] paramArrayOfInt)
   {
-    int j = 0;
-    int i = 0;
+    Object localObject = this.colorCallbackAnimation;
     int[] arrayOfInt = paramArrayOfInt;
-    if (this.colorCallbackAnimation != null)
+    if (localObject != null)
     {
-      Integer[] arrayOfInteger = (Integer[])this.colorCallbackAnimation.getValue();
-      if (paramArrayOfInt.length == arrayOfInteger.length) {
+      localObject = (Integer[])((ValueCallbackKeyframeAnimation)localObject).getValue();
+      int k = paramArrayOfInt.length;
+      int m = localObject.length;
+      int j = 0;
+      int i = 0;
+      if (k == m) {
         for (;;)
         {
           arrayOfInt = paramArrayOfInt;
           if (i >= paramArrayOfInt.length) {
             break;
           }
-          paramArrayOfInt[i] = arrayOfInteger[i].intValue();
+          paramArrayOfInt[i] = localObject[i].intValue();
           i += 1;
         }
       }
-      paramArrayOfInt = new int[arrayOfInteger.length];
+      paramArrayOfInt = new int[localObject.length];
       i = j;
       for (;;)
       {
         arrayOfInt = paramArrayOfInt;
-        if (i >= arrayOfInteger.length) {
+        if (i >= localObject.length) {
           break;
         }
-        paramArrayOfInt[i] = arrayOfInteger[i].intValue();
+        paramArrayOfInt[i] = localObject[i].intValue();
         i += 1;
       }
     }
@@ -121,28 +123,31 @@ public class GradientFillContent
   
   private int getGradientHash()
   {
-    int j = Math.round(this.startPointAnimation.getProgress() * this.cacheSteps);
+    int i = Math.round(this.startPointAnimation.getProgress() * this.cacheSteps);
     int m = Math.round(this.endPointAnimation.getProgress() * this.cacheSteps);
     int k = Math.round(this.colorAnimation.getProgress() * this.cacheSteps);
-    int i = 17;
-    if (j != 0) {
-      i = j * 527;
-    }
-    j = i;
-    if (m != 0) {
-      j = i * 31 * m;
+    if (i != 0) {
+      j = 527 * i;
+    } else {
+      j = 17;
     }
     i = j;
-    if (k != 0) {
-      i = j * 31 * k;
+    if (m != 0) {
+      i = j * 31 * m;
     }
-    return i;
+    int j = i;
+    if (k != 0) {
+      j = i * 31 * k;
+    }
+    return j;
   }
   
   private LinearGradient getLinearGradient()
   {
     int i = getGradientHash();
-    Object localObject1 = (LinearGradient)this.linearGradientCache.get(i);
+    Object localObject1 = this.linearGradientCache;
+    long l = i;
+    localObject1 = (LinearGradient)((LongSparseArray)localObject1).get(l);
     if (localObject1 != null) {
       return localObject1;
     }
@@ -152,14 +157,16 @@ public class GradientFillContent
     int[] arrayOfInt = applyDynamicColorsIfNeeded(((GradientColor)localObject2).getColors());
     localObject2 = ((GradientColor)localObject2).getPositions();
     localObject1 = new LinearGradient(((PointF)localObject1).x, ((PointF)localObject1).y, localPointF.x, localPointF.y, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
-    this.linearGradientCache.put(i, localObject1);
+    this.linearGradientCache.put(l, localObject1);
     return localObject1;
   }
   
   private RadialGradient getRadialGradient()
   {
     int i = getGradientHash();
-    Object localObject1 = (RadialGradient)this.radialGradientCache.get(i);
+    Object localObject1 = this.radialGradientCache;
+    long l = i;
+    localObject1 = (RadialGradient)((LongSparseArray)localObject1).get(l);
     if (localObject1 != null) {
       return localObject1;
     }
@@ -168,52 +175,59 @@ public class GradientFillContent
     Object localObject2 = (GradientColor)this.colorAnimation.getValue();
     int[] arrayOfInt = applyDynamicColorsIfNeeded(((GradientColor)localObject2).getColors());
     localObject2 = ((GradientColor)localObject2).getPositions();
-    float f3 = ((PointF)localObject1).x;
-    float f4 = ((PointF)localObject1).y;
+    float f2 = ((PointF)localObject1).x;
+    float f3 = ((PointF)localObject1).y;
     float f1 = localPointF.x;
-    float f2 = localPointF.y;
-    f2 = (float)Math.hypot(f1 - f3, f2 - f4);
-    f1 = f2;
-    if (f2 <= 0.0F) {
+    float f4 = localPointF.y;
+    f1 = (float)Math.hypot(f1 - f2, f4 - f3);
+    if (f1 <= 0.0F) {
       f1 = 0.001F;
     }
-    localObject1 = new RadialGradient(f3, f4, f1, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
-    this.radialGradientCache.put(i, localObject1);
+    localObject1 = new RadialGradient(f2, f3, f1, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
+    this.radialGradientCache.put(l, localObject1);
     return localObject1;
   }
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.OPACITY) {
-      this.opacityAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    do
+    if (paramT == LottieProperty.OPACITY)
     {
+      this.opacityAnimation.setValueCallback(paramLottieValueCallback);
       return;
-      if (paramT == LottieProperty.COLOR_FILTER)
+    }
+    if (paramT == LottieProperty.COLOR_FILTER)
+    {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
       {
-        if (paramLottieValueCallback == null)
-        {
-          this.colorFilterAnimation = null;
-          return;
-        }
-        this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-        this.colorFilterAnimation.addUpdateListener(this);
-        this.layer.addAnimation(this.colorFilterAnimation);
+        this.colorFilterAnimation = null;
         return;
       }
-    } while (paramT != LottieProperty.GRADIENT_COLOR);
-    if (paramLottieValueCallback == null)
-    {
-      if (this.colorCallbackAnimation != null) {
-        this.layer.removeAnimation(this.colorCallbackAnimation);
-      }
-      this.colorCallbackAnimation = null;
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorFilterAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorFilterAnimation);
       return;
     }
-    this.colorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    this.colorCallbackAnimation.addUpdateListener(this);
-    this.layer.addAnimation(this.colorCallbackAnimation);
+    if (paramT == LottieProperty.GRADIENT_COLOR)
+    {
+      paramT = this.colorCallbackAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
+      {
+        this.colorCallbackAnimation = null;
+        return;
+      }
+      this.linearGradientCache.clear();
+      this.radialGradientCache.clear();
+      this.colorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorCallbackAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorCallbackAnimation);
+    }
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -230,22 +244,22 @@ public class GradientFillContent
       i += 1;
     }
     this.path.computeBounds(this.boundsRect, false);
-    if (this.type == GradientType.LINEAR) {}
-    for (Object localObject = getLinearGradient();; localObject = getRadialGradient())
-    {
-      this.shaderMatrix.set(paramMatrix);
-      ((Shader)localObject).setLocalMatrix(this.shaderMatrix);
-      this.paint.setShader((Shader)localObject);
-      if (this.colorFilterAnimation != null) {
-        this.paint.setColorFilter((ColorFilter)this.colorFilterAnimation.getValue());
-      }
-      float f = paramInt / 255.0F;
-      paramInt = (int)(((Integer)this.opacityAnimation.getValue()).intValue() * f / 100.0F * 255.0F);
-      this.paint.setAlpha(MiscUtils.clamp(paramInt, 0, 255));
-      paramCanvas.drawPath(this.path, this.paint);
-      L.endSection("GradientFillContent#draw");
-      return;
+    Object localObject;
+    if (this.type == GradientType.LINEAR) {
+      localObject = getLinearGradient();
+    } else {
+      localObject = getRadialGradient();
     }
+    ((Shader)localObject).setLocalMatrix(paramMatrix);
+    this.paint.setShader((Shader)localObject);
+    paramMatrix = this.colorFilterAnimation;
+    if (paramMatrix != null) {
+      this.paint.setColorFilter((ColorFilter)paramMatrix.getValue());
+    }
+    paramInt = (int)(paramInt / 255.0F * ((Integer)this.opacityAnimation.getValue()).intValue() / 100.0F * 255.0F);
+    this.paint.setAlpha(MiscUtils.clamp(paramInt, 0, 255));
+    paramCanvas.drawPath(this.path, this.paint);
+    L.endSection("GradientFillContent#draw");
   }
   
   public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)

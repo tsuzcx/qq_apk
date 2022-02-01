@@ -12,14 +12,15 @@ class ArkVsync$TimerVsync$1
     if (this.this$0.mCallbacking) {
       return;
     }
-    this.this$0.mCallbacking = true;
-    this.this$0.run();
+    ArkVsync.TimerVsync localTimerVsync = this.this$0;
+    localTimerVsync.mCallbacking = true;
+    localTimerVsync.run();
     this.this$0.mCallbacking = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkVsync.TimerVsync.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,19 +30,21 @@ public class DebugInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    if (paramObject == null) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if ((paramObject instanceof DebugInfo))
     {
-      do
-      {
-        return false;
-        if (paramObject == this) {
-          return true;
-        }
-      } while (!(paramObject instanceof DebugInfo));
       paramObject = (DebugInfo)paramObject;
-    } while ((!TextUtils.equals(this.roomId, paramObject.roomId)) || (!TextUtils.equals(this.wsUrl, paramObject.wsUrl)));
-    return true;
+      if (!TextUtils.equals(this.roomId, paramObject.roomId)) {
+        return false;
+      }
+      return TextUtils.equals(this.wsUrl, paramObject.wsUrl);
+    }
+    return false;
   }
   
   public String getRoomId()
@@ -65,6 +67,11 @@ public class DebugInfo
     this.wsUrl = paramString;
   }
   
+  public boolean valid()
+  {
+    return (!TextUtils.isEmpty(this.roomId)) && (!TextUtils.isEmpty(this.wsUrl));
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.roomId);
@@ -73,7 +80,7 @@ public class DebugInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.DebugInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -4,24 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Window;
-import aqbg;
-import aqhg;
-import aqhi;
-import bdgm;
-import bdjz;
-import bjem;
-import bjen;
-import bjeo;
-import bjep;
-import bjeq;
-import bjer;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.qqexpand.chat.IExpandMsgSendHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
@@ -30,105 +24,65 @@ import mqq.os.MqqHandler;
 public class QZoneNavigateToQQTransparentFragment
   extends PublicBaseFragment
 {
-  public static void a(FragmentActivity paramFragmentActivity, String paramString1, String paramString2)
+  public static final String EXTRA_KEY_EXTEND_FRIEND_CAMPUS_AIO_CODE = "extend_friend_campus_aio_code";
+  public static final String EXTRA_KEY_EXTEND_FRIEND_CAMPUS_ALGORITHM_ID = "extend_friend_campus_algorithm_id";
+  public static final String EXTRA_KEY_EXTEND_FRIEND_CAMPUS_CURRENT_TAB = "extend_friend_campus_current_tab";
+  public static final String EXTRA_KEY_NICKNAME = "nickname";
+  public static final String EXTRA_KEY_REQUEST_CODE = "request_code";
+  public static final String EXTRA_KEY_UIN = "uin";
+  public static final int REQUEST_CODE_LAUNCH_CAMPUS_AIO_CHAT = 1;
+  private static final String TAG = "QZoneNavigateToQQTransparentFragment";
+  private boolean mHasParsedIntent;
+  
+  public static void enterAio(BaseActivity paramBaseActivity, String paramString1, String paramString2)
   {
-    if (paramFragmentActivity == null) {
+    if (paramBaseActivity == null) {
       return;
     }
-    Intent localIntent = new Intent(paramFragmentActivity, ChatActivity.class);
+    Intent localIntent = new Intent(paramBaseActivity, ChatActivity.class);
     localIntent.putExtra("uin", paramString1);
     localIntent.putExtra("uinname", paramString2);
     localIntent.putExtra("entrance", 23);
     localIntent.putExtra("uintype", 1045);
+    localIntent.putExtra("key_limitchat_enter_type", 1);
     localIntent.putExtras(new Bundle());
-    paramFragmentActivity.startActivity(localIntent);
-    paramFragmentActivity.finish();
+    paramBaseActivity.startActivity(localIntent);
+    paramBaseActivity.finish();
   }
   
-  public static void a(FragmentActivity paramFragmentActivity, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public static void showCampusVerifyDialog(BaseActivity paramBaseActivity, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    if ((paramFragmentActivity == null) || (!paramFragmentActivity.isResume()))
+    if ((paramBaseActivity != null) && (paramBaseActivity.isResume()))
     {
-      QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 230);
+      localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.2(paramBaseActivity));
+      localQQCustomDialog.setMessage(paramBaseActivity.getString(2131896864)).setNegativeButton(paramBaseActivity.getString(2131896862), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramBaseActivity.getString(2131896863), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramBaseActivity, paramInt, paramString1, paramString2)).show();
       return;
     }
-    bdjz localbdjz = bdgm.a(paramFragmentActivity, 230);
-    localbdjz.setOnDismissListener(new bjen(paramFragmentActivity));
-    localbdjz.setMessage(paramFragmentActivity.getString(2131699358)).setNegativeButton(paramFragmentActivity.getString(2131699356), new bjep()).setPositiveButton(paramFragmentActivity.getString(2131699357), new bjeo(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
+    QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
   }
   
-  private static void b(FragmentActivity paramFragmentActivity)
+  private static void showMatchCountDialog(BaseActivity paramBaseActivity)
   {
-    if ((paramFragmentActivity == null) || (!paramFragmentActivity.isResume()))
+    if ((paramBaseActivity != null) && (paramBaseActivity.isResume()))
     {
-      QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 230);
+      localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.5(paramBaseActivity));
+      localQQCustomDialog.setMessage(paramBaseActivity.getString(2131896866)).setPositiveButton(paramBaseActivity.getString(2131896865), new QZoneNavigateToQQTransparentFragment.6()).show();
       return;
     }
-    bdjz localbdjz = bdgm.a(paramFragmentActivity, 230);
-    localbdjz.setOnDismissListener(new bjeq(paramFragmentActivity));
-    localbdjz.setMessage(paramFragmentActivity.getString(2131699360)).setPositiveButton(paramFragmentActivity.getString(2131699359), new bjer()).show();
+    QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
   }
   
-  private static void b(FragmentActivity paramFragmentActivity, String paramString)
+  private static void showToast(BaseActivity paramBaseActivity, String paramString)
   {
-    if ((paramFragmentActivity == null) || (!paramFragmentActivity.isResume()))
+    if ((paramBaseActivity != null) && (paramBaseActivity.isResume()))
     {
-      QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showToast() activity is null or is not onResume() just return");
+      QQToast.makeText(paramBaseActivity, paramString, 0).show(paramBaseActivity.getTitleBarHeight());
+      ThreadManager.getUIHandler().postDelayed(new QZoneNavigateToQQTransparentFragment.7(paramBaseActivity), 0L);
       return;
     }
-    QQToast.a(paramFragmentActivity, paramString, 0).b(paramFragmentActivity.getTitleBarHeight());
-    ThreadManager.getUIHandler().postDelayed(new QZoneNavigateToQQTransparentFragment.7(paramFragmentActivity), 0L);
-  }
-  
-  protected void a()
-  {
-    String str2 = null;
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {}
-    String str1;
-    for (Object localObject = localFragmentActivity.getIntent();; str1 = null)
-    {
-      Bundle localBundle;
-      if (localObject != null)
-      {
-        localBundle = ((Intent)localObject).getExtras();
-        if (localBundle != null) {}
-      }
-      else
-      {
-        return;
-      }
-      int i = localBundle.getInt("request_code");
-      switch (i)
-      {
-      default: 
-        QZLog.i("QZoneNavigateToQQTransparentFragment", "parseIntent: wrong code " + i);
-        return;
-      }
-      long l = localBundle.getLong("uin");
-      String str3 = localBundle.getString("nickname");
-      String str4 = localBundle.getString("extend_friend_campus_aio_code");
-      QZLog.i("QZoneNavigateToQQTransparentFragment", "parseIntent: " + l + " " + str3 + " " + str4);
-      localObject = str2;
-      if (!TextUtils.isEmpty(str4)) {}
-      try
-      {
-        localObject = Base64.decode(str4, 0);
-        aqhi.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, new bjem(this, localFragmentActivity));
-        localObject = localBundle.getString("extend_friend_campus_algorithm_id");
-        str2 = localBundle.getString("extend_friend_campus_current_tab", aqbg.a);
-        aqhg.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.d("QZoneNavigateToQQTransparentFragment", 2, "[open limit chat] parse strKuolieCampusAIOKey error! " + str4, localThrowable);
-          str1 = str2;
-        }
-      }
-    }
+    QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showToast() activity is null or is not onResume() just return");
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -150,25 +104,92 @@ public class QZoneNavigateToQQTransparentFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    paramBundle = getActivity();
+    paramBundle = getBaseActivity();
     if (paramBundle != null) {
       paramBundle.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     }
-    a();
   }
   
   public boolean onBackEvent()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity != null) {
+      localBaseActivity.finish();
     }
     return super.onBackEvent();
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (!this.mHasParsedIntent)
+    {
+      this.mHasParsedIntent = true;
+      parseIntent();
+    }
+  }
+  
+  protected void parseIntent()
+  {
+    BaseActivity localBaseActivity = getBaseActivity();
+    String str2 = null;
+    Object localObject;
+    if (localBaseActivity != null) {
+      localObject = localBaseActivity.getIntent();
+    } else {
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      Bundle localBundle = ((Intent)localObject).getExtras();
+      if (localBundle == null) {
+        return;
+      }
+      int i = localBundle.getInt("request_code");
+      if (i != 1)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseIntent: wrong code ");
+        ((StringBuilder)localObject).append(i);
+        QZLog.i("QZoneNavigateToQQTransparentFragment", ((StringBuilder)localObject).toString());
+        return;
+      }
+      long l = localBundle.getLong("uin");
+      String str3 = localBundle.getString("nickname");
+      String str4 = localBundle.getString("extend_friend_campus_aio_code");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseIntent: ");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(str4);
+      QZLog.i("QZoneNavigateToQQTransparentFragment", ((StringBuilder)localObject).toString());
+      localObject = str2;
+      if (!TextUtils.isEmpty(str4)) {
+        try
+        {
+          localObject = Base64.decode(str4, 0);
+        }
+        catch (Throwable localThrowable)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[open limit chat] parse strKuolieCampusAIOKey error! ");
+          localStringBuilder.append(str4);
+          QLog.d("QZoneNavigateToQQTransparentFragment", 2, localStringBuilder.toString(), localThrowable);
+          str1 = str2;
+        }
+      }
+      ((IExpandMsgSendHelper)QRoute.api(IExpandMsgSendHelper.class)).sendMsgDirectly(localBaseActivity.app, String.valueOf(l), str3, str1, 1, new QZoneNavigateToQQTransparentFragment.1(this, localBaseActivity));
+      String str1 = localBundle.getString("extend_friend_campus_algorithm_id");
+      str2 = localBundle.getString("extend_friend_campus_current_tab", "推荐");
+      ExtendFriendReport.a().a(1, String.valueOf(l), "", "0", str1, str2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment
  * JD-Core Version:    0.7.0.1
  */

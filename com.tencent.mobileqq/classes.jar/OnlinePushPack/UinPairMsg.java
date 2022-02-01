@@ -9,10 +9,10 @@ public final class UinPairMsg
   extends JceStruct
 {
   static ArrayList<MsgInfo> cache_vMsgInfos;
-  public long lPeerUin;
-  public long uLastReadTime;
-  public long uMsgCompleted;
-  public ArrayList<MsgInfo> vMsgInfos;
+  public long lPeerUin = 0L;
+  public long uLastReadTime = 0L;
+  public long uMsgCompleted = 0L;
+  public ArrayList<MsgInfo> vMsgInfos = null;
   
   public UinPairMsg() {}
   
@@ -43,14 +43,15 @@ public final class UinPairMsg
     paramJceOutputStream.write(this.uLastReadTime, 1);
     paramJceOutputStream.write(this.lPeerUin, 2);
     paramJceOutputStream.write(this.uMsgCompleted, 3);
-    if (this.vMsgInfos != null) {
-      paramJceOutputStream.write(this.vMsgInfos, 4);
+    ArrayList localArrayList = this.vMsgInfos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.UinPairMsg
  * JD-Core Version:    0.7.0.1
  */

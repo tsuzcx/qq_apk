@@ -1,0 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LoginActivity;
+
+public class ehq
+  implements View.OnClickListener
+{
+  public ehq(LoginActivity paramLoginActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\assets\exlibs.2.jar\classes.jar
+ * Qualified Name:     ehq
+ * JD-Core Version:    0.7.0.1
+ */

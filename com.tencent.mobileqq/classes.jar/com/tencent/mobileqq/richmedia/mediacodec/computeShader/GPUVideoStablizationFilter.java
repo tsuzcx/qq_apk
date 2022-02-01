@@ -65,36 +65,33 @@ public class GPUVideoStablizationFilter
     checkLocation(paramInt1, "imageWidth");
     GLES20.glUniform1i(paramInt1, paramInt2);
     checkGlError("fill uniform  imageWidth");
-    if (paramInt2 % 8 == 0)
-    {
+    if (paramInt2 % 8 == 0) {
       paramInt1 = paramInt2 / 8;
-      if (paramInt3 % 8 != 0) {
-        break label314;
-      }
-    }
-    label314:
-    for (i = paramInt3 / 8;; i = paramInt3 / 8 + 1)
-    {
-      GLES31.glDispatchCompute(paramInt1, i, 1);
-      checkGlError("glDispatchCompute");
-      GLES31.glMemoryBarrier(32);
-      checkGlError("glMemoryBarrier");
-      GLES20.glBindBuffer(37074, this.mGLBuffers[0]);
-      Object localObject = GLES30.glMapBufferRange(37074, 0, j, 1);
-      checkGlError("glMapBufferRange");
-      localObject = copyDataGpuToCpu(paramInt3, paramInt2, (Buffer)localObject);
-      GLES30.glUnmapBuffer(37074);
-      GLES20.glBindBuffer(37074, 0);
-      GLES20.glDeleteBuffers(2, this.mGLBuffers, 0);
-      return localObject;
+    } else {
       paramInt1 = paramInt2 / 8 + 1;
-      break;
     }
+    if (paramInt3 % 8 == 0) {
+      i = paramInt3 / 8;
+    } else {
+      i = paramInt3 / 8 + 1;
+    }
+    GLES31.glDispatchCompute(paramInt1, i, 1);
+    checkGlError("glDispatchCompute");
+    GLES31.glMemoryBarrier(32);
+    checkGlError("glMemoryBarrier");
+    GLES20.glBindBuffer(37074, this.mGLBuffers[0]);
+    Object localObject = GLES30.glMapBufferRange(37074, 0, j, 1);
+    checkGlError("glMapBufferRange");
+    localObject = copyDataGpuToCpu(paramInt3, paramInt2, (Buffer)localObject);
+    GLES30.glUnmapBuffer(37074);
+    GLES20.glBindBuffer(37074, 0);
+    GLES20.glDeleteBuffers(2, this.mGLBuffers, 0);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.computeShader.GPUVideoStablizationFilter
  * JD-Core Version:    0.7.0.1
  */

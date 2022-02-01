@@ -8,21 +8,22 @@ import java.util.ArrayList;
 
 public class LibraryLoader
 {
-  private static String[] sLibrarySearchPaths = null;
+  private static String[] sLibrarySearchPaths;
   
   public static String[] getLibrarySearchPaths(Context paramContext)
   {
-    if (sLibrarySearchPaths != null) {
-      return sLibrarySearchPaths;
+    Object localObject = sLibrarySearchPaths;
+    if (localObject != null) {
+      return localObject;
     }
     if (paramContext == null) {
       return new String[] { "/system/lib" };
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(getNativeLibraryDir(paramContext));
-    localArrayList.add("/system/lib");
-    paramContext = new String[localArrayList.size()];
-    localArrayList.toArray(paramContext);
+    localObject = new ArrayList();
+    ((ArrayList)localObject).add(getNativeLibraryDir(paramContext));
+    ((ArrayList)localObject).add("/system/lib");
+    paramContext = new String[((ArrayList)localObject).size()];
+    ((ArrayList)localObject).toArray(paramContext);
     sLibrarySearchPaths = paramContext;
     return sLibrarySearchPaths;
   }
@@ -33,10 +34,18 @@ public class LibraryLoader
     if (i >= 9) {
       return paramContext.getApplicationInfo().nativeLibraryDir;
     }
-    if (i >= 4) {
-      return paramContext.getApplicationInfo().dataDir + "/lib";
+    if (i >= 4)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getApplicationInfo().dataDir);
+      localStringBuilder.append("/lib");
+      return localStringBuilder.toString();
     }
-    return "/data/data/" + paramContext.getPackageName() + "/lib";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/data/data/");
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("/lib");
+    return localStringBuilder.toString();
   }
   
   public static void loadLibrary(Context paramContext, String paramString)
@@ -48,7 +57,11 @@ public class LibraryLoader
     while (i < j)
     {
       String str2 = paramContext[i];
-      str2 = str2 + "/" + str1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str2);
+      localStringBuilder.append("/");
+      localStringBuilder.append(str1);
+      str2 = localStringBuilder.toString();
       if (!new File(str2).exists()) {
         i += 1;
       } else {
@@ -77,7 +90,7 @@ public class LibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.LibraryLoader
  * JD-Core Version:    0.7.0.1
  */

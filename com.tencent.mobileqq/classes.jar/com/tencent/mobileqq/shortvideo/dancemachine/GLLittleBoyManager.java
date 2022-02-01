@@ -52,17 +52,12 @@ public class GLLittleBoyManager
   private void addDeadListLittleBoy(Animation paramAnimation)
   {
     int i = 0;
-    for (;;)
+    while (i < this.mLittleBoyList.size())
     {
-      if (i < this.mLittleBoyList.size())
+      GLLittleBoy localGLLittleBoy = (GLLittleBoy)this.mLittleBoyList.get(i);
+      if (localGLLittleBoy.getAnimation() == paramAnimation)
       {
-        GLLittleBoy localGLLittleBoy = (GLLittleBoy)this.mLittleBoyList.get(i);
-        if (localGLLittleBoy.getAnimation() == paramAnimation) {
-          addDeadListLittleBoy(localGLLittleBoy);
-        }
-      }
-      else
-      {
+        addDeadListLittleBoy(localGLLittleBoy);
         return;
       }
       i += 1;
@@ -71,13 +66,15 @@ public class GLLittleBoyManager
   
   private void addDeadListLittleBoy(GLLittleBoy paramGLLittleBoy)
   {
-    if (paramGLLittleBoy.mIsValidBoy) {
-      throw new RuntimeException("状态错误,消失动画的对象是有效对象");
+    if (!paramGLLittleBoy.mIsValidBoy)
+    {
+      paramGLLittleBoy.setVisibility(false);
+      paramGLLittleBoy.clearAnimation();
+      paramGLLittleBoy.clearStatus();
+      this.mDeadBoyList.add(paramGLLittleBoy);
+      return;
     }
-    paramGLLittleBoy.setVisibility(false);
-    paramGLLittleBoy.clearAnimation();
-    paramGLLittleBoy.clearStatus();
-    this.mDeadBoyList.add(paramGLLittleBoy);
+    throw new RuntimeException("状态错误,消失动画的对象是有效对象");
   }
   
   private void adjustLittleBoyRegion(int paramInt1, int paramInt2, int paramInt3)
@@ -113,7 +110,16 @@ public class GLLittleBoyManager
       {
         localGLLittleBoy.mMissed = true;
         float f = localGLLittleBoy.getCurrentDrawRegionSize().centerY();
-        DanceLog.print("changeLittleBoyMissStatus", "[false]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f + " top=" + this.mRecognizeRegion.top);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[false]ID=");
+        localStringBuilder.append(localGLLittleBoy.getDanceData().id);
+        localStringBuilder.append(" index");
+        localStringBuilder.append(localGLLittleBoy.mIndex);
+        localStringBuilder.append(" centerY=");
+        localStringBuilder.append(f);
+        localStringBuilder.append(" top=");
+        localStringBuilder.append(this.mRecognizeRegion.top);
+        DanceLog.print("changeLittleBoyMissStatus", localStringBuilder.toString());
       }
       i += 1;
     }
@@ -123,7 +129,7 @@ public class GLLittleBoyManager
   {
     paramGLLittleBoy = paramGLLittleBoy.getImageRegion();
     int i = (int)(1.0D / paramDouble * 1000.0D);
-    float f = paramGLLittleBoy.height() / 2.0F;
+    paramGLLittleBoy.height();
     this.context.getViewPortRatio();
     paramGLLittleBoy = new TranslateAnimation(paramGLLittleBoy.left, paramGLLittleBoy.left, paramGLLittleBoy.top, 0.0F);
     paramGLLittleBoy.setDuration(i);
@@ -153,9 +159,6 @@ public class GLLittleBoyManager
     this.mHaveMissed = false;
     this.mCurrentScoreLevel = -1;
     Iterator localIterator = this.mLittleBoyList.iterator();
-    label149:
-    label308:
-    label474:
     while (localIterator.hasNext())
     {
       GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
@@ -165,56 +168,79 @@ public class GLLittleBoyManager
       }
       else
       {
-        int i;
         if (localGLLittleBoy.mMatched)
         {
           this.mHaveMatched = true;
-          f = localGLLittleBoy.getCurrentDrawRegionSize().centerY() - this.mRecognizeRegion.top;
-          if (f <= 0.0F)
+          f1 = localGLLittleBoy.getCurrentDrawRegionSize().centerY() - this.mRecognizeRegion.top;
+          if (f1 <= 0.0F)
           {
             localGLLittleBoy.mMissed = true;
             localGLLittleBoy.mNeedMatch = false;
             continue;
           }
-          if ((f >= this.mDistanceX20) && (f <= this.mDistanceX80)) {
-            break label308;
+          float f2 = this.mDistanceX20;
+          int i = 40;
+          if ((f1 >= f2) && (f1 <= this.mDistanceX80))
+          {
+            if (((f1 >= f2) && (f1 <= this.mDistanceX40)) || ((f1 >= this.mDistanceX60) && (f1 <= this.mDistanceX80)))
+            {
+              this.mScoreTotal += 40;
+              localGLLittleBoy.mMatchedStatus = 2;
+            }
+            else
+            {
+              this.mScoreTotal += 50;
+              localGLLittleBoy.mMatchedStatus = 3;
+              i = 50;
+            }
           }
-          this.mScoreTotal += 20;
-          i = 20;
-          localGLLittleBoy.mMatchedStatus = 1;
+          else
+          {
+            this.mScoreTotal += 20;
+            localGLLittleBoy.mMatchedStatus = 1;
+            i = 20;
+          }
           localGLLittleBoy.mDataReport.mScore = i;
           if (localGLLittleBoy.mMatchedStatus > this.mCurrentScoreLevel) {
             this.mCurrentScoreLevel = localGLLittleBoy.mMatchedStatus;
           }
         }
-        RectF localRectF = localGLLittleBoy.getCurrentDrawRegionSize();
-        float f = localRectF.centerY();
-        if (f <= this.mRecognizeRegion.top)
+        Object localObject = localGLLittleBoy.getCurrentDrawRegionSize();
+        float f1 = ((RectF)localObject).centerY();
+        if (f1 <= this.mRecognizeRegion.top)
         {
           localGLLittleBoy.mMissed = true;
           localGLLittleBoy.mNeedMatch = false;
-          DanceLog.print("HaveMatchedItems", "[true]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f + " top=" + this.mRecognizeRegion.top);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[true]ID=");
+          ((StringBuilder)localObject).append(localGLLittleBoy.getDanceData().id);
+          ((StringBuilder)localObject).append(" index");
+          ((StringBuilder)localObject).append(localGLLittleBoy.mIndex);
+          ((StringBuilder)localObject).append(" centerY=");
+          ((StringBuilder)localObject).append(f1);
+          ((StringBuilder)localObject).append(" top=");
+          ((StringBuilder)localObject).append(this.mRecognizeRegion.top);
+          DanceLog.print("HaveMatchedItems", ((StringBuilder)localObject).toString());
         }
-        for (;;)
+        else
         {
-          if (!localGLLittleBoy.mMissed) {
-            break label474;
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[false]ID=");
+          localStringBuilder.append(localGLLittleBoy.getDanceData().id);
+          localStringBuilder.append(" index");
+          localStringBuilder.append(localGLLittleBoy.mIndex);
+          localStringBuilder.append(" centerY=");
+          localStringBuilder.append(f1);
+          localStringBuilder.append(" top=");
+          localStringBuilder.append(this.mRecognizeRegion.top);
+          localStringBuilder.append(" [AccumulationBug]region.top=");
+          localStringBuilder.append(((RectF)localObject).top);
+          DanceLog.print("HaveMatchedItems", localStringBuilder.toString());
+        }
+        if (localGLLittleBoy.mMissed)
+        {
           localGLLittleBoy.mMatchedStatus = 0;
           this.mHaveMissed = true;
-          break;
-          if (((f >= this.mDistanceX20) && (f <= this.mDistanceX40)) || ((f >= this.mDistanceX60) && (f <= this.mDistanceX80)))
-          {
-            this.mScoreTotal += 40;
-            i = 40;
-            localGLLittleBoy.mMatchedStatus = 2;
-            break label149;
-          }
-          this.mScoreTotal += 50;
-          i = 50;
-          localGLLittleBoy.mMatchedStatus = 3;
-          break label149;
-          DanceLog.print("HaveMatchedItems", "[false]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f + " top=" + this.mRecognizeRegion.top + " [AccumulationBug]region.top=" + localRectF.top);
         }
       }
     }
@@ -222,10 +248,10 @@ public class GLLittleBoyManager
   
   private void judgeLittleBoyValidate()
   {
-    Iterator localIterator = this.mLittleBoyList.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.mLittleBoyList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
+      GLLittleBoy localGLLittleBoy = (GLLittleBoy)((Iterator)localObject1).next();
       if (!localGLLittleBoy.mIsValidBoy)
       {
         makeSureBoyIsInvalid(localGLLittleBoy);
@@ -233,8 +259,8 @@ public class GLLittleBoyManager
       }
       else
       {
-        RectF localRectF = localGLLittleBoy.getCurrentDrawRegionSize();
-        float f1 = localRectF.centerY();
+        Object localObject2 = localGLLittleBoy.getCurrentDrawRegionSize();
+        float f1 = ((RectF)localObject2).centerY();
         localGLLittleBoy.resetValidBoyStatus();
         if (f1 >= this.mRecognizeRegion.bottom)
         {
@@ -244,12 +270,32 @@ public class GLLittleBoyManager
         {
           localGLLittleBoy.mMissed = true;
           localGLLittleBoy.mNeedMatch = false;
-          DanceLog.print("judgeLittleBoyValidate", "[true]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f1 + " top=" + this.mRecognizeRegion.top);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[true]ID=");
+          ((StringBuilder)localObject2).append(localGLLittleBoy.getDanceData().id);
+          ((StringBuilder)localObject2).append(" index");
+          ((StringBuilder)localObject2).append(localGLLittleBoy.mIndex);
+          ((StringBuilder)localObject2).append(" centerY=");
+          ((StringBuilder)localObject2).append(f1);
+          ((StringBuilder)localObject2).append(" top=");
+          ((StringBuilder)localObject2).append(this.mRecognizeRegion.top);
+          DanceLog.print("judgeLittleBoyValidate", ((StringBuilder)localObject2).toString());
         }
         else
         {
-          DanceLog.print("judgeLittleBoyValidate", "[false]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f1 + " top=" + this.mRecognizeRegion.top + " [AccumulationBug]region.top=" + localRectF.top);
-          if (localRectF.top <= 0.0F)
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[false]ID=");
+          localStringBuilder.append(localGLLittleBoy.getDanceData().id);
+          localStringBuilder.append(" index");
+          localStringBuilder.append(localGLLittleBoy.mIndex);
+          localStringBuilder.append(" centerY=");
+          localStringBuilder.append(f1);
+          localStringBuilder.append(" top=");
+          localStringBuilder.append(this.mRecognizeRegion.top);
+          localStringBuilder.append(" [AccumulationBug]region.top=");
+          localStringBuilder.append(((RectF)localObject2).top);
+          DanceLog.print("judgeLittleBoyValidate", localStringBuilder.toString());
+          if (((RectF)localObject2).top <= 0.0F)
           {
             float f2 = f1 - this.mRecognizeRegion.top;
             if (f2 < 45.0F)
@@ -259,7 +305,15 @@ public class GLLittleBoyManager
             }
             else
             {
-              throw new RuntimeException("judgeLittleBoyValidate:centerY=" + f1 + " mRecognizeRegion.top" + this.mRecognizeRegion.top + " diff=" + f2 + " 图片过大,设计优化资源");
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("judgeLittleBoyValidate:centerY=");
+              ((StringBuilder)localObject1).append(f1);
+              ((StringBuilder)localObject1).append(" mRecognizeRegion.top");
+              ((StringBuilder)localObject1).append(this.mRecognizeRegion.top);
+              ((StringBuilder)localObject1).append(" diff=");
+              ((StringBuilder)localObject1).append(f2);
+              ((StringBuilder)localObject1).append(" 图片过大,设计优化资源");
+              throw new RuntimeException(((StringBuilder)localObject1).toString());
             }
           }
         }
@@ -269,7 +323,11 @@ public class GLLittleBoyManager
   
   private void makeSureBoyIsInvalid(GLLittleBoy paramGLLittleBoy)
   {
-    if ((!paramGLLittleBoy.mIsValidBoy) && (!paramGLLittleBoy.mMatched) && (!paramGLLittleBoy.mMissed)) {
+    if ((!paramGLLittleBoy.mIsValidBoy) && (!paramGLLittleBoy.mMatched))
+    {
+      if (paramGLLittleBoy.mMissed) {
+        return;
+      }
       throw new RuntimeException("对象不是无效对象,mMatched=false mMissed=false");
     }
   }
@@ -310,7 +368,7 @@ public class GLLittleBoyManager
       generateNewLittleBoy();
       Iterator localIterator = this.mLittleBoyList.iterator();
       GLLittleBoy localGLLittleBoy;
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         localGLLittleBoy = (GLLittleBoy)localIterator.next();
         if (localGLLittleBoy.mIsValidBoy)
@@ -336,12 +394,11 @@ public class GLLittleBoyManager
             }
           }
         }
-        for (;;)
+        else
         {
-          localGLLittleBoy.draw();
-          break;
           makeSureBoyIsInvalid(localGLLittleBoy);
         }
+        localGLLittleBoy.draw();
       }
       localIterator = this.mDeadBoyList.iterator();
       while (localIterator.hasNext())
@@ -435,24 +492,23 @@ public class GLLittleBoyManager
   
   public int getShowStatus()
   {
-    int i;
-    if (this.mHaveMatched)
+    boolean bool = this.mHaveMatched;
+    int i = -1;
+    if (bool)
     {
       i = this.mCurrentScoreLevel;
-      if (this.mCurrentScoreLevel == -1) {
-        throw new RuntimeException("匹配成功，但是状态不对.mHaveMatched=true,mCurrentScoreLevel=" + this.mCurrentScoreLevel);
+      if (i != -1) {
+        return i;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("匹配成功，但是状态不对.mHaveMatched=true,mCurrentScoreLevel=");
+      localStringBuilder.append(this.mCurrentScoreLevel);
+      throw new RuntimeException(localStringBuilder.toString());
     }
-    else
-    {
-      if (!this.mHaveMissed) {
-        break label62;
-      }
+    if (this.mHaveMissed) {
       i = 0;
     }
     return i;
-    label62:
-    return -1;
   }
   
   public int getTotalScore()
@@ -462,11 +518,17 @@ public class GLLittleBoyManager
   
   public void initLittleBoyBeginRegion()
   {
-    Rect localRect = this.context.getSurfaceViewSize();
-    int i = localRect.width();
-    int j = localRect.height();
-    this.mLittleBoyColum[0] = new RectF(DisplayUtils.pixelToRealPixel(65.0F), j, DisplayUtils.pixelToRealPixel(315), DisplayUtils.pixelToRealPixel(400) + j);
-    this.mLittleBoyColum[1] = new RectF(i - DisplayUtils.pixelToRealPixel(315), j, i - DisplayUtils.pixelToRealPixel(65.0F), j + DisplayUtils.pixelToRealPixel(400));
+    Object localObject = this.context.getSurfaceViewSize();
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
+    localObject = this.mLittleBoyColum;
+    float f1 = DisplayUtils.pixelToRealPixel(65.0F);
+    float f2 = j;
+    float f3 = 315;
+    float f4 = DisplayUtils.pixelToRealPixel(f3);
+    float f5 = 400;
+    localObject[0] = new RectF(f1, f2, f4, DisplayUtils.pixelToRealPixel(f5) + j);
+    this.mLittleBoyColum[1] = new RectF(i - DisplayUtils.pixelToRealPixel(f3), f2, i - DisplayUtils.pixelToRealPixel(65.0F), j + DisplayUtils.pixelToRealPixel(f5));
   }
   
   public void initLittleBoyNewRegion(GLLittleBoy paramGLLittleBoy, boolean paramBoolean)
@@ -508,9 +570,10 @@ public class GLLittleBoyManager
       this.context.mapNormalRegion(this.mRecognizeRegion);
     }
     this.mDistanceX20 = (this.mRecognizeRegion.height() / 5.0F);
-    this.mDistanceX40 = (this.mDistanceX20 * 2.0F);
-    this.mDistanceX60 = (this.mDistanceX20 * 3.0F);
-    this.mDistanceX80 = (this.mDistanceX20 * 4.0F);
+    float f = this.mDistanceX20;
+    this.mDistanceX40 = (2.0F * f);
+    this.mDistanceX60 = (3.0F * f);
+    this.mDistanceX80 = (f * 4.0F);
   }
   
   public void updateStartTimestamp(long paramLong)
@@ -522,7 +585,7 @@ public class GLLittleBoyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.theme.NightModeLogic;
 
 public class dnx
   implements View.OnClickListener
@@ -11,13 +12,16 @@ public class dnx
   
   public void onClick(View paramView)
   {
+    ThemeSwitchDlgActivity.a(this.a, true);
+    ThemeSwitchDlgActivity.a(this.a, new NightModeLogic(this.a.getAppRuntime(), this.a));
+    ThemeSwitchDlgActivity.a(this.a).registerModeCallback(new dny(this));
     if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
     {
       ThemeSwitchDlgActivity.a(this.a).dismiss();
       ThemeSwitchDlgActivity.a(this.a, null);
     }
-    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "0", "", "", "");
-    this.a.finish();
+    ThemeSwitchDlgActivity.a(this.a).setupNightTheme();
+    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "1", "", "", "");
   }
 }
 

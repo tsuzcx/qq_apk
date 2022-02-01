@@ -17,42 +17,47 @@ public final class pg
   
   public final boolean b()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.b();
     }
-    return this.a.W;
+    return localpn.W;
   }
   
   public final boolean c()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.c();
     }
-    return this.a.V;
+    return localpn.V;
   }
   
   public final boolean d()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.d();
     }
-    return this.a.Y;
+    return localpn.Y;
   }
   
   public final boolean e()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.e();
     }
-    return this.a.Z;
+    return localpn.Z;
   }
   
   public final boolean f()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.f();
     }
-    return this.a.X;
+    return localpn.X;
   }
   
   public final boolean g()
@@ -62,23 +67,25 @@ public final class pg
   
   public final boolean h()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.h();
     }
-    return this.a.X;
+    return localpn.X;
   }
   
   public final boolean i()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return super.i();
     }
-    return this.a.X;
+    return localpn.X;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pg
  * JD-Core Version:    0.7.0.1
  */

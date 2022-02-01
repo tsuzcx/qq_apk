@@ -1,45 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StatFs;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.DoodleTextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
 
 public class cir
-  implements View.OnClickListener
+  extends Handler
 {
   public cir(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int j = 0;
-    int i = 0;
-    while (i < 6)
+    switch (paramMessage.what)
     {
-      this.a.jdField_b_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
-      i += 1;
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.c();
+      return;
+    case 1: 
+      QQToast.a(this.a, "已达到上限，无法输入", 0).b(this.a.d());
+      return;
+    case 2: 
+      this.a.a.b();
+      sendEmptyMessageDelayed(2, 600L);
+      return;
     }
-    paramView.setBackgroundResource(2130839732);
-    int k = paramView.getId();
-    i = j;
-    for (;;)
+    if (Environment.getExternalStorageState().equals("mounted"))
     {
-      if (i < 6)
+      if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
       {
-        if (this.a.jdField_b_of_type_ArrayOfInt[i] == k)
-        {
-          if (this.a.jdField_a_of_type_Boolean) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setPaintColor(this.a.d[i]);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintColor(this.a.d[i]);
-        }
-      }
-      else {
+        this.a.c();
         return;
       }
-      i += 1;
+      Toast.makeText(this.a.b.a(), 2131562046, 0).show();
+      return;
     }
+    Toast.makeText(this.a.b.a(), 2131562824, 0).show();
   }
 }
 

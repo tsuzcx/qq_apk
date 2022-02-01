@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class fpi
-  extends WtloginObserver
+  extends Handler
 {
-  public fpi(EquipLockWebImpl paramEquipLockWebImpl) {}
+  public fpi(EquipmentLockImpl paramEquipmentLockImpl) {}
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
-    }
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      EquipLockWebImpl.c(this.a, true);
-      if (!EquipmentLockImpl.a().a(EquipLockWebImpl.a(this.a)))
-      {
-        EquipLockWebImpl.a(this.a, false);
-        EquipLockWebImpl.b(this.a, false);
-      }
+    default: 
       return;
     }
-    EquipLockWebImpl.a(this.a, false);
-    EquipLockWebImpl.c(this.a, false);
+    this.a.b();
   }
 }
 

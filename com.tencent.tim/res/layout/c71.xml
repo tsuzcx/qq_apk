@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/idg" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lqn" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:id="@id/ln8" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="14.0dip" android:src="@drawable/hly" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/lqm" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginRight="14.0dip">
+            <ImageView android:id="@id/dy1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/hlz" android:scaleType="centerCrop" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/aiy" android:gravity="center" android:id="@id/lo5" android:background="@drawable/skin_tips_newmessage" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:layout_marginRight="-5.0dip" android:text="" android:singleLine="true" android:layout_alignTop="@id/dy1" android:layout_alignRight="@id/dy1" />
+        </RelativeLayout>
+    </LinearLayout>
+    <include android:id="@id/lpl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" layout="@layout/c7g" />
+    <com.tencent.biz.richframework.part.block.BlockContainer android:id="@id/lex" android:background="@color/al3" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

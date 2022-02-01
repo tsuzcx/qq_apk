@@ -27,7 +27,7 @@ public class BackupKit
   
   public BackupKit(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte, int paramInt, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12642);
+    AppMethodBeat.i(3328);
     this.mDB = paramSQLiteDatabase;
     this.mLastError = null;
     paramSQLiteDatabase = localObject;
@@ -38,17 +38,17 @@ public class BackupKit
     if (paramString == null)
     {
       paramSQLiteDatabase = new IllegalArgumentException();
-      AppMethodBeat.o(12642);
+      AppMethodBeat.o(3328);
       throw paramSQLiteDatabase;
     }
     this.mNativePtr = nativeInit(paramString, paramArrayOfByte, paramInt);
     if (this.mNativePtr == 0L)
     {
       paramSQLiteDatabase = new SQLiteException("Failed initialize backup context.");
-      AppMethodBeat.o(12642);
+      AppMethodBeat.o(3328);
       throw paramSQLiteDatabase;
     }
-    AppMethodBeat.o(12642);
+    AppMethodBeat.o(3328);
   }
   
   private static native void nativeCancel(long paramLong);
@@ -65,10 +65,10 @@ public class BackupKit
   
   protected void finalize()
   {
-    AppMethodBeat.i(12647);
+    AppMethodBeat.i(3333);
     release();
     super.finalize();
-    AppMethodBeat.o(12647);
+    AppMethodBeat.o(3333);
   }
   
   public String lastError()
@@ -78,31 +78,31 @@ public class BackupKit
   
   public void onCancel()
   {
-    AppMethodBeat.i(12645);
+    AppMethodBeat.i(3331);
     if (this.mNativePtr != 0L) {
       nativeCancel(this.mNativePtr);
     }
-    AppMethodBeat.o(12645);
+    AppMethodBeat.o(3331);
   }
   
   public void release()
   {
-    AppMethodBeat.i(12646);
+    AppMethodBeat.i(3332);
     if (this.mNativePtr != 0L)
     {
       nativeFinish(this.mNativePtr);
       this.mNativePtr = 0L;
     }
-    AppMethodBeat.o(12646);
+    AppMethodBeat.o(3332);
   }
   
   public int run()
   {
-    AppMethodBeat.i(12643);
+    AppMethodBeat.i(3329);
     if (this.mNativePtr == 0L)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("BackupKit not initialized.");
-      AppMethodBeat.o(12643);
+      AppMethodBeat.o(3329);
       throw localIllegalStateException;
     }
     long l = this.mDB.acquireNativeConnectionHandle("backup", false, false);
@@ -112,22 +112,22 @@ public class BackupKit
     this.mLastError = nativeLastError(this.mNativePtr);
     nativeFinish(this.mNativePtr);
     this.mNativePtr = 0L;
-    AppMethodBeat.o(12643);
+    AppMethodBeat.o(3329);
     return i;
   }
   
   public int run(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12644);
+    AppMethodBeat.i(3330);
     if (paramCancellationSignal.isCanceled())
     {
-      AppMethodBeat.o(12644);
+      AppMethodBeat.o(3330);
       return 1;
     }
     paramCancellationSignal.setOnCancelListener(this);
     int i = run();
     paramCancellationSignal.setOnCancelListener(null);
-    AppMethodBeat.o(12644);
+    AppMethodBeat.o(3330);
     return i;
   }
   
@@ -138,7 +138,7 @@ public class BackupKit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.repair.BackupKit
  * JD-Core Version:    0.7.0.1
  */

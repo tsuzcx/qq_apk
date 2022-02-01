@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/a73" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:src="@raw/voip_voice_mini_window_icon" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff09bb07" android:id="@id/fct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="00:00" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/aka" android:background="@drawable/azp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/akb" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/akf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lex" android:maxLines="1" android:lines="1" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView android:id="@id/aki" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" />
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/db">
+        <TextView android:textSize="@dimen/t" android:id="@id/akd" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/we" style="@style/or" />
+        <TextView android:textSize="@dimen/t" android:id="@id/ake" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" android:text="@string/z9" android:layout_toRightOf="@id/akd" style="@style/oi" />
+    </RelativeLayout>
+</LinearLayout>

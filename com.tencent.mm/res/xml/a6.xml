@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/eda" android:key="contact_info_qmessage_install" android:layout="@layout/a95" />
-    <Preference android:title="@string/b3x" android:key="contact_info_view_message" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/b0a" android:key="contact_info_qmessage_recv_offline_msg" android:layout="@layout/afi" />
-    <Preference android:title="@string/awy" android:key="contact_info_qmessage_clear_data" android:layout="@layout/afi" />
+    <Preference android:key="contact_info_readerappnews_view" android:layout="@layout/bdi" android:title="@string/fis" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/edg" android:key="contact_info_qmessage_uninstall" android:layout="@layout/aap" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_recv_remind" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bps" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_top" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bi7" />
+    <CheckBoxPreference android:key="contact_info_readerappnews_mute" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bpt" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_readerappnews_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/iww" android:key="contact_info_readerappnews_install" android:layout="@layout/bo3" android:title_color="@color/aks" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ix1" android:key="contact_info_readerappnews_uninstall" android:layout="@layout/bo3" android:title_color="@color/Red" />
     <PreferenceCategory />
 </PreferenceScreen>

@@ -19,9 +19,9 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qqconnect.wtlogin.LoginHelper;
 import com.tencent.smtt.sdk.WebView;
+import gwp;
 import gwq;
 import gwr;
-import gws;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -103,7 +103,7 @@ public class TroopNoticeJsHandler
   
   protected void b(String paramString)
   {
-    new Thread(new gwq(this, paramString)).start();
+    new Thread(new gwp(this, paramString)).start();
   }
   
   public void c(String paramString)
@@ -187,7 +187,7 @@ public class TroopNoticeJsHandler
               ((Map)localObject5).put(str3, ((JSONObject)localObject1).get(str3).toString());
             }
           }
-          localActivity.runOnUiThread(new gwr(this, localWebView, str1, HttpUtil.a(str2, ((StringBuffer)localObject2).toString(), (String)localObject3, paramString, (Map)localObject4, (Map)localObject5)));
+          localActivity.runOnUiThread(new gwq(this, localWebView, str1, HttpUtil.a(str2, ((StringBuffer)localObject2).toString(), (String)localObject3, paramString, (Map)localObject4, (Map)localObject5)));
           return;
         }
       }
@@ -197,7 +197,7 @@ public class TroopNoticeJsHandler
   
   protected void d(String paramString)
   {
-    new Thread(new gws(this, paramString)).start();
+    new Thread(new gwr(this, paramString)).start();
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

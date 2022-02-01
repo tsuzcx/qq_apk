@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.image_picker.imagepicker.view.SquareFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/image" android:background="@drawable/hit" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" android:contentDescription="@string/zof" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@color/b7j" android:padding="@dimen/bsk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/bsd" android:textColor="@color/b7r" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/bsd" android:textColor="@color/b7p" android:id="@id/k9z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
+    </LinearLayout>
+</com.tencent.image_picker.imagepicker.view.SquareFrameLayout>

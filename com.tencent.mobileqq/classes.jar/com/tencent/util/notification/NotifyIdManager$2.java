@@ -1,12 +1,11 @@
 package com.tencent.util.notification;
 
-import bhtk;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
-public class NotifyIdManager$2
+class NotifyIdManager$2
   implements Runnable
 {
-  public NotifyIdManager$2(bhtk parambhtk, QQNotificationManager paramQQNotificationManager) {}
+  NotifyIdManager$2(NotifyIdManager paramNotifyIdManager, QQNotificationManager paramQQNotificationManager) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class NotifyIdManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.notification.NotifyIdManager.2
  * JD-Core Version:    0.7.0.1
  */

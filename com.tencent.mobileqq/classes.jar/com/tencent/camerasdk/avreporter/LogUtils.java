@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class LogUtils
 {
-  private static volatile LogUtils.LogProxy logProxy = null;
+  private static volatile LogUtils.LogProxy logProxy;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -83,7 +83,7 @@ public class LogUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreporter.LogUtils
  * JD-Core Version:    0.7.0.1
  */

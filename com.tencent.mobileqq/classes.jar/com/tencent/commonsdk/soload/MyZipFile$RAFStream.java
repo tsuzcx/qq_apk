@@ -51,17 +51,19 @@ class MyZipFile$RAFStream
   
   public long skip(long paramLong)
   {
-    long l = paramLong;
-    if (paramLong > this.mLength - this.mOffset) {
-      l = this.mLength - this.mOffset;
+    long l2 = this.mLength;
+    long l3 = this.mOffset;
+    long l1 = paramLong;
+    if (paramLong > l2 - l3) {
+      l1 = l2 - l3;
     }
-    this.mOffset += l;
-    return l;
+    this.mOffset += l1;
+    return l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.soload.MyZipFile.RAFStream
  * JD-Core Version:    0.7.0.1
  */

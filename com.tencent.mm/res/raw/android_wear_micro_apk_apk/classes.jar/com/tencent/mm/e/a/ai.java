@@ -3,58 +3,58 @@ package com.tencent.mm.e.a;
 public final class ai
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public com.tencent.mm.d.b Wo;
-  public int Ws;
-  public long Wu;
+  public String XI;
+  public com.tencent.mm.d.b Yj;
+  public int Yn;
+  public long Yp;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new a.a.a.b("Not all required fields were included: Talker");
       }
-      if (this.Wo == null) {
+      if (this.Yj == null) {
         throw new a.a.a.b("Not all required fields were included: VoiceData");
       }
-      if (this.VN != null) {
-        paramVarArgs.d(1, this.VN);
+      if (this.XI != null) {
+        paramVarArgs.d(1, this.XI);
       }
-      paramVarArgs.g(2, this.Wu);
-      if (this.Wo != null) {
-        paramVarArgs.c(3, this.Wo);
+      paramVarArgs.g(2, this.Yp);
+      if (this.Yj != null) {
+        paramVarArgs.c(3, this.Yj);
       }
-      paramVarArgs.aq(4, this.Ws);
+      paramVarArgs.at(4, this.Yn);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VN == null) {
+      if (this.XI == null) {
         break label360;
       }
     }
     label360:
-    for (paramInt = a.a.a.b.b.a.e(1, this.VN) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.XI) + 0;; paramInt = 0)
     {
-      int i = paramInt + a.a.a.a.e(2, this.Wu);
+      int i = paramInt + a.a.a.b.b.a.f(2, this.Yp);
       paramInt = i;
-      if (this.Wo != null) {
-        paramInt = i + a.a.a.a.a(3, this.Wo);
+      if (this.Yj != null) {
+        paramInt = i + a.a.a.b.b.a.b(3, this.Yj);
       }
-      return paramInt + a.a.a.a.ak(4, this.Ws);
+      return paramInt + a.a.a.a.an(4, this.Yn);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VN == null) {
+        if (this.XI == null) {
           throw new a.a.a.b("Not all required fields were included: Talker");
         }
-        if (this.Wo != null) {
+        if (this.Yj != null) {
           break;
         }
         throw new a.a.a.b("Not all required fields were included: VoiceData");
@@ -68,16 +68,16 @@ public final class ai
         default: 
           return -1;
         case 1: 
-          localai.VN = locala.ou();
+          localai.XI = locala.ph();
           return 0;
         case 2: 
-          localai.Wu = locala.ow();
+          localai.Yp = locala.pj();
           return 0;
         case 3: 
-          localai.Wo = locala.ox();
+          localai.Yj = locala.pk();
           return 0;
         }
-        localai.Ws = locala.ot();
+        localai.Yn = locala.pg();
         return 0;
       }
       return -1;

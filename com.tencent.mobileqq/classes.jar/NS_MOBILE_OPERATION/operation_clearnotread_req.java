@@ -11,11 +11,11 @@ public final class operation_clearnotread_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   static Map<String, String> cache_mapEx;
-  public int appid;
-  public Map<Integer, String> busi_param;
-  public int clear_type;
-  public Map<String, String> mapEx;
-  public long uin;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
+  public int clear_type = 0;
+  public Map<String, String> mapEx = null;
+  public long uin = 0L;
   
   static
   {
@@ -49,17 +49,19 @@ public final class operation_clearnotread_req
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.clear_type, 2);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 3);
+    Map localMap = this.busi_param;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 4);
+    localMap = this.mapEx;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_clearnotread_req
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@color/common_bg_color" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:paddingTop="16.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:gravity="center_vertical" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qq_form_item_padding" android:layout_marginRight="@dimen/qq_form_item_padding" android:text="@string/float_window_tip" style="@style/table_biaoti_14sp_808080" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lock_screen_msg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:switchText="@string/lock_screen_msg" formItem:switchChecked="true" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/float_msg_switch" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="single" formItem:switchText="@string/float_setting_msg_switch" formItem:switchChecked="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:paddingTop="16.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_item_marginTop">
+            <TextView android:gravity="center_vertical" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qq_form_item_padding" android:layout_marginRight="@dimen/qq_form_item_padding" android:text="@string/float_setting_tip" style="@style/table_biaoti_14sp_808080" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/friend_notify" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:switchText="@string/personal_msg" formItem:switchChecked="true" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/discuss_notify" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:switchText="@string/discussion_msg" formItem:switchChecked="false" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/troop_notify" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="single" formItem:switchText="@string/group_msg" formItem:switchChecked="false" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

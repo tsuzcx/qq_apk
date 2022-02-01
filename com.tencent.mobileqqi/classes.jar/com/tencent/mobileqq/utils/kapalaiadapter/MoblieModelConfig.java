@@ -28,13 +28,13 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.SAMSUNG.valueOf(a(paramString));
-      int i = her.a[paramString.ordinal()];
+      int i = heq.a[paramString.ordinal()];
       switch (i)
       {
       }
       for (;;)
       {
-        i = her.a[paramString.ordinal()];
+        i = heq.a[paramString.ordinal()];
         return;
         MobileIssueSettings.b = false;
         DualSimManager.jdField_a_of_type_Int = 3;
@@ -59,7 +59,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.HTC.valueOf(a(paramString));
-      switch (her.b[paramString.ordinal()])
+      switch (heq.b[paramString.ordinal()])
       {
       default: 
         return;
@@ -76,7 +76,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.MOTOROLA.valueOf(a(paramString));
-      switch (her.c[paramString.ordinal()])
+      switch (heq.c[paramString.ordinal()])
       {
       default: 
         return;
@@ -98,7 +98,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.HUAWEI.valueOf(a(paramString));
-      switch (her.d[paramString.ordinal()])
+      switch (heq.d[paramString.ordinal()])
       {
       default: 
         return;
@@ -126,7 +126,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.ZTE.valueOf(a(paramString));
-      switch (her.e[paramString.ordinal()])
+      switch (heq.e[paramString.ordinal()])
       {
       default: 
         return;
@@ -169,7 +169,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.MEIZU.valueOf(a(paramString));
-      switch (her.f[paramString.ordinal()])
+      switch (heq.f[paramString.ordinal()])
       {
       default: 
         return;
@@ -197,7 +197,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.ALPS.valueOf(a(paramString));
-      switch (her.g[paramString.ordinal()])
+      switch (heq.g[paramString.ordinal()])
       {
       default: 
         return;
@@ -213,7 +213,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.K_TOUCH.valueOf(a(paramString));
-      switch (her.h[paramString.ordinal()])
+      switch (heq.h[paramString.ordinal()])
       {
       default: 
         return;
@@ -238,7 +238,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.YULONG.valueOf(a(paramString));
-      switch (her.i[paramString.ordinal()])
+      switch (heq.i[paramString.ordinal()])
       {
       default: 
         return;
@@ -263,7 +263,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.LENOVO.valueOf(a(paramString));
-      switch (her.j[paramString.ordinal()])
+      switch (heq.j[paramString.ordinal()])
       {
       default: 
         return;
@@ -288,7 +288,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.VIVO.valueOf(a(paramString));
-      switch (her.k[paramString.ordinal()])
+      switch (heq.k[paramString.ordinal()])
       {
       default: 
         return;
@@ -322,7 +322,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.GIONEE.valueOf(a(paramString));
-      switch (her.l[paramString.ordinal()])
+      switch (heq.l[paramString.ordinal()])
       {
       default: 
         return;
@@ -357,7 +357,7 @@ public class MoblieModelConfig
     try
     {
       paramString = IMoblieModelConfig.ETON.valueOf(a(paramString));
-      switch (her.m[paramString.ordinal()])
+      switch (heq.m[paramString.ordinal()])
       {
       default: 
         return;

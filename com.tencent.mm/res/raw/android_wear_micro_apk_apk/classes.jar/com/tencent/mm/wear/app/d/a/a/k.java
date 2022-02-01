@@ -5,26 +5,28 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.mm.sdk.platformtools.q;
 import com.tencent.mm.wear.a.c.d;
+import com.tencent.mm.wear.app.b.h;
+import java.io.File;
 
 public final class k
   extends a
 {
-  private long adB;
-  private String adC;
-  private int adE;
-  private MediaPlayer adN = new MediaPlayer();
+  private long ahd;
+  private String ahe;
+  private int ahg;
+  private MediaPlayer ahp = new MediaPlayer();
   
   public k()
   {
-    this.adN.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+    this.ahp.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
-        k.this.g(k.a(k.this));
+        k.this.h(k.a(k.this));
         try
         {
           k.b(k.this).release();
-          k.a(k.this, f.adt);
+          k.a(k.this, f.agV);
           return;
         }
         catch (Exception paramAnonymousMediaPlayer)
@@ -33,15 +35,15 @@ public final class k
         }
       }
     });
-    this.adN.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    this.ahp.setOnErrorListener(new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        k.this.g(k.a(k.this));
+        k.this.h(k.a(k.this));
         try
         {
           k.b(k.this).release();
-          k.a(k.this, f.adt);
+          k.a(k.this, f.agV);
           return false;
         }
         catch (Exception paramAnonymousMediaPlayer)
@@ -53,62 +55,63 @@ public final class k
     });
   }
   
-  public final void a(String paramString, long paramLong)
+  public final boolean isPlaying()
   {
-    if (q.D(paramString))
+    return this.ahp.isPlaying();
+  }
+  
+  public final void k(long paramLong)
+  {
+    String str = new File(h.mU(), paramLong + ".amr").getAbsolutePath();
+    if (q.D(str))
     {
       d.a("MicroMsg.VoicePlayer", "file path is null, occur error", new Object[0]);
       return;
     }
-    if (this.adE != f.adt)
+    if (this.ahg != f.agV)
     {
       d.a("MicroMsg.VoicePlayer", "status is stop, occur error", new Object[0]);
       return;
     }
-    this.adB = paramLong;
-    this.adC = paramString;
-    d.c("MicroMsg.VoicePlayer", "startPlay %s", new Object[] { paramString });
-    f(this.adB);
-    this.adN.setAudioStreamType(3);
+    this.ahd = paramLong;
+    this.ahe = str;
+    d.c("MicroMsg.VoicePlayer", "startPlay %s", new Object[] { str });
+    g(this.ahd);
+    this.ahp.setAudioStreamType(3);
     try
     {
-      this.adN.setDataSource(paramString);
-      this.adN.prepare();
-      this.adN.start();
+      this.ahp.setDataSource(str);
+      this.ahp.prepare();
+      this.ahp.start();
       return;
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      d.b("MicroMsg.VoicePlayer", paramString, "filePath=%s", new Object[] { this.adC });
+      d.b("MicroMsg.VoicePlayer", localException, "filePath=%s", new Object[] { this.ahe });
     }
   }
   
-  public final boolean isPlaying()
-  {
-    return this.adN.isPlaying();
-  }
-  
-  public final void mG()
+  public final void ns()
   {
     try
     {
-      this.adN.stop();
-      this.adN.release();
-      this.adE = f.adt;
+      this.ahp.stop();
+      this.ahp.release();
+      this.ahg = f.agV;
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        d.b("MicroMsg.VoicePlayer", localException, "filePath=%s", new Object[] { this.adC });
+        d.b("MicroMsg.VoicePlayer", localException, "filePath=%s", new Object[] { this.ahe });
       }
     }
   }
   
-  public final long mH()
+  public final long nt()
   {
-    return this.adB;
+    return this.ahd;
   }
 }
 

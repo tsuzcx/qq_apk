@@ -7,77 +7,79 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 
 public class NearLifeErrorContent
   extends FrameLayout
 {
+  private TextView Mry;
+  private View Mrz;
   private View contentView;
-  private ListView gMh;
   private Context mContext;
-  private TextView pfN;
-  private View pfO;
+  private ListView nlI;
   
   public NearLifeErrorContent(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(22991);
+    AppMethodBeat.i(26617);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(22991);
+    AppMethodBeat.o(26617);
   }
   
   public NearLifeErrorContent(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(22990);
+    AppMethodBeat.i(26616);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(22990);
+    AppMethodBeat.o(26616);
   }
   
   private void init()
   {
-    AppMethodBeat.i(22992);
-    this.contentView = View.inflate(this.mContext, 2130970339, this);
-    this.pfN = ((TextView)this.contentView.findViewById(2131826479));
-    this.pfO = this.contentView.findViewById(2131826480);
-    AppMethodBeat.o(22992);
+    AppMethodBeat.i(26618);
+    this.contentView = View.inflate(this.mContext, R.i.gmp, this);
+    this.Mry = ((TextView)this.contentView.findViewById(R.h.fPe));
+    this.Mrz = this.contentView.findViewById(R.h.fPm);
+    AppMethodBeat.o(26618);
   }
   
-  public final void AH(int paramInt)
+  public final void aeC(int paramInt)
   {
-    AppMethodBeat.i(22993);
+    AppMethodBeat.i(26619);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(22993);
+      AppMethodBeat.o(26619);
       return;
-      this.pfN.setVisibility(8);
-      this.pfO.setVisibility(8);
-      this.gMh.setVisibility(0);
-      AppMethodBeat.o(22993);
+      this.Mry.setVisibility(8);
+      this.Mrz.setVisibility(8);
+      this.nlI.setVisibility(0);
+      AppMethodBeat.o(26619);
       return;
-      this.pfN.setVisibility(0);
-      this.pfO.setVisibility(8);
-      this.gMh.setVisibility(8);
-      AppMethodBeat.o(22993);
+      this.Mry.setVisibility(0);
+      this.Mrz.setVisibility(8);
+      this.nlI.setVisibility(8);
+      AppMethodBeat.o(26619);
       return;
-      this.pfN.setVisibility(8);
-      this.pfO.setVisibility(0);
-      this.gMh.setVisibility(8);
+      this.Mry.setVisibility(8);
+      this.Mrz.setVisibility(0);
+      this.nlI.setVisibility(8);
     }
   }
   
   public void setListView(ListView paramListView)
   {
-    this.gMh = paramListView;
+    this.nlI = paramListView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.NearLifeErrorContent
  * JD-Core Version:    0.7.0.1
  */

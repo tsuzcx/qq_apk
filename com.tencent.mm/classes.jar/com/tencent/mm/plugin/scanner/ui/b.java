@@ -7,85 +7,88 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.scanner.l.c;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.plugin.scanner.util.s;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
 public final class b
   extends Preference
-  implements x.a
+  implements r.a
 {
-  String ljG;
+  private ImageView OXg;
+  String OXh;
   private Context mContext;
   private View mView;
-  private ImageView qvy;
   f screen;
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(80903);
+    AppMethodBeat.i(51677);
     this.mView = null;
-    this.qvy = null;
-    setLayoutResource(2130970435);
-    x.a(this);
+    this.OXg = null;
+    setLayoutResource(l.g.OKl);
+    r.a(this);
     this.mContext = paramContext;
-    AppMethodBeat.o(80903);
+    AppMethodBeat.o(51677);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(80904);
+    AppMethodBeat.i(51678);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
     paramView = this.mView;
-    AppMethodBeat.o(80904);
+    AppMethodBeat.o(51678);
     return paramView;
   }
   
-  public final void m(String paramString, Bitmap paramBitmap)
+  public final void k(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(80906);
-    if ((!bo.isNullOrNil(paramString)) && (paramString.equals(this.ljG)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    AppMethodBeat.i(51680);
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.OXh)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.qvy.setImageBitmap(paramBitmap);
-      this.qvy.setBackgroundColor(0);
+      this.OXg.setImageBitmap(paramBitmap);
+      this.OXg.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
     }
-    AppMethodBeat.o(80906);
+    AppMethodBeat.o(51680);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(80905);
+    AppMethodBeat.i(51679);
     super.onBindView(paramView);
-    this.qvy = ((ImageView)paramView.findViewById(2131826766));
-    if (!bo.isNullOrNil(this.ljG))
+    this.OXg = ((ImageView)paramView.findViewById(l.f.OIx));
+    if (!Util.isNullOrNil(this.OXh))
     {
-      paramView = x.a(new s(this.ljG));
+      paramView = r.a(new s(this.OXh));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.qvy.setImageBitmap(paramView);
-        this.qvy.setBackgroundColor(0);
-        AppMethodBeat.o(80905);
+        this.OXg.setImageBitmap(paramView);
+        this.OXg.setBackgroundColor(0);
+        AppMethodBeat.o(51679);
         return;
       }
-      this.qvy.setBackgroundColor(this.mContext.getResources().getColor(2131690158));
-      this.qvy.setImageBitmap(null);
+      this.OXg.setBackgroundColor(this.mContext.getResources().getColor(l.c.OHW));
+      this.OXg.setImageBitmap(null);
     }
-    AppMethodBeat.o(80905);
+    AppMethodBeat.o(51679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,8 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5CoreEntry;
+import com.tencent.smtt.export.external.interfaces.IX5CoreMessy;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
@@ -42,18 +44,18 @@ public class WebChromeClient
   
   public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, WebStorage.QuotaUpdater paramQuotaUpdater)
   {
-    AppMethodBeat.i(64689);
+    AppMethodBeat.i(54044);
     paramQuotaUpdater.updateQuota(paramLong2);
-    AppMethodBeat.o(64689);
+    AppMethodBeat.o(54044);
   }
   
   public void onGeolocationPermissionsHidePrompt() {}
   
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    AppMethodBeat.i(64690);
+    AppMethodBeat.i(54045);
     paramGeolocationPermissionsCallback.invoke(paramString, true, true);
-    AppMethodBeat.o(64690);
+    AppMethodBeat.o(54045);
   }
   
   public void onHideCustomView() {}
@@ -87,9 +89,9 @@ public class WebChromeClient
   
   public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, WebStorage.QuotaUpdater paramQuotaUpdater)
   {
-    AppMethodBeat.i(64691);
+    AppMethodBeat.i(54046);
     paramQuotaUpdater.updateQuota(paramLong2);
-    AppMethodBeat.o(64691);
+    AppMethodBeat.o(54046);
   }
   
   public void onReceivedIcon(WebView paramWebView, Bitmap paramBitmap) {}
@@ -111,9 +113,9 @@ public class WebChromeClient
   
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(64692);
+    AppMethodBeat.i(54047);
     paramValueCallback.onReceiveValue(null);
-    AppMethodBeat.o(64692);
+    AppMethodBeat.o(54047);
   }
   
   public static abstract class FileChooserParams
@@ -127,9 +129,9 @@ public class WebChromeClient
     {
       try
       {
-        bz localbz = bz.a();
-        if ((localbz != null) && (localbz.b())) {
-          return localbz.c().a(paramInt, paramIntent);
+        x localx = x.a();
+        if ((localx != null) && (localx.b())) {
+          return TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().parseFileChooserResult(paramInt, paramIntent);
         }
         if (Build.VERSION.SDK_INT >= 21)
         {

@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class AppBrandVideoView$1
   implements View.OnClickListener
@@ -11,14 +13,18 @@ final class AppBrandVideoView$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(126441);
-    this.icX.start();
-    AppMethodBeat.o(126441);
+    AppMethodBeat.i(137698);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.sAg.start();
+    a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(137698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView.1
  * JD-Core Version:    0.7.0.1
  */

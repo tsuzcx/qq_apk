@@ -6,7 +6,14 @@ public class TimeRangeUtil
 {
   public static boolean isInTimeRange(CMTimeRange paramCMTimeRange, long paramLong)
   {
-    return (isValidTimeRange(paramCMTimeRange)) && (paramLong >= 0L) && (paramLong * 1000L >= paramCMTimeRange.getStartUs()) && (paramLong * 1000L < paramCMTimeRange.getEndUs());
+    if ((isValidTimeRange(paramCMTimeRange)) && (paramLong >= 0L))
+    {
+      paramLong *= 1000L;
+      if ((paramLong >= paramCMTimeRange.getStartUs()) && (paramLong <= paramCMTimeRange.getEndUs())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static boolean isValidTimeRange(CMTimeRange paramCMTimeRange)
@@ -19,7 +26,7 @@ public class TimeRangeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.TimeRangeUtil
  * JD-Core Version:    0.7.0.1
  */

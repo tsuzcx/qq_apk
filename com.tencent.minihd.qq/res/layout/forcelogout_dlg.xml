@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/force_logout_bg" android:layout_width="300.0dip" android:layout_height="wrap_content" android:minWidth="300.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="#ff404040" android:gravity="center_vertical" android:id="@id/tv1" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="38.0dip" android:text="@string/force_logout_title" />
+    <View android:background="#ffdddddd" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textColor="#ff656565" android:id="@id/tv2" android:paddingLeft="10.0dip" android:paddingTop="14.0dip" android:paddingRight="10.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/force_logout" />
+    <Button android:textSize="15.0sp" android:textColor="#ff404040" android:gravity="center" android:id="@id/btn1" android:background="@drawable/dialogue_button" android:layout_width="128.0dip" android:layout_height="wrap_content" android:text="@string/button_ok" />
+    <LinearLayout android:gravity="center_vertical" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

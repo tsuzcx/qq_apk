@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
 
-public class DiyPendantFetcher$1
+class DiyPendantFetcher$1
   implements Runnable
 {
-  public DiyPendantFetcher$1(akmx paramakmx) {}
+  DiyPendantFetcher$1(DiyPendantFetcher paramDiyPendantFetcher) {}
   
   public void run()
   {

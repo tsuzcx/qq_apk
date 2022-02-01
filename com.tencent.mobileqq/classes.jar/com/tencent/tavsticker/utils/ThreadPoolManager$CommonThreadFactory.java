@@ -12,12 +12,19 @@ class ThreadPoolManager$CommonThreadFactory
   
   public ThreadPoolManager$CommonThreadFactory(String paramString)
   {
-    this.threadNamePrefix = (paramString + "-");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    this.threadNamePrefix = localStringBuilder.toString();
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.group, paramRunnable, this.threadNamePrefix + this.threadNumber.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.group;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.threadNamePrefix);
+    localStringBuilder.append(this.threadNumber.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -29,7 +36,7 @@ class ThreadPoolManager$CommonThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.ThreadPoolManager.CommonThreadFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -56,19 +56,21 @@ class TAVMovieFilterProxy$TAVMovieFilterEffect
   
   public void release()
   {
-    if (this.mEffect != null)
+    Object localObject = this.mEffect;
+    if (localObject != null)
     {
-      this.mEffect.release();
+      ((BaseEffect)localObject).release();
       this.mEffect = null;
     }
-    if ((this.cacheTextureInfo != null) && (!this.cacheTextureInfo.isReleased())) {
+    localObject = this.cacheTextureInfo;
+    if ((localObject != null) && (!((TextureInfo)localObject).isReleased())) {
       this.cacheTextureInfo.release();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.filter.TAVMovieFilterProxy.TAVMovieFilterEffect
  * JD-Core Version:    0.7.0.1
  */

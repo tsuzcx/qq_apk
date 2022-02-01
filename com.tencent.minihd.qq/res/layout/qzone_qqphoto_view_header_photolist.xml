@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/layout_picviewer_header" android:background="@drawable/picture_viewer_footer_photolist" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textColor="@color/qzone_pictureviewer_text_color" android:gravity="center" android:id="@id/pictureviewer_left_back" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" android:layout_marginLeft="8.0dip" android:text="@string/back" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/white" android:gravity="center" android:id="@id/pictureviewer_page_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/pictureviewer_right_option" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_picviewer_header_option_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

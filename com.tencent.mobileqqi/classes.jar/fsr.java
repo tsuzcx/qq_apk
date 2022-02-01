@@ -3,16 +3,11 @@ import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
 class fsr
   implements Runnable
 {
-  fsr(fsp paramfsp, boolean paramBoolean) {}
+  fsr(fso paramfso) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      VerifyPwdActivity.a(this.jdField_a_of_type_Fsp.a);
-      return;
-    }
-    VerifyPwdActivity.b(this.jdField_a_of_type_Fsp.a);
+    VerifyPwdActivity.c(this.a.a);
   }
 }
 

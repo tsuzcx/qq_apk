@@ -17,14 +17,14 @@ public class LogPrinter
   
   public void println(String paramString)
   {
-    AppMethodBeat.i(12724);
+    AppMethodBeat.i(3410);
     Log.println(this.mPriority, this.mTag, paramString);
-    AppMethodBeat.o(12724);
+    AppMethodBeat.o(3410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.support.LogPrinter
  * JD-Core Version:    0.7.0.1
  */

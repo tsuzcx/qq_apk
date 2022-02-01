@@ -5,25 +5,25 @@ import java.util.Arrays;
 public final class dm
   extends dq<dm>
 {
-  public byte[] QT = dz.RO;
-  public String QU = "";
-  public double QV = 0.0D;
-  public float QW = 0.0F;
-  public long QX = 0L;
-  public int QY = 0;
-  public int QZ = 0;
-  public boolean Ra = false;
-  public dk[] Rb = dk.jO();
-  public dl[] Rc = dl.jP();
-  public String[] Rd = dz.RM;
-  public long[] Re = dz.RI;
-  public float[] Rf = dz.RJ;
-  public long Rg = 0L;
+  public byte[] SI = dz.TD;
+  public String SJ = "";
+  public double SK = 0.0D;
+  public float SL = 0.0F;
+  public long SM = 0L;
+  public int SN = 0;
+  public int SO = 0;
+  public boolean SP = false;
+  public dk[] SQ = dk.jX();
+  public dl[] SR = dl.jY();
+  public String[] SS = dz.TB;
+  public long[] ST = dz.Tx;
+  public float[] SU = dz.Ty;
+  public long SV = 0L;
   
   public dm()
   {
-    this.Rr = null;
-    this.RB = -1;
+    this.Tg = null;
+    this.Tq = -1;
   }
   
   public final void a(do paramdo)
@@ -31,55 +31,55 @@ public final class dm
     int i = 1;
     int j = 0;
     Object localObject;
-    if (!Arrays.equals(this.QT, dz.RO))
+    if (!Arrays.equals(this.SI, dz.TD))
     {
-      localObject = this.QT;
-      paramdo.ac(1, 2);
-      paramdo.bx(localObject.length);
+      localObject = this.SI;
+      paramdo.ae(1, 2);
+      paramdo.bR(localObject.length);
       paramdo.d((byte[])localObject);
     }
-    if ((this.QU != null) && (!this.QU.equals(""))) {
-      paramdo.b(2, this.QU);
+    if ((this.SJ != null) && (!this.SJ.equals(""))) {
+      paramdo.b(2, this.SJ);
     }
-    if (Double.doubleToLongBits(this.QV) != Double.doubleToLongBits(0.0D))
+    if (Double.doubleToLongBits(this.SK) != Double.doubleToLongBits(0.0D))
     {
-      double d = this.QV;
-      paramdo.ac(3, 1);
-      paramdo.e(Double.doubleToLongBits(d));
+      double d = this.SK;
+      paramdo.ae(3, 1);
+      paramdo.f(Double.doubleToLongBits(d));
     }
-    if (Float.floatToIntBits(this.QW) != Float.floatToIntBits(0.0F)) {
-      paramdo.b(4, this.QW);
+    if (Float.floatToIntBits(this.SL) != Float.floatToIntBits(0.0F)) {
+      paramdo.c(4, this.SL);
     }
-    if (this.QX != 0L) {
-      paramdo.a(5, this.QX);
+    if (this.SM != 0L) {
+      paramdo.a(5, this.SM);
     }
-    if (this.QY != 0) {
-      paramdo.aa(6, this.QY);
+    if (this.SN != 0) {
+      paramdo.ac(6, this.SN);
     }
-    if (this.QZ != 0)
+    if (this.SO != 0)
     {
-      int k = this.QZ;
-      paramdo.ac(7, 0);
-      paramdo.bx(do.bz(k));
+      int k = this.SO;
+      paramdo.ae(7, 0);
+      paramdo.bR(do.bT(k));
     }
-    if (this.Ra)
+    if (this.SP)
     {
-      boolean bool = this.Ra;
-      paramdo.ac(8, 0);
+      boolean bool = this.SP;
+      paramdo.ae(8, 0);
       if (!bool) {
         break label283;
       }
     }
     for (;;)
     {
-      paramdo.bv(i);
-      if ((this.Rb == null) || (this.Rb.length <= 0)) {
+      paramdo.bP(i);
+      if ((this.SQ == null) || (this.SQ.length <= 0)) {
         break;
       }
       i = 0;
-      while (i < this.Rb.length)
+      while (i < this.SQ.length)
       {
-        localObject = this.Rb[i];
+        localObject = this.SQ[i];
         if (localObject != null) {
           paramdo.a(9, (dw)localObject);
         }
@@ -88,48 +88,48 @@ public final class dm
       label283:
       i = 0;
     }
-    if ((this.Rc != null) && (this.Rc.length > 0))
+    if ((this.SR != null) && (this.SR.length > 0))
     {
       i = 0;
-      while (i < this.Rc.length)
+      while (i < this.SR.length)
       {
-        localObject = this.Rc[i];
+        localObject = this.SR[i];
         if (localObject != null) {
           paramdo.a(10, (dw)localObject);
         }
         i += 1;
       }
     }
-    if ((this.Rd != null) && (this.Rd.length > 0))
+    if ((this.SS != null) && (this.SS.length > 0))
     {
       i = 0;
-      while (i < this.Rd.length)
+      while (i < this.SS.length)
       {
-        localObject = this.Rd[i];
+        localObject = this.SS[i];
         if (localObject != null) {
           paramdo.b(11, (String)localObject);
         }
         i += 1;
       }
     }
-    if ((this.Re != null) && (this.Re.length > 0))
+    if ((this.ST != null) && (this.ST.length > 0))
     {
       i = 0;
-      while (i < this.Re.length)
+      while (i < this.ST.length)
       {
-        paramdo.a(12, this.Re[i]);
+        paramdo.a(12, this.ST[i]);
         i += 1;
       }
     }
-    if (this.Rg != 0L) {
-      paramdo.a(13, this.Rg);
+    if (this.SV != 0L) {
+      paramdo.a(13, this.SV);
     }
-    if ((this.Rf != null) && (this.Rf.length > 0))
+    if ((this.SU != null) && (this.SU.length > 0))
     {
       i = j;
-      while (i < this.Rf.length)
+      while (i < this.SU.length)
       {
-        paramdo.b(14, this.Rf[i]);
+        paramdo.c(14, this.SU[i]);
         i += 1;
       }
     }
@@ -146,67 +146,67 @@ public final class dm
         return false;
       }
       paramObject = (dm)paramObject;
-      if (!Arrays.equals(this.QT, paramObject.QT)) {
+      if (!Arrays.equals(this.SI, paramObject.SI)) {
         return false;
       }
-      if (this.QU == null)
+      if (this.SJ == null)
       {
-        if (paramObject.QU != null) {
+        if (paramObject.SJ != null) {
           return false;
         }
       }
-      else if (!this.QU.equals(paramObject.QU)) {
+      else if (!this.SJ.equals(paramObject.SJ)) {
         return false;
       }
-      if (Double.doubleToLongBits(this.QV) != Double.doubleToLongBits(paramObject.QV)) {
+      if (Double.doubleToLongBits(this.SK) != Double.doubleToLongBits(paramObject.SK)) {
         return false;
       }
-      if (Float.floatToIntBits(this.QW) != Float.floatToIntBits(paramObject.QW)) {
+      if (Float.floatToIntBits(this.SL) != Float.floatToIntBits(paramObject.SL)) {
         return false;
       }
-      if (this.QX != paramObject.QX) {
+      if (this.SM != paramObject.SM) {
         return false;
       }
-      if (this.QY != paramObject.QY) {
+      if (this.SN != paramObject.SN) {
         return false;
       }
-      if (this.QZ != paramObject.QZ) {
+      if (this.SO != paramObject.SO) {
         return false;
       }
-      if (this.Ra != paramObject.Ra) {
+      if (this.SP != paramObject.SP) {
         return false;
       }
-      if (!du.equals(this.Rb, paramObject.Rb)) {
+      if (!du.equals(this.SQ, paramObject.SQ)) {
         return false;
       }
-      if (!du.equals(this.Rc, paramObject.Rc)) {
+      if (!du.equals(this.SR, paramObject.SR)) {
         return false;
       }
-      if (!du.equals(this.Rd, paramObject.Rd)) {
+      if (!du.equals(this.SS, paramObject.SS)) {
         return false;
       }
-      if (!du.equals(this.Re, paramObject.Re)) {
+      if (!du.equals(this.ST, paramObject.ST)) {
         return false;
       }
-      if (!du.equals(this.Rf, paramObject.Rf)) {
+      if (!du.equals(this.SU, paramObject.SU)) {
         return false;
       }
-      if (this.Rg != paramObject.Rg) {
+      if (this.SV != paramObject.SV) {
         return false;
       }
-      if ((this.Rr != null) && (!this.Rr.isEmpty())) {
+      if ((this.Tg != null) && (!this.Tg.isEmpty())) {
         break;
       }
-    } while ((paramObject.Rr == null) || (paramObject.Rr.isEmpty()));
+    } while ((paramObject.Tg == null) || (paramObject.Tg.isEmpty()));
     return false;
-    return this.Rr.equals(paramObject.Rr);
+    return this.Tg.equals(paramObject.Tg);
   }
   
   public final int hashCode()
   {
     int m = 0;
     int n = getClass().getName().hashCode();
-    int i1 = Arrays.hashCode(this.QT);
+    int i1 = Arrays.hashCode(this.SI);
     int i;
     int i2;
     int i3;
@@ -221,104 +221,104 @@ public final class dm
     int i10;
     int i11;
     int i12;
-    if (this.QU == null)
+    if (this.SJ == null)
     {
       i = 0;
-      long l = Double.doubleToLongBits(this.QV);
+      long l = Double.doubleToLongBits(this.SK);
       i2 = (int)(l ^ l >>> 32);
-      i3 = Float.floatToIntBits(this.QW);
-      i4 = (int)(this.QX ^ this.QX >>> 32);
-      i5 = this.QY;
-      i6 = this.QZ;
-      if (!this.Ra) {
+      i3 = Float.floatToIntBits(this.SL);
+      i4 = (int)(this.SM ^ this.SM >>> 32);
+      i5 = this.SN;
+      i6 = this.SO;
+      if (!this.SP) {
         break label288;
       }
       j = 1231;
-      i7 = du.hashCode(this.Rb);
-      i8 = du.hashCode(this.Rc);
-      i9 = du.hashCode(this.Rd);
-      i10 = du.hashCode(this.Re);
-      i11 = du.hashCode(this.Rf);
-      i12 = (int)(this.Rg ^ this.Rg >>> 32);
+      i7 = du.hashCode(this.SQ);
+      i8 = du.hashCode(this.SR);
+      i9 = du.hashCode(this.SS);
+      i10 = du.hashCode(this.ST);
+      i11 = du.hashCode(this.SU);
+      i12 = (int)(this.SV ^ this.SV >>> 32);
       k = m;
-      if (this.Rr != null) {
-        if (!this.Rr.isEmpty()) {
+      if (this.Tg != null) {
+        if (!this.Tg.isEmpty()) {
           break label295;
         }
       }
     }
     label288:
     label295:
-    for (int k = m;; k = this.Rr.hashCode())
+    for (int k = m;; k = this.Tg.hashCode())
     {
       return (((((((j + ((((((i + ((n + 527) * 31 + i1) * 31) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31) * 31 + i7) * 31 + i8) * 31 + i9) * 31 + i10) * 31 + i11) * 31 + i12) * 31 + k;
-      i = this.QU.hashCode();
+      i = this.SJ.hashCode();
       break;
       j = 1237;
       break label100;
     }
   }
   
-  protected final int jN()
+  protected final int jW()
   {
-    int j = super.jN();
+    int j = super.jW();
     int i = j;
     Object localObject;
-    if (!Arrays.equals(this.QT, dz.RO))
+    if (!Arrays.equals(this.SI, dz.TD))
     {
-      localObject = this.QT;
-      i = do.bw(1);
-      k = do.by(localObject.length);
+      localObject = this.SI;
+      i = do.bQ(1);
+      k = do.bS(localObject.length);
       i = j + (localObject.length + k + i);
     }
     j = i;
-    if (this.QU != null)
+    if (this.SJ != null)
     {
       j = i;
-      if (!this.QU.equals("")) {
-        j = i + do.c(2, this.QU);
+      if (!this.SJ.equals("")) {
+        j = i + do.c(2, this.SJ);
       }
     }
     i = j;
-    if (Double.doubleToLongBits(this.QV) != Double.doubleToLongBits(0.0D)) {
-      i = j + (do.bw(3) + 8);
+    if (Double.doubleToLongBits(this.SK) != Double.doubleToLongBits(0.0D)) {
+      i = j + (do.bQ(3) + 8);
     }
     j = i;
-    if (Float.floatToIntBits(this.QW) != Float.floatToIntBits(0.0F)) {
-      j = i + (do.bw(4) + 4);
+    if (Float.floatToIntBits(this.SL) != Float.floatToIntBits(0.0F)) {
+      j = i + (do.bQ(4) + 4);
     }
     int k = j;
-    if (this.QX != 0L) {
-      k = j + do.b(5, this.QX);
+    if (this.SM != 0L) {
+      k = j + do.b(5, this.SM);
     }
     i = k;
-    if (this.QY != 0) {
-      i = k + do.ab(6, this.QY);
+    if (this.SN != 0) {
+      i = k + do.ad(6, this.SN);
     }
     j = i;
-    if (this.QZ != 0)
+    if (this.SO != 0)
     {
-      j = this.QZ;
-      k = do.bw(7);
-      j = i + (do.by(do.bz(j)) + k);
+      j = this.SO;
+      k = do.bQ(7);
+      j = i + (do.bS(do.bT(j)) + k);
     }
     i = j;
-    if (this.Ra) {
-      i = j + (do.bw(8) + 1);
+    if (this.SP) {
+      i = j + (do.bQ(8) + 1);
     }
     j = i;
-    if (this.Rb != null)
+    if (this.SQ != null)
     {
       j = i;
-      if (this.Rb.length > 0)
+      if (this.SQ.length > 0)
       {
         j = 0;
-        while (j < this.Rb.length)
+        while (j < this.SQ.length)
         {
-          localObject = this.Rb[j];
+          localObject = this.SQ[j];
           k = i;
           if (localObject != null) {
-            k = i + do.b(9, (dw)localObject);
+            k = i + do.c(9, (dw)localObject);
           }
           j += 1;
           i = k;
@@ -327,20 +327,20 @@ public final class dm
       }
     }
     i = j;
-    if (this.Rc != null)
+    if (this.SR != null)
     {
       i = j;
-      if (this.Rc.length > 0)
+      if (this.SR.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.Rc.length)
+        while (j < this.SR.length)
         {
-          localObject = this.Rc[j];
+          localObject = this.SR[j];
           k = i;
           if (localObject != null) {
-            k = i + do.b(10, (dw)localObject);
+            k = i + do.c(10, (dw)localObject);
           }
           j += 1;
           i = k;
@@ -348,17 +348,17 @@ public final class dm
       }
     }
     j = i;
-    if (this.Rd != null)
+    if (this.SS != null)
     {
       j = i;
-      if (this.Rd.length > 0)
+      if (this.SS.length > 0)
       {
         j = 0;
         k = 0;
         int n;
-        for (int m = 0; j < this.Rd.length; m = n)
+        for (int m = 0; j < this.SS.length; m = n)
         {
-          localObject = this.Rd[j];
+          localObject = this.SS[j];
           int i1 = k;
           n = m;
           if (localObject != null)
@@ -373,31 +373,31 @@ public final class dm
       }
     }
     i = j;
-    if (this.Re != null)
+    if (this.ST != null)
     {
       i = j;
-      if (this.Re.length > 0)
+      if (this.ST.length > 0)
       {
         i = 0;
         k = 0;
-        while (i < this.Re.length)
+        while (i < this.ST.length)
         {
-          k += do.c(this.Re[i]);
+          k += do.e(this.ST[i]);
           i += 1;
         }
-        i = j + k + this.Re.length * 1;
+        i = j + k + this.ST.length * 1;
       }
     }
     j = i;
-    if (this.Rg != 0L) {
-      j = i + do.b(13, this.Rg);
+    if (this.SV != 0L) {
+      j = i + do.b(13, this.SV);
     }
     i = j;
-    if (this.Rf != null)
+    if (this.SU != null)
     {
       i = j;
-      if (this.Rf.length > 0) {
-        i = j + this.Rf.length * 4 + this.Rf.length * 1;
+      if (this.SU.length > 0) {
+        i = j + this.SU.length * 4 + this.SU.length * 1;
       }
     }
     return i;

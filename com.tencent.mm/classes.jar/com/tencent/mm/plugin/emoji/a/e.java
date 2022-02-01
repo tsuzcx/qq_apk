@@ -5,113 +5,140 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.o;
-import com.tencent.mm.plugin.emoji.e.g;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.emoji.h.c;
+import com.tencent.mm.plugin.emoji.h.d;
+import com.tencent.mm.plugin.emoji.h.e;
+import com.tencent.mm.plugin.emoji.h.f;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.model.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.util.List;
 
 public final class e
   extends ArrayAdapter<EmojiGroupInfo>
 {
-  private static final int lec = 2130969381;
+  private static final int xGE = h.f.emoji_sort_item;
   private final String TAG;
-  private int led;
-  public List<EmojiGroupInfo> lee;
   private Context mContext;
+  private int xGF;
+  public List<EmojiGroupInfo> xGG;
   
   public e(Context paramContext, List<EmojiGroupInfo> paramList)
   {
-    super(paramContext, lec, paramList);
-    AppMethodBeat.i(52740);
+    super(paramContext, xGE, paramList);
+    AppMethodBeat.i(108316);
     this.TAG = "MicroMsg.emoji.EmojiSortAdapter";
-    this.led = paramContext.getResources().getDimensionPixelSize(2131428372);
+    this.xGF = paramContext.getResources().getDimensionPixelSize(h.c.emoji_item_list_height);
     this.mContext = paramContext;
-    this.lee = paramList;
-    AppMethodBeat.o(52740);
+    this.xGG = paramList;
+    AppMethodBeat.o(108316);
   }
   
-  public final void bkF()
+  public final void dyk()
   {
-    AppMethodBeat.i(52741);
-    if (this.lee == null)
+    AppMethodBeat.i(108317);
+    if (this.xGG == null)
     {
-      AppMethodBeat.o(52741);
+      AppMethodBeat.o(108317);
       return;
     }
-    int j = this.lee.size();
+    int j = this.xGG.size();
     int i = 0;
     while (i < j)
     {
-      ((EmojiGroupInfo)this.lee.get(i)).field_idx = i;
+      ((EmojiGroupInfo)this.xGG.get(i)).field_idx = i;
       i += 1;
     }
-    i.getEmojiStorageMgr().yNo.eQ(this.lee);
-    EmojiGroupInfo localEmojiGroupInfo = i.getEmojiStorageMgr().yNo.cg(EmojiGroupInfo.yPe, false);
-    localEmojiGroupInfo.field_sort = (this.lee.size() + 2);
-    i.getEmojiStorageMgr();
-    if (!com.tencent.mm.storage.emotion.a.dyZ())
+    s.getEmojiStorageMgr().adjv.ne(this.xGG);
+    EmojiGroupInfo localEmojiGroupInfo = s.getEmojiStorageMgr().adjv.ec(EmojiGroupInfo.aklE, false);
+    localEmojiGroupInfo.field_sort = (this.xGG.size() + 2);
+    s.getEmojiStorageMgr();
+    if (!com.tencent.mm.storage.emotion.c.jda())
     {
-      com.tencent.mm.storage.emotion.a locala = i.getEmojiStorageMgr().yNo;
+      com.tencent.mm.storage.emotion.c localc = s.getEmojiStorageMgr().adjv;
       if (localEmojiGroupInfo != null)
       {
-        ab.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks updateEmojiGroupInfo: packname: %s, lasttime: %d, sort: %d", new Object[] { localEmojiGroupInfo.field_packName, Long.valueOf(localEmojiGroupInfo.field_lastUseTime), Integer.valueOf(localEmojiGroupInfo.field_sort) });
-        locala.replace(localEmojiGroupInfo);
-        locala.doNotify("event_update_group", 0, bo.dtY().toString());
+        Log.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks updateEmojiGroupInfo: packname: %s, lasttime: %d, sort: %d", new Object[] { localEmojiGroupInfo.field_packName, Long.valueOf(localEmojiGroupInfo.field_lastUseTime), Integer.valueOf(localEmojiGroupInfo.field_sort) });
+        localc.replace(localEmojiGroupInfo);
+        localc.doNotify("event_update_group", 0, Util.getStack().toString());
       }
     }
-    AppMethodBeat.o(52741);
+    AppMethodBeat.o(108317);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(52742);
+    AppMethodBeat.i(108318);
     EmojiGroupInfo localEmojiGroupInfo;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(lec, null);
-      paramViewGroup = new e.a(this, paramView);
+      paramView = LayoutInflater.from(this.mContext).inflate(xGE, null);
+      paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
       localEmojiGroupInfo = (EmojiGroupInfo)getItem(paramInt);
-      if (!com.tencent.mm.plugin.emoji.h.a.b(localEmojiGroupInfo)) {
-        break label132;
+      if (!com.tencent.mm.plugin.emoji.g.c.a(localEmojiGroupInfo)) {
+        break label115;
       }
-      paramViewGroup.gpL.setText(2131299259);
-      label73:
-      if (!com.tencent.mm.plugin.emoji.h.a.b(localEmojiGroupInfo)) {
-        break label147;
+      paramViewGroup.pJJ.setText(h.h.emoji_store_tuzi_title);
+      label74:
+      if (!com.tencent.mm.plugin.emoji.g.c.a(localEmojiGroupInfo)) {
+        break label130;
       }
-      paramViewGroup.ivs.setImageResource(2130839105);
+      paramViewGroup.ttT.setImageResource(h.d.icon_002_cover);
     }
     for (;;)
     {
-      if (paramInt + 1 == getCount()) {
-        paramViewGroup.lef.setBackgroundResource(2130838447);
-      }
       paramView.setVisibility(0);
-      AppMethodBeat.o(52742);
+      AppMethodBeat.o(108318);
       return paramView;
-      paramViewGroup = (e.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
-      label132:
-      paramViewGroup.gpL.setText(localEmojiGroupInfo.field_packName);
-      break label73;
-      label147:
-      o.ahG().a(localEmojiGroupInfo.field_packIconUrl, paramViewGroup.ivs, g.dK(localEmojiGroupInfo.field_productID, localEmojiGroupInfo.field_packIconUrl));
+      label115:
+      paramViewGroup.pJJ.setText(localEmojiGroupInfo.field_packName);
+      break label74;
+      label130:
+      r.bKe().a(localEmojiGroupInfo.field_packIconUrl, paramViewGroup.ttT, com.tencent.mm.plugin.emoji.mgr.e.gJ(localEmojiGroupInfo.field_productID, localEmojiGroupInfo.field_packIconUrl));
+    }
+  }
+  
+  final class a
+  {
+    TextView pJJ;
+    ImageView ttT;
+    View xGH;
+    ImageView xGI;
+    
+    public a(View paramView)
+    {
+      AppMethodBeat.i(108315);
+      this.xGI = ((ImageView)paramView.findViewById(h.e.emoji_store_manager_list_item_updonw));
+      this.ttT = ((ImageView)paramView.findViewById(h.e.emoji_store_manager_list_item_icon));
+      this.pJJ = ((TextView)paramView.findViewById(h.e.emoji_store_manager_list_item_title));
+      this.xGH = paramView.findViewById(h.e.emoji_item_container);
+      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.height = e.a(e.this);
+        paramView.setLayoutParams(localLayoutParams);
+      }
+      AppMethodBeat.o(108315);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.e
  * JD-Core Version:    0.7.0.1
  */

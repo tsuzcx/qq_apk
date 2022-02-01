@@ -1,51 +1,17 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.security.cert.X509Certificate;
-import java.util.List;
-import javax.net.ssl.SSLPeerUnverifiedException;
-
-final class hz
-  extends il
+public class hz<T>
 {
-  private final Object a;
-  private final Method b;
+  public final T d;
   
-  hz(Object paramObject, Method paramMethod)
+  hz(T paramT)
   {
-    this.a = paramObject;
-    this.b = paramMethod;
-  }
-  
-  public List a(List paramList, String paramString)
-  {
-    try
+    if (paramT != null)
     {
-      paramList = (X509Certificate[])paramList.toArray(new X509Certificate[paramList.size()]);
-      paramList = (List)this.b.invoke(this.a, new Object[] { paramList, "RSA", paramString });
-      return paramList;
+      this.d = paramT;
+      return;
     }
-    catch (InvocationTargetException paramList)
-    {
-      paramString = new SSLPeerUnverifiedException(paramList.getMessage());
-      paramString.initCause(paramList);
-      throw paramString;
-    }
-    catch (IllegalAccessException paramList)
-    {
-      throw new AssertionError(paramList);
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return paramObject instanceof hz;
-  }
-  
-  public int hashCode()
-  {
-    return 0;
+    throw new IllegalArgumentException("Wrapped Object can not be null.");
   }
 }
 

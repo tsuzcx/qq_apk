@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/lxo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="102.0dip">
+        <FrameLayout android:layout_width="40.0dip" android:layout_height="fill_parent">
+            <ImageView android:id="@id/lc6" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="30.0dip" android:src="@drawable/hue" />
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/lkf" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.location.ui.EdgeTransparentView android:id="@id/ec3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="58.0dip" android:layout_marginRight="58.0dip" app:edge_position="i_b" app:edge_width="40.0dip">
+                <com.tencent.widget.HorizontalListView android:layout_gravity="center_horizontal" android:id="@id/n9g" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginTop="23.5dip" android:listSelector="@color/ajr" android:overScrollMode="never" />
+            </com.tencent.mobileqq.location.ui.EdgeTransparentView>
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:layout_gravity="bottom|center" android:id="@id/ma3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" />
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="right" android:layout_width="40.0dip" android:layout_height="fill_parent">
+            <ImageView android:id="@id/lsl" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/huf" android:layout_weight="1.0" />
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

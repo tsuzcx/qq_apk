@@ -16,25 +16,24 @@ abstract class SafeRunnable
   {
     try
     {
-      if (!this.mGifDrawable.isRecycled()) {
+      if (!this.mGifDrawable.isRecycled())
+      {
         doWork();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      Thread.UncaughtExceptionHandler localUncaughtExceptionHandler;
-      do
-      {
-        localUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-      } while (localUncaughtExceptionHandler == null);
-      localUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), localThrowable);
+      Thread.UncaughtExceptionHandler localUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+      if (localUncaughtExceptionHandler != null) {
+        localUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.gif.SafeRunnable
  * JD-Core Version:    0.7.0.1
  */

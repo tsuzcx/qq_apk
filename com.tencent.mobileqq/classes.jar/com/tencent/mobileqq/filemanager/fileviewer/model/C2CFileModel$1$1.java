@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import arje;
-import arjf;
-import arko;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class C2CFileModel$1$1
-  implements Runnable
+class C2CFileModel$1$1
+  implements FMDialogUtil.FMDialogInterface
 {
-  public C2CFileModel$1$1(arjf paramarjf) {}
+  C2CFileModel$1$1(C2CFileModel.1 param1) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.f();
-    }
+    this.a.a.h();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel.1.1
  * JD-Core Version:    0.7.0.1
  */

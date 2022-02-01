@@ -16,7 +16,6 @@ public class tlv_t401
     }
     paramArrayOfByte = new byte[arrayOfByte.length];
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 0, arrayOfByte.length);
-    int i = arrayOfByte.length;
     fill_head(this._cmd);
     fill_body(paramArrayOfByte, paramArrayOfByte.length);
     set_length();

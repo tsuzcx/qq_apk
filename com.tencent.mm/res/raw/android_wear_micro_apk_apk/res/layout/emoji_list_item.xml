@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/item_container" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="4.0dip">
+        <ImageView android:id="@id/emoji_thumb_iv" style="@style/WearableListItemEmojiAvatar" />
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/emoji_name_tv" style="@style/WearableListItemEmojiName" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,21 +1,25 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.HornDetail;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cqf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cqf(HornListActivity paramHornListActivity, Boolean paramBoolean) {}
+  public cqf(HornListActivity paramHornListActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (String str = "1";; str = "0")
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_Long), str, this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-      }
-      return;
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.b, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterProfileCard", 0, 0, "", "", "", "");
+    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 41);
+    paramView.g = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.a.nickName;
+    paramView.a = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.a.seg;
+    paramView.e = 4;
+    paramView.f = 5;
+    ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity, paramView);
   }
 }
 

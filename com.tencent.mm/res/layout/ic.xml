@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ab8" android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="36.0dip"
+<RelativeLayout android:background="@drawable/ev" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:layout_centerInParent="true">
-        <ImageView android:layout_width="6.0dip" android:layout_height="6.0dip" android:src="@drawable/hc" android:scaleType="fitXY" />
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/is" android:ellipsize="end" android:id="@id/ab9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dv" android:layout_marginRight="@dimen/dv" android:singleLine="true" android:layout_weight="1.0" />
-        <ImageView android:layout_width="6.0dip" android:layout_height="6.0dip" android:src="@drawable/hc" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/akv" android:paddingTop="15.0dip" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/akt" android:background="@color/ahb" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/b__" android:scaleType="centerCrop" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+            <TextView android:textSize="16.0dip" android:textColor="@color/a7b" android:id="@id/akw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a78" android:id="@id/aku" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
+        </LinearLayout>
     </LinearLayout>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/akv" android:layout_alignParentBottom="true" />
 </RelativeLayout>

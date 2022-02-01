@@ -1,38 +1,43 @@
 package com.tencent.device.file;
 
 import android.content.Intent;
-import azdd;
-import azdx;
-import azen;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.SVBusiUtil;
+import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public final class DevVideoMsgProcessor$1
+final class DevVideoMsgProcessor$1
   implements Runnable
 {
-  public DevVideoMsgProcessor$1(String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
+  DevVideoMsgProcessor$1(String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    azdx localazdx = azdd.a(0, 1);
+    ShortVideoReq localShortVideoReq = SVBusiUtil.a(0, 1);
     Object localObject = new Intent();
     ((Intent)localObject).addFlags(603979776);
-    ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("uin", this.a);
     ((Intent)localObject).putExtra("uintype", 9501);
     ((Intent)localObject).putExtra("file_send_business_type", 1);
     ((Intent)localObject).putExtra("file_send_path", this.b);
     long l = System.currentTimeMillis();
-    localObject = azdd.a(1, localObject, localazdx);
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceShortVideo", 2, "createShortVideoUploadInfo cost:" + (System.currentTimeMillis() - l));
+    localObject = ShortVideoBusiManager.a(1, localObject, localShortVideoReq);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createShortVideoUploadInfo cost:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.i("DeviceShortVideo", 2, localStringBuilder.toString());
     }
-    localazdx.a((azen)localObject);
-    azdd.a(localazdx, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localShortVideoReq.a((ShortVideoUploadInfo)localObject);
+    ShortVideoBusiManager.a(localShortVideoReq, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DevVideoMsgProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,35 @@
 package com.tencent.token;
 
-import java.util.TimerTask;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.v4.app.Fragment;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
 
-class cs
-  extends TimerTask
+public abstract class cs
 {
-  cs(cp paramcp) {}
+  public abstract Fragment a(String paramString);
   
-  public void run()
+  public abstract cv a();
+  
+  public abstract void a(a parama);
+  
+  public abstract void a(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract List<Fragment> d();
+  
+  public abstract boolean e();
+  
+  public static abstract class a
   {
-    this.a.e.OnCheckPictureAndGetSt(null, null, null, 8192, new ErrMsg());
+    public void a(Fragment paramFragment) {}
+    
+    public void b(Fragment paramFragment) {}
+    
+    public void c(Fragment paramFragment) {}
   }
 }
 

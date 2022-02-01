@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.nearby.gift;
 
-import auzw;
-import auzx;
-import auzy;
+import com.tencent.biz.troopgift.TroopGiftAioPanelData;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import yvk;
 
-public class NearbyGiftPanelDialog$1$1$1
+class NearbyGiftPanelDialog$1$1$1
   implements Runnable
 {
-  public NearbyGiftPanelDialog$1$1$1(auzy paramauzy, yvk paramyvk) {}
+  NearbyGiftPanelDialog$1$1$1(NearbyGiftPanelDialog.1.1 param1, TroopGiftAioPanelData paramTroopGiftAioPanelData) {}
   
   public void run()
   {
-    auzw.a(this.jdField_a_of_type_Auzy.a.jdField_a_of_type_Auzw).setGiftData(this.jdField_a_of_type_Yvk, true);
-    auzw.a(this.jdField_a_of_type_Auzy.a.jdField_a_of_type_Auzw).b(this.jdField_a_of_type_Auzy.a.jdField_a_of_type_Int);
+    this.b.b.e.c.setGiftData(this.a, true);
+    this.b.b.e.c.b(this.b.b.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog.1.1.1
  * JD-Core Version:    0.7.0.1
  */

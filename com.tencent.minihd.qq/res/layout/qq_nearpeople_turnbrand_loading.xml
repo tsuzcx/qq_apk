@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/qq_nearpeople_turnbrand_loading_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="47.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/qq_nearpeople_turnbrand_loading_map" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_turnbrand_loading_map" android:contentDescription="@null" />
+        <ImageView android:layout_gravity="bottom|center|right" android:id="@id/qq_nearpeople_turnbrand_loading_scanning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@null" />
+        <ImageView android:layout_gravity="center" android:id="@id/qq_nearpeople_turnbrand_loading_head_wave1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_turnbrand_loading_head_wave" android:contentDescription="@null" />
+        <ImageView android:layout_gravity="center" android:id="@id/qq_nearpeople_turnbrand_loading_head_def" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_turnbrand_loading_head_def" android:contentDescription="@null" />
+        <ImageView android:layout_gravity="center" android:id="@id/qq_nearpeople_turnbrand_loading_head" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/qq_nearpeople_turnbrand_loading_head_def" android:contentDescription="@null" />
+    </FrameLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/qq_nearpeople_turnbrand_loading_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/nearpeople_turnbrand_loading_info" android:layout_below="@id/qq_nearpeople_turnbrand_loading_image" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -8,25 +8,23 @@ final class fc$11
 {
   private static URI b(fe paramfe)
   {
-    if (paramfe.f() == ff.i) {
-      paramfe.k();
-    }
-    for (;;)
+    if (paramfe.f() == ff.i)
     {
+      paramfe.k();
       return null;
-      try
-      {
-        paramfe = paramfe.i();
-        if ("null".equals(paramfe)) {
-          continue;
-        }
-        paramfe = new URI(paramfe);
-        return paramfe;
+    }
+    try
+    {
+      paramfe = paramfe.i();
+      if ("null".equals(paramfe)) {
+        return null;
       }
-      catch (URISyntaxException paramfe)
-      {
-        throw new du(paramfe);
-      }
+      paramfe = new URI(paramfe);
+      return paramfe;
+    }
+    catch (URISyntaxException paramfe)
+    {
+      throw new du(paramfe);
     }
   }
 }

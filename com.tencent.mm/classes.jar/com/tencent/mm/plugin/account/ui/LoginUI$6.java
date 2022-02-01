@@ -1,37 +1,25 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.normsg.a.b;
 
 final class LoginUI$6
-  implements View.OnTouchListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  LoginUI$6(LoginUI paramLoginUI, boolean[] paramArrayOfBoolean) {}
+  LoginUI$6(LoginUI paramLoginUI) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(152553);
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(152553);
-      return false;
-      this.gFg[0] = true;
-      b.pgQ.fD("ce_login_id", "<LoginByID>");
-      continue;
-      b.pgQ.a("ce_login_id", paramMotionEvent);
-      b.pgQ.Wa("ce_login_id");
-    }
+    AppMethodBeat.i(304901);
+    LoginUI.c(this.qbD);
+    AppMethodBeat.o(304901);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.6
  * JD-Core Version:    0.7.0.1
  */

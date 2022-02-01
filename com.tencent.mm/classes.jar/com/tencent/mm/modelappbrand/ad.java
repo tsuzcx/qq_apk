@@ -1,14 +1,14 @@
 package com.tencent.mm.modelappbrand;
 
 public abstract class ad
-  implements m
+  implements o
 {
+  public abstract void bl(String paramString1, String paramString2);
+  
   public final String getName()
   {
-    return "makePhoneCall";
+    return "OnDataPush";
   }
-  
-  public abstract void qt(String paramString);
 }
 
 

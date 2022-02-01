@@ -16,19 +16,17 @@ class MiniLog$WriteHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 2) {
       return;
-    } while (MiniLog.access$000().isEmpty());
-    ThreadManager.a(new MiniLog.WriteHandler.1(this), 64, null, false);
+    }
+    if (!MiniLog.access$100().isEmpty()) {
+      ThreadManager.executeOnDiskIOThreadPool(new MiniLog.WriteHandler.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLog.WriteHandler
  * JD-Core Version:    0.7.0.1
  */

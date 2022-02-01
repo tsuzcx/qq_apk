@@ -4,13 +4,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class QueryADBannerUnit
   extends JceStruct
 {
-  static int cache_eAdType = 0;
+  static int cache_eAdType;
   static Map<String, String> cache_extendinfo;
   static ArrayList<MultiBanner> cache_multibanner;
   static TimeRange cache_sShowTimeRange = new TimeRange();
@@ -18,32 +19,32 @@ public final class QueryADBannerUnit
   public String DynBannerJsonData = "";
   public String btnText = "";
   public String description = "";
-  public int detail_info;
-  public int duration;
-  public int eAdType;
-  public Map<String, String> extendinfo;
-  public long iAdID;
-  public long iStoreID;
-  public long iTraceID;
-  public long iUin;
-  public ArrayList<MultiBanner> multibanner;
+  public int detail_info = 0;
+  public int duration = 0;
+  public int eAdType = 0;
+  public Map<String, String> extendinfo = null;
+  public long iAdID = 0L;
+  public long iStoreID = 0L;
+  public long iTraceID = 0L;
+  public long iUin = 0L;
+  public ArrayList<MultiBanner> multibanner = null;
   public String nick = "";
-  public int noCloseButton;
-  public int pattern_id;
-  public int priority;
-  public int reopenHours;
+  public int noCloseButton = 0;
+  public int pattern_id = 0;
+  public int priority = 0;
+  public int reopenHours = 0;
   public String report_info = "";
   public String roomId = "";
-  public TimeRange sShowTimeRange;
+  public TimeRange sShowTimeRange = null;
   public String strJmpUrl = "";
   public String strPicMD5 = "";
   public String strPicUrl = "";
   public String strSchemeUrl = "";
   public String strStoreUrl = "";
   public String strTraceInfo = "";
-  public int type;
+  public int type = 0;
   public String videoUrl = "";
-  public ArrayList<VideoBanner> videobanners;
+  public ArrayList<VideoBanner> videobanners = null;
   
   static
   {
@@ -132,65 +133,80 @@ public final class QueryADBannerUnit
     paramJceOutputStream.write(this.iAdID, 2);
     paramJceOutputStream.write(this.iTraceID, 3);
     paramJceOutputStream.write(this.eAdType, 4);
-    if (this.sShowTimeRange != null) {
-      paramJceOutputStream.write(this.sShowTimeRange, 5);
+    Object localObject = this.sShowTimeRange;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.strStoreUrl != null) {
-      paramJceOutputStream.write(this.strStoreUrl, 6);
+    localObject = this.strStoreUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.iStoreID, 7);
-    if (this.strSchemeUrl != null) {
-      paramJceOutputStream.write(this.strSchemeUrl, 8);
+    localObject = this.strSchemeUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.detail_info, 9);
     paramJceOutputStream.write(this.noCloseButton, 10);
     paramJceOutputStream.write(this.reopenHours, 11);
     paramJceOutputStream.write(this.priority, 12);
     paramJceOutputStream.write(this.duration, 13);
-    if (this.report_info != null) {
-      paramJceOutputStream.write(this.report_info, 14);
+    localObject = this.report_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.strPicMD5 != null) {
-      paramJceOutputStream.write(this.strPicMD5, 15);
+    localObject = this.strPicMD5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.type, 16);
-    if (this.description != null) {
-      paramJceOutputStream.write(this.description, 17);
+    localObject = this.description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.btnText != null) {
-      paramJceOutputStream.write(this.btnText, 18);
+    localObject = this.btnText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 19);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.iUin, 20);
-    if (this.roomId != null) {
-      paramJceOutputStream.write(this.roomId, 21);
+    localObject = this.roomId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 22);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 22);
     }
-    if (this.multibanner != null) {
-      paramJceOutputStream.write(this.multibanner, 23);
+    localObject = this.multibanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 23);
     }
-    if (this.videobanners != null) {
-      paramJceOutputStream.write(this.videobanners, 24);
+    localObject = this.videobanners;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 24);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 25);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 25);
     }
-    if (this.DynBannerJsonData != null) {
-      paramJceOutputStream.write(this.DynBannerJsonData, 26);
+    localObject = this.DynBannerJsonData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 26);
     }
-    if (this.videoUrl != null) {
-      paramJceOutputStream.write(this.videoUrl, 27);
+    localObject = this.videoUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 27);
     }
     paramJceOutputStream.write(this.pattern_id, 28);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.QueryADBannerUnit
  * JD-Core Version:    0.7.0.1
  */

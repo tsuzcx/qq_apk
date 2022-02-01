@@ -16,13 +16,16 @@ class SonicSessionConnection$SessionConnectionDefaultImpl$2
     }
     catch (Throwable localThrowable)
     {
-      SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "disconnect error:" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("disconnect error:");
+      localStringBuilder.append(localThrowable.getMessage());
+      SonicUtils.log("SonicSdk_SonicSessionConnection", 6, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionConnection.SessionConnectionDefaultImpl.2
  * JD-Core Version:    0.7.0.1
  */

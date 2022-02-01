@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import com.tencent.video.decode.AbstractAVDecode;
 
 class NativeVideoImage$ReleaseTask
@@ -15,13 +16,14 @@ class NativeVideoImage$ReleaseTask
   
   public void run()
   {
-    if (this.mDecoder != null) {}
+    AbstractAVDecode localAbstractAVDecode = this.mDecoder;
+    if (localAbstractAVDecode != null) {}
     try
     {
-      this.mDecoder.close();
+      localAbstractAVDecode.close();
       this.mDecoder = null;
-      if (QLog.isColorLevel()) {
-        QLog.d(NativeVideoImage.TAG, 2, "..ReleaseTask close AVDecode..");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d(NativeVideoImage.TAG, 2, "..ReleaseTask close AVDecode..");
       }
       return;
     }
@@ -30,7 +32,7 @@ class NativeVideoImage$ReleaseTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.NativeVideoImage.ReleaseTask
  * JD-Core Version:    0.7.0.1
  */

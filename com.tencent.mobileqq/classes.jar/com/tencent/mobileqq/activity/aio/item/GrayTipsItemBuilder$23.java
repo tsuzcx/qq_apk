@@ -1,40 +1,55 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afnq;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class GrayTipsItemBuilder$23
-  implements Runnable
+class GrayTipsItemBuilder$23
+  extends ClickableSpan
 {
-  public GrayTipsItemBuilder$23(afnq paramafnq, String paramString1, int paramInt, long paramLong, String paramString2) {}
+  GrayTipsItemBuilder$23(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null)
+    if ((this.a.c instanceof Activity))
     {
-      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(20);
-      if (localObject != null)
-      {
-        MessageRecord localMessageRecord = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if ((localMessageRecord != null) && (!TextUtils.equals(localMessageRecord.getExtInfoFromExtStr("sens_msg_original_text"), this.b)))
-        {
-          localMessageRecord.saveExtInfoToExtStr("sens_msg_original_text", this.b);
-          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extLong", Integer.valueOf(localMessageRecord.extLong));
-          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-          ((QQMessageFacade)localObject).a(localMessageRecord);
-        }
+      Intent localIntent = new Intent(this.a.c, EditActivity.class);
+      paramView = ((DiscussionManager)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(this.a.d.b);
+      if ((paramView != null) && (paramView.hasRenamed())) {
+        paramView = paramView.discussionName;
+      } else {
+        paramView = "";
       }
+      localIntent.putExtra("title", 2131888754);
+      localIntent.putExtra("action", 102);
+      localIntent.putExtra("limit", 48);
+      localIntent.putExtra("current", paramView);
+      localIntent.putExtra("canPostNull", false);
+      localIntent.putExtra("multiLine", false);
+      localIntent.putExtra("selfSet_leftViewText", this.a.c.getString(2131887440));
+      ((Activity)this.a.c).startActivityForResult(localIntent, 6002);
+      ReportController.b(this.a.a, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.23
  * JD-Core Version:    0.7.0.1
  */

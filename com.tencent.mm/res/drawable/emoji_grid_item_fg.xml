@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/emoji_grid_item_fg_pressed" />
-    <item android:drawable="@drawable/emoji_grid_item_fg_normal" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/BW_0_Alpha_0_1" />
+            <stroke android:width="1.0dip" android:color="@color/FG_3" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/ahb" />
+            <stroke android:width="1.0dip" android:color="@color/FG_3" />
+        </shape>
+    </item>
 </selector>

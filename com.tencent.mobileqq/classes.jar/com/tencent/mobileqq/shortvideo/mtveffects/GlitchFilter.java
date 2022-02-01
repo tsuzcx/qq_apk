@@ -45,17 +45,18 @@ public class GlitchFilter
     this.mGlitchAraea = paramRectF;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.mArrayBuffers != null)
+    int[] arrayOfInt = this.mArrayBuffers;
+    if (arrayOfInt != null)
     {
-      GLES20.glDeleteBuffers(this.mArrayBuffers.length, this.mArrayBuffers, 0);
+      GLES20.glDeleteBuffers(arrayOfInt.length, arrayOfInt, 0);
       this.mArrayBuffers = null;
     }
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     super.onInitialized();
     int i = getProgram();
@@ -76,21 +77,28 @@ public class GlitchFilter
   public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
     super.onOutputSizeChanged(paramInt1, paramInt2);
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {}
-    while (this.mGlitchAraea == null) {
-      return;
-    }
-    int i = (int)Math.abs(this.mGlitchAraea.width() * paramInt1);
-    int j = (int)Math.abs(this.mGlitchAraea.height() * paramInt2);
-    try
+    if (paramInt1 != 0)
     {
-      if ((this.mVertexData != null) && (this.mVertexData.limit() == i * 2 * j)) {
+      if (paramInt2 == 0) {
         return;
       }
+      RectF localRectF = this.mGlitchAraea;
+      if (localRectF == null) {
+        return;
+      }
+      int i = (int)Math.abs(localRectF.width() * paramInt1);
+      int j = (int)Math.abs(this.mGlitchAraea.height() * paramInt2);
+      try
+      {
+        if ((this.mVertexData != null) && (this.mVertexData.limit() == i * 2 * j)) {
+          return;
+        }
+        this.mVertexData = null;
+        new Thread(new VertexDataJob(this.mGlitchAraea, i, j, paramInt1, paramInt2, this)).start();
+        return;
+      }
+      finally {}
     }
-    finally {}
-    this.mVertexData = null;
-    new Thread(new VertexDataJob(this.mGlitchAraea, i, j, paramInt1, paramInt2, this)).start();
   }
   
   public void onResult(FloatBuffer paramFloatBuffer)
@@ -105,37 +113,49 @@ public class GlitchFilter
   
   public boolean process(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2)
   {
-    if ((paramInt2 < 0) || (paramInt1 < 0)) {}
-    int i;
-    do
+    if (paramInt2 >= 0)
     {
-      return false;
-      i = getProgram();
-    } while (i <= 0);
-    GLES20.glUseProgram(i);
-    if (this.mArrayBuffers == null)
-    {
-      try
-      {
-        if (this.mVertexData == null) {
-          return false;
-        }
+      if (paramInt1 < 0) {
+        return false;
       }
-      finally {}
-      this.mArrayBuffers = new int[2];
-      GLES20.glGenBuffers(2, this.mArrayBuffers, 0);
-      GLES20.glBindBuffer(34962, this.mArrayBuffers[0]);
-      this.mVertexData.rewind();
-      GLES20.glBufferData(34962, this.mVertexData.limit() * 4, this.mVertexData, 35044);
-      GLES20.glEnableVertexAttribArray(this.mAttrPosition);
-      GLES20.glBindBuffer(34962, this.mArrayBuffers[0]);
-      GLES20.glVertexAttribPointer(this.mAttrPosition, 2, 5126, false, 0, 0);
-      GLES20.glBindBuffer(34962, this.mArrayBuffers[1]);
-      mTextureData.rewind();
-      GLES20.glBufferData(34962, mTextureData.limit() * 4, mTextureData, 35044);
-      GLES20.glEnableVertexAttribArray(this.mAttrTextureCoord);
-      GLES20.glBindBuffer(34962, this.mArrayBuffers[1]);
-      GLES20.glVertexAttribPointer(this.mAttrTextureCoord, 2, 5126, false, 0, 0);
+      int i = getProgram();
+      if (i <= 0) {
+        return false;
+      }
+      GLES20.glUseProgram(i);
+      if (this.mArrayBuffers == null)
+      {
+        try
+        {
+          if (this.mVertexData == null) {
+            return false;
+          }
+          this.mArrayBuffers = new int[2];
+          GLES20.glGenBuffers(2, this.mArrayBuffers, 0);
+          GLES20.glBindBuffer(34962, this.mArrayBuffers[0]);
+          this.mVertexData.rewind();
+          GLES20.glBufferData(34962, this.mVertexData.limit() * 4, this.mVertexData, 35044);
+          GLES20.glEnableVertexAttribArray(this.mAttrPosition);
+          GLES20.glBindBuffer(34962, this.mArrayBuffers[0]);
+          GLES20.glVertexAttribPointer(this.mAttrPosition, 2, 5126, false, 0, 0);
+          GLES20.glBindBuffer(34962, this.mArrayBuffers[1]);
+          mTextureData.rewind();
+          GLES20.glBufferData(34962, mTextureData.limit() * 4, mTextureData, 35044);
+          GLES20.glEnableVertexAttribArray(this.mAttrTextureCoord);
+          GLES20.glBindBuffer(34962, this.mArrayBuffers[1]);
+          GLES20.glVertexAttribPointer(this.mAttrTextureCoord, 2, 5126, false, 0, 0);
+        }
+        finally {}
+      }
+      else
+      {
+        GLES20.glEnableVertexAttribArray(this.mAttrPosition);
+        GLES20.glBindBuffer(34962, this.mArrayBuffers[0]);
+        GLES20.glVertexAttribPointer(this.mAttrPosition, 2, 5126, false, 0, 0);
+        GLES20.glEnableVertexAttribArray(this.mAttrTextureCoord);
+        GLES20.glBindBuffer(34962, this.mArrayBuffers[1]);
+        GLES20.glVertexAttribPointer(this.mAttrTextureCoord, 2, 5126, false, 0, 0);
+      }
       GLES20.glUniform1i(this.mUniHorColor, this.mDisColorH);
       GLES20.glUniform2f(this.mUniDisParamH, this.mMaxDisH, this.mShiftH);
       GLES20.glUniform1i(this.mUniVerColor, this.mDisColorV);
@@ -147,13 +167,12 @@ public class GlitchFilter
       GLES20.glBindTexture(this.mTextureType, paramInt1);
       GLES20.glUniform1i(this.mUniGlitchTexture, 1);
       paramInt1 = this.mUniDstColor;
-      if (!paramBoolean1) {
-        break label497;
+      float f;
+      if (paramBoolean1) {
+        f = 1.0F;
+      } else {
+        f = 0.0F;
       }
-    }
-    label497:
-    for (float f = 1.0F;; f = 0.0F)
-    {
       GLES20.glUniform4f(paramInt1, f, LayerRenderBase.getRed(paramInt3), LayerRenderBase.getGreen(paramInt3), LayerRenderBase.getBlue(paramInt3));
       if (paramBoolean2)
       {
@@ -172,14 +191,8 @@ public class GlitchFilter
         GLES20.glDisable(3042);
       }
       return true;
-      GLES20.glEnableVertexAttribArray(this.mAttrPosition);
-      GLES20.glBindBuffer(34962, this.mArrayBuffers[0]);
-      GLES20.glVertexAttribPointer(this.mAttrPosition, 2, 5126, false, 0, 0);
-      GLES20.glEnableVertexAttribArray(this.mAttrTextureCoord);
-      GLES20.glBindBuffer(34962, this.mArrayBuffers[1]);
-      GLES20.glVertexAttribPointer(this.mAttrTextureCoord, 2, 5126, false, 0, 0);
-      break;
     }
+    return false;
   }
   
   public void updateData(int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, float paramFloat3, float paramFloat4)
@@ -194,7 +207,7 @@ public class GlitchFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.GlitchFilter
  * JD-Core Version:    0.7.0.1
  */

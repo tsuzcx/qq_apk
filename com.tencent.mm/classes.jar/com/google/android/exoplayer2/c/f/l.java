@@ -7,93 +7,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   implements h
 {
-  private com.google.android.exoplayer2.c.m aCe;
-  private int aDg;
-  private boolean aKp;
-  private long aKr;
-  private final com.google.android.exoplayer2.i.m aLw;
+  private com.google.android.exoplayer2.c.m cMa;
+  private int cNc;
+  private boolean cUh;
+  private long cUj;
+  private final com.google.android.exoplayer2.i.m cVn;
   private int sampleSize;
   
   public l()
   {
-    AppMethodBeat.i(95133);
-    this.aLw = new com.google.android.exoplayer2.i.m(10);
-    AppMethodBeat.o(95133);
+    AppMethodBeat.i(92255);
+    this.cVn = new com.google.android.exoplayer2.i.m(10);
+    AppMethodBeat.o(92255);
+  }
+  
+  public final void Si()
+  {
+    this.cUh = false;
+  }
+  
+  public final void Sj()
+  {
+    AppMethodBeat.i(92258);
+    if ((!this.cUh) || (this.sampleSize == 0) || (this.cNc != this.sampleSize))
+    {
+      AppMethodBeat.o(92258);
+      return;
+    }
+    this.cMa.a(this.cUj, 1, this.sampleSize, 0, null);
+    this.cUh = false;
+    AppMethodBeat.o(92258);
   }
   
   public final void a(g paramg, v.d paramd)
   {
-    AppMethodBeat.i(95134);
-    paramd.ox();
-    this.aCe = paramg.dm(paramd.oy());
-    this.aCe.f(Format.k(paramd.oz(), "application/id3"));
-    AppMethodBeat.o(95134);
+    AppMethodBeat.i(92256);
+    paramd.Sv();
+    this.cMa = paramg.hz(paramd.getTrackId());
+    this.cMa.f(Format.t(paramd.Sw(), "application/id3"));
+    AppMethodBeat.o(92256);
   }
   
-  public final void d(long paramLong, boolean paramBoolean)
+  public final void h(long paramLong, boolean paramBoolean)
   {
     if (!paramBoolean) {
       return;
     }
-    this.aKp = true;
-    this.aKr = paramLong;
+    this.cUh = true;
+    this.cUj = paramLong;
     this.sampleSize = 0;
-    this.aDg = 0;
-  }
-  
-  public final void ol()
-  {
-    this.aKp = false;
-  }
-  
-  public final void om()
-  {
-    AppMethodBeat.i(95136);
-    if ((!this.aKp) || (this.sampleSize == 0) || (this.aDg != this.sampleSize))
-    {
-      AppMethodBeat.o(95136);
-      return;
-    }
-    this.aCe.a(this.aKr, 1, this.sampleSize, 0, null);
-    this.aKp = false;
-    AppMethodBeat.o(95136);
+    this.cNc = 0;
   }
   
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
-    AppMethodBeat.i(95135);
-    if (!this.aKp)
+    AppMethodBeat.i(92257);
+    if (!this.cUh)
     {
-      AppMethodBeat.o(95135);
+      AppMethodBeat.o(92257);
       return;
     }
-    int i = paramm.qM();
-    if (this.aDg < 10)
+    int i = paramm.UF();
+    if (this.cNc < 10)
     {
-      int j = Math.min(i, 10 - this.aDg);
-      System.arraycopy(paramm.data, paramm.position, this.aLw.data, this.aDg, j);
-      if (j + this.aDg == 10)
+      int j = Math.min(i, 10 - this.cNc);
+      System.arraycopy(paramm.data, paramm.position, this.cVn.data, this.cNc, j);
+      if (j + this.cNc == 10)
       {
-        this.aLw.setPosition(0);
-        if ((73 != this.aLw.readUnsignedByte()) || (68 != this.aLw.readUnsignedByte()) || (51 != this.aLw.readUnsignedByte()))
+        this.cVn.setPosition(0);
+        if ((73 != this.cVn.readUnsignedByte()) || (68 != this.cVn.readUnsignedByte()) || (51 != this.cVn.readUnsignedByte()))
         {
-          this.aKp = false;
-          AppMethodBeat.o(95135);
+          this.cUh = false;
+          AppMethodBeat.o(92257);
           return;
         }
-        this.aLw.en(3);
-        this.sampleSize = (this.aLw.qS() + 10);
+        this.cVn.iH(3);
+        this.sampleSize = (this.cVn.UM() + 10);
       }
     }
-    i = Math.min(i, this.sampleSize - this.aDg);
-    this.aCe.a(paramm, i);
-    this.aDg = (i + this.aDg);
-    AppMethodBeat.o(95135);
+    i = Math.min(i, this.sampleSize - this.cNc);
+    this.cMa.a(paramm, i);
+    this.cNc = (i + this.cNc);
+    AppMethodBeat.o(92257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.l
  * JD-Core Version:    0.7.0.1
  */

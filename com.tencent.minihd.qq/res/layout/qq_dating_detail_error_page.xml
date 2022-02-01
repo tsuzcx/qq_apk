@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_dating_share_deleted" android:contentDescription="@null" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qq_daing_detail_errorpage_tip1" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/qq_daing_detail_errorpage_tip2" />
+    <Button android:id="@id/view_other" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qq_daing_detail_errorpage_tip3" style="@style/ButtonBlue" />
+</LinearLayout>

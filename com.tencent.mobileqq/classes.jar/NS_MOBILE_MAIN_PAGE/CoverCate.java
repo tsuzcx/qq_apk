@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CoverCate
   extends JceStruct
@@ -64,37 +65,44 @@ public final class CoverCate
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 0);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.items != null) {
-      paramJceOutputStream.write(this.items, 1);
+    localObject = this.items;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.showCount, 2);
     paramJceOutputStream.write(this.totalCount, 3);
     paramJceOutputStream.write(this.hasMore, 4);
-    if (this.attachInfo != null) {
-      paramJceOutputStream.write(this.attachInfo, 5);
+    localObject = this.attachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 6);
+    localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.description != null) {
-      paramJceOutputStream.write(this.description, 7);
+    localObject = this.description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.type, 8);
-    if (this.zhuanTiThumbUrl != null) {
-      paramJceOutputStream.write(this.zhuanTiThumbUrl, 9);
+    localObject = this.zhuanTiThumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.zhuanTiBannerUrl != null) {
-      paramJceOutputStream.write(this.zhuanTiBannerUrl, 10);
+    localObject = this.zhuanTiBannerUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.manyBits, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.CoverCate
  * JD-Core Version:    0.7.0.1
  */

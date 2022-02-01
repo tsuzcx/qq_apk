@@ -1,80 +1,108 @@
 package com.tencent.token;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import org.conscrypt.Conscrypt;
-import org.conscrypt.OpenSSLProvider;
+import android.support.v7.view.menu.ListMenuItemView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
 
-public class ic
-  extends ih
+public final class ic
+  extends BaseAdapter
 {
-  public static ih a()
+  static final int a = hg.g.abc_popup_menu_item_layout;
+  public id b;
+  boolean c;
+  private int d = -1;
+  private final boolean e;
+  private final LayoutInflater f;
+  
+  public ic(id paramid, LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    try
+    this.e = paramBoolean;
+    this.f = paramLayoutInflater;
+    this.b = paramid;
+    a();
+  }
+  
+  private void a()
+  {
+    if localif = this.b.j;
+    if (localif != null)
     {
-      Class.forName("org.conscrypt.ConscryptEngineSocket");
-      if (!Conscrypt.isAvailable()) {
-        return null;
-      }
-      ic localic = new ic();
-      return localic;
-    }
-    catch (ClassNotFoundException localClassNotFoundException) {}
-    return null;
-  }
-  
-  private Provider e()
-  {
-    return new OpenSSLProvider();
-  }
-  
-  @Nullable
-  public String a(SSLSocket paramSSLSocket)
-  {
-    if (Conscrypt.isConscrypt(paramSSLSocket)) {
-      return Conscrypt.getApplicationProtocol(paramSSLSocket);
-    }
-    return super.a(paramSSLSocket);
-  }
-  
-  public void a(SSLSocket paramSSLSocket, String paramString, List paramList)
-  {
-    if (Conscrypt.isConscrypt(paramSSLSocket))
-    {
-      if (paramString != null)
+      ArrayList localArrayList = this.b.j();
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
       {
-        Conscrypt.setUseSessionTickets(paramSSLSocket, true);
-        Conscrypt.setHostname(paramSSLSocket, paramString);
+        if ((if)localArrayList.get(i) == localif)
+        {
+          this.d = i;
+          return;
+        }
+        i += 1;
       }
-      Conscrypt.setApplicationProtocols(paramSSLSocket, (String[])ih.a(paramList).toArray(new String[0]));
-      return;
     }
-    super.a(paramSSLSocket, paramString, paramList);
+    this.d = -1;
   }
   
-  public void a(SSLSocketFactory paramSSLSocketFactory)
+  public final if a(int paramInt)
   {
-    if (Conscrypt.isConscrypt(paramSSLSocketFactory)) {
-      Conscrypt.setUseEngineSocket(paramSSLSocketFactory, true);
+    ArrayList localArrayList;
+    if (this.e) {
+      localArrayList = this.b.j();
+    } else {
+      localArrayList = this.b.h();
     }
+    int j = this.d;
+    int i = paramInt;
+    if (j >= 0)
+    {
+      i = paramInt;
+      if (paramInt >= j) {
+        i = paramInt + 1;
+      }
+    }
+    return (if)localArrayList.get(i);
   }
   
-  public SSLContext b()
+  public final int getCount()
   {
-    try
-    {
-      SSLContext localSSLContext = SSLContext.getInstance("TLS", e());
-      return localSSLContext;
+    ArrayList localArrayList;
+    if (this.e) {
+      localArrayList = this.b.j();
+    } else {
+      localArrayList = this.b.h();
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-    {
-      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException);
+    if (this.d < 0) {
+      return localArrayList.size();
     }
+    return localArrayList.size() - 1;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.f.inflate(a, paramViewGroup, false);
+    }
+    paramView = (il.a)localView;
+    if (this.c) {
+      ((ListMenuItemView)localView).setForceShowIcon(true);
+    }
+    paramView.a(a(paramInt));
+    return localView;
+  }
+  
+  public final void notifyDataSetChanged()
+  {
+    a();
+    super.notifyDataSetChanged();
   }
 }
 

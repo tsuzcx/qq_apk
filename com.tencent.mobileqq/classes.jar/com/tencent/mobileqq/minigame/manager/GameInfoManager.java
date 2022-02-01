@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.text.TextUtils;
-import bjkc;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -26,7 +25,8 @@ public class GameInfoManager
   
   public String getAppId()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null)) {
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if ((localMiniGamePkg != null) && (localMiniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null)) {
       return this.miniGamePkg.appConfig.config.appId;
     }
     QZLog.e(this.TAG, "getAppId() error");
@@ -35,10 +35,16 @@ public class GameInfoManager
   
   public String getAppName()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null))
+    Object localObject = this.miniGamePkg;
+    if ((localObject != null) && (((MiniGamePkg)localObject).appConfig != null) && (this.miniGamePkg.appConfig.config != null))
     {
-      if (QZLog.isColorLevel()) {
-        QZLog.i(this.TAG, 2, "getAppId() = " + this.miniGamePkg.appConfig.config.appId);
+      if (QZLog.isColorLevel())
+      {
+        localObject = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAppId() = ");
+        localStringBuilder.append(this.miniGamePkg.appConfig.config.appId);
+        QZLog.i((String)localObject, 2, localStringBuilder.toString());
       }
       return this.miniGamePkg.appConfig.config.name;
     }
@@ -48,7 +54,8 @@ public class GameInfoManager
   
   public String getEntryDataHash()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null) && (this.miniGamePkg.appConfig.launchParam.entryModel != null)) {
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if ((localMiniGamePkg != null) && (localMiniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null) && (this.miniGamePkg.appConfig.launchParam.entryModel != null)) {
       return this.miniGamePkg.appConfig.launchParam.entryModel.getEntryHash();
     }
     return null;
@@ -56,51 +63,101 @@ public class GameInfoManager
   
   public String getExtendData()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null))
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (localMiniGamePkg != null)
     {
-      QLog.i(this.TAG, 1, "getExtendData = " + this.miniGamePkg.appConfig.config.extendData);
-      if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.config.extendData)) {}
+      localObject = localStringBuilder;
+      if (localMiniGamePkg.appConfig != null)
+      {
+        localObject = localStringBuilder;
+        if (this.miniGamePkg.appConfig.config != null)
+        {
+          localObject = this.TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getExtendData = ");
+          localStringBuilder.append(this.miniGamePkg.appConfig.config.extendData);
+          QLog.i((String)localObject, 1, localStringBuilder.toString());
+          if (TextUtils.isEmpty(this.miniGamePkg.appConfig.config.extendData)) {
+            return null;
+          }
+          localObject = this.miniGamePkg.appConfig.config.extendData;
+        }
+      }
     }
-    else
-    {
-      return null;
-    }
-    return this.miniGamePkg.appConfig.config.extendData;
+    return localObject;
   }
   
   public String getFromMiniAppId()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (localMiniGamePkg != null)
     {
-      QZLog.i(this.TAG, 1, "getFromMiniAppId = " + this.miniGamePkg.appConfig.launchParam.fromMiniAppId);
-      if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.fromMiniAppId)) {}
+      localObject = localStringBuilder;
+      if (localMiniGamePkg.appConfig != null)
+      {
+        localObject = localStringBuilder;
+        if (this.miniGamePkg.appConfig.launchParam != null)
+        {
+          localObject = this.TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFromMiniAppId = ");
+          localStringBuilder.append(this.miniGamePkg.appConfig.launchParam.fromMiniAppId);
+          QZLog.i((String)localObject, 1, localStringBuilder.toString());
+          if (TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.fromMiniAppId)) {
+            return null;
+          }
+          localObject = this.miniGamePkg.appConfig.launchParam.fromMiniAppId;
+        }
+      }
     }
-    else
+    return localObject;
+  }
+  
+  public String getGroupIdFromReportData()
+  {
+    Object localObject = this.miniGamePkg;
+    if ((localObject != null) && (((MiniGamePkg)localObject).appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
     {
-      return null;
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getGroupIdFromReportData = ");
+      localStringBuilder.append(this.miniGamePkg.appConfig.launchParam.reportData);
+      QZLog.i((String)localObject, 1, localStringBuilder.toString());
+      localObject = this.miniGamePkg.appConfig.launchParam.reportData;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        return PathUtil.getJSONQueryString((String)localObject).optString("groupid", "");
+      }
     }
-    return this.miniGamePkg.appConfig.launchParam.fromMiniAppId;
+    return "";
   }
   
   public GameInfoManager.LaunchOptions getLaunchOptions()
   {
-    if (this.launchOptions == null) {
-      return new GameInfoManager.LaunchOptions(this);
+    GameInfoManager.LaunchOptions localLaunchOptions2 = this.launchOptions;
+    GameInfoManager.LaunchOptions localLaunchOptions1 = localLaunchOptions2;
+    if (localLaunchOptions2 == null) {
+      localLaunchOptions1 = new GameInfoManager.LaunchOptions(this);
     }
-    return this.launchOptions;
+    return localLaunchOptions1;
   }
   
   public MiniAppConfig getMiniAppConfig()
   {
-    if (this.miniGamePkg != null) {
-      return this.miniGamePkg.appConfig;
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if (localMiniGamePkg != null) {
+      return localMiniGamePkg.appConfig;
     }
     return null;
   }
   
   public String getMiniAppSimpleInfo()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null)) {
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if ((localMiniGamePkg != null) && (localMiniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null)) {
       return this.miniGamePkg.appConfig.config.simpleInfo();
     }
     return "";
@@ -113,86 +170,118 @@ public class GameInfoManager
   
   public String getNavigateExtData()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (localMiniGamePkg != null)
     {
-      QLog.i(this.TAG, 1, "getNavigateExtData = " + this.miniGamePkg.appConfig.launchParam.navigateExtData);
-      if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.navigateExtData)) {}
+      localObject = localStringBuilder;
+      if (localMiniGamePkg.appConfig != null)
+      {
+        localObject = localStringBuilder;
+        if (this.miniGamePkg.appConfig.launchParam != null)
+        {
+          localObject = this.TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getNavigateExtData = ");
+          localStringBuilder.append(this.miniGamePkg.appConfig.launchParam.navigateExtData);
+          QLog.i((String)localObject, 1, localStringBuilder.toString());
+          if (TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.navigateExtData)) {
+            return null;
+          }
+          localObject = this.miniGamePkg.appConfig.launchParam.navigateExtData;
+        }
+      }
     }
-    else
-    {
-      return null;
-    }
-    return this.miniGamePkg.appConfig.launchParam.navigateExtData;
+    return localObject;
   }
   
   public JSONObject getOnShowParam()
   {
-    JSONObject localJSONObject = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
     Object localObject2 = getQueryPath();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new JSONObject();
     }
     int i = getScene();
-    String str2 = getShareTicket();
+    Object localObject3 = getShareTicket();
     localObject2 = getFromMiniAppId();
-    String str1 = getNavigateExtData();
-    String str3 = getEntryDataHash();
+    String str = getNavigateExtData();
+    Object localObject4 = getEntryDataHash();
+    Object localObject5;
+    StringBuilder localStringBuilder;
     try
     {
       new JSONObject();
-      localJSONObject.put("query", localObject1);
-      localJSONObject.put("entryDataHash", str3);
+      localJSONObject2.put("query", localObject1);
+      localJSONObject2.put("entryDataHash", localObject4);
+    }
+    catch (Exception localException1)
+    {
+      localObject4 = GameLog.getInstance();
+      localObject5 = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onForeground exception put query string :");
+      localStringBuilder.append(localException1);
+      ((GameLog)localObject4).e((String)localObject5, localStringBuilder.toString());
+    }
+    try
+    {
+      localJSONObject2.put("scene", AppBrandUtil.getWikiScene(i));
     }
     catch (Exception localException2)
     {
-      try
-      {
-        localJSONObject.put("scene", AppBrandUtil.getWikiScene(i));
-      }
-      catch (Exception localException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            localJSONObject.put("shareTicket", str2);
-            try
-            {
-              localObject1 = new JSONObject();
-              ((JSONObject)localObject1).put("appId", localObject2);
-              ((JSONObject)localObject1).put("extraData", str1);
-              localJSONObject.put("referrerInfo", localObject1);
-              return localJSONObject;
-            }
-            catch (Exception localException4)
-            {
-              GameLog.getInstance().e(this.TAG, "onForeground exception put referrerInfo string :" + localException4);
-            }
-            localException1 = localException1;
-            GameLog.getInstance().e(this.TAG, "onForeground exception put query string :" + localException1);
-            continue;
-            localException2 = localException2;
-            GameLog.getInstance().e(this.TAG, "onForeground exception put scene string :" + localException2);
-          }
-        }
-        catch (Exception localException3)
-        {
-          for (;;)
-          {
-            GameLog.getInstance().e(this.TAG, "onForeground exception put shareTicket string :" + localException3);
-          }
-        }
-      }
+      localObject4 = GameLog.getInstance();
+      localObject5 = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onForeground exception put scene string :");
+      localStringBuilder.append(localException2);
+      ((GameLog)localObject4).e((String)localObject5, localStringBuilder.toString());
     }
-    return localJSONObject;
+    try
+    {
+      localJSONObject2.put("shareTicket", localObject3);
+    }
+    catch (Exception localException3)
+    {
+      localObject3 = GameLog.getInstance();
+      localObject4 = this.TAG;
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("onForeground exception put shareTicket string :");
+      ((StringBuilder)localObject5).append(localException3);
+      ((GameLog)localObject3).e((String)localObject4, ((StringBuilder)localObject5).toString());
+    }
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("appId", localObject2);
+      localJSONObject1.put("extraData", str);
+      localJSONObject2.put("referrerInfo", localJSONObject1);
+      return localJSONObject2;
+    }
+    catch (Exception localException4)
+    {
+      localObject2 = GameLog.getInstance();
+      str = this.TAG;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("onForeground exception put referrerInfo string :");
+      ((StringBuilder)localObject3).append(localException4);
+      ((GameLog)localObject2).e(str, ((StringBuilder)localObject3).toString());
+    }
+    return localJSONObject2;
   }
   
   public JSONObject getQueryPath()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null) && (this.miniGamePkg.appConfig.config.firstPage != null))
+    Object localObject = this.miniGamePkg;
+    if ((localObject != null) && (((MiniGamePkg)localObject).appConfig != null) && (this.miniGamePkg.appConfig.config != null) && (this.miniGamePkg.appConfig.config.firstPage != null))
     {
-      QLog.i(this.TAG, 1, "getQueryPath = " + this.miniGamePkg.appConfig.config.firstPage.pagePath);
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getQueryPath = ");
+      localStringBuilder.append(this.miniGamePkg.appConfig.config.firstPage.pagePath);
+      QLog.i((String)localObject, 1, localStringBuilder.toString());
       if ("miniGamePath".equals(this.miniGamePkg.appConfig.config.firstPage.pagePath)) {
         return new JSONObject();
       }
@@ -203,9 +292,14 @@ public class GameInfoManager
   
   public int getScene()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
+    Object localObject = this.miniGamePkg;
+    if ((localObject != null) && (((MiniGamePkg)localObject).appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
     {
-      QLog.i(this.TAG, 1, "getScene = " + this.miniGamePkg.appConfig.launchParam.scene);
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getScene = ");
+      localStringBuilder.append(this.miniGamePkg.appConfig.launchParam.scene);
+      QLog.i((String)localObject, 1, localStringBuilder.toString());
       return this.miniGamePkg.appConfig.launchParam.scene;
     }
     return 1001;
@@ -213,21 +307,36 @@ public class GameInfoManager
   
   public String getShareTicket()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (localMiniGamePkg != null)
     {
-      QLog.i(this.TAG, 1, "getShareTicket = " + this.miniGamePkg.appConfig.launchParam.shareTicket);
-      if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.shareTicket)) {}
+      localObject = localStringBuilder;
+      if (localMiniGamePkg.appConfig != null)
+      {
+        localObject = localStringBuilder;
+        if (this.miniGamePkg.appConfig.launchParam != null)
+        {
+          localObject = this.TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getShareTicket = ");
+          localStringBuilder.append(this.miniGamePkg.appConfig.launchParam.shareTicket);
+          QLog.i((String)localObject, 1, localStringBuilder.toString());
+          if (TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.shareTicket)) {
+            return null;
+          }
+          localObject = this.miniGamePkg.appConfig.launchParam.shareTicket;
+        }
+      }
     }
-    else
-    {
-      return null;
-    }
-    return this.miniGamePkg.appConfig.launchParam.shareTicket;
+    return localObject;
   }
   
   public void resetQuery()
   {
-    if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null) && (this.miniGamePkg.appConfig.config.firstPage != null)) {
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if ((localMiniGamePkg != null) && (localMiniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null) && (this.miniGamePkg.appConfig.config.firstPage != null)) {
       this.miniGamePkg.appConfig.config.firstPage.setPagePath(null);
     }
   }
@@ -245,9 +354,10 @@ public class GameInfoManager
   
   public void setMiniAppConfig(MiniAppConfig paramMiniAppConfig)
   {
-    if (this.miniGamePkg != null)
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if (localMiniGamePkg != null)
     {
-      this.miniGamePkg.appConfig = paramMiniAppConfig;
+      localMiniGamePkg.appConfig = paramMiniAppConfig;
       setLaunchOptions();
     }
   }
@@ -255,27 +365,19 @@ public class GameInfoManager
   public void setMiniGamePkg(MiniGamePkg paramMiniGamePkg)
   {
     this.miniGamePkg = paramMiniGamePkg;
-    try
-    {
-      bjkc.a(getMiniAppSimpleInfo());
-      return;
-    }
-    catch (Throwable paramMiniGamePkg)
-    {
-      QZLog.e(this.TAG, "MiniAppInfoReportManager.setMiniAppInfo() error", paramMiniGamePkg);
-    }
   }
   
   public void updateMiniAppConfig(MiniAppConfig paramMiniAppConfig)
   {
-    if (this.miniGamePkg != null) {
-      this.miniGamePkg.appConfig = paramMiniAppConfig;
+    MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+    if (localMiniGamePkg != null) {
+      localMiniGamePkg.appConfig = paramMiniAppConfig;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameInfoManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.a;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -21,35 +22,49 @@ final class NormalUserHeaderPreference$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(28073);
-    NormalUserHeaderPreference.c(this.wbA);
-    paramView = this.wbA;
-    aw.aaz();
-    Object localObject = c.YA().arw(paramView.contact.field_username);
-    if ((localObject != null) && ((int)((a)localObject).euF != 0) && (((aq)localObject).field_username.equals(paramView.contact.field_username))) {
-      paramView.contact = ((ad)localObject);
+    AppMethodBeat.i(31860);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    NormalUserHeaderPreference.c(this.Yni);
+    paramView = this.Yni;
+    bh.bCz();
+    localObject = c.bzA().JE(paramView.contact.field_username);
+    if ((localObject != null) && ((int)((d)localObject).maN != 0) && (((az)localObject).field_username.equals(paramView.contact.field_username))) {
+      paramView.contact = ((au)localObject);
     }
-    if (!a.je(paramView.contact.field_type))
+    if (!d.rs(paramView.contact.field_type))
     {
       localObject = new Intent();
       ((Intent)localObject).setClassName(paramView.mContext, "com.tencent.mm.ui.contact.ModRemarkNameUI");
-      ((Intent)localObject).putExtra("Contact_Scene", paramView.qQk);
+      ((Intent)localObject).putExtra("Contact_Scene", paramView.PCB);
       ((Intent)localObject).putExtra("Contact_mode_name_type", 0);
       ((Intent)localObject).putExtra("Contact_ModStrangerRemark", true);
       ((Intent)localObject).putExtra("Contact_User", paramView.contact.field_username);
       ((Intent)localObject).putExtra("Contact_Nick", paramView.contact.field_nickname);
       ((Intent)localObject).putExtra("Contact_RemarkName", paramView.contact.field_conRemark);
-      ((Activity)paramView.mContext).startActivity((Intent)localObject);
-      AppMethodBeat.o(28073);
-      return;
+      paramView = (Activity)paramView.mContext;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference", "dealModRemarkEvent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference", "dealModRemarkEvent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
-    localObject = new Intent();
-    ((Intent)localObject).setClassName(paramView.mContext, "com.tencent.mm.ui.contact.ContactRemarkInfoModUI");
-    ((Intent)localObject).putExtra("Contact_Scene", paramView.qQk);
-    ((Intent)localObject).putExtra("Contact_User", paramView.contact.field_username);
-    ((Intent)localObject).putExtra("Contact_RoomNickname", paramView.cmc.getIntent().getStringExtra("Contact_RoomNickname"));
-    ((Activity)paramView.mContext).startActivity((Intent)localObject);
-    AppMethodBeat.o(28073);
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(31860);
+      return;
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(paramView.mContext, "com.tencent.mm.ui.contact.ContactRemarkInfoModUI");
+      ((Intent)localObject).putExtra("Contact_Scene", paramView.PCB);
+      ((Intent)localObject).putExtra("Contact_User", paramView.contact.field_username);
+      ((Intent)localObject).putExtra("Contact_RoomNickname", paramView.lzt.getIntent().getStringExtra("Contact_RoomNickname"));
+      paramView = (Activity)paramView.mContext;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference", "dealModRemarkEvent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference", "dealModRemarkEvent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    }
   }
 }
 

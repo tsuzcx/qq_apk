@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.magicface.model;
 
-import atyk;
-import atyl;
-
-public class MagicfaceDecoder$1
+class MagicfaceDecoder$1
   implements Runnable
 {
-  public MagicfaceDecoder$1(atyk paramatyk) {}
+  MagicfaceDecoder$1(MagicfaceDecoder paramMagicfaceDecoder) {}
   
   public void run()
   {
     int i = Thread.currentThread().getPriority();
     Thread.currentThread().setPriority(10);
-    this.this$0.jdField_a_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Atyl != null) {
-      this.this$0.jdField_a_of_type_Atyl.a();
+    MagicfaceDecoder localMagicfaceDecoder = this.this$0;
+    localMagicfaceDecoder.f = true;
+    if (localMagicfaceDecoder.b != null) {
+      this.this$0.b.a();
     }
     this.this$0.a();
-    this.this$0.jdField_a_of_type_Boolean = false;
-    if (this.this$0.jdField_a_of_type_Atyl != null) {
-      this.this$0.jdField_a_of_type_Atyl.b();
+    localMagicfaceDecoder = this.this$0;
+    localMagicfaceDecoder.f = false;
+    if (localMagicfaceDecoder.b != null) {
+      this.this$0.b.b();
     }
     Thread.currentThread().setPriority(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceDecoder.1
  * JD-Core Version:    0.7.0.1
  */

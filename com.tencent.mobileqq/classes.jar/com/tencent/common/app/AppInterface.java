@@ -1,250 +1,271 @@
 package com.tencent.common.app;
 
-import alpg;
-import alvw;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import aoks;
-import aorl;
-import awgg;
-import awin;
-import bard;
-import baue;
-import bdpy;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQLifecycleBusinessObserver;
 import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.pluginsdk.PluginRuntime;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.service.Cmd2HandlerMapHelper;
+import com.tencent.mobileqq.service.MobileQQServiceBase;
+import com.tencent.mobileqq.transfile.InitHwEngineValue;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class AppInterface
   extends AppRuntime
-  implements bdpy
 {
-  public BaseApplicationImpl app;
-  protected HttpCommunicator comunicator;
-  private MqqHandler defaultHanlder = new MqqHandler(Looper.getMainLooper());
+  private final ConcurrentHashMap<String, BusinessHandler> allHandler = new ConcurrentHashMap();
+  protected MobileQQ app;
+  private final List<BusinessObserver> bgObservers = new Vector();
+  private MqqHandler defaultHandler = new MqqHandler(Looper.getMainLooper());
+  private final List<BusinessObserver> defaultObservers = new Vector();
   protected final ConcurrentHashMap<Class, MqqHandler> handlerMap = new ConcurrentHashMap();
-  public HwEngine mHwEngine;
-  private ProtoReqManager mProtoManager;
-  private TroopFileProtoReqMgr mTroopFileProtoReqMgr;
-  protected String procName = "";
+  protected HwEngine mHwEngine;
+  protected String processName = "";
+  private final List<BusinessObserver> uiObservers = new Vector();
   
-  public AppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public AppInterface(MobileQQ paramMobileQQ, String paramString)
   {
-    this.app = paramBaseApplicationImpl;
-    this.procName = paramString;
+    this.app = paramMobileQQ;
+    this.processName = paramString;
   }
   
-  private static void doFileIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
+  private void destroyBusinessObserverList()
   {
-    if (paramInt1 == 1)
-    {
-      paramArrayList.add("param_WIFIFileFlow");
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("mqq", 4, new Object[] { "onDestroy, uiObservers size:", Integer.valueOf(this.uiObservers.size()), ", bgObservers size:", Integer.valueOf(this.uiObservers.size()), ", defaultObservers size:", Integer.valueOf(this.defaultObservers.size()) });
     }
-    paramArrayList.add("param_XGFileFlow");
-  }
-  
-  private static void doPicIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
-  {
-    if (paramInt1 == 1)
+    synchronized (this.uiObservers)
     {
-      paramArrayList.add("param_WIFIPicFlow");
-      if (paramBoolean) {
-        if (paramInt2 == 0) {
-          paramArrayList.add("param_WIFIC2CPicUploadFlow");
-        }
-      }
-    }
-    do
-    {
-      do
+      this.uiObservers.clear();
+      synchronized (this.bgObservers)
       {
-        do
+        this.bgObservers.clear();
+        synchronized (this.defaultObservers)
         {
-          do
+          this.defaultObservers.clear();
+          synchronized (this.allHandler)
           {
-            return;
-            if ((paramInt2 == 1) || (paramInt2 == 3000))
+            Iterator localIterator = this.allHandler.entrySet().iterator();
+            for (;;)
             {
-              paramArrayList.add("param_WIFIGroupPicUploadFlow");
-              return;
+              boolean bool = localIterator.hasNext();
+              if (!bool) {
+                break;
+              }
+              try
+              {
+                BusinessHandler localBusinessHandler = (BusinessHandler)((Map.Entry)localIterator.next()).getValue();
+                if (localBusinessHandler != null) {
+                  localBusinessHandler.onDestroy();
+                }
+              }
+              catch (Exception localException)
+              {
+                QLog.d("mqq", 1, "handler destroy fail", localException);
+              }
             }
-          } while ((paramInt2 != 1001) && (paramInt2 != 1003) && (paramInt2 != 1025) && (paramInt2 != 10002));
-          paramArrayList.add("param_WIFINearbyPicUploadFlow");
-          return;
-          if (paramInt2 == 0)
-          {
-            paramArrayList.add("param_WIFIC2CPicDownloadFlow");
             return;
           }
-          if ((paramInt2 == 1) || (paramInt2 == 3000))
-          {
-            paramArrayList.add("param_WIFIGroupPicDownloadFlow");
-            return;
-          }
-        } while ((paramInt2 != 1001) && (paramInt2 != 10002) && (paramInt2 != 1003) && (paramInt2 != 1025));
-        paramArrayList.add("param_WIFINearbyPicDownloadFlow");
-        return;
-        paramArrayList.add("param_XGPicFlow");
-        if (!paramBoolean) {
-          break;
         }
-        if (paramInt2 == 0)
-        {
-          paramArrayList.add("param_XGC2CPicUploadFlow");
-          return;
-        }
-        if ((paramInt2 == 1) || (paramInt2 == 3000))
-        {
-          paramArrayList.add("param_XGGroupPicUploadFlow");
-          return;
-        }
-      } while ((paramInt2 != 10002) && (paramInt2 != 1001) && (paramInt2 != 1003));
-      paramArrayList.add("param_XGNearbyPicUploadFlow");
-      return;
-      if (paramInt2 == 0)
-      {
-        paramArrayList.add("param_XGC2CPicDownloadFlow");
-        return;
-      }
-      if ((paramInt2 == 1) || (paramInt2 == 3000))
-      {
-        paramArrayList.add("param_XGGroupPicDownloadFlow");
-        return;
-      }
-    } while ((paramInt2 != 10002) && (paramInt2 != 1001) && (paramInt2 != 1003));
-    paramArrayList.add("param_XGNearbyPicDownloadFlow");
-  }
-  
-  private static void doPttIncrease(boolean paramBoolean, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
-  {
-    if (paramInt1 == 1)
-    {
-      paramArrayList.add("param_WIFIVoiceFlow");
-      return;
-    }
-    paramArrayList.add("param_XGVoiceFlow");
-  }
-  
-  private static String[] getAppDataIncermentTags(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowStat", 2, "uin:" + paramString + ",isUp:" + paramBoolean + ",netType:" + paramInt1 + ",fileType:" + paramInt2 + ",busiType:" + paramInt3 + ",flow:" + paramLong);
-    }
-    paramString = new ArrayList();
-    paramString.add("param_Flow");
-    if (paramInt1 == 1)
-    {
-      paramString.add("param_WIFIFlow");
-      switch (paramInt2)
-      {
       }
     }
     for (;;)
     {
-      return (String[])paramString.toArray(new String[0]);
-      paramString.add("param_XGFlow");
-      break;
-      doPicIncrease(paramBoolean, paramInt1, paramInt3, paramString);
-      continue;
-      doPttIncrease(paramBoolean, paramInt1, paramInt3, paramString);
-      continue;
-      doFileIncrease(paramBoolean, paramInt1, paramInt3, paramString);
-      continue;
-      if (paramInt1 == 1)
+      throw localObject5;
+    }
+  }
+  
+  private void invokeSkin()
+  {
+    Class localClass = Class.forName("com.tencent.mobileqq.vas.theme.SimpleTintManager");
+    Object localObject = localClass.getMethod("instance", new Class[0]).invoke(localClass, new Object[0]);
+    localClass.getMethod("checkSkinEngineInit", new Class[0]).invoke(localObject, new Object[0]);
+  }
+  
+  private void removeOriginObserver(List<BusinessObserver> paramList, QQLifecycleBusinessObserver paramQQLifecycleBusinessObserver)
+  {
+    try
+    {
+      int i = paramList.indexOf(paramQQLifecycleBusinessObserver);
+      if (i >= 0)
       {
-        paramString.add("param_WIFIUniformDLDownloadFlow");
-      }
-      else
-      {
-        paramString.add("param_XGUniformDLDownloadFlow");
-        continue;
-        if (paramInt1 == 1)
-        {
-          paramString.add("param_WIFIThemeDownloadFlow");
+        paramQQLifecycleBusinessObserver = (BusinessObserver)paramList.remove(i);
+        if ((paramQQLifecycleBusinessObserver instanceof QQLifecycleBusinessObserver)) {
+          ((QQLifecycleBusinessObserver)paramQQLifecycleBusinessObserver).markObserverRemove();
         }
-        else
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void addDefaultObservers(@NotNull BusinessObserver paramBusinessObserver)
+  {
+    synchronized (this.defaultObservers)
+    {
+      paramBusinessObserver = new QQLifecycleBusinessObserver(paramBusinessObserver);
+      if (!this.defaultObservers.contains(paramBusinessObserver)) {
+        this.defaultObservers.add(paramBusinessObserver);
+      }
+      return;
+    }
+  }
+  
+  public void addObserver(BusinessObserver paramBusinessObserver)
+  {
+    addObserver(paramBusinessObserver, false);
+  }
+  
+  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  {
+    if (paramBusinessObserver == null) {
+      return;
+    }
+    paramBusinessObserver = new QQLifecycleBusinessObserver(paramBusinessObserver);
+    if (paramBoolean) {
+      synchronized (this.bgObservers)
+      {
+        if (!this.bgObservers.contains(paramBusinessObserver)) {
+          this.bgObservers.add(paramBusinessObserver);
+        }
+        return;
+      }
+    }
+    synchronized (this.uiObservers)
+    {
+      if (!this.uiObservers.contains(paramBusinessObserver)) {
+        this.uiObservers.add(paramBusinessObserver);
+      }
+      return;
+    }
+  }
+  
+  public boolean containObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  {
+    paramBusinessObserver = new QQLifecycleBusinessObserver(paramBusinessObserver);
+    if (paramBoolean) {
+      return this.bgObservers.contains(paramBusinessObserver);
+    }
+    return this.uiObservers.contains(paramBusinessObserver);
+  }
+  
+  protected BusinessHandler createHandler(String paramString)
+  {
+    Object localObject1;
+    try
+    {
+      Constructor[] arrayOfConstructor = Class.forName(paramString).getDeclaredConstructors();
+      int j = arrayOfConstructor.length;
+      localObject1 = null;
+      int i = 0;
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (i >= j) {
+          break label173;
+        }
+        Constructor localConstructor = arrayOfConstructor[i];
+        try
         {
-          paramString.add("param_XGThemeDownloadFlow");
-          continue;
-          if (paramInt1 == 1)
+          Class[] arrayOfClass = localConstructor.getParameterTypes();
+          localObject2 = localObject1;
+          if (arrayOfClass.length == 1)
           {
-            paramString.add("param_WIFIAvatarPicDownloadFlow");
-          }
-          else
-          {
-            paramString.add("param_XGAvatarPicDownloadFlow");
-            continue;
-            if (paramInt1 == 1) {
-              paramString.add("param_WIFICircleDownloadFlow");
-            } else {
-              paramString.add("param_XGCircleDownloadFlow");
+            localObject2 = localObject1;
+            if (AppInterface.class.isAssignableFrom(arrayOfClass[0]))
+            {
+              localConstructor.setAccessible(true);
+              localObject2 = (BusinessHandler)localConstructor.newInstance(new Object[] { this });
+              try
+              {
+                Cmd2HandlerMapHelper.a(paramString, ((BusinessHandler)localObject2).getCommandList());
+              }
+              catch (Exception paramString)
+              {
+                localObject1 = localObject2;
+                break label130;
+              }
             }
           }
+          i += 1;
+          localObject1 = localObject2;
         }
+        catch (Exception paramString) {}
       }
+      QLog.e("mqq", 1, paramString, new Object[0]);
     }
-  }
-  
-  public static boolean isAppOnForeground(Context paramContext)
-  {
-    Object localObject = (ActivityManager)paramContext.getApplicationContext().getSystemService("activity");
-    paramContext = paramContext.getApplicationContext().getPackageName();
-    localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    catch (Exception paramString)
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if ((localRunningAppProcessInfo.processName.equals(paramContext)) && (localRunningAppProcessInfo.importance == 100)) {
-        return true;
-      }
+      localObject1 = null;
     }
-    return false;
-  }
-  
-  public static void sendAppDataIncerment(PluginRuntime paramPluginRuntime, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    paramPluginRuntime.sendAppDataIncerment(paramString, getAppDataIncermentTags(paramString, paramBoolean, paramInt1, paramInt2, paramInt3, paramLong), paramLong);
-  }
-  
-  public void addObserver(alpg paramalpg) {}
-  
-  public void addObserver(alpg paramalpg, boolean paramBoolean) {}
-  
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    sendAppDataIncerment(getAccount(), paramBoolean, paramInt1, paramInt2, paramInt3, paramLong);
+    label130:
+    Object localObject2 = localObject1;
+    if ((paramString instanceof InvocationTargetException))
+    {
+      QLog.e("mqq", 1, ((InvocationTargetException)paramString).getTargetException(), new Object[0]);
+      localObject2 = localObject1;
+    }
+    label173:
+    return localObject2;
   }
   
   public abstract BaseApplication getApp();
   
   public abstract int getAppid();
   
-  public Object getBusinessHandler(int paramInt)
+  public BusinessHandler getBusinessHandler(String paramString)
   {
-    return null;
+    Object localObject = (BusinessHandler)this.allHandler.get(paramString);
+    if (localObject != null) {
+      return localObject;
+    }
+    synchronized (this.allHandler)
+    {
+      BusinessHandler localBusinessHandler = (BusinessHandler)this.allHandler.get(paramString);
+      localObject = localBusinessHandler;
+      if (localBusinessHandler == null)
+      {
+        localBusinessHandler = createHandler(paramString);
+        localObject = localBusinessHandler;
+        if (localBusinessHandler != null)
+        {
+          this.allHandler.put(paramString, localBusinessHandler);
+          localObject = localBusinessHandler;
+        }
+      }
+      return localObject;
+    }
   }
   
-  public List<alpg> getBusinessObserver(int paramInt)
+  public List<BusinessObserver> getBusinessObserver(int paramInt)
   {
-    return null;
+    if (paramInt == 1) {
+      return this.uiObservers;
+    }
+    if (paramInt == 2) {
+      return this.bgObservers;
+    }
+    if (paramInt == 0) {
+      return this.defaultObservers;
+    }
+    return this.defaultObservers;
   }
   
   public abstract String getCurrentAccountUin();
@@ -254,118 +275,64 @@ public abstract class AppInterface
     return "";
   }
   
-  public String getDisplayName(int paramInt, String paramString1, String paramString2)
-  {
-    return null;
-  }
-  
-  public awgg getEntityManagerFactory()
-  {
-    return getEntityManagerFactory(getAccount());
-  }
-  
-  public abstract awgg getEntityManagerFactory(String paramString);
-  
   public MqqHandler getHandler(Class paramClass)
   {
     if (this.handlerMap.get(paramClass) != null) {
       return (MqqHandler)this.handlerMap.get(paramClass);
     }
-    return this.defaultHanlder;
+    return this.defaultHandler;
   }
   
-  public HttpCommunicator getHttpCommunicatort()
+  public MqqHandler getHandlerWithoutDefault(Class paramClass)
   {
-    if (this.comunicator == null) {}
-    try
-    {
-      if (this.comunicator == null) {
-        httpCommunicatorCreate();
-      }
-      return this.comunicator;
-    }
-    finally {}
+    return (MqqHandler)this.handlerMap.get(paramClass);
   }
   
   public HwEngine getHwEngine()
   {
     if (this.mHwEngine == null)
     {
-      aorl localaorl = (aorl)aoks.a().a(538);
-      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this, alvw.a(), localaorl.a);
+      InitHwEngineValue localInitHwEngineValue = new InitHwEngineValue();
+      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this, localInitHwEngineValue.localId, localInitHwEngineValue.switchIpv6);
     }
     return this.mHwEngine;
   }
   
-  public baue getNetEngine(int paramInt)
+  public MobileQQServiceBase getMobileQQService()
   {
     return null;
   }
   
-  public ProtoReqManager getProtoReqManager()
-  {
-    if (this.mProtoManager == null) {}
-    try
-    {
-      if (this.mProtoManager == null) {
-        this.mProtoManager = new ProtoReqManager(this);
-      }
-      return this.mProtoManager;
-    }
-    finally {}
-  }
-  
-  public bard getTransFileController()
-  {
-    return null;
-  }
-  
-  public TroopFileProtoReqMgr getTroopFileProtoReqMgr()
-  {
-    if (this.mTroopFileProtoReqMgr == null) {}
-    try
-    {
-      if (this.mTroopFileProtoReqMgr == null) {
-        this.mTroopFileProtoReqMgr = new TroopFileProtoReqMgr(this);
-      }
-      return this.mTroopFileProtoReqMgr;
-    }
-    finally {}
-  }
-  
-  protected void httpCommunicatorCreate()
-  {
-    this.comunicator = new HttpCommunicator(this, 128);
-    this.comunicator.a();
-  }
-  
-  public boolean isAppOnForeground(Context paramContext, String paramString)
-  {
-    paramContext = ((ActivityManager)paramContext.getApplicationContext().getSystemService("activity")).getRunningAppProcesses();
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if ((localRunningAppProcessInfo.processName.equals(paramString)) && (localRunningAppProcessInfo.importance == 100)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    if (MobileQQ.sProcessId != 1) {
+      try
+      {
+        invokeSkin();
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.d("mqq", 1, "appinterface on create error : ", paramBundle);
+      }
+    }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     this.handlerMap.clear();
-    this.defaultHanlder.removeCallbacksAndMessages(null);
+    this.defaultHandler.removeCallbacksAndMessages(null);
+    destroyBusinessObserverList();
+  }
+  
+  public void receiveToService(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    MobileQQServiceBase localMobileQQServiceBase = getMobileQQService();
+    if (localMobileQQServiceBase != null) {
+      localMobileQQServiceBase.handleResponse(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    }
   }
   
   public void removeHandler(Class paramClass)
@@ -373,51 +340,24 @@ public abstract class AppInterface
     this.handlerMap.remove(paramClass);
   }
   
-  public void removeObserver(alpg paramalpg) {}
-  
-  public void reportClickEvent(String paramString1, String paramString2)
+  public void removeObserver(BusinessObserver paramBusinessObserver)
   {
-    reportClickEvent(paramString1, "", "", paramString2, paramString2, 0, 0, "", "", "", "");
-  }
-  
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9) {}
-  
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9) {}
-  
-  public void sendAppDataIncerment(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowStat", 2, "uin:" + paramString + ",isUp:" + paramBoolean + ",netType:" + paramInt1 + ",fileType:" + paramInt2 + ",busiType:" + paramInt3 + ",flow:" + paramLong);
-    }
-    if ((!paramBoolean) && ((paramInt2 == 1) || (paramInt2 == 65538) || (paramInt2 == 65537) || (paramInt2 == 131075)) && ((paramInt3 == 1) || (paramInt3 == 3000) || (paramInt3 == 0)))
-    {
-      if (paramInt1 == 1) {
-        break label156;
-      }
-      paramBoolean = true;
-      if (paramInt3 != 0) {
-        break label161;
-      }
-    }
-    for (;;)
-    {
-      awin.a(paramLong, paramBoolean, bool);
+    if (paramBusinessObserver == null) {
       return;
-      label156:
-      paramBoolean = false;
-      break;
-      label161:
-      bool = false;
+    }
+    paramBusinessObserver = new QQLifecycleBusinessObserver(paramBusinessObserver);
+    removeOriginObserver(this.uiObservers, paramBusinessObserver);
+    removeOriginObserver(this.bgObservers, paramBusinessObserver);
+    removeOriginObserver(this.defaultObservers, paramBusinessObserver);
+  }
+  
+  public void sendToService(ToServiceMsg paramToServiceMsg)
+  {
+    MobileQQServiceBase localMobileQQServiceBase = getMobileQQService();
+    if (localMobileQQServiceBase != null) {
+      localMobileQQServiceBase.handleRequest(paramToServiceMsg);
     }
   }
-  
-  public void sendAppDataIncerment(String paramString, String[] paramArrayOfString, long paramLong)
-  {
-    if (paramArrayOfString != null) {}
-  }
-  
-  public void sendToService(ToServiceMsg paramToServiceMsg) {}
   
   public void setHandler(Class paramClass, MqqHandler paramMqqHandler)
   {
@@ -431,7 +371,7 @@ public abstract class AppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.AppInterface
  * JD-Core Version:    0.7.0.1
  */

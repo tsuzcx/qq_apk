@@ -13,8 +13,8 @@ import java.util.Random;
 public class ReportClientInfo
   extends AsyncStep
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<Long, Long> a = new HashMap();
+  private static Object b = new Object();
   
   private static void a(long paramLong, boolean paramBoolean)
   {
@@ -46,16 +46,16 @@ public class ReportClientInfo
     try
     {
       Long localLong1 = Long.valueOf(System.currentTimeMillis());
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (b)
       {
-        if (jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+        if (a.containsKey(Long.valueOf(paramLong)))
         {
-          Long localLong2 = (Long)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+          Long localLong2 = (Long)a.get(Long.valueOf(paramLong));
           if (localLong1.longValue() - localLong2.longValue() < 43200000L) {
             return false;
           }
         }
-        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localLong1);
+        a.put(Long.valueOf(paramLong), localLong1);
       }
       return true;
     }
@@ -65,15 +65,15 @@ public class ReportClientInfo
     }
   }
   
-  public int a()
+  protected int doStep()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getLongAccountUin(), true);
+    a(this.mAutomator.k.getLongAccountUin(), true);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ReportClientInfo
  * JD-Core Version:    0.7.0.1
  */

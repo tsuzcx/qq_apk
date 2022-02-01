@@ -1,15 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
-import ampj;
 import android.content.Intent;
-import aysc;
-import azpn;
-import azqs;
-import bkjb;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModel;
+import com.tencent.mobileqq.bridge.ReportControllerServiceHolder;
+import com.tencent.mobileqq.bridge.report.service.IReportService;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 class ReportReceiver$ReportRunner
   implements Runnable
@@ -21,83 +17,69 @@ class ReportReceiver$ReportRunner
     this.a = paramIntent;
   }
   
-  public void run()
+  private void a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
-    for (;;)
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localAppRuntime != null)
     {
-      return;
-      localObject = (QQAppInterface)localObject;
-      try
-      {
-        localIntent = this.a;
-        i = localIntent.getIntExtra("is_runtime", -1);
-        if (i == 1001)
-        {
-          ((ampj)((QQAppInterface)localObject).getManager(126)).a(localIntent);
-          return;
-        }
-        str1 = localIntent.getStringExtra("reporting_tag");
-        str2 = localIntent.getStringExtra("reporting_detail");
-        j = localIntent.getIntExtra("reporting_count", 1);
-      }
-      catch (Exception localException)
-      {
-        try
-        {
-          Intent localIntent;
-          int i;
-          String str1;
-          String str2;
-          int j;
-          if ("dc02528".equals(str1))
-          {
-            if ((i == 0) || (i != 1)) {
-              continue;
-            }
-            aysc.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
-            return;
-          }
-          if ("dc02181".equals(str1))
-          {
-            if (i == 0)
-            {
-              azpn.b(str1, (QQAppInterface)localObject, str2);
-              return;
-            }
-            if (i != 1) {
-              continue;
-            }
-            azpn.a(str1, (QQAppInterface)localObject, str2);
-            return;
-          }
-          if ("dc05076".equals(str1))
-          {
-            bkjb.a().a((AppRuntime)localObject, str1, str2);
-            return;
-          }
-          if (i == 0)
-          {
-            azqs.b((QQAppInterface)localObject, str1, str2, j);
-            return;
-          }
-          if (i != 1) {
-            continue;
-          }
-          azqs.a((QQAppInterface)localObject, str1, str2, j);
-          return;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError) {}
-        localException = localException;
+      if (!"com.tencent.mobileqq".equals(MobileQQ.sMobileQQ.getQQProcessName())) {
         return;
       }
+      int i = this.a.getIntExtra("is_runtime", -1);
+      Object localObject = this.a.getStringExtra("reporting_tag");
+      if (a(i, (String)localObject))
+      {
+        String str = this.a.getStringExtra("reporting_detail");
+        int j = this.a.getIntExtra("reporting_count", 1);
+        if (i == 0)
+        {
+          ReportController.b(localAppRuntime, (String)localObject, str, j);
+          return;
+        }
+        if (i == 1) {
+          ReportController.a(localAppRuntime, (String)localObject, str, j);
+        }
+      }
+      else
+      {
+        localObject = ReportControllerServiceHolder.c();
+        if (localObject != null) {
+          ((IReportService)localObject).a(this.a, localAppRuntime);
+        }
+      }
+    }
+  }
+  
+  private boolean a(int paramInt, String paramString)
+  {
+    if (paramInt == 1001) {
+      return false;
+    }
+    if ("dc02528".equals(paramString)) {
+      return false;
+    }
+    if ("dc02181".equals(paramString)) {
+      return false;
+    }
+    return !"dc_qqgame".equals(paramString);
+  }
+  
+  public void run()
+  {
+    try
+    {
+      a();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ReportReceiver", 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportReceiver.ReportRunner
  * JD-Core Version:    0.7.0.1
  */

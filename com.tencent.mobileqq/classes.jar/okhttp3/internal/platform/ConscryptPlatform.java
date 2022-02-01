@@ -64,18 +64,18 @@ public class ConscryptPlatform
       SSLContext localSSLContext1 = SSLContext.getInstance("TLSv1.3", getProvider());
       return localSSLContext1;
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
+    try
     {
-      try
-      {
-        SSLContext localSSLContext2 = SSLContext.getInstance("TLS", getProvider());
-        return localSSLContext2;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-      {
-        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
-      }
+      SSLContext localSSLContext2 = SSLContext.getInstance("TLS", getProvider());
+      return localSSLContext2;
     }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+    {
+      label25:
+      break label25;
+    }
+    throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
   }
   
   @Nullable
@@ -111,7 +111,7 @@ public class ConscryptPlatform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.platform.ConscryptPlatform
  * JD-Core Version:    0.7.0.1
  */

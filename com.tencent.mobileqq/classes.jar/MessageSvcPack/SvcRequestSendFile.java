@@ -8,12 +8,12 @@ public final class SvcRequestSendFile
   extends JceStruct
 {
   static stFileInfo cache_stFile;
-  public byte cFileType;
-  public byte cKeyType;
-  public long lToAppId;
-  public long lToInstanceId;
-  public long lToUin;
-  public stFileInfo stFile;
+  public byte cFileType = 0;
+  public byte cKeyType = 0;
+  public long lToAppId = 0L;
+  public long lToInstanceId = 0L;
+  public long lToUin = 0L;
+  public stFileInfo stFile = null;
   
   public SvcRequestSendFile() {}
   
@@ -52,7 +52,7 @@ public final class SvcRequestSendFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestSendFile
  * JD-Core Version:    0.7.0.1
  */

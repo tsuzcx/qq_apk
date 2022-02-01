@@ -1,130 +1,108 @@
+import android.content.res.Resources;
+import android.util.Pair;
+import android.view.View;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.photo.LocalPhotoInfo;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GestureSelectGridView;
-import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class emu
-  implements GestureSelectGridView.OnSelectListener
+  implements AdapterView.OnItemClickListener
 {
-  int jdField_a_of_type_Int = -2147483648;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 2147483647;
-  
   public emu(PhotoListActivity paramPhotoListActivity) {}
   
-  public void a()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnSelectListener", 2, "onSelectEnd");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-  }
-  
-  public void a(int paramInt)
-  {
-    boolean bool2 = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    LocalPhotoInfo localLocalPhotoInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ena.a(paramInt);
-    label37:
-    PhotoListActivity localPhotoListActivity;
-    if (localLocalPhotoInfo.e == 1)
+    int i = 2;
+    switch (this.a.jdField_a_of_type_Emz.getItemViewType(paramInt))
     {
-      bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      if (this.jdField_a_of_type_Boolean) {
-        break label122;
+    default: 
+      return;
+    case 0: 
+      if (!PhotoListActivity.f(this.a)) {
+        PhotoListActivity.c(this.a, true);
       }
-    }
-    label122:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      if (PhotoListActivity.a(localPhotoListActivity, localLocalPhotoInfo, bool1))
+      if (this.a.jdField_a_of_type_Boolean)
       {
-        PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
+        paramAdapterView = this.a.jdField_a_of_type_Emz.a(paramInt);
+        PhotoListActivity.a(this.a, paramAdapterView.a);
+        return;
       }
-      if (!QLog.isColorLevel()) {
+      emz localemz = this.a.jdField_a_of_type_Emz;
+      LocalPhotoInfo localLocalPhotoInfo = localemz.a(paramInt);
+      paramInt = localLocalPhotoInfo.e;
+      if ((paramInt == 2) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() >= this.a.c))
+      {
+        QQToast.a(this.a, this.a.getString(2131558990, new Object[] { Integer.valueOf(this.a.c) }), 0).b(this.a.d);
+        return;
+      }
+      label209:
+      String str;
+      if (paramInt == 1)
+      {
+        paramInt = i;
+        localLocalPhotoInfo.e = paramInt;
+        if (localLocalPhotoInfo.e != 1) {
+          break label381;
+        }
+        paramInt = 1;
+        str = localLocalPhotoInfo.a;
+        if (paramInt == 0) {
+          break label386;
+        }
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
+        paramView = (LinkedHashMap)AlbumUtil.b.get(PhotoListActivity.a(this.a));
+        paramAdapterView = paramView;
+        if (paramView == null)
+        {
+          paramAdapterView = new LinkedHashMap();
+          AlbumUtil.b.put(PhotoListActivity.a(this.a), paramAdapterView);
+        }
+        paramAdapterView.put(str, Integer.valueOf(this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.q()));
+        paramAdapterView = AlbumUtil.c;
+        if (!paramAdapterView.containsKey(str)) {
+          paramAdapterView.put(str, new Pair(PhotoListActivity.a(this.a), PhotoListActivity.b(this.a)));
+        }
+      }
+      for (;;)
+      {
+        localemz.notifyDataSetChanged();
+        if (PhotoListActivity.a(this.a) == 1) {
+          PhotoListActivity.b(this.a, localLocalPhotoInfo.a);
+        }
+        PhotoListActivity.a(this.a);
+        return;
+        paramInt = 1;
         break;
+        label381:
+        paramInt = 0;
+        break label209;
+        label386:
+        this.a.jdField_a_of_type_JavaUtilArrayList.remove(str);
+        paramAdapterView = (HashMap)AlbumUtil.b.get(PhotoListActivity.a(this.a));
+        if (paramAdapterView != null) {
+          paramAdapterView.remove(str);
+        }
+        paramAdapterView = AlbumUtil.c;
+        if (paramAdapterView.containsKey(str)) {
+          paramAdapterView.remove(str);
+        }
       }
-      QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
+    }
+    if (!Utils.e())
+    {
+      Toast.makeText(this.a, this.a.getResources().getString(2131562496), 0).show();
       return;
-      bool1 = false;
-      break label37;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
-    }
-    int j;
-    int i;
-    label81:
-    LocalPhotoInfo localLocalPhotoInfo;
-    PhotoListActivity localPhotoListActivity;
-    if (paramInt2 < paramInt1)
-    {
-      j = paramInt1;
-      i = paramInt2;
-      if (this.b > paramInt2)
-      {
-        this.b = paramInt2;
-        i = paramInt2;
-        j = paramInt1;
-      }
-      paramInt1 = i;
-      if (paramInt1 > j) {
-        break label160;
-      }
-      localLocalPhotoInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ena.a(paramInt1);
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      if (this.jdField_a_of_type_Boolean) {
-        break label154;
-      }
-    }
-    label154:
-    for (boolean bool = true;; bool = false)
-    {
-      PhotoListActivity.a(localPhotoListActivity, localLocalPhotoInfo, bool);
-      paramInt1 += 1;
-      break label81;
-      if (this.jdField_a_of_type_Int < paramInt2) {
-        this.jdField_a_of_type_Int = paramInt2;
-      }
-      j = paramInt2;
-      i = paramInt1;
-      break;
-    }
-    label160:
-    paramInt1 = j + 1;
-    while (paramInt1 <= this.jdField_a_of_type_Int)
-    {
-      localLocalPhotoInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ena.a(paramInt1);
-      PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, localLocalPhotoInfo, this.jdField_a_of_type_Boolean);
-      paramInt1 += 1;
-    }
-    paramInt1 = this.b;
-    while (paramInt1 < i)
-    {
-      localLocalPhotoInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Ena.a(paramInt1);
-      PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, localLocalPhotoInfo, this.jdField_a_of_type_Boolean);
-      paramInt1 += 1;
-    }
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
+    PhotoListActivity.d(this.a);
   }
 }
 

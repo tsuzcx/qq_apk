@@ -10,8 +10,8 @@ public final class User_Info
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public int eStarState;
-  public Map<String, String> extendInfo;
+  public int eStarState = 0;
+  public Map<String, String> extendInfo = null;
   
   static
   {
@@ -35,14 +35,15 @@ public final class User_Info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.eStarState, 0);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 1);
+    Map localMap = this.extendInfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.User_Info
  * JD-Core Version:    0.7.0.1
  */

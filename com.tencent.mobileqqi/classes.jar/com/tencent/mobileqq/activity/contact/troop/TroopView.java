@@ -32,12 +32,12 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
+import egp;
 import egq;
 import egr;
 import egs;
 import egt;
 import egu;
-import egv;
 
 public class TroopView
   extends BaseTroopView
@@ -49,12 +49,12 @@ public class TroopView
   static final int jdField_e_of_type_Int = 1000;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public TroopListAdapter2 a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new egs(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new egr(this);
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   public SlideDetectListView a;
+  private egs jdField_a_of_type_Egs = new egs(this, null);
   private egt jdField_a_of_type_Egt = new egt(this, null);
   private egu jdField_a_of_type_Egu = new egu(this, null);
-  private egv jdField_a_of_type_Egv = new egv(this, null);
   int b;
   public boolean c = false;
   private View jdField_e_of_type_AndroidViewView;
@@ -157,12 +157,12 @@ public class TroopView
   
   private void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232651));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232650));
     LayoutInflater localLayoutInflater = LayoutInflater.from(a());
     this.e = localLayoutInflater.inflate(2130903944, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
-    this.e.findViewById(2131233086).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232382));
-    EditText localEditText = (EditText)this.e.findViewById(2131233087);
+    this.e.findViewById(2131233085).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232381));
+    EditText localEditText = (EditText)this.e.findViewById(2131233086);
     localEditText.setFocusableInTouchMode(false);
     localEditText.setOnClickListener(this);
     localEditText.setCursorVisible(false);
@@ -182,7 +182,7 @@ public class TroopView
   
   protected Dialog a()
   {
-    return new egr(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
+    return new egq(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
   }
   
   public void a()
@@ -203,10 +203,10 @@ public class TroopView
     a(2130903460);
     l();
     k();
+    a(this.jdField_a_of_type_Egs);
     a(this.jdField_a_of_type_Egt);
-    a(this.jdField_a_of_type_Egu);
     a(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    a(this.jdField_a_of_type_Egv);
+    a(this.jdField_a_of_type_Egu);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a())
     {
       this.jdField_a_of_type_Int = 6;
@@ -321,7 +321,7 @@ public class TroopView
     {
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2 = new TroopListAdapter2(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, i, false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new egq(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new egp(this));
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.notifyDataSetChanged();
       return;
     }
@@ -340,10 +340,10 @@ public class TroopView
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2 != null) {
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.b();
     }
+    b(this.jdField_a_of_type_Egs);
     b(this.jdField_a_of_type_Egt);
-    b(this.jdField_a_of_type_Egu);
     b(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    b(this.jdField_a_of_type_Egv);
+    b(this.jdField_a_of_type_Egu);
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2 != null) {
       this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.b();
     }

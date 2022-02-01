@@ -8,11 +8,11 @@ public final class GroupInfo
   extends JceStruct
   implements Cloneable
 {
-  public long lGroupCode;
-  public long lGroupSeq;
-  public long lMask;
-  public long lMemberSeq;
-  public long lRedPackTime;
+  public long lGroupCode = 0L;
+  public long lGroupSeq = 0L;
+  public long lMask = 0L;
+  public long lMemberSeq = 0L;
+  public long lRedPackTime = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -34,7 +34,7 @@ public final class GroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

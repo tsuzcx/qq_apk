@@ -17,6 +17,9 @@ class ViolaBrightnessController$1
   public void onChange(boolean paramBoolean, Uri paramUri)
   {
     super.onChange(paramBoolean, paramUri);
+    if (ViolaBrightnessController.access$000(this.this$0) == null) {
+      return;
+    }
     int i = Settings.System.getInt(ViolaBrightnessController.access$000(this.this$0).getContentResolver(), "screen_brightness", 125);
     if ((ViolaBrightnessController.access$100(this.this$0) != null) && (i > 0)) {
       ViolaBrightnessController.access$100(this.this$0).onChange(i / 255.0F);
@@ -25,7 +28,7 @@ class ViolaBrightnessController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.ViolaBrightnessController.1
  * JD-Core Version:    0.7.0.1
  */

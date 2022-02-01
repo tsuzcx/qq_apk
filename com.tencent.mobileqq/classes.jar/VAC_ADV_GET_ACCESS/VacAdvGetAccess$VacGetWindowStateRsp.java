@@ -1,0 +1,22 @@
+package VAC_ADV_GET_ACCESS;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+
+public final class VacAdvGetAccess$VacGetWindowStateRsp
+  extends MessageMicro<VacGetWindowStateRsp>
+{
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "err_code", "err_msg", "state_info" }, new Object[] { Integer.valueOf(0), "", null }, VacGetWindowStateRsp.class);
+  public final PBInt32Field err_code = PBField.initInt32(0);
+  public final PBStringField err_msg = PBField.initString("");
+  public VacAdvGetAccess.VacGetWindowStateRsp.StateInfo state_info = new VacAdvGetAccess.VacGetWindowStateRsp.StateInfo();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     VAC_ADV_GET_ACCESS.VacAdvGetAccess.VacGetWindowStateRsp
+ * JD-Core Version:    0.7.0.1
+ */

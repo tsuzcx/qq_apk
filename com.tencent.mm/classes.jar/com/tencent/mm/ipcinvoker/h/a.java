@@ -1,26 +1,49 @@
 package com.tencent.mm.ipcinvoker.h;
 
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.annotation.Annotation;
 
 public final class a
-  implements com.tencent.mm.ipcinvoker.h.a.a
 {
-  public final void a(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
+  public static boolean e(Class<?> paramClass, Class<? extends Annotation> paramClass1)
   {
-    AppMethodBeat.i(114123);
-    if (paramInt < 4)
+    AppMethodBeat.i(235654);
+    for (;;)
     {
-      AppMethodBeat.o(114123);
-      return;
+      if (paramClass == null)
+      {
+        AppMethodBeat.o(235654);
+        return false;
+      }
+      if (paramClass.isAnnotationPresent(paramClass1))
+      {
+        AppMethodBeat.o(235654);
+        return true;
+      }
+      Class[] arrayOfClass = paramClass.getInterfaces();
+      int j = arrayOfClass.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (arrayOfClass[i].isAnnotationPresent(paramClass1))
+        {
+          AppMethodBeat.o(235654);
+          return true;
+        }
+        i += 1;
+      }
+      if (paramClass.getSuperclass() == null) {
+        break;
+      }
+      paramClass = paramClass.getSuperclass();
     }
-    Log.println(paramInt, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(114123);
+    AppMethodBeat.o(235654);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.h.a
  * JD-Core Version:    0.7.0.1
  */

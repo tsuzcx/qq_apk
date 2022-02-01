@@ -17,9 +17,9 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.s.c;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.core.app.f.d;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
@@ -38,22 +38,22 @@ final class zzd
   
   private zzd(Context paramContext)
   {
-    AppMethodBeat.i(70023);
+    AppMethodBeat.i(3699);
     this.zzm = new AtomicInteger((int)SystemClock.elapsedRealtime());
     this.zzk = paramContext.getApplicationContext();
-    AppMethodBeat.o(70023);
+    AppMethodBeat.o(3699);
   }
   
   static zzd zzd(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(70021);
+      AppMethodBeat.i(3697);
       if (zzj == null) {
         zzj = new zzd(paramContext);
       }
       paramContext = zzj;
-      AppMethodBeat.o(70021);
+      AppMethodBeat.o(3697);
       return paramContext;
     }
     finally {}
@@ -61,19 +61,19 @@ final class zzd
   
   static String zzd(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(70022);
+    AppMethodBeat.i(3698);
     String str2 = paramBundle.getString(paramString);
     String str1 = str2;
     if (str2 == null) {
       str1 = paramBundle.getString(paramString.replace("gcm.n.", "gcm.notification."));
     }
-    AppMethodBeat.o(70022);
+    AppMethodBeat.o(3698);
     return str1;
   }
   
   private final Bundle zze()
   {
-    AppMethodBeat.i(70026);
+    AppMethodBeat.i(3702);
     Object localObject = null;
     try
     {
@@ -82,27 +82,27 @@ final class zzd
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      label30:
-      break label30;
+      label31:
+      break label31;
     }
     if ((localObject != null) && (((ApplicationInfo)localObject).metaData != null))
     {
       localObject = ((ApplicationInfo)localObject).metaData;
-      AppMethodBeat.o(70026);
+      AppMethodBeat.o(3702);
       return localObject;
     }
     localObject = Bundle.EMPTY;
-    AppMethodBeat.o(70026);
+    AppMethodBeat.o(3702);
     return localObject;
   }
   
   private final String zze(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(70025);
+    AppMethodBeat.i(3701);
     String str1 = zzd(paramBundle, paramString);
     if (!TextUtils.isEmpty(str1))
     {
-      AppMethodBeat.o(70025);
+      AppMethodBeat.o(3701);
       return str1;
     }
     str1 = String.valueOf(paramString);
@@ -114,7 +114,7 @@ final class zzd
       if (!TextUtils.isEmpty(str2)) {
         break;
       }
-      AppMethodBeat.o(70025);
+      AppMethodBeat.o(3701);
       return null;
     }
     Resources localResources = this.zzk.getResources();
@@ -128,7 +128,7 @@ final class zzd
       {
         paramBundle = paramBundle.substring(6);
         new StringBuilder(String.valueOf(paramBundle).length() + 49 + String.valueOf(str2).length()).append(paramBundle).append(" resource not found: ").append(str2).append(" Default value will be used.");
-        AppMethodBeat.o(70025);
+        AppMethodBeat.o(3701);
         return null;
       }
     }
@@ -142,7 +142,7 @@ final class zzd
         break;
       }
       paramBundle = localResources.getString(j);
-      AppMethodBeat.o(70025);
+      AppMethodBeat.o(3701);
       return paramBundle;
     }
     try
@@ -156,7 +156,7 @@ final class zzd
         i += 1;
       }
       paramBundle = localResources.getString(j, (Object[])localObject);
-      AppMethodBeat.o(70025);
+      AppMethodBeat.o(3701);
       return paramBundle;
     }
     catch (JSONException paramBundle)
@@ -168,7 +168,7 @@ final class zzd
       {
         paramBundle = paramBundle.substring(6);
         new StringBuilder(String.valueOf(paramBundle).length() + 41 + String.valueOf(str1).length()).append("Malformed ").append(paramBundle).append(": ").append(str1).append("  Default value will be used.");
-        AppMethodBeat.o(70025);
+        AppMethodBeat.o(3701);
         return null;
       }
     }
@@ -184,12 +184,12 @@ final class zzd
   final boolean zze(Bundle paramBundle)
   {
     Object localObject5 = null;
-    AppMethodBeat.i(70024);
+    AppMethodBeat.i(3700);
     Object localObject3 = zze(paramBundle, "gcm.n.title");
     if (TextUtils.isEmpty((CharSequence)localObject3)) {
       localObject3 = this.zzk.getApplicationInfo().loadLabel(this.zzk.getPackageManager());
     }
-    label775:
+    label774:
     for (;;)
     {
       String str1 = zze(paramBundle, "gcm.n.body");
@@ -206,21 +206,21 @@ final class zzd
           str2 = zzd(paramBundle, "gcm.n.color");
           localObject1 = zzd(paramBundle, "gcm.n.sound2");
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label346;
+            break label344;
           }
           localObject2 = null;
-          label126:
+          label127:
           localObject1 = zzd(paramBundle, "gcm.n.click_action");
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label460;
+            break label458;
           }
           localObject1 = new Intent((String)localObject1);
           ((Intent)localObject1).setPackage(this.zzk.getPackageName());
           ((Intent)localObject1).setFlags(268435456);
         }
       }
-      label527:
-      label1067:
+      label525:
+      label1068:
       for (;;)
       {
         Object localObject4 = new Bundle(paramBundle);
@@ -247,27 +247,27 @@ final class zzd
                 i = 17301651;
               }
               break;
-              label346:
+              label344:
               if ((!"default".equals(localObject1)) && (this.zzk.getResources().getIdentifier((String)localObject1, "raw", this.zzk.getPackageName()) != 0))
               {
                 localObject2 = this.zzk.getPackageName();
                 localObject2 = Uri.parse(String.valueOf(localObject2).length() + 24 + String.valueOf(localObject1).length() + "android.resource://" + (String)localObject2 + "/raw/" + (String)localObject1);
-                break label126;
+                break label127;
               }
               localObject2 = RingtoneManager.getDefaultUri(2);
-              break label126;
-              label460:
+              break label127;
+              label458:
               localObject1 = this.zzk.getPackageManager().getLaunchIntentForPackage(this.zzk.getPackageName());
               if (localObject1 != null) {
-                break label1067;
+                break label1068;
               }
               localObject4 = null;
               if ((!PlatformVersion.isAtLeastO()) || (this.zzk.getApplicationInfo().targetSdkVersion < 26)) {
-                break label961;
+                break label960;
               }
               localObject1 = zzd(paramBundle, "gcm.n.android_channel_id");
               if (PlatformVersion.isAtLeastO()) {
-                break label775;
+                break label774;
               }
               localObject1 = localObject5;
               localObject5 = new Notification.Builder(this.zzk).setAutoCancel(true).setSmallIcon(i);
@@ -294,7 +294,7 @@ final class zzd
             }
           }
         }
-        for (localObject1 = ((Notification.Builder)localObject5).build();; localObject1 = ((s.c)localObject1).build())
+        for (localObject1 = ((Notification.Builder)localObject5).build();; localObject1 = ((f.d)localObject1).DA())
         {
           localObject2 = zzd(paramBundle, "gcm.n.tag");
           Log.isLoggable("GcmNotification", 3);
@@ -306,7 +306,7 @@ final class zzd
             paramBundle = 37 + "GCM-Notification:" + l;
           }
           ((NotificationManager)localObject3).notify(paramBundle, 0, (Notification)localObject1);
-          AppMethodBeat.o(70024);
+          AppMethodBeat.o(3700);
           return true;
           localObject4 = PendingIntent.getActivity(this.zzk, this.zzm.getAndIncrement(), (Intent)localObject1, 1073741824);
           break;
@@ -314,43 +314,43 @@ final class zzd
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             if (((NotificationManager)localObject5).getNotificationChannel((String)localObject1) != null) {
-              break label527;
+              break label525;
             }
             new StringBuilder(String.valueOf(localObject1).length() + 122).append("Notification Channel requested (").append((String)localObject1).append(") has not been created by the app. Manifest configuration, or default, value will be used.");
           }
           if (this.zzl != null)
           {
             localObject1 = this.zzl;
-            break label527;
+            break label525;
           }
           this.zzl = zze().getString("com.google.android.gms.gcm.default_notification_channel_id");
           if ((!TextUtils.isEmpty(this.zzl)) && (((NotificationManager)localObject5).getNotificationChannel(this.zzl) != null))
           {
             localObject1 = this.zzl;
-            break label527;
+            break label525;
           }
           if (((NotificationManager)localObject5).getNotificationChannel("fcm_fallback_notification_channel") == null) {
-            ((NotificationManager)localObject5).createNotificationChannel(new NotificationChannel("fcm_fallback_notification_channel", this.zzk.getString(2131296304), 3));
+            ((NotificationManager)localObject5).createNotificationChannel(new NotificationChannel("fcm_fallback_notification_channel", this.zzk.getString(R.string.gcm_fallback_notification_channel_label), 3));
           }
           this.zzl = "fcm_fallback_notification_channel";
           localObject1 = this.zzl;
-          break label527;
-          label961:
-          localObject1 = new s.c(this.zzk).z(true).Y(i);
+          break label525;
+          label960:
+          localObject1 = new f.d(this.zzk).aC(true).eb(i);
           if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((s.c)localObject1).e((CharSequence)localObject3);
+            ((f.d)localObject1).l((CharSequence)localObject3);
           }
           if (!TextUtils.isEmpty(str1)) {
-            ((s.c)localObject1).f(str1);
+            ((f.d)localObject1).m(str1);
           }
           if (!TextUtils.isEmpty(str2)) {
-            ((s.c)localObject1).mColor = Color.parseColor(str2);
+            ((f.d)localObject1).ec(Color.parseColor(str2));
           }
           if (localObject2 != null) {
-            ((s.c)localObject1).b((Uri)localObject2);
+            ((f.d)localObject1).d((Uri)localObject2);
           }
           if (localObject4 != null) {
-            ((s.c)localObject1).ya = ((PendingIntent)localObject4);
+            ((f.d)localObject1).a((PendingIntent)localObject4);
           }
         }
       }
@@ -359,7 +359,7 @@ final class zzd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.zzd
  * JD-Core Version:    0.7.0.1
  */

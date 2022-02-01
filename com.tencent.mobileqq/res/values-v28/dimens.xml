@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="bk6">0.24</item>
+    <item type="dimen" name="bk7">0.4</item>
+    <item type="dimen" name="bk8">0.4</item>
+    <item type="dimen" name="bk9">0.24</item>
+    <item type="dimen" name="bka">0.12</item>
+    <item type="dimen" name="bkb">0.2</item>
+    <item type="dimen" name="bkc">0.2</item>
+    <item type="dimen" name="bkd">0.12</item>
+</resources>

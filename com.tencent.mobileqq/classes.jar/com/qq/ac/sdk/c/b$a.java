@@ -21,13 +21,15 @@ public final class b$a
   
   public final void onFailure(int paramInt)
   {
-    BaseInfoListener localBaseInfoListener = (BaseInfoListener)this.b.a.get(this.a);
-    if (localBaseInfoListener == null)
+    Object localObject = (BaseInfoListener)this.b.a.get(this.a);
+    if (localObject == null)
     {
-      com.qq.ac.sdk.g.b.b("DataInfoImplProxy", "baseInfoListener BaseInfoListener is null mType = " + this.a);
+      localObject = new StringBuilder("baseInfoListener BaseInfoListener is null mType = ");
+      ((StringBuilder)localObject).append(this.a);
+      com.qq.ac.sdk.g.b.b("DataInfoImplProxy", ((StringBuilder)localObject).toString());
       return;
     }
-    localBaseInfoListener.onFailure(-60001);
+    ((BaseInfoListener)localObject).onFailure(-60001);
     this.b.a.remove(this.a);
   }
   
@@ -36,40 +38,47 @@ public final class b$a
     BaseInfoListener localBaseInfoListener = (BaseInfoListener)this.b.a.get(this.a);
     if (localBaseInfoListener == null)
     {
-      com.qq.ac.sdk.g.b.b("DataInfoImplProxy", "baseInfoListener BaseInfoListener is null mType = " + this.a);
+      paramString = new StringBuilder("baseInfoListener BaseInfoListener is null mType = ");
+      paramString.append(this.a);
+      com.qq.ac.sdk.g.b.b("DataInfoImplProxy", paramString.toString());
       return;
     }
-    com.qq.ac.sdk.g.b.a("DataInfoImplProxy", "onResponse response = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder("onResponse response = ");
+    localStringBuilder.append(paramString);
+    com.qq.ac.sdk.g.b.a("DataInfoImplProxy", localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    try
     {
-      try
+      i = new JSONObject(paramString).getInt("ret");
+      if (i == 0)
       {
-        i = new JSONObject(paramString).getInt("ret");
-        if (i != 0) {
-          continue;
-        }
         paramString = com.b.a.b.a.a(paramString);
-        com.qq.ac.sdk.g.b.a("DataInfoImplProxy", "onResponse result = " + paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
+        localStringBuilder = new StringBuilder("onResponse result = ");
+        localStringBuilder.append(paramString);
+        com.qq.ac.sdk.g.b.a("DataInfoImplProxy", localStringBuilder.toString());
+        if (!TextUtils.isEmpty(paramString)) {
+          localBaseInfoListener.onResponse(paramString);
+        } else {
+          localBaseInfoListener.onFailure(-60003);
         }
-        localBaseInfoListener.onResponse(paramString);
       }
-      catch (JSONException paramString)
+      else
       {
-        int i;
-        localBaseInfoListener.onFailure(-60005);
-        continue;
         localBaseInfoListener.onFailure(i);
-        continue;
       }
-      this.b.a.remove(this.a);
-      return;
-      localBaseInfoListener.onFailure(-60003);
-      continue;
-      localBaseInfoListener.onFailure(-60004);
     }
+    catch (JSONException paramString)
+    {
+      int i;
+      label175:
+      label184:
+      break label175;
+    }
+    i = -60005;
+    break label184;
+    i = -60004;
+    localBaseInfoListener.onFailure(i);
+    this.b.a.remove(this.a);
   }
   
   public final BaseResponse onSyncResponse(String paramString)
@@ -79,7 +88,7 @@ public final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.ac.sdk.c.b.a
  * JD-Core Version:    0.7.0.1
  */

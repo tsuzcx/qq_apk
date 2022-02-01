@@ -1,47 +1,47 @@
 package com.tencent.mobileqq.activity;
 
-import adoj;
-import adok;
-import adol;
-import adom;
-import adon;
-import adop;
-import alpk;
-import alpq;
-import alto;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import awvn;
-import azqs;
-import bdgm;
-import bdhb;
-import bdjz;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.mobileqq.profile.view.ProfileLabelPanel;
+import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
+import com.tencent.mobileqq.profilecard.entity.ProfileLabelInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.profile.ProfileLabelInfo;>;
+import java.util.List<Lcom.tencent.mobileqq.profilecard.entity.ProfileLabelInfo;>;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,227 +49,35 @@ import org.json.JSONObject;
 public class ProfileLabelEditorActivity
   extends IphoneTitleBarActivity
 {
-  public float a;
-  public adop a;
-  private alpq a;
-  public Context a;
-  public GridView a;
-  public LinearLayout a;
-  public TextView a;
-  public awvn a;
-  public Card a;
-  public ProfileLabelPanel a;
-  public List<ProfileLabelInfo> a;
-  public boolean a;
-  public List<ProfileLabelTypeInfo> b = new ArrayList();
-  public List<Long> c = new ArrayList();
-  
-  public ProfileLabelEditorActivity()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Alpq = new adoj(this);
-  }
-  
-  /* Error */
-  private String a(String paramString)
-  {
-    // Byte code:
-    //   0: new 50	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: invokespecial 51	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore 5
-    //   9: aload_0
-    //   10: getfield 53	com/tencent/mobileqq/activity/ProfileLabelEditorActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   13: invokevirtual 59	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   16: aload_1
-    //   17: invokevirtual 65	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   20: astore_3
-    //   21: aload_3
-    //   22: astore_1
-    //   23: sipush 4096
-    //   26: newarray byte
-    //   28: astore 4
-    //   30: aload_3
-    //   31: astore_1
-    //   32: aload_3
-    //   33: aload 4
-    //   35: iconst_0
-    //   36: sipush 4096
-    //   39: invokevirtual 71	java/io/InputStream:read	([BII)I
-    //   42: istore_2
-    //   43: iload_2
-    //   44: iconst_m1
-    //   45: if_icmpeq +46 -> 91
-    //   48: aload_3
-    //   49: astore_1
-    //   50: aload 5
-    //   52: aload 4
-    //   54: iconst_0
-    //   55: iload_2
-    //   56: invokevirtual 75	java/io/ByteArrayOutputStream:write	([BII)V
-    //   59: goto -29 -> 30
-    //   62: astore 4
-    //   64: aload_3
-    //   65: astore_1
-    //   66: ldc 77
-    //   68: iconst_1
-    //   69: ldc 79
-    //   71: aload 4
-    //   73: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   76: aload_3
-    //   77: ifnull +7 -> 84
-    //   80: aload_3
-    //   81: invokevirtual 88	java/io/InputStream:close	()V
-    //   84: aload 5
-    //   86: invokevirtual 89	java/io/ByteArrayOutputStream:close	()V
-    //   89: aconst_null
-    //   90: areturn
-    //   91: aload_3
-    //   92: astore_1
-    //   93: new 91	java/lang/String
-    //   96: dup
-    //   97: aload 5
-    //   99: invokevirtual 95	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   102: ldc 97
-    //   104: invokespecial 100	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   107: astore 4
-    //   109: aload_3
-    //   110: ifnull +7 -> 117
-    //   113: aload_3
-    //   114: invokevirtual 88	java/io/InputStream:close	()V
-    //   117: aload 5
-    //   119: invokevirtual 89	java/io/ByteArrayOutputStream:close	()V
-    //   122: aload 4
-    //   124: areturn
-    //   125: astore_1
-    //   126: ldc 77
-    //   128: iconst_1
-    //   129: ldc 79
-    //   131: aload_1
-    //   132: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   135: aload 4
-    //   137: areturn
-    //   138: astore_1
-    //   139: ldc 77
-    //   141: iconst_1
-    //   142: ldc 79
-    //   144: aload_1
-    //   145: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   148: goto -59 -> 89
-    //   151: astore_3
-    //   152: aconst_null
-    //   153: astore_1
-    //   154: aload_1
-    //   155: ifnull +7 -> 162
-    //   158: aload_1
-    //   159: invokevirtual 88	java/io/InputStream:close	()V
-    //   162: aload 5
-    //   164: invokevirtual 89	java/io/ByteArrayOutputStream:close	()V
-    //   167: aload_3
-    //   168: athrow
-    //   169: astore_1
-    //   170: ldc 77
-    //   172: iconst_1
-    //   173: ldc 79
-    //   175: aload_1
-    //   176: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   179: goto -12 -> 167
-    //   182: astore_3
-    //   183: goto -29 -> 154
-    //   186: astore 4
-    //   188: aconst_null
-    //   189: astore_3
-    //   190: goto -126 -> 64
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	193	0	this	ProfileLabelEditorActivity
-    //   0	193	1	paramString	String
-    //   42	14	2	i	int
-    //   20	94	3	localInputStream	InputStream
-    //   151	17	3	localObject1	Object
-    //   182	1	3	localObject2	Object
-    //   189	1	3	localObject3	Object
-    //   28	25	4	arrayOfByte	byte[]
-    //   62	10	4	localIOException1	IOException
-    //   107	29	4	str	String
-    //   186	1	4	localIOException2	IOException
-    //   7	156	5	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   23	30	62	java/io/IOException
-    //   32	43	62	java/io/IOException
-    //   50	59	62	java/io/IOException
-    //   93	109	62	java/io/IOException
-    //   113	117	125	java/lang/Exception
-    //   117	122	125	java/lang/Exception
-    //   80	84	138	java/lang/Exception
-    //   84	89	138	java/lang/Exception
-    //   9	21	151	finally
-    //   158	162	169	java/lang/Exception
-    //   162	167	169	java/lang/Exception
-    //   23	30	182	finally
-    //   32	43	182	finally
-    //   50	59	182	finally
-    //   66	76	182	finally
-    //   93	109	182	finally
-    //   9	21	186	java/io/IOException
-  }
+  public static final int[][] a = { { 2130852769, 2131168266 }, { 2130852772, 2131168267 }, { 2130852775, 2131168268 } };
+  public LinearLayout b;
+  public TextView c;
+  public GridView d;
+  public ProfileLabelEditorActivity.MyLabelGridViewAdapter e;
+  public ProfileLabelPanel f;
+  public float g;
+  public boolean h;
+  public Card i;
+  public Context j;
+  public ProfileLabelPanel.LabelStatusManager k;
+  public List<ProfileLabelInfo> l = new ArrayList();
+  public List<ProfileLabelTypeInfo> m = new ArrayList();
+  public List<Long> n = new ArrayList();
+  private CardObserver o = new ProfileLabelEditorActivity.1(this);
   
   private List<ProfileLabelInfo> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((alto)this.app.getManager(51)).b(paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-    {
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqDataCard.getLabelList();
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        a(this.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  private void a(String paramString)
-  {
+    this.i = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(paramString);
+    paramString = this.i;
     if (paramString != null)
     {
-      paramString = new JSONArray(paramString);
-      int k = paramString.length();
-      int i = 0;
-      while (i < k)
-      {
-        Object localObject = paramString.optJSONObject(i);
-        ProfileLabelTypeInfo localProfileLabelTypeInfo = new ProfileLabelTypeInfo();
-        localProfileLabelTypeInfo.typeId = ((JSONObject)localObject).optString("id");
-        localProfileLabelTypeInfo.typeName = ((JSONObject)localObject).optString("name");
-        localProfileLabelTypeInfo.typeInfo = ((JSONObject)localObject).optString("classinfo");
-        localObject = ((JSONObject)localObject).optJSONArray("taglist");
-        int m = ((JSONArray)localObject).length();
-        int j = 0;
-        while (j < m)
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
-          ProfileLabelInfo localProfileLabelInfo = new ProfileLabelInfo();
-          localProfileLabelInfo.labelId = Long.valueOf(localJSONObject.optLong("id"));
-          localProfileLabelInfo.labelName = localJSONObject.optString("name");
-          localProfileLabelInfo.typeId = localProfileLabelTypeInfo.typeId;
-          localProfileLabelTypeInfo.labels.add(localProfileLabelInfo);
-          j += 1;
-        }
-        this.b.add(localProfileLabelTypeInfo);
-        i += 1;
+      this.l = paramString.getLabelList();
+      paramString = this.l;
+      if (paramString != null) {
+        b(paramString);
       }
     }
-  }
-  
-  private void a(List<ProfileLabelInfo> paramList)
-  {
-    this.c.clear();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramList.next();
-      this.c.add(localProfileLabelInfo.labelId);
-    }
+    return this.l;
   }
   
   private void a(List<ProfileLabelInfo> paramList, List<ProfileLabelTypeInfo> paramList1)
@@ -287,116 +95,359 @@ public class ProfileLabelEditorActivity
         }
       }
     }
-    c(paramList1);
+    d(paramList1);
   }
   
-  private void b()
+  /* Error */
+  private String b(String paramString)
   {
-    if (a())
+    // Byte code:
+    //   0: new 160	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 161	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore 5
+    //   9: aload_0
+    //   10: getfield 163	com/tencent/mobileqq/activity/ProfileLabelEditorActivity:j	Landroid/content/Context;
+    //   13: invokevirtual 169	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   16: aload_1
+    //   17: invokevirtual 175	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   20: astore_3
+    //   21: aload_3
+    //   22: astore_1
+    //   23: sipush 4096
+    //   26: newarray byte
+    //   28: astore 4
+    //   30: aload_3
+    //   31: astore_1
+    //   32: aload_3
+    //   33: aload 4
+    //   35: iconst_0
+    //   36: sipush 4096
+    //   39: invokevirtual 181	java/io/InputStream:read	([BII)I
+    //   42: istore_2
+    //   43: iload_2
+    //   44: iconst_m1
+    //   45: if_icmpeq +17 -> 62
+    //   48: aload_3
+    //   49: astore_1
+    //   50: aload 5
+    //   52: aload 4
+    //   54: iconst_0
+    //   55: iload_2
+    //   56: invokevirtual 185	java/io/ByteArrayOutputStream:write	([BII)V
+    //   59: goto -29 -> 30
+    //   62: aload_3
+    //   63: astore_1
+    //   64: new 187	java/lang/String
+    //   67: dup
+    //   68: aload 5
+    //   70: invokevirtual 191	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   73: ldc 193
+    //   75: invokespecial 196	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   78: astore 4
+    //   80: aload_3
+    //   81: ifnull +7 -> 88
+    //   84: aload_3
+    //   85: invokevirtual 199	java/io/InputStream:close	()V
+    //   88: aload 5
+    //   90: invokevirtual 200	java/io/ByteArrayOutputStream:close	()V
+    //   93: aload 4
+    //   95: areturn
+    //   96: astore_1
+    //   97: ldc 202
+    //   99: iconst_1
+    //   100: ldc 204
+    //   102: aload_1
+    //   103: invokestatic 209	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   106: aload 4
+    //   108: areturn
+    //   109: astore_3
+    //   110: goto +57 -> 167
+    //   113: astore 4
+    //   115: goto +13 -> 128
+    //   118: astore_3
+    //   119: aconst_null
+    //   120: astore_1
+    //   121: goto +46 -> 167
+    //   124: astore 4
+    //   126: aconst_null
+    //   127: astore_3
+    //   128: aload_3
+    //   129: astore_1
+    //   130: ldc 202
+    //   132: iconst_1
+    //   133: ldc 204
+    //   135: aload 4
+    //   137: invokestatic 209	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   140: aload_3
+    //   141: ifnull +7 -> 148
+    //   144: aload_3
+    //   145: invokevirtual 199	java/io/InputStream:close	()V
+    //   148: aload 5
+    //   150: invokevirtual 200	java/io/ByteArrayOutputStream:close	()V
+    //   153: aconst_null
+    //   154: areturn
+    //   155: astore_1
+    //   156: ldc 202
+    //   158: iconst_1
+    //   159: ldc 204
+    //   161: aload_1
+    //   162: invokestatic 209	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   165: aconst_null
+    //   166: areturn
+    //   167: aload_1
+    //   168: ifnull +7 -> 175
+    //   171: aload_1
+    //   172: invokevirtual 199	java/io/InputStream:close	()V
+    //   175: aload 5
+    //   177: invokevirtual 200	java/io/ByteArrayOutputStream:close	()V
+    //   180: goto +13 -> 193
+    //   183: astore_1
+    //   184: ldc 202
+    //   186: iconst_1
+    //   187: ldc 204
+    //   189: aload_1
+    //   190: invokestatic 209	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   193: goto +5 -> 198
+    //   196: aload_3
+    //   197: athrow
+    //   198: goto -2 -> 196
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	201	0	this	ProfileLabelEditorActivity
+    //   0	201	1	paramString	String
+    //   42	14	2	i1	int
+    //   20	65	3	localInputStream	InputStream
+    //   109	1	3	localObject1	Object
+    //   118	1	3	localObject2	Object
+    //   127	70	3	localObject3	Object
+    //   28	79	4	localObject4	Object
+    //   113	1	4	localIOException1	IOException
+    //   124	12	4	localIOException2	IOException
+    //   7	169	5	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   84	88	96	java/lang/Exception
+    //   88	93	96	java/lang/Exception
+    //   23	30	109	finally
+    //   32	43	109	finally
+    //   50	59	109	finally
+    //   64	80	109	finally
+    //   130	140	109	finally
+    //   23	30	113	java/io/IOException
+    //   32	43	113	java/io/IOException
+    //   50	59	113	java/io/IOException
+    //   64	80	113	java/io/IOException
+    //   9	21	118	finally
+    //   9	21	124	java/io/IOException
+    //   144	148	155	java/lang/Exception
+    //   148	153	155	java/lang/Exception
+    //   171	175	183	java/lang/Exception
+    //   175	180	183	java/lang/Exception
+  }
+  
+  private void b(List<ProfileLabelInfo> paramList)
+  {
+    this.n.clear();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (this.jdField_a_of_type_Boolean)
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramList.next();
+      this.n.add(localProfileLabelInfo.labelId);
+    }
+  }
+  
+  private void c()
+  {
+    if (b())
+    {
+      if (this.h)
       {
-        b(2131720597);
+        b(2131917012);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileLabelEditorActivity", 2, "saveEdit save labes num = " + this.jdField_a_of_type_JavaUtilList.size());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveEdit save labes num = ");
+        localStringBuilder.append(this.l.size());
+        QLog.d("ProfileLabelEditorActivity", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Boolean = true;
-      ((alpk)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
+      this.h = true;
+      ((CardHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(this.l);
       return;
     }
     finish();
   }
   
-  private void b(List<ProfileLabelInfo> paramList)
+  private void c(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (paramString != null)
     {
-      this.jdField_a_of_type_Adop = new adop(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Adop);
-      a(this.jdField_a_of_type_JavaUtilList.size());
+      paramString = new JSONArray(paramString);
+      int i3 = paramString.length();
+      int i1 = 0;
+      while (i1 < i3)
+      {
+        Object localObject = paramString.optJSONObject(i1);
+        ProfileLabelTypeInfo localProfileLabelTypeInfo = new ProfileLabelTypeInfo();
+        localProfileLabelTypeInfo.typeId = ((JSONObject)localObject).optString("id");
+        localProfileLabelTypeInfo.typeName = ((JSONObject)localObject).optString("name");
+        localProfileLabelTypeInfo.typeInfo = ((JSONObject)localObject).optString("classinfo");
+        localObject = ((JSONObject)localObject).optJSONArray("taglist");
+        int i4 = ((JSONArray)localObject).length();
+        int i2 = 0;
+        while (i2 < i4)
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i2);
+          ProfileLabelInfo localProfileLabelInfo = new ProfileLabelInfo();
+          localProfileLabelInfo.labelId = Long.valueOf(localJSONObject.optLong("id"));
+          localProfileLabelInfo.labelName = localJSONObject.optString("name");
+          localProfileLabelInfo.typeId = localProfileLabelTypeInfo.typeId;
+          localProfileLabelTypeInfo.labels.add(localProfileLabelInfo);
+          i2 += 1;
+        }
+        this.m.add(localProfileLabelTypeInfo);
+        i1 += 1;
+      }
     }
-    Object localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList");
-    if ((localObject == null) || (!((File)localObject).exists())) {
-      d();
-    }
-    for (;;)
+  }
+  
+  private void c(List<ProfileLabelInfo> paramList)
+  {
+    Object localObject = this.l;
+    if (localObject != null)
     {
+      this.e = new ProfileLabelEditorActivity.MyLabelGridViewAdapter(this, (List)localObject);
+      this.d.setAdapter(this.e);
+      a(this.l.size());
+    }
+    localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList");
+    if (!((File)localObject).exists())
+    {
+      f();
       return;
-      localObject = new ByteArrayInputStream(bdhb.a((File)localObject));
-      try
-      {
-        ObjectInputStream localObjectInputStream = new ObjectInputStream((InputStream)localObject);
-        this.b = ((List)localObjectInputStream.readObject());
-        localObjectInputStream.close();
-        ((ByteArrayInputStream)localObject).close();
-        if (!b())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileLabelEditorActivity", 2, "get available label list fail ");
-          }
-          d();
-        }
-        if (!b()) {
-          continue;
-        }
-        a(paramList, this.b);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          localIOException.printStackTrace();
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        for (;;)
-        {
-          localClassNotFoundException.printStackTrace();
-        }
-      }
     }
-  }
-  
-  private boolean b()
-  {
-    return (this.b != null) && (this.b.size() > 0);
-  }
-  
-  private void c()
-  {
-    ThreadManager.post(new ProfileLabelEditorActivity.3(this), 8, null, true);
-  }
-  
-  private void c(List<ProfileLabelTypeInfo> paramList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awvn, paramList, new adol(this));
-    paramList = new LinearLayout.LayoutParams(-1, (int)(202.0F * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel, paramList);
+    localObject = new ByteArrayInputStream(FileUtils.fileToBytes((File)localObject));
+    try
+    {
+      ObjectInputStream localObjectInputStream = new ObjectInputStream((InputStream)localObject);
+      this.m = ((List)localObjectInputStream.readObject());
+      localObjectInputStream.close();
+      ((ByteArrayInputStream)localObject).close();
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    if (!e())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileLabelEditorActivity", 2, "get available label list fail ");
+      }
+      f();
+    }
+    if (e()) {
+      a(paramList, this.m);
+    }
   }
   
   private void d()
   {
+    ThreadManager.post(new ProfileLabelEditorActivity.3(this), 8, null, true);
+  }
+  
+  private void d(List<ProfileLabelTypeInfo> paramList)
+  {
+    this.f = new ProfileLabelPanel(this.j, this.k, paramList, new ProfileLabelEditorActivity.4(this));
+    paramList = new LinearLayout.LayoutParams(-1, (int)(this.g * 202.0F));
+    this.b.addView(this.f, paramList);
+  }
+  
+  private boolean e()
+  {
+    List localList = this.m;
+    return (localList != null) && (localList.size() > 0);
+  }
+  
+  private void f()
+  {
     try
     {
-      a(a("qvip_default_tags.json"));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      c(b("qvip_default_tags.json"));
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
   
-  public ProfileLabelInfo a(Long paramLong, List<ProfileLabelInfo> paramList)
+  public void a()
+  {
+    super.setContentView(2131625608);
+    getWindow().setBackgroundDrawable(null);
+    super.setTitle(getString(2131917010));
+    this.b = ((LinearLayout)findViewById(2131445137));
+    this.c = ((TextView)this.b.findViewById(2131446782));
+    this.d = ((GridView)this.b.findViewById(2131446779));
+    setRightButton(2131915860, new ProfileLabelEditorActivity.2(this));
+    enableRightHighlight(true);
+  }
+  
+  void a(int paramInt)
+  {
+    if (paramInt > 7) {
+      return;
+    }
+    TextView localTextView = this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getString(2131917009));
+    localStringBuilder.append(" (");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("/");
+    localStringBuilder.append(7);
+    localStringBuilder.append(")");
+    localTextView.setText(localStringBuilder.toString());
+  }
+  
+  void a(ProfileLabelInfo paramProfileLabelInfo, List<ProfileLabelInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      int i1 = 0;
+      while (i1 < paramList.size())
+      {
+        if (((ProfileLabelInfo)paramList.get(i1)).labelId.equals(paramProfileLabelInfo.labelId))
+        {
+          paramList.remove(i1);
+          ReportController.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  boolean a(Long paramLong, List<ProfileLabelInfo> paramList)
+  {
+    return b(paramLong, paramList) != null;
+  }
+  
+  boolean a(List<ProfileLabelInfo> paramList)
+  {
+    return paramList.size() >= 7;
+  }
+  
+  ProfileLabelInfo b(Long paramLong, List<ProfileLabelInfo> paramList)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -404,133 +455,100 @@ public class ProfileLabelEditorActivity
     {
       Iterator localIterator = paramList.iterator();
       paramList = localObject2;
-      localObject1 = paramList;
-      if (localIterator.hasNext())
+      for (;;)
       {
+        localObject1 = paramList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
         localObject1 = (ProfileLabelInfo)localIterator.next();
-        if (!((ProfileLabelInfo)localObject1).labelId.equals(paramLong)) {
-          break label61;
+        if (((ProfileLabelInfo)localObject1).labelId.equals(paramLong)) {
+          paramList = (List<ProfileLabelInfo>)localObject1;
         }
-        paramList = (List<ProfileLabelInfo>)localObject1;
       }
     }
-    label61:
-    for (;;)
+    return localObject1;
+  }
+  
+  void b(int paramInt)
+  {
+    QQToast.makeText(this.j, paramInt, 1).show(getResources().getDimensionPixelSize(2131299920));
+  }
+  
+  boolean b()
+  {
+    Object localObject = this.l;
+    if ((localObject != null) && (this.n != null) && (((List)localObject).size() == this.n.size()))
     {
-      break;
-      return localObject1;
-    }
-  }
-  
-  public void a()
-  {
-    super.setContentView(2131559455);
-    getWindow().setBackgroundDrawable(null);
-    super.setTitle(getString(2131720594));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376034));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377407));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377404));
-    setRightButton(2131719310, new adok(this));
-    enableRightHighlight(true);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt > 7) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131720593) + " (" + paramInt + "/" + 7 + ")");
-  }
-  
-  public void a(ProfileLabelInfo paramProfileLabelInfo, List<ProfileLabelInfo> paramList)
-  {
-    if (paramList != null)
-    {
-      int i = 0;
-      while (i < paramList.size())
-      {
-        if (((ProfileLabelInfo)paramList.get(i)).labelId.equals(paramProfileLabelInfo.labelId))
-        {
-          paramList.remove(i);
-          azqs.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.c != null) && (this.jdField_a_of_type_JavaUtilList.size() == this.c.size()))
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = new ArrayList();
+      Iterator localIterator = this.l.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((ProfileLabelInfo)localIterator.next()).labelId);
+        ((List)localObject).add(((ProfileLabelInfo)localIterator.next()).labelId);
       }
-      if ((localArrayList.containsAll(this.c)) && (this.c.containsAll(localArrayList))) {
+      if ((((List)localObject).containsAll(this.n)) && (this.n.containsAll((Collection)localObject))) {
         return false;
       }
     }
     return true;
   }
   
-  public boolean a(Long paramLong, List<ProfileLabelInfo> paramList)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    return a(paramLong, paramList) != null;
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public boolean a(List<ProfileLabelInfo> paramList)
-  {
-    return paramList.size() >= 7;
-  }
-  
-  public void b(int paramInt)
-  {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131298914));
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    addObserver(this.jdField_a_of_type_Alpq);
-    this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Awvn = new awvn();
+    addObserver(this.o);
+    this.j = this;
+    this.g = getResources().getDisplayMetrics().density;
+    this.k = new ProfileLabelPanel.LabelStatusManager();
     getResources();
     a();
-    c();
-    azqs.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
+    d();
+    ReportController.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_Alpq);
-    this.jdField_a_of_type_Awvn.a();
-    this.jdField_a_of_type_Awvn = null;
+    this.app.removeObserver(this.o);
+    this.k.b();
+    this.k = null;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    if (a())
+    if (b())
     {
-      bdgm.a(this, 230).setMessage(getString(2131720592)).setPositiveButton(2131721503, new adon(this)).setNegativeButton(2131694806, new adom(this)).show();
+      DialogUtil.a(this, 230).setMessage(getString(2131917008)).setPositiveButton(2131918207, new ProfileLabelEditorActivity.6(this)).setNegativeButton(2131892140, new ProfileLabelEditorActivity.5(this)).show();
       return true;
     }
     finish();
     return false;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity
  * JD-Core Version:    0.7.0.1
  */

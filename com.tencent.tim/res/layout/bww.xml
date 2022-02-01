@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="129.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fe9" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true">
+        <com.qzone.widget.AsyncImageView android:id="@id/fe_" android:layout_width="105.0dip" android:layout_height="105.0dip" android:src="@drawable/d9q" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <com.qzone.widget.AsyncImageView android:id="@id/fea" android:layout_width="105.0dip" android:layout_height="fill_parent" android:src="@drawable/bvu" android:scaleType="centerCrop" android:layout_alignParentRight="true" />
+        <com.qzone.widget.AsynAutoGifImageView android:id="@id/cuk" android:layout_width="105.0dip" android:layout_height="105.0dip" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
+        <TextView android:gravity="center" android:id="@id/fej" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginRight="12.0dip" android:minWidth="52.0dip" android:text="@string/rmk" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/ur" />
+        <ImageView android:id="@id/feq" android:layout_width="7.0dip" android:layout_height="fill_parent" android:src="@color/ajr" android:layout_toLeftOf="@id/fej" />
+        <ImageView android:id="@id/fec" android:layout_width="22.5dip" android:layout_height="22.5dip" android:src="@drawable/gac" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/fed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_toLeftOf="@id/fea" android:layout_toRightOf="@id/fe_" android:layout_centerVertical="true">
+            <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/fes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/fer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxLines="2" android:lineSpacingExtra="1.0dip" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/feg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+                <TextView android:textSize="12.0dip" android:textColor="#fffa585a" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/rml" android:includeFontPadding="false" />
+                <ImageView android:layout_width="5.0dip" android:layout_height="14.0dip" android:src="@color/ajr" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fef" android:background="@drawable/avk" android:layout_width="15.0dip" android:layout_height="12.0dip" android:text="00" android:includeFontPadding="false" />
+                <ImageView android:layout_width="2.0dip" android:layout_height="14.0dip" android:src="@color/ajr" />
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="1.0dip" android:layout_height="12.0dip" android:src="@drawable/gad" />
+                <ImageView android:layout_width="2.0dip" android:layout_height="14.0dip" android:src="@color/ajr" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/feh" android:background="@drawable/avk" android:layout_width="15.0dip" android:layout_height="12.0dip" android:text="00" android:includeFontPadding="false" />
+                <ImageView android:layout_width="2.0dip" android:layout_height="14.0dip" android:src="@color/ajr" />
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="1.0dip" android:layout_height="12.0dip" android:src="@drawable/gad" />
+                <ImageView android:layout_width="2.0dip" android:layout_height="14.0dip" android:src="@color/ajr" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fei" android:background="@drawable/avk" android:layout_width="15.0dip" android:layout_height="12.0dip" android:text="00" android:includeFontPadding="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <com.qzone.widget.AsynAutoGifImageView android:id="@id/fem" android:layout_width="120.0dip" android:layout_height="115.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" /> /> <com.qzone.widget.AsyncImageView android:id="@id/fep" android:layout_width="120.0dip" android:layout_height="115.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/feo" android:layout_width="120.0dip" android:layout_height="115.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/fe8" android:layout_width="24.0dip" android:layout_height="16.0dip" android:src="@drawable/gaa" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/fee" android:layout_width="38.0dip" android:layout_height="23.0dip" android:src="@drawable/gae" android:layout_alignTop="@id/fe9" android:layout_alignParentLeft="true" />
+    <com.qzone.widget.AsynAutoGifImageView android:id="@id/fel" android:visibility="gone" android:layout_width="180.0dip" android:layout_height="115.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

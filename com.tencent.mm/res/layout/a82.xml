@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/cii" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="30.0dip" android:src="@drawable/aew" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:id="@id/cij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" />
-    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="40.0dip" android:textColor="@color/h6" android:id="@id/cik" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="" wallet:walletTypeFace="e2" />
-    <TextView android:textSize="15.0dip" android:textColor="#fff76260" android:id="@id/cil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:text="" />
-    <TextView android:textSize="13.0dip" android:textColor="@color/w6" android:id="@id/cim" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" />
-    <TextView android:textSize="13.0dip" android:textColor="@color/w6" android:id="@id/cin" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
-    <LinearLayout android:orientation="vertical" android:id="@id/cio" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
-        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/cip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:id="@id/ciq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:gravity="right" android:id="@id/cir" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/cis" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:id="@id/cit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:gravity="right" android:id="@id/ciu" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/civ" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="20.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="15.0dip" android:textColor="@color/h6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="对方使用时通知我" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/ciw" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
-        </LinearLayout>
-        <View android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cix" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="15.0dip" android:textColor="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cfb" />
-            <TextView android:textSize="15.0dip" android:textColor="@color/w6" android:gravity="center|right" android:id="@id/ciy" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:src="@drawable/bmq" />
-        </LinearLayout>
-        <View android:background="#ffd8d8d8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:id="@id/ciz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="{无法使用另一张亲属卡作为优先扣款方式，已自动为你选择其他扣款方式}" />
-    </LinearLayout>
-    <View android:id="@id/cj0" android:background="#fff9f9f9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-</LinearLayout>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iix" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,98 +3,101 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.app.Activity;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.km;
-import com.tencent.mm.g.a.km.b;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.pb;
+import com.tencent.mm.autogen.a.pb.b;
 
 public final class c
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private static long pOj = 0L;
-  private Activity cup;
-  private c.a pOk;
+  private static long NoY = 0L;
+  private a NoZ;
+  private Activity hHU;
   
   public c(Activity paramActivity)
   {
-    AppMethodBeat.i(68413);
-    g.RK().eHt.a(138, this);
-    this.cup = paramActivity;
-    AppMethodBeat.o(68413);
+    AppMethodBeat.i(123141);
+    com.tencent.mm.kernel.h.baD().mCm.a(138, this);
+    this.hHU = paramActivity;
+    AppMethodBeat.o(123141);
   }
   
-  public final void a(final c.a parama)
+  public final void a(final a parama)
   {
-    AppMethodBeat.i(68414);
-    this.pOk = parama;
-    parama = new km();
-    parama.cAj.cup = this.cup;
-    parama.cAj.cAl = new Runnable()
+    AppMethodBeat.i(123142);
+    this.NoZ = parama;
+    parama = new pb();
+    parama.hRT.hHU = this.hHU;
+    parama.hRT.hRV = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(68411);
-        if (parama.cAk.cpz)
+        AppMethodBeat.i(123139);
+        if (parama.hRU.hCQ)
         {
           c.a(c.this);
-          AppMethodBeat.o(68411);
+          AppMethodBeat.o(123139);
           return;
         }
         if (c.b(c.this) != null) {
-          c.b(c.this).cdU();
+          c.b(c.this).gEg();
         }
-        AppMethodBeat.o(68411);
+        AppMethodBeat.o(123139);
       }
     };
-    a.ymk.a(parama, Looper.myLooper());
-    AppMethodBeat.o(68414);
+    parama.asyncPublish(Looper.myLooper());
+    AppMethodBeat.o(123142);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(68416);
+    AppMethodBeat.i(123144);
     release();
     super.finalize();
-    AppMethodBeat.o(68416);
+    AppMethodBeat.o(123144);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(68417);
+    AppMethodBeat.i(123145);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (this.pOk != null)
+      if (this.NoZ != null)
       {
-        this.pOk.cdT();
-        this.pOk = null;
+        this.NoZ.gEf();
+        this.NoZ = null;
       }
     }
     for (;;)
     {
-      pOj = System.currentTimeMillis();
-      AppMethodBeat.o(68417);
+      NoY = System.currentTimeMillis();
+      AppMethodBeat.o(123145);
       return;
-      if (this.pOk != null)
+      if (this.NoZ != null)
       {
-        this.pOk.cdU();
-        this.pOk = null;
+        this.NoZ.gEg();
+        this.NoZ = null;
       }
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(68415);
-    g.RK().eHt.b(138, this);
-    AppMethodBeat.o(68415);
+    AppMethodBeat.i(123143);
+    com.tencent.mm.kernel.h.baD().mCm.b(138, this);
+    AppMethodBeat.o(123143);
+  }
+  
+  public static abstract class a
+  {
+    public abstract void gEf();
+    
+    public abstract void gEg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.c
  * JD-Core Version:    0.7.0.1
  */

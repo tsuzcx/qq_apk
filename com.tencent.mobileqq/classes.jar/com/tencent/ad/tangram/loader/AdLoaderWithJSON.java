@@ -15,87 +15,80 @@ public final class AdLoaderWithJSON
   
   public static int getErrorCode(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 5;
-    int i;
     if (paramInt1 == -2147483648) {
-      i = 3;
+      return 3;
     }
-    do
+    int i = 5;
+    if (paramInt1 != 200) {
+      return 5;
+    }
+    if (paramInt2 != 0)
     {
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (paramInt1 != 200);
-        if (paramInt2 == 0) {
-          break;
-        }
-        i = j;
-      } while (paramInt2 != 1);
-      return 4;
-      if (paramInt3 == 0) {
-        break;
+      if (paramInt2 == 1) {
+        i = 4;
       }
-      i = j;
-    } while (paramInt3 != 102006);
-    return 101;
+      return i;
+    }
+    if (paramInt3 != 0)
+    {
+      if (paramInt3 == 102006) {
+        i = 101;
+      }
+      return i;
+    }
     return 0;
   }
   
   public static void load(AdLoaderWithJSON.Session paramSession)
   {
     AdLog.i("AdLoaderWithJSON", "load");
-    if ((paramSession != null) && (paramSession.request != null)) {}
-    for (String str = paramSession.request.toString();; str = null)
+    String str;
+    if ((paramSession != null) && (paramSession.request != null)) {
+      str = paramSession.request.toString();
+    } else {
+      str = null;
+    }
+    AdLog.i("AdLoaderWithJSON", String.format("load request:%s", new Object[] { str }));
+    if ((paramSession != null) && (paramSession.canSend()))
     {
-      AdLog.i("AdLoaderWithJSON", String.format("load request:%s", new Object[] { str }));
-      if ((paramSession != null) && (paramSession.canSend())) {
-        break;
+      AdHttp.Params localParams = new AdHttp.Params();
+      if (AdSettings.isTestMode()) {
+        localParams.setUrl("https://ttc.gdt.qq.com/api/gdt.display.QQAdService.GetAds");
+      } else {
+        localParams.setUrl("https://v6mi.gdt.qq.com/api/gdt.display.QQAdService.GetAds");
       }
-      AdLog.e("AdLoaderWithJSON", "load error");
-      return;
-    }
-    AdHttp.Params localParams = new AdHttp.Params();
-    if (AdSettings.isTestMode()) {
-      localParams.setUrl("https://ttc.gdt.qq.com/api/gdt.display.QQAdService.GetAds");
-    }
-    for (;;)
-    {
       localParams.method = "POST";
       localParams.contentType = "application/json";
       localParams.requestData = str.getBytes();
-      if (!localParams.canSend()) {
-        break;
-      }
-      long l = System.currentTimeMillis();
-      AdHttp.send(localParams);
-      paramSession.timeMillis = (System.currentTimeMillis() - l);
-      paramSession.httpResponseCode = localParams.responseCode;
-      AdLog.i("AdLoaderWithJSON", String.format("load responseCode:%d", new Object[] { Integer.valueOf(paramSession.httpResponseCode) }));
-      if ((localParams.responseCode != 200) || (localParams.responseData == null)) {
-        break;
-      }
-      str = new String(localParams.responseData);
-      AdLog.i("AdLoaderWithJSON", String.format("load response:%s", new Object[] { str }));
-      try
+      if (localParams.canSend())
       {
-        paramSession.response = new JSONObject(str);
-        return;
+        long l = System.currentTimeMillis();
+        AdHttp.send(localParams);
+        paramSession.timeMillis = (System.currentTimeMillis() - l);
+        paramSession.httpResponseCode = localParams.responseCode;
+        AdLog.i("AdLoaderWithJSON", String.format("load responseCode:%d", new Object[] { Integer.valueOf(paramSession.httpResponseCode) }));
+        if ((localParams.responseCode == 200) && (localParams.responseData != null))
+        {
+          str = new String(localParams.responseData);
+          AdLog.i("AdLoaderWithJSON", String.format("load response:%s", new Object[] { str }));
+          try
+          {
+            paramSession.response = new JSONObject(str);
+            return;
+          }
+          catch (JSONException paramSession)
+          {
+            AdLog.e("AdLoaderWithJSON", "load", paramSession);
+          }
+        }
       }
-      catch (JSONException paramSession)
-      {
-        AdLog.e("AdLoaderWithJSON", "load", paramSession);
-      }
-      break;
-      localParams.setUrl("https://mi.gdt.qq.com/api/gdt.display.QQAdService.GetAds");
     }
+    AdLog.e("AdLoaderWithJSON", "load error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.loader.AdLoaderWithJSON
  * JD-Core Version:    0.7.0.1
  */

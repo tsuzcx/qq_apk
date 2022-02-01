@@ -1,121 +1,385 @@
 package com.tencent.mm.plugin.hp.b;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.y;
-import com.tencent.mm.app.y.a;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.ba;
-import com.tencent.mm.g.a.bj;
-import com.tencent.mm.g.a.cr;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Random;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.protocal.protobuf.czn;
+import com.tencent.mm.protocal.protobuf.fne;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import java.io.File;
 
-public class d
-  implements at
+public final class d
 {
-  private final c<ba> ljA;
-  private boolean nKf;
-  private final h nKg;
-  private final c<cr> nKh;
-  private final f nKi;
-  private final c<bj> nKj;
+  private static String JEQ = "tinker-boots-install-info";
+  private static String JER = "tinker-boots-last-show";
+  private static String JES = "tinker-boots-show-time";
+  private static String JET = "hdiff-boots-install-info";
+  private static String JEU = "";
   
-  public d()
+  public static void a(czn paramczn)
   {
-    AppMethodBeat.i(90590);
-    this.nKf = true;
-    this.nKg = new h();
-    this.ljA = new d.1(this);
-    this.nKh = new d.2(this);
-    this.nKi = new f();
-    this.nKj = new c() {};
-    AppMethodBeat.o(90590);
+    AppMethodBeat.i(261870);
+    if (paramczn != null) {}
+    try
+    {
+      MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe()).edit().putString(JET, Base64.encodeToString(paramczn.toByteArray(), 0)).apply();
+      Log.d("MicroMsg.UpdateUtil", "save tinker install update info.");
+      AppMethodBeat.o(261870);
+      return;
+    }
+    catch (Exception paramczn)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.UpdateUtil", paramczn, "", new Object[0]);
+      }
+    }
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public static void a(fne paramfne)
   {
-    return null;
+    AppMethodBeat.i(117529);
+    try
+    {
+      MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe()).edit().putString(JEQ, Base64.encodeToString(paramfne.toByteArray(), 0)).apply();
+      Log.d("MicroMsg.UpdateUtil", "save tinker install update info.");
+      AppMethodBeat.o(117529);
+      return;
+    }
+    catch (Exception paramfne)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.UpdateUtil", paramfne, "", new Object[0]);
+      }
+    }
   }
   
-  public void onAccountPostReset(boolean paramBoolean)
+  public static int aIN(String paramString)
   {
-    AppMethodBeat.i(90591);
-    b.a(new g(), new String[] { "//tinker" });
-    ((p)com.tencent.mm.kernel.g.G(p.class)).getSysCmdMsgExtension().a("prconfignotify", this.nKg, true);
-    com.tencent.mm.sdk.b.a.ymk.c(this.ljA);
-    this.nKh.alive();
-    com.tencent.mm.sdk.b.a.ymk.c(this.nKi);
-    com.tencent.mm.sdk.b.a.ymk.c(this.nKj);
-    ab.d("Tinker.SubCoreHotpatch", "onAccountPostReset");
-    com.tencent.mm.plugin.hp.tinker.h.ep(ah.getContext());
+    AppMethodBeat.i(261835);
+    if (!Util.isNullOrNil(paramString)) {}
     for (;;)
     {
       try
       {
-        l2 = ((Long)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHs, Long.valueOf(0L))).longValue();
-        l1 = System.currentTimeMillis();
-        if (l1 - l2 < 3600000L) {
-          continue;
-        }
-        int i = Calendar.getInstance().get(11);
-        ab.i("Tinker.SubCoreHotpatch", "try to fetch patch update hour %d ", new Object[] { Integer.valueOf(i) });
-        if (i != 0) {
-          continue;
-        }
-        i = new Random().nextInt(60);
-        l1 = l1 - com.tencent.mm.plugin.hp.tinker.h.eq(ah.getContext()) * 3600000L + i * 60000L;
-        com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHs, Long.valueOf(l1));
-        ab.i("Tinker.SubCoreHotpatch", "try to fetch patch update after %d minute currentTime %s lastUpdate %s", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2) });
+        i = Integer.decode(paramString).intValue();
+        Log.i("MicroMsg.UpdateUtil", "parseClientVersion %s %s", new Object[] { paramString, Integer.valueOf(i) });
+        AppMethodBeat.o(261835);
+        return i;
       }
-      catch (Exception localException)
-      {
-        long l2;
-        long l1;
-        ab.printErrStackTrace("Tinker.SubCoreHotpatch", localException, "", new Object[0]);
-        continue;
-        com.tinkerboots.sdk.a.eaJ().sm(false);
-        ab.i("Tinker.SubCoreHotpatch", "try to fetch patch update false when onAccountPostReset.");
-        continue;
-      }
-      f.kp(l1);
-      if (!ah.dsV()) {
-        y.a.bZh.BF();
-      }
-      AppMethodBeat.o(90591);
-      return;
-      com.tinkerboots.sdk.a.eaJ().sm(true);
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHs, Long.valueOf(l1));
-      ab.i("Tinker.SubCoreHotpatch", "try to fetch patch update true when onAccountPostReset. current:%d lastUpdate:%d", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(l2) });
+      catch (Exception localException) {}
+      int i = 0;
     }
   }
   
-  public void onAccountRelease()
+  public static String aIO(String paramString)
   {
-    AppMethodBeat.i(90592);
-    b.N(new String[] { "//tinker" });
-    ((p)com.tencent.mm.kernel.g.G(p.class)).getSysCmdMsgExtension().b("prconfignotify", this.nKg, true);
-    com.tencent.mm.sdk.b.a.ymk.d(this.ljA);
-    this.nKh.dead();
-    com.tencent.mm.sdk.b.a.ymk.d(this.nKi);
-    com.tencent.mm.sdk.b.a.ymk.d(this.nKj);
-    ab.d("Tinker.SubCoreHotpatch", "onAccountRelease");
-    AppMethodBeat.o(90592);
+    AppMethodBeat.i(117533);
+    paramString = fQv() + paramString + ".apk";
+    AppMethodBeat.o(117533);
+    return paramString;
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
+  public static void bn(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(117528);
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.addFlags(268435456);
+    localIntent.setDataAndType(Uri.fromFile(new File(paramString)), "application/vnd.android.package-archive");
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aYi(), "com/tencent/mm/plugin/hp/util/UpdateUtil", "install", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/hp/util/UpdateUtil", "install", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(117528);
+  }
+  
+  public static void fQA()
+  {
+    AppMethodBeat.i(261871);
+    Log.i("MicroMsg.UpdateUtil", "clearHdiffInstallStatus.");
+    MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe()).edit().putString(JET, "").apply();
+    AppMethodBeat.o(261871);
+  }
+  
+  public static fne fQq()
+  {
+    AppMethodBeat.i(261826);
+    Object localObject2 = MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe()).getString(JEQ, "");
+    if (!Util.isNullOrNil((String)localObject2)) {}
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new fne();
+        Log.printErrStackTrace("MicroMsg.UpdateUtil", localException1, "parse tinker install failed.", new Object[0]);
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          localObject2 = (fne)((fne)localObject1).parseFrom(Base64.decode((String)localObject2, 0));
+          localObject1 = localObject2;
+          if (localObject1 == null) {
+            break label86;
+          }
+          AppMethodBeat.o(261826);
+          return localObject1;
+        }
+        catch (Exception localException2)
+        {
+          break label71;
+        }
+        localException1 = localException1;
+        localObject1 = null;
+      }
+      label71:
+      continue;
+      label86:
+      Log.i("MicroMsg.UpdateUtil", "update info is null.");
+      AppMethodBeat.o(261826);
+      return null;
+      Object localObject1 = null;
+    }
+  }
+  
+  public static boolean fQr()
+  {
+    AppMethodBeat.i(261842);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe());
+    long l1 = localSharedPreferences.getLong(JER, 0L);
+    int i = localSharedPreferences.getInt(JES, 0);
+    long l2 = System.currentTimeMillis();
+    Log.d("MicroMsg.UpdateUtil", "isNeedShowTinkerDialog now:%d last:%d time:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
+    if ((l2 - l1 > 21600000L) && (i < 3))
+    {
+      AppMethodBeat.o(261842);
+      return true;
+    }
+    AppMethodBeat.o(261842);
+    return false;
+  }
+  
+  public static void fQs()
+  {
+    AppMethodBeat.i(261844);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe());
+    localSharedPreferences.edit().putLong(JER, System.currentTimeMillis()).apply();
+    int i = localSharedPreferences.getInt(JES, 0);
+    localSharedPreferences.edit().putInt(JES, i + 1).apply();
+    AppMethodBeat.o(261844);
+  }
+  
+  public static void fQt()
+  {
+    AppMethodBeat.i(117530);
+    Log.i("MicroMsg.UpdateUtil", "clearInstallUpdateInfo.");
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe());
+    localSharedPreferences.edit().putString(JEQ, "").apply();
+    localSharedPreferences.edit().putLong(JER, 0L).apply();
+    localSharedPreferences.edit().putInt(JES, 0).apply();
+    AppMethodBeat.o(117530);
+  }
+  
+  public static void fQu()
+  {
+    AppMethodBeat.i(117531);
+    h.ahAA.bm(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(117526);
+        Log.i("MicroMsg.UpdateUtil", "delete apk file. on worker thread");
+        y.ew(d.fQv(), true);
+        AppMethodBeat.o(117526);
+      }
+    });
+    AppMethodBeat.o(117531);
+  }
+  
+  public static String fQv()
+  {
+    AppMethodBeat.i(261852);
+    if (Util.isNullOrNil(JEU)) {
+      JEU = com.tencent.mm.loader.i.b.bmC() + "diff/";
+    }
+    String str = JEU;
+    AppMethodBeat.o(261852);
+    return str;
+  }
+  
+  public static czn fQw()
+  {
+    AppMethodBeat.i(261856);
+    Object localObject2 = MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aQe()).getString(JET, "");
+    if (!Util.isNullOrNil((String)localObject2)) {}
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new czn();
+        Log.printErrStackTrace("MicroMsg.UpdateUtil", localException1, "parse tinker install failed.", new Object[0]);
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          localObject2 = (czn)((czn)localObject1).parseFrom(Base64.decode((String)localObject2, 0));
+          localObject1 = localObject2;
+          if (localObject1 == null) {
+            break label88;
+          }
+          AppMethodBeat.o(261856);
+          return localObject1;
+        }
+        catch (Exception localException2)
+        {
+          break label73;
+        }
+        localException1 = localException1;
+        localObject1 = null;
+      }
+      label73:
+      continue;
+      label88:
+      Log.i("MicroMsg.UpdateUtil", "update info is null.");
+      AppMethodBeat.o(261856);
+      return null;
+      Object localObject1 = null;
+    }
+  }
+  
+  public static boolean fQx()
+  {
+    AppMethodBeat.i(261859);
+    if (fQw() == null)
+    {
+      AppMethodBeat.o(261859);
+      return true;
+    }
+    czn localczn = fQw();
+    int i;
+    if (localczn == null) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      fQA();
+      AppMethodBeat.o(261859);
+      return true;
+      long l1 = localczn.startTime;
+      long l2 = System.currentTimeMillis();
+      Log.i("MicroMsg.UpdateUtil", "Hdiffapk, isNeedShowTinkerDialog now:%d last:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
+      if (l2 - l1 > 30000L) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label109;
+        }
+        i = 1;
+        break;
+      }
+      label109:
+      i = 0;
+    }
+    if (fQy())
+    {
+      AppMethodBeat.o(261859);
+      return false;
+    }
+    if (fQz())
+    {
+      AppMethodBeat.o(261859);
+      return false;
+    }
+    AppMethodBeat.o(261859);
+    return true;
+  }
+  
+  public static boolean fQy()
+  {
+    AppMethodBeat.i(261863);
+    Object localObject = fQw();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(261863);
+      return false;
+    }
+    l1 = -1L;
+    try
+    {
+      long l2 = Long.parseLong(((czn)localObject).aaEU);
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.UpdateUtil", "Hdiffapk, isNeedShowTinkerDialog e = ".concat(String.valueOf(localException)));
+        continue;
+        com.tencent.mm.plugin.downloader.f.a locala = localException.ll(l1);
+        continue;
+        boolean bool = false;
+      }
+    }
+    Log.e("MicroMsg.UpdateUtil", "Hdiffapk, downloadId downloadId = ".concat(String.valueOf(l1)));
+    localObject = com.tencent.mm.plugin.downloader.model.d.bzH();
+    if (localObject == null)
+    {
+      localObject = null;
+      if ((localObject == null) || (((com.tencent.mm.plugin.downloader.f.a)localObject).field_status != 1)) {
+        break label125;
+      }
+      bool = true;
+      AppMethodBeat.o(261863);
+      return bool;
+    }
+  }
+  
+  public static boolean fQz()
+  {
+    AppMethodBeat.i(261868);
+    czn localczn = fQw();
+    if (localczn == null)
+    {
+      AppMethodBeat.o(261868);
+      return false;
+    }
+    boolean bool = "3".equals(localczn.vXL);
+    Log.e("MicroMsg.UpdateUtil", "Hdiffapk, isPatchMergeing = ".concat(String.valueOf(bool)));
+    AppMethodBeat.o(261868);
+    return bool;
+  }
+  
+  public static String iH(Context paramContext)
+  {
+    AppMethodBeat.i(117527);
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).applicationInfo.sourceDir;
+      AppMethodBeat.o(117527);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      Log.printErrStackTrace("MicroMsg.UpdateUtil", paramContext, "", new Object[0]);
+      AppMethodBeat.o(117527);
+    }
+    return null;
+  }
 }
 
 

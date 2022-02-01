@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/knp" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="0.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/kns" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/l2s" android:layout_width="110.0dip" android:layout_height="36.0dip" android:src="@drawable/a93" android:scaleType="fitCenter" />
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/skin_input" android:gravity="center_vertical" android:id="@id/g63" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip" android:minHeight="44.0dip" android:hint="@string/ibw" android:layout_weight="0.0" android:inputType="textPassword" android:imeOptions="actionDone" style="@style/mu" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/knr" android:layout_width="fill_parent" android:layout_height="41.5dip">
+            <Button android:textSize="18.5sp" android:id="@id/knq" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/yqk" android:layout_weight="1.0" style="@style/b9" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:id="@id/i5n" android:layout_width="23.0dip" android:layout_height="23.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

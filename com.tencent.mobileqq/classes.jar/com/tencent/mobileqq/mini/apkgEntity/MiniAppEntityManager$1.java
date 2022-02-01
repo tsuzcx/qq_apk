@@ -5,13 +5,13 @@ import com.tencent.qphone.base.util.QLog;
 class MiniAppEntityManager$1
   implements Runnable
 {
-  MiniAppEntityManager$1(MiniAppEntityManager paramMiniAppEntityManager, MiniAppEntityManagerFactory paramMiniAppEntityManagerFactory) {}
+  MiniAppEntityManager$1(MiniAppEntityManager paramMiniAppEntityManager) {}
   
   public void run()
   {
     try
     {
-      this.val$factory.verifyAuthentication();
+      MiniAppEntityManager.access$000(this.this$0).verifyAuthentication();
       return;
     }
     catch (Exception localException)
@@ -22,7 +22,7 @@ class MiniAppEntityManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager.1
  * JD-Core Version:    0.7.0.1
  */

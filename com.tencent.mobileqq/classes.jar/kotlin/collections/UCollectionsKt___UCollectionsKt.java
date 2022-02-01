@@ -27,7 +27,7 @@ class UCollectionsKt___UCollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = UInt.constructor-impl(UInt.constructor-impl(((UByte)paramIterable.next()).unbox-impl() & 0xFF) + i)) {}
+    for (int i = 0; paramIterable.hasNext(); i = UInt.constructor-impl(i + UInt.constructor-impl(((UByte)paramIterable.next()).unbox-impl() & 0xFF))) {}
     return i;
   }
   
@@ -38,7 +38,7 @@ class UCollectionsKt___UCollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = UInt.constructor-impl(((UInt)paramIterable.next()).unbox-impl() + i)) {}
+    for (int i = 0; paramIterable.hasNext(); i = UInt.constructor-impl(i + ((UInt)paramIterable.next()).unbox-impl())) {}
     return i;
   }
   
@@ -49,7 +49,7 @@ class UCollectionsKt___UCollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (long l = 0L; paramIterable.hasNext(); l = ULong.constructor-impl(((ULong)paramIterable.next()).unbox-impl() + l)) {}
+    for (long l = 0L; paramIterable.hasNext(); l = ULong.constructor-impl(l + ((ULong)paramIterable.next()).unbox-impl())) {}
     return l;
   }
   
@@ -60,7 +60,7 @@ class UCollectionsKt___UCollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = UInt.constructor-impl(UInt.constructor-impl(((UShort)paramIterable.next()).unbox-impl() & 0xFFFF) + i)) {}
+    for (int i = 0; paramIterable.hasNext(); i = UInt.constructor-impl(i + UInt.constructor-impl(((UShort)paramIterable.next()).unbox-impl() & 0xFFFF))) {}
     return i;
   }
   
@@ -134,7 +134,7 @@ class UCollectionsKt___UCollectionsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.UCollectionsKt___UCollectionsKt
  * JD-Core Version:    0.7.0.1
  */

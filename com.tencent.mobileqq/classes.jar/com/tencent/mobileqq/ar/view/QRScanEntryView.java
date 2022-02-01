@@ -1,19 +1,12 @@
 package com.tencent.mobileqq.ar.view;
 
-import aepi;
-import alud;
-import amsf;
-import amul;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Pair;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,209 +17,260 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aneb;
-import aned;
-import anen;
-import anet;
-import anfl;
-import anft;
-import anfu;
-import anfy;
-import angf;
-import angs;
-import anhp;
-import anhq;
-import anhr;
-import anhs;
-import anht;
-import anhu;
-import anhv;
-import anhw;
-import anhx;
-import anib;
-import azqs;
-import bdeu;
+import com.tencent.av.utils.PhoneStatusTools;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ar.arengine.MiniSaveImgListener;
+import com.tencent.mobileqq.ar.arengine.QRRecognizerListener;
+import com.tencent.mobileqq.ar.model.AbstractSession;
+import com.tencent.mobileqq.ar.model.CameraProxy;
+import com.tencent.mobileqq.ar.model.CameraProxy.CameraOperationStatusCallBack;
+import com.tencent.mobileqq.ar.model.QRSession;
+import com.tencent.mobileqq.ar.model.UniformGLRenderManagerImpl;
+import com.tencent.mobileqq.ar.utils.UniformUtils;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.AIRect;
+import com.tencent.mobileqq.qrscan.ScannerResult;
+import com.tencent.mobileqq.qrscan.api.IQRScanReportApi;
+import com.tencent.mobileqq.qrscan.view.ScannerMultiResultSelectView;
+import com.tencent.mobileqq.qrscan.view.ScannerMultiResultSelectView.ImageData;
+import com.tencent.mobileqq.qrscan.view.ScannerMultiResultSelectView.MultiSelectListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 import mqq.os.MqqHandler;
-import yak;
 
 public class QRScanEntryView
   extends ScanEntryProviderView
-  implements View.OnClickListener, View.OnTouchListener, aneb, anen, anfu
+  implements View.OnClickListener, View.OnTouchListener, MiniSaveImgListener, QRRecognizerListener, CameraProxy.CameraOperationStatusCallBack
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new anhp(this);
+  private Runnable A = new QRScanEntryView.1(this);
+  private Runnable B = new QRScanEntryView.2(this);
+  private boolean K = false;
+  private View.OnTouchListener L = new QRScanEntryView.10(this);
+  private ScannerMultiResultSelectView.MultiSelectListener M = new QRScanEntryView.16(this);
   protected View a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private anib jdField_a_of_type_Anib;
-  private ViewfinderView jdField_a_of_type_ComTencentMobileqqArViewViewfinderView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new QRScanEntryView.13(this);
-  private String jdField_a_of_type_JavaLangString;
-  volatile boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new QRScanEntryView.1(this);
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private Runnable jdField_c_of_type_JavaLangRunnable = new QRScanEntryView.2(this);
-  private boolean jdField_c_of_type_Boolean;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
-  private boolean f;
-  private boolean g;
+  volatile boolean b;
+  ImageView c;
+  Runnable d = new QRScanEntryView.13(this);
+  private ViewfinderView e;
+  private ViewGroup f;
+  private TextView g;
+  private TextView h;
+  private ImageView i;
+  private ViewGroup j;
+  private Rect k;
+  private ViewGroup l;
+  private TextView m;
+  private TextView n;
+  private boolean o;
+  private boolean p;
+  private boolean q;
+  private boolean r;
+  private boolean s;
+  private int t;
+  private int u;
+  private long v;
+  private long w;
+  private CheckBox x;
+  private ScannerMultiResultSelectView y;
+  private ScanEntryProviderContainerView.onVoiceScanStatusListener z;
   
-  public QRScanEntryView(Context paramContext, anhx paramanhx)
+  public QRScanEntryView(Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
   {
-    super(paramContext, paramanhx);
-  }
-  
-  private void a()
-  {
-    QLog.d("AREngine_QRScanEntryView", 1, "checkIfNeedAutoFocus isCameraPrviewing=" + anft.a().b() + ";mIsResumed=" + this.m);
-    if ((anft.a().b()) && (this.m)) {
-      anft.a().a(angf.jdField_a_of_type_Int, angf.jdField_b_of_type_Int);
-    }
+    super(paramContext, paramScanEntryContainerViewListener);
   }
   
   private void a(View paramView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 0;
     if (paramView != null)
     {
-      if (paramBoolean2) {
-        break label33;
+      int i1 = 4;
+      if (!paramBoolean2)
+      {
+        paramView.setAlpha(1.0F);
+        if (paramBoolean1) {
+          i1 = 0;
+        }
+        paramView.setVisibility(i1);
+        return;
       }
-      paramView.setAlpha(1.0F);
-      if (!paramBoolean1) {
-        break label27;
+      ObjectAnimator localObjectAnimator;
+      if (paramBoolean1)
+      {
+        localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 1.0F });
+        paramView.setAlpha(0.0F);
+        paramView.setVisibility(4);
       }
-    }
-    for (;;)
-    {
-      paramView.setVisibility(i);
-      return;
-      label27:
-      i = 4;
-    }
-    label33:
-    ObjectAnimator localObjectAnimator;
-    if (paramBoolean1)
-    {
-      localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 1.0F });
-      paramView.setAlpha(0.0F);
-      paramView.setVisibility(4);
-    }
-    for (;;)
-    {
-      localObjectAnimator.addListener(new anhr(this, paramView, paramBoolean1));
+      else
+      {
+        localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F });
+        paramView.setAlpha(1.0F);
+        paramView.setVisibility(0);
+      }
+      localObjectAnimator.addListener(new QRScanEntryView.12(this, paramView, paramBoolean1));
       localObjectAnimator.setDuration(300L);
       localObjectAnimator.start();
-      return;
-      localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F });
-      paramView.setAlpha(1.0F);
-      paramView.setVisibility(0);
+    }
+  }
+  
+  private void a(ScannerResult paramScannerResult, int paramInt, ScannerMultiResultSelectView.ImageData paramImageData)
+  {
+    if ((paramScannerResult != null) && (paramScannerResult.a()) && (this.G != null))
+    {
+      if (this.E == null) {
+        return;
+      }
+      Object localObject = this.y;
+      if ((localObject != null) && (((ScannerMultiResultSelectView)localObject).a())) {
+        return;
+      }
+      if (this.y == null)
+      {
+        this.y = new ScannerMultiResultSelectView(this.E);
+        this.y.setMultiSelectListener(this.M);
+      }
+      localObject = (RelativeLayout)((Activity)this.E).findViewById(2131445137);
+      this.y.a((RelativeLayout)localObject, paramScannerResult, paramInt, paramImageData, 1);
+      if ((!PhoneStatusTools.b(this.E)) && (!PhoneStatusTools.a(this.E)) && (!PhoneStatusTools.d(this.E))) {
+        AudioUtil.b(2131230835, false);
+      }
+    }
+  }
+  
+  private void a(ScannerResult paramScannerResult, ScannerMultiResultSelectView.ImageData paramImageData)
+  {
+    ThreadManager.getUIHandler().post(new QRScanEntryView.15(this, paramScannerResult, paramImageData));
+  }
+  
+  private void a(String paramString1, String paramString2, Activity paramActivity, String paramString3)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (paramActivity == null) {
+        return;
+      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("detectType", 1);
+      localIntent.putExtra("scannerResult", paramString1.trim());
+      localIntent.putExtra("scannerType", paramString2.trim());
+      if (!TextUtils.isEmpty(paramString3)) {
+        localIntent.putExtra("filePath", paramString3);
+      }
+      paramActivity.setResult(13, localIntent);
+      paramActivity.finish();
+      paramActivity.overridePendingTransition(0, 0);
     }
   }
   
   private void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QRScanEntryView", 2, String.format("updateFlashLightView byUserClick=%s mIsFlashLightVisible=%s mIsFlashLightOn=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Boolean.valueOf(this.jdField_c_of_type_Boolean) }));
+      QLog.d("AREngine_QRScanEntryView", 2, String.format("updateFlashLightView byUserClick=%s mIsFlashLightVisible=%s mIsFlashLightOn=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.o), Boolean.valueOf(this.p) }));
     }
-    if (this.jdField_d_of_type_AndroidWidgetTextView != null)
+    if (this.n != null)
     {
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+      if ((this.o) && (!this.p) && (!this.q))
       {
-        this.jdField_d_of_type_Boolean = true;
-        i();
+        this.q = true;
+        j();
+        return;
       }
-    }
-    else {
-      return;
-    }
-    TextView localTextView = this.jdField_d_of_type_AndroidWidgetTextView;
-    boolean bool = this.jdField_b_of_type_Boolean;
-    if (!paramBoolean)
-    {
-      paramBoolean = true;
-      a(localTextView, bool, paramBoolean);
-      localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
-        break label180;
+      a(this.n, this.o, paramBoolean ^ true);
+      TextView localTextView = this.m;
+      if ((this.o) && (!this.p)) {
+        paramBoolean = false;
+      } else {
+        paramBoolean = true;
       }
-    }
-    label180:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
       a(localTextView, paramBoolean, true);
-      if (!this.jdField_c_of_type_Boolean) {
-        break label185;
+      if (this.p)
+      {
+        this.n.setCompoundDrawablesWithIntrinsicBounds(0, 2130846301, 0, 0);
+        this.n.setText(2131896591);
+        this.n.setTextColor(-16717057);
+        return;
       }
-      this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130844468, 0, 0);
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131698904);
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-16717057);
-      return;
-      paramBoolean = false;
-      break;
+      this.n.setCompoundDrawablesWithIntrinsicBounds(0, 2130846300, 0, 0);
+      this.n.setText(2131896592);
+      this.n.setTextColor(-1);
     }
-    label185:
-    this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130844467, 0, 0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(2131698905);
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
+  }
+  
+  private void b(String paramString1, String paramString2, Activity paramActivity, String paramString3)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (paramActivity != null))
+    {
+      if (this.G == null) {
+        return;
+      }
+      QRSession localQRSession = (QRSession)this.G;
+      if ("qq".equals(paramString2))
+      {
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchAppByMiniCode(paramActivity, paramString1, 1047, new QRScanEntryView.14(this, paramString1, paramString3, paramActivity, localQRSession));
+        return;
+      }
+      if ("wx".equals(paramString2))
+      {
+        QLog.i("AREngine_QRScanEntryView", 2, String.format("handleScannerMiniResult jumpMiniCode result=%s", new Object[] { paramString1 }));
+        ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).startWxMiniApp(paramActivity, paramString1, 2, 1047);
+        paramActivity.finish();
+      }
+    }
   }
   
   private void b(boolean paramBoolean)
   {
-    if ((!this.e) && (paramBoolean))
+    if ((!this.r) && (paramBoolean))
     {
-      azqs.b(null, "dc00898", "", "", "0X8008C91", "0X8008C91", 1, 0, "", "", "", "");
-      this.e = true;
-    }
-    while ((this.f) || (paramBoolean)) {
+      ReportController.b(null, "dc00898", "", "", "0X8008C91", "0X8008C91", 1, 0, "", "", "", "");
+      this.r = true;
       return;
     }
-    azqs.b(null, "dc00898", "", "", "0X8008C91", "0X8008C91", 0, 0, "", "", "", "");
-    this.f = true;
+    if ((!this.s) && (!paramBoolean))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X8008C91", "0X8008C91", 0, 0, "", "", "", "");
+      this.s = true;
+    }
   }
   
   private void h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QRScanEntryView", 2, "resetFlashLightState");
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    a(this.jdField_d_of_type_AndroidWidgetTextView, this.jdField_b_of_type_Boolean, false);
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    if (!this.jdField_b_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(localTextView, bool, false);
-      ((anfy)this.jdField_a_of_type_Anfl).a(true, 0L);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkIfNeedAutoFocus isCameraPrviewing=");
+    localStringBuilder.append(CameraProxy.a().g());
+    localStringBuilder.append(";mIsResumed=");
+    localStringBuilder.append(this.J);
+    QLog.d("AREngine_QRScanEntryView", 1, localStringBuilder.toString());
+    if ((CameraProxy.a().g()) && (this.J)) {
+      CameraProxy.a().a(UniformGLRenderManagerImpl.b, UniformGLRenderManagerImpl.c);
     }
   }
   
   private void i()
   {
-    LottieComposition.Factory.fromAssetFileName(this.jdField_a_of_type_AndroidContentContext, "qq_ar_light_first_show.json", new anhq(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_QRScanEntryView", 2, "resetFlashLightState");
+    }
+    this.o = false;
+    this.p = false;
+    a(this.n, this.o, false);
+    a(this.m, this.o ^ true, false);
+    ((QRSession)this.G).a(true, 0L);
+  }
+  
+  private void j()
+  {
+    LottieComposition.Factory.fromAssetFileName(this.E, "qq_ar_light_first_show.json", new QRScanEntryView.11(this));
   }
   
   public void a(int paramInt)
@@ -247,165 +291,103 @@ public class QRScanEntryView
   
   public void a(Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    long l1 = System.currentTimeMillis();
+    if (this.a == null)
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131560839, this, true);
-      this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131373922));
-      this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView = ((ViewfinderView)findViewById(2131373927));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377957));
-      angs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewViewGroup);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377959));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377961));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364826));
+      View localView = LayoutInflater.from(getContext()).inflate(2131627304, this, true);
+      this.l = ((ViewGroup)findViewById(2131442848));
+      this.e = ((ViewfinderView)findViewById(2131442853));
+      this.f = ((ViewGroup)findViewById(2131447484));
+      UniformUtils.a(this.E, this.f);
+      this.h = ((TextView)findViewById(2131447486));
+      this.g = ((TextView)findViewById(2131447488));
+      this.i = ((ImageView)findViewById(2131431388));
       if (paramBundle.getBoolean("hide_album", false)) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.i.setVisibility(8);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(alud.a(2131711608));
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131711606));
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364827));
-      findViewById(2131368848).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new anhs(this));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373921));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373910));
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new anht(this));
-      this.jdField_a_of_type_AndroidViewView = localView;
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
+      this.h.setOnClickListener(this);
+      this.h.setContentDescription(HardCodeUtil.a(2131901576));
+      this.i.setOnClickListener(this);
+      this.i.setOnTouchListener(this.L);
+      this.i.setContentDescription(HardCodeUtil.a(2131908828));
+      this.j = ((ViewGroup)findViewById(2131431389));
+      findViewById(2131436471).setOnTouchListener(this.L);
+      this.j.setOnClickListener(new QRScanEntryView.3(this));
+      this.m = ((TextView)findViewById(2131442847));
+      this.n = ((TextView)findViewById(2131442834));
+      this.n.setOnTouchListener(this.L);
+      this.n.setOnClickListener(new QRScanEntryView.4(this));
+      this.a = localView;
+      this.a.setOnTouchListener(this);
     }
-    anft.a().a(this);
-    this.jdField_a_of_type_Anfl = new anfy();
-    this.jdField_a_of_type_Anfl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    ((anfy)this.jdField_a_of_type_Anfl).a(this, this);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364260));
-    auew.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    if (anet.a())
+    CameraProxy.a().a(this);
+    this.G = new QRSession();
+    this.G.a(this.E, this.C);
+    ((QRSession)this.G).a(this, this);
+    this.x = ((CheckBox)findViewById(2131430694));
+    ((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).setSaveDetectImage(false);
+    this.x.setChecked(false);
+    if (((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).isBaseTestSwitchOn())
     {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new anhu(this));
+      this.x.setVisibility(0);
+      this.x.setOnCheckedChangeListener(new QRScanEntryView.5(this));
     }
-    this.k = true;
+    this.D = true;
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QRScanEntryView", 2, String.format("onCreate time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+      QLog.d("AREngine_QRScanEntryView", 2, String.format("onCreate time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) }));
     }
   }
   
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Object localObject2 = Uri.parse("file://" + paramString);
-    Object localObject1 = new SparseArray(2);
-    int i = yak.a((Uri)localObject2, this.jdField_a_of_type_AndroidContentContext, 3, (SparseArray)localObject1);
-    boolean bool1 = yak.a(i);
-    boolean bool2 = yak.b(i);
-    localObject2 = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    if (bool1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_QRScanEntryView", 2, "scan photo QRCode finish");
-      }
-      localObject1 = (Pair)((SparseArray)localObject1).get(1);
-      localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("detectType", 1);
-      ((Intent)localObject2).putExtra("scannerResult", String.valueOf(((Pair)localObject1).first).trim());
-      ((Intent)localObject2).putExtra("scannerType", String.valueOf(((Pair)localObject1).second).trim());
-      ((Intent)localObject2).putExtra("filePath", paramString);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).setResult(13, (Intent)localObject2);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
-      return;
-    }
-    if ((bool2) && (localObject2 != null))
-    {
-      localObject1 = (String)((SparseArray)localObject1).get(2);
-      ((anfy)this.jdField_a_of_type_Anfl).b(true);
-      MiniAppLauncher.launchAppByMiniCode((Context)localObject2, (String)localObject1, 1049, new anhv(this, (String)localObject1, paramString));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QRScanEntryView", 2, "doDealGalleryPicFile deal fail");
-    }
-    amul.a(alud.a(2131711607), false);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  public void a(ScannerResult paramScannerResult, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QRScanEntryView", 2, String.format("onQRRecognizeSuccess type=%s data=%s fromDetect=%b", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) }));
+      QLog.d("AREngine_QRScanEntryView", 2, String.format("onQRRecognizeSuccess results=%s", new Object[] { paramScannerResult }));
     }
-    if (!this.m)
+    if ((this.J) && (this.E != null) && (this.G != null))
     {
-      QLog.d("AREngine_QRScanEntryView", 1, "QREntry has closed,so give up this result");
-      return;
-    }
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("detectType", 1);
-      localIntent.putExtra("scannerResult", paramString2.trim());
-      localIntent.putExtra("scannerType", paramString1.trim());
-      localActivity.setResult(13, localIntent);
-      localActivity.finish();
-      localActivity.overridePendingTransition(0, 0);
-    }
-    if ((localActivity != null) && ((localActivity instanceof ScanTorchActivity)))
-    {
-      long l = ((ScanTorchActivity)localActivity).a();
-      if (l > 0L)
+      Object localObject = this.y;
+      if ((localObject == null) || (!((ScannerMultiResultSelectView)localObject).a()))
       {
-        amsf.a().b(l, System.currentTimeMillis());
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_QRScanEntryView", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+        localObject = new ScannerMultiResultSelectView.ImageData();
+        ((ScannerMultiResultSelectView.ImageData)localObject).a = paramArrayOfByte;
+        ((ScannerMultiResultSelectView.ImageData)localObject).b = paramInt1;
+        ((ScannerMultiResultSelectView.ImageData)localObject).c = paramInt2;
+        ((QRSession)this.G).b(true);
+        if ((paramScannerResult.d) && (paramArrayOfByte != null))
+        {
+          ThreadManagerV2.excute(new QRScanEntryView.7(this, paramArrayOfByte, paramInt1, paramInt2, paramScannerResult, (ScannerMultiResultSelectView.ImageData)localObject), 16, null, true);
+          return;
         }
+        a(paramScannerResult, (ScannerMultiResultSelectView.ImageData)localObject);
+        return;
       }
     }
-    azqs.b(null, "dc00898", "", "", "0X80085AC", "0X80085AC", 0, 0, "", "", "", "");
+    QLog.d("AREngine_QRScanEntryView", 1, "QREntry has closed,so give up this result");
   }
   
-  public void a(List<aned> paramList, long paramLong)
+  public void a(List<AIRect> paramList)
   {
-    boolean bool;
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      if (paramList.size() > 0)
-      {
+      boolean bool;
+      if (paramList.size() > 0) {
         bool = true;
-        if (paramList.size() <= 0) {
-          break label85;
-        }
-        localObject = ((aned)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect;
-        label42:
-        QLog.i("AREngine_QRScanEntryView", 2, String.format("onMiniDetectResult suc=%b rect=%s", new Object[] { Boolean.valueOf(bool), localObject }));
+      } else {
+        bool = false;
       }
-    }
-    else {
-      if (this.m) {
-        break label93;
+      Object localObject;
+      if (paramList.size() > 0) {
+        localObject = ((AIRect)paramList.get(0)).b;
+      } else {
+        localObject = "null";
       }
+      QLog.i("AREngine_QRScanEntryView", 2, String.format("onMiniDetectResult suc=%b rect=%s", new Object[] { Boolean.valueOf(bool), localObject }));
     }
-    label85:
-    label93:
-    while ((this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView == null) || (!anet.a()))
-    {
+    if (!this.J) {
       return;
-      bool = false;
-      break;
-      localObject = "null";
-      break label42;
     }
-    if (paramList.size() > 0) {}
-    for (paramList = ((aned)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect;; paramList = new Rect())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.setDetectRect(paramList);
-      return;
+    if ((this.e != null) && (((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).isBaseTestSwitchOn())) {
+      this.e.setDetectRect(paramList);
     }
   }
   
@@ -416,55 +398,15 @@ public class QRScanEntryView
     }
   }
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, String.format("onMiniDecodeResult suc=%b result=%s bFromDetect=%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) }));
-    }
-    if (!this.m) {}
-    label236:
-    label240:
-    for (;;)
+    ScannerMultiResultSelectView localScannerMultiResultSelectView = this.y;
+    if ((localScannerMultiResultSelectView != null) && (localScannerMultiResultSelectView.a()))
     {
-      return;
-      Object localObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView != null) && (anet.a()))
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (paramBoolean2)
-        {
-          localObject = "1";
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append(" [ ").append(paramString).append(" ]");
-          this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.setMiniText(localStringBuilder.toString());
-        }
-      }
-      else
-      {
-        if (!paramBoolean1) {
-          continue;
-        }
-        if ((!bdeu.a(paramString, this.jdField_a_of_type_JavaLangString)) || (System.currentTimeMillis() - this.jdField_c_of_type_Long >= 10000L)) {
-          break label236;
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label240;
-        }
-        localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-        if (localObject != null)
-        {
-          ((anfy)this.jdField_a_of_type_Anfl).b(true);
-          MiniAppLauncher.launchAppByMiniCode((Context)localObject, paramString, 1047, new anhw(this, paramString, (Activity)localObject));
-        }
-        azqs.b(null, "dc00898", "", "", "0X80085AC", "0X80085AC", 1, 0, "", "", "", "");
-        return;
-        localObject = "0";
-        break;
-      }
+      this.y.b();
+      return true;
     }
+    return super.a();
   }
   
   public void b()
@@ -472,7 +414,7 @@ public class QRScanEntryView
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_QRScanEntryView", 2, "onStartPreviewSuccess");
     }
-    a();
+    h();
   }
   
   public void b(int paramInt1, int paramInt2) {}
@@ -481,12 +423,13 @@ public class QRScanEntryView
   {
     QLog.d("AREngine_QRScanEntryView", 1, "onResume ");
     super.c();
-    ((anfy)this.jdField_a_of_type_Anfl).a(true, 1000L);
-    a();
-    if ((this.jdField_a_of_type_Anib != null) && (!this.g))
+    ((QRSession)this.G).a(true, 1000L);
+    h();
+    ScanEntryProviderContainerView.onVoiceScanStatusListener localonVoiceScanStatusListener = this.z;
+    if ((localonVoiceScanStatusListener != null) && (!this.K))
     {
-      this.jdField_a_of_type_Anib.a(2);
-      this.g = true;
+      localonVoiceScanStatusListener.a(2);
+      this.K = true;
     }
   }
   
@@ -494,20 +437,25 @@ public class QRScanEntryView
   {
     QLog.d("AREngine_QRScanEntryView", 1, "onPause ");
     super.d();
-    h();
-    anft.a().a();
-    if (this.jdField_a_of_type_Anib != null)
+    i();
+    CameraProxy.a().b();
+    ScanEntryProviderContainerView.onVoiceScanStatusListener localonVoiceScanStatusListener = this.z;
+    if (localonVoiceScanStatusListener != null)
     {
-      this.jdField_a_of_type_Anib.a(3);
-      this.g = false;
+      localonVoiceScanStatusListener.a(3);
+      this.K = false;
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QRScanEntryView", 2, String.format("dispatchTouchEvent", new Object[0]) + bool);
+    if (QLog.isColorLevel())
+    {
+      paramMotionEvent = new StringBuilder();
+      paramMotionEvent.append(String.format("dispatchTouchEvent", new Object[0]));
+      paramMotionEvent.append(bool);
+      QLog.d("AREngine_QRScanEntryView", 2, paramMotionEvent.toString());
     }
     return bool;
   }
@@ -516,26 +464,28 @@ public class QRScanEntryView
   {
     QLog.d("AREngine_QRScanEntryView", 1, "onDestroy ");
     super.e();
-    anft.a().b(this);
-    if (this.jdField_a_of_type_Anib != null) {
-      this.jdField_a_of_type_Anib.a(4);
+    CameraProxy.a().b(this);
+    ScanEntryProviderContainerView.onVoiceScanStatusListener localonVoiceScanStatusListener = this.z;
+    if (localonVoiceScanStatusListener != null) {
+      localonVoiceScanStatusListener.a(4);
     }
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    auew.jdField_b_of_type_Boolean = false;
+    ThreadManager.getUIHandler().removeCallbacks(this.d);
+    ((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).setSaveDetectImage(false);
   }
   
   public void f()
   {
     QLog.d("AREngine_QRScanEntryView", 1, "onProviderViewShow ");
     super.f();
-    h();
-    if (c())
+    i();
+    if (n())
     {
-      a();
-      if ((this.jdField_a_of_type_Anib != null) && (!this.g))
+      h();
+      ScanEntryProviderContainerView.onVoiceScanStatusListener localonVoiceScanStatusListener = this.z;
+      if ((localonVoiceScanStatusListener != null) && (!this.K))
       {
-        this.jdField_a_of_type_Anib.a(2);
-        this.g = true;
+        localonVoiceScanStatusListener.a(2);
+        this.K = true;
       }
     }
   }
@@ -544,90 +494,113 @@ public class QRScanEntryView
   {
     QLog.d("AREngine_QRScanEntryView", 1, "onProviderViewClose ");
     super.g();
-    ((anfy)this.jdField_a_of_type_Anfl).a(false, 0L);
-    anft.a().a();
-    if (this.jdField_c_of_type_Boolean) {
-      anft.a().a(false);
+    ((QRSession)this.G).a(false, 0L);
+    CameraProxy.a().b();
+    if (this.p) {
+      CameraProxy.a().b(false);
     }
-    if (this.jdField_a_of_type_Anib != null)
+    ScanEntryProviderContainerView.onVoiceScanStatusListener localonVoiceScanStatusListener = this.z;
+    if (localonVoiceScanStatusListener != null)
     {
-      this.jdField_a_of_type_Anib.a(3);
-      this.g = false;
+      localonVoiceScanStatusListener.a(3);
+      this.K = false;
+    }
+  }
+  
+  public void i_(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (this.E != null))
+    {
+      if (this.G == null) {
+        return;
+      }
+      ((QRSession)this.G).b(true);
+      ThreadManagerV2.excute(new QRScanEntryView.6(this, paramString), 16, null, true);
     }
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if (i1 != 2131431388)
     {
-    default: 
-      return;
-    case 2131377959: 
-      l();
-      return;
+      if (i1 == 2131447486) {
+        o();
+      }
     }
-    m();
+    else {
+      p();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (anft.a().b()) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
+    if (CameraProxy.a().g())
     {
-      return true;
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if ((this.jdField_b_of_type_Long > 0L) && (System.currentTimeMillis() - this.jdField_b_of_type_Long > ViewConfiguration.getDoubleTapTimeout()))
+      int i1 = paramMotionEvent.getAction();
+      if (i1 != 0)
       {
-        this.jdField_b_of_type_Long = 0L;
-        continue;
-        if ((this.jdField_a_of_type_Long > 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_Long <= ViewConfiguration.getTapTimeout()))
+        if (i1 != 1)
+        {
+          if (i1 != 3) {
+            return true;
+          }
+          this.v = 0L;
+          this.w = 0L;
+          return true;
+        }
+        if ((this.v > 0L) && (System.currentTimeMillis() - this.v <= ViewConfiguration.getTapTimeout()))
         {
           paramView = ThreadManager.getUIHandler();
-          if (this.jdField_b_of_type_Long > 0L)
+          if (this.w > 0L)
           {
-            paramView.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-            paramView.post(this.jdField_c_of_type_JavaLangRunnable);
+            paramView.removeCallbacks(this.A);
+            paramView.post(this.B);
           }
-          for (;;)
+          else
           {
-            this.jdField_b_of_type_Long = System.currentTimeMillis();
-            break;
-            paramView.postDelayed(this.jdField_b_of_type_JavaLangRunnable, ViewConfiguration.getDoubleTapTimeout());
+            paramView.postDelayed(this.A, ViewConfiguration.getDoubleTapTimeout());
           }
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_b_of_type_Long = 0L;
+          this.w = System.currentTimeMillis();
+          return true;
+        }
+      }
+      else
+      {
+        this.t = ((int)paramMotionEvent.getRawX());
+        this.u = ((int)paramMotionEvent.getRawY());
+        this.v = System.currentTimeMillis();
+        if ((this.w > 0L) && (System.currentTimeMillis() - this.w > ViewConfiguration.getDoubleTapTimeout())) {
+          this.w = 0L;
         }
       }
     }
+    return true;
   }
   
   public void setRectAreas(Rect paramRect)
   {
-    if (this.jdField_a_of_type_Anfl != null) {
-      ((anfy)this.jdField_a_of_type_Anfl).a(paramRect);
+    if (this.G != null) {
+      ((QRSession)this.G).a(paramRect);
     }
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    if (this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.setRect(paramRect);
+    this.k = paramRect;
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((ViewfinderView)localObject).setRect(paramRect);
     }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_c_of_type_AndroidViewViewGroup.getLayoutParams();
-    localMarginLayoutParams.setMargins(localMarginLayoutParams.leftMargin, paramRect.bottom - aepi.a(60.0F, getResources()), localMarginLayoutParams.rightMargin, localMarginLayoutParams.bottomMargin);
+    localObject = (ViewGroup.MarginLayoutParams)this.l.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject).setMargins(((ViewGroup.MarginLayoutParams)localObject).leftMargin, paramRect.bottom - AIOUtils.b(60.0F, getResources()), ((ViewGroup.MarginLayoutParams)localObject).rightMargin, ((ViewGroup.MarginLayoutParams)localObject).bottomMargin);
   }
   
-  public void setVoiceScanStatusListener(anib paramanib)
+  public void setVoiceScanStatusListener(ScanEntryProviderContainerView.onVoiceScanStatusListener paramonVoiceScanStatusListener)
   {
-    this.jdField_a_of_type_Anib = paramanib;
+    this.z = paramonVoiceScanStatusListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView
  * JD-Core Version:    0.7.0.1
  */

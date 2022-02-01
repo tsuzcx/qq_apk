@@ -1,25 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import adpo;
-import ajpz;
-import ajqj;
-import ajqk;
-import ajsk;
-import ajsl;
-import ajsm;
-import ajsn;
-import ajso;
-import alud;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,144 +17,161 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bdgm;
-import bdjz;
+import com.tencent.aelight.camera.qqstory.api.IMediaCodecSendTask;
+import com.tencent.aelight.camera.qqstory.api.IPtvFilterUtil;
+import com.tencent.aelight.camera.struct.editor.FlowComponentInterface;
+import com.tencent.aelight.camera.struct.editor.PublishParam;
+import com.tencent.aelight.camera.struct.editor.VideoSendPublicParamBase;
+import com.tencent.biz.qqstory.takevideo.slideshow.QzoneSlideShowPhotoListManager;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import com.tencent.qzonehub.api.utils.IQzoneVideoHelper;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.video.VideoComponentCallback;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
 import java.io.File;
 import java.util.ArrayList;
-import xmn;
-import xna;
 
 public class QzoneSlideShowPreparingFragment
   extends PublicBaseFragment
-  implements adpo
+  implements PublicFragmentActivityCallBackInterface
 {
-  private static final String jdField_a_of_type_JavaLangString = xmn.class.getName();
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ajsk(this, Looper.getMainLooper());
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bdjz jdField_a_of_type_Bdjz;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new QzoneSlideShowPreparingFragment.2(this);
+  private static final String a = QzoneSlideShowPhotoListManager.class.getName();
   private TextView b;
+  private TextView c;
+  private ProgressBar d;
+  private ImageView e;
+  private int f;
+  private QQCustomDialog g;
+  private Handler h = new QzoneSlideShowPreparingFragment.1(this, Looper.getMainLooper());
+  private Runnable i = new QzoneSlideShowPreparingFragment.2(this);
   
   private void a(int paramInt, Intent paramIntent)
   {
-    Object localObject2;
-    Object localObject1;
-    int i;
-    if (paramInt == -1) {
+    if (paramInt == -1)
+    {
       if (paramIntent != null)
       {
-        localObject2 = paramIntent.getStringExtra("key_content");
-        localObject1 = localObject2;
+        Object localObject2 = paramIntent.getStringExtra("key_content");
+        Object localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        i = paramIntent.getIntExtra("key_priv", 1);
-        localObject2 = (ArrayList)paramIntent.getSerializableExtra("key_priv_uin_list");
-        if (localObject2 != null) {
-          break label266;
+        int j = paramIntent.getIntExtra("key_priv", 1);
+        Object localObject3 = (ArrayList)paramIntent.getSerializableExtra("key_priv_uin_list");
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = new ArrayList();
         }
-        localObject2 = new ArrayList();
-      }
-    }
-    label266:
-    for (;;)
-    {
-      int j = paramIntent.getIntExtra("key_font_id", -1);
-      int k = paramIntent.getIntExtra("key_font_format_type", 0);
-      String str1 = paramIntent.getStringExtra("key_font_url");
-      int m = paramIntent.getIntExtra("key_super_font_id", -1);
-      String str2 = paramIntent.getStringExtra("key_super_font_info");
-      boolean bool1 = paramIntent.getBooleanExtra("key_generate_gif", false);
-      boolean bool2 = paramIntent.getBooleanExtra("key_timer_delete", false);
-      boolean bool3 = paramIntent.getBooleanExtra("key_sync_to_qqstory", false);
-      paramIntent = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
-      if (paramIntent.jdField_f_of_type_Int <= 5) {}
-      for (paramInt = paramIntent.jdField_f_of_type_Int;; paramInt = 0)
-      {
-        int n = (int)paramIntent.jdField_a_of_type_Long;
-        VideoComponentCallback localVideoComponentCallback = new VideoComponentCallback();
-        localVideoComponentCallback.c_(getClass().getName());
-        a(paramIntent.jdField_k_of_type_JavaLangString, paramInt, paramIntent.j, paramIntent.jdField_c_of_type_JavaLangString, paramIntent.jdField_b_of_type_JavaLangString, n, localVideoComponentCallback, (String)localObject1, i, (ArrayList)localObject2, false, j, k, str1, m, str2, bool1, bool2, bool3);
-        if (this.jdField_a_of_type_Int == 18) {
+        int k = paramIntent.getIntExtra("key_font_id", -1);
+        int m = paramIntent.getIntExtra("key_font_format_type", 0);
+        localObject3 = paramIntent.getStringExtra("key_font_url");
+        int n = paramIntent.getIntExtra("key_super_font_id", -1);
+        String str = paramIntent.getStringExtra("key_super_font_info");
+        boolean bool1 = paramIntent.getBooleanExtra("key_generate_gif", false);
+        boolean bool2 = paramIntent.getBooleanExtra("key_timer_delete", false);
+        boolean bool3 = paramIntent.getBooleanExtra("key_sync_to_qqstory", false);
+        paramIntent = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
+        if (paramIntent.n <= 5) {
+          paramInt = paramIntent.n;
+        } else {
+          paramInt = 0;
+        }
+        int i1 = (int)paramIntent.j;
+        FlowComponentInterface localFlowComponentInterface = (FlowComponentInterface)((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).getVideoComponentCallback();
+        localFlowComponentInterface.setRefer(getClass().getName());
+        a(paramIntent.u, paramInt, paramIntent.t, paramIntent.c, paramIntent.b, i1, localFlowComponentInterface, (String)localObject1, j, (ArrayList)localObject2, false, k, m, (String)localObject3, n, str, bool1, bool2, bool3);
+        if (this.f == 18) {
           LpReportInfo_pf00064.allReport(585, 15, 9);
         }
         a();
         return;
       }
-      a();
       return;
     }
+    a();
   }
   
-  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, ajpz paramajpz, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, FlowComponentInterface paramFlowComponentInterface, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    String str = new File(paramString2).getParent();
+    paramString1 = new File(paramString2).getParent();
     if (!TextUtils.isEmpty(paramString4)) {
-      PtvFilterUtils.a(str, paramString4);
+      ((IPtvFilterUtil)QRoute.api(IPtvFilterUtil.class)).createFakeVidConfigFile(paramString1, paramString4);
     }
-    ajqk localajqk = new ajqk();
-    localajqk.jdField_a_of_type_AndroidAppActivity = getActivity();
-    localajqk.jdField_a_of_type_JavaLangString = str;
-    localajqk.jdField_b_of_type_JavaLangString = paramString1;
-    localajqk.jdField_a_of_type_Int = paramInt1;
-    localajqk.jdField_c_of_type_JavaLangString = paramString2;
-    localajqk.jdField_f_of_type_JavaLangString = paramString3;
-    localajqk.jdField_c_of_type_Int = 0;
-    localajqk.jdField_d_of_type_Int = 0;
-    localajqk.jdField_k_of_type_JavaLangString = paramString4;
-    localajqk.j = paramInt2;
-    localajqk.jdField_a_of_type_Ajpz = paramajpz;
-    localajqk.jdField_g_of_type_JavaLangString = paramString5;
-    localajqk.jdField_e_of_type_Int = paramInt3;
-    localajqk.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    localajqk.jdField_a_of_type_Boolean = true;
-    localajqk.jdField_b_of_type_Boolean = paramBoolean1;
-    localajqk.jdField_f_of_type_Int = paramInt4;
-    localajqk.jdField_g_of_type_Int = paramInt5;
-    localajqk.jdField_h_of_type_JavaLangString = paramString6;
-    localajqk.jdField_h_of_type_Int = paramInt6;
-    localajqk.i = paramString7;
-    localajqk.jdField_e_of_type_Boolean = paramBoolean2;
-    localajqk.jdField_f_of_type_Boolean = paramBoolean3;
-    localajqk.jdField_g_of_type_Boolean = paramBoolean4;
-    localajqk.jdField_h_of_type_Boolean = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VNeedOriginal", true);
-    localajqk.jdField_k_of_type_Int = xmn.a().a();
-    localajqk.jdField_d_of_type_JavaLangString = "";
-    localajqk.jdField_b_of_type_Int = 0;
-    localajqk.jdField_e_of_type_JavaLangString = "";
-    new ajqj(localajqk).execute(new Void[0]);
+    VideoSendPublicParamBase localVideoSendPublicParamBase = new VideoSendPublicParamBase();
+    localVideoSendPublicParamBase.mContext = getBaseActivity();
+    localVideoSendPublicParamBase.mVideoCacheDir = paramString1;
+    localVideoSendPublicParamBase.mEncodeMode = paramInt1;
+    localVideoSendPublicParamBase.mVideoFilePath = paramString2;
+    localVideoSendPublicParamBase.mThumbFilePath = paramString3;
+    localVideoSendPublicParamBase.mThumbWidth = 0;
+    localVideoSendPublicParamBase.mThumbHeight = 0;
+    localVideoSendPublicParamBase.fakeVid = paramString4;
+    localVideoSendPublicParamBase.recordTime = paramInt2;
+    localVideoSendPublicParamBase.mUserCallBack = paramFlowComponentInterface;
+    localVideoSendPublicParamBase.mContent = paramString5;
+    localVideoSendPublicParamBase.mPriv = paramInt3;
+    localVideoSendPublicParamBase.mPrivUinList = paramArrayList;
+    localVideoSendPublicParamBase.mEnableEditVideo = true;
+    localVideoSendPublicParamBase.topicSyncQzone = paramBoolean1;
+    localVideoSendPublicParamBase.fontId = paramInt4;
+    localVideoSendPublicParamBase.fontFormatType = paramInt5;
+    localVideoSendPublicParamBase.fontUrl = paramString6;
+    localVideoSendPublicParamBase.superFontId = paramInt6;
+    localVideoSendPublicParamBase.superFontInfo = paramString7;
+    localVideoSendPublicParamBase.generateGif = paramBoolean2;
+    localVideoSendPublicParamBase.timerDelete = paramBoolean3;
+    localVideoSendPublicParamBase.isUploadOrigin = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VNeedOriginal", true);
+    localVideoSendPublicParamBase.entrySource = QzoneSlideShowPhotoListManager.a().d();
+    localVideoSendPublicParamBase.mUin = "";
+    localVideoSendPublicParamBase.mUinType = 0;
+    localVideoSendPublicParamBase.mTroopUin = "";
+    ((IMediaCodecSendTask)QRoute.api(IMediaCodecSendTask.class)).execute(localVideoSendPublicParamBase);
   }
   
-  private void b()
+  private void c()
   {
-    if (this.jdField_a_of_type_Bdjz == null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      String str = alud.a(2131712749);
-      this.jdField_a_of_type_Bdjz = bdgm.a(getActivity(), 230, str, null, alud.a(2131712750), alud.a(2131712748), new ajsn(this), new ajso(this));
+      localObject = (BitmapDrawable)((ImageView)localObject).getDrawable();
+      if (localObject != null)
+      {
+        localObject = ((BitmapDrawable)localObject).getBitmap();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+          ((Bitmap)localObject).recycle();
+        }
+      }
     }
-    this.jdField_a_of_type_Bdjz.show();
+  }
+  
+  private void d()
+  {
+    if (this.g == null)
+    {
+      String str = HardCodeUtil.a(2131909904);
+      this.g = DialogUtil.a(getBaseActivity(), 230, str, null, HardCodeUtil.a(2131909905), HardCodeUtil.a(2131898212), new QzoneSlideShowPreparingFragment.5(this), new QzoneSlideShowPreparingFragment.6(this));
+    }
+    this.g.show();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    xna.a().e();
-    getActivity().finish();
+    this.h.removeCallbacks(this.i);
+    SlideShowPhotoListManager.a().j();
+    getBaseActivity().finish();
   }
   
   public boolean needImmersive()
@@ -180,77 +187,81 @@ public class QzoneSlideShowPreparingFragment
   
   public void onBackPressed()
   {
-    b();
+    d();
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "QzoneSlideShowPreparingFragment onCreate");
+    QLog.d(a, 2, "QzoneSlideShowPreparingFragment onCreate");
     super.onCreate(paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    int i = 0;
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "QzoneSlideShowPreparingFragment onCreateView");
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559049, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378815));
-    this.b = ((TextView)paramLayoutInflater.findViewById(2131378687));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLayoutInflater.findViewById(2131371660));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368867));
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
-    this.b.setOnClickListener(new ajsl(this));
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
-    paramBundle = getActivity().getIntent();
+    QLog.d(a, 2, "QzoneSlideShowPreparingFragment onCreateView");
+    int j = 0;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131624739, paramViewGroup, false);
+    this.b = ((TextView)paramLayoutInflater.findViewById(2131448490));
+    this.c = ((TextView)paramLayoutInflater.findViewById(2131448311));
+    this.d = ((ProgressBar)paramLayoutInflater.findViewById(2131439912));
+    this.e = ((ImageView)paramLayoutInflater.findViewById(2131436505));
+    this.d.setProgress(0);
+    this.d.setMax(100);
+    this.b.setText("0%");
+    this.c.setOnClickListener(new QzoneSlideShowPreparingFragment.3(this));
+    this.h.postDelayed(this.i, 200L);
+    paramBundle = getBaseActivity().getIntent();
     if (paramBundle != null)
     {
-      xna.a().e();
+      SlideShowPhotoListManager.a().j();
       paramViewGroup = paramBundle.getParcelableArrayListExtra("qzone_slide_show_matters");
-      int j = paramBundle.getIntExtra("qqstory_slide_show_scene", 21);
-      this.jdField_a_of_type_Int = paramBundle.getIntExtra("entrance_qzone_p2v", -1);
-      if ((paramViewGroup == null) || (paramViewGroup.size() <= 0) || (j != 22)) {
-        break label420;
-      }
-      Object localObject = (LocalMediaInfo)paramViewGroup.get(0);
-      if (((LocalMediaInfo)localObject).mMimeType.contains("image"))
+      int k = paramBundle.getIntExtra("qqstory_slide_show_scene", 21);
+      this.f = paramBundle.getIntExtra("entrance_qzone_p2v", -1);
+      if ((paramViewGroup != null) && (paramViewGroup.size() > 0) && (k == 22))
       {
-        new BitmapFactory.Options().inPreferredConfig = Bitmap.Config.RGB_565;
-        paramBundle = BitmapFactory.decodeFile(((LocalMediaInfo)localObject).path);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBundle);
-      }
-      for (;;)
-      {
-        paramBundle = new ArrayList();
-        while (i < paramViewGroup.size())
+        Object localObject = (LocalMediaInfo)paramViewGroup.get(0);
+        if (((LocalMediaInfo)localObject).mMimeType.contains("image"))
         {
-          paramBundle.add(new SlideItemInfo((LocalMediaInfo)paramViewGroup.get(i)));
-          i += 1;
+          new BitmapFactory.Options().inPreferredConfig = Bitmap.Config.RGB_565;
+          paramBundle = BitmapFactory.decodeFile(((LocalMediaInfo)localObject).path);
+          this.e.setImageBitmap(paramBundle);
         }
-        if (((LocalMediaInfo)localObject).mMimeType.contains("video"))
+        else if (((LocalMediaInfo)localObject).mMimeType.contains("video"))
         {
           paramBundle = new MediaMetadataRetriever();
           paramBundle.setDataSource(((LocalMediaInfo)localObject).path);
           localObject = paramBundle.getFrameAtTime(0L, 3);
           paramBundle.release();
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+          this.e.setImageBitmap((Bitmap)localObject);
         }
+        paramBundle = new ArrayList();
+        while (j < paramViewGroup.size())
+        {
+          paramBundle.add(new SlideItemInfo((LocalMediaInfo)paramViewGroup.get(j)));
+          j += 1;
+        }
+        SlideShowPhotoListManager.a().b(paramBundle);
+        SlideShowPhotoListManager.a().a(paramBundle);
+        SlideShowPhotoListManager.a().c(k);
+        SlideShowPhotoListManager.a().b(this.f);
+        SlideShowPhotoListManager.a().a(getBaseActivity(), new QzoneSlideShowPreparingFragment.4(this), 2);
       }
-      xna.a().b(paramBundle);
-      xna.a().a(paramBundle);
-      xna.a().c(j);
-      xna.a().b(this.jdField_a_of_type_Int);
-      xna.a().a(getActivity(), new ajsm(this), 2);
+      else
+      {
+        QLog.e(a, 2, "slideShowLocalMediaInfos is null or SlideShowScene is not QzoneSlideShowPhotoListManager.SCENE_QZONE");
+        a();
+      }
     }
-    for (;;)
-    {
-      LpReportInfo_pf00064.allReport(680, 1, 1);
-      return paramLayoutInflater;
-      label420:
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "slideShowLocalMediaInfos is null or SlideShowScene is not QzoneSlideShowPhotoListManager.SCENE_QZONE");
-      a();
-    }
+    LpReportInfo_pf00064.allReport(680, 1, 1);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
+  }
+  
+  public void onDestroy()
+  {
+    QLog.d(a, 2, "QzoneSlideShowPreparingFragment onDestroy");
+    c();
+    super.onDestroy();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)

@@ -1,7 +1,8 @@
 package com.tencent.mapsdk.raster.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.g;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class LatLngBounds
 {
@@ -11,12 +12,12 @@ public class LatLngBounds
   
   LatLngBounds(int paramInt, LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    AppMethodBeat.i(101202);
-    paramLatLng1 = new LatLngBounds.Builder().include(paramLatLng1).include(paramLatLng2);
-    this.southwest = new LatLng(LatLngBounds.Builder.access$000(paramLatLng1), LatLngBounds.Builder.access$100(paramLatLng1));
-    this.northeast = new LatLng(LatLngBounds.Builder.access$200(paramLatLng1), LatLngBounds.Builder.access$300(paramLatLng1));
+    AppMethodBeat.i(87583);
+    paramLatLng1 = new Builder().include(paramLatLng1).include(paramLatLng2);
+    this.southwest = new LatLng(paramLatLng1.mSouth, paramLatLng1.mWest);
+    this.northeast = new LatLng(paramLatLng1.mNorth, paramLatLng1.mEast);
     this.mVersionCode = paramInt;
-    AppMethodBeat.o(101202);
+    AppMethodBeat.o(87583);
   }
   
   public LatLngBounds(LatLng paramLatLng1, LatLng paramLatLng2)
@@ -24,54 +25,54 @@ public class LatLngBounds
     this(1, paramLatLng1, paramLatLng2);
   }
   
-  public static LatLngBounds.Builder builder()
+  public static Builder builder()
   {
-    AppMethodBeat.i(101203);
-    LatLngBounds.Builder localBuilder = new LatLngBounds.Builder();
-    AppMethodBeat.o(101203);
+    AppMethodBeat.i(87584);
+    Builder localBuilder = new Builder();
+    AppMethodBeat.o(87584);
     return localBuilder;
   }
   
   private boolean containsLatitude(double paramDouble)
   {
-    AppMethodBeat.i(101209);
+    AppMethodBeat.i(87590);
     if ((this.southwest.getLatitude() <= paramDouble) && (paramDouble <= this.northeast.getLatitude()))
     {
-      AppMethodBeat.o(101209);
+      AppMethodBeat.o(87590);
       return true;
     }
-    AppMethodBeat.o(101209);
+    AppMethodBeat.o(87590);
     return false;
   }
   
   private boolean containsLongitude(double paramDouble)
   {
-    AppMethodBeat.i(101210);
+    AppMethodBeat.i(87591);
     if (this.southwest.getLongitude() <= this.northeast.getLongitude())
     {
       if ((this.southwest.getLongitude() <= paramDouble) && (paramDouble <= this.northeast.getLongitude()))
       {
-        AppMethodBeat.o(101210);
+        AppMethodBeat.o(87591);
         return true;
       }
-      AppMethodBeat.o(101210);
+      AppMethodBeat.o(87591);
       return false;
     }
     if ((this.southwest.getLongitude() <= paramDouble) || (paramDouble <= this.northeast.getLongitude()))
     {
-      AppMethodBeat.o(101210);
+      AppMethodBeat.o(87591);
       return true;
     }
-    AppMethodBeat.o(101210);
+    AppMethodBeat.o(87591);
     return false;
   }
   
   private boolean intersect(LatLngBounds paramLatLngBounds)
   {
-    AppMethodBeat.i(101207);
+    AppMethodBeat.i(87588);
     if ((paramLatLngBounds == null) || (paramLatLngBounds.northeast == null) || (paramLatLngBounds.southwest == null) || (this.northeast == null) || (this.southwest == null))
     {
-      AppMethodBeat.o(101207);
+      AppMethodBeat.o(87588);
       return false;
     }
     double d1 = paramLatLngBounds.northeast.getLongitude();
@@ -92,10 +93,10 @@ public class LatLngBounds
     double d16 = paramLatLngBounds.southwest.getLatitude();
     if ((Math.abs(d1 + d2 - d3 - d4) < d5 - d6 + d7 - d8) && (Math.abs(d9 + d10 - d11 - d12) < d13 - d14 + d15 - d16))
     {
-      AppMethodBeat.o(101207);
+      AppMethodBeat.o(87588);
       return true;
     }
-    AppMethodBeat.o(101207);
+    AppMethodBeat.o(87588);
     return false;
   }
   
@@ -111,23 +112,23 @@ public class LatLngBounds
   
   public boolean contains(LatLng paramLatLng)
   {
-    AppMethodBeat.i(101204);
+    AppMethodBeat.i(87585);
     if ((containsLatitude(paramLatLng.getLatitude())) && (containsLongitude(paramLatLng.getLongitude())))
     {
-      AppMethodBeat.o(101204);
+      AppMethodBeat.o(87585);
       return true;
     }
-    AppMethodBeat.o(101204);
+    AppMethodBeat.o(87585);
     return false;
   }
   
   public boolean contains(LatLngBounds paramLatLngBounds)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(101205);
+    AppMethodBeat.i(87586);
     if (paramLatLngBounds == null)
     {
-      AppMethodBeat.o(101205);
+      AppMethodBeat.o(87586);
       return false;
     }
     boolean bool1 = bool2;
@@ -138,30 +139,30 @@ public class LatLngBounds
         bool1 = true;
       }
     }
-    AppMethodBeat.o(101205);
+    AppMethodBeat.o(87586);
     return bool1;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(101212);
+    AppMethodBeat.i(87593);
     if (this == paramObject)
     {
-      AppMethodBeat.o(101212);
+      AppMethodBeat.o(87593);
       return true;
     }
     if (!(paramObject instanceof LatLngBounds))
     {
-      AppMethodBeat.o(101212);
+      AppMethodBeat.o(87593);
       return false;
     }
     paramObject = (LatLngBounds)paramObject;
     if ((this.southwest.equals(paramObject.southwest)) && (this.northeast.equals(paramObject.northeast)))
     {
-      AppMethodBeat.o(101212);
+      AppMethodBeat.o(87593);
       return true;
     }
-    AppMethodBeat.o(101212);
+    AppMethodBeat.o(87593);
     return false;
   }
   
@@ -182,15 +183,15 @@ public class LatLngBounds
   
   public int hashCode()
   {
-    AppMethodBeat.i(101211);
-    int i = g.a(new Object[] { this.southwest, this.northeast });
-    AppMethodBeat.o(101211);
+    AppMethodBeat.i(87592);
+    int i = Arrays.hashCode(new Object[] { this.southwest, this.northeast });
+    AppMethodBeat.o(87592);
     return i;
   }
   
   public LatLngBounds including(LatLng paramLatLng)
   {
-    AppMethodBeat.i(101208);
+    AppMethodBeat.i(87589);
     double d6 = Math.min(this.southwest.getLatitude(), paramLatLng.getLatitude());
     double d7 = Math.max(this.northeast.getLatitude(), paramLatLng.getLatitude());
     double d4 = this.northeast.getLongitude();
@@ -209,7 +210,7 @@ public class LatLngBounds
     for (;;)
     {
       paramLatLng = new LatLngBounds(new LatLng(d6, d1), new LatLng(d7, d2));
-      AppMethodBeat.o(101208);
+      AppMethodBeat.o(87589);
       return paramLatLng;
       label138:
       d2 = d3;
@@ -219,32 +220,100 @@ public class LatLngBounds
   
   public boolean intersects(LatLngBounds paramLatLngBounds)
   {
-    AppMethodBeat.i(101206);
+    AppMethodBeat.i(87587);
     if (paramLatLngBounds == null)
     {
-      AppMethodBeat.o(101206);
+      AppMethodBeat.o(87587);
       return false;
     }
     if ((intersect(paramLatLngBounds)) || (paramLatLngBounds.intersect(this)))
     {
-      AppMethodBeat.o(101206);
+      AppMethodBeat.o(87587);
       return true;
     }
-    AppMethodBeat.o(101206);
+    AppMethodBeat.o(87587);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(101213);
-    String str = g.a(new String[] { g.a("southwest", this.southwest), g.a("northeast", this.northeast) });
-    AppMethodBeat.o(101213);
+    AppMethodBeat.i(87594);
+    String str = "southwest" + this.southwest + "northeast" + this.northeast;
+    AppMethodBeat.o(87594);
     return str;
+  }
+  
+  public static final class Builder
+  {
+    private double mEast = (0.0D / 0.0D);
+    private double mNorth = (-1.0D / 0.0D);
+    private double mSouth = (1.0D / 0.0D);
+    private double mWest = (0.0D / 0.0D);
+    
+    private boolean containsLongitude(double paramDouble)
+    {
+      if (this.mWest <= this.mEast) {
+        if ((this.mWest > paramDouble) || (paramDouble > this.mEast)) {}
+      }
+      while ((this.mWest <= paramDouble) || (paramDouble <= this.mEast))
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+    
+    public final LatLngBounds build()
+    {
+      AppMethodBeat.i(87544);
+      LatLngBounds localLatLngBounds = new LatLngBounds(new LatLng(this.mSouth, this.mWest), new LatLng(this.mNorth, this.mEast));
+      AppMethodBeat.o(87544);
+      return localLatLngBounds;
+    }
+    
+    public final Builder include(LatLng paramLatLng)
+    {
+      AppMethodBeat.i(87542);
+      this.mSouth = Math.min(this.mSouth, paramLatLng.getLatitude());
+      this.mNorth = Math.max(this.mNorth, paramLatLng.getLatitude());
+      double d = paramLatLng.getLongitude();
+      if (Double.isNaN(this.mWest))
+      {
+        this.mWest = d;
+        this.mEast = d;
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(87542);
+        return this;
+        if (!containsLongitude(d))
+        {
+          if (LatLngBounds.access$400(this.mWest, d) >= LatLngBounds.access$500(this.mEast, d)) {
+            break;
+          }
+          this.mWest = d;
+        }
+      }
+    }
+    
+    public final Builder include(Iterable<LatLng> paramIterable)
+    {
+      AppMethodBeat.i(87543);
+      if (paramIterable != null)
+      {
+        paramIterable = paramIterable.iterator();
+        while (paramIterable.hasNext()) {
+          include((LatLng)paramIterable.next());
+        }
+      }
+      AppMethodBeat.o(87543);
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.LatLngBounds
  * JD-Core Version:    0.7.0.1
  */

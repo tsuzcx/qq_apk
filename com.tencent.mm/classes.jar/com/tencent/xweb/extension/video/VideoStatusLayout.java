@@ -8,44 +8,48 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import org.xwalk.core.R.drawable;
+import org.xwalk.core.R.id;
+import org.xwalk.core.R.layout;
+import org.xwalk.core.R.string;
 
 public class VideoStatusLayout
   extends RelativeLayout
 {
-  private VideoDotPercentIndicator BEV;
-  private TextView BEW;
-  private TextView BEX;
-  private LinearLayout BEY;
-  private VideoStatusLayout.a BEZ;
+  private LinearLayout aigA;
+  private a aigB;
+  private VideoDotPercentIndicator aigx;
+  private TextView aigy;
+  private TextView aigz;
   private int duration;
-  private ImageView kvq;
+  private ImageView wBJ;
   
   public VideoStatusLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(84568);
+    AppMethodBeat.i(153564);
     this.duration = 1000;
-    LayoutInflater.from(paramContext).inflate(2130970733, this);
-    this.kvq = ((ImageView)findViewById(2131827781));
-    this.BEV = ((VideoDotPercentIndicator)findViewById(2131827783));
-    this.BEW = ((TextView)findViewById(2131827779));
-    this.BEX = ((TextView)findViewById(2131827782));
-    this.BEY = ((LinearLayout)findViewById(2131827780));
-    this.BEZ = new VideoStatusLayout.a(this, (byte)0);
+    LayoutInflater.from(paramContext).inflate(R.layout.xweb_video_status, this);
+    this.aigy = ((TextView)findViewById(R.id.tv_progress));
+    this.wBJ = ((ImageView)findViewById(R.id.image_xweb_video_status));
+    this.aigx = ((VideoDotPercentIndicator)findViewById(R.id.progress_xweb_video_status));
+    this.aigz = ((TextView)findViewById(R.id.text_xweb_video_status));
+    this.aigA = ((LinearLayout)findViewById(R.id.layout_xweb_video_status));
+    this.aigB = new a((byte)0);
     setVisibility(8);
-    AppMethodBeat.o(84568);
+    AppMethodBeat.o(153564);
   }
   
   public void setBrightProgress(int paramInt)
   {
-    AppMethodBeat.i(84571);
-    this.BEV.setProgress(paramInt);
-    this.BEV.setVisibility(0);
-    this.BEX.setText(2131306278);
-    this.BEY.setVisibility(0);
-    this.kvq.setImageResource(2130840978);
-    this.BEW.setVisibility(8);
-    AppMethodBeat.o(84571);
+    AppMethodBeat.i(153567);
+    this.aigx.setProgress(paramInt);
+    this.aigx.setVisibility(0);
+    this.aigz.setText(R.string.xweb_video_brightness);
+    this.aigA.setVisibility(0);
+    this.wBJ.setImageResource(R.drawable.xweb_video_brightness_icon);
+    this.aigy.setVisibility(8);
+    AppMethodBeat.o(153567);
   }
   
   public void setDuration(int paramInt)
@@ -53,46 +57,52 @@ public class VideoStatusLayout
     this.duration = paramInt;
   }
   
-  public void setImageResource(int paramInt)
-  {
-    AppMethodBeat.i(84573);
-    this.kvq.setImageResource(paramInt);
-    AppMethodBeat.o(84573);
-  }
-  
   public void setVideoTimeProgress(String paramString)
   {
-    AppMethodBeat.i(84572);
-    this.BEW.setText(paramString);
-    this.BEW.setVisibility(0);
-    this.BEY.setVisibility(8);
-    AppMethodBeat.o(84572);
+    AppMethodBeat.i(153568);
+    this.aigy.setText(paramString);
+    this.aigy.setVisibility(0);
+    this.aigA.setVisibility(8);
+    AppMethodBeat.o(153568);
   }
   
-  public void setVolumnProgress(int paramInt)
+  public void setVolumeProgress(int paramInt)
   {
-    AppMethodBeat.i(84570);
-    this.BEV.setProgress(paramInt);
-    this.BEV.setVisibility(0);
-    this.BEX.setText(2131306279);
-    this.BEY.setVisibility(0);
-    this.kvq.setImageResource(2130840988);
-    this.BEW.setVisibility(8);
-    AppMethodBeat.o(84570);
+    AppMethodBeat.i(212734);
+    this.aigx.setProgress(paramInt);
+    this.aigx.setVisibility(0);
+    this.aigz.setText(R.string.xweb_video_volume);
+    this.aigA.setVisibility(0);
+    this.wBJ.setImageResource(R.drawable.xweb_video_volume_icon);
+    this.aigy.setVisibility(8);
+    AppMethodBeat.o(212734);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(84569);
+    AppMethodBeat.i(153565);
     setVisibility(0);
-    removeCallbacks(this.BEZ);
-    postDelayed(this.BEZ, this.duration);
-    AppMethodBeat.o(84569);
+    removeCallbacks(this.aigB);
+    postDelayed(this.aigB, this.duration);
+    AppMethodBeat.o(153565);
+  }
+  
+  final class a
+    implements Runnable
+  {
+    private a() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(153563);
+      VideoStatusLayout.this.setVisibility(8);
+      AppMethodBeat.o(153563);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.xweb.extension.video.VideoStatusLayout
  * JD-Core Version:    0.7.0.1
  */

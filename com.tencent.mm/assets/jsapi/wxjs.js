@@ -2134,7 +2134,8 @@
     _context_val = '',
     _SHA_KEY = '__sha_key',
     _xxyy = __dgtRdm || __wx._getDgtVerifyRandomStr && __wx._getDgtVerifyRandomStr(),
-    isDgtVerifyEnabled = __dgtOn || __wx._isDgtVerifyEnabled && __wx._isDgtVerifyEnabled();
+    isDgtVerifyEnabled = __dgtOn || __wx._isDgtVerifyEnabled && __wx._isDgtVerifyEnabled(),
+    authState = 'unauthorized';
 
   var _handleMessageIdentifier = _handleMessageFromWeixin;
   var _logIdentifier = _log;
@@ -2142,6 +2143,10 @@
   var _onfor3rdIdentifier = _onfor3rd;
   var _callIdentifier = _call;
   __initLog(__DL, "__wx define:" + _xxyy + "," + isDgtVerifyEnabled);
+
+  function _state() {
+    return authState;
+  }
 
   function _sendMessage(msg) {
     var msgArray = []; msgArray.push(msg);
@@ -2176,6 +2181,11 @@
     if (isDgtVerifyEnabled) {
       var realMessage = message[_JSON_MESSAGE];
       var shaStr = message[_SHA_KEY];
+      if('sys:updateRandomStr' == realMessage[_EVENT_ID]) {
+        _xxyy = realMessage["randomStr"]
+        _log("sys:updateRandomStr " + _xxyy);
+        return "{}";
+      }
       var arr = new Array;
       arr[0] = JSON.stringify(realMessage);
       arr[1] = _xxyy;
@@ -2186,7 +2196,6 @@
       if (msgSha !== shaStr) {
         _log('_handleMessageFromWeixin , shaStr : ' + shaStr + ' , str : ' + str + ' , msgSha : ' + msgSha);
         return '{}';
-
       }
       msgWrap = realMessage;
     } else {
@@ -2409,10 +2418,22 @@
           s = '100%';
           break;
         case '3':
-          s = '120%';
+          s = '110%';
           break;
         case '4':
+          s = '112.5%';
+          break;
+        case '5':
+          s = '120%';
+          break;
+        case '6':
           s = '140%';
+          break;
+        case '7':
+          s = '155%';
+          break;
+        case '8':
+          s = '165%';
           break;
         default:
           return;
@@ -2654,6 +2675,7 @@
         }));
         _call('shareQQ', data);
       } else {
+        _log('share QQ onMenuShareQQ not found');
         data = {
           "link": document.documentURI || _session_data.init_url,
           "desc": document.documentURI || _session_data.init_url,
@@ -2842,6 +2864,35 @@
       document.dispatchEvent(readyEvent);
     });
 
+    // the first event
+    _on('sys:auth', function (ses) {
+      // bridge ready
+      var readyEvent;
+      try {
+        readyEvent = new Event('WeixinJSBridgeAuthChanged');
+      } catch (e) {
+        readyEvent = document.createEvent('Event');
+        readyEvent.initEvent('WeixinJSBridgeAuthChanged');
+      }
+      authState = ses.state;
+      readyEvent.state = authState;
+      readyEvent.fullUrl = ses.fullUrl
+      document.dispatchEvent(readyEvent);
+    });
+
+    // the first event
+    _on('sys:spa:historyChanged', function (ses) {
+      // bridge ready
+      var historyEvent;
+      try {
+        historyEvent = new Event('WeixinJSBridgeSpaHistoryChanged');
+      } catch (e) {
+        historyEvent = document.createEvent('Event');
+        historyEvent.initEvent('WeixinJSBridgeSpaHistoryChanged');
+      }
+      document.dispatchEvent(historyEvent);
+    });
+
     _on('sys:bridged', function (ses) {
       // 避免由于Java层多次发起init请求，造成网页端多次收到WeixinJSBridgeReady事件
       if (window.WeixinJSBridge._hasInit) {
@@ -2872,7 +2923,7 @@
     _on('sys:attach_runOn3rd_apis', function (ses) {
       if (typeof ses[_RUN_ON_3RD_APIS] === 'object') {
         _runOn3rdApiList = ses[_RUN_ON_3RD_APIS];
-        _log('_runOn3rdApiList : ' + _runOn3rdApiList);
+        //_log('_runOn3rdApiList : ' + _runOn3rdApiList);
         //alert('ses : ' + ses);
         ///alert('apis : ' + _runOn3rdApiList);
       }
@@ -2980,6 +3031,7 @@
     on: _onfor3rd,
     env: _env,
     log: _log,
+    state: _state,
     // private
     _hasInit: false,
     _createdByScriptTag: (document.currentScript !== 'undefined')

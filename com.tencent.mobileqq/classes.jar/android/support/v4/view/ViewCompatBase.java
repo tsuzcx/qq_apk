@@ -39,13 +39,17 @@ class ViewCompatBase
       sMinHeightField.setAccessible(true);
       label23:
       sMinHeightFieldFetched = true;
-      if (sMinHeightField != null) {
-        try
-        {
-          int i = ((Integer)sMinHeightField.get(paramView)).intValue();
-          return i;
-        }
-        catch (Exception paramView) {}
+      Field localField = sMinHeightField;
+      if (localField != null) {}
+      try
+      {
+        int i = ((Integer)localField.get(paramView)).intValue();
+        return i;
+      }
+      catch (Exception paramView)
+      {
+        label49:
+        break label49;
       }
       return 0;
     }
@@ -64,13 +68,17 @@ class ViewCompatBase
       sMinWidthField.setAccessible(true);
       label23:
       sMinWidthFieldFetched = true;
-      if (sMinWidthField != null) {
-        try
-        {
-          int i = ((Integer)sMinWidthField.get(paramView)).intValue();
-          return i;
-        }
-        catch (Exception paramView) {}
+      Field localField = sMinWidthField;
+      if (localField != null) {}
+      try
+      {
+        int i = ((Integer)localField.get(paramView)).intValue();
+        return i;
+      }
+      catch (Exception paramView)
+      {
+        label49:
+        break label49;
       }
       return 0;
     }
@@ -101,13 +109,10 @@ class ViewCompatBase
       {
         paramInt = Math.abs(paramInt);
         ((View)localViewParent).invalidate(i - paramInt, paramView.getTop(), i + paramView.getWidth() + paramInt, paramView.getBottom());
+        return;
       }
+      paramView.invalidate();
     }
-    else
-    {
-      return;
-    }
-    paramView.invalidate();
   }
   
   static void offsetTopAndBottom(View paramView, int paramInt)
@@ -121,13 +126,10 @@ class ViewCompatBase
       {
         paramInt = Math.abs(paramInt);
         ((View)localViewParent).invalidate(paramView.getLeft(), i - paramInt, paramView.getRight(), i + paramView.getHeight() + paramInt);
+        return;
       }
+      paramView.invalidate();
     }
-    else
-    {
-      return;
-    }
-    paramView.invalidate();
   }
   
   static void setBackgroundTintList(View paramView, ColorStateList paramColorStateList)

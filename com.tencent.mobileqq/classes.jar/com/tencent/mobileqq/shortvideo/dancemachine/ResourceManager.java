@@ -22,8 +22,8 @@ public class ResourceManager
   private static volatile ResourceManager INSTANCE;
   private static final String TAG = "DanceResMgrLog";
   public static String sLittleBoyFilterPath;
-  public static String sRootDanceStageQQPath = Environment.getExternalStorageDirectory() + "/tencent/mobileqq/capture_ptv_template/ptv_template_usable/postureRecognizeStage/";
-  public static String sRootDanceStageTestPath = Environment.getExternalStorageDirectory() + "/postureRecognizeStage/";
+  public static String sRootDanceStageQQPath;
+  public static String sRootDanceStageTestPath;
   public static String sTestFaceLittleBoyFilterPath;
   public static String sTestGestureDetectLibSoLocPath = null;
   public static String sTestGestureDetectLibSoPath;
@@ -49,9 +49,26 @@ public class ResourceManager
   
   static
   {
-    sLittleBoyFilterPath = Environment.getExternalStorageDirectory() + "/tencent/mobileqq/capture_ptv_template/ptv_template_usable/video_niania_iOS/";
-    sTestLittleBoyFilterPath = Environment.getExternalStorageDirectory() + "/video_niania_iOS/";
-    sTestFaceLittleBoyFilterPath = Environment.getExternalStorageDirectory() + "/face_dance/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/tencent/mobileqq/capture_ptv_template/ptv_template_usable/postureRecognizeStage/");
+    sRootDanceStageQQPath = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/postureRecognizeStage/");
+    sRootDanceStageTestPath = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/tencent/mobileqq/capture_ptv_template/ptv_template_usable/video_niania_iOS/");
+    sLittleBoyFilterPath = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/video_niania_iOS/");
+    sTestLittleBoyFilterPath = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/face_dance/");
+    sTestFaceLittleBoyFilterPath = localStringBuilder.toString();
     sTestGestureDetectLibSoPath = "/sdcard/725_so/";
   }
   
@@ -73,22 +90,29 @@ public class ResourceManager
   
   public static ResourceManager getInstance()
   {
-    if (INSTANCE == null) {}
-    try
-    {
-      if (INSTANCE == null) {
-        INSTANCE = new ResourceManager();
+    if (INSTANCE == null) {
+      try
+      {
+        if (INSTANCE == null) {
+          INSTANCE = new ResourceManager();
+        }
       }
-      return INSTANCE;
+      finally {}
     }
-    finally {}
+    return INSTANCE;
   }
   
   private void parseCompressConfig()
   {
     this.compressRatio = 1.0F;
     this.isCompressed = false;
-    Object localObject = readFileContent(new StringBuilder().append(this.mLittleBoyFilterRoot).append("compress.json").toString()) + "";
+    Object localObject = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mLittleBoyFilterRoot);
+    localStringBuilder.append("compress.json");
+    ((StringBuilder)localObject).append(readFileContent(localStringBuilder.toString()));
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
       localObject = new JSONObject((String)localObject);
@@ -99,11 +123,12 @@ public class ResourceManager
         if (this.compressRatio > 1.0F) {
           this.compressRatio = 1.0F;
         }
-        if (this.compressRatio < 0.2F) {
+        if (this.compressRatio < 0.2F)
+        {
           this.compressRatio = 0.2F;
+          return;
         }
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
@@ -113,323 +138,363 @@ public class ResourceManager
   
   private void parseLittleBoyConfig()
   {
-    if (this.postures == null) {
+    Object localObject1 = this.postures;
+    if (localObject1 == null) {
       this.postures = new HashMap();
+    } else {
+      ((Map)localObject1).clear();
     }
-    label36:
-    Object localObject2;
-    int i;
-    label136:
-    Object localObject3;
-    Object localObject4;
-    label223:
-    Object localObject6;
+    localObject1 = this.dancePostures;
+    if (localObject1 == null) {
+      this.dancePostures = new ArrayList();
+    } else {
+      ((List)localObject1).clear();
+    }
+    localObject1 = new StringBuilder();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.mLittleBoyFilterRoot);
+    ((StringBuilder)localObject2).append("tConfig.json");
+    ((StringBuilder)localObject1).append(readFileContent(((StringBuilder)localObject2).toString()));
+    Object localObject5 = "";
+    ((StringBuilder)localObject1).append("");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    label1435:
+    label1438:
+    label1445:
+    label1452:
+    label1459:
+    label1466:
+    label1469:
+    label1476:
+    label1483:
+    label1490:
+    label1493:
+    label1496:
+    label1499:
+    label1506:
     for (;;)
     {
-      Object localObject1;
-      if (this.dancePostures == null)
-      {
-        this.dancePostures = new ArrayList();
-        localObject1 = readFileContent(new StringBuilder().append(this.mLittleBoyFilterRoot).append("tConfig.json").toString()) + "";
-      }
+      int j;
       try
       {
         localObject1 = new JSONObject((String)localObject1);
-        if (this.mPostureType != 0) {
-          break label690;
-        }
-        localObject2 = ((JSONObject)localObject1).getJSONArray("allGestures");
-        if (localObject2 == null)
+        i = this.mPostureType;
+        Object localObject3 = "matchTemplate";
+        Object localObject4;
+        Object localObject6;
+        if (i == 0)
         {
-          return;
-          this.postures.clear();
-          continue;
-          this.dancePostures.clear();
-          break label36;
+          localObject2 = ((JSONObject)localObject1).getJSONArray("allGestures");
+          if (localObject2 == null)
+          {
+            return;
+            if (i < ((JSONArray)localObject2).length())
+            {
+              localObject4 = ((JSONArray)localObject2).optJSONObject(i);
+              if (localObject4 == null) {
+                break label1435;
+              }
+              localObject6 = ((JSONObject)localObject4).optString("id", "");
+              ResourceManager.Posture localPosture = new ResourceManager.Posture();
+              localPosture.id = ((String)localObject6);
+              if (TextUtils.isEmpty(localPosture.id)) {
+                break label1435;
+              }
+              localObject4 = ((JSONObject)localObject4).optJSONArray((String)localObject3);
+              localPosture.gestureConfigs = new ArrayList();
+              j = 0;
+              if (j < ((JSONArray)localObject4).length())
+              {
+                MatchTemplateConfig localMatchTemplateConfig = MatchTemplateConfig.parseConfig(((JSONArray)localObject4).get(j).toString());
+                if (localMatchTemplateConfig == null) {
+                  break label1438;
+                }
+                localPosture.gestureConfigs.add(localMatchTemplateConfig);
+                break label1438;
+              }
+              if (localPosture.gestureConfigs.size() == 0) {
+                break label1452;
+              }
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(this.mLittleBoyFilterRoot);
+              ((StringBuilder)localObject4).append("others/dismiss.png");
+              localPosture.blastPicture = ((StringBuilder)localObject4).toString();
+              localPosture.danceCartoon = new ArrayList();
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(this.mLittleBoyFilterRoot);
+              ((StringBuilder)localObject4).append("gestures/");
+              ((StringBuilder)localObject4).append((String)localObject6);
+              localObject4 = new File(((StringBuilder)localObject4).toString());
+              if ((((File)localObject4).exists()) && (((File)localObject4).isDirectory()))
+              {
+                localObject4 = ((File)localObject4).listFiles();
+                j = 0;
+                if (j < localObject4.length)
+                {
+                  if (!localObject4[j].isFile()) {
+                    break label1445;
+                  }
+                  localPosture.danceCartoon.add(localObject4[j].getAbsolutePath());
+                  break label1445;
+                }
+                if (localPosture.danceCartoon.size() == 0)
+                {
+                  resourceCheck((String)localObject6);
+                  break label1452;
+                }
+                this.postures.put(localObject6, localPosture);
+                break label1452;
+              }
+              resourceCheck((String)localObject6);
+              break label1452;
+            }
+            localObject4 = ((JSONObject)localObject1).optJSONArray("dances");
+            localObject2 = localObject1;
+            if (localObject4 == null) {
+              break label1466;
+            }
+            i = 0;
+            localObject3 = localObject5;
+            localObject2 = localObject1;
+            if (i >= ((JSONArray)localObject4).length()) {
+              break label1466;
+            }
+            localObject2 = ((JSONArray)localObject4).optJSONObject(i);
+            if (localObject2 == null) {
+              break label1459;
+            }
+            localObject5 = new ResourceManager.DancePosture();
+            localObject6 = ((JSONObject)localObject2).optString("gestureId", (String)localObject3);
+            if (!this.postures.containsKey(localObject6)) {
+              break label1459;
+            }
+            ((ResourceManager.DancePosture)localObject5).id = ((String)localObject6);
+            ((ResourceManager.DancePosture)localObject5).postureType = 0;
+            ((ResourceManager.DancePosture)localObject5).appearTime = ((JSONObject)localObject2).optDouble("appearTime", 0.0D);
+            if (((ResourceManager.DancePosture)localObject5).appearTime < 0.0D) {
+              ((ResourceManager.DancePosture)localObject5).appearTime = 0.0D;
+            }
+            ((ResourceManager.DancePosture)localObject5).appearCol = ((JSONObject)localObject2).optInt("appearCol", 0);
+            if ((((ResourceManager.DancePosture)localObject5).appearCol != 1) && (((ResourceManager.DancePosture)localObject5).appearCol != 2)) {
+              ((ResourceManager.DancePosture)localObject5).appearCol = 1;
+            }
+            ((ResourceManager.DancePosture)localObject5).speed = ((JSONObject)localObject2).optDouble("speed", 0.25D);
+            if ((((ResourceManager.DancePosture)localObject5).speed <= 0.0D) || (((ResourceManager.DancePosture)localObject5).speed > 1.0D)) {
+              ((ResourceManager.DancePosture)localObject5).speed = 0.25D;
+            }
+            this.dancePostures.add(localObject5);
+            break label1459;
+          }
         }
         else
         {
+          localObject2 = localObject1;
+          if (this.mPostureType != 1) {
+            break label1506;
+          }
+          localObject2 = ((JSONObject)localObject1).getJSONArray("expressionList");
+          localObject4 = new ArrayList();
           i = 0;
-          if (i >= ((JSONArray)localObject2).length()) {
-            break label474;
-          }
-          localObject5 = ((JSONArray)localObject2).optJSONObject(i);
-          if (localObject5 == null) {
-            break label1321;
-          }
-          localObject3 = ((JSONObject)localObject5).optString("id", "");
-          localObject4 = new ResourceManager.Posture();
-          ((ResourceManager.Posture)localObject4).id = ((String)localObject3);
-          if (TextUtils.isEmpty(((ResourceManager.Posture)localObject4).id)) {
-            break label1321;
-          }
-          localObject5 = ((JSONObject)localObject5).optJSONArray("matchTemplate");
-          ((ResourceManager.Posture)localObject4).gestureConfigs = new ArrayList();
-          j = 0;
-          if (j < ((JSONArray)localObject5).length())
+          if (i < ((JSONArray)localObject2).length())
           {
-            localObject6 = MatchTemplateConfig.parseConfig(((JSONArray)localObject5).get(j).toString());
-            if (localObject6 == null) {
-              break label1328;
+            localObject3 = ExpressionTemplateConfig.parseConfig(((JSONArray)localObject2).getString(i));
+            if (localObject3 == null) {
+              break label1469;
             }
-            ((ResourceManager.Posture)localObject4).gestureConfigs.add(localObject6);
-            break label1328;
+            ((ArrayList)localObject4).add(localObject3);
+            break label1469;
           }
-          if (((ResourceManager.Posture)localObject4).gestureConfigs.size() == 0) {
-            break label1321;
+          localObject2 = ((JSONObject)localObject1).getJSONArray("matchTemplate");
+          i = 0;
+          if (i < ((JSONArray)localObject2).length())
+          {
+            localObject5 = FaceDanceTemplateConfig.parseConfig(((JSONArray)localObject2).getString(i), (List)localObject4);
+            if (localObject5 == null) {
+              break label1483;
+            }
+            localObject6 = new ResourceManager.Posture();
+            ((ResourceManager.Posture)localObject6).id = ((FaceDanceTemplateConfig)localObject5).mTemplateID;
+            if (TextUtils.isEmpty(((ResourceManager.Posture)localObject6).id)) {
+              break label1483;
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(this.mLittleBoyFilterRoot);
+            ((StringBuilder)localObject3).append("others/dismiss.png");
+            ((ResourceManager.Posture)localObject6).blastPicture = ((StringBuilder)localObject3).toString();
+            ((ResourceManager.Posture)localObject6).faceDanceConfig = ((FaceDanceTemplateConfig)localObject5);
+            ((ResourceManager.Posture)localObject6).danceCartoon = new ArrayList();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(this.mLittleBoyFilterRoot);
+            ((StringBuilder)localObject3).append("gestures/");
+            ((StringBuilder)localObject3).append(((FaceDanceTemplateConfig)localObject5).mTemplateID);
+            localObject3 = new File(((StringBuilder)localObject3).toString());
+            if ((!((File)localObject3).exists()) || (!((File)localObject3).isDirectory())) {
+              break label1483;
+            }
+            localObject3 = ((File)localObject3).listFiles();
+            j = 0;
+            if (j < localObject3.length)
+            {
+              if (!localObject3[j].isFile()) {
+                break label1476;
+              }
+              ((ResourceManager.Posture)localObject6).danceCartoon.add(localObject3[j].getAbsolutePath());
+              break label1476;
+            }
+            if (((ResourceManager.Posture)localObject6).danceCartoon.size() == 0) {
+              break label1483;
+            }
+            this.postures.put(((FaceDanceTemplateConfig)localObject5).mTemplateID, localObject6);
+            break label1483;
           }
-          ((ResourceManager.Posture)localObject4).blastPicture = (this.mLittleBoyFilterRoot + "others/dismiss.png");
-          ((ResourceManager.Posture)localObject4).danceCartoon = new ArrayList();
-          localObject5 = new File(this.mLittleBoyFilterRoot + "gestures/" + (String)localObject3);
-          if ((!((File)localObject5).exists()) || (!((File)localObject5).isDirectory())) {
-            resourceCheck((String)localObject3);
+          localObject3 = ((JSONObject)localObject1).getJSONArray("dances");
+          i = 0;
+          localObject2 = localObject1;
+          if (i < ((JSONArray)localObject3).length())
+          {
+            localObject2 = ((JSONArray)localObject3).getJSONObject(i);
+            localObject4 = new ResourceManager.DancePosture();
+            localObject5 = ((JSONObject)localObject2).getString("gestureId");
+            if (!this.postures.containsKey(localObject5)) {
+              break label1499;
+            }
+            ((ResourceManager.DancePosture)localObject4).id = ((String)localObject5);
+            ((ResourceManager.DancePosture)localObject4).postureType = 1;
+            ((ResourceManager.DancePosture)localObject4).appearTime = ((JSONObject)localObject2).getDouble("appearTime");
+            if (((ResourceManager.DancePosture)localObject4).appearTime < 0.0D) {
+              ((ResourceManager.DancePosture)localObject4).appearTime = 0.0D;
+            }
+            ((ResourceManager.DancePosture)localObject4).appearCol = ((JSONObject)localObject2).getInt("appearCol");
+            if (((ResourceManager.DancePosture)localObject4).appearCol == 1) {
+              break label1490;
+            }
+            if (((ResourceManager.DancePosture)localObject4).appearCol != 2) {
+              ((ResourceManager.DancePosture)localObject4).appearCol = 1;
+            }
+            ((ResourceManager.DancePosture)localObject4).speed = ((JSONObject)localObject2).getDouble("speed");
+            if (((ResourceManager.DancePosture)localObject4).speed <= 0.0D) {
+              break label1496;
+            }
+            if (((ResourceManager.DancePosture)localObject4).speed <= 1.0D) {
+              break label1493;
+            }
+            ((ResourceManager.DancePosture)localObject4).speed = 0.25D;
+            this.dancePostures.add(localObject4);
+            break label1499;
           }
+          j = 0;
+          if (((JSONObject)localObject2).optInt("randomDance", 0) == 1)
+          {
+            localObject1 = new ArrayList();
+            i = 0;
+            if (i < this.dancePostures.size())
+            {
+              ((List)localObject1).add(((ResourceManager.DancePosture)this.dancePostures.get(i)).id);
+              i += 1;
+              continue;
+            }
+            Collections.shuffle((List)localObject1);
+            i = j;
+            if (i < ((List)localObject1).size())
+            {
+              ((ResourceManager.DancePosture)this.dancePostures.get(i)).id = ((String)((List)localObject1).get(i));
+              i += 1;
+              continue;
+            }
+          }
+          return;
         }
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
-        return;
       }
-    }
-    Object localObject5 = ((File)localObject5).listFiles();
-    int j = 0;
-    label397:
-    if (j < localObject5.length)
-    {
-      if (localObject5[j].isFile()) {
-        ((ResourceManager.Posture)localObject4).danceCartoon.add(localObject5[j].getAbsolutePath());
-      }
-    }
-    else {
-      label937:
-      if (((ResourceManager.Posture)localObject4).danceCartoon.size() == 0)
-      {
-        resourceCheck((String)localObject3);
-      }
-      else
-      {
-        this.postures.put(localObject3, localObject4);
-        break label1321;
-        label474:
-        localObject2 = localJSONException.optJSONArray("dances");
-        label690:
-        label718:
-        if (localObject2 != null)
-        {
-          i = 0;
-          label490:
-          if (i < ((JSONArray)localObject2).length())
-          {
-            localObject3 = ((JSONArray)localObject2).optJSONObject(i);
-            if (localObject3 == null) {
-              break label1342;
-            }
-            localObject4 = new ResourceManager.DancePosture();
-            localObject5 = ((JSONObject)localObject3).optString("gestureId", "");
-            if (!this.postures.containsKey(localObject5)) {
-              break label1342;
-            }
-            ((ResourceManager.DancePosture)localObject4).id = ((String)localObject5);
-            ((ResourceManager.DancePosture)localObject4).postureType = 0;
-            ((ResourceManager.DancePosture)localObject4).appearTime = ((JSONObject)localObject3).optDouble("appearTime", 0.0D);
-            if (((ResourceManager.DancePosture)localObject4).appearTime < 0.0D) {
-              ((ResourceManager.DancePosture)localObject4).appearTime = 0.0D;
-            }
-            ((ResourceManager.DancePosture)localObject4).appearCol = ((JSONObject)localObject3).optInt("appearCol", 0);
-            if ((((ResourceManager.DancePosture)localObject4).appearCol != 1) && (((ResourceManager.DancePosture)localObject4).appearCol != 2)) {
-              ((ResourceManager.DancePosture)localObject4).appearCol = 1;
-            }
-            ((ResourceManager.DancePosture)localObject4).speed = ((JSONObject)localObject3).optDouble("speed", 0.25D);
-            if ((((ResourceManager.DancePosture)localObject4).speed <= 0.0D) || (((ResourceManager.DancePosture)localObject4).speed > 1.0D)) {
-              ((ResourceManager.DancePosture)localObject4).speed = 0.25D;
-            }
-            this.dancePostures.add(localObject4);
-            break label1342;
-            if (this.mPostureType == 1)
-            {
-              localObject3 = localJSONException.getJSONArray("expressionList");
-              localObject2 = new ArrayList();
-              i = 0;
-              if (i < ((JSONArray)localObject3).length())
-              {
-                localObject4 = ExpressionTemplateConfig.parseConfig(((JSONArray)localObject3).getString(i));
-                if (localObject4 == null) {
-                  break label1349;
-                }
-                ((ArrayList)localObject2).add(localObject4);
-                break label1349;
-              }
-              localObject3 = localJSONException.getJSONArray("matchTemplate");
-              i = 0;
-              label765:
-              if (i < ((JSONArray)localObject3).length())
-              {
-                localObject4 = FaceDanceTemplateConfig.parseConfig(((JSONArray)localObject3).getString(i), (List)localObject2);
-                if (localObject4 == null) {
-                  break label1356;
-                }
-                localObject5 = new ResourceManager.Posture();
-                ((ResourceManager.Posture)localObject5).id = ((FaceDanceTemplateConfig)localObject4).mTemplateID;
-                if (TextUtils.isEmpty(((ResourceManager.Posture)localObject5).id)) {
-                  break label1356;
-                }
-                ((ResourceManager.Posture)localObject5).blastPicture = (this.mLittleBoyFilterRoot + "others/dismiss.png");
-                ((ResourceManager.Posture)localObject5).faceDanceConfig = ((FaceDanceTemplateConfig)localObject4);
-                ((ResourceManager.Posture)localObject5).danceCartoon = new ArrayList();
-                localObject6 = new File(this.mLittleBoyFilterRoot + "gestures/" + ((FaceDanceTemplateConfig)localObject4).mTemplateID);
-                if ((!((File)localObject6).exists()) || (!((File)localObject6).isDirectory())) {
-                  break label1356;
-                }
-                localObject6 = ((File)localObject6).listFiles();
-                j = 0;
-                if (j < localObject6.length)
-                {
-                  if (!localObject6[j].isFile()) {
-                    break label1363;
-                  }
-                  ((ResourceManager.Posture)localObject5).danceCartoon.add(localObject6[j].getAbsolutePath());
-                  break label1363;
-                }
-                if (((ResourceManager.Posture)localObject5).danceCartoon.size() == 0) {
-                  break label1356;
-                }
-                this.postures.put(((FaceDanceTemplateConfig)localObject4).mTemplateID, localObject5);
-                break label1356;
-              }
-              localObject2 = localJSONException.getJSONArray("dances");
-              i = 0;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i < ((JSONArray)localObject2).length())
-      {
-        localObject3 = ((JSONArray)localObject2).getJSONObject(i);
-        localObject4 = new ResourceManager.DancePosture();
-        localObject5 = ((JSONObject)localObject3).getString("gestureId");
-        if (this.postures.containsKey(localObject5))
-        {
-          ((ResourceManager.DancePosture)localObject4).id = ((String)localObject5);
-          ((ResourceManager.DancePosture)localObject4).postureType = 1;
-          ((ResourceManager.DancePosture)localObject4).appearTime = ((JSONObject)localObject3).getDouble("appearTime");
-          if (((ResourceManager.DancePosture)localObject4).appearTime < 0.0D) {
-            ((ResourceManager.DancePosture)localObject4).appearTime = 0.0D;
-          }
-          ((ResourceManager.DancePosture)localObject4).appearCol = ((JSONObject)localObject3).getInt("appearCol");
-          if ((((ResourceManager.DancePosture)localObject4).appearCol != 1) && (((ResourceManager.DancePosture)localObject4).appearCol != 2)) {
-            ((ResourceManager.DancePosture)localObject4).appearCol = 1;
-          }
-          ((ResourceManager.DancePosture)localObject4).speed = ((JSONObject)localObject3).getDouble("speed");
-          if ((((ResourceManager.DancePosture)localObject4).speed <= 0.0D) || (((ResourceManager.DancePosture)localObject4).speed > 1.0D)) {
-            ((ResourceManager.DancePosture)localObject4).speed = 0.25D;
-          }
-          this.dancePostures.add(localObject4);
-        }
-      }
-      else
-      {
-        if (localJSONException.optInt("randomDance", 0) != 1) {
-          break;
-        }
-        ArrayList localArrayList = new ArrayList();
-        i = 0;
-        while (i < this.dancePostures.size())
-        {
-          localArrayList.add(((ResourceManager.DancePosture)this.dancePostures.get(i)).id);
-          i += 1;
-        }
-        Collections.shuffle(localArrayList);
-        i = 0;
-        while (i < localArrayList.size())
-        {
-          ((ResourceManager.DancePosture)this.dancePostures.get(i)).id = ((String)localArrayList.get(i));
-          i += 1;
-        }
-        break;
-        label1321:
-        i += 1;
-        break label136;
-        label1328:
-        j += 1;
-        break label223;
-        j += 1;
-        break label397;
-        label1342:
-        i += 1;
-        break label490;
-        label1349:
-        i += 1;
-        break label718;
-        label1356:
-        i += 1;
-        break label765;
-        label1363:
-        j += 1;
-        break label937;
-      }
+      int i = 0;
+      continue;
+      break label1452;
+      j += 1;
+      continue;
+      j += 1;
+      continue;
+      i += 1;
+      continue;
+      i += 1;
+      continue;
+      break label1506;
+      i += 1;
+      continue;
+      j += 1;
+      continue;
+      i += 1;
+      continue;
+      continue;
+      continue;
+      continue;
       i += 1;
     }
   }
   
   private void parseLyricsConfig()
   {
+    Object localObject1;
+    Object localObject2;
     if ((!QmcfManager.isQQRun) && (this.mPostureType == 0))
     {
-      if (this.mLyricsList != null) {
-        break label97;
+      localObject1 = this.mLyricsList;
+      if (localObject1 == null) {
+        this.mLyricsList = new ArrayList();
+      } else {
+        ((List)localObject1).clear();
       }
-      this.mLyricsList = new ArrayList();
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = readFileContent(new StringBuilder().append(this.mLittleBoyFilterRoot).append("lyrics.json").toString()) + "";
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"null".equals(localObject))) {
-        break;
+      localObject1 = new StringBuilder();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.mLittleBoyFilterRoot);
+      ((StringBuilder)localObject2).append("lyrics.json");
+      ((StringBuilder)localObject1).append(readFileContent(((StringBuilder)localObject2).toString()));
+      ((StringBuilder)localObject1).append("");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        if ("null".equals(localObject1)) {
+          return;
+        }
       }
-      return;
-      label97:
-      this.mLyricsList.clear();
     }
     for (;;)
     {
       int i;
       try
       {
-        localObject = new JSONObject((String)localObject);
-        if (!((JSONObject)localObject).has("lyricsList")) {
-          break;
-        }
-        localObject = ((JSONObject)localObject).getJSONArray("lyricsList");
-        i = 0;
-        if (i < ((JSONArray)localObject).length())
+        localObject1 = new JSONObject((String)localObject1);
+        if (((JSONObject)localObject1).has("lyricsList"))
         {
-          JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(i);
-          int j = localJSONObject.optInt("startTime", 0);
-          int k = localJSONObject.optInt("endTime", 0);
-          if (j > k) {
-            break label268;
+          localObject1 = ((JSONObject)localObject1).getJSONArray("lyricsList");
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
+            int j = ((JSONObject)localObject2).optInt("startTime", 0);
+            int k = ((JSONObject)localObject2).optInt("endTime", 0);
+            if (j > k) {
+              break label290;
+            }
+            ResourceManager.LyricItem localLyricItem = new ResourceManager.LyricItem();
+            localLyricItem.text = ((JSONObject)localObject2).optString("text", "");
+            localLyricItem.startTime = j;
+            localLyricItem.endTime = k;
+            localLyricItem.status = 0;
+            this.mLyricsList.add(localLyricItem);
+            break label290;
           }
-          ResourceManager.LyricItem localLyricItem = new ResourceManager.LyricItem();
-          localLyricItem.text = localJSONObject.optString("text", "");
-          localLyricItem.startTime = j;
-          localLyricItem.endTime = k;
-          localLyricItem.status = 0;
-          this.mLyricsList.add(localLyricItem);
+          Collections.sort(this.mLyricsList, this.mLyricsOrderCompare);
+          return;
         }
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
-        return;
       }
-      Collections.sort(this.mLyricsList, this.mLyricsOrderCompare);
       return;
-      label268:
+      label290:
       i += 1;
     }
   }
@@ -437,17 +502,24 @@ public class ResourceManager
   private void parseParamConfig()
   {
     this.durationTime = 30000;
-    String str = readFileContent(new StringBuilder().append(this.mLittleBoyFilterRoot).append("params.json").toString()) + "";
+    Object localObject = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mLittleBoyFilterRoot);
+    localStringBuilder.append("params.json");
+    ((StringBuilder)localObject).append(readFileContent(localStringBuilder.toString()));
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
-      this.durationTime = ((int)(new JSONObject(str).getJSONObject("postureParam").optDouble("gameDuration", 30.0D) * 1000.0D));
+      this.durationTime = ((int)(new JSONObject((String)localObject).getJSONObject("postureParam").optDouble("gameDuration", 30.0D) * 1000.0D));
       if (this.durationTime > 60000) {
         this.durationTime = 60000;
       }
-      if (this.durationTime <= 0) {
+      if (this.durationTime <= 0)
+      {
         this.durationTime = 30000;
+        return;
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
@@ -463,108 +535,122 @@ public class ResourceManager
     //   3: dup
     //   4: aload_0
     //   5: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
+    //   8: astore_2
     //   9: new 57	java/lang/StringBuilder
     //   12: dup
     //   13: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   16: astore_2
-    //   17: aload_0
+    //   16: astore_3
+    //   17: aload_2
     //   18: invokevirtual 137	java/io/File:exists	()Z
-    //   21: ifne +5 -> 26
-    //   24: aconst_null
-    //   25: areturn
-    //   26: new 459	java/io/BufferedReader
-    //   29: dup
-    //   30: new 461	java/io/FileReader
+    //   21: istore_1
+    //   22: aconst_null
+    //   23: astore_0
+    //   24: iload_1
+    //   25: ifne +5 -> 30
+    //   28: aconst_null
+    //   29: areturn
+    //   30: new 459	java/io/BufferedReader
     //   33: dup
-    //   34: aload_0
-    //   35: invokespecial 464	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   38: invokespecial 467	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   41: astore_1
-    //   42: aload_1
-    //   43: astore_0
-    //   44: aload_1
-    //   45: invokevirtual 470	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   48: astore_3
-    //   49: aload_3
-    //   50: ifnull +34 -> 84
-    //   53: aload_1
-    //   54: astore_0
-    //   55: aload_2
-    //   56: aload_3
-    //   57: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: pop
-    //   61: goto -19 -> 42
-    //   64: astore_2
-    //   65: aload_1
-    //   66: astore_0
-    //   67: aload_2
-    //   68: invokevirtual 471	java/lang/Exception:printStackTrace	()V
-    //   71: aload_1
-    //   72: ifnull -48 -> 24
-    //   75: aload_1
-    //   76: invokevirtual 474	java/io/BufferedReader:close	()V
-    //   79: aconst_null
-    //   80: areturn
-    //   81: astore_0
-    //   82: aconst_null
-    //   83: areturn
-    //   84: aload_1
-    //   85: ifnull +7 -> 92
-    //   88: aload_1
-    //   89: invokevirtual 474	java/io/BufferedReader:close	()V
-    //   92: aload_2
-    //   93: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: areturn
-    //   97: astore_1
-    //   98: aconst_null
-    //   99: astore_0
-    //   100: aload_0
-    //   101: ifnull +7 -> 108
-    //   104: aload_0
-    //   105: invokevirtual 474	java/io/BufferedReader:close	()V
-    //   108: aload_1
-    //   109: athrow
-    //   110: astore_0
-    //   111: goto -19 -> 92
-    //   114: astore_0
-    //   115: goto -7 -> 108
-    //   118: astore_1
-    //   119: goto -19 -> 100
-    //   122: astore_2
-    //   123: aconst_null
-    //   124: astore_1
-    //   125: goto -60 -> 65
+    //   34: new 461	java/io/FileReader
+    //   37: dup
+    //   38: aload_2
+    //   39: invokespecial 464	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   42: invokespecial 467	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   45: astore_2
+    //   46: aload_2
+    //   47: astore_0
+    //   48: aload_2
+    //   49: invokevirtual 470	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   52: astore 4
+    //   54: aload 4
+    //   56: ifnull +15 -> 71
+    //   59: aload_2
+    //   60: astore_0
+    //   61: aload_3
+    //   62: aload 4
+    //   64: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: goto -22 -> 46
+    //   71: aload_2
+    //   72: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   75: aload_3
+    //   76: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: areturn
+    //   80: astore_3
+    //   81: goto +14 -> 95
+    //   84: astore_3
+    //   85: aload_0
+    //   86: astore_2
+    //   87: aload_3
+    //   88: astore_0
+    //   89: goto +27 -> 116
+    //   92: astore_3
+    //   93: aconst_null
+    //   94: astore_2
+    //   95: aload_2
+    //   96: astore_0
+    //   97: aload_3
+    //   98: invokevirtual 474	java/lang/Exception:printStackTrace	()V
+    //   101: aload_2
+    //   102: ifnull +7 -> 109
+    //   105: aload_2
+    //   106: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   109: aconst_null
+    //   110: areturn
+    //   111: astore_3
+    //   112: aload_0
+    //   113: astore_2
+    //   114: aload_3
+    //   115: astore_0
+    //   116: aload_2
+    //   117: ifnull +7 -> 124
+    //   120: aload_2
+    //   121: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   124: goto +5 -> 129
+    //   127: aload_0
+    //   128: athrow
+    //   129: goto -2 -> 127
+    //   132: astore_0
+    //   133: goto -58 -> 75
+    //   136: astore_0
+    //   137: aconst_null
+    //   138: areturn
+    //   139: astore_2
+    //   140: goto -16 -> 124
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	128	0	paramString	String
-    //   41	48	1	localBufferedReader	java.io.BufferedReader
-    //   97	12	1	localObject1	Object
-    //   118	1	1	localObject2	Object
-    //   124	1	1	localObject3	Object
-    //   16	40	2	localStringBuilder	StringBuilder
-    //   64	29	2	localException1	java.lang.Exception
-    //   122	1	2	localException2	java.lang.Exception
-    //   48	9	3	str	String
+    //   0	143	0	paramString	String
+    //   21	4	1	bool	boolean
+    //   8	113	2	localObject1	Object
+    //   139	1	2	localException1	java.lang.Exception
+    //   16	60	3	localStringBuilder	StringBuilder
+    //   80	1	3	localException2	java.lang.Exception
+    //   84	4	3	localObject2	Object
+    //   92	6	3	localException3	java.lang.Exception
+    //   111	4	3	localObject3	Object
+    //   52	11	4	str	String
     // Exception table:
     //   from	to	target	type
-    //   44	49	64	java/lang/Exception
-    //   55	61	64	java/lang/Exception
-    //   75	79	81	java/lang/Exception
-    //   26	42	97	finally
-    //   88	92	110	java/lang/Exception
-    //   104	108	114	java/lang/Exception
-    //   44	49	118	finally
-    //   55	61	118	finally
-    //   67	71	118	finally
-    //   26	42	122	java/lang/Exception
+    //   48	54	80	java/lang/Exception
+    //   61	68	80	java/lang/Exception
+    //   30	46	84	finally
+    //   30	46	92	java/lang/Exception
+    //   48	54	111	finally
+    //   61	68	111	finally
+    //   97	101	111	finally
+    //   71	75	132	java/lang/Exception
+    //   105	109	136	java/lang/Exception
+    //   120	124	139	java/lang/Exception
   }
   
   private void resourceCheck(String paramString)
   {
     if (("C".equals(paramString)) && (!TextUtils.isEmpty(this.mLittleBoyFilterRoot)))
     {
-      paramString = new File(this.mLittleBoyFilterRoot + "params.json");
+      paramString = new StringBuilder();
+      paramString.append(this.mLittleBoyFilterRoot);
+      paramString.append("params.json");
+      paramString = new File(paramString.toString());
       if (paramString.exists())
       {
         paramString.delete();
@@ -630,7 +716,8 @@ public class ResourceManager
   public void setLittleBoyFilterRootPath(String paramString)
   {
     this.mLittleBoyFilterRoot = paramString;
-    if ((this.mLittleBoyFilterRoot == null) || ("".equals(this.mLittleBoyFilterRoot))) {
+    paramString = this.mLittleBoyFilterRoot;
+    if ((paramString == null) || ("".equals(paramString))) {
       this.mLittleBoyFilterRoot = sLittleBoyFilterPath;
     }
     parseLittleBoyConfig();
@@ -648,7 +735,8 @@ public class ResourceManager
   public void setRootDanceStagePath(String paramString)
   {
     this.postureRecognizePath = paramString;
-    if ((this.postureRecognizePath == null) || ("".equals(this.postureRecognizePath))) {
+    paramString = this.postureRecognizePath;
+    if ((paramString == null) || ("".equals(paramString))) {
       this.postureRecognizePath = sRootDanceStageQQPath;
     }
     createDanceStageResource();
@@ -656,7 +744,7 @@ public class ResourceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager
  * JD-Core Version:    0.7.0.1
  */

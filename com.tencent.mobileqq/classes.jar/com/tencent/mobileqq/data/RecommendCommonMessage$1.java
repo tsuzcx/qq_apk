@@ -13,7 +13,7 @@ class RecommendCommonMessage$1
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface != null) {
-      localQQAppInterface.a().a(this.this$0.frienduin, this.this$0.istroop, this.this$0.uniseq, "extStr", this.this$0.extStr);
+      localQQAppInterface.getMessageFacade().a(this.this$0.frienduin, this.this$0.istroop, this.this$0.uniseq, "extStr", this.this$0.extStr);
     }
   }
 }

@@ -1,49 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
+import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ga;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.modelappbrand.a.a;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/IconProviderWC;", "Lcom/tencent/mm/plugin/appbrand/widget/IconProvider;", "()V", "getDefaultAppIcon", "Landroid/graphics/drawable/Drawable;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
-  extends ga
+  implements m
 {
-  public static c.a fkk;
+  public static final n uxK;
   
   static
   {
-    AppMethodBeat.i(70662);
-    c.a locala = new c.a();
-    locala.yrK = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appIdHash";
-    locala.yrM.put("appIdHash", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" appIdHash INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "appIdHash";
-    locala.columns[1] = "appId";
-    locala.yrM.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "openDebug";
-    locala.yrM.put("openDebug", "INTEGER");
-    localStringBuilder.append(" openDebug INTEGER");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    fkk = locala;
-    AppMethodBeat.o(70662);
+    AppMethodBeat.i(51406);
+    uxK = new n();
+    AppMethodBeat.o(51406);
   }
   
-  public final c.a getDBInfo()
+  public final Drawable cOQ()
   {
-    return fkk;
+    AppMethodBeat.i(51405);
+    Drawable localDrawable = a.bEX();
+    AppMethodBeat.o(51405);
+    return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.n
  * JD-Core Version:    0.7.0.1
  */

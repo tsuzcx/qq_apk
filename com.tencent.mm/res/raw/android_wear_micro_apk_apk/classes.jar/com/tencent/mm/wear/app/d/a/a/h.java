@@ -5,30 +5,30 @@ import android.media.AudioTrack;
 public final class h
   extends a
 {
-  private static int adA = -1;
-  private static Object adx = new Object();
-  private static int ady = 0;
-  private long adB;
-  private String adC;
-  private int adD = 16000;
-  private int adE = f.adt;
-  private AudioTrack adv;
-  private i adw;
-  private int adz;
+  private static Object agZ = new Object();
+  private static int aha = 0;
+  private static int ahc = -1;
+  private AudioTrack agX;
+  private i agY;
+  private int ahb;
+  private long ahd;
+  private String ahe;
+  private int ahf = 16000;
+  private int ahg = f.agV;
   
   public h()
   {
-    ady += 1;
-    this.adz = ady;
+    aha += 1;
+    this.ahb = aha;
   }
   
   /* Error */
-  private void L(String paramString)
+  private void S(String paramString)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 46	com/tencent/mm/wear/app/d/a/a/h:adz	I
-    //   4: putstatic 33	com/tencent/mm/wear/app/d/a/a/h:adA	I
+    //   1: getfield 46	com/tencent/mm/wear/app/d/a/a/h:ahb	I
+    //   4: putstatic 33	com/tencent/mm/wear/app/d/a/a/h:ahc	I
     //   7: ldc 52
     //   9: ldc 54
     //   11: iconst_1
@@ -36,7 +36,7 @@ public final class h
     //   15: dup
     //   16: iconst_0
     //   17: aload_0
-    //   18: getfield 46	com/tencent/mm/wear/app/d/a/a/h:adz	I
+    //   18: getfield 46	com/tencent/mm/wear/app/d/a/a/h:ahb	I
     //   21: invokestatic 60	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   24: aastore
     //   25: invokestatic 66	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -44,156 +44,174 @@ public final class h
     //   31: dup
     //   32: aload_1
     //   33: invokespecial 70	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   36: astore_3
-    //   37: aload_3
-    //   38: astore_1
-    //   39: aload_3
-    //   40: invokevirtual 74	java/io/FileInputStream:available	()I
-    //   43: istore_2
-    //   44: aload_3
-    //   45: astore_1
-    //   46: iload_2
-    //   47: newarray byte
-    //   49: astore 4
-    //   51: aload_3
-    //   52: astore_1
-    //   53: aload_3
-    //   54: aload 4
-    //   56: iconst_0
-    //   57: iload_2
-    //   58: invokevirtual 78	java/io/FileInputStream:read	([BII)I
-    //   61: pop
-    //   62: aload_3
-    //   63: astore_1
-    //   64: aload_0
-    //   65: iconst_1
-    //   66: newarray byte
-    //   68: dup
-    //   69: iconst_0
-    //   70: aload 4
-    //   72: iconst_0
-    //   73: baload
-    //   74: bastore
-    //   75: invokestatic 84	com/tencent/mm/modelvoice/MediaRecorder:SilkGetEncSampleRate	([B)I
-    //   78: putfield 37	com/tencent/mm/wear/app/d/a/a/h:adD	I
-    //   81: aload_3
-    //   82: astore_1
-    //   83: invokestatic 87	com/tencent/mm/modelvoice/MediaRecorder:SilkDecUnInit	()I
-    //   86: pop
-    //   87: aload_3
-    //   88: astore_1
-    //   89: aload_0
-    //   90: getfield 37	com/tencent/mm/wear/app/d/a/a/h:adD	I
-    //   93: aload 4
-    //   95: iload_2
-    //   96: invokestatic 91	com/tencent/mm/modelvoice/MediaRecorder:SilkDecInit	(I[BI)I
-    //   99: pop
-    //   100: aload_3
-    //   101: astore_1
-    //   102: aload_3
-    //   103: invokevirtual 94	java/io/FileInputStream:close	()V
-    //   106: aload_3
-    //   107: invokestatic 99	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
-    //   110: return
-    //   111: astore 4
-    //   113: aconst_null
-    //   114: astore_3
-    //   115: aload_3
-    //   116: astore_1
-    //   117: ldc 52
-    //   119: aload 4
-    //   121: invokestatic 103	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   124: aload_3
-    //   125: invokestatic 99	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
-    //   128: return
-    //   129: astore_3
-    //   130: aconst_null
-    //   131: astore_1
-    //   132: aload_1
-    //   133: invokestatic 99	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
-    //   136: aload_3
-    //   137: athrow
-    //   138: astore_3
-    //   139: goto -7 -> 132
-    //   142: astore 4
-    //   144: goto -29 -> 115
+    //   36: astore 6
+    //   38: aload 6
+    //   40: astore_1
+    //   41: aload 6
+    //   43: invokevirtual 74	java/io/FileInputStream:available	()I
+    //   46: istore_3
+    //   47: aload 6
+    //   49: astore_1
+    //   50: iload_3
+    //   51: newarray byte
+    //   53: astore 7
+    //   55: aload 6
+    //   57: astore_1
+    //   58: aload 6
+    //   60: aload 7
+    //   62: iconst_0
+    //   63: iload_3
+    //   64: invokevirtual 78	java/io/FileInputStream:read	([BII)I
+    //   67: pop
+    //   68: aload 7
+    //   70: iconst_0
+    //   71: baload
+    //   72: istore_2
+    //   73: aload 6
+    //   75: astore_1
+    //   76: getstatic 83	com/tencent/mm/modelvoice/MediaRecorder:WZ	J
+    //   79: lstore 4
+    //   81: aload 6
+    //   83: astore_1
+    //   84: aload_0
+    //   85: iconst_1
+    //   86: newarray byte
+    //   88: dup
+    //   89: iconst_0
+    //   90: iload_2
+    //   91: bastore
+    //   92: lload 4
+    //   94: invokestatic 87	com/tencent/mm/modelvoice/MediaRecorder:SilkGetEncSampleRate	([BJ)I
+    //   97: putfield 37	com/tencent/mm/wear/app/d/a/a/h:ahf	I
+    //   100: aload 6
+    //   102: astore_1
+    //   103: getstatic 90	com/tencent/mm/modelvoice/MediaRecorder:Xa	J
+    //   106: invokestatic 94	com/tencent/mm/modelvoice/MediaRecorder:SilkDecUnInit	(J)I
+    //   109: pop
+    //   110: aload 6
+    //   112: astore_1
+    //   113: aload_0
+    //   114: getfield 37	com/tencent/mm/wear/app/d/a/a/h:ahf	I
+    //   117: aload 7
+    //   119: iload_3
+    //   120: getstatic 90	com/tencent/mm/modelvoice/MediaRecorder:Xa	J
+    //   123: invokestatic 98	com/tencent/mm/modelvoice/MediaRecorder:SilkDecInit	(I[BIJ)J
+    //   126: pop2
+    //   127: aload 6
+    //   129: astore_1
+    //   130: aload 6
+    //   132: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   135: aload 6
+    //   137: invokestatic 106	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
+    //   140: return
+    //   141: astore 7
+    //   143: aconst_null
+    //   144: astore 6
+    //   146: aload 6
+    //   148: astore_1
+    //   149: ldc 52
+    //   151: aload 7
+    //   153: invokestatic 110	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   156: aload 6
+    //   158: invokestatic 106	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
+    //   161: return
+    //   162: astore 6
+    //   164: aconst_null
+    //   165: astore_1
+    //   166: aload_1
+    //   167: invokestatic 106	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
+    //   170: aload 6
+    //   172: athrow
+    //   173: astore 6
+    //   175: goto -9 -> 166
+    //   178: astore 7
+    //   180: goto -34 -> 146
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	147	0	this	h
-    //   0	147	1	paramString	String
-    //   43	53	2	i	int
-    //   36	89	3	localFileInputStream	java.io.FileInputStream
-    //   129	8	3	localObject1	Object
-    //   138	1	3	localObject2	Object
-    //   49	45	4	arrayOfByte	byte[]
-    //   111	9	4	localException1	java.lang.Exception
-    //   142	1	4	localException2	java.lang.Exception
+    //   0	183	0	this	h
+    //   0	183	1	paramString	String
+    //   72	19	2	i	int
+    //   46	74	3	j	int
+    //   79	14	4	l	long
+    //   36	121	6	localFileInputStream	java.io.FileInputStream
+    //   162	9	6	localObject1	Object
+    //   173	1	6	localObject2	Object
+    //   53	65	7	arrayOfByte	byte[]
+    //   141	11	7	localException1	java.lang.Exception
+    //   178	1	7	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   28	37	111	java/lang/Exception
-    //   28	37	129	finally
-    //   39	44	138	finally
-    //   46	51	138	finally
-    //   53	62	138	finally
-    //   64	81	138	finally
-    //   83	87	138	finally
-    //   89	100	138	finally
-    //   102	106	138	finally
-    //   117	124	138	finally
-    //   39	44	142	java/lang/Exception
-    //   46	51	142	java/lang/Exception
-    //   53	62	142	java/lang/Exception
-    //   64	81	142	java/lang/Exception
-    //   83	87	142	java/lang/Exception
-    //   89	100	142	java/lang/Exception
-    //   102	106	142	java/lang/Exception
+    //   28	38	141	java/lang/Exception
+    //   28	38	162	finally
+    //   41	47	173	finally
+    //   50	55	173	finally
+    //   58	68	173	finally
+    //   76	81	173	finally
+    //   84	100	173	finally
+    //   103	110	173	finally
+    //   113	127	173	finally
+    //   130	135	173	finally
+    //   149	156	173	finally
+    //   41	47	178	java/lang/Exception
+    //   50	55	178	java/lang/Exception
+    //   58	68	178	java/lang/Exception
+    //   76	81	178	java/lang/Exception
+    //   84	100	178	java/lang/Exception
+    //   103	110	178	java/lang/Exception
+    //   113	127	178	java/lang/Exception
+    //   130	135	178	java/lang/Exception
+  }
+  
+  public final boolean isPlaying()
+  {
+    return this.ahg == f.agU;
   }
   
   /* Error */
-  public final void h(long paramLong)
+  public final void k(long paramLong)
   {
     // Byte code:
-    //   0: new 139	java/io/File
+    //   0: new 151	java/io/File
     //   3: dup
-    //   4: invokestatic 145	com/tencent/mm/wear/app/b/h:mi	()Ljava/io/File;
-    //   7: new 147	java/lang/StringBuilder
+    //   4: invokestatic 157	com/tencent/mm/wear/app/b/h:mU	()Ljava/io/File;
+    //   7: new 159	java/lang/StringBuilder
     //   10: dup
-    //   11: invokespecial 148	java/lang/StringBuilder:<init>	()V
+    //   11: invokespecial 160	java/lang/StringBuilder:<init>	()V
     //   14: lload_1
-    //   15: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   18: ldc 154
-    //   20: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokespecial 164	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   29: invokevirtual 167	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   15: invokevirtual 164	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   18: ldc 166
+    //   20: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokespecial 176	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   29: invokevirtual 179	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   32: astore 6
     //   34: aload 6
-    //   36: invokestatic 173	com/tencent/mm/sdk/platformtools/q:D	(Ljava/lang/String;)Z
+    //   36: invokestatic 185	com/tencent/mm/sdk/platformtools/q:D	(Ljava/lang/String;)Z
     //   39: ifeq +15 -> 54
     //   42: ldc 52
-    //   44: ldc 175
+    //   44: ldc 187
     //   46: iconst_0
     //   47: anewarray 24	java/lang/Object
-    //   50: invokestatic 177	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   50: invokestatic 189	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   53: return
     //   54: aload_0
-    //   55: getfield 44	com/tencent/mm/wear/app/d/a/a/h:adE	I
-    //   58: getstatic 42	com/tencent/mm/wear/app/d/a/a/f:adt	I
+    //   55: getfield 44	com/tencent/mm/wear/app/d/a/a/h:ahg	I
+    //   58: getstatic 42	com/tencent/mm/wear/app/d/a/a/f:agV	I
     //   61: if_icmpeq +15 -> 76
     //   64: ldc 52
-    //   66: ldc 179
+    //   66: ldc 191
     //   68: iconst_0
     //   69: anewarray 24	java/lang/Object
-    //   72: invokestatic 177	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: invokestatic 189	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   75: return
     //   76: aload_0
     //   77: lload_1
-    //   78: putfield 131	com/tencent/mm/wear/app/d/a/a/h:adB	J
+    //   78: putfield 138	com/tencent/mm/wear/app/d/a/a/h:ahd	J
     //   81: aload_0
     //   82: aload 6
-    //   84: putfield 113	com/tencent/mm/wear/app/d/a/a/h:adC	Ljava/lang/String;
+    //   84: putfield 120	com/tencent/mm/wear/app/d/a/a/h:ahe	Ljava/lang/String;
     //   87: ldc 52
-    //   89: ldc 181
+    //   89: ldc 193
     //   91: iconst_1
     //   92: anewarray 24	java/lang/Object
     //   95: dup
@@ -203,44 +221,44 @@ public final class h
     //   100: invokestatic 66	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: aload_0
     //   104: aload_0
-    //   105: getfield 131	com/tencent/mm/wear/app/d/a/a/h:adB	J
-    //   108: invokevirtual 183	com/tencent/mm/wear/app/d/a/a/h:f	(J)V
-    //   111: getstatic 29	com/tencent/mm/wear/app/d/a/a/h:adx	Ljava/lang/Object;
+    //   105: getfield 138	com/tencent/mm/wear/app/d/a/a/h:ahd	J
+    //   108: invokevirtual 195	com/tencent/mm/wear/app/d/a/a/h:g	(J)V
+    //   111: getstatic 29	com/tencent/mm/wear/app/d/a/a/h:agZ	Ljava/lang/Object;
     //   114: astore 5
     //   116: aload 5
     //   118: monitorenter
     //   119: aload_0
     //   120: aload 6
-    //   122: invokespecial 108	com/tencent/mm/wear/app/d/a/a/h:L	(Ljava/lang/String;)V
+    //   122: invokespecial 115	com/tencent/mm/wear/app/d/a/a/h:S	(Ljava/lang/String;)V
     //   125: aload 5
     //   127: monitorexit
     //   128: aload_0
-    //   129: getfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
+    //   129: getfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
     //   132: ifnull +33 -> 165
     //   135: ldc 52
-    //   137: ldc 185
+    //   137: ldc 197
     //   139: iconst_0
     //   140: anewarray 24	java/lang/Object
     //   143: invokestatic 66	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   146: aload_0
-    //   147: getfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
-    //   150: invokevirtual 124	android/media/AudioTrack:stop	()V
+    //   147: getfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
+    //   150: invokevirtual 131	android/media/AudioTrack:stop	()V
     //   153: aload_0
-    //   154: getfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
-    //   157: invokevirtual 127	android/media/AudioTrack:release	()V
+    //   154: getfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
+    //   157: invokevirtual 134	android/media/AudioTrack:release	()V
     //   160: aload_0
     //   161: aconst_null
-    //   162: putfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
+    //   162: putfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
     //   165: aload_0
-    //   166: getfield 37	com/tencent/mm/wear/app/d/a/a/h:adD	I
+    //   166: getfield 37	com/tencent/mm/wear/app/d/a/a/h:ahf	I
     //   169: istore_3
     //   170: iload_3
     //   171: iconst_2
     //   172: iconst_2
-    //   173: invokestatic 189	android/media/AudioTrack:getMinBufferSize	(III)I
+    //   173: invokestatic 201	android/media/AudioTrack:getMinBufferSize	(III)I
     //   176: istore 4
-    //   178: ldc 191
-    //   180: ldc 193
+    //   178: ldc 203
+    //   180: ldc 205
     //   182: iconst_4
     //   183: anewarray 24	java/lang/Object
     //   186: dup
@@ -264,7 +282,7 @@ public final class h
     //   211: invokestatic 60	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   214: aastore
     //   215: invokestatic 66	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   218: new 121	android/media/AudioTrack
+    //   218: new 128	android/media/AudioTrack
     //   221: dup
     //   222: iconst_3
     //   223: iload_3
@@ -274,16 +292,16 @@ public final class h
     //   228: bipush 8
     //   230: imul
     //   231: iconst_1
-    //   232: invokespecial 196	android/media/AudioTrack:<init>	(IIIIII)V
+    //   232: invokespecial 208	android/media/AudioTrack:<init>	(IIIIII)V
     //   235: astore 6
     //   237: aload 6
     //   239: astore 5
     //   241: aload 6
-    //   243: invokevirtual 199	android/media/AudioTrack:getState	()I
+    //   243: invokevirtual 211	android/media/AudioTrack:getState	()I
     //   246: ifne +27 -> 273
     //   249: aload 6
-    //   251: invokevirtual 127	android/media/AudioTrack:release	()V
-    //   254: new 121	android/media/AudioTrack
+    //   251: invokevirtual 134	android/media/AudioTrack:release	()V
+    //   254: new 128	android/media/AudioTrack
     //   257: dup
     //   258: iconst_3
     //   259: iload_3
@@ -293,50 +311,50 @@ public final class h
     //   264: bipush 8
     //   266: imul
     //   267: iconst_1
-    //   268: invokespecial 196	android/media/AudioTrack:<init>	(IIIIII)V
+    //   268: invokespecial 208	android/media/AudioTrack:<init>	(IIIIII)V
     //   271: astore 5
-    //   273: ldc 191
-    //   275: new 147	java/lang/StringBuilder
+    //   273: ldc 203
+    //   275: new 159	java/lang/StringBuilder
     //   278: dup
-    //   279: ldc 201
-    //   281: invokespecial 202	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   279: ldc 213
+    //   281: invokespecial 214	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   284: aload 5
-    //   286: invokevirtual 199	android/media/AudioTrack:getState	()I
-    //   289: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   292: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   286: invokevirtual 211	android/media/AudioTrack:getState	()I
+    //   289: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   292: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   295: iconst_0
     //   296: anewarray 24	java/lang/Object
     //   299: invokestatic 66	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   302: aload_0
     //   303: aload 5
-    //   305: putfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
+    //   305: putfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
     //   308: aload_0
-    //   309: getstatic 208	com/tencent/mm/wear/app/d/a/a/f:ads	I
-    //   312: putfield 44	com/tencent/mm/wear/app/d/a/a/h:adE	I
+    //   309: getstatic 147	com/tencent/mm/wear/app/d/a/a/f:agU	I
+    //   312: putfield 44	com/tencent/mm/wear/app/d/a/a/h:ahg	I
     //   315: aload_0
-    //   316: getfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
+    //   316: getfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
     //   319: ifnull +10 -> 329
     //   322: aload_0
-    //   323: getfield 117	com/tencent/mm/wear/app/d/a/a/h:adv	Landroid/media/AudioTrack;
-    //   326: invokevirtual 211	android/media/AudioTrack:play	()V
+    //   323: getfield 124	com/tencent/mm/wear/app/d/a/a/h:agX	Landroid/media/AudioTrack;
+    //   326: invokevirtual 220	android/media/AudioTrack:play	()V
     //   329: aload_0
-    //   330: new 213	com/tencent/mm/wear/app/d/a/a/i
+    //   330: new 222	com/tencent/mm/wear/app/d/a/a/i
     //   333: dup
     //   334: aload_0
     //   335: iconst_0
-    //   336: invokespecial 216	com/tencent/mm/wear/app/d/a/a/i:<init>	(Lcom/tencent/mm/wear/app/d/a/a/h;B)V
-    //   339: putfield 218	com/tencent/mm/wear/app/d/a/a/h:adw	Lcom/tencent/mm/wear/app/d/a/a/i;
-    //   342: new 220	java/lang/Thread
+    //   336: invokespecial 225	com/tencent/mm/wear/app/d/a/a/i:<init>	(Lcom/tencent/mm/wear/app/d/a/a/h;B)V
+    //   339: putfield 227	com/tencent/mm/wear/app/d/a/a/h:agY	Lcom/tencent/mm/wear/app/d/a/a/i;
+    //   342: new 229	java/lang/Thread
     //   345: dup
     //   346: aload_0
-    //   347: getfield 218	com/tencent/mm/wear/app/d/a/a/h:adw	Lcom/tencent/mm/wear/app/d/a/a/i;
-    //   350: invokespecial 223	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
-    //   353: invokevirtual 226	java/lang/Thread:start	()V
+    //   347: getfield 227	com/tencent/mm/wear/app/d/a/a/h:agY	Lcom/tencent/mm/wear/app/d/a/a/i;
+    //   350: invokespecial 232	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   353: invokevirtual 235	java/lang/Thread:start	()V
     //   356: return
     //   357: astore 5
     //   359: ldc 52
     //   361: aload 5
-    //   363: invokestatic 103	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   363: invokestatic 110	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   366: return
     //   367: astore 6
     //   369: aload 5
@@ -345,15 +363,15 @@ public final class h
     //   374: athrow
     //   375: astore 5
     //   377: ldc 52
-    //   379: ldc 228
+    //   379: ldc 237
     //   381: iconst_1
     //   382: anewarray 24	java/lang/Object
     //   385: dup
     //   386: iconst_0
     //   387: aload 5
-    //   389: invokevirtual 231	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   389: invokevirtual 240	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   392: aastore
-    //   393: invokestatic 177	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   393: invokestatic 189	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   396: goto -236 -> 160
     // Local variable table:
     //   start	length	slot	name	signature
@@ -380,19 +398,14 @@ public final class h
     //   146	160	375	java/lang/Exception
   }
   
-  public final boolean isPlaying()
+  public final void ns()
   {
-    return this.adE == f.ads;
+    this.ahg = f.agV;
   }
   
-  public final void mG()
+  public final long nt()
   {
-    this.adE = f.adt;
-  }
-  
-  public final long mH()
-  {
-    return this.adB;
+    return this.ahd;
   }
 }
 

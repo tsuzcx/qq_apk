@@ -21,25 +21,31 @@ public class QzoneAnimationDrawable$Builder
   public QzoneAnimationDrawable build()
   {
     Object localObject = ImageLoader.Options.obtain();
-    if (this.delayTimeInMs > 0L) {
-      ((ImageLoader.Options)localObject).photoDelayTimeInMs = this.delayTimeInMs;
+    long l = this.delayTimeInMs;
+    if (l > 0L) {
+      ((ImageLoader.Options)localObject).photoDelayTimeInMs = l;
     }
-    if (this.reqWidth > 0) {
-      ((ImageLoader.Options)localObject).clipWidth = this.reqWidth;
+    int i = this.reqWidth;
+    if (i > 0) {
+      ((ImageLoader.Options)localObject).clipWidth = i;
     }
-    if (this.reqHeight > 0) {
-      ((ImageLoader.Options)localObject).clipHeight = this.reqHeight;
+    i = this.reqHeight;
+    if (i > 0) {
+      ((ImageLoader.Options)localObject).clipHeight = i;
     }
-    if (this.photos != null) {}
-    for (((ImageLoader.Options)localObject).photoList = this.photos;; ((ImageLoader.Options)localObject).photoList = new ArrayList())
-    {
-      ((ImageLoader.Options)localObject).extraProcessor = this.processor;
-      localObject = new QzoneAnimationDrawable((ImageLoader.Options)localObject);
-      if (this.repeatCount > 0) {
-        ((QzoneAnimationDrawable)localObject).setRepeatCount(this.repeatCount);
-      }
-      return localObject;
+    ArrayList localArrayList = this.photos;
+    if (localArrayList != null) {
+      ((ImageLoader.Options)localObject).photoList = localArrayList;
+    } else {
+      ((ImageLoader.Options)localObject).photoList = new ArrayList();
     }
+    ((ImageLoader.Options)localObject).extraProcessor = this.processor;
+    localObject = new QzoneAnimationDrawable((ImageLoader.Options)localObject);
+    i = this.repeatCount;
+    if (i > 0) {
+      ((QzoneAnimationDrawable)localObject).setRepeatCount(i);
+    }
+    return localObject;
   }
   
   public Builder setDelayTime(long paramLong)
@@ -80,7 +86,7 @@ public class QzoneAnimationDrawable$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.photogif.QzoneAnimationDrawable.Builder
  * JD-Core Version:    0.7.0.1
  */

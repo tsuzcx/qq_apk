@@ -6,37 +6,37 @@ import java.util.Random;
 public final class d
   implements c
 {
-  private a CSh;
+  private a ajYY;
   
   public d()
   {
-    AppMethodBeat.i(77301);
-    this.CSh = new a();
-    AppMethodBeat.o(77301);
+    AppMethodBeat.i(40570);
+    this.ajYY = new a();
+    AppMethodBeat.o(40570);
   }
   
-  private static Long erN()
+  private static Long kJX()
   {
-    AppMethodBeat.i(77304);
+    AppMethodBeat.i(40573);
     long l = System.currentTimeMillis() / 1000L;
-    AppMethodBeat.o(77304);
+    AppMethodBeat.o(40573);
     return Long.valueOf(l);
   }
   
-  public final String erM()
+  public final String kJV()
   {
-    AppMethodBeat.i(77303);
-    String str = String.valueOf(erN());
-    AppMethodBeat.o(77303);
+    AppMethodBeat.i(40572);
+    String str = String.valueOf(kJX());
+    AppMethodBeat.o(40572);
     return str;
   }
   
-  public final String getNonce()
+  public final String kJW()
   {
-    AppMethodBeat.i(77302);
-    long l1 = erN().longValue();
+    AppMethodBeat.i(40571);
+    long l1 = kJX().longValue();
     long l2 = new Random().nextInt();
-    AppMethodBeat.o(77302);
+    AppMethodBeat.o(40571);
     return String.valueOf(l1 + l2);
   }
   
@@ -44,7 +44,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.f.d
  * JD-Core Version:    0.7.0.1
  */

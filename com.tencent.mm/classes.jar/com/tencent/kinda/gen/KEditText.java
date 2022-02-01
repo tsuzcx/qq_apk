@@ -3,6 +3,8 @@ package com.tencent.kinda.gen;
 public abstract interface KEditText
   extends KView
 {
+  public abstract void enableConfirmBtn(boolean paramBoolean);
+  
   public abstract String encryptWith3Des();
   
   public abstract ClearButtonMode getClearButtonMode();
@@ -13,11 +15,13 @@ public abstract interface KEditText
   
   public abstract String getHint();
   
-  public abstract long getHintColor();
+  public abstract DynamicColor getHintColor();
   
   public abstract KeyboardType getKeyboardType();
   
   public abstract int getMaxLength();
+  
+  public abstract EditTextRestrictType getRestrictType();
   
   public abstract int getSelection();
   
@@ -25,13 +29,13 @@ public abstract interface KEditText
   
   public abstract TextAlign getTextAlign();
   
-  public abstract long getTextColor();
+  public abstract DynamicColor getTextColor();
   
   public abstract String getTextFont();
   
   public abstract float getTextSize();
   
-  public abstract long getTintColor();
+  public abstract DynamicColor getTintColor();
   
   public abstract void setClearButtonMode(ClearButtonMode paramClearButtonMode);
   
@@ -41,15 +45,21 @@ public abstract interface KEditText
   
   public abstract void setHint(String paramString);
   
-  public abstract void setHintColor(long paramLong);
+  public abstract void setHintColor(DynamicColor paramDynamicColor);
   
   public abstract void setKeyboardType(KeyboardType paramKeyboardType);
   
   public abstract void setMaxLength(int paramInt);
   
+  public abstract void setOnEditorActionCallback(KEditTextOnEditorActionCallback paramKEditTextOnEditorActionCallback);
+  
   public abstract void setOnTextBeginChangeCallback(KEditTextOnTextBeginChangeCallback paramKEditTextOnTextBeginChangeCallback);
   
   public abstract void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback);
+  
+  public abstract void setOnTextEndEditingCallback(KEditTextOnTextEndEditingCallback paramKEditTextOnTextEndEditingCallback);
+  
+  public abstract void setRestrictType(EditTextRestrictType paramEditTextRestrictType);
   
   public abstract void setSelection(int paramInt);
   
@@ -57,17 +67,17 @@ public abstract interface KEditText
   
   public abstract void setTextAlign(TextAlign paramTextAlign);
   
-  public abstract void setTextColor(long paramLong);
+  public abstract void setTextColor(DynamicColor paramDynamicColor);
   
   public abstract void setTextFont(String paramString);
   
   public abstract void setTextSize(float paramFloat);
   
-  public abstract void setTintColor(long paramLong);
+  public abstract void setTintColor(DynamicColor paramDynamicColor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,20 @@ public final class CoroutinesMigrationKt
   public static final <T> kotlin.coroutines.Continuation<T> toContinuation(@NotNull kotlin.coroutines.experimental.Continuation<? super T> paramContinuation)
   {
     Intrinsics.checkParameterIsNotNull(paramContinuation, "$this$toContinuation");
-    if (!(paramContinuation instanceof ExperimentalContinuationMigration)) {}
-    for (Object localObject = null;; localObject = paramContinuation)
-    {
-      localObject = (ExperimentalContinuationMigration)localObject;
-      if (localObject != null)
-      {
-        localObject = ((ExperimentalContinuationMigration)localObject).getContinuation();
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      return (kotlin.coroutines.Continuation)new ContinuationMigration(paramContinuation);
+    if (!(paramContinuation instanceof ExperimentalContinuationMigration)) {
+      localObject = null;
+    } else {
+      localObject = paramContinuation;
     }
+    Object localObject = (ExperimentalContinuationMigration)localObject;
+    if (localObject != null)
+    {
+      localObject = ((ExperimentalContinuationMigration)localObject).getContinuation();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (kotlin.coroutines.Continuation)new ContinuationMigration(paramContinuation);
   }
   
   @SinceKotlin(version="1.3")
@@ -36,19 +37,20 @@ public final class CoroutinesMigrationKt
   public static final kotlin.coroutines.ContinuationInterceptor toContinuationInterceptor(@NotNull kotlin.coroutines.experimental.ContinuationInterceptor paramContinuationInterceptor)
   {
     Intrinsics.checkParameterIsNotNull(paramContinuationInterceptor, "$this$toContinuationInterceptor");
-    if (!(paramContinuationInterceptor instanceof ExperimentalContinuationInterceptorMigration)) {}
-    for (Object localObject = null;; localObject = paramContinuationInterceptor)
-    {
-      localObject = (ExperimentalContinuationInterceptorMigration)localObject;
-      if (localObject != null)
-      {
-        localObject = ((ExperimentalContinuationInterceptorMigration)localObject).getInterceptor();
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      return (kotlin.coroutines.ContinuationInterceptor)new ContinuationInterceptorMigration(paramContinuationInterceptor);
+    if (!(paramContinuationInterceptor instanceof ExperimentalContinuationInterceptorMigration)) {
+      localObject = null;
+    } else {
+      localObject = paramContinuationInterceptor;
     }
+    Object localObject = (ExperimentalContinuationInterceptorMigration)localObject;
+    if (localObject != null)
+    {
+      localObject = ((ExperimentalContinuationInterceptorMigration)localObject).getInterceptor();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (kotlin.coroutines.ContinuationInterceptor)new ContinuationInterceptorMigration(paramContinuationInterceptor);
   }
   
   @SinceKotlin(version="1.3")
@@ -62,24 +64,18 @@ public final class CoroutinesMigrationKt
     if (localExperimentalContextMigration != null)
     {
       paramCoroutineContext = localExperimentalContextMigration.getContext();
-      if (paramCoroutineContext != null) {
-        if (localCoroutineContext != kotlin.coroutines.experimental.EmptyCoroutineContext.INSTANCE) {
-          break label98;
-        }
-      }
+      if (paramCoroutineContext != null) {}
     }
-    for (;;)
+    else
     {
-      if (localContinuationInterceptor != null) {
-        break label119;
-      }
-      return paramCoroutineContext;
       paramCoroutineContext = (kotlin.coroutines.CoroutineContext)kotlin.coroutines.EmptyCoroutineContext.INSTANCE;
-      break;
-      label98:
+    }
+    if (localCoroutineContext != kotlin.coroutines.experimental.EmptyCoroutineContext.INSTANCE) {
       paramCoroutineContext = paramCoroutineContext.plus((kotlin.coroutines.CoroutineContext)new ContextMigration(localCoroutineContext));
     }
-    label119:
+    if (localContinuationInterceptor == null) {
+      return paramCoroutineContext;
+    }
     return paramCoroutineContext.plus((kotlin.coroutines.CoroutineContext)toContinuationInterceptor(localContinuationInterceptor));
   }
   
@@ -88,19 +84,20 @@ public final class CoroutinesMigrationKt
   public static final <T> kotlin.coroutines.experimental.Continuation<T> toExperimentalContinuation(@NotNull kotlin.coroutines.Continuation<? super T> paramContinuation)
   {
     Intrinsics.checkParameterIsNotNull(paramContinuation, "$this$toExperimentalContinuation");
-    if (!(paramContinuation instanceof ContinuationMigration)) {}
-    for (Object localObject = null;; localObject = paramContinuation)
-    {
-      localObject = (ContinuationMigration)localObject;
-      if (localObject != null)
-      {
-        localObject = ((ContinuationMigration)localObject).getContinuation();
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      return (kotlin.coroutines.experimental.Continuation)new ExperimentalContinuationMigration(paramContinuation);
+    if (!(paramContinuation instanceof ContinuationMigration)) {
+      localObject = null;
+    } else {
+      localObject = paramContinuation;
     }
+    Object localObject = (ContinuationMigration)localObject;
+    if (localObject != null)
+    {
+      localObject = ((ContinuationMigration)localObject).getContinuation();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (kotlin.coroutines.experimental.Continuation)new ExperimentalContinuationMigration(paramContinuation);
   }
   
   @SinceKotlin(version="1.3")
@@ -108,19 +105,20 @@ public final class CoroutinesMigrationKt
   public static final kotlin.coroutines.experimental.ContinuationInterceptor toExperimentalContinuationInterceptor(@NotNull kotlin.coroutines.ContinuationInterceptor paramContinuationInterceptor)
   {
     Intrinsics.checkParameterIsNotNull(paramContinuationInterceptor, "$this$toExperimentalContinuationInterceptor");
-    if (!(paramContinuationInterceptor instanceof ContinuationInterceptorMigration)) {}
-    for (Object localObject = null;; localObject = paramContinuationInterceptor)
-    {
-      localObject = (ContinuationInterceptorMigration)localObject;
-      if (localObject != null)
-      {
-        localObject = ((ContinuationInterceptorMigration)localObject).getInterceptor();
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      return (kotlin.coroutines.experimental.ContinuationInterceptor)new ExperimentalContinuationInterceptorMigration(paramContinuationInterceptor);
+    if (!(paramContinuationInterceptor instanceof ContinuationInterceptorMigration)) {
+      localObject = null;
+    } else {
+      localObject = paramContinuationInterceptor;
     }
+    Object localObject = (ContinuationInterceptorMigration)localObject;
+    if (localObject != null)
+    {
+      localObject = ((ContinuationInterceptorMigration)localObject).getInterceptor();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (kotlin.coroutines.experimental.ContinuationInterceptor)new ExperimentalContinuationInterceptorMigration(paramContinuationInterceptor);
   }
   
   @SinceKotlin(version="1.3")
@@ -134,24 +132,18 @@ public final class CoroutinesMigrationKt
     if (localContextMigration != null)
     {
       paramCoroutineContext = localContextMigration.getContext();
-      if (paramCoroutineContext != null) {
-        if (localCoroutineContext != kotlin.coroutines.EmptyCoroutineContext.INSTANCE) {
-          break label98;
-        }
-      }
+      if (paramCoroutineContext != null) {}
     }
-    for (;;)
+    else
     {
-      if (localContinuationInterceptor != null) {
-        break label119;
-      }
-      return paramCoroutineContext;
       paramCoroutineContext = (kotlin.coroutines.experimental.CoroutineContext)kotlin.coroutines.experimental.EmptyCoroutineContext.INSTANCE;
-      break;
-      label98:
+    }
+    if (localCoroutineContext != kotlin.coroutines.EmptyCoroutineContext.INSTANCE) {
       paramCoroutineContext = paramCoroutineContext.plus((kotlin.coroutines.experimental.CoroutineContext)new ExperimentalContextMigration(localCoroutineContext));
     }
-    label119:
+    if (localContinuationInterceptor == null) {
+      return paramCoroutineContext;
+    }
     return paramCoroutineContext.plus((kotlin.coroutines.experimental.CoroutineContext)toExperimentalContinuationInterceptor(localContinuationInterceptor));
   }
   
@@ -178,7 +170,7 @@ public final class CoroutinesMigrationKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.experimental.migration.CoroutinesMigrationKt
  * JD-Core Version:    0.7.0.1
  */

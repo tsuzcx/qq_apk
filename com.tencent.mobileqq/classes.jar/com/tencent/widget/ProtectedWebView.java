@@ -3,32 +3,33 @@ package com.tencent.widget;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.sdk.WebView;
 
 public class ProtectedWebView
-  extends WebView
+  extends DtX5WebView
 {
-  private boolean a;
+  private boolean b;
   
   public ProtectedWebView(Context paramContext)
   {
     super(paramContext);
-    a();
+    h();
   }
   
   public ProtectedWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    h();
   }
   
   public ProtectedWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    h();
   }
   
-  private void a()
+  private void h()
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -36,12 +37,12 @@ public class ProtectedWebView
       removeJavascriptInterface("accessibility");
       removeJavascriptInterface("accessibilityTraversal");
     }
-    this.a = false;
+    this.b = false;
   }
   
   public boolean canGoBack()
   {
-    if (!this.a) {
+    if (!this.b) {
       return super.canGoBack();
     }
     return false;
@@ -49,7 +50,7 @@ public class ProtectedWebView
   
   public boolean canGoBackOrForward(int paramInt)
   {
-    if (!this.a) {
+    if (!this.b) {
       return super.canGoBackOrForward(paramInt);
     }
     return false;
@@ -57,7 +58,7 @@ public class ProtectedWebView
   
   public boolean canGoForward()
   {
-    if (!this.a) {
+    if (!this.b) {
       return super.canGoForward();
     }
     return false;
@@ -65,72 +66,72 @@ public class ProtectedWebView
   
   public void clearView()
   {
-    if (!this.a) {
+    if (!this.b) {
       super.clearView();
     }
   }
   
   public void destroy()
   {
-    if (!this.a)
+    if (!this.b)
     {
-      this.a = true;
+      this.b = true;
       super.destroy();
     }
   }
   
   public void goBack()
   {
-    if (!this.a) {
+    if (!this.b) {
       super.goBack();
     }
   }
   
   public void goBackOrForward(int paramInt)
   {
-    if (!this.a) {
+    if (!this.b) {
       super.goBackOrForward(paramInt);
     }
   }
   
   public void loadUrl(String paramString)
   {
-    if (!this.a) {
+    if (!this.b) {
       super.loadUrl(paramString);
     }
   }
   
   public void postUrl(String paramString, byte[] paramArrayOfByte)
   {
-    if (!this.a) {
+    if (!this.b) {
       super.postUrl(paramString, paramArrayOfByte);
     }
   }
   
   public void reload()
   {
-    if (!this.a) {
+    if (!this.b) {
       super.reload();
     }
   }
   
   public void setVisibility(int paramInt)
   {
-    if (!this.a) {
+    if (!this.b) {
       super.setVisibility(paramInt);
     }
   }
   
   public void stopLoading()
   {
-    if (!this.a) {
+    if (!this.b) {
       super.stopLoading();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ProtectedWebView
  * JD-Core Version:    0.7.0.1
  */

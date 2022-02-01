@@ -10,31 +10,41 @@
             "value": "375"
         },
         "subviews": [
-                     {
-                     "$includeComponet": "componet/social_header.geojson"
-                     },
-                     {
-                       "$includeComponet": "componet/socialize_recommend_follow.geojson"
-                     },
-                     {
-                     "view_type": "ReadInJoyMiddleBodyView",
-                     "view_id": "id_middle_body_content",
-                     "margin_bottom": "10",
-                     "height": {
-                     "type": "wrap_content"
-                     },
-                     "width": {
-                     "type": "relative",
-                     "value": "375"
-                     },
-                     "attributes": {
-                     "setArticleModel:": "-1"
-                     }
-                     },
-                     {
-                     "$includeComponet": "componet/separator.geojson"
-                     }
-                     ]
+            {
+                "$includeComponet": "componet/social_header.geojson"
+            },
+            {
+                "$includeComponet": "componet/socialize_recommend_follow.geojson"
+            },
+            {
+                "view_type": "ProteusCollectionView",
+                "view_id": "id_proteus_collection_view",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setCellArray:": "$datas",
+                    "setScrollTypeString:": "0",
+                    "setScrollIndicatorString:": "0",
+                    "setScrollBounceString:": "1",
+                    "setEdgeDragString:": "1",
+                    "setScrollJumpUrl:": "$jump_url",
+                    "setScrollInsetLeft:right:top:bottom:": [
+                        "10.5",
+                        "10.5",
+                        "0",
+                        "0"
+                    ]
+                }
+            },
+            {
+                "$includeComponet": "componet/separator_normal_bottom.geojson"
+            }
+        ]
     }
 }
 

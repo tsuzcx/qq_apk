@@ -1,29 +1,32 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
+import com.tencent.biz.qqcircle.QCirclePluginUtil;
 import com.tencent.biz.qqcircle.events.QCirclePolyPraiseUpdateEvent;
-import com.tencent.biz.qqcircle.events.QCirclePraiseUpdateEvent;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.biz.richframework.util.RFWTypefaceUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StLike;
 import java.util.ArrayList;
-import tra;
-import yiw;
-import yiy;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class QCirclePraiseTextView
   extends TextView
-  implements yiy
+  implements SimpleEventReceiver
 {
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = new FeedCloudMeta.StFeed();
-  private String jdField_a_of_type_JavaLangString;
+  static final ConcurrentHashMap<String, QCirclePolyPraiseUpdateEvent> a = new ConcurrentHashMap();
+  private FeedCloudMeta.StFeed b = new FeedCloudMeta.StFeed();
+  private String c;
   
   public QCirclePraiseTextView(Context paramContext)
   {
@@ -45,21 +48,23 @@ public class QCirclePraiseTextView
     if (paramInt >= 1)
     {
       setVisibility(0);
-      setText(tra.b(paramInt));
+      String str = QCirclePluginUtil.d(paramInt);
+      RFWTypefaceUtil.a(this, false);
+      setText(str);
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.c))
     {
       setVisibility(8);
       return;
     }
-    setText(this.jdField_a_of_type_JavaLangString);
+    setTypeface(Typeface.DEFAULT);
+    setText(this.c);
   }
   
   public ArrayList<Class> getEventClass()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCirclePraiseUpdateEvent.class);
     localArrayList.add(QCirclePolyPraiseUpdateEvent.class);
     return localArrayList;
   }
@@ -68,49 +73,41 @@ public class QCirclePraiseTextView
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
-      yiw.a().a(this);
+      SimpleEventBus.getInstance().registerReceiver(this);
+    }
+    if (a.containsKey(this.b.id.get())) {
+      onReceiveEvent((SimpleBaseEvent)a.get(this.b.id.get()));
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yiw.a().b(this);
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
+    a.remove(this.b.id.get());
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    int i = 1;
-    int j;
-    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && ((paramSimpleBaseEvent instanceof QCirclePolyPraiseUpdateEvent)))
+    FeedCloudMeta.StFeed localStFeed = this.b;
+    if ((localStFeed != null) && ((paramSimpleBaseEvent instanceof QCirclePolyPraiseUpdateEvent)))
     {
       paramSimpleBaseEvent = (QCirclePolyPraiseUpdateEvent)paramSimpleBaseEvent;
-      if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get().equals(paramSimpleBaseEvent.mTargetFeedId)) && (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.get() != paramSimpleBaseEvent.mPraisedStatus))
+      if (localStFeed.id.get().equals(paramSimpleBaseEvent.mTargetFeedId))
       {
-        j = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.count.get();
-        if (paramSimpleBaseEvent.mPraisedStatus != 2) {
-          break label122;
-        }
-        i = j;
-        this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.status.set(paramSimpleBaseEvent.mPraisedStatus);
-        this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.likeInfo.count.set(i);
+        int i = paramSimpleBaseEvent.mPraisedNum;
+        this.b.likeInfo.status.set(paramSimpleBaseEvent.mPraisedStatus);
+        this.b.likeInfo.count.set(i);
         a(i);
+        return;
       }
-    }
-    return;
-    label122:
-    if (paramSimpleBaseEvent.mPraisedStatus == 1) {}
-    for (;;)
-    {
-      i += j;
-      break;
-      i = -1;
+      a.put(paramSimpleBaseEvent.mTargetFeedId, paramSimpleBaseEvent);
     }
   }
   
   public void setEmptyText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void setFeedData(FeedCloudMeta.StFeed paramStFeed)
@@ -118,19 +115,21 @@ public class QCirclePraiseTextView
     if ((paramStFeed != null) && (paramStFeed.get() != null) && (paramStFeed.likeInfo.get() != null)) {}
     try
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.mergeFrom(paramStFeed.toByteArray());
+      this.b.mergeFrom(paramStFeed.toByteArray());
       a(paramStFeed.likeInfo.count.get());
       return;
     }
     catch (Exception paramStFeed)
     {
-      QLog.e("QCirclePraise_", 1, "QCirclePraiseTextView setFeedData error");
+      label48:
+      break label48;
     }
+    QLog.e("QCirclePraise_", 1, "QCirclePraiseTextView setFeedData error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,234 +1,317 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.n;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.modelsns.d;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.v;
+import com.tencent.mm.modelsns.n;
+import com.tencent.mm.modelvideo.ab;
+import com.tencent.mm.plugin.sns.c.d;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.cii;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.protocal.protobuf.fjp;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 
 public final class a
 {
-  public static void a(a.a parama, bi parambi)
+  public static void a(a parama, cc paramcc)
   {
-    AppMethodBeat.i(30260);
+    AppMethodBeat.i(34110);
     PString localPString1 = new PString();
     PString localPString2 = new PString();
-    if (a(parambi, localPString1, localPString2)) {
-      a(parama, parambi, localPString1.value, localPString2.value);
+    if (a(paramcc, localPString1, localPString2)) {
+      a(parama, paramcc, localPString1.value, localPString2.value);
     }
-    AppMethodBeat.o(30260);
+    AppMethodBeat.o(34110);
   }
   
-  public static void a(a.a parama, bi parambi, String paramString1, String paramString2)
+  public static void a(a parama, cc paramcc, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(30261);
-    String str2 = parambi.field_talker;
-    boolean bool = t.nI(str2);
+    AppMethodBeat.i(34111);
+    String str2 = paramcc.field_talker;
+    boolean bool = au.bwE(str2);
     String str1;
-    d locald;
-    if (parambi.field_isSend == 1)
+    n localn;
+    if (paramcc.field_isSend == 1)
     {
-      str1 = r.Zn();
-      locald = new d();
-      locald.k("20source_publishid", paramString1 + ",");
-      locald.k("21uxinfo", paramString2 + ",");
-      locald.k("22clienttime", bo.aoy() + ",");
-      locald.k("23video_statu", ",");
+      str1 = com.tencent.mm.model.z.bAM();
+      localn = new n();
+      localn.s("20source_publishid", paramString1 + ",");
+      localn.s("21uxinfo", paramString2 + ",");
+      localn.s("22clienttime", Util.nowMilliSecond() + ",");
+      localn.s("23video_statu", ",");
       paramString1 = new StringBuilder();
-      if (parambi.getType() != 62) {
-        break label496;
+      if (paramcc.getType() != 62) {
+        break label494;
       }
       i = 1;
-      label150:
-      locald.k("24source_type", i + ",");
+      label149:
+      localn.s("24source_type", i + ",");
       paramString1 = new StringBuilder();
       if (!bool) {
-        break label502;
+        break label500;
       }
       i = 4;
-      label187:
-      locald.k("25scene", i + ",");
-      locald.k("26action_type", a.a.a(parama) + ",");
-      locald.k("27scene_chatname", str2 + ",");
-      locald.k("28scene_username", str1 + ",");
-      locald.k("29curr_publishid", ",");
-      locald.k("30curr_msgid", parambi.field_msgSvrId + ",");
-      locald.k("31curr_favid", "0,");
-      locald.k("32elapsed_time", "0,");
-      locald.k("33load_time", "0,");
-      locald.k("34is_load_complete", "0,");
-      locald.k("35destination", "0,");
+      label186:
+      localn.s("25scene", i + ",");
+      localn.s("26action_type", a.a(parama) + ",");
+      localn.s("27scene_chatname", str2 + ",");
+      localn.s("28scene_username", str1 + ",");
+      localn.s("29curr_publishid", ",");
+      localn.s("30curr_msgid", paramcc.field_msgSvrId + ",");
+      localn.s("31curr_favid", "0,");
+      localn.s("32elapsed_time", "0,");
+      localn.s("33load_time", "0,");
+      localn.s("34is_load_complete", "0,");
+      localn.s("35destination", "0,");
       parama = new StringBuilder();
       if (!bool) {
-        break label508;
+        break label506;
       }
     }
-    label496:
-    label502:
-    label508:
-    for (int i = n.nv(str2);; i = 0)
+    label494:
+    label500:
+    label506:
+    for (int i = v.getMembersCountByChatRoomName(str2);; i = 0)
     {
-      locald.k("36chatroom_membercount", i + ",");
-      ab.i("MicroMsg.AdVideoStatistic", "report snsad_video_action: " + locald.Fg());
-      ((c)g.E(c.class)).e(12990, new Object[] { locald });
-      AppMethodBeat.o(30261);
+      localn.s("36chatroom_membercount", i + ",");
+      Log.i("MicroMsg.AdVideoStatistic", "report snsad_video_action: " + localn.aIF());
+      ((d)com.tencent.mm.kernel.h.ax(d.class)).b(12990, new Object[] { localn });
+      AppMethodBeat.o(34111);
       return;
       if (bool)
       {
-        str1 = bf.pu(parambi.field_content);
+        str1 = br.JJ(paramcc.field_content);
         break;
       }
       str1 = str2;
       break;
       i = 2;
-      break label150;
+      break label149;
       i = 3;
-      break label187;
+      break label186;
     }
   }
   
-  public static void a(a.c paramc, a.d paramd, bi parambi, int paramInt)
+  public static void a(c paramc, d paramd, cc paramcc, int paramInt)
   {
-    AppMethodBeat.i(30262);
+    AppMethodBeat.i(34112);
     Object localObject2 = new PString();
     Object localObject1 = new PString();
     boolean bool;
-    d locald;
-    if (a(parambi, (PString)localObject2, (PString)localObject1))
+    n localn;
+    if (a(paramcc, (PString)localObject2, (PString)localObject1))
     {
       String str1 = ((PString)localObject2).value;
       String str2 = ((PString)localObject1).value;
-      localObject2 = parambi.field_talker;
-      bool = t.nI((String)localObject2);
-      if (parambi.field_isSend != 1) {
-        break label520;
+      localObject2 = paramcc.field_talker;
+      bool = au.bwE((String)localObject2);
+      if (paramcc.field_isSend != 1) {
+        break label518;
       }
-      localObject1 = r.Zn();
-      locald = new d();
-      locald.k("20source_publishid", str1 + ",");
-      locald.k("21uxinfo", str2 + ",");
-      locald.k("22clienttime", bo.aoy() + ",");
-      locald.k("23video_statu", a.d.a(paramd) + ",");
+      localObject1 = com.tencent.mm.model.z.bAM();
+      localn = new n();
+      localn.s("20source_publishid", str1 + ",");
+      localn.s("21uxinfo", str2 + ",");
+      localn.s("22clienttime", Util.nowMilliSecond() + ",");
+      localn.s("23video_statu", d.a(paramd) + ",");
       paramd = new StringBuilder();
-      if (parambi.getType() != 62) {
-        break label544;
+      if (paramcc.getType() != 62) {
+        break label542;
       }
       i = 1;
-      label215:
-      locald.k("24source_type", i + ",");
+      label214:
+      localn.s("24source_type", i + ",");
       paramd = new StringBuilder();
       if (!bool) {
-        break label550;
+        break label548;
       }
       i = 4;
-      label252:
-      locald.k("25scene", i + ",");
-      locald.k("26action_type", a.c.a(paramc) + ",");
-      locald.k("27scene_chatname", (String)localObject2 + ",");
-      locald.k("28scene_username", (String)localObject1 + ",");
-      locald.k("29curr_publishid", ",");
-      locald.k("30curr_msgid", parambi.field_msgSvrId + ",");
-      locald.k("31curr_favid", "0,");
+      label251:
+      localn.s("25scene", i + ",");
+      localn.s("26action_type", c.a(paramc) + ",");
+      localn.s("27scene_chatname", (String)localObject2 + ",");
+      localn.s("28scene_username", (String)localObject1 + ",");
+      localn.s("29curr_publishid", ",");
+      localn.s("30curr_msgid", paramcc.field_msgSvrId + ",");
+      localn.s("31curr_favid", "0,");
       paramc = new StringBuilder();
       if (!bool) {
-        break label556;
+        break label554;
       }
     }
-    label520:
-    label544:
-    label550:
-    label556:
-    for (int i = n.nv((String)localObject2);; i = 0)
+    label518:
+    label542:
+    label548:
+    label554:
+    for (int i = v.getMembersCountByChatRoomName((String)localObject2);; i = 0)
     {
-      locald.k("32chatroom_membercount", i + ",");
-      locald.k("33chatroom_toMemberCount", paramInt + ",");
-      ab.i("MicroMsg.AdVideoStatistic", "report snsad_video_spread: " + locald.Fg());
-      h.qsU.e(12991, new Object[] { locald });
-      AppMethodBeat.o(30262);
+      localn.s("32chatroom_membercount", i + ",");
+      localn.s("33chatroom_toMemberCount", paramInt + ",");
+      Log.i("MicroMsg.AdVideoStatistic", "report snsad_video_spread: " + localn.aIF());
+      com.tencent.mm.plugin.report.service.h.OAn.b(12991, new Object[] { localn });
+      AppMethodBeat.o(34112);
       return;
       if (bool)
       {
-        localObject1 = bf.pu(parambi.field_content);
+        localObject1 = br.JJ(paramcc.field_content);
         break;
       }
       localObject1 = localObject2;
       break;
       i = 2;
-      break label215;
+      break label214;
       i = 3;
-      break label252;
+      break label251;
     }
   }
   
-  public static boolean a(bi parambi, PString paramPString1, PString paramPString2)
+  public static boolean a(cc paramcc, PString paramPString1, PString paramPString2)
   {
-    AppMethodBeat.i(30263);
-    if (parambi.getType() == 62)
+    AppMethodBeat.i(34113);
+    if (paramcc.getType() == 62)
     {
-      parambi = u.vr(parambi.field_imgPath);
-      if (parambi == null)
+      paramcc = ab.Qo(paramcc.field_imgPath);
+      if (paramcc == null)
       {
-        AppMethodBeat.o(30263);
+        AppMethodBeat.o(34113);
         return false;
       }
-      parambi = parambi.fXG;
-      if ((parambi == null) || (bo.isNullOrNil(parambi.fiU)))
+      paramcc = paramcc.pbk;
+      if ((paramcc == null) || (Util.isNullOrNil(paramcc.nTA)))
       {
-        AppMethodBeat.o(30263);
+        AppMethodBeat.o(34113);
         return false;
       }
-      paramPString1.value = parambi.fiV;
-      paramPString2.value = parambi.fiU;
-      AppMethodBeat.o(30263);
+      paramPString1.value = paramcc.nTB;
+      paramPString2.value = paramcc.nTA;
+      AppMethodBeat.o(34113);
       return true;
     }
-    if (parambi.getType() == 49)
+    if (paramcc.getType() == 49)
     {
-      boolean bool = t.lA(parambi.field_talker);
-      String str2 = parambi.field_content;
+      boolean bool = au.bwE(paramcc.field_talker);
+      String str2 = paramcc.field_content;
       String str1 = str2;
       if (bool)
       {
         str1 = str2;
-        if (parambi.field_content != null)
+        if (paramcc.field_content != null)
         {
           str1 = str2;
-          if (parambi.field_isSend == 0) {
-            str1 = bf.pv(parambi.field_content);
+          if (paramcc.field_isSend == 0) {
+            str1 = br.JK(paramcc.field_content);
           }
         }
       }
-      parambi = j.b.mY(str1);
-      if ((parambi == null) || (parambi.type != 4) || (bo.isNullOrNil(parambi.fiO)))
+      paramcc = k.b.Hf(str1);
+      if ((paramcc == null) || (paramcc.type != 4) || (Util.isNullOrNil(paramcc.nTu)))
       {
-        AppMethodBeat.o(30263);
+        AppMethodBeat.o(34113);
         return false;
       }
-      paramPString1.value = parambi.fiV;
-      paramPString2.value = parambi.fiU;
-      AppMethodBeat.o(30263);
+      paramPString1.value = paramcc.nTB;
+      paramPString2.value = paramcc.nTA;
+      AppMethodBeat.o(34113);
       return true;
     }
-    AppMethodBeat.o(30263);
+    AppMethodBeat.o(34113);
     return false;
+  }
+  
+  public static enum a
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(34100);
+      aedk = new a("PlayIcon", 0, 1);
+      aedl = new a("EnterFullScreen", 1, 2);
+      aedm = new a("EnterCompleteVideo", 2, 3);
+      aedn = new a("DetailInVideo", 3, 4);
+      aedo = new a("LeavelFullScreen", 4, 5);
+      aedp = new a("LeaveCompleteVideo", 5, 6);
+      aedq = new a("SightLoaded", 6, 7);
+      aedr = new a[] { aedk, aedl, aedm, aedn, aedo, aedp, aedq };
+      AppMethodBeat.o(34100);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum b
+  {
+    public int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(34103);
+      aeds = new b("Sight", 0, 1);
+      aedt = new b("AdUrl", 1, 2);
+      aedu = new b("Chat", 2, 3);
+      aedv = new b("TalkChat", 3, 4);
+      aedw = new b("Fav", 4, 5);
+      aedx = new b[] { aeds, aedt, aedu, aedv, aedw };
+      AppMethodBeat.o(34103);
+    }
+    
+    private b(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum c
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(34106);
+      aedy = new c("Fav", 0, 1);
+      aedz = new c("Chat", 1, 2);
+      aedA = new c("Chatroom", 2, 3);
+      aedB = new c("Sns", 3, 4);
+      aedC = new c[] { aedy, aedz, aedA, aedB };
+      AppMethodBeat.o(34106);
+    }
+    
+    private c(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum d
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(34109);
+      aedD = new d("Samll", 0, 1);
+      aedE = new d("Full", 1, 2);
+      aedF = new d("Complete", 2, 3);
+      aedG = new d[] { aedD, aedE, aedF };
+      AppMethodBeat.o(34109);
+    }
+    
+    private d(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a
  * JD-Core Version:    0.7.0.1
  */

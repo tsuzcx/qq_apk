@@ -19,7 +19,7 @@ import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.QLog;
-import fpj;
+import fpi;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class EquipmentLockImpl
   private static final String e = "EquipmentLockImpl";
   private static final String f = "devlock_sharedpref";
   private static final String g = "devlock_status";
-  Handler jdField_a_of_type_AndroidOsHandler = new fpj(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new fpi(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = null;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean = true;

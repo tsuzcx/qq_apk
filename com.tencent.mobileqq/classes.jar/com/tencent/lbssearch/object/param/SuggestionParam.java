@@ -45,19 +45,39 @@ public class SuggestionParam
     if (!TextUtils.isEmpty(this.g)) {
       localfn.b("filter", this.g);
     }
-    localfn.b("region_fix", this.c);
-    if (this.d != null) {
-      localfn.b("location", this.d.latitude + "," + this.d.longitude);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localfn.b("region_fix", localStringBuilder.toString());
+    if (this.d != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.d.latitude);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.d.longitude);
+      localfn.b("location", localStringBuilder.toString());
     }
-    localfn.b("get_subpois", this.e);
-    localfn.b("policy", this.f);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.e);
+    localfn.b("get_subpois", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f);
+    localfn.b("policy", localStringBuilder.toString());
     if (!TextUtils.isEmpty(this.h)) {
       localfn.b("address_format", this.h);
     }
-    if ((this.i > 0) && (this.i <= 20) && (this.j > 0) && (this.j <= 20))
+    int k = this.i;
+    if ((k > 0) && (k <= 20))
     {
-      localfn.b("page_index", this.i);
-      localfn.b("page_size", this.j);
+      k = this.j;
+      if ((k > 0) && (k <= 20))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.i);
+        localfn.b("page_index", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.j);
+        localfn.b("page_size", localStringBuilder.toString());
+      }
     }
     return localfn;
   }
@@ -75,12 +95,7 @@ public class SuggestionParam
   
   public SuggestionParam getSubPois(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int k = 1;; k = 0)
-    {
-      this.e = k;
-      return this;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public SuggestionParam keyword(String paramString)
@@ -121,17 +136,12 @@ public class SuggestionParam
   
   public SuggestionParam regionFix(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int k = 1;; k = 0)
-    {
-      this.c = k;
-      return this;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.SuggestionParam
  * JD-Core Version:    0.7.0.1
  */

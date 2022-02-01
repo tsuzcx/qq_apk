@@ -1,58 +1,67 @@
 package com.tencent.mm.plugin.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.g;
-import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 
 public final class b
-  extends a
+  extends c
   implements Runnable
 {
+  private com.tencent.mm.plugin.fts.a.a.l HpM;
+  private WeakReference<com.tencent.mm.plugin.fts.a.l> HpN;
   private int errorCode;
-  private i mPi;
-  private WeakReference<l> mPj;
   
-  public b(int paramInt, i parami)
+  public b(com.tencent.mm.plugin.fts.a.a.l paraml)
   {
-    AppMethodBeat.i(136518);
-    this.errorCode = paramInt;
-    this.mPi = parami;
-    this.mPj = new WeakReference(parami.mSU);
-    this.mPi.mSU = null;
-    AppMethodBeat.o(136518);
+    AppMethodBeat.i(265399);
+    this.errorCode = -2;
+    this.HpM = paraml;
+    this.HpN = new WeakReference(paraml.HtC);
+    this.HpM.HtC = null;
+    AppMethodBeat.o(265399);
   }
   
-  public final boolean execute()
+  public final boolean aXz()
   {
-    AppMethodBeat.i(136519);
-    j localj;
+    AppMethodBeat.i(52501);
+    final m localm;
     if ((this.errorCode == -2) || (this.errorCode == -3))
     {
-      localj = new j(this.mPi);
-      localj.mSV = this;
-      localj.bpE = this.errorCode;
-      localj.mSW = new LinkedList();
-      localj.mRX = g.aU(this.mPi.query, false);
-      if (this.mPi.handler != null) {
+      localm = new m(this.HpM);
+      localm.HtE = this;
+      localm.resultCode = this.errorCode;
+      localm.HtF = new LinkedList();
+      localm.FWt = j.cc(this.HpM.query, false);
+      if (this.HpM.handler != null) {
         break label113;
       }
-      l locall = (l)this.mPj.get();
+      com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)this.HpN.get();
       if (locall != null) {
-        locall.b(localj);
+        locall.b(localm);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(136519);
+      AppMethodBeat.o(52501);
       return true;
       label113:
-      this.mPi.handler.post(new b.1(this, localj));
+      this.HpM.handler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(52499);
+          com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)b.a(b.this).get();
+          if (locall != null) {
+            locall.b(localm);
+          }
+          AppMethodBeat.o(52499);
+        }
+      });
     }
   }
   
@@ -73,22 +82,22 @@ public final class b
   
   public final void run()
   {
-    AppMethodBeat.i(136520);
+    AppMethodBeat.i(52502);
     try
     {
-      execute();
-      AppMethodBeat.o(136520);
+      aXz();
+      AppMethodBeat.o(52502);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(136520);
+      AppMethodBeat.o(52502);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b
  * JD-Core Version:    0.7.0.1
  */

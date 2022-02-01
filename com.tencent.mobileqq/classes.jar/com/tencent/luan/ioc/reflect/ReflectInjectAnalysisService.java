@@ -38,130 +38,162 @@ public class ReflectInjectAnalysisService
   private InjectParam getInjectParam(Class<?> paramClass, String paramString, Named paramNamed)
   {
     String str = getNamedValue(paramNamed);
-    if (str.isEmpty()) {
+    if (str.isEmpty())
+    {
       if (paramString.isEmpty()) {
         paramNamed = paramClass;
+      } else {
+        paramNamed = loadClass(paramString);
       }
     }
-    for (;;)
+    else
     {
-      return new InjectParam(paramNamed, str);
-      paramNamed = loadClass(paramString);
-      continue;
       paramNamed = paramClass;
       if (paramString.length() > 0)
       {
-        LuanLog.w("ReflectInjectAnalysisSe", "getInjectParam: annotated type " + paramString + " with @Named(" + str + "), is Anything wrong? And this type will be ignored.");
+        paramNamed = new StringBuilder();
+        paramNamed.append("getInjectParam: annotated type ");
+        paramNamed.append(paramString);
+        paramNamed.append(" with @Named(");
+        paramNamed.append(str);
+        paramNamed.append("), is Anything wrong? And this type will be ignored.");
+        LuanLog.w("ReflectInjectAnalysisSe", paramNamed.toString());
         paramNamed = paramClass;
       }
     }
+    return new InjectParam(paramNamed, str);
   }
   
   private static String getNamedValue(Named paramNamed)
   {
-    String str = null;
     if (paramNamed != null) {
-      str = paramNamed.value();
+      paramNamed = paramNamed.value();
+    } else {
+      paramNamed = null;
     }
-    paramNamed = str;
-    if (str == null) {
-      paramNamed = "";
+    Object localObject = paramNamed;
+    if (paramNamed == null) {
+      localObject = "";
     }
-    return paramNamed;
+    return localObject;
   }
   
   public ReflectInjectConstructor<?> getInjectConstructor(Class<?> paramClass)
   {
-    Object localObject2 = "";
-    Constructor[] arrayOfConstructor = paramClass.getConstructors();
-    int j = arrayOfConstructor.length;
-    int i = 0;
+    Object localObject5 = paramClass.getConstructors();
+    int j = localObject5.length;
+    Object localObject4 = null;
     Object localObject1 = null;
-    if (i < j)
+    String str = "";
+    int i = 0;
+    while (i < j)
     {
-      localObject3 = arrayOfConstructor[i];
-      Inject localInject = (Inject)((Constructor)localObject3).getAnnotation(Inject.class);
-      if (localInject == null)
+      localObject2 = localObject5[i];
+      Inject localInject = (Inject)((Constructor)localObject2).getAnnotation(Inject.class);
+      if (localInject != null)
       {
-        localObject3 = localObject2;
-        localObject2 = localObject1;
-        localObject1 = localObject3;
+        if (localObject1 == null)
+        {
+          str = localInject.type();
+          localObject1 = localObject2;
+        }
       }
-      for (;;)
+      else
       {
         i += 1;
-        localObject3 = localObject2;
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        break;
-        if (localObject1 != null) {
-          throw new InjectException("there are more than one inject constructors in this type: " + paramClass.getName());
-        }
-        localObject1 = localInject.type();
-        localObject2 = localObject3;
+        continue;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("there are more than one inject constructors in this type: ");
+      ((StringBuilder)localObject1).append(paramClass.getName());
+      throw new InjectException(((StringBuilder)localObject1).toString());
     }
-    Object localObject3 = localObject1;
-    if (localObject1 == null) {}
-    Object localObject4;
-    try
-    {
-      localObject3 = paramClass.getConstructor(new Class[0]);
-      if (!InjectChecker.isValidInjectConstructor((Constructor)localObject3)) {
-        throw new InjectException("inject constructor must be public and with one or no param " + paramClass.getName());
-      }
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+    Object localObject2 = localObject1;
+    Object localObject3;
+    if (localObject1 == null) {
+      try
       {
-        LuanLog.e("ReflectInjectAnalysisSe", "getInjectConstructor: none injected constructor and failed to get empty constructor in " + paramClass.getName(), localNoSuchMethodException);
-        localObject4 = localObject1;
+        localObject2 = paramClass.getConstructor(new Class[0]);
       }
-      localObject1 = (Named)localObject4.getAnnotation(Named.class);
-      if (localObject4.getParameterTypes().length != 0) {
-        break label343;
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("getInjectConstructor: none injected constructor and failed to get empty constructor in ");
+        ((StringBuilder)localObject5).append(paramClass.getName());
+        LuanLog.e("ReflectInjectAnalysisSe", ((StringBuilder)localObject5).toString(), localNoSuchMethodException);
+        localObject3 = localObject1;
       }
     }
-    if (((String)localObject2).length() > 0) {
-      LuanLog.w("ReflectInjectAnalysisSe", "getInjectConstructor: inject has a type name on an empty constructor of " + paramClass.getName() + ", is Anything wrong? And this type will be ignored " + (String)localObject2);
-    }
-    if (localObject1 != null)
+    if (InjectChecker.isValidInjectConstructor(localObject3))
     {
-      LuanLog.w("ReflectInjectAnalysisSe", "getInjectConstructor: inject has been named on an empty constructor of " + ((Named)localObject1).value() + ", is Anything wrong? And this name will be ignored");
-      paramClass = null;
+      localObject1 = (Named)localObject3.getAnnotation(Named.class);
+      if (localObject3.getParameterTypes().length == 0)
+      {
+        if (str.length() > 0)
+        {
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("getInjectConstructor: inject has a type name on an empty constructor of ");
+          ((StringBuilder)localObject5).append(paramClass.getName());
+          ((StringBuilder)localObject5).append(", is Anything wrong? And this type will be ignored ");
+          ((StringBuilder)localObject5).append(str);
+          LuanLog.w("ReflectInjectAnalysisSe", ((StringBuilder)localObject5).toString());
+        }
+        paramClass = localObject4;
+        if (localObject1 != null)
+        {
+          paramClass = new StringBuilder();
+          paramClass.append("getInjectConstructor: inject has been named on an empty constructor of ");
+          paramClass.append(((Named)localObject1).value());
+          paramClass.append(", is Anything wrong? And this name will be ignored");
+          LuanLog.w("ReflectInjectAnalysisSe", paramClass.toString());
+          paramClass = localObject4;
+        }
+      }
+      else
+      {
+        paramClass = getInjectParam(localObject3.getParameterTypes()[0], str, (Named)localObject1);
+      }
+      return new ReflectInjectConstructor(localObject3, paramClass);
     }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("inject constructor must be public and with one or no param ");
+    ((StringBuilder)localObject1).append(paramClass.getName());
+    paramClass = new InjectException(((StringBuilder)localObject1).toString());
     for (;;)
     {
-      return new ReflectInjectConstructor(localObject4, paramClass);
-      label343:
-      paramClass = getInjectParam(localObject4.getParameterTypes()[0], (String)localObject2, (Named)localObject1);
-      continue;
-      paramClass = null;
+      throw paramClass;
     }
   }
   
   public List<InjectMethod> getInjectMethods(Class<?> paramClass)
   {
-    paramClass = paramClass.getMethods();
+    Object localObject = paramClass.getMethods();
     LinkedList localLinkedList = new LinkedList();
-    int j = paramClass.length;
+    int j = localObject.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      Method localMethod = paramClass[i];
-      Inject localInject = (Inject)localMethod.getAnnotation(Inject.class);
-      if (localInject == null) {}
-      for (;;)
+      paramClass = localObject[i];
+      Inject localInject = (Inject)paramClass.getAnnotation(Inject.class);
+      if (localInject != null)
+      {
+        if (InjectChecker.isValidInjectMethod(paramClass))
+        {
+          Named localNamed = (Named)paramClass.getAnnotation(Named.class);
+          localLinkedList.add(new ReflectInjectMethod(paramClass, getInjectParam(paramClass.getParameterTypes()[0], localInject.type(), localNamed)));
+        }
+      }
+      else
       {
         i += 1;
-        break;
-        if (!InjectChecker.isValidInjectMethod(localMethod)) {
-          throw new InjectException("inject method must be public and with one param " + localMethod.getDeclaringClass().getName() + "#" + localMethod.getName());
-        }
-        Named localNamed = (Named)localMethod.getAnnotation(Named.class);
-        localLinkedList.add(new ReflectInjectMethod(localMethod, getInjectParam(localMethod.getParameterTypes()[0], localInject.type(), localNamed)));
+        continue;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("inject method must be public and with one param ");
+      ((StringBuilder)localObject).append(paramClass.getDeclaringClass().getName());
+      ((StringBuilder)localObject).append("#");
+      ((StringBuilder)localObject).append(paramClass.getName());
+      throw new InjectException(((StringBuilder)localObject).toString());
     }
     return Collections.unmodifiableList(localLinkedList);
   }
@@ -179,60 +211,75 @@ public class ReflectInjectAnalysisService
     Method[] arrayOfMethod = paramClass.getDeclaredMethods();
     int k = arrayOfMethod.length;
     int i = 0;
-    Method localMethod;
-    Provide localProvide;
-    InjectParam localInjectParam;
     while (i < k)
     {
-      localMethod = arrayOfMethod[i];
-      localProvide = (Provide)localMethod.getAnnotation(Provide.class);
-      if (localProvide == null)
-      {
-        i += 1;
-      }
-      else
+      Method localMethod = arrayOfMethod[i];
+      Provide localProvide = (Provide)localMethod.getAnnotation(Provide.class);
+      InjectParam localInjectParam;
+      if (localProvide != null)
       {
         if (!InjectChecker.isValidProvideMethod(localMethod)) {
-          throw new InjectException("provide method must be static public and with none param " + localMethod.getDeclaringClass().getName() + "#" + localMethod.getName());
+          break label395;
         }
         localInjectParam = getInjectParam(localMethod.getReturnType(), localProvide.type(), (Named)localMethod.getAnnotation(Named.class));
         if (localInjectParam.name.isEmpty())
         {
-          if (!localHashSet1.add(localInjectParam.type)) {
-            throw new InjectException("duplicate provide method for type " + localInjectParam.type.getName() + " in " + paramClass.getName());
+          if (!localHashSet1.add(localInjectParam.type))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("duplicate provide method for type ");
+            ((StringBuilder)localObject).append(localInjectParam.type.getName());
+            ((StringBuilder)localObject).append(" in ");
+            ((StringBuilder)localObject).append(paramClass.getName());
+            throw new InjectException(((StringBuilder)localObject).toString());
           }
         }
-        else if (!localHashSet2.add(localInjectParam.name)) {
-          throw new InjectException("duplicate provide method for name " + localInjectParam.name + " in " + paramClass.getName());
+        else {
+          if (!localHashSet2.add(localInjectParam.name)) {
+            break label336;
+          }
         }
-        if (localMethod.getParameterTypes().length != 1) {
-          break label408;
-        }
-        Annotation[] arrayOfAnnotation = localMethod.getParameterAnnotations()[0];
+        int j = localMethod.getParameterTypes().length;
         localObject = null;
-        int m = arrayOfAnnotation.length;
-        int j = 0;
-        while (j < m)
+        if (j == 1)
         {
-          Annotation localAnnotation = arrayOfAnnotation[j];
-          if (!(localAnnotation instanceof Named)) {
-            break label405;
+          Annotation[] arrayOfAnnotation = localMethod.getParameterAnnotations()[0];
+          int m = arrayOfAnnotation.length;
+          localObject = null;
+          j = 0;
+          while (j < m)
+          {
+            Annotation localAnnotation = arrayOfAnnotation[j];
+            if ((localAnnotation instanceof Named)) {
+              localObject = (Named)localAnnotation;
+            }
+            j += 1;
           }
-          localObject = (Named)localAnnotation;
-          label345:
-          j += 1;
+          localObject = getInjectParam(localMethod.getParameterTypes()[0], localProvide.inputType(), (Named)localObject);
         }
+        localLinkedList.add(new ReflectProvideMethod(paramClass, localMethod, localInjectParam, (InjectParam)localObject));
       }
+      else
+      {
+        i += 1;
+        continue;
+      }
+      label336:
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("duplicate provide method for name ");
+      ((StringBuilder)localObject).append(localInjectParam.name);
+      ((StringBuilder)localObject).append(" in ");
+      ((StringBuilder)localObject).append(paramClass.getName());
+      throw new InjectException(((StringBuilder)localObject).toString());
+      label395:
+      paramClass = new StringBuilder();
+      paramClass.append("provide method must be static public and with none param ");
+      paramClass.append(localMethod.getDeclaringClass().getName());
+      paramClass.append("#");
+      paramClass.append(localMethod.getName());
+      throw new InjectException(paramClass.toString());
     }
-    label405:
-    label408:
-    for (Object localObject = getInjectParam(localMethod.getParameterTypes()[0], localProvide.inputType(), (Named)localObject);; localObject = null)
-    {
-      localLinkedList.add(new ReflectProvideMethod(paramClass, localMethod, localInjectParam, (InjectParam)localObject));
-      break;
-      return Collections.unmodifiableList(localLinkedList);
-      break label345;
-    }
+    return Collections.unmodifiableList(localLinkedList);
   }
   
   public boolean isValid()
@@ -249,7 +296,10 @@ public class ReflectInjectAnalysisService
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw new InjectException("failed to load injected class " + paramString, localClassNotFoundException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to load injected class ");
+      localStringBuilder.append(paramString);
+      throw new InjectException(localStringBuilder.toString(), localClassNotFoundException);
     }
   }
   
@@ -260,7 +310,7 @@ public class ReflectInjectAnalysisService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.reflect.ReflectInjectAnalysisService
  * JD-Core Version:    0.7.0.1
  */

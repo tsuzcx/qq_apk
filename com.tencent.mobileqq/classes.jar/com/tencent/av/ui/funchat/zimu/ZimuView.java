@@ -13,147 +13,141 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.SentenceInfo;
+import com.tencent.av.business.manager.pendant.ItemBase;
+import com.tencent.av.business.manager.zimu.EffectZimuManager;
 import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lek;
-import ljf;
-import ljo;
-import lls;
-import mqr;
 
 public abstract class ZimuView
   extends RelativeLayout
 {
-  protected float a;
-  protected int a;
-  protected long a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  protected Typeface a;
   protected VideoAppInterface a;
-  protected final List<mqr> a;
-  protected lls a;
-  protected int b;
-  protected long b;
-  private Rect b;
+  protected Typeface b;
+  protected long c;
+  protected long d;
+  protected int e;
+  protected int f;
+  protected float g;
+  protected final List<ZimuItemView> h = new ArrayList();
+  protected EffectZimuManager i;
+  private Paint j;
+  private Rect k;
+  private Rect l;
   
   public ZimuView(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - 100L);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+    this.a = paramVideoAppInterface;
+    this.c = (System.currentTimeMillis() - 100L);
+    this.j = new Paint(2);
+    this.k = new Rect();
+    this.l = new Rect();
     paramVideoAppInterface = (WindowManager)paramContext.getSystemService("window");
-    this.jdField_a_of_type_Int = paramVideoAppInterface.getDefaultDisplay().getWidth();
-    this.jdField_b_of_type_Int = paramVideoAppInterface.getDefaultDisplay().getHeight();
+    this.e = paramVideoAppInterface.getDefaultDisplay().getWidth();
+    this.f = paramVideoAppInterface.getDefaultDisplay().getHeight();
     paramContext = new DisplayMetrics();
     paramVideoAppInterface.getDefaultDisplay().getMetrics(paramContext);
-    this.jdField_a_of_type_Float = paramContext.density;
-    setId(2131372917);
-    this.jdField_a_of_type_Lls = ((lls)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
-    paramVideoAppInterface = a();
-    this.jdField_a_of_type_Lls.a(paramLong, paramVideoAppInterface);
+    this.g = paramContext.density;
+    setId(2131441334);
+    this.i = ((EffectZimuManager)this.a.c(0));
+    paramVideoAppInterface = getID();
+    this.i.a(paramLong, paramVideoAppInterface);
   }
   
   private long a(long paramLong)
   {
+    long l3 = this.d;
     long l1 = 0L;
     long l2 = l1;
-    if (this.jdField_b_of_type_Long != 0L)
+    if (l3 != 0L)
     {
-      l2 = paramLong - this.jdField_b_of_type_Long;
+      l2 = paramLong - l3;
       if (l2 <= 500L) {
-        break label80;
+        l1 = l2;
       }
-    }
-    for (;;)
-    {
-      lek.c("ZimuView", " Render Interval: " + l1 + "|" + (paramLong - this.jdField_b_of_type_Long));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" Render Interval: ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramLong - this.d);
+      AVLog.printColorLog("ZimuView", localStringBuilder.toString());
       l2 = l1;
-      this.jdField_b_of_type_Long = paramLong;
-      return l2;
-      label80:
-      l1 = l2;
     }
+    this.d = paramLong;
+    return l2;
   }
-  
-  public abstract int a();
-  
-  public abstract String a();
-  
-  protected abstract List<mqr> a(ljf paramljf, boolean paramBoolean);
   
   void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext())
     {
-      mqr localmqr = (mqr)localIterator.next();
+      ZimuItemView localZimuItemView = (ZimuItemView)localIterator.next();
       localIterator.remove();
-      localmqr.b();
+      localZimuItemView.c();
     }
   }
   
-  public void a(ljf paramljf)
+  public void a(SentenceInfo paramSentenceInfo)
   {
-    if ((paramljf == null) || (TextUtils.isEmpty(paramljf.jdField_a_of_type_JavaLangCharSequence)) || (TextUtils.isEmpty(paramljf.jdField_a_of_type_JavaLangString)))
+    if ((paramSentenceInfo != null) && (!TextUtils.isEmpty(paramSentenceInfo.b)) && (!TextUtils.isEmpty(paramSentenceInfo.a)))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("updateText error:");
-      if (paramljf == null) {}
-      for (paramljf = null;; paramljf = paramljf.toString())
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateText :");
+      localStringBuilder.append(paramSentenceInfo.toString());
+      AVLog.printErrorLog("ZimuView", localStringBuilder.toString());
+      if (!this.i.j())
       {
-        lek.e("ZimuView", paramljf);
-        return;
+        g();
+        this.i.b("updateText2", true);
       }
+      a(paramSentenceInfo, false);
+      return;
     }
-    lek.e("ZimuView", "updateText :" + paramljf.toString());
-    if (!this.jdField_a_of_type_Lls.a())
-    {
-      g();
-      this.jdField_a_of_type_Lls.b("updateText2", true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateText error:");
+    if (paramSentenceInfo == null) {
+      paramSentenceInfo = null;
+    } else {
+      paramSentenceInfo = paramSentenceInfo.toString();
     }
-    a(paramljf, false);
+    localStringBuilder.append(paramSentenceInfo);
+    AVLog.printErrorLog("ZimuView", localStringBuilder.toString());
   }
   
-  protected void a(ljf paramljf, boolean paramBoolean)
+  protected void a(SentenceInfo paramSentenceInfo, boolean paramBoolean)
   {
-    setContentDescription(paramljf.jdField_a_of_type_JavaLangCharSequence);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    setContentDescription(paramSentenceInfo.b);
+    Iterator localIterator = this.h.iterator();
+    int m = 0;
+    while (localIterator.hasNext())
     {
-      mqr localmqr = (mqr)localIterator.next();
-      j = i;
-      if (!localmqr.a.a())
+      ZimuItemView localZimuItemView = (ZimuItemView)localIterator.next();
+      if ((!localZimuItemView.l.a()) && (localZimuItemView.l.a.equals(paramSentenceInfo.a)))
       {
-        j = i;
-        if (localmqr.a.jdField_a_of_type_JavaLangString.equals(paramljf.jdField_a_of_type_JavaLangString))
-        {
-          j = 1;
-          localmqr.a(paramljf);
-        }
+        m = 1;
+        localZimuItemView.a(paramSentenceInfo);
       }
     }
-    if (i == 0)
+    if (m == 0)
     {
-      paramljf = a(paramljf, paramBoolean);
-      if (paramljf != null) {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramljf);
+      paramSentenceInfo = b(paramSentenceInfo, paramBoolean);
+      if (paramSentenceInfo != null) {
+        this.h.addAll(paramSentenceInfo);
       }
     }
     e();
   }
   
-  protected void a(mqr parammqr) {}
+  protected void a(ZimuItemView paramZimuItemView) {}
   
   public void a(boolean paramBoolean)
   {
@@ -162,58 +156,67 @@ public abstract class ZimuView
     }
   }
   
-  protected int b()
-  {
-    return 2131695956;
-  }
+  protected abstract List<ZimuItemView> b(SentenceInfo paramSentenceInfo, boolean paramBoolean);
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Lls.a()) {
+    if (!this.i.j()) {
       f();
     }
   }
   
-  protected void b(mqr parammqr)
+  protected void b(ZimuItemView paramZimuItemView)
   {
-    parammqr.c();
+    paramZimuItemView.e();
   }
   
   protected void c()
   {
-    String str;
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidGraphicsTypeface == null) && (this.jdField_a_of_type_Lls != null))
+    if ((this.b == null) && (this.i != null))
     {
-      str = a();
-      localObject = (ZimuItem)this.jdField_a_of_type_Lls.a(str);
+      String str = getID();
+      Object localObject = (ZimuItem)this.i.b(str);
       if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_Lls.b((ljo)localObject);
+        localObject = this.i.b((ItemBase)localObject);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          localObject = new File((String)localObject + "font.ttf");
-          if (!((File)localObject).exists()) {
-            break label135;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("font.ttf");
+          localObject = new File(localStringBuilder.toString());
+          if (((File)localObject).exists())
+          {
+            try
+            {
+              this.b = Typeface.createFromFile((File)localObject);
+              return;
+            }
+            catch (Exception localException)
+            {
+              if (!AudioHelper.e()) {
+                return;
+              }
+            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("createTypeface, Exception, id[");
+            localStringBuilder.append(str);
+            localStringBuilder.append("]");
+            QLog.w("ZimuView", 1, localStringBuilder.toString(), localException);
+          }
+          else if (AudioHelper.e())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("createTypeface, 不存在, file[");
+            localStringBuilder.append(localException.getAbsolutePath());
+            localStringBuilder.append("], id[");
+            localStringBuilder.append(str);
+            localStringBuilder.append("]");
+            QLog.w("ZimuView", 1, localStringBuilder.toString());
           }
         }
       }
     }
-    label135:
-    while (!AudioHelper.e()) {
-      try
-      {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile((File)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!AudioHelper.e()) {}
-        QLog.w("ZimuView", 1, "createTypeface, Exception, id[" + str + "]", localException);
-        return;
-      }
-    }
-    QLog.w("ZimuView", 1, "createTypeface, 不存在, file[" + localException.getAbsolutePath() + "], id[" + str + "]");
   }
   
   abstract void d();
@@ -223,81 +226,105 @@ public abstract class ZimuView
     super.dispatchDraw(paramCanvas);
     long l1 = System.currentTimeMillis();
     long l2 = a(l1);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    boolean bool1 = false;
+    Iterator localIterator = this.h.iterator();
+    boolean bool = false;
     while (localIterator.hasNext())
     {
-      mqr localmqr = (mqr)localIterator.next();
-      localmqr.a(l2);
-      if (!localmqr.a())
-      {
-        if (localmqr.b())
+      ZimuItemView localZimuItemView = (ZimuItemView)localIterator.next();
+      localZimuItemView.a(l2);
+      Object localObject;
+      if (!localZimuItemView.a()) {
+        if (localZimuItemView.d())
         {
-          lek.c("ZimuView", "recycle barrage:" + localmqr);
-          localmqr.c();
-          b(localmqr);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("recycle barrage:");
+          ((StringBuilder)localObject).append(localZimuItemView);
+          AVLog.printColorLog("ZimuView", ((StringBuilder)localObject).toString());
+          localZimuItemView.e();
+          b(localZimuItemView);
         }
-      }
-      else
-      {
-        boolean bool2 = true;
-        bool1 = bool2;
-        if (!localmqr.c()) {
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("remove barrage:");
+          ((StringBuilder)localObject).append(localZimuItemView);
+          AVLog.printColorLog("ZimuView", ((StringBuilder)localObject).toString());
+          localIterator.remove();
+          a(localZimuItemView);
+          localZimuItemView.c();
           continue;
         }
-        Bitmap localBitmap = localmqr.a();
-        if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      }
+      if (localZimuItemView.j())
+      {
+        localObject = localZimuItemView.k();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
         {
           paramCanvas.save();
-          int i = localmqr.a();
-          int j = localmqr.b();
-          int k = localBitmap.getWidth();
-          int m = localBitmap.getHeight();
-          paramCanvas.clipRect(i, j, i + k, j + m);
-          paramCanvas.translate(i, j);
-          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, k, m);
-          this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, k, m);
-          paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+          int m = localZimuItemView.f();
+          int n = localZimuItemView.g();
+          int i1 = ((Bitmap)localObject).getWidth();
+          int i2 = ((Bitmap)localObject).getHeight();
+          paramCanvas.clipRect(m, n, m + i1, n + i2);
+          paramCanvas.translate(m, n);
+          this.k.set(0, 0, i1, i2);
+          this.l.set(0, 0, i1, i2);
+          paramCanvas.drawBitmap((Bitmap)localObject, this.k, this.l, this.j);
           paramCanvas.restore();
         }
-        lek.c("ZimuView", "onDraw: " + localmqr.toString());
-        bool1 = bool2;
-        continue;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDraw: ");
+        ((StringBuilder)localObject).append(localZimuItemView.toString());
+        AVLog.printColorLog("ZimuView", ((StringBuilder)localObject).toString());
       }
-      lek.c("ZimuView", "remove barrage:" + localmqr);
-      localIterator.remove();
-      a(localmqr);
-      localmqr.b();
+      bool = true;
     }
     l2 = System.currentTimeMillis();
-    lek.c("ZimuView", "onDraw needRefresh: " + bool1 + "|" + (l2 - l1));
-    if (bool1) {
+    paramCanvas = new StringBuilder();
+    paramCanvas.append("onDraw needRefresh: ");
+    paramCanvas.append(bool);
+    paramCanvas.append("|");
+    paramCanvas.append(l2 - l1);
+    AVLog.printColorLog("ZimuView", paramCanvas.toString());
+    if (bool) {
       d();
     }
   }
   
-  public void e()
+  void e()
   {
     super.invalidate();
-    long l = System.currentTimeMillis();
-    lek.c("ZimuView", "Refresh interval:" + (l - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Long = l;
+    long l1 = System.currentTimeMillis();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Refresh interval:");
+    localStringBuilder.append(l1 - this.c);
+    AVLog.printColorLog("ZimuView", localStringBuilder.toString());
+    this.c = l1;
   }
   
   void f()
   {
-    String str1 = getContext().getResources().getString(b());
-    String str2 = getContext().getResources().getString(2131695957);
-    a(new ljf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), str1, str2, 2), true);
+    String str1 = getContext().getResources().getString(getGuideChId());
+    String str2 = getContext().getResources().getString(2131893243);
+    a(new SentenceInfo(this.a.getAccount(), str1, str2, 2), true);
   }
   
   void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext()) {
-      ((mqr)localIterator.next()).a(false);
+      ((ZimuItemView)localIterator.next()).a(false);
     }
   }
+  
+  protected int getGuideChId()
+  {
+    return 2131893242;
+  }
+  
+  public abstract String getID();
+  
+  public abstract int getViewHeight();
   
   public void h() {}
   
@@ -305,13 +332,13 @@ public abstract class ZimuView
   {
     super.onDetachedFromWindow();
     a();
-    this.jdField_a_of_type_AndroidGraphicsTypeface = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(0);
+    this.b = null;
+    this.a.e(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuView
  * JD-Core Version:    0.7.0.1
  */

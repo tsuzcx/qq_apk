@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/p0" android:insetRight="@dimen/p0" android:insetTop="@dimen/p1" android:insetBottom="@dimen/oz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_window_focused="false" android:drawable="@android:color/transparent" />
-    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/aae" />
-    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/aae" />
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a3" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a3" />
-    <item android:state_focused="true" android:drawable="@drawable/aa_" />
-</selector>
+    <selector>
+        <item android:state_enabled="false">
+            <nine-patch android:src="@drawable/b6j" android:tint="?g8" android:alpha="?android:disabledAlpha" />
+        </item>
+        <item android:state_focused="false" android:state_pressed="false">
+            <nine-patch android:src="@drawable/b6j" android:tint="?g8" />
+        </item>
+        <item>
+            <nine-patch android:src="@drawable/b6i" android:tint="?g6" />
+        </item>
+    </selector>
+</inset>

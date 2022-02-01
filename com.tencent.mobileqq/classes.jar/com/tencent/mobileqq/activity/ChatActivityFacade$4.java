@@ -1,66 +1,55 @@
 package com.tencent.mobileqq.activity;
 
-import alto;
-import awpy;
-import ayzl;
+import com.tencent.av.utils.CharacterUtil;
+import com.tencent.biz.richframework.network.servlet.QzoneAioStoryFeedServlet;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.NewIntent;
 
-public final class ChatActivityFacade$4
+final class ChatActivityFacade$4
   implements Runnable
 {
-  public ChatActivityFacade$4(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  ChatActivityFacade$4(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    long l1;
-    long l2;
-    label38:
-    long l3;
-    if (localExtensionInfo == null)
+    Object localObject;
+    if (ChatActivityFacade.f(this.a, this.b, true))
     {
-      l1 = 0L;
-      if (localExtensionInfo != null) {
-        break label185;
-      }
-      l2 = 0L;
-      if (localExtensionInfo != null) {
-        break label194;
-      }
-      l3 = 0L;
-      label46:
-      long l4 = ayzl.a();
-      if ((l4 <= 0L) || (l4 - l1 <= 604800L)) {
-        break label204;
-      }
+      long l = ChatActivityFacade.l(this.a, this.b);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("lastTime: ");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("ChatActivityFacade.QZoneStoryFeeds", 1, ((StringBuilder)localObject).toString());
+      localObject = new NewIntent(this.a.getApplication(), QzoneAioStoryFeedServlet.class);
+      ((NewIntent)localObject).putExtra("key_last_aio_story_create_time", l);
     }
-    label185:
-    label194:
-    label204:
-    for (boolean bool = true;; bool = false)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivityFacade", 2, String.format("insertFriendPLNewsIfNeeded latest:%d last:%d pull:%d overWeek:%b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) }));
-      }
-      if ((l1 > l2) && (!bool) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
-        ((awpy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(112)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2, l1);
-      }
-      return;
-      l1 = localExtensionInfo.latestPLUpdateTimestamp;
-      break;
-      l2 = localExtensionInfo.lastPLNewsTimestamp;
-      break label38;
-      l3 = localExtensionInfo.lastPullPLNewsTimestamp;
-      break label46;
+      ((NewIntent)localObject).putExtra("key_friend_uid", CharacterUtil.b(this.b.b));
     }
+    catch (Exception localException)
+    {
+      label103:
+      StringBuilder localStringBuilder;
+      break label103;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Long.valueOf ");
+    localStringBuilder.append(this.b.b);
+    QLog.e("ChatActivityFacade.QZoneStoryFeeds", 1, localStringBuilder.toString());
+    ChatActivityFacade.c().a = new WeakReference(this.a);
+    ChatActivityFacade.c().b = this.b;
+    ((NewIntent)localObject).setObserver(ChatActivityFacade.c());
+    this.a.startServlet((NewIntent)localObject);
+    ChatActivityFacade.e(this.a, this.b, "key_last_req_aio_story_feed_time");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.4
  * JD-Core Version:    0.7.0.1
  */

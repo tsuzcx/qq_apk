@@ -10,7 +10,7 @@ import android.view.accessibility.AccessibilityEvent;
 
 public class AccessibilityDelegateCompat
 {
-  private static final Object DEFAULT_DELEGATE;
+  private static final Object DEFAULT_DELEGATE = IMPL.newAccessiblityDelegateDefaultImpl();
   private static final AccessibilityDelegateCompat.AccessibilityDelegateImpl IMPL;
   final Object mBridge = IMPL.newAccessiblityDelegateBridge(this);
   
@@ -18,16 +18,10 @@ public class AccessibilityDelegateCompat
   {
     if (Build.VERSION.SDK_INT >= 16) {
       IMPL = new AccessibilityDelegateCompat.AccessibilityDelegateJellyBeanImpl();
-    }
-    for (;;)
-    {
-      DEFAULT_DELEGATE = IMPL.newAccessiblityDelegateDefaultImpl();
-      return;
-      if (Build.VERSION.SDK_INT >= 14) {
-        IMPL = new AccessibilityDelegateCompat.AccessibilityDelegateIcsImpl();
-      } else {
-        IMPL = new AccessibilityDelegateCompat.AccessibilityDelegateStubImpl();
-      }
+    } else if (Build.VERSION.SDK_INT >= 14) {
+      IMPL = new AccessibilityDelegateCompat.AccessibilityDelegateIcsImpl();
+    } else {
+      IMPL = new AccessibilityDelegateCompat.AccessibilityDelegateStubImpl();
     }
   }
   

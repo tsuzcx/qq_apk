@@ -2,5 +2,5 @@
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:height="78.0dip" android:width="78.0dip" android:drawable="@drawable/hz9" />
-    <item android:gravity="center" android:height="58.0dip" android:width="58.0dip" android:drawable="@drawable/hz7" android:left="10.0dip" android:top="7.0dip" android:right="10.0dip" android:bottom="13.0dip" />
+    <item android:gravity="center" android:height="78.0dip" android:width="78.0dip" android:drawable="@drawable/hz7" />
 </layer-list>

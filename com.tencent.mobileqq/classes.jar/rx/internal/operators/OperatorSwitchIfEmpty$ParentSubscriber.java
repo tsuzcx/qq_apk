@@ -32,13 +32,14 @@ final class OperatorSwitchIfEmpty$ParentSubscriber<T>
   
   public void onCompleted()
   {
-    if (!this.empty) {
+    if (!this.empty)
+    {
       this.child.onCompleted();
-    }
-    while (this.child.isUnsubscribed()) {
       return;
     }
-    subscribeToAlternate();
+    if (!this.child.isUnsubscribed()) {
+      subscribeToAlternate();
+    }
   }
   
   public void onError(Throwable paramThrowable)
@@ -60,7 +61,7 @@ final class OperatorSwitchIfEmpty$ParentSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorSwitchIfEmpty.ParentSubscriber
  * JD-Core Version:    0.7.0.1
  */

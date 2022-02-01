@@ -1,7 +1,7 @@
 package com.tencent.ark.open;
 
 import android.text.TextUtils;
-import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.Logger;
 import com.tencent.ark.ark.Application;
 import java.util.Map;
 
@@ -12,11 +12,11 @@ final class ArkAppCacheMgr$1
   
   public void run()
   {
-    ArkAppCacheMgr.access$000().logI("ArkApp.ArkAppCacheMgr", String.format("ArkTemp.cacheManifestInfo,name=%s, path=%s", new Object[] { this.val$name, this.val$path }));
+    Logger.logI("ArkApp.ArkAppCacheMgr", String.format("ArkTemp.cacheManifestInfo,name=%s, path=%s", new Object[] { this.val$name, this.val$path }));
     Object localObject1 = new ArkAppCacheMgr.ArkAppManifestInfo();
     if (TextUtils.isEmpty(this.val$path))
     {
-      ArkAppCacheMgr.access$000().logI("ArkApp.ArkAppCacheMgr", String.format("cacheManifestInfo, path is empty", new Object[0]));
+      Logger.logI("ArkApp.ArkAppCacheMgr", String.format("cacheManifestInfo, path is empty", new Object[0]));
       return;
     }
     Object localObject2 = ark.Application.Create(this.val$name, this.val$path);
@@ -38,7 +38,7 @@ final class ArkAppCacheMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppCacheMgr.1
  * JD-Core Version:    0.7.0.1
  */

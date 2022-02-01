@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TopStoryFSVideoUI$13
-  implements View.OnSystemUiVisibilityChangeListener
+  implements DialogInterface.OnCancelListener
 {
   TopStoryFSVideoUI$13(TopStoryFSVideoUI paramTopStoryFSVideoUI) {}
   
-  public final void onSystemUiVisibilityChange(int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(1967);
-    TopStoryFSVideoUI.b(this.tkZ);
-    AppMethodBeat.o(1967);
+    AppMethodBeat.i(126348);
+    this.TOI.finish();
+    AppMethodBeat.o(126348);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryFSVideoUI.13
  * JD-Core Version:    0.7.0.1
  */

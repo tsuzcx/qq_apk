@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.translate.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aqr;
-import com.tencent.mm.protocal.protobuf.aqs;
-import com.tencent.mm.protocal.protobuf.cls;
-import com.tencent.mm.protocal.protobuf.clt;
-import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/translate/event/TransResult;", "", "clientMsgId", "", "TranslatedText", "", "(ILjava/lang/String;)V", "getTranslatedText", "()Ljava/lang/String;", "getClientMsgId", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends m
-  implements k
 {
-  private f callback;
-  private final com.tencent.mm.ai.b rr;
-  public LinkedList<clt> toP;
+  private final int TSH;
+  public final String TSI;
   
-  public b(LinkedList<cls> paramLinkedList)
+  public b(int paramInt, String paramString)
   {
-    AppMethodBeat.i(26058);
-    this.callback = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new aqr();
-    ((b.a)localObject).fsY = new aqs();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/gettranstext";
-    ((b.a)localObject).funcId = 631;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (aqr)this.rr.fsV.fta;
-    ((aqr)localObject).xfZ = paramLinkedList;
-    ((aqr)localObject).jJt = paramLinkedList.size();
-    AppMethodBeat.o(26058);
+    AppMethodBeat.i(260397);
+    this.TSH = paramInt;
+    this.TSI = paramString;
+    AppMethodBeat.o(260397);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(26059);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(26059);
-    return i;
+    AppMethodBeat.i(260405);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(260405);
+      return true;
+    }
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(260405);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (this.TSH != paramObject.TSH)
+    {
+      AppMethodBeat.o(260405);
+      return false;
+    }
+    if (!s.p(this.TSI, paramObject.TSI))
+    {
+      AppMethodBeat.o(260405);
+      return false;
+    }
+    AppMethodBeat.o(260405);
+    return true;
   }
   
-  public final int getType()
+  public final int hashCode()
   {
-    return 631;
+    AppMethodBeat.i(260400);
+    int i = this.TSH;
+    int j = this.TSI.hashCode();
+    AppMethodBeat.o(260400);
+    return i * 31 + j;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final String toString()
   {
-    AppMethodBeat.i(26060);
-    this.toP = ((aqs)this.rr.fsW.fta).xfZ;
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(26060);
+    AppMethodBeat.i(260399);
+    String str = "TransResult(clientMsgId=" + this.TSH + ", TranslatedText=" + this.TSI + ')';
+    AppMethodBeat.o(260399);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.a.b
  * JD-Core Version:    0.7.0.1
  */

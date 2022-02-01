@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ahww;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
-public class SDKEmotionSettingManager$7
+class SDKEmotionSettingManager$7
   implements Runnable
 {
-  public SDKEmotionSettingManager$7(ahww paramahww) {}
+  SDKEmotionSettingManager$7(SDKEmotionSettingManager paramSDKEmotionSettingManager) {}
   
   public void run()
   {
-    if (ahww.a(this.this$0).isFinishing())
+    if (SDKEmotionSettingManager.a(this.this$0).isFinishing())
     {
       QLog.i("SDKEmotionSettingManager", 1, "checkJumpActionTimeOutRunnable -->activity finish");
       return;
     }
     QLog.i("SDKEmotionSettingManager", 1, "checkJumpActionTimeOutRunnable -->preForward--fetch openid timeout");
-    this.this$0.a = true;
-    this.this$0.c();
-    ahww.c(this.this$0);
+    SDKEmotionSettingManager localSDKEmotionSettingManager = this.this$0;
+    localSDKEmotionSettingManager.a = true;
+    localSDKEmotionSettingManager.d();
+    SDKEmotionSettingManager.j(this.this$0);
   }
 }
 

@@ -7,12 +7,13 @@ class ARGLSurfaceView$4
   
   public void run()
   {
-    ARGLSurfaceView.access$600(this.this$0, this.this$0.mEngineHandler);
+    ARGLSurfaceView localARGLSurfaceView = this.this$0;
+    ARGLSurfaceView.access$600(localARGLSurfaceView, localARGLSurfaceView.mEngineHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView.4
  * JD-Core Version:    0.7.0.1
  */

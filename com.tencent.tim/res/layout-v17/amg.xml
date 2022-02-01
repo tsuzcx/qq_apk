@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="53.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="end|center|top" android:orientation="horizontal" android:id="@id/cd9" android:background="@drawable/a8t" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="33.0dip" android:layout_marginRight="20.0dip" android:layout_marginEnd="20.0dip" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/acg" android:background="@drawable/a8u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="49.0dip" />
+</FrameLayout>

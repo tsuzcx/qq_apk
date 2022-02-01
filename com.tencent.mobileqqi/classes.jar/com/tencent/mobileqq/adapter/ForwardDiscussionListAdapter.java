@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQServiceEntry.Tag;
 import com.tencent.mobileqq.utils.ImageUtil;
-import eyb;
+import eya;
 
 public class ForwardDiscussionListAdapter
   extends ResourceCursorAdapter
@@ -21,7 +21,7 @@ public class ForwardDiscussionListAdapter
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eyb(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eya(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
@@ -54,7 +54,7 @@ public class ForwardDiscussionListAdapter
   
   public void bindView(View paramView, Context paramContext, Cursor paramCursor)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131231395);
+    TextView localTextView = (TextView)paramView.findViewById(2131231394);
     ImageView localImageView = (ImageView)paramView.findViewById(2131230940);
     paramCursor.getString(paramCursor.getColumnIndex("faceUinSet"));
     String str = paramCursor.getString(paramCursor.getColumnIndex("uin"));

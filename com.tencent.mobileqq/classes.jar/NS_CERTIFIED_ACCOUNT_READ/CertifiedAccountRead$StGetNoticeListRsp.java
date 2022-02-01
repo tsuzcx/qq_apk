@@ -11,15 +11,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class CertifiedAccountRead$StGetNoticeListRsp
   extends MessageMicro<StGetNoticeListRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "vecNotice", "totalNum", "isFinish" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0) }, StGetNoticeListRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBUInt32Field isFinish = PBField.initUInt32(0);
   public final PBUInt32Field totalNum = PBField.initUInt32(0);
   public final PBRepeatMessageField<CertifiedAccountMeta.StNotice> vecNotice = PBField.initRepeatMessage(CertifiedAccountMeta.StNotice.class);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "vecNotice", "totalNum", "isFinish" }, new Object[] { null, null, localInteger, localInteger }, StGetNoticeListRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetNoticeListRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,26 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.RecommendContact;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.PluginConfigProxy;
+import mqq.observer.ServerConfigObserver;
+import protocol.KQQConfig.GetResourceRespV2;
 
 public class fer
   implements Runnable
 {
-  public fer(PhoneContactManagerImp paramPhoneContactManagerImp, List paramList) {}
+  private int jdField_a_of_type_Int;
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver;
+  private GetResourceRespV2 jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public fer(PluginConfigProxy paramPluginConfigProxy, ServerConfigObserver paramServerConfigObserver, boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
+  {
+    this.jdField_a_of_type_MqqObserverServerConfigObserver = paramServerConfigObserver;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2 = paramGetResourceRespV2;
+  }
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactManager", 2, "setRecommendMsgReaded");
-    }
-    EntityTransaction localEntityTransaction = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a();
-    try
-    {
-      localEntityTransaction.a();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecommendContact localRecommendContact = (RecommendContact)localIterator.next();
-        PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(localRecommendContact);
-      }
-    }
-    finally
-    {
-      localEntityTransaction.b();
-    }
-    localEntityTransaction.b();
+    this.jdField_a_of_type_MqqObserverServerConfigObserver.onGetPluginConfig(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2);
   }
 }
 

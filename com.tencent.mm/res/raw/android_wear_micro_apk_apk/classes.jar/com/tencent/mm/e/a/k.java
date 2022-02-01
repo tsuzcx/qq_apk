@@ -5,20 +5,20 @@ import a.a.a.b;
 public final class k
   extends com.tencent.mm.d.a
 {
-  public String VA;
-  public int Vv;
+  public int Xq;
+  public String Xv;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VA == null) {
+      if (this.Xv == null) {
         throw new b("Not all required fields were included: Data");
       }
-      paramVarArgs.aq(1, this.Vv);
-      if (this.VA != null) {
-        paramVarArgs.d(2, this.VA);
+      paramVarArgs.at(1, this.Xq);
+      if (this.Xv != null) {
+        paramVarArgs.d(2, this.Xv);
       }
       paramInt = 0;
     }
@@ -29,19 +29,19 @@ public final class k
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.ak(1, this.Vv) + 0;
+      i = a.a.a.a.an(1, this.Xq) + 0;
       paramInt = i;
-    } while (this.VA == null);
-    return i + a.a.a.b.b.a.e(2, this.VA);
+    } while (this.Xv == null);
+    return i + a.a.a.b.b.a.e(2, this.Xv);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.VA == null) {
+      if (this.Xv == null) {
         throw new b("Not all required fields were included: Data");
       }
       return 0;
@@ -55,10 +55,10 @@ public final class k
       default: 
         return -1;
       case 1: 
-        localk.Vv = locala.ot();
+        localk.Xq = locala.pg();
         return 0;
       }
-      localk.VA = locala.ou();
+      localk.Xv = locala.ph();
       return 0;
     }
     return -1;

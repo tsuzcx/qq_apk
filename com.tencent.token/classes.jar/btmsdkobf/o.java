@@ -8,17 +8,17 @@ import java.util.ArrayList;
 public final class o
   extends JceStruct
 {
-  static ArrayList av;
-  static ArrayList aw;
+  static ArrayList<Integer> av;
+  static ArrayList<String> aw;
   public int ar = 0;
-  public ArrayList as = null;
-  public ArrayList at = null;
+  public ArrayList<Integer> as = null;
+  public ArrayList<String> at = null;
   public int au = 0;
   public int count = 1;
   public int pluginId = 0;
   public int timestamp = 0;
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ar = paramJceInputStream.read(this.ar, 0, true);
     this.timestamp = paramJceInputStream.read(this.timestamp, 1, true);
@@ -39,24 +39,29 @@ public final class o
     this.au = paramJceInputStream.read(this.au, 6, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ar, 0);
     paramJceOutputStream.write(this.timestamp, 1);
-    if (this.count != 1) {
-      paramJceOutputStream.write(this.count, 2);
+    int i = this.count;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.as != null) {
-      paramJceOutputStream.write(this.as, 3);
+    ArrayList localArrayList = this.as;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.at != null) {
-      paramJceOutputStream.write(this.at, 4);
+    localArrayList = this.at;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
-    if (this.pluginId != 0) {
-      paramJceOutputStream.write(this.pluginId, 5);
+    i = this.pluginId;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.au != 0) {
-      paramJceOutputStream.write(this.au, 6);
+    i = this.au;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
   }
 }

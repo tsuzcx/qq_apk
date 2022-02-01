@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.p;
 
-import com.tencent.mm.protocal.protobuf.aqy;
-
 public abstract interface b
 {
-  public abstract int bSp();
+  public abstract void animateTo(double paramDouble1, double paramDouble2);
   
-  public abstract String[] bSq();
+  public abstract void animateTo(double paramDouble1, double paramDouble2, int paramInt);
   
-  public abstract aqy bSr();
+  public abstract void setCenter(double paramDouble1, double paramDouble2);
+  
+  public abstract void setZoom(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.p.b
  * JD-Core Version:    0.7.0.1
  */

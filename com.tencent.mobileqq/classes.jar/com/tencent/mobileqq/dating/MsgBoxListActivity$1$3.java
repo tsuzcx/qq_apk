@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.dating;
 
-import apih;
-
-public class MsgBoxListActivity$1$3
+class MsgBoxListActivity$1$3
   implements Runnable
 {
-  public MsgBoxListActivity$1$3(apih paramapih) {}
+  MsgBoxListActivity$1$3(MsgBoxListActivity.1 param1) {}
   
   public void run()
   {
-    if (MsgBoxListActivity.a(this.a.a) != null)
+    if (MsgBoxListActivity.access$000(this.a.a) != null)
     {
-      MsgBoxListActivity.a(this.a.a).a(2, null);
-      MsgBoxListActivity.a(this.a.a);
-      MsgBoxListActivity.b(this.a.a);
+      MsgBoxListActivity.access$000(this.a.a).a(2, null);
+      MsgBoxListActivity.access$100(this.a.a);
+      MsgBoxListActivity.access$200(this.a.a);
     }
   }
 }

@@ -2,23 +2,22 @@ package com.tencent.mobileqq.troopshare;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bcxl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troop.data.TroopInfoData;
 
-public class TroopShareUtility$9
+class TroopShareUtility$9
   implements Runnable
 {
-  public TroopShareUtility$9(bcxl parambcxl, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
+  TroopShareUtility$9(TroopShareUtility paramTroopShareUtility, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent) {}
   
   public void run()
   {
     try
     {
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, (byte)3, false, false);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("face", localBitmap);
-      this.this$0.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+      Bitmap localBitmap = this.a.getTroopFaceBitmap(this.b.troopUin, (byte)3, false, false);
+      this.c.putExtra("face", localBitmap);
+      this.this$0.h.startActivity(this.c);
       return;
     }
     catch (Exception localException)
@@ -29,7 +28,7 @@ public class TroopShareUtility$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.9
  * JD-Core Version:    0.7.0.1
  */

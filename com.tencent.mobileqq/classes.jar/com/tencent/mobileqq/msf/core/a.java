@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.CodecWarpper;
@@ -12,6 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class a
 {
@@ -38,15 +39,15 @@ public class a
   private static final int n = 11;
   private static final int o = 12;
   private static final int p = 13;
-  private static int q = 0;
-  private static int r = 0;
-  private static int s = 0;
-  private static int t = 0;
-  private static int u = 0;
-  private static int v = 0;
-  private static int w = 0;
-  private static int x = 0;
-  private static int y = 0;
+  private static int q;
+  private static int r;
+  private static int s;
+  private static int t;
+  private static int u;
+  private static int v;
+  private static int w;
+  private static int x;
+  private static int y;
   private static long z;
   
   private static int a(int paramInt, String[] paramArrayOfString)
@@ -56,7 +57,11 @@ public class a
       paramInt = Integer.parseInt(paramArrayOfString[paramInt]);
       return paramInt;
     }
-    catch (Exception paramArrayOfString) {}
+    catch (Exception paramArrayOfString)
+    {
+      label9:
+      break label9;
+    }
     return 0;
   }
   
@@ -78,40 +83,52 @@ public class a
       A = f();
       h();
       G.sendEmptyMessageDelayed(10000, 600000L);
-      QLog.d("CodecStatHelper", 4, "CodecStatHelper Restore " + b());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CodecStatHelper Restore ");
+      ((StringBuilder)localObject).append(b());
+      QLog.d("CodecStatHelper", 4, ((StringBuilder)localObject).toString());
       return;
     }
     localObject = ((String)localObject).split("\\|");
-    if ((localObject == null) || (localObject.length != 14))
+    if ((localObject != null) && (localObject.length == 14))
     {
-      A = f();
-      h();
+      q = a(0, (String[])localObject);
+      z = b(1, (String[])localObject);
+      r = a(2, (String[])localObject);
+      s = a(3, (String[])localObject);
+      t = a(4, (String[])localObject);
+      u = a(5, (String[])localObject);
+      v = a(6, (String[])localObject);
+      w = a(7, (String[])localObject);
+      x = a(8, (String[])localObject);
+      y = a(9, (String[])localObject);
+      A = b(10, (String[])localObject);
+      B = localObject[11];
+      C = b(12, (String[])localObject);
+      a = localObject[13];
+      if (A == 0L)
+      {
+        A = f();
+        h();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("CodecStatHelper Restore ");
+        ((StringBuilder)localObject).append(b());
+        QLog.d("CodecStatHelper", 4, ((StringBuilder)localObject).toString());
+      }
       G.sendEmptyMessageDelayed(10000, 600000L);
-      QLog.d("CodecStatHelper", 4, "CodecStatHelper Restore " + b());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CodecStatHelper Restore ");
+      ((StringBuilder)localObject).append(b());
+      QLog.d("CodecStatHelper", 4, ((StringBuilder)localObject).toString());
       return;
     }
-    q = a(0, (String[])localObject);
-    z = b(1, (String[])localObject);
-    r = a(2, (String[])localObject);
-    s = a(3, (String[])localObject);
-    t = a(4, (String[])localObject);
-    u = a(5, (String[])localObject);
-    v = a(6, (String[])localObject);
-    w = a(7, (String[])localObject);
-    x = a(8, (String[])localObject);
-    y = a(9, (String[])localObject);
-    A = b(10, (String[])localObject);
-    B = localObject[11];
-    C = b(12, (String[])localObject);
-    a = localObject[13];
-    if (A == 0L)
-    {
-      A = f();
-      h();
-      QLog.d("CodecStatHelper", 4, "CodecStatHelper Restore " + b());
-    }
+    A = f();
+    h();
     G.sendEmptyMessageDelayed(10000, 600000L);
-    QLog.d("CodecStatHelper", 4, "CodecStatHelper Restore " + b());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CodecStatHelper Restore ");
+    ((StringBuilder)localObject).append(b());
+    QLog.d("CodecStatHelper", 4, ((StringBuilder)localObject).toString());
   }
   
   public static void a(int paramInt)
@@ -128,12 +145,7 @@ public class a
     }
     if (System.currentTimeMillis() - C <= D) {
       q += 1;
-    }
-    for (;;)
-    {
-      B = b(System.currentTimeMillis());
-      h();
-      return;
+    } else {
       switch (paramInt)
       {
       default: 
@@ -158,6 +170,8 @@ public class a
         y += 1;
       }
     }
+    B = b(System.currentTimeMillis());
+    h();
   }
   
   public static void a(long paramLong)
@@ -172,26 +186,43 @@ public class a
       long l1 = Long.parseLong(paramArrayOfString[paramInt]);
       return l1;
     }
-    catch (Exception paramArrayOfString) {}
+    catch (Exception paramArrayOfString)
+    {
+      label9:
+      break label9;
+    }
     return 0L;
   }
   
   public static String b()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(q).append("|");
-    localStringBuffer.append(z).append("|");
-    localStringBuffer.append(r).append("|");
-    localStringBuffer.append(s).append("|");
-    localStringBuffer.append(t).append("|");
-    localStringBuffer.append(u).append("|");
-    localStringBuffer.append(v).append("|");
-    localStringBuffer.append(w).append("|");
-    localStringBuffer.append(x).append("|");
-    localStringBuffer.append(y).append("|");
-    localStringBuffer.append(A).append("|");
-    localStringBuffer.append(B).append("|");
-    localStringBuffer.append(C).append("|");
+    localStringBuffer.append(q);
+    localStringBuffer.append("|");
+    localStringBuffer.append(z);
+    localStringBuffer.append("|");
+    localStringBuffer.append(r);
+    localStringBuffer.append("|");
+    localStringBuffer.append(s);
+    localStringBuffer.append("|");
+    localStringBuffer.append(t);
+    localStringBuffer.append("|");
+    localStringBuffer.append(u);
+    localStringBuffer.append("|");
+    localStringBuffer.append(v);
+    localStringBuffer.append("|");
+    localStringBuffer.append(w);
+    localStringBuffer.append("|");
+    localStringBuffer.append(x);
+    localStringBuffer.append("|");
+    localStringBuffer.append(y);
+    localStringBuffer.append("|");
+    localStringBuffer.append(A);
+    localStringBuffer.append("|");
+    localStringBuffer.append(B);
+    localStringBuffer.append("|");
+    localStringBuffer.append(C);
+    localStringBuffer.append("|");
     localStringBuffer.append(a);
     return localStringBuffer.toString();
   }
@@ -216,19 +247,32 @@ public class a
     int i8 = x;
     int i9 = y;
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(g()).append("|");
-    localStringBuffer.append(i1 + i2 + i3 + i4 + i5 + i6 + i7 + i8 + i9).append("|");
-    localStringBuffer.append(r).append("|");
-    localStringBuffer.append(s).append("|");
-    localStringBuffer.append(t).append("|");
-    localStringBuffer.append(u).append("|");
-    localStringBuffer.append(v).append("|");
-    localStringBuffer.append(w).append("|");
-    localStringBuffer.append(x).append("|");
-    localStringBuffer.append(y).append("|");
-    localStringBuffer.append(q).append("|");
-    localStringBuffer.append(B).append("|");
-    localStringBuffer.append(b(C)).append("|");
+    localStringBuffer.append(g());
+    localStringBuffer.append("|");
+    localStringBuffer.append(i1 + i2 + i3 + i4 + i5 + i6 + i7 + i8 + i9);
+    localStringBuffer.append("|");
+    localStringBuffer.append(r);
+    localStringBuffer.append("|");
+    localStringBuffer.append(s);
+    localStringBuffer.append("|");
+    localStringBuffer.append(t);
+    localStringBuffer.append("|");
+    localStringBuffer.append(u);
+    localStringBuffer.append("|");
+    localStringBuffer.append(v);
+    localStringBuffer.append("|");
+    localStringBuffer.append(w);
+    localStringBuffer.append("|");
+    localStringBuffer.append(x);
+    localStringBuffer.append("|");
+    localStringBuffer.append(y);
+    localStringBuffer.append("|");
+    localStringBuffer.append(q);
+    localStringBuffer.append("|");
+    localStringBuffer.append(B);
+    localStringBuffer.append("|");
+    localStringBuffer.append(b(C));
+    localStringBuffer.append("|");
     localStringBuffer.append(a);
     return localStringBuffer.toString();
   }
@@ -255,18 +299,26 @@ public class a
       try
       {
         long l1 = System.currentTimeMillis();
+        long l2 = A;
         String str;
-        if (l1 > A)
+        Object localObject;
+        if (l1 > l2)
         {
           str = c();
-          QLog.d("CodecStatHelper", 4, "CodecStatHelper Report " + str);
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("param_appSpec", str);
-          bool = true;
-          if ((t <= 0) && (u <= 0) && (v <= 0))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("CodecStatHelper Report ");
+          ((StringBuilder)localObject).append(str);
+          QLog.d("CodecStatHelper", 4, ((StringBuilder)localObject).toString());
+          localObject = new HashMap();
+          ((HashMap)localObject).put("param_appSpec", str);
+          if ((t > 0) || (u > 0)) {
+            break label313;
+          }
+          if (v > 0)
           {
+            break label313;
             if (MsfService.getCore().getStatReporter() != null) {
-              MsfService.getCore().getStatReporter().a("dim.Msf.DecPack_trunk_test", bool, 0L, 0L, localHashMap, false, false);
+              MsfService.getCore().getStatReporter().a("dim_Msf_DecPack_trunk_test", bool, 0L, 0L, (Map)localObject, false, false);
             }
             q = 0;
             r = 0;
@@ -289,7 +341,10 @@ public class a
         else
         {
           str = b();
-          QLog.d("CodecStatHelper", 4, "CodecStatHelper Save " + str);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("CodecStatHelper Save ");
+          ((StringBuilder)localObject).append(str);
+          QLog.d("CodecStatHelper", 4, ((StringBuilder)localObject).toString());
           z = l1;
           BaseApplication.getContext().getSharedPreferences(CodecWarpper.tag, 0).edit().putString("_decode_stat_", str).commit();
           return;
@@ -300,13 +355,16 @@ public class a
         localException.printStackTrace();
         return;
       }
-      boolean bool = false;
+      boolean bool = true;
+      continue;
+      label313:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.etrump.mixlayout;
 
-import bdom;
-import fx;
+import com.tencent.mobileqq.utils.VasUtils;
 
-public class FontManager$2
+class FontManager$2
   implements Runnable
 {
-  public FontManager$2(fx paramfx) {}
+  FontManager$2(FontManager paramFontManager) {}
   
   public void run()
   {
-    this.this$0.a(true);
-    bdom.a(this.this$0.a);
-    fx.a(this.this$0);
+    FontManager.a(this.this$0, true);
+    VasUtils.a(FontManager.a(this.this$0));
+    FontManager.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.2
  * JD-Core Version:    0.7.0.1
  */

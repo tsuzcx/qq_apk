@@ -27,13 +27,14 @@ public final class SecSharedInfo$SharedInfoPacket
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 58, 64, 74, 82 }, new String[] { "version", "type", "bytes_guid", "uint32_appid", "str_sysversion", "str_brand", "str_model", "qq_version", "send_info", "file_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(1), localByteStringMicro, Integer.valueOf(0), "", "", "", Integer.valueOf(0), null, null }, SharedInfoPacket.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 58, 64, 74, 82 }, new String[] { "version", "type", "bytes_guid", "uint32_appid", "str_sysversion", "str_brand", "str_model", "qq_version", "send_info", "file_info" }, new Object[] { localInteger, Integer.valueOf(1), localByteStringMicro, localInteger, "", "", "", localInteger, null, null }, SharedInfoPacket.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.SecSharedInfo.SharedInfoPacket
  * JD-Core Version:    0.7.0.1
  */

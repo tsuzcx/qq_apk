@@ -7,56 +7,67 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 public class MoreCommentPanel
   extends RelativeLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
+  private Context a;
+  private TextView b;
+  private ImageView c;
+  private boolean d = false;
   
   public MoreCommentPanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
   }
   
   public MoreCommentPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
   }
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562459, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370734));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370732));
-    if (this.jdField_a_of_type_Boolean)
+    try
     {
-      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166764));
-      setBackgroundResource(2130848717);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165311));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848715);
+      LayoutInflater.from(this.a).inflate(2131629073, this);
+      this.b = ((TextView)findViewById(2131438860));
+      this.c = ((ImageView)findViewById(2131438858));
+      if (this.d)
+      {
+        setBackgroundColor(this.a.getResources().getColor(2131167820));
+        setBackgroundResource(2130851178);
+        this.b.setTextColor(this.a.getResources().getColor(2131165566));
+        this.c.setImageResource(2130851176);
+        return;
+      }
+      setBackgroundColor(this.a.getResources().getColor(2131166521));
+      setBackgroundResource(2130851177);
       return;
     }
-    setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165796));
-    setBackgroundResource(2130848716);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("MoreCommentPanel", 1, "init OOM", localOutOfMemoryError);
+      System.gc();
+    }
   }
   
   public void setHintText(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    TextView localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.setText(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.MoreCommentPanel
  * JD-Core Version:    0.7.0.1
  */

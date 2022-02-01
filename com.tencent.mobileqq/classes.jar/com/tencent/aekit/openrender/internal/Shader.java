@@ -22,7 +22,10 @@ public class Shader
   public void bind()
   {
     GLES20.glUseProgram(this.shaderProgram);
-    GlUtil.checkGlError("glUseProgram:" + this.shaderProgram);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glUseProgram:");
+    localStringBuilder.append(this.shaderProgram);
+    GlUtil.checkGlError(localStringBuilder.toString());
   }
   
   public void clear()
@@ -64,7 +67,7 @@ public class Shader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.internal.Shader
  * JD-Core Version:    0.7.0.1
  */

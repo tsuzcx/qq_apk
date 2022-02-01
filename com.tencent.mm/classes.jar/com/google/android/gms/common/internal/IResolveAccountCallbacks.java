@@ -56,18 +56,18 @@ public abstract interface IResolveAccountCallbacks
       
       public void onAccountResolutionComplete(ResolveAccountResponse paramResolveAccountResponse)
       {
-        AppMethodBeat.i(61351);
+        AppMethodBeat.i(11843);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramResolveAccountResponse);
         transactAndReadExceptionReturnVoid(2, localParcel);
-        AppMethodBeat.o(61351);
+        AppMethodBeat.o(11843);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.IResolveAccountCallbacks
  * JD-Core Version:    0.7.0.1
  */

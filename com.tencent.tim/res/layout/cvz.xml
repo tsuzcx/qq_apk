@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/mtb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.tim.todo.widget.EmptyScheduleView android:id="@id/nym" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/nys" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0sp" android:id="@id/nyu" android:background="@drawable/bg_texture" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/nyt" android:background="@drawable/ch2" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_above="@id/nyu" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/jst" android:background="@color/el" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="49.0dip" android:layout_alignParentBottom="true">
+        <View android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/az_" android:textColor="@color/bp" android:id="@id/nxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" />
+        <Button android:gravity="center" android:id="@id/send_btn" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="187.5dip" android:text="发送" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/a3v" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.compactcalendarview.CompactCalendarView android:id="@id/mo3" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="314.0dip" android:layout_marginTop="-314.0dip" app:compactCalendarBackgroundColor="@color/al3" app:compactCalendarCurrentDayBackgroundColor="@color/apl" app:compactCalendarCurrentSelectedDayBackgroundColor="#ffaeaeae" app:compactCalendarMultiEventIndicatorColor="@color/apl" app:compactCalendarTargetHeight="314.0dip" xmlns:app="http://schemas.android.com/apk/res-auto" />
+    <View android:id="@id/bmt" android:background="@drawable/lb" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/mo3" />
+    <com.tencent.tim.todo.widget.ScheduleSwipListView android:id="@id/nyq" android:background="@drawable/bg_texture" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_above="@id/jst" android:layout_below="@id/bmt" />
+</RelativeLayout>

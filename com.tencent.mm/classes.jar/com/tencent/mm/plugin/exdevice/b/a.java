@@ -1,65 +1,68 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.j.b;
-import com.tencent.mm.plugin.exdevice.service.i.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class a
-  extends i.a
+public abstract class a<RequestType extends com.tencent.mm.bx.a, ResponseType extends com.tencent.mm.bx.a>
+  extends p
+  implements m
 {
-  private static a lCq = null;
+  private h mAY;
+  protected c yoM;
   
-  public static a bps()
+  public final ResponseType cWm()
   {
-    AppMethodBeat.i(19037);
-    if (lCq == null)
-    {
-      locala = new a();
-      lCq = locala;
-      AppMethodBeat.o(19037);
-      return locala;
+    if ((this.yoM != null) && (c.c.b(this.yoM.otC) != null)) {
+      return c.c.b(this.yoM.otC);
     }
-    a locala = lCq;
-    AppMethodBeat.o(19037);
-    return locala;
+    return null;
   }
   
-  public final void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  protected abstract RequestType dFd();
+  
+  protected abstract ResponseType dFe();
+  
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(19038);
-    if (paramArrayOfByte == null)
+    this.mAY = paramh;
+    if (this.yoM == null)
     {
-      i = -1;
-      ab.i("MicroMsg.exdevice.DeviceRequestManager", "------onDeviceRequest------ errorCode = %d, deviceId = %d, seq = %d, cmdId = %d, datalength = %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(i) });
-      if (paramInt1 != 0) {
-        break label110;
-      }
+      paramh = new c.a();
+      paramh.funcId = getType();
+      paramh.uri = getUri();
+      paramh.otE = dFd();
+      paramh.otF = dFe();
+      paramh.otG = 0;
+      paramh.respCmdId = 0;
+      this.yoM = paramh.bEF();
+      f(c.b.b(this.yoM.otB));
     }
-    String str;
-    label110:
-    for (int i = 1;; i = 0)
-    {
-      com.tencent.mm.plugin.exdevice.g.a.p(paramLong, i);
-      str = b.aO(paramArrayOfByte);
-      if (str != null) {
-        break label116;
-      }
-      ab.e("MicroMsg.exdevice.DeviceRequestManager", "dataIn is null!!! Just leave without process data");
-      AppMethodBeat.o(19038);
-      return;
-      i = paramArrayOfByte.length;
-      break;
+    return dispatch(paramg, this.yoM, this);
+  }
+  
+  protected void f(RequestType paramRequestType) {}
+  
+  protected abstract String getUri();
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    Log.i("MicroMsg.BaseNetScene", "onGYNetEnd netId %d, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.mAY != null) {
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    label116:
-    ab.d("MicroMsg.exdevice.DeviceRequestManager", "data dump = %s", new Object[] { str });
-    new a.a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).bpt();
-    AppMethodBeat.o(19038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.b.a
  * JD-Core Version:    0.7.0.1
  */

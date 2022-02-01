@@ -28,6 +28,7 @@ public final class oidb_0x8dd$ThirdLineInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -36,12 +37,12 @@ public final class oidb_0x8dd$ThirdLineInfo
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 72, 82, 88, 98 }, new String[] { "bytes_third_line_icon", "bytes_third_line_info", "bytes_common_label", "bytes_interest_tag", "bytes_rich_state", "common_label", "interest_tag", "bytes_rich_state2", "identity_type", "identity_word", "mark_type", "mark_word" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, null, null, localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, Integer.valueOf(0), localByteStringMicro8 }, ThirdLineInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 72, 82, 88, 98 }, new String[] { "bytes_third_line_icon", "bytes_third_line_info", "bytes_common_label", "bytes_interest_tag", "bytes_rich_state", "common_label", "interest_tag", "bytes_rich_state2", "identity_type", "identity_word", "mark_type", "mark_word" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, null, null, localByteStringMicro6, localInteger, localByteStringMicro7, localInteger, localByteStringMicro8 }, ThirdLineInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.ThirdLineInfo
  * JD-Core Version:    0.7.0.1
  */

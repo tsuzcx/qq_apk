@@ -1,187 +1,107 @@
 package com.tencent.mm.plugin.emojicapture.ui.b;
 
-import a.f.a.b;
-import a.f.b.j;
-import a.l;
-import a.y;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.GLES20;
-import com.tencent.filter.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.j.b.a;
 import com.tencent.mm.plugin.emojicapture.model.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.ttpic.PTModule;
-import com.tencent.ttpic.PTSegment;
-import com.tencent.ttpic.gameplaysdk.GamePlaySDK;
+import com.tencent.mm.plugin.emojicapture.model.d.a;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiVideoPlayTextureRenderer;", "Landroid/graphics/SurfaceTexture$OnFrameAvailableListener;", "removeBgEnable", "", "(Z)V", "TAG", "", "afterDrawCallback", "Lkotlin/Function0;", "", "canDraw", "cubeArray", "", "kotlin.jvm.PlatformType", "cubeBuffer", "Ljava/nio/FloatBuffer;", "frameTimestamp", "", "init", "isDrawing", "onFrameAvailable", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "pts", "getOnFrameAvailable", "()Lkotlin/jvm/functions/Function1;", "setOnFrameAvailable", "(Lkotlin/jvm/functions/Function1;)V", "ptFaceDetector", "Lcom/tencent/mm/ptsdk/PTFaceDetectorProcess;", "ptFaceFrame", "Lcom/tencent/filter/Frame;", "ptSegment", "Lcom/tencent/ttpic/PTSegment;", "removeBackground", "getRemoveBgEnable", "()Z", "renderAttributePosition", "", "renderAttributeTextureCoord", "renderProgramId", "renderUniformCalcRoundCorner", "renderUniformExternalTexture", "renderUniformNormalTexture", "renderUniformRadius", "renderUniformSize", "renderUniformUseNormalTexture", "segmentInit", "segmentOutputTexture", "sizeBuff", "stickerOutTexture", "textureCoordArray", "textureCoordBuff", "toTextureAttributePosition", "toTextureAttributeTextureCoord", "toTextureFramebuffer", "toTextureOutputTexture", "toTextureProgramId", "toTextureUniformExternalTexture", "videoPlayRenderDepthBuffer", "videoPlayRenderFramebuffer", "videoPlayRenderOutputTexture", "videoPlayRenderTextureSize", "videoPlaySurface", "Landroid/graphics/SurfaceTexture;", "videoPlayTexture", "viewHeight", "viewWidth", "afterDraw", "callback", "checkInit", "currentFrameTimestamp", "drawFrame", "drawImpl", "drawVideoContent", "videoTexture", "drawWidth", "drawHeight", "externalTarget", "calcRoundCorner", "verticalFlip", "drawWithRemoveBackground", "drawWithStickerAndRemoveBackground", "getVideoPlaySurface", "initSegment", "surfaceTexture", "pauseDraw", "pause", "release", "releaseSegment", "setRemoveBackground", "remove", "setViewSize", "width", "height", "simpleDrawVideoContent", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCropRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "aPosition", "aTexCoord", "inputTexture", "programId", "rgbSizeBuff", "Ljava/nio/FloatBuffer;", "uCalcRoundCorner", "uMatrix", "uRadius", "uSize", "uTexture", "beforeRender", "", "renderImpl", "setInputTexture", "texture", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  implements SurfaceTexture.OnFrameAvailableListener
+  extends a
 {
-  public final String TAG;
-  public boolean eLc;
-  public FloatBuffer eYu;
-  public FloatBuffer eYv;
-  public float[] gNF;
-  public float[] gNG;
-  public boolean gNN;
-  public boolean gNz;
-  public int jgD;
-  public int jgE;
-  public int lBR;
-  public int lBS;
-  public int lBT;
-  public int lBU;
-  public int lBV;
-  public int lBW;
-  public int lBX;
-  public int lBY;
-  public int lBZ;
-  public int lBa;
-  public int lBb;
-  public int lBc;
-  public int lBd;
-  public com.tencent.mm.bw.a lBi;
-  public PTSegment lBj;
-  public h lBk;
-  public int lBl;
-  public int lCa;
-  public int lCb;
-  public int lCc;
-  public final int lCd;
-  private FloatBuffer lCe;
-  public SurfaceTexture lCf;
-  public a.f.a.a<y> lCg;
-  public b<? super Long, y> lCh;
-  private long lCi;
-  public boolean lCj;
-  public boolean lva;
-  public final boolean lxJ;
+  private int mVb;
+  private final int programId;
+  private final int ynY;
+  private final int ynZ;
+  private final int yoa;
+  private final int yob;
+  private final int yoc;
+  private final int yod;
+  private final int yoe;
+  private FloatBuffer yof;
   
-  public i(boolean paramBoolean)
+  public i(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(3180);
-    this.lxJ = paramBoolean;
-    this.TAG = "MicroMsg.EmojiVideoPlayTextureRenderer";
-    Object localObject = com.tencent.mm.plugin.emojicapture.model.c.ltu;
-    this.lCd = com.tencent.mm.plugin.emojicapture.model.c.bnP();
-    localObject = c.eZq;
-    this.gNF = Arrays.copyOf((float[])localObject, localObject.length);
-    localObject = c.eZr;
-    this.gNG = Arrays.copyOf((float[])localObject, localObject.length);
-    localObject = ByteBuffer.allocateDirect(this.gNF.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    j.p(localObject, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.eYv = ((FloatBuffer)localObject);
-    localObject = ByteBuffer.allocateDirect(this.gNG.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    j.p(localObject, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.eYu = ((FloatBuffer)localObject);
-    localObject = ByteBuffer.allocateDirect(8).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    j.p(localObject, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.lCe = ((FloatBuffer)localObject);
-    this.lCi = -1L;
-    AppMethodBeat.o(3180);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, 1, 1);
+    AppMethodBeat.i(864);
+    this.mVb = -1;
+    Object localObject = b.ynr;
+    this.programId = b.a.aN("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        uniform mat4 uMatrix;\n        void main() {\n            gl_Position = uMatrix * a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform sampler2D texture;\n        uniform vec2 size;\n        uniform float radius;\n        uniform int calcRoundCorner;\n\n        void main () {\n            if (calcRoundCorner == 1) {\n                // round corner\n                vec2 bottomLeftCenter = vec2(radius, radius);\n                vec2 bottomRightCenter = vec2(size.x - radius, radius);\n                vec2 topLeftCenter = vec2(radius, size.y - radius);\n                vec2 topRightCenter = vec2(size.x - radius, size.y - radius);\n                if ((gl_FragCoord.x < bottomLeftCenter.x && gl_FragCoord.y < bottomLeftCenter.y && distance(gl_FragCoord.xy, bottomLeftCenter) > radius) ||\n                    (gl_FragCoord.x > bottomRightCenter.x && gl_FragCoord.y < bottomRightCenter.y && distance(gl_FragCoord.xy, bottomRightCenter) > radius) ||\n                    (gl_FragCoord.x < topLeftCenter.x && gl_FragCoord.y > topLeftCenter.y && distance(gl_FragCoord.xy, topLeftCenter) > radius) ||\n                    (gl_FragCoord.x > topRightCenter.x && gl_FragCoord.y > topRightCenter.y && distance(gl_FragCoord.xy, topRightCenter) > radius))  {\n//                   gl_FragColor = vec4(0.95, 0.95, 0.95, 1.0);\n                    discard;\n                } else {\n                   gl_FragColor = texture2D(texture, v_texCoord);\n                }\n            } else {\n                gl_FragColor = texture2D(texture, v_texCoord);\n            }\n        }\n        ");
+    this.ynZ = GLES20.glGetAttribLocation(this.programId, "a_position");
+    this.ynY = GLES20.glGetAttribLocation(this.programId, "a_texCoord");
+    this.yoc = GLES20.glGetUniformLocation(this.programId, "size");
+    this.yod = GLES20.glGetUniformLocation(this.programId, "radius");
+    this.yoa = GLES20.glGetUniformLocation(this.programId, "texture");
+    this.yob = GLES20.glGetUniformLocation(this.programId, "uMatrix");
+    this.yoe = GLES20.glGetUniformLocation(this.programId, "calcRoundCorner");
+    localObject = ByteBuffer.allocateDirect(16).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    s.s(localObject, "allocateDirect(4 * 4).or…eOrder()).asFloatBuffer()");
+    this.yof = ((FloatBuffer)localObject);
+    AppMethodBeat.o(864);
   }
   
-  private final void bpn()
+  public final void bgB()
   {
-    AppMethodBeat.i(3179);
-    ab.i(this.TAG, "releaseSegment: ".concat(String.valueOf(this)));
-    try
-    {
-      this.lCj = false;
-      Object localObject = this.lBj;
-      if (localObject != null) {
-        ((PTSegment)localObject).destroy();
-      }
-      localObject = this.lBi;
-      if (localObject != null) {
-        ((com.tencent.mm.bw.a)localObject).destroy();
-      }
-      GamePlaySDK.getInstance().clear();
-      PTModule.getInstance().destroy();
-      this.lBj = null;
-      this.lBi = null;
-      AppMethodBeat.o(3179);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace(this.TAG, (Throwable)localException, "release segment error", new Object[0]);
-      d locald = d.ltx;
-      d.bom();
-      AppMethodBeat.o(3179);
-    }
+    AppMethodBeat.i(862);
+    super.bgB();
+    this.yof.position(0);
+    this.yof.put(getDrawWidth());
+    this.yof.put(getDrawHeight());
+    AppMethodBeat.o(862);
   }
   
-  public final void eh(int paramInt1, int paramInt2)
+  public final void bqg()
   {
-    this.jgD = paramInt1;
-    this.jgE = paramInt2;
+    AppMethodBeat.i(863);
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(16640);
+    GLES20.glUseProgram(this.programId);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.mVb);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glUniform1i(this.yoa, 0);
+    GLES20.glUniformMatrix4fv(this.yob, 1, false, bpY(), 0);
+    this.yof.position(0);
+    GLES20.glUniform2fv(this.yoc, 1, this.yof);
+    int i = this.yod;
+    d.a locala = d.ygM;
+    GLES20.glUniform1f(i, Math.max(getDrawWidth(), getDrawHeight()) * 0.0666667F);
+    GLES20.glUniform1i(this.yoe, 1);
+    bpW().position(0);
+    GLES20.glVertexAttribPointer(this.ynZ, 2, 5126, false, 0, (Buffer)bpW());
+    GLES20.glEnableVertexAttribArray(this.ynZ);
+    bpV().position(0);
+    GLES20.glVertexAttribPointer(this.ynY, 2, 5126, false, 0, (Buffer)bpV());
+    GLES20.glEnableVertexAttribArray(this.ynY);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(this.ynZ);
+    GLES20.glDisableVertexAttribArray(this.ynY);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glFinish();
+    AppMethodBeat.o(863);
   }
   
-  public final void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public final void uc(int paramInt)
   {
-    AppMethodBeat.i(3176);
-    this.gNN = true;
-    if ((paramSurfaceTexture instanceof SurfaceTexture)) {}
-    for (long l = paramSurfaceTexture.getTimestamp();; l = -1L)
-    {
-      this.lCi = l;
-      paramSurfaceTexture = this.lCh;
-      if (paramSurfaceTexture == null) {
-        break;
-      }
-      paramSurfaceTexture.S(Long.valueOf(this.lCi));
-      AppMethodBeat.o(3176);
-      return;
-    }
-    AppMethodBeat.o(3176);
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(3178);
-    if (!this.eLc)
-    {
-      AppMethodBeat.o(3178);
-      return;
-    }
-    this.eLc = false;
-    ab.i(this.TAG, "release: ".concat(String.valueOf(this)));
-    try
-    {
-      GLES20.glDeleteTextures(3, new int[] { this.lBR, this.lCc, this.lBl }, 0);
-      GLES20.glDeleteProgram(this.lBS);
-      GLES20.glDeleteProgram(this.lBa);
-      GLES20.glDeleteFramebuffers(1, new int[] { this.lCb }, 0);
-      bpn();
-      Object localObject = this.lCf;
-      if (localObject != null) {
-        ((SurfaceTexture)localObject).release();
-      }
-      localObject = this.lBk;
-      if (localObject == null) {
-        j.ays("ptFaceFrame");
-      }
-      ((h)localObject).clear();
-      AppMethodBeat.o(3178);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace(this.TAG, (Throwable)localException, "release error " + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(3178);
-    }
+    this.mVb = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.b.i
  * JD-Core Version:    0.7.0.1
  */

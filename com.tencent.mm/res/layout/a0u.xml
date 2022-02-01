@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b08" android:layout_width="fill_parent" android:layout_height="400.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/i0" android:layout_gravity="left" android:id="@id/bx1" android:background="@drawable/a4w" android:padding="16.0dip" android:text="@string/gg" style="@style/no" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/i0" android:id="@id/bx2" android:background="@drawable/a4w" android:padding="16.0dip" android:text="@string/fon" android:layout_alignParentRight="true" style="@style/no" />
-    <View android:id="@id/bx3" android:background="@color/a3x" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/bwo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dv" android:src="@drawable/b82" android:layout_above="@id/bx3" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center" android:id="@id/bx4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/dp" android:text="@string/fo_" android:layout_below="@id/bx3" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/nf" android:textColor="@color/a83" android:id="@id/bx5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/fon" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cbz" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+</androidx.constraintlayout.widget.ConstraintLayout>

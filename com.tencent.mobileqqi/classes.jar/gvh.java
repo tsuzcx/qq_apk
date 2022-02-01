@@ -4,7 +4,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayout2;
+import com.tencent.mobileqq.troop.data.TroopBarPostLayout3;
 
 public class gvh
   extends TroopBarPostAbsLayout.AbsItemViewHolder
@@ -17,8 +17,10 @@ public class gvh
   public TextView b;
   public TextView c = null;
   public TextView d = null;
+  public TextView e = null;
+  public TextView f = null;
   
-  public gvh(TroopBarPostLayout2 paramTroopBarPostLayout2, View paramView)
+  public gvh(TroopBarPostLayout3 paramTroopBarPostLayout3, View paramView)
   {
     super(paramView);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
@@ -27,14 +29,16 @@ public class gvh
     this.jdField_b_of_type_AndroidWidgetLinearLayout = null;
     this.jdField_a_of_type_AndroidWidgetTextView = null;
     this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232490));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232498));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232478));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232499));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232491));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232500));
-    this.c = ((TextView)paramView.findViewById(2131232501));
-    this.d = ((TextView)paramView.findViewById(2131232502));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232489));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232497));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232498));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232477));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232490));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232502));
+    this.c = ((TextView)paramView.findViewById(2131232499));
+    this.d = ((TextView)paramView.findViewById(2131232503));
+    this.e = ((TextView)paramView.findViewById(2131232500));
+    this.f = ((TextView)paramView.findViewById(2131232501));
   }
 }
 

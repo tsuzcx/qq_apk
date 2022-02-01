@@ -1,13 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
 
 public class ebm
-  implements View.OnClickListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public ebm(VideoItemBuilder paramVideoItemBuilder) {}
+  public ImageView a;
+  public TextView a;
   
-  public void onClick(View paramView) {}
+  public ebm(VideoItemBuilder paramVideoItemBuilder) {}
 }
 
 

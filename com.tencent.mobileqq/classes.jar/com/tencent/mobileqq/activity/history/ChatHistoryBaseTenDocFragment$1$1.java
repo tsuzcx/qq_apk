@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahyk;
 import android.os.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
@@ -10,31 +9,28 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class ChatHistoryBaseTenDocFragment$1$1
+class ChatHistoryBaseTenDocFragment$1$1
   implements Runnable
 {
-  public ChatHistoryBaseTenDocFragment$1$1(ahyk paramahyk, List paramList) {}
+  ChatHistoryBaseTenDocFragment$1$1(ChatHistoryBaseTenDocFragment.1 param1, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Ahyk.a.a.a().a(((TencentDocItem)this.jdField_a_of_type_JavaUtilList.get(0)).mRecord, false);
-    }
-    for (;;)
+    if (this.a.size() == 1)
     {
-      Object localObject = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Ahyk.a).obtainMessage(5678, this.jdField_a_of_type_JavaUtilList);
-      ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Ahyk.a).sendMessage((Message)localObject);
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        localObject = new ArrayList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          ((List)localObject).add(((TencentDocItem)localIterator.next()).mRecord);
-        }
-        this.jdField_a_of_type_Ahyk.a.a.a().a((List)localObject, false);
-      }
+      this.b.b.a.getMessageFacade().a(((TencentDocItem)this.a.get(0)).mRecord, false);
     }
+    else if (this.a.size() > 1)
+    {
+      localObject = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((TencentDocItem)localIterator.next()).mRecord);
+      }
+      this.b.b.a.getMessageFacade().a((List)localObject, false);
+    }
+    Object localObject = ChatHistoryBaseTenDocFragment.b(this.b.b).obtainMessage(5678, this.a);
+    ChatHistoryBaseTenDocFragment.b(this.b.b).sendMessage((Message)localObject);
   }
 }
 

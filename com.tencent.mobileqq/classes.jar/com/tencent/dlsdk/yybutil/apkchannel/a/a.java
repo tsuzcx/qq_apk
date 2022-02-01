@@ -10,62 +10,67 @@ public final class a
   
   private static byte[] a(RandomAccessFile paramRandomAccessFile)
   {
-    int j = 1;
     long l = paramRandomAccessFile.length() - 22L;
     paramRandomAccessFile.seek(l);
     byte[] arrayOfByte = a.a();
     for (int i = paramRandomAccessFile.read();; i = paramRandomAccessFile.read())
     {
-      if (i == -1) {
+      int j = 1;
+      if (i == -1)
+      {
         i = 0;
       }
-      do
+      else
       {
-        if (i != 0) {
-          break label110;
-        }
-        throw new ZipException("archive is not a ZIP archive");
-        if ((i != arrayOfByte[0]) || (paramRandomAccessFile.read() != arrayOfByte[1]) || (paramRandomAccessFile.read() != arrayOfByte[2])) {
-          break;
+        if ((i != arrayOfByte[0]) || (paramRandomAccessFile.read() != arrayOfByte[1]) || (paramRandomAccessFile.read() != arrayOfByte[2]) || (paramRandomAccessFile.read() != arrayOfByte[3])) {
+          break label154;
         }
         i = j;
-      } while (paramRandomAccessFile.read() == arrayOfByte[3]);
+      }
+      if (i != 0)
+      {
+        paramRandomAccessFile.seek(l + 16L + 4L);
+        arrayOfByte = new byte[2];
+        paramRandomAccessFile.readFully(arrayOfByte);
+        i = new c(arrayOfByte).b();
+        if (i == 0) {
+          return null;
+        }
+        arrayOfByte = new byte[i];
+        paramRandomAccessFile.read(arrayOfByte);
+        return arrayOfByte;
+      }
+      throw new ZipException("archive is not a ZIP archive");
+      label154:
       l -= 1L;
       paramRandomAccessFile.seek(l);
     }
-    label110:
-    paramRandomAccessFile.seek(16L + l + 4L);
-    arrayOfByte = new byte[2];
-    paramRandomAccessFile.readFully(arrayOfByte);
-    i = new c(arrayOfByte).b();
-    if (i == 0) {
-      return null;
-    }
-    arrayOfByte = new byte[i];
-    paramRandomAccessFile.read(arrayOfByte);
-    return arrayOfByte;
   }
   
   public static byte[] a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return null;
-    }
-    paramString = new RandomAccessFile(paramString, "r");
-    if (paramString.length() == 0L)
+    if (paramString != null)
     {
+      if (paramString.length() <= 0) {
+        return null;
+      }
+      paramString = new RandomAccessFile(paramString, "r");
+      if (paramString.length() == 0L)
+      {
+        paramString.close();
+        System.out.println("ERROR:[ZipEocdCommentTool]Your file length is zero!");
+        return null;
+      }
+      byte[] arrayOfByte = a(paramString);
       paramString.close();
-      System.out.println("ERROR:[ZipEocdCommentTool]Your file length is zero!");
-      return null;
+      return arrayOfByte;
     }
-    byte[] arrayOfByte = a(paramString);
-    paramString.close();
-    return arrayOfByte;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.dlsdk.yybutil.apkchannel.a.a
  * JD-Core Version:    0.7.0.1
  */

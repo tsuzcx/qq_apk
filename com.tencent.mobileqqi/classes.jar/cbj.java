@@ -1,6 +1,10 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class cbj
   implements View.OnClickListener
@@ -9,23 +13,22 @@ public class cbj
   
   public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = this.a.a(this.a.b, this.a.a, localStringBuilder);
-    Object localObject = null;
-    paramView = localObject;
-    if (localStringBuilder != null)
+    if (NetworkUtil.e(BaseApplication.getContext()))
     {
-      paramView = localObject;
-      if (localStringBuilder.length() > 0) {
-        paramView = localStringBuilder.toString();
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.a.b.setVisibility(8);
+      if (this.a.jdField_a_of_type_Int == 0) {
+        this.a.i();
       }
-    }
-    if (i > 0)
-    {
-      this.a.a(paramView);
       return;
     }
-    this.a.b(this.a.getString(2131561800));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a.b.setVisibility(0);
+    this.a.c.setText(this.a.getString(2131562452));
   }
 }
 

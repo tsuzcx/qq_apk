@@ -1,80 +1,99 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.n.a;
-import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.p.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tinkerboots.sdk.b.a;
 
 public final class l
 {
-  private n.a kDL;
-  public int qCf;
-  public boolean tjk;
-  com.tencent.mm.plugin.topstory.a.c tjl;
+  public int PhY;
+  public boolean TMQ;
+  com.tencent.mm.plugin.topstory.a.c TMR;
+  private p.a wOL;
   
   public l()
   {
-    AppMethodBeat.i(1743);
-    this.kDL = new l.1(this);
-    this.tjk = false;
-    this.qCf = cvE();
-    g.RK().a(this.kDL);
-    AppMethodBeat.o(1743);
+    AppMethodBeat.i(126108);
+    this.wOL = new p.a()
+    {
+      public final void onNetworkChange(final int paramAnonymousInt)
+      {
+        AppMethodBeat.i(126107);
+        paramAnonymousInt = l.this.PhY;
+        l.this.PhY = l.hoZ();
+        if (l.this.PhY != paramAnonymousInt)
+        {
+          Log.i("MicroMsg.TopStory.TopStoryNetworkMgr", "network change current:%d change:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(l.this.PhY) });
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(126106);
+              if (l.this.TMR != null) {
+                l.this.TMR.mm(paramAnonymousInt, l.this.PhY);
+              }
+              AppMethodBeat.o(126106);
+            }
+          });
+        }
+        AppMethodBeat.o(126107);
+      }
+    };
+    this.TMQ = false;
+    this.PhY = hoZ();
+    h.baD().a(this.wOL);
+    AppMethodBeat.o(126108);
   }
   
-  public static int cvE()
+  public static int hoZ()
   {
-    AppMethodBeat.i(1745);
-    if (!a.isConnected(ah.getContext()))
+    AppMethodBeat.i(126110);
+    if (!a.isConnected(MMApplicationContext.getContext()))
     {
-      AppMethodBeat.o(1745);
+      AppMethodBeat.o(126110);
       return 0;
     }
-    if (a.isWifi(ah.getContext()))
+    if (a.isWifi(MMApplicationContext.getContext()))
     {
-      if (((PluginTopStoryUI)g.G(PluginTopStoryUI.class)).getTopStoryCommand().tfB)
-      {
-        AppMethodBeat.o(1745);
-        return 2;
-      }
-      AppMethodBeat.o(1745);
+      AppMethodBeat.o(126110);
       return 1;
     }
-    AppMethodBeat.o(1745);
+    AppMethodBeat.o(126110);
     return 2;
   }
   
-  public final void aEM()
+  public final boolean fvi()
   {
-    AppMethodBeat.i(1744);
-    g.RK().b(this.kDL);
-    this.tjl = null;
-    this.qCf = 0;
-    this.tjk = false;
-    AppMethodBeat.o(1744);
+    return this.PhY == 1;
   }
   
-  public final boolean blP()
+  public final boolean hOx()
   {
-    return this.qCf == 1;
-  }
-  
-  public final boolean cJZ()
-  {
-    return this.qCf == 2;
+    return this.PhY == 2;
   }
   
   public final boolean isConnected()
   {
-    return this.qCf != 0;
+    return this.PhY != 0;
+  }
+  
+  public final void onUIDestroy()
+  {
+    AppMethodBeat.i(126109);
+    h.baD().b(this.wOL);
+    this.TMR = null;
+    this.PhY = 0;
+    this.TMQ = false;
+    AppMethodBeat.o(126109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.l
  * JD-Core Version:    0.7.0.1
  */

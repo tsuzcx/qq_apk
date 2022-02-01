@@ -1,23 +1,26 @@
 package android.support.v7.view.menu;
 
 import android.content.Context;
-import android.support.annotation.RestrictTo;
-import android.support.v7.widget.TintTypedArray;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import com.tencent.token.id;
+import com.tencent.token.id.b;
+import com.tencent.token.if;
+import com.tencent.token.il;
+import com.tencent.token.jw;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public final class ExpandedMenuView
   extends ListView
-  implements MenuBuilder.ItemInvoker, MenuView, AdapterView.OnItemClickListener
+  implements AdapterView.OnItemClickListener, id.b, il
 {
-  private static final int[] TINT_ATTRS = { 16842964, 16843049 };
-  private int mAnimations;
-  private MenuBuilder mMenu;
+  private static final int[] a = { 16842964, 16843049 };
+  private id b;
+  private int c;
   
   public ExpandedMenuView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,40 +31,40 @@ public final class ExpandedMenuView
   {
     super(paramContext, paramAttributeSet);
     setOnItemClickListener(this);
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, TINT_ATTRS, paramInt, 0);
-    if (paramContext.hasValue(0)) {
-      setBackgroundDrawable(paramContext.getDrawable(0));
+    paramContext = jw.a(paramContext, paramAttributeSet, a, paramInt, 0);
+    if (paramContext.f(0)) {
+      setBackgroundDrawable(paramContext.a(0));
     }
-    if (paramContext.hasValue(1)) {
-      setDivider(paramContext.getDrawable(1));
+    if (paramContext.f(1)) {
+      setDivider(paramContext.a(1));
     }
-    paramContext.recycle();
+    paramContext.a.recycle();
   }
   
-  public int getWindowAnimations()
+  public final void a(id paramid)
   {
-    return this.mAnimations;
+    this.b = paramid;
   }
   
-  public void initialize(MenuBuilder paramMenuBuilder)
+  public final boolean a(if paramif)
   {
-    this.mMenu = paramMenuBuilder;
+    return this.b.a(paramif, null, 0);
   }
   
-  public boolean invokeItem(MenuItemImpl paramMenuItemImpl)
+  public final int getWindowAnimations()
   {
-    return this.mMenu.performItemAction(paramMenuItemImpl, 0);
+    return this.c;
   }
   
-  protected void onDetachedFromWindow()
+  protected final void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     setChildrenDrawingCacheEnabled(false);
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    invokeItem((MenuItemImpl)getAdapter().getItem(paramInt));
+    a((if)getAdapter().getItem(paramInt));
   }
 }
 

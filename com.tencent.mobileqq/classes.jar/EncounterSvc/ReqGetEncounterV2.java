@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqGetEncounterV2
   extends JceStruct
@@ -18,42 +19,42 @@ public final class ReqGetEncounterV2
   static ReqUserInfo cache_stUserInfo = new ReqUserInfo();
   static byte[] cache_strA2;
   static ArrayList<Long> cache_vTagsID;
-  public long ad_ctrl;
+  public long ad_ctrl = 0L;
   public String ad_extra = "";
-  public byte age_lower;
-  public byte age_up;
-  public byte[] appoint_params;
-  public byte bTraversing;
-  public byte constellation;
+  public byte age_lower = 0;
+  public byte age_up = 0;
+  public byte[] appoint_params = null;
+  public byte bTraversing = 0;
+  public byte constellation = 0;
   public int eNewListType = 0;
-  public byte encrypt_proto;
-  public int home_city;
-  public int home_country;
-  public int home_province;
+  public byte encrypt_proto = 0;
+  public int home_city = 0;
+  public int home_country = 0;
+  public int home_province = 0;
   public int iListSize = -1;
   public int iMaxSearchNum = -1;
   public int iRadius = 2000;
-  public int iSimpleSort;
-  public byte interest_id;
-  public int is_new_user;
-  public long last_color_time;
+  public int iSimpleSort = 0;
+  public byte interest_id = 0;
+  public int is_new_user = 0;
+  public long last_color_time = 0L;
   public byte near_rank_list_num = 4;
-  public byte[] nearbyGroupReq;
-  public byte[] nearbyPublicAcctReq;
+  public byte[] nearbyGroupReq = null;
+  public byte[] nearbyPublicAcctReq = null;
   public int neighbor_list_source = 0;
-  public int profession_id;
-  public int random_trav_dis_level;
-  public ReqUserInfo stLocalUserInfo;
-  public UserData stUserData;
-  public ReqUserInfo stUserInfo;
-  public byte[] strA2;
-  public long sub_interest_id;
-  public int support_entrace_type;
+  public int profession_id = 0;
+  public int random_trav_dis_level = 0;
+  public ReqUserInfo stLocalUserInfo = null;
+  public UserData stUserData = null;
+  public ReqUserInfo stUserInfo = null;
+  public byte[] strA2 = null;
+  public long sub_interest_id = 0L;
+  public int support_entrace_type = 0;
   public int time_interval = 480;
-  public byte use_tinyid;
-  public byte use_watch;
-  public ArrayList<Long> vTagsID;
-  public byte watch_color;
+  public byte use_tinyid = 0;
+  public byte use_watch = 0;
+  public ArrayList<Long> vTagsID = null;
+  public byte watch_color = 0;
   
   static
   {
@@ -160,21 +161,25 @@ public final class ReqGetEncounterV2
     paramJceOutputStream.write(this.stUserData, 1);
     paramJceOutputStream.write(this.eNewListType, 2);
     paramJceOutputStream.write(this.iListSize, 3);
-    if (this.vTagsID != null) {
-      paramJceOutputStream.write(this.vTagsID, 4);
+    Object localObject = this.vTagsID;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.strA2 != null) {
-      paramJceOutputStream.write(this.strA2, 5);
+    localObject = this.strA2;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.bTraversing, 6);
     paramJceOutputStream.write(this.iRadius, 7);
     paramJceOutputStream.write(this.iMaxSearchNum, 8);
     paramJceOutputStream.write(this.iSimpleSort, 9);
-    if (this.nearbyGroupReq != null) {
-      paramJceOutputStream.write(this.nearbyGroupReq, 10);
+    localObject = this.nearbyGroupReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
-    if (this.nearbyPublicAcctReq != null) {
-      paramJceOutputStream.write(this.nearbyPublicAcctReq, 11);
+    localObject = this.nearbyPublicAcctReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
     paramJceOutputStream.write(this.random_trav_dis_level, 12);
     paramJceOutputStream.write(this.encrypt_proto, 13);
@@ -187,18 +192,21 @@ public final class ReqGetEncounterV2
     paramJceOutputStream.write(this.home_city, 20);
     paramJceOutputStream.write(this.use_tinyid, 21);
     paramJceOutputStream.write(this.home_country, 22);
-    if (this.stLocalUserInfo != null) {
-      paramJceOutputStream.write(this.stLocalUserInfo, 23);
+    localObject = this.stLocalUserInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 23);
     }
     paramJceOutputStream.write(this.support_entrace_type, 24);
-    if (this.appoint_params != null) {
-      paramJceOutputStream.write(this.appoint_params, 25);
+    localObject = this.appoint_params;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 25);
     }
     paramJceOutputStream.write(this.use_watch, 26);
     paramJceOutputStream.write(this.watch_color, 27);
     paramJceOutputStream.write(this.interest_id, 28);
-    if (this.ad_extra != null) {
-      paramJceOutputStream.write(this.ad_extra, 29);
+    localObject = this.ad_extra;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
     paramJceOutputStream.write(this.ad_ctrl, 30);
     paramJceOutputStream.write(this.last_color_time, 31);
@@ -210,7 +218,7 @@ public final class ReqGetEncounterV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqGetEncounterV2
  * JD-Core Version:    0.7.0.1
  */

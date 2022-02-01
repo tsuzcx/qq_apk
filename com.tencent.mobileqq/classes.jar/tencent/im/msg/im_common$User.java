@@ -37,13 +37,14 @@ public final class im_common$User
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 45, 48, 58, 64, 72, 82 }, new String[] { "uin", "app_id", "instance_id", "app_type", "client_ip", "version", "str_phone_number", "platform_id", "language", "equip_key" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, User.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 45, 48, 58, 64, 72, 82 }, new String[] { "uin", "app_id", "instance_id", "app_type", "client_ip", "version", "str_phone_number", "platform_id", "language", "equip_key" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, "", localInteger, localInteger, localByteStringMicro }, User.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.im_common.User
  * JD-Core Version:    0.7.0.1
  */

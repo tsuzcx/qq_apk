@@ -1,46 +1,49 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aufx;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.model.QZoneManager;
+import com.tencent.mobileqq.qcircle.api.IQCirclePreLoaderService;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetQZoneFeedCount
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    aufx localaufx;
-    if ((this.a != null) && (this.a.app != null))
+    if ((this.mAutomator != null) && (this.mAutomator.k != null))
     {
-      localaufx = (aufx)this.a.app.getManager(10);
-      if (localaufx != null)
+      QZoneManager localQZoneManager = (QZoneManager)this.mAutomator.k.getManager(QQManagerFactory.QZONE_MANAGER);
+      if (localQZoneManager != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localaufx.a() + ",isBackground_Pause:" + this.a.app.isBackground_Pause);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("GetQZoneFeedCount isFirstGetUnread:");
+          localStringBuilder.append(localQZoneManager.a());
+          localStringBuilder.append(",isBackground_Pause:");
+          localStringBuilder.append(this.mAutomator.k.isBackgroundPause);
+          QLog.d("GetQZoneFeedCount", 2, localStringBuilder.toString());
         }
-        if (!localaufx.a()) {
-          break label120;
+        if (localQZoneManager.a()) {
+          localQZoneManager.a(this.mAutomator.k.getAccount(), null);
+        } else if (this.mAutomator.k.isBackgroundPause) {
+          localQZoneManager.b(6);
+        } else {
+          localQZoneManager.a(5);
         }
-        localaufx.a(this.a.app.getAccount(), null);
       }
+      QCircleUtils.c().requestWhiteList(this.mAutomator.k.getCurrentUin());
     }
-    for (;;)
-    {
-      return 7;
-      label120:
-      if (this.a.app.isBackground_Pause) {
-        localaufx.b(6);
-      } else {
-        localaufx.a(5);
-      }
-    }
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZoneFeedCount
  * JD-Core Version:    0.7.0.1
  */

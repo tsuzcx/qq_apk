@@ -1,442 +1,248 @@
 package org.apache.commons.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.io.File;
+import java.math.BigInteger;
 
 public final class b
 {
-  public static final String COS;
-  public static final String COT;
-  private static final Map COU;
-  private static final Map COV;
-  private static final Map COW;
-  private static final Map COX;
-  static Class COY;
-  static Class COZ;
-  static Class CPa;
-  static Class CPb;
-  static Class CPc;
-  static Class CPd;
-  static Class CPe;
-  static Class CPf;
+  public static final BigInteger ajUC;
+  public static final BigInteger ajUD;
+  public static final BigInteger ajUE;
+  public static final BigInteger ajUF;
+  public static final BigInteger ajUG;
+  public static final BigInteger ajUH;
+  public static final BigInteger ajUI;
+  public static final File[] ajUJ;
+  public static final BigInteger sSB;
   
   static
   {
-    AppMethodBeat.i(142947);
-    COS = ".";
-    COT = "$";
-    Object localObject2 = new HashMap();
-    COU = (Map)localObject2;
-    Class localClass = Boolean.TYPE;
-    Object localObject1;
-    if (COY == null)
-    {
-      localObject1 = azH("java.lang.Boolean");
-      COY = (Class)localObject1;
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Byte.TYPE;
-      if (COZ != null) {
-        break label389;
-      }
-      localObject1 = azH("java.lang.Byte");
-      COZ = (Class)localObject1;
-      label80:
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Character.TYPE;
-      if (CPa != null) {
-        break label396;
-      }
-      localObject1 = azH("java.lang.Character");
-      CPa = (Class)localObject1;
-      label113:
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Short.TYPE;
-      if (CPb != null) {
-        break label403;
-      }
-      localObject1 = azH("java.lang.Short");
-      CPb = (Class)localObject1;
-      label146:
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Integer.TYPE;
-      if (CPc != null) {
-        break label410;
-      }
-      localObject1 = azH("java.lang.Integer");
-      CPc = (Class)localObject1;
-      label179:
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Long.TYPE;
-      if (CPd != null) {
-        break label417;
-      }
-      localObject1 = azH("java.lang.Long");
-      CPd = (Class)localObject1;
-      label212:
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Double.TYPE;
-      if (CPe != null) {
-        break label424;
-      }
-      localObject1 = azH("java.lang.Double");
-      CPe = (Class)localObject1;
-      label245:
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = COU;
-      localClass = Float.TYPE;
-      if (CPf != null) {
-        break label431;
-      }
-      localObject1 = azH("java.lang.Float");
-      CPf = (Class)localObject1;
-    }
-    for (;;)
-    {
-      ((Map)localObject2).put(localClass, localObject1);
-      localObject1 = COU;
-      localObject2 = Void.TYPE;
-      ((Map)localObject1).put(localObject2, localObject2);
-      COV = new HashMap();
-      localObject1 = COU.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Class)((Iterator)localObject1).next();
-        localClass = (Class)COU.get(localObject2);
-        if (!localObject2.equals(localClass)) {
-          COV.put(localClass, localObject2);
-        }
-      }
-      localObject1 = COY;
-      break;
-      label389:
-      localObject1 = COZ;
-      break label80;
-      label396:
-      localObject1 = CPa;
-      break label113;
-      label403:
-      localObject1 = CPb;
-      break label146;
-      label410:
-      localObject1 = CPc;
-      break label179;
-      label417:
-      localObject1 = CPd;
-      break label212;
-      label424:
-      localObject1 = CPe;
-      break label245;
-      label431:
-      localObject1 = CPf;
-    }
-    COW = new HashMap();
-    COX = new HashMap();
-    jF("int", "I");
-    jF("boolean", "Z");
-    jF("float", "F");
-    jF("long", "J");
-    jF("short", "S");
-    jF("byte", "B");
-    jF("double", "D");
-    jF("char", "C");
-    AppMethodBeat.o(142947);
+    AppMethodBeat.i(10328);
+    BigInteger localBigInteger = BigInteger.valueOf(1024L);
+    sSB = localBigInteger;
+    ajUC = localBigInteger.multiply(localBigInteger);
+    ajUD = sSB.multiply(ajUC);
+    ajUE = sSB.multiply(ajUD);
+    ajUF = sSB.multiply(ajUE);
+    ajUG = sSB.multiply(ajUF);
+    ajUH = BigInteger.valueOf(1024L).multiply(BigInteger.valueOf(1152921504606846976L));
+    ajUI = sSB.multiply(ajUH);
+    ajUJ = new File[0];
+    AppMethodBeat.o(10328);
   }
   
-  private static boolean a(Class paramClass1, Class paramClass2, boolean paramBoolean)
+  /* Error */
+  public static void c(java.io.InputStream paramInputStream, File paramFile)
   {
-    AppMethodBeat.i(142943);
-    if (paramClass2 == null)
-    {
-      AppMethodBeat.o(142943);
-      return false;
-    }
-    if (paramClass1 == null)
-    {
-      if (!paramClass2.isPrimitive())
-      {
-        AppMethodBeat.o(142943);
-        return true;
-      }
-      AppMethodBeat.o(142943);
-      return false;
-    }
-    Object localObject = paramClass1;
-    if (paramBoolean)
-    {
-      Class localClass = paramClass1;
-      if (paramClass1.isPrimitive())
-      {
-        localClass = paramClass1;
-        if (!paramClass2.isPrimitive())
-        {
-          paramClass1 = aY(paramClass1);
-          localClass = paramClass1;
-          if (paramClass1 == null)
-          {
-            AppMethodBeat.o(142943);
-            return false;
-          }
-        }
-      }
-      localObject = localClass;
-      if (paramClass2.isPrimitive())
-      {
-        localObject = localClass;
-        if (!localClass.isPrimitive())
-        {
-          paramClass1 = aZ(localClass);
-          localObject = paramClass1;
-          if (paramClass1 == null)
-          {
-            AppMethodBeat.o(142943);
-            return false;
-          }
-        }
-      }
-    }
-    if (localObject.equals(paramClass2))
-    {
-      AppMethodBeat.o(142943);
-      return true;
-    }
-    if (((Class)localObject).isPrimitive())
-    {
-      if (!paramClass2.isPrimitive())
-      {
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Integer.TYPE.equals(localObject))
-      {
-        if ((Long.TYPE.equals(paramClass2)) || (Float.TYPE.equals(paramClass2)) || (Double.TYPE.equals(paramClass2)))
-        {
-          AppMethodBeat.o(142943);
-          return true;
-        }
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Long.TYPE.equals(localObject))
-      {
-        if ((Float.TYPE.equals(paramClass2)) || (Double.TYPE.equals(paramClass2)))
-        {
-          AppMethodBeat.o(142943);
-          return true;
-        }
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Boolean.TYPE.equals(localObject))
-      {
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Double.TYPE.equals(localObject))
-      {
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Float.TYPE.equals(localObject))
-      {
-        paramBoolean = Double.TYPE.equals(paramClass2);
-        AppMethodBeat.o(142943);
-        return paramBoolean;
-      }
-      if (Character.TYPE.equals(localObject))
-      {
-        if ((Integer.TYPE.equals(paramClass2)) || (Long.TYPE.equals(paramClass2)) || (Float.TYPE.equals(paramClass2)) || (Double.TYPE.equals(paramClass2)))
-        {
-          AppMethodBeat.o(142943);
-          return true;
-        }
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Short.TYPE.equals(localObject))
-      {
-        if ((Integer.TYPE.equals(paramClass2)) || (Long.TYPE.equals(paramClass2)) || (Float.TYPE.equals(paramClass2)) || (Double.TYPE.equals(paramClass2)))
-        {
-          AppMethodBeat.o(142943);
-          return true;
-        }
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      if (Byte.TYPE.equals(localObject))
-      {
-        if ((Short.TYPE.equals(paramClass2)) || (Integer.TYPE.equals(paramClass2)) || (Long.TYPE.equals(paramClass2)) || (Float.TYPE.equals(paramClass2)) || (Double.TYPE.equals(paramClass2)))
-        {
-          AppMethodBeat.o(142943);
-          return true;
-        }
-        AppMethodBeat.o(142943);
-        return false;
-      }
-      AppMethodBeat.o(142943);
-      return false;
-    }
-    paramBoolean = paramClass2.isAssignableFrom((Class)localObject);
-    AppMethodBeat.o(142943);
-    return paramBoolean;
-  }
-  
-  public static boolean a(Class[] paramArrayOfClass1, Class[] paramArrayOfClass2)
-  {
-    AppMethodBeat.i(142941);
-    if (!a.b(paramArrayOfClass1, paramArrayOfClass2))
-    {
-      AppMethodBeat.o(142941);
-      return false;
-    }
-    Class[] arrayOfClass = paramArrayOfClass1;
-    if (paramArrayOfClass1 == null) {
-      arrayOfClass = a.COI;
-    }
-    paramArrayOfClass1 = paramArrayOfClass2;
-    if (paramArrayOfClass2 == null) {
-      paramArrayOfClass1 = a.COI;
-    }
-    int i = 0;
-    while (i < arrayOfClass.length)
-    {
-      if (!a(arrayOfClass[i], paramArrayOfClass1[i], true))
-      {
-        AppMethodBeat.o(142941);
-        return false;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(142941);
-    return true;
-  }
-  
-  public static String aX(Class paramClass)
-  {
-    int i = 0;
-    AppMethodBeat.i(142940);
-    if (paramClass == null)
-    {
-      AppMethodBeat.o(142940);
-      return "";
-    }
-    Object localObject = paramClass.getName();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(142940);
-      return "";
-    }
-    if (((String)localObject).length() == 0)
-    {
-      AppMethodBeat.o(142940);
-      return "";
-    }
-    org.apache.commons.b.d.a locala = new org.apache.commons.b.d.a();
-    paramClass = (Class)localObject;
-    if (((String)localObject).startsWith("["))
-    {
-      while (((String)localObject).charAt(0) == '[')
-      {
-        localObject = ((String)localObject).substring(1);
-        locala.azP("[]");
-      }
-      paramClass = (Class)localObject;
-      if (((String)localObject).charAt(0) == 'L')
-      {
-        paramClass = (Class)localObject;
-        if (((String)localObject).charAt(((String)localObject).length() - 1) == ';') {
-          paramClass = ((String)localObject).substring(1, ((String)localObject).length() - 1);
-        }
-      }
-    }
-    localObject = paramClass;
-    if (COX.containsKey(paramClass)) {
-      localObject = (String)COX.get(paramClass);
-    }
-    int j = ((String)localObject).lastIndexOf('.');
-    if (j == -1) {}
-    for (;;)
-    {
-      i = ((String)localObject).indexOf('$', i);
-      localObject = ((String)localObject).substring(j + 1);
-      paramClass = (Class)localObject;
-      if (i != -1) {
-        paramClass = ((String)localObject).replace('$', '.');
-      }
-      paramClass = paramClass + locala;
-      AppMethodBeat.o(142940);
-      return paramClass;
-      i = j + 1;
-    }
-  }
-  
-  private static Class aY(Class paramClass)
-  {
-    AppMethodBeat.i(142944);
-    Class localClass = paramClass;
-    if (paramClass != null)
-    {
-      localClass = paramClass;
-      if (paramClass.isPrimitive()) {
-        localClass = (Class)COU.get(paramClass);
-      }
-    }
-    AppMethodBeat.o(142944);
-    return localClass;
-  }
-  
-  public static Class aZ(Class paramClass)
-  {
-    AppMethodBeat.i(142945);
-    paramClass = (Class)COV.get(paramClass);
-    AppMethodBeat.o(142945);
-    return paramClass;
-  }
-  
-  private static Class azH(String paramString)
-  {
-    AppMethodBeat.i(142946);
-    try
-    {
-      paramString = Class.forName(paramString);
-      AppMethodBeat.o(142946);
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      paramString = new NoClassDefFoundError(paramString.getMessage());
-      AppMethodBeat.o(142946);
-      throw paramString;
-    }
-  }
-  
-  public static boolean f(Class paramClass1, Class paramClass2)
-  {
-    AppMethodBeat.i(142942);
-    boolean bool = a(paramClass1, paramClass2, false);
-    AppMethodBeat.o(142942);
-    return bool;
-  }
-  
-  private static void jF(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(142939);
-    COW.put(paramString1, paramString2);
-    COX.put(paramString2, paramString1);
-    AppMethodBeat.o(142939);
+    // Byte code:
+    //   0: sipush 10326
+    //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_1
+    //   7: invokevirtual 67	java/io/File:exists	()Z
+    //   10: ifeq +151 -> 161
+    //   13: aload_1
+    //   14: invokevirtual 70	java/io/File:isDirectory	()Z
+    //   17: ifeq +100 -> 117
+    //   20: new 72	java/io/IOException
+    //   23: dup
+    //   24: new 74	java/lang/StringBuilder
+    //   27: dup
+    //   28: ldc 76
+    //   30: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   33: aload_1
+    //   34: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   37: ldc 86
+    //   39: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokespecial 94	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   48: astore_1
+    //   49: sipush 10326
+    //   52: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: aload_1
+    //   56: athrow
+    //   57: astore_1
+    //   58: sipush 10326
+    //   61: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aload_1
+    //   65: athrow
+    //   66: astore_2
+    //   67: aload_0
+    //   68: ifnull +11 -> 79
+    //   71: aload_1
+    //   72: ifnull +243 -> 315
+    //   75: aload_0
+    //   76: invokevirtual 99	java/io/InputStream:close	()V
+    //   79: sipush 10326
+    //   82: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: aload_2
+    //   86: athrow
+    //   87: astore_1
+    //   88: sipush 10326
+    //   91: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: aload_1
+    //   95: athrow
+    //   96: astore_2
+    //   97: aload_0
+    //   98: ifnull +11 -> 109
+    //   101: aload_1
+    //   102: ifnull +229 -> 331
+    //   105: aload_0
+    //   106: invokevirtual 99	java/io/InputStream:close	()V
+    //   109: sipush 10326
+    //   112: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: aload_2
+    //   116: athrow
+    //   117: aload_1
+    //   118: invokevirtual 102	java/io/File:canWrite	()Z
+    //   121: ifne +100 -> 221
+    //   124: new 72	java/io/IOException
+    //   127: dup
+    //   128: new 74	java/lang/StringBuilder
+    //   131: dup
+    //   132: ldc 76
+    //   134: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   137: aload_1
+    //   138: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   141: ldc 104
+    //   143: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokespecial 94	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   152: astore_1
+    //   153: sipush 10326
+    //   156: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   159: aload_1
+    //   160: athrow
+    //   161: aload_1
+    //   162: invokevirtual 108	java/io/File:getParentFile	()Ljava/io/File;
+    //   165: astore_2
+    //   166: aload_2
+    //   167: ifnull +54 -> 221
+    //   170: aload_2
+    //   171: invokevirtual 111	java/io/File:mkdirs	()Z
+    //   174: ifne +47 -> 221
+    //   177: aload_2
+    //   178: invokevirtual 70	java/io/File:isDirectory	()Z
+    //   181: ifne +40 -> 221
+    //   184: new 72	java/io/IOException
+    //   187: dup
+    //   188: new 74	java/lang/StringBuilder
+    //   191: dup
+    //   192: ldc 113
+    //   194: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   197: aload_2
+    //   198: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   201: ldc 115
+    //   203: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   209: invokespecial 94	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   212: astore_1
+    //   213: sipush 10326
+    //   216: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   219: aload_1
+    //   220: athrow
+    //   221: new 117	java/io/FileOutputStream
+    //   224: dup
+    //   225: aload_1
+    //   226: iconst_0
+    //   227: invokespecial 120	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   230: astore_3
+    //   231: aload_0
+    //   232: aload_3
+    //   233: invokestatic 126	org/apache/commons/b/d:copy	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
+    //   236: pop
+    //   237: aload_3
+    //   238: invokevirtual 129	java/io/OutputStream:close	()V
+    //   241: aload_0
+    //   242: ifnull +7 -> 249
+    //   245: aload_0
+    //   246: invokevirtual 99	java/io/InputStream:close	()V
+    //   249: aload_0
+    //   250: ifnull +88 -> 338
+    //   253: aload_0
+    //   254: invokevirtual 99	java/io/InputStream:close	()V
+    //   257: sipush 10326
+    //   260: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   263: return
+    //   264: astore_1
+    //   265: sipush 10326
+    //   268: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   271: aload_1
+    //   272: athrow
+    //   273: astore_2
+    //   274: aload_1
+    //   275: ifnull +24 -> 299
+    //   278: aload_3
+    //   279: invokevirtual 129	java/io/OutputStream:close	()V
+    //   282: sipush 10326
+    //   285: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   288: aload_2
+    //   289: athrow
+    //   290: astore_3
+    //   291: aload_1
+    //   292: aload_3
+    //   293: invokevirtual 135	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   296: goto -14 -> 282
+    //   299: aload_3
+    //   300: invokevirtual 129	java/io/OutputStream:close	()V
+    //   303: goto -21 -> 282
+    //   306: astore_3
+    //   307: aload_1
+    //   308: aload_3
+    //   309: invokevirtual 135	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   312: goto -233 -> 79
+    //   315: aload_0
+    //   316: invokevirtual 99	java/io/InputStream:close	()V
+    //   319: goto -240 -> 79
+    //   322: astore_0
+    //   323: aload_1
+    //   324: aload_0
+    //   325: invokevirtual 135	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   328: goto -219 -> 109
+    //   331: aload_0
+    //   332: invokevirtual 99	java/io/InputStream:close	()V
+    //   335: goto -226 -> 109
+    //   338: sipush 10326
+    //   341: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   344: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	345	0	paramInputStream	java.io.InputStream
+    //   0	345	1	paramFile	File
+    //   66	20	2	localObject1	Object
+    //   96	20	2	localObject2	Object
+    //   165	33	2	localFile	File
+    //   273	16	2	localObject3	Object
+    //   230	49	3	localFileOutputStream	java.io.FileOutputStream
+    //   290	10	3	localThrowable1	java.lang.Throwable
+    //   306	3	3	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   6	57	57	finally
+    //   117	161	57	finally
+    //   161	166	57	finally
+    //   170	221	57	finally
+    //   221	231	57	finally
+    //   237	241	57	finally
+    //   282	290	57	finally
+    //   291	296	57	finally
+    //   299	303	57	finally
+    //   58	66	66	finally
+    //   79	87	87	finally
+    //   245	249	87	finally
+    //   307	312	87	finally
+    //   315	319	87	finally
+    //   88	96	96	finally
+    //   231	237	264	finally
+    //   265	273	273	finally
+    //   278	282	290	finally
+    //   75	79	306	finally
+    //   105	109	322	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.apache.commons.b.b
  * JD-Core Version:    0.7.0.1
  */

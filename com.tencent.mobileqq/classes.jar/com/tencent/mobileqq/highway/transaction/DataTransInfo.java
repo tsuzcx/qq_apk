@@ -14,10 +14,10 @@ public class DataTransInfo
   public String md5Str;
   public int offset;
   public Transaction parent;
-  public int retryTimes;
-  public long timeCost_cache;
-  public long timeCost_hw;
-  public long timeCost_req;
+  public int retryTimes = 0;
+  public long timeCost_cache = 0L;
+  public long timeCost_hw = 0L;
+  public long timeCost_req = 0L;
   
   public DataTransInfo(Transaction paramTransaction)
   {
@@ -48,7 +48,7 @@ public class DataTransInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.DataTransInfo
  * JD-Core Version:    0.7.0.1
  */

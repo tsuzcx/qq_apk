@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class s_tab_list_item
   extends JceStruct
 {
-  static int cache_tab_id = 0;
+  static int cache_tab_id;
   public boolean can_edit = true;
   public String icon_url = "";
   public boolean is_custom = true;
   public String jump_url = "";
   public boolean need_clear_red = true;
-  public int red_id_mainpage;
-  public int red_id_undelcount;
-  public int tab_id;
+  public int red_id_mainpage = 0;
+  public int red_id_undelcount = 0;
+  public int tab_id = 0;
   public String text = "";
   
   public s_tab_list_item() {}
@@ -61,7 +61,7 @@ public final class s_tab_list_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_tab_list_item
  * JD-Core Version:    0.7.0.1
  */

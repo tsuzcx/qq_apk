@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.z.b.c;
+import com.tencent.mm.ac.b.c;
 import org.json.JSONObject;
 
 public final class e
@@ -17,17 +17,17 @@ public final class e
     super("onTap", 325);
   }
   
-  public final JSONObject toJSONObject()
+  public final JSONObject aZh()
   {
-    AppMethodBeat.i(10914);
+    AppMethodBeat.i(121395);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("todo implementation");
-    AppMethodBeat.o(10914);
+    AppMethodBeat.o(121395);
     throw localUnsupportedOperationException;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.e
  * JD-Core Version:    0.7.0.1
  */

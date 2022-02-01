@@ -2,109 +2,104 @@ package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.content.res.Resources;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import auie;
-import aujo;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupReporter;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class MsgBackupMigrateFragment
   extends MsgBackupBaseFragment
 {
-  protected void b()
-  {
-    super.b();
-    setTitle(getActivity().getString(2131690414));
-    this.vg.setOnItemSelectListener(new auie(this));
-  }
-  
   protected void c()
   {
     super.c();
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690386);
-    if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690386));
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690412));
-    this.c.setVisibility(0);
-    this.jdField_b_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    a(getActivity().getString(2131887465));
+    this.p.setOnItemSelectListener(new MsgBackupMigrateFragment.1(this));
   }
   
   protected void d()
   {
     super.d();
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.w.setEnabled(true);
+    this.w.setText(2131887442);
+    if (AppSetting.e) {
+      this.w.setContentDescription(getString(2131887442));
+    }
+    this.y.setText(getActivity().getString(2131887463));
+    this.d.setVisibility(0);
+    this.J.post(this.N);
+  }
+  
+  protected void e()
+  {
+    super.e();
+    this.w.setOnClickListener(this);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    if (paramMessage.what == 10012)
     {
-    }
-    for (;;)
-    {
-      return super.handleMessage(paramMessage);
-      if (paramMessage.arg1 == 1) {}
-      for (;;)
-      {
-        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-          this.jdField_a_of_type_AndroidWidgetButton.setEnabled(bool);
-        }
-        if (bool) {
-          break label141;
-        }
-        if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
-        {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165798));
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690411));
-        }
-        if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (isDetached())) {
-          break;
-        }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690439));
-        break;
+      int i = paramMessage.arg1;
+      boolean bool = true;
+      if (i != 1) {
         bool = false;
       }
-      label141:
-      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166903));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690412));
+      if (this.w != null) {
+        this.w.setEnabled(bool);
       }
-      if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690440));
+      if (!bool)
+      {
+        if ((this.y != null) && (!isDetached()))
+        {
+          this.y.setTextColor(getResources().getColor(2131166523));
+          this.y.setText(getActivity().getString(2131887462));
+        }
+        if ((this.z != null) && (!isDetached())) {
+          this.z.setText(getActivity().getString(2131887486));
+        }
+      }
+      else
+      {
+        if ((this.y != null) && (!isDetached()))
+        {
+          this.y.setTextColor(getResources().getColor(2131167993));
+          this.y.setText(getActivity().getString(2131887463));
+        }
+        if ((this.z != null) && (!isDetached())) {
+          this.z.setText(getActivity().getString(2131887487));
+        }
       }
     }
+    return super.handleMessage(paramMessage);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131438364)
     {
-    default: 
-      return;
+      QPublicFragmentActivity.startForResult(getActivity(), MsgBackupSelectionFragment.class, 1000);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
+      }
+      MsgBackupReporter.a("0X800A230");
     }
-    PublicFragmentActivity.a(getActivity(), MsgBackupSelectionFragment.class, 1000);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
-    }
-    aujo.a("0X800A230");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.N != null) {
+      this.J.removeCallbacks(this.N);
     }
   }
   
@@ -115,7 +110,7 @@ public class MsgBackupMigrateFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment
  * JD-Core Version:    0.7.0.1
  */

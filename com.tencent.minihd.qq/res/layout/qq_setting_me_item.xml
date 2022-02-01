@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/QQSettingMeItem"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/item_left_icon" android:src="@drawable/qq_setting_xiangce" style="@style/QQSetingMeItemIconL" />
+    <TextView android:id="@id/item_txt" android:text="@string/qq_setting_xiangce" style="@style/QQSettingMeItemTxt" />
+</LinearLayout>

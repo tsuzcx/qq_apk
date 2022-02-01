@@ -1,81 +1,57 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-public enum j
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchModeHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class j
 {
-  public static int Ac(String paramString)
+  public static final a qYD;
+  
+  static
   {
-    AppMethodBeat.i(140822);
-    localObject = null;
-    try
-    {
-      t.ayI();
-      WxaAttributes localWxaAttributes = t.AF(paramString);
-      localObject = localWxaAttributes;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      for (;;)
-      {
-        d.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localSecurityException, "queryWithAppId(%s)", new Object[] { paramString });
-        continue;
-        int i = localObject.ayD().hjW.bDG;
-        continue;
-        i = 5;
-      }
-    }
-    if (localObject == null)
-    {
-      i = -1;
-      d.i("MicroMsg.AppServiceSettingsResolver", "readAppFileStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
-      if (localObject == null) {
-        break label105;
-      }
-      i = localObject.ayD().hjW.bDG;
-      AppMethodBeat.o(140822);
-      return i * 1048576;
-    }
+    AppMethodBeat.i(323370);
+    qYD = new a((byte)0);
+    AppMethodBeat.o(323370);
   }
   
-  public static int Ad(String paramString)
+  public static final int a(HalfScreenConfig paramHalfScreenConfig)
   {
-    AppMethodBeat.i(140823);
-    localObject = null;
-    try
+    AppMethodBeat.i(323369);
+    int i = a.a(paramHalfScreenConfig, 0);
+    AppMethodBeat.o(323369);
+    return i;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchModeHelper$Companion;", "", "()V", "getLaunchMode", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/HalfScreenConfig;", "default", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static int a(HalfScreenConfig paramHalfScreenConfig, int paramInt)
     {
-      t.ayI();
-      WxaAttributes localWxaAttributes = t.AF(paramString);
-      localObject = localWxaAttributes;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      for (;;)
+      AppMethodBeat.i(323351);
+      if (paramHalfScreenConfig == null)
       {
-        d.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localSecurityException, "queryWithAppId(%s)", new Object[] { paramString });
-        continue;
-        int i = localObject.ayD().hjW.hjY;
-        continue;
-        i = 5;
+        AppMethodBeat.o(323351);
+        return 0;
       }
-    }
-    if (localObject == null)
-    {
-      i = -1;
-      d.i("MicroMsg.AppServiceSettingsResolver", "readAppOpendataLocalStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
-      if (localObject == null) {
-        break label105;
+      if (paramHalfScreenConfig.isEnable())
+      {
+        if (paramHalfScreenConfig.rac == HalfScreenConfig.g.raA)
+        {
+          AppMethodBeat.o(323351);
+          return 3;
+        }
+        AppMethodBeat.o(323351);
+        return 2;
       }
-      i = localObject.ayD().hjW.hjY;
-      AppMethodBeat.o(140823);
-      return i * 1048576;
+      AppMethodBeat.o(323351);
+      return paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.j
  * JD-Core Version:    0.7.0.1
  */

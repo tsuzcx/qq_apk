@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/clc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <include android:id="@id/mpo" layout="@layout/cjr" />
+        <include android:id="@id/mov" layout="@layout/cjl" />
+    </FrameLayout>
+    <LinearLayout android:id="@id/mph" android:visibility="gone" android:layout_below="@id/clc" android:layout_alignParentBottom="true" style="@style/abx">
+        <LinearLayout android:id="@id/mpj" style="@style/abw">
+            <ImageView android:src="@drawable/epu" style="@style/abv" />
+            <TextView android:text="@string/wxq" style="@style/aby" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/mpg" style="@style/abw">
+            <ImageView android:src="@drawable/eq0" style="@style/abv" />
+            <TextView android:text="@string/wxr" style="@style/aby" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/mpi" style="@style/abw">
+            <ImageView android:src="@drawable/epn" style="@style/abv" />
+            <TextView android:text="@string/wxp" style="@style/aby" />
+        </LinearLayout>
+    </LinearLayout>
+    <include android:id="@id/mps" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" layout="@layout/cto" />
+    <RelativeLayout android:id="@id/mo4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

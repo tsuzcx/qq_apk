@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/bcw" android:paddingTop="@dimen/bcy" android:paddingBottom="@dimen/bcv" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/8d" />
+    <include layout="@layout/8e" />
+    <include layout="@layout/8g" />
+</LinearLayout>

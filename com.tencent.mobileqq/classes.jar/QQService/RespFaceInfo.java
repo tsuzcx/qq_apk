@@ -10,10 +10,10 @@ public final class RespFaceInfo
 {
   static RespHead cache_stHeader;
   static ArrayList<FaceInfo> cache_vFaceInfo;
-  public int iFaceNum;
-  public RespHead stHeader;
-  public int uFaceTimeStamp;
-  public ArrayList<FaceInfo> vFaceInfo;
+  public int iFaceNum = 0;
+  public RespHead stHeader = null;
+  public int uFaceTimeStamp = 0;
+  public ArrayList<FaceInfo> vFaceInfo = null;
   
   public RespFaceInfo() {}
   
@@ -52,7 +52,7 @@ public final class RespFaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespFaceInfo
  * JD-Core Version:    0.7.0.1
  */

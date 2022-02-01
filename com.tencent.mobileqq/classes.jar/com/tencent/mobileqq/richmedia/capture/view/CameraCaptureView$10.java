@@ -8,13 +8,13 @@ class CameraCaptureView$10
   public void run()
   {
     if (CameraCaptureView.a(this.this$0)) {
-      CameraCaptureView.a(this.this$0, false);
+      CameraCaptureView.b(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.10
  * JD-Core Version:    0.7.0.1
  */

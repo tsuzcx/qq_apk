@@ -15,55 +15,55 @@ public final class g
   
   public final e a(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("url is empty");
+    if (!TextUtils.isEmpty(paramString)) {
+      return new i(paramString, paramArrayOfByte);
     }
-    return new i(paramString, paramArrayOfByte);
+    throw new IllegalArgumentException("url is empty");
   }
   
   public final f a(e parame)
   {
-    int i = 0;
-    if (parame == null) {
-      throw new RuntimeException("execute...IHttpRequest is null");
-    }
-    if (!(parame instanceof i)) {
+    if (parame != null)
+    {
+      if ((parame instanceof i))
+      {
+        i locali = (i)parame;
+        locali.g = null;
+        locali.n = System.currentTimeMillis();
+        boolean bool = false;
+        x.a.a("app_http_use_proxy", 0, 1, 1);
+        parame = new l(locali);
+        locali.h = parame;
+        if (locali.j <= 0)
+        {
+          locali.a(parame.a());
+        }
+        else
+        {
+          aa.a.a().a.execute(new h(parame, locali));
+          bool = locali.c() ^ true;
+        }
+        ao localao = locali.d();
+        if (bool) {
+          locali.m = true;
+        }
+        parame = localao;
+        if (localao == null)
+        {
+          parame = new StringBuilder("force return timeout:");
+          parame.append(locali.j);
+          parame = new ao(-14, parame.toString());
+        }
+        return new j(parame);
+      }
       throw new RuntimeException("execute...IHttpRequest should be create by API:createRequest");
     }
-    i locali = (i)parame;
-    locali.g = null;
-    locali.n = System.currentTimeMillis();
-    x.a.a("app_http_use_proxy", 0, 1, 1);
-    parame = new l(locali);
-    locali.h = parame;
-    if (locali.j <= 0)
-    {
-      locali.a(parame.a());
-      parame = locali.d();
-      if (i != 0) {
-        locali.m = true;
-      }
-      if (parame != null) {
-        break label174;
-      }
-      parame = new ao(-14, "force return timeout:" + locali.j);
-    }
-    label174:
-    for (;;)
-    {
-      return new j(parame);
-      aa.a.a().a.execute(new h(parame, locali));
-      if (locali.c()) {
-        break;
-      }
-      i = 1;
-      break;
-    }
+    throw new RuntimeException("execute...IHttpRequest is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.g
  * JD-Core Version:    0.7.0.1
  */

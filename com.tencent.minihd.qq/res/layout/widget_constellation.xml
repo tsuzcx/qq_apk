@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@drawable/widget_constellation_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/widget_shadow_margin" android:layout_marginTop="@dimen/widget_shadow_margin" android:layout_marginRight="@dimen/widget_shadow_margin" android:layout_marginBottom="@dimen/widget_shadow_margin_bottom" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/constellation_icon" android:layout_width="56.0dip" android:layout_height="56.0dip" android:layout_marginTop="16.0dip" android:src="@drawable/widget_constellation_taurus" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/constellation_star_one" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_starry" />
+            <ImageView android:layout_gravity="center" android:id="@id/constellation_star_two" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_starry" />
+            <ImageView android:layout_gravity="center" android:id="@id/constellation_star_three" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_starry" />
+            <ImageView android:layout_gravity="center" android:id="@id/constellation_star_four" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_starry" />
+            <ImageView android:layout_gravity="center" android:id="@id/constellation_star_five" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_starry" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/constellation_good_title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:text="@string/constellation_good_title" />
+            <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/constellation_good" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:text="   " />
+            <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/constellation_bad_title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:text="@string/constellation_bad_title" />
+            <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/constellation_bad" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:text="   " />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:background="@drawable/widget_shadow_layer" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

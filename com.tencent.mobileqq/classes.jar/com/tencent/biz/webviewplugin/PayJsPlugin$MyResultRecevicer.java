@@ -3,19 +3,20 @@ package com.tencent.biz.webviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class PayJsPlugin$MyResultRecevicer
   extends ResultReceiver
 {
-  protected PayJsPlugin a;
+  private WeakReference<PayJsPlugin> a;
   
   public PayJsPlugin$MyResultRecevicer(PayJsPlugin paramPayJsPlugin, Handler paramHandler)
   {
     super(paramHandler);
-    this.a = paramPayJsPlugin;
+    this.a = new WeakReference(paramPayJsPlugin);
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
@@ -23,60 +24,83 @@ public class PayJsPlugin$MyResultRecevicer
     super.onReceiveResult(paramInt, paramBundle);
     if (QLog.isColorLevel())
     {
-      QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "MyResultRecevicer receive = " + this);
-      QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("MyResultRecevicer receive = ");
+      ((StringBuilder)localObject1).append(this);
+      QLog.i("JsBridge.JsHandle.PayJsHandler", 2, ((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("resultCode = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(" resultData = ");
+      ((StringBuilder)localObject1).append(paramBundle);
+      QLog.i("JsBridge.JsHandle.PayJsHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((this.a == null) || (paramBundle == null)) {}
-    String str1;
-    do
+    Object localObject1 = (PayJsPlugin)this.a.get();
+    if (localObject1 != null)
     {
-      String str2;
-      do
-      {
-        do
+      if (paramBundle == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "js callback...");
+      }
+      Object localObject2;
+      if ((paramInt != 4) && (paramInt != 14)) {
+        if (paramInt != 16)
         {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "js callback...");
-          }
+          if (paramInt == 17) {}
+        }
+        else {
           switch (paramInt)
           {
-          case 5: 
-          case 10: 
-          case 11: 
-          case 12: 
-          case 13: 
-          case 15: 
           default: 
             return;
-          case 4: 
-          case 6: 
-          case 7: 
-          case 8: 
-          case 14: 
-          case 17: 
-            str1 = paramBundle.getString("callbackSn");
-            paramBundle = paramBundle.getString("result");
+          case 9: 
+            str = paramBundle.getString("callbackSn");
+            localObject2 = paramBundle.getString("result");
+            paramBundle.getBoolean("isChoosePubAcc", false);
+            paramBundle.getString("pubAcc");
+            if ((((PayJsPlugin)localObject1).mRuntime == null) || (((PayJsPlugin)localObject1).mRuntime.a() == null) || (str == null) || (localObject2 == null)) {
+              break;
+            }
+            paramBundle = ((PayJsPlugin)localObject1).mRuntime.a();
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("javascript:window.JsBridge&&JsBridge.callback('");
+            ((StringBuilder)localObject1).append(str);
+            ((StringBuilder)localObject1).append("',{'r':0,'result':");
+            ((StringBuilder)localObject1).append((String)localObject2);
+            ((StringBuilder)localObject1).append("});");
+            paramBundle.loadUrl(((StringBuilder)localObject1).toString());
+            return;
+            str = paramBundle.getString("callback");
+            paramBundle = paramBundle.getString("retData");
+            if ((((PayJsPlugin)localObject1).mRuntime == null) || (((PayJsPlugin)localObject1).mRuntime.a() == null) || (str == null) || (paramBundle == null)) {
+              break;
+            }
+            ((PayJsPlugin)localObject1).a(str, paramBundle);
+            return;
           }
-        } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null) || (str1 == null) || (paramBundle == null));
-        this.a.mRuntime.a().loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + str1 + "',{'r':0,'result':" + paramBundle + "});");
-        return;
-        str1 = paramBundle.getString("callbackSn");
-        str2 = paramBundle.getString("result");
-        paramBundle.getBoolean("isChoosePubAcc", false);
-        paramBundle.getString("pubAcc");
-      } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null) || (str1 == null) || (str2 == null));
-      this.a.mRuntime.a().loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + str1 + "',{'r':0,'result':" + str2 + "});");
-      return;
-      str1 = paramBundle.getString("callback");
-      paramBundle = paramBundle.getString("retData");
-    } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null) || (str1 == null) || (paramBundle == null));
-    this.a.a(str1, paramBundle);
+        }
+      }
+      String str = paramBundle.getString("callbackSn");
+      paramBundle = paramBundle.getString("result");
+      if ((((PayJsPlugin)localObject1).mRuntime != null) && (((PayJsPlugin)localObject1).mRuntime.a() != null) && (str != null) && (paramBundle != null))
+      {
+        localObject1 = ((PayJsPlugin)localObject1).mRuntime.a();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("javascript:window.JsBridge&&JsBridge.callback('");
+        ((StringBuilder)localObject2).append(str);
+        ((StringBuilder)localObject2).append("',{'r':0,'result':");
+        ((StringBuilder)localObject2).append(paramBundle);
+        ((StringBuilder)localObject2).append("});");
+        ((CustomWebView)localObject1).loadUrl(((StringBuilder)localObject2).toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PayJsPlugin.MyResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

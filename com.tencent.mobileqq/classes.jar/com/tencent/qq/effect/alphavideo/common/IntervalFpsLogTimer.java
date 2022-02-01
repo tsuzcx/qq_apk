@@ -8,18 +8,22 @@ public class IntervalFpsLogTimer
   
   public IntervalFpsLogTimer(int paramInt)
   {
-    this.mInterval = paramInt;
-    this.mLastTime = (System.currentTimeMillis() - paramInt - 1L);
+    long l = paramInt;
+    this.mInterval = l;
+    this.mLastTime = (System.currentTimeMillis() - l - 1L);
   }
   
   public int getFps()
   {
-    if (this.mInterval != 0L) {}
-    for (int i = this.mFps * 1000 / (int)this.mInterval;; i = this.mFps)
-    {
-      this.mFps = 0;
-      return i;
+    long l = this.mInterval;
+    int i;
+    if (l != 0L) {
+      i = this.mFps * 1000 / (int)l;
+    } else {
+      i = this.mFps;
     }
+    this.mFps = 0;
+    return i;
   }
   
   public boolean isTimeToWriteLog()
@@ -35,7 +39,7 @@ public class IntervalFpsLogTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.common.IntervalFpsLogTimer
  * JD-Core Version:    0.7.0.1
  */

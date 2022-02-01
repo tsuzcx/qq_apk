@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:background="#ffe5e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/i0" />
-    <Button android:textColor="@color/r" android:id="@id/a__" android:background="@drawable/p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/hz" style="@style/action_sheet_btn_style" />
+    <Button android:textColor="@color/r" android:id="@id/2h" android:background="@drawable/p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/hz" style="@style/action_sheet_btn_style" />
     <View android:background="#ffe5e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/wl" />
     <Button android:textColor="@color/r" android:id="@id/action_sheet_btnCancel" android:background="@drawable/p" android:layout_width="fill_parent" android:layout_height="@dimen/hz" style="@style/action_sheet_btn_style" />
 </LinearLayout>

@@ -17,7 +17,7 @@ public final class enum_album_limit_define
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.enum_album_limit_define
  * JD-Core Version:    0.7.0.1
  */

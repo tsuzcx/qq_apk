@@ -14,45 +14,40 @@ final class bf
   {
     Object localObject1 = x.b();
     be localbe = this.a;
-    Object localObject2 = this.a.a.a((String)localObject1);
+    Object localObject2 = localbe.a.a((String)localObject1);
     try
     {
-      Iterator localIterator;
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!cn.a((byte[])localObject2)))
       {
         localObject2 = new JSONObject(new String((byte[])localObject2));
         localObject1 = new u((String)localObject1);
         ((JSONObject)localObject2).getString("ipInfo");
         localObject2 = ((JSONObject)localObject2).optJSONObject("resultMap");
-        if (localObject2 != null) {
-          localIterator = ((JSONObject)localObject2).keys();
-        }
-      }
-      else
-      {
-        while (localIterator.hasNext())
+        if (localObject2 != null)
         {
-          JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray((String)localIterator.next());
-          if (localJSONArray != null)
+          Iterator localIterator = ((JSONObject)localObject2).keys();
+          while (localIterator.hasNext())
           {
-            be.a((u)localObject1, localJSONArray);
-            continue;
-            return;
+            JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray((String)localIterator.next());
+            if (localJSONArray != null) {
+              be.a((u)localObject1, localJSONArray);
+            }
           }
         }
+        localbe.b = ((u)localObject1);
+        p.c();
       }
+      return;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    localThrowable.b = ((u)localObject1);
-    p.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.bf
  * JD-Core Version:    0.7.0.1
  */

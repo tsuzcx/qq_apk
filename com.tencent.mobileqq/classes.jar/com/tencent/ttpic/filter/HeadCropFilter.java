@@ -8,17 +8,17 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.List;
 
 public class HeadCropFilter
   extends VideoFilterBase
 {
-  private static final String TAG = HeadCropFilter.class.getSimpleName();
+  private static final String TAG = "HeadCropFilter";
   private float[] faceVertices = new float[1380];
   private int grayImageHeight;
   private int grayImageWidth;
@@ -39,14 +39,14 @@ public class HeadCropFilter
   public void initAttribParams()
   {
     super.initAttribParams();
-    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
+    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FeatureType.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     setCoordNum(690);
   }
   
   public void initParams()
   {
-    Bitmap localBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP);
+    Bitmap localBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FeatureType.FACE_HEAD_CROP);
     this.grayImageWidth = localBitmap.getWidth();
     this.grayImageHeight = localBitmap.getHeight();
     addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, true));
@@ -68,23 +68,28 @@ public class HeadCropFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if ((paramObject.facePoints == null) || (paramObject.facePoints.size() < 90))
+      if ((paramObject.facePoints != null) && (paramObject.facePoints.size() >= 90))
       {
-        setPositions(GlUtil.EMPTY_POSITIONS);
-        setCoordNum(4);
+        paramObject = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 3.0F);
+        double d1 = this.width;
+        double d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        int i = (int)(d1 * d2);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        setPositions(FaceOffUtil.initFacePositions(paramObject, i, (int)(d1 * d2), this.faceVertices));
+        setCoordNum(690);
+        return;
       }
+      setPositions(GlUtil.EMPTY_POSITIONS);
+      setCoordNum(4);
     }
-    else
-    {
-      return;
-    }
-    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramObject.facePoints), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-    setCoordNum(690);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.HeadCropFilter
  * JD-Core Version:    0.7.0.1
  */

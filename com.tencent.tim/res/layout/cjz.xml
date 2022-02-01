@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/b8q" android:paddingBottom="@dimen/bhm" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/mqe" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <Button android:id="@id/mqc" android:text="@string/wyp" style="@style/ac0" />
+            <Button android:id="@id/mqd" android:text="@string/wyz" style="@style/ac0" />
+            <Button android:id="@id/mqb" android:text="@string/wyh" style="@style/ac0" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/apv" android:gravity="center" android:id="@id/mq4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/wzb" />
+            <Button android:id="@id/mgh" android:visibility="gone" style="@style/ac0" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

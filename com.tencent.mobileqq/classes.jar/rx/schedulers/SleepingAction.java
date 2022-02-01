@@ -19,36 +19,33 @@ class SleepingAction
   
   public void call()
   {
-    if (this.innerScheduler.isUnsubscribed()) {}
-    for (;;)
-    {
+    if (this.innerScheduler.isUnsubscribed()) {
       return;
-      long l;
-      if (this.execTime > this.innerScheduler.now())
-      {
-        l = this.execTime - this.innerScheduler.now();
-        if (l <= 0L) {}
-      }
-      try
-      {
-        Thread.sleep(l);
-        if (this.innerScheduler.isUnsubscribed()) {
-          continue;
+    }
+    if (this.execTime > this.innerScheduler.now())
+    {
+      long l = this.execTime - this.innerScheduler.now();
+      if (l > 0L) {
+        try
+        {
+          Thread.sleep(l);
         }
-        this.underlying.call();
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        Thread.currentThread().interrupt();
-        throw new RuntimeException(localInterruptedException);
+        catch (InterruptedException localInterruptedException)
+        {
+          Thread.currentThread().interrupt();
+          throw new RuntimeException(localInterruptedException);
+        }
       }
     }
+    if (this.innerScheduler.isUnsubscribed()) {
+      return;
+    }
+    this.underlying.call();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.schedulers.SleepingAction
  * JD-Core Version:    0.7.0.1
  */

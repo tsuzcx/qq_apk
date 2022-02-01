@@ -38,49 +38,53 @@ public final class JceInputStream
   
   public static void main(String[] paramArrayOfString) {}
   
-  private int peakHead(JceInputStream.HeadData paramHeadData)
+  private int peakHead(HeadData paramHeadData)
   {
     return readHead(paramHeadData, this.bs.duplicate());
   }
   
-  private Object[] readArrayImpl(Object paramObject, int paramInt, boolean paramBoolean)
+  private <T> T[] readArrayImpl(T paramT, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramObject.getClass(), i);
-      paramInt = 0;
-      for (;;)
+      Object localObject = new HeadData();
+      readHead((HeadData)localObject);
+      paramInt = ((HeadData)localObject).type;
+      if (paramInt != 9)
       {
-        localObject = arrayOfObject;
-        if (paramInt >= i) {
-          break;
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
         }
-        arrayOfObject[paramInt] = read(paramObject, 0, true);
-        paramInt += 1;
       }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          localObject = (Object[])Array.newInstance(paramT.getClass(), i);
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject[paramInt] = read(paramT, 0, true);
+            paramInt += 1;
+          }
+          return localObject;
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
       }
-      break;
     }
-    Object localObject = null;
-    return localObject;
+    else
+    {
+      if (paramBoolean) {
+        break label135;
+      }
+    }
+    return null;
+    label135:
+    throw new JceDecodeException("require field not exist.");
   }
   
-  public static int readHead(JceInputStream.HeadData paramHeadData, ByteBuffer paramByteBuffer)
+  public static int readHead(HeadData paramHeadData, ByteBuffer paramByteBuffer)
   {
     int i = paramByteBuffer.get();
     paramHeadData.type = ((byte)(i & 0xF));
@@ -93,58 +97,54 @@ public final class JceInputStream
     return 1;
   }
   
-  private Map readMap(Map paramMap1, Map paramMap2, int paramInt, boolean paramBoolean)
+  private <K, V> Map<K, V> readMap(Map<K, V> paramMap1, Map<K, V> paramMap2, int paramInt, boolean paramBoolean)
   {
-    if ((paramMap2 == null) || (paramMap2.isEmpty())) {
-      paramMap2 = new HashMap();
-    }
-    do
+    if ((paramMap2 != null) && (!paramMap2.isEmpty()))
     {
-      return paramMap2;
-      paramMap2 = (Map.Entry)paramMap2.entrySet().iterator().next();
-      Object localObject1 = paramMap2.getKey();
-      Object localObject2 = paramMap2.getValue();
+      Object localObject = (Map.Entry)paramMap2.entrySet().iterator().next();
+      paramMap2 = ((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
       if (skipToTag(paramInt))
       {
-        JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+        HeadData localHeadData = new HeadData();
         readHead(localHeadData);
-        paramMap2 = paramMap1;
-        switch (localHeadData.type)
+        paramInt = localHeadData.type;
+        if (paramInt != 8)
         {
-        case 11: 
-        case 9: 
-        case 10: 
-        default: 
+          if (paramInt == 11) {
+            return paramMap1;
+          }
           throw new JceDecodeException("type mismatch.");
         }
         int i = read(0, 0, true);
-        if (i < 0) {
-          throw new JceDecodeException("size invalid: " + i);
-        }
-        paramInt = 0;
-        for (;;)
+        if (i >= 0)
         {
-          paramMap2 = paramMap1;
-          if (paramInt >= i) {
-            break;
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            paramMap1.put(read(paramMap2, 0, true), read(localObject, 1, true));
+            paramInt += 1;
           }
-          paramMap1.put(read(localObject1, 0, true), read(localObject2, 1, true));
-          paramInt += 1;
         }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
       }
-      paramMap2 = paramMap1;
-    } while (!paramBoolean);
-    throw new JceDecodeException("require field not exist.");
+      if (!paramBoolean) {
+        return paramMap1;
+      }
+      throw new JceDecodeException("require field not exist.");
+    }
+    return new HashMap();
   }
   
   private void skip(int paramInt)
   {
-    this.bs.position(this.bs.position() + paramInt);
+    ByteBuffer localByteBuffer = this.bs;
+    localByteBuffer.position(localByteBuffer.position() + paramInt);
   }
   
   private void skipField()
   {
-    JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+    HeadData localHeadData = new HeadData();
     readHead(localHeadData);
     skipField(localHeadData.type);
   }
@@ -157,25 +157,45 @@ public final class JceInputStream
     {
     default: 
       throw new JceDecodeException("invalid type.");
-    case 0: 
-      skip(1);
+    case 13: 
+      HeadData localHeadData = new HeadData();
+      readHead(localHeadData);
+      if (localHeadData.type == 0)
+      {
+        skip(read(0, 0, true));
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder("skipField with invalid type, type value: ");
+      localStringBuilder.append(paramByte);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(localHeadData.type);
+      throw new JceDecodeException(localStringBuilder.toString());
     case 11: 
     case 12: 
       return;
-    case 1: 
-      skip(2);
+    case 10: 
+      skipToStructEnd();
       return;
-    case 2: 
-      skip(4);
+    case 9: 
+      b2 = read(0, 0, true);
+      paramByte = b1;
+      while (paramByte < b2)
+      {
+        skipField();
+        paramByte += 1;
+      }
       return;
-    case 3: 
-      skip(8);
+    case 8: 
+      b1 = read(0, 0, true);
+      paramByte = b2;
+      while (paramByte < b1 * 2)
+      {
+        skipField();
+        paramByte += 1;
+      }
       return;
-    case 4: 
-      skip(4);
-      return;
-    case 5: 
-      skip(8);
+    case 7: 
+      skip(this.bs.getInt());
       return;
     case 6: 
       b1 = this.bs.get();
@@ -185,310 +205,787 @@ public final class JceInputStream
       }
       skip(paramByte);
       return;
-    case 7: 
-      skip(this.bs.getInt());
+    case 5: 
+      skip(8);
       return;
-    case 8: 
-      b2 = read(0, 0, true);
-      paramByte = b1;
-      while (paramByte < b2 * 2)
-      {
-        skipField();
-        paramByte += 1;
-      }
-    case 9: 
-      b1 = read(0, 0, true);
-      paramByte = b2;
-      while (paramByte < b1)
-      {
-        skipField();
-        paramByte += 1;
-      }
-    case 13: 
-      JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
-      readHead(localHeadData);
-      if (localHeadData.type != 0) {
-        throw new JceDecodeException("skipField with invalid type, type value: " + paramByte + ", " + localHeadData.type);
-      }
-      skip(read(0, 0, true));
+    case 4: 
+      skip(4);
+      return;
+    case 3: 
+      skip(8);
+      return;
+    case 2: 
+      skip(4);
+      return;
+    case 1: 
+      skip(2);
       return;
     }
-    skipToStructEnd();
+    skip(1);
   }
   
-  public JceStruct directRead(JceStruct paramJceStruct, int paramInt, boolean paramBoolean)
+  public final JceStruct directRead(JceStruct paramJceStruct, int paramInt, boolean paramBoolean)
   {
-    JceInputStream.HeadData localHeadData = null;
-    if (skipToTag(paramInt))
-    {
+    if (skipToTag(paramInt)) {
       try
       {
         paramJceStruct = paramJceStruct.newInit();
-        localHeadData = new JceInputStream.HeadData();
+        HeadData localHeadData = new HeadData();
         readHead(localHeadData);
-        if (localHeadData.type != 10) {
-          throw new JceDecodeException("type mismatch.");
+        if (localHeadData.type == 10)
+        {
+          paramJceStruct.readFrom(this);
+          skipToStructEnd();
+          return paramJceStruct;
         }
+        throw new JceDecodeException("type mismatch.");
       }
       catch (Exception paramJceStruct)
       {
         throw new JceDecodeException(paramJceStruct.getMessage());
       }
-      paramJceStruct.readFrom(this);
-      skipToStructEnd();
     }
-    do
-    {
-      return paramJceStruct;
-      paramJceStruct = localHeadData;
-    } while (!paramBoolean);
+    if (!paramBoolean) {
+      return null;
+    }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public ByteBuffer getBs()
+  public final ByteBuffer getBs()
   {
     return this.bs;
   }
   
-  public byte read(byte paramByte, int paramInt, boolean paramBoolean)
+  public final byte read(byte paramByte, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       readHead(localHeadData);
-      switch (localHeadData.type)
-      {
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 12: 
-        paramByte = 0;
-      }
+      paramInt = localHeadData.type;
+      if (paramInt == 0) {}
     }
-    while (!paramBoolean)
+    switch (paramInt)
     {
-      JceInputStream.HeadData localHeadData;
-      return paramByte;
+    default: 
+      throw new JceDecodeException("type mismatch.");
+    case 12: 
+      return 0;
       return this.bs.get();
+      if (paramBoolean) {
+        break;
+      }
+    case 11: 
+      return paramByte;
     }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public double read(double paramDouble, int paramInt, boolean paramBoolean)
+  public final double read(double paramDouble, int paramInt, boolean paramBoolean)
   {
+    HeadData localHeadData;
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
-      switch (localHeadData.type)
-      {
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-      case 10: 
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 12: 
-        paramDouble = 0.0D;
-      }
     }
-    while (!paramBoolean)
+    switch (localHeadData.type)
     {
-      JceInputStream.HeadData localHeadData;
-      return paramDouble;
-      return this.bs.getFloat();
+    default: 
+      throw new JceDecodeException("type mismatch.");
+    case 12: 
+      return 0.0D;
+    case 5: 
       return this.bs.getDouble();
+    case 4: 
+      return this.bs.getFloat();
+      if (paramBoolean) {
+        break;
+      }
+    case 11: 
+      return paramDouble;
     }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public float read(float paramFloat, int paramInt, boolean paramBoolean)
+  public final float read(float paramFloat, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       readHead(localHeadData);
-      switch (localHeadData.type)
-      {
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 12: 
-        paramFloat = 0.0F;
-      }
+      paramInt = localHeadData.type;
+      if (paramInt == 4) {}
     }
-    while (!paramBoolean)
+    switch (paramInt)
     {
-      JceInputStream.HeadData localHeadData;
-      return paramFloat;
+    default: 
+      throw new JceDecodeException("type mismatch.");
+    case 12: 
+      return 0.0F;
       return this.bs.getFloat();
+      if (paramBoolean) {
+        break;
+      }
+    case 11: 
+      return paramFloat;
     }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public int read(int paramInt1, int paramInt2, boolean paramBoolean)
+  public final int read(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (skipToTag(paramInt2))
     {
-      localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       readHead(localHeadData);
-      switch (localHeadData.type)
+      paramInt2 = localHeadData.type;
+      switch (paramInt2)
       {
       default: 
-        throw new JceDecodeException("type mismatch.");
-      case 12: 
-        paramInt1 = 0;
+        switch (paramInt2)
+        {
+        default: 
+          throw new JceDecodeException("type mismatch.");
+        case 12: 
+          return 0;
+        }
+      case 2: 
+        return this.bs.getInt();
+      case 1: 
+        return this.bs.getShort();
       }
+      return this.bs.get();
     }
-    while (!paramBoolean)
-    {
-      JceInputStream.HeadData localHeadData;
+    if (!paramBoolean) {
       return paramInt1;
-      return this.bs.get();
-      return this.bs.getShort();
-      return this.bs.getInt();
     }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public long read(long paramLong, int paramInt, boolean paramBoolean)
+  public final long read(long paramLong, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       readHead(localHeadData);
-      switch (localHeadData.type)
+      paramInt = localHeadData.type;
+      switch (paramInt)
       {
-      case 4: 
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-      case 10: 
       default: 
-        throw new JceDecodeException("type mismatch.");
-      case 12: 
-        paramLong = 0L;
+        switch (paramInt)
+        {
+        default: 
+          throw new JceDecodeException("type mismatch.");
+        case 12: 
+          return 0L;
+        }
+      case 3: 
+        return this.bs.getLong();
+      case 2: 
+        return this.bs.getInt();
+      case 1: 
+        return this.bs.getShort();
       }
-    }
-    while (!paramBoolean)
-    {
-      JceInputStream.HeadData localHeadData;
-      return paramLong;
       return this.bs.get();
-      return this.bs.getShort();
-      return this.bs.getInt();
-      return this.bs.getLong();
+    }
+    if (!paramBoolean) {
+      return paramLong;
     }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public JceStruct read(JceStruct paramJceStruct, int paramInt, boolean paramBoolean)
+  public final JceStruct read(JceStruct paramJceStruct, int paramInt, boolean paramBoolean)
   {
-    JceInputStream.HeadData localHeadData = null;
-    if (skipToTag(paramInt))
-    {
+    if (skipToTag(paramInt)) {
       try
       {
         paramJceStruct = (JceStruct)paramJceStruct.getClass().newInstance();
-        localHeadData = new JceInputStream.HeadData();
+        HeadData localHeadData = new HeadData();
         readHead(localHeadData);
-        if (localHeadData.type != 10) {
-          throw new JceDecodeException("type mismatch.");
+        if (localHeadData.type == 10)
+        {
+          paramJceStruct.readFrom(this);
+          skipToStructEnd();
+          return paramJceStruct;
         }
+        throw new JceDecodeException("type mismatch.");
       }
       catch (Exception paramJceStruct)
       {
         throw new JceDecodeException(paramJceStruct.getMessage());
       }
-      paramJceStruct.readFrom(this);
-      skipToStructEnd();
     }
-    do
-    {
-      return paramJceStruct;
-      paramJceStruct = localHeadData;
-    } while (!paramBoolean);
+    if (!paramBoolean) {
+      return null;
+    }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public Object read(Object paramObject, int paramInt, boolean paramBoolean)
+  public final <T> Object read(T paramT, int paramInt, boolean paramBoolean)
   {
-    if ((paramObject instanceof Byte)) {
+    if ((paramT instanceof Byte)) {
       return Byte.valueOf(read((byte)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Boolean)) {
+    if ((paramT instanceof Boolean)) {
       return Boolean.valueOf(read(false, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Short)) {
+    if ((paramT instanceof Short)) {
       return Short.valueOf(read((short)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Integer)) {
+    if ((paramT instanceof Integer)) {
       return Integer.valueOf(read(0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Long)) {
+    if ((paramT instanceof Long)) {
       return Long.valueOf(read(0L, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Float)) {
+    if ((paramT instanceof Float)) {
       return Float.valueOf(read(0.0F, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Double)) {
+    if ((paramT instanceof Double)) {
       return Double.valueOf(read(0.0D, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof String)) {
+    if ((paramT instanceof String)) {
       return readString(paramInt, paramBoolean);
     }
-    if ((paramObject instanceof Map)) {
-      return readMap((Map)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof Map)) {
+      return readMap((Map)paramT, paramInt, paramBoolean);
     }
-    if ((paramObject instanceof List)) {
-      return readArray((List)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof List)) {
+      return readArray((List)paramT, paramInt, paramBoolean);
     }
-    if ((paramObject instanceof JceStruct)) {
-      return read((JceStruct)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof JceStruct)) {
+      return read((JceStruct)paramT, paramInt, paramBoolean);
     }
-    if (paramObject.getClass().isArray())
+    if (paramT.getClass().isArray())
     {
-      if (((paramObject instanceof byte[])) || ((paramObject instanceof Byte[]))) {
-        return read((byte[])null, paramInt, paramBoolean);
+      if ((!(paramT instanceof byte[])) && (!(paramT instanceof Byte[])))
+      {
+        if ((paramT instanceof boolean[])) {
+          return read(null, paramInt, paramBoolean);
+        }
+        if ((paramT instanceof short[])) {
+          return read(null, paramInt, paramBoolean);
+        }
+        if ((paramT instanceof int[])) {
+          return read(null, paramInt, paramBoolean);
+        }
+        if ((paramT instanceof long[])) {
+          return read(null, paramInt, paramBoolean);
+        }
+        if ((paramT instanceof float[])) {
+          return read(null, paramInt, paramBoolean);
+        }
+        if ((paramT instanceof double[])) {
+          return read(null, paramInt, paramBoolean);
+        }
+        return readArray((Object[])paramT, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof boolean[])) {
-        return read((boolean[])null, paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof short[])) {
-        return read((short[])null, paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof int[])) {
-        return read((int[])null, paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof long[])) {
-        return read((long[])null, paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof float[])) {
-        return read((float[])null, paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof double[])) {
-        return read((double[])null, paramInt, paramBoolean);
-      }
-      return readArray((Object[])paramObject, paramInt, paramBoolean);
+      return read(null, paramInt, paramBoolean);
     }
     throw new JceDecodeException("read object error: unsupport type.");
   }
   
-  public String read(String paramString, int paramInt, boolean paramBoolean)
+  public final String read(String paramString, int paramInt, boolean paramBoolean)
+  {
+    Object localObject;
+    if (skipToTag(paramInt))
+    {
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
+      paramInt = ((HeadData)localObject).type;
+      if (paramInt == 11) {
+        break label213;
+      }
+      switch (paramInt)
+      {
+      default: 
+        throw new JceDecodeException("type mismatch.");
+      case 7: 
+        paramInt = this.bs.getInt();
+        if ((paramInt <= 104857600) && (paramInt >= 0))
+        {
+          paramString = new byte[paramInt];
+          this.bs.get(paramString);
+        }
+        break;
+      }
+    }
+    try
+    {
+      localObject = new String(paramString, this.sServerEncoding);
+      return localObject;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      label119:
+      int i;
+      break label119;
+    }
+    return new String(paramString);
+    throw new JceDecodeException("String too long: ".concat(String.valueOf(paramInt)));
+    i = this.bs.get();
+    paramInt = i;
+    if (i < 0) {
+      paramInt = i + 256;
+    }
+    paramString = new byte[paramInt];
+    this.bs.get(paramString);
+    try
+    {
+      localObject = new String(paramString, this.sServerEncoding);
+      return localObject;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+    {
+      label200:
+      label213:
+      break label200;
+    }
+    return new String(paramString);
+    if (!paramBoolean) {
+      return paramString;
+    }
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final short read(short paramShort, int paramInt, boolean paramBoolean)
+  {
+    HeadData localHeadData;
+    if (skipToTag(paramInt))
+    {
+      localHeadData = new HeadData();
+      readHead(localHeadData);
+    }
+    switch (localHeadData.type)
+    {
+    default: 
+      throw new JceDecodeException("type mismatch.");
+    case 12: 
+      return 0;
+    case 1: 
+      return this.bs.getShort();
+    case 0: 
+      return (short)this.bs.get();
+      if (paramBoolean) {
+        break;
+      }
+    case 11: 
+      return paramShort;
+    }
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final boolean read(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    return read((byte)paramBoolean1, paramInt, paramBoolean2) != 0;
+  }
+  
+  public final byte[] read(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      Object localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
+      paramArrayOfByte = new HeadData();
+      readHead(paramArrayOfByte);
+      int i = paramArrayOfByte.type;
+      if (i != 9)
       {
-      case 8: 
-      case 9: 
-      case 10: 
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 6: 
+        if (i != 11)
+        {
+          if (i == 13)
+          {
+            HeadData localHeadData = new HeadData();
+            readHead(localHeadData);
+            if (localHeadData.type == 0)
+            {
+              i = read(0, 0, true);
+              if (i >= 0)
+              {
+                paramArrayOfByte = new byte[i];
+                this.bs.get(paramArrayOfByte);
+                return paramArrayOfByte;
+              }
+              localStringBuilder = new StringBuilder("invalid size, tag: ");
+              localStringBuilder.append(paramInt);
+              localStringBuilder.append(", type: ");
+              localStringBuilder.append(paramArrayOfByte.type);
+              localStringBuilder.append(", ");
+              localStringBuilder.append(localHeadData.type);
+              localStringBuilder.append(", size: ");
+              localStringBuilder.append(i);
+              throw new JceDecodeException(localStringBuilder.toString());
+            }
+            StringBuilder localStringBuilder = new StringBuilder("type mismatch, tag: ");
+            localStringBuilder.append(paramInt);
+            localStringBuilder.append(", type: ");
+            localStringBuilder.append(paramArrayOfByte.type);
+            localStringBuilder.append(", ");
+            localStringBuilder.append(localHeadData.type);
+            throw new JceDecodeException(localStringBuilder.toString());
+          }
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        i = read(0, 0, true);
+        if (i >= 0)
+        {
+          paramArrayOfByte = new byte[i];
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            paramArrayOfByte[paramInt] = read(paramArrayOfByte[0], 0, true);
+            paramInt += 1;
+          }
+          return paramArrayOfByte;
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label340;
+      }
+    }
+    return null;
+    label340:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final double[] read(double[] paramArrayOfDouble, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      paramArrayOfDouble = new HeadData();
+      readHead(paramArrayOfDouble);
+      paramInt = paramArrayOfDouble.type;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          double[] arrayOfDouble = new double[i];
+          paramInt = 0;
+          for (;;)
+          {
+            paramArrayOfDouble = arrayOfDouble;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfDouble[paramInt] = read(arrayOfDouble[0], 0, true);
+            paramInt += 1;
+          }
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label129;
+      }
+    }
+    paramArrayOfDouble = null;
+    return paramArrayOfDouble;
+    label129:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final float[] read(float[] paramArrayOfFloat, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      paramArrayOfFloat = new HeadData();
+      readHead(paramArrayOfFloat);
+      paramInt = paramArrayOfFloat.type;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          float[] arrayOfFloat = new float[i];
+          paramInt = 0;
+          for (;;)
+          {
+            paramArrayOfFloat = arrayOfFloat;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfFloat[paramInt] = read(arrayOfFloat[0], 0, true);
+            paramInt += 1;
+          }
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label129;
+      }
+    }
+    paramArrayOfFloat = null;
+    return paramArrayOfFloat;
+    label129:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final int[] read(int[] paramArrayOfInt, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      paramArrayOfInt = new HeadData();
+      readHead(paramArrayOfInt);
+      paramInt = paramArrayOfInt.type;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          int[] arrayOfInt = new int[i];
+          paramInt = 0;
+          for (;;)
+          {
+            paramArrayOfInt = arrayOfInt;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfInt[paramInt] = read(arrayOfInt[0], 0, true);
+            paramInt += 1;
+          }
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label129;
+      }
+    }
+    paramArrayOfInt = null;
+    return paramArrayOfInt;
+    label129:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final long[] read(long[] paramArrayOfLong, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      paramArrayOfLong = new HeadData();
+      readHead(paramArrayOfLong);
+      paramInt = paramArrayOfLong.type;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          long[] arrayOfLong = new long[i];
+          paramInt = 0;
+          for (;;)
+          {
+            paramArrayOfLong = arrayOfLong;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfLong[paramInt] = read(arrayOfLong[0], 0, true);
+            paramInt += 1;
+          }
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label129;
+      }
+    }
+    paramArrayOfLong = null;
+    return paramArrayOfLong;
+    label129:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final JceStruct[] read(JceStruct[] paramArrayOfJceStruct, int paramInt, boolean paramBoolean)
+  {
+    return (JceStruct[])readArray(paramArrayOfJceStruct, paramInt, paramBoolean);
+  }
+  
+  public final String[] read(String[] paramArrayOfString, int paramInt, boolean paramBoolean)
+  {
+    return (String[])readArray(paramArrayOfString, paramInt, paramBoolean);
+  }
+  
+  public final short[] read(short[] paramArrayOfShort, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      paramArrayOfShort = new HeadData();
+      readHead(paramArrayOfShort);
+      paramInt = paramArrayOfShort.type;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          short[] arrayOfShort = new short[i];
+          paramInt = 0;
+          for (;;)
+          {
+            paramArrayOfShort = arrayOfShort;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfShort[paramInt] = read(arrayOfShort[0], 0, true);
+            paramInt += 1;
+          }
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label129;
+      }
+    }
+    paramArrayOfShort = null;
+    return paramArrayOfShort;
+    label129:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final boolean[] read(boolean[] paramArrayOfBoolean, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      paramArrayOfBoolean = new HeadData();
+      readHead(paramArrayOfBoolean);
+      paramInt = paramArrayOfBoolean.type;
+      if (paramInt != 9)
+      {
+        if (paramInt != 11) {
+          throw new JceDecodeException("type mismatch.");
+        }
+      }
+      else
+      {
+        int i = read(0, 0, true);
+        if (i >= 0)
+        {
+          boolean[] arrayOfBoolean = new boolean[i];
+          paramInt = 0;
+          for (;;)
+          {
+            paramArrayOfBoolean = arrayOfBoolean;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfBoolean[paramInt] = read(arrayOfBoolean[0], 0, true);
+            paramInt += 1;
+          }
+        }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label129;
+      }
+    }
+    paramArrayOfBoolean = null;
+    return paramArrayOfBoolean;
+    label129:
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final <T> List<T> readArray(List<T> paramList, int paramInt, boolean paramBoolean)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      int i = 0;
+      paramList = readArrayImpl(paramList.get(0), paramInt, paramBoolean);
+      if (paramList == null) {
+        return null;
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramInt = i;
+      while (paramInt < paramList.length)
+      {
+        localArrayList.add(paramList[paramInt]);
+        paramInt += 1;
+      }
+      return localArrayList;
+    }
+    return new ArrayList();
+  }
+  
+  public final <T> T[] readArray(T[] paramArrayOfT, int paramInt, boolean paramBoolean)
+  {
+    if ((paramArrayOfT != null) && (paramArrayOfT.length != 0)) {
+      return readArrayImpl(paramArrayOfT[0], paramInt, paramBoolean);
+    }
+    throw new JceDecodeException("unable to get type of key and value.");
+  }
+  
+  public final String readByteString(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      HeadData localHeadData = new HeadData();
+      readHead(localHeadData);
+      paramInt = localHeadData.type;
+      if (paramInt != 11)
+      {
+        switch (paramInt)
+        {
+        default: 
+          throw new JceDecodeException("type mismatch.");
+        case 7: 
+          paramInt = this.bs.getInt();
+          if ((paramInt <= 104857600) && (paramInt >= 0))
+          {
+            paramString = new byte[paramInt];
+            this.bs.get(paramString);
+            return HexUtil.bytes2HexStr(paramString);
+          }
+          throw new JceDecodeException("String too long: ".concat(String.valueOf(paramInt)));
+        }
         int i = this.bs.get();
         paramInt = i;
         if (i < 0) {
@@ -496,656 +993,265 @@ public final class JceInputStream
         }
         paramString = new byte[paramInt];
         this.bs.get(paramString);
-        try
-        {
-          localObject = new String(paramString, this.sServerEncoding);
-          return localObject;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-        {
-          return new String(paramString);
-        }
-      case 7: 
-        paramInt = this.bs.getInt();
-        if ((paramInt > 104857600) || (paramInt < 0)) {
-          throw new JceDecodeException("String too long: " + paramInt);
-        }
-        paramString = new byte[paramInt];
-        this.bs.get(paramString);
-        try
-        {
-          String str = new String(paramString, this.sServerEncoding);
-          return str;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-        {
-          return new String(paramString);
-        }
+        return HexUtil.bytes2HexStr(paramString);
       }
-      return paramString;
     }
-    if (paramBoolean) {
-      throw new JceDecodeException("require field not exist.");
+    else
+    {
+      if (paramBoolean) {
+        break label173;
+      }
     }
     return paramString;
-  }
-  
-  public short read(short paramShort, int paramInt, boolean paramBoolean)
-  {
-    if (skipToTag(paramInt))
-    {
-      localHeadData = new JceInputStream.HeadData();
-      readHead(localHeadData);
-      switch (localHeadData.type)
-      {
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 12: 
-        paramShort = 0;
-      }
-    }
-    while (!paramBoolean)
-    {
-      JceInputStream.HeadData localHeadData;
-      return paramShort;
-      return (short)this.bs.get();
-      return this.bs.getShort();
-    }
+    label173:
     throw new JceDecodeException("require field not exist.");
   }
   
-  public boolean read(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {}
-    for (int i = 1; read((byte)i, paramInt, paramBoolean2) != 0; i = 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  public byte[] read(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfByte = null;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
-      {
-      case 10: 
-      case 12: 
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 13: 
-        paramArrayOfByte = new JceInputStream.HeadData();
-        readHead(paramArrayOfByte);
-        if (paramArrayOfByte.type != 0) {
-          throw new JceDecodeException("type mismatch, tag: " + paramInt + ", type: " + ((JceInputStream.HeadData)localObject).type + ", " + paramArrayOfByte.type);
-        }
-        i = read(0, 0, true);
-        if (i < 0) {
-          throw new JceDecodeException("invalid size, tag: " + paramInt + ", type: " + ((JceInputStream.HeadData)localObject).type + ", " + paramArrayOfByte.type + ", size: " + i);
-        }
-        paramArrayOfByte = new byte[i];
-        this.bs.get(paramArrayOfByte);
-      }
-    }
-    while (!paramBoolean)
-    {
-      return paramArrayOfByte;
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      Object localObject = new byte[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfByte = (byte[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-    }
-    throw new JceDecodeException("require field not exist.");
-  }
-  
-  public double[] read(double[] paramArrayOfDouble, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfDouble = null;
-    Object localObject;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      localObject = new double[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfDouble = (double[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return paramArrayOfDouble;
-  }
-  
-  public float[] read(float[] paramArrayOfFloat, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfFloat = null;
-    Object localObject;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      localObject = new float[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfFloat = (float[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return paramArrayOfFloat;
-  }
-  
-  public int[] read(int[] paramArrayOfInt, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfInt = null;
-    Object localObject;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      localObject = new int[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfInt = (int[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return paramArrayOfInt;
-  }
-  
-  public long[] read(long[] paramArrayOfLong, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfLong = null;
-    Object localObject;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      localObject = new long[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfLong = (long[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return paramArrayOfLong;
-  }
-  
-  public JceStruct[] read(JceStruct[] paramArrayOfJceStruct, int paramInt, boolean paramBoolean)
-  {
-    return (JceStruct[])readArray(paramArrayOfJceStruct, paramInt, paramBoolean);
-  }
-  
-  public String[] read(String[] paramArrayOfString, int paramInt, boolean paramBoolean)
-  {
-    return (String[])readArray(paramArrayOfString, paramInt, paramBoolean);
-  }
-  
-  public short[] read(short[] paramArrayOfShort, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfShort = null;
-    Object localObject;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      localObject = new short[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfShort = (short[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return paramArrayOfShort;
-  }
-  
-  public boolean[] read(boolean[] paramArrayOfBoolean, int paramInt, boolean paramBoolean)
-  {
-    paramArrayOfBoolean = null;
-    Object localObject;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-    }
-    switch (((JceInputStream.HeadData)localObject).type)
-    {
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 9: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      localObject = new boolean[i];
-      paramInt = 0;
-      for (;;)
-      {
-        paramArrayOfBoolean = (boolean[])localObject;
-        if (paramInt >= i) {
-          break;
-        }
-        localObject[paramInt] = read(localObject[0], 0, true);
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return paramArrayOfBoolean;
-  }
-  
-  public List readArray(List paramList, int paramInt, boolean paramBoolean)
-  {
-    int i = 0;
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return new ArrayList();
-    }
-    paramList = readArrayImpl(paramList.get(0), paramInt, paramBoolean);
-    if (paramList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramInt = i;
-    while (paramInt < paramList.length)
-    {
-      localArrayList.add(paramList[paramInt]);
-      paramInt += 1;
-    }
-    return localArrayList;
-  }
-  
-  public Object[] readArray(Object[] paramArrayOfObject, int paramInt, boolean paramBoolean)
-  {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      throw new JceDecodeException("unable to get type of key and value.");
-    }
-    return readArrayImpl(paramArrayOfObject[0], paramInt, paramBoolean);
-  }
-  
-  public String readByteString(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (skipToTag(paramInt))
-    {
-      localHeadData = new JceInputStream.HeadData();
-      readHead(localHeadData);
-      switch (localHeadData.type)
-      {
-      case 8: 
-      case 9: 
-      case 10: 
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 6: 
-        i = this.bs.get();
-        paramInt = i;
-        if (i < 0) {
-          paramInt = i + 256;
-        }
-        paramString = new byte[paramInt];
-        this.bs.get(paramString);
-        paramString = HexUtil.bytes2HexStr(paramString);
-      }
-    }
-    while (!paramBoolean)
-    {
-      JceInputStream.HeadData localHeadData;
-      int i;
-      return paramString;
-      paramInt = this.bs.getInt();
-      if ((paramInt > 104857600) || (paramInt < 0)) {
-        throw new JceDecodeException("String too long: " + paramInt);
-      }
-      paramString = new byte[paramInt];
-      this.bs.get(paramString);
-      return HexUtil.bytes2HexStr(paramString);
-    }
-    throw new JceDecodeException("require field not exist.");
-  }
-  
-  public void readHead(JceInputStream.HeadData paramHeadData)
+  public final void readHead(HeadData paramHeadData)
   {
     readHead(paramHeadData, this.bs);
   }
   
-  public List readList(int paramInt, boolean paramBoolean)
+  public final List readList(int paramInt, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
     if (skipToTag(paramInt))
     {
-      Object localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
+      Object localObject = new HeadData();
+      readHead((HeadData)localObject);
+      if (((HeadData)localObject).type == 9)
       {
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      }
-      int k = read(0, 0, true);
-      if (k < 0) {
-        throw new JceDecodeException("size invalid: " + k);
-      }
-      paramInt = 0;
-      if (paramInt < k)
-      {
-        localObject = new JceInputStream.HeadData();
-        readHead((JceInputStream.HeadData)localObject);
-        switch (((JceInputStream.HeadData)localObject).type)
+        int k = read(0, 0, true);
+        if (k >= 0)
         {
-        default: 
-          throw new JceDecodeException("type mismatch.");
-        case 0: 
-          skip(1);
-        }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          skip(2);
-          continue;
-          skip(4);
-          continue;
-          skip(8);
-          continue;
-          skip(4);
-          continue;
-          skip(8);
-          continue;
-          int j = this.bs.get();
-          int i = j;
-          if (j < 0) {
-            i = j + 256;
-          }
-          skip(i);
-          continue;
-          skip(this.bs.getInt());
-          continue;
-          try
+          paramInt = 0;
+          while (paramInt < k)
           {
-            localObject = (JceStruct)Class.forName(JceStruct.class.getName()).getConstructor(new Class[0]).newInstance(new Object[0]);
-            ((JceStruct)localObject).readFrom(this);
-            skipToStructEnd();
-            localArrayList.add(localObject);
+            localObject = new HeadData();
+            readHead((HeadData)localObject);
+            switch (((HeadData)localObject).type)
+            {
+            default: 
+              throw new JceDecodeException("type mismatch.");
+            case 12: 
+              localArrayList.add(Integer.valueOf(0));
+              break;
+            case 10: 
+              try
+              {
+                localObject = (JceStruct)Class.forName(JceStruct.class.getName()).getConstructor(new Class[0]).newInstance(new Object[0]);
+                ((JceStruct)localObject).readFrom(this);
+                skipToStructEnd();
+                localArrayList.add(localObject);
+              }
+              catch (Exception localException)
+              {
+                localException.printStackTrace();
+                throw new JceDecodeException("type mismatch.".concat(String.valueOf(localException)));
+              }
+            case 7: 
+              skip(this.bs.getInt());
+              break;
+            case 6: 
+              int j = this.bs.get();
+              int i = j;
+              if (j < 0) {
+                i = j + 256;
+              }
+              skip(i);
+              break;
+            case 5: 
+              skip(8);
+              break;
+            case 4: 
+              skip(4);
+              break;
+            case 3: 
+              skip(8);
+              break;
+            case 2: 
+              skip(4);
+              break;
+            case 1: 
+              skip(2);
+              break;
+            case 0: 
+              skip(1);
+            }
+            paramInt += 1;
           }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-            throw new JceDecodeException("type mismatch." + localException);
-          }
-          localException.add(new Integer(0));
         }
+        throw new JceDecodeException("size invalid: ".concat(String.valueOf(k)));
       }
+      throw new JceDecodeException("type mismatch.");
     }
-    else if (paramBoolean)
-    {
-      throw new JceDecodeException("require field not exist.");
-    }
-    return localException;
-  }
-  
-  public HashMap readMap(Map paramMap, int paramInt, boolean paramBoolean)
-  {
-    return (HashMap)readMap(new HashMap(), paramMap, paramInt, paramBoolean);
-  }
-  
-  public String readString(int paramInt, boolean paramBoolean)
-  {
-    String str = null;
-    if (skipToTag(paramInt))
-    {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
-      {
-      case 8: 
-      case 9: 
-      case 10: 
-      default: 
-        throw new JceDecodeException("type mismatch.");
-      case 6: 
-        i = this.bs.get();
-        paramInt = i;
-        if (i < 0) {
-          paramInt = i + 256;
-        }
-        localObject = new byte[paramInt];
-        this.bs.get((byte[])localObject);
-      }
-    }
-    while (!paramBoolean)
-    {
-      Object localObject;
-      try
-      {
-        int i;
-        str = new String((byte[])localObject, this.sServerEncoding);
-        return str;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-      {
-        return new String((byte[])localObject);
-      }
-      paramInt = this.bs.getInt();
-      if ((paramInt > 104857600) || (paramInt < 0)) {
-        throw new JceDecodeException("String too long: " + paramInt);
-      }
-      byte[] arrayOfByte = new byte[paramInt];
-      this.bs.get(arrayOfByte);
-      try
-      {
-        localObject = new String(arrayOfByte, this.sServerEncoding);
-        return localObject;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-      {
-        return new String(arrayOfByte);
-      }
+    if (!paramBoolean) {
+      return localException;
     }
     throw new JceDecodeException("require field not exist.");
   }
   
-  public Map readStringMap(int paramInt, boolean paramBoolean)
+  public final <K, V> HashMap<K, V> readMap(Map<K, V> paramMap, int paramInt, boolean paramBoolean)
   {
-    HashMap localHashMap = new HashMap();
-    JceInputStream.HeadData localHeadData;
-    if (skipToTag(paramInt))
-    {
-      localHeadData = new JceInputStream.HeadData();
-      readHead(localHeadData);
-    }
-    switch (localHeadData.type)
-    {
-    case 9: 
-    case 10: 
-    default: 
-      throw new JceDecodeException("type mismatch.");
-    case 8: 
-      int i = read(0, 0, true);
-      if (i < 0) {
-        throw new JceDecodeException("size invalid: " + i);
-      }
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localHashMap.put(readString(0, true), readString(1, true));
-        paramInt += 1;
-      }
-      if (paramBoolean) {
-        throw new JceDecodeException("require field not exist.");
-      }
-      break;
-    }
-    return localHashMap;
+    return (HashMap)readMap(new HashMap(), paramMap, paramInt, paramBoolean);
   }
   
-  public int setServerEncoding(String paramString)
+  public final String readString(int paramInt, boolean paramBoolean)
+  {
+    if (skipToTag(paramInt))
+    {
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
+      paramInt = ((HeadData)localObject).type;
+      if (paramInt == 11) {
+        break label217;
+      }
+      switch (paramInt)
+      {
+      default: 
+        throw new JceDecodeException("type mismatch.");
+      case 7: 
+        paramInt = this.bs.getInt();
+        if ((paramInt <= 104857600) && (paramInt >= 0))
+        {
+          localObject = new byte[paramInt];
+          this.bs.get((byte[])localObject);
+        }
+        break;
+      }
+    }
+    try
+    {
+      str = new String((byte[])localObject, this.sServerEncoding);
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      String str;
+      label122:
+      int i;
+      break label122;
+    }
+    return new String((byte[])localObject);
+    throw new JceDecodeException("String too long: ".concat(String.valueOf(paramInt)));
+    i = this.bs.get();
+    paramInt = i;
+    if (i < 0) {
+      paramInt = i + 256;
+    }
+    Object localObject = new byte[paramInt];
+    this.bs.get((byte[])localObject);
+    try
+    {
+      str = new String((byte[])localObject, this.sServerEncoding);
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+    {
+      label203:
+      label217:
+      break label203;
+    }
+    return new String((byte[])localObject);
+    if (!paramBoolean) {
+      return null;
+    }
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final Map<String, String> readStringMap(int paramInt, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    if (skipToTag(paramInt))
+    {
+      HeadData localHeadData = new HeadData();
+      readHead(localHeadData);
+      paramInt = localHeadData.type;
+      if (paramInt != 8)
+      {
+        if (paramInt == 11) {
+          return localHashMap;
+        }
+        throw new JceDecodeException("type mismatch.");
+      }
+      int i = read(0, 0, true);
+      if (i >= 0)
+      {
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localHashMap.put(readString(0, true), readString(1, true));
+          paramInt += 1;
+        }
+      }
+      throw new JceDecodeException("size invalid: ".concat(String.valueOf(i)));
+    }
+    if (!paramBoolean) {
+      return localHashMap;
+    }
+    throw new JceDecodeException("require field not exist.");
+  }
+  
+  public final int setServerEncoding(String paramString)
   {
     this.sServerEncoding = paramString;
     return 0;
   }
   
-  public void skipToStructEnd()
+  public final void skipToStructEnd()
   {
-    JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+    HeadData localHeadData = new HeadData();
     do
     {
       if (this.bs.remaining() == 0) {
-        return;
+        break;
       }
       readHead(localHeadData);
       skipField(localHeadData.type);
     } while (localHeadData.type != 11);
   }
   
-  public boolean skipToTag(int paramInt)
+  public final boolean skipToTag(int paramInt)
   {
     try
     {
-      JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       for (;;)
       {
-        int i = peakHead(localHeadData);
-        if ((paramInt <= localHeadData.tag) || (localHeadData.type == 11))
-        {
-          if (paramInt != localHeadData.tag) {
-            break;
-          }
-          return true;
+        i = peakHead(localHeadData);
+        if ((paramInt <= localHeadData.tag) || (localHeadData.type == 11)) {
+          break;
         }
         skip(i);
         skipField(localHeadData.type);
       }
-      return false;
+      int i = localHeadData.tag;
+      return paramInt == i;
     }
-    catch (JceDecodeException localJceDecodeException)
-    {
-      return false;
-    }
-    catch (BufferUnderflowException localBufferUnderflowException) {}
+    catch (JceDecodeException|BufferUnderflowException localJceDecodeException) {}
+    return false;
   }
   
-  public void warp(byte[] paramArrayOfByte)
+  public final void warp(byte[] paramArrayOfByte)
   {
     wrap(paramArrayOfByte);
   }
   
-  public void wrap(byte[] paramArrayOfByte)
+  public final void wrap(byte[] paramArrayOfByte)
   {
     this.bs = ByteBuffer.wrap(paramArrayOfByte);
+  }
+  
+  public static class HeadData
+  {
+    public int tag;
+    public byte type;
+    
+    public void clear()
+    {
+      this.type = 0;
+      this.tag = 0;
+    }
   }
 }
 

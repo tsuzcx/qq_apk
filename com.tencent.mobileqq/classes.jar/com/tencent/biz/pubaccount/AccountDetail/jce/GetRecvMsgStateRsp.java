@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.jce;
+package com.tencent.biz.pubaccount.accountdetail.jce;
 
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
@@ -9,8 +9,8 @@ public final class GetRecvMsgStateRsp
   implements Cloneable
 {
   public String reason = "";
-  public int result;
-  public int state;
+  public int result = 0;
+  public int state = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -22,15 +22,16 @@ public final class GetRecvMsgStateRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.result, 0);
-    if (this.reason != null) {
-      paramJceOutputStream.write(this.reason, 1);
+    String str = this.reason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.state, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateRsp
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.jce.GetRecvMsgStateRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,93 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.awo;
-import com.tencent.mm.protocal.protobuf.ayi;
-import com.tencent.mm.protocal.protobuf.ayj;
-import com.tencent.mm.protocal.protobuf.ayw;
-import com.tencent.mm.protocal.protobuf.ayx;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.b;
+import com.tencent.mm.protocal.protobuf.dde;
+import com.tencent.mm.protocal.protobuf.ddv;
+import com.tencent.mm.protocal.protobuf.ddw;
+import com.tencent.mm.protocal.protobuf.dek;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class w
-  extends m
-  implements k
+  extends p
+  implements m, a.b
 {
-  private com.tencent.mm.ai.f callback;
-  private final b rr;
+  private final int WKY;
+  public dde WKZ;
+  private h mAY;
+  public final c rr;
   
-  public w(List<ayx> paramList)
+  public w(dde paramdde, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, b paramb, int paramInt1, LinkedList<dek> paramLinkedList, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(6625);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ayi();
-    ((b.a)localObject).fsY = new ayj();
-    ((b.a)localObject).uri = "/cgi-bin/mmux-bin/jslog";
-    ((b.a)localObject).funcId = 1803;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ayi)this.rr.fsV.fta;
-    ayw localayw = new ayw();
-    localayw.wAb = d.whC;
-    localayw.wAc = d.whB;
-    localayw.wAd = d.whE;
-    localayw.wAe = d.whF;
-    localayw.wAf = aa.dsG();
-    localayw.wWT = ((int)(System.currentTimeMillis() / 1000L));
-    ((ayi)localObject).woj = localayw;
-    ((ayi)localObject).wok.addAll(paramList);
-    AppMethodBeat.o(6625);
+    AppMethodBeat.i(298407);
+    Log.i("MicroMsg.webview.NetSceneJSAPISetAuth", "NetSceneJSAPISetAuth doScene url[%s], appid[%s], jsapiName[%s], [%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1) });
+    this.WKZ = paramdde;
+    this.WKY = paramInt2;
+    paramdde = new c.a();
+    paramdde.otE = new ddv();
+    paramdde.otF = new ddw();
+    paramdde.uri = "/cgi-bin/mmbiz-bin/jsapi-setauth";
+    paramdde.funcId = 1096;
+    paramdde.otG = 0;
+    paramdde.respCmdId = 0;
+    this.rr = paramdde.bEF();
+    paramdde = (ddv)c.b.b(this.rr.otB);
+    paramdde.url = paramString1;
+    paramdde.aaIP = paramString2;
+    paramdde.appid = paramString3;
+    paramdde.aaIK = paramString4;
+    paramdde.hhx = paramString5;
+    paramdde.aaIL = paramString6;
+    paramdde.signature = paramString7;
+    paramdde.aaIM = paramString8;
+    paramdde.aaIO = paramInt1;
+    paramdde.aaIN = paramb;
+    paramdde.aaIU = paramLinkedList;
+    paramdde.aaIQ = paramInt3;
+    AppMethodBeat.o(298407);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(6627);
-    this.callback = paramf;
-    ab.d("MicroMsg.NetSceneJsLog", "doScene");
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6627);
+    AppMethodBeat.i(78908);
+    Log.i("MicroMsg.webview.NetSceneJSAPISetAuth", "doScene");
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(78908);
     return i;
   }
   
   public final int getType()
   {
-    return 1803;
+    return 1096;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int irL()
   {
-    AppMethodBeat.i(6626);
-    ab.i("MicroMsg.NetSceneJsLog", "onGYNetEnd, netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = (ayj)((b)paramq).fsW.fta;
-      ab.i("MicroMsg.NetSceneJsLog", "received InvalidLogList: ");
-      paramArrayOfByte = new StringBuilder("{ ");
-      if (!bo.es(paramq.xof)) {
-        break label167;
-      }
-      paramArrayOfByte.append("{  }");
-    }
-    for (;;)
-    {
-      paramArrayOfByte.append(" }");
-      ab.i("MicroMsg.NetSceneJsLog", paramArrayOfByte.toString());
-      f.a.dbJ();
-      f.ef(paramq.xof);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(6626);
-      return;
-      label167:
-      Iterator localIterator = paramq.xof.iterator();
-      while (localIterator.hasNext())
-      {
-        awo localawo = (awo)localIterator.next();
-        paramArrayOfByte.append(String.format(" { logId(%d), interval(%d) },", new Object[] { Integer.valueOf(localawo.xme), Integer.valueOf(localawo.xmf) }));
-      }
-    }
+    return this.WKY;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(78907);
+    Log.i("MicroMsg.webview.NetSceneJSAPISetAuth", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(78907);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.w
  * JD-Core Version:    0.7.0.1
  */

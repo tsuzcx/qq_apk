@@ -9,52 +9,57 @@ import java.util.List;
 final class b
   implements d
 {
-  private final com.google.android.exoplayer2.f.a[] aWg;
-  private final long[] aWh;
+  private final com.google.android.exoplayer2.f.a[] dga;
+  private final long[] dgb;
   
   public b(com.google.android.exoplayer2.f.a[] paramArrayOfa, long[] paramArrayOfLong)
   {
-    this.aWg = paramArrayOfa;
-    this.aWh = paramArrayOfLong;
+    this.dga = paramArrayOfa;
+    this.dgb = paramArrayOfLong;
   }
   
-  public final int ab(long paramLong)
+  public final int TD()
   {
-    AppMethodBeat.i(95651);
-    int i = x.a(this.aWh, paramLong, false, false);
-    if (i < this.aWh.length)
-    {
-      AppMethodBeat.o(95651);
-      return i;
-    }
-    AppMethodBeat.o(95651);
-    return -1;
+    return this.dgb.length;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> ac(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> cA(long paramLong)
   {
-    AppMethodBeat.i(95653);
-    int i = x.a(this.aWh, paramLong, false);
-    if ((i == -1) || (this.aWg[i] == null))
+    AppMethodBeat.i(92821);
+    int i = x.a(this.dgb, paramLong, false);
+    if ((i == -1) || (this.dga[i] == null))
     {
       localList = Collections.emptyList();
-      AppMethodBeat.o(95653);
+      AppMethodBeat.o(92821);
       return localList;
     }
-    List localList = Collections.singletonList(this.aWg[i]);
-    AppMethodBeat.o(95653);
+    List localList = Collections.singletonList(this.dga[i]);
+    AppMethodBeat.o(92821);
     return localList;
   }
   
-  public final long dT(int paramInt)
+  public final int cz(long paramLong)
+  {
+    AppMethodBeat.i(92819);
+    int i = x.a(this.dgb, paramLong, false, false);
+    if (i < this.dgb.length)
+    {
+      AppMethodBeat.o(92819);
+      return i;
+    }
+    AppMethodBeat.o(92819);
+    return -1;
+  }
+  
+  public final long in(int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(95652);
+    AppMethodBeat.i(92820);
     if (paramInt >= 0)
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.aWh.length) {
+      if (paramInt >= this.dgb.length) {
         break label53;
       }
     }
@@ -62,22 +67,17 @@ final class b
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.aWh[paramInt];
-      AppMethodBeat.o(95652);
+      long l = this.dgb[paramInt];
+      AppMethodBeat.o(92820);
       return l;
       bool1 = false;
       break;
     }
   }
-  
-  public final int pH()
-  {
-    return this.aWh.length;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.d.b
  * JD-Core Version:    0.7.0.1
  */

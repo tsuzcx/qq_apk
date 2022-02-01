@@ -32,19 +32,25 @@ public class SetAuthsRequest
   
   public static INTERFACE.StSetAuthsRsp onResponse(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      INTERFACE.StSetAuthsRsp localStSetAuthsRsp = new INTERFACE.StSetAuthsRsp();
-      try
+    }
+    Object localObject = new INTERFACE.StSetAuthsRsp();
+    try
+    {
+      ((INTERFACE.StSetAuthsRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel())
       {
-        localStSetAuthsRsp.mergeFrom(decode(paramArrayOfByte));
-        return localStSetAuthsRsp;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ProtoBufRequest", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ProtoBufRequest", 2, "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
@@ -55,7 +61,7 @@ public class SetAuthsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.SetAuthsRequest
  * JD-Core Version:    0.7.0.1
  */

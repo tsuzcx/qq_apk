@@ -60,34 +60,33 @@ class QWalletBluetoothJsPlugin$ConnServicesCallback
     if (((List)localObject1).containsAll(this.mSearchUuids)) {
       this.mDevices.add(paramBluetoothGatt.getDevice());
     }
-    if (this.cur == this.mCount)
-    {
+    if (this.cur == this.mCount) {
       QWalletBluetoothJsPlugin.access$1300(this.this$0).removeCallbacks(this.mRunnable);
-      try
-      {
-        paramBluetoothGatt = new JSONObject();
-        localObject1 = new JSONArray();
-        localIterator = this.mDevices.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (BluetoothDevice)localIterator.next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.putOpt("name", ((BluetoothDevice)localObject2).getName());
-          localJSONObject.put("deviceId", ((BluetoothDevice)localObject2).getAddress());
-          ((JSONArray)localObject1).put(localJSONObject);
-        }
-        paramBluetoothGatt.put("devices", localObject1);
-        paramBluetoothGatt.put("code", 0);
-        QWalletBluetoothJsPlugin.access$200(this.this$0, "getConnectedBluetoothDevices", paramBluetoothGatt.toString());
-        return;
-      }
-      catch (JSONException paramBluetoothGatt) {}
     }
+    try
+    {
+      paramBluetoothGatt = new JSONObject();
+      localObject1 = new JSONArray();
+      localIterator = this.mDevices.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (BluetoothDevice)localIterator.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.putOpt("name", ((BluetoothDevice)localObject2).getName());
+        localJSONObject.put("deviceId", ((BluetoothDevice)localObject2).getAddress());
+        ((JSONArray)localObject1).put(localJSONObject);
+      }
+      paramBluetoothGatt.put("devices", localObject1);
+      paramBluetoothGatt.put("code", 0);
+      QWalletBluetoothJsPlugin.access$200(this.this$0, "getConnectedBluetoothDevices", paramBluetoothGatt.toString());
+      return;
+    }
+    catch (JSONException paramBluetoothGatt) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin.ConnServicesCallback
  * JD-Core Version:    0.7.0.1
  */

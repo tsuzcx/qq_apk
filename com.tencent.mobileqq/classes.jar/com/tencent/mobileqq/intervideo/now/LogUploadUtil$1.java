@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.util.Log;
-import atcw;
-import atcx;
 import java.io.IOException;
 
-public final class LogUploadUtil$1
+final class LogUploadUtil$1
   implements Runnable
 {
-  public LogUploadUtil$1(String paramString) {}
+  LogUploadUtil$1(String paramString) {}
   
   public void run()
   {
     try
     {
       long l = System.currentTimeMillis();
-      atcx.a(atcx.a(), atcx.b());
-      Log.i("FileUtil", "compress time " + (System.currentTimeMillis() - l));
-      atcw.a(this.a, atcx.b());
+      LogUploadUtil.a(LogUploadUtil.a(), LogUploadUtil.b());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("compress time ");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      Log.i("FileUtil", localStringBuilder.toString());
+      FileUploadUtil.a(this.a, LogUploadUtil.b());
       return;
     }
     catch (IOException localIOException)
@@ -28,7 +29,7 @@ public final class LogUploadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.LogUploadUtil.1
  * JD-Core Version:    0.7.0.1
  */

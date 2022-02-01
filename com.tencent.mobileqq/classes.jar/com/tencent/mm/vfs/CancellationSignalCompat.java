@@ -20,7 +20,7 @@ public class CancellationSignalCompat
   
   public void cancel()
   {
-    if (this.signal != null)
+    if (Build.VERSION.SDK_INT >= 16)
     {
       this.signal.cancel();
       return;
@@ -30,7 +30,7 @@ public class CancellationSignalCompat
   
   public boolean isCanceled()
   {
-    if (this.signal != null) {
+    if (Build.VERSION.SDK_INT >= 16) {
       return this.signal.isCanceled();
     }
     return this.signalBeforeJB.isCanceled();
@@ -38,20 +38,19 @@ public class CancellationSignalCompat
   
   public void throwIfCanceled()
   {
-    if (this.signal != null)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      if (this.signal.isCanceled()) {
-        throw new OperationCanceledException();
+      if (!this.signal.isCanceled()) {
+        return;
       }
+      throw new OperationCanceledException();
     }
-    else {
-      this.signalBeforeJB.throwIfCanceled();
-    }
+    this.signalBeforeJB.throwIfCanceled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.CancellationSignalCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -20,6 +20,9 @@ public class MsfConstants
   public static final String ATTRIBUTE_LOGIN_PWD = "to_login_pwd";
   public static final String ATTRIBUTE_LOGIN_TOKEN_CMDHEAD = "to_login_token_cmdhead";
   public static final String ATTRIBUTE_LOGIN_TOKEN_MAP = "to_login_token_map";
+  public static final String ATTRIBUTE_LOGIN_UIN_ENCRYPT = "to_login_uin_encrypt";
+  public static final String ATTRIBUTE_MAP_FACE_REG_SIG = "face_reg_sig";
+  public static final String ATTRIBUTE_MAP_FACE_RESULT = "face_result";
   public static final String ATTRIBUTE_MAXPACKAGESIZE = "to_maxPackageSize";
   public static final String ATTRIBUTE_MSGTIMEOUT_CALLBACKER = "to_msgtimeoutCallbacker";
   public static final String ATTRIBUTE_PREDETECT_TIMEOUT_CALLBACKER = "to_predetect_timeoutCallbacker";
@@ -40,6 +43,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_REGISTER_CM_PIGTYPE = "to_register_cr_pigType";
   public static final String ATTRIBUTE_REGISTER_INVITATION_CODE = "To_register_Invitation_code";
   public static final String ATTRIBUTE_REGISTER_LH_UIN = "To_register_lh_uin";
+  public static final String ATTRIBUTE_REGISTER_MAP_PARAM = "To_register_map_param";
   public static final String ATTRIBUTE_REGISTER_NICK = "To_register_nick";
   public static final String ATTRIBUTE_REGISTER_PASS = "To_register_pass";
   public static final String ATTRIBUTE_REGISTER_SMSCODE = "To_register_smsCode";
@@ -55,6 +59,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_RESP_DEVLOCKINFO = "resp_devlockinfo";
   public static final String ATTRIBUTE_RESP_LOGINEDUSERLIST = "resp_loginedUserList";
   public static final String ATTRIBUTE_RESP_NEEDBOOTAPP = "resp_needBootApp";
+  public static final String ATTRIBUTE_RESP_PHONE_PROTECT_UINS_URL = "resp_phone_protect_uins_url";
   public static final String ATTRIBUTE_RESP_REGISTER_CONTACTSIG = "resp_register_contactssig";
   public static final String ATTRIBUTE_RESP_REGISTER_ERRMSG = "res_register_errmsg";
   public static final String ATTRIBUTE_RESP_REGISTER_LH_SIG = "resp_register_lh_sig";
@@ -63,6 +68,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_RESP_REGISTER_PROMPTINFO = "resp_register_promptinfo";
   public static final String ATTRIBUTE_RESP_REGISTER_RESENDTIME = "resp_register_shNextResendTime";
   public static final String ATTRIBUTE_RESP_REGISTER_RESULTCODE = "resp_register_resultcode";
+  public static final String ATTRIBUTE_RESP_REGISTER_SUPER_SIG = "resp_register_supersig";
   public static final String ATTRIBUTE_RESP_REGISTER_TIMEOVER = "resp_register_shTotalTimeOver";
   public static final String ATTRIBUTE_RESP_REGISTER_UIN = "resp_register_uin";
   public static final String ATTRIBUTE_RESP_SERVERCONFIGPUSH_CONTENT = "resp_serverConfigPush_content";
@@ -92,6 +98,8 @@ public class MsfConstants
   public static final String ATTRIBUTE_WTLOGIN_OLDCMD = "to_wtlogin_oldcmd";
   public static final String ATTR_CHAT_MSG_SENT_FLAG = "chat_msg_sent_flag";
   public static final String ATTR_QUICK_SEND_BY_XG = "attr_quick_send_by_xg";
+  public static final String ATTR_UDP_RETRY_COUNT = "attr_udp_retry_count";
+  public static final String ATTR_UDP_SEND_TIME = "attr_udp_send_time";
   public static final String ATTR_WEAKNET_SENT_FLAG = "attr_weaknet_sent_flag";
   public static final String Attribute_TAG_NEEDCALLBACK = "__base_tag_needCallback";
   public static final int GM_EVENT_BACK_GUARD = 1;
@@ -118,10 +126,13 @@ public class MsfConstants
   public static final String K_EVENT = "k_event";
   public static final String ProcessNameAll = "*";
   public static final int SERVICE_CMDID_CHANGEUIN = 5001;
+  public static final int TLV_KEY_FACE_REG_SIG = 54;
+  public static final int TLV_KEY_FACE_RESULT = 55;
+  public static final int UDP_RETRY_DEFAULT_COUNT = 12;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.MsfConstants
  * JD-Core Version:    0.7.0.1
  */

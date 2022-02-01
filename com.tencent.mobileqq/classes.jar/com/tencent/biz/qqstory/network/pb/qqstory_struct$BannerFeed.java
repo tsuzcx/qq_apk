@@ -26,17 +26,18 @@ public final class qqstory_struct$BannerFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 26, 42, 48, 56, 66, 74, 82, 88, 96, 106 }, new String[] { "schema", "content", "cover_url", "width", "height", "user", "blurb", "share_info", "date", "recommend_id", "title_wording" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro4, null, Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro5 }, BannerFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 26, 42, 48, 56, 66, 74, 82, 88, 96, 106 }, new String[] { "schema", "content", "cover_url", "width", "height", "user", "blurb", "share_info", "date", "recommend_id", "title_wording" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, null, localByteStringMicro4, null, localInteger, Long.valueOf(0L), localByteStringMicro5 }, BannerFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed
  * JD-Core Version:    0.7.0.1
  */

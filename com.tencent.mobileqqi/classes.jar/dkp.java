@@ -1,26 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SplashActivityCore;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-class dkp
-  implements MediaPlayer.OnErrorListener
+public class dkp
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  dkp(dkl paramdkl) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 4, "onError");
-    }
-    this.a.a.handler.sendEmptyMessage(5);
-    return false;
-  }
+  public int a = -1;
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dkp
  * JD-Core Version:    0.7.0.1
  */

@@ -14,24 +14,24 @@ final class zze
   
   private static Float zza(Context paramContext, String paramString, Float paramFloat)
   {
-    AppMethodBeat.i(89548);
+    AppMethodBeat.i(4570);
     paramContext = paramContext.getSharedPreferences("gservices-direboot-cache", 0).getString(paramString, null);
     if (paramContext != null) {
       try
       {
         float f = Float.parseFloat(paramContext);
-        AppMethodBeat.o(89548);
+        AppMethodBeat.o(4570);
         return Float.valueOf(f);
       }
       catch (NumberFormatException paramContext) {}
     }
-    AppMethodBeat.o(89548);
+    AppMethodBeat.o(4570);
     return paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.config.zze
  * JD-Core Version:    0.7.0.1
  */

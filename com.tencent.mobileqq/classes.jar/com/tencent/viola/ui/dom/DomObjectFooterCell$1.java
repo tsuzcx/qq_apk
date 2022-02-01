@@ -4,7 +4,7 @@ import com.tencent.viola.ui.dom.style.FlexNode;
 import com.tencent.viola.ui.dom.style.FlexNode.MeasureFunction;
 import com.tencent.viola.ui.dom.style.MeasureOutput;
 
-final class DomObjectFooterCell$1
+class DomObjectFooterCell$1
   implements FlexNode.MeasureFunction
 {
   public void measure(FlexNode paramFlexNode, float paramFloat, MeasureOutput paramMeasureOutput)
@@ -18,7 +18,7 @@ final class DomObjectFooterCell$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectFooterCell.1
  * JD-Core Version:    0.7.0.1
  */

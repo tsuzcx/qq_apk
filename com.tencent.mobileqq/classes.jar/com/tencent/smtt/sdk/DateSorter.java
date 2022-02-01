@@ -6,70 +6,61 @@ import com.tencent.smtt.export.external.interfaces.IX5DateSorter;
 public class DateSorter
 {
   public static int DAY_COUNT = 5;
-  private android.webkit.DateSorter mSystemDateSorter;
-  private IX5DateSorter mX5DateSorter;
+  private android.webkit.DateSorter a;
+  private IX5DateSorter b;
   
   static
   {
-    if (isX5Core()) {}
+    a();
   }
   
   public DateSorter(Context paramContext)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      this.mX5DateSorter = localX5CoreEngine.wizard().createDateSorter(paramContext);
+      this.b = localx.c().h(paramContext);
       return;
     }
-    this.mSystemDateSorter = new android.webkit.DateSorter(paramContext);
+    this.a = new android.webkit.DateSorter(paramContext);
   }
   
-  private static boolean isX5Core()
+  private static boolean a()
   {
-    boolean bool2 = false;
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    boolean bool1 = bool2;
-    if (localX5CoreEngine != null)
-    {
-      bool1 = bool2;
-      if (localX5CoreEngine.isX5Core()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    x localx = x.a();
+    return (localx != null) && (localx.b());
   }
   
   public long getBoundary(int paramInt)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return this.mX5DateSorter.getBoundary(paramInt);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return this.b.getBoundary(paramInt);
     }
-    return this.mSystemDateSorter.getBoundary(paramInt);
+    return this.a.getBoundary(paramInt);
   }
   
   public int getIndex(long paramLong)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return this.mX5DateSorter.getIndex(paramLong);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return this.b.getIndex(paramLong);
     }
-    return this.mSystemDateSorter.getIndex(paramLong);
+    return this.a.getIndex(paramLong);
   }
   
   public String getLabel(int paramInt)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return this.mX5DateSorter.getLabel(paramInt);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return this.b.getLabel(paramInt);
     }
-    return this.mSystemDateSorter.getLabel(paramInt);
+    return this.a.getLabel(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.DateSorter
  * JD-Core Version:    0.7.0.1
  */

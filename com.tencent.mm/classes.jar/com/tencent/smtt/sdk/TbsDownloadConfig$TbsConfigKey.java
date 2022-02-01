@@ -8,6 +8,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_APP_VERSIONNAME = "app_versionname";
   public static final String KEY_BACKUPCORE_DELFILELIST = "backupcore_delfilelist";
   public static final String KEY_COUNT_REQUEST_FAIL_IN_24HOURS = "count_request_fail_in_24hours";
+  public static final String KEY_CPUTYPE_OTHER_STABLE_CORE = "tbs_cpu_type_other_stable_core";
   public static final String KEY_DECOUPLECOREVERSION = "tbs_decouplecoreversion";
   public static final String KEY_DESkEY_TOKEN = "tbs_deskey_token";
   public static final String KEY_DEVICE_CPUABI = "device_cpuabi";
@@ -24,10 +25,12 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_DOWNLOAD_SUCCESS_MAX_RETRYTIMES = "tbs_download_success_max_retrytimes";
   public static final String KEY_DOWNLOAD_SUCCESS_RETRYTIMES = "tbs_download_success_retrytimes";
   public static final String KEY_FULL_PACKAGE = "request_full_package";
+  public static final String KEY_GUID = "tbs_guid";
   public static final String KEY_INSTALL_INTERRUPT_CODE = "tbs_install_interrupt_code";
   public static final String KEY_IS_OVERSEA = "is_oversea";
   public static final String KEY_LAST_CHECK = "last_check";
   public static final String KEY_LAST_DOWNLOAD_DECOUPLE_CORE = "last_download_decouple_core";
+  public static final String KEY_LAST_DOWNLOAD_STABLE_CORE_OTHER_CPU = "last_download_stable_core_other_cpu";
   public static final String KEY_LAST_REQUEST_SUCCESS = "last_request_success";
   public static final String KEY_LAST_THIRDAPP_SENDREQUEST_COREVERSION = "last_thirdapp_sendrequest_coreversion";
   public static final String KEY_NEEDDOWNLOAD = "tbs_needdownload";
@@ -50,7 +53,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig.TbsConfigKey
  * JD-Core Version:    0.7.0.1
  */

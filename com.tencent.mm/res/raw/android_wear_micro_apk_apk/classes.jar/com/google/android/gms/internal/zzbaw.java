@@ -10,9 +10,9 @@ public class zzbaw
   extends zza
 {
   public static final Parcelable.Creator<zzbaw> CREATOR = new dg();
-  final int Hc;
-  private final ConnectionResult Je;
-  private final zzaf QL;
+  final int IR;
+  private final ConnectionResult KT;
+  private final zzaf SA;
   
   public zzbaw()
   {
@@ -21,9 +21,9 @@ public class zzbaw
   
   zzbaw(int paramInt, ConnectionResult paramConnectionResult, zzaf paramzzaf)
   {
-    this.Hc = paramInt;
-    this.Je = paramConnectionResult;
-    this.QL = paramzzaf;
+    this.IR = paramInt;
+    this.KT = paramConnectionResult;
+    this.SA = paramzzaf;
   }
   
   private zzbaw(ConnectionResult paramConnectionResult)
@@ -31,14 +31,14 @@ public class zzbaw
     this(1, paramConnectionResult, null);
   }
   
-  public final ConnectionResult gW()
+  public final ConnectionResult hg()
   {
-    return this.Je;
+    return this.KT;
   }
   
-  public final zzaf jM()
+  public final zzaf jV()
   {
-    return this.QL;
+    return this.SA;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

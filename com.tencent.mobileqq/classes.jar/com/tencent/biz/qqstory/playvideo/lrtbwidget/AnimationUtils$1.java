@@ -1,0 +1,59 @@
+package com.tencent.biz.qqstory.playvideo.lrtbwidget;
+
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+final class AnimationUtils$1
+  implements ValueAnimator.AnimatorUpdateListener
+{
+  AnimationUtils$1(ViewGroup paramViewGroup, Drawable paramDrawable, ImageView paramImageView1, ImageView paramImageView2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
+    this.a.setPivotX(0.5F);
+    this.a.setScaleX(f1);
+    this.a.setPivotY(0.5F);
+    this.a.setScaleY(f2);
+    this.a.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
+    this.a.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
+    if (this.b != null)
+    {
+      int i = this.a.getWidth();
+      int j = this.a.getHeight();
+      if (f1 < f2)
+      {
+        f1 = f2 / f1;
+        f2 = i;
+        this.c.setPivotX(0.5F);
+        this.c.setScaleX(f1);
+        this.c.setTranslationX((f2 - f2 * f1) * 0.5F);
+        this.c.setPivotY(0.5F);
+        this.c.setScaleY(1.0F);
+        this.c.setTranslationY(0.0F);
+      }
+      else if (f2 < f1)
+      {
+        this.c.setPivotX(0.5F);
+        this.c.setScaleX(1.0F);
+        this.c.setTranslationX(0.0F);
+        f1 /= f2;
+        f2 = j;
+        this.c.setPivotY(0.5F);
+        this.c.setScaleY(f1);
+        this.c.setTranslationY((f2 - f2 * f1) * 0.5F);
+      }
+    }
+    this.d.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationUtils.1
+ * JD-Core Version:    0.7.0.1
+ */

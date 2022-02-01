@@ -1,16 +1,47 @@
 package com.tencent.mobileqq.dating;
 
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 class BaseMsgBoxActivity$3
-  implements Runnable
+  implements TabBarView.OnTabChangeListener
 {
-  BaseMsgBoxActivity$3(BaseMsgBoxActivity paramBaseMsgBoxActivity, String paramString, int paramInt) {}
+  BaseMsgBoxActivity$3(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    ((MessageHandler)this.this$0.app.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("BaseMsgBoxActivity, onTabSelected: old=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", cur=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", msgTabIdx=");
+      ((StringBuilder)localObject).append(this.a.mMsgBoxTabIndex);
+      ((StringBuilder)localObject).append(", unReadMsgNum=");
+      ((StringBuilder)localObject).append(this.a.mUnReadMsgNum);
+      QLog.d("nearby.msgbox.tab", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((paramInt1 == this.a.mMsgBoxTabIndex) && (paramInt2 != this.a.mMsgBoxTabIndex))
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("curIndex", paramInt2);
+      if (this.a.mIsNeedShowRedDot) {
+        paramInt1 = this.a.mUnReadMsgNum;
+      } else {
+        paramInt1 = 0;
+      }
+      ((Intent)localObject).putExtra("unReadMsgNum", paramInt1);
+      this.a.setResult(-1, (Intent)localObject);
+      this.a.finish();
+      this.a.overridePendingTransition(2130772361, 2130772361);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.msgbox.tab", 2, "finish");
+      }
+    }
   }
 }
 

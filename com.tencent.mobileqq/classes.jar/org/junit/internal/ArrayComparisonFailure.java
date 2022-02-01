@@ -26,14 +26,15 @@ public class ArrayComparisonFailure
   public String getMessage()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.fMessage != null) {
-      localStringBuilder.append(this.fMessage);
+    Object localObject = this.fMessage;
+    if (localObject != null) {
+      localStringBuilder.append((String)localObject);
     }
     localStringBuilder.append("arrays first differed at element ");
-    Iterator localIterator = this.fIndices.iterator();
-    while (localIterator.hasNext())
+    localObject = this.fIndices.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      int i = ((Integer)localIterator.next()).intValue();
+      int i = ((Integer)((Iterator)localObject).next()).intValue();
       localStringBuilder.append("[");
       localStringBuilder.append(i);
       localStringBuilder.append("]");
@@ -50,7 +51,7 @@ public class ArrayComparisonFailure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.ArrayComparisonFailure
  * JD-Core Version:    0.7.0.1
  */

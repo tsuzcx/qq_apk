@@ -17,7 +17,7 @@ public class AudioRecorderCompat$AsyncPcmWriter
   
   public AudioRecorderCompat$AsyncPcmWriter(AudioRecorderCompat paramAudioRecorderCompat, String paramString, int paramInt)
   {
-    super("AudioRecorder.AsyncPcmWriter-" + System.currentTimeMillis());
+    super(localStringBuilder.toString());
     FileUtils.delete(paramString);
     if (paramAudioRecorderCompat.mWrite2FileEnable) {
       this.mMicfile = new RandomAccessFile(paramString, "rw");
@@ -46,15 +46,19 @@ public class AudioRecorderCompat$AsyncPcmWriter
     }
     synchronized (this.fileBuffers)
     {
+      byte[] arrayOfByte;
       if (this.fileBuffers.size() > 0)
       {
         arrayOfByte = (byte[])this.fileBuffers.peek();
         this.fileBuffers.remove();
-        System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
-        this.mHandler.post(new AudioRecorderCompat.AsyncPcmWriter.2(this, arrayOfByte, paramInt));
-        return;
       }
-      byte[] arrayOfByte = new byte[this.perBufSize];
+      else
+      {
+        arrayOfByte = new byte[this.perBufSize];
+      }
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
+      this.mHandler.post(new AudioRecorderCompat.AsyncPcmWriter.2(this, arrayOfByte, paramInt));
+      return;
     }
   }
   
@@ -65,7 +69,7 @@ public class AudioRecorderCompat$AsyncPcmWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderCompat.AsyncPcmWriter
  * JD-Core Version:    0.7.0.1
  */

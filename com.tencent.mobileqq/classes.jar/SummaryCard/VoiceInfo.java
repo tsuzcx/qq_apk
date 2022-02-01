@@ -9,9 +9,9 @@ public final class VoiceInfo
 {
   static byte[] cache_vVoiceId;
   public byte bRead = 2;
-  public short shDuration;
+  public short shDuration = 0;
   public String strUrl = "";
-  public byte[] vVoiceId;
+  public byte[] vVoiceId = null;
   
   public VoiceInfo() {}
   
@@ -38,19 +38,21 @@ public final class VoiceInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vVoiceId != null) {
-      paramJceOutputStream.write(this.vVoiceId, 0);
+    Object localObject = this.vVoiceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
     paramJceOutputStream.write(this.shDuration, 1);
     paramJceOutputStream.write(this.bRead, 2);
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 3);
+    localObject = this.strUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.VoiceInfo
  * JD-Core Version:    0.7.0.1
  */

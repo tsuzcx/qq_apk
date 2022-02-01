@@ -6,36 +6,36 @@ import com.google.android.gms.wearable.l;
 public final class i
   implements j
 {
-  private int GT;
-  private l Tf;
+  private int II;
+  private l UU;
   
   public i(j paramj)
   {
-    this.GT = paramj.getType();
-    this.Tf = ((l)paramj.ku().freeze());
+    this.II = paramj.getType();
+    this.UU = ((l)paramj.kD().freeze());
   }
   
   public final int getType()
   {
-    return this.GT;
+    return this.II;
   }
   
-  public final l ku()
+  public final l kD()
   {
-    return this.Tf;
+    return this.UU;
   }
   
   public final String toString()
   {
     String str1;
-    if (this.GT == 1) {
+    if (this.II == 1) {
       str1 = "changed";
     }
     for (;;)
     {
-      String str2 = String.valueOf(this.Tf);
+      String str2 = String.valueOf(this.UU);
       return String.valueOf(str1).length() + 35 + String.valueOf(str2).length() + "DataEventEntity{ type=" + str1 + ", dataitem=" + str2 + " }";
-      if (this.GT == 2) {
+      if (this.II == 2) {
         str1 = "deleted";
       } else {
         str1 = "unknown";

@@ -54,74 +54,50 @@ public class ThrottlingFunction<IN>
   
   private void produceResultsInternal(@NonNull IN paramIN)
   {
-    SLog.d("async.boss.ThrottlingFunction", "process " + paramIN + ", size = " + this.mNumCurrentRequests);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("process ");
+    ((StringBuilder)localObject).append(paramIN);
+    ((StringBuilder)localObject).append(", size = ");
+    ((StringBuilder)localObject).append(this.mNumCurrentRequests);
+    SLog.d("async.boss.ThrottlingFunction", ((StringBuilder)localObject).toString());
     new ThrottlingFunction.ThreadOffJob(this, this.mTAG, null).setJobType(this.mJobType);
-    Worker localWorker = Bosses.get().prepareWorker(new ThrottlingFunction.ThreadOffJob(this, this.mTAG, null), this.mJobType, new ThrottlingFunction.InnerCallFutureListener(this, null), paramIN);
-    this.mFutures.put(paramIN, localWorker);
-    Bosses.get().getJobController().getDefaultHandler().handleExecute(Bosses.get().getExecutors(), localWorker);
+    localObject = Bosses.get().prepareWorker(new ThrottlingFunction.ThreadOffJob(this, this.mTAG, null), this.mJobType, new ThrottlingFunction.InnerCallFutureListener(this, null), paramIN);
+    this.mFutures.put(paramIN, localObject);
+    Bosses.get().getJobController().getDefaultHandler().handleExecute(Bosses.get().getExecutors(), (Worker)localObject);
   }
   
-  /* Error */
-  public void call(IN paramIN)
+  protected void call(IN paramIN)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 50	com/tribe/async/async/ThrottlingFunction:mNumCurrentRequests	I
-    //   6: aload_0
-    //   7: getfield 46	com/tribe/async/async/ThrottlingFunction:mMaxSimultaneousRequests	I
-    //   10: if_icmplt +26 -> 36
-    //   13: aload_0
-    //   14: getfield 44	com/tribe/async/async/ThrottlingFunction:mPendingRequests	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   17: aload_1
-    //   18: invokevirtual 162	java/util/concurrent/ConcurrentLinkedQueue:add	(Ljava/lang/Object;)Z
-    //   21: pop
-    //   22: iconst_1
-    //   23: istore_2
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: iload_2
-    //   27: ifne +8 -> 35
-    //   30: aload_0
-    //   31: aload_1
-    //   32: invokespecial 76	com/tribe/async/async/ThrottlingFunction:produceResultsInternal	(Ljava/lang/Object;)V
-    //   35: return
-    //   36: aload_0
-    //   37: aload_0
-    //   38: getfield 50	com/tribe/async/async/ThrottlingFunction:mNumCurrentRequests	I
-    //   41: iconst_1
-    //   42: iadd
-    //   43: putfield 50	com/tribe/async/async/ThrottlingFunction:mNumCurrentRequests	I
-    //   46: iconst_0
-    //   47: istore_2
-    //   48: goto -24 -> 24
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	ThrottlingFunction
-    //   0	56	1	paramIN	IN
-    //   23	25	2	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	22	51	finally
-    //   24	26	51	finally
-    //   36	46	51	finally
-    //   52	54	51	finally
+    try
+    {
+      int j = this.mNumCurrentRequests;
+      int k = this.mMaxSimultaneousRequests;
+      int i = 1;
+      if (j >= k)
+      {
+        this.mPendingRequests.add(paramIN);
+      }
+      else
+      {
+        this.mNumCurrentRequests += 1;
+        i = 0;
+      }
+      if (i == 0) {
+        produceResultsInternal(paramIN);
+      }
+      return;
+    }
+    finally {}
   }
   
-  public void error(Error paramError)
+  protected void error(Error paramError)
   {
     ThrottlingFunction.ThreadOffErrJob localThreadOffErrJob = new ThrottlingFunction.ThreadOffErrJob(this, this.mTAG, null);
     localThreadOffErrJob.setJobType(this.mJobType);
     Bosses.get().postJob(localThreadOffErrJob, paramError);
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
     Iterator localIterator = this.mFutures.entrySet().iterator();
     while (localIterator.hasNext()) {
@@ -135,11 +111,15 @@ public class ThrottlingFunction<IN>
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.ThrottlingFunction
  * JD-Core Version:    0.7.0.1
  */

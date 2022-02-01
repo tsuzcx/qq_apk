@@ -1,34 +1,34 @@
 package com.tencent.luggage.bridge;
 
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public final class f
+final class f
 {
-  private s bxT;
-  LinkedList<e> bxU;
-  boolean bxV;
+  private s eio;
+  private LinkedList<e> eip;
+  private boolean eiq;
   
   f(s params)
   {
-    AppMethodBeat.i(90719);
-    this.bxT = params;
-    this.bxU = new LinkedList();
-    this.bxV = false;
-    AppMethodBeat.o(90719);
+    AppMethodBeat.i(140319);
+    this.eio = params;
+    this.eip = new LinkedList();
+    this.eiq = false;
+    AppMethodBeat.o(140319);
   }
   
   private void b(e parame)
   {
-    AppMethodBeat.i(90721);
-    this.bxT.by(String.format("luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }));
-    AppMethodBeat.o(90721);
+    AppMethodBeat.i(140321);
+    this.eio.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
+    AppMethodBeat.o(140321);
   }
   
   /* Error */
-  public final void a(e parame)
+  final void a(e parame)
   {
     // Byte code:
     //   0: aload_0
@@ -36,7 +36,7 @@ public final class f
     //   2: ldc 61
     //   4: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/luggage/bridge/f:bxV	Z
+    //   8: getfield 32	com/tencent/luggage/bridge/f:eiq	Z
     //   11: ifeq +16 -> 27
     //   14: aload_0
     //   15: aload_1
@@ -47,7 +47,7 @@ public final class f
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 30	com/tencent/luggage/bridge/f:bxU	Ljava/util/LinkedList;
+    //   28: getfield 30	com/tencent/luggage/bridge/f:eip	Ljava/util/LinkedList;
     //   31: aload_1
     //   32: invokevirtual 67	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   35: pop
@@ -69,26 +69,26 @@ public final class f
     //   27	41	44	finally
   }
   
-  final void tT()
+  final void ready()
   {
     try
     {
-      AppMethodBeat.i(90722);
-      d.i("Java2JsMessageQueue", "ready");
-      this.bxV = true;
-      Iterator localIterator = this.bxU.iterator();
+      AppMethodBeat.i(140322);
+      Log.i("Java2JsMessageQueue", "ready");
+      this.eiq = true;
+      Iterator localIterator = this.eip.iterator();
       while (localIterator.hasNext()) {
         b((e)localIterator.next());
       }
-      this.bxU.clear();
+      this.eip.clear();
     }
     finally {}
-    AppMethodBeat.o(90722);
+    AppMethodBeat.o(140322);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.f
  * JD-Core Version:    0.7.0.1
  */

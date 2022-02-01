@@ -9,7 +9,7 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bdaq;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.lang.reflect.Field;
 
 public class TroopStoryLineLinearLayout
@@ -30,47 +30,36 @@ public class TroopStoryLineLinearLayout
   @TargetApi(16)
   private void a()
   {
-    Drawable localDrawable = getResources().getDrawable(2130840326);
-    Object localObject;
-    float f;
+    Drawable localDrawable = getResources().getDrawable(2130841367);
     if ((localDrawable instanceof RotateDrawable))
     {
-      localObject = (RotateDrawable)localDrawable;
-      f = bdaq.a(getContext(), 66.5F);
-    }
-    try
-    {
-      Field localField = RotateDrawable.class.getDeclaredField("mState");
-      localField.setAccessible(true);
-      localObject = localField.get(localObject);
-      localField = Class.forName(localField.getType().getName()).getDeclaredField("mPivotX");
-      localField.setAccessible(true);
-      localField.set(localObject, Float.valueOf(f));
+      Object localObject = (RotateDrawable)localDrawable;
+      float f = DisplayUtil.a(getContext(), 66.5F);
+      try
+      {
+        Field localField = RotateDrawable.class.getDeclaredField("mState");
+        localField.setAccessible(true);
+        localObject = localField.get(localObject);
+        localField = Class.forName(localField.getType().getName()).getDeclaredField("mPivotX");
+        localField.setAccessible(true);
+        localField.set(localObject, Float.valueOf(f));
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localClassNotFoundException.printStackTrace();
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localNoSuchFieldException.printStackTrace();
+      }
       if (Build.VERSION.SDK_INT < 16)
       {
         setBackgroundDrawable(localDrawable);
         return;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        localNoSuchFieldException.printStackTrace();
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        localClassNotFoundException.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
       }
       setBackground(localDrawable);
     }
@@ -78,7 +67,7 @@ public class TroopStoryLineLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.TroopStoryLineLinearLayout
  * JD-Core Version:    0.7.0.1
  */

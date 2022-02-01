@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
 
 public class fos
-  implements Runnable
+  extends RadioButton
 {
-  public fos(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void run()
+  public fos(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

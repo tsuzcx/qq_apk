@@ -5,117 +5,118 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.d;
-import java.io.File;
+import com.tencent.mm.b.g;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
+import com.tencent.mm.plugin.game.h.d;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 
 public final class ai
-  implements v
+  implements p
 {
   protected String mPicUrl;
   
   public ai(String paramString)
   {
-    AppMethodBeat.i(111409);
+    AppMethodBeat.i(41574);
     this.mPicUrl = paramString;
-    paramString = new File(e.est);
-    if (!paramString.exists()) {
-      paramString.mkdir();
+    paramString = new u(b.bmE());
+    if (!paramString.jKS()) {
+      paramString.jKY();
     }
-    AppMethodBeat.o(111409);
+    AppMethodBeat.o(41574);
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
-  
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
-    AppMethodBeat.i(111414);
-    if (v.a.gjy == parama)
+    AppMethodBeat.i(41579);
+    if (p.a.pAT == parama)
     {
-      AppMethodBeat.o(111414);
+      AppMethodBeat.o(41579);
       return paramBitmap;
     }
     try
     {
-      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aon(), false);
-      AppMethodBeat.o(111414);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bTC(), false);
+      AppMethodBeat.o(41579);
       return paramBitmap;
     }
     catch (IOException parama)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.GetGamePicStrategy", parama, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.GetGamePicStrategy", parama, "", new Object[0]);
       }
     }
   }
   
-  public final void a(v.a parama, String paramString) {}
+  public final void a(p.a parama) {}
   
-  public final v.b aom()
+  public final p.b bTB()
   {
     return null;
   }
   
-  public final String aon()
+  public final String bTC()
   {
-    AppMethodBeat.i(111410);
-    String str = e.est + g.w(this.mPicUrl.getBytes());
-    AppMethodBeat.o(111410);
+    AppMethodBeat.i(41575);
+    String str = b.bmE() + g.getMessageDigest(this.mPicUrl.getBytes());
+    AppMethodBeat.o(41575);
     return str;
   }
   
-  public final String aoo()
+  public final String bTD()
   {
     return this.mPicUrl;
   }
   
-  public final String aop()
+  public final String bTE()
   {
-    AppMethodBeat.i(111411);
+    AppMethodBeat.i(41576);
     String str = this.mPicUrl.hashCode();
-    AppMethodBeat.o(111411);
+    AppMethodBeat.o(41576);
     return str;
   }
   
-  public final boolean aoq()
+  public final boolean bTF()
   {
     return true;
   }
   
-  public final boolean aor()
+  public final boolean bTG()
   {
     return false;
   }
   
-  public final Bitmap aos()
+  public final Bitmap bTH()
   {
-    AppMethodBeat.i(111413);
-    Bitmap localBitmap = BitmapFactory.decodeResource(ah.getContext().getResources(), 2130839821);
-    AppMethodBeat.o(111413);
+    AppMethodBeat.i(41578);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), h.d.nosdcard_chatting_bg);
+    AppMethodBeat.o(41578);
     return localBitmap;
   }
   
-  public final void aot() {}
+  public final void bTI() {}
+  
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {
-    AppMethodBeat.i(111412);
+    AppMethodBeat.i(41577);
     String str = this.mPicUrl.hashCode();
-    AppMethodBeat.o(111412);
+    AppMethodBeat.o(41577);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ai
  * JD-Core Version:    0.7.0.1
  */

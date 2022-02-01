@@ -1,56 +1,43 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.Spannable;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class am
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class am
 {
-  private final View joE;
-  private final am.a joF;
-  private boolean joG;
-  private int lastHeight;
-  private int lastWidth;
-  
-  private am(View paramView, am.a parama)
+  static am.a[] k(TextView paramTextView)
   {
-    this.joE = paramView;
-    this.joF = parama;
-  }
-  
-  public static void a(View paramView, am.a parama)
-  {
-    AppMethodBeat.i(67826);
-    paramView = new am(paramView, parama);
-    paramView.joE.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
-    AppMethodBeat.o(67826);
-  }
-  
-  public final void onGlobalLayout()
-  {
-    AppMethodBeat.i(67827);
-    if (!this.joG)
+    int i = 0;
+    AppMethodBeat.i(131517);
+    Spannable localSpannable = null;
+    Object localObject = localSpannable;
+    if (paramTextView != null)
     {
-      this.joG = true;
-      this.lastWidth = this.joE.getWidth();
-      this.lastHeight = this.joE.getHeight();
-      AppMethodBeat.o(67827);
-      return;
+      localObject = localSpannable;
+      if ((paramTextView.getText() instanceof Spannable))
+      {
+        localSpannable = (Spannable)paramTextView.getText();
+        paramTextView = (am.a[])localSpannable.getSpans(0, localSpannable.length(), am.a.class);
+        int j = paramTextView.length;
+        for (;;)
+        {
+          localObject = paramTextView;
+          if (i >= j) {
+            break;
+          }
+          localSpannable.removeSpan(paramTextView[i]);
+          i += 1;
+        }
+      }
     }
-    if ((this.joE.getWidth() != this.lastWidth) || (this.joE.getHeight() != this.lastHeight))
-    {
-      this.joF.aQs();
-      this.lastWidth = this.joE.getWidth();
-      this.lastHeight = this.joE.getHeight();
-    }
-    AppMethodBeat.o(67827);
+    AppMethodBeat.o(131517);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.am
  * JD-Core Version:    0.7.0.1
  */

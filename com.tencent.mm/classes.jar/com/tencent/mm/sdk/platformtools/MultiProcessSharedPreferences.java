@@ -38,49 +38,122 @@ public class MultiProcessSharedPreferences
   extends ContentProvider
   implements SharedPreferences
 {
+  private static final int APPLY = 8;
   private static String AUTHORITY;
   private static volatile Uri AUTHORITY_URI;
-  private List<SoftReference<SharedPreferences.OnSharedPreferenceChangeListener>> fv;
-  private BroadcastReceiver jQN;
+  private static final int COMMIT = 9;
+  private static final int CONTAINS = 7;
+  public static final boolean DEBUG = false;
+  private static final int GET_ALL = 1;
+  private static final int GET_BOOLEAN = 6;
+  private static final int GET_FLOAT = 5;
+  private static final int GET_INT = 3;
+  private static final int GET_LONG = 4;
+  private static final int GET_STRING = 2;
+  private static final String KEY = "value";
+  private static final String KEY_NAME = "name";
+  private static final String PATH_APPLY = "apply";
+  private static final String PATH_COMMIT = "commit";
+  private static final String PATH_CONTAINS = "contains";
+  private static final String PATH_GET_ALL = "getAll";
+  private static final String PATH_GET_BOOLEAN = "getBoolean";
+  private static final String PATH_GET_FLOAT = "getFloat";
+  private static final String PATH_GET_INT = "getInt";
+  private static final String PATH_GET_LONG = "getLong";
+  private static final String PATH_GET_STRING = "getString";
+  private static final String PATH_REGISTER_ON_SHARED_PREFERENCE_CHANGE_LISTENER = "registerOnSharedPreferenceChangeListener";
+  private static final String PATH_UNREGISTER_ON_SHARED_PREFERENCE_CHANGE_LISTENER = "unregisterOnSharedPreferenceChangeListener";
+  private static final String PATH_WILDCARD = "*/";
+  private static final int REGISTER_ON_SHARED_PREFERENCE_CHANGE_LISTENER = 10;
+  private static final String TAG = "MicroMsg.MultiProcessSharedPreferences";
+  private static final int UNREGISTER_ON_SHARED_PREFERENCE_CHANGE_LISTENER = 11;
   private Context mContext;
+  private boolean mIsSafeMode;
+  private List<SoftReference<SharedPreferences.OnSharedPreferenceChangeListener>> mListeners;
+  private Map<String, Integer> mListenersCount;
   private int mMode;
   private String mName;
-  private boolean yoV;
-  private UriMatcher yoW;
-  private Map<String, Integer> yoX;
+  private BroadcastReceiver mReceiver;
+  private UriMatcher mUriMatcher;
   
   public MultiProcessSharedPreferences() {}
   
   private MultiProcessSharedPreferences(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(93560);
+    AppMethodBeat.i(156323);
     this.mContext = paramContext;
     this.mName = paramString;
     this.mMode = paramInt;
-    this.yoV = paramContext.getPackageManager().isSafeMode();
-    AppMethodBeat.o(93560);
+    this.mIsSafeMode = paramContext.getPackageManager().isSafeMode();
+    AppMethodBeat.o(156323);
   }
   
-  private static String apv(String paramString)
+  private void checkInitAuthority(Context paramContext)
   {
-    AppMethodBeat.i(93573);
-    paramString = String.format("%1$s_%2$s", new Object[] { MultiProcessSharedPreferences.class.getName(), paramString });
-    AppMethodBeat.o(93573);
-    return paramString;
+    AppMethodBeat.i(156320);
+    if (AUTHORITY_URI == null)
+    {
+      Object localObject2 = null;
+      Uri localUri = AUTHORITY_URI;
+      Object localObject1 = localUri;
+      if (localUri == null) {}
+      try
+      {
+        localObject2 = queryAuthority(paramContext);
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = paramContext.getPackageName() + ".sdk.platformtools.MultiProcessSharedPreferences";
+        }
+        paramContext = Uri.parse("content://".concat(String.valueOf(localObject1)));
+        localObject2 = localObject1;
+        localObject1 = paramContext;
+        if (localObject2 == null)
+        {
+          paramContext = new IllegalArgumentException("'AUTHORITY' initialize failed.");
+          AppMethodBeat.o(156320);
+          throw paramContext;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(156320);
+      }
+      AUTHORITY = (String)localObject2;
+      AUTHORITY_URI = (Uri)localObject1;
+    }
+    AppMethodBeat.o(156320);
   }
   
-  private Object c(String paramString1, String paramString2, Object paramObject)
+  private void checkInitListenersCount()
+  {
+    AppMethodBeat.i(156345);
+    if (this.mListenersCount == null) {
+      this.mListenersCount = new HashMap();
+    }
+    AppMethodBeat.o(156345);
+  }
+  
+  public static SharedPreferences getSharedPreferences(Context paramContext, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(156322);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(paramString);
+    MultiProcessMMKV.transport2MMKV(new MultiProcessSharedPreferences(paramContext, paramString, paramInt), localMultiProcessMMKV);
+    AppMethodBeat.o(156322);
+    return localMultiProcessMMKV;
+  }
+  
+  private Object getValue(String paramString1, String paramString2, Object paramObject)
   {
     Bundle localBundle = null;
     Object localObject1 = null;
     Object localObject2 = null;
-    AppMethodBeat.i(93572);
-    if (this.yoV)
+    AppMethodBeat.i(156335);
+    if (this.mIsSafeMode)
     {
-      AppMethodBeat.o(93572);
+      AppMethodBeat.o(156335);
       return null;
     }
-    gR(this.mContext);
+    checkInitAuthority(this.mContext);
     Object localObject3 = Uri.withAppendedPath(Uri.withAppendedPath(AUTHORITY_URI, this.mName), paramString1);
     int i = this.mMode;
     if (paramObject == null) {}
@@ -113,55 +186,39 @@ public class MultiProcessSharedPreferences
       if (paramString1 == null) {
         break;
       }
-      AppMethodBeat.o(93572);
+      AppMethodBeat.o(156335);
       return paramString1;
     }
-    AppMethodBeat.o(93572);
+    AppMethodBeat.o(156335);
     return paramObject;
   }
   
-  private void dtr()
+  private String makeAction(String paramString)
   {
-    AppMethodBeat.i(93582);
-    if (this.yoX == null) {
-      this.yoX = new HashMap();
-    }
-    AppMethodBeat.o(93582);
+    AppMethodBeat.i(156336);
+    paramString = String.format("%1$s_%2$s", new Object[] { MultiProcessSharedPreferences.class.getName(), paramString });
+    AppMethodBeat.o(156336);
+    return paramString;
   }
   
-  private void gR(Context paramContext)
+  private void notifyListeners(String paramString, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(93557);
-    if (AUTHORITY_URI == null)
+    AppMethodBeat.i(156346);
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      String str = null;
-      Uri localUri2 = AUTHORITY_URI;
-      Uri localUri1 = localUri2;
-      if (localUri2 == null) {}
-      try
-      {
-        str = gS(paramContext);
-        localUri1 = Uri.parse("content://".concat(String.valueOf(str)));
-        if (str == null)
-        {
-          paramContext = new IllegalArgumentException("'AUTHORITY' initialize failed.");
-          AppMethodBeat.o(93557);
-          throw paramContext;
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(93557);
-      }
-      AUTHORITY = str;
-      AUTHORITY_URI = localUri1;
+      Intent localIntent = new Intent();
+      localIntent.setAction(makeAction(paramString));
+      localIntent.setPackage(getContext().getPackageName());
+      localIntent.putExtra("name", paramString);
+      localIntent.putExtra("value", paramArrayList);
+      getContext().sendBroadcast(localIntent);
     }
-    AppMethodBeat.o(93557);
+    AppMethodBeat.o(156346);
   }
   
-  private static String gS(Context paramContext)
+  private static String queryAuthority(Context paramContext)
   {
-    AppMethodBeat.i(93558);
+    AppMethodBeat.i(156321);
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 8);
@@ -176,7 +233,7 @@ public class MultiProcessSharedPreferences
           if (localObject.name.equals(MultiProcessSharedPreferences.class.getName()))
           {
             paramContext = localObject.authority;
-            AppMethodBeat.o(93558);
+            AppMethodBeat.o(156321);
             return paramContext;
           }
         }
@@ -191,139 +248,115 @@ public class MultiProcessSharedPreferences
         continue;
         i += 1;
       }
-      AppMethodBeat.o(93558);
+      AppMethodBeat.o(156321);
     }
     return null;
   }
   
-  public static SharedPreferences getSharedPreferences(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(93559);
-    as localas = as.apq(paramString);
-    as.a(new MultiProcessSharedPreferences(paramContext, paramString, paramInt), localas);
-    AppMethodBeat.o(93559);
-    return localas;
-  }
-  
-  private void l(String paramString, ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(93583);
-    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction(apv(paramString));
-      localIntent.setPackage(getContext().getPackageName());
-      localIntent.putExtra("name", paramString);
-      localIntent.putExtra("value", paramArrayList);
-      getContext().sendBroadcast(localIntent);
-    }
-    AppMethodBeat.o(93583);
-  }
-  
   public boolean contains(String paramString)
   {
-    AppMethodBeat.i(93568);
-    paramString = (Boolean)c("contains", paramString, null);
+    AppMethodBeat.i(156331);
+    paramString = (Boolean)getValue("contains", paramString, null);
     if (paramString != null)
     {
       boolean bool = paramString.booleanValue();
-      AppMethodBeat.o(93568);
+      AppMethodBeat.o(156331);
       return bool;
     }
-    AppMethodBeat.o(93568);
+    AppMethodBeat.o(156331);
     return false;
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(93578);
+    AppMethodBeat.i(156341);
     paramUri = new UnsupportedOperationException("No external delete");
-    AppMethodBeat.o(93578);
+    AppMethodBeat.o(156341);
     throw paramUri;
   }
   
   public SharedPreferences.Editor edit()
   {
-    AppMethodBeat.i(93569);
-    b localb = new b();
-    AppMethodBeat.o(93569);
-    return localb;
+    AppMethodBeat.i(156332);
+    EditorImpl localEditorImpl = new EditorImpl();
+    AppMethodBeat.o(156332);
+    return localEditorImpl;
   }
   
   public Map<String, ?> getAll()
   {
-    AppMethodBeat.i(93561);
-    Map localMap = (Map)c("getAll", null, null);
-    AppMethodBeat.o(93561);
+    AppMethodBeat.i(156324);
+    Map localMap = (Map)getValue("getAll", null, null);
+    AppMethodBeat.o(156324);
     return localMap;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(93567);
-    paramString = (Boolean)c("getBoolean", paramString, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.i(156330);
+    paramString = (Boolean)getValue("getBoolean", paramString, Boolean.valueOf(paramBoolean));
     if (paramString != null)
     {
       paramBoolean = paramString.booleanValue();
-      AppMethodBeat.o(93567);
+      AppMethodBeat.o(156330);
       return paramBoolean;
     }
-    AppMethodBeat.o(93567);
+    AppMethodBeat.o(156330);
     return paramBoolean;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(93566);
-    paramString = (Float)c("getFloat", paramString, Float.valueOf(paramFloat));
+    AppMethodBeat.i(156329);
+    paramString = (Float)getValue("getFloat", paramString, Float.valueOf(paramFloat));
     if (paramString != null)
     {
       paramFloat = paramString.floatValue();
-      AppMethodBeat.o(93566);
+      AppMethodBeat.o(156329);
       return paramFloat;
     }
-    AppMethodBeat.o(93566);
+    AppMethodBeat.o(156329);
     return paramFloat;
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    AppMethodBeat.i(93564);
-    paramString = (Integer)c("getInt", paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.i(156327);
+    paramString = (Integer)getValue("getInt", paramString, Integer.valueOf(paramInt));
     if (paramString != null)
     {
       paramInt = paramString.intValue();
-      AppMethodBeat.o(93564);
+      AppMethodBeat.o(156327);
       return paramInt;
     }
-    AppMethodBeat.o(93564);
+    AppMethodBeat.o(156327);
     return paramInt;
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    AppMethodBeat.i(93565);
-    paramString = (Long)c("getLong", paramString, Long.valueOf(paramLong));
+    AppMethodBeat.i(156328);
+    paramString = (Long)getValue("getLong", paramString, Long.valueOf(paramLong));
     if (paramString != null)
     {
       paramLong = paramString.longValue();
-      AppMethodBeat.o(93565);
+      AppMethodBeat.o(156328);
       return paramLong;
     }
-    AppMethodBeat.o(93565);
+    AppMethodBeat.o(156328);
     return paramLong;
   }
   
   public String getString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(93562);
-    paramString1 = (String)c("getString", paramString1, paramString2);
+    AppMethodBeat.i(156325);
+    paramString1 = (String)getValue("getString", paramString1, paramString2);
     if (paramString1 != null)
     {
-      AppMethodBeat.o(93562);
+      AppMethodBeat.o(156325);
       return paramString1;
     }
-    AppMethodBeat.o(93562);
+    AppMethodBeat.o(156325);
     return paramString2;
   }
   
@@ -331,106 +364,105 @@ public class MultiProcessSharedPreferences
   public Set<String> getStringSet(String paramString, Set<String> paramSet)
   {
     // Byte code:
-    //   0: ldc_w 355
-    //   3: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 424
+    //   3: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_0
-    //   9: ldc_w 352
-    //   12: aload_1
-    //   13: aload_2
-    //   14: invokespecial 276	com/tencent/mm/sdk/platformtools/MultiProcessSharedPreferences:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   17: checkcast 357	java/util/Set
-    //   20: astore_1
-    //   21: aload_1
-    //   22: ifnull +13 -> 35
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: ldc_w 355
-    //   30: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   33: aload_1
-    //   34: areturn
-    //   35: aload_2
-    //   36: astore_1
-    //   37: goto -12 -> 25
-    //   40: astore_1
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: ldc_w 355
-    //   46: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   49: aload_1
-    //   50: athrow
+    //   9: ldc 77
+    //   11: aload_1
+    //   12: aload_2
+    //   13: invokespecial 357	com/tencent/mm/sdk/platformtools/MultiProcessSharedPreferences:getValue	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   16: checkcast 426	java/util/Set
+    //   19: astore_1
+    //   20: aload_1
+    //   21: ifnull +13 -> 34
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: ldc_w 424
+    //   29: invokestatic 144	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: aload_1
+    //   33: areturn
+    //   34: aload_2
+    //   35: astore_1
+    //   36: goto -12 -> 24
+    //   39: astore_1
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: ldc_w 424
+    //   45: invokestatic 144	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: aload_1
+    //   49: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	51	0	this	MultiProcessSharedPreferences
-    //   0	51	1	paramString	String
-    //   0	51	2	paramSet	Set<String>
+    //   0	50	0	this	MultiProcessSharedPreferences
+    //   0	50	1	paramString	String
+    //   0	50	2	paramSet	Set<String>
     // Exception table:
     //   from	to	target	type
-    //   8	21	40	finally
-    //   25	27	40	finally
-    //   41	43	40	finally
+    //   8	20	39	finally
+    //   24	26	39	finally
   }
   
   public String getType(Uri paramUri)
   {
-    AppMethodBeat.i(93576);
+    AppMethodBeat.i(156339);
     paramUri = new UnsupportedOperationException("No external call");
-    AppMethodBeat.o(93576);
+    AppMethodBeat.o(156339);
     throw paramUri;
   }
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(93577);
+    AppMethodBeat.i(156340);
     paramUri = new UnsupportedOperationException("No external insert");
-    AppMethodBeat.o(93577);
+    AppMethodBeat.o(156340);
     throw paramUri;
   }
   
   public boolean onCreate()
   {
-    AppMethodBeat.i(93574);
-    gR(getContext());
-    this.yoW = new UriMatcher(-1);
-    this.yoW.addURI(AUTHORITY, "*/getAll", 1);
-    this.yoW.addURI(AUTHORITY, "*/getString", 2);
-    this.yoW.addURI(AUTHORITY, "*/getInt", 3);
-    this.yoW.addURI(AUTHORITY, "*/getLong", 4);
-    this.yoW.addURI(AUTHORITY, "*/getFloat", 5);
-    this.yoW.addURI(AUTHORITY, "*/getBoolean", 6);
-    this.yoW.addURI(AUTHORITY, "*/contains", 7);
-    this.yoW.addURI(AUTHORITY, "*/apply", 8);
-    this.yoW.addURI(AUTHORITY, "*/commit", 9);
-    this.yoW.addURI(AUTHORITY, "*/registerOnSharedPreferenceChangeListener", 10);
-    this.yoW.addURI(AUTHORITY, "*/unregisterOnSharedPreferenceChangeListener", 11);
-    AppMethodBeat.o(93574);
+    AppMethodBeat.i(156337);
+    checkInitAuthority(getContext());
+    this.mUriMatcher = new UriMatcher(-1);
+    this.mUriMatcher.addURI(AUTHORITY, "*/getAll", 1);
+    this.mUriMatcher.addURI(AUTHORITY, "*/getString", 2);
+    this.mUriMatcher.addURI(AUTHORITY, "*/getInt", 3);
+    this.mUriMatcher.addURI(AUTHORITY, "*/getLong", 4);
+    this.mUriMatcher.addURI(AUTHORITY, "*/getFloat", 5);
+    this.mUriMatcher.addURI(AUTHORITY, "*/getBoolean", 6);
+    this.mUriMatcher.addURI(AUTHORITY, "*/contains", 7);
+    this.mUriMatcher.addURI(AUTHORITY, "*/apply", 8);
+    this.mUriMatcher.addURI(AUTHORITY, "*/commit", 9);
+    this.mUriMatcher.addURI(AUTHORITY, "*/registerOnSharedPreferenceChangeListener", 10);
+    this.mUriMatcher.addURI(AUTHORITY, "*/unregisterOnSharedPreferenceChangeListener", 11);
+    AppMethodBeat.o(156337);
     return true;
   }
   
   public void onLowMemory()
   {
-    AppMethodBeat.i(93580);
-    if (this.yoX != null) {
-      this.yoX.clear();
+    AppMethodBeat.i(156343);
+    if (this.mListenersCount != null) {
+      this.mListenersCount.clear();
     }
     super.onLowMemory();
-    AppMethodBeat.o(93580);
+    AppMethodBeat.o(156343);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(93581);
-    if (this.yoX != null) {
-      this.yoX.clear();
+    AppMethodBeat.i(156344);
+    if (this.mListenersCount != null) {
+      this.mListenersCount.clear();
     }
     super.onTrimMemory(paramInt);
-    AppMethodBeat.o(93581);
+    AppMethodBeat.o(156344);
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    AppMethodBeat.i(93575);
+    AppMethodBeat.i(156338);
     paramString1 = (String)paramUri.getPathSegments().get(0);
     int i = Integer.parseInt(paramArrayOfString2[0]);
     paramString2 = paramArrayOfString2[1];
@@ -438,13 +470,13 @@ public class MultiProcessSharedPreferences
     paramArrayOfString1 = new Bundle();
     label386:
     int j;
-    switch (this.yoW.match(paramUri))
+    switch (this.mUriMatcher.match(paramUri))
     {
     case 8: 
     case 9: 
     default: 
       paramUri = new IllegalArgumentException("This is Unknown Uri：".concat(String.valueOf(paramUri)));
-      AppMethodBeat.o(93575);
+      AppMethodBeat.o(156338);
       throw paramUri;
     case 1: 
       paramArrayOfString1.putSerializable("value", (HashMap)getContext().getSharedPreferences(paramString1, i).getAll());
@@ -456,8 +488,8 @@ public class MultiProcessSharedPreferences
     case 7: 
       for (;;)
       {
-        paramUri = new a(paramArrayOfString1);
-        AppMethodBeat.o(93575);
+        paramUri = new BundleCursor(paramArrayOfString1);
+        AppMethodBeat.o(156338);
         return paramUri;
         paramArrayOfString1.putString("value", getContext().getSharedPreferences(paramString1, i).getString(paramString2, paramArrayOfString2));
         continue;
@@ -472,14 +504,14 @@ public class MultiProcessSharedPreferences
         paramArrayOfString1.putBoolean("value", getContext().getSharedPreferences(paramString1, i).contains(paramString2));
       }
     case 10: 
-      dtr();
-      paramUri = (Integer)this.yoX.get(paramString1);
+      checkInitListenersCount();
+      paramUri = (Integer)this.mListenersCount.get(paramString1);
       if (paramUri == null)
       {
         i = 0;
         j = i + 1;
-        this.yoX.put(paramString1, Integer.valueOf(j));
-        paramUri = (Integer)this.yoX.get(paramString1);
+        this.mListenersCount.put(paramString1, Integer.valueOf(j));
+        paramUri = (Integer)this.mListenersCount.get(paramString1);
         if (paramUri != null) {
           break label459;
         }
@@ -501,8 +533,8 @@ public class MultiProcessSharedPreferences
         break label429;
       }
     }
-    dtr();
-    paramUri = (Integer)this.yoX.get(paramString1);
+    checkInitListenersCount();
+    paramUri = (Integer)this.mListenersCount.get(paramString1);
     if (paramUri == null)
     {
       i = 0;
@@ -511,8 +543,8 @@ public class MultiProcessSharedPreferences
       if (j > 0) {
         break label563;
       }
-      this.yoX.remove(paramString1);
-      if (this.yoX.containsKey(paramString1)) {
+      this.mListenersCount.remove(paramString1);
+      if (this.mListenersCount.containsKey(paramString1)) {
         break label557;
       }
     }
@@ -525,8 +557,8 @@ public class MultiProcessSharedPreferences
       break label499;
     }
     label563:
-    this.yoX.put(paramString1, Integer.valueOf(j));
-    paramUri = (Integer)this.yoX.get(paramString1);
+    this.mListenersCount.put(paramString1, Integer.valueOf(j));
+    paramUri = (Integer)this.mListenersCount.get(paramString1);
     if (paramUri == null)
     {
       i = 0;
@@ -547,77 +579,73 @@ public class MultiProcessSharedPreferences
   
   public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
-    AppMethodBeat.i(93570);
+    AppMethodBeat.i(156333);
     try
     {
-      if (this.fv == null) {
-        this.fv = new ArrayList();
+      if (this.mListeners == null) {
+        this.mListeners = new ArrayList();
       }
-      Boolean localBoolean = (Boolean)c("registerOnSharedPreferenceChangeListener", null, Boolean.FALSE);
+      Boolean localBoolean = (Boolean)getValue("registerOnSharedPreferenceChangeListener", null, Boolean.FALSE);
       if ((localBoolean != null) && (localBoolean.booleanValue()))
       {
-        this.fv.add(new SoftReference(paramOnSharedPreferenceChangeListener));
-        if (this.jQN == null)
+        this.mListeners.add(new SoftReference(paramOnSharedPreferenceChangeListener));
+        if (this.mReceiver == null)
         {
-          this.jQN = new BroadcastReceiver()
+          this.mReceiver = new BroadcastReceiver()
           {
-            public final void onReceive(Context paramAnonymousContext, Intent arg2)
+            public void onReceive(Context paramAnonymousContext, Intent arg2)
             {
-              AppMethodBeat.i(93542);
+              AppMethodBeat.i(156305);
               Object localObject = ???.getStringExtra("name");
               paramAnonymousContext = (List)???.getSerializableExtra("value");
-              if ((MultiProcessSharedPreferences.a(MultiProcessSharedPreferences.this).equals(localObject)) && (paramAnonymousContext != null)) {
-                for (;;)
+              if ((MultiProcessSharedPreferences.this.mName.equals(localObject)) && (paramAnonymousContext != null))
+              {
+                int i;
+                synchronized (MultiProcessSharedPreferences.this)
                 {
-                  int i;
-                  synchronized (MultiProcessSharedPreferences.this)
+                  localObject = MultiProcessSharedPreferences.this.mListeners;
+                  ??? = new ArrayList((Collection)localObject);
+                  i = paramAnonymousContext.size() - 1;
+                  if (i >= 0)
                   {
-                    localObject = MultiProcessSharedPreferences.b(MultiProcessSharedPreferences.this);
-                    ??? = new ArrayList((Collection)localObject);
-                    i = paramAnonymousContext.size() - 1;
-                    if (i < 0) {
-                      break;
-                    }
                     localObject = (String)paramAnonymousContext.get(i);
                     Iterator localIterator = ???.iterator();
-                    if (localIterator.hasNext())
+                    while (localIterator.hasNext())
                     {
                       SharedPreferences.OnSharedPreferenceChangeListener localOnSharedPreferenceChangeListener = (SharedPreferences.OnSharedPreferenceChangeListener)((SoftReference)localIterator.next()).get();
-                      if (localOnSharedPreferenceChangeListener == null) {
-                        continue;
+                      if (localOnSharedPreferenceChangeListener != null) {
+                        localOnSharedPreferenceChangeListener.onSharedPreferenceChanged(MultiProcessSharedPreferences.this, (String)localObject);
                       }
-                      localOnSharedPreferenceChangeListener.onSharedPreferenceChanged(MultiProcessSharedPreferences.this, (String)localObject);
                     }
                   }
-                  i -= 1;
                 }
               }
-              AppMethodBeat.o(93542);
+              AppMethodBeat.o(156305);
             }
           };
-          this.mContext.registerReceiver(this.jQN, new IntentFilter(apv(this.mName)));
+          this.mContext.registerReceiver(this.mReceiver, new IntentFilter(makeAction(this.mName)));
         }
       }
       return;
     }
     finally
     {
-      AppMethodBeat.o(93570);
+      AppMethodBeat.o(156333);
     }
   }
   
   public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
-    AppMethodBeat.i(93571);
+    AppMethodBeat.i(156334);
     Object localObject;
     try
     {
-      c("unregisterOnSharedPreferenceChangeListener", null, Boolean.FALSE);
-      if (this.fv == null) {
-        break label192;
+      getValue("unregisterOnSharedPreferenceChangeListener", null, Boolean.FALSE);
+      if (this.mListeners == null) {
+        break label191;
       }
       localObject = new ArrayList();
-      Iterator localIterator = this.fv.iterator();
+      Iterator localIterator = this.mListeners.iterator();
       while (localIterator.hasNext())
       {
         SoftReference localSoftReference = (SoftReference)localIterator.next();
@@ -630,43 +658,43 @@ public class MultiProcessSharedPreferences
     }
     finally
     {
-      AppMethodBeat.o(93571);
+      AppMethodBeat.o(156334);
     }
     while (paramOnSharedPreferenceChangeListener.hasNext())
     {
       localObject = (SoftReference)paramOnSharedPreferenceChangeListener.next();
-      this.fv.remove(localObject);
+      this.mListeners.remove(localObject);
     }
-    if ((this.fv.isEmpty()) && (this.jQN != null))
+    if ((this.mListeners.isEmpty()) && (this.mReceiver != null))
     {
-      this.mContext.unregisterReceiver(this.jQN);
-      this.jQN = null;
-      this.fv = null;
+      this.mContext.unregisterReceiver(this.mReceiver);
+      this.mReceiver = null;
+      this.mListeners = null;
     }
-    label192:
-    AppMethodBeat.o(93571);
+    label191:
+    AppMethodBeat.o(156334);
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(93579);
+    AppMethodBeat.i(156342);
     String str1 = (String)paramUri.getPathSegments().get(0);
     int i = Integer.parseInt(paramArrayOfString[0]);
     Object localObject1 = getContext().getSharedPreferences(str1, i);
-    int j = this.yoW.match(paramUri);
+    int j = this.mUriMatcher.match(paramUri);
     switch (j)
     {
     default: 
       paramUri = new IllegalArgumentException("This is Unknown Uri：".concat(String.valueOf(paramUri)));
-      AppMethodBeat.o(93579);
+      AppMethodBeat.o(156342);
       throw paramUri;
     }
-    if ((this.yoX != null) && (this.yoX.get(str1) != null) && (((Integer)this.yoX.get(str1)).intValue() > 0))
+    if ((this.mListenersCount != null) && (this.mListenersCount.get(str1) != null) && (((Integer)this.mListenersCount.get(str1)).intValue() > 0))
     {
       i = 1;
       paramUri = new HashMap();
       if (i == 0) {
-        break label791;
+        break label703;
       }
       paramString = new ArrayList();
       paramUri = ((SharedPreferences)localObject1).getAll();
@@ -683,7 +711,7 @@ public class MultiProcessSharedPreferences
           {
             if (paramArrayOfString.hasNext())
             {
-              paramString.add(((Map.Entry)paramArrayOfString.next()).getKey());
+              paramString.add((String)((Map.Entry)paramArrayOfString.next()).getKey());
               continue;
               i = 0;
               break;
@@ -698,7 +726,7 @@ public class MultiProcessSharedPreferences
         Object localObject2 = (Map.Entry)paramArrayOfString.next();
         String str2 = (String)((Map.Entry)localObject2).getKey();
         localObject2 = ((Map.Entry)localObject2).getValue();
-        if (((localObject2 instanceof b)) || (localObject2 == null))
+        if (((localObject2 instanceof EditorImpl)) || (localObject2 == null))
         {
           ((SharedPreferences.Editor)localObject1).remove(str2);
           if ((i != 0) && (paramUri != null) && (paramUri.containsKey(str2))) {
@@ -708,7 +736,7 @@ public class MultiProcessSharedPreferences
         for (;;)
         {
           if (!(localObject2 instanceof String)) {
-            break label459;
+            break label462;
           }
           ((SharedPreferences.Editor)localObject1).putString(str2, (String)localObject2);
           break;
@@ -716,9 +744,9 @@ public class MultiProcessSharedPreferences
             paramString.add(str2);
           }
         }
-        label459:
+        label462:
         if ((localObject2 instanceof Set)) {
-          c.a((SharedPreferences.Editor)localObject1, str2, (Set)localObject2);
+          ReflectionUtil.editorPutStringSet((SharedPreferences.Editor)localObject1, str2, (Set)localObject2);
         } else if ((localObject2 instanceof Integer)) {
           ((SharedPreferences.Editor)localObject1).putInt(str2, ((Integer)localObject2).intValue());
         } else if ((localObject2 instanceof Long)) {
@@ -735,68 +763,39 @@ public class MultiProcessSharedPreferences
       for (;;)
       {
         paramContentValues.clear();
-        AppMethodBeat.o(93579);
+        AppMethodBeat.o(156342);
         return i;
         switch (j)
         {
         }
         do
         {
-          for (;;)
-          {
-            i = 0;
-            break;
-            try
-            {
-              localObject1.getClass().getDeclaredMethod("apply", new Class[0]).invoke(localObject1, new Object[0]);
-              l(str1, paramString);
-              i = 1;
-            }
-            catch (IllegalArgumentException paramUri)
-            {
-              paramUri = new RuntimeException(paramUri);
-              AppMethodBeat.o(93579);
-              throw paramUri;
-            }
-            catch (IllegalAccessException paramUri)
-            {
-              paramUri = new RuntimeException(paramUri);
-              AppMethodBeat.o(93579);
-              throw paramUri;
-            }
-            catch (InvocationTargetException paramUri)
-            {
-              paramUri = new RuntimeException(paramUri);
-              AppMethodBeat.o(93579);
-              throw paramUri;
-            }
-            catch (NoSuchMethodException paramUri)
-            {
-              paramUri = new RuntimeException(paramUri);
-              AppMethodBeat.o(93579);
-              throw paramUri;
-            }
-          }
+          i = 0;
+          break;
+          ReflectionUtil.editorApply((SharedPreferences.Editor)localObject1);
+          notifyListeners(str1, paramString);
+          i = 1;
+          break;
         } while (!((SharedPreferences.Editor)localObject1).commit());
-        l(str1, paramString);
+        notifyListeners(str1, paramString);
         i = 1;
       }
-      label791:
+      label703:
       paramString = null;
     }
   }
   
-  static final class a
+  static final class BundleCursor
     extends MatrixCursor
   {
     private Bundle mBundle;
     
-    public a(Bundle paramBundle)
+    public BundleCursor(Bundle paramBundle)
     {
       super(0);
-      AppMethodBeat.i(93543);
+      AppMethodBeat.i(156306);
       this.mBundle = paramBundle;
-      AppMethodBeat.o(93543);
+      AppMethodBeat.o(156306);
     }
     
     public final Bundle getExtras()
@@ -811,38 +810,38 @@ public class MultiProcessSharedPreferences
     }
   }
   
-  public final class b
+  public final class EditorImpl
     implements SharedPreferences.Editor
   {
-    private final Map<String, Object> yoJ;
-    private boolean yoK;
+    private boolean mClear;
+    private final Map<String, Object> mModified;
     
-    public b()
+    public EditorImpl()
     {
-      AppMethodBeat.i(93544);
-      this.yoJ = new HashMap();
-      this.yoK = false;
-      AppMethodBeat.o(93544);
+      AppMethodBeat.i(156307);
+      this.mModified = new HashMap();
+      this.mClear = false;
+      AppMethodBeat.o(156307);
     }
     
     private boolean setValue(String paramString)
     {
-      AppMethodBeat.i(93554);
-      if (MultiProcessSharedPreferences.c(MultiProcessSharedPreferences.this))
+      AppMethodBeat.i(156317);
+      if (MultiProcessSharedPreferences.this.mIsSafeMode)
       {
-        AppMethodBeat.o(93554);
+        AppMethodBeat.o(156317);
         return false;
       }
       synchronized (MultiProcessSharedPreferences.this)
       {
-        MultiProcessSharedPreferences.a(MultiProcessSharedPreferences.this, MultiProcessSharedPreferences.d(MultiProcessSharedPreferences.this));
-        int i = MultiProcessSharedPreferences.e(MultiProcessSharedPreferences.this);
-        boolean bool = this.yoK;
+        MultiProcessSharedPreferences.access$400(MultiProcessSharedPreferences.this, MultiProcessSharedPreferences.this.mContext);
+        int i = MultiProcessSharedPreferences.this.mMode;
+        boolean bool = this.mClear;
         try
         {
-          paramString = Uri.withAppendedPath(Uri.withAppendedPath(MultiProcessSharedPreferences.dts(), MultiProcessSharedPreferences.a(MultiProcessSharedPreferences.this)), paramString);
-          ContentValues localContentValues = MultiProcessSharedPreferences.c.r((HashMap)this.yoJ);
-          if (MultiProcessSharedPreferences.d(MultiProcessSharedPreferences.this).getContentResolver().update(paramString, localContentValues, null, new String[] { String.valueOf(i), String.valueOf(bool) }) > 0) {}
+          paramString = Uri.withAppendedPath(Uri.withAppendedPath(MultiProcessSharedPreferences.AUTHORITY_URI, MultiProcessSharedPreferences.this.mName), paramString);
+          ContentValues localContentValues = MultiProcessSharedPreferences.ReflectionUtil.contentValuesNewInstance((HashMap)this.mModified);
+          if (MultiProcessSharedPreferences.this.mContext.getContentResolver().update(paramString, localContentValues, null, new String[] { String.valueOf(i), String.valueOf(bool) }) > 0) {}
           for (bool = true;; bool = false) {
             return bool;
           }
@@ -850,103 +849,107 @@ public class MultiProcessSharedPreferences
         }
         finally
         {
-          AppMethodBeat.o(93554);
+          AppMethodBeat.o(156317);
         }
       }
     }
     
     public final void apply()
     {
-      AppMethodBeat.i(93552);
+      AppMethodBeat.i(156315);
       setValue("apply");
-      AppMethodBeat.o(93552);
+      AppMethodBeat.o(156315);
     }
     
     public final SharedPreferences.Editor clear()
     {
       try
       {
-        this.yoK = true;
+        this.mClear = true;
         return this;
       }
-      finally {}
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
     }
     
     public final boolean commit()
     {
-      AppMethodBeat.i(93553);
+      AppMethodBeat.i(156316);
       boolean bool = setValue("commit");
-      AppMethodBeat.o(93553);
+      AppMethodBeat.o(156316);
       return bool;
     }
     
     public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(93550);
+      AppMethodBeat.i(156313);
       try
       {
-        this.yoJ.put(paramString, Boolean.valueOf(paramBoolean));
+        this.mModified.put(paramString, Boolean.valueOf(paramBoolean));
         return this;
       }
       finally
       {
-        AppMethodBeat.o(93550);
+        AppMethodBeat.o(156313);
       }
     }
     
     public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
     {
-      AppMethodBeat.i(93549);
+      AppMethodBeat.i(156312);
       try
       {
-        this.yoJ.put(paramString, Float.valueOf(paramFloat));
+        this.mModified.put(paramString, Float.valueOf(paramFloat));
         return this;
       }
       finally
       {
-        AppMethodBeat.o(93549);
+        AppMethodBeat.o(156312);
       }
     }
     
     public final SharedPreferences.Editor putInt(String paramString, int paramInt)
     {
-      AppMethodBeat.i(93547);
+      AppMethodBeat.i(156310);
       try
       {
-        this.yoJ.put(paramString, Integer.valueOf(paramInt));
+        this.mModified.put(paramString, Integer.valueOf(paramInt));
         return this;
       }
       finally
       {
-        AppMethodBeat.o(93547);
+        AppMethodBeat.o(156310);
       }
     }
     
     public final SharedPreferences.Editor putLong(String paramString, long paramLong)
     {
-      AppMethodBeat.i(93548);
+      AppMethodBeat.i(156311);
       try
       {
-        this.yoJ.put(paramString, Long.valueOf(paramLong));
+        this.mModified.put(paramString, Long.valueOf(paramLong));
         return this;
       }
       finally
       {
-        AppMethodBeat.o(93548);
+        AppMethodBeat.o(156311);
       }
     }
     
     public final SharedPreferences.Editor putString(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(93545);
+      AppMethodBeat.i(156308);
       try
       {
-        this.yoJ.put(paramString1, paramString2);
+        this.mModified.put(paramString1, paramString2);
         return this;
       }
       finally
       {
-        AppMethodBeat.o(93545);
+        AppMethodBeat.o(156308);
       }
     }
     
@@ -954,12 +957,12 @@ public class MultiProcessSharedPreferences
     public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
     {
       // Byte code:
-      //   0: ldc 155
+      //   0: ldc 156
       //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
       //   6: monitorenter
       //   7: aload_0
-      //   8: getfield 35	com/tencent/mm/sdk/platformtools/MultiProcessSharedPreferences$b:yoJ	Ljava/util/Map;
+      //   8: getfield 35	com/tencent/mm/sdk/platformtools/MultiProcessSharedPreferences$EditorImpl:mModified	Ljava/util/Map;
       //   11: astore_3
       //   12: aload_2
       //   13: ifnonnull +23 -> 36
@@ -968,30 +971,30 @@ public class MultiProcessSharedPreferences
       //   18: aload_3
       //   19: aload_1
       //   20: aload_2
-      //   21: invokeinterface 125 3 0
+      //   21: invokeinterface 126 3 0
       //   26: pop
       //   27: aload_0
       //   28: monitorexit
-      //   29: ldc 155
+      //   29: ldc 156
       //   31: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   34: aload_0
       //   35: areturn
-      //   36: new 157	java/util/HashSet
+      //   36: new 158	java/util/HashSet
       //   39: dup
       //   40: aload_2
-      //   41: invokespecial 160	java/util/HashSet:<init>	(Ljava/util/Collection;)V
+      //   41: invokespecial 161	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   44: astore_2
       //   45: goto -27 -> 18
       //   48: astore_1
       //   49: aload_0
       //   50: monitorexit
-      //   51: ldc 155
+      //   51: ldc 156
       //   53: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   56: aload_1
       //   57: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	58	0	this	b
+      //   0	58	0	this	EditorImpl
       //   0	58	1	paramString	String
       //   0	58	2	paramSet	Set<String>
       //   11	8	3	localMap	Map
@@ -1000,101 +1003,135 @@ public class MultiProcessSharedPreferences
       //   7	12	48	finally
       //   18	29	48	finally
       //   36	45	48	finally
-      //   49	51	48	finally
     }
     
     public final SharedPreferences.Editor remove(String paramString)
     {
-      AppMethodBeat.i(93551);
+      AppMethodBeat.i(156314);
       try
       {
-        this.yoJ.put(paramString, null);
+        this.mModified.put(paramString, null);
         return this;
       }
       finally
       {
-        AppMethodBeat.o(93551);
+        AppMethodBeat.o(156314);
       }
     }
   }
   
-  static final class c
+  static class ReflectionUtil
   {
-    public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
+    public static ContentValues contentValuesNewInstance(HashMap<String, Object> paramHashMap)
     {
-      AppMethodBeat.i(93556);
-      try
-      {
-        paramEditor = (SharedPreferences.Editor)paramEditor.getClass().getDeclaredMethod("putStringSet", new Class[] { String.class, Set.class }).invoke(paramEditor, new Object[] { paramString, paramSet });
-        AppMethodBeat.o(93556);
-        return paramEditor;
-      }
-      catch (IllegalArgumentException paramEditor)
-      {
-        paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(93556);
-        throw paramEditor;
-      }
-      catch (IllegalAccessException paramEditor)
-      {
-        paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(93556);
-        throw paramEditor;
-      }
-      catch (InvocationTargetException paramEditor)
-      {
-        paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(93556);
-        throw paramEditor;
-      }
-      catch (NoSuchMethodException paramEditor)
-      {
-        paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(93556);
-        throw paramEditor;
-      }
-    }
-    
-    public static ContentValues r(HashMap<String, Object> paramHashMap)
-    {
-      AppMethodBeat.i(93555);
+      AppMethodBeat.i(156318);
       try
       {
         Constructor localConstructor = ContentValues.class.getDeclaredConstructor(new Class[] { HashMap.class });
         localConstructor.setAccessible(true);
         paramHashMap = (ContentValues)localConstructor.newInstance(new Object[] { paramHashMap });
-        AppMethodBeat.o(93555);
+        AppMethodBeat.o(156318);
         return paramHashMap;
       }
       catch (IllegalArgumentException paramHashMap)
       {
         paramHashMap = new RuntimeException(paramHashMap);
-        AppMethodBeat.o(93555);
+        AppMethodBeat.o(156318);
         throw paramHashMap;
       }
       catch (IllegalAccessException paramHashMap)
       {
         paramHashMap = new RuntimeException(paramHashMap);
-        AppMethodBeat.o(93555);
+        AppMethodBeat.o(156318);
         throw paramHashMap;
       }
       catch (InvocationTargetException paramHashMap)
       {
         paramHashMap = new RuntimeException(paramHashMap);
-        AppMethodBeat.o(93555);
+        AppMethodBeat.o(156318);
         throw paramHashMap;
       }
       catch (NoSuchMethodException paramHashMap)
       {
         paramHashMap = new RuntimeException(paramHashMap);
-        AppMethodBeat.o(93555);
+        AppMethodBeat.o(156318);
         throw paramHashMap;
       }
       catch (InstantiationException paramHashMap)
       {
         paramHashMap = new RuntimeException(paramHashMap);
-        AppMethodBeat.o(93555);
+        AppMethodBeat.o(156318);
         throw paramHashMap;
+      }
+    }
+    
+    public static void editorApply(SharedPreferences.Editor paramEditor)
+    {
+      AppMethodBeat.i(244049);
+      try
+      {
+        paramEditor.getClass().getDeclaredMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+        AppMethodBeat.o(244049);
+        return;
+      }
+      catch (IllegalArgumentException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(244049);
+        throw paramEditor;
+      }
+      catch (IllegalAccessException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(244049);
+        throw paramEditor;
+      }
+      catch (InvocationTargetException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(244049);
+        throw paramEditor;
+      }
+      catch (NoSuchMethodException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(244049);
+        throw paramEditor;
+      }
+    }
+    
+    public static SharedPreferences.Editor editorPutStringSet(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
+    {
+      AppMethodBeat.i(156319);
+      try
+      {
+        paramEditor = (SharedPreferences.Editor)paramEditor.getClass().getDeclaredMethod("putStringSet", new Class[] { String.class, Set.class }).invoke(paramEditor, new Object[] { paramString, paramSet });
+        AppMethodBeat.o(156319);
+        return paramEditor;
+      }
+      catch (IllegalArgumentException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(156319);
+        throw paramEditor;
+      }
+      catch (IllegalAccessException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(156319);
+        throw paramEditor;
+      }
+      catch (InvocationTargetException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(156319);
+        throw paramEditor;
+      }
+      catch (NoSuchMethodException paramEditor)
+      {
+        paramEditor = new RuntimeException(paramEditor);
+        AppMethodBeat.o(156319);
+        throw paramEditor;
       }
     }
   }

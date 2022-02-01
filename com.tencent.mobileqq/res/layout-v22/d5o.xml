@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/n_e" android:background="#ffe3effd" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingHorizontal="@dimen/mw"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/oc1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n6" android:src="@drawable/iwv" android:layout_centerVertical="true" />
+        <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.5dip" android:src="@drawable/i9n" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jp7">
+        <ImageView android:id="@id/a4f" android:layout_width="345.0dip" android:layout_height="495.0dip" android:src="@drawable/iww" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/ayx" android:textStyle="bold" android:textColor="#ff0f2231" android:id="@id/lrt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="朋友失联了" android:layout_below="@id/a4f" android:layout_alignLeft="@id/a4f" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="请关闭飞行模式或检查设备的网络设置" android:layout_below="@id/lrt" android:layout_alignLeft="@id/a4f" />
+    </RelativeLayout>
+</RelativeLayout>

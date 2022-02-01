@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(5859);
-    uQF = new b("AUTO", 0);
-    uQG = new b("LANDSCAPE", 1);
-    uQH = new b("PORTRAIT", 2);
-    uQI = new b[] { uQF, uQG, uQH };
-    AppMethodBeat.o(5859);
+    AppMethodBeat.i(78072);
+    WCP = new b("AUTO", 0);
+    WCQ = new b("LANDSCAPE", 1);
+    WCR = new b("PORTRAIT", 2);
+    WCS = new b[] { WCP, WCQ, WCR };
+    AppMethodBeat.o(78072);
   }
   
   private FtsWebVideoView$b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.FtsWebVideoView.b
  * JD-Core Version:    0.7.0.1
  */

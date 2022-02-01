@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.LinerLayoutForListViewItem android:orientation="vertical" android:id="@id/feed_operation_area" android:background="@color/qzone_feeditem_nor" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/feed_cover_layout" android:background="@drawable/qq_profilecard_cover_default" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/qzone_feeds_header_height">
+        <com.qzone.cover.ui.QZoneCoverContainer android:id="@id/feed_cover" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.qzone.cover.business.QZoneWidgetControllerDecorator android:id="@id/qzone_cover_widget_decorator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_marginBottom="51.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <ViewStub android:id="@id/qzone_cover_bubble_stub" android:layout="@layout/qzone_viewstub_cover_bubble" android:layout_width="@dimen/qzone_cover_bubble_width" android:layout_height="@dimen/qzone_cover_bubble_height" android:layout_marginBottom="5.0dip" android:layout_above="@id/qzone_cover_widget_decorator" android:layout_alignParentLeft="true" />
+        <View android:id="@id/feed_comment_div" android:background="#ffeeeeee" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <include android:id="@id/avatar_area" layout="@layout/qzone_hd_avatar" />
+    <include android:id="@id/qz_top_banner_container" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qzone_top_banner" />
+    <com.qzone.navigationbar.HDNavigatorBarForFeed android:layout_gravity="center_horizontal" android:id="@id/title_navbar" android:background="@drawable/card_shadow" android:layout_width="@dimen/qzone_feed_width" android:layout_height="@dimen/qzone_navbar_height" />
+    <include layout="@layout/qzone_feed_header_banner" />
+    <RelativeLayout android:id="@id/empty_content_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="250.0dip">
+        <ImageView android:id="@id/empty_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/friendfeeds_empty_icon_marginTop" android:layout_marginBottom="5.0dip" android:src="@drawable/qzone_icon_logo_normal" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffc3c7c9" android:gravity="center" android:id="@id/empty_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/friend_feed_empty_tip" android:layout_below="@id/empty_icon" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</com.qzone.widget.LinerLayoutForListViewItem>

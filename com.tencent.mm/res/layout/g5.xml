@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="发起转账申请后，资金将按如下时间存入对方账户" android:key="brsa_title" />
-</PreferenceScreen>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/bk" android:textColor="@color/m4" android:gravity="center|left" android:id="@id/v9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/ox" />
+    <com.tencent.mm.plugin.appbrand.widget.sms.EditVerifyCodeView android:id="@id/v8" android:layout_width="fill_parent" android:layout_height="@dimen/avp" android:layout_marginTop="20.0dip" />
+    <TextView android:textSize="@dimen/bk" android:textColor="@color/m4" android:gravity="center|left" android:id="@id/uq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/ol" />
+</LinearLayout>

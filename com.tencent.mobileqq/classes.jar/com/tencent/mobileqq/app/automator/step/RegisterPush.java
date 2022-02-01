@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amir;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -12,39 +11,39 @@ public class RegisterPush
 {
   private AccountObserver a;
   
-  public int a()
+  protected int doStep()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().e();
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.p();
+    this.mAutomator.k.getMsgHandler().r();
+    this.mAutomator.k.sendRegisterPush();
     return 2;
   }
   
-  public void a()
+  public void onCreate()
   {
-    if (this.b == 13) {}
-    for (this.c = 0;; this.c = 10)
-    {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new amir(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-      return;
+    if (this.mStepId == 13) {
+      this.mCountRetry = 0;
+    } else {
+      this.mCountRetry = 10;
     }
+    this.a = new RegisterPush.MyAccountObserver(this, null);
+    this.mAutomator.k.registObserver(this.a);
   }
   
-  public void d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_MqqObserverAccountObserver != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-      this.jdField_a_of_type_MqqObserverAccountObserver = null;
+      this.mAutomator.k.unRegistObserver(this.a);
+      this.a = null;
     }
-    if ((this.b == 12) && (this.jdField_a_of_type_Int == 6)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.onDestroy();
+    if ((this.mStepId == 12) && (this.mResult == 6)) {
+      this.mAutomator.onDestroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.RegisterPush
  * JD-Core Version:    0.7.0.1
  */

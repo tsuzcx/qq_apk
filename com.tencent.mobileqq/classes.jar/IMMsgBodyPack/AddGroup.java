@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class AddGroup
   extends JceStruct
 {
-  public long dwGroupID;
-  public long dwSortID;
+  public long dwGroupID = 0L;
+  public long dwSortID = 0L;
   public String strGroupName = "";
   
   public AddGroup() {}
@@ -31,14 +31,15 @@ public final class AddGroup
   {
     paramJceOutputStream.write(this.dwGroupID, 0);
     paramJceOutputStream.write(this.dwSortID, 1);
-    if (this.strGroupName != null) {
-      paramJceOutputStream.write(this.strGroupName, 2);
+    String str = this.strGroupName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.AddGroup
  * JD-Core Version:    0.7.0.1
  */

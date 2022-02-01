@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iwl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="@dimen/d_" android:layout_height="@dimen/d_">
+        <ImageView android:id="@id/a1r" android:background="@drawable/ao1" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_centerInParent="true" />
+        <CheckBox android:id="@id/j97" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/bv" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/bv" android:layout_alignParentEnd="true" style="@style/lr" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/cd" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center|top" android:id="@id/l1x" android:layout_width="@dimen/d_" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:maxLines="2" />
+</LinearLayout>

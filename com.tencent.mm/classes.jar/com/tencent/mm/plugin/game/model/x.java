@@ -1,79 +1,79 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.ds;
-import com.tencent.mm.plugin.game.d.e;
-import com.tencent.mm.plugin.game.d.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.game.protobuf.ex;
+import com.tencent.mm.plugin.game.protobuf.g;
+import com.tencent.mm.plugin.game.protobuf.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class x
 {
-  public static c a(e parame)
+  public static c a(g paramg)
   {
-    AppMethodBeat.i(111358);
-    if (parame == null)
+    AppMethodBeat.i(41523);
+    if (paramg == null)
     {
-      ab.e("MicroMsg.GamePBData", "Invalid pb object");
-      AppMethodBeat.o(111358);
+      Log.e("MicroMsg.GamePBData", "Invalid pb object");
+      AppMethodBeat.o(41523);
       return null;
     }
-    if (bo.isNullOrNil(parame.npZ))
+    if (Util.isNullOrNil(paramg.muA))
     {
-      ab.e("MicroMsg.GamePBData", "No AppID field, abort");
-      AppMethodBeat.o(111358);
+      Log.e("MicroMsg.GamePBData", "No AppID field, abort");
+      AppMethodBeat.o(41523);
       return null;
     }
-    ab.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { parame.npZ });
+    Log.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { paramg.muA });
     c localc = new c();
-    localc.field_appId = parame.npZ;
-    localc.field_appName = parame.Name;
-    localc.field_appIconUrl = parame.nqa;
+    localc.field_appId = paramg.muA;
+    localc.field_appName = paramg.IGU;
+    localc.field_appIconUrl = paramg.IGT;
     localc.field_appType = ",1,";
-    localc.field_packageName = parame.nqc;
-    localc.field_appVersion = parame.Version;
-    localc.field_appInfoFlag = parame.nqf;
-    if (parame.nqe != null)
+    localc.field_packageName = paramg.IcK;
+    localc.field_appVersion = paramg.crz;
+    localc.field_appInfoFlag = paramg.IGY;
+    if (paramg.IGX != null)
     {
-      localc.iV(parame.nqe.nqK);
-      localc.iY(parame.nqe.nqL);
-      localc.ho(parame.nqe.nqO);
-      localc.iZ(parame.nqe.nqM);
-      localc.nmn = parame.nqe.nqQ;
-      localc.nmo = parame.nqe.nqP;
-      localc.cvQ = parame.nqe.nqR;
+      localc.AE(paramg.IGX.IId);
+      localc.AH(paramg.IGX.IIe);
+      localc.pl(paramg.IGX.IIh);
+      localc.AI(paramg.IGX.IIf);
+      localc.ICy = paramg.IGX.IIj;
+      localc.tQv = paramg.IGX.IIi;
+      localc.hMd = paramg.IGX.IIk;
     }
-    if ((parame.nqe != null) && (parame.nqe.nqN != null))
+    if ((paramg.IGX != null) && (paramg.IGX.IIg != null))
     {
-      localc.je(parame.nqe.nqN.nqK);
-      localc.jf(parame.nqe.nqN.nux);
-      localc.jc(parame.nqe.nqN.nuy);
-      localc.jd(parame.nqe.nqN.nuz);
-      localc.hp(parame.nqe.nqN.nuB);
+      localc.AN(paramg.IGX.IIg.IId);
+      localc.AO(paramg.IGX.IIg.IMs);
+      localc.AL(paramg.IGX.IIg.IMt);
+      localc.AM(paramg.IGX.IIg.IMu);
+      localc.pm(paramg.IGX.IIg.IMw);
     }
-    localc.nlU = parame.Desc;
-    localc.nlT = parame.nqb;
-    localc.status = parame.jJS;
-    localc.nlW = parame.npU;
-    localc.versionCode = parame.nqd;
-    localc.cnG = parame.npW;
-    localc.nlY = parame.nqg;
-    localc.nmg = parame.nql;
-    if ((parame.nqe != null) && (parame.nqe.nqN != null))
+    localc.ICg = paramg.IGG;
+    localc.ICf = paramg.IGV;
+    localc.status = paramg.vhk;
+    localc.ICi = paramg.IGL;
+    localc.versionCode = paramg.IGW;
+    localc.hAR = paramg.IGQ;
+    localc.piu = paramg.IGZ;
+    localc.ICr = paramg.IHe;
+    if ((paramg.IGX != null) && (paramg.IGX.IIg != null))
     {
-      localc.nlZ = parame.nqe.nqN.nuA;
-      localc.nma = parame.nqe.nqN.nuC;
-      localc.nmb = parame.nqe.nqN.nuD;
+      localc.ICk = paramg.IGX.IIg.IMv;
+      localc.ICl = paramg.IGX.IIg.IMx;
+      localc.ICm = paramg.IGX.IIg.IMy;
     }
-    localc.edl = parame.nqn;
-    localc.nmp = parame.nqo;
-    AppMethodBeat.o(111358);
+    localc.appType = paramg.IHg;
+    localc.ICz = paramg.IHh;
+    AppMethodBeat.o(41523);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.x
  * JD-Core Version:    0.7.0.1
  */

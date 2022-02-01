@@ -7,7 +7,7 @@ import android.os.Parcelable.Creator;
 public class DevlockInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new c();
+  public static final Parcelable.Creator<DevlockInfo> CREATOR = new c();
   public int AllowSet;
   public int AvailableMsgCount;
   public String BakCountryCode;
@@ -21,6 +21,7 @@ public class DevlockInfo
   public int MbGuideType;
   public int MbItemSmsCodeStatus;
   public String Mobile;
+  public String OtherDevLockVerifyUrl;
   public String ProtectIntro;
   public int TimeLimit;
   public byte[] TransferInfo;
@@ -77,6 +78,7 @@ public class DevlockInfo
       this.TransferInfo = new byte[i];
       paramParcel.readByteArray(this.TransferInfo);
     }
+    this.OtherDevLockVerifyUrl = paramParcel.readString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -102,13 +104,17 @@ public class DevlockInfo
     paramParcel.writeInt(this.BakMobileState);
     paramParcel.writeString(this.BakCountryCode);
     paramParcel.writeString(this.BakMobile);
-    if ((this.TransferInfo != null) && (this.TransferInfo.length > 0))
+    byte[] arrayOfByte = this.TransferInfo;
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
-      paramParcel.writeInt(this.TransferInfo.length);
+      paramParcel.writeInt(arrayOfByte.length);
       paramParcel.writeByteArray(this.TransferInfo);
-      return;
     }
-    paramParcel.writeInt(0);
+    else
+    {
+      paramParcel.writeInt(0);
+    }
+    paramParcel.writeString(this.OtherDevLockVerifyUrl);
   }
 }
 

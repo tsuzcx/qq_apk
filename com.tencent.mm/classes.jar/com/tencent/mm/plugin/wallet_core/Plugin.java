@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.wallet_core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.wallet_core.a.a;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(46465);
+    AppMethodBeat.i(69861);
     a locala = new a();
-    AppMethodBeat.o(46465);
+    AppMethodBeat.o(69861);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(46466);
-    t localt = new t();
-    AppMethodBeat.o(46466);
-    return localt;
+    AppMethodBeat.i(69862);
+    u localu = new u();
+    AppMethodBeat.o(69862);
+    return localu;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.Plugin
  * JD-Core Version:    0.7.0.1
  */

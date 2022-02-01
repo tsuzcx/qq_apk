@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.sight.decode.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class c$2
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class c$2
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(70282);
-    c.e(this.qUl);
-    AppMethodBeat.o(70282);
+    AppMethodBeat.i(116128);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/sight/decode/ui/SightPopupHelper$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    c.e(this.PGP);
+    a.a(this, "com/tencent/mm/plugin/sight/decode/ui/SightPopupHelper$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(116128);
   }
 }
 

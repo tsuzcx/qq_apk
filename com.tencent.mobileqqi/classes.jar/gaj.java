@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.ActionCountdownOver;
-import java.util.TimerTask;
+import com.tencent.mobileqq.magicface.model.MagicfaceDecoder;
+import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
 
 public class gaj
-  extends TimerTask
+  implements Runnable
 {
-  public gaj(ActionGlobalData paramActionGlobalData) {}
+  public gaj(MagicfaceDecoder paramMagicfaceDecoder) {}
   
   public void run()
   {
-    ActionGlobalData.a(this.a);
-    ActionGlobalData localActionGlobalData = this.a;
-    localActionGlobalData.a -= 0.1F;
-    if (ActionGlobalData.a(this.a) != null) {
-      ActionGlobalData.a(this.a).b();
+    int i = Thread.currentThread().getPriority();
+    Thread.currentThread().setPriority(10);
+    this.a.jdField_a_of_type_Boolean = true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.a();
     }
-    if (ActionGlobalData.b(this.a) * 100 == this.a.c * 1000)
-    {
-      this.a.a = 0.0F;
-      if (ActionGlobalData.a(this.a) != null) {
-        ActionGlobalData.a(this.a).a();
-      }
-      cancel();
+    this.a.e();
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.b();
     }
+    Thread.currentThread().setPriority(i);
   }
 }
 

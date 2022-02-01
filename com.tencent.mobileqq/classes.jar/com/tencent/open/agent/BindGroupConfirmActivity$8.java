@@ -1,35 +1,38 @@
 package com.tencent.open.agent;
 
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import bdgm;
-import bdjz;
-import bfdg;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class BindGroupConfirmActivity$8
+class BindGroupConfirmActivity$8
   implements Runnable
 {
   BindGroupConfirmActivity$8(BindGroupConfirmActivity paramBindGroupConfirmActivity, String paramString) {}
   
   public void run()
   {
-    if (this.this$0.a == null) {
-      this.this$0.a = bdgm.a(this.this$0, 230);
+    if (this.this$0.u == null)
+    {
+      localObject = this.this$0;
+      ((BindGroupConfirmActivity)localObject).u = DialogUtil.a((Context)localObject, 230);
     }
     if (!TextUtils.isEmpty(this.a)) {
-      this.this$0.a.setMessage(this.a);
+      this.this$0.u.setMessage(this.a);
     }
-    bfdg localbfdg = new bfdg(this);
-    this.this$0.a.setTitle(2131721029);
-    this.this$0.a.setPositiveButton(2131691089, localbfdg);
-    this.this$0.a.setNegativeButton(2131690648, localbfdg);
-    if (!this.this$0.a.isShowing()) {
-      this.this$0.a.show();
+    Object localObject = new BindGroupConfirmActivity.8.1(this);
+    this.this$0.u.setTitle(2131917511);
+    this.this$0.u.setPositiveButton(2131888010, (DialogInterface.OnClickListener)localObject);
+    this.this$0.u.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
+    if (!this.this$0.u.isShowing()) {
+      this.this$0.u.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.8
  * JD-Core Version:    0.7.0.1
  */

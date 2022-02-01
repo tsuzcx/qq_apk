@@ -7,17 +7,17 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public final int azU()
+  public final int cnP()
   {
     return 0;
   }
   
-  public final DrawCanvasArg c(JSONObject paramJSONObject, String paramString)
+  public final DrawCanvasArg d(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(10898);
-    paramString = super.c(paramJSONObject, paramString);
-    paramString.h(paramJSONObject.optJSONArray("actions"));
-    AppMethodBeat.o(10898);
+    AppMethodBeat.i(121378);
+    paramString = super.d(paramJSONObject, paramString);
+    paramString.k(paramJSONObject.optJSONArray("actions"));
+    AppMethodBeat.o(121378);
     return paramString;
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import awsp;
+import com.tencent.mobileqq.profile.like.PraiseConfigHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class VisitorsActivity$13
@@ -17,14 +17,14 @@ class VisitorsActivity$13
       QLog.d("VisitorsActivity", 1, "doPraiseMallEntryAnim run isFinishing return");
       return;
     }
-    awsp.a(this.this$0.app);
-    Message localMessage = this.this$0.a.obtainMessage(13, 0, 0);
-    this.this$0.a.sendMessageDelayed(localMessage, 100L);
+    PraiseConfigHelper.a(this.this$0.app);
+    Message localMessage = this.this$0.ar.obtainMessage(13, 0, 0);
+    this.this$0.ar.sendMessageDelayed(localMessage, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.13
  * JD-Core Version:    0.7.0.1
  */

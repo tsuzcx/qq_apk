@@ -21,48 +21,53 @@ public class SpreadBuilder
   
   public void addSpread(Object paramObject)
   {
-    if (paramObject == null) {}
-    for (;;)
-    {
+    if (paramObject == null) {
       return;
-      if ((paramObject instanceof Object[]))
+    }
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length > 0)
       {
-        paramObject = (Object[])paramObject;
-        if (paramObject.length > 0)
-        {
-          this.list.ensureCapacity(this.list.size() + paramObject.length);
-          Collections.addAll(this.list, paramObject);
-        }
-      }
-      else
-      {
-        if ((paramObject instanceof Collection))
-        {
-          this.list.addAll((Collection)paramObject);
-          return;
-        }
-        if ((paramObject instanceof Iterable))
-        {
-          paramObject = ((Iterable)paramObject).iterator();
-          while (paramObject.hasNext())
-          {
-            Object localObject = paramObject.next();
-            this.list.add(localObject);
-          }
-        }
-        else
-        {
-          if (!(paramObject instanceof Iterator)) {
-            break;
-          }
-          paramObject = (Iterator)paramObject;
-          while (paramObject.hasNext()) {
-            this.list.add(paramObject.next());
-          }
-        }
+        localObject = this.list;
+        ((ArrayList)localObject).ensureCapacity(((ArrayList)localObject).size() + paramObject.length);
+        Collections.addAll(this.list, paramObject);
       }
     }
-    throw new UnsupportedOperationException("Don't know how to spread " + paramObject.getClass());
+    else
+    {
+      if ((paramObject instanceof Collection))
+      {
+        this.list.addAll((Collection)paramObject);
+        return;
+      }
+      if ((paramObject instanceof Iterable))
+      {
+        paramObject = ((Iterable)paramObject).iterator();
+        while (paramObject.hasNext())
+        {
+          localObject = paramObject.next();
+          this.list.add(localObject);
+        }
+      }
+      if (!(paramObject instanceof Iterator)) {
+        break label155;
+      }
+      paramObject = (Iterator)paramObject;
+      while (paramObject.hasNext()) {
+        this.list.add(paramObject.next());
+      }
+    }
+    return;
+    label155:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Don't know how to spread ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    paramObject = new UnsupportedOperationException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public int size()
@@ -77,7 +82,7 @@ public class SpreadBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.SpreadBuilder
  * JD-Core Version:    0.7.0.1
  */

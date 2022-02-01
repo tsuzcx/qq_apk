@@ -24,10 +24,10 @@ import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.widget.XListView;
-import gfk;
-import gfn;
+import gfj;
+import gfm;
+import gfo;
 import gfp;
-import gfq;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -45,11 +45,11 @@ public class QCallDetailActivity
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gfk(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gfj(this);
   private Friends jdField_a_of_type_ComTencentMobileqqDataFriends;
   private QCallFacade jdField_a_of_type_ComTencentMobileqqQcallQCallFacade;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private gfq jdField_a_of_type_Gfq;
+  private gfp jdField_a_of_type_Gfp;
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -106,20 +106,20 @@ public class QCallDetailActivity
   
   private void d()
   {
-    ThreadManager.b(new gfn(this));
+    ThreadManager.b(new gfm(this));
   }
   
   private void e()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this).inflate(2130903551, null));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232301));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232300));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231000));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232615));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232895));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232896));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232898));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232901));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232897);
+    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232614));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232894));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232895));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232897));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232900));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232896);
     int i = getResources().getColor(2131362046);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
     if (this.jdField_a_of_type_Int == 3000)
@@ -141,7 +141,7 @@ public class QCallDetailActivity
       for (;;)
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(this.f);
-        localObject = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232900);
+        localObject = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232899);
         ((TextView)localObject).setContentDescription(getString(2131558469));
         ((TextView)localObject).setOnClickListener(this);
         f();
@@ -194,13 +194,13 @@ public class QCallDetailActivity
   
   private void g()
   {
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131232890);
-    TextView localTextView1 = (TextView)localLinearLayout.findViewById(2131233040);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131232889);
+    TextView localTextView1 = (TextView)localLinearLayout.findViewById(2131233039);
     localLinearLayout.setOnClickListener(this);
-    localLinearLayout = (LinearLayout)findViewById(2131232888);
-    TextView localTextView2 = (TextView)localLinearLayout.findViewById(2131233040);
+    localLinearLayout = (LinearLayout)findViewById(2131232887);
+    TextView localTextView2 = (TextView)localLinearLayout.findViewById(2131233039);
     localLinearLayout.setOnClickListener(this);
-    findViewById(2131232889).setBackgroundColor(getResources().getColor(2131362046));
+    findViewById(2131232888).setBackgroundColor(getResources().getColor(2131362046));
     if (this.jdField_a_of_type_Int == 3000)
     {
       localTextView1.setText(2131561795);
@@ -221,11 +221,11 @@ public class QCallDetailActivity
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232892));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232891));
     this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade = ((QCallFacade)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36));
-    this.jdField_a_of_type_Gfq = new gfq(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Gfq);
+    this.jdField_a_of_type_Gfp = new gfp(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Gfp);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -271,8 +271,8 @@ public class QCallDetailActivity
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_d_of_type_JavaLangString, "Two_call", "Tc_msg_dinfo", 0, 0, "", "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade.a(this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Int);
     a(true);
-    this.jdField_a_of_type_Gfq.a.clear();
-    this.jdField_a_of_type_Gfq.notifyDataSetChanged();
+    this.jdField_a_of_type_Gfp.a.clear();
+    this.jdField_a_of_type_Gfp.notifyDataSetChanged();
     return;
     if (this.jdField_a_of_type_Int == 3000)
     {
@@ -301,8 +301,8 @@ public class QCallDetailActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Gfq.a = null;
-    this.jdField_a_of_type_Gfq = null;
+    this.jdField_a_of_type_Gfp.a = null;
+    this.jdField_a_of_type_Gfp = null;
     this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade.deleteObserver(this);
     b(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
@@ -316,7 +316,7 @@ public class QCallDetailActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     int k = 0;
-    if (this.jdField_a_of_type_Gfq == null) {}
+    if (this.jdField_a_of_type_Gfp == null) {}
     label10:
     do
     {
@@ -345,7 +345,7 @@ public class QCallDetailActivity
       if (j == 0) {
         break;
       }
-      runOnUiThread(new gfp(this, paramObservable));
+      runOnUiThread(new gfo(this, paramObservable));
       return;
       label157:
       i += 1;

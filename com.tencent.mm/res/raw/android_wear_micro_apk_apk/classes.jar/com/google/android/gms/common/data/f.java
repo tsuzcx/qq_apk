@@ -7,30 +7,30 @@ import java.util.NoSuchElementException;
 public final class f<T>
   implements Iterator<T>
 {
-  protected final b<T> Is;
-  protected int It;
+  protected final b<T> Kh;
+  protected int Ki;
   
   public f(b<T> paramb)
   {
-    this.Is = ((b)d.u(paramb));
-    this.It = -1;
+    this.Kh = ((b)d.D(paramb));
+    this.Ki = -1;
   }
   
   public final boolean hasNext()
   {
-    return this.It < this.Is.getCount() - 1;
+    return this.Ki < this.Kh.getCount() - 1;
   }
   
   public final T next()
   {
     if (!hasNext())
     {
-      i = this.It;
+      i = this.Ki;
       throw new NoSuchElementException(46 + "Cannot advance the iterator beyond " + i);
     }
-    b localb = this.Is;
-    int i = this.It + 1;
-    this.It = i;
+    b localb = this.Kh;
+    int i = this.Ki + 1;
+    this.Ki = i;
     return localb.get(i);
   }
   

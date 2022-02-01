@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/kkf" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kkg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/f_i" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:layout_gravity="center_vertical" android:id="@id/kkh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/q1p" />
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.DrawableCenterTextView android:textSize="14.0sp" android:textColor="@drawable/zs" android:gravity="center" android:id="@id/b51" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="6" android:drawableLeft="@drawable/ajj" android:drawablePadding="8.0dip" android:layout_weight="1.0" />
+    <com.tencent.mobileqq.widget.DrawableCenterTextView android:textSize="14.0sp" android:textColor="@drawable/zs" android:gravity="center" android:id="@id/aao" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="6" android:drawableLeft="@drawable/yp" android:drawablePadding="8.0dip" android:layout_weight="1.0" />
+</LinearLayout>

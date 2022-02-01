@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.apollo.script;
 
-import albh;
-import albk;
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,78 +8,102 @@ import java.util.ArrayList;
 public class SpriteTaskParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new albh();
-  public float a;
+  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new SpriteTaskParam.1();
+  public boolean A;
+  public float B;
+  public boolean C;
   public int a;
-  public long a;
-  public albk a;
-  public Bundle a;
-  public String a;
-  public ArrayList<Integer> a;
-  public boolean a;
   public int b;
-  public String b;
-  public ArrayList<Integer> b;
-  public boolean b;
   public int c;
-  public String c;
   public int d;
-  public String d;
   public int e;
-  public String e;
   public int f;
   public int g;
-  public int h;
+  public long h;
   public int i;
-  public int j;
-  public int k = 1;
-  public int l;
+  public String j;
+  public String k;
+  public boolean l;
   public int m;
+  public float n = 0.0F;
+  public String o;
+  public int p;
+  public boolean q;
+  public ArrayList<Integer> r;
+  public ArrayList<Integer> s;
+  public String t;
+  public ISpriteBridge u;
+  public int v;
+  public int w;
+  public String x;
+  public int y;
+  public int z;
   
   public SpriteTaskParam()
   {
-    this.jdField_a_of_type_Float = 0.0F;
+    this.v = 1;
+    this.A = false;
+    this.B = 0.1F;
+    this.C = true;
   }
   
-  public SpriteTaskParam(Parcel paramParcel)
+  protected SpriteTaskParam(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
+    boolean bool2 = true;
+    this.v = 1;
+    this.A = false;
+    this.B = 0.1F;
+    this.C = true;
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
     this.f = paramParcel.readInt();
     this.g = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.h = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
+    this.h = paramParcel.readLong();
+    this.i = paramParcel.readInt();
+    this.j = paramParcel.readString();
+    this.k = paramParcel.readString();
+    boolean bool1;
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      this.i = paramParcel.readInt();
-      this.jdField_a_of_type_Float = paramParcel.readFloat();
-      this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      this.j = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_b_of_type_Boolean = bool1;
-      this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      this.k = paramParcel.readInt();
-      this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      this.l = paramParcel.readInt();
-      this.m = paramParcel.readInt();
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.l = bool1;
+    this.m = paramParcel.readInt();
+    this.n = paramParcel.readFloat();
+    this.o = paramParcel.readString();
+    this.p = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.q = bool1;
+    this.t = paramParcel.readString();
+    this.v = paramParcel.readInt();
+    this.x = paramParcel.readString();
+    this.y = paramParcel.readInt();
+    this.z = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.A = bool1;
+    this.B = paramParcel.readFloat();
+  }
+  
+  public Boolean a()
+  {
+    int i1 = this.e;
+    boolean bool = true;
+    if (i1 != 1) {
+      bool = false;
+    }
+    return Boolean.valueOf(bool);
   }
   
   public int describeContents()
@@ -93,72 +114,93 @@ public class SpriteTaskParam
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("SpriteTaskParam{");
-    localStringBuffer.append("mTaskId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mStatus=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", mActionType=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", mSubType=").append(this.jdField_d_of_type_Int);
-    localStringBuffer.append(", mSpriteNum=").append(this.jdField_e_of_type_Int);
-    localStringBuffer.append(", mActionId=").append(this.f);
-    localStringBuffer.append(", mFromWhere=").append(this.g);
-    localStringBuffer.append(", mMsgId=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mAioType=").append(this.h);
-    localStringBuffer.append(", mSenderUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mRecvUin='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mIsSend=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", mAudioId=").append(this.i);
-    localStringBuffer.append(", mAudioStartTime=").append(this.jdField_a_of_type_Float);
-    localStringBuffer.append(", mInputText='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mInterruptWay=").append(this.j);
-    localStringBuffer.append(", mTextIsBarrage=").append(this.jdField_b_of_type_Boolean);
-    localStringBuffer.append(", mActionList=").append(this.jdField_a_of_type_JavaUtilArrayList);
-    localStringBuffer.append(", mBackgroundActionList=").append(this.jdField_b_of_type_JavaUtilArrayList);
-    localStringBuffer.append(", mExtendJson='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Albk);
-    localStringBuffer.append(", mRscType=").append(this.k);
-    localStringBuffer.append(", mActionJs='").append(this.jdField_e_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("mTaskId=");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append(", mStatus=");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", mActionType=");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append(", mSubType=");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append(", mSpriteNum=");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append(", mActionId=");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append(", mFromWhere=");
+    localStringBuffer.append(this.g);
+    localStringBuffer.append(", mMsgId=");
+    localStringBuffer.append(this.h);
+    localStringBuffer.append(", mAioType=");
+    localStringBuffer.append(this.i);
+    localStringBuffer.append(", mSenderUin='");
+    localStringBuffer.append(this.j);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mRecvUin='");
+    localStringBuffer.append(this.k);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mIsSend=");
+    localStringBuffer.append(this.l);
+    localStringBuffer.append(", mAudioId=");
+    localStringBuffer.append(this.m);
+    localStringBuffer.append(", mAudioStartTime=");
+    localStringBuffer.append(this.n);
+    localStringBuffer.append(", mInputText='");
+    localStringBuffer.append(this.o);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mInterruptWay=");
+    localStringBuffer.append(this.p);
+    localStringBuffer.append(", mTextIsBarrage=");
+    localStringBuffer.append(this.q);
+    localStringBuffer.append(", mActionList=");
+    localStringBuffer.append(this.r);
+    localStringBuffer.append(", mBackgroundActionList=");
+    localStringBuffer.append(this.s);
+    localStringBuffer.append(", mExtendJson='");
+    localStringBuffer.append(this.t);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mBridgeImp=");
+    localStringBuffer.append(this.u);
+    localStringBuffer.append(", mRscType=");
+    localStringBuffer.append(this.v);
+    localStringBuffer.append(", mActionJs='");
+    localStringBuffer.append(this.x);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mNeedRecordFrame='");
+    localStringBuffer.append(this.A);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mFrameTime='");
+    localStringBuffer.append(this.B);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int n = 1;
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
     paramParcel.writeInt(this.f);
     paramParcel.writeInt(this.g);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.h);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.i);
-      paramParcel.writeFloat(this.jdField_a_of_type_Float);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-      paramParcel.writeInt(this.j);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label198;
-      }
-    }
-    label198:
-    for (paramInt = n;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-      paramParcel.writeInt(this.k);
-      paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-      paramParcel.writeInt(this.l);
-      paramParcel.writeInt(this.m);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeLong(this.h);
+    paramParcel.writeInt(this.i);
+    paramParcel.writeString(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeByte((byte)this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeFloat(this.n);
+    paramParcel.writeString(this.o);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeByte((byte)this.q);
+    paramParcel.writeString(this.t);
+    paramParcel.writeInt(this.v);
+    paramParcel.writeString(this.x);
+    paramParcel.writeInt(this.y);
+    paramParcel.writeInt(this.z);
+    paramParcel.writeByte((byte)this.A);
+    paramParcel.writeFloat(this.B);
   }
 }
 

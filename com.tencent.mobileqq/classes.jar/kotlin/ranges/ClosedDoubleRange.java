@@ -24,7 +24,19 @@ final class ClosedDoubleRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof ClosedDoubleRange)) && (((isEmpty()) && (((ClosedDoubleRange)paramObject).isEmpty())) || ((this._start == ((ClosedDoubleRange)paramObject)._start) && (this._endInclusive == ((ClosedDoubleRange)paramObject)._endInclusive)));
+    if ((paramObject instanceof ClosedDoubleRange)) {
+      if ((!isEmpty()) || (!((ClosedDoubleRange)paramObject).isEmpty()))
+      {
+        double d = this._start;
+        paramObject = (ClosedDoubleRange)paramObject;
+        if ((d != paramObject._start) || (this._endInclusive != paramObject._endInclusive)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -60,12 +72,16 @@ final class ClosedDoubleRange
   @NotNull
   public String toString()
   {
-    return this._start + ".." + this._endInclusive;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this._start);
+    localStringBuilder.append("..");
+    localStringBuilder.append(this._endInclusive);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.ClosedDoubleRange
  * JD-Core Version:    0.7.0.1
  */

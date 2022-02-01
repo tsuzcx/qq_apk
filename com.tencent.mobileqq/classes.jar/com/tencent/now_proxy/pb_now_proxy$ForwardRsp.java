@@ -22,13 +22,14 @@ public final class pb_now_proxy$ForwardRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 58 }, new String[] { "proxy_code", "err_msg", "busi_buf", "report", "stream_type", "busi_error_code", "busi_error_msg" }, new Object[] { Integer.valueOf(0), "", localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, ForwardRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 58 }, new String[] { "proxy_code", "err_msg", "busi_buf", "report", "stream_type", "busi_error_code", "busi_error_msg" }, new Object[] { localInteger, "", localByteStringMicro, localInteger, localInteger, localInteger, "" }, ForwardRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.now_proxy.pb_now_proxy.ForwardRsp
  * JD-Core Version:    0.7.0.1
  */

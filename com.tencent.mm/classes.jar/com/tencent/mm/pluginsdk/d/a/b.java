@@ -1,54 +1,54 @@
 package com.tencent.mm.pluginsdk.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private CountDownLatch vJT = null;
+  private CountDownLatch XOm = null;
   
-  public final void b(long paramLong, Runnable paramRunnable)
+  public final void asP()
   {
-    AppMethodBeat.i(27231);
-    ab.i("MicroMsg.SyncJob", "doAsSyncJob");
-    if (this.vJT == null) {
-      this.vJT = new CountDownLatch(1);
+    AppMethodBeat.i(30933);
+    if (this.XOm != null)
+    {
+      this.XOm.countDown();
+      this.XOm = null;
     }
-    al.d(paramRunnable);
-    ab.i("MicroMsg.SyncJob", "doAsSyncJob postToMainThread");
-    if (this.vJT != null) {
+    AppMethodBeat.o(30933);
+  }
+  
+  public final void c(long paramLong, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(30934);
+    Log.i("MicroMsg.SyncJob", "doAsSyncJob");
+    if (this.XOm == null) {
+      this.XOm = new CountDownLatch(1);
+    }
+    MMHandlerThread.postToMainThread(paramRunnable);
+    Log.i("MicroMsg.SyncJob", "doAsSyncJob postToMainThread");
+    if (this.XOm != null) {
       try
       {
-        this.vJT.await(paramLong, TimeUnit.MILLISECONDS);
-        AppMethodBeat.o(27231);
+        this.XOm.await(paramLong, TimeUnit.MILLISECONDS);
+        AppMethodBeat.o(30934);
         return;
       }
       catch (InterruptedException paramRunnable)
       {
-        ab.w("MicroMsg.SyncJob", paramRunnable.getMessage());
-        ab.printErrStackTrace("MicroMsg.SyncJob", paramRunnable, "", new Object[0]);
+        Log.w("MicroMsg.SyncJob", paramRunnable.getMessage());
+        Log.printErrStackTrace("MicroMsg.SyncJob", paramRunnable, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(27231);
-  }
-  
-  public final void countDown()
-  {
-    AppMethodBeat.i(27230);
-    if (this.vJT != null)
-    {
-      this.vJT.countDown();
-      this.vJT = null;
-    }
-    AppMethodBeat.o(27230);
+    AppMethodBeat.o(30934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.d.a.b
  * JD-Core Version:    0.7.0.1
  */

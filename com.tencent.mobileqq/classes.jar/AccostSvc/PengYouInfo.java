@@ -31,14 +31,15 @@ public final class PengYouInfo
   {
     paramJceOutputStream.write(this.strPYName, 0);
     paramJceOutputStream.write(this.strPYFaceUrl, 1);
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 2);
+    String str = this.strDescription;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.PengYouInfo
  * JD-Core Version:    0.7.0.1
  */

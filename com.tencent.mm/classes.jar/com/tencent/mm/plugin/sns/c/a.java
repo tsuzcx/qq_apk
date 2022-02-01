@@ -1,30 +1,13 @@
 package com.tencent.mm.plugin.sns.c;
 
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
-
-public final class a
-  implements o
+public abstract interface a
+  extends com.tencent.mm.kernel.c.a
 {
-  public static n gmO;
-  public static m gmP;
-  public static int raX = 2147483647;
-  public static String raY = "";
-  
-  public final void a(m paramm)
-  {
-    gmP = paramm;
-  }
-  
-  public final void a(n paramn)
-  {
-    gmO = paramn;
-  }
+  public abstract void y(int paramInt1, String paramString, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.c.a
  * JD-Core Version:    0.7.0.1
  */

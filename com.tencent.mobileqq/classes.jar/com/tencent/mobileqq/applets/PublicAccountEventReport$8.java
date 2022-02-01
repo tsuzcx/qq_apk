@@ -1,16 +1,22 @@
 package com.tencent.mobileqq.applets;
 
-import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class PublicAccountEventReport$8
+final class PublicAccountEventReport$8
   implements Runnable
 {
-  public PublicAccountEventReport$8(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, long paramLong) {}
+  PublicAccountEventReport$8(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB5", "0X8009EB5", this.jdField_a_of_type_Int, 0, "" + this.b, this.jdField_a_of_type_Long + "", "", "");
+    QQAppInterface localQQAppInterface = this.a;
+    String str = this.b;
+    int i = this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("");
+    ReportController.b(localQQAppInterface, "dc00898", "", str, "0X8009EB7", "0X8009EB7", i, 0, "", "", localStringBuilder.toString(), "");
   }
 }
 

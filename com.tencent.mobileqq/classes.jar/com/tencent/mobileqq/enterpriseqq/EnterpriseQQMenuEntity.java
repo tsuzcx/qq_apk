@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import awge;
-import awhs;
 import com.tencent.crmqq.structmsg.StructMsg.GetCRMMenuResponse;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class EnterpriseQQMenuEntity
-  extends awge
+  extends Entity
 {
-  public byte[] data;
-  public long savedDateTime;
-  public int seqno;
-  @awhs
+  public byte[] data = null;
+  public long savedDateTime = 0L;
+  public int seqno = 0;
+  @unique
   public String uin;
   
   public EnterpriseQQMenuEntity() {}

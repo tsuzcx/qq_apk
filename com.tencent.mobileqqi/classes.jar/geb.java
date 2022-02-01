@@ -1,28 +1,59 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.compress.PicQualityCommon;
+import com.tencent.mobileqq.pic.compress.PicType;
+import com.tencent.mobileqq.pic.compress.PicTypeLong;
+import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public final class geb
-  implements Parcelable.Creator
+public class geb
+  extends PicQualityCommon
 {
-  public ReportInfo a(Parcel paramParcel)
+  public geb(PicTypeLong paramPicTypeLong, PicType paramPicType)
   {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.e = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
-    localReportInfo.g = paramParcel.readInt();
-    localReportInfo.j = paramParcel.readInt();
-    localReportInfo.h = paramParcel.readInt();
-    localReportInfo.i = paramParcel.readInt();
-    localReportInfo.a = paramParcel.readLong();
-    localReportInfo.b = paramParcel.readLong();
-    localReportInfo.c = paramParcel.readLong();
-    return localReportInfo;
+    super(paramPicType);
   }
   
-  public ReportInfo[] a(int paramInt)
+  protected boolean b()
   {
-    return new ReportInfo[paramInt];
+    boolean bool1 = false;
+    this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.g);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e)) {
+      Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " destPath is empty");
+    }
+    boolean bool2;
+    do
+    {
+      return bool1;
+      if (FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e))
+      {
+        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " destPath exist. return true");
+        return true;
+      }
+      try
+      {
+        Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.c);
+        if (localBitmap == null)
+        {
+          Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " bm == null, maybe is broken");
+          return false;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.a(true);
+        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString + " decodeFile oom, execute commonCompress()");
+        this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e = "";
+        return this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.c();
+      }
+      bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.e, localOutOfMemoryError, this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressPicTypeLong.a.jdField_a_of_type_JavaLangString);
+      bool1 = bool2;
+    } while (localOutOfMemoryError == null);
+    localOutOfMemoryError.recycle();
+    return bool2;
   }
 }
 

@@ -1,8 +1,11 @@
 package com.tencent.mm.particles;
 
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.Interpolator;
@@ -16,285 +19,356 @@ import java.util.Random;
 
 public final class c
 {
-  private float emissionRate;
-  private final b ggR;
-  private final d ggS;
-  private final ViewGroup ggT;
-  final ConfettiView ggU;
-  final Queue<com.tencent.mm.particles.a.b> ggV;
-  final List<com.tencent.mm.particles.a.b> ggW;
-  private ValueAnimator ggX;
-  private long ggY;
-  int ggZ;
-  public float ghA;
-  long gha;
-  private float ghb;
-  public Interpolator ghc;
-  private Rect ghd;
-  private float ghe;
-  private float ghf;
-  private float ghg;
-  private float ghh;
-  private float ghi;
-  private float ghj;
-  private float ghk;
-  private float ghl;
-  private Float ghm;
-  private Float ghn;
-  private Float gho;
-  private Float ghp;
-  private int ghq;
-  private int ghr;
-  private float ghs;
-  private float ght;
-  private float ghu;
-  private float ghv;
-  private Float ghw;
-  private Float ghx;
-  private long ghy;
-  public float ghz;
+  private ValueAnimator animator;
+  private final ViewGroup parentView;
+  private Float pwA;
+  private int pwB;
+  private int pwC;
+  private float pwD;
+  private float pwE;
+  private float pwF;
+  private float pwG;
+  private Float pwH;
+  private Float pwI;
+  public long pwJ;
+  public float pwK;
+  public float pwL;
+  private final b pwd;
+  private final d pwe;
+  final ConfettiView pwf;
+  final Queue<com.tencent.mm.particles.a.b> pwg;
+  final List<com.tencent.mm.particles.a.b> pwh;
+  private long pwi;
+  public int pwj;
+  public long pwk;
+  private float pwl;
+  private float pwm;
+  public Interpolator pwn;
+  private Rect pwo;
+  private float pwp;
+  private float pwq;
+  private float pwr;
+  private float pws;
+  private float pwt;
+  private float pwu;
+  private float pwv;
+  private float pww;
+  private Float pwx;
+  private Float pwy;
+  private Float pwz;
   private final Random random;
   
   public c(Context paramContext, b paramb, d paramd, ViewGroup paramViewGroup)
   {
-    this(paramb, paramd, paramViewGroup, ConfettiView.cn(paramContext));
-    AppMethodBeat.i(151575);
-    AppMethodBeat.o(151575);
+    this(paramb, paramd, paramViewGroup, ConfettiView.ed(paramContext));
+    AppMethodBeat.i(151350);
+    AppMethodBeat.o(151350);
   }
   
   private c(b paramb, d paramd, ViewGroup paramViewGroup, ConfettiView paramConfettiView)
   {
-    AppMethodBeat.i(151576);
+    AppMethodBeat.i(151351);
     this.random = new Random();
-    this.ggV = new LinkedList();
-    this.ggW = new ArrayList(300);
-    this.ggR = paramb;
-    this.ggS = paramd;
-    this.ggT = paramViewGroup;
-    this.ggU = paramConfettiView;
-    this.ggU.ggW = this.ggW;
-    this.ggU.addOnAttachStateChangeListener(new c.1(this));
-    this.ghy = -1L;
-    this.ghd = new Rect(0, 0, paramViewGroup.getWidth(), paramViewGroup.getHeight());
-    AppMethodBeat.o(151576);
+    this.pwg = new LinkedList();
+    this.pwh = new ArrayList(300);
+    this.pwd = paramb;
+    this.pwe = paramd;
+    this.parentView = paramViewGroup;
+    this.pwf = paramConfettiView;
+    this.pwf.pwh = this.pwh;
+    this.pwf.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
+    {
+      public final void onViewAttachedToWindow(View paramAnonymousView) {}
+      
+      public final void onViewDetachedFromWindow(View paramAnonymousView)
+      {
+        AppMethodBeat.i(151348);
+        c.this.bSJ();
+        AppMethodBeat.o(151348);
+      }
+    });
+    this.pwJ = -1L;
+    this.pwo = new Rect(0, 0, paramViewGroup.getWidth(), paramViewGroup.getHeight());
+    AppMethodBeat.o(151351);
   }
   
-  private void B(int paramInt, long paramLong)
+  private void K(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(151582);
+    AppMethodBeat.i(151357);
     int i = 0;
     com.tencent.mm.particles.a.b localb;
     if (i < paramInt)
     {
-      localb = (com.tencent.mm.particles.a.b)this.ggV.poll();
+      localb = (com.tencent.mm.particles.a.b)this.pwg.poll();
       if (localb != null) {
         break label90;
       }
-      localb = this.ggR.a(this.random);
+      localb = this.pwd.generateConfetti(this.random);
     }
     label90:
     for (;;)
     {
-      a(localb, this.ggS, this.random, paramLong);
-      this.ggW.add(localb);
+      a(localb, this.pwe, this.random, paramLong);
+      this.pwh.add(localb);
       i += 1;
       break;
-      AppMethodBeat.o(151582);
+      AppMethodBeat.o(151357);
       return;
     }
   }
   
   private static float a(float paramFloat1, float paramFloat2, Random paramRandom)
   {
-    AppMethodBeat.i(151585);
+    AppMethodBeat.i(151360);
     float f = paramRandom.nextFloat();
-    AppMethodBeat.o(151585);
+    AppMethodBeat.o(151360);
     return (f * 2.0F - 1.0F) * paramFloat2 + paramFloat1;
   }
   
   private void a(com.tencent.mm.particles.a.b paramb, d paramd, Random paramRandom, long paramLong)
   {
     Object localObject = null;
-    AppMethodBeat.i(151584);
+    AppMethodBeat.i(151359);
     paramb.reset();
-    paramb.ghN = paramLong;
-    paramb.ghO = paramd.ak(paramRandom.nextFloat());
-    paramb.ghP = paramd.al(paramRandom.nextFloat());
-    paramb.ghQ = a(this.ghe, this.ghf, paramRandom);
-    paramb.ghR = a(this.ghg, this.ghh, paramRandom);
-    paramb.ghi = a(this.ghi, this.ghj, paramRandom);
-    paramb.ghk = a(this.ghk, this.ghl, paramRandom);
-    if (this.ghm == null)
+    paramb.pwY = paramLong;
+    paramb.pwZ = paramd.by(paramRandom.nextFloat());
+    paramb.pxa = paramd.bz(paramRandom.nextFloat());
+    paramb.pxb = a(this.pwp, this.pwq, paramRandom);
+    paramb.pxc = a(this.pwr, this.pws, paramRandom);
+    paramb.pwt = a(this.pwt, this.pwu, paramRandom);
+    paramb.pwv = a(this.pwv, this.pww, paramRandom);
+    if (this.pwx == null)
     {
       paramd = null;
-      paramb.ghm = paramd;
-      if (this.gho != null) {
+      paramb.pwx = paramd;
+      if (this.pwz != null) {
         break label270;
       }
       paramd = null;
       label129:
-      paramb.gho = paramd;
-      paramb.ghU = a(this.ghq, this.ghr, paramRandom);
-      paramb.ghV = a(this.ghs, this.ght, paramRandom);
-      paramb.ghu = a(this.ghu, this.ghv, paramRandom);
-      if (this.ghw != null) {
+      paramb.pwz = paramd;
+      paramb.pxf = a(this.pwB, this.pwC, paramRandom);
+      paramb.pxg = a(this.pwD, this.pwE, paramRandom);
+      paramb.pwF = a(this.pwF, this.pwG, paramRandom);
+      if (this.pwH != null) {
         break label295;
       }
     }
     label270:
     label295:
-    for (paramd = localObject;; paramd = Float.valueOf(a(this.ghw.floatValue(), this.ghx.floatValue(), paramRandom)))
+    for (paramd = localObject;; paramd = Float.valueOf(a(this.pwH.floatValue(), this.pwI.floatValue(), paramRandom)))
     {
-      paramb.ghw = paramd;
-      paramb.ghy = this.ghy;
-      paramb.ghc = this.ghc;
-      paramb.ghX = a(this.ghz, this.ghA, paramRandom);
-      paramb.j(this.ghd);
-      AppMethodBeat.o(151584);
+      paramb.pwH = paramd;
+      paramb.pwJ = this.pwJ;
+      paramb.pwn = this.pwn;
+      paramb.pxi = a(this.pwK, this.pwL, paramRandom);
+      paramb.u(this.pwo);
+      AppMethodBeat.o(151359);
       return;
-      paramd = Float.valueOf(a(this.ghm.floatValue(), this.ghn.floatValue(), paramRandom));
+      paramd = Float.valueOf(a(this.pwx.floatValue(), this.pwy.floatValue(), paramRandom));
       break;
-      paramd = Float.valueOf(a(this.gho.floatValue(), this.ghp.floatValue(), paramRandom));
+      paramd = Float.valueOf(a(this.pwz.floatValue(), this.pwA.floatValue(), paramRandom));
       break label129;
     }
   }
   
-  private void anX()
+  private void bSK()
   {
-    AppMethodBeat.i(151580);
-    if (this.ggX != null) {
-      this.ggX.cancel();
+    AppMethodBeat.i(151355);
+    if (this.animator != null) {
+      this.animator.cancel();
     }
-    this.ggY = 0L;
-    Iterator localIterator = this.ggW.iterator();
+    this.pwi = 0L;
+    Iterator localIterator = this.pwh.iterator();
     while (localIterator.hasNext())
     {
-      this.ggV.add(localIterator.next());
+      this.pwg.add((com.tencent.mm.particles.a.b)localIterator.next());
       localIterator.remove();
     }
-    AppMethodBeat.o(151580);
+    AppMethodBeat.o(151355);
   }
   
-  private void anY()
+  private void bSL()
   {
-    AppMethodBeat.i(151581);
-    ViewParent localViewParent = this.ggU.getParent();
+    AppMethodBeat.i(151356);
+    ViewParent localViewParent = this.pwf.getParent();
     if (localViewParent != null)
     {
-      if (localViewParent != this.ggT) {
-        ((ViewGroup)localViewParent).removeView(this.ggU);
+      if (localViewParent != this.parentView) {
+        ((ViewGroup)localViewParent).removeView(this.pwf);
       }
     }
     else {
-      this.ggT.addView(this.ggU);
+      this.parentView.addView(this.pwf);
     }
-    this.ggU.terminated = false;
-    AppMethodBeat.o(151581);
+    this.pwf.terminated = false;
+    AppMethodBeat.o(151356);
   }
   
-  private void anZ()
+  private void bSM()
   {
-    AppMethodBeat.i(151583);
-    this.ggX = ValueAnimator.ofInt(new int[] { 0 }).setDuration(9223372036854775807L);
-    this.ggX.addUpdateListener(new c.2(this));
-    this.ggX.start();
-    AppMethodBeat.o(151583);
+    AppMethodBeat.i(151358);
+    this.animator = ValueAnimator.ofInt(new int[] { 0 }).setDuration(9223372036854775807L);
+    this.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(151349);
+        long l1 = paramAnonymousValueAnimator.getCurrentPlayTime();
+        c.a(c.this, l1);
+        paramAnonymousValueAnimator = c.this;
+        Iterator localIterator = paramAnonymousValueAnimator.pwh.iterator();
+        label93:
+        label358:
+        label364:
+        label367:
+        while (localIterator.hasNext())
+        {
+          com.tencent.mm.particles.a.b localb = (com.tencent.mm.particles.a.b)localIterator.next();
+          if (localb.pwY == -1L) {
+            localb.pwY = l1;
+          }
+          long l2 = l1 - localb.pwY;
+          boolean bool;
+          if (l2 >= 0L)
+          {
+            bool = true;
+            localb.pxn = bool;
+            if ((localb.pxn) && (!localb.terminated))
+            {
+              localb.pxk = com.tencent.mm.particles.a.b.a(l2, localb.pwZ, localb.pxb, localb.pwt, localb.pxd, localb.pwx);
+              localb.pxl = com.tencent.mm.particles.a.b.a(l2, localb.pxa, localb.pxc, localb.pwv, localb.pxe, localb.pwz);
+              localb.pxm = com.tencent.mm.particles.a.b.a(l2, localb.pxf, localb.pxg, localb.pwF, localb.pxh, localb.pwH);
+              if (localb.pwn == null) {
+                break label347;
+              }
+              localb.alpha = ((int)(localb.pwn.getInterpolation((float)l2 / localb.pxi) * 255.0F));
+              if ((localb.pxo) || ((float)l2 < localb.pxi)) {
+                break label358;
+              }
+              bool = true;
+              localb.terminated = bool;
+              localb.pxj = Math.min(1.0F, (float)l2 / localb.pxi);
+            }
+            if (localb.terminated) {
+              break label364;
+            }
+          }
+          for (int i = 1;; i = 0)
+          {
+            if (i != 0) {
+              break label367;
+            }
+            localIterator.remove();
+            paramAnonymousValueAnimator.pwg.add(localb);
+            break;
+            bool = false;
+            break label93;
+            localb.alpha = 255;
+            break label257;
+            bool = false;
+            break label280;
+          }
+        }
+        label257:
+        label280:
+        label347:
+        if ((c.this.pwh.size() == 0) && (l1 >= c.this.pwk))
+        {
+          c.this.bSJ();
+          AppMethodBeat.o(151349);
+          return;
+        }
+        c.this.pwf.invalidate();
+        AppMethodBeat.o(151349);
+      }
+    });
+    this.animator.start();
+    AppMethodBeat.o(151358);
   }
   
-  public final c H(float paramFloat1, float paramFloat2)
+  public final c an(float paramFloat1, float paramFloat2)
   {
-    this.ghe = (paramFloat1 / 1000.0F);
-    this.ghf = (paramFloat2 / 1000.0F);
+    this.pwp = (paramFloat1 / 1000.0F);
+    this.pwq = (paramFloat2 / 1000.0F);
     return this;
   }
   
-  public final c I(float paramFloat1, float paramFloat2)
+  public final c ao(float paramFloat1, float paramFloat2)
   {
-    this.ghg = (paramFloat1 / 1000.0F);
-    this.ghh = (paramFloat2 / 1000.0F);
+    this.pwr = (paramFloat1 / 1000.0F);
+    this.pws = (paramFloat2 / 1000.0F);
     return this;
   }
   
-  public final c ah(float paramFloat)
+  public final c bSF()
   {
-    this.emissionRate = (paramFloat / 1000.0F);
-    this.ghb = (1.0F / this.emissionRate);
+    this.pwB = 180;
+    this.pwC = 180;
     return this;
   }
   
-  public final c ai(float paramFloat)
+  public final c bSG()
   {
-    this.ghi = (paramFloat / 1000000.0F);
-    this.ghj = 0.0F;
+    this.pwF = 0.00036F;
+    this.pwG = 0.00018F;
     return this;
   }
   
-  public final c aj(float paramFloat)
+  public final c bSH()
   {
-    this.ghk = (paramFloat / 1000000.0F);
-    this.ghl = 0.0F;
+    AppMethodBeat.i(151352);
+    this.pwH = Float.valueOf(0.36F);
+    this.pwI = Float.valueOf(0.0F);
+    AppMethodBeat.o(151352);
     return this;
   }
   
-  public final c anQ()
+  public final c bSI()
   {
-    this.gha = 9223372036854775807L;
+    AppMethodBeat.i(151353);
+    bSK();
+    bSL();
+    K(this.pwj, 0L);
+    bSM();
+    AppMethodBeat.o(151353);
     return this;
   }
   
-  public final c anR()
+  public final void bSJ()
   {
-    this.ghq = 180;
-    this.ghr = 180;
-    return this;
-  }
-  
-  public final c anS()
-  {
-    this.ghu = 0.00036F;
-    this.ghv = 0.00018F;
-    return this;
-  }
-  
-  public final c anT()
-  {
-    AppMethodBeat.i(151577);
-    this.ghw = Float.valueOf(0.36F);
-    this.ghx = Float.valueOf(0.0F);
-    AppMethodBeat.o(151577);
-    return this;
-  }
-  
-  public final c anU()
-  {
-    this.ghy = 1500L;
-    return this;
-  }
-  
-  public final c anV()
-  {
-    AppMethodBeat.i(151578);
-    anX();
-    anY();
-    B(this.ggZ, 0L);
-    anZ();
-    AppMethodBeat.o(151578);
-    return this;
-  }
-  
-  public final void anW()
-  {
-    AppMethodBeat.i(151579);
-    if (this.ggX != null) {
-      this.ggX.cancel();
+    AppMethodBeat.i(151354);
+    if (this.animator != null) {
+      this.animator.cancel();
     }
-    this.ggU.anW();
-    AppMethodBeat.o(151579);
+    this.pwf.bSJ();
+    AppMethodBeat.o(151354);
+  }
+  
+  public final c bv(float paramFloat)
+  {
+    this.pwl = (paramFloat / 1000.0F);
+    this.pwm = (1.0F / this.pwl);
+    return this;
+  }
+  
+  public final c bw(float paramFloat)
+  {
+    this.pwt = (paramFloat / 1000000.0F);
+    this.pwu = 0.0F;
+    return this;
+  }
+  
+  public final c bx(float paramFloat)
+  {
+    this.pwv = (paramFloat / 1000000.0F);
+    this.pww = 0.0F;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.particles.c
  * JD-Core Version:    0.7.0.1
  */

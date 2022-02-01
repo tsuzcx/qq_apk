@@ -16,14 +16,15 @@ class NewAnimationDrawable$1
   {
     if (paramMessage.what == 0)
     {
-      NewAnimationDrawable.access$102(this.this$0, NewAnimationDrawable.access$200(this.this$0));
+      paramMessage = this.this$0;
+      NewAnimationDrawable.access$102(paramMessage, NewAnimationDrawable.access$200(paramMessage));
       this.this$0.invalidateSelf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.photogif.NewAnimationDrawable.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,10 @@ import java.util.Map;
 public final class RequestPacket
   extends JceStruct
 {
-  static Map cache_context;
+  static Map<String, String> cache_context;
   static byte[] cache_sBuffer;
   public byte cPacketType = 0;
-  public Map context;
+  public Map<String, String> context;
   public int iMessageType = 0;
   public int iRequestId = 0;
   public int iTimeout = 0;
@@ -23,23 +23,11 @@ public final class RequestPacket
   public byte[] sBuffer;
   public String sFuncName = null;
   public String sServantName = null;
-  public Map status;
-  
-  static
-  {
-    if (!RequestPacket.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_sBuffer = null;
-      cache_context = null;
-      return;
-    }
-  }
+  public Map<String, String> status;
   
   public RequestPacket() {}
   
-  public RequestPacket(short paramShort, byte paramByte, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt3, Map paramMap1, Map paramMap2)
+  public RequestPacket(short paramShort, byte paramByte, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt3, Map<String, String> paramMap1, Map<String, String> paramMap2)
   {
     this.iVersion = paramShort;
     this.cPacketType = paramByte;
@@ -53,29 +41,28 @@ public final class RequestPacket
     this.status = paramMap2;
   }
   
-  public Object clone()
+  public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
-  public boolean equals(Object paramObject)
+  public final boolean equals(Object paramObject)
   {
     paramObject = (RequestPacket)paramObject;
     return (JceUtil.equals(1, paramObject.iVersion)) && (JceUtil.equals(1, paramObject.cPacketType)) && (JceUtil.equals(1, paramObject.iMessageType)) && (JceUtil.equals(1, paramObject.iRequestId)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sServantName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sFuncName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sBuffer)) && (JceUtil.equals(1, paramObject.iTimeout)) && (JceUtil.equals(Integer.valueOf(1), paramObject.context)) && (JceUtil.equals(Integer.valueOf(1), paramObject.status));
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     try
     {
@@ -92,14 +79,16 @@ public final class RequestPacket
       this.iTimeout = paramJceInputStream.read(this.iTimeout, 8, true);
       if (cache_context == null)
       {
-        cache_context = new HashMap();
-        cache_context.put("", "");
+        localObject = new HashMap();
+        cache_context = (Map)localObject;
+        ((Map)localObject).put("", "");
       }
       this.context = ((Map)paramJceInputStream.read(cache_context, 9, true));
       if (cache_context == null)
       {
-        cache_context = new HashMap();
-        cache_context.put("", "");
+        localObject = new HashMap();
+        cache_context = (Map)localObject;
+        ((Map)localObject).put("", "");
       }
       this.status = ((Map)paramJceInputStream.read(cache_context, 10, true));
       return;
@@ -107,12 +96,15 @@ public final class RequestPacket
     catch (Exception paramJceInputStream)
     {
       paramJceInputStream.printStackTrace();
-      System.out.println("RequestPacket decode error " + WupHexUtil.bytes2HexStr(this.sBuffer));
+      Object localObject = System.out;
+      StringBuilder localStringBuilder = new StringBuilder("RequestPacket decode error ");
+      localStringBuilder.append(WupHexUtil.bytes2HexStr(this.sBuffer));
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       throw new RuntimeException(paramJceInputStream);
     }
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iVersion, 1);
     paramJceOutputStream.write(this.cPacketType, 2);

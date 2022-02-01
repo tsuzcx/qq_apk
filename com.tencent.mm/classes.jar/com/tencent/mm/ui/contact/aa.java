@@ -1,113 +1,169 @@
 package com.tencent.mm.ui.contact;
 
-import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.f;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.openim.a.b.a;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import java.util.Iterator;
+import com.tencent.mm.openim.PluginOpenIM;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.base.NoMeasuredTextView;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class aa
+  extends a
 {
-  public static void a(Activity paramActivity, String paramString, List<String> paramList)
+  private HashSet<String> afgT;
+  private String afgU;
+  OpenIMAddressUI.OpenIMAddressUIFragment afgV;
+  
+  public aa(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(33921);
-    Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      String str = auE((String)localObject);
-      if (ad.arf((String)localObject)) {}
-      for (int i = 66;; i = 42)
-      {
-        localObject = new com.tencent.mm.modelmulti.h(paramString, str, i);
-        aw.Rc().a((m)localObject, 0);
-        break;
-      }
-    }
-    com.tencent.mm.ui.widget.snackbar.b.l(paramActivity, paramActivity.getString(2131300637));
-    com.tencent.mm.plugin.report.service.h.qsU.e(11003, new Object[] { paramString, Integer.valueOf(3), Integer.valueOf(paramList.size()) });
-    paramActivity.setResult(-1);
-    al.p(new aa.1(paramActivity), 1800L);
-    AppMethodBeat.o(33921);
+    super(paramContext, paramString1, null, 2);
+    AppMethodBeat.i(37919);
+    this.afgT = new HashSet();
+    this.afgU = paramString2;
+    AppMethodBeat.o(37919);
   }
   
-  public static String auE(String paramString)
+  protected final int a(com.tencent.mm.storage.f paramf, int paramInt)
   {
-    AppMethodBeat.i(33920);
-    Object localObject = o.adg().rj(paramString);
-    aw.aaz();
-    ad localad = c.YA().arw(paramString);
-    if (localad == null)
+    AppMethodBeat.i(37921);
+    if (paramf == null)
     {
-      AppMethodBeat.o(33920);
-      return null;
+      Log.e("OpenIMContactAdapter", "contact is null, position:%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(37921);
+      return -1;
     }
-    String str1;
-    String str2;
-    if (ad.arf(paramString))
+    if (Util.isNullOrNil(paramf.field_descWording))
     {
-      paramString = localad.field_openImAppid;
-      str1 = ((com.tencent.mm.openim.a.b)g.E(com.tencent.mm.openim.a.b.class)).c(localad.field_openImAppid, "openim_desc_icon", b.a.gfE);
-      str2 = ((com.tencent.mm.openim.a.b)g.E(com.tencent.mm.openim.a.b.class)).bd(localad.field_openImAppid, localad.field_descWordingId);
-      paramString = String.format(" <msg bigheadimgurl=\"%s\" smallheadimgurl=\"%s\" username=\"%s\" nickname=\"%s\" sex=\"%d\"  openimappid=\"%s\" openimdesc=\"%s\" openimdescicon=\"%s\"/>", new Object[] { bo.apT(((com.tencent.mm.ah.h)localObject).acX()), bo.apT(((com.tencent.mm.ah.h)localObject).acY()), bo.apT(localad.field_username), bo.apT(localad.Oe()), Integer.valueOf(localad.dqC), paramString, bo.apT(str2), bo.apT(str1) });
-      AppMethodBeat.o(33920);
-      return paramString;
+      AppMethodBeat.o(37921);
+      return -1;
     }
-    int i = localad.dqB;
-    if (localObject != null) {
-      i = ((com.tencent.mm.ah.h)localObject).dqB;
-    }
-    String str3;
-    String str4;
-    String str5;
-    String str6;
-    String str7;
-    int j;
-    int k;
-    int m;
-    String str8;
-    if (localad.dwz())
+    paramInt = paramf.field_descWording.hashCode();
+    AppMethodBeat.o(37921);
+    return paramInt;
+  }
+  
+  protected final void a(com.tencent.mm.storage.f paramf, a.b paramb)
+  {
+    AppMethodBeat.i(37924);
+    paramb = paramf.field_descWordingId;
+    if (this.afgT.contains(paramb))
     {
-      paramString = f.rS(localad.field_username);
-      localObject = bo.apT(localad.field_username);
-      str1 = bo.apT(localad.Oe());
-      str2 = bo.apT(localad.Hq());
-      str3 = bo.apT(localad.Oe());
-      str4 = bo.apT(localad.Ht());
-      str5 = bo.apT(localad.getProvince());
-      str6 = bo.apT(localad.getCity());
-      str7 = bo.apT(localad.signature);
-      j = localad.dqL;
-      k = localad.dqC;
-      m = localad.field_verifyFlag;
-      str8 = bo.apT(localad.dqP);
-      if (paramString != null) {
-        break label470;
+      AppMethodBeat.o(37924);
+      return;
+    }
+    this.afgT.add(paramb);
+    ((com.tencent.mm.openim.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.openim.api.e.class)).cc(paramf.field_openImAppid, paramb);
+    AppMethodBeat.o(37924);
+  }
+  
+  protected final String b(com.tencent.mm.storage.f paramf, int paramInt)
+  {
+    AppMethodBeat.i(37922);
+    paramf = paramf.field_descWording;
+    if (Util.isNullOrNil(paramf))
+    {
+      AppMethodBeat.o(37922);
+      return "#";
+    }
+    AppMethodBeat.o(37922);
+    return paramf;
+  }
+  
+  protected final void b(com.tencent.mm.storage.f paramf, a.b paramb)
+  {
+    AppMethodBeat.i(37923);
+    Object localObject = paramf.acDG;
+    if (localObject == null) {
+      try
+      {
+        if (au.bwO(paramf.field_username)) {}
+        for (paramf = ((com.tencent.mm.openim.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.openim.api.e.class)).e(MMApplicationContext.getContext(), paramf.aSV(), com.tencent.mm.cd.a.br(this.context, R.f.NormalTextSize));; paramf = p.d(this.context, bBG(aV(paramf.aSV(), paramf.field_username)), com.tencent.mm.cd.a.br(this.context, R.f.NormalTextSize)))
+        {
+          localObject = paramf;
+          if (paramf == null) {
+            localObject = "";
+          }
+          paramb.afaS.setText((CharSequence)localObject);
+          AppMethodBeat.o(37923);
+          return;
+        }
+      }
+      catch (Exception paramf)
+      {
+        for (;;)
+        {
+          paramf = null;
+        }
       }
     }
-    label470:
-    for (paramString = "";; paramString = bo.apT(paramString.field_brandIconURL))
-    {
-      paramString = String.format("<msg username=\"%s\" nickname=\"%s\" alias=\"%s\" fullpy=\"%s\" shortpy=\"%s\" imagestatus=\"%d\" scene=\"17\" province=\"%s\" city=\"%s\" sign=\"%s\" percard=\"%d\" sex=\"%d\" certflag=\"%d\" certinfo=\"%s\" certinfoext=\"\" brandIconUrl=\"%s\" brandHomeUrl=\"\" brandSubscriptConfigUrl=\"\" brandFlags=\"\" regionCode=\"%s\"/>", new Object[] { localObject, str1, str2, str3, str4, Integer.valueOf(i), str5, str6, str7, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), str8, paramString, bo.apT(localad.dqQ) });
-      AppMethodBeat.o(33920);
-      return paramString;
-      paramString = null;
-      break;
+    paramb.afaS.setText((CharSequence)localObject);
+    AppMethodBeat.o(37923);
+  }
+  
+  protected final Cursor jxV()
+  {
+    AppMethodBeat.i(37920);
+    long l = System.currentTimeMillis();
+    com.tencent.mm.kernel.h.baF();
+    Object localObject2 = ((PluginOpenIM)com.tencent.mm.kernel.h.az(PluginOpenIM.class)).getAppIdInfoStg();
+    String str = this.afgU;
+    Object localObject1 = new LinkedList();
+    localObject2 = ((com.tencent.mm.openim.e.d)localObject2).omV.rawQuery("select distinct appid from OpenIMAppIdInfo where acctTypeId=? ", new String[] { str }, 2);
+    if (((Cursor)localObject2).moveToFirst()) {
+      do
+      {
+        str = ((Cursor)localObject2).getString(0);
+        if (!Util.isNullOrNil(str)) {
+          ((List)localObject1).add(str);
+        }
+      } while (((Cursor)localObject2).moveToNext());
     }
+    ((Cursor)localObject2).close();
+    bh.bCz();
+    localObject2 = c.bzA().a(this.lMF, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), (List)localObject1);
+    localObject1 = localObject2;
+    if ((localObject2 instanceof com.tencent.mm.storagebase.a.f)) {
+      localObject1 = new com.tencent.mm.storagebase.a.e(new com.tencent.mm.storagebase.a.d[] { (com.tencent.mm.storagebase.a.d)com.tencent.mm.storagebase.d.jdS(), (com.tencent.mm.storagebase.a.f)localObject2 });
+    }
+    Log.d("OpenIMContactAdapter", "createNewCursor : " + (System.currentTimeMillis() - l));
+    AppMethodBeat.o(37920);
+    return localObject1;
+  }
+  
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(37925);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
+    {
+      Log.d("OpenIMContactAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
+      AppMethodBeat.o(37925);
+      return;
+    }
+    bh.bCz();
+    if (paramMStorageEx == c.bzA())
+    {
+      if (au.bwO((String)paramObject))
+      {
+        this.afgV.afbq = true;
+        AppMethodBeat.o(37925);
+        return;
+      }
+      Log.d("OpenIMContactAdapter", "newcursor is not openim ，return");
+    }
+    AppMethodBeat.o(37925);
   }
 }
 

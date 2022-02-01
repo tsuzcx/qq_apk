@@ -14,21 +14,21 @@ public final class mobile_feeds_piece_public
   static Map<String, String> cache_stMapExtendinfo;
   static interest_list cache_uin_info = new interest_list();
   public String attach_info = "";
-  public Map<Integer, String> extendinfo;
-  public int hasmore;
-  public s_cover host_cover;
-  public long host_imbitmap;
+  public Map<Integer, String> extendinfo = null;
+  public int hasmore = 0;
+  public s_cover host_cover = null;
+  public long host_imbitmap = 0L;
   public String hostnick = "";
-  public long iFollowNum;
-  public int iYellowLevel;
-  public int iYellowType;
-  public int is_detail_report;
+  public long iFollowNum = 0L;
+  public int iYellowLevel = 0;
+  public int iYellowType = 0;
+  public int is_detail_report = 0;
   public int network_report = 1;
-  public long newcount;
-  public int no_update;
-  public long req_count;
-  public Map<String, String> stMapExtendinfo;
-  public interest_list uin_info;
+  public long newcount = 0L;
+  public int no_update = 0;
+  public long req_count = 0L;
+  public Map<String, String> stMapExtendinfo = null;
+  public interest_list uin_info = null;
   public String user_sid = "";
   
   static
@@ -87,11 +87,13 @@ public final class mobile_feeds_piece_public
   {
     paramJceOutputStream.write(this.hasmore, 0);
     paramJceOutputStream.write(this.newcount, 1);
-    if (this.hostnick != null) {
-      paramJceOutputStream.write(this.hostnick, 2);
+    Object localObject = this.hostnick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.no_update, 4);
     paramJceOutputStream.write(this.req_count, 5);
@@ -99,28 +101,33 @@ public final class mobile_feeds_piece_public
     paramJceOutputStream.write(this.iYellowLevel, 7);
     paramJceOutputStream.write(this.iFollowNum, 8);
     paramJceOutputStream.write(this.host_imbitmap, 9);
-    if (this.user_sid != null) {
-      paramJceOutputStream.write(this.user_sid, 10);
+    localObject = this.user_sid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.host_cover != null) {
-      paramJceOutputStream.write(this.host_cover, 11);
+    localObject = this.host_cover;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.uin_info != null) {
-      paramJceOutputStream.write(this.uin_info, 12);
+    localObject = this.uin_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 13);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
     paramJceOutputStream.write(this.is_detail_report, 14);
     paramJceOutputStream.write(this.network_report, 15);
-    if (this.stMapExtendinfo != null) {
-      paramJceOutputStream.write(this.stMapExtendinfo, 16);
+    localObject = this.stMapExtendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 16);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_piece_public
  * JD-Core Version:    0.7.0.1
  */

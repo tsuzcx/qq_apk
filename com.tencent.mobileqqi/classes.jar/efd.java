@@ -1,24 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
-public class efd
-  extends Handler
+public final class efd
+  implements Runnable
 {
-  public efd(SystemMsgListView paramSystemMsgListView) {}
+  public efd(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (SystemMsgListView.a(this.a) == null);
-    this.a.j();
-    SystemMsgListView.a(this.a).notifyDataSetChanged();
+    FriendSystemMsgController.a().c(this.a);
   }
 }
 

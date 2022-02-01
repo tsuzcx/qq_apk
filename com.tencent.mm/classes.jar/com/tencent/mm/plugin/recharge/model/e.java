@@ -1,58 +1,60 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.anr;
-import com.tencent.mm.protocal.protobuf.ans;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cpj;
+import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public String pUM;
-  public ArrayList<MallRechargeProduct> pUY;
-  public String pUZ;
-  public String pVa;
-  public String pVb;
-  public String pVc;
-  private com.tencent.mm.ai.b rr;
+  public ArrayList<MallRechargeProduct> NwR;
+  public String NwS;
+  public String NwT;
+  public String NwU;
+  public String NwV;
+  private h callback;
+  public String qBb;
+  private c rr;
   
   public e(String paramString)
   {
-    AppMethodBeat.i(44199);
-    this.pUY = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new anr();
-    ((b.a)localObject).fsY = new ans();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getpayfunctionproductlist";
-    ((b.a)localObject).funcId = 496;
-    ((b.a)localObject).reqCmdId = 228;
-    ((b.a)localObject).respCmdId = 1000000228;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (anr)this.rr.fsV.fta;
-    this.pUM = paramString;
-    ((anr)localObject).wWF = paramString;
-    AppMethodBeat.o(44199);
+    AppMethodBeat.i(67107);
+    this.NwR = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cpj();
+    ((c.a)localObject).otF = new cpk();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getpayfunctionproductlist";
+    ((c.a)localObject).funcId = 496;
+    ((c.a)localObject).otG = 228;
+    ((c.a)localObject).respCmdId = 1000000228;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cpj)c.b.b(this.rr.otB);
+    this.qBb = paramString;
+    ((cpj)localObject).aaiH = paramString;
+    AppMethodBeat.o(67107);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(44201);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(44201);
+    AppMethodBeat.i(67109);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(67109);
     return i;
   }
   
@@ -61,43 +63,43 @@ public final class e
     return 496;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(44200);
-    ab.d("MicroMsg.NetSceneGetPayFunctionProductList", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    AppMethodBeat.i(67108);
+    Log.d("MicroMsg.NetSceneGetPayFunctionProductList", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ans)((com.tencent.mm.ai.b)paramq).fsW.fta;
-      paramArrayOfByte = paramq.xcw;
-      ab.d("MicroMsg.NetSceneGetPayFunctionProductList", "resp.ProductList ".concat(String.valueOf(paramArrayOfByte)));
-      if (bo.isNullOrNil(paramArrayOfByte)) {}
+      params = (cpk)c.c.b(((c)params).otC);
+      paramArrayOfByte = params.aatS;
+      Log.d("MicroMsg.NetSceneGetPayFunctionProductList", "resp.ProductList ".concat(String.valueOf(paramArrayOfByte)));
+      if (Util.isNullOrNil(paramArrayOfByte)) {}
     }
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.pUY = b.a(this.pUM, paramArrayOfByte.getJSONArray("pay_product_list"));
-      if (bo.isNullOrNil(paramq.xdV)) {}
+      this.NwR = b.a(this.qBb, paramArrayOfByte.getJSONArray("pay_product_list"));
+      if (Util.isNullOrNil(params.aawe)) {}
     }
     catch (JSONException paramArrayOfByte)
     {
       try
       {
-        paramq = new JSONObject(paramq.xdV);
-        this.pUZ = paramq.optString("balance_link");
-        this.pVb = paramq.optString("recharge_link");
-        this.pVa = paramq.optString("balance_wording");
-        this.pVc = paramq.optString("recharge_wording");
+        params = new JSONObject(params.aawe);
+        this.NwS = params.optString("balance_link");
+        this.NwU = params.optString("recharge_link");
+        this.NwT = params.optString("balance_wording");
+        this.NwV = params.optString("recharge_wording");
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(44200);
+        AppMethodBeat.o(67108);
         return;
         paramArrayOfByte = paramArrayOfByte;
-        ab.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", paramArrayOfByte, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", paramArrayOfByte, "", new Object[0]);
       }
-      catch (JSONException paramq)
+      catch (JSONException params)
       {
         for (;;)
         {
-          ab.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", paramq, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", params, "", new Object[0]);
         }
       }
     }

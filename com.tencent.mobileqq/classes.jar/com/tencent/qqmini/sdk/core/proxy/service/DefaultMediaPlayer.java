@@ -3,22 +3,27 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.media.MediaPlayer;
 import android.view.Surface;
 import android.view.SurfaceHolder;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnBufferingUpdateListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnCompletionListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnInfoListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnLoopStartListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnPreparedListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnBufferingUpdateListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnCompletionListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnLoopStartListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 public class DefaultMediaPlayer
   implements IMediaPlayer
 {
   public static final String LOG_TAG = "DefaultMediaPlayer";
   MediaPlayer mMediaPlayer = new MediaPlayer();
+  
+  public int getBufferPercent()
+  {
+    return 0;
+  }
   
   public long getCurrentPosition()
   {
@@ -48,6 +53,11 @@ public class DefaultMediaPlayer
   public boolean isPlaying()
   {
     return this.mMediaPlayer.isPlaying();
+  }
+  
+  public boolean isSuperPlayer()
+  {
+    return true;
   }
   
   public void pause()
@@ -83,6 +93,11 @@ public class DefaultMediaPlayer
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
     this.mMediaPlayer.setDisplay(paramSurfaceHolder);
+  }
+  
+  public void setDrmDataSource(String paramString1, String paramString2, String paramString3)
+  {
+    this.mMediaPlayer.setDataSource(paramString1);
   }
   
   public void setLooping(boolean paramBoolean)
@@ -132,7 +147,11 @@ public class DefaultMediaPlayer
   
   public void setRate(float paramFloat)
   {
-    QMLog.w("DefaultMediaPlayer", "setRate:" + paramFloat + " is not supported");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRate:");
+    localStringBuilder.append(paramFloat);
+    localStringBuilder.append(" is not supported");
+    QMLog.w("DefaultMediaPlayer", localStringBuilder.toString());
   }
   
   public void setScreenOnWhilePlaying(boolean paramBoolean)
@@ -162,7 +181,7 @@ public class DefaultMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DefaultMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

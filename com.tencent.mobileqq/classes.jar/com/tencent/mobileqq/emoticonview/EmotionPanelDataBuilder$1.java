@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apwt;
-import apwu;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class EmotionPanelDataBuilder$1
+class EmotionPanelDataBuilder$1
   implements Runnable
 {
-  public EmotionPanelDataBuilder$1(apwt paramapwt, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, apwu paramapwu) {}
+  EmotionPanelDataBuilder$1(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, IEmoticonMainPanelApp paramIEmoticonMainPanelApp, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, IEmotionPanelDataCallback paramIEmotionPanelDataCallback) {}
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.b, this.c, this.jdField_a_of_type_Boolean);
+    List localList = this.this$0.syncGetEmotionPanelData(this.val$app, this.val$panelType, this.val$emotionPkg, this.val$uinType, this.val$businessType, this.val$kanDianBiu);
     ThreadManager.getUIHandler().post(new EmotionPanelDataBuilder.1.1(this, localList));
   }
 }

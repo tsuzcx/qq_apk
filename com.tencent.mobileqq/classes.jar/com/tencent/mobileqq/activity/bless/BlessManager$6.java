@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.bless;
 
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.qphone.base.util.QLog;
 
-public class BlessManager$6
+class BlessManager$6
   implements Runnable
 {
   public void run()
@@ -11,7 +11,7 @@ public class BlessManager$6
     if (QLog.isColorLevel()) {
       QLog.d("BlessManager", 2, "checkAndDownloadJson begin");
     }
-    VasQuickUpdateManager.getJSONFromLocal(this.a, "blessVoiceList.json", true, null);
+    VasUpdateUtil.a(this.a, "blessVoiceList.json", true, null);
   }
 }
 

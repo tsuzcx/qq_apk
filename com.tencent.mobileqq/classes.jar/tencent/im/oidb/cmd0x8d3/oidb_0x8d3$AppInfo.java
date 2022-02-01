@@ -69,6 +69,7 @@ public final class oidb_0x8d3$AppInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -81,12 +82,12 @@ public final class oidb_0x8d3$AppInfo
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro12 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 64, 72, 80, 88, 98, 104, 112, 120, 128, 138, 146, 154, 162, 170, 178, 186, 194, 200, 208, 216 }, new String[] { "opt_uint64_appid", "opt_bytes_appname", "opt_uint32_app_type", "opt_uint32_app_from", "opt_bytes_app_intro", "opt_bytes_app_url", "opt_bytes_app_icon", "opt_uint32_app_window_high", "opt_uint32_app_window_width", "opt_uint32_app_update_time", "opt_uint32_app_icon_update_time", "opt_bytes_open_param", "opt_uint32_app_status", "opt_uint32_app_inner_type", "opt_uint32_init_flag", "opt_uint32_setting_flag", "opt_msg_app_tip", "opt_bytes_tags", "opt_bytes_version_ios", "opt_bytes_version_android", "opt_bytes_android_download_url", "opt_bytes_ios_download_url", "opt_bytes_ios_open", "opt_bytes_android_open", "opt_uint32_app_sort_key", "opt_uint32_app_is_new", "opt_uint32_app_new_time" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, AppInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 64, 72, 80, 88, 98, 104, 112, 120, 128, 138, 146, 154, 162, 170, 178, 186, 194, 200, 208, 216 }, new String[] { "opt_uint64_appid", "opt_bytes_appname", "opt_uint32_app_type", "opt_uint32_app_from", "opt_bytes_app_intro", "opt_bytes_app_url", "opt_bytes_app_icon", "opt_uint32_app_window_high", "opt_uint32_app_window_width", "opt_uint32_app_update_time", "opt_uint32_app_icon_update_time", "opt_bytes_open_param", "opt_uint32_app_status", "opt_uint32_app_inner_type", "opt_uint32_init_flag", "opt_uint32_setting_flag", "opt_msg_app_tip", "opt_bytes_tags", "opt_bytes_version_ios", "opt_bytes_version_android", "opt_bytes_android_download_url", "opt_bytes_ios_download_url", "opt_bytes_ios_open", "opt_bytes_android_open", "opt_uint32_app_sort_key", "opt_uint32_app_is_new", "opt_uint32_app_new_time" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localInteger, localInteger, localInteger, localByteStringMicro5, localInteger, localInteger, localInteger, localInteger, null, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localInteger, localInteger, localInteger }, AppInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppInfo
  * JD-Core Version:    0.7.0.1
  */

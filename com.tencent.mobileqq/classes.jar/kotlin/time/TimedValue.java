@@ -38,18 +38,18 @@ public final class TimedValue<T>
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof TimedValue))
       {
         paramObject = (TimedValue)paramObject;
-        if ((!Intrinsics.areEqual(this.value, paramObject.value)) || (Double.compare(this.duration, paramObject.duration) != 0)) {}
+        if ((Intrinsics.areEqual(this.value, paramObject.value)) && (Double.compare(this.duration, paramObject.duration) == 0)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final double getDuration()
@@ -65,23 +65,31 @@ public final class TimedValue<T>
   public int hashCode()
   {
     Object localObject = this.value;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      long l = Double.doubleToLongBits(this.duration);
-      return i * 31 + (int)(l ^ l >>> 32);
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    long l = Double.doubleToLongBits(this.duration);
+    return i * 31 + (int)(l ^ l >>> 32);
   }
   
   @NotNull
   public String toString()
   {
-    return "TimedValue(value=" + this.value + ", duration=" + Duration.toString-impl(this.duration) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TimedValue(value=");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(Duration.toString-impl(this.duration));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.time.TimedValue
  * JD-Core Version:    0.7.0.1
  */

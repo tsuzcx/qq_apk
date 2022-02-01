@@ -23,25 +23,26 @@ public abstract class GLAnim
   
   public void draw(GL10 paramGL10)
   {
-    if (this.mState != 1) {}
-    long l;
-    do
-    {
+    if (this.mState != 1) {
       return;
-      if (this.a == -1L) {
-        this.a = System.currentTimeMillis();
-      }
-      l = System.currentTimeMillis() - this.a;
-    } while (this.c - l > 0L);
-    l -= this.c;
-    if (l >= this.duration)
+    }
+    if (this.a == -1L) {
+      this.a = System.currentTimeMillis();
+    }
+    long l1 = System.currentTimeMillis() - this.a;
+    long l2 = this.c;
+    if (l2 - l1 > 0L) {
+      return;
+    }
+    l1 -= l2;
+    if (l1 >= this.duration)
     {
       if (this.b) {
         onRestart();
       }
       this.mState = 2;
     }
-    performDraw(paramGL10, l);
+    performDraw(paramGL10, l1);
   }
   
   public long getDuration()
@@ -90,7 +91,7 @@ public abstract class GLAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GLAnim
  * JD-Core Version:    0.7.0.1
  */

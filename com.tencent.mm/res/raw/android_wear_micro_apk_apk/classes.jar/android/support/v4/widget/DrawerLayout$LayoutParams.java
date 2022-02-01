@@ -10,9 +10,9 @@ public class DrawerLayout$LayoutParams
   extends ViewGroup.MarginLayoutParams
 {
   public int gravity = 0;
-  float oJ;
-  boolean oK;
-  int oL;
+  boolean qA;
+  int qB;
+  float qz;
   
   public DrawerLayout$LayoutParams()
   {
@@ -22,7 +22,7 @@ public class DrawerLayout$LayoutParams
   public DrawerLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, DrawerLayout.kV);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, DrawerLayout.mR);
     this.gravity = paramContext.getInt(0, 0);
     paramContext.recycle();
   }

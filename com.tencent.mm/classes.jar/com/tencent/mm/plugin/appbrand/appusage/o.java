@@ -1,142 +1,121 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import android.os.DeadObjectException;
 import android.os.Looper;
-import android.os.Parcel;
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.e.b;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.config.af;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandLocalUsageStorageNewImpl;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;", "()V", "TAG", "", "add", "", "listener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "looper", "Landroid/os/Looper;", "getCount", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "versionType", "maxUpdateTime", "", "remove", "removeUsage", "", "username", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  extends k
+  extends MStorage
   implements ag
 {
-  private final Set<k.a> hbx;
+  private final String TAG = "MicroMsg.AppBrandLocalUsageStorageNewImpl";
   
-  public o()
+  public final void add(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(129592);
-    this.hbx = new HashSet();
-    AppMethodBeat.o(129592);
+    AppMethodBeat.i(50278);
+    add(paramIOnStorageChange, Looper.getMainLooper());
+    AppMethodBeat.o(50278);
   }
   
-  public final boolean aF(String paramString, int paramInt)
+  public final void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
   {
-    AppMethodBeat.i(129593);
-    paramString = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), c.class);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(129593);
-      return false;
-    }
-    boolean bool = paramString.value;
-    AppMethodBeat.o(129593);
-    return bool;
+    AppMethodBeat.i(50279);
+    n.cfk().add(paramIOnStorageChange, paramLooper);
+    n.cfc().add(paramIOnStorageChange, paramLooper);
+    AppMethodBeat.o(50279);
   }
   
-  public final void add(k.a parama)
+  public final boolean bT(String paramString, int paramInt)
   {
-    AppMethodBeat.i(129595);
-    add(parama, Looper.getMainLooper());
-    AppMethodBeat.o(129595);
-  }
-  
-  public final void add(k.a parama, Looper arg2)
-  {
-    int i = 1;
-    AppMethodBeat.i(129596);
-    if ((parama == null) || (??? == null))
+    boolean bool1 = false;
+    AppMethodBeat.i(50275);
+    am.C(paramString, null, paramInt);
+    if (!n.cfk().ca(paramString, paramInt)) {}
+    for (;;)
     {
-      AppMethodBeat.o(129596);
-      return;
-    }
-    super.add(parama, ???);
-    synchronized (this.hbx)
-    {
-      this.hbx.add(parama);
-      if (this.hbx.size() == 1)
-      {
-        if (i != 0) {
-          XIPCInvoker.a("com.tencent.mm", IPCVoid.eER, o.b.class, new o.1(this));
-        }
-        AppMethodBeat.o(129596);
-        return;
-      }
-      i = 0;
-    }
-  }
-  
-  public final List<LocalUsageInfo> nu(int paramInt)
-  {
-    AppMethodBeat.i(129594);
-    Parcel localParcel = (Parcel)XIPCInvoker.a("com.tencent.mm", new IPCInteger(paramInt), o.a.class);
-    if (localParcel == null)
-    {
-      AppMethodBeat.o(129594);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    localParcel.readTypedList(localArrayList, LocalUsageInfo.CREATOR);
-    AppMethodBeat.o(129594);
-    return localArrayList;
-  }
-  
-  public final void remove(k.a parama)
-  {
-    AppMethodBeat.i(129597);
-    if (parama == null)
-    {
-      AppMethodBeat.o(129597);
-      return;
-    }
-    super.remove(parama);
-    synchronized (this.hbx)
-    {
-      this.hbx.remove(parama);
-      AppMethodBeat.o(129597);
-      return;
-    }
-  }
-  
-  static final class c
-    implements i<AppIdentity, IPCBoolean>
-  {
-    private static IPCBoolean c(AppIdentity paramAppIdentity)
-    {
-      AppMethodBeat.i(129590);
       try
       {
-        paramAppIdentity = new IPCBoolean(((ag)g.E(ag.class)).aF(paramAppIdentity.username, paramAppIdentity.hcr));
-        AppMethodBeat.o(129590);
-        return paramAppIdentity;
+        boolean bool2 = n.cfk().cb(paramString, paramInt);
+        if (bool2) {
+          continue;
+        }
+        bool1 = true;
       }
-      catch (Exception paramAppIdentity)
+      catch (Exception paramString)
       {
-        ab.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
-        paramAppIdentity = new IPCBoolean(false);
-        AppMethodBeat.o(129590);
+        Log.printErrStackTrace(this.TAG, (Throwable)paramString, "removeUsage", new Object[0]);
+        continue;
       }
-      return paramAppIdentity;
+      AppMethodBeat.o(50275);
+      return bool1;
+      bool1 = false;
     }
+  }
+  
+  public final List<? extends LocalUsageInfo> fg(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(50277);
+    if (paramInt1 <= 0)
+    {
+      localObject = Collections.emptyList();
+      s.s(localObject, "emptyList<LocalUsageInfo>()");
+      AppMethodBeat.o(50277);
+      return localObject;
+    }
+    Object localObject = w.g(n.cfk().a(null, paramInt1, 0, paramInt2));
+    s.s(localObject, "obtainHistoryList(SubCor…, count, 0, versionType))");
+    localObject = (List)localObject;
+    AppMethodBeat.o(50277);
+    return localObject;
+  }
+  
+  public final List<? extends LocalUsageInfo> r(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(319326);
+    Object localObject = n.cfk().qPF.s(paramLong, paramInt);
+    s.s(localObject, "getUsageStorage().paging…ive(maxUpdateTime, count)");
+    localObject = (List)localObject;
+    AppMethodBeat.o(319326);
+    return localObject;
+  }
+  
+  public final void remove(MStorage.IOnStorageChange paramIOnStorageChange)
+  {
+    AppMethodBeat.i(50280);
+    n.cfk().remove(paramIOnStorageChange);
+    n.cfc().remove(paramIOnStorageChange);
+    AppMethodBeat.o(50280);
+  }
+  
+  public final List<? extends LocalUsageInfo> zu(int paramInt)
+  {
+    AppMethodBeat.i(50276);
+    if (paramInt <= 0)
+    {
+      localObject = Collections.emptyList();
+      s.s(localObject, "emptyList<LocalUsageInfo>()");
+      AppMethodBeat.o(50276);
+      return localObject;
+    }
+    Object localObject = w.g(n.cfk().a(null, paramInt, 0));
+    s.s(localObject, "obtainHistoryList(SubCor…istories(null, count, 0))");
+    localObject = (List)localObject;
+    AppMethodBeat.o(50276);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.o
  * JD-Core Version:    0.7.0.1
  */

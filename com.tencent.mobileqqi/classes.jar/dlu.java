@@ -8,6 +8,7 @@ public class dlu
   public void run()
   {
     this.a.h();
+    SubAccountMessageActivity.d(this.a);
   }
 }
 

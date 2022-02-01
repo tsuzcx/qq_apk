@@ -1,355 +1,641 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.widget.ImageView;
+import android.net.Uri;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.o;
-import com.tencent.mm.plugin.brandservice.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI;
-import com.tencent.mm.pluginsdk.model.p;
-import com.tencent.mm.pluginsdk.ui.applet.e.a;
-import com.tencent.mm.pluginsdk.ui.applet.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
-import java.util.HashSet;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.euj;
+import com.tencent.mm.protocal.protobuf.euk;
+import com.tencent.mm.protocal.protobuf.gb;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMFileSlotManager;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"domainHashMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "getDomainHashMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setDomainHashMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "fullUrlHashCache", "getFullUrlHashCache", "setFullUrlHashCache", "urlHashCache", "getUrlHashCache", "setUrlHashCache", "host", "getHost", "(Ljava/lang/String;)Ljava/lang/String;", "path", "getPath", "clearDomain", "", "domain", "clearDomainCache", "getContentId", "url", "getDomainId", "fetch", "", "getFullInfoId", "getFullWebId", "prefetch", "getInfoId", "getInvalidId", "getShortUrlId", "getStrip", "", "openScene", "getUrlId", "getWebId", "getWebResId", "resUrl", "hashFullUrl", "hashUrl", "mpDataMmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setShortUrlId", "shortUrl", "longUrl", "contains", "Lcom/tencent/mm/sdk/platformtools/MMFileSlotManager;", "contentId", "create", "Lcom/tencent/mm/vfs/VFSFile;", "findContentFile", "getContentFile", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "getContentPath", "plugin-brandservice_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static HashSet<Long> jZJ;
-  private static HashSet<String> jZK;
-  private static Boolean jZP;
-  private static Boolean jZQ;
-  public BizTimeLineUI jVs;
-  private int jZG;
-  private int jZH;
-  public int jZI;
-  public List<com.tencent.mm.storage.q> jZL;
-  private List<com.tencent.mm.storage.q> jZM;
-  private boolean jZN;
-  public boolean jZO;
+  private static ConcurrentHashMap<String, String> vQr;
+  private static ConcurrentHashMap<String, String> vQs;
+  private static ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> vQt;
   
   static
   {
-    AppMethodBeat.i(14388);
-    jZJ = new HashSet();
-    jZK = new HashSet();
-    jZP = null;
-    jZQ = null;
-    AppMethodBeat.o(14388);
+    AppMethodBeat.i(6575);
+    vQr = new ConcurrentHashMap();
+    vQs = new ConcurrentHashMap();
+    vQt = new ConcurrentHashMap();
+    AppMethodBeat.o(6575);
   }
   
-  public c(BizTimeLineUI paramBizTimeLineUI, int paramInt1, int paramInt2, List<com.tencent.mm.storage.q> paramList)
+  public static final int Ht(int paramInt)
   {
-    AppMethodBeat.i(14368);
-    this.jZI = 0;
-    this.jZL = new LinkedList();
-    this.jZN = false;
-    this.jZO = false;
-    this.jVs = paramBizTimeLineUI;
-    this.jZG = paramInt1;
-    this.jZH = paramInt2;
-    this.jZM = paramList;
-    if (this.jZM.size() <= 10) {
-      Looper.myQueue().addIdleHandler(new c.1(this));
+    int j = 1;
+    AppMethodBeat.i(6571);
+    Object localObject1 = q.dfF().decodeBytes("_msg_scene_strip");
+    int i;
+    if (localObject1 != null) {
+      if (localObject1.length == 0)
+      {
+        i = 1;
+        if (i != 0) {
+          break label162;
+        }
+        i = 1;
+        label34:
+        if (i != 1) {
+          break label167;
+        }
+        i = j;
+      }
     }
-    AppMethodBeat.o(14368);
+    label162:
+    label167:
+    for (;;)
+    {
+      label41:
+      if (i != 0)
+      {
+        Object localObject2 = new euk();
+        ((euk)localObject2).parseFrom((byte[])localObject1);
+        localObject1 = ((euk)localObject2).YMN;
+        s.s(localObject1, "SceneControlSets().apply…(buff) }.SceneControlList");
+        localObject1 = ((Iterable)localObject1).iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (euj)((Iterator)localObject1).next();
+            if (((euj)localObject2).IJG == paramInt)
+            {
+              if (((euj)localObject2).abxl <= 0)
+              {
+                Log.e("MicroMsg.AppMsgContextEx", "strip error " + paramInt + ':' + ((euj)localObject2).abxl);
+                continue;
+                i = 0;
+                break;
+                i = 0;
+                break label34;
+                i = 0;
+                break label41;
+              }
+              Log.i("MicroMsg.AppMsgContextEx", "strip " + paramInt + ':' + ((euj)localObject2).abxl);
+              paramInt = ((euj)localObject2).abxl;
+              AppMethodBeat.o(6571);
+              return paramInt;
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(6571);
+    return 10;
   }
   
-  public static boolean a(com.tencent.mm.storage.q paramq, com.tencent.mm.af.q paramq1)
+  public static final u I(u paramu)
   {
-    AppMethodBeat.i(152655);
-    if ((paramq == null) || (paramq1 == null))
+    AppMethodBeat.i(175480);
+    s.u(paramu, "<this>");
+    if (!paramu.jKS())
     {
-      AppMethodBeat.o(152655);
-      return false;
+      String str = paramu.jKO();
+      s.checkNotNull(str);
+      new u(str).jKY();
+      paramu.jKZ();
     }
-    if ((paramq1.type == 5) || (paramq1.type == 10) || (com.tencent.mm.plugin.brandservice.ui.b.a.a(paramq, paramq1)))
+    AppMethodBeat.o(175480);
+    return paramu;
+  }
+  
+  public static final u a(MMFileSlotManager paramMMFileSlotManager, String paramString)
+  {
+    AppMethodBeat.i(175483);
+    s.u(paramMMFileSlotManager, "<this>");
+    s.u(paramString, "contentId");
+    paramMMFileSlotManager = f((u)paramMMFileSlotManager.getSlotForWrite(), paramString);
+    AppMethodBeat.o(175483);
+    return paramMMFileSlotManager;
+  }
+  
+  public static final String a(gb paramgb)
+  {
+    AppMethodBeat.i(6570);
+    s.u(paramgb, "<this>");
+    paramgb = paramgb.Url;
+    s.s(paramgb, "this.Url");
+    paramgb = ajo(paramgb);
+    AppMethodBeat.o(6570);
+    return paramgb;
+  }
+  
+  private static final String aW(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(303243);
+    String str1 = paramString + '-' + paramBoolean;
+    Object localObject2;
+    for (;;)
     {
-      AppMethodBeat.o(152655);
+      int i;
+      String str2;
+      String str3;
+      try
+      {
+        if (vQs.containsKey(str1))
+        {
+          paramString = ak.e((Map)vQs, str1);
+          localObject1 = (String)paramString;
+          if (BuildInfo.DEBUG) {
+            Log.v("AppMsgContextEx", "hashFullUrl cacheKey: %s, value: %s", new Object[] { str1, localObject1 });
+          }
+          paramString = (String)paramString;
+          return paramString;
+        }
+        localObject1 = kotlin.ah.aiuX;
+        localObject1 = ajm(getHost(paramString));
+        localObject2 = new StringBuilder("matched_");
+        i = 0;
+        if (i >= 3) {
+          break;
+        }
+        str2 = new String[] { "__biz", "mid", "idx" }[i];
+        str3 = UrlExKt.getUrlParam(paramString, str2);
+        if (str3 != null) {
+          break label396;
+        }
+        localObject2 = UrlExKt.clearShortUrl(paramString, true);
+        str2 = ajq((String)localObject2);
+        if (!Util.isNullOrNil(str2))
+        {
+          ((Map)vQs).put(paramString, str2);
+          AppMethodBeat.o(303243);
+          return str2;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(303243);
+      }
+      localObject2 = Integer.toString(s.X("not_matched_", Integer.valueOf(b((String)localObject2, paramBoolean, paramString))).hashCode(), kotlin.n.a.aMy(16));
+      s.s(localObject2, "java.lang.Integer.toStri…(this, checkRadix(radix))");
+      if (paramBoolean)
+      {
+        if (!vQt.containsKey(localObject1)) {
+          ((Map)vQt).put(localObject1, new ConcurrentLinkedDeque());
+        }
+        localObject1 = vQt.get(localObject1);
+        s.checkNotNull(localObject1);
+        ((ConcurrentLinkedDeque)localObject1).add(str1);
+        ((Map)vQs).put(str1, localObject2);
+        Log.d("AppMsgContextEx", "#" + (String)localObject2 + " hash from:%s", new Object[] { paramString });
+      }
+      AppMethodBeat.o(303243);
+      return localObject2;
+      label396:
+      ((StringBuilder)localObject2).append(str2 + ':' + str3 + '-');
+      i += 1;
+    }
+    paramString = ((StringBuilder)localObject2).toString();
+    s.s(paramString, "key.toString()");
+    if (!vQt.containsKey(localObject1)) {
+      ((Map)vQt).put(localObject1, new ConcurrentLinkedDeque());
+    }
+    Object localObject1 = vQt.get(localObject1);
+    s.checkNotNull(localObject1);
+    ((ConcurrentLinkedDeque)localObject1).add(str1);
+    ((Map)vQs).put(str1, paramString);
+    AppMethodBeat.o(303243);
+    return paramString;
+  }
+  
+  public static final String aX(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(303276);
+    s.u(paramString, "url");
+    paramString = s.X("_web_", aW(paramString, paramBoolean));
+    AppMethodBeat.o(303276);
+    return paramString;
+  }
+  
+  public static final void ajg(String paramString)
+  {
+    AppMethodBeat.i(303223);
+    s.u(paramString, "domain");
+    String str1 = ajm(paramString);
+    LinkedList localLinkedList = new LinkedList();
+    try
+    {
+      Object localObject = (ConcurrentLinkedDeque)vQt.get(str1);
+      if (localObject != null)
+      {
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str2 = (String)((Iterator)localObject).next();
+          String str3 = (String)vQr.remove(str2);
+          if (str3 != null) {
+            localLinkedList.add(str3);
+          }
+          str2 = (String)vQs.remove(str2);
+          if (str2 != null) {
+            localLinkedList.add(str2);
+          }
+        }
+        localObject = kotlin.ah.aiuX;
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(303223);
+    }
+    Log.i("AppMsgContextEx", "clearDomain:" + paramString + '#' + str1 + ", [" + p.a((Iterable)localLinkedList, (CharSequence)",", null, null, 0, null, null, 62) + ']');
+    AppMethodBeat.o(303223);
+  }
+  
+  public static final void ajh(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(6557);
+      s.u(paramString, "domain");
+      String str = MainProcessIPCService.PROCESS_NAME;
+      s.s(str, "PROCESS_NAME");
+      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)new IPCString(paramString), c..ExternalSyntheticLambda0.INSTANCE);
+      str = ToolsProcessIPCService.PROCESS_NAME;
+      s.s(str, "PROCESS_NAME");
+      com.tencent.mm.ipcinvoker.a.a(str, (Parcelable)new IPCString(paramString), c..ExternalSyntheticLambda1.INSTANCE);
+      AppMethodBeat.o(6557);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  private static final String aji(String paramString)
+  {
+    AppMethodBeat.i(303250);
+    paramString = UrlExKt.clearUrlParams(n.rt(paramString, "#"), new String[] { "from", "isappinstalled", "pass_ticket", "exportKey" });
+    String str1 = paramString + '-' + false;
+    StringBuilder localStringBuilder;
+    for (;;)
+    {
+      int i;
+      String str2;
+      String str3;
+      try
+      {
+        if (vQr.containsKey(str1))
+        {
+          paramString = (String)ak.e((Map)vQr, str1);
+          return paramString;
+        }
+        localObject = kotlin.ah.aiuX;
+        localObject = ajm(getHost(paramString));
+        localStringBuilder = new StringBuilder("matched_");
+        i = 0;
+        if (i >= 3) {
+          break;
+        }
+        str2 = new String[] { "__biz", "mid", "idx" }[i];
+        str3 = UrlExKt.getUrlParam(paramString, str2);
+        if (str3 != null) {
+          break label280;
+        }
+        str1 = UrlExKt.clearShortUrl$default(paramString, false, 2, null);
+        localObject = ajq(str1);
+        if (!Util.isNullOrNil((String)localObject))
+        {
+          ((Map)vQr).put(paramString, localObject);
+          AppMethodBeat.o(303250);
+          return localObject;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(303250);
+      }
+      paramString = Integer.toString(s.X("not_matched_", Integer.valueOf(c(str1, false, paramString))).hashCode(), kotlin.n.a.aMy(16));
+      s.s(paramString, "java.lang.Integer.toStri…(this, checkRadix(radix))");
+      AppMethodBeat.o(303250);
+      return paramString;
+      label280:
+      localStringBuilder.append(str2 + ':' + str3 + '-');
+      i += 1;
+    }
+    paramString = localStringBuilder.toString();
+    s.s(paramString, "key.toString()");
+    if (!vQt.containsKey(localObject)) {
+      ((Map)vQt).put(localObject, new ConcurrentLinkedDeque());
+    }
+    Object localObject = vQt.get(localObject);
+    s.checkNotNull(localObject);
+    ((ConcurrentLinkedDeque)localObject).add(str1);
+    ((Map)vQr).put(str1, paramString);
+    AppMethodBeat.o(303250);
+    return paramString;
+  }
+  
+  public static final String ajj(String paramString)
+  {
+    AppMethodBeat.i(303256);
+    s.u(paramString, "url");
+    paramString = s.X("_info_", aW(paramString, false));
+    AppMethodBeat.o(303256);
+    return paramString;
+  }
+  
+  public static final String ajk(String paramString)
+  {
+    AppMethodBeat.i(6560);
+    s.u(paramString, "url");
+    paramString = s.X("_info_", aji(paramString));
+    AppMethodBeat.o(6560);
+    return paramString;
+  }
+  
+  private static String ajm(String paramString)
+  {
+    AppMethodBeat.i(303300);
+    s.u(paramString, "domain");
+    paramString = "_domain_" + paramString.hashCode();
+    AppMethodBeat.o(303300);
+    return paramString;
+  }
+  
+  public static final String ajo(String paramString)
+  {
+    AppMethodBeat.i(6568);
+    s.u(paramString, "url");
+    paramString = s.X("_content_", aji(paramString));
+    AppMethodBeat.o(6568);
+    return paramString;
+  }
+  
+  public static final String ajp(String paramString)
+  {
+    AppMethodBeat.i(6569);
+    s.u(paramString, "url");
+    paramString = s.X("_invalid_", aji(paramString));
+    AppMethodBeat.o(6569);
+    return paramString;
+  }
+  
+  private static String ajq(String paramString)
+  {
+    AppMethodBeat.i(303330);
+    s.u(paramString, "url");
+    paramString = deK().decodeString(s.X("short_url_", paramString), "");
+    s.s(paramString, "mpDataMmkv().decodeString(\"short_url_$url\", \"\")");
+    AppMethodBeat.o(303330);
+    return paramString;
+  }
+  
+  public static final String ajr(String paramString)
+  {
+    AppMethodBeat.i(6573);
+    s.u(paramString, "url");
+    paramString = aji(paramString);
+    AppMethodBeat.o(6573);
+    return paramString;
+  }
+  
+  private static final int b(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    AppMethodBeat.i(303357);
+    for (;;)
+    {
+      try
+      {
+        localObject = Uri.parse(paramString1);
+        if (!paramBoolean) {
+          continue;
+        }
+        String str = ((Uri)localObject).getScheme();
+        if ((str == null) || (com.tencent.luggage.l.c.a(str, "http", true) != true)) {
+          continue;
+        }
+        i = 1;
+        if (i == 0) {
+          continue;
+        }
+        localObject = WebPrefetcherManifest.vUW;
+        localObject = WebPrefetcherManifest.ajG(paramString2);
+        if (localObject != null) {
+          continue;
+        }
+        i = paramString2.hashCode();
+      }
+      catch (Exception paramString2)
+      {
+        Object localObject;
+        Log.printErrStackTrace("hashUrl", (Throwable)paramString2, "hash url %s", new Object[] { paramString1 });
+        int i = 0;
+        continue;
+      }
+      AppMethodBeat.o(303357);
+      return i;
+      i = 0;
+      continue;
+      localObject = WebPrefetcherManifest.vUW.a(paramString2, (com.tencent.mm.plugin.az.a)localObject);
+      if (localObject != null)
+      {
+        paramString2 = (String)localObject;
+        continue;
+        paramString2 = ((Uri)localObject).toString();
+        s.s(paramString2, "{\n                //data… toString()\n            }");
+      }
+    }
+  }
+  
+  public static final u b(MMFileSlotManager paramMMFileSlotManager, String paramString)
+  {
+    AppMethodBeat.i(175484);
+    s.u(paramMMFileSlotManager, "<this>");
+    s.u(paramString, "contentId");
+    paramMMFileSlotManager = (u)paramMMFileSlotManager.findSlot(paramString);
+    if (paramMMFileSlotManager == null)
+    {
+      AppMethodBeat.o(175484);
+      return null;
+    }
+    paramMMFileSlotManager = f(paramMMFileSlotManager, paramString);
+    AppMethodBeat.o(175484);
+    return paramMMFileSlotManager;
+  }
+  
+  private static final int c(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    AppMethodBeat.i(303366);
+    try
+    {
+      paramString2 = Uri.parse(paramString1).toString();
+      s.s(paramString2, "{\n                //data… toString()\n            }");
+      i = paramString2.hashCode();
+      AppMethodBeat.o(303366);
+      return i;
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("hashUrl", (Throwable)paramString2, "hash url %s", new Object[] { paramString1 });
+        int i = 0;
+      }
+    }
+  }
+  
+  public static final boolean c(MMFileSlotManager paramMMFileSlotManager, String paramString)
+  {
+    AppMethodBeat.i(6556);
+    s.u(paramMMFileSlotManager, "<this>");
+    s.u(paramString, "contentId");
+    if (paramMMFileSlotManager.findSlot(paramString) != null)
+    {
+      AppMethodBeat.o(6556);
       return true;
     }
-    AppMethodBeat.o(152655);
+    AppMethodBeat.o(6556);
     return false;
   }
   
-  private boolean a(String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  public static final ConcurrentHashMap<String, String> deI()
   {
-    AppMethodBeat.i(152653);
-    if (b(paramString, paramLong, paramInt))
-    {
-      AppMethodBeat.o(152653);
-      return false;
+    return vQr;
+  }
+  
+  public static final ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> deJ()
+  {
+    return vQt;
+  }
+  
+  private static MultiProcessMMKV deK()
+  {
+    AppMethodBeat.i(6572);
+    if (MMApplicationContext.isMainProcess()) {
+      h.baC();
     }
-    ab.v("MicroMsg.BizTimeLineImgLoader", "doPreLoadNext pos %d", new Object[] { Integer.valueOf(paramInt) });
-    ImageView localImageView = new ImageView(this.jVs);
-    this.jZI += 1;
-    if ((paramInt == 0) && (paramBoolean)) {
-      a(paramString, localImageView, getContentWidth(), this.jZG, new c.3(this, paramLong, paramInt), false);
-    }
-    for (;;)
+    for (int i = b.getUin();; i = b.aZP())
     {
-      AppMethodBeat.o(152653);
-      return true;
-      a(paramString, localImageView, this.jZH, this.jZH, new c.4(this, paramLong, paramInt));
+      MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(s.X("mpRelateData_", Integer.valueOf(i)), 2);
+      s.s(localMultiProcessMMKV, "getMMKV(\"${BizConstants.…sMMKV.MULTI_PROCESS_MODE)");
+      AppMethodBeat.o(6572);
+      return localMultiProcessMMKV;
     }
   }
   
-  private com.tencent.mm.storage.q aXh()
+  private static final u f(u paramu, String paramString)
   {
-    AppMethodBeat.i(14375);
-    int i = 0;
+    AppMethodBeat.i(175482);
+    paramu = new u(com.tencent.mm.vfs.ah.v(paramu.mUri) + '/' + paramString);
+    AppMethodBeat.o(175482);
+    return paramu;
+  }
+  
+  public static final String fO(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(6564);
+    s.u(paramString1, "host");
+    s.u(paramString2, "resUrl");
+    paramString1 = paramString1 + "/_web_res_" + aji(paramString2);
+    AppMethodBeat.o(6564);
+    return paramString1;
+  }
+  
+  public static final void fP(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(6574);
+    s.u(paramString1, "shortUrl");
+    s.u(paramString2, "longUrl");
+    paramString1 = UrlExKt.clearShortUrl$default(paramString1, false, 2, null);
+    paramString2 = ajr(paramString2);
+    String str = s.X("short_url_", paramString1);
+    deK().encode(str, paramString2);
+    vQr.put(paramString1, paramString2);
+    AppMethodBeat.o(6574);
+  }
+  
+  public static final String getHost(String paramString)
+  {
+    AppMethodBeat.i(6561);
+    s.u(paramString, "<this>");
     try
     {
-      while (i < this.jZM.size() + this.jZL.size())
+      String str = Uri.parse(UrlExKt.getWithProtocol(paramString)).getHost();
+      paramString = str;
+      if (str == null) {
+        paramString = "unknow";
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        com.tencent.mm.storage.q localq = se(i);
-        if ((localq != null) && (localq.dvV()) && (localq.field_isRead != 1) && (!jZJ.contains(Long.valueOf(localq.field_msgId))))
-        {
-          ab.v("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo pos=%d,msg id=%d", new Object[] { Integer.valueOf(i), Long.valueOf(localq.field_msgId) });
-          AppMethodBeat.o(14375);
-          return localq;
-        }
-        i += 1;
-        hX(localq.field_msgId);
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      ab.w("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(14375);
-    }
-  }
-  
-  private static boolean aXj()
-  {
-    AppMethodBeat.i(14382);
-    if (jZP == null) {
-      aXl();
-    }
-    boolean bool = jZP.booleanValue();
-    AppMethodBeat.o(14382);
-    return bool;
-  }
-  
-  public static boolean aXk()
-  {
-    AppMethodBeat.i(14383);
-    if (jZQ == null) {
-      aXl();
-    }
-    boolean bool = jZQ.booleanValue();
-    AppMethodBeat.o(14383);
-    return bool;
-  }
-  
-  private static void aXl()
-  {
-    AppMethodBeat.i(14384);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100461");
-    if ((localc.isValid()) && ("1".equals(localc.dvN().get("isOpenBizMsgPreDownloadCover"))))
-    {
-      bool = true;
-      jZP = Boolean.valueOf(bool);
-      if ((!localc.isValid()) || (!"1".equals(localc.dvN().get("isOnlyPreloadInWifi")))) {
-        break label126;
+        paramString = "unknow";
       }
     }
-    label126:
-    for (boolean bool = true;; bool = false)
-    {
-      jZQ = Boolean.valueOf(bool);
-      ab.i("MicroMsg.BizTimeLineImgLoader", "BizTimeLineImg initABTest %b/%b", new Object[] { jZP, jZQ });
-      AppMethodBeat.o(14384);
-      return;
-      bool = false;
-      break;
-    }
+    AppMethodBeat.o(6561);
+    return paramString;
   }
   
-  private static boolean b(String paramString, long paramLong, int paramInt)
+  public static final String getPath(String paramString)
   {
-    AppMethodBeat.i(152654);
-    if (jZK.contains(paramLong + "_" + paramInt))
-    {
-      AppMethodBeat.o(152654);
-      return true;
-    }
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(152654);
-      return false;
-    }
-    if (!com.tencent.mm.vfs.e.cN(p.aln(com.tencent.mm.at.q.ts(paramString))))
-    {
-      AppMethodBeat.o(152654);
-      return false;
-    }
-    jZK.add(paramLong + "_" + paramInt);
-    AppMethodBeat.o(152654);
-    return true;
-  }
-  
-  private static void hX(long paramLong)
-  {
-    AppMethodBeat.i(14374);
-    jZJ.add(Long.valueOf(paramLong));
-    AppMethodBeat.o(14374);
-  }
-  
-  private com.tencent.mm.storage.q se(int paramInt)
-  {
-    AppMethodBeat.i(14380);
+    AppMethodBeat.i(303269);
+    s.u(paramString, "<this>");
     try
     {
-      com.tencent.mm.storage.q localq;
-      if (paramInt < this.jZM.size())
+      String str = Uri.parse(UrlExKt.getWithProtocol(paramString)).getPath();
+      paramString = str;
+      if (str == null) {
+        paramString = "";
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        localq = (com.tencent.mm.storage.q)this.jZM.get(paramInt);
-        AppMethodBeat.o(14380);
-        return localq;
-      }
-      if (paramInt < this.jZM.size() + this.jZL.size())
-      {
-        localq = (com.tencent.mm.storage.q)this.jZL.get(paramInt - this.jZM.size());
-        AppMethodBeat.o(14380);
-        return localq;
+        paramString = "";
       }
     }
-    catch (Throwable localThrowable)
-    {
-      ab.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(14380);
-    }
-    return null;
+    AppMethodBeat.o(303269);
+    return paramString;
   }
   
-  public final void Kt()
+  private static final void l(IPCString paramIPCString, f paramf)
   {
-    AppMethodBeat.i(14378);
-    if (!aXj())
-    {
-      AppMethodBeat.o(14378);
-      return;
-    }
-    b.a("BizTimeLineImgLoaderThread", new c.5(this), 0L);
-    AppMethodBeat.o(14378);
+    AppMethodBeat.i(303344);
+    paramIPCString = paramIPCString.value;
+    s.s(paramIPCString, "ipcDomain.value");
+    ajg(paramIPCString);
+    AppMethodBeat.o(303344);
   }
   
-  public final void a(String paramString, ImageView paramImageView, int paramInt1, int paramInt2, e.a parama)
+  private static final void m(IPCString paramIPCString, f paramf)
   {
-    AppMethodBeat.i(152652);
-    paramImageView.setContentDescription(this.jVs.getString(2131298197));
-    paramString = com.tencent.mm.at.q.ts(paramString);
-    com.tencent.mm.at.a.a locala = o.ahG();
-    c.a locala1 = new c.a();
-    locala1.eOa = 2131689878;
-    locala1.eNM = true;
-    locala1 = locala1.cx(paramInt1, paramInt2);
-    locala1.eOc = "2130841441";
-    locala1.fHk = new f();
-    locala1.eNO = p.aln(paramString);
-    locala.a(paramString, paramImageView, locala1.ahY(), null, new com.tencent.mm.pluginsdk.ui.applet.e(paramInt1, paramInt2, true, true, 2.0F, parama));
-    AppMethodBeat.o(152652);
-  }
-  
-  public final void a(String paramString, ImageView paramImageView, int paramInt1, int paramInt2, e.a parama, boolean paramBoolean)
-  {
-    AppMethodBeat.i(152651);
-    paramImageView.setContentDescription(this.jVs.getString(2131298197));
-    paramString = com.tencent.mm.at.q.ts(paramString);
-    int i;
-    if (paramBoolean)
-    {
-      i = 2130837954;
-      if (!paramBoolean) {
-        break label168;
-      }
-    }
-    label168:
-    for (int j = 2130837951;; j = 2130837956)
-    {
-      float f = com.tencent.mm.cb.a.fromDPToPix(this.jVs, 8);
-      com.tencent.mm.at.a.a locala = o.ahG();
-      c.a locala1 = new c.a();
-      locala1.eOa = j;
-      locala1.eNM = true;
-      locala1 = locala1.cx(paramInt1, paramInt2);
-      locala1.eOc = String.valueOf(i);
-      locala1.fHk = new f();
-      locala1.eNO = p.aln(paramString);
-      locala.a(paramString, paramImageView, locala1.ahY(), null, new com.tencent.mm.pluginsdk.ui.applet.e(paramInt1, paramInt2, false, paramBoolean, f, parama));
-      AppMethodBeat.o(152651);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public final void aXg()
-  {
-    AppMethodBeat.i(14372);
-    if (!aXj())
-    {
-      AppMethodBeat.o(14372);
-      return;
-    }
-    if ((this.jZN) || (this.jZO))
-    {
-      ab.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext loading %b, onPause %b", new Object[] { Boolean.valueOf(this.jZN), Boolean.valueOf(this.jZO) });
-      AppMethodBeat.o(14372);
-      return;
-    }
-    this.jZN = true;
-    ab.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext");
-    b.a("BizTimeLineImgLoaderThread", new c.2(this), 500L);
-    AppMethodBeat.o(14372);
-  }
-  
-  public final com.tencent.mm.storage.q aXi()
-  {
-    AppMethodBeat.i(14379);
-    try
-    {
-      if (this.jZM.size() > 0)
-      {
-        com.tencent.mm.storage.q localq = (com.tencent.mm.storage.q)this.jZM.get(this.jZM.size() - 1);
-        AppMethodBeat.o(14379);
-        return localq;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      ab.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(14379);
-    }
-    return null;
-  }
-  
-  public final int getContentWidth()
-  {
-    AppMethodBeat.i(14371);
-    int i = com.tencent.mm.cb.a.gw(this.jVs);
-    int j = com.tencent.mm.plugin.brandservice.ui.timeline.a.jVE;
-    AppMethodBeat.o(14371);
-    return i - j;
-  }
-  
-  public final void m(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(14376);
-    ab.v("MicroMsg.BizTimeLineImgLoader", "onLoadFinish mLoadingCount %d", new Object[] { Integer.valueOf(this.jZI) });
-    jZK.add(paramLong + "_" + paramInt);
-    if (this.jZI <= 0) {
-      aXg();
-    }
-    AppMethodBeat.o(14376);
+    AppMethodBeat.i(303349);
+    paramIPCString = paramIPCString.value;
+    s.s(paramIPCString, "ipcDomain.value");
+    ajg(paramIPCString);
+    AppMethodBeat.o(303349);
   }
 }
 

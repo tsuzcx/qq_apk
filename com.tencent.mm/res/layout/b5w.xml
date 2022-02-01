@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="@color/m9" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/bnt" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="left" android:orientation="vertical" android:id="@id/cj6" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/l2" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/dq" android:textColor="@color/a6i" android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:minHeight="25.0dip" android:text="@string/g0j" />
-            <TextView android:ellipsize="end" android:id="@id/fcz" android:visibility="gone" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/ne" android:maxLines="2" style="@style/w2" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/aiw" android:layout_width="fill_parent" android:layout_height="@dimen/fq" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:src="@color/gq" />
-        <ListView android:id="@id/fd_" android:background="@null" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:choiceMode="singleChoice" android:layout_weight="1.0" />
-        <ImageView android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="@dimen/fs" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" />
-        <Button android:textSize="@dimen/m2" android:textColor="@color/a6i" android:id="@id/fhl" android:background="@drawable/ba" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/lw" android:text="@string/st" />
-    </LinearLayout>
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b08" android:layout_width="fill_parent" android:layout_height="192.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/ktn" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="56.0dip" app:layout_constraintGuide_begin="56.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:textColor="@color/az" android:id="@id/ktj" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_filled_close" android:contentDescription="@string/we" android:layout_marginStart="@dimen/cv" app:iconColor="@color/az" app:layout_constraintBottom_toTopOf="@id/ktn" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ktm" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_filled_done" android:contentDescription="@string/a17" android:layout_marginEnd="@dimen/cv" app:iconColor="@color/Orange" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.plugin.vlog.ui.LabelSlider android:id="@id/ktl" android:layout_width="fill_parent" android:layout_height="@dimen/d_" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

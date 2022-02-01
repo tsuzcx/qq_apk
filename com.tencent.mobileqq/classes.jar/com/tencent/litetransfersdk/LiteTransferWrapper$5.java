@@ -12,13 +12,16 @@ class LiteTransferWrapper$5
     if (LiteTransferWrapper.access$200(this.this$0) != 0L)
     {
       this.this$0.SetProxyToJni();
-      this.this$0.SendGroupToJNI(LiteTransferWrapper.access$200(this.this$0), (Session[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new Session[this.jdField_a_of_type_JavaUtilArrayList.size()]), this.jdField_a_of_type_Boolean, this.b);
+      LiteTransferWrapper localLiteTransferWrapper = this.this$0;
+      long l = LiteTransferWrapper.access$200(localLiteTransferWrapper);
+      ArrayList localArrayList = this.a;
+      localLiteTransferWrapper.SendGroupToJNI(l, (Session[])localArrayList.toArray(new Session[localArrayList.size()]), this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper.5
  * JD-Core Version:    0.7.0.1
  */

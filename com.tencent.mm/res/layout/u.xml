@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="152.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:id="@id/cz" android:paddingLeft="?em" android:paddingTop="@dimen/pn" android:paddingRight="?em" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:attr/windowTitleStyle" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a2" />
-</android.support.v7.widget.FitWindowsLinearLayout>
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/FG_2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/czc" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d5" android:text="@string/esa" />
+    <include android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx" layout="@layout/aqj" />
+</FrameLayout>

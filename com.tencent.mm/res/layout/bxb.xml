@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:minHeight="@dimen/m1">
+        <LinearLayout android:gravity="center|left" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/br" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk">
+            <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hcw" android:maxLines="2" android:singleLine="false" style="@style/m4" />
+                <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:gravity="center" android:id="@id/kn7" android:background="@drawable/azh" android:padding="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:minWidth="40.0dip" android:singleLine="true" style="@style/m6" />
+            </LinearLayout>
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:layout_gravity="center|right" android:id="@id/bab" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/mg" android:layout_height="fill_parent" android:layout_marginRight="@dimen/iw" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/ko1" android:paddingLeft="@dimen/br" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:text="@string/hcx" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/lah" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:minHeight="@dimen/m1">
+        <LinearLayout android:gravity="center|left" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/br" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk">
+            <TextView android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/hdt" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/m4" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:layout_gravity="center|right" android:id="@id/lag" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/mg" android:layout_height="fill_parent" android:layout_marginRight="@dimen/iw" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/ko1" android:paddingLeft="@dimen/br" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:text="@string/hd0" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/fp8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/i_" android:layout_marginRight="@dimen/r" android:text="@string/hco" />
+    <ListView android:id="@id/fpo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:divider="@drawable/a8f" />
+</LinearLayout>

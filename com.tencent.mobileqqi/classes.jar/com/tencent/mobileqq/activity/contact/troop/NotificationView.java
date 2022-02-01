@@ -61,13 +61,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
+import efq;
 import efr;
 import efs;
 import eft;
 import efu;
 import efv;
 import efw;
-import efx;
 import java.util.ArrayList;
 import java.util.List;
 import tencent.mobileim.structmsg.structmsg.GroupInfo;
@@ -101,17 +101,17 @@ public class NotificationView
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new efs(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new efu(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new efr(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new eft(this);
   private NotificationAdapter jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eft(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new efs(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public QQProgressDialog a;
-  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new efv(this);
+  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new efu(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   public final long b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new efx(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new efw(this);
   private boolean c;
   private boolean d;
   public View e;
@@ -131,7 +131,7 @@ public class NotificationView
     this.jdField_a_of_type_Long = 1000L;
     this.jdField_b_of_type_Long = 500L;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new efr(this);
+    this.jdField_a_of_type_AndroidOsHandler = new efq(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -307,8 +307,8 @@ public class NotificationView
   private void o()
   {
     a(2130903401);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232470));
-    this.e = findViewById(2131232471);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232469));
+    this.e = findViewById(2131232470);
     q();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
@@ -380,7 +380,7 @@ public class NotificationView
   private void t()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new efw(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new efv(this));
     }
     if (QLog.isColorLevel()) {
       QLog.i("NotificationView", 2, "sendReadConfirm is end!");
@@ -731,7 +731,7 @@ public class NotificationView
     NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
     if ((localViewHolder != null) && ((localViewHolder instanceof NotificationAdapter.ViewHolder)))
     {
-      paramView = (ShaderAnimLayout)paramView.findViewById(2131232468);
+      paramView = (ShaderAnimLayout)paramView.findViewById(2131232467);
       if (paramView != null) {
         break label38;
       }
@@ -741,7 +741,7 @@ public class NotificationView
     do
     {
       return;
-      localButton = (Button)paramView.findViewById(2131232469);
+      localButton = (Button)paramView.findViewById(2131232468);
     } while (localButton == null);
     paramSlideDetectListView.setDeleteAreaWidth(paramView.getLayoutParams().width);
     paramView.a();
@@ -791,11 +791,11 @@ public class NotificationView
   
   public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    paramSlideDetectListView = (ShaderAnimLayout)paramView.findViewById(2131232468);
+    paramSlideDetectListView = (ShaderAnimLayout)paramView.findViewById(2131232467);
     if (paramSlideDetectListView != null)
     {
       paramSlideDetectListView.d();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131232469);
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131232468);
       if (paramSlideDetectListView != null) {
         paramSlideDetectListView.setTag(null);
       }

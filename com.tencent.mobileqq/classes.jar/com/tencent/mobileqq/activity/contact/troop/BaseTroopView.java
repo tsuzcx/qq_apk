@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ahoe;
-import alpg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,61 +8,43 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import bhsl;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class BaseTroopView
   extends FrameLayout
 {
-  protected int a;
-  public ahoe a;
-  View a;
-  public QQAppInterface a;
-  protected boolean a;
-  View b;
-  public boolean b;
-  View c;
-  View d;
+  protected BaseTroopView.ITroopContext a;
+  protected QQAppInterface b;
+  protected boolean c = true;
+  public boolean d = false;
+  View e;
+  View f;
+  View g;
+  View h;
+  protected int i = 0;
   
   public BaseTroopView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_Ahoe.a();
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.d = true;
   }
   
   protected final void a(int paramInt)
   {
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
-    setBackgroundDrawable(null);
+    a(getResources().getString(paramInt));
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Ahoe.a().sendEmptyMessageDelayed(paramInt, paramLong);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Ahoe.a(paramInt, paramBoolean);
-  }
-  
-  public void a(alpg paramalpg)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramalpg);
-    }
+    this.a.h().sendEmptyMessageDelayed(paramInt, paramLong);
   }
   
   protected void a(Intent paramIntent)
@@ -74,29 +54,32 @@ public class BaseTroopView
   
   protected final void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_Ahoe.a().startActivityForResult(paramIntent, paramInt);
+    this.a.b().startActivityForResult(paramIntent, paramInt);
   }
   
-  protected void a(Intent paramIntent, ahoe paramahoe)
+  protected void a(Intent paramIntent, BaseTroopView.ITroopContext paramITroopContext)
   {
-    this.jdField_a_of_type_Ahoe = paramahoe;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Ahoe.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Ahoe.b();
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_Ahoe.c();
-    this.c = this.jdField_a_of_type_Ahoe.a();
-    this.d = this.jdField_a_of_type_Ahoe.d();
+    this.a = paramITroopContext;
+    this.b = this.a.a();
+    this.e = this.a.e();
+    this.f = this.a.f();
+    this.g = this.a.d();
+    this.h = this.a.g();
+  }
+  
+  public void a(BusinessObserver paramBusinessObserver)
+  {
+    QQAppInterface localQQAppInterface = this.b;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.addObserver(paramBusinessObserver);
+    }
   }
   
   protected final void a(String paramString)
   {
-    if (!a()) {
-      this.jdField_a_of_type_Ahoe.a(paramString);
+    if (!h()) {
+      this.a.a(paramString);
     }
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean a(Message paramMessage)
@@ -106,24 +89,20 @@ public class BaseTroopView
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.d = false;
   }
   
-  public final void b(int paramInt)
+  public void b(BusinessObserver paramBusinessObserver)
   {
-    a(getResources().getString(paramInt));
-  }
-  
-  public void b(alpg paramalpg)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramalpg);
+    QQAppInterface localQQAppInterface = this.b;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(paramBusinessObserver);
     }
   }
   
   protected void c()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
   }
   
   protected void d() {}
@@ -132,12 +111,28 @@ public class BaseTroopView
   
   protected void f()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   protected void g() {}
   
-  public void h() {}
+  public Activity getActivity()
+  {
+    return this.a.b();
+  }
+  
+  protected final boolean h()
+  {
+    return this.c;
+  }
+  
+  public void i() {}
+  
+  protected final void setContentView(int paramInt)
+  {
+    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
+    setBackgroundDrawable(null);
+  }
 }
 
 

@@ -62,8 +62,13 @@ public class GlUtil
   public static void checkGlError(String paramString)
   {
     int i = GLES20.glGetError();
-    if (i != 0) {
-      Log.e("GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+    if (i != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError 0x");
+      localStringBuilder.append(Integer.toHexString(i));
+      Log.e("GlUtil", localStringBuilder.toString());
     }
   }
   
@@ -126,13 +131,13 @@ public class GlUtil
   public static int createProgram(String paramString1, String paramString2)
   {
     int i = loadShader(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return 0;
-      j = loadShader(35632, paramString2);
-    } while (j == 0);
+    }
+    int j = loadShader(35632, paramString2);
+    if (j == 0) {
+      return 0;
+    }
     int k = GLES20.glCreateProgram();
     checkGlError("glCreateProgram");
     if (k == 0) {
@@ -171,7 +176,10 @@ public class GlUtil
     GLES20.glGenTextures(1, arrayOfInt, 0);
     checkGlError("glGenTextures");
     GLES20.glBindTexture(paramInt1, arrayOfInt[0]);
-    checkGlError("glBindTexture " + arrayOfInt[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glBindTexture ");
+    localStringBuilder.append(arrayOfInt[0]);
+    checkGlError(localStringBuilder.toString());
     GLES20.glTexParameterf(paramInt1, 10241, paramInt2);
     GLES20.glTexParameterf(paramInt1, 10240, paramInt3);
     GLES20.glTexParameteri(paramInt1, 10242, paramInt4);
@@ -189,16 +197,14 @@ public class GlUtil
     int i = createTexture(3553);
     if (paramBoolean) {
       GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      return i;
+    } else {
       GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
     }
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    return i;
   }
   
   public static void deleteTexture(int paramInt)
@@ -209,18 +215,29 @@ public class GlUtil
   
   public static int loadShader(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    checkGlError("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    int j = GLES20.glCreateShader(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glCreateShader type=");
+    localStringBuilder.append(paramInt);
+    checkGlError(localStringBuilder.toString());
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      Log.e("GlUtil", "Could not compile shader " + paramInt + ":");
-      Log.e("GlUtil", " " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+      paramString = new StringBuilder();
+      paramString.append("Could not compile shader ");
+      paramString.append(paramInt);
+      paramString.append(":");
+      Log.e("GlUtil", paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(" ");
+      paramString.append(GLES20.glGetShaderInfoLog(j));
+      Log.e("GlUtil", paramString.toString());
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
@@ -233,165 +250,161 @@ public class GlUtil
     //   3: dup
     //   4: invokespecial 97	java/lang/StringBuilder:<init>	()V
     //   7: astore 5
-    //   9: aload_0
-    //   10: invokevirtual 297	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   13: iload_1
-    //   14: invokevirtual 303	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
-    //   17: astore 4
-    //   19: new 305	java/io/InputStreamReader
-    //   22: dup
-    //   23: aload 4
-    //   25: invokespecial 308	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   28: astore_3
-    //   29: new 310	java/io/BufferedReader
-    //   32: dup
-    //   33: aload_3
-    //   34: invokespecial 313	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: invokevirtual 316	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   42: astore_0
-    //   43: aload_0
-    //   44: ifnull +73 -> 117
-    //   47: aload 5
-    //   49: aload_0
-    //   50: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: pop
-    //   54: aload 5
-    //   56: bipush 10
-    //   58: invokevirtual 319	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   61: pop
-    //   62: goto -24 -> 38
-    //   65: astore_0
-    //   66: aload_2
-    //   67: ifnull +7 -> 74
-    //   70: aload_2
-    //   71: invokevirtual 322	java/io/BufferedReader:close	()V
-    //   74: aload_3
-    //   75: ifnull +7 -> 82
-    //   78: aload_3
-    //   79: invokevirtual 323	java/io/InputStreamReader:close	()V
-    //   82: aload 4
-    //   84: ifnull +8 -> 92
-    //   87: aload 4
-    //   89: invokevirtual 326	java/io/InputStream:close	()V
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_0
-    //   95: aload_0
-    //   96: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   99: goto -25 -> 74
-    //   102: astore_0
-    //   103: aload_0
-    //   104: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   107: goto -25 -> 82
-    //   110: astore_0
-    //   111: aload_0
-    //   112: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   115: aconst_null
-    //   116: areturn
-    //   117: aload_2
-    //   118: ifnull +7 -> 125
-    //   121: aload_2
-    //   122: invokevirtual 322	java/io/BufferedReader:close	()V
-    //   125: aload_3
-    //   126: ifnull +7 -> 133
-    //   129: aload_3
-    //   130: invokevirtual 323	java/io/InputStreamReader:close	()V
-    //   133: aload 4
-    //   135: ifnull +8 -> 143
-    //   138: aload 4
-    //   140: invokevirtual 326	java/io/InputStream:close	()V
-    //   143: aload 5
-    //   145: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: areturn
-    //   149: astore_0
-    //   150: aload_0
-    //   151: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   154: goto -29 -> 125
-    //   157: astore_0
-    //   158: aload_0
-    //   159: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   162: goto -29 -> 133
-    //   165: astore_0
-    //   166: aload_0
-    //   167: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   170: goto -27 -> 143
-    //   173: astore_0
-    //   174: aconst_null
-    //   175: astore_3
-    //   176: aconst_null
-    //   177: astore 4
-    //   179: aconst_null
-    //   180: astore_2
-    //   181: aload_2
-    //   182: ifnull +7 -> 189
-    //   185: aload_2
-    //   186: invokevirtual 322	java/io/BufferedReader:close	()V
-    //   189: aload_3
-    //   190: ifnull +7 -> 197
-    //   193: aload_3
-    //   194: invokevirtual 323	java/io/InputStreamReader:close	()V
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: aload_0
+    //   13: invokevirtual 297	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   16: iload_1
+    //   17: invokevirtual 303	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   20: astore_3
+    //   21: new 305	java/io/InputStreamReader
+    //   24: dup
+    //   25: aload_3
+    //   26: invokespecial 308	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   29: astore_2
+    //   30: new 310	java/io/BufferedReader
+    //   33: dup
+    //   34: aload_2
+    //   35: invokespecial 313	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   38: astore_0
+    //   39: aload_0
+    //   40: invokevirtual 316	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   43: astore 4
+    //   45: aload 4
+    //   47: ifnull +22 -> 69
+    //   50: aload 5
+    //   52: aload 4
+    //   54: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload 5
+    //   60: bipush 10
+    //   62: invokevirtual 319	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: goto -27 -> 39
+    //   69: aload_0
+    //   70: invokevirtual 322	java/io/BufferedReader:close	()V
+    //   73: goto +8 -> 81
+    //   76: astore_0
+    //   77: aload_0
+    //   78: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   81: aload_2
+    //   82: invokevirtual 326	java/io/InputStreamReader:close	()V
+    //   85: goto +8 -> 93
+    //   88: astore_0
+    //   89: aload_0
+    //   90: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   93: aload_3
+    //   94: ifnull +15 -> 109
+    //   97: aload_3
+    //   98: invokevirtual 329	java/io/InputStream:close	()V
+    //   101: goto +8 -> 109
+    //   104: astore_0
+    //   105: aload_0
+    //   106: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   109: aload 5
+    //   111: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: areturn
+    //   115: astore 5
+    //   117: aload_0
+    //   118: astore 4
+    //   120: aload 5
+    //   122: astore_0
+    //   123: goto +59 -> 182
+    //   126: aload_0
+    //   127: invokevirtual 322	java/io/BufferedReader:close	()V
+    //   130: goto +8 -> 138
+    //   133: astore_0
+    //   134: aload_0
+    //   135: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   138: aload_2
+    //   139: invokevirtual 326	java/io/InputStreamReader:close	()V
+    //   142: goto +8 -> 150
+    //   145: astore_0
+    //   146: aload_0
+    //   147: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   150: aload_3
+    //   151: ifnull +14 -> 165
+    //   154: aload_3
+    //   155: invokevirtual 329	java/io/InputStream:close	()V
+    //   158: aconst_null
+    //   159: areturn
+    //   160: astore_0
+    //   161: aload_0
+    //   162: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   165: aconst_null
+    //   166: areturn
+    //   167: astore_0
+    //   168: goto +14 -> 182
+    //   171: astore_0
+    //   172: aconst_null
+    //   173: astore_2
+    //   174: goto +8 -> 182
+    //   177: astore_0
+    //   178: aconst_null
+    //   179: astore_3
+    //   180: aload_3
+    //   181: astore_2
+    //   182: aload 4
+    //   184: ifnull +18 -> 202
+    //   187: aload 4
+    //   189: invokevirtual 322	java/io/BufferedReader:close	()V
+    //   192: goto +10 -> 202
+    //   195: astore 4
     //   197: aload 4
-    //   199: ifnull +8 -> 207
-    //   202: aload 4
-    //   204: invokevirtual 326	java/io/InputStream:close	()V
-    //   207: aload_0
-    //   208: athrow
-    //   209: astore_2
-    //   210: aload_2
-    //   211: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   214: goto -25 -> 189
-    //   217: astore_2
-    //   218: aload_2
-    //   219: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   222: goto -25 -> 197
-    //   225: astore_2
-    //   226: aload_2
-    //   227: invokevirtual 329	java/io/IOException:printStackTrace	()V
-    //   230: goto -23 -> 207
-    //   233: astore_0
-    //   234: aconst_null
-    //   235: astore_3
-    //   236: aconst_null
-    //   237: astore_2
-    //   238: goto -57 -> 181
-    //   241: astore_0
-    //   242: aconst_null
-    //   243: astore_2
-    //   244: goto -63 -> 181
-    //   247: astore_0
-    //   248: goto -67 -> 181
+    //   199: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   202: aload_2
+    //   203: ifnull +15 -> 218
+    //   206: aload_2
+    //   207: invokevirtual 326	java/io/InputStreamReader:close	()V
+    //   210: goto +8 -> 218
+    //   213: astore_2
+    //   214: aload_2
+    //   215: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   218: aload_3
+    //   219: ifnull +15 -> 234
+    //   222: aload_3
+    //   223: invokevirtual 329	java/io/InputStream:close	()V
+    //   226: goto +8 -> 234
+    //   229: astore_2
+    //   230: aload_2
+    //   231: invokevirtual 325	java/io/IOException:printStackTrace	()V
+    //   234: goto +5 -> 239
+    //   237: aload_0
+    //   238: athrow
+    //   239: goto -2 -> 237
+    //   242: astore 4
+    //   244: goto -118 -> 126
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	251	0	paramContext	android.content.Context
-    //   0	251	1	paramInt	int
-    //   37	149	2	localBufferedReader	java.io.BufferedReader
-    //   209	2	2	localIOException1	java.io.IOException
-    //   217	2	2	localIOException2	java.io.IOException
-    //   225	2	2	localIOException3	java.io.IOException
-    //   237	7	2	localObject	Object
-    //   28	208	3	localInputStreamReader	java.io.InputStreamReader
-    //   17	186	4	localInputStream	java.io.InputStream
-    //   7	137	5	localStringBuilder	java.lang.StringBuilder
+    //   0	247	0	paramContext	android.content.Context
+    //   0	247	1	paramInt	int
+    //   29	178	2	localObject1	Object
+    //   213	2	2	localIOException1	java.io.IOException
+    //   229	2	2	localIOException2	java.io.IOException
+    //   20	203	3	localInputStream	java.io.InputStream
+    //   10	178	4	localObject2	Object
+    //   195	3	4	localIOException3	java.io.IOException
+    //   242	1	4	localIOException4	java.io.IOException
+    //   7	103	5	localStringBuilder	StringBuilder
+    //   115	6	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   38	43	65	java/io/IOException
-    //   47	62	65	java/io/IOException
-    //   70	74	94	java/io/IOException
-    //   78	82	102	java/io/IOException
-    //   87	92	110	java/io/IOException
-    //   121	125	149	java/io/IOException
-    //   129	133	157	java/io/IOException
-    //   138	143	165	java/io/IOException
-    //   9	19	173	finally
-    //   185	189	209	java/io/IOException
-    //   193	197	217	java/io/IOException
-    //   202	207	225	java/io/IOException
-    //   19	29	233	finally
-    //   29	38	241	finally
-    //   38	43	247	finally
-    //   47	62	247	finally
+    //   69	73	76	java/io/IOException
+    //   81	85	88	java/io/IOException
+    //   97	101	104	java/io/IOException
+    //   39	45	115	finally
+    //   50	66	115	finally
+    //   126	130	133	java/io/IOException
+    //   138	142	145	java/io/IOException
+    //   154	158	160	java/io/IOException
+    //   30	39	167	finally
+    //   21	30	171	finally
+    //   12	21	177	finally
+    //   187	192	195	java/io/IOException
+    //   206	210	213	java/io/IOException
+    //   222	226	229	java/io/IOException
+    //   39	45	242	java/io/IOException
+    //   50	66	242	java/io/IOException
   }
   
   public static byte[] saveTextureToRgbaBuffer(int paramInt1, int paramInt2, int paramInt3)
@@ -411,7 +424,7 @@ public class GlUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amyr;
+import com.tencent.mobileqq.ar.ScanEntranceDPC;
 
 class ARLocalMarkerRecog$ProcessWorker
   extends Thread
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  byte[] jdField_a_of_type_ArrayOfByte = new byte[ARLocalMarkerRecog.a(this.this$0) * ARLocalMarkerRecog.b(this.this$0) * 3 / 2];
-  private long jdField_b_of_type_Long = amyr.a().jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long d;
+  byte[] a = new byte[ARLocalMarkerRecog.a(this.this$0) * ARLocalMarkerRecog.b(this.this$0) * 3 / 2];
+  private long b;
+  private boolean c = false;
+  private boolean d = true;
+  private long e = ScanEntranceDPC.a().e;
+  private long f;
+  private boolean g;
+  private long h;
   
   public ARLocalMarkerRecog$ProcessWorker(ARLocalMarkerRecog paramARLocalMarkerRecog)
   {
@@ -22,7 +22,7 @@ class ARLocalMarkerRecog$ProcessWorker
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.d = false;
     if (getState() == Thread.State.WAITING) {
       try
       {
@@ -35,38 +35,35 @@ class ARLocalMarkerRecog$ProcessWorker
   
   void a(long paramLong, byte[] paramArrayOfByte)
   {
-    long l;
-    if (getState() == Thread.State.WAITING) {
-      if (ARLocalMarkerRecog.c(this.this$0) == 2)
-      {
-        l = System.currentTimeMillis();
-        if (((!this.jdField_c_of_type_Boolean) || (l - this.d >= 1500L)) && ((ARLocalMarkerRecog.e(this.this$0) == 0L) || (l - ARLocalMarkerRecog.e(this.this$0) >= 5000L)) && (ARLocalMarkerRecog.f(this.this$0) >= 2)) {
-          break label152;
-        }
-      }
-    }
-    for (;;)
+    if (getState() == Thread.State.WAITING)
     {
-      if (l - this.jdField_c_of_type_Long >= this.jdField_b_of_type_Long) {
-        ARLocalMarkerRecog.b(this.this$0, 0);
-      }
-      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
-      this.jdField_c_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Boolean = true;
-      label152:
-      do
+      if (ARLocalMarkerRecog.d(this.this$0) == 2)
       {
-        try
+        long l = System.currentTimeMillis();
+        if (((!this.g) || (l - this.h >= 1500L)) && ((ARLocalMarkerRecog.w(this.this$0) == 0L) || (l - ARLocalMarkerRecog.w(this.this$0) >= 5000L)) && (ARLocalMarkerRecog.l(this.this$0) >= 2))
         {
-          notify();
-          return;
+          if (l - this.f < this.e) {
+            return;
+          }
+          if (ARLocalMarkerRecog.w(this.this$0) != 0L) {
+            ARLocalMarkerRecog.d(this.this$0, 0L);
+          }
         }
-        finally {}
-      } while (l - this.jdField_c_of_type_Long < this.jdField_b_of_type_Long);
-      if (ARLocalMarkerRecog.e(this.this$0) != 0L) {
-        ARLocalMarkerRecog.d(this.this$0, 0L);
+        if (l - this.f >= this.e) {
+          ARLocalMarkerRecog.b(this.this$0, 0);
+        }
       }
+      byte[] arrayOfByte = this.a;
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
+      this.f = System.currentTimeMillis();
+      this.b = paramLong;
+      this.c = true;
+      try
+      {
+        notify();
+        return;
+      }
+      finally {}
     }
   }
   
@@ -77,928 +74,1083 @@ class ARLocalMarkerRecog$ProcessWorker
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: ldc 111
-    //   5: invokevirtual 115	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:setName	(Ljava/lang/String;)V
+    //   3: ldc 115
+    //   5: invokevirtual 119	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:setName	(Ljava/lang/String;)V
     //   8: bipush 12
     //   10: newarray float
     //   12: astore 13
     //   14: iconst_1
-    //   15: invokestatic 121	com/youtu/arsdk/ARTargetInfo:allocateInitialized	(I)[Lcom/youtu/arsdk/ARTargetInfo;
-    //   18: astore 14
-    //   20: aload_0
-    //   21: getfield 41	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_b_of_type_Boolean	Z
-    //   24: ifeq +72 -> 96
-    //   27: aload_0
-    //   28: getfield 101	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_a_of_type_Boolean	Z
-    //   31: ifne +54 -> 85
-    //   34: aload_0
-    //   35: getfield 41	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_b_of_type_Boolean	Z
-    //   38: istore 6
-    //   40: iload 6
-    //   42: ifeq +43 -> 85
-    //   45: aload_0
-    //   46: invokevirtual 124	java/lang/Object:wait	()V
-    //   49: goto -22 -> 27
-    //   52: astore 13
-    //   54: aload 13
-    //   56: invokevirtual 127	java/lang/InterruptedException:printStackTrace	()V
-    //   59: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   62: ifeq -35 -> 27
-    //   65: ldc 135
-    //   67: iconst_2
-    //   68: ldc 137
-    //   70: aload 13
-    //   72: invokestatic 141	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   75: goto -48 -> 27
-    //   78: astore 13
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: aload 13
-    //   84: athrow
-    //   85: aload_0
-    //   86: getfield 41	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_b_of_type_Boolean	Z
-    //   89: istore 6
-    //   91: iload 6
-    //   93: ifne +6 -> 99
+    //   15: invokestatic 125	com/youtu/arsdk/ARTargetInfo:allocateInitialized	(I)[Lcom/youtu/arsdk/ARTargetInfo;
+    //   18: astore 17
+    //   20: ldc 127
+    //   22: astore 15
+    //   24: aload_0
+    //   25: getfield 47	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:d	Z
+    //   28: ifeq +1800 -> 1828
+    //   31: aload_0
+    //   32: getfield 26	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:c	Z
+    //   35: ifne +47 -> 82
+    //   38: aload_0
+    //   39: getfield 47	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:d	Z
+    //   42: istore 6
+    //   44: iload 6
+    //   46: ifeq +36 -> 82
+    //   49: aload_0
+    //   50: invokevirtual 130	java/lang/Object:wait	()V
+    //   53: goto -22 -> 31
+    //   56: astore 13
+    //   58: aload 13
+    //   60: invokevirtual 133	java/lang/InterruptedException:printStackTrace	()V
+    //   63: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: ifeq -35 -> 31
+    //   69: ldc 141
+    //   71: iconst_2
+    //   72: ldc 143
+    //   74: aload 13
+    //   76: invokestatic 147	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   79: goto -48 -> 31
+    //   82: aload_0
+    //   83: getfield 47	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:d	Z
+    //   86: istore 6
+    //   88: iload 6
+    //   90: ifne +6 -> 96
+    //   93: aload_0
+    //   94: monitorexit
+    //   95: return
     //   96: aload_0
-    //   97: monitorexit
-    //   98: return
-    //   99: aload_0
-    //   100: iconst_0
-    //   101: putfield 101	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_a_of_type_Boolean	Z
-    //   104: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   107: pop2
-    //   108: aload_0
-    //   109: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   112: invokestatic 144	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/lang/Object;
-    //   115: astore 13
-    //   117: aload 13
-    //   119: monitorenter
-    //   120: aload_0
-    //   121: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   124: iconst_1
-    //   125: invokestatic 147	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
-    //   128: pop
-    //   129: aload_0
-    //   130: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   133: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   136: iconst_2
-    //   137: if_icmpne +136 -> 273
-    //   140: aload_0
-    //   141: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   144: invokestatic 149	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/lang/Object;
-    //   147: astore 15
-    //   149: aload 15
-    //   151: monitorenter
-    //   152: iconst_0
-    //   153: istore_2
-    //   154: iload_2
-    //   155: aload_0
-    //   156: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   159: invokestatic 152	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
-    //   162: invokevirtual 158	java/util/ArrayList:size	()I
-    //   165: if_icmpge +105 -> 270
-    //   168: aload_0
-    //   169: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   172: invokestatic 152	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
-    //   175: iload_2
-    //   176: invokevirtual 162	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   179: checkcast 164	ancp
-    //   182: getfield 165	ancp:jdField_a_of_type_Boolean	Z
-    //   185: ifne +1407 -> 1592
-    //   188: aload_0
-    //   189: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   192: aload_0
-    //   193: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   196: invokestatic 152	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
-    //   199: iload_2
-    //   200: invokevirtual 162	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   203: checkcast 164	ancp
-    //   206: getfield 168	ancp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   209: aload_0
-    //   210: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   213: invokestatic 152	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
-    //   216: iload_2
-    //   217: invokevirtual 162	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   220: checkcast 164	ancp
-    //   223: getfield 170	ancp:b	Ljava/lang/String;
-    //   226: aload_0
-    //   227: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   230: invokestatic 152	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
-    //   233: iload_2
-    //   234: invokevirtual 162	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   237: checkcast 164	ancp
-    //   240: getfield 173	ancp:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   243: invokestatic 176	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)Z
-    //   246: ifeq +1346 -> 1592
-    //   249: aload_0
-    //   250: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   253: invokestatic 152	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
-    //   256: iload_2
-    //   257: invokevirtual 162	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   260: checkcast 164	ancp
-    //   263: iconst_1
-    //   264: putfield 165	ancp:jdField_a_of_type_Boolean	Z
-    //   267: goto +1325 -> 1592
-    //   270: aload 15
-    //   272: monitorexit
-    //   273: iconst_m1
-    //   274: istore_3
-    //   275: aload_0
-    //   276: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   279: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   282: istore 5
-    //   284: iload_3
-    //   285: istore_2
-    //   286: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   289: lstore 7
-    //   291: iload_3
-    //   292: istore_2
-    //   293: aload_0
-    //   294: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   297: invokestatic 178	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/lang/Object;
-    //   300: astore 15
-    //   302: iload_3
-    //   303: istore_2
-    //   304: aload 15
-    //   306: monitorenter
-    //   307: iload 5
-    //   309: iconst_2
-    //   310: if_icmpne +884 -> 1194
-    //   313: iload_3
-    //   314: istore_2
-    //   315: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   318: lstore 9
-    //   320: iload_3
-    //   321: istore_2
-    //   322: aload_0
-    //   323: getfield 29	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_a_of_type_ArrayOfByte	[B
-    //   326: aload 14
-    //   328: invokestatic 184	com/youtu/arsdk/ARShell:nativeRecognize	([B[Lcom/youtu/arsdk/ARTargetInfo;)I
-    //   331: istore 4
-    //   333: aload 14
-    //   335: iconst_0
-    //   336: aaload
-    //   337: astore 16
-    //   339: iload 4
-    //   341: ifne +848 -> 1189
-    //   344: iload 4
-    //   346: istore_2
-    //   347: aload 14
-    //   349: iconst_0
-    //   350: aaload
-    //   351: getfield 188	com/youtu/arsdk/ARTargetInfo:pose	[F
-    //   354: bipush 14
-    //   356: faload
-    //   357: ldc 189
-    //   359: fcmpl
-    //   360: iflt +829 -> 1189
-    //   363: iconst_0
-    //   364: istore_3
-    //   365: iload 4
-    //   367: istore_2
-    //   368: aload 16
-    //   370: iload_3
-    //   371: putfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   374: iload 4
-    //   376: istore_2
-    //   377: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   380: lstore 11
-    //   382: iload 4
-    //   384: istore_2
-    //   385: aload_0
-    //   386: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   389: invokestatic 194	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   392: pop
-    //   393: iload 4
-    //   395: istore_2
-    //   396: aload_0
-    //   397: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   400: lload 11
-    //   402: lload 7
-    //   404: lsub
-    //   405: aload_0
-    //   406: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   409: invokestatic 196	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
-    //   412: ladd
-    //   413: invokestatic 198	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;J)J
-    //   416: pop2
-    //   417: iload 4
-    //   419: istore_2
-    //   420: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   423: lstore 11
-    //   425: iload 4
-    //   427: istore_3
-    //   428: iload 4
-    //   430: istore_2
-    //   431: iload 5
-    //   433: aload 14
-    //   435: iconst_0
-    //   436: aaload
-    //   437: getfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   440: if_icmpeq +73 -> 513
-    //   443: iload 4
-    //   445: istore_2
-    //   446: ldc 135
-    //   448: iconst_1
-    //   449: new 200	java/lang/StringBuilder
-    //   452: dup
-    //   453: invokespecial 201	java/lang/StringBuilder:<init>	()V
-    //   456: ldc 203
-    //   458: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   461: lload 11
-    //   463: lload 9
-    //   465: lsub
-    //   466: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   469: ldc 212
-    //   471: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   474: lload 9
-    //   476: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   479: ldc 214
-    //   481: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: lload 11
-    //   486: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   489: ldc 216
-    //   491: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: aload 14
-    //   496: iconst_0
-    //   497: aaload
-    //   498: getfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   501: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   504: invokevirtual 223	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   507: invokestatic 226	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   510: iload 4
-    //   512: istore_3
-    //   513: iload_3
-    //   514: istore_2
-    //   515: aload 15
-    //   517: monitorexit
-    //   518: iload 5
-    //   520: iconst_2
-    //   521: if_icmpne +922 -> 1443
-    //   524: iload_3
-    //   525: istore_2
-    //   526: invokestatic 231	amsf:a	()Lamsf;
-    //   529: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   532: lload 7
-    //   534: lsub
-    //   535: invokevirtual 234	amsf:b	(J)V
-    //   538: aload_0
-    //   539: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   542: astore 15
-    //   544: iload_3
-    //   545: ifne +915 -> 1460
-    //   548: aload 14
-    //   550: iconst_0
-    //   551: aaload
-    //   552: getfield 188	com/youtu/arsdk/ARTargetInfo:pose	[F
-    //   555: bipush 14
-    //   557: faload
-    //   558: ldc 189
-    //   560: fcmpl
-    //   561: iflt +899 -> 1460
-    //   564: aload 14
-    //   566: iconst_0
-    //   567: aaload
-    //   568: getfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   571: istore_2
-    //   572: aload 15
-    //   574: iload_2
-    //   575: invokestatic 236	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
-    //   578: pop
-    //   579: aload_0
-    //   580: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   583: astore 15
-    //   585: aload_0
-    //   586: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   589: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   592: iconst_2
-    //   593: if_icmpne +872 -> 1465
-    //   596: aload_0
-    //   597: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   600: invokestatic 88	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   603: iconst_1
-    //   604: iadd
-    //   605: istore_2
-    //   606: aload 15
-    //   608: iload_2
-    //   609: invokestatic 93	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
-    //   612: pop
-    //   613: iload 5
-    //   615: iconst_2
-    //   616: if_icmpeq +854 -> 1470
-    //   619: aload_0
-    //   620: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   623: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   626: iconst_2
-    //   627: if_icmpne +843 -> 1470
-    //   630: aload_0
-    //   631: iconst_1
-    //   632: putfield 75	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_c_of_type_Boolean	Z
-    //   635: aload_0
-    //   636: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   639: putfield 77	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:d	J
-    //   642: aload_0
-    //   643: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   646: invokestatic 239	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:g	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   649: ifne +11 -> 660
-    //   652: aload_0
-    //   653: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   656: invokestatic 242	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:h	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   659: pop
-    //   660: aload_0
-    //   661: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   664: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   667: ifne +58 -> 725
-    //   670: aload_0
-    //   671: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   674: invokestatic 239	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:g	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   677: ifne +48 -> 725
-    //   680: aload_0
-    //   681: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   684: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   687: invokestatic 244	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;J)J
-    //   690: pop2
-    //   691: aload_0
-    //   692: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   695: aload_0
-    //   696: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   699: invokestatic 246	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
-    //   702: aload_0
-    //   703: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   706: invokestatic 248	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
-    //   709: lsub
-    //   710: l2i
-    //   711: invokestatic 250	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
-    //   714: pop
-    //   715: aload_0
-    //   716: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   719: ldc 252
-    //   721: invokestatic 255	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Ljava/lang/String;)Ljava/lang/String;
-    //   724: pop
-    //   725: iconst_2
-    //   726: istore_2
-    //   727: aload_0
-    //   728: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   731: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   734: iconst_2
-    //   735: if_icmpne +759 -> 1494
-    //   738: aload_0
-    //   739: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   742: iconst_0
-    //   743: invokestatic 257	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
-    //   746: pop
-    //   747: iconst_2
-    //   748: istore_2
-    //   749: new 259	ancq
-    //   752: dup
-    //   753: invokespecial 260	ancq:<init>	()V
-    //   756: astore 15
-    //   758: aload 15
-    //   760: iload_2
-    //   761: putfield 262	ancq:jdField_a_of_type_Int	I
-    //   764: iload_2
-    //   765: iconst_2
-    //   766: if_icmpeq +309 -> 1075
-    //   769: new 264	com/youtu/arsdk/ARPatternInfo
-    //   772: dup
-    //   773: invokespecial 265	com/youtu/arsdk/ARPatternInfo:<init>	()V
-    //   776: astore 16
-    //   778: aload 14
-    //   780: iconst_0
-    //   781: aaload
-    //   782: getfield 268	com/youtu/arsdk/ARTargetInfo:markerIndex	I
-    //   785: i2l
-    //   786: aload 16
-    //   788: invokestatic 272	com/youtu/arsdk/ARShell:getMarkerInfo	(JLcom/youtu/arsdk/ARPatternInfo;)I
-    //   791: pop
-    //   792: iload_2
-    //   793: ifne +131 -> 924
-    //   796: ldc 135
-    //   798: iconst_1
-    //   799: new 200	java/lang/StringBuilder
-    //   802: dup
-    //   803: invokespecial 201	java/lang/StringBuilder:<init>	()V
-    //   806: ldc_w 274
-    //   809: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   812: aload 16
-    //   814: getfield 277	com/youtu/arsdk/ARPatternInfo:name	Ljava/lang/String;
-    //   817: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   820: ldc_w 279
-    //   823: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   826: aload 16
-    //   828: getfield 282	com/youtu/arsdk/ARPatternInfo:markerType	I
-    //   831: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   834: ldc_w 284
-    //   837: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   840: aload 16
-    //   842: getfield 287	com/youtu/arsdk/ARPatternInfo:index	J
-    //   845: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   848: ldc_w 289
-    //   851: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   854: aload 16
-    //   856: getfield 293	com/youtu/arsdk/ARPatternInfo:xSize	F
-    //   859: invokevirtual 296	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   862: ldc_w 298
-    //   865: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   868: aload 16
-    //   870: getfield 301	com/youtu/arsdk/ARPatternInfo:ySize	F
-    //   873: invokevirtual 296	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   876: ldc_w 303
-    //   879: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   882: aload 16
-    //   884: getfield 306	com/youtu/arsdk/ARPatternInfo:param1	F
-    //   887: invokevirtual 296	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   890: ldc_w 308
-    //   893: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   896: aload 16
-    //   898: getfield 311	com/youtu/arsdk/ARPatternInfo:param2	F
-    //   901: invokevirtual 296	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   904: ldc_w 313
-    //   907: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   910: aload 16
-    //   912: getfield 316	com/youtu/arsdk/ARPatternInfo:param3	F
-    //   915: invokevirtual 296	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   918: invokevirtual 223	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   921: invokestatic 226	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   924: aload 15
-    //   926: aload 16
-    //   928: getfield 277	com/youtu/arsdk/ARPatternInfo:name	Ljava/lang/String;
-    //   931: putfield 317	ancq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   934: aload 15
-    //   936: aload 16
-    //   938: getfield 282	com/youtu/arsdk/ARPatternInfo:markerType	I
-    //   941: putfield 318	ancq:jdField_b_of_type_Int	I
-    //   944: aload 16
-    //   946: getfield 282	com/youtu/arsdk/ARPatternInfo:markerType	I
-    //   949: iconst_1
-    //   950: if_icmpne +619 -> 1569
-    //   953: aload 16
-    //   955: getfield 306	com/youtu/arsdk/ARPatternInfo:param1	F
-    //   958: fstore_1
-    //   959: aload 15
-    //   961: fload_1
-    //   962: putfield 320	ancq:jdField_a_of_type_Float	F
-    //   965: aload 16
-    //   967: getfield 282	com/youtu/arsdk/ARPatternInfo:markerType	I
-    //   970: iconst_1
-    //   971: if_icmpne +607 -> 1578
-    //   974: aload 16
-    //   976: getfield 311	com/youtu/arsdk/ARPatternInfo:param2	F
-    //   979: fstore_1
-    //   980: aload 15
-    //   982: fload_1
-    //   983: putfield 322	ancq:jdField_b_of_type_Float	F
-    //   986: aload 16
-    //   988: getfield 282	com/youtu/arsdk/ARPatternInfo:markerType	I
-    //   991: iconst_1
-    //   992: if_icmpne +595 -> 1587
-    //   995: aload 16
-    //   997: getfield 316	com/youtu/arsdk/ARPatternInfo:param3	F
-    //   1000: fstore_1
-    //   1001: aload 15
-    //   1003: fload_1
-    //   1004: putfield 324	ancq:c	F
-    //   1007: aload 15
-    //   1009: bipush 16
-    //   1011: newarray float
-    //   1013: putfield 326	ancq:jdField_a_of_type_ArrayOfFloat	[F
-    //   1016: aload 14
-    //   1018: iconst_0
-    //   1019: aaload
-    //   1020: getfield 188	com/youtu/arsdk/ARTargetInfo:pose	[F
-    //   1023: iconst_0
-    //   1024: aload 15
-    //   1026: getfield 326	ancq:jdField_a_of_type_ArrayOfFloat	[F
-    //   1029: iconst_0
-    //   1030: aload 14
-    //   1032: iconst_0
-    //   1033: aaload
-    //   1034: getfield 188	com/youtu/arsdk/ARTargetInfo:pose	[F
-    //   1037: arraylength
-    //   1038: invokestatic 97	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   1041: aload 15
+    //   97: iconst_0
+    //   98: putfield 26	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:c	Z
+    //   101: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   104: pop2
+    //   105: aload_0
+    //   106: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   109: invokestatic 150	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/lang/Object;
+    //   112: astore 14
+    //   114: aload 14
+    //   116: monitorenter
+    //   117: aload_0
+    //   118: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   121: iconst_1
+    //   122: invokestatic 153	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
+    //   125: pop
+    //   126: aload_0
+    //   127: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   130: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   133: iconst_2
+    //   134: if_icmpne +147 -> 281
+    //   137: aload_0
+    //   138: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   141: invokestatic 155	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:e	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/lang/Object;
+    //   144: astore 13
+    //   146: aload 13
+    //   148: monitorenter
+    //   149: iconst_0
+    //   150: istore_2
+    //   151: iload_2
+    //   152: aload_0
+    //   153: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   156: invokestatic 158	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
+    //   159: invokevirtual 164	java/util/ArrayList:size	()I
+    //   162: if_icmpge +105 -> 267
+    //   165: aload_0
+    //   166: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   169: invokestatic 158	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
+    //   172: iload_2
+    //   173: invokevirtual 168	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   176: checkcast 170	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState
+    //   179: getfield 171	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState:d	Z
+    //   182: ifne +1662 -> 1844
+    //   185: aload_0
+    //   186: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   189: aload_0
+    //   190: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   193: invokestatic 158	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
+    //   196: iload_2
+    //   197: invokevirtual 168	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   200: checkcast 170	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState
+    //   203: getfield 174	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState:a	Ljava/lang/String;
+    //   206: aload_0
+    //   207: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   210: invokestatic 158	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
+    //   213: iload_2
+    //   214: invokevirtual 168	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   217: checkcast 170	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState
+    //   220: getfield 176	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState:b	Ljava/lang/String;
+    //   223: aload_0
+    //   224: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   227: invokestatic 158	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
+    //   230: iload_2
+    //   231: invokevirtual 168	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   234: checkcast 170	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState
+    //   237: getfield 179	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState:c	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
+    //   240: invokestatic 182	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)Z
+    //   243: ifeq +1601 -> 1844
+    //   246: aload_0
+    //   247: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   250: invokestatic 158	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:f	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/ArrayList;
+    //   253: iload_2
+    //   254: invokevirtual 168	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   257: checkcast 170	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState
+    //   260: iconst_1
+    //   261: putfield 171	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$MarkerState:d	Z
+    //   264: goto +1580 -> 1844
+    //   267: aload 13
+    //   269: monitorexit
+    //   270: goto +11 -> 281
+    //   273: astore 16
+    //   275: aload 13
+    //   277: monitorexit
+    //   278: aload 16
+    //   280: athrow
+    //   281: aload_0
+    //   282: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   285: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   288: istore_2
+    //   289: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   292: lstore 7
+    //   294: aload_0
+    //   295: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   298: invokestatic 184	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:g	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/lang/Object;
+    //   301: astore 16
+    //   303: aload 16
+    //   305: monitorenter
+    //   306: iload_2
+    //   307: iconst_2
+    //   308: if_icmpne +239 -> 547
+    //   311: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   314: lstore 9
+    //   316: aload_0
+    //   317: getfield 35	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:a	[B
+    //   320: aload 17
+    //   322: invokestatic 190	com/youtu/arsdk/ARShell:nativeRecognize	([B[Lcom/youtu/arsdk/ARTargetInfo;)I
+    //   325: istore_3
+    //   326: aload 17
+    //   328: iconst_0
+    //   329: aaload
+    //   330: astore 13
+    //   332: iload_3
+    //   333: ifne +32 -> 365
+    //   336: aload 17
+    //   338: iconst_0
+    //   339: aaload
+    //   340: getfield 194	com/youtu/arsdk/ARTargetInfo:pose	[F
+    //   343: bipush 14
+    //   345: faload
+    //   346: fstore_1
+    //   347: fload_1
+    //   348: ldc 195
+    //   350: fcmpl
+    //   351: iflt +14 -> 365
+    //   354: iconst_0
+    //   355: istore 4
+    //   357: goto +11 -> 368
+    //   360: astore 13
+    //   362: goto +177 -> 539
+    //   365: iconst_2
+    //   366: istore 4
+    //   368: aload 13
+    //   370: iload 4
+    //   372: putfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   375: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   378: lstore 11
+    //   380: aload_0
+    //   381: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   384: invokestatic 200	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:h	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   387: pop
+    //   388: aload_0
+    //   389: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   392: aload_0
+    //   393: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   396: invokestatic 202	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:i	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
+    //   399: lload 11
+    //   401: lload 7
+    //   403: lsub
+    //   404: ladd
+    //   405: invokestatic 204	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;J)J
+    //   408: pop2
+    //   409: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   412: lstore 11
+    //   414: aload 17
+    //   416: iconst_0
+    //   417: aaload
+    //   418: getfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   421: istore 4
+    //   423: iload_2
+    //   424: iload 4
+    //   426: if_icmpeq +108 -> 534
+    //   429: new 206	java/lang/StringBuilder
+    //   432: dup
+    //   433: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   436: astore 13
+    //   438: aload 13
+    //   440: ldc 209
+    //   442: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: pop
+    //   446: aload 13
+    //   448: lload 11
+    //   450: lload 9
+    //   452: lsub
+    //   453: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   456: pop
+    //   457: aload 13
+    //   459: ldc 218
+    //   461: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   464: pop
+    //   465: aload 13
+    //   467: lload 9
+    //   469: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   472: pop
+    //   473: aload 13
+    //   475: ldc 220
+    //   477: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: pop
+    //   481: aload 13
+    //   483: lload 11
+    //   485: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   488: pop
+    //   489: aload 13
+    //   491: ldc 222
+    //   493: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   496: pop
+    //   497: aload 13
+    //   499: aload 17
+    //   501: iconst_0
+    //   502: aaload
+    //   503: getfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   506: invokevirtual 225	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   509: pop
+    //   510: ldc 141
+    //   512: iconst_1
+    //   513: aload 13
+    //   515: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   521: goto +13 -> 534
+    //   524: astore 13
+    //   526: goto +5 -> 531
+    //   529: astore 13
+    //   531: goto +312 -> 843
+    //   534: goto +236 -> 770
+    //   537: astore 13
+    //   539: goto +304 -> 843
+    //   542: astore 13
+    //   544: goto +297 -> 841
+    //   547: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   550: lstore 9
+    //   552: aload_0
+    //   553: getfield 35	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:a	[B
+    //   556: aload 17
+    //   558: invokestatic 235	com/youtu/arsdk/ARShell:nativeTrack	([B[Lcom/youtu/arsdk/ARTargetInfo;)I
+    //   561: istore_3
+    //   562: aload 17
+    //   564: iconst_0
+    //   565: aaload
+    //   566: astore 13
+    //   568: iload_3
+    //   569: ifne +32 -> 601
+    //   572: aload 17
+    //   574: iconst_0
+    //   575: aaload
+    //   576: getfield 194	com/youtu/arsdk/ARTargetInfo:pose	[F
+    //   579: bipush 14
+    //   581: faload
+    //   582: fstore_1
+    //   583: fload_1
+    //   584: ldc 195
+    //   586: fcmpl
+    //   587: iflt +14 -> 601
+    //   590: iconst_1
+    //   591: istore 4
+    //   593: goto +11 -> 604
+    //   596: astore 13
+    //   598: goto +245 -> 843
+    //   601: iconst_2
+    //   602: istore 4
+    //   604: aload 13
+    //   606: iload 4
+    //   608: putfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   611: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   614: lstore 11
+    //   616: aload 17
+    //   618: iconst_0
+    //   619: aaload
+    //   620: getfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   623: istore 4
+    //   625: iload_2
+    //   626: iload 4
+    //   628: if_icmpeq +108 -> 736
+    //   631: new 206	java/lang/StringBuilder
+    //   634: dup
+    //   635: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   638: astore 13
+    //   640: aload 13
+    //   642: ldc 237
+    //   644: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   647: pop
+    //   648: aload 13
+    //   650: lload 11
+    //   652: lload 9
+    //   654: lsub
+    //   655: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   658: pop
+    //   659: aload 13
+    //   661: ldc 218
+    //   663: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   666: pop
+    //   667: aload 13
+    //   669: lload 9
+    //   671: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   674: pop
+    //   675: aload 13
+    //   677: ldc 220
+    //   679: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   682: pop
+    //   683: aload 13
+    //   685: lload 11
+    //   687: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   690: pop
+    //   691: aload 13
+    //   693: ldc 222
+    //   695: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   698: pop
+    //   699: aload 13
+    //   701: aload 17
+    //   703: iconst_0
+    //   704: aaload
+    //   705: getfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   708: invokevirtual 225	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   711: pop
+    //   712: ldc 141
+    //   714: iconst_1
+    //   715: aload 13
+    //   717: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   720: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   723: goto +13 -> 736
+    //   726: astore 13
+    //   728: goto +115 -> 843
+    //   731: astore 13
+    //   733: goto -135 -> 598
+    //   736: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   739: lstore 9
+    //   741: aload_0
+    //   742: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   745: invokestatic 240	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:j	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   748: pop
+    //   749: aload_0
+    //   750: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   753: aload_0
+    //   754: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   757: invokestatic 243	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:k	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
+    //   760: lload 9
+    //   762: lload 7
+    //   764: lsub
+    //   765: ladd
+    //   766: invokestatic 245	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;J)J
+    //   769: pop2
+    //   770: aload 16
+    //   772: monitorexit
+    //   773: iload_2
+    //   774: istore 5
+    //   776: iload 5
+    //   778: iconst_2
+    //   779: if_icmpne +24 -> 803
+    //   782: iload 5
+    //   784: istore_2
+    //   785: iload_3
+    //   786: istore 4
+    //   788: invokestatic 250	com/tencent/mobileqq/ar/ARDebugReport:a	()Lcom/tencent/mobileqq/ar/ARDebugReport;
+    //   791: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   794: lload 7
+    //   796: lsub
+    //   797: invokevirtual 253	com/tencent/mobileqq/ar/ARDebugReport:b	(J)V
+    //   800: goto +101 -> 901
+    //   803: iload 5
+    //   805: istore_2
+    //   806: iload_3
+    //   807: istore 4
+    //   809: invokestatic 250	com/tencent/mobileqq/ar/ARDebugReport:a	()Lcom/tencent/mobileqq/ar/ARDebugReport;
+    //   812: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   815: lload 7
+    //   817: lsub
+    //   818: invokevirtual 255	com/tencent/mobileqq/ar/ARDebugReport:c	(J)V
+    //   821: goto +80 -> 901
+    //   824: astore 13
+    //   826: goto -98 -> 728
+    //   829: astore 13
+    //   831: goto +5 -> 836
+    //   834: astore 13
+    //   836: goto +7 -> 843
+    //   839: astore 13
+    //   841: iconst_m1
+    //   842: istore_3
+    //   843: aload 16
+    //   845: monitorexit
+    //   846: iload_3
+    //   847: istore 4
+    //   849: aload 13
+    //   851: athrow
+    //   852: astore 13
+    //   854: goto +13 -> 867
+    //   857: astore 13
+    //   859: goto -16 -> 843
+    //   862: astore 13
+    //   864: iconst_m1
+    //   865: istore 4
+    //   867: aload 13
+    //   869: invokevirtual 256	java/lang/Exception:printStackTrace	()V
+    //   872: iload_2
+    //   873: istore 5
+    //   875: iload 4
+    //   877: istore_3
+    //   878: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   881: ifeq +20 -> 901
+    //   884: ldc 141
+    //   886: iconst_2
+    //   887: ldc_w 258
+    //   890: aload 13
+    //   892: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   895: iload 4
+    //   897: istore_3
+    //   898: iload_2
+    //   899: istore 5
+    //   901: aload 14
+    //   903: astore 16
+    //   905: aload 15
+    //   907: astore 13
+    //   909: aload_0
+    //   910: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   913: astore 18
+    //   915: iload_3
+    //   916: ifne +935 -> 1851
+    //   919: aload 17
+    //   921: iconst_0
+    //   922: aaload
+    //   923: getfield 194	com/youtu/arsdk/ARTargetInfo:pose	[F
+    //   926: bipush 14
+    //   928: faload
+    //   929: ldc 195
+    //   931: fcmpl
+    //   932: iflt +919 -> 1851
+    //   935: aload 17
+    //   937: iconst_0
+    //   938: aaload
+    //   939: getfield 198	com/youtu/arsdk/ARTargetInfo:state	I
+    //   942: istore_2
+    //   943: goto +3 -> 946
+    //   946: aload 18
+    //   948: iload_2
+    //   949: invokestatic 262	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
+    //   952: pop
+    //   953: aload_0
+    //   954: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   957: astore 18
+    //   959: aload_0
+    //   960: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   963: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   966: iconst_2
+    //   967: if_icmpne +889 -> 1856
+    //   970: aload_0
+    //   971: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   974: invokestatic 94	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:l	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   977: iconst_1
+    //   978: iadd
+    //   979: istore_2
+    //   980: goto +3 -> 983
+    //   983: aload 18
+    //   985: iload_2
+    //   986: invokestatic 102	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
+    //   989: pop
+    //   990: iload 5
+    //   992: iconst_2
+    //   993: if_icmpeq +29 -> 1022
+    //   996: aload_0
+    //   997: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1000: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1003: iconst_2
+    //   1004: if_icmpne +18 -> 1022
+    //   1007: aload_0
+    //   1008: iconst_1
+    //   1009: putfield 81	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:g	Z
+    //   1012: aload_0
+    //   1013: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   1016: putfield 83	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:h	J
+    //   1019: goto +24 -> 1043
+    //   1022: aload_0
+    //   1023: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1026: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1029: iconst_2
+    //   1030: if_icmpeq +13 -> 1043
+    //   1033: aload_0
+    //   1034: iconst_0
+    //   1035: putfield 81	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:g	Z
+    //   1038: aload_0
+    //   1039: lconst_0
+    //   1040: putfield 83	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:h	J
     //   1043: aload_0
-    //   1044: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1047: invokestatic 329	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/Map;
-    //   1050: aload 16
-    //   1052: getfield 277	com/youtu/arsdk/ARPatternInfo:name	Ljava/lang/String;
-    //   1055: invokeinterface 334 2 0
-    //   1060: checkcast 336	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
-    //   1063: putfield 337	ancq:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   1066: aload 15
-    //   1068: aload_0
-    //   1069: getfield 99	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_a_of_type_Long	J
-    //   1072: putfield 338	ancq:jdField_a_of_type_Long	J
-    //   1075: aload_0
-    //   1076: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1079: invokestatic 341	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Z
-    //   1082: ifeq +37 -> 1119
-    //   1085: aload_0
-    //   1086: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1089: invokestatic 343	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Z
-    //   1092: ifne +27 -> 1119
-    //   1095: aload_0
-    //   1096: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1099: invokestatic 346	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Lanco;
-    //   1102: ifnull +17 -> 1119
-    //   1105: aload_0
-    //   1106: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1109: invokestatic 346	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Lanco;
-    //   1112: aload 15
-    //   1114: invokeinterface 351 2 0
-    //   1119: aload_0
-    //   1120: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1123: iconst_0
-    //   1124: invokestatic 147	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
-    //   1127: pop
-    //   1128: invokestatic 354	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:yield	()V
-    //   1131: aload 13
-    //   1133: monitorexit
-    //   1134: goto -1114 -> 20
-    //   1137: astore 14
-    //   1139: aload 13
-    //   1141: monitorexit
-    //   1142: aload 14
-    //   1144: athrow
-    //   1145: astore 16
-    //   1147: aload 15
-    //   1149: monitorexit
-    //   1150: aload 16
-    //   1152: athrow
-    //   1153: astore 15
-    //   1155: aload 15
-    //   1157: invokevirtual 355	java/lang/Exception:printStackTrace	()V
-    //   1160: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1163: ifeq +14 -> 1177
-    //   1166: ldc 135
-    //   1168: iconst_2
-    //   1169: ldc_w 357
-    //   1172: aload 15
-    //   1174: invokestatic 359	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1177: aload_0
-    //   1178: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1181: iconst_0
-    //   1182: invokestatic 147	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
-    //   1185: pop
-    //   1186: goto -58 -> 1128
-    //   1189: iconst_2
-    //   1190: istore_3
-    //   1191: goto -826 -> 365
-    //   1194: iload_3
-    //   1195: istore_2
-    //   1196: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   1199: lstore 9
-    //   1201: iload_3
-    //   1202: istore_2
-    //   1203: aload_0
-    //   1204: getfield 29	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_a_of_type_ArrayOfByte	[B
-    //   1207: aload 14
-    //   1209: invokestatic 362	com/youtu/arsdk/ARShell:nativeTrack	([B[Lcom/youtu/arsdk/ARTargetInfo;)I
-    //   1212: istore_3
-    //   1213: aload 14
-    //   1215: iconst_0
-    //   1216: aaload
-    //   1217: astore 16
-    //   1219: iload_3
-    //   1220: ifne +217 -> 1437
-    //   1223: iload_3
-    //   1224: istore_2
-    //   1225: aload 14
-    //   1227: iconst_0
-    //   1228: aaload
-    //   1229: getfield 188	com/youtu/arsdk/ARTargetInfo:pose	[F
-    //   1232: bipush 14
-    //   1234: faload
-    //   1235: ldc 189
-    //   1237: fcmpl
-    //   1238: iflt +199 -> 1437
-    //   1241: iconst_1
-    //   1242: istore 4
-    //   1244: iload_3
-    //   1245: istore_2
-    //   1246: aload 16
-    //   1248: iload 4
-    //   1250: putfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   1253: iload_3
-    //   1254: istore_2
-    //   1255: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   1258: lstore 11
-    //   1260: iload_3
-    //   1261: istore_2
-    //   1262: iload 5
-    //   1264: aload 14
+    //   1044: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1047: invokestatic 265	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:m	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1050: ifne +11 -> 1061
+    //   1053: aload_0
+    //   1054: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1057: invokestatic 268	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:n	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1060: pop
+    //   1061: aload_0
+    //   1062: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1065: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1068: ifne +793 -> 1861
+    //   1071: aload_0
+    //   1072: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1075: invokestatic 265	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:m	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1078: ifne +783 -> 1861
+    //   1081: aload_0
+    //   1082: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1085: invokestatic 79	java/lang/System:currentTimeMillis	()J
+    //   1088: invokestatic 270	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;J)J
+    //   1091: pop2
+    //   1092: aload_0
+    //   1093: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1096: aload_0
+    //   1097: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1100: invokestatic 273	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:o	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
+    //   1103: aload_0
+    //   1104: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1107: invokestatic 276	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:p	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
+    //   1110: lsub
+    //   1111: l2i
+    //   1112: invokestatic 278	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
+    //   1115: pop
+    //   1116: aload_0
+    //   1117: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1120: astore 18
+    //   1122: aload 18
+    //   1124: aload 13
+    //   1126: invokestatic 281	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Ljava/lang/String;)Ljava/lang/String;
+    //   1129: pop
+    //   1130: goto +3 -> 1133
+    //   1133: aload 13
+    //   1135: astore 15
+    //   1137: aload_0
+    //   1138: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1141: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1144: iconst_2
+    //   1145: if_icmpne +15 -> 1160
+    //   1148: aload_0
+    //   1149: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1152: iconst_0
+    //   1153: invokestatic 283	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
+    //   1156: pop
+    //   1157: goto +707 -> 1864
+    //   1160: aload_0
+    //   1161: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1164: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1167: ifne +15 -> 1182
+    //   1170: aload_0
+    //   1171: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1174: iconst_0
+    //   1175: invokestatic 283	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
+    //   1178: pop
+    //   1179: goto +685 -> 1864
+    //   1182: aload_0
+    //   1183: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1186: invokestatic 73	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1189: iconst_1
+    //   1190: if_icmpne +674 -> 1864
+    //   1193: aload_0
+    //   1194: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1197: invokestatic 286	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:q	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1200: pop
+    //   1201: aload_0
+    //   1202: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1205: invokestatic 289	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:r	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1208: istore_3
+    //   1209: iconst_2
+    //   1210: istore_2
+    //   1211: iload_3
+    //   1212: iconst_2
+    //   1213: if_icmpge +6 -> 1219
+    //   1216: goto +19 -> 1235
+    //   1219: aload_0
+    //   1220: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1223: invokestatic 289	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:r	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
+    //   1226: iconst_2
+    //   1227: if_icmpne +642 -> 1869
+    //   1230: iconst_0
+    //   1231: istore_2
+    //   1232: goto +3 -> 1235
+    //   1235: new 291	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult
+    //   1238: dup
+    //   1239: invokespecial 292	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:<init>	()V
+    //   1242: astore 18
+    //   1244: aload 18
+    //   1246: iload_2
+    //   1247: putfield 294	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:b	I
+    //   1250: iload_2
+    //   1251: iconst_2
+    //   1252: if_icmpeq +627 -> 1879
+    //   1255: new 296	com/youtu/arsdk/ARPatternInfo
+    //   1258: dup
+    //   1259: invokespecial 297	com/youtu/arsdk/ARPatternInfo:<init>	()V
+    //   1262: astore 19
+    //   1264: aload 17
     //   1266: iconst_0
     //   1267: aaload
-    //   1268: getfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   1271: if_icmpeq +70 -> 1341
-    //   1274: iload_3
-    //   1275: istore_2
-    //   1276: ldc 135
-    //   1278: iconst_1
-    //   1279: new 200	java/lang/StringBuilder
-    //   1282: dup
-    //   1283: invokespecial 201	java/lang/StringBuilder:<init>	()V
-    //   1286: ldc_w 364
-    //   1289: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1292: lload 11
-    //   1294: lload 9
-    //   1296: lsub
-    //   1297: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1300: ldc 212
-    //   1302: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1305: lload 9
-    //   1307: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1310: ldc 214
-    //   1312: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1315: lload 11
-    //   1317: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1320: ldc 216
-    //   1322: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1325: aload 14
-    //   1327: iconst_0
-    //   1328: aaload
-    //   1329: getfield 192	com/youtu/arsdk/ARTargetInfo:state	I
-    //   1332: invokevirtual 219	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1335: invokevirtual 223	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1338: invokestatic 226	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1341: iload_3
-    //   1342: istore_2
-    //   1343: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   1346: lstore 9
-    //   1348: iload_3
-    //   1349: istore_2
-    //   1350: aload_0
-    //   1351: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1354: invokestatic 366	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:e	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1357: pop
-    //   1358: iload_3
-    //   1359: istore_2
-    //   1360: aload_0
-    //   1361: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1364: lload 9
-    //   1366: lload 7
-    //   1368: lsub
-    //   1369: aload_0
-    //   1370: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1373: invokestatic 368	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)J
-    //   1376: ladd
-    //   1377: invokestatic 370	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:b	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;J)J
-    //   1380: pop2
-    //   1381: goto -868 -> 513
-    //   1384: astore 16
-    //   1386: aload 15
-    //   1388: monitorexit
-    //   1389: aload 16
-    //   1391: athrow
-    //   1392: astore 15
-    //   1394: aload 15
-    //   1396: invokevirtual 355	java/lang/Exception:printStackTrace	()V
-    //   1399: iload_2
-    //   1400: istore_3
-    //   1401: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1404: ifeq -866 -> 538
-    //   1407: ldc 135
-    //   1409: iconst_2
-    //   1410: ldc_w 372
-    //   1413: aload 15
-    //   1415: invokestatic 359	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1418: iload_2
-    //   1419: istore_3
-    //   1420: goto -882 -> 538
-    //   1423: astore 14
-    //   1425: aload_0
-    //   1426: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1429: iconst_0
-    //   1430: invokestatic 147	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
-    //   1433: pop
-    //   1434: aload 14
-    //   1436: athrow
-    //   1437: iconst_2
-    //   1438: istore 4
-    //   1440: goto -196 -> 1244
-    //   1443: iload_3
-    //   1444: istore_2
-    //   1445: invokestatic 231	amsf:a	()Lamsf;
-    //   1448: invokestatic 73	java/lang/System:currentTimeMillis	()J
-    //   1451: lload 7
-    //   1453: lsub
-    //   1454: invokevirtual 374	amsf:c	(J)V
-    //   1457: goto -919 -> 538
-    //   1460: iconst_2
-    //   1461: istore_2
-    //   1462: goto -890 -> 572
-    //   1465: iconst_0
-    //   1466: istore_2
-    //   1467: goto -861 -> 606
-    //   1470: aload_0
-    //   1471: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1474: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1477: iconst_2
-    //   1478: if_icmpeq -836 -> 642
-    //   1481: aload_0
-    //   1482: iconst_0
-    //   1483: putfield 75	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:jdField_c_of_type_Boolean	Z
-    //   1486: aload_0
-    //   1487: lconst_0
-    //   1488: putfield 77	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:d	J
-    //   1491: goto -849 -> 642
-    //   1494: aload_0
-    //   1495: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1498: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1501: ifne +17 -> 1518
-    //   1504: aload_0
-    //   1505: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1508: iconst_0
-    //   1509: invokestatic 257	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:d	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;I)I
-    //   1512: pop
-    //   1513: iconst_2
-    //   1514: istore_2
-    //   1515: goto -766 -> 749
-    //   1518: aload_0
-    //   1519: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1522: invokestatic 67	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:c	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1525: iconst_1
-    //   1526: if_icmpne -777 -> 749
-    //   1529: aload_0
-    //   1530: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1533: invokestatic 376	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:i	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1536: pop
-    //   1537: aload_0
-    //   1538: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1541: invokestatic 379	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:j	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1544: iconst_2
-    //   1545: if_icmpge +8 -> 1553
-    //   1548: iconst_2
-    //   1549: istore_2
-    //   1550: goto -801 -> 749
-    //   1553: aload_0
-    //   1554: getfield 17	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
-    //   1557: invokestatic 379	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:j	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)I
-    //   1560: iconst_2
-    //   1561: if_icmpne +38 -> 1599
-    //   1564: iconst_0
-    //   1565: istore_2
-    //   1566: goto -817 -> 749
-    //   1569: aload 16
-    //   1571: getfield 293	com/youtu/arsdk/ARPatternInfo:xSize	F
-    //   1574: fstore_1
-    //   1575: goto -616 -> 959
-    //   1578: aload 16
-    //   1580: getfield 301	com/youtu/arsdk/ARPatternInfo:ySize	F
-    //   1583: fstore_1
-    //   1584: goto -604 -> 980
-    //   1587: fconst_0
-    //   1588: fstore_1
-    //   1589: goto -588 -> 1001
-    //   1592: iload_2
-    //   1593: iconst_1
-    //   1594: iadd
-    //   1595: istore_2
-    //   1596: goto -1442 -> 154
-    //   1599: iconst_1
-    //   1600: istore_2
-    //   1601: goto -852 -> 749
+    //   1268: getfield 300	com/youtu/arsdk/ARTargetInfo:markerIndex	I
+    //   1271: i2l
+    //   1272: aload 19
+    //   1274: invokestatic 304	com/youtu/arsdk/ARShell:getMarkerInfo	(JLcom/youtu/arsdk/ARPatternInfo;)I
+    //   1277: pop
+    //   1278: iload_2
+    //   1279: ifne +183 -> 1462
+    //   1282: new 206	java/lang/StringBuilder
+    //   1285: dup
+    //   1286: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   1289: astore 20
+    //   1291: aload 20
+    //   1293: ldc_w 306
+    //   1296: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1299: pop
+    //   1300: aload 20
+    //   1302: aload 19
+    //   1304: getfield 309	com/youtu/arsdk/ARPatternInfo:name	Ljava/lang/String;
+    //   1307: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1310: pop
+    //   1311: aload 20
+    //   1313: ldc_w 311
+    //   1316: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1319: pop
+    //   1320: aload 20
+    //   1322: aload 19
+    //   1324: getfield 314	com/youtu/arsdk/ARPatternInfo:markerType	I
+    //   1327: invokevirtual 225	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1330: pop
+    //   1331: aload 20
+    //   1333: ldc_w 316
+    //   1336: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1339: pop
+    //   1340: aload 20
+    //   1342: aload 19
+    //   1344: getfield 319	com/youtu/arsdk/ARPatternInfo:index	J
+    //   1347: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1350: pop
+    //   1351: aload 20
+    //   1353: ldc_w 321
+    //   1356: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1359: pop
+    //   1360: aload 20
+    //   1362: aload 19
+    //   1364: getfield 325	com/youtu/arsdk/ARPatternInfo:xSize	F
+    //   1367: invokevirtual 328	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1370: pop
+    //   1371: aload 20
+    //   1373: ldc_w 330
+    //   1376: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1379: pop
+    //   1380: aload 20
+    //   1382: aload 19
+    //   1384: getfield 333	com/youtu/arsdk/ARPatternInfo:ySize	F
+    //   1387: invokevirtual 328	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1390: pop
+    //   1391: aload 20
+    //   1393: ldc_w 335
+    //   1396: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1399: pop
+    //   1400: aload 20
+    //   1402: aload 19
+    //   1404: getfield 338	com/youtu/arsdk/ARPatternInfo:param1	F
+    //   1407: invokevirtual 328	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1410: pop
+    //   1411: aload 20
+    //   1413: ldc_w 340
+    //   1416: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1419: pop
+    //   1420: aload 20
+    //   1422: aload 19
+    //   1424: getfield 343	com/youtu/arsdk/ARPatternInfo:param2	F
+    //   1427: invokevirtual 328	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1430: pop
+    //   1431: aload 20
+    //   1433: ldc_w 345
+    //   1436: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1439: pop
+    //   1440: aload 20
+    //   1442: aload 19
+    //   1444: getfield 348	com/youtu/arsdk/ARPatternInfo:param3	F
+    //   1447: invokevirtual 328	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   1450: pop
+    //   1451: ldc 141
+    //   1453: iconst_1
+    //   1454: aload 20
+    //   1456: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1459: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1462: aload 18
+    //   1464: aload 19
+    //   1466: getfield 309	com/youtu/arsdk/ARPatternInfo:name	Ljava/lang/String;
+    //   1469: putfield 350	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:c	Ljava/lang/String;
+    //   1472: aload 18
+    //   1474: aload 19
+    //   1476: getfield 314	com/youtu/arsdk/ARPatternInfo:markerType	I
+    //   1479: putfield 352	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:d	I
+    //   1482: aload 19
+    //   1484: getfield 314	com/youtu/arsdk/ARPatternInfo:markerType	I
+    //   1487: iconst_1
+    //   1488: if_icmpne +12 -> 1500
+    //   1491: aload 19
+    //   1493: getfield 338	com/youtu/arsdk/ARPatternInfo:param1	F
+    //   1496: fstore_1
+    //   1497: goto +9 -> 1506
+    //   1500: aload 19
+    //   1502: getfield 325	com/youtu/arsdk/ARPatternInfo:xSize	F
+    //   1505: fstore_1
+    //   1506: aload 18
+    //   1508: fload_1
+    //   1509: putfield 354	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:e	F
+    //   1512: aload 19
+    //   1514: getfield 314	com/youtu/arsdk/ARPatternInfo:markerType	I
+    //   1517: iconst_1
+    //   1518: if_icmpne +12 -> 1530
+    //   1521: aload 19
+    //   1523: getfield 343	com/youtu/arsdk/ARPatternInfo:param2	F
+    //   1526: fstore_1
+    //   1527: goto +9 -> 1536
+    //   1530: aload 19
+    //   1532: getfield 333	com/youtu/arsdk/ARPatternInfo:ySize	F
+    //   1535: fstore_1
+    //   1536: aload 18
+    //   1538: fload_1
+    //   1539: putfield 356	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:f	F
+    //   1542: aload 19
+    //   1544: getfield 314	com/youtu/arsdk/ARPatternInfo:markerType	I
+    //   1547: istore_2
+    //   1548: iload_2
+    //   1549: iconst_1
+    //   1550: if_icmpne +324 -> 1874
+    //   1553: aload 19
+    //   1555: getfield 348	com/youtu/arsdk/ARPatternInfo:param3	F
+    //   1558: fstore_1
+    //   1559: goto +3 -> 1562
+    //   1562: aload 18
+    //   1564: fload_1
+    //   1565: putfield 358	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:g	F
+    //   1568: aload 18
+    //   1570: bipush 16
+    //   1572: newarray float
+    //   1574: putfield 360	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:h	[F
+    //   1577: aload 17
+    //   1579: iconst_0
+    //   1580: aaload
+    //   1581: getfield 194	com/youtu/arsdk/ARTargetInfo:pose	[F
+    //   1584: iconst_0
+    //   1585: aload 18
+    //   1587: getfield 360	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:h	[F
+    //   1590: iconst_0
+    //   1591: aload 17
+    //   1593: iconst_0
+    //   1594: aaload
+    //   1595: getfield 194	com/youtu/arsdk/ARTargetInfo:pose	[F
+    //   1598: arraylength
+    //   1599: invokestatic 106	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   1602: aload 18
+    //   1604: aload_0
+    //   1605: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1608: invokestatic 364	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:s	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Ljava/util/Map;
+    //   1611: aload 19
+    //   1613: getfield 309	com/youtu/arsdk/ARPatternInfo:name	Ljava/lang/String;
+    //   1616: invokeinterface 369 2 0
+    //   1621: checkcast 371	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
+    //   1624: putfield 373	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:i	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
+    //   1627: aload 18
+    //   1629: aload_0
+    //   1630: getfield 108	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:b	J
+    //   1633: putfield 375	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecogResult:a	J
+    //   1636: goto +3 -> 1639
+    //   1639: aload_0
+    //   1640: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1643: invokestatic 379	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:t	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Z
+    //   1646: ifeq +37 -> 1683
+    //   1649: aload_0
+    //   1650: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1653: invokestatic 382	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:u	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Z
+    //   1656: ifne +27 -> 1683
+    //   1659: aload_0
+    //   1660: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1663: invokestatic 386	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:v	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ARLocalMarkerRecogCallback;
+    //   1666: ifnull +17 -> 1683
+    //   1669: aload_0
+    //   1670: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1673: invokestatic 386	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:v	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;)Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ARLocalMarkerRecogCallback;
+    //   1676: aload 18
+    //   1678: invokeinterface 391 2 0
+    //   1683: aload 16
+    //   1685: astore 13
+    //   1687: aload_0
+    //   1688: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1691: astore 16
+    //   1693: aload 14
+    //   1695: astore 13
+    //   1697: aload 16
+    //   1699: iconst_0
+    //   1700: invokestatic 153	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
+    //   1703: pop
+    //   1704: goto +68 -> 1772
+    //   1707: astore 13
+    //   1709: goto +24 -> 1733
+    //   1712: aload 13
+    //   1714: astore 15
+    //   1716: astore 13
+    //   1718: goto +15 -> 1733
+    //   1721: astore 13
+    //   1723: goto +10 -> 1733
+    //   1726: astore 15
+    //   1728: goto +61 -> 1789
+    //   1731: astore 13
+    //   1733: aload 14
+    //   1735: astore 16
+    //   1737: aload 13
+    //   1739: invokevirtual 256	java/lang/Exception:printStackTrace	()V
+    //   1742: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1745: ifeq +14 -> 1759
+    //   1748: ldc 141
+    //   1750: iconst_2
+    //   1751: ldc_w 393
+    //   1754: aload 13
+    //   1756: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1759: aload 16
+    //   1761: astore 13
+    //   1763: aload_0
+    //   1764: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1767: astore 16
+    //   1769: goto -76 -> 1693
+    //   1772: aload 14
+    //   1774: astore 13
+    //   1776: invokestatic 396	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:yield	()V
+    //   1779: aload 14
+    //   1781: astore 13
+    //   1783: aload 14
+    //   1785: monitorexit
+    //   1786: goto -1762 -> 24
+    //   1789: aload 14
+    //   1791: astore 13
+    //   1793: aload_0
+    //   1794: getfield 21	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog$ProcessWorker:this$0	Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;
+    //   1797: iconst_0
+    //   1798: invokestatic 153	com/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog:a	(Lcom/tencent/mobileqq/ar/arengine/ARLocalMarkerRecog;Z)Z
+    //   1801: pop
+    //   1802: aload 14
+    //   1804: astore 13
+    //   1806: aload 15
+    //   1808: athrow
+    //   1809: aload 15
+    //   1811: astore 13
+    //   1813: aload 15
+    //   1815: monitorexit
+    //   1816: aload 14
+    //   1818: athrow
+    //   1819: astore 14
+    //   1821: aload 13
+    //   1823: astore 15
+    //   1825: goto -16 -> 1809
+    //   1828: aload_0
+    //   1829: monitorexit
+    //   1830: return
+    //   1831: astore 13
+    //   1833: aload_0
+    //   1834: monitorexit
+    //   1835: goto +6 -> 1841
+    //   1838: aload 13
+    //   1840: athrow
+    //   1841: goto -3 -> 1838
+    //   1844: iload_2
+    //   1845: iconst_1
+    //   1846: iadd
+    //   1847: istore_2
+    //   1848: goto -1697 -> 151
+    //   1851: iconst_2
+    //   1852: istore_2
+    //   1853: goto -907 -> 946
+    //   1856: iconst_0
+    //   1857: istore_2
+    //   1858: goto -875 -> 983
+    //   1861: goto -728 -> 1133
+    //   1864: iconst_2
+    //   1865: istore_2
+    //   1866: goto -631 -> 1235
+    //   1869: iconst_1
+    //   1870: istore_2
+    //   1871: goto -636 -> 1235
+    //   1874: fconst_0
+    //   1875: fstore_1
+    //   1876: goto -314 -> 1562
+    //   1879: goto -240 -> 1639
+    //   1882: astore 15
+    //   1884: goto -95 -> 1789
+    //   1887: astore 13
+    //   1889: aload 14
+    //   1891: astore 15
+    //   1893: aload 13
+    //   1895: astore 14
+    //   1897: goto -88 -> 1809
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1604	0	this	ProcessWorker
-    //   958	631	1	f	float
-    //   153	1448	2	i	int
-    //   274	1170	3	j	int
-    //   331	1108	4	k	int
-    //   282	990	5	m	int
-    //   38	54	6	bool	boolean
-    //   289	1163	7	l1	long
-    //   318	1047	9	l2	long
-    //   380	936	11	l3	long
+    //   0	1900	0	this	ProcessWorker
+    //   346	1530	1	f1	float
+    //   150	1721	2	i	int
+    //   325	889	3	j	int
+    //   355	541	4	k	int
+    //   774	220	5	m	int
+    //   42	47	6	bool	boolean
+    //   292	524	7	l1	long
+    //   314	447	9	l2	long
+    //   378	308	11	l3	long
     //   12	1	13	arrayOfFloat	float[]
-    //   52	19	13	localInterruptedException	java.lang.InterruptedException
-    //   78	5	13	localObject1	Object
-    //   115	1025	13	localObject2	Object
-    //   18	1013	14	arrayOfARTargetInfo1	com.youtu.arsdk.ARTargetInfo[]
-    //   1137	189	14	arrayOfARTargetInfo2	com.youtu.arsdk.ARTargetInfo[]
-    //   1423	12	14	localObject3	Object
-    //   147	1001	15	localObject4	Object
-    //   1153	234	15	localException1	java.lang.Exception
-    //   1392	22	15	localException2	java.lang.Exception
-    //   337	714	16	localObject5	Object
-    //   1145	6	16	localObject6	Object
-    //   1217	30	16	localARTargetInfo	com.youtu.arsdk.ARTargetInfo
-    //   1384	195	16	localObject7	Object
+    //   56	19	13	localInterruptedException	java.lang.InterruptedException
+    //   144	187	13	localObject1	Object
+    //   360	9	13	localObject2	Object
+    //   436	78	13	localStringBuilder1	java.lang.StringBuilder
+    //   524	1	13	localObject3	Object
+    //   529	1	13	localObject4	Object
+    //   537	1	13	localObject5	Object
+    //   542	1	13	localObject6	Object
+    //   566	1	13	localObject7	Object
+    //   596	9	13	localObject8	Object
+    //   638	78	13	localStringBuilder2	java.lang.StringBuilder
+    //   726	1	13	localObject9	Object
+    //   731	1	13	localObject10	Object
+    //   824	1	13	localObject11	Object
+    //   829	1	13	localObject12	Object
+    //   834	1	13	localObject13	Object
+    //   839	11	13	localObject14	Object
+    //   852	1	13	localException1	java.lang.Exception
+    //   857	1	13	localObject15	Object
+    //   862	29	13	localException2	java.lang.Exception
+    //   907	789	13	localObject16	Object
+    //   1707	6	13	localException3	java.lang.Exception
+    //   1716	1	13	localException4	java.lang.Exception
+    //   1721	1	13	localException5	java.lang.Exception
+    //   1731	24	13	localException6	java.lang.Exception
+    //   1761	61	13	localObject17	Object
+    //   1831	8	13	localObject18	Object
+    //   1887	7	13	localObject19	Object
+    //   112	1705	14	localObject20	Object
+    //   1819	71	14	localObject21	Object
+    //   1895	1	14	localObject22	Object
+    //   22	1693	15	localObject23	Object
+    //   1726	88	15	localObject24	Object
+    //   1823	1	15	localObject25	Object
+    //   1882	1	15	localObject26	Object
+    //   1891	1	15	localObject27	Object
+    //   273	6	16	localObject28	Object
+    //   301	1467	16	localObject29	Object
+    //   18	1574	17	arrayOfARTargetInfo	com.youtu.arsdk.ARTargetInfo[]
+    //   913	764	18	localObject30	Object
+    //   1262	350	19	localARPatternInfo	com.youtu.arsdk.ARPatternInfo
+    //   1289	166	20	localStringBuilder3	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   45	49	52	java/lang/InterruptedException
-    //   2	20	78	finally
-    //   20	27	78	finally
-    //   27	40	78	finally
-    //   45	49	78	finally
-    //   54	75	78	finally
-    //   85	91	78	finally
-    //   99	120	78	finally
-    //   1142	1145	78	finally
-    //   120	129	1137	finally
-    //   1119	1128	1137	finally
-    //   1128	1134	1137	finally
-    //   1139	1142	1137	finally
-    //   1177	1186	1137	finally
-    //   1425	1437	1137	finally
-    //   154	267	1145	finally
-    //   270	273	1145	finally
-    //   1147	1150	1145	finally
-    //   129	152	1153	java/lang/Exception
-    //   275	284	1153	java/lang/Exception
-    //   538	544	1153	java/lang/Exception
-    //   548	572	1153	java/lang/Exception
-    //   572	606	1153	java/lang/Exception
-    //   606	613	1153	java/lang/Exception
-    //   619	642	1153	java/lang/Exception
-    //   642	660	1153	java/lang/Exception
-    //   660	725	1153	java/lang/Exception
-    //   727	747	1153	java/lang/Exception
-    //   749	764	1153	java/lang/Exception
-    //   769	792	1153	java/lang/Exception
-    //   796	924	1153	java/lang/Exception
-    //   924	959	1153	java/lang/Exception
-    //   959	980	1153	java/lang/Exception
-    //   980	1001	1153	java/lang/Exception
-    //   1001	1075	1153	java/lang/Exception
-    //   1075	1119	1153	java/lang/Exception
-    //   1150	1153	1153	java/lang/Exception
-    //   1394	1399	1153	java/lang/Exception
-    //   1401	1418	1153	java/lang/Exception
-    //   1470	1491	1153	java/lang/Exception
-    //   1494	1513	1153	java/lang/Exception
-    //   1518	1548	1153	java/lang/Exception
-    //   1553	1564	1153	java/lang/Exception
-    //   1569	1575	1153	java/lang/Exception
-    //   1578	1584	1153	java/lang/Exception
-    //   315	320	1384	finally
-    //   322	333	1384	finally
-    //   347	363	1384	finally
-    //   368	374	1384	finally
-    //   377	382	1384	finally
-    //   385	393	1384	finally
-    //   396	417	1384	finally
-    //   420	425	1384	finally
-    //   431	443	1384	finally
-    //   446	510	1384	finally
-    //   515	518	1384	finally
-    //   1196	1201	1384	finally
-    //   1203	1213	1384	finally
-    //   1225	1241	1384	finally
-    //   1246	1253	1384	finally
-    //   1255	1260	1384	finally
-    //   1262	1274	1384	finally
-    //   1276	1341	1384	finally
-    //   1343	1348	1384	finally
-    //   1350	1358	1384	finally
-    //   1360	1381	1384	finally
-    //   1386	1389	1384	finally
-    //   286	291	1392	java/lang/Exception
-    //   293	302	1392	java/lang/Exception
-    //   304	307	1392	java/lang/Exception
-    //   526	538	1392	java/lang/Exception
-    //   1389	1392	1392	java/lang/Exception
-    //   1445	1457	1392	java/lang/Exception
-    //   129	152	1423	finally
-    //   275	284	1423	finally
-    //   286	291	1423	finally
-    //   293	302	1423	finally
-    //   304	307	1423	finally
-    //   526	538	1423	finally
-    //   538	544	1423	finally
-    //   548	572	1423	finally
-    //   572	606	1423	finally
-    //   606	613	1423	finally
-    //   619	642	1423	finally
-    //   642	660	1423	finally
-    //   660	725	1423	finally
-    //   727	747	1423	finally
-    //   749	764	1423	finally
-    //   769	792	1423	finally
-    //   796	924	1423	finally
-    //   924	959	1423	finally
-    //   959	980	1423	finally
-    //   980	1001	1423	finally
-    //   1001	1075	1423	finally
-    //   1075	1119	1423	finally
-    //   1150	1153	1423	finally
-    //   1155	1177	1423	finally
-    //   1389	1392	1423	finally
-    //   1394	1399	1423	finally
-    //   1401	1418	1423	finally
-    //   1445	1457	1423	finally
-    //   1470	1491	1423	finally
-    //   1494	1513	1423	finally
-    //   1518	1548	1423	finally
-    //   1553	1564	1423	finally
-    //   1569	1575	1423	finally
-    //   1578	1584	1423	finally
+    //   49	53	56	java/lang/InterruptedException
+    //   151	264	273	finally
+    //   267	270	273	finally
+    //   275	278	273	finally
+    //   336	347	360	finally
+    //   446	521	524	finally
+    //   429	446	529	finally
+    //   368	423	537	finally
+    //   311	326	542	finally
+    //   572	583	596	finally
+    //   648	723	726	finally
+    //   631	648	731	finally
+    //   770	773	824	finally
+    //   736	770	829	finally
+    //   604	625	834	finally
+    //   547	562	839	finally
+    //   788	800	852	java/lang/Exception
+    //   809	821	852	java/lang/Exception
+    //   849	852	852	java/lang/Exception
+    //   843	846	857	finally
+    //   289	306	862	java/lang/Exception
+    //   1553	1559	1707	java/lang/Exception
+    //   1562	1636	1707	java/lang/Exception
+    //   1639	1683	1707	java/lang/Exception
+    //   1122	1130	1712	java/lang/Exception
+    //   1137	1157	1712	java/lang/Exception
+    //   1160	1179	1712	java/lang/Exception
+    //   1182	1209	1712	java/lang/Exception
+    //   1219	1230	1712	java/lang/Exception
+    //   1235	1250	1712	java/lang/Exception
+    //   1255	1278	1712	java/lang/Exception
+    //   1282	1462	1712	java/lang/Exception
+    //   1462	1497	1712	java/lang/Exception
+    //   1500	1506	1712	java/lang/Exception
+    //   1506	1527	1712	java/lang/Exception
+    //   1530	1536	1712	java/lang/Exception
+    //   1536	1548	1712	java/lang/Exception
+    //   867	872	1721	java/lang/Exception
+    //   878	895	1721	java/lang/Exception
+    //   909	915	1721	java/lang/Exception
+    //   919	943	1721	java/lang/Exception
+    //   946	980	1721	java/lang/Exception
+    //   983	990	1721	java/lang/Exception
+    //   996	1019	1721	java/lang/Exception
+    //   1022	1043	1721	java/lang/Exception
+    //   1043	1061	1721	java/lang/Exception
+    //   1061	1122	1721	java/lang/Exception
+    //   126	149	1726	finally
+    //   278	281	1726	finally
+    //   281	289	1726	finally
+    //   289	306	1726	finally
+    //   126	149	1731	java/lang/Exception
+    //   278	281	1731	java/lang/Exception
+    //   281	289	1731	java/lang/Exception
+    //   1687	1693	1819	finally
+    //   1697	1704	1819	finally
+    //   1763	1769	1819	finally
+    //   1776	1779	1819	finally
+    //   1783	1786	1819	finally
+    //   1793	1802	1819	finally
+    //   1806	1809	1819	finally
+    //   1813	1816	1819	finally
+    //   2	20	1831	finally
+    //   24	31	1831	finally
+    //   31	44	1831	finally
+    //   49	53	1831	finally
+    //   58	79	1831	finally
+    //   82	88	1831	finally
+    //   96	117	1831	finally
+    //   1816	1819	1831	finally
+    //   788	800	1882	finally
+    //   809	821	1882	finally
+    //   849	852	1882	finally
+    //   867	872	1882	finally
+    //   878	895	1882	finally
+    //   909	915	1882	finally
+    //   919	943	1882	finally
+    //   946	980	1882	finally
+    //   983	990	1882	finally
+    //   996	1019	1882	finally
+    //   1022	1043	1882	finally
+    //   1043	1061	1882	finally
+    //   1061	1122	1882	finally
+    //   1122	1130	1882	finally
+    //   1137	1157	1882	finally
+    //   1160	1179	1882	finally
+    //   1182	1209	1882	finally
+    //   1219	1230	1882	finally
+    //   1235	1250	1882	finally
+    //   1255	1278	1882	finally
+    //   1282	1462	1882	finally
+    //   1462	1497	1882	finally
+    //   1500	1506	1882	finally
+    //   1506	1527	1882	finally
+    //   1530	1536	1882	finally
+    //   1536	1548	1882	finally
+    //   1553	1559	1882	finally
+    //   1562	1636	1882	finally
+    //   1639	1683	1882	finally
+    //   1737	1759	1882	finally
+    //   117	126	1887	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalMarkerRecog.ProcessWorker
  * JD-Core Version:    0.7.0.1
  */

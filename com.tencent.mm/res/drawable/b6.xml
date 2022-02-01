@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:right="3.0dip">
-        <bitmap android:src="@drawable/axj" />
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@drawable/bmr" />
+    <item android:drawable="@drawable/bmn" />
+</selector>

@@ -5,70 +5,70 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class c
+public class c
   extends BaseAdapter
 {
-  List<d> zsD;
-  private Map<String, Integer> zsI;
-  private c.a zsJ;
+  List<d> aeaC;
+  private Map<String, Integer> aeaH;
+  private a aeaI;
   
-  public c(c.a parama)
+  public c(a parama)
   {
-    AppMethodBeat.i(107310);
-    this.zsD = null;
+    AppMethodBeat.i(142694);
+    this.aeaC = null;
     if (parama == null)
     {
       parama = new RuntimeException("ViewCreator can not be null.");
-      AppMethodBeat.o(107310);
+      AppMethodBeat.o(142694);
       throw parama;
     }
-    this.zsJ = parama;
-    this.zsD = new ArrayList();
-    this.zsI = new HashMap();
-    AppMethodBeat.o(107310);
-  }
-  
-  private String OX(int paramInt)
-  {
-    AppMethodBeat.i(107318);
-    if ((paramInt < 0) || (paramInt >= this.zsD.size()))
-    {
-      AppMethodBeat.o(107318);
-      return null;
-    }
-    String str = ((d)this.zsD.get(paramInt)).zsM;
-    AppMethodBeat.o(107318);
-    return str;
+    this.aeaI = parama;
+    this.aeaC = new ArrayList();
+    this.aeaH = new HashMap();
+    AppMethodBeat.o(142694);
   }
   
   private static String a(d paramd)
   {
-    if ((paramd != null) && (paramd.zsM != null)) {
-      return paramd.zsM;
+    if ((paramd != null) && (paramd.aeaK != null)) {
+      return paramd.aeaK;
     }
     return null;
   }
   
-  private void dET()
+  private String aBr(int paramInt)
   {
-    AppMethodBeat.i(107314);
-    this.zsI.clear();
+    AppMethodBeat.i(142702);
+    if ((paramInt < 0) || (paramInt >= this.aeaC.size()))
+    {
+      AppMethodBeat.o(142702);
+      return null;
+    }
+    String str = ((d)this.aeaC.get(paramInt)).aeaK;
+    AppMethodBeat.o(142702);
+    return str;
+  }
+  
+  private void jnH()
+  {
+    AppMethodBeat.i(142698);
+    this.aeaH.clear();
     Object localObject = null;
     int i = 0;
-    if (i < this.zsD.size())
+    if (i < this.aeaC.size())
     {
-      String str = a((d)this.zsD.get(i));
+      String str = a((d)this.aeaC.get(i));
       if ((str == null) || (str.equalsIgnoreCase((String)localObject))) {
         break label90;
       }
-      this.zsI.put(str, Integer.valueOf(i));
+      this.aeaH.put(str, Integer.valueOf(i));
       localObject = str;
     }
     label90:
@@ -76,107 +76,118 @@ public final class c
     {
       i += 1;
       break;
-      AppMethodBeat.o(107314);
+      AppMethodBeat.o(142698);
       return;
     }
   }
   
-  private void eV(List<d> paramList)
+  private void nm(List<d> paramList)
   {
-    AppMethodBeat.i(107313);
-    if (this.zsD != paramList)
+    AppMethodBeat.i(142697);
+    if (this.aeaC != paramList)
     {
-      this.zsD.clear();
+      this.aeaC.clear();
       if (paramList != null) {
-        this.zsD.addAll(paramList);
+        this.aeaC.addAll(paramList);
       }
     }
-    dET();
+    jnH();
     notifyDataSetChanged();
-    AppMethodBeat.o(107313);
+    AppMethodBeat.o(142697);
   }
   
-  public final int atC(String paramString)
+  public final int bAp(String paramString)
   {
-    AppMethodBeat.i(107319);
-    int i = bo.a((Integer)this.zsI.get(paramString), -1);
-    AppMethodBeat.o(107319);
+    AppMethodBeat.i(142703);
+    int i = Util.nullAs((Integer)this.aeaH.get(paramString), -1);
+    AppMethodBeat.o(142703);
     return i;
   }
   
-  public final void dI(List<d> paramList)
+  public final void bDL()
   {
-    AppMethodBeat.i(107312);
-    if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
-    {
-      al.d(new c.1(this, paramList));
-      AppMethodBeat.o(107312);
-      return;
-    }
-    eV(paramList);
-    AppMethodBeat.o(107312);
+    AppMethodBeat.i(142695);
+    lG(this.aeaC);
+    AppMethodBeat.o(142695);
   }
   
-  public final int getCount()
+  public int getCount()
   {
-    AppMethodBeat.i(107315);
-    int i = this.zsD.size();
-    AppMethodBeat.o(107315);
+    AppMethodBeat.i(142699);
+    int i = this.aeaC.size();
+    AppMethodBeat.o(142699);
     return i;
   }
   
-  public final Object getItem(int paramInt)
+  public Object getItem(int paramInt)
   {
-    AppMethodBeat.i(107316);
-    Object localObject = this.zsD.get(paramInt);
-    AppMethodBeat.o(107316);
+    AppMethodBeat.i(142700);
+    Object localObject = this.aeaC.get(paramInt);
+    AppMethodBeat.o(142700);
     return localObject;
   }
   
-  public final long getItemId(int paramInt)
+  public long getItemId(int paramInt)
   {
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(107317);
-    paramViewGroup = (d)getItem(paramInt);
-    Object localObject = OX(paramInt);
-    String str = OX(paramInt + 1);
+    AppMethodBeat.i(142701);
+    d locald = (d)getItem(paramInt);
+    String str1 = aBr(paramInt);
+    String str2 = aBr(paramInt + 1);
     boolean bool1;
-    if (paramInt == atC((String)localObject))
+    if (paramInt == bAp(str1))
     {
       bool1 = true;
-      if ((localObject == null) || (((String)localObject).equalsIgnoreCase(str))) {
-        break label100;
+      if ((str1 == null) || (str1.equalsIgnoreCase(str2))) {
+        break label98;
       }
     }
     for (;;)
     {
-      localObject = this.zsJ;
-      getCount();
-      paramView = ((c.a)localObject).a(paramViewGroup, paramView, paramInt, bool1, bool2);
-      AppMethodBeat.o(107317);
+      paramView = this.aeaI.createView(locald, paramView, paramViewGroup, paramInt, getCount(), bool1, bool2);
+      AppMethodBeat.o(142701);
       return paramView;
       bool1 = false;
       break;
-      label100:
+      label98:
       bool2 = false;
     }
   }
   
-  public final void refresh()
+  public final void lG(final List<d> paramList)
   {
-    AppMethodBeat.i(107311);
-    dI(this.zsD);
-    AppMethodBeat.o(107311);
+    AppMethodBeat.i(142696);
+    if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
+    {
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(142693);
+          c.a(c.this, paramList);
+          AppMethodBeat.o(142693);
+        }
+      });
+      AppMethodBeat.o(142696);
+      return;
+    }
+    nm(paramList);
+    AppMethodBeat.o(142696);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract View createView(d paramd, View paramView, ViewGroup paramViewGroup, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.c
  * JD-Core Version:    0.7.0.1
  */

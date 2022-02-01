@@ -10,17 +10,18 @@ final class bz
   public final void run()
   {
     String str = dc.b("settings_in_client", "");
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      this.a.a.a(str);
-      this.a.a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      dc.a("settings_in_client", "");
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        this.a.a.a(str);
+        this.a.a();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        dc.a("settings_in_client", "");
+      }
     }
   }
 }

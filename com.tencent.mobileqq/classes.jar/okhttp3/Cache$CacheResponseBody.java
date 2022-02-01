@@ -39,8 +39,9 @@ class Cache$CacheResponseBody
   
   public MediaType contentType()
   {
-    if (this.contentType != null) {
-      return MediaType.parse(this.contentType);
+    String str = this.contentType;
+    if (str != null) {
+      return MediaType.parse(str);
     }
     return null;
   }
@@ -52,7 +53,7 @@ class Cache$CacheResponseBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Cache.CacheResponseBody
  * JD-Core Version:    0.7.0.1
  */

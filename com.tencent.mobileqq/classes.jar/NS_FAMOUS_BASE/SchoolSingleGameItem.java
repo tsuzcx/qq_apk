@@ -11,12 +11,12 @@ public final class SchoolSingleGameItem
   public String app_class2 = "";
   public String app_icon = "";
   public String app_name = "";
-  public long appid;
-  public long click_time;
-  public long create_time;
+  public long appid = 0L;
+  public long click_time = 0L;
+  public long create_time = 0L;
   public String detail_url = "";
-  public int flag;
-  public long online_time;
+  public int flag = 0;
+  public long online_time = 0L;
   
   public SchoolSingleGameItem() {}
   
@@ -51,30 +51,35 @@ public final class SchoolSingleGameItem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appid, 0);
-    if (this.app_name != null) {
-      paramJceOutputStream.write(this.app_name, 1);
+    String str = this.app_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.create_time, 2);
     paramJceOutputStream.write(this.online_time, 3);
     paramJceOutputStream.write(this.click_time, 4);
-    if (this.app_icon != null) {
-      paramJceOutputStream.write(this.app_icon, 5);
+    str = this.app_icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.detail_url != null) {
-      paramJceOutputStream.write(this.detail_url, 6);
+    str = this.detail_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.flag, 7);
-    if (this.app_class1 != null) {
-      paramJceOutputStream.write(this.app_class1, 8);
+    str = this.app_class1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.app_class2 != null) {
-      paramJceOutputStream.write(this.app_class2, 9);
+    str = this.app_class2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_FAMOUS_BASE.SchoolSingleGameItem
  * JD-Core Version:    0.7.0.1
  */

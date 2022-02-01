@@ -2,28 +2,29 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.f;
 import com.tencent.mm.plugin.music.cache.g;
 import com.tencent.mm.plugin.music.cache.i;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 
 public final class d
 {
-  public static void N(com.tencent.mm.aw.e parame)
+  public static void ab(f paramf)
   {
-    AppMethodBeat.i(137698);
-    if (parame == null)
+    AppMethodBeat.i(137451);
+    if (paramf == null)
     {
-      ab.e("MicroMsg.Music.MusicUrlParser", "GetShakeMusicUrl, musicWrapper is null");
-      AppMethodBeat.o(137698);
+      Log.e("MicroMsg.Music.MusicUrlParser", "GetShakeMusicUrl, musicWrapper is null");
+      AppMethodBeat.o(137451);
       return;
     }
-    boolean bool1 = at.isWifi(ah.getContext());
-    boolean bool2 = at.isNetworkConnected(ah.getContext());
+    boolean bool1 = NetStatusUtil.isWifi(MMApplicationContext.getContext());
+    boolean bool2 = NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext());
     Object localObject2 = new PBool();
     Object localObject1;
     String str2;
@@ -34,36 +35,31 @@ public final class d
     label165:
     String str3;
     String str1;
-    if (bo.isNullOrNil(parame.fKp))
+    if (Util.isNullOrNil(paramf.oOB))
     {
-      localObject1 = parame.fKr;
-      String str4 = parame.fKq;
+      localObject1 = paramf.oOD;
+      String str4 = paramf.oOC;
       str2 = e.a((String)localObject1, str4, bool1, (PBool)localObject2);
-      ab.i("MicroMsg.Music.MusicUrlParser", "parsePlayUrl mSrc:%s", new Object[] { str2 });
-      ab.i("MicroMsg.Music.MusicUrlParser", "songWifiUrl:%s", new Object[] { parame.fKp });
+      Log.i("MicroMsg.Music.MusicUrlParser", "parsePlayUrl mSrc:%s", new Object[] { str2 });
+      Log.i("MicroMsg.Music.MusicUrlParser", "songWifiUrl:%s", new Object[] { paramf.oOB });
       if (!bool1) {
-        break label320;
+        break label303;
       }
       i = 1;
       if (!((PBool)localObject2).value) {
-        break label325;
+        break label308;
       }
       j = 1;
-      ab.i("MicroMsg.Music.MusicUrlParser", "isWifi:%d, isQQMusic:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      Log.i("MicroMsg.Music.MusicUrlParser", "isWifi:%d, isQQMusic:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if (!bool1) {
-        break label330;
+        break label313;
       }
       bool1 = ((PBool)localObject2).value;
-      if (e.VJ(str2))
-      {
-        ab.i("MicroMsg.Music.MusicUrlParser", "can match shake music wifi url");
-        bool1 = true;
-      }
       str3 = "";
       if (bool2) {
-        break label427;
+        break label410;
       }
-      ab.i("MicroMsg.Music.MusicUrlParser", "isNetConnected false, detect right Url to play");
+      Log.i("MicroMsg.Music.MusicUrlParser", "isNetConnected false, detect right Url to play");
       str1 = e.a((String)localObject1, str4, true, (PBool)localObject2);
       localObject2 = e.a((String)localObject1, str4, false, (PBool)localObject2);
       if (str1 != null)
@@ -73,84 +69,84 @@ public final class d
       }
       else
       {
-        if (!c.M(parame)) {
-          break label335;
+        if (!c.aa(paramf)) {
+          break label318;
         }
-        ab.i("MicroMsg.Music.MusicUrlParser", "use exoMusicPlayer");
+        Log.i("MicroMsg.Music.MusicUrlParser", "use exoMusicPlayer");
         localObject1 = str3;
       }
-      label259:
+      label242:
       if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals(str2))) {
-        break label427;
+        break label410;
       }
-      ab.i("MicroMsg.Music.MusicUrlParser", "reset the mSrc :%s", new Object[] { localObject1 });
+      Log.i("MicroMsg.Music.MusicUrlParser", "reset the mSrc :%s", new Object[] { localObject1 });
     }
     for (;;)
     {
-      parame.playUrl = ((String)localObject1);
-      g.bb((String)localObject1, bool1);
-      AppMethodBeat.o(137698);
+      paramf.playUrl = ((String)localObject1);
+      g.cv((String)localObject1, bool1);
+      AppMethodBeat.o(137451);
       return;
-      localObject1 = parame.fKp;
+      localObject1 = paramf.oOB;
       break;
-      label320:
+      label303:
       i = 0;
       break label120;
-      label325:
+      label308:
       j = 0;
       break label130;
-      label330:
+      label313:
       bool1 = false;
       break label165;
-      label335:
-      if (c.Az(parame.fKh))
+      label318:
+      if (c.adO(paramf.oOt))
       {
-        ab.i("MicroMsg.Music.MusicUrlParser", "use qqMusicPlayer");
-        if (i.Vs(str1))
+        Log.i("MicroMsg.Music.MusicUrlParser", "use qqMusicPlayer");
+        if (i.aOO(str1))
         {
           localObject1 = str1;
-          break label259;
+          break label242;
         }
         localObject1 = str3;
-        if (!i.Vs((String)localObject2)) {
-          break label259;
+        if (!i.aOO((String)localObject2)) {
+          break label242;
         }
         localObject1 = localObject2;
-        break label259;
+        break label242;
       }
-      if (e(parame, true)) {
+      if (e(paramf, true)) {
         localObject1 = str1;
       }
       for (;;)
       {
-        ab.i("MicroMsg.Music.MusicUrlParser", "use musicPlayer");
+        Log.i("MicroMsg.Music.MusicUrlParser", "use musicPlayer");
         break;
         localObject1 = localObject2;
-        if (!e(parame, false)) {
+        if (!e(paramf, false)) {
           localObject1 = "";
         }
       }
-      label427:
+      label410:
       localObject1 = str2;
     }
   }
   
-  private static boolean e(com.tencent.mm.aw.e parame, boolean paramBoolean)
+  private static boolean e(f paramf, boolean paramBoolean)
   {
-    AppMethodBeat.i(137699);
-    parame = new File(b.bc(b.K(parame), paramBoolean));
-    if ((parame.exists()) && (parame.length() > 0L))
+    AppMethodBeat.i(137452);
+    paramf = new u(b.cy(b.Y(paramf), paramBoolean));
+    if ((paramf.jKS()) && (paramf.length() > 0L))
     {
-      AppMethodBeat.o(137699);
+      AppMethodBeat.o(137452);
       return true;
     }
-    AppMethodBeat.o(137699);
+    AppMethodBeat.o(137452);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.d
  * JD-Core Version:    0.7.0.1
  */

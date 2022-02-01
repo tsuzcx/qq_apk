@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/laba_entrys_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/obp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="12.0dip" />
     <include android:id="@id/e6t" layout="@layout/aw0" />
     <include android:id="@id/qzone_feed_entry" layout="@layout/m4" />
-    <include android:id="@id/moi" android:visibility="gone" layout="@layout/c5w" />
+    <include android:id="@id/pmo" android:visibility="gone" layout="@layout/72" />
+    <include android:id="@id/ndj" android:visibility="gone" layout="@layout/70" />
     <FrameLayout android:id="@id/fcs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="vertical" android:id="@id/mqy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
+    <com.tencent.mobileqq.leba.widget.LebaTableLayout android:orientation="vertical" android:id="@id/q9b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

@@ -1,75 +1,81 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import a.f.b.j;
-import a.l;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
-import java.io.InputStream;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
+import com.tencent.mm.plugin.appbrand.jsapi.aj;
+import com.tencent.mm.protocal.protobuf.fcw;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/luggage/customize/CustomizeCommLibReaderWrapper;", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "()V", "info", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "init", "", "openRead", "Ljava/io/InputStream;", "fileName", "", "readAsString", "versionBuildInfo", "versionName", "plugin-appbrand-integration_release"})
 public final class a
-  implements n
+  implements aj
 {
-  public static final a iom;
-  
-  static
+  public final void a(Context paramContext, String paramString1, String paramString2, fcw paramfcw)
   {
-    AppMethodBeat.i(134723);
-    iom = new a();
-    AppMethodBeat.o(134723);
-  }
-  
-  public final String avc()
-  {
-    AppMethodBeat.i(134721);
-    String str = WxaCommLibRuntimeReader.avH().avc();
-    j.p(str, "WxaCommLibRuntimeReader.getReader().versionName()");
-    AppMethodBeat.o(134721);
-    return str;
-  }
-  
-  public final String avd()
-  {
-    AppMethodBeat.i(134722);
-    String str = WxaCommLibRuntimeReader.avH().avd();
-    j.p(str, "WxaCommLibRuntimeReader.…ader().versionBuildInfo()");
-    AppMethodBeat.o(134722);
-    return str;
-  }
-  
-  public final WxaPkgWrappingInfo ave()
-  {
-    AppMethodBeat.i(134720);
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = WxaCommLibRuntimeReader.avH().ave();
-    j.p(localWxaPkgWrappingInfo, "WxaCommLibRuntimeReader.getReader().info()");
-    AppMethodBeat.o(134720);
-    return localWxaPkgWrappingInfo;
-  }
-  
-  public final void init() {}
-  
-  public final InputStream openRead(String paramString)
-  {
-    AppMethodBeat.i(134719);
-    paramString = WxaCommLibRuntimeReader.avH().openRead(paramString);
-    AppMethodBeat.o(134719);
-    return paramString;
-  }
-  
-  public final String yl(String paramString)
-  {
-    AppMethodBeat.i(143903);
-    paramString = WxaCommLibRuntimeReader.yt(paramString);
-    j.p(paramString, "WxaCommLibRuntimeReader.readFileContent(fileName)");
-    AppMethodBeat.o(143903);
-    return paramString;
+    AppMethodBeat.i(319878);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.AppBrand.CustomizeExternalToolsHelper", "openWebViewActivity with empty url, stack:%s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
+      AppMethodBeat.o(319878);
+      return;
+    }
+    Object localObject;
+    int i;
+    if (paramContext == null)
+    {
+      paramContext = MMApplicationContext.getContext();
+      localObject = new Intent().putExtra("rawUrl", paramString1).putExtra(AppBrandProcessProxyUI.ruH, paramString1);
+      ((Intent)localObject).putExtra("rawUrl", paramString1);
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.CustomizeExternalToolsHelper", "orientation:%s", new Object[] { paramString2 });
+      i = -1;
+      if (!Util.isNullOrNil(paramString2))
+      {
+        if (!paramString2.equals("landscape")) {
+          break label233;
+        }
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      ((Intent)localObject).putExtra("screen_orientation", i);
+      if (!(paramContext instanceof Activity)) {
+        ((Intent)localObject).addFlags(268435456);
+      }
+      if (paramfcw != null)
+      {
+        ((Intent)localObject).putExtra("show_native_web_view", paramfcw.abCk);
+        ((Intent)localObject).putExtra("KRightBtn", paramfcw.abCl);
+        ((Intent)localObject).putExtra("geta8key_scene", paramfcw.scene);
+        ((Intent)localObject).putExtra("geta8key_open_webview_appid", paramfcw.appId);
+      }
+      c.b(paramContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      AppMethodBeat.o(319878);
+      return;
+      localObject = AndroidContextUtil.castActivityOrNull(paramContext);
+      if (localObject == null) {
+        break;
+      }
+      paramContext = (Context)localObject;
+      break;
+      label233:
+      if (paramString2.equals("portrait")) {
+        i = 1;
+      } else if (paramString2.equals("auto")) {
+        i = 4;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.a
  * JD-Core Version:    0.7.0.1
  */

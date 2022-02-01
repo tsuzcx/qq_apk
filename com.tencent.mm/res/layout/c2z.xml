@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/adt" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:background="@drawable/b_7" android:layout_width="275.0dip" android:layout_height="320.0dip" android:layout_marginTop="23.0dip">
+                    <GridView android:gravity="center" android:id="@id/brr" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="8.0dip" android:listSelector="@drawable/ah8" android:horizontalSpacing="4.0dip" android:verticalSpacing="1.0dip" android:stretchMode="columnWidth" android:numColumns="4" />
+                    <TextView android:textSize="12.0dip" android:textColor="@color/adv" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="50.0dip" android:text="@string/jb4" android:singleLine="false" android:shadowColor="@color/al2" android:shadowDx="2.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:gravity="right" android:layout_width="295.0dip" android:layout_height="320.0dip" android:layout_marginTop="15.0dip">
+                    <ImageButton android:id="@id/bec" android:background="@drawable/j2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

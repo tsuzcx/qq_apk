@@ -1,273 +1,179 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.graphics.Canvas;
-import android.os.Build.VERSION;
-import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.DecelerateInterpolator;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import com.jg.JgClassChecked;
+import com.tencent.luggage.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i.h;
-import com.tencent.mm.plugin.appbrand.i.j;
-import java.net.URL;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicBoolean;
+import junit.framework.Assert;
+import org.apache.commons.c.i;
 
-@JgClassChecked(author=10, fComment="checked", lastDate="20180817", reviewer=10, vComment={com.jg.EType.HTTPSCHECK})
-public final class al
-  extends WebView
-  implements aq
+public class al
+  extends u
 {
-  private WebViewClient byv;
-  private WebChromeClient byw;
-  private aj iyT;
-  private ag iyU;
-  private ae iyl;
-  private Animator iym;
-  private String iyo;
+  protected ad enm;
+  private String mUrl;
+  private final AtomicBoolean tyy;
   
-  public al(Context paramContext)
+  public al(Context paramContext, x paramx)
   {
-    this(paramContext, null);
+    super(paramContext, paramx);
+    AppMethodBeat.i(325221);
+    this.tyy = new AtomicBoolean(false);
+    AppMethodBeat.o(325221);
   }
   
-  public al(Context paramContext, ae paramae)
+  public final ad L(int paramInt, boolean paramBoolean)
   {
-    super(paramContext);
-    AppMethodBeat.i(87321);
-    this.byv = new al.3(this);
-    this.byw = new DefaultWebViewImpl.4(this);
-    this.iyl = paramae;
-    getSettings().setDomStorageEnabled(true);
-    getSettings().setJavaScriptEnabled(true);
-    getSettings().setMediaPlaybackRequiresUserGesture(false);
-    if (Build.VERSION.SDK_INT >= 21) {
-      getSettings().setMixedContentMode(0);
-    }
-    getSettings().setUserAgentString(getSettings().getUserAgentString() + "/ DEMO");
-    this.iyo = getSettings().getUserAgentString();
-    setHorizontalScrollBarEnabled(false);
-    setVerticalScrollBarEnabled(false);
-    setWebViewClient(this.byv);
-    setWebChromeClient(this.byw);
-    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    AppMethodBeat.o(87321);
-  }
-  
-  public final void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(87330);
-    evaluateJavascript(paramString, paramValueCallback);
-    AppMethodBeat.o(87330);
-  }
-  
-  public final void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(87331);
-    evaluateJavascript(paramString3, paramValueCallback);
-    AppMethodBeat.o(87331);
-  }
-  
-  public final boolean a(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(87323);
-    draw(paramCanvas);
-    AppMethodBeat.o(87323);
-    return true;
-  }
-  
-  public final void ap(Context paramContext)
-  {
-    AppMethodBeat.i(87322);
-    if (!(getContext() instanceof MutableContextWrapper))
+    AppMethodBeat.i(325252);
+    ad localad;
+    if ((paramBoolean) && (this.enm.cEI()))
     {
-      AppMethodBeat.o(87322);
-      return;
+      if (this.enm.CE(paramInt))
+      {
+        localad = this.enm;
+        AppMethodBeat.o(325252);
+        return localad;
+      }
+      AppMethodBeat.o(325252);
+      return null;
     }
-    ((MutableContextWrapper)getContext()).setBaseContext(paramContext);
-    AppMethodBeat.o(87322);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(87332);
-    super.destroy();
-    AppMethodBeat.o(87332);
-  }
-  
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(87329);
-    paramString = new al.1(this, paramString, paramValueCallback);
-    if (Looper.getMainLooper().getThread() == Thread.currentThread())
+    if (this.enm.getComponentId() == paramInt)
     {
-      paramString.run();
-      AppMethodBeat.o(87329);
-      return;
+      localad = this.enm;
+      AppMethodBeat.o(325252);
+      return localad;
     }
-    com.tencent.mm.sdk.platformtools.al.d(paramString);
-    AppMethodBeat.o(87329);
-  }
-  
-  public final View getContentView()
-  {
-    return this;
-  }
-  
-  public final d getFullscreenImpl()
-  {
+    AppMethodBeat.o(325252);
     return null;
   }
   
-  public final String getUserAgentString()
+  protected final void a(String paramString, ad paramad)
   {
-    return this.iyo;
+    AppMethodBeat.i(325274);
+    this.mUrl = paramString;
+    this.tyy.set(true);
+    AppMethodBeat.o(325274);
   }
   
-  public final int getWebScrollX()
+  public void a(String paramString, cb paramcb)
   {
-    AppMethodBeat.i(87326);
-    int i = getScrollX();
-    AppMethodBeat.o(87326);
-    return i;
-  }
-  
-  public final int getWebScrollY()
-  {
-    AppMethodBeat.i(87327);
-    int i = getScrollY();
-    AppMethodBeat.o(87327);
-    return i;
-  }
-  
-  public final View getWrapperView()
-  {
-    return this;
-  }
-  
-  public final void h(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(87324);
-    if (paramRunnable != null) {
-      postOnAnimation(paramRunnable);
-    }
-    AppMethodBeat.o(87324);
-  }
-  
-  public final void onBackground()
-  {
-    AppMethodBeat.i(87334);
-    super.onPause();
-    AppMethodBeat.o(87334);
-  }
-  
-  public final void onForeground()
-  {
-    AppMethodBeat.i(87333);
-    super.onResume();
-    AppMethodBeat.o(87333);
-  }
-  
-  protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(87335);
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.iyU != null) {
-      this.iyU.c(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-    AppMethodBeat.o(87335);
-  }
-  
-  protected final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(87336);
-    super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.iyT != null) {
-      this.iyT.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, this);
-    }
-    AppMethodBeat.o(87336);
-  }
-  
-  public final void q(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(87338);
-    if (this.iym != null)
+    AppMethodBeat.i(325265);
+    if ((TextUtils.isEmpty(this.mUrl)) || (i.qA(this.mUrl, paramString))) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.iym.cancel();
-      this.iym = null;
+      Assert.assertTrue(bool);
+      Log.i("MicroMsg.AppBrandSinglePage", "AppBrandPageProfile| loadUrl, appId:%s, url:%s", new Object[] { getAppId(), paramString });
+      this.mUrl = paramString;
+      if (!this.tyy.getAndSet(true)) {
+        this.enm.c(paramString, paramcb);
+      }
+      AppMethodBeat.o(325265);
+      return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { getContentView().getScrollY(), paramInt });
-    localValueAnimator.addUpdateListener(new al.2(this));
-    localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.setDuration(paramLong);
-    localValueAnimator.start();
-    this.iym = localValueAnimator;
-    AppMethodBeat.o(87338);
   }
   
-  public final void setAppBrandWebViewClient(ae paramae)
+  public final void a(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
-    this.iyl = paramae;
-  }
-  
-  public final void setFullscreenImpl(d paramd) {}
-  
-  public final void setJsExceptionHandler(h paramh) {}
-  
-  public final void setOnScrollChangedListener(aj paramaj)
-  {
-    this.iyT = paramaj;
-  }
-  
-  public final void setOnTrimListener(ah paramah) {}
-  
-  public final void setWebViewLayoutListener(ag paramag)
-  {
-    this.iyU = paramag;
-  }
-  
-  public final void t(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(87325);
-    super.loadDataWithBaseURL(paramString1, paramString2, "text/html", "UTF-8", null);
-    AppMethodBeat.o(87325);
-  }
-  
-  public final <T extends j> T v(Class<T> paramClass)
-  {
-    return null;
-  }
-  
-  public final void vp()
-  {
-    AppMethodBeat.i(87337);
-    super.scrollTo(getScrollX(), 0);
-    AppMethodBeat.o(87337);
-  }
-  
-  public final boolean vq()
-  {
-    AppMethodBeat.i(87339);
-    if (getWebScrollY() == 0)
+    AppMethodBeat.i(135248);
+    if (!v(paramArrayOfInt, this.enm.getComponentId()))
     {
-      AppMethodBeat.o(87339);
-      return true;
+      AppMethodBeat.o(135248);
+      return;
     }
-    AppMethodBeat.o(87339);
-    return false;
+    this.enm.cJ(paramString1, paramString2);
+    AppMethodBeat.o(135248);
+  }
+  
+  public final void aeA(String paramString)
+  {
+    AppMethodBeat.i(325240);
+    this.mUrl = paramString;
+    this.tyy.set(true);
+    this.enm.c(paramString, cb.tBq);
+    AppMethodBeat.o(325240);
+  }
+  
+  protected final void apV()
+  {
+    AppMethodBeat.i(135244);
+    super.apV();
+    this.enm.onDestroy();
+    AppMethodBeat.o(135244);
+  }
+  
+  public final void apW()
+  {
+    AppMethodBeat.i(135246);
+    super.apW();
+    this.enm.onForeground();
+    AppMethodBeat.o(135246);
+  }
+  
+  public final void apX()
+  {
+    AppMethodBeat.i(135247);
+    super.apX();
+    this.enm.onBackground();
+    AppMethodBeat.o(135247);
+  }
+  
+  protected final void cEb()
+  {
+    AppMethodBeat.i(325354);
+    this.enm.cEb();
+    AppMethodBeat.o(325354);
+  }
+  
+  public final void cleanup()
+  {
+    AppMethodBeat.i(135245);
+    super.cleanup();
+    this.enm.cleanup();
+    AppMethodBeat.o(135245);
+  }
+  
+  protected View createContentView()
+  {
+    AppMethodBeat.i(135241);
+    if (this.enm == null)
+    {
+      this.enm = getContainer().aeI(m.fL(this.mUrl));
+      this.enm.t(this);
+    }
+    View localView = this.enm.getContentView();
+    AppMethodBeat.o(135241);
+    return localView;
+  }
+  
+  public final boolean fa(String paramString)
+  {
+    AppMethodBeat.i(135243);
+    boolean bool = m.fL(this.mUrl).equals(m.fL(paramString));
+    AppMethodBeat.o(135243);
+    return bool;
+  }
+  
+  public ad getCurrentPageView()
+  {
+    return this.enm;
+  }
+  
+  public String getCurrentUrl()
+  {
+    return this.mUrl;
+  }
+  
+  protected void setInitialUrl(String paramString)
+  {
+    this.mUrl = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.al
  * JD-Core Version:    0.7.0.1
  */

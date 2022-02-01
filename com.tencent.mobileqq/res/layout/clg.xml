@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/q2o" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/m6n" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <ImageView android:id="@id/lo1" android:paddingLeft="15.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hly" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/u3" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我的购物" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/q2p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

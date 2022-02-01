@@ -15,15 +15,15 @@ public class NullProxySelector
   
   public List<Proxy> select(URI paramURI)
   {
-    if (paramURI == null) {
-      throw new IllegalArgumentException("uri must not be null");
+    if (paramURI != null) {
+      return Collections.singletonList(Proxy.NO_PROXY);
     }
-    return Collections.singletonList(Proxy.NO_PROXY);
+    throw new IllegalArgumentException("uri must not be null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.proxy.NullProxySelector
  * JD-Core Version:    0.7.0.1
  */

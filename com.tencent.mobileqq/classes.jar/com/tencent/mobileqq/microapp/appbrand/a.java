@@ -1,31 +1,27 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import ajem;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bdna;
-import bdnn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.appbrand.a.a.y;
 import com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandServiceEventInterface;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
-import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.microapp.appbrand.utils.p;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppException;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.microapp.ui.NavigationBar;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
+import com.tencent.mobileqq.utils.ShareMsgHelper;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import java.util.LinkedList;
@@ -37,110 +33,143 @@ public final class a
 {
   public String a;
   public int b;
-  public volatile com.tencent.mobileqq.microapp.apkg.f c;
+  public volatile com.tencent.mobileqq.microapp.a.c c;
   public BaseActivity d;
   public MiniAppInterface e;
   public k f;
   public AppBrandPageContainer g;
-  public y h;
+  public com.tencent.mobileqq.microapp.appbrand.a.a.f h;
   public ServiceWebview i;
   public boolean j;
   boolean k;
   public long l = -1L;
   
-  public a(BaseActivity paramBaseActivity, k paramk, com.tencent.mobileqq.microapp.apkg.f paramf)
+  public a(BaseActivity paramBaseActivity, k paramk, com.tencent.mobileqq.microapp.a.c paramc)
   {
     this.d = paramBaseActivity;
-    this.c = paramf;
+    this.c = paramc;
     this.f = paramk;
     this.g = new AppBrandPageContainer(paramBaseActivity, this);
     AppInterface localAppInterface = paramBaseActivity.getAppInterface();
     if ((localAppInterface instanceof MiniAppInterface)) {
       this.e = ((MiniAppInterface)localAppInterface);
     }
-    if ((this.e == null) || (paramk == null) || (paramf == null) || (paramf.f == null) || (paramf.b == null)) {
-      throw new MiniAppException("app params error, apkgInfo=" + paramf + ",appId=" + this.a + ",appInterface=" + this.e + ",appBrandRuntimeContainer=" + paramk);
+    if ((this.e != null) && (paramk != null) && (paramc != null) && (paramc.f != null) && (paramc.b != null))
+    {
+      this.b = paramc.f.getRuntimeType();
+      this.a = paramc.d;
+      this.h = new com.tencent.mobileqq.microapp.appbrand.a.a.f(paramBaseActivity, this);
+      com.tencent.mobileqq.microapp.appbrand.b.c.a();
+      return;
     }
-    this.b = paramf.f.getRuntimeType();
-    this.a = paramf.d;
-    this.h = new y(paramBaseActivity, this);
-    com.tencent.mobileqq.microapp.appbrand.utils.c.a();
+    paramBaseActivity = new StringBuilder();
+    paramBaseActivity.append("app params error, apkgInfo=");
+    paramBaseActivity.append(paramc);
+    paramBaseActivity.append(",appId=");
+    paramBaseActivity.append(this.a);
+    paramBaseActivity.append(",appInterface=");
+    paramBaseActivity.append(this.e);
+    paramBaseActivity.append(",appBrandRuntimeContainer=");
+    paramBaseActivity.append(paramk);
+    throw new MiniAppException(paramBaseActivity.toString());
   }
   
   public String a(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "handleNativeRequest. eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",callbackId=" + paramInt + ",webview=" + paramBaseAppBrandWebview + " | " + this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleNativeRequest. eventName=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(",jsonParams=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",callbackId=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",webview=");
+      ((StringBuilder)localObject).append(paramBaseAppBrandWebview);
+      ((StringBuilder)localObject).append(" | ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject).toString());
     }
-    if (this.h != null) {
-      return this.h.a(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
+    Object localObject = this.h;
+    if (localObject != null) {
+      return ((com.tencent.mobileqq.microapp.appbrand.a.a.f)localObject).a(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
     }
     return "";
   }
   
   public final void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "cleanup. | " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cleanup. | ");
+      localStringBuilder.append(this);
+      QLog.d("AppBrandRuntime", 4, localStringBuilder.toString());
     }
     this.g.cleanup(false);
     this.h.f();
-    p.a().a(this.i, this.d);
+    com.tencent.mobileqq.microapp.appbrand.b.h.a().a(this.i, this.d);
+  }
+  
+  public final void a(com.tencent.mobileqq.microapp.a.c paramc)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateApkgInfo. apkgInfo=");
+      localStringBuilder.append(paramc);
+      localStringBuilder.append(" | ");
+      localStringBuilder.append(this);
+      QLog.d("AppBrandRuntime", 4, localStringBuilder.toString());
+    }
+    if (paramc != null) {
+      this.c = paramc;
+    }
   }
   
   public final void a(MiniAppConfig paramMiniAppConfig)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "onResume. | " + this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResume. | ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject).toString());
     }
     this.j = false;
     this.h.d();
     this.g.setVisibility(0);
     this.g.bringToFront();
-    Object localObject = (AbsAppBrandPage)this.g.pageLinkedList.peek();
-    if (localObject != null)
-    {
-      localObject = ((AbsAppBrandPage)localObject).getNavBar();
-      if (localObject != null) {
-        ((NavigationBar)localObject).d();
-      }
-    }
-    localObject = new JSONObject();
+    this.g.pageLinkedList.peek();
+    Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("scene", paramMiniAppConfig.launchParam.scene);
       ((JSONObject)localObject).put("appId", this.a);
-      a("onAppEnterForeground", ((JSONObject)localObject).toString());
-      this.c.a(paramMiniAppConfig);
-      com.tencent.mobileqq.microapp.appbrand.utils.b.a().b(this.c);
-      com.tencent.mobileqq.microapp.app.b.a().a("resumePlayer");
-      f();
-      d();
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
-  }
-  
-  public final void a(com.tencent.mobileqq.microapp.apkg.f paramf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "updateApkgInfo. apkgInfo=" + paramf + " | " + this);
-    }
-    if (paramf != null) {
-      this.c = paramf;
-    }
+    a("onAppEnterForeground", ((JSONObject)localObject).toString());
+    this.c.a(paramMiniAppConfig);
+    com.tencent.mobileqq.microapp.appbrand.b.b.a().a(this.c);
+    com.tencent.mobileqq.microapp.app.b.a().a("resumePlayer");
+    f();
+    d();
   }
   
   public final void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "reload. entryPath=" + paramString + " | " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reload. entryPath=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" | ");
+      localStringBuilder.append(this);
+      QLog.d("AppBrandRuntime", 4, localStringBuilder.toString());
     }
     a();
     a(paramString, true);
@@ -148,145 +177,169 @@ public final class a
   
   public void a(String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (paramString1 = String.format("WeixinJSBridge.subscribeHandler('%1$s',%2$s)", new Object[] { paramString1, paramString2 });; paramString1 = String.format("WeixinJSBridge.subscribeHandler('%1$s')", new Object[] { paramString1 }))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppBrandRuntime", 4, "evaluateServiceSubcribeJS. jsStr=" + paramString1);
-      }
-      this.i.evaluteJs(paramString1);
-      return;
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1 = String.format("WeixinJSBridge.subscribeHandler('%1$s',%2$s)", new Object[] { paramString1, paramString2 });
+    } else {
+      paramString1 = String.format("WeixinJSBridge.subscribeHandler('%1$s')", new Object[] { paramString1 });
     }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("evaluateServiceSubcribeJS. jsStr=");
+      paramString2.append(paramString1);
+      QLog.d("AppBrandRuntime", 4, paramString2.toString());
+    }
+    this.i.evaluteJs(paramString1);
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "evaluateServiceSubcribeJS. eventName=" + paramString1 + ",data=" + paramString2 + ",webviewId=" + paramInt + " | " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("evaluateServiceSubcribeJS. eventName=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",data=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",webviewId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" | ");
+      localStringBuilder.append(this);
+      QLog.d("AppBrandRuntime", 4, localStringBuilder.toString());
     }
     this.i.evaluateSubcribeJS(paramString1, paramString2, paramInt);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "startShare. content=" + paramString1 + ",sharePicPath=" + paramString2 + ",entryPath=" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("startShare. content=");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",sharePicPath=");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(",entryPath=");
+      ((StringBuilder)localObject1).append(paramString3);
+      QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject1).toString());
     }
-    String str2 = this.c.c;
-    String str3 = "[分享] 轻应用" + this.c.c;
-    String str4 = this.c.e;
+    String str1 = paramString2;
+    String str2 = paramString1;
+    String str4 = this.c.c;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[分享] 轻应用");
+    ((StringBuilder)localObject1).append(this.c.c);
+    String str5 = ((StringBuilder)localObject1).toString();
+    String str6 = this.c.e;
+    Object localObject2 = null;
+    Object localObject3 = localObject2;
+    localObject1 = str2;
     try
     {
-      localJSONObject = new JSONObject(this.c.f.config.desc_info);
-      localObject2 = localJSONObject.optString("share_low_url", "");
-      localObject1 = paramString1;
-      localObject3 = paramString1;
-    }
-    catch (JSONException localJSONException1)
-    {
-      for (;;)
-      {
-        JSONObject localJSONObject;
-        Object localObject3;
-        label183:
-        Object localObject2 = null;
-        localObject1 = paramString1;
-        localJSONException1.printStackTrace();
-        paramString1 = (String)localObject2;
-        str1 = paramString2;
-      }
-    }
-    try
-    {
+      JSONObject localJSONObject = new JSONObject(this.c.f.config.desc_info);
+      localObject3 = localObject2;
+      localObject1 = str2;
+      String str3 = localJSONObject.optString("share_low_url", "");
+      localObject2 = str2;
+      localObject3 = str3;
+      localObject1 = str2;
       if (TextUtils.isEmpty(paramString1))
       {
-        localObject3 = paramString1;
-        localObject1 = localJSONObject.optString("share_content");
+        localObject3 = str3;
+        localObject1 = str2;
+        localObject2 = localJSONObject.optString("share_content");
       }
-      localObject3 = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label407;
+      paramString1 = (String)localObject2;
+      localObject3 = str3;
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject3 = str3;
+        localObject1 = localObject2;
+        paramString1 = localJSONObject.optString("desc_info");
       }
-      localObject3 = localObject1;
-      paramString1 = localJSONObject.optString("desc_info");
+      localObject3 = str3;
+      localObject1 = paramString1;
+      if (TextUtils.isEmpty(paramString2))
+      {
+        localObject3 = str3;
+        localObject1 = paramString1;
+        paramString2 = localJSONObject.optString("share_pic_url");
+      }
+      else
+      {
+        paramString2 = str1;
+      }
+      localObject3 = str3;
     }
     catch (JSONException paramString1)
     {
-      localObject1 = str1;
-      str1 = paramString1;
-      break label366;
+      paramString1.printStackTrace();
       paramString1 = (String)localObject1;
-      break label183;
+      paramString2 = str1;
     }
-    localObject1 = paramString2;
-    for (;;)
+    localObject2 = new JSONObject();
+    try
     {
-      try
+      ((JSONObject)localObject2).put("appId", this.a);
+      ((JSONObject)localObject2).put("entryPathInConfig", this.c.b.f);
+      localObject1 = localObject3;
+      if (!TextUtils.isEmpty(paramString3))
       {
-        if (TextUtils.isEmpty(paramString2)) {
-          localObject1 = localJSONObject.optString("share_pic_url");
-        }
-        localObject3 = localObject1;
-        localObject1 = paramString1;
-        paramString1 = (String)localObject2;
-        localObject2 = new JSONObject();
-      }
-      catch (JSONException localJSONException2)
-      {
-        String str1;
-        localObject1 = paramString1;
-        continue;
-      }
-      try
-      {
-        ((JSONObject)localObject2).put("appId", this.a);
-        ((JSONObject)localObject2).put("entryPathInConfig", this.c.b.b);
-        paramString2 = paramString1;
-        if (!TextUtils.isEmpty(paramString3))
-        {
-          ((JSONObject)localObject2).put("entryPath", paramString3);
-          paramString2 = paramString1 + "&path=" + URLEncoder.encode(paramString3);
-        }
-        paramString1 = paramString2;
-      }
-      catch (JSONException paramString2)
-      {
-        paramString2.printStackTrace();
+        ((JSONObject)localObject2).put("entryPath", paramString3);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(localObject3);
+        ((StringBuilder)localObject1).append("&path=");
+        ((StringBuilder)localObject1).append(URLEncoder.encode(paramString3));
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
-    paramString2 = ((JSONObject)localObject2).toString();
-    bdna.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    catch (JSONException paramString3)
+    {
+      paramString3.printStackTrace();
+      localObject1 = localObject3;
+    }
+    paramString3 = ((JSONObject)localObject2).toString();
+    ShareMsgHelper.a(this.d, 1001, 1, "web_share", "", str6, str4, paramString1, str5, (String)localObject1, "web", paramString3, "micro_app", paramString2, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "onAppCreate. fromReload=" + paramBoolean + ",entryPath=" + paramString + " | " + this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onAppCreate. fromReload=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",entryPath=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" | ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject).toString());
     }
     this.j = false;
     this.k = false;
     this.h.a();
     this.h.c();
-    String str = paramString;
+    Object localObject = paramString;
     if (!this.c.k(paramString)) {
-      str = this.c.b.b;
+      localObject = this.c.b.f;
     }
-    this.i = p.a().a(this.a);
-    if (this.i.apkgInfo == null) {
-      this.i.apkgInfo = this.c;
+    this.i = com.tencent.mobileqq.microapp.appbrand.b.h.a().a(this.a);
+    if (this.i.apkgInfo$5475ea27 == null) {
+      this.i.apkgInfo$5475ea27 = this.c;
     }
-    this.i.appBrandEventInterface = this;
+    paramString = this.i;
+    paramString.appBrandEventInterface = this;
     if (!paramBoolean)
     {
-      this.i.initService(this.c, null);
-      this.g.launch(str, "appLaunch");
+      paramString.initService$cfb2ece(this.c, null);
+      this.g.launch((String)localObject, "appLaunch");
     }
-    for (;;)
+    else
     {
-      com.tencent.mobileqq.microapp.app.b.a().a("resetPlayer");
-      return;
-      this.i.initService(this.c, new b(this, str));
+      paramString.initService$cfb2ece(this.c, new b(this, (String)localObject));
     }
+    com.tencent.mobileqq.microapp.app.b.a().a("resetPlayer");
   }
   
   public final void b()
@@ -295,11 +348,18 @@ public final class a
       return;
     }
     this.k = true;
-    if (this.f != null)
+    Object localObject = this.f;
+    if (localObject != null)
     {
-      int m = this.f.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("AppBrandRuntime", 4, "finish. appRunTimeCount=" + m + " | " + this);
+      int m = ((k)localObject).c();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("finish. appRunTimeCount=");
+        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(" | ");
+        ((StringBuilder)localObject).append(this);
+        QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject).toString());
       }
       if (m == 1)
       {
@@ -313,27 +373,27 @@ public final class a
   
   public final void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "onPause. | " + this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPause. | ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject).toString());
     }
     this.j = true;
     this.h.e();
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("scene", 1001);
-      localJSONObject.put("appId", this.a);
-      a("onAppEnterBackground", localJSONObject.toString());
-      e();
-      return;
+      ((JSONObject)localObject).put("scene", 1001);
+      ((JSONObject)localObject).put("appId", this.a);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    a("onAppEnterBackground", ((JSONObject)localObject).toString());
+    e();
   }
   
   public void d()
@@ -344,8 +404,8 @@ public final class a
     {
       localJSONObject1.put("miniAppId", this.c.d);
       localJSONObject1.put("scene", this.c.f.launchParam.scene);
-      localJSONObject2.put("page", com.tencent.mobileqq.microapp.b.a.c(this.g.getCurrentPage().getUrl()));
-      this.l = VACDReportUtil.a(localJSONObject1.toString(), "MiniAppStat", "MiniAppVisitReport", "PageVisit", localJSONObject2.toString(), 0, null);
+      localJSONObject2.put("page", com.tencent.mobileqq.microapp.a.c.n(this.g.getCurrentPage().getUrl()));
+      this.l = VACDReportUtil.startReport(localJSONObject1.toString(), "MiniAppStat", "MiniAppVisitReport", "PageVisit", localJSONObject2.toString(), 0, null);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -358,38 +418,35 @@ public final class a
   
   public void f()
   {
-    ajem.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
-  }
-  
-  public final void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "moveAppBrandToBack. | " + this);
-    }
-    if ((this.d instanceof AppBrandUI))
-    {
-      ((AppBrandUI)this.d).a(true, true);
-      return;
-    }
-    this.d.moveTaskToBack(true);
+    ComIPCUtils.tryUpdateMiniApp(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
     if ("custom_event_onAppRouteDone".equals(paramString1)) {
-      com.tencent.mobileqq.microapp.appbrand.utils.a.a(new d(this));
+      com.tencent.mobileqq.microapp.appbrand.b.a.a(new d(this));
     }
     int n = paramArrayOfInt.length;
     int m = 0;
     while (m < n)
     {
       int i1 = paramArrayOfInt[m];
-      if (QLog.isColorLevel()) {
-        QLog.d("AppBrandRuntime", 4, "onServiceEvent. eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",webviewIds=" + i1 + " | " + this);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onServiceEvent. eventName=");
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(",jsonParams=");
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append(",webviewIds=");
+        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append(" | ");
+        ((StringBuilder)localObject).append(this);
+        QLog.d("AppBrandRuntime", 4, ((StringBuilder)localObject).toString());
       }
-      PageWebview localPageWebview = this.g.findPageWebView(i1);
-      if (localPageWebview != null) {
-        localPageWebview.evaluateSubcribeJSInService(paramString1, paramString2, i1);
+      Object localObject = this.g.findPageWebView(i1);
+      if (localObject != null) {
+        ((PageWebview)localObject).evaluateSubcribeJSInService(paramString1, paramString2, i1);
       }
       m += 1;
     }
@@ -397,126 +454,164 @@ public final class a
   
   public String onServiceNativeRequest(String paramString1, String paramString2, int paramInt)
   {
-    if (("reportIDKey".equals(paramString1)) || ("reportRealtimeAction".equals(paramString1))) {
-      return "";
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "onServiceNativeRequest eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",callbackId=" + paramInt + " | " + this);
-    }
-    if (this.k) {
-      return "";
-    }
-    for (;;)
+    if (!"reportIDKey".equals(paramString1))
     {
+      if ("reportRealtimeAction".equals(paramString1)) {
+        return "";
+      }
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onServiceNativeRequest eventName=");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(",jsonParams=");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(",callbackId=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" | ");
+        localStringBuilder.append(this);
+        QLog.d("AppBrandRuntime", 4, localStringBuilder.toString());
+      }
+      if (this.k) {
+        return "";
+      }
       try
       {
-        if ("redirectTo".equals(paramString1))
+        boolean bool = "redirectTo".equals(paramString1);
+        if (bool)
         {
           paramString1 = new JSONObject(paramString2).optString("url", "");
           if (TextUtils.isEmpty(paramString1)) {
-            break label584;
+            break label641;
           }
-          com.tencent.mobileqq.microapp.appbrand.utils.a.a(new e(this, paramString1));
-          break label584;
+          com.tencent.mobileqq.microapp.appbrand.b.a.a(new e(this, paramString1));
+          return "";
         }
-        if (!"navigateTo".equals(paramString1)) {
-          break;
-        }
-        paramString1 = new JSONObject(paramString2).optString("url", "");
-        paramString2 = com.tencent.mobileqq.microapp.b.a.a(paramString1, "url");
-        if (QLog.isColorLevel()) {
-          QLog.i("AppBrandRuntime", 2, "forwardUrl>>>>>>>>>> " + paramString2);
-        }
-        if ((!com.tencent.mobileqq.microapp.apkg.f.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
-          break label407;
-        }
-        boolean bool = bdnn.a(paramString2);
-        if (bool) {
-          break label407;
-        }
-        try
+        if ("navigateTo".equals(paramString1))
         {
-          paramString1 = new String(Base64.decode(paramString2, 0));
-          if (paramString1.startsWith("mqqapi"))
+          paramString1 = new JSONObject(paramString2).optString("url", "");
+          paramString2 = com.tencent.mobileqq.microapp.a.c.b(paramString1, "url");
+          if (QLog.isColorLevel())
           {
-            MiniAppLauncher.launchMiniAppByScheme(this.d, paramString1);
-            return "";
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("forwardUrl>>>>>>>>>> ");
+            localStringBuilder.append(paramString2);
+            QLog.i("AppBrandRuntime", 2, localStringBuilder.toString());
           }
-          if ((paramString1.startsWith("http://")) || (paramString1.startsWith("https://")))
+          if ((com.tencent.mobileqq.microapp.a.c.a(this.c)) && (paramString1.startsWith("page/QQ/forward.html")))
           {
-            paramString2 = new Intent(this.d, QQBrowserActivity.class);
-            paramString2.putExtra("url", paramString1);
-            this.d.startActivity(paramString2);
-            continue;
+            bool = StringUtil.isEmpty(paramString2);
+            if (!bool)
+            {
+              try
+              {
+                paramString1 = new String(Base64.decode(paramString2, 0));
+                if (paramString1.startsWith("mqqapi"))
+                {
+                  MiniAppLauncher.launchMiniAppByScheme(this.d, paramString1);
+                  return "";
+                }
+                if ((!paramString1.startsWith("http://")) && (!paramString1.startsWith("https://")))
+                {
+                  if (!QLog.isColorLevel()) {
+                    break label644;
+                  }
+                  paramString2 = new StringBuilder();
+                  paramString2.append("unexpected url ");
+                  paramString2.append(paramString1);
+                  QLog.w("AppBrandRuntime", 2, paramString2.toString());
+                  return "";
+                }
+                paramString2 = new Intent(this.d, QQBrowserActivity.class);
+                paramString2.putExtra("url", paramString1);
+                this.d.startActivity(paramString2);
+                return "";
+              }
+              catch (Throwable paramString1)
+              {
+                if (!QLog.isColorLevel()) {
+                  break label644;
+                }
+              }
+              paramString2 = new StringBuilder();
+              paramString2.append("decode forwardUrl occur an exception ");
+              paramString2.append(paramString1);
+              QLog.e("AppBrandRuntime", 2, paramString2.toString());
+              return "";
+            }
           }
+          if (TextUtils.isEmpty(paramString1)) {
+            break label644;
+          }
+          com.tencent.mobileqq.microapp.appbrand.b.a.a(new f(this, paramString1));
+          return "";
         }
-        catch (Throwable paramString1)
+        if ("navigateBack".equals(paramString1))
         {
-          if (!QLog.isColorLevel()) {
-            continue;
+          paramInt = new JSONObject(paramString2).optInt("delta", 0);
+          if (paramInt <= 0) {
+            break label647;
           }
-          QLog.e("AppBrandRuntime", 2, "decode forwardUrl occur an exception " + paramString1);
-          continue;
+          com.tencent.mobileqq.microapp.appbrand.b.a.a(new g(this, paramInt));
+          return "";
         }
-        if (!QLog.isColorLevel()) {
-          continue;
+        if ("switchTab".equals(paramString1))
+        {
+          paramString1 = new JSONObject(paramString2).optString("url", "");
+          if (TextUtils.isEmpty(paramString1)) {
+            break label650;
+          }
+          com.tencent.mobileqq.microapp.appbrand.b.a.a(new h(this, paramString1));
+          return "";
         }
+        if ("reLaunch".equals(paramString1))
+        {
+          paramString1 = new JSONObject(paramString2).optString("url", "");
+          if (!TextUtils.isEmpty(paramString1)) {
+            com.tencent.mobileqq.microapp.appbrand.b.a.a(new i(this, paramString1));
+          }
+          return "";
+        }
+        return a(paramString1, paramString2, this.i, paramInt);
       }
       catch (JSONException paramString1)
       {
         paramString1.printStackTrace();
-        return "";
-      }
-      QLog.w("AppBrandRuntime", 2, "unexpected url " + paramString1);
-      continue;
-      label407:
-      if (!TextUtils.isEmpty(paramString1)) {
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new f(this, paramString1));
-      }
-    }
-    if ("navigateBack".equals(paramString1))
-    {
-      paramInt = new JSONObject(paramString2).optInt("delta", 0);
-      if (paramInt > 0) {
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new g(this, paramInt));
       }
     }
     else
     {
-      if ("switchTab".equals(paramString1))
-      {
-        paramString1 = new JSONObject(paramString2).optString("url", "");
-        if (TextUtils.isEmpty(paramString1)) {
-          break label590;
-        }
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new h(this, paramString1));
-        break label590;
-      }
-      if ("reLaunch".equals(paramString1))
-      {
-        paramString1 = new JSONObject(paramString2).optString("url", "");
-        if (!TextUtils.isEmpty(paramString1)) {
-          com.tencent.mobileqq.microapp.appbrand.utils.a.a(new i(this, paramString1));
-        }
-        return "";
-      }
-      return a(paramString1, paramString2, this.i, paramInt);
-      label584:
       return "";
     }
+    label641:
     return "";
-    label590:
+    label644:
+    return "";
+    label647:
+    return "";
+    label650:
     return "";
   }
   
   public String toString()
   {
-    return "[appId=" + this.a + ",versionType=" + this.b + ",isPause=" + this.j + ",mFinished=" + this.k + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[appId=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",versionType=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",isPause=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",mFinished=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

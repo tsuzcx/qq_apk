@@ -1,131 +1,156 @@
 package com.tencent.mm.ui.chatting;
 
-import android.os.Bundle;
-import android.os.Looper;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.model.t;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.b.r;
-import com.tencent.mm.ui.chatting.d.a;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.pluginsdk.platformtools.f;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
 
 public final class x
-  implements aq
+  extends com.tencent.mm.ui.x<cc>
 {
-  public a caz;
-  public z zBD;
+  private String Hxt;
+  private String JXG;
+  private boolean aedO;
+  public a aejp;
+  public String talker;
   
-  public x(a parama)
+  public x(Context paramContext, cc paramcc, String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(30904);
-    this.caz = parama;
-    this.zBD = new z();
-    AppMethodBeat.o(30904);
+    super(paramContext, paramcc);
+    this.talker = paramString1;
+    this.JXG = paramString2;
+    this.aedO = paramBoolean;
   }
   
-  private void aM(bi parambi)
+  private String cf(cc paramcc)
   {
-    AppMethodBeat.i(30908);
-    if (parambi == null)
-    {
-      AppMethodBeat.o(30908);
-      return;
+    if (paramcc.field_isSend == 1) {
+      return this.JXG;
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(parambi);
-    fd(localArrayList);
-    AppMethodBeat.o(30908);
+    return this.talker;
   }
   
-  private void fd(List<bi> paramList)
+  private CharSequence cg(cc paramcc)
   {
-    AppMethodBeat.i(30909);
-    if ((this.zBD != null) && (this.caz != null)) {
-      this.zBD.a(this.caz.zJz.getContext(), paramList);
+    AppMethodBeat.i(34632);
+    if (paramcc.getCreateTime() == 9223372036854775807L)
+    {
+      AppMethodBeat.o(34632);
+      return "";
     }
-    AppMethodBeat.o(30909);
+    paramcc = f.d(this.context, paramcc.getCreateTime(), true);
+    AppMethodBeat.o(34632);
+    return paramcc;
   }
   
-  public final void J(List<bi> paramList)
+  public final void SM(String paramString)
   {
-    AppMethodBeat.i(30906);
-    if (this.caz == null)
+    AppMethodBeat.i(34629);
+    this.Hxt = paramString;
+    if (!Util.isNullOrNil(this.Hxt))
     {
-      ab.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui is null.");
-      AppMethodBeat.o(30906);
-      return;
+      fSd();
+      aNy();
     }
-    if (t.lA(this.caz.getTalkerUserName()))
-    {
-      AppMethodBeat.o(30906);
-      return;
+    AppMethodBeat.o(34629);
+  }
+  
+  public final void aNy()
+  {
+    AppMethodBeat.i(34630);
+    bh.bCz();
+    w(c.bzD().kg(this.talker, this.Hxt));
+    if ((this.aejp != null) && (!Util.isNullOrNil(this.Hxt))) {
+      this.aejp.aBN(getCount());
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(34630);
+  }
+  
+  public final void aNz()
+  {
+    AppMethodBeat.i(34631);
+    fSd();
+    aNy();
+    AppMethodBeat.o(34631);
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(34628);
+    Object localObject;
+    if (paramView == null)
     {
-      bi localbi = (bi)paramList.next();
-      if ((localbi.field_talker.equals(this.caz.getTalkerUserName())) && (localbi.isText())) {
-        localArrayList.add(localbi);
+      paramView = View.inflate(this.context, R.i.gnK, null);
+      paramViewGroup = new b((byte)0);
+      paramViewGroup.lBC = ((ImageView)paramView.findViewById(R.h.avatar_iv));
+      paramViewGroup.lBD = ((TextView)paramView.findViewById(R.h.nickname_tv));
+      paramViewGroup.vzk = ((TextView)paramView.findViewById(R.h.update_time_tv));
+      paramViewGroup.aejq = ((TextView)paramView.findViewById(R.h.msg_tv));
+      paramView.setTag(paramViewGroup);
+      localObject = (cc)getItem(paramInt);
+      if (localObject != null)
+      {
+        if ((!this.aedO) || (((fi)localObject).field_isSend != 0)) {
+          break label239;
+        }
+        String str1 = ((fi)localObject).field_content;
+        String str2 = br.JJ(str1);
+        if (!Util.isNullOrNil(str2))
+        {
+          a.b.g(paramViewGroup.lBC, str2);
+          paramViewGroup.lBD.setText(p.b(this.context, aa.getDisplayName(str2), paramViewGroup.lBD.getTextSize()));
+        }
+        paramViewGroup.vzk.setText(cg((cc)localObject));
+        localObject = br.JK(str1);
+        paramViewGroup.aejq.setText(p.b(this.context, (CharSequence)localObject, paramViewGroup.aejq.getTextSize()));
       }
     }
-    fd(localArrayList);
-    AppMethodBeat.o(30906);
+    for (;;)
+    {
+      AppMethodBeat.o(34628);
+      return paramView;
+      paramViewGroup = (b)paramView.getTag();
+      break;
+      label239:
+      a.b.g(paramViewGroup.lBC, cf((cc)localObject));
+      paramViewGroup.lBD.setText(p.b(this.context, aa.getDisplayName(cf((cc)localObject)), paramViewGroup.lBD.getTextSize()));
+      paramViewGroup.vzk.setText(cg((cc)localObject));
+      paramViewGroup.aejq.setText(p.b(this.context, ((fi)localObject).field_content, paramViewGroup.aejq.getTextSize()));
+    }
   }
   
-  public final void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle) {}
-  
-  public final void a(bi parambi)
+  public static abstract interface a
   {
-    AppMethodBeat.i(30905);
-    if (this.caz.ay(r.class) == null)
-    {
-      ab.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui maybe has exit!");
-      AppMethodBeat.o(30905);
-      return;
-    }
-    ((r)this.caz.ay(r.class)).dIv();
-    if ((!parambi.field_talker.equals(this.caz.getTalkerUserName())) || (!parambi.isText()))
-    {
-      AppMethodBeat.o(30905);
-      return;
-    }
-    aM(parambi);
-    AppMethodBeat.o(30905);
+    public abstract void aBN(int paramInt);
   }
   
-  public final void atM(String paramString)
+  static final class b
   {
-    AppMethodBeat.i(30907);
-    if (ah.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(30907);
-      return;
-    }
-    bi localbi = new bi();
-    localbi.setContent(paramString);
-    localbi.hL(1);
-    aM(localbi);
-    AppMethodBeat.o(30907);
-  }
-  
-  public final Looper getLooper()
-  {
-    AppMethodBeat.i(30910);
-    Looper localLooper = Looper.getMainLooper();
-    AppMethodBeat.o(30910);
-    return localLooper;
+    public TextView aejq;
+    public ImageView lBC;
+    public TextView lBD;
+    public TextView vzk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.x
  * JD-Core Version:    0.7.0.1
  */

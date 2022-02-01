@@ -25,26 +25,28 @@ public final class d
     ArrayList localArrayList = new ArrayList();
     localAcPictureListResponse.setData(localArrayList);
     long l = System.currentTimeMillis();
-    for (;;)
+    int i;
+    try
     {
-      try
+      paramString = new JSONObject(paramString);
+      String str = paramString.getString("img_host");
+      int j = paramString.getInt("img_url_type");
+      JSONArray localJSONArray = paramString.getJSONArray("data");
+      if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        paramString = new JSONObject(paramString);
-        String str2 = paramString.getString("img_host");
-        int j = paramString.getInt("img_url_type");
-        JSONArray localJSONArray = paramString.getJSONArray("data");
-        if ((localJSONArray == null) || (localJSONArray.length() <= 0)) {
-          continue;
-        }
         i = 0;
-        if (i < localJSONArray.length())
+        while (i < localJSONArray.length())
         {
           AcPicture localAcPicture = new AcPicture();
           JSONObject localJSONObject = (JSONObject)localJSONArray.get(i);
-          String str1 = localJSONObject.getString("img_url");
-          paramString = str1;
-          if (j == 1) {
-            paramString = str2 + str1;
+          localObject = localJSONObject.getString("img_url");
+          paramString = (String)localObject;
+          if (j == 1)
+          {
+            paramString = new StringBuilder();
+            paramString.append(str);
+            paramString.append((String)localObject);
+            paramString = paramString.toString();
           }
           localAcPicture.setImgUrl(paramString);
           localAcPicture.setWidth(localJSONObject.getInt("width"));
@@ -53,40 +55,46 @@ public final class d
           localAcPicture.setImgId(localJSONObject.optInt("img_id"));
           localArrayList.add(localAcPicture);
           i += 1;
-          continue;
         }
         i = 2;
       }
-      catch (Exception paramString)
+      else
       {
-        paramString.printStackTrace();
-        int i = -60005;
-        continue;
+        i = -60004;
       }
-      localAcPictureListResponse.setStatusCode(i);
-      b.a(a, "onConver time = " + (System.currentTimeMillis() - Long.valueOf(l).longValue()));
-      return localAcPictureListResponse;
-      i = -60004;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      i = -60005;
+    }
+    localAcPictureListResponse.setStatusCode(i);
+    paramString = a;
+    Object localObject = new StringBuilder("onConver time = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - Long.valueOf(l).longValue());
+    b.a(paramString, ((StringBuilder)localObject).toString());
+    return localAcPictureListResponse;
   }
   
   public final void onFailure(int paramInt)
   {
-    if (this.b != null) {
-      this.b.onFailure(paramInt);
+    AcPictureListListener localAcPictureListListener = this.b;
+    if (localAcPictureListListener != null) {
+      localAcPictureListListener.onFailure(paramInt);
     }
   }
   
   public final void onResponse(String paramString)
   {
-    if (this.b != null) {
-      this.b.onResponse(a(paramString));
+    AcPictureListListener localAcPictureListListener = this.b;
+    if (localAcPictureListListener != null) {
+      localAcPictureListListener.onResponse(a(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.ac.sdk.b.d
  * JD-Core Version:    0.7.0.1
  */

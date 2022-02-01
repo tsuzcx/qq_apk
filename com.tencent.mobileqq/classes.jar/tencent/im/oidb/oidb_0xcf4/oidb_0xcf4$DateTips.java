@@ -21,17 +21,18 @@ public final class oidb_0xcf4$DateTips
   
   static
   {
+    Integer localInteger = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 64 }, new String[] { "eDateType", "bytes_icon_url", "bytes_wording", "bytes_link_url", "bytes_link_wording", "bytes_link_colour", "eJumpType" }, new Object[] { Integer.valueOf(1), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Integer.valueOf(1) }, DateTips.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 64 }, new String[] { "eDateType", "bytes_icon_url", "bytes_wording", "bytes_link_url", "bytes_link_wording", "bytes_link_colour", "eJumpType" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localInteger }, DateTips.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.DateTips
  * JD-Core Version:    0.7.0.1
  */

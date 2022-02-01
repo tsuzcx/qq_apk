@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ffebf0f3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <com.qqreader.QRNumberCircleProgressBar android:id="@id/qr_download_progressbar" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" custom:progress="0" custom:max="100" custom:progress_unreached_color="#ff18b4ed" custom:progress_reached_color="#ff18b4ed" custom:progress_text_size="15.0sp" custom:progress_text_color="#ffebf0f3" custom:progress_circle_radius="65.0dip" custom:progress_text_visibility="visible" custom:progress_fill_mode="rising_water" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/qr_download_hint_update" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="一大波颜如玉正在赶过来…" android:layout_below="@id/qr_download_progressbar" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/qr_download_bottom_book" android:background="#ffffffff" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+            <View android:layout_gravity="center_vertical" android:background="#ff00a5e0" android:layout_width="1.0dip" android:layout_height="16.0dip" />
+            <TextView android:textSize="18.0dip" android:textColor="#ff333333" android:id="@id/txt_hint3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="大家都在看" android:includeFontPadding="false" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/txt_hint4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="放入书架后一会再看" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="24.0dip">
+            <com.tencent.image.URLImageView android:id="@id/qr_recommend_book_image" android:layout_width="50.0dip" android:layout_height="72.0dip" android:src="@drawable/qr_recommend_book_default" android:layout_centerVertical="true" />
+            <LinearLayout android:orientation="vertical" android:id="@id/qr_recommend_book_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toRightOf="@id/qr_recommend_book_image" android:layout_centerVertical="true">
+                <TextView android:textSize="16.0dip" android:textColor="#ff333333" android:id="@id/qr_recommend_book_info_bookname" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/qr_recommend_book_info_author" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@null" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/qr_recommend_book_info_like" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@null" />
+            </LinearLayout>
+            <Button android:textSize="15.0dip" android:textColor="@color/qr_download_confirm_bt_textcolor_selector" android:id="@id/qr_recommend_book_btn" android:background="@drawable/qr_download_confirm_bt_bg_selector" android:layout_width="100.0dip" android:layout_height="36.0dip" android:text="加入书架" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bajo;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.TimerTask;
 
-public class DataLineMessageSpreadManager$3
+class DataLineMessageSpreadManager$3
   extends TimerTask
 {
-  public DataLineMessageSpreadManager$3(bajo parambajo) {}
+  DataLineMessageSpreadManager$3(DataLineMessageSpreadManager paramDataLineMessageSpreadManager) {}
   
   public void run()
   {
@@ -18,34 +17,54 @@ public class DataLineMessageSpreadManager$3
     {
       long l1 = System.currentTimeMillis();
       long l2 = l1 - this.this$0.a;
+      Object localObject1;
       if (l2 >= 950L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("lastInsertTime[");
+          ((StringBuilder)localObject1).append(this.this$0.a);
+          ((StringBuilder)localObject1).append("],now[");
+          ((StringBuilder)localObject1).append(l1);
+          ((StringBuilder)localObject1).append("], dur[");
+          ((StringBuilder)localObject1).append(l2);
+          ((StringBuilder)localObject1).append("],timeOut start check!");
+          QLog.i("DataLineMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
         }
-        i = bajo.a(this.this$0).size() - 1;
+        int i = DataLineMessageSpreadManager.e(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)bajo.a(this.this$0).get(i);
-          this.this$0.a((DataLineMsgRecord)localMessageRecord);
+          localObject1 = (MessageRecord)DataLineMessageSpreadManager.e(this.this$0).get(i);
+          this.this$0.a((DataLineMsgRecord)localObject1);
           i -= 1;
         }
         this.this$0.a = 0L;
-        bajo.a(this.this$0).clear();
+        DataLineMessageSpreadManager.e(this.this$0).clear();
       }
-      while (!QLog.isColorLevel())
+      else if (QLog.isColorLevel())
       {
-        int i;
-        MessageRecord localMessageRecord;
-        return;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("lastInsertTime[");
+        ((StringBuilder)localObject1).append(this.this$0.a);
+        ((StringBuilder)localObject1).append("],now[");
+        ((StringBuilder)localObject1).append(l1);
+        ((StringBuilder)localObject1).append("], dur[");
+        ((StringBuilder)localObject1).append(l2);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("DataLineMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
       }
-      QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "]");
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,24 @@ package com.tencent.open.downloadnew;
 
 import android.os.Handler;
 import android.os.Looper;
-import bfok;
-import bfox;
-import bfpk;
-import bfpl;
 
-public class MyAppApi$YYBDownloadListener$1
+class MyAppApi$YYBDownloadListener$1
   implements Runnable
 {
-  public MyAppApi$YYBDownloadListener$1(bfpk parambfpk, DownloadInfo paramDownloadInfo) {}
+  MyAppApi$YYBDownloadListener$1(MyAppApi.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bfpk.a.a != null) && (this.jdField_a_of_type_Bfpk.a.a.isShowing())) {
-      this.jdField_a_of_type_Bfpk.a.a.dismiss();
+    if ((this.b.a.k != null) && (this.b.a.k.isShowing())) {
+      this.b.a.k.dismiss();
     }
-    bfok.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    DownloadManager.b().d(this.a);
     new Handler(Looper.getMainLooper()).postAtTime(new MyAppApi.YYBDownloadListener.1.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

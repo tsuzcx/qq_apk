@@ -12,8 +12,9 @@ public class ac
   public void run()
   {
     int i = SecureService.a(this.c.a, this.a);
-    if (this.b != null) {
-      this.b.onTaskFinished(i);
+    ICallback localICallback = this.b;
+    if (localICallback != null) {
+      localICallback.onTaskFinished(i);
     }
     this.c.a.stopSelf();
     SecureService.a(this.c.a);
@@ -21,7 +22,7 @@ public class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.ac
  * JD-Core Version:    0.7.0.1
  */

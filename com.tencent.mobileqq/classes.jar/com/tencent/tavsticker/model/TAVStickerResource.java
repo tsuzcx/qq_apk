@@ -32,12 +32,18 @@ public abstract class TAVStickerResource
   
   public String toString()
   {
-    return "TAVStickerResource {resourceType : " + this.resourceType + ", filePath : " + this.filePath + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVStickerResource {resourceType : ");
+    localStringBuilder.append(this.resourceType);
+    localStringBuilder.append(", filePath : ");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerResource
  * JD-Core Version:    0.7.0.1
  */

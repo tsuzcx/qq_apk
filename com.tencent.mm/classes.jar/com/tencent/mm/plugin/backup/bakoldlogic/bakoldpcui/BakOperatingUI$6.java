@@ -16,31 +16,31 @@ final class BakOperatingUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(17938);
-    paramDialogInterface = a.aUU().aUV();
-    paramDialogInterface.jHD.cancel();
-    paramDialogInterface.jHE.cancel();
-    if ((paramDialogInterface.jHH == 1) || (paramDialogInterface.jHL == 2)) {
-      e.rC(4);
+    AppMethodBeat.i(21994);
+    paramDialogInterface = a.cWU().cWV();
+    paramDialogInterface.vfa.cancel();
+    paramDialogInterface.vfb.cancel();
+    if ((paramDialogInterface.vfe == 1) || (paramDialogInterface.vfi == 2)) {
+      e.Fx(4);
     }
     for (;;)
     {
-      a.aUU().aUV().jHK = -1;
-      paramDialogInterface = a.aUU().aUW();
-      paramDialogInterface.jHp += 1;
-      BakOperatingUI.b(this.jIE);
-      BakOperatingUI.g(this.jIE);
-      AppMethodBeat.o(17938);
+      a.cWU().cWV().vfh = -1;
+      paramDialogInterface = a.cWU().cWW();
+      paramDialogInterface.veM += 1;
+      BakOperatingUI.b(this.vfY);
+      BakOperatingUI.g(this.vfY);
+      AppMethodBeat.o(21994);
       return;
-      if ((paramDialogInterface.jHH == 6) || (paramDialogInterface.jHL == 4) || (paramDialogInterface.jHL == 6)) {
-        e.rC(7);
+      if ((paramDialogInterface.vfe == 6) || (paramDialogInterface.vfi == 4) || (paramDialogInterface.vfi == 6)) {
+        e.Fx(7);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakOperatingUI.6
  * JD-Core Version:    0.7.0.1
  */

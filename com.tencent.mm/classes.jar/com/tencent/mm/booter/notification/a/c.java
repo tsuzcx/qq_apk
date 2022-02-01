@@ -1,34 +1,35 @@
 package com.tencent.mm.booter.notification.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bp.a;
-import com.tencent.mm.m.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.bq.a;
+import com.tencent.mm.k.h;
 
 public final class c
 {
-  public int ebo = -1;
+  public int luB = -1;
   
-  public final int B(String paramString, int paramInt)
+  public final int ag(String paramString, int paramInt)
   {
-    AppMethodBeat.i(16010);
-    this.ebo = a.bYt();
-    if ((!f.iX(paramInt)) || (f.lw(paramString))) {}
+    AppMethodBeat.i(20042);
+    this.luB = a.guX();
+    if ((!h.rk(paramInt)) || (h.DM(paramString))) {}
     try
     {
-      this.ebo = 2130840765;
+      this.luB = R.g.fpM;
       for (;;)
       {
-        label33:
-        if (this.ebo < 0) {
-          this.ebo = a.bYt();
+        label34:
+        if (this.luB < 0) {
+          this.luB = a.guX();
         }
-        paramInt = this.ebo;
-        AppMethodBeat.o(16010);
+        paramInt = this.luB;
+        AppMethodBeat.o(20042);
         return paramInt;
-        if (f.lx(paramString)) {
+        if (h.DN(paramString)) {
           try
           {
-            this.ebo = 2130840765;
+            this.luB = R.g.fpM;
           }
           catch (Exception paramString) {}
         }
@@ -36,13 +37,13 @@ public final class c
     }
     catch (Exception paramString)
     {
-      break label33;
+      break label34;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.c
  * JD-Core Version:    0.7.0.1
  */

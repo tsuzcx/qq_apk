@@ -1,40 +1,81 @@
 package com.tencent.xweb.x5;
 
-import android.content.Context;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.JsContext;
-import com.tencent.xweb.c.g;
-import org.xwalk.core.Log;
 
 public final class h
-  implements g
+  extends android.webkit.WebHistoryItem
 {
-  private JsContext BId;
-  private h.a BIe;
-  private Context mContext;
+  private com.tencent.smtt.sdk.WebHistoryItem ainn;
   
-  public h(Context paramContext)
+  public h(com.tencent.smtt.sdk.WebHistoryItem paramWebHistoryItem)
   {
-    AppMethodBeat.i(84842);
-    this.mContext = paramContext;
-    Log.i("MicroMsg.X5V8JsRuntime", "create X5V8JsRuntime");
-    AppMethodBeat.o(84842);
+    this.ainn = paramWebHistoryItem;
   }
   
-  public final void init(int paramInt)
+  protected final android.webkit.WebHistoryItem clone()
   {
-    AppMethodBeat.i(84843);
-    this.BId = new JsContext(this.mContext);
-    this.BIe = new h.a();
-    this.BId.addJavascriptInterface(this.BIe, "nativeBufferCompat");
-    this.BId.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new h.1(this)));
-    this.BId.setExceptionHandler(new h.2(this));
-    AppMethodBeat.o(84843);
+    AppMethodBeat.i(213190);
+    h localh = new h(this.ainn);
+    AppMethodBeat.o(213190);
+    return localh;
+  }
+  
+  public final Bitmap getFavicon()
+  {
+    AppMethodBeat.i(213184);
+    if (this.ainn == null)
+    {
+      AppMethodBeat.o(213184);
+      return null;
+    }
+    Bitmap localBitmap = this.ainn.getFavicon();
+    AppMethodBeat.o(213184);
+    return localBitmap;
+  }
+  
+  public final String getOriginalUrl()
+  {
+    AppMethodBeat.i(213175);
+    if (this.ainn == null)
+    {
+      AppMethodBeat.o(213175);
+      return null;
+    }
+    String str = this.ainn.getOriginalUrl();
+    AppMethodBeat.o(213175);
+    return str;
+  }
+  
+  public final String getTitle()
+  {
+    AppMethodBeat.i(213180);
+    if (this.ainn == null)
+    {
+      AppMethodBeat.o(213180);
+      return null;
+    }
+    String str = this.ainn.getTitle();
+    AppMethodBeat.o(213180);
+    return str;
+  }
+  
+  public final String getUrl()
+  {
+    AppMethodBeat.i(213171);
+    if (this.ainn == null)
+    {
+      AppMethodBeat.o(213171);
+      return null;
+    }
+    String str = this.ainn.getUrl();
+    AppMethodBeat.o(213171);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.x5.h
  * JD-Core Version:    0.7.0.1
  */

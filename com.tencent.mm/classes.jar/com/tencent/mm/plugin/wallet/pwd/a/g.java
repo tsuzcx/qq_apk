@@ -1,82 +1,67 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bqn;
-import com.tencent.mm.protocal.protobuf.bqo;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.fpi;
+import com.tencent.mm.protocal.protobuf.fpj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class g
-  extends m
-  implements k
+  extends w
 {
-  private f callback;
-  private final b rr;
-  private bqo tXT;
+  public fpj Vpj;
+  private h callback;
+  private final c rr;
   
-  public g()
+  public g(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(46172);
-    b.a locala = new b.a();
-    bqn localbqn = new bqn();
-    localbqn.wkd = System.currentTimeMillis();
-    locala.fsX = localbqn;
-    locala.fsY = new bqo();
-    locala.uri = "/cgi-bin/mmpay-bin/querywalletentrancebalanceswitchstate";
-    locala.funcId = 2635;
-    this.rr = locala.ado();
-    AppMethodBeat.o(46172);
+    AppMethodBeat.i(182518);
+    c.a locala = new c.a();
+    fpi localfpi = new fpi();
+    localfpi.abPl = paramInt1;
+    localfpi.abPm = paramInt2;
+    locala.otE = localfpi;
+    locala.otF = new fpj();
+    locala.uri = "/cgi-bin/mmpay-bin/transferphonechangeswitch";
+    locala.funcId = 1724;
+    this.rr = locala.bEF();
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitChangeSwitch", "NetSceneMobileRemitChangeSwitch() switchChangeType:%s", new Object[] { Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(182518);
   }
   
-  public final bqo cSp()
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
-    AppMethodBeat.i(46175);
-    if (this.tXT == null)
-    {
-      localbqo = new bqo();
-      AppMethodBeat.o(46175);
-      return localbqo;
-    }
-    bqo localbqo = this.tXT;
-    AppMethodBeat.o(46175);
-    return localbqo;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(46173);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(46173);
+    AppMethodBeat.i(69539);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(69539);
     return i;
   }
   
   public final int getType()
   {
-    return 2635;
+    return 1724;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(46174);
-    ab.w("MicroMsg.NetSceneQueryWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(315591);
+    Log.w("MicroMsg.mobileRemit.NetSceneMobileRemitChangeSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.tXT = ((bqo)((b)paramq).fsW.fta);
+      this.Vpj = ((fpj)c.c.b(((c)params).otC));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(46174);
+    AppMethodBeat.o(315591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.g
  * JD-Core Version:    0.7.0.1
  */

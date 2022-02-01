@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajkm;
-
-public class RecentPubAccHelper$1
+class RecentPubAccHelper$1
   implements Runnable
 {
-  public RecentPubAccHelper$1(ajkm paramajkm) {}
+  RecentPubAccHelper$1(RecentPubAccHelper paramRecentPubAccHelper) {}
   
   public void run()
   {

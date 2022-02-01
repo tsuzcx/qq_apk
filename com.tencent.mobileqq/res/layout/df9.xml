@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/gzj" android:layout_width="205.0dip" android:layout_height="36.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/qzd" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="11.0dip" android:src="@drawable/jih" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="视频" />
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/p2t" android:layout_width="105.0dip" android:layout_height="2.0dip" android:layout_marginLeft="10.0dip" android:max="100" android:progress="0" android:progressDrawable="@drawable/gzf" style="?android:progressBarStyleHorizontal" />
+    </LinearLayout>
+</FrameLayout>

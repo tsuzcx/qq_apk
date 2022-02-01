@@ -1,6 +1,6 @@
 package com.tencent.sqlitelint.util;
 
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SLog
@@ -10,21 +10,21 @@ public class SLog
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94113);
+    AppMethodBeat.i(52957);
     getInstance().printLog(3, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(94113);
+    AppMethodBeat.o(52957);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94110);
+    AppMethodBeat.i(52954);
     getInstance().printLog(6, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(94110);
+    AppMethodBeat.o(52954);
   }
   
   public static SLog getInstance()
   {
-    AppMethodBeat.i(94108);
+    AppMethodBeat.i(52952);
     if (mInstance == null) {}
     try
     {
@@ -32,75 +32,75 @@ public class SLog
         mInstance = new SLog();
       }
       SLog localSLog = mInstance;
-      AppMethodBeat.o(94108);
+      AppMethodBeat.o(52952);
       return localSLog;
     }
     finally
     {
-      AppMethodBeat.o(94108);
+      AppMethodBeat.o(52952);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94112);
+    AppMethodBeat.i(52956);
     getInstance().printLog(4, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(94112);
+    AppMethodBeat.o(52956);
   }
   
   public static native void nativeSetLogger(int paramInt);
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94114);
+    AppMethodBeat.i(52958);
     getInstance().printLog(2, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(94114);
+    AppMethodBeat.o(52958);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94111);
+    AppMethodBeat.i(52955);
     getInstance().printLog(5, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(94111);
+    AppMethodBeat.o(52955);
   }
   
   public void printLog(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(94109);
+    AppMethodBeat.i(52953);
     switch (paramInt)
     {
     }
     try
     {
       c.i(paramString1, paramString2, new Object[0]);
-      AppMethodBeat.o(94109);
+      AppMethodBeat.o(52953);
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       new StringBuilder("printLog ex ").append(paramString1.getMessage());
-      AppMethodBeat.o(94109);
+      AppMethodBeat.o(52953);
     }
     c.v(paramString1, paramString2, new Object[0]);
-    AppMethodBeat.o(94109);
+    AppMethodBeat.o(52953);
     return;
     c.d(paramString1, paramString2, new Object[0]);
-    AppMethodBeat.o(94109);
+    AppMethodBeat.o(52953);
     return;
     c.i(paramString1, paramString2, new Object[0]);
-    AppMethodBeat.o(94109);
+    AppMethodBeat.o(52953);
     return;
     c.w(paramString1, paramString2, new Object[0]);
-    AppMethodBeat.o(94109);
+    AppMethodBeat.o(52953);
     return;
     c.e(paramString1, paramString2, new Object[0]);
-    AppMethodBeat.o(94109);
+    AppMethodBeat.o(52953);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.util.SLog
  * JD-Core Version:    0.7.0.1
  */

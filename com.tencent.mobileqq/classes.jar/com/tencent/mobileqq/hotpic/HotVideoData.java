@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.hotpic;
 
-import asvg;
-import asvh;
-import asvi;
-import bbax;
-import bbbj;
-import bbcd;
-import bbce;
-import bdhe;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.ShortVideoDownReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.protohandler.RichProtoProc.RichProtoCallback;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
@@ -32,34 +30,31 @@ public class HotVideoData
   public long videoLength;
   public String videoSource;
   
-  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, asvh paramasvh)
+  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack)
   {
-    if (paramasvh == null) {
+    if (paramHotVideoGetUrlCallBack == null) {
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        asvi localasvi = new asvi();
-        localasvi.jdField_a_of_type_Int = paramInt2;
-        if (paramInt2 == 1)
-        {
-          str1 = this.mPreviewUUID;
-          if (paramInt2 != 1) {
-            break label92;
-          }
-          str2 = this.md5;
-          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new asvg(this, localasvi, paramasvh));
-          break;
-        }
+      HotVideoData.HotVideoGetUrlResult localHotVideoGetUrlResult = new HotVideoData.HotVideoGetUrlResult();
+      localHotVideoGetUrlResult.f = paramInt2;
+      String str1;
+      if (paramInt2 == 1) {
+        str1 = this.mPreviewUUID;
+      } else {
+        str1 = this.mVideoUUID;
       }
-      finally {}
-      String str1 = this.mVideoUUID;
-      continue;
-      label92:
-      String str2 = this.originalMD5;
+      String str2;
+      if (paramInt2 == 1) {
+        str2 = this.md5;
+      } else {
+        str2 = this.originalMD5;
+      }
+      requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new HotVideoData.1(this, localHotVideoGetUrlResult, paramHotVideoGetUrlCallBack));
+      return;
     }
+    finally {}
   }
   
   private static boolean isIpv6()
@@ -67,56 +62,50 @@ public class HotVideoData
     return true;
   }
   
-  private void requestUrlByUuid(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, bbce parambbce)
+  private void requestUrlByUuid(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, RichProtoProc.RichProtoCallback paramRichProtoCallback)
   {
-    bbax localbbax = new bbax();
-    bbbj localbbbj = new bbbj();
-    localbbbj.jdField_c_of_type_Int = Calendar.getInstance().get(5);
-    if (QLog.isColorLevel()) {
-      QLog.d("HotVideoData", 2, "sendGetUrlReq()----busiReq.seq : " + localbbbj.jdField_c_of_type_Int);
-    }
-    localbbbj.jdField_c_of_type_JavaLangString = paramString3;
-    localbbbj.jdField_d_of_type_JavaLangString = paramQQAppInterface.c();
-    localbbbj.jdField_e_of_type_JavaLangString = paramString3;
-    localbbbj.f = paramInt1;
-    localbbbj.jdField_d_of_type_Int = 0;
-    if (localbbbj.f == 0)
+    RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
+    RichProto.RichProtoReq.ShortVideoDownReq localShortVideoDownReq = new RichProto.RichProtoReq.ShortVideoDownReq();
+    localShortVideoDownReq.seq = Calendar.getInstance().get(5);
+    if (QLog.isColorLevel())
     {
-      localbbbj.jdField_a_of_type_Int = 0;
-      if ((localbbbj.f != 0) && (1008 != localbbbj.f)) {
-        break label281;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendGetUrlReq()----busiReq.seq : ");
+      localStringBuilder.append(localShortVideoDownReq.seq);
+      QLog.d("HotVideoData", 2, localStringBuilder.toString());
     }
-    label281:
-    for (localbbbj.jdField_b_of_type_JavaLangString = null;; localbbbj.jdField_b_of_type_JavaLangString = localbbbj.jdField_d_of_type_JavaLangString)
-    {
-      localbbbj.jdField_b_of_type_Int = 2;
-      localbbbj.jdField_a_of_type_JavaLangString = paramString1;
-      localbbbj.jdField_a_of_type_ArrayOfByte = bdhe.a(paramString2);
-      localbbbj.jdField_e_of_type_Int = 0;
-      localbbbj.j = 0;
-      localbbbj.g = paramInt2;
-      localbbbj.h = 1;
-      localbbbj.i = 1;
-      localbbax.jdField_a_of_type_Bbce = parambbce;
-      localbbax.jdField_a_of_type_JavaLangString = "short_video_dw";
-      localbbax.jdField_a_of_type_JavaUtilList.add(localbbbj);
-      localbbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = paramQQAppInterface.getProtoReqManager();
-      bbcd.a(localbbax);
-      return;
-      if (1 == localbbbj.f)
-      {
-        localbbbj.jdField_a_of_type_Int = 1;
-        break;
-      }
-      if (3000 == localbbbj.f)
-      {
-        localbbbj.jdField_a_of_type_Int = 2;
-        break;
-      }
-      localbbbj.jdField_a_of_type_Int = 3;
-      break;
+    localShortVideoDownReq.selfUin = paramString3;
+    localShortVideoDownReq.peerUin = paramQQAppInterface.getCurrentUin();
+    localShortVideoDownReq.secondUin = paramString3;
+    localShortVideoDownReq.uinType = paramInt1;
+    localShortVideoDownReq.agentType = 0;
+    if (localShortVideoDownReq.uinType == 0) {
+      localShortVideoDownReq.chatType = 0;
+    } else if (1 == localShortVideoDownReq.uinType) {
+      localShortVideoDownReq.chatType = 1;
+    } else if (3000 == localShortVideoDownReq.uinType) {
+      localShortVideoDownReq.chatType = 2;
+    } else {
+      localShortVideoDownReq.chatType = 3;
     }
+    if ((localShortVideoDownReq.uinType != 0) && (1008 != localShortVideoDownReq.uinType)) {
+      localShortVideoDownReq.troopUin = localShortVideoDownReq.peerUin;
+    } else {
+      localShortVideoDownReq.troopUin = null;
+    }
+    localShortVideoDownReq.clientType = 2;
+    localShortVideoDownReq.fileId = paramString1;
+    localShortVideoDownReq.md5 = HexUtil.hexStr2Bytes(paramString2);
+    localShortVideoDownReq.busiType = 0;
+    localShortVideoDownReq.subBusiType = 0;
+    localShortVideoDownReq.fileType = paramInt2;
+    localShortVideoDownReq.downType = 1;
+    localShortVideoDownReq.sceneType = 1;
+    localRichProtoReq.callback = paramRichProtoCallback;
+    localRichProtoReq.protoKey = "short_video_dw";
+    localRichProtoReq.reqs.add(localShortVideoDownReq);
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)paramQQAppInterface.getRuntimeService(IProtoReqManager.class, ""));
+    RichProtoProc.procRichProtoReq(localRichProtoReq);
   }
   
   public boolean CheckIsNeedBlurBackground()
@@ -124,32 +113,33 @@ public class HotVideoData
     return this.width / this.height + 0.1F < 1.777778F;
   }
   
-  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, asvh paramasvh)
+  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramasvh);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramHotVideoGetUrlCallBack);
   }
   
-  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, asvh paramasvh)
+  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramasvh);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramHotVideoGetUrlCallBack);
   }
   
   public void SetPreviewDownloadListener(URLDrawable.DownloadListener paramDownloadListener)
   {
-    if ((paramDownloadListener == null) || (paramDownloadListener == this))
+    if ((paramDownloadListener != null) && (paramDownloadListener != this))
     {
-      this.mWeakPreviewDownloadListener = null;
+      this.mWeakPreviewDownloadListener = new WeakReference(paramDownloadListener);
       return;
     }
-    this.mWeakPreviewDownloadListener = new WeakReference(paramDownloadListener);
+    this.mWeakPreviewDownloadListener = null;
   }
   
   public URLDrawable.DownloadListener TryGetPreviewDownloadListener()
   {
-    if (this.mWeakPreviewDownloadListener == null) {
+    WeakReference localWeakReference = this.mWeakPreviewDownloadListener;
+    if (localWeakReference == null) {
       return null;
     }
-    return (URLDrawable.DownloadListener)this.mWeakPreviewDownloadListener.get();
+    return (URLDrawable.DownloadListener)localWeakReference.get();
   }
   
   public int getDataType()
@@ -189,31 +179,69 @@ public class HotVideoData
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("hotvideo:");
-    localStringBuffer.append("version:").append(this.version).append(" ");
-    localStringBuffer.append("md5:").append(this.md5).append(" ");
-    localStringBuffer.append("fileSize:").append(this.fileSize).append(" ");
-    localStringBuffer.append("width:").append(this.width).append(" ");
-    localStringBuffer.append("height:").append(this.height).append(" ");
-    localStringBuffer.append("mPreviewUUID:").append(this.mPreviewUUID).append(" ");
-    localStringBuffer.append("picIndex:").append(this.picIndex).append(" ");
-    localStringBuffer.append("iconUrl:").append(this.iconUrl).append(" ");
-    localStringBuffer.append("jumpUrl:").append(this.jumpUrl).append(" ");
-    localStringBuffer.append("name:").append(this.name).append(" ");
-    localStringBuffer.append("videoSource:").append(this.videoSource).append(" ");
-    localStringBuffer.append("videoLength:").append(this.videoLength).append(" ");
-    localStringBuffer.append("originalWidth:").append(this.originalWidth).append(" ");
-    localStringBuffer.append("originalHeight:").append(this.originalHeight).append(" ");
-    localStringBuffer.append("mVideoUUID:").append(this.mVideoUUID).append(" ");
-    localStringBuffer.append("originalMD5:").append(this.originalMD5).append(" ");
-    localStringBuffer.append("mCertificatedIcon:").append(this.mCertificatedIcon).append(" ");
-    localStringBuffer.append("oringinalSize:").append(this.oringinalSize).append(" ");
-    localStringBuffer.append("tag:").append(this.tag).append(" ");
+    localStringBuffer.append("version:");
+    localStringBuffer.append(this.version);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("md5:");
+    localStringBuffer.append(this.md5);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("fileSize:");
+    localStringBuffer.append(this.fileSize);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("width:");
+    localStringBuffer.append(this.width);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("height:");
+    localStringBuffer.append(this.height);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("mPreviewUUID:");
+    localStringBuffer.append(this.mPreviewUUID);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("picIndex:");
+    localStringBuffer.append(this.picIndex);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("iconUrl:");
+    localStringBuffer.append(this.iconUrl);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("jumpUrl:");
+    localStringBuffer.append(this.jumpUrl);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("name:");
+    localStringBuffer.append(this.name);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("videoSource:");
+    localStringBuffer.append(this.videoSource);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("videoLength:");
+    localStringBuffer.append(this.videoLength);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("originalWidth:");
+    localStringBuffer.append(this.originalWidth);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("originalHeight:");
+    localStringBuffer.append(this.originalHeight);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("mVideoUUID:");
+    localStringBuffer.append(this.mVideoUUID);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("originalMD5:");
+    localStringBuffer.append(this.originalMD5);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("mCertificatedIcon:");
+    localStringBuffer.append(this.mCertificatedIcon);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("oringinalSize:");
+    localStringBuffer.append(this.oringinalSize);
+    localStringBuffer.append(" ");
+    localStringBuffer.append("tag:");
+    localStringBuffer.append(this.tag);
+    localStringBuffer.append(" ");
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData
  * JD-Core Version:    0.7.0.1
  */

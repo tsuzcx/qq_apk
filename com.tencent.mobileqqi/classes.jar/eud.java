@@ -9,7 +9,7 @@ public class eud
   
   public void onClick(View paramView)
   {
-    this.a.k();
+    this.a.d(paramView);
   }
 }
 

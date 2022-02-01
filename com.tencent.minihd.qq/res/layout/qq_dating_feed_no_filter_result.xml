@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/qq_dating_filter_empty_container" android:background="@drawable/bg_texture" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="@dimen/title_bar_height" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/find_icon" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="135.0dip" android:src="@drawable/qq_dating_no_filter_result_icon" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:gravity="center_horizontal" android:id="@id/no_dating_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/qq_dating_no_filter_result_text" android:layout_below="@id/find_icon" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/qq_dating_touch_to_filter" android:layout_below="@id/no_dating_text" android:layout_centerHorizontal="true" />
+</RelativeLayout>

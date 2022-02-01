@@ -1,13 +1,14 @@
 package com.tencent.matrix.d;
 
 import android.app.Application;
-import com.tencent.matrix.e.c.a;
-import com.tencent.matrix.g.d;
+import com.tencent.matrix.e.d;
+import com.tencent.matrix.report.g;
+import com.tencent.matrix.report.h.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class b
-  implements com.tencent.matrix.b.a, c.a
+  implements com.tencent.matrix.b.a, h.a
 {
   public static final int PLUGIN_CREATE = 0;
   public static final int PLUGIN_DESTROYED = 8;
@@ -63,12 +64,12 @@ public abstract class b
     this.status = 1;
     this.application = paramApplication;
     this.pluginListener = paramc;
-    com.tencent.matrix.a.bLP.a(this);
+    com.tencent.matrix.a.eLw.a(this);
   }
   
   public boolean isForeground()
   {
-    return com.tencent.matrix.a.bLP.bLR;
+    return com.tencent.matrix.a.eLw.eLx;
   }
   
   public boolean isPluginDestroyed()
@@ -91,32 +92,32 @@ public abstract class b
     return this.isSupported;
   }
   
-  public void onDetectIssue(com.tencent.matrix.e.b paramb)
+  public void onDetectIssue(g paramg)
   {
-    if (paramb.tag == null) {
-      paramb.tag = getTag();
+    if (paramg.tag == null) {
+      paramg.tag = getTag();
     }
-    paramb.bOy = this;
-    JSONObject localJSONObject = paramb.bOx;
+    paramg.eYA = this;
+    JSONObject localJSONObject = paramg.eYz;
     try
     {
-      if (paramb.tag != null) {
-        localJSONObject.put("tag", paramb.tag);
+      if (paramg.tag != null) {
+        localJSONObject.put("tag", paramg.tag);
       }
-      if (paramb.bOw != null) {
-        localJSONObject.put("type", paramb.bOw);
+      if (paramg.type != 0) {
+        localJSONObject.put("type", paramg.type);
       }
-      localJSONObject.put("process", d.aI(this.application));
+      localJSONObject.put("process", d.getProcessName(this.application));
       localJSONObject.put("time", System.currentTimeMillis());
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        com.tencent.matrix.g.c.e("Matrix.Plugin", "json error", new Object[] { localJSONException });
+        com.tencent.matrix.e.c.e("Matrix.Plugin", "json error", new Object[] { localJSONException });
       }
     }
-    this.pluginListener.a(paramb);
+    this.pluginListener.a(paramg);
   }
   
   public void onForeground(boolean paramBoolean) {}
@@ -158,7 +159,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.d.b
  * JD-Core Version:    0.7.0.1
  */

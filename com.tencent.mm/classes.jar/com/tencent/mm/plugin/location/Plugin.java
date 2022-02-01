@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.location;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.location.model.l;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.location.model.SubCoreLocation;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(113287);
+    AppMethodBeat.i(55666);
     a locala = new a();
-    AppMethodBeat.o(113287);
+    AppMethodBeat.o(55666);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(113288);
-    l locall = new l();
-    AppMethodBeat.o(113288);
-    return locall;
+    AppMethodBeat.i(55667);
+    SubCoreLocation localSubCoreLocation = new SubCoreLocation();
+    AppMethodBeat.o(55667);
+    return localSubCoreLocation;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.Plugin
  * JD-Core Version:    0.7.0.1
  */

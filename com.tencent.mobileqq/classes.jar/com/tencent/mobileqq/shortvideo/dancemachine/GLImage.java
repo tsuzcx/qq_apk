@@ -34,21 +34,15 @@ public class GLImage
   
   private boolean reuseTextureMemory(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt1 == this.width)
+    if ((paramInt1 == this.width) && (paramInt2 == this.height))
     {
-      bool1 = bool2;
-      if (paramInt2 == this.height)
-      {
-        GLES20.glBindTexture(3553, this.texture);
-        if (paramBitmap != null) {
-          GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-        }
-        bool1 = true;
+      GLES20.glBindTexture(3553, this.texture);
+      if (paramBitmap != null) {
+        GLUtils.texImage2D(3553, 0, paramBitmap, 0);
       }
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   public int getHeight()
@@ -85,27 +79,24 @@ public class GLImage
   {
     if (paramBitmap != null)
     {
-      if (this.texture == 0) {
-        break label40;
+      if (this.texture != 0)
+      {
+        if (reuseTextureMemory(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap))
+        {
+          if (paramBoolean) {
+            paramBitmap.recycle();
+          }
+          return;
+        }
+        release();
       }
-      if (!reuseTextureMemory(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap)) {
-        break label36;
-      }
+      this.width = paramBitmap.getWidth();
+      this.height = paramBitmap.getHeight();
+      this.texture = GlUtil.createTexture(3553, paramBitmap);
       if (paramBoolean) {
         paramBitmap.recycle();
       }
     }
-    label36:
-    label40:
-    do
-    {
-      return;
-      release();
-      this.width = paramBitmap.getWidth();
-      this.height = paramBitmap.getHeight();
-      this.texture = GlUtil.createTexture(3553, paramBitmap);
-    } while (!paramBoolean);
-    paramBitmap.recycle();
   }
   
   public void loadTextureSync(String paramString)
@@ -115,9 +106,10 @@ public class GLImage
   
   public void release()
   {
-    if (this.texture != 0)
+    int i = this.texture;
+    if (i != 0)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.texture }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
       this.texture = 0;
     }
     this.width = 0;
@@ -126,7 +118,7 @@ public class GLImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLImage
  * JD-Core Version:    0.7.0.1
  */

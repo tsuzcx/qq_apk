@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="88.0dip"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="88.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/c_u" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="17.0dip" android:layout_marginRight="12.0dip" />
     <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="17.0dip" android:textColor="@color/skin_dark_gray" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/c_x" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />

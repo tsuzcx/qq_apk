@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginBottom="9.0dip">
-        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:ellipsize="end" android:id="@id/a1c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{username}" android:maxLength="15" android:layout_weight="0.8" />
-        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:gravity="right" android:id="@id/csf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{amount}" />
-        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lb" android:text="@string/c_" />
-    </LinearLayout>
-    <View android:id="@id/pm" android:background="@drawable/sb" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ctb" android:paddingTop="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk">
+        <ImageView android:id="@id/a27" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@drawable/b__" />
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/fae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_toRightOf="@id/a27" android:layout_centerVertical="true">
+            <TextView android:ellipsize="end" android:id="@id/hga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/x_" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/da" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center" android:id="@id/a84" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/d83" />
 </LinearLayout>

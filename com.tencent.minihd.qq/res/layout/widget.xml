@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/widget_root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_margin="32.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:gravity="center" android:background="#ff6699cc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="习大大赞了你的说说: 帅的惊动了党" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="32.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:gravity="center" android:background="#ff663366" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" android:text="约不约？？" android:layout_weight="1.0" />
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:gravity="center" android:background="#ffcccc99" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="约你妹！！" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="32.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:gravity="center" android:background="#ffcc3366" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="加入鹅厂，月薪过万不是梦！" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="32.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:gravity="center" android:background="#ff009933" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" android:text="广告位招租" android:layout_weight="1.0" />
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:gravity="center" android:background="#ffff9933" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="10000/天" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

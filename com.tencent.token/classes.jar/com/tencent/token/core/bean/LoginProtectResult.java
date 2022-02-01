@@ -16,7 +16,7 @@ public class LoginProtectResult
   public static final int CONF_ID_QQ_PROTECT_1_0 = 81;
   public static final int CONF_ID_WEB_PROTECT = 82;
   private static final long serialVersionUID = 2427127947506109099L;
-  public List mLists = new ArrayList();
+  public List<a> mLists = new ArrayList();
   
   public LoginProtectResult(JSONObject paramJSONObject)
   {
@@ -28,10 +28,42 @@ public class LoginProtectResult
       int j = ((JSONObject)localObject).getInt("id");
       if ((j == 80) || (j == 82))
       {
-        localObject = new f(this, (JSONObject)localObject);
+        localObject = new a((JSONObject)localObject);
         this.mLists.add(localObject);
       }
       i += 1;
+    }
+  }
+  
+  public final class a
+  {
+    public int a;
+    public String b;
+    public boolean c;
+    public boolean d;
+    public boolean e;
+    
+    public a(JSONObject paramJSONObject)
+    {
+      boolean bool2 = false;
+      this.d = false;
+      this.a = paramJSONObject.getInt("id");
+      this.b = paramJSONObject.getString("title");
+      boolean bool1;
+      if (paramJSONObject.getInt("is_set") == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.c = bool1;
+      if (this.a == 80)
+      {
+        bool1 = bool2;
+        if (paramJSONObject.getInt("is_device_set") == 1) {
+          bool1 = true;
+        }
+        this.e = bool1;
+      }
     }
   }
 }

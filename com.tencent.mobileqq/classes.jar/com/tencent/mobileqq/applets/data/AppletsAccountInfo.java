@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.applets.data;
 
-import awge;
-import awhp;
-import awhs;
-import bdnn;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.utils.StringUtil;
 import tencent.im.oidb.qqconnect.Appinfo;
 
 public class AppletsAccountInfo
-  extends awge
+  extends Entity
 {
   private static final String TABLENAME = "applets_account_info";
-  @awhp
+  @notColumn
   public AppletInfo appInfo;
   public byte[] appInfoDetail;
   public String faceUrl;
   public String faceUrlSimple;
   public String nick;
-  @awhs
+  @unique
   public String uin;
   
   public AppletInfo convertToAppletInfo(qqconnect.Appinfo paramAppinfo)
@@ -70,9 +70,18 @@ public class AppletsAccountInfo
   
   public String toString()
   {
-    String str = bdnn.e(String.valueOf(this.uin));
+    String str = StringUtil.getSimpleUinForPrint(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
-    localStringBuilder.append(",shortUin:").append(str).append(",nick:").append(this.nick).append(",face_url:").append(this.faceUrl).append(",face_url_simple:").append(this.faceUrlSimple).append(",appInfo:").append(this.appInfo);
+    localStringBuilder.append(",shortUin:");
+    localStringBuilder.append(str);
+    localStringBuilder.append(",nick:");
+    localStringBuilder.append(this.nick);
+    localStringBuilder.append(",face_url:");
+    localStringBuilder.append(this.faceUrl);
+    localStringBuilder.append(",face_url_simple:");
+    localStringBuilder.append(this.faceUrlSimple);
+    localStringBuilder.append(",appInfo:");
+    localStringBuilder.append(this.appInfo);
     return localStringBuilder.toString();
   }
 }

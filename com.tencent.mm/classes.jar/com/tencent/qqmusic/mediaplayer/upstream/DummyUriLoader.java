@@ -28,20 +28,20 @@ public class DummyUriLoader
   
   public void startLoading(int paramInt, TimeUnit paramTimeUnit, UriLoader.Callback paramCallback)
   {
-    AppMethodBeat.i(104580);
+    AppMethodBeat.i(76496);
     if (this.uri == null)
     {
       paramCallback.onSucceed(null);
-      AppMethodBeat.o(104580);
+      AppMethodBeat.o(76496);
       return;
     }
     paramCallback.onSucceed(new StreamingRequest(this.uri, null));
-    AppMethodBeat.o(104580);
+    AppMethodBeat.o(76496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.DummyUriLoader
  * JD-Core Version:    0.7.0.1
  */

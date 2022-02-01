@@ -2,13 +2,13 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.os.Process;
 import android.util.LruCache;
-import bdhb;
-import bdnn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedWriter;
@@ -60,6 +60,8 @@ public class MiniLog
     logTime = "";
     myProcessId = Process.myPid();
     processName = "";
+    sHead = null;
+    sTail = null;
     packageName = "";
     sBuildNumber = "";
     debugControlMap = new HashMap();
@@ -69,6 +71,7 @@ public class MiniLog
     miniFlushMap = new HashMap();
     miniQueue = new LinkedBlockingQueue(256);
     mLastNumCache = new LruCache(5);
+    lastCheckLogSizeTime = 0L;
   }
   
   private static void addMiniLogItem(String paramString1, String paramString2)
@@ -86,33 +89,39 @@ public class MiniLog
   
   private static void addNativeLogItem(String arg0, String paramString2, int paramInt, String paramString3, Throwable paramThrowable)
   {
-    if ((sPool == null) || (bdnn.a(???))) {}
-    MiniLog.QLogItem localQLogItem;
-    do
+    if (sPool != null)
     {
-      return;
-      localQLogItem = (MiniLog.QLogItem)sPool.obtain(MiniLog.QLogItem.class);
-    } while (localQLogItem == null);
-    localQLogItem.logTime = System.currentTimeMillis();
-    localQLogItem.threadId = Process.myTid();
-    localQLogItem.level = paramInt;
-    localQLogItem.tag = paramString2;
-    localQLogItem.msg = paramString3;
-    localQLogItem.trace = paramThrowable;
-    localQLogItem.appId = ???;
-    synchronized (processName)
-    {
-      if (sHead == null)
+      if (StringUtil.isEmpty(???)) {
+        return;
+      }
+      MiniLog.QLogItem localQLogItem = (MiniLog.QLogItem)sPool.obtain(MiniLog.QLogItem.class);
+      if (localQLogItem == null) {
+        return;
+      }
+      localQLogItem.logTime = System.currentTimeMillis();
+      localQLogItem.threadId = Process.myTid();
+      localQLogItem.level = paramInt;
+      localQLogItem.tag = paramString2;
+      localQLogItem.msg = paramString3;
+      localQLogItem.trace = paramThrowable;
+      localQLogItem.appId = ???;
+      synchronized (processName)
       {
-        sHead = localQLogItem;
-        sTail = localQLogItem;
+        if (sHead == null)
+        {
+          sHead = localQLogItem;
+          sTail = localQLogItem;
+        }
+        else
+        {
+          sTail.changeNext(localQLogItem, true);
+          sTail = localQLogItem;
+        }
         initWriteHandler();
         mWriteHandler.removeMessages(1);
         mWriteHandler.sendEmptyMessageDelayed(1, 1000L);
         return;
       }
-      sTail.changeNext(localQLogItem, true);
-      sTail = localQLogItem;
     }
   }
   
@@ -133,19 +142,19 @@ public class MiniLog
   
   public static void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int j = 0;
     int k = paramVarArgs.length;
-    if (paramThrowable == null) {}
-    StringBuilder localStringBuilder;
-    for (int i = 0;; i = 128)
+    int j = 0;
+    if (paramThrowable == null) {
+      i = 0;
+    } else {
+      i = 128;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(k * 30 + i);
+    int i = j;
+    while (i < paramVarArgs.length)
     {
-      localStringBuilder = new StringBuilder(i + k * 30);
-      i = j;
-      while (i < paramVarArgs.length)
-      {
-        localStringBuilder.append(paramVarArgs[i]);
-        i += 1;
-      }
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
     d(paramString1, paramInt, paramString2, localStringBuilder.toString(), paramThrowable);
   }
@@ -172,19 +181,19 @@ public class MiniLog
   
   public static void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int j = 0;
     int k = paramVarArgs.length;
-    if (paramThrowable == null) {}
-    StringBuilder localStringBuilder;
-    for (int i = 0;; i = 128)
+    int j = 0;
+    if (paramThrowable == null) {
+      i = 0;
+    } else {
+      i = 128;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(k * 30 + i);
+    int i = j;
+    while (i < paramVarArgs.length)
     {
-      localStringBuilder = new StringBuilder(i + k * 30);
-      i = j;
-      while (i < paramVarArgs.length)
-      {
-        localStringBuilder.append(paramVarArgs[i]);
-        i += 1;
-      }
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
     e(paramString1, paramInt, paramString2, localStringBuilder.toString(), paramThrowable);
   }
@@ -196,7 +205,12 @@ public class MiniLog
   
   private static String getLogFileName(String paramString)
   {
-    return processName.replace(":", "_") + "." + paramString + ".log";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(processName.replace(":", "_"));
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".log");
+    return localStringBuilder.toString();
   }
   
   public static String getMiniLogFolderPath()
@@ -207,151 +221,175 @@ public class MiniLog
   public static String getMiniLogFolderPath(String paramString)
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(paramString) + "/" + str + "/miniprogramLog/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MiniAppGlobal.getMiniCacheFilePath());
+    localStringBuilder.append(MD5.toMD5(paramString));
+    localStringBuilder.append("/");
+    localStringBuilder.append(str);
+    localStringBuilder.append("/miniprogramLog/");
+    return localStringBuilder.toString();
   }
   
   private static String getMiniLogPath(String paramString)
   {
-    int j = 2;
-    String str = getMiniLogFolderPath(paramString);
-    Object localObject2 = (Integer)mLastNumCache.get(paramString);
-    Object localObject6 = new File(str);
-    if (!((File)localObject6).exists()) {
-      ((File)localObject6).mkdirs();
+    String str1 = getMiniLogFolderPath(paramString);
+    Object localObject3 = (Integer)mLastNumCache.get(paramString);
+    Object localObject7 = new File(str1);
+    if (!((File)localObject7).exists()) {
+      ((File)localObject7).mkdirs();
     }
-    Object localObject1 = localObject2;
-    Object localObject5;
+    Object localObject1 = localObject3;
+    Object localObject6;
     int i;
-    Object localObject7;
-    Object localObject3;
-    if (localObject2 == null)
+    if (localObject3 == null)
     {
-      localObject2 = Integer.valueOf(1);
-      localObject5 = localObject2;
+      localObject3 = Integer.valueOf(1);
+      localObject6 = localObject3;
       try
       {
-        localObject6 = ((File)localObject6).listFiles();
-        localObject1 = localObject2;
-        if (localObject6 != null)
+        localObject7 = ((File)localObject7).listFiles();
+        localObject1 = localObject3;
+        if (localObject7 != null)
         {
-          localObject5 = localObject2;
-          localObject1 = localObject2;
-          if (localObject6.length > 0)
+          localObject6 = localObject3;
+          localObject1 = localObject3;
+          if (localObject7.length > 0)
           {
-            localObject5 = localObject2;
-            int k = localObject6.length;
+            localObject6 = localObject3;
+            int j = localObject7.length;
             i = 0;
             for (;;)
             {
-              localObject1 = localObject2;
-              if (i >= k) {
+              localObject1 = localObject3;
+              if (i >= j) {
                 break;
               }
-              localObject5 = localObject2;
-              localObject7 = localObject6[i].getName();
-              localObject1 = localObject2;
-              localObject5 = localObject2;
-              if (((String)localObject7).contains("log"))
+              localObject6 = localObject3;
+              String str2 = localObject7[i].getName();
+              localObject1 = localObject3;
+              localObject6 = localObject3;
+              if (str2.contains("log"))
               {
-                localObject5 = localObject2;
-                localObject7 = ((String)localObject7).substring(((String)localObject7).lastIndexOf("log") + 1);
-                localObject1 = localObject2;
-                localObject5 = localObject2;
-                if (isInteger((String)localObject7))
+                localObject6 = localObject3;
+                str2 = str2.substring(str2.lastIndexOf("log") + 1);
+                localObject1 = localObject3;
+                localObject6 = localObject3;
+                if (isInteger(str2))
                 {
-                  localObject1 = localObject2;
-                  localObject5 = localObject2;
-                  if (Integer.valueOf((String)localObject7).intValue() > ((Integer)localObject2).intValue())
+                  localObject1 = localObject3;
+                  localObject6 = localObject3;
+                  if (Integer.valueOf(str2).intValue() > ((Integer)localObject3).intValue())
                   {
-                    localObject5 = localObject2;
-                    localObject1 = Integer.valueOf((String)localObject7);
+                    localObject6 = localObject3;
+                    localObject1 = Integer.valueOf(str2);
                   }
                 }
               }
               i += 1;
-              localObject2 = localObject1;
+              localObject3 = localObject1;
             }
           }
         }
-        if (System.currentTimeMillis() - lastCheckLogSizeTime <= 60000L) {
-          break label621;
-        }
+        localObject4 = localObject1;
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        localObject1 = localObject5;
+        localObject1 = localObject6;
         if (QLog.isColorLevel())
         {
-          QLog.e("MiniLog", 2, paramString, localException1);
-          localObject1 = localObject5;
+          QLog.e("MiniLog", 2, paramString, localException2);
+          localObject1 = localObject6;
         }
       }
     }
-    else
+    Object localObject4;
+    label609:
+    Object localObject5;
+    if (System.currentTimeMillis() - lastCheckLogSizeTime > 60000L)
     {
       lastCheckLogSizeTime = System.currentTimeMillis();
-      localObject3 = localObject1;
-    }
-    for (;;)
-    {
+      Object localObject2;
       try
       {
-        if (bdhb.a(str + "log" + localObject1).length() <= MAX_MINI_LOG_SIZE) {
-          break label621;
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append(str1);
+        ((StringBuilder)localObject6).append("log");
+        ((StringBuilder)localObject6).append(localObject1);
+        localObject4 = localObject1;
+        if (FileUtils.createFile(((StringBuilder)localObject6).toString()).length() <= MAX_MINI_LOG_SIZE) {
+          break label617;
         }
-        localObject3 = localObject1;
-        if (((Integer)localObject1).intValue() >= 5) {
-          continue;
-        }
-        localObject3 = localObject1;
-        i = ((Integer)localObject1).intValue();
-        localObject3 = Integer.valueOf(i + 1);
-      }
-      catch (Exception localException3)
-      {
-        localObject1 = localObject3;
-        localObject3 = localException3;
-        ((Exception)localObject3).printStackTrace();
-        localObject3 = localObject1;
-        continue;
-      }
-      mLastNumCache.put(paramString, localObject3);
-      return str + "log" + localObject3;
-      localObject3 = localObject1;
-      new File(str + "log" + 1).delete();
-      localObject1 = Integer.valueOf(1);
-      i = j;
-      localObject3 = localObject1;
-      if (i <= 5)
-      {
-        try
+        if (((Integer)localObject1).intValue() < 5)
         {
-          localObject6 = new File(str + "log" + i);
-          if (!((File)localObject6).exists()) {
-            break label618;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("MiniLog", 2, "rename from file:log" + i + " to file:" + localObject1);
-          }
-          localObject7 = new StringBuilder().append(str).append("log");
-          j = ((Integer)localObject1).intValue();
-          localObject5 = Integer.valueOf(j + 1);
-          localObject3 = localObject5;
-          ((File)localObject6).renameTo(new File(localObject1));
-          localObject1 = localObject5;
+          localObject4 = Integer.valueOf(((Integer)localObject1).intValue() + 1);
+          break label617;
         }
-        catch (Exception localException2)
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(str1);
+        ((StringBuilder)localObject4).append("log");
+        ((StringBuilder)localObject4).append(1);
+        new File(((StringBuilder)localObject4).toString()).delete();
+        localObject1 = Integer.valueOf(1);
+        i = 2;
+        for (;;)
         {
-          continue;
-          label618:
-          continue;
+          localObject4 = localObject1;
+          if (i > 5) {
+            break label617;
+          }
+          try
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append(str1);
+            ((StringBuilder)localObject4).append("log");
+            ((StringBuilder)localObject4).append(i);
+            localObject6 = new File(((StringBuilder)localObject4).toString());
+            localObject4 = localObject1;
+            if (((File)localObject6).exists())
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("rename from file:log");
+                ((StringBuilder)localObject4).append(i);
+                ((StringBuilder)localObject4).append(" to file:");
+                ((StringBuilder)localObject4).append(localObject1);
+                QLog.i("MiniLog", 2, ((StringBuilder)localObject4).toString());
+              }
+              localObject7 = new StringBuilder();
+              ((StringBuilder)localObject7).append(str1);
+              ((StringBuilder)localObject7).append("log");
+              localObject4 = Integer.valueOf(((Integer)localObject1).intValue() + 1);
+              try
+              {
+                ((StringBuilder)localObject7).append(localObject1);
+                ((File)localObject6).renameTo(new File(((StringBuilder)localObject7).toString()));
+              }
+              catch (Exception localException1)
+              {
+                localObject6 = localObject4;
+                localObject4 = localException1;
+                localObject2 = localObject6;
+                break label609;
+              }
+            }
+            i += 1;
+            localObject2 = localObject4;
+          }
+          catch (Exception localException3) {}
         }
-        i += 1;
-        continue;
-        label621:
-        Object localObject4 = localObject1;
+        localException4.printStackTrace();
       }
+      catch (Exception localException4) {}
+      localObject5 = localObject2;
     }
+    label617:
+    mLastNumCache.put(paramString, localObject5);
+    paramString = new StringBuilder();
+    paramString.append(str1);
+    paramString.append("log");
+    paramString.append(localObject5);
+    return paramString.toString();
   }
   
   public static String getStackTraceString(Throwable paramThrowable)
@@ -376,19 +414,19 @@ public class MiniLog
   
   public static void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int j = 0;
     int k = paramVarArgs.length;
-    if (paramThrowable == null) {}
-    StringBuilder localStringBuilder;
-    for (int i = 0;; i = 128)
+    int j = 0;
+    if (paramThrowable == null) {
+      i = 0;
+    } else {
+      i = 128;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(k * 30 + i);
+    int i = j;
+    while (i < paramVarArgs.length)
     {
-      localStringBuilder = new StringBuilder(i + k * 30);
-      i = j;
-      while (i < paramVarArgs.length)
-      {
-        localStringBuilder.append(paramVarArgs[i]);
-        i += 1;
-      }
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
     i(paramString1, paramInt, paramString2, localStringBuilder.toString(), paramThrowable);
   }
@@ -402,7 +440,7 @@ public class MiniLog
   {
     if ((sPool == null) && (BaseApplicationImpl.getApplication() != null))
     {
-      sBuildNumber = AppSetting.a();
+      sBuildNumber = AppSetting.b();
       processName = BaseApplicationImpl.getApplication().getQQProcessName();
       packageName = BaseApplicationImpl.getApplication().getPackageName();
       sPool = new RecyclablePool(MiniLog.QLogItem.class, 512);
@@ -436,10 +474,13 @@ public class MiniLog
   
   public static Boolean isEnableDebug(String paramString)
   {
-    if ((debugControlMap.get(paramString) != null) && (((Boolean)debugControlMap.get(paramString)).booleanValue())) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if ((debugControlMap.get(paramString) != null) && (((Boolean)debugControlMap.get(paramString)).booleanValue())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
   
   private static boolean isInteger(String paramString)
@@ -516,19 +557,19 @@ public class MiniLog
   
   public static void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int j = 0;
     int k = paramVarArgs.length;
-    if (paramThrowable == null) {}
-    StringBuilder localStringBuilder;
-    for (int i = 0;; i = 128)
+    int j = 0;
+    if (paramThrowable == null) {
+      i = 0;
+    } else {
+      i = 128;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(k * 30 + i);
+    int i = j;
+    while (i < paramVarArgs.length)
     {
-      localStringBuilder = new StringBuilder(i + k * 30);
-      i = j;
-      while (i < paramVarArgs.length)
-      {
-        localStringBuilder.append(paramVarArgs[i]);
-        i += 1;
-      }
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
     w(paramString1, paramInt, paramString2, localStringBuilder.toString(), paramThrowable);
   }
@@ -543,64 +584,136 @@ public class MiniLog
     addMiniLogItem(getMiniLogPath(paramString1), paramString2);
   }
   
+  /* Error */
   private static void writeMiniLogToFile()
   {
-    for (;;)
-    {
-      try
-      {
-        if (miniQueue.isEmpty()) {
-          break label193;
-        }
-        localMiniItem = (MiniLog.MiniItem)miniQueue.poll();
-        if ((localMiniItem == null) || (bdnn.a(localMiniItem.filePath))) {
-          continue;
-        }
-        str = localMiniItem.filePath;
-        localFile = new File(str);
-        if (localFile.exists()) {
-          continue;
-        }
-        bdhb.a(str);
-        localBufferedWriter1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
-      }
-      catch (Throwable localThrowable)
-      {
-        MiniLog.MiniItem localMiniItem;
-        String str;
-        File localFile;
-        BufferedWriter localBufferedWriter1;
-        if ((localThrowable.getMessage() == null) || (!QLog.isColorLevel())) {
-          continue;
-        }
-        QLog.e("MiniLog", 2, localThrowable.getMessage());
-        try
-        {
-          return;
-        }
-        finally {}
-        localBufferedWriter2 = (BufferedWriter)miniFlushMap.get(str);
-        localObject1 = localBufferedWriter2;
-        if (localBufferedWriter2 != null) {
-          continue;
-        }
-        localObject1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
-        continue;
-      }
-      finally
-      {
-        miniFlushAndClean();
-      }
-      localBufferedWriter1.write(localMiniItem.msg);
-      miniFlushMap.put(str, localBufferedWriter1);
-    }
-    for (;;)
-    {
-      BufferedWriter localBufferedWriter2;
-      Object localObject1;
-      label193:
-      miniFlushAndClean();
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 120	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniQueue	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   6: invokevirtual 528	java/util/concurrent/LinkedBlockingQueue:isEmpty	()Z
+    //   9: ifne +144 -> 153
+    //   12: getstatic 120	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniQueue	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   15: invokevirtual 531	java/util/concurrent/LinkedBlockingQueue:poll	()Ljava/lang/Object;
+    //   18: checkcast 153	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$MiniItem
+    //   21: astore_2
+    //   22: aload_2
+    //   23: ifnull -20 -> 3
+    //   26: aload_2
+    //   27: getfield 160	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$MiniItem:filePath	Ljava/lang/String;
+    //   30: invokestatic 188	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
+    //   33: ifeq +6 -> 39
+    //   36: goto -33 -> 3
+    //   39: aload_2
+    //   40: getfield 160	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$MiniItem:filePath	Ljava/lang/String;
+    //   43: astore_3
+    //   44: new 335	java/io/File
+    //   47: dup
+    //   48: aload_3
+    //   49: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;)V
+    //   52: astore 4
+    //   54: aload 4
+    //   56: invokevirtual 339	java/io/File:exists	()Z
+    //   59: ifne +32 -> 91
+    //   62: aload_3
+    //   63: invokestatic 382	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   66: pop
+    //   67: new 496	java/io/BufferedWriter
+    //   70: dup
+    //   71: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
+    //   74: dup
+    //   75: aload 4
+    //   77: iconst_1
+    //   78: invokespecial 536	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
+    //   81: sipush 8192
+    //   84: invokespecial 539	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   87: astore_0
+    //   88: goto +43 -> 131
+    //   91: getstatic 115	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniFlushMap	Ljava/util/Map;
+    //   94: aload_3
+    //   95: invokeinterface 540 2 0
+    //   100: checkcast 496	java/io/BufferedWriter
+    //   103: astore_1
+    //   104: aload_1
+    //   105: astore_0
+    //   106: aload_1
+    //   107: ifnonnull +24 -> 131
+    //   110: new 496	java/io/BufferedWriter
+    //   113: dup
+    //   114: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
+    //   117: dup
+    //   118: aload 4
+    //   120: iconst_1
+    //   121: invokespecial 536	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
+    //   124: sipush 8192
+    //   127: invokespecial 539	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   130: astore_0
+    //   131: aload_0
+    //   132: aload_2
+    //   133: getfield 157	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$MiniItem:msg	Ljava/lang/String;
+    //   136: invokevirtual 543	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   139: getstatic 115	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniFlushMap	Ljava/util/Map;
+    //   142: aload_3
+    //   143: aload_0
+    //   144: invokeinterface 544 3 0
+    //   149: pop
+    //   150: goto -147 -> 3
+    //   153: invokestatic 546	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniFlushAndClean	()V
+    //   156: goto +34 -> 190
+    //   159: astore_0
+    //   160: goto +34 -> 194
+    //   163: astore_0
+    //   164: aload_0
+    //   165: invokevirtual 549	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   168: ifnull -15 -> 153
+    //   171: invokestatic 250	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   174: ifeq -21 -> 153
+    //   177: ldc 24
+    //   179: iconst_2
+    //   180: aload_0
+    //   181: invokevirtual 549	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   184: invokestatic 551	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   187: goto -34 -> 153
+    //   190: ldc 2
+    //   192: monitorexit
+    //   193: return
+    //   194: invokestatic 546	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:miniFlushAndClean	()V
+    //   197: aload_0
+    //   198: athrow
+    //   199: astore_0
+    //   200: ldc 2
+    //   202: monitorexit
+    //   203: goto +5 -> 208
+    //   206: aload_0
+    //   207: athrow
+    //   208: goto -2 -> 206
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   87	57	0	localObject1	Object
+    //   159	1	0	localObject2	Object
+    //   163	35	0	localThrowable	Throwable
+    //   199	8	0	localObject3	Object
+    //   103	4	1	localBufferedWriter	BufferedWriter
+    //   21	112	2	localMiniItem	MiniLog.MiniItem
+    //   43	100	3	str	String
+    //   52	67	4	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   3	22	159	finally
+    //   26	36	159	finally
+    //   39	88	159	finally
+    //   91	104	159	finally
+    //   110	131	159	finally
+    //   131	150	159	finally
+    //   164	187	159	finally
+    //   3	22	163	java/lang/Throwable
+    //   26	36	163	java/lang/Throwable
+    //   39	88	163	java/lang/Throwable
+    //   91	104	163	java/lang/Throwable
+    //   110	131	163	java/lang/Throwable
+    //   131	150	163	java/lang/Throwable
+    //   153	156	199	finally
+    //   194	199	199	finally
   }
   
   /* Error */
@@ -610,306 +723,356 @@ public class MiniLog
     //   0: ldc 2
     //   2: monitorenter
     //   3: getstatic 84	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:processName	Ljava/lang/String;
-    //   6: astore_2
-    //   7: aload_2
+    //   6: astore_3
+    //   7: aload_3
     //   8: monitorenter
-    //   9: getstatic 222	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sTail	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
+    //   9: getstatic 88	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sTail	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
     //   12: astore 5
-    //   14: getstatic 131	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sHead	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
-    //   17: astore_3
+    //   14: getstatic 86	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sHead	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
+    //   17: astore_2
     //   18: aconst_null
-    //   19: putstatic 222	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sTail	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
+    //   19: putstatic 88	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sTail	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
     //   22: aconst_null
-    //   23: putstatic 131	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sHead	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
-    //   26: aload_2
+    //   23: putstatic 86	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sHead	Lcom/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem;
+    //   26: aload_3
     //   27: monitorexit
-    //   28: aload_3
-    //   29: astore_2
-    //   30: aload_3
-    //   31: ifnonnull +51 -> 82
-    //   34: invokestatic 552	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
+    //   28: aload_2
+    //   29: astore_3
+    //   30: aload_2
+    //   31: ifnonnull +10 -> 41
+    //   34: invokestatic 553	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
     //   37: ldc 2
     //   39: monitorexit
     //   40: return
-    //   41: astore_3
-    //   42: aload_2
-    //   43: monitorexit
-    //   44: aload_3
-    //   45: athrow
-    //   46: astore_2
-    //   47: aload_2
-    //   48: invokevirtual 545	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   51: ifnull +19 -> 70
-    //   54: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   57: ifeq +13 -> 70
-    //   60: ldc 24
-    //   62: iconst_2
-    //   63: aload_2
-    //   64: invokevirtual 545	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   67: invokestatic 547	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   70: invokestatic 552	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
-    //   73: goto -36 -> 37
-    //   76: astore_2
-    //   77: ldc 2
-    //   79: monitorexit
-    //   80: aload_2
-    //   81: athrow
-    //   82: aload_2
-    //   83: astore_3
-    //   84: aload_3
-    //   85: getfield 200	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:logTime	J
-    //   88: lstore_0
-    //   89: lload_0
-    //   90: getstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   93: ldc2_w 171
-    //   96: ladd
-    //   97: lcmp
-    //   98: ifge +11 -> 109
-    //   101: lload_0
-    //   102: getstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   105: lcmp
-    //   106: ifge +50 -> 156
-    //   109: getstatic 109	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:timeFormatter	Ljava/text/SimpleDateFormat;
-    //   112: lload_0
-    //   113: invokestatic 559	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   116: invokevirtual 563	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-    //   119: putstatic 74	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logTime	Ljava/lang/String;
-    //   122: lload_0
-    //   123: getstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   126: ldc2_w 171
-    //   129: ladd
-    //   130: lcmp
-    //   131: iflt +346 -> 477
-    //   134: lload_0
-    //   135: getstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   138: ldc2_w 564
-    //   141: ladd
-    //   142: lcmp
-    //   143: ifge +334 -> 477
-    //   146: getstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   149: ldc2_w 171
-    //   152: ladd
-    //   153: putstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   156: new 64	java/lang/StringBuilder
-    //   159: dup
-    //   160: invokespecial 273	java/lang/StringBuilder:<init>	()V
-    //   163: aload_3
-    //   164: getfield 220	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:appId	Ljava/lang/String;
-    //   167: invokestatic 325	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:getMiniLogFolderPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   170: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   173: getstatic 105	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logFileFormatter	Ljava/text/SimpleDateFormat;
-    //   176: invokestatic 198	java/lang/System:currentTimeMillis	()J
-    //   179: invokestatic 559	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   182: invokevirtual 563	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-    //   185: invokestatic 567	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:getLogFileName	(Ljava/lang/String;)Ljava/lang/String;
-    //   188: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: astore 6
-    //   196: new 333	java/io/File
-    //   199: dup
-    //   200: aload 6
-    //   202: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
-    //   205: astore 7
-    //   207: aload 7
-    //   209: invokevirtual 337	java/io/File:exists	()Z
-    //   212: ifne +297 -> 509
-    //   215: aload 6
-    //   217: invokestatic 381	bdhb:a	(Ljava/lang/String;)Ljava/io/File;
-    //   220: pop
-    //   221: new 494	java/io/BufferedWriter
-    //   224: dup
-    //   225: new 532	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
-    //   228: dup
-    //   229: aload 7
-    //   231: iconst_1
-    //   232: invokespecial 535	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
-    //   235: sipush 8192
-    //   238: invokespecial 538	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
-    //   241: astore_2
-    //   242: aload_2
-    //   243: new 64	java/lang/StringBuilder
-    //   246: dup
-    //   247: invokespecial 273	java/lang/StringBuilder:<init>	()V
-    //   250: getstatic 74	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logTime	Ljava/lang/String;
-    //   253: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: ldc_w 569
-    //   259: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: getstatic 84	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:processName	Ljava/lang/String;
-    //   265: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: ldc_w 571
-    //   271: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: getstatic 88	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sBuildNumber	Ljava/lang/String;
-    //   277: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: ldc_w 573
-    //   283: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   289: invokevirtual 541	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   292: getstatic 70	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sBuilder	Ljava/lang/StringBuilder;
-    //   295: iconst_0
-    //   296: getstatic 70	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sBuilder	Ljava/lang/StringBuilder;
-    //   299: invokevirtual 575	java/lang/StringBuilder:length	()I
-    //   302: invokevirtual 578	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   305: astore 4
-    //   307: aload 4
-    //   309: getstatic 74	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logTime	Ljava/lang/String;
-    //   312: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: bipush 124
-    //   317: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   320: aload_3
-    //   321: getfield 200	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:logTime	J
-    //   324: invokevirtual 584	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   327: aload_3
-    //   328: getfield 220	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:appId	Ljava/lang/String;
-    //   331: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: bipush 91
-    //   336: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   339: getstatic 82	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:myProcessId	I
-    //   342: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   345: bipush 93
-    //   347: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   350: aload_3
-    //   351: getfield 206	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:threadId	I
-    //   354: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   357: bipush 124
-    //   359: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   362: aload_3
-    //   363: getfield 209	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:level	I
-    //   366: invokestatic 587	com/tencent/qphone/base/util/QLog:getReportLevel	(I)Ljava/lang/String;
-    //   369: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: bipush 124
-    //   374: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   377: aload_3
-    //   378: getfield 212	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:tag	Ljava/lang/String;
-    //   381: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: bipush 124
-    //   386: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   389: aload_3
-    //   390: getfield 213	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:msg	Ljava/lang/String;
-    //   393: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: bipush 10
-    //   398: invokevirtual 581	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   41: aload_3
+    //   42: getfield 204	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:logTime	J
+    //   45: lstore_0
+    //   46: lload_0
+    //   47: getstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   50: ldc2_w 175
+    //   53: ladd
+    //   54: lcmp
+    //   55: ifge +11 -> 66
+    //   58: lload_0
+    //   59: getstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   62: lcmp
+    //   63: ifge +76 -> 139
+    //   66: getstatic 113	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:timeFormatter	Ljava/text/SimpleDateFormat;
+    //   69: lload_0
+    //   70: invokestatic 560	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   73: invokevirtual 564	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   76: putstatic 74	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logTime	Ljava/lang/String;
+    //   79: lload_0
+    //   80: getstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   83: ldc2_w 175
+    //   86: ladd
+    //   87: lcmp
+    //   88: iflt +28 -> 116
+    //   91: lload_0
+    //   92: getstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   95: ldc2_w 565
+    //   98: ladd
+    //   99: lcmp
+    //   100: ifge +16 -> 116
+    //   103: getstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   106: ldc2_w 175
+    //   109: ladd
+    //   110: putstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   113: goto +26 -> 139
+    //   116: invokestatic 572	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   119: astore_2
+    //   120: aload_2
+    //   121: lload_0
+    //   122: invokevirtual 576	java/util/Calendar:setTimeInMillis	(J)V
+    //   125: aload_2
+    //   126: bipush 14
+    //   128: iconst_0
+    //   129: invokevirtual 580	java/util/Calendar:set	(II)V
+    //   132: aload_2
+    //   133: invokevirtual 583	java/util/Calendar:getTimeInMillis	()J
+    //   136: putstatic 555	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
+    //   139: new 64	java/lang/StringBuilder
+    //   142: dup
+    //   143: invokespecial 275	java/lang/StringBuilder:<init>	()V
+    //   146: astore_2
+    //   147: aload_2
+    //   148: aload_3
+    //   149: getfield 224	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:appId	Ljava/lang/String;
+    //   152: invokestatic 327	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:getMiniLogFolderPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   155: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: pop
+    //   159: aload_2
+    //   160: getstatic 109	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logFileFormatter	Ljava/text/SimpleDateFormat;
+    //   163: invokestatic 202	java/lang/System:currentTimeMillis	()J
+    //   166: invokestatic 560	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   169: invokevirtual 564	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   172: invokestatic 585	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:getLogFileName	(Ljava/lang/String;)Ljava/lang/String;
+    //   175: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload_2
+    //   180: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: astore 6
+    //   185: new 335	java/io/File
+    //   188: dup
+    //   189: aload 6
+    //   191: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;)V
+    //   194: astore 7
+    //   196: aload 7
+    //   198: invokevirtual 339	java/io/File:exists	()Z
+    //   201: ifne +105 -> 306
+    //   204: aload 6
+    //   206: invokestatic 382	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   209: pop
+    //   210: new 496	java/io/BufferedWriter
+    //   213: dup
+    //   214: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
+    //   217: dup
+    //   218: aload 7
+    //   220: iconst_1
+    //   221: invokespecial 536	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
+    //   224: sipush 8192
+    //   227: invokespecial 539	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   230: astore_2
+    //   231: new 64	java/lang/StringBuilder
+    //   234: dup
+    //   235: invokespecial 275	java/lang/StringBuilder:<init>	()V
+    //   238: astore 4
+    //   240: aload 4
+    //   242: getstatic 74	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logTime	Ljava/lang/String;
+    //   245: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload 4
+    //   251: ldc_w 587
+    //   254: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: pop
+    //   258: aload 4
+    //   260: getstatic 84	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:processName	Ljava/lang/String;
+    //   263: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: pop
+    //   267: aload 4
+    //   269: ldc_w 589
+    //   272: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: pop
+    //   276: aload 4
+    //   278: getstatic 92	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sBuildNumber	Ljava/lang/String;
+    //   281: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload 4
+    //   287: ldc_w 591
+    //   290: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   293: pop
+    //   294: aload_2
+    //   295: aload 4
+    //   297: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   300: invokevirtual 543	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   303: goto +47 -> 350
+    //   306: getstatic 100	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushMap	Ljava/util/Map;
+    //   309: aload 6
+    //   311: invokeinterface 540 2 0
+    //   316: checkcast 496	java/io/BufferedWriter
+    //   319: astore 4
+    //   321: aload 4
+    //   323: astore_2
+    //   324: aload 4
+    //   326: ifnonnull +24 -> 350
+    //   329: new 496	java/io/BufferedWriter
+    //   332: dup
+    //   333: new 533	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
+    //   336: dup
+    //   337: aload 7
+    //   339: iconst_1
+    //   340: invokespecial 536	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
+    //   343: sipush 8192
+    //   346: invokespecial 539	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   349: astore_2
+    //   350: getstatic 70	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sBuilder	Ljava/lang/StringBuilder;
+    //   353: iconst_0
+    //   354: getstatic 70	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sBuilder	Ljava/lang/StringBuilder;
+    //   357: invokevirtual 593	java/lang/StringBuilder:length	()I
+    //   360: invokevirtual 596	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   363: astore 4
+    //   365: aload 4
+    //   367: getstatic 74	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:logTime	Ljava/lang/String;
+    //   370: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: pop
+    //   374: aload 4
+    //   376: bipush 124
+    //   378: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   381: pop
+    //   382: aload 4
+    //   384: aload_3
+    //   385: getfield 204	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:logTime	J
+    //   388: invokevirtual 602	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   391: pop
+    //   392: aload 4
+    //   394: aload_3
+    //   395: getfield 224	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:appId	Ljava/lang/String;
+    //   398: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   401: pop
-    //   402: aload_2
-    //   403: aload 4
-    //   405: invokevirtual 260	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   408: invokevirtual 541	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   411: aload_3
-    //   412: getfield 217	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:trace	Ljava/lang/Throwable;
-    //   415: ifnull +20 -> 435
-    //   418: aload_2
-    //   419: aload_3
-    //   420: getfield 217	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:trace	Ljava/lang/Throwable;
-    //   423: invokestatic 590	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   426: invokevirtual 541	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   429: aload_2
-    //   430: bipush 10
-    //   432: invokevirtual 592	java/io/BufferedWriter:write	(I)V
-    //   435: getstatic 96	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushMap	Ljava/util/Map;
-    //   438: aload 6
-    //   440: aload_2
-    //   441: invokeinterface 542 3 0
-    //   446: pop
+    //   402: aload 4
+    //   404: bipush 91
+    //   406: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   409: pop
+    //   410: aload 4
+    //   412: getstatic 82	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:myProcessId	I
+    //   415: invokevirtual 388	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   418: pop
+    //   419: aload 4
+    //   421: bipush 93
+    //   423: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload 4
+    //   429: aload_3
+    //   430: getfield 210	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:threadId	I
+    //   433: invokevirtual 388	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: aload 4
+    //   439: bipush 124
+    //   441: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   444: pop
+    //   445: aload 4
     //   447: aload_3
-    //   448: invokevirtual 596	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:getNext	()Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
-    //   451: checkcast 186	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem
-    //   454: astore_2
-    //   455: getstatic 135	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sPool	Lcom/tencent/commonsdk/pool/RecyclablePool;
-    //   458: aload_3
-    //   459: invokevirtual 600	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
-    //   462: aload_3
-    //   463: aload 5
-    //   465: if_acmpne -383 -> 82
-    //   468: invokestatic 552	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
-    //   471: invokestatic 552	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
-    //   474: goto -437 -> 37
-    //   477: invokestatic 606	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   480: astore_2
-    //   481: aload_2
-    //   482: lload_0
-    //   483: invokevirtual 610	java/util/Calendar:setTimeInMillis	(J)V
-    //   486: aload_2
-    //   487: bipush 14
-    //   489: iconst_0
-    //   490: invokevirtual 614	java/util/Calendar:set	(II)V
-    //   493: aload_2
-    //   494: invokevirtual 617	java/util/Calendar:getTimeInMillis	()J
-    //   497: putstatic 554	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:currentLogSecond	J
-    //   500: goto -344 -> 156
-    //   503: astore_2
-    //   504: invokestatic 552	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
-    //   507: aload_2
-    //   508: athrow
-    //   509: getstatic 96	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushMap	Ljava/util/Map;
-    //   512: aload 6
-    //   514: invokeinterface 550 2 0
-    //   519: checkcast 494	java/io/BufferedWriter
-    //   522: astore 4
-    //   524: aload 4
-    //   526: astore_2
-    //   527: aload 4
-    //   529: ifnonnull -237 -> 292
-    //   532: new 494	java/io/BufferedWriter
-    //   535: dup
-    //   536: new 532	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter
-    //   539: dup
-    //   540: aload 7
-    //   542: iconst_1
-    //   543: invokespecial 535	com/tencent/mobileqq/mini/appbrand/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
-    //   546: sipush 8192
-    //   549: invokespecial 538	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
-    //   552: astore_2
-    //   553: goto -261 -> 292
+    //   448: getfield 213	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:level	I
+    //   451: invokestatic 605	com/tencent/qphone/base/util/QLog:getReportLevel	(I)Ljava/lang/String;
+    //   454: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: aload 4
+    //   460: bipush 124
+    //   462: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   465: pop
+    //   466: aload 4
+    //   468: aload_3
+    //   469: getfield 216	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:tag	Ljava/lang/String;
+    //   472: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: pop
+    //   476: aload 4
+    //   478: bipush 124
+    //   480: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   483: pop
+    //   484: aload 4
+    //   486: aload_3
+    //   487: getfield 217	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:msg	Ljava/lang/String;
+    //   490: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   493: pop
+    //   494: aload 4
+    //   496: bipush 10
+    //   498: invokevirtual 599	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   501: pop
+    //   502: aload_2
+    //   503: aload 4
+    //   505: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   508: invokevirtual 543	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   511: aload_3
+    //   512: getfield 221	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:trace	Ljava/lang/Throwable;
+    //   515: ifnull +20 -> 535
+    //   518: aload_2
+    //   519: aload_3
+    //   520: getfield 221	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:trace	Ljava/lang/Throwable;
+    //   523: invokestatic 608	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   526: invokevirtual 543	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   529: aload_2
+    //   530: bipush 10
+    //   532: invokevirtual 610	java/io/BufferedWriter:write	(I)V
+    //   535: getstatic 100	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushMap	Ljava/util/Map;
+    //   538: aload 6
+    //   540: aload_2
+    //   541: invokeinterface 544 3 0
+    //   546: pop
+    //   547: aload_3
+    //   548: invokevirtual 614	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem:getNext	()Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
+    //   551: checkcast 190	com/tencent/mobileqq/mini/appbrand/utils/MiniLog$QLogItem
+    //   554: astore_2
+    //   555: getstatic 139	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:sPool	Lcom/tencent/commonsdk/pool/RecyclablePool;
+    //   558: aload_3
+    //   559: invokevirtual 618	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
+    //   562: aload_3
+    //   563: aload 5
+    //   565: if_acmpne +12 -> 577
+    //   568: invokestatic 553	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
+    //   571: invokestatic 553	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
+    //   574: goto +44 -> 618
+    //   577: aload_2
+    //   578: astore_3
+    //   579: goto -538 -> 41
+    //   582: astore_2
+    //   583: aload_3
+    //   584: monitorexit
+    //   585: aload_2
+    //   586: athrow
+    //   587: astore_2
+    //   588: goto +34 -> 622
+    //   591: astore_2
+    //   592: aload_2
+    //   593: invokevirtual 549	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   596: ifnull -25 -> 571
+    //   599: invokestatic 250	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   602: ifeq -31 -> 571
+    //   605: ldc 24
+    //   607: iconst_2
+    //   608: aload_2
+    //   609: invokevirtual 549	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   612: invokestatic 551	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   615: goto -44 -> 571
+    //   618: ldc 2
+    //   620: monitorexit
+    //   621: return
+    //   622: invokestatic 553	com/tencent/mobileqq/mini/appbrand/utils/MiniLog:nativeFlushAndClean	()V
+    //   625: aload_2
+    //   626: athrow
+    //   627: astore_2
+    //   628: ldc 2
+    //   630: monitorexit
+    //   631: goto +5 -> 636
+    //   634: aload_2
+    //   635: athrow
+    //   636: goto -2 -> 634
     // Local variable table:
     //   start	length	slot	name	signature
-    //   88	395	0	l	long
-    //   46	18	2	localThrowable	Throwable
-    //   76	7	2	localObject2	Object
-    //   241	253	2	localObject3	Object
-    //   503	5	2	localObject4	Object
-    //   526	27	2	localObject5	Object
-    //   17	14	3	localQLogItem1	MiniLog.QLogItem
-    //   41	4	3	localObject6	Object
-    //   83	380	3	localObject7	Object
-    //   305	223	4	localObject8	Object
-    //   12	452	5	localQLogItem2	MiniLog.QLogItem
-    //   194	319	6	str	String
-    //   205	336	7	localFile	File
+    //   45	77	0	l	long
+    //   17	561	2	localObject1	Object
+    //   582	4	2	localObject2	Object
+    //   587	1	2	localObject3	Object
+    //   591	35	2	localThrowable	Throwable
+    //   627	8	2	localObject4	Object
+    //   238	266	4	localObject6	Object
+    //   12	552	5	localQLogItem	MiniLog.QLogItem
+    //   183	356	6	str	String
+    //   194	144	7	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   9	28	41	finally
-    //   42	44	41	finally
-    //   3	9	46	java/lang/Throwable
-    //   44	46	46	java/lang/Throwable
-    //   84	109	46	java/lang/Throwable
-    //   109	156	46	java/lang/Throwable
-    //   156	292	46	java/lang/Throwable
-    //   292	435	46	java/lang/Throwable
-    //   435	462	46	java/lang/Throwable
-    //   468	471	46	java/lang/Throwable
-    //   477	500	46	java/lang/Throwable
-    //   509	524	46	java/lang/Throwable
-    //   532	553	46	java/lang/Throwable
-    //   34	37	76	finally
-    //   70	73	76	finally
-    //   471	474	76	finally
-    //   504	509	76	finally
-    //   3	9	503	finally
-    //   44	46	503	finally
-    //   47	70	503	finally
-    //   84	109	503	finally
-    //   109	156	503	finally
-    //   156	292	503	finally
-    //   292	435	503	finally
-    //   435	462	503	finally
-    //   468	471	503	finally
-    //   477	500	503	finally
-    //   509	524	503	finally
-    //   532	553	503	finally
+    //   9	28	582	finally
+    //   583	585	582	finally
+    //   3	9	587	finally
+    //   41	66	587	finally
+    //   66	113	587	finally
+    //   116	139	587	finally
+    //   139	303	587	finally
+    //   306	321	587	finally
+    //   329	350	587	finally
+    //   350	535	587	finally
+    //   535	562	587	finally
+    //   568	571	587	finally
+    //   585	587	587	finally
+    //   592	615	587	finally
+    //   3	9	591	java/lang/Throwable
+    //   41	66	591	java/lang/Throwable
+    //   66	113	591	java/lang/Throwable
+    //   116	139	591	java/lang/Throwable
+    //   139	303	591	java/lang/Throwable
+    //   306	321	591	java/lang/Throwable
+    //   329	350	591	java/lang/Throwable
+    //   350	535	591	java/lang/Throwable
+    //   535	562	591	java/lang/Throwable
+    //   568	571	591	java/lang/Throwable
+    //   585	587	591	java/lang/Throwable
+    //   34	37	627	finally
+    //   571	574	627	finally
+    //   622	627	627	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLog
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.widget.QQToast;
 public final class fxy
   implements Runnable
 {
-  public fxy(int paramInt) {}
+  public fxy(String paramString) {}
   
   public void run()
   {

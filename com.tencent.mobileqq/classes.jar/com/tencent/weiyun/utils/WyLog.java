@@ -21,14 +21,14 @@ public class WyLog
   {
     if (2 >= getLogLevel())
     {
-      if (sLog != null) {
-        sLog.d(paramString1, paramString2, paramThrowable);
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.d(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.d(paramString1, paramString2, paramThrowable);
     }
-    else {
-      return;
-    }
-    Log.d(paramString1, paramString2, paramThrowable);
   }
   
   public static void d(String paramString, Throwable paramThrowable)
@@ -50,14 +50,14 @@ public class WyLog
   {
     if (5 >= getLogLevel())
     {
-      if (sLog != null) {
-        sLog.e(paramString1, paramString2, paramThrowable);
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.e(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.e(paramString1, paramString2, paramThrowable);
     }
-    else {
-      return;
-    }
-    Log.e(paramString1, paramString2, paramThrowable);
   }
   
   public static void e(String paramString, Throwable paramThrowable)
@@ -67,8 +67,9 @@ public class WyLog
   
   private static int getLogLevel()
   {
-    if (sLog != null) {
-      return sLog.getLogLevel();
+    ILog localILog = sLog;
+    if (localILog != null) {
+      return localILog.getLogLevel();
     }
     return 1;
   }
@@ -87,14 +88,14 @@ public class WyLog
   {
     if (3 >= getLogLevel())
     {
-      if (sLog != null) {
-        sLog.i(paramString1, paramString2, paramThrowable);
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.i(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.i(paramString1, paramString2, paramThrowable);
     }
-    else {
-      return;
-    }
-    Log.i(paramString1, paramString2, paramThrowable);
   }
   
   public static void i(String paramString, Throwable paramThrowable)
@@ -121,14 +122,14 @@ public class WyLog
   {
     if (1 >= getLogLevel())
     {
-      if (sLog != null) {
-        sLog.v(paramString1, paramString2, paramThrowable);
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.v(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.v(paramString1, paramString2, paramThrowable);
     }
-    else {
-      return;
-    }
-    Log.v(paramString1, paramString2, paramThrowable);
   }
   
   public static void v(String paramString, Throwable paramThrowable)
@@ -150,14 +151,14 @@ public class WyLog
   {
     if (4 >= getLogLevel())
     {
-      if (sLog != null) {
-        sLog.w(paramString1, paramString2, paramThrowable);
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.w(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.w(paramString1, paramString2, paramThrowable);
     }
-    else {
-      return;
-    }
-    Log.w(paramString1, paramString2, paramThrowable);
   }
   
   public static void w(String paramString, Throwable paramThrowable)
@@ -167,7 +168,7 @@ public class WyLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.utils.WyLog
  * JD-Core Version:    0.7.0.1
  */

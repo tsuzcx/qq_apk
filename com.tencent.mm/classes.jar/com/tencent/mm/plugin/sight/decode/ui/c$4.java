@@ -9,9 +9,9 @@ final class c$4
   
   public final void run()
   {
-    AppMethodBeat.i(70284);
-    this.qUl.dismiss();
-    AppMethodBeat.o(70284);
+    AppMethodBeat.i(116130);
+    this.PGP.dismiss();
+    AppMethodBeat.o(116130);
   }
 }
 

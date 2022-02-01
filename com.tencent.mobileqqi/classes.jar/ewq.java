@@ -1,21 +1,11 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.widget.AdapterView.AdapterContextMenuInfo;
+import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
 
 public class ewq
-  implements MenuItem.OnMenuItemClickListener
 {
-  public ewq(VoipHistoryActivity paramVoipHistoryActivity) {}
+  public VoipHistoryAllType a;
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
-  {
-    paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
-    this.a.b(((ViewGroup)VoipHistoryActivity.a(this.a).getChildAt(paramMenuItem.a)).getChildAt(0));
-    return true;
-  }
+  private ewq(VoipHistoryActivity paramVoipHistoryActivity) {}
 }
 
 

@@ -11,9 +11,9 @@ final class FavoriteIndexUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(74221);
-    FavoriteIndexUI.g(this.myP);
-    AppMethodBeat.o(74221);
+    AppMethodBeat.i(106995);
+    FavoriteIndexUI.h(this.Aji);
+    AppMethodBeat.o(106995);
     return true;
   }
 }

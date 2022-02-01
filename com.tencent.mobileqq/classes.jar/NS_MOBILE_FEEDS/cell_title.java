@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_title
   extends JceStruct
@@ -67,34 +68,40 @@ public final class cell_title
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.titleurl != null) {
-      paramJceOutputStream.write(this.titleurl, 1);
+    localObject = this.titleurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.userlist != null) {
-      paramJceOutputStream.write(this.userlist, 2);
+    localObject = this.userlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.usernum, 3);
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 5);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.useractiontype, 6);
-    if (this.relation_type != null) {
-      paramJceOutputStream.write(this.relation_type, 7);
+    localObject = this.relation_type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.status, 8);
-    if (this.talk_user_list != null) {
-      paramJceOutputStream.write(this.talk_user_list, 9);
+    localObject = this.talk_user_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
     paramJceOutputStream.write(this.relation, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_title
  * JD-Core Version:    0.7.0.1
  */

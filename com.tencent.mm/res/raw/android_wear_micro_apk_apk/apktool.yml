@@ -2,6 +2,8 @@
 apkFileName: android_wear_micro_apk.apk
 compressionType: false
 doNotCompress:
+- resources.arsc
+- gif
 - png
 isFrameworkApk: false
 packageInfo:
@@ -9,7 +11,7 @@ packageInfo:
   renameManifestPackage: null
 sdkInfo:
   minSdkVersion: '21'
-  targetSdkVersion: '23'
+  targetSdkVersion: '26'
 sharedLibrary: false
 sparseResources: false
 unknownFiles:
@@ -21,5 +23,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1360'
-  versionName: 6.7.3
+  versionCode: '1500'
+  versionName: 7.0.6

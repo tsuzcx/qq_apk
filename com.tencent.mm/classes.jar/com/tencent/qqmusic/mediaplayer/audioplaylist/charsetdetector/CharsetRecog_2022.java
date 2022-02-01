@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 abstract class CharsetRecog_2022
   extends CharsetRecognizer
 {
@@ -64,10 +66,104 @@ abstract class CharsetRecog_2022
       break;
     }
   }
+  
+  static class CharsetRecog_2022CN
+    extends CharsetRecog_2022
+  {
+    private byte[][] escapeSequences;
+    
+    CharsetRecog_2022CN()
+    {
+      AppMethodBeat.i(76617);
+      byte[] arrayOfByte1 = { 27, 36, 41, 69 };
+      byte[] arrayOfByte2 = { 27, 36, 43, 74 };
+      byte[] arrayOfByte3 = { 27, 78 };
+      this.escapeSequences = new byte[][] { { 27, 36, 41, 65 }, { 27, 36, 41, 71 }, { 27, 36, 42, 72 }, arrayOfByte1, { 27, 36, 43, 73 }, arrayOfByte2, { 27, 36, 43, 75 }, { 27, 36, 43, 76 }, { 27, 36, 43, 77 }, arrayOfByte3, { 27, 79 } };
+      AppMethodBeat.o(76617);
+    }
+    
+    String getName()
+    {
+      return "ISO-2022-CN";
+    }
+    
+    CharsetMatch match(CharsetDetector paramCharsetDetector)
+    {
+      AppMethodBeat.i(76618);
+      int i = match(paramCharsetDetector.fInputBytes, paramCharsetDetector.fInputLen, this.escapeSequences);
+      if (i == 0)
+      {
+        AppMethodBeat.o(76618);
+        return null;
+      }
+      paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+      AppMethodBeat.o(76618);
+      return paramCharsetDetector;
+    }
+  }
+  
+  static class CharsetRecog_2022JP
+    extends CharsetRecog_2022
+  {
+    private byte[][] escapeSequences;
+    
+    CharsetRecog_2022JP()
+    {
+      AppMethodBeat.i(76646);
+      byte[] arrayOfByte1 = { 27, 36, 40, 67 };
+      byte[] arrayOfByte2 = { 27, 36, 64 };
+      byte[] arrayOfByte3 = { 27, 36, 66 };
+      byte[] arrayOfByte4 = { 27, 40, 72 };
+      byte[] arrayOfByte5 = { 27, 40, 74 };
+      byte[] arrayOfByte6 = { 27, 46, 65 };
+      byte[] arrayOfByte7 = { 27, 46, 70 };
+      this.escapeSequences = new byte[][] { arrayOfByte1, { 27, 36, 40, 68 }, arrayOfByte2, { 27, 36, 65 }, arrayOfByte3, { 27, 38, 64 }, { 27, 40, 66 }, arrayOfByte4, { 27, 40, 73 }, arrayOfByte5, arrayOfByte6, arrayOfByte7 };
+      AppMethodBeat.o(76646);
+    }
+    
+    String getName()
+    {
+      return "ISO-2022-JP";
+    }
+    
+    CharsetMatch match(CharsetDetector paramCharsetDetector)
+    {
+      AppMethodBeat.i(76647);
+      int i = match(paramCharsetDetector.fInputBytes, paramCharsetDetector.fInputLen, this.escapeSequences);
+      if (i == 0)
+      {
+        AppMethodBeat.o(76647);
+        return null;
+      }
+      paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+      AppMethodBeat.o(76647);
+      return paramCharsetDetector;
+    }
+  }
+  
+  static class CharsetRecog_2022KR
+    extends CharsetRecog_2022
+  {
+    private byte[][] escapeSequences = { { 27, 36, 41, 67 } };
+    
+    String getName()
+    {
+      return "ISO-2022-KR";
+    }
+    
+    CharsetMatch match(CharsetDetector paramCharsetDetector)
+    {
+      int i = match(paramCharsetDetector.fInputBytes, paramCharsetDetector.fInputLen, this.escapeSequences);
+      if (i == 0) {
+        return null;
+      }
+      return new CharsetMatch(paramCharsetDetector, this, i);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_2022
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,76 @@
 package com.tencent.xweb;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.c.b.b;
+import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 
 public final class c
 {
-  private static c BCW;
-  static b.b BCX;
+  private static c aiem;
+  CookieInternal.ICookieManagerInternal aien;
   
-  private c(Context paramContext)
-  {
-    AppMethodBeat.i(3803);
-    if (BCX != null) {
-      BCX.init(paramContext);
-    }
-    AppMethodBeat.o(3803);
-  }
-  
-  public static c dYi()
+  public static c kfo()
   {
     try
     {
-      AppMethodBeat.i(3802);
-      if (BCW == null)
-      {
-        IllegalStateException localIllegalStateException = new IllegalStateException("CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()");
-        AppMethodBeat.o(3802);
-        throw localIllegalStateException;
+      AppMethodBeat.i(156717);
+      if (aiem == null) {
+        aiem = new c();
       }
-    }
-    finally {}
-    c localc = BCW;
-    AppMethodBeat.o(3802);
-    return localc;
-  }
-  
-  public static c jQ(Context paramContext)
-  {
-    try
-    {
-      AppMethodBeat.i(3801);
-      if (BCW == null) {
-        BCW = new c(paramContext.getApplicationContext());
-      }
-      paramContext = BCW;
-      AppMethodBeat.o(3801);
-      return paramContext;
+      c localc = aiem;
+      AppMethodBeat.o(156717);
+      return localc;
     }
     finally {}
   }
   
-  public static void sync()
+  @Deprecated
+  public final void g(WebView paramWebView)
   {
-    AppMethodBeat.i(3804);
-    if (BCX != null) {
-      BCX.sync();
+    try
+    {
+      AppMethodBeat.i(156722);
+      if (this.aien != null) {
+        this.aien.b(paramWebView, true);
+      }
+      AppMethodBeat.o(156722);
+      return;
     }
-    AppMethodBeat.o(3804);
+    finally {}
+  }
+  
+  @Deprecated
+  public final void kfp()
+  {
+    try
+    {
+      AppMethodBeat.i(156721);
+      if (this.aien != null) {
+        this.aien.setAcceptCookie(true);
+      }
+      AppMethodBeat.o(156721);
+      return;
+    }
+    finally {}
+  }
+  
+  @Deprecated
+  public final void setCookie(String paramString1, String paramString2)
+  {
+    try
+    {
+      AppMethodBeat.i(156720);
+      if (this.aien != null) {
+        this.aien.setCookie(paramString1, paramString2);
+      }
+      AppMethodBeat.o(156720);
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.c
  * JD-Core Version:    0.7.0.1
  */

@@ -17,22 +17,22 @@ class MapsKt__MapWithDefaultKt
   public static final <K, V> V getOrImplicitDefaultNullable(@NotNull Map<K, ? extends V> paramMap, K paramK)
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$getOrImplicitDefault");
-    Object localObject1;
     if ((paramMap instanceof MapWithDefault)) {
-      localObject1 = ((MapWithDefault)paramMap).getOrImplicitDefault(paramK);
+      return ((MapWithDefault)paramMap).getOrImplicitDefault(paramK);
     }
-    do
+    Object localObject = paramMap.get(paramK);
+    if (localObject == null)
     {
-      Object localObject2;
-      do
-      {
-        return localObject1;
-        localObject2 = paramMap.get(paramK);
-        localObject1 = localObject2;
-      } while (localObject2 != null);
-      localObject1 = localObject2;
-    } while (paramMap.containsKey(paramK));
-    throw ((Throwable)new NoSuchElementException("Key " + paramK + " is missing in the map."));
+      if (paramMap.containsKey(paramK)) {
+        return localObject;
+      }
+      paramMap = new StringBuilder();
+      paramMap.append("Key ");
+      paramMap.append(paramK);
+      paramMap.append(" is missing in the map.");
+      throw ((Throwable)new NoSuchElementException(paramMap.toString()));
+    }
+    return localObject;
   }
   
   @NotNull
@@ -60,7 +60,7 @@ class MapsKt__MapWithDefaultKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.MapsKt__MapWithDefaultKt
  * JD-Core Version:    0.7.0.1
  */

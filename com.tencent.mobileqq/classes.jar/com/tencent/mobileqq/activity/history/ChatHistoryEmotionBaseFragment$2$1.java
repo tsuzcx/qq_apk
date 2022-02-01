@@ -1,30 +1,24 @@
 package com.tencent.mobileqq.activity.history;
 
-import aiag;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class ChatHistoryEmotionBaseFragment$2$1
+class ChatHistoryEmotionBaseFragment$2$1
   implements Runnable
 {
-  public ChatHistoryEmotionBaseFragment$2$1(aiag paramaiag, List paramList) {}
+  ChatHistoryEmotionBaseFragment$2$1(ChatHistoryEmotionBaseFragment.2 param2, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Aiag.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    if (this.a.size() == 1) {
+      this.b.b.a.getMessageFacade().a((MessageRecord)this.a.get(0), false);
+    } else if (this.a.size() > 1) {
+      this.b.b.a.getMessageFacade().a(this.a, false);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aiag.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_Aiag.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
-    }
+    this.b.b.t.sendEmptyMessage(2);
   }
 }
 

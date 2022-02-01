@@ -94,6 +94,7 @@ import com.tencent.widget.ActionSheetHelper;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
 import cooperation.qzone.QZoneHelper;
+import dbl;
 import dbm;
 import dbn;
 import dbo;
@@ -101,7 +102,6 @@ import dbp;
 import dbq;
 import dbr;
 import dbs;
-import dbt;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -255,7 +255,7 @@ public class QQBrowserActivity
     this.jdField_k_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
     this.jdField_m_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new dbm(this);
+    this.jdField_a_of_type_AndroidOsHandler = new dbl(this);
     this.jdField_d_of_type_Long = 0L;
     this.jdField_g_of_type_AndroidWidgetImageView = null;
     this.jdField_e_of_type_Long = 0L;
@@ -356,7 +356,7 @@ public class QQBrowserActivity
         }
         if (this.jdField_a_of_type_JavaLangRunnable == null)
         {
-          this.jdField_a_of_type_JavaLangRunnable = new dbn(this);
+          this.jdField_a_of_type_JavaLangRunnable = new dbm(this);
           this.jdField_b_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
         }
       }
@@ -420,7 +420,7 @@ public class QQBrowserActivity
         return;
       }
     }
-    paramWebView.post(new dbt(paramWebView, paramString));
+    paramWebView.post(new dbs(paramWebView, paramString));
   }
   
   private void e()
@@ -464,12 +464,12 @@ public class QQBrowserActivity
   
   private void q()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebViewClient = new dbp(this, this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebViewPluginEngine);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebViewClient = new dbo(this, this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebViewPluginEngine);
   }
   
   private void r()
   {
-    new dbq(this, "HttpUtils").start();
+    new dbp(this, "HttpUtils").start();
   }
   
   public int a(WebViewPlugin paramWebViewPlugin, byte paramByte)
@@ -509,7 +509,7 @@ public class QQBrowserActivity
   
   public String a()
   {
-    return "6.0.2";
+    return "6.0.3";
   }
   
   public String a(String paramString)
@@ -1004,13 +1004,13 @@ public class QQBrowserActivity
   protected View b()
   {
     View localView = super.getLayoutInflater().inflate(2130903227, null);
-    this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131231677));
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131231679));
-    GridView localGridView2 = (GridView)localView.findViewById(2131231678);
-    GridView localGridView1 = (GridView)localView.findViewById(2131231680);
+    this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131231676));
+    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131231678));
+    GridView localGridView2 = (GridView)localView.findViewById(2131231677);
+    GridView localGridView1 = (GridView)localView.findViewById(2131231679);
     Object localObject1 = (TextView)localView.findViewById(2131231063);
     ((TextView)localObject1).setText(2131561746);
-    ((TextView)localObject1).setOnClickListener(new dbr(this));
+    ((TextView)localObject1).setOnClickListener(new dbq(this));
     if (Build.VERSION.SDK_INT >= 9)
     {
       this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
@@ -1048,7 +1048,7 @@ public class QQBrowserActivity
       localGridView1.setOnItemClickListener(this);
       i2 = ((ViewGroup.LayoutParams)localObject1).width;
       this.E = i2;
-      localView.post(new dbs(this, i1, i2));
+      localView.post(new dbr(this, i1, i2));
       return localView;
       localObject1 = new ArrayList(0);
       break;
@@ -1063,31 +1063,31 @@ public class QQBrowserActivity
       setContentView(2130903100);
       x();
       getWindow().setBackgroundDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231180));
-      this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231179));
-      this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231181));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131231187);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231179));
+      this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231178));
+      this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231180));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131231186);
       String str = ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      this.jdField_a_of_type_AndroidWidgetAbsoluteLayout = ((AbsoluteLayout)findViewById(2131231182));
+      this.jdField_a_of_type_AndroidWidgetAbsoluteLayout = ((AbsoluteLayout)findViewById(2131231181));
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = ((CustomWebView)findViewById(2131230905));
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131230740));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231189));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231188));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231190));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231189));
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231192));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231191));
       this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231193));
+      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231192));
       this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_e_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.f = ((ImageView)findViewById(2131231191));
+      this.f = ((ImageView)findViewById(2131231190));
       this.f.setOnClickListener(this);
       this.f.setEnabled(true);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231188));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231187));
       this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231066));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       if ("1103".equals(str)) {
@@ -1543,7 +1543,7 @@ public class QQBrowserActivity
     }
     for (;;)
     {
-      localWebSettings.setUserAgentString((String)localObject1 + " " + "QQ/" + "5.0.0" + "." + "6602" + "." + AppSetting.a(this));
+      localWebSettings.setUserAgentString((String)localObject1 + " " + "QQ/" + "5.0.0" + "." + "6604" + "." + AppSetting.a(this));
       localWebSettings.setSaveFormData(false);
       localWebSettings.setSavePassword(false);
       localWebSettings.setBuiltInZoomControls(true);
@@ -1565,7 +1565,7 @@ public class QQBrowserActivity
         localWebSettings.setSavePassword(false);
         localWebSettings.setAllowContentAccess(true);
         localWebSettings.setDatabaseEnabled(true);
-        str1 = MobileQQ.getMobileQQ().getProcessName();
+        str1 = MobileQQ.getMobileQQ().getProcessNames();
         localObject2 = "";
         localObject1 = localObject2;
         if (str1 != null)
@@ -1591,7 +1591,7 @@ public class QQBrowserActivity
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.requestFocus();
         label607:
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setFocusableInTouchMode(true);
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setDownloadListener(new dbo(this));
+        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setDownloadListener(new dbn(this));
         return;
         label631:
         localObject1 = " " + str2;
@@ -2033,7 +2033,7 @@ public class QQBrowserActivity
           setResult(2002);
         }
       }
-    case 2131231380: 
+    case 2131231379: 
       this.jdField_m_of_type_AndroidWidgetTextView.performClick();
       return true;
     case 1000: 
@@ -2169,7 +2169,7 @@ public class QQBrowserActivity
         }
       }
     }
-    for (boolean bool = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.d();; bool = false)
+    for (boolean bool = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.e();; bool = false)
     {
       if (bool) {
         MenuItemCompat.setShowAsAction(paramMenu.add(0, 1000, 0, getString(2131560568)), 0);
@@ -2192,11 +2192,11 @@ public class QQBrowserActivity
       {
         paramMenu.setEnabled(this.jdField_m_of_type_AndroidWidgetTextView.isEnabled());
         return true;
-        paramMenu = paramMenu.add(0, 2131231461, 0, "");
+        paramMenu = paramMenu.add(0, 2131231460, 0, "");
         paramMenu.setIcon(2130838522);
         MenuItemCompat.setShowAsAction(paramMenu, 1);
         return true;
-        paramMenu = paramMenu.add(0, 2131231461, 0, "");
+        paramMenu = paramMenu.add(0, 2131231460, 0, "");
         paramMenu.setIcon(2130839739);
         MenuItemCompat.setShowAsAction(paramMenu, 1);
         return true;

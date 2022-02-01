@@ -19,8 +19,8 @@ public class TAVStickerResourceExporter
   private static final String ERROR_MSG_EXPORT_PATH_INVALID = "导出文件路径无效。";
   private static final String ERROR_MSG_ILLEGAL_PARAMETER = "参数错误。";
   private static final String ERROR_MSG_NO_DATA = "没有数据。";
-  private static final String TAG = TAVStickerResourceExporter.class.getSimpleName();
-  private List<String> mExportList = new ArrayList();
+  private static final String TAG = "TAVStickerResourceExporter";
+  private List<String> exports = new ArrayList();
   
   private boolean checkExportFilePath(String paramString, TAVStickerResourceExporter.IStickerResourceExportListener paramIStickerResourceExportListener)
   {
@@ -65,12 +65,10 @@ public class TAVStickerResourceExporter
     if (paramTAVSticker == null) {
       return null;
     }
-    switch (TAVStickerResourceExporter.1.$SwitchMap$com$tencent$tavsticker$model$TAVResourceType[paramTAVResourceType.ordinal()])
+    int i = TAVStickerResourceExporter.1.$SwitchMap$com$tencent$tavsticker$model$TAVResourceType[paramTAVResourceType.ordinal()];
+    if (i != 1)
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    default: 
+      if ((i != 2) && (i != 3)) {}
       return null;
     }
     return new TAVStickerAudioResource(TAVResourceType.AUDIO, paramString, paramTAVSticker.getAudioData(), new CMTime(paramTAVSticker.getAudioStartTime()));
@@ -85,40 +83,40 @@ public class TAVStickerResourceExporter
   
   public void export(TAVSticker paramTAVSticker, TAVResourceType paramTAVResourceType, String paramString, TAVStickerResourceExporter.IStickerResourceExportListener paramIStickerResourceExportListener)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.exports.contains(paramString))
       {
-        if (this.mExportList.contains(paramString))
-        {
-          notifyExportFailed(paramString, paramIStickerResourceExportListener, "正在导出，请不要重复操作。");
-          return;
-        }
-        if ((paramTAVSticker == null) || (TextUtils.isEmpty(paramString))) {
-          break label142;
-        }
-        if (!checkExportFilePath(paramString, paramIStickerResourceExportListener)) {
-          continue;
-        }
-        paramTAVSticker = getStickerResource(paramTAVSticker, paramTAVResourceType, paramString);
-        if ((paramTAVSticker != null) && (paramTAVSticker.getByteBuffer() != null))
-        {
-          if (paramIStickerResourceExportListener != null) {
-            paramIStickerResourceExportListener.start(paramTAVSticker);
-          }
-          this.mExportList.add(paramString);
-          paramTAVSticker = new TAVStickerResourceExporter.ResourceExportTask(this, paramTAVSticker, paramIStickerResourceExportListener);
-          ThreadPoolManager.get().start(paramTAVSticker);
-          continue;
-        }
-        notifyExportFailed(paramString, paramIStickerResourceExportListener, "没有数据。");
+        notifyExportFailed(paramString, paramIStickerResourceExportListener, "正在导出，请不要重复操作。");
+        return;
       }
-      finally {}
-      new File(paramString).delete();
-      continue;
-      label142:
-      notifyExportFailed(paramString, paramIStickerResourceExportListener, "参数错误。");
+      if ((paramTAVSticker != null) && (!TextUtils.isEmpty(paramString)))
+      {
+        if (checkExportFilePath(paramString, paramIStickerResourceExportListener))
+        {
+          paramTAVSticker = getStickerResource(paramTAVSticker, paramTAVResourceType, paramString);
+          if ((paramTAVSticker != null) && (paramTAVSticker.getByteBuffer() != null))
+          {
+            if (paramIStickerResourceExportListener != null) {
+              paramIStickerResourceExportListener.start(paramTAVSticker);
+            }
+            this.exports.add(paramString);
+            paramTAVSticker = new TAVStickerResourceExporter.ResourceExportTask(this, paramTAVSticker, paramIStickerResourceExportListener);
+            ThreadPoolManager.get().start(paramTAVSticker);
+          }
+          else
+          {
+            notifyExportFailed(paramString, paramIStickerResourceExportListener, "没有数据。");
+            new File(paramString).delete();
+          }
+        }
+      }
+      else {
+        notifyExportFailed(paramString, paramIStickerResourceExportListener, "参数错误。");
+      }
+      return;
     }
+    finally {}
   }
   
   public void exportAudioData(TAVSticker paramTAVSticker, String paramString, TAVStickerResourceExporter.IStickerResourceExportListener paramIStickerResourceExportListener)
@@ -137,7 +135,7 @@ public class TAVStickerResourceExporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerResourceExporter
  * JD-Core Version:    0.7.0.1
  */

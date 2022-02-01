@@ -1,36 +1,38 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_REPORT.REPORT.SingleDcData;
-import bhch;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.List;
 
-public class MiniProgramReporter$3
+class MiniProgramReporter$3
   implements Runnable
 {
-  public MiniProgramReporter$3(bhch parambhch, REPORT.SingleDcData paramSingleDcData) {}
+  MiniProgramReporter$3(MiniProgramReporter paramMiniProgramReporter, REPORT.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
-    if (this.a.dcid.get() == 4) {
-      bhch.a(this.this$0).add(this.a);
-    }
-    for (;;)
+    if (this.val$singleDcData.dcid.get() == 4)
     {
-      bhch.a(this.this$0);
-      return;
-      if (this.a.dcid.get() == 9) {
-        bhch.b(this.this$0).add(this.a);
-      } else {
-        QMLog.e("MiniProgramReporter", " should not report by dcReport " + bhch.a(this.a));
-      }
+      MiniProgramReporter.access$000(this.this$0).add(this.val$singleDcData);
     }
+    else if (this.val$singleDcData.dcid.get() == 9)
+    {
+      MiniProgramReporter.access$100(this.this$0).add(this.val$singleDcData);
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" should not report by dcReport ");
+      localStringBuilder.append(MiniProgramReporter.access$200(this.val$singleDcData));
+      QMLog.e("MiniProgramReporter", localStringBuilder.toString());
+    }
+    MiniProgramReporter.access$300(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramReporter.3
  * JD-Core Version:    0.7.0.1
  */

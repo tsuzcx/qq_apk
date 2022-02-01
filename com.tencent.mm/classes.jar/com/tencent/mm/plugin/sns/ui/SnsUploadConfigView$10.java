@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class SnsUploadConfigView$10
   implements View.OnClickListener
@@ -11,17 +13,21 @@ final class SnsUploadConfigView$10
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(39697);
-    paramView = this.sbB;
-    if (SnsUploadConfigView.i(this.sbB)) {}
+    AppMethodBeat.i(99527);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = this.RDA;
+    if (SnsUploadConfigView.i(this.RDA)) {}
     for (boolean bool = false;; bool = true)
     {
       SnsUploadConfigView.d(paramView, bool);
-      if (SnsUploadConfigView.i(this.sbB)) {
-        SnsUploadConfigView.g(this.sbB);
+      if (SnsUploadConfigView.i(this.RDA)) {
+        SnsUploadConfigView.g(this.RDA);
       }
-      SnsUploadConfigView.j(this.sbB);
-      AppMethodBeat.o(39697);
+      SnsUploadConfigView.j(this.RDA);
+      a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUploadConfigView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(99527);
       return;
     }
   }

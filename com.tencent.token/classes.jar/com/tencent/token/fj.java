@@ -1,14 +1,19 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Debug.MemoryInfo;
+import android.view.View;
 
-public class fj
+public abstract interface fj
+  extends fi
 {
-  public static int a(Context paramContext)
-  {
-    return ((android.app.ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0].getTotalPrivateDirty();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3);
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract boolean b(int paramInt);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 

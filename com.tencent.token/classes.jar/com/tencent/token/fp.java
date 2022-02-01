@@ -1,15 +1,51 @@
 package com.tencent.token;
 
-public class fp
+import android.os.Build.VERSION;
+import android.view.ViewGroup;
+
+public final class fp
 {
-  public static final int a(int paramInt)
+  static final c a = new c();
+  
+  static
   {
-    return paramInt & 0x18;
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public static final int b(int paramInt)
+  public static boolean a(ViewGroup paramViewGroup)
   {
-    return paramInt & 0x60;
+    return a.a(paramViewGroup);
+  }
+  
+  static class a
+    extends fp.c
+  {}
+  
+  static final class b
+    extends fp.a
+  {
+    public final boolean a(ViewGroup paramViewGroup)
+    {
+      return paramViewGroup.isTransitionGroup();
+    }
+  }
+  
+  static class c
+  {
+    public boolean a(ViewGroup paramViewGroup)
+    {
+      Boolean localBoolean = (Boolean)paramViewGroup.getTag(ca.a.tag_transition_group);
+      return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (fo.h(paramViewGroup) != null);
+    }
   }
 }
 

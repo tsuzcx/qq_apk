@@ -15,28 +15,34 @@ class SmartThreadExecutor$IdTask
   
   public int compareTo(IdTask paramIdTask)
   {
-    if (this.task == null) {
+    Runnable localRunnable = this.task;
+    if (localRunnable == null) {
       return -1;
     }
     if (paramIdTask.task == null) {
       return 1;
     }
-    if ((this.task.getClass() == paramIdTask.task.getClass()) && ((this.task instanceof Comparable))) {
-      return ((Comparable)this.task).compareTo(paramIdTask.task);
+    if (localRunnable.getClass() == paramIdTask.task.getClass())
+    {
+      localRunnable = this.task;
+      if ((localRunnable instanceof Comparable)) {
+        return ((Comparable)localRunnable).compareTo(paramIdTask.task);
+      }
     }
     return this.id.compareTo(paramIdTask.id);
   }
   
   public void run()
   {
-    if (this.task != null) {
-      this.task.run();
+    Runnable localRunnable = this.task;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.SmartThreadExecutor.IdTask
  * JD-Core Version:    0.7.0.1
  */

@@ -72,11 +72,14 @@ public class ShapeContent
     while (i < paramList1.size())
     {
       paramList2 = (Content)paramList1.get(i);
-      if (((paramList2 instanceof TrimPathContent)) && (((TrimPathContent)paramList2).getType() == ShapeTrimPath.Type.SIMULTANEOUSLY))
+      if ((paramList2 instanceof TrimPathContent))
       {
         paramList2 = (TrimPathContent)paramList2;
-        this.trimPaths.addTrimPath(paramList2);
-        paramList2.addListener(this);
+        if (paramList2.getType() == ShapeTrimPath.Type.SIMULTANEOUSLY)
+        {
+          this.trimPaths.addTrimPath(paramList2);
+          paramList2.addListener(this);
+        }
       }
       i += 1;
     }

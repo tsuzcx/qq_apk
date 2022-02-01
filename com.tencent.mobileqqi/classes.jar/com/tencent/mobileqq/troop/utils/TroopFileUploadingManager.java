@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.utils;
 
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import gyb;
+import gya;
 
 public class TroopFileUploadingManager
 {
@@ -13,7 +13,7 @@ public class TroopFileUploadingManager
   
   public TroopFileUploadingManager()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gyb(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gya(this);
   }
   
   public static TroopFileUploadingManager a(QQAppInterface paramQQAppInterface)

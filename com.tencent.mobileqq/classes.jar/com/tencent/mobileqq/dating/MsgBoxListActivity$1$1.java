@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.dating;
 
-import apih;
-import avud;
+import com.tencent.mobileqq.nearpeople.IChatPushCarrier;
 import java.util.List;
 
-public class MsgBoxListActivity$1$1
+class MsgBoxListActivity$1$1
   implements Runnable
 {
-  public MsgBoxListActivity$1$1(apih paramapih, List paramList) {}
+  MsgBoxListActivity$1$1(MsgBoxListActivity.1 param1, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apih.a.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.b.a.chatPushCarrierHelper.a(this.a);
   }
 }
 

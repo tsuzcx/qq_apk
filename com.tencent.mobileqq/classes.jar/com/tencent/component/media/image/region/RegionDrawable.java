@@ -58,24 +58,20 @@ public class RegionDrawable
     if (paramString != this.mRegionState.mPath) {
       this.mRegionState.mPath = paramString;
     }
-    if (paramResources != null)
-    {
+    if (paramResources != null) {
       this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
-      if (paramRegionState == null) {
-        break label130;
-      }
-    }
-    label130:
-    for (paramRegionState = paramRegionState.mBitmap;; paramRegionState = null)
-    {
-      setBitmap(paramRegionState);
-      paramRegionState = new RegionBitmapDecoder(paramString);
-      paramRegionState.setOnUpdateCallback(this);
-      this.mRegionBitmapDecoder = paramRegionState;
-      return;
+    } else {
       this.mTargetDensity = paramRegionState.mTargetDensity;
-      break;
     }
+    if (paramRegionState != null) {
+      paramRegionState = paramRegionState.mBitmap;
+    } else {
+      paramRegionState = null;
+    }
+    setBitmap(paramRegionState);
+    paramRegionState = new RegionBitmapDecoder(paramString);
+    paramRegionState.setOnUpdateCallback(this);
+    this.mRegionBitmapDecoder = paramRegionState;
   }
   
   private void computeBitmapSize()
@@ -93,67 +89,76 @@ public class RegionDrawable
   
   private void initMatrix()
   {
-    int i;
-    int j;
-    int k;
     if (this.mExifMatrix == null)
     {
       this.mExifMatrix = new Matrix();
-      Rect localRect = getBounds();
-      i = localRect.width();
-      j = localRect.height();
-      k = RegionImageUtil.getRotation(this.mImagePath);
-    }
-    switch (k)
-    {
-    default: 
-      ImageManagerLog.e("RegionDrawable", "initMatrix rotation = " + k);
-      this.mExifMatrix = null;
-      return;
-    case -270: 
-    case 90: 
+      Object localObject = getBounds();
+      int i = ((Rect)localObject).width();
+      int j = ((Rect)localObject).height();
+      int k = RegionImageUtil.getRotation(this.mImagePath);
+      if (k != -270)
+      {
+        if (k != -180)
+        {
+          if (k != -90)
+          {
+            if (k == 90) {
+              break label169;
+            }
+            if (k == 180) {
+              break label146;
+            }
+            if (k != 270)
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("initMatrix rotation = ");
+              ((StringBuilder)localObject).append(k);
+              ImageManagerLog.e("RegionDrawable", ((StringBuilder)localObject).toString());
+              this.mExifMatrix = null;
+              return;
+            }
+          }
+          this.mExifMatrix.postRotate(270.0F);
+          this.mExifMatrix.postTranslate(0.0F, j);
+          return;
+        }
+        label146:
+        this.mExifMatrix.postRotate(180.0F);
+        this.mExifMatrix.postTranslate(i, j);
+        return;
+      }
+      label169:
       this.mExifMatrix.postRotate(90.0F);
       this.mExifMatrix.postTranslate(i, 0.0F);
-      return;
-    case -180: 
-    case 180: 
-      this.mExifMatrix.postRotate(180.0F);
-      this.mExifMatrix.postTranslate(i, j);
-      return;
     }
-    this.mExifMatrix.postRotate(270.0F);
-    this.mExifMatrix.postTranslate(0.0F, j);
   }
   
   private void processExif(String paramString)
   {
-    if ((this.orgWidth == 0) || (this.orgHeight == 0)) {
-      return;
-    }
-    int i = RegionImageUtil.getRotation(paramString);
-    if (((i > 45) && (i < 135)) || ((i > 225) && (i < 315)))
+    if (this.orgWidth != 0)
     {
-      j = 1;
-      if (j != 0) {
-        break label83;
+      if (this.orgHeight == 0) {
+        return;
       }
-      i = this.orgWidth;
-      label58:
-      if (j != 0) {
-        break label91;
+      int i = RegionImageUtil.getRotation(paramString);
+      int j;
+      if (((i > 45) && (i < 135)) || ((i > 225) && (i < 315))) {
+        j = 1;
+      } else {
+        j = 0;
       }
-    }
-    label83:
-    label91:
-    for (int j = this.orgHeight;; j = this.orgWidth)
-    {
+      if (j == 0) {
+        i = this.orgWidth;
+      } else {
+        i = this.orgHeight;
+      }
+      if (j == 0) {
+        j = this.orgHeight;
+      } else {
+        j = this.orgWidth;
+      }
       this.orgWidth = i;
       this.orgHeight = j;
-      return;
-      j = 0;
-      break;
-      i = this.orgHeight;
-      break label58;
     }
   }
   
@@ -162,18 +167,16 @@ public class RegionDrawable
     if (paramBitmapReference != this.mBitmap)
     {
       this.mBitmap = paramBitmapReference;
-      if (paramBitmapReference == null) {
-        break label26;
+      if (paramBitmapReference != null)
+      {
+        computeBitmapSize();
       }
-      computeBitmapSize();
-    }
-    for (;;)
-    {
+      else
+      {
+        this.mBitmapHeight = -1;
+        this.mBitmapWidth = -1;
+      }
       invalidateSelf();
-      return;
-      label26:
-      this.mBitmapHeight = -1;
-      this.mBitmapWidth = -1;
     }
   }
   
@@ -185,34 +188,40 @@ public class RegionDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.mBitmap == null) {}
-    label279:
-    for (;;)
-    {
+    Object localObject1 = this.mBitmap;
+    if (localObject1 == null) {
       return;
-      Bitmap localBitmap = this.mBitmap.getBitmap();
-      if ((localBitmap == null) || (localBitmap.isRecycled())) {
-        break;
-      }
+    }
+    Bitmap localBitmap = ((BitmapReference)localObject1).getBitmap();
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
       RegionDrawable.RegionState localRegionState = this.mRegionState;
-      Object localObject2;
-      Shader.TileMode localTileMode;
       if (localRegionState.mRebuildShader)
       {
-        localObject2 = localRegionState.mTileModeX;
-        localTileMode = localRegionState.mTileModeY;
+        Object localObject2 = localRegionState.mTileModeX;
+        Shader.TileMode localTileMode = localRegionState.mTileModeY;
         if ((localObject2 == null) && (localTileMode == null))
         {
           localRegionState.mPaint.setShader(null);
-          localRegionState.mRebuildShader = false;
-          copyBounds(this.mDstRect);
         }
+        else
+        {
+          Paint localPaint = localRegionState.mPaint;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = Shader.TileMode.CLAMP;
+          }
+          localObject2 = localTileMode;
+          if (localTileMode == null) {
+            localObject2 = Shader.TileMode.CLAMP;
+          }
+          localPaint.setShader(new BitmapShader(localBitmap, (Shader.TileMode)localObject1, (Shader.TileMode)localObject2));
+        }
+        localRegionState.mRebuildShader = false;
+        copyBounds(this.mDstRect);
       }
-      else
+      if (localRegionState.mPaint.getShader() == null)
       {
-        if (localRegionState.mPaint.getShader() != null) {
-          break label245;
-        }
         if (this.mApplyGravity)
         {
           Gravity.apply(localRegionState.mGravity, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.mDstRect);
@@ -220,28 +229,8 @@ public class RegionDrawable
         }
         paramCanvas.drawBitmap(localBitmap, null, this.mDstRect, localRegionState.mPaint);
       }
-      for (;;)
+      else
       {
-        if ((!this.mShowRegion) || (this.mRegionBitmapDecoder == null)) {
-          break label279;
-        }
-        if (this.mExifMatrix != null) {
-          paramCanvas.concat(this.mExifMatrix);
-        }
-        this.mRegionBitmapDecoder.draw(paramCanvas, localRegionState.mPaint);
-        return;
-        Paint localPaint = localRegionState.mPaint;
-        Object localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = Shader.TileMode.CLAMP;
-        }
-        localObject2 = localTileMode;
-        if (localTileMode == null) {
-          localObject2 = Shader.TileMode.CLAMP;
-        }
-        localPaint.setShader(new BitmapShader(localBitmap, (Shader.TileMode)localObject1, (Shader.TileMode)localObject2));
-        break;
-        label245:
         if (this.mApplyGravity)
         {
           copyBounds(this.mDstRect);
@@ -249,13 +238,28 @@ public class RegionDrawable
         }
         paramCanvas.drawRect(this.mDstRect, localRegionState.mPaint);
       }
+      if ((this.mShowRegion) && (this.mRegionBitmapDecoder != null))
+      {
+        localObject1 = this.mExifMatrix;
+        if (localObject1 != null) {
+          paramCanvas.concat((Matrix)localObject1);
+        }
+        this.mRegionBitmapDecoder.draw(paramCanvas, localRegionState.mPaint);
+      }
     }
-    if ((this.mRegionState != null) && (this.mRegionState.mBitmap != null))
+    else
     {
-      ImageManagerLog.e("RegionDrawable", "region drawable draw bitmap.isRecycled mRegionState.bitmap = " + this.mRegionState.mBitmap.isRecycled());
-      return;
+      paramCanvas = this.mRegionState;
+      if ((paramCanvas != null) && (paramCanvas.mBitmap != null))
+      {
+        paramCanvas = new StringBuilder();
+        paramCanvas.append("region drawable draw bitmap.isRecycled mRegionState.bitmap = ");
+        paramCanvas.append(this.mRegionState.mBitmap.isRecycled());
+        ImageManagerLog.e("RegionDrawable", paramCanvas.toString());
+        return;
+      }
+      ImageManagerLog.e("RegionDrawable", "region drawable draw bitmap.isRecycled ");
     }
-    ImageManagerLog.e("RegionDrawable", "region drawable draw bitmap.isRecycled ");
   }
   
   public int getAlpha()
@@ -281,33 +285,47 @@ public class RegionDrawable
   
   public int getIntrinsicHeight()
   {
-    if ((this.orgHeight == 0) || (this.orgHeight < this.mBitmap.getHeight())) {
-      return this.mBitmap.getHeight();
+    int i = this.orgHeight;
+    if ((i != 0) && (i >= this.mBitmap.getHeight())) {
+      return this.orgHeight;
     }
-    return this.orgHeight;
+    return this.mBitmap.getHeight();
   }
   
   public int getIntrinsicWidth()
   {
-    if ((this.orgWidth == 0) || (this.orgWidth < this.mBitmap.getWidth())) {
-      return this.mBitmap.getWidth();
+    int i = this.orgWidth;
+    if ((i != 0) && (i >= this.mBitmap.getWidth())) {
+      return this.orgWidth;
     }
-    return this.orgWidth;
+    return this.mBitmap.getWidth();
   }
   
   public int getOpacity()
   {
-    if (this.mRegionState.mGravity != 119) {}
-    Bitmap localBitmap;
-    do
+    int i = this.mRegionState.mGravity;
+    int j = -3;
+    if (i != 119) {
+      return -3;
+    }
+    Object localObject = this.mBitmap;
+    if (localObject == null) {
+      return -3;
+    }
+    localObject = ((BitmapReference)localObject).getBitmap();
+    i = j;
+    if (localObject != null)
     {
-      do
+      i = j;
+      if (!((Bitmap)localObject).hasAlpha())
       {
-        return -3;
-      } while (this.mBitmap == null);
-      localBitmap = this.mBitmap.getBitmap();
-    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mRegionState.mPaint.getAlpha() < 255));
-    return -1;
+        if (this.mRegionState.mPaint.getAlpha() < 255) {
+          return -3;
+        }
+        i = -1;
+      }
+    }
+    return i;
   }
   
   public int getOrgHeight()
@@ -347,8 +365,9 @@ public class RegionDrawable
   
   public void onRecycle()
   {
-    if (this.mRegionBitmapDecoder != null) {
-      this.mRegionBitmapDecoder.recycle();
+    RegionBitmapDecoder localRegionBitmapDecoder = this.mRegionBitmapDecoder;
+    if (localRegionBitmapDecoder != null) {
+      localRegionBitmapDecoder.recycle();
     }
   }
   
@@ -359,7 +378,8 @@ public class RegionDrawable
       invalidateSelf();
       return;
     }
-    this.mMainHandler.sendMessage(this.mMainHandler.obtainMessage(0));
+    Handler localHandler = this.mMainHandler;
+    localHandler.sendMessage(localHandler.obtainMessage(0));
   }
   
   public void setAlpha(int paramInt)
@@ -379,19 +399,20 @@ public class RegionDrawable
   
   public void updateRegionRect(RegionDrawableData paramRegionDrawableData)
   {
-    if (!RegionImageUtil.isNeedPieceLoad(this.orgWidth, this.orgHeight)) {}
-    do
-    {
+    if (!RegionImageUtil.isNeedPieceLoad(this.orgWidth, this.orgHeight)) {
       return;
-      if (paramRegionDrawableData.mShowRegion != this.mShowRegion)
-      {
-        if (!paramRegionDrawableData.mShowRegion) {
-          this.mUpdateRect.setEmpty();
-        }
-        this.mShowRegion = paramRegionDrawableData.mShowRegion;
-        invalidateSelf();
+    }
+    if (paramRegionDrawableData.mShowRegion != this.mShowRegion)
+    {
+      if (!paramRegionDrawableData.mShowRegion) {
+        this.mUpdateRect.setEmpty();
       }
-    } while (!paramRegionDrawableData.mShowRegion);
+      this.mShowRegion = paramRegionDrawableData.mShowRegion;
+      invalidateSelf();
+    }
+    if (!paramRegionDrawableData.mShowRegion) {
+      return;
+    }
     paramRegionDrawableData.mTargetDensity = this.mTargetDensity;
     this.mRegionDrawableState = paramRegionDrawableData.mState;
     this.mRegionBitmapDecoder.updateRegionBitmap(paramRegionDrawableData);
@@ -399,7 +420,7 @@ public class RegionDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.region.RegionDrawable
  * JD-Core Version:    0.7.0.1
  */

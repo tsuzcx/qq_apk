@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_selected="true" android:drawable="@drawable/ad0" />
-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/ad0" />
-    <item android:drawable="@drawable/acz" />
-</selector>
+<animated-vector android:drawable="@drawable/a"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt">
+    <target android:name="eye_mask" android:animation="@drawable/b" />
+    <target android:name="strike_through" android:animation="@drawable/c" />
+</animated-vector>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:orientation="vertical" style="@style/gq"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckedTextView android:textAppearance="@style/so" android:gravity="start|center" android:id="@id/bbj" android:layout_width="0.0dip" android:layout_height="fill_parent" android:maxLines="1" android:drawablePadding="@dimen/z8" android:layout_weight="1.0" />
-    <ViewStub android:id="@id/bbk" android:layout="@layout/t3" android:inflatedId="@id/bbl" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</merge>
+    <include android:id="@id/b3v" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/qk" style="@style/gy" />
+    <TextView android:id="@id/b9_" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/b3v" style="@style/h7" />
+    <LinearLayout android:id="@id/b4_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/b3v" style="@style/h3">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/b8v" android:layout_marginRight="6.0dip" style="@style/ha" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/l1e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cd" style="@style/a85" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/kg" android:id="@id/b4b" android:background="@drawable/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ad" style="@style/hc" />
+                <TextView android:id="@id/b3g" android:layout_marginLeft="0.0dip" style="@style/gr" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

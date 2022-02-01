@@ -7,48 +7,49 @@ import java.lang.ref.WeakReference;
 
 public abstract class FlingHandler
 {
-  WeakReference<Activity> a;
+  WeakReference<Activity> mWrappedActivity;
   
   public FlingHandler(Activity paramActivity)
   {
-    this.a = new WeakReference(paramActivity);
+    this.mWrappedActivity = new WeakReference(paramActivity);
   }
   
-  protected int a()
+  protected boolean canWrapContent()
   {
-    Activity localActivity = (Activity)this.a.get();
+    return getFlingCode() != 0;
+  }
+  
+  protected int getFlingCode()
+  {
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
+    int i = 0;
     if (localActivity != null) {
-      return localActivity.getIntent().getIntExtra("fling_code_key", 0);
+      i = localActivity.getIntent().getIntExtra("fling_code_key", 0);
     }
-    return 0;
+    return i;
   }
   
-  protected abstract void a();
-  
-  protected boolean a()
-  {
-    return a() != 0;
-  }
-  
-  protected abstract void b();
-  
-  protected abstract boolean b();
+  protected abstract boolean isWrapped();
   
   public void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public void onStart()
   {
-    a();
+    wrap();
   }
   
   public void onStop()
   {
-    b();
+    unwrap();
   }
+  
+  protected abstract void unwrap();
+  
+  protected abstract void wrap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingHandler
  * JD-Core Version:    0.7.0.1
  */

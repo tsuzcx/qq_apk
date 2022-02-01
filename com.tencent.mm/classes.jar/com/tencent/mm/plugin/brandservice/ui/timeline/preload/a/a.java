@@ -1,70 +1,47 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
+import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.z;
-import com.tencent.mm.protocal.protobuf.eq;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClient;", "Lcom/tencent/mm/plugin/webjsapi/JSAPI;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClientContext;", "context", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClientContext;)V", "error", "", "msg", "", "log", "postMessage", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends z
+  extends com.tencent.mm.plugin.ax.a<b>
 {
-  public static c.a fkk;
-  
-  static
+  public a(b paramb)
   {
-    AppMethodBeat.i(14394);
-    c.a locala = new c.a();
-    locala.yrK = new Field[4];
-    locala.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appMsgReportContextId";
-    locala.yrM.put("appMsgReportContextId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" appMsgReportContextId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "appMsgReportContextId";
-    locala.columns[1] = "url";
-    locala.yrM.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "reportTime";
-    locala.yrM.put("reportTime", "LONG");
-    localStringBuilder.append(" reportTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "aScene";
-    locala.yrM.put("aScene", "INTEGER");
-    localStringBuilder.append(" aScene INTEGER");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    fkk = locala;
-    AppMethodBeat.o(14394);
+    super("WxGameJsCoreNative", (com.tencent.mm.plugin.ax.b)paramb);
+    AppMethodBeat.i(303106);
+    AppMethodBeat.o(303106);
   }
   
-  public a() {}
-  
-  public a(eq parameq)
+  @JavascriptInterface
+  public final void error(String paramString)
   {
-    this.field_url = parameq.Url;
-    this.field_reportTime = parameq.wqL;
+    AppMethodBeat.i(303127);
+    ((b)this.WlE).error(paramString);
+    AppMethodBeat.o(303127);
   }
   
-  public final c.a getDBInfo()
+  @JavascriptInterface
+  public final void log(String paramString)
   {
-    return fkk;
+    AppMethodBeat.i(303119);
+    ((b)this.WlE).log(paramString);
+    AppMethodBeat.o(303119);
   }
   
-  public final String toString()
+  @JavascriptInterface
+  public final void postMessage(String paramString)
   {
-    AppMethodBeat.i(14393);
-    String str = "BizAppMsgReportContext{field_appMsgReportContextId=" + this.field_appMsgReportContextId + ", field_url='" + this.field_url + '\'' + ", field_reportTime=" + this.field_reportTime + ", field_aScene=" + this.field_aScene + '}';
-    AppMethodBeat.o(14393);
-    return str;
+    AppMethodBeat.i(303113);
+    ((b)this.WlE).postMessage(paramString);
+    AppMethodBeat.o(303113);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/i5"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ToggleButton android:id="@id/iw9" android:textOn="@string/i8_" android:textOff="@string/i8_" android:drawableTop="@drawable/m0" style="@style/gk" />
+    <ToggleButton android:id="@id/iw8" android:textOn="@string/i7s" android:textOff="@string/i7s" android:drawableTop="@drawable/m0" style="@style/gk" />
+    <ToggleButton android:id="@id/iwb" android:textOn="@string/i8w" android:textOff="@string/i8w" android:drawableTop="@drawable/m0" style="@style/gk" />
+</LinearLayout>

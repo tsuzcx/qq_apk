@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class LanguagePreference
   extends Preference
 {
-  public LanguagePreference.a gDC;
+  public a qay;
   
   public LanguagePreference(Context paramContext)
   {
@@ -30,67 +30,88 @@ public class LanguagePreference
   public LanguagePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(124905);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(124905);
+    AppMethodBeat.i(128055);
+    setLayoutResource(r.g.mm_preference);
+    AppMethodBeat.o(128055);
   }
   
-  public final void a(LanguagePreference.a parama)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(124906);
-    if ((parama == null) || (bo.isNullOrNil(parama.gDF)))
+    AppMethodBeat.i(128056);
+    if ((parama == null) || (Util.isNullOrNil(parama.qaB)))
     {
-      ab.e("MicroMsg.LanguagePreference", "setInfo info error");
-      AppMethodBeat.o(124906);
+      Log.e("MicroMsg.LanguagePreference", "setInfo info error");
+      AppMethodBeat.o(128056);
       return;
     }
-    this.gDC = parama;
-    setKey(parama.gDF);
-    AppMethodBeat.o(124906);
+    this.qay = parama;
+    setKey(parama.qaB);
+    AppMethodBeat.o(128056);
   }
   
   public final void onBindView(View paramView)
   {
     int j = 1;
-    AppMethodBeat.i(124908);
+    AppMethodBeat.i(128058);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131821815);
-    paramView = (CheckBox)paramView.findViewById(2131824746);
-    int i;
+    TextView localTextView = (TextView)paramView.findViewById(r.f.languagename);
+    paramView = (WeImageView)paramView.findViewById(r.f.state_icon);
     if (localTextView != null)
     {
       i = 1;
       if (paramView == null) {
-        break label90;
+        break label98;
       }
-    }
-    for (;;)
-    {
+      label46:
       if ((j & i) != 0)
       {
-        localTextView.setText(this.gDC.gDD);
-        paramView.setChecked(this.gDC.gDG);
+        localTextView.setText(this.qay.qaz);
+        if (!this.qay.isSelected) {
+          break label103;
+        }
       }
-      OW(8);
-      AppMethodBeat.o(124908);
+    }
+    label98:
+    label103:
+    for (int i = 0;; i = 8)
+    {
+      paramView.setVisibility(i);
+      aBq(8);
+      AppMethodBeat.o(128058);
       return;
       i = 0;
       break;
-      label90:
       j = 0;
+      break label46;
     }
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(124907);
+    AppMethodBeat.i(128057);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(r.f.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970207, localViewGroup);
-    AppMethodBeat.o(124907);
+    localLayoutInflater.inflate(r.g.mm_preference_content_language, localViewGroup);
+    AppMethodBeat.o(128057);
     return paramViewGroup;
+  }
+  
+  public static final class a
+  {
+    public boolean isSelected;
+    private String qaA;
+    public String qaB;
+    public String qaz;
+    
+    public a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+    {
+      this.qaz = paramString1;
+      this.qaA = paramString2;
+      this.qaB = paramString3;
+      this.isSelected = paramBoolean;
+    }
   }
 }
 

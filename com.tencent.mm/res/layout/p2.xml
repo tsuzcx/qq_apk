@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="13.0dip">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/ra" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:layout_marginRight="8.0dip" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/ne" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:id="@id/rc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/ln" />
-            <TextView android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/lm" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/a2b" android:paddingRight="@dimen/n_" android:layout_width="64.0dip" android:layout_height="fill_parent">
-            <View android:background="#18000000" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
-            <CheckBox android:id="@id/a2c" android:background="@drawable/vm" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView android:layout_width="fill_parent" android:layout_height="wrap_content" app:edge_position="fmo" app:edge_width="50.0dip">
+        <com.tencent.mm.plugin.game.chatroom.view.ChatMemberListView android:id="@id/b0q" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginTop="12.0dip" android:overScrollMode="never" />
+    </com.tencent.mm.plugin.finder.widget.record.EdgeTransparentView>
+    <com.google.android.material.tabs.TabLayout android:id="@id/kdb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicatorHeight="0.0dip" app:tabMaxWidth="200.0dip" app:tabMinWidth="20.0dip" app:tabMode="j4k" app:tabPaddingEnd="@dimen/df" app:tabPaddingStart="@dimen/df" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/BW_100_Alpha_0_8" app:tabTextAppearance="@style/kg" app:tabTextColor="@color/BW_100_Alpha_0_5" />
+</LinearLayout>

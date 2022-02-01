@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import hvk;
+import hvj;
 
 public class AbsSpinner$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new hvk();
+  public static final Parcelable.Creator CREATOR = new hvj();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   

@@ -28,16 +28,20 @@ public class ReportShareRequest
   
   public static INTERFACE.StReportShareRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StReportShareRsp localStReportShareRsp = new INTERFACE.StReportShareRsp();
+    Object localObject = new INTERFACE.StReportShareRsp();
     try
     {
-      localStReportShareRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStReportShareRsp;
+      ((INTERFACE.StReportShareRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportShareRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ReportShareRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -50,7 +54,7 @@ public class ReportShareRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ReportShareRequest
  * JD-Core Version:    0.7.0.1
  */

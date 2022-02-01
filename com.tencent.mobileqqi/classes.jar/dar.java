@@ -1,22 +1,32 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
 public class dar
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
-  public PublicAccountInfo a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public dar(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a.isFinishing());
+    try
+    {
+      PublicAccountChatActivity.a(this.a);
+      return;
+    }
+    catch (Exception paramMessage) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dar
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stPublisherReq
   extends JceStruct
 {
-  public int nothing;
+  public int nothing = 0;
   
   public stPublisherReq() {}
   
@@ -28,7 +28,7 @@ public final class stPublisherReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPublisherReq
  * JD-Core Version:    0.7.0.1
  */

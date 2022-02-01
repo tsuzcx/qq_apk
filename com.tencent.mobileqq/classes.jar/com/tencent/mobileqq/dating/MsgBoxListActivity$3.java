@@ -7,8 +7,8 @@ class MsgBoxListActivity$3
   
   public void run()
   {
-    if (MsgBoxListActivity.a(this.this$0) != null) {
-      MsgBoxListActivity.a(this.this$0).a("msglist_carrier_5.8");
+    if (MsgBoxListActivity.access$000(this.this$0) != null) {
+      MsgBoxListActivity.access$000(this.this$0).a("msglist_carrier_5.8");
     }
   }
 }

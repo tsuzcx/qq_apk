@@ -49,22 +49,24 @@ public final class qqstory_struct$StoryVideoFullInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 64, 72, 82, 88, 98, 104, 112, 120, 130, 136, 146, 154, 162, 170, 178, 184, 192, 202, 208, 218, 226, 234, 242, 248 }, new String[] { "error", "vid", "type", "union_id", "video_url", "video_cover", "doodle_url", "create_time", "duration", "video_attr", "ban_type", "group_list", "video_source", "url_flag", "group_id", "video_tag", "video_index", "poll_text", "poll_options", "compressed_video", "qim_video_info", "interact_paster_info", "source_type", "player_scale_type", "ws_schema", "video_url_expire_time", "original_author_id", "original_author_name", "video_extern_link_attr", "compared_vid", "video_source_tag_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), "", "", null, null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, Integer.valueOf(0), "", localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, Integer.valueOf(0) }, StoryVideoFullInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 64, 72, 82, 88, 98, 104, 112, 120, 130, 136, 146, 154, 162, 170, 178, 184, 192, 202, 208, 218, 226, 234, 242, 248 }, new String[] { "error", "vid", "type", "union_id", "video_url", "video_cover", "doodle_url", "create_time", "duration", "video_attr", "ban_type", "group_list", "video_source", "url_flag", "group_id", "video_tag", "video_index", "poll_text", "poll_options", "compressed_video", "qim_video_info", "interact_paster_info", "source_type", "player_scale_type", "ws_schema", "video_url_expire_time", "original_author_id", "original_author_name", "video_extern_link_attr", "compared_vid", "video_source_tag_type" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localLong, localByteStringMicro6, localInteger, null, localInteger, localInteger, localLong, null, localLong, "", "", null, null, null, localInteger, localInteger, localByteStringMicro7, localInteger, "", localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localInteger }, StoryVideoFullInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo
  * JD-Core Version:    0.7.0.1
  */

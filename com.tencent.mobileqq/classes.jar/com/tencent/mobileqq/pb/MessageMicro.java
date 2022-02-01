@@ -11,48 +11,36 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   
   private final MessageMicro.FieldMap getFieldMap()
   {
-    Object localObject;
-    if (this._fields == null) {
-      localObject = getClass();
-    }
-    try
+    if (this._fields == null)
     {
-      localObject = ((Class)localObject).getDeclaredField("__fieldMap__");
-      ((Field)localObject).setAccessible(true);
-      this._fields = ((MessageMicro.FieldMap)((Field)localObject).get(this));
-      return this._fields;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      Object localObject = getClass();
+      try
+      {
+        localObject = ((Class)localObject).getDeclaredField("__fieldMap__");
+        ((Field)localObject).setAccessible(true);
+        this._fields = ((MessageMicro.FieldMap)((Field)localObject).get(this));
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+      catch (SecurityException localSecurityException)
+      {
+        localSecurityException.printStackTrace();
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
       {
         localNoSuchFieldException.printStackTrace();
       }
     }
-    catch (SecurityException localSecurityException)
-    {
-      for (;;)
-      {
-        localSecurityException.printStackTrace();
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        localIllegalArgumentException.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
-    }
+    return this._fields;
   }
   
-  public static MessageMicro.FieldMap initFieldMap(int[] paramArrayOfInt, String[] paramArrayOfString, Object[] paramArrayOfObject, Class<?> paramClass)
+  protected static MessageMicro.FieldMap initFieldMap(int[] paramArrayOfInt, String[] paramArrayOfString, Object[] paramArrayOfObject, Class<?> paramClass)
   {
     return new MessageMicro.FieldMap(paramArrayOfInt, paramArrayOfString, paramArrayOfObject, paramClass);
   }
@@ -74,23 +62,16 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
     try
     {
       getFieldMap().clear(this);
-      setHasFlag(false);
-      return;
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      for (;;)
-      {
-        paramObject.printStackTrace();
-      }
     }
     catch (IllegalAccessException paramObject)
     {
-      for (;;)
-      {
-        paramObject.printStackTrace();
-      }
+      paramObject.printStackTrace();
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      paramObject.printStackTrace();
+    }
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -115,12 +96,12 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
       setHasFlag(((MessageMicro)paramPBField).has());
       return;
     }
-    catch (IllegalArgumentException paramPBField)
+    catch (IllegalAccessException paramPBField)
     {
       paramPBField.printStackTrace();
       return;
     }
-    catch (IllegalAccessException paramPBField)
+    catch (IllegalArgumentException paramPBField)
     {
       paramPBField.printStackTrace();
     }
@@ -138,26 +119,19 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   
   public final int getSerializedSize()
   {
-    int i = -1;
     try
     {
-      int j = getFieldMap().getSerializedSize(this);
-      i = j;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        localIllegalArgumentException.printStackTrace();
-      }
+      i = getFieldMap().getSerializedSize(this);
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
+      localIllegalAccessException.printStackTrace();
     }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      localIllegalArgumentException.printStackTrace();
+    }
+    int i = -1;
     this.cachedSize = i;
     return i;
   }
@@ -182,17 +156,17 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
           }
         }
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
+      catch (InstantiationException localInstantiationException)
       {
-        localIllegalArgumentException.printStackTrace();
+        localInstantiationException.printStackTrace();
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
         localIllegalAccessException.printStackTrace();
       }
-      catch (InstantiationException localInstantiationException)
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
-        localInstantiationException.printStackTrace();
+        localIllegalArgumentException.printStackTrace();
       }
     }
   }
@@ -217,8 +191,10 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
     }
     catch (IOException paramArrayOfByte)
     {
-      throw new RuntimeException("Reading from a byte array threw an IOException (should never happen).");
+      label20:
+      break label20;
     }
+    throw new RuntimeException("Reading from a byte array threw an IOException (should never happen).");
   }
   
   protected boolean parseUnknownField(CodedInputStreamMicro paramCodedInputStreamMicro, int paramInt)
@@ -239,18 +215,15 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
       paramCodedInputStreamMicro.readMessage(localMessageMicro);
       return localMessageMicro;
     }
+    catch (IllegalAccessException paramCodedInputStreamMicro)
+    {
+      paramCodedInputStreamMicro.printStackTrace();
+    }
     catch (InstantiationException paramCodedInputStreamMicro)
     {
       paramCodedInputStreamMicro.printStackTrace();
-      return null;
     }
-    catch (IllegalAccessException paramCodedInputStreamMicro)
-    {
-      for (;;)
-      {
-        paramCodedInputStreamMicro.printStackTrace();
-      }
-    }
+    return null;
   }
   
   public void set(T paramT)
@@ -276,8 +249,10 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
     }
     catch (IOException paramArrayOfByte)
     {
-      throw new RuntimeException("Serializing to a byte array threw an IOException (should never happen).");
+      label17:
+      break label17;
     }
+    throw new RuntimeException("Serializing to a byte array threw an IOException (should never happen).");
   }
   
   public final byte[] toByteArray()
@@ -294,12 +269,12 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
       getFieldMap().writeTo(paramCodedOutputStreamMicro, this);
       return;
     }
-    catch (IllegalArgumentException paramCodedOutputStreamMicro)
+    catch (IllegalAccessException paramCodedOutputStreamMicro)
     {
       paramCodedOutputStreamMicro.printStackTrace();
       return;
     }
-    catch (IllegalAccessException paramCodedOutputStreamMicro)
+    catch (IllegalArgumentException paramCodedOutputStreamMicro)
     {
       paramCodedOutputStreamMicro.printStackTrace();
     }
@@ -319,7 +294,7 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.MessageMicro
  * JD-Core Version:    0.7.0.1
  */

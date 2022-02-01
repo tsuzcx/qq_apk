@@ -33,16 +33,18 @@ public final class qqstory_struct$StoryVideoCommentInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66, 72, 82, 90, 96, 106, 114, 122, 128 }, new String[] { "comment_id", "reply_uid", "author_uid", "reply_time", "content", "fake_id", "author_role", "author_union_id", "reply_role", "reply_union_id", "at_video_info", "type", "extras", "vid", "feed_id", "at_video_shoot_time" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), "", Integer.valueOf(0), "", null, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0) }, StoryVideoCommentInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66, 72, 82, 90, 96, 106, 114, 122, 128 }, new String[] { "comment_id", "reply_uid", "author_uid", "reply_time", "content", "fake_id", "author_role", "author_union_id", "reply_role", "reply_union_id", "at_video_info", "type", "extras", "vid", "feed_id", "at_video_shoot_time" }, new Object[] { localInteger, localLong, localLong, localLong, localByteStringMicro1, localLong, localInteger, "", localInteger, "", null, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger }, StoryVideoCommentInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo
  * JD-Core Version:    0.7.0.1
  */

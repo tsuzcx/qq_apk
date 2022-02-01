@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.soter.b;
 
 public abstract interface a
 {
-  public abstract void Fs(int paramInt);
+  public abstract void amN(int paramInt);
   
-  public abstract void cxR();
+  public abstract void htn();
 }
 
 

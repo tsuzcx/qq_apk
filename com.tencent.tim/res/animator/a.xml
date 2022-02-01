@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:ordering="sequentially"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <set>
+        <objectAnimator android:duration="300" android:valueFrom="1.0" android:valueTo="0.8" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:duration="300" android:valueFrom="1.0" android:valueTo="0.8" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+    <set>
+        <objectAnimator android:duration="200" android:valueFrom="0.8" android:valueTo="1.2" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:duration="200" android:valueFrom="0.8" android:valueTo="1.2" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+    <set>
+        <objectAnimator android:duration="200" android:valueFrom="1.2" android:valueTo="0.8" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:duration="200" android:valueFrom="1.2" android:valueTo="0.8" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+    <set>
+        <objectAnimator android:duration="200" android:valueFrom="0.8" android:valueTo="1.1" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:duration="200" android:valueFrom="0.8" android:valueTo="1.1" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+    <set>
+        <objectAnimator android:duration="200" android:valueFrom="1.1" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:duration="200" android:valueFrom="1.1" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+</set>

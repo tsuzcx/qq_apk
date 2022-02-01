@@ -1,91 +1,108 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import ajlk;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.List;
 
 class DragFrameLayout$BornRunner
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private int a;
+  private PointF b = new PointF();
   
   public DragFrameLayout$BornRunner(DragFrameLayout paramDragFrameLayout, PointF paramPointF)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
-    this.jdField_a_of_type_Int = -1;
+    this.b.set(paramPointF);
+    this.a = -1;
   }
   
   public Bitmap a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Int >= DragFrameLayout.a().length) {}
-    }
-    try
-    {
-      localObject1 = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
-      return localObject1;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      do
+    int i = this.a;
+    if ((i >= 0) && (i < DragFrameLayout.b().length)) {
+      try
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.b()[this.a]);
+        return localBitmap;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeBitmap failed");
+          localStringBuilder.append(localOutOfMemoryError);
+          QLog.e("DragRelativeLayout", 2, localStringBuilder.toString(), localOutOfMemoryError);
+        }
+      }
     }
     return null;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == DragFrameLayout.a().length)
+    if (this.a == DragFrameLayout.b().length)
     {
-      if (this == DragFrameLayout.a(this.this$0)) {
+      if (this == DragFrameLayout.b(this.this$0)) {
         DragFrameLayout.a(this.this$0, null);
       }
       DragFrameLayout.a(this.this$0, null);
-      if (DragFrameLayout.a(this.this$0) == 2) {
-        if (DragFrameLayout.a(this.this$0) == null) {
-          break label221;
+      if (DragFrameLayout.c(this.this$0) == 2)
+      {
+        Object localObject;
+        if (DragFrameLayout.d(this.this$0) != null)
+        {
+          localObject = DragFrameLayout.d(this.this$0).g();
+        }
+        else
+        {
+          if ((!TextUtils.isEmpty(DragFrameLayout.e(this.this$0))) && (DragFrameLayout.f(this.this$0).containsKey(DragFrameLayout.e(this.this$0))))
+          {
+            localObject = (DragFrameLayout.IDragViewProvider)DragFrameLayout.f(this.this$0).get(DragFrameLayout.e(this.this$0));
+            if (localObject != null)
+            {
+              localObject = ((DragFrameLayout.IDragViewProvider)localObject).g();
+              break label147;
+            }
+          }
+          localObject = null;
+        }
+        label147:
+        if ((localObject != null) && (((List)localObject).size() > 0))
+        {
+          DragFrameLayout.a(this.this$0, 5);
+          DragFrameLayout localDragFrameLayout = this.this$0;
+          DragFrameLayout.a(localDragFrameLayout, new DragFrameLayout.AllBornRunner(localDragFrameLayout, (List)localObject));
+        }
+        else
+        {
+          DragFrameLayout.a(this.this$0, -1);
+          if (QLog.isColorLevel()) {
+            QLog.d("Drag", 2, "DONE!");
+          }
+          DragFrameLayout.a(this.this$0, true);
+          DragFrameLayout.a(this.this$0, null);
         }
       }
-    }
-    label221:
-    for (List localList = DragFrameLayout.a(this.this$0).a();; localList = null)
-    {
-      if ((DragFrameLayout.a(this.this$0) != null) && (localList != null) && (localList.size() > 0))
+      else
       {
-        DragFrameLayout.a(this.this$0, 5);
-        DragFrameLayout.a(this.this$0, new DragFrameLayout.AllBornRunner(this.this$0, localList));
+        DragFrameLayout.a(this.this$0, -1);
+        if (QLog.isColorLevel()) {
+          QLog.d("Drag", 2, "DONE!");
+        }
+        DragFrameLayout.a(this.this$0, true);
         DragFrameLayout.a(this.this$0, null);
       }
-      for (;;)
-      {
-        this.this$0.invalidate();
-        return;
-        DragFrameLayout.a(this.this$0, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Drag", 2, "DONE!");
-        }
-        DragFrameLayout.a(this.this$0, true);
-        break;
-        DragFrameLayout.a(this.this$0, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Drag", 2, "DONE!");
-        }
-        DragFrameLayout.a(this.this$0, true);
-        break;
-        this.jdField_a_of_type_Int += 1;
-      }
     }
+    else
+    {
+      this.a += 1;
+    }
+    this.this$0.invalidate();
   }
 }
 

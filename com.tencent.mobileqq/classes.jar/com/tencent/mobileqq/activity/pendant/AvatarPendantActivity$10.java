@@ -1,93 +1,16 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import bdal;
-import bddf;
-import bdhj;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
 
 class AvatarPendantActivity$10
-  implements Runnable
+  extends UniPayHandler.UniPayUpdateListener
 {
   AvatarPendantActivity$10(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void a()
   {
-    localObject2 = null;
-    localObject1 = null;
-    if (bddf.a()) {}
-    for (;;)
-    {
-      Object localObject3;
-      BitmapFactory.Options localOptions;
-      boolean bool;
-      try
-      {
-        localObject1 = bddf.b();
-        localObject3 = new File((String)localObject1);
-        localOptions = new BitmapFactory.Options();
-        localObject3 = new BufferedInputStream(new FileInputStream((File)localObject3));
-        if (this.this$0.b.get())
-        {
-          localOptions.inSampleSize = ((int)bdhj.a((InputStream)localObject3, this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getHeight()));
-          ((BufferedInputStream)localObject3).close();
-          localObject1 = bdal.a((String)localObject1, localOptions);
-          localObject2 = localObject1;
-          if (localObject1 == null) {}
-        }
-      }
-      catch (Exception localException1) {}
-      try
-      {
-        localObject2 = this.this$0.app;
-        localObject2 = QQAppInterface.a((Bitmap)localObject1, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
-        localObject1 = localObject2;
-        if (localObject1 == null) {
-          break label240;
-        }
-        this.this$0.runOnUiThread(new AvatarPendantActivity.10.1(this, (Bitmap)localObject1));
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder().append("AvatarPendantActivity decode Avatar, bitmap is null:");
-          if (localObject1 != null) {
-            break label260;
-          }
-          bool = true;
-          QLog.d("Q.dynamicAvatar", 2, bool);
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        label260:
-        for (;;)
-        {
-          label240:
-          localObject2 = localObject1;
-        }
-      }
-      localOptions.inSampleSize = ((int)bdhj.a((InputStream)localObject3, 120, 120));
-      continue;
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AvatarPendantActivity", 2, localException1.toString());
-        localObject1 = localObject2;
-        continue;
-        AvatarPendantActivity.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-        continue;
-        bool = false;
-      }
-    }
+    this.a.runOnUiThread(new AvatarPendantActivity.10.1(this));
   }
 }
 

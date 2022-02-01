@@ -5,18 +5,18 @@ import android.os.HandlerThread;
 
 public class DataReport
 {
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Reportor-Tasker");
-  private static DataReport jdField_a_of_type_ComTencentMobileqqRichmediaDcDataReport = new DataReport();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  private static HandlerThread a = new HandlerThread("Reportor-Tasker");
+  private static DataReport b = new DataReport();
+  private Handler c = new Handler(a.getLooper());
   
   static
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    a.start();
   }
   
   public static DataReport a()
   {
-    return jdField_a_of_type_ComTencentMobileqqRichmediaDcDataReport;
+    return b;
   }
   
   public void a(DataReport.ReportTask paramReportTask)
@@ -24,12 +24,12 @@ public class DataReport
     if (paramReportTask == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramReportTask);
+    this.c.post(paramReportTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataReport
  * JD-Core Version:    0.7.0.1
  */

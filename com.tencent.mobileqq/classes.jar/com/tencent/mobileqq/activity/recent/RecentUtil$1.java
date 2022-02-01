@@ -1,19 +1,27 @@
 package com.tencent.mobileqq.activity.recent;
 
-import azqs;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.List;
-import suv;
 
-public final class RecentUtil$1
+final class RecentUtil$1
   implements Runnable
 {
-  public RecentUtil$1(QQAppInterface paramQQAppInterface, int paramInt) {}
+  RecentUtil$1(QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
-    int i = suv.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).size();
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
+    int i = TroopBarAssistantManager.a().h(this.a).size();
+    QQAppInterface localQQAppInterface = this.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(this.b);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(i);
+    ReportController.b(localQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
 }
 

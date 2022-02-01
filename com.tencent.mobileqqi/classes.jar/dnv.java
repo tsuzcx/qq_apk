@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-class dnv
-  implements DialogInterface.OnClickListener
+public class dnv
+  implements Runnable
 {
-  dnv(dns paramdns) {}
+  public dnv(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    this.a.i();
   }
 }
 

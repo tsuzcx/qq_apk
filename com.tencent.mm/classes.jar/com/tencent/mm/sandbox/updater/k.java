@@ -2,9 +2,10 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.xweb.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.xwebutil.c;
+import com.tencent.xweb.ao;
 import java.util.HashMap;
 
 public final class k
@@ -12,51 +13,67 @@ public final class k
 {
   private k()
   {
-    AppMethodBeat.i(28999);
-    com.tencent.mm.cn.d.iO(ah.getContext());
-    com.tencent.xweb.b.d.a(com.tencent.mm.plugin.cdndownloader.i.a.bgb());
-    AppMethodBeat.o(28999);
+    AppMethodBeat.i(32813);
+    c.nU(MMApplicationContext.getContext());
+    ao.a(com.tencent.mm.plugin.cdndownloader.i.a.dqi());
+    AppMethodBeat.o(32813);
   }
   
-  public final boolean aI(Intent paramIntent)
+  public final void Kr(boolean paramBoolean) {}
+  
+  public final boolean bX(Intent paramIntent)
   {
-    AppMethodBeat.i(28997);
+    AppMethodBeat.i(32811);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(28997);
+      AppMethodBeat.o(32811);
       return false;
     }
     int i = paramIntent.getIntExtra("intent_extra_download_type", 4);
-    ab.i("MicroMsg.WCWebDownloadMgr", "WCWebDownloadMgr  downloadType = %d", new Object[] { Integer.valueOf(i) });
+    Log.i("MicroMsg.XWeb.MM.WCWebDownloadMgr", "handleCommand, downloadType:%d [4:timer/5:notify/6:config]", new Object[] { Integer.valueOf(i) });
     paramIntent = new HashMap();
     if (i == 5) {
       paramIntent.put("UpdaterCheckType", "1");
     }
     for (;;)
     {
-      o.a(ah.getContext(), paramIntent);
-      AppMethodBeat.o(28997);
+      ao.b(MMApplicationContext.getContext(), paramIntent);
+      AppMethodBeat.o(32811);
       return true;
-      paramIntent.put("UpdaterCheckType", "0");
+      if (i == 6) {
+        paramIntent.put("UpdaterCheckType", "5");
+      } else {
+        paramIntent.put("UpdaterCheckType", "0");
+      }
     }
   }
   
   public final boolean isBusy()
   {
-    AppMethodBeat.i(28998);
-    boolean bool = o.isBusy();
-    ab.i("MicroMsg.WCWebDownloadMgr", "bIsBusy = ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(28998);
+    AppMethodBeat.i(32812);
+    boolean bool = ao.isBusy();
+    Log.i("MicroMsg.XWeb.MM.WCWebDownloadMgr", "isBusy = ".concat(String.valueOf(bool)));
+    AppMethodBeat.o(32812);
     return bool;
   }
   
   public final void onDestroy() {}
   
-  public final void pD(boolean paramBoolean) {}
+  public static final class a
+  {
+    public static final k acoQ;
+    
+    static
+    {
+      AppMethodBeat.i(32810);
+      acoQ = new k((byte)0);
+      AppMethodBeat.o(32810);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.k
  * JD-Core Version:    0.7.0.1
  */

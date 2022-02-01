@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/lvn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?a0" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/lvr" android:background="@drawable/b9" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <ImageButton android:id="@id/lvs" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b5" android:contentDescription="@string/e4" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/lvq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/lvm" android:layout_toRightOf="@id/lvr" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/c9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/lvo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/lvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/la" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/lvm" android:background="@drawable/b9" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageButton android:id="@id/lvl" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bmo" android:contentDescription="@string/e7" />
+    </LinearLayout>
+</RelativeLayout>

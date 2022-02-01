@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.widget.ThemeImageView android:id="@id/ll7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:src="@drawable/hu6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
     <TextView android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toRightOf="@id/ll7" android:layout_centerVertical="true" style="@style/mv" />
-    <ImageView android:id="@id/ll6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:src="@drawable/cig" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/ll6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:src="@drawable/common_tips_arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
 </RelativeLayout>

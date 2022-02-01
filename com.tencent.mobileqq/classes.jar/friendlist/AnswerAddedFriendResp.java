@@ -9,11 +9,11 @@ public final class AnswerAddedFriendResp
 {
   static int cache_result;
   public String ErrorString = "";
-  public long adduin;
-  public short errorCode;
-  public byte myfriendgroupid;
-  public int result;
-  public long uin;
+  public long adduin = 0L;
+  public short errorCode = 0;
+  public byte myfriendgroupid = 0;
+  public int result = 0;
+  public long uin = 0L;
   
   public AnswerAddedFriendResp() {}
   
@@ -44,14 +44,15 @@ public final class AnswerAddedFriendResp
     paramJceOutputStream.write(this.myfriendgroupid, 2);
     paramJceOutputStream.write(this.result, 3);
     paramJceOutputStream.write(this.errorCode, 4);
-    if (this.ErrorString != null) {
-      paramJceOutputStream.write(this.ErrorString, 5);
+    String str = this.ErrorString;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.AnswerAddedFriendResp
  * JD-Core Version:    0.7.0.1
  */

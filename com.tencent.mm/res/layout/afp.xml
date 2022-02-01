@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/l1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ToggleButton android:id="@id/ddm" android:textOn="@string/dxq" android:textOff="@string/dxq" android:drawableTop="@drawable/j9" style="@style/g1" />
-    <ToggleButton android:id="@id/ddn" android:textOn="@string/dx9" android:textOff="@string/dx9" android:drawableTop="@drawable/j9" style="@style/g1" />
-    <ToggleButton android:id="@id/ddo" android:textOn="@string/dyb" android:textOff="@string/dyb" android:drawableTop="@drawable/j9" style="@style/g1" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/djc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/cu" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/djb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" />
+    <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/cp" />
+</RelativeLayout>

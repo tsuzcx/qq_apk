@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/azn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/gy_" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginBottom="@dimen/cp" android:src="@drawable/b6" />
+    <TextView android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ivf" android:singleLine="true" style="@style/z8" />
+    <TextView android:textStyle="bold" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/je0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:singleLine="true" style="@style/kn" />
+    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:text="@string/iu8" style="@style/z8" />
+    <com.tencent.mm.view.CheckBoxLicenseView android:layout_gravity="center_horizontal" android:id="@id/gy9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx" />
+    <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/hfl" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cv" android:text="@string/a17" style="@style/oh" />
+</LinearLayout>

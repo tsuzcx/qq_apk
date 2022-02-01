@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mx1" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/mwt" android:layout_width="240.0dip" android:layout_height="320.0dip" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/mww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/evk" android:layout_below="@id/mwt" android:layout_centerHorizontal="true" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textColor="#ff613610" android:gravity="center" android:id="@id/mx0" android:paddingBottom="15.0dip" android:layout_width="207.0dip" android:layout_height="74.0dip" android:text="@string/wmm" android:layout_alignBottom="@id/mwt" android:layout_centerHorizontal="true" />
-        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="20.0dip" android:textColor="#ffffecc6" android:id="@id/mx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/wmn" android:layout_above="@id/mx0" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+    <ViewStub android:id="@id/mmm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/mml" android:layout="@layout/cjx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/iag" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ViewStub android:layout_gravity="center" android:id="@id/mwm" android:layout="@layout/ck2" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/pnd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+    <FrameLayout android:id="@id/pne" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/oib" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

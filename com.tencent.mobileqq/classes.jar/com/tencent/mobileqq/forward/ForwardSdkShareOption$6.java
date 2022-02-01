@@ -2,36 +2,36 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.os.Bundle;
-import aryl;
-import asdb;
 import com.tencent.qphone.base.util.QLog;
 
-public class ForwardSdkShareOption$6
+class ForwardSdkShareOption$6
   implements Runnable
 {
-  public ForwardSdkShareOption$6(asdb paramasdb) {}
+  ForwardSdkShareOption$6(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
-    {
+    if (this.this$0.s.isFinishing()) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
-      }
-      this.this$0.j = true;
-      this.this$0.x();
-    } while (!asdb.a(this.this$0));
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aryl.e.intValue());
-    this.this$0.l();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
+    }
+    ForwardSdkShareOption localForwardSdkShareOption = this.this$0;
+    localForwardSdkShareOption.ah = true;
+    localForwardSdkShareOption.ae();
+    if (ForwardSdkShareOption.b(this.this$0))
+    {
+      this.this$0.t.putString("uin", "-1010");
+      this.this$0.t.putInt("uintype", -1);
+      this.this$0.t.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.f.intValue());
+      this.this$0.I();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.6
  * JD-Core Version:    0.7.0.1
  */

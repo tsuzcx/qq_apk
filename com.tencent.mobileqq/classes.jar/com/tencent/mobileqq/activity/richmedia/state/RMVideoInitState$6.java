@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtn;
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class RMVideoInitState$6
+class RMVideoInitState$6
   implements Runnable
 {
-  public RMVideoInitState$6(ajtn paramajtn) {}
+  RMVideoInitState$6(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, alud.a(2131713847), false);
+    RMVideoStateMgr.a().b(0, HardCodeUtil.a(2131910931), false);
   }
 }
 

@@ -1,4 +1,3 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class ego
@@ -8,9 +7,7 @@ public class ego
   
   public void run()
   {
-    if (TroopActivity.a(this.a) != null) {
-      TroopActivity.a(this.a).b();
-    }
+    TroopActivity.c(this.a);
   }
 }
 

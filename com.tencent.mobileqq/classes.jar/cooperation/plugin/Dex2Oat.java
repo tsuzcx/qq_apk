@@ -3,20 +3,9 @@ package cooperation.plugin;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
-import bdqk;
-import biqj;
-import biqk;
-import biql;
-import birh;
+import com.tencent.mobileqq.utils.kapalaiadapter.ReflecterHelper;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,36 +14,29 @@ public final class Dex2Oat
 {
   private static final boolean a = b(System.getProperty("java.vm.version"));
   
-  public static String a()
-  {
-    String str2 = (String)bdqk.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "arm";
-    }
-    return str1;
-  }
-  
   public static String a(File paramFile1, File paramFile2)
   {
     String str = paramFile1.getName();
     paramFile1 = str;
-    int i;
     if (!str.endsWith(".dex"))
     {
-      i = str.lastIndexOf(".");
-      if (i >= 0) {
-        break label60;
+      int i = str.lastIndexOf(".");
+      if (i < 0)
+      {
+        paramFile1 = new StringBuilder();
+        paramFile1.append(str);
+        paramFile1.append(".dex");
+        paramFile1 = paramFile1.toString();
+      }
+      else
+      {
+        paramFile1 = new StringBuilder(i + 4);
+        paramFile1.append(str, 0, i);
+        paramFile1.append(".dex");
+        paramFile1 = paramFile1.toString();
       }
     }
-    for (paramFile1 = str + ".dex";; paramFile1 = paramFile1.toString())
-    {
-      return new File(paramFile2, paramFile1).getPath();
-      label60:
-      paramFile1 = new StringBuilder(i + 4);
-      paramFile1.append(str, 0, i);
-      paramFile1.append(".dex");
-    }
+    return new File(paramFile2, paramFile1).getPath();
   }
   
   public static boolean a()
@@ -69,72 +51,204 @@ public final class Dex2Oat
   
   public static boolean a(String paramString)
   {
-    String str = birh.a();
-    if ((paramString == null) || (paramString.equals("")) || (str == null) || (str.equals("")))
+    String str = PluginInstaller.c();
+    if ((paramString != null) && (!paramString.equals("")) && (str != null) && (!str.equals("")))
     {
-      Log.d("plugin_tag.Dex2Oat", "fingerprint empty:" + paramString + ",current:" + str);
-      return false;
+      if (paramString.equals(str))
+      {
+        paramString = new StringBuilder();
+        paramString.append("same fingerprint:");
+        paramString.append(str);
+        Log.d("plugin_tag.Dex2Oat", paramString.toString());
+        return false;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("system OTA,fingerprint not equal:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",");
+      localStringBuilder.append(str);
+      Log.d("plugin_tag.Dex2Oat", localStringBuilder.toString());
+      return true;
     }
-    if (paramString.equals(str))
-    {
-      Log.d("plugin_tag.Dex2Oat", "same fingerprint:" + str);
-      return false;
-    }
-    Log.d("plugin_tag.Dex2Oat", "system OTA,fingerprint not equal:" + paramString + "," + str);
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fingerprint empty:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",current:");
+    localStringBuilder.append(str);
+    Log.d("plugin_tag.Dex2Oat", localStringBuilder.toString());
+    return false;
   }
   
-  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, biql parambiql)
+  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, Dex2Oat.ResultCallback paramResultCallback)
   {
-    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), parambiql, 2);
+    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), paramResultCallback, 2);
   }
   
-  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, biql parambiql, int paramInt)
+  /* Error */
+  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, Dex2Oat.ResultCallback paramResultCallback, int paramInt)
   {
-    try
-    {
-      CountDownLatch localCountDownLatch = new CountDownLatch(paramCollection.size());
-      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt, new biqj());
-      long l = System.nanoTime();
-      Object localObject = new ArrayList(paramCollection);
-      Collections.sort((List)localObject, new biqk());
-      Collections.reverse((List)localObject);
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localExecutorService.submit(new Dex2Oat.OptimizeWorker((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, parambiql));
-      }
-      try
-      {
-        localCountDownLatch.await();
-        l = (System.nanoTime() - l) / 1000000L;
-        if (paramAtomicInteger.get() == paramCollection.size())
-        {
-          Log.i("plugin_tag.Dex2Oat", "All dexes are optimized successfully, cost: " + l + " ms.");
-          paramBoolean = true;
-        }
-      }
-      catch (InterruptedException paramCollection)
-      {
-        for (;;)
-        {
-          Log.w("plugin_tag.Dex2Oat", "Dex optimizing was interrupted.", paramCollection);
-          paramBoolean = false;
-          localExecutorService.shutdown();
-        }
-      }
-      finally
-      {
-        localExecutorService.shutdown();
-      }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: new 131	java/util/concurrent/CountDownLatch
+    //   6: dup
+    //   7: aload_0
+    //   8: invokeinterface 137 1 0
+    //   13: invokespecial 138	java/util/concurrent/CountDownLatch:<init>	(I)V
+    //   16: astore 10
+    //   18: iload 6
+    //   20: new 140	cooperation/plugin/Dex2Oat$1
+    //   23: dup
+    //   24: invokespecial 141	cooperation/plugin/Dex2Oat$1:<init>	()V
+    //   27: invokestatic 147	java/util/concurrent/Executors:newFixedThreadPool	(ILjava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
+    //   30: astore 9
+    //   32: invokestatic 150	java/lang/System:nanoTime	()J
+    //   35: lstore 7
+    //   37: new 152	java/util/ArrayList
+    //   40: dup
+    //   41: aload_0
+    //   42: invokespecial 155	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   45: astore 11
+    //   47: aload 11
+    //   49: new 157	cooperation/plugin/Dex2Oat$2
+    //   52: dup
+    //   53: invokespecial 158	cooperation/plugin/Dex2Oat$2:<init>	()V
+    //   56: invokestatic 164	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   59: aload 11
+    //   61: invokestatic 168	java/util/Collections:reverse	(Ljava/util/List;)V
+    //   64: aload 11
+    //   66: invokevirtual 172	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   69: astore 11
+    //   71: aload 11
+    //   73: invokeinterface 177 1 0
+    //   78: ifeq +40 -> 118
+    //   81: aload 9
+    //   83: new 179	cooperation/plugin/Dex2Oat$OptimizeWorker
+    //   86: dup
+    //   87: aload 11
+    //   89: invokeinterface 183 1 0
+    //   94: checkcast 29	java/io/File
+    //   97: aload_1
+    //   98: iload_2
+    //   99: aload_3
+    //   100: aload 4
+    //   102: aload 10
+    //   104: aload 5
+    //   106: invokespecial 186	cooperation/plugin/Dex2Oat$OptimizeWorker:<init>	(Ljava/io/File;Ljava/io/File;ZLjava/lang/String;Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/CountDownLatch;Lcooperation/plugin/Dex2Oat$ResultCallback;)V
+    //   109: invokeinterface 192 2 0
+    //   114: pop
+    //   115: goto -44 -> 71
+    //   118: aload 10
+    //   120: invokevirtual 195	java/util/concurrent/CountDownLatch:await	()V
+    //   123: invokestatic 150	java/lang/System:nanoTime	()J
+    //   126: lload 7
+    //   128: lsub
+    //   129: ldc2_w 196
+    //   132: ldiv
+    //   133: lstore 7
+    //   135: aload 4
+    //   137: invokevirtual 200	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   140: aload_0
+    //   141: invokeinterface 137 1 0
+    //   146: if_icmpne +54 -> 200
+    //   149: new 48	java/lang/StringBuilder
+    //   152: dup
+    //   153: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   156: astore_0
+    //   157: aload_0
+    //   158: ldc 202
+    //   160: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: aload_0
+    //   165: lload 7
+    //   167: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   170: pop
+    //   171: aload_0
+    //   172: ldc 207
+    //   174: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: pop
+    //   178: ldc 104
+    //   180: aload_0
+    //   181: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 210	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   187: pop
+    //   188: aload 9
+    //   190: invokeinterface 213 1 0
+    //   195: ldc 2
+    //   197: monitorexit
+    //   198: iconst_1
+    //   199: ireturn
+    //   200: ldc 104
+    //   202: ldc 215
+    //   204: invokestatic 218	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   207: pop
+    //   208: aload 9
+    //   210: invokeinterface 213 1 0
+    //   215: ldc 2
+    //   217: monitorexit
+    //   218: iconst_0
+    //   219: ireturn
+    //   220: astore_0
+    //   221: goto +25 -> 246
+    //   224: astore_0
+    //   225: ldc 104
+    //   227: ldc 220
+    //   229: aload_0
+    //   230: invokestatic 224	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   233: pop
+    //   234: aload 9
+    //   236: invokeinterface 213 1 0
+    //   241: ldc 2
+    //   243: monitorexit
+    //   244: iconst_0
+    //   245: ireturn
+    //   246: aload 9
+    //   248: invokeinterface 213 1 0
+    //   253: aload_0
+    //   254: athrow
+    //   255: astore_0
+    //   256: ldc 2
+    //   258: monitorexit
+    //   259: goto +5 -> 264
+    //   262: aload_0
+    //   263: athrow
+    //   264: goto -2 -> 262
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	267	0	paramCollection	Collection<File>
+    //   0	267	1	paramFile	File
+    //   0	267	2	paramBoolean	boolean
+    //   0	267	3	paramString	String
+    //   0	267	4	paramAtomicInteger	AtomicInteger
+    //   0	267	5	paramResultCallback	Dex2Oat.ResultCallback
+    //   0	267	6	paramInt	int
+    //   35	131	7	l	long
+    //   30	217	9	localExecutorService	java.util.concurrent.ExecutorService
+    //   16	103	10	localCountDownLatch	java.util.concurrent.CountDownLatch
+    //   45	43	11	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   118	188	220	finally
+    //   200	208	220	finally
+    //   225	234	220	finally
+    //   118	188	224	java/lang/InterruptedException
+    //   200	208	224	java/lang/InterruptedException
+    //   3	71	255	finally
+    //   71	115	255	finally
+    //   188	195	255	finally
+    //   208	215	255	finally
+    //   234	241	255	finally
+    //   246	255	255	finally
+  }
+  
+  public static String b()
+  {
+    String str2 = (String)ReflecterHelper.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "arm";
     }
-    finally {}
-    for (;;)
-    {
-      return paramBoolean;
-      Log.e("plugin_tag.Dex2Oat", "Dexes optimizing failed, some dexes are not optimized.");
-      paramBoolean = false;
-      localExecutorService.shutdown();
-    }
+    return str1;
   }
   
   private static boolean b(String paramString)
@@ -172,7 +286,7 @@ public final class Dex2Oat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.Dex2Oat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,24 @@
 package com.tencent.mm.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.as;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.bj;
+import com.tencent.mm.sdk.event.IListener;
 
-final class MainTabUI$1
-  extends c<as>
+class MainTabUI$1
+  extends IListener<bj>
 {
-  MainTabUI$1(MainTabUI paramMainTabUI)
+  MainTabUI$1(MainTabUI paramMainTabUI, q paramq)
   {
-    AppMethodBeat.i(29615);
-    this.__eventId = as.class.getName().hashCode();
-    AppMethodBeat.o(29615);
+    super(paramq);
+    AppMethodBeat.i(249416);
+    this.__eventId = bj.class.getName().hashCode();
+    AppMethodBeat.o(249416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.MainTabUI.1
  * JD-Core Version:    0.7.0.1
  */

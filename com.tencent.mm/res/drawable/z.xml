@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/o_" android:insetRight="@dimen/o_" android:insetTop="@dimen/oa" android:insetBottom="@dimen/oa"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/aad" />
-    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/aad" />
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a2" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a2" />
-    <item android:state_focused="true" android:drawable="@drawable/aa_" />
-    <item android:drawable="@android:color/transparent" />
-</selector>
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/of" />
+        <solid android:color="@android:color/white" />
+        <padding android:left="@dimen/ob" android:top="@dimen/oc" android:right="@dimen/ob" android:bottom="@dimen/oc" />
+    </shape>
+</inset>

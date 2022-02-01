@@ -1,46 +1,26 @@
 package com.tencent.mobileqq.dating;
 
-import alof;
-import auul;
-import azqx;
-import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager.Callback;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class MsgBoxListActivity$7
-  implements Runnable
+  implements INowShortVideoProtoManager.Callback
 {
-  MsgBoxListActivity$7(MsgBoxListActivity paramMsgBoxListActivity, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, auul paramauul) {}
+  MsgBoxListActivity$7(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str1;
-    int i;
-    String str2;
-    label42:
-    azqx localazqx;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving)
+    if (QLog.isColorLevel())
     {
-      str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType);
-      i = this.jdField_a_of_type_Auul.b();
-      if (!this.this$0.d) {
-        break label157;
-      }
-      str2 = "1";
-      localazqx = new azqx(this.this$0.app).a("dc00899").b("grp_lbs").c("msg_box");
-      if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
-        break label163;
-      }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("follow onReceive errorCode = [");
+      paramArrayOfByte.append(paramInt);
+      paramArrayOfByte.append("]");
+      QLog.i("MsgBoxListActivity", 2, paramArrayOfByte.toString());
     }
-    label157:
-    label163:
-    for (String str3 = "clk_livepush";; str3 = "clk_relivepush")
-    {
-      localazqx.d(str3).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - alof.l)).a(new String[] { str1, String.valueOf(i), str2 }).a();
-      return;
-      str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType);
-      break;
-      str2 = "0";
-      break label42;
-    }
+    this.a.mUIHandler.post(new MsgBoxListActivity.7.1(this, paramInt));
   }
 }
 

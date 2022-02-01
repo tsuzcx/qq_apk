@@ -1,51 +1,70 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.mobileqq.config.struct.PicAndAdConf;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
-public final class fmw
-  extends Thread
+public class fmw
 {
-  public fmw(QQAppInterface paramQQAppInterface) {}
+  public static final int a = 1;
+  public static final int b = 2;
+  public static final int c = 3;
+  public static final int d = 4;
+  public static final int e = 5;
+  public static final int f = 6;
+  public byte a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public String b = null;
+  public String c = null;
+  public String d = null;
+  public String e = "";
   
-  public void run()
+  public fmw(PicAndAdConf paramPicAndAdConf)
   {
-    Card localCard = ProfileCardUtil.a(this.a, this.a.a());
-    if (localCard != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SPLASH_ConfigServlet_birth", 2, "card!=null");
-      }
-      j = (int)localCard.lBirthday;
-      i = ProfileUtil.c(j);
-      j = ProfileUtil.d(j);
-      SharedPreUtils.b(this.a.a(), ConfigServlet.a(i, j));
-      i = ConfigServlet.a(new SimpleDateFormat("MM-dd").format(new Date()), ConfigServlet.a(i, j));
-      if ((i >= 0) && (i <= 3))
-      {
-        ConfigServlet.a(this.a, 3);
-        if (QLog.isColorLevel()) {
-          QLog.i("SPLASH_ConfigServlet_birth", 2, "birthday coming soon,date diff is " + i);
-        }
-      }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Byte = 3;
+    this.jdField_a_of_type_Short = 0;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(DataInputStream paramDataInputStream)
+  {
+    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
+    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
+    this.b = paramDataInputStream.readUTF();
+    this.d = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
+    this.c = paramDataInputStream.readUTF();
+    this.e = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
+  }
+  
+  public void a(DataOutputStream paramDataOutputStream)
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    while (!QLog.isColorLevel())
-    {
-      int j;
-      int i;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("SPLASH_ConfigServlet_birth", 2, "not birthday date diff is " + i);
-      return;
+    if (this.b == null) {
+      this.b = "";
     }
-    QLog.i("SPLASH_ConfigServlet_birth", 2, "card===null");
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
+    paramDataOutputStream.writeUTF(this.b);
+    paramDataOutputStream.writeUTF(this.d);
+    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
+    paramDataOutputStream.writeUTF(this.c);
+    paramDataOutputStream.writeUTF(this.e);
+    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
   }
 }
 

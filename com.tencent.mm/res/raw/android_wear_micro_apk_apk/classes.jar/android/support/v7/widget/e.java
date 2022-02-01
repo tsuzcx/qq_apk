@@ -2,13 +2,13 @@ package android.support.v7.widget;
 
 final class e
 {
-  long rk = 0L;
-  e rl;
+  long ta = 0L;
+  e tb;
   
-  private void cF()
+  private void cN()
   {
-    if (this.rl == null) {
-      this.rl = new e();
+    if (this.tb == null) {
+      this.tb = new e();
     }
   }
   
@@ -17,75 +17,75 @@ final class e
     e locale = this;
     while (paramInt >= 64)
     {
-      if (locale.rl == null) {
+      if (locale.tb == null) {
         return;
       }
-      locale = locale.rl;
+      locale = locale.tb;
       paramInt -= 64;
     }
-    locale.rk &= (1L << paramInt ^ 0xFFFFFFFF);
+    locale.ta &= (1L << paramInt ^ 0xFFFFFFFF);
   }
   
-  final boolean ac(int paramInt)
+  final boolean an(int paramInt)
   {
     e locale = this;
     while (paramInt >= 64)
     {
-      locale.cF();
-      locale = locale.rl;
+      locale.cN();
+      locale = locale.tb;
       paramInt -= 64;
     }
     long l1 = 1L << paramInt;
-    if ((locale.rk & l1) != 0L) {}
+    if ((locale.ta & l1) != 0L) {}
     for (boolean bool = true;; bool = false)
     {
-      locale.rk &= (l1 ^ 0xFFFFFFFF);
+      locale.ta &= (l1 ^ 0xFFFFFFFF);
       l1 -= 1L;
-      long l2 = locale.rk;
-      locale.rk = (Long.rotateRight((l1 ^ 0xFFFFFFFF) & locale.rk, 1) | l2 & l1);
-      if (locale.rl != null)
+      long l2 = locale.ta;
+      locale.ta = (Long.rotateRight((l1 ^ 0xFFFFFFFF) & locale.ta, 1) | l2 & l1);
+      if (locale.tb != null)
       {
-        if (locale.rl.get(0)) {
+        if (locale.tb.get(0)) {
           locale.set(63);
         }
-        locale.rl.ac(0);
+        locale.tb.an(0);
       }
       return bool;
     }
   }
   
-  final int ad(int paramInt)
+  final int ao(int paramInt)
   {
-    if (this.rl == null)
+    if (this.tb == null)
     {
       if (paramInt >= 64) {
-        return Long.bitCount(this.rk);
+        return Long.bitCount(this.ta);
       }
-      return Long.bitCount(this.rk & (1L << paramInt) - 1L);
+      return Long.bitCount(this.ta & (1L << paramInt) - 1L);
     }
     if (paramInt < 64) {
-      return Long.bitCount(this.rk & (1L << paramInt) - 1L);
+      return Long.bitCount(this.ta & (1L << paramInt) - 1L);
     }
-    return this.rl.ad(paramInt - 64) + Long.bitCount(this.rk);
+    return this.tb.ao(paramInt - 64) + Long.bitCount(this.ta);
   }
   
-  final void b(int paramInt, boolean paramBoolean)
+  final void c(int paramInt, boolean paramBoolean)
   {
     boolean bool = paramBoolean;
     e locale = this;
     while (paramInt >= 64)
     {
-      locale.cF();
-      locale = locale.rl;
+      locale.cN();
+      locale = locale.tb;
       paramInt -= 64;
     }
-    if ((locale.rk & 0x0) != 0L)
+    if ((locale.ta & 0x0) != 0L)
     {
       paramBoolean = true;
       label47:
       long l1 = (1L << paramInt) - 1L;
-      long l2 = locale.rk;
-      locale.rk = (((l1 ^ 0xFFFFFFFF) & locale.rk) << 1 | l2 & l1);
+      long l2 = locale.ta;
+      locale.ta = (((l1 ^ 0xFFFFFFFF) & locale.ta) << 1 | l2 & l1);
       if (!bool) {
         break label132;
       }
@@ -93,11 +93,11 @@ final class e
     }
     for (;;)
     {
-      if ((!paramBoolean) && (locale.rl == null)) {
+      if ((!paramBoolean) && (locale.tb == null)) {
         return;
       }
-      locale.cF();
-      locale = locale.rl;
+      locale.cN();
+      locale = locale.tb;
       paramInt = 0;
       bool = paramBoolean;
       break;
@@ -113,11 +113,11 @@ final class e
     e locale = this;
     while (paramInt >= 64)
     {
-      locale.cF();
-      locale = locale.rl;
+      locale.cN();
+      locale = locale.tb;
       paramInt -= 64;
     }
-    return (locale.rk & 1L << paramInt) != 0L;
+    return (locale.ta & 1L << paramInt) != 0L;
   }
   
   final void set(int paramInt)
@@ -125,19 +125,19 @@ final class e
     e locale = this;
     while (paramInt >= 64)
     {
-      locale.cF();
-      locale = locale.rl;
+      locale.cN();
+      locale = locale.tb;
       paramInt -= 64;
     }
-    locale.rk |= 1L << paramInt;
+    locale.ta |= 1L << paramInt;
   }
   
   public final String toString()
   {
-    if (this.rl == null) {
-      return Long.toBinaryString(this.rk);
+    if (this.tb == null) {
+      return Long.toBinaryString(this.ta);
     }
-    return this.rl.toString() + "xx" + Long.toBinaryString(this.rk);
+    return this.tb.toString() + "xx" + Long.toBinaryString(this.ta);
   }
 }
 

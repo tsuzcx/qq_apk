@@ -43,12 +43,10 @@ public class Vec3f
     float f3 = paramVec3f1.z;
     float f4 = paramVec3f2.y;
     float f5 = paramVec3f2.x;
-    float f6 = paramVec3f1.z;
-    float f7 = paramVec3f2.z;
-    float f8 = paramVec3f1.x;
-    this.z = (paramVec3f1.x * paramVec3f2.y - paramVec3f1.y * paramVec3f2.x);
+    float f6 = paramVec3f1.x;
+    this.z = (f6 * f4 - f1 * f5);
     this.x = (f1 * f2 - f3 * f4);
-    this.y = (f5 * f6 - f7 * f8);
+    this.y = (f3 * f5 - f2 * f6);
   }
   
   public float dot(Vec3f paramVec3f)
@@ -58,27 +56,28 @@ public class Vec3f
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof Vec3f)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof Vec3f))
+    {
       paramObject = (Vec3f)paramObject;
-    } while ((this.x == paramObject.x) && (this.y == paramObject.y) && (this.z == paramObject.z));
-    return false;
+      return (this.x == paramObject.x) && (this.y == paramObject.y) && (this.z == paramObject.z);
+    }
     return false;
   }
   
   public int hashCode()
   {
-    return ((Float.floatToIntBits(this.x) + 217) * 31 + Float.floatToIntBits(this.y)) * 31 + Float.floatToIntBits(this.z);
+    return ((217 + Float.floatToIntBits(this.x)) * 31 + Float.floatToIntBits(this.y)) * 31 + Float.floatToIntBits(this.z);
   }
   
   public float length()
   {
-    return (float)Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+    float f1 = this.x;
+    float f2 = this.y;
+    float f3 = this.z;
+    return (float)Math.sqrt(f1 * f1 + f2 * f2 + f3 * f3);
   }
   
   public final void mul(float paramFloat)
@@ -93,7 +92,7 @@ public class Vec3f
     float f = 1.0F / length();
     this.x *= f;
     this.y *= f;
-    this.z = (f * this.z);
+    this.z *= f;
   }
   
   public void set(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -126,12 +125,20 @@ public class Vec3f
   
   public String toString()
   {
-    return "Vec3f[" + this.x + ", " + this.y + ", " + this.z + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Vec3f[");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.utils.Vec3f
  * JD-Core Version:    0.7.0.1
  */

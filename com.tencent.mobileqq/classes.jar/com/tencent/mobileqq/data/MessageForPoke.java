@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import afkx;
-import aggf;
-import alud;
 import android.graphics.drawable.Drawable.ConstantState;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameAnimationState;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,70 +26,78 @@ public class MessageForPoke
   public static final int POKE_FLAG_BREAKING_ICE_POKE = 1;
   @Deprecated
   public static final int POKE_FLAG_BREAKING_ICE_POKE_ACK = 2;
-  public int doubleHitState;
-  public int flag;
-  public boolean hasQuickBackShowed;
+  public int doubleHitState = 0;
+  public int flag = 0;
+  public boolean hasQuickBackShowed = false;
   public int interactType = 0;
-  public boolean isPlayed;
-  public Drawable.ConstantState mBubbleBgState;
-  public afkx mFrameState = new afkx();
-  public aggf mUnlimitedState = new aggf();
+  public boolean isPlayed = false;
+  public Drawable.ConstantState mBubbleBgState = null;
+  public CustomFrameAnimationDrawable.FrameAnimationState mFrameState = new CustomFrameAnimationDrawable.FrameAnimationState();
+  public UnlimitedBladeWorks.UnlimitedState mUnlimitedState = new UnlimitedBladeWorks.UnlimitedState();
   public String minVersion;
   public String name;
-  public int state;
-  public int strength;
+  public int state = 0;
+  public int strength = 0;
   public int subId = -1;
   
   protected void doParse()
   {
-    if (this.msgData != null) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(new String(this.msgData));
-      this.interactType = localJSONObject.getInt("interactType");
-      this.isPlayed = localJSONObject.getBoolean("isPlayed");
-      this.msg = localJSONObject.getString("msg");
-      this.doubleHitState = localJSONObject.getInt("doubltHit");
-      this.subId = localJSONObject.getInt("subId");
-      this.name = localJSONObject.getString("name");
-      this.minVersion = localJSONObject.getString("minVersion");
-      this.strength = localJSONObject.getInt("strength");
-      this.flag = localJSONObject.optInt("flag", 0);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+    if (this.msgData != null) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(new String(this.msgData));
+        this.interactType = localJSONObject.getInt("interactType");
+        this.isPlayed = localJSONObject.getBoolean("isPlayed");
+        this.msg = localJSONObject.getString("msg");
+        this.doubleHitState = localJSONObject.getInt("doubltHit");
+        this.subId = localJSONObject.getInt("subId");
+        this.name = localJSONObject.getString("name");
+        this.minVersion = localJSONObject.getString("minVersion");
+        this.strength = localJSONObject.getInt("strength");
+        this.flag = localJSONObject.optInt("flag", 0);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
   
   public void initMsg()
   {
-    switch (this.interactType)
+    int i = this.interactType;
+    if (i != 126)
     {
-    default: 
-      this.msg = alud.a(2131707014);
-      return;
-    case 1: 
-      this.msg = alud.a(2131707009);
-      return;
-    case 2: 
-      this.msg = alud.a(2131706988);
-      return;
-    case 3: 
-      this.msg = alud.a(2131706989);
-      return;
-    case 4: 
-      this.msg = alud.a(2131706976);
-      return;
-    case 5: 
-      this.msg = "[666]";
-      return;
-    case 6: 
-      this.msg = alud.a(2131706991);
+      switch (i)
+      {
+      default: 
+        this.msg = HardCodeUtil.a(2131904506);
+        return;
+      case 6: 
+        this.msg = HardCodeUtil.a(2131904483);
+        return;
+      case 5: 
+        this.msg = "[666]";
+        return;
+      case 4: 
+        this.msg = HardCodeUtil.a(2131904468);
+        return;
+      case 3: 
+        this.msg = HardCodeUtil.a(2131904481);
+        return;
+      case 2: 
+        this.msg = HardCodeUtil.a(2131904480);
+        return;
+      }
+      this.msg = HardCodeUtil.a(2131904501);
       return;
     }
-    this.msg = ("[" + this.name + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("]");
+    this.msg = localStringBuilder.toString();
   }
   
   public boolean isSupportReply()
@@ -102,12 +110,12 @@ public class MessageForPoke
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     try
     {
@@ -136,7 +144,7 @@ public class MessageForPoke
     {
       this.isPlayed = true;
       prewrite();
-      paramQQAppInterface.a().a(this.frienduin, this.istroop, this.uniseq, this.msgData);
+      paramQQAppInterface.getMessageFacade().a(this.frienduin, this.istroop, this.uniseq, this.msgData);
     }
   }
 }

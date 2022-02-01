@@ -1,10 +1,8 @@
 package com.tencent.magicbrush.handler.glfont;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Keep;
 import java.nio.FloatBuffer;
 
-@Keep
 public abstract interface IMBFontHandler
 {
   public abstract boolean checkAndFlushClearSignal();
@@ -29,11 +27,11 @@ public abstract interface IMBFontHandler
   
   public abstract void setStrokeWidth(float paramFloat);
   
-  public abstract void useFont(String paramString, float paramFloat, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void useFont(String paramString1, String paramString2, float paramFloat, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.IMBFontHandler
  * JD-Core Version:    0.7.0.1
  */

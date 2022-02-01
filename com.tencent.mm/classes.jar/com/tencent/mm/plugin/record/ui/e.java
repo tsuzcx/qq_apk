@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.record.a.d;
-import com.tencent.mm.plugin.record.a.i;
+import com.tencent.mm.plugin.record.a.j;
 import com.tencent.mm.plugin.record.ui.a.b;
 import java.util.List;
 
@@ -18,29 +18,44 @@ public final class e
     super(paramContext, parama);
   }
   
-  public final void a(int paramInt, i parami)
+  protected final com.tencent.mm.plugin.record.ui.viewWrappers.a a(com.tencent.mm.plugin.record.ui.viewWrappers.a parama)
   {
-    AppMethodBeat.i(24223);
-    cgb();
-    AppMethodBeat.o(24223);
+    parama.fromScene = this.fromScene;
+    return parama;
+  }
+  
+  public final void a(int paramInt, j paramj)
+  {
+    AppMethodBeat.i(27864);
+    gGt();
+    AppMethodBeat.o(27864);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(24222);
-    this.pZv = parama;
-    this.pZa.clear();
-    this.pZa.addAll(parama.pZa);
-    notifyDataSetChanged();
-    AppMethodBeat.o(24222);
+    AppMethodBeat.i(27863);
+    if (parama != null)
+    {
+      this.NBz = parama;
+      this.NBa.clear();
+      this.NBa.addAll(parama.NBa);
+      notifyDataSetChanged();
+    }
+    AppMethodBeat.o(27863);
   }
   
   public final void d(b paramb)
   {
     paramb.dataType = 0;
     paramb.fromScene = this.fromScene;
-    paramb.cpO = ((f)this.pZv).cpO;
-    paramb.cEB = ((f)this.pZv).cEB;
+    paramb.NBB = this.NBB;
+    paramb.msgId = ((f)this.NBz).msgId;
+    paramb.hXv = ((f)this.NBz).hXv;
+  }
+  
+  protected final int getFromScene()
+  {
+    return this.fromScene;
   }
 }
 

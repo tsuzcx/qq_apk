@@ -12,25 +12,10 @@ public class ExcitingTransferEngine$ExcitingSendJobContent
     this.mExcSendInfo = paramExcitingSendInfo;
     this.mListener = paramIExcitingTransferSendListener;
   }
-  
-  public ExcitingTransferHostInfo getNextBigDataHost()
-  {
-    if (this.mListener != null) {
-      return this.mListener.getNextBigDataHost();
-    }
-    return new ExcitingTransferHostInfo("", 0);
-  }
-  
-  public void setFailBigDataHost(String paramString, int paramInt)
-  {
-    if (this.mListener != null) {
-      this.mListener.setFailBigDataHost(paramString, paramInt);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine.ExcitingSendJobContent
  * JD-Core Version:    0.7.0.1
  */

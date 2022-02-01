@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.book.ResizeLayout android:id="@id/book_send_root" android:background="@drawable/reading_gift_bg" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="37.0dip" android:paddingRight="37.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="left" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:layout_marginBottom="20.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/bookToUser" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxxxxxx" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/classmate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="100.0dip" android:text=" 同学:" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="140.0dip">
+            <com.tencent.mobileqq.activity.book.BookEditText android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:textColorHint="#ffa1a1a1" android:gravity="top" android:id="@id/book_text" android:background="#00000000" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:paddingBottom="40.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/book_editer_hint" android:singleLine="false" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/reading_gift_edit_cursor" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff9a9a9a" android:id="@id/count_text" android:background="#00000000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignRight="@id/book_text" android:layout_alignBottom="@id/book_text" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/bookFromUser" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxxxx" android:singleLine="true" android:layout_toLeftOf="@id/zeng" />
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/zeng" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 赠" android:singleLine="true" android:layout_alignTop="@id/bookFromUser" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.activity.book.ResizeLayout>

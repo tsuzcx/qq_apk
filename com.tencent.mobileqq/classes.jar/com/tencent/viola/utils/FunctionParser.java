@@ -1,6 +1,7 @@
 package com.tencent.viola.utils;
 
 import android.support.annotation.NonNull;
+import com.tencent.viola.core.ViolaEnvironment;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
 public class FunctionParser<K, V>
 {
   public static final char SPACE = ' ';
+  private static final String TAG = "FunctionParser";
   private FunctionParser.Lexer lexer;
   private FunctionParser.Mapper<K, V> mapper;
   
@@ -51,7 +53,20 @@ public class FunctionParser<K, V>
       FunctionParser.Lexer.access$100(this.lexer);
       return paramToken;
     }
-    throw new FunctionParser.WXInterpretationException(paramToken + "Token doesn't match" + FunctionParser.Lexer.access$400(this.lexer), null);
+    if (!ViolaEnvironment.isDebugable())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramToken);
+      localStringBuilder.append(": Token doesn't match");
+      localStringBuilder.append(FunctionParser.Lexer.access$400(this.lexer));
+      ViolaLogUtils.e("FunctionParser", localStringBuilder.toString());
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramToken);
+    localStringBuilder.append("Token doesn't match");
+    localStringBuilder.append(FunctionParser.Lexer.access$400(this.lexer));
+    throw new FunctionParser.WXInterpretationException(localStringBuilder.toString(), null);
   }
   
   public LinkedHashMap<K, V> parse()
@@ -62,7 +77,7 @@ public class FunctionParser<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.FunctionParser
  * JD-Core Version:    0.7.0.1
  */

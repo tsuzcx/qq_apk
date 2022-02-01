@@ -2,9 +2,11 @@ package com.tencent.kinda.gen;
 
 public abstract interface IUIPagePlatformFuncDelegate
 {
+  public abstract void addReportInfo(ViewReportStruct paramViewReportStruct);
+  
   public abstract void beginIgnoringInteractionEvents();
   
-  public abstract void closeUI();
+  public abstract void closeUI(boolean paramBoolean);
   
   public abstract void endEditing();
   
@@ -14,7 +16,7 @@ public abstract interface IUIPagePlatformFuncDelegate
   
   public abstract void refreshNavigationBar();
   
-  public abstract void setBackgroundColor(long paramLong);
+  public abstract void setBackgroundColor(DynamicColor paramDynamicColor);
   
   public abstract void setKeyBoardShowCallbackImpl(VoidBoolI32Callback paramVoidBoolI32Callback);
   
@@ -27,10 +29,18 @@ public abstract interface IUIPagePlatformFuncDelegate
   public abstract void setTopRightBtnTitle(String paramString1, String paramString2);
   
   public abstract void setTopRightCallbackImpl(VoidCallback paramVoidCallback);
+  
+  public abstract void setWindowAdjustUnspecified(boolean paramBoolean);
+  
+  public abstract void startLoading(String paramString, boolean paramBoolean);
+  
+  public abstract void stopLoading();
+  
+  public abstract void triggerReport(ReportEvent paramReportEvent, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIPagePlatformFuncDelegate
  * JD-Core Version:    0.7.0.1
  */

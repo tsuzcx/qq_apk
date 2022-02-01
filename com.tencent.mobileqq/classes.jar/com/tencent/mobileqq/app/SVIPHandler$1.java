@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import amca;
-import amcb;
-import anwm;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 
-public class SVIPHandler$1
+class SVIPHandler$1
   implements Runnable
 {
-  public SVIPHandler$1(amca paramamca, String paramString) {}
+  SVIPHandler$1(SVIPHandler paramSVIPHandler, String paramString) {}
   
   public void run()
   {
-    anwm localanwm = anwm.a();
-    localanwm.a(this.this$0.app, this.a, new amcb(this, localanwm));
+    BubbleDiyFetcher localBubbleDiyFetcher = BubbleDiyFetcher.a();
+    localBubbleDiyFetcher.a(SVIPHandler.a(this.this$0), this.a, new SVIPHandler.1.1(this, localBubbleDiyFetcher));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPHandler.1
  * JD-Core Version:    0.7.0.1
  */

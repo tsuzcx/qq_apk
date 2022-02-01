@@ -21,7 +21,7 @@ import com.tencent.mobileqq.troop.data.TroopCreateLogic;
 import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import gtp;
+import gto;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,7 +48,7 @@ public class TroopCreateLogicActivity
   public TroopCreateLogicActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gtp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gto(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)

@@ -14,10 +14,10 @@ public class HeatMapTileProvider$Builder
   
   public HeatMapTileProvider build()
   {
-    if (this.a == null) {
-      throw new IllegalStateException("No input data: you must use either .data or .weightedData before building");
+    if (this.a != null) {
+      return new HeatMapTileProvider(this, (byte)0);
     }
-    return new HeatMapTileProvider(this, (byte)0);
+    throw new IllegalStateException("No input data: you must use either .data or .weightedData before building");
   }
   
   public Builder data(Collection<LatLng> paramCollection)
@@ -33,20 +33,22 @@ public class HeatMapTileProvider$Builder
   
   public Builder opacity(double paramDouble)
   {
-    if ((paramDouble < 0.0D) || (paramDouble > 1.0D)) {
-      throw new IllegalArgumentException("Opacity must be in range [0, 1]");
+    if ((paramDouble >= 0.0D) && (paramDouble <= 1.0D))
+    {
+      this.d = paramDouble;
+      return this;
     }
-    this.d = paramDouble;
-    return this;
+    throw new IllegalArgumentException("Opacity must be in range [0, 1]");
   }
   
   public Builder radius(int paramInt)
   {
-    if ((paramInt < 10) || (paramInt > 50)) {
-      throw new IllegalArgumentException("Radius not within bounds.");
+    if ((paramInt >= 10) && (paramInt <= 50))
+    {
+      this.b = paramInt;
+      return this;
     }
-    this.b = paramInt;
-    return this;
+    throw new IllegalArgumentException("Radius not within bounds.");
   }
   
   public Builder readyListener(HeatMapTileProvider.OnHeatMapReadyListener paramOnHeatMapReadyListener)
@@ -63,16 +65,17 @@ public class HeatMapTileProvider$Builder
   
   public Builder weightedData(Collection<WeightedLatLng> paramCollection)
   {
-    if (paramCollection.isEmpty()) {
-      throw new IllegalArgumentException("No input points.");
+    if (!paramCollection.isEmpty())
+    {
+      this.a = paramCollection;
+      return this;
     }
-    this.a = paramCollection;
-    return this;
+    throw new IllegalArgumentException("No input points.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.utilities.heatmap.HeatMapTileProvider.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.UiThread;
+import androidx.annotation.UiThread;
 
 public final class EventChannel
 {
@@ -26,17 +26,17 @@ public final class EventChannel
   {
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
-    if (paramStreamHandler == null) {}
-    for (paramStreamHandler = null;; paramStreamHandler = new EventChannel.IncomingStreamRequestHandler(this, paramStreamHandler))
-    {
-      localBinaryMessenger.setMessageHandler(str, paramStreamHandler);
-      return;
+    if (paramStreamHandler == null) {
+      paramStreamHandler = null;
+    } else {
+      paramStreamHandler = new EventChannel.IncomingStreamRequestHandler(this, paramStreamHandler);
     }
+    localBinaryMessenger.setMessageHandler(str, paramStreamHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.common.EventChannel
  * JD-Core Version:    0.7.0.1
  */

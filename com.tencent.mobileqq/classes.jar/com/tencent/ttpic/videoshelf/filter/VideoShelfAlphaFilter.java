@@ -22,17 +22,17 @@ public class VideoShelfAlphaFilter
   
   public void updateVideoTemplateType(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      addParam(new UniformParam.IntParam("videoTemplateType", paramInt));
-      return;
+    if (paramInt == 0) {
+      paramInt = 0;
+    } else {
+      paramInt = 1;
     }
+    addParam(new UniformParam.IntParam("videoTemplateType", paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.filter.VideoShelfAlphaFilter
  * JD-Core Version:    0.7.0.1
  */

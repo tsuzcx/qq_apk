@@ -1,29 +1,61 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.au.b;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
+import com.tencent.mm.ui.base.preference.f;
 
 public class RegByMobileVoiceVerifySelectUI
   extends MMPreference
-  implements com.tencent.mm.ai.f
+  implements h
 {
-  private LanguagePreference.a[] gIQ;
-  private String gIR;
-  private com.tencent.mm.ui.base.preference.f screen;
+  private String languageCode;
+  private LanguagePreference.a[] qfT;
+  private f screen;
   
-  private static LanguagePreference.a[] arR()
+  public static String Ty(String paramString)
   {
-    AppMethodBeat.i(125460);
-    String[] arrayOfString1 = ah.getContext().getString(2131297623).trim().split(",");
+    AppMethodBeat.i(128622);
+    LanguagePreference.a[] arrayOfa = bYM();
+    if (arrayOfa == null)
+    {
+      Log.e("MicroMsg.RegByMobileVoiceVerifySelectUI", "getDefaultLanguageName info == null");
+      AppMethodBeat.o(128622);
+      return "English";
+    }
+    paramString = b.OD(paramString);
+    int j = arrayOfa.length;
+    int i = 0;
+    while (i < j)
+    {
+      LanguagePreference.a locala = arrayOfa[i];
+      if (locala.qaB.equalsIgnoreCase(paramString))
+      {
+        paramString = locala.qaz;
+        AppMethodBeat.o(128622);
+        return paramString;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(128622);
+    return "English";
+  }
+  
+  private static LanguagePreference.a[] bYM()
+  {
+    AppMethodBeat.i(128623);
+    String[] arrayOfString1 = MMApplicationContext.getContext().getString(r.j.bind_mcontact_voice_verify_Languages).trim().split(",");
     LanguagePreference.a[] arrayOfa = new LanguagePreference.a[arrayOfString1.length];
     int i = 0;
     while (i < arrayOfString1.length)
@@ -32,113 +64,101 @@ public class RegByMobileVoiceVerifySelectUI
       arrayOfa[i] = new LanguagePreference.a(arrayOfString2[1], arrayOfString2[2], arrayOfString2[0], false);
       i += 1;
     }
-    AppMethodBeat.o(125460);
+    AppMethodBeat.o(128623);
     return arrayOfa;
-  }
-  
-  public static String xA(String paramString)
-  {
-    AppMethodBeat.i(125459);
-    LanguagePreference.a[] arrayOfa = arR();
-    paramString = b.tL(paramString);
-    int j = arrayOfa.length;
-    int i = 0;
-    while (i < j)
-    {
-      LanguagePreference.a locala = arrayOfa[i];
-      if (locala.gDF.equalsIgnoreCase(paramString))
-      {
-        paramString = locala.gDD;
-        AppMethodBeat.o(125459);
-        return paramString;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(125459);
-    return "English";
   }
   
   public int getResourceId()
   {
-    return 2130968851;
+    return r.g.bindmcontact_voice_select_language;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(125458);
+    AppMethodBeat.i(128621);
     hideVKB();
-    this.gIR = getIntent().getExtras().getString("voice_verify_code");
-    setMMTitle(2131297629);
-    setBackBtn(new RegByMobileVoiceVerifySelectUI.1(this));
-    this.gIQ = arR();
-    if ((this.gIQ == null) || (this.gIQ.length <= 0))
+    this.languageCode = getIntent().getExtras().getString("voice_verify_code");
+    setMMTitle(r.j.bind_mcontact_voice_verify_select_title);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      AppMethodBeat.o(125458);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(128617);
+        RegByMobileVoiceVerifySelectUI.this.hideVKB();
+        RegByMobileVoiceVerifySelectUI.this.finish();
+        AppMethodBeat.o(128617);
+        return true;
+      }
+    });
+    this.qfT = bYM();
+    if ((this.qfT == null) || (this.qfT.length <= 0))
+    {
+      AppMethodBeat.o(128621);
       return;
     }
     this.screen.removeAll();
     Object localObject = new PreferenceCategory(this);
-    this.screen.b((Preference)localObject);
-    localObject = this.gIQ;
+    this.screen.c((Preference)localObject);
+    localObject = this.qfT;
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
       LanguagePreference.a locala = localObject[i];
-      if (locala.gDF.equalsIgnoreCase(this.gIR)) {
-        locala.gDG = true;
+      if (locala.qaB.equalsIgnoreCase(this.languageCode)) {
+        locala.isSelected = true;
       }
       LanguagePreference localLanguagePreference = new LanguagePreference(this);
       localLanguagePreference.a(locala);
-      localLanguagePreference.setKey(locala.gDF);
-      this.screen.b(localLanguagePreference);
+      localLanguagePreference.setKey(locala.qaB);
+      this.screen.c(localLanguagePreference);
       i += 1;
     }
-    AppMethodBeat.o(125458);
+    AppMethodBeat.o(128621);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(125455);
+    AppMethodBeat.i(128618);
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
     initView();
-    AppMethodBeat.o(125455);
+    AppMethodBeat.o(128618);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(125456);
+    AppMethodBeat.i(128619);
     super.onDestroy();
-    AppMethodBeat.o(125456);
+    AppMethodBeat.o(128619);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(125457);
+    AppMethodBeat.i(128620);
     if ((paramPreference instanceof LanguagePreference))
     {
-      paramf = ((LanguagePreference)paramPreference).gDC;
+      paramf = ((LanguagePreference)paramPreference).qay;
       if (paramf == null)
       {
-        AppMethodBeat.o(125457);
+        AppMethodBeat.o(128620);
         return false;
       }
       paramPreference = new Intent();
       Bundle localBundle = new Bundle();
-      localBundle.putString("voice_verify_language", paramf.gDD);
-      localBundle.putString("voice_verify_code", paramf.gDF);
+      localBundle.putString("voice_verify_language", paramf.qaz);
+      localBundle.putString("voice_verify_code", paramf.qaB);
       paramPreference.putExtras(localBundle);
       setResult(0, paramPreference);
       finish();
-      AppMethodBeat.o(125457);
+      AppMethodBeat.o(128620);
       return true;
     }
-    AppMethodBeat.o(125457);
+    AppMethodBeat.o(128620);
     return false;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm) {}
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp) {}
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
@@ -148,7 +168,7 @@ public class RegByMobileVoiceVerifySelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileVoiceVerifySelectUI
  * JD-Core Version:    0.7.0.1
  */

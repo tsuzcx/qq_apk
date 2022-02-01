@@ -1,31 +1,33 @@
 package com.tencent.mobileqq.data;
 
-import alto;
 import android.text.TextUtils;
-import awge;
-import awhp;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.InitMsgModule;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class ConversationInfo
-  extends awge
+  extends Entity
 {
-  @awhp
-  public static boolean publicaccountTypeErrorReported = false;
+  public static final String SUB_ACCOUNT_TROOP_UNREAD_ERROR = " SUB_ACCOUNT_TROOP_UNREAD ERROR ";
+  public static final String UNREAD_ERROR = " UNREAD ERROR ";
+  public static final String UNREAD_GIFT_COUNT_ERROR = " UNREAD_GIFT_COUNT ERROR ";
+  public static final String UNREAD_MARK_ERROR = " UNREAD_MARK ERROR ";
+  public static final String UNREAD_RED_PACK_ERROR = " UNREAD_RED_PACK ERROR ";
+  public static ConversationInfo.Callback sCallback = new ConversationInfo.1();
   private static final String tableName = "conversation_info";
   public byte[] extData;
   public int extInt1;
   public int extInt2;
   public int extInt3;
   public String extString;
-  public boolean isImax;
+  public boolean isImax = false;
   public long lastread;
-  @awhp
+  @notColumn
   public TinyInfo tinyInfo;
   public int type;
   public String uin;
@@ -33,22 +35,24 @@ public class ConversationInfo
   public int unreadGiftCount;
   public int unreadMark;
   
+  static {}
+  
   public ConversationInfo() {}
   
   public ConversationInfo(String paramString, int paramInt)
   {
     this.uin = paramString;
-    this.type = paramInt;
-    reportPublicaccoutTypeError(paramString, paramInt);
+    setType(paramInt);
+    sCallback.a(paramString, paramInt);
   }
   
   public ConversationInfo(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
     this.uin = paramString;
-    this.type = paramInt1;
+    setType(paramInt1);
     this.lastread = paramLong;
-    this.unreadCount = paramInt2;
-    reportPublicaccoutTypeError(paramString, paramInt1);
+    setUnread(paramInt2);
+    sCallback.a(paramString, paramInt1);
   }
   
   public static String getConversationInfoTableName()
@@ -56,26 +60,9 @@ public class ConversationInfo
     return "conversation_info";
   }
   
-  public static boolean reportPublicaccoutTypeError(String paramString, int paramInt)
+  public static void setCallback(ConversationInfo.Callback paramCallback)
   {
-    if ((paramInt == 1008) && (!publicaccountTypeErrorReported))
-    {
-      Object localObject = BaseApplicationImpl.getApplication();
-      if (localObject != null)
-      {
-        localObject = ((BaseApplicationImpl)localObject).getRuntime();
-        if (localObject != null)
-        {
-          paramString = ((alto)((AppRuntime)localObject).getManager(51)).c(paramString);
-          if ((paramString != null) && (paramString.isFriend()))
-          {
-            publicaccountTypeErrorReported = true;
-            return true;
-          }
-        }
-      }
-    }
-    return false;
+    sCallback = paramCallback;
   }
   
   public String getTableName()
@@ -83,7 +70,7 @@ public class ConversationInfo
     return getConversationInfoTableName();
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     if (!TextUtils.isEmpty(this.extString)) {
@@ -91,31 +78,92 @@ public class ConversationInfo
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
-    if (this.tinyInfo != null) {
-      this.extString = this.tinyInfo.toJsonStr();
+    TinyInfo localTinyInfo = this.tinyInfo;
+    if (localTinyInfo != null) {
+      this.extString = localTinyInfo.toJsonStr();
     }
+  }
+  
+  public void setExtInt1(int paramInt)
+  {
+    this.extInt1 = paramInt;
+    sCallback.a(paramInt, this, " UNREAD_RED_PACK ERROR ");
+  }
+  
+  public void setExtInt2(int paramInt)
+  {
+    this.extInt2 = paramInt;
+    sCallback.a(paramInt, this, " SUB_ACCOUNT_TROOP_UNREAD ERROR ");
+  }
+  
+  public void setType(int paramInt)
+  {
+    this.type = paramInt;
+    sCallback.a(paramInt, this);
+  }
+  
+  public void setUnread(int paramInt)
+  {
+    this.unreadCount = paramInt;
+    sCallback.a(paramInt, this, " UNREAD ERROR ");
+  }
+  
+  public void setUnreadGiftCount(int paramInt)
+  {
+    this.unreadGiftCount = paramInt;
+    sCallback.a(paramInt, this, " UNREAD_GIFT_COUNT ERROR ");
+  }
+  
+  public void setUnreadMark(int paramInt)
+  {
+    this.unreadMark = paramInt;
+    sCallback.a(paramInt, this, " UNREAD_MARK ERROR ");
   }
   
   public String toString()
   {
-    String str;
-    if (QLog.isColorLevel()) {
-      str = this.uin;
-    }
-    for (;;)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder("--ConversationInfo--");
-      localStringBuilder.append(",shortUin:").append(str).append(",type:").append(this.type).append(",lastread:").append(this.lastread).append(",unreadCount:").append(this.unreadCount).append(",unreadGiftCount:").append(this.unreadGiftCount).append(",unreadRedPacketCount:").append(this.extInt1).append(",subAccountTroopunReadMsg:").append(this.extInt2).append(",unreadMark:").append(this.unreadMark).append(", extStr:").append(this.extString);
-      return localStringBuilder.toString();
-      if ((TextUtils.isEmpty(this.uin)) || (this.uin.length() < 4)) {
-        str = this.uin;
-      } else {
-        str = "*" + this.uin.substring(this.uin.length() - 4, this.uin.length());
-      }
+      localObject1 = this.uin;
     }
+    else if ((!TextUtils.isEmpty(this.uin)) && (this.uin.length() >= 4))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("*");
+      localObject2 = this.uin;
+      ((StringBuilder)localObject1).append(((String)localObject2).substring(((String)localObject2).length() - 4, this.uin.length()));
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
+      localObject1 = this.uin;
+    }
+    Object localObject2 = new StringBuilder("--ConversationInfo--");
+    ((StringBuilder)localObject2).append(",shortUin:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(",type:");
+    ((StringBuilder)localObject2).append(this.type);
+    ((StringBuilder)localObject2).append(",lastread:");
+    ((StringBuilder)localObject2).append(this.lastread);
+    ((StringBuilder)localObject2).append(",unreadCount:");
+    ((StringBuilder)localObject2).append(this.unreadCount);
+    ((StringBuilder)localObject2).append(",unreadGiftCount:");
+    ((StringBuilder)localObject2).append(this.unreadGiftCount);
+    ((StringBuilder)localObject2).append(",unreadRedPacketCount:");
+    ((StringBuilder)localObject2).append(this.extInt1);
+    ((StringBuilder)localObject2).append(",subAccountTroopunReadMsg:");
+    ((StringBuilder)localObject2).append(this.extInt2);
+    ((StringBuilder)localObject2).append(",PublicAccountConversationRedMask:");
+    ((StringBuilder)localObject2).append(this.extInt3);
+    ((StringBuilder)localObject2).append(",unreadMark:");
+    ((StringBuilder)localObject2).append(this.unreadMark);
+    ((StringBuilder)localObject2).append(", extStr:");
+    ((StringBuilder)localObject2).append(this.extString);
+    return ((StringBuilder)localObject2).toString();
   }
 }
 

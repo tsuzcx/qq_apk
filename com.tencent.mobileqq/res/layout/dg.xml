@@ -7,6 +7,5 @@
         <TextView android:textSize="16.0dip" android:textColor="@color/o6" android:id="@id/jhr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="" android:includeFontPadding="false" />
     </LinearLayout>
     <FrameLayout android:id="@id/jv2" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
-    <com.tencent.mobileqq.ar.ScanningSurfaceView android:id="@id/ih2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mobileqq.ar.ObjectSurfaceView android:id="@id/fcf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tencentmap.mapsdk.maps.model.IndoorLevel;
 import java.util.List;
 
@@ -28,18 +30,20 @@ final class ij$a
   
   public final int getCount()
   {
-    if (this.a == null) {
+    List localList = this.a;
+    if (localList == null) {
       return 0;
     }
-    return this.a.size();
+    return localList.size();
   }
   
   public final Object getItem(int paramInt)
   {
-    if (this.a == null) {
+    List localList = this.a;
+    if (localList == null) {
       return null;
     }
-    return this.a.get(paramInt);
+    return localList.get(paramInt);
   }
   
   public final long getItemId(int paramInt)
@@ -50,43 +54,53 @@ final class ij$a
   @NonNull
   public final View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return null;
-    }
-    Object localObject;
-    if (paramView != null)
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      localObject = (ij.a.a)paramView.getTag();
-      paramViewGroup = ((ij.a.a)localObject).a;
-      localObject = ((ij.a.a)localObject).b;
+      Object localObject2;
+      ImageView localImageView;
+      if (paramView != null)
+      {
+        localObject1 = (ij.a.a)paramView.getTag();
+        localObject2 = ((ij.a.a)localObject1).a;
+        localImageView = ((ij.a.a)localObject1).b;
+        localObject1 = paramView;
+      }
+      else
+      {
+        localObject1 = new FrameLayout(this.c);
+        localImageView = new ImageView(this.c);
+        if (ij.b(this.b) != null) {
+          localImageView.setImageBitmap(ij.b(this.b));
+        }
+        localObject2 = new FrameLayout.LayoutParams(ij.c(this.b).getMeasuredWidth(), (int)(ij.d(this.b) * 45.0F));
+        ((FrameLayout.LayoutParams)localObject2).gravity = 17;
+        ((FrameLayout)localObject1).addView(localImageView, (ViewGroup.LayoutParams)localObject2);
+        localObject2 = new pc(this.c);
+        ((TextView)localObject2).setGravity(17);
+        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, (int)(ij.d(this.b) * 45.0F));
+        localLayoutParams.gravity = 17;
+        ((FrameLayout)localObject1).addView((View)localObject2, localLayoutParams);
+        ((FrameLayout)localObject1).setTag(new ij.a.a(this, (TextView)localObject2, localImageView));
+      }
+      ((TextView)localObject2).setText(((IndoorLevel)this.a.get(paramInt)).getName());
+      if (paramInt != ij.e(this.b))
+      {
+        ((TextView)localObject2).setTextColor(ij.c());
+        localImageView.setVisibility(4);
+      }
+      else
+      {
+        ((TextView)localObject2).setTextColor(-1);
+        localImageView.setVisibility(0);
+      }
     }
-    for (;;)
+    else
     {
-      paramViewGroup.setText(((IndoorLevel)this.a.get(paramInt)).getName());
-      if (paramInt == ij.e(this.b)) {
-        break;
-      }
-      paramViewGroup.setTextColor(ij.c());
-      ((ImageView)localObject).setVisibility(4);
-      return paramView;
-      paramView = new FrameLayout(this.c);
-      localObject = new ImageView(this.c);
-      if (ij.b(this.b) != null) {
-        ((ImageView)localObject).setImageBitmap(ij.b(this.b));
-      }
-      paramViewGroup = new FrameLayout.LayoutParams(ij.c(this.b).getMeasuredWidth(), (int)(ij.d(this.b) * 45.0F));
-      paramViewGroup.gravity = 17;
-      paramView.addView((View)localObject, paramViewGroup);
-      paramViewGroup = new pc(this.c);
-      paramViewGroup.setGravity(17);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, (int)(ij.d(this.b) * 45.0F));
-      localLayoutParams.gravity = 17;
-      paramView.addView(paramViewGroup, localLayoutParams);
-      paramView.setTag(new ij.a.a(this, paramViewGroup, (ImageView)localObject));
+      localObject1 = null;
     }
-    paramViewGroup.setTextColor(-1);
-    ((ImageView)localObject).setVisibility(0);
-    return paramView;
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 

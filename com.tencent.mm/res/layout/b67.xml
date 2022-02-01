@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/fie" android:background="@color/a3x" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/fif" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        <ImageView android:id="@id/fig" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/wallet_drag_icon" />
+<FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="bottom|center" android:id="@id/lck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/we" custom:iconBg="@drawable/b17" custom:iconDrawable="@raw/icon_filled_hangup" custom:iconText="@string/we" />
+    <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="bottom|center" android:id="@id/ld1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/kgw" custom:iconBg="@drawable/b17" custom:iconDrawable="@raw/icon_filled_hangup" custom:iconText="@string/kgw" />
+    <LinearLayout android:layout_gravity="bottom|center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="center" android:id="@id/ldg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:contentDescription="@string/kib" android:layout_marginEnd="@dimen/d6" custom:iconBg="@drawable/b17" custom:iconDrawable="@raw/icon_filled_hangup" custom:iconText="@string/kib" />
+        <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="center" android:id="@id/lcg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:contentDescription="@string/kef" android:layout_marginStart="@dimen/d6" custom:iconBg="@drawable/b16" custom:iconDrawable="@raw/icon_filled_voice_call" custom:iconText="@string/kef" />
     </LinearLayout>
-    <View android:background="#ffe2e2e2" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+</FrameLayout>

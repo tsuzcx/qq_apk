@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import bjhz;
+import cooperation.qzone.cache.FileCacheService;
 
 final class QzoneOfflineCacheHelper$1
   implements Runnable
@@ -9,12 +9,12 @@ final class QzoneOfflineCacheHelper$1
   
   public void run()
   {
-    QzoneOfflineCacheHelper.access$000().a(this.a, true);
+    QzoneOfflineCacheHelper.access$000().updateLruFile(this.val$path, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper.1
  * JD-Core Version:    0.7.0.1
  */

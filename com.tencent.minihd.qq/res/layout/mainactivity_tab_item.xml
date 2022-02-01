@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/tab_item_container" android:paddingBottom="@dimen/tab_item_padding_bottom" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/tab_item_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+    <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unchecked_msg_num" android:visibility="gone" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/mainactivity_tab_item_tips_marginTop" android:layout_toRightOf="@id/tab_item_image" android:layout_alignParentTop="true" style="@style/CustomNoteTxt" />
+</RelativeLayout>

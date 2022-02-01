@@ -1,50 +1,30 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
-import com.tencent.mm.protocal.j.c;
-import com.tencent.mm.protocal.j.d;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
+import kotlin.Metadata;
 
-public final class c
-  extends k
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelsimple/ExtDeviceOpLogOpCode;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "kExtDeviceOpLogDefault", "kExtDeviceOpLogPushLoginUrlAutoLogin", "plugin-messenger_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum c
 {
-  private static int fOC = 3941;
-  private final l.e fum;
-  private final l.d req;
+  final int value;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(154514);
-    this.req = new j.c();
-    this.fum = new j.d();
-    AppMethodBeat.o(154514);
+    AppMethodBeat.i(236730);
+    oRZ = new c("kExtDeviceOpLogDefault", 0, 0);
+    oSa = new c("kExtDeviceOpLogPushLoginUrlAutoLogin", 1, 1);
+    oSb = new c[] { oRZ, oSa };
+    AppMethodBeat.o(236730);
   }
   
-  public final l.d getReqObjImp()
+  private c(int paramInt)
   {
-    return this.req;
-  }
-  
-  public final l.e getRespObj()
-  {
-    return this.fum;
-  }
-  
-  public final int getType()
-  {
-    return fOC;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/micromsg-bin/disasterauth";
+    this.value = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsimple.c
  * JD-Core Version:    0.7.0.1
  */

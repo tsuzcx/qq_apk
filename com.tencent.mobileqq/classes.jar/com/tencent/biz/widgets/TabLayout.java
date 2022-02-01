@@ -3,24 +3,29 @@ package com.tencent.biz.widgets;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.kandian.biz.common.api.IRIJBlackWhiteModeHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.HorizontalListView;
 import java.util.HashMap;
 import java.util.Map;
-import zhl;
-import zhm;
-import zhn;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class TabLayout
   extends HorizontalListView
 {
-  private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private zhn jdField_a_of_type_Zhn;
-  private boolean jdField_a_of_type_Boolean;
-  private Map<Integer, Integer> b = new HashMap();
+  private TabLayout.TabAdapter a;
+  private Map<Integer, View> b = new HashMap();
+  private Map<Integer, Integer> c = new HashMap();
+  private boolean d = false;
+  private Function1<Canvas, Unit> e = new TabLayout.3(this);
+  private Function1<Canvas, Unit> f = new TabLayout.4(this);
   
   public TabLayout(Context paramContext)
   {
@@ -45,43 +50,33 @@ public class TabLayout
     setHorizontalScrollBarEnabled(false);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilMap.size()) {
-      return ((View)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).getMeasuredWidth();
-    }
-    return 0;
-  }
-  
+  @Nullable
   public View a(int paramInt)
   {
-    return (View)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    return (View)this.b.get(Integer.valueOf(paramInt));
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Zhn != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Zhn.notifyDataSetChanged();
+    TabLayout.TabAdapter localTabAdapter = this.a;
+    if ((localTabAdapter != null) && (!this.d)) {
+      localTabAdapter.notifyDataSetChanged();
     }
   }
   
   public void a(int paramInt1, int paramInt2, Animator.AnimatorListener paramAnimatorListener)
   {
+    int j = getFirstVisiblePosition();
     int i = 0;
-    if (paramInt2 < getFirstVisiblePosition())
+    if (paramInt2 < j)
     {
       paramAnimatorListener.onAnimationEnd(null);
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       a();
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    int j = getFirstVisiblePosition();
+    this.d = true;
+    j = getFirstVisiblePosition();
     int m = paramInt2 - getFirstVisiblePosition();
     View localView = getChildAt(paramInt1 - j);
     if (localView != null)
@@ -99,50 +94,78 @@ public class TabLayout
       }
       Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).setDuration(500L);
-      ((ValueAnimator)localObject).addUpdateListener(new zhl(this, paramInt1, paramInt2, m, n, localView, j));
-      ((ValueAnimator)localObject).addListener(new zhm(this, paramAnimatorListener));
+      ((ValueAnimator)localObject).addUpdateListener(new TabLayout.1(this, paramInt1, paramInt2, m, n, localView, j));
+      ((ValueAnimator)localObject).addListener(new TabLayout.2(this, paramAnimatorListener));
       ((ValueAnimator)localObject).start();
       return;
     }
     paramAnimatorListener.onAnimationEnd(null);
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     a();
+  }
+  
+  public int b(int paramInt)
+  {
+    if (paramInt < this.b.size())
+    {
+      View localView = (View)this.b.get(Integer.valueOf(paramInt));
+      if (localView != null) {
+        return localView.getMeasuredWidth();
+      }
+    }
+    return 0;
+  }
+  
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    ((IRIJBlackWhiteModeHelper)QRoute.api(IRIJBlackWhiteModeHelper.class)).addBlackWhiteMode(paramCanvas, true, this.f);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if (i == 2) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
     }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
+    else {
       getParent().requestDisallowInterceptTouchEvent(true);
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setAdapter(zhn paramzhn)
+  public void draw(Canvas paramCanvas)
   {
-    super.setAdapter(paramzhn);
-    this.jdField_a_of_type_Zhn = paramzhn;
-    this.jdField_a_of_type_Zhn.a(this);
+    ((IRIJBlackWhiteModeHelper)QRoute.api(IRIJBlackWhiteModeHelper.class)).addBlackWhiteMode(paramCanvas, true, this.e);
+  }
+  
+  public int getChildSize()
+  {
+    return this.b.size();
+  }
+  
+  public void setAdapter(TabLayout.TabAdapter paramTabAdapter)
+  {
+    super.setAdapter(paramTabAdapter);
+    this.a = paramTabAdapter;
+    this.a.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramView);
+    this.b.put(Integer.valueOf(paramInt), paramView);
   }
   
   public void setChildWidth(int paramInt1, int paramInt2)
   {
-    this.b.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.c.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
   
   public void setSwappingAnimation()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void smoothScrollToPositionFromLeftOrRight(int paramInt1, int paramInt2, int paramInt3)
@@ -152,7 +175,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout
  * JD-Core Version:    0.7.0.1
  */

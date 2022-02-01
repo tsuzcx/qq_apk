@@ -3,12 +3,9 @@ package com.tencent.mm.plugin.backup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.FileSystemManager;
-import com.tencent.mm.vfs.FileSystemManager.a;
-import com.tencent.mm.vfs.RC4EncryptedFileSystem;
-import com.tencent.mm.vfs.RawFileSystem;
+import com.tencent.mm.model.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.af;
 
 public class PluginBackup
   extends f
@@ -16,26 +13,26 @@ public class PluginBackup
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(17112);
-    if (paramg.SD())
+    AppMethodBeat.i(21164);
+    if (paramg.bbA())
     {
-      FileSystemManager.dQE().erS().a("msgsynchronize", new RC4EncryptedFileSystem("${storage}/tencent/MicroMsg/${account}/msgsynchronize", "msgsynchronize")).iD("${storage}/tencent/MicroMsg/${account}/msgsynchronize", "msgsynchronize").commit();
-      ab.i("VFS.Debug", "msgsynchronize FS registered");
-      FileSystemManager.dQE().erS().a("backupRecover", new RawFileSystem("${storage}/tencent/MicroMsg/${account}/backupRecover/backupItem", (byte)0)).iD("${storage}/tencent/MicroMsg/${account}/backupRecover/backupItem", "backupRecover").commit();
-      ab.i("VFS.Debug", "backupRecover FS registered");
+      af.a("msgsynchronize", "msgsynchronize", 2592000000L, 105);
+      Log.i("VFS.Debug", "msgsynchronize FS registered");
+      af.a("backupRecover", "backupRecover", 2592000000L, 97);
+      Log.i("VFS.Debug", "backupRecover FS registered");
     }
-    AppMethodBeat.o(17112);
+    AppMethodBeat.o(21164);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(17113);
-    if (paramg.SD())
+    AppMethodBeat.i(21165);
+    if (paramg.bbA())
     {
-      ab.i("MicroMsg.PluginBackup", "PluginMonitor execute PluginMonitor new BackupCore");
-      pin(new q(com.tencent.mm.plugin.backup.j.a.class));
+      Log.i("MicroMsg.PluginBackup", "PluginMonitor execute PluginMonitor new BackupCore");
+      pin(new y(com.tencent.mm.plugin.backup.model.a.class));
     }
-    AppMethodBeat.o(17113);
+    AppMethodBeat.o(21165);
   }
   
   public String name()
@@ -45,7 +42,7 @@ public class PluginBackup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.PluginBackup
  * JD-Core Version:    0.7.0.1
  */

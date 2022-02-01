@@ -8,7 +8,7 @@ public final class UndealCountQzmallDeco
   extends JceStruct
 {
   static QzmallCustomVip cache_stCustomVip = new QzmallCustomVip();
-  public QzmallCustomVip stCustomVip;
+  public QzmallCustomVip stCustomVip = null;
   
   public UndealCountQzmallDeco() {}
   
@@ -24,14 +24,15 @@ public final class UndealCountQzmallDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stCustomVip != null) {
-      paramJceOutputStream.write(this.stCustomVip, 0);
+    QzmallCustomVip localQzmallCustomVip = this.stCustomVip;
+    if (localQzmallCustomVip != null) {
+      paramJceOutputStream.write(localQzmallCustomVip, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.UndealCountQzmallDeco
  * JD-Core Version:    0.7.0.1
  */

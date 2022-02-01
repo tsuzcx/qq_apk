@@ -74,78 +74,97 @@ public final class TtmlDecoder
   private static void parseFontSize(String paramString, TtmlStyle paramTtmlStyle)
   {
     Object localObject = paramString.split("\\s+");
-    label21:
-    int i;
     if (localObject.length == 1)
     {
       localObject = FONT_SIZE.matcher(paramString);
-      if (!((Matcher)localObject).matches()) {
-        break label279;
-      }
-      paramString = ((Matcher)localObject).group(3);
-      i = -1;
-      switch (paramString.hashCode())
-      {
-      }
     }
-    for (;;)
+    else
     {
-      switch (i)
+      if (localObject.length != 2) {
+        break label274;
+      }
+      localObject = FONT_SIZE.matcher(localObject[1]);
+      Log.w("TtmlDecoder", "Multiple values in fontSize attribute. Picking the second value for vertical font size and ignoring the first.");
+    }
+    if (((Matcher)localObject).matches())
+    {
+      paramString = ((Matcher)localObject).group(3);
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != 37)
       {
-      default: 
-        throw new SubtitleDecoderException("Invalid unit for fontSize: '" + paramString + "'.");
-        if (localObject.length == 2)
+        if (j != 3240)
         {
-          localObject = FONT_SIZE.matcher(localObject[1]);
-          Log.w("TtmlDecoder", "Multiple values in fontSize attribute. Picking the second value for vertical font size and ignoring the first.");
-          break label21;
-        }
-        throw new SubtitleDecoderException("Invalid number of entries for fontSize: " + localObject.length + ".");
-        if (paramString.equals("px"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("em"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("%")) {
-              i = 2;
-            }
+          if ((j == 3592) && (paramString.equals("px"))) {
+            i = 0;
           }
         }
-        break;
+        else if (paramString.equals("em")) {
+          i = 1;
+        }
       }
-    }
-    paramTtmlStyle.setFontSizeUnit(1);
-    for (;;)
-    {
+      else if (paramString.equals("%")) {
+        i = 2;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2)
+          {
+            paramTtmlStyle.setFontSizeUnit(3);
+          }
+          else
+          {
+            paramTtmlStyle = new StringBuilder();
+            paramTtmlStyle.append("Invalid unit for fontSize: '");
+            paramTtmlStyle.append(paramString);
+            paramTtmlStyle.append("'.");
+            throw new SubtitleDecoderException(paramTtmlStyle.toString());
+          }
+        }
+        else {
+          paramTtmlStyle.setFontSizeUnit(2);
+        }
+      }
+      else {
+        paramTtmlStyle.setFontSizeUnit(1);
+      }
       paramTtmlStyle.setFontSize(Float.valueOf(((Matcher)localObject).group(1)).floatValue());
       return;
-      paramTtmlStyle.setFontSizeUnit(2);
-      continue;
-      paramTtmlStyle.setFontSizeUnit(3);
     }
-    label279:
-    throw new SubtitleDecoderException("Invalid expression for fontSize: '" + paramString + "'.");
+    paramTtmlStyle = new StringBuilder();
+    paramTtmlStyle.append("Invalid expression for fontSize: '");
+    paramTtmlStyle.append(paramString);
+    paramTtmlStyle.append("'.");
+    throw new SubtitleDecoderException(paramTtmlStyle.toString());
+    label274:
+    paramString = new StringBuilder();
+    paramString.append("Invalid number of entries for fontSize: ");
+    paramString.append(localObject.length);
+    paramString.append(".");
+    throw new SubtitleDecoderException(paramString.toString());
   }
   
   private TtmlDecoder.FrameAndTickRate parseFrameAndTickRates(XmlPullParser paramXmlPullParser)
   {
-    int i = 30;
     Object localObject = paramXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "frameRate");
+    int i;
     if (localObject != null) {
       i = Integer.parseInt((String)localObject);
+    } else {
+      i = 30;
     }
     float f = 1.0F;
     localObject = paramXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "frameRateMultiplier");
     if (localObject != null)
     {
       localObject = ((String)localObject).split(" ");
-      if (localObject.length != 2) {
+      if (localObject.length == 2) {
+        f = Integer.parseInt(localObject[0]) / Integer.parseInt(localObject[1]);
+      } else {
         throw new SubtitleDecoderException("frameRateMultiplier doesn't have 2 parts");
       }
-      f = Integer.parseInt(localObject[0]) / Integer.parseInt(localObject[1]);
     }
     int j = DEFAULT_FRAME_AND_TICK_RATE.subFrameRate;
     localObject = paramXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "subFrameRate");
@@ -162,488 +181,579 @@ public final class TtmlDecoder
   
   private Map<String, TtmlStyle> parseHeader(XmlPullParser paramXmlPullParser, Map<String, TtmlStyle> paramMap, Map<String, TtmlRegion> paramMap1)
   {
-    paramXmlPullParser.next();
-    Object localObject1;
-    if (XmlPullParserUtil.isStartTag(paramXmlPullParser, "style"))
+    do
     {
-      Object localObject2 = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "style");
-      localObject1 = parseStyleAttributes(paramXmlPullParser, new TtmlStyle());
-      if (localObject2 != null)
+      paramXmlPullParser.next();
+      Object localObject1;
+      if (XmlPullParserUtil.isStartTag(paramXmlPullParser, "style"))
       {
-        localObject2 = parseStyleIds((String)localObject2);
-        int j = localObject2.length;
-        int i = 0;
-        while (i < j)
+        Object localObject2 = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "style");
+        localObject1 = parseStyleAttributes(paramXmlPullParser, new TtmlStyle());
+        if (localObject2 != null)
         {
-          ((TtmlStyle)localObject1).chain((TtmlStyle)paramMap.get(localObject2[i]));
-          i += 1;
+          localObject2 = parseStyleIds((String)localObject2);
+          int j = localObject2.length;
+          int i = 0;
+          while (i < j)
+          {
+            ((TtmlStyle)localObject1).chain((TtmlStyle)paramMap.get(localObject2[i]));
+            i += 1;
+          }
+        }
+        if (((TtmlStyle)localObject1).getId() != null) {
+          paramMap.put(((TtmlStyle)localObject1).getId(), localObject1);
         }
       }
-      if (((TtmlStyle)localObject1).getId() != null) {
-        paramMap.put(((TtmlStyle)localObject1).getId(), localObject1);
-      }
-    }
-    while (XmlPullParserUtil.isEndTag(paramXmlPullParser, "head"))
-    {
-      return paramMap;
-      if (XmlPullParserUtil.isStartTag(paramXmlPullParser, "region"))
+      else if (XmlPullParserUtil.isStartTag(paramXmlPullParser, "region"))
       {
         localObject1 = parseRegionAttributes(paramXmlPullParser);
         if (localObject1 != null) {
           paramMap1.put(((TtmlRegion)localObject1).id, localObject1);
         }
       }
-    }
+    } while (!XmlPullParserUtil.isEndTag(paramXmlPullParser, "head"));
+    return paramMap;
   }
   
   private TtmlNode parseNode(XmlPullParser paramXmlPullParser, TtmlNode paramTtmlNode, Map<String, TtmlRegion> paramMap, TtmlDecoder.FrameAndTickRate paramFrameAndTickRate)
   {
-    long l3 = -9223372036854775807L;
-    long l1 = -9223372036854775807L;
-    long l2 = -9223372036854775807L;
-    Object localObject1 = "";
-    Object localObject2 = null;
     int k = paramXmlPullParser.getAttributeCount();
     TtmlStyle localTtmlStyle = parseStyleAttributes(paramXmlPullParser, null);
+    Object localObject1 = null;
+    Object localObject2 = "";
     int j = 0;
-    label128:
-    label164:
+    long l1 = -9223372036854775807L;
+    long l2 = -9223372036854775807L;
+    long l5 = -9223372036854775807L;
+    long l3;
     long l4;
-    if (j < k)
+    long l6;
+    while (j < k)
     {
-      String str = paramXmlPullParser.getAttributeName(j);
-      Object localObject3 = paramXmlPullParser.getAttributeValue(j);
-      int i = -1;
-      switch (str.hashCode())
+      Object localObject3 = paramXmlPullParser.getAttributeName(j);
+      Object localObject5 = paramXmlPullParser.getAttributeValue(j);
+      switch (((String)localObject3).hashCode())
       {
       default: 
-        switch (i)
-        {
-        default: 
-          l4 = l2;
-          l2 = l1;
-          l1 = l4;
+        break;
+      case 109780401: 
+        if (((String)localObject3).equals("style")) {
+          i = 3;
+        }
+        break;
+      case 93616297: 
+        if (((String)localObject3).equals("begin")) {
+          i = 0;
+        }
+        break;
+      case 100571: 
+        if (((String)localObject3).equals("end")) {
+          i = 1;
+        }
+        break;
+      case 99841: 
+        if (((String)localObject3).equals("dur")) {
+          i = 2;
+        }
+        break;
+      case -934795532: 
+        if (((String)localObject3).equals("region")) {
+          i = 4;
         }
         break;
       }
-      for (;;)
+      int i = -1;
+      Object localObject4;
+      if (i != 0)
       {
-        j += 1;
-        l4 = l2;
-        l2 = l1;
-        l1 = l4;
-        break;
-        if (!str.equals("begin")) {
-          break label128;
-        }
-        i = 0;
-        break label128;
-        if (!str.equals("end")) {
-          break label128;
-        }
-        i = 1;
-        break label128;
-        if (!str.equals("dur")) {
-          break label128;
-        }
-        i = 2;
-        break label128;
-        if (!str.equals("style")) {
-          break label128;
-        }
-        i = 3;
-        break label128;
-        if (!str.equals("region")) {
-          break label128;
-        }
-        i = 4;
-        break label128;
-        l4 = parseTimeExpression((String)localObject3, paramFrameAndTickRate);
-        l1 = l2;
-        l2 = l4;
-        continue;
-        l4 = parseTimeExpression((String)localObject3, paramFrameAndTickRate);
-        l2 = l1;
-        l1 = l4;
-        continue;
-        l4 = parseTimeExpression((String)localObject3, paramFrameAndTickRate);
-        l3 = l1;
-        l1 = l2;
-        l2 = l3;
-        l3 = l4;
-        continue;
-        localObject3 = parseStyleIds((String)localObject3);
-        if (localObject3.length <= 0) {
-          break label164;
-        }
-        localObject2 = localObject3;
-        l4 = l1;
-        l1 = l2;
-        l2 = l4;
-        continue;
-        if (!paramMap.containsKey(localObject3)) {
-          break label164;
-        }
-        localObject1 = localObject3;
-        l4 = l1;
-        l1 = l2;
-        l2 = l4;
-      }
-    }
-    long l5 = l1;
-    if (paramTtmlNode != null)
-    {
-      l5 = l1;
-      if (paramTtmlNode.startTimeUs != -9223372036854775807L)
-      {
-        l4 = l1;
-        if (l1 != -9223372036854775807L) {
-          l4 = l1 + paramTtmlNode.startTimeUs;
-        }
-        l5 = l4;
-        if (l2 != -9223372036854775807L) {
-          l1 = paramTtmlNode.startTimeUs;
-        }
-      }
-    }
-    for (l1 = l2 + l1;; l1 = l2)
-    {
-      l2 = l1;
-      if (l1 == -9223372036854775807L)
-      {
-        if (l3 == -9223372036854775807L) {
-          break label528;
-        }
-        l2 = l4 + l3;
-      }
-      for (;;)
-      {
-        return TtmlNode.buildNode(paramXmlPullParser.getName(), l4, l2, localTtmlStyle, localObject2, (String)localObject1);
-        label528:
-        l2 = l1;
-        if (paramTtmlNode != null)
+        if (i != 1)
         {
-          l2 = l1;
-          if (paramTtmlNode.endTimeUs != -9223372036854775807L) {
-            l2 = paramTtmlNode.endTimeUs;
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4)
+              {
+                l3 = l1;
+                l4 = l2;
+                l6 = l5;
+                localObject3 = localObject2;
+                localObject4 = localObject1;
+              }
+              else
+              {
+                l3 = l1;
+                l4 = l2;
+                l6 = l5;
+                localObject3 = localObject2;
+                localObject4 = localObject1;
+                if (paramMap.containsKey(localObject5))
+                {
+                  localObject3 = localObject5;
+                  l3 = l1;
+                  l4 = l2;
+                  l6 = l5;
+                  localObject4 = localObject1;
+                }
+              }
+            }
+            else
+            {
+              localObject5 = parseStyleIds((String)localObject5);
+              l3 = l1;
+              l4 = l2;
+              l6 = l5;
+              localObject3 = localObject2;
+              localObject4 = localObject1;
+              if (localObject5.length > 0)
+              {
+                localObject4 = localObject5;
+                l3 = l1;
+                l4 = l2;
+                l6 = l5;
+                localObject3 = localObject2;
+              }
+            }
+          }
+          else
+          {
+            l6 = parseTimeExpression((String)localObject5, paramFrameAndTickRate);
+            l3 = l1;
+            l4 = l2;
+            localObject3 = localObject2;
+            localObject4 = localObject1;
           }
         }
+        else
+        {
+          l4 = parseTimeExpression((String)localObject5, paramFrameAndTickRate);
+          l3 = l1;
+          l6 = l5;
+          localObject3 = localObject2;
+          localObject4 = localObject1;
+        }
       }
-      l4 = l5;
+      else
+      {
+        l3 = parseTimeExpression((String)localObject5, paramFrameAndTickRate);
+        localObject4 = localObject1;
+        localObject3 = localObject2;
+        l6 = l5;
+        l4 = l2;
+      }
+      j += 1;
+      l1 = l3;
+      l2 = l4;
+      l5 = l6;
+      localObject2 = localObject3;
+      localObject1 = localObject4;
     }
+    if (paramTtmlNode != null)
+    {
+      l6 = l1;
+      l4 = l2;
+      if (paramTtmlNode.startTimeUs != -9223372036854775807L)
+      {
+        l3 = l1;
+        if (l1 != -9223372036854775807L) {
+          l3 = l1 + paramTtmlNode.startTimeUs;
+        }
+        l6 = l3;
+        l4 = l2;
+        if (l2 != -9223372036854775807L)
+        {
+          l4 = l2 + paramTtmlNode.startTimeUs;
+          l6 = l3;
+        }
+      }
+    }
+    else
+    {
+      l4 = l2;
+      l6 = l1;
+    }
+    if (l4 == -9223372036854775807L)
+    {
+      if (l5 != -9223372036854775807L)
+      {
+        l1 = l5 + l6;
+        break label625;
+      }
+      if ((paramTtmlNode != null) && (paramTtmlNode.endTimeUs != -9223372036854775807L))
+      {
+        l1 = paramTtmlNode.endTimeUs;
+        break label625;
+      }
+    }
+    l1 = l4;
+    label625:
+    return TtmlNode.buildNode(paramXmlPullParser.getName(), l6, l1, localTtmlStyle, localObject1, (String)localObject2);
   }
   
   private TtmlRegion parseRegionAttributes(XmlPullParser paramXmlPullParser)
   {
-    int j = 1;
-    String str1 = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "id");
-    if (str1 == null) {
+    String str2 = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "id");
+    if (str2 == null) {
       return null;
     }
-    String str2 = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "origin");
+    String str1 = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "origin");
     Object localObject;
-    if (str2 != null)
+    if (str1 != null)
     {
-      localObject = PERCENTAGE_COORDINATES.matcher(str2);
+      localObject = PERCENTAGE_COORDINATES.matcher(str1);
       if (!((Matcher)localObject).matches()) {}
     }
-    for (;;)
+    try
     {
-      float f1;
-      float f4;
-      int i;
-      try
+      f2 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
+      j = 2;
+      f1 = Float.parseFloat(((Matcher)localObject).group(2));
+      f1 /= 100.0F;
+      localObject = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "extent");
+      if (localObject != null)
       {
-        float f2 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
-        f1 = Float.parseFloat(((Matcher)localObject).group(2));
-        f1 /= 100.0F;
-        localObject = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "extent");
-        if (localObject == null) {
-          break label369;
-        }
         localObject = PERCENTAGE_COORDINATES.matcher((CharSequence)localObject);
-        if (!((Matcher)localObject).matches()) {
-          break label340;
-        }
-        float f3;
-        Log.w("TtmlDecoder", "Ignoring region with unsupported origin: " + str2);
-      }
-      catch (NumberFormatException paramXmlPullParser)
-      {
-        try
-        {
-          f3 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
-          f4 = Float.parseFloat(((Matcher)localObject).group(2));
-          f4 /= 100.0F;
-          paramXmlPullParser = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "displayAlign");
-          if (paramXmlPullParser != null)
-          {
-            paramXmlPullParser = Util.toLowerInvariant(paramXmlPullParser);
-            i = -1;
-          }
-          switch (paramXmlPullParser.hashCode())
-          {
-          default: 
-            switch (i)
-            {
-            default: 
-              i = 0;
-              return new TtmlRegion(str1, f2, f1, 0, i, f3);
-            }
-            break;
-          }
-        }
-        catch (NumberFormatException paramXmlPullParser)
-        {
-          Log.w("TtmlDecoder", "Ignoring region with malformed extent: " + str2);
-          return null;
-        }
-        paramXmlPullParser = paramXmlPullParser;
-        Log.w("TtmlDecoder", "Ignoring region with malformed origin: " + str2);
-        return null;
-      }
-      return null;
-      Log.w("TtmlDecoder", "Ignoring region without an origin");
-      return null;
-      label340:
-      Log.w("TtmlDecoder", "Ignoring region with unsupported extent: " + str2);
-      return null;
-      label369:
-      Log.w("TtmlDecoder", "Ignoring region without an extent");
-      return null;
-      if (paramXmlPullParser.equals("center"))
-      {
-        i = 0;
-        continue;
-        if (paramXmlPullParser.equals("after"))
-        {
-          i = 1;
-          continue;
-          f1 += f4 / 2.0F;
-          i = j;
-          continue;
-          f1 += f4;
-          i = 2;
-        }
+        if (!((Matcher)localObject).matches()) {}
       }
     }
+    catch (NumberFormatException paramXmlPullParser)
+    {
+      float f2;
+      int j;
+      float f1;
+      float f3;
+      float f4;
+      int i;
+      label263:
+      label280:
+      break label361;
+    }
+    try
+    {
+      f3 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
+      f4 = Float.parseFloat(((Matcher)localObject).group(2));
+      f4 /= 100.0F;
+      paramXmlPullParser = XmlPullParserUtil.getAttributeValue(paramXmlPullParser, "displayAlign");
+      if (paramXmlPullParser != null)
+      {
+        paramXmlPullParser = Util.toLowerInvariant(paramXmlPullParser);
+        i = -1;
+        int k = paramXmlPullParser.hashCode();
+        if (k != -1364013995)
+        {
+          if ((k == 92734940) && (paramXmlPullParser.equals("after"))) {
+            i = 1;
+          }
+        }
+        else if (paramXmlPullParser.equals("center")) {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          if (i == 1)
+          {
+            f1 += f4;
+            i = j;
+            break label263;
+          }
+        }
+        else
+        {
+          f1 += f4 / 2.0F;
+          i = 1;
+          break label263;
+        }
+      }
+      i = 0;
+      return new TtmlRegion(str2, f2, f1, 0, i, f3);
+    }
+    catch (NumberFormatException paramXmlPullParser)
+    {
+      break label280;
+    }
+    paramXmlPullParser = new StringBuilder();
+    paramXmlPullParser.append("Ignoring region with malformed extent: ");
+    paramXmlPullParser.append(str1);
+    Log.w("TtmlDecoder", paramXmlPullParser.toString());
+    return null;
+    paramXmlPullParser = new StringBuilder();
+    paramXmlPullParser.append("Ignoring region with unsupported extent: ");
+    paramXmlPullParser.append(str1);
+    Log.w("TtmlDecoder", paramXmlPullParser.toString());
+    return null;
+    Log.w("TtmlDecoder", "Ignoring region without an extent");
+    return null;
+    label361:
+    paramXmlPullParser = new StringBuilder();
+    paramXmlPullParser.append("Ignoring region with malformed origin: ");
+    paramXmlPullParser.append(str1);
+    Log.w("TtmlDecoder", paramXmlPullParser.toString());
+    return null;
+    paramXmlPullParser = new StringBuilder();
+    paramXmlPullParser.append("Ignoring region with unsupported origin: ");
+    paramXmlPullParser.append(str1);
+    Log.w("TtmlDecoder", paramXmlPullParser.toString());
+    return null;
+    Log.w("TtmlDecoder", "Ignoring region without an origin");
+    return null;
   }
   
   private TtmlStyle parseStyleAttributes(XmlPullParser paramXmlPullParser, TtmlStyle paramTtmlStyle)
   {
-    int k = paramXmlPullParser.getAttributeCount();
+    int m = paramXmlPullParser.getAttributeCount();
     int j = 0;
-    TtmlStyle localTtmlStyle1 = paramTtmlStyle;
-    if (j < k)
+    for (Object localObject = paramTtmlStyle; j < m; localObject = paramTtmlStyle)
     {
       String str = paramXmlPullParser.getAttributeValue(j);
       paramTtmlStyle = paramXmlPullParser.getAttributeName(j);
-      label128:
-      int i;
-      switch (paramTtmlStyle.hashCode())
+      int i = paramTtmlStyle.hashCode();
+      int k = -1;
+      switch (i)
       {
       default: 
-        i = -1;
-        switch (i)
+        break;
+      case 1287124693: 
+        if (paramTtmlStyle.equals("backgroundColor")) {
+          i = 1;
+        }
+        break;
+      case 365601008: 
+        if (paramTtmlStyle.equals("fontSize")) {
+          i = 4;
+        }
+        break;
+      case 94842723: 
+        if (paramTtmlStyle.equals("color")) {
+          i = 2;
+        }
+        break;
+      case 3355: 
+        if (paramTtmlStyle.equals("id")) {
+          i = 0;
+        }
+        break;
+      case -734428249: 
+        if (paramTtmlStyle.equals("fontWeight")) {
+          i = 5;
+        }
+        break;
+      case -879295043: 
+        if (paramTtmlStyle.equals("textDecoration")) {
+          i = 8;
+        }
+        break;
+      case -1065511464: 
+        if (paramTtmlStyle.equals("textAlign")) {
+          i = 7;
+        }
+        break;
+      case -1224696685: 
+        if (paramTtmlStyle.equals("fontFamily")) {
+          i = 3;
+        }
+        break;
+      case -1550943582: 
+        if (paramTtmlStyle.equals("fontStyle")) {
+          i = 6;
+        }
+        break;
+      }
+      i = -1;
+      switch (i)
+      {
+      default: 
+        paramTtmlStyle = (TtmlStyle)localObject;
+        break;
+      case 8: 
+        paramTtmlStyle = Util.toLowerInvariant(str);
+        switch (paramTtmlStyle.hashCode())
         {
         default: 
-          label130:
-          paramTtmlStyle = localTtmlStyle1;
+          i = k;
+          break;
+        case 1679736913: 
+          i = k;
+          if (paramTtmlStyle.equals("linethrough")) {
+            i = 0;
+          }
+          break;
+        case 913457136: 
+          i = k;
+          if (paramTtmlStyle.equals("nolinethrough")) {
+            i = 1;
+          }
+          break;
+        case -1026963764: 
+          i = k;
+          if (paramTtmlStyle.equals("underline")) {
+            i = 2;
+          }
+          break;
+        case -1461280213: 
+          i = k;
+          if (paramTtmlStyle.equals("nounderline")) {
+            i = 3;
+          }
+          break;
         }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        localTtmlStyle1 = paramTtmlStyle;
-        break;
-        if (!paramTtmlStyle.equals("id")) {
-          break label128;
-        }
-        i = 0;
-        break label130;
-        if (!paramTtmlStyle.equals("backgroundColor")) {
-          break label128;
-        }
-        i = 1;
-        break label130;
-        if (!paramTtmlStyle.equals("color")) {
-          break label128;
-        }
-        i = 2;
-        break label130;
-        if (!paramTtmlStyle.equals("fontFamily")) {
-          break label128;
-        }
-        i = 3;
-        break label130;
-        if (!paramTtmlStyle.equals("fontSize")) {
-          break label128;
-        }
-        i = 4;
-        break label130;
-        if (!paramTtmlStyle.equals("fontWeight")) {
-          break label128;
-        }
-        i = 5;
-        break label130;
-        if (!paramTtmlStyle.equals("fontStyle")) {
-          break label128;
-        }
-        i = 6;
-        break label130;
-        if (!paramTtmlStyle.equals("textAlign")) {
-          break label128;
-        }
-        i = 7;
-        break label130;
-        if (!paramTtmlStyle.equals("textDecoration")) {
-          break label128;
-        }
-        i = 8;
-        break label130;
-        paramTtmlStyle = localTtmlStyle1;
-        if ("style".equals(paramXmlPullParser.getName()))
+        if (i != 0)
         {
-          paramTtmlStyle = createIfNull(localTtmlStyle1).setId(str);
-          continue;
-          paramTtmlStyle = createIfNull(localTtmlStyle1);
-          try
+          if (i != 1)
           {
-            paramTtmlStyle.setBackgroundColor(ColorParser.parseTtmlColor(str));
-          }
-          catch (IllegalArgumentException localIllegalArgumentException1)
-          {
-            Log.w("TtmlDecoder", "Failed parsing background value: " + str);
-          }
-          continue;
-          paramTtmlStyle = createIfNull(localIllegalArgumentException1);
-          try
-          {
-            paramTtmlStyle.setFontColor(ColorParser.parseTtmlColor(str));
-          }
-          catch (IllegalArgumentException localIllegalArgumentException2)
-          {
-            Log.w("TtmlDecoder", "Failed parsing color value: " + str);
-          }
-          continue;
-          paramTtmlStyle = createIfNull(localIllegalArgumentException2).setFontFamily(str);
-          continue;
-          paramTtmlStyle = localIllegalArgumentException2;
-          try
-          {
-            TtmlStyle localTtmlStyle2 = createIfNull(localIllegalArgumentException2);
-            paramTtmlStyle = localTtmlStyle2;
-            parseFontSize(str, localTtmlStyle2);
-            paramTtmlStyle = localTtmlStyle2;
-          }
-          catch (SubtitleDecoderException localSubtitleDecoderException)
-          {
-            Log.w("TtmlDecoder", "Failed parsing fontSize value: " + str);
-          }
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setBold("bold".equalsIgnoreCase(str));
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setItalic("italic".equalsIgnoreCase(str));
-          continue;
-          paramTtmlStyle = Util.toLowerInvariant(str);
-          switch (paramTtmlStyle.hashCode())
-          {
-          default: 
-            label644:
-            i = -1;
-          }
-          for (;;)
-          {
-            switch (i)
+            if (i != 2)
             {
-            default: 
-              paramTtmlStyle = localSubtitleDecoderException;
-              break;
-            case 0: 
-              paramTtmlStyle = createIfNull(localSubtitleDecoderException).setTextAlign(Layout.Alignment.ALIGN_NORMAL);
-              break;
-              if (!paramTtmlStyle.equals("left")) {
-                break label644;
+              if (i != 3) {
+                paramTtmlStyle = (TtmlStyle)localObject;
+              } else {
+                paramTtmlStyle = createIfNull((TtmlStyle)localObject).setUnderline(false);
               }
-              i = 0;
-              continue;
-              if (!paramTtmlStyle.equals("start")) {
-                break label644;
-              }
-              i = 1;
-              continue;
-              if (!paramTtmlStyle.equals("right")) {
-                break label644;
-              }
-              i = 2;
-              continue;
-              if (!paramTtmlStyle.equals("end")) {
-                break label644;
-              }
-              i = 3;
-              continue;
-              if (!paramTtmlStyle.equals("center")) {
-                break label644;
-              }
-              i = 4;
+            }
+            else {
+              paramTtmlStyle = createIfNull((TtmlStyle)localObject).setUnderline(true);
             }
           }
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setTextAlign(Layout.Alignment.ALIGN_NORMAL);
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setTextAlign(Layout.Alignment.ALIGN_OPPOSITE);
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setTextAlign(Layout.Alignment.ALIGN_OPPOSITE);
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setTextAlign(Layout.Alignment.ALIGN_CENTER);
-          continue;
-          paramTtmlStyle = Util.toLowerInvariant(str);
-          switch (paramTtmlStyle.hashCode())
-          {
-          default: 
-            label892:
-            i = -1;
+          else {
+            paramTtmlStyle = createIfNull((TtmlStyle)localObject).setLinethrough(false);
           }
-          for (;;)
-          {
-            switch (i)
-            {
-            default: 
-              paramTtmlStyle = localSubtitleDecoderException;
-              break;
-            case 0: 
-              paramTtmlStyle = createIfNull(localSubtitleDecoderException).setLinethrough(true);
-              break;
-              if (!paramTtmlStyle.equals("linethrough")) {
-                break label892;
-              }
-              i = 0;
-              continue;
-              if (!paramTtmlStyle.equals("nolinethrough")) {
-                break label892;
-              }
-              i = 1;
-              continue;
-              if (!paramTtmlStyle.equals("underline")) {
-                break label892;
-              }
-              i = 2;
-              continue;
-              if (!paramTtmlStyle.equals("nounderline")) {
-                break label892;
-              }
-              i = 3;
-            }
-          }
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setLinethrough(false);
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setUnderline(true);
-          continue;
-          paramTtmlStyle = createIfNull(localSubtitleDecoderException).setUnderline(false);
         }
+        else {
+          paramTtmlStyle = createIfNull((TtmlStyle)localObject).setLinethrough(true);
+        }
+        break;
+      case 7: 
+        paramTtmlStyle = Util.toLowerInvariant(str);
+        switch (paramTtmlStyle.hashCode())
+        {
+        default: 
+          i = k;
+          break;
+        case 109757538: 
+          i = k;
+          if (paramTtmlStyle.equals("start")) {
+            i = 1;
+          }
+          break;
+        case 108511772: 
+          i = k;
+          if (paramTtmlStyle.equals("right")) {
+            i = 2;
+          }
+          break;
+        case 3317767: 
+          i = k;
+          if (paramTtmlStyle.equals("left")) {
+            i = 0;
+          }
+          break;
+        case 100571: 
+          i = k;
+          if (paramTtmlStyle.equals("end")) {
+            i = 3;
+          }
+          break;
+        case -1364013995: 
+          i = k;
+          if (paramTtmlStyle.equals("center")) {
+            i = 4;
+          }
+          break;
+        }
+        if (i != 0)
+        {
+          if (i != 1)
+          {
+            if (i != 2)
+            {
+              if (i != 3)
+              {
+                if (i != 4) {
+                  paramTtmlStyle = (TtmlStyle)localObject;
+                } else {
+                  paramTtmlStyle = createIfNull((TtmlStyle)localObject).setTextAlign(Layout.Alignment.ALIGN_CENTER);
+                }
+              }
+              else {
+                paramTtmlStyle = createIfNull((TtmlStyle)localObject).setTextAlign(Layout.Alignment.ALIGN_OPPOSITE);
+              }
+            }
+            else {
+              paramTtmlStyle = createIfNull((TtmlStyle)localObject).setTextAlign(Layout.Alignment.ALIGN_OPPOSITE);
+            }
+          }
+          else {
+            paramTtmlStyle = createIfNull((TtmlStyle)localObject).setTextAlign(Layout.Alignment.ALIGN_NORMAL);
+          }
+        }
+        else {
+          paramTtmlStyle = createIfNull((TtmlStyle)localObject).setTextAlign(Layout.Alignment.ALIGN_NORMAL);
+        }
+        break;
+      case 6: 
+        paramTtmlStyle = createIfNull((TtmlStyle)localObject).setItalic("italic".equalsIgnoreCase(str));
+        break;
+      case 5: 
+        paramTtmlStyle = createIfNull((TtmlStyle)localObject).setBold("bold".equalsIgnoreCase(str));
+        break;
+      case 4: 
+        paramTtmlStyle = (TtmlStyle)localObject;
       }
+      try
+      {
+        localObject = createIfNull((TtmlStyle)localObject);
+        paramTtmlStyle = (TtmlStyle)localObject;
+        parseFontSize(str, (TtmlStyle)localObject);
+        paramTtmlStyle = (TtmlStyle)localObject;
+      }
+      catch (SubtitleDecoderException localSubtitleDecoderException)
+      {
+        label875:
+        break label875;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed parsing fontSize value: ");
+      ((StringBuilder)localObject).append(str);
+      Log.w("TtmlDecoder", ((StringBuilder)localObject).toString());
+      break label1079;
+      paramTtmlStyle = createIfNull((TtmlStyle)localObject).setFontFamily(str);
+      break label1079;
+      paramTtmlStyle = createIfNull((TtmlStyle)localObject);
+      try
+      {
+        paramTtmlStyle.setFontColor(ColorParser.parseTtmlColor(str));
+      }
+      catch (IllegalArgumentException localIllegalArgumentException1)
+      {
+        label950:
+        break label950;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed parsing color value: ");
+      ((StringBuilder)localObject).append(str);
+      Log.w("TtmlDecoder", ((StringBuilder)localObject).toString());
+      break label1079;
+      paramTtmlStyle = createIfNull((TtmlStyle)localObject);
+      label1079:
+      try
+      {
+        paramTtmlStyle.setBackgroundColor(ColorParser.parseTtmlColor(str));
+      }
+      catch (IllegalArgumentException localIllegalArgumentException2)
+      {
+        label1010:
+        break label1010;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed parsing background value: ");
+      ((StringBuilder)localObject).append(str);
+      Log.w("TtmlDecoder", ((StringBuilder)localObject).toString());
+      break label1079;
+      paramTtmlStyle = (TtmlStyle)localObject;
+      if ("style".equals(paramXmlPullParser.getName())) {
+        paramTtmlStyle = createIfNull((TtmlStyle)localObject).setId(str);
+      }
+      j += 1;
     }
-    return localSubtitleDecoderException;
+    return localObject;
   }
   
   private String[] parseStyleIds(String paramString)
@@ -653,7 +763,6 @@ public final class TtmlDecoder
   
   private static long parseTimeExpression(String paramString, TtmlDecoder.FrameAndTickRate paramFrameAndTickRate)
   {
-    double d3 = 0.0D;
     Matcher localMatcher = CLOCK_TIME.matcher(paramString);
     double d1;
     double d2;
@@ -661,90 +770,136 @@ public final class TtmlDecoder
     {
       double d4 = Long.parseLong(localMatcher.group(1)) * 3600L;
       double d5 = Long.parseLong(localMatcher.group(2)) * 60L;
+      Double.isNaN(d4);
+      Double.isNaN(d5);
       double d6 = Long.parseLong(localMatcher.group(3));
+      Double.isNaN(d6);
       paramString = localMatcher.group(4);
+      double d3 = 0.0D;
+      if (paramString != null) {
+        d1 = Double.parseDouble(paramString);
+      } else {
+        d1 = 0.0D;
+      }
+      paramString = localMatcher.group(5);
+      if (paramString != null) {
+        d2 = (float)Long.parseLong(paramString) / paramFrameAndTickRate.effectiveFrameRate;
+      } else {
+        d2 = 0.0D;
+      }
+      paramString = localMatcher.group(6);
       if (paramString != null)
       {
-        d1 = Double.parseDouble(paramString);
-        paramString = localMatcher.group(5);
-        if (paramString == null) {
-          break label162;
-        }
+        d3 = Long.parseLong(paramString);
+        double d7 = paramFrameAndTickRate.subFrameRate;
+        Double.isNaN(d3);
+        Double.isNaN(d7);
+        d3 /= d7;
+        d7 = paramFrameAndTickRate.effectiveFrameRate;
+        Double.isNaN(d7);
+        d3 /= d7;
       }
-      label162:
-      for (d2 = (float)Long.parseLong(paramString) / paramFrameAndTickRate.effectiveFrameRate;; d2 = 0.0D)
-      {
-        paramString = localMatcher.group(6);
-        if (paramString != null) {
-          d3 = Long.parseLong(paramString) / paramFrameAndTickRate.subFrameRate / paramFrameAndTickRate.effectiveFrameRate;
-        }
-        return ((d2 + (d6 + (d4 + d5) + d1) + d3) * 1000000.0D);
-        d1 = 0.0D;
-        break;
-      }
+      return ((d4 + d5 + d6 + d1 + d2 + d3) * 1000000.0D);
     }
     localMatcher = OFFSET_TIME.matcher(paramString);
     if (localMatcher.matches())
     {
       d2 = Double.parseDouble(localMatcher.group(1));
       paramString = localMatcher.group(2);
-      int i = -1;
-      switch (paramString.hashCode())
+      int i = paramString.hashCode();
+      if (i != 102)
       {
-      default: 
-        d1 = d2;
-        switch (i)
+        if (i != 104)
         {
-        default: 
-          d1 = d2;
+          if (i != 109)
+          {
+            if (i != 3494)
+            {
+              if (i != 115)
+              {
+                if ((i == 116) && (paramString.equals("t")))
+                {
+                  i = 5;
+                  break label406;
+                }
+              }
+              else if (paramString.equals("s"))
+              {
+                i = 2;
+                break label406;
+              }
+            }
+            else if (paramString.equals("ms"))
+            {
+              i = 3;
+              break label406;
+            }
+          }
+          else if (paramString.equals("m"))
+          {
+            i = 1;
+            break label406;
+          }
         }
-        break;
+        else if (paramString.equals("h"))
+        {
+          i = 0;
+          break label406;
+        }
       }
-      for (;;)
+      else if (paramString.equals("f"))
       {
-        return (d1 * 1000000.0D);
-        if (!paramString.equals("h")) {
-          break;
-        }
-        i = 0;
-        break;
-        if (!paramString.equals("m")) {
-          break;
-        }
-        i = 1;
-        break;
-        if (!paramString.equals("s")) {
-          break;
-        }
-        i = 2;
-        break;
-        if (!paramString.equals("ms")) {
-          break;
-        }
-        i = 3;
-        break;
-        if (!paramString.equals("f")) {
-          break;
-        }
         i = 4;
-        break;
-        if (!paramString.equals("t")) {
-          break;
-        }
-        i = 5;
-        break;
-        d1 = d2 * 3600.0D;
-        continue;
-        d1 = d2 * 60.0D;
-        continue;
-        d1 = d2 / 1000.0D;
-        continue;
-        d1 = d2 / paramFrameAndTickRate.effectiveFrameRate;
-        continue;
-        d1 = d2 / paramFrameAndTickRate.tickRate;
+        break label406;
       }
+      i = -1;
+      label406:
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          d1 = d2;
+          if (i == 2) {
+            break label506;
+          }
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5)
+              {
+                d1 = d2;
+                break label506;
+              }
+              d1 = paramFrameAndTickRate.tickRate;
+              Double.isNaN(d1);
+            }
+            else
+            {
+              d1 = paramFrameAndTickRate.effectiveFrameRate;
+              Double.isNaN(d1);
+            }
+          }
+          else {
+            d1 = 1000.0D;
+          }
+          d1 = d2 / d1;
+          break label506;
+        }
+        d1 = 60.0D;
+      }
+      else
+      {
+        d1 = 3600.0D;
+      }
+      d1 = d2 * d1;
+      label506:
+      return (d1 * 1000000.0D);
     }
-    throw new SubtitleDecoderException("Malformed time expression: " + paramString);
+    paramFrameAndTickRate = new StringBuilder();
+    paramFrameAndTickRate.append("Malformed time expression: ");
+    paramFrameAndTickRate.append(paramString);
+    throw new SubtitleDecoderException(paramFrameAndTickRate.toString());
   }
   
   protected TtmlSubtitle decode(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
@@ -753,140 +908,137 @@ public final class TtmlDecoder
     {
       try
       {
-        XmlPullParser localXmlPullParser = this.xmlParserFactory.newPullParser();
+        localXmlPullParser = this.xmlParserFactory.newPullParser();
         HashMap localHashMap1 = new HashMap();
         HashMap localHashMap2 = new HashMap();
+        localObject1 = null;
         localHashMap2.put("", new TtmlRegion(null));
+        i = 0;
         localXmlPullParser.setInput(new ByteArrayInputStream(paramArrayOfByte, 0, paramInt), null);
-        paramArrayOfByte = null;
         LinkedList localLinkedList = new LinkedList();
-        paramInt = 0;
-        int j = localXmlPullParser.getEventType();
-        localObject1 = DEFAULT_FRAME_AND_TICK_RATE;
-        if (j != 1)
+        j = localXmlPullParser.getEventType();
+        paramArrayOfByte = DEFAULT_FRAME_AND_TICK_RATE;
+        if (j == 1) {
+          continue;
+        }
+        TtmlNode localTtmlNode1 = (TtmlNode)localLinkedList.peekLast();
+        if (i != 0) {
+          continue;
+        }
+        Object localObject2 = localXmlPullParser.getName();
+        if (j == 2)
         {
-          Object localObject2 = (TtmlNode)localLinkedList.peekLast();
-          if (paramInt == 0)
+          if ("tt".equals(localObject2)) {
+            paramArrayOfByte = parseFrameAndTickRates(localXmlPullParser);
+          }
+          paramBoolean = isSupportedTag((String)localObject2);
+          if (!paramBoolean)
           {
-            localObject4 = localXmlPullParser.getName();
-            if (j == 2)
-            {
-              if ("tt".equals(localObject4)) {
-                localObject1 = parseFrameAndTickRates(localXmlPullParser);
-              }
-              if (!isSupportedTag((String)localObject4))
-              {
-                Log.i("TtmlDecoder", "Ignoring unsupported tag: " + localXmlPullParser.getName());
-                localObject2 = paramArrayOfByte;
-                paramArrayOfByte = (byte[])localObject1;
-                paramInt += 1;
-                localObject1 = localObject2;
-                break label528;
-                localXmlPullParser.next();
-                j = localXmlPullParser.getEventType();
-                localObject1 = localObject2;
-                paramInt = i;
-                paramArrayOfByte = (byte[])localObject4;
-                continue;
-              }
-              if ("head".equals(localObject4))
-              {
-                parseHeader(localXmlPullParser, localHashMap1, localHashMap2);
-                localObject2 = paramArrayOfByte;
-                paramArrayOfByte = (byte[])localObject1;
-                localObject1 = localObject2;
-                break label528;
-              }
-              try
-              {
-                localObject4 = parseNode(localXmlPullParser, (TtmlNode)localObject2, localHashMap2, (TtmlDecoder.FrameAndTickRate)localObject1);
-                localLinkedList.addLast(localObject4);
-                if (localObject2 != null) {
-                  ((TtmlNode)localObject2).addChild((TtmlNode)localObject4);
-                }
-                localObject2 = paramArrayOfByte;
-                paramArrayOfByte = (byte[])localObject1;
-                localObject1 = localObject2;
-              }
-              catch (SubtitleDecoderException localSubtitleDecoderException)
-              {
-                Log.w("TtmlDecoder", "Suppressing parser error", localSubtitleDecoderException);
-                localObject3 = paramArrayOfByte;
-                paramArrayOfByte = (byte[])localObject1;
-                paramInt += 1;
-                localObject1 = localObject3;
-              }
-            }
-            if (j == 4)
-            {
-              ((TtmlNode)localObject3).addChild(TtmlNode.buildTextNode(localXmlPullParser.getText()));
-              localObject3 = paramArrayOfByte;
-              paramArrayOfByte = (byte[])localObject1;
-              localObject1 = localObject3;
-              break label528;
-            }
-            if (j != 3) {
-              break label518;
-            }
-            if (localXmlPullParser.getName().equals("tt"))
-            {
-              paramArrayOfByte = new TtmlSubtitle((TtmlNode)localLinkedList.getLast(), localHashMap1, localHashMap2);
-              localLinkedList.removeLast();
-              localObject3 = paramArrayOfByte;
-              paramArrayOfByte = (byte[])localObject1;
-              localObject1 = localObject3;
-              break label528;
-            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("Ignoring unsupported tag: ");
+            ((StringBuilder)localObject2).append(localXmlPullParser.getName());
+            Log.i("TtmlDecoder", ((StringBuilder)localObject2).toString());
+            continue;
+          }
+          if ("head".equals(localObject2))
+          {
+            parseHeader(localXmlPullParser, localHashMap1, localHashMap2);
+            localObject2 = paramArrayOfByte;
+            paramInt = i;
+            localObject3 = localObject1;
           }
           else
           {
-            if (j == 2)
+            try
             {
-              i = paramInt + 1;
+              TtmlNode localTtmlNode2 = parseNode(localXmlPullParser, localTtmlNode1, localHashMap2, paramArrayOfByte);
+              localLinkedList.addLast(localTtmlNode2);
+              localObject2 = paramArrayOfByte;
+              paramInt = i;
               localObject3 = localObject1;
-              localObject4 = paramArrayOfByte;
+              if (localTtmlNode1 == null) {
+                continue;
+              }
+              localTtmlNode1.addChild(localTtmlNode2);
+              localObject2 = paramArrayOfByte;
+              paramInt = i;
+              localObject3 = localObject1;
+            }
+            catch (SubtitleDecoderException localSubtitleDecoderException)
+            {
+              Log.w("TtmlDecoder", "Suppressing parser error", localSubtitleDecoderException);
               continue;
             }
-            localObject3 = localObject1;
-            i = paramInt;
-            localObject4 = paramArrayOfByte;
-            if (j != 3) {
-              continue;
-            }
-            i = paramInt - 1;
-            localObject3 = localObject1;
-            localObject4 = paramArrayOfByte;
-            continue;
           }
+        }
+        else if (j == 4)
+        {
+          localTtmlNode1.addChild(TtmlNode.buildTextNode(localXmlPullParser.getText()));
+          arrayOfByte = paramArrayOfByte;
+          paramInt = i;
+          localObject3 = localObject1;
         }
         else
         {
-          return paramArrayOfByte;
+          arrayOfByte = paramArrayOfByte;
+          paramInt = i;
+          localObject3 = localObject1;
+          if (j == 3)
+          {
+            if (localXmlPullParser.getName().equals("tt")) {
+              localObject1 = new TtmlSubtitle((TtmlNode)localLinkedList.getLast(), localHashMap1, localHashMap2);
+            }
+            localLinkedList.removeLast();
+            arrayOfByte = paramArrayOfByte;
+            paramInt = i;
+            localObject3 = localObject1;
+          }
         }
-      }
-      catch (XmlPullParserException paramArrayOfByte)
-      {
-        throw new SubtitleDecoderException("Unable to decode source", paramArrayOfByte);
       }
       catch (IOException paramArrayOfByte)
       {
+        XmlPullParser localXmlPullParser;
         throw new IllegalStateException("Unexpected error when reading input.", paramArrayOfByte);
       }
-      continue;
-      label518:
-      Object localObject3 = localObject1;
-      Object localObject1 = paramArrayOfByte;
-      paramArrayOfByte = (byte[])localObject3;
-      label528:
-      localObject3 = paramArrayOfByte;
-      int i = paramInt;
-      Object localObject4 = localObject1;
+      catch (XmlPullParserException paramArrayOfByte)
+      {
+        Object localObject1;
+        int i;
+        int j;
+        paramArrayOfByte = new SubtitleDecoderException("Unable to decode source", paramArrayOfByte);
+        continue;
+        throw paramArrayOfByte;
+        continue;
+        if (j != 2) {
+          continue;
+        }
+        paramInt = i + 1;
+        byte[] arrayOfByte = paramArrayOfByte;
+        Object localObject3 = localObject1;
+        continue;
+        arrayOfByte = paramArrayOfByte;
+        paramInt = i;
+        localObject3 = localObject1;
+        if (j != 3) {
+          continue;
+        }
+        paramInt = i - 1;
+        arrayOfByte = paramArrayOfByte;
+        localObject3 = localObject1;
+        continue;
+      }
+      localXmlPullParser.next();
+      j = localXmlPullParser.getEventType();
+      paramArrayOfByte = arrayOfByte;
+      i = paramInt;
+      localObject1 = localObject3;
     }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.ttml.TtmlDecoder
  * JD-Core Version:    0.7.0.1
  */

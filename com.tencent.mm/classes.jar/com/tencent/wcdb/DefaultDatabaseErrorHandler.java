@@ -25,10 +25,10 @@ public final class DefaultDatabaseErrorHandler
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(12170);
+    AppMethodBeat.i(2851);
     if ((paramString.equalsIgnoreCase(":memory:")) || (paramString.trim().length() == 0))
     {
-      AppMethodBeat.o(12170);
+      AppMethodBeat.o(2851);
       return;
     }
     Log.e("WCDB.DefaultDatabaseErrorHandler", "Remove database file: ".concat(String.valueOf(paramString)));
@@ -49,7 +49,7 @@ public final class DefaultDatabaseErrorHandler
         moveOrDeleteFile(paramString + str, (String)localObject1 + str);
         i += 1;
       }
-      AppMethodBeat.o(12170);
+      AppMethodBeat.o(2851);
       return;
     }
     Object localObject1 = SUFFIX_TO_BACKUP;
@@ -61,26 +61,26 @@ public final class DefaultDatabaseErrorHandler
       deleteFile(paramString + (String)localObject2);
       i += 1;
     }
-    AppMethodBeat.o(12170);
+    AppMethodBeat.o(2851);
   }
   
   private static boolean deleteFile(String paramString)
   {
-    AppMethodBeat.i(12172);
+    AppMethodBeat.i(2853);
     boolean bool = new File(paramString).delete();
-    AppMethodBeat.o(12172);
+    AppMethodBeat.o(2853);
     return bool;
   }
   
   private static boolean moveOrDeleteFile(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(12171);
+    AppMethodBeat.i(2852);
     paramString1 = new File(paramString1);
     boolean bool = paramString1.renameTo(new File(paramString2));
     if (!bool) {
       paramString1.delete();
     }
-    AppMethodBeat.o(12171);
+    AppMethodBeat.o(2852);
     return bool;
   }
   
@@ -88,7 +88,7 @@ public final class DefaultDatabaseErrorHandler
   public final void onCorruption(com.tencent.wcdb.database.SQLiteDatabase paramSQLiteDatabase)
   {
     // Byte code:
-    //   0: sipush 12169
+    //   0: sipush 2850
     //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc 12
     //   8: new 103	java/lang/StringBuilder
@@ -107,7 +107,7 @@ public final class DefaultDatabaseErrorHandler
     //   38: aload_1
     //   39: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
     //   42: invokespecial 148	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   45: sipush 12169
+    //   45: sipush 2850
     //   48: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: return
     //   52: aconst_null
@@ -143,14 +143,14 @@ public final class DefaultDatabaseErrorHandler
     //   114: checkcast 18	java/lang/String
     //   117: invokespecial 148	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
     //   120: goto -28 -> 92
-    //   123: sipush 12169
+    //   123: sipush 2850
     //   126: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   129: return
     //   130: aload_0
     //   131: aload_1
     //   132: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
     //   135: invokespecial 148	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   138: sipush 12169
+    //   138: sipush 2850
     //   141: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: return
     //   145: astore_3
@@ -170,14 +170,14 @@ public final class DefaultDatabaseErrorHandler
     //   179: checkcast 18	java/lang/String
     //   182: invokespecial 148	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
     //   185: goto -28 -> 157
-    //   188: sipush 12169
+    //   188: sipush 2850
     //   191: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   194: return
     //   195: aload_0
     //   196: aload_1
     //   197: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
     //   200: invokespecial 148	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   203: sipush 12169
+    //   203: sipush 2850
     //   206: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   209: return
     //   210: astore_3
@@ -201,7 +201,7 @@ public final class DefaultDatabaseErrorHandler
     //   254: aload_1
     //   255: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
     //   258: invokespecial 148	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   261: sipush 12169
+    //   261: sipush 2850
     //   264: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   267: aload_3
     //   268: athrow
@@ -225,7 +225,7 @@ public final class DefaultDatabaseErrorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.DefaultDatabaseErrorHandler
  * JD-Core Version:    0.7.0.1
  */

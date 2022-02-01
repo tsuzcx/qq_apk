@@ -9,10 +9,10 @@ public final class RespCondSearch
   extends JceStruct
 {
   static ArrayList<CondFitUser> cache_vUserList;
-  public byte cEndFlag;
-  public long dwSessionID;
-  public int iPage;
-  public ArrayList<CondFitUser> vUserList;
+  public byte cEndFlag = 0;
+  public long dwSessionID = 0L;
+  public int iPage = 0;
+  public ArrayList<CondFitUser> vUserList = null;
   
   public RespCondSearch() {}
   
@@ -43,14 +43,15 @@ public final class RespCondSearch
     paramJceOutputStream.write(this.cEndFlag, 0);
     paramJceOutputStream.write(this.iPage, 1);
     paramJceOutputStream.write(this.dwSessionID, 2);
-    if (this.vUserList != null) {
-      paramJceOutputStream.write(this.vUserList, 3);
+    ArrayList localArrayList = this.vUserList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.RespCondSearch
  * JD-Core Version:    0.7.0.1
  */

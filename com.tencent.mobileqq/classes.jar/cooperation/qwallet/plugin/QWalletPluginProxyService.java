@@ -7,7 +7,7 @@ public class QWalletPluginProxyService
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

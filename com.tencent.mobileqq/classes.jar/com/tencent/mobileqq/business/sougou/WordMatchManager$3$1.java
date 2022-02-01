@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.business.sougou;
 
-import anyq;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,24 +10,24 @@ class WordMatchManager$3$1
   
   public void run()
   {
-    this.a.this$0.b = this.a.a;
-    this.a.this$0.c = this.a.a;
-    this.a.this$0.d = false;
-    this.a.this$0.e = false;
-    Iterator localIterator = this.a.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.a.this$0.d = this.a.a;
+    this.a.this$0.e = this.a.a;
+    this.a.this$0.f = false;
+    this.a.this$0.m = false;
+    Iterator localIterator = this.a.this$0.h.iterator();
     while (localIterator.hasNext())
     {
-      anyq localanyq = (anyq)localIterator.next();
-      if (localanyq != null) {
-        localanyq.a(this.a.this$0.jdField_a_of_type_Anyr);
+      WordMatchManager.MatcherCallback localMatcherCallback = (WordMatchManager.MatcherCallback)localIterator.next();
+      if (localMatcherCallback != null) {
+        localMatcherCallback.a(this.a.this$0.g);
       }
     }
-    this.a.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.this$0.h.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.3.1
  * JD-Core Version:    0.7.0.1
  */

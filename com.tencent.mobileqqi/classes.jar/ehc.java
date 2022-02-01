@@ -1,100 +1,67 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.fling.TopContentLayout;
-import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class ehc
   extends GestureDetector.SimpleOnGestureListener
 {
-  private static final int jdField_a_of_type_Int = 50;
+  private static final int jdField_a_of_type_Int = 100;
   private float jdField_a_of_type_Float;
   
-  public ehc(TopContentLayout paramTopContentLayout, Context paramContext)
+  public ehc(TopGestureLayout paramTopGestureLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 0);
+    return super.onDown(paramMotionEvent);
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    int i;
-    int j;
-    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
-    {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
-      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-      if (paramFloat1 <= 0.0F) {
-        break label96;
-      }
-      i -= j;
-    }
-    for (;;)
-    {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+    if ((TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout)) || (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout))) {
       return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label96:
-      i = -j;
     }
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if ((TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 1)) && (f1 < 0.0F) && (f2 < 0.5F) && (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout) != null))
+    {
+      TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, -1);
+      TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout).flingLToR();
+    }
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    float f1;
-    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    if (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if (TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout))
     {
-      f1 = Math.abs(paramFloat2 / paramFloat1);
-      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
-      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
+      if ((Math.abs(f1) > this.jdField_a_of_type_Float) && (paramFloat1 < 0.0F) && (f2 < 0.5F))
       {
-        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
-        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
-          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
-        }
+        TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 1);
         return true;
       }
-      f1 = paramFloat1;
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
-    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-    if ((paramFloat1 < 0.0F) && (j < i)) {
-      if (Math.abs(paramFloat1) > i - j) {
-        paramFloat1 = i - j;
-      }
+    else if ((TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 1)) && ((paramFloat1 > 0.0F) || (f2 >= 0.5F))) {
+      TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, -1);
     }
-    for (;;)
-    {
-      f1 = paramFloat1;
-      if (Math.abs(paramFloat1) <= 0.0F) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
-      f1 = paramFloat1;
-      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
-        break;
-      }
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
-      f1 = paramFloat1;
-      break;
-      paramFloat1 = -paramFloat1;
-      continue;
-      if ((paramFloat1 > 0.0F) && (j > 0))
-      {
-        if (Math.abs(paramFloat1) > j) {
-          paramFloat1 = -j;
-        } else {
-          paramFloat1 = -paramFloat1;
-        }
-      }
-      else {
-        paramFloat1 = 0.0F;
-      }
-    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, -1);
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

@@ -12,9 +12,9 @@ public class fdt
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "<ReadReport><S>_Group_gprUin:" + this.jdField_a_of_type_Long + " lastReadSeq:" + this.b + " reqSeq:" + this.c);
+      QLog.d("Q.msg.MessageHandler", 2, "<ReadReport><S>_Discussion_disUin:" + this.jdField_a_of_type_Long + " lastReadSeq:" + this.b + " reqSeq:" + this.c);
     }
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.GroupMsgReadConfirm");
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.DisMsgReadConfirm");
     localToServiceMsg.extraData.putLong("groupuin", this.jdField_a_of_type_Long);
     localToServiceMsg.extraData.putLong("lastReadSeq", this.b);
     localToServiceMsg.extraData.putLong("timeOut", this.e);

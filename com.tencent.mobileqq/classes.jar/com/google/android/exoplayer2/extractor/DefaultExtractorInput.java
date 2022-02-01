@@ -39,35 +39,38 @@ public final class DefaultExtractorInput
   private void ensureSpaceForPeek(int paramInt)
   {
     paramInt = this.peekBufferPosition + paramInt;
-    if (paramInt > this.peekBuffer.length)
+    byte[] arrayOfByte = this.peekBuffer;
+    if (paramInt > arrayOfByte.length)
     {
-      paramInt = Util.constrainValue(this.peekBuffer.length * 2, 65536 + paramInt, paramInt + 524288);
+      paramInt = Util.constrainValue(arrayOfByte.length * 2, 65536 + paramInt, paramInt + 524288);
       this.peekBuffer = Arrays.copyOf(this.peekBuffer, paramInt);
     }
   }
   
   private int readFromDataSource(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
-    }
-    paramInt1 = this.dataSource.read(paramArrayOfByte, paramInt1 + paramInt3, paramInt2 - paramInt3);
-    if (paramInt1 == -1)
+    if (!Thread.interrupted())
     {
-      if ((paramInt3 == 0) && (paramBoolean)) {
-        return -1;
+      paramInt1 = this.dataSource.read(paramArrayOfByte, paramInt1 + paramInt3, paramInt2 - paramInt3);
+      if (paramInt1 == -1)
+      {
+        if ((paramInt3 == 0) && (paramBoolean)) {
+          return -1;
+        }
+        throw new EOFException();
       }
-      throw new EOFException();
+      return paramInt3 + paramInt1;
     }
-    return paramInt3 + paramInt1;
+    throw new InterruptedException();
   }
   
   private int readFromPeekBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.peekBufferLength == 0) {
+    int i = this.peekBufferLength;
+    if (i == 0) {
       return 0;
     }
-    paramInt2 = Math.min(this.peekBufferLength, paramInt2);
+    paramInt2 = Math.min(i, paramInt2);
     System.arraycopy(this.peekBuffer, 0, paramArrayOfByte, paramInt1, paramInt2);
     updatePeekBuffer(paramInt2);
     return paramInt2;
@@ -84,12 +87,14 @@ public final class DefaultExtractorInput
   {
     this.peekBufferLength -= paramInt;
     this.peekBufferPosition = 0;
-    byte[] arrayOfByte = this.peekBuffer;
-    if (this.peekBufferLength < this.peekBuffer.length - 524288) {
-      arrayOfByte = new byte[this.peekBufferLength + 65536];
+    byte[] arrayOfByte2 = this.peekBuffer;
+    int i = this.peekBufferLength;
+    byte[] arrayOfByte1 = arrayOfByte2;
+    if (i < arrayOfByte2.length - 524288) {
+      arrayOfByte1 = new byte[i + 65536];
     }
-    System.arraycopy(this.peekBuffer, paramInt, arrayOfByte, 0, this.peekBufferLength);
-    this.peekBuffer = arrayOfByte;
+    System.arraycopy(this.peekBuffer, paramInt, arrayOfByte1, 0, this.peekBufferLength);
+    this.peekBuffer = arrayOfByte1;
   }
   
   public void advancePeekPosition(int paramInt)
@@ -173,21 +178,25 @@ public final class DefaultExtractorInput
   
   public <E extends Throwable> void setRetryPosition(long paramLong, E paramE)
   {
-    if (paramLong >= 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      this.position = paramLong;
-      throw paramE;
+    boolean bool;
+    if (paramLong >= 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    this.position = paramLong;
+    throw paramE;
   }
   
   public int skip(int paramInt)
   {
     int j = skipFromPeekBuffer(paramInt);
     int i = j;
-    if (j == 0) {
-      i = readFromDataSource(this.scratchSpace, 0, Math.min(paramInt, this.scratchSpace.length), 0, true);
+    if (j == 0)
+    {
+      byte[] arrayOfByte = this.scratchSpace;
+      i = readFromDataSource(arrayOfByte, 0, Math.min(paramInt, arrayOfByte.length), 0, true);
     }
     commitBytesRead(i);
     return i;
@@ -210,7 +219,7 @@ public final class DefaultExtractorInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.DefaultExtractorInput
  * JD-Core Version:    0.7.0.1
  */

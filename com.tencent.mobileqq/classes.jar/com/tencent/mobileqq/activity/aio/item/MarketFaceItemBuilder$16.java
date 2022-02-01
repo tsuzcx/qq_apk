@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afvg;
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class MarketFaceItemBuilder$16
+final class MarketFaceItemBuilder$16
   implements Runnable
 {
-  public MarketFaceItemBuilder$16(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, String paramString) {}
+  MarketFaceItemBuilder$16(Context paramContext) {}
   
   public void run()
   {
-    afvg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131720825), this.jdField_a_of_type_JavaLangString);
+    QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getString(2131886257), 0).show(this.a.getResources().getDimensionPixelSize(2131299920));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.16
  * JD-Core Version:    0.7.0.1
  */

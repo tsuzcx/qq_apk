@@ -1,8 +1,8 @@
 package com.tencent.mm.v;
 
-import a.l;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/executor/OpDeleteExecutor$Companion;", "", "()V", "TAG", "", "plugin-functionmsg_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/executor/OpDeleteExecutor$Companion;", "", "()V", "TAG", "", "plugin-functionmsg_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d$a {}
 
 

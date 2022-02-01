@@ -52,23 +52,35 @@ final class OperatorReplay$InnerProducer<T>
   
   public long produced(long paramLong)
   {
-    if (paramLong <= 0L) {
-      throw new IllegalArgumentException("Cant produce zero or less");
-    }
-    long l1;
-    long l2;
-    do
+    if (paramLong > 0L)
     {
-      l1 = get();
-      if (l1 == -9223372036854775808L) {
-        return -9223372036854775808L;
-      }
-      l2 = l1 - paramLong;
-      if (l2 < 0L) {
-        throw new IllegalStateException("More produced (" + paramLong + ") than requested (" + l1 + ")");
-      }
-    } while (!compareAndSet(l1, l2));
-    return l2;
+      long l1;
+      long l2;
+      do
+      {
+        l1 = get();
+        if (l1 == -9223372036854775808L) {
+          return -9223372036854775808L;
+        }
+        l2 = l1 - paramLong;
+        if (l2 < 0L) {
+          break;
+        }
+      } while (!compareAndSet(l1, l2));
+      return l2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("More produced (");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(") than requested (");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(")");
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
+    }
+    Object localObject = new IllegalArgumentException("Cant produce zero or less");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void request(long paramLong)
@@ -81,8 +93,11 @@ final class OperatorReplay$InnerProducer<T>
     do
     {
       l3 = get();
-      if ((l3 == -9223372036854775808L) || ((l3 >= 0L) && (paramLong == 0L))) {
-        break;
+      if (l3 == -9223372036854775808L) {
+        return;
+      }
+      if ((l3 >= 0L) && (paramLong == 0L)) {
+        return;
       }
       long l2 = l3 + paramLong;
       l1 = l2;
@@ -106,7 +121,7 @@ final class OperatorReplay$InnerProducer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorReplay.InnerProducer
  * JD-Core Version:    0.7.0.1
  */

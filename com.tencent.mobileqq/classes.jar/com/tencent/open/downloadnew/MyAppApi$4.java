@@ -1,21 +1,29 @@
 package com.tencent.open.downloadnew;
 
-import bflz;
-import bfox;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.open.base.LogUtility;
 
-public class MyAppApi$4
-  implements Runnable
+class MyAppApi$4
+  extends BroadcastReceiver
 {
-  public MyAppApi$4(bfox parambfox) {}
+  MyAppApi$4(MyAppApi paramMyAppApi) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bflz.a().a(this.this$0.a);
+    paramContext = new StringBuilder();
+    paramContext.append("onReceive ---INTENT = ");
+    paramContext.append(paramIntent);
+    LogUtility.c("MyAppApi", paramContext.toString());
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.o();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.4
  * JD-Core Version:    0.7.0.1
  */

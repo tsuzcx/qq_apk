@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bbwf;
 import java.util.HashSet;
 
-public class TroopFileDownloadMgr$10
+class TroopFileDownloadMgr$10
   implements Runnable
 {
-  public TroopFileDownloadMgr$10(bbwf parambbwf) {}
+  TroopFileDownloadMgr$10(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    bbwf.a(this.this$0, 1, new Object[] { localHashSet });
+    TroopFileDownloadMgr.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.10
  * JD-Core Version:    0.7.0.1
  */

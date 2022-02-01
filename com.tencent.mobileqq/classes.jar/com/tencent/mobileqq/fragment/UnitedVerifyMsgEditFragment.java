@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.fragment;
 
-import acdj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,43 +9,45 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.MaxBytesTextWatcher;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class UnitedVerifyMsgEditFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 100;
-  acdj jdField_a_of_type_Acdj;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  BaseActivity a;
+  int b = 100;
+  EditText c;
+  TextView d;
+  AddFriendVerifyActivity.MaxBytesTextWatcher e;
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Int = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
-    setTitle(getString(2131689648));
-    setLeftButton(2131690648, null);
-    setRightButton(2131690797, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131375684));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131375685));
-    this.jdField_a_of_type_Acdj = new acdj(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Acdj);
+    this.b = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
+    setTitle(getString(2131886219));
+    setLeftButton(2131887648, null);
+    setRightButton(2131887750, this);
+    this.c = ((EditText)this.mContentView.findViewById(2131444679));
+    this.d = ((TextView)this.mContentView.findViewById(2131444680));
+    this.e = new AddFriendVerifyActivity.MaxBytesTextWatcher(this.b, this.c);
+    this.c.addTextChangedListener(this.e);
     ThreadManager.post(new UnitedVerifyMsgEditFragment.1(this), 8, null, true);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561389;
+    return 2131627934;
   }
   
   public boolean onBackEvent()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(0);
+    this.a.setResult(0);
     boolean bool = super.onBackEvent();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130771990, 2130772001);
+    this.a.overridePendingTransition(2130772007, 2130772018);
     return bool;
   }
   
@@ -54,30 +55,31 @@ public class UnitedVerifyMsgEditFragment
   {
     if (paramView == this.rightViewText)
     {
-      paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      String str = this.c.getText().toString();
       Intent localIntent = new Intent();
-      localIntent.putExtra("VERIFY_MSG", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130771990, 2130772001);
+      localIntent.putExtra("VERIFY_MSG", str);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      this.a.overridePendingTransition(2130772007, 2130772018);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
+    this.a = getBaseActivity();
   }
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Acdj);
+    this.c.removeTextChangedListener(this.e);
     super.onDestroyView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment
  * JD-Core Version:    0.7.0.1
  */

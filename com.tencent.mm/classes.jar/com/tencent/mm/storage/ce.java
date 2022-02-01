@@ -1,0 +1,82 @@
+package com.tencent.mm.storage;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+
+public final class ce
+  extends com.tencent.mm.bx.a
+{
+  public LinkedList<cf> adll;
+  
+  public ce()
+  {
+    AppMethodBeat.i(43274);
+    this.adll = new LinkedList();
+    AppMethodBeat.o(43274);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(43275);
+    if (paramInt == 0)
+    {
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.adll);
+      AppMethodBeat.o(43275);
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      paramInt = i.a.a.a.c(1, 8, this.adll);
+      AppMethodBeat.o(43275);
+      return paramInt + 0;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.adll.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(43275);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      ce localce = (ce)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(43275);
+        return -1;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        cf localcf = new cf();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localcf.parseFrom((byte[])localObject);
+        }
+        localce.adll.add(localcf);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(43275);
+      return 0;
+    }
+    AppMethodBeat.o(43275);
+    return -1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.storage.ce
+ * JD-Core Version:    0.7.0.1
+ */

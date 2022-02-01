@@ -40,20 +40,20 @@ public final class IndoorBuilding
   
   public final String toString()
   {
-    AppMethodBeat.i(101186);
+    AppMethodBeat.i(87541);
     if ((this.mBuidlingId == null) || (this.mLevels == null) || (this.mLevels.size() <= this.mActiveLevelIndex))
     {
-      AppMethodBeat.o(101186);
+      AppMethodBeat.o(87541);
       return null;
     }
     String str = this.mBuidlingId + "_" + ((IndoorLevel)this.mLevels.get(this.mActiveLevelIndex)).getName();
-    AppMethodBeat.o(101186);
+    AppMethodBeat.o(87541);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.IndoorBuilding
  * JD-Core Version:    0.7.0.1
  */

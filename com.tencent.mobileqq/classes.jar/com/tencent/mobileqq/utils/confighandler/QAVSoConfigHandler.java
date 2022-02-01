@@ -1,42 +1,49 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import alud;
-import com.tencent.av.so.DownloadInfo;
+import com.tencent.av.so.ResDownloadControl;
+import com.tencent.av.so.ResInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import mcg;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 
 public class QAVSoConfigHandler
-  extends ConfigHandler<DownloadInfo>
+  extends ConfigHandler<ResInfo>
 {
   public QAVSoConfigHandler()
   {
-    super("QavSo", null);
+    super("AVResMgr", null);
   }
   
   public int getConfigVer()
   {
-    if (AudioHelper.d()) {
-      throw new IllegalArgumentException(this.TAG + alud.a(2131709338));
+    if (!QQAudioHelper.b()) {
+      return 0;
     }
-    return 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.TAG);
+    localStringBuilder.append(HardCodeUtil.a(2131906702));
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
-  public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DownloadInfo paramDownloadInfo)
+  public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, ResInfo paramResInfo)
   {
-    mcg.a(paramQQAppInterface, paramString, paramDownloadInfo);
+    ResDownloadControl.a().a(paramQQAppInterface, paramString, paramResInfo);
   }
   
   public void saveConfig(String paramString, int paramInt)
   {
-    if (AudioHelper.d()) {
-      throw new IllegalArgumentException(this.TAG + alud.a(2131709337));
+    if (!QQAudioHelper.b()) {
+      return;
     }
+    paramString = new StringBuilder();
+    paramString.append(this.TAG);
+    paramString.append(HardCodeUtil.a(2131906701));
+    throw new IllegalArgumentException(paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.QAVSoConfigHandler
  * JD-Core Version:    0.7.0.1
  */

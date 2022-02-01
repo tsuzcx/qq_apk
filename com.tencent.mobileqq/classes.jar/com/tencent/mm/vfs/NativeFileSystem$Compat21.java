@@ -24,10 +24,25 @@ final class NativeFileSystem$Compat21
       if (localErrnoException.errno == OsConstants.EXDEV) {
         return false;
       }
-      if (localErrnoException.errno == OsConstants.ENOENT) {
-        throw new FileNotFoundException("Cannot move file " + paramString1 + " to " + paramString2 + ": " + localErrnoException.getMessage());
+      if (localErrnoException.errno == OsConstants.ENOENT)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Cannot move file ");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(": ");
+        localStringBuilder.append(localErrnoException.getMessage());
+        throw new FileNotFoundException(localStringBuilder.toString());
       }
-      throw new IOException("Cannot move file " + paramString1 + " to " + paramString2 + ": " + localErrnoException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Cannot move file ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(localErrnoException.getMessage());
+      throw new IOException(localStringBuilder.toString());
     }
   }
   
@@ -40,7 +55,7 @@ final class NativeFileSystem$Compat21
         return null;
       }
       boolean bool = OsConstants.S_ISDIR(paramFile.st_mode);
-      paramFile = new FileSystem.FileEntry(paramFileSystem, paramString1, paramString2, paramFile.st_size, paramFile.st_blocks * 512L, 1000L * paramFile.st_mtime, bool);
+      paramFile = new FileSystem.FileEntry(paramFileSystem, paramString1, paramString2, paramFile.st_size, paramFile.st_blocks * 512L, paramFile.st_mtime * 1000L, bool);
       return paramFile;
     }
     catch (ErrnoException paramFile) {}
@@ -49,7 +64,7 @@ final class NativeFileSystem$Compat21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.NativeFileSystem.Compat21
  * JD-Core Version:    0.7.0.1
  */

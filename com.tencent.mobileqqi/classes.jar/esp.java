@@ -1,40 +1,33 @@
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
 
 public class esp
-  implements QvipSpecialSoundManager.CallBack
+  extends Handler
 {
-  public esp(QvipSpecialSoundActivity paramQvipSpecialSoundActivity, String paramString) {}
+  public esp(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      try
+    default: 
+    case 0: 
+      do
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.a = ((List)QvipSpecialSoundManager.a.get(this.jdField_a_of_type_JavaLangString));
-        QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
         return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SpecialSoundActivity", 2, "special sound cofing is empty.");
-      }
-      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.getString(2131562063));
+        QvipSpecialSoundActivity.b(this.a);
+        QvipSpecialSoundActivity.a(this.a).removeMessages(2);
+      } while (((Boolean)paramMessage.obj).booleanValue());
+      QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562062));
+      return;
+    case 1: 
+      QvipSpecialSoundActivity.a(this.a).setText(this.a.getString(2131562762));
+      return;
     }
+    QvipSpecialSoundActivity.c(this.a);
+    QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562882));
   }
 }
 

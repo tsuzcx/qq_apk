@@ -1,0 +1,199 @@
+{
+    "view_type": "UIView",
+    "view_id": "ad_large_bottom_three",
+    "layout_type": "layout_relative",
+    "below_of_view": "id_ad_bottom_top_container",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#ffffff",
+        "setAttatchInfo:": "$visible_three"
+    },
+    "event_type": "ad_nothing_click_in_detail",
+    "subviews": [
+        {
+            "view_type": "container",
+            "layout_type": "layout_linear",
+            "direction": "vertical",
+            "align_parent_left": "YES",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "match_parent"
+            },
+            "padding_top": "10",
+            "visible_depend_on_children": "YES",
+            "subviews": [
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_tv_title_three",
+                    "margin_left": "0",
+                    "margin_top": "0",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "event_type": "ad_title_click_in_detail",
+                    "attributes": {
+                        "setText:lineSpace:": [
+                            "$title",
+                            "4"
+                        ],
+                        "setTextColorString:": "#000000",
+                        "setFontSizeString:": "16",
+                        "setNumberOfLinesString:": "2"
+                    }
+                },
+                {
+                    "view_type": "container",
+                    "layout_type": "layout_relative",
+                    "below_of_view": "id_tv_title_three",
+                    "height": {
+                        "type": "relative",
+                        "value": "20"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "margin_top": "7",
+                    "visible_depend_on_children": "YES",
+                    "subviews": [
+                        {
+                            "view_type": "ReadInjoyAsynImageView",
+                            "view_id": "id_ad_banner_author_icon_three",
+                            "margin_left": "0",
+                            "height": {
+                                "type": "relative",
+                                "value": "18"
+                            },
+                            "width": {
+                                "type": "relative",
+                                "value": "18"
+                            },
+                            "align_parent_center_vertical": "YES",
+                            "event_type": "ad_banner_author_icon_click",
+                            "attributes": {
+                                "setImageWithURLString:lineup:": [
+                                    "$author_icon",
+                                    "-1"
+                                ],
+                                "setCornerRadiusString:": "9"
+                            }
+                        },
+                        {
+                            "view_type": "UILabel",
+                            "view_id": "id_tv_author_three",
+                            "right_of_view": "id_ad_banner_author_icon_three",
+                            "margin_left": "6",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "relative",
+                                "value": "241"
+                            },
+                            "align_parent_center_vertical": "YES",
+                            "event_type": "ad_name_click_in_detail",
+                            "attributes": {
+                                "setText:lineSpace:": [
+                                    "$author_text",
+                                    "0"
+                                ],
+                                "setTextColorString:": "#9D9D9D",
+                                "setFontSizeString:": "12",
+                                "setNumberOfLinesString:": "1"
+                            }
+                        },
+                        {
+                            "view_type": "container",
+                            "layout_type": "layout_relative",
+                            "view_id": "id_download_container_three",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "align_parent_center_vertical": "YES",
+                            "align_parent_right": "YES",
+                            "visible_depend_on_children": "YES",
+                            "subviews": [
+                                {
+                                    "view_type": "UILabel",
+                                    "view_id": "id_tv_download_three",
+                                    "height": {
+                                        "type": "wrap_content"
+                                    },
+                                    "width": {
+                                        "type": "wrap_content"
+                                    },
+                                    "align_parent_center_vertical": "YES",
+                                    "event_type": "cmd_native_detail_ad_download_click",
+                                    "attributes": {
+                                        "setText:lineSpace:": [
+                                            "$ios_download",
+                                            "0"
+                                        ],
+                                        "setTextColorString:": "#40A0FF",
+                                        "setFontSizeString:": "12",
+                                        "setNumberOfLinesString:": "1"
+                                    }
+                                },
+                                {
+                                    "view_type": "ReadInJoyAdDownloadView",
+                                    "view_id": "id_view_AdDownloadView",
+                                    "height": {
+                                        "type": "relative",
+                                        "value": "20"
+                                    },
+                                    "width": {
+                                        "type": "relative",
+                                        "value": "52"
+                                    },
+                                    "align_parent_center_vertical": "YES",
+                                    "event_type": "ad_button_click_in_detail",
+                                    "attributes": {
+                                        "setFeedsModel:": "$article_model",
+                                        "setDownloadBtnStyle:": {
+                                            "buttonTextColor": "#40A0FF",
+                                            "buttonTextSize": "12",
+                                            "buttonCornerSize": "",
+                                            "buttonBackgroundColor": "",
+                                            "showBunttonLeftIconOrNot": "",
+                                            "buttonBorderSize": "",
+                                            "buttonBorderColor": "",
+                                            "buttonHorizontalPadding": "",
+                                            "buttonVerticalPadding": "",
+                                            "showAdIconOrNot": "",
+                                            "buttonAlignment": "3"
+                                        },
+                                        "progressStyle:": {
+                                            "style": "1",
+                                            "showProgress": "1",
+                                            "width": "82",
+                                            "height": "20",
+                                            "textColor": "#ffffff",
+                                            "textSize": "12",
+                                            "corner": "2.5",
+                                            "background": "",
+                                            "progressBg": "#CCCCCC",
+                                            "secondaryProgressBg": "#CCCCCC",
+                                            "progressColor": "#40A0FF"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

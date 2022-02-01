@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class Redpacket
   extends JceStruct
 {
-  public int dwConfType;
+  public int dwConfType = 0;
   public String sName = "";
   
   public Redpacket() {}
@@ -27,14 +27,15 @@ public final class Redpacket
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dwConfType, 0);
-    if (this.sName != null) {
-      paramJceOutputStream.write(this.sName, 1);
+    String str = this.sName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.Redpacket
  * JD-Core Version:    0.7.0.1
  */

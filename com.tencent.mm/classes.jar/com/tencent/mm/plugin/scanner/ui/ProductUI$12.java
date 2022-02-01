@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class ProductUI$12
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class ProductUI$12
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(81095);
-    ProductUI.l(this.qyh);
-    AppMethodBeat.o(81095);
+    AppMethodBeat.i(51867);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/scanner/ui/ProductUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ProductUI.l(this.OZW);
+    a.a(this, "com/tencent/mm/plugin/scanner/ui/ProductUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(51867);
   }
 }
 

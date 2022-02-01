@@ -6,39 +6,39 @@ import junit.framework.Assert;
 
 public final class e<T>
 {
-  private volatile T eEI;
-  private Class<T> targetClass;
+  private volatile T mzk;
+  private Class<T> mzl;
   
   public e(Class<T> paramClass)
   {
-    AppMethodBeat.i(114088);
+    AppMethodBeat.i(158799);
     Assert.assertNotNull(paramClass);
-    this.targetClass = paramClass;
-    AppMethodBeat.o(114088);
+    this.mzl = paramClass;
+    AppMethodBeat.o(158799);
   }
   
   public final T get()
   {
-    AppMethodBeat.i(114089);
-    if (this.eEI == null) {}
+    AppMethodBeat.i(158800);
+    if (this.mzk == null) {}
     try
     {
-      if (this.eEI == null) {
-        this.eEI = b.B(this.targetClass);
+      if (this.mzk == null) {
+        this.mzk = b.G(this.mzl);
       }
-      Object localObject1 = this.eEI;
-      AppMethodBeat.o(114089);
+      Object localObject1 = this.mzk;
+      AppMethodBeat.o(158800);
       return localObject1;
     }
     finally
     {
-      AppMethodBeat.o(114089);
+      AppMethodBeat.o(158800);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.e
  * JD-Core Version:    0.7.0.1
  */

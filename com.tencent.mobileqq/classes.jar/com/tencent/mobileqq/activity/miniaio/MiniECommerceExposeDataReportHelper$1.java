@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import afcs;
-import aiix;
-import aijq;
+import com.tencent.mobileqq.activity.aio.messageexpose.AIOMessageRecordExposeLogic;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public class MiniECommerceExposeDataReportHelper$1
+class MiniECommerceExposeDataReportHelper$1
   implements Runnable
 {
-  public MiniECommerceExposeDataReportHelper$1(aiix paramaiix) {}
+  MiniECommerceExposeDataReportHelper$1(MiniECommerceExposeDataReportHelper paramMiniECommerceExposeDataReportHelper) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ECommerceExposeDataReportHelper", 2, "mRunOnShow 800");
     }
-    aiix.a(this.this$0, true);
-    ThreadManager.getUIHandler().removeCallbacks(aiix.a(this.this$0));
-    aiix.a(this.this$0).a(aiix.a(this.this$0).a, aiix.a(this.this$0));
+    MiniECommerceExposeDataReportHelper.a(this.this$0, true);
+    ThreadManager.getUIHandler().removeCallbacks(MiniECommerceExposeDataReportHelper.a(this.this$0));
+    MiniECommerceExposeDataReportHelper.d(this.this$0).a(MiniECommerceExposeDataReportHelper.b(this.this$0).d, MiniECommerceExposeDataReportHelper.c(this.this$0));
   }
 }
 

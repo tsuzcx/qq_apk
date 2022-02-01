@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="150" android:drawable="@drawable/gtn" />
+    <item android:duration="150" android:drawable="@drawable/gto" />
+    <item android:duration="150" android:drawable="@drawable/gu0" />
+    <item android:duration="150" android:drawable="@drawable/gu1" />
+    <item android:duration="150" android:drawable="@drawable/gu2" />
+    <item android:duration="150" android:drawable="@drawable/gu6" />
+    <item android:duration="150" android:drawable="@drawable/gu9" />
+</animation-list>

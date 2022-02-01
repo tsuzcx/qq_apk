@@ -1,30 +1,53 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.qphone.base.util.QLog;
-import lid;
 
 class DoubleVideoCtrlUI$13
-  implements Runnable
+  implements Animation.AnimationListener
 {
   DoubleVideoCtrlUI$13(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    paramAnimation = this.b.X;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showNoAnswerAnimation, onAnimationEnd, seq[");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("]");
+    QLog.w(paramAnimation, 1, localStringBuilder.toString());
+    if (this.b.aA != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d, 233);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(233);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d, 9);
-      QLog.d(this.this$0.d, 1, "exit when onBackPressed");
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a, 1008);
+      paramAnimation = this.b;
+      paramAnimation.c = true;
+      paramAnimation.aA.m();
+    }
+    paramAnimation = this.b.U();
+    if (paramAnimation != null) {
+      paramAnimation.h(this.a);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = this.b.X;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showNoAnswerAnimation, onAnimationStart, seq[");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("]");
+    QLog.w(paramAnimation, 1, localStringBuilder.toString());
+    paramAnimation = this.b.U();
+    if (paramAnimation != null) {
+      paramAnimation.h(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.13
  * JD-Core Version:    0.7.0.1
  */

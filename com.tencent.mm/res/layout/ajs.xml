@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ddj" android:background="@drawable/vw" android:layout_width="fill_parent" android:layout_height="@dimen/lf"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dl1" android:background="@drawable/ary" android:visibility="gone" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginRight="@dimen/n_" android:layout_marginBottom="@dimen/n_" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/lf" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/dl2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.plugin.finder.live.view.FinderLiveFloatContainer android:id="@id/dy9" android:background="@drawable/a06" android:layout_width="wrap_content" android:layout_height="wrap_content" app:focus_background="@drawable/a04" app:unfocus_left_background="@drawable/a05" app:unfocus_right_background="@drawable/a06"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/dy7" android:layout_width="@dimen/bx" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:ellipsize="end" android:id="@id/dy8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/cp" android:text="@string/e5t" android:singleLine="true" android:layout_below="@id/dy7" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dy_" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/bv" android:src="@raw/icons_filled_done" android:layout_below="@id/dy7" android:layout_centerHorizontal="true" app:iconColor="@color/al6" />
+</com.tencent.mm.plugin.finder.live.view.FinderLiveFloatContainer>

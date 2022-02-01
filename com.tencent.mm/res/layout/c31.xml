@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.widget.SnsComment2LinePreloadTextView android:id="@id/jsh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsCommentPreloadTextView android:id="@id/jsj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:id="@id/jsi" android:background="@drawable/ati" android:paddingLeft="@dimen/g" android:paddingRight="@dimen/g" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jbr" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />
+</merge>

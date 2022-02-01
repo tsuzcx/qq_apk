@@ -36,36 +36,46 @@ public final class Notification<T>
   
   public void accept(Observer<? super T> paramObserver)
   {
-    if (isOnNext()) {
-      paramObserver.onNext(getValue());
-    }
-    do
+    if (isOnNext())
     {
+      paramObserver.onNext(getValue());
       return;
-      if (isOnCompleted())
-      {
-        paramObserver.onCompleted();
-        return;
-      }
-    } while (!isOnError());
-    paramObserver.onError(getThrowable());
+    }
+    if (isOnCompleted())
+    {
+      paramObserver.onCompleted();
+      return;
+    }
+    if (isOnError()) {
+      paramObserver.onError(getThrowable());
+    }
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (this == paramObject) {
-          return true;
-        }
-      } while (paramObject.getClass() != getClass());
-      paramObject = (Notification)paramObject;
-    } while ((paramObject.getKind() != getKind()) || ((hasValue()) && (!getValue().equals(paramObject.getValue()))) || ((hasThrowable()) && (!getThrowable().equals(paramObject.getThrowable()))) || ((!hasValue()) && (!hasThrowable()) && (paramObject.hasValue())) || ((!hasValue()) && (!hasThrowable()) && (paramObject.hasThrowable())));
-    return true;
+    if (paramObject == null) {
+      return false;
+    }
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    paramObject = (Notification)paramObject;
+    if (paramObject.getKind() != getKind()) {
+      return false;
+    }
+    if ((hasValue()) && (!getValue().equals(paramObject.getValue()))) {
+      return false;
+    }
+    if ((hasThrowable()) && (!getThrowable().equals(paramObject.getThrowable()))) {
+      return false;
+    }
+    if ((!hasValue()) && (!hasThrowable()) && (paramObject.hasValue())) {
+      return false;
+    }
+    return (hasValue()) || (hasThrowable()) || (!paramObject.hasThrowable());
   }
   
   public Notification.Kind getKind()
@@ -124,12 +134,19 @@ public final class Notification<T>
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("[").append(super.toString()).append(" ").append(getKind());
-    if (hasValue()) {
-      localStringBuilder.append(" ").append(getValue());
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(getKind());
+    if (hasValue())
+    {
+      localStringBuilder.append(" ");
+      localStringBuilder.append(getValue());
     }
-    if (hasThrowable()) {
-      localStringBuilder.append(" ").append(getThrowable().getMessage());
+    if (hasThrowable())
+    {
+      localStringBuilder.append(" ");
+      localStringBuilder.append(getThrowable().getMessage());
     }
     localStringBuilder.append("]");
     return localStringBuilder.toString();
@@ -137,7 +154,7 @@ public final class Notification<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.Notification
  * JD-Core Version:    0.7.0.1
  */

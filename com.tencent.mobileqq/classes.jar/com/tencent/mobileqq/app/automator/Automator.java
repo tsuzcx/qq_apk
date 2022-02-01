@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.app.automator;
 
-import alog;
-import alpd;
-import alpg;
-import amhe;
-import amhg;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import azal;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.profile.CheckUpdateItemInterface;
 import com.tencent.mobileqq.startup.step.StartService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -26,327 +25,348 @@ import java.util.concurrent.TimeUnit;
 import mqq.app.Constants.Key;
 
 public class Automator
-  extends alpd
+  extends BusinessHandler
   implements Runnable
 {
-  private static ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  public int a;
+  private static ThreadPoolExecutor p;
   public long a;
-  public SharedPreferences a;
-  private LinearGroup jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-  private HashMap<Integer, azal> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-  protected LinkedList<AsyncStep> a;
-  public ConcurrentHashMap<String, Long> a;
-  public boolean a;
-  public int b;
-  private LinkedList<LinearGroup> b = new LinkedList();
-  public boolean b;
-  protected int c;
-  public boolean c;
-  private volatile boolean d;
+  public int b = 1;
+  public int c = 0;
+  public SharedPreferences d;
+  public boolean e = false;
+  public boolean f = false;
+  public boolean g = false;
+  protected int h = 0;
+  protected LinkedList<AsyncStep> i = new LinkedList();
+  public ConcurrentHashMap<String, Long> j = new ConcurrentHashMap(16);
+  public QQAppInterface k;
+  public AppInterface l;
+  private volatile boolean m;
+  private LinearGroup n = null;
+  private LinkedList<LinearGroup> o = new LinkedList();
+  private HashMap<Integer, CheckUpdateItemInterface> q = new LinkedHashMap();
   
   public Automator(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(16);
+    this.k = paramQQAppInterface;
+    this.l = paramQQAppInterface;
   }
   
   private void a(LinearGroup paramLinearGroup)
   {
-    boolean bool = true;
-    if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(paramLinearGroup.a)) {
-      this.b.clear();
+    boolean bool3 = StepFactory.d.equals(paramLinearGroup.mName);
+    boolean bool1 = true;
+    boolean bool2 = true;
+    Object localObject;
+    if (bool3)
+    {
+      this.o.clear();
     }
-    do
+    else
     {
-      if (bool) {
-        this.b.add(paramLinearGroup);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "addWaitingMode_Locked " + paramLinearGroup.a + " " + bool);
-      }
-      return;
-      if ((!"{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}".equals(paramLinearGroup.a)) && (!"{15,18,21,58,60,24}".equals(paramLinearGroup.a))) {
-        break;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup == null);
-    bool = d();
-    Iterator localIterator = this.b.iterator();
-    label122:
-    if (localIterator.hasNext())
-    {
-      AsyncStep localAsyncStep = (AsyncStep)localIterator.next();
-      if ((!"{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(localAsyncStep.a)) && (!localAsyncStep.a.equals(paramLinearGroup.a))) {
-        break label240;
-      }
-      bool = false;
-    }
-    label240:
-    for (;;)
-    {
-      break label122;
-      break;
-      if (!"{{4,3,5,6},44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57}".equals(paramLinearGroup.a)) {
-        break;
-      }
-      localIterator = this.b.iterator();
-      bool = true;
-      if (localIterator.hasNext())
+      AsyncStep localAsyncStep;
+      if ((!"{[13,16],19,118,21,58,60,89,23,46,33,120,61,42,92,96,97,99}".equals(paramLinearGroup.mName)) && (!"{15,18,118,21,58,60,24}".equals(paramLinearGroup.mName)))
       {
-        if ("{85,{4,3,5,6},[11,12,14],17,20,21,59,60,22,108,44,45,[100,65,25,10,26,27,28,29,30,32,34,35,39,40,41,42,43,47,48,50,55,107,69,93,70,71,72,73,{91},53,54,61,104,63,77,81,67,80,74,36,37,38,87,88,78,82,84,98,86,102,103,109,110,111,112],57,95,105}".equals(((AsyncStep)localIterator.next()).a)) {
-          bool = false;
-        }
-        for (;;)
+        if (StepFactory.e.equals(paramLinearGroup.mName))
         {
-          break;
+          localObject = this.o.iterator();
+          for (;;)
+          {
+            bool1 = bool2;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            localAsyncStep = (AsyncStep)((Iterator)localObject).next();
+            if (StepFactory.d.equals(localAsyncStep.mName)) {
+              bool2 = false;
+            }
+          }
         }
       }
-      break;
+      else if (this.n != null)
+      {
+        bool1 = i();
+        localObject = this.o.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localAsyncStep = (AsyncStep)((Iterator)localObject).next();
+          if ((StepFactory.d.equals(localAsyncStep.mName)) || (localAsyncStep.mName.equals(paramLinearGroup.mName))) {
+            bool1 = false;
+          }
+        }
+      }
+    }
+    if (bool1) {
+      this.o.add(paramLinearGroup);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addWaitingMode_Locked ");
+      ((StringBuilder)localObject).append(paramLinearGroup.mName);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public int a()
+  public CheckUpdateItemInterface a(int paramInt)
   {
-    LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-    if (localLinearGroup != null) {
-      return amhg.a(localLinearGroup, false);
-    }
-    if (this.d) {
-      return 1;
-    }
-    return -1;
+    return (CheckUpdateItemInterface)this.q.get(Integer.valueOf(paramInt));
   }
   
-  public azal a(int paramInt)
+  public HashMap<Integer, CheckUpdateItemInterface> a()
   {
-    return (azal)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    return this.q;
   }
   
-  public HashMap<Integer, azal> a()
+  public void a(int paramInt, CheckUpdateItemInterface paramCheckUpdateItemInterface)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a()
-  {
-    notifyUI(0, true, null);
-  }
-  
-  public void a(int paramInt, azal paramazal)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramazal);
+    this.q.put(Integer.valueOf(paramInt), paramCheckUpdateItemInterface);
   }
   
   @TargetApi(9)
   public void a(AsyncStep arg1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "start " + ???.a);
-    }
-    LinearGroup localLinearGroup = (LinearGroup)???;
-    synchronized (this.b)
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup == null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("start ");
+      ((StringBuilder)localObject1).append(???.mName);
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = (LinearGroup)???;
+    synchronized (this.o)
+    {
+      if (this.n == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup = localLinearGroup;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "run " + localLinearGroup.a);
-        }
-        if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
+        this.n = ((LinearGroup)localObject1);
+        if (QLog.isColorLevel())
         {
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new amhe(null));
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("run ");
+          localStringBuilder.append(((LinearGroup)localObject1).mName);
+          QLog.d("QQInitHandler", 2, localStringBuilder.toString());
+        }
+        if (p == null)
+        {
+          p = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new Automator.MyThreadFactory(null));
           if (Build.VERSION.SDK_INT > 8) {
-            jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
+            p.allowCoreThreadTimeOut(true);
           }
         }
-        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(this);
-        return;
+        p.execute(this);
       }
-      a(localLinearGroup);
+      else
+      {
+        a((LinearGroup)localObject1);
+      }
+      return;
     }
   }
   
   public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
+    Object localObject = this.d;
     boolean bool = false;
-    if ((this.jdField_a_of_type_AndroidContentSharedPreferences != null) && (paramBoolean1)) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("isFriendlistok", false).commit();
+    if ((localObject != null) && (paramBoolean1)) {
+      ((SharedPreferences)localObject).edit().putBoolean("isFriendlistok", false).commit();
     }
     if (paramLong != 0L) {
-      this.app.getPreferences().edit().putLong(Constants.Key.SvcRegister_timeStamp.toString(), paramLong).commit();
+      this.appRuntime.getPreferences().edit().putLong(Constants.Key.SvcRegister_timeStamp.toString(), paramLong).commit();
     }
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("refreshAllList isListChanged=").append(paramBoolean1).append(",timeStamp=").append(paramLong).append(",accInfoPref!=null ");
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("refreshAllList isListChanged=");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(",timeStamp=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(",accInfoPref!=null ");
+      if (this.d != null) {
         bool = true;
       }
-      QLog.d("QQInitHandler", 2, bool);
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramBoolean1) || (paramBoolean2))
     {
-      localStringBuilder = new StringBuilder().append("{");
-      if (!paramBoolean1) {
-        break label195;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("{");
+      int i1;
+      if (paramBoolean1) {
+        i1 = 7;
+      } else {
+        i1 = 8;
       }
-    }
-    label195:
-    for (int i = 7;; i = 8)
-    {
-      a(amhg.a(this, i + "}"));
-      return;
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append("}");
+      a(StepFactory.a(this, ((StringBuilder)localObject).toString()));
     }
   }
   
   public void a(AsyncStep[] paramArrayOfAsyncStep)
   {
-    for (;;)
+    int i1;
+    label100:
+    synchronized (this.i)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      this.h -= 1;
+      if (this.i.size() > 0)
       {
-        this.c -= 1;
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+        if (paramArrayOfAsyncStep != null)
         {
-          if (paramArrayOfAsyncStep != null)
+          int i2 = paramArrayOfAsyncStep.length;
+          i1 = 0;
+          if (i1 < i2)
           {
-            int j = paramArrayOfAsyncStep.length;
-            i = 0;
-            if (i < j)
-            {
-              AsyncStep localAsyncStep = paramArrayOfAsyncStep[i];
-              if (!this.jdField_a_of_type_JavaUtilLinkedList.remove(localAsyncStep)) {
-                break label94;
-              }
-              b(localAsyncStep);
-              return;
+            AsyncStep localAsyncStep = paramArrayOfAsyncStep[i1];
+            if (!this.i.remove(localAsyncStep)) {
+              break label100;
             }
+            b(localAsyncStep);
+            return;
           }
-          b((AsyncStep)this.jdField_a_of_type_JavaUtilLinkedList.poll());
         }
-        else
-        {
-          return;
-        }
+        b((AsyncStep)this.i.poll());
       }
-      label94:
-      i += 1;
+      else
+      {
+        return;
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    if (!StartService.a) {
-      return false;
-    }
-    LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-    if (localLinearGroup != null) {
-      return amhg.a(localLinearGroup);
-    }
-    return true;
   }
   
   public void b()
   {
-    if (!this.d) {}
-    for (;;)
-    {
-      return;
-      boolean bool1 = true;
-      boolean bool2 = true;
-      LinkedList localLinkedList;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup != null)
-      {
-        localLinkedList = this.b;
-        bool1 = bool2;
-      }
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup.a(4);
-          bool1 = d();
-        }
-        if (!bool1) {
-          continue;
-        }
-        a(amhg.a(this, "{[13,16],19,21,58,60,89,23,46,33,61,42,92,96,97,99}"));
-        return;
-      }
-      finally {}
-    }
+    notifyUI(0, true, null);
   }
   
   @TargetApi(9)
   public void b(AsyncStep paramAsyncStep)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.i)
     {
-      if (this.c < 3)
+      if (this.h < 3)
       {
-        this.c += 1;
-        if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
+        this.h += 1;
+        if (p == null)
         {
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new amhe(null));
+          p = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new Automator.MyThreadFactory(null));
           if (Build.VERSION.SDK_INT > 8) {
-            jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
+            p.allowCoreThreadTimeOut(true);
           }
         }
-        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramAsyncStep);
-        return;
+        p.execute(paramAsyncStep);
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.add(paramAsyncStep);
+      else
+      {
+        this.i.add(paramAsyncStep);
+      }
+      return;
     }
-  }
-  
-  public boolean b()
-  {
-    LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-    if (localLinearGroup != null) {
-      if (amhg.a(localLinearGroup, true) != 0) {}
-    }
-    while (!this.d)
-    {
-      return true;
-      return false;
-    }
-    return false;
   }
   
   public void c()
   {
-    a(amhg.a(this, "{15,18,21,58,60,24}"));
-  }
-  
-  public boolean c()
-  {
-    LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-    if (localLinearGroup != null) {
-      return amhg.b(localLinearGroup);
+    if (!this.m) {
+      return;
     }
-    return true;
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (this.n != null)
+    {
+      LinkedList localLinkedList = this.o;
+      bool1 = bool2;
+      try
+      {
+        if (this.n != null)
+        {
+          this.n.setResult(4);
+          bool1 = i();
+        }
+      }
+      finally {}
+    }
+    if (bool1) {
+      a(StepFactory.a(this, "{[13,16],19,118,21,58,60,89,23,46,33,120,61,42,92,96,97,99}"));
+    }
   }
   
   public void d()
   {
-    notifyUI(4, true, null);
+    a(StepFactory.a(this, "{15,18,118,21,58,60,24}"));
   }
   
-  public boolean d()
+  public boolean e()
   {
-    LinearGroup localLinearGroup = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
+    if (!StartService.a) {
+      return false;
+    }
+    LinearGroup localLinearGroup = this.n;
     if (localLinearGroup != null) {
-      return amhg.c(localLinearGroup);
+      return StepFactory.a(localLinearGroup);
     }
     return true;
   }
   
-  public Class<? extends alpg> observerClass()
+  public int f()
   {
-    return alog.class;
+    LinearGroup localLinearGroup = this.n;
+    if (localLinearGroup != null) {
+      return StepFactory.a(localLinearGroup, false);
+    }
+    if (this.m) {
+      return 1;
+    }
+    return -1;
+  }
+  
+  public boolean g()
+  {
+    LinearGroup localLinearGroup = this.n;
+    if (localLinearGroup != null) {
+      return StepFactory.a(localLinearGroup, true) == 0;
+    }
+    return this.m ^ true;
+  }
+  
+  public boolean h()
+  {
+    LinearGroup localLinearGroup = this.n;
+    if (localLinearGroup != null) {
+      return StepFactory.b(localLinearGroup);
+    }
+    return true;
+  }
+  
+  public boolean i()
+  {
+    LinearGroup localLinearGroup = this.n;
+    if (localLinearGroup != null) {
+      return StepFactory.c(localLinearGroup);
+    }
+    return true;
+  }
+  
+  public boolean j()
+  {
+    LinearGroup localLinearGroup = this.n;
+    if (localLinearGroup != null) {
+      return StepFactory.d(localLinearGroup);
+    }
+    return true;
+  }
+  
+  public void k()
+  {
+    notifyUI(4, true, null);
+  }
+  
+  protected Class<? extends BusinessObserver> observerClass()
+  {
+    return AutomatorObserver.class;
   }
   
   public void onDestroy()
@@ -354,23 +374,21 @@ public class Automator
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "onDestroy");
     }
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.i)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      this.c = 0;
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup != null)
+      this.i.clear();
+      this.h = 0;
+      synchronized (this.o)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup.a(8);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup = null;
+        this.o.clear();
+        if (this.n != null)
+        {
+          this.n.setResult(8);
+          this.n = null;
+        }
+        this.a = 0L;
+        return;
       }
-      this.jdField_a_of_type_Long = 0L;
-      return;
-      localObject1 = finally;
-      throw localObject1;
     }
   }
   
@@ -381,43 +399,44 @@ public class Automator
   
   public void run()
   {
-    int i;
-    if (!this.d) {
-      i = 0;
+    if (!this.m)
+    {
+      int i1 = 0;
+      synchronized (this.o)
+      {
+        if (!this.m)
+        {
+          i1 = 1;
+          this.m = true;
+        }
+        if (i1 != 0) {
+          StepFactory.a(this, "2").run();
+        }
+      }
     }
     for (;;)
     {
-      synchronized (this.b)
-      {
-        if (!this.d)
-        {
-          i = 1;
-          this.d = true;
-        }
-        if (i != 0) {
-          amhg.a(this, "2").run();
-        }
-        ??? = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup;
-        if (??? != null) {
-          ((AsyncStep)???).run();
-        }
+      ??? = this.n;
+      if (??? != null) {
+        ((AsyncStep)???).run();
       }
-      synchronized (this.b)
+      synchronized (this.o)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup = ((LinearGroup)this.b.poll());
-        if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup == null)
-        {
+        this.n = ((LinearGroup)this.o.poll());
+        if (this.n == null) {
           return;
-          localObject2 = finally;
-          throw localObject2;
         }
       }
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.Automator
  * JD-Core Version:    0.7.0.1
  */

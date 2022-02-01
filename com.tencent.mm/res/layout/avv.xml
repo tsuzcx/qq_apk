@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ell" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_vertical" android:id="@id/eik" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/df" android:text="" android:includeFontPadding="false" android:lineSpacingExtra="3.0dip" />
+</FrameLayout>

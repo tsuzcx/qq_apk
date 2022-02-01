@@ -19,12 +19,12 @@ import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.remote.SimpleAccount;
+import dla;
 import dlb;
-import dlc;
-import dle;
-import dli;
+import dld;
+import dlh;
+import dlk;
 import dll;
-import dlm;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -39,19 +39,19 @@ public class SubAccountBindActivity
   private static final String jdField_a_of_type_JavaLangString = "Q.subaccount.SubAccountBindActivity";
   public static final int b = 1990;
   public static final int c = 2001;
-  Handler jdField_a_of_type_AndroidOsHandler = new dlb(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dli(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new dla(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dlh(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dlm(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dlc(this);
-  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dle(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dll(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dlb(this);
+  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dld(this);
   private List jdField_a_of_type_JavaUtilList;
   View.OnClickListener b;
   private boolean c = false;
   
   public SubAccountBindActivity()
   {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dll(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dlk(this);
   }
   
   private void h()

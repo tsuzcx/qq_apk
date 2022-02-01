@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/blg" android:background="@color/a6q" android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/gg" android:paddingLeft="@dimen/i6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:gravity="center" android:layout_width="@dimen/gv" android:layout_height="@dimen/gv" android:progressDrawable="@drawable/z1" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/blh" android:paddingLeft="@dimen/m1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bjy" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/aca" android:paddingBottom="@dimen/ig" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="2.0dip" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/ac_" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
 </LinearLayout>

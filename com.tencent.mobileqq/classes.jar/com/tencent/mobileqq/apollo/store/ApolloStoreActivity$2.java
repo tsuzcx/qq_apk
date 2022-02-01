@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aleh;
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.web.ipc.IStoreAvatar2D.QueryMineRedInfoCallback;
 
 class ApolloStoreActivity$2
-  implements Runnable
+  implements IStoreAvatar2D.QueryMineRedInfoCallback
 {
-  ApolloStoreActivity$2(ApolloStoreActivity paramApolloStoreActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  ApolloStoreActivity$2(ApolloStoreActivity paramApolloStoreActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (ApolloStoreActivity.a(this.this$0).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    if (paramInt == 1) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.2
  * JD-Core Version:    0.7.0.1
  */

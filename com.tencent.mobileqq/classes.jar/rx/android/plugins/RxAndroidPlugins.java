@@ -23,9 +23,12 @@ public final class RxAndroidPlugins
   
   public void registerSchedulersHook(RxAndroidSchedulersHook paramRxAndroidSchedulersHook)
   {
-    if (!this.schedulersHook.compareAndSet(null, paramRxAndroidSchedulersHook)) {
-      throw new IllegalStateException("Another strategy was already registered: " + this.schedulersHook.get());
+    if (this.schedulersHook.compareAndSet(null, paramRxAndroidSchedulersHook)) {
+      return;
     }
+    paramRxAndroidSchedulersHook = new StringBuilder("Another strategy was already registered: ");
+    paramRxAndroidSchedulersHook.append(this.schedulersHook.get());
+    throw new IllegalStateException(paramRxAndroidSchedulersHook.toString());
   }
   
   @Beta
@@ -36,7 +39,7 @@ public final class RxAndroidPlugins
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.android.plugins.RxAndroidPlugins
  * JD-Core Version:    0.7.0.1
  */

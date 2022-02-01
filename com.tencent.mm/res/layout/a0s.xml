@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/bh7" android:background="@color/al2" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/bws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="get challenge" />
-    <Button android:id="@id/bwt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="regen and upload ask" />
-    <Button android:id="@id/bwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="regen and upload pay auth key" />
-</LinearLayout>
+    <include android:id="@id/bh5" layout="@layout/a0l" />
+    <androidx.recyclerview.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/bh6" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bh5" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/lpi" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</RelativeLayout>

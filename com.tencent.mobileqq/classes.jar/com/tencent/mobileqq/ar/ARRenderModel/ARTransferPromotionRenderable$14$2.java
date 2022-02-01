@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amtd;
-import amvq;
-import bhsl;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 class ARTransferPromotionRenderable$14$2
   implements Runnable
@@ -12,19 +11,22 @@ class ARTransferPromotionRenderable$14$2
   
   public void run()
   {
-    if ((this.a.this$0.a != null) && (amvq.a(this.a.this$0) != null) && (amvq.a(this.a.this$0).a()))
+    if ((this.a.this$0.c != null) && (ARTransferPromotionRenderable.a(this.a.this$0) != null) && (ARTransferPromotionRenderable.a(this.a.this$0).c()))
     {
-      long l = amvq.a(this.a.this$0).a();
-      if (amvq.a(this.a.this$0) != null) {
-        this.a.this$0.a.postDelayed(amvq.a(this.a.this$0), 4600L - l);
+      long l = ARTransferPromotionRenderable.a(this.a.this$0).e();
+      if (ARTransferPromotionRenderable.q(this.a.this$0) != null) {
+        this.a.this$0.c.postDelayed(ARTransferPromotionRenderable.x(this.a.this$0), 4600L - l);
       }
-      QLog.d("ARTransferPromotionRenderable", 2, "start Post  mRepeatCheckRunnable " + l);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start Post  mRepeatCheckRunnable ");
+      localStringBuilder.append(l);
+      QLog.d("ARTransferPromotionRenderable", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.14.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="16" parent="@style/ae0" />
+    <style name="1c" parent="@style/ae1" />
+    <style name="ae0" parent="@style/adl">
+        <item name="0o">?android:actionModeShareDrawable</item>
+        <item name="a1l">?android:editTextBackground</item>
+    </style>
+    <style name="ae1" parent="@style/adn">
+        <item name="0o">?android:actionModeShareDrawable</item>
+        <item name="a1l">?android:editTextBackground</item>
+    </style>
+</resources>

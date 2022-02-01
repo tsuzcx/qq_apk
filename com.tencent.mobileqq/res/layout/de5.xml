@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/gwm" android:layout_width="22.0dip" android:layout_height="22.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.timi.game.ui.widget.rc.RCImageView android:id="@id/nvq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" />
+</FrameLayout>

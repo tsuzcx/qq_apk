@@ -1,379 +1,150 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.net.Uri;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.b.d;
-import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.cku;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.au.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.z;
+import com.tencent.mm.protocal.protobuf.dre;
+import com.tencent.mm.protocal.protobuf.drf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
 public final class an
 {
-  private static an.a uKh;
+  public static drf Wpx;
   
-  static
+  public static void biA(String paramString)
   {
-    AppMethodBeat.i(124241);
-    uKh = new an.a();
-    AppMethodBeat.o(124241);
-  }
-  
-  public static void A(int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(124223);
-    d(paramInt1, paramInt2, paramString, false);
-    AppMethodBeat.o(124223);
-  }
-  
-  public static void B(int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(124234);
-    a(paramInt1, paramInt2, 0, 0, paramString);
-    AppMethodBeat.o(124234);
-  }
-  
-  public static void Ju(int paramInt)
-  {
-    AppMethodBeat.i(124215);
-    uKh.scene = paramInt;
-    uKh.uJc = 1;
-    uKh.uKi = System.currentTimeMillis();
-    uKh.uKj = 0L;
-    uKh.oTu = System.currentTimeMillis();
-    uKh.cew = 0L;
-    uKh.quM = false;
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "initReport %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
-    AppMethodBeat.o(124215);
-  }
-  
-  public static void Jv(int paramInt)
-  {
-    AppMethodBeat.i(124220);
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchVisit %d", new Object[] { Integer.valueOf(paramInt) });
-    com.tencent.mm.plugin.report.e.qrI.e(12041, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(aa.Jf(0)) });
-    AppMethodBeat.o(124220);
-  }
-  
-  public static final void Jw(int paramInt)
-  {
-    AppMethodBeat.i(124231);
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "reportIdKey649 %d", new Object[] { Integer.valueOf(paramInt) });
-    com.tencent.mm.plugin.report.e.qrI.idkeyStat(649L, paramInt, 1L, true);
-    AppMethodBeat.o(124231);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
-  {
-    AppMethodBeat.i(124236);
-    if (paramInt1 == 21) {}
-    for (int i = aa.Jf(1);; i = aa.Jf(0))
+    AppMethodBeat.i(117732);
+    if (b.OE((String)h.baE().ban().d(274436, null)))
     {
-      com.tencent.mm.plugin.report.e.qrI.e(14457, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString });
-      AppMethodBeat.o(124236);
+      AppMethodBeat.o(117732);
       return;
     }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5)
-  {
-    AppMethodBeat.i(124221);
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchGuideDisplay %d %d %s %d %d %s %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString2, Integer.valueOf(paramInt5) });
-    com.tencent.mm.plugin.report.e.qrI.e(12098, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(aa.Jf(0)), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString2, Integer.valueOf(paramInt5) });
-    AppMethodBeat.o(124221);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(151924);
-    com.tencent.mm.plugin.report.e.qrI.e(13810, new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(paramInt4) });
-    AppMethodBeat.o(151924);
-  }
-  
-  public static void a(int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    AppMethodBeat.i(124214);
-    int i;
-    if (paramBoolean1) {
-      i = 3;
+    if (!ab.IS(paramString))
+    {
+      AppMethodBeat.o(117732);
+      return;
     }
+    if (Wpx == null) {
+      iqf();
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = null;
+    int i = 0;
+    Object localObject2;
+    if (i < Wpx.vgO.size())
+    {
+      localObject2 = (dre)Wpx.vgO.get(i);
+      long l2 = (l1 - ((dre)localObject2).aaXe) / 86400000L;
+      ((dre)localObject2).aaXd *= Math.pow(0.98D, l2);
+      ((dre)localObject2).aaXe = (l2 * 86400000L + ((dre)localObject2).aaXe);
+      Log.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((dre)localObject2).aaXd), Long.valueOf(((dre)localObject2).aaXe), ((dre)localObject2).Username });
+      if (!((dre)localObject2).Username.equals(paramString)) {
+        break label479;
+      }
+      localObject1 = localObject2;
+    }
+    label479:
     for (;;)
     {
-      com.tencent.mm.plugin.report.e.qrI.e(12042, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(paramInt2), bo.bf(paramString, "").replace(",", " ") });
-      AppMethodBeat.o(124214);
-      return;
-      if (paramBoolean2) {
-        i = 2;
-      } else {
-        i = 1;
-      }
-    }
-  }
-  
-  public static void a(cku paramcku, int paramInt1, int paramInt2, int paramInt3, long paramLong, String paramString)
-  {
-    AppMethodBeat.i(124238);
-    cku localcku = paramcku;
-    if (paramcku == null)
-    {
-      localcku = new cku();
-      localcku.cDC = "";
-      localcku.xUH = 0L;
-    }
-    paramcku = new StringBuffer();
-    paramcku.append("reddotreport=1");
-    paramcku.append("&reddotid=");
-    paramcku.append(bo.nullAsNil(localcku.cDC));
-    paramcku.append("&reddotts=");
-    paramcku.append(localcku.xUH);
-    paramcku.append("&nettype=");
-    paramcku.append(aa.bXn());
-    paramcku.append("&optype=");
-    paramcku.append(paramInt1);
-    paramcku.append("&reddottype=");
-    paramcku.append(paramInt2);
-    paramcku.append("&reddotcnt=");
-    paramcku.append(paramInt3);
-    paramcku.append("&reddotconsumets=");
-    paramcku.append(paramLong);
-    paramcku.append("&notshowreason=");
-    paramcku.append(paramString);
-    paramcku.append("&reddotseq=");
-    paramcku.append(localcku.fQD);
-    if ((paramInt1 == 100) || (paramInt1 == 101) || (paramInt1 == 102) || (paramInt1 == 108)) {
-      if (bo.isNullOrNil((String)g.RL().Ru().get(68377, null))) {
-        break label354;
-      }
-    }
-    label354:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (n.raS != null) {}
-      for (paramInt2 = n.raS.bbZ();; paramInt2 = 0)
+      i += 1;
+      break;
+      if (localObject1 == null)
       {
-        if (paramInt2 > 0) {
-          paramcku.append("&snsreddottype=2&snsreddotcnt=").append(paramInt2);
-        }
-        for (;;)
-        {
-          ab.i("MicroMsg.TopStory", "reportTopStoryRedDot 16399 %s", new Object[] { paramcku.toString() });
-          paramString = new buo();
-          paramString.xHP = paramcku.toString();
-          paramcku = new w(paramString);
-          g.Rc().a(paramcku, 0);
-          AppMethodBeat.o(124238);
-          return;
-          if (paramInt1 > 0) {
-            paramcku.append("&snsreddottype=1&snsreddotcnt=0");
-          } else {
-            paramcku.append("&snsreddottype=0&snsreddotcnt=0");
-          }
-        }
+        localObject1 = new dre();
+        ((dre)localObject1).aaXd = 1.0D;
+        ((dre)localObject1).aaXe = l1;
+        ((dre)localObject1).Username = paramString;
+        Wpx.vgO.add(localObject1);
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
       }
-    }
-  }
-  
-  public static void a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, int paramInt3)
-  {
-    AppMethodBeat.i(124240);
-    if (!bo.isNullOrNil((String)g.RL().Ru().get(68377, null))) {}
-    for (int j = 1;; j = 0)
-    {
-      if (n.raS != null) {}
-      for (int i = n.raS.bbZ();; i = 0)
+      for (;;)
       {
-        if (i > 0) {
-          j = 2;
-        }
-        for (;;)
+        Collections.sort(Wpx.vgO, new Comparator() {});
+        i = Wpx.vgO.size() - 1;
+        while ((i < Wpx.vgO.size()) && (Wpx.vgO.size() > 8))
         {
-          paramString1 = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { paramString1, Long.valueOf(paramLong), aa.bXn(), Integer.valueOf(201), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(0L), paramString2, Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt3) });
-          ab.i("MicroMsg.WebSearch.WebSearchReportLogic", "reportTopStoryRedDotKv 16654: ".concat(String.valueOf(paramString1)));
-          com.tencent.mm.plugin.report.e.qrI.kvStat(16654, paramString1);
-          AppMethodBeat.o(124240);
-          return;
-          if (j > 0)
-          {
-            i = 0;
-            j = 1;
+          if (((dre)Wpx.vgO.get(i)).aaXd < 0.5D) {
+            Wpx.vgO.remove(i);
           }
-          else
-          {
-            i = 0;
-            j = 0;
-          }
+          i += 1;
         }
+        ((dre)localObject1).aaXd += 1.0D;
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((dre)localObject1).aaXd) });
+      }
+      paramString = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
+      try
+      {
+        localObject1 = cwe();
+        localObject2 = Base64.encodeToString(Wpx.toByteArray(), 0);
+        paramString.edit().putString((String)localObject1, (String)localObject2).commit();
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
+        AppMethodBeat.o(117732);
+        return;
+      }
+      catch (IOException paramString)
+      {
+        AppMethodBeat.o(117732);
+        return;
       }
     }
   }
   
-  public static void a(String paramString1, String paramString2, long paramLong, String paramString3)
+  public static String cwe()
   {
-    AppMethodBeat.i(124228);
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchLocalPageExposure:");
-    com.tencent.mm.plugin.report.e.qrI.e(14663, new Object[] { Uri.encode(paramString1), paramString2, Long.valueOf(paramLong), paramString3, Integer.valueOf(3) });
-    AppMethodBeat.o(124228);
+    AppMethodBeat.i(117731);
+    String str = "key_pb_most_search_biz_list" + z.bAM();
+    AppMethodBeat.o(117731);
+    return str;
   }
   
-  public static final void agz(String paramString)
+  public static drf iqf()
   {
-    AppMethodBeat.i(124230);
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "reportWebSuggestClick %s", new Object[] { paramString });
-    com.tencent.mm.plugin.report.e.qrI.kvStat(12721, paramString);
-    AppMethodBeat.o(124230);
-  }
-  
-  public static void am(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(124235);
-    a(paramInt1, 3, paramInt2, paramInt3, "");
-    AppMethodBeat.o(124235);
-  }
-  
-  public static void au(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(124237);
-    com.tencent.mm.plugin.report.e.qrI.e(14752, new Object[] { Integer.valueOf(1), paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(124237);
-  }
-  
-  public static void b(int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(124239);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("recnondocreport=1");
-    localStringBuffer.append("&type=51");
-    localStringBuffer.append("&content=");
-    paramString1 = localStringBuffer.append(paramInt1).append("|").append(paramInt2).append("|").append(bo.nullAsNil(paramString1)).append("|");
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    AppMethodBeat.i(117730);
+    Object localObject;
+    if (Wpx == null)
     {
-      paramString1.append(paramInt1);
-      localStringBuffer.append("&searchid=");
-      localStringBuffer.append(bo.nullAsNil(paramString2));
-      ab.i("MicroMsg.TopStory", "reportTopStoryRedDot 14791 %s", new Object[] { localStringBuffer.toString() });
-      paramString1 = new buo();
-      paramString1.xHP = localStringBuffer.toString();
-      paramString1 = new w(paramString1);
-      g.Rc().a(paramString1, 0);
-      AppMethodBeat.o(124239);
-      return;
+      localObject = cwe();
+      Wpx = new drf();
     }
-  }
-  
-  public static void by(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(124213);
-    com.tencent.mm.plugin.report.e.qrI.kvStat(paramInt, paramString);
-    AppMethodBeat.o(124213);
-  }
-  
-  public static void bz(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(124225);
-    com.tencent.mm.plugin.report.e.qrI.e(12070, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(aa.Jf(0)), paramString, Integer.valueOf(4), Integer.valueOf(0), "", Integer.valueOf(1), Integer.valueOf(0) });
-    AppMethodBeat.o(124225);
-  }
-  
-  public static void cZH()
-  {
-    AppMethodBeat.i(124216);
-    uKh.uKi = System.currentTimeMillis();
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "startH5Report %s", new Object[] { Long.valueOf(uKh.uKi) });
-    AppMethodBeat.o(124216);
-  }
-  
-  public static void cZI()
-  {
-    AppMethodBeat.i(124217);
-    an.a locala = uKh;
-    locala.uKj += System.currentTimeMillis() - uKh.uKi;
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "stopH5Report %s", new Object[] { Long.valueOf(uKh.uKj) });
-    AppMethodBeat.o(124217);
-  }
-  
-  public static void cZJ()
-  {
-    AppMethodBeat.i(124218);
-    an.a locala = uKh;
-    locala.cew += System.currentTimeMillis() - uKh.oTu;
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "stopTotalReport %s", new Object[] { Long.valueOf(uKh.cew) });
-    AppMethodBeat.o(124218);
-  }
-  
-  public static void cZK()
-  {
-    AppMethodBeat.i(124219);
-    an.a locala = uKh;
-    if (!locala.quM)
+    try
     {
-      com.tencent.mm.plugin.report.e.qrI.e(12044, new Object[] { Integer.valueOf(locala.scene), Integer.valueOf(locala.uJc), Long.valueOf(locala.uKj / 1000L), Long.valueOf(locala.cew / 1000L) });
-      locala.quM = true;
+      localObject = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
+      if (!Util.isNullOrNil((String)localObject))
+      {
+        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+        Wpx.parseFrom((byte[])localObject);
+      }
+      label67:
+      if (b.OE((String)h.baE().ban().d(274436, null))) {
+        Wpx.vgO.clear();
+      }
+      localObject = Wpx;
+      AppMethodBeat.o(117730);
+      return localObject;
     }
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "reportTime");
-    AppMethodBeat.o(124219);
-  }
-  
-  public static void d(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    int i = 1;
-    AppMethodBeat.i(124224);
-    com.tencent.mm.plugin.report.e locale = com.tencent.mm.plugin.report.e.qrI;
-    if (paramBoolean) {}
-    for (;;)
+    catch (Exception localException)
     {
-      locale.e(12845, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
-      AppMethodBeat.o(124224);
-      return;
-      i = 0;
+      break label67;
     }
-  }
-  
-  public static void e(int paramInt1, String paramString1, String paramString2, int paramInt2)
-  {
-    AppMethodBeat.i(151923);
-    com.tencent.mm.plugin.report.e.qrI.e(13809, new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, Integer.valueOf(0), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(151923);
-  }
-  
-  public static void f(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(124227);
-    ab.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchLocalPageClick %s %s %d %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), paramString3 });
-    com.tencent.mm.plugin.report.e.qrI.e(14657, new Object[] { Uri.encode(paramString1), paramString2, Integer.valueOf(paramInt), paramString3, Integer.valueOf(3) });
-    AppMethodBeat.o(124227);
-  }
-  
-  public static void gF(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(124233);
-    B(paramInt1, paramInt2, "");
-    AppMethodBeat.o(124233);
-  }
-  
-  public static void m(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(124222);
-    com.tencent.mm.plugin.report.e.qrI.e(12639, new Object[] { bo.bf(paramString, "").replace(",", " "), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(paramInt3) });
-    AppMethodBeat.o(124222);
-  }
-  
-  public static final void reportIdKey649ForLook(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(124232);
-    if (paramInt1 == 21) {
-      com.tencent.mm.plugin.report.e.qrI.idkeyStat(649L, paramInt2, 1L, true);
-    }
-    AppMethodBeat.o(124232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.an
  * JD-Core Version:    0.7.0.1
  */

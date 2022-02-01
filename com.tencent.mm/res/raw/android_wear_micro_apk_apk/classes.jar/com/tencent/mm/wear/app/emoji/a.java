@@ -23,29 +23,29 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static final boolean abr;
-  private static a abs;
-  private SparseArray<com.tencent.mm.g.b> abA;
-  private SparseArray<com.tencent.mm.g.b> abB;
-  private SparseArray<SparseArray<com.tencent.mm.g.b>> abC;
-  private SparseArray<String> abD;
-  private com.tencent.mm.sdk.platformtools.h<Integer, Bitmap> abE;
-  private boolean abF;
-  private LinkedList<com.tencent.mm.g.b> abG;
-  private int abt;
-  private int abu;
-  private int abv;
-  private int abw;
-  private long abx;
-  private com.tencent.mm.g.a aby;
-  private SparseArray<com.tencent.mm.g.b> abz;
+  private static final boolean aeS;
+  private static a aeT;
+  private int aeU;
+  private int aeV;
+  private int aeW;
+  private int aeX;
+  private long aeY;
+  private com.tencent.mm.g.a aeZ;
+  private SparseArray<com.tencent.mm.g.b> afa;
+  private SparseArray<com.tencent.mm.g.b> afb;
+  private SparseArray<com.tencent.mm.g.b> afc;
+  private SparseArray<SparseArray<com.tencent.mm.g.b>> afd;
+  private SparseArray<String> afe;
+  private com.tencent.mm.sdk.platformtools.h<Integer, Bitmap> aff;
+  private boolean afg;
+  private LinkedList<com.tencent.mm.g.b> afh;
   
   static
   {
     if (Build.VERSION.SDK_INT < 19) {}
     for (boolean bool = true;; bool = false)
     {
-      abr = bool;
+      aeS = bool;
       return;
     }
   }
@@ -58,47 +58,47 @@ public final class a
     //   1: invokespecial 49	java/lang/Object:<init>	()V
     //   4: aload_0
     //   5: iconst_0
-    //   6: putfield 51	com/tencent/mm/wear/app/emoji/a:abt	I
+    //   6: putfield 51	com/tencent/mm/wear/app/emoji/a:aeU	I
     //   9: aload_0
     //   10: lconst_0
-    //   11: putfield 53	com/tencent/mm/wear/app/emoji/a:abx	J
+    //   11: putfield 53	com/tencent/mm/wear/app/emoji/a:aeY	J
     //   14: aload_0
     //   15: new 55	com/tencent/mm/g/a
     //   18: dup
     //   19: invokespecial 56	com/tencent/mm/g/a:<init>	()V
-    //   22: putfield 58	com/tencent/mm/wear/app/emoji/a:aby	Lcom/tencent/mm/g/a;
+    //   22: putfield 58	com/tencent/mm/wear/app/emoji/a:aeZ	Lcom/tencent/mm/g/a;
     //   25: aload_0
     //   26: new 60	android/util/SparseArray
     //   29: dup
     //   30: invokespecial 61	android/util/SparseArray:<init>	()V
-    //   33: putfield 63	com/tencent/mm/wear/app/emoji/a:abz	Landroid/util/SparseArray;
+    //   33: putfield 63	com/tencent/mm/wear/app/emoji/a:afa	Landroid/util/SparseArray;
     //   36: aload_0
     //   37: new 60	android/util/SparseArray
     //   40: dup
     //   41: invokespecial 61	android/util/SparseArray:<init>	()V
-    //   44: putfield 65	com/tencent/mm/wear/app/emoji/a:abA	Landroid/util/SparseArray;
+    //   44: putfield 65	com/tencent/mm/wear/app/emoji/a:afb	Landroid/util/SparseArray;
     //   47: aload_0
     //   48: new 60	android/util/SparseArray
     //   51: dup
     //   52: invokespecial 61	android/util/SparseArray:<init>	()V
-    //   55: putfield 67	com/tencent/mm/wear/app/emoji/a:abB	Landroid/util/SparseArray;
+    //   55: putfield 67	com/tencent/mm/wear/app/emoji/a:afc	Landroid/util/SparseArray;
     //   58: aload_0
     //   59: new 60	android/util/SparseArray
     //   62: dup
     //   63: invokespecial 61	android/util/SparseArray:<init>	()V
-    //   66: putfield 69	com/tencent/mm/wear/app/emoji/a:abC	Landroid/util/SparseArray;
+    //   66: putfield 69	com/tencent/mm/wear/app/emoji/a:afd	Landroid/util/SparseArray;
     //   69: aload_0
     //   70: aconst_null
-    //   71: putfield 71	com/tencent/mm/wear/app/emoji/a:abD	Landroid/util/SparseArray;
+    //   71: putfield 71	com/tencent/mm/wear/app/emoji/a:afe	Landroid/util/SparseArray;
     //   74: aload_0
     //   75: new 73	com/tencent/mm/sdk/platformtools/h
     //   78: dup
     //   79: sipush 200
     //   82: invokespecial 76	com/tencent/mm/sdk/platformtools/h:<init>	(I)V
-    //   85: putfield 78	com/tencent/mm/wear/app/emoji/a:abE	Lcom/tencent/mm/sdk/platformtools/h;
+    //   85: putfield 78	com/tencent/mm/wear/app/emoji/a:aff	Lcom/tencent/mm/sdk/platformtools/h;
     //   88: aload_0
     //   89: iconst_0
-    //   90: putfield 80	com/tencent/mm/wear/app/emoji/a:abF	Z
+    //   90: putfield 80	com/tencent/mm/wear/app/emoji/a:afg	Z
     //   93: new 82	java/io/DataInputStream
     //   96: dup
     //   97: aload_1
@@ -117,35 +117,35 @@ public final class a
     //   124: aload_0
     //   125: aload 5
     //   127: invokevirtual 100	java/io/DataInputStream:readInt	()I
-    //   130: putfield 102	com/tencent/mm/wear/app/emoji/a:abw	I
+    //   130: putfield 102	com/tencent/mm/wear/app/emoji/a:aeX	I
     //   133: aload 5
     //   135: astore 4
     //   137: aload_0
     //   138: aload 5
     //   140: invokevirtual 105	java/io/DataInputStream:readLong	()J
-    //   143: putfield 53	com/tencent/mm/wear/app/emoji/a:abx	J
+    //   143: putfield 53	com/tencent/mm/wear/app/emoji/a:aeY	J
     //   146: aload 5
     //   148: astore 4
     //   150: aload_0
     //   151: aload 5
     //   153: invokevirtual 100	java/io/DataInputStream:readInt	()I
-    //   156: putfield 107	com/tencent/mm/wear/app/emoji/a:abu	I
+    //   156: putfield 107	com/tencent/mm/wear/app/emoji/a:aeV	I
     //   159: aload 5
     //   161: astore 4
     //   163: aload_0
     //   164: aload_0
-    //   165: getfield 107	com/tencent/mm/wear/app/emoji/a:abu	I
+    //   165: getfield 107	com/tencent/mm/wear/app/emoji/a:aeV	I
     //   168: iconst_4
     //   169: iadd
     //   170: bipush 8
     //   172: iadd
     //   173: iconst_4
     //   174: iadd
-    //   175: putfield 109	com/tencent/mm/wear/app/emoji/a:abv	I
+    //   175: putfield 109	com/tencent/mm/wear/app/emoji/a:aeW	I
     //   178: aload 5
     //   180: astore 4
     //   182: aload_0
-    //   183: getfield 107	com/tencent/mm/wear/app/emoji/a:abu	I
+    //   183: getfield 107	com/tencent/mm/wear/app/emoji/a:aeV	I
     //   186: newarray byte
     //   188: astore 7
     //   190: aload 5
@@ -157,25 +157,25 @@ public final class a
     //   202: aload 5
     //   204: astore 4
     //   206: aload_0
-    //   207: getfield 58	com/tencent/mm/wear/app/emoji/a:aby	Lcom/tencent/mm/g/a;
+    //   207: getfield 58	com/tencent/mm/wear/app/emoji/a:aeZ	Lcom/tencent/mm/g/a;
     //   210: aload 7
     //   212: invokevirtual 117	com/tencent/mm/g/a:h	([B)Lcom/tencent/mm/d/a;
     //   215: pop
     //   216: aload 5
     //   218: astore 4
     //   220: aload_0
-    //   221: invokespecial 120	com/tencent/mm/wear/app/emoji/a:my	()V
+    //   221: invokespecial 120	com/tencent/mm/wear/app/emoji/a:nk	()V
     //   224: aload 5
     //   226: astore 4
     //   228: aload_0
     //   229: iconst_1
-    //   230: putfield 80	com/tencent/mm/wear/app/emoji/a:abF	Z
+    //   230: putfield 80	com/tencent/mm/wear/app/emoji/a:afg	Z
     //   233: aload 5
     //   235: astore 4
     //   237: aload_0
     //   238: aload 6
-    //   240: invokestatic 126	com/tencent/mm/f/a:x	(Landroid/content/Context;)I
-    //   243: putfield 51	com/tencent/mm/wear/app/emoji/a:abt	I
+    //   240: invokestatic 126	com/tencent/mm/f/a:y	(Landroid/content/Context;)I
+    //   243: putfield 51	com/tencent/mm/wear/app/emoji/a:aeU	I
     //   246: aload 5
     //   248: astore 4
     //   250: ldc 128
@@ -192,7 +192,7 @@ public final class a
     //   269: dup
     //   270: iconst_1
     //   271: aload_0
-    //   272: getfield 102	com/tencent/mm/wear/app/emoji/a:abw	I
+    //   272: getfield 102	com/tencent/mm/wear/app/emoji/a:aeX	I
     //   275: invokestatic 141	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   278: aastore
     //   279: invokestatic 147	com/tencent/mm/wear/a/c/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -284,11 +284,11 @@ public final class a
     }
     try
     {
-      Object localObject = (Bitmap)this.abE.get(Integer.valueOf(paramb.Yx));
+      Object localObject = (Bitmap)this.aff.get(Integer.valueOf(paramb.abX));
       if (localObject != null) {
         return new BitmapDrawable(MMApplication.getContext().getResources(), (Bitmap)localObject);
       }
-      localObject = com.tencent.mm.wear.a.f.c.e(new File(com.tencent.mm.wear.app.b.h.mh(), "color_emoji_1435827814287").getAbsolutePath(), paramb.Yx + this.abv, paramb.size);
+      localObject = com.tencent.mm.wear.a.f.c.e(new File(com.tencent.mm.wear.app.b.h.mT(), "color_emoji_1435827814287").getAbsolutePath(), paramb.abX + this.aeW, paramb.size);
       if (localObject != null)
       {
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -297,7 +297,7 @@ public final class a
         if (localObject != null)
         {
           ((Bitmap)localObject).setDensity(240);
-          this.abE.put(Integer.valueOf(paramb.Yx), localObject);
+          this.aff.put(Integer.valueOf(paramb.abX), localObject);
           paramb = new BitmapDrawable(MMApplication.getContext().getResources(), (Bitmap)localObject);
           return paramb;
         }
@@ -310,9 +310,9 @@ public final class a
     return null;
   }
   
-  private com.tencent.mm.g.b ag(int paramInt1, int paramInt2)
+  private com.tencent.mm.g.b aj(int paramInt1, int paramInt2)
   {
-    Object localObject = this.aby.Yq.iterator();
+    Object localObject = this.aeZ.abQ.iterator();
     int i = 0;
     if (((Iterator)localObject).hasNext())
     {
@@ -329,7 +329,7 @@ public final class a
       if (i == 0) {
         return null;
       }
-      localObject = (SparseArray)this.abC.get(paramInt1);
+      localObject = (SparseArray)this.afd.get(paramInt1);
       if (localObject != null)
       {
         if ((((SparseArray)localObject).size() == 1) && (((SparseArray)localObject).get(0) != null)) {
@@ -341,19 +341,19 @@ public final class a
     }
   }
   
-  public static a mw()
+  public static a ni()
   {
-    return abs;
+    return aeT;
   }
   
-  public static boolean mx()
+  public static boolean nj()
   {
-    if (abs != null)
+    if (aeT != null)
     {
       d.c("MicroMsg.EmojiHelper", "Init EmojiHelper Success", new Object[0]);
       return true;
     }
-    File localFile = new File(com.tencent.mm.wear.app.b.h.mh(), "color_emoji_1435827814287");
+    File localFile = new File(com.tencent.mm.wear.app.b.h.mT(), "color_emoji_1435827814287");
     if (localFile.exists()) {
       try
       {
@@ -367,7 +367,7 @@ public final class a
           try
           {
             FileInputStream localFileInputStream;
-            abs = new a(localFileInputStream);
+            aeT = new a(localFileInputStream);
             d.c("MicroMsg.EmojiHelper", "Init EmojiHelper Success", new Object[0]);
             return true;
           }
@@ -386,45 +386,45 @@ public final class a
     return false;
   }
   
-  private void my()
+  private void nk()
   {
-    this.abG = new LinkedList(this.aby.Yr);
-    if ((this.abG == null) || (this.abG.isEmpty())) {
+    this.afh = new LinkedList(this.aeZ.abR);
+    if ((this.afh == null) || (this.afh.isEmpty())) {
       d.c("MicroMsg.EmojiHelper", "initIndex failed. items is empty.", new Object[0]);
     }
     for (;;)
     {
       return;
-      Iterator localIterator = this.abG.iterator();
+      Iterator localIterator = this.afh.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.g.b localb = (com.tencent.mm.g.b)localIterator.next();
-        if (localb.Ys != 0)
+        if (localb.abS != 0)
         {
-          SparseArray localSparseArray2 = (SparseArray)this.abC.get(localb.Ys);
+          SparseArray localSparseArray2 = (SparseArray)this.afd.get(localb.abS);
           SparseArray localSparseArray1 = localSparseArray2;
           if (localSparseArray2 == null)
           {
             localSparseArray1 = new SparseArray();
-            this.abC.append(localb.Ys, localSparseArray1);
+            this.afd.append(localb.abS, localSparseArray1);
           }
-          localSparseArray1.put(localb.Yt, localb);
-          if (localb.Yu != 0) {
-            this.abz.append(localb.Yu, localb);
+          localSparseArray1.put(localb.abT, localb);
+          if (localb.abU != 0) {
+            this.afa.append(localb.abU, localb);
           }
-          if (localb.Yv != -1) {
-            this.abA.append(localb.Yv, localb);
+          if (localb.abV != -1) {
+            this.afb.append(localb.abV, localb);
           }
         }
         else
         {
-          this.abB.append(localb.Yw, localb);
+          this.afc.append(localb.abW, localb);
         }
       }
     }
   }
   
-  public static String mz()
+  public static String nl()
   {
     return "color_emoji_1435827814287";
   }
@@ -449,7 +449,7 @@ public final class a
         break label246;
       }
       m = ((String)localObject2).codePointAt(k);
-      localObject3 = abs.bI(i);
+      localObject3 = aeT.ce(i);
       if (localObject3 == null) {
         break label252;
       }
@@ -466,7 +466,7 @@ public final class a
         if (((ArrayList)localObject1).size() == 0) {
           break;
         }
-        if (abr)
+        if (aeS)
         {
           paramSpannableString = new StringBuilder((String)localObject2);
           localObject2 = ((ArrayList)localObject1).iterator();
@@ -475,20 +475,20 @@ public final class a
             if (((Iterator)localObject2).hasNext())
             {
               localObject3 = (b)((Iterator)localObject2).next();
-              if (!((b)localObject3).abI) {
-                if ((((b)localObject3).abH.Yu != 0) && (((b)localObject3).end - ((b)localObject3).start == 1))
+              if (!((b)localObject3).afj) {
+                if ((((b)localObject3).afi.abU != 0) && (((b)localObject3).end - ((b)localObject3).start == 1))
                 {
-                  paramSpannableString.replace(((b)localObject3).start, ((b)localObject3).end, String.valueOf((char)((b)localObject3).abH.Yu));
+                  paramSpannableString.replace(((b)localObject3).start, ((b)localObject3).end, String.valueOf((char)((b)localObject3).afi.abU));
                   continue;
                   m = 0;
                   break;
                   label252:
-                  localObject3 = abs.ag(i, m);
+                  localObject3 = aeT.aj(i, m);
                   i = k;
                   if (localObject3 == null) {
                     break label118;
                   }
-                  if ((((com.tencent.mm.g.b)localObject3).Yt == 0) && ((127995 > m) || (m > 127999))) {
+                  if ((((com.tencent.mm.g.b)localObject3).abT == 0) && ((127995 > m) || (m > 127999))) {
                     break label445;
                   }
                 }
@@ -512,7 +512,7 @@ public final class a
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (b)((Iterator)localObject1).next();
-          a(paramSpannableString, abs.a(((b)localObject2).abH), ((b)localObject2).start, ((b)localObject2).end, paramInt);
+          a(paramSpannableString, aeT.a(((b)localObject2).afi), ((b)localObject2).start, ((b)localObject2).end, paramInt);
         }
         return paramSpannableString;
       }
@@ -529,7 +529,7 @@ public final class a
     {
       paramDrawable.setBounds(0, 0, i, paramInt3);
       paramDrawable = new g(paramDrawable);
-      paramDrawable.bY(this.abt);
+      paramDrawable.cu(this.aeU);
       paramSpannable.setSpan(paramDrawable, paramInt1, paramInt2, 33);
       return;
     }
@@ -539,17 +539,17 @@ public final class a
     }
   }
   
-  public final com.tencent.mm.g.b bI(int paramInt)
+  public final com.tencent.mm.g.b ce(int paramInt)
   {
     if ((paramInt >= 57345) && (paramInt <= 58679)) {
-      return (com.tencent.mm.g.b)this.abz.get(paramInt);
+      return (com.tencent.mm.g.b)this.afa.get(paramInt);
     }
     return null;
   }
   
-  public final Drawable bJ(int paramInt)
+  public final Drawable cf(int paramInt)
   {
-    return a((com.tencent.mm.g.b)this.abB.get(paramInt));
+    return a((com.tencent.mm.g.b)this.afc.get(paramInt));
   }
 }
 

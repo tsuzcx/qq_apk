@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/layout" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textColor="@color/skin_black" android:layout_gravity="center|left" android:id="@id/textTime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="45.0dip" android:text="10分钟" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/imageCheck" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:src="@drawable/common_bottom_dialog_checked_icon" />
+        <ImageView android:layout_gravity="center|right" android:id="@id/userCuntomizeArrow" android:background="@drawable/common_arrow_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" />
+        <TextView android:textColor="@color/skin_gray2" android:layout_gravity="center|right" android:id="@id/userCuntomizeDuration" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" />
+        <View android:layout_gravity="top" android:id="@id/topBorder" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="45.0dip" />
+        <View android:layout_gravity="bottom" android:id="@id/bottomBorder" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="45.0dip" />
+    </FrameLayout>
+</RelativeLayout>

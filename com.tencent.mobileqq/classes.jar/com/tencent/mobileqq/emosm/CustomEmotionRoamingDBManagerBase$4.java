@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.emosm;
 
-import apmi;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class CustomEmotionRoamingDBManagerBase$4
+class CustomEmotionRoamingDBManagerBase$4
   implements Runnable
 {
+  CustomEmotionRoamingDBManagerBase$4(CustomEmotionRoamingDBManagerBase paramCustomEmotionRoamingDBManagerBase, CustomEmotionRoamingDBManagerBase.CustomEmotionDataInPanelCallback paramCustomEmotionDataInPanelCallback) {}
+  
   public void run()
   {
-    List localList = this.this$0.c();
+    List localList = this.this$0.syncGetCustomEmotionInfoShowedInPreview();
     ThreadManager.getUIHandler().post(new CustomEmotionRoamingDBManagerBase.4.1(this, localList));
   }
 }

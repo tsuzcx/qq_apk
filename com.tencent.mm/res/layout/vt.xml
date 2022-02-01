@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bk9" android:background="@drawable/a_a" android:paddingBottom="@dimen/la" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="left" android:id="@id/bk_" android:background="@raw/list_deletetext_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <FrameLayout android:layout_width="@dimen/a1z" android:layout_height="@dimen/a1z">
-        <com.tencent.mm.emoji.view.EmojiStatusView android:gravity="center_horizontal" android:id="@id/bka" android:layout_width="@dimen/a1z" android:layout_height="@dimen/a1z" />
-        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bkb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
+    <Button android:textSize="@dimen/j7" android:textColor="@color/ib" android:id="@id/bl7" android:background="@drawable/c1" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/bja" style="@style/or" />
+    <Button android:textSize="@dimen/j7" android:textColor="@color/gw" android:id="@id/bl6" android:background="@drawable/c1" android:layout_width="wrap_content" android:minWidth="@dimen/av" android:text="@string/bje" style="@style/or" />
 </LinearLayout>

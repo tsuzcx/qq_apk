@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <EditText android:id="@id/jf6" android:inputType="textEmailAddress" style="@style/n9" />
+            <View style="@style/n5" />
+            <TextView android:id="@id/gyj" android:text="@string/iuf" android:layout_weight="1.0" style="@style/lk" />
+            <LinearLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:id="@id/kzz" android:text="@string/j1d" style="@style/ok" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

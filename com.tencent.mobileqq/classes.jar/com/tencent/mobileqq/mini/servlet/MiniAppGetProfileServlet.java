@@ -5,9 +5,9 @@ import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetProfileRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -60,14 +60,14 @@ public class MiniAppGetProfileServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetProfile");
-    paramPacket.putSendData(bdpd.a((byte[])localObject));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetProfileServlet
  * JD-Core Version:    0.7.0.1
  */

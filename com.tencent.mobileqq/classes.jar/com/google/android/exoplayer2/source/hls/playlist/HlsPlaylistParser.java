@@ -119,17 +119,22 @@ public final class HlsPlaylistParser
   {
     int j = paramBufferedReader.read();
     int i = j;
-    if (j == 239)
-    {
-      if ((paramBufferedReader.read() != 187) || (paramBufferedReader.read() != 191)) {
+    if (j == 239) {
+      if (paramBufferedReader.read() == 187)
+      {
+        if (paramBufferedReader.read() != 191) {
+          return false;
+        }
+        i = paramBufferedReader.read();
+      }
+      else
+      {
         return false;
       }
-      i = paramBufferedReader.read();
     }
     j = skipIgnorableWhitespace(paramBufferedReader, true, i);
-    int k = "#EXTM3U".length();
     i = 0;
-    while (i < k)
+    while (i < 7)
     {
       if (j != "#EXTM3U".charAt(i)) {
         return false;
@@ -142,14 +147,21 @@ public final class HlsPlaylistParser
   
   private static Pattern compileBooleanAttrPattern(String paramString)
   {
-    return Pattern.compile(paramString + "=(" + "NO" + "|" + "YES" + ")");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("=(");
+    localStringBuilder.append("NO");
+    localStringBuilder.append("|");
+    localStringBuilder.append("YES");
+    localStringBuilder.append(")");
+    return Pattern.compile(localStringBuilder.toString());
   }
   
   private static boolean parseBooleanAttribute(String paramString, Pattern paramPattern, boolean paramBoolean)
   {
     paramString = paramPattern.matcher(paramString);
     if (paramString.find()) {
-      paramBoolean = paramString.group(1).equals("YES");
+      return paramString.group(1).equals("YES");
     }
     return paramBoolean;
   }
@@ -171,403 +183,377 @@ public final class HlsPlaylistParser
   
   private static HlsMasterPlaylist parseMasterPlaylist(HlsPlaylistParser.LineIterator paramLineIterator, String paramString)
   {
-    Object localObject3 = new HashSet();
+    Object localObject1 = new HashSet();
     HashMap localHashMap = new HashMap();
-    ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList5 = new ArrayList();
     ArrayList localArrayList4 = new ArrayList();
-    Object localObject1 = null;
-    Object localObject2 = null;
-    boolean bool1 = false;
-    String str2;
-    int k;
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList5 = new ArrayList();
+    int j = 0;
     String str1;
-    Object localObject4;
+    Object localObject3;
     int i;
+    label244:
+    int m;
     while (paramLineIterator.hasNext())
     {
-      str2 = paramLineIterator.next();
-      if (str2.startsWith("#EXT")) {
-        localArrayList4.add(str2);
+      str1 = paramLineIterator.next();
+      if (str1.startsWith("#EXT")) {
+        localArrayList5.add(str1);
       }
-      if (str2.startsWith("#EXT-X-MEDIA"))
+      if (str1.startsWith("#EXT-X-MEDIA"))
       {
-        localArrayList5.add(str2);
+        localArrayList1.add(str1);
       }
-      else if (str2.startsWith("#EXT-X-STREAM-INF"))
+      else if (str1.startsWith("#EXT-X-STREAM-INF"))
       {
-        boolean bool2 = str2.contains("CLOSED-CAPTIONS=NONE");
-        k = parseIntAttr(str2, REGEX_BANDWIDTH);
-        str1 = parseOptionalStringAttr(str2, REGEX_AVERAGE_BANDWIDTH);
-        if (str1 != null) {
-          k = Integer.parseInt(str1);
+        int n = j | str1.contains("CLOSED-CAPTIONS=NONE");
+        k = parseIntAttr(str1, REGEX_BANDWIDTH);
+        localObject2 = parseOptionalStringAttr(str1, REGEX_AVERAGE_BANDWIDTH);
+        if (localObject2 != null) {
+          k = Integer.parseInt((String)localObject2);
         }
-        str1 = parseOptionalStringAttr(str2, REGEX_CODECS);
-        localObject4 = parseOptionalStringAttr(str2, REGEX_RESOLUTION);
-        if (localObject4 != null)
+        localObject2 = parseOptionalStringAttr(str1, REGEX_CODECS);
+        localObject3 = parseOptionalStringAttr(str1, REGEX_RESOLUTION);
+        if (localObject3 != null)
         {
-          localObject4 = ((String)localObject4).split("x");
-          i = Integer.parseInt(localObject4[0]);
-          int m = Integer.parseInt(localObject4[1]);
-          if (i > 0)
-          {
-            j = m;
-            if (m > 0) {}
+          localObject3 = ((String)localObject3).split("x");
+          j = Integer.parseInt(localObject3[0]);
+          i = Integer.parseInt(localObject3[1]);
+          if ((j > 0) && (i > 0)) {
+            break label244;
           }
-          else
-          {
-            i = -1;
-          }
-        }
-        for (j = -1;; j = -1)
-        {
-          float f = -1.0F;
-          localObject4 = parseOptionalStringAttr(str2, REGEX_FRAME_RATE);
-          if (localObject4 != null) {
-            f = Float.parseFloat((String)localObject4);
-          }
-          str2 = parseOptionalStringAttr(str2, REGEX_AUDIO);
-          if ((str2 != null) && (str1 != null)) {
-            localHashMap.put(str2, Util.getCodecsOfType(str1, 1));
-          }
-          str2 = paramLineIterator.next();
-          if (((HashSet)localObject3).add(str2)) {
-            localArrayList1.add(new HlsMasterPlaylist.HlsUrl(str2, Format.createVideoContainerFormat(Integer.toString(localArrayList1.size()), "application/x-mpegURL", null, str1, k, i, j, f, null, 0)));
-          }
-          bool1 |= bool2;
-          break;
+          j = -1;
           i = -1;
+          m = i;
+          i = j;
+        }
+        else
+        {
+          i = -1;
+          m = -1;
+        }
+        localObject3 = parseOptionalStringAttr(str1, REGEX_FRAME_RATE);
+        float f;
+        if (localObject3 != null) {
+          f = Float.parseFloat((String)localObject3);
+        } else {
+          f = -1.0F;
+        }
+        str1 = parseOptionalStringAttr(str1, REGEX_AUDIO);
+        if ((str1 != null) && (localObject2 != null)) {
+          localHashMap.put(str1, Util.getCodecsOfType((String)localObject2, 1));
+        }
+        str1 = paramLineIterator.next();
+        j = n;
+        if (((HashSet)localObject1).add(str1))
+        {
+          localArrayList2.add(new HlsMasterPlaylist.HlsUrl(str1, Format.createVideoContainerFormat(Integer.toString(localArrayList2.size()), "application/x-mpegURL", null, (String)localObject2, k, i, m, f, null, 0)));
+          j = n;
         }
       }
     }
-    int j = 0;
-    paramLineIterator = (HlsPlaylistParser.LineIterator)localObject2;
-    if (j < localArrayList5.size())
+    int k = 0;
+    Object localObject2 = null;
+    paramLineIterator = null;
+    while (k < localArrayList1.size())
     {
-      localObject2 = (String)localArrayList5.get(j);
-      k = parseSelectionFlags((String)localObject2);
-      str2 = parseOptionalStringAttr((String)localObject2, REGEX_URI);
-      localObject3 = parseStringAttr((String)localObject2, REGEX_NAME);
-      str1 = parseOptionalStringAttr((String)localObject2, REGEX_LANGUAGE);
-      localObject4 = parseOptionalStringAttr((String)localObject2, REGEX_GROUP_ID);
-      String str3 = parseStringAttr((String)localObject2, REGEX_TYPE);
-      i = -1;
-      switch (str3.hashCode())
+      localObject1 = (String)localArrayList1.get(k);
+      m = parseSelectionFlags((String)localObject1);
+      str1 = parseOptionalStringAttr((String)localObject1, REGEX_URI);
+      localObject3 = parseStringAttr((String)localObject1, REGEX_NAME);
+      String str2 = parseOptionalStringAttr((String)localObject1, REGEX_LANGUAGE);
+      String str3 = parseOptionalStringAttr((String)localObject1, REGEX_GROUP_ID);
+      String str4 = parseStringAttr((String)localObject1, REGEX_TYPE);
+      i = str4.hashCode();
+      if (i != -959297733)
       {
-      default: 
-        label504:
-        switch (i)
+        if (i != -333210994)
         {
-        }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        if (!str3.equals("AUDIO")) {
-          break label504;
-        }
-        i = 0;
-        break label504;
-        if (!str3.equals("SUBTITLES")) {
-          break label504;
-        }
-        i = 1;
-        break label504;
-        if (!str3.equals("CLOSED-CAPTIONS")) {
-          break label504;
-        }
-        i = 2;
-        break label504;
-        localObject4 = (String)localHashMap.get(localObject4);
-        if (localObject4 != null) {}
-        for (localObject2 = MimeTypes.getMediaMimeType((String)localObject4);; localObject2 = null)
-        {
-          localObject2 = Format.createAudioContainerFormat((String)localObject3, "application/x-mpegURL", (String)localObject2, (String)localObject4, -1, -1, -1, null, k, str1);
-          if (str2 != null) {
-            break label650;
+          if ((i == 62628790) && (str4.equals("AUDIO")))
+          {
+            i = 0;
+            break label551;
           }
-          localObject1 = localObject2;
-          break;
         }
-        label650:
-        localArrayList2.add(new HlsMasterPlaylist.HlsUrl(str2, (Format)localObject2));
-        continue;
-        localArrayList3.add(new HlsMasterPlaylist.HlsUrl(str2, Format.createTextContainerFormat((String)localObject3, "application/x-mpegURL", "text/vtt", null, -1, k, str1)));
-      }
-      str2 = parseStringAttr((String)localObject2, REGEX_INSTREAM_ID);
-      if (str2.startsWith("CC"))
-      {
-        localObject2 = "application/cea-608";
-        i = Integer.parseInt(str2.substring(2));
-        label741:
-        if (paramLineIterator != null) {
-          break label829;
+        else if (str4.equals("CLOSED-CAPTIONS"))
+        {
+          i = 2;
+          break label551;
         }
-        paramLineIterator = new ArrayList();
       }
-    }
-    label829:
-    for (;;)
-    {
-      paramLineIterator.add(Format.createTextContainerFormat((String)localObject3, null, (String)localObject2, null, -1, k, str1, i));
-      break;
-      localObject2 = "application/cea-708";
-      i = Integer.parseInt(str2.substring(7));
-      break label741;
-      if (bool1) {
-        paramLineIterator = Collections.emptyList();
-      }
-      for (;;)
+      else if (str4.equals("SUBTITLES"))
       {
-        return new HlsMasterPlaylist(paramString, localArrayList4, localArrayList1, localArrayList2, localArrayList3, localObject1, paramLineIterator);
+        i = 1;
+        break label551;
       }
+      i = -1;
+      label551:
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2)
+          {
+            localObject1 = parseStringAttr((String)localObject1, REGEX_INSTREAM_ID);
+            if (((String)localObject1).startsWith("CC"))
+            {
+              i = Integer.parseInt(((String)localObject1).substring(2));
+              str1 = "application/cea-608";
+            }
+            else
+            {
+              i = Integer.parseInt(((String)localObject1).substring(7));
+              str1 = "application/cea-708";
+            }
+            localObject1 = paramLineIterator;
+            if (paramLineIterator == null) {
+              localObject1 = new ArrayList();
+            }
+            ((List)localObject1).add(Format.createTextContainerFormat((String)localObject3, null, str1, null, -1, m, str2, i));
+            paramLineIterator = (HlsPlaylistParser.LineIterator)localObject1;
+          }
+        }
+        else {
+          localArrayList4.add(new HlsMasterPlaylist.HlsUrl(str1, Format.createTextContainerFormat((String)localObject3, "application/x-mpegURL", "text/vtt", null, -1, m, str2)));
+        }
+      }
+      else
+      {
+        str3 = (String)localHashMap.get(str3);
+        if (str3 != null) {
+          localObject1 = MimeTypes.getMediaMimeType(str3);
+        } else {
+          localObject1 = null;
+        }
+        localObject1 = Format.createAudioContainerFormat((String)localObject3, "application/x-mpegURL", (String)localObject1, str3, -1, -1, -1, null, m, str2);
+        if (str1 == null) {
+          localObject2 = localObject1;
+        } else {
+          localArrayList3.add(new HlsMasterPlaylist.HlsUrl(str1, (Format)localObject1));
+        }
+      }
+      k += 1;
     }
+    if (j != 0) {
+      paramLineIterator = Collections.emptyList();
+    }
+    return new HlsMasterPlaylist(paramString, localArrayList5, localArrayList2, localArrayList3, localArrayList4, (Format)localObject2, paramLineIterator);
   }
   
   private static HlsMediaPlaylist parseMediaPlaylist(HlsPlaylistParser.LineIterator paramLineIterator, String paramString)
   {
-    Object localObject3 = null;
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    long l9 = 0L;
-    long l1 = 0L;
-    long l2 = -1L;
-    boolean bool1 = false;
-    Object localObject5 = null;
-    Object localObject4 = null;
-    int j = 1;
-    long l7 = 0L;
-    long l5 = -9223372036854775807L;
-    int i = 0;
-    int k = 0;
-    boolean bool2 = false;
-    long l4 = 0L;
-    long l6 = -9223372036854775807L;
-    boolean bool4 = false;
-    boolean bool3 = false;
-    Object localObject1 = null;
-    long l8 = 0L;
-    long l3 = 0L;
+    long l10 = -9223372036854775807L;
+    long l5 = l10;
     int m = 0;
-    Object localObject7;
-    Object localObject2;
-    if (paramLineIterator.hasNext())
-    {
-      localObject7 = paramLineIterator.next();
-      if (((String)localObject7).startsWith("#EXT")) {
-        localArrayList2.add(localObject7);
-      }
-      if (((String)localObject7).startsWith("#EXT-X-PLAYLIST-TYPE"))
-      {
-        localObject2 = parseStringAttr((String)localObject7, REGEX_PLAYLIST_TYPE);
-        if ("VOD".equals(localObject2)) {
-          i = 1;
-        }
-      }
-    }
+    int i = 0;
+    long l9 = 0L;
+    boolean bool3 = false;
+    int k = 0;
+    long l8 = 0L;
+    int j = 1;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    Object localObject4 = null;
+    Object localObject3 = null;
+    long l1 = 0L;
+    long l3 = 0L;
+    long l4 = 0L;
+    Object localObject1 = null;
+    String str1 = null;
+    boolean bool4;
     for (;;)
     {
-      break;
-      if ("EVENT".equals(localObject2))
+      long l2 = -1L;
+      bool4 = false;
+      long l7 = 0L;
+      long l6 = l3;
+      String str2;
+      Object localObject2;
+      for (;;)
       {
-        i = 2;
-        continue;
-        if (((String)localObject7).startsWith("#EXT-X-START"))
-        {
-          l5 = (parseDoubleAttr((String)localObject7, REGEX_TIME_OFFSET) * 1000000.0D);
-          break;
+        if (!paramLineIterator.hasNext()) {
+          break label960;
         }
-        if (((String)localObject7).startsWith("#EXT-X-MAP"))
-        {
-          localObject2 = parseStringAttr((String)localObject7, REGEX_URI);
-          localObject3 = parseOptionalStringAttr((String)localObject7, REGEX_ATTR_BYTERANGE);
-          if (localObject3 == null) {
-            break label1040;
-          }
-          localObject3 = ((String)localObject3).split("@");
-          long l10 = Long.parseLong(localObject3[0]);
-          l2 = l10;
-          if (localObject3.length <= 1) {
-            break label1040;
-          }
-          l1 = Long.parseLong(localObject3[1]);
-          l2 = l10;
+        str2 = paramLineIterator.next();
+        if (str2.startsWith("#EXT")) {
+          localArrayList2.add(str2);
         }
-        label1034:
-        label1037:
-        label1040:
-        for (;;)
+        if (str2.startsWith("#EXT-X-PLAYLIST-TYPE"))
         {
-          localObject3 = new HlsMediaPlaylist.Segment((String)localObject2, l1, l2);
-          l2 = -1L;
+          localObject2 = parseStringAttr(str2, REGEX_PLAYLIST_TYPE);
+          if ("VOD".equals(localObject2)) {
+            i = 1;
+          } else if ("EVENT".equals(localObject2)) {
+            i = 2;
+          }
+        }
+        else if (str2.startsWith("#EXT-X-START"))
+        {
+          l10 = (parseDoubleAttr(str2, REGEX_TIME_OFFSET) * 1000000.0D);
+        }
+        else if (str2.startsWith("#EXT-X-MAP"))
+        {
+          localObject2 = parseStringAttr(str2, REGEX_URI);
+          localObject3 = parseOptionalStringAttr(str2, REGEX_ATTR_BYTERANGE);
+          l3 = l1;
+          if (localObject3 != null)
+          {
+            localObject3 = ((String)localObject3).split("@");
+            long l11 = Long.parseLong(localObject3[0]);
+            l3 = l1;
+            l2 = l11;
+            if (localObject3.length > 1)
+            {
+              l3 = Long.parseLong(localObject3[1]);
+              l2 = l11;
+            }
+          }
+          localObject3 = new HlsMediaPlaylist.Segment((String)localObject2, l3, l2);
           l1 = 0L;
-          break;
-          if (((String)localObject7).startsWith("#EXT-X-TARGETDURATION"))
+          l2 = -1L;
+        }
+        else if (str2.startsWith("#EXT-X-TARGETDURATION"))
+        {
+          l5 = 1000000L * parseIntAttr(str2, REGEX_TARGET_DURATION);
+        }
+        else if (str2.startsWith("#EXT-X-MEDIA-SEQUENCE"))
+        {
+          l6 = parseLongAttr(str2, REGEX_MEDIA_SEQUENCE);
+          l8 = l6;
+        }
+        else if (str2.startsWith("#EXT-X-VERSION"))
+        {
+          j = parseIntAttr(str2, REGEX_VERSION);
+        }
+        else if (str2.startsWith("#EXTINF"))
+        {
+          l7 = (parseDoubleAttr(str2, REGEX_MEDIA_DURATION) * 1000000.0D);
+        }
+        else if (str2.startsWith("#EXT-X-KEY"))
+        {
+          String str3 = parseOptionalStringAttr(str2, REGEX_METHOD);
+          localObject2 = parseOptionalStringAttr(str2, REGEX_KEYFORMAT);
+          if (!"NONE".equals(str3))
           {
-            l6 = parseIntAttr((String)localObject7, REGEX_TARGET_DURATION) * 1000000L;
-            break;
-          }
-          if (((String)localObject7).startsWith("#EXT-X-MEDIA-SEQUENCE"))
-          {
-            l7 = parseLongAttr((String)localObject7, REGEX_MEDIA_SEQUENCE);
-            l3 = l7;
-            break;
-          }
-          if (((String)localObject7).startsWith("#EXT-X-VERSION"))
-          {
-            j = parseIntAttr((String)localObject7, REGEX_VERSION);
-            break;
-          }
-          if (((String)localObject7).startsWith("#EXTINF"))
-          {
-            l4 = (parseDoubleAttr((String)localObject7, REGEX_MEDIA_DURATION) * 1000000.0D);
-            break;
-          }
-          if (((String)localObject7).startsWith("#EXT-X-KEY"))
-          {
-            String str2 = parseOptionalStringAttr((String)localObject7, REGEX_METHOD);
-            String str3 = parseOptionalStringAttr((String)localObject7, REGEX_KEYFORMAT);
-            localObject5 = null;
-            localObject2 = null;
-            localObject1 = localObject5;
-            Object localObject6 = localObject4;
-            String str1;
-            if (!"NONE".equals(str2))
+            str1 = parseOptionalStringAttr(str2, REGEX_IV);
+            if ((!"identity".equals(localObject2)) && (localObject2 != null))
             {
-              str1 = parseOptionalStringAttr((String)localObject7, REGEX_IV);
-              if ((!"identity".equals(str3)) && (str3 != null)) {
-                break label541;
-              }
-              localObject2 = str1;
-              localObject1 = localObject5;
-              localObject6 = localObject4;
-              if ("AES-128".equals(str2))
+              localObject1 = localObject4;
+              if (str3 != null)
               {
-                localObject1 = parseStringAttr((String)localObject7, REGEX_URI);
-                localObject6 = localObject4;
-                localObject2 = str1;
-              }
-            }
-            label541:
-            do
-            {
-              do
-              {
-                localObject5 = localObject1;
-                localObject1 = localObject2;
-                localObject4 = localObject6;
-                break;
-                localObject2 = str1;
-                localObject1 = localObject5;
-                localObject6 = localObject4;
-              } while (str2 == null);
-              localObject7 = parseWidevineSchemeData((String)localObject7, str3);
-              localObject2 = str1;
-              localObject1 = localObject5;
-              localObject6 = localObject4;
-            } while (localObject7 == null);
-            if (("SAMPLE-AES-CENC".equals(str2)) || ("SAMPLE-AES-CTR".equals(str2))) {}
-            for (localObject1 = "cenc";; localObject1 = "cbcs")
-            {
-              localObject6 = new DrmInitData((String)localObject1, new DrmInitData.SchemeData[] { localObject7 });
-              localObject2 = str1;
-              localObject1 = localObject5;
-              break;
-            }
-          }
-          if (((String)localObject7).startsWith("#EXT-X-BYTERANGE"))
-          {
-            localObject2 = parseStringAttr((String)localObject7, REGEX_BYTERANGE).split("@");
-            l2 = Long.parseLong(localObject2[0]);
-            if (localObject2.length <= 1) {
-              break label1037;
-            }
-            l1 = Long.parseLong(localObject2[1]);
-          }
-          for (;;)
-          {
-            break;
-            if (((String)localObject7).startsWith("#EXT-X-DISCONTINUITY-SEQUENCE"))
-            {
-              k = Integer.parseInt(((String)localObject7).substring(((String)localObject7).indexOf(':') + 1));
-              bool2 = true;
-              break;
-            }
-            if (((String)localObject7).equals("#EXT-X-DISCONTINUITY"))
-            {
-              m += 1;
-              break;
-            }
-            if (((String)localObject7).startsWith("#EXT-X-PROGRAM-DATE-TIME"))
-            {
-              if (l8 != 0L) {
-                break;
-              }
-              l8 = C.msToUs(Util.parseXsDateTime(((String)localObject7).substring(((String)localObject7).indexOf(':') + 1))) - l9;
-              break;
-            }
-            if (((String)localObject7).equals("#EXT-X-GAP"))
-            {
-              bool1 = true;
-              break;
-            }
-            if (((String)localObject7).equals("#EXT-X-INDEPENDENT-SEGMENTS"))
-            {
-              bool4 = true;
-              break;
-            }
-            if (((String)localObject7).equals("#EXT-X-ENDLIST"))
-            {
-              bool3 = true;
-              break;
-            }
-            if (((String)localObject7).startsWith("#")) {
-              break;
-            }
-            if (localObject5 == null)
-            {
-              localObject2 = null;
-              label868:
-              if (l2 != -1L) {
-                break label1034;
-              }
-              l1 = 0L;
-            }
-            for (;;)
-            {
-              localArrayList1.add(new HlsMediaPlaylist.Segment((String)localObject7, l4, m, l9, localObject5, (String)localObject2, l1, l2, bool1));
-              l9 += l4;
-              if (l2 != -1L) {
-                l1 += l2;
-              }
-              for (;;)
-              {
-                l2 = -1L;
-                bool1 = false;
-                l3 += 1L;
-                l4 = 0L;
-                break;
-                if (localObject1 != null)
+                localObject2 = parseWidevineSchemeData(str2, (String)localObject2);
+                localObject1 = localObject4;
+                if (localObject2 != null)
                 {
-                  localObject2 = localObject1;
-                  break label868;
-                }
-                localObject2 = Long.toHexString(l3);
-                break label868;
-                if (l8 != 0L) {}
-                for (bool1 = true;; bool1 = false) {
-                  return new HlsMediaPlaylist(i, paramString, localArrayList2, l5, l8, bool2, k, l7, j, l6, bool4, bool3, bool1, localObject4, (HlsMediaPlaylist.Segment)localObject3, localArrayList1);
+                  if ((!"SAMPLE-AES-CENC".equals(str3)) && (!"SAMPLE-AES-CTR".equals(str3))) {
+                    localObject1 = "cbcs";
+                  } else {
+                    localObject1 = "cenc";
+                  }
+                  localObject1 = new DrmInitData((String)localObject1, new DrmInitData.SchemeData[] { localObject2 });
                 }
               }
             }
+            else
+            {
+              localObject1 = localObject4;
+              if ("AES-128".equals(str3))
+              {
+                localObject1 = parseStringAttr(str2, REGEX_URI);
+                continue;
+              }
+            }
+            localObject2 = null;
+            localObject4 = localObject1;
+            localObject1 = localObject2;
           }
+          else
+          {
+            localObject1 = null;
+            str1 = null;
+          }
+        }
+        else if (str2.startsWith("#EXT-X-BYTERANGE"))
+        {
+          localObject2 = parseStringAttr(str2, REGEX_BYTERANGE).split("@");
+          l3 = Long.parseLong(localObject2[0]);
+          l2 = l3;
+          if (localObject2.length > 1)
+          {
+            l1 = Long.parseLong(localObject2[1]);
+            l2 = l3;
+          }
+        }
+        else if (str2.startsWith("#EXT-X-DISCONTINUITY-SEQUENCE"))
+        {
+          k = Integer.parseInt(str2.substring(str2.indexOf(':') + 1));
+          bool3 = true;
+        }
+        else if (str2.equals("#EXT-X-DISCONTINUITY"))
+        {
+          m += 1;
+        }
+        else
+        {
+          if (!str2.startsWith("#EXT-X-PROGRAM-DATE-TIME")) {
+            break label786;
+          }
+          if (l9 != 0L) {
+            break;
+          }
+          l9 = C.msToUs(Util.parseXsDateTime(str2.substring(str2.indexOf(':') + 1))) - l4;
         }
       }
+      label786:
+      do
+      {
+        break;
+        if (str2.equals("#EXT-X-GAP"))
+        {
+          bool4 = true;
+          break;
+        }
+        if (str2.equals("#EXT-X-INDEPENDENT-SEGMENTS"))
+        {
+          bool2 = true;
+          break;
+        }
+        if (str2.equals("#EXT-X-ENDLIST"))
+        {
+          bool1 = true;
+          break;
+        }
+      } while (str2.startsWith("#"));
+      if (localObject1 == null) {
+        localObject2 = null;
+      } else if (str1 != null) {
+        localObject2 = str1;
+      } else {
+        localObject2 = Long.toHexString(l6);
+      }
+      l3 = l1;
+      if (l2 == -1L) {
+        l3 = 0L;
+      }
+      localArrayList1.add(new HlsMediaPlaylist.Segment(str2, l7, m, l4, (String)localObject1, (String)localObject2, l3, l2, bool4));
+      l4 += l7;
+      l1 = l3;
+      if (l2 != -1L) {
+        l1 = l3 + l2;
+      }
+      l3 = l6 + 1L;
     }
+    label960:
+    if (l9 != 0L) {
+      bool4 = true;
+    } else {
+      bool4 = false;
+    }
+    return new HlsMediaPlaylist(i, paramString, localArrayList2, l10, l9, bool3, k, l8, j, l5, bool2, bool1, bool4, localObject4, (HlsMediaPlaylist.Segment)localObject3, localArrayList1);
   }
   
   private static String parseOptionalStringAttr(String paramString, Pattern paramPattern)
@@ -581,34 +567,33 @@ public final class HlsPlaylistParser
   
   private static int parseSelectionFlags(String paramString)
   {
-    int k = 0;
+    Pattern localPattern = REGEX_DEFAULT;
+    int j = 0;
+    int k = parseBooleanAttribute(paramString, localPattern, false);
     int i;
-    if (parseBooleanAttribute(paramString, REGEX_DEFAULT, false))
-    {
-      i = 1;
-      if (!parseBooleanAttribute(paramString, REGEX_FORCED, false)) {
-        break label52;
-      }
-    }
-    label52:
-    for (int j = 2;; j = 0)
-    {
-      if (parseBooleanAttribute(paramString, REGEX_AUTOSELECT, false)) {
-        k = 4;
-      }
-      return i | j | k;
+    if (parseBooleanAttribute(paramString, REGEX_FORCED, false)) {
+      i = 2;
+    } else {
       i = 0;
-      break;
     }
+    if (parseBooleanAttribute(paramString, REGEX_AUTOSELECT, false)) {
+      j = 4;
+    }
+    return k | i | j;
   }
   
   private static String parseStringAttr(String paramString, Pattern paramPattern)
   {
-    Matcher localMatcher = paramPattern.matcher(paramString);
-    if ((localMatcher.find()) && (localMatcher.groupCount() == 1)) {
-      return localMatcher.group(1);
+    Object localObject = paramPattern.matcher(paramString);
+    if ((((Matcher)localObject).find()) && (((Matcher)localObject).groupCount() == 1)) {
+      return ((Matcher)localObject).group(1);
     }
-    throw new ParserException("Couldn't match " + paramPattern.pattern() + " in " + paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Couldn't match ");
+    ((StringBuilder)localObject).append(paramPattern.pattern());
+    ((StringBuilder)localObject).append(" in ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new ParserException(((StringBuilder)localObject).toString());
   }
   
   private static DrmInitData.SchemeData parseWidevineSchemeData(String paramString1, String paramString2)
@@ -646,9 +631,40 @@ public final class HlsPlaylistParser
     ArrayDeque localArrayDeque = new ArrayDeque();
     try
     {
-      if (!checkPlaylistHeader(paramInputStream)) {
-        throw new UnrecognizedInputFormatException("Input does not start with the #EXTM3U header.", paramUri);
+      if (checkPlaylistHeader(paramInputStream))
+      {
+        String str;
+        for (;;)
+        {
+          str = paramInputStream.readLine();
+          if (str == null) {
+            break label229;
+          }
+          str = str.trim();
+          if (!str.isEmpty())
+          {
+            if (str.startsWith("#EXT-X-STREAM-INF"))
+            {
+              localArrayDeque.add(str);
+              paramUri = parseMasterPlaylist(new HlsPlaylistParser.LineIterator(localArrayDeque, paramInputStream), paramUri.toString());
+              Util.closeQuietly(paramInputStream);
+              return paramUri;
+            }
+            if ((str.startsWith("#EXT-X-TARGETDURATION")) || (str.startsWith("#EXT-X-MEDIA-SEQUENCE")) || (str.startsWith("#EXTINF")) || (str.startsWith("#EXT-X-KEY")) || (str.startsWith("#EXT-X-BYTERANGE")) || (str.equals("#EXT-X-DISCONTINUITY")) || (str.equals("#EXT-X-DISCONTINUITY-SEQUENCE")) || (str.equals("#EXT-X-ENDLIST"))) {
+              break;
+            }
+            localArrayDeque.add(str);
+          }
+        }
+        localArrayDeque.add(str);
+        paramUri = parseMediaPlaylist(new HlsPlaylistParser.LineIterator(localArrayDeque, paramInputStream), paramUri.toString());
+        Util.closeQuietly(paramInputStream);
+        return paramUri;
+        label229:
+        Util.closeQuietly(paramInputStream);
+        throw new ParserException("Failed to parse the playlist, could not identify any tags.");
       }
+      throw new UnrecognizedInputFormatException("Input does not start with the #EXTM3U header.", paramUri);
     }
     finally
     {
@@ -656,37 +672,13 @@ public final class HlsPlaylistParser
     }
     for (;;)
     {
-      String str = paramInputStream.readLine();
-      if (str == null) {
-        break;
-      }
-      str = str.trim();
-      if (!str.isEmpty())
-      {
-        if (str.startsWith("#EXT-X-STREAM-INF"))
-        {
-          localArrayDeque.add(str);
-          paramUri = parseMasterPlaylist(new HlsPlaylistParser.LineIterator(localArrayDeque, paramInputStream), paramUri.toString());
-          Util.closeQuietly(paramInputStream);
-          return paramUri;
-        }
-        if ((str.startsWith("#EXT-X-TARGETDURATION")) || (str.startsWith("#EXT-X-MEDIA-SEQUENCE")) || (str.startsWith("#EXTINF")) || (str.startsWith("#EXT-X-KEY")) || (str.startsWith("#EXT-X-BYTERANGE")) || (str.equals("#EXT-X-DISCONTINUITY")) || (str.equals("#EXT-X-DISCONTINUITY-SEQUENCE")) || (str.equals("#EXT-X-ENDLIST")))
-        {
-          localArrayDeque.add(str);
-          paramUri = parseMediaPlaylist(new HlsPlaylistParser.LineIterator(localArrayDeque, paramInputStream), paramUri.toString());
-          Util.closeQuietly(paramInputStream);
-          return paramUri;
-        }
-        localArrayDeque.add(str);
-      }
+      throw paramUri;
     }
-    Util.closeQuietly(paramInputStream);
-    throw new ParserException("Failed to parse the playlist, could not identify any tags.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.playlist.HlsPlaylistParser
  * JD-Core Version:    0.7.0.1
  */

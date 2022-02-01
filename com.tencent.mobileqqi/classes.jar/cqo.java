@@ -1,15 +1,15 @@
 import com.tencent.mobileqq.activity.HornPublishActivity;
 import com.tencent.mobileqq.app.NearHornHandler;
 
-class cqo
+public class cqo
   implements Runnable
 {
-  cqo(cqn paramcqn) {}
+  public cqo(HornPublishActivity paramHornPublishActivity, String paramString) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_JavaLangString);
     }
   }
 }

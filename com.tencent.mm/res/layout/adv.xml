@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/ph" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/pk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a6w" android:includeFontPadding="false" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pi" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="@color/xe" android:id="@id/pj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:id="@id/pg" android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_back" android:rotation="180.0" android:layout_marginStart="2.5dip" app:iconColor="@color/xe" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

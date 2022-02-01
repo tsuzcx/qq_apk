@@ -24,14 +24,14 @@ public class v2stqos
   
   public v2stqos()
   {
-    AppMethodBeat.i(35429);
+    AppMethodBeat.i(40807);
     this.s2p = new byte[14];
-    AppMethodBeat.o(35429);
+    AppMethodBeat.o(40807);
   }
   
   public void parseS2PData()
   {
-    AppMethodBeat.i(35430);
+    AppMethodBeat.i(40808);
     ByteBuffer localByteBuffer = ByteBuffer.wrap(this.s2p);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     this.iKbps = localByteBuffer.getShort();
@@ -47,20 +47,20 @@ public class v2stqos
     this.cRsvd2 = localByteBuffer.get();
     this.cSkipFlag = localByteBuffer.get();
     this.cIReqFlag = localByteBuffer.get();
-    AppMethodBeat.o(35430);
+    AppMethodBeat.o(40808);
   }
   
   public void printS2P()
   {
-    AppMethodBeat.i(35431);
+    AppMethodBeat.i(40809);
     new StringBuilder("raw S2P:").append(this.s2p);
     new StringBuilder("-S2P- iKbps:").append(this.iKbps).append(", fps:").append(this.cFps).append(", IP:").append(this.cIPeriod).append(", RS:").append(this.cRSLevel).append(", QPMin:").append(this.cQPmin).append(", QPMax:").append(this.cQPmax).append(", HPP:").append(this.cHPPMaxLyr).append(", SWitch:").append(this.cSwitch).append(", Reso:").append(this.cResolution).append(", Rsvd1:").append(this.cRsvd1).append(", Rsvd2:").append(this.cRsvd2).append(", Skip:").append(this.cSkipFlag).append(", IReq:").append(this.cIReqFlag);
-    AppMethodBeat.o(35431);
+    AppMethodBeat.o(40809);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wxmm.v2stqos
  * JD-Core Version:    0.7.0.1
  */

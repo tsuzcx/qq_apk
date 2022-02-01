@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwf;
-import arsj;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
-public class DiscPicThumbDownloader$1
+class DiscPicThumbDownloader$1
   implements Runnable
 {
-  public DiscPicThumbDownloader$1(aqwf paramaqwf, FileManagerEntity paramFileManagerEntity) {}
+  DiscPicThumbDownloader$1(DiscPicThumbDownloader paramDiscPicThumbDownloader, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    arsj.b(this.a);
+    FilePicURLDrawlableHelper.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader.1
  * JD-Core Version:    0.7.0.1
  */

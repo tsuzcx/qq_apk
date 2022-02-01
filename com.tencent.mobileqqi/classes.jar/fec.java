@@ -1,25 +1,17 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.MessageHandler;
+import java.util.ArrayList;
 
 public class fec
 {
-  public static final int a = 1;
-  public static final int b = 2;
-  public static final int c = 3;
-  public static final int d = 4;
-  public static final int e = 5;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public int f;
+  String jdField_a_of_type_JavaLangString = "";
+  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
   
-  public fec(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    this.f = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
+  public fec(MessageHandler paramMessageHandler) {}
 }
 
 

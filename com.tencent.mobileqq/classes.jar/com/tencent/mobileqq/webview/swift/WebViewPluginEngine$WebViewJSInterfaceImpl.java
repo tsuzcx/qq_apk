@@ -9,12 +9,12 @@ public class WebViewPluginEngine$WebViewJSInterfaceImpl
   @JavascriptInterface
   public void invoke(String paramString)
   {
-    this.a.a(paramString);
+    this.a.c(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPluginEngine.WebViewJSInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

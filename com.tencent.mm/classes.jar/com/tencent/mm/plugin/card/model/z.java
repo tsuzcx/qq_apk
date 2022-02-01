@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahy;
-import com.tencent.mm.protocal.protobuf.ahz;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cgj;
+import com.tencent.mm.protocal.protobuf.cgk;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class z
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public CardGiftInfo kol;
-  private final b rr;
+  private h callback;
+  private final c rr;
+  public CardGiftInfo wuB;
   
   public z(int paramInt, String paramString)
   {
-    AppMethodBeat.i(87892);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ahy();
-    ((b.a)localObject).fsY = new ahz();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getcardgiftinfo";
-    ((b.a)localObject).funcId = 1165;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ahy)this.rr.fsV.fta;
-    ((ahy)localObject).wlL = paramInt;
-    ((ahy)localObject).wlM = paramString;
-    AppMethodBeat.o(87892);
+    AppMethodBeat.i(112834);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cgj();
+    ((c.a)localObject).otF = new cgk();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getcardgiftinfo";
+    ((c.a)localObject).funcId = 1165;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cgj)c.b.b(this.rr.otB);
+    ((cgj)localObject).YBh = paramInt;
+    ((cgj)localObject).YBi = paramString;
+    AppMethodBeat.o(112834);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(87894);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87894);
+    AppMethodBeat.i(112836);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(112836);
     return i;
   }
   
@@ -53,22 +53,22 @@ public final class z
     return 1165;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87893);
-    ab.i("MicroMsg.NetSceneGetCardGiftInfo", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(112835);
+    Log.i("MicroMsg.NetSceneGetCardGiftInfo", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.kol = CardGiftInfo.a((ahz)this.rr.fsW.fta);
-      ab.d("MicroMsg.NetSceneGetCardGiftInfo", "%s", new Object[] { this.kol.toString() });
+      this.wuB = CardGiftInfo.a((cgk)c.c.b(this.rr.otC));
+      Log.d("MicroMsg.NetSceneGetCardGiftInfo", "%s", new Object[] { this.wuB.toString() });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(87893);
+    AppMethodBeat.o(112835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.z
  * JD-Core Version:    0.7.0.1
  */

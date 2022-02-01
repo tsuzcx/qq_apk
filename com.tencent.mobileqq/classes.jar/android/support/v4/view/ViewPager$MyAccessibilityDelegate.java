@@ -18,21 +18,20 @@ class ViewPager$MyAccessibilityDelegate
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    boolean bool = true;
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
     paramAccessibilityNodeInfoCompat.setClassName(ViewPager.class.getName());
-    if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$200(this.this$0).getCount() > 1)) {}
-    for (;;)
-    {
-      paramAccessibilityNodeInfoCompat.setScrollable(bool);
-      if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) >= 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount() - 1)) {
-        paramAccessibilityNodeInfoCompat.addAction(4096);
-      }
-      if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) > 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount())) {
-        paramAccessibilityNodeInfoCompat.addAction(8192);
-      }
-      return;
+    boolean bool;
+    if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$200(this.this$0).getCount() > 1)) {
+      bool = true;
+    } else {
       bool = false;
+    }
+    paramAccessibilityNodeInfoCompat.setScrollable(bool);
+    if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) >= 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount() - 1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
+    }
+    if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) > 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount())) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
     }
   }
   
@@ -41,21 +40,23 @@ class ViewPager$MyAccessibilityDelegate
     if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 4096)
     {
-    default: 
-      return false;
-    case 4096: 
-      if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) >= 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount() - 1))
+      if (paramInt != 8192) {
+        return false;
+      }
+      if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) > 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount()))
       {
-        this.this$0.setCurrentItem(ViewPager.access$300(this.this$0) + 1);
+        paramView = this.this$0;
+        paramView.setCurrentItem(ViewPager.access$300(paramView) - 1);
         return true;
       }
       return false;
     }
-    if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) > 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount()))
+    if ((ViewPager.access$200(this.this$0) != null) && (ViewPager.access$300(this.this$0) >= 0) && (ViewPager.access$300(this.this$0) < ViewPager.access$200(this.this$0).getCount() - 1))
     {
-      this.this$0.setCurrentItem(ViewPager.access$300(this.this$0) - 1);
+      paramView = this.this$0;
+      paramView.setCurrentItem(ViewPager.access$300(paramView) + 1);
       return true;
     }
     return false;

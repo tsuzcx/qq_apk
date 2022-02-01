@@ -12,52 +12,52 @@ public final class zzr
   
   static
   {
-    AppMethodBeat.i(70775);
+    AppMethodBeat.i(100758);
     UTF_8 = Charset.forName("UTF-8");
     ISO_8859_1 = Charset.forName("ISO-8859-1");
     zzhk = new Object();
-    AppMethodBeat.o(70775);
+    AppMethodBeat.o(100758);
   }
   
   public static boolean equals(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    AppMethodBeat.i(70769);
+    AppMethodBeat.i(100752);
     if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat1.length == 0))
     {
       if ((paramArrayOfFloat2 == null) || (paramArrayOfFloat2.length == 0))
       {
-        AppMethodBeat.o(70769);
+        AppMethodBeat.o(100752);
         return true;
       }
-      AppMethodBeat.o(70769);
+      AppMethodBeat.o(100752);
       return false;
     }
     boolean bool = Arrays.equals(paramArrayOfFloat1, paramArrayOfFloat2);
-    AppMethodBeat.o(70769);
+    AppMethodBeat.o(100752);
     return bool;
   }
   
   public static boolean equals(long[] paramArrayOfLong1, long[] paramArrayOfLong2)
   {
-    AppMethodBeat.i(70768);
+    AppMethodBeat.i(100751);
     if ((paramArrayOfLong1 == null) || (paramArrayOfLong1.length == 0))
     {
       if ((paramArrayOfLong2 == null) || (paramArrayOfLong2.length == 0))
       {
-        AppMethodBeat.o(70768);
+        AppMethodBeat.o(100751);
         return true;
       }
-      AppMethodBeat.o(70768);
+      AppMethodBeat.o(100751);
       return false;
     }
     boolean bool = Arrays.equals(paramArrayOfLong1, paramArrayOfLong2);
-    AppMethodBeat.o(70768);
+    AppMethodBeat.o(100751);
     return bool;
   }
   
   public static boolean equals(Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    AppMethodBeat.i(70770);
+    AppMethodBeat.i(100753);
     int k;
     if (paramArrayOfObject1 == null)
     {
@@ -101,7 +101,7 @@ public final class zzr
           if ((n == 0) || (i1 == 0)) {
             break label122;
           }
-          AppMethodBeat.o(70770);
+          AppMethodBeat.o(100753);
           return true;
           n = 0;
           break;
@@ -109,12 +109,12 @@ public final class zzr
         label122:
         if (n != i1)
         {
-          AppMethodBeat.o(70770);
+          AppMethodBeat.o(100753);
           return false;
         }
         if (!paramArrayOfObject1[i].equals(paramArrayOfObject2[j]))
         {
-          AppMethodBeat.o(70770);
+          AppMethodBeat.o(100753);
           return false;
         }
         j += 1;
@@ -126,33 +126,33 @@ public final class zzr
   
   public static int hashCode(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(70772);
+    AppMethodBeat.i(100755);
     if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0))
     {
-      AppMethodBeat.o(70772);
+      AppMethodBeat.o(100755);
       return 0;
     }
     int i = Arrays.hashCode(paramArrayOfFloat);
-    AppMethodBeat.o(70772);
+    AppMethodBeat.o(100755);
     return i;
   }
   
   public static int hashCode(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(70771);
+    AppMethodBeat.i(100754);
     if ((paramArrayOfLong == null) || (paramArrayOfLong.length == 0))
     {
-      AppMethodBeat.o(70771);
+      AppMethodBeat.o(100754);
       return 0;
     }
     int i = Arrays.hashCode(paramArrayOfLong);
-    AppMethodBeat.o(70771);
+    AppMethodBeat.o(100754);
     return i;
   }
   
   public static int hashCode(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(70773);
+    AppMethodBeat.i(100756);
     int j;
     int k;
     int i;
@@ -179,23 +179,23 @@ public final class zzr
       break label15;
       j = paramArrayOfObject.length;
       break;
-      AppMethodBeat.o(70773);
+      AppMethodBeat.o(100756);
       return i;
     }
   }
   
   public static void zza(zzn paramzzn1, zzn paramzzn2)
   {
-    AppMethodBeat.i(70774);
+    AppMethodBeat.i(100757);
     if (paramzzn1.zzhc != null) {
       paramzzn2.zzhc = ((zzp)paramzzn1.zzhc.clone());
     }
-    AppMethodBeat.o(70774);
+    AppMethodBeat.o(100757);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zzr
  * JD-Core Version:    0.7.0.1
  */

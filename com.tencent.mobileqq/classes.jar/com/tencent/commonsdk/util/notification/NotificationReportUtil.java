@@ -6,13 +6,17 @@ public class NotificationReportUtil
   
   public static void reportAll()
   {
-    s_notificationReportController.reportAll();
+    NotificationReportController localNotificationReportController = s_notificationReportController;
+    if (localNotificationReportController != null) {
+      localNotificationReportController.reportAll();
+    }
   }
   
   public static void reportNotification(int paramInt1, String paramString, int paramInt2)
   {
-    if (s_notificationReportController != null) {
-      s_notificationReportController.report(1, paramInt1, paramString, paramInt2);
+    NotificationReportController localNotificationReportController = s_notificationReportController;
+    if (localNotificationReportController != null) {
+      localNotificationReportController.report(1, paramInt1, paramString, paramInt2);
     }
   }
   
@@ -23,7 +27,7 @@ public class NotificationReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.util.notification.NotificationReportUtil
  * JD-Core Version:    0.7.0.1
  */

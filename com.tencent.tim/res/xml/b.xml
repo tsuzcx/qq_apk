@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sharemenu xmlns:sharemenu="http://schemas.android.com/apk/res-auto">
+    <sharemenu_item sharemenu:button_id="@id/nye" sharemenu:title_id="@string/xdk" />
+    <sharemenu_item sharemenu:button_id="@id/nyg" sharemenu:title_id="@string/y55" />
+</sharemenu>

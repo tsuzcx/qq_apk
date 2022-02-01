@@ -27,7 +27,7 @@ import java.util.List;
 public class SemCameraCaptureProcessor10_1
   extends AbstractSemCameraCaptureProcessor
 {
-  private static final String TAG = SemCameraCaptureProcessor10_1.class.getSimpleName();
+  private static final String TAG = "SemCameraCaptureProcessor10_1";
   private CameraCharacteristics mCharacteristics;
   private Context mContext;
   private List<AbstractSemCameraCaptureProcessor.ProcessorParameter> mParameterList;
@@ -56,35 +56,37 @@ public class SemCameraCaptureProcessor10_1
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      AbstractSemCameraCaptureProcessor.CaptureParameter localCaptureParameter = (AbstractSemCameraCaptureProcessor.CaptureParameter)paramList.next();
-      localArrayList.add(new SemCameraCaptureProcessor.CaptureParameter(localCaptureParameter.getKey(), localCaptureParameter.getValue()));
+      localObject = (AbstractSemCameraCaptureProcessor.CaptureParameter)paramList.next();
+      localArrayList.add(new SemCameraCaptureProcessor.CaptureParameter(((AbstractSemCameraCaptureProcessor.CaptureParameter)localObject).getKey(), ((AbstractSemCameraCaptureProcessor.CaptureParameter)localObject).getValue()));
     }
-    Log.d(TAG, "getSemParameters: SemCaptureParametersSize: " + localArrayList.size());
+    paramList = TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getSemParameters: SemCaptureParametersSize: ");
+    ((StringBuilder)localObject).append(localArrayList.size());
+    Log.d(paramList, ((StringBuilder)localObject).toString());
     return localArrayList;
   }
   
   private void setFaceDetectMode(CaptureRequest.Builder paramBuilder)
   {
-    int j = 0;
-    int k;
-    if (this.mCharacteristics != null)
+    Object localObject = this.mCharacteristics;
+    if (localObject != null)
     {
-      int[] arrayOfInt = (int[])this.mCharacteristics.get(CameraCharacteristics.STATISTICS_INFO_AVAILABLE_FACE_DETECT_MODES);
-      int n = arrayOfInt.length;
+      localObject = (int[])((CameraCharacteristics)localObject).get(CameraCharacteristics.STATISTICS_INFO_AVAILABLE_FACE_DETECT_MODES);
+      int n = localObject.length;
       int i = 0;
-      k = 0;
-      if (i < n)
+      int j = 0;
+      int k = 0;
+      while (i < n)
       {
-        int i1 = arrayOfInt[i];
+        int i1 = localObject[i];
         int m;
-        if (i1 == 2) {
+        if (i1 == 2)
+        {
           m = 1;
         }
-        for (;;)
+        else
         {
-          i += 1;
-          j = m;
-          break;
           m = j;
           if (i1 == 1)
           {
@@ -92,40 +94,44 @@ public class SemCameraCaptureProcessor10_1
             m = j;
           }
         }
+        i += 1;
+        j = m;
       }
-      if (j == 0) {
-        break label99;
+      if (j != 0)
+      {
+        paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(2));
+        return;
       }
-      paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(2));
+      if (k != 0) {
+        paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(1));
+      }
     }
-    label99:
-    while (k == 0) {
-      return;
-    }
-    paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(1));
   }
   
   public CaptureRequest buildCaptureRequest(CaptureRequest.Builder paramBuilder)
   {
-    if (this.mSemCameraCaptureProcessor != null) {
-      try
-      {
-        CaptureRequest localCaptureRequest = this.mSemCameraCaptureProcessor.buildCaptureRequest(paramBuilder);
-        return localCaptureRequest;
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        return buildMultipleCaptureRequest(paramBuilder);
-      }
+    Object localObject = this.mSemCameraCaptureProcessor;
+    if (localObject != null) {}
+    try
+    {
+      localObject = ((SemCameraCaptureProcessor)localObject).buildCaptureRequest(paramBuilder);
+      return localObject;
     }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      label17:
+      break label17;
+    }
+    return buildMultipleCaptureRequest(paramBuilder);
     return paramBuilder.build();
   }
   
   public void capture(CameraCaptureSession paramCameraCaptureSession, CaptureResult paramCaptureResult, AbstractSemCameraCaptureProcessor.CaptureCallback paramCaptureCallback, Handler paramHandler, List<AbstractSemCameraCaptureProcessor.CaptureParameter> paramList)
   {
     this.mSDKCaptureCallback = paramCaptureCallback;
-    if (this.mSemCameraCaptureProcessor != null) {
-      this.mSemCameraCaptureProcessor.capture(paramCameraCaptureSession, new SemCameraCaptureProcessor.DynamicShotInfo(paramCaptureResult), this.mSemCaptureCallBack, paramHandler, getSemParameters(paramList));
+    paramCaptureCallback = this.mSemCameraCaptureProcessor;
+    if (paramCaptureCallback != null) {
+      paramCaptureCallback.capture(paramCameraCaptureSession, new SemCameraCaptureProcessor.DynamicShotInfo(paramCaptureResult), this.mSemCaptureCallBack, paramHandler, getSemParameters(paramList));
     }
   }
   
@@ -133,40 +139,54 @@ public class SemCameraCaptureProcessor10_1
   {
     if (this.mSemCameraCaptureProcessor != null)
     {
-      Log.i(TAG, "createSessionConfiguration: outputConfigurations " + paramList + "  stateCallback: " + paramStateCallback);
-      ArrayList localArrayList;
+      Object localObject1 = TAG;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("createSessionConfiguration: outputConfigurations ");
+      ((StringBuilder)localObject2).append(paramList);
+      ((StringBuilder)localObject2).append("  stateCallback: ");
+      ((StringBuilder)localObject2).append(paramStateCallback);
+      Log.i((String)localObject1, ((StringBuilder)localObject2).toString());
       try
       {
         this.mSessionConfiguration = this.mSemCameraCaptureProcessor.createSessionConfiguration(paramList, paramStateCallback, paramHandler);
-        SessionConfiguration localSessionConfiguration = this.mSessionConfiguration;
-        return localSessionConfiguration;
+        localObject1 = this.mSessionConfiguration;
+        return localObject1;
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        Log.i(TAG, "catch createSessionConfiguration exception !!!!!" + localIllegalStateException);
-        if (paramList == null) {
-          throw new IllegalArgumentException("Session cannot be null");
-        }
-        if (paramStateCallback == null) {
+        localObject2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("catch createSessionConfiguration exception !!!!!");
+        localStringBuilder.append(localIllegalStateException);
+        Log.i((String)localObject2, localStringBuilder.toString());
+        if (paramList != null)
+        {
+          if (paramStateCallback != null)
+          {
+            if (this.mSessionConfiguration != null)
+            {
+              ArrayList localArrayList = new ArrayList();
+              paramList = paramList.iterator();
+              while (paramList.hasNext()) {
+                localArrayList.add((OutputConfiguration)paramList.next());
+              }
+              paramList = this.mSessionConfiguration.getOutputConfigurations();
+              paramList = paramList.subList(Math.max(paramList.size() - 2, 0), paramList.size()).iterator();
+              while (paramList.hasNext()) {
+                localArrayList.add((OutputConfiguration)paramList.next());
+              }
+              if (paramHandler == null) {
+                paramList = this.mContext.getMainExecutor();
+              } else {
+                paramList = new SemCameraCaptureProcessor10_1.1(this, paramHandler);
+              }
+              return new SessionConfiguration(0, localArrayList, paramList, paramStateCallback);
+            }
+            throw new IllegalStateException("Called in wrong state");
+          }
           throw new IllegalArgumentException("statecallback cannot be null");
         }
-        if (this.mSessionConfiguration == null) {
-          throw new IllegalStateException("Called in wrong state");
-        }
-        localArrayList = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext()) {
-          localArrayList.add((OutputConfiguration)paramList.next());
-        }
-        paramList = this.mSessionConfiguration.getOutputConfigurations();
-        paramList = paramList.subList(Math.max(paramList.size() - 2, 0), paramList.size()).iterator();
-        while (paramList.hasNext()) {
-          localArrayList.add((OutputConfiguration)paramList.next());
-        }
-        if (paramHandler != null) {}
-      }
-      for (paramList = this.mContext.getMainExecutor();; paramList = new SemCameraCaptureProcessor10_1.1(this, paramHandler)) {
-        return new SessionConfiguration(0, localArrayList, paramList, paramStateCallback);
+        throw new IllegalArgumentException("Session cannot be null");
       }
     }
     return null;
@@ -174,8 +194,9 @@ public class SemCameraCaptureProcessor10_1
   
   public CameraDevice.StateCallback createStateCallback(CameraDevice.StateCallback paramStateCallback, Handler paramHandler)
   {
-    if (this.mSemCameraCaptureProcessor != null) {
-      return this.mSemCameraCaptureProcessor.createStateCallback(paramStateCallback, paramHandler);
+    SemCameraCaptureProcessor localSemCameraCaptureProcessor = this.mSemCameraCaptureProcessor;
+    if (localSemCameraCaptureProcessor != null) {
+      return localSemCameraCaptureProcessor.createStateCallback(paramStateCallback, paramHandler);
     }
     return null;
   }
@@ -233,7 +254,7 @@ public class SemCameraCaptureProcessor10_1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.delegator.SemCameraCaptureProcessor10_1
  * JD-Core Version:    0.7.0.1
  */

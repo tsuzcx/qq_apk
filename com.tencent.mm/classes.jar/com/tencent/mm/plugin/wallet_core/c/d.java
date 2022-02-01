@@ -2,112 +2,109 @@ package com.tencent.mm.plugin.wallet_core.c;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.protocal.protobuf.so;
-import com.tencent.mm.protocal.protobuf.sp;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.u;
-import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.abg;
+import com.tencent.mm.protocal.protobuf.ecj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.aa;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class d
-  extends u
+  extends w
 {
-  private f callback;
-  public b rr;
-  public int ubr;
+  public int Vxw;
+  private com.tencent.mm.am.h callback;
+  public c rr;
   
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, String paramString7, String paramString8, String paramString9, int paramInt2)
   {
-    AppMethodBeat.i(46489);
-    this.ubr = 0;
-    this.ubr = paramInt1;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new so();
-    ((b.a)localObject).fsY = new sp();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/checkpayjsapi";
-    ((b.a)localObject).funcId = 580;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (so)this.rr.fsV.fta;
-    ((so)localObject).fKw = paramString1;
-    ((so)localObject).wvC = paramString2;
-    ((so)localObject).wKV = paramString3;
-    ((so)localObject).wKW = paramString4;
-    ((so)localObject).wKY = paramString5;
-    ((so)localObject).wKX = paramString6;
-    ((so)localObject).wKZ = paramInt1;
-    ((so)localObject).jJA = paramString7;
-    ((so)localObject).nuv = paramString8;
-    ((so)localObject).woH = 2;
-    ((so)localObject).wLc = paramString9;
-    ((so)localObject).wLb = paramInt2;
-    ((so)localObject).wDH = m.cTC();
-    if (x.dSp()) {
-      ((so)localObject).wLa = x.dSr();
+    AppMethodBeat.i(69891);
+    this.Vxw = 0;
+    this.Vxw = paramInt1;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new abf();
+    ((c.a)localObject).otF = new abg();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/checkpayjsapi";
+    ((c.a)localObject).funcId = 580;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (abf)c.b.b(this.rr.otB);
+    ((abf)localObject).oOI = paramString1;
+    ((abf)localObject).YNW = paramString2;
+    ((abf)localObject).ZjI = paramString3;
+    ((abf)localObject).ZjJ = paramString4;
+    ((abf)localObject).ZjL = paramString5;
+    ((abf)localObject).ZjK = paramString6;
+    ((abf)localObject).ZjM = paramInt1;
+    ((abf)localObject).UserName = paramString7;
+    ((abf)localObject).IcT = paramString8;
+    ((abf)localObject).YFx = 2;
+    ((abf)localObject).ZjP = paramString9;
+    ((abf)localObject).ZjO = paramInt2;
+    ((abf)localObject).Zbi = k.iis();
+    if (aa.jOO()) {
+      ((abf)localObject).ZjN = aa.getBindCardUuid();
     }
-    ab.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, UserName: %s, path: %s", new Object[] { paramString1, paramString7, paramString8 });
-    AppMethodBeat.o(46489);
+    Log.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, UserName: %s, path: %s", new Object[] { paramString1, paramString7, paramString8 });
+    AppMethodBeat.o(69891);
   }
   
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, String paramString8, int paramInt2)
   {
-    AppMethodBeat.i(46488);
-    this.ubr = 0;
-    this.ubr = paramInt1;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new so();
-    ((b.a)localObject).fsY = new sp();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/checkpayjsapi";
-    ((b.a)localObject).funcId = 580;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (so)this.rr.fsV.fta;
-    ((so)localObject).fKw = paramString1;
-    ((so)localObject).wvC = paramString2;
-    ((so)localObject).wKV = paramString3;
-    ((so)localObject).wKW = paramString4;
-    ((so)localObject).wKY = paramString5;
-    ((so)localObject).wKX = paramString6;
-    ((so)localObject).wJT = paramString7;
-    ((so)localObject).wKZ = paramInt1;
-    ((so)localObject).wDH = m.cTC();
-    if (x.dSp()) {
-      ((so)localObject).wLa = x.dSr();
+    AppMethodBeat.i(69890);
+    this.Vxw = 0;
+    this.Vxw = paramInt1;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new abf();
+    ((c.a)localObject).otF = new abg();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/checkpayjsapi";
+    ((c.a)localObject).funcId = 580;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (abf)c.b.b(this.rr.otB);
+    ((abf)localObject).oOI = paramString1;
+    ((abf)localObject).YNW = paramString2;
+    ((abf)localObject).ZjI = paramString3;
+    ((abf)localObject).ZjJ = paramString4;
+    ((abf)localObject).ZjL = paramString5;
+    ((abf)localObject).ZjK = paramString6;
+    ((abf)localObject).ZiL = paramString7;
+    ((abf)localObject).ZjM = paramInt1;
+    ((abf)localObject).Zbi = k.iis();
+    if (aa.jOO()) {
+      ((abf)localObject).ZjN = aa.getBindCardUuid();
     }
-    ((so)localObject).woH = 1;
-    ((so)localObject).wLc = paramString8;
-    ((so)localObject).wLb = paramInt2;
-    ab.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, url: %s, jsapiScene: %s", new Object[] { paramString1, paramString7, Integer.valueOf(paramInt1) });
-    AppMethodBeat.o(46488);
+    ((abf)localObject).YFx = 1;
+    ((abf)localObject).ZjP = paramString8;
+    ((abf)localObject).ZjO = paramInt2;
+    Log.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, url: %s, jsapiScene: %s", new Object[] { paramString1, paramString7, Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(69890);
   }
   
-  public final String cSW()
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    return ((sp)this.rr.fsW.fta).wgF;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(46490);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(46490);
+    AppMethodBeat.i(69892);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(69892);
     return i;
   }
   
   public final String getToken()
   {
-    return ((sp)this.rr.fsW.fta).token;
+    AppMethodBeat.i(301128);
+    String str = ((abg)c.c.b(this.rr.otC)).token;
+    AppMethodBeat.o(301128);
+    return str;
   }
   
   public final int getType()
@@ -115,49 +112,65 @@ public final class d
     return 580;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public final String ihJ()
   {
-    AppMethodBeat.i(142393);
-    ab.d("MicroMsg.NetSceneCheckPayJsapi", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(301129);
+    String str = ((abg)c.c.b(this.rr.otC)).YvQ;
+    AppMethodBeat.o(301129);
+    return str;
+  }
+  
+  public final ecj ihK()
+  {
+    AppMethodBeat.i(301132);
+    ecj localecj = ((abg)c.c.b(this.rr.otC)).ZjQ;
+    AppMethodBeat.o(301132);
+    return localecj;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(69893);
+    Log.d("MicroMsg.NetSceneCheckPayJsapi", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     paramArrayOfByte = paramString;
     if (paramInt2 == 0)
     {
       paramArrayOfByte = paramString;
       if (paramInt3 == 0)
       {
-        paramString = (sp)((b)paramq).fsW.fta;
-        ab.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.lGK + " resp.ErrMsg is " + paramString.lGL);
-        paramq = (so)((b)paramq).fsV.fta;
-        if (paramq.wJT == null) {
-          break label410;
+        paramString = (abg)c.c.b(((c)params).otC);
+        Log.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.ytv + " resp.ErrMsg is " + paramString.ytw);
+        params = (abf)c.b.b(((c)params).otB);
+        if (params.ZiL == null) {
+          break label412;
         }
-        paramArrayOfByte = Uri.parse(paramq.wJT).getQueryParameter("appid");
-        if (paramArrayOfByte == paramq.fKw) {
-          break label321;
+        paramArrayOfByte = Uri.parse(params.ZiL).getQueryParameter("appid");
+        if (paramArrayOfByte == params.oOI) {
+          break label322;
         }
-        h.qsU.e(14954, new Object[] { paramString.wgF, "", Integer.valueOf(paramq.wKZ), paramq.wLc, paramq.fKw, Integer.valueOf(paramq.woH), Integer.valueOf(paramq.wLb), paramq.wJT, paramArrayOfByte });
+        com.tencent.mm.plugin.report.service.h.OAn.b(14954, new Object[] { paramString.YvQ, "", Integer.valueOf(params.ZjM), params.ZjP, params.oOI, Integer.valueOf(params.YFx), Integer.valueOf(params.ZjO), params.ZiL, paramArrayOfByte });
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.lGK + " resp.ErrMsg is " + paramString.lGL);
-      paramArrayOfByte = paramString.lGL;
+      Log.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.ytv + " resp.ErrMsg is " + paramString.ytw);
+      paramArrayOfByte = paramString.ytw;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramArrayOfByte, this);
-      AppMethodBeat.o(142393);
+      AppMethodBeat.o(69893);
       return;
-      label321:
-      h.qsU.e(14954, new Object[] { paramString.wgF, "", Integer.valueOf(paramq.wKZ), paramq.wLc, paramq.fKw, Integer.valueOf(paramq.woH), Integer.valueOf(paramq.wLb), paramq.wJT });
+      label322:
+      com.tencent.mm.plugin.report.service.h.OAn.b(14954, new Object[] { paramString.YvQ, "", Integer.valueOf(params.ZjM), params.ZjP, params.oOI, Integer.valueOf(params.YFx), Integer.valueOf(params.ZjO), params.ZiL });
       continue;
-      label410:
-      if ((paramq.jJA != null) && (paramq.nuv != null)) {
-        h.qsU.e(14954, new Object[] { paramString.wgF, "", Integer.valueOf(paramq.wKZ), paramq.wLc, paramq.fKw, Integer.valueOf(paramq.woH), Integer.valueOf(paramq.wLb), paramq.nuv, paramq.jJA });
+      label412:
+      if ((params.UserName != null) && (params.IcT != null)) {
+        com.tencent.mm.plugin.report.service.h.OAn.b(14954, new Object[] { paramString.YvQ, "", Integer.valueOf(params.ZjM), params.ZjP, params.oOI, Integer.valueOf(params.YFx), Integer.valueOf(params.ZjO), params.IcT, params.UserName });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.d
  * JD-Core Version:    0.7.0.1
  */

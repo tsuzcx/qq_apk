@@ -1,166 +1,549 @@
 package com.tencent.mm.kiss.widget.textview.b;
 
-import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
+import android.text.StaticLayout.Builder;
 import android.text.TextDirectionHeuristic;
-import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 
 public class a
 {
-  private static boolean eGH;
-  private static boolean eMj;
-  private static Constructor<StaticLayout> eMk;
-  private static Object eMl;
+  private static Constructor<StaticLayout> bur;
+  private static Object mHp;
   
+  /* Error */
   public static StaticLayout a(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
   {
-    try
-    {
-      AppMethodBeat.i(105818);
-      ensureInitialized();
-      if (eMj)
-      {
-        paramCharSequence = new IllegalStateException("initialize error, cannot create StaticLayout");
-        AppMethodBeat.o(105818);
-        throw paramCharSequence;
-      }
-    }
-    finally {}
-    try
-    {
-      Object localObject = eMl;
-      paramCharSequence = (StaticLayout)eMk.newInstance(new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramTextPaint, Integer.valueOf(paramInt3), paramAlignment, localObject, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean), paramTruncateAt, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-      AppMethodBeat.o(105818);
-      return paramCharSequence;
-    }
-    catch (Exception paramCharSequence)
-    {
-      paramCharSequence = new IllegalStateException("Error creating StaticLayout with max lines: " + paramCharSequence.getCause());
-      AppMethodBeat.o(105818);
-      throw paramCharSequence;
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 19
+    //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 29	com/tencent/mm/kiss/widget/textview/b/a:bbT	()Ljava/lang/Object;
+    //   11: astore 12
+    //   13: invokestatic 33	com/tencent/mm/kiss/widget/textview/b/a:bbU	()Ljava/lang/reflect/Constructor;
+    //   16: astore 13
+    //   18: aload 13
+    //   20: ifnonnull +42 -> 62
+    //   23: aload_0
+    //   24: iload_1
+    //   25: iload_2
+    //   26: aload_3
+    //   27: iload 4
+    //   29: aload 5
+    //   31: aload 12
+    //   33: checkcast 35	android/text/TextDirectionHeuristic
+    //   36: fload 6
+    //   38: fload 7
+    //   40: iload 8
+    //   42: aload 9
+    //   44: iload 10
+    //   46: iload 11
+    //   48: invokestatic 38	com/tencent/mm/kiss/widget/textview/b/a:a	(Ljava/lang/CharSequence;IILandroid/text/TextPaint;ILandroid/text/Layout$Alignment;Landroid/text/TextDirectionHeuristic;FFZLandroid/text/TextUtils$TruncateAt;II)Landroid/text/StaticLayout;
+    //   51: astore_0
+    //   52: ldc 19
+    //   54: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: ldc 2
+    //   59: monitorexit
+    //   60: aload_0
+    //   61: areturn
+    //   62: aload 13
+    //   64: bipush 13
+    //   66: anewarray 4	java/lang/Object
+    //   69: dup
+    //   70: iconst_0
+    //   71: aload_0
+    //   72: aastore
+    //   73: dup
+    //   74: iconst_1
+    //   75: iload_1
+    //   76: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   79: aastore
+    //   80: dup
+    //   81: iconst_2
+    //   82: iload_2
+    //   83: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   86: aastore
+    //   87: dup
+    //   88: iconst_3
+    //   89: aload_3
+    //   90: aastore
+    //   91: dup
+    //   92: iconst_4
+    //   93: iload 4
+    //   95: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   98: aastore
+    //   99: dup
+    //   100: iconst_5
+    //   101: aload 5
+    //   103: aastore
+    //   104: dup
+    //   105: bipush 6
+    //   107: aload 12
+    //   109: aastore
+    //   110: dup
+    //   111: bipush 7
+    //   113: fload 6
+    //   115: invokestatic 52	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   118: aastore
+    //   119: dup
+    //   120: bipush 8
+    //   122: fload 7
+    //   124: invokestatic 52	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   127: aastore
+    //   128: dup
+    //   129: bipush 9
+    //   131: iload 8
+    //   133: invokestatic 57	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   136: aastore
+    //   137: dup
+    //   138: bipush 10
+    //   140: aload 9
+    //   142: aastore
+    //   143: dup
+    //   144: bipush 11
+    //   146: iload 10
+    //   148: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   151: aastore
+    //   152: dup
+    //   153: bipush 12
+    //   155: iload 11
+    //   157: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   160: aastore
+    //   161: invokevirtual 63	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   164: checkcast 65	android/text/StaticLayout
+    //   167: astore_0
+    //   168: ldc 19
+    //   170: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   173: goto -116 -> 57
+    //   176: astore_0
+    //   177: ldc 2
+    //   179: monitorexit
+    //   180: aload_0
+    //   181: athrow
+    //   182: astore_0
+    //   183: new 67	java/lang/IllegalStateException
+    //   186: dup
+    //   187: new 69	java/lang/StringBuilder
+    //   190: dup
+    //   191: ldc 71
+    //   193: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   196: aload_0
+    //   197: invokevirtual 78	java/lang/Exception:getCause	()Ljava/lang/Throwable;
+    //   200: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokespecial 87	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   209: astore_0
+    //   210: ldc 19
+    //   212: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   215: aload_0
+    //   216: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	217	0	paramCharSequence	CharSequence
+    //   0	217	1	paramInt1	int
+    //   0	217	2	paramInt2	int
+    //   0	217	3	paramTextPaint	TextPaint
+    //   0	217	4	paramInt3	int
+    //   0	217	5	paramAlignment	Layout.Alignment
+    //   0	217	6	paramFloat1	float
+    //   0	217	7	paramFloat2	float
+    //   0	217	8	paramBoolean	boolean
+    //   0	217	9	paramTruncateAt	TextUtils.TruncateAt
+    //   0	217	10	paramInt4	int
+    //   0	217	11	paramInt5	int
+    //   11	97	12	localObject	Object
+    //   16	47	13	localConstructor	Constructor
+    // Exception table:
+    //   from	to	target	type
+    //   3	8	176	finally
+    //   8	18	176	finally
+    //   23	52	176	finally
+    //   52	57	176	finally
+    //   62	168	176	finally
+    //   168	173	176	finally
+    //   183	217	176	finally
+    //   8	18	182	java/lang/Exception
+    //   23	52	182	java/lang/Exception
+    //   62	168	182	java/lang/Exception
   }
   
-  public static StaticLayout a(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, TextDirectionHeuristic paramTextDirectionHeuristic, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
+  private static StaticLayout a(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, TextDirectionHeuristic paramTextDirectionHeuristic, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
   {
-    try
-    {
-      AppMethodBeat.i(105819);
-      ensureInitialized();
-      if (eMj)
-      {
-        paramCharSequence = new IllegalStateException("initialize error, cannot create StaticLayout");
-        AppMethodBeat.o(105819);
-        throw paramCharSequence;
-      }
-    }
-    finally {}
-    try
-    {
-      paramCharSequence = (StaticLayout)eMk.newInstance(new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramTextPaint, Integer.valueOf(paramInt3), paramAlignment, paramTextDirectionHeuristic, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean), paramTruncateAt, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-      AppMethodBeat.o(105819);
-      return paramCharSequence;
-    }
-    catch (Exception paramCharSequence)
-    {
-      paramCharSequence = new IllegalStateException("Error creating StaticLayout with max lines: " + paramCharSequence.getCause());
-      AppMethodBeat.o(105819);
-      throw paramCharSequence;
-    }
+    AppMethodBeat.i(233765);
+    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3).setAlignment(paramAlignment).setTextDirection(paramTextDirectionHeuristic).setLineSpacing(paramFloat2, paramFloat1).setIncludePad(paramBoolean).setEllipsizedWidth(paramInt4).setEllipsize(paramTruncateAt).setMaxLines(paramInt5).build();
+    AppMethodBeat.o(233765);
+    return paramCharSequence;
   }
   
-  @TargetApi(18)
-  private static void ensureInitialized()
+  /* Error */
+  public static StaticLayout b(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, TextDirectionHeuristic paramTextDirectionHeuristic, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4, int paramInt5)
   {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 127
+    //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 29	com/tencent/mm/kiss/widget/textview/b/a:bbT	()Ljava/lang/Object;
+    //   11: astore 13
+    //   13: invokestatic 33	com/tencent/mm/kiss/widget/textview/b/a:bbU	()Ljava/lang/reflect/Constructor;
+    //   16: astore 14
+    //   18: aload 14
+    //   20: ifnonnull +42 -> 62
+    //   23: aload_0
+    //   24: iload_1
+    //   25: iload_2
+    //   26: aload_3
+    //   27: iload 4
+    //   29: aload 5
+    //   31: aload 13
+    //   33: checkcast 35	android/text/TextDirectionHeuristic
+    //   36: fload 7
+    //   38: fload 8
+    //   40: iload 9
+    //   42: aload 10
+    //   44: iload 11
+    //   46: iload 12
+    //   48: invokestatic 38	com/tencent/mm/kiss/widget/textview/b/a:a	(Ljava/lang/CharSequence;IILandroid/text/TextPaint;ILandroid/text/Layout$Alignment;Landroid/text/TextDirectionHeuristic;FFZLandroid/text/TextUtils$TruncateAt;II)Landroid/text/StaticLayout;
+    //   51: astore_0
+    //   52: ldc 127
+    //   54: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: ldc 2
+    //   59: monitorexit
+    //   60: aload_0
+    //   61: areturn
+    //   62: aload 14
+    //   64: bipush 13
+    //   66: anewarray 4	java/lang/Object
+    //   69: dup
+    //   70: iconst_0
+    //   71: aload_0
+    //   72: aastore
+    //   73: dup
+    //   74: iconst_1
+    //   75: iload_1
+    //   76: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   79: aastore
+    //   80: dup
+    //   81: iconst_2
+    //   82: iload_2
+    //   83: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   86: aastore
+    //   87: dup
+    //   88: iconst_3
+    //   89: aload_3
+    //   90: aastore
+    //   91: dup
+    //   92: iconst_4
+    //   93: iload 4
+    //   95: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   98: aastore
+    //   99: dup
+    //   100: iconst_5
+    //   101: aload 5
+    //   103: aastore
+    //   104: dup
+    //   105: bipush 6
+    //   107: aload 6
+    //   109: aastore
+    //   110: dup
+    //   111: bipush 7
+    //   113: fload 7
+    //   115: invokestatic 52	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   118: aastore
+    //   119: dup
+    //   120: bipush 8
+    //   122: fload 8
+    //   124: invokestatic 52	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   127: aastore
+    //   128: dup
+    //   129: bipush 9
+    //   131: iload 9
+    //   133: invokestatic 57	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   136: aastore
+    //   137: dup
+    //   138: bipush 10
+    //   140: aload 10
+    //   142: aastore
+    //   143: dup
+    //   144: bipush 11
+    //   146: iload 11
+    //   148: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   151: aastore
+    //   152: dup
+    //   153: bipush 12
+    //   155: iload 12
+    //   157: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   160: aastore
+    //   161: invokevirtual 63	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   164: checkcast 65	android/text/StaticLayout
+    //   167: astore_0
+    //   168: ldc 127
+    //   170: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   173: goto -116 -> 57
+    //   176: astore_0
+    //   177: ldc 2
+    //   179: monitorexit
+    //   180: aload_0
+    //   181: athrow
+    //   182: astore_0
+    //   183: new 67	java/lang/IllegalStateException
+    //   186: dup
+    //   187: new 69	java/lang/StringBuilder
+    //   190: dup
+    //   191: ldc 71
+    //   193: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   196: aload_0
+    //   197: invokevirtual 78	java/lang/Exception:getCause	()Ljava/lang/Throwable;
+    //   200: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokespecial 87	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   209: astore_0
+    //   210: ldc 127
+    //   212: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   215: aload_0
+    //   216: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	217	0	paramCharSequence	CharSequence
+    //   0	217	1	paramInt1	int
+    //   0	217	2	paramInt2	int
+    //   0	217	3	paramTextPaint	TextPaint
+    //   0	217	4	paramInt3	int
+    //   0	217	5	paramAlignment	Layout.Alignment
+    //   0	217	6	paramTextDirectionHeuristic	TextDirectionHeuristic
+    //   0	217	7	paramFloat1	float
+    //   0	217	8	paramFloat2	float
+    //   0	217	9	paramBoolean	boolean
+    //   0	217	10	paramTruncateAt	TextUtils.TruncateAt
+    //   0	217	11	paramInt4	int
+    //   0	217	12	paramInt5	int
+    //   11	21	13	localObject	Object
+    //   16	47	14	localConstructor	Constructor
+    // Exception table:
+    //   from	to	target	type
+    //   3	8	176	finally
+    //   8	18	176	finally
+    //   23	52	176	finally
+    //   52	57	176	finally
+    //   62	168	176	finally
+    //   168	173	176	finally
+    //   183	217	176	finally
+    //   8	18	182	java/lang/Exception
+    //   23	52	182	java/lang/Exception
+    //   62	168	182	java/lang/Exception
+  }
+  
+  /* Error */
+  private static Object bbT()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 134
+    //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 136	com/tencent/mm/kiss/widget/textview/b/a:mHp	Ljava/lang/Object;
+    //   11: ifnull +17 -> 28
+    //   14: getstatic 136	com/tencent/mm/kiss/widget/textview/b/a:mHp	Ljava/lang/Object;
+    //   17: astore_0
+    //   18: ldc 134
+    //   20: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 142	android/os/Build$VERSION:SDK_INT	I
+    //   31: bipush 18
+    //   33: if_icmplt +27 -> 60
+    //   36: getstatic 148	android/text/TextDirectionHeuristics:FIRSTSTRONG_LTR	Landroid/text/TextDirectionHeuristic;
+    //   39: putstatic 136	com/tencent/mm/kiss/widget/textview/b/a:mHp	Ljava/lang/Object;
+    //   42: getstatic 136	com/tencent/mm/kiss/widget/textview/b/a:mHp	Ljava/lang/Object;
+    //   45: astore_0
+    //   46: ldc 134
+    //   48: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: goto -28 -> 23
+    //   54: astore_0
+    //   55: ldc 2
+    //   57: monitorexit
+    //   58: aload_0
+    //   59: athrow
+    //   60: ldc 2
+    //   62: invokevirtual 154	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   65: ldc 156
+    //   67: invokevirtual 162	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   70: astore_0
+    //   71: aload_0
+    //   72: ldc 163
+    //   74: invokevirtual 167	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   77: aload_0
+    //   78: invokevirtual 173	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   81: putstatic 136	com/tencent/mm/kiss/widget/textview/b/a:mHp	Ljava/lang/Object;
+    //   84: goto -42 -> 42
+    //   87: astore_0
+    //   88: ldc 175
+    //   90: aload_0
+    //   91: ldc 177
+    //   93: iconst_0
+    //   94: anewarray 4	java/lang/Object
+    //   97: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   100: ldc 175
+    //   102: new 69	java/lang/StringBuilder
+    //   105: dup
+    //   106: ldc 185
+    //   108: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   111: aload_0
+    //   112: invokevirtual 190	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   115: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 197	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: new 199	java/lang/RuntimeException
+    //   127: dup
+    //   128: aload_0
+    //   129: invokespecial 202	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   132: astore_0
+    //   133: ldc 134
+    //   135: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: aload_0
+    //   139: athrow
+    //   140: astore_0
+    //   141: ldc 175
+    //   143: aload_0
+    //   144: ldc 204
+    //   146: iconst_0
+    //   147: anewarray 4	java/lang/Object
+    //   150: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   153: goto -53 -> 100
+    //   156: astore_0
+    //   157: ldc 175
+    //   159: aload_0
+    //   160: ldc 206
+    //   162: iconst_0
+    //   163: anewarray 4	java/lang/Object
+    //   166: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   169: goto -69 -> 100
+    //   172: astore_0
+    //   173: ldc 175
+    //   175: aload_0
+    //   176: ldc 208
+    //   178: iconst_0
+    //   179: anewarray 4	java/lang/Object
+    //   182: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   185: goto -85 -> 100
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   17	29	0	localObject1	Object
+    //   54	5	0	localObject2	Object
+    //   70	8	0	localClass	Class
+    //   87	42	0	localClassNotFoundException	ClassNotFoundException
+    //   132	7	0	localRuntimeException	java.lang.RuntimeException
+    //   140	4	0	localNoSuchFieldException	java.lang.NoSuchFieldException
+    //   156	4	0	localIllegalAccessException	java.lang.IllegalAccessException
+    //   172	4	0	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   3	23	54	finally
+    //   46	51	54	finally
+    //   88	100	54	finally
+    //   100	140	54	finally
+    //   141	153	54	finally
+    //   157	169	54	finally
+    //   173	185	54	finally
+    //   28	42	87	java/lang/ClassNotFoundException
+    //   42	46	87	java/lang/ClassNotFoundException
+    //   60	84	87	java/lang/ClassNotFoundException
+    //   28	42	140	java/lang/NoSuchFieldException
+    //   42	46	140	java/lang/NoSuchFieldException
+    //   60	84	140	java/lang/NoSuchFieldException
+    //   28	42	156	java/lang/IllegalAccessException
+    //   42	46	156	java/lang/IllegalAccessException
+    //   60	84	156	java/lang/IllegalAccessException
+    //   28	42	172	finally
+    //   42	46	172	finally
+    //   60	84	172	finally
+  }
+  
+  private static Constructor<StaticLayout> bbU()
+  {
+    Object localObject4 = null;
+    int i = 1;
     for (;;)
     {
-      Object localObject1;
       try
       {
-        AppMethodBeat.i(105817);
-        if (eGH)
+        AppMethodBeat.i(233764);
+        Object localObject1;
+        if (bur != null)
         {
-          AppMethodBeat.o(105817);
-          return;
+          localObject1 = bur;
+          AppMethodBeat.o(233764);
+          return localObject1;
         }
+        if (Build.VERSION.SDK_INT >= 29)
+        {
+          if (i == 0) {
+            break label65;
+          }
+          AppMethodBeat.o(233764);
+          localObject1 = localObject4;
+          continue;
+        }
+        i = 0;
       }
       finally {}
-      try
-      {
-        if (Build.VERSION.SDK_INT < 18) {
-          break label180;
-        }
-        localObject1 = TextDirectionHeuristic.class;
-        eMl = TextDirectionHeuristics.FIRSTSTRONG_LTR;
-        localObject1 = StaticLayout.class.getDeclaredConstructor(new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, localObject1, Float.TYPE, Float.TYPE, Boolean.TYPE, TextUtils.TruncateAt.class, Integer.TYPE, Integer.TYPE });
-        eMk = (Constructor)localObject1;
-        ((Constructor)localObject1).setAccessible(true);
-        eGH = true;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        Object localObject4;
-        Class localClass;
-        ab.e("StaticTextView.StaticLayoutWithMaxLines", "StaticLayout constructor with max lines not found.", new Object[] { localNoSuchMethodException });
-        eMj = true;
-        eGH = true;
-        continue;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        ab.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristic class not found.", new Object[] { localClassNotFoundException });
-        eMj = true;
-        eGH = true;
-        continue;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        ab.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristics.FIRSTSTRONG_LTR not found.", new Object[] { localNoSuchFieldException });
-        eMj = true;
-        eGH = true;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        ab.e("StaticTextView.StaticLayoutWithMaxLines", "TextDirectionHeuristics.FIRSTSTRONG_LTR not accessible.", new Object[] { localIllegalAccessException });
-        eMj = true;
-        eGH = true;
-        continue;
-      }
-      catch (Exception localException)
-      {
-        ab.e("StaticTextView.StaticLayoutWithMaxLines", "Other error.", new Object[] { localException });
-        eMj = true;
-        eGH = true;
-        continue;
-      }
-      finally
-      {
-        eGH = true;
-        AppMethodBeat.o(105817);
-      }
-      ab.i("StaticTextView.StaticLayoutWithMaxLines", "ensureInitialized finish, sInitialError: " + eMj);
-      AppMethodBeat.o(105817);
       continue;
-      label180:
-      localObject4 = a.class.getClassLoader();
-      localClass = ((ClassLoader)localObject4).loadClass("android.text.TextDirectionHeuristic");
-      localObject4 = ((ClassLoader)localObject4).loadClass("android.text.TextDirectionHeuristics");
-      eMl = ((Class)localObject4).getField("FIRSTSTRONG_LTR").get(localObject4);
+      for (;;)
+      {
+        try
+        {
+          label65:
+          if (Build.VERSION.SDK_INT < 18) {
+            continue;
+          }
+          localObject3 = TextDirectionHeuristic.class;
+          localObject3 = StaticLayout.class.getDeclaredConstructor(new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, localObject3, Float.TYPE, Float.TYPE, Boolean.TYPE, TextUtils.TruncateAt.class, Integer.TYPE, Integer.TYPE });
+          bur = (Constructor)localObject3;
+          ((Constructor)localObject3).setAccessible(true);
+          localObject3 = null;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          Object localObject3;
+          Log.printErrStackTrace("StaticTextView.StaticLayoutWithMaxLines", localNoSuchMethodException, "StaticLayout constructor with max lines not found.", new Object[0]);
+          continue;
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          Log.printErrStackTrace("StaticTextView.StaticLayoutWithMaxLines", localClassNotFoundException, "TextDirectionHeuristic class not found.", new Object[0]);
+          continue;
+        }
+        finally
+        {
+          Log.printErrStackTrace("StaticTextView.StaticLayoutWithMaxLines", localThrowable, "Other error.", new Object[0]);
+          continue;
+          Constructor localConstructor = bur;
+          AppMethodBeat.o(233764);
+        }
+        if (localObject3 == null) {
+          continue;
+        }
+        Log.w("StaticTextView.StaticLayoutWithMaxLines", "create StaticLayout constructor fail: " + ((Throwable)localObject3).getMessage());
+        Log.w("StaticTextView.StaticLayoutWithMaxLines", "use builtin StaticLayout.Builder as fallback!");
+        AppMethodBeat.o(233764);
+        localObject3 = localObject4;
+        break;
+        localObject3 = a.class.getClassLoader().loadClass("android.text.TextDirectionHeuristic");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.b.a
  * JD-Core Version:    0.7.0.1
  */

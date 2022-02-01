@@ -8,20 +8,21 @@ public final class entrance_cfg
   extends JceStruct
 {
   static st_report_info cache_stReportInfo = new st_report_info();
-  public int iEntranceId;
-  public int isAnchor;
-  public int isDefualt;
+  public int iEntranceId = 0;
+  public int isAnchor = 0;
+  public int isCanNotShowOnTeenagerMod = 0;
+  public int isDefualt = 0;
   public String sEntranceAction = "";
   public String sEntranceIcon = "";
   public String sEntranceName = "";
   public String sQbossEntranceIcon = "";
   public String sQbossTraceInfo = "";
-  public st_report_info stReportInfo;
-  public int tabid;
+  public st_report_info stReportInfo = null;
+  public int tabid = 0;
   
   public entrance_cfg() {}
   
-  public entrance_cfg(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4, String paramString5, int paramInt4, st_report_info paramst_report_info)
+  public entrance_cfg(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4, String paramString5, int paramInt4, st_report_info paramst_report_info, int paramInt5)
   {
     this.iEntranceId = paramInt1;
     this.sEntranceName = paramString1;
@@ -33,6 +34,7 @@ public final class entrance_cfg
     this.sQbossTraceInfo = paramString5;
     this.isAnchor = paramInt4;
     this.stReportInfo = paramst_report_info;
+    this.isCanNotShowOnTeenagerMod = paramInt5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -47,37 +49,45 @@ public final class entrance_cfg
     this.sQbossTraceInfo = paramJceInputStream.readString(7, false);
     this.isAnchor = paramJceInputStream.read(this.isAnchor, 8, false);
     this.stReportInfo = ((st_report_info)paramJceInputStream.read(cache_stReportInfo, 9, false));
+    this.isCanNotShowOnTeenagerMod = paramJceInputStream.read(this.isCanNotShowOnTeenagerMod, 10, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iEntranceId, 0);
-    if (this.sEntranceName != null) {
-      paramJceOutputStream.write(this.sEntranceName, 1);
+    Object localObject = this.sEntranceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.sEntranceIcon != null) {
-      paramJceOutputStream.write(this.sEntranceIcon, 2);
+    localObject = this.sEntranceIcon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.sEntranceAction != null) {
-      paramJceOutputStream.write(this.sEntranceAction, 3);
+    localObject = this.sEntranceAction;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.isDefualt, 4);
     paramJceOutputStream.write(this.tabid, 5);
-    if (this.sQbossEntranceIcon != null) {
-      paramJceOutputStream.write(this.sQbossEntranceIcon, 6);
+    localObject = this.sQbossEntranceIcon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.sQbossTraceInfo != null) {
-      paramJceOutputStream.write(this.sQbossTraceInfo, 7);
+    localObject = this.sQbossTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.isAnchor, 8);
-    if (this.stReportInfo != null) {
-      paramJceOutputStream.write(this.stReportInfo, 9);
+    localObject = this.stReportInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
+    paramJceOutputStream.write(this.isCanNotShowOnTeenagerMod, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.entrance_cfg
  * JD-Core Version:    0.7.0.1
  */

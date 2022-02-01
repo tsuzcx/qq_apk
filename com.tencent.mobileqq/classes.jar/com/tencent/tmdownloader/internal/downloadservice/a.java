@@ -33,8 +33,10 @@ public class a
       {
         ab.d("AppUtils", "package invaild del file, return false");
         paramString = new File(paramString);
-        if (paramString.exists()) {
+        if (paramString.exists())
+        {
           paramString.delete();
+          return false;
         }
       }
       else
@@ -57,7 +59,10 @@ public class a
         if (localObject1 == null) {
           localObject2 = Uri.fromFile(new File(paramString));
         }
-        ab.c("AppUtils", "uri:" + localObject2);
+        paramString = new StringBuilder();
+        paramString.append("uri:");
+        paramString.append(localObject2);
+        ab.c("AppUtils", paramString.toString());
         localIntent.setDataAndType((Uri)localObject2, "application/vnd.android.package-archive");
         localIntent.addFlags(268435456);
         GlobalUtil.getInstance().getContext().startActivity(localIntent);
@@ -75,9 +80,10 @@ public class a
   
   public static boolean a(String paramString, int paramInt)
   {
+    boolean bool3 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString)) {}
+    if (!bool3) {}
     try
     {
       int i = GlobalUtil.getInstance().getContext().getPackageManager().getPackageInfo(paramString, 0).versionCode;
@@ -93,30 +99,28 @@ public class a
   
   public static String b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
+    }
+    try
+    {
+      paramString = GlobalUtil.getInstance().getContext().getPackageManager().getPackageArchiveInfo(paramString, 1);
+      if (paramString != null)
       {
-        paramString = GlobalUtil.getInstance().getContext().getPackageManager().getPackageArchiveInfo(paramString, 1);
-        if (paramString != null)
-        {
-          paramString = paramString.applicationInfo.packageName;
-          return paramString;
-        }
+        paramString = paramString.applicationInfo.packageName;
+        return paramString;
       }
-      catch (Exception paramString)
-      {
-        ab.c("AppUtils", "getApkPackageName>>>", paramString);
-      }
+    }
+    catch (Exception paramString)
+    {
+      ab.c("AppUtils", "getApkPackageName>>>", paramString);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadservice.a
  * JD-Core Version:    0.7.0.1
  */

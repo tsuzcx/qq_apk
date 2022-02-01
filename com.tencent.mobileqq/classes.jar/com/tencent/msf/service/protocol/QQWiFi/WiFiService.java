@@ -27,24 +27,27 @@ public final class WiFiService
   
   public String getBssid()
   {
-    if (this.wifi != null) {
-      return this.wifi.b;
+    d locald = this.wifi;
+    if (locald != null) {
+      return locald.b;
     }
     return "";
   }
   
   public short getSignal()
   {
-    if (this.wifi != null) {
-      return this.wifi.c;
+    d locald = this.wifi;
+    if (locald != null) {
+      return locald.c;
     }
     return 0;
   }
   
   public String getSsid()
   {
-    if (this.wifi != null) {
-      return this.wifi.a;
+    d locald = this.wifi;
+    if (locald != null) {
+      return locald.a;
     }
     return "";
   }
@@ -63,37 +66,46 @@ public final class WiFiService
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[pkgid=").append(this.pkgid);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("[pkgid=");
+    localStringBuilder1.append(this.pkgid);
     if (this.wifi != null)
     {
-      localStringBuilder.append(", ssid=").append(this.wifi.a);
-      localStringBuilder.append(", bssid=").append(this.wifi.b).append("]");
+      localStringBuilder1.append(", ssid=");
+      localStringBuilder1.append(this.wifi.a);
+      localStringBuilder1.append(", bssid=");
+      localStringBuilder1.append(this.wifi.b);
+      localStringBuilder1.append("]");
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append("autoConnFlag=" + this.autoConnFlag);
-      return localStringBuilder.toString();
-      localStringBuilder.append("]");
+      localStringBuilder1.append("]");
     }
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("autoConnFlag=");
+    localStringBuilder2.append(this.autoConnFlag);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.fee, 1);
-    if (this.pkgid != null) {
-      paramJceOutputStream.write(this.pkgid, 2);
+    Object localObject = this.pkgid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.wifi != null) {
-      paramJceOutputStream.write(this.wifi, 3);
+    localObject = this.wifi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.autoConnFlag, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.QQWiFi.WiFiService
  * JD-Core Version:    0.7.0.1
  */

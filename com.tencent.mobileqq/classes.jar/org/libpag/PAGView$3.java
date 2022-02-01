@@ -1,6 +1,7 @@
 package org.libpag;
 
-import android.animation.ValueAnimator;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class PAGView$3
   implements Runnable
@@ -9,12 +10,24 @@ class PAGView$3
   
   public void run()
   {
-    PAGView.access$400(this.this$0).start();
+    synchronized (this.this$0)
+    {
+      ArrayList localArrayList = new ArrayList(PAGView.access$600(this.this$0));
+      ??? = localArrayList.iterator();
+      while (((Iterator)???).hasNext()) {
+        ((PAGView.PAGFlushListener)((Iterator)???).next()).onFlush();
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,25 +11,25 @@ public class PluginWxPaySdk
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(56664);
-    paramg.SD();
-    AppMethodBeat.o(56664);
+    AppMethodBeat.i(91307);
+    paramg.bbA();
+    AppMethodBeat.o(91307);
   }
   
   public void dependency() {}
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(56665);
-    paramg.SD();
-    AppMethodBeat.o(56665);
+    AppMethodBeat.i(91308);
+    paramg.bbA();
+    AppMethodBeat.o(91308);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(56663);
+    AppMethodBeat.i(91306);
     alias(PluginWxPaySdk.class);
-    AppMethodBeat.o(56663);
+    AppMethodBeat.o(91306);
   }
   
   public String name()

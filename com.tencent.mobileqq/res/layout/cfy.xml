@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/b8b" android:background="@drawable/dn0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="11.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.guild.mainframe.container.discover.view.QQGuildDiscoverRefreshLayout android:id="@id/nnt" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/ntd" layout="@layout/cgu" />
+        <FrameLayout android:id="@id/nte" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/nnu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.guild.mainframe.container.discover.view.HeaderScrollView android:orientation="vertical" android:id="@id/nnr" android:background="@drawable/bl2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tencent.mobileqq.guild.mainframe.container.discover.view.GuildDiscoverSlidingIndicator android:textSize="16.0dip" android:id="@id/nns" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/hd" app:indicatorAlpha="25" app:indicatorColor="@color/hd" app:indicatorMarginBottom="46.0dip" app:indicatorMarginLeftRight="-13.0dip" app:indicatorMarginTop="43.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="4.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
+                    <FrameLayout android:layout_gravity="right" android:id="@id/nxn" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip">
+                        <ImageView android:layout_gravity="center" android:id="@id/nxm" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/oa" />
+                    </FrameLayout>
+                </FrameLayout>
+                <com.tencent.mobileqq.guild.mainframe.container.discover.tab.GuildDiscoverViewPager android:id="@id/nnq" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </com.tencent.mobileqq.guild.mainframe.container.discover.view.HeaderScrollView>
+        </FrameLayout>
+    </com.tencent.mobileqq.guild.mainframe.container.discover.view.QQGuildDiscoverRefreshLayout>
+</RelativeLayout>

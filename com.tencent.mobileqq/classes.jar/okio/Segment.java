@@ -1,27 +1,45 @@
 package okio;
 
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.collections.ArraysKt;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class Segment
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/Segment;", "", "()V", "data", "", "pos", "", "limit", "shared", "", "owner", "([BIIZZ)V", "next", "prev", "compact", "", "pop", "push", "segment", "sharedCopy", "split", "byteCount", "unsharedCopy", "writeTo", "sink", "Companion", "okio"}, k=1, mv={1, 1, 16})
+public final class Segment
 {
-  static final int SHARE_MINIMUM = 1024;
-  static final int SIZE = 8192;
-  final byte[] data;
-  int limit;
-  Segment next;
-  boolean owner;
-  int pos;
-  Segment prev;
-  boolean shared;
+  public static final Segment.Companion Companion = new Segment.Companion(null);
+  public static final int SHARE_MINIMUM = 1024;
+  public static final int SIZE = 8192;
+  @JvmField
+  @NotNull
+  public final byte[] data;
+  @JvmField
+  public int limit;
+  @JvmField
+  @Nullable
+  public Segment next;
+  @JvmField
+  public boolean owner;
+  @JvmField
+  public int pos;
+  @JvmField
+  @Nullable
+  public Segment prev;
+  @JvmField
+  public boolean shared;
   
-  Segment()
+  public Segment()
   {
     this.data = new byte[8192];
     this.owner = true;
     this.shared = false;
   }
   
-  Segment(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public Segment(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.data = paramArrayOfByte;
     this.pos = paramInt1;
@@ -32,105 +50,193 @@ final class Segment
   
   public final void compact()
   {
-    if (this.prev == this) {
-      throw new IllegalStateException();
+    Segment localSegment1 = this.prev;
+    Segment localSegment2 = (Segment)this;
+    int j = 0;
+    int i;
+    if (localSegment1 != localSegment2) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (!this.prev.owner) {}
-    for (;;)
+    if (i != 0)
     {
-      return;
-      int j = this.limit - this.pos;
-      int k = this.prev.limit;
-      if (this.prev.shared) {}
-      for (int i = 0; j <= i + (8192 - k); i = this.prev.pos)
-      {
-        writeTo(this.prev, j);
-        pop();
-        SegmentPool.recycle(this);
+      localSegment1 = this.prev;
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
+      }
+      if (!localSegment1.owner) {
         return;
       }
+      int k = this.limit - this.pos;
+      localSegment1 = this.prev;
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
+      }
+      int m = localSegment1.limit;
+      localSegment1 = this.prev;
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
+      }
+      if (localSegment1.shared)
+      {
+        i = j;
+      }
+      else
+      {
+        localSegment1 = this.prev;
+        if (localSegment1 == null) {
+          Intrinsics.throwNpe();
+        }
+        i = localSegment1.pos;
+      }
+      if (k > 8192 - m + i) {
+        return;
+      }
+      localSegment1 = this.prev;
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
+      }
+      writeTo(localSegment1, k);
+      pop();
+      SegmentPool.INSTANCE.recycle(this);
+      return;
     }
+    throw ((Throwable)new IllegalStateException("cannot compact".toString()));
   }
   
   @Nullable
   public final Segment pop()
   {
-    if (this.next != this) {}
-    for (Segment localSegment = this.next;; localSegment = null)
-    {
-      this.prev.next = this.next;
-      this.next.prev = this.prev;
-      this.next = null;
-      this.prev = null;
-      return localSegment;
+    Segment localSegment1 = this.next;
+    if (localSegment1 == (Segment)this) {
+      localSegment1 = null;
     }
+    Segment localSegment2 = this.prev;
+    if (localSegment2 == null) {
+      Intrinsics.throwNpe();
+    }
+    localSegment2.next = this.next;
+    localSegment2 = this.next;
+    if (localSegment2 == null) {
+      Intrinsics.throwNpe();
+    }
+    localSegment2.prev = this.prev;
+    localSegment2 = (Segment)null;
+    this.next = localSegment2;
+    this.prev = localSegment2;
+    return localSegment1;
   }
   
-  public final Segment push(Segment paramSegment)
+  @NotNull
+  public final Segment push(@NotNull Segment paramSegment)
   {
-    paramSegment.prev = this;
+    Intrinsics.checkParameterIsNotNull(paramSegment, "segment");
+    paramSegment.prev = ((Segment)this);
     paramSegment.next = this.next;
-    this.next.prev = paramSegment;
+    Segment localSegment = this.next;
+    if (localSegment == null) {
+      Intrinsics.throwNpe();
+    }
+    localSegment.prev = paramSegment;
     this.next = paramSegment;
     return paramSegment;
   }
   
-  final Segment sharedCopy()
+  @NotNull
+  public final Segment sharedCopy()
   {
     this.shared = true;
     return new Segment(this.data, this.pos, this.limit, true, false);
   }
   
+  @NotNull
   public final Segment split(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt > this.limit - this.pos)) {
-      throw new IllegalArgumentException();
+    int i;
+    if ((paramInt > 0) && (paramInt <= this.limit - this.pos)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    Segment localSegment;
-    if (paramInt >= 1024) {
-      localSegment = sharedCopy();
-    }
-    for (;;)
+    if (i != 0)
     {
+      Segment localSegment;
+      if (paramInt >= 1024)
+      {
+        localSegment = sharedCopy();
+      }
+      else
+      {
+        localSegment = SegmentPool.INSTANCE.take();
+        localObject = this.data;
+        byte[] arrayOfByte = localSegment.data;
+        i = this.pos;
+        ArraysKt.copyInto$default((byte[])localObject, arrayOfByte, 0, i, i + paramInt, 2, null);
+      }
       localSegment.limit = (localSegment.pos + paramInt);
       this.pos += paramInt;
-      this.prev.push(localSegment);
+      Object localObject = this.prev;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      ((Segment)localObject).push(localSegment);
       return localSegment;
-      localSegment = SegmentPool.take();
-      System.arraycopy(this.data, this.pos, localSegment.data, 0, paramInt);
     }
+    throw ((Throwable)new IllegalArgumentException("byteCount out of range".toString()));
   }
   
-  final Segment unsharedCopy()
+  @NotNull
+  public final Segment unsharedCopy()
   {
-    return new Segment((byte[])this.data.clone(), this.pos, this.limit, false, true);
+    byte[] arrayOfByte = this.data;
+    arrayOfByte = Arrays.copyOf(arrayOfByte, arrayOfByte.length);
+    Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "java.util.Arrays.copyOf(this, size)");
+    return new Segment(arrayOfByte, this.pos, this.limit, false, true);
   }
   
-  public final void writeTo(Segment paramSegment, int paramInt)
+  public final void writeTo(@NotNull Segment paramSegment, int paramInt)
   {
-    if (!paramSegment.owner) {
-      throw new IllegalArgumentException();
-    }
-    if (paramSegment.limit + paramInt > 8192)
+    Intrinsics.checkParameterIsNotNull(paramSegment, "sink");
+    if (paramSegment.owner)
     {
-      if (paramSegment.shared) {
-        throw new IllegalArgumentException();
+      int i = paramSegment.limit;
+      if (i + paramInt > 8192) {
+        if (!paramSegment.shared)
+        {
+          j = paramSegment.pos;
+          if (i + paramInt - j <= 8192)
+          {
+            arrayOfByte1 = paramSegment.data;
+            ArraysKt.copyInto$default(arrayOfByte1, arrayOfByte1, 0, j, i, 2, null);
+            paramSegment.limit -= paramSegment.pos;
+            paramSegment.pos = 0;
+          }
+          else
+          {
+            throw ((Throwable)new IllegalArgumentException());
+          }
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException());
+        }
       }
-      if (paramSegment.limit + paramInt - paramSegment.pos > 8192) {
-        throw new IllegalArgumentException();
-      }
-      System.arraycopy(paramSegment.data, paramSegment.pos, paramSegment.data, 0, paramSegment.limit - paramSegment.pos);
-      paramSegment.limit -= paramSegment.pos;
-      paramSegment.pos = 0;
+      byte[] arrayOfByte1 = this.data;
+      byte[] arrayOfByte2 = paramSegment.data;
+      i = paramSegment.limit;
+      int j = this.pos;
+      ArraysKt.copyInto(arrayOfByte1, arrayOfByte2, i, j, j + paramInt);
+      paramSegment.limit += paramInt;
+      this.pos += paramInt;
+      return;
     }
-    System.arraycopy(this.data, this.pos, paramSegment.data, paramSegment.limit, paramInt);
-    paramSegment.limit += paramInt;
-    this.pos += paramInt;
+    throw ((Throwable)new IllegalStateException("only owner can write".toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.Segment
  * JD-Core Version:    0.7.0.1
  */

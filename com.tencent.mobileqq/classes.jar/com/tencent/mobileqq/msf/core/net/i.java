@@ -11,14 +11,15 @@ public class i
   {
     this.linebuffer = new ByteArrayBuffer(1024);
     this.charset = "US-ASCII";
-    if ((this.charset.equalsIgnoreCase("US-ASCII")) || (this.charset.equalsIgnoreCase("ASCII"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.ascii = bool;
-      this.maxLineLen = -1;
-      this.metrics = new HttpTransportMetricsImpl();
-      return;
+    boolean bool;
+    if ((!this.charset.equalsIgnoreCase("US-ASCII")) && (!this.charset.equalsIgnoreCase("ASCII"))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    this.ascii = bool;
+    this.maxLineLen = -1;
+    this.metrics = new HttpTransportMetricsImpl();
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -31,21 +32,20 @@ public class i
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte, i, paramArrayOfByte.length);
       this.buffer = arrayOfByte;
     }
-    for (;;)
+    else
     {
-      this.bufferpos = 0;
-      this.bufferlen = this.buffer.length;
-      if (this.linebuffer != null) {
-        this.linebuffer.clear();
-      }
-      this.metrics.incrementBytesTransferred(paramArrayOfByte.length);
-      return;
       this.buffer = new byte[paramArrayOfByte.length];
       System.arraycopy(paramArrayOfByte, 0, this.buffer, 0, paramArrayOfByte.length);
     }
+    this.bufferpos = 0;
+    this.bufferlen = this.buffer.length;
+    if (this.linebuffer != null) {
+      this.linebuffer.clear();
+    }
+    this.metrics.incrementBytesTransferred(paramArrayOfByte.length);
   }
   
-  public int fillBuffer()
+  protected int fillBuffer()
   {
     return -1;
   }
@@ -57,7 +57,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.i
  * JD-Core Version:    0.7.0.1
  */

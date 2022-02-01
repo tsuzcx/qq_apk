@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class GetOnlineInfoReq
   extends JceStruct
 {
-  public boolean bReqCustomOnlineStatus;
-  public long dwReqType;
-  public long dwUin;
+  public boolean bReqCustomOnlineStatus = false;
+  public long dwReqType = 0L;
+  public long dwUin = 0L;
   public String strMobile = "";
-  public long version;
+  public long version = 0L;
   
   public GetOnlineInfoReq() {}
   
@@ -37,8 +37,9 @@ public final class GetOnlineInfoReq
   {
     paramJceOutputStream.write(this.dwReqType, 0);
     paramJceOutputStream.write(this.dwUin, 1);
-    if (this.strMobile != null) {
-      paramJceOutputStream.write(this.strMobile, 2);
+    String str = this.strMobile;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.version, 3);
     paramJceOutputStream.write(this.bReqCustomOnlineStatus, 4);
@@ -46,7 +47,7 @@ public final class GetOnlineInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetOnlineInfoReq
  * JD-Core Version:    0.7.0.1
  */

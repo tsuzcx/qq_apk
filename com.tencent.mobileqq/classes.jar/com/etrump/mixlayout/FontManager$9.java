@@ -1,24 +1,22 @@
 package com.etrump.mixlayout;
 
-import bdom;
-import fw;
-import fx;
+import com.tencent.mobileqq.utils.VasUtils;
 
-public class FontManager$9
+class FontManager$9
   implements Runnable
 {
-  public FontManager$9(fx paramfx, String paramString, fw paramfw, int paramInt) {}
+  FontManager$9(FontManager paramFontManager, String paramString, FontInfo paramFontInfo, int paramInt) {}
   
   public void run()
   {
-    if (fx.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Fw, this.jdField_a_of_type_Int)) {
-      bdom.a(this.this$0.a);
+    if (FontManager.a(this.this$0, this.a, this.b, this.c)) {
+      VasUtils.a(FontManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.9
  * JD-Core Version:    0.7.0.1
  */

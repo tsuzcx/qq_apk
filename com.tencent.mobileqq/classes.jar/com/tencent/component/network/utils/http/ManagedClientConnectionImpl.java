@@ -32,38 +32,42 @@ class ManagedClientConnectionImpl
   
   ManagedClientConnectionImpl(ClientConnectionManager paramClientConnectionManager, ClientConnectionOperator paramClientConnectionOperator, HttpPoolEntry paramHttpPoolEntry)
   {
-    if (paramClientConnectionManager == null) {
-      throw new IllegalArgumentException("Connection manager may not be null");
-    }
-    if (paramClientConnectionOperator == null) {
+    if (paramClientConnectionManager != null)
+    {
+      if (paramClientConnectionOperator != null)
+      {
+        if (paramHttpPoolEntry != null)
+        {
+          this.manager = paramClientConnectionManager;
+          this.operator = paramClientConnectionOperator;
+          this.poolEntry = paramHttpPoolEntry;
+          this.reusable = false;
+          this.duration = 9223372036854775807L;
+          return;
+        }
+        throw new IllegalArgumentException("HTTP pool entry may not be null");
+      }
       throw new IllegalArgumentException("Connection operator may not be null");
     }
-    if (paramHttpPoolEntry == null) {
-      throw new IllegalArgumentException("HTTP pool entry may not be null");
-    }
-    this.manager = paramClientConnectionManager;
-    this.operator = paramClientConnectionOperator;
-    this.poolEntry = paramHttpPoolEntry;
-    this.reusable = false;
-    this.duration = 9223372036854775807L;
+    throw new IllegalArgumentException("Connection manager may not be null");
   }
   
   private OperatedClientConnection ensureConnection()
   {
     HttpPoolEntry localHttpPoolEntry = this.poolEntry;
-    if (localHttpPoolEntry == null) {
-      throw new ConnectionShutdownException();
+    if (localHttpPoolEntry != null) {
+      return (OperatedClientConnection)localHttpPoolEntry.getConnection();
     }
-    return (OperatedClientConnection)localHttpPoolEntry.getConnection();
+    throw new ConnectionShutdownException();
   }
   
   private HttpPoolEntry ensurePoolEntry()
   {
     HttpPoolEntry localHttpPoolEntry = this.poolEntry;
-    if (localHttpPoolEntry == null) {
-      throw new ConnectionShutdownException();
+    if (localHttpPoolEntry != null) {
+      return localHttpPoolEntry;
     }
-    return localHttpPoolEntry;
+    throw new ConnectionShutdownException();
   }
   
   private OperatedClientConnection getConnection()
@@ -82,31 +86,31 @@ class ManagedClientConnectionImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 38	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:poolEntry	Lcom/tencent/component/network/utils/http/HttpPoolEntry;
+    //   3: getfield 27	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:poolEntry	Lcom/tencent/component/network/utils/http/HttpPoolEntry;
     //   6: ifnonnull +6 -> 12
     //   9: aload_0
     //   10: monitorexit
     //   11: return
     //   12: aload_0
     //   13: iconst_0
-    //   14: putfield 40	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:reusable	Z
+    //   14: putfield 29	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:reusable	Z
     //   17: aload_0
-    //   18: getfield 38	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:poolEntry	Lcom/tencent/component/network/utils/http/HttpPoolEntry;
-    //   21: invokevirtual 56	com/tencent/component/network/utils/http/HttpPoolEntry:getConnection	()Ljava/lang/Object;
-    //   24: checkcast 58	org/apache/http/conn/OperatedClientConnection
+    //   18: getfield 27	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:poolEntry	Lcom/tencent/component/network/utils/http/HttpPoolEntry;
+    //   21: invokevirtual 53	com/tencent/component/network/utils/http/HttpPoolEntry:getConnection	()Ljava/lang/Object;
+    //   24: checkcast 55	org/apache/http/conn/OperatedClientConnection
     //   27: astore_1
     //   28: aload_1
     //   29: invokeinterface 66 1 0
     //   34: aload_0
-    //   35: getfield 34	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:manager	Lorg/apache/http/conn/ClientConnectionManager;
+    //   35: getfield 23	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:manager	Lorg/apache/http/conn/ClientConnectionManager;
     //   38: aload_0
     //   39: aload_0
-    //   40: getfield 44	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:duration	J
+    //   40: getfield 33	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:duration	J
     //   43: getstatic 72	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
     //   46: invokeinterface 78 5 0
     //   51: aload_0
     //   52: aconst_null
-    //   53: putfield 38	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:poolEntry	Lcom/tencent/component/network/utils/http/HttpPoolEntry;
+    //   53: putfield 27	com/tencent/component/network/utils/http/ManagedClientConnectionImpl:poolEntry	Lcom/tencent/component/network/utils/http/HttpPoolEntry;
     //   56: aload_0
     //   57: monitorexit
     //   58: return
@@ -259,37 +263,43 @@ class ManagedClientConnectionImpl
   
   public void layerProtocol(HttpContext paramHttpContext, HttpParams paramHttpParams)
   {
-    if (paramHttpParams == null) {
-      throw new IllegalArgumentException("HTTP parameters may not be null");
-    }
-    try
-    {
-      if (this.poolEntry == null) {
+    if (paramHttpParams != null) {
+      try
+      {
+        if (this.poolEntry != null)
+        {
+          Object localObject = this.poolEntry.getTracker();
+          if (((RouteTracker)localObject).isConnected())
+          {
+            if (((RouteTracker)localObject).isTunnelled())
+            {
+              if (!((RouteTracker)localObject).isLayered())
+              {
+                localObject = ((RouteTracker)localObject).getTargetHost();
+                OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
+                this.operator.updateSecureConnection(localOperatedClientConnection, (HttpHost)localObject, paramHttpContext, paramHttpParams);
+                try
+                {
+                  if (this.poolEntry != null)
+                  {
+                    this.poolEntry.getTracker().layerProtocol(localOperatedClientConnection.isSecure());
+                    return;
+                  }
+                  throw new InterruptedIOException();
+                }
+                finally {}
+              }
+              throw new IllegalStateException("Multiple protocol layering not supported");
+            }
+            throw new IllegalStateException("Protocol layering without a tunnel not supported");
+          }
+          throw new IllegalStateException("Connection not open");
+        }
         throw new ConnectionShutdownException();
       }
+      finally {}
     }
-    finally {}
-    Object localObject = this.poolEntry.getTracker();
-    if (!((RouteTracker)localObject).isConnected()) {
-      throw new IllegalStateException("Connection not open");
-    }
-    if (!((RouteTracker)localObject).isTunnelled()) {
-      throw new IllegalStateException("Protocol layering without a tunnel not supported");
-    }
-    if (((RouteTracker)localObject).isLayered()) {
-      throw new IllegalStateException("Multiple protocol layering not supported");
-    }
-    localObject = ((RouteTracker)localObject).getTargetHost();
-    OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
-    this.operator.updateSecureConnection(localOperatedClientConnection, (HttpHost)localObject, paramHttpContext, paramHttpParams);
-    try
-    {
-      if (this.poolEntry == null) {
-        throw new InterruptedIOException();
-      }
-    }
-    finally {}
-    this.poolEntry.getTracker().layerProtocol(localOperatedClientConnection.isSecure());
+    throw new IllegalArgumentException("HTTP parameters may not be null");
   }
   
   public void markReusable()
@@ -299,65 +309,75 @@ class ManagedClientConnectionImpl
   
   public void open(HttpRoute paramHttpRoute, HttpContext paramHttpContext, HttpParams paramHttpParams)
   {
-    if (paramHttpRoute == null) {
-      throw new IllegalArgumentException("Route may not be null");
-    }
-    if (paramHttpParams == null) {
+    if (paramHttpRoute != null)
+    {
+      if (paramHttpParams != null) {
+        try
+        {
+          if (this.poolEntry != null)
+          {
+            if (!this.poolEntry.getTracker().isConnected())
+            {
+              OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
+              Object localObject;
+              if (QDLog.isInfoEnable())
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("host:");
+                ((StringBuilder)localObject).append(localOperatedClientConnection.getTargetHost());
+                ((StringBuilder)localObject).append("   ");
+                ((StringBuilder)localObject).append(localOperatedClientConnection.getLocalAddress());
+                ((StringBuilder)localObject).append(":");
+                ((StringBuilder)localObject).append(localOperatedClientConnection.getLocalPort());
+                ((StringBuilder)localObject).append("   ");
+                ((StringBuilder)localObject).append(localOperatedClientConnection.getRemoteAddress());
+                ((StringBuilder)localObject).append(":");
+                ((StringBuilder)localObject).append(localOperatedClientConnection.getRemotePort());
+                QDLog.i("http", ((StringBuilder)localObject).toString());
+              }
+              HttpHost localHttpHost = paramHttpRoute.getProxyHost();
+              try
+              {
+                ClientConnectionOperator localClientConnectionOperator = this.operator;
+                if (localHttpHost != null) {
+                  localObject = localHttpHost;
+                } else {
+                  localObject = paramHttpRoute.getTargetHost();
+                }
+                localClientConnectionOperator.openConnection(localOperatedClientConnection, (HttpHost)localObject, paramHttpRoute.getLocalAddress(), paramHttpContext, paramHttpParams);
+              }
+              catch (Exception paramHttpRoute)
+              {
+                paramHttpContext = new StringBuilder();
+                paramHttpContext.append("open ");
+                paramHttpContext.append(paramHttpRoute.getMessage());
+                QDLog.e("ManagedClientConnectionImpl", paramHttpContext.toString());
+              }
+              try
+              {
+                if (this.poolEntry != null)
+                {
+                  paramHttpRoute = this.poolEntry.getTracker();
+                  if (localHttpHost == null) {
+                    paramHttpRoute.connectTarget(localOperatedClientConnection.isSecure());
+                  } else {
+                    paramHttpRoute.connectProxy(localHttpHost, localOperatedClientConnection.isSecure());
+                  }
+                  return;
+                }
+                throw new InterruptedIOException();
+              }
+              finally {}
+            }
+            throw new IllegalStateException("Connection already open");
+          }
+          throw new ConnectionShutdownException();
+        }
+        finally {}
+      }
       throw new IllegalArgumentException("HTTP parameters may not be null");
     }
-    try
-    {
-      if (this.poolEntry == null) {
-        throw new ConnectionShutdownException();
-      }
-    }
-    finally {}
-    if (this.poolEntry.getTracker().isConnected()) {
-      throw new IllegalStateException("Connection already open");
-    }
-    OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
-    if (QDLog.isInfoEnable()) {
-      QDLog.i("http", "host:" + localOperatedClientConnection.getTargetHost() + "   " + localOperatedClientConnection.getLocalAddress() + ":" + localOperatedClientConnection.getLocalPort() + "   " + localOperatedClientConnection.getRemoteAddress() + ":" + localOperatedClientConnection.getRemotePort());
-    }
-    HttpHost localHttpHost2 = paramHttpRoute.getProxyHost();
-    for (;;)
-    {
-      try
-      {
-        ClientConnectionOperator localClientConnectionOperator = this.operator;
-        if (localHttpHost2 == null) {
-          continue;
-        }
-        localHttpHost1 = localHttpHost2;
-        localClientConnectionOperator.openConnection(localOperatedClientConnection, localHttpHost1, paramHttpRoute.getLocalAddress(), paramHttpContext, paramHttpParams);
-      }
-      catch (Exception paramHttpRoute)
-      {
-        HttpHost localHttpHost1;
-        QDLog.e("ManagedClientConnectionImpl", "open " + paramHttpRoute.getMessage());
-        continue;
-        paramHttpRoute = this.poolEntry.getTracker();
-        if (localHttpHost2 != null) {
-          break;
-        }
-      }
-      try
-      {
-        if (this.poolEntry != null) {
-          continue;
-        }
-        throw new InterruptedIOException();
-      }
-      finally {}
-      localHttpHost1 = paramHttpRoute.getTargetHost();
-      continue;
-      paramHttpRoute.connectTarget(localOperatedClientConnection.isSecure());
-    }
-    for (;;)
-    {
-      return;
-      paramHttpRoute.connectProxy(localHttpHost2, localOperatedClientConnection.isSecure());
-    }
+    throw new IllegalArgumentException("Route may not be null");
   }
   
   public void receiveResponseEntity(HttpResponse paramHttpResponse)
@@ -444,64 +464,74 @@ class ManagedClientConnectionImpl
   
   public void tunnelProxy(HttpHost paramHttpHost, boolean paramBoolean, HttpParams paramHttpParams)
   {
-    if (paramHttpHost == null) {
-      throw new IllegalArgumentException("Next proxy amy not be null");
-    }
-    if (paramHttpParams == null) {
+    if (paramHttpHost != null)
+    {
+      if (paramHttpParams != null) {
+        try
+        {
+          if (this.poolEntry != null)
+          {
+            if (this.poolEntry.getTracker().isConnected())
+            {
+              OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
+              localOperatedClientConnection.update(null, paramHttpHost, paramBoolean, paramHttpParams);
+              try
+              {
+                if (this.poolEntry != null)
+                {
+                  this.poolEntry.getTracker().tunnelProxy(paramHttpHost, paramBoolean);
+                  return;
+                }
+                throw new InterruptedIOException();
+              }
+              finally {}
+            }
+            throw new IllegalStateException("Connection not open");
+          }
+          throw new ConnectionShutdownException();
+        }
+        finally {}
+      }
       throw new IllegalArgumentException("HTTP parameters may not be null");
     }
-    try
-    {
-      if (this.poolEntry == null) {
-        throw new ConnectionShutdownException();
-      }
-    }
-    finally {}
-    if (!this.poolEntry.getTracker().isConnected()) {
-      throw new IllegalStateException("Connection not open");
-    }
-    OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
-    localOperatedClientConnection.update(null, paramHttpHost, paramBoolean, paramHttpParams);
-    try
-    {
-      if (this.poolEntry == null) {
-        throw new InterruptedIOException();
-      }
-    }
-    finally {}
-    this.poolEntry.getTracker().tunnelProxy(paramHttpHost, paramBoolean);
+    throw new IllegalArgumentException("Next proxy amy not be null");
   }
   
   public void tunnelTarget(boolean paramBoolean, HttpParams paramHttpParams)
   {
-    if (paramHttpParams == null) {
-      throw new IllegalArgumentException("HTTP parameters may not be null");
-    }
-    try
-    {
-      if (this.poolEntry == null) {
+    if (paramHttpParams != null) {
+      try
+      {
+        if (this.poolEntry != null)
+        {
+          Object localObject = this.poolEntry.getTracker();
+          if (((RouteTracker)localObject).isConnected())
+          {
+            if (!((RouteTracker)localObject).isTunnelled())
+            {
+              localObject = ((RouteTracker)localObject).getTargetHost();
+              OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
+              localOperatedClientConnection.update(null, (HttpHost)localObject, paramBoolean, paramHttpParams);
+              try
+              {
+                if (this.poolEntry != null)
+                {
+                  this.poolEntry.getTracker().tunnelTarget(paramBoolean);
+                  return;
+                }
+                throw new InterruptedIOException();
+              }
+              finally {}
+            }
+            throw new IllegalStateException("Connection is already tunnelled");
+          }
+          throw new IllegalStateException("Connection not open");
+        }
         throw new ConnectionShutdownException();
       }
+      finally {}
     }
-    finally {}
-    Object localObject = this.poolEntry.getTracker();
-    if (!((RouteTracker)localObject).isConnected()) {
-      throw new IllegalStateException("Connection not open");
-    }
-    if (((RouteTracker)localObject).isTunnelled()) {
-      throw new IllegalStateException("Connection is already tunnelled");
-    }
-    localObject = ((RouteTracker)localObject).getTargetHost();
-    OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)this.poolEntry.getConnection();
-    localOperatedClientConnection.update(null, (HttpHost)localObject, paramBoolean, paramHttpParams);
-    try
-    {
-      if (this.poolEntry == null) {
-        throw new InterruptedIOException();
-      }
-    }
-    finally {}
-    this.poolEntry.getTracker().tunnelTarget(paramBoolean);
+    throw new IllegalArgumentException("HTTP parameters may not be null");
   }
   
   public void unmarkReusable()
@@ -511,7 +541,7 @@ class ManagedClientConnectionImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.http.ManagedClientConnectionImpl
  * JD-Core Version:    0.7.0.1
  */

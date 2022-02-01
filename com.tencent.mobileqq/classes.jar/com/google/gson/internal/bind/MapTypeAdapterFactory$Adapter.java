@@ -72,10 +72,17 @@ final class MapTypeAdapterFactory$Adapter<K, V>
       {
         paramJsonReader.beginArray();
         localObject = this.keyTypeAdapter.read(paramJsonReader);
-        if (localMap.put(localObject, this.valueTypeAdapter.read(paramJsonReader)) != null) {
-          throw new JsonSyntaxException("duplicate key: " + localObject);
+        if (localMap.put(localObject, this.valueTypeAdapter.read(paramJsonReader)) == null)
+        {
+          paramJsonReader.endArray();
         }
-        paramJsonReader.endArray();
+        else
+        {
+          paramJsonReader = new StringBuilder();
+          paramJsonReader.append("duplicate key: ");
+          paramJsonReader.append(localObject);
+          throw new JsonSyntaxException(paramJsonReader.toString());
+        }
       }
       paramJsonReader.endArray();
       return localMap;
@@ -85,8 +92,12 @@ final class MapTypeAdapterFactory$Adapter<K, V>
     {
       JsonReaderInternalAccess.INSTANCE.promoteNameToValue(paramJsonReader);
       localObject = this.keyTypeAdapter.read(paramJsonReader);
-      if (localMap.put(localObject, this.valueTypeAdapter.read(paramJsonReader)) != null) {
-        throw new JsonSyntaxException("duplicate key: " + localObject);
+      if (localMap.put(localObject, this.valueTypeAdapter.read(paramJsonReader)) != null)
+      {
+        paramJsonReader = new StringBuilder();
+        paramJsonReader.append("duplicate key: ");
+        paramJsonReader.append(localObject);
+        throw new JsonSyntaxException(paramJsonReader.toString());
       }
     }
     paramJsonReader.endObject();
@@ -95,8 +106,6 @@ final class MapTypeAdapterFactory$Adapter<K, V>
   
   public void write(JsonWriter paramJsonWriter, Map<K, V> paramMap)
   {
-    int m = 0;
-    int k = 0;
     if (paramMap == null)
     {
       paramJsonWriter.nullValue();
@@ -118,19 +127,21 @@ final class MapTypeAdapterFactory$Adapter<K, V>
     Object localObject = new ArrayList(paramMap.size());
     ArrayList localArrayList = new ArrayList(paramMap.size());
     paramMap = paramMap.entrySet().iterator();
+    int m = 0;
+    int k = 0;
     int i = 0;
-    if (paramMap.hasNext())
+    while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
       JsonElement localJsonElement = this.keyTypeAdapter.toJsonTree(localEntry.getKey());
       ((List)localObject).add(localJsonElement);
       localArrayList.add(localEntry.getValue());
-      if ((localJsonElement.isJsonArray()) || (localJsonElement.isJsonObject())) {}
-      for (j = 1;; j = 0)
-      {
-        i = j | i;
-        break;
+      if ((!localJsonElement.isJsonArray()) && (!localJsonElement.isJsonObject())) {
+        j = 0;
+      } else {
+        j = 1;
       }
+      i |= j;
     }
     if (i != 0)
     {
@@ -162,7 +173,7 @@ final class MapTypeAdapterFactory$Adapter<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.MapTypeAdapterFactory.Adapter
  * JD-Core Version:    0.7.0.1
  */

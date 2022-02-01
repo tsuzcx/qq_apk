@@ -1,76 +1,71 @@
 package cooperation.qzone.zipanimate;
 
 import android.graphics.drawable.BitmapDrawable;
-import bkbh;
-import bkbk;
-import bkbm;
-import bkbn;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ZipDrawableLoader$3
+class ZipDrawableLoader$3
   implements Runnable
 {
-  public ZipDrawableLoader$3(bkbh parambkbh, int paramInt, bkbn parambkbn) {}
+  ZipDrawableLoader$3(ZipDrawableLoader paramZipDrawableLoader, int paramInt, ZipFrameLoadedListener paramZipFrameLoadedListener) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Int;
+    int j = this.val$frameIndex;
     int i = j;
-    if (j < bkbh.a(this.this$0)) {
-      i = j + bkbh.a(this.this$0).size();
+    if (j < ZipDrawableLoader.access$500(this.this$0)) {
+      i = j + ZipDrawableLoader.access$600(this.this$0).size();
     }
-    if (i - bkbh.a(this.this$0) > bkbh.b(this.this$0)) {}
-    while (this.jdField_a_of_type_Int >= bkbh.a(this.this$0).size()) {
+    if (i - ZipDrawableLoader.access$500(this.this$0) > ZipDrawableLoader.access$700(this.this$0)) {
       return;
     }
-    bkbk localbkbk = null;
-    for (;;)
+    if (this.val$frameIndex >= ZipDrawableLoader.access$600(this.this$0).size()) {
+      return;
+    }
+    AnimationFrame localAnimationFrame = null;
+    synchronized (this.this$0)
     {
-      synchronized (this.this$0)
+      if (this.val$frameIndex < ZipDrawableLoader.access$600(this.this$0).size()) {
+        localAnimationFrame = (AnimationFrame)ZipDrawableLoader.access$600(this.this$0).get(this.val$frameIndex);
+      }
+      if (localAnimationFrame != null)
       {
-        if (this.jdField_a_of_type_Int < bkbh.a(this.this$0).size()) {
-          localbkbk = (bkbk)bkbh.a(this.this$0).get(this.jdField_a_of_type_Int);
-        }
-        if (localbkbk == null) {
-          break;
-        }
-        if (localbkbk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null)
+        if (localAnimationFrame.mBitmapDrawable == null)
         {
-          ??? = bkbh.a(this.this$0, localbkbk.jdField_a_of_type_JavaLangString);
+          ??? = ZipDrawableLoader.access$800(this.this$0, localAnimationFrame.path);
           if (??? != null)
           {
             j = ((BitmapDrawable)???).getIntrinsicWidth();
             i = ((BitmapDrawable)???).getIntrinsicHeight();
-            j = (int)(j * bkbh.a(this.this$0));
-            i = (int)(i * bkbh.a(this.this$0));
-            if (bkbh.a(this.this$0) == null) {
-              break label285;
+            j = (int)(j * ZipDrawableLoader.access$900(this.this$0));
+            i = (int)(i * ZipDrawableLoader.access$900(this.this$0));
+            if (ZipDrawableLoader.access$1000(this.this$0) != null) {
+              ((BitmapDrawable)???).setBounds(ZipDrawableLoader.access$1000(this.this$0));
+            } else {
+              ((BitmapDrawable)???).setBounds(0, 0, j, i);
             }
-            ((BitmapDrawable)???).setBounds(bkbh.a(this.this$0));
-            localbkbk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)???);
+            localAnimationFrame.mBitmapDrawable = ((BitmapDrawable)???);
           }
         }
-        if (!this.this$0.a)
+        if (!this.this$0.mFirstFrameLoaded)
         {
-          this.this$0.a = true;
-          if (bkbh.a(this.this$0) != null) {
-            bkbh.a(this.this$0).a(localbkbk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+          ??? = this.this$0;
+          ((ZipDrawableLoader)???).mFirstFrameLoaded = true;
+          if (ZipDrawableLoader.access$1100((ZipDrawableLoader)???) != null) {
+            ZipDrawableLoader.access$1100(this.this$0).onZipFirstFrameLoaded(localAnimationFrame.mBitmapDrawable);
           }
         }
-        if (this.jdField_a_of_type_Bkbn == null) {
-          break;
+        ??? = this.val$ls;
+        if (??? != null) {
+          ((ZipFrameLoadedListener)???).onLoaded(this.val$frameIndex, localAnimationFrame.mBitmapDrawable);
         }
-        this.jdField_a_of_type_Bkbn.a(this.jdField_a_of_type_Int, localbkbk.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-        return;
       }
-      label285:
-      ((BitmapDrawable)???).setBounds(0, 0, j, i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipDrawableLoader.3
  * JD-Core Version:    0.7.0.1
  */

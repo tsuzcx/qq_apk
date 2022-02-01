@@ -39,42 +39,33 @@ public class DualErrCode
   
   public static String printCodeName(int paramInt)
   {
-    Object localObject2 = null;
     try
     {
-      Field[] arrayOfField = DualErrCode.class.getDeclaredFields();
-      Object localObject1 = localObject2;
-      int j;
-      int i;
-      if (arrayOfField != null)
+      Object localObject1 = DualErrCode.class.getDeclaredFields();
+      if (localObject1 != null)
       {
-        j = arrayOfField.length;
-        i = 0;
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        if (i < j)
+        int j = localObject1.length;
+        int i = 0;
+        while (i < j)
         {
-          localObject1 = arrayOfField[i];
-          if (((Field)localObject1).getInt(null) == paramInt) {
-            localObject1 = ((Field)localObject1).getName();
+          Object localObject2 = localObject1[i];
+          if (localObject2.getInt(null) == paramInt)
+          {
+            localObject1 = localObject2.getName();
+            return localObject1;
           }
+          i += 1;
         }
-        else
-        {
-          return localObject1;
-        }
-        i += 1;
       }
       return null;
     }
     catch (Exception localException) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dualsim.common.DualErrCode
  * JD-Core Version:    0.7.0.1
  */

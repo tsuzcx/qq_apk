@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.expt;
 
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.plugin.expt.e.b;
+import com.tencent.mm.plugin.expt.f.b;
+import com.tencent.mm.storagebase.h.b;
 
 final class PluginExpt$2
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
@@ -13,7 +13,7 @@ final class PluginExpt$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.PluginExpt.2
  * JD-Core Version:    0.7.0.1
  */

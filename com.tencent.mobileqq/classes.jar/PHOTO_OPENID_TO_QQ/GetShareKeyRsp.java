@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetShareKeyRsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   public String share_key = "";
   
   public GetShareKeyRsp() {}
@@ -32,7 +32,7 @@ public final class GetShareKeyRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PHOTO_OPENID_TO_QQ.GetShareKeyRsp
  * JD-Core Version:    0.7.0.1
  */

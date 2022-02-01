@@ -1,5 +1,6 @@
 package com.tencent.ttpic.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.opengl.GLES20;
@@ -20,7 +21,7 @@ import java.util.Random;
 public class CaptureActItem
   extends FrameSourceItem
 {
-  private static final String TAG = CaptureActItem.class.getSimpleName();
+  private static final String TAG = "CaptureActItem";
   private int[] captureTimes;
   private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private Frame[] copyFrames;
@@ -43,6 +44,7 @@ public class CaptureActItem
     this.starFacePoints = new ArrayList(paramList.size());
     this.starFaceAngles = new ArrayList(paramList.size());
     this.captureTimes = new int[paramList.size()];
+    int j = 0;
     int i = 0;
     while (i < paramList.size())
     {
@@ -54,16 +56,24 @@ public class CaptureActItem
     }
     this.scores = new CaptureActItem.ScoreTag[paramList.size()];
     i = 0;
-    while (i < this.scores.length)
+    for (;;)
     {
-      this.scores[i] = new CaptureActItem.ScoreTag(null);
+      paramString1 = this.scores;
+      if (i >= paramString1.length) {
+        break;
+      }
+      paramString1[i] = new CaptureActItem.ScoreTag(null);
       i += 1;
     }
     this.copyFrames = new Frame[paramList.size()];
     i = j;
-    while (i < this.copyFrames.length)
+    for (;;)
     {
-      this.copyFrames[i] = new Frame();
+      paramList = this.copyFrames;
+      if (i >= paramList.length) {
+        break;
+      }
+      paramList[i] = new Frame();
       i += 1;
     }
     this.random = new Random(System.currentTimeMillis());
@@ -71,9 +81,11 @@ public class CaptureActItem
   
   private int getCaptureIndex(long paramLong)
   {
-    if ((this.lastCaptureIndex + 1 < this.captureTimes.length) && (paramLong >= this.captureTimes[(this.lastCaptureIndex + 1)]))
+    int i = this.lastCaptureIndex;
+    int[] arrayOfInt = this.captureTimes;
+    if ((i + 1 < arrayOfInt.length) && (paramLong >= arrayOfInt[(i + 1)]))
     {
-      this.lastCaptureIndex += 1;
+      this.lastCaptureIndex = (i + 1);
       return this.lastCaptureIndex;
     }
     return -1;
@@ -81,7 +93,7 @@ public class CaptureActItem
   
   public void clear()
   {
-    this.copyFilter.ClearGLSL();
+    this.copyFilter.clearGLSL();
     Object localObject = this.copyFrames;
     int j = localObject.length;
     int i = 0;
@@ -111,18 +123,26 @@ public class CaptureActItem
   
   public int getOrigHeight(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.copyFrames.length)) {
-      return -1;
+    if (paramInt >= 0)
+    {
+      Frame[] arrayOfFrame = this.copyFrames;
+      if (paramInt < arrayOfFrame.length) {
+        return arrayOfFrame[paramInt].height;
+      }
     }
-    return this.copyFrames[paramInt].height;
+    return -1;
   }
   
   public int getOrigWidth(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.copyFrames.length)) {
-      return -1;
+    if (paramInt >= 0)
+    {
+      Frame[] arrayOfFrame = this.copyFrames;
+      if (paramInt < arrayOfFrame.length) {
+        return arrayOfFrame[paramInt].width;
+      }
     }
-    return this.copyFrames[paramInt].width;
+    return -1;
   }
   
   public int getScore(CanvasItem paramCanvasItem)
@@ -146,19 +166,18 @@ public class CaptureActItem
   
   public int getTotalScore()
   {
-    int j = 0;
     CaptureActItem.ScoreTag[] arrayOfScoreTag = this.scores;
     int m = arrayOfScoreTag.length;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       CaptureActItem.ScoreTag localScoreTag = arrayOfScoreTag[i];
-      int k = j;
+      k = j;
       if (CaptureActItem.ScoreTag.access$300(localScoreTag)) {
         k = j + CaptureActItem.ScoreTag.access$200(localScoreTag);
       }
       i += 1;
-      j = k;
     }
     return j;
   }
@@ -171,43 +190,64 @@ public class CaptureActItem
   public void init()
   {
     this.copyFilter.apply();
-    GLES20.glGenTextures(this.numTextures.length, this.numTextures, 0);
+    Object localObject1 = this.numTextures;
+    GLES20.glGenTextures(localObject1.length, (int[])localObject1, 0);
     int i = 0;
-    Object localObject;
-    if (i < 10)
+    Object localObject2;
+    while (i < 10)
     {
-      localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.dataPath + File.separator + "expression" + File.separator + this.imageId + File.separator + this.imageId + "_" + i + ".png", 720, 1280);
-      if (!BitmapUtils.isLegal((Bitmap)localObject)) {}
-      for (;;)
+      localObject1 = AEModule.getContext();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.dataPath);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("expression");
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(this.imageId);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(this.imageId);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(".png");
+      localObject1 = BitmapUtils.decodeSampleBitmap((Context)localObject1, ((StringBuilder)localObject2).toString(), 720, 1280);
+      if (BitmapUtils.isLegal((Bitmap)localObject1))
       {
-        i += 1;
-        break;
-        GlUtil.loadTexture(this.numTextures[i], (Bitmap)localObject);
-        ((Bitmap)localObject).recycle();
+        GlUtil.loadTexture(this.numTextures[i], (Bitmap)localObject1);
+        ((Bitmap)localObject1).recycle();
       }
+      i += 1;
     }
     i = 0;
     while (i < this.expressionList.size())
     {
-      localObject = ((ExpressionItem)this.expressionList.get(i)).scoreImageID;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      localObject1 = ((ExpressionItem)this.expressionList.get(i)).scoreImageID;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        int[] arrayOfInt = new int[10];
-        GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+        localObject2 = new int[10];
+        GLES20.glGenTextures(localObject2.length, (int[])localObject2, 0);
         int j = 0;
-        if (j < 10)
+        while (j < 10)
         {
-          Bitmap localBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.dataPath + File.separator + "expression" + File.separator + (String)localObject + File.separator + (String)localObject + "_" + j + ".png", 720, 1280);
-          if (!BitmapUtils.isLegal(localBitmap)) {}
-          for (;;)
+          Object localObject3 = AEModule.getContext();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.dataPath);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append("expression");
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append("_");
+          localStringBuilder.append(j);
+          localStringBuilder.append(".png");
+          localObject3 = BitmapUtils.decodeSampleBitmap((Context)localObject3, localStringBuilder.toString(), 720, 1280);
+          if (BitmapUtils.isLegal((Bitmap)localObject3))
           {
-            j += 1;
-            break;
-            GlUtil.loadTexture(arrayOfInt[j], localBitmap);
-            localBitmap.recycle();
+            GlUtil.loadTexture(localObject2[j], (Bitmap)localObject3);
+            ((Bitmap)localObject3).recycle();
           }
+          j += 1;
         }
-        CaptureActItem.ScoreTag.access$102(this.scores[i], arrayOfInt);
+        CaptureActItem.ScoreTag.access$102(this.scores[i], (int[])localObject2);
       }
       i += 1;
     }
@@ -217,9 +257,13 @@ public class CaptureActItem
   {
     this.lastCaptureIndex = -1;
     int i = 0;
-    while (i < this.scores.length)
+    for (;;)
     {
-      CaptureActItem.ScoreTag.access$202(this.scores[i], 0);
+      CaptureActItem.ScoreTag[] arrayOfScoreTag = this.scores;
+      if (i >= arrayOfScoreTag.length) {
+        break;
+      }
+      CaptureActItem.ScoreTag.access$202(arrayOfScoreTag[i], 0);
       CaptureActItem.ScoreTag.access$302(this.scores[i], false);
       i += 1;
     }
@@ -231,26 +275,35 @@ public class CaptureActItem
     int i = getCaptureIndex(paramLong);
     if (i >= 0)
     {
-      BenchUtil.benchStart(TAG + "[update]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(TAG);
+      localStringBuilder.append("[update]");
+      BenchUtil.benchStart(localStringBuilder.toString());
       this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.copyFrames[i]);
-      BenchUtil.benchEnd(TAG + "[update]");
+      paramFrame = new StringBuilder();
+      paramFrame.append(TAG);
+      paramFrame.append("[update]");
+      BenchUtil.benchEnd(paramFrame.toString());
       if ((paramList.size() > 0) && (paramInt == 0))
       {
-        BenchUtil.benchStart(TAG + "[calculate score]");
+        paramFrame = new StringBuilder();
+        paramFrame.append(TAG);
+        paramFrame.append("[calculate score]");
+        BenchUtil.benchStart(paramFrame.toString());
         CaptureActItem.ScoreTag.access$202(this.scores[i], (int)ActUtil.getExpressionSimilarity((List)this.starFacePoints.get(i), (List)paramList.get(0), (float[])this.starFaceAngles.get(i), (float[])paramList1.get(0), ((ExpressionItem)this.expressionList.get(i)).expressionWeight));
-        BenchUtil.benchEnd(TAG + "[calculate score]");
+        paramFrame = new StringBuilder();
+        paramFrame.append(TAG);
+        paramFrame.append("[calculate score]");
+        BenchUtil.benchEnd(paramFrame.toString());
+        return;
       }
+      CaptureActItem.ScoreTag.access$202(this.scores[i], this.random.nextInt(5) + 5);
     }
-    else
-    {
-      return;
-    }
-    CaptureActItem.ScoreTag.access$202(this.scores[i], this.random.nextInt(5) + 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.model.CaptureActItem
  * JD-Core Version:    0.7.0.1
  */

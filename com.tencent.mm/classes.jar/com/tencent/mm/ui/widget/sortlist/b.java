@@ -11,44 +11,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   extends ViewGroup
 {
-  private int AZ;
+  private int tJ;
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(113018);
-    this.AZ = 48;
+    AppMethodBeat.i(159747);
+    this.tJ = 48;
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    AppMethodBeat.o(113018);
+    AppMethodBeat.o(159747);
   }
   
   public int getGravity()
   {
-    return this.AZ;
+    return this.tJ;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(113019);
+    AppMethodBeat.i(159748);
     View localView = getChildAt(0);
     if (localView == null)
     {
-      AppMethodBeat.o(113019);
+      AppMethodBeat.o(159748);
       return;
     }
-    if (this.AZ == 48)
+    if (this.tJ == 48)
     {
       localView.layout(0, 0, getMeasuredWidth(), localView.getMeasuredHeight());
-      AppMethodBeat.o(113019);
+      AppMethodBeat.o(159748);
       return;
     }
     localView.layout(0, getMeasuredHeight() - localView.getMeasuredHeight(), getMeasuredWidth(), getMeasuredHeight());
-    AppMethodBeat.o(113019);
+    AppMethodBeat.o(159748);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(113020);
+    AppMethodBeat.i(159749);
     int i = View.MeasureSpec.getSize(paramInt2);
     int j = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getMode(paramInt2);
@@ -56,7 +56,7 @@ public class b
     if (localView == null)
     {
       setMeasuredDimension(0, j);
-      AppMethodBeat.o(113020);
+      AppMethodBeat.o(159749);
       return;
     }
     if (localView.isLayoutRequested()) {
@@ -75,19 +75,19 @@ public class b
     for (paramInt1 = localLayoutParams.height;; paramInt1 = localView.getMeasuredHeight())
     {
       setMeasuredDimension(j, paramInt1);
-      AppMethodBeat.o(113020);
+      AppMethodBeat.o(159749);
       return;
     }
   }
   
   public void setGravity(int paramInt)
   {
-    this.AZ = paramInt;
+    this.tJ = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.b
  * JD-Core Version:    0.7.0.1
  */

@@ -80,41 +80,68 @@ public class PlayTextureView
   
   private float CalCrop(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt2 != 0) && (paramInt3 != 0) && (paramInt1 != 0) && (paramInt4 != 0))
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramInt2 != 0)
     {
-      if (paramInt2 * paramInt3 == paramInt1 * paramInt4) {
-        LogUtil.v(this.TAG, " crop 0");
+      f1 = f2;
+      if (paramInt3 != 0)
+      {
+        f1 = f2;
+        if (paramInt1 != 0)
+        {
+          f1 = f2;
+          if (paramInt4 != 0)
+          {
+            int i = paramInt2 * paramInt3;
+            int j = paramInt1 * paramInt4;
+            if (i == j)
+            {
+              LogUtil.v(this.TAG, " crop 0");
+              return 0.0F;
+            }
+            if (i > j)
+            {
+              f1 = 0.5F - paramInt4 * paramInt1 * 0.5F / paramInt3 / paramInt2;
+              str = this.TAG;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(" crop height = ");
+              localStringBuilder.append(f1);
+              LogUtil.v(str, localStringBuilder.toString());
+              return f1;
+            }
+            f1 = paramInt3 * paramInt2 * 0.5F / paramInt4 / paramInt1 - 0.5F;
+            String str = this.TAG;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" crop width = ");
+            localStringBuilder.append(f1);
+            LogUtil.v(str, localStringBuilder.toString());
+          }
+        }
       }
     }
-    else {
-      return 0.0F;
-    }
-    if (paramInt2 * paramInt3 > paramInt1 * paramInt4)
-    {
-      f = 0.5F - paramInt4 * paramInt1 * 0.5F / paramInt3 / paramInt2;
-      LogUtil.v(this.TAG, " crop height = " + f);
-      return f;
-    }
-    float f = paramInt3 * paramInt2 * 0.5F / paramInt4 / paramInt1 - 0.5F;
-    LogUtil.v(this.TAG, " crop width = " + f);
-    return f;
+    return f1;
   }
   
   private void _calcCropValue()
   {
     if (this.mIsPortrait)
     {
-      if (this.mHalfVideoWidth > this.mVideoHeight)
+      i = this.mHalfVideoWidth;
+      j = this.mVideoHeight;
+      if (i > j)
       {
-        this.mCropValue = CalCrop(this.mVideoHeight, this.mHalfVideoWidth, this.mGLViewWidth, this.mGLViewHeight);
+        this.mCropValue = CalCrop(j, i, this.mGLViewWidth, this.mGLViewHeight);
         return;
       }
-      this.mCropValue = CalCrop(this.mHalfVideoWidth, this.mVideoHeight, this.mGLViewWidth, this.mGLViewHeight);
+      this.mCropValue = CalCrop(i, j, this.mGLViewWidth, this.mGLViewHeight);
       return;
     }
-    if (this.mHalfVideoWidth * 9 >= this.mVideoHeight * 16)
+    int i = this.mHalfVideoWidth;
+    int j = this.mVideoHeight;
+    if (i * 9 >= j * 16)
     {
-      this.mCropValue = CalCrop(this.mHalfVideoWidth, this.mVideoHeight, this.mGLViewWidth, this.mGLViewHeight);
+      this.mCropValue = CalCrop(i, j, this.mGLViewWidth, this.mGLViewHeight);
       return;
     }
     this.mCropValue = 0.0F;
@@ -122,58 +149,81 @@ public class PlayTextureView
   
   private void callbackError(int paramInt)
   {
-    if ((this.mPlayListener != null) && (this.mViewHandler != null)) {
-      this.mViewHandler.post(new PlayTextureView.3(this, paramInt));
+    if (this.mPlayListener != null)
+    {
+      Handler localHandler = this.mViewHandler;
+      if (localHandler != null) {
+        localHandler.post(new PlayTextureView.3(this, paramInt));
+      }
     }
   }
   
   private void configViewportOnDraw()
   {
-    if (this.mIsPortrait) {
-      if (this.mHalfVideoWidth < this.mVideoHeight) {
-        if (this.mCurRender != null)
+    int j;
+    BaseRender localBaseRender;
+    int i;
+    if (this.mIsPortrait)
+    {
+      j = this.mHalfVideoWidth;
+      int k = this.mVideoHeight;
+      if (j < k)
+      {
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
         {
-          this.mCurRender.setCropValue(this.mCropValue);
+          localBaseRender.setCropValue(this.mCropValue);
           GLES20.glViewport(0, 0, this.mGLViewWidth, this.mGLViewHeight);
         }
       }
-    }
-    int i;
-    int j;
-    do
-    {
-      do
+      else
       {
-        do
-        {
-          return;
-          i = this.mGLViewWidth * 9 / 16;
-          if (this.mHalfVideoWidth != 0) {
-            i = this.mGLViewWidth * this.mVideoHeight / this.mHalfVideoWidth;
-          }
-          j = (this.mGLViewHeight - i) * 2 / 3;
-        } while (this.mCurRender == null);
-        this.mCurRender.setCropValue(this.mCropValue);
-        GLES20.glViewport(0, j, this.mGLViewWidth, i);
-        return;
-        if (this.mHalfVideoWidth * 9 < this.mVideoHeight * 16) {
-          break;
+        int m = this.mGLViewWidth;
+        i = m * 9 / 16;
+        if (j != 0) {
+          i = m * k / j;
         }
-      } while (this.mCurRender == null);
-      this.mCurRender.setCropValue(this.mCropValue);
-      GLES20.glViewport(0, 0, this.mGLViewWidth, this.mGLViewHeight);
-      return;
-      i = this.mHalfVideoWidth * this.mGLViewHeight / this.mVideoHeight;
-      j = (this.mGLViewWidth - i) / 2;
-    } while (this.mCurRender == null);
-    this.mCurRender.setCropValue(this.mCropValue);
-    GLES20.glViewport(j, 0, i, this.mGLViewHeight);
+        j = (this.mGLViewHeight - i) * 2 / 3;
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
+        {
+          localBaseRender.setCropValue(this.mCropValue);
+          GLES20.glViewport(0, j, this.mGLViewWidth, i);
+        }
+      }
+    }
+    else
+    {
+      i = this.mHalfVideoWidth;
+      j = this.mVideoHeight;
+      if (i * 9 >= j * 16)
+      {
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
+        {
+          localBaseRender.setCropValue(this.mCropValue);
+          GLES20.glViewport(0, 0, this.mGLViewWidth, this.mGLViewHeight);
+        }
+      }
+      else
+      {
+        i = i * this.mGLViewHeight / j;
+        j = (this.mGLViewWidth - i) / 2;
+        localBaseRender = this.mCurRender;
+        if (localBaseRender != null)
+        {
+          localBaseRender.setCropValue(this.mCropValue);
+          GLES20.glViewport(j, 0, i, this.mGLViewHeight);
+        }
+      }
+    }
   }
   
   private Surface getSurface()
   {
-    if ((this.mSurfaceTextureRender != null) && ((this.mSurfaceTextureRender instanceof SurfaceTextureBlendRender))) {
-      return ((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getSurface();
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if ((localBaseRender != null) && ((localBaseRender instanceof SurfaceTextureBlendRender))) {
+      return ((SurfaceTextureBlendRender)localBaseRender).getSurface();
     }
     return null;
   }
@@ -199,9 +249,10 @@ public class PlayTextureView
   
   private void releaseRenderGLThread()
   {
-    if (this.mSurfaceTextureRender != null)
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if (localBaseRender != null)
     {
-      this.mSurfaceTextureRender.destroy();
+      localBaseRender.destroy();
       this.mSurfaceTextureRender = null;
     }
   }
@@ -219,14 +270,19 @@ public class PlayTextureView
     }
     catch (Exception localException)
     {
-      LogUtil.v(this.TAG, "mSurfaceTextureRender Exception switch  soft decode Exception=" + localException);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mSurfaceTextureRender Exception switch  soft decode Exception=");
+      localStringBuilder.append(localException);
+      LogUtil.v(str, localStringBuilder.toString());
       localException.printStackTrace();
     }
   }
   
   private void setupFrameListenerOES()
   {
-    if ((this.mSurfaceTextureRender != null) && (this.mSurfaceTextureRender.getRenderType() == 1) && (((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getVideoTexture() != null)) {
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if ((localBaseRender != null) && (localBaseRender.getRenderType() == 1) && (((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getVideoTexture() != null)) {
       ((SurfaceTextureBlendRender)this.mSurfaceTextureRender).getVideoTexture().setOnFrameAvailableListener(new PlayTextureView.9(this));
     }
   }
@@ -245,50 +301,72 @@ public class PlayTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if ((!this.mViewReady) || (this.mCurRender == null) || (this.mVideoWidth <= 0) || (this.mVideoHeight <= 0)) {}
-    do
+    if ((this.mViewReady) && (this.mCurRender != null))
     {
-      return;
-      if ((this.mNeedConfigViewport) && (this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0))
+      int i = this.mVideoWidth;
+      if (i > 0)
       {
-        _calcCropValue();
-        configViewportOnDraw();
-        this.mNeedConfigViewport = false;
+        int j = this.mVideoHeight;
+        if (j <= 0) {
+          return;
+        }
+        if ((this.mNeedConfigViewport) && (i > 0) && (j > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0))
+        {
+          _calcCropValue();
+          configViewportOnDraw();
+          this.mNeedConfigViewport = false;
+        }
+        this.mCurRender.draw(null, 0, 0, false);
+        i = this.mFrameTime;
+        if (i > 0)
+        {
+          this.mCurFrameCount += 1;
+          this.mCurTime = (i * this.mCurFrameCount);
+          this.mViewHandler.post(new PlayTextureView.8(this));
+        }
+        if (this.mOnPreviewFrameLogTimer.isTimeToWriteLog())
+        {
+          paramGL10 = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDrawFrame fps= ");
+          localStringBuilder.append(this.mOnPreviewFrameLogTimer.getFps());
+          LogUtil.i(paramGL10, localStringBuilder.toString());
+        }
+        if (!this.mContentVisible)
+        {
+          GLES20.glClear(16384);
+          GLES20.glFinish();
+        }
       }
-      this.mCurRender.draw(null, 0, 0, false);
-      if (this.mFrameTime > 0)
-      {
-        this.mCurFrameCount += 1;
-        this.mCurTime = (this.mFrameTime * this.mCurFrameCount);
-        this.mViewHandler.post(new PlayTextureView.8(this));
-      }
-      if (this.mOnPreviewFrameLogTimer.isTimeToWriteLog()) {
-        LogUtil.i(this.TAG, "onDrawFrame fps= " + this.mOnPreviewFrameLogTimer.getFps());
-      }
-    } while (this.mContentVisible);
-    GLES20.glClear(16384);
-    GLES20.glFinish();
+    }
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    LogUtil.e(this.TAG, "===================gl render onSurfaceChanged " + paramInt1 + " h=" + paramInt2);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("===================gl render onSurfaceChanged ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" h=");
+    localStringBuilder.append(paramInt2);
+    LogUtil.e(str, localStringBuilder.toString());
     paramGL10.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     this.mGLViewWidth = paramInt1;
     this.mGLViewHeight = paramInt2;
-    if (this.mGLViewWidth > this.mGLViewHeight) {}
-    for (boolean bool = false;; bool = true)
+    boolean bool;
+    if (this.mGLViewWidth > this.mGLViewHeight) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mIsPortrait = bool;
+    if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0)) {
+      this.mNeedConfigViewport = true;
+    }
+    if (!this.mViewReady)
     {
-      this.mIsPortrait = bool;
-      if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0)) {
-        this.mNeedConfigViewport = true;
-      }
-      if (!this.mViewReady)
-      {
-        this.mViewReady = true;
-        this.mViewHandler.post(new PlayTextureView.7(this));
-      }
-      return;
+      this.mViewReady = true;
+      this.mViewHandler.post(new PlayTextureView.7(this));
     }
   }
   
@@ -300,13 +378,18 @@ public class PlayTextureView
   
   public void playFile(String paramString)
   {
-    if (this.mStopping) {}
-    for (this.mTmpFilePath = paramString;; this.mTmpFilePath = null)
+    if (this.mStopping) {
+      this.mTmpFilePath = paramString;
+    } else {
+      this.mTmpFilePath = null;
+    }
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" playFile , want to play filepath =");
+    localStringBuilder.append(paramString);
+    LogUtil.e(str, localStringBuilder.toString());
+    if (this.mPlayStarting)
     {
-      LogUtil.e(this.TAG, " playFile , want to play filepath =" + paramString);
-      if (!this.mPlayStarting) {
-        break;
-      }
       LogUtil.v(this.TAG, " playFile , one has played , return");
       return;
     }
@@ -337,8 +420,9 @@ public class PlayTextureView
   public void setLoopState(boolean paramBoolean)
   {
     this.mLoop = paramBoolean;
-    if (this.mHardDecoder != null) {
-      this.mHardDecoder.setLoopState(this.mLoop);
+    IVideoFileDecoder localIVideoFileDecoder = this.mHardDecoder;
+    if (localIVideoFileDecoder != null) {
+      localIVideoFileDecoder.setLoopState(this.mLoop);
     }
   }
   
@@ -353,15 +437,16 @@ public class PlayTextureView
     if (!this.mViewReady) {
       return;
     }
-    if (this.mHardDecoder != null) {
-      this.mHardDecoder.stop();
+    IVideoFileDecoder localIVideoFileDecoder = this.mHardDecoder;
+    if (localIVideoFileDecoder != null) {
+      localIVideoFileDecoder.stop();
     }
     this.mStopping = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.videoplayer.view.PlayTextureView
  * JD-Core Version:    0.7.0.1
  */

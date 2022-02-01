@@ -1,25 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData;
 import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
 public final class ici
   implements Parcelable.Creator
 {
-  public CoverCacheData a(Parcel paramParcel)
+  public CoverCacheData.PackageInfo a(Parcel paramParcel)
   {
-    CoverCacheData localCoverCacheData = new CoverCacheData();
-    localCoverCacheData.uin = paramParcel.readLong();
-    localCoverCacheData.type = paramParcel.readString();
-    localCoverCacheData.local_url = paramParcel.readString();
-    localCoverCacheData.urls = paramParcel.readHashMap(getClass().getClassLoader());
-    localCoverCacheData.packageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    localCoverCacheData.photoWall = paramParcel.readArrayList(getClass().getClassLoader());
-    localCoverCacheData.isJigsawOpen = paramParcel.readInt();
-    return localCoverCacheData;
+    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
+    localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    return localPackageInfo;
   }
   
-  public CoverCacheData[] a(int paramInt)
+  public CoverCacheData.PackageInfo[] a(int paramInt)
   {
     return null;
   }

@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class LocalMultiProcConfig
 {
@@ -27,7 +27,15 @@ public class LocalMultiProcConfig
   public static final String PREFS_NAME_QZ_SETTING = "Qz_setting";
   public static final String PREFS_NAME_QZ_VIDEO_SETTING = "QZ_video_shared_setting";
   public static String PROCESS_NAME = "com.tencent.mobileqq:qzone";
+  public static final String QCIRCLE_PUBLISH_SELECTED_GRID_SAVE = "qcircle_publish_selected_grid_save";
+  public static final String QCIRCLE_REDPOINT_GREY_TROOP_UIN = "qcircle_redpoint_grey_troop_uin";
+  public static final String QCIRCLE_TROOP_REDPOINT_GREY_LAST_TIMESTAMP = "qcircle_troop_redpoint_grey_last_timestamp";
+  public static final String QCIRCLE_TROOP_REDPOINT_GREY_TIME_THRESHOLD = "qcircle_troop_redpoint_grey_time_threshold";
+  public static final String QCIRCLE_TROOP_REDPOINT_PULL_AMOUNT_THRESHOLD = "qcircle_troop_redpoint_pull_amount_threshold";
+  public static final String QCIRCLE_TROOP_REDPOINT_PULL_TIME_THRESHOLD = "qcircle_troop_redpoint_pull_time_threshold";
   public static final String QZONE_ALBUM_DLNA_SWITCH = "QZone_dlnaSwitch";
+  public static final String QZONE_ALBUM_RECOMM_EXPOSE_COUNTS = "qzone_album_recomm_expose_counts";
+  public static final String QZONE_ALBUM_RECOMM_GREYINFO = "qzone_album_recomm_grey_info";
   public static final String QZONE_BARRAGE_EFFECT_ENABLED = "qzone_barrage_effect_enabled";
   public static final String QZONE_BARRAGE_EFFECT_SAVE_DATA = "qzone_barrage_effect_save_data";
   public static final String QZONE_CAMPUSINFO_SCHOOLNAME = "qzone_campusInfo_name";
@@ -41,6 +49,7 @@ public class LocalMultiProcConfig
   public static final String QZONE_ENABLE_FPS_MONITOR = "qzone_enable_fps_monitor";
   public static final String QZONE_FEED_CUSTOM_BROWSER_DECO_SWITCH = "qzone_feed_custom_browser_deco_switch";
   public static final String QZONE_FEED_SKIN_ENABLE = "qzone_feed_skin_enable";
+  public static final String QZONE_FLUTTER_PREDOWNLOAD_SUCCESS = "qzone_flutter_predownload_success";
   public static final String QZONE_FONT_ENABLED = "qzone_font_enabled";
   public static final String QZONE_FONT_RED_DOT = "qzone_font_red_dot";
   public static final String QZONE_FONT_SAVE_DATA = "qzone_font_save_data";
@@ -61,7 +70,10 @@ public class LocalMultiProcConfig
   public static final String QZONE_SUPER_FONT_ENABLED = "qzone_super_font_enabled";
   public static final String QZONE_SUPER_FONT_SAVE_DATA = "qzone_super_font_save_data";
   public static final String QZONE_SYNC_KUOLIE = "QZone_synckuolie";
+  public static final String QZONE_TROOP_REDPOINT_PULL_AMOUNT_THRESHOLD = "qzone_troop_redpoint_pull_amount_threshold";
+  public static final String QZONE_TROOP_REDPOINT_PULL_TIME_THRESHOLD = "qzone_troop_redpoint_pull_time_threshold";
   public static final String QZONE_WATER_MARK = "WaterMark";
+  public static final String QZONE_WNS_NET_CLOSE = "qzone_wns_net";
   public static final String SHARPP_SO_MD5_AND_LENGTH = "sharpPSoMD5AndLength";
   public static final String SHARPP_SO_PREVIOUS_VERSION_MD5_AND_LENGTH = "sharpPSoMD5AndLength_previous";
   private static final int StateLoading = 0;
@@ -75,15 +87,17 @@ public class LocalMultiProcConfig
   
   public static void clearAllConfig()
   {
-    if (cacheState != 1) {}
-    do
-    {
+    if (cacheState != 1) {
       return;
-      if (defultMap != null) {
-        defultMap.clear();
-      }
-    } while (acountMap == null);
-    acountMap.clear();
+    }
+    Map localMap = defultMap;
+    if (localMap != null) {
+      localMap.clear();
+    }
+    localMap = acountMap;
+    if (localMap != null) {
+      localMap.clear();
+    }
   }
   
   @SuppressLint({"NewApi"})
@@ -104,7 +118,8 @@ public class LocalMultiProcConfig
   
   public static boolean getBool(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((defultMap != null) && (defultMap.containsKey(paramString2)) && ((defultMap.get(paramString2) instanceof Boolean))) {
+    Map localMap = defultMap;
+    if ((localMap != null) && (localMap.containsKey(paramString2)) && ((defultMap.get(paramString2) instanceof Boolean))) {
       return ((Boolean)defultMap.get(paramString2)).booleanValue();
     }
     return getPreferences(paramString1).getBoolean(paramString2, paramBoolean);
@@ -122,7 +137,8 @@ public class LocalMultiProcConfig
   
   public static int getInt(String paramString1, String paramString2, int paramInt)
   {
-    if ((defultMap != null) && (defultMap.containsKey(paramString2)) && ((defultMap.get(paramString2) instanceof Integer))) {
+    Map localMap = defultMap;
+    if ((localMap != null) && (localMap.containsKey(paramString2)) && ((defultMap.get(paramString2) instanceof Integer))) {
       return ((Integer)defultMap.get(paramString2)).intValue();
     }
     return getPreferences(paramString1).getInt(paramString2, paramInt);
@@ -130,7 +146,8 @@ public class LocalMultiProcConfig
   
   public static int getInt4Uin(String paramString, int paramInt, long paramLong)
   {
-    if ((acountMap != null) && (acountMap.containsKey(paramString)) && ((acountMap.get(paramString) instanceof Integer))) {
+    Map localMap = acountMap;
+    if ((localMap != null) && (localMap.containsKey(paramString)) && ((acountMap.get(paramString) instanceof Integer))) {
       return ((Integer)acountMap.get(paramString)).intValue();
     }
     return getPreferences4Uin(paramLong).getInt(paramString, paramInt);
@@ -138,7 +155,8 @@ public class LocalMultiProcConfig
   
   public static int getInt4UinString(String paramString1, int paramInt, String paramString2)
   {
-    if ((acountMap != null) && (acountMap.containsKey(paramString1)) && ((acountMap.get(paramString1) instanceof Integer))) {
+    Map localMap = acountMap;
+    if ((localMap != null) && (localMap.containsKey(paramString1)) && ((acountMap.get(paramString1) instanceof Integer))) {
       return ((Integer)acountMap.get(paramString1)).intValue();
     }
     try
@@ -152,7 +170,8 @@ public class LocalMultiProcConfig
   
   public static long getLong(String paramString, long paramLong)
   {
-    if ((defultMap != null) && (defultMap.containsKey(paramString)) && ((defultMap.get(paramString) instanceof Long))) {
+    Map localMap = defultMap;
+    if ((localMap != null) && (localMap.containsKey(paramString)) && ((defultMap.get(paramString) instanceof Long))) {
       return ((Long)defultMap.get(paramString)).longValue();
     }
     return getPreferences("QZ_QQ_shared_setting").getLong(paramString, paramLong);
@@ -165,7 +184,8 @@ public class LocalMultiProcConfig
   
   public static long getLong4Uin(String paramString, long paramLong1, long paramLong2)
   {
-    if ((acountMap != null) && (acountMap.containsKey(paramString)) && ((acountMap.get(paramString) instanceof Long))) {
+    Map localMap = acountMap;
+    if ((localMap != null) && (localMap.containsKey(paramString)) && ((acountMap.get(paramString) instanceof Long))) {
       return ((Long)acountMap.get(paramString)).longValue();
     }
     return getPreferences4Uin(paramLong2).getLong(paramString, paramLong1);
@@ -174,11 +194,14 @@ public class LocalMultiProcConfig
   @SuppressLint({"InlinedApi"})
   private static SharedPreferences getPreferences(String paramString)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0) {
-      return localBaseApplicationImpl.getSharedPreferences(paramString, i);
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    return localMobileQQ.getSharedPreferences(paramString, i);
   }
   
   private static SharedPreferences getPreferences4Uin(long paramLong)
@@ -186,7 +209,11 @@ public class LocalMultiProcConfig
     if (paramLong == 0L) {
       return getPreferences("QZ_QQ_shared_setting");
     }
-    return getPreferences(paramLong + "_" + "QZ_QQ_shared_preference");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append("QZ_QQ_shared_preference");
+    return getPreferences(localStringBuilder.toString());
   }
   
   public static String getString(String paramString1, String paramString2)
@@ -196,7 +223,8 @@ public class LocalMultiProcConfig
   
   public static String getString(String paramString1, String paramString2, String paramString3)
   {
-    if ((defultMap != null) && (defultMap.containsKey(paramString2)) && ((defultMap.get(paramString2) instanceof String))) {
+    Map localMap = defultMap;
+    if ((localMap != null) && (localMap.containsKey(paramString2)) && ((defultMap.get(paramString2) instanceof String))) {
       return (String)defultMap.get(paramString2);
     }
     return getPreferences(paramString1).getString(paramString2, paramString3);
@@ -204,7 +232,8 @@ public class LocalMultiProcConfig
   
   public static String getString4Uin(String paramString1, String paramString2, long paramLong)
   {
-    if ((acountMap != null) && (acountMap.containsKey(paramString1)) && ((acountMap.get(paramString1) instanceof String))) {
+    Map localMap = acountMap;
+    if ((localMap != null) && (localMap.containsKey(paramString1)) && ((acountMap.get(paramString1) instanceof String))) {
       return (String)acountMap.get(paramString1);
     }
     return getPreferences4Uin(paramLong).getString(paramString1, paramString2);
@@ -212,14 +241,18 @@ public class LocalMultiProcConfig
   
   public static void loadAllConfig()
   {
-    QLog.d("LocalMultiProcConfig", 3, "loadAllConfig");
+    QLog.d("LocalMultiProcConfig", 4, "loadAllConfig");
     if (cacheState == 0) {
       return;
     }
     defultMap = getPreferences("QZ_QQ_shared_setting").getAll();
-    if (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
+    if (!TextUtils.isEmpty(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()))
     {
-      acountMap = getPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + "QZ_QQ_shared_preference").getAll();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
+      localStringBuilder.append("_");
+      localStringBuilder.append("QZ_QQ_shared_preference");
+      acountMap = getPreferences(localStringBuilder.toString()).getAll();
       return;
     }
     QLog.d("LocalMultiProcConfig", 1, "uin is 0");
@@ -306,7 +339,7 @@ public class LocalMultiProcConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.LocalMultiProcConfig
  * JD-Core Version:    0.7.0.1
  */

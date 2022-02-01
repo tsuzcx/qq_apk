@@ -27,13 +27,14 @@ public final class structmsg$SystemMsgActionInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 402, 408, 418, 424, 434, 440 }, new String[] { "type", "group_code", "sig", "msg", "group_id", "remark", "blacklist", "addFrdSNInfo", "uint32_req_msg_type" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro, "", Integer.valueOf(0), "", Boolean.valueOf(false), null, Integer.valueOf(0) }, SystemMsgActionInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 402, 408, 418, 424, 434, 440 }, new String[] { "type", "group_code", "sig", "msg", "group_id", "remark", "blacklist", "addFrdSNInfo", "uint32_req_msg_type" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro, "", localInteger, "", Boolean.valueOf(false), null, localInteger }, SystemMsgActionInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo
  * JD-Core Version:    0.7.0.1
  */

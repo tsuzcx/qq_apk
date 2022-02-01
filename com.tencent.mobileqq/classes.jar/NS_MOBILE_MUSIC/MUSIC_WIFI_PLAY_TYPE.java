@@ -10,7 +10,7 @@ public final class MUSIC_WIFI_PLAY_TYPE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MUSIC.MUSIC_WIFI_PLAY_TYPE
  * JD-Core Version:    0.7.0.1
  */

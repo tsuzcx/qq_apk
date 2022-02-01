@@ -11,19 +11,19 @@ class WtloginHelper$HelperThread$3
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    if (WtloginHelper.access$100(this.this$1.mHelper) == null)
+    if (WtloginHelper.access$200(this.this$1.mHelper) == null)
     {
       util.LOGW("login helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
+    async_context localasync_context = u.b(this.this$1.mUserSigInfo._seqence);
     ErrMsg localErrMsg = localasync_context._last_err_msg;
     this.this$1.mPictureData = localasync_context._t105.get_pic();
-    WtloginHelper.access$100(this.this$1.mHelper).OnRefreshPictureData(this.this$1.mUserAccount, this.this$1.mUserSigInfo, this.this$1.mPictureData, this.val$ret, localErrMsg);
+    WtloginHelper.access$200(this.this$1.mHelper).OnRefreshPictureData(this.this$1.mUserAccount, this.this$1.mUserSigInfo, this.this$1.mPictureData, this.val$ret, localErrMsg);
   }
 }
 

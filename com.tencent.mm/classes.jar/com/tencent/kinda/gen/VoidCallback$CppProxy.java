@@ -11,28 +11,28 @@ final class VoidCallback$CppProxy
   
   static
   {
-    AppMethodBeat.i(141518);
+    AppMethodBeat.i(136038);
     if (!VoidCallback.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(141518);
+      AppMethodBeat.o(136038);
       return;
     }
   }
   
   private VoidCallback$CppProxy(long paramLong)
   {
-    AppMethodBeat.i(141514);
+    AppMethodBeat.i(136034);
     this.destroyed = new AtomicBoolean(false);
     if (paramLong == 0L)
     {
       RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-      AppMethodBeat.o(141514);
+      AppMethodBeat.o(136034);
       throw localRuntimeException;
     }
     this.nativeRef = paramLong;
-    AppMethodBeat.o(141514);
+    AppMethodBeat.o(136034);
   }
   
   private native void nativeDestroy(long paramLong);
@@ -41,37 +41,37 @@ final class VoidCallback$CppProxy
   
   public final void call()
   {
-    AppMethodBeat.i(141517);
+    AppMethodBeat.i(136037);
     if ((!$assertionsDisabled) && (this.destroyed.get()))
     {
       AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-      AppMethodBeat.o(141517);
+      AppMethodBeat.o(136037);
       throw localAssertionError;
     }
     native_call(this.nativeRef);
-    AppMethodBeat.o(141517);
+    AppMethodBeat.o(136037);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(141515);
+    AppMethodBeat.i(136035);
     if (!this.destroyed.getAndSet(true)) {
       nativeDestroy(this.nativeRef);
     }
-    AppMethodBeat.o(141515);
+    AppMethodBeat.o(136035);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(141516);
+    AppMethodBeat.i(136036);
     destroy();
     super.finalize();
-    AppMethodBeat.o(141516);
+    AppMethodBeat.o(136036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.VoidCallback.CppProxy
  * JD-Core Version:    0.7.0.1
  */

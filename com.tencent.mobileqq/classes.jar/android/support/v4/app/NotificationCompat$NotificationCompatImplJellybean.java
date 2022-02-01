@@ -16,19 +16,13 @@ class NotificationCompat$NotificationCompatImplJellybean
       NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
       localNotificationCompatJellybean.addAction(localAction.icon, localAction.title, localAction.actionIntent);
     }
-    if (paramBuilder.mStyle != null)
-    {
-      if (!(paramBuilder.mStyle instanceof NotificationCompat.BigTextStyle)) {
-        break label172;
+    if (paramBuilder.mStyle != null) {
+      if ((paramBuilder.mStyle instanceof NotificationCompat.BigTextStyle))
+      {
+        paramBuilder = (NotificationCompat.BigTextStyle)paramBuilder.mStyle;
+        localNotificationCompatJellybean.addBigTextStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mBigText);
       }
-      paramBuilder = (NotificationCompat.BigTextStyle)paramBuilder.mStyle;
-      localNotificationCompatJellybean.addBigTextStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mBigText);
-    }
-    for (;;)
-    {
-      return localNotificationCompatJellybean.build();
-      label172:
-      if ((paramBuilder.mStyle instanceof NotificationCompat.InboxStyle))
+      else if ((paramBuilder.mStyle instanceof NotificationCompat.InboxStyle))
       {
         paramBuilder = (NotificationCompat.InboxStyle)paramBuilder.mStyle;
         localNotificationCompatJellybean.addInboxStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mTexts);
@@ -39,6 +33,7 @@ class NotificationCompat$NotificationCompatImplJellybean
         localNotificationCompatJellybean.addBigPictureStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mPicture, paramBuilder.mBigLargeIcon, paramBuilder.mBigLargeIconSet);
       }
     }
+    return localNotificationCompatJellybean.build();
   }
 }
 

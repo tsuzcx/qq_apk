@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="303.0dip" android:layout_height="222.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/jpq" android:background="@drawable/at3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <FrameLayout android:id="@id/jpp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/jq4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip" layout="@layout/c1c" />
+    <include android:layout_gravity="bottom" android:id="@id/jq0" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="8.0dip" layout="@layout/c1a" />
+    <View android:background="@drawable/at2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

@@ -9,22 +9,22 @@ import org.json.JSONObject;
 public final class p
   extends m
 {
-  public String kMM;
-  public long kNm;
-  public int kNn;
-  public int kNo;
+  public int hHX;
   public int type;
+  public String wXX;
+  public long wYy;
+  public int wYz;
   
   public p(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(40989);
-    this.kMM = paramString;
+    AppMethodBeat.i(63841);
+    this.wXX = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bill_id", paramString);
     localHashMap.put("type", String.valueOf(paramInt));
     localHashMap.put("from_timestamp", String.valueOf(paramLong));
     setRequestData(localHashMap);
-    AppMethodBeat.o(40989);
+    AppMethodBeat.o(63841);
   }
   
   public final int getFuncId()
@@ -44,12 +44,12 @@ public final class p
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(40990);
-    this.kNn = paramJSONObject.optInt("total_num", 0);
-    this.kNo = paramJSONObject.optInt("total_amt", 0);
+    AppMethodBeat.i(63842);
+    this.wYz = paramJSONObject.optInt("total_num", 0);
+    this.hHX = paramJSONObject.optInt("total_amt", 0);
     this.type = paramJSONObject.optInt("type", 0);
-    this.kNm = paramJSONObject.optLong("from_timestamp", 0L);
-    AppMethodBeat.o(40990);
+    this.wYy = paramJSONObject.optLong("from_timestamp", 0L);
+    AppMethodBeat.o(63842);
   }
 }
 

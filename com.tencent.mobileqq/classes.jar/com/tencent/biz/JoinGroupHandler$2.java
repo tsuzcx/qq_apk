@@ -1,12 +1,11 @@
 package com.tencent.biz;
 
-import bety;
-import myo;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class JoinGroupHandler$2
+class JoinGroupHandler$2
   implements Runnable
 {
-  public JoinGroupHandler$2(myo parammyo) {}
+  JoinGroupHandler$2(JoinGroupHandler paramJoinGroupHandler) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class JoinGroupHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.JoinGroupHandler.2
  * JD-Core Version:    0.7.0.1
  */

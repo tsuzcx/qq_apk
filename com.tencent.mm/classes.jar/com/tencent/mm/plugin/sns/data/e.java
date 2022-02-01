@@ -1,37 +1,23 @@
 package com.tencent.mm.plugin.sns.data;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bcs;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.sns.ui.bu;
 
 public final class e
 {
-  public List<bcs> list;
-  public String ohe;
-  public int rbj;
+  public bu QmD;
+  public long QmE = 0L;
+  public String hES;
+  public long ibq;
+  public int position;
+  public String viewId;
   
-  public e()
+  public e(bu parambu, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(35796);
-    this.list = new LinkedList();
-    AppMethodBeat.o(35796);
-  }
-  
-  public e(bcs parambcs)
-  {
-    AppMethodBeat.i(35797);
-    this.list = new LinkedList();
-    this.list.add(parambcs);
-    AppMethodBeat.o(35797);
-  }
-  
-  public e(List<bcs> paramList)
-  {
-    AppMethodBeat.i(35798);
-    this.list = new LinkedList();
-    this.list = paramList;
-    AppMethodBeat.o(35798);
+    this.QmD = parambu;
+    this.position = paramInt;
+    this.hES = paramString1;
+    this.ibq = paramLong;
+    this.viewId = paramString2;
   }
 }
 

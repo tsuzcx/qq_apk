@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.cc;
 
 public abstract interface i
-  extends a
 {
-  public abstract e.b a(e.a parama, u paramu);
+  public abstract void a(cc paramcc, i.c paramc, boolean[] paramArrayOfBoolean);
   
-  public abstract void a(t paramt);
+  public abstract void a(cc paramcc, bb parambb, boolean paramBoolean, i.c paramc);
   
-  public abstract void b(t paramt);
+  public abstract void b(cc paramcc, bb parambb, boolean paramBoolean, i.c paramc);
 }
 
 

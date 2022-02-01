@@ -1,30 +1,15 @@
 package com.tencent.luggage.sdk.b.a.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.FutureTask;
+import kotlin.Metadata;
 
-public class b
-  implements Runnable
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/jsapi/component/config/IExptManagerDelegate;", "", "getExptForKey", "", "key", "luggage-wechat-nano-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface b
 {
-  private final FutureTask<?> bEf;
-  
-  public b(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(140705);
-    this.bEf = new FutureTask(paramRunnable, Integer.valueOf(0));
-    AppMethodBeat.o(140705);
-  }
-  
-  public void run()
-  {
-    AppMethodBeat.i(140706);
-    this.bEf.run();
-    AppMethodBeat.o(140706);
-  }
+  public abstract String fq(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

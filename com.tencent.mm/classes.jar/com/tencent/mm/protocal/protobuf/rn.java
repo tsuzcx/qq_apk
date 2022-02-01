@@ -4,114 +4,122 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class rn
-  extends buy
+  extends erp
 {
-  public int jJu;
-  public LinkedList<rm> jJv;
-  
-  public rn()
-  {
-    AppMethodBeat.i(51378);
-    this.jJv = new LinkedList();
-    AppMethodBeat.o(51378);
-  }
+  public int Tps;
+  public String YWx;
+  public com.tencent.mm.bx.b YWy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51379);
+    AppMethodBeat.i(257573);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YWx == null)
+      {
+        paramVarArgs = new i.a.a.b("Not all required fields were included: main_brand_user_name");
+        AppMethodBeat.o(257573);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.jJu);
-      paramVarArgs.e(3, 8, this.jJv);
-      AppMethodBeat.o(51379);
+      if (this.YWx != null) {
+        paramVarArgs.g(2, this.YWx);
+      }
+      paramVarArgs.bS(3, this.Tps);
+      if (this.YWy != null) {
+        paramVarArgs.d(4, this.YWy);
+      }
+      AppMethodBeat.o(257573);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label498;
+        break label496;
       }
     }
-    label498:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label496:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.jJu);
-      int j = e.a.a.a.c(3, 8, this.jJv);
-      AppMethodBeat.o(51379);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.YWx != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.YWx);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.Tps);
+      paramInt = i;
+      if (this.YWy != null) {
+        paramInt = i + i.a.a.b.b.a.c(4, this.YWy);
+      }
+      AppMethodBeat.o(257573);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.jJv.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(51379);
+        if (this.YWx == null)
+        {
+          paramVarArgs = new i.a.a.b("Not all required fields were included: main_brand_user_name");
+          AppMethodBeat.o(257573);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(257573);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         rn localrn = (rn)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(51379);
+          AppMethodBeat.o(257573);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localrn.BaseRequest = ((hq)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localrn.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(51379);
+          AppMethodBeat.o(257573);
           return 0;
         case 2: 
-          localrn.jJu = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(51379);
+          localrn.YWx = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(257573);
+          return 0;
+        case 3: 
+          localrn.Tps = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(257573);
           return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new rm();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((rm)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localrn.jJv.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(51379);
+        localrn.YWy = ((i.a.a.a.a)localObject).ajGk.kFX();
+        AppMethodBeat.o(257573);
         return 0;
       }
-      AppMethodBeat.o(51379);
+      AppMethodBeat.o(257573);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.rn
  * JD-Core Version:    0.7.0.1
  */

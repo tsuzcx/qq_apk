@@ -1,25 +1,34 @@
 package com.tencent.mobileqq.data;
 
-import abti;
-import amrf;
 import android.text.TextUtils;
-import apdz;
-import awhp;
-import azqs;
-import bdhe;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.MsgProxyUtils;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.service.message.MessageConstants;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import nav;
 
 public class MessageForReplyText
   extends ChatMessage
-  implements apdz
+  implements HasSourceMessage
 {
   public static final String KEY_BARRAGE_SOURCE_MSG_TYPE = "barrage_source_msg_type";
   public static final String KEY_BARRAGE_TIME_LOCATION = "barrage_time_location";
@@ -27,11 +36,11 @@ public class MessageForReplyText
   public int barrageSourceMsgType;
   public long barrageTimeLocation;
   public boolean isBarrageMsg;
-  public boolean mHasPullHistorySourceMsg;
+  public boolean mHasPullHistorySourceMsg = false;
   public MessageForReplyText.SourceMsgInfo mSourceMsgInfo;
   public int msgVia;
   public CharSequence sb;
-  @awhp
+  @notColumn
   private MessageRecord sourceMessage;
   
   public static QQAppInterface getAppInterface()
@@ -48,94 +57,107 @@ public class MessageForReplyText
   
   public static boolean needHideLocate(MessageForReplyText paramMessageForReplyText)
   {
-    if (paramMessageForReplyText == null) {}
-    while (((abti.d(paramMessageForReplyText.istroop)) && (paramMessageForReplyText.mSourceMsgInfo != null) && (paramMessageForReplyText.mSourceMsgInfo.origUid == 0L)) || (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L)) {
+    boolean bool = true;
+    if (paramMessageForReplyText == null) {
       return true;
     }
-    return false;
+    if (UinTypeUtil.b(paramMessageForReplyText.istroop))
+    {
+      MessageForReplyText.SourceMsgInfo localSourceMsgInfo = paramMessageForReplyText.mSourceMsgInfo;
+      if (localSourceMsgInfo != null)
+      {
+        if (localSourceMsgInfo.origUid == 0L) {
+          return bool;
+        }
+        if (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L) {
+          return true;
+        }
+      }
+    }
+    bool = false;
+    return bool;
   }
   
   public static void reportReplyMsg(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0)
+    if (paramSessionInfo.a == 0)
     {
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
       return;
     }
-    reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage);
+    reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.b, paramChatMessage);
   }
   
   public static void reportReplyMsg(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, ChatMessage paramChatMessage)
   {
-    int i;
-    Object localObject;
     if (paramChatMessage != null)
     {
-      i = 0;
-      switch (paramChatMessage.msgtype)
-      {
-      default: 
-        localObject = "";
-      }
-    }
-    for (;;)
-    {
-      String str1;
-      if (paramChatMessage.istroop == 3000)
-      {
-        str1 = "Grp_Dis_replyMsg";
-        label99:
-        String str2 = i + "";
-        if (!nav.a(paramChatMessage)) {
-          break label281;
-        }
-        paramChatMessage = "1";
-        label133:
-        azqs.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
-        return;
-        i = 0;
-        localObject = "";
-        continue;
-        if (!(paramChatMessage instanceof MessageForStructing)) {
-          break label317;
-        }
-        localObject = (MessageForStructing)paramChatMessage;
-        if (((MessageForStructing)localObject).structingMsg == null) {
-          break label310;
+      int j = paramChatMessage.msgtype;
+      int i = 0;
+      if (j != -2022) {
+        if (j != -2017) {
+          if (j != -2011) {
+            if (j != -2007) {
+              if (j != -2002) {
+                if (j == -2000) {}
+              }
+            }
+          }
         }
       }
-      label281:
-      label310:
-      for (localObject = ((MessageForStructing)localObject).structingMsg.mMsgServiceID + "";; localObject = "")
+      Object localObject1;
+      Object localObject2;
+      for (;;)
       {
-        i = 10;
-        break;
-        i = 5;
-        localObject = "";
-        break;
-        i = 2;
-        localObject = "";
+        localObject1 = "";
         break;
         i = 3;
-        localObject = "";
-        break;
+        continue;
         i = 4;
-        localObject = "";
-        break;
-        i = 7;
-        localObject = "";
-        break;
-        str1 = "Grp_replyMsg";
-        break label99;
-        paramChatMessage = "0";
-        break label133;
-        azqs.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
-        return;
+        continue;
+        i = 2;
+        continue;
+        j = 10;
+        i = j;
+        if ((paramChatMessage instanceof MessageForStructing))
+        {
+          localObject1 = (MessageForStructing)paramChatMessage;
+          if (((MessageForStructing)localObject1).structingMsg != null)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(((MessageForStructing)localObject1).structingMsg.mMsgServiceID);
+            ((StringBuilder)localObject2).append("");
+            localObject1 = ((StringBuilder)localObject2).toString();
+          }
+          else
+          {
+            localObject1 = "";
+          }
+          i = j;
+          break;
+          i = 5;
+          continue;
+          i = 7;
+        }
       }
-      label317:
-      localObject = "";
-      i = 10;
+      if (paramChatMessage.istroop == 3000) {
+        localObject2 = "Grp_Dis_replyMsg";
+      } else {
+        localObject2 = "Grp_replyMsg";
+      }
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append("");
+      localObject3 = ((StringBuilder)localObject3).toString();
+      if (AnonymousChatHelper.c(paramChatMessage)) {
+        paramChatMessage = "1";
+      } else {
+        paramChatMessage = "0";
+      }
+      ReportController.b(paramQQAppInterface, "P_CliOper", (String)localObject2, "", paramString1, paramString2, 0, 0, paramString3, (String)localObject3, paramChatMessage, (String)localObject1);
+      return;
     }
+    ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
   }
   
   public void deepCopySourceMsg(MessageForReplyText paramMessageForReplyText)
@@ -146,257 +168,139 @@ public class MessageForReplyText
       return;
     }
     this.mSourceMsgInfo = new MessageForReplyText.SourceMsgInfo(paramMessageForReplyText.mSourceMsgInfo);
-    paramMessageForReplyText = paramMessageForReplyText.sourceMessage;
-    if (paramMessageForReplyText != null) {
-      if (paramMessageForReplyText.msgtype == -1037) {
-        paramMessageForReplyText = ((MessageForLongMsg)paramMessageForReplyText).rebuildLongMsg(true);
+    MessageRecord localMessageRecord = paramMessageForReplyText.sourceMessage;
+    paramMessageForReplyText = null;
+    if (localMessageRecord != null) {
+      if (localMessageRecord.msgtype == -1037) {
+        paramMessageForReplyText = ((MessageForLongMsg)localMessageRecord).rebuildLongMsg(true);
+      } else if (localMessageRecord.msgtype == -1036) {
+        paramMessageForReplyText = (MessageForMixedMsg)((MessageForLongMsg)localMessageRecord).rebuildLongMsg();
+      } else if (localMessageRecord.msgtype == -1035) {
+        paramMessageForReplyText = ((MessageForMixedMsg)localMessageRecord).rebuildMixedMsg();
+      } else if (localMessageRecord.msgtype == -2011) {
+        paramMessageForReplyText = new MessageForStructing(localMessageRecord);
+      } else {
+        paramMessageForReplyText = (MessageRecord)localMessageRecord.deepCopyByReflect();
       }
     }
-    for (;;)
-    {
-      if ((paramMessageForReplyText == null) && (QLog.isColorLevel())) {
-        QLog.d("Q.msg.", 2, "MessageForReplyText deepCopySourceMsg is null");
-      }
-      this.sourceMessage = paramMessageForReplyText;
-      return;
-      if (paramMessageForReplyText.msgtype == -1036)
+    if ((paramMessageForReplyText == null) && (QLog.isColorLevel())) {
+      QLog.d("Q.msg.", 2, "MessageForReplyText deepCopySourceMsg is null");
+    }
+    this.sourceMessage = paramMessageForReplyText;
+  }
+  
+  protected void doParse()
+  {
+    if (this.msg == null) {
+      localObject1 = "";
+    } else {
+      localObject1 = this.msg;
+    }
+    String str1 = getExtInfoFromExtStr("sens_msg_need_parse");
+    boolean bool1;
+    if (!TextUtils.isEmpty(str1)) {
+      try
       {
-        paramMessageForReplyText = (MessageForMixedMsg)((MessageForLongMsg)paramMessageForReplyText).rebuildLongMsg();
+        bool1 = Boolean.parseBoolean(str1);
       }
-      else if (paramMessageForReplyText.msgtype == -1035)
+      catch (Exception localException1)
       {
-        paramMessageForReplyText = ((MessageForMixedMsg)paramMessageForReplyText).rebuildMixedMsg();
+        localException1.printStackTrace();
       }
-      else if (paramMessageForReplyText.msgtype == -2011)
+    } else {
+      bool1 = true;
+    }
+    boolean bool3 = false;
+    boolean bool2 = bool1;
+    if (bool1) {
+      if (!(BaseActivity.sTopActivity instanceof MultiForwardActivity))
       {
-        paramMessageForReplyText = new MessageForStructing(paramMessageForReplyText);
+        bool2 = bool1;
+        if (!(BaseActivity.sTopActivity instanceof ChatHistoryActivity)) {}
       }
       else
       {
-        paramMessageForReplyText = (MessageRecord)paramMessageForReplyText.deepCopyByReflect();
-        continue;
-        paramMessageForReplyText = null;
+        bool2 = false;
       }
     }
-  }
-  
-  /* Error */
-  protected void doParse()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 192	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
-    //   4: ifnonnull +166 -> 170
-    //   7: ldc 79
-    //   9: astore_2
-    //   10: aload_0
-    //   11: ldc 194
-    //   13: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   16: astore_3
-    //   17: aload_3
-    //   18: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   21: ifne +162 -> 183
-    //   24: aload_3
-    //   25: invokestatic 210	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
-    //   28: istore_1
-    //   29: iload_1
-    //   30: ifeq +379 -> 409
-    //   33: getstatic 216	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   36: instanceof 218
-    //   39: ifne +12 -> 51
-    //   42: getstatic 216	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   45: instanceof 220
-    //   48: ifeq +361 -> 409
-    //   51: iconst_0
-    //   52: istore_1
-    //   53: aload_0
-    //   54: ldc 222
-    //   56: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   59: astore_3
-    //   60: aload_3
-    //   61: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   64: ifne +47 -> 111
-    //   67: aload_0
-    //   68: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
-    //   71: ifnonnull +40 -> 111
-    //   74: aload_0
-    //   75: aload_3
-    //   76: invokestatic 227	bdhe:a	(Ljava/lang/String;)[B
-    //   79: invokestatic 232	amrf:a	([B)Ljava/lang/Object;
-    //   82: checkcast 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo
-    //   85: putfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
-    //   88: aload_0
-    //   89: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
-    //   92: ifnull +19 -> 111
-    //   95: invokestatic 234	com/tencent/mobileqq/data/MessageForReplyText:getAppInterface	()Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   98: astore_3
-    //   99: aload_0
-    //   100: aload_0
-    //   101: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
-    //   104: aload_3
-    //   105: invokevirtual 238	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:unPackSourceMsg	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lcom/tencent/mobileqq/data/MessageRecord;
-    //   108: invokevirtual 241	com/tencent/mobileqq/data/MessageForReplyText:setSourceMessageRecord	(Lcom/tencent/mobileqq/data/MessageRecord;)V
-    //   111: aload_0
-    //   112: getstatic 246	ayzs:i	Ljava/lang/String;
-    //   115: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   118: astore_3
-    //   119: aload_3
-    //   120: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   123: ifne +24 -> 147
-    //   126: aload_3
-    //   127: invokestatic 252	com/tencent/mobileqq/data/MessageForText:getTroopMemberInfoFromExtrJson	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   130: astore_3
-    //   131: aload_3
-    //   132: ifnull +15 -> 147
-    //   135: aload_3
-    //   136: invokevirtual 258	java/util/ArrayList:size	()I
-    //   139: ifle +8 -> 147
-    //   142: aload_0
-    //   143: aload_3
-    //   144: putfield 262	com/tencent/mobileqq/data/MessageForReplyText:atInfoList	Ljava/util/ArrayList;
-    //   147: aload_0
-    //   148: new 264	bamp
-    //   151: dup
-    //   152: aload_2
-    //   153: bipush 13
-    //   155: invokestatic 268	com/tencent/mobileqq/activity/ChatTextSizeSettingActivity:a	()I
-    //   158: aload_0
-    //   159: invokespecial 271	bamp:<init>	(Ljava/lang/CharSequence;IILcom/tencent/mobileqq/data/MessageRecord;)V
-    //   162: putfield 273	com/tencent/mobileqq/data/MessageForReplyText:sb	Ljava/lang/CharSequence;
-    //   165: iload_1
-    //   166: ifne +100 -> 266
-    //   169: return
-    //   170: aload_0
-    //   171: getfield 192	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
-    //   174: astore_2
-    //   175: goto -165 -> 10
-    //   178: astore_3
-    //   179: aload_3
-    //   180: invokevirtual 276	java/lang/Exception:printStackTrace	()V
-    //   183: iconst_1
-    //   184: istore_1
-    //   185: goto -156 -> 29
-    //   188: astore_3
-    //   189: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   192: ifeq -81 -> 111
-    //   195: ldc 144
-    //   197: iconst_2
-    //   198: new 104	java/lang/StringBuilder
-    //   201: dup
-    //   202: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   205: ldc_w 278
-    //   208: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: aload_3
-    //   212: invokevirtual 281	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   215: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   221: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   224: goto -113 -> 111
-    //   227: astore_3
-    //   228: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   231: ifeq -84 -> 147
-    //   234: ldc 144
-    //   236: iconst_2
-    //   237: new 104	java/lang/StringBuilder
-    //   240: dup
-    //   241: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   244: ldc_w 278
-    //   247: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   250: aload_3
-    //   251: invokevirtual 281	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   254: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   257: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   260: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   263: goto -116 -> 147
-    //   266: aload_0
-    //   267: ldc_w 283
-    //   270: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   273: astore_3
-    //   274: aload_3
-    //   275: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   278: ifne +70 -> 348
-    //   281: aload_0
-    //   282: ldc_w 285
-    //   285: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   288: astore 4
-    //   290: aload 4
-    //   292: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   295: ifne +109 -> 404
-    //   298: aload 4
-    //   300: ldc 123
-    //   302: invokevirtual 290	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   305: ifeq +99 -> 404
-    //   308: iconst_1
-    //   309: istore_1
-    //   310: iload_1
-    //   311: ifne +11 -> 322
-    //   314: aload_0
-    //   315: ldc_w 292
-    //   318: aload_2
-    //   319: invokevirtual 296	com/tencent/mobileqq/data/MessageForReplyText:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
-    //   322: new 298	java/util/concurrent/CopyOnWriteArrayList
-    //   325: dup
-    //   326: invokespecial 299	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
-    //   329: astore_2
-    //   330: aload_2
-    //   331: aload_0
-    //   332: invokeinterface 305 2 0
-    //   337: pop
-    //   338: aload_0
-    //   339: aload_2
-    //   340: iload_1
-    //   341: aload_3
-    //   342: invokestatic 227	bdhe:a	(Ljava/lang/String;)[B
-    //   345: invokestatic 310	bfam:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
-    //   348: aload_0
-    //   349: ldc 13
-    //   351: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   354: astore_2
-    //   355: aload_2
-    //   356: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   359: ifne -190 -> 169
-    //   362: aload_0
-    //   363: iconst_1
-    //   364: putfield 312	com/tencent/mobileqq/data/MessageForReplyText:isBarrageMsg	Z
-    //   367: aload_0
-    //   368: aload_2
-    //   369: invokestatic 318	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   372: invokevirtual 322	java/lang/Long:longValue	()J
-    //   375: putfield 324	com/tencent/mobileqq/data/MessageForReplyText:barrageTimeLocation	J
-    //   378: aload_0
-    //   379: ldc 10
-    //   381: invokevirtual 198	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   384: astore_2
-    //   385: aload_2
-    //   386: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   389: ifne -220 -> 169
-    //   392: aload_0
-    //   393: aload_2
-    //   394: invokestatic 329	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   397: invokevirtual 332	java/lang/Integer:intValue	()I
-    //   400: putfield 334	com/tencent/mobileqq/data/MessageForReplyText:barrageSourceMsgType	I
-    //   403: return
-    //   404: iconst_0
-    //   405: istore_1
-    //   406: goto -96 -> 310
-    //   409: goto -356 -> 53
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	412	0	this	MessageForReplyText
-    //   28	378	1	bool	boolean
-    //   9	385	2	localObject1	Object
-    //   16	128	3	localObject2	Object
-    //   178	2	3	localException1	Exception
-    //   188	24	3	localException2	Exception
-    //   227	24	3	localException3	Exception
-    //   273	69	3	str1	String
-    //   288	11	4	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   24	29	178	java/lang/Exception
-    //   53	111	188	java/lang/Exception
-    //   111	131	227	java/lang/Exception
-    //   135	147	227	java/lang/Exception
+    Object localObject4;
+    try
+    {
+      Object localObject2 = getExtInfoFromExtStr("sens_msg_source_msg_info");
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (this.mSourceMsgInfo == null))
+      {
+        this.mSourceMsgInfo = ((MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes((String)localObject2)));
+        if (this.mSourceMsgInfo != null)
+        {
+          localObject2 = getAppInterface();
+          setSourceMessageRecord(this.mSourceMsgInfo.unPackSourceMsg((QQAppInterface)localObject2));
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("doParse MessageForReplyText exception:");
+        ((StringBuilder)localObject4).append(localException2.getMessage());
+        QLog.d("Q.msg.", 2, ((StringBuilder)localObject4).toString());
+      }
+    }
+    try
+    {
+      Object localObject3 = getExtInfoFromExtStr(MessageConstants.i);
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        localObject3 = MessageForText.getTroopMemberInfoFromExtrJson((String)localObject3);
+        if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0)) {
+          this.atInfoList = ((ArrayList)localObject3);
+        }
+      }
+    }
+    catch (Exception localException3)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("doParse MessageForReplyText exception:");
+        ((StringBuilder)localObject4).append(localException3.getMessage());
+        QLog.d("Q.msg.", 2, ((StringBuilder)localObject4).toString());
+      }
+    }
+    this.sb = new QQText((CharSequence)localObject1, 13, ChatTextSizeSettingActivity.a(), this);
+    if (!bool2) {
+      return;
+    }
+    String str2 = getExtInfoFromExtStr("sens_msg_ctrl_info");
+    if (!TextUtils.isEmpty(str2))
+    {
+      localObject4 = getExtInfoFromExtStr("sens_msg_confirmed");
+      bool1 = bool3;
+      if (!TextUtils.isEmpty((CharSequence)localObject4))
+      {
+        bool1 = bool3;
+        if (((String)localObject4).equalsIgnoreCase("1")) {
+          bool1 = true;
+        }
+      }
+      if (!bool1) {
+        saveExtInfoToExtStr("sens_msg_original_text", (String)localObject1);
+      }
+      localObject1 = new CopyOnWriteArrayList();
+      ((List)localObject1).add(this);
+      MQPSensitiveMsgUtil.a(this, (List)localObject1, bool1, HexUtil.hexStr2Bytes(str2));
+    }
+    Object localObject1 = getExtInfoFromExtStr("barrage_time_location");
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      this.isBarrageMsg = true;
+      this.barrageTimeLocation = Long.valueOf((String)localObject1).longValue();
+      localObject1 = getExtInfoFromExtStr("barrage_source_msg_type");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        this.barrageSourceMsgType = Integer.valueOf((String)localObject1).intValue();
+      }
+    }
   }
   
   public boolean getHasPulledSourceMsg()
@@ -416,12 +320,16 @@ public class MessageForReplyText
   
   public String getSummaryMsg()
   {
-    return this.sb.toString();
+    CharSequence localCharSequence = this.sb;
+    if (localCharSequence == null) {
+      return "";
+    }
+    return localCharSequence.toString();
   }
   
   public boolean isSupportFTS()
   {
-    return abti.x(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -429,49 +337,55 @@ public class MessageForReplyText
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
   
   public void serial()
   {
-    String str = getExtInfoFromExtStr("sens_msg_original_text");
-    Object localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = this.msg;
+    Object localObject2 = getExtInfoFromExtStr("sens_msg_original_text");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = this.msg;
     }
-    this.msg = ((String)localObject);
-    if (this.msg == null) {}
-    for (str = "";; str = this.msg)
+    this.msg = ((String)localObject1);
+    if (this.msg == null) {
+      localObject2 = "";
+    } else {
+      localObject2 = this.msg;
+    }
+    this.msg = ((String)localObject2);
+    this.msgData = ((String)localObject1).getBytes();
+    try
     {
-      this.msg = str;
-      this.msgData = ((String)localObject).getBytes();
-      try
-      {
-        localObject = getAppInterface();
-        if ((this.sourceMessage != null) && (localObject != null)) {
-          this.mSourceMsgInfo.packSourceMsg((QQAppInterface)localObject, this.sourceMessage);
-        }
-        saveExtInfoToExtStr("sens_msg_source_msg_info", bdhe.a(amrf.a(this.mSourceMsgInfo)));
-        if (this.isBarrageMsg)
-        {
-          saveExtInfoToExtStr("barrage_time_location", String.valueOf(this.barrageTimeLocation));
-          saveExtInfoToExtStr("barrage_source_msg_type", String.valueOf(this.barrageSourceMsgType));
-        }
-        this.extLong |= 0x1;
-        return;
+      localObject1 = getAppInterface();
+      if ((this.sourceMessage != null) && (localObject1 != null)) {
+        this.mSourceMsgInfo.packSourceMsg((QQAppInterface)localObject1, this.sourceMessage);
       }
-      catch (Exception localException)
+      saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(MessagePkgUtils.a(this.mSourceMsgInfo)));
+      if (this.isBarrageMsg)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("Q.msg.", 2, "prewrite MessageForReplyText exception:" + localException.getMessage());
+        saveExtInfoToExtStr("barrage_time_location", String.valueOf(this.barrageTimeLocation));
+        saveExtInfoToExtStr("barrage_source_msg_type", String.valueOf(this.barrageSourceMsgType));
+      }
+      this.extLong |= 0x1;
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("prewrite MessageForReplyText exception:");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        QLog.d("Q.msg.", 2, ((StringBuilder)localObject2).toString());
       }
     }
   }
@@ -483,32 +397,35 @@ public class MessageForReplyText
   
   public void setSourceMessageRecord(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    do
-    {
+    if (paramMessageRecord == null) {
       return;
-      this.sourceMessage = paramMessageRecord;
-      this.sourceMessage.isReplySource = true;
-      this.sourceMessage.isMultiMsg = this.isMultiMsg;
-      this.sourceMessage.isReMultiMsg = this.isReMultiMsg;
-      if ((paramMessageRecord instanceof MessageForMixedMsg))
+    }
+    this.sourceMessage = paramMessageRecord;
+    Object localObject = this.sourceMessage;
+    ((MessageRecord)localObject).isReplySource = true;
+    ((MessageRecord)localObject).isMultiMsg = this.isMultiMsg;
+    this.sourceMessage.isReMultiMsg = this.isReMultiMsg;
+    if ((paramMessageRecord instanceof MessageForMixedMsg))
+    {
+      localObject = (MessageForMixedMsg)paramMessageRecord;
+      if (((MessageForMixedMsg)localObject).msgElemList != null)
       {
-        Object localObject = (MessageForMixedMsg)paramMessageRecord;
-        if (((MessageForMixedMsg)localObject).msgElemList != null)
+        localObject = ((MessageForMixedMsg)localObject).msgElemList.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          localObject = ((MessageForMixedMsg)localObject).msgElemList.iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-            if (localMessageRecord != null) {
-              localMessageRecord.isReplySource = true;
-            }
+          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+          if (localMessageRecord != null) {
+            localMessageRecord.isReplySource = true;
           }
         }
       }
-    } while (this.mSourceMsgInfo == null);
-    this.mSourceMsgInfo.setUniSeq(paramMessageRecord.uniseq, false);
-    paramMessageRecord.uniseq = this.mSourceMsgInfo.getUniSeq();
+    }
+    localObject = this.mSourceMsgInfo;
+    if (localObject != null)
+    {
+      ((MessageForReplyText.SourceMsgInfo)localObject).setUniSeq(paramMessageRecord.uniseq, false);
+      paramMessageRecord.uniseq = this.mSourceMsgInfo.getUniSeq();
+    }
   }
 }
 

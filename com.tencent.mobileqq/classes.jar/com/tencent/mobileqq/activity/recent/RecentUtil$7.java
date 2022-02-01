@@ -1,37 +1,38 @@
 package com.tencent.mobileqq.activity.recent;
 
-import azqs;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
+import com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nlo;
-import nlq;
-import nmh;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class RecentUtil$7
+final class RecentUtil$7
   implements Runnable
 {
-  public RecentUtil$7(QQAppInterface paramQQAppInterface, String paramString, int paramInt, nlo paramnlo) {}
+  RecentUtil$7(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AdvertisementItem paramAdvertisementItem) {}
   
   public void run()
   {
-    QQMessageFacade.Message localMessage = null;
-    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localQQMessageFacade != null) {
-      localMessage = localQQMessageFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Object localObject = this.a.getMessageFacade();
+    if (localObject != null) {
+      localObject = ((QQMessageFacade)localObject).getLastMessage(this.b, this.c);
+    } else {
+      localObject = null;
     }
-    if (localMessage != null)
+    if (localObject != null)
     {
-      if ("false".equals(localMessage.getExtInfoFromExtStr("recent_list_advertisement_message_first_click")))
+      if ("false".equals(((Message)localObject).getExtInfoFromExtStr("recent_list_advertisement_message_first_click")))
       {
-        localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
-        if (this.jdField_a_of_type_Nlo.a != null) {
-          azqs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", nmh.a(), this.jdField_a_of_type_Nlo.a.b);
+        ((Message)localObject).saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
+        this.a.getMessageFacade().a(((Message)localObject).frienduin, ((Message)localObject).msgtype, ((Message)localObject).uniseq, "extStr", ((Message)localObject).extStr);
+        if (this.d.g != null) {
+          ReportController.a(this.a, "dc00898", "", this.d.g.a, "0X8008F5E", "0X8008F5E", 0, 0, this.d.g.c, "", PublicAccountAdUtil.c(), this.d.g.b);
         }
       }
-      if (this.jdField_a_of_type_Nlo.a != null) {
-        azqs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+      if (this.d.g != null) {
+        ReportController.a(this.a, "dc00898", "", this.d.g.a, "0X8008F60", "0X8008F60", 0, 0, this.d.g.c, "", "", this.d.g.b);
       }
     }
   }

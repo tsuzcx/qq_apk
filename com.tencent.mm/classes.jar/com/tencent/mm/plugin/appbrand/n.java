@@ -1,139 +1,193 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.support.v4.e.a;
+import android.os.Build.VERSION;
+import com.tencent.luggage.sdk.e.d;
+import com.tencent.luggage.sdk.processes.main.LuggageOnRuntimeFinishTask;
+import com.tencent.luggage.sdk.processes.main.LuggagePopRuntimeTask;
+import com.tencent.luggage.sdk.processes.main.LuggageStashRuntimeTask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.e.c;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.apache.commons.c.a;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandProcessSharedPersistentRuntimeStore;", "", "()V", "TAG", "", "runtimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "contains", "", "runtime", "isAllEquals", "array", "", "objectToMatch", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "isEmpty", "onRuntimeFinish", "", "rt", "Lcom/tencent/luggage/sdk/runtime/AppBrandRuntimeLU;", "poll", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "pollOrCreate", "remotePop", "remove", "stash", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
 {
-  private static final Map<String, n> eEq;
-  private static final n gQU;
-  public volatile String gQV;
-  public final AtomicInteger gQW;
-  public final AtomicBoolean gQX;
-  public c.a gQY;
-  public volatile String gQZ;
-  public volatile String gRa;
-  public volatile boolean gRb;
-  public volatile boolean gRc;
-  public volatile boolean gRd;
-  public volatile String gRe;
-  public volatile int gRf;
-  public volatile boolean gRg;
-  public volatile boolean gRh;
-  public volatile boolean gRi;
+  public static final n qrZ;
+  private static final ConcurrentHashMap<String, w> qsa;
   
   static
   {
-    AppMethodBeat.i(86746);
-    eEq = new a();
-    gQU = new n();
-    AppMethodBeat.o(86746);
+    AppMethodBeat.i(50146);
+    qrZ = new n();
+    qsa = new ConcurrentHashMap();
+    AppMethodBeat.o(50146);
   }
   
-  private n()
+  public static final w a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
-    AppMethodBeat.i(86739);
-    this.gQW = new AtomicInteger();
-    this.gQX = new AtomicBoolean(false);
-    this.gQY = null;
-    this.gRg = false;
-    this.gRh = false;
-    this.gRi = false;
-    AppMethodBeat.o(86739);
-  }
-  
-  static void remove(String paramString)
-  {
-    AppMethodBeat.i(86743);
-    if (bo.isNullOrNil(paramString))
+    boolean bool2 = true;
+    AppMethodBeat.i(175099);
+    s.u(paramAppBrandInitConfigWC, "cfg");
+    s.u(paramAppBrandRuntimeContainerWC, "container");
+    paramAppBrandInitConfigWC = (w)qsa.remove(paramAppBrandInitConfigWC.appId);
+    if (paramAppBrandInitConfigWC != null)
     {
-      AppMethodBeat.o(86743);
-      return;
-    }
-    synchronized (eEq)
-    {
-      eEq.remove(paramString);
-      AppMethodBeat.o(86743);
-      return;
-    }
-  }
-  
-  public static n xZ(String paramString)
-  {
-    AppMethodBeat.i(86740);
-    paramString = ya(paramString);
-    AppMethodBeat.o(86740);
-    return paramString;
-  }
-  
-  private static n ya(String paramString)
-  {
-    AppMethodBeat.i(86741);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(86741);
-      return null;
-    }
-    synchronized (eEq)
-    {
-      n localn2 = (n)eEq.get(paramString);
-      n localn1 = localn2;
-      if (localn2 == null)
+      e((d)paramAppBrandInitConfigWC);
+      Boolean[] arrayOfBoolean = new Boolean[3];
+      arrayOfBoolean[0] = Boolean.valueOf(paramAppBrandInitConfigWC.mInitialized);
+      if (!paramAppBrandInitConfigWC.ccV)
       {
-        localn1 = new n();
-        eEq.put(paramString, localn1);
+        bool1 = true;
+        arrayOfBoolean[1] = Boolean.valueOf(bool1);
+        if (paramAppBrandInitConfigWC.qsE.get()) {
+          break label171;
+        }
       }
-      AppMethodBeat.o(86741);
-      return localn1;
+      label171:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        arrayOfBoolean[2] = Boolean.valueOf(bool1);
+        Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "pollOrCreate, existed runtime[" + paramAppBrandInitConfigWC.mAppId + "], conditions[" + a.ca(arrayOfBoolean) + ']');
+        if (!a(arrayOfBoolean, Boolean.TRUE)) {
+          break label176;
+        }
+        paramAppBrandInitConfigWC.a((ap)paramAppBrandRuntimeContainerWC);
+        AppMethodBeat.o(175099);
+        return paramAppBrandInitConfigWC;
+        bool1 = false;
+        break;
+      }
+    }
+    label176:
+    AppMethodBeat.o(175099);
+    return null;
+  }
+  
+  private static boolean a(Object[] paramArrayOfObject, Object paramObject)
+  {
+    AppMethodBeat.i(50138);
+    int i = 0;
+    while (i < 3)
+    {
+      if (!s.p(paramArrayOfObject[i], paramObject))
+      {
+        AppMethodBeat.o(50138);
+        return false;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(50138);
+    return true;
+  }
+  
+  public static final void c(w paramw)
+  {
+    AppMethodBeat.i(50142);
+    s.u(paramw, "runtime");
+    Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", s.X("stash ", paramw));
+    paramw.a(null);
+    Map localMap = (Map)qsa;
+    String str = paramw.mAppId;
+    s.s(str, "runtime.appId");
+    localMap.put(str, paramw);
+    try
+    {
+      new LuggageStashRuntimeTask((d)paramw).cpB();
+      AppMethodBeat.o(50142);
+      return;
+    }
+    catch (c localc)
+    {
+      Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "stash: stash fail, give up");
+      qsa.remove(paramw.mAppId);
+      AppMethodBeat.o(50142);
     }
   }
   
-  private static n yb(String paramString)
+  public static final boolean d(w paramw)
   {
-    AppMethodBeat.i(86742);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(316833);
+    if (paramw == null)
     {
-      AppMethodBeat.o(86742);
-      return null;
+      AppMethodBeat.o(316833);
+      return false;
     }
-    synchronized (eEq)
+    boolean bool = qsa.containsValue(paramw);
+    AppMethodBeat.o(316833);
+    return bool;
+  }
+  
+  private static void e(d paramd)
+  {
+    AppMethodBeat.i(316839);
+    try
     {
-      paramString = (n)eEq.get(paramString);
-      AppMethodBeat.o(86742);
-      return paramString;
+      new LuggagePopRuntimeTask(paramd).cpB();
+      AppMethodBeat.o(316839);
+      return;
+    }
+    catch (c localc)
+    {
+      Log.e("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "remotePop runtime:" + paramd + ", exception:" + localc);
+      AppMethodBeat.o(316839);
     }
   }
   
-  public static n yc(String paramString)
+  public static final boolean e(w paramw)
   {
-    AppMethodBeat.i(86744);
-    paramString = yb(paramString);
-    if (paramString == null)
-    {
-      paramString = gQU;
-      AppMethodBeat.o(86744);
-      return paramString;
+    AppMethodBeat.i(50143);
+    s.u(paramw, "runtime");
+    Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", s.X("remove: ", paramw));
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = qsa.remove(paramw.mAppId, paramw);
     }
-    AppMethodBeat.o(86744);
-    return paramString;
+    for (;;)
+    {
+      if (bool) {
+        e((d)paramw);
+      }
+      AppMethodBeat.o(50143);
+      return bool;
+      if (d(paramw))
+      {
+        qsa.remove(paramw.mAppId);
+        bool = true;
+      }
+      else
+      {
+        bool = false;
+      }
+    }
   }
   
-  public static n yd(String paramString)
+  public static final void f(d paramd)
   {
-    AppMethodBeat.i(86745);
-    paramString = ya(paramString);
-    AppMethodBeat.o(86745);
-    return paramString;
+    AppMethodBeat.i(316841);
+    s.u(paramd, "rt");
+    Log.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", s.X("onRuntimeFinish appId =", paramd.mAppId));
+    new LuggageOnRuntimeFinishTask(paramd).bQt();
+    AppMethodBeat.o(316841);
+  }
+  
+  public static final boolean isEmpty()
+  {
+    AppMethodBeat.i(50139);
+    boolean bool = qsa.isEmpty();
+    AppMethodBeat.o(50139);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n
  * JD-Core Version:    0.7.0.1
  */

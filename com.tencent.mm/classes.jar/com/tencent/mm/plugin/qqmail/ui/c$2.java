@@ -1,34 +1,35 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bk.a;
+import com.tencent.mm.model.bw.a;
 import com.tencent.mm.network.e;
+import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.qqmail.a.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.l;
 
 final class c$2
-  implements bk.a
+  implements bw.a
 {
   c$2(c paramc) {}
   
-  public final void a(e parame)
+  public final void b(g paramg)
   {
-    AppMethodBeat.i(68412);
-    if (parame == null)
+    AppMethodBeat.i(123140);
+    if (paramg == null)
     {
-      AppMethodBeat.o(68412);
+      AppMethodBeat.o(123140);
       return;
     }
-    com.tencent.mm.network.c localc = parame.adI();
-    int i = parame.adI().getUin();
-    localc.a(new byte[0], new byte[0], new byte[0], i);
-    a.gmP.BO();
-    AppMethodBeat.o(68412);
+    e locale = paramg.bGg();
+    int i = paramg.bGg().getUin();
+    locale.a(new byte[0], new byte[0], new byte[0], i);
+    a.pFo.aDx();
+    AppMethodBeat.o(123140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.c.2
  * JD-Core Version:    0.7.0.1
  */

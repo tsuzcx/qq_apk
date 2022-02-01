@@ -43,15 +43,19 @@ public class NoteItem$ArticleText
   
   public void releaseNative()
   {
-    if ((isNative()) && (this.articleComment != null)) {
-      this.articleComment.releaseNative();
+    if (isNative())
+    {
+      NoteItem.HtmlText localHtmlText = this.articleComment;
+      if (localHtmlText != null) {
+        localHtmlText.releaseNative();
+      }
     }
     super.releaseNative();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.data.NoteItem.ArticleText
  * JD-Core Version:    0.7.0.1
  */

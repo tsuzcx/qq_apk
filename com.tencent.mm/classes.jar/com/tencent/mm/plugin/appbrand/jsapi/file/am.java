@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class am
-  extends e<ba>
+  extends e<bj>
 {
-  private static final int CTRL_INDEX = 379;
-  private static final String NAME = "writeFileSync";
+  private static final int CTRL_INDEX = 397;
+  private static final String NAME = "fs_rename";
   
   public am()
   {
-    super(new ba());
-    AppMethodBeat.i(102814);
-    AppMethodBeat.o(102814);
+    super(new bj());
+    AppMethodBeat.i(128892);
+    AppMethodBeat.o(128892);
   }
 }
 

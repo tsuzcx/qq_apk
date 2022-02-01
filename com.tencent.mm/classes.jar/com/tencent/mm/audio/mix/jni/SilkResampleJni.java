@@ -6,9 +6,13 @@ public class SilkResampleJni
 {
   static
   {
-    AppMethodBeat.i(137084);
-    System.loadLibrary("wechataudiosilk");
-    AppMethodBeat.o(137084);
+    AppMethodBeat.i(136833);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechataudiosilk");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/audio/mix/jni/SilkResampleJni", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/audio/mix/jni/SilkResampleJni", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(136833);
   }
   
   public static native int clearResample(String paramString);

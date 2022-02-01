@@ -1,44 +1,40 @@
 package com.tencent.token.utils.encrypt.random;
 
+import com.tencent.token.abv;
+import com.tencent.token.aby;
+import com.tencent.token.abz;
 import java.util.Random;
 
 public class SecureRandom
   extends Random
 {
-  private static SecureRandom rand = new SecureRandom(new b(new f()));
-  protected e generator;
+  private static SecureRandom rand = new SecureRandom(new abv(new abz()));
+  protected aby generator;
   
   public SecureRandom()
   {
     super(0L);
-    this.generator = new b(new f());
+    this.generator = new abv(new abz());
     setSeed(System.currentTimeMillis());
   }
   
-  protected SecureRandom(e parame)
+  private SecureRandom(aby paramaby)
   {
     super(0L);
-    this.generator = parame;
+    this.generator = paramaby;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public final void a(byte[] paramArrayOfByte)
   {
     this.generator.a(paramArrayOfByte);
   }
   
-  public byte[] a(int paramInt)
-  {
-    byte[] arrayOfByte = new byte[paramInt];
-    nextBytes(arrayOfByte);
-    return arrayOfByte;
-  }
-  
   protected final int next(int paramInt)
   {
-    int i = 0;
     int k = (paramInt + 7) / 8;
     byte[] arrayOfByte = new byte[k];
     nextBytes(arrayOfByte);
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -55,9 +51,9 @@ public class SecureRandom
   
   public int nextInt()
   {
-    int i = 0;
     byte[] arrayOfByte = new byte[4];
     nextBytes(arrayOfByte);
+    int i = 0;
     int j = 0;
     while (i < 4)
     {

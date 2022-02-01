@@ -1,22 +1,29 @@
 package com.tencent.mobileqq.dating;
 
-import abta;
-import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apib;
-import apiw;
-import auwn;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
+import com.tencent.mobileqq.nearby.profilecard.IMiniCardManager;
+import com.tencent.mobileqq.nearby.profilecard.api.IMiniCardManagerUtils;
+import com.tencent.mobileqq.newnearby.INearbyReportHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -27,64 +34,133 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  auwn a;
+  NearbyRelevantObserver a = new SayHelloMsgListActivity.1(this);
+  private IMiniCardManager b;
   
-  public SayHelloMsgListActivity()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Auwn = new apiw(this);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  protected List<RecentBaseData> a(List<MessageRecord> paramList)
+  protected boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    super.setTitle(2131897025);
+    this.app.addObserver(this.a, true);
+    this.b = ((IMiniCardManager)this.app.getManager(QQManagerFactory.MINI_CARD_MANAGER));
+    return true;
+  }
+  
+  protected void doOnDestroy()
+  {
+    super.doOnDestroy();
+    removeObserver(this.a);
+    IMiniCardManager localIMiniCardManager = this.b;
+    if (localIMiniCardManager != null) {
+      localIMiniCardManager.a();
+    }
+  }
+  
+  public void finish()
+  {
+    if ((this.mBoxMsgType == 1001) && (AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(this.mBoxUIN)))
+    {
+      this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
+      this.app.getConversationFacade().a(this.mBoxUIN, this.mBoxMsgType, true);
+    }
+    super.finish();
+  }
+  
+  protected List<RecentBaseData> makeRecetBaseData(List<MessageRecord> paramList)
   {
     ArrayList localArrayList1 = new ArrayList();
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = paramList.iterator();
-    long l2;
-    if (localIterator.hasNext())
+    for (;;)
     {
-      paramList = (MessageRecord)localIterator.next();
-      String str = paramList.senderuin;
-      l2 = System.currentTimeMillis();
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        paramList = (RecentBaseData)this.jdField_a_of_type_JavaUtilMap.get(str);
-      }
-      for (;;)
+      Object localObject;
+      long l2;
+      if (localIterator.hasNext())
       {
-        paramList.a(this.app, BaseApplication.getContext());
-        localArrayList1.add(paramList);
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        QLog.d("Q.msg_box", 4, "item update time cost = " + (System.currentTimeMillis() - l2));
-        break;
-        paramList = new RecentSayHelloListItem(paramList);
-        this.jdField_a_of_type_JavaUtilMap.put(str, paramList);
-        try
+        paramList = (MessageRecord)localIterator.next();
+        localObject = paramList.senderuin;
+        l2 = System.currentTimeMillis();
+        if (this.mMsgItemCache.containsKey(localObject))
         {
-          localArrayList2.add(Long.valueOf(paramList.a()));
+          paramList = (RecentBaseData)this.mMsgItemCache.get(localObject);
         }
-        catch (Exception localException) {}
+        else
+        {
+          paramList = new RecentSayHelloListItem(paramList);
+          this.mMsgItemCache.put(localObject, paramList);
+        }
+      }
+      try
+      {
+        localArrayList2.add(Long.valueOf(paramList.getRecentUserUin()));
+        label131:
+        paramList.update(this.app, BaseApplication.getContext());
+        localArrayList1.add(paramList);
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("item update time cost = ");
+          ((StringBuilder)localObject).append(System.currentTimeMillis() - l2);
+          QLog.d("Q.msg_box", 4, ((StringBuilder)localObject).toString());
+        }
+        if (!this.isFromNearby) {
+          continue;
+        }
+        ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportSayHelloMsgListItemExp(this.app, paramList.getRecentUserUin());
+        continue;
+        if (!localArrayList2.isEmpty()) {
+          ThreadManager.getFileThreadHandler().post(new SayHelloMsgListActivity.2(this, localArrayList2));
+        }
+        if (QLog.isDevelopLevel())
+        {
+          l2 = System.currentTimeMillis();
+          paramList = new StringBuilder();
+          paramList.append("makeRecetBaseData |start cost time:");
+          paramList.append(l2 - l1);
+          QLog.d("Q.msg_box", 4, paramList.toString());
+        }
+        ((IMiniCardManagerUtils)QRoute.api(IMiniCardManagerUtils.class)).handleMiniCardReq(localArrayList1, this.b, new SayHelloMsgListActivity.3(this, localArrayList1));
+        return localArrayList1;
+      }
+      catch (Exception localException)
+      {
+        break label131;
       }
     }
-    if (!localArrayList2.isEmpty()) {
-      ThreadManager.getFileThreadHandler().post(new SayHelloMsgListActivity.2(this, localArrayList2));
-    }
-    if (QLog.isDevelopLevel())
-    {
-      l2 = System.currentTimeMillis();
-      QLog.d("Q.msg_box", 4, "makeRecetBaseData |start cost time:" + (l2 - l1));
-    }
-    return localArrayList1;
   }
   
-  protected void b(List<MessageRecord> paramList)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    Object localObject2 = null;
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onRecentBaseDataClick(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean)
+  {
+    if (this.isFromNearby) {
+      ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportSayHelloMsgListItemClick(this.app, paramRecentBaseData.getRecentUserUin());
+    }
+    super.onRecentBaseDataClick(paramView, paramRecentBaseData, paramString, paramBoolean);
+  }
+  
+  protected void preProcessMessageList(List<MessageRecord> paramList)
+  {
     if (paramList.size() == 0) {
       return;
     }
     Iterator localIterator = paramList.iterator();
+    Object localObject2 = null;
     Object localObject1 = null;
     while (localIterator.hasNext())
     {
@@ -93,7 +169,7 @@ public class SayHelloMsgListActivity
       {
         localIterator.remove();
       }
-      else if (apib.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (DatingUtil.b(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject1;
         if (localObject1 == null) {
@@ -103,7 +179,7 @@ public class SayHelloMsgListActivity
         ((List)localObject3).add(localMessageRecord);
         localObject1 = localObject3;
       }
-      else if (apib.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
+      else if (DatingUtil.a(this.app, localMessageRecord.senderuin, localMessageRecord.istroop))
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -122,30 +198,6 @@ public class SayHelloMsgListActivity
       ((List)localObject3).addAll(localObject1);
     }
     paramList.addAll(0, (Collection)localObject3);
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
-  {
-    super.doOnCreate(paramBundle);
-    super.setTitle(2131699492);
-    this.app.addObserver(this.jdField_a_of_type_Auwn, true);
-    return true;
-  }
-  
-  public void doOnDestroy()
-  {
-    super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Auwn);
-  }
-  
-  public void finish()
-  {
-    if ((this.jdField_a_of_type_Int == 1001) && (alof.aj.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
-      this.app.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
-    }
-    super.finish();
   }
 }
 

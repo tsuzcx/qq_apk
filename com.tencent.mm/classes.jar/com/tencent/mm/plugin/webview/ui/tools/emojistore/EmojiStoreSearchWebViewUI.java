@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.emojistore;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class EmojiStoreSearchWebViewUI
   extends BaseEmojiStoreSearchWebViewUI
 {
+  public final void E(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(80478);
+    Log.i("MicroMsg.emoji.EmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
+    super.E(paramInt, paramBundle);
+    AppMethodBeat.o(80478);
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  public final void w(int paramInt, Bundle paramBundle)
-  {
-    AppMethodBeat.i(8302);
-    ab.i("MicroMsg.emoji.EmojiStoreSearchWebViewUI", "handleEmojiStoreAction action:%d", new Object[] { Integer.valueOf(paramInt) });
-    super.w(paramInt, paramBundle);
-    AppMethodBeat.o(8302);
   }
 }
 

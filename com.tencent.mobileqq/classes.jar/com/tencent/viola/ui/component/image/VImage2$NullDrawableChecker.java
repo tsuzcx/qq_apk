@@ -22,43 +22,50 @@ class VImage2$NullDrawableChecker
   private void checkDrawable()
   {
     VImage2 localVImage2 = (VImage2)this.mWeakRef.get();
-    if (localVImage2 == null) {}
-    do
-    {
+    if (localVImage2 == null) {
       return;
-      localObject = (ImageView)localVImage2.getHostView();
-    } while ((localObject == null) || (((ImageView)localObject).getDrawable() != null));
-    StringBuilder localStringBuilder = new StringBuilder().append("detect drawable is null, hashCode: ").append(localVImage2.hashCode()).append("url: ");
-    if (VImage2.access$100(localVImage2) != null)
-    {
-      localObject = VImage2.access$100(localVImage2);
-      ViolaLogUtils.e("VImage2", (String)localObject);
-      if (TextUtils.isEmpty(VImage2.access$100(localVImage2))) {
-        break label167;
-      }
-      VImage2.access$200(localVImage2, false, VImage2.access$100(localVImage2));
-      localStringBuilder = new StringBuilder().append("check drawable is null restart. hashCode: ").append(localVImage2.hashCode()).append("url: ");
-      if (VImage2.access$100(localVImage2) == null) {
-        break label161;
-      }
     }
-    label161:
-    for (Object localObject = VImage2.access$100(localVImage2);; localObject = "null")
-    {
-      ViolaLogUtils.e("VImage2", (String)localObject);
+    Object localObject = (ImageView)localVImage2.getHostView();
+    if (localObject == null) {
       return;
-      localObject = "null";
-      break;
     }
-    label167:
-    ViolaLogUtils.e("VImage2", "detect drawable is null, but imageUrl is null");
+    if (((ImageView)localObject).getDrawable() == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("detect drawable is null, hashCode: ");
+      localStringBuilder.append(localVImage2.hashCode());
+      localStringBuilder.append("url: ");
+      localObject = VImage2.access$200(localVImage2);
+      String str = "null";
+      if (localObject != null) {
+        localObject = VImage2.access$200(localVImage2);
+      } else {
+        localObject = "null";
+      }
+      localStringBuilder.append((String)localObject);
+      ViolaLogUtils.e("VImage2", localStringBuilder.toString());
+      if (!TextUtils.isEmpty(VImage2.access$200(localVImage2)))
+      {
+        VImage2.access$300(localVImage2, false, VImage2.access$200(localVImage2));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("check drawable is null restart. hashCode: ");
+        localStringBuilder.append(localVImage2.hashCode());
+        localStringBuilder.append("url: ");
+        localObject = str;
+        if (VImage2.access$200(localVImage2) != null) {
+          localObject = VImage2.access$200(localVImage2);
+        }
+        localStringBuilder.append((String)localObject);
+        ViolaLogUtils.e("VImage2", localStringBuilder.toString());
+        return;
+      }
+      ViolaLogUtils.e("VImage2", "detect drawable is null, but imageUrl is null");
+    }
   }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     checkDrawable();
@@ -80,7 +87,7 @@ class VImage2$NullDrawableChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.image.VImage2.NullDrawableChecker
  * JD-Core Version:    0.7.0.1
  */

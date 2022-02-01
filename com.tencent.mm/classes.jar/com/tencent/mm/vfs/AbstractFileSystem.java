@@ -1,51 +1,45 @@
 package com.tencent.mm.vfs;
 
-import android.os.CancellationSignal;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractFileSystem
   implements FileSystem
 {
-  private String APf;
-  private a APg;
+  private volatile s agvF = s.agzG;
   
-  public void a(CancellationSignal paramCancellationSignal) {}
-  
-  public final void a(String paramString, a parama)
+  public final void a(String paramString, s.a parama)
   {
-    try
+    if (parama == null)
     {
-      this.APf = paramString;
-      this.APg = parama;
+      this.agvF = s.agzG;
       return;
     }
-    finally {}
+    this.agvF = new s(this, paramString, parama);
   }
   
-  protected final void k(int paramInt, Object... paramVarArgs)
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  protected final void l(int paramInt, Object... paramVarArgs)
   {
     if (paramVarArgs.length == 0) {}
     Object localObject1;
     for (paramVarArgs = null;; paramVarArgs = (Object[])localObject1)
     {
-      Object localObject2;
-      try
-      {
-        localObject1 = this.APf;
-        localObject2 = this.APg;
-        if (localObject2 != null) {
-          ((a)localObject2).b((String)localObject1, paramInt, paramVarArgs);
-        }
-        return;
+      localObject1 = this.agvF;
+      if (((s)localObject1).agzF != null) {
+        ((s)localObject1).agzF.a(((s)localObject1).lWh, ((s)localObject1).agzE, paramInt, paramVarArgs);
       }
-      finally {}
+      return;
       localObject1 = new HashMap(paramVarArgs.length / 2);
       int i = 0;
       while (i < paramVarArgs.length - 1)
       {
         int j = i + 1;
-        localObject2 = paramVarArgs[i];
+        Object localObject2 = paramVarArgs[i];
         if (j >= paramVarArgs.length) {
           break;
         }
@@ -55,12 +49,10 @@ public abstract class AbstractFileSystem
       }
     }
   }
-  
-  public void q(Map<String, String> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.AbstractFileSystem
  * JD-Core Version:    0.7.0.1
  */

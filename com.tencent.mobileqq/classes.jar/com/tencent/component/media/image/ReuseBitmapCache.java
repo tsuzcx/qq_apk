@@ -14,93 +14,69 @@ public class ReuseBitmapCache
   private ReuseBitmapCache(int paramInt)
   {
     String str = ImageManagerEnv.g().getProcessName(ImageManagerEnv.getAppContext());
-    int k = 0;
-    int i = k;
-    if (str != null)
-    {
-      i = k;
-      if (str.contains(":picture")) {
-        i = 1;
-      }
+    if ((str != null) && (str.contains(":picture"))) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    k = ImageDefaultConfig.getScreenWidth(ImageManagerEnv.getAppContext());
-    int m = ImageDefaultConfig.getScreenHeight(ImageManagerEnv.getAppContext());
+    int j = ImageDefaultConfig.getScreenWidth(ImageManagerEnv.getAppContext());
+    int k = ImageDefaultConfig.getScreenHeight(ImageManagerEnv.getAppContext());
     if (i != 0)
     {
       i = paramInt >> 1;
-      this.smallBitmapBucket = new ReuseBitmapPool(paramInt - i, k * k, k * m * 4);
-      this.bigBitmapBucket = new ReuseBitmapPool(i, k * 4 * m, k * m * 4 * 2);
+      m = j * k * 4;
+      this.smallBitmapBucket = new ReuseBitmapPool(paramInt - i, j * j, m);
+      this.bigBitmapBucket = new ReuseBitmapPool(i, j * 4 * k, m * 2);
       return;
     }
-    i = paramInt >> 2;
-    int n = k * k;
-    if (i <= n)
-    {
-      i = paramInt;
-      paramInt = j;
+    int i = paramInt >> 2;
+    int m = j * j;
+    if (i <= m) {
+      i = 1;
+    } else {
+      paramInt -= i;
     }
-    for (;;)
-    {
-      this.smallBitmapBucket = new ReuseBitmapPool(i, n, k * m * 4);
-      this.bigBitmapBucket = new ReuseBitmapPool(paramInt, k * 4 * k, k * m * 4);
-      return;
-      j = paramInt - i;
-      paramInt = i;
-      i = j;
-    }
+    k = j * k * 4;
+    this.smallBitmapBucket = new ReuseBitmapPool(paramInt, m, k);
+    this.bigBitmapBucket = new ReuseBitmapPool(i, j * 4 * j, k);
   }
   
   public static ReuseBitmapCache getInstance(int paramInt)
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null)
+    if (instance == null) {
+      try
       {
-        ImageManagerEnv.getLogger().d("AdvanceBitmapPool", new Object[] { "maxSize:" + paramInt });
-        instance = new ReuseBitmapCache(paramInt);
+        if (instance == null)
+        {
+          ILog localILog = ImageManagerEnv.getLogger();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("maxSize:");
+          localStringBuilder.append(paramInt);
+          localILog.d("AdvanceBitmapPool", new Object[] { localStringBuilder.toString() });
+          instance = new ReuseBitmapCache(paramInt);
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
-  /* Error */
   public boolean addBitMapIntoPool(Bitmap paramBitmap)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 56	com/tencent/component/media/image/ReuseBitmapCache:smallBitmapBucket	Lcom/tencent/component/media/image/ReuseBitmapPool;
-    //   6: aload_1
-    //   7: invokevirtual 95	com/tencent/component/media/image/ReuseBitmapPool:addBitMapIntoPool	(Landroid/graphics/Bitmap;)Z
-    //   10: ifne +16 -> 26
-    //   13: aload_0
-    //   14: getfield 58	com/tencent/component/media/image/ReuseBitmapCache:bigBitmapBucket	Lcom/tencent/component/media/image/ReuseBitmapPool;
-    //   17: aload_1
-    //   18: invokevirtual 95	com/tencent/component/media/image/ReuseBitmapPool:addBitMapIntoPool	(Landroid/graphics/Bitmap;)Z
-    //   21: istore_2
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: iload_2
-    //   25: ireturn
-    //   26: iconst_1
-    //   27: istore_2
-    //   28: goto -6 -> 22
-    //   31: astore_1
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_1
-    //   35: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	ReuseBitmapCache
-    //   0	36	1	paramBitmap	Bitmap
-    //   21	7	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	22	31	finally
+    try
+    {
+      if (!this.smallBitmapBucket.addBitMapIntoPool(paramBitmap))
+      {
+        boolean bool = this.bigBitmapBucket.addBitMapIntoPool(paramBitmap);
+        return bool;
+      }
+      return true;
+    }
+    finally
+    {
+      paramBitmap = finally;
+      throw paramBitmap;
+    }
   }
   
   public Bitmap getBitmapFromPool(int paramInt)
@@ -119,27 +95,31 @@ public class ReuseBitmapCache
   
   public void resiezeCache(float paramFloat)
   {
-    if (this.smallBitmapBucket != null) {
-      this.smallBitmapBucket.resizeCahce(paramFloat);
+    ReuseBitmapPool localReuseBitmapPool = this.smallBitmapBucket;
+    if (localReuseBitmapPool != null) {
+      localReuseBitmapPool.resizeCahce(paramFloat);
     }
-    if (this.bigBitmapBucket != null) {
-      this.bigBitmapBucket.resizeCahce(paramFloat);
+    localReuseBitmapPool = this.bigBitmapBucket;
+    if (localReuseBitmapPool != null) {
+      localReuseBitmapPool.resizeCahce(paramFloat);
     }
   }
   
   public void trimToSize(float paramFloat)
   {
-    if (this.smallBitmapBucket != null) {
-      this.smallBitmapBucket.trimToSize(paramFloat);
+    ReuseBitmapPool localReuseBitmapPool = this.smallBitmapBucket;
+    if (localReuseBitmapPool != null) {
+      localReuseBitmapPool.trimToSize(paramFloat);
     }
-    if (this.bigBitmapBucket != null) {
-      this.bigBitmapBucket.trimToSize(paramFloat);
+    localReuseBitmapPool = this.bigBitmapBucket;
+    if (localReuseBitmapPool != null) {
+      localReuseBitmapPool.trimToSize(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.ReuseBitmapCache
  * JD-Core Version:    0.7.0.1
  */

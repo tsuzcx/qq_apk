@@ -1,13 +1,11 @@
 package cooperation.qzone.report.lp;
 
-import bjdm;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.util.NetworkState;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_DC02293
   implements LpReportInfo
@@ -42,27 +40,27 @@ public class LpReportInfo_DC02293
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("Uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localHashMap.put("Uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     localHashMap.put("tabletype", String.valueOf(21));
     LpReportUtils.safePut(localHashMap, "LogTime", getStringDate());
     localHashMap.put("Event", this.mQzoneCmd);
     localHashMap.put("RetCode", String.valueOf(this.mRetCode));
-    if (this.mMsg != null) {}
-    for (String str = this.mMsg;; str = "")
-    {
-      localHashMap.put("CmdMsg", str);
-      localHashMap.put("TimeCost", String.valueOf(this.mTimeCost));
-      localHashMap.put("AppId", "Android-QzoneInQQ");
-      localHashMap.put("network", String.valueOf(NetworkState.getNetworkType()));
-      localHashMap.put("qua", bjdm.a());
-      localHashMap.put("deviceinfo", bjdm.a());
-      return localHashMap;
+    String str = this.mMsg;
+    if (str == null) {
+      str = "";
     }
+    localHashMap.put("CmdMsg", str);
+    localHashMap.put("TimeCost", String.valueOf(this.mTimeCost));
+    localHashMap.put("AppId", "Android-QzoneInQQ");
+    localHashMap.put("network", String.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getnetworkType()));
+    localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localHashMap.put("deviceinfo", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC02293
  * JD-Core Version:    0.7.0.1
  */

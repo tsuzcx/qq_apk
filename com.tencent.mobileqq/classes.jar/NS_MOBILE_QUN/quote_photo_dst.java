@@ -39,22 +39,25 @@ public final class quote_photo_dst
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dst_type, 0);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 1);
+    String str = this.albumid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.batchid, 2);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 3);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.albumhandset, 4);
-    if (this.qunid != null) {
-      paramJceOutputStream.write(this.qunid, 5);
+    str = this.qunid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.quote_photo_dst
  * JD-Core Version:    0.7.0.1
  */

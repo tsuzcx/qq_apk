@@ -7,7 +7,7 @@ import java.util.List;
 public class PtuAlgoInitializer
   extends Feature
 {
-  private static final String TAG = PtuAlgoInitializer.class.getSimpleName();
+  private static final String TAG = "PtuAlgoInitializer";
   private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("image_filter_common"), new SharedLibraryInfo("image_filter_gpu") };
   
   protected boolean destroyImpl()
@@ -37,7 +37,7 @@ public class PtuAlgoInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.PtuAlgoInitializer
  * JD-Core Version:    0.7.0.1
  */

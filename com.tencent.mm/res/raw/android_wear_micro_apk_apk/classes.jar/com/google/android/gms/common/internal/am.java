@@ -5,20 +5,20 @@ import android.os.IBinder;
 final class am
   implements ak
 {
-  private IBinder KE;
+  private IBinder Mt;
   
   am(IBinder paramIBinder)
   {
-    this.KE = paramIBinder;
+    this.Mt = paramIBinder;
   }
   
   public final IBinder asBinder()
   {
-    return this.KE;
+    return this.Mt;
   }
   
   /* Error */
-  public final android.accounts.Account fX()
+  public final android.accounts.Account gi()
   {
     // Byte code:
     //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -29,7 +29,7 @@ final class am
     //   9: ldc 28
     //   11: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 15	com/google/android/gms/common/internal/am:KE	Landroid/os/IBinder;
+    //   15: getfield 15	com/google/android/gms/common/internal/am:Mt	Landroid/os/IBinder;
     //   18: iconst_2
     //   19: aload_2
     //   20: aload_3

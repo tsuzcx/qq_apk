@@ -8,11 +8,11 @@ public final class InfoItem
   extends JceStruct
 {
   static byte[] cache_vecValue;
-  public byte cOperType;
-  public byte cResult;
-  public long qwServiceId;
-  public long qwTimeStamp;
-  public byte[] vecValue;
+  public byte cOperType = 0;
+  public byte cResult = 0;
+  public long qwServiceId = 0L;
+  public long qwTimeStamp = 0L;
+  public byte[] vecValue = null;
   
   public InfoItem() {}
   
@@ -44,15 +44,16 @@ public final class InfoItem
     paramJceOutputStream.write(this.cOperType, 0);
     paramJceOutputStream.write(this.qwServiceId, 1);
     paramJceOutputStream.write(this.qwTimeStamp, 2);
-    if (this.vecValue != null) {
-      paramJceOutputStream.write(this.vecValue, 3);
+    byte[] arrayOfByte = this.vecValue;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
     paramJceOutputStream.write(this.cResult, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.InfoItem
  * JD-Core Version:    0.7.0.1
  */

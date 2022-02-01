@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/puo" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#ffe9e9e9" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.SwipListView android:id="@id/pun" android:background="@color/al3" android:visibility="gone" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/bwc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="204.0dip">
+            <ImageView android:layout_width="45.0dip" android:layout_height="44.0dip" android:src="@drawable/ild" />
+            <TextView android:textSize="@dimen/aym" android:textColor="#ffb8b8b8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.5dip" android:text="暂未发出/收到私信" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

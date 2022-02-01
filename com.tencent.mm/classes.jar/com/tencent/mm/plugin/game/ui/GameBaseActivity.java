@@ -1,28 +1,31 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.game.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class GameBaseActivity
   extends MMActivity
 {
+  private int INi = 1;
+  private long ImA = 0L;
+  private long Imz = 0L;
   private long mStartTime = 0L;
-  private int nvp = 1;
-  private long nvq = 0L;
-  private long nvr = 0L;
   
-  protected boolean bHf()
+  protected boolean fHl()
   {
     return true;
   }
   
-  public abstract int bHg();
+  public abstract int fHm();
   
-  public abstract int bHh();
+  public abstract int fHn();
+  
+  public abstract String fHo();
+  
+  public abstract String fHp();
   
   public abstract int getScene();
   
@@ -36,9 +39,9 @@ public abstract class GameBaseActivity
     if (this.mStartTime != 0L)
     {
       long l = System.currentTimeMillis() - this.mStartTime;
-      ab.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.nvq) });
-      if (bHf()) {
-        a.a(this.nvp, getScene(), bHg(), bHh(), "", "", l / 1000L, this.nvq / 1000L);
+      Log.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.Imz) });
+      if (fHl()) {
+        a.a(this.INi, getScene(), fHm(), fHn(), "", fHo(), "", l / 1000L, this.Imz / 1000L, fHp());
       }
     }
     super.onDestroy();
@@ -47,7 +50,7 @@ public abstract class GameBaseActivity
   public void onPause()
   {
     super.onPause();
-    this.nvq += System.currentTimeMillis() - this.nvr;
+    this.Imz += System.currentTimeMillis() - this.ImA;
   }
   
   public void onResume()
@@ -55,7 +58,7 @@ public abstract class GameBaseActivity
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.nvr = System.currentTimeMillis();
+    this.ImA = System.currentTimeMillis();
     super.onResume();
   }
   

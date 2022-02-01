@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.snackbar.SnackContainer android:id="@id/ekj" style="@style/rv" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/ekx" android:background="@drawable/a74" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="@dimen/g4" android:textColor="@color/vn" android:id="@id/eky" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g3" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="8.0dip" android:layout_height="14.0dip" android:layout_marginRight="@dimen/g3" android:src="@drawable/ba4" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:background="@color/w5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

@@ -13,16 +13,21 @@ public final class gw
       paramString = fi().P(paramString);
       return paramString;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label12:
+      break label12;
+    }
     return null;
   }
   
   private static gn fi()
   {
-    if (sB != null) {
-      return sB;
+    Object localObject = sB;
+    if (localObject != null) {
+      return localObject;
     }
-    Object localObject = gs.a("com.android.internal.os.BinderInternal", "getContextObject", null, null, null);
+    localObject = gs.a("com.android.internal.os.BinderInternal", "getContextObject", null, null, null);
     if (!(localObject instanceof IBinder)) {
       return null;
     }
@@ -32,7 +37,7 @@ public final class gw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gw
  * JD-Core Version:    0.7.0.1
  */

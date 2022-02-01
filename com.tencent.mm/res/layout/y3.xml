@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:background="@color/nz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/a2_" android:textColor="@color/a6q" android:id="@id/bpc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/blj" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-        <Button android:textSize="@dimen/lj" android:textColor="@color/a7l" android:id="@id/bpd" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:text="@string/blh" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/pc" />
-    </RelativeLayout>
-</merge>
+<LinearLayout android:orientation="vertical" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.tools.SearchViewNotRealTimeHelper android:id="@id/j7e" android:paddingLeft="@dimen/i6" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="left" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/buf" style="MMFontPreferenceLarge" />
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/i8u" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="@dimen/m2" android:layout_weight="1.0">
+        <com.tencent.mm.plugin.brandservice.ui.BizSearchResultItemContainer android:id="@id/j4y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+</LinearLayout>

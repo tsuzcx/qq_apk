@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class DownloadingUrlEntry
-  extends awge
+  extends Entity
 {
   public int bIsDownloadCompleted = 0;
-  public int compressLevel;
+  public int compressLevel = 0;
   public int fileType;
-  @awhs
+  @unique
   public String key;
   public long updatedMs;
   public String url;
@@ -17,12 +17,16 @@ public class DownloadingUrlEntry
   
   public static String makeKey(String paramString, int paramInt)
   {
-    return paramString + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DownloadingUrlEntry
  * JD-Core Version:    0.7.0.1
  */

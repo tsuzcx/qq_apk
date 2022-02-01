@@ -3,92 +3,124 @@ package com.tencent.mm.plugin.appbrand.jsapi.contact;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.service.i;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.plugin.appbrand.service.s;
+import com.tencent.mm.plugin.appbrand.service.s.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public class JsApiChattingTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiChattingTask> CREATOR;
-  public Runnable hxp;
   public String nickname;
-  public String sessionFrom;
+  public String rSr;
+  public String rbO;
+  public Runnable rxj;
   public String username;
   
   static
   {
-    AppMethodBeat.i(130990);
-    CREATOR = new JsApiChattingTask.2();
-    AppMethodBeat.o(130990);
+    AppMethodBeat.i(46246);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(46246);
   }
   
   public JsApiChattingTask() {}
   
   public JsApiChattingTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(130984);
-    f(paramParcel);
-    AppMethodBeat.o(130984);
+    AppMethodBeat.i(46240);
+    h(paramParcel);
+    AppMethodBeat.o(46240);
   }
   
-  public final void ata()
+  public final void asn()
   {
-    AppMethodBeat.i(130985);
-    if (!g.RJ().eHg)
+    AppMethodBeat.i(46241);
+    if (!h.baC().mBZ)
     {
-      aBp();
-      AppMethodBeat.o(130985);
+      cpA();
+      AppMethodBeat.o(46241);
       return;
     }
-    ad localad = ((j)g.E(j.class)).YA().arw(this.username);
-    ab.d("MicroMsg.JsApiChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.sessionFrom, this.username, this.nickname });
-    if ((localad == null) || ((int)localad.euF == 0))
+    au localau = ((n)h.ax(n.class)).bzA().JE(this.username);
+    Log.d("MicroMsg.JsApiChattingTask", "sessionFrom:%s,username:%s,nickname:%s", new Object[] { this.rSr, this.username, this.nickname });
+    if ((localau == null) || ((int)localau.maN == 0))
     {
-      localad = new ad(this.username);
-      localad.setType(0);
-      localad.jp(this.nickname);
-      ((j)g.E(j.class)).YA().Y(localad);
-      ab.i("MicroMsg.JsApiChattingTask", "%s save to contact_table", new Object[] { this.username });
+      localau = new au(this.username);
+      localau.setType(0);
+      localau.setNickname(this.nickname);
+      ((n)h.ax(n.class)).bzA().aB(localau);
+      Log.i("MicroMsg.JsApiChattingTask", "%s save to contact_table", new Object[] { this.username });
     }
-    ((i)g.E(i.class)).b(this.username, new JsApiChattingTask.1(this));
-    AppMethodBeat.o(130985);
+    if (!Util.isNullOrNil(this.rbO)) {
+      ((s)h.ax(s.class)).c(this.rbO, new s.a()
+      {
+        public final void onGetWeAppInfo(WxaAttributes paramAnonymousWxaAttributes)
+        {
+          AppMethodBeat.i(46238);
+          if (paramAnonymousWxaAttributes == null) {
+            Log.w("MicroMsg.JsApiChattingTask", "privateUsername:%s info is null, err", new Object[] { JsApiChattingTask.this.rbO });
+          }
+          AppMethodBeat.o(46238);
+        }
+      });
+    }
+    ((s)h.ax(s.class)).c(this.username, new s.a()
+    {
+      public final void onGetWeAppInfo(WxaAttributes paramAnonymousWxaAttributes)
+      {
+        AppMethodBeat.i(327798);
+        if (paramAnonymousWxaAttributes == null) {
+          Log.w("MicroMsg.JsApiChattingTask", "info is null, err");
+        }
+        JsApiChattingTask.a(JsApiChattingTask.this);
+        AppMethodBeat.o(327798);
+      }
+    });
+    AppMethodBeat.o(46241);
   }
   
-  public final void atb()
+  public final void bQr()
   {
-    AppMethodBeat.i(130986);
-    if (this.hxp != null) {
-      this.hxp.run();
+    AppMethodBeat.i(46242);
+    if (this.rxj != null) {
+      this.rxj.run();
     }
-    AppMethodBeat.o(130986);
+    AppMethodBeat.o(46242);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(130987);
-    this.sessionFrom = paramParcel.readString();
+    AppMethodBeat.i(46243);
+    this.rSr = paramParcel.readString();
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
-    AppMethodBeat.o(130987);
+    this.rbO = paramParcel.readString();
+    AppMethodBeat.o(46243);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(130988);
-    paramParcel.writeString(this.sessionFrom);
+    AppMethodBeat.i(46244);
+    paramParcel.writeString(this.rSr);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
-    AppMethodBeat.o(130988);
+    paramParcel.writeString(this.rbO);
+    AppMethodBeat.o(46244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.JsApiChattingTask
  * JD-Core Version:    0.7.0.1
  */

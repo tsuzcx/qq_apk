@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajoz;
-import ajvm;
-import ajvq;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -10,11 +7,13 @@ import android.media.MediaMetadataRetriever;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bjup;
-import bjwi;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.common.GloableValue;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUtils;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.PhotoUtils;
+import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.io.File;
 
 class EditLocalVideoActivity$18
@@ -26,99 +25,126 @@ class EditLocalVideoActivity$18
   {
     int i = this.this$0.getResources().getDisplayMetrics().widthPixels / 6;
     float f = this.a * 1.0F / this.b;
-    int k;
-    int n;
-    int m;
     int j;
+    int n;
+    int k;
+    int m;
     if (f <= 1.0F)
     {
-      k = (int)(i / f);
-      n = (k - i) / 2;
+      j = (int)(i / f);
+      n = (j - i) / 2;
+      k = i;
       m = 0;
+    }
+    else
+    {
+      k = (int)(f * i);
+      m = (k - i) / 2;
       j = i;
-      if (!TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0))) {
-        break label121;
-      }
+      n = 0;
+    }
+    if (TextUtils.isEmpty(EditLocalVideoActivity.C(this.this$0)))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("EditLocalVideoActivity", 2, "initFramesBar, mTrimVideoPath is null");
       }
-      EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1001);
-    }
-    for (;;)
-    {
+      EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1001);
       return;
-      j = (int)(f * i);
-      m = (j - i) / 2;
-      n = 0;
-      k = i;
-      break;
-      label121:
-      if (!EditLocalVideoActivity.a())
+    }
+    Object localObject1;
+    if (!EditLocalVideoActivity.d())
+    {
+      i = ThumbnailUtils.a(EditLocalVideoActivity.C(this.this$0), k, j, m, n, i, i);
+      if (QLog.isColorLevel())
       {
-        i = ajvq.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
-        if (QLog.isColorLevel()) {
-          QLog.d("EditLocalVideoActivity", 2, "init, status1=" + i + ", dstWidth=" + j + ", dstHeight=" + k);
-        }
-        if (i != 0)
-        {
-          bjwi.a(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "2", null);
-          EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1001);
-          return;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("init, status1=");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(", dstWidth=");
+        ((StringBuilder)localObject1).append(k);
+        ((StringBuilder)localObject1).append(", dstHeight=");
+        ((StringBuilder)localObject1).append(j);
+        QLog.d("EditLocalVideoActivity", 2, ((StringBuilder)localObject1).toString());
       }
-      EditLocalVideoActivity.a(this.this$0).a(EditLocalVideoActivity.b(this.this$0), EditLocalVideoActivity.b(this.this$0));
-      if (EditLocalVideoActivity.c(this.this$0) == 0) {
-        EditLocalVideoActivity.b(this.this$0, (int)EditLocalVideoActivity.a(this.this$0).a());
-      }
-      if (EditLocalVideoActivity.d(this.this$0) == 0) {
-        EditLocalVideoActivity.c(this.this$0, (int)EditLocalVideoActivity.a(this.this$0).b());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "mStartTime=" + EditLocalVideoActivity.c(this.this$0) + ", mEndTime=" + EditLocalVideoActivity.d(this.this$0));
-      }
-      EditLocalVideoActivity.a(this.this$0).setPlayDuration(EditLocalVideoActivity.c(this.this$0), EditLocalVideoActivity.d(this.this$0) - EditLocalVideoActivity.c(this.this$0));
-      EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1100);
-      if (!EditLocalVideoActivity.a())
+      if (i != 0)
       {
-        if (TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0))) {}
-        for (i = -999;; i = ajvq.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EditLocalVideoActivity", 2, "init, status0=" + i);
-          }
-          if (i == 0) {
-            break;
-          }
-          bjwi.a(String.valueOf(EditLocalVideoActivity.b(this.this$0)), "qzone_video_trim", "3", null);
-          EditLocalVideoActivity.a(this.this$0).sendEmptyMessage(1000);
-          return;
-        }
-      }
-      try
-      {
-        Object localObject;
-        Bitmap localBitmap;
-        if (EditLocalVideoActivity.a())
-        {
-          localObject = new MediaMetadataRetriever();
-          ((MediaMetadataRetriever)localObject).setDataSource(EditLocalVideoActivity.b(this.this$0));
-          localBitmap = ((MediaMetadataRetriever)localObject).getFrameAtTime(EditLocalVideoActivity.c(this.this$0) * 1000, 3);
-          ((MediaMetadataRetriever)localObject).release();
-        }
-        while (localBitmap != null)
-        {
-          localObject = ajvm.a + File.separator + System.currentTimeMillis() + ".jpg";
-          if (!bjup.a(localBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 90, true)) {
-            break;
-          }
-          EditLocalVideoActivity.a(this.this$0).obtainMessage(1102, localObject).sendToTarget();
-          return;
-          localBitmap = ajvq.a(0L, 1000L);
-        }
+        QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.D(this.this$0)), "qzone_video_trim", "2", null);
+        EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1001);
         return;
       }
-      catch (Throwable localThrowable) {}
     }
+    EditLocalVideoActivity.c(this.this$0).a(EditLocalVideoActivity.p(this.this$0), EditLocalVideoActivity.C(this.this$0));
+    if (EditLocalVideoActivity.u(this.this$0) == 0)
+    {
+      localObject1 = this.this$0;
+      EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1, (int)EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1).getSelectBeginTime());
+    }
+    if (EditLocalVideoActivity.v(this.this$0) == 0)
+    {
+      localObject1 = this.this$0;
+      EditLocalVideoActivity.d((EditLocalVideoActivity)localObject1, (int)EditLocalVideoActivity.c((EditLocalVideoActivity)localObject1).getSelectEndTime());
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mStartTime=");
+      ((StringBuilder)localObject1).append(EditLocalVideoActivity.u(this.this$0));
+      ((StringBuilder)localObject1).append(", mEndTime=");
+      ((StringBuilder)localObject1).append(EditLocalVideoActivity.v(this.this$0));
+      QLog.d("EditLocalVideoActivity", 2, ((StringBuilder)localObject1).toString());
+    }
+    EditLocalVideoActivity.q(this.this$0).setPlayDuration(EditLocalVideoActivity.u(this.this$0), EditLocalVideoActivity.v(this.this$0) - EditLocalVideoActivity.u(this.this$0));
+    EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1100);
+    if (!EditLocalVideoActivity.d())
+    {
+      if (TextUtils.isEmpty(EditLocalVideoActivity.C(this.this$0))) {
+        i = -999;
+      } else {
+        i = ThumbnailUtils.a(EditLocalVideoActivity.C(this.this$0), this.a, this.b);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("init, status0=");
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("EditLocalVideoActivity", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (i != 0)
+      {
+        QzoneVideoBeaconReport.reportVideoEvent(String.valueOf(EditLocalVideoActivity.D(this.this$0)), "qzone_video_trim", "3", null);
+        EditLocalVideoActivity.y(this.this$0).sendEmptyMessage(1000);
+        return;
+      }
+    }
+    try
+    {
+      Object localObject2;
+      if (EditLocalVideoActivity.d())
+      {
+        localObject2 = new MediaMetadataRetriever();
+        ((MediaMetadataRetriever)localObject2).setDataSource(EditLocalVideoActivity.C(this.this$0));
+        localObject1 = ((MediaMetadataRetriever)localObject2).getFrameAtTime(EditLocalVideoActivity.u(this.this$0) * 1000, 3);
+        ((MediaMetadataRetriever)localObject2).release();
+      }
+      else
+      {
+        localObject1 = ThumbnailUtils.a(0L, 1000L);
+      }
+      if (localObject1 != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(GloableValue.b);
+        ((StringBuilder)localObject2).append(File.separator);
+        ((StringBuilder)localObject2).append(System.currentTimeMillis());
+        ((StringBuilder)localObject2).append(".jpg");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        if (PhotoUtils.saveBitmapToFile((Bitmap)localObject1, (String)localObject2, Bitmap.CompressFormat.JPEG, 90, true)) {
+          EditLocalVideoActivity.y(this.this$0).obtainMessage(1102, localObject2).sendToTarget();
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 

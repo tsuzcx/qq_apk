@@ -6,11 +6,11 @@ public class MessageDigestUtil
 {
   public static String bytesToHex(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(49574);
+    AppMethodBeat.i(73325);
     StringBuilder localStringBuilder = new StringBuilder("");
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      AppMethodBeat.o(49574);
+      AppMethodBeat.o(73325);
       return null;
     }
     int i = 0;
@@ -24,7 +24,7 @@ public class MessageDigestUtil
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString();
-    AppMethodBeat.o(49574);
+    AppMethodBeat.o(73325);
     return paramArrayOfByte;
   }
   
@@ -32,7 +32,7 @@ public class MessageDigestUtil
   
   public String getSHA256Hex(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(49575);
+    AppMethodBeat.i(73326);
     localObject2 = null;
     localObject1 = localObject2;
     if (paramArrayOfByte != null) {}
@@ -51,13 +51,13 @@ public class MessageDigestUtil
         localObject1 = localObject2;
       }
     }
-    AppMethodBeat.o(49575);
+    AppMethodBeat.o(73326);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tenpay.ndk.MessageDigestUtil
  * JD-Core Version:    0.7.0.1
  */

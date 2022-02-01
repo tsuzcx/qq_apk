@@ -38,27 +38,32 @@ public final class SdkInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 0);
+    String str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.versionName != null) {
-      paramJceOutputStream.write(this.versionName, 1);
+    str = this.versionName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.versionCode, 2);
-    if (this.channel != null) {
-      paramJceOutputStream.write(this.channel, 3);
+    str = this.channel;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.subChannel != null) {
-      paramJceOutputStream.write(this.subChannel, 4);
+    str = this.subChannel;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.builderNum != null) {
-      paramJceOutputStream.write(this.builderNum, 5);
+    str = this.builderNum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.SdkInfo
  * JD-Core Version:    0.7.0.1
  */

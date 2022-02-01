@@ -1,37 +1,38 @@
 package com.tencent.mobileqq.hiboom;
 
-import alto;
-import amca;
 import android.os.Handler;
 import android.os.Message;
-import asrm;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.QLog;
 
-public class FontBubbleManager$1
+class FontBubbleManager$1
   implements Runnable
 {
-  public FontBubbleManager$1(asrm paramasrm, FontBubble paramFontBubble) {}
+  FontBubbleManager$1(FontBubbleManager paramFontBubbleManager, FontBubble paramFontBubble) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((alto)asrm.a(this.this$0).getManager(51)).a(asrm.a(this.this$0).getAccount());
+    ExtensionInfo localExtensionInfo = ((FriendsManager)FontBubbleManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(FontBubbleManager.a(this.this$0).getAccount());
     if (localExtensionInfo == null)
     {
       QLog.e("FontBubbleManager", 1, "setFontBubble fail no ExtensionInfo");
       return;
     }
-    amca localamca = (amca)asrm.a(this.this$0).a(13);
+    ISVIPHandler localISVIPHandler = (ISVIPHandler)FontBubbleManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
     FontBubble localFontBubble = new FontBubble();
     localFontBubble.fontId = ((int)localExtensionInfo.uVipFont);
-    localFontBubble.bubbleId = localamca.b();
-    asrm.a(this.this$0).obtainMessage(1000, new Object[] { localFontBubble, this.a }).sendToTarget();
+    localFontBubble.bubbleId = localISVIPHandler.d();
+    FontBubbleManager.b(this.this$0).obtainMessage(1000, new Object[] { localFontBubble, this.a }).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.1
  * JD-Core Version:    0.7.0.1
  */

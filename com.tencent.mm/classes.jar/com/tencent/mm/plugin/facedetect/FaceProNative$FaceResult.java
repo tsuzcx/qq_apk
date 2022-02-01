@@ -15,20 +15,34 @@ public class FaceProNative$FaceResult
   
   static
   {
-    AppMethodBeat.i(36);
-    CREATOR = new FaceProNative.FaceResult.1();
-    AppMethodBeat.o(36);
+    AppMethodBeat.i(103555);
+    CREATOR = new Parcelable.Creator()
+    {
+      public FaceProNative.FaceResult createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(103549);
+        paramAnonymousParcel = new FaceProNative.FaceResult(paramAnonymousParcel);
+        AppMethodBeat.o(103549);
+        return paramAnonymousParcel;
+      }
+      
+      public FaceProNative.FaceResult[] newArray(int paramAnonymousInt)
+      {
+        return new FaceProNative.FaceResult[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(103555);
   }
   
   public FaceProNative$FaceResult() {}
   
   protected FaceProNative$FaceResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(33);
+    AppMethodBeat.i(103552);
     this.result = paramParcel.readInt();
     this.data = paramParcel.createByteArray();
     this.sidedata = paramParcel.createByteArray();
-    AppMethodBeat.o(33);
+    AppMethodBeat.o(103552);
   }
   
   public int describeContents()
@@ -39,7 +53,7 @@ public class FaceProNative$FaceResult
   public String toString()
   {
     int j = 0;
-    AppMethodBeat.i(35);
+    AppMethodBeat.i(103554);
     Object localObject = new StringBuilder("FaceResult{result=").append(this.result).append(", sidedataLen=");
     if (this.sidedata == null)
     {
@@ -53,7 +67,7 @@ public class FaceProNative$FaceResult
     for (int i = j;; i = this.data.length)
     {
       localObject = i + '}';
-      AppMethodBeat.o(35);
+      AppMethodBeat.o(103554);
       return localObject;
       i = this.sidedata.length;
       break;
@@ -62,16 +76,16 @@ public class FaceProNative$FaceResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(34);
+    AppMethodBeat.i(103553);
     paramParcel.writeInt(this.result);
     paramParcel.writeByteArray(this.data);
     paramParcel.writeByteArray(this.sidedata);
-    AppMethodBeat.o(34);
+    AppMethodBeat.o(103553);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult
  * JD-Core Version:    0.7.0.1
  */

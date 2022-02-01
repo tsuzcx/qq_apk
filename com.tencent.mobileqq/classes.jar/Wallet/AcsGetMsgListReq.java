@@ -8,10 +8,10 @@ public final class AcsGetMsgListReq
   extends JceStruct
 {
   static AcsHead cache_head = new AcsHead();
-  public AcsHead head;
-  public int record_size;
-  public int record_start;
-  public long uin;
+  public AcsHead head = null;
+  public int record_size = 0;
+  public int record_start = 0;
+  public long uin = 0L;
   
   public AcsGetMsgListReq() {}
   
@@ -33,8 +33,9 @@ public final class AcsGetMsgListReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.head != null) {
-      paramJceOutputStream.write(this.head, 0);
+    AcsHead localAcsHead = this.head;
+    if (localAcsHead != null) {
+      paramJceOutputStream.write(localAcsHead, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.record_start, 2);
@@ -43,7 +44,7 @@ public final class AcsGetMsgListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsGetMsgListReq
  * JD-Core Version:    0.7.0.1
  */

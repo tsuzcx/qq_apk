@@ -1,39 +1,36 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.l;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.story.a.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumGridDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumGridDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RecyclerView.h
 {
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(110157);
+    AppMethodBeat.i(367294);
+    s.u(paramRect, "outRect");
+    s.u(paramView, "view");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
     super.a(paramRect, paramView, paramRecyclerView, params);
-    if (paramRecyclerView != null) {}
-    for (paramView = paramRecyclerView.getContext();; paramView = null)
-    {
-      int i = a.ap(paramView, 2131427496);
-      if (paramRect == null) {
-        break;
-      }
-      paramRect.set(i, i, i, i);
-      AppMethodBeat.o(110157);
-      return;
-    }
-    AppMethodBeat.o(110157);
+    int i = a.bs(paramRecyclerView.getContext(), a.b.BasicPaddingSize);
+    paramRect.set(i, i, i, i);
+    AppMethodBeat.o(367294);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.b
  * JD-Core Version:    0.7.0.1
  */

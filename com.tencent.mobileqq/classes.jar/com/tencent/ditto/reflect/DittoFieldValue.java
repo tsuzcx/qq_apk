@@ -14,62 +14,58 @@ public class DittoFieldValue
   private List<String> getFieldTokens(String paramString)
   {
     ArrayList localArrayList = new ArrayList(3);
-    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = new StringBuilder();
     char[] arrayOfChar = paramString.toCharArray();
-    int k = arrayOfChar.length;
-    int j = 0;
+    int m = arrayOfChar.length;
     int i = 0;
-    paramString = localStringBuilder;
-    char c;
-    if (j < k)
+    int j = 0;
+    paramString = (String)localObject;
+    while (i < m)
     {
-      c = arrayOfChar[j];
-      if (c == '\'') {
-        if (i == 0)
+      char c = arrayOfChar[i];
+      int k;
+      if (c == '\'')
+      {
+        k = j ^ 0x1;
+        paramString.append(c);
+        localObject = paramString;
+      }
+      else if ((c == ' ') && (j == 0))
+      {
+        localObject = paramString;
+        k = j;
+        if (paramString.length() != 0)
         {
-          i = 1;
-          label63:
-          paramString.append(c);
+          localArrayList.add(paramString.toString());
+          localObject = new StringBuilder();
+          k = j;
         }
       }
-      for (;;)
+      else if ((c != '[') && (c != ']') && (c != '.'))
       {
-        j += 1;
-        break;
-        i = 0;
-        break label63;
-        if ((c != ' ') || (i != 0)) {
-          break label123;
-        }
-        if (paramString.length() == 0) {
-          break label192;
-        }
-        localArrayList.add(paramString.toString());
-        paramString = new StringBuilder();
+        paramString.append(c);
+        localObject = paramString;
+        k = j;
       }
-      label123:
-      if ((c == '[') || (c == ']') || (c == '.'))
+      else
       {
-        if (paramString.length() == 0) {
-          break label217;
+        localObject = paramString;
+        if (paramString.length() != 0)
+        {
+          localArrayList.add(paramString.toString());
+          localObject = new StringBuilder();
         }
-        localArrayList.add(paramString.toString());
-        paramString = new StringBuilder();
+        localArrayList.add(Character.valueOf(c).toString());
+        k = j;
       }
+      i += 1;
+      paramString = (String)localObject;
+      j = k;
     }
-    label192:
-    label217:
-    for (;;)
-    {
-      localArrayList.add(Character.valueOf(c).toString());
-      break;
-      paramString.append(c);
-      break;
-      if (paramString.length() != 0) {
-        localArrayList.add(paramString.toString());
-      }
-      return localArrayList;
+    if (paramString.length() != 0) {
+      localArrayList.add(paramString.toString());
     }
+    return localArrayList;
   }
   
   private void loadProcessors()
@@ -80,80 +76,86 @@ public class DittoFieldValue
       this.processors = new ArrayList();
       localObject = ((List)localObject).iterator();
       int i = 0;
-      if (((Iterator)localObject).hasNext())
+      for (;;)
       {
-        String str = (String)((Iterator)localObject).next();
-        if ("[".equals(str)) {
-          i = 1;
-        }
         for (;;)
         {
-          for (;;)
-          {
-            break;
+          if (!((Iterator)localObject).hasNext()) {
+            break label168;
+          }
+          String str = (String)((Iterator)localObject).next();
+          if ("[".equals(str)) {
+            i = 1;
+          } else {
             if (i == 0) {
-              break label131;
-            }
-            try
-            {
-              i = Integer.parseInt(str);
-              this.processors.add(new DittoFieldValue.ListValueProcessor(this, Integer.valueOf(i)));
-              i = 0;
-            }
-            catch (Throwable localThrowable)
-            {
-              this.processors.add(new DittoFieldValue.MapValueProcessor(this, str));
-              i = 0;
+              break label125;
             }
           }
-          continue;
-          label131:
-          if (("]".equals(str)) || (".".equals(str))) {
-            break;
+          try
+          {
+            i = Integer.parseInt(str);
+            this.processors.add(new DittoFieldValue.ListValueProcessor(this, Integer.valueOf(i)));
           }
+          catch (Throwable localThrowable)
+          {
+            label103:
+            label125:
+            break label103;
+          }
+        }
+        this.processors.add(new DittoFieldValue.MapValueProcessor(this, str));
+        break;
+        if ((!"]".equals(str)) && (!".".equals(str))) {
           this.processors.add(new DittoFieldValue.FieldValueProcessor(this, str));
         }
       }
     }
+    label168:
   }
   
   private void setValue(Object paramObject1, Object paramObject2)
   {
     loadProcessors();
-    if ((this.processors == null) || (this.processors.size() == 0)) {
-      return;
+    Object localObject1 = this.processors;
+    Iterator localIterator;
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).size() == 0) {
+        return;
+      }
+      localIterator = this.processors.iterator();
+      localObject1 = paramObject1;
     }
-    Iterator localIterator = this.processors.iterator();
-    Object localObject2 = paramObject1;
-    Object localObject1 = paramObject1;
-    paramObject1 = localObject2;
     for (;;)
     {
-      if (localIterator.hasNext())
+      if (!localIterator.hasNext()) {
+        break label115;
+      }
+      localObject1 = (DittoFieldValue.AbsValueProcessor)localIterator.next();
+      try
       {
-        localObject1 = (DittoFieldValue.AbsValueProcessor)localIterator.next();
-        try
-        {
-          localObject1 = ((DittoFieldValue.AbsValueProcessor)localObject1).getObjectValue(paramObject1);
-          localObject2 = paramObject1;
-          paramObject1 = localObject1;
-          localObject1 = localObject2;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          DittoLog.e("DITTO_UI", "current template is accessing field of null value, tpl:" + this.fieldName, new RuntimeException());
-        }
+        Object localObject2 = ((DittoFieldValue.AbsValueProcessor)localObject1).getObjectValue(paramObject1);
+        localObject1 = paramObject1;
+        paramObject1 = localObject2;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        label72:
+        break label72;
       }
     }
-    for (;;)
-    {
-      DittoFieldValue.AbsValueProcessor localAbsValueProcessor = (DittoFieldValue.AbsValueProcessor)this.processors.get(this.processors.size() - 1);
-      if ((localAbsValueProcessor == null) || (paramObject1 == null)) {
-        break;
-      }
-      localAbsValueProcessor.setValue(paramObject1, paramObject2);
-      return;
-      paramObject1 = localAbsValueProcessor;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("current template is accessing field of null value, tpl:");
+    ((StringBuilder)localObject1).append(this.fieldName);
+    DittoLog.e("DITTO_UI", ((StringBuilder)localObject1).toString(), new RuntimeException());
+    break label117;
+    label115:
+    paramObject1 = localObject1;
+    label117:
+    localObject1 = this.processors;
+    localObject1 = (DittoFieldValue.AbsValueProcessor)((List)localObject1).get(((List)localObject1).size() - 1);
+    if ((localObject1 != null) && (paramObject1 != null)) {
+      ((DittoFieldValue.AbsValueProcessor)localObject1).setValue(paramObject1, paramObject2);
     }
   }
   
@@ -163,20 +165,26 @@ public class DittoFieldValue
     Iterator localIterator = this.processors.iterator();
     for (;;)
     {
-      if (localIterator.hasNext())
+      if (!localIterator.hasNext()) {
+        break label84;
+      }
+      Object localObject = (DittoFieldValue.AbsValueProcessor)localIterator.next();
+      try
       {
-        Object localObject = (DittoFieldValue.AbsValueProcessor)localIterator.next();
-        try
-        {
-          localObject = ((DittoFieldValue.AbsValueProcessor)localObject).getObjectValue(paramObject);
-          paramObject = localObject;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          DittoLog.e("DITTO_UI", "current template is accessing field of null value, tpl:" + this.fieldName, new RuntimeException());
-        }
+        localObject = ((DittoFieldValue.AbsValueProcessor)localObject).getObjectValue(paramObject);
+        paramObject = localObject;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        label44:
+        break label44;
       }
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("current template is accessing field of null value, tpl:");
+    ((StringBuilder)localObject).append(this.fieldName);
+    DittoLog.e("DITTO_UI", ((StringBuilder)localObject).toString(), new RuntimeException());
+    label84:
     return paramObject;
   }
   
@@ -192,7 +200,7 @@ public class DittoFieldValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.reflect.DittoFieldValue
  * JD-Core Version:    0.7.0.1
  */

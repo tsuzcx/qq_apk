@@ -8,30 +8,30 @@ final class SerializedObserver$FastList
   public void add(Object paramObject)
   {
     int i = this.size;
-    Object localObject = this.array;
-    if (localObject == null)
+    Object[] arrayOfObject2 = this.array;
+    Object[] arrayOfObject1;
+    if (arrayOfObject2 == null)
     {
-      localObject = new Object[16];
-      this.array = ((Object[])localObject);
+      arrayOfObject1 = new Object[16];
+      this.array = arrayOfObject1;
     }
-    for (;;)
+    else
     {
-      localObject[i] = paramObject;
-      this.size = (i + 1);
-      return;
-      if (i == localObject.length)
+      arrayOfObject1 = arrayOfObject2;
+      if (i == arrayOfObject2.length)
       {
-        Object[] arrayOfObject = new Object[(i >> 2) + i];
-        System.arraycopy(localObject, 0, arrayOfObject, 0, i);
-        this.array = arrayOfObject;
-        localObject = arrayOfObject;
+        arrayOfObject1 = new Object[(i >> 2) + i];
+        System.arraycopy(arrayOfObject2, 0, arrayOfObject1, 0, i);
+        this.array = arrayOfObject1;
       }
     }
+    arrayOfObject1[i] = paramObject;
+    this.size = (i + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.observers.SerializedObserver.FastList
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class PfaFriendRqt
 {
   public String mqq_version = "";
   public String pfa_msg_edition = "";
-  public int pfa_sub_type;
+  public int pfa_sub_type = 0;
   public String skey = "";
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -30,7 +30,7 @@ public final class PfaFriendRqt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.PfaFriendRqt
  * JD-Core Version:    0.7.0.1
  */

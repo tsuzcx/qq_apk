@@ -19,20 +19,28 @@ public final class m
   
   static void a(String paramString, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      QLog.d("WtLoginDeviceToken", 1, "MSF save device token failed, uin=" + paramString + ",md5=" + paramArrayOfByte);
+      localObject = BaseApplication.getContext().getSharedPreferences("mobileQQ_device_token", 0);
+      paramArrayOfByte = util.buf_to_string(paramArrayOfByte);
+      ((SharedPreferences)localObject).edit().putString(paramString, paramArrayOfByte).commit();
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("MSF save device token success, uin=");
+      paramArrayOfByte.append(paramString);
+      QLog.d("WtLoginDeviceToken", 1, paramArrayOfByte.toString());
       return;
     }
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ_device_token", 0);
-    paramArrayOfByte = util.buf_to_string(paramArrayOfByte);
-    localSharedPreferences.edit().putString(paramString, paramArrayOfByte).commit();
-    QLog.d("WtLoginDeviceToken", 1, "MSF save device token success, uin=" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("MSF save device token failed, uin=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",md5=");
+    ((StringBuilder)localObject).append(paramArrayOfByte);
+    QLog.d("WtLoginDeviceToken", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.m
  * JD-Core Version:    0.7.0.1
  */

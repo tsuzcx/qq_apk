@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aexp;
-import aeyd;
-import aeyf;
-import agoz;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -27,53 +23,58 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awxo;
-import awym;
-import azqs;
-import bavt;
-import bdmd;
+import com.tencent.av.utils.TraeHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.ptt.IPttAudioDataManager;
+import com.tencent.mobileqq.ptt.IQQRecorder.OnQQRecorderListener;
+import com.tencent.mobileqq.ptt.api.IPttInfoCollector;
+import com.tencent.mobileqq.pttlogic.api.IPttPreSendService;
+import com.tencent.mobileqq.pttlogic.api.IPttUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.PttInfoCollector;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.utils.RecordParams.RecorderParam;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import mwk;
 
 public class PressToChangeVoicePanel
   extends RelativeLayout
-  implements aexp, View.OnTouchListener, bdmd
+  implements View.OnTouchListener, AudioPanelCallback, IQQRecorder.OnQQRecorderListener
 {
-  public static String a;
-  public double a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aeyd(this, Looper.getMainLooper());
-  protected View a;
-  public ViewGroup a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  protected PopupWindow a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected awxo a;
-  public BaseChatPie a;
-  public AudioPanel a;
-  public AudioPanelAdapter a;
-  protected VolumeChangeView a;
-  public QQAppInterface a;
-  public boolean a;
-  protected ViewGroup b;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  protected VolumeChangeView b;
-  private boolean jdField_b_of_type_Boolean;
+  public static String p;
+  protected BaseChatPie a;
+  protected QQAppInterface b;
   protected ViewGroup c;
-  protected ViewGroup d;
+  public AudioPanel d;
   protected ViewGroup e;
-  public ViewGroup f;
+  protected ViewGroup f;
+  protected ViewGroup g;
+  protected ViewGroup h;
+  protected VolumeChangeView i;
+  protected VolumeChangeView j;
+  protected ViewGroup k;
+  protected PopupWindow l;
+  protected View m;
+  protected double n;
+  protected IPttAudioDataManager o;
+  public AudioPanelAdapter q;
+  public boolean r;
+  private TextView s;
+  private ImageView t;
+  private TextView u;
+  private Handler v = new PressToChangeVoicePanel.1(this, Looper.getMainLooper());
+  private boolean w = false;
   
   public PressToChangeVoicePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -84,352 +85,265 @@ public class PressToChangeVoicePanel
   {
     if (paramBoolean)
     {
-      if (jdField_a_of_type_JavaLangString == null) {
-        jdField_a_of_type_JavaLangString = mwk.a(BaseApplicationImpl.sApplication);
+      if (p == null) {
+        p = TraeHelper.b(BaseApplicationImpl.sApplication);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "checkVcSo sync:" + jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkVcSo sync:");
+        localStringBuilder.append(p);
+        QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
       }
     }
-    if (jdField_a_of_type_JavaLangString == null) {
+    if (p == null) {
       ThreadManager.post(new PressToChangeVoicePanel.2(paramBoolean, paramQQAppInterface, paramString), 5, null, false);
     }
   }
   
   private boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    int j = (int)paramMotionEvent.getRawY();
-    int k = (int)paramMotionEvent.getRawX();
-    if (i == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j(2);
+    int i1 = paramMotionEvent.getAction();
+    int i2 = (int)paramMotionEvent.getRawY();
+    int i3 = (int)paramMotionEvent.getRawX();
+    if (i1 == 0) {
+      if (((AudioPanelAioHelper)this.a.q(128)).d()) {
+        ((AudioPanelAioHelper)this.a.q(128)).g(2);
       }
     }
     for (;;)
     {
       return true;
-      if (i == 2)
+      if (i1 == 2)
       {
         paramMotionEvent = new int[2];
         paramView.getLocationOnScreen(paramMotionEvent);
-        double d1 = paramView.getWidth();
-        double d2 = paramView.getHeight();
-        double d3 = paramMotionEvent[0];
-        double d4 = paramMotionEvent[1];
-        if ((Math.abs(k - (d3 + d1)) > d1) || (Math.abs(j - (d4 + d2)) > d2)) {
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_b_of_type_Boolean = false;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m())
-            {
-              setClickable(false);
-              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j(2);
-            }
-          }
-          else
-          {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-          }
-        }
-      }
-      else if ((i == 1) || (i == 3))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPressed(false);
-        if (this.jdField_b_of_type_Boolean)
+        double d3 = paramView.getWidth();
+        double d1 = paramView.getHeight();
+        double d4 = paramMotionEvent[0];
+        Double.isNaN(d4);
+        Double.isNaN(d3);
+        double d2 = paramMotionEvent[1];
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        double d5 = i3;
+        Double.isNaN(d5);
+        if (Math.abs(d5 - (d4 + d3)) <= d3)
         {
-          this.jdField_b_of_type_Boolean = false;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m())
+          d3 = i2;
+          Double.isNaN(d3);
+          if (Math.abs(d3 - (d2 + d1)) <= d1) {}
+        }
+        else if (this.w)
+        {
+          this.w = false;
+          if (((AudioPanelAioHelper)this.a.q(128)).d())
           {
             setClickable(false);
-            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j(2);
+            ((AudioPanelAioHelper)this.a.q(128)).g(2);
           }
         }
         else
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+          this.v.removeMessages(1);
+          return true;
+        }
+      }
+      else if ((i1 == 1) || (i1 == 3))
+      {
+        this.t.setPressed(false);
+        if (!this.w) {
+          break;
+        }
+        this.w = false;
+        if (((AudioPanelAioHelper)this.a.q(128)).d())
+        {
+          setClickable(false);
+          ((AudioPanelAioHelper)this.a.q(128)).g(2);
         }
       }
     }
-  }
-  
-  public int a()
-  {
-    this.jdField_a_of_type_Double = 0.0D;
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onRecorderStart() is called");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
-    bavt.b(0);
-    return 350;
-  }
-  
-  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onBeginReceiveData() is called");
-    }
-    awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, paramRecorderParam, jdField_a_of_type_JavaLangString);
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e();
+    this.v.removeMessages(1);
+    return true;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChangePanel.onInitSuccess() is called");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PressToSpeakPanel.prepareRecord() is called,time is:");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
     }
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    this.s.setVisibility(8);
+    this.g.setVisibility(0);
+    this.h.setVisibility(8);
+    this.t.setVisibility(0);
+    this.i.setVisibility(8);
+    this.j.setVisibility(8);
+    this.c.setVisibility(4);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m(paramInt);
-    if (paramInt == 1) {}
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("level = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
+    }
+    paramInt = this.o.a(paramInt);
+    this.i.a(paramInt);
+    this.j.a(paramInt);
   }
   
   public void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, ViewGroup paramViewGroup1, AudioPanel paramAudioPanel, ViewGroup paramViewGroup2, ViewGroup paramViewGroup3, ViewGroup paramViewGroup4, AudioPanelAdapter paramAudioPanelAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.f = paramViewGroup1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel = paramAudioPanel;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup2;
-    this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup3;
-    this.c = paramViewGroup4;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter = paramAudioPanelAdapter;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372244));
-    this.d = ((ViewGroup)findViewById(2131376995));
-    this.e = ((ViewGroup)findViewById(2131368226));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView = ((VolumeChangeView)findViewById(2131368228));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView = ((VolumeChangeView)findViewById(2131368229));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setColor(getResources().getColor(2131166894));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setColor(getResources().getColor(2131166894));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376916));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372238));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
-    this.jdField_a_of_type_Awxo = new awxo();
+    this.b = paramQQAppInterface;
+    this.a = paramBaseChatPie;
+    this.k = paramViewGroup1;
+    this.d = paramAudioPanel;
+    this.c = paramViewGroup2;
+    this.e = paramViewGroup3;
+    this.f = paramViewGroup4;
+    this.q = paramAudioPanelAdapter;
+    this.s = ((TextView)findViewById(2131440609));
+    this.g = ((ViewGroup)findViewById(2131446307));
+    this.h = ((ViewGroup)findViewById(2131435682));
+    this.i = ((VolumeChangeView)findViewById(2131435684));
+    this.j = ((VolumeChangeView)findViewById(2131435685));
+    this.i.setColor(getResources().getColor(2131167984));
+    this.j.setColor(getResources().getColor(2131167984));
+    this.u = ((TextView)findViewById(2131446204));
+    this.t = ((ImageView)findViewById(2131440603));
+    this.t.setOnTouchListener(this);
+    this.o = ((IPttUtils)QRoute.api(IPttUtils.class)).creatPttAudioDataManager();
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "PressToChangeVoice.init() is called");
     }
     if (ThemeUtil.isNowThemeIsNight(paramQQAppInterface, false, null))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF737373"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4A4A4A"));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setColor(getResources().getColor(2131166894));
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setColor(getResources().getColor(2131166894));
+      this.s.setTextColor(Color.parseColor("#FF737373"));
+      this.u.setTextColor(Color.parseColor("#FF4A4A4A"));
+      this.i.setColor(getResources().getColor(2131167984));
+      this.j.setColor(getResources().getColor(2131167984));
     }
-    if (AppSetting.c)
+    if (QQTheme.isNowThemeSimpleNight()) {
+      this.t.setImageResource(2130851890);
+    } else {
+      this.t.setImageResource(2130851889);
+    }
+    if (AppSetting.e)
     {
-      ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_AndroidWidgetTextView, 2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131691152));
+      ViewCompat.setImportantForAccessibility(this.s, 2);
+      this.t.setContentDescription(getContext().getString(2131888054));
     }
   }
   
-  public void a(String paramString)
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChanegVoicePanel.onRecorderNotReady() is called,path is:" + paramString);
-    }
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChanegVoicePanel.onRecorderPrepare() is called,path is:" + paramString);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramString, false, paramRecorderParam);
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onRecorderEnd() is called,path is:" + paramString + ", type: " + paramRecorderParam.c + ", time:" + this.jdField_a_of_type_Double);
-    }
-    HashMap localHashMap;
-    if (this.jdField_a_of_type_Double < 800.0D)
+    boolean bool = ((AudioPanelAioHelper)this.a.q(128)).g();
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(paramString);
-      localHashMap = new HashMap();
-      localHashMap.put(Integer.valueOf(0), paramString);
-      localHashMap.put(Integer.valueOf(1), paramRecorderParam);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1003, localHashMap));
-      awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c();
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005A17", "0X8005A17", 1, 0, String.valueOf((int)this.jdField_a_of_type_Double), "", "", "8.3.5");
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "changevoice", "0X8006F4E", 0, 0, "1", "", "", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PressToChangeVoicePanel.onBackEvent() is called,isRecording is:");
+      localStringBuilder.append(bool);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
     }
-    int i;
-    do
+    if (bool)
     {
-      return;
-      bavt.a(3, (int)this.jdField_a_of_type_Double);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "changevoice", "0X8006F4E", 0, 0, "0", "", "", "");
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d();
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "fateOfRecorder is:" + i);
-      }
-      if (i == 2)
-      {
-        localHashMap = new HashMap();
-        localHashMap.put(Integer.valueOf(0), paramString);
-        localHashMap.put(Integer.valueOf(1), paramRecorderParam);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1005, localHashMap));
-        return;
-      }
-    } while (i != 1);
-    awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(paramString, 4, paramRecorderParam);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1004, paramString));
-  }
-  
-  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChangeVoicePanel.onRecorderError() is called,path is:" + paramString1 + ",errorCode is:" + paramString2);
+      ((AudioPanelAioHelper)this.a.q(128)).g(2);
+      return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramString1, false, false, paramRecorderParam);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1006);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005A17", "0X8005A17", 2, 0, "", "", "", "8.3.5");
-    awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c();
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramString, paramArrayOfByte, paramInt1, paramInt2, paramDouble, paramRecorderParam);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramString, (int)paramDouble, paramRecorderParam);
-    awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramArrayOfByte, paramInt1);
-    if (this.jdField_a_of_type_Awxo.a()) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1007, paramInt2, 0, Double.valueOf(paramDouble)));
-    }
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public boolean a()
-  {
-    boolean bool1 = false;
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.n();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChangeVoicePanel.onBackEvent() is called,isRecording is:" + bool2);
-    }
-    if (bool2)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j(2);
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.prepareRecord() is called,time is:" + System.currentTimeMillis());
-    }
-    aepi.n = true;
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.d.setVisibility(0);
-    this.e.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setVisibility(8);
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "level = " + paramInt);
-    }
-    paramInt = this.jdField_a_of_type_Awxo.a(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.a(paramInt);
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.a(paramInt);
-  }
-  
-  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramString, true, false, paramRecorderParam);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1006);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005A17", "0X8005A17", 4, 0, "", "", "", "8.3.5");
-    awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c();
+    return false;
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, " PressToSpeakPanel.startRecord() is called, time is " + System.currentTimeMillis());
+    boolean bool = ((AudioPanelAioHelper)this.a.q(128)).g();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PressToChangeVoicePanel.onPause() is called,isRecording is:");
+      localStringBuilder.append(bool);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.a();
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.d.setVisibility(8);
-    this.e.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setVisibility(0);
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-  }
-  
-  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChangePanel.onInitFailed() is called");
+    if (bool) {
+      ((AudioPanelAioHelper)this.a.q(128)).g(2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramString, true, false, paramRecorderParam);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1006);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005A17", "0X8005A17", 3, 0, "", "", "", "8.3.5");
   }
   
   public void d()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.n();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChangeVoicePanel.onPause() is called,isRecording is:" + bool);
+    boolean bool = ((AudioPanelAioHelper)this.a.q(128)).g();
+    Object localObject;
+    if ((this.a.aX() != null) && (!this.a.aX().isFinishing()))
+    {
+      localObject = this.l;
+      if ((localObject != null) && (((PopupWindow)localObject).isShowing())) {
+        this.l.dismiss();
+      }
     }
-    if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j(2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PressToSpeakPanel.onDestroy() is called,isRecording is:");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject).toString());
+    }
+    if (bool)
+    {
+      ((AudioPanelAioHelper)this.a.q(128)).g(1);
+      ((AudioPanelAioHelper)this.a.q(128)).f(1);
     }
   }
   
   public void e()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.n();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().isFinishing()) && (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onDestroy() is called,isRecording is:" + bool);
-    }
-    if (bool)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.k(1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" PressToSpeakPanel.startRecord() is called, time is ");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
     }
+    this.i.a();
+    this.j.a();
+    this.s.setVisibility(8);
+    this.g.setVisibility(8);
+    this.h.setVisibility(0);
+    this.t.setVisibility(0);
+    this.i.setVisibility(0);
+    this.j.setVisibility(0);
+    this.c.setVisibility(4);
   }
   
   public void f()
   {
-    Object localObject;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.r)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter.jdField_b_of_type_AndroidViewViewGroup != null) {
-        break label106;
+      if (this.q.c == null)
+      {
+        localObject = (ListenChangeVoicePanel)LayoutInflater.from(this.b.getApp()).inflate(2131627264, null);
+        ((ListenChangeVoicePanel)localObject).a(this.b, this.a, this.k);
+        this.q.c = ((ViewGroup)localObject);
       }
-      localObject = (ListenChangeVoicePanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560804, null);
-      ((ListenChangeVoicePanel)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.f);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
-    }
-    for (;;)
-    {
-      localObject = (ListenChangeVoicePanel)this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter.jdField_b_of_type_AndroidViewViewGroup;
-      ((ListenChangeVoicePanel)localObject).f();
-      this.f.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
+      else
+      {
+        localObject = (ViewGroup)this.q.c.getParent();
+        if (localObject != null) {
+          ((ViewGroup)localObject).removeView(this.q.c);
+        }
+        ((ListenChangeVoicePanel)this.q.c).a(this.b, this.a, this.k);
+      }
+      Object localObject = (ListenChangeVoicePanel)this.q.c;
+      ((ListenChangeVoicePanel)localObject).a();
+      this.k.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
       ((ListenChangeVoicePanel)localObject).setVisibility(8);
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      label106:
-      localObject = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter.jdField_b_of_type_AndroidViewViewGroup.getParent();
-      if (localObject != null) {
-        ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter.jdField_b_of_type_AndroidViewViewGroup);
-      }
-      ((ListenChangeVoicePanel)this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter.jdField_b_of_type_AndroidViewViewGroup).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.f);
+      this.r = true;
     }
   }
   
@@ -438,68 +352,65 @@ public class PressToChangeVoicePanel
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.reset() is called");
     }
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().isFinishing()) {
+    int i1 = 0;
+    this.w = false;
+    if (this.a.aX().isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.d.setVisibility(8);
-    this.e.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(AudioPanel.a(0.0D));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setVisibility(8);
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeChangeView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.setStatus(1);
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow == null) || (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {}
-    try
+    this.s.setVisibility(0);
+    this.g.setVisibility(8);
+    this.h.setVisibility(8);
+    this.t.setVisibility(0);
+    this.u.setText(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTimeStrByMillis(0.0D));
+    this.i.setVisibility(8);
+    this.j.setVisibility(8);
+    this.c.setVisibility(0);
+    this.d.setStatus(1);
+    PopupWindow localPopupWindow = this.l;
+    if (localPopupWindow != null)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
-          ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
-        }
-        this.jdField_a_of_type_AndroidViewView = null;
-      }
-      Object localObject = (PanelIconLinearLayout)this.c;
-      if (localObject != null)
-      {
-        ((PanelIconLinearLayout)localObject).setAllAlpha(1.0F);
-        ((PanelIconLinearLayout)localObject).setAllEnable(true);
-      }
-      int j = this.jdField_b_of_type_AndroidViewViewGroup.getChildCount();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label301;
-        }
-        localObject = this.jdField_b_of_type_AndroidViewViewGroup.getChildAt(i);
-        if (((View)localObject).getVisibility() != 8) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel())
+      if (localPopupWindow.isShowing()) {
+        try
         {
-          QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.reset(),dismiss topMaskPanel caused exception,it is no matter.", localException);
-          continue;
-          AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 1.0F);
-          localAlphaAnimation.setDuration(0L);
-          localAlphaAnimation.setInterpolator(new LinearInterpolator());
-          localException.startAnimation(localAlphaAnimation);
+          this.l.dismiss();
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.reset(),dismiss topMaskPanel caused exception,it is no matter.", localException);
+          }
         }
       }
-      label301:
-      i();
+      this.l = null;
     }
+    Object localObject = this.m;
+    if (localObject != null)
+    {
+      if (((View)localObject).getParent() != null) {
+        ((ViewGroup)this.m.getParent()).removeView(this.m);
+      }
+      this.m = null;
+    }
+    localObject = (PanelIconLinearLayout)this.f;
+    if (localObject != null)
+    {
+      ((PanelIconLinearLayout)localObject).setAllAlpha(1.0F);
+      ((PanelIconLinearLayout)localObject).setAllEnable(true);
+    }
+    int i2 = this.e.getChildCount();
+    while (i1 < i2)
+    {
+      localObject = this.e.getChildAt(i1);
+      if (((View)localObject).getVisibility() != 8)
+      {
+        AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 1.0F);
+        localAlphaAnimation.setDuration(0L);
+        localAlphaAnimation.setInterpolator(new LinearInterpolator());
+        ((View)localObject).startAnimation(localAlphaAnimation);
+      }
+      i1 += 1;
+    }
+    i();
   }
   
   void h()
@@ -515,59 +426,216 @@ public class PressToChangeVoicePanel
     localScaleAnimation.setDuration(150L);
     localScaleAnimation.setInterpolator(new LinearInterpolator());
     localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.setAnimationListener(new aeyf(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
+    localAnimationSet.setAnimationListener(new PressToChangeVoicePanel.4(this));
+    this.t.startAnimation(localAnimationSet);
   }
   
   @TargetApi(14)
   public void i()
   {
-    if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new PressToChangeVoicePanel.5(this), 500L);
+    if (AppSetting.e) {
+      this.t.postDelayed(new PressToChangeVoicePanel.5(this), 500L);
     }
+  }
+  
+  public int onBeginReceiveData(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onBeginReceiveData() is called");
+    }
+    ((IPttPreSendService)this.b.getRuntimeService(IPttPreSendService.class)).startPreSendIfNeed(paramString, paramRecorderParam, p);
+    return ((AudioPanelAioHelper)this.a.q(128)).l();
+  }
+  
+  public void onInitFailed(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "PressToChangePanel.onInitFailed() is called");
+    }
+    ((AudioPanelAioHelper)this.a.q(128)).a(paramString, true, false, paramRecorderParam);
+    this.v.sendEmptyMessage(1006);
+    ReportController.b(this.b, "CliOper", "", "", "0X8005A17", "0X8005A17", 3, 0, "", "", "", "8.8.17");
+  }
+  
+  public void onInitSuccess()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "PressToChangePanel.onInitSuccess() is called");
+    }
+  }
+  
+  public void onRecorderAbnormal(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    ((AudioPanelAioHelper)this.a.q(128)).a(paramString, true, false, paramRecorderParam);
+    this.v.sendEmptyMessage(1006);
+    ReportController.b(this.b, "CliOper", "", "", "0X8005A17", "0X8005A17", 4, 0, "", "", "", "8.8.17");
+    ((IPttPreSendService)this.b.getRuntimeService(IPttPreSendService.class)).cleanUp();
+  }
+  
+  public void onRecorderEnd(String paramString, RecordParams.RecorderParam paramRecorderParam, double paramDouble)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("RecordSoundPanel.onRecorderEnd() is called,path is:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", type: ");
+      ((StringBuilder)localObject).append(paramRecorderParam.c);
+      ((StringBuilder)localObject).append(", time:");
+      ((StringBuilder)localObject).append(this.n);
+      QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.n < 800.0D)
+    {
+      ((AudioPanelAioHelper)this.a.q(128)).a(paramString);
+      localObject = new HashMap();
+      ((HashMap)localObject).put(Integer.valueOf(0), paramString);
+      ((HashMap)localObject).put(Integer.valueOf(1), paramRecorderParam);
+      paramString = this.v;
+      paramString.sendMessage(paramString.obtainMessage(1003, localObject));
+      ((IPttPreSendService)this.b.getRuntimeService(IPttPreSendService.class)).cleanUp();
+      ReportController.b(this.b, "CliOper", "", "", "0X8005A17", "0X8005A17", 1, 0, String.valueOf((int)this.n), "", "", "8.8.17");
+      ReportController.b(this.b, "CliOper", "", "", "changevoice", "0X8006F4E", 0, 0, "1", "", "", "");
+      return;
+    }
+    ((IPttInfoCollector)QRoute.api(IPttInfoCollector.class)).reportGcAndMemoryUse(3, (int)this.n);
+    ReportController.b(this.b, "CliOper", "", "", "changevoice", "0X8006F4E", 0, 0, "0", "", "", "");
+    int i1 = ((AudioPanelAioHelper)this.a.q(128)).h();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fateOfRecorder is:");
+      ((StringBuilder)localObject).append(i1);
+      QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject).toString());
+    }
+    if (i1 == 2)
+    {
+      localObject = new HashMap();
+      ((HashMap)localObject).put(Integer.valueOf(0), paramString);
+      ((HashMap)localObject).put(Integer.valueOf(1), paramRecorderParam);
+      paramString = this.v;
+      paramString.sendMessage(paramString.obtainMessage(1005, localObject));
+      return;
+    }
+    if (i1 == 1)
+    {
+      ((IPttPreSendService)this.b.getRuntimeService(IPttPreSendService.class)).cleanUp();
+      ((AudioPanelAioHelper)this.a.q(128)).c(paramString, 4, paramRecorderParam);
+      paramRecorderParam = this.v;
+      paramRecorderParam.sendMessage(paramRecorderParam.obtainMessage(1004, paramString));
+    }
+  }
+  
+  public void onRecorderError(String paramString1, RecordParams.RecorderParam paramRecorderParam, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PressToChangeVoicePanel.onRecorderError() is called,path is:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",errorCode is:");
+      localStringBuilder.append(paramString2);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
+    }
+    ((AudioPanelAioHelper)this.a.q(128)).a(paramString1, false, false, paramRecorderParam);
+    this.v.sendEmptyMessage(1006);
+    ReportController.b(this.b, "CliOper", "", "", "0X8005A17", "0X8005A17", 2, 0, "", "", "", "8.8.17");
+    ((IPttPreSendService)this.b.getRuntimeService(IPttPreSendService.class)).cleanUp();
+  }
+  
+  public void onRecorderNotReady(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PressToChanegVoicePanel.onRecorderNotReady() is called,path is:");
+      localStringBuilder.append(paramString);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void onRecorderPrepare(String paramString, RecordParams.RecorderParam paramRecorderParam)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PressToChanegVoicePanel.onRecorderPrepare() is called,path is:");
+      localStringBuilder.append(paramString);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
+    }
+    this.v.sendEmptyMessage(1001);
+    ((AudioPanelAioHelper)this.a.q(128)).a(paramString, false, paramRecorderParam);
+  }
+  
+  public void onRecorderSilceEnd(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, RecordParams.RecorderParam paramRecorderParam)
+  {
+    ((AudioPanelAioHelper)this.a.q(128)).a(paramString, paramArrayOfByte, paramInt1, paramInt2, paramDouble, paramRecorderParam);
+    ((AudioPanelAioHelper)this.a.q(128)).b(paramString, (int)paramDouble, paramRecorderParam);
+    ((IPttPreSendService)this.b.getRuntimeService(IPttPreSendService.class)).handleSliceData(paramArrayOfByte, paramInt1);
+    if (this.o.a())
+    {
+      paramString = this.v;
+      paramString.sendMessage(paramString.obtainMessage(1007, paramInt2, 0, Double.valueOf(paramDouble)));
+    }
+    this.n = paramDouble;
+  }
+  
+  public int onRecorderStart()
+  {
+    this.n = 0.0D;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onRecorderStart() is called");
+    }
+    this.v.sendEmptyMessage(1002);
+    PttInfoCollector.reportCostUntilPrepare(0);
+    return 350;
+  }
+  
+  public void onRecorderVolumeStateChanged(int paramInt)
+  {
+    ((AudioPanelAioHelper)this.a.q(128)).h(paramInt);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agoz)))
+    Object localObject = this.a;
+    boolean bool = false;
+    if ((localObject != null) && ((localObject instanceof DeviceMsgChatPie)))
     {
-      QQToast.a(BaseApplication.getContext(), 2131691658, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getTitleBarHeight());
+      QQToast.makeText(BaseApplication.getContext(), 2131888530, 0).show(this.a.aX().getTitleBarHeight());
       return false;
     }
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "PressToChangeVoice.onTouch() is called,action is:" + i);
-    }
-    boolean bool1;
-    if (paramView.getId() == 2131372238) {
-      if (i == 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPressed(true);
-        paramView = new PressToChangeVoicePanel.3(this);
-        paramView = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, paramView);
-        paramView.what = 1;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 150L);
-        bool1 = bool2;
-      }
-    }
-    for (;;)
+    int i1 = paramMotionEvent.getAction();
+    if (QLog.isColorLevel())
     {
-      return bool1;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PressToChangeVoice.onTouch() is called,action is:");
+      ((StringBuilder)localObject).append(i1);
+      QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramView.getId() == 2131440603)
+    {
+      if (i1 == 0)
+      {
+        this.t.setPressed(true);
+        paramView = new PressToChangeVoicePanel.3(this);
+        paramView = Message.obtain(this.v, paramView);
+        paramView.what = 1;
+        this.v.sendMessageDelayed(paramView, 150L);
+      }
+      else if (this.a != null)
       {
         a(paramView, paramMotionEvent);
-        bool1 = bool2;
-        continue;
-        bool1 = false;
       }
+      bool = true;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel
  * JD-Core Version:    0.7.0.1
  */

@@ -7,90 +7,90 @@ import java.io.InputStream;
 public final class i
   extends InputStream
 {
-  private final g aBo;
-  private final j aQI;
-  private final byte[] aYv;
-  long aYw;
+  private final g cLk;
   private boolean closed;
+  private final j daF;
   private boolean opened;
+  private final byte[] singleByteArray;
+  long totalBytesRead;
   
   public i(g paramg, j paramj)
   {
-    AppMethodBeat.i(95795);
+    AppMethodBeat.i(93037);
     this.opened = false;
     this.closed = false;
-    this.aBo = paramg;
-    this.aQI = paramj;
-    this.aYv = new byte[1];
-    AppMethodBeat.o(95795);
+    this.cLk = paramg;
+    this.daF = paramj;
+    this.singleByteArray = new byte[1];
+    AppMethodBeat.o(93037);
+  }
+  
+  final void checkOpened()
+  {
+    AppMethodBeat.i(93042);
+    if (!this.opened)
+    {
+      this.cLk.a(this.daF);
+      this.opened = true;
+    }
+    AppMethodBeat.o(93042);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(95799);
+    AppMethodBeat.i(93041);
     if (!this.closed)
     {
-      this.aBo.close();
+      this.cLk.close();
       this.closed = true;
     }
-    AppMethodBeat.o(95799);
-  }
-  
-  final void qo()
-  {
-    AppMethodBeat.i(95800);
-    if (!this.opened)
-    {
-      this.aBo.a(this.aQI);
-      this.opened = true;
-    }
-    AppMethodBeat.o(95800);
+    AppMethodBeat.o(93041);
   }
   
   public final int read()
   {
-    AppMethodBeat.i(95796);
-    if (read(this.aYv) == -1)
+    AppMethodBeat.i(93038);
+    if (read(this.singleByteArray) == -1)
     {
-      AppMethodBeat.o(95796);
+      AppMethodBeat.o(93038);
       return -1;
     }
-    int i = this.aYv[0];
-    AppMethodBeat.o(95796);
+    int i = this.singleByteArray[0];
+    AppMethodBeat.o(93038);
     return i & 0xFF;
   }
   
   public final int read(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(95797);
+    AppMethodBeat.i(93039);
     int i = read(paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(95797);
+    AppMethodBeat.o(93039);
     return i;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95798);
+    AppMethodBeat.i(93040);
     if (!this.closed) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      qo();
-      paramInt1 = this.aBo.read(paramArrayOfByte, paramInt1, paramInt2);
+      checkOpened();
+      paramInt1 = this.cLk.read(paramArrayOfByte, paramInt1, paramInt2);
       if (paramInt1 != -1) {
         break;
       }
-      AppMethodBeat.o(95798);
+      AppMethodBeat.o(93040);
       return -1;
     }
-    this.aYw += paramInt1;
-    AppMethodBeat.o(95798);
+    this.totalBytesRead += paramInt1;
+    AppMethodBeat.o(93040);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.i
  * JD-Core Version:    0.7.0.1
  */

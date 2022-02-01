@@ -1,16 +1,12 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.l;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.ipcinvoker.type.IPCString;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItemsManager$IPCInvoke_GetCommonDataValue;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "()V", "invoke", "key", "plugin-appbrand-integration_release"})
-final class k$a
-  implements i<IPCString, IPCString>
-{}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog$Companion;", "", "()V", "LANDSCAPE_MAX_HEIGHT_FACTOR", "", "PORTRAIT_MAX_HEIGHT_FACTOR", "TAG", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class k$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.k.a
  * JD-Core Version:    0.7.0.1
  */

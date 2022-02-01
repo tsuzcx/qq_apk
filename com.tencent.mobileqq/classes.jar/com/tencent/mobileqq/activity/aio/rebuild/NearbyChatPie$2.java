@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agsy;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class NearbyChatPie$2
+class NearbyChatPie$2
   implements Runnable
 {
-  public NearbyChatPie$2(agsy paramagsy) {}
+  NearbyChatPie$2(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.this$0.d.getEntityManagerFactory().createEntityManager().find(NearbyPeopleCard.class, "uin=?", new String[] { this.this$0.ah.b });
     if (localNearbyPeopleCard != null) {
-      this.this$0.r = localNearbyPeopleCard.gender;
+      this.this$0.bj = localNearbyPeopleCard.gender;
     }
   }
 }

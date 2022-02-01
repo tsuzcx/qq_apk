@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/bja" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/md" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginBottom="@dimen/mc" android:layout_alignParentTop="true" />
+    <TextView android:textSize="@dimen/aek" android:textColor="@color/fl" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ma" android:layout_marginRight="@dimen/mb" android:text="正在添加" android:singleLine="true" android:layout_below="@id/bif" />
+    <LinearLayout android:orientation="vertical" android:id="@id/abb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lq" android:layout_marginTop="24.0dip" android:layout_marginRight="@dimen/lr" android:layout_marginBottom="@dimen/lp" android:layout_below="@id/dialogTitle">
+        <ProgressBar android:id="@id/g2e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="4.0dip" android:max="100" android:progressDrawable="@drawable/am" android:minHeight="4.0dip" style="?android:progressBarStyleHorizontal" />
+        <RelativeLayout android:id="@id/bpc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:id="@id/n93" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:id="@id/nui" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_below="@id/abb" />
+    <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/aoo" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="取消" android:singleLine="true" android:layout_weight="1.0" android:layout_below="@id/biw" />
+</RelativeLayout>

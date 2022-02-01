@@ -12,15 +12,16 @@ public class PTSJSBridgeManager
   
   public static PTSJSBridgeManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new PTSJSBridgeManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new PTSJSBridgeManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void destroyJSBridge(Activity paramActivity)
@@ -48,7 +49,7 @@ public class PTSJSBridgeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.bridge.PTSJSBridgeManager
  * JD-Core Version:    0.7.0.1
  */

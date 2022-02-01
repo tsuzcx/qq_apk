@@ -1,41 +1,32 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.widget.a.f;
 
 final class LoginHistoryUI$2
-  implements n.d
+  implements View.OnClickListener
 {
-  LoginHistoryUI$2(LoginHistoryUI paramLoginHistoryUI) {}
+  LoginHistoryUI$2(LoginHistoryUI paramLoginHistoryUI, f paramf) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(124915);
-    switch (paramMenuItem.getItemId())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(124915);
-      return;
-      LoginHistoryUI.d(this.gEw);
-      AppMethodBeat.o(124915);
-      return;
-      LoginHistoryUI.e(this.gEw);
-      AppMethodBeat.o(124915);
-      return;
-      LoginHistoryUI.f(this.gEw);
-      AppMethodBeat.o(124915);
-      return;
-      LoginHistoryUI.R(this.gEw, this.gEw.getString(2131306258) + aa.dsG());
-    }
+    AppMethodBeat.i(304935);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/ui/LoginHistoryUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.qbb.hideVKB();
+    this.pZC.dDn();
+    a.a(this, "com/tencent/mm/plugin/account/ui/LoginHistoryUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(304935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.2
  * JD-Core Version:    0.7.0.1
  */

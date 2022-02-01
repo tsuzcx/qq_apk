@@ -38,8 +38,10 @@ public class ReplyTextRelativeLayout
     while (paramInt2 < paramInt4)
     {
       View localView = getChildAt(paramInt2);
-      if ((localView.getVisibility() != 8) && (localView.getId() == 2131368831)) {
-        localView.layout(paramInt3 - paramInt1 + 0 - localView.getMeasuredWidth(), 0, paramInt3 - paramInt1 + 0, localView.getMeasuredHeight() + 0);
+      if ((localView.getVisibility() != 8) && (localView.getId() == 2131436449))
+      {
+        int i = paramInt3 - paramInt1 - 0;
+        localView.layout(i - localView.getMeasuredWidth(), 0, i, localView.getMeasuredHeight() + 0);
       }
       paramInt2 += 1;
     }
@@ -47,7 +49,7 @@ public class ReplyTextRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ReplyTextRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

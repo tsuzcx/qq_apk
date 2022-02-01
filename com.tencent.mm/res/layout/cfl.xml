@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@drawable/b4m" android:paddingLeft="@dimen/bh" android:paddingTop="@dimen/bh" android:paddingRight="@dimen/bh" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bxo" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/gl2" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="8.0dip" android:src="@raw/wcpay_security_icon" android:layout_below="@id/bem" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/gle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="" android:layout_below="@id/gl2" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/xd" android:id="@id/gl_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="{你已达到监管规定的年累计支付限额，开通微众银行账户后可以继续使用零钱支付}" android:layout_below="@id/gle" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/baf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/gl_">
+            <CheckBox android:id="@id/bab" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/lq" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xd" android:id="@id/bai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+        <Button android:enabled="false" android:textSize="17.0dip" android:textColor="@color/al6" android:id="@id/l1c" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" android:text="@string/ktv" android:layout_below="@id/baf" android:layout_centerHorizontal="true" style="@style/oh" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffb2b2b2" android:gravity="center" android:id="@id/gl5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="11.0dip" android:text="" android:layout_below="@id/l1c" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</ScrollView>

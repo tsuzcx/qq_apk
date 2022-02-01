@@ -3,100 +3,108 @@ package com.tencent.mm.plugin.walletlock.b;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vg;
-import com.tencent.mm.g.a.vg.b;
-import com.tencent.mm.kernel.c;
+import com.tencent.mm.autogen.a.ada;
+import com.tencent.mm.autogen.a.ada.b;
+import com.tencent.mm.kernel.d;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.walletlock.a.b.a;
 import com.tencent.mm.plugin.walletlock.a.b.b;
-import com.tencent.mm.plugin.walletlock.c.d;
 import com.tencent.mm.plugin.walletlock.fingerprint.ui.FingerprintWalletLockUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.walletlock.model.c;
+import com.tencent.mm.plugin.walletlock.model.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
-  extends com.tencent.mm.plugin.walletlock.c.a
+  extends com.tencent.mm.plugin.walletlock.model.a
 {
-  public final void a(Activity paramActivity, b.b paramb)
+  public final void a(Activity paramActivity, b.b paramb, b.a parama)
   {
-    AppMethodBeat.i(51446);
-    if (!com.tencent.mm.kernel.g.RH().D(com.tencent.mm.plugin.walletlock.a.a.class))
+    AppMethodBeat.i(129652);
+    super.a(paramActivity, paramb, parama);
+    AppMethodBeat.o(129652);
+  }
+  
+  public final boolean a(Activity paramActivity, b.b paramb)
+  {
+    AppMethodBeat.i(129651);
+    if (!h.baA().aw(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ab.d("MicroMsg.FaceIdLockImpl", "Plugin gesture is not installed.");
-      AppMethodBeat.o(51446);
-      return;
+      Log.d("MicroMsg.FaceIdLockImpl", "Plugin gesture is not installed.");
+      AppMethodBeat.o(129651);
+      return false;
     }
-    if ((paramb != null) && (!paramb.al(paramActivity)))
+    if ((paramb != null) && (!paramb.bB(paramActivity)))
     {
-      ab.d("MicroMsg.FaceIdLockImpl", "protectMeOnCreate: still in filter range, do not activate protection.");
-      AppMethodBeat.o(51446);
-      return;
+      Log.d("MicroMsg.FaceIdLockImpl", "protectMeOnCreate: still in filter range, do not activate protection.");
+      AppMethodBeat.o(129651);
+      return false;
     }
-    paramb = new vg();
-    paramb.cMq.cMs = 0;
-    paramb.cMq.activity = paramActivity;
-    com.tencent.mm.sdk.b.a.ymk.l(paramb);
-    switch (((Integer)paramb.cMr.data).intValue())
+    paramb = new ada();
+    paramb.igZ.ihb = 0;
+    paramb.igZ.activity = paramActivity;
+    paramb.publish();
+    switch (((Integer)paramb.iha.cpt).intValue())
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(51446);
-      return;
-      paramActivity.finish();
+    default: 
+      AppMethodBeat.o(129651);
+      return false;
+    case 17: 
       paramb = new Intent(paramActivity, FingerprintWalletLockUI.class);
       paramb.addFlags(131072);
       paramb.putExtra("action", "action.verify_pattern");
       paramb.putExtra("next_action", "next_action.goto_protected_page");
       paramb.putExtra("page_intent", paramActivity.getIntent());
-      paramb.putExtra("scene", am(paramActivity));
-      paramb.setPackage(ah.getPackageName());
-      paramActivity.startActivity(paramb);
+      paramb.putExtra("scene", bC(paramActivity));
+      paramb.setPackage(MMApplicationContext.getPackageName());
+      paramb = new com.tencent.mm.hellhoundlib.b.a().cG(paramb);
+      com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramb.aYi(), "com/tencent/mm/plugin/walletlock/faceid/FaceIdLockImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramb.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/plugin/walletlock/faceid/FaceIdLockImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.finish();
+      AppMethodBeat.o(129651);
+      return true;
     }
+    AppMethodBeat.o(129651);
+    return false;
   }
   
-  public final void a(Activity paramActivity, b.b paramb, b.a parama)
+  public final void c(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(51447);
-    super.a(paramActivity, paramb, parama);
-    AppMethodBeat.o(51447);
+    AppMethodBeat.i(129653);
+    super.c(paramActivity, paramInt1, paramInt2);
+    AppMethodBeat.o(129653);
   }
   
-  public final void b(Activity paramActivity, int paramInt1, int paramInt2)
+  public final boolean imA()
   {
-    AppMethodBeat.i(51448);
-    super.b(paramActivity, paramInt1, paramInt2);
-    AppMethodBeat.o(51448);
-  }
-  
-  public final b.b cXt()
-  {
-    AppMethodBeat.i(51449);
-    d locald = d.cYf();
-    AppMethodBeat.o(51449);
-    return locald;
-  }
-  
-  public final boolean cXu()
-  {
-    AppMethodBeat.i(51450);
-    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.uGh;
-    boolean bool = com.tencent.mm.plugin.walletlock.c.g.cXz();
-    AppMethodBeat.o(51450);
+    AppMethodBeat.i(129655);
+    f localf = f.WhM;
+    boolean bool = f.imF();
+    AppMethodBeat.o(129655);
     return bool;
+  }
+  
+  public final b.b imz()
+  {
+    AppMethodBeat.i(129654);
+    c localc = c.inl();
+    AppMethodBeat.o(129654);
+    return localc;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(51445);
-    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.uGh;
-    com.tencent.mm.plugin.walletlock.c.g.cYi();
-    com.tencent.mm.plugin.walletlock.c.g.uGh.IQ(3);
-    AppMethodBeat.o(51445);
+    AppMethodBeat.i(129650);
+    f localf = f.WhM;
+    f.ino();
+    f.WhM.asJ(3);
+    AppMethodBeat.o(129650);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.b.a
  * JD-Core Version:    0.7.0.1
  */

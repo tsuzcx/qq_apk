@@ -5,7 +5,7 @@ import java.io.File;
 
 public final class a
 {
-  private static File B(Context paramContext)
+  private static File C(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir(), "recovery");
     if (!paramContext.exists()) {
@@ -19,10 +19,10 @@ public final class a
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 36	com/tencent/recovery/c/a:B	(Landroid/content/Context;)Ljava/io/File;
+    //   1: invokestatic 36	com/tencent/recovery/c/a:C	(Landroid/content/Context;)Ljava/io/File;
     //   4: astore_0
     //   5: aload_2
-    //   6: invokevirtual 42	com/tencent/recovery/model/RecoveryPersistentItem:nO	()Ljava/lang/String;
+    //   6: invokevirtual 42	com/tencent/recovery/model/RecoveryPersistentItem:oC	()Ljava/lang/String;
     //   9: astore_2
     //   10: ldc 44
     //   12: ldc 46
@@ -167,7 +167,7 @@ public final class a
     //   27: new 8	java/io/File
     //   30: dup
     //   31: aload_0
-    //   32: invokestatic 36	com/tencent/recovery/c/a:B	(Landroid/content/Context;)Ljava/io/File;
+    //   32: invokestatic 36	com/tencent/recovery/c/a:C	(Landroid/content/Context;)Ljava/io/File;
     //   35: aload_1
     //   36: invokespecial 20	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   39: astore_0
@@ -211,7 +211,7 @@ public final class a
     //   111: aload_2
     //   112: invokeinterface 134 1 0
     //   117: checkcast 38	com/tencent/recovery/model/RecoveryPersistentItem
-    //   120: invokevirtual 42	com/tencent/recovery/model/RecoveryPersistentItem:nO	()Ljava/lang/String;
+    //   120: invokevirtual 42	com/tencent/recovery/model/RecoveryPersistentItem:oC	()Ljava/lang/String;
     //   123: astore 4
     //   125: aload_3
     //   126: astore_0

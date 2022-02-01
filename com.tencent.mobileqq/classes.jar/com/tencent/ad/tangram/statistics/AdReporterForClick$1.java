@@ -17,17 +17,18 @@ final class AdReporterForClick$1
     localParams.setUrl(this.val$url);
     localParams.method = "GET";
     AdHttp.send(localParams);
-    if (this.val$context != null) {}
-    for (Context localContext = (Context)this.val$context.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForClickStatisticsEnd(localContext, this.val$ad, localParams);
-      return;
+    Object localObject = this.val$context;
+    if (localObject != null) {
+      localObject = (Context)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
+    a.reportForClickStatisticsEnd((Context)localObject, this.val$ad, localParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.AdReporterForClick.1
  * JD-Core Version:    0.7.0.1
  */

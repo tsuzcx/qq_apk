@@ -5,13 +5,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ah.a.j;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.ui.tools.u;
 
 public class IconSwitchKeyValuePreference
   extends IconPreference
 {
-  private TextView pAD;
+  private TextView MXN;
   private int status = 0;
   
   public IconSwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,56 +25,56 @@ public class IconSwitchKeyValuePreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void bJ()
+  private void updateView()
   {
-    AppMethodBeat.i(107191);
-    if (this.pAD == null)
+    AppMethodBeat.i(142568);
+    if (this.MXN == null)
     {
-      AppMethodBeat.o(107191);
+      AppMethodBeat.o(142568);
       return;
     }
-    int i = BackwardSupportUtil.b.b(this.mContext, 2.0F);
-    this.pAD.setTextColor(s.iE(this.mContext));
+    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 2.0F);
+    this.MXN.setTextColor(u.nG(this.mContext));
     if (this.status == 0)
     {
-      this.pAD.setCompoundDrawablesWithIntrinsicBounds(2131232063, 0, 0, 0);
-      this.pAD.setCompoundDrawablePadding(i);
-      AppMethodBeat.o(107191);
+      this.MXN.setCompoundDrawablesWithIntrinsicBounds(a.j.status_accountunkey, 0, 0, 0);
+      this.MXN.setCompoundDrawablePadding(i);
+      AppMethodBeat.o(142568);
       return;
     }
     if (this.status == 1)
     {
-      this.pAD.setCompoundDrawablesWithIntrinsicBounds(2131232061, 0, 0, 0);
-      this.pAD.setCompoundDrawablePadding(i);
-      AppMethodBeat.o(107191);
+      this.MXN.setCompoundDrawablesWithIntrinsicBounds(a.j.status_accountkey, 0, 0, 0);
+      this.MXN.setCompoundDrawablePadding(i);
+      AppMethodBeat.o(142568);
       return;
     }
     if (this.status == 2)
     {
-      this.pAD.setCompoundDrawablesWithIntrinsicBounds(2131232062, 0, 0, 0);
-      this.pAD.setCompoundDrawablePadding(i);
-      AppMethodBeat.o(107191);
+      this.MXN.setCompoundDrawablesWithIntrinsicBounds(a.j.status_accountkey_off, 0, 0, 0);
+      this.MXN.setCompoundDrawablePadding(i);
+      AppMethodBeat.o(142568);
       return;
     }
-    this.pAD.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    AppMethodBeat.o(107191);
+    this.MXN.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    AppMethodBeat.o(142568);
   }
   
-  public final void OS(int paramInt)
+  public final void aBl(int paramInt)
   {
-    AppMethodBeat.i(107190);
+    AppMethodBeat.i(142567);
     this.status = paramInt;
-    bJ();
-    AppMethodBeat.o(107190);
+    updateView();
+    AppMethodBeat.o(142567);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107189);
+    AppMethodBeat.i(142566);
     super.onBindView(paramView);
-    this.pAD = ((TextView)paramView.findViewById(16908304));
-    bJ();
-    AppMethodBeat.o(107189);
+    this.MXN = ((TextView)paramView.findViewById(16908304));
+    updateView();
+    AppMethodBeat.o(142566);
   }
 }
 

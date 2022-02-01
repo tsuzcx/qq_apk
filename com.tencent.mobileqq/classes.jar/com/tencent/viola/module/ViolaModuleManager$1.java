@@ -3,49 +3,51 @@ package com.tencent.viola.module;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.util.Map;
 
-final class ViolaModuleManager$1
+class ViolaModuleManager$1
   implements Runnable
 {
   ViolaModuleManager$1(String paramString, boolean paramBoolean, IModuleHolder paramIModuleHolder) {}
   
   public void run()
   {
-    if (ViolaModuleManager.access$000().containsKey(this.val$moduleName)) {
-      ViolaLogUtils.w("ViolaModuleManager", "Registry Duplicate the Module name: " + this.val$moduleName);
-    }
-    if (this.val$global) {}
-    try
+    Object localObject;
+    if (ViolaModuleManager.access$000().containsKey(this.val$moduleName))
     {
-      BaseModule localBaseModule = this.val$holder.buildInstance();
-      localBaseModule.setModuleName(this.val$moduleName);
-      ViolaModuleManager.sGlobalModuleMap.put(this.val$moduleName, localBaseModule);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Registry Duplicate the Module name: ");
+      ((StringBuilder)localObject).append(this.val$moduleName);
+      ViolaLogUtils.w("ViolaModuleManager", ((StringBuilder)localObject).toString());
     }
-    catch (Exception localException1)
-    {
+    if (this.val$global) {
       try
       {
-        for (;;)
-        {
-          ViolaModuleManager.registerNativeModule(this.val$moduleName, this.val$holder);
-          ViolaModuleManager.registerJSModule(this.val$moduleName, this.val$holder);
-          return;
-          localException1 = localException1;
-          ViolaLogUtils.e("ViolaModuleManager", this.val$moduleName + " class must have a default constructor without params. " + localException1);
-        }
+        localObject = this.val$holder.buildInstance();
+        ((BaseModule)localObject).setModuleName(this.val$moduleName);
+        ViolaModuleManager.sGlobalModuleMap.put(this.val$moduleName, localObject);
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        for (;;)
-        {
-          ViolaLogUtils.e("ViolaModuleManager", localException2.getMessage());
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.val$moduleName);
+        localStringBuilder.append(" class must have a default constructor without params. ");
+        localStringBuilder.append(localException1);
+        ViolaLogUtils.e("ViolaModuleManager", localStringBuilder.toString());
       }
     }
+    try
+    {
+      ViolaModuleManager.registerNativeModule(this.val$moduleName, this.val$holder);
+    }
+    catch (Exception localException2)
+    {
+      ViolaLogUtils.e("ViolaModuleManager", localException2.getMessage());
+    }
+    ViolaModuleManager.registerJSModule(this.val$moduleName, this.val$holder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.ViolaModuleManager.1
  * JD-Core Version:    0.7.0.1
  */

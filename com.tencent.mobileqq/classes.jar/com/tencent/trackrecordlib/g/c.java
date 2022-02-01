@@ -8,11 +8,11 @@ public class c
   public static String b = "unkonwn";
   public static String c = "";
   public static final float d = 10.0F;
-  public static final int e = ViewConfiguration.getLongPressTimeout();
+  public static final int e = ;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.g.c
  * JD-Core Version:    0.7.0.1
  */

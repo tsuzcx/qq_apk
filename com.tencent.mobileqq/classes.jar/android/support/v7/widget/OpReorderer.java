@@ -13,33 +13,33 @@ class OpReorderer
   
   private int getLastMoveOutOfOrder(List<AdapterHelper.UpdateOp> paramList)
   {
-    int i = 0;
-    int j = paramList.size() - 1;
-    if (j >= 0)
+    int i = paramList.size() - 1;
+    int k;
+    for (int j = 0; i >= 0; j = k)
     {
-      if (((AdapterHelper.UpdateOp)paramList.get(j)).cmd == 8)
+      if (((AdapterHelper.UpdateOp)paramList.get(i)).cmd == 8)
       {
-        if (i == 0) {
-          break label50;
+        k = j;
+        if (j != 0) {
+          return i;
         }
-        return j;
       }
-      i = 1;
+      else
+      {
+        k = 1;
+      }
+      i -= 1;
     }
-    label50:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      return -1;
-    }
+    return -1;
   }
   
   private void swapMoveAdd(List<AdapterHelper.UpdateOp> paramList, int paramInt1, AdapterHelper.UpdateOp paramUpdateOp1, int paramInt2, AdapterHelper.UpdateOp paramUpdateOp2)
   {
-    int i = 0;
+    int i;
     if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart) {
       i = -1;
+    } else {
+      i = 0;
     }
     int j = i;
     if (paramUpdateOp1.positionStart < paramUpdateOp2.positionStart) {
@@ -51,7 +51,7 @@ class OpReorderer
     if (paramUpdateOp2.positionStart <= paramUpdateOp1.itemCount) {
       paramUpdateOp1.itemCount += paramUpdateOp2.itemCount;
     }
-    paramUpdateOp2.positionStart = (j + paramUpdateOp2.positionStart);
+    paramUpdateOp2.positionStart += j;
     paramList.set(paramInt1, paramUpdateOp2);
     paramList.set(paramInt2, paramUpdateOp1);
   }
@@ -60,19 +60,21 @@ class OpReorderer
   {
     AdapterHelper.UpdateOp localUpdateOp1 = (AdapterHelper.UpdateOp)paramList.get(paramInt1);
     AdapterHelper.UpdateOp localUpdateOp2 = (AdapterHelper.UpdateOp)paramList.get(paramInt2);
-    switch (localUpdateOp2.cmd)
+    int i = localUpdateOp2.cmd;
+    if (i != 1)
     {
-    case 3: 
-    default: 
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 4) {
+          return;
+        }
+        swapMoveUpdate(paramList, paramInt1, localUpdateOp1, paramInt2, localUpdateOp2);
+        return;
+      }
       swapMoveRemove(paramList, paramInt1, localUpdateOp1, paramInt2, localUpdateOp2);
       return;
-    case 1: 
-      swapMoveAdd(paramList, paramInt1, localUpdateOp1, paramInt2, localUpdateOp2);
-      return;
     }
-    swapMoveUpdate(paramList, paramInt1, localUpdateOp1, paramInt2, localUpdateOp2);
+    swapMoveAdd(paramList, paramInt1, localUpdateOp1, paramInt2, localUpdateOp2);
   }
   
   void reorderOps(List<AdapterHelper.UpdateOp> paramList)
@@ -89,181 +91,160 @@ class OpReorderer
   
   void swapMoveRemove(List<AdapterHelper.UpdateOp> paramList, int paramInt1, AdapterHelper.UpdateOp paramUpdateOp1, int paramInt2, AdapterHelper.UpdateOp paramUpdateOp2)
   {
+    int i = paramUpdateOp1.positionStart;
+    int k = paramUpdateOp1.itemCount;
     int j = 0;
-    int i;
-    if (paramUpdateOp1.positionStart < paramUpdateOp1.itemCount)
+    if (i < k)
     {
-      if ((paramUpdateOp2.positionStart != paramUpdateOp1.positionStart) || (paramUpdateOp2.itemCount != paramUpdateOp1.itemCount - paramUpdateOp1.positionStart)) {
-        break label623;
+      if ((paramUpdateOp2.positionStart == paramUpdateOp1.positionStart) && (paramUpdateOp2.itemCount == paramUpdateOp1.itemCount - paramUpdateOp1.positionStart))
+      {
+        i = 0;
+      }
+      else
+      {
+        i = 0;
+        break label106;
+      }
+    }
+    else
+    {
+      if ((paramUpdateOp2.positionStart != paramUpdateOp1.itemCount + 1) || (paramUpdateOp2.itemCount != paramUpdateOp1.positionStart - paramUpdateOp1.itemCount)) {
+        break label103;
       }
       i = 1;
     }
-    for (;;)
+    j = 1;
+    break label106;
+    label103:
+    i = 1;
+    label106:
+    if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart)
     {
-      label70:
-      AdapterHelper.UpdateOp localUpdateOp;
-      if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart)
+      paramUpdateOp2.positionStart -= 1;
+    }
+    else if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart + paramUpdateOp2.itemCount)
+    {
+      paramUpdateOp2.itemCount -= 1;
+      paramUpdateOp1.cmd = 2;
+      paramUpdateOp1.itemCount = 1;
+      if (paramUpdateOp2.itemCount == 0)
       {
-        paramUpdateOp2.positionStart -= 1;
-        if (paramUpdateOp1.positionStart > paramUpdateOp2.positionStart) {
-          break label241;
-        }
-        paramUpdateOp2.positionStart += 1;
-        localUpdateOp = null;
+        paramList.remove(paramInt2);
+        this.mCallback.recycleUpdateOp(paramUpdateOp2);
       }
-      for (;;)
+      return;
+    }
+    k = paramUpdateOp1.positionStart;
+    int m = paramUpdateOp2.positionStart;
+    AdapterHelper.UpdateOp localUpdateOp = null;
+    if (k <= m)
+    {
+      paramUpdateOp2.positionStart += 1;
+    }
+    else if (paramUpdateOp1.positionStart < paramUpdateOp2.positionStart + paramUpdateOp2.itemCount)
+    {
+      k = paramUpdateOp2.positionStart;
+      m = paramUpdateOp2.itemCount;
+      int n = paramUpdateOp1.positionStart;
+      localUpdateOp = this.mCallback.obtainUpdateOp(2, paramUpdateOp1.positionStart + 1, k + m - n, null);
+      paramUpdateOp2.itemCount = (paramUpdateOp1.positionStart - paramUpdateOp2.positionStart);
+    }
+    if (j != 0)
+    {
+      paramList.set(paramInt1, paramUpdateOp2);
+      paramList.remove(paramInt2);
+      this.mCallback.recycleUpdateOp(paramUpdateOp1);
+      return;
+    }
+    if (i != 0)
+    {
+      if (localUpdateOp != null)
       {
-        label97:
-        if (i != 0)
-        {
-          paramList.set(paramInt1, paramUpdateOp2);
-          paramList.remove(paramInt2);
-          this.mCallback.recycleUpdateOp(paramUpdateOp1);
+        if (paramUpdateOp1.positionStart > localUpdateOp.positionStart) {
+          paramUpdateOp1.positionStart -= localUpdateOp.itemCount;
         }
-        label596:
-        label606:
-        for (;;)
-        {
-          return;
-          if ((paramUpdateOp2.positionStart != paramUpdateOp1.itemCount + 1) || (paramUpdateOp2.itemCount != paramUpdateOp1.positionStart - paramUpdateOp1.itemCount)) {
-            break label614;
-          }
-          j = 1;
-          i = 1;
-          break;
-          if (paramUpdateOp1.itemCount >= paramUpdateOp2.positionStart + paramUpdateOp2.itemCount) {
-            break label70;
-          }
-          paramUpdateOp2.itemCount -= 1;
-          paramUpdateOp1.cmd = 2;
-          paramUpdateOp1.itemCount = 1;
-          if (paramUpdateOp2.itemCount == 0)
-          {
-            paramList.remove(paramInt2);
-            this.mCallback.recycleUpdateOp(paramUpdateOp2);
-            return;
-            label241:
-            if (paramUpdateOp1.positionStart >= paramUpdateOp2.positionStart + paramUpdateOp2.itemCount) {
-              break label608;
-            }
-            int k = paramUpdateOp2.positionStart;
-            int m = paramUpdateOp2.itemCount;
-            int n = paramUpdateOp1.positionStart;
-            localUpdateOp = this.mCallback.obtainUpdateOp(2, paramUpdateOp1.positionStart + 1, k + m - n, null);
-            paramUpdateOp2.itemCount = (paramUpdateOp1.positionStart - paramUpdateOp2.positionStart);
-            break label97;
-            if (j != 0)
-            {
-              if (localUpdateOp != null)
-              {
-                if (paramUpdateOp1.positionStart > localUpdateOp.positionStart) {
-                  paramUpdateOp1.positionStart -= localUpdateOp.itemCount;
-                }
-                if (paramUpdateOp1.itemCount > localUpdateOp.positionStart) {
-                  paramUpdateOp1.itemCount -= localUpdateOp.itemCount;
-                }
-              }
-              if (paramUpdateOp1.positionStart > paramUpdateOp2.positionStart) {
-                paramUpdateOp1.positionStart -= paramUpdateOp2.itemCount;
-              }
-              if (paramUpdateOp1.itemCount > paramUpdateOp2.positionStart) {
-                paramUpdateOp1.itemCount -= paramUpdateOp2.itemCount;
-              }
-              paramList.set(paramInt1, paramUpdateOp2);
-              if (paramUpdateOp1.positionStart == paramUpdateOp1.itemCount) {
-                break label596;
-              }
-              paramList.set(paramInt2, paramUpdateOp1);
-            }
-            for (;;)
-            {
-              if (localUpdateOp == null) {
-                break label606;
-              }
-              paramList.add(paramInt1, localUpdateOp);
-              return;
-              if (localUpdateOp != null)
-              {
-                if (paramUpdateOp1.positionStart >= localUpdateOp.positionStart) {
-                  paramUpdateOp1.positionStart -= localUpdateOp.itemCount;
-                }
-                if (paramUpdateOp1.itemCount >= localUpdateOp.positionStart) {
-                  paramUpdateOp1.itemCount -= localUpdateOp.itemCount;
-                }
-              }
-              if (paramUpdateOp1.positionStart >= paramUpdateOp2.positionStart) {
-                paramUpdateOp1.positionStart -= paramUpdateOp2.itemCount;
-              }
-              if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart) {
-                break;
-              }
-              paramUpdateOp1.itemCount -= paramUpdateOp2.itemCount;
-              break;
-              paramList.remove(paramInt2);
-            }
-          }
+        if (paramUpdateOp1.itemCount > localUpdateOp.positionStart) {
+          paramUpdateOp1.itemCount -= localUpdateOp.itemCount;
         }
-        label608:
-        localUpdateOp = null;
       }
-      label614:
-      i = 0;
-      j = 1;
-      continue;
-      label623:
-      i = 0;
+      if (paramUpdateOp1.positionStart > paramUpdateOp2.positionStart) {
+        paramUpdateOp1.positionStart -= paramUpdateOp2.itemCount;
+      }
+      if (paramUpdateOp1.itemCount > paramUpdateOp2.positionStart) {
+        paramUpdateOp1.itemCount -= paramUpdateOp2.itemCount;
+      }
+    }
+    else
+    {
+      if (localUpdateOp != null)
+      {
+        if (paramUpdateOp1.positionStart >= localUpdateOp.positionStart) {
+          paramUpdateOp1.positionStart -= localUpdateOp.itemCount;
+        }
+        if (paramUpdateOp1.itemCount >= localUpdateOp.positionStart) {
+          paramUpdateOp1.itemCount -= localUpdateOp.itemCount;
+        }
+      }
+      if (paramUpdateOp1.positionStart >= paramUpdateOp2.positionStart) {
+        paramUpdateOp1.positionStart -= paramUpdateOp2.itemCount;
+      }
+      if (paramUpdateOp1.itemCount >= paramUpdateOp2.positionStart) {
+        paramUpdateOp1.itemCount -= paramUpdateOp2.itemCount;
+      }
+    }
+    paramList.set(paramInt1, paramUpdateOp2);
+    if (paramUpdateOp1.positionStart != paramUpdateOp1.itemCount) {
+      paramList.set(paramInt2, paramUpdateOp1);
+    } else {
+      paramList.remove(paramInt2);
+    }
+    if (localUpdateOp != null) {
+      paramList.add(paramInt1, localUpdateOp);
     }
   }
   
   void swapMoveUpdate(List<AdapterHelper.UpdateOp> paramList, int paramInt1, AdapterHelper.UpdateOp paramUpdateOp1, int paramInt2, AdapterHelper.UpdateOp paramUpdateOp2)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart)
+    int i = paramUpdateOp1.itemCount;
+    int j = paramUpdateOp2.positionStart;
+    AdapterHelper.UpdateOp localUpdateOp2 = null;
+    if (i < j)
     {
       paramUpdateOp2.positionStart -= 1;
-      localObject1 = null;
     }
-    for (;;)
+    else if (paramUpdateOp1.itemCount < paramUpdateOp2.positionStart + paramUpdateOp2.itemCount)
     {
-      if (paramUpdateOp1.positionStart <= paramUpdateOp2.positionStart)
-      {
-        paramUpdateOp2.positionStart += 1;
-        label54:
-        paramList.set(paramInt2, paramUpdateOp1);
-        if (paramUpdateOp2.itemCount <= 0) {
-          break label243;
-        }
-        paramList.set(paramInt1, paramUpdateOp2);
-      }
-      for (;;)
-      {
-        if (localObject1 != null) {
-          paramList.add(paramInt1, localObject1);
-        }
-        if (localObject2 != null) {
-          paramList.add(paramInt1, localObject2);
-        }
-        return;
-        if (paramUpdateOp1.itemCount >= paramUpdateOp2.positionStart + paramUpdateOp2.itemCount) {
-          break label265;
-        }
-        paramUpdateOp2.itemCount -= 1;
-        localObject1 = this.mCallback.obtainUpdateOp(4, paramUpdateOp1.positionStart, 1, paramUpdateOp2.payload);
-        break;
-        if (paramUpdateOp1.positionStart >= paramUpdateOp2.positionStart + paramUpdateOp2.itemCount) {
-          break label54;
-        }
-        int i = paramUpdateOp2.positionStart + paramUpdateOp2.itemCount - paramUpdateOp1.positionStart;
-        localObject2 = this.mCallback.obtainUpdateOp(4, paramUpdateOp1.positionStart + 1, i, paramUpdateOp2.payload);
-        paramUpdateOp2.itemCount -= i;
-        break label54;
-        label243:
-        paramList.remove(paramInt1);
-        this.mCallback.recycleUpdateOp(paramUpdateOp2);
-      }
-      label265:
-      localObject1 = null;
+      paramUpdateOp2.itemCount -= 1;
+      localUpdateOp1 = this.mCallback.obtainUpdateOp(4, paramUpdateOp1.positionStart, 1, paramUpdateOp2.payload);
+      break label96;
+    }
+    AdapterHelper.UpdateOp localUpdateOp1 = null;
+    label96:
+    if (paramUpdateOp1.positionStart <= paramUpdateOp2.positionStart)
+    {
+      paramUpdateOp2.positionStart += 1;
+    }
+    else if (paramUpdateOp1.positionStart < paramUpdateOp2.positionStart + paramUpdateOp2.itemCount)
+    {
+      i = paramUpdateOp2.positionStart + paramUpdateOp2.itemCount - paramUpdateOp1.positionStart;
+      localUpdateOp2 = this.mCallback.obtainUpdateOp(4, paramUpdateOp1.positionStart + 1, i, paramUpdateOp2.payload);
+      paramUpdateOp2.itemCount -= i;
+    }
+    paramList.set(paramInt2, paramUpdateOp1);
+    if (paramUpdateOp2.itemCount > 0)
+    {
+      paramList.set(paramInt1, paramUpdateOp2);
+    }
+    else
+    {
+      paramList.remove(paramInt1);
+      this.mCallback.recycleUpdateOp(paramUpdateOp2);
+    }
+    if (localUpdateOp1 != null) {
+      paramList.add(paramInt1, localUpdateOp1);
+    }
+    if (localUpdateOp2 != null) {
+      paramList.add(paramInt1, localUpdateOp2);
     }
   }
 }

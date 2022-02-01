@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:clipChildren="false" android:clipToPadding="false" android:layout_below="@id/ag" style="@style/gf"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/m0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gg">
-        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
-        <com.tencent.mm.ui.widget.MMNeat7extView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/oy" android:background="@drawable/j1" android:maxWidth="@dimen/xc" android:minHeight="@dimen/eg" style="@style/gr" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ne">
-            <ImageView android:id="@id/aqt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ng" android:layout_marginRight="@dimen/ne" android:src="@drawable/az3" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/a83" android:id="@id/aqu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ng" android:text="@string/aqr" android:layout_toRightOf="@id/aqt" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/aqv" android:layout="@layout/o7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/lb" />
-    </LinearLayout>
-</LinearLayout>
+    <include android:id="@id/lqa" layout="@layout/on" />
+    <ImageView android:id="@id/ax7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

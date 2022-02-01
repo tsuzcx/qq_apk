@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amnv;
-import amnx;
-
-public class MpfileTaskProxy$3
+class MpfileTaskProxy$3
   implements Runnable
 {
-  public MpfileTaskProxy$3(amnv paramamnv, String paramString1, String paramString2, String[] paramArrayOfString, amnx paramamnx) {}
+  MpfileTaskProxy$3(MpfileTaskProxy paramMpfileTaskProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {
-    this.this$0.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_Amnx);
+    this.this$0.proxyManager.addMsgQueue(String.valueOf(0), 0, this.a, this.b, this.c, 2, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.MpfileTaskProxy.3
  * JD-Core Version:    0.7.0.1
  */

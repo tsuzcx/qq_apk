@@ -1,16 +1,35 @@
 package com.tencent.mm.cache;
 
-public abstract interface f
+import android.graphics.Canvas;
+
+public abstract interface f<T>
+  extends Cloneable
 {
-  public abstract void d(Object paramObject1, Object paramObject2);
+  public abstract void aEG();
   
-  public abstract Object get(Object paramObject);
+  public abstract void aLx();
   
-  public abstract Object remove(Object paramObject);
+  public abstract int aR(boolean paramBoolean);
+  
+  public abstract void add(T paramT);
+  
+  public abstract void b(Canvas paramCanvas, boolean paramBoolean);
+  
+  public abstract void clear();
+  
+  public abstract void ex(boolean paramBoolean);
+  
+  public abstract void i(Canvas paramCanvas);
+  
+  public abstract void onCreate();
+  
+  public abstract void onDestroy();
+  
+  public abstract T pop();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.cache.f
  * JD-Core Version:    0.7.0.1
  */

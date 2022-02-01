@@ -2,7 +2,7 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/kq5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/v2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.kandian.base.view.widget.ResizeURLImageView android:id="@id/v2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
     <View android:id="@id/v6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ImageView android:id="@id/az2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/dq_" android:layout_alignParentLeft="true" />
     <ImageView android:id="@id/l05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/d6a" android:layout_alignParentRight="true" />
@@ -18,5 +18,5 @@
             <ImageView android:layout_gravity="center" android:id="@id/cq0" android:background="@drawable/d8o" android:layout_width="21.0dip" android:layout_height="21.0dip" />
         </FrameLayout>
     </LinearLayout>
-    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyAdVideoGuide android:id="@id/ex" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide android:id="@id/ex" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
 </RelativeLayout>

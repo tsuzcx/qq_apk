@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,116 +12,122 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.a.b.a.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.modelsimple.ab;
+import com.tencent.mm.plugin.account.sdk.a;
+import com.tencent.mm.plugin.account.sdk.c.a.a;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cbd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.fai;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.y.b;
 
 public abstract class SetPwdUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  protected ProgressDialog eeN = null;
-  protected String gKa;
-  protected String gKb;
-  public boolean gKc = true;
+  public boolean dqR = true;
+  protected ProgressDialog lzP = null;
+  protected String qgY;
+  protected String qgZ;
   
-  protected ProgressDialog a(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
+  protected ProgressDialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    return com.tencent.mm.ui.base.h.b(paramContext, paramString, true, paramOnCancelListener);
+    return k.a(paramContext, paramString2, true, paramOnCancelListener);
   }
   
   protected abstract void a(a.a parama);
   
-  protected abstract com.tencent.mm.ai.m arI();
+  protected abstract String bYA();
   
-  protected abstract String arJ();
-  
-  protected abstract String arK();
-  
-  protected int arL()
+  protected int bYB()
   {
     return 383;
   }
   
-  protected void arP()
+  protected void bYK()
   {
-    ase();
+    bYZ();
   }
   
-  public boolean arQ()
+  public boolean bYL()
   {
     return false;
   }
   
-  protected final void ase()
+  protected final void bYZ()
   {
-    this.gKa = arJ();
-    this.gKb = arK();
-    if (bo.isNullOrNil(this.gKa)) {}
+    this.qgY = bYz();
+    this.qgZ = bYA();
+    if (Util.isNullOrNil(this.qgY)) {}
     do
     {
       return;
-      if (!this.gKa.equals(this.gKb))
+      if (!this.qgY.equals(this.qgZ))
       {
-        a(a.a.gBd);
+        a(a.a.pXG);
         return;
       }
-      if (this.gKa.length() > 16)
+      if (this.qgY.length() > 16)
       {
-        a(a.a.gBe);
+        a(a.a.pXH);
         return;
       }
-      if (bo.apE(this.gKa))
+      if (Util.isChinese(this.qgY))
       {
-        com.tencent.mm.ui.base.h.h(this, 2131302412, 2131302443);
+        k.s(this, r.j.regbyfacebook_reg_setpwd_alert_using_chinese, r.j.regbymobile_reg_setpwd_alert_title);
         return;
       }
-      if (!bo.apJ(this.gKa))
+      if (!Util.isValidPassword(this.qgY))
       {
-        if ((this.gKa.length() >= 8) && (this.gKa.length() < 16))
+        if ((this.qgY.length() >= 8) && (this.qgY.length() < 16))
         {
-          a(a.a.gBg);
+          a(a.a.pXJ);
           return;
         }
-        a(a.a.gBf);
+        a(a.a.pXI);
         return;
       }
       hideVKB();
-      com.tencent.mm.ai.m localm = arI();
-      g.Rc().a(localm, 0);
-      getString(2131297087);
-      this.eeN = a(this, getString(2131302376), new SetPwdUI.1(this, localm));
-    } while ((!arQ()) || (this.gKc));
-    ab.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 0");
-    com.tencent.mm.plugin.report.service.h.qsU.e(11868, new Object[] { Integer.valueOf(0) });
+      final p localp = bYy();
+      com.tencent.mm.kernel.h.aZW().a(localp, 0);
+      this.lzP = a(this, getString(r.j.app_tip), getString(r.j.reg_processing), new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(128728);
+          com.tencent.mm.kernel.h.aZW().a(localp);
+          AppMethodBeat.o(128728);
+        }
+      });
+    } while ((!bYL()) || (this.dqR));
+    Log.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 0");
+    com.tencent.mm.plugin.report.service.h.OAn.b(11868, new Object[] { Integer.valueOf(0) });
   }
   
-  protected final boolean l(int paramInt1, int paramInt2, String paramString)
-  {
-    return com.tencent.mm.plugin.account.a.a.gmP.a(getContext(), paramInt1, paramInt2, paramString);
-  }
+  protected abstract p bYy();
   
-  protected abstract boolean m(int paramInt1, int paramInt2, String paramString);
+  protected abstract String bYz();
   
   public void onBackPressed()
   {
-    if (this.gKc)
+    if (this.dqR)
     {
-      if (arQ())
+      if (bYL())
       {
-        ab.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
-        com.tencent.mm.plugin.report.service.h.qsU.e(11868, new Object[] { Integer.valueOf(1) });
+        Log.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
+        com.tencent.mm.plugin.report.service.h.OAn.b(11868, new Object[] { Integer.valueOf(1) });
       }
       super.onBackPressed();
     }
@@ -130,89 +135,106 @@ public abstract class SetPwdUI
   
   public void onCreate(Bundle paramBundle)
   {
-    g.Rc().a(arL(), this);
+    com.tencent.mm.kernel.h.aZW().a(bYB(), this);
     super.onCreate(paramBundle);
-    addTextOptionMenu(0, getString(2131296964), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(r.j.app_finish), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(125567);
-        SetPwdUI.this.arP();
-        AppMethodBeat.o(125567);
+        AppMethodBeat.i(128729);
+        SetPwdUI.this.bYK();
+        AppMethodBeat.o(128729);
         return true;
       }
-    }, null, q.b.zby);
-    setBackBtn(new SetPwdUI.3(this));
+    }, null, y.b.adEJ);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(128730);
+        paramAnonymousMenuItem = SetPwdUI.this;
+        if ((paramAnonymousMenuItem.bYL()) && (paramAnonymousMenuItem.dqR))
+        {
+          Log.d("MicroMsg.SetPwdUI", "cpan settpassword cancel 11868 1");
+          com.tencent.mm.plugin.report.service.h.OAn.b(11868, new Object[] { Integer.valueOf(1) });
+        }
+        paramAnonymousMenuItem.hideVKB();
+        paramAnonymousMenuItem.setResult(0);
+        paramAnonymousMenuItem.finish();
+        AppMethodBeat.o(128730);
+        return true;
+      }
+    });
   }
   
   public void onDestroy()
   {
-    g.Rc().b(arL(), this);
+    com.tencent.mm.kernel.h.aZW().b(bYB(), this);
     super.onDestroy();
   }
   
-  public void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, p paramp)
   {
-    if (this.eeN != null)
+    if (this.lzP != null)
     {
-      this.eeN.dismiss();
-      this.eeN = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
-    if (paramm.getType() != arL()) {}
-    label288:
+    if (paramp.getType() != bYB()) {}
+    label289:
     do
     {
       do
       {
         return;
-        if (paramm.getType() != 383) {
+        if (paramp.getType() != 383) {
           break;
         }
       } while ((paramInt1 != 0) || (paramInt2 != 0));
       String str;
-      if (bo.isNullOrNil((String)g.RL().Ru().get(6, null)))
+      if (Util.isNullOrNil((String)com.tencent.mm.kernel.h.baE().ban().d(6, null)))
       {
-        ab.i("MicroMsg.SetPwdUI", "has not bind mobile");
-        str = getString(2131301865);
-        paramm = (com.tencent.mm.modelsimple.z)paramm;
-        if ((paramm.rr == null) || (paramm.rr.fsW.fta == null)) {
-          break label288;
+        Log.i("MicroMsg.SetPwdUI", "has not bind mobile");
+        str = getString(r.j.no_mobile_setpwd_success_tip);
+        paramp = (ab)paramp;
+        if ((paramp.rr == null) || (c.c.b(paramp.rr.otC) == null)) {
+          break label289;
         }
       }
-      for (paramm = (cbd)paramm.rr.fsW.fta;; paramm = null)
+      for (paramp = (fai)c.c.b(paramp.rr.otC);; paramp = null)
       {
-        if ((paramm != null) && (paramm.wrL != null))
+        if ((paramp != null) && (paramp.YJj != null))
         {
-          paramm = paramm.wrL.getBuffer().toByteArray();
-          SharedPreferences.Editor localEditor = ah.getContext().getSharedPreferences("auth_info_key_prefs", com.tencent.mm.compatible.util.h.Mp()).edit();
+          paramp = paramp.YJj.aaxD.toByteArray();
+          SharedPreferences.Editor localEditor = MMApplicationContext.getContext().getSharedPreferences("auth_info_key_prefs", g.aQe()).edit();
           localEditor.putBoolean("key_auth_info_prefs_created", true);
-          localEditor.putInt("key_auth_update_version", d.whH);
-          localEditor.putString("_auth_key", bo.cg(paramm));
-          g.RJ();
-          localEditor.putInt("_auth_uin", com.tencent.mm.kernel.a.getUin());
+          localEditor.putInt("key_auth_update_version", d.Yxh);
+          localEditor.putString("_auth_key", Util.encodeHexString(paramp));
+          com.tencent.mm.kernel.h.baC();
+          localEditor.putInt("_auth_uin", com.tencent.mm.kernel.b.getUin());
           localEditor.commit();
         }
-        com.tencent.mm.ui.base.h.a(this, str, "", false, new DialogInterface.OnClickListener()
+        k.a(this, str, "", false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(125569);
+            AppMethodBeat.i(128731);
             SetPwdUI.this.setResult(-1);
-            if (SetPwdUI.this.m(paramInt1, paramInt2, paramString))
+            if (SetPwdUI.this.q(paramInt1, paramInt2, paramString))
             {
-              AppMethodBeat.o(125569);
+              AppMethodBeat.o(128731);
               return;
             }
-            AppMethodBeat.o(125569);
+            AppMethodBeat.o(128731);
           }
         });
         return;
-        ab.i("MicroMsg.SetPwdUI", "has bind mobile");
-        str = getString(2131297634);
+        Log.i("MicroMsg.SetPwdUI", "has bind mobile");
+        str = getString(r.j.bind_mobile_setpwd_success_tip);
         break;
       }
-    } while (m(paramInt1, paramInt2, paramString));
-    Toast.makeText(this, getString(2131300100, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    } while (q(paramInt1, paramInt2, paramString));
+    Toast.makeText(this, getString(r.j.fmt_set_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -220,10 +242,17 @@ public abstract class SetPwdUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  protected final boolean p(int paramInt1, int paramInt2, String paramString)
+  {
+    return a.pFo.a(getContext(), paramInt1, paramInt2, paramString);
+  }
+  
+  protected abstract boolean q(int paramInt1, int paramInt2, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.SetPwdUI
  * JD-Core Version:    0.7.0.1
  */

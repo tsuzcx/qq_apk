@@ -49,17 +49,19 @@ public final class s_red_comm
   {
     paramJceOutputStream.write(this.showtype, 0);
     paramJceOutputStream.write(this.undealnum, 1);
-    if (this.redinfo != null) {
-      paramJceOutputStream.write(this.redinfo, 2);
+    ArrayList localArrayList = this.redinfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.subid != null) {
-      paramJceOutputStream.write(this.subid, 3);
+    localArrayList = this.subid;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_red_comm
  * JD-Core Version:    0.7.0.1
  */

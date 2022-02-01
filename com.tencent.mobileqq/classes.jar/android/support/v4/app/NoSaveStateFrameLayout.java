@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 
-class NoSaveStateFrameLayout
+public class NoSaveStateFrameLayout
   extends FrameLayout
 {
   public NoSaveStateFrameLayout(Context paramContext)
@@ -17,7 +17,7 @@ class NoSaveStateFrameLayout
     super(paramContext);
   }
   
-  static ViewGroup wrap(View paramView)
+  public static ViewGroup wrap(View paramView)
   {
     NoSaveStateFrameLayout localNoSaveStateFrameLayout = new NoSaveStateFrameLayout(paramView.getContext());
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();

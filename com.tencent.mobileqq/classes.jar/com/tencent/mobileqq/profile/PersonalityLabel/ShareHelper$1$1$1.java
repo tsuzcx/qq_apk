@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aryv;
-import awqe;
-import awqf;
-import awqh;
-import ybk;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 class ShareHelper$1$1$1
   implements Runnable
@@ -17,30 +14,30 @@ class ShareHelper$1$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.b.a.a.e.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_Awqh.a(false);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.b.a.a.g.a(false);
+    if (TextUtils.isEmpty(this.a))
     {
-      ybk.a(1, 2131696946);
+      QRUtils.a(1, 2131894251);
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("forward_type", 1);
-    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt(aryv.e, 1);
+    localBundle.putString("forward_filepath", this.a);
+    localBundle.putString("forward_thumb", this.a);
+    localBundle.putString("forward_urldrawable_big_url", this.a);
+    localBundle.putString("forward_extra", this.a);
+    localBundle.putInt(ForwardBaseOption.M, 1);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    aryv.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
+    ForwardBaseOption.a(this.b.a.a.e, localIntent, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,15 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import apvi;
-import apvj;
-import apvk;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.qphone.base.util.QLog;
 
-public class EmoticonPanelMallHelper$3
+class EmoticonPanelMallHelper$3
   implements Runnable
 {
-  public EmoticonPanelMallHelper$3(apvi paramapvi) {}
+  EmoticonPanelMallHelper$3(EmoticonPanelMallHelper paramEmoticonPanelMallHelper) {}
   
   public void run()
   {
@@ -22,42 +19,48 @@ public class EmoticonPanelMallHelper$3
     }
     try
     {
-      Object localObject = this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      Context localContext = this.this$0.a.jdField_a_of_type_AndroidContentContext;
-      if (localObject == null) {
-        return;
-      }
-      WebProcessManager localWebProcessManager = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-      if (localWebProcessManager != null)
+      localObject = ((EmoticonPanelController)this.this$0.mPanelController).app;
+      Context localContext = ((EmoticonPanelController)this.this$0.mPanelController).context;
+      if (localObject != null)
       {
-        localObject = localContext.getSharedPreferences("emoticon_panel_" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0);
-        long l = ((SharedPreferences)localObject).getLong("sp_key_market_open_time", 0L);
-        if (System.currentTimeMillis() - l < 2592000000L)
+        IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)((QQEmoticonMainPanelApp)localObject).getService(IWebProcessManagerService.class);
+        if (localIWebProcessManagerService != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for market open strategy");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("emoticon_panel_");
+          localStringBuilder.append(((QQEmoticonMainPanelApp)localObject).getCurrentAccountUin());
+          localObject = localContext.getSharedPreferences(localStringBuilder.toString(), 0);
+          long l = ((SharedPreferences)localObject).getLong("sp_key_market_open_time", 0L);
+          if (System.currentTimeMillis() - l < 2592000000L)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for market open strategy");
+            }
+            localIWebProcessManagerService.startWebProcess(-1, new EmoticonPanelMallHelper.3.1(this));
+            return;
           }
-          localWebProcessManager.a(-1, new apvj(this));
+          l = ((SharedPreferences)localObject).getLong("sp_key_send_h5_magic_face_time", 0L);
+          if (System.currentTimeMillis() - l < 2592000000L)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
+            }
+            localIWebProcessManagerService.startWebProcess(-1, new EmoticonPanelMallHelper.3.2(this));
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, web process alive already");
           return;
         }
-        l = ((SharedPreferences)localObject).getLong("sp_key_send_h5_magic_face_time", 0L);
-        if (System.currentTimeMillis() - l >= 2592000000L) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
-        }
-        localWebProcessManager.a(-1, new apvk(this));
-        return;
       }
     }
     catch (Exception localException)
     {
-      QLog.e("EmoticonPanelMallHelper", 1, "preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelMallHelper", 2, "preloadWebProcess, web process alive already");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("preloadWebProcess, exception=");
+      ((StringBuilder)localObject).append(MsfSdkUtils.getStackTraceString(localException));
+      QLog.e("EmoticonPanelMallHelper", 1, ((StringBuilder)localObject).toString());
     }
   }
 }

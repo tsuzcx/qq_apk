@@ -1,9 +1,9 @@
 package com.tencent.mm.opensdk.modelpay;
 
 import android.os.Bundle;
+import com.tencent.mm.opensdk.channel.a.a;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.a;
 
 public class PayReq
   extends BaseReq
@@ -23,63 +23,74 @@ public class PayReq
   
   public boolean checkArgs()
   {
-    if ((this.appId == null) || (this.appId.length() == 0))
+    String str = this.appId;
+    if ((str != null) && (str.length() != 0))
     {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid appId");
-      return false;
+      str = this.partnerId;
+      if ((str != null) && (str.length() != 0))
+      {
+        str = this.prepayId;
+        if ((str != null) && (str.length() != 0))
+        {
+          str = this.nonceStr;
+          if ((str != null) && (str.length() != 0))
+          {
+            str = this.timeStamp;
+            if ((str != null) && (str.length() != 0))
+            {
+              str = this.packageValue;
+              if ((str != null) && (str.length() != 0))
+              {
+                str = this.sign;
+                if ((str != null) && (str.length() != 0))
+                {
+                  str = this.extData;
+                  if ((str != null) && (str.length() > 1024)) {
+                    str = "checkArgs fail, extData length too long";
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    if ((this.partnerId == null) || (this.partnerId.length() == 0))
+    for (;;)
     {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid partnerId");
+      Log.e("MicroMsg.PaySdk.PayReq", str);
       return false;
+      return true;
+      str = "checkArgs fail, invalid sign";
+      continue;
+      str = "checkArgs fail, invalid packageValue";
+      continue;
+      str = "checkArgs fail, invalid timeStamp";
+      continue;
+      str = "checkArgs fail, invalid nonceStr";
+      continue;
+      str = "checkArgs fail, invalid prepayId";
+      continue;
+      str = "checkArgs fail, invalid partnerId";
+      continue;
+      str = "checkArgs fail, invalid appId";
     }
-    if ((this.prepayId == null) || (this.prepayId.length() == 0))
-    {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid prepayId");
-      return false;
-    }
-    if ((this.nonceStr == null) || (this.nonceStr.length() == 0))
-    {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid nonceStr");
-      return false;
-    }
-    if ((this.timeStamp == null) || (this.timeStamp.length() == 0))
-    {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid timeStamp");
-      return false;
-    }
-    if ((this.packageValue == null) || (this.packageValue.length() == 0))
-    {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid packageValue");
-      return false;
-    }
-    if ((this.sign == null) || (this.sign.length() == 0))
-    {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, invalid sign");
-      return false;
-    }
-    if ((this.extData != null) && (this.extData.length() > 1024))
-    {
-      Log.e("MicroMsg.PaySdk.PayReq", "checkArgs fail, extData length too long");
-      return false;
-    }
-    return true;
   }
   
   public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
-    this.appId = a.b(paramBundle, "_wxapi_payreq_appid");
-    this.partnerId = a.b(paramBundle, "_wxapi_payreq_partnerid");
-    this.prepayId = a.b(paramBundle, "_wxapi_payreq_prepayid");
-    this.nonceStr = a.b(paramBundle, "_wxapi_payreq_noncestr");
-    this.timeStamp = a.b(paramBundle, "_wxapi_payreq_timestamp");
-    this.packageValue = a.b(paramBundle, "_wxapi_payreq_packagevalue");
-    this.sign = a.b(paramBundle, "_wxapi_payreq_sign");
-    this.extData = a.b(paramBundle, "_wxapi_payreq_extdata");
-    this.signType = a.b(paramBundle, "_wxapi_payreq_sign_type");
-    this.options = new PayReq.Options();
-    this.options.fromBundle(paramBundle);
+    this.appId = a.a(paramBundle, "_wxapi_payreq_appid");
+    this.partnerId = a.a(paramBundle, "_wxapi_payreq_partnerid");
+    this.prepayId = a.a(paramBundle, "_wxapi_payreq_prepayid");
+    this.nonceStr = a.a(paramBundle, "_wxapi_payreq_noncestr");
+    this.timeStamp = a.a(paramBundle, "_wxapi_payreq_timestamp");
+    this.packageValue = a.a(paramBundle, "_wxapi_payreq_packagevalue");
+    this.sign = a.a(paramBundle, "_wxapi_payreq_sign");
+    this.extData = a.a(paramBundle, "_wxapi_payreq_extdata");
+    this.signType = a.a(paramBundle, "_wxapi_payreq_sign_type");
+    PayReq.Options localOptions = new PayReq.Options();
+    this.options = localOptions;
+    localOptions.fromBundle(paramBundle);
   }
   
   public int getType()
@@ -99,14 +110,15 @@ public class PayReq
     paramBundle.putString("_wxapi_payreq_sign", this.sign);
     paramBundle.putString("_wxapi_payreq_extdata", this.extData);
     paramBundle.putString("_wxapi_payreq_sign_type", this.signType);
-    if (this.options != null) {
-      this.options.toBundle(paramBundle);
+    PayReq.Options localOptions = this.options;
+    if (localOptions != null) {
+      localOptions.toBundle(paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelpay.PayReq
  * JD-Core Version:    0.7.0.1
  */

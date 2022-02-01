@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,16 +20,16 @@ public final class get_video_float_layer_rsp
   static Map<String, String> cache_extend_info;
   static QzoneWeisiReqcommendRsp cache_qzone_weisi_rsp;
   static video_floating_layer_search_bar cache_search_bar;
-  public WeishiAggregatePageRsp aggregate_page_rsp;
-  public ArrayList<single_feed> all_after_paster_adv;
-  public ArrayList<single_feed> all_videolist_data;
+  public WeishiAggregatePageRsp aggregate_page_rsp = null;
+  public ArrayList<single_feed> all_after_paster_adv = null;
+  public ArrayList<single_feed> all_videolist_data = null;
   public String attach_info = "";
-  public byte[] busi_binary_data;
-  public Map<Integer, String> busi_param;
-  public Map<String, String> extend_info;
-  public int hasmore;
-  public QzoneWeisiReqcommendRsp qzone_weisi_rsp;
-  public video_floating_layer_search_bar search_bar;
+  public byte[] busi_binary_data = null;
+  public Map<Integer, String> busi_param = null;
+  public Map<String, String> extend_info = null;
+  public int hasmore = 0;
+  public QzoneWeisiReqcommendRsp qzone_weisi_rsp = null;
+  public video_floating_layer_search_bar search_bar = null;
   
   static
   {
@@ -80,39 +81,48 @@ public final class get_video_float_layer_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_videolist_data != null) {
-      paramJceOutputStream.write(this.all_videolist_data, 0);
+    Object localObject = this.all_videolist_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 2);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.hasmore, 3);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 4);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.search_bar != null) {
-      paramJceOutputStream.write(this.search_bar, 5);
+    localObject = this.search_bar;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.all_after_paster_adv != null) {
-      paramJceOutputStream.write(this.all_after_paster_adv, 6);
+    localObject = this.all_after_paster_adv;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.qzone_weisi_rsp != null) {
-      paramJceOutputStream.write(this.qzone_weisi_rsp, 7);
+    localObject = this.qzone_weisi_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.aggregate_page_rsp != null) {
-      paramJceOutputStream.write(this.aggregate_page_rsp, 8);
+    localObject = this.aggregate_page_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.busi_binary_data != null) {
-      paramJceOutputStream.write(this.busi_binary_data, 9);
+    localObject = this.busi_binary_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.get_video_float_layer_rsp
  * JD-Core Version:    0.7.0.1
  */

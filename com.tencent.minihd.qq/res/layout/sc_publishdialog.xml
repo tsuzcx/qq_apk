@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/loadingdialogRoot" android:background="@drawable/dialog_bg" android:layout_width="wrap_content" android:layout_height="92.0dip" android:minWidth="216.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/footLoading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginBottom="6.0dip" android:indeterminateDrawable="@drawable/sc_publish_spinner_temp" style="@style/qZonePublishProgressStyleTemp" />
+    <ImageView android:gravity="center" android:id="@id/uploadDialogImage" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginBottom="6.0dip" android:singleLine="true" />
+    <TextView android:textSize="@dimen/font_size_middle" android:textColor="#ff000000" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/publishing" android:singleLine="true" android:layout_centerHorizontal="true" />
+</LinearLayout>

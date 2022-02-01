@@ -19,13 +19,14 @@ public final class oidb_0xb40$GetFavoriteListRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "bytes_next_cookie", "uint32_is_end", "uint32_total", "rpt_msg_favorite_items" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, GetFavoriteListRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "bytes_next_cookie", "uint32_is_end", "uint32_total", "rpt_msg_favorite_items" }, new Object[] { localByteStringMicro, localInteger, localInteger, null }, GetFavoriteListRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.GetFavoriteListRspBody
  * JD-Core Version:    0.7.0.1
  */

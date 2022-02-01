@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a8i" parent="@style/4f">
+        <item name="aiq">as_</item>
+        <item name="aj1">lhu</item>
+    </style>
+</resources>

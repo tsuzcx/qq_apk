@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qzone_cover_preview_height">260.0dip</dimen>
+    <dimen name="qzone_home_guest_cover_height">200.0dip</dimen>
+    <dimen name="qzone_home_guest_feeds_header_height">242.0dip</dimen>
+    <dimen name="qzone_home_guest_detail_marginTop">12.0dip</dimen>
+    <dimen name="qzone_home_guest_question_height">42.0dip</dimen>
+    <dimen name="qzone_home_guest_sendResult_marginTop">8.0dip</dimen>
+    <dimen name="shuoshuo_recent_photo_grid_item_w">65.0dip</dimen>
+    <dimen name="preview_photo_width">300.0px</dimen>
+    <dimen name="net_album_lst_height">423.0dip</dimen>
+    <dimen name="net_album_lst_itmphoto_width">100.0dip</dimen>
+    <dimen name="net_album_lst_itmphoto_height">100.0dip</dimen>
+    <dimen name="net_album_lst_title_margins">6.0dip</dimen>
+    <dimen name="net_album_lst_titleanditem_margins">8.0dip</dimen>
+    <dimen name="net_album_lst_item_leftmargins">30.0dip</dimen>
+    <dimen name="net_album_lst_itmphotoandword_padding">24.0dip</dimen>
+    <dimen name="preview_photo_height">225.0px</dimen>
+    <dimen name="qzone_preview_photo_bar_marginbottom">30.0px</dimen>
+    <dimen name="bar_bottom_margins">18.0dip</dimen>
+    <dimen name="photo_title_marginbottom">75.0dip</dimen>
+    <dimen name="upload_photo_topheight">49.0dip</dimen>
+    <dimen name="upload_photo_layoutheight">241.0dip</dimen>
+    <dimen name="upload_photo_maxwidth">316.0dip</dimen>
+    <dimen name="upload_photo_maxheight">241.0dip</dimen>
+    <dimen name="upload_photo_sizeheight">30.0dip</dimen>
+    <dimen name="upload_photo_Infogroupheight">30.0dip</dimen>
+    <dimen name="upload_photo_uploadimgtoolbarheight">104.0dip</dimen>
+    <dimen name="photo_max_width">258.0px</dimen>
+    <dimen name="photo_max_height">224.0px</dimen>
+    <dimen name="big_feed_photo_width">250.0px</dimen>
+    <dimen name="big_feed_photo_height">157.0px</dimen>
+</resources>

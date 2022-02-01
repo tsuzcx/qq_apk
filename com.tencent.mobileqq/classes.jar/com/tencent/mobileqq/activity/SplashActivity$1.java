@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adzi;
 import android.content.IntentFilter;
-import azbw;
-import bhtk;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.util.notification.NotifyIdManager;
 
-public class SplashActivity$1
+class SplashActivity$1
   implements Runnable
 {
   SplashActivity$1(SplashActivity paramSplashActivity) {}
@@ -18,9 +18,9 @@ public class SplashActivity$1
     {
       QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
       localQQNotificationManager.cancel("SplashActivity", 241);
-      azbw localazbw = (azbw)this.this$0.app.getManager(10);
-      if (localazbw != null) {
-        localazbw.a(1, 0);
+      QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.this$0.app.getManager(QQManagerFactory.QZONE_MANAGER);
+      if (localQZoneManagerImp != null) {
+        localQZoneManagerImp.a(1, 0);
       }
       localQQNotificationManager.cancel("SplashActivity", 265);
       localQQNotificationManager.cancel("SplashActivity", 267);
@@ -31,9 +31,9 @@ public class SplashActivity$1
       localQQNotificationManager.cancel("SplashActivity", 269);
       localQQNotificationManager.cancel("SplashActivity", 239);
       localQQNotificationManager.cancel("SplashActivity", 527);
-      bhtk.a(this.this$0.app).a();
-      SplashActivity.a(this.this$0, new adzi(this));
-      this.this$0.registerReceiver(SplashActivity.a(this.this$0), new IntentFilter("before_account_change"));
+      NotifyIdManager.a(this.this$0.app).c();
+      SplashActivity.access$002(this.this$0, new SplashActivity.1.1(this));
+      this.this$0.registerReceiver(SplashActivity.access$000(this.this$0), new IntentFilter("before_account_change"));
       return;
     }
     catch (Exception localException) {}
@@ -41,7 +41,7 @@ public class SplashActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SplashActivity.1
  * JD-Core Version:    0.7.0.1
  */

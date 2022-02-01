@@ -2,9 +2,9 @@ package com.tencent.mobileqq.msf.core.net;
 
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.am;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.al;
 import com.tencent.mobileqq.msf.core.d;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -20,9 +20,13 @@ class n$b
   public n$b(n paramn)
   {
     int i = 0;
-    while (i < this.b.length)
+    for (;;)
     {
-      this.b[i] = 0;
+      paramn = this.b;
+      if (i >= paramn.length) {
+        break;
+      }
+      paramn[i] = 0;
       this.c[i] = new n.b.a(this, i);
       i += 1;
     }
@@ -37,123 +41,146 @@ class n$b
   private String b(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      localStringBuilder.append("Socket unknown");
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2) {
+            localStringBuilder.append("Socket unknown");
+          } else {
+            localStringBuilder.append("success");
+          }
+        }
+        else {
+          localStringBuilder.append("checking");
+        }
+      }
+      else {
+        localStringBuilder.append("idle");
+      }
     }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("idle");
-      continue;
-      localStringBuilder.append("checking");
-      continue;
-      localStringBuilder.append("success");
-      continue;
+    else {
       localStringBuilder.append("error");
     }
+    return localStringBuilder.toString();
   }
   
   /* Error */
   private void b(int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: ldc 73
-    //   2: iconst_1
-    //   3: new 49	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 75
-    //   12: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: iload_1
-    //   16: invokevirtual 78	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   25: iconst_0
-    //   26: istore_3
-    //   27: iload_3
-    //   28: aload_0
-    //   29: getfield 23	com/tencent/mobileqq/msf/core/net/n$b:b	[I
-    //   32: arraylength
-    //   33: if_icmpge +15 -> 48
-    //   36: aload_0
+    //   0: new 49	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   7: astore 4
+    //   9: aload 4
+    //   11: ldc 73
+    //   13: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: pop
+    //   17: aload 4
+    //   19: iload_1
+    //   20: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: ldc 78
+    //   26: iconst_1
+    //   27: aload 4
+    //   29: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: iconst_0
+    //   36: istore_3
     //   37: iload_3
-    //   38: invokevirtual 35	com/tencent/mobileqq/msf/core/net/n$b:a	(I)V
-    //   41: iload_3
-    //   42: iconst_1
-    //   43: iadd
-    //   44: istore_3
-    //   45: goto -18 -> 27
-    //   48: aload_0
-    //   49: monitorenter
-    //   50: aload_0
-    //   51: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   54: invokevirtual 86	com/tencent/mobileqq/msf/core/net/n:a	()I
-    //   57: iload_2
-    //   58: if_icmpeq +36 -> 94
-    //   61: ldc 73
-    //   63: iconst_1
-    //   64: new 49	java/lang/StringBuilder
-    //   67: dup
-    //   68: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   71: ldc 88
-    //   73: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: iload_2
-    //   77: invokevirtual 78	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   86: aload_0
-    //   87: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   38: aload_0
+    //   39: getfield 23	com/tencent/mobileqq/msf/core/net/n$b:b	[I
+    //   42: arraylength
+    //   43: if_icmpge +15 -> 58
+    //   46: aload_0
+    //   47: iload_3
+    //   48: invokevirtual 35	com/tencent/mobileqq/msf/core/net/n$b:a	(I)V
+    //   51: iload_3
+    //   52: iconst_1
+    //   53: iadd
+    //   54: istore_3
+    //   55: goto -18 -> 37
+    //   58: aload_0
+    //   59: monitorenter
+    //   60: aload_0
+    //   61: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   64: invokevirtual 86	com/tencent/mobileqq/msf/core/net/n:a	()I
+    //   67: iload_2
+    //   68: if_icmpeq +46 -> 114
+    //   71: new 49	java/lang/StringBuilder
+    //   74: dup
+    //   75: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   78: astore 4
+    //   80: aload 4
+    //   82: ldc 88
+    //   84: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: aload 4
     //   90: iload_2
-    //   91: invokevirtual 89	com/tencent/mobileqq/msf/core/net/n:a	(I)V
-    //   94: aload_0
-    //   95: iload_1
-    //   96: putfield 21	com/tencent/mobileqq/msf/core/net/n$b:a	I
-    //   99: iconst_0
-    //   100: putstatic 95	com/tencent/mobileqq/msf/core/ag:P	Z
-    //   103: aload_0
-    //   104: invokevirtual 98	java/lang/Object:notifyAll	()V
-    //   107: aload_0
-    //   108: monitorexit
-    //   109: aload_0
-    //   110: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   113: iconst_0
-    //   114: invokestatic 101	com/tencent/mobileqq/msf/core/net/n:d	(Lcom/tencent/mobileqq/msf/core/net/n;Z)V
-    //   117: aload_0
-    //   118: iload_1
-    //   119: iload_2
-    //   120: invokespecial 103	com/tencent/mobileqq/msf/core/net/n$b:c	(II)V
-    //   123: return
-    //   124: astore 4
-    //   126: aload_0
-    //   127: monitorexit
-    //   128: aload 4
-    //   130: athrow
-    //   131: astore 4
-    //   133: goto -26 -> 107
+    //   91: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   94: pop
+    //   95: ldc 78
+    //   97: iconst_1
+    //   98: aload 4
+    //   100: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   106: aload_0
+    //   107: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   110: iload_2
+    //   111: invokevirtual 89	com/tencent/mobileqq/msf/core/net/n:a	(I)V
+    //   114: aload_0
+    //   115: iload_1
+    //   116: putfield 21	com/tencent/mobileqq/msf/core/net/n$b:a	I
+    //   119: iconst_0
+    //   120: putstatic 95	com/tencent/mobileqq/msf/core/ad:P	Z
+    //   123: aload_0
+    //   124: invokevirtual 98	java/lang/Object:notifyAll	()V
+    //   127: aload_0
+    //   128: monitorexit
+    //   129: aload_0
+    //   130: getfield 16	com/tencent/mobileqq/msf/core/net/n$b:d	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   133: iconst_0
+    //   134: invokestatic 101	com/tencent/mobileqq/msf/core/net/n:d	(Lcom/tencent/mobileqq/msf/core/net/n;Z)V
+    //   137: aload_0
+    //   138: iload_1
+    //   139: iload_2
+    //   140: invokespecial 103	com/tencent/mobileqq/msf/core/net/n$b:c	(II)V
+    //   143: return
+    //   144: astore 4
+    //   146: aload_0
+    //   147: monitorexit
+    //   148: goto +6 -> 154
+    //   151: aload 4
+    //   153: athrow
+    //   154: goto -3 -> 151
+    //   157: astore 4
+    //   159: goto -32 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	136	0	this	b
-    //   0	136	1	paramInt1	int
-    //   0	136	2	paramInt2	int
-    //   26	19	3	i	int
-    //   124	5	4	localObject	Object
-    //   131	1	4	localException	Exception
+    //   0	162	0	this	b
+    //   0	162	1	paramInt1	int
+    //   0	162	2	paramInt2	int
+    //   36	19	3	i	int
+    //   7	92	4	localStringBuilder	StringBuilder
+    //   144	8	4	localObject	Object
+    //   157	1	4	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   50	94	124	finally
-    //   94	99	124	finally
-    //   99	107	124	finally
-    //   107	109	124	finally
-    //   126	128	124	finally
-    //   99	107	131	java/lang/Exception
+    //   60	114	144	finally
+    //   114	119	144	finally
+    //   119	127	144	finally
+    //   127	129	144	finally
+    //   146	148	144	finally
+    //   119	127	157	java/lang/Exception
   }
   
   private void b(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, CopyOnWriteArrayList paramCopyOnWriteArrayList3, CopyOnWriteArrayList paramCopyOnWriteArrayList4, ArrayList paramArrayList)
   {
-    am.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
-    com.tencent.mobileqq.msf.core.ag.P = true;
+    al.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
+    com.tencent.mobileqq.msf.core.ad.P = true;
     ArrayList localArrayList = new ArrayList();
     n.b(this.d, paramCopyOnWriteArrayList3, paramCopyOnWriteArrayList4, localArrayList, 1);
     n.b(this.d, paramCopyOnWriteArrayList1, paramCopyOnWriteArrayList2, paramArrayList, 0);
@@ -162,82 +189,95 @@ class n$b
   private String c(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      localStringBuilder.append("Socket unknown");
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3) {
+              localStringBuilder.append("Socket unknown");
+            } else {
+              localStringBuilder.append("Socket success");
+            }
+          }
+          else {
+            localStringBuilder.append("Socket pinging");
+          }
+        }
+        else {
+          localStringBuilder.append("Socket connecting");
+        }
+      }
+      else {
+        localStringBuilder.append("Socket idle");
+      }
     }
-    for (;;)
-    {
-      return localStringBuilder.toString();
+    else {
       localStringBuilder.append("Socket error");
-      continue;
-      localStringBuilder.append("Socket idle");
-      continue;
-      localStringBuilder.append("Socket connecting");
-      continue;
-      localStringBuilder.append("Socket pinging");
-      continue;
-      localStringBuilder.append("Socket success");
     }
+    return localStringBuilder.toString();
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    boolean bool3 = false;
-    int i;
-    int k;
-    int j;
-    if (paramInt2 == 0)
-    {
-      i = 1;
-      k = i;
-      j = paramInt2;
+    int i = paramInt2;
+    if (i == 0) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
     }
     for (;;)
     {
       try
       {
-        if (this.d.d(paramInt2).j() == 1)
-        {
-          j = i;
-          k = paramInt2;
+        if (this.d.d(i).j() != 1) {
+          break label171;
         }
-        long l1 = this.d.b(k);
-        long l2 = this.d.b(j);
-        if (this.b[k] != 3) {
-          continue;
+        long l1 = this.d.b(i);
+        long l2 = this.d.b(paramInt2);
+        if (this.b[i] != 3) {
+          break label182;
         }
         bool1 = true;
-        if (this.b[j] != 3) {
-          continue;
+        if (this.b[paramInt2] != 3) {
+          break label188;
         }
         bool2 = true;
         String str = this.d.l().d.c();
         if (this.d.f.getStatReporter() != null)
         {
-          k localk = this.d.f.getStatReporter();
-          if (paramInt1 == 2) {
-            bool3 = true;
+          j localj = this.d.f.getStatReporter();
+          if (paramInt1 != 2) {
+            break label194;
           }
-          localk.a(bool3, l1, bool1, l2, bool2, str);
+          bool3 = true;
+          localj.a(bool3, l1, bool1, l2, bool2, str);
+          return;
         }
-        return;
       }
       catch (Exception localException)
       {
-        boolean bool1;
-        boolean bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("DualConnContext", 1, "reportDualEvent fail!", localException);
         }
-        QLog.e("DualConnContext", 1, "reportDualEvent fail!", localException);
       }
-      i = 0;
-      break;
-      bool1 = false;
+      return;
+      label171:
+      int j = i;
+      i = paramInt2;
+      paramInt2 = j;
       continue;
-      bool2 = false;
+      label182:
+      boolean bool1 = false;
+      continue;
+      label188:
+      boolean bool2 = false;
+      continue;
+      label194:
+      boolean bool3 = false;
     }
   }
   
@@ -248,7 +288,10 @@ class n$b
   
   public void a(int paramInt)
   {
-    QLog.d("DualConnContext", 1, "removeConnectionChecker: remove connId = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeConnectionChecker: remove connId = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("DualConnContext", 1, localStringBuilder.toString());
     n.c(this.d).removeCallbacks(this.c[paramInt]);
   }
   
@@ -259,151 +302,173 @@ class n$b
   
   public boolean a(int paramInt1, int paramInt2, long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     for (;;)
     {
-      label92:
+      boolean bool1;
       int i;
       try
       {
-        j = this.b[paramInt2];
-        QLog.d("DualConnContext", 1, "onNextState connId = " + paramInt2 + ", connState = " + c(paramInt1) + ", preState = " + c(j) + ", remainTime = " + paramLong);
-        if (j != paramInt1) {
-          break label296;
-        }
-        bool2 = bool1;
-        return bool2;
-      }
-      finally {}
-      int j = this.b[i];
-      if ((paramInt1 == 3) && (j == -1))
-      {
-        b(2, paramInt2);
-        bool2 = bool1;
-      }
-      else
-      {
-        label296:
-        while (paramInt2 != 0)
+        int j = this.b[paramInt2];
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onNextState connId = ");
+        ((StringBuilder)localObject1).append(paramInt2);
+        ((StringBuilder)localObject1).append(", connState = ");
+        ((StringBuilder)localObject1).append(c(paramInt1));
+        ((StringBuilder)localObject1).append(", preState = ");
+        ((StringBuilder)localObject1).append(c(j));
+        ((StringBuilder)localObject1).append(", remainTime = ");
+        ((StringBuilder)localObject1).append(paramLong);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        bool1 = true;
+        boolean bool2 = true;
+        QLog.d("DualConnContext", 1, (String)localObject1);
+        if (j == paramInt1)
         {
-          i = 0;
-          break label303;
-          this.b[paramInt2] = paramInt1;
+          bool2 = bool1;
+          continue;
           bool1 = bool2;
-          break label92;
-          this.b[paramInt2] = paramInt1;
-          a(paramInt2, paramLong);
-          bool1 = bool2;
-          break label92;
-          bool1 = bool2;
-          if (j != 2) {
-            break label92;
+          if (j == 2)
+          {
+            this.b[paramInt2] = paramInt1;
+            a(i, paramLong);
+            bool1 = bool2;
+            continue;
+            this.b[paramInt2] = paramInt1;
+            a(paramInt2, paramLong);
+            bool1 = bool2;
+            continue;
+            this.b[paramInt2] = paramInt1;
+            bool1 = bool2;
+            continue;
+            a(paramInt2);
+            this.d.a(a.F, paramInt2);
+            this.b[paramInt2] = paramInt1;
+            bool1 = bool2;
           }
-          this.b[paramInt2] = paramInt1;
-          a(i, paramLong);
-          bool1 = bool2;
-          break label92;
-          a(paramInt2);
-          this.d.a(a.F, paramInt2);
-          this.b[paramInt2] = paramInt1;
-          bool1 = bool2;
-          break label92;
-          if ((j == 3) && (paramInt1 == -1))
+          j = this.b[i];
+          if ((paramInt1 == 3) && (j == -1))
+          {
+            b(2, paramInt2);
+            bool2 = bool1;
+          }
+          else if ((j == 3) && (paramInt1 == -1))
           {
             b(2, i);
             bool2 = bool1;
-            break;
           }
-          bool2 = bool1;
-          if (j != -1) {
-            break;
+          else
+          {
+            bool2 = bool1;
+            if (j == -1)
+            {
+              bool2 = bool1;
+              if (paramInt1 == -1)
+              {
+                b(-1, this.d.a());
+                bool2 = bool1;
+              }
+            }
           }
-          bool2 = bool1;
-          if (paramInt1 != -1) {
-            break;
-          }
-          b(-1, this.d.a());
-          bool2 = bool1;
-          break;
+          return bool2;
         }
+      }
+      finally {}
+      if (paramInt2 == 0) {
         i = 1;
-        label303:
-        switch (paramInt1)
-        {
+      } else {
+        i = 0;
+      }
+      if (paramInt1 != -1) {
+        if (paramInt1 != 1) {
+          if (paramInt1 != 2) {
+            if (paramInt1 != 3) {
+              bool1 = false;
+            }
+          }
         }
-        bool1 = false;
       }
     }
   }
   
   public boolean a(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, CopyOnWriteArrayList paramCopyOnWriteArrayList3, CopyOnWriteArrayList paramCopyOnWriteArrayList4, ArrayList paramArrayList)
   {
-    for (;;)
+    try
     {
-      try
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ensureDualConn start, mDualConnState = ");
+      localStringBuilder.append(b(this.a));
+      QLog.d("DualConnContext", 1, localStringBuilder.toString());
+      int i = this.a;
+      boolean bool = false;
+      if ((i == 0) || (this.a == -1))
       {
-        QLog.d("DualConnContext", 1, "ensureDualConn start, mDualConnState = " + b(this.a));
-        if ((this.a == 0) || (this.a == -1))
-        {
-          a(false);
-          this.a = 1;
-        }
-        int i = this.a;
-        if (i == 1) {}
+        a(false);
+        this.a = 1;
+      }
+      i = this.a;
+      if (i == 1) {
         try
         {
           b(paramCopyOnWriteArrayList1, paramCopyOnWriteArrayList2, paramCopyOnWriteArrayList3, paramCopyOnWriteArrayList4, paramArrayList);
           wait();
-          if (2 == this.a)
-          {
-            bool = true;
-            return bool;
-          }
         }
         catch (Exception paramCopyOnWriteArrayList1)
         {
           QLog.d("DualConnContext", 1, "ensureDualConn wait fail", paramCopyOnWriteArrayList1);
-          continue;
         }
-        boolean bool = false;
       }
-      finally {}
+      if (2 == this.a) {
+        bool = true;
+      }
+      return bool;
     }
+    finally {}
   }
   
   public boolean a(boolean paramBoolean)
   {
-    int k = 0;
-    for (;;)
+    try
     {
-      int j;
-      try
+      QLog.d("DualConnContext", 1, " reset");
+      int k = 0;
+      this.a = 0;
+      int i = 0;
+      for (;;)
       {
-        QLog.d("DualConnContext", 1, " reset");
-        this.a = 0;
-        int i = 0;
         j = k;
-        if (i < this.b.length)
-        {
-          this.b[i] = 0;
-          i += 1;
-          continue;
+        if (i >= this.b.length) {
+          break;
         }
-        if (j < this.b.length) {
-          if (this.c[j] != null) {
-            a(j);
-          } else {
-            this.c[j] = new n.b.a(this, j);
-          }
-        }
+        this.b[i] = 0;
+        i += 1;
       }
-      finally {}
+    }
+    finally
+    {
+      for (;;)
+      {
+        int j;
+        for (;;)
+        {
+          throw localObject;
+        }
+        j += 1;
+      }
+    }
+    if (j < this.b.length)
+    {
+      if (this.c[j] != null) {
+        a(j);
+      } else {
+        this.c[j] = new n.b.a(this, j);
+      }
+    }
+    else
+    {
       if (paramBoolean) {
         notifyAll();
       }
       return true;
-      j += 1;
     }
   }
   
@@ -411,7 +476,7 @@ class n$b
   public void b()
   {
     // Byte code:
-    //   0: ldc 73
+    //   0: ldc 78
     //   2: iconst_1
     //   3: ldc 255
     //   5: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -423,7 +488,7 @@ class n$b
     //   15: iload_1
     //   16: iconst_1
     //   17: if_icmpne +16 -> 33
-    //   20: ldc 73
+    //   20: ldc 78
     //   22: iconst_1
     //   23: ldc_w 257
     //   26: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -456,7 +521,7 @@ class n$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.n.b
  * JD-Core Version:    0.7.0.1
  */

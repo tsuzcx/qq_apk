@@ -57,13 +57,13 @@ public class WeightedLatLng
     fx localfx = a;
     double d1 = paramLatLng.longitude / 360.0D;
     double d2 = Math.sin(Math.toRadians(paramLatLng.latitude));
-    d2 = Math.log((1.0D + d2) / (1.0D - d2)) * 0.5D / -6.283185307179586D;
+    d2 = Math.log((d2 + 1.0D) / (1.0D - d2)) * 0.5D / -6.283185307179586D;
     this.b = new DoublePoint((d1 + 0.5D) * localfx.a, (d2 + 0.5D) * localfx.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.utilities.heatmap.WeightedLatLng
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,11 @@ public class WXWeWorkObject
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(141046);
+    AppMethodBeat.i(3944);
     paramBundle.putByteArray("_wxenterprise_object_data", this.data);
     paramBundle.putString("_wxenterprise_object_extinfo", this.extInfo);
     paramBundle.putInt("_wxenterprise_object_subType", this.subType);
-    AppMethodBeat.o(141046);
+    AppMethodBeat.o(3944);
   }
   
   public int type()
@@ -33,16 +33,16 @@ public class WXWeWorkObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(141047);
+    AppMethodBeat.i(3945);
     this.data = paramBundle.getByteArray("_wxenterprise_object_data");
     this.extInfo = paramBundle.getString("_wxenterprise_object_extinfo");
     this.subType = paramBundle.getInt("_wxenterprise_object_subType");
-    AppMethodBeat.o(141047);
+    AppMethodBeat.o(3945);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXWeWorkObject
  * JD-Core Version:    0.7.0.1
  */

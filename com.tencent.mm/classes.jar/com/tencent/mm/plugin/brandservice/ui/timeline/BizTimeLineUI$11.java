@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.r.a;
-import com.tencent.mm.storage.r.c;
 
 final class BizTimeLineUI$11
-  implements r.c
+  implements Runnable
 {
   BizTimeLineUI$11(BizTimeLineUI paramBizTimeLineUI) {}
   
-  public final void a(Object paramObject, r.a parama)
+  public final void run()
   {
-    AppMethodBeat.i(14194);
-    this.jXh.aWP();
-    AppMethodBeat.o(14194);
+    AppMethodBeat.i(5951);
+    if ((this.vIB.activityHasDestroyed()) || (this.vIB.isFinishing()))
+    {
+      AppMethodBeat.o(5951);
+      return;
+    }
+    BizTimeLineUI.p(this.vIB);
+    AppMethodBeat.o(5951);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI.11
  * JD-Core Version:    0.7.0.1
  */

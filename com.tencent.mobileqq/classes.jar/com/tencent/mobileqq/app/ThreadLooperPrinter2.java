@@ -30,45 +30,47 @@ class ThreadLooperPrinter2
   
   private static String format(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {
-      return null;
-    }
-    int i = paramString.indexOf('(');
-    if (i == -1) {
-      return null;
-    }
-    int j = paramString.indexOf(')', i);
-    if (j == -1) {
-      return null;
-    }
-    String str1 = paramString.substring(i + 1, j);
-    int k = paramString.indexOf("} ", j);
-    if (k == -1) {
-      return null;
-    }
-    j = paramString.indexOf('@', k + 2);
-    i = j;
-    if (j == -1)
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      j = paramString.indexOf(':', k + 2);
+      if (!paramString.startsWith(">>>")) {
+        return null;
+      }
+      int i = paramString.indexOf('(');
+      if (i == -1) {
+        return null;
+      }
+      int j = paramString.indexOf(')', i);
+      if (j == -1) {
+        return null;
+      }
+      String str1 = paramString.substring(i + 1, j);
+      i = paramString.indexOf("} ", j);
+      if (i == -1) {
+        return null;
+      }
+      int k = i + 2;
+      j = paramString.indexOf('@', k);
       i = j;
       if (j == -1)
       {
-        i = paramString.indexOf(' ', k + 2);
-        if (i == -1) {
-          break label150;
+        j = paramString.indexOf(':', k);
+        i = j;
+        if (j == -1)
+        {
+          i = paramString.indexOf(' ', k);
+          if (i == -1) {
+            return null;
+          }
         }
       }
+      String str2 = paramString.substring(k, i);
+      i = paramString.indexOf(": ", i);
+      if (i == -1) {
+        return null;
+      }
+      return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
     }
-    String str2 = paramString.substring(k + 2, i);
-    i = paramString.indexOf(": ", i);
-    if (i == -1)
-    {
-      return null;
-      label150:
-      return null;
-    }
-    return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
+    return null;
   }
   
   public void println(String paramString)
@@ -77,43 +79,65 @@ class ThreadLooperPrinter2
     {
       this.startTime = SystemClock.uptimeMillis();
       this.lastLog = paramString;
+      return;
     }
-    long l;
-    do
+    if ((this.startTime != 0L) && (paramString.startsWith("<<")))
     {
-      do
-      {
-        return;
-      } while ((this.startTime == 0L) || (!paramString.startsWith("<<")));
       this.msgCount += 1L;
-      l = SystemClock.uptimeMillis() - this.startTime;
+      long l = SystemClock.uptimeMillis() - this.startTime;
       this.startTime = 0L;
       this.totalCost += l;
+      StringBuilder localStringBuilder;
       if (ThreadSetting.logcatBgTaskMonitor)
       {
         paramString = format(this.lastLog);
-        ThreadLog.printQLog("AutoMonitor", this.mLooperName + ", cost=" + l + ", " + paramString);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mLooperName);
+        localStringBuilder.append(", cost=");
+        localStringBuilder.append(l);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(paramString);
+        ThreadLog.printQLog("AutoMonitor", localStringBuilder.toString());
         return;
       }
-    } while (l < sLogThreshold);
-    paramString = format(this.lastLog);
-    ThreadLog.printQLog("AutoMonitor", this.mLooperName + " OOT cost=" + l + ", " + paramString);
+      if (l >= sLogThreshold)
+      {
+        paramString = format(this.lastLog);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mLooperName);
+        localStringBuilder.append(" OOT cost=");
+        localStringBuilder.append(l);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(paramString);
+        ThreadLog.printQLog("AutoMonitor", localStringBuilder.toString());
+      }
+    }
   }
   
   void setDebugSettings(int paramInt, boolean paramBoolean)
   {
-    ThreadLog.printQLog("TM.global.LooperPrinter", "setting threshold, threshold=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setting threshold, threshold=");
+    localStringBuilder.append(paramInt);
+    ThreadLog.printQLog("TM.global.LooperPrinter", localStringBuilder.toString());
     sLogThreshold = paramInt;
   }
   
   public String toString()
   {
-    return super.toString() + "(msgCount = " + this.msgCount + ", totalCost = " + this.totalCost + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("(msgCount = ");
+    localStringBuilder.append(this.msgCount);
+    localStringBuilder.append(", totalCost = ");
+    localStringBuilder.append(this.totalCost);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadLooperPrinter2
  * JD-Core Version:    0.7.0.1
  */

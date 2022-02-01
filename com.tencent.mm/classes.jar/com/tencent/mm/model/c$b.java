@@ -1,56 +1,57 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
 final class c$b
   implements Runnable
 {
-  String cEG;
-  String fkA;
+  String from;
+  String to;
   
   public c$b(String paramString1, String paramString2)
   {
-    this.cEG = paramString1;
-    this.fkA = paramString2;
+    this.from = paramString1;
+    this.to = paramString2;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(16204);
-    if ((bo.isNullOrNil(this.cEG)) || (bo.isNullOrNil(this.fkA)))
+    AppMethodBeat.i(20247);
+    if ((Util.isNullOrNil(this.from)) || (Util.isNullOrNil(this.to)))
     {
-      AppMethodBeat.o(16204);
+      AppMethodBeat.o(20247);
       return;
     }
-    ab.d("MicroMsg.AccountStorage", "MoveDataFiles :" + this.cEG + " to :" + this.fkA);
-    if (!f.Mi())
+    Log.i("MicroMsg.AccountStorage", "MoveDataFiles :" + this.from + " to :" + this.to);
+    if (!e.aPU())
     {
-      AppMethodBeat.o(16204);
+      AppMethodBeat.o(20247);
       return;
     }
-    if (!this.fkA.substring(0, com.tencent.mm.compatible.util.e.eQz.length()).equals(com.tencent.mm.compatible.util.e.eQz))
+    if (!this.to.substring(0, b.bmz().length()).equals(b.bmz()))
     {
-      AppMethodBeat.o(16204);
+      AppMethodBeat.o(20247);
       return;
     }
-    com.tencent.mm.vfs.e.iG(this.cEG + "image/", this.fkA + "image/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "image2/", this.fkA + "image2/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "video/", this.fkA + "video/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "voice/", this.fkA + "voice/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "voice2/", this.fkA + "voice2/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "package/", this.fkA + "package/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "emoji/", this.fkA + "emoji/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "mailapp/", this.fkA + "mailapp/");
-    com.tencent.mm.vfs.e.iG(this.cEG + "brandicon/", this.fkA + "brandicon/");
-    AppMethodBeat.o(16204);
+    y.qp(this.from + "image/", this.to + "image/");
+    y.qp(this.from + "video/", this.to + "video/");
+    y.qp(this.from + "voice/", this.to + "voice/");
+    y.qp(this.from + "voice2/", this.to + "voice2/");
+    y.qp(this.from + "package/", this.to + "package/");
+    y.qp(this.from + "emoji/", this.to + "emoji/");
+    y.qp(this.from + "mailapp/", this.to + "mailapp/");
+    y.qp(this.from + "brandicon/", this.to + "brandicon/");
+    AppMethodBeat.o(20247);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.c.b
  * JD-Core Version:    0.7.0.1
  */

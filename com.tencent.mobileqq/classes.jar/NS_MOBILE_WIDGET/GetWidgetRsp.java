@@ -11,17 +11,17 @@ public final class GetWidgetRsp
   static PluginInfo cache_plugin_info = new PluginInfo();
   static byte[] cache_widget = (byte[])new byte[1];
   public String attach_info = "";
-  public int expire;
-  public int iNameplateFlag;
-  public int iNeedRedPacket;
-  public int no_update;
-  public PartnerPlugin partner_info;
-  public PluginInfo plugin_info;
-  public int stored_widget_id;
+  public int expire = 0;
+  public int iNameplateFlag = 0;
+  public int iNeedRedPacket = 0;
+  public int no_update = 0;
+  public PartnerPlugin partner_info = null;
+  public PluginInfo plugin_info = null;
+  public int stored_widget_id = 0;
   public String tmp_data_json = "";
   public String tmp_url = "";
-  public int today_delta;
-  public byte[] widget;
+  public int today_delta = 0;
+  public byte[] widget = null;
   
   static
   {
@@ -64,35 +64,41 @@ public final class GetWidgetRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.widget != null) {
-      paramJceOutputStream.write(this.widget, 0);
+    Object localObject = this.widget;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
     paramJceOutputStream.write(this.expire, 1);
     paramJceOutputStream.write(this.no_update, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.partner_info != null) {
-      paramJceOutputStream.write(this.partner_info, 4);
+    localObject = this.partner_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.stored_widget_id, 5);
-    if (this.plugin_info != null) {
-      paramJceOutputStream.write(this.plugin_info, 6);
+    localObject = this.plugin_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
     paramJceOutputStream.write(this.iNameplateFlag, 7);
     paramJceOutputStream.write(this.iNeedRedPacket, 8);
-    if (this.tmp_url != null) {
-      paramJceOutputStream.write(this.tmp_url, 9);
+    localObject = this.tmp_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.tmp_data_json != null) {
-      paramJceOutputStream.write(this.tmp_data_json, 10);
+    localObject = this.tmp_data_json;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.today_delta, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.GetWidgetRsp
  * JD-Core Version:    0.7.0.1
  */

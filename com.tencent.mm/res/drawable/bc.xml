@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@raw/ipcall_actionbar_quit_icon_pressed" />//压下效果图片 <item android:state_enabled="true" android:drawable="@raw/ipcall_actionbar_quit_icon" />//未按压作图片 </selector>

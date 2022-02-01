@@ -1,12 +1,11 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import vxe;
 
-public class VideoViewTVKImpl$9
+class VideoViewTVKImpl$9
   implements Runnable
 {
-  public VideoViewTVKImpl$9(vxe paramvxe, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  VideoViewTVKImpl$9(VideoViewTVKImpl paramVideoViewTVKImpl, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class VideoViewTVKImpl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.9
  * JD-Core Version:    0.7.0.1
  */

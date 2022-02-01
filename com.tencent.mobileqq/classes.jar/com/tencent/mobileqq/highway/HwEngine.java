@@ -7,6 +7,7 @@ import com.tencent.mobileqq.highway.api.RequestOps;
 import com.tencent.mobileqq.highway.api.TransactionOps;
 import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.config.HwNetSegConf;
+import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
 import com.tencent.mobileqq.highway.netprobe.WeakNetLearner;
@@ -31,11 +32,11 @@ public class HwEngine
   public AtomicLong dwFlow_Wifi = new AtomicLong(0L);
   public AtomicLong dwFlow_Xg = new AtomicLong(0L);
   public boolean ipv6Switch;
-  private SparseArray<HwNetSegConf> mBuzSegConfigs;
+  private SparseArray<HwNetSegConf> mBuzSegConfigs = null;
   public ConnManager mConnManager;
   private Context mContext;
   public RequestWorker mRequestWorker;
-  private HwNetSegConf mSegConfig;
+  private HwNetSegConf mSegConfig = null;
   public TransactionWorker mTransWorker;
   public WeakNetLearner mWeakNetLearner;
   private WeakNetCallback probeEngineCallBack = new HwEngine.1(this);
@@ -57,7 +58,12 @@ public class HwEngine
   {
     int i = this.mTransWorker.getTransactionNum();
     int j = this.mConnManager.getCurrentConnNum();
-    BdhLogUtil.LogEvent("E", "dumpEngineInfo<-- : transNum:" + i + " connNum:" + j);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dumpEngineInfo<-- : transNum:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" connNum:");
+    localStringBuilder.append(j);
+    BdhLogUtil.LogEvent("E", localStringBuilder.toString());
   }
   
   public void SubmitAckRequest(RequestAck paramRequestAck)
@@ -82,6 +88,7 @@ public class HwEngine
     this.mRequestWorker.onDestroy();
     this.mConnManager.onDestroy();
     this.mWeakNetLearner.onDestroy();
+    HwServlet.resetStartMask();
     this.mContext = null;
     this.app = null;
   }
@@ -213,7 +220,7 @@ public class HwEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.HwEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -38,17 +38,23 @@ public class b
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(hashCode());
-    localStringBuilder.append(" ");
-    localStringBuilder.append("ConnectSource: " + this.eb.toString());
-    localStringBuilder.append(" startConnectTime: " + h().split(",")[0]);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(hashCode());
+    localStringBuilder1.append(" ");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("ConnectSource: ");
+    localStringBuilder2.append(this.eb.toString());
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" startConnectTime: ");
+    localStringBuilder2.append(h().split(",")[0]);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqpimsecure.wificore.api.connect.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class StoryAlbumPicEntry
-  extends awge
+  extends Entity
 {
   public static final int PIC_STATE_BLACK_POI = 4;
   public static final int PIC_STATE_DEFAULT = 1;
@@ -23,12 +23,21 @@ public class StoryAlbumPicEntry
   
   public static String getTimeSelection(long paramLong1, long paramLong2)
   {
-    return " createTime >= " + paramLong1 + " AND  createTime <= " + paramLong2 + " AND  state <>" + 4 + " AND  state <>" + 2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" createTime >= ");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(" AND  createTime <= ");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(" AND  state <>");
+    localStringBuilder.append(4);
+    localStringBuilder.append(" AND  state <>");
+    localStringBuilder.append(2);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryAlbumPicEntry
  * JD-Core Version:    0.7.0.1
  */

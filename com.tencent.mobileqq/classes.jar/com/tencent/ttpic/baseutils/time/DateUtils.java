@@ -10,15 +10,13 @@ public class DateUtils
 {
   public static final SimpleDateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
   public static final SimpleDateFormat DEFAULT_DAY_FORMAT = new SimpleDateFormat("yyyyMMdd");
-  public static final SimpleDateFormat DEFAULT_FORMAT;
+  public static final SimpleDateFormat DEFAULT_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
   public static final SimpleDateFormat EXIF_DATE_FORMAT;
-  public static final SimpleDateFormat SERVER_DATE_FORMAT;
-  private static final String TAG = DateUtils.class.getSimpleName();
+  public static final SimpleDateFormat SERVER_DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmm");
+  private static final String TAG = "DateUtils";
   
   static
   {
-    DEFAULT_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    SERVER_DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmm");
     EXIF_DATE_FORMAT = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
   }
   
@@ -157,7 +155,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.time.DateUtils
  * JD-Core Version:    0.7.0.1
  */

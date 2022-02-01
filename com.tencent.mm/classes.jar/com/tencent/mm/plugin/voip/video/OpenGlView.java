@@ -1,165 +1,178 @@
 package com.tencent.mm.plugin.voip.video;
 
 import android.content.Context;
-import android.opengl.GLSurfaceView;
+import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
-import android.view.SurfaceHolder;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.aw;
 import java.lang.ref.WeakReference;
 
 public class OpenGlView
-  extends GLSurfaceView
+  extends GLTextureView
 {
-  private static String TAG = "OpenGlView";
-  public boolean jew;
-  public boolean tHg;
-  public boolean tHh;
-  public int tHi;
-  private int tHj;
-  private int tHk;
-  public boolean tHl;
-  WeakReference<OpenGlRender> tHm;
+  public static String TAG = "OpenGlView";
+  public boolean Flq;
+  public boolean UNI;
+  public boolean UNJ;
+  public int UNK;
+  public int UNL;
+  public int UNM;
+  public boolean UNN;
+  WeakReference<OpenGlRender> UNO;
+  
+  public OpenGlView(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(292903);
+    this.UNI = false;
+    this.UNJ = true;
+    this.Flq = false;
+    this.UNK = 1;
+    this.UNL = 0;
+    this.UNM = 0;
+    this.UNN = false;
+    this.UNK = OpenGlRender.getGLVersion();
+    icq();
+    AppMethodBeat.o(292903);
+  }
   
   public OpenGlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(5084);
-    this.tHg = false;
-    this.tHh = true;
-    this.jew = false;
-    this.tHi = 1;
-    this.tHj = 0;
-    this.tHk = 0;
-    this.tHl = false;
-    this.tHi = OpenGlRender.getGLVersion();
-    getHolder().addCallback(this);
-    try
+    AppMethodBeat.i(115670);
+    this.UNI = false;
+    this.UNJ = true;
+    this.Flq = false;
+    this.UNK = 1;
+    this.UNL = 0;
+    this.UNM = 0;
+    this.UNN = false;
+    this.UNK = OpenGlRender.getGLVersion();
+    icq();
+    AppMethodBeat.o(115670);
+  }
+  
+  private void icq()
+  {
+    AppMethodBeat.i(292914);
+    if (this.UNK == 2)
     {
-      getHolder().setType(2);
-      if (this.tHi == 2)
-      {
-        setEGLContextFactory(new c());
-        setEGLConfigChooser(new b(5, 6, 5, 0));
-      }
-      AppMethodBeat.o(5084);
+      setEGLContextFactory(new b());
+      setEGLConfigChooser(new a());
+    }
+    AppMethodBeat.o(292914);
+  }
+  
+  public final void GR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(115676);
+    this.UNN = paramBoolean;
+    if (paramBoolean)
+    {
+      setAlpha(0.0F);
+      AppMethodBeat.o(115676);
       return;
     }
-    catch (Exception paramContext)
+    setAlpha(1.0F);
+    AppMethodBeat.o(115676);
+  }
+  
+  public final void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(115674);
+    super.a(paramSurfaceTexture, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(115674);
+  }
+  
+  public final void icp()
+  {
+    AppMethodBeat.i(115675);
+    this.UNI = true;
+    requestRender();
+    AppMethodBeat.o(115675);
+  }
+  
+  public void mH(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(115669);
+    this.UNL = paramInt1;
+    this.UNM = paramInt2;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (aw.jkQ())
     {
-      for (;;)
-      {
-        try
-        {
-          getHolder().setType(1);
-        }
-        catch (Exception paramContext)
-        {
-          try
-          {
-            getHolder().setType(0);
-          }
-          catch (Exception paramContext) {}
-        }
-      }
+      paramInt1 = paramInt2 * 9 / 16;
+      localLayoutParams = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+      localLayoutParams.addRule(13);
+      this.UNL = paramInt1;
+    }
+    for (;;)
+    {
+      setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(115669);
+      return;
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     }
   }
   
-  public final void cPL()
-  {
-    AppMethodBeat.i(5091);
-    this.tHg = true;
-    requestRender();
-    AppMethodBeat.o(5091);
-  }
-  
-  public void go(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(5083);
-    setLayoutParams(new RelativeLayout.LayoutParams(paramInt1, paramInt2));
-    this.tHj = paramInt1;
-    this.tHk = paramInt2;
-    AppMethodBeat.o(5083);
-  }
-  
-  public void gp(int paramInt1, int paramInt2) {}
-  
-  public void onPause()
-  {
-    AppMethodBeat.i(5089);
-    super.onPause();
-    AppMethodBeat.o(5089);
-  }
-  
-  public void onResume()
-  {
-    AppMethodBeat.i(5090);
-    super.onResume();
-    AppMethodBeat.o(5090);
-  }
+  public void mI(int paramInt1, int paramInt2) {}
   
   public void setRenderer(OpenGlRender paramOpenGlRender)
   {
-    AppMethodBeat.i(5085);
-    this.tHm = new WeakReference(paramOpenGlRender);
+    AppMethodBeat.i(115671);
+    this.UNO = new WeakReference(paramOpenGlRender);
     super.setRenderer(paramOpenGlRender);
     setRenderMode(0);
-    AppMethodBeat.o(5085);
+    AppMethodBeat.o(115671);
   }
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public final void t(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(5088);
-    ab.i(TAG, "surfaceChanged, format: %s, w: %s, h: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(5088);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    AppMethodBeat.i(5086);
-    ab.i(TAG, "surfaceCreated");
-    super.surfaceCreated(paramSurfaceHolder);
-    paramSurfaceHolder = (OpenGlRender)this.tHm.get();
-    ab.i(OpenGlRender.TAG, "%s surfaceCreated", new Object[] { Integer.valueOf(paramSurfaceHolder.hashCode()) });
+    AppMethodBeat.i(115672);
+    Log.i(TAG, "surfaceCreated");
+    super.t(paramSurfaceTexture);
+    paramSurfaceTexture = (OpenGlRender)this.UNO.get();
+    Log.i(OpenGlRender.TAG, "%s surfaceCreated", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
     OpenGlRender.getGLVersion();
-    paramSurfaceHolder.tGB = true;
-    paramSurfaceHolder.tGx = true;
-    AppMethodBeat.o(5086);
+    paramSurfaceTexture.UMQ = true;
+    paramSurfaceTexture.UMM = true;
+    AppMethodBeat.o(115672);
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public final void u(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(5087);
-    ab.i(TAG, "surfaceDestroyed");
-    OpenGlRender localOpenGlRender = (OpenGlRender)this.tHm.get();
-    ab.i(OpenGlRender.TAG, "onSurfaceDestroyed,mRenderMode:%d", new Object[] { Integer.valueOf(localOpenGlRender.mRenderMode) });
-    if (localOpenGlRender.tGQ != null)
+    AppMethodBeat.i(115673);
+    Log.i(TAG, "surfaceDestroyed");
+    OpenGlRender localOpenGlRender = (OpenGlRender)this.UNO.get();
+    Log.i(OpenGlRender.TAG, "onSurfaceDestroyed,mRenderMode:%d", new Object[] { Integer.valueOf(localOpenGlRender.mRenderMode) });
+    if (localOpenGlRender.UNg != null)
     {
-      localOpenGlRender.tHe = true;
-      ab.i(OpenGlRender.TAG, "surfaceDestroy call detachGLContext");
-      localOpenGlRender.cPI();
+      localOpenGlRender.UNF = true;
+      Log.i(OpenGlRender.TAG, "surfaceDestroy call detachGLContext");
+      localOpenGlRender.icl();
     }
-    localOpenGlRender.tGx = false;
-    ab.i(OpenGlRender.TAG, "steve: after Uninit in onSurfaceDestroyed");
-    localOpenGlRender.tGv = 0;
-    localOpenGlRender.tGC = 0;
-    localOpenGlRender.tGD = 0;
-    if (localOpenGlRender.tGE != null)
+    localOpenGlRender.UMM = false;
+    Log.i(OpenGlRender.TAG, "steve: after Uninit in onSurfaceDestroyed");
+    localOpenGlRender.UMK = 0;
+    localOpenGlRender.UMR = 0;
+    localOpenGlRender.UMS = 0;
+    if (localOpenGlRender.UMT != null)
     {
-      OpenGlView localOpenGlView = (OpenGlView)localOpenGlRender.tGE.get();
-      if (localOpenGlView != null) {
-        localOpenGlView.queueEvent(new OpenGlRender.2(localOpenGlRender));
+      OpenGlView localOpenGlView = (OpenGlView)localOpenGlRender.UMT.get();
+      if (localOpenGlView != null)
+      {
+        Log.i(OpenGlRender.TAG, "onSurfaceDestroyed queue release renderer event");
+        localOpenGlView.ag(new OpenGlRender.4(localOpenGlRender));
       }
     }
-    super.surfaceDestroyed(paramSurfaceHolder);
-    AppMethodBeat.o(5087);
+    super.u(paramSurfaceTexture);
+    AppMethodBeat.o(115673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.OpenGlView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class ce
   implements ThreadFactory
 {
-  private final String Qc;
-  private final AtomicInteger Qd = new AtomicInteger();
-  private final ThreadFactory Qe = Executors.defaultThreadFactory();
-  private final int eK;
+  private final String RR;
+  private final AtomicInteger RS = new AtomicInteger();
+  private final ThreadFactory RT = Executors.defaultThreadFactory();
+  private final int gz;
   
   public ce(String paramString)
   {
@@ -20,15 +20,15 @@ public final class ce
   
   private ce(String paramString, byte paramByte)
   {
-    this.Qc = ((String)d.e(paramString, "Name must not be null"));
-    this.eK = 0;
+    this.RR = ((String)d.g(paramString, "Name must not be null"));
+    this.gz = 0;
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = this.Qe.newThread(new cf(paramRunnable, this.eK));
-    String str = this.Qc;
-    int i = this.Qd.getAndIncrement();
+    paramRunnable = this.RT.newThread(new cf(paramRunnable, this.gz));
+    String str = this.RR;
+    int i = this.RS.getAndIncrement();
     paramRunnable.setName(String.valueOf(str).length() + 13 + str + "[" + i + "]");
     return paramRunnable;
   }

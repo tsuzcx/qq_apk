@@ -1,51 +1,16 @@
 package com.tencent.wcdb.repair;
 
+import com.tencent.token.aid;
+import com.tencent.token.aje.a;
 import com.tencent.wcdb.database.SQLiteCipherSpec;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteException;
-import com.tencent.wcdb.support.CancellationSignal;
-import com.tencent.wcdb.support.CancellationSignal.OnCancelListener;
 
 public class RepairKit
-  implements CancellationSignal.OnCancelListener
+  implements aje.a
 {
-  public static final int FLAG_ALL_TABLES = 2;
-  public static final int FLAG_NO_CREATE_TABLES = 1;
-  private static final int INTEGRITY_DATA = 2;
-  private static final int INTEGRITY_HEADER = 1;
-  private static final int INTEGRITY_KDF_SALT = 4;
-  public static final int RESULT_CANCELED = 1;
-  public static final int RESULT_FAILED = -1;
-  public static final int RESULT_IGNORE = 2;
-  public static final int RESULT_OK = 0;
-  private RepairKit.Callback mCallback;
-  private RepairKit.RepairCursor mCurrentCursor;
-  private int mIntegrityFlags;
-  private RepairKit.MasterInfo mMasterInfo;
-  private long mNativePtr;
-  
-  public RepairKit(String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, RepairKit.MasterInfo paramMasterInfo)
-  {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
-    }
-    if (paramMasterInfo == null) {}
-    for (byte[] arrayOfByte = null;; arrayOfByte = RepairKit.MasterInfo.access$000(paramMasterInfo))
-    {
-      this.mNativePtr = nativeInit(paramString, paramArrayOfByte, paramSQLiteCipherSpec, arrayOfByte);
-      if (this.mNativePtr != 0L) {
-        break;
-      }
-      throw new SQLiteException("Failed initialize RepairKit.");
-    }
-    this.mIntegrityFlags = nativeIntegrityFlags(this.mNativePtr);
-    this.mMasterInfo = paramMasterInfo;
-  }
-  
-  public static String lastError()
-  {
-    return nativeLastError();
-  }
+  private long a;
+  private b b;
+  private a c;
+  private RepairCursor d;
   
   private static native void nativeCancel(long paramLong);
   
@@ -69,97 +34,144 @@ public class RepairKit
   
   private int onProgress(String paramString, int paramInt, long paramLong)
   {
-    if (this.mCallback == null) {
+    if (this.c == null) {
       return 0;
     }
-    if (this.mCurrentCursor == null) {
-      this.mCurrentCursor = new RepairKit.RepairCursor(null);
+    if (this.d == null) {
+      this.d = new RepairCursor((byte)0);
     }
-    this.mCurrentCursor.mPtr = paramLong;
-    return this.mCallback.onProgress(paramString, paramInt, this.mCurrentCursor);
+    this.d.i = paramLong;
+    return this.c.a();
+  }
+  
+  public final void c()
+  {
+    long l = this.a;
+    if (l == 0L) {
+      return;
+    }
+    nativeCancel(l);
   }
   
   protected void finalize()
   {
-    release();
+    b localb = this.b;
+    if (localb != null)
+    {
+      localb.a();
+      this.b = null;
+    }
+    long l = this.a;
+    if (l != 0L)
+    {
+      nativeFini(l);
+      this.a = 0L;
+    }
     super.finalize();
   }
   
-  public RepairKit.Callback getCallback()
+  static class RepairCursor
+    extends aid
   {
-    return this.mCallback;
-  }
-  
-  public boolean isDataCorrupted()
-  {
-    return (this.mIntegrityFlags & 0x2) == 0;
-  }
-  
-  public boolean isHeaderCorrupted()
-  {
-    return (this.mIntegrityFlags & 0x1) == 0;
-  }
-  
-  public boolean isSaltCorrupted()
-  {
-    return (this.mIntegrityFlags & 0x4) == 0;
-  }
-  
-  public void onCancel()
-  {
-    if (this.mNativePtr == 0L) {
-      return;
-    }
-    nativeCancel(this.mNativePtr);
-  }
-  
-  public int output(SQLiteDatabase paramSQLiteDatabase, int paramInt)
-  {
-    long l1 = 0L;
-    if (this.mNativePtr == 0L) {
-      throw new IllegalArgumentException();
-    }
-    if (this.mMasterInfo == null) {}
-    for (;;)
+    long i;
+    
+    private static native byte[] nativeGetBlob(long paramLong, int paramInt);
+    
+    private static native int nativeGetColumnCount(long paramLong);
+    
+    private static native double nativeGetDouble(long paramLong, int paramInt);
+    
+    private static native long nativeGetLong(long paramLong, int paramInt);
+    
+    private static native String nativeGetString(long paramLong, int paramInt);
+    
+    private static native int nativeGetType(long paramLong, int paramInt);
+    
+    public byte[] getBlob(int paramInt)
     {
-      long l2 = paramSQLiteDatabase.acquireNativeConnectionHandle("repair", false, false);
-      paramInt = nativeOutput(this.mNativePtr, l2, l1, paramInt);
-      paramSQLiteDatabase.releaseNativeConnection(l2, null);
-      this.mCurrentCursor = null;
-      this.mIntegrityFlags = nativeIntegrityFlags(this.mNativePtr);
-      return paramInt;
-      l1 = RepairKit.MasterInfo.access$100(this.mMasterInfo);
+      return nativeGetBlob(this.i, paramInt);
     }
-  }
-  
-  public int output(SQLiteDatabase paramSQLiteDatabase, int paramInt, CancellationSignal paramCancellationSignal)
-  {
-    if (paramCancellationSignal.isCanceled()) {
-      return 1;
-    }
-    paramCancellationSignal.setOnCancelListener(this);
-    paramInt = output(paramSQLiteDatabase, paramInt);
-    paramCancellationSignal.setOnCancelListener(null);
-    return paramInt;
-  }
-  
-  public void release()
-  {
-    if (this.mMasterInfo != null)
+    
+    public int getColumnCount()
     {
-      this.mMasterInfo.release();
-      this.mMasterInfo = null;
+      return nativeGetColumnCount(this.i);
     }
-    if (this.mNativePtr != 0L)
+    
+    public String[] getColumnNames()
     {
-      nativeFini(this.mNativePtr);
-      this.mNativePtr = 0L;
+      throw new UnsupportedOperationException();
+    }
+    
+    public int getCount()
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public double getDouble(int paramInt)
+    {
+      return nativeGetDouble(this.i, paramInt);
+    }
+    
+    public float getFloat(int paramInt)
+    {
+      return (float)getDouble(paramInt);
+    }
+    
+    public int getInt(int paramInt)
+    {
+      return (int)getLong(paramInt);
+    }
+    
+    public long getLong(int paramInt)
+    {
+      return nativeGetLong(this.i, paramInt);
+    }
+    
+    public short getShort(int paramInt)
+    {
+      return (short)(int)getLong(paramInt);
+    }
+    
+    public String getString(int paramInt)
+    {
+      return nativeGetString(this.i, paramInt);
+    }
+    
+    public int getType(int paramInt)
+    {
+      return nativeGetType(this.i, paramInt);
+    }
+    
+    public boolean isNull(int paramInt)
+    {
+      return getType(paramInt) == 0;
     }
   }
   
-  public void setCallback(RepairKit.Callback paramCallback)
+  public static abstract interface a
   {
-    this.mCallback = paramCallback;
+    public abstract int a();
+  }
+  
+  public static final class b
+  {
+    private long a;
+    
+    public final void a()
+    {
+      long l = this.a;
+      if (l == 0L) {
+        return;
+      }
+      RepairKit.a(l);
+      this.a = 0L;
+    }
+    
+    protected final void finalize()
+    {
+      a();
+      super.finalize();
+    }
   }
 }
 

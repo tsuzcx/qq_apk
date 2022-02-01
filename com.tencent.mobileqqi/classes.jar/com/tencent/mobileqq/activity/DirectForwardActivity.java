@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import cgx;
+import cgw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -14,7 +14,7 @@ public class DirectForwardActivity
   public static final String a = "toUin";
   public static final String b = "uinType";
   public static final String c = "openerProc";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cgx(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cgw(this);
   ForwardOperations jdField_a_of_type_ComTencentMobileqqActivityForwardOperations;
   public String d;
   

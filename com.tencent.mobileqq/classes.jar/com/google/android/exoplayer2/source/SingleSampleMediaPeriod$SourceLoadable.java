@@ -34,31 +34,32 @@ final class SingleSampleMediaPeriod$SourceLoadable
     try
     {
       this.dataSource.open(this.dataSpec);
-      if (i != -1)
+      while (i != -1)
       {
-        this.sampleSize = (i + this.sampleSize);
+        this.sampleSize += i;
         if (this.sampleData == null) {
           this.sampleData = new byte[1024];
+        } else if (this.sampleSize == this.sampleData.length) {
+          this.sampleData = Arrays.copyOf(this.sampleData, this.sampleData.length * 2);
         }
-        for (;;)
-        {
-          i = this.dataSource.read(this.sampleData, this.sampleSize, this.sampleData.length - this.sampleSize);
-          break;
-          if (this.sampleSize == this.sampleData.length) {
-            this.sampleData = Arrays.copyOf(this.sampleData, this.sampleData.length * 2);
-          }
-        }
+        i = this.dataSource.read(this.sampleData, this.sampleSize, this.sampleData.length - this.sampleSize);
       }
+      Util.closeQuietly(this.dataSource);
+      return;
     }
     finally
     {
       Util.closeQuietly(this.dataSource);
     }
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SingleSampleMediaPeriod.SourceLoadable
  * JD-Core Version:    0.7.0.1
  */

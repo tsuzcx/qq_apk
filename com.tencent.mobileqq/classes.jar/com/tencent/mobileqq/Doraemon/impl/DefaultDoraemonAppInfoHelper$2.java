@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import abxj;
-import abxt;
-import auef;
+import com.tencent.mobileqq.miniapp.MiniAppInfo;
 
-public class DefaultDoraemonAppInfoHelper$2
+class DefaultDoraemonAppInfoHelper$2
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$2(abxj paramabxj, abxt paramabxt, auef paramauef) {}
+  DefaultDoraemonAppInfoHelper$2(DefaultDoraemonAppInfoHelper paramDefaultDoraemonAppInfoHelper, DefaultDoraemonAppInfoHelper.OnGetAppInfo paramOnGetAppInfo, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    abxt localabxt = this.jdField_a_of_type_Abxt;
-    auef localauef = this.jdField_a_of_type_Auef;
-    if (this.jdField_a_of_type_Auef.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localabxt.a(localauef, i);
-      return;
+    DefaultDoraemonAppInfoHelper.OnGetAppInfo localOnGetAppInfo = this.a;
+    MiniAppInfo localMiniAppInfo = this.b;
+    int i;
+    if (localMiniAppInfo.h == 1) {
+      i = 2;
+    } else {
+      i = 3;
     }
+    localOnGetAppInfo.a(localMiniAppInfo, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.2
  * JD-Core Version:    0.7.0.1
  */

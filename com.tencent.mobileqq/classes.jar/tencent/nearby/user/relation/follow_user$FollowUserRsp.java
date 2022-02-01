@@ -9,14 +9,20 @@ import tencent.nearby.common.nearby_common.ErrorInfo;
 public final class follow_user$FollowUserRsp
   extends MessageMicro<FollowUserRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uin", "dst_uin", "result" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), null }, FollowUserRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field dst_uin = PBField.initUInt64(0L);
   public nearby_common.ErrorInfo result = new nearby_common.ErrorInfo();
   public final PBUInt64Field uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uin", "dst_uin", "result" }, new Object[] { localLong, localLong, null }, FollowUserRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.nearby.user.relation.follow_user.FollowUserRsp
  * JD-Core Version:    0.7.0.1
  */

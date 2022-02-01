@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.QQPhotoInfo;
+import android.net.Uri;
 
-public final class fnk
-  implements Parcelable.Creator
+abstract interface fnk
 {
-  public QQPhotoInfo a(Parcel paramParcel)
-  {
-    return new QQPhotoInfo(paramParcel, null);
-  }
-  
-  public QQPhotoInfo[] a(int paramInt)
-  {
-    return new QQPhotoInfo[paramInt];
-  }
+  public static final Uri a = Uri.parse("content://qqlite");
+  public static final Uri b = Uri.parse("content://qqlite/external/friendlist");
+  public static final Uri c = Uri.parse("content://qqlite/external/historylist");
 }
 
 

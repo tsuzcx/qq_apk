@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/view_space" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="30.0dip" />
+    <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/qq_dating_feeds_no_result_icon" />
+    <TextView android:gravity="center_horizontal" android:id="@id/txv_no_content_description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qq_dating_no_result_text" style="@style/DatingFont_10" />
+    <Button android:id="@id/qq_dating_feed_empty_publish" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/qq_dating_no_result_publish_text" style="@style/ButtonBlue" />
+</LinearLayout>

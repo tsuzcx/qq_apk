@@ -1,5 +1,6 @@
 package wf7;
 
+import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -44,51 +45,40 @@ public class hu
   
   private void a(LinkedList<hr> paramLinkedList)
   {
-    if (!hj.a(paramLinkedList)) {}
-    label91:
-    label92:
-    for (;;)
-    {
+    if (!hj.a(paramLinkedList)) {
       return;
-      Collections.sort(paramLinkedList, new hu.3(this));
-      Object localObject = null;
-      Iterator localIterator = paramLinkedList.iterator();
-      if (localIterator.hasNext())
+    }
+    Collections.sort(paramLinkedList, new hu.3(this));
+    Object localObject = null;
+    Iterator localIterator = paramLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      hr localhr = (hr)localIterator.next();
+      localhr.tN = false;
+      if ((localObject == null) && (localhr.isBestWiFi))
       {
-        hr localhr = (hr)localIterator.next();
-        localhr.tN = false;
-        if ((localObject != null) || (!localhr.isBestWiFi)) {
-          break label91;
-        }
         localhr.tN = true;
         localObject = localhr;
       }
-      for (;;)
-      {
-        break;
-        if (localObject == null) {
-          break label92;
-        }
-        paramLinkedList.remove(localObject);
-        paramLinkedList.push(localObject);
-        return;
-      }
+    }
+    if (localObject != null)
+    {
+      paramLinkedList.remove(localObject);
+      paramLinkedList.push(localObject);
     }
   }
   
   private void a(List<hr> paramList, String paramString)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.listIterator();
-      while (paramList.hasNext())
-      {
-        hr localhr = (hr)paramList.next();
-        if ((localhr == null) || (TextUtils.equals(localhr.ssid, paramString))) {
-          paramList.remove();
-        }
+    }
+    paramList = paramList.listIterator();
+    while (paramList.hasNext())
+    {
+      hr localhr = (hr)paramList.next();
+      if ((localhr == null) || (TextUtils.equals(localhr.ssid, paramString))) {
+        paramList.remove();
       }
     }
   }
@@ -115,37 +105,35 @@ public class hu
   
   private void b(LinkedList<hr> paramLinkedList)
   {
-    if (!hj.a(paramLinkedList)) {}
-    for (;;)
-    {
+    if (!hj.a(paramLinkedList)) {
       return;
-      Collections.sort(paramLinkedList, new hu.4(this));
-      Object localObject = ha.getConfiguredNetworks();
-      if (hj.a((Collection)localObject))
+    }
+    Collections.sort(paramLinkedList, new hu.4(this));
+    Object localObject = ha.getConfiguredNetworks();
+    if (hj.a((Collection)localObject))
+    {
+      LinkedList localLinkedList = new LinkedList();
+      ListIterator localListIterator = paramLinkedList.listIterator();
+      for (;;)
       {
-        LinkedList localLinkedList = new LinkedList();
-        ListIterator localListIterator = paramLinkedList.listIterator();
-        for (;;)
+        if (!localListIterator.hasNext()) {
+          break label128;
+        }
+        hr localhr = (hr)localListIterator.next();
+        Iterator localIterator = ((List)localObject).iterator();
+        if (localIterator.hasNext())
         {
-          if (!localListIterator.hasNext()) {
-            break label128;
+          if (!TextUtils.equals(ha.j(((WifiConfiguration)localIterator.next()).SSID), localhr.ssid)) {
+            break;
           }
-          hr localhr = (hr)localListIterator.next();
-          Iterator localIterator = ((List)localObject).iterator();
-          if (localIterator.hasNext())
-          {
-            if (!TextUtils.equals(ha.j(((WifiConfiguration)localIterator.next()).SSID), localhr.ssid)) {
-              break;
-            }
-            localLinkedList.push(localhr);
-            localListIterator.remove();
-          }
+          localLinkedList.push(localhr);
+          localListIterator.remove();
         }
-        label128:
-        localObject = localLinkedList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          paramLinkedList.push((hr)((Iterator)localObject).next());
-        }
+      }
+      label128:
+      localObject = localLinkedList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramLinkedList.push((hr)((Iterator)localObject).next());
       }
     }
   }
@@ -169,10 +157,13 @@ public class hu
   
   public void onConnectionStateChanged(int paramInt, TMSDKFreeWifiInfo paramTMSDKFreeWifiInfo)
   {
-    if ((paramTMSDKFreeWifiInfo == null) || (paramTMSDKFreeWifiInfo.ssid == null)) {
-      return;
+    if (paramTMSDKFreeWifiInfo != null)
+    {
+      if (paramTMSDKFreeWifiInfo.ssid == null) {
+        return;
+      }
+      this.ud = paramTMSDKFreeWifiInfo.ssid;
     }
-    this.ud = paramTMSDKFreeWifiInfo.ssid;
   }
   
   public void onConnectionSuccess(TMSDKFreeWifiInfo paramTMSDKFreeWifiInfo)
@@ -212,7 +203,13 @@ public class hu
   public void onUpdateFinish(int paramInt, List<TMSDKFreeWifiInfo> paramList)
   {
     this.ug.set(true);
-    dg.a(fq.cr(), "更新完成：" + paramInt + "|" + hj.b(paramList));
+    Context localContext = fq.cr();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("更新完成：");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(hj.b(paramList));
+    dg.a(localContext, localStringBuilder.toString());
     if (paramInt == -1)
     {
       this.ub.aD(1);
@@ -257,7 +254,7 @@ public class hu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hu
  * JD-Core Version:    0.7.0.1
  */

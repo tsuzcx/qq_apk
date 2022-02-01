@@ -20,27 +20,26 @@ public class ConfigProtocol$AVSwitchTypeTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramByteBuffer != null)
+    if ((paramByteBuffer != null) && (paramByteBuffer.length() > 0))
     {
-      bool1 = bool2;
-      if (paramByteBuffer.length() > 0)
+      int i = paramByteBuffer.ReadUInt8();
+      if (i >= 0)
       {
-        int i = paramByteBuffer.ReadUInt8();
-        bool1 = bool2;
-        if (i >= 0)
+        this.m_bIsAuidoEnable = ((byte)(i & 0x1));
+        this.m_bIsOpenMaxEnable = ((byte)(i >> 1 & 0x1));
+        if (QLog.isColorLevel())
         {
-          this.m_bIsAuidoEnable = ((byte)(i & 0x1));
-          this.m_bIsOpenMaxEnable = ((byte)(i >> 1 & 0x1));
-          if (QLog.isColorLevel()) {
-            QLog.d("simonchwang", 0, "m_bIsAuidoEnable:" + this.m_bIsAuidoEnable + "m_bIsOpenMaxEnable:" + this.m_bIsOpenMaxEnable);
-          }
-          bool1 = true;
+          paramByteBuffer = new StringBuilder();
+          paramByteBuffer.append("m_bIsAuidoEnable:");
+          paramByteBuffer.append(this.m_bIsAuidoEnable);
+          paramByteBuffer.append("m_bIsOpenMaxEnable:");
+          paramByteBuffer.append(this.m_bIsOpenMaxEnable);
+          QLog.d("simonchwang", 0, paramByteBuffer.toString());
         }
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public byte getM_bIsAuidoEnable()
@@ -55,7 +54,7 @@ public class ConfigProtocol$AVSwitchTypeTLV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigProtocol.AVSwitchTypeTLV
  * JD-Core Version:    0.7.0.1
  */

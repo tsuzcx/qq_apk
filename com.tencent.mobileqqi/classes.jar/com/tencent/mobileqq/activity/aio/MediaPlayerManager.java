@@ -22,8 +22,8 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
+import dvt;
 import dvu;
-import dvv;
 import mqq.manager.Manager;
 
 public class MediaPlayerManager
@@ -41,7 +41,7 @@ public class MediaPlayerManager
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private dvv jdField_a_of_type_Dvv;
+  private dvu jdField_a_of_type_Dvu;
   public boolean a;
   public float b;
   private Sensor jdField_b_of_type_AndroidHardwareSensor;
@@ -61,7 +61,7 @@ public class MediaPlayerManager
     this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)localBaseApplication.getSystemService("sensor"));
     this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
     this.jdField_b_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
-    this.jdField_a_of_type_Dvv = new dvv(this);
+    this.jdField_a_of_type_Dvu = new dvu(this);
     if (this.jdField_a_of_type_AndroidHardwareSensor != null) {
       if ((!a()) && (!b())) {
         break label179;
@@ -289,7 +289,7 @@ public class MediaPlayerManager
       }
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new dvu(this, paramAudioPlayer, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dvt(this, paramAudioPlayer, paramInt));
   }
   
   public void a(XListView paramXListView, ChatAdapter1 paramChatAdapter1, MediaPlayerManager.Listener paramListener)
@@ -318,7 +318,7 @@ public class MediaPlayerManager
       View localView = AIOUtils.a(this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentWidgetXListView.k() + i);
       MediaPlayerManager.Callback localCallback = (MediaPlayerManager.Callback)this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
       if (AIOUtils.b()) {}
-      for (this.jdField_d_of_type_Boolean = true;; this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.v())
+      for (this.jdField_d_of_type_Boolean = true;; this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.w())
       {
         boolean bool = AudioHelper.a(BaseApplicationImpl.getContext());
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_d_of_type_Boolean);
@@ -339,7 +339,7 @@ public class MediaPlayerManager
         if ((this.jdField_b_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensor != null))
         {
           this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Dvv, this.jdField_b_of_type_AndroidHardwareSensor, 3);
+          this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Dvu, this.jdField_b_of_type_AndroidHardwareSensor, 3);
         }
         if (this.jdField_a_of_type_AndroidHardwareSensor != null) {
           this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 3);
@@ -382,7 +382,7 @@ public class MediaPlayerManager
   
   public void c()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.v();
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.w();
     if ((bool != this.jdField_d_of_type_Boolean) && (d()))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(bool);
@@ -401,7 +401,7 @@ public class MediaPlayerManager
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener.r();
     }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Dvv);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Dvu);
     this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
   }
   
@@ -532,7 +532,7 @@ public class MediaPlayerManager
         this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener.a(this.e, this.jdField_d_of_type_Boolean);
         return;
       } while ((this.e) || (this.jdField_d_of_type_Boolean));
-      this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.v();
+      this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.w();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_d_of_type_Boolean);
     } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener == null);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Listener.a(this.e, this.jdField_d_of_type_Boolean);

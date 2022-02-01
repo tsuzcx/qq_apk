@@ -9,7 +9,7 @@ public final class MsgType0x210SubMsgType0x24
   extends JceStruct
 {
   static ArrayList<PluginNum> cache_vPluginNumList;
-  public ArrayList<PluginNum> vPluginNumList;
+  public ArrayList<PluginNum> vPluginNumList = null;
   
   public MsgType0x210SubMsgType0x24() {}
   
@@ -31,14 +31,15 @@ public final class MsgType0x210SubMsgType0x24
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vPluginNumList != null) {
-      paramJceOutputStream.write(this.vPluginNumList, 0);
+    ArrayList localArrayList = this.vPluginNumList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x24
  * JD-Core Version:    0.7.0.1
  */

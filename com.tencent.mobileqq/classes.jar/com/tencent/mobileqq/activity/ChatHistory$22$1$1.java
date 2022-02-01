@@ -7,14 +7,14 @@ class ChatHistory$22$1$1
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$22$1.a.this$0.isFinishing()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$22$1.a.this$0.a(this.jdField_a_of_type_Int);
+    if (!this.b.a.this$0.isFinishing()) {
+      this.b.a.this$0.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.22.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -63,47 +63,63 @@ public class NormalFeedImageProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.mWidth <= 0) || (this.mHeight <= 0)) {}
-    int i;
-    int j;
-    do
+    Object localObject1 = paramDrawable;
+    if (this.mWidth > 0)
     {
-      return paramDrawable;
-      i = paramDrawable.getIntrinsicWidth();
-      j = paramDrawable.getIntrinsicHeight();
-    } while ((i == this.mWidth) && (j == this.mHeight) && ((paramDrawable instanceof SpecifiedBitmapDrawable)));
-    float f;
-    if ((this.mKeepOrigScale) && (i != 0) && (j != 0) && (this.mWidth != 0) && (this.mHeight != 0))
-    {
-      f = i * 1.0F / j;
-      if ((Math.abs(f - this.mWidth * 1.0F / this.mHeight) > 0.05D) && (this.mMaxWidth != 0) && (this.mMaxHeight != 0))
-      {
-        if (f < this.mMaxWidth * 1.0F / this.mMaxHeight) {
-          break label323;
-        }
-        this.mWidth = Math.min(i * 2, this.mMaxWidth);
-        this.mHeight = ((int)(this.mWidth / f));
+      if (this.mHeight <= 0) {
+        return paramDrawable;
       }
-    }
-    for (;;)
-    {
-      if ((i >= j * 2) || (this.hasPivot))
+      int i = paramDrawable.getIntrinsicWidth();
+      int j = paramDrawable.getIntrinsicHeight();
+      if ((i == this.mWidth) && (j == this.mHeight) && ((paramDrawable instanceof SpecifiedBitmapDrawable))) {
+        return paramDrawable;
+      }
+      int k;
+      if ((this.mKeepOrigScale) && (i != 0) && (j != 0))
       {
+        k = this.mWidth;
+        if (k != 0)
+        {
+          int m = this.mHeight;
+          if (m != 0)
+          {
+            float f = i * 1.0F / j;
+            if (Math.abs(f - k * 1.0F / m) > 0.05D)
+            {
+              k = this.mMaxWidth;
+              if (k != 0)
+              {
+                m = this.mMaxHeight;
+                if (m != 0) {
+                  if (f >= k * 1.0F / m)
+                  {
+                    this.mWidth = Math.min(i * 2, k);
+                    this.mHeight = ((int)(this.mWidth / f));
+                  }
+                  else
+                  {
+                    this.mHeight = Math.min(j * 2, m);
+                    this.mWidth = ((int)(this.mHeight * f));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      if ((i < j * 2) && (!this.hasPivot)) {
+        i = this.defaultScaleType;
+      } else {
         i = 10;
-        label192:
-        if (!(paramDrawable instanceof ImageDrawable)) {
-          break;
-        }
       }
-      else
-      {
+      if ((paramDrawable instanceof ImageDrawable)) {
         try
         {
           BitmapReference localBitmapReference = ((ImageDrawable)paramDrawable).getBitmapRef();
-          Object localObject1 = localBitmapReference.getConfig();
+          localObject1 = localBitmapReference.getConfig();
           Object localObject2 = ImageManager.getInstance();
           j = this.mWidth;
-          int k = this.mHeight;
+          k = this.mHeight;
           paramDrawable = (Drawable)localObject1;
           if (localObject1 == null) {
             paramDrawable = Bitmap.Config.ARGB_8888;
@@ -112,26 +128,15 @@ public class NormalFeedImageProcessor
           localObject1 = new Canvas(paramDrawable.getBitmap());
           localObject2 = new Matrix();
           ScaleDrawable.getMatrix((Matrix)localObject2, i, localBitmapReference.getWidth(), localBitmapReference.getHeight(), this.mWidth, this.mHeight, this.mPivotXRate, this.mPivotYRate);
-          boolean bool = localBitmapReference.isRecycled();
-          if (bool)
-          {
+          if (localBitmapReference.isRecycled()) {
             return null;
-            label323:
-            this.mHeight = Math.min(j * 2, this.mMaxHeight);
-            this.mWidth = ((int)(f * this.mHeight));
-            continue;
-            i = this.defaultScaleType;
-            break label192;
           }
-          else
-          {
-            ((Canvas)localObject1).drawBitmap(localBitmapReference.getBitmap(), (Matrix)localObject2, mPaint);
-            if (!localBitmapReference.isRecycled()) {
-              localBitmapReference.release();
-            }
-            paramDrawable = new SpecifiedBitmapDrawable(paramDrawable);
-            return paramDrawable;
+          ((Canvas)localObject1).drawBitmap(localBitmapReference.getBitmap(), (Matrix)localObject2, mPaint);
+          if (!localBitmapReference.isRecycled()) {
+            localBitmapReference.release();
           }
+          paramDrawable = new SpecifiedBitmapDrawable(paramDrawable);
+          return paramDrawable;
         }
         catch (OutOfMemoryError paramDrawable)
         {
@@ -139,10 +144,11 @@ public class NormalFeedImageProcessor
           return null;
         }
       }
+      paramDrawable = new ScaleDrawable(paramDrawable, i);
+      paramDrawable.setPivot(this.mPivotXRate, this.mPivotYRate);
+      localObject1 = new SpecifiedDrawable(paramDrawable, this.mWidth, this.mHeight);
     }
-    paramDrawable = new ScaleDrawable(paramDrawable, i);
-    paramDrawable.setPivot(this.mPivotXRate, this.mPivotYRate);
-    return new SpecifiedDrawable(paramDrawable, this.mWidth, this.mHeight);
+    return localObject1;
   }
   
   public void setDefaultScaleType(int paramInt)
@@ -155,7 +161,7 @@ public class NormalFeedImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.processor.NormalFeedImageProcessor
  * JD-Core Version:    0.7.0.1
  */

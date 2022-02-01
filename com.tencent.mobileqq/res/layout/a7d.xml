@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBar android:id="@id/fal" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:endDrawable="@drawable/dtv" app:startDrawable="@drawable/dr0" app:title="@string/gso" app:titleTextColor="@color/bp" />
+    <com.tencent.mobileqq.kandian.biz.daily.DailyTitleBar android:id="@id/fal" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:endDrawable="@drawable/dtv" app:startDrawable="@drawable/dr0" app:title="@string/gso" app:titleTextColor="@color/black" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/fal">
         <FrameLayout android:id="@id/i02" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher android:id="@id/bd8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBar android:id="@id/jvw" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" app:endDrawable="@drawable/dtw" app:startDrawable="@drawable/dr1" app:titleTextColor="@color/al3" />
-            <com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBar android:id="@id/l30" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" app:endDrawable="@drawable/dtv" app:startDrawable="@drawable/dr0" app:title="@string/gso" app:titleTextColor="@color/bp" />
-        </com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher>
+        <com.tencent.mobileqq.kandian.biz.daily.DailyTitleBarSwitcher android:id="@id/bd8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.kandian.biz.daily.DailyTitleBar android:id="@id/jvw" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" app:endDrawable="@drawable/dtw" app:startDrawable="@drawable/dr1" app:titleTextColor="@color/al3" />
+            <com.tencent.mobileqq.kandian.biz.daily.DailyTitleBar android:id="@id/l30" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" app:endDrawable="@drawable/dtv" app:startDrawable="@drawable/dr0" app:title="@string/gso" app:titleTextColor="@color/black" />
+        </com.tencent.mobileqq.kandian.biz.daily.DailyTitleBarSwitcher>
     </FrameLayout>
     <ViewStub android:id="@id/lf0" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

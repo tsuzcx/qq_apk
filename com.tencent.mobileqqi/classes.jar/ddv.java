@@ -1,36 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ddv
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
   public ddv(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "", "", "", "");
+    if (!this.a.isFinishing())
     {
+      paramDialogInterface.dismiss();
+      this.a.showDialog(1);
     }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131561834));
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839721);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131561702));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
+    ThreadManager.b(new ddw(this));
   }
 }
 

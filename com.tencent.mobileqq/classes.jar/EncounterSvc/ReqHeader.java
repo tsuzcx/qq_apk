@@ -11,11 +11,11 @@ public final class ReqHeader
   static int cache_eMqqSysType;
   public int eBusiType = 0;
   public int eMqqSysType = 0;
-  public long iAppID;
-  public long lMID;
-  public short shVersion;
-  public long uClientIp;
-  public long uClientPort;
+  public long iAppID = 0L;
+  public long lMID = 0L;
+  public short shVersion = 0;
+  public long uClientIp = 0L;
+  public long uClientPort = 0L;
   
   public ReqHeader() {}
   
@@ -54,7 +54,7 @@ public final class ReqHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class ClientMsg
 {
   static ReqHeader cache_stHeader;
   static Msg cache_stMsg;
-  public ReqHeader stHeader;
-  public Msg stMsg;
+  public ReqHeader stHeader = null;
+  public Msg stMsg = null;
   
   public ClientMsg() {}
   
@@ -40,7 +40,7 @@ public final class ClientMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.ClientMsg
  * JD-Core Version:    0.7.0.1
  */

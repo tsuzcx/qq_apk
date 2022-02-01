@@ -1,23 +1,20 @@
 import android.app.Dialog;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class cah
-  implements Runnable
+class cah
+  implements Animation.AnimationListener
 {
-  public cah(Dialog paramDialog) {}
+  cah(cag paramcag) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.isShowing())
-    {
-      TextView localTextView = (TextView)this.a.findViewById(2131231132);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.9F, 0.0F);
-      localAlphaAnimation.setDuration(500L);
-      localAlphaAnimation.setAnimationListener(new cai(this));
-      localTextView.startAnimation(localAlphaAnimation);
-    }
+    this.a.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

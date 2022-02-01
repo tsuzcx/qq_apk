@@ -3,27 +3,25 @@ package com.tencent.mobileqq.emoticonview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apxc;
 
 public class EmotionPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new apxc();
-  public String a;
-  public boolean a;
+  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new EmotionPreviewInfo.1();
+  public boolean isCheck;
+  public String path;
   
   public EmotionPreviewInfo() {}
   
   public EmotionPreviewInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    this.path = paramParcel.readString();
+    int i = paramParcel.readByte();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.isCheck = bool;
   }
   
   public int describeContents()
@@ -35,20 +33,16 @@ public class EmotionPreviewInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(" path: ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" path: ");
+    localStringBuilder.append(this.path);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeString(this.path);
+    paramParcel.writeByte((byte)this.isCheck);
   }
 }
 

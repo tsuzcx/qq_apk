@@ -1,59 +1,49 @@
 package com.tencent.mm.plugin.voip.model;
 
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.TimerTask;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.voip.floatcard.b;
+import com.tencent.mm.plugin.voip.ui.c;
+import java.lang.ref.WeakReference;
+import kotlin.g.b.s;
 
 final class u$6
-  extends TimerTask
+  implements Runnable
 {
-  u$6(u paramu) {}
+  u$6(u paramu, Context paramContext, Intent paramIntent, long paramLong, boolean paramBoolean, String paramString) {}
   
   public final void run()
   {
-    int i = 10;
-    AppMethodBeat.i(4648);
-    if (u.g(this.tzy) != null) {
-      u.a(this.tzy, u.g(this.tzy).getConnectionInfo());
-    }
-    if ((u.h(this.tzy) != null) && (u.h(this.tzy).getBSSID() != null) && (u.g(this.tzy) != null))
+    AppMethodBeat.i(293309);
+    Object localObject = u.j(this.UCe);
+    Context localContext = this.val$context;
+    Intent localIntent = this.val$intent;
+    long l = this.SMG;
+    boolean bool = this.UCf;
+    String str = this.hkh;
+    s.u(localContext, "context");
+    s.u(localIntent, "intent");
+    s.u(str, "toUser");
+    s.u(localContext, "context");
+    s.u(localIntent, "intent");
+    s.u(str, "toUser");
+    ((b)localObject).UvH = bool;
+    com.tencent.mm.plugin.voip.d.d locald = com.tencent.mm.plugin.voip.d.d.UGN;
+    if (bool) {}
+    for (int i = 2;; i = 1)
     {
-      u.g(this.tzy);
-      u.HD(WifiManager.calculateSignalLevel(u.h(this.tzy).getRssi(), 10));
-      if (u.aUG() > 10)
-      {
-        u.HD(i);
-        if (u.aUG() >= 0) {
-          break label182;
-        }
-        i = 0;
-        label118:
-        u.HD(i);
-        u.HD(u.aUG() * 10);
+      com.tencent.mm.plugin.voip.d.d.aqG(i);
+      ((b)localObject).a(localContext, localIntent, l, str);
+      ((com.tencent.mm.sensitive.d)h.az(com.tencent.mm.sensitive.d.class)).markEnterBusiness(".ui.voip.VoipFloatView");
+      localObject = (c)((b)localObject).UvG.get();
+      if (localObject != null) {
+        ((c)localObject).aF(bool, str);
       }
-    }
-    for (;;)
-    {
-      if (u.aUG() != -1) {
-        break label197;
-      }
-      if (u.i(this.tzy) <= 1) {
-        u.HC(-1);
-      }
-      this.tzy.setNetSignalValue(1, u.access$400());
-      AppMethodBeat.o(4648);
+      AppMethodBeat.o(293309);
       return;
-      i = u.aUG();
-      break;
-      label182:
-      i = u.aUG();
-      break label118;
-      u.HD(-1);
     }
-    label197:
-    this.tzy.setNetSignalValue(2, u.aUG());
-    AppMethodBeat.o(4648);
   }
 }
 

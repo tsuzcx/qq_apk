@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<LinearLayout android:orientation="vertical" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/cbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lg" />
-    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
-    <CheckBox android:id="@id/cbg" android:background="@drawable/a0c" android:focusable="false" android:clickable="false" android:layout_height="20.0dip" android:singleLine="true" style="@style/lj" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:textSize="18.0dip" android:id="@id/kih" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/nh" />
+        </LinearLayout>
+    </ScrollView>
+    <TextView android:textColor="@color/a7b" android:gravity="right" android:id="@id/k1a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/k1" />
 </LinearLayout>

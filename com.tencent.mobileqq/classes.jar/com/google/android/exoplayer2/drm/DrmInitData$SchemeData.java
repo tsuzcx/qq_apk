@@ -24,12 +24,13 @@ public final class DrmInitData$SchemeData
     this.uuid = new UUID(paramParcel.readLong(), paramParcel.readLong());
     this.mimeType = paramParcel.readString();
     this.data = paramParcel.createByteArray();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.requiresSecureDecryption = bool;
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.requiresSecureDecryption = bool;
   }
   
   public DrmInitData$SchemeData(UUID paramUUID, String paramString, byte[] paramArrayOfByte)
@@ -57,25 +58,14 @@ public final class DrmInitData$SchemeData
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (!(paramObject instanceof SchemeData)) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramObject == this);
-      paramObject = (SchemeData)paramObject;
-      if ((!this.mimeType.equals(paramObject.mimeType)) || (!Util.areEqual(this.uuid, paramObject.uuid))) {
-        break;
-      }
-      bool1 = bool2;
-    } while (Arrays.equals(this.data, paramObject.data));
-    return false;
+    if (paramObject == this) {
+      return true;
+    }
+    paramObject = (SchemeData)paramObject;
+    return (this.mimeType.equals(paramObject.mimeType)) && (Util.areEqual(this.uuid, paramObject.uuid)) && (Arrays.equals(this.data, paramObject.data));
   }
   
   public boolean hasData()
@@ -102,17 +92,12 @@ public final class DrmInitData$SchemeData
     paramParcel.writeLong(this.uuid.getLeastSignificantBits());
     paramParcel.writeString(this.mimeType);
     paramParcel.writeByteArray(this.data);
-    if (this.requiresSecureDecryption) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.requiresSecureDecryption);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DrmInitData.SchemeData
  * JD-Core Version:    0.7.0.1
  */

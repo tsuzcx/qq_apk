@@ -1,83 +1,72 @@
 package com.tencent.mobileqq.activity;
 
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppActivity;
 import mqq.os.MqqHandler;
 
+@RoutePage(desc="安装", path="/base/install")
 public class InstallActivity
   extends AppActivity
   implements Runnable
 {
-  boolean a = false;
+  public static final String NEXT_ACTIVITY = "NT_AY";
+  boolean mSplashed = false;
   
-  /* Error */
-  public boolean doOnCreate(android.os.Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokespecial 23	mqq/app/AppActivity:doOnCreate	(Landroid/os/Bundle;)Z
-    //   5: pop
-    //   6: aload_0
-    //   7: invokevirtual 27	com/tencent/mobileqq/activity/InstallActivity:getIntent	()Landroid/content/Intent;
-    //   10: ldc 29
-    //   12: invokevirtual 35	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   15: checkcast 31	android/content/Intent
-    //   18: astore_2
-    //   19: aload_2
-    //   20: ifnonnull +59 -> 79
-    //   23: new 31	android/content/Intent
-    //   26: dup
-    //   27: aload_0
-    //   28: ldc 37
-    //   30: invokestatic 43	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   33: invokespecial 46	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   36: astore_1
-    //   37: aload_1
-    //   38: ldc 47
-    //   40: invokevirtual 51	android/content/Intent:addFlags	(I)Landroid/content/Intent;
-    //   43: pop
-    //   44: aload_0
-    //   45: aload_1
-    //   46: invokevirtual 55	com/tencent/mobileqq/activity/InstallActivity:startActivity	(Landroid/content/Intent;)V
-    //   49: aload_0
-    //   50: invokevirtual 58	com/tencent/mobileqq/activity/InstallActivity:finish	()V
-    //   53: iconst_0
-    //   54: ireturn
-    //   55: astore_3
-    //   56: aload_2
-    //   57: astore_1
-    //   58: aload_3
-    //   59: astore_2
-    //   60: aload_2
-    //   61: invokevirtual 61	java/lang/ClassNotFoundException:printStackTrace	()V
-    //   64: goto -20 -> 44
-    //   67: astore_1
-    //   68: iconst_m1
-    //   69: invokestatic 67	java/lang/System:exit	(I)V
-    //   72: goto -19 -> 53
-    //   75: astore_2
-    //   76: goto -16 -> 60
-    //   79: aload_2
-    //   80: astore_1
-    //   81: goto -37 -> 44
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	this	InstallActivity
-    //   0	84	1	paramBundle	android.os.Bundle
-    //   18	43	2	localObject	java.lang.Object
-    //   75	5	2	localClassNotFoundException1	java.lang.ClassNotFoundException
-    //   55	4	3	localClassNotFoundException2	java.lang.ClassNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   23	37	55	java/lang/ClassNotFoundException
-    //   44	53	67	java/lang/Exception
-    //   37	44	75	java/lang/ClassNotFoundException
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public void doOnDestroy()
+  protected boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    Intent localIntent = (Intent)getIntent().getParcelableExtra("NT_AY");
+    paramBundle = localIntent;
+    if (localIntent == null) {
+      try
+      {
+        paramBundle = new Intent(this, Class.forName("com.tencent.mobileqq.activity.SplashActivity"));
+        try
+        {
+          paramBundle.addFlags(67108864);
+        }
+        catch (ClassNotFoundException localClassNotFoundException1) {}
+        Object localObject;
+        localObject.printStackTrace();
+      }
+      catch (ClassNotFoundException localClassNotFoundException2)
+      {
+        paramBundle = localClassNotFoundException1;
+        localObject = localClassNotFoundException2;
+      }
+    }
+    try
+    {
+      startActivity(paramBundle);
+      finish();
+    }
+    catch (Exception paramBundle)
+    {
+      label74:
+      break label74;
+    }
+    System.exit(-1);
+    return false;
+  }
+  
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     try
@@ -93,20 +82,27 @@ public class InstallActivity
     }
   }
   
-  public void onResume()
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onResume()
   {
     super.onResume();
-    if (!this.a) {
+    if (!this.mSplashed) {
       BaseApplicationImpl.sUiHandler.post(this);
     }
   }
   
   public void run()
   {
-    if (this.a) {
+    if (this.mSplashed) {
       return;
     }
-    this.a = true;
+    this.mSplashed = true;
     BaseApplicationImpl.sApplication.getResources();
     SetSplash.a(this, null, true);
   }
@@ -118,7 +114,7 @@ public class InstallActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.InstallActivity
  * JD-Core Version:    0.7.0.1
  */

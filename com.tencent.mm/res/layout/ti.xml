@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RadioGroup android:orientation="vertical" android:id="@id/bcn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout style="@style/h1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="right" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/b3p" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/h3">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="vertical" android:id="@id/b47" android:layout_width="@dimen/ym" android:layout_height="wrap_content" style="@style/h3">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/no" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/bv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxWidth="@dimen/zb" android:minHeight="@dimen/ad">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:layout_gravity="left" android:id="@id/jim" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:singleLine="false" style="@style/ma" />
+                <com.tencent.mm.ui.widget.MMTextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="left" android:id="@id/jin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:text="@string/i61" />
+                <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/j6" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv">
+                    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/jio" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" app:logo_anim_auto_paly="true" app:logo_height="@dimen/cp" app:logo_mode="aw_" app:logo_style="qa" app:logo_width="@dimen/cp" />
+                    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/jip" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" app:logo_height="@dimen/cp" app:logo_mode="aw_" app:logo_style="f3g" app:logo_width="@dimen/cp" />
+                    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:text="@string/i79" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <include layout="@layout/qk" />
+    </LinearLayout>
 </LinearLayout>

@@ -8,12 +8,12 @@ final class TbsShareManager$1
 {
   public boolean accept(File paramFile)
   {
-    return !paramFile.getName().endsWith(".dex");
+    return paramFile.getName().endsWith(".dex") ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsShareManager.1
  * JD-Core Version:    0.7.0.1
  */

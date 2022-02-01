@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.main.CommonLoadingView android:id="@id/common_loading_view" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/skin_hint_input" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载…" />
+</com.tencent.mobileqq.activity.main.CommonLoadingView>

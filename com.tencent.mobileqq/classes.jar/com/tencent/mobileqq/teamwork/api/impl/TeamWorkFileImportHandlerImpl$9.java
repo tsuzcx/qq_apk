@@ -1,0 +1,49 @@
+package com.tencent.mobileqq.teamwork.api.impl;
+
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
+
+class TeamWorkFileImportHandlerImpl$9
+  implements WtTicketPromise
+{
+  TeamWorkFileImportHandlerImpl$9(TeamWorkFileImportHandlerImpl paramTeamWorkFileImportHandlerImpl, Runnable paramRunnable) {}
+  
+  public void Done(Ticket paramTicket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkFileImportHandlerImpl", 2, "--- pskey invalid retry ---  ");
+    }
+    ThreadManager.executeOnNetWorkThread(this.a);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--- get pskey failed ---  ");
+      localStringBuilder.append(paramErrMsg.getMessage());
+      QLog.e("TeamWorkFileImportHandlerImpl", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--- get pskey timeout ---  ");
+      localStringBuilder.append(paramErrMsg.getMessage());
+      QLog.e("TeamWorkFileImportHandlerImpl", 2, localStringBuilder.toString());
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.9
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,20 @@
+package com.tencent.mobileqq.apollo.aio.api.impl;
+
+import com.tencent.mobileqq.apollo.aio.api.ICmShowAioMatcher.AioSupported;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
+import mqq.app.AppRuntime;
+
+final class CmShowAioMatcherImpl$2
+  implements ICmShowAioMatcher.AioSupported
+{
+  public boolean a(AppRuntime paramAppRuntime, String paramString)
+  {
+    return CmShowWnsUtils.r();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl.2
+ * JD-Core Version:    0.7.0.1
+ */

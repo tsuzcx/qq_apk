@@ -12,18 +12,26 @@ class EngineManager$EngineChannelReceiver$3
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.i("EngineManager", 1, "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] updateBaseLib response. isSuc=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" rsp=");
+    localStringBuilder.append(paramJSONObject);
+    QLog.i("EngineManager", 1, localStringBuilder.toString());
     if ((paramBoolean) && (paramJSONObject != null))
     {
       paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.val$baseLibType)));
-      QLog.i("EngineManager", 1, "[MiniEng] engineLibInfo " + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniEng] engineLibInfo ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.i("EngineManager", 1, localStringBuilder.toString());
       EngineManager.access$400(this.this$1.this$0, paramJSONObject, this.val$remote);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineManager.EngineChannelReceiver.3
  * JD-Core Version:    0.7.0.1
  */

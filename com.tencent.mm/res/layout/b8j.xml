@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/w6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="20.0dip" android:layout_marginBottom="6.0dip" android:text="@string/g16" />
-        <com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView android:orientation="vertical" android:id="@id/fqh" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:id="@id/g3q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ProgressBar android:layout_gravity="center" android:id="@id/na" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/a03" />
     </LinearLayout>
-</ScrollView>
+    <ImageView android:layout_gravity="center" android:id="@id/g3f" android:paddingTop="5.0dip" android:paddingBottom="25.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bd6" />
+    <TextView android:textSize="14.0dip" android:gravity="center" android:layout_gravity="center" android:id="@id/g3v" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/ate" />
+</LinearLayout>

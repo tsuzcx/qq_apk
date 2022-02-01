@@ -15,10 +15,10 @@ public class CompositeGeneratedAdaptersObserver
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    int j = 0;
     MethodCallsLogger localMethodCallsLogger = new MethodCallsLogger();
     GeneratedAdapter[] arrayOfGeneratedAdapter = this.mGeneratedAdapters;
     int k = arrayOfGeneratedAdapter.length;
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -37,7 +37,7 @@ public class CompositeGeneratedAdaptersObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.CompositeGeneratedAdaptersObserver
  * JD-Core Version:    0.7.0.1
  */

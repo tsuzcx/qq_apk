@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/qzone_widget_detail" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/lunar_layout" android:background="@drawable/qzone_cover_widget_bg_lunar" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="35.0sp" android:textStyle="bold" android:textColor="@color/qzone_widget_lunar_red" android:gravity="center" android:id="@id/lunar_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="八月初一" android:layout_centerInParent="true" />
+            <ImageView android:layout_width="21.0dip" android:layout_height="35.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/qzone_cover_lunar_lunarcalendar" android:layout_toRightOf="@id/lunar_date" />
+        </RelativeLayout>
+        <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_date" android:gravity="center" android:id="@id/lunar_ex" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="癸巳年丁巳月戊寅日" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/qzone_widget_lunar_date" android:gravity="center" android:id="@id/lunar_solar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="2013年06月25日 周二" />
+        <ImageView android:background="@color/qzone_widget_lunar_line" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="15.0dip" />
+        <View android:background="@color/qzone_widget_lunar_line" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginLeft="15.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="15.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip">
+            <ImageView android:id="@id/lunar_yi_icon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_cover_lunar_suitable" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/qzone_widget_lunar_yi" android:id="@id/lunar_yi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="嫁娶 开光 出行 理发 作梁 出火 拆卸 修造 开市 交易 立券 挂匾 动土 入宅 移徙 安床 栽种" android:layout_toRightOf="@id/lunar_yi_icon" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">
+            <ImageView android:id="@id/lunar_ji_icon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_cover_lunar_avoid" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/qzone_widget_lunar_red" android:id="@id/lunar_ji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="伐木 祭祀 纳畜 祭祀" android:layout_toRightOf="@id/lunar_ji_icon" />
+        </RelativeLayout>
+        <RelativeLayout android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_chong_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="冲 :" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_chong" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="生肖冲猴" android:layout_toRightOf="@id/lunar_chong_title" />
+        </RelativeLayout>
+        <RelativeLayout android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_sha_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="煞 :" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_sha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="煞北" android:layout_toRightOf="@id/lunar_sha_title" />
+        </RelativeLayout>
+        <RelativeLayout android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_cheng_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="成 :" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_cheng" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="定" android:layout_toRightOf="@id/lunar_cheng_title" />
+        </RelativeLayout>
+        <RelativeLayout android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_zhengchong_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="正冲 :" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_zhengchong" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正冲丙辰" android:layout_toRightOf="@id/lunar_zhengchong_title" />
+        </RelativeLayout>
+        <RelativeLayout android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_taishen_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="胎神 :" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_lunar_other" android:id="@id/lunar_taishen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="房床厕外正南" android:layout_toRightOf="@id/lunar_taishen_title" />
+        </RelativeLayout>
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+</ScrollView>

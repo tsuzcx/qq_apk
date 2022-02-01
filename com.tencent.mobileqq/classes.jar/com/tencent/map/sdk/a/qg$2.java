@@ -10,39 +10,30 @@ final class qg$2
   
   public final void run()
   {
-    for (;;)
+    try
     {
-      qf localqf;
-      try
+      Iterator localIterator = this.d.c.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.d.c.iterator();
-        if (localIterator.hasNext())
-        {
-          localqf = (qf)localIterator.next();
-          if (this.a)
-          {
-            localqf.a(this.b);
-            localqf.a(this.b, this.c);
-          }
+        qf localqf = (qf)localIterator.next();
+        if (this.a) {
+          localqf.a(this.b);
+        } else if (this.c == null) {
+          localqf.b(this.b);
         }
-        else
-        {
-          return;
-        }
+        localqf.a(this.b, this.c);
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      if (this.c == null) {
-        localqf.b(this.b);
-      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.qg.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dcj
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public dcj(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if ((this.a.i) && (!this.a.j) && (!this.a.h)) {
+      this.a.finish();
+    }
+    this.a.j = false;
+  }
 }
 
 

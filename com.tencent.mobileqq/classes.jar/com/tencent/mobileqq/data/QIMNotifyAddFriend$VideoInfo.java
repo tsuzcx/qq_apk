@@ -8,8 +8,12 @@ public class QIMNotifyAddFriend$VideoInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("VideoInfo{");
-    localStringBuilder.append("coverUrl='").append(this.coverUrl).append('\'');
-    localStringBuilder.append(", videoVid='").append(this.videoVid).append('\'');
+    localStringBuilder.append("coverUrl='");
+    localStringBuilder.append(this.coverUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoVid='");
+    localStringBuilder.append(this.videoVid);
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

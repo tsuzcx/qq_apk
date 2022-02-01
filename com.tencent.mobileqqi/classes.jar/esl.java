@@ -1,20 +1,23 @@
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.app.ContactSorter;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class esl
-  implements Comparator
+  extends FriendListObserver
 {
   public esl(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
   
-  private String a(String paramString)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return QvipSpecialCarePersonActivity.a(this.a, paramString) + paramString;
+    if (paramBoolean) {
+      QvipSpecialCarePersonActivity.a(this.a);
+    }
   }
   
-  public int a(String paramString1, String paramString2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return ContactSorter.a(a(paramString1), a(paramString2));
+    if (paramBoolean2) {
+      QvipSpecialCarePersonActivity.a(this.a);
+    }
   }
 }
 

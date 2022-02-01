@@ -8,7 +8,7 @@ public class TPDLProxyInitParam
 {
   private String appVer = "";
   private String cacheDir = "";
-  private String configDir = "";
+  private String configStr = "";
   private String dataDir = "";
   private String guid = "";
   private int platform = 0;
@@ -38,7 +38,7 @@ public class TPDLProxyInitParam
       this.dataDir = paramString4;
     }
     if (!TextUtils.isEmpty(paramString5)) {
-      this.configDir = paramString5;
+      this.configStr = paramString5;
     }
   }
   
@@ -52,9 +52,9 @@ public class TPDLProxyInitParam
     return this.cacheDir;
   }
   
-  public String getConfigDir()
+  public String getConfigStr()
   {
-    return this.configDir;
+    return this.configStr;
   }
   
   public String getDataDir()
@@ -74,7 +74,7 @@ public class TPDLProxyInitParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDLProxyInitParam
  * JD-Core Version:    0.7.0.1
  */

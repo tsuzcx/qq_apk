@@ -4,17 +4,11 @@ import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
 public class exm
   implements Runnable
 {
-  public exm(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, Object paramObject1, Object paramObject2, int paramInt, exo paramexo) {}
+  public exm(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, String paramString, int paramInt, exn paramexn) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_JavaLangObject != null) && (this.b != null) && ((this.b.equals(localObject)) || (localObject == null)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_AndroidViewView.setTag(this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter.b + this.jdField_a_of_type_Int);
-    }
-    exo.a(this.jdField_a_of_type_Exo, null);
+    BaseWhatASmoothAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Exn);
   }
 }
 

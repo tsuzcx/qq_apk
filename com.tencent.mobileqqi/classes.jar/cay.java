@@ -1,19 +1,16 @@
 import android.os.Handler;
-import android.os.Message;
-import android.view.View;
 import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class cay
-  extends Handler
+  extends MessageObserver
 {
   public cay(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    if (ChatForEnterpriseActivity.a(this.a).isShown()) {
-      ChatForEnterpriseActivity.a(this.a).setVisibility(8);
-    }
+    super.a(paramBoolean);
+    ChatForEnterpriseActivity.a(this.a).sendEmptyMessage(0);
   }
 }
 

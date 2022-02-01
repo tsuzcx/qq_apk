@@ -22,17 +22,18 @@ public class MoveGestureDetector
   
   private PointF determineFocalPoint(MotionEvent paramMotionEvent)
   {
-    float f1 = 0.0F;
     int j = paramMotionEvent.getPointerCount();
-    int i = 0;
     float f2 = 0.0F;
+    int i = 0;
+    float f1 = 0.0F;
     while (i < j)
     {
       f2 += paramMotionEvent.getX(i);
       f1 += paramMotionEvent.getY(i);
       i += 1;
     }
-    return new PointF(f2 / j, f1 / j);
+    float f3 = j;
+    return new PointF(f2 / f3, f1 / f3);
   }
   
   public PointF getFocusDelta()
@@ -52,36 +53,40 @@ public class MoveGestureDetector
   
   protected void handleInProgressEvent(int paramInt, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
+    if (paramInt != 1) {
+      if (paramInt != 2)
+      {
+        if (paramInt == 3) {}
+      }
+      else
+      {
+        updateStateByEvent(paramMotionEvent);
+        if ((this.mCurrPressure / this.mPrevPressure <= 0.67F) || (!this.mListener.onMove(this))) {
+          return;
+        }
+        this.mPrevEvent.recycle();
+        this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
+        return;
+      }
     }
-    do
-    {
-      return;
-      this.mListener.onMoveEnd(this);
-      resetState();
-      return;
-      updateStateByEvent(paramMotionEvent);
-    } while ((this.mCurrPressure / this.mPrevPressure <= 0.67F) || (!this.mListener.onMove(this)));
-    this.mPrevEvent.recycle();
-    this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
+    this.mListener.onMoveEnd(this);
+    resetState();
   }
   
   protected void handleStartProgressEvent(int paramInt, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      resetState();
-      this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
-      this.mTimeDelta = 0L;
-      updateStateByEvent(paramMotionEvent);
+      if (paramInt != 2) {
+        return;
+      }
+      this.mGestureInProgress = this.mListener.onMoveBegin(this);
       return;
     }
-    this.mGestureInProgress = this.mListener.onMoveBegin(this);
+    resetState();
+    this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
+    this.mTimeDelta = 0L;
+    updateStateByEvent(paramMotionEvent);
   }
   
   protected void updateStateByEvent(MotionEvent paramMotionEvent)
@@ -91,30 +96,26 @@ public class MoveGestureDetector
     this.mCurrFocusInternal = determineFocalPoint(paramMotionEvent);
     this.mPrevFocusInternal = determineFocalPoint(localMotionEvent);
     int i;
-    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount())
-    {
+    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount()) {
       i = 1;
-      if (i == 0) {
-        break label102;
-      }
-    }
-    label102:
-    for (paramMotionEvent = FOCUS_DELTA_ZERO;; paramMotionEvent = new PointF(this.mCurrFocusInternal.x - this.mPrevFocusInternal.x, this.mCurrFocusInternal.y - this.mPrevFocusInternal.y))
-    {
-      this.mFocusDeltaExternal = paramMotionEvent;
-      paramMotionEvent = this.mFocusExternal;
-      paramMotionEvent.x += this.mFocusDeltaExternal.x;
-      paramMotionEvent = this.mFocusExternal;
-      paramMotionEvent.y += this.mFocusDeltaExternal.y;
-      return;
+    } else {
       i = 0;
-      break;
     }
+    if (i != 0) {
+      paramMotionEvent = FOCUS_DELTA_ZERO;
+    } else {
+      paramMotionEvent = new PointF(this.mCurrFocusInternal.x - this.mPrevFocusInternal.x, this.mCurrFocusInternal.y - this.mPrevFocusInternal.y);
+    }
+    this.mFocusDeltaExternal = paramMotionEvent;
+    paramMotionEvent = this.mFocusExternal;
+    paramMotionEvent.x += this.mFocusDeltaExternal.x;
+    paramMotionEvent = this.mFocusExternal;
+    paramMotionEvent.y += this.mFocusDeltaExternal.y;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.gesturedetectors.MoveGestureDetector
  * JD-Core Version:    0.7.0.1
  */

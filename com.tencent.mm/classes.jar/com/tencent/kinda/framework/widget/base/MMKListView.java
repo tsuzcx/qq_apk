@@ -2,7 +2,6 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
 import android.widget.ListView;
-import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KListView;
 import com.tencent.kinda.gen.KListViewCallback;
 import com.tencent.kinda.gen.KListViewOnScrollCallback;
@@ -18,10 +17,10 @@ public class MMKListView
   
   private void binding()
   {
-    AppMethodBeat.i(144925);
-    this.adapter = new MMListViewAdapter(KindaContext.get(), this.mListViewCallback);
+    AppMethodBeat.i(19081);
+    this.adapter = new MMListViewAdapter(this.mContext, this.mListViewCallback);
     ((ListView)getView()).setAdapter(this.adapter);
-    AppMethodBeat.o(144925);
+    AppMethodBeat.o(19081);
   }
   
   public void addFooter(KView paramKView) {}
@@ -30,9 +29,9 @@ public class MMKListView
   
   public ListView createView(Context paramContext)
   {
-    AppMethodBeat.i(144924);
+    AppMethodBeat.i(19080);
     paramContext = new ListView(paramContext);
-    AppMethodBeat.o(144924);
+    AppMethodBeat.o(19080);
     return paramContext;
   }
   
@@ -48,10 +47,10 @@ public class MMKListView
   
   public void setImpl(KListViewCallback paramKListViewCallback)
   {
-    AppMethodBeat.i(144926);
+    AppMethodBeat.i(19082);
     this.mListViewCallback = paramKListViewCallback;
     binding();
-    AppMethodBeat.o(144926);
+    AppMethodBeat.o(19082);
   }
   
   public void setOnScrollCallback(KListViewOnScrollCallback paramKListViewOnScrollCallback) {}
@@ -62,7 +61,7 @@ public class MMKListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKListView
  * JD-Core Version:    0.7.0.1
  */

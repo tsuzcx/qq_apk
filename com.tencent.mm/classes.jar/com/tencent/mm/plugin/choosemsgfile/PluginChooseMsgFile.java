@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.choosemsgfile;
 
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.comm.a.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class PluginChooseMsgFile
   extends f
@@ -10,25 +14,27 @@ public class PluginChooseMsgFile
 {
   public void dependency()
   {
-    AppMethodBeat.i(54248);
-    dependsOn(com.tencent.mm.plugin.comm.a.a.class);
-    AppMethodBeat.o(54248);
+    AppMethodBeat.i(123220);
+    if (MMApplicationContext.isMainProcess()) {
+      dependsOn(b.class);
+    }
+    AppMethodBeat.o(123220);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
-    AppMethodBeat.i(54247);
-    d.d("MicroMsg.PluginChooseMsgFile", "execute");
-    com.tencent.mm.kernel.g.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.b.a());
-    AppMethodBeat.o(54247);
+    AppMethodBeat.i(123219);
+    Log.d("MicroMsg.PluginChooseMsgFile", "execute");
+    h.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.logic.a());
+    AppMethodBeat.o(123219);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(54246);
-    d.d("MicroMsg.PluginChooseMsgFile", "installed");
+    AppMethodBeat.i(123218);
+    Log.d("MicroMsg.PluginChooseMsgFile", "installed");
     alias(com.tencent.mm.plugin.choosemsgfile.a.a.class);
-    AppMethodBeat.o(54246);
+    AppMethodBeat.o(123218);
   }
   
   public String name()
@@ -38,7 +44,7 @@ public class PluginChooseMsgFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.PluginChooseMsgFile
  * JD-Core Version:    0.7.0.1
  */

@@ -25,16 +25,20 @@ public class GetFriendPlayListV2Request
   
   public static MISC.StGetFriendPlayListV2Rsp onResponse(byte[] paramArrayOfByte)
   {
-    MISC.StGetFriendPlayListV2Rsp localStGetFriendPlayListV2Rsp = new MISC.StGetFriendPlayListV2Rsp();
+    Object localObject = new MISC.StGetFriendPlayListV2Rsp();
     try
     {
-      localStGetFriendPlayListV2Rsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetFriendPlayListV2Rsp;
+      ((MISC.StGetFriendPlayListV2Rsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProtoBufRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ProtoBufRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -47,7 +51,7 @@ public class GetFriendPlayListV2Request
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetFriendPlayListV2Request
  * JD-Core Version:    0.7.0.1
  */

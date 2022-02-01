@@ -16,16 +16,22 @@ public class TVKPlayerStrategy
   public static final String HA_TURN_OFF_COUNT = "ha_turn_off_count";
   public static final String SELFPLAYER_CRASH_COUNT = "qqlive_selfplayer_crash_count";
   public static final String SELFPLAYER_CRASH_STATE = "qqlive_selfplayer_crash_state";
-  private static final String TAG = "MediaPlayerMgr[TVKPlayerStrategy.java]";
+  public static final String TAG = "MediaPlayerMgr[TVKPlayerStrategy.java]";
   private static int isInBlackListForSelfPlayer = -1;
   
   public static SharedPreferences getSharedPreferences(Context paramContext)
   {
     try
     {
-      String str = paramContext.getPackageName() + "_preferences";
-      TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", "getSharedPreferences, name = " + str);
-      paramContext = paramContext.getSharedPreferences(str, 0);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append("_preferences");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSharedPreferences, name = ");
+      localStringBuilder.append((String)localObject);
+      TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", localStringBuilder.toString());
+      paramContext = paramContext.getSharedPreferences((String)localObject, 0);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -38,8 +44,9 @@ public class TVKPlayerStrategy
   
   public static boolean isBlackListForSelfPlayer(Context paramContext)
   {
-    if (isInBlackListForSelfPlayer != -1) {
-      return isInBlackListForSelfPlayer != 0;
+    int i = isInBlackListForSelfPlayer;
+    if (i != -1) {
+      return i != 0;
     }
     isInBlackListForSelfPlayer = 0;
     return false;
@@ -47,9 +54,9 @@ public class TVKPlayerStrategy
   
   public static boolean isBlackListForSelfPlayerByCrash(Context paramContext)
   {
-    bool1 = true;
-    if (isInBlackListForSelfPlayer != -1) {
-      return isInBlackListForSelfPlayer != 0;
+    int i = isInBlackListForSelfPlayer;
+    if (i != -1) {
+      return i != 0;
     }
     isInBlackListForSelfPlayer = 0;
     paramContext = getSharedPreferences(paramContext);
@@ -58,57 +65,54 @@ public class TVKPlayerStrategy
       TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", "[isBlackListForSelfPlayerByCrash] Failed to get SharedPreferences");
       return false;
     }
-    for (;;)
+    try
     {
-      try
+      boolean bool = paramContext.getBoolean("qqlive_selfplayer_crash_state", false);
+      i = paramContext.getInt("qqlive_selfplayer_crash_state", 0);
+      if (bool)
       {
-        boolean bool2 = paramContext.getBoolean("qqlive_selfplayer_crash_state", false);
-        int i = paramContext.getInt("qqlive_selfplayer_crash_state", 0);
-        if (!bool2) {
-          continue;
-        }
         i += 1;
-        if (i <= ((Integer)TVKMediaPlayerConfig.PlayerConfig.self_player_crash_count_to_switch.getValue()).intValue()) {
-          continue;
+        if (i > ((Integer)TVKMediaPlayerConfig.PlayerConfig.self_player_crash_count_to_switch.getValue()).intValue())
+        {
+          isInBlackListForSelfPlayer = 1;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isBlackListForSelfPlayerByCrash, crashCountInt: ");
+          localStringBuilder.append(i);
+          TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", localStringBuilder.toString());
+          i = 0;
         }
-        isInBlackListForSelfPlayer = 1;
-        TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", "isBlackListForSelfPlayerByCrash, crashCountInt: " + i);
-        i = 0;
+        else
+        {
+          isInBlackListForSelfPlayer = 0;
+        }
         paramContext.edit().putInt("qqlive_selfplayer_crash_count", i).apply();
-        paramContext.edit().putBoolean("qqlive_selfplayer_crash_state", false).apply();
       }
-      catch (Exception paramContext)
+      else
       {
-        TVKLogUtil.e("MediaPlayerMgr[TVKPlayerStrategy.java]", paramContext);
-        continue;
-        bool1 = false;
-        continue;
+        isInBlackListForSelfPlayer = 0;
+        paramContext.edit().putInt("qqlive_selfplayer_crash_count", 0).apply();
       }
-      if (isInBlackListForSelfPlayer == 0) {
-        continue;
-      }
-      return bool1;
-      isInBlackListForSelfPlayer = 0;
-      continue;
-      isInBlackListForSelfPlayer = 0;
-      paramContext.edit().putInt("qqlive_selfplayer_crash_count", 0).apply();
+      paramContext.edit().putBoolean("qqlive_selfplayer_crash_state", false).apply();
     }
+    catch (Exception paramContext)
+    {
+      TVKLogUtil.e("MediaPlayerMgr[TVKPlayerStrategy.java]", paramContext);
+    }
+    return isInBlackListForSelfPlayer != 0;
   }
   
   public static boolean isEnabledHWDec(Context paramContext)
   {
-    boolean bool1 = false;
-    int j = 0;
     paramContext = getSharedPreferences(paramContext);
     if (paramContext == null)
     {
       TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", "[isEnabledHWDec] Failed to get SharedPreferences");
       return true;
     }
+    label533:
     for (;;)
     {
       int k;
-      int i;
       try
       {
         if (!paramContext.getBoolean("hardware_accelerate_state", true))
@@ -117,56 +121,70 @@ public class TVKPlayerStrategy
           return false;
         }
         boolean bool2 = paramContext.getBoolean("hardware_accelerate_crash", false);
-        k = paramContext.getInt("ha_turn_off_count", 0);
+        j = paramContext.getInt("ha_turn_off_count", 0);
         i = paramContext.getInt("ha_crash_count", 0);
         if (bool2)
         {
-          k = ((Integer)TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_interval.getValue()).intValue();
-          i += 1;
-          if (i <= ((Integer)TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_count.getValue()).intValue()) {
-            break label469;
+          j = ((Integer)TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_interval.getValue()).intValue();
+          k = i + 1;
+          if (k <= ((Integer)TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_count.getValue()).intValue()) {
+            break label509;
           }
           if (Build.VERSION.SDK_INT >= 9)
           {
             paramContext.edit().putBoolean("hardware_accelerate_state", false).apply();
-            i = 0;
-            bool1 = false;
-            if (Build.VERSION.SDK_INT >= 9)
-            {
-              paramContext.edit().putBoolean("hardware_accelerate_crash", false).apply();
-              m = i;
-              TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", "[isEnabledHWDec]isCrash:" + bool2 + ", crashCount:" + m + ", turnOffCount:" + j + ", HA enabled:" + bool1 + ", ha_crash_retry_interval:" + TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_interval.getValue() + ", ha_crash_retry_count:" + TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_count.getValue() + ", ha_crash_reset_interval:" + TVKMediaPlayerConfig.PlayerConfig.ha_crash_reset_interval.getValue());
-              if (Build.VERSION.SDK_INT < 9) {
-                continue;
-              }
-              paramContext.edit().putInt("ha_crash_count", m).apply();
-              paramContext.edit().putInt("ha_turn_off_count", j).apply();
-              break label466;
-            }
+            break label499;
+          }
+          paramContext.edit().putBoolean("hardware_accelerate_state", false).commit();
+          break label499;
+          if (Build.VERSION.SDK_INT >= 9)
+          {
+            paramContext.edit().putBoolean("hardware_accelerate_crash", false).apply();
+            k = i;
+            i = j;
           }
           else
           {
-            paramContext.edit().putBoolean("hardware_accelerate_state", false).commit();
-            i = 0;
-            bool1 = false;
-            continue;
+            paramContext.edit().putBoolean("hardware_accelerate_crash", false).commit();
+            k = i;
+            i = j;
           }
-          paramContext.edit().putBoolean("hardware_accelerate_crash", false).commit();
-          m = i;
-          continue;
         }
         else
         {
-          k -= 1;
-          if (k >= -((Integer)TVKMediaPlayerConfig.PlayerConfig.ha_crash_reset_interval.getValue()).intValue()) {
-            break label463;
+          j -= 1;
+          if (j >= -((Integer)TVKMediaPlayerConfig.PlayerConfig.ha_crash_reset_interval.getValue()).intValue()) {
+            break label533;
           }
+          j = 0;
           i = 0;
-          k = 0;
-          break label487;
+          break label533;
         }
-        paramContext.edit().putInt("ha_crash_count", m).commit();
-        paramContext.edit().putInt("ha_turn_off_count", j).commit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[isEnabledHWDec]isCrash:");
+        localStringBuilder.append(bool2);
+        localStringBuilder.append(", crashCount:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", turnOffCount:");
+        localStringBuilder.append(k);
+        localStringBuilder.append(", HA enabled:");
+        localStringBuilder.append(bool1);
+        localStringBuilder.append(", ha_crash_retry_interval:");
+        localStringBuilder.append(TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_interval.getValue());
+        localStringBuilder.append(", ha_crash_retry_count:");
+        localStringBuilder.append(TVKMediaPlayerConfig.PlayerConfig.ha_crash_retry_count.getValue());
+        localStringBuilder.append(", ha_crash_reset_interval:");
+        localStringBuilder.append(TVKMediaPlayerConfig.PlayerConfig.ha_crash_reset_interval.getValue());
+        TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", localStringBuilder.toString());
+        if (Build.VERSION.SDK_INT >= 9)
+        {
+          paramContext.edit().putInt("ha_crash_count", i).apply();
+          paramContext.edit().putInt("ha_turn_off_count", k).apply();
+          return bool1;
+        }
+        paramContext.edit().putInt("ha_crash_count", i).commit();
+        paramContext.edit().putInt("ha_turn_off_count", k).commit();
+        return bool1;
       }
       catch (Exception paramContext)
       {
@@ -174,41 +192,49 @@ public class TVKPlayerStrategy
         TVKLogUtil.i("MediaPlayerMgr[TVKPlayerStrategy.java]", "[isEnabledHWDec] failed to get user setting: true by default");
         return true;
       }
-      label463:
-      break label487;
-      label466:
-      return bool1;
-      label469:
-      if (k <= 0) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        j = k;
-        break;
-      }
-      label487:
-      int m = i;
-      j = k;
-      if (k <= 0)
+      label499:
+      boolean bool1 = false;
+      int i = 0;
+      int j = 0;
+      continue;
+      label509:
+      if (j <= 0)
       {
         bool1 = true;
-        m = i;
+        i = j;
         j = k;
+      }
+      else
+      {
+        bool1 = false;
+        i = j;
+        j = k;
+        continue;
+        if (j <= 0)
+        {
+          bool1 = true;
+          k = j;
+        }
+        else
+        {
+          bool1 = false;
+          k = j;
+        }
       }
     }
   }
   
   public static boolean isSelfPlayerAvailable(Context paramContext)
   {
-    if (isBlackListForSelfPlayer(paramContext)) {}
-    while (isBlackListForSelfPlayerByCrash(paramContext)) {
+    if (isBlackListForSelfPlayer(paramContext)) {
       return false;
     }
-    return true;
+    return !isBlackListForSelfPlayerByCrash(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.playerwrapper.player.TVKPlayerStrategy
  * JD-Core Version:    0.7.0.1
  */

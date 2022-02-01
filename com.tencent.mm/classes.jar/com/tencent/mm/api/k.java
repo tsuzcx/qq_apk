@@ -1,17 +1,14 @@
 package com.tencent.mm.api;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-
 public abstract interface k
 {
-  public abstract String Al();
+  public abstract void onExit();
   
-  public abstract Bitmap y(Context paramContext, int paramInt);
+  public abstract void onFinish();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.api.k
  * JD-Core Version:    0.7.0.1
  */

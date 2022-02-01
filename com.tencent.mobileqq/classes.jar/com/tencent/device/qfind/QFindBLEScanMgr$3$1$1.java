@@ -1,7 +1,5 @@
 package com.tencent.device.qfind;
 
-import zzp;
-
 class QFindBLEScanMgr$3$1$1
   implements Runnable
 {
@@ -9,12 +7,12 @@ class QFindBLEScanMgr$3$1$1
   
   public void run()
   {
-    QFindBLEScanMgr.a(this.a.a.a, 7);
+    QFindBLEScanMgr.a(this.a.c.a, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.3.1.1
  * JD-Core Version:    0.7.0.1
  */

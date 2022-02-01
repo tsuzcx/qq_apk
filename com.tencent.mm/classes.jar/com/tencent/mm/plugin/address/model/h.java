@@ -1,63 +1,65 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.bro;
-import com.tencent.mm.protocal.protobuf.brp;
-import com.tencent.mm.protocal.protobuf.brw;
-import com.tencent.mm.protocal.protobuf.brx;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.address.d.b;
+import com.tencent.mm.protocal.protobuf.elt;
+import com.tencent.mm.protocal.protobuf.elu;
+import com.tencent.mm.protocal.protobuf.emb;
+import com.tencent.mm.protocal.protobuf.emc;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class h
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ai.b rr;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  public h(com.tencent.mm.plugin.address.d.b paramb)
+  public h(b paramb)
   {
-    AppMethodBeat.i(16743);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new brw();
-    ((b.a)localObject).fsY = new brx();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoupdate";
-    ((b.a)localObject).funcId = 418;
-    ((b.a)localObject).reqCmdId = 203;
-    ((b.a)localObject).respCmdId = 1000000203;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (brw)this.rr.fsV.fta;
-    ((brw)localObject).xFe = new brp();
-    ((brw)localObject).xFe.id = paramb.id;
-    ((brw)localObject).xFe.xFl = new bwc().aoF(bo.bf(paramb.gLf, ""));
-    ((brw)localObject).xFe.xFj = new bwc().aoF(bo.bf(paramb.gLd, ""));
-    ((brw)localObject).xFe.xFo = new bwc().aoF(bo.bf(paramb.gLi, ""));
-    ((brw)localObject).xFe.xFm = new bwc().aoF(bo.bf(paramb.gLg, ""));
-    ((brw)localObject).xFe.xFp = new bwc().aoF(bo.bf(paramb.gLj, ""));
-    ((brw)localObject).xFe.xFq = new bwc().aoF(bo.bf(paramb.gLk, ""));
-    ((brw)localObject).xFe.xFk = new bwc().aoF(bo.bf(paramb.gLe, ""));
-    ((brw)localObject).xFe.xFn = new bwc().aoF(bo.bf(paramb.gLh, ""));
-    ((brw)localObject).xFe.xFr = new bwc().aoF(bo.bf(paramb.gLl, ""));
-    AppMethodBeat.o(16743);
+    AppMethodBeat.i(20786);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new emb();
+    ((c.a)localObject).otF = new emc();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoupdate";
+    ((c.a)localObject).funcId = 418;
+    ((c.a)localObject).otG = 203;
+    ((c.a)localObject).respCmdId = 1000000203;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (emb)c.b.b(this.rr.otB);
+    ((emb)localObject).abqh = new elu();
+    ((emb)localObject).abqh.id = paramb.id;
+    ((emb)localObject).abqh.abqo = new etl().btH(Util.nullAs(paramb.qie, ""));
+    ((emb)localObject).abqh.abqm = new etl().btH(Util.nullAs(paramb.qic, ""));
+    ((emb)localObject).abqh.abqr = new etl().btH(Util.nullAs(paramb.qih, ""));
+    ((emb)localObject).abqh.abqp = new etl().btH(Util.nullAs(paramb.qif, ""));
+    ((emb)localObject).abqh.abqv = new etl().btH(Util.nullAs(paramb.qil, ""));
+    ((emb)localObject).abqh.abqs = new etl().btH(Util.nullAs(paramb.qii, ""));
+    ((emb)localObject).abqh.abqt = new etl().btH(Util.nullAs(paramb.qij, ""));
+    ((emb)localObject).abqh.abqn = new etl().btH(Util.nullAs(paramb.qid, ""));
+    ((emb)localObject).abqh.abqq = new etl().btH(Util.nullAs(paramb.qig, ""));
+    ((emb)localObject).abqh.abqu = new etl().btH(Util.nullAs(paramb.qik, ""));
+    AppMethodBeat.o(20786);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(16745);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(16745);
+    AppMethodBeat.i(20788);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(20788);
     return i;
   }
   
@@ -66,29 +68,29 @@ public final class h
     return 418;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16744);
-    ab.d("MicroMsg.NetSceneRcptInfoUpdate", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(20787);
+    Log.d("MicroMsg.NetSceneRcptInfoUpdate", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (brx)((com.tencent.mm.ai.b)paramq).fsW.fta;
-      if (paramq.xFf.xFi != null)
+      params = (emc)c.c.b(((c)params).otC);
+      if (params.abqi.abql != null)
       {
-        ab.d("MicroMsg.NetSceneRcptInfoUpdate", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.xFf.xFi.size());
-        a.asl();
-        a.asn().s(paramq.xFf.xFi);
-        a.asl();
-        a.asn().asp();
+        Log.d("MicroMsg.NetSceneRcptInfoUpdate", "resp.rImpl.rcptinfolist.rcptinfolist " + params.abqi.abql.size());
+        a.bZe();
+        a.bZg().x(params.abqi.abql);
+        a.bZe();
+        a.bZg().bZj();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(16744);
+    AppMethodBeat.o(20787);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.h
  * JD-Core Version:    0.7.0.1
  */

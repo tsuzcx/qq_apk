@@ -45,16 +45,11 @@ public final class PesReader
     }
     if (paramArrayOfByte == null) {
       paramParsableByteArray.skipBytes(i);
-    }
-    for (;;)
-    {
-      this.bytesRead = (i + this.bytesRead);
-      if (this.bytesRead == paramInt) {
-        break;
-      }
-      return false;
+    } else {
       paramParsableByteArray.readBytes(paramArrayOfByte, this.bytesRead, i);
     }
+    this.bytesRead += i;
+    return this.bytesRead == paramInt;
   }
   
   private boolean parseHeader()
@@ -63,7 +58,10 @@ public final class PesReader
     int i = this.pesScratch.readBits(24);
     if (i != 1)
     {
-      Log.w("PesReader", "Unexpected start code prefix: " + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unexpected start code prefix: ");
+      localStringBuilder.append(i);
+      Log.w("PesReader", localStringBuilder.toString());
       this.payloadSize = -1;
       return false;
     }
@@ -76,10 +74,13 @@ public final class PesReader
     this.dtsFlag = this.pesScratch.readBit();
     this.pesScratch.skipBits(6);
     this.extendedHeaderLength = this.pesScratch.readBits(8);
-    if (i == 0) {}
-    for (this.payloadSize = -1;; this.payloadSize = (i + 6 - 9 - this.extendedHeaderLength)) {
+    if (i == 0)
+    {
+      this.payloadSize = -1;
       return true;
     }
+    this.payloadSize = (i + 6 - 9 - this.extendedHeaderLength);
+    return true;
   }
   
   private void parseHeaderExtension()
@@ -119,78 +120,91 @@ public final class PesReader
   
   public final void consume(ParsableByteArray paramParsableByteArray, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      switch (this.state)
-      {
-      case 0: 
-      case 1: 
-      default: 
-        setState(1);
-      }
-    }
-    for (;;)
+    int i;
+    if (paramBoolean)
     {
-      if (paramParsableByteArray.bytesLeft() > 0)
-      {
-        int i;
-        switch (this.state)
+      i = this.state;
+      if ((i != 0) && (i != 1)) {
+        if (i != 2)
         {
-        default: 
-          break;
-        case 0: 
-          paramParsableByteArray.skipBytes(paramParsableByteArray.bytesLeft());
-          continue;
-          Log.w("PesReader", "Unexpected start indicator reading extended header");
-          break;
-          if (this.payloadSize != -1) {
-            Log.w("PesReader", "Unexpected start indicator: expected " + this.payloadSize + " more bytes");
-          }
-          this.reader.packetFinished();
-          break;
-        case 1: 
-          if (continueRead(paramParsableByteArray, this.pesScratch.data, 9))
+          if (i == 3)
           {
-            if (parseHeader()) {}
-            for (i = 2;; i = 0)
+            if (this.payloadSize != -1)
             {
-              setState(i);
-              break;
-            }
-          }
-          break;
-        case 2: 
-          i = Math.min(10, this.extendedHeaderLength);
-          if ((continueRead(paramParsableByteArray, this.pesScratch.data, i)) && (continueRead(paramParsableByteArray, null, this.extendedHeaderLength)))
-          {
-            parseHeaderExtension();
-            this.reader.packetStarted(this.timeUs, this.dataAlignmentIndicator);
-            setState(3);
-          }
-          break;
-        case 3: 
-          int k = paramParsableByteArray.bytesLeft();
-          if (this.payloadSize == -1) {}
-          for (i = 0;; i = k - this.payloadSize)
-          {
-            int j = k;
-            if (i > 0)
-            {
-              j = k - i;
-              paramParsableByteArray.setLimit(paramParsableByteArray.getPosition() + j);
-            }
-            this.reader.consume(paramParsableByteArray);
-            if (this.payloadSize == -1) {
-              break;
-            }
-            this.payloadSize -= j;
-            if (this.payloadSize != 0) {
-              break;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Unexpected start indicator: expected ");
+              localStringBuilder.append(this.payloadSize);
+              localStringBuilder.append(" more bytes");
+              Log.w("PesReader", localStringBuilder.toString());
             }
             this.reader.packetFinished();
-            setState(1);
-            break;
           }
         }
+        else {
+          Log.w("PesReader", "Unexpected start indicator reading extended header");
+        }
+      }
+      setState(1);
+    }
+    while (paramParsableByteArray.bytesLeft() > 0)
+    {
+      int k = this.state;
+      if (k != 0)
+      {
+        i = 0;
+        int j = 0;
+        if (k != 1)
+        {
+          if (k != 2)
+          {
+            if (k == 3)
+            {
+              k = paramParsableByteArray.bytesLeft();
+              i = this.payloadSize;
+              if (i != -1) {
+                j = k - i;
+              }
+              i = k;
+              if (j > 0)
+              {
+                i = k - j;
+                paramParsableByteArray.setLimit(paramParsableByteArray.getPosition() + i);
+              }
+              this.reader.consume(paramParsableByteArray);
+              j = this.payloadSize;
+              if (j != -1)
+              {
+                this.payloadSize = (j - i);
+                if (this.payloadSize == 0)
+                {
+                  this.reader.packetFinished();
+                  setState(1);
+                }
+              }
+            }
+          }
+          else
+          {
+            i = Math.min(10, this.extendedHeaderLength);
+            if ((continueRead(paramParsableByteArray, this.pesScratch.data, i)) && (continueRead(paramParsableByteArray, null, this.extendedHeaderLength)))
+            {
+              parseHeaderExtension();
+              this.reader.packetStarted(this.timeUs, this.dataAlignmentIndicator);
+              setState(3);
+            }
+          }
+        }
+        else if (continueRead(paramParsableByteArray, this.pesScratch.data, 9))
+        {
+          if (parseHeader()) {
+            i = 2;
+          }
+          setState(i);
+        }
+      }
+      else
+      {
+        paramParsableByteArray.skipBytes(paramParsableByteArray.bytesLeft());
       }
     }
   }
@@ -211,7 +225,7 @@ public final class PesReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.PesReader
  * JD-Core Version:    0.7.0.1
  */

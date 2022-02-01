@@ -35,7 +35,10 @@ public final class RawResourceDataSource
   
   public static Uri buildRawResourceUri(int paramInt)
   {
-    return Uri.parse("rawresource:///" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rawresource:///");
+    localStringBuilder.append(paramInt);
+    return Uri.parse(localStringBuilder.toString());
   }
   
   /* Error */
@@ -65,122 +68,131 @@ public final class RawResourceDataSource
     //   40: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
     //   43: aload_0
     //   44: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   47: ifeq +25 -> 72
+    //   47: ifeq +24 -> 71
     //   50: aload_0
     //   51: iconst_0
     //   52: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
     //   55: aload_0
     //   56: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   59: ifnull +13 -> 72
-    //   62: aload_0
-    //   63: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   66: aload_0
-    //   67: invokeinterface 94 2 0
-    //   72: return
-    //   73: astore_1
-    //   74: new 96	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException
-    //   77: dup
-    //   78: aload_1
-    //   79: invokespecial 99	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
-    //   82: athrow
-    //   83: astore_1
-    //   84: aload_0
-    //   85: aconst_null
-    //   86: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   89: aload_0
-    //   90: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   93: ifeq +25 -> 118
-    //   96: aload_0
-    //   97: iconst_0
-    //   98: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   101: aload_0
-    //   102: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   105: ifnull +13 -> 118
-    //   108: aload_0
-    //   109: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   112: aload_0
-    //   113: invokeinterface 94 2 0
-    //   118: aload_1
-    //   119: athrow
-    //   120: astore_1
-    //   121: new 96	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException
-    //   124: dup
-    //   125: aload_1
-    //   126: invokespecial 99	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
-    //   129: athrow
-    //   130: astore_1
-    //   131: aload_0
-    //   132: aconst_null
-    //   133: putfield 77	com/google/android/exoplayer2/upstream/RawResourceDataSource:inputStream	Ljava/io/InputStream;
-    //   136: aload_0
-    //   137: getfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   140: ifnull +10 -> 150
-    //   143: aload_0
-    //   144: getfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   147: invokevirtual 86	android/content/res/AssetFileDescriptor:close	()V
-    //   150: aload_0
-    //   151: aconst_null
-    //   152: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   155: aload_0
-    //   156: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   159: ifeq +25 -> 184
-    //   162: aload_0
-    //   163: iconst_0
-    //   164: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   167: aload_0
-    //   168: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   171: ifnull +13 -> 184
-    //   174: aload_0
-    //   175: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   178: aload_0
-    //   179: invokeinterface 94 2 0
-    //   184: aload_1
-    //   185: athrow
-    //   186: astore_1
-    //   187: new 96	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException
-    //   190: dup
-    //   191: aload_1
-    //   192: invokespecial 99	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
-    //   195: athrow
-    //   196: astore_1
-    //   197: aload_0
-    //   198: aconst_null
-    //   199: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   202: aload_0
-    //   203: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   206: ifeq +25 -> 231
-    //   209: aload_0
-    //   210: iconst_0
-    //   211: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
-    //   214: aload_0
-    //   215: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   218: ifnull +13 -> 231
-    //   221: aload_0
-    //   222: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   225: aload_0
-    //   226: invokeinterface 94 2 0
-    //   231: aload_1
-    //   232: athrow
+    //   59: astore_1
+    //   60: aload_1
+    //   61: ifnull +10 -> 71
+    //   64: aload_1
+    //   65: aload_0
+    //   66: invokeinterface 94 2 0
+    //   71: return
+    //   72: astore_1
+    //   73: goto +13 -> 86
+    //   76: astore_1
+    //   77: new 96	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException
+    //   80: dup
+    //   81: aload_1
+    //   82: invokespecial 99	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
+    //   85: athrow
+    //   86: aload_0
+    //   87: aconst_null
+    //   88: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   91: aload_0
+    //   92: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
+    //   95: ifeq +24 -> 119
+    //   98: aload_0
+    //   99: iconst_0
+    //   100: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
+    //   103: aload_0
+    //   104: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
+    //   107: astore_2
+    //   108: aload_2
+    //   109: ifnull +10 -> 119
+    //   112: aload_2
+    //   113: aload_0
+    //   114: invokeinterface 94 2 0
+    //   119: aload_1
+    //   120: athrow
+    //   121: astore_1
+    //   122: goto +13 -> 135
+    //   125: astore_1
+    //   126: new 96	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException
+    //   129: dup
+    //   130: aload_1
+    //   131: invokespecial 99	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
+    //   134: athrow
+    //   135: aload_0
+    //   136: aconst_null
+    //   137: putfield 77	com/google/android/exoplayer2/upstream/RawResourceDataSource:inputStream	Ljava/io/InputStream;
+    //   140: aload_0
+    //   141: getfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   144: ifnull +10 -> 154
+    //   147: aload_0
+    //   148: getfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   151: invokevirtual 86	android/content/res/AssetFileDescriptor:close	()V
+    //   154: aload_0
+    //   155: aconst_null
+    //   156: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   159: aload_0
+    //   160: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
+    //   163: ifeq +24 -> 187
+    //   166: aload_0
+    //   167: iconst_0
+    //   168: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
+    //   171: aload_0
+    //   172: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
+    //   175: astore_2
+    //   176: aload_2
+    //   177: ifnull +10 -> 187
+    //   180: aload_2
+    //   181: aload_0
+    //   182: invokeinterface 94 2 0
+    //   187: aload_1
+    //   188: athrow
+    //   189: astore_1
+    //   190: goto +13 -> 203
+    //   193: astore_1
+    //   194: new 96	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException
+    //   197: dup
+    //   198: aload_1
+    //   199: invokespecial 99	com/google/android/exoplayer2/upstream/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
+    //   202: athrow
+    //   203: aload_0
+    //   204: aconst_null
+    //   205: putfield 83	com/google/android/exoplayer2/upstream/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   208: aload_0
+    //   209: getfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
+    //   212: ifeq +24 -> 236
+    //   215: aload_0
+    //   216: iconst_0
+    //   217: putfield 88	com/google/android/exoplayer2/upstream/RawResourceDataSource:opened	Z
+    //   220: aload_0
+    //   221: getfield 44	com/google/android/exoplayer2/upstream/RawResourceDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
+    //   224: astore_2
+    //   225: aload_2
+    //   226: ifnull +10 -> 236
+    //   229: aload_2
+    //   230: aload_0
+    //   231: invokeinterface 94 2 0
+    //   236: aload_1
+    //   237: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	233	0	this	RawResourceDataSource
-    //   73	6	1	localIOException1	IOException
-    //   83	36	1	localObject1	Object
-    //   120	6	1	localIOException2	IOException
-    //   130	55	1	localObject2	Object
-    //   186	6	1	localIOException3	IOException
-    //   196	36	1	localObject3	Object
+    //   0	238	0	this	RawResourceDataSource
+    //   59	6	1	localTransferListener1	TransferListener
+    //   72	1	1	localObject1	Object
+    //   76	44	1	localIOException1	IOException
+    //   121	1	1	localObject2	Object
+    //   125	63	1	localIOException2	IOException
+    //   189	1	1	localObject3	Object
+    //   193	44	1	localIOException3	IOException
+    //   107	123	2	localTransferListener2	TransferListener
     // Exception table:
     //   from	to	target	type
-    //   24	38	73	java/io/IOException
-    //   24	38	83	finally
-    //   74	83	83	finally
-    //   5	19	120	java/io/IOException
-    //   5	19	130	finally
-    //   121	130	130	finally
-    //   136	150	186	java/io/IOException
-    //   136	150	196	finally
-    //   187	196	196	finally
+    //   24	38	72	finally
+    //   77	86	72	finally
+    //   24	38	76	java/io/IOException
+    //   5	19	121	finally
+    //   126	135	121	finally
+    //   5	19	125	java/io/IOException
+    //   140	154	189	finally
+    //   194	203	189	finally
+    //   140	154	193	java/io/IOException
   }
   
   public Uri getUri()
@@ -190,103 +202,100 @@ public final class RawResourceDataSource
   
   public long open(DataSpec paramDataSpec)
   {
-    long l1 = -1L;
     try
     {
       this.uri = paramDataSpec.uri;
-      if (!TextUtils.equals("rawresource", this.uri.getScheme())) {
-        throw new RawResourceDataSource.RawResourceDataSourceException("URI must use scheme rawresource");
-      }
+      boolean bool = TextUtils.equals("rawresource", this.uri.getScheme());
+      if (!bool) {}
     }
     catch (IOException paramDataSpec)
     {
+      int i;
+      label205:
       throw new RawResourceDataSource.RawResourceDataSourceException(paramDataSpec);
     }
     try
     {
-      int i = Integer.parseInt(this.uri.getLastPathSegment());
+      i = Integer.parseInt(this.uri.getLastPathSegment());
       this.assetFileDescriptor = this.resources.openRawResourceFd(i);
       this.inputStream = new FileInputStream(this.assetFileDescriptor.getFileDescriptor());
       this.inputStream.skip(this.assetFileDescriptor.getStartOffset());
-      if (this.inputStream.skip(paramDataSpec.position) < paramDataSpec.position) {
-        throw new EOFException();
+      if (this.inputStream.skip(paramDataSpec.position) >= paramDataSpec.position)
+      {
+        long l2 = paramDataSpec.length;
+        long l1 = -1L;
+        if (l2 != -1L)
+        {
+          this.bytesRemaining = paramDataSpec.length;
+        }
+        else
+        {
+          l2 = this.assetFileDescriptor.getLength();
+          if (l2 != -1L) {
+            l1 = l2 - paramDataSpec.position;
+          }
+          this.bytesRemaining = l1;
+        }
+        this.opened = true;
+        TransferListener localTransferListener = this.listener;
+        if (localTransferListener != null) {
+          localTransferListener.onTransferStart(this, paramDataSpec);
+        }
+        return this.bytesRemaining;
       }
+      throw new EOFException();
     }
     catch (NumberFormatException paramDataSpec)
     {
-      throw new RawResourceDataSource.RawResourceDataSourceException("Resource identifier must be an integer.");
+      break label205;
     }
-    if (paramDataSpec.length != -1L)
-    {
-      this.bytesRemaining = paramDataSpec.length;
-      this.opened = true;
-      if (this.listener != null) {
-        this.listener.onTransferStart(this, paramDataSpec);
-      }
-      return this.bytesRemaining;
-    }
-    long l2 = this.assetFileDescriptor.getLength();
-    if (l2 == -1L) {}
-    for (;;)
-    {
-      this.bytesRemaining = l1;
-      break;
-      l1 = paramDataSpec.position;
-      l1 = l2 - l1;
-    }
+    throw new RawResourceDataSource.RawResourceDataSourceException("Resource identifier must be an integer.");
+    throw new RawResourceDataSource.RawResourceDataSourceException("URI must use scheme rawresource");
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int j = -1;
-    int i;
     if (paramInt2 == 0) {
-      i = 0;
+      return 0;
     }
-    for (;;)
+    long l1 = this.bytesRemaining;
+    if (l1 == 0L) {
+      return -1;
+    }
+    long l2;
+    if (l1 != -1L) {
+      l2 = paramInt2;
+    }
+    try
     {
-      return i;
-      i = j;
-      if (this.bytesRemaining != 0L) {
-        try
-        {
-          if (this.bytesRemaining == -1L) {}
-          for (;;)
-          {
-            paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
-            if (paramInt1 != -1) {
-              break label111;
-            }
-            i = j;
-            if (this.bytesRemaining == -1L) {
-              break;
-            }
-            throw new RawResourceDataSource.RawResourceDataSourceException(new EOFException());
-            long l = Math.min(this.bytesRemaining, paramInt2);
-            paramInt2 = (int)l;
-          }
-          if (this.bytesRemaining == -1L) {
-            break label133;
-          }
+      paramInt2 = (int)Math.min(l1, l2);
+      paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
+      if (paramInt1 == -1)
+      {
+        if (this.bytesRemaining == -1L) {
+          return -1;
         }
-        catch (IOException paramArrayOfByte)
-        {
-          throw new RawResourceDataSource.RawResourceDataSourceException(paramArrayOfByte);
-        }
+        throw new RawResourceDataSource.RawResourceDataSourceException(new EOFException());
       }
+      l1 = this.bytesRemaining;
+      if (l1 != -1L) {
+        this.bytesRemaining = (l1 - paramInt1);
+      }
+      paramArrayOfByte = this.listener;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.onBytesTransferred(this, paramInt1);
+      }
+      return paramInt1;
     }
-    label111:
-    this.bytesRemaining -= paramInt1;
-    label133:
-    if (this.listener != null) {
-      this.listener.onBytesTransferred(this, paramInt1);
+    catch (IOException paramArrayOfByte)
+    {
+      throw new RawResourceDataSource.RawResourceDataSourceException(paramArrayOfByte);
     }
-    return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.RawResourceDataSource
  * JD-Core Version:    0.7.0.1
  */

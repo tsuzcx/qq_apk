@@ -16,15 +16,20 @@ class DurationUnitKt__DurationUnitJvmKt
     Intrinsics.checkParameterIsNotNull(paramTimeUnit1, "sourceUnit");
     Intrinsics.checkParameterIsNotNull(paramTimeUnit2, "targetUnit");
     long l = paramTimeUnit2.convert(1L, paramTimeUnit1);
-    if (l > 0L) {
-      return l * paramDouble;
+    if (l > 0L)
+    {
+      d = l;
+      Double.isNaN(d);
+      return paramDouble * d;
     }
-    return paramDouble / paramTimeUnit1.convert(1L, paramTimeUnit2);
+    double d = paramTimeUnit1.convert(1L, paramTimeUnit2);
+    Double.isNaN(d);
+    return paramDouble / d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.time.DurationUnitKt__DurationUnitJvmKt
  * JD-Core Version:    0.7.0.1
  */

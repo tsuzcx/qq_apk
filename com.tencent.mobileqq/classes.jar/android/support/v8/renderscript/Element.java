@@ -22,27 +22,27 @@ public class Element
   Element(int paramInt1, RenderScript paramRenderScript, Element.DataType paramDataType, Element.DataKind paramDataKind, boolean paramBoolean, int paramInt2)
   {
     super(paramInt1, paramRenderScript);
-    if ((paramDataType != Element.DataType.UNSIGNED_5_6_5) && (paramDataType != Element.DataType.UNSIGNED_4_4_4_4) && (paramDataType != Element.DataType.UNSIGNED_5_5_5_1)) {
+    if ((paramDataType != Element.DataType.UNSIGNED_5_6_5) && (paramDataType != Element.DataType.UNSIGNED_4_4_4_4) && (paramDataType != Element.DataType.UNSIGNED_5_5_5_1))
+    {
       if (paramInt2 == 3) {
         this.mSize = (paramDataType.mSize * 4);
+      } else {
+        this.mSize = (paramDataType.mSize * paramInt2);
       }
     }
-    for (;;)
-    {
-      this.mType = paramDataType;
-      this.mKind = paramDataKind;
-      this.mNormalized = paramBoolean;
-      this.mVectorSize = paramInt2;
-      return;
-      this.mSize = (paramDataType.mSize * paramInt2);
-      continue;
+    else {
       this.mSize = paramDataType.mSize;
     }
+    this.mType = paramDataType;
+    this.mKind = paramDataKind;
+    this.mNormalized = paramBoolean;
+    this.mVectorSize = paramInt2;
   }
   
   Element(int paramInt, RenderScript paramRenderScript, Element[] paramArrayOfElement, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     super(paramInt, paramRenderScript);
+    paramInt = 0;
     this.mSize = 0;
     this.mVectorSize = 1;
     this.mElements = paramArrayOfElement;
@@ -51,11 +51,16 @@ public class Element
     this.mType = Element.DataType.NONE;
     this.mKind = Element.DataKind.USER;
     this.mOffsetInBytes = new int[this.mElements.length];
-    paramInt = i;
-    while (paramInt < this.mElements.length)
+    for (;;)
     {
-      this.mOffsetInBytes[paramInt] = this.mSize;
-      this.mSize += this.mElements[paramInt].mSize * this.mArraySizes[paramInt];
+      paramRenderScript = this.mElements;
+      if (paramInt >= paramRenderScript.length) {
+        break;
+      }
+      paramArrayOfElement = this.mOffsetInBytes;
+      int i = this.mSize;
+      paramArrayOfElement[paramInt] = i;
+      this.mSize = (i + paramRenderScript[paramInt].mSize * this.mArraySizes[paramInt]);
       paramInt += 1;
     }
     updateVisibleSubElements();
@@ -524,21 +529,25 @@ public class Element
     if ((paramDataType == Element.DataType.UNSIGNED_16) && (paramDataKind != Element.DataKind.PIXEL_DEPTH)) {
       throw new RSIllegalArgumentException("Bad kind and type combo");
     }
-    int i;
-    switch (Element.1.$SwitchMap$android$support$v8$renderscript$Element$DataKind[paramDataKind.ordinal()])
+    int i = Element.1.$SwitchMap$android$support$v8$renderscript$Element$DataKind[paramDataKind.ordinal()];
+    if (i != 1)
     {
-    default: 
-      i = 1;
+      if (i != 2)
+      {
+        if (i != 3) {
+          i = 1;
+        } else {
+          i = 4;
+        }
+      }
+      else {
+        i = 3;
+      }
     }
-    for (;;)
-    {
-      return new Element(paramRenderScript.nElementCreate(paramDataType.mID, paramDataKind.mID, true, i), paramRenderScript, paramDataType, paramDataKind, true, i);
+    else {
       i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
     }
+    return new Element(paramRenderScript.nElementCreate(paramDataType.mID, paramDataKind.mID, true, i), paramRenderScript, paramDataType, paramDataKind, true, i);
   }
   
   static Element createUser(RenderScript paramRenderScript, Element.DataType paramDataType)
@@ -555,16 +564,17 @@ public class Element
     if (RenderScript.isNative) {
       return ElementThunker.createVector((RenderScriptThunker)paramRenderScript, paramDataType, paramInt);
     }
-    if ((paramInt < 2) || (paramInt > 4)) {
-      throw new RSIllegalArgumentException("Vector size out of range 2-4.");
-    }
-    switch (Element.1.$SwitchMap$android$support$v8$renderscript$Element$DataType[paramDataType.ordinal()])
+    if ((paramInt >= 2) && (paramInt <= 4))
     {
-    default: 
-      throw new RSIllegalArgumentException("Cannot create vector of non-primitive type.");
+      switch (Element.1.$SwitchMap$android$support$v8$renderscript$Element$DataType[paramDataType.ordinal()])
+      {
+      default: 
+        throw new RSIllegalArgumentException("Cannot create vector of non-primitive type.");
+      }
+      Element.DataKind localDataKind = Element.DataKind.USER;
+      return new Element(paramRenderScript.nElementCreate(paramDataType.mID, localDataKind.mID, false, paramInt), paramRenderScript, paramDataType, localDataKind, false, paramInt);
     }
-    Element.DataKind localDataKind = Element.DataKind.USER;
-    return new Element(paramRenderScript.nElementCreate(paramDataType.mID, localDataKind.mID, false, paramInt), paramRenderScript, paramDataType, localDataKind, false, paramInt);
+    throw new RSIllegalArgumentException("Vector size out of range 2-4.");
   }
   
   private void updateVisibleSubElements()
@@ -585,24 +595,15 @@ public class Element
     }
     this.mVisibleElementMap = new int[j];
     i = 0;
-    j = 0;
-    label66:
-    if (j < m)
+    for (j = 0; i < m; j = k)
     {
-      if (this.mElementNames[j].charAt(0) == '#') {
-        break label111;
+      k = j;
+      if (this.mElementNames[i].charAt(0) != '#')
+      {
+        this.mVisibleElementMap[j] = i;
+        k = j + 1;
       }
-      int[] arrayOfInt = this.mVisibleElementMap;
-      k = i + 1;
-      arrayOfInt[i] = j;
-      i = k;
-    }
-    label111:
-    for (;;)
-    {
-      j += 1;
-      break label66;
-      break;
+      i += 1;
     }
   }
   
@@ -623,54 +624,63 @@ public class Element
   
   public Element getSubElement(int paramInt)
   {
-    if (this.mVisibleElementMap == null) {
-      throw new RSIllegalArgumentException("Element contains no sub-elements");
-    }
-    if ((paramInt < 0) || (paramInt >= this.mVisibleElementMap.length)) {
+    int[] arrayOfInt = this.mVisibleElementMap;
+    if (arrayOfInt != null)
+    {
+      if ((paramInt >= 0) && (paramInt < arrayOfInt.length)) {
+        return this.mElements[arrayOfInt[paramInt]];
+      }
       throw new RSIllegalArgumentException("Illegal sub-element index");
     }
-    return this.mElements[this.mVisibleElementMap[paramInt]];
+    throw new RSIllegalArgumentException("Element contains no sub-elements");
   }
   
   public int getSubElementArraySize(int paramInt)
   {
-    if (this.mVisibleElementMap == null) {
-      throw new RSIllegalArgumentException("Element contains no sub-elements");
-    }
-    if ((paramInt < 0) || (paramInt >= this.mVisibleElementMap.length)) {
+    int[] arrayOfInt = this.mVisibleElementMap;
+    if (arrayOfInt != null)
+    {
+      if ((paramInt >= 0) && (paramInt < arrayOfInt.length)) {
+        return this.mArraySizes[arrayOfInt[paramInt]];
+      }
       throw new RSIllegalArgumentException("Illegal sub-element index");
     }
-    return this.mArraySizes[this.mVisibleElementMap[paramInt]];
+    throw new RSIllegalArgumentException("Element contains no sub-elements");
   }
   
   public int getSubElementCount()
   {
-    if (this.mVisibleElementMap == null) {
+    int[] arrayOfInt = this.mVisibleElementMap;
+    if (arrayOfInt == null) {
       return 0;
     }
-    return this.mVisibleElementMap.length;
+    return arrayOfInt.length;
   }
   
   public String getSubElementName(int paramInt)
   {
-    if (this.mVisibleElementMap == null) {
-      throw new RSIllegalArgumentException("Element contains no sub-elements");
-    }
-    if ((paramInt < 0) || (paramInt >= this.mVisibleElementMap.length)) {
+    int[] arrayOfInt = this.mVisibleElementMap;
+    if (arrayOfInt != null)
+    {
+      if ((paramInt >= 0) && (paramInt < arrayOfInt.length)) {
+        return this.mElementNames[arrayOfInt[paramInt]];
+      }
       throw new RSIllegalArgumentException("Illegal sub-element index");
     }
-    return this.mElementNames[this.mVisibleElementMap[paramInt]];
+    throw new RSIllegalArgumentException("Element contains no sub-elements");
   }
   
   public int getSubElementOffsetBytes(int paramInt)
   {
-    if (this.mVisibleElementMap == null) {
-      throw new RSIllegalArgumentException("Element contains no sub-elements");
-    }
-    if ((paramInt < 0) || (paramInt >= this.mVisibleElementMap.length)) {
+    int[] arrayOfInt = this.mVisibleElementMap;
+    if (arrayOfInt != null)
+    {
+      if ((paramInt >= 0) && (paramInt < arrayOfInt.length)) {
+        return this.mOffsetInBytes[arrayOfInt[paramInt]];
+      }
       throw new RSIllegalArgumentException("Illegal sub-element index");
     }
-    return this.mOffsetInBytes[this.mVisibleElementMap[paramInt]];
+    throw new RSIllegalArgumentException("Element contains no sub-elements");
   }
   
   public int getVectorSize()
@@ -680,33 +690,35 @@ public class Element
   
   public boolean isCompatible(Element paramElement)
   {
-    if (equals(paramElement)) {}
-    while ((this.mSize == paramElement.mSize) && (this.mType != Element.DataType.NONE) && (this.mType == paramElement.mType) && (this.mVectorSize == paramElement.mVectorSize)) {
+    if (equals(paramElement)) {
       return true;
     }
-    return false;
+    return (this.mSize == paramElement.mSize) && (this.mType != Element.DataType.NONE) && (this.mType == paramElement.mType) && (this.mVectorSize == paramElement.mVectorSize);
   }
   
   public boolean isComplex()
   {
-    if (this.mElements == null) {}
+    if (this.mElements == null) {
+      return false;
+    }
+    int i = 0;
     for (;;)
     {
-      return false;
-      int i = 0;
-      while (i < this.mElements.length)
-      {
-        if (this.mElements[i].mElements != null) {
-          return true;
-        }
-        i += 1;
+      Element[] arrayOfElement = this.mElements;
+      if (i >= arrayOfElement.length) {
+        break;
       }
+      if (arrayOfElement[i].mElements != null) {
+        return true;
+      }
+      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Element
  * JD-Core Version:    0.7.0.1
  */

@@ -13,32 +13,32 @@ public final class ResponeQueryQQMobileContactsV3
   static int cache_queryFlag;
   static byte[] cache_sessionSid = (byte[])new byte[1];
   static int cache_type = 0;
-  public ArrayList<MobileContactsFriendInfo> BindFriendContacts;
-  public ArrayList<MobileContactsNotFriendInfo> BindNotFriendContacts;
-  public long ConfigVersion;
-  public long ForcePopSwitch;
-  public long MaxsignTimeStamp;
+  public ArrayList<MobileContactsFriendInfo> BindFriendContacts = null;
+  public ArrayList<MobileContactsNotFriendInfo> BindNotFriendContacts = null;
+  public long ConfigVersion = 0L;
+  public long ForcePopSwitch = 0L;
+  public long MaxsignTimeStamp = 0L;
   public String MobileUniqueNo = "";
-  public long PopCloseCount;
-  public long PopWindowsCount;
-  public long PopWindowsTime;
-  public long UIBits;
-  public long bindingTime;
-  public boolean isChangeDev;
-  public boolean isInactive;
-  public long isRecommend;
+  public long PopCloseCount = 0L;
+  public long PopWindowsCount = 0L;
+  public long PopWindowsTime = 0L;
+  public long UIBits = 0L;
+  public long bindingTime = 0L;
+  public boolean isChangeDev = false;
+  public boolean isInactive = false;
+  public long isRecommend = 0L;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
-  public long nextFlag;
-  public long nextQueryTimeInterval;
-  public long nextReLoginTimeInterval;
-  public long nextReconnectionTimeInterval;
-  public boolean noBindUploadContacts;
+  public long nextFlag = 0L;
+  public long nextQueryTimeInterval = 0L;
+  public long nextReLoginTimeInterval = 0L;
+  public long nextReconnectionTimeInterval = 0L;
+  public boolean noBindUploadContacts = false;
   public long originBinder = 1L;
-  public int queryFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public int queryFlag = 0;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   public int type = 0;
   
   static
@@ -150,7 +150,7 @@ public final class ResponeQueryQQMobileContactsV3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeQueryQQMobileContactsV3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ge1" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ge0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="@string/gfe" />
+    <FrameLayout android:orientation="vertical" android:id="@id/ge4" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/gfg">
+        <RelativeLayout android:layout_gravity="center" android:id="@id/gjy" android:focusable="false" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/gfg">
+            <ImageView android:id="@id/ge5" android:visibility="invisible" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" android:src="@raw/lucky_money_mute_icon" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/dyp" />
+            <ImageView android:id="@id/gjz" android:visibility="visible" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <ProgressBar android:id="@id/ge2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a74" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ge3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/lucky_money_detail_story_video_error_icon" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/al2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="{dddd}" style="@style/tr" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,38 +1,26 @@
 package com.tencent.mobileqq.ar.view;
 
-import alud;
-import anga;
-import anhx;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.PromotionRes;
 
 class ARScanEntryView$37
-  implements Runnable
+  implements ARTipsManager.ButtonClickListener
 {
-  ARScanEntryView$37(ARScanEntryView paramARScanEntryView) {}
+  ARScanEntryView$37(ARScanEntryView paramARScanEntryView, ScanEntryResourceDelegate paramScanEntryResourceDelegate, PromotionRes paramPromotionRes) {}
   
-  public void run()
+  public void a()
   {
-    anga localanga = this.this$0.a.a();
-    boolean bool1 = localanga.c();
-    boolean bool2 = localanga.d();
-    QLog.d("AREngine_ARScanEntryView", 1, "startDownloadTimeoutCheck, AR组件加载超, mIsDownloadTimeout[" + ARScanEntryView.e(this.this$0) + "],isBaseSoReady:=" + bool1 + ",isFaceSoReady:=" + bool2);
-    ARScanEntryView.c(this.this$0, true);
-    if (!bool1) {
-      this.this$0.d_(alud.a(2131701133));
-    }
-    do
-    {
-      return;
-      this.this$0.j();
-    } while (ARScanEntryView.c(this.this$0));
-    QQToast.a(BaseApplicationImpl.getContext(), 2131690221, 0).a();
+    ARScanEntryView.h(this.c, false);
+    this.c.d("ClickTips");
+    ARScanEntryView.i(this.c, true);
+    ARScanEntryView.d(this.c).postDelayed(new ARScanEntryView.37.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.37
  * JD-Core Version:    0.7.0.1
  */

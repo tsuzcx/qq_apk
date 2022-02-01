@@ -1,31 +1,55 @@
 package com.tencent.mm.plugin.appbrand.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.a.e.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.plugin.fts.a.a;
 
 public final class c
-  implements e.a
+  extends a
 {
-  public final String g(Map<String, String> paramMap, String paramString)
+  public final void aXv()
   {
-    AppMethodBeat.i(132274);
-    if ((paramMap == null) || (paramMap.isEmpty()))
-    {
-      ab.w("MicroMsg.WxaSysTemplateMsgDigestHandler", "values map is null or nil");
-      AppMethodBeat.o(132274);
-      return "";
+    AppMethodBeat.i(45022);
+    if (aXw()) {
+      aG(-104L, 3L);
     }
-    paramMap = bo.nullAsNil((String)paramMap.get(paramString + ".title"));
-    AppMethodBeat.o(132274);
-    return paramMap;
+    AppMethodBeat.o(45022);
+  }
+  
+  public final boolean aXw()
+  {
+    AppMethodBeat.i(45023);
+    if (!iV(-104, 3))
+    {
+      AppMethodBeat.o(45023);
+      return true;
+    }
+    AppMethodBeat.o(45023);
+    return false;
+  }
+  
+  public final String getName()
+  {
+    return "FTS5WeAppStorage";
+  }
+  
+  public final int getPriority()
+  {
+    return 512;
+  }
+  
+  public final String getTableName()
+  {
+    return "WeApp";
+  }
+  
+  public final int getType()
+  {
+    return 512;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.c
  * JD-Core Version:    0.7.0.1
  */

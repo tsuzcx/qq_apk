@@ -1,57 +1,54 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.aq;
+import java.util.Map;
+import junit.framework.Assert;
 
 public final class ce
+  implements g
 {
-  public static boolean aR(Object paramObject)
+  public final g.b b(g.a parama)
   {
-    AppMethodBeat.i(77828);
-    if ((paramObject instanceof Boolean)) {
-      try
-      {
-        boolean bool = ((Boolean)paramObject).booleanValue();
-        AppMethodBeat.o(77828);
-        return bool;
+    boolean bool2 = true;
+    AppMethodBeat.i(20393);
+    parama = parama.mpN;
+    if (parama != null)
+    {
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      if (parama.YFG == null) {
+        break label101;
       }
-      catch (Exception paramObject) {}
     }
-    AppMethodBeat.o(77828);
-    return false;
+    label101:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      Assert.assertTrue(bool1);
+      parama = (String)XmlParser.parseXml(w.a(parama.YFG), "tips", null).get(".tips.tip.url");
+      Log.v("MicroMsg.SoftwareMsgExtension", "url:".concat(String.valueOf(parama)));
+      bh.bCz();
+      c.ban().B(12308, parama);
+      AppMethodBeat.o(20393);
+      return null;
+      bool1 = false;
+      break;
+    }
   }
   
-  public static String f(Object paramObject, String paramString)
-  {
-    if ((paramObject instanceof String)) {
-      try
-      {
-        paramObject = (String)paramObject;
-        return paramObject;
-      }
-      catch (Exception paramObject) {}
-    }
-    return paramString;
-  }
-  
-  public static int getInt(Object paramObject, int paramInt)
-  {
-    AppMethodBeat.i(77827);
-    if ((paramObject instanceof Integer)) {
-      try
-      {
-        int i = ((Integer)paramObject).intValue();
-        AppMethodBeat.o(77827);
-        return i;
-      }
-      catch (Exception paramObject) {}
-    }
-    AppMethodBeat.o(77827);
-    return paramInt;
-  }
+  public final void b(g.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.ce
  * JD-Core Version:    0.7.0.1
  */

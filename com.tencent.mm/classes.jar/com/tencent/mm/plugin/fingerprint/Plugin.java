@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.fingerprint;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
     return null;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(41347);
+    AppMethodBeat.i(64212);
     a locala = new a();
-    AppMethodBeat.o(41347);
+    AppMethodBeat.o(64212);
     return locala;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.Plugin
  * JD-Core Version:    0.7.0.1
  */

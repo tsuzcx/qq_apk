@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class stWaterFallCardStyle
   extends JceStruct
 {
-  public int cardType;
+  public int cardType = 0;
   public boolean isFullSpan = true;
   public boolean isVertical = true;
-  public int ratioH;
-  public int ratioW;
+  public int ratioH = 0;
+  public int ratioW = 0;
   
   public stWaterFallCardStyle() {}
   
@@ -44,7 +44,7 @@ public final class stWaterFallCardStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stWaterFallCardStyle
  * JD-Core Version:    0.7.0.1
  */

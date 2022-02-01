@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/a_8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:id="@id/a_9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ui" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="13.0dip">
+        <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/a27" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginRight="8.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/m7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="center_vertical" android:id="@id/kpx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/ma" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/j9r" android:paddingRight="@dimen/m2" android:layout_width="64.0dip" android:layout_height="fill_parent">
+            <View android:background="@color/FG_4" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
+            <CheckBox android:id="@id/j9q" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_centerInParent="true" />
+        </RelativeLayout>
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ui">
-        <ImageView android:id="@id/a__" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:id="@id/a_a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ui" />
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -1,89 +1,52 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import android.content.Context;
-import com.tencent.luggage.sdk.b.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.autofill.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.autofill.a.a.c;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a.c;
+import com.tencent.mm.plugin.appbrand.permission.a.b.c;
+import com.tencent.mm.plugin.appbrand.permission.a.b.d;
+import com.tencent.mm.protocal.protobuf.eul;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalPageAuthorizePresenterViewsFactory;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$FactoryInterface;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView$FactoryInterface;", "()V", "createPresenterView", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView;", "listener", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "scopeList", "", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends z
-  implements m
+  implements a.c, b.c
 {
-  private volatile l ioA;
+  public static final i tfS;
   
-  i()
+  static
   {
-    super(a.class);
+    AppMethodBeat.i(320036);
+    tfS = new i();
+    AppMethodBeat.o(320036);
   }
   
-  public final l aBq()
+  public final com.tencent.mm.plugin.appbrand.permission.a.b a(g paramg, b.d paramd, List<? extends eul> paramList)
   {
-    AppMethodBeat.i(132134);
-    l locall = new l(this);
-    this.ioA = locall;
-    AppMethodBeat.o(132134);
-    return locall;
+    AppMethodBeat.i(320041);
+    s.u(paramg, "component");
+    s.u(paramd, "listener");
+    paramg = (com.tencent.mm.plugin.appbrand.permission.a.b)new com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.a.b(paramg, paramd);
+    AppMethodBeat.o(320041);
+    return paramg;
   }
   
-  public final void aHI() {}
-  
-  public final l aHz()
+  public final a e(g paramg)
   {
-    return this.ioA;
-  }
-  
-  public final void h(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(132136);
-    ((j)super.getRuntime()).ioI.a(this, paramInt, paramString);
-    AppMethodBeat.o(132136);
-  }
-  
-  public final void wm()
-  {
-    AppMethodBeat.i(132138);
-    try
-    {
-      super.wm();
-      AppMethodBeat.o(132138);
-      return;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      AppMethodBeat.o(132138);
-    }
-  }
-  
-  static final class a
-    extends com.tencent.mm.plugin.appbrand.page.a<i>
-  {
-    public a(i parami)
-    {
-      super();
-    }
-    
-    public final boolean bX(String paramString)
-    {
-      AppMethodBeat.i(143454);
-      ((i)this.bDN).A(new i.a.1(this));
-      AppMethodBeat.o(143454);
-      return true;
-    }
-    
-    public final ap cX(Context paramContext)
-    {
-      AppMethodBeat.i(143453);
-      paramContext = new com.tencent.luggage.game.page.a();
-      AppMethodBeat.o(143453);
-      return paramContext;
-    }
+    AppMethodBeat.i(320048);
+    s.u(paramg, "component");
+    paramg = (a)new c(paramg);
+    AppMethodBeat.o(320048);
+    return paramg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.i
  * JD-Core Version:    0.7.0.1
  */

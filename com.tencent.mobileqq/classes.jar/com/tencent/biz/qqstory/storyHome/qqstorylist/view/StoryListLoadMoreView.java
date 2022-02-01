@@ -29,17 +29,19 @@ public class StoryListLoadMoreView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166903));
+    if (this.d != null) {
+      this.d.setTextColor(getResources().getColor(2131167993));
+    }
   }
   
-  public int a()
+  public int getState()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView
  * JD-Core Version:    0.7.0.1
  */

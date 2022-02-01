@@ -27,6 +27,7 @@ public abstract class a
   {
     paramByteArrayOutputStream = new DataOutputStream(paramByteArrayOutputStream);
     paramByteArrayOutputStream.writeByte(7);
+    int i = 0;
     paramByteArrayOutputStream.writeShort(0);
     paramByteArrayOutputStream.writeShort(0);
     paramByteArrayOutputStream.writeShort(this.b);
@@ -42,7 +43,6 @@ public abstract class a
       Object localObject = new ByteArrayOutputStream(200);
       DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
       localDataOutputStream.writeShort(this.f.size());
-      int i = 0;
       while (i < this.f.size())
       {
         Iterator localIterator = this.f.entrySet().iterator();
@@ -55,12 +55,16 @@ public abstract class a
       }
       localObject = this.e.b.b(((ByteArrayOutputStream)localObject).toByteArray());
       paramByteArrayOutputStream.writeShort(localObject.length);
-      if (localObject.length != 0) {
+      if (localObject.length != 0)
+      {
         paramByteArrayOutputStream.write((byte[])localObject);
+        return paramByteArrayOutputStream;
       }
-      return paramByteArrayOutputStream;
     }
-    paramByteArrayOutputStream.writeShort(0);
+    else
+    {
+      paramByteArrayOutputStream.writeShort(0);
+    }
     return paramByteArrayOutputStream;
   }
   
@@ -71,11 +75,16 @@ public abstract class a
   
   public final void a(b paramb, String paramString)
   {
-    if (paramb.b() != f.b) {}
-    while ((paramString == null) || (paramString.length() == 0)) {
+    if (paramb.b() != f.b) {
       return;
     }
-    this.f.put(paramb, paramString);
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return;
+      }
+      this.f.put(paramb, paramString);
+    }
   }
   
   abstract void a(DataOutputStream paramDataOutputStream);
@@ -90,56 +99,67 @@ public abstract class a
   final void b(ByteBuffer paramByteBuffer)
   {
     int i = paramByteBuffer.get();
-    if (i != 7) {
-      throw new RuntimeException("STX(2) invalid:" + i);
-    }
-    paramByteBuffer.getShort();
-    paramByteBuffer.getShort();
-    this.b = paramByteBuffer.getShort();
-    i = paramByteBuffer.getShort() & 0xFFFF;
-    if (this.e == null)
+    if (i == 7)
     {
-      this.e = c.a(i);
-      if (this.e == null) {
-        this.e = c.b();
-      }
-      if (this.e.a != i) {
-        throw new RuntimeException("the keySerial [" + i + "] is unknow:" + c.c());
-      }
-    }
-    this.d = paramByteBuffer.getInt();
-    this.a = paramByteBuffer.get();
-    i = paramByteBuffer.getShort() & 0xFFFF;
-    if (i != 0)
-    {
-      byte[] arrayOfByte = new byte[i];
-      paramByteBuffer.get(arrayOfByte);
-      paramByteBuffer = ByteBuffer.wrap(this.e.b.a(arrayOfByte));
-      int j = paramByteBuffer.getShort();
-      i = 0;
-      for (;;)
+      paramByteBuffer.getShort();
+      paramByteBuffer.getShort();
+      this.b = paramByteBuffer.getShort();
+      i = paramByteBuffer.getShort() & 0xFFFF;
+      if (this.e == null)
       {
-        if (i < (0xFFFF & j)) {
+        this.e = c.a(i);
+        if (this.e == null) {
+          this.e = c.b();
+        }
+        if (this.e.a != i)
+        {
+          paramByteBuffer = new StringBuilder("the keySerial [");
+          paramByteBuffer.append(i);
+          paramByteBuffer.append("] is unknow:");
+          paramByteBuffer.append(c.c());
+          throw new RuntimeException(paramByteBuffer.toString());
+        }
+      }
+      this.d = paramByteBuffer.getInt();
+      this.a = paramByteBuffer.get();
+      i = paramByteBuffer.getShort() & 0xFFFF;
+      if (i != 0)
+      {
+        byte[] arrayOfByte = new byte[i];
+        paramByteBuffer.get(arrayOfByte);
+        paramByteBuffer = ByteBuffer.wrap(this.e.b.a(arrayOfByte));
+        int j = paramByteBuffer.getShort();
+        i = 0;
+        while (i < (j & 0xFFFF))
+        {
           try
           {
             b.a(paramByteBuffer, this.f);
-            i += 1;
           }
           catch (Exception localException)
           {
-            for (;;)
-            {
-              localException.printStackTrace();
-            }
+            localException.printStackTrace();
           }
+          i += 1;
         }
       }
+      return;
     }
+    throw new RuntimeException("STX(2) invalid:".concat(String.valueOf(i)));
   }
   
   public String toString()
   {
-    return "CMD [seq=" + this.d + ", key=" + this.e + ", confField=" + this.f + ", cmd=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder("CMD [seq=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", key=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", confField=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", cmd=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import alto;
-
-public class FriendsManager$2
+class FriendsManager$2
   implements Runnable
 {
-  public FriendsManager$2(alto paramalto) {}
+  FriendsManager$2(FriendsManager paramFriendsManager) {}
   
   public void run()
   {
-    this.this$0.c = this.this$0.f();
+    FriendsManager localFriendsManager = this.this$0;
+    localFriendsManager.t = localFriendsManager.y();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.2
  * JD-Core Version:    0.7.0.1
  */

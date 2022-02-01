@@ -71,12 +71,11 @@ public class QQDynamicStickersFilter
   public float[] caculateMatrix(DynamicStickerData paramDynamicStickerData, TrackerStickerParam.MotionInfo paramMotionInfo)
   {
     float f3 = this.mSurfaceWidth / this.mSurfaceHeight;
-    GlMatricUtil localGlMatricUtil = new GlMatricUtil();
-    localGlMatricUtil.ortho(-1.0F * f3, 1.0F * f3, -1.0F, 1.0F, 3.0F, 20.0F);
-    localGlMatricUtil.setCamera(0.0F, 0.0F, 10.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-    float f1 = paramDynamicStickerData.centerP.x;
-    float f2 = paramDynamicStickerData.translateX + f1;
-    f1 = paramDynamicStickerData.centerP.y + paramDynamicStickerData.translateY;
+    Object localObject = new GlMatricUtil();
+    ((GlMatricUtil)localObject).ortho(f3 * -1.0F, f3 * 1.0F, -1.0F, 1.0F, 3.0F, 20.0F);
+    ((GlMatricUtil)localObject).setCamera(0.0F, 0.0F, 10.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    float f2 = paramDynamicStickerData.centerP.x + paramDynamicStickerData.translateX;
+    float f1 = paramDynamicStickerData.centerP.y + paramDynamicStickerData.translateY;
     if (paramMotionInfo != null)
     {
       f2 = paramMotionInfo.x;
@@ -85,28 +84,35 @@ public class QQDynamicStickersFilter
     f2 = f2 * 2.0F / paramDynamicStickerData.layerWidth;
     f1 = f1 * 2.0F / paramDynamicStickerData.layerHeight;
     if (this.mbReversed) {
-      localGlMatricUtil.translate((f2 - 1.0F) * f3, f1 - 1.0F, 0.0F);
+      ((GlMatricUtil)localObject).translate((f2 - 1.0F) * f3, f1 - 1.0F, 0.0F);
+    } else {
+      ((GlMatricUtil)localObject).translate((f2 - 1.0F) * f3, 1.0F - f1, 0.0F);
     }
-    for (;;)
+    float f4 = this.mSurfaceWidth / paramDynamicStickerData.layerWidth;
+    f1 = this.mSurfaceHeight / paramDynamicStickerData.layerHeight;
+    float f5 = paramDynamicStickerData.width / this.mSurfaceWidth;
+    f2 = paramDynamicStickerData.height / this.mSurfaceHeight;
+    f3 = paramDynamicStickerData.scale * f4 * f5 * f3;
+    f1 = paramDynamicStickerData.scale * f1 * f2;
+    ((GlMatricUtil)localObject).rotate(paramDynamicStickerData.rotate, 0.0F, 0.0F, 1.0F);
+    ((GlMatricUtil)localObject).scale(f3, f1, 1.0F);
+    paramDynamicStickerData = new StringBuilder();
+    paramDynamicStickerData.append("finalScaleX : ");
+    paramDynamicStickerData.append(f3);
+    paramDynamicStickerData.append(" finalScaleY:");
+    paramDynamicStickerData.append(f1);
+    SLog.d("giftrackerMatrix ", paramDynamicStickerData.toString());
+    paramMotionInfo = ((GlMatricUtil)localObject).getFinalMatrix();
+    int i = 0;
+    paramDynamicStickerData = "mvp: ";
+    while (i < 16)
     {
-      float f4 = this.mSurfaceWidth / paramDynamicStickerData.layerWidth;
-      f1 = this.mSurfaceHeight / paramDynamicStickerData.layerHeight;
-      float f5 = paramDynamicStickerData.width / this.mSurfaceWidth;
-      f2 = paramDynamicStickerData.height / this.mSurfaceHeight;
-      f3 = f4 * paramDynamicStickerData.scale * f5 * f3;
-      f1 = f1 * paramDynamicStickerData.scale * f2;
-      localGlMatricUtil.rotate(paramDynamicStickerData.rotate, 0.0F, 0.0F, 1.0F);
-      localGlMatricUtil.scale(f3, f1, 1.0F);
-      SLog.d("giftrackerMatrix ", "finalScaleX : " + f3 + " finalScaleY:" + f1);
-      paramMotionInfo = localGlMatricUtil.getFinalMatrix();
-      paramDynamicStickerData = "mvp: ";
-      int i = 0;
-      while (i < 16)
-      {
-        paramDynamicStickerData = paramDynamicStickerData + " " + paramMotionInfo[i];
-        i += 1;
-      }
-      localGlMatricUtil.translate((f2 - 1.0F) * f3, 1.0F - f1, 0.0F);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramDynamicStickerData);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramMotionInfo[i]);
+      paramDynamicStickerData = ((StringBuilder)localObject).toString();
+      i += 1;
     }
     SLog.d("giftrackerMatrix ", paramDynamicStickerData);
     return paramMotionInfo;
@@ -131,80 +137,87 @@ public class QQDynamicStickersFilter
   public void onDrawFrame()
   {
     long l2;
-    long l3;
+    long l1;
+    Object localObject1;
     if ((this.bwork) && (this.mRenderFBO != null))
     {
       l2 = getQQFilterRenderManager().getBusinessOperation().getPresentTimeStamp();
-      l3 = getQQFilterRenderManager().getBusinessOperation().getOrgTimeStamp();
+      long l3 = getQQFilterRenderManager().getBusinessOperation().getOrgTimeStamp();
       l1 = getQQFilterRenderManager().getBusinessOperation().getVideoStartTime();
       l3 /= 1000000L;
-      if (l3 <= l1) {
-        break label432;
+      if (l3 > l1) {
+        l1 = l3 - l1;
+      } else {
+        l1 = 0L;
       }
+      localObject1 = this.mDynamicStickers;
+      if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {}
     }
-    label420:
-    label425:
-    label432:
-    for (long l1 = l3 - l1;; l1 = 0L)
+    try
     {
-      if ((this.mDynamicStickers != null) && (this.mDynamicStickers.size() > 0)) {}
+      this.mRenderFBO.setTexId(this.mInputTextureID);
+      this.mRenderFBO.bind();
+      i = 0;
+    }
+    catch (Throwable localThrowable)
+    {
       for (;;)
       {
-        int j;
-        try
-        {
-          this.mRenderFBO.setTexId(this.mInputTextureID);
-          this.mRenderFBO.bind();
-          j = 0;
-          if (j < this.mDynamicStickers.size())
-          {
-            Bitmap localBitmap = ((DynamicStickerData)this.mDynamicStickers.get(j)).mGifDecoder.getNextGifFrame(l2);
-            if (!((DynamicStickerData)this.mDynamicStickers.get(j)).isShow((int)l1)) {
-              break label425;
-            }
-            DynamicStickerData localDynamicStickerData = (DynamicStickerData)this.mDynamicStickers.get(j);
-            if (localDynamicStickerData.mapMotionTrack.size() == 0) {
-              break label420;
-            }
-            TrackerStickerParam.MotionInfo localMotionInfo = getTrackerPoint(l2, localDynamicStickerData);
-            if (!localMotionInfo.isLost)
-            {
-              this.mvpMatrix[j] = caculateMatrix(localDynamicStickerData, localMotionInfo);
-              i = 0;
-              if ((localBitmap == null) || (i != 0)) {
-                break label425;
-              }
-              GLES20.glBindTexture(3553, this.textureId);
-              GlUtil.checkGlError("glBindTexture " + this.textureId);
-              GLES20.glTexParameterf(3553, 10241, 9729.0F);
-              GLES20.glTexParameterf(3553, 10240, 9729.0F);
-              GLES20.glTexParameteri(3553, 10242, 33071);
-              GLES20.glTexParameteri(3553, 10243, 33071);
-              GLUtils.texImage2D(3553, 0, localBitmap, 0);
-              GlUtil.checkGlError("glTexParameter");
-              this.mMultiStickerFilter.drawTexture(this.textureId, this.textureMatrix, this.mvpMatrix[j]);
-            }
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          this.mOutputTextureID = this.mInputTextureID;
-        }
-        for (;;)
-        {
-          this.mOutputTextureID = this.mInputTextureID;
-          return;
-          i = 1;
-          break;
-          this.mRenderFBO.unbind();
-          this.mOutputTextureID = this.mRenderFBO.getTexId();
-        }
-        this.mOutputTextureID = this.mInputTextureID;
-        return;
-        int i = 0;
+        int i;
+        Object localObject2;
+        TrackerStickerParam.MotionInfo localMotionInfo;
+        label413:
         continue;
-        j += 1;
+        int j = 1;
+        continue;
+        j = 0;
+        continue;
+        i += 1;
       }
+    }
+    if (i < this.mDynamicStickers.size())
+    {
+      localObject1 = ((DynamicStickerData)this.mDynamicStickers.get(i)).mGifDecoder.getNextGifFrame(l2);
+      if (!((DynamicStickerData)this.mDynamicStickers.get(i)).isShow((int)l1)) {
+        break label446;
+      }
+      localObject2 = (DynamicStickerData)this.mDynamicStickers.get(i);
+      if (((DynamicStickerData)localObject2).mapMotionTrack.size() == 0) {
+        break label441;
+      }
+      localMotionInfo = getTrackerPoint(l2, (DynamicStickerData)localObject2);
+      if (!localMotionInfo.isLost)
+      {
+        this.mvpMatrix[i] = caculateMatrix((DynamicStickerData)localObject2, localMotionInfo);
+        break label441;
+        if ((localObject1 == null) || (j != 0)) {
+          break label446;
+        }
+        GLES20.glBindTexture(3553, this.textureId);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("glBindTexture ");
+        ((StringBuilder)localObject2).append(this.textureId);
+        GlUtil.checkGlError(((StringBuilder)localObject2).toString());
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameteri(3553, 10242, 33071);
+        GLES20.glTexParameteri(3553, 10243, 33071);
+        GLUtils.texImage2D(3553, 0, (Bitmap)localObject1, 0);
+        GlUtil.checkGlError("glTexParameter");
+        this.mMultiStickerFilter.drawTexture(this.textureId, this.textureMatrix, this.mvpMatrix[i]);
+        break label446;
+      }
+    }
+    else
+    {
+      this.mRenderFBO.unbind();
+      this.mOutputTextureID = this.mRenderFBO.getTexId();
+      break label413;
+      this.mOutputTextureID = this.mInputTextureID;
+      this.mOutputTextureID = this.mInputTextureID;
+      return;
+      this.mOutputTextureID = this.mInputTextureID;
+      return;
     }
   }
   
@@ -255,7 +268,10 @@ public class QQDynamicStickersFilter
       i = GLES20.glGetError();
       if (i != 0)
       {
-        localObject = "previousUnknownError: glError 0x" + Integer.toHexString(i);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("previousUnknownError: glError 0x");
+        ((StringBuilder)localObject).append(Integer.toHexString(i));
+        localObject = ((StringBuilder)localObject).toString();
         SLog.e(TAG, (String)localObject);
       }
       this.mRenderFBO = new RenderBuffer(this.mSurfaceWidth, this.mSurfaceHeight, 33984);
@@ -263,8 +279,10 @@ public class QQDynamicStickersFilter
     }
     catch (Throwable localThrowable)
     {
-      this.mRenderFBO = null;
+      label183:
+      break label183;
     }
+    this.mRenderFBO = null;
   }
   
   public void onSurfaceDestroy()
@@ -275,7 +293,7 @@ public class QQDynamicStickersFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQDynamicStickersFilter
  * JD-Core Version:    0.7.0.1
  */

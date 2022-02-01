@@ -2,6 +2,7 @@ package btmsdkobf;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
 
 public class dk
 {
@@ -15,19 +16,19 @@ public class dk
     this.mV = this.hF.bL().aF();
   }
   
-  private dj a(long paramLong, int paramInt, av paramav)
+  private dj<Long, Integer, JceStruct> a(long paramLong, int paramInt, av paramav)
   {
-    if (paramav == null) {}
-    do
-    {
+    if (paramav == null) {
       return null;
-      if (paramav.dq == 0)
-      {
-        b(1, true);
-        return null;
-      }
-    } while (paramav.dq != 1);
-    b(1, false);
+    }
+    if (paramav.dq == 0)
+    {
+      b(1, true);
+      return null;
+    }
+    if (paramav.dq == 1) {
+      b(1, false);
+    }
     return null;
   }
   
@@ -41,84 +42,50 @@ public class dk
   
   private aq c(int paramInt, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1 = this.hF.bL().aF();
-    String str1 = this.hF.bL().aG();
-    label35:
-    String str2;
-    if (localObject1 != null)
-    {
-      if (str1 == null) {
-        break label106;
-      }
-      str2 = this.hF.bL().aO();
-      if (str2 == null) {
-        break label113;
-      }
-      label52:
-      if (!paramBoolean) {
-        break label120;
-      }
-      localObject2 = new aq();
-      ((aq)localObject2).cZ = paramInt;
-      ((aq)localObject2).da = ((String)localObject1);
-      ((aq)localObject2).cS = str1;
-      ((aq)localObject2).cT = str2;
-      localObject1 = localObject2;
+    String str1 = this.hF.bL().aF();
+    String str2 = this.hF.bL().aG();
+    if (str1 == null) {
+      str1 = "";
     }
-    for (;;)
+    if (str2 == null) {
+      str2 = "";
+    }
+    String str3 = this.hF.bL().aO();
+    if (str3 == null) {
+      str3 = "";
+    }
+    if (paramBoolean) {}
+    for (aq localaq = new aq();; localaq = new aq())
     {
-      localObject2 = localObject1;
-      label106:
-      label113:
-      label120:
-      do
-      {
-        return localObject2;
-        localObject1 = "";
+      localaq.cZ = paramInt;
+      localaq.da = str1;
+      localaq.cS = str2;
+      localaq.cT = str3;
+      return localaq;
+      if (aY()) {
+        return null;
+      }
+      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (str1.equals(str2))) {
         break;
-        str1 = "";
-        break label35;
-        str2 = "";
-        break label52;
-      } while (aY());
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str1)) && (!((String)localObject1).equals(str1)))
-      {
-        localObject2 = new aq();
-        ((aq)localObject2).cZ = paramInt;
-        ((aq)localObject2).da = ((String)localObject1);
-        ((aq)localObject2).cS = str1;
-        ((aq)localObject2).cT = str2;
-        localObject1 = localObject2;
-      }
-      else
-      {
-        localObject1 = null;
       }
     }
+    return null;
   }
   
   private ao cz()
   {
     ao localao = new ao();
     String str = this.hF.bL().aG();
-    if (str != null)
-    {
-      localao.cS = str;
-      str = this.hF.bL().aO();
-      if (str == null) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      localao.cT = str;
-      return localao;
-      str = "";
-      break;
-      label56:
+    if (str == null) {
       str = "";
     }
+    localao.cS = str;
+    str = this.hF.bL().aO();
+    if (str == null) {
+      str = "";
+    }
+    localao.cT = str;
+    return localao;
   }
   
   public void av()
@@ -136,30 +103,99 @@ public class dk
     }
     if (!aY())
     {
-      eh.f("VidCertifier", "[cu_vid]registerVidIfNeed(), not necessary, mVidFromPhone: " + this.mV);
+      StringBuilder localStringBuilder = new StringBuilder("[cu_vid]registerVidIfNeed(), not necessary, mVidFromPhone: ");
+      localStringBuilder.append(this.mV);
+      eh.f("VidCertifier", localStringBuilder.toString());
       return;
     }
     this.hF.bL().aE();
     this.mW = true;
-    cx.bE().b(5006, cz(), new ax(), 0, new ie(this), 30000L);
+    cx.bE().b(5006, cz(), new ax(), 0, new cj()
+    {
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        StringBuilder localStringBuilder;
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0) && (paramAnonymousJceStruct != null))
+        {
+          paramAnonymousJceStruct = ((ax)paramAnonymousJceStruct).dr;
+          if (!TextUtils.isEmpty(paramAnonymousJceStruct))
+          {
+            eh.f("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), succ, vid: ".concat(String.valueOf(paramAnonymousJceStruct)));
+            dk.a(dk.this, paramAnonymousJceStruct);
+            dk.a(dk.this).bL().c(paramAnonymousJceStruct, true);
+            dk.a(dk.this).bL().d(paramAnonymousJceStruct, true);
+          }
+          else
+          {
+            localStringBuilder = new StringBuilder("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
+            localStringBuilder.append(paramAnonymousInt1);
+            localStringBuilder.append(", vid is empty: ");
+            localStringBuilder.append(paramAnonymousJceStruct);
+            eh.g("VidCertifier", localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
+          localStringBuilder.append(paramAnonymousInt1);
+          localStringBuilder.append(" retCode: ");
+          localStringBuilder.append(paramAnonymousInt3);
+          localStringBuilder.append(" dataRetCode: ");
+          localStringBuilder.append(paramAnonymousInt4);
+          localStringBuilder.append(" resp: ");
+          localStringBuilder.append(paramAnonymousJceStruct);
+          eh.g("VidCertifier", localStringBuilder.toString());
+        }
+        dk.a(dk.this, false);
+      }
+    }, 30000L);
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if (!this.hF.bL().aD()) {}
-    aq localaq;
-    do
-    {
+    if (!this.hF.bL().aD()) {
       return;
-      localaq = c(paramInt, paramBoolean);
-    } while (localaq == null);
-    cx.bE().b(5007, localaq, new ay(), 0, new if(this), 30000L);
+    }
+    aq localaq = c(paramInt, paramBoolean);
+    if (localaq == null) {
+      return;
+    }
+    cx.bE().b(5007, localaq, new ay(), 0, new cj()
+    {
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0) && (paramAnonymousJceStruct != null))
+        {
+          paramAnonymousJceStruct = ((ay)paramAnonymousJceStruct).dr;
+          if (!TextUtils.isEmpty(paramAnonymousJceStruct))
+          {
+            dk.a(dk.this, paramAnonymousJceStruct);
+            dk.a(dk.this).bL().c(paramAnonymousJceStruct, false);
+            dk.a(dk.this).bL().d(paramAnonymousJceStruct, false);
+          }
+        }
+      }
+    }, 30000L);
   }
   
   public void c(cy.d paramd)
   {
-    ig localig = new ig(this);
-    paramd.a(0L, 15020, new av(), 0, localig, false);
+    cm local3 = new cm()
+    {
+      public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      {
+        if (paramAnonymousJceStruct == null)
+        {
+          eh.h("VidCertifier", "onRecvPush() null == push");
+          return null;
+        }
+        if (paramAnonymousInt2 != 15020) {
+          return null;
+        }
+        return dk.a(dk.this, paramAnonymousLong, paramAnonymousInt1, (av)paramAnonymousJceStruct);
+      }
+    };
+    paramd.a(0L, 15020, new av(), 0, local3, false);
   }
 }
 

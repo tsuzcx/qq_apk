@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import android.view.View;
-import com.tencent.mm.pluginsdk.ui.d.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.span.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class a
-  extends n
+  extends t
 {
-  private long oCV = -1L;
+  private long JSX = -1L;
   
-  public a()
+  public a(int paramInt)
   {
-    super(1, null);
+    super(paramInt, null);
   }
   
   public void onClick(View paramView)
   {
-    if (bo.av(this.oCV) > 1000L)
+    if (Util.ticksToNow(this.JSX) > 1000L)
     {
       super.onClick(paramView);
       onClickImp(paramView);
     }
     for (;;)
     {
-      this.oCV = bo.yB();
+      this.JSX = Util.currentTicks();
       return;
-      ab.w("MicroMsg.AvoidDuplicatedPressableSpan", "hy: too often click");
+      Log.w("MicroMsg.AvoidDuplicatedPressableSpan", "hy: too often click");
       setIsPressed(false);
     }
   }

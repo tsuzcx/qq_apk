@@ -1,108 +1,129 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ae;
-import com.tencent.mm.model.af;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.ax.a;
+import com.tencent.mm.app.f;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.PhoneStatusWatcher;
+import com.tencent.mm.sdk.platformtools.PhoneStatusWatcher.PhoneCallListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class a
-  implements ae
+  implements ap
 {
-  private static volatile a dYx;
-  private List<af> callbacks;
-  private ax dYv;
-  private ax.a dYw;
-  private c dYy;
+  private static volatile a lrb;
+  private List<aq> bPE;
+  private PhoneStatusWatcher lqZ;
+  private PhoneStatusWatcher.PhoneCallListener lra;
+  private IListener lrc;
   
   private a()
   {
-    AppMethodBeat.i(77621);
-    this.callbacks = new ArrayList();
-    this.dYv = new ax();
-    this.dYw = new a.1(this);
-    this.dYv.a(this.dYw);
-    this.dYv.hd(ah.getContext());
-    if (this.dYy == null) {
-      this.dYy = new a.2(this);
+    AppMethodBeat.i(149955);
+    this.bPE = new ArrayList();
+    this.lqZ = new PhoneStatusWatcher();
+    this.lra = new PhoneStatusWatcher.PhoneCallListener()
+    {
+      public final void onPhoneCall(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(149953);
+        switch (paramAnonymousInt)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(149953);
+          return;
+          Log.v("MicroMsg.BackgroundPlayer", "call end");
+          a.this.aKk();
+          AppMethodBeat.o(149953);
+          return;
+          Log.v("MicroMsg.BackgroundPlayer", "call start");
+          a.this.aKl();
+        }
+      }
+    };
+    this.lqZ.addPhoneCallListener(this.lra);
+    this.lqZ.begin(MMApplicationContext.getContext());
+    if (this.lrc == null) {
+      this.lrc = new BackgroundPlayer.2(this, f.hfK);
     }
-    com.tencent.mm.sdk.b.a.ymk.c(this.dYy);
-    AppMethodBeat.o(77621);
+    this.lrc.alive();
+    AppMethodBeat.o(149955);
   }
   
-  public static a Ia()
+  public static a aKj()
   {
-    AppMethodBeat.i(77622);
-    if (dYx == null) {}
+    AppMethodBeat.i(149956);
+    if (lrb == null) {}
     try
     {
-      if (dYx == null) {
-        dYx = new a();
+      if (lrb == null) {
+        lrb = new a();
       }
-      a locala = dYx;
-      AppMethodBeat.o(77622);
+      a locala = lrb;
+      AppMethodBeat.o(149956);
       return locala;
     }
     finally
     {
-      AppMethodBeat.o(77622);
+      AppMethodBeat.o(149956);
     }
   }
   
-  public final void Ib()
+  public final void a(aq paramaq)
   {
-    AppMethodBeat.i(77625);
-    if (this.callbacks == null)
+    AppMethodBeat.i(149957);
+    Log.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramaq.toString() });
+    this.bPE.add(paramaq);
+    AppMethodBeat.o(149957);
+  }
+  
+  public final void aKk()
+  {
+    AppMethodBeat.i(149959);
+    if (this.bPE == null)
     {
-      AppMethodBeat.o(77625);
+      AppMethodBeat.o(149959);
       return;
     }
-    Iterator localIterator = this.callbacks.iterator();
+    Iterator localIterator = this.bPE.iterator();
     while (localIterator.hasNext()) {
-      ((af)localIterator.next()).aah();
+      ((aq)localIterator.next()).bCh();
     }
-    AppMethodBeat.o(77625);
+    AppMethodBeat.o(149959);
   }
   
-  public final void Ic()
+  public final void aKl()
   {
-    AppMethodBeat.i(77626);
-    if (this.callbacks == null)
+    AppMethodBeat.i(149960);
+    if (this.bPE == null)
     {
-      AppMethodBeat.o(77626);
+      AppMethodBeat.o(149960);
       return;
     }
-    Iterator localIterator = this.callbacks.iterator();
+    Iterator localIterator = this.bPE.iterator();
     while (localIterator.hasNext()) {
-      ((af)localIterator.next()).aai();
+      ((aq)localIterator.next()).bCi();
     }
-    AppMethodBeat.o(77626);
+    AppMethodBeat.o(149960);
   }
   
-  public final void a(af paramaf)
+  public final void b(aq paramaq)
   {
-    AppMethodBeat.i(77623);
-    ab.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramaf.toString() });
-    this.callbacks.add(paramaf);
-    AppMethodBeat.o(77623);
-  }
-  
-  public final void b(af paramaf)
-  {
-    AppMethodBeat.i(77624);
-    this.callbacks.remove(paramaf);
-    AppMethodBeat.o(77624);
+    AppMethodBeat.i(149958);
+    this.bPE.remove(paramaq);
+    AppMethodBeat.o(149958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.booter.a
  * JD-Core Version:    0.7.0.1
  */

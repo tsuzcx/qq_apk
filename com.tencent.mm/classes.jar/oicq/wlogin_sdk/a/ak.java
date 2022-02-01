@@ -5,12 +5,12 @@ public final class ak
 {
   public ak()
   {
-    this.CMD = 356;
+    this.ajGQ = 356;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.ak
  * JD-Core Version:    0.7.0.1
  */

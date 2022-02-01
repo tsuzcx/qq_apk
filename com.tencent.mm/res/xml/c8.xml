@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference newtip:key="settings_about_mm_header" newtip:layout="@layout/bxl" />
+    <IconPreference newtip:key="funtion_about_wechat" newtip:title="@string/j30" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_update" newtip:path="versionIntro" newtip:title="@string/j1m" />
+    <Preference newtip:key="settings_report" newtip:layout="@layout/bdi" newtip:title="@string/ixw" />
+    <IconSummaryPreference newtip:key="funtion_update" newtip:title="@string/f4n" />
+    <IconPreference newtip:key="funtion_check_update" newtip:title="@string/f4k" />
+    <IconPreference newtip:key="funtion_crowdtest_update" newtip:title="@string/f4l" />
+    <IconPreference newtip:key="funtion_about_flavor_blue" newtip:title="@string/f4j" />
+    <IconPreference newtip:key="funtion_invite_flavor_blue" newtip:title="@string/f4m" />
+    <PreferenceCategory />
+</PreferenceScreen>

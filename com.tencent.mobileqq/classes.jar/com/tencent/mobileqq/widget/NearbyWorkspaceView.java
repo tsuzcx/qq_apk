@@ -8,7 +8,7 @@ import android.view.View;
 public class NearbyWorkspaceView
   extends WorkSpaceView
 {
-  private int b = 0;
+  private int c = 0;
   
   public NearbyWorkspaceView(Context paramContext)
   {
@@ -18,92 +18,86 @@ public class NearbyWorkspaceView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    int m = getChildCount();
+    int n = getChildCount();
     float f = getScrollX() / getWidth();
-    int i;
     int j;
-    if ((f < 0.0F) && (this.a))
+    int i;
+    int k;
+    int m;
+    if ((f < 0.0F) && (this.b))
     {
+      j = n - 1;
       i = 0;
-      j = m - 1;
     }
-    for (;;)
+    else
     {
-      View localView;
-      if (m > 1)
+      k = (int)f % n;
+      m = k + 1;
+      j = k;
+      i = m;
+      if (this.b)
       {
-        paramCanvas = (View)getChildAt(j).getTag();
-        localView = (View)getChildAt(i).getTag();
-        if ((paramCanvas != null) && (localView != null)) {
-          break label120;
-        }
+        i = m % n;
+        j = k;
       }
-      label120:
-      Rect localRect2;
-      label327:
-      do
+    }
+    if (n > 1)
+    {
+      paramCanvas = (View)getChildAt(j).getTag();
+      View localView = (View)getChildAt(i).getTag();
+      if (paramCanvas != null)
       {
-        for (;;)
-        {
+        if (localView == null) {
           return;
-          i = (int)f % m;
-          j = i + 1;
-          if (!this.a) {
-            break label361;
-          }
-          k = j % m;
-          j = i;
-          i = k;
-          break;
-          Rect localRect1 = new Rect();
-          localRect2 = new Rect();
-          paramCanvas.getGlobalVisibleRect(localRect1);
-          localView.getGlobalVisibleRect(localRect2);
-          k = getWidth() - (getScrollX() + getWidth()) % getWidth();
-          if (this.b == j) {
-            if ((localRect1.left < 0) || (k < localRect1.right))
-            {
-              this.b = -1;
-              paramCanvas.setVisibility(4);
-            }
-          }
-          while (this.b == -1)
+        }
+        Rect localRect1 = new Rect();
+        Rect localRect2 = new Rect();
+        paramCanvas.getGlobalVisibleRect(localRect1);
+        localView.getGlobalVisibleRect(localRect2);
+        k = getWidth() - (getScrollX() + getWidth()) % getWidth();
+        m = this.c;
+        if (m == j)
+        {
+          if ((localRect1.left < 0) || (k < localRect1.right))
           {
-            if ((localRect1.left < 0) || (k < localRect1.right)) {
-              break label327;
-            }
-            this.b = j;
+            this.c = -1;
+            paramCanvas.setVisibility(4);
+          }
+        }
+        else if (m == i)
+        {
+          if ((k > localRect2.left) || (getWidth() < localRect2.right))
+          {
+            this.c = -1;
+            localView.setVisibility(4);
+          }
+        }
+        else if (m != -1)
+        {
+          ((View)getChildAt(m).getTag()).setVisibility(4);
+          this.c = -1;
+        }
+        if (this.c == -1)
+        {
+          if ((localRect1.left >= 0) && (k >= localRect1.right))
+          {
+            this.c = j;
             paramCanvas.setVisibility(0);
             return;
-            if (this.b == i)
-            {
-              if ((k > localRect2.left) || (getWidth() < localRect2.right))
-              {
-                this.b = -1;
-                localView.setVisibility(4);
-              }
-            }
-            else if (this.b != -1)
-            {
-              ((View)getChildAt(this.b).getTag()).setVisibility(4);
-              this.b = -1;
-            }
+          }
+          if ((k <= localRect2.left) && (getWidth() >= localRect2.right))
+          {
+            this.c = i;
+            localView.setVisibility(0);
           }
         }
-      } while ((k > localRect2.left) || (getWidth() < localRect2.right));
-      this.b = i;
-      localView.setVisibility(0);
-      return;
-      label361:
-      int k = i;
-      i = j;
-      j = k;
+      }
     }
   }
   
   public void removeAllViews()
   {
-    View localView = getChildAt(this.b);
+    View localView = getChildAt(this.c);
     if ((localView != null) && (localView.getTag() != null)) {
       ((View)localView.getTag()).setVisibility(4);
     }
@@ -112,27 +106,22 @@ public class NearbyWorkspaceView
   
   public void setVisibility(int paramInt)
   {
-    View localView = getChildAt(this.b);
+    View localView = getChildAt(this.c);
     if ((localView != null) && (localView.getTag() != null))
     {
       localView = (View)localView.getTag();
       if ((paramInt != 8) && (paramInt != 4)) {
-        break label50;
+        localView.setVisibility(0);
+      } else {
+        localView.setVisibility(4);
       }
-      localView.setVisibility(4);
     }
-    for (;;)
-    {
-      super.setVisibility(paramInt);
-      return;
-      label50:
-      localView.setVisibility(0);
-    }
+    super.setVisibility(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NearbyWorkspaceView
  * JD-Core Version:    0.7.0.1
  */

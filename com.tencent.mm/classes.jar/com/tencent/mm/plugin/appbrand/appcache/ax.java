@@ -1,274 +1,187 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.webkit.URLUtil;
-import android.webkit.WebResourceResponse;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
-import com.tencent.mm.plugin.appbrand.appstorage.t;
-import com.tencent.mm.plugin.appbrand.e;
-import com.tencent.mm.plugin.appbrand.e.c;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.s.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.eim;
+import com.tencent.mm.protocal.protobuf.gkb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.thread.ThreadPool;
 
-public class ax
+public enum ax
 {
-  private static final Map<i, ax> gWM;
-  private static final ax gWN;
-  private final u gWO;
-  private final LinkedList<o> gWP;
-  private final String mAppId;
-  
-  static
+  public static void a(int paramInt, eim parameim)
   {
-    AppMethodBeat.i(86830);
-    gWM = new HashMap();
-    gWN = new ax.1();
-    AppMethodBeat.o(86830);
-  }
-  
-  private ax(final i parami)
-  {
-    AppMethodBeat.i(86825);
-    this.gWP = new LinkedList();
-    if (parami == null)
+    int i = 0;
+    AppMethodBeat.i(44346);
+    int j;
+    if (parameim != null)
     {
-      this.gWO = null;
-      this.mAppId = null;
-      AppMethodBeat.o(86825);
-      return;
-    }
-    this.mAppId = parami.mAppId;
-    this.gWO = new u(parami.wY().hiX);
-    this.gWO.avC();
-    e.a(this.mAppId, new e.c()
-    {
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(86811);
-        e.b(ax.a(ax.this), this);
-        synchronized (ax.awf())
-        {
-          ax.awf().remove(parami);
-          ax.b(ax.this);
-          AppMethodBeat.o(86811);
-          return;
-        }
+      j = parameim.version;
+      if (parameim.abns <= 0) {
+        break label181;
       }
-    });
-    AppMethodBeat.o(86825);
-  }
-  
-  public static void a(i arg0, o paramo)
-  {
-    AppMethodBeat.i(86823);
-    ax localax = r(???);
-    synchronized (localax.gWP)
+    }
+    label181:
+    for (boolean bool = true;; bool = false)
     {
-      paramo.init();
-      localax.gWP.addFirst(paramo);
-      AppMethodBeat.o(86823);
+      Log.i("MicroMsg.WxaCommLibVersionChecker", "updateByLaunchWxaApp, reqVersion:%d, respVersion:%d, force_update:%b, rely_update:%b, need_update:%b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), Boolean.valueOf(bool), Boolean.valueOf(parameim.abnt), Boolean.valueOf(parameim.aauo) });
+      h.OAn.kJ(1509, 21);
+      gkb localgkb = new gkb();
+      localgkb.url = parameim.url;
+      localgkb.md5 = parameim.md5;
+      localgkb.version = parameim.version;
+      localgkb.abns = parameim.abns;
+      if ((parameim.aauo) || (parameim.abnt)) {
+        i = 1;
+      }
+      localgkb.acfX = i;
+      localgkb.hOQ = parameim.hOQ;
+      a(paramInt, localgkb, a.qGc);
+      AppMethodBeat.o(44346);
       return;
     }
   }
   
-  public static String c(i parami, String paramString)
+  private static void a(int paramInt, gkb paramgkb, a parama)
   {
-    AppMethodBeat.i(86818);
-    parami = bo.nullAsNil((String)r(parami).e(paramString, String.class));
-    AppMethodBeat.o(86818);
-    return parami;
-  }
-  
-  public static boolean d(i parami, String paramString)
-  {
-    AppMethodBeat.i(86819);
-    parami = f(parami, paramString);
-    if (parami != null)
+    AppMethodBeat.i(44345);
+    PInt localPInt;
+    int i;
+    label71:
+    boolean bool;
+    switch (3.qFZ[parama.ordinal()])
     {
-      bo.b(parami);
-      AppMethodBeat.o(86819);
-      return true;
-    }
-    AppMethodBeat.o(86819);
-    return false;
-  }
-  
-  public static WebResourceResponse e(i parami, String paramString)
-  {
-    AppMethodBeat.i(86820);
-    parami = (WebResourceResponse)r(parami).e(paramString, WebResourceResponse.class);
-    AppMethodBeat.o(86820);
-    return parami;
-  }
-  
-  public static InputStream f(i parami, String paramString)
-  {
-    AppMethodBeat.i(86821);
-    parami = (InputStream)r(parami).e(paramString, InputStream.class);
-    AppMethodBeat.o(86821);
-    return parami;
-  }
-  
-  public static String g(i parami, String paramString)
-  {
-    AppMethodBeat.i(86822);
-    if (yC(paramString))
-    {
-      AppMethodBeat.o(86822);
-      return null;
-    }
-    parami = parami.wX();
-    if ((parami instanceof t))
-    {
-      parami = ((IWxaFileSystemWithModularizing)((t)parami).Y(IWxaFileSystemWithModularizing.class)).findAppropriateModuleInfo(paramString);
-      if (parami != null)
-      {
-        parami = w.a(parami, paramString);
-        AppMethodBeat.o(86822);
-        return parami;
+    default: 
+      if (n.cfm() == null) {
+        break label530;
       }
-    }
-    AppMethodBeat.o(86822);
-    return null;
-  }
-  
-  public static void p(i parami)
-  {
-    AppMethodBeat.i(86816);
-    parami = r(parami);
-    if ((parami != null) && (parami.gWO != null)) {
-      parami.gWO.avC();
-    }
-    AppMethodBeat.o(86816);
-  }
-  
-  public static u q(i parami)
-  {
-    AppMethodBeat.i(86817);
-    parami = r(parami).gWO;
-    AppMethodBeat.o(86817);
-    return parami;
-  }
-  
-  private static ax r(i parami)
-  {
-    AppMethodBeat.i(86824);
-    if ((parami == null) || (parami.mFinished))
-    {
-      parami = gWN;
-      AppMethodBeat.o(86824);
-      return parami;
-    }
-    synchronized (gWM)
-    {
-      ax localax2 = (ax)gWM.get(parami);
-      ax localax1 = localax2;
-      if (localax2 == null)
+      localPInt = new PInt();
+      n.cfm().a(paramgkb, localPInt);
+      if (localPInt.value > 0)
       {
-        localax1 = new ax(parami);
-        gWM.put(parami, localax1);
-      }
-      AppMethodBeat.o(86824);
-      return localax1;
-    }
-  }
-  
-  private static boolean yC(String paramString)
-  {
-    AppMethodBeat.i(86827);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(86827);
-      return true;
-    }
-    if (com.tencent.luggage.g.h.x(paramString, "about:blank"))
-    {
-      AppMethodBeat.o(86827);
-      return true;
-    }
-    if (d.Fl(paramString))
-    {
-      AppMethodBeat.o(86827);
-      return true;
-    }
-    if (URLUtil.isFileUrl(paramString))
-    {
-      AppMethodBeat.o(86827);
-      return true;
-    }
-    AppMethodBeat.o(86827);
-    return false;
-  }
-  
-  private InputStream yD(String paramString)
-  {
-    AppMethodBeat.i(86828);
-    synchronized (this.gWP)
-    {
-      Iterator localIterator = this.gWP.iterator();
-      while (localIterator.hasNext())
-      {
-        InputStream localInputStream = ((o)localIterator.next()).openRead(paramString);
-        if (localInputStream != null)
+        i = 1;
+        int j = n.cfm().bG("@LibraryAppId", 0);
+        if (WxaPkgIntegrityChecker.il(true).first != WxaPkgIntegrityChecker.a.qHc) {
+          break label430;
+        }
+        bool = true;
+        label98:
+        if (i != 0) {}
+        switch (3.qFZ[parama.ordinal()])
         {
-          AppMethodBeat.o(86828);
-          return localInputStream;
+        default: 
+          Log.i("MicroMsg.WxaCommLibVersionChecker", "onResp, requestUsingLibVersion %d, scene %s, needDownload = %b, version = %d, forceUpdate = %d, md5 = %s, url = %s, localMaxVersion = %d", new Object[] { Integer.valueOf(paramInt), parama.name(), Boolean.valueOf(bool), Integer.valueOf(paramgkb.version), Integer.valueOf(paramgkb.abns), paramgkb.md5, paramgkb.url, Integer.valueOf(j) });
+          if (bool)
+          {
+            if ((paramInt <= 0) || (Util.isNullOrNil(paramgkb.hOQ))) {
+              break label519;
+            }
+            ab.qFk.ag(paramInt, paramgkb.hOQ);
+          }
+          break;
         }
       }
-      ??? = this.gWO.findAppropriateModuleInfo(paramString);
-      if (??? == null)
-      {
-        AppMethodBeat.o(86828);
-        return null;
-      }
-    }
-    paramString = ((ao)???).yw(paramString);
-    AppMethodBeat.o(86828);
-    return paramString;
-  }
-  
-  protected <T> T e(String paramString, Class<T> paramClass)
-  {
-    AppMethodBeat.i(86826);
-    if (yC(paramString))
-    {
-      AppMethodBeat.o(86826);
-      return null;
-    }
-    paramString = k.zl(paramString);
-    if (paramString.startsWith("/__APP__")) {
-      paramString = k.zl(paramString.substring(8));
+      break;
     }
     for (;;)
     {
-      long l = System.currentTimeMillis();
-      Object localObject = yD(paramString);
-      if (localObject != null) {}
-      for (localObject = ((ax.b)ax.b.a.gWS.get(paramClass)).c(paramString, (InputStream)localObject);; localObject = null)
+      ab.qFk.id(true);
+      Object localObject = new ah();
+      ((ah)localObject).field_key = "@LibraryAppId";
+      ((ah)localObject).field_version = paramgkb.version;
+      if (!n.cfs().get((IAutoDBItem)localObject, new String[] { "key", "version" }))
       {
-        String str = this.mAppId;
-        if (localObject == null) {}
-        for (boolean bool = true;; bool = false)
-        {
-          ab.i("MicroMsg.WxaPkgRuntimeReader", "openRead, appId = %s, reqURL = %s, null(%B), type = %s, cost = %dms", new Object[] { str, paramString, Boolean.valueOf(bool), paramClass.getName(), Long.valueOf(System.currentTimeMillis() - l) });
-          AppMethodBeat.o(86826);
-          return localObject;
-        }
+        ((ah)localObject).field_updateTime = Util.nowSecond();
+        ((ah)localObject).field_scene = (parama.ordinal() + 1);
+        n.cfs().insert((IAutoDBItem)localObject);
       }
+      if ((paramgkb.abns > 0) && (localPInt.value > 0)) {
+        au.cgv();
+      }
+      AppMethodBeat.o(44345);
+      return;
+      if (paramgkb.acfX > 0) {
+        h.OAn.kJ(1509, 3);
+      }
+      if (paramgkb.abns <= 0) {
+        break;
+      }
+      h.OAn.kJ(1509, 4);
+      break;
+      if (paramgkb.acfX > 0) {
+        h.OAn.kJ(1509, 22);
+      }
+      if (paramgkb.abns <= 0) {
+        break;
+      }
+      h.OAn.kJ(1509, 23);
+      break;
+      i = 0;
+      break label71;
+      label430:
+      bool = false;
+      break label98;
+      h.OAn.kJ(1509, 5);
+      localObject = h.OAn;
+      if (bool) {}
+      for (i = 7;; i = 6)
+      {
+        ((h)localObject).kJ(1509, i);
+        break;
+      }
+      h.OAn.kJ(1509, 24);
+      localObject = h.OAn;
+      if (bool) {}
+      for (i = 26;; i = 25)
+      {
+        ((h)localObject).kJ(1509, i);
+        break;
+      }
+      label519:
+      ab.qFk.ag(-1, null);
     }
+    label530:
+    Log.e("MicroMsg.WxaCommLibVersionChecker", "onResp, null storage");
+    AppMethodBeat.o(44345);
+  }
+  
+  public static void a(gkb paramgkb)
+  {
+    AppMethodBeat.i(44347);
+    a(-1, paramgkb, a.qGb);
+    AppMethodBeat.o(44347);
+  }
+  
+  public static void ij(boolean paramBoolean)
+  {
+    AppMethodBeat.i(44344);
+    ThreadPool.post(new ax.1(paramBoolean), "WxaCommLibVersionChecker");
+    AppMethodBeat.o(44344);
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(44341);
+      qGa = new a("CGI", 0);
+      qGb = new a("NewXml", 1);
+      qGc = new a("Launch", 2);
+      qGd = new a[] { qGa, qGb, qGc };
+      AppMethodBeat.o(44341);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ax
  * JD-Core Version:    0.7.0.1
  */

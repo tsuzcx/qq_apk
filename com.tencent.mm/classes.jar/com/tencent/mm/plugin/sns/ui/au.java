@@ -1,333 +1,255 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ak;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.tencent.mm.modelimage.e;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.bf;
+import com.tencent.mm.plugin.sns.model.bg;
+import com.tencent.mm.plugin.sns.statistics.n;
+import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.djv;
+import com.tencent.mm.protocal.protobuf.ffw;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.vfs.y;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import org.b.d.i;
 
 public final class au
-  extends d<n>
+  implements ag
 {
-  private boolean ctJ;
-  List<n> list;
-  private String meP;
-  private int rEf;
-  private int rEg;
-  private boolean rVp;
-  private au.b rVq;
-  private au.a rVr;
-  private Comparator<n> rcR;
-  private String userName;
+  private String ADt = "";
+  private boolean AnF = false;
+  private int QzF = 1;
+  private int RcA;
+  private String RcB = "";
+  private String RcC = "";
+  private com.tencent.mm.modelsns.l RcD = null;
+  private String RcE = "";
+  private byte[] Rcw = null;
+  private String Rcx;
+  private int Rcy;
+  private CdnImageView Rcz = null;
+  private String appId = "";
+  private String appName = "";
+  private View doN = null;
+  private int h = -1;
+  private String hQn = "";
+  private String iaa;
+  private String link = "";
+  private MMActivity lzt;
+  private Bitmap orY = null;
+  private int rmS = 9;
+  private String title = "";
+  private TextView titleTv = null;
+  private int w = -1;
+  private TextView ycd = null;
   
-  public au(au.b paramb, String paramString, boolean paramBoolean)
+  public au(MMActivity paramMMActivity, int paramInt)
   {
-    AppMethodBeat.i(39233);
-    this.userName = "";
-    this.list = new ArrayList();
-    this.ctJ = false;
-    this.rEf = 0;
-    this.rEg = 0;
-    this.meP = "";
-    this.rVp = false;
-    this.rcR = new au.1(this);
-    this.rVq = paramb;
-    this.userName = paramString;
-    this.ctJ = paramBoolean;
-    AppMethodBeat.o(39233);
+    this.lzt = paramMMActivity;
+    this.rmS = paramInt;
   }
   
-  private int a(int paramInt1, int paramInt2, List<n> paramList)
+  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, djv paramdjv, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    int i = 1;
-    AppMethodBeat.i(39239);
-    Object localObject = this.rVr;
-    ((au.a)localObject).rVu = -1;
-    ((au.a)localObject).rVE = -1;
-    ((au.a)localObject).rVt = -1;
-    ((au.a)localObject).rVy = "";
-    ((au.a)localObject).rVz = "";
-    ((au.a)localObject).rVA = "";
-    ((au.a)localObject).rVD = false;
-    ((au.a)localObject).rVv = false;
-    ((au.a)localObject).rVF = false;
-    ((au.a)localObject).rVG = -1;
-    ((au.a)localObject).rVw = -1;
-    ((au.a)localObject).rVB = -1;
-    ((au.a)localObject).rVC = 0;
-    ((au.a)localObject).rVx = 0;
-    ((au.a)localObject).rVH = 0;
-    if ((this.ctJ) && (paramInt1 == 0))
-    {
-      AppMethodBeat.o(39239);
-      return 1;
+    AppMethodBeat.i(98207);
+    paramLinkedList = new bg(this.rmS, this.lzt);
+    paramPInt.value = paramLinkedList.cIh;
+    if (paramInt3 > com.tencent.mm.plugin.sns.d.a.Qkq) {
+      paramLinkedList.akL(2);
     }
-    TimeLineObject localTimeLineObject;
-    if (paramInt1 + 1 < paramInt2)
+    paramLinkedList.aYR(this.title).aYP(this.RcC).aYQ(this.link).aYM(paramString1);
+    if (!Util.isNullOrNil(this.hQn))
     {
-      localObject = (n)paramList.get(paramInt1 + 1);
-      this.rVr.rVu = ((n)localObject).field_head;
-      localTimeLineObject = ((n)localObject).csh();
-      this.rVr.rVy = localTimeLineObject.xTP;
-      this.rVr.rVv = ak.ad(((n)localObject).field_localPrivate, this.ctJ);
-      this.rVr.rVw = ((n)localObject).field_type;
-      if (localTimeLineObject.xTS != null) {
-        this.rVr.rVx = localTimeLineObject.xTS.wOa.size();
+      paramLinkedList.a(y.bi(this.hQn, 0, -1), this.RcC, this.title, this.RcA, this.RcB);
+      if (parami != null) {
+        paramLinkedList.mm(parami.token, parami.aaTQ);
       }
-    }
-    else
-    {
-      if (paramInt1 + 2 < paramInt2)
-      {
-        localObject = (n)paramList.get(paramInt1 + 2);
-        this.rVr.rVE = ((n)localObject).field_head;
-        localTimeLineObject = ((n)localObject).csh();
-        this.rVr.rVz = localTimeLineObject.xTP;
-        this.rVr.rVF = ak.ad(((n)localObject).field_localPrivate, this.ctJ);
-        this.rVr.rVG = ((n)localObject).field_type;
-        if (localTimeLineObject.xTS == null) {
-          break label475;
-        }
-        this.rVr.rVH = localTimeLineObject.xTS.wOa.size();
+      paramLinkedList.df(this.QzF, this.RcE);
+      paramLinkedList.akQ(this.Rcy);
+      paramLinkedList.aYU(this.iaa);
+      paramLinkedList.aYV(this.Rcx);
+      paramLinkedList.akO(paramInt1);
+      paramLinkedList.i(null, null, null, paramInt4, paramInt5);
+      if (!paramBoolean) {
+        break label400;
       }
-      label343:
-      paramList = (n)paramList.get(paramInt1);
-      this.rVr.rVt = paramList.field_head;
-      localObject = paramList.csh();
-      this.rVr.rVA = ((TimeLineObject)localObject).xTP;
-      this.rVr.rVB = paramList.field_type;
-      this.rVr.rVD = ak.ad(paramList.field_localPrivate, this.ctJ);
-      if (((TimeLineObject)localObject).xTS == null) {
-        break label486;
-      }
-      this.rVr.rVC = ((TimeLineObject)localObject).xTS.wOa.size();
-      label438:
-      paramList = this.rVr;
-      if (paramList.rVB != 2) {
-        break label497;
-      }
-      paramInt1 = 1;
+      paramLinkedList.akR(1);
     }
     for (;;)
     {
-      if (paramInt1 == 0) {
-        break label646;
-      }
-      AppMethodBeat.o(39239);
-      return 1;
-      this.rVr.rVx = 0;
-      break;
-      label475:
-      this.rVr.rVH = 0;
-      break label343;
-      label486:
-      this.rVr.rVC = 0;
-      break label438;
-      label497:
-      if (paramList.rVu == -1) {
-        paramInt1 = 1;
-      } else if (paramList.rVB != paramList.rVw) {
-        paramInt1 = 1;
-      } else if (au.a.EV(paramList.rVB)) {
-        paramInt1 = 1;
-      } else if (au.a.EV(paramList.rVw)) {
-        paramInt1 = 1;
-      } else if ((paramList.rVC > 1) || (paramList.rVx > 1)) {
-        paramInt1 = 1;
-      } else if ((paramList.rVA != null) && (!paramList.rVA.equals(""))) {
-        paramInt1 = 1;
-      } else if ((paramList.rVy != null) && (!paramList.rVy.equals(""))) {
-        paramInt1 = 1;
-      } else if (paramList.rVt != paramList.rVu) {
-        paramInt1 = 1;
-      } else {
-        paramInt1 = 0;
-      }
-    }
-    label646:
-    paramList = this.rVr;
-    if (paramList.rVE == -1) {
-      paramInt1 = i;
-    }
-    while (paramInt1 != 0)
-    {
-      AppMethodBeat.o(39239);
-      return 2;
-      paramInt1 = i;
-      if (paramList.rVw == paramList.rVG)
+      paramLinkedList.kB(paramList2);
+      if (!Util.isNullOrNil(this.appId))
       {
-        paramInt1 = i;
-        if (!au.a.EV(paramList.rVG))
+        paramLinkedList.aYS(this.appId);
+        paramLinkedList.aYT(this.appName);
+      }
+      parami = new LinkedList();
+      if (paramList1 == null) {
+        break label410;
+      }
+      new LinkedList();
+      paramString1 = com.tencent.mm.pluginsdk.platformtools.a.iIX();
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext())
+      {
+        paramList2 = (String)paramList1.next();
+        if ((paramString1 != null) && (!paramString1.contains(paramList2)))
         {
-          paramInt1 = i;
-          if (paramList.rVH <= 1) {
-            if (paramList.rVz != null)
-            {
-              paramInt1 = i;
-              if (!paramList.rVz.equals("")) {}
-            }
-            else
-            {
-              paramInt1 = i;
-              if (paramList.rVu == paramList.rVE) {
-                paramInt1 = 0;
-              }
-            }
-          }
+          paramPInt = new ffw();
+          paramPInt.UserName = paramList2;
+          parami.add(paramPInt);
         }
       }
+      if ((Util.isNullOrNil(this.ADt)) || (r.bJZ() == null)) {
+        break;
+      }
+      r.bJZ();
+      paramString1 = e.Eo(this.ADt);
+      if (paramString1 == null) {
+        break;
+      }
+      paramLinkedList.b(BitmapUtil.Bitmap2Bytes(paramString1), "", "");
+      break;
+      label400:
+      paramLinkedList.akR(0);
     }
-    AppMethodBeat.o(39239);
-    return 3;
+    label410:
+    paramLinkedList.bU(parami);
+    paramLinkedList.a(paramdjv);
+    paramInt1 = paramLinkedList.FW();
+    if (this.RcD != null)
+    {
+      this.RcD.wQ(paramInt1);
+      com.tencent.mm.plugin.sns.statistics.l.QGY.c(this.RcD);
+    }
+    al.hgx().hej();
+    this.lzt.finish();
+    AppMethodBeat.o(98207);
+    return false;
   }
   
-  private void c(boolean paramBoolean, List<n> paramList)
+  public final void aZ(Bundle paramBundle)
   {
-    AppMethodBeat.i(39240);
-    if (!paramBoolean)
+    AppMethodBeat.i(98205);
+    this.RcD = com.tencent.mm.modelsns.l.y(this.lzt.getIntent());
+    this.w = this.lzt.getIntent().getIntExtra("Ksnsupload_width", -1);
+    this.h = this.lzt.getIntent().getIntExtra("Ksnsupload_height", -1);
+    this.Rcy = this.lzt.getIntent().getIntExtra("Ksnsupload_source", 0);
+    this.link = Util.nullAs(this.lzt.getIntent().getStringExtra("Ksnsupload_link"), "");
+    this.title = Util.nullAs(this.lzt.getIntent().getStringExtra("Ksnsupload_title"), "");
+    this.ADt = Util.nullAs(this.lzt.getIntent().getStringExtra("Ksnsupload_imgurl"), "");
+    this.hQn = this.lzt.getIntent().getStringExtra("KsnsUpload_imgPath");
+    this.AnF = this.lzt.getIntent().getBooleanExtra("ksnsis_video", false);
+    this.iaa = Util.nullAs(this.lzt.getIntent().getStringExtra("src_username"), "");
+    this.Rcx = Util.nullAs(this.lzt.getIntent().getStringExtra("src_displayname"), "");
+    this.RcC = Util.nullAs(this.lzt.getIntent().getStringExtra("KContentObjDesc"), "");
+    this.RcB = Util.nullAs(this.lzt.getIntent().getStringExtra("KUploadProduct_UserData"), "");
+    this.appName = Util.nullAs(this.lzt.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.appId = Util.nullAs(this.lzt.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.RcA = this.lzt.getIntent().getIntExtra("KUploadProduct_subType", 0);
+    if (this.lzt.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.QzF = 1;; this.QzF = 0)
     {
-      AppMethodBeat.o(39240);
+      this.RcE = Util.nullAs(this.lzt.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      AppMethodBeat.o(98205);
       return;
     }
-    if (this.ctJ)
+  }
+  
+  public final void ba(Bundle paramBundle) {}
+  
+  public final boolean hlP()
+  {
+    return true;
+  }
+  
+  public final View hlQ()
+  {
+    AppMethodBeat.i(98206);
+    this.doN = af.mU(this.lzt).inflate(b.g.upload_media_link, null);
+    this.Rcz = ((CdnImageView)this.doN.findViewById(b.f.image_left));
+    this.titleTv = ((TextView)this.doN.findViewById(b.f.titletext));
+    this.ycd = ((TextView)this.doN.findViewById(b.f.righttext));
+    if (this.AnF)
     {
-      n localn = new n((byte)0);
-      localn.field_snsId = 0L;
-      localn.rCV = -1;
-      localn.lp((int)(System.currentTimeMillis() / 1000L));
-      paramList.add(0, localn);
-    }
-    AppMethodBeat.o(39240);
-  }
-  
-  private void d(boolean paramBoolean, List<n> paramList)
-  {
-    AppMethodBeat.i(39241);
-    this.rVr = new au.a(this);
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    HashMap localHashMap3 = new HashMap();
-    long l = System.currentTimeMillis();
-    int m = 0;
-    int k = 0;
-    int i = 0;
-    c(paramBoolean, paramList);
-    int n = paramList.size();
-    ab.d("MicroMsg.SnsSelfHelper", "initFixType ".concat(String.valueOf(n)));
-    int j = 0;
-    while (j < n)
-    {
-      int i1 = a(j, n, paramList);
-      localHashMap1.put(Integer.valueOf(i), Integer.valueOf(m));
-      localHashMap2.put(Integer.valueOf(i), Integer.valueOf(i1));
-      m += i1;
-      localHashMap3.put(Integer.valueOf(i), Integer.valueOf(k));
-      k += fM(j, i1);
-      j += i1;
-      i += 1;
-    }
-    this.rEf = i;
-    this.rEg = paramList.size();
-    ab.d("MicroMsg.SnsSelfHelper", "icount " + this.rEf);
-    this.list = paramList;
-    i.aC("SnsphotoAdapter initFixType ", l);
-    this.rVq.a(this.list, localHashMap1, localHashMap2, localHashMap3, this.rEg, this.rEf);
-    AppMethodBeat.o(39241);
-  }
-  
-  private int fM(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    int j = 0;
-    if ((this.ctJ) && (paramInt1 == 0)) {
-      paramInt1 = j;
-    }
-    do
-    {
-      do
-      {
-        return paramInt1;
-        paramInt1 = i;
-        if (paramInt2 > 0)
-        {
-          paramInt1 = i;
-          if (this.rVr.rVB == 1) {
-            paramInt1 = 1;
-          }
-        }
-        i = paramInt1;
-        if (paramInt2 >= 2)
-        {
-          i = paramInt1;
-          if (this.rVr.rVw == 1) {
-            i = paramInt1 + 1;
-          }
-        }
-        paramInt1 = i;
-      } while (paramInt2 < 3);
-      paramInt1 = i;
-    } while (this.rVr.rVG != 1);
-    return i + 1;
-  }
-  
-  public final List<n> Kq()
-  {
-    AppMethodBeat.i(39235);
-    List localList = ak.a(this.userName, this.ctJ, this.meP, this.rVp);
-    ab.i("MicroMsg.SnsSelfHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
-    AppMethodBeat.o(39235);
-    return localList;
-  }
-  
-  public final void cvN()
-  {
-    AppMethodBeat.i(39236);
-    Collections.sort(this.list, this.rcR);
-    AppMethodBeat.o(39236);
-  }
-  
-  final void cvO()
-  {
-    AppMethodBeat.i(39237);
-    d(false, this.list);
-    AppMethodBeat.o(39237);
-  }
-  
-  public final void dl(List<n> paramList)
-  {
-    AppMethodBeat.i(39234);
-    if (this.rVq != null)
-    {
-      if (paramList != null) {
-        d(true, paramList);
+      this.doN.findViewById(b.f.state).setVisibility(0);
+      this.titleTv.setText(this.title);
+      if (this.rmS == 13) {
+        this.titleTv.setText(this.title + "\n" + this.RcC);
       }
-      this.rVq.cvM();
+      if (Util.isNullOrNil(this.ADt)) {
+        break label224;
+      }
+      this.Rcz.setVisibility(0);
+      this.Rcz.setUrl(this.ADt);
     }
-    AppMethodBeat.o(39234);
+    for (;;)
+    {
+      t.c(this.Rcz, this.lzt);
+      View localView = this.doN;
+      AppMethodBeat.o(98206);
+      return localView;
+      this.doN.findViewById(b.f.state).setVisibility(8);
+      break;
+      label224:
+      if (!Util.isNullOrNil(this.Rcw))
+      {
+        this.Rcz.setVisibility(0);
+        this.orY = BitmapUtil.decodeByteArray(this.Rcw);
+        this.Rcz.setImageBitmap(this.orY);
+      }
+      else
+      {
+        this.Rcz.setVisibility(8);
+      }
+    }
   }
   
-  public final void h(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final boolean hlR()
   {
-    AppMethodBeat.i(39238);
-    ab.d("MicroMsg.SnsSelfHelper", "limitSeq ".concat(String.valueOf(paramString)));
-    this.meP = paramString;
-    this.rVp = paramBoolean1;
-    ie(paramBoolean2);
-    AppMethodBeat.o(39238);
+    return true;
+  }
+  
+  public final boolean hlS()
+  {
+    return true;
+  }
+  
+  public final boolean hlT()
+  {
+    AppMethodBeat.i(98208);
+    if ((this.orY != null) && (!this.orY.isRecycled())) {
+      this.orY.recycle();
+    }
+    AppMethodBeat.o(98208);
+    return false;
+  }
+  
+  public final boolean n(int paramInt, Intent paramIntent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.au
  * JD-Core Version:    0.7.0.1
  */

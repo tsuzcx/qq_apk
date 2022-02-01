@@ -4,33 +4,28 @@ public class SsdkVersionCheck
 {
   public static int compareVersion(String paramString1, String paramString2)
   {
+    boolean bool = paramString1.equals(paramString2);
     int i = 0;
-    if (paramString1.equals(paramString2)) {
-      return i;
+    if (bool) {
+      return 0;
     }
     paramString1 = paramString1.split("\\.");
     paramString2 = paramString2.split("\\.");
-    int m = Math.min(paramString1.length, paramString2.length);
-    int j = 0;
-    for (;;)
+    int j = Math.min(paramString1.length, paramString2.length);
+    while (i < j)
     {
-      if (j >= m) {
-        break label82;
-      }
-      int k = new Integer(paramString1[j]).compareTo(Integer.valueOf(Integer.parseInt(paramString2[j])));
-      i = k;
+      int k = new Integer(paramString1[i]).compareTo(Integer.valueOf(Integer.parseInt(paramString2[i])));
       if (k != 0) {
-        break;
+        return k;
       }
-      j += 1;
+      i += 1;
     }
-    label82:
     return Integer.compare(paramString1.length, paramString2.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.util.SsdkVersionCheck
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,16 @@ public final class zzm
   
   public final void send(Message paramMessage)
   {
-    AppMethodBeat.i(57575);
+    AppMethodBeat.i(2529);
     Parcel localParcel = obtainAndWriteInterfaceToken();
     zze.zzd(localParcel, paramMessage);
     transactOneway(1, localParcel);
-    AppMethodBeat.o(57575);
+    AppMethodBeat.o(2529);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzm
  * JD-Core Version:    0.7.0.1
  */

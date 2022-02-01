@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:id="@id/bep" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/mu" />
-    <TextView android:textColor="@color/h6" android:gravity="right" android:id="@id/bsi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
-</LinearLayout>
+<com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d7d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

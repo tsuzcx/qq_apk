@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class GetTroopMemberListReq
   extends JceStruct
 {
-  public long GetListAppointTime;
-  public long GroupCode;
-  public long GroupUin;
-  public long NextUin;
-  public long ReqType;
-  public long Version;
-  public byte cRichCardNameVer;
-  public long uin;
+  public long GetListAppointTime = 0L;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public long NextUin = 0L;
+  public long ReqType = 0L;
+  public long Version = 0L;
+  public byte cRichCardNameVer = 0;
+  public long uin = 0L;
   
   public GetTroopMemberListReq() {}
   
@@ -56,7 +56,7 @@ public final class GetTroopMemberListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetTroopMemberListReq
  * JD-Core Version:    0.7.0.1
  */

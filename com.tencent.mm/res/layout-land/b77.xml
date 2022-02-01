@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ft6" android:layout_width="wrap_content" android:layout_height="@dimen/c6"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ft3" android:fadingEdge="vertical" android:fadingEdgeLength="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" />
+    <RelativeLayout android:id="@id/ft4" android:background="@drawable/ach" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_alignParentBottom="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/a_f" android:id="@id/ft5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -39,18 +39,20 @@ public final class mobile_get_config_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.config != null) {
-      paramJceOutputStream.write(this.config, 0);
+    Object localObject = this.config;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.cookies != null) {
-      paramJceOutputStream.write(this.cookies, 1);
+    localObject = this.cookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.scene_flag, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QMF_PROTOCAL.mobile_get_config_rsp
  * JD-Core Version:    0.7.0.1
  */

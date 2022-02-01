@@ -3,25 +3,24 @@ package cooperation.qqpim;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import biyq;
 
 public class QQPimTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new biyq();
-  public byte a;
+  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new QQPimTipsInfo.1();
   public int a;
-  public String a;
-  public int b;
+  public String b;
+  public byte c;
+  public int d;
   
   public QQPimTipsInfo() {}
   
   private QQPimTipsInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Byte = paramParcel.readByte();
-    this.b = paramParcel.readInt();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readByte();
+    this.d = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -31,15 +30,15 @@ public class QQPimTipsInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeByte(this.jdField_a_of_type_Byte);
-    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeByte(this.c);
+    paramParcel.writeInt(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimTipsInfo
  * JD-Core Version:    0.7.0.1
  */

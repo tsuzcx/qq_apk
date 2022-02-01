@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.crashfix.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class a$1
   implements Runnable
@@ -10,18 +10,18 @@ final class a$1
   
   public final void run()
   {
-    AppMethodBeat.i(154694);
+    AppMethodBeat.i(145617);
     try
     {
-      ab.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
-      a.a(this.kTa).run();
-      AppMethodBeat.o(154694);
+      Log.i("MicroMsg.SafeDismissDialog", "run on hijack runnable");
+      a.a(this.xfi).run();
+      AppMethodBeat.o(145617);
       return;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
-      AppMethodBeat.o(154694);
+      Log.e("MicroMsg.SafeDismissDialog", "protect : " + localException.getMessage());
+      AppMethodBeat.o(145617);
     }
   }
 }

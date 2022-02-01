@@ -9,55 +9,55 @@ final class zzzh
   
   static
   {
-    AppMethodBeat.i(3563);
+    AppMethodBeat.i(40353);
     zzbrl = zztb();
-    AppMethodBeat.o(3563);
+    AppMethodBeat.o(40353);
   }
   
   private static final zzzi zzfj(String paramString)
   {
-    AppMethodBeat.i(3562);
+    AppMethodBeat.i(40352);
     paramString = (zzzi)zzbrl.getDeclaredMethod(paramString, new Class[0]).invoke(null, new Object[0]);
-    AppMethodBeat.o(3562);
+    AppMethodBeat.o(40352);
     return paramString;
   }
   
   private static Class<?> zztb()
   {
-    AppMethodBeat.i(3560);
+    AppMethodBeat.i(40350);
     try
     {
-      Class localClass = Class.forName("com.google.protobuf.ExtensionRegistry");
-      AppMethodBeat.o(3560);
+      Class localClass = Class.forName("com.google.d.ar");
+      AppMethodBeat.o(40350);
       return localClass;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      AppMethodBeat.o(3560);
+      AppMethodBeat.o(40350);
     }
     return null;
   }
   
   public static zzzi zztc()
   {
-    AppMethodBeat.i(3561);
+    AppMethodBeat.i(40351);
     if (zzbrl != null) {
       try
       {
         zzzi localzzzi1 = zzfj("getEmptyRegistry");
-        AppMethodBeat.o(3561);
+        AppMethodBeat.o(40351);
         return localzzzi1;
       }
       catch (Exception localException) {}
     }
     zzzi localzzzi2 = zzzi.zzbro;
-    AppMethodBeat.o(3561);
+    AppMethodBeat.o(40351);
     return localzzzi2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzh
  * JD-Core Version:    0.7.0.1
  */

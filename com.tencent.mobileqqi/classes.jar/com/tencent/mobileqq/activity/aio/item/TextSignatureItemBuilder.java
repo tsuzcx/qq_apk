@@ -23,7 +23,7 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
-import ebe;
+import ebd;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
@@ -108,16 +108,16 @@ public class TextSignatureItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Object localObject2 = (MessageForRichState)paramMessageRecord;
-    paramLinearLayout = (ebe)paramViewHolder;
+    paramLinearLayout = (ebd)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
       paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903116, null);
-      paramLinearLayout.b = ((TextView)paramMessageRecord.findViewById(2131231272));
-      paramLinearLayout.c = ((TextView)paramMessageRecord.findViewById(2131231279));
-      paramLinearLayout.d = ((TextView)paramMessageRecord.findViewById(2131231278));
-      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramMessageRecord.findViewById(2131231277));
-      paramLinearLayout.e = ((TextView)paramMessageRecord.findViewById(2131231276));
+      paramLinearLayout.b = ((TextView)paramMessageRecord.findViewById(2131231271));
+      paramLinearLayout.c = ((TextView)paramMessageRecord.findViewById(2131231278));
+      paramLinearLayout.d = ((TextView)paramMessageRecord.findViewById(2131231277));
+      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramMessageRecord.findViewById(2131231276));
+      paramLinearLayout.e = ((TextView)paramMessageRecord.findViewById(2131231275));
       paramLinearLayout.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
     }
     paramMessageRecord.setContentDescription(null);
@@ -190,7 +190,7 @@ public class TextSignatureItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new ebe(this);
+    return new ebd(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

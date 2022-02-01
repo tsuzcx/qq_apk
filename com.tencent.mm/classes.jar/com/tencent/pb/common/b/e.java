@@ -2,119 +2,155 @@ package com.tencent.pb.common.b;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.SparseArray;
-import com.tencent.pb.common.c.c;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
-import junit.framework.Assert;
 
 public final class e
   implements b
 {
-  private static e Bde = null;
-  private final SparseArray<Set<b>> Bdf = new SparseArray();
-  private d Bdg = null;
-  private Vector<d> ftC = new Vector();
-  private Vector<d> ftD = new Vector();
-  private final Handler handler = new e.1(this, Looper.getMainLooper());
-  
-  private void ady()
+  private static e ahcS = null;
+  private final SparseArray<Set<b>> ahcT = new SparseArray();
+  private d ahcU = null;
+  private final Handler handler = new Handler(Looper.getMainLooper())
   {
-    if (this.ftD.size() > 0)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
-      d locald = (d)this.ftD.get(0);
+      e.this.b((d)paramAnonymousMessage.obj);
+    }
+  };
+  private Vector<d> oup = new Vector();
+  private Vector<d> ouq = new Vector();
+  
+  private void bFV()
+  {
+    if (this.ouq.size() > 0)
+    {
+      d locald = (d)this.ouq.get(0);
       int i = 1;
-      while (i < this.ftD.size())
+      while (i < this.ouq.size())
       {
-        this.ftD.get(i);
+        this.ouq.get(i);
         i += 1;
       }
-      if (dTF())
+      if (jQY())
       {
-        this.ftD.remove(locald);
-        b(locald);
+        this.ouq.remove(locald);
+        d(locald);
       }
     }
   }
   
-  private void b(d paramd)
+  private boolean c(d paramd)
   {
-    if (dTF())
+    if (paramd == null) {
+      return false;
+    }
+    d(paramd);
+    return true;
+  }
+  
+  private void d(final d paramd)
+  {
+    if (jQY())
     {
-      this.ftC.add(paramd);
+      this.oup.add(paramd);
       int i = paramd.a(this);
       if (i < 0)
       {
-        c.w("MicroMsg.Voip", new Object[] { "doSceneImp do scene failed, ret %d,", Integer.valueOf(i) });
-        this.handler.post(new e.2(this, paramd));
+        com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { "doSceneImp do scene failed, ret %d,", Integer.valueOf(i) });
+        this.handler.post(new Runnable()
+        {
+          public final void run()
+          {
+            e.a(e.this).remove(paramd);
+            e.this.a(2, -1, "doScene failed", paramd);
+          }
+        });
       }
     }
     for (;;)
     {
-      ady();
+      bFV();
       return;
-      this.ftD.add(paramd);
+      this.ouq.add(paramd);
     }
   }
   
-  public static e dTE()
+  public static e jQX()
   {
-    if (Bde == null) {}
+    if (ahcS == null) {}
     try
     {
-      if (Bde == null) {
-        Bde = new e();
+      if (ahcS == null) {
+        ahcS = new e();
       }
-      return Bde;
+      return ahcS;
     }
     finally {}
   }
   
-  private boolean dTF()
+  private boolean jQY()
   {
-    return this.ftC.size() < 20;
+    return this.oup.size() < 20;
   }
   
-  public final void a(int paramInt1, int paramInt2, String paramString, d paramd)
+  public final void a(final int paramInt1, final int paramInt2, final String paramString, final d paramd)
   {
-    this.ftC.remove(paramd);
-    ady();
-    this.handler.post(new e.3(this, paramd, paramInt1, paramInt2, paramString));
+    this.oup.remove(paramd);
+    bFV();
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        Set localSet = (Set)e.b(e.this).get(paramd.getType());
+        if ((localSet != null) && (localSet.size() > 0))
+        {
+          Object localObject = new HashSet();
+          ((Set)localObject).addAll(localSet);
+          localObject = ((Set)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            b localb = (b)((Iterator)localObject).next();
+            if ((localb != null) && (localSet.contains(localb))) {
+              localb.a(paramInt1, paramInt2, paramString, paramd);
+            }
+          }
+        }
+      }
+    });
   }
   
   public final void a(int paramInt, b paramb)
   {
-    if (this.Bdf.get(paramInt) == null) {
-      this.Bdf.put(paramInt, new HashSet());
+    if (this.ahcT.get(paramInt) == null) {
+      this.ahcT.put(paramInt, new HashSet());
     }
-    if (!((Set)this.Bdf.get(paramInt)).contains(paramb)) {
-      ((Set)this.Bdf.get(paramInt)).add(paramb);
+    if (!((Set)this.ahcT.get(paramInt)).contains(paramb)) {
+      ((Set)this.ahcT.get(paramInt)).add(paramb);
     }
   }
   
-  public final boolean a(d paramd)
+  public final boolean b(d paramd)
   {
     if (!h.isNetworkConnected())
     {
       int i = paramd.getType();
       if ((i == 102) || (i == 104) || (i == 103))
       {
-        c.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
-        this.Bdg = paramd;
+        com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
+        this.ahcU = paramd;
       }
     }
-    Assert.assertTrue(true);
-    if (paramd == null) {
-      return false;
-    }
-    b(paramd);
-    return true;
+    return c(paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.av.ui;
 
-import aepi;
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -14,113 +12,129 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcyz;
-import com.tencent.av.funchat.AVListImageView;
+import com.tencent.av.ui.effect.view.EffectMaterialImageView;
+import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import moh;
-import moj;
-import mwj;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class VoiceChangeItemView1
   extends RelativeLayout
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  AVListImageView jdField_a_of_type_ComTencentAvFunchatAVListImageView = null;
-  moh jdField_a_of_type_Moh = null;
-  moj jdField_a_of_type_Moj;
+  Context a;
   int b;
+  VoiceChangeItemView1.ICallback c;
+  EffectMaterialImageView d = null;
+  ImageView e = null;
+  TextView f = null;
+  int g = -16777216;
+  VoiceChangeData.VoiceInfo h = null;
   
   public VoiceChangeItemView1(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = -16777216;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
   }
   
   public void a()
   {
-    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559656, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131380067));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380072));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380071));
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.getLayoutParams();
-    int i = aepi.a(65.0F, getResources());
+    ((LayoutInflater)this.a.getSystemService("layout_inflater")).inflate(2131625827, this);
+    this.d = ((EffectMaterialImageView)findViewById(2131449963));
+    this.e = ((ImageView)findViewById(2131449968));
+    this.f = ((TextView)findViewById(2131449967));
+    ViewGroup.LayoutParams localLayoutParams = this.d.getLayoutParams();
+    int i = AIOUtils.b(65.0F, getResources());
     localLayoutParams.width = i;
     localLayoutParams.height = i;
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setLayoutParams(localLayoutParams);
+    this.d.setLayoutParams(localLayoutParams);
     setOnClickListener(this);
   }
   
-  public void a(int paramInt1, moh parammoh, boolean paramBoolean, int paramInt2, moj parammoj)
+  public void a(int paramInt1, VoiceChangeData.VoiceInfo paramVoiceInfo, boolean paramBoolean, int paramInt2, VoiceChangeItemView1.ICallback paramICallback)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Moj = parammoj;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Moh = parammoh;
-    if (parammoh.jdField_a_of_type_Int == 0)
+    this.b = paramInt1;
+    this.c = paramICallback;
+    this.g = paramInt2;
+    this.h = paramVoiceInfo;
+    if (paramVoiceInfo.d == 0)
     {
-      parammoj = this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.getResources();
-      if (this.jdField_b_of_type_Int == -16777216)
-      {
-        parammoj = mwj.a(parammoj, 2130841850, 2131165908);
-        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammoj);
-        label67:
-        switch (parammoh.jdField_b_of_type_Int)
-        {
-        default: 
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
+      paramICallback = this.d.getResources();
+      if (this.g == -16777216) {
+        paramICallback = TintStateDrawable.a(paramICallback, 2130843204, 2131166728);
+      } else {
+        paramICallback = TintStateDrawable.a(paramICallback, 2130843204, 2131166770);
       }
+      this.d.setImageDrawable(paramICallback);
     }
-    for (;;)
+    else if (!TextUtils.isEmpty(paramVoiceInfo.b))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(parammoh.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
-      setHighlight(paramBoolean);
-      setContentDescription(parammoh.jdField_a_of_type_JavaLangString + alud.a(2131717237));
-      return;
-      parammoj = mwj.a(parammoj, 2130841850, 2131165945);
-      break;
-      if (TextUtils.isEmpty(parammoh.jdField_b_of_type_JavaLangString)) {
-        break label67;
-      }
-      parammoj = URLDrawable.URLDrawableOptions.obtain();
-      paramInt1 = aepi.a(60.0F, getResources());
+      paramICallback = URLDrawable.URLDrawableOptions.obtain();
+      paramInt1 = AIOUtils.b(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131165804));
+      localGradientDrawable.setColor(getResources().getColor(2131166580));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt1, paramInt1);
-      parammoj.mRequestWidth = paramInt1;
-      parammoj.mRequestHeight = paramInt1;
-      parammoj.mFailedDrawable = localGradientDrawable;
-      parammoj.mLoadingDrawable = localGradientDrawable;
-      parammoj = URLDrawable.getDrawable(parammoh.jdField_b_of_type_JavaLangString, parammoj);
-      parammoj.setTag(bcyz.a(paramInt1, paramInt1));
-      parammoj.setDecodeHandler(bcyz.a);
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammoj);
-      break label67;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841965);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841965);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841965);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramICallback.mRequestWidth = paramInt1;
+      paramICallback.mRequestHeight = paramInt1;
+      paramICallback.mFailedDrawable = localGradientDrawable;
+      paramICallback.mLoadingDrawable = localGradientDrawable;
+      paramICallback = URLDrawable.getDrawable(paramVoiceInfo.b, paramICallback);
+      paramICallback.setTag(URLDrawableDecodeHandler.a(paramInt1, paramInt1));
+      paramICallback.setDecodeHandler(URLDrawableDecodeHandler.b);
+      this.d.setImageDrawable(paramICallback);
     }
+    paramInt1 = paramVoiceInfo.e;
+    if (paramInt1 != 1)
+    {
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          this.e.setVisibility(8);
+        }
+        else
+        {
+          this.e.setImageResource(2130843330);
+          this.e.setVisibility(0);
+        }
+      }
+      else
+      {
+        this.e.setImageResource(2130843330);
+        this.e.setVisibility(0);
+      }
+    }
+    else
+    {
+      this.e.setImageResource(2130843330);
+      this.e.setVisibility(0);
+    }
+    this.f.setText(paramVoiceInfo.a);
+    this.f.setTextColor(this.g);
+    setHighlight(paramBoolean);
+    paramICallback = new StringBuilder();
+    paramICallback.append(paramVoiceInfo.a);
+    paramICallback.append(HardCodeUtil.a(2131913768));
+    setContentDescription(paramICallback.toString());
+  }
+  
+  public int getPosition()
+  {
+    return this.b;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Moj != null) {
-      this.jdField_a_of_type_Moj.a(this, this.jdField_a_of_type_Int);
+    VoiceChangeItemView1.ICallback localICallback = this.c;
+    if (localICallback != null) {
+      localICallback.a(this, this.b);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -130,35 +144,32 @@ public class VoiceChangeItemView1
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.dispatchTouchEvent(paramMotionEvent);
+    this.d.dispatchTouchEvent(paramMotionEvent);
     super.onTouchEvent(paramMotionEvent);
     return true;
   }
   
   public void setHighlight(boolean paramBoolean)
   {
-    TextView localTextView;
-    if ((this.jdField_a_of_type_Moh != null) && (this.jdField_a_of_type_Moh.jdField_a_of_type_Int == 0))
-    {
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setSelected(paramBoolean);
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!paramBoolean) {
-        break label54;
-      }
+    Object localObject = this.h;
+    if ((localObject != null) && (((VoiceChangeData.VoiceInfo)localObject).d == 0)) {
+      this.d.setSelected(paramBoolean);
+    } else {
+      this.d.setHighlight(paramBoolean);
     }
-    label54:
-    for (int i = -15550475;; i = this.jdField_b_of_type_Int)
-    {
-      localTextView.setTextColor(i);
-      return;
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setHighlight(paramBoolean);
-      break;
+    localObject = this.f;
+    int i;
+    if (paramBoolean) {
+      i = -15550475;
+    } else {
+      i = this.g;
     }
+    ((TextView)localObject).setTextColor(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeItemView1
  * JD-Core Version:    0.7.0.1
  */

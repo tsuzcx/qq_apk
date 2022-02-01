@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MsgInfo
   extends JceStruct
@@ -18,26 +19,26 @@ public final class MsgInfo
   static byte[] cache_vMsgCookies;
   static ArrayList<String> cache_vNickName;
   static byte[] cache_vRemarkOfSender;
-  public long lFromInstId;
-  public long lFromUin;
+  public long lFromInstId = 0L;
+  public long lFromUin = 0L;
   public long lLastChangeTime = 1L;
-  public long lMsgUid;
-  public short shMsgSeq;
-  public short shMsgType;
-  public TempMsgHead stC2CTmpMsgHead;
-  public shareData stShareData;
+  public long lMsgUid = 0L;
+  public short shMsgSeq = 0;
+  public short shMsgType = 0;
+  public TempMsgHead stC2CTmpMsgHead = null;
+  public shareData stShareData = null;
   public String strFromMobile = "";
   public String strFromName = "";
   public String strMsg = "";
-  public long uAppShareID;
-  public long uMsgTime;
-  public int uRealMsgTime;
-  public byte[] vAppShareCookie;
-  public ArrayList<CPicInfo> vCPicInfo;
-  public byte[] vMsg;
-  public byte[] vMsgCookies;
-  public ArrayList<String> vNickName;
-  public byte[] vRemarkOfSender;
+  public long uAppShareID = 0L;
+  public long uMsgTime = 0L;
+  public int uRealMsgTime = 0;
+  public byte[] vAppShareCookie = null;
+  public ArrayList<CPicInfo> vCPicInfo = null;
+  public byte[] vMsg = null;
+  public byte[] vMsgCookies = null;
+  public ArrayList<String> vNickName = null;
+  public byte[] vRemarkOfSender = null;
   
   public MsgInfo() {}
   
@@ -334,45 +335,55 @@ public final class MsgInfo
     paramJceOutputStream.write(this.shMsgSeq, 3);
     paramJceOutputStream.write(this.strMsg, 4);
     paramJceOutputStream.write(this.uRealMsgTime, 5);
-    if (this.vMsg != null) {
-      paramJceOutputStream.write(this.vMsg, 6);
+    Object localObject = this.vMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
     paramJceOutputStream.write(this.uAppShareID, 7);
-    if (this.vMsgCookies != null) {
-      paramJceOutputStream.write(this.vMsgCookies, 8);
+    localObject = this.vMsgCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
-    if (this.vAppShareCookie != null) {
-      paramJceOutputStream.write(this.vAppShareCookie, 9);
+    localObject = this.vAppShareCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
     paramJceOutputStream.write(this.lMsgUid, 10);
     paramJceOutputStream.write(this.lLastChangeTime, 11);
-    if (this.vCPicInfo != null) {
-      paramJceOutputStream.write(this.vCPicInfo, 12);
+    localObject = this.vCPicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
-    if (this.stShareData != null) {
-      paramJceOutputStream.write(this.stShareData, 13);
+    localObject = this.stShareData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
     paramJceOutputStream.write(this.lFromInstId, 14);
-    if (this.vRemarkOfSender != null) {
-      paramJceOutputStream.write(this.vRemarkOfSender, 15);
+    localObject = this.vRemarkOfSender;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.strFromMobile != null) {
-      paramJceOutputStream.write(this.strFromMobile, 16);
+    localObject = this.strFromMobile;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.strFromName != null) {
-      paramJceOutputStream.write(this.strFromName, 17);
+    localObject = this.strFromName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.vNickName != null) {
-      paramJceOutputStream.write(this.vNickName, 18);
+    localObject = this.vNickName;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 18);
     }
-    if (this.stC2CTmpMsgHead != null) {
-      paramJceOutputStream.write(this.stC2CTmpMsgHead, 19);
+    localObject = this.stC2CTmpMsgHead;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 19);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.MsgInfo
  * JD-Core Version:    0.7.0.1
  */

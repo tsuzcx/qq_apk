@@ -29,8 +29,9 @@ public final class operation_hide_feeds_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strFeedUinKey != null) {
-      paramJceOutputStream.write(this.strFeedUinKey, 0);
+    String str = this.strFeedUinKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.uHostUin, 1);
     paramJceOutputStream.write(this.uTime, 2);
@@ -38,7 +39,7 @@ public final class operation_hide_feeds_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_hide_feeds_req
  * JD-Core Version:    0.7.0.1
  */

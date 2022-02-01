@@ -1,297 +1,169 @@
 package com.google.a.a;
 
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import androidx.compose.runtime.an;
+import androidx.compose.runtime.az;
+import androidx.compose.runtime.bj;
+import androidx.compose.runtime.bm;
+import androidx.compose.ui.d.l;
+import androidx.compose.ui.e.aa;
+import androidx.compose.ui.e.b.e;
+import androidx.compose.ui.n.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.p;
+
+@Metadata(d1={""}, d2={"Lcom/google/accompanist/drawablepainter/DrawablePainter;", "Landroidx/compose/ui/graphics/painter/Painter;", "Landroidx/compose/runtime/RememberObserver;", "drawable", "Landroid/graphics/drawable/Drawable;", "(Landroid/graphics/drawable/Drawable;)V", "callback", "Landroid/graphics/drawable/Drawable$Callback;", "getCallback", "()Landroid/graphics/drawable/Drawable$Callback;", "callback$delegate", "Lkotlin/Lazy;", "getDrawable", "()Landroid/graphics/drawable/Drawable;", "intrinsicSize", "Landroidx/compose/ui/geometry/Size;", "getIntrinsicSize-NH-jbRc", "()J", "<set-?>", "", "invalidateTick", "getInvalidateTick", "()I", "setInvalidateTick", "(I)V", "invalidateTick$delegate", "Landroidx/compose/runtime/MutableState;", "applyAlpha", "", "alpha", "", "applyColorFilter", "colorFilter", "Landroidx/compose/ui/graphics/ColorFilter;", "applyLayoutDirection", "layoutDirection", "Landroidx/compose/ui/unit/LayoutDirection;", "onAbandoned", "", "onForgotten", "onRemembered", "onDraw", "Landroidx/compose/ui/graphics/drawscope/DrawScope;", "drawablepainter_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  extends androidx.compose.ui.e.c.c
+  implements az
 {
-  private int bgP;
-  private int bgQ;
-  private int bgR;
-  private int bgS;
-  private int bgT = 2147483647;
-  private int bgU;
-  private int bgV = 64;
-  private int bgW = 67108864;
-  private final byte[] buffer;
-  private int bufferSize;
+  public static final int Ue = 8;
+  private final an ajX;
+  private final j cEV;
+  private final Drawable drawable;
   
-  a(byte[] paramArrayOfByte, int paramInt)
+  public a(Drawable paramDrawable)
   {
-    this.buffer = paramArrayOfByte;
-    this.bgP = 0;
-    this.bufferSize = (paramInt + 0);
-    this.bgR = 0;
+    AppMethodBeat.i(208593);
+    this.drawable = paramDrawable;
+    this.ajX = bj.T(Integer.valueOf(0));
+    this.cEV = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.drawable.setBounds(0, 0, this.drawable.getIntrinsicWidth(), this.drawable.getIntrinsicHeight());
+    AppMethodBeat.o(208593);
   }
   
-  private byte[] eS(int paramInt)
+  private final int Qk()
   {
-    if (paramInt < 0) {
-      throw d.sr();
-    }
-    if (this.bgR + paramInt > this.bgT)
-    {
-      eT(this.bgT - this.bgR);
-      throw d.sq();
-    }
-    if (paramInt <= this.bufferSize - this.bgR)
-    {
-      byte[] arrayOfByte = new byte[paramInt];
-      System.arraycopy(this.buffer, this.bgR, arrayOfByte, 0, paramInt);
-      this.bgR += paramInt;
-      return arrayOfByte;
-    }
-    throw d.sq();
-  }
-  
-  private void eT(int paramInt)
-  {
-    if (paramInt < 0) {
-      throw d.sr();
-    }
-    if (this.bgR + paramInt > this.bgT)
-    {
-      eT(this.bgT - this.bgR);
-      throw d.sq();
-    }
-    if (paramInt <= this.bufferSize - this.bgR)
-    {
-      this.bgR += paramInt;
-      return;
-    }
-    throw d.sq();
-  }
-  
-  private void sn()
-  {
-    this.bufferSize += this.bgQ;
-    int i = this.bufferSize;
-    if (i > this.bgT)
-    {
-      this.bgQ = (i - this.bgT);
-      this.bufferSize -= this.bgQ;
-      return;
-    }
-    this.bgQ = 0;
-  }
-  
-  private byte sp()
-  {
-    if (this.bgR == this.bufferSize) {
-      throw d.sq();
-    }
-    byte[] arrayOfByte = this.buffer;
-    int i = this.bgR;
-    this.bgR = (i + 1);
-    return arrayOfByte[i];
-  }
-  
-  public final void a(e parame)
-  {
-    int i = sl();
-    if (this.bgU >= this.bgV) {
-      throw d.sw();
-    }
-    i = eP(i);
-    this.bgU += 1;
-    parame.a(this);
-    eN(0);
-    this.bgU -= 1;
-    eQ(i);
-  }
-  
-  public final void eN(int paramInt)
-  {
-    if (this.bgS != paramInt) {
-      throw d.su();
-    }
-  }
-  
-  public final boolean eO(int paramInt)
-  {
-    switch (g.eZ(paramInt))
-    {
-    default: 
-      throw d.sv();
-    case 0: 
-      sl();
-      return true;
-    case 1: 
-      sp();
-      sp();
-      sp();
-      sp();
-      sp();
-      sp();
-      sp();
-      sp();
-      return true;
-    case 2: 
-      eT(sl());
-      return true;
-    case 3: 
-      int i;
-      do
-      {
-        i = sk();
-      } while ((i != 0) && (eO(i)));
-      eN(g.bo(g.fa(paramInt), 4));
-      return true;
-    case 4: 
-      return false;
-    }
-    sp();
-    sp();
-    sp();
-    sp();
-    return true;
-  }
-  
-  public final int eP(int paramInt)
-  {
-    if (paramInt < 0) {
-      throw d.sr();
-    }
-    paramInt = this.bgR + paramInt;
-    int i = this.bgT;
-    if (paramInt > i) {
-      throw d.sq();
-    }
-    this.bgT = paramInt;
-    sn();
+    AppMethodBeat.i(208600);
+    int i = ((Number)((bm)this.ajX).getValue()).intValue();
+    AppMethodBeat.o(208600);
     return i;
   }
   
-  public final void eQ(int paramInt)
+  public final boolean S(float paramFloat)
   {
-    this.bgT = paramInt;
-    sn();
+    AppMethodBeat.i(208630);
+    this.drawable.setAlpha(kotlin.k.k.bQ(kotlin.h.a.eH(255.0F * paramFloat), 0, 255));
+    AppMethodBeat.o(208630);
+    return true;
   }
   
-  public final void eR(int paramInt)
+  public final void b(e parame)
   {
-    if (paramInt > this.bgR - this.bgP) {
-      throw new IllegalArgumentException("Position " + paramInt + " is beyond current " + (this.bgR - this.bgP));
-    }
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Bad position ".concat(String.valueOf(paramInt)));
-    }
-    this.bgR = (this.bgP + paramInt);
-  }
-  
-  public final int getPosition()
-  {
-    return this.bgR - this.bgP;
-  }
-  
-  public final byte[] readBytes()
-  {
-    int i = sl();
-    if ((i <= this.bufferSize - this.bgR) && (i > 0))
+    AppMethodBeat.i(208640);
+    s.u(parame, "<this>");
+    androidx.compose.ui.e.u localu = parame.uG().uH();
+    Qk();
+    this.drawable.setBounds(0, 0, kotlin.h.a.eH(androidx.compose.ui.d.k.Q(parame.sf())), kotlin.h.a.eH(androidx.compose.ui.d.k.R(parame.sf())));
+    try
     {
-      byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.buffer, this.bgR, arrayOfByte, 0, i);
-      this.bgR = (i + this.bgR);
-      return arrayOfByte;
+      localu.sz();
+      this.drawable.draw(androidx.compose.ui.e.c.a(localu));
+      return;
     }
-    return eS(i);
+    finally
+    {
+      localu.restore();
+      AppMethodBeat.o(208640);
+    }
   }
   
-  public final String readString()
+  public final boolean c(aa paramaa)
   {
-    int i = sl();
-    if ((i <= this.bufferSize - this.bgR) && (i > 0))
+    AppMethodBeat.i(208633);
+    Drawable localDrawable = this.drawable;
+    if (paramaa == null) {}
+    for (paramaa = null;; paramaa = androidx.compose.ui.e.d.a(paramaa))
     {
-      String str = new String(this.buffer, this.bgR, i, "UTF-8");
-      this.bgR = (i + this.bgR);
-      return str;
+      localDrawable.setColorFilter(paramaa);
+      AppMethodBeat.o(208633);
+      return true;
     }
-    return new String(eS(i), "UTF-8");
   }
   
-  public final int sk()
-  {
-    if (this.bgR == this.bufferSize) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      this.bgS = 0;
-      return 0;
-    }
-    this.bgS = sl();
-    if (this.bgS == 0) {
-      throw d.st();
-    }
-    return this.bgS;
-  }
-  
-  public final int sl()
-  {
-    int i = sp();
-    if (i >= 0) {}
-    int k;
-    do
-    {
-      return i;
-      i &= 0x7F;
-      j = sp();
-      if (j >= 0) {
-        return i | j << 7;
-      }
-      i |= (j & 0x7F) << 7;
-      j = sp();
-      if (j >= 0) {
-        return i | j << 14;
-      }
-      i |= (j & 0x7F) << 14;
-      k = sp();
-      if (k >= 0) {
-        return i | k << 21;
-      }
-      j = sp();
-      k = i | (k & 0x7F) << 21 | j << 28;
-      i = k;
-    } while (j >= 0);
-    int j = 0;
-    for (;;)
-    {
-      if (j >= 5) {
-        break label133;
-      }
-      i = k;
-      if (sp() >= 0) {
-        break;
-      }
-      j += 1;
-    }
-    label133:
-    throw d.ss();
-  }
-  
-  public final long sm()
+  public final boolean c(n paramn)
   {
     int i = 0;
-    long l = 0L;
-    while (i < 64)
+    AppMethodBeat.i(208636);
+    s.u(paramn, "layoutDirection");
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      int j = sp();
-      l |= (j & 0x7F) << i;
-      if ((j & 0x80) == 0) {
-        return l;
+      Drawable localDrawable = this.drawable;
+      switch (a.$EnumSwitchMapping$0[paramn.ordinal()])
+      {
+      default: 
+        paramn = new p();
+        AppMethodBeat.o(208636);
+        throw paramn;
+      case 2: 
+        i = 1;
       }
-      i += 7;
+      boolean bool = localDrawable.setLayoutDirection(i);
+      AppMethodBeat.o(208636);
+      return bool;
     }
-    throw d.ss();
+    AppMethodBeat.o(208636);
+    return false;
   }
   
-  public final int so()
+  public final void mJ()
   {
-    if (this.bgT == 2147483647) {
-      return -1;
+    AppMethodBeat.i(208617);
+    this.drawable.setCallback((Drawable.Callback)this.cEV.getValue());
+    this.drawable.setVisible(true, true);
+    if ((this.drawable instanceof Animatable)) {
+      ((Animatable)this.drawable).start();
     }
-    int i = this.bgR;
-    return this.bgT - i;
+    AppMethodBeat.o(208617);
+  }
+  
+  public final void mK()
+  {
+    AppMethodBeat.i(208624);
+    if ((this.drawable instanceof Animatable)) {
+      ((Animatable)this.drawable).stop();
+    }
+    this.drawable.setVisible(false, false);
+    this.drawable.setCallback(null);
+    AppMethodBeat.o(208624);
+  }
+  
+  public final void mL()
+  {
+    AppMethodBeat.i(208619);
+    mK();
+    AppMethodBeat.o(208619);
+  }
+  
+  public final long uM()
+  {
+    AppMethodBeat.i(208637);
+    long l = l.z(this.drawable.getIntrinsicWidth(), this.drawable.getIntrinsicHeight());
+    AppMethodBeat.o(208637);
+    return l;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "com/google/accompanist/drawablepainter/DrawablePainter$callback$2$1"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<1>
+  {
+    b(a parama)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.a.a.a
  * JD-Core Version:    0.7.0.1
  */

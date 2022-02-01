@@ -13,12 +13,26 @@ public class b
   
   public String toString()
   {
-    return "DataEntity [elementId=" + this.a + ", elementParams=" + this.b + ", elementDynamicParams=" + this.e + ", pageId=" + this.c + ", pageParams=" + this.d + ", innerParams=" + this.f + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataEntity [elementId=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", elementParams=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", elementDynamicParams=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", pageId=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", pageParams=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", innerParams=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.d.a.b
  * JD-Core Version:    0.7.0.1
  */

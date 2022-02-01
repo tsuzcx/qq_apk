@@ -103,27 +103,24 @@ public class RenderBuffer
     this.texId = GlUtil.createTexture(3553);
     if (paramBoolean2) {
       GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-      this.frameBufferId = arrayOfInt[0];
-      GLES20.glBindFramebuffer(36160, this.frameBufferId);
-      if (paramBoolean1)
-      {
-        GLES20.glGenRenderbuffers(1, arrayOfInt, 0);
-        this.renderBufferId = arrayOfInt[0];
-        GLES20.glBindRenderbuffer(36161, this.renderBufferId);
-        GLES20.glRenderbufferStorage(36161, 33189, paramInt1, paramInt2);
-      }
-      unbind();
-      return;
+    } else {
       GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
     }
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+    this.frameBufferId = arrayOfInt[0];
+    GLES20.glBindFramebuffer(36160, this.frameBufferId);
+    if (paramBoolean1)
+    {
+      GLES20.glGenRenderbuffers(1, arrayOfInt, 0);
+      this.renderBufferId = arrayOfInt[0];
+      GLES20.glBindRenderbuffer(36161, this.renderBufferId);
+      GLES20.glRenderbufferStorage(36161, 33189, paramInt1, paramInt2);
+    }
+    unbind();
   }
   
   public void bind()
@@ -146,8 +143,9 @@ public class RenderBuffer
       arrayOfInt[0] = this.renderBufferId;
       GLES20.glDeleteRenderbuffers(1, arrayOfInt, 0);
     }
-    if (this.texId > 0) {
-      GlUtil.deleteTexture(this.texId);
+    int i = this.texId;
+    if (i > 0) {
+      GlUtil.deleteTexture(i);
     }
   }
   
@@ -200,7 +198,7 @@ public class RenderBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RenderBuffer
  * JD-Core Version:    0.7.0.1
  */

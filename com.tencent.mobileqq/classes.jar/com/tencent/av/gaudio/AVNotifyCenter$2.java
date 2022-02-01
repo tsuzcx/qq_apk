@@ -11,21 +11,24 @@ class AVNotifyCenter$2
   
   public void run()
   {
-    Iterator localIterator = this.this$0.a.keySet().iterator();
+    Iterator localIterator = AVNotifyCenter.a(this.this$0).keySet().iterator();
     long l;
+    AVNotifyCenter localAVNotifyCenter;
     while (localIterator.hasNext())
     {
       l = ((Long)localIterator.next()).longValue();
-      this.this$0.a(l, 2, this.this$0.b(l), false);
+      localAVNotifyCenter = this.this$0;
+      localAVNotifyCenter.a(l, 2, localAVNotifyCenter.e(l), false);
       this.this$0.a(1, 2, l, null, 0L);
       this.this$0.a(21, 2, l, 0L);
       localIterator.remove();
     }
-    localIterator = this.this$0.b.keySet().iterator();
+    localIterator = AVNotifyCenter.b(this.this$0).keySet().iterator();
     while (localIterator.hasNext())
     {
       l = ((Long)localIterator.next()).longValue();
-      this.this$0.a(l, 1, this.this$0.b(l), false);
+      localAVNotifyCenter = this.this$0;
+      localAVNotifyCenter.a(l, 1, localAVNotifyCenter.e(l), false);
       this.this$0.a(1, l, 10, 0, 0, 21, 0);
       this.this$0.a(2, 1, l, null, 0L);
       this.this$0.a(21, 1, l, 0L);
@@ -35,7 +38,7 @@ class AVNotifyCenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.2
  * JD-Core Version:    0.7.0.1
  */

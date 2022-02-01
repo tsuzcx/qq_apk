@@ -32,21 +32,21 @@ public class TAVMovieBuilder
   
   public TAVSource buildSource()
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (this.movie != null)
+    Object localObject = this.movie;
+    TAVComposition localTAVComposition = null;
+    if (localObject != null)
     {
-      localObject1 = localObject2;
-      if (this.template != null) {
-        localObject1 = this.template.buildCompositionFromMovie(this.movie);
+      TAVTemplate localTAVTemplate = this.template;
+      if (localTAVTemplate != null) {
+        localTAVComposition = localTAVTemplate.buildCompositionFromMovie((TAVMovie)localObject);
       }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.movie.convertToComposition();
+      localObject = localTAVComposition;
+      if (localTAVComposition == null) {
+        localObject = this.movie.convertToComposition();
       }
-      localObject1 = new TAVCompositionBuilder((TAVComposition)localObject2).buildSource();
+      return new TAVCompositionBuilder((TAVComposition)localObject).buildSource();
     }
-    return localObject1;
+    return null;
   }
   
   public VideoComposition buildVideoComposition()
@@ -59,7 +59,7 @@ public class TAVMovieBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.TAVMovieBuilder
  * JD-Core Version:    0.7.0.1
  */

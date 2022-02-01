@@ -7,7 +7,7 @@ import android.os.Message;
 final class ad
   extends Handler
 {
-  private final ac SO = new ac((byte)0);
+  private final ac UD = new ac((byte)0);
   private boolean started;
   
   ad(WearableListenerService paramWearableListenerService, Looper paramLooper)
@@ -17,7 +17,7 @@ final class ad
   
   /* Error */
   @android.annotation.SuppressLint({"UntrackedBindService"})
-  private void kH()
+  private void kQ()
   {
     // Byte code:
     //   0: aload_0
@@ -35,7 +35,7 @@ final class ad
     //   17: invokestatic 40	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   20: ifeq +49 -> 69
     //   23: aload_0
-    //   24: getfield 14	com/google/android/gms/wearable/ad:SP	Lcom/google/android/gms/wearable/WearableListenerService;
+    //   24: getfield 14	com/google/android/gms/wearable/ad:UE	Lcom/google/android/gms/wearable/WearableListenerService;
     //   27: invokestatic 46	com/google/android/gms/wearable/WearableListenerService:a	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/ComponentName;
     //   30: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   33: astore_2
@@ -56,12 +56,12 @@ final class ad
     //   65: invokestatic 75	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
     //   68: pop
     //   69: aload_0
-    //   70: getfield 14	com/google/android/gms/wearable/ad:SP	Lcom/google/android/gms/wearable/WearableListenerService;
+    //   70: getfield 14	com/google/android/gms/wearable/ad:UE	Lcom/google/android/gms/wearable/WearableListenerService;
     //   73: aload_0
-    //   74: getfield 14	com/google/android/gms/wearable/ad:SP	Lcom/google/android/gms/wearable/WearableListenerService;
+    //   74: getfield 14	com/google/android/gms/wearable/ad:UE	Lcom/google/android/gms/wearable/WearableListenerService;
     //   77: invokestatic 79	com/google/android/gms/wearable/WearableListenerService:b	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/Intent;
     //   80: aload_0
-    //   81: getfield 24	com/google/android/gms/wearable/ad:SO	Lcom/google/android/gms/wearable/ac;
+    //   81: getfield 24	com/google/android/gms/wearable/ad:UD	Lcom/google/android/gms/wearable/ac;
     //   84: iconst_1
     //   85: invokevirtual 83	com/google/android/gms/wearable/WearableListenerService:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   88: pop
@@ -107,7 +107,7 @@ final class ad
     //   17: invokestatic 40	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   20: ifeq +66 -> 86
     //   23: aload_0
-    //   24: getfield 14	com/google/android/gms/wearable/ad:SP	Lcom/google/android/gms/wearable/WearableListenerService;
+    //   24: getfield 14	com/google/android/gms/wearable/ad:UE	Lcom/google/android/gms/wearable/WearableListenerService;
     //   27: invokestatic 46	com/google/android/gms/wearable/WearableListenerService:a	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/ComponentName;
     //   30: invokestatic 52	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   33: astore_3
@@ -136,9 +136,9 @@ final class ad
     //   82: invokestatic 75	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
     //   85: pop
     //   86: aload_0
-    //   87: getfield 14	com/google/android/gms/wearable/ad:SP	Lcom/google/android/gms/wearable/WearableListenerService;
+    //   87: getfield 14	com/google/android/gms/wearable/ad:UE	Lcom/google/android/gms/wearable/WearableListenerService;
     //   90: aload_0
-    //   91: getfield 24	com/google/android/gms/wearable/ad:SO	Lcom/google/android/gms/wearable/ac;
+    //   91: getfield 24	com/google/android/gms/wearable/ad:UD	Lcom/google/android/gms/wearable/ac;
     //   94: invokevirtual 96	com/google/android/gms/wearable/WearableListenerService:unbindService	(Landroid/content/ServiceConnection;)V
     //   97: aload_0
     //   98: iconst_0
@@ -174,7 +174,7 @@ final class ad
   
   public final void dispatchMessage(Message paramMessage)
   {
-    kH();
+    kQ();
     try
     {
       super.dispatchMessage(paramMessage);

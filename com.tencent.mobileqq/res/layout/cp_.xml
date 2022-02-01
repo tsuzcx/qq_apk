@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/mw" android:layout_alignLeft="@id/odi" android:layout_alignTop="@id/odi" android:layout_alignRight="@id/odi" android:layout_alignBottom="@id/odi" />
+    <com.tencent.mobileqq.now.widget.NiceImageView android:id="@id/odi" android:clickable="false" android:layout_width="fill_parent" android:layout_height="195.0dip" android:scaleType="fitXY" app:corner_radius_value="@dimen/mw" />
+</RelativeLayout>

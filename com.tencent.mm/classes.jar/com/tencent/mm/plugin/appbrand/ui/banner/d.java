@@ -1,149 +1,111 @@
 package com.tencent.mm.plugin.appbrand.ui.banner;
 
-import android.graphics.Bitmap;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.a.b.i;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.ba.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
-  extends com.tencent.mm.pluginsdk.ui.b.b
+  extends com.tencent.mm.pluginsdk.ui.a.b
   implements View.OnClickListener, f
 {
-  private static boolean iQV = false;
-  private View iQP;
-  private TextView iQQ;
-  private ImageView iQR;
-  private String iQS;
-  private final Runnable iQT;
-  private final b.i iQU;
+  private static boolean uhA = false;
   
-  public static void aML()
+  public static void cMb()
   {
-    iQV = false;
+    uhA = false;
   }
   
-  public final boolean aMK()
+  public final void cB(String paramString, int paramInt)
   {
-    AppMethodBeat.i(133275);
-    if (!iQV)
+    AppMethodBeat.i(48998);
+    AppMethodBeat.o(48998);
+    throw null;
+  }
+  
+  public final boolean cMa()
+  {
+    AppMethodBeat.i(48994);
+    if (!uhA)
     {
-      ((e)g.E(e.class)).b(this);
-      ((e)g.E(e.class)).aMH();
-      ((e)g.E(e.class)).a(this);
-      iQV = true;
+      ((e)h.ax(e.class)).b(this);
+      ((e)h.ax(e.class)).cLW();
+      ((e)h.ax(e.class)).a(this);
+      uhA = true;
     }
-    Object localObject2 = BannerModel.aMQ();
-    if ((localObject2 != null) && (!bo.isNullOrNil(((BannerModel)localObject2).appId)))
+    Object localObject2 = BannerModel.cMe();
+    if ((localObject2 != null) && (!Util.isNullOrNil(((BannerModel)localObject2).appId)))
     {
       Object localObject1 = ((BannerModel)localObject2).appName;
-      String str = ((BannerModel)localObject2).iRl;
-      localObject2 = ((BannerModel)localObject2).hcN;
-      if (bo.isNullOrNil(str)) {}
-      while (bo.isNullOrNil((String)localObject1))
+      localObject2 = ((BannerModel)localObject2).uhR;
+      if (Util.isNullOrNil((String)localObject2)) {}
+      while (Util.isNullOrNil((String)localObject1))
       {
-        AppMethodBeat.o(133275);
+        AppMethodBeat.o(48994);
         return false;
-        localObject1 = str;
+        localObject1 = localObject2;
       }
-      setVisibility(0);
-      if (this.iQQ != null) {
-        this.iQQ.setText((CharSequence)localObject1);
-      }
-      if (!bo.isNullOrNil((String)localObject2))
-      {
-        localObject1 = null;
-        if (!bo.isNullOrNil(this.iQS)) {
-          localObject1 = com.tencent.mm.modelappbrand.a.b.acD().qw(this.iQS);
-        }
-        if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
-          break label193;
-        }
-        this.iQU.w((Bitmap)localObject1);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(133275);
-        return true;
-        label193:
-        this.iQS = com.tencent.mm.modelappbrand.a.b.acD().a(this.iQU, (String)localObject2, com.tencent.mm.modelappbrand.a.f.fqU);
-      }
+      AppMethodBeat.o(48994);
+      throw null;
     }
-    setVisibility(8);
-    AppMethodBeat.o(133275);
-    return false;
-  }
-  
-  public final void bf(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(133279);
-    al.d(this.iQT);
-    AppMethodBeat.o(133279);
+    AppMethodBeat.o(48994);
+    throw null;
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(133277);
-    if (this.iQP != null)
-    {
-      ((ViewGroup)this.iQP).removeAllViews();
-      this.iQP.setVisibility(8);
-    }
-    this.iQP = null;
-    this.iQQ = null;
-    this.iQR = null;
-    ((e)g.E(e.class)).b(this);
-    AppMethodBeat.o(133277);
+    AppMethodBeat.i(48996);
+    AppMethodBeat.o(48996);
+    throw null;
   }
   
   public final int getLayoutId()
   {
-    return 2130969029;
+    return ba.g.chatting_app_brand_entrance_banner;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(133278);
-    Object localObject = BannerModel.aMQ();
-    if (localObject == null)
+    AppMethodBeat.i(48997);
+    Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aYj());
+    Object localObject2 = BannerModel.cMe();
+    if (localObject2 == null)
     {
-      AppMethodBeat.o(133278);
+      a.a(this, "com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(48997);
       return;
     }
-    String str = ((BannerModel)localObject).appId;
-    int i = ((BannerModel)localObject).hcr;
-    if (bo.isNullOrNil(str))
+    localObject1 = ((BannerModel)localObject2).appId;
+    int i = ((BannerModel)localObject2).euz;
+    if (Util.isNullOrNil((String)localObject1))
     {
-      aMK();
-      AppMethodBeat.o(133278);
-      return;
+      AppMethodBeat.o(48997);
+      throw null;
     }
-    localObject = new AppBrandStatObject();
-    ((AppBrandStatObject)localObject).scene = 1022;
-    ((j)g.E(j.class)).a(paramView.getContext(), null, str, i, -1, null, (AppBrandStatObject)localObject);
-    AppMethodBeat.o(133278);
+    localObject2 = new AppBrandStatObject();
+    ((AppBrandStatObject)localObject2).scene = 1022;
+    ((t)h.ax(t.class)).a(paramView.getContext(), null, (String)localObject1, i, -1, null, (AppBrandStatObject)localObject2);
+    a.a(this, "com/tencent/mm/plugin/appbrand/ui/banner/AppBrandStickyBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(48997);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(133276);
-    if (this.iQP != null) {
-      this.iQP.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(133276);
+    AppMethodBeat.i(48995);
+    AppMethodBeat.o(48995);
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.d
  * JD-Core Version:    0.7.0.1
  */

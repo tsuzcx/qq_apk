@@ -20,9 +20,9 @@ public class NetworkState
   public static final int NETWORK_TYPE_4G = 6;
   public static final int NETWORK_TYPE_UNKNOWN = 0;
   public static final int NETWORK_TYPE_WIFI = 1;
-  private static final String TAG = NetworkState.class.getName();
-  private static NetworkState instance = null;
-  private static int networkType = 0;
+  private static final String TAG = "com.tencent.component.network.module.common.NetworkState";
+  private static NetworkState instance;
+  private static int networkType;
   private Context context = null;
   private boolean loadProviderName = false;
   private List<NetworkState.NetworkStateListener> observers = new ArrayList();
@@ -38,26 +38,22 @@ public class NetworkState
   
   private static int getNetworkType(NetworkInfo paramNetworkInfo)
   {
-    switch (paramNetworkInfo.getType())
+    int i = paramNetworkInfo.getType();
+    if (i != 0)
     {
-    default: 
-      networkType = 0;
+      if (i != 1) {
+        networkType = 0;
+      } else {
+        networkType = 1;
+      }
     }
-    for (;;)
-    {
-      return networkType;
-      networkType = 1;
-      continue;
+    else {
       switch (paramNetworkInfo.getSubtype())
       {
       default: 
         break;
-      case 1: 
-      case 2: 
-      case 4: 
-      case 7: 
-      case 11: 
-        networkType = 3;
+      case 13: 
+        networkType = 6;
         break;
       case 3: 
       case 5: 
@@ -70,58 +66,61 @@ public class NetworkState
       case 15: 
         networkType = 2;
         break;
-      case 13: 
-        networkType = 6;
+      case 1: 
+      case 2: 
+      case 4: 
+      case 7: 
+      case 11: 
+        networkType = 3;
       }
     }
+    return networkType;
   }
   
   public static boolean isNetworkConnected(Context paramContext)
   {
-    int j;
-    int i;
-    NetworkInfo localNetworkInfo;
-    try
-    {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (paramContext == null) {
-        return false;
-      }
-      paramContext = paramContext.getAllNetworkInfo();
-      if (paramContext == null) {
-        break label53;
-      }
-      j = paramContext.length;
-      i = 0;
-    }
-    catch (SecurityException paramContext)
-    {
-      return true;
-    }
-    catch (Throwable paramContext)
-    {
-      return false;
-    }
-    if (localNetworkInfo.isConnectedOrConnecting())
-    {
-      getNetworkType(localNetworkInfo);
-      return true;
-    }
-    label53:
-    label73:
     for (;;)
     {
-      return false;
-      for (;;)
+      int j;
+      int i;
+      NetworkInfo localNetworkInfo;
+      try
       {
-        if (i >= j) {
-          break label73;
+        paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+        if (paramContext == null) {
+          return false;
         }
+        paramContext = paramContext.getAllNetworkInfo();
+        if (paramContext != null)
+        {
+          j = paramContext.length;
+          i = 0;
+          break label62;
+          if (localNetworkInfo.isConnectedOrConnecting())
+          {
+            getNetworkType(localNetworkInfo);
+            return true;
+          }
+          i += 1;
+        }
+        else
+        {
+          return false;
+        }
+      }
+      catch (SecurityException paramContext)
+      {
+        return true;
+      }
+      catch (Throwable paramContext)
+      {
+        return false;
+      }
+      label62:
+      if (i < j)
+      {
         localNetworkInfo = paramContext[i];
-        if (localNetworkInfo != null) {
-          break;
-        }
-        i += 1;
+        if (localNetworkInfo != null) {}
       }
     }
   }
@@ -132,16 +131,18 @@ public class NetworkState
     {
       NetworkState.NetworkStateListener[] arrayOfNetworkStateListener = new NetworkState.NetworkStateListener[this.observers.size()];
       this.observers.toArray(arrayOfNetworkStateListener);
-      if (arrayOfNetworkStateListener != null)
+      int j = arrayOfNetworkStateListener.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = arrayOfNetworkStateListener.length;
-        int i = 0;
-        if (i < j)
-        {
-          arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
-          i += 1;
-        }
+        arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
+        i += 1;
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -166,42 +167,48 @@ public class NetworkState
   
   public boolean isNetworkAvailable()
   {
-    boolean bool1;
-    if (this.context == null) {
-      bool1 = true;
+    Object localObject = this.context;
+    if (localObject == null) {
+      return true;
     }
-    NetworkInfo localNetworkInfo;
-    boolean bool2;
-    do
-    {
-      return bool1;
-      localNetworkInfo = ((ConnectivityManager)this.context.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (localNetworkInfo == null) {
-        return false;
-      }
-      bool2 = localNetworkInfo.isConnected();
-      bool1 = bool2;
-    } while (bool2);
-    QDLog.e(TAG, "isNetworkEnable() : FALSE with TYPE = " + localNetworkInfo.getType());
-    return bool2;
+    localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
+    if (localObject == null) {
+      return false;
+    }
+    boolean bool = ((NetworkInfo)localObject).isConnected();
+    if (bool) {
+      return bool;
+    }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isNetworkEnable() : FALSE with TYPE = ");
+    localStringBuilder.append(((NetworkInfo)localObject).getType());
+    QDLog.e(str, localStringBuilder.toString());
+    return bool;
   }
   
   public boolean isNetworkConnected()
   {
-    if (this.context == null) {
+    Context localContext = this.context;
+    if (localContext == null) {
       return true;
     }
-    return isNetworkConnected(this.context);
+    return isNetworkConnected(localContext);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QDLog.e(TAG, "NetworkStateReceiver ====== " + paramIntent.getAction());
-    if (paramIntent.getAction() == null) {}
-    while (paramIntent.getAction().compareTo("android.net.conn.CONNECTIVITY_CHANGE") != 0) {
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NetworkStateReceiver ====== ");
+    localStringBuilder.append(paramIntent.getAction());
+    QDLog.e(str, localStringBuilder.toString());
+    if (paramIntent.getAction() == null) {
       return;
     }
-    GlobalHandlerThread.getInstance(paramContext).getHandler().post(new NetworkState.1(this, paramContext));
+    if (paramIntent.getAction().compareTo("android.net.conn.CONNECTIVITY_CHANGE") == 0) {
+      GlobalHandlerThread.getInstance(paramContext).getHandler().post(new NetworkState.1(this, paramContext));
+    }
   }
   
   public void removeListener(NetworkState.NetworkStateListener paramNetworkStateListener)
@@ -227,7 +234,7 @@ public class NetworkState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.common.NetworkState
  * JD-Core Version:    0.7.0.1
  */

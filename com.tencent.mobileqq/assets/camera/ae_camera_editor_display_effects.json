@@ -1,0 +1,2016 @@
+[
+  {
+    "dynamicFields": {},
+    "id": "10001000",
+    "materials": [
+      {
+        "additionalFields": {
+          "hideApplyAll": "1",
+          "disableForVideo": "1",
+          "name": "智能",
+          "preDownload": "1",
+          "disableForImage": "0",
+          "effectType": "ai"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "AIPhotoConfig",
+        "packageMd5": "1cdc620ab1f183c3d4fbca7c11799e4c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/72f71118-61e1-11eb-944f-7ac5100db047-AIPhotoConfig_1cdc620ab1f183c3d4fbca7c11799e4c.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cfdfc786-72a7-11eb-b1cc-a2ecb18294e0-0-智能.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "1",
+          "disableForVideo": "0",
+          "name": "智能",
+          "preDownload": "1",
+          "disableForImage": "1",
+          "effectType": "ai"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "AIVideoConfig",
+        "packageMd5": "2a28d5706d8975d46259e338bfba561e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9d3a3998-6437-11eb-80af-7ac5100db047-AIVideoConfig_2a28d5706d8975d46259e338bfba561e.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d87ca7ba-72a7-11eb-ace8-a2ecb18294e0-0-智能.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "推荐",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001001",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "小日子",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_richang_xiaorizi",
+        "packageMd5": "936b159f887389c4402ce7f2e427bf1e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5e1eb2f2-72b0-11eb-b526-a2ecb18294e0-filter_richang_xiaorizi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/561a0ee4-72b0-11eb-b526-a2ecb18294e0-1-小日子.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "人间百货",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_richang_renjianbaihuo",
+        "packageMd5": "5cd001e6fe13ba4e90461a7d2d8e3988",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4bb70ef2-72b0-11eb-a5db-a2ecb18294e0-filter_richang_renjianbaihuo.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/41ca4c24-72b0-11eb-9da0-a2ecb18294e0-2-人间百货.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "薄荷岛",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_richang_bohedao",
+        "packageMd5": "61c30a2ca631b3b9d74cbdd158bf9905",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2ca47324-72b0-11eb-a58d-a2ecb18294e0-filter_richang_bohedao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1e9f418c-72b0-11eb-8101-a2ecb18294e0-3-薄荷岛.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "桂花乌龙",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_richang_guihuawulong",
+        "packageMd5": "184626b2f5df578d9595b4669a11df67",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0f601782-72b0-11eb-b35e-a2ecb18294e0-filter_richang_guihuawulong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/085bd3ea-72b0-11eb-b35e-a2ecb18294e0-4-桂花乌龙.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "日常",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001002",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "蜜桃水光",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_renxiang_mitaoshuiguang",
+        "packageMd5": "213eb4bed40701267b8a7334bd72be2b",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4a33a942-72af-11eb-820f-a2ecb18294e0-filter_renxiang_mitaoshuiguang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/440bf9c0-72af-11eb-801c-a2ecb18294e0-1-蜜桃水光.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "夏日颜",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_renxiang_xiariyan",
+        "packageMd5": "382ab1d15d7b58154531b894fb7efda8",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2e0d928c-72af-11eb-a7ec-a2ecb18294e0-filter_renxiang_xiariyan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/288a8b58-72af-11eb-b3a4-a2ecb18294e0-2-夏日颜.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "写真集",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_renxiang_xiezhenji",
+        "packageMd5": "8fdcc4f240244ba1578e208e0f1e8a3e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/172d2230-72af-11eb-9ffb-a2ecb18294e0-filter_renxiang_xiezhenji.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/efe59da6-72ae-11eb-a62c-a2ecb18294e0-3-写真集.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "人像",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001003",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "小滋味",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_meishi_xiaoziwei",
+        "packageMd5": "f6d4978c168e91ef09ad257d1e106520",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/880803d6-72ae-11eb-b0f3-a2ecb18294e0-filter_meishi_xiaoziwei.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/80c20cca-72ae-11eb-8999-a2ecb18294e0-1-小滋味.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "水晶虾饺",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_meishi_shuijingxiajiao",
+        "packageMd5": "84e4c19f4add10bbb10e719b563d44ef",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/741c7c58-72ae-11eb-9d15-a2ecb18294e0-filter_meishi_shuijingxiajiao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6b39b3ee-72ae-11eb-bae9-a2ecb18294e0-2-水晶虾饺.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "奶油莓果",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_meishi_naiyoumeiguo",
+        "packageMd5": "43d6b144d045955420ae577fc51fef1e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5fccacd2-72ae-11eb-a31f-a2ecb18294e0-filter_meishi_naiyoumeiguo.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/59091bba-72ae-11eb-bc01-a2ecb18294e0-3-奶油莓果.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "冷萃咖啡",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_meishi_lengcuikafei",
+        "packageMd5": "ab96d197bc7d0762caff181ea79a1d0c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4908f6b8-72ae-11eb-b99f-a2ecb18294e0-filter_meishi_lengcuikafei.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3f20531c-72ae-11eb-82f5-a2ecb18294e0-4-冷萃咖啡.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "美食",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001004",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "小漫游",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_fengjing_xiaomanyou",
+        "packageMd5": "e39471e7d91e45d9137d3953db9ab811",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/918f87cc-72ad-11eb-842e-a2ecb18294e0-filter_fengjing_xiaomanyou.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/87f3c9bc-72ad-11eb-b5d7-a2ecb18294e0-1-小漫游.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "春之野",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_fengjing_chunzhiye",
+        "packageMd5": "25d664d425429da0d025b77e62b055ba",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/78503d60-72ad-11eb-8164-a2ecb18294e0-filter_fengjing_chunzhiye.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/685e0f9a-72ad-11eb-b9ad-a2ecb18294e0-2-春之野.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "夏未至",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_fengjing_xiaweizhi",
+        "packageMd5": "dcc204b28242a5408874d834644d36c3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5863272e-72ad-11eb-8562-a2ecb18294e0-filter_fengjing_xiaweizhi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/405e2a66-72ad-11eb-ba4b-a2ecb18294e0-3-夏未至.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "秋分木",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_fengjing_qiufenmu",
+        "packageMd5": "8387ee8303838ecdf369047ee563a451",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2e456c90-72ad-11eb-926b-a2ecb18294e0-filter_fengjing_qiufenmu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/24facd42-72ad-11eb-85f4-a2ecb18294e0-4-秋分木.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "风景",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001005",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "日落大道",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_chengshi_riluodadao",
+        "packageMd5": "36c58b89414981c658b6f6397683d4a5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8cedaa42-72ac-11eb-a4c2-a2ecb18294e0-filter_chengshi_riluodadao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/85540f88-72ac-11eb-9431-a2ecb18294e0-1-日落大道.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "霓虹荒野",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_chengshi_nihonghuangye",
+        "packageMd5": "a7c0d1a674bd69eccf1f2d324373e911",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/74a34d0c-72ac-11eb-958b-a2ecb18294e0-filter_chengshi_nihonghuangye.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6bd74f02-72ac-11eb-ba86-a2ecb18294e0-2-霓虹荒野.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "表参道",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_chengshi_biaocandao",
+        "packageMd5": "68656defd58f97743399818fb8d58abe",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5ff033ca-72ac-11eb-ae41-a2ecb18294e0-filter_chengshi_biaocandao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/50972f14-72ac-11eb-b813-a2ecb18294e0-3-表参道.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "黑金之城",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_chengshi_heijinzhicheng",
+        "packageMd5": "0cd64f319915198d2e115e0ae1a70239",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/44b4fc8a-72ac-11eb-b55b-a2ecb18294e0-filter_chengshi_heijinzhicheng.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3d9d46a0-72ac-11eb-822d-a2ecb18294e0-4-黑金之城.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "城市",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001006",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "午后胶片",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_wuhoujiaopian",
+        "packageMd5": "bfc40ca0a0ed90bd2e2353a1294d7790",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dadbfaa2-72ab-11eb-9437-a2ecb18294e0-filter_zhigan_wuhoujiaopian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c1d9a97a-72a9-11eb-9b0b-a2ecb18294e0-1-午后胶片.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "黑森雪松",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_heisenxuesong",
+        "packageMd5": "e72c4a2777fb71a01d289111bc97a711",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b15bc74a-72a9-11eb-a577-a2ecb18294e0-filter_zhigan_heisenxuesong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a6032f1e-72a9-11eb-9560-a2ecb18294e0-2-黑森雪松.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "法式灰",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_fashihui",
+        "packageMd5": "023c6b668c50602f93b6cb405719722a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9261c48e-72a9-11eb-95f1-a2ecb18294e0-filter_zhigan_fashihui.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/86a267de-72a9-11eb-a73f-a2ecb18294e0-3-法式灰.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "木质香",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_muzhixiang",
+        "packageMd5": "52f0d25bf9bab8588da2450ab2f073b0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7a3d45cc-72a9-11eb-972a-a2ecb18294e0-filter_zhigan_muzhixiang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6ed0260a-72a9-11eb-9c1d-a2ecb18294e0-4-木质香.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "蓝色大门",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_lansedamen",
+        "packageMd5": "8c5ef88a954de66df79d3a77228e1b43",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/60fbef50-72a9-11eb-9c6e-a2ecb18294e0-filter_zhigan_lansedamen.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/573e869e-72a9-11eb-86fe-a2ecb18294e0-5-蓝色大门.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "银盐",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_yinyan",
+        "packageMd5": "6d779df55cd63aea05ae9cdb789adf0c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cdf0c8a4-72ab-11eb-bbf1-a2ecb18294e0-filter_zhigan_yinyan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/390df01a-72a9-11eb-bd82-a2ecb18294e0-6-银盐.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "黑白",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_zhigan_heibai",
+        "packageMd5": "9ec43e698bc928e804500188f10ee908",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2c29252c-72a9-11eb-a7e8-a2ecb18294e0-filter_zhigan_heibai.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/214a36d2-72a9-11eb-bd8d-a2ecb18294e0-7-黑白.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "质感",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001008",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "白日梦蓝",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_rixi_bairimenglan",
+        "packageMd5": "621e33af9af61c34e1c2e518a9456e9e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/af9ccf5e-72a8-11eb-baa7-a2ecb18294e0-filter_rixi_bairimenglan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a8c77986-72a8-11eb-baa7-a2ecb18294e0-1-白日梦蓝.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "上野公园",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_rixi_shangyegongyuan",
+        "packageMd5": "0e9764a94e4749b84654ba236b628cd5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9a601be6-72a8-11eb-a7c1-a2ecb18294e0-filter_rixi_shangyegongyuan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8eded64a-72a8-11eb-8715-a2ecb18294e0-2-上野公园.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "花樁",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_rixi_huazhuang",
+        "packageMd5": "4fb42da5461615a3883d1ead7f1d3e55",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7dc12372-72a8-11eb-892c-a2ecb18294e0-filter_rixi_huazhuang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/76be6db4-72a8-11eb-9072-a2ecb18294e0-3-花樁.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "海盐苏打",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_rixi_haiyansuda",
+        "packageMd5": "ddb1e0bb39c97e3f4526a7e596b0a52f",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/26af0d1a-72a8-11eb-bc6c-a2ecb18294e0-filter_rixi_haiyansuda.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4754e544-72a8-11eb-ad68-a2ecb18294e0-4-海盐苏打.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "日系",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001009",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "月升王国",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_dianying_yueshengwangguo",
+        "packageMd5": "4747fce7c896d640ff04b205d77b759c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/83f0ebcc-72a5-11eb-bf58-a2ecb18294e0-filter_dianying_yueshengwangguo.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7b187d58-72a5-11eb-80e2-a2ecb18294e0-1-月升王国.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "醉乡民谣",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_dianying_zuixiangminyao",
+        "packageMd5": "575f0fa4fa65e675a248ad30cd37a669",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6a858698-72a5-11eb-8a70-a2ecb18294e0-filter_dianying_zuixiangminyao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5dafec06-72a5-11eb-945b-a2ecb18294e0-2-醉乡民谣.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "海街日记",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "filter_dianying_haijieriji",
+        "packageMd5": "d760aef47ccdd4f6f75fc8a32f8b5bc1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5117df44-72a5-11eb-b2f0-a2ecb18294e0-filter_dianying_haijieriji.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4b03774e-72a5-11eb-8ebd-a2ecb18294e0-3-海街日记.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "电影",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001010",
+    "materials": [
+      {
+        "additionalFields": {
+          "disableForVideo": "0",
+          "name": "赛博朋克I",
+          "preDownload": "1",
+          "disableForImage": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_cyberpunk_video_a",
+        "packageMd5": "4367040fcfce1993867bd9b0fd2c9d7e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bb93cf32-607f-11eb-9587-7ac5100db047-effect_cyberpunk_video_a_2021010202.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/06c64f52-7291-11eb-9dee-a2ecb18294e0-1-赛博朋克1.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "disableForVideo": "1",
+          "name": "赛博朋克I",
+          "preDownload": "1",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_cyberpunk_a",
+        "packageMd5": "3524b66c612c4aeb729588cf31f70a27",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7d626fe8-607f-11eb-b3e7-7ac5100db047-effect_cyberpunk_a_2021010202.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0bdf9fe8-7291-11eb-9788-a2ecb18294e0-1-赛博朋克1.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "1",
+          "name": "赛博朋克II",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_cyberpunk_b",
+        "packageMd5": "c89bbdc8e9980a8342ed7a5404561907",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f17f2858-607f-11eb-8983-7ac5100db047-effect_cyberpunk_b_2021010202.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ffbe39fe-7290-11eb-aa53-a2ecb18294e0-2-赛博朋克2.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "disableForVideo": "0",
+          "name": "赛博朋克II",
+          "preDownload": "1",
+          "disableForImage": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_cyberpunk_video_b",
+        "packageMd5": "15dfda389319f9018e863e3713f04fa4",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/248f8616-6080-11eb-84f6-7ac5100db047-effect_cyberpunk_video_b_2021010202.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f47a529e-7290-11eb-87c7-a2ecb18294e0-2-赛博朋克2.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "风格",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001011",
+    "materials": [
+      {
+        "additionalFields": {
+          "hideApplyAll": "1",
+          "disableForVideo": "1",
+          "name": "古风国漫",
+          "netStylizeType": "4",
+          "hideAlphaBar": "1",
+          "preDownload": "1",
+          "effectType": "network"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_duorenshuicai",
+        "packageMd5": "f736869098e6f3a682ab5ad02184e5b5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7346255c-7297-11eb-bf9f-a2ecb18294e0-effect_placeholder.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6b93c8e6-7297-11eb-8b9d-a2ecb18294e0-1-古风国漫.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "1",
+          "disableForVideo": "1",
+          "name": "多人漫画",
+          "netStylizeType": "3",
+          "preDownload": "1",
+          "hideAlphaBar": "1",
+          "effectType": "network"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_duorenmanhua",
+        "packageMd5": "f736869098e6f3a682ab5ad02184e5b5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/88801d10-7297-11eb-96f8-a2ecb18294e0-effect_placeholder.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8d1db300-7297-11eb-964d-a2ecb18294e0-2-多人漫画.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "1",
+          "disableForVideo": "1",
+          "name": "油画",
+          "netStylizeType": "2",
+          "preDownload": "1",
+          "hideAlphaBar": "1",
+          "effectType": "network"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_youhua",
+        "packageMd5": "f736869098e6f3a682ab5ad02184e5b5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/de614506-7297-11eb-8897-a2ecb18294e0-effect_placeholder.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d5e2f280-7297-11eb-a41c-a2ecb18294e0-3-油画.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "1",
+          "disableForVideo": "1",
+          "name": "漫画",
+          "netStylizeType": "1",
+          "hideAlphaBar": "1",
+          "disableForImage": "0",
+          "preDownload": "1",
+          "uploadMaxSize": "736",
+          "effectType": "network"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_comics",
+        "packageMd5": "f736869098e6f3a682ab5ad02184e5b5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/edfcab7c-7297-11eb-990c-a2ecb18294e0-effect_placeholder.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/24ef3bb0-7291-11eb-90db-a2ecb18294e0-4-漫画.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "彩铅",
+          "tag": "",
+          "preDownload": "0",
+          "displayDownloadIcon": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_caiqian",
+        "packageMd5": "45e24072a8980fc20bd7a09e6a2c0890",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/81e56c30-6081-11eb-ae72-7ac5100db047-effect_caiqian_v2.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/170561a0-7291-11eb-9adb-a2ecb18294e0-5-彩铅.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "素描",
+          "disableForImage": "0",
+          "preDownload": "0",
+          "hideAlphaBar": "0",
+          "displayDownloadIcon": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_sumiao",
+        "packageMd5": "e4374ddf74396db8e4bd5368f1a44dcc",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0532403e-5fee-11eb-9267-7ac5100db047-effect_sumiao_v3.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/41d73c3c-7291-11eb-91b1-a2ecb18294e0-6-素描.jpg",
+        "thumbWidth": 132
+      },
+      {
+        "additionalFields": {
+          "name": "卡通画",
+          "preDownload": "0",
+          "displayDownloadIcon": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_katonghua",
+        "packageMd5": "9e53502864532b50e4fda165d6fc6ab5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4b0d83fa-6081-11eb-8895-7ac5100db047-effect_katonghua_2021010601.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 132,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1d1d03f4-7291-11eb-b579-a2ecb18294e0-7-卡通画.jpg",
+        "thumbWidth": 132
+      }
+    ],
+    "name": "绘画",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "10001007",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "现代",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_xiandai",
+        "packageMd5": "07ee22faed88b7b7f9159d1bbc1627bd",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/da1e1ee6-607d-11eb-a4b6-7ac5100db047-effect_xiandai.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cc97fe90-607d-11eb-9cc5-7ac5100db047-xiandai_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "山谷",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_shangu",
+        "packageMd5": "7b7edc1be18fad2a57320c613fcd2461",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0e84101e-607e-11eb-b688-7ac5100db047-effect_shangu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/003a964a-607e-11eb-804f-7ac5100db047-shangu_bf_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "海岛",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_musi",
+        "packageMd5": "fe388769256d1c85532137b6d565c193",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4ed4fd9a-607e-11eb-9379-7ac5100db047-effect_musi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/485841e8-607e-11eb-92c0-7ac5100db047-musi_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "余晖",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_yuhui",
+        "packageMd5": "3b50518e7b62849a9ca6666bafb1e707",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7b329168-607e-11eb-8584-7ac5100db047-effect_yuhui.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6d21e1fa-607e-11eb-a574-7ac5100db047-yuhui_bf_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "青森",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_jiaopian",
+        "packageMd5": "2ebdf9ce1f8a1e97810c8eaa6c93d4b3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a56f76b2-607e-11eb-aeff-7ac5100db047-effect_jiaopian_9.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/96db47d4-607e-11eb-88ee-7ac5100db047-effect_jiaopian_9_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "电影",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_dianying",
+        "packageMd5": "64d52c4b1fea6249aa086f4bc973ad5e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cc181e68-607e-11eb-8baf-7ac5100db047-effect_dianying.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bed10ed6-607e-11eb-8c7c-7ac5100db047-dianying_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "画报",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_huabao2",
+        "packageMd5": "95d74df9dbbe2fd3caec50a7b1526539",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f60e2d52-607e-11eb-aebc-7ac5100db047-effect_huabao2.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e988f9e0-607e-11eb-9c67-7ac5100db047-huabao2_bf_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "暮秋",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_muqiu",
+        "packageMd5": "465d9f071c3a54a47bc16660a3b8bba3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/22f0d590-607f-11eb-ace6-7ac5100db047-effect_muqiu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/154cd95c-607f-11eb-a7a8-7ac5100db047-muqiu_bf_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "默片",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_mopian",
+        "packageMd5": "740947e1ed27c50fbe8536c91ab15c44",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/442a0fe2-607f-11eb-86f0-7ac5100db047-effect_mopian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/39494890-607f-11eb-8d68-7ac5100db047-mopian_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "新鲜",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_xiangyang",
+        "packageMd5": "b9323d44843b41a89d09362f937cdec4",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7b01a960-607c-11eb-9e97-7ac5100db047-effect_xiangyang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4f6949a2-607c-11eb-b4f7-7ac5100db047-xiangyang_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "美味",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_meiwei2",
+        "packageMd5": "f938bfa7bf4916c6ae081c50c22ff627",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c86cb12c-607c-11eb-9a5b-7ac5100db047-effect_meiwei2.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b00963a0-607c-11eb-afe0-7ac5100db047-meiwei2_bf_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "自然",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_ziran",
+        "packageMd5": "abc3f970516ec8e9e19e106b782a74c4",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/27836d84-5c97-11eb-aaf3-7ac5100db047-effect_ziran.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/21f45388-5c97-11eb-9654-7ac5100db047-ziran_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "橘子汽水",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_jvziqishui",
+        "packageMd5": "b3f83f2dc2a65082951a55d8efaa6465",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ac2524b2-607d-11eb-a220-7ac5100db047-effect_jvziqishui_v2.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9c9b8b9e-607d-11eb-ac97-7ac5100db047-effect_jvziqishui_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "草莓酸奶",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_caomeisuannai",
+        "packageMd5": "56d557de25d7108ba7a2a9f0545e2e1a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/62fe2540-607d-11eb-b9f2-7ac5100db047-effect_caomeisuannai_v2.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/52679ff4-607d-11eb-ad11-7ac5100db047-effect_caomeisuannai_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "优格",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_youge",
+        "packageMd5": "a80eed46649f4d74f535a64be04da620",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2c8bf2da-607d-11eb-a2f4-7ac5100db047-effect_youge.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/12f79bbc-607d-11eb-b049-7ac5100db047-youge_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "摩卡",
+          "preDownload": "1",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_moka",
+        "packageMd5": "00325c8a98d7bda787c5053dfd496f11",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fcbf7e6e-607c-11eb-a7bf-7ac5100db047-effect_moka.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ea031f10-607c-11eb-8bd2-7ac5100db047-moka_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "奶油",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_naiyou",
+        "packageMd5": "25e0bcf97cc2b395b861d7947bcab2bc",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ca527056-6074-11eb-aad2-7ac5100db047-effect_naiyou_6.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c519a992-6074-11eb-b5ab-7ac5100db047-effect_naiyou_5_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "元气",
+          "disableForImage": "0",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_yuanqi",
+        "packageMd5": "9d734f4abe71f8a5d4076c7d8a6404a3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b0f002cc-6074-11eb-8cb1-7ac5100db047-effect_yuanqi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ad53d850-6074-11eb-8cb1-7ac5100db047-yuanqi_bf_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "悸动",
+          "disableForImage": "0",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_jidong",
+        "packageMd5": "4271dcf5e6d6cbe7a58ae673bad58267",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9bdddb84-6074-11eb-9c79-7ac5100db047-effect_jidong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/96999adc-6074-11eb-b1ca-7ac5100db047-jidong_bf_cover.png",
+        "thumbWidth": 211
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "和风",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_hefeng",
+        "packageMd5": "4dc0305fb0b0163929162a19d93f8b12",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/81cf67a8-6074-11eb-b9ca-7ac5100db047-effect_hefeng.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7e5ef034-6074-11eb-b9ca-7ac5100db047-hefeng_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "仪式感",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_yishigan",
+        "packageMd5": "bc2c4b07e2b1bd0f1d11ca97b0169f81",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6f15326e-6074-11eb-956b-7ac5100db047-effect_yishigan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/69fcef4c-6074-11eb-82b7-7ac5100db047-yishigan_cam_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "hideApplyAll": "0",
+          "disableForVideo": "0",
+          "name": "日常",
+          "preDownload": "1",
+          "hideAlphaBar": "0",
+          "disableForImage": "0",
+          "effectType": "client"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "effect_richang",
+        "packageMd5": "c3424775348521d5c8a3910baedf9ced",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4cce6892-6074-11eb-8726-7ac5100db047-effect_richang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/45bc03d4-6074-11eb-a669-7ac5100db047-richang_bf_cover.png",
+        "thumbWidth": 210
+      }
+    ],
+    "name": "855备份",
+    "subCategories": [],
+    "thumbUrl": ""
+  }
+]

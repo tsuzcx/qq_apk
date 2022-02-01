@@ -1,29 +1,50 @@
 package com.tencent.mm.ui.tools;
 
-import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ScrollView;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
 {
-  public static void a(Context paramContext, ScrollView paramScrollView, View paramView1, View paramView2, View paramView3)
+  public static void F(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(107752);
-    a(paramContext, paramScrollView, paramView1, paramView2, paramView3, 72, 0.0F);
-    AppMethodBeat.o(107752);
-  }
-  
-  public static void a(Context paramContext, ScrollView paramScrollView, View paramView1, View paramView2, View paramView3, int paramInt, float paramFloat)
-  {
-    AppMethodBeat.i(142773);
-    if (paramView3 == null)
+    AppMethodBeat.i(251053);
+    if ((paramView == null) || (paramFloat <= 0.0F) || (paramFloat >= 1.0F))
     {
-      AppMethodBeat.o(142773);
+      AppMethodBeat.o(251053);
       return;
     }
-    paramScrollView.post(new o.1(paramView3, paramContext, paramInt, paramView1, paramFloat, paramView2, paramScrollView));
-    AppMethodBeat.o(142773);
+    paramView.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(143208);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        while ((!paramAnonymousView.isClickable()) && (!paramAnonymousView.isLongClickable()))
+        {
+          AppMethodBeat.o(143208);
+          return true;
+          paramAnonymousView.setAlpha(this.afKd);
+          continue;
+          paramAnonymousView.setAlpha(1.0F);
+        }
+        AppMethodBeat.o(143208);
+        return false;
+      }
+    });
+    AppMethodBeat.o(251053);
+  }
+  
+  public static void mb(View paramView)
+  {
+    AppMethodBeat.i(251056);
+    if (paramView != null) {
+      paramView.setOnTouchListener(null);
+    }
+    AppMethodBeat.o(251056);
   }
 }
 

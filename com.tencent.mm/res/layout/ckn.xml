@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.sns.ad.widget.adsocial.AdSocialAttitudeView android:background="@color/b" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/br7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip">
+        <LinearLayout android:gravity="center" android:id="@id/lwa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/n1" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/friendactivity_likeicon" android:scaleType="fitCenter" android:layout_marginEnd="4.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/lwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="喝彩" android:includeFontPadding="false" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:id="@id/c7o" android:background="@color/FG_4" android:layout_width="1.0px" android:layout_height="12.0dip" android:layout_centerVertical="true" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip" android:layout_toEndOf="@id/lwa" />
+        <LinearLayout android:gravity="center" android:id="@id/bj_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@id/c7o">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/lwc" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/ca8" android:scaleType="fitCenter" android:layout_marginEnd="4.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bk7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="评论" android:includeFontPadding="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.mm.plugin.sns.ad.widget.adsocial.AdSocialAttitudeView>

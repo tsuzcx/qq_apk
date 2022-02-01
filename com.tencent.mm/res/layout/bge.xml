@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ajv" android:minHeight="@dimen/ajv">
+        <View android:layout_gravity="center" android:id="@id/hq5" android:background="@drawable/ahc" android:layout_width="@dimen/db" android:layout_height="@dimen/db" />
+        <View android:layout_gravity="center" android:id="@id/f7h" android:background="@drawable/ahb" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" />
+        <ImageView android:layout_gravity="center" android:id="@id/f7j" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" />
+        <com.tencent.mm.plugin.recordvideo.ui.editor.MMEditorCircularProgressBar android:layout_gravity="center" android:id="@id/bd6" android:visibility="gone" android:layout_width="@dimen/db" android:layout_height="@dimen/db" />
+    </FrameLayout>
+    <View android:layout_gravity="bottom|center" android:layout_width="113.0dip" android:layout_height="113.0dip" />
+</FrameLayout>

@@ -1,79 +1,70 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aq
-  extends bh<n>
+  extends bw<g>
 {
-  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(6356);
-    if (bo.es(paramLinkedList))
+    AppMethodBeat.i(296024);
+    Log.d("MicroMsg.JsApiOpenFinderView", "invokeInMM");
+    try
     {
-      AppMethodBeat.o(6356);
-      return;
+      paramString = new JSONObject(paramString);
+      if (paramString == null)
+      {
+        parama.j("data is null", null);
+        AppMethodBeat.o(296024);
+        return;
+      }
     }
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
+    catch (Exception paramString)
     {
-      String str = (String)paramLinkedList.next();
+      for (;;)
+      {
+        paramString = null;
+      }
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("download_id", -1);
-        localJSONObject.put("state", "default");
-        paramJSONObject.put(str, localJSONObject);
+        localJSONObject.put("extInfo", new JSONObject(paramString.optString("extInfo")));
+        ((cn)h.az(cn.class)).enterFinderUI(paramContext, localJSONObject.toString());
+        parama.j(null, null);
+        AppMethodBeat.o(296024);
+        return;
       }
-      catch (Exception localException)
+      catch (JSONException paramContext)
       {
-        ab.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
+        parama.j("fail", null);
+        AppMethodBeat.o(296024);
       }
     }
-    AppMethodBeat.o(6356);
   }
   
-  public final void a(Context paramContext, String paramString, bh.a parama)
-  {
-    AppMethodBeat.i(6355);
-    ab.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
-    try
-    {
-      paramContext = new JSONObject(paramString);
-      com.tencent.mm.ch.a.post(new aq.1(this, paramContext, parama));
-      AppMethodBeat.o(6355);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      ab.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.c("fail", null);
-      AppMethodBeat.o(6355);
-    }
-  }
+  public final void b(b<g>.a paramb) {}
   
-  public final void b(com.tencent.luggage.d.a<n>.a parama) {}
-  
-  public final int bjL()
+  public final int dgI()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "queryDownloadTask";
+    return "openFinderView";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.aq
  * JD-Core Version:    0.7.0.1
  */

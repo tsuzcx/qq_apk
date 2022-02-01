@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import awhp;
+import com.tencent.mobileqq.persistence.notColumn;
 
 public abstract class ChatMessage
   extends MessageRecord
@@ -13,11 +13,13 @@ public abstract class ChatMessage
   public boolean isDui;
   public boolean isFirstMsg;
   public boolean isFlowMessage;
-  public boolean isShowQIMStyleGroup;
-  public boolean isShowQimStyleAvater;
-  public boolean isShowTIMStyleGroup;
-  public boolean isShowTimStyleAvater;
-  public boolean mAnimFlag = true;
+  private boolean isNeedCombine = false;
+  public boolean isShowQIMStyleGroup = false;
+  public boolean isShowQWalletPubAd;
+  public boolean isShowQimStyleAvater = false;
+  public boolean isShowTIMStyleGroup = false;
+  public boolean isShowTimStyleAvater = false;
+  public boolean mAnimFlag = false;
   public boolean mIsParsed;
   private boolean mIsSentByXG;
   @Deprecated
@@ -27,11 +29,22 @@ public abstract class ChatMessage
   @Deprecated
   public boolean mNeedGrayTips;
   public boolean mNeedTimeStamp;
+  public boolean mNewAnimFlag = false;
   public boolean mPendantAnimatable;
-  @awhp
+  @notColumn
   private int mViewHeight;
+  @notColumn
+  public Object redDotInfo = null;
   
   protected abstract void doParse();
+  
+  public ChatMsgRedDotInfo getChatMsgRedDotInfo()
+  {
+    if (this.redDotInfo == null) {
+      this.redDotInfo = new ChatMsgRedDotInfo();
+    }
+    return (ChatMsgRedDotInfo)this.redDotInfo;
+  }
   
   public String getSummaryMsg()
   {
@@ -43,12 +56,23 @@ public abstract class ChatMessage
     return this.mViewHeight;
   }
   
+  public boolean isFollowMessage()
+  {
+    return this.isFlowMessage;
+  }
+  
+  public boolean isNeedCombine()
+  {
+    return this.isNeedCombine;
+  }
+  
   public boolean isSend()
   {
-    if (this.fakeSenderType == 1) {
+    int i = this.fakeSenderType;
+    if (i == 1) {
       return true;
     }
-    if (this.fakeSenderType == 2) {
+    if (i == 2) {
       return false;
     }
     if (this.isMultiMsg) {
@@ -65,6 +89,11 @@ public abstract class ChatMessage
   public boolean isSupportReply()
   {
     return false;
+  }
+  
+  public boolean needShowTimeStamp()
+  {
+    return true;
   }
   
   public void parse()
@@ -90,6 +119,11 @@ public abstract class ChatMessage
     }
     this.mIsParsed = false;
     parse();
+  }
+  
+  public void setIsNeedCombine(boolean paramBoolean)
+  {
+    this.isNeedCombine = paramBoolean;
   }
   
   public void setIsSentByXG(boolean paramBoolean)

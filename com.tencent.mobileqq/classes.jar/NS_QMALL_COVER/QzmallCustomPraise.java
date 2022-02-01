@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class QzmallCustomPraise
   extends JceStruct
 {
-  public int iFrameRate;
+  public int iFrameRate = 0;
   public int iItemId = -1;
-  public int iSubPraisetype;
-  public int iType;
-  public long lUin;
+  public int iSubPraisetype = 0;
+  public int iType = 0;
+  public long lUin = 0L;
   public String strCmShowActionId = "";
   public String strItemSummary = "";
   public String strPraiseComboZip = "";
@@ -60,39 +60,47 @@ public final class QzmallCustomPraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strItemSummary != null) {
-      paramJceOutputStream.write(this.strItemSummary, 1);
+    String str = this.strItemSummary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strPraisePic != null) {
-      paramJceOutputStream.write(this.strPraisePic, 2);
+    str = this.strPraisePic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strPraiseZip != null) {
-      paramJceOutputStream.write(this.strPraiseZip, 3);
+    str = this.strPraiseZip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strPraiseComboZip != null) {
-      paramJceOutputStream.write(this.strPraiseComboZip, 5);
+    str = this.strPraiseComboZip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.iFrameRate, 6);
-    if (this.strPraiseListPic != null) {
-      paramJceOutputStream.write(this.strPraiseListPic, 7);
+    str = this.strPraiseListPic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.lUin, 8);
     paramJceOutputStream.write(this.iType, 9);
     paramJceOutputStream.write(this.iSubPraisetype, 10);
-    if (this.strPraisePicBefore != null) {
-      paramJceOutputStream.write(this.strPraisePicBefore, 11);
+    str = this.strPraisePicBefore;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.strPraiseZipAfter != null) {
-      paramJceOutputStream.write(this.strPraiseZipAfter, 12);
+    str = this.strPraiseZipAfter;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.strCmShowActionId != null) {
-      paramJceOutputStream.write(this.strCmShowActionId, 13);
+    str = this.strCmShowActionId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomPraise
  * JD-Core Version:    0.7.0.1
  */

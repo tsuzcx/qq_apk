@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/ej5" android:key="shake_item_default_bgimg" android:layout="@layout/afi" />
-    <Preference android:title="@string/ej4" android:key="shake_item_change_bgimg" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/eje" android:key="shake_item_sound" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/e12" android:key="say_hi_list_shake_title" android:layout="@layout/afi" />
-    <Preference android:title="@string/ej6" android:key="shake_item_histoty_list" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/eks" android:key="shake_msg_list" android:layout="@layout/afi" />
+    <CheckBoxPreference android1:contentDescription="@string/cvu" android:defaultValue="true" android:icon="@raw/icons_outlined_finder_icon" android:iconColor="@color/Orange" android:key="settings_finder_switch" android:title="@string/cvu" />
+    <CheckBoxPreference android1:contentDescription="@string/cwc" android:defaultValue="false" android:icon="@raw/icons_outlined_news" android:iconColor="@color/Yellow_100" android:key="settings_look_switch" android:title="@string/cwc" />
+    <CheckBoxPreference android1:contentDescription="@string/cwh" android:defaultValue="false" android:icon="@raw/icons_outlined_searchlogo" android:iconColor="@color/Red" android:key="settings_search_switch" android:title="@string/cwh" />
 </PreferenceScreen>

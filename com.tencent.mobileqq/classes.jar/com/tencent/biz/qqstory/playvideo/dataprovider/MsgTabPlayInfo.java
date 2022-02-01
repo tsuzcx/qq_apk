@@ -3,24 +3,24 @@ package com.tencent.biz.qqstory.playvideo.dataprovider;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import xqq;
 
 public class MsgTabPlayInfo
   implements Serializable
 {
   public static final int PLAY_SOURCE_FRIEND_HEADER = 1;
   public static final int PLAY_SOURCE_TAB = 0;
-  public HashMap<String, String> mFeedIdMap;
+  public HashMap<String, String> mFeedIdMap = null;
   public final String mStartVid;
   public final String mStartVideoFeedId;
-  public List<String> mVids;
+  public List<String> mVids = null;
   public final String nodeUnionId;
-  public final int source;
-  public final String uin;
+  final int source;
+  final String uin;
   
   public MsgTabPlayInfo(@NonNull String paramString1, int paramInt, @Nullable String paramString2, String paramString3, String paramString4)
   {
@@ -32,7 +32,7 @@ public class MsgTabPlayInfo
     if ((paramInt == 1) && (TextUtils.isEmpty(paramString2))) {
       throw new IllegalArgumentException("uin can't empty for friend header play");
     }
-    xqq.a(paramString1);
+    AssertUtils.checkNotEmpty(paramString1);
   }
   
   public MsgTabPlayInfo(@NonNull String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
@@ -44,7 +44,7 @@ public class MsgTabPlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo
  * JD-Core Version:    0.7.0.1
  */

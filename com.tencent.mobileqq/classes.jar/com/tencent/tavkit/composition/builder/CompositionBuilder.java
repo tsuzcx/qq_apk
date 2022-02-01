@@ -48,86 +48,50 @@ class CompositionBuilder
       List localList = (List)localIterator.next();
       ArrayList localArrayList = new ArrayList();
       HashMap localHashMap = new HashMap();
-      int i = 0;
-      TAVAudioTransition localTAVAudioTransition = null;
-      while (i < localList.size())
-      {
-        TAVTransitionableAudio localTAVTransitionableAudio = (TAVTransitionableAudio)localList.get(i);
-        int j = 0;
-        if (j < localTAVTransitionableAudio.numberOfAudioTracks())
-        {
-          CompositionTrack localCompositionTrack = localTAVTransitionableAudio.audioCompositionTrackForComposition(this.composition, j, this.isAudioTracksMerge);
-          if (localCompositionTrack == null) {}
-          for (;;)
-          {
-            j += 1;
-            break;
-            localArrayList.add(new AudioInfo(localCompositionTrack, localTAVTransitionableAudio));
-          }
-        }
-        localHashMap.put(String.valueOf(i), getAudioTransitionInfo(localList, localTAVAudioTransition, localTAVTransitionableAudio, i));
-        localTAVAudioTransition = localTAVTransitionableAudio.getAudioTransition();
-        i += 1;
-      }
+      traverseAudioChannel(localList, null, localArrayList, localHashMap);
       this.builderModel.addMainAudioTrackInfo(new AudioParamsInfo(localArrayList, localHashMap));
     }
   }
   
   private void initCompositionWithMixAudios(List<? extends TAVAudio> paramList)
   {
-    if (paramList == null) {}
-    do
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-    } while (!paramList.hasNext());
-    TAVAudio localTAVAudio = (TAVAudio)paramList.next();
-    int i = 0;
-    label33:
-    CompositionTrack localCompositionTrack;
-    if (i < localTAVAudio.numberOfAudioTracks())
-    {
-      localCompositionTrack = localTAVAudio.audioCompositionTrackForComposition(this.composition, i, this.isAudioTracksMerge);
-      if (localCompositionTrack != null) {
-        break label72;
-      }
     }
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      i += 1;
-      break label33;
-      break;
-      label72:
-      this.builderModel.addAudioTrackInfo(new AudioMixInfo(localCompositionTrack, localTAVAudio));
+      TAVAudio localTAVAudio = (TAVAudio)paramList.next();
+      int i = 0;
+      while (i < localTAVAudio.numberOfAudioTracks())
+      {
+        CompositionTrack localCompositionTrack = localTAVAudio.audioCompositionTrackForComposition(this.composition, i, this.isAudioTracksMerge);
+        if (localCompositionTrack != null) {
+          this.builderModel.addAudioTrackInfo(new AudioMixInfo(localCompositionTrack, localTAVAudio));
+        }
+        i += 1;
+      }
     }
   }
   
   private void initCompositionWithOverlays(List<? extends TAVVideo> paramList)
   {
-    if (paramList == null) {}
-    do
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-    } while (!paramList.hasNext());
-    TAVVideo localTAVVideo = (TAVVideo)paramList.next();
-    int i = 0;
-    label33:
-    CompositionTrack localCompositionTrack;
-    if (i < localTAVVideo.numberOfVideoTracks())
-    {
-      localCompositionTrack = localTAVVideo.videoCompositionTrackForComposition(this.composition, i, this.isVideoTracksMerge);
-      if (localCompositionTrack != null) {
-        break label72;
-      }
     }
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      i += 1;
-      break label33;
-      break;
-      label72:
-      this.builderModel.addOverlayTrackInfo(new VideoOverlayInfo(localCompositionTrack, localTAVVideo));
+      TAVVideo localTAVVideo = (TAVVideo)paramList.next();
+      int i = 0;
+      while (i < localTAVVideo.numberOfVideoTracks())
+      {
+        CompositionTrack localCompositionTrack = localTAVVideo.videoCompositionTrackForComposition(this.composition, i, this.isVideoTracksMerge);
+        if (localCompositionTrack != null) {
+          this.builderModel.addOverlayTrackInfo(new VideoOverlayInfo(localCompositionTrack, localTAVVideo));
+        }
+        i += 1;
+      }
     }
   }
   
@@ -136,32 +100,57 @@ class CompositionBuilder
     Iterator localIterator = this.builderModel.getVideoChannels().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (List)localIterator.next();
+      List localList = (List)localIterator.next();
       ArrayList localArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        TAVTransitionableVideo localTAVTransitionableVideo = (TAVTransitionableVideo)((Iterator)localObject).next();
-        int i = 0;
-        label74:
-        CompositionTrack localCompositionTrack;
-        if (i < localTAVTransitionableVideo.numberOfVideoTracks())
-        {
-          localCompositionTrack = localTAVTransitionableVideo.videoCompositionTrackForComposition(this.composition, i, this.isVideoTracksMerge);
-          if (localCompositionTrack != null) {
-            break label115;
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break label74;
-          break;
-          label115:
-          localArrayList.add(new VideoInfo(localCompositionTrack, localTAVTransitionableVideo));
-        }
-      }
+      traverseVideoChannel(localList, localArrayList);
       this.builderModel.addMainVideoTrackInfo(localArrayList);
+    }
+  }
+  
+  private void traverseAudioChannel(List<? extends TAVTransitionableAudio> paramList, TAVAudioTransition paramTAVAudioTransition, List<AudioInfo> paramList1, HashMap<String, AudioTransitionInfo> paramHashMap)
+  {
+    int i = 0;
+    while (i < paramList.size())
+    {
+      TAVTransitionableAudio localTAVTransitionableAudio = (TAVTransitionableAudio)paramList.get(i);
+      traverseAudioClip(paramList1, localTAVTransitionableAudio);
+      paramHashMap.put(String.valueOf(i), getAudioTransitionInfo(paramList, paramTAVAudioTransition, localTAVTransitionableAudio, i));
+      paramTAVAudioTransition = localTAVTransitionableAudio.getAudioTransition();
+      i += 1;
+    }
+  }
+  
+  private void traverseAudioClip(List<AudioInfo> paramList, TAVTransitionableAudio paramTAVTransitionableAudio)
+  {
+    int i = 0;
+    while (i < paramTAVTransitionableAudio.numberOfAudioTracks())
+    {
+      CompositionTrack localCompositionTrack = paramTAVTransitionableAudio.audioCompositionTrackForComposition(this.composition, i, this.isAudioTracksMerge);
+      if (localCompositionTrack != null) {
+        paramList.add(new AudioInfo(localCompositionTrack, paramTAVTransitionableAudio));
+      }
+      i += 1;
+    }
+  }
+  
+  private void traverseVideoChannel(List<? extends TAVTransitionableVideo> paramList, List<VideoInfo> paramList1)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      traverseVideoClip(paramList1, (TAVTransitionableVideo)paramList.next());
+    }
+  }
+  
+  private void traverseVideoClip(List<VideoInfo> paramList, TAVTransitionableVideo paramTAVTransitionableVideo)
+  {
+    int i = 0;
+    while (i < paramTAVTransitionableVideo.numberOfVideoTracks())
+    {
+      CompositionTrack localCompositionTrack = paramTAVTransitionableVideo.videoCompositionTrackForComposition(this.composition, i, this.isVideoTracksMerge);
+      if (localCompositionTrack != null) {
+        paramList.add(new VideoInfo(localCompositionTrack, paramTAVTransitionableVideo));
+      }
+      i += 1;
     }
   }
   
@@ -177,7 +166,7 @@ class CompositionBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.CompositionBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -10,33 +10,32 @@ public class TimeAnimator
   
   boolean animationFrame(long paramLong)
   {
+    int i = this.mPlayingState;
     long l1 = 0L;
-    long l2;
-    if (this.mPlayingState == 0)
+    if (i == 0)
     {
       this.mPlayingState = 1;
-      if (this.mSeekTime < 0L) {
+      if (this.mSeekTime < 0L)
+      {
         this.mStartTime = paramLong;
       }
-    }
-    else if (this.mListener != null)
-    {
-      l2 = this.mStartTime;
-      if (this.mPreviousTime >= 0L) {
-        break label92;
+      else
+      {
+        this.mStartTime = (paramLong - this.mSeekTime);
+        this.mSeekTime = -1L;
       }
     }
-    for (;;)
+    if (this.mListener != null)
     {
+      long l2 = this.mStartTime;
+      long l3 = this.mPreviousTime;
+      if (l3 >= 0L) {
+        l1 = paramLong - l3;
+      }
       this.mPreviousTime = paramLong;
       this.mListener.onTimeUpdate(this, paramLong - l2, l1);
-      return false;
-      this.mStartTime = (paramLong - this.mSeekTime);
-      this.mSeekTime = -1L;
-      break;
-      label92:
-      l1 = paramLong - this.mPreviousTime;
     }
+    return false;
   }
   
   void initAnimation() {}
@@ -48,7 +47,7 @@ public class TimeAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.nineoldandroids.animation.TimeAnimator
  * JD-Core Version:    0.7.0.1
  */

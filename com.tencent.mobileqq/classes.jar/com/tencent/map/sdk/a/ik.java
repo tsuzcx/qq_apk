@@ -16,8 +16,9 @@ public final class ik
   protected final void handleDataChanged()
   {
     super.handleDataChanged();
-    if (this.a != null) {
-      this.a.b();
+    ik.a locala = this.a;
+    if (locala != null) {
+      locala.b();
     }
   }
   

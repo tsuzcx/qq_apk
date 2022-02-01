@@ -2,68 +2,65 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import begz;
-import bjdt;
-import bjya;
-import bjyb;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.model.PublishEventTag;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class QzoneMoodPlugin$1
+class QzoneMoodPlugin$1
   implements Runnable
 {
-  public QzoneMoodPlugin$1(bjya parambjya, ArrayList paramArrayList1, String paramString1, int paramInt, Activity paramActivity, String paramString2, ArrayList paramArrayList2, PublishEventTag paramPublishEventTag) {}
+  QzoneMoodPlugin$1(QzoneMoodPlugin paramQzoneMoodPlugin, ArrayList paramArrayList1, String paramString1, int paramInt, Activity paramActivity, String paramString2, ArrayList paramArrayList2, PublishEventTag paramPublishEventTag) {}
   
   public void run()
   {
-    Object localObject2;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    Object localObject1 = this.val$finalAtFriendList;
+    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
     {
-      if (bjya.a().isEmpty()) {
-        bjya.a(this.this$0);
+      if (QzoneMoodPlugin.access$000().isEmpty()) {
+        QzoneMoodPlugin.access$100(this.this$0);
       }
-      localObject1 = bjya.a().iterator();
+      Iterator localIterator = null;
+      Object localObject2 = QzoneMoodPlugin.access$000().iterator();
       do
       {
-        if (!((Iterator)localObject1).hasNext()) {
+        localObject1 = localIterator;
+        if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        localObject2 = (bjyb)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((bjyb)localObject2).jdField_a_of_type_JavaLangString == null) || (((bjyb)localObject2).jdField_a_of_type_JavaUtilHashMap == null) || (!((bjyb)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)));
-    }
-    for (Object localObject1 = ((bjyb)localObject2).jdField_a_of_type_JavaUtilHashMap;; localObject1 = null)
-    {
+        localObject1 = (QzoneMoodPlugin.FriendNickNames)((Iterator)localObject2).next();
+      } while ((localObject1 == null) || (((QzoneMoodPlugin.FriendNickNames)localObject1).mainUin == null) || (((QzoneMoodPlugin.FriendNickNames)localObject1).nickNamesMap == null) || (!((QzoneMoodPlugin.FriendNickNames)localObject1).mainUin.equalsIgnoreCase(this.val$loginUin)));
+      localObject1 = ((QzoneMoodPlugin.FriendNickNames)localObject1).nickNamesMap;
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject2).hasNext())
+        localIterator = this.val$finalAtFriendList.iterator();
+        while (localIterator.hasNext())
         {
-          ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject2).next();
-          String str = (String)((HashMap)localObject1).get(localResultRecord.jdField_a_of_type_JavaLangString);
+          localObject2 = (ResultRecord)localIterator.next();
+          String str = (String)((HashMap)localObject1).get(((ResultRecord)localObject2).uin);
           if (!TextUtils.isEmpty(str)) {
-            localResultRecord.jdField_b_of_type_JavaLangString = str;
+            ((ResultRecord)localObject2).name = str;
           }
         }
       }
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        bjdt.b(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
-        return;
-      }
-      bjdt.a(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
+    }
+    if (this.val$eventSource == 1)
+    {
+      QZoneHelper.forwardToWriteEventShuoShuo(this.val$activity, this.this$0.parentPlugin.mRuntime.b().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
       return;
     }
+    QZoneHelper.forwardToWriteMood(this.val$activity, this.this$0.parentPlugin.mRuntime.b().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneMoodPlugin.1
  * JD-Core Version:    0.7.0.1
  */

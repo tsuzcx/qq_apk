@@ -1,6 +1,5 @@
 package com.tencent.biz.game;
 
-import aepi;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,6 +13,7 @@ import android.hardware.SensorManager;
 import android.media.MediaRecorder;
 import android.media.SoundPool;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -24,25 +24,32 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import bdgk;
-import befl;
-import begz;
-import bell;
-import belt;
-import bfbm;
-import bfmw;
-import bhsz;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.apiproxy.QQMusicClient;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.biz.troopplugin.PluginJumpManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.VipComicUiInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.business.base.MobileInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
+import com.tencent.util.URLUtil;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -50,99 +57,68 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppActivity;
-import nbc;
-import nbv;
-import ncb;
-import ndd;
-import ndq;
-import neg;
-import nek;
-import nel;
-import nem;
-import nen;
-import neo;
-import nep;
-import neq;
-import ner;
-import nes;
-import net;
-import neu;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yqz;
 
 public class SensorAPIJavaScript
-  extends befl
+  extends JsWebViewPlugin
 {
-  public static neg a;
-  protected final byte a;
-  protected final int a;
-  public Activity a;
-  protected SensorManager a;
-  protected MediaRecorder a;
-  public SoundPool a;
-  public Handler a;
-  protected Object a;
-  public String a;
-  protected WeakReference<WebView> a;
-  protected HashMap<String, Integer> a;
-  protected neu a;
-  yqz a;
-  protected boolean a;
-  protected final byte b;
-  protected final int b;
-  protected String b;
-  protected neu b;
-  protected boolean b;
-  protected final byte c;
-  protected final int c;
-  protected neu c;
-  protected boolean c;
-  protected final int d = 291;
-  protected final int e = 0;
-  protected final int f = 1;
-  protected final int g = 2;
-  protected final int h = 3;
-  protected final int i = 4;
-  protected final int j = 0;
-  protected final int k = 1;
-  protected int l = 100;
+  protected static MSFToWebViewConnector G;
+  protected final int A = 4;
+  protected final int B = 0;
+  protected final int C = 1;
+  TroopMemberApiClient D = null;
+  protected int E = 100;
+  protected Handler F;
+  protected boolean a = false;
+  protected Activity b;
+  protected WeakReference<WebView> c;
+  protected SoundPool d;
+  protected HashMap<String, Integer> e;
+  protected String f;
+  protected final byte g = 0;
+  protected final byte h = 1;
+  protected final byte i = 2;
+  protected final int j = 8000;
+  protected final int k = 0;
+  protected SensorManager l;
+  protected SensorAPIJavaScript.QQSensorEventListener m;
+  protected SensorAPIJavaScript.QQSensorEventListener n;
+  protected SensorAPIJavaScript.QQSensorEventListener o;
+  protected boolean p = false;
+  protected String q = "";
+  protected Object r = new Object();
+  protected MediaRecorder s;
+  protected boolean t = false;
+  protected final int u = 5;
+  protected final int v = 291;
+  protected final int w = 0;
+  protected final int x = 1;
+  protected final int y = 2;
+  protected final int z = 3;
   
-  public SensorAPIJavaScript()
-  {
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_b_of_type_Byte = 1;
-    this.jdField_c_of_type_Byte = 2;
-    this.jdField_a_of_type_Int = 8000;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_c_of_type_Int = 5;
-    this.jdField_a_of_type_Yqz = null;
-  }
-  
-  private void a()
+  private void b()
   {
     if (Looper.myLooper() == null) {
       Looper.prepare();
     }
-    this.jdField_a_of_type_AndroidOsHandler = new neo(this);
+    this.F = new SensorAPIJavaScript.2(this);
   }
   
   private void b(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaRecorder == null) {
-      this.jdField_a_of_type_AndroidMediaMediaRecorder = new MediaRecorder();
+    if (this.s == null) {
+      this.s = new MediaRecorder();
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioSource(1);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFormat(3);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioEncoder(0);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFile("/dev/null");
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setMaxDuration(600000);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.prepare();
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.start();
+      this.s.setAudioSource(1);
+      this.s.setOutputFormat(3);
+      this.s.setAudioEncoder(0);
+      this.s.setOutputFile("/dev/null");
+      this.s.setMaxDuration(600000);
+      this.s.prepare();
+      this.s.start();
       updateMicStatus(paramString);
       return;
     }
@@ -150,565 +126,529 @@ public class SensorAPIJavaScript
     {
       localException.printStackTrace();
       callJs(paramString, new String[] { "false" });
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
-      this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
-      this.jdField_b_of_type_Boolean = false;
+      this.s.release();
+      this.s = null;
+      this.p = false;
     }
   }
   
   public static final String getDeviceInfoEx(String paramString)
   {
-    String str4 = Build.MODEL;
-    String str5 = Build.VERSION.RELEASE;
-    String str6 = Build.FINGERPRINT;
-    String str7 = Build.VERSION.INCREMENTAL;
-    String str3 = "";
+    String str4 = "";
+    String str5 = Build.MODEL;
+    String str6 = Build.VERSION.RELEASE;
+    String str7 = Build.FINGERPRINT;
+    String str8 = Build.VERSION.INCREMENTAL;
+    label277:
     try
     {
       str1 = UserAction.getQIMEI();
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
-      for (;;)
-      {
-        try
-        {
-          String str1;
-          paramString = new JSONObject();
-          paramString.put("model", str4);
-          paramString.put("systemName", "android");
-          paramString.put("systemVersion", str5);
-          paramString.put("isMobileQQ", true);
-          paramString.put("identifier", bfmw.c());
-          paramString.put("fingerprint", str6);
-          paramString.put("incremental", str7);
-          paramString.put("macAddress", bfmw.a());
-          paramString.put("androidID", Settings.Secure.getString(bfbm.a().a().getContentResolver(), "android_id"));
-          paramString.put("imsi", bfmw.d());
-          paramString.put("qimei", str1);
-          paramString.put("totalMemory", String.valueOf(bdgk.d()));
-          paramString.put("availableMemory", String.valueOf(bdgk.e()));
-          paramString.put("cpuType", bdgk.g());
-          paramString.put("cpuNum", bdgk.b());
-          paramString.put("cpuFreq", bdgk.a());
-          paramString.put("msfImei", MsfSdkUtils.getIMEIForMain("bussiness_id_customize_online_status"));
-          paramString = paramString.toString();
-          return paramString;
-        }
-        catch (JSONException paramString) {}
-        localException = localException;
-        String str2 = str3;
-        if (QLog.isColorLevel())
-        {
-          QLog.e(paramString, 2, "get QIMEI fail");
-          str2 = str3;
-        }
-      }
+      String str1;
+      String str2;
+      String str3;
+      label37:
+      label40:
+      break label37;
+    }
+    try
+    {
+      str2 = UserAction.getQimeiNew();
+      str3 = str1;
+    }
+    catch (Exception localException2)
+    {
+      break label40;
+    }
+    str1 = "";
+    str2 = str4;
+    str3 = str1;
+    if (QLog.isColorLevel())
+    {
+      QLog.e(paramString, 2, "get QIMEI fail");
+      str3 = str1;
+      str2 = str4;
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("model", str5);
+      paramString.put("systemName", "android");
+      paramString.put("systemVersion", str6);
+      paramString.put("isMobileQQ", true);
+      paramString.put("identifier", MobileInfoUtil.getImei());
+      paramString.put("fingerprint", str7);
+      paramString.put("incremental", str8);
+      paramString.put("macAddress", MobileInfoUtil.getLocalMacAddress());
+      paramString.put("androidID", Settings.Secure.getString(CommonDataAdapter.a().b().getContentResolver(), "android_id"));
+      paramString.put("imsi", MobileInfoUtil.getImsi());
+      paramString.put("qimei", str3);
+      paramString.put("qimei36", str2);
+      paramString.put("totalMemory", String.valueOf(DeviceInfoUtil.a()));
+      paramString.put("availableMemory", String.valueOf(DeviceInfoUtil.r()));
+      paramString.put("cpuType", DeviceInfoUtil.m());
+      paramString.put("cpuNum", DeviceInfoUtil.h());
+      paramString.put("cpuFreq", DeviceInfoUtil.k());
+      paramString.put("msfImei", MsfSdkUtils.getIMEIForMain("bussiness_id_customize_online_status"));
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      break label277;
     }
     return "{}";
   }
   
-  public static neg getMsfToWebViewConnector()
+  public static MSFToWebViewConnector getMsfToWebViewConnector()
   {
-    return jdField_a_of_type_Neg;
+    return G;
   }
   
-  public static void returnToAio(yqz paramyqz, Activity paramActivity, String paramString, boolean paramBoolean)
+  public static void returnToAio(TroopMemberApiClient paramTroopMemberApiClient, Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (paramyqz == null) {
+    if (paramTroopMemberApiClient == null) {
       return;
     }
-    paramyqz.g(new neq(paramActivity, paramBoolean, paramString));
+    paramTroopMemberApiClient.h(new SensorAPIJavaScript.6(paramActivity, paramBoolean, paramString));
   }
   
   /* Error */
   protected final int a()
   {
     // Byte code:
-    //   0: invokestatic 323	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   3: new 325	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   10: ldc_w 328
-    //   13: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: ldc_w 334
-    //   19: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokevirtual 339	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   28: astore 4
-    //   30: aload 4
-    //   32: invokevirtual 345	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   35: astore_2
-    //   36: new 347	java/io/BufferedReader
-    //   39: dup
-    //   40: new 349	java/io/InputStreamReader
-    //   43: dup
-    //   44: aload_2
-    //   45: invokespecial 352	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   48: invokespecial 355	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   51: astore_3
-    //   52: new 357	java/lang/StringBuffer
-    //   55: dup
-    //   56: invokespecial 358	java/lang/StringBuffer:<init>	()V
-    //   59: astore 5
-    //   61: aload_3
-    //   62: invokevirtual 361	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   65: astore 6
-    //   67: aload 6
-    //   69: ifnull +79 -> 148
-    //   72: aload 5
-    //   74: aload 6
-    //   76: invokevirtual 364	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   79: pop
-    //   80: goto -19 -> 61
-    //   83: astore 4
-    //   85: aload_3
-    //   86: astore 4
-    //   88: aload_2
-    //   89: astore_3
-    //   90: aload 4
-    //   92: astore_2
-    //   93: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   96: ifeq +32 -> 128
-    //   99: ldc_w 369
-    //   102: iconst_4
-    //   103: new 325	java/lang/StringBuilder
-    //   106: dup
-    //   107: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   110: ldc_w 371
-    //   113: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: ldc_w 373
-    //   119: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 375	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   128: aload_2
-    //   129: ifnull +7 -> 136
-    //   132: aload_2
-    //   133: invokevirtual 378	java/io/BufferedReader:close	()V
+    //   0: invokestatic 355	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   3: astore_1
+    //   4: new 357	java/lang/StringBuilder
+    //   7: dup
+    //   8: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   11: astore_2
+    //   12: aload_2
+    //   13: ldc_w 360
+    //   16: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: pop
+    //   20: aload_2
+    //   21: ldc_w 366
+    //   24: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: aload_1
+    //   29: aload_2
+    //   30: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokevirtual 371	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   36: astore_3
+    //   37: aload_3
+    //   38: invokevirtual 377	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   41: astore_1
+    //   42: new 379	java/io/BufferedReader
+    //   45: dup
+    //   46: new 381	java/io/InputStreamReader
+    //   49: dup
+    //   50: aload_1
+    //   51: invokespecial 384	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   54: invokespecial 387	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   57: astore_2
+    //   58: new 389	java/lang/StringBuffer
+    //   61: dup
+    //   62: invokespecial 390	java/lang/StringBuffer:<init>	()V
+    //   65: astore 4
+    //   67: aload_2
+    //   68: invokevirtual 393	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   71: astore 5
+    //   73: aload 5
+    //   75: ifnull +14 -> 89
+    //   78: aload 4
+    //   80: aload 5
+    //   82: invokevirtual 396	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   85: pop
+    //   86: goto -19 -> 67
+    //   89: invokestatic 399	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   92: ifeq +44 -> 136
+    //   95: new 357	java/lang/StringBuilder
+    //   98: dup
+    //   99: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   102: astore 5
+    //   104: aload 5
+    //   106: ldc_w 401
+    //   109: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload 5
+    //   115: aload 4
+    //   117: invokevirtual 402	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   120: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: pop
+    //   124: ldc_w 404
+    //   127: iconst_4
+    //   128: aload 5
+    //   130: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   133: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   136: aload_3
-    //   137: ifnull +7 -> 144
-    //   140: aload_3
-    //   141: invokevirtual 381	java/io/InputStream:close	()V
-    //   144: iconst_1
-    //   145: istore_1
-    //   146: iload_1
-    //   147: ireturn
-    //   148: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   151: ifeq +34 -> 185
-    //   154: ldc_w 369
-    //   157: iconst_4
-    //   158: new 325	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   165: ldc_w 383
-    //   168: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: aload 5
-    //   173: invokevirtual 384	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   176: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 375	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   185: aload 4
-    //   187: invokevirtual 387	java/lang/Process:waitFor	()I
-    //   190: ifne +73 -> 263
-    //   193: iconst_0
-    //   194: istore_1
-    //   195: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   198: ifeq +32 -> 230
-    //   201: ldc_w 369
-    //   204: iconst_4
-    //   205: new 325	java/lang/StringBuilder
-    //   208: dup
-    //   209: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   212: ldc_w 371
-    //   215: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: ldc_w 389
-    //   221: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 375	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   230: aload_3
-    //   231: ifnull +7 -> 238
-    //   234: aload_3
-    //   235: invokevirtual 378	java/io/BufferedReader:close	()V
-    //   238: aload_2
-    //   239: ifnull -93 -> 146
-    //   242: aload_2
-    //   243: invokevirtual 381	java/io/InputStream:close	()V
-    //   246: iconst_0
-    //   247: ireturn
-    //   248: astore_2
-    //   249: aload_2
-    //   250: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   253: iconst_0
-    //   254: ireturn
-    //   255: astore_3
-    //   256: aload_3
-    //   257: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   260: goto -22 -> 238
-    //   263: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   266: ifeq +32 -> 298
-    //   269: ldc_w 369
-    //   272: iconst_4
-    //   273: new 325	java/lang/StringBuilder
-    //   276: dup
-    //   277: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   280: ldc_w 371
-    //   283: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: ldc_w 392
-    //   289: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   292: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   295: invokestatic 375	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   298: aload_3
-    //   299: ifnull +7 -> 306
-    //   302: aload_3
-    //   303: invokevirtual 378	java/io/BufferedReader:close	()V
-    //   306: aload_2
-    //   307: ifnull -163 -> 144
-    //   310: aload_2
-    //   311: invokevirtual 381	java/io/InputStream:close	()V
-    //   314: goto -170 -> 144
-    //   317: astore_2
-    //   318: aload_2
-    //   319: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   322: goto -178 -> 144
-    //   325: astore_3
-    //   326: aload_3
-    //   327: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   330: goto -24 -> 306
-    //   333: astore_2
-    //   334: aload_2
-    //   335: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   338: goto -202 -> 136
-    //   341: astore_2
-    //   342: aload_2
-    //   343: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   346: goto -202 -> 144
-    //   349: astore_2
-    //   350: aconst_null
-    //   351: astore_3
-    //   352: aconst_null
-    //   353: astore_2
-    //   354: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   357: ifeq +32 -> 389
-    //   360: ldc_w 369
-    //   363: iconst_4
-    //   364: new 325	java/lang/StringBuilder
-    //   367: dup
-    //   368: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   371: ldc_w 371
-    //   374: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   377: ldc_w 394
-    //   380: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   383: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   386: invokestatic 375	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   389: aload_3
-    //   390: ifnull +7 -> 397
-    //   393: aload_3
-    //   394: invokevirtual 378	java/io/BufferedReader:close	()V
-    //   397: aload_2
-    //   398: ifnull -254 -> 144
-    //   401: aload_2
-    //   402: invokevirtual 381	java/io/InputStream:close	()V
-    //   405: goto -261 -> 144
-    //   408: astore_2
-    //   409: aload_2
-    //   410: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   413: goto -269 -> 144
-    //   416: astore_3
-    //   417: aload_3
-    //   418: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   421: goto -24 -> 397
-    //   424: astore 4
-    //   426: aconst_null
-    //   427: astore_3
-    //   428: aconst_null
+    //   137: invokevirtual 409	java/lang/Process:waitFor	()I
+    //   140: ifne +73 -> 213
+    //   143: invokestatic 399	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   146: ifeq +38 -> 184
+    //   149: new 357	java/lang/StringBuilder
+    //   152: dup
+    //   153: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   156: astore_3
+    //   157: aload_3
+    //   158: ldc_w 411
+    //   161: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload_3
+    //   166: ldc_w 413
+    //   169: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: pop
+    //   173: ldc_w 404
+    //   176: iconst_4
+    //   177: aload_3
+    //   178: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: aload_2
+    //   185: invokevirtual 416	java/io/BufferedReader:close	()V
+    //   188: goto +8 -> 196
+    //   191: astore_2
+    //   192: aload_2
+    //   193: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   196: aload_1
+    //   197: ifnull +14 -> 211
+    //   200: aload_1
+    //   201: invokevirtual 420	java/io/InputStream:close	()V
+    //   204: iconst_0
+    //   205: ireturn
+    //   206: astore_1
+    //   207: aload_1
+    //   208: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   211: iconst_0
+    //   212: ireturn
+    //   213: invokestatic 399	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   216: ifeq +38 -> 254
+    //   219: new 357	java/lang/StringBuilder
+    //   222: dup
+    //   223: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   226: astore_3
+    //   227: aload_3
+    //   228: ldc_w 411
+    //   231: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: aload_3
+    //   236: ldc_w 422
+    //   239: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: ldc_w 404
+    //   246: iconst_4
+    //   247: aload_3
+    //   248: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   251: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   254: aload_2
+    //   255: invokevirtual 416	java/io/BufferedReader:close	()V
+    //   258: goto +8 -> 266
+    //   261: astore_2
+    //   262: aload_2
+    //   263: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   266: aload_1
+    //   267: ifnull +183 -> 450
+    //   270: aload_1
+    //   271: invokevirtual 420	java/io/InputStream:close	()V
+    //   274: goto +176 -> 450
+    //   277: astore_2
+    //   278: aconst_null
+    //   279: astore_3
+    //   280: goto +179 -> 459
+    //   283: aconst_null
+    //   284: astore_2
+    //   285: goto +20 -> 305
+    //   288: aconst_null
+    //   289: astore_2
+    //   290: goto +87 -> 377
+    //   293: astore_2
+    //   294: aconst_null
+    //   295: astore_1
+    //   296: aload_1
+    //   297: astore_3
+    //   298: goto +161 -> 459
+    //   301: aconst_null
+    //   302: astore_1
+    //   303: aload_1
+    //   304: astore_2
+    //   305: invokestatic 399	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   308: ifeq +38 -> 346
+    //   311: new 357	java/lang/StringBuilder
+    //   314: dup
+    //   315: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   318: astore_3
+    //   319: aload_3
+    //   320: ldc_w 411
+    //   323: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: pop
+    //   327: aload_3
+    //   328: ldc_w 424
+    //   331: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: pop
+    //   335: ldc_w 404
+    //   338: iconst_4
+    //   339: aload_3
+    //   340: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   346: aload_2
+    //   347: ifnull +15 -> 362
+    //   350: aload_2
+    //   351: invokevirtual 416	java/io/BufferedReader:close	()V
+    //   354: goto +8 -> 362
+    //   357: astore_2
+    //   358: aload_2
+    //   359: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   362: aload_1
+    //   363: ifnull +87 -> 450
+    //   366: aload_1
+    //   367: invokevirtual 420	java/io/InputStream:close	()V
+    //   370: goto +80 -> 450
+    //   373: aconst_null
+    //   374: astore_1
+    //   375: aload_1
+    //   376: astore_2
+    //   377: invokestatic 399	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   380: ifeq +38 -> 418
+    //   383: new 357	java/lang/StringBuilder
+    //   386: dup
+    //   387: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   390: astore_3
+    //   391: aload_3
+    //   392: ldc_w 411
+    //   395: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: pop
+    //   399: aload_3
+    //   400: ldc_w 426
+    //   403: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: pop
+    //   407: ldc_w 404
+    //   410: iconst_4
+    //   411: aload_3
+    //   412: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   415: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   418: aload_2
+    //   419: ifnull +15 -> 434
+    //   422: aload_2
+    //   423: invokevirtual 416	java/io/BufferedReader:close	()V
+    //   426: goto +8 -> 434
     //   429: astore_2
-    //   430: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   433: ifeq +30 -> 463
-    //   436: ldc_w 369
-    //   439: iconst_4
-    //   440: new 325	java/lang/StringBuilder
-    //   443: dup
-    //   444: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   447: ldc_w 371
-    //   450: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   453: aconst_null
-    //   454: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   460: invokestatic 375	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   463: aload_3
-    //   464: ifnull +7 -> 471
-    //   467: aload_3
-    //   468: invokevirtual 378	java/io/BufferedReader:close	()V
-    //   471: aload_2
-    //   472: ifnull +7 -> 479
-    //   475: aload_2
-    //   476: invokevirtual 381	java/io/InputStream:close	()V
-    //   479: aload 4
-    //   481: athrow
-    //   482: astore_3
-    //   483: aload_3
-    //   484: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   487: goto -16 -> 471
-    //   490: astore_2
-    //   491: aload_2
-    //   492: invokevirtual 390	java/io/IOException:printStackTrace	()V
-    //   495: goto -16 -> 479
-    //   498: astore 4
-    //   500: aconst_null
-    //   501: astore_3
-    //   502: goto -72 -> 430
-    //   505: astore 4
-    //   507: goto -77 -> 430
-    //   510: astore_3
-    //   511: aconst_null
-    //   512: astore_3
-    //   513: goto -159 -> 354
-    //   516: astore 4
-    //   518: goto -164 -> 354
-    //   521: astore_2
-    //   522: aconst_null
-    //   523: astore_2
-    //   524: aconst_null
-    //   525: astore_3
-    //   526: goto -433 -> 93
-    //   529: astore_3
-    //   530: aconst_null
-    //   531: astore 4
-    //   533: aload_2
-    //   534: astore_3
-    //   535: aload 4
-    //   537: astore_2
-    //   538: goto -445 -> 93
+    //   430: aload_2
+    //   431: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   434: aload_1
+    //   435: ifnull +15 -> 450
+    //   438: aload_1
+    //   439: invokevirtual 420	java/io/InputStream:close	()V
+    //   442: goto +8 -> 450
+    //   445: astore_1
+    //   446: aload_1
+    //   447: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   450: iconst_1
+    //   451: ireturn
+    //   452: astore 4
+    //   454: aload_2
+    //   455: astore_3
+    //   456: aload 4
+    //   458: astore_2
+    //   459: invokestatic 399	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   462: ifeq +40 -> 502
+    //   465: new 357	java/lang/StringBuilder
+    //   468: dup
+    //   469: invokespecial 358	java/lang/StringBuilder:<init>	()V
+    //   472: astore 4
+    //   474: aload 4
+    //   476: ldc_w 411
+    //   479: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   482: pop
+    //   483: aload 4
+    //   485: aconst_null
+    //   486: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: pop
+    //   490: ldc_w 404
+    //   493: iconst_4
+    //   494: aload 4
+    //   496: invokevirtual 367	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   499: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   502: aload_3
+    //   503: ifnull +15 -> 518
+    //   506: aload_3
+    //   507: invokevirtual 416	java/io/BufferedReader:close	()V
+    //   510: goto +8 -> 518
+    //   513: astore_3
+    //   514: aload_3
+    //   515: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   518: aload_1
+    //   519: ifnull +15 -> 534
+    //   522: aload_1
+    //   523: invokevirtual 420	java/io/InputStream:close	()V
+    //   526: goto +8 -> 534
+    //   529: astore_1
+    //   530: aload_1
+    //   531: invokevirtual 417	java/io/IOException:printStackTrace	()V
+    //   534: goto +5 -> 539
+    //   537: aload_2
+    //   538: athrow
+    //   539: goto -2 -> 537
+    //   542: astore_1
+    //   543: goto -170 -> 373
+    //   546: astore_1
+    //   547: goto -246 -> 301
+    //   550: astore_2
+    //   551: goto -263 -> 288
+    //   554: astore_2
+    //   555: goto -272 -> 283
+    //   558: astore_3
+    //   559: goto -182 -> 377
+    //   562: astore_3
+    //   563: goto -258 -> 305
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	541	0	this	SensorAPIJavaScript
-    //   145	50	1	m	int
-    //   35	208	2	localObject1	Object
-    //   248	63	2	localIOException1	java.io.IOException
-    //   317	2	2	localIOException2	java.io.IOException
-    //   333	2	2	localIOException3	java.io.IOException
-    //   341	2	2	localIOException4	java.io.IOException
-    //   349	1	2	localInterruptedException1	java.lang.InterruptedException
-    //   353	49	2	localObject2	Object
-    //   408	2	2	localIOException5	java.io.IOException
-    //   429	47	2	localObject3	Object
-    //   490	2	2	localIOException6	java.io.IOException
-    //   521	1	2	localIOException7	java.io.IOException
-    //   523	15	2	localObject4	Object
-    //   51	184	3	localObject5	Object
-    //   255	48	3	localIOException8	java.io.IOException
-    //   325	2	3	localIOException9	java.io.IOException
-    //   351	43	3	localObject6	Object
-    //   416	2	3	localIOException10	java.io.IOException
-    //   427	41	3	localObject7	Object
-    //   482	2	3	localIOException11	java.io.IOException
-    //   501	1	3	localObject8	Object
-    //   510	1	3	localInterruptedException2	java.lang.InterruptedException
-    //   512	14	3	localObject9	Object
-    //   529	1	3	localIOException12	java.io.IOException
-    //   534	1	3	localObject10	Object
-    //   28	3	4	localProcess	java.lang.Process
-    //   83	1	4	localIOException13	java.io.IOException
-    //   86	100	4	localObject11	Object
-    //   424	56	4	localObject12	Object
-    //   498	1	4	localObject13	Object
-    //   505	1	4	localObject14	Object
-    //   516	1	4	localInterruptedException3	java.lang.InterruptedException
-    //   531	5	4	localObject15	Object
-    //   59	113	5	localStringBuffer	java.lang.StringBuffer
-    //   65	10	6	str	String
+    //   0	566	0	this	SensorAPIJavaScript
+    //   3	198	1	localObject1	Object
+    //   206	65	1	localIOException1	java.io.IOException
+    //   295	144	1	localObject2	Object
+    //   445	78	1	localIOException2	java.io.IOException
+    //   529	2	1	localIOException3	java.io.IOException
+    //   542	1	1	localIOException4	java.io.IOException
+    //   546	1	1	localInterruptedException1	java.lang.InterruptedException
+    //   11	174	2	localObject3	Object
+    //   191	64	2	localIOException5	java.io.IOException
+    //   261	2	2	localIOException6	java.io.IOException
+    //   277	1	2	localObject4	Object
+    //   284	6	2	localObject5	Object
+    //   293	1	2	localObject6	Object
+    //   304	47	2	localObject7	Object
+    //   357	2	2	localIOException7	java.io.IOException
+    //   376	47	2	localObject8	Object
+    //   429	26	2	localIOException8	java.io.IOException
+    //   458	80	2	localObject9	Object
+    //   550	1	2	localIOException9	java.io.IOException
+    //   554	1	2	localInterruptedException2	java.lang.InterruptedException
+    //   36	471	3	localObject10	Object
+    //   513	2	3	localIOException10	java.io.IOException
+    //   558	1	3	localIOException11	java.io.IOException
+    //   562	1	3	localInterruptedException3	java.lang.InterruptedException
+    //   65	51	4	localStringBuffer	java.lang.StringBuffer
+    //   452	5	4	localObject11	Object
+    //   472	23	4	localStringBuilder	StringBuilder
+    //   71	58	5	localObject12	Object
     // Exception table:
     //   from	to	target	type
-    //   52	61	83	java/io/IOException
-    //   61	67	83	java/io/IOException
-    //   72	80	83	java/io/IOException
-    //   148	185	83	java/io/IOException
-    //   185	193	83	java/io/IOException
-    //   242	246	248	java/io/IOException
-    //   234	238	255	java/io/IOException
-    //   310	314	317	java/io/IOException
-    //   302	306	325	java/io/IOException
-    //   132	136	333	java/io/IOException
-    //   140	144	341	java/io/IOException
-    //   0	36	349	java/lang/InterruptedException
-    //   401	405	408	java/io/IOException
-    //   393	397	416	java/io/IOException
-    //   0	36	424	finally
-    //   467	471	482	java/io/IOException
-    //   475	479	490	java/io/IOException
-    //   36	52	498	finally
-    //   52	61	505	finally
-    //   61	67	505	finally
-    //   72	80	505	finally
-    //   148	185	505	finally
-    //   185	193	505	finally
-    //   36	52	510	java/lang/InterruptedException
-    //   52	61	516	java/lang/InterruptedException
-    //   61	67	516	java/lang/InterruptedException
-    //   72	80	516	java/lang/InterruptedException
-    //   148	185	516	java/lang/InterruptedException
-    //   185	193	516	java/lang/InterruptedException
-    //   0	36	521	java/io/IOException
-    //   36	52	529	java/io/IOException
+    //   184	188	191	java/io/IOException
+    //   200	204	206	java/io/IOException
+    //   254	258	261	java/io/IOException
+    //   42	58	277	finally
+    //   0	42	293	finally
+    //   350	354	357	java/io/IOException
+    //   422	426	429	java/io/IOException
+    //   270	274	445	java/io/IOException
+    //   366	370	445	java/io/IOException
+    //   438	442	445	java/io/IOException
+    //   58	67	452	finally
+    //   67	73	452	finally
+    //   78	86	452	finally
+    //   89	136	452	finally
+    //   136	143	452	finally
+    //   506	510	513	java/io/IOException
+    //   522	526	529	java/io/IOException
+    //   0	42	542	java/io/IOException
+    //   0	42	546	java/lang/InterruptedException
+    //   42	58	550	java/io/IOException
+    //   42	58	554	java/lang/InterruptedException
+    //   58	67	558	java/io/IOException
+    //   67	73	558	java/io/IOException
+    //   78	86	558	java/io/IOException
+    //   89	136	558	java/io/IOException
+    //   136	143	558	java/io/IOException
+    //   58	67	562	java/lang/InterruptedException
+    //   67	73	562	java/lang/InterruptedException
+    //   78	86	562	java/lang/InterruptedException
+    //   89	136	562	java/lang/InterruptedException
+    //   136	143	562	java/lang/InterruptedException
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("SensorApi", 4, "start checkWifiStatus");
     }
-    new SensorAPIJavaScript.11(this, this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), paramString).start();
+    new SensorAPIJavaScript.11(this, this.b.getApplicationContext(), paramString).start();
   }
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    nbv.a(paramString1, this.mRuntime.a(), new nes(this, paramString2), false);
+    HtmlOffline.a(paramString1, this.mRuntime.b(), new SensorAPIJavaScript.8(this, paramString2), false);
   }
   
-  /* Error */
   public void connectToWiFi(String paramString)
   {
-    // Byte code:
-    //   0: ldc 49
-    //   2: astore_3
-    //   3: new 176	org/json/JSONObject
-    //   6: dup
-    //   7: aload_1
-    //   8: invokespecial 436	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   11: astore 7
-    //   13: aload 7
-    //   15: ldc_w 438
-    //   18: invokevirtual 440	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   21: astore 4
-    //   23: aload 7
-    //   25: ldc_w 442
-    //   28: invokevirtual 440	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   31: astore 5
-    //   33: aload 7
-    //   35: ldc_w 444
-    //   38: invokevirtual 440	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   41: astore 6
-    //   43: aload 7
-    //   45: ldc_w 446
-    //   48: invokevirtual 440	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: astore_1
-    //   52: aload 7
-    //   54: ldc_w 448
-    //   57: invokevirtual 452	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   60: istore_2
-    //   61: aload_0
-    //   62: getfield 454	com/tencent/biz/game/SensorAPIJavaScript:jdField_c_of_type_Boolean	Z
-    //   65: ifeq +52 -> 117
-    //   68: aload_0
-    //   69: aload 6
-    //   71: iconst_1
-    //   72: anewarray 137	java/lang/String
-    //   75: dup
-    //   76: iconst_0
-    //   77: ldc_w 456
-    //   80: aastore
-    //   81: invokevirtual 143	com/tencent/biz/game/SensorAPIJavaScript:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   84: return
-    //   85: astore_1
-    //   86: aload_1
-    //   87: invokevirtual 457	org/json/JSONException:printStackTrace	()V
-    //   90: return
-    //   91: astore_1
-    //   92: aload_1
-    //   93: invokevirtual 457	org/json/JSONException:printStackTrace	()V
-    //   96: return
-    //   97: astore_1
-    //   98: aload_1
-    //   99: invokevirtual 457	org/json/JSONException:printStackTrace	()V
-    //   102: aload_3
-    //   103: astore_1
-    //   104: goto -52 -> 52
-    //   107: astore_3
-    //   108: aload_3
-    //   109: invokevirtual 457	org/json/JSONException:printStackTrace	()V
-    //   112: iconst_0
-    //   113: istore_2
-    //   114: goto -53 -> 61
-    //   117: aload 6
-    //   119: invokestatic 463	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   122: ifne -38 -> 84
-    //   125: aload_0
-    //   126: getfield 402	com/tencent/biz/game/SensorAPIJavaScript:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   129: ifnull -45 -> 84
-    //   132: aload 4
-    //   134: invokestatic 463	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   137: ifne +11 -> 148
-    //   140: aload 5
-    //   142: invokestatic 463	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   145: ifeq +20 -> 165
-    //   148: aload_0
-    //   149: aload 6
-    //   151: iconst_1
-    //   152: anewarray 137	java/lang/String
-    //   155: dup
-    //   156: iconst_0
-    //   157: ldc_w 465
-    //   160: aastore
-    //   161: invokevirtual 143	com/tencent/biz/game/SensorAPIJavaScript:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   164: return
-    //   165: aload_0
-    //   166: getfield 402	com/tencent/biz/game/SensorAPIJavaScript:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   169: invokevirtual 407	android/app/Activity:getApplicationContext	()Landroid/content/Context;
-    //   172: ldc_w 467
-    //   175: invokevirtual 471	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   178: checkcast 473	android/net/wifi/WifiManager
-    //   181: astore_3
-    //   182: aload_3
-    //   183: ifnonnull +36 -> 219
-    //   186: invokestatic 367	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   189: ifeq +13 -> 202
-    //   192: ldc_w 369
-    //   195: iconst_4
-    //   196: ldc_w 475
-    //   199: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   202: aload_0
-    //   203: aload 6
-    //   205: iconst_1
-    //   206: anewarray 137	java/lang/String
-    //   209: dup
-    //   210: iconst_0
-    //   211: ldc_w 477
-    //   214: aastore
-    //   215: invokevirtual 143	com/tencent/biz/game/SensorAPIJavaScript:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   218: return
-    //   219: aload_0
-    //   220: iconst_1
-    //   221: putfield 454	com/tencent/biz/game/SensorAPIJavaScript:jdField_c_of_type_Boolean	Z
-    //   224: new 479	com/tencent/biz/game/SensorAPIJavaScript$10
-    //   227: dup
-    //   228: aload_0
-    //   229: aload 5
-    //   231: aload 4
-    //   233: aload_1
-    //   234: iload_2
-    //   235: aload_3
-    //   236: aload 6
-    //   238: invokespecial 482	com/tencent/biz/game/SensorAPIJavaScript$10:<init>	(Lcom/tencent/biz/game/SensorAPIJavaScript;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/net/wifi/WifiManager;Ljava/lang/String;)V
-    //   241: invokevirtual 413	java/lang/Thread:start	()V
-    //   244: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	245	0	this	SensorAPIJavaScript
-    //   0	245	1	paramString	String
-    //   60	175	2	bool	boolean
-    //   2	101	3	str1	String
-    //   107	2	3	localJSONException	JSONException
-    //   181	55	3	localWifiManager	android.net.wifi.WifiManager
-    //   21	211	4	str2	String
-    //   31	199	5	str3	String
-    //   41	196	6	str4	String
-    //   11	42	7	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   3	13	85	org/json/JSONException
-    //   13	43	91	org/json/JSONException
-    //   43	52	97	org/json/JSONException
-    //   52	61	107	org/json/JSONException
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      try
+      {
+        String str1 = localJSONObject.getString("ssid");
+        String str2 = localJSONObject.getString("type");
+        String str3 = localJSONObject.getString("callback");
+        try
+        {
+          paramString = localJSONObject.getString("password");
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+          paramString = "";
+        }
+        boolean bool;
+        try
+        {
+          bool = localJSONObject.getBoolean("isHidden");
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          bool = false;
+        }
+        if (this.t)
+        {
+          callJs(str3, new String[] { "4" });
+          return;
+        }
+        if (!TextUtils.isEmpty(str3))
+        {
+          if (this.b == null) {
+            return;
+          }
+          if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+          {
+            WifiManager localWifiManager = (WifiManager)this.b.getApplicationContext().getSystemService("wifi");
+            if (localWifiManager == null)
+            {
+              if (QLog.isDevelopLevel()) {
+                QLog.d("SensorApi", 4, "No WifiManager available from device");
+              }
+              callJs(str3, new String[] { "2" });
+              return;
+            }
+            this.t = true;
+            new SensorAPIJavaScript.10(this, str2, str1, paramString, bool, localWifiManager, str3).start();
+            return;
+          }
+          callJs(str3, new String[] { "3" });
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
   public void forceUpdate(String paramString1, String paramString2, String paramString3)
@@ -721,175 +661,181 @@ public class SensorAPIJavaScript
   
   public void forceUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramString1.length() > 10)) {
-      return;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (paramString1.length() > 10) {
+        return;
+      }
+      paramString2 = new ArrayList();
+      paramString2.add(paramString1);
+      paramString2 = new HashMap(paramString2.size());
+      paramString2.put(paramString1, "0");
+      HtmlOffline.a(this.mRuntime.b(), paramString2, new SensorAPIJavaScript.7(this, paramString4), true, true, false);
     }
-    paramString2 = new ArrayList();
-    paramString2.add(paramString1);
-    paramString2 = new HashMap(paramString2.size());
-    paramString2.put(paramString1, "0");
-    nbv.a(this.mRuntime.a(), paramString2, new ner(this, paramString4), true, true, false);
   }
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "4555" + "\"}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"qqVersion\":\"");
+    localStringBuilder.append(qqVersion());
+    localStringBuilder.append("\",\"qqBuild\":\"");
+    localStringBuilder.append("5770");
+    localStringBuilder.append("\"}");
+    return localStringBuilder.toString();
   }
   
   public boolean getCurrentSong(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    try
     {
-      for (;;)
-      {
+      paramString = new JSONObject(paramString);
+      paramString = paramString.optString("callback");
+      if (TextUtils.isEmpty(paramString)) {
         return true;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          paramString = paramString.optString("callback");
-          if (!TextUtils.isEmpty(paramString))
-          {
-            this.jdField_a_of_type_Yqz.a().c(new nen(this, paramString));
-            return true;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "getCurrentSong json err");
+      this.D.b().c(new SensorAPIJavaScript.14(this, paramString));
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.mTAG, 2, "getCurrentSong json err");
+      }
+    }
     return true;
   }
   
   public final String getDeviceInfo()
   {
-    return getDeviceInfoEx(this.TAG);
+    return getDeviceInfoEx(this.mTAG);
   }
   
-  public String getNameSpace()
+  protected String getNameSpace()
   {
     return "qbizApi";
   }
   
   public JSONObject getNetworkInfo()
   {
-    int i1 = ndd.a();
-    String str = ndd.a();
-    int n = 0;
-    Object localObject = bdgk.b();
-    int m = n;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    int i3 = HttpUtil.getNetWorkType();
+    String str = HttpUtil.getNetWorkTypeByStr();
+    Object localObject = DeviceInfoUtil.c();
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+    int i2 = 3;
+    if ((!bool) && (((String)localObject).length() > 5) && (((String)localObject).startsWith("460")))
     {
-      m = n;
-      if (((String)localObject).length() > 5)
+      localObject = ((String)localObject).substring(3, 5);
+      if ((!((String)localObject).equals("00")) && (!((String)localObject).equals("02")) && (!((String)localObject).equals("04")) && (!((String)localObject).equals("07")))
       {
-        m = n;
-        if (((String)localObject).startsWith("460"))
+        if ((!((String)localObject).equals("01")) && (!((String)localObject).equals("06")) && (!((String)localObject).equals("09")))
         {
-          localObject = ((String)localObject).substring(3, 5);
-          if ((!((String)localObject).equals("00")) && (!((String)localObject).equals("02")) && (!((String)localObject).equals("04")) && (!((String)localObject).equals("07"))) {
-            break label148;
+          i1 = i2;
+          if (((String)localObject).equals("03")) {
+            break label197;
           }
-          m = 1;
+          if (((String)localObject).equals("05"))
+          {
+            i1 = i2;
+            break label197;
+          }
+          if (((String)localObject).equals("20"))
+          {
+            i1 = 4;
+            break label197;
+          }
         }
-      }
-    }
-    for (;;)
-    {
-      localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("type", i1);
-        ((JSONObject)localObject).put("radio", str);
-        ((JSONObject)localObject).put("carriertype", m);
-        return localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        label148:
-        localJSONException.printStackTrace();
-      }
-      if ((((String)localObject).equals("01")) || (((String)localObject).equals("06")) || (((String)localObject).equals("09")))
-      {
-        m = 2;
-      }
-      else if ((((String)localObject).equals("03")) || (((String)localObject).equals("05")))
-      {
-        m = 3;
+        else
+        {
+          i1 = 2;
+          break label197;
+        }
       }
       else
       {
-        m = n;
-        if (((String)localObject).equals("20")) {
-          m = 4;
-        }
+        i1 = 1;
+        break label197;
       }
+    }
+    int i1 = 0;
+    label197:
+    localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("type", i3);
+      ((JSONObject)localObject).put("radio", str);
+      ((JSONObject)localObject).put("carriertype", i1);
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
     return localObject;
   }
   
   public int getNetworkType()
   {
-    return ndd.a();
+    return HttpUtil.getNetWorkType();
   }
   
   public boolean getPlayMode(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    try
     {
-      for (;;)
-      {
+      paramString = new JSONObject(paramString);
+      paramString = paramString.optString("callback");
+      if (TextUtils.isEmpty(paramString)) {
         return true;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          paramString = paramString.optString("callback");
-          if (!TextUtils.isEmpty(paramString))
-          {
-            this.jdField_a_of_type_Yqz.a().b(new nem(this, paramString));
-            return true;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "getPlayMode json err");
+      this.D.b().b(new SensorAPIJavaScript.13(this, paramString));
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.mTAG, 2, "getPlayMode json err");
+      }
+    }
     return true;
   }
   
   public boolean getPlayState(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    try
     {
-      for (;;)
-      {
+      paramString = new JSONObject(paramString);
+      paramString = paramString.optString("callback");
+      if (TextUtils.isEmpty(paramString)) {
         return true;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          paramString = paramString.optString("callback");
-          if (!TextUtils.isEmpty(paramString))
-          {
-            this.jdField_a_of_type_Yqz.a().a(new nel(this, paramString));
-            return true;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "getPlayState json err");
+      this.D.b().a(new SensorAPIJavaScript.12(this, paramString));
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.mTAG, 2, "getPlayState json err");
+      }
+    }
     return true;
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 4L;
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -909,7 +855,7 @@ public class SensorAPIJavaScript
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    paramString1 = nbv.a(paramString1);
+    paramString1 = HtmlOffline.d(paramString1);
     if (TextUtils.isEmpty(paramString1))
     {
       callJs(paramString2, new String[] { "-1" });
@@ -926,27 +872,28 @@ public class SensorAPIJavaScript
   public boolean notifyCacheReady(int paramInt)
   {
     String str;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.f))
     {
       str = "";
-      if (paramInt == 0) {
-        str = "success";
+      if (paramInt != 0) {
+        break label66;
+      }
+      str = "success";
+      break label36;
+      if (paramInt == 5) {
+        str = "had update ";
       }
     }
     for (;;)
     {
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { Integer.toString(paramInt), ndq.a(str) });
+      label36:
+      callJs(this.f, new String[] { Integer.toString(paramInt), Util.c(str) });
       return true;
+      return false;
+      label66:
       if (paramInt == 1)
       {
         str = "param error";
-        continue;
-        if (paramInt == 5)
-        {
-          str = "had update ";
-          continue;
-          return false;
-        }
       }
       else if (paramInt == 2)
       {
@@ -968,30 +915,33 @@ public class SensorAPIJavaScript
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    if (paramInt != -1) {}
-    Activity localActivity;
-    do
+    if (paramInt != -1) {
+      return;
+    }
+    if ((paramByte == 1) && (paramIntent != null) && (paramIntent.getBooleanExtra("closeSpecialLogic", false)))
     {
-      do
-      {
+      if (!this.a) {
         return;
-      } while ((paramByte != 1) || (paramIntent == null) || (!paramIntent.getBooleanExtra("closeSpecialLogic", false)) || (!this.jdField_a_of_type_Boolean));
-      localActivity = this.mRuntime.a();
-    } while (localActivity == null);
-    localActivity.setResult(-1, paramIntent);
-    localActivity.finish();
+      }
+      Activity localActivity = this.mRuntime.d();
+      if (localActivity != null)
+      {
+        localActivity.setResult(-1, paramIntent);
+        localActivity.finish();
+      }
+    }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
-    a();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
-    if (this.mRuntime.a() != null) {
-      this.jdField_b_of_type_JavaLangString = this.mRuntime.a().getCurrentAccountUin();
+    b();
+    this.b = this.mRuntime.d();
+    if (this.mRuntime.b() != null) {
+      this.q = this.mRuntime.b().getCurrentAccountUin();
     }
-    this.jdField_a_of_type_Yqz = yqz.a();
-    this.jdField_a_of_type_Yqz.a();
+    this.D = TroopMemberApiClient.a();
+    this.D.e();
   }
   
   public void onDestroy()
@@ -999,217 +949,257 @@ public class SensorAPIJavaScript
     release();
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.mRuntime.a());
+    this.c = new WeakReference(this.mRuntime.a());
   }
   
   public final void openLinkInNewWebView(String paramString1, String paramString2)
   {
-    PluginJumpManager.getInstance().updateConfig(((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime());
+    PluginJumpManager.getInstance().updateConfig(((QBaseActivity)this.b).getAppRuntime());
     PluginJumpManager.getInstance().loadConfig();
-    if (PluginJumpManager.getInstance().openView((BaseActivity)this.jdField_a_of_type_AndroidAppActivity, paramString1, paramString2)) {}
-    while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+    if (PluginJumpManager.getInstance().openView(this.b, paramString1, paramString2)) {
       return;
     }
-    Bundle localBundle2 = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
     Bundle localBundle1;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
-    }
-    try
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      for (;;)
+      Bundle localBundle2 = this.b.getIntent().getExtras();
+      if (localBundle2 == null)
       {
-        m = Integer.valueOf(paramString2).intValue();
-        switch (m)
+        localBundle1 = new Bundle();
+      }
+      else
+      {
+        localBundle2.remove("title");
+        localBundle2.remove("leftViewText");
+        localBundle2.remove("post_data");
+        localBundle2.remove("options");
+        localBundle1 = localBundle2;
+        if (localBundle2.containsKey("startOpenPageTime"))
         {
-        default: 
-          paramString2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getClass());
-          paramString2.putExtras(localBundle1);
-          paramString2.putExtra("url", paramString1);
-          paramString2.putExtra("startOpenPageTime", System.currentTimeMillis());
-          paramString2.setFlags(0);
-          paramString1 = this.mRuntime.a(this.mRuntime.a());
-          if ((paramString1 != null) && ((paramString1 instanceof belt)))
-          {
-            paramString1 = ((belt)paramString1).b();
-            if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("closeSpecialLogic")) && (bhsz.a(bhsz.a(paramString1), "closeSpecialLogic", 0) != 0)) {
-              this.jdField_a_of_type_Boolean = true;
-            }
-          }
-          if (!this.jdField_a_of_type_Boolean) {
-            break label433;
-          }
-          startActivityForResult(paramString2, (byte)1);
-          return;
-          localBundle2.remove("title");
-          localBundle2.remove("leftViewText");
-          localBundle2.remove("post_data");
-          localBundle2.remove("options");
+          localBundle2.putLong("startOpenPageTime", System.currentTimeMillis());
           localBundle1 = localBundle2;
-          if (localBundle2.containsKey("startOpenPageTime"))
-          {
-            localBundle2.putLong("startOpenPageTime", System.currentTimeMillis());
-            localBundle1 = localBundle2;
-          }
-          break;
         }
       }
     }
+    try
+    {
+      i1 = Integer.valueOf(paramString2).intValue();
+    }
     catch (Exception paramString2)
     {
-      for (;;)
-      {
-        int m = 0;
-        continue;
-        localBundle1.putBoolean("hide_more_button", false);
-        localBundle1.putBoolean("hide_operation_bar", true);
-        continue;
-        localBundle1.putBoolean("hide_more_button", true);
-        localBundle1.putBoolean("hide_operation_bar", true);
-        continue;
-        localBundle1.putBoolean("hide_more_button", false);
-        localBundle1.putBoolean("hide_operation_bar", false);
-        localBundle1.putString("webStyle", "");
-        continue;
-        localBundle1.putBoolean("hide_more_button", true);
-        localBundle1.putBoolean("hide_operation_bar", false);
-        localBundle1.putString("webStyle", "");
-      }
-      label433:
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramString2, 100);
+      int i1;
+      label154:
+      break label154;
     }
+    i1 = 0;
+    if (i1 != 0)
+    {
+      if (i1 != 1)
+      {
+        if (i1 != 2)
+        {
+          if (i1 == 3)
+          {
+            localBundle1.putBoolean("hide_more_button", true);
+            localBundle1.putBoolean("hide_operation_bar", false);
+            localBundle1.putString("webStyle", "");
+          }
+        }
+        else
+        {
+          localBundle1.putBoolean("hide_more_button", false);
+          localBundle1.putBoolean("hide_operation_bar", false);
+          localBundle1.putString("webStyle", "");
+        }
+      }
+      else
+      {
+        localBundle1.putBoolean("hide_more_button", true);
+        localBundle1.putBoolean("hide_operation_bar", true);
+      }
+    }
+    else
+    {
+      localBundle1.putBoolean("hide_more_button", false);
+      localBundle1.putBoolean("hide_operation_bar", true);
+    }
+    paramString2 = this.b;
+    paramString2 = new Intent(paramString2, paramString2.getClass());
+    paramString2.putExtras(localBundle1);
+    paramString2.putExtra("url", paramString1);
+    paramString2.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramString2.setFlags(0);
+    paramString1 = this.mRuntime.a(this.mRuntime.d());
+    if ((paramString1 != null) && ((paramString1 instanceof WebUiUtils.WebUiMethodInterface)))
+    {
+      paramString1 = ((WebUiUtils.WebUiMethodInterface)paramString1).getCurrentUrl();
+      if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("closeSpecialLogic")) && (URLUtil.a(URLUtil.a(paramString1), "closeSpecialLogic", 0) != 0)) {
+        this.a = true;
+      }
+    }
+    if (this.a)
+    {
+      startActivityForResult(paramString2, (byte)1);
+      return;
+    }
+    this.b.startActivityForResult(paramString2, 100);
   }
   
   public boolean pausePlayMusic()
   {
-    this.jdField_a_of_type_Yqz.a().a();
+    this.D.b().a();
     return true;
   }
   
   public final void phoneVibrate(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
-      {
-        l1 = Long.valueOf(paramString).longValue();
-        paramString = (Vibrator)this.jdField_a_of_type_AndroidAppActivity.getSystemService("vibrator");
-        if (paramString == null) {
-          continue;
-        }
-        paramString.vibrate(l1);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          long l1 = 0L;
-        }
-      }
     }
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.valueOf(paramString).longValue();
+      l1 = l2;
+    }
+    catch (Exception paramString)
+    {
+      label22:
+      break label22;
+    }
+    paramString = (Vibrator)this.b.getSystemService("vibrator");
+    if (paramString == null) {
+      return;
+    }
+    paramString.vibrate(l1);
   }
   
   @SuppressLint({"NewApi"})
   @TargetApi(8)
   public boolean playVoice(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
+    if (TextUtils.isEmpty(paramString2)) {
+      return false;
+    }
+    if (this.d == null) {
+      this.d = new SoundPool(10, 3, 0);
+    }
+    if (this.e == null) {
+      this.e = new HashMap();
+    }
+    int i1;
+    if (!this.e.containsKey(paramString2))
     {
-      do
-      {
+      if (!preloadVoice(paramString1, paramString2, null)) {
         return false;
-        if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-          this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(10, 3, 0);
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
-          break;
-        }
-      } while (!preloadVoice(paramString1, paramString2, null));
-      if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new nep(this, paramString2));
       }
-      int m;
-      do
+      if (Build.VERSION.SDK_INT >= 8)
       {
-        for (;;)
-        {
-          return true;
-          m = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).intValue();
-          if (this.jdField_a_of_type_AndroidOsHandler != null) {
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SensorAPIJavaScript.4(this, m, paramString2), 200L);
-          }
+        this.d.setOnLoadCompleteListener(new SensorAPIJavaScript.3(this, paramString2));
+      }
+      else
+      {
+        i1 = ((Integer)this.e.get(paramString2)).intValue();
+        paramString1 = this.F;
+        if (paramString1 != null) {
+          paramString1.postDelayed(new SensorAPIJavaScript.4(this, i1, paramString2), 200L);
         }
-        m = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).intValue();
-      } while (this.jdField_a_of_type_AndroidMediaSoundPool.play(m, 1.0F, 1.0F, 0, 0, 1.0F) != 0);
-    } while (!QLog.isColorLevel());
-    QLog.d("SensorApi", 2, "play failure url=" + paramString2);
-    return false;
+      }
+    }
+    else
+    {
+      i1 = ((Integer)this.e.get(paramString2)).intValue();
+      if (this.d.play(i1, 1.0F, 1.0F, 0, 0, 1.0F) == 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("play failure url=");
+          paramString1.append(paramString2);
+          QLog.d("SensorApi", 2, paramString1.toString());
+        }
+        return false;
+      }
+    }
+    return true;
   }
   
   @SuppressLint({"NewApi"})
   @TargetApi(8)
   public boolean preloadVoice(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString2)) || ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)))) {
-      return false;
-    }
-    new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append(File.separator).toString();
-    paramString3 = new StringBuilder();
-    paramString3.append(ncb.b());
-    paramString3.append(paramString1);
-    paramString3.append('/');
-    String str = Uri.parse(paramString2).getScheme();
-    paramString1 = "";
-    if (str != null) {
-      paramString1 = str + "://";
-    }
-    if (paramString2.length() >= paramString1.length()) {
-      paramString3.append(paramString2.substring(paramString1.length()));
-    }
-    paramString1 = new File(paramString3.toString());
-    if (!paramString1.exists()) {
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(10, 3, 0);
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    if (Build.VERSION.SDK_INT >= 8) {
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(null);
-    }
-    int m = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString1.getAbsolutePath(), 1);
-    if (m == 0)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorApi", 2, "load failure url=" + paramString2);
+      paramString3 = this.e;
+      if ((paramString3 != null) && (paramString3.containsKey(paramString2))) {
+        return false;
       }
-      return false;
+      paramString3 = new StringBuilder();
+      paramString3.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      paramString3.append(File.separator);
+      paramString3.toString();
+      paramString3 = new StringBuilder();
+      paramString3.append(OfflineEnvHelper.b());
+      paramString3.append(paramString1);
+      paramString3.append('/');
+      paramString1 = Uri.parse(paramString2).getScheme();
+      if (paramString1 != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("://");
+        paramString1 = localStringBuilder.toString();
+      }
+      else
+      {
+        paramString1 = "";
+      }
+      if (paramString2.length() >= paramString1.length()) {
+        paramString3.append(paramString2.substring(paramString1.length()));
+      }
+      paramString1 = new File(paramString3.toString());
+      if (!paramString1.exists()) {
+        return false;
+      }
+      if (this.d == null) {
+        this.d = new SoundPool(10, 3, 0);
+      }
+      if (this.e == null) {
+        this.e = new HashMap();
+      }
+      if (Build.VERSION.SDK_INT >= 8) {
+        this.d.setOnLoadCompleteListener(null);
+      }
+      int i1 = this.d.load(paramString1.getAbsolutePath(), 1);
+      if (i1 == 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("load failure url=");
+          paramString1.append(paramString2);
+          QLog.d("SensorApi", 2, paramString1.toString());
+        }
+        return false;
+      }
+      this.e.put(paramString2, Integer.valueOf(i1));
+      return true;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, Integer.valueOf(m));
-    return true;
+    return false;
   }
   
   public final String qqVersion()
   {
     try
     {
-      Object localObject = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof bell))) {
-        return this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo("com.tencent.mobileqq", 0).versionName;
+      Object localObject = this.mRuntime.a(this.mRuntime.d());
+      if ((localObject != null) && ((localObject instanceof WebUiUtils.VipComicUiInterface))) {
+        return this.b.getPackageManager().getPackageInfo("com.tencent.mobileqq", 0).versionName;
       }
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidAppActivity.getPackageName(), 0).versionName;
+      localObject = this.b.getPackageManager().getPackageInfo(this.b.getPackageName(), 0).versionName;
       return localObject;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -1221,62 +1211,70 @@ public class SensorAPIJavaScript
   
   public void refreshOfflineCache()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localWebView != null) {
-        localWebView.loadUrl(localWebView.getUrl());
+      localObject = (WebView)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((WebView)localObject).loadUrl(((WebView)localObject).getUrl());
       }
     }
   }
   
   public void release()
   {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    Object localObject = this.d;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
+      ((SoundPool)localObject).release();
+      this.d = null;
     }
-    if (jdField_a_of_type_Neg != null)
+    localObject = G;
+    if (localObject != null)
     {
-      jdField_a_of_type_Neg.a();
-      jdField_a_of_type_Neg = null;
+      ((MSFToWebViewConnector)localObject).a();
+      G = null;
     }
     stopAccelerometer();
     stopCompass();
     stopListen();
     stopLight();
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    localObject = this.c;
+    if (localObject != null) {
+      ((WeakReference)localObject).clear();
     }
-    if (this.jdField_a_of_type_Yqz != null) {
-      this.jdField_a_of_type_Yqz.b();
+    localObject = this.D;
+    if (localObject != null) {
+      ((TroopMemberApiClient)localObject).f();
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.c = null;
   }
   
   public boolean resumePlayMusic()
   {
-    this.jdField_a_of_type_Yqz.a().b();
+    this.D.b().b();
     return true;
   }
   
   public void returnToAIO()
   {
-    if ("Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("_");
+    localStringBuilder.append(Build.MODEL);
+    if ("Meizu_M040".equals(localStringBuilder.toString()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Sensor", 2, "meizu mx2 returnToAIO");
       }
       new Handler().postDelayed(new SensorAPIJavaScript.5(this), 400L);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SensorAPIJavaScript", 2, String.format("returnToAIO mBrowserActivity=[%s]", new Object[] { this.jdField_a_of_type_AndroidAppActivity }));
-      }
-      return;
-      returnToAio(this.jdField_a_of_type_Yqz, this.jdField_a_of_type_AndroidAppActivity, "", false);
+      returnToAio(this.D, this.b, "", false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("SensorAPIJavaScript", 2, String.format("returnToAIO mBrowserActivity=[%s]", new Object[] { this.b }));
     }
   }
   
@@ -1284,10 +1282,10 @@ public class SensorAPIJavaScript
   {
     try
     {
-      int m = Integer.parseInt(paramString5);
-      paramString1 = aepi.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramString1.putExtra("indexOfFunnyFaceClickedInWebview", m);
-      paramString2 = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+      int i1 = Integer.parseInt(paramString5);
+      paramString1 = AIOUtils.a(new Intent(this.b, SplashActivity.class), null);
+      paramString1.putExtra("indexOfFunnyFaceClickedInWebview", i1);
+      paramString2 = this.b.getIntent();
       if (paramString2 != null)
       {
         paramString2 = (SessionInfo)paramString2.getParcelableExtra("sessionInfo");
@@ -1295,7 +1293,7 @@ public class SensorAPIJavaScript
         {
           ChatActivityUtils.a(paramString2, paramString1);
           paramString1.putExtra("sessionInfo", paramString2);
-          this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
+          this.b.startActivity(paramString1);
         }
       }
       return;
@@ -1305,46 +1303,43 @@ public class SensorAPIJavaScript
   
   public boolean setPlayMode(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    try
     {
-      for (;;)
-      {
+      paramString = new JSONObject(paramString);
+      int i1 = paramString.optInt("mode", -1);
+      if (i1 == -1) {
         return true;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          int m = paramString.optInt("mode", -1);
-          if (m != -1)
-          {
-            this.jdField_a_of_type_Yqz.a().a(m);
-            return true;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "setPlayMode json err");
+      this.D.b().a(i1);
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.mTAG, 2, "setPlayMode json err");
+      }
+    }
     return true;
   }
   
   public final void startAccelerometer(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor"));
+    if (this.l == null) {
+      this.l = ((SensorManager)this.b.getSystemService("sensor"));
     }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager.getSensorList(1);
+    Object localObject = this.l.getSensorList(1);
     if (((List)localObject).size() > 0)
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_a_of_type_Neu != null) {
+      if (this.m != null) {
         stopAccelerometer();
       }
-      this.jdField_a_of_type_Neu = new neu(this, (byte)0, paramString);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Neu, (Sensor)localObject, 0);
+      this.m = new SensorAPIJavaScript.QQSensorEventListener(this, (byte)0, paramString);
+      this.l.registerListener(this.m, (Sensor)localObject, 0);
       return;
     }
     callJs(paramString, new String[] { "false" });
@@ -1352,18 +1347,18 @@ public class SensorAPIJavaScript
   
   public final void startCompass(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor"));
+    if (this.l == null) {
+      this.l = ((SensorManager)this.b.getSystemService("sensor"));
     }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager.getSensorList(3);
+    Object localObject = this.l.getSensorList(3);
     if (((List)localObject).size() > 0)
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_c_of_type_Neu != null) {
+      if (this.o != null) {
         stopCompass();
       }
-      this.jdField_c_of_type_Neu = new neu(this, (byte)2, paramString);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_c_of_type_Neu, (Sensor)localObject, 0);
+      this.o = new SensorAPIJavaScript.QQSensorEventListener(this, (byte)2, paramString);
+      this.l.registerListener(this.o, (Sensor)localObject, 0);
       return;
     }
     callJs(paramString, new String[] { "false" });
@@ -1371,18 +1366,18 @@ public class SensorAPIJavaScript
   
   public final void startLight(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor"));
+    if (this.l == null) {
+      this.l = ((SensorManager)this.b.getSystemService("sensor"));
     }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager.getSensorList(5);
+    Object localObject = this.l.getSensorList(5);
     if (((List)localObject).size() > 0)
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_b_of_type_Neu != null) {
+      if (this.n != null) {
         stopLight();
       }
-      this.jdField_b_of_type_Neu = new neu(this, (byte)1, paramString);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_b_of_type_Neu, (Sensor)localObject, 0);
+      this.n = new SensorAPIJavaScript.QQSensorEventListener(this, (byte)1, paramString);
+      this.l.registerListener(this.n, (Sensor)localObject, 0);
       return;
     }
     callJs(paramString, new String[] { "false" });
@@ -1390,14 +1385,15 @@ public class SensorAPIJavaScript
   
   public final void startListen(String paramString)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.p)
     {
       callJs(paramString, new String[] { "false" });
       return;
     }
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
+    Activity localActivity = this.b;
+    if ((localActivity instanceof AppActivity))
     {
-      ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nek(this, paramString), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      ((AppActivity)localActivity).requestPermissions(new SensorAPIJavaScript.1(this, paramString), 1, new String[] { "android.permission.RECORD_AUDIO" });
       return;
     }
     callJs(paramString, new String[] { "false", "{result: -1, msg: 'no record activity'}" });
@@ -1411,13 +1407,18 @@ public class SensorAPIJavaScript
     try
     {
       new JSONObject(paramString);
-      this.jdField_a_of_type_Yqz.a().a(paramString);
+      this.D.b().a(paramString);
       return true;
     }
     catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "playQQMusic err:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        String str = this.mTAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("playQQMusic err:");
+        localStringBuilder.append(paramString);
+        QLog.i(str, 2, localStringBuilder.toString());
       }
       localJSONException.printStackTrace();
     }
@@ -1426,10 +1427,10 @@ public class SensorAPIJavaScript
   
   public void startSyncData(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Neg == null) {
-      jdField_a_of_type_Neg = new neg();
+    if (G == null) {
+      G = new MSFToWebViewConnector();
     }
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null)
     {
       if (QLog.isColorLevel()) {
@@ -1437,59 +1438,76 @@ public class SensorAPIJavaScript
       }
       return;
     }
-    jdField_a_of_type_Neg.a(paramString1, paramString2, localAppInterface, this.jdField_a_of_type_AndroidAppActivity, new net(this));
+    G.a(paramString1, paramString2, localAppInterface, this.b, new SensorAPIJavaScript.9(this));
   }
   
   public final void stopAccelerometer()
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Neu != null))
+    SensorManager localSensorManager = this.l;
+    if (localSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Neu);
-      this.jdField_a_of_type_Neu = null;
+      SensorAPIJavaScript.QQSensorEventListener localQQSensorEventListener = this.m;
+      if (localQQSensorEventListener != null)
+      {
+        localSensorManager.unregisterListener(localQQSensorEventListener);
+        this.m = null;
+      }
     }
   }
   
   public void stopCompass()
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_c_of_type_Neu != null))
+    SensorManager localSensorManager = this.l;
+    if (localSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_c_of_type_Neu);
-      this.jdField_c_of_type_Neu = null;
+      SensorAPIJavaScript.QQSensorEventListener localQQSensorEventListener = this.o;
+      if (localQQSensorEventListener != null)
+      {
+        localSensorManager.unregisterListener(localQQSensorEventListener);
+        this.o = null;
+      }
     }
   }
   
   public final void stopLight()
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_b_of_type_Neu != null))
+    SensorManager localSensorManager = this.l;
+    if (localSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_b_of_type_Neu);
-      this.jdField_b_of_type_Neu = null;
+      SensorAPIJavaScript.QQSensorEventListener localQQSensorEventListener = this.n;
+      if (localQQSensorEventListener != null)
+      {
+        localSensorManager.unregisterListener(localQQSensorEventListener);
+        this.n = null;
+      }
     }
   }
   
   public final void stopListen()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
+    MediaRecorder localMediaRecorder = this.s;
+    if (localMediaRecorder != null)
     {
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
-      this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
+      localMediaRecorder.release();
+      this.s = null;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(291);
-    this.jdField_b_of_type_Boolean = false;
+    this.F.removeMessages(291);
+    this.p = false;
   }
   
   public boolean stopPlayMusic()
   {
-    this.jdField_a_of_type_Yqz.a().c();
+    this.D.b().c();
     return true;
   }
   
   public void stopSyncData()
   {
-    if (jdField_a_of_type_Neg != null) {
-      jdField_a_of_type_Neg.a();
+    MSFToWebViewConnector localMSFToWebViewConnector = G;
+    if (localMSFToWebViewConnector != null) {
+      localMSFToWebViewConnector.a();
     }
-    jdField_a_of_type_Neg = null;
+    G = null;
   }
   
   public final String systemName()
@@ -1504,23 +1522,24 @@ public class SensorAPIJavaScript
   
   public void updateMicStatus(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
+    Object localObject = this.s;
+    if (localObject != null)
     {
-      int m = (int)(Math.log10(this.jdField_a_of_type_AndroidMediaMediaRecorder.getMaxAmplitude()) * 20.0D);
+      int i1 = (int)(Math.log10(((MediaRecorder)localObject).getMaxAmplitude()) * 20.0D);
       if (!TextUtils.isEmpty(paramString))
       {
-        callJs(paramString, new String[] { "true", Integer.toString(m) });
-        Message localMessage = new Message();
-        localMessage.what = 291;
-        localMessage.obj = paramString;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.l);
+        callJs(paramString, new String[] { "true", Integer.toString(i1) });
+        localObject = new Message();
+        ((Message)localObject).what = 291;
+        ((Message)localObject).obj = paramString;
+        this.F.sendMessageDelayed((Message)localObject, this.E);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript
  * JD-Core Version:    0.7.0.1
  */

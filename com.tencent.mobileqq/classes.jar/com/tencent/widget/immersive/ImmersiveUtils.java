@@ -1,7 +1,5 @@
 package com.tencent.widget.immersive;
 
-import ajeq;
-import alsf;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -13,112 +11,415 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.AlphaAnimation;
-import bdep;
-import bhtb;
-import bnle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ImmersiveUtils
 {
-  private static float a;
-  public static int a;
-  public static String a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
-  public static int c;
-  public static volatile boolean c;
-  private static int d;
-  public static boolean d;
-  private static int jdField_e_of_type_Int;
-  private static boolean jdField_e_of_type_Boolean;
-  private static boolean f;
+  public static int FLAG_TRANSLUCENT_STATUS = 0;
+  private static final String KEY_STATUS_BAR_HEIGHT = "status_bar_height";
+  public static String TAG;
+  private static float density;
+  public static boolean enableStatusBarDarkModeForMIUI = true;
+  public static int i_support_immersive;
+  public static boolean isStatusNotChange;
+  public static boolean m_needImmersive;
+  private static int screenHeight;
+  private static int screenWidth;
+  public static int statusHeight;
+  public static volatile boolean statusHeightCorrect;
   
   static
   {
-    String str;
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult))
+    if ("Success".equals(MobileQQ.sInjectResult))
     {
-      str = "sInjectResult:" + BaseApplicationImpl.sInjectResult;
+      MobileQQ.sImmersiveUtilsEscapedMsg = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sInjectResult:");
+      ((StringBuilder)localObject).append(MobileQQ.sInjectResult);
+      localObject = ((StringBuilder)localObject).toString();
       try
       {
         throw new IllegalAccessError("ImmersiveUtils escapes!");
       }
       catch (Throwable localThrowable)
       {
-        BaseApplicationImpl.sImmersiveUtilsEscapedMsg = str + "\n" + QLog.getStackTraceString(localThrowable);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("\n");
+        localStringBuilder.append(QLog.getStackTraceString(localThrowable));
+        MobileQQ.sImmersiveUtilsEscapedMsg = localStringBuilder.toString();
         QLog.e("DexLoad", 1, "ImmersiveUtils escapes!");
       }
     }
+    TAG = "ImmersiveUtils";
+    density = -1.0F;
+    screenWidth = -1;
+    screenHeight = -1;
+    i_support_immersive = -1;
+    m_needImmersive = true;
+    FLAG_TRANSLUCENT_STATUS = 67108864;
+    isStatusNotChange = false;
+    statusHeight = -1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    if (((String)localObject).equalsIgnoreCase("smartisan-sm705")) {
+      isStatusNotChange = true;
+    }
+    if (((String)localObject).equalsIgnoreCase("vivo-vivo Y35A")) {
+      isStatusNotChange = true;
+    }
+  }
+  
+  public static int PxToDp(float paramFloat)
+  {
+    return Math.round(paramFloat / getDensity());
+  }
+  
+  public static void addStatusAsView(Activity paramActivity, int paramInt)
+  {
+    View localView = new View(paramActivity);
+    localView.setLayoutParams(new LinearLayout.LayoutParams(-1, getStatusBarHeight(paramActivity)));
+    localView.setBackgroundDrawable(paramActivity.getResources().getDrawable(paramInt));
+    ((ViewGroup)paramActivity.getWindow().getDecorView()).addView(localView);
+  }
+  
+  public static void adjustThemeStatusBar(Window paramWindow)
+  {
+    if ((QQTheme.isCustomTheme(getCurrentUin(), true)) && (isSupporImmersive() != 0) && (couldSetStatusTextColor())) {
+      setStatusTextColor(QQTheme.isColorDark(paramWindow.getDecorView().getResources().getColor(2131168092)) ^ true, paramWindow);
+    }
+  }
+  
+  private static void checkImmersiveStatusBar(Window paramWindow)
+  {
+    try
+    {
+      if ((Build.VERSION.SDK_INT >= 23) || (isVivoAndLOLLIPOP()))
+      {
+        paramWindow.clearFlags(67108864);
+        paramWindow.getDecorView().setSystemUiVisibility(1280);
+        paramWindow.addFlags(-2147483648);
+        paramWindow.setStatusBarColor(0);
+        return;
+      }
+    }
+    catch (Exception paramWindow)
+    {
+      QLog.e(TAG, 1, paramWindow, new Object[0]);
+    }
+  }
+  
+  public static void clearCoverForStatus(Window paramWindow, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject).append(Build.MODEL);
+      localObject = ((StringBuilder)localObject).toString();
+      if (QLog.isColorLevel())
+      {
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MANUFACTURER = ");
+        localStringBuilder.append(Build.MANUFACTURER);
+        localStringBuilder.append(", MODEL = ");
+        localStringBuilder.append(Build.MODEL);
+        QLog.i(str, 2, localStringBuilder.toString());
+      }
+      if ((localObject != null) && ((((String)localObject).equals("MeizuPRO 7-S")) || (((String)localObject).equalsIgnoreCase("MeizuM711C"))))
+      {
+        setTranslucentStatus(paramWindow);
+        return;
+      }
+      checkImmersiveStatusBar(paramWindow);
+    }
+  }
+  
+  @TargetApi(23)
+  private static void compatHighMIUI(Window paramWindow, boolean paramBoolean)
+  {
+    paramWindow = paramWindow.getDecorView();
+    if (paramBoolean)
+    {
+      paramWindow.setSystemUiVisibility(9216);
+      return;
+    }
+    paramWindow.setSystemUiVisibility(paramWindow.getSystemUiVisibility() & 0xFFFFDFFF);
+  }
+  
+  private static boolean compatLowMIUI(Window paramWindow, boolean paramBoolean)
+  {
+    Object localObject = paramWindow.getClass();
     for (;;)
     {
-      jdField_a_of_type_JavaLangString = "ImmersiveUtils";
-      jdField_a_of_type_Float = -1.0F;
-      jdField_d_of_type_Int = -1;
-      jdField_e_of_type_Int = -1;
-      jdField_a_of_type_Int = -1;
-      jdField_a_of_type_Boolean = true;
-      jdField_b_of_type_Int = 67108864;
-      jdField_c_of_type_Int = -1;
-      str = Build.MANUFACTURER + "-" + Build.MODEL;
-      if (str.equalsIgnoreCase("smartisan-sm705")) {
-        jdField_b_of_type_Boolean = true;
+      try
+      {
+        Class localClass = Class.forName("android.view.MiuiWindowManager$LayoutParams");
+        int j = localClass.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE").getInt(localClass);
+        localObject = ((Class)localObject).getMethod("setExtraFlags", new Class[] { Integer.TYPE, Integer.TYPE });
+        if (paramBoolean)
+        {
+          i = j;
+          ((Method)localObject).invoke(paramWindow, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          return true;
+        }
       }
-      if (str.equalsIgnoreCase("vivo-vivo Y35A")) {
-        jdField_b_of_type_Boolean = true;
+      catch (Exception paramWindow)
+      {
+        paramWindow.printStackTrace();
+        return false;
       }
-      jdField_d_of_type_Boolean = true;
-      return;
-      BaseApplicationImpl.sImmersiveUtilsEscapedMsg = "";
+      int i = 0;
     }
   }
   
-  public static float a()
+  public static boolean correctStatusBarHeight(Window paramWindow)
   {
-    a();
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a()
-  {
-    a();
-    return jdField_d_of_type_Int;
-  }
-  
-  public static int a(float paramFloat)
-  {
-    return Math.round(a() * paramFloat);
-  }
-  
-  private static void a()
-  {
-    DisplayMetrics localDisplayMetrics;
-    if (jdField_a_of_type_Float == -1.0F)
+    Rect localRect = new Rect();
+    paramWindow.getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if ((localRect.top > 0) && (localRect.top <= 200))
     {
-      localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-      jdField_a_of_type_Float = localDisplayMetrics.density;
+      if (Math.abs(localRect.top - statusHeight) > 1)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramWindow = new StringBuilder();
+          paramWindow.append("correct status bar height: ");
+          paramWindow.append(statusHeight);
+          paramWindow.append(", top = ");
+          paramWindow.append(localRect.top);
+          QLog.d("systembar", 2, paramWindow.toString());
+        }
+        statusHeight = localRect.top;
+        MobileQQ.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt("status_bar_height", statusHeight).apply();
+        statusHeightCorrect = true;
+        return true;
+      }
+      return false;
+    }
+    paramWindow = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invalid status height: ");
+    localStringBuilder.append(localRect.top);
+    QLog.w(paramWindow, 2, localStringBuilder.toString());
+    return false;
+  }
+  
+  public static boolean couldSetStatusTextColor()
+  {
+    boolean bool3 = OSUtils.isMIUI();
+    boolean bool4 = OSUtils.isFlymeOS();
+    int i = Build.VERSION.SDK_INT;
+    boolean bool2 = true;
+    if (i >= 23) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!bool4)
+      {
+        if (i != 0) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
+  }
+  
+  public static int dpToPx(float paramFloat)
+  {
+    return Math.round(paramFloat * getDensity());
+  }
+  
+  private static String getCurrentUin()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
+    }
+    return "";
+  }
+  
+  public static float getDensity()
+  {
+    init();
+    return density;
+  }
+  
+  public static int getScreenHeight()
+  {
+    init();
+    return screenHeight;
+  }
+  
+  public static int getScreenWidth()
+  {
+    init();
+    return screenWidth;
+  }
+  
+  public static int getStatusBarHeight(Context paramContext)
+  {
+    if (statusHeight == -1)
+    {
+      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("mobileQQ", 4);
+      statusHeight = localSharedPreferences.getInt("status_bar_height", -1);
+      if (statusHeight == -1)
+      {
+        Object localObject = paramContext.getResources();
+        int i = ((Resources)localObject).getIdentifier("status_bar_height", "dimen", "android");
+        if (i > 0) {
+          i = ((Resources)localObject).getDimensionPixelSize(i);
+        } else {
+          i = 0;
+        }
+        float f1 = FontSettingManager.systemMetrics.density;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getStatusBarHeight org=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(", sys density=");
+          ((StringBuilder)localObject).append(f1);
+          ((StringBuilder)localObject).append(", cur density=");
+          ((StringBuilder)localObject).append(paramContext.getResources().getDisplayMetrics().density);
+          QLog.d("systembar", 2, ((StringBuilder)localObject).toString());
+        }
+        f1 /= paramContext.getResources().getDisplayMetrics().density;
+        float f2 = 1.0F;
+        if (i <= 0)
+        {
+          if (f1 <= 0.0F) {
+            f1 = f2;
+          }
+          i = dpToPx(f1 * 25.0F);
+        }
+        else
+        {
+          float f3 = i;
+          if (f1 <= 0.0F) {
+            f1 = f2;
+          }
+          i = (int)Math.ceil(f3 * f1 + 0.5F);
+        }
+        statusHeight = i;
+        localSharedPreferences.edit().putInt("status_bar_height", statusHeight).apply();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("height=");
+        paramContext.append(statusHeight);
+        QLog.i("systembar", 2, paramContext.toString());
+      }
+    }
+    return statusHeight;
+  }
+  
+  private static void init()
+  {
+    if (density == -1.0F)
+    {
+      DisplayMetrics localDisplayMetrics = MobileQQ.getContext().getResources().getDisplayMetrics();
+      density = localDisplayMetrics.density;
       if (localDisplayMetrics.widthPixels < localDisplayMetrics.heightPixels)
       {
-        jdField_d_of_type_Int = localDisplayMetrics.widthPixels;
-        jdField_e_of_type_Int = localDisplayMetrics.heightPixels;
+        screenWidth = localDisplayMetrics.widthPixels;
+        screenHeight = localDisplayMetrics.heightPixels;
+        return;
+      }
+      screenHeight = localDisplayMetrics.widthPixels;
+      screenWidth = localDisplayMetrics.heightPixels;
+    }
+  }
+  
+  public static boolean isStatusTextUseDarkColor(Window paramWindow)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramWindow != null)
+    {
+      bool1 = bool2;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        bool1 = bool2;
+        if ((paramWindow.getDecorView().getSystemUiVisibility() & 0x2000) != 0) {
+          bool1 = true;
+        }
       }
     }
-    else
-    {
-      return;
+    return bool1;
+  }
+  
+  public static int isSupporImmersive()
+  {
+    int i = i_support_immersive;
+    if (i != -1) {
+      return i;
     }
-    jdField_e_of_type_Int = localDisplayMetrics.widthPixels;
-    jdField_d_of_type_Int = localDisplayMetrics.heightPixels;
+    if (Build.VERSION.SDK_INT < 19)
+    {
+      i_support_immersive = 0;
+      return i_support_immersive;
+    }
+    String str = Build.MANUFACTURER.toUpperCase();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    if (((!str.endsWith("BBK")) && (!str.endsWith("VIVO"))) || ((Build.VERSION.SDK_INT >= 20) && (!((String)localObject).equals("OPPO-3007")))) {
+      i_support_immersive = 1;
+    } else {
+      i_support_immersive = 0;
+    }
+    return i_support_immersive;
+  }
+  
+  public static boolean isVivoAndLOLLIPOP()
+  {
+    return ("vivo".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT >= 21);
+  }
+  
+  private static boolean processMIUI(Window paramWindow, boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      compatHighMIUI(paramWindow, paramBoolean);
+      return true;
+    }
+    return compatLowMIUI(paramWindow, paramBoolean);
   }
   
   @TargetApi(11)
-  public static void a(View paramView, float paramFloat)
+  public static void setAlpha(View paramView, float paramFloat)
   {
     if (paramView == null) {
       return;
@@ -135,7 +436,7 @@ public class ImmersiveUtils
   }
   
   @TargetApi(14)
-  public static void a(View paramView, boolean paramBoolean)
+  public static void setFitsSystemWindows(View paramView, boolean paramBoolean)
   {
     if (Build.VERSION.SDK_INT >= 14)
     {
@@ -144,121 +445,179 @@ public class ImmersiveUtils
     }
   }
   
-  public static void a(Window paramWindow)
+  public static void setRootView(Activity paramActivity)
   {
-    if (bhtb.j())
+    paramActivity = ((ViewGroup)paramActivity.findViewById(16908290)).getChildAt(0);
+    if ((paramActivity instanceof ViewGroup))
     {
-      paramWindow.clearFlags(67108864);
-      paramWindow.getDecorView().setSystemUiVisibility(1280);
-      paramWindow.addFlags(-2147483648);
-      paramWindow.setStatusBarColor(0);
+      paramActivity.setFitsSystemWindows(true);
+      ((ViewGroup)paramActivity).setClipToPadding(true);
     }
-    while (!bhtb.i()) {
-      return;
-    }
-    paramWindow.addFlags(67108864);
   }
   
-  public static void a(Window paramWindow, boolean paramBoolean)
+  public static boolean setStatusBarDarkMode(Window paramWindow, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      String str = Build.MANUFACTURER + Build.MODEL;
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER + ", MODEL = " + Build.MODEL);
-      }
-      if ((str != null) && ((str.equals("MeizuPRO 7-S")) || (str.equalsIgnoreCase("MeizuM711C")))) {
-        b(paramWindow);
-      }
-    }
-    else
-    {
-      return;
-    }
-    c(paramWindow);
-  }
-  
-  public static boolean a()
-  {
-    return (bhtb.i()) && (((jdField_d_of_type_Boolean) && (bdep.b())) || (bdep.d()));
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    if (!jdField_e_of_type_Boolean)
-    {
-      f = bnle.b(paramActivity);
-      jdField_e_of_type_Boolean = true;
-    }
-    return f;
-  }
-  
-  public static boolean a(Window paramWindow)
-  {
-    Rect localRect = new Rect();
-    paramWindow.getDecorView().getWindowVisibleDisplayFrame(localRect);
-    if ((localRect.top <= 0) || (localRect.top > 200))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "invalid status height: " + localRect.top);
+    boolean bool2 = VersionUtils.i();
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    if (Math.abs(localRect.top - jdField_c_of_type_Int) > 1)
+    if ((enableStatusBarDarkModeForMIUI) && (SystemUtil.d())) {
+      return setStatusBarDarkModeForMIUI(paramWindow, paramBoolean);
+    }
+    if (SystemUtil.g()) {
+      bool1 = setStatusBarDarkModeForFlyme(paramWindow, paramBoolean);
+    }
+    return bool1;
+  }
+  
+  private static boolean setStatusBarDarkModeForFlyme(Window paramWindow, boolean paramBoolean)
+  {
+    boolean bool2 = false;
+    boolean bool3 = false;
+    if (paramWindow != null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("systembar", 2, "correct status bar height: " + jdField_c_of_type_Int + ", top = " + localRect.top);
+      localLayoutParams = paramWindow.getAttributes();
+      Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+      localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
+      localField1.setAccessible(true);
+      localField2.setAccessible(true);
+      i = localField1.getInt(null);
+      j = localField2.getInt(localLayoutParams);
+      if (!paramBoolean) {
+        break label195;
       }
-      jdField_c_of_type_Int = localRect.top;
-      BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 0).edit().putInt("status_bar_height", jdField_c_of_type_Int).apply();
-      jdField_c_of_type_Boolean = true;
-      return true;
+      i |= j;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        WindowManager.LayoutParams localLayoutParams;
+        Field localField2;
+        int j;
+        boolean bool1;
+        continue;
+        int i = (i ^ 0xFFFFFFFF) & j;
+      }
+    }
+    localField2.setInt(localLayoutParams, i);
+    paramWindow.setAttributes(localLayoutParams);
+    bool1 = true;
+    break label120;
+    bool1 = bool3;
+    if (QLog.isColorLevel())
+    {
+      QLog.e(TAG, 2, "setStatusBarDarkModeForFlyme: failed");
+      bool1 = bool3;
+    }
+    label120:
+    bool2 = bool1;
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramWindow = paramWindow.getDecorView();
+      bool2 = bool1;
+      if (paramWindow != null)
+      {
+        j = paramWindow.getSystemUiVisibility();
+        if (paramBoolean) {
+          i = j | 0x2000;
+        } else {
+          i = j & 0xFFFFDFFF;
+        }
+        bool2 = bool1;
+        if (i != j)
+        {
+          paramWindow.setSystemUiVisibility(i);
+          bool2 = bool1;
+        }
+      }
+    }
+    return bool2;
+  }
+  
+  private static boolean setStatusBarDarkModeForMIUI(Window paramWindow, boolean paramBoolean)
+  {
+    Object localObject;
+    if ((paramWindow != null) && (enableStatusBarDarkModeForMIUI)) {
+      localObject = paramWindow.getClass();
+    }
+    try
+    {
+      Class localClass = Class.forName("android.view.MiuiWindowManager$LayoutParams");
+      j = localClass.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE").getInt(localClass);
+      localObject = ((Class)localObject).getMethod("setExtraFlags", new Class[] { Integer.TYPE, Integer.TYPE });
+      if (!paramBoolean) {
+        break label126;
+      }
+      i = j;
+    }
+    catch (Exception paramWindow)
+    {
+      for (;;)
+      {
+        int j;
+        continue;
+        int i = 0;
+      }
+    }
+    ((Method)localObject).invoke(paramWindow, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    return true;
+    enableStatusBarDarkModeForMIUI = false;
+    if (QLog.isColorLevel()) {
+      QLog.e(TAG, 2, "setStatusBarDarkModeForMIUI: failed");
     }
     return false;
   }
   
-  public static boolean a(Window paramWindow, boolean paramBoolean)
+  public static boolean setStatusTextColor(boolean paramBoolean, Window paramWindow)
   {
-    if (!bhtb.i()) {}
-    do
-    {
-      return false;
-      if ((jdField_d_of_type_Boolean) && (bdep.b())) {
-        return b(paramWindow, paramBoolean);
-      }
-    } while (!bdep.d());
-    return c(paramWindow, paramBoolean);
-  }
-  
-  public static boolean a(boolean paramBoolean, Window paramWindow)
-  {
-    if (ajeq.e()) {
-      return c(paramWindow, paramBoolean);
+    if (OSUtils.isFlymeOS()) {
+      return setStatusBarDarkModeForFlyme(paramWindow, paramBoolean);
     }
-    if (ajeq.a()) {
-      return d(paramWindow, paramBoolean);
+    if (OSUtils.isMIUI()) {
+      return processMIUI(paramWindow, paramBoolean);
     }
+    String str;
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      if (Build.VERSION.SDK_INT >= 23)
+      if (Build.VERSION.SDK_INT >= 23) {
+        try
+        {
+          paramWindow.getDecorView().setSystemUiVisibility(9216);
+          return true;
+        }
+        catch (Exception paramWindow)
+        {
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("useDark setSystemUiVisibility failed");
+          localStringBuilder.append(paramWindow.toString());
+          QLog.e(str, 1, localStringBuilder.toString());
+        }
+      }
+    }
+    else if (Build.VERSION.SDK_INT >= 23) {
+      try
       {
-        paramWindow.getDecorView().setSystemUiVisibility(9216);
+        paramWindow.getDecorView().setSystemUiVisibility(1280);
         return true;
       }
-    }
-    else if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramWindow.getDecorView().setSystemUiVisibility(1280);
-      return true;
+      catch (Exception paramWindow)
+      {
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("useLight setSystemUiVisibility failed");
+        localStringBuilder.append(paramWindow.toString());
+        QLog.e(str, 1, localStringBuilder.toString());
+      }
     }
     return false;
   }
   
-  public static int b()
-  {
-    a();
-    return jdField_e_of_type_Int;
-  }
-  
-  public static void b(Window paramWindow)
+  public static void setTranslucentStatus(Window paramWindow)
   {
     if (Build.VERSION.SDK_INT >= 24) {}
     try
@@ -270,253 +629,37 @@ public class ImmersiveUtils
     }
     catch (Exception paramWindow)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "反射修改状态栏颜色失败");
+      label36:
+      break label36;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(TAG, 2, "反射修改状态栏颜色失败");
     }
   }
   
-  @TargetApi(23)
-  private static void b(Window paramWindow, boolean paramBoolean)
+  public static boolean supportStatusBarDarkMode()
   {
-    paramWindow = paramWindow.getDecorView();
-    if (paramBoolean)
+    return (VersionUtils.i()) && (((enableStatusBarDarkModeForMIUI) && (SystemUtil.d())) || (SystemUtil.g()));
+  }
+  
+  public static void trySetImmersiveStatusBar(Window paramWindow)
+  {
+    if (VersionUtils.j())
     {
-      paramWindow.setSystemUiVisibility(9216);
+      paramWindow.clearFlags(67108864);
+      paramWindow.getDecorView().setSystemUiVisibility(1280);
+      paramWindow.addFlags(-2147483648);
+      paramWindow.setStatusBarColor(0);
       return;
     }
-    paramWindow.setSystemUiVisibility(paramWindow.getSystemUiVisibility() & 0xFFFFDFFF);
-  }
-  
-  public static boolean b()
-  {
-    return ("vivo".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT >= 21);
-  }
-  
-  private static boolean b(Window paramWindow, boolean paramBoolean)
-  {
-    if ((paramWindow != null) && (jdField_d_of_type_Boolean))
-    {
-      Object localObject = paramWindow.getClass();
-      try
-      {
-        Class localClass = Class.forName("android.view.MiuiWindowManager$LayoutParams");
-        int j = localClass.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE").getInt(localClass);
-        localObject = ((Class)localObject).getMethod("setExtraFlags", new Class[] { Integer.TYPE, Integer.TYPE });
-        if (paramBoolean) {}
-        for (int i = j;; i = 0)
-        {
-          ((Method)localObject).invoke(paramWindow, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          return true;
-        }
-        return false;
-      }
-      catch (Exception paramWindow)
-      {
-        jdField_d_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "setStatusBarDarkModeForMIUI: failed");
-        }
-      }
-    }
-  }
-  
-  private static void c(Window paramWindow)
-  {
-    try
-    {
-      if ((Build.VERSION.SDK_INT >= 23) || (b()))
-      {
-        paramWindow.clearFlags(67108864);
-        paramWindow.getDecorView().setSystemUiVisibility(1280);
-        paramWindow.addFlags(-2147483648);
-        paramWindow.setStatusBarColor(0);
-      }
-      return;
-    }
-    catch (Exception paramWindow)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramWindow, new Object[0]);
-    }
-  }
-  
-  public static boolean c()
-  {
-    boolean bool1 = false;
-    boolean bool2 = ajeq.a();
-    boolean bool3 = ajeq.e();
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((bool2) || (bool3) || (i != 0)) {
-        bool1 = true;
-      }
-      return bool1;
-    }
-  }
-  
-  private static boolean c(Window paramWindow, boolean paramBoolean)
-  {
-    boolean bool = true;
-    if (paramWindow != null) {
-      for (;;)
-      {
-        try
-        {
-          WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
-          Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
-          Field localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
-          localField1.setAccessible(true);
-          localField2.setAccessible(true);
-          i = localField1.getInt(null);
-          j = localField2.getInt(localLayoutParams);
-          if (!paramBoolean) {
-            continue;
-          }
-          i |= j;
-          localField2.setInt(localLayoutParams, i);
-          paramWindow.setAttributes(localLayoutParams);
-        }
-        catch (Exception localException)
-        {
-          int j;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "setStatusBarDarkModeForFlyme: failed");
-          bool = false;
-          continue;
-          int i = j & 0xFFFFDFFF;
-          continue;
-        }
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          paramWindow = paramWindow.getDecorView();
-          if (paramWindow != null)
-          {
-            j = paramWindow.getSystemUiVisibility();
-            if (!paramBoolean) {
-              continue;
-            }
-            i = j | 0x2000;
-            if (i != j) {
-              paramWindow.setSystemUiVisibility(i);
-            }
-          }
-        }
-        return bool;
-        i = (i ^ 0xFFFFFFFF) & j;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean d(Window paramWindow, boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      b(paramWindow, paramBoolean);
-      return true;
-    }
-    return e(paramWindow, paramBoolean);
-  }
-  
-  private static boolean e(Window paramWindow, boolean paramBoolean)
-  {
-    Object localObject = paramWindow.getClass();
-    try
-    {
-      Class localClass = Class.forName("android.view.MiuiWindowManager$LayoutParams");
-      int j = localClass.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE").getInt(localClass);
-      localObject = ((Class)localObject).getMethod("setExtraFlags", new Class[] { Integer.TYPE, Integer.TYPE });
-      if (paramBoolean) {}
-      for (int i = j;; i = 0)
-      {
-        ((Method)localObject).invoke(paramWindow, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        return true;
-      }
-      return false;
-    }
-    catch (Exception paramWindow)
-    {
-      paramWindow.printStackTrace();
-    }
-  }
-  
-  public static int getStatusBarHeight(Context paramContext)
-  {
-    float f2 = 1.0F;
-    int i = 0;
-    SharedPreferences localSharedPreferences;
-    float f1;
-    if (jdField_c_of_type_Int == -1)
-    {
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
-      jdField_c_of_type_Int = localSharedPreferences.getInt("status_bar_height", -1);
-      if (jdField_c_of_type_Int == -1)
-      {
-        Resources localResources = paramContext.getResources();
-        int j = localResources.getIdentifier("status_bar_height", "dimen", "android");
-        if (j > 0) {
-          i = localResources.getDimensionPixelSize(j);
-        }
-        f1 = alsf.a.density;
-        if (QLog.isColorLevel()) {
-          QLog.d("systembar", 2, "getStatusBarHeight org=" + i + ", sys density=" + f1 + ", cur density=" + paramContext.getResources().getDisplayMetrics().density);
-        }
-        f1 /= paramContext.getResources().getDisplayMetrics().density;
-        if (i > 0) {
-          break label257;
-        }
-        if (f1 > 0.0F) {
-          break label254;
-        }
-        f1 = 1.0F;
-      }
-    }
-    label254:
-    for (;;)
-    {
-      i = a(f1 * 25.0F);
-      jdField_c_of_type_Int = i;
-      localSharedPreferences.edit().putInt("status_bar_height", jdField_c_of_type_Int).apply();
-      if (QLog.isColorLevel()) {
-        QLog.i("systembar", 2, "height=" + jdField_c_of_type_Int);
-      }
-      return jdField_c_of_type_Int;
-    }
-    label257:
-    float f3 = i;
-    if (f1 <= 0.0F) {
-      f1 = f2;
-    }
-    for (;;)
-    {
-      i = (int)Math.ceil(f3 * f1 + 0.5F);
-      break;
-    }
-  }
-  
-  public static int isSupporImmersive()
-  {
-    if (jdField_a_of_type_Int != -1) {
-      return jdField_a_of_type_Int;
-    }
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      jdField_a_of_type_Int = 0;
-      return jdField_a_of_type_Int;
-    }
-    String str1 = Build.MANUFACTURER.toUpperCase();
-    String str2 = str1 + "-" + Build.MODEL;
-    if ((str1.endsWith("BBK")) || ((str1.endsWith("VIVO")) && (Build.VERSION.SDK_INT < 20)) || (str2.equals("OPPO-3007"))) {}
-    for (jdField_a_of_type_Int = 0;; jdField_a_of_type_Int = 1) {
-      return jdField_a_of_type_Int;
+    if (VersionUtils.i()) {
+      paramWindow.addFlags(67108864);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.immersive.ImmersiveUtils
  * JD-Core Version:    0.7.0.1
  */

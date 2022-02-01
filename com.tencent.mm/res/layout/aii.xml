@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/lx"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:paddingLeft="@dimen/dl" android:paddingRight="@dimen/dl" style="@style/mp">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:id="@id/bvz" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lg" />
-        </LinearLayout>
-        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/dgh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="75.0dip" android:minHeight="30.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/t_" android:gravity="center" android:layout_gravity="center" android:id="@id/dgi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:minHeight="30.0dip" android:text="@string/c3d" />
-            <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/dgj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-        </FrameLayout>
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:id="@id/dsz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dt2" android:background="@drawable/a0y" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_alignParentStart="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dt3" android:layout_width="17.5dip" android:layout_height="17.5dip" android:src="@raw/icons_filled_mic_off" android:layout_centerInParent="true" app:iconColor="@color/al6" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dt1" android:background="@drawable/yw" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/df" android:layout_alignParentEnd="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/dt0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dr3" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" />
+    </RelativeLayout>
+</RelativeLayout>

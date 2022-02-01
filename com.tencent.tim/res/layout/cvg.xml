@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.qmui.alpha.QMUIAlphaLinearLayout android:orientation="vertical" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/bqc" android:textColor="@color/atq" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/f9d" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/bqc" android:textColor="@color/atu" android:ellipsize="end" android:id="@id/i9" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:singleLine="true" />
+    <TextView android:textSize="@dimen/bqc" android:textColor="@color/atu" android:ellipsize="end" android:id="@id/ny2" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-2.0dip" android:maxLines="1" />
+</com.tencent.qqmail.qmui.alpha.QMUIAlphaLinearLayout>

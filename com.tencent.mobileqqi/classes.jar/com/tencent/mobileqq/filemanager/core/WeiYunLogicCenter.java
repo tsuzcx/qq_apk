@@ -28,6 +28,7 @@ import com.weiyun.sdk.IWyTaskManager;
 import com.weiyun.sdk.IWyTaskManager.Task;
 import com.weiyun.sdk.WyConfiguration;
 import com.weiyun.sdk.WyFileSystemFactory;
+import fwz;
 import fxa;
 import fxb;
 import fxc;
@@ -38,7 +39,6 @@ import fxg;
 import fxh;
 import fxi;
 import fxj;
-import fxk;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -256,7 +256,7 @@ public class WeiYunLogicCenter
     if (paramBoolean) {}
     for (paramInt = i;; paramInt = 2)
     {
-      ((IWyFileSystem)localObject1).getOfflineFileThumbnail(paramString, (IWyFileSystem.ThumbnailType)localObject2, paramInt, paramObject, new fxi(this));
+      ((IWyFileSystem)localObject1).getOfflineFileThumbnail(paramString, (IWyFileSystem.ThumbnailType)localObject2, paramInt, paramObject, new fxh(this));
       return null;
     }
   }
@@ -290,7 +290,7 @@ public class WeiYunLogicCenter
       }
       return null;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getThumbnail(paramString1, IWyFileSystem.ThumbnailType.values()[paramInt], paramString2, 0L, paramObject, new fxh(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getThumbnail(paramString1, IWyFileSystem.ThumbnailType.values()[paramInt], paramString2, 0L, paramObject, new fxg(this));
     return null;
   }
   
@@ -308,7 +308,7 @@ public class WeiYunLogicCenter
       return;
     }
     this.b = new ArrayList();
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCategory(new fxa(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCategory(new fwz(this));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -324,7 +324,7 @@ public class WeiYunLogicCenter
       }
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listOfflineFiles(paramInt1, paramInt2, paramInt3, new fxe(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listOfflineFiles(paramInt1, paramInt2, paramInt3, new fxd(this));
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, int paramInt, boolean paramBoolean)
@@ -385,7 +385,7 @@ public class WeiYunLogicCenter
           }
         }
       }
-      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, null, l1, i, null, localObject, new fxf(this, paramFileManagerEntity, paramInt));
+      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, null, l1, i, null, localObject, new fxe(this, paramFileManagerEntity, paramInt));
       FileManagerUtil.b(paramFileManagerEntity.nSessionId);
       return;
     }
@@ -461,7 +461,7 @@ public class WeiYunLogicCenter
           }
         }
       }
-      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, paramFileManagerEntity.strFileMd5, l1, 102, null, paramString, new fxg(this, paramFileManagerEntity, localTroopFileTransferManager, localTroopFileStatusInfo));
+      this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().sendWyFile2Ftn(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.nWeiYunSrcType, paramFileManagerEntity.strFileMd5, l1, 102, null, paramString, new fxf(this, paramFileManagerEntity, localTroopFileTransferManager, localTroopFileStatusInfo));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.nSessionId);
       return;
     }
@@ -518,7 +518,7 @@ public class WeiYunLogicCenter
       while (this.jdField_a_of_type_JavaUtilLinkedHashMap != null)
       {
         this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCloudFiles(paramString, paramInt1, paramInt2, paramLong, new fxd(this, paramString));
+        this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().listCloudFiles(paramString, paramInt1, paramInt2, paramLong, new fxc(this, paramString));
         return;
       }
     } while (!QLog.isColorLevel());
@@ -531,7 +531,7 @@ public class WeiYunLogicCenter
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, strFileId[" + String.valueOf(paramString1) + "],strFileName[" + paramString2 + "]");
     }
     FMDataCache.a(paramString1, paramString2);
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().deleteWyFile(paramString1, paramInt, new fxk(this, paramString1, paramString2));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().deleteWyFile(paramString1, paramInt, new fxj(this, paramString1, paramString2));
   }
   
   public void a(String paramString1, String paramString2)
@@ -547,7 +547,7 @@ public class WeiYunLogicCenter
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 40, new Object[] { Integer.valueOf(0), "network error" });
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().getPreviewUrl(paramString1, paramString2, new fxj(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().getPreviewUrl(paramString1, paramString2, new fxi(this));
   }
   
   public boolean a()
@@ -565,7 +565,7 @@ public class WeiYunLogicCenter
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd");
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().needVerifyIndependentPassword(new fxb(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().needVerifyIndependentPassword(new fxa(this));
   }
   
   public void b(String paramString)
@@ -581,7 +581,7 @@ public class WeiYunLogicCenter
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131562451) });
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().verifyIndependentPassword(paramString, null, new fxc(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyFileSystem.getCloudFileSystem().verifyIndependentPassword(paramString, null, new fxb(this));
   }
   
   public void c()

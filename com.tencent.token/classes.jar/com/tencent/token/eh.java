@@ -1,12 +1,14 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import android.os.Build.VERSION;
 
-public class eh
+public final class eh
 {
-  public boolean a;
-  public ew b;
-  public Serializable c;
+  @Deprecated
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT >= 27;
+  }
 }
 
 

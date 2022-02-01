@@ -7,7 +7,7 @@
     <EditText android:textSize="18.0sp" android:textColor="@color/k" android:id="@id/hgb" android:background="#fff6f7f8" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip" android:singleLine="true" android:maxLength="16" android:layout_below="@id/dialogText" />
     <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_marginTop="24.0dip" android:layout_below="@id/hgb" />
     <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/biw">
-        <TextView android:textSize="18.0sp" android:textColor="@color/k" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/rmw" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/k" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/j6l" android:singleLine="true" android:layout_weight="1.0" />
         <View android:id="@id/aet" android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
         <TextView android:textSize="18.0sp" android:textColor="@color/k" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/rnm" android:singleLine="true" android:layout_weight="1.0" />
     </LinearLayout>
@@ -18,6 +18,6 @@
             <TextView android:textSize="18.0sp" android:textColor="@color/a8t" android:gravity="center" android:layout_gravity="center" android:id="@id/bjb" android:clickable="false" android:layout_width="wrap_content" android:layout_height="@dimen/ly" android:text="@string/rn2" android:singleLine="true" android:drawableRight="@drawable/gcq" android:drawablePadding="5.0dip" />
         </FrameLayout>
         <View android:id="@id/aev" android:background="@color/i5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/m2" />
-        <TextView android:textSize="18.0sp" android:textColor="@color/a8t" android:gravity="center" android:id="@id/bkj" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/rnc" android:singleLine="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/a8t" android:gravity="center" android:id="@id/bkj" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/j6l" android:singleLine="true" />
     </LinearLayout>
 </RelativeLayout>

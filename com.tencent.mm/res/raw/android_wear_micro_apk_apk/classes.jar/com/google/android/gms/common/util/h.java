@@ -4,9 +4,9 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static Pattern Li = null;
+  private static Pattern MX = null;
   
-  public static int bh(int paramInt)
+  public static int bB(int paramInt)
   {
     return paramInt / 1000;
   }

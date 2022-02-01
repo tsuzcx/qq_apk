@@ -30,13 +30,14 @@ public final class ImageRetrievalLogic$RetrievalItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 25, 34, 42, 48, 58, 64, 810, 818, 826, 834, 840, 850 }, new String[] { "iClass", "sClass", "dProb", "sItemID", "stLabel", "iSource", "sPicUrl", "iAutoJump", "sTitle", "sWiki", "sJumpUrl", "sCdbRes", "iNeedCheckLBS", "sImageId" }, new Object[] { Integer.valueOf(0), "", Double.valueOf(0.0D), "", null, Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", localByteStringMicro, Integer.valueOf(0), "" }, RetrievalItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 25, 34, 42, 48, 58, 64, 810, 818, 826, 834, 840, 850 }, new String[] { "iClass", "sClass", "dProb", "sItemID", "stLabel", "iSource", "sPicUrl", "iAutoJump", "sTitle", "sWiki", "sJumpUrl", "sCdbRes", "iNeedCheckLBS", "sImageId" }, new Object[] { localInteger, "", Double.valueOf(0.0D), "", null, localInteger, "", localInteger, "", "", "", localByteStringMicro, localInteger, "" }, RetrievalItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ImageRetrievalLogic.RetrievalItem
  * JD-Core Version:    0.7.0.1
  */

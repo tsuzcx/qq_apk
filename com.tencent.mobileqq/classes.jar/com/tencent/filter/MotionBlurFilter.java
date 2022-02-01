@@ -24,22 +24,66 @@ public class MotionBlurFilter
   private void recalculateTexelOffsets()
   {
     float[] arrayOfFloat = new float[2];
-    float f = this.mHeight / this.mWidth;
-    if (this.mBlurSize <= 2.0F)
+    float f1 = this.mHeight / this.mWidth;
+    float f2 = this.mBlurSize;
+    if (f2 <= 2.0F)
     {
-      arrayOfFloat[0] = ((float)(this.mBlurSize * Math.cos(this.mBlurAngle * 3.141592653589793D / 180.0D) * f / this.mWidth));
-      arrayOfFloat[1] = ((float)(this.mBlurSize * Math.sin(this.mBlurAngle * 3.141592653589793D / 180.0D) / this.mWidth));
+      d1 = f2;
+      d2 = this.mBlurAngle;
+      Double.isNaN(d2);
+      d2 = Math.cos(d2 * 3.141592653589793D / 180.0D);
+      Double.isNaN(d1);
+      d3 = f1;
+      Double.isNaN(d3);
+      d4 = this.mWidth;
+      Double.isNaN(d4);
+      arrayOfFloat[0] = ((float)(d1 * d2 * d3 / d4));
+      d1 = this.mBlurSize;
+      d2 = this.mBlurAngle;
+      Double.isNaN(d2);
+      d2 = Math.sin(d2 * 3.141592653589793D / 180.0D);
+      Double.isNaN(d1);
+      d3 = this.mWidth;
+      Double.isNaN(d3);
+      arrayOfFloat[1] = ((float)(d1 * d2 / d3));
       addParam(new UniformParam.FloatsParam("directionalTexelStep", arrayOfFloat));
       arrayOfFloat[0] = 0.0F;
       arrayOfFloat[1] = 0.0F;
       this.filter1.addParam(new UniformParam.FloatsParam("directionalTexelStep", arrayOfFloat));
       return;
     }
-    arrayOfFloat[0] = ((float)(2.0D * Math.cos(this.mBlurAngle * 3.141592653589793D / 180.0D) * f / this.mWidth));
-    arrayOfFloat[1] = ((float)(2.0D * Math.sin(this.mBlurAngle * 3.141592653589793D / 180.0D) / this.mWidth));
+    double d1 = this.mBlurAngle;
+    Double.isNaN(d1);
+    double d2 = Math.cos(d1 * 3.141592653589793D / 180.0D);
+    d1 = f1;
+    Double.isNaN(d1);
+    double d3 = this.mWidth;
+    Double.isNaN(d3);
+    arrayOfFloat[0] = ((float)(d2 * 2.0D * d1 / d3));
+    d2 = this.mBlurAngle;
+    Double.isNaN(d2);
+    d2 = Math.sin(d2 * 3.141592653589793D / 180.0D);
+    d3 = this.mWidth;
+    Double.isNaN(d3);
+    arrayOfFloat[1] = ((float)(d2 * 2.0D / d3));
     addParam(new UniformParam.FloatsParam("directionalTexelStep", arrayOfFloat));
-    arrayOfFloat[0] = ((float)((this.mBlurSize - 2.0F) * Math.cos(this.mBlurAngle * 3.141592653589793D / 180.0D) * f / this.mWidth));
-    arrayOfFloat[1] = ((float)((this.mBlurSize - 2.0F) * Math.sin(this.mBlurAngle * 3.141592653589793D / 180.0D) / this.mWidth));
+    d2 = this.mBlurSize - 2.0F;
+    d3 = this.mBlurAngle;
+    Double.isNaN(d3);
+    d3 = Math.cos(d3 * 3.141592653589793D / 180.0D);
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    double d4 = this.mWidth;
+    Double.isNaN(d4);
+    arrayOfFloat[0] = ((float)(d2 * d3 * d1 / d4));
+    d1 = this.mBlurSize - 2.0F;
+    d2 = this.mBlurAngle;
+    Double.isNaN(d2);
+    d2 = Math.sin(d2 * 3.141592653589793D / 180.0D);
+    Double.isNaN(d1);
+    d3 = this.mWidth;
+    Double.isNaN(d3);
+    arrayOfFloat[1] = ((float)(d1 * d2 / d3));
     this.filter1.addParam(new UniformParam.FloatsParam("directionalTexelStep", arrayOfFloat));
   }
   
@@ -54,9 +98,10 @@ public class MotionBlurFilter
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 != this.mWidth) || (paramInt3 != this.mHeight))
+    float f = paramInt2;
+    if ((f != this.mWidth) || (paramInt3 != this.mHeight))
     {
-      this.mWidth = paramInt2;
+      this.mWidth = f;
       this.mHeight = paramInt3;
       recalculateTexelOffsets();
     }
@@ -65,8 +110,9 @@ public class MotionBlurFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    if (this.newFrame != null) {
-      this.newFrame.clear();
+    Frame localFrame = this.newFrame;
+    if (localFrame != null) {
+      localFrame.clear();
     }
   }
   
@@ -91,7 +137,7 @@ public class MotionBlurFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.MotionBlurFilter
  * JD-Core Version:    0.7.0.1
  */

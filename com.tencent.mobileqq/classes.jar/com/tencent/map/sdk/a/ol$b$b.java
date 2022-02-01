@@ -22,8 +22,9 @@ final class ol$b$b<T>
     if (Thread.currentThread() != this.a.g.getLooper().getThread())
     {
       os.a("DispatchUtil").a();
-      this.a.f = paramT;
-      this.a.a(this.a.i, this.a.g, this.a.k);
+      ol.b.a locala = this.a;
+      locala.f = paramT;
+      locala.a(locala.i, this.a.g, this.a.k);
       return;
     }
     os.a("DispatchUtil").a();
@@ -37,7 +38,9 @@ final class ol$b$b<T>
       if (this.a.e.isDone())
       {
         os.a locala = os.a("DispatchUtil");
-        new StringBuilder("future:").append(this.a.e).toString();
+        localStringBuilder = new StringBuilder("future:");
+        localStringBuilder.append(this.a.e);
+        localStringBuilder.toString();
         locala.a();
         try
         {
@@ -49,15 +52,17 @@ final class ol$b$b<T>
           a(this.a.e.get());
           return;
         }
-        catch (ExecutionException localExecutionException)
-        {
-          Log.wtf("DispatchUtil", localExecutionException);
-          return;
-        }
         catch (InterruptedException localInterruptedException)
         {
+          this.a.g.removeCallbacks(this);
           Log.wtf("DispatchUtil", localInterruptedException);
           Thread.currentThread().interrupt();
+          return;
+        }
+        catch (ExecutionException localExecutionException)
+        {
+          this.a.g.removeCallbacks(this);
+          Log.wtf("DispatchUtil", localExecutionException);
           return;
         }
       }
@@ -68,13 +73,20 @@ final class ol$b$b<T>
         return;
       }
       os.a("DispatchUtil").a();
-      this.a.a(this.a.i, this.a.g, this.a.k);
+      localObject = this.a;
+      ((ol.b.a)localObject).a(((ol.b.a)localObject).i, this.a.g, this.a.k);
+      return;
     }
+    Object localObject = os.a("DispatchUtil");
+    StringBuilder localStringBuilder = new StringBuilder("future:");
+    localStringBuilder.append(this.a.e);
+    localStringBuilder.toString();
+    ((os.a)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ol.b.b
  * JD-Core Version:    0.7.0.1
  */

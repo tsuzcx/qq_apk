@@ -1,49 +1,22 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.locks.ReentrantLock;
+import java.lang.ref.WeakReference;
 
-final class QQLiveImage$5
+class QQLiveImage$5
   implements Runnable
 {
+  QQLiveImage$5(QQLiveImage paramQQLiveImage, int paramInt) {}
+  
   public void run()
   {
-    try
-    {
-      QQLiveImage.mLockForImageList.lock();
-      if (QQLiveImage.access$200() != null)
-      {
-        int i = 0;
-        while (i < QQLiveImage.access$200().size())
-        {
-          QQLiveImage localQQLiveImage = (QQLiveImage)QQLiveImage.access$200().get(i);
-          if (localQQLiveImage != null)
-          {
-            localQQLiveImage.recyleFor2Background();
-            QLog.i(QQLiveImage.TAG, 1, "recyleFor2Background().... i " + i + ", ID: " + localQQLiveImage.ID);
-          }
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QQLiveImage.TAG, 2, "recyleFor2Background()", localException);
-      }
-      return;
-    }
-    finally
-    {
-      QQLiveImage.mLockForImageList.unlock();
+    if ((this.this$0.mOnStateListener != null) && (this.this$0.mOnStateListener.get() != null)) {
+      ((QQLiveDrawable.OnStateListener)this.this$0.mOnStateListener.get()).onStateChange(QQLiveImage.access$100(this.this$0), this.this$0.mParams, this.val$state, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.QQLiveImage.5
  * JD-Core Version:    0.7.0.1
  */

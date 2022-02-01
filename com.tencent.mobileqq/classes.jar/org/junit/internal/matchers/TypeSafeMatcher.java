@@ -37,7 +37,11 @@ public abstract class TypeSafeMatcher<T>
       }
       paramClass = paramClass.getSuperclass();
     }
-    throw new Error("Cannot determine correct type for matchesSafely() method.");
+    paramClass = new Error("Cannot determine correct type for matchesSafely() method.");
+    for (;;)
+    {
+      throw paramClass;
+    }
   }
   
   private static boolean isMatchesSafelyMethod(Method paramMethod)
@@ -54,7 +58,7 @@ public abstract class TypeSafeMatcher<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.matchers.TypeSafeMatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,21 @@
 import com.tencent.mobileqq.activity.MyPublishedHornActivity;
 import com.tencent.mobileqq.app.NearHornHandler;
 
-class cwn
+public class cwn
   implements Runnable
 {
-  cwn(cwm paramcwm) {}
+  public cwn(MyPublishedHornActivity paramMyPublishedHornActivity, Boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.c(this.a.a.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (String str = "1";; str = "0")
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.b, str, this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
   }
 }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/abk" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/la" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m0"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/fq1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/rf" android:id="@id/fq2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dl" />
-    </LinearLayout>
-    <ImageView android:id="@id/fq3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:src="@drawable/a0c" />
+    <TextView android:id="@id/fwp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:background="@drawable/acb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/BW_0" android:id="@id/fws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:text="@string/g_q" style="@style/hr" />
+        <TextView android:id="@id/fwj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:text="@string/g_3" android:layout_below="@id/fws" style="@style/hu" />
+        <TextView android:textColor="@color/Purple" android:id="@id/fwl" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/d0" android:text="@string/g_2" android:layout_below="@id/fwj" android:layout_centerHorizontal="true" style="@style/qh" />
+    </RelativeLayout>
 </LinearLayout>

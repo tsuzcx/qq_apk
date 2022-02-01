@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -38,7 +39,15 @@ public class QCircleMessageNoticeRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudRead.StGetNoticeListRsp localStGetNoticeListRsp = new FeedCloudRead.StGetNoticeListRsp();
-    localStGetNoticeListRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetNoticeListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetNoticeListRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetNoticeListRsp;
   }
   
@@ -47,14 +56,14 @@ public class QCircleMessageNoticeRequest
     return "FeedCloudSvr.trpc.feedcloud.commreader.ComReader.GetNoticeList";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mRequest.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleMessageNoticeRequest
  * JD-Core Version:    0.7.0.1
  */

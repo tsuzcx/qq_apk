@@ -1,6 +1,6 @@
 package com.tencent.liteav.basic.structs;
 
-import com.tencent.liteav.basic.d.a;
+import com.tencent.liteav.basic.opengl.a;
 
 public class b
 {

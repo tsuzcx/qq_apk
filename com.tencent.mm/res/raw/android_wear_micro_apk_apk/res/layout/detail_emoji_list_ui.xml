@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/container_view" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.wearable.view.WearableListView android:id="@id/detail_emoji_list_lv" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:dividerHeight="2.0dip" />
+    <TextView android:textColor="@color/white" android:gravity="center" android:id="@id/empty_tv" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/empty_emoji_list" android:layout_centerInParent="true" />
+    <include layout="@layout/wait_layout" />
+</RelativeLayout>

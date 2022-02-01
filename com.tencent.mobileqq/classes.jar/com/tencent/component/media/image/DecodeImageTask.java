@@ -47,11 +47,11 @@ public class DecodeImageTask
 {
   private static final int MAX_CROP_PIC_WIDTH = 500;
   private static final int MAX_CROP_TRY_TIME = 3;
-  private static final long MIN_LOG_DECODE_COST;
+  private static final long MIN_LOG_DECODE_COST = TimeUnit.SECONDS.toNanos(2L);
   private static String TAG = "DecodeImageTask";
   private static ConcurrentHashMap<Integer, Integer> mImageKey2SampleSizeMap;
-  private static ConcurrentHashMap<String, DecodeImageTask.ImageAttri> mImagePath2AttriMap;
-  private static ConcurrentHashMap<String, Integer> mImagePath2RotationMap;
+  private static ConcurrentHashMap<String, DecodeImageTask.ImageAttri> mImagePath2AttriMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<String, Integer> mImagePath2RotationMap = new ConcurrentHashMap();
   private static BaseHandler mMainHandler;
   private static int mObjectPoolSize = 0;
   private static DecodeImageTask sPool;
@@ -60,9 +60,6 @@ public class DecodeImageTask
   
   static
   {
-    MIN_LOG_DECODE_COST = TimeUnit.SECONDS.toNanos(2L);
-    mImagePath2AttriMap = new ConcurrentHashMap();
-    mImagePath2RotationMap = new ConcurrentHashMap();
     mImageKey2SampleSizeMap = new ConcurrentHashMap();
     mMainHandler = new BaseHandler(Looper.getMainLooper());
     sPool = null;
@@ -96,66 +93,68 @@ public class DecodeImageTask
   
   private boolean decodeAnimateWebp(ImageKey paramImageKey)
   {
-    if ((paramImageKey == null) || (!AnimWebPHelper.isAnimWebpUrl(paramImageKey.url)) || (!AnimWebPHelper.isReady())) {
-      return false;
-    }
-    Object localObject = AnimWebPHelper.bytesFromFile(paramImageKey.filePath);
-    if ((localObject == null) || (!AnimWebPHelper.isAnimWebP((byte[])localObject))) {
-      return false;
-    }
-    localObject = new AnimWebpImage((byte[])localObject);
-    Drawable localDrawable = ((AnimWebpImage)localObject).getDrawable();
-    if (localDrawable == null)
+    if ((paramImageKey != null) && (AnimWebPHelper.isAnimWebpUrl(paramImageKey.url)))
     {
-      ImageManagerLog.e(TAG, "decodeWebp fail");
-      if (paramImageKey.options != null) {
-        paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 113);
+      if (!AnimWebPHelper.isReady()) {
+        return false;
       }
-      setResult(9, new Object[0]);
-      ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
-      ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+      Object localObject = AnimWebPHelper.bytesFromFile(paramImageKey.filePath);
+      if (localObject != null)
+      {
+        if (!AnimWebPHelper.isAnimWebP((byte[])localObject)) {
+          return false;
+        }
+        localObject = new AnimWebpImage((byte[])localObject);
+        Drawable localDrawable = ((AnimWebpImage)localObject).getDrawable();
+        if (localDrawable == null)
+        {
+          ImageManagerLog.e(TAG, "decodeWebp fail");
+          if (paramImageKey.options != null) {
+            paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 113);
+          }
+          setResult(9, new Object[0]);
+          ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
+          ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+          return true;
+        }
+        int i = paramImageKey.hashCodeEx();
+        ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, i, (Image)localObject, localDrawable, paramImageKey.options);
+        setResult(8, new Object[] { localDrawable, null, paramImageKey.urlKey, Integer.valueOf(i), localObject, localDrawable });
+        ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+        ImageTracer.endDecode(paramImageKey.url);
+        return true;
+      }
     }
-    for (;;)
-    {
-      return true;
-      int i = paramImageKey.hashCodeEx();
-      ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, i, (Image)localObject, localDrawable, paramImageKey.options);
-      setResult(8, new Object[] { localDrawable, null, paramImageKey.urlKey, Integer.valueOf(i), localObject, localDrawable });
-      ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-      ImageTracer.endDecode(paramImageKey.url);
-    }
+    return false;
   }
   
   private void decodeBounds(ImageKey paramImageKey, InputStream paramInputStream, DecodeImageTask.ImageAttri paramImageAttri, BitmapFactory.Options paramOptions)
   {
     paramOptions.inJustDecodeBounds = true;
     BitmapFactory.decodeStream(paramInputStream, null, paramOptions);
-    if (paramOptions.outMimeType != null) {}
-    for (paramInputStream = paramOptions.outMimeType;; paramInputStream = "unknown")
-    {
-      paramImageAttri.mimeType = paramInputStream;
-      paramImageAttri.srcHeight = paramOptions.outHeight;
-      paramImageAttri.srcWidth = paramOptions.outWidth;
-      mImagePath2AttriMap.put(paramImageKey.filePath, paramImageAttri);
-      return;
+    if (paramOptions.outMimeType != null) {
+      paramInputStream = paramOptions.outMimeType;
+    } else {
+      paramInputStream = "unknown";
     }
+    paramImageAttri.mimeType = paramInputStream;
+    paramImageAttri.srcHeight = paramOptions.outHeight;
+    paramImageAttri.srcWidth = paramOptions.outWidth;
+    mImagePath2AttriMap.put(paramImageKey.filePath, paramImageAttri);
   }
   
   private boolean decodeGif(ImageKey paramImageKey, DecodeImageTask.ImageAttri paramImageAttri)
   {
-    boolean bool1;
     if (ImageManagerEnv.g().isForceShutdownGif())
     {
       ImageManagerLog.w(TAG, "[decodeGif] force shutdown gif decode");
-      bool1 = false;
-      return bool1;
+      return false;
     }
-    int i;
-    NewGifImage localNewGifImage;
     if ((isGif(paramImageAttri.mimeType)) && (paramImageKey.options != null) && (paramImageKey.options.needShowGifAnimation))
     {
       int j = paramImageKey.options.clipWidth;
       int k = paramImageKey.options.clipHeight;
+      int i;
       if (j > 0)
       {
         i = k;
@@ -166,53 +165,48 @@ public class DecodeImageTask
         j = ImageManagerEnv.g().getScreenWidth();
         i = ImageManagerEnv.g().getScreenHeight();
       }
-      localNewGifImage = new NewGifImage(paramImageKey, j, i);
-      if (localNewGifImage == null) {
-        break label383;
-      }
-    }
-    label380:
-    label383:
-    for (paramImageAttri = localNewGifImage.getDrawable();; paramImageAttri = null)
-    {
+      NewGifImage localNewGifImage = new NewGifImage(paramImageKey, j, i);
+      Object localObject = localNewGifImage.getDrawable();
       ImageManagerEnv.g().reportImageDecodingResMTA("gif_collect", "normal/gif");
-      if (paramImageAttri != null)
+      if (localObject != null)
       {
-        if ((paramImageKey.options == null) || (!(paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor))) {
-          break label380;
+        paramImageAttri = (DecodeImageTask.ImageAttri)localObject;
+        if (paramImageKey.options != null)
+        {
+          paramImageAttri = (DecodeImageTask.ImageAttri)localObject;
+          if ((paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor)) {
+            paramImageAttri = paramImageKey.options.extraProcessor.doProcess((Drawable)localObject);
+          }
         }
-        paramImageAttri = paramImageKey.options.extraProcessor.doProcess(paramImageAttri);
-      }
-      for (;;)
-      {
         i = paramImageKey.hashCodeEx();
         ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, i, localNewGifImage, paramImageAttri, paramImageKey.options);
         setResult(8, new Object[] { paramImageAttri, null, paramImageKey.urlKey, Integer.valueOf(i), localNewGifImage, paramImageAttri });
         ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-        for (;;)
-        {
-          return true;
-          if ((!TextUtils.isEmpty(paramImageKey.filePath)) && (SharpPUtils.isSharpP(new File(paramImageKey.filePath))))
-          {
-            ImageManagerLog.e(TAG, "decodeGif url----" + paramImageKey.url + "   is not normal gif picture,try sharpP decode");
-            boolean bool2 = handlerSharpPDecodeMessage(paramImageKey);
-            bool1 = bool2;
-            if (bool2) {
-              break;
-            }
-            setResult(9, new Object[0]);
-            return bool2;
-          }
-          if (paramImageKey.options != null) {
-            paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 107);
-          }
-          setResult(9, new Object[0]);
-          ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
-          ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-        }
-        return false;
+        return true;
       }
+      if ((!TextUtils.isEmpty(paramImageKey.filePath)) && (SharpPUtils.isSharpP(new File(paramImageKey.filePath))))
+      {
+        paramImageAttri = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("decodeGif url----");
+        ((StringBuilder)localObject).append(paramImageKey.url);
+        ((StringBuilder)localObject).append("   is not normal gif picture,try sharpP decode");
+        ImageManagerLog.e(paramImageAttri, ((StringBuilder)localObject).toString());
+        boolean bool = handlerSharpPDecodeMessage(paramImageKey);
+        if (!bool) {
+          setResult(9, new Object[0]);
+        }
+        return bool;
+      }
+      if (paramImageKey.options != null) {
+        paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 107);
+      }
+      setResult(9, new Object[0]);
+      ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
+      ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+      return true;
     }
+    return false;
   }
   
   private boolean decodeImageFrame(ImageKey paramImageKey)
@@ -226,17 +220,15 @@ public class DecodeImageTask
       {
         ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, i, (Image)localObject, localDrawable, paramImageKey.options);
         setResult(8, new Object[] { localDrawable, null, paramImageKey.urlKey, Integer.valueOf(i), localObject, localDrawable });
-      }
-      for (;;)
-      {
         return true;
-        if ((paramImageKey != null) && (paramImageKey.options != null)) {
-          paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 106);
-        }
-        setResult(9, new Object[0]);
-        localObject = new File(paramImageKey.filePath);
-        ImageManagerEnv.g().reportImageDecodingTask("image/photogif", paramImageKey.url, ((File)localObject).length(), 51000, "decode gif failed, gif drawable is null", System.currentTimeMillis());
       }
+      if ((paramImageKey != null) && (paramImageKey.options != null)) {
+        paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 106);
+      }
+      setResult(9, new Object[0]);
+      localObject = new File(paramImageKey.filePath);
+      ImageManagerEnv.g().reportImageDecodingTask("image/photogif", paramImageKey.url, ((File)localObject).length(), 51000, "decode gif failed, gif drawable is null", System.currentTimeMillis());
+      return true;
     }
     return false;
   }
@@ -260,156 +252,189 @@ public class DecodeImageTask
     if ((paramImageKey.options != null) && (!TextUtils.isEmpty(paramImageKey.filePath)) && (paramImageKey.options.isNeedPieceLoad))
     {
       paramImageKey.options.isNeedPieceLoad = RegionImageUtil.isValidRegionImageFormat(paramImageKey.filePath);
-      ImageManagerLog.i(TAG, "decodeNormalImage Region decode file isValidRegionImageFormat with isNeedPieceLoad = " + paramImageKey.options.isNeedPieceLoad);
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("decodeNormalImage Region decode file isValidRegionImageFormat with isNeedPieceLoad = ");
+      ((StringBuilder)localObject2).append(paramImageKey.options.isNeedPieceLoad);
+      ImageManagerLog.i((String)localObject1, ((StringBuilder)localObject2).toString());
     }
     Object localObject1 = (Integer)mImageKey2SampleSizeMap.get(Integer.valueOf(j));
     int i;
-    label168:
-    label315:
-    Object localObject2;
-    StringBuilder localStringBuilder;
     if (localObject1 == null)
     {
       i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, paramImageAttri.srcWidth, paramImageAttri.srcHeight);
       mImageKey2SampleSizeMap.put(Integer.valueOf(j), Integer.valueOf(i));
-      if ((paramImageKey.options == null) || (paramImageKey.options.imageConfig == null)) {
-        break label638;
-      }
+    }
+    else
+    {
+      i = ((Integer)localObject1).intValue();
+    }
+    if ((paramImageKey.options != null) && (paramImageKey.options.imageConfig != null)) {
       paramOptions.inPreferredConfig = paramImageKey.options.imageConfig;
-      if ((i == 1) && (paramOptions.inPreferredConfig == Bitmap.Config.ARGB_8888))
-      {
-        float f = paramImageAttri.srcHeight / paramImageAttri.srcWidth;
-        if (((f > 2.0F) || (f < 0.5F)) && (paramImageAttri.srcHeight * paramImageAttri.srcWidth > ImageManagerEnv.g().getScreenHeight() * ImageManagerEnv.g().getScreenWidth())) {
-          paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-        }
-      }
-      if (paramOptions.inPreferredConfig == Bitmap.Config.RGB_565) {
-        paramOptions.inDither = true;
-      }
-      if ((paramImageKey.options != null) && ((paramImageKey.options.mImageType == 3) || (paramImageKey.options.mImageType == 4)))
-      {
-        if (paramImageKey.options.imageConfig == null) {
-          break label670;
-        }
-        paramOptions.inPreferredConfig = paramImageKey.options.imageConfig;
-      }
-      if (paramImageKey != null)
-      {
-        paramImageKey.inSampleSize = i;
-        paramImageKey.orgWidth = paramImageAttri.srcWidth;
-        paramImageKey.orgHeight = paramImageAttri.srcHeight;
-      }
-      paramOptions.outWidth = paramImageAttri.srcWidth;
-      paramOptions.outHeight = paramImageAttri.srcHeight;
-      paramOptions.inPurgeable = true;
-      paramOptions.inInputShareable = true;
-      paramOptions.inSampleSize = i;
-      paramOptions.outMimeType = paramImageAttri.mimeType;
-      localObject2 = null;
-      localObject1 = localObject2;
-      if (paramImageKey.options != null)
-      {
-        localObject1 = localObject2;
-        if (paramImageKey.options.cropHead) {
-          localObject1 = decodePicCropHead(paramFileInputStream, paramImageKey.options.cropHwRation);
-        }
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = TAG;
-        localStringBuilder = new StringBuilder().append("decodeNormalImage: other mode ");
-        if (paramImageKey.options != null) {
-          break label721;
-        }
+    } else if (isPng(paramImageAttri.mimeType)) {
+      paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+    } else {
+      paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+    }
+    if ((i == 1) && (paramOptions.inPreferredConfig == Bitmap.Config.ARGB_8888))
+    {
+      float f = paramImageAttri.srcHeight / paramImageAttri.srcWidth;
+      if (((f > 2.0F) || (f < 0.5F)) && (paramImageAttri.srcHeight * paramImageAttri.srcWidth > ImageManagerEnv.g().getScreenHeight() * ImageManagerEnv.g().getScreenWidth())) {
+        paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
       }
     }
-    label670:
-    label721:
-    for (localObject1 = "null";; localObject1 = paramImageKey.options.cropHead + " " + paramImageKey.options.cropHwRation)
-    {
-      ImageManagerLog.i((String)localObject2, (String)localObject1);
-      localObject2 = decodeImageStream(ImageManager.getInstance().getDecoder(), paramFileInputStream, paramOptions, false);
-      if ((localObject2 != null) || (TextUtils.isEmpty(paramImageKey.filePath)) || (!SharpPUtils.isSharpP(new File(paramImageKey.filePath)))) {
-        break label762;
+    if (paramOptions.inPreferredConfig == Bitmap.Config.RGB_565) {
+      paramOptions.inDither = true;
+    }
+    if ((paramImageKey.options != null) && ((paramImageKey.options.mImageType == 3) || (paramImageKey.options.mImageType == 4))) {
+      if (paramImageKey.options.imageConfig != null) {
+        paramOptions.inPreferredConfig = paramImageKey.options.imageConfig;
+      } else if ((paramImageAttri.srcWidth != 0) && (paramImageAttri.srcHeight != 0) && (paramImageAttri.srcWidth / paramImageAttri.srcHeight == 2.0F)) {
+        paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+      } else {
+        paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
       }
-      ImageManagerLog.e(TAG, "decodeNormalImage --url=" + paramImageKey.url + "  is not normal picture,try sharpP decode");
+    }
+    if (paramImageKey != null)
+    {
+      paramImageKey.inSampleSize = i;
+      paramImageKey.orgWidth = paramImageAttri.srcWidth;
+      paramImageKey.orgHeight = paramImageAttri.srcHeight;
+    }
+    paramOptions.outWidth = paramImageAttri.srcWidth;
+    paramOptions.outHeight = paramImageAttri.srcHeight;
+    paramOptions.inPurgeable = true;
+    paramOptions.inInputShareable = true;
+    paramOptions.inSampleSize = i;
+    paramOptions.outMimeType = paramImageAttri.mimeType;
+    Object localObject2 = null;
+    localObject1 = localObject2;
+    if (paramImageKey.options != null)
+    {
+      localObject1 = localObject2;
+      if (paramImageKey.options.cropHead) {
+        localObject1 = decodePicCropHead(paramFileInputStream, paramImageKey.options.cropHwRation);
+      }
+    }
+    if (localObject1 == null)
+    {
+      localObject2 = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decodeNormalImage: other mode ");
+      if (paramImageKey.options == null)
+      {
+        localObject1 = "null";
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramImageKey.options.cropHead);
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append(paramImageKey.options.cropHwRation);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      localStringBuilder.append((String)localObject1);
+      ImageManagerLog.i((String)localObject2, localStringBuilder.toString());
+      paramFileInputStream = decodeImageStream(ImageManager.getInstance().getDecoder(), paramFileInputStream, paramOptions, false);
+    }
+    else
+    {
+      paramFileInputStream = (FileInputStream)localObject1;
+    }
+    if ((paramFileInputStream == null) && (!TextUtils.isEmpty(paramImageKey.filePath)) && (SharpPUtils.isSharpP(new File(paramImageKey.filePath))))
+    {
+      paramImageAttri = TAG;
+      paramFileInputStream = new StringBuilder();
+      paramFileInputStream.append("decodeNormalImage --url=");
+      paramFileInputStream.append(paramImageKey.url);
+      paramFileInputStream.append("  is not normal picture,try sharpP decode");
+      ImageManagerLog.e(paramImageAttri, paramFileInputStream.toString());
       boolean bool = handlerSharpPDecodeMessage(paramImageKey);
       if (!bool)
       {
         setResult(9, new Object[0]);
-        ImageManagerLog.e(TAG, "decodeNormalImage -- url=" + paramImageKey.url + "  is not normal picture,try sharpP decode failed");
+        paramImageAttri = TAG;
+        paramFileInputStream = new StringBuilder();
+        paramFileInputStream.append("decodeNormalImage -- url=");
+        paramFileInputStream.append(paramImageKey.url);
+        paramFileInputStream.append("  is not normal picture,try sharpP decode failed");
+        ImageManagerLog.e(paramImageAttri, paramFileInputStream.toString());
       }
       return bool;
-      i = ((Integer)localObject1).intValue();
-      break;
-      label638:
-      if (isPng(paramImageAttri.mimeType))
-      {
-        paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        break label168;
-      }
-      paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      break label168;
-      if ((paramImageAttri.srcWidth != 0) && (paramImageAttri.srcHeight != 0) && (paramImageAttri.srcWidth / paramImageAttri.srcHeight == 2.0F))
-      {
-        paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-        break label315;
-      }
-      paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-      break label315;
     }
-    label762:
-    if (System.nanoTime() - l > MIN_LOG_DECODE_COST) {
-      ImageManagerLog.w(TAG, "decodeNormalImage: decode " + paramImageKey.filePath + " " + paramImageKey.url + " cost too much time");
+    if (System.nanoTime() - l > MIN_LOG_DECODE_COST)
+    {
+      paramOptions = TAG;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decodeNormalImage: decode ");
+      ((StringBuilder)localObject1).append(paramImageKey.filePath);
+      ((StringBuilder)localObject1).append(" ");
+      ((StringBuilder)localObject1).append(paramImageKey.url);
+      ((StringBuilder)localObject1).append(" cost too much time");
+      ImageManagerLog.w(paramOptions, ((StringBuilder)localObject1).toString());
     }
-    processBitmap((BitmapReference)localObject2, paramImageKey, j, true, paramImageAttri.mimeType);
-    return localObject2 != null;
+    processBitmap(paramFileInputStream, paramImageKey, j, true, paramImageAttri.mimeType);
+    return paramFileInputStream != null;
   }
   
   private BitmapReference decodePicCropHead(InputStream paramInputStream, float paramFloat)
   {
     Object localObject1 = TAG;
-    Object localObject2 = new StringBuilder().append("decodePicCropHead: ").append(paramFloat).append(" ");
-    if (paramInputStream == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i((String)localObject1, bool);
-      if ((paramInputStream != null) && (paramFloat > 0.0F)) {
-        break;
-      }
-      return null;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("decodePicCropHead: ");
+    ((StringBuilder)localObject2).append(paramFloat);
+    ((StringBuilder)localObject2).append(" ");
+    boolean bool;
+    if (paramInputStream == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    int i = 0;
-    label73:
-    if (i < 3) {}
-    for (;;)
+    ((StringBuilder)localObject2).append(bool);
+    Log.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    if (paramInputStream != null)
     {
-      try
-      {
-        localObject1 = BitmapRegionDecoder.newInstance(paramInputStream, false);
-        paramInputStream = (InputStream)localObject1;
-        if (paramInputStream != null) {
-          break label175;
-        }
+      if (paramFloat <= 0.0F) {
         return null;
       }
-      catch (IOException localIOException)
-      {
-        Log.w(TAG, "decodePicCropHead: failed to get decoder " + i, localIOException);
-        ImageManagerEnv.getLogger().w(TAG, new Object[] { "decodePicCropHead: failed to get decoder " + i, localIOException });
-        i += 1;
+      int i = 0;
+      Object localObject3;
+      Object localObject4;
+      while (i < 3) {
+        try
+        {
+          localObject1 = BitmapRegionDecoder.newInstance(paramInputStream, false);
+          paramInputStream = (InputStream)localObject1;
+        }
+        catch (IOException localIOException)
+        {
+          localObject2 = TAG;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("decodePicCropHead: failed to get decoder ");
+          ((StringBuilder)localObject3).append(i);
+          Log.w((String)localObject2, ((StringBuilder)localObject3).toString(), localIOException);
+          localObject2 = ImageManagerEnv.getLogger();
+          localObject3 = TAG;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("decodePicCropHead: failed to get decoder ");
+          ((StringBuilder)localObject4).append(i);
+          ((ILog)localObject2).w((String)localObject3, new Object[] { ((StringBuilder)localObject4).toString(), localIOException });
+          i += 1;
+        }
       }
-      break label73;
-      label175:
+      paramInputStream = null;
+      if (paramInputStream == null) {
+        return null;
+      }
       i = paramInputStream.getWidth();
       int j = paramInputStream.getHeight();
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inSampleSize = (i / 500 + 1);
-      if (i * paramFloat > j) {
+      paramFloat = i * paramFloat;
+      if (paramFloat > j) {
         return null;
       }
-      localObject2 = new Rect(0, 0, i, (int)(i * paramFloat));
+      localObject2 = new Rect(0, 0, i, (int)paramFloat);
       i = 0;
       while (i < 3)
       {
@@ -418,65 +443,80 @@ public class DecodeImageTask
         }
         try
         {
-          BitmapReference localBitmapReference = BitmapReference.getBitmapReference(paramInputStream.decodeRegion((Rect)localObject2, localOptions));
-          return localBitmapReference;
+          localObject3 = BitmapReference.getBitmapReference(paramInputStream.decodeRegion((Rect)localObject2, localOptions));
+          return localObject3;
         }
         catch (Throwable localThrowable)
         {
-          Log.w(TAG, "decodePicCropHead: failed to decode bitmap " + i, localThrowable);
-          ImageManagerEnv.getLogger().w(TAG, new Object[] { "decodePicCropHead: failed to decode bitmap " + i, localThrowable });
+          localObject4 = TAG;
+          Object localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("decodePicCropHead: failed to decode bitmap ");
+          ((StringBuilder)localObject5).append(i);
+          Log.w((String)localObject4, ((StringBuilder)localObject5).toString(), localThrowable);
+          localObject4 = ImageManagerEnv.getLogger();
+          localObject5 = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodePicCropHead: failed to decode bitmap ");
+          localStringBuilder.append(i);
+          ((ILog)localObject4).w((String)localObject5, new Object[] { localStringBuilder.toString(), localThrowable });
           i += 1;
         }
       }
-      break;
-      paramInputStream = null;
     }
+    return null;
   }
   
   private boolean decodeSharpP(ImageKey paramImageKey)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (SharpPUtils.isSharpP(paramImageKey.url))
+    if ((SharpPUtils.isSharpP(paramImageKey.url)) && (paramImageKey.filePath != null))
     {
-      bool1 = bool2;
-      if (paramImageKey.filePath != null)
+      Object localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decodeSharpP -- url: ");
+      localStringBuilder.append(paramImageKey.url);
+      localStringBuilder.append(" --is SharpP");
+      ImageManagerLog.d((String)localObject, localStringBuilder.toString());
+      boolean bool = handlerSharpPDecodeMessage(paramImageKey);
+      if ((!bool) && (!SharpPUtils.isSharpP(new File(paramImageKey.filePath))))
       {
-        ImageManagerLog.d(TAG, "decodeSharpP -- url: " + paramImageKey.url + " --is SharpP");
-        bool1 = handlerSharpPDecodeMessage(paramImageKey);
-        if ((!bool1) && (!SharpPUtils.isSharpP(new File(paramImageKey.filePath)))) {
-          break label206;
-        }
-        if (!bool1)
-        {
-          ImageManager.getInstance().checkBitmapDecodeFailCount(paramImageKey);
-          setResult(9, new Object[0]);
-          ImageManagerLog.e(TAG, "decodeSharpP -- url: " + paramImageKey.url + " --  decode sharpp failed.");
-          ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
-          ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-          ImageTracer.decodeFail(paramImageKey.url);
-          File localFile = new File(paramImageKey.filePath);
-          ImageManagerEnv.g().reportImageDecodingTask("image/sharpp", paramImageKey.url, localFile.length(), 51000, "decode sharpP image failed", System.currentTimeMillis());
-        }
-        bool1 = true;
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeSharpP -- url: ");
+        localStringBuilder.append(paramImageKey.url);
+        localStringBuilder.append(" --is not really SharpP,so try normal decode");
+        ImageManagerLog.w((String)localObject, localStringBuilder.toString());
+        return false;
       }
+      if (!bool)
+      {
+        ImageManager.getInstance().checkBitmapDecodeFailCount(paramImageKey);
+        setResult(9, new Object[0]);
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeSharpP -- url: ");
+        localStringBuilder.append(paramImageKey.url);
+        localStringBuilder.append(" --  decode sharpp failed.");
+        ImageManagerLog.e((String)localObject, localStringBuilder.toString());
+        ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
+        ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+        ImageTracer.decodeFail(paramImageKey.url);
+        localObject = new File(paramImageKey.filePath);
+        ImageManagerEnv.g().reportImageDecodingTask("image/sharpp", paramImageKey.url, ((File)localObject).length(), 51000, "decode sharpP image failed", System.currentTimeMillis());
+      }
+      return true;
     }
-    return bool1;
-    label206:
-    ImageManagerLog.w(TAG, "decodeSharpP -- url: " + paramImageKey.url + " --is not really SharpP,so try normal decode");
     return false;
   }
   
   private boolean decodeVideoThumb(ImageKey paramImageKey)
   {
-    boolean bool = false;
     if (VideoThumbnail.isVideo(paramImageKey.filePath))
     {
       int i = paramImageKey.hashCodeEx();
       processBitmap(VideoThumbnail.getThumb(ImageManagerEnv.getAppContext(), paramImageKey.filePath), paramImageKey, i, false, "");
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public static Integer getImagePath2Rotation(String paramString)
@@ -491,615 +531,688 @@ public class DecodeImageTask
   private void handlerImageDecodeMessage(ImageKey paramImageKey)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   5: invokevirtual 608	com/tencent/component/media/ImageManagerEnv:getCurrentLoadingImgStatus	()Z
-    //   8: ifne +112 -> 120
-    //   11: ldc_w 610
-    //   14: new 331	java/lang/StringBuilder
-    //   17: dup
-    //   18: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   21: ldc_w 612
-    //   24: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: aload_1
-    //   28: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   31: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: ldc_w 614
-    //   37: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_1
-    //   41: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   44: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 343	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 569	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: aload_1
-    //   54: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   57: invokestatic 617	com/tencent/component/media/image/ImageTracer:startDecode	(Ljava/lang/String;)V
-    //   60: iconst_3
-    //   61: aload_1
-    //   62: getfield 203	com/tencent/component/media/image/ImageKey:urlKey	Ljava/lang/String;
-    //   65: invokestatic 623	com/tencent/component/media/image/ProgressTracer:print	(ILjava/lang/String;)V
-    //   68: invokestatic 196	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
-    //   71: aload_1
-    //   72: invokevirtual 626	com/tencent/component/media/image/ImageManager:imageKeyFilePathCheck	(Lcom/tencent/component/media/image/ImageKey;)V
-    //   75: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   78: lstore 5
-    //   80: new 321	java/io/File
-    //   83: dup
-    //   84: aload_1
-    //   85: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   88: invokespecial 323	java/io/File:<init>	(Ljava/lang/String;)V
-    //   91: astore 10
-    //   93: lconst_0
-    //   94: lstore_3
-    //   95: aload_1
-    //   96: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   99: invokestatic 319	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   102: ifne +9 -> 111
-    //   105: aload 10
-    //   107: invokevirtual 362	java/io/File:length	()J
-    //   110: lstore_3
-    //   111: aload_0
-    //   112: aload_1
-    //   113: invokespecial 628	com/tencent/component/media/image/DecodeImageTask:decodeVideoThumb	(Lcom/tencent/component/media/image/ImageKey;)Z
-    //   116: ifeq +49 -> 165
-    //   119: return
-    //   120: ldc_w 630
-    //   123: new 331	java/lang/StringBuilder
-    //   126: dup
-    //   127: invokespecial 332	java/lang/StringBuilder:<init>	()V
-    //   130: ldc_w 632
-    //   133: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   3: invokevirtual 608	com/tencent/component/media/ImageManagerEnv:getCurrentLoadingImgStatus	()Z
+    //   6: ifne +64 -> 70
+    //   9: new 331	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   16: astore 10
+    //   18: aload 10
+    //   20: ldc_w 610
+    //   23: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload 10
+    //   29: aload_1
+    //   30: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   33: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload 10
+    //   39: ldc_w 612
+    //   42: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload 10
+    //   48: aload_1
+    //   49: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   52: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: ldc_w 614
+    //   59: aload 10
+    //   61: invokevirtual 343	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 569	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   67: goto +61 -> 128
+    //   70: new 331	java/lang/StringBuilder
+    //   73: dup
+    //   74: invokespecial 332	java/lang/StringBuilder:<init>	()V
+    //   77: astore 10
+    //   79: aload 10
+    //   81: ldc_w 616
+    //   84: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: aload 10
+    //   90: aload_1
+    //   91: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   94: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: pop
+    //   98: aload 10
+    //   100: ldc_w 612
+    //   103: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: pop
+    //   107: aload 10
+    //   109: aload_1
+    //   110: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   113: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: ldc_w 618
+    //   120: aload 10
+    //   122: invokevirtual 343	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 569	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   128: aload_1
+    //   129: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   132: invokestatic 621	com/tencent/component/media/image/ImageTracer:startDecode	(Ljava/lang/String;)V
+    //   135: iconst_3
     //   136: aload_1
-    //   137: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   140: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: ldc_w 614
-    //   146: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: aload_1
-    //   150: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   153: invokevirtual 338	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: invokevirtual 343	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokestatic 569	com/tencent/component/media/utils/ImageManagerLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   162: goto -109 -> 53
-    //   165: aload_0
-    //   166: aload_1
-    //   167: invokespecial 634	com/tencent/component/media/image/DecodeImageTask:decodeSharpP	(Lcom/tencent/component/media/image/ImageKey;)Z
-    //   170: ifeq +30 -> 200
-    //   173: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   176: lstore 7
-    //   178: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   181: ldc_w 579
-    //   184: aload_1
-    //   185: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   188: lload_3
-    //   189: iconst_1
-    //   190: lload 7
-    //   192: lload 5
-    //   194: lsub
-    //   195: iconst_0
-    //   196: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
-    //   199: return
-    //   200: aload_0
-    //   201: aload_1
-    //   202: invokespecial 640	com/tencent/component/media/image/DecodeImageTask:decodeImageFrame	(Lcom/tencent/component/media/image/ImageKey;)Z
-    //   205: ifeq +30 -> 235
-    //   208: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   211: lstore 7
-    //   213: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   216: ldc_w 358
-    //   219: aload_1
-    //   220: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   223: lload_3
-    //   224: iconst_1
-    //   225: lload 7
-    //   227: lload 5
-    //   229: lsub
-    //   230: iconst_0
-    //   231: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
-    //   234: return
-    //   235: aload_0
-    //   236: aload_1
-    //   237: invokespecial 642	com/tencent/component/media/image/DecodeImageTask:decodeAnimateWebp	(Lcom/tencent/component/media/image/ImageKey;)Z
-    //   240: ifne -121 -> 119
-    //   243: getstatic 55	com/tencent/component/media/image/DecodeImageTask:mImagePath2AttriMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   246: aload_1
-    //   247: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   250: invokevirtual 409	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   253: checkcast 234	com/tencent/component/media/image/DecodeImageTask$ImageAttri
-    //   256: astore 15
-    //   258: invokestatic 648	com/tencent/component/media/utils/BitmapUtils:getOptions	()Landroid/graphics/BitmapFactory$Options;
-    //   261: astore 16
-    //   263: aload 15
-    //   265: ifnonnull +790 -> 1055
-    //   268: new 234	com/tencent/component/media/image/DecodeImageTask$ImageAttri
-    //   271: dup
-    //   272: invokespecial 649	com/tencent/component/media/image/DecodeImageTask$ImageAttri:<init>	()V
-    //   275: astore 15
-    //   277: new 651	java/io/FileInputStream
-    //   280: dup
-    //   281: aload_1
-    //   282: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   285: invokespecial 652	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   288: astore 10
-    //   290: aload 10
-    //   292: astore 11
-    //   294: aload 10
-    //   296: astore 12
-    //   298: aload 10
-    //   300: astore 13
-    //   302: aload 10
-    //   304: astore 14
-    //   306: aload_0
-    //   307: aload_1
-    //   308: new 654	java/io/BufferedInputStream
-    //   311: dup
-    //   312: aload 10
-    //   314: invokespecial 657	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   317: aload 15
-    //   319: aload 16
-    //   321: invokespecial 659	com/tencent/component/media/image/DecodeImageTask:decodeBounds	(Lcom/tencent/component/media/image/ImageKey;Ljava/io/InputStream;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Landroid/graphics/BitmapFactory$Options;)V
-    //   324: aload 10
-    //   326: astore 11
-    //   328: aload 10
-    //   330: astore 12
-    //   332: aload 10
-    //   334: astore 13
-    //   336: aload 10
-    //   338: astore 14
-    //   340: aload_0
-    //   341: aload_1
-    //   342: aload 15
-    //   344: invokespecial 661	com/tencent/component/media/image/DecodeImageTask:decodeGif	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;)Z
-    //   347: ifne +301 -> 648
-    //   350: aload 10
-    //   352: ifnonnull +146 -> 498
-    //   355: aload 10
-    //   357: astore 11
-    //   359: aload 10
-    //   361: astore 12
-    //   363: aload 10
-    //   365: astore 13
-    //   367: aload 10
-    //   369: astore 14
-    //   371: new 651	java/io/FileInputStream
-    //   374: dup
-    //   375: aload_1
-    //   376: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
-    //   379: invokespecial 652	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   382: astore 10
-    //   384: aload 16
-    //   386: iconst_0
-    //   387: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   390: aload_0
-    //   391: aload_1
-    //   392: aload 15
+    //   137: getfield 203	com/tencent/component/media/image/ImageKey:urlKey	Ljava/lang/String;
+    //   140: invokestatic 627	com/tencent/component/media/image/ProgressTracer:print	(ILjava/lang/String;)V
+    //   143: invokestatic 196	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
+    //   146: aload_1
+    //   147: invokevirtual 630	com/tencent/component/media/image/ImageManager:imageKeyFilePathCheck	(Lcom/tencent/component/media/image/ImageKey;)V
+    //   150: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   153: lstore 5
+    //   155: new 321	java/io/File
+    //   158: dup
+    //   159: aload_1
+    //   160: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   163: invokespecial 323	java/io/File:<init>	(Ljava/lang/String;)V
+    //   166: astore 10
+    //   168: lconst_0
+    //   169: lstore_3
+    //   170: aload_1
+    //   171: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   174: invokestatic 319	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   177: ifne +9 -> 186
+    //   180: aload 10
+    //   182: invokevirtual 362	java/io/File:length	()J
+    //   185: lstore_3
+    //   186: aload_0
+    //   187: aload_1
+    //   188: invokespecial 632	com/tencent/component/media/image/DecodeImageTask:decodeVideoThumb	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   191: ifeq +4 -> 195
+    //   194: return
+    //   195: aload_0
+    //   196: aload_1
+    //   197: invokespecial 634	com/tencent/component/media/image/DecodeImageTask:decodeSharpP	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   200: ifeq +30 -> 230
+    //   203: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   206: lstore 7
+    //   208: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   211: ldc_w 581
+    //   214: aload_1
+    //   215: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   218: lload_3
+    //   219: iconst_1
+    //   220: lload 7
+    //   222: lload 5
+    //   224: lsub
+    //   225: iconst_0
+    //   226: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   229: return
+    //   230: aload_0
+    //   231: aload_1
+    //   232: invokespecial 640	com/tencent/component/media/image/DecodeImageTask:decodeImageFrame	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   235: ifeq +30 -> 265
+    //   238: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   241: lstore 7
+    //   243: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   246: ldc_w 358
+    //   249: aload_1
+    //   250: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   253: lload_3
+    //   254: iconst_1
+    //   255: lload 7
+    //   257: lload 5
+    //   259: lsub
+    //   260: iconst_0
+    //   261: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   264: return
+    //   265: aload_0
+    //   266: aload_1
+    //   267: invokespecial 642	com/tencent/component/media/image/DecodeImageTask:decodeAnimateWebp	(Lcom/tencent/component/media/image/ImageKey;)Z
+    //   270: ifeq +4 -> 274
+    //   273: return
+    //   274: aconst_null
+    //   275: astore 16
+    //   277: aconst_null
+    //   278: astore 17
+    //   280: aconst_null
+    //   281: astore 18
+    //   283: aconst_null
+    //   284: astore 19
+    //   286: aconst_null
+    //   287: astore 10
+    //   289: getstatic 53	com/tencent/component/media/image/DecodeImageTask:mImagePath2AttriMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   292: aload_1
+    //   293: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   296: invokevirtual 409	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   299: checkcast 236	com/tencent/component/media/image/DecodeImageTask$ImageAttri
+    //   302: astore 20
+    //   304: aload 16
+    //   306: astore 14
+    //   308: aload 17
+    //   310: astore 11
+    //   312: aload 18
+    //   314: astore 12
+    //   316: aload 19
+    //   318: astore 13
+    //   320: invokestatic 648	com/tencent/component/media/utils/BitmapUtils:getOptions	()Landroid/graphics/BitmapFactory$Options;
+    //   323: astore 21
+    //   325: aload 20
+    //   327: astore 15
+    //   329: aload 20
+    //   331: ifnonnull +113 -> 444
+    //   334: aload 16
+    //   336: astore 14
+    //   338: aload 17
+    //   340: astore 11
+    //   342: aload 18
+    //   344: astore 12
+    //   346: aload 19
+    //   348: astore 13
+    //   350: new 236	com/tencent/component/media/image/DecodeImageTask$ImageAttri
+    //   353: dup
+    //   354: invokespecial 649	com/tencent/component/media/image/DecodeImageTask$ImageAttri:<init>	()V
+    //   357: astore 15
+    //   359: aload 16
+    //   361: astore 14
+    //   363: aload 17
+    //   365: astore 11
+    //   367: aload 18
+    //   369: astore 12
+    //   371: aload 19
+    //   373: astore 13
+    //   375: new 651	java/io/FileInputStream
+    //   378: dup
+    //   379: aload_1
+    //   380: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   383: invokespecial 652	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   386: astore 10
+    //   388: aload_0
+    //   389: aload_1
+    //   390: new 654	java/io/BufferedInputStream
+    //   393: dup
     //   394: aload 10
-    //   396: aload 16
-    //   398: invokespecial 663	com/tencent/component/media/image/DecodeImageTask:decodeNormalImage	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Z
-    //   401: istore 9
-    //   403: aload 10
-    //   405: astore 11
-    //   407: aload 15
-    //   409: getfield 237	com/tencent/component/media/image/DecodeImageTask$ImageAttri:mimeType	Ljava/lang/String;
-    //   412: astore 13
-    //   414: aload 10
-    //   416: astore 11
-    //   418: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   421: lstore 7
-    //   423: aload 10
-    //   425: astore 11
-    //   427: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   430: astore 12
-    //   432: aload 10
-    //   434: astore 11
-    //   436: aload_1
-    //   437: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   440: astore 14
-    //   442: iload 9
-    //   444: ifeq +210 -> 654
-    //   447: aload 10
-    //   449: astore 11
-    //   451: aload 12
-    //   453: aload 13
-    //   455: aload 14
-    //   457: lload_3
-    //   458: iload 9
-    //   460: lload 7
-    //   462: lload 5
-    //   464: lsub
-    //   465: iload_2
-    //   466: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
-    //   469: iload 9
-    //   471: ifne +14 -> 485
-    //   474: aload 10
-    //   476: astore 11
-    //   478: invokestatic 196	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
-    //   481: aload_1
-    //   482: invokevirtual 572	com/tencent/component/media/image/ImageManager:checkBitmapDecodeFailCount	(Lcom/tencent/component/media/image/ImageKey;)V
-    //   485: aload 10
-    //   487: ifnull -368 -> 119
-    //   490: aload 10
-    //   492: invokevirtual 666	java/io/FileInputStream:close	()V
-    //   495: return
-    //   496: astore_1
-    //   497: return
-    //   498: aload 10
-    //   500: astore 11
-    //   502: aload 10
-    //   504: astore 12
-    //   506: aload 10
-    //   508: astore 13
-    //   510: aload 10
-    //   512: astore 14
-    //   514: aload_0
+    //   396: invokespecial 657	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   399: aload 15
+    //   401: aload 21
+    //   403: invokespecial 659	com/tencent/component/media/image/DecodeImageTask:decodeBounds	(Lcom/tencent/component/media/image/ImageKey;Ljava/io/InputStream;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Landroid/graphics/BitmapFactory$Options;)V
+    //   406: goto +38 -> 444
+    //   409: astore_1
+    //   410: aload 10
+    //   412: astore 11
+    //   414: goto +707 -> 1121
+    //   417: astore 12
+    //   419: ldc 234
+    //   421: astore 13
+    //   423: goto +366 -> 789
+    //   426: astore 12
+    //   428: ldc 234
+    //   430: astore 13
+    //   432: goto +467 -> 899
+    //   435: astore 12
+    //   437: ldc 234
+    //   439: astore 13
+    //   441: goto +568 -> 1009
+    //   444: aload 10
+    //   446: astore 14
+    //   448: aload 10
+    //   450: astore 11
+    //   452: aload 10
+    //   454: astore 12
+    //   456: aload 10
+    //   458: astore 13
+    //   460: aload_0
+    //   461: aload_1
+    //   462: aload 15
+    //   464: invokespecial 661	com/tencent/component/media/image/DecodeImageTask:decodeGif	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;)Z
+    //   467: ifne +116 -> 583
+    //   470: aload 10
+    //   472: ifnonnull +35 -> 507
+    //   475: aload 10
+    //   477: astore 14
+    //   479: aload 10
+    //   481: astore 11
+    //   483: aload 10
+    //   485: astore 12
+    //   487: aload 10
+    //   489: astore 13
+    //   491: new 651	java/io/FileInputStream
+    //   494: dup
+    //   495: aload_1
+    //   496: getfield 135	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   499: invokespecial 652	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   502: astore 10
+    //   504: goto +25 -> 529
+    //   507: aload 10
+    //   509: astore 14
+    //   511: aload 10
+    //   513: astore 11
     //   515: aload 10
-    //   517: invokespecial 670	com/tencent/component/media/image/DecodeImageTask:reset	(Ljava/io/FileInputStream;)V
-    //   520: goto -136 -> 384
-    //   523: astore 12
-    //   525: aload 11
-    //   527: astore 10
-    //   529: ldc 255
-    //   531: astore 13
+    //   517: astore 12
+    //   519: aload 10
+    //   521: astore 13
+    //   523: aload_0
+    //   524: aload 10
+    //   526: invokespecial 665	com/tencent/component/media/image/DecodeImageTask:reset	(Ljava/io/FileInputStream;)V
+    //   529: aload 10
+    //   531: astore 14
     //   533: aload 10
     //   535: astore 11
-    //   537: aload_1
-    //   538: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
-    //   541: ifnull +20 -> 561
-    //   544: aload 10
-    //   546: astore 11
-    //   548: aload_1
-    //   549: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
-    //   552: aload_1
-    //   553: bipush 110
-    //   555: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
-    //   558: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
-    //   561: aload 10
-    //   563: astore 11
-    //   565: getstatic 34	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
-    //   568: aload 12
-    //   570: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   573: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   576: aload 10
-    //   578: astore 11
-    //   580: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   583: lstore 7
-    //   585: aload 10
-    //   587: astore 11
-    //   589: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   592: aload 13
-    //   594: aload_1
-    //   595: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   598: lload_3
-    //   599: iconst_0
-    //   600: lload 7
-    //   602: lload 5
-    //   604: lsub
-    //   605: iconst_3
-    //   606: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
-    //   609: aload 10
-    //   611: astore 11
-    //   613: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   616: aload 13
-    //   618: aload_1
-    //   619: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   622: lload_3
-    //   623: ldc_w 363
-    //   626: ldc_w 676
-    //   629: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   632: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
-    //   635: aload 10
-    //   637: ifnull -518 -> 119
-    //   640: aload 10
-    //   642: invokevirtual 666	java/io/FileInputStream:close	()V
-    //   645: return
-    //   646: astore_1
-    //   647: return
-    //   648: iconst_1
-    //   649: istore 9
-    //   651: goto -248 -> 403
-    //   654: iconst_1
-    //   655: istore_2
-    //   656: goto -209 -> 447
-    //   659: astore 12
-    //   661: aconst_null
-    //   662: astore 10
-    //   664: ldc 255
-    //   666: astore 13
+    //   537: aload 10
+    //   539: astore 12
+    //   541: aload 10
+    //   543: astore 13
+    //   545: aload 21
+    //   547: iconst_0
+    //   548: putfield 223	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   551: aload 10
+    //   553: astore 14
+    //   555: aload 10
+    //   557: astore 11
+    //   559: aload 10
+    //   561: astore 12
+    //   563: aload 10
+    //   565: astore 13
+    //   567: aload_0
+    //   568: aload_1
+    //   569: aload 15
+    //   571: aload 10
+    //   573: aload 21
+    //   575: invokespecial 667	com/tencent/component/media/image/DecodeImageTask:decodeNormalImage	(Lcom/tencent/component/media/image/ImageKey;Lcom/tencent/component/media/image/DecodeImageTask$ImageAttri;Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Z
+    //   578: istore 9
+    //   580: goto +6 -> 586
+    //   583: iconst_1
+    //   584: istore 9
+    //   586: aload 10
+    //   588: astore 11
+    //   590: aload 15
+    //   592: getfield 239	com/tencent/component/media/image/DecodeImageTask$ImageAttri:mimeType	Ljava/lang/String;
+    //   595: astore 12
+    //   597: aload 10
+    //   599: astore 11
+    //   601: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   604: lstore 7
+    //   606: aload 10
+    //   608: astore 11
+    //   610: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   613: astore 14
+    //   615: aload 10
+    //   617: astore 11
+    //   619: aload_1
+    //   620: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   623: astore 15
+    //   625: iload 9
+    //   627: ifeq +8 -> 635
+    //   630: iconst_0
+    //   631: istore_2
+    //   632: goto +5 -> 637
+    //   635: iconst_1
+    //   636: istore_2
+    //   637: aload 12
+    //   639: astore 13
+    //   641: aload 10
+    //   643: astore 11
+    //   645: aload 14
+    //   647: aload 12
+    //   649: aload 15
+    //   651: lload_3
+    //   652: iload 9
+    //   654: lload 7
+    //   656: lload 5
+    //   658: lsub
+    //   659: iload_2
+    //   660: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   663: iload 9
+    //   665: ifne +14 -> 679
     //   668: aload 10
     //   670: astore 11
-    //   672: aload_1
-    //   673: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
-    //   676: ifnull +20 -> 696
+    //   672: invokestatic 196	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
+    //   675: aload_1
+    //   676: invokevirtual 574	com/tencent/component/media/image/ImageManager:checkBitmapDecodeFailCount	(Lcom/tencent/component/media/image/ImageKey;)V
     //   679: aload 10
-    //   681: astore 11
-    //   683: aload_1
-    //   684: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
-    //   687: aload_1
-    //   688: bipush 111
-    //   690: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
-    //   693: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
-    //   696: aload 10
-    //   698: astore 11
-    //   700: getstatic 34	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
-    //   703: aload 12
-    //   705: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   708: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   711: aload 10
-    //   713: astore 11
-    //   715: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   718: lstore 7
-    //   720: aload 10
-    //   722: astore 11
-    //   724: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   727: aload 13
-    //   729: aload_1
-    //   730: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   733: lload_3
-    //   734: iconst_0
-    //   735: lload 7
-    //   737: lload 5
-    //   739: lsub
-    //   740: iconst_2
-    //   741: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
-    //   744: aload 10
-    //   746: astore 11
-    //   748: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   751: aload 13
-    //   753: aload_1
-    //   754: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   757: lload_3
-    //   758: ldc_w 363
-    //   761: ldc_w 678
-    //   764: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   767: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
-    //   770: aload 10
-    //   772: ifnull -653 -> 119
-    //   775: aload 10
-    //   777: invokevirtual 666	java/io/FileInputStream:close	()V
-    //   780: return
-    //   781: astore_1
-    //   782: return
-    //   783: astore 12
-    //   785: aconst_null
-    //   786: astore 10
-    //   788: ldc 255
-    //   790: astore 13
-    //   792: aload 10
-    //   794: astore 11
-    //   796: aload_1
-    //   797: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
-    //   800: ifnull +20 -> 820
-    //   803: aload 10
-    //   805: astore 11
-    //   807: aload_1
-    //   808: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
-    //   811: aload_1
-    //   812: bipush 112
-    //   814: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
-    //   817: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
-    //   820: aload 10
-    //   822: astore 11
-    //   824: getstatic 34	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
-    //   827: aload 12
-    //   829: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   832: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   835: aload 10
-    //   837: astore 11
-    //   839: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   842: lstore 7
-    //   844: aload 10
-    //   846: astore 11
-    //   848: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   851: aload 13
-    //   853: aload_1
-    //   854: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   857: lload_3
-    //   858: iconst_0
-    //   859: lload 7
-    //   861: lload 5
-    //   863: lsub
-    //   864: iconst_4
-    //   865: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
-    //   868: aload 10
-    //   870: astore 11
-    //   872: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   875: aload 13
-    //   877: aload_1
-    //   878: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
-    //   881: lload_3
-    //   882: ldc_w 363
-    //   885: ldc_w 680
-    //   888: invokestatic 370	java/lang/System:currentTimeMillis	()J
-    //   891: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
-    //   894: aload 10
-    //   896: ifnull -777 -> 119
+    //   681: ifnull +438 -> 1119
+    //   684: aload 10
+    //   686: invokevirtual 670	java/io/FileInputStream:close	()V
+    //   689: return
+    //   690: astore 12
+    //   692: goto +97 -> 789
+    //   695: astore 12
+    //   697: goto +202 -> 899
+    //   700: astore 12
+    //   702: goto +307 -> 1009
+    //   705: astore 11
+    //   707: aload 12
+    //   709: astore 13
+    //   711: aload 11
+    //   713: astore 12
+    //   715: goto +74 -> 789
+    //   718: astore 11
+    //   720: aload 12
+    //   722: astore 13
+    //   724: aload 11
+    //   726: astore 12
+    //   728: goto +171 -> 899
+    //   731: astore 11
+    //   733: aload 12
+    //   735: astore 13
+    //   737: aload 11
+    //   739: astore 12
+    //   741: goto +268 -> 1009
+    //   744: astore 12
+    //   746: ldc 234
+    //   748: astore 13
+    //   750: goto +39 -> 789
+    //   753: astore 12
+    //   755: ldc 234
+    //   757: astore 13
+    //   759: goto +140 -> 899
+    //   762: astore 12
+    //   764: ldc 234
+    //   766: astore 13
+    //   768: goto +241 -> 1009
+    //   771: astore_1
+    //   772: aload 14
+    //   774: astore 11
+    //   776: goto +345 -> 1121
+    //   779: astore 12
+    //   781: ldc 234
+    //   783: astore 13
+    //   785: aload 11
+    //   787: astore 10
+    //   789: aload 10
+    //   791: astore 11
+    //   793: aload_1
+    //   794: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   797: ifnull +20 -> 817
+    //   800: aload 10
+    //   802: astore 11
+    //   804: aload_1
+    //   805: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   808: aload_1
+    //   809: bipush 112
+    //   811: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
+    //   814: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
+    //   817: aload 10
+    //   819: astore 11
+    //   821: getstatic 97	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
+    //   824: aload 12
+    //   826: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   829: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   832: aload 10
+    //   834: astore 11
+    //   836: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   839: lstore 7
+    //   841: aload 10
+    //   843: astore 11
+    //   845: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   848: aload 13
+    //   850: aload_1
+    //   851: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   854: lload_3
+    //   855: iconst_0
+    //   856: lload 7
+    //   858: lload 5
+    //   860: lsub
+    //   861: iconst_4
+    //   862: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   865: aload 10
+    //   867: astore 11
+    //   869: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   872: aload 13
+    //   874: aload_1
+    //   875: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   878: lload_3
+    //   879: ldc_w 363
+    //   882: ldc_w 676
+    //   885: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   888: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
+    //   891: aload 10
+    //   893: ifnull +226 -> 1119
+    //   896: goto -212 -> 684
     //   899: aload 10
-    //   901: invokevirtual 666	java/io/FileInputStream:close	()V
-    //   904: return
-    //   905: astore_1
-    //   906: return
-    //   907: astore_1
-    //   908: aconst_null
-    //   909: astore 11
-    //   911: aload 11
-    //   913: ifnull +8 -> 921
-    //   916: aload 11
-    //   918: invokevirtual 666	java/io/FileInputStream:close	()V
-    //   921: aload_1
-    //   922: athrow
-    //   923: astore 10
-    //   925: goto -4 -> 921
-    //   928: astore_1
-    //   929: aload 12
-    //   931: astore 11
-    //   933: goto -22 -> 911
-    //   936: astore_1
-    //   937: aload 10
-    //   939: astore 11
-    //   941: goto -30 -> 911
-    //   944: astore_1
-    //   945: goto -34 -> 911
-    //   948: astore 12
-    //   950: aload 13
-    //   952: astore 10
-    //   954: ldc 255
-    //   956: astore 13
-    //   958: goto -166 -> 792
-    //   961: astore 12
-    //   963: ldc 255
-    //   965: astore 13
-    //   967: goto -175 -> 792
-    //   970: astore 12
-    //   972: ldc 255
-    //   974: astore 13
-    //   976: goto -184 -> 792
-    //   979: astore 12
-    //   981: goto -189 -> 792
-    //   984: astore 12
-    //   986: aload 14
-    //   988: astore 10
-    //   990: ldc 255
-    //   992: astore 13
-    //   994: goto -326 -> 668
-    //   997: astore 12
-    //   999: ldc 255
-    //   1001: astore 13
-    //   1003: goto -335 -> 668
-    //   1006: astore 12
-    //   1008: ldc 255
-    //   1010: astore 13
-    //   1012: goto -344 -> 668
-    //   1015: astore 12
-    //   1017: goto -349 -> 668
-    //   1020: astore 12
-    //   1022: aconst_null
-    //   1023: astore 10
-    //   1025: ldc 255
-    //   1027: astore 13
-    //   1029: goto -496 -> 533
-    //   1032: astore 12
-    //   1034: ldc 255
-    //   1036: astore 13
-    //   1038: goto -505 -> 533
-    //   1041: astore 12
-    //   1043: ldc 255
-    //   1045: astore 13
-    //   1047: goto -514 -> 533
-    //   1050: astore 12
-    //   1052: goto -519 -> 533
-    //   1055: aconst_null
-    //   1056: astore 10
-    //   1058: goto -734 -> 324
+    //   901: astore 11
+    //   903: aload_1
+    //   904: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   907: ifnull +20 -> 927
+    //   910: aload 10
+    //   912: astore 11
+    //   914: aload_1
+    //   915: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   918: aload_1
+    //   919: bipush 111
+    //   921: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
+    //   924: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
+    //   927: aload 10
+    //   929: astore 11
+    //   931: getstatic 97	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
+    //   934: aload 12
+    //   936: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   939: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   942: aload 10
+    //   944: astore 11
+    //   946: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   949: lstore 7
+    //   951: aload 10
+    //   953: astore 11
+    //   955: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   958: aload 13
+    //   960: aload_1
+    //   961: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   964: lload_3
+    //   965: iconst_0
+    //   966: lload 7
+    //   968: lload 5
+    //   970: lsub
+    //   971: iconst_2
+    //   972: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   975: aload 10
+    //   977: astore 11
+    //   979: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   982: aload 13
+    //   984: aload_1
+    //   985: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   988: lload_3
+    //   989: ldc_w 363
+    //   992: ldc_w 678
+    //   995: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   998: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
+    //   1001: aload 10
+    //   1003: ifnull +116 -> 1119
+    //   1006: goto -322 -> 684
+    //   1009: aload 10
+    //   1011: astore 11
+    //   1013: aload_1
+    //   1014: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   1017: ifnull +20 -> 1037
+    //   1020: aload 10
+    //   1022: astore 11
+    //   1024: aload_1
+    //   1025: getfield 164	com/tencent/component/media/image/ImageKey:options	Lcom/tencent/component/media/image/ImageLoader$Options;
+    //   1028: aload_1
+    //   1029: bipush 110
+    //   1031: invokestatic 170	com/tencent/component/media/image/ImageManager:getErrorString	(Lcom/tencent/component/media/image/ImageKey;I)Ljava/lang/String;
+    //   1034: putfield 175	com/tencent/component/media/image/ImageLoader$Options:errCode	Ljava/lang/String;
+    //   1037: aload 10
+    //   1039: astore 11
+    //   1041: getstatic 97	com/tencent/component/media/image/DecodeImageTask:TAG	Ljava/lang/String;
+    //   1044: aload 12
+    //   1046: invokestatic 674	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1049: invokestatic 160	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1052: aload 10
+    //   1054: astore 11
+    //   1056: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   1059: lstore 7
+    //   1061: aload 10
+    //   1063: astore 11
+    //   1065: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   1068: aload 13
+    //   1070: aload_1
+    //   1071: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   1074: lload_3
+    //   1075: iconst_0
+    //   1076: lload 7
+    //   1078: lload 5
+    //   1080: lsub
+    //   1081: iconst_3
+    //   1082: invokevirtual 638	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   1085: aload 10
+    //   1087: astore 11
+    //   1089: invokestatic 263	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   1092: aload 13
+    //   1094: aload_1
+    //   1095: getfield 122	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   1098: lload_3
+    //   1099: ldc_w 363
+    //   1102: ldc_w 680
+    //   1105: invokestatic 370	java/lang/System:currentTimeMillis	()J
+    //   1108: invokevirtual 374	com/tencent/component/media/ImageManagerEnv:reportImageDecodingTask	(Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;J)V
+    //   1111: aload 10
+    //   1113: ifnull +6 -> 1119
+    //   1116: goto -432 -> 684
+    //   1119: return
+    //   1120: astore_1
+    //   1121: aload 11
+    //   1123: ifnull +8 -> 1131
+    //   1126: aload 11
+    //   1128: invokevirtual 670	java/io/FileInputStream:close	()V
+    //   1131: goto +5 -> 1136
+    //   1134: aload_1
+    //   1135: athrow
+    //   1136: goto -2 -> 1134
+    //   1139: astore_1
+    //   1140: return
+    //   1141: astore 10
+    //   1143: goto -12 -> 1131
+    //   1146: astore 11
+    //   1148: ldc 234
+    //   1150: astore 13
+    //   1152: aload 12
+    //   1154: astore 10
+    //   1156: aload 11
+    //   1158: astore 12
+    //   1160: goto -261 -> 899
+    //   1163: astore 12
+    //   1165: ldc 234
+    //   1167: astore 11
+    //   1169: aload 13
+    //   1171: astore 10
+    //   1173: aload 11
+    //   1175: astore 13
+    //   1177: goto -168 -> 1009
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1061	0	this	DecodeImageTask
-    //   0	1061	1	paramImageKey	ImageKey
-    //   1	655	2	i	int
-    //   94	788	3	l1	long
-    //   78	784	5	l2	long
-    //   176	684	7	l3	long
-    //   401	249	9	bool	boolean
-    //   91	809	10	localObject1	Object
-    //   923	15	10	localIOException	IOException
-    //   952	105	10	localObject2	Object
-    //   292	648	11	localObject3	Object
-    //   296	209	12	localObject4	Object
-    //   523	46	12	localException1	java.lang.Exception
-    //   659	45	12	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   783	147	12	localThrowable1	Throwable
-    //   948	1	12	localThrowable2	Throwable
-    //   961	1	12	localThrowable3	Throwable
-    //   970	1	12	localThrowable4	Throwable
-    //   979	1	12	localThrowable5	Throwable
-    //   984	1	12	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   997	1	12	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   1006	1	12	localOutOfMemoryError4	java.lang.OutOfMemoryError
-    //   1015	1	12	localOutOfMemoryError5	java.lang.OutOfMemoryError
-    //   1020	1	12	localException2	java.lang.Exception
-    //   1032	1	12	localException3	java.lang.Exception
-    //   1041	1	12	localException4	java.lang.Exception
-    //   1050	1	12	localException5	java.lang.Exception
-    //   300	746	13	localObject5	Object
-    //   304	683	14	localObject6	Object
-    //   256	152	15	localImageAttri	DecodeImageTask.ImageAttri
-    //   261	136	16	localOptions	BitmapFactory.Options
+    //   0	1180	0	this	DecodeImageTask
+    //   0	1180	1	paramImageKey	ImageKey
+    //   631	29	2	i	int
+    //   169	930	3	l1	long
+    //   153	926	5	l2	long
+    //   206	871	7	l3	long
+    //   578	86	9	bool	boolean
+    //   16	1096	10	localObject1	Object
+    //   1141	1	10	localIOException	IOException
+    //   1154	18	10	localObject2	Object
+    //   310	361	11	localObject3	Object
+    //   705	7	11	localThrowable1	Throwable
+    //   718	7	11	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   731	7	11	localException1	java.lang.Exception
+    //   774	353	11	localObject4	Object
+    //   1146	11	11	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   1167	7	11	str	String
+    //   314	56	12	localObject5	Object
+    //   417	1	12	localThrowable2	Throwable
+    //   426	1	12	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   435	1	12	localException2	java.lang.Exception
+    //   454	194	12	localObject6	Object
+    //   690	1	12	localThrowable3	Throwable
+    //   695	1	12	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   700	8	12	localException3	java.lang.Exception
+    //   713	27	12	localObject7	Object
+    //   744	1	12	localThrowable4	Throwable
+    //   753	1	12	localOutOfMemoryError5	java.lang.OutOfMemoryError
+    //   762	1	12	localException4	java.lang.Exception
+    //   779	374	12	localThrowable5	Throwable
+    //   1158	1	12	localOutOfMemoryError6	java.lang.OutOfMemoryError
+    //   1163	1	12	localException5	java.lang.Exception
+    //   318	858	13	localObject8	Object
+    //   306	467	14	localObject9	Object
+    //   327	323	15	localObject10	Object
+    //   275	85	16	localObject11	Object
+    //   278	86	17	localObject12	Object
+    //   281	87	18	localObject13	Object
+    //   284	88	19	localObject14	Object
+    //   302	28	20	localImageAttri	DecodeImageTask.ImageAttri
+    //   323	251	21	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   490	495	496	java/io/IOException
-    //   306	324	523	java/lang/Exception
-    //   340	350	523	java/lang/Exception
-    //   371	384	523	java/lang/Exception
-    //   514	520	523	java/lang/Exception
-    //   640	645	646	java/io/IOException
-    //   258	263	659	java/lang/OutOfMemoryError
-    //   268	290	659	java/lang/OutOfMemoryError
-    //   775	780	781	java/io/IOException
-    //   258	263	783	java/lang/Throwable
-    //   268	290	783	java/lang/Throwable
-    //   899	904	905	java/io/IOException
-    //   258	263	907	finally
-    //   268	290	907	finally
-    //   916	921	923	java/io/IOException
-    //   306	324	928	finally
-    //   340	350	928	finally
-    //   371	384	928	finally
-    //   514	520	928	finally
-    //   384	403	936	finally
-    //   407	414	944	finally
-    //   418	423	944	finally
-    //   427	432	944	finally
-    //   436	442	944	finally
-    //   451	469	944	finally
-    //   478	485	944	finally
-    //   537	544	944	finally
-    //   548	561	944	finally
-    //   565	576	944	finally
-    //   580	585	944	finally
-    //   589	609	944	finally
-    //   613	635	944	finally
-    //   672	679	944	finally
-    //   683	696	944	finally
-    //   700	711	944	finally
-    //   715	720	944	finally
-    //   724	744	944	finally
-    //   748	770	944	finally
-    //   796	803	944	finally
-    //   807	820	944	finally
-    //   824	835	944	finally
-    //   839	844	944	finally
-    //   848	868	944	finally
-    //   872	894	944	finally
-    //   306	324	948	java/lang/Throwable
-    //   340	350	948	java/lang/Throwable
-    //   371	384	948	java/lang/Throwable
-    //   514	520	948	java/lang/Throwable
-    //   384	403	961	java/lang/Throwable
-    //   407	414	970	java/lang/Throwable
-    //   418	423	979	java/lang/Throwable
-    //   427	432	979	java/lang/Throwable
-    //   436	442	979	java/lang/Throwable
-    //   451	469	979	java/lang/Throwable
-    //   478	485	979	java/lang/Throwable
-    //   306	324	984	java/lang/OutOfMemoryError
-    //   340	350	984	java/lang/OutOfMemoryError
-    //   371	384	984	java/lang/OutOfMemoryError
-    //   514	520	984	java/lang/OutOfMemoryError
-    //   384	403	997	java/lang/OutOfMemoryError
-    //   407	414	1006	java/lang/OutOfMemoryError
-    //   418	423	1015	java/lang/OutOfMemoryError
-    //   427	432	1015	java/lang/OutOfMemoryError
-    //   436	442	1015	java/lang/OutOfMemoryError
-    //   451	469	1015	java/lang/OutOfMemoryError
-    //   478	485	1015	java/lang/OutOfMemoryError
-    //   258	263	1020	java/lang/Exception
-    //   268	290	1020	java/lang/Exception
-    //   384	403	1032	java/lang/Exception
-    //   407	414	1041	java/lang/Exception
-    //   418	423	1050	java/lang/Exception
-    //   427	432	1050	java/lang/Exception
-    //   436	442	1050	java/lang/Exception
-    //   451	469	1050	java/lang/Exception
-    //   478	485	1050	java/lang/Exception
+    //   388	406	409	finally
+    //   388	406	417	java/lang/Throwable
+    //   388	406	426	java/lang/OutOfMemoryError
+    //   388	406	435	java/lang/Exception
+    //   645	663	690	java/lang/Throwable
+    //   672	679	690	java/lang/Throwable
+    //   645	663	695	java/lang/OutOfMemoryError
+    //   672	679	695	java/lang/OutOfMemoryError
+    //   645	663	700	java/lang/Exception
+    //   672	679	700	java/lang/Exception
+    //   601	606	705	java/lang/Throwable
+    //   610	615	705	java/lang/Throwable
+    //   619	625	705	java/lang/Throwable
+    //   601	606	718	java/lang/OutOfMemoryError
+    //   610	615	718	java/lang/OutOfMemoryError
+    //   619	625	718	java/lang/OutOfMemoryError
+    //   601	606	731	java/lang/Exception
+    //   610	615	731	java/lang/Exception
+    //   619	625	731	java/lang/Exception
+    //   590	597	744	java/lang/Throwable
+    //   590	597	753	java/lang/OutOfMemoryError
+    //   590	597	762	java/lang/Exception
+    //   320	325	771	finally
+    //   350	359	771	finally
+    //   375	388	771	finally
+    //   460	470	771	finally
+    //   491	504	771	finally
+    //   523	529	771	finally
+    //   545	551	771	finally
+    //   567	580	771	finally
+    //   320	325	779	java/lang/Throwable
+    //   350	359	779	java/lang/Throwable
+    //   375	388	779	java/lang/Throwable
+    //   460	470	779	java/lang/Throwable
+    //   491	504	779	java/lang/Throwable
+    //   523	529	779	java/lang/Throwable
+    //   545	551	779	java/lang/Throwable
+    //   567	580	779	java/lang/Throwable
+    //   590	597	1120	finally
+    //   601	606	1120	finally
+    //   610	615	1120	finally
+    //   619	625	1120	finally
+    //   645	663	1120	finally
+    //   672	679	1120	finally
+    //   793	800	1120	finally
+    //   804	817	1120	finally
+    //   821	832	1120	finally
+    //   836	841	1120	finally
+    //   845	865	1120	finally
+    //   869	891	1120	finally
+    //   903	910	1120	finally
+    //   914	927	1120	finally
+    //   931	942	1120	finally
+    //   946	951	1120	finally
+    //   955	975	1120	finally
+    //   979	1001	1120	finally
+    //   1013	1020	1120	finally
+    //   1024	1037	1120	finally
+    //   1041	1052	1120	finally
+    //   1056	1061	1120	finally
+    //   1065	1085	1120	finally
+    //   1089	1111	1120	finally
+    //   684	689	1139	java/io/IOException
+    //   1126	1131	1141	java/io/IOException
+    //   320	325	1146	java/lang/OutOfMemoryError
+    //   350	359	1146	java/lang/OutOfMemoryError
+    //   375	388	1146	java/lang/OutOfMemoryError
+    //   460	470	1146	java/lang/OutOfMemoryError
+    //   491	504	1146	java/lang/OutOfMemoryError
+    //   523	529	1146	java/lang/OutOfMemoryError
+    //   545	551	1146	java/lang/OutOfMemoryError
+    //   567	580	1146	java/lang/OutOfMemoryError
+    //   320	325	1163	java/lang/Exception
+    //   350	359	1163	java/lang/Exception
+    //   375	388	1163	java/lang/Exception
+    //   460	470	1163	java/lang/Exception
+    //   491	504	1163	java/lang/Exception
+    //   523	529	1163	java/lang/Exception
+    //   545	551	1163	java/lang/Exception
+    //   567	580	1163	java/lang/Exception
   }
   
   private boolean handlerSharpPDecodeMessage(ImageKey paramImageKey)
@@ -1109,163 +1222,166 @@ public class DecodeImageTask
     int i = localSharpPDecoderHelper.parseHeader();
     if (i != 0)
     {
-      ImageManagerLog.w(TAG, "parseHeader error,status=" + i + "," + paramImageKey.url + ",hashCode=" + paramImageKey.hashCodeEx() + ",filePath=" + paramImageKey.filePath + ", try again");
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("parseHeader error,status=");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(paramImageKey.url);
+      ((StringBuilder)localObject2).append(",hashCode=");
+      ((StringBuilder)localObject2).append(paramImageKey.hashCodeEx());
+      ((StringBuilder)localObject2).append(",filePath=");
+      ((StringBuilder)localObject2).append(paramImageKey.filePath);
+      ((StringBuilder)localObject2).append(", try again");
+      ImageManagerLog.w((String)localObject1, ((StringBuilder)localObject2).toString());
       return false;
     }
-    DecodeImageTask.ImageAttri localImageAttri = (DecodeImageTask.ImageAttri)mImagePath2AttriMap.get(paramImageKey.filePath);
-    Object localObject2 = localSharpPDecoderHelper.getFeatureInfo();
-    Object localObject1;
-    if ((localImageAttri == null) || (localImageAttri.mimeType.equals("unknown")))
+    Object localObject2 = (DecodeImageTask.ImageAttri)mImagePath2AttriMap.get(paramImageKey.filePath);
+    Object localObject4 = localSharpPDecoderHelper.getFeatureInfo();
+    Object localObject1 = "unknown";
+    Object localObject3;
+    if (localObject2 != null)
     {
-      localImageAttri = new DecodeImageTask.ImageAttri();
-      localImageAttri.srcHeight = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).getHeight();
-      localImageAttri.srcWidth = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).getWidth();
-      localObject1 = localSharpPDecoderHelper.getMimeType();
-      if (localObject1 != null)
-      {
-        localImageAttri.mimeType = ((String)localObject1);
-        mImagePath2AttriMap.put(paramImageKey.filePath, localImageAttri);
-      }
+      localObject3 = localObject2;
+      if (!((DecodeImageTask.ImageAttri)localObject2).mimeType.equals("unknown")) {}
     }
-    for (;;)
+    else
     {
-      localObject1 = (Integer)mImageKey2SampleSizeMap.get(Integer.valueOf(j));
-      int k = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).getWidth();
-      int m = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).getHeight();
-      if ((paramImageKey.options != null) && (!TextUtils.isEmpty(paramImageKey.filePath)) && (paramImageKey.options.isNeedPieceLoad))
-      {
-        paramImageKey.options.isNeedPieceLoad = RegionImageUtil.isValidRegionImageFormat(paramImageKey.filePath);
-        ImageManagerLog.i(TAG, "handlerSharpPDecodeMessage Region decode file isValidRegionImageFormat with isNeedPieceLoad = " + paramImageKey.options.isNeedPieceLoad);
+      localObject3 = new DecodeImageTask.ImageAttri();
+      ((DecodeImageTask.ImageAttri)localObject3).srcHeight = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject4).getHeight();
+      ((DecodeImageTask.ImageAttri)localObject3).srcWidth = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject4).getWidth();
+      localObject2 = localSharpPDecoderHelper.getMimeType();
+      if (localObject2 != null) {
+        localObject1 = localObject2;
       }
-      if (localObject1 == null)
+      ((DecodeImageTask.ImageAttri)localObject3).mimeType = ((String)localObject1);
+      mImagePath2AttriMap.put(paramImageKey.filePath, localObject3);
+    }
+    localObject1 = (Integer)mImageKey2SampleSizeMap.get(Integer.valueOf(j));
+    int k = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject4).getWidth();
+    int m = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject4).getHeight();
+    if ((paramImageKey.options != null) && (!TextUtils.isEmpty(paramImageKey.filePath)) && (paramImageKey.options.isNeedPieceLoad))
+    {
+      paramImageKey.options.isNeedPieceLoad = RegionImageUtil.isValidRegionImageFormat(paramImageKey.filePath);
+      localObject2 = TAG;
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("handlerSharpPDecodeMessage Region decode file isValidRegionImageFormat with isNeedPieceLoad = ");
+      ((StringBuilder)localObject4).append(paramImageKey.options.isNeedPieceLoad);
+      ImageManagerLog.i((String)localObject2, ((StringBuilder)localObject4).toString());
+    }
+    if (localObject1 == null)
+    {
+      i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, k, m);
+      mImageKey2SampleSizeMap.put(Integer.valueOf(j), Integer.valueOf(i));
+    }
+    else
+    {
+      i = ((Integer)localObject1).intValue();
+    }
+    if ((isGif(((DecodeImageTask.ImageAttri)localObject3).mimeType)) && (paramImageKey.options != null) && (paramImageKey.options.needShowGifAnimation))
+    {
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("handlerSharpPDecodeMessage -- url: ");
+      ((StringBuilder)localObject2).append(paramImageKey.url);
+      ((StringBuilder)localObject2).append(" --is sharp gif：");
+      ((StringBuilder)localObject2).append(((DecodeImageTask.ImageAttri)localObject3).mimeType);
+      ImageManagerLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
+      localObject3 = new NewGifImage(paramImageKey.filePath, k, m, i, paramImageKey.url);
+      localObject2 = ((NewGifImage)localObject3).getDrawable();
+      ImageManagerEnv.g().reportImageDecodingResMTA("gif_collect", "sharp/gif");
+      if (localObject2 != null)
       {
-        i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, k, m);
-        mImageKey2SampleSizeMap.put(Integer.valueOf(j), Integer.valueOf(i));
-        label339:
-        if ((!isGif(localImageAttri.mimeType)) || (paramImageKey.options == null) || (!paramImageKey.options.needShowGifAnimation)) {
-          break label615;
+        localObject1 = localObject2;
+        if (paramImageKey.options.extraProcessor != null)
+        {
+          localObject1 = localObject2;
+          if ((paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor)) {
+            localObject1 = paramImageKey.options.extraProcessor.doProcess((Drawable)localObject2);
+          }
         }
-        ImageManagerLog.d(TAG, "handlerSharpPDecodeMessage -- url: " + paramImageKey.url + " --is sharp gif：" + localImageAttri.mimeType);
-        localObject2 = new NewGifImage(paramImageKey.filePath, k, m, i, paramImageKey.url);
-        if (localObject2 == null) {
-          break label967;
-        }
+        ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, j, (Image)localObject3, (Drawable)localObject1, paramImageKey.options);
+        setResult(8, new Object[] { localObject1, null, paramImageKey.urlKey, Integer.valueOf(j), localObject3, localObject1 });
+        ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+        ImageTracer.endDecode(paramImageKey.url);
+        return true;
       }
-      label779:
-      label927:
-      label944:
-      label964:
-      label967:
-      for (localObject1 = ((NewGifImage)localObject2).getDrawable();; localObject1 = null)
+      if (paramImageKey.options != null) {
+        paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 103);
+      }
+      return false;
+    }
+    localObject1 = Bitmap.Config.ARGB_8888;
+    if ((paramImageKey.options != null) && (paramImageKey.options.imageConfig != null)) {
+      localObject1 = paramImageKey.options.imageConfig;
+    } else if (SharpPUtils.isJpg(((DecodeImageTask.ImageAttri)localObject3).mimeType)) {
+      localObject1 = Bitmap.Config.RGB_565;
+    } else {
+      localObject1 = Bitmap.Config.ARGB_8888;
+    }
+    localObject2 = localObject1;
+    if (i == 1)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == Bitmap.Config.ARGB_8888)
       {
-        ImageManagerEnv.g().reportImageDecodingResMTA("gif_collect", "sharp/gif");
-        if (localObject1 != null)
+        float f = m / k;
+        if (f <= 2.0F)
         {
-          if ((paramImageKey.options.extraProcessor == null) || (!(paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor))) {
-            break label964;
-          }
-          localObject1 = paramImageKey.options.extraProcessor.doProcess((Drawable)localObject1);
+          localObject2 = localObject1;
+          if (f >= 0.5F) {}
         }
-        for (;;)
+        else
         {
-          ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, j, (Image)localObject2, (Drawable)localObject1, paramImageKey.options);
-          setResult(8, new Object[] { localObject1, null, paramImageKey.urlKey, Integer.valueOf(j), localObject2, localObject1 });
-          ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-          ImageTracer.endDecode(paramImageKey.url);
-          return true;
-          localObject1 = "unknown";
-          break;
-          i = ((Integer)localObject1).intValue();
-          break label339;
-          if (paramImageKey.options != null) {
-            paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 103);
+          localObject2 = localObject1;
+          if (m * k > ImageManagerEnv.g().getScreenHeight() * ImageManagerEnv.g().getScreenWidth()) {
+            localObject2 = Bitmap.Config.RGB_565;
           }
-          return false;
-          label615:
-          localObject1 = Bitmap.Config.ARGB_8888;
-          int n;
-          int i1;
-          if ((paramImageKey.options != null) && (paramImageKey.options.imageConfig != null))
-          {
-            localObject1 = paramImageKey.options.imageConfig;
-            localObject2 = localObject1;
-            if (i == 1)
-            {
-              localObject2 = localObject1;
-              if (localObject1 == Bitmap.Config.ARGB_8888)
-              {
-                float f = m / k;
-                if (f <= 2.0F)
-                {
-                  localObject2 = localObject1;
-                  if (f >= 0.5F) {}
-                }
-                else
-                {
-                  localObject2 = localObject1;
-                  if (m * k > ImageManagerEnv.g().getScreenHeight() * ImageManagerEnv.g().getScreenWidth()) {
-                    localObject2 = Bitmap.Config.RGB_565;
-                  }
-                }
-              }
-            }
-            localObject1 = localObject2;
-            if (paramImageKey.options != null) {
-              if (paramImageKey.options.mImageType != 3)
-              {
-                localObject1 = localObject2;
-                if (paramImageKey.options.mImageType != 4) {}
-              }
-              else
-              {
-                if (paramImageKey.options.imageConfig == null) {
-                  break label890;
-                }
-                localObject1 = paramImageKey.options.imageConfig;
-              }
-            }
-            n = k / i;
-            i1 = m / i;
-            if (paramImageKey != null)
-            {
-              paramImageKey.inSampleSize = i;
-              paramImageKey.orgWidth = k;
-              paramImageKey.orgHeight = m;
-            }
-            if (!SharpPUtils.isJpg(localImageAttri.mimeType)) {
-              break label927;
-            }
-          }
-          for (localObject1 = localSharpPDecoderHelper.decodeSharpP2JPG(n, i1, (Bitmap.Config)localObject1);; localObject1 = localSharpPDecoderHelper.decodeSharpP2PNG(n, i1, Bitmap.Config.ARGB_8888))
-          {
-            if (localObject1 != null) {
-              break label944;
-            }
-            if (paramImageKey.options != null) {
-              paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 104);
-            }
-            return false;
-            if (SharpPUtils.isJpg(localImageAttri.mimeType))
-            {
-              localObject1 = Bitmap.Config.RGB_565;
-              break;
-            }
-            localObject1 = Bitmap.Config.ARGB_8888;
-            break;
-            label890:
-            if ((k != 0) && (m != 0) && (k / m == 2.0F))
-            {
-              localObject1 = Bitmap.Config.RGB_565;
-              break label779;
-            }
-            localObject1 = Bitmap.Config.ARGB_8888;
-            break label779;
-          }
-          processBitmap(BitmapReference.getBitmapReference((Bitmap)localObject1), paramImageKey, j, true, localImageAttri.mimeType);
-          return true;
         }
       }
     }
+    localObject1 = localObject2;
+    if (paramImageKey.options != null) {
+      if (paramImageKey.options.mImageType != 3)
+      {
+        localObject1 = localObject2;
+        if (paramImageKey.options.mImageType != 4) {}
+      }
+      else if (paramImageKey.options.imageConfig != null)
+      {
+        localObject1 = paramImageKey.options.imageConfig;
+      }
+      else if ((k != 0) && (m != 0) && (k / m == 2.0F))
+      {
+        localObject1 = Bitmap.Config.RGB_565;
+      }
+      else
+      {
+        localObject1 = Bitmap.Config.ARGB_8888;
+      }
+    }
+    int n = k / i;
+    int i1 = m / i;
+    if (paramImageKey != null)
+    {
+      paramImageKey.inSampleSize = i;
+      paramImageKey.orgWidth = k;
+      paramImageKey.orgHeight = m;
+    }
+    if (SharpPUtils.isJpg(((DecodeImageTask.ImageAttri)localObject3).mimeType)) {
+      localObject1 = localSharpPDecoderHelper.decodeSharpP2JPG(n, i1, (Bitmap.Config)localObject1);
+    } else {
+      localObject1 = localSharpPDecoderHelper.decodeSharpP2PNG(n, i1, Bitmap.Config.ARGB_8888);
+    }
+    if (localObject1 == null)
+    {
+      if (paramImageKey.options != null) {
+        paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 104);
+      }
+      return false;
+    }
+    processBitmap(BitmapReference.getBitmapReference((Bitmap)localObject1), paramImageKey, j, true, ((DecodeImageTask.ImageAttri)localObject3).mimeType);
+    return true;
   }
   
   private static boolean isAvatarUrl(String paramString)
@@ -1292,90 +1408,128 @@ public class DecodeImageTask
     int j = paramDrawable.getIntrinsicHeight();
     int k = ImageManagerEnv.g().getScreenWidth() - (int)(ImageManagerEnv.g().getDesity() * 4.0F);
     int m = ImageManagerEnv.g().getScreenHeight() - (int)(ImageManagerEnv.g().getDesity() * 4.0F);
-    ImageManagerLog.w(TAG, "super resolution. needTryScaleDrawable: width=" + i + " screenWidth=" + k + " height=" + j + " screenHeight=" + m);
+    paramDrawable = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("super resolution. needTryScaleDrawable: width=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" screenWidth=");
+    localStringBuilder.append(k);
+    localStringBuilder.append(" height=");
+    localStringBuilder.append(j);
+    localStringBuilder.append(" screenHeight=");
+    localStringBuilder.append(m);
+    ImageManagerLog.w(paramDrawable, localStringBuilder.toString());
     return (i > k) || (j > m);
   }
   
   public static DecodeImageTask obtain(ImageKey paramImageKey)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        DecodeImageTask localDecodeImageTask = sPool;
-        sPool = sPool.next;
-        localDecodeImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localDecodeImageTask.setImageKey(paramImageKey);
-        return localDecodeImageTask;
+        if (sPool != null)
+        {
+          DecodeImageTask localDecodeImageTask = sPool;
+          sPool = sPool.next;
+          localDecodeImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localDecodeImageTask.setImageKey(paramImageKey);
+          return localDecodeImageTask;
+        }
       }
-      return new DecodeImageTask(paramImageKey);
     }
+    return new DecodeImageTask(paramImageKey);
   }
   
   public static DecodeImageTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        DecodeImageTask localDecodeImageTask = sPool;
-        sPool = sPool.next;
-        localDecodeImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localDecodeImageTask.setImageTask(paramImageTask);
-        return localDecodeImageTask;
+        if (sPool != null)
+        {
+          DecodeImageTask localDecodeImageTask = sPool;
+          sPool = sPool.next;
+          localDecodeImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localDecodeImageTask.setImageTask(paramImageTask);
+          return localDecodeImageTask;
+        }
       }
-      return new DecodeImageTask(paramImageTask);
     }
+    return new DecodeImageTask(paramImageTask);
   }
   
   private void processBitmap(BitmapReference paramBitmapReference, ImageKey paramImageKey, int paramInt, boolean paramBoolean, String paramString)
   {
-    long l;
     Object localObject;
-    int j;
-    int k;
-    int i;
     if (paramBitmapReference != null)
     {
-      l = System.nanoTime();
+      long l = System.nanoTime();
       ImageManager.getInstance().updateLruFile(paramImageKey);
       localObject = paramBitmapReference;
       if (paramBoolean) {
         localObject = BitmapUtils.processExif(paramBitmapReference, paramImageKey.filePath, paramString);
       }
       localObject = processImage((BitmapReference)localObject, paramImageKey.options);
-      j = -1;
-      k = -1;
+      int i;
+      int j;
       if (paramImageKey.options != null)
       {
-        j = paramImageKey.options.clipWidth;
-        k = paramImageKey.options.clipHeight;
+        i = paramImageKey.options.clipWidth;
+        j = paramImageKey.options.clipHeight;
       }
-      if ((!paramImageKey.needSuperResolution) || (!ImageManagerEnv.g().enableSuperResolution()) || (paramImageKey.url == null) || (!paramImageKey.url.contains("sce="))) {
-        break label1003;
-      }
-      if ((ImageManagerEnv.g().checkShouldRunSuperResolutionBenchmark()) && (ImageManagerEnv.g().needRerunSuperResolutionBenchmark(paramImageKey.url))) {
-        ImageManagerEnv.g().clearSuperResolutionBenchmark();
-      }
-      if (!ImageManagerEnv.g().isSuperResolutionEnvReady())
+      else
       {
-        ImageManagerEnv.g().prepareSuperResolutionEnv();
-        i = 0;
+        i = -1;
+        j = -1;
       }
-    }
-    for (;;)
-    {
+      if ((paramImageKey.needSuperResolution) && (ImageManagerEnv.g().enableSuperResolution()) && (paramImageKey.url != null) && (paramImageKey.url.contains("sce=")))
+      {
+        if ((ImageManagerEnv.g().checkShouldRunSuperResolutionBenchmark()) && (ImageManagerEnv.g().needRerunSuperResolutionBenchmark(paramImageKey.url))) {
+          ImageManagerEnv.g().clearSuperResolutionBenchmark();
+        }
+        if (!ImageManagerEnv.g().isSuperResolutionEnvReady())
+        {
+          ImageManagerEnv.g().prepareSuperResolutionEnv();
+        }
+        else if (ImageManagerEnv.g().needSuperResolution(paramImageKey.url))
+        {
+          k = ((BitmapImage)localObject).getBitmap().getWidth();
+          int m = ((BitmapImage)localObject).getBitmap().getHeight();
+          paramBitmapReference = TAG;
+          paramString = new StringBuilder();
+          paramString.append("super resolution. width=");
+          paramString.append(k);
+          paramString.append(" height=");
+          paramString.append(m);
+          paramString.append(" url=");
+          paramString.append(paramImageKey.url);
+          ImageManagerLog.d(paramBitmapReference, paramString.toString());
+          if (ImageManagerEnv.g().canDoSuperResolution(k, m))
+          {
+            paramBitmapReference = ((BitmapImage)localObject).getBitmap().getBitmap();
+            ImageTracer.requestSuperResolution(paramImageKey.url);
+            ProgressTracer.print(7, paramImageKey.urlKey);
+            ImageManager.getSuperResolutionHandler().postAtFrontOfQueue(new DecodeImageTask.1(this, paramImageKey, paramBitmapReference, i, j, paramInt));
+            k = 1;
+            break label340;
+          }
+        }
+      }
+      int k = 0;
+      label340:
       if ((paramImageKey.options != null) && (paramImageKey.options.extraProcessor != null))
       {
-        paramString = new BitmapImageDrawable((BitmapImage)localObject, j, k);
+        paramString = new BitmapImageDrawable((BitmapImage)localObject, i, j);
         paramBitmapReference = paramString;
         if (ImageManagerEnv.g().isHighScaleUrl(paramImageKey.url))
         {
-          ImageManagerLog.w(TAG, "super resolution. check high scale not process. url=" + paramImageKey.url);
+          paramBitmapReference = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("super resolution. check high scale not process. url=");
+          localStringBuilder.append(paramImageKey.url);
+          ImageManagerLog.w(paramBitmapReference, localStringBuilder.toString());
           paramBitmapReference = paramString;
           if (needTryScaleDrawable(paramString)) {
             paramBitmapReference = scaleLargeDrawable(paramString);
@@ -1389,55 +1543,48 @@ public class DecodeImageTask
           ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, new FeedsBitmapImage(paramString), paramBitmapReference, paramImageKey.options);
           setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), new FeedsBitmapImage(paramString), paramBitmapReference });
           ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-          label372:
-          ImageTracer.endDecode(paramImageKey.url);
         }
-      }
-      for (;;)
-      {
-        if ((i == 0) && (ImageManagerEnv.g().enableReportNoneSuperResolutionTime()) && (ImageManagerEnv.g().isBigUrl(paramImageKey.url)))
-        {
-          ImageTracer.reportDecodeTime(paramImageKey.url, false);
-          ImageTracer.reportDownloadTime(paramImageKey.url, false);
-        }
-        if (System.nanoTime() - l > MIN_LOG_DECODE_COST) {
-          ImageManagerLog.w(TAG, "processBitmap: " + paramImageKey.url + " cost too much time");
-        }
-        return;
-        if (!ImageManagerEnv.g().needSuperResolution(paramImageKey.url)) {
-          break label1003;
-        }
-        i = ((BitmapImage)localObject).getBitmap().getWidth();
-        int m = ((BitmapImage)localObject).getBitmap().getHeight();
-        ImageManagerLog.d(TAG, "super resolution. width=" + i + " height=" + m + " url=" + paramImageKey.url);
-        if (!ImageManagerEnv.g().canDoSuperResolution(i, m)) {
-          break label1003;
-        }
-        paramBitmapReference = ((BitmapImage)localObject).getBitmap().getBitmap();
-        ImageTracer.requestSuperResolution(paramImageKey.url);
-        ProgressTracer.print(7, paramImageKey.urlKey);
-        ImageManager.getSuperResolutionHandler().postAtFrontOfQueue(new DecodeImageTask.1(this, paramImageKey, paramBitmapReference, j, k, paramInt));
-        i = 1;
-        break;
-        if ((paramBitmapReference instanceof RegionDrawable))
+        else if ((paramBitmapReference instanceof RegionDrawable))
         {
           paramString = ((RegionDrawable)paramBitmapReference).getBitmapRef();
           ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
           setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), localObject, paramBitmapReference });
           ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-          break label372;
         }
-        paramString = ((BitmapImage)localObject).getBitmap();
-        ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
-        setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), localObject, paramBitmapReference });
-        ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-        break label372;
+        else
+        {
+          paramString = ((BitmapImage)localObject).getBitmap();
+          ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
+          setResult(8, new Object[] { paramBitmapReference, paramString, paramImageKey.urlKey, Integer.valueOf(paramInt), localObject, paramBitmapReference });
+          ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
+        }
+        ImageTracer.endDecode(paramImageKey.url);
+      }
+      else
+      {
         paramBitmapReference = new SpecifiedBitmapDrawable(((BitmapImage)localObject).getBitmap());
         ImageTracer.endDecode(paramImageKey.url);
         ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramInt, (Image)localObject, paramBitmapReference, paramImageKey.options);
         setResult(8, new Object[] { paramBitmapReference, ((BitmapImage)localObject).getBitmap(), paramImageKey.urlKey, Integer.valueOf(paramInt), localObject, paramBitmapReference });
         ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
       }
+      if ((k == 0) && (ImageManagerEnv.g().enableReportNoneSuperResolutionTime()) && (ImageManagerEnv.g().isBigUrl(paramImageKey.url)))
+      {
+        ImageTracer.reportDecodeTime(paramImageKey.url, false);
+        ImageTracer.reportDownloadTime(paramImageKey.url, false);
+      }
+      if (System.nanoTime() - l > MIN_LOG_DECODE_COST)
+      {
+        paramBitmapReference = TAG;
+        paramString = new StringBuilder();
+        paramString.append("processBitmap: ");
+        paramString.append(paramImageKey.url);
+        paramString.append(" cost too much time");
+        ImageManagerLog.w(paramBitmapReference, paramString.toString());
+      }
+    }
+    else
+    {
       if ((paramImageKey != null) && (paramImageKey.options != null)) {
         paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 105);
       }
@@ -1446,18 +1593,22 @@ public class DecodeImageTask
       {
         paramBitmapReference = new File(paramImageKey.filePath);
         ImageManagerEnv.g().reportImageDecodingTask("unknown", paramImageKey.url, paramBitmapReference.length(), 51000, "processBitmap, bm is null", System.currentTimeMillis());
-        ImageManagerLog.w(TAG, "processBitmap, bm is null, url=" + paramImageKey.url + ", file length=" + paramBitmapReference.length());
+        paramString = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processBitmap, bm is null, url=");
+        ((StringBuilder)localObject).append(paramImageKey.url);
+        ((StringBuilder)localObject).append(", file length=");
+        ((StringBuilder)localObject).append(paramBitmapReference.length());
+        ImageManagerLog.w(paramString, ((StringBuilder)localObject).toString());
       }
       ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
       ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
-      return;
-      label1003:
-      i = 0;
     }
   }
   
   private static BitmapImage processImage(BitmapReference paramBitmapReference, ImageLoader.Options paramOptions)
   {
+    Object localObject = null;
     if (paramBitmapReference == null) {
       return null;
     }
@@ -1468,21 +1619,18 @@ public class DecodeImageTask
       try
       {
         paramOptions = paramOptions.processor.doProcess(paramBitmapReference, true);
-        if ((paramOptions != null) && (paramOptions != paramBitmapReference))
-        {
-          paramBitmapReference = new BitmapImage(paramOptions);
-          paramBitmapReference.getMetaInfo().width = i;
-          paramBitmapReference.getMetaInfo().height = j;
-          return paramBitmapReference;
-        }
       }
       catch (Throwable paramOptions)
       {
-        for (;;)
-        {
-          paramOptions.printStackTrace();
-          paramOptions = null;
-        }
+        paramOptions.printStackTrace();
+        paramOptions = localObject;
+      }
+      if ((paramOptions != null) && (paramOptions != paramBitmapReference))
+      {
+        paramBitmapReference = new BitmapImage(paramOptions);
+        paramBitmapReference.getMetaInfo().width = i;
+        paramBitmapReference.getMetaInfo().height = j;
+        return paramBitmapReference;
       }
     }
     return new BitmapImage(paramBitmapReference);
@@ -1504,32 +1652,42 @@ public class DecodeImageTask
   {
     int k = paramDrawable.getIntrinsicWidth();
     int m = paramDrawable.getIntrinsicHeight();
-    int j = ImageManagerEnv.g().getScreenWidth() - (int)(ImageManagerEnv.g().getDesity() * 4.0F);
-    int i = ImageManagerEnv.g().getScreenHeight() - (int)(ImageManagerEnv.g().getDesity() * 4.0F);
+    int i = ImageManagerEnv.g().getScreenWidth() - (int)(ImageManagerEnv.g().getDesity() * 4.0F);
+    int j = ImageManagerEnv.g().getScreenHeight() - (int)(ImageManagerEnv.g().getDesity() * 4.0F);
     Drawable localDrawable;
-    double d;
-    if (k <= j)
+    if (k <= i)
     {
       localDrawable = paramDrawable;
-      if (m <= i) {}
+      if (m <= j) {}
     }
     else
     {
-      if (k / m <= j / i) {
-        break label129;
+      double d2 = k;
+      double d3 = m;
+      Double.isNaN(d2);
+      Double.isNaN(d3);
+      double d4 = d2 / d3;
+      double d1 = i;
+      double d5 = j;
+      Double.isNaN(d1);
+      Double.isNaN(d5);
+      if (d4 > d1 / d5)
+      {
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        d2 = d3 / d2;
+        Double.isNaN(d1);
+        j = (int)(d1 * d2);
       }
-      d = j;
-      i = (int)(m / k * d);
+      else
+      {
+        Double.isNaN(d5);
+        i = (int)(d5 * d4);
+      }
+      localDrawable = new ScaleProcessor(i, j, true).process(paramDrawable);
+      localDrawable.setBounds(0, 0, i, j);
     }
-    for (;;)
-    {
-      localDrawable = new ScaleProcessor(j, i, true).process(paramDrawable);
-      localDrawable.setBounds(0, 0, j, i);
-      return localDrawable;
-      label129:
-      d = i;
-      j = (int)(k / m * d);
-    }
+    return localDrawable;
   }
   
   public void excuteTask()
@@ -1559,7 +1717,13 @@ public class DecodeImageTask
     if ((this.mImageKey != null) && (this.mImageKey.options != null) && (this.mImageKey.options.mImageType == 2))
     {
       ImageTaskBuilder.stampMap.put(this.mImageKey.url, Long.valueOf(System.currentTimeMillis()));
-      ImageManagerLog.w(TAG, "no file hashCodeEx:" + this.mImageKey.hashCodeEx() + " isGifPlayWhileDownloading:" + this.mImageKey.options.isGifPlayWhileDownloading);
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("no file hashCodeEx:");
+      localStringBuilder.append(this.mImageKey.hashCodeEx());
+      localStringBuilder.append(" isGifPlayWhileDownloading:");
+      localStringBuilder.append(this.mImageKey.options.isGifPlayWhileDownloading);
+      ImageManagerLog.w((String)localObject, localStringBuilder.toString());
     }
     if (this.mNextTask != null)
     {
@@ -1574,40 +1738,54 @@ public class DecodeImageTask
   
   protected void onResult(int paramInt, Object... paramVarArgs)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      setResult(paramInt, paramVarArgs);
-    }
-    do
-    {
-      return;
-      setResult(9, new Object[0]);
-      return;
-      setResult(9, new Object[0]);
-      return;
-      ImageManager.getInstance().imageKeyFilePathCheck(this.mImageKey);
-      if ((isAvatarUrl(this.mImageKey.url)) && (paramVarArgs[1] != null)) {
-        this.mImageKey.filePath = paramVarArgs[1].toString();
-      }
-      paramVarArgs = new File(this.mImageKey.filePath);
-      if (paramVarArgs.exists())
+      if (paramInt != 1)
       {
-        if (!ImageManagerEnv.g().getCurrentLoadingImgStatus())
+        if ((paramInt != 2) && (paramInt != 12))
         {
-          ImageTaskManager.getInstance().addWaitToDecodeImageTask(this);
+          setResult(paramInt, paramVarArgs);
           return;
         }
-        startDecodeTask();
-        return;
+        ImageManager.getInstance().imageKeyFilePathCheck(this.mImageKey);
+        if ((isAvatarUrl(this.mImageKey.url)) && (paramVarArgs[1] != null)) {
+          this.mImageKey.filePath = paramVarArgs[1].toString();
+        }
+        paramVarArgs = new File(this.mImageKey.filePath);
+        if (paramVarArgs.exists())
+        {
+          if (!ImageManagerEnv.g().getCurrentLoadingImgStatus())
+          {
+            ImageTaskManager.getInstance().addWaitToDecodeImageTask(this);
+            return;
+          }
+          startDecodeTask();
+          return;
+        }
+        if (this.mImageKey.options != null) {
+          this.mImageKey.options.errCode = ImageManager.getErrorString(this.mImageKey, 102);
+        }
+        setResult(9, new Object[0]);
+        if (this.mImageKey != null)
+        {
+          ImageManagerEnv.g().reportImageDecodingTask("unknown", this.mImageKey.url, paramVarArgs.length(), 51000, "download success, file does not exist", System.currentTimeMillis());
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onResult, download success, file does not exist!, url=");
+          localStringBuilder.append(this.mImageKey.url);
+          localStringBuilder.append(", file length=");
+          localStringBuilder.append(paramVarArgs.length());
+          ImageManagerLog.w(str, localStringBuilder.toString());
+        }
       }
-      if (this.mImageKey.options != null) {
-        this.mImageKey.options.errCode = ImageManager.getErrorString(this.mImageKey, 102);
+      else
+      {
+        setResult(9, new Object[0]);
       }
+    }
+    else {
       setResult(9, new Object[0]);
-    } while (this.mImageKey == null);
-    ImageManagerEnv.g().reportImageDecodingTask("unknown", this.mImageKey.url, paramVarArgs.length(), 51000, "download success, file does not exist", System.currentTimeMillis());
-    ImageManagerLog.w(TAG, "onResult, download success, file does not exist!, url=" + this.mImageKey.url + ", file length=" + paramVarArgs.length());
+    }
   }
   
   public void recycle()
@@ -1634,17 +1812,18 @@ public class DecodeImageTask
       ImageTaskTracer.addImageDecodeThreadPendingRecord(this.mImageKey.hashCodeEx());
     }
     DecodeImageTask.DecodeTask localDecodeTask = new DecodeImageTask.DecodeTask(this, this.mImageKey);
-    if ((this.mImageKey != null) && (this.mImageKey.options != null) && (this.mImageKey.options.priority)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ImageManager.post(localDecodeTask, bool);
-      return;
+    boolean bool;
+    if ((this.mImageKey != null) && (this.mImageKey.options != null) && (this.mImageKey.options.priority)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ImageManager.post(localDecodeTask, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.DecodeImageTask
  * JD-Core Version:    0.7.0.1
  */

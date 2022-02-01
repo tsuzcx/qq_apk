@@ -1,24 +1,20 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import vwd;
-import vxe;
-import vxf;
-
-public class VideoViewTVKImpl$1$1
+class VideoViewTVKImpl$1$1
   implements Runnable
 {
-  public VideoViewTVKImpl$1$1(vxf paramvxf) {}
+  VideoViewTVKImpl$1$1(VideoViewTVKImpl.1 param1) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
+    if (this.a.f.m != null) {
+      this.a.f.m.a(this.a.f, 102, 201, 0, "", null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

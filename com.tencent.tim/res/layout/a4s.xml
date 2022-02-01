@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@drawable/sq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/b41" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <com.tencent.biz.widgets.KandianTextView android:textSize="14.0sp" android:textColor="#ff777777" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b51" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="@dimen/as4" android:layout_marginRight="@dimen/asy" android:layout_marginBottom="@dimen/as4" android:text="@string/pxl" android:maxLines="2" />
+    <com.tencent.biz.widgets.KandianTextView android:textSize="14.0sp" android:textColor="@drawable/zv" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b53" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="@dimen/as4" android:layout_marginRight="@dimen/asy" android:layout_marginBottom="@dimen/as4" android:text="@string/q0h" android:maxLines="1" />
+</FrameLayout>

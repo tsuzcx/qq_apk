@@ -3,25 +3,26 @@ package com.tencent.mobileqq.emosm.view;
 class DragSortListView$LiftAnimator
   extends DragSortListView.SmoothAnimator
 {
-  private float a;
   private float b;
+  private float c;
   
   public void a()
   {
-    this.a = this.this$0.f;
-    this.b = this.this$0.j;
+    this.b = this.this$0.g;
+    this.c = this.this$0.k;
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if (this.this$0.g != 4)
+    if (this.this$0.h != 4)
     {
       d();
       return;
     }
-    this.this$0.f = ((int)(this.b * paramFloat2 + (1.0F - paramFloat2) * this.a));
-    this.this$0.a.y = (this.this$0.k - this.this$0.f);
-    this.this$0.a(true);
+    DragSortListView localDragSortListView = this.this$0;
+    localDragSortListView.g = ((int)(this.c * paramFloat2 + (1.0F - paramFloat2) * this.b));
+    localDragSortListView.a.y = (this.this$0.r - this.this$0.g);
+    this.this$0.b(true);
   }
 }
 

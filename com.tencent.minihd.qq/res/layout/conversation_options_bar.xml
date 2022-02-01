@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="top" android:id="@id/conversation_options_page" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/conversation_options_whole_bg" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="top" android:orientation="horizontal" android:id="@id/conversation_options_bar" android:background="@drawable/skin_conversation_options_bg" android:layout_width="fill_parent" android:layout_height="90.0dip">
+        <include android:id="@id/conversation_options_bar_item_1" layout="@layout/conversation_options_bar_item" />
+        <View android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <include android:id="@id/conversation_options_bar_item_2" layout="@layout/conversation_options_bar_item" />
+        <View android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <include android:id="@id/conversation_options_bar_item_3" layout="@layout/conversation_options_bar_item" />
+        <View android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <include android:id="@id/conversation_options_bar_item_4" layout="@layout/conversation_options_bar_item" />"
+</LinearLayout>
+</RelativeLayout>

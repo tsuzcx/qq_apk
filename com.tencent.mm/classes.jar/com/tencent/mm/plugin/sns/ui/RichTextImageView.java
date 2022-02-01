@@ -11,37 +11,39 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class RichTextImageView
   extends LinearLayout
 {
-  private Activity cup;
-  private ImageView oyP;
-  private TextView rGf;
-  private TextView rKY;
-  private boolean rKZ;
-  private String rLa;
+  private ImageView KKl;
+  private TextView Rje;
+  private boolean Rjf;
+  private String Rjg;
+  private Activity hHU;
   private TextView titleTv;
+  private TextView ycd;
   
   public RichTextImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38547);
-    this.rKZ = false;
-    this.cup = ((Activity)paramContext);
-    paramContext = inflate(this.cup, 2130970858, this);
-    this.rGf = ((TextView)paramContext.findViewById(2131825858));
-    this.titleTv = ((TextView)paramContext.findViewById(2131825857));
-    this.rKY = ((TextView)paramContext.findViewById(2131828067));
-    this.oyP = ((ImageView)paramContext.findViewById(2131825855));
-    AppMethodBeat.o(38547);
+    AppMethodBeat.i(98234);
+    this.Rjf = false;
+    this.hHU = ((Activity)paramContext);
+    paramContext = inflate(this.hHU, b.g.sns_rich_text_image_view, this);
+    this.ycd = ((TextView)paramContext.findViewById(b.f.righttext));
+    this.titleTv = ((TextView)paramContext.findViewById(b.f.titletext));
+    this.Rje = ((TextView)paramContext.findViewById(b.f.bottomtext));
+    this.KKl = ((ImageView)paramContext.findViewById(b.f.image_left));
+    AppMethodBeat.o(98234);
   }
   
   public ImageView getImageView()
   {
-    return this.oyP;
+    return this.KKl;
   }
   
   public TextView getTitle()
@@ -49,23 +51,23 @@ public class RichTextImageView
     return this.titleTv;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, final int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(38552);
+    AppMethodBeat.i(98239);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.rKZ)
+    if (!this.Rjf)
     {
-      AppMethodBeat.o(38552);
+      AppMethodBeat.o(98239);
       return;
     }
-    if (this.rLa == null)
+    if (this.Rjg == null)
     {
-      AppMethodBeat.o(38552);
+      AppMethodBeat.o(98239);
       return;
     }
-    ab.d("MicroMsg.RichTextImageView", "onLayout  Heighth:" + this.rGf.getHeight() + " LineHeight:" + this.rGf.getLineHeight());
-    paramInt3 = this.rGf.getHeight() / this.rGf.getLineHeight();
-    int i = this.rGf.getLineCount();
+    Log.d("MicroMsg.RichTextImageView", "onLayout  Heighth:" + this.ycd.getHeight() + " LineHeight:" + this.ycd.getLineHeight());
+    paramInt3 = this.ycd.getHeight() / this.ycd.getLineHeight();
+    int i = this.ycd.getLineCount();
     Rect localRect = new Rect();
     paramInt1 = 0;
     paramInt2 = 0;
@@ -74,75 +76,87 @@ public class RichTextImageView
       if (paramInt1 < paramInt3) {
         try
         {
-          this.rGf.getLineBounds(paramInt1, localRect);
+          this.ycd.getLineBounds(paramInt1, localRect);
           paramInt2 += localRect.height();
-          if (paramInt2 <= this.rGf.getHeight()) {
+          if (paramInt2 <= this.ycd.getHeight()) {
             paramInt1 += 1;
           }
         }
         catch (IndexOutOfBoundsException localIndexOutOfBoundsException) {}
       }
     }
-    if ((i >= paramInt1) && (this.rKZ))
+    if ((i >= paramInt1) && (this.Rjf))
     {
       paramInt2 = paramInt1;
       if (paramInt1 <= 0) {
         paramInt2 = 1;
       }
-      paramInt1 = this.rGf.getLayout().getLineVisibleEnd(paramInt2 - 1);
-      StringBuilder localStringBuilder = new StringBuilder("bottomH:").append(this.rKY.getHeight()).append("length");
-      String str = this.rLa;
-      ab.e("test", str.substring(paramInt1, str.length()).length());
-      ab.e("test", "bottomH:" + this.rKY.getHeight());
-      if (this.rKY.getText().length() > 0)
+      paramInt1 = this.ycd.getLayout().getLineVisibleEnd(paramInt2 - 1);
+      StringBuilder localStringBuilder = new StringBuilder("bottomH:").append(this.Rje.getHeight()).append("length");
+      String str = this.Rjg;
+      Log.e("test", str.substring(paramInt1, str.length()).length());
+      Log.e("test", "bottomH:" + this.Rje.getHeight());
+      if (this.Rje.getText().length() > 0)
       {
-        this.rKY.setVisibility(0);
-        this.rKZ = false;
-        new ak().post(new RichTextImageView.1(this, paramInt1));
+        this.Rje.setVisibility(0);
+        this.Rjf = false;
+        new MMHandler().post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(98233);
+            RichTextImageView.b(RichTextImageView.this).setText(RichTextImageView.a(RichTextImageView.this).substring(0, paramInt1));
+            RichTextImageView.c(RichTextImageView.this).setText(RichTextImageView.a(RichTextImageView.this).substring(paramInt1, RichTextImageView.a(RichTextImageView.this).length()));
+            RichTextImageView.c(RichTextImageView.this).invalidate();
+            RichTextImageView.d(RichTextImageView.this);
+            Log.e("test", "bottomH:" + RichTextImageView.c(RichTextImageView.this).getHeight());
+            AppMethodBeat.o(98233);
+          }
+        });
       }
-      ab.e("test", "bottom:" + paramInt4 + "   mesH:" + this.rKY.getMeasuredHeight());
+      Log.e("test", "bottom:" + paramInt4 + "   mesH:" + this.Rje.getMeasuredHeight());
     }
-    AppMethodBeat.o(38552);
+    AppMethodBeat.o(98239);
   }
   
   public void setImage(int paramInt)
   {
-    AppMethodBeat.i(38550);
-    this.oyP.setImageResource(paramInt);
-    AppMethodBeat.o(38550);
+    AppMethodBeat.i(98237);
+    this.KKl.setImageResource(paramInt);
+    AppMethodBeat.o(98237);
   }
   
   public void setImage(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(38551);
-    this.oyP.setImageBitmap(paramBitmap);
-    AppMethodBeat.o(38551);
+    AppMethodBeat.i(98238);
+    this.KKl.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(98238);
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(38549);
-    this.rKZ = true;
+    AppMethodBeat.i(98236);
+    this.Rjf = true;
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    this.rLa = str;
-    this.rGf.setText(this.rLa);
+    this.Rjg = str;
+    this.ycd.setText(this.Rjg);
     requestLayout();
-    AppMethodBeat.o(38549);
+    AppMethodBeat.o(98236);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(38548);
+    AppMethodBeat.i(98235);
     this.titleTv.setText(paramString);
-    AppMethodBeat.o(38548);
+    AppMethodBeat.o(98235);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.RichTextImageView
  * JD-Core Version:    0.7.0.1
  */

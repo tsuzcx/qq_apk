@@ -1,100 +1,36 @@
 package com.tencent.luggage.d;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract class e
+public final class e
 {
-  protected i byI;
-  public g byJ;
-  protected e.a byK;
-  public Context mContext;
+  final LinkedList<Class<? extends b>> ejb;
   
-  public e(g paramg)
+  public e()
   {
-    this.mContext = paramg.getContext();
-    this.byI = new i();
-    this.byJ = paramg;
+    AppMethodBeat.i(140371);
+    this.ejb = new LinkedList();
+    AppMethodBeat.o(140371);
   }
   
-  final void a(Animator paramAnimator, Runnable paramRunnable)
+  public final void aZ(List<Class<? extends b>> paramList)
   {
-    paramAnimator.addListener(new e.1(this, paramRunnable));
-    paramAnimator.start();
-  }
-  
-  public void a(e.a parama)
-  {
-    this.byK = parama;
-  }
-  
-  abstract void destroy();
-  
-  final void f(Runnable paramRunnable)
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { -(getContentView().getWidth() * 0.25F), 0.0F });
-    localObjectAnimator.setDuration(250L);
-    a(localObjectAnimator, paramRunnable);
-  }
-  
-  final void g(Runnable paramRunnable)
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { 0.0F, getContentView().getWidth() });
-    localObjectAnimator.setDuration(250L);
-    a(localObjectAnimator, paramRunnable);
-  }
-  
-  public abstract void g(String paramString, Bundle paramBundle);
-  
-  public abstract View getContentView();
-  
-  protected boolean onBackPressed()
-  {
-    return false;
-  }
-  
-  protected void onBackground() {}
-  
-  protected void onDestroy() {}
-  
-  protected void onForeground() {}
-  
-  protected abstract View tZ();
-  
-  final void ua()
-  {
-    this.byI.u(i.e.class);
-  }
-  
-  public final void ub()
-  {
-    onForeground();
-    this.byI.u(i.d.class);
-  }
-  
-  final void uc()
-  {
-    onBackground();
-    this.byI.u(i.b.class);
-  }
-  
-  final boolean ud()
-  {
-    return (this.byI.u(i.a.class)) || (onBackPressed());
-  }
-  
-  final void ue()
-  {
-    onDestroy();
-    this.byI.u(i.c.class);
+    AppMethodBeat.i(140372);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Class localClass = (Class)paramList.next();
+      this.ejb.add(localClass);
+    }
+    AppMethodBeat.o(140372);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.e
  * JD-Core Version:    0.7.0.1
  */

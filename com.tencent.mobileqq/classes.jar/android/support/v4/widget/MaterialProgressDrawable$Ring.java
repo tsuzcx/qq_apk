@@ -52,29 +52,39 @@ class MaterialProgressDrawable$Ring
   {
     if (this.mShowArrow)
     {
-      if (this.mArrow != null) {
-        break label213;
+      Path localPath = this.mArrow;
+      if (localPath == null)
+      {
+        this.mArrow = new Path();
+        this.mArrow.setFillType(Path.FillType.EVEN_ODD);
       }
-      this.mArrow = new Path();
-      this.mArrow.setFillType(Path.FillType.EVEN_ODD);
-    }
-    for (;;)
-    {
+      else
+      {
+        localPath.reset();
+      }
       float f1 = (int)this.mStrokeInset / 2;
       float f2 = this.mArrowScale;
-      float f3 = (float)(this.mRingCenterRadius * Math.cos(0.0D) + paramRect.exactCenterX());
-      float f4 = (float)(this.mRingCenterRadius * Math.sin(0.0D) + paramRect.exactCenterY());
+      double d1 = this.mRingCenterRadius;
+      double d2 = Math.cos(0.0D);
+      double d3 = paramRect.exactCenterX();
+      Double.isNaN(d3);
+      float f3 = (float)(d1 * d2 + d3);
+      d1 = this.mRingCenterRadius;
+      d2 = Math.sin(0.0D);
+      d3 = paramRect.exactCenterY();
+      Double.isNaN(d3);
+      float f4 = (float)(d1 * d2 + d3);
       this.mArrow.moveTo(0.0F, 0.0F);
       this.mArrow.lineTo(this.mArrowWidth * this.mArrowScale, 0.0F);
-      this.mArrow.lineTo(this.mArrowWidth * this.mArrowScale / 2.0F, this.mArrowHeight * this.mArrowScale);
+      localPath = this.mArrow;
+      float f5 = this.mArrowWidth;
+      float f6 = this.mArrowScale;
+      localPath.lineTo(f5 * f6 / 2.0F, this.mArrowHeight * f6);
       this.mArrow.offset(f3 - f1 * f2, f4);
       this.mArrow.close();
       this.mArrowPaint.setColor(this.mCurrentColor);
       paramCanvas.rotate(paramFloat1 + paramFloat2 - 5.0F, paramRect.exactCenterX(), paramRect.exactCenterY());
       paramCanvas.drawPath(this.mArrow, this.mArrowPaint);
-      return;
-      label213:
-      this.mArrow.reset();
     }
   }
   
@@ -92,12 +102,15 @@ class MaterialProgressDrawable$Ring
   {
     RectF localRectF = this.mTempBounds;
     localRectF.set(paramRect);
-    localRectF.inset(this.mStrokeInset, this.mStrokeInset);
-    float f1 = (this.mStartTrim + this.mRotation) * 360.0F;
-    float f2 = (this.mEndTrim + this.mRotation) * 360.0F - f1;
+    float f1 = this.mStrokeInset;
+    localRectF.inset(f1, f1);
+    float f2 = this.mStartTrim;
+    f1 = this.mRotation;
+    f2 = (f2 + f1) * 360.0F;
+    f1 = (this.mEndTrim + f1) * 360.0F - f2;
     this.mPaint.setColor(this.mCurrentColor);
-    paramCanvas.drawArc(localRectF, f1, f2, false, this.mPaint);
-    drawTriangle(paramCanvas, f1, f2, paramRect);
+    paramCanvas.drawArc(localRectF, f2, f1, false, this.mPaint);
+    drawTriangle(paramCanvas, f2, f1, paramRect);
     if (this.mAlpha < 255)
     {
       this.mCirclePaint.setColor(this.mBackgroundColor);
@@ -243,12 +256,18 @@ class MaterialProgressDrawable$Ring
   public void setInsets(int paramInt1, int paramInt2)
   {
     float f = Math.min(paramInt1, paramInt2);
-    if ((this.mRingCenterRadius <= 0.0D) || (f < 0.0F)) {}
-    for (f = (float)Math.ceil(this.mStrokeWidth / 2.0F);; f = (float)(f / 2.0F - this.mRingCenterRadius))
+    double d1 = this.mRingCenterRadius;
+    if ((d1 > 0.0D) && (f >= 0.0F))
     {
-      this.mStrokeInset = f;
-      return;
+      double d2 = f / 2.0F;
+      Double.isNaN(d2);
+      d1 = d2 - d1;
     }
+    else
+    {
+      d1 = Math.ceil(this.mStrokeWidth / 2.0F);
+    }
+    this.mStrokeInset = ((float)d1);
   }
   
   public void setRotation(float paramFloat)

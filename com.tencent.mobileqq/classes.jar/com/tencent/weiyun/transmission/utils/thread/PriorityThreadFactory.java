@@ -19,12 +19,17 @@ public class PriorityThreadFactory
   
   public Thread newThread(Runnable paramRunnable)
   {
-    return new PriorityThreadFactory.1(this, paramRunnable, this.mName + '-' + this.mNumber.getAndIncrement() + " sub:");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append('-');
+    localStringBuilder.append(this.mNumber.getAndIncrement());
+    localStringBuilder.append(" sub:");
+    return new PriorityThreadFactory.1(this, paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.thread.PriorityThreadFactory
  * JD-Core Version:    0.7.0.1
  */

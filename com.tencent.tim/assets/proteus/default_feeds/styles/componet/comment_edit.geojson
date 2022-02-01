@@ -1,0 +1,43 @@
+
+{
+    "view_type": "UIView",
+    "view_id": "id_comment_edit",
+    "event_type":"cmd_users_comment_edit_click",
+    "layout_type": "layout_relative",
+    "direction": "horizontal",
+    "margin_left": "12",
+    "margin_bottom": "12",
+    "height": {
+        "type": "absolutely",
+        "value": "27"
+    },
+    "width": {
+        "type": "relative",
+        "value": "351"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#F1F3F6",
+        "setCornerRadiusString:":"13.5"
+    },
+    "subviews": [
+                 {
+                 "view_type": "UILabel",
+                 "view_id": "id_comment_edit_label",
+                 "margin_left": "12",
+                 "align_parent_left":"YES",
+                 "height": {
+                 "type":"match_parent"
+                 },
+                 "width":{
+                 "type":"wrap_content"
+                 },
+                 "attributes": {
+                 "setFrameString": "-1",
+                 "setText:": "写评论...",
+                 "setTextColorString:": "#66000000",
+                 "setAlpha":"",
+                 "setFontSizeString:":"12",
+                 "setNumberOfLinesString:": "1"
+                 }
+                 }]
+}

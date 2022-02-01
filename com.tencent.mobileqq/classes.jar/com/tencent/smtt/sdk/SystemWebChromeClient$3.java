@@ -7,14 +7,14 @@ class SystemWebChromeClient$3
 {
   SystemWebChromeClient$3(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.ValueCallback paramValueCallback) {}
   
-  public void onReceiveValue(Uri paramUri)
+  public void a(Uri paramUri)
   {
-    this.val$uploadFile.onReceiveValue(paramUri);
+    this.a.onReceiveValue(paramUri);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient.3
  * JD-Core Version:    0.7.0.1
  */

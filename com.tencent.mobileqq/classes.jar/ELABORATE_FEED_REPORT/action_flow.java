@@ -10,11 +10,11 @@ public final class action_flow
   extends JceStruct
 {
   static Map<Integer, String> cache_mapExtend = new HashMap();
-  public long lTime;
-  public Map<Integer, String> mapExtend;
-  public int uActionHierarchy;
-  public long uDurationTime;
-  public int uPageType;
+  public long lTime = 0L;
+  public Map<Integer, String> mapExtend = null;
+  public int uActionHierarchy = 0;
+  public long uDurationTime = 0L;
+  public int uPageType = 0;
   
   static
   {
@@ -46,15 +46,16 @@ public final class action_flow
     paramJceOutputStream.write(this.uActionHierarchy, 0);
     paramJceOutputStream.write(this.lTime, 1);
     paramJceOutputStream.write(this.uPageType, 2);
-    if (this.mapExtend != null) {
-      paramJceOutputStream.write(this.mapExtend, 3);
+    Map localMap = this.mapExtend;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
     paramJceOutputStream.write(this.uDurationTime, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.action_flow
  * JD-Core Version:    0.7.0.1
  */

@@ -23,17 +23,18 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramFunction4, "operation");
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject1 = localIterator.next();
       Object localObject2 = paramGrouping.keyOf(localObject1);
       Object localObject3 = localMap.get(localObject2);
-      if ((localObject3 == null) && (!localMap.containsKey(localObject2))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localMap.put(localObject2, paramFunction4.invoke(localObject2, localObject3, localObject1, Boolean.valueOf(bool)));
-        break;
+      boolean bool;
+      if ((localObject3 == null) && (!localMap.containsKey(localObject2))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localMap.put(localObject2, paramFunction4.invoke(localObject2, localObject3, localObject1, Boolean.valueOf(bool)));
     }
     return localMap;
   }
@@ -46,17 +47,18 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramM, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction4, "operation");
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject1 = localIterator.next();
       Object localObject2 = paramGrouping.keyOf(localObject1);
       Object localObject3 = paramM.get(localObject2);
-      if ((localObject3 == null) && (!paramM.containsKey(localObject2))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramM.put(localObject2, paramFunction4.invoke(localObject2, localObject3, localObject1, Boolean.valueOf(bool)));
-        break;
+      boolean bool;
+      if ((localObject3 == null) && (!paramM.containsKey(localObject2))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      paramM.put(localObject2, paramFunction4.invoke(localObject2, localObject3, localObject1, Boolean.valueOf(bool)));
     }
     return paramM;
   }
@@ -68,19 +70,20 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramGrouping, "$this$eachCountTo");
     Intrinsics.checkParameterIsNotNull(paramM, "destination");
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = paramGrouping.keyOf(localIterator.next());
       Object localObject1 = paramM.get(localObject2);
-      if ((localObject1 == null) && (!paramM.containsKey(localObject2))) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          localObject1 = Integer.valueOf(0);
-        }
-        paramM.put(localObject2, Integer.valueOf(((Number)localObject1).intValue() + 1));
-        break;
+      int i;
+      if ((localObject1 == null) && (!paramM.containsKey(localObject2))) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        localObject1 = Integer.valueOf(0);
+      }
+      paramM.put(localObject2, Integer.valueOf(((Number)localObject1).intValue() + 1));
     }
     return paramM;
   }
@@ -93,20 +96,21 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       Object localObject3 = paramGrouping.keyOf(localObject2);
       Object localObject1 = localMap.get(localObject3);
-      if ((localObject1 == null) && (!localMap.containsKey(localObject3))) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          localObject1 = paramR;
-        }
-        localMap.put(localObject3, paramFunction2.invoke(localObject1, localObject2));
-        break;
+      int i;
+      if ((localObject1 == null) && (!localMap.containsKey(localObject3))) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        localObject1 = paramR;
+      }
+      localMap.put(localObject3, paramFunction2.invoke(localObject1, localObject2));
     }
     return localMap;
   }
@@ -120,20 +124,21 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       Object localObject3 = paramGrouping.keyOf(localObject2);
       Object localObject1 = localMap.get(localObject3);
-      if ((localObject1 == null) && (!localMap.containsKey(localObject3))) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          localObject1 = paramFunction2.invoke(localObject3, localObject2);
-        }
-        localMap.put(localObject3, paramFunction3.invoke(localObject3, localObject1, localObject2));
-        break;
+      int i;
+      if ((localObject1 == null) && (!localMap.containsKey(localObject3))) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        localObject1 = paramFunction2.invoke(localObject3, localObject2);
+      }
+      localMap.put(localObject3, paramFunction3.invoke(localObject3, localObject1, localObject2));
     }
     return localMap;
   }
@@ -146,20 +151,21 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramM, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       Object localObject3 = paramGrouping.keyOf(localObject2);
       Object localObject1 = paramM.get(localObject3);
-      if ((localObject1 == null) && (!paramM.containsKey(localObject3))) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          localObject1 = paramR;
-        }
-        paramM.put(localObject3, paramFunction2.invoke(localObject1, localObject2));
-        break;
+      int i;
+      if ((localObject1 == null) && (!paramM.containsKey(localObject3))) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        localObject1 = paramR;
+      }
+      paramM.put(localObject3, paramFunction2.invoke(localObject1, localObject2));
     }
     return paramM;
   }
@@ -173,20 +179,21 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "initialValueSelector");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       Object localObject3 = paramGrouping.keyOf(localObject2);
       Object localObject1 = paramM.get(localObject3);
-      if ((localObject1 == null) && (!paramM.containsKey(localObject3))) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          localObject1 = paramFunction2.invoke(localObject3, localObject2);
-        }
-        paramM.put(localObject3, paramFunction3.invoke(localObject3, localObject1, localObject2));
-        break;
+      int i;
+      if ((localObject1 == null) && (!paramM.containsKey(localObject3))) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        localObject1 = paramFunction2.invoke(localObject3, localObject2);
+      }
+      paramM.put(localObject3, paramFunction3.invoke(localObject3, localObject1, localObject2));
     }
     return paramM;
   }
@@ -199,29 +206,21 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject1 = localIterator.next();
       Object localObject2 = paramGrouping.keyOf(localObject1);
       Object localObject3 = localMap.get(localObject2);
       int i;
-      if ((localObject3 == null) && (!localMap.containsKey(localObject2)))
-      {
+      if ((localObject3 == null) && (!localMap.containsKey(localObject2))) {
         i = 1;
-        label89:
-        if (i == 0) {
-          break label112;
-        }
-      }
-      for (;;)
-      {
-        localMap.put(localObject2, localObject1);
-        break;
+      } else {
         i = 0;
-        break label89;
-        label112:
+      }
+      if (i == 0) {
         localObject1 = paramFunction3.invoke(localObject2, localObject3, localObject1);
       }
+      localMap.put(localObject2, localObject1);
     }
     return localMap;
   }
@@ -234,36 +233,28 @@ class GroupingKt__GroupingKt
     Intrinsics.checkParameterIsNotNull(paramM, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     Iterator localIterator = paramGrouping.sourceIterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject1 = localIterator.next();
       Object localObject2 = paramGrouping.keyOf(localObject1);
       Object localObject3 = paramM.get(localObject2);
       int i;
-      if ((localObject3 == null) && (!paramM.containsKey(localObject2)))
-      {
+      if ((localObject3 == null) && (!paramM.containsKey(localObject2))) {
         i = 1;
-        label83:
-        if (i == 0) {
-          break label106;
-        }
-      }
-      for (;;)
-      {
-        paramM.put(localObject2, localObject1);
-        break;
+      } else {
         i = 0;
-        break label83;
-        label106:
+      }
+      if (i == 0) {
         localObject1 = paramFunction3.invoke(localObject2, localObject3, localObject1);
       }
+      paramM.put(localObject2, localObject1);
     }
     return paramM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.GroupingKt__GroupingKt
  * JD-Core Version:    0.7.0.1
  */

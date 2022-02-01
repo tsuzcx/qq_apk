@@ -1,65 +1,35 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import java.util.Map;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class fzt
-  implements Runnable
+class fzt
+  implements WXShareHelper.WXShareListener
 {
-  public fzt(QQApiPlugin paramQQApiPlugin, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  fzt(fzs paramfzs) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    int j = 0;
-    int i = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
+    if ((this.a.a.c == null) || (!this.a.a.c.equals(paramBaseResp.transaction))) {
       return;
     }
-    if ((localObject instanceof QQBrowserActivity))
+    boolean bool;
+    switch (paramBaseResp.errCode)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = ((QQBrowserActivity)localObject).a().a();
-      if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131562035);
+      bool = false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
+    while (!TextUtils.isEmpty(this.a.a.b))
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new fzu(this);
-      WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c = String.valueOf(System.currentTimeMillis());
-    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    if ("audio".equals(this.jdField_a_of_type_JavaLangString))
-    {
-      localWXShareHelper = WXShareHelper.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-      str2 = this.b;
-      str3 = this.c;
-      str4 = this.d;
-      if ("2".equals(this.e)) {}
-      for (;;)
-      {
-        localWXShareHelper.a(str1, str2, (Bitmap)localObject, str3, str4, i, this.f);
-        return;
-        i = 1;
-      }
-    }
-    WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-    String str2 = this.b;
-    String str3 = this.c;
-    String str4 = this.d;
-    if ("2".equals(this.e)) {}
-    for (i = j;; i = 1)
-    {
-      localWXShareHelper.a(str1, str2, (Bitmap)localObject, str3, str4, i);
+      this.a.a.callJs(this.a.a.b, new String[] { String.valueOf(bool) });
       return;
+      QRUtils.a(2, 2131562917);
+      bool = true;
+      continue;
+      bool = false;
     }
   }
 }

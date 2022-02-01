@@ -37,10 +37,13 @@ public class LuanLog
   
   public static void init(LuanLog.LuanLogInterface paramLuanLogInterface)
   {
-    if ((paramLuanLogInterface == null) || (!INIT.compareAndSet(false, true))) {
-      return;
+    if (paramLuanLogInterface != null)
+    {
+      if (!INIT.compareAndSet(false, true)) {
+        return;
+      }
+      sLogInf = paramLuanLogInterface;
     }
-    sLogInf = paramLuanLogInterface;
   }
   
   public static void v(String paramString1, String paramString2)
@@ -66,7 +69,7 @@ public class LuanLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.core.LuanLog
  * JD-Core Version:    0.7.0.1
  */

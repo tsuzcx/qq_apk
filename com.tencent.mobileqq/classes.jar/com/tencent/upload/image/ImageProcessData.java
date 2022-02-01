@@ -39,23 +39,20 @@ public class ImageProcessData
     this.targetWidth = paramParcel.readInt();
     this.targetHeight = paramParcel.readInt();
     this.targetQuality = paramParcel.readInt();
-    if (paramParcel.readByte() == 1)
-    {
+    int i = paramParcel.readByte();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      this.autoRotate = bool1;
-      if (paramParcel.readByte() != 1) {
-        break label98;
-      }
-    }
-    label98:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.compressToWebp = bool1;
-      this.msg = paramParcel.readString();
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.autoRotate = bool1;
+    boolean bool1 = bool2;
+    if (paramParcel.readByte() == 1) {
+      bool1 = true;
+    }
+    this.compressToWebp = bool1;
+    this.msg = paramParcel.readString();
   }
   
   public int describeContents()
@@ -65,40 +62,39 @@ public class ImageProcessData
   
   public String toString()
   {
-    return super.toString() + "file = " + this.originalFilePath + " target w=" + this.targetWidth + " h = " + this.targetHeight + " q = " + this.targetQuality + " a = " + this.autoRotate + " webp = " + this.compressToWebp;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("file = ");
+    localStringBuilder.append(this.originalFilePath);
+    localStringBuilder.append(" target w=");
+    localStringBuilder.append(this.targetWidth);
+    localStringBuilder.append(" h = ");
+    localStringBuilder.append(this.targetHeight);
+    localStringBuilder.append(" q = ");
+    localStringBuilder.append(this.targetQuality);
+    localStringBuilder.append(" a = ");
+    localStringBuilder.append(this.autoRotate);
+    localStringBuilder.append(" webp = ");
+    localStringBuilder.append(this.compressToWebp);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
     paramParcel.writeInt(this.id);
     paramParcel.writeString(this.originalFilePath);
     paramParcel.writeString(this.targetFilePath);
     paramParcel.writeInt(this.targetWidth);
     paramParcel.writeInt(this.targetHeight);
     paramParcel.writeInt(this.targetQuality);
-    if (this.autoRotate)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.compressToWebp) {
-        break label94;
-      }
-    }
-    label94:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.msg);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeByte((byte)this.autoRotate);
+    paramParcel.writeByte((byte)this.compressToWebp);
+    paramParcel.writeString(this.msg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.image.ImageProcessData
  * JD-Core Version:    0.7.0.1
  */

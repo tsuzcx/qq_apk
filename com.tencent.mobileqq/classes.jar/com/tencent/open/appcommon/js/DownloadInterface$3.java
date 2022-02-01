@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.text.TextUtils;
-import bflp;
+import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebView;
 
 class DownloadInterface$3
@@ -13,20 +13,21 @@ class DownloadInterface$3
   {
     try
     {
-      if ((this.this$0.webview != null) && (!TextUtils.isEmpty(this.a))) {
+      if ((this.this$0.webview != null) && (!TextUtils.isEmpty(this.a)))
+      {
         this.this$0.webview.loadUrl(this.a);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      bflp.a("DownloadInterface", "webview loadUrl>>> ", localException);
+      LogUtility.a("DownloadInterface", "webview loadUrl>>> ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.DownloadInterface.3
  * JD-Core Version:    0.7.0.1
  */

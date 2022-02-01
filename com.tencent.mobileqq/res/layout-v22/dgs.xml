@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qa2" android:background="@drawable/h10" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/ji8" android:layout_centerVertical="true" android:elevation="10.0dip" android:outlineSpotShadowColor="#ffefefef" />
+    <ImageView android:id="@id/qa1" android:background="@drawable/h10" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/ji7" android:layout_centerVertical="true" android:elevation="10.0dip" android:outlineSpotShadowColor="#ffefefef" />
+    <com.tencent.timi.game.team.impl.operate.TeamActionBtnView android:gravity="center" android:id="@id/qa0" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_weight="1.0" android:layout_centerInParent="true" />
+    <com.tencent.timi.game.team.impl.operate.TeamSpeakerView android:id="@id/qa5" android:background="@drawable/h10" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/jie" android:elevation="10.0dip" android:outlineSpotShadowColor="#ffefefef" />
+    <com.tencent.timi.game.team.impl.operate.TeamMicView android:id="@id/qa4" android:background="@drawable/h10" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ji5" android:elevation="10.0dip" android:outlineSpotShadowColor="#ffefefef" />
+</merge>

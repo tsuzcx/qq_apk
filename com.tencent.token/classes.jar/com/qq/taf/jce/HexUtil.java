@@ -10,27 +10,29 @@ public class HexUtil
   
   public static String byte2HexStr(byte paramByte)
   {
-    int i = digits[(paramByte & 0xF)];
-    paramByte = (byte)(paramByte >>> 4);
-    return new String(new char[] { digits[(paramByte & 0xF)], i });
+    char[] arrayOfChar = digits;
+    int i = arrayOfChar[(paramByte & 0xF)];
+    return new String(new char[] { arrayOfChar[((byte)(paramByte >>> 4) & 0xF)], i });
   }
   
   public static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int j = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = digits[(j & 0xF)];
-      j = (byte)(j >>> 4);
-      arrayOfChar[(i * 2 + 0)] = digits[(j & 0xF)];
-      i += 1;
+      char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        int j = paramArrayOfByte[i];
+        int k = i * 2;
+        char[] arrayOfChar2 = digits;
+        arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
+        arrayOfChar1[(k + 0)] = arrayOfChar2[((byte)(j >>> 4) & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar1);
     }
-    return new String(arrayOfChar);
+    return null;
   }
   
   public static byte char2Byte(char paramChar)
@@ -49,33 +51,29 @@ public class HexUtil
   
   public static byte hexStr2Byte(String paramString)
   {
-    byte b2 = 0;
-    byte b1 = b2;
-    if (paramString != null)
-    {
-      b1 = b2;
-      if (paramString.length() == 1) {
-        b1 = char2Byte(paramString.charAt(0));
-      }
+    if ((paramString != null) && (paramString.length() == 1)) {
+      return char2Byte(paramString.charAt(0));
     }
-    return b1;
+    return 0;
   }
   
   public static byte[] hexStr2Bytes(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return emptybytes;
-    }
-    byte[] arrayOfByte = new byte[paramString.length() / 2];
-    int i = 0;
-    while (i < arrayOfByte.length)
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      char c1 = paramString.charAt(i * 2);
-      char c2 = paramString.charAt(i * 2 + 1);
-      arrayOfByte[i] = ((byte)(char2Byte(c1) * 16 + char2Byte(c2)));
-      i += 1;
+      byte[] arrayOfByte = new byte[paramString.length() / 2];
+      int i = 0;
+      while (i < arrayOfByte.length)
+      {
+        int j = i * 2;
+        char c1 = paramString.charAt(j);
+        char c2 = paramString.charAt(j + 1);
+        arrayOfByte[i] = ((byte)(char2Byte(c1) * 16 + char2Byte(c2)));
+        i += 1;
+      }
+      return arrayOfByte;
     }
-    return arrayOfByte;
+    return emptybytes;
   }
   
   public static void main(String[] paramArrayOfString)

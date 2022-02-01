@@ -57,8 +57,9 @@ public class DefaultLoadControl
   private void reset(boolean paramBoolean)
   {
     this.targetBufferSize = 0;
-    if ((this.priorityTaskManager != null) && (this.isBuffering)) {
-      this.priorityTaskManager.remove(0);
+    PriorityTaskManager localPriorityTaskManager = this.priorityTaskManager;
+    if ((localPriorityTaskManager != null) && (this.isBuffering)) {
+      localPriorityTaskManager.remove(0);
     }
     this.isBuffering = false;
     if (paramBoolean) {
@@ -108,13 +109,13 @@ public class DefaultLoadControl
   
   public void onTracksSelected(Renderer[] paramArrayOfRenderer, TrackGroupArray paramTrackGroupArray, TrackSelectionArray paramTrackSelectionArray)
   {
-    if (this.targetBufferBytesOverwrite == -1) {}
-    for (int i = calculateTargetBufferSize(paramArrayOfRenderer, paramTrackSelectionArray);; i = this.targetBufferBytesOverwrite)
-    {
-      this.targetBufferSize = i;
-      this.allocator.setTargetBufferSize(this.targetBufferSize);
-      return;
+    int j = this.targetBufferBytesOverwrite;
+    int i = j;
+    if (j == -1) {
+      i = calculateTargetBufferSize(paramArrayOfRenderer, paramTrackSelectionArray);
     }
+    this.targetBufferSize = i;
+    this.allocator.setTargetBufferSize(this.targetBufferSize);
   }
   
   public boolean retainBackBufferFromKeyframe()
@@ -124,77 +125,76 @@ public class DefaultLoadControl
   
   public boolean shouldContinueLoading(long paramLong, float paramFloat)
   {
+    int i = this.allocator.getTotalBytesAllocated();
+    int j = this.targetBufferSize;
     boolean bool3 = true;
     boolean bool2 = true;
-    int i;
-    boolean bool1;
-    if (this.allocator.getTotalBytesAllocated() >= this.targetBufferSize)
-    {
+    if (i >= j) {
       i = 1;
-      boolean bool4 = this.isBuffering;
-      if (!this.prioritizeTimeOverSizeThresholds) {
-        break label128;
-      }
-      bool1 = bool2;
-      if (paramLong >= this.minBufferUs)
-      {
-        if ((paramLong > this.maxBufferUs) || (!this.isBuffering) || (i != 0)) {
-          break label122;
-        }
-        bool1 = bool2;
-      }
-      label74:
-      this.isBuffering = bool1;
-      if ((this.priorityTaskManager != null) && (this.isBuffering != bool4))
-      {
-        if (!this.isBuffering) {
-          break label181;
-        }
-        this.priorityTaskManager.add(0);
-      }
-    }
-    for (;;)
-    {
-      return this.isBuffering;
+    } else {
       i = 0;
-      break;
-      label122:
-      bool1 = false;
-      break label74;
-      label128:
+    }
+    boolean bool4 = this.isBuffering;
+    boolean bool1;
+    if (this.prioritizeTimeOverSizeThresholds)
+    {
+      bool1 = bool2;
+      if (paramLong >= this.minBufferUs) {
+        if ((paramLong <= this.maxBufferUs) && (bool4) && (i == 0)) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
+        }
+      }
+      this.isBuffering = bool1;
+    }
+    else
+    {
       if (i == 0)
       {
         bool1 = bool3;
-        if (paramLong >= this.minBufferUs) {
-          if ((paramLong > this.maxBufferUs) || (!this.isBuffering)) {
-            break label175;
-          }
+        if (paramLong < this.minBufferUs) {
+          break label143;
+        }
+        if ((paramLong <= this.maxBufferUs) && (bool4))
+        {
+          bool1 = bool3;
+          break label143;
         }
       }
-      label175:
-      for (bool1 = bool3;; bool1 = false)
-      {
-        this.isBuffering = bool1;
-        break;
-      }
-      label181:
-      this.priorityTaskManager.remove(0);
+      bool1 = false;
+      label143:
+      this.isBuffering = bool1;
     }
+    PriorityTaskManager localPriorityTaskManager = this.priorityTaskManager;
+    if (localPriorityTaskManager != null)
+    {
+      bool1 = this.isBuffering;
+      if (bool1 != bool4) {
+        if (bool1) {
+          localPriorityTaskManager.add(0);
+        } else {
+          localPriorityTaskManager.remove(0);
+        }
+      }
+    }
+    return this.isBuffering;
   }
   
   public boolean shouldStartPlayback(long paramLong, float paramFloat, boolean paramBoolean)
   {
     long l = Util.getPlayoutDurationForMediaDuration(paramLong, paramFloat);
-    if (paramBoolean) {}
-    for (paramLong = this.bufferForPlaybackAfterRebufferUs; (paramLong <= 0L) || (l >= paramLong) || ((!this.prioritizeTimeOverSizeThresholds) && (this.allocator.getTotalBytesAllocated() >= this.targetBufferSize)); paramLong = this.bufferForPlaybackUs) {
-      return true;
+    if (paramBoolean) {
+      paramLong = this.bufferForPlaybackAfterRebufferUs;
+    } else {
+      paramLong = this.bufferForPlaybackUs;
     }
-    return false;
+    return (paramLong <= 0L) || (l >= paramLong) || ((!this.prioritizeTimeOverSizeThresholds) && (this.allocator.getTotalBytesAllocated() >= this.targetBufferSize));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.DefaultLoadControl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnh;
-import agni;
-import alud;
-import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ark.api.IArkThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ArkDebugChatPie$1$1$2
+class ArkDebugChatPie$1$1$2
   implements Runnable
 {
-  public ArkDebugChatPie$1$1$2(agni paramagni, int paramInt) {}
+  ArkDebugChatPie$1$1$2(ArkDebugChatPie.1.1 param1, int paramInt) {}
   
   public void run()
   {
-    agnh.a(this.jdField_a_of_type_Agni.a.this$0);
-    String str = "";
-    if (this.jdField_a_of_type_Int == 1) {
-      str = alud.a(2131701050);
+    ArkDebugChatPie.a(this.b.a.this$0);
+    String str;
+    if (this.a == 1) {
+      str = HardCodeUtil.a(2131898914);
+    } else {
+      str = "";
     }
     ArkAppMgr.getInstance().clearDebugAppPathCache();
-    QQToast.a(this.jdField_a_of_type_Agni.a.this$0.a, String.format(alud.a(2131701058), new Object[] { str }), 0).a();
-    ArkDispatchTask.getInstance().postToMainThreadDelayed(new ArkDebugChatPie.1.1.2.1(this), 60L);
+    QQToast.makeText(this.b.a.this$0.e, String.format(HardCodeUtil.a(2131898922), new Object[] { str }), 0).show();
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThreadDelay(new ArkDebugChatPie.1.1.2.1(this), 60);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class BubbleEntity
-  extends awge
+  extends Entity
 {
-  public int bubble_id;
-  public long expire;
+  public int bubble_id = 0;
+  public long expire = 0L;
   public String hash = "";
-  public int opType;
-  public int power;
-  public String resUrl;
+  public int opType = 0;
+  public int power = 0;
+  public String resUrl = null;
   public int version = 1;
   
   public BubbleEntity() {}
@@ -36,7 +36,7 @@ public class BubbleEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.BubbleEntity
  * JD-Core Version:    0.7.0.1
  */

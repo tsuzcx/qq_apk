@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiop;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +8,7 @@ import java.io.Serializable;
 public class PhotoSendParams
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PhotoSendParams> CREATOR = new aiop();
+  public static final Parcelable.Creator<PhotoSendParams> CREATOR = new PhotoSendParams.1();
   public static final int SEND_PIC_NORMAL = 0;
   public static final int SEND_PIC_QZONE = 1;
   public long fileSize;
@@ -54,13 +53,20 @@ public class PhotoSendParams
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PhotoSendParams:");
-    localStringBuilder.append("&thumbPath:").append(this.thumbPath);
-    localStringBuilder.append(" &rawMd5:").append(this.rawMd5);
-    localStringBuilder.append(" &rawPicPath:").append(this.rawPicPath);
-    localStringBuilder.append(" &rawHeight:").append(this.rawHeight);
-    localStringBuilder.append(" &rawWidth:").append(this.rawWidth);
-    localStringBuilder.append(" &rawDownloadUrl:").append(this.rawDownloadUrl);
-    localStringBuilder.append(" &picType:").append(this.picType);
+    localStringBuilder.append("&thumbPath:");
+    localStringBuilder.append(this.thumbPath);
+    localStringBuilder.append(" &rawMd5:");
+    localStringBuilder.append(this.rawMd5);
+    localStringBuilder.append(" &rawPicPath:");
+    localStringBuilder.append(this.rawPicPath);
+    localStringBuilder.append(" &rawHeight:");
+    localStringBuilder.append(this.rawHeight);
+    localStringBuilder.append(" &rawWidth:");
+    localStringBuilder.append(this.rawWidth);
+    localStringBuilder.append(" &rawDownloadUrl:");
+    localStringBuilder.append(this.rawDownloadUrl);
+    localStringBuilder.append(" &picType:");
+    localStringBuilder.append(this.picType);
     return localStringBuilder.toString();
   }
   

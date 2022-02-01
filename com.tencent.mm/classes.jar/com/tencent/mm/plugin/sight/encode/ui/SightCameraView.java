@@ -14,40 +14,69 @@ import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.u;
-import com.tencent.mm.compatible.e.y;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.compatible.deviceinfo.ab;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.w;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.d.a;
+import com.tencent.mm.plugin.sight.base.f;
 import com.tencent.mm.plugin.sight.encode.a.a;
 import com.tencent.mm.plugin.sight.encode.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public abstract class SightCameraView
   extends FrameLayout
   implements d.a
 {
-  protected int fch = 320;
-  private long iWt = 0L;
-  private com.tencent.mm.model.d idF = new com.tencent.mm.model.d();
-  private Animation nTC;
-  protected e qWL;
-  protected a qWM;
-  protected ImageView qWN;
-  protected Runnable qWO;
-  protected long qWP = -1L;
-  protected SightCameraView.b qWQ = SightCameraView.b.qXc;
-  protected boolean qWR = false;
-  protected boolean qWS = false;
-  protected int qWT = 6500;
-  protected SightCameraView.a qWU;
-  private ap qWV = new ap(Looper.getMainLooper(), new SightCameraView.1(this), true);
-  private int qWW = -1;
-  private Runnable qWX = new SightCameraView.2(this);
-  private Runnable qWY = new SightCameraView.3(this);
+  private Animation JNq;
+  protected long JqZ = -1L;
+  private Runnable PJA = new SightCameraView.3(this);
+  protected e PJo;
+  protected a PJp;
+  protected ImageView PJq;
+  protected Runnable PJr;
+  protected SightCameraView.b PJs = SightCameraView.b.PJE;
+  protected boolean PJt = false;
+  protected boolean PJu = false;
+  protected int PJv = 6500;
+  protected a PJw;
+  private MTimerHandler PJx = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+  {
+    public final boolean onTimerExpired()
+    {
+      AppMethodBeat.i(28780);
+      float f = (float)SightCameraView.this.PJp.gYU() / SightCameraView.this.PJv;
+      if ((Float.compare(f, 0.0F) <= 0) && (System.currentTimeMillis() - SightCameraView.a(SightCameraView.this) > 20000L))
+      {
+        Log.e("MicroMsg.SightCameraView", "ERROR record duration, %dms !!!", new Object[] { Long.valueOf(20000L) });
+        SightCameraView.this.dPx();
+        AppMethodBeat.o(28780);
+        return false;
+      }
+      if ((Float.compare(f, 1.0F) > 0) && (SightCameraView.this.PJp.gYV() == a.a.PHX)) {
+        if (!SightCameraView.this.PJp.aEd()) {
+          SightCameraView.b(SightCameraView.this);
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(28780);
+        return true;
+        SightCameraView.this.cn(f);
+      }
+    }
+  }, true);
+  private int PJy = -1;
+  private Runnable PJz = new SightCameraView.2(this);
+  protected int nLt = 320;
+  private long uoS = 0L;
+  private com.tencent.mm.model.d vZw = new com.tencent.mm.model.d();
   
   public SightCameraView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -57,112 +86,120 @@ public abstract class SightCameraView
   public SightCameraView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (com.tencent.mm.plugin.sight.base.d.cmv()) {
-      inflate(getContext(), 2130970744, this);
+    if (f.gYq()) {
+      inflate(getContext(), R.i.gor, this);
     }
     for (;;)
     {
-      this.qWR = false;
-      this.qWS = false;
-      this.qWL = new e();
-      paramContext = this.qWL;
-      ab.i("MicroMsg.SightCamera", "init needRotate %s", new Object[] { Boolean.FALSE });
-      if (ac.erw.erh)
+      this.PJt = false;
+      this.PJu = false;
+      this.PJo = new e();
+      paramContext = this.PJo;
+      Log.i("MicroMsg.SightCamera", "init needRotate %s", new Object[] { Boolean.FALSE });
+      if (af.lYa.lXF)
       {
-        paramContext.qWJ.oHZ = ac.erw.mVideoHeight;
-        paramContext.qWJ.oIa = ac.erw.mVideoWidth;
-        paramContext.qWJ.oHY = ac.erw.erj;
+        paramContext.PJl.nAh = af.lYa.mVideoHeight;
+        paramContext.PJl.nAg = af.lYa.mVideoWidth;
+        paramContext.PJl.KWa = af.lYa.lXH;
       }
-      paramContext.qWJ.oIj = com.tencent.mm.compatible.e.d.getNumberOfCameras();
-      paramContext.qWJ.rotate = 0;
-      this.qWN = ((ImageView)findViewById(2131827767));
-      cnt();
+      paramContext.PJl.nvv = com.tencent.mm.compatible.deviceinfo.d.aOG();
+      paramContext.PJl.hYK = 0;
+      this.PJq = ((ImageView)findViewById(R.h.fTE));
+      gZo();
       return;
-      inflate(getContext(), 2130970743, this);
+      inflate(getContext(), R.i.goq, this);
     }
   }
   
-  private void cnt()
+  private void gZo()
   {
-    if (this.qWN.getVisibility() == 4) {
+    if (this.PJq.getVisibility() == 4) {
       return;
     }
-    if (this.nTC != null) {
-      this.nTC.cancel();
+    if (this.JNq != null) {
+      this.JNq.cancel();
     }
-    this.qWN.setVisibility(4);
+    this.PJq.setVisibility(4);
   }
   
-  public final void aZ(float paramFloat)
+  public final void bAi() {}
+  
+  public final void bAj() {}
+  
+  public final void bAk() {}
+  
+  public final void bAl() {}
+  
+  protected final void bUf()
   {
-    ab.d("MicroMsg.SightCameraView", "update progress %f", new Object[] { Float.valueOf(paramFloat) });
-    if (this.qWW < 0) {
-      this.qWW = getResources().getDisplayMetrics().widthPixels;
+    this.vZw.a(this);
+  }
+  
+  protected abstract void cN(String paramString, boolean paramBoolean);
+  
+  public final void cn(float paramFloat)
+  {
+    Log.d("MicroMsg.SightCameraView", "update progress %f", new Object[] { Float.valueOf(paramFloat) });
+    if (this.PJy < 0) {
+      this.PJy = getResources().getDisplayMetrics().widthPixels;
     }
     if (paramFloat < 0.0F)
     {
-      localLayoutParams = this.qWN.getLayoutParams();
-      localLayoutParams.width = this.qWW;
-      this.qWN.setLayoutParams(localLayoutParams);
+      localLayoutParams = this.PJq.getLayoutParams();
+      localLayoutParams.width = this.PJy;
+      this.PJq.setLayoutParams(localLayoutParams);
       return;
     }
     if (paramFloat > 1.0F)
     {
-      i = this.qWW / 2;
-      localLayoutParams = this.qWN.getLayoutParams();
-      localLayoutParams.width = (this.qWW - (i - 1) * 2);
-      this.qWN.setLayoutParams(localLayoutParams);
+      i = this.PJy / 2;
+      localLayoutParams = this.PJq.getLayoutParams();
+      localLayoutParams.width = (this.PJy - (i - 1) * 2);
+      this.PJq.setLayoutParams(localLayoutParams);
       return;
     }
     int i = (int)(getResources().getDisplayMetrics().widthPixels * paramFloat / 2.0F);
-    ViewGroup.LayoutParams localLayoutParams = this.qWN.getLayoutParams();
-    localLayoutParams.width = (this.qWW - i * 2);
-    this.qWN.setLayoutParams(localLayoutParams);
+    ViewGroup.LayoutParams localLayoutParams = this.PJq.getLayoutParams();
+    localLayoutParams.width = (this.PJy - i * 2);
+    this.PJq.setLayoutParams(localLayoutParams);
   }
   
-  protected abstract void bm(String paramString, boolean paramBoolean);
-  
-  protected final void bvq()
+  protected final void dPx()
   {
-    ab.w("MicroMsg.SightCameraView", "cancel record");
-    if (this.qWM == null) {
+    Log.w("MicroMsg.SightCameraView", "cancel record");
+    if (this.PJp == null) {
       throw new IllegalStateException("The mSightMedia must be set!");
     }
-    aw.RO().caB().removeCallbacks(this.qWX);
-    aw.RO().ac(this.qWY);
-    this.qWV.stopTimer();
-    aZ(0.0F);
-    cnt();
+    bh.baH().getWorkerHandler().removeCallbacks(this.PJz);
+    bh.baH().postToWorker(this.PJA);
+    this.PJx.stopTimer();
+    cn(0.0F);
+    gZo();
     setKeepScreenOn(false);
   }
   
-  protected abstract void cns();
+  protected abstract void gZn();
   
-  protected final void cnu()
+  protected final void gZp()
   {
-    this.idF.a(this);
-  }
-  
-  protected final void cnv()
-  {
-    this.idF.cJ(false);
+    this.vZw.gR(false);
   }
   
   public a.a getCurMediaStatus()
   {
-    return this.qWM.cna();
+    return this.PJp.gYV();
   }
   
   public int getDuration()
   {
-    return this.qWM.getDuration();
+    return this.PJp.getDuration();
   }
   
   protected abstract Surface getPreviewSurface();
   
   public String getRecordPath()
   {
-    return this.qWM.getRecordPath();
+    return this.PJp.getRecordPath();
   }
   
   protected abstract int getSurfaceHeight();
@@ -175,78 +212,78 @@ public abstract class SightCameraView
   {
     boolean bool = false;
     e locale;
-    if ((paramMotionEvent.getAction() == 0) && (this.qWR) && (this.qWS))
+    if ((paramMotionEvent.getAction() == 0) && (this.PJt) && (this.PJu))
     {
-      ab.i("MicroMsg.SightCameraView", "check double click %dms", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - this.qWP) });
-      if (SystemClock.elapsedRealtime() - this.qWP >= 400L) {
+      Log.i("MicroMsg.SightCameraView", "check double click %dms", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - this.JqZ) });
+      if (SystemClock.elapsedRealtime() - this.JqZ >= 400L) {
         break label381;
       }
-      this.qWL.qWK.removeMessages(4354);
-      locale = this.qWL;
-      if (locale.oGT) {
+      this.PJo.PJn.removeMessages(4354);
+      locale = this.PJo;
+      if (locale.KUW) {
         break label125;
       }
-      ab.w("MicroMsg.SightCamera", "want to trigger zoom, but current status is not preview");
+      Log.w("MicroMsg.SightCamera", "want to trigger zoom, but current status is not preview");
     }
     for (;;)
     {
-      this.qWP = SystemClock.elapsedRealtime();
+      this.JqZ = SystemClock.elapsedRealtime();
       paramMotionEvent.getX();
       paramMotionEvent.getY();
-      com.tencent.mm.compatible.util.d.fw(14);
+      com.tencent.mm.compatible.util.d.rc(14);
       return true;
       try
       {
         label125:
-        Camera.Parameters localParameters = locale.eoH.getParameters();
+        Camera.Parameters localParameters = locale.lTN.aPy();
         if (localParameters == null) {
           continue;
         }
-        ab.i("MicroMsg.SightCamera", "trigger zoom, has zoomed %B, isSupported %B", new Object[] { Boolean.valueOf(locale.eZZ), Boolean.valueOf(localParameters.isZoomSupported()) });
+        Log.i("MicroMsg.SightCamera", "trigger zoom, has zoomed %B, isSupported %B", new Object[] { Boolean.valueOf(locale.KUV), Boolean.valueOf(localParameters.isZoomSupported()) });
         if (!localParameters.isZoomSupported()) {
           continue;
         }
-        locale.qWK.removeMessages(4353);
-        if (locale.eZZ)
+        locale.PJn.removeMessages(4353);
+        if (locale.KUV)
         {
-          locale.qWK.faa = false;
-          locale.qWK.eZZ = false;
-          locale.qWK.eZY = (e.a.h(localParameters) * -1);
-          locale.qWK.sendMessage(locale.qWK.obtainMessage(4353, locale.eoH));
-          if (!locale.eZZ) {
+          locale.PJn.KVy = false;
+          locale.PJn.KUV = false;
+          locale.PJn.KVx = (e.a.j(localParameters) * -1);
+          locale.PJn.sendMessage(locale.PJn.obtainMessage(4353, locale.lTN));
+          if (!locale.KUV) {
             bool = true;
           }
-          locale.eZZ = bool;
+          locale.KUV = bool;
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ab.e("MicroMsg.SightCamera", "getParameters failed %s", new Object[] { localException.getMessage() });
-          ab.printErrStackTrace("MicroMsg.SightCamera", localException, "", new Object[0]);
+          Log.e("MicroMsg.SightCamera", "getParameters failed %s", new Object[] { localException.getMessage() });
+          Log.printErrStackTrace("MicroMsg.SightCamera", localException, "", new Object[0]);
           localObject = null;
           continue;
-          locale.qWK.faa = false;
-          locale.qWK.eZZ = true;
-          locale.qWK.eZY = e.a.h((Camera.Parameters)localObject);
-          locale.qWK.sendMessage(locale.qWK.obtainMessage(4353, locale.eoH));
+          locale.PJn.KVy = false;
+          locale.PJn.KUV = true;
+          locale.PJn.KVx = e.a.j((Camera.Parameters)localObject);
+          locale.PJn.sendMessage(locale.PJn.obtainMessage(4353, locale.lTN));
         }
       }
       label381:
-      Object localObject = this.qWL;
+      Object localObject = this.PJo;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       int i = getSurfaceWidth();
       int j = getSurfaceHeight();
-      if (!com.tencent.mm.compatible.util.d.fw(14))
+      if (!com.tencent.mm.compatible.util.d.rc(14))
       {
-        ((e)localObject).qWK.removeMessages(4354);
-        ((e)localObject).qWK.fac = f1;
-        ((e)localObject).qWK.fad = f2;
-        ((e)localObject).qWK.fae = i;
-        ((e)localObject).qWK.faf = j;
-        ((e)localObject).qWK.sendMessageDelayed(((e)localObject).qWK.obtainMessage(4354, ((e)localObject).eoH), 400L);
+        ((e)localObject).PJn.removeMessages(4354);
+        ((e)localObject).PJn.mkm = f1;
+        ((e)localObject).PJn.mkn = f2;
+        ((e)localObject).PJn.nGM = i;
+        ((e)localObject).PJn.nGN = j;
+        ((e)localObject).PJn.sendMessageDelayed(((e)localObject).PJn.obtainMessage(4354, ((e)localObject).lTN), 400L);
       }
     }
   }
@@ -261,42 +298,44 @@ public abstract class SightCameraView
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     localLayoutParams.width = localDisplayMetrics.widthPixels;
     localLayoutParams.height = ((int)(localDisplayMetrics.widthPixels / paramFloat));
-    ab.i("MicroMsg.SightCameraView", "resizeLayout width:%d, height:%d, previewRate %f", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height), Float.valueOf(paramFloat) });
+    Log.i("MicroMsg.SightCameraView", "resizeLayout width:%d, height:%d, previewRate %f", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height), Float.valueOf(paramFloat) });
     postInvalidate();
   }
   
   public void setRecordMaxDuring(int paramInt)
   {
-    ab.d("MicroMsg.SightCameraView", "setRecordMaxDuring recordMaxDuring : ".concat(String.valueOf(paramInt)));
-    this.qWT = paramInt;
+    Log.d("MicroMsg.SightCameraView", "setRecordMaxDuring recordMaxDuring : ".concat(String.valueOf(paramInt)));
+    this.PJv = paramInt;
   }
   
-  public void setSightCameraUIIm(SightCameraView.a parama)
+  public void setSightCameraUIIm(a parama)
   {
-    this.qWU = parama;
+    this.PJw = parama;
   }
   
   public void setSightMedia(a parama)
   {
-    this.qWM = parama;
-    if ((this.qWM != null) && (this.qWL != null)) {
-      this.qWL.mPreviewCallback = this.qWM.cnb();
+    this.PJp = parama;
+    if ((this.PJp != null) && (this.PJo != null)) {
+      this.PJo.PJm = this.PJp.gYW();
     }
   }
   
   protected void setStopCallback(Runnable paramRunnable)
   {
-    this.qWO = paramRunnable;
+    this.PJr = paramRunnable;
   }
   
   public void setTargetWidth(int paramInt)
   {
-    this.fch = paramInt;
+    this.nLt = paramInt;
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.SightCameraView
  * JD-Core Version:    0.7.0.1
  */

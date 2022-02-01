@@ -1,20 +1,18 @@
 package cooperation.qzone.plugin;
 
-import bjpb;
-
-public class QZonePluginDownloadPortConfig$1
+class QZonePluginDownloadPortConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadPortConfig$1(bjpb parambjpb) {}
+  QZonePluginDownloadPortConfig$1(QZonePluginDownloadPortConfig paramQZonePluginDownloadPortConfig) {}
   
   public void run()
   {
-    bjpb.a(this.this$0);
+    QZonePluginDownloadPortConfig.access$000(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadPortConfig.1
  * JD-Core Version:    0.7.0.1
  */

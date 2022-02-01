@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,9 +13,9 @@ public final class template_gift_get_send_status_req
 {
   static ArrayList<Long> cache_birth_friend_list = new ArrayList();
   static Map<String, String> cache_mapExt;
-  public ArrayList<Long> birth_friend_list;
-  public Map<String, String> mapExt;
-  public long uin;
+  public ArrayList<Long> birth_friend_list = null;
+  public Map<String, String> mapExt = null;
+  public long uin = 0L;
   
   static
   {
@@ -42,17 +43,19 @@ public final class template_gift_get_send_status_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.birth_friend_list != null) {
-      paramJceOutputStream.write(this.birth_friend_list, 1);
+    Object localObject = this.birth_friend_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 2);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.template_gift_get_send_status_req
  * JD-Core Version:    0.7.0.1
  */

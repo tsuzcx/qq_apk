@@ -1,10 +1,12 @@
 package com.tencent.token;
 
-public abstract interface bd
+public abstract class bd
 {
-  public abstract void a(at paramat, au paramau);
+  public abstract void a(Runnable paramRunnable);
   
-  public abstract void b(at paramat, au paramau);
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract boolean b();
 }
 
 

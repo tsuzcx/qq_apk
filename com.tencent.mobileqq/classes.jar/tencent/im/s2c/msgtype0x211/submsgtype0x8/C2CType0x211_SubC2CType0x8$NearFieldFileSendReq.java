@@ -20,7 +20,7 @@ public final class C2CType0x211_SubC2CType0x8$NearFieldFileSendReq
   public static final int STR_WIFIPSW_FIELD_NUMBER = 8;
   public static final int UINT32_FORCE_WIFI_FIELD_NUMBER = 7;
   public static final int UINT64_TO_UIN_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 66 }, new String[] { "uint64_to_uin", "rpt_msg_file_list", "int32_ip", "int32_udp_port", "str_ssid", "int32_conn_wifiap_timeout", "uint32_force_wifi", "str_wifipsw" }, new Object[] { Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "" }, NearFieldFileSendReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_conn_wifiap_timeout = PBField.initInt32(0);
   public final PBInt32Field int32_ip = PBField.initInt32(0);
   public final PBInt32Field int32_udp_port = PBField.initInt32(0);
@@ -29,10 +29,16 @@ public final class C2CType0x211_SubC2CType0x8$NearFieldFileSendReq
   public final PBStringField str_wifipsw = PBField.initString("");
   public final PBUInt32Field uint32_force_wifi = PBField.initUInt32(0);
   public final PBUInt64Field uint64_to_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 66 }, new String[] { "uint64_to_uin", "rpt_msg_file_list", "int32_ip", "int32_udp_port", "str_ssid", "int32_conn_wifiap_timeout", "uint32_force_wifi", "str_wifipsw" }, new Object[] { Long.valueOf(0L), null, localInteger, localInteger, "", localInteger, localInteger, "" }, NearFieldFileSendReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.NearFieldFileSendReq
  * JD-Core Version:    0.7.0.1
  */

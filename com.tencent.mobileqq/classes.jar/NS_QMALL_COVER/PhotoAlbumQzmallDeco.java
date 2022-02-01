@@ -8,7 +8,7 @@ public final class PhotoAlbumQzmallDeco
   extends JceStruct
 {
   static AlbumThemeSkin cache_stAlbumSkin = new AlbumThemeSkin();
-  public AlbumThemeSkin stAlbumSkin;
+  public AlbumThemeSkin stAlbumSkin = null;
   
   public PhotoAlbumQzmallDeco() {}
   
@@ -24,14 +24,15 @@ public final class PhotoAlbumQzmallDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stAlbumSkin != null) {
-      paramJceOutputStream.write(this.stAlbumSkin, 0);
+    AlbumThemeSkin localAlbumThemeSkin = this.stAlbumSkin;
+    if (localAlbumThemeSkin != null) {
+      paramJceOutputStream.write(localAlbumThemeSkin, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.PhotoAlbumQzmallDeco
  * JD-Core Version:    0.7.0.1
  */

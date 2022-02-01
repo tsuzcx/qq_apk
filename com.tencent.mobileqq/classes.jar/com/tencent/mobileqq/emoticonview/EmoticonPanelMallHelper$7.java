@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apvi;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class EmoticonPanelMallHelper$7
+class EmoticonPanelMallHelper$7
   implements Runnable
 {
-  public EmoticonPanelMallHelper$7(apvi paramapvi, EmoticonPackage paramEmoticonPackage) {}
+  EmoticonPanelMallHelper$7(EmoticonPanelMallHelper paramEmoticonPanelMallHelper, EmoticonPackage paramEmoticonPackage) {}
   
   public void run()
   {
-    if (!this.this$0.a.a.contains(this.a)) {
-      this.this$0.a.a.add(this.a);
+    if (!((EmoticonPanelController)this.this$0.mPanelController).getBasePanelModel().addEmoPkgList.contains(this.val$ep)) {
+      ((EmoticonPanelController)this.this$0.mPanelController).getBasePanelModel().addEmoPkgList.add(this.val$ep);
     }
-    this.this$0.a.b = true;
-    this.this$0.a.a().i = false;
-    if (this.this$0.a.a().getVisibility() == 0)
+    ((EmoticonPanelController)this.this$0.mPanelController).getBasePanelView().mMarketPgkDownloaded = true;
+    ((EmoticonPanelController)this.this$0.mPanelController).getPanel().mSecondTabInited = false;
+    if (((EmoticonPanelController)this.this$0.mPanelController).getPanel().getVisibility() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelMallHelper", 2, "refresh magic emoji.");
       }
-      this.this$0.a.d(0);
+      ((EmoticonPanelController)this.this$0.mPanelController).switchTabMode(BasePanelModel.sLastSelectedSecondTabIndex);
     }
   }
 }

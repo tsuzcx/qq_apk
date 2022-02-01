@@ -22,13 +22,15 @@ public final class qqstory_group$UserGroupVideoItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48 }, new String[] { "group_id", "total", "total_unread", "cover_url", "publish_time", "top_uin_list" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L) }, UserGroupVideoItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48 }, new String[] { "group_id", "total", "total_unread", "cover_url", "publish_time", "top_uin_list" }, new Object[] { localLong, localInteger, localInteger, localByteStringMicro, localInteger, localLong }, UserGroupVideoItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.UserGroupVideoItem
  * JD-Core Version:    0.7.0.1
  */

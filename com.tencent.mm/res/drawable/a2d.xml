@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@color/a3x" />
-    <item android:state_pressed="true">
+    <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/e3" />
-            <corners android:topLeftRadius="@dimen/f8" android:topRightRadius="0.0dip" android:bottomLeftRadius="@dimen/f8" android:bottomRightRadius="0.0dip" />
+            <gradient android:startColor="#ffef6500" android:endColor="#ffd83500" android:angle="315.0" />
+            <size android:height="@dimen/cv" />
+            <corners android:radius="@dimen/cd" />
         </shape>
     </item>
-    <item android:drawable="@color/a3x" />
-</selector>
+</layer-list>

@@ -1,34 +1,31 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apob;
-import apod;
-import apoh;
-import apon;
-import apoo;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.emosm.api.IEmoticonFromGroupDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmoticonFromGroupManager$5
+class EmoticonFromGroupManager$5
   implements Runnable
 {
-  public EmoticonFromGroupManager$5(apod paramapod, List paramList) {}
+  EmoticonFromGroupManager$5(EmoticonFromGroupManager paramEmoticonFromGroupManager, List paramList) {}
   
   public void run()
   {
-    apon localapon = (apon)apod.a(this.this$0).getManager(149);
-    apoo localapoo = (apoo)apod.a(this.this$0).getManager(103);
+    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)EmoticonFromGroupManager.c(this.this$0).getRuntimeService(IFavroamingDBManagerService.class);
+    IFavroamingManagerService localIFavroamingManagerService = (IFavroamingManagerService)EmoticonFromGroupManager.c(this.this$0).getRuntimeService(IFavroamingManagerService.class);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Manager", 2, "Call getEmoticonDataList from onUploadPic.");
     }
-    Object localObject1 = localapon.a();
+    Object localObject1 = localIFavroamingDBManagerService.getEmoticonDataList();
     ArrayList localArrayList = new ArrayList(30);
     if (localObject1 != null)
     {
@@ -56,64 +53,65 @@ public class EmoticonFromGroupManager$5
         break;
       }
       localObject1 = new CustomEmotionData();
-      ((CustomEmotionData)localObject1).uin = apod.a(this.this$0).c();
+      ((CustomEmotionData)localObject1).uin = EmoticonFromGroupManager.c(this.this$0).getCurrentUin();
       j += 1;
       ((CustomEmotionData)localObject1).emoId = j;
       localArrayList.add(localObject1);
     }
     j = localArrayList.size();
     i = 0;
-    Object localObject2;
-    URLDrawable localURLDrawable;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Object localObject2 = (EmoticonFromGroupEntity)this.a.get(i);
+      localObject1 = (CustomEmotionData)localArrayList.get(i);
+      URLDrawable localURLDrawable = (URLDrawable)this.this$0.a((EmoticonFromGroupEntity)localObject2, 1, -1, null);
+      if (localURLDrawable == null)
       {
-        localObject2 = (EmoticonFromGroupEntity)this.a.get(i);
-        localObject1 = (CustomEmotionData)localArrayList.get(i);
-        i += 1;
-        localURLDrawable = (URLDrawable)this.this$0.a((EmoticonFromGroupEntity)localObject2, 1, -1, null);
-        if (localURLDrawable == null)
-        {
-          QLog.e("EmoticonFromGroup_Manager", 1, "get drawable failed: " + localObject2);
-        }
-        else if (1 != localURLDrawable.getStatus())
-        {
-          apod.a(this.this$0).a.add(localURLDrawable);
-          localURLDrawable.setURLDrawableListener(new apoh(this, localURLDrawable, (CustomEmotionData)localObject1, localapoo, localapon));
-          localURLDrawable.startDownload();
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("get drawable failed: ");
+        ((StringBuilder)localObject1).append(localObject2);
+        QLog.e("EmoticonFromGroup_Manager", 1, ((StringBuilder)localObject1).toString());
       }
-    }
-    for (;;)
-    {
-      break;
-      localObject2 = this.this$0.a(localURLDrawable.getURL().toString());
-      if (this.this$0.a((String)localObject2)) {
-        return;
-      }
-      String str = apod.a(this.this$0, (String)localObject2);
-      if (!"".equals(str))
+      else if (1 != localURLDrawable.getStatus())
       {
-        ((CustomEmotionData)localObject1).emoPath = str;
-        ((CustomEmotionData)localObject1).md5 = ((String)localObject2);
-        if (!"".equals(str)) {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("EmoticonFromGroup_Manager", 4, "normal upload emo " + (String)localObject2);
+        EmoticonFromGroupManager.b(this.this$0).getUploadDrawableList().add(localURLDrawable);
+        localURLDrawable.setURLDrawableListener(new EmoticonFromGroupManager.5.1(this, localURLDrawable, (CustomEmotionData)localObject1, localIFavroamingManagerService, localIFavroamingDBManagerService));
+        localURLDrawable.startDownload();
+      }
+      else
+      {
+        localObject2 = this.this$0.d(localURLDrawable.getURL().toString());
+        if (this.this$0.a((String)localObject2)) {
+          return;
+        }
+        String str = EmoticonFromGroupManager.a(this.this$0, (String)localObject2);
+        if (!"".equals(str))
+        {
+          ((CustomEmotionData)localObject1).emoPath = str;
+          ((CustomEmotionData)localObject1).md5 = ((String)localObject2);
+          if (!"".equals(str)) {
+            try
+            {
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("normal upload emo ");
+                localStringBuilder.append((String)localObject2);
+                QLog.i("EmoticonFromGroup_Manager", 4, localStringBuilder.toString());
+              }
+              localURLDrawable.saveTo(str);
+              localIFavroamingManagerService.syncUpload((CustomEmotionData)localObject1);
+              localIFavroamingDBManagerService.insertCustomEmotion((CustomEmotionData)localObject1);
             }
-            localURLDrawable.saveTo(str);
-            localapoo.d((CustomEmotionData)localObject1);
-            localapon.c((CustomEmotionBase)localObject1);
-          }
-          catch (IOException localIOException)
-          {
-            localIOException.printStackTrace();
-            QLog.d("EmoticonFromGroup_Manager", 1, localIOException, new Object[0]);
+            catch (IOException localIOException)
+            {
+              localIOException.printStackTrace();
+              QLog.d("EmoticonFromGroup_Manager", 1, localIOException, new Object[0]);
+            }
           }
         }
       }
+      i += 1;
     }
   }
 }

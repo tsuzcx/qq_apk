@@ -22,30 +22,16 @@ final class ULongProgressionIterator
   private ULongProgressionIterator(long paramLong1, long paramLong2, long paramLong3)
   {
     this.finalElement = paramLong2;
-    if (paramLong3 > 0L) {
-      if (UnsignedKt.ulongCompare(paramLong1, paramLong2) <= 0)
-      {
-        this.hasNext = bool;
-        this.step = ULong.constructor-impl(paramLong3);
-        if (!this.hasNext) {
-          break label78;
-        }
-      }
+    boolean bool = true;
+    if (paramLong3 > 0L ? UnsignedKt.ulongCompare(paramLong1, paramLong2) > 0 : UnsignedKt.ulongCompare(paramLong1, paramLong2) < 0) {
+      bool = false;
     }
-    for (;;)
-    {
-      this.next = paramLong1;
-      return;
-      bool = false;
-      break;
-      if (UnsignedKt.ulongCompare(paramLong1, paramLong2) >= 0) {
-        break;
-      }
-      bool = false;
-      break;
-      label78:
+    this.hasNext = bool;
+    this.step = ULong.constructor-impl(paramLong3);
+    if (!this.hasNext) {
       paramLong1 = this.finalElement;
     }
+    this.next = paramLong1;
   }
   
   public boolean hasNext()
@@ -58,19 +44,20 @@ final class ULongProgressionIterator
     long l = this.next;
     if (l == this.finalElement)
     {
-      if (!this.hasNext) {
-        throw ((Throwable)new NoSuchElementException());
+      if (this.hasNext)
+      {
+        this.hasNext = false;
+        return l;
       }
-      this.hasNext = false;
-      return l;
+      throw ((Throwable)new NoSuchElementException());
     }
-    this.next = ULong.constructor-impl(this.next + this.step);
+    this.next = ULong.constructor-impl(this.step + l);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.ULongProgressionIterator
  * JD-Core Version:    0.7.0.1
  */

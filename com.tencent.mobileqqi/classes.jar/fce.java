@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.app.FrameActivity;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class fce
-  extends fcu
+  implements Runnable
 {
-  private String a;
+  public fce(FrameActivity paramFrameActivity, Collection paramCollection) {}
   
-  public fce()
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.e();
-  }
-  
-  protected void d(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilCollection.iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).b();
+    }
   }
 }
 

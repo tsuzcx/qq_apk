@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestGroupInfo
   extends JceStruct
 {
-  public long lGroupCode;
-  public long lLastSeqId;
+  public long lGroupCode = 0L;
+  public long lLastSeqId = 0L;
   
   public SvcRequestGroupInfo() {}
   
@@ -32,7 +32,7 @@ public final class SvcRequestGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestGroupInfo
  * JD-Core Version:    0.7.0.1
  */

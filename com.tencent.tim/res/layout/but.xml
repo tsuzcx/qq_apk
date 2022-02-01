@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/g4o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/d0o" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="6.5dip">
+        <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/d0n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@color/d" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/d0p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="4.0dip" android:text="12" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/d0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/g4q" android:layout_toLeftOf="@id/d0p" android:layout_alignTop="@id/d0p" android:layout_alignBottom="@id/d0p" android:layout_alignWithParentIfMissing="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/d0t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="18.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/d0o">
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="20.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:ellipsize="end" android:id="@id/d0u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:layout_marginBottom="5.0dip" android:text="@string/sfs" android:singleLine="true" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:ellipsize="end" android:id="@id/d0s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:layout_marginBottom="0.0dip" android:text="@string/sgz" android:maxLines="2" />
+    </LinearLayout>
+</RelativeLayout>

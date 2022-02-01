@@ -12,13 +12,19 @@ public final class UriBuilder
   
   public UriBuilder addParam(String paramString1, String paramString2)
   {
-    if (this.mUri.toString().contains("?")) {}
-    for (String str = "&";; str = "?")
-    {
-      this.mUri.append(str);
-      this.mUri.append(paramString1 + "=" + paramString2);
-      return this;
+    Object localObject2 = this.mUri.toString();
+    Object localObject1 = "?";
+    if (((String)localObject2).contains("?")) {
+      localObject1 = "&";
     }
+    this.mUri.append((String)localObject1);
+    localObject1 = this.mUri;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString1);
+    ((StringBuilder)localObject2).append("=");
+    ((StringBuilder)localObject2).append(paramString2);
+    ((StringBuffer)localObject1).append(((StringBuilder)localObject2).toString());
+    return this;
   }
   
   public UriBuilder addParam(@NonNull Map<String, String> paramMap)
@@ -47,7 +53,7 @@ public final class UriBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.UriBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -50,52 +50,41 @@ public final class CaptionStyleCompat
   private static CaptionStyleCompat createFromCaptionStyleV21(CaptioningManager.CaptionStyle paramCaptionStyle)
   {
     int i;
-    int j;
-    label24:
-    int k;
-    label36:
-    int m;
-    if (paramCaptionStyle.hasForegroundColor())
-    {
+    if (paramCaptionStyle.hasForegroundColor()) {
       i = paramCaptionStyle.foregroundColor;
-      if (!paramCaptionStyle.hasBackgroundColor()) {
-        break label91;
-      }
-      j = paramCaptionStyle.backgroundColor;
-      if (!paramCaptionStyle.hasWindowColor()) {
-        break label101;
-      }
-      k = paramCaptionStyle.windowColor;
-      if (!paramCaptionStyle.hasEdgeType()) {
-        break label111;
-      }
-      m = paramCaptionStyle.edgeType;
-      label49:
-      if (!paramCaptionStyle.hasEdgeColor()) {
-        break label122;
-      }
-    }
-    label91:
-    label101:
-    label111:
-    label122:
-    for (int n = paramCaptionStyle.edgeColor;; n = DEFAULT.edgeColor)
-    {
-      return new CaptionStyleCompat(i, j, k, m, n, paramCaptionStyle.getTypeface());
+    } else {
       i = DEFAULT.foregroundColor;
-      break;
-      j = DEFAULT.backgroundColor;
-      break label24;
-      k = DEFAULT.windowColor;
-      break label36;
-      m = DEFAULT.edgeType;
-      break label49;
     }
+    int j;
+    if (paramCaptionStyle.hasBackgroundColor()) {
+      j = paramCaptionStyle.backgroundColor;
+    } else {
+      j = DEFAULT.backgroundColor;
+    }
+    int k;
+    if (paramCaptionStyle.hasWindowColor()) {
+      k = paramCaptionStyle.windowColor;
+    } else {
+      k = DEFAULT.windowColor;
+    }
+    int m;
+    if (paramCaptionStyle.hasEdgeType()) {
+      m = paramCaptionStyle.edgeType;
+    } else {
+      m = DEFAULT.edgeType;
+    }
+    int n;
+    if (paramCaptionStyle.hasEdgeColor()) {
+      n = paramCaptionStyle.edgeColor;
+    } else {
+      n = DEFAULT.edgeColor;
+    }
+    return new CaptionStyleCompat(i, j, k, m, n, paramCaptionStyle.getTypeface());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.CaptionStyleCompat
  * JD-Core Version:    0.7.0.1
  */

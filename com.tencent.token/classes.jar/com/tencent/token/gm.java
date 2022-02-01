@@ -1,30 +1,65 @@
 package com.tencent.token;
 
-public abstract class gm
-  implements Runnable
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.ListView;
+
+public final class gm
+  extends gc
 {
-  protected final String b;
+  private final ListView f;
   
-  public gm(String paramString, Object... paramVarArgs)
+  public gm(ListView paramListView)
   {
-    this.b = gn.a(paramString, paramVarArgs);
+    super(paramListView);
+    this.f = paramListView;
   }
   
-  protected abstract void c();
-  
-  public final void run()
+  public final void a(int paramInt)
   {
-    String str = Thread.currentThread().getName();
-    Thread.currentThread().setName(this.b);
-    try
+    ListView localListView = this.f;
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      c();
+      localListView.scrollListBy(paramInt);
       return;
     }
-    finally
+    int i = localListView.getFirstVisiblePosition();
+    if (i != -1)
     {
-      Thread.currentThread().setName(str);
+      View localView = localListView.getChildAt(0);
+      if (localView != null) {
+        localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
+      }
     }
+  }
+  
+  public final boolean b(int paramInt)
+  {
+    ListView localListView = this.f;
+    int i = localListView.getCount();
+    if (i == 0) {
+      return false;
+    }
+    int j = localListView.getChildCount();
+    int k = localListView.getFirstVisiblePosition();
+    if (paramInt > 0)
+    {
+      if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight())) {
+        return false;
+      }
+    }
+    else
+    {
+      if (paramInt >= 0) {
+        break label89;
+      }
+      if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0)) {
+        return false;
+      }
+    }
+    return true;
+    label89:
+    return false;
   }
 }
 

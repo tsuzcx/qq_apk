@@ -5,11 +5,11 @@ import java.util.Iterator;
 public abstract class a<T>
   implements b<T>
 {
-  protected final DataHolder Ia;
+  protected final DataHolder JP;
   
   protected a(DataHolder paramDataHolder)
   {
-    this.Ia = paramDataHolder;
+    this.JP = paramDataHolder;
   }
   
   @Deprecated
@@ -20,10 +20,10 @@ public abstract class a<T>
   
   public int getCount()
   {
-    if (this.Ia == null) {
+    if (this.JP == null) {
       return 0;
     }
-    return this.Ia.Ik;
+    return this.JP.JZ;
   }
   
   public Iterator<T> iterator()
@@ -33,8 +33,8 @@ public abstract class a<T>
   
   public final void release()
   {
-    if (this.Ia != null) {
-      this.Ia.close();
+    if (this.JP != null) {
+      this.JP.close();
     }
   }
 }

@@ -38,12 +38,12 @@ public class RoundRectDrawable
   private RoundRectDrawable(RoundRectDrawable.RoundRectDrawableState paramRoundRectDrawableState, Resources paramResources)
   {
     this.mBitmapState = paramRoundRectDrawableState;
-    if (paramResources != null) {}
-    for (this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;; this.mTargetDensity = paramRoundRectDrawableState.mTargetDensity)
-    {
-      computeBitmapSize();
-      return;
+    if (paramResources != null) {
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      this.mTargetDensity = paramRoundRectDrawableState.mTargetDensity;
     }
+    computeBitmapSize();
   }
   
   private void computeBitmapSize()
@@ -60,50 +60,45 @@ public class RoundRectDrawable
     RectF localRectF2 = this.mBitmapState.mBorderRect;
     Paint localPaint1 = this.mBitmapState.mBorderPaint;
     Paint localPaint2 = this.mBitmapState.mBitmapPaint;
-    float f2 = 1.0F;
-    float f4 = localRectF1.width();
-    float f3 = localRectF1.height();
+    float f2 = localRectF1.width();
+    float f1 = localRectF1.height();
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
-    float f1 = f2;
-    if (i != this.mBitmapState.mRoundRectBitmap.mDisplayWidth)
+    if ((i != this.mBitmapState.mRoundRectBitmap.mDisplayWidth) && (j != this.mBitmapState.mRoundRectBitmap.mDisplayHeight))
     {
-      f1 = f2;
-      if (j != this.mBitmapState.mRoundRectBitmap.mDisplayHeight)
-      {
-        f1 = i / f4;
-        f2 = j / f3;
-        if (f1 >= f2) {
-          break label201;
-        }
+      f2 = i / f2;
+      float f3 = j / f1;
+      f1 = f3;
+      if (f2 < f3) {
+        f1 = f2;
       }
     }
-    for (;;)
+    else
     {
-      i = this.mBitmapState.mRoundRectBitmap.mBitmap.getDensity();
-      this.mCornerRadius = ((this.mBitmapState.mRoundRectBitmap.mCornerRadius * this.mTargetDensity + (i >> 1)) / i / f1);
-      if (!this.mBitmapState.mOval) {
-        break label215;
-      }
-      if (this.mBorderWidth <= 0.0F) {
-        break;
+      f1 = 1.0F;
+    }
+    i = this.mBitmapState.mRoundRectBitmap.mBitmap.getDensity();
+    this.mCornerRadius = ((this.mBitmapState.mRoundRectBitmap.mCornerRadius * this.mTargetDensity + (i >> 1)) / i / f1);
+    if (this.mBitmapState.mOval)
+    {
+      if (this.mBorderWidth > 0.0F)
+      {
+        paramCanvas.drawOval(localRectF1, localPaint2);
+        paramCanvas.drawOval(localRectF2, localPaint1);
+        return;
       }
       paramCanvas.drawOval(localRectF1, localPaint2);
-      paramCanvas.drawOval(localRectF2, localPaint1);
       return;
-      label201:
-      f1 = f2;
     }
-    paramCanvas.drawOval(localRectF1, localPaint2);
-    return;
-    label215:
     if (this.mBorderWidth > 0.0F)
     {
       paramCanvas.drawRoundRect(localRectF1, Math.max(this.mCornerRadius, 0.0F), Math.max(this.mCornerRadius, 0.0F), localPaint2);
-      paramCanvas.drawRoundRect(localRectF2, this.mCornerRadius, this.mCornerRadius, localPaint1);
+      f1 = this.mCornerRadius;
+      paramCanvas.drawRoundRect(localRectF2, f1, f1, localPaint1);
       return;
     }
-    paramCanvas.drawRoundRect(localRectF1, this.mCornerRadius, this.mCornerRadius, localPaint2);
+    f1 = this.mCornerRadius;
+    paramCanvas.drawRoundRect(localRectF1, f1, f1, localPaint2);
   }
   
   public int getChangingConfigurations()
@@ -193,7 +188,7 @@ public class RoundRectDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.RoundRectDrawable
  * JD-Core Version:    0.7.0.1
  */

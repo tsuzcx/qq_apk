@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/jm" android:paddingTop="7.5dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="31.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h_d" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aj7" android:layout_marginRight="@dimen/aj7">
+        <include android:id="@id/bl9" layout="@layout/bx8" />
+        <include android:id="@id/blc" layout="@layout/bx8" />
+        <include android:id="@id/bld" layout="@layout/bx8" />
+        <include android:id="@id/ble" layout="@layout/bx8" />
+        <include android:id="@id/blf" layout="@layout/bx8" />
+        <include android:id="@id/blg" layout="@layout/bx8" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/edn" android:paddingTop="2.5dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aj7" android:layout_marginRight="@dimen/aj7">
+        <include android:id="@id/blh" layout="@layout/bx8" />
+        <include android:id="@id/bli" layout="@layout/bx8" />
+        <include android:id="@id/blj" layout="@layout/bx8" />
+        <include android:id="@id/bl_" layout="@layout/bx8" />
+        <include android:id="@id/bla" layout="@layout/bx8" />
+        <include android:id="@id/blb" layout="@layout/bx8" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/a78" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="20.0dip" android:layout_marginBottom="6.0dip" android:text="@string/l9q" />
+        <com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView android:orientation="vertical" android:id="@id/hv_" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

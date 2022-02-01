@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/lcn" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.voip.video.OpenGlView android:id="@id/lco" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kg1" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="30.0dip">
+        <ImageView android:id="@id/lcr" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" />
+        <LinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+            <TextView android:textSize="30.0dip" android:textColor="@color/al6" android:ellipsize="end" android:id="@id/lcy" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/lcp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/lcv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kfq" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/lcw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <RelativeLayout android:orientation="vertical" android:id="@id/lcx" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/ivr" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageButton android:id="@id/lct" android:background="@drawable/b14" android:layout_width="@dimen/awz" android:layout_height="@dimen/awy" android:layout_marginBottom="50.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.tencent.mm.plugin.voip.widget.VoipBigIconButton android:id="@id/lcs" android:visibility="gone" android:layout_width="148.0dip" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" custom:iconBackground="@drawable/b10" custom:iconBackgroundPressed="@drawable/b11" custom:iconRes="@drawable/c84" custom:iconResPressed="@drawable/c85" custom:iconTip="@string/keu" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/al6" android:ellipsize="middle" android:gravity="center_horizontal" android:id="@id/kl9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:singleLine="true" android:layout_above="@id/lct" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:ellipsize="middle" android:gravity="center_horizontal" android:id="@id/lcq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/kfo" android:singleLine="true" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/lcu" android:background="@drawable/c8_" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginBottom="213.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

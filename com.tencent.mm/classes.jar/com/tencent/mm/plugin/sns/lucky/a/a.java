@@ -5,60 +5,60 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.memory.m;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class a
 {
-  public static n a(Bitmap paramBitmap, String paramString, int paramInt1, int paramInt2)
+  public static m a(Bitmap paramBitmap, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(35878);
-    paramBitmap = n.v(d.g(paramBitmap, paramInt2));
+    AppMethodBeat.i(95175);
+    paramBitmap = m.O(BitmapUtil.fastblur(paramBitmap, paramInt2));
     if (paramBitmap == null) {
-      ab.e("MicroMsg.BlurHelper", "returnBitmap error2 ");
+      Log.e("MicroMsg.BlurHelper", "returnBitmap error2 ");
     }
     if (paramBitmap != null) {
-      new Canvas(paramBitmap.XS()).drawColor(paramInt1);
+      new Canvas(paramBitmap.bvQ()).drawColor(paramInt1);
     }
     try
     {
-      d.a(paramBitmap.XS(), 70, Bitmap.CompressFormat.JPEG, paramString, false);
-      ab.i("MicroMsg.BlurHelper", "blur done bitmap  ".concat(String.valueOf(paramBitmap)));
-      AppMethodBeat.o(35878);
+      BitmapUtil.saveBitmapToImage(paramBitmap.bvQ(), 70, Bitmap.CompressFormat.JPEG, paramString, false);
+      Log.i("MicroMsg.BlurHelper", "blur done bitmap  ".concat(String.valueOf(paramBitmap)));
+      AppMethodBeat.o(95175);
       return paramBitmap;
     }
     catch (IOException paramString)
     {
       for (;;)
       {
-        ab.e("MicroMsg.BlurHelper", "error for exception " + paramString.getMessage());
-        ab.printErrStackTrace("MicroMsg.BlurHelper", paramString, "", new Object[0]);
+        Log.e("MicroMsg.BlurHelper", "error for exception " + paramString.getMessage());
+        Log.printErrStackTrace("MicroMsg.BlurHelper", paramString, "", new Object[0]);
       }
     }
   }
   
-  public static n gh(String paramString1, String paramString2)
+  public static m mb(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(35877);
+    AppMethodBeat.i(95174);
     int i = Color.argb(51, 255, 255, 255);
-    paramString1 = i.ZF(paramString1);
+    paramString1 = t.aXv(paramString1);
     if (paramString1 == null)
     {
-      ab.e("MicroMsg.BlurHelper", "returnBitmap error1 ");
-      AppMethodBeat.o(35877);
+      Log.e("MicroMsg.BlurHelper", "returnBitmap error1 ");
+      AppMethodBeat.o(95174);
       return null;
     }
-    paramString1 = a(paramString1.XS(), paramString2, i, 55);
-    AppMethodBeat.o(35877);
+    paramString1 = a(paramString1.bvQ(), paramString2, i, 55);
+    AppMethodBeat.o(95174);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.a
  * JD-Core Version:    0.7.0.1
  */

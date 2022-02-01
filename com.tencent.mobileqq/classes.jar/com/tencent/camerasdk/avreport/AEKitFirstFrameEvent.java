@@ -29,12 +29,14 @@ public class AEKitFirstFrameEvent
   
   public AEKitFirstFrameEvent addLanchCount(int paramInt)
   {
-    if (paramInt > 1) {}
-    for (String str = "hot";; str = "cold")
-    {
-      this.mLaunchType = str;
-      return this;
+    String str;
+    if (paramInt > 1) {
+      str = "hot";
+    } else {
+      str = "cold";
     }
+    this.mLaunchType = str;
+    return this;
   }
   
   public void report()
@@ -44,7 +46,7 @@ public class AEKitFirstFrameEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.AEKitFirstFrameEvent
  * JD-Core Version:    0.7.0.1
  */

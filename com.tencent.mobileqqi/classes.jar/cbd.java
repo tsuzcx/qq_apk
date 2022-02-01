@@ -1,30 +1,21 @@
-import com.tencent.biz.eqq.CrmUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.EnterpriseQQObserver;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 
 public class cbd
-  extends EnterpriseQQObserver
+  implements DialogInterface.OnClickListener
 {
-  public cbd(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
+  public cbd(ChatForEnterpriseActivity paramChatForEnterpriseActivity, PublicAccountDataManager paramPublicAccountDataManager) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramObject = EnterpriseQQManager.a(this.a.b).a(this.a.b, this.a.c());
-      if (!CrmUtils.a(this.a.b, this.a.a.a)) {
-        paramObject = null;
-      }
-      ChatForEnterpriseActivity.a(this.a, paramObject);
-      if (paramObject != null) {
-        ChatForEnterpriseActivity.a(this.a, false);
-      }
-    }
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity).mIsAgreeSyncLbs = true;
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity).mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a(ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity));
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity, 1, null);
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

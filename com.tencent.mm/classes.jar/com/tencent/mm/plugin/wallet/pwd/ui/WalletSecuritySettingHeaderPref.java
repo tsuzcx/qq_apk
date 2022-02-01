@@ -7,85 +7,89 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class WalletSecuritySettingHeaderPref
   extends Preference
 {
-  private MMActivity cmc;
-  private TextView iUs;
-  String mmp;
-  ImageView pdI;
-  private TextView uaf;
-  TextView uag;
-  String uah;
-  String uai;
-  View.OnClickListener uaj;
-  View.OnClickListener uak;
+  private TextView Avi;
+  private TextView Vsb;
+  TextView Vsc;
+  String Vsd;
+  String Vse;
+  View.OnClickListener Vsf;
+  View.OnClickListener Vsg;
+  private MMActivity lzt;
+  ImageView nkq;
+  String zWm;
   
   public WalletSecuritySettingHeaderPref(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(46389);
-    this.cmc = ((MMActivity)paramContext);
-    AppMethodBeat.o(46389);
+    AppMethodBeat.i(69786);
+    this.lzt = ((MMActivity)paramContext);
+    AppMethodBeat.o(69786);
   }
   
   public WalletSecuritySettingHeaderPref(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(46390);
-    this.uaj = null;
-    this.uak = null;
-    this.cmc = ((MMActivity)paramContext);
-    setLayoutResource(2130971246);
-    AppMethodBeat.o(46390);
-  }
-  
-  final void bJ()
-  {
-    AppMethodBeat.i(46392);
-    if ((!bo.isNullOrNil(this.mmp)) && (this.iUs != null))
-    {
-      this.iUs.setText(this.mmp);
-      this.iUs.setVisibility(0);
-    }
-    if ((!bo.isNullOrNil(this.uah)) && (this.uaf != null))
-    {
-      this.uaf.setText(this.uah);
-      this.uaf.setVisibility(0);
-    }
-    if ((!bo.isNullOrNil(this.uai)) && (this.uag != null))
-    {
-      this.uag.setText(this.uai);
-      this.uag.setVisibility(0);
-    }
-    if ((bo.isNullOrNil(this.uai)) && (this.uag != null)) {
-      this.uag.setVisibility(8);
-    }
-    AppMethodBeat.o(46392);
+    AppMethodBeat.i(69787);
+    this.Vsf = null;
+    this.Vsg = null;
+    this.lzt = ((MMActivity)paramContext);
+    setLayoutResource(a.g.wallet_security_header_pref);
+    AppMethodBeat.o(69787);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(46391);
+    AppMethodBeat.i(69788);
     super.onBindView(paramView);
-    ab.v("MicroMsg.WalletSecuritySettingHeaderPref", "alvinluo onBindView");
-    this.iUs = ((TextView)paramView.findViewById(2131824647));
-    this.uaf = ((TextView)paramView.findViewById(2131821115));
-    this.uag = ((TextView)paramView.findViewById(2131829388));
-    this.pdI = ((ImageView)paramView.findViewById(2131829387));
-    bJ();
-    if ((this.uag != null) && (this.uaj != null)) {
-      this.uag.setOnClickListener(this.uaj);
+    Log.v("MicroMsg.WalletSecuritySettingHeaderPref", "alvinluo onBindView");
+    this.Avi = ((TextView)paramView.findViewById(a.f.main_content));
+    aw.a(this.Avi.getPaint(), 0.8F);
+    this.Vsb = ((TextView)paramView.findViewById(a.f.desc));
+    this.Vsc = ((TextView)paramView.findViewById(a.f.details_text));
+    this.nkq = ((ImageView)paramView.findViewById(a.f.wallet_security_close_btn));
+    updateView();
+    if ((this.Vsc != null) && (this.Vsf != null)) {
+      this.Vsc.setOnClickListener(this.Vsf);
     }
-    if ((this.pdI != null) && (this.uak != null)) {
-      this.pdI.setOnClickListener(this.uak);
+    if ((this.nkq != null) && (this.Vsg != null)) {
+      this.nkq.setOnClickListener(this.Vsg);
     }
-    AppMethodBeat.o(46391);
+    AppMethodBeat.o(69788);
+  }
+  
+  final void updateView()
+  {
+    AppMethodBeat.i(69789);
+    if ((!Util.isNullOrNil(this.zWm)) && (this.Avi != null))
+    {
+      this.Avi.setText(this.zWm);
+      this.Avi.setVisibility(0);
+    }
+    if ((!Util.isNullOrNil(this.Vsd)) && (this.Vsb != null))
+    {
+      this.Vsb.setText(this.Vsd);
+      this.Vsb.setVisibility(0);
+    }
+    if ((!Util.isNullOrNil(this.Vse)) && (this.Vsc != null))
+    {
+      this.Vsc.setText(this.Vse);
+      this.Vsc.setVisibility(0);
+    }
+    if ((Util.isNullOrNil(this.Vse)) && (this.Vsc != null)) {
+      this.Vsc.setVisibility(8);
+    }
+    AppMethodBeat.o(69789);
   }
 }
 

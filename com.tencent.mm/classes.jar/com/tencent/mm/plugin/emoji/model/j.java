@@ -1,79 +1,80 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import org.json.JSONObject;
 
 public final class j
 {
-  Set<String> lhS;
-  Set<String> lhT;
-  Set<String> lhU;
-  c lhV;
-  c lhW;
+  private static j xME;
+  public String xMF;
+  public String xMG;
+  public boolean xMH;
+  public boolean xMI;
+  public String xMJ;
+  public String xMK;
   
   public j()
   {
-    AppMethodBeat.i(53082);
-    this.lhV = new j.1(this);
-    this.lhW = new j.2(this);
-    com.tencent.mm.sdk.b.a.ymk.c(this.lhV);
-    com.tencent.mm.sdk.b.a.ymk.c(this.lhW);
-    this.lhS = Collections.synchronizedSet(new HashSet());
-    this.lhT = Collections.synchronizedSet(new HashSet());
-    this.lhU = Collections.synchronizedSet(new HashSet());
-    AppMethodBeat.o(53082);
+    AppMethodBeat.i(179054);
+    this.xMH = false;
+    this.xMI = false;
+    this.xMG = ((String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acXe, ""));
+    this.xMF = ((String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acXf, ""));
+    dzO();
+    AppMethodBeat.o(179054);
   }
   
-  final void blv()
+  public static j dzN()
   {
-    AppMethodBeat.i(53083);
-    for (;;)
+    try
     {
-      if (this.lhT.isEmpty())
-      {
-        ab.i("MicroMsg.emoji.WearEmojiLogic", "no emoji need download");
-        AppMethodBeat.o(53083);
-        return;
+      AppMethodBeat.i(179053);
+      if (xME == null) {
+        xME = new j();
       }
-      if (!this.lhU.isEmpty())
-      {
-        ab.i("MicroMsg.emoji.WearEmojiLogic", "downloading emoji %s", new Object[] { this.lhU.toString() });
-        AppMethodBeat.o(53083);
-        return;
-      }
-      localObject = this.lhT.iterator();
-      if (localObject == null) {
-        break label198;
-      }
-      localObject = (String)((Iterator)localObject).next();
-      this.lhT.remove(localObject);
-      EmojiGroupInfo localEmojiGroupInfo = i.getEmojiStorageMgr().yNo.cg((String)localObject, true);
-      if ((localEmojiGroupInfo == null) || ((localEmojiGroupInfo.field_flag & 0x100) <= 0)) {
-        break;
-      }
-      ab.i("MicroMsg.emoji.WearEmojiLogic", "emoji already exist %s", new Object[] { localObject });
+      j localj = xME;
+      AppMethodBeat.o(179053);
+      return localj;
     }
-    ab.i("MicroMsg.emoji.WearEmojiLogic", "start to download emoji %s", new Object[] { localObject });
-    this.lhU.add(localObject);
-    Object localObject = new com.tencent.mm.plugin.emoji.f.g((String)localObject, "");
-    com.tencent.mm.kernel.g.RK().eHt.a((m)localObject, 0);
-    label198:
-    AppMethodBeat.o(53083);
+    finally {}
+  }
+  
+  public final void dzO()
+  {
+    AppMethodBeat.i(179055);
+    Log.i("MicroMsg.EmojiStoreExpt", "updateExpt: %s %s", new Object[] { this.xMG, this.xMF });
+    try
+    {
+      if (!Util.isNullOrNil(this.xMG)) {
+        this.xMH = Util.isEqual(com.tencent.mm.ad.h.Fn(this.xMG).optString("second_strategy", "None"), "Paid");
+      }
+      if (!Util.isNullOrNil(this.xMF))
+      {
+        JSONObject localJSONObject = com.tencent.mm.ad.h.Fn(this.xMF);
+        this.xMI = Util.isEqual(localJSONObject.optString("strategy", "Recommend"), "FriendDownloads");
+        this.xMJ = localJSONObject.optString("tab_wording");
+        this.xMK = localJSONObject.optString("list_wording");
+      }
+      AppMethodBeat.o(179055);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.EmojiStoreExpt", localException, "", new Object[0]);
+      this.xMH = false;
+      this.xMI = false;
+      AppMethodBeat.o(179055);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.j
  * JD-Core Version:    0.7.0.1
  */

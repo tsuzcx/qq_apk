@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import fhm;
+import fhl;
 
 public class CheckFriendsLastLoginInfo
   extends AsyncStep
@@ -18,7 +18,7 @@ public class CheckFriendsLastLoginInfo
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fhm(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fhl(this, null);
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       }
       return 2;

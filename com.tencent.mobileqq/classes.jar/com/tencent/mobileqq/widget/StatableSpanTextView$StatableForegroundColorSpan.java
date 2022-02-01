@@ -9,41 +9,36 @@ import java.util.Arrays;
 public class StatableSpanTextView$StatableForegroundColorSpan
   extends ForegroundColorSpan
 {
-  public static final int[] a;
-  private int jdField_a_of_type_Int;
-  ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList;
-  ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16842919 };
-  }
+  public static final int[] a = { 16842919 };
+  ArrayList<int[]> b;
+  ArrayList<Integer> c;
+  private int[] d;
+  private int e;
   
   public StatableSpanTextView$StatableForegroundColorSpan(int paramInt)
   {
     super(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public StatableSpanTextView$StatableForegroundColorSpan(int paramInt1, int paramInt2)
   {
     this(paramInt1);
-    a(jdField_a_of_type_ArrayOfInt, Integer.valueOf(paramInt2));
+    a(a, Integer.valueOf(paramInt2));
   }
   
-  private int a(int[] paramArrayOfInt)
+  private int b(int[] paramArrayOfInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return super.getForegroundColor();
     }
-    int j = this.jdField_b_of_type_JavaUtilArrayList.size();
+    int j = this.c.size();
     int i = 0;
     while (i < j)
     {
       if (StateSet.stateSetMatches((int[])localArrayList.get(i), paramArrayOfInt)) {
-        return ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(i)).intValue();
+        return ((Integer)this.c.get(i)).intValue();
       }
       i += 1;
     }
@@ -52,38 +47,38 @@ public class StatableSpanTextView$StatableForegroundColorSpan
   
   public int a(int[] paramArrayOfInt, Integer paramInteger)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      this.b = new ArrayList();
+      this.c = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayOfInt);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramInteger);
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
+    this.b.add(paramArrayOfInt);
+    this.c.add(paramInteger);
+    return this.c.size();
   }
   
   public void a(int[] paramArrayOfInt)
   {
-    if (!Arrays.equals(this.jdField_b_of_type_ArrayOfInt, paramArrayOfInt))
+    if (!Arrays.equals(this.d, paramArrayOfInt))
     {
-      this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt;
-      this.jdField_a_of_type_Int = a(paramArrayOfInt);
+      this.d = paramArrayOfInt;
+      this.e = b(paramArrayOfInt);
     }
   }
   
   public int getForegroundColor()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setColor(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan
  * JD-Core Version:    0.7.0.1
  */

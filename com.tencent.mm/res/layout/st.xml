@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fdt" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_music" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" app:iconColor="@color/al2" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f2a" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerVertical="true" android:layout_marginStart="@dimen/d0" android:layout_toEndOf="@id/fdt" />
+    <Button android:id="@id/f2n" android:text="@string/c3c" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" style="@style/oi" />
+</RelativeLayout>

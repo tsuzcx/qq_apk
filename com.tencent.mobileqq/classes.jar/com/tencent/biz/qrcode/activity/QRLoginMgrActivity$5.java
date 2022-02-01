@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class QRLoginMgrActivity$5
   implements Runnable
@@ -11,26 +11,22 @@ class QRLoginMgrActivity$5
   {
     try
     {
-      if ((QRLoginMgrActivity.a(this.this$0) != null) && (QRLoginMgrActivity.a(this.this$0).isShowing()))
+      if ((QRLoginMgrActivity.b(this.this$0) != null) && (QRLoginMgrActivity.b(this.this$0).isShowing()))
       {
-        QRLoginMgrActivity.a(this.this$0).dismiss();
-        QRLoginMgrActivity.a(this.this$0).cancel();
+        QRLoginMgrActivity.b(this.this$0).dismiss();
+        QRLoginMgrActivity.b(this.this$0).cancel();
       }
-      QRLoginMgrActivity.a(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    QRLoginMgrActivity.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.5
  * JD-Core Version:    0.7.0.1
  */

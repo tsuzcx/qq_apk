@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="200.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/q_a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentTop="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ff7a7a7a" android:id="@id/q_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更多推荐车队" android:layout_centerHorizontal="true" />
+        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="13.0dip" android:layout_marginRight="6.5dip" android:layout_toLeftOf="@id/q_b" android:layout_centerVertical="true" />
+        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="6.5dip" android:layout_marginRight="13.0dip" android:layout_toRightOf="@id/q_b" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="125.0dip" android:layout_below="@id/q_a">
+        <com.tencent.timi.game.ui.widget.rc.RCImageView android:id="@id/q_9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <TextView android:textSize="10.0sp" android:textColor="#ccffffff" android:id="@id/q_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:text="钻石V-王者25星" />
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="16.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/q_k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="12.0dip" android:text="来个小姐姐带飞" android:maxLines="1" android:layout_below="@id/q_j" />
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="10.0sp" android:textColor="#ffffffff" android:id="@id/q_i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="2.0dip" android:text="缺打野/发育路" android:layout_below="@id/q_k" />
+        <RelativeLayout android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="10.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/q_h" android:background="@drawable/jjb" android:layout_width="62.0dip" android:layout_height="18.0dip" android:text="五人排位赛" android:layout_centerVertical="true" />
+            <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.timi.game.teamlist.view.TeamListAvatarStorkRoundImageView android:id="@id/q_c" android:layout_width="21.0dip" android:layout_height="21.0dip" />
+                <com.tencent.timi.game.teamlist.view.TeamListAvatarStorkRoundImageView android:id="@id/q_d" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-3.0dip" />
+                <com.tencent.timi.game.teamlist.view.TeamListAvatarStorkRoundImageView android:id="@id/q_e" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-3.0dip" />
+                <com.tencent.timi.game.teamlist.view.TeamListAvatarStorkRoundImageView android:id="@id/q_f" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-3.0dip" />
+                <com.tencent.timi.game.teamlist.view.TeamListAvatarStorkRoundImageView android:id="@id/q_g" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-3.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rlCommenTitle" style="@style/title_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="160.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center" android:id="@id/loading" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/common_loading6" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/title_content" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@null" android:singleLine="true" style="@style/TitleText" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ivSubTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+    <include android:id="@id/rl_title_right_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/custom_commen_title_rightview" />
+</RelativeLayout>

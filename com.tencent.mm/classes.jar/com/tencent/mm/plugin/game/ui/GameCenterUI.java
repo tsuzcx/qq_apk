@@ -1,215 +1,255 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.a.b;
-import com.tencent.mm.kernel.i;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.game.api.d;
-import com.tencent.mm.plugin.game.d.ak;
-import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.plugin.game.model.n;
-import com.tencent.mm.plugin.game.model.n.a;
-import com.tencent.mm.plugin.game.model.n.d;
-import com.tencent.mm.plugin.game.model.q;
+import com.tencent.mm.kernel.k;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.game.d.a.a;
+import com.tencent.mm.plugin.game.d.a.b;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.h.a;
+import com.tencent.mm.plugin.game.model.m;
+import com.tencent.mm.plugin.game.model.o;
+import com.tencent.mm.plugin.game.model.o.b;
+import com.tencent.mm.plugin.game.model.r;
+import com.tencent.mm.plugin.game.protobuf.GetGameCenterGlobalSettingResponse;
+import com.tencent.mm.plugin.game.protobuf.ax;
 import com.tencent.mm.plugin.game.ui.tab.GameRouteUI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import java.util.HashMap;
 
-@i
+@k
 @com.tencent.mm.ui.base.a(19)
 public class GameCenterUI
   extends MMBaseActivity
 {
-  private void Qt(String paramString)
+  private void wx(boolean paramBoolean)
   {
-    AppMethodBeat.i(111783);
-    getIntent().putExtra("rawUrl", paramString);
-    if (((b)com.tencent.mm.kernel.g.E(b.class)).b(a.a.lRy)) {
-      Qu(paramString);
-    }
-    for (;;)
+    AppMethodBeat.i(41950);
+    if (ChannelUtil.isGPVersion())
     {
-      e.bGd();
-      AppMethodBeat.o(111783);
+      Log.i("MicroMsg.GameCenterUI", "GP version");
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 13L, 1L, false);
+      wy(paramBoolean);
+      AppMethodBeat.o(41950);
       return;
-      Y(7, false);
-      l.a(this, paramString, getIntent());
-      h.qsU.idkeyStat(848L, 3L, 1L, false);
     }
-  }
-  
-  private void Qu(String paramString)
-  {
-    AppMethodBeat.i(111784);
-    Y(7, true);
-    l.b(this, paramString, getIntent());
-    h.qsU.idkeyStat(848L, 3L, 1L, false);
-    h.qsU.idkeyStat(848L, 9L, 1L, false);
-    AppMethodBeat.o(111784);
-  }
-  
-  private void Y(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(111786);
-    if (getIntent().getBooleanExtra("from_find_more_friend", false))
-    {
-      ((d)com.tencent.mm.kernel.g.E(d.class)).bER();
-      n localn = q.bGn();
-      HashMap localHashMap = new HashMap();
-      if (paramBoolean) {
-        localHashMap.put("luggage", "1");
-      }
-      if (localn == null)
-      {
-        localHashMap.put("function_type", "resource");
-        localHashMap.put("function_value", "0");
-        com.tencent.mm.game.report.c.a(this, 9, 901, 1, paramInt, 0, com.tencent.mm.plugin.game.e.a.h(localHashMap));
-        AppMethodBeat.o(111786);
-        return;
-      }
-      localn.bGm();
-      int i = localn.field_msgType;
-      if (localn.field_msgType == 100) {
-        i = localn.nnL;
-      }
-      localHashMap.put("function_type", "resource");
-      localHashMap.put("function_value", String.valueOf(localn.nnb.nnV));
-      com.tencent.mm.game.report.c.a(this, 9, 901, 1, paramInt, 0, localn.field_appId, 0, i, localn.field_gameMsgId, localn.nnM, com.tencent.mm.plugin.game.e.a.h(localHashMap));
-      ((d)com.tencent.mm.kernel.g.E(d.class)).bER();
-      q.bGo();
-      h.qsU.idkeyStat(858L, 3L, 1L, false);
+    if (!m.s(this, getIntent())) {
+      wy(paramBoolean);
     }
-    AppMethodBeat.o(111786);
+    AppMethodBeat.o(41950);
   }
   
-  private void ik(boolean paramBoolean)
+  private void wy(boolean paramBoolean)
   {
-    AppMethodBeat.i(111782);
-    if (com.tencent.mm.sdk.platformtools.g.dsn())
-    {
-      ab.i("MicroMsg.GameCenterUI", "GP version");
-      h.qsU.idkeyStat(848L, 13L, 1L, false);
-    }
-    String str;
-    do
-    {
-      il(paramBoolean);
-      AppMethodBeat.o(111782);
-      return;
-      str = com.tencent.mm.plugin.game.f.c.bHD();
-    } while (bo.isNullOrNil(str));
-    Qt(str);
-    AppMethodBeat.o(111782);
-  }
-  
-  private void il(boolean paramBoolean)
-  {
-    AppMethodBeat.i(111785);
-    Intent localIntent = new Intent(this, GameRouteUI.class);
+    AppMethodBeat.i(41953);
+    Object localObject = new Intent(this, GameRouteUI.class);
     Bundle localBundle = getIntent().getExtras();
     if (localBundle != null) {
-      localIntent.putExtras(localBundle);
+      ((Intent)localObject).putExtras(localBundle);
     }
-    startActivity(localIntent);
-    if (paramBoolean) {
-      overridePendingTransition(2131034195, 2131034195);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/game/ui/GameCenterUI", "jumpNativeIndex", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/game/ui/GameCenterUI", "jumpNativeIndex", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    if (paramBoolean)
+    {
+      int i = h.a.HSF;
+      overridePendingTransition(i, i);
     }
     for (;;)
     {
-      Y(6, false);
-      h.qsU.idkeyStat(848L, 4L, 1L, false);
-      AppMethodBeat.o(111785);
+      if (getIntent().getBooleanExtra("from_find_more_friend", false)) {
+        m.b(6, false, null);
+      }
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 4L, 1L, false);
+      AppMethodBeat.o(41953);
       return;
-      overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
+      overridePendingTransition(MMFragmentActivity.a.upU, MMFragmentActivity.a.upV);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(111781);
+    AppMethodBeat.i(41949);
     super.onCreate(paramBundle);
     getIntent().putExtra("gamecenterui_createtime", System.currentTimeMillis());
-    ab.i("MicroMsg.GameCenterUI", "onCreate, time: " + System.currentTimeMillis());
+    Log.i("MicroMsg.GameCenterUI", "onCreate, time: " + System.currentTimeMillis());
+    if (getIntent().getIntExtra("game_report_from_scene", 0) == 901)
+    {
+      a.a.fHX().IXU.fHY();
+      a.a.fHX().IXU.startTimeMs = System.currentTimeMillis();
+      a.a.fHX().IXU.IXX = System.currentTimeMillis();
+    }
+    int i;
     if (getIntent().getBooleanExtra("game_check_float", false))
     {
-      int i = getIntent().getIntExtra("game_sourceScene", 0);
-      ((d)com.tencent.mm.kernel.g.E(d.class)).bER();
-      paramBundle = q.bGp();
+      i = getIntent().getIntExtra("game_sourceScene", 0);
+      ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg();
+      paramBundle = r.fGu();
       if (paramBundle != null)
       {
-        paramBundle.bGm();
-        if (!bo.isNullOrNil(paramBundle.nnq.url)) {
-          com.tencent.mm.plugin.game.f.c.a(getBaseContext(), paramBundle, "game_center_h5_floatlayer");
+        paramBundle.fGp();
+        if (!Util.isNullOrNil(paramBundle.IDI.url)) {
+          c.a(getBaseContext(), paramBundle, "game_center_h5_floatlayer");
         }
       }
-      l.a(paramBundle, i, 1);
+      m.a(paramBundle, i, 1);
       finish();
-      AppMethodBeat.o(111781);
+      AppMethodBeat.o(41949);
       return;
     }
     boolean bool = getIntent().getBooleanExtra("switch_country_no_anim", false);
-    paramBundle = com.tencent.mm.plugin.game.commlib.a.bFa();
-    if (paramBundle != null) {}
-    switch (paramBundle.nrh)
+    paramBundle = null;
+    Object localObject;
+    if (com.tencent.mm.plugin.game.commlib.a.IsN != null)
     {
-    default: 
-      ik(bool);
-    case 0: 
-    case 1: 
-      for (;;)
+      localObject = com.tencent.mm.plugin.game.commlib.a.IsN.GameIndexSetting;
+      paramBundle = (Bundle)localObject;
+      if (localObject != null)
       {
-        finish();
-        AppMethodBeat.o(111781);
-        return;
-        ik(bool);
-        continue;
-        if (!bo.isNullOrNil(paramBundle.npR)) {
-          Qt(paramBundle.npR);
-        } else {
-          ik(bool);
-        }
+        Log.i("MicroMsg.GameConfigManager", "getGameIndexSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(((ax)localObject).IHl), ((ax)localObject).IGI });
+        paramBundle = (Bundle)localObject;
       }
-    case 2: 
-      paramBundle = new Intent(this, GameOverSeaCenterUI.class);
-      localBundle = getIntent().getExtras();
-      if (localBundle != null) {
-        paramBundle.putExtras(localBundle);
-      }
-      startActivity(paramBundle);
-      if (bool) {
-        overridePendingTransition(2131034195, 2131034195);
-      }
-      for (;;)
+      if (paramBundle != null) {}
+      switch (paramBundle.IHl)
       {
-        Y(6, false);
-        h.qsU.idkeyStat(848L, 5L, 1L, false);
-        break;
-        overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
+      default: 
+        wx(bool);
       }
-    }
-    paramBundle = new Intent(this, GameDownloadGuidanceUI.class);
-    Bundle localBundle = getIntent().getExtras();
-    if (localBundle != null) {
-      paramBundle.putExtras(localBundle);
-    }
-    startActivity(paramBundle);
-    if (bool) {
-      overridePendingTransition(2131034195, 2131034195);
     }
     for (;;)
     {
-      Y(6, false);
-      h.qsU.idkeyStat(848L, 6L, 1L, false);
+      finish();
+      AppMethodBeat.o(41949);
+      return;
+      com.tencent.mm.plugin.game.commlib.a.fDQ();
       break;
-      overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
+      wx(bool);
+      continue;
+      if (!Util.isNullOrNil(paramBundle.IGI))
+      {
+        paramBundle = paramBundle.IGI;
+        getIntent().putExtra("rawUrl", paramBundle);
+        o localo1;
+        if (((b)com.tencent.mm.kernel.h.ax(b.class)).a(c.a.yGB, true))
+        {
+          localObject = getIntent();
+          if ((Util.isNullOrNil(paramBundle)) || (localObject == null)) {}
+          for (;;)
+          {
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 3L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 9L, 1L, false);
+            com.tencent.mm.plugin.game.model.e.fGf();
+            break;
+            bool = ((Intent)localObject).getBooleanExtra("from_find_more_friend", false);
+            i = ((Intent)localObject).getIntExtra("game_report_from_scene", 0);
+            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg();
+            localo1 = r.fGq();
+            paramBundle = m.a(paramBundle, localo1, (Intent)localObject, true);
+            ((Intent)localObject).putExtra("rawUrl", paramBundle);
+            ((Intent)localObject).putExtra("from_find_more_friend", true);
+            if (bool)
+            {
+              ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg();
+              o localo2 = r.fGr();
+              if (localo2 != null)
+              {
+                localo2.fGp();
+                if (localo2.IEh == 107) {
+                  ((Intent)localObject).putExtra("from_download_floagt_ball_shutdown_entrance", true);
+                }
+              }
+              m.a((Intent)localObject, "game_center_entrance", true, localo1, i, paramBundle);
+              c.w((Intent)localObject, this);
+              m.b(7, true, paramBundle);
+              ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg().fGz();
+            }
+            else
+            {
+              m.a((Intent)localObject, "game_center_entrance", false, localo1, i, paramBundle);
+              c.w((Intent)localObject, this);
+            }
+          }
+        }
+        localObject = getIntent();
+        if ((Util.isNullOrNil(paramBundle)) || (localObject == null)) {}
+        for (;;)
+        {
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 3L, 1L, false);
+          break;
+          bool = ((Intent)localObject).getBooleanExtra("from_find_more_friend", false);
+          i = ((Intent)localObject).getIntExtra("game_report_from_scene", 0);
+          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg();
+          localo1 = r.fGq();
+          paramBundle = m.a(paramBundle, localo1, (Intent)localObject, true);
+          ((Intent)localObject).putExtra("rawUrl", paramBundle);
+          if (bool)
+          {
+            m.a(this, (Intent)localObject, "game_center_entrance", true, localo1, i);
+            m.b(7, true, paramBundle);
+            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg().fGz();
+          }
+          else
+          {
+            m.a(this, (Intent)localObject, "game_center_entrance", false, localo1, i);
+          }
+        }
+      }
+      wx(bool);
+      continue;
+      paramBundle = new Intent(this, GameOverSeaCenterUI.class);
+      localObject = getIntent().getExtras();
+      if (localObject != null) {
+        paramBundle.putExtras((Bundle)localObject);
+      }
+      paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(paramBundle);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aYi(), "com/tencent/mm/plugin/game/ui/GameCenterUI", "jumpToForeignerIndex", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramBundle.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/game/ui/GameCenterUI", "jumpToForeignerIndex", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      if (bool)
+      {
+        i = h.a.HSF;
+        overridePendingTransition(i, i);
+      }
+      for (;;)
+      {
+        if (getIntent().getBooleanExtra("from_find_more_friend", false)) {
+          m.b(6, false, null);
+        }
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 5L, 1L, false);
+        break;
+        overridePendingTransition(MMFragmentActivity.a.upU, MMFragmentActivity.a.upV);
+      }
+      paramBundle = new Intent(this, GameDownloadGuidanceUI.class);
+      localObject = getIntent().getExtras();
+      if (localObject != null) {
+        paramBundle.putExtras((Bundle)localObject);
+      }
+      paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(paramBundle);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aYi(), "com/tencent/mm/plugin/game/ui/GameCenterUI", "jumpToDownloadGuidanceIndex", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramBundle.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/game/ui/GameCenterUI", "jumpToDownloadGuidanceIndex", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      if (bool)
+      {
+        i = h.a.HSF;
+        overridePendingTransition(i, i);
+      }
+      for (;;)
+      {
+        if (getIntent().getBooleanExtra("from_find_more_friend", false)) {
+          m.b(6, false, null);
+        }
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(848L, 6L, 1L, false);
+        break;
+        overridePendingTransition(MMFragmentActivity.a.upU, MMFragmentActivity.a.upV);
+      }
+      wy(bool);
     }
   }
   
@@ -221,7 +261,7 @@ public class GameCenterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCenterUI
  * JD-Core Version:    0.7.0.1
  */

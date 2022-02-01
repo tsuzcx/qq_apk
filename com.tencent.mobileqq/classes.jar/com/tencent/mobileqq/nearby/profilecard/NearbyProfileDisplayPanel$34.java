@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.content.Intent;
-import avkt;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.nearby.widget.MenuItem;
+import com.tencent.mobileqq.nearby.widget.NearbyPublishMenu.OnItemClickListener;
+import com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper;
 
-public class NearbyProfileDisplayPanel$34
-  implements Runnable
+class NearbyProfileDisplayPanel$34
+  implements NearbyPublishMenu.OnItemClickListener
 {
-  public NearbyProfileDisplayPanel$34(avkt paramavkt) {}
+  NearbyProfileDisplayPanel$34(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void a(Dialog paramDialog, View paramView, MenuItem paramMenuItem)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("COM_TENCENT_MOBILEQQ_NEARBY_PROFILE_ONRESUME");
-    localIntent.setPackage("com.tencent.mobileqq");
-    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    NearbyPublishMenuHelper.a(this.a.e, paramMenuItem, "data_card");
+    paramDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.34
  * JD-Core Version:    0.7.0.1
  */

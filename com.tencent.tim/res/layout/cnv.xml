@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/bpq" android:paddingTop="16.0dip" android:paddingRight="@dimen/bpq" android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@color/atv" android:id="@id/m1t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="2.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/nie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+        <TextView android:text="@string/xmq" style="@style/afp" />
+        <TextView android:id="@id/nid" style="@style/afo" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/nih" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+        <TextView android:text="@string/xms" style="@style/afp" />
+        <TextView android:id="@id/nig" style="@style/afo" />
+    </LinearLayout>
+</LinearLayout>

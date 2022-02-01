@@ -2,29 +2,30 @@ package com.tencent.pts.core;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.text.TextUtils;
-import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
 import com.tencent.pts.bridge.PTSJSBridge;
 import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
 import com.tencent.pts.core.lite.PTSLiteBridge;
+import com.tencent.pts.ui.PTSNodeAttribute;
+import com.tencent.pts.ui.PTSNodeFactory;
+import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.utils.PTSDeviceUtil;
 import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSValueConvertUtil;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class PTSAppInstance
 {
   private static final AtomicInteger NEXT_ID = new AtomicInteger(1);
-  private static ThreadLocal<TextView> sTextView;
-  private final String TAG = "PTSAppInstance";
-  private String appName;
+  private static final String TAG = "PTSAppInstance";
+  private float containerWidth;
   private Context context;
   private String frameTreeJson;
-  private PTSItemData itemData;
+  protected PTSItemData itemData;
   private String pageJs;
+  private String pageName;
+  private PTSComposer ptsComposer;
   private PTSRootNode rootNode;
   private int rootNodeType;
   private ViewGroup rootView;
@@ -32,14 +33,23 @@ public abstract class PTSAppInstance
   
   private void init(int paramInt)
   {
-    PTSDeviceUtil.init(this.context);
     this.rootNode = new PTSRootNode(this, this.rootView, paramInt);
     initPTSAppInstance(this.frameTreeJson, this.pageJs);
   }
   
+  private void release()
+  {
+    this.context = null;
+    this.rootView = null;
+    this.rootNode = null;
+  }
+  
   public void addOnRecyclerViewScrollListener(RecyclerView.OnScrollListener paramOnScrollListener)
   {
-    this.rootNode.addOnRecyclerViewScrollListener(paramOnScrollListener);
+    PTSRootNode localPTSRootNode = this.rootNode;
+    if (localPTSRootNode != null) {
+      localPTSRootNode.addOnRecyclerViewScrollListener(paramOnScrollListener);
+    }
   }
   
   public Context getContext()
@@ -62,6 +72,16 @@ public abstract class PTSAppInstance
     return null;
   }
   
+  public String getPageName()
+  {
+    return this.pageName;
+  }
+  
+  public PTSComposer getPtsComposer()
+  {
+    return this.ptsComposer;
+  }
+  
   public PTSRootNode getRootNode()
   {
     return this.rootNode;
@@ -74,71 +94,16 @@ public abstract class PTSAppInstance
   
   public float getRootViewWidth()
   {
-    float f2 = PTSDeviceUtil.getScreenWidthDp();
-    float f1 = f2;
-    if (this.rootView != null)
-    {
-      ViewGroup.LayoutParams localLayoutParams = this.rootView.getLayoutParams();
-      f1 = f2;
-      if (localLayoutParams != null)
-      {
-        f1 = f2;
-        if (localLayoutParams.width > 0) {
-          f1 = PTSValueConvertUtil.px2dp(localLayoutParams.width);
-        }
-      }
+    float f = this.containerWidth;
+    if (f > 0.0F) {
+      return f;
     }
-    PTSLog.i("PTSAppInstance", "getRootViewWidth, width = " + f1 + " dp");
-    return f1;
+    return PTSDeviceUtil.getScreenWidthDp();
   }
   
   float[] getTextMeasuredSize(float[] paramArrayOfFloat, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    try
-    {
-      Object localObject = getContext().getApplicationContext();
-      if (sTextView == null) {
-        sTextView = new PTSAppInstance.1(this, (Context)localObject);
-      }
-      TextView localTextView = (TextView)sTextView.get();
-      if (localTextView == null) {
-        localTextView = new TextView((Context)localObject);
-      }
-      for (;;)
-      {
-        localTextView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-        float f1 = PTSValueConvertUtil.dp2px(PTSValueConvertUtil.getFloat(paramString2));
-        float f2 = PTSValueConvertUtil.dp2px(PTSValueConvertUtil.getFloat(paramString3) - PTSValueConvertUtil.getFloat(paramString2));
-        int i = PTSValueConvertUtil.getInt(paramString4);
-        if (TextUtils.isEmpty(paramString1)) {}
-        for (localObject = "";; localObject = paramString1.trim())
-        {
-          localTextView.setText((CharSequence)localObject);
-          localTextView.setTextSize(0, f1);
-          localTextView.setLineSpacing(f2, 1.0F);
-          localTextView.setMaxLines(i);
-          localObject = new float[2];
-          localObject[0] = PTSDeviceUtil.getScreenWidthDp();
-          localObject[1] = 3.4028235E+38F;
-          if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 2))
-          {
-            localObject[0] = Math.min(paramArrayOfFloat[0], PTSDeviceUtil.getScreenWidthDp());
-            localObject[1] = Math.min(paramArrayOfFloat[1], 3.4028235E+38F);
-          }
-          localTextView.measure(View.MeasureSpec.makeMeasureSpec((int)PTSValueConvertUtil.dp2px(localObject[0]), -2147483648), View.MeasureSpec.makeMeasureSpec((int)PTSValueConvertUtil.dp2px(localObject[1]), -2147483648));
-          paramArrayOfFloat = new float[2];
-          paramArrayOfFloat[0] = PTSValueConvertUtil.px2dp(localTextView.getMeasuredWidth());
-          paramArrayOfFloat[1] = PTSValueConvertUtil.px2dp(localTextView.getMeasuredHeight());
-          if (PTSLog.isDebug())
-          {
-            PTSLog.i("PTSAppInstance", "getMeasuredSize, constrainedMeasure width = " + localObject[0] + ", constrainedMeasure height = " + localObject[1]);
-            PTSLog.i("PTSAppInstance", "getMeasuredSize, measuredWidth = " + paramArrayOfFloat[0] + ", measureHeight = " + paramArrayOfFloat[1] + ", content = " + paramString1 + ", fontSize = " + paramString2 + ", lineHeight = " + paramString3 + ", lineClamp = " + paramString4);
-          }
-          return paramArrayOfFloat;
-        }
-      }
-    }
-    finally {}
+    return PTSNodeFactory.getTextMeasuredSize(paramArrayOfFloat, paramString1, paramString2, paramString3, paramString4);
   }
   
   public int getUniqueID()
@@ -163,25 +128,65 @@ public abstract class PTSAppInstance
   public void onDestroy()
   {
     PTSLog.i("PTSAppInstance", "[onDestroy], destroy PTSJNIHandler.");
-    if (sTextView != null)
-    {
-      sTextView.remove();
-      sTextView = null;
-    }
+    release();
   }
   
   public void onPause() {}
   
   public void onResume() {}
   
+  public void setContext(Context paramContext)
+  {
+    this.context = paramContext;
+  }
+  
   public void setItemData(PTSItemData paramPTSItemData)
   {
     this.itemData = paramPTSItemData;
   }
+  
+  public void setPtsComposer(PTSComposer paramPTSComposer)
+  {
+    this.ptsComposer = paramPTSComposer;
+  }
+  
+  public void setPtsLiteEventListener(IPTSLiteEventListener paramIPTSLiteEventListener)
+  {
+    if ((this instanceof PTSAppInstance.PTSLiteAppInstance))
+    {
+      PTSAppInstance.PTSLiteAppInstance.access$000((PTSAppInstance.PTSLiteAppInstance)this, paramIPTSLiteEventListener);
+      return;
+    }
+    PTSLog.i("PTSAppInstance", "[setLiteEventListener] failed, this is not PTSLiteAppInstance.");
+  }
+  
+  public void triggerExposureEvent()
+  {
+    PTSRootNode localPTSRootNode = getRootNode();
+    if ((localPTSRootNode != null) && (localPTSRootNode.getRootNodeInfo() != null))
+    {
+      Object localObject = localPTSRootNode.getRootNodeInfo();
+      HashMap localHashMap = ((PTSNodeInfo)localObject).getEventInfo();
+      localObject = ((PTSNodeInfo)localObject).getAttributes().getEventPtsOnExposure();
+      if (isLiteAppInstance())
+      {
+        ((PTSAppInstance.PTSLiteAppInstance)this).triggerLiteEvent(2, (String)localObject, localHashMap, localPTSRootNode.getRootView(), getPtsComposer());
+        return;
+      }
+      PTSLog.e("PTSAppInstance", "[triggerExposureEvent] failed, is not PTSLiteAppInstance.");
+      return;
+    }
+    PTSLog.e("PTSAppInstance", "[triggerExposureEvent], ptsRootNode or rootNodeInfo is null.");
+  }
+  
+  public String updateData(String paramString)
+  {
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.PTSAppInstance
  * JD-Core Version:    0.7.0.1
  */

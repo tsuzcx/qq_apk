@@ -8,13 +8,13 @@ public final class SCRespUploadStreamMsg
   extends JceStruct
 {
   static StreamInfo cache_stStreamInfo;
-  public int iSeq;
-  public int result;
-  public int shMsgSeq;
-  public short shResetSeq;
-  public short shVersion;
-  public StreamInfo stStreamInfo;
-  public long uDateTime;
+  public int iSeq = 0;
+  public int result = 0;
+  public int shMsgSeq = 0;
+  public short shResetSeq = 0;
+  public short shVersion = 0;
+  public StreamInfo stStreamInfo = null;
+  public long uDateTime = 0L;
   
   public SCRespUploadStreamMsg() {}
   
@@ -56,7 +56,7 @@ public final class SCRespUploadStreamMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SCRespUploadStreamMsg
  * JD-Core Version:    0.7.0.1
  */

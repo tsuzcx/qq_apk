@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.triton.touch;
 
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
 
-@TTNativeModule(name="Touch")
+@TritonKeep
 public class Touch
 {
   static final String NAME = "Touch";
-  @TTNativeCall
+  @TritonKeep
   public int identifier;
-  @TTNativeCall
+  @TritonKeep
   public float screenX;
-  @TTNativeCall
+  @TritonKeep
   public float screenY;
   
   public Touch(int paramInt, float paramFloat1, float paramFloat2)
@@ -34,7 +33,7 @@ public class Touch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.touch.Touch
  * JD-Core Version:    0.7.0.1
  */

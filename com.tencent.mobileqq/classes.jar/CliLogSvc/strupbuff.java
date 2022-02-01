@@ -17,16 +17,6 @@ public final class strupbuff
   public Map<String, ArrayList<byte[]>> logstring = null;
   public String prefix = "";
   
-  static
-  {
-    if (!strupbuff.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public strupbuff()
   {
     setLogstring(this.logstring);
@@ -46,18 +36,17 @@ public final class strupbuff
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -69,13 +58,11 @@ public final class strupbuff
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (strupbuff)paramObject;
-    } while ((!JceUtil.equals(this.logstring, paramObject.logstring)) || (!JceUtil.equals(this.prefix, paramObject.prefix)));
-    return true;
+    }
+    paramObject = (strupbuff)paramObject;
+    return (JceUtil.equals(this.logstring, paramObject.logstring)) && (JceUtil.equals(this.prefix, paramObject.prefix));
   }
   
   public String fullClassName()
@@ -132,14 +119,15 @@ public final class strupbuff
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.logstring, 0);
-    if (this.prefix != null) {
-      paramJceOutputStream.write(this.prefix, 1);
+    String str = this.prefix;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     CliLogSvc.strupbuff
  * JD-Core Version:    0.7.0.1
  */

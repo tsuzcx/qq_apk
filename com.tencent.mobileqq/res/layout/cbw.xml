@@ -2,12 +2,12 @@
 <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:padding="20.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/lr7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载so" />
-        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/m5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r3c" />
-        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/le2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r36" />
-        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/m5n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2u" />
-        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/m3_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r31" />
-        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/mb2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="token确认" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/black" android:id="@id/lr7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载so" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/black" android:id="@id/m5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r3c" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/black" android:id="@id/le2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r36" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/black" android:id="@id/m5n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2u" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/black" android:id="@id/m3_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r31" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/black" android:id="@id/mb2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="token确认" />
         <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="test export:" />
             <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">

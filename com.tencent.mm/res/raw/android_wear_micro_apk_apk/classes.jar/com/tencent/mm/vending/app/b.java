@@ -4,11 +4,11 @@ import com.tencent.mm.vending.a.h;
 
 public abstract class b<_Struct>
 {
-  private boolean YJ;
-  private boolean YK;
-  private h YL;
+  private boolean acj;
+  private boolean ack;
+  private h acl;
   
-  protected abstract _Struct lu();
+  protected abstract _Struct mb();
 }
 
 

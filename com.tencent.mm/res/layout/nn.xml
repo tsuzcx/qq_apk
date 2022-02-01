@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/g7"
+<RelativeLayout android:orientation="vertical" android:background="@color/ii" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/ap9" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/m2" style="@style/gc" />
-    <TextView android:id="@id/ox" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/ap9" style="@style/gl" />
-    <LinearLayout android:id="@id/a_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/ap9" style="@style/gh">
-        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/oy" android:background="@drawable/k6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/fy" android:minHeight="@dimen/eg" style="@style/gr" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/f9v" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true">
+        <View android:id="@id/fob" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/m4" android:gravity="center_vertical" android:id="@id/f9s" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/ayu" android:layout_below="@id/fob" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/Link" android:gravity="center_vertical" android:id="@id/f_b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:text="@string/az3" android:layout_toRightOf="@id/f9s" android:layout_below="@id/fob" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/f_7" android:background="@drawable/j8" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/az0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bs8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/j8" android:id="@id/hgh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b0h" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ListView android:id="@id/avk" android:background="@color/lz" android:visibility="visible" android:layout_height="fill_parent" android:transcriptMode="disabled" android:layout_above="@id/f9v" style="@style/g8" />
 </RelativeLayout>

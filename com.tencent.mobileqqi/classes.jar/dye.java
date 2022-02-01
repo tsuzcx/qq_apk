@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.activity.aio.audiopanel.ViewPagerRadioGroup;
 
 public class dye
-  implements Runnable
+  extends RadioButton
 {
-  public dye(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
-  
-  public void run()
+  public dye(ViewPagerRadioGroup paramViewPagerRadioGroup, Context paramContext)
   {
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.c();
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

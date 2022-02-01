@@ -41,13 +41,13 @@ public class ShuffleOrder$DefaultShuffleOrder
   private static int[] createShuffledList(int paramInt, Random paramRandom)
   {
     int[] arrayOfInt = new int[paramInt];
-    int i = 0;
-    while (i < paramInt)
+    int j;
+    for (int i = 0; i < paramInt; i = j)
     {
-      int j = paramRandom.nextInt(i + 1);
-      arrayOfInt[i] = arrayOfInt[j];
-      arrayOfInt[j] = i;
-      i += 1;
+      j = i + 1;
+      int k = paramRandom.nextInt(j);
+      arrayOfInt[i] = arrayOfInt[k];
+      arrayOfInt[k] = i;
     }
     return arrayOfInt;
   }
@@ -59,91 +59,94 @@ public class ShuffleOrder$DefaultShuffleOrder
   
   public ShuffleOrder cloneAndInsert(int paramInt1, int paramInt2)
   {
-    int m = 0;
     int[] arrayOfInt1 = new int[paramInt2];
     int[] arrayOfInt2 = new int[paramInt2];
-    int i = 0;
-    while (i < paramInt2)
+    int m = 0;
+    for (int i = 0; i < paramInt2; i = j)
     {
       arrayOfInt1[i] = this.random.nextInt(this.shuffled.length + 1);
-      j = this.random.nextInt(i + 1);
-      arrayOfInt2[i] = arrayOfInt2[j];
-      arrayOfInt2[j] = (i + paramInt1);
-      i += 1;
+      localObject = this.random;
+      j = i + 1;
+      k = ((Random)localObject).nextInt(j);
+      arrayOfInt2[i] = arrayOfInt2[k];
+      arrayOfInt2[k] = (i + paramInt1);
     }
     Arrays.sort(arrayOfInt1);
-    int[] arrayOfInt3 = new int[this.shuffled.length + paramInt2];
-    int j = 0;
+    Object localObject = new int[this.shuffled.length + paramInt2];
     int k = 0;
+    int j = 0;
     i = m;
-    if (i < this.shuffled.length + paramInt2)
+    while (i < this.shuffled.length + paramInt2)
     {
-      if ((j < paramInt2) && (k == arrayOfInt1[j]))
+      if ((k < paramInt2) && (j == arrayOfInt1[k]))
       {
-        arrayOfInt3[i] = arrayOfInt2[j];
-        j += 1;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        arrayOfInt3[i] = this.shuffled[k];
-        if (arrayOfInt3[i] >= paramInt1) {
-          arrayOfInt3[i] += paramInt2;
-        }
+        localObject[i] = arrayOfInt2[k];
         k += 1;
       }
+      else
+      {
+        localObject[i] = this.shuffled[j];
+        if (localObject[i] >= paramInt1) {
+          localObject[i] += paramInt2;
+        }
+        j += 1;
+      }
+      i += 1;
     }
-    return new DefaultShuffleOrder(arrayOfInt3, new Random(this.random.nextLong()));
+    return new DefaultShuffleOrder((int[])localObject, new Random(this.random.nextLong()));
   }
   
   public ShuffleOrder cloneAndRemove(int paramInt)
   {
+    int[] arrayOfInt1 = new int[this.shuffled.length - 1];
     int i = 0;
-    int[] arrayOfInt = new int[this.shuffled.length - 1];
     int j = 0;
-    while (i < this.shuffled.length) {
-      if (this.shuffled[i] == paramInt)
+    for (;;)
+    {
+      int[] arrayOfInt2 = this.shuffled;
+      if (i >= arrayOfInt2.length) {
+        break;
+      }
+      if (arrayOfInt2[i] == paramInt)
       {
         j = 1;
-        i += 1;
       }
       else
       {
         int k;
-        if (j != 0)
-        {
+        if (j != 0) {
           k = i - 1;
-          label52:
-          if (this.shuffled[i] <= paramInt) {
-            break label88;
-          }
-        }
-        label88:
-        for (int m = this.shuffled[i] - 1;; m = this.shuffled[i])
-        {
-          arrayOfInt[k] = m;
-          break;
+        } else {
           k = i;
-          break label52;
         }
+        arrayOfInt2 = this.shuffled;
+        int m;
+        if (arrayOfInt2[i] > paramInt) {
+          m = arrayOfInt2[i] - 1;
+        } else {
+          m = arrayOfInt2[i];
+        }
+        arrayOfInt1[k] = m;
       }
+      i += 1;
     }
-    return new DefaultShuffleOrder(arrayOfInt, new Random(this.random.nextLong()));
+    return new DefaultShuffleOrder(arrayOfInt1, new Random(this.random.nextLong()));
   }
   
   public int getFirstIndex()
   {
-    if (this.shuffled.length > 0) {
-      return this.shuffled[0];
+    int[] arrayOfInt = this.shuffled;
+    if (arrayOfInt.length > 0) {
+      return arrayOfInt[0];
     }
     return -1;
   }
   
   public int getLastIndex()
   {
-    if (this.shuffled.length > 0) {
-      return this.shuffled[(this.shuffled.length - 1)];
+    int[] arrayOfInt = this.shuffled;
+    if (arrayOfInt.length > 0) {
+      return arrayOfInt[(arrayOfInt.length - 1)];
     }
     return -1;
   }
@@ -156,24 +159,27 @@ public class ShuffleOrder$DefaultShuffleOrder
   public int getNextIndex(int paramInt)
   {
     paramInt = this.indexInShuffled[paramInt] + 1;
-    if (paramInt < this.shuffled.length) {
-      return this.shuffled[paramInt];
+    int[] arrayOfInt = this.shuffled;
+    if (paramInt < arrayOfInt.length) {
+      return arrayOfInt[paramInt];
     }
     return -1;
   }
   
   public int getPreviousIndex(int paramInt)
   {
-    paramInt = this.indexInShuffled[paramInt] - 1;
-    if (paramInt >= 0) {
-      return this.shuffled[paramInt];
+    int i = this.indexInShuffled[paramInt];
+    paramInt = -1;
+    i -= 1;
+    if (i >= 0) {
+      paramInt = this.shuffled[i];
     }
-    return -1;
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ShuffleOrder.DefaultShuffleOrder
  * JD-Core Version:    0.7.0.1
  */

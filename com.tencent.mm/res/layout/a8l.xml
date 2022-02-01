@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ckx" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/cky" android:background="@drawable/vh" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="2.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<androidx.core.widget.NestedScrollView android:id="@id/d67" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="@dimen/a7n"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/db">
+            <TextView android:textSize="@dimen/a_" android:textColor="@color/gb" android:layout_gravity="center" android:id="@id/d66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/d5y" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_close" android:layout_marginStart="@dimen/cp" app:iconColor="@color/gb" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/a_" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/d60" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cw" android:layout_marginBottom="@dimen/db" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/gk" android:visibility="visible" android:layout_width="@dimen/a7g" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/db" android:text="@string/cxp" android:paddingStart="@dimen/cv" android:paddingEnd="@dimen/cv" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

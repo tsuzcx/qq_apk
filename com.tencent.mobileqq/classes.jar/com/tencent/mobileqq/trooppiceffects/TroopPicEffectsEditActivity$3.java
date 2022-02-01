@@ -1,50 +1,50 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import awju;
-import awkj;
-import bayf;
-import bayk;
-import bayo;
-import bcxd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 
 class TroopPicEffectsEditActivity$3
   implements Runnable
 {
-  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, awju paramawju) {}
+  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, PicUploadInfo paramPicUploadInfo) {}
   
   public void run()
   {
     this.this$0.app.getHwEngine().preConnect();
-    Object localObject = new CompressInfo(this.a.g, 0);
-    ((CompressInfo)localObject).f = 0;
-    awkj.a((CompressInfo)localObject);
-    bayk localbayk = new bayk();
-    localbayk.jdField_b_of_type_JavaLangString = this.this$0.app.getAccount();
-    localbayk.c = this.this$0.jdField_b_of_type_JavaLangString;
-    localbayk.d = this.this$0.app.getCurrentAccountUin();
-    localbayk.jdField_a_of_type_Int = 1;
-    localbayk.jdField_b_of_type_Int = 1;
-    localbayk.jdField_a_of_type_Boolean = true;
-    localbayk.e = this.a.jdField_a_of_type_Int;
-    localbayk.jdField_i_of_type_JavaLangString = ((CompressInfo)localObject).e;
-    localbayk.f = this.a.f;
-    localObject = new bayo();
-    localbayk.jdField_a_of_type_JavaLangObject = localObject;
-    ((bayo)localObject).jdField_a_of_type_Boolean = false;
-    localbayk.jdField_a_of_type_Awkh = new bcxd(this.this$0);
-    localbayk.jdField_i_of_type_Boolean = this.a.c;
-    localbayk.j = this.a.e;
-    localbayk.jdField_b_of_type_Int = 55;
-    localbayk.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.this$0.app.a().a(localbayk);
+    Object localObject = new CompressInfo(this.a.n, 0);
+    ((CompressInfo)localObject).o = 0;
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject);
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mSelfUin = this.this$0.app.getAccount();
+    localTransferRequest.mPeerUin = this.this$0.g;
+    localTransferRequest.mSecondId = this.this$0.app.getCurrentAccountUin();
+    localTransferRequest.mUinType = 1;
+    localTransferRequest.mFileType = 1;
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mBusiType = this.a.b;
+    localTransferRequest.mLocalPath = ((CompressInfo)localObject).l;
+    localTransferRequest.mMd5 = this.a.m;
+    localObject = new TransferRequest.PicUpExtraInfo();
+    localTransferRequest.mExtraObj = localObject;
+    ((TransferRequest.PicUpExtraInfo)localObject).mIsRaw = false;
+    localTransferRequest.mUpCallBack = new TroopPicEffectsEditActivity.UploadPicCallback(this.this$0);
+    localTransferRequest.mIsPresend = this.a.w;
+    localTransferRequest.myPresendInvalid = this.a.y;
+    localTransferRequest.mFileType = 55;
+    localTransferRequest.mUniseq = System.currentTimeMillis();
+    ((ITransFileController)this.this$0.app.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.3
  * JD-Core Version:    0.7.0.1
  */

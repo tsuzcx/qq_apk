@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableColorValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
@@ -8,179 +7,138 @@ import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
 import com.tencent.mobileqq.dinifly.model.content.ShapeStroke;
 import com.tencent.mobileqq.dinifly.model.content.ShapeStroke.LineCapType;
 import com.tencent.mobileqq.dinifly.model.content.ShapeStroke.LineJoinType;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class ShapeStrokeParser
 {
+  private static final JsonReader.Options DASH_PATTERN_NAMES = JsonReader.Options.of(new String[] { "n", "v" });
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "c", "w", "o", "lc", "lj", "ml", "hd", "d" });
+  
   static ShapeStroke parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
+    ArrayList localArrayList = new ArrayList();
+    AnimatableIntegerValue localAnimatableIntegerValue = null;
     String str1 = null;
+    Object localObject1 = null;
     AnimatableColorValue localAnimatableColorValue = null;
     AnimatableFloatValue localAnimatableFloatValue = null;
-    AnimatableIntegerValue localAnimatableIntegerValue = null;
     ShapeStroke.LineCapType localLineCapType = null;
     ShapeStroke.LineJoinType localLineJoinType = null;
-    Object localObject1 = null;
     float f = 0.0F;
     boolean bool = false;
-    ArrayList localArrayList = new ArrayList();
-    label35:
-    while (paramJsonReader.hasNext())
-    {
-      Object localObject2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (((String)localObject2).hashCode())
+    while (paramJsonReader.hasNext()) {
+      switch (paramJsonReader.selectName(NAMES))
       {
-      }
-      for (;;)
-      {
-        switch (i)
+      default: 
+        paramJsonReader.skipValue();
+        break;
+      case 8: 
+        paramJsonReader.beginArray();
+        for (Object localObject2 = localObject1; paramJsonReader.hasNext(); localObject2 = localObject1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label35;
-          if (((String)localObject2).equals("nm"))
+          paramJsonReader.beginObject();
+          localObject1 = null;
+          String str2 = null;
+          while (paramJsonReader.hasNext())
           {
-            i = 0;
-            continue;
-            if (((String)localObject2).equals("c"))
+            i = paramJsonReader.selectName(DASH_PATTERN_NAMES);
+            if (i != 0)
             {
-              i = 1;
-              continue;
-              if (((String)localObject2).equals("w"))
+              if (i != 1)
               {
-                i = 2;
-                continue;
-                if (((String)localObject2).equals("o"))
-                {
-                  i = 3;
-                  continue;
-                  if (((String)localObject2).equals("lc"))
-                  {
-                    i = 4;
-                    continue;
-                    if (((String)localObject2).equals("lj"))
-                    {
-                      i = 5;
-                      continue;
-                      if (((String)localObject2).equals("ml"))
-                      {
-                        i = 6;
-                        continue;
-                        if (((String)localObject2).equals("hd"))
-                        {
-                          i = 7;
-                          continue;
-                          if (((String)localObject2).equals("d")) {
-                            i = 8;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+                paramJsonReader.skipName();
+                paramJsonReader.skipValue();
+              }
+              else
+              {
+                localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
               }
             }
+            else {
+              str2 = paramJsonReader.nextString();
+            }
           }
-          break;
-        }
-      }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableColorValue = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
-      continue;
-      localLineCapType = ShapeStroke.LineCapType.values()[(paramJsonReader.nextInt() - 1)];
-      continue;
-      localLineJoinType = ShapeStroke.LineJoinType.values()[(paramJsonReader.nextInt() - 1)];
-      continue;
-      f = (float)paramJsonReader.nextDouble();
-      continue;
-      bool = paramJsonReader.nextBoolean();
-      continue;
-      paramJsonReader.beginArray();
-      localObject2 = localObject1;
-      while (paramJsonReader.hasNext())
-      {
-        String str2 = null;
-        localObject1 = null;
-        paramJsonReader.beginObject();
-        label445:
-        while (paramJsonReader.hasNext())
-        {
-          String str3 = paramJsonReader.nextName();
-          i = -1;
-          switch (str3.hashCode())
+          paramJsonReader.endObject();
+          int i = str2.hashCode();
+          if (i != 100)
           {
-          }
-          for (;;)
-          {
-            switch (i)
+            if (i != 103)
             {
-            default: 
-              paramJsonReader.skipValue();
-              break label445;
-              if (str3.equals("n"))
+              if ((i == 111) && (str2.equals("o")))
               {
                 i = 0;
-                continue;
-                if (str3.equals("v")) {
-                  i = 1;
-                }
+                break label264;
               }
-              break;
+            }
+            else if (str2.equals("g"))
+            {
+              i = 2;
+              break label264;
             }
           }
-          str2 = paramJsonReader.nextString();
-          continue;
-          localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-        }
-        paramJsonReader.endObject();
-        switch (str2.hashCode())
-        {
-        default: 
-          label616:
-          i = -1;
-        }
-        for (;;)
-        {
-          switch (i)
+          else if (str2.equals("d"))
           {
-          default: 
-            break;
-          case 0: 
-            localObject2 = localObject1;
-            break;
-            if (!str2.equals("o")) {
-              break label616;
-            }
-            i = 0;
-            continue;
-            if (!str2.equals("d")) {
-              break label616;
-            }
             i = 1;
-            continue;
-            if (!str2.equals("g")) {
-              break label616;
+            break label264;
+          }
+          i = -1;
+          if (i != 0) {
+            if ((i != 1) && (i != 2))
+            {
+              localObject1 = localObject2;
             }
-            i = 2;
+            else
+            {
+              paramLottieComposition.setHasDashPattern(true);
+              localArrayList.add(localObject1);
+              localObject1 = localObject2;
+            }
           }
         }
-        paramLottieComposition.setHasDashPattern(true);
-        localArrayList.add(localObject1);
+        paramJsonReader.endArray();
+        if (localArrayList.size() == 1)
+        {
+          localArrayList.add(localArrayList.get(0));
+          localObject1 = localObject2;
+        }
+        else
+        {
+          localObject1 = localObject2;
+        }
+        break;
+      case 7: 
+        bool = paramJsonReader.nextBoolean();
+        break;
+      case 6: 
+        f = (float)paramJsonReader.nextDouble();
+        break;
+      case 5: 
+        localLineJoinType = ShapeStroke.LineJoinType.values()[(paramJsonReader.nextInt() - 1)];
+        break;
+      case 4: 
+        localLineCapType = ShapeStroke.LineCapType.values()[(paramJsonReader.nextInt() - 1)];
+        break;
+      case 3: 
+        localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
+        break;
+      case 2: 
+        localAnimatableFloatValue = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+        break;
+      case 1: 
+        localAnimatableColorValue = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
+        break;
+      case 0: 
+        label264:
+        str1 = paramJsonReader.nextString();
       }
-      paramJsonReader.endArray();
-      localObject1 = localObject2;
-      if (localArrayList.size() == 1)
-      {
-        localArrayList.add(localArrayList.get(0));
-        localObject1 = localObject2;
-      }
+    }
+    if (localAnimatableIntegerValue == null) {
+      localAnimatableIntegerValue = new AnimatableIntegerValue(Collections.singletonList(new Keyframe(Integer.valueOf(100))));
     }
     return new ShapeStroke(str1, (AnimatableFloatValue)localObject1, localArrayList, localAnimatableColorValue, localAnimatableIntegerValue, localAnimatableFloatValue, localLineCapType, localLineJoinType, f, bool);
   }

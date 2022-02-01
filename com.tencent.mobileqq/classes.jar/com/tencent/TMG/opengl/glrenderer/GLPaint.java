@@ -24,18 +24,19 @@ public class GLPaint
   
   public void setLineWidth(float paramFloat)
   {
-    if (paramFloat >= 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mLineWidth = paramFloat;
-      return;
+    boolean bool;
+    if (paramFloat >= 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mLineWidth = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.glrenderer.GLPaint
  * JD-Core Version:    0.7.0.1
  */

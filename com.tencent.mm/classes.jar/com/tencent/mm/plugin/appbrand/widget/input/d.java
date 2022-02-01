@@ -1,278 +1,360 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.luggage.wxa.b.a.c;
+import com.tencent.luggage.wxa.b.a.d;
+import com.tencent.luggage.wxa.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.input.d.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.o.a;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.widget.input.e.e;
+import com.tencent.mm.plugin.appbrand.widget.input.e.h;
+import com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
 final class d
   extends c<s>
 {
-  int jkI;
-  s jkJ;
-  v jkK;
-  com.tencent.mm.plugin.appbrand.widget.input.d.h jkL;
-  boolean jkM;
-  boolean jkN;
+  int uFa;
+  s uFb;
+  v uFc;
+  h uFd;
+  boolean uFe;
+  boolean uFf;
+  private boolean uFg;
   
-  d(String paramString, com.tencent.mm.plugin.appbrand.page.v paramv, e parame)
+  d(String paramString, ad paramad, e parame)
   {
-    super(paramString, paramv, parame.jkB);
-    AppMethodBeat.i(123583);
-    this.jkI = 0;
-    this.jkJ = new s(paramv.getContext());
-    this.jkI = bo.a((Integer)o.jmi.get(paramString), 0);
-    AppMethodBeat.o(123583);
+    super(paramString, paramad, parame.uES);
+    AppMethodBeat.i(136314);
+    this.uFa = 0;
+    this.uFb = new s(paramad.getContext());
+    this.uFa = Util.nullAs((Integer)o.uGA.get(paramString), 0);
+    AppMethodBeat.o(136314);
   }
   
-  private v aQC()
+  private v cQO()
   {
-    AppMethodBeat.i(123594);
-    if (this.jkK != null)
+    AppMethodBeat.i(136325);
+    if (this.uFc != null)
     {
-      localv = this.jkK;
-      AppMethodBeat.o(123594);
+      localv = this.uFc;
+      AppMethodBeat.o(136325);
       return localv;
     }
-    v localv = this.jkJ.getInputPanel();
-    this.jkK = localv;
-    AppMethodBeat.o(123594);
+    v localv = this.uFb.getInputPanel();
+    this.uFc = localv;
+    AppMethodBeat.o(136325);
     return localv;
   }
   
   private boolean isFocused()
   {
-    AppMethodBeat.i(123592);
-    if (this.jkJ == null)
+    AppMethodBeat.i(136323);
+    if (this.uFb == null)
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return false;
     }
-    if (this.jkJ.isFocused())
+    if (this.uFb.isFocused())
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return true;
     }
-    if (aQC() == null)
+    if (cQO() == null)
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return false;
     }
-    if (!aQC().isShown())
+    if (!cQO().isShown())
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return false;
     }
-    if (this.jkK.getAttachedEditText() == this.jkJ)
+    if (this.uFc.getAttachedEditText() == this.uFb)
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return true;
     }
-    AppMethodBeat.o(123592);
+    AppMethodBeat.o(136323);
     return false;
   }
   
-  public final boolean FN(String paramString)
+  public final boolean agZ(String paramString)
   {
-    AppMethodBeat.i(123589);
-    if (this.jkJ == null)
+    AppMethodBeat.i(136320);
+    if (this.uFb == null)
     {
-      AppMethodBeat.o(123589);
+      AppMethodBeat.o(136320);
       return false;
     }
-    this.jkJ.z(paramString);
-    AppMethodBeat.o(123589);
+    this.uFb.T(paramString);
+    AppMethodBeat.o(136320);
     return true;
   }
   
-  public final int aQA()
+  public final h b(h paramh)
   {
-    AppMethodBeat.i(123586);
-    if ((this.jkL == null) || (this.jkL.jrc == null))
+    AppMethodBeat.i(136319);
+    if (this.uFd == null)
     {
-      AppMethodBeat.o(123586);
+      this.uFd = paramh;
+      if ((an.o(paramh.uMf)) && (this.uFb != null)) {
+        this.uFb.setPasswordMode(true);
+      }
+    }
+    while (this.uFb == null)
+    {
+      AppMethodBeat.o(136319);
+      return null;
+      this.uFd.a(paramh);
+    }
+    b.a(this.uFb, this.uFd);
+    paramh = this.uFd;
+    AppMethodBeat.o(136319);
+    return paramh;
+  }
+  
+  final Rect cQC()
+  {
+    AppMethodBeat.i(136318);
+    Rect localRect = new Rect(this.uFd.uLC.intValue(), this.uFd.uLB.intValue(), this.uFd.uLC.intValue() + this.uFd.uLz.intValue(), this.uFd.uLB.intValue() + this.uFd.uLA.intValue());
+    AppMethodBeat.o(136318);
+    return localRect;
+  }
+  
+  public final boolean cQL()
+  {
+    AppMethodBeat.i(136316);
+    if ((this.uFd != null) && (an.o(this.uFd.uLW)))
+    {
+      AppMethodBeat.o(136316);
+      return true;
+    }
+    AppMethodBeat.o(136316);
+    return false;
+  }
+  
+  public final int cQM()
+  {
+    AppMethodBeat.i(136317);
+    if ((this.uFd == null) || (this.uFd.uLT == null))
+    {
+      AppMethodBeat.o(136317);
       return 0;
     }
-    int i = this.jkL.jrc.intValue();
-    AppMethodBeat.o(123586);
+    int i = this.uFd.uLT.intValue();
+    AppMethodBeat.o(136317);
     return i;
   }
   
-  public final boolean aQB()
+  public final boolean cQN()
   {
-    AppMethodBeat.i(123591);
-    if (aQC() == null)
+    AppMethodBeat.i(136322);
+    if (cQO() == null)
     {
-      AppMethodBeat.o(123591);
+      AppMethodBeat.o(136322);
       return false;
     }
     if (isFocused())
     {
-      Object localObject = this.jkK;
-      ((v)localObject).setVisibility(8);
-      ((v)localObject).aRe();
-      ab.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.jkJ });
-      if (this.jkJ != null)
+      v localv = this.uFc;
+      localv.setVisibility(8);
+      localv.cRq();
+      Log.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.uFb });
+      if (this.uFb != null)
       {
-        this.jkJ.setFocusable(false);
-        this.jkJ.setFocusableInTouchMode(false);
-        this.jkJ.setEnabled(false);
+        this.uFb.setFocusable(false);
+        this.uFb.setFocusableInTouchMode(false);
+        this.uFb.setEnabled(false);
       }
-      localObject = (com.tencent.mm.plugin.appbrand.page.v)this.jkD.get();
-      if ((localObject != null) && (((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy != null)) {
-        h.aQF().d(((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy);
-      }
-      k.a(this.jkD).qs(this.jkB);
-      AppMethodBeat.o(123591);
+      cQS();
+      cQT();
+      AppMethodBeat.o(136322);
       return true;
     }
-    AppMethodBeat.o(123591);
+    AppMethodBeat.o(136322);
     return false;
-  }
-  
-  final Rect aQu()
-  {
-    AppMethodBeat.i(123587);
-    Rect localRect = new Rect(this.jkL.jqL.intValue(), this.jkL.jqK.intValue(), this.jkL.jqL.intValue() + this.jkL.jqI.intValue(), this.jkL.jqK.intValue() + this.jkL.jqJ.intValue());
-    AppMethodBeat.o(123587);
-    return localRect;
-  }
-  
-  public final boolean aQz()
-  {
-    AppMethodBeat.i(123585);
-    if ((this.jkL != null) && (aj.g(this.jkL.jrf)))
-    {
-      AppMethodBeat.o(123585);
-      return true;
-    }
-    AppMethodBeat.o(123585);
-    return false;
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.widget.input.d.h b(com.tencent.mm.plugin.appbrand.widget.input.d.h paramh)
-  {
-    AppMethodBeat.i(123588);
-    if (this.jkL == null)
-    {
-      this.jkL = paramh;
-      if ((aj.g(paramh.jrn)) && (this.jkJ != null)) {
-        this.jkJ.setPasswordMode(true);
-      }
-    }
-    while (this.jkJ == null)
-    {
-      AppMethodBeat.o(123588);
-      return null;
-      this.jkL.a(paramh);
-    }
-    b.a(this.jkJ, this.jkL);
-    paramh = this.jkL;
-    AppMethodBeat.o(123588);
-    return paramh;
-  }
-  
-  public final boolean dw(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(123590);
-    if (this.jkJ == null)
-    {
-      AppMethodBeat.o(123590);
-      return false;
-    }
-    this.jkK = v.cP(((com.tencent.mm.plugin.appbrand.page.v)this.jkD.get()).hmw);
-    if (this.jkK == null)
-    {
-      AppMethodBeat.o(123590);
-      return false;
-    }
-    this.jkN = true;
-    Object localObject = (com.tencent.mm.plugin.appbrand.page.v)this.jkD.get();
-    if ((localObject != null) && (((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy != null)) {
-      h.aQF().c(((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy);
-    }
-    this.jkK.setXMode(this.jkI);
-    localObject = this.jkK;
-    s locals = this.jkJ;
-    if (locals != null)
-    {
-      if (((v)localObject).mEditText != locals) {
-        ((v)localObject).aRe();
-      }
-      ((v)localObject).setInputEditText(locals);
-      ((v)localObject).setVisibility(0);
-    }
-    this.jkK.setOnDoneListener(new v.a()
-    {
-      public final void onDone()
-      {
-        AppMethodBeat.i(123582);
-        d.this.a(d.this.aQH());
-        d.this.fo(false);
-        AppMethodBeat.o(123582);
-      }
-    });
-    dv(paramInt1, paramInt2);
-    k.a(this.jkD).qr(this.jkB);
-    this.jkN = false;
-    AppMethodBeat.o(123590);
-    return true;
-  }
-  
-  protected final boolean fo(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123593);
-    ab.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
-    if (!paramBoolean)
-    {
-      if (this.jkM)
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      if (!isFocused())
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      this.jkM = true;
-      a(aQH());
-      aQB();
-      aQx();
-      this.jkM = false;
-      this.jkJ = null;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(123593);
-      return true;
-      if (this.jkN)
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      if (isFocused())
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      this.jkN = true;
-      dw(-2, -2);
-      this.jkN = false;
-    }
   }
   
   public final View getInputPanel()
   {
-    AppMethodBeat.i(123584);
-    aQC();
-    v localv = this.jkK;
-    AppMethodBeat.o(123584);
+    AppMethodBeat.i(136315);
+    cQO();
+    v localv = this.uFc;
+    AppMethodBeat.o(136315);
     return localv;
+  }
+  
+  protected final boolean lz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(136324);
+    Log.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
+    if (!paramBoolean)
+    {
+      if (this.uFe)
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      if (!isFocused())
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      this.uFe = true;
+      a(cQF());
+      cQN();
+      remove();
+      this.uFe = false;
+      this.uFb = null;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(136324);
+      return true;
+      if (this.uFf)
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      if (isFocused())
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      this.uFf = true;
+      r(-2, -2, this.uFg);
+      this.uFf = false;
+    }
+  }
+  
+  public final boolean r(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(324623);
+    if (this.uFb == null)
+    {
+      AppMethodBeat.o(324623);
+      return false;
+    }
+    Object localObject2 = ((ad)this.uEU.get()).getContentView();
+    if ((this.uEU.get() != null) && ((this.uEU.get() instanceof ad))) {}
+    for (Object localObject1 = ((ad)this.uEU.get()).cEK();; localObject1 = null)
+    {
+      this.uFc = v.a((View)localObject2, (a)localObject1);
+      this.uFc.setComponentView(this.uFd.uMg.booleanValue());
+      localObject1 = this.uFc;
+      if ((((v)localObject1).uHl) && (((v)localObject1).uHj == null))
+      {
+        ((v)localObject1).uHj = ((v)localObject1).uHk;
+        v.ei(((v)localObject1).uHj);
+        ((v)localObject1).addView(((v)localObject1).uHj, 0);
+      }
+      if ((((v)localObject1).uHl) && (((v)localObject1).uHj != ((v)localObject1).uHk))
+      {
+        v.ei(((v)localObject1).uHj);
+        ((v)localObject1).uHj = ((v)localObject1).uHk;
+        v.ei(((v)localObject1).uHj);
+        ((v)localObject1).addView(((v)localObject1).uHj, 0);
+        Log.d("MicroMsg.AppBrandNumberKeyboardPanel", "toolbar is changed in updateToolbar() because toolbar != mComponentView");
+      }
+      if ((((v)localObject1).uHl) && (((v)localObject1).uHj.getParent() != localObject1))
+      {
+        v.ei(((v)localObject1).uHj);
+        ((v)localObject1).addView(((v)localObject1).uHj, 0);
+      }
+      if ((!((v)localObject1).uHl) && (((v)localObject1).uHj != null) && (((v)localObject1).uHj.getParent() == localObject1)) {
+        ((v)localObject1).removeView(((v)localObject1).uHj);
+      }
+      if (this.uFc != null) {
+        break;
+      }
+      AppMethodBeat.o(324623);
+      return false;
+    }
+    this.uFg = paramBoolean;
+    if (paramBoolean)
+    {
+      localObject1 = this.uFc;
+      ((v)localObject1).uHf.setBackgroundResource(a.c.BW_BG_100);
+      ((v)localObject1).uHf.findViewById(a.e.divider).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((v)localObject1).uHf.findViewById(a.e.button_area).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      localObject1 = ((v)localObject1).uHi;
+      ((BaseNumberKeyboardView)localObject1).uFg = true;
+      ((BaseNumberKeyboardView)localObject1).uKJ.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKJ.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKK.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKK.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKL.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKL.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKM.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKM.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKN.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKN.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKO.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKO.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKP.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKP.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKQ.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKQ.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKR.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKR.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKS.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKS.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKT.setTextColor(((BaseNumberKeyboardView)localObject1).getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+      ((BaseNumberKeyboardView)localObject1).uKT.setBackgroundResource(a.d.appbrand_keybtn_bg_force_light);
+      ((BaseNumberKeyboardView)localObject1).uKU.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right_force_light);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.root_view).setBackgroundResource(a.c.BW_BG_100);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider1).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider2).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider3).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider4).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider5).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider6).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider7).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider8).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider9).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider10).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider11).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider12).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+      ((BaseNumberKeyboardView)localObject1).plc.findViewById(a.e.divider13).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
+    }
+    this.uFf = true;
+    cQJ();
+    this.uFc.setXMode(this.uFa);
+    localObject1 = this.uFc;
+    localObject2 = this.uFb;
+    if (localObject2 != null)
+    {
+      if (((v)localObject1).mEditText != localObject2) {
+        ((v)localObject1).cRq();
+      }
+      ((v)localObject1).setInputEditText((EditText)localObject2);
+      ((v)localObject1).setVisibility(0);
+    }
+    this.uFc.setOnDoneListener(new v.a()
+    {
+      public final void onDone()
+      {
+        AppMethodBeat.i(136313);
+        d.this.a(d.this.cQF());
+        d.this.lz(false);
+        AppMethodBeat.o(136313);
+      }
+    });
+    fZ(paramInt1, paramInt2);
+    cQU();
+    this.uFf = false;
+    AppMethodBeat.o(324623);
+    return true;
   }
 }
 

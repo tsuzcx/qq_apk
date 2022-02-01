@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.report;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 
 public class MiniAppReportEntity
-  extends awge
+  extends Entity
   implements Serializable
 {
   public String appId;
   public String appType;
-  @awhs
+  @unique
   public String launchId;
   public String subActionType;
   public String verType;
@@ -29,13 +29,22 @@ public class MiniAppReportEntity
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.launchId).append(", appId: ").append(this.appId).append(", subActionType: ").append(this.subActionType).append(", appType: ").append(this.appType).append(", verType: ").append(this.verType);
+    localStringBuilder.append("launchId: ");
+    localStringBuilder.append(this.launchId);
+    localStringBuilder.append(", appId: ");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", subActionType: ");
+    localStringBuilder.append(this.subActionType);
+    localStringBuilder.append(", appType: ");
+    localStringBuilder.append(this.appType);
+    localStringBuilder.append(", verType: ");
+    localStringBuilder.append(this.verType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
 package com.tencent.tinker.loader.app;
 
-import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.tinker.loader.TinkerLoader;
-import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.TinkerUncaughtHandler;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
-import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
-import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -21,347 +19,140 @@ public abstract class TinkerApplication
   extends Application
 {
   private static final String INTENT_PATCH_EXCEPTION = "intent_patch_exception";
-  private static final int TINKER_DISABLE = 0;
+  private static final TinkerApplication[] SELF_HOLDER = { null };
   private static final String TINKER_LOADER_METHOD = "tryLoad";
-  private Method appLikeGetAssets = null;
-  private Method appLikeGetBaseContext = null;
-  private Method appLikeGetClassLoader = null;
-  private Method appLikeGetResources = null;
-  private Method appLikeGetSystemService = null;
-  private Method appLikeOnBaseContextAttached = null;
-  private Method appLikeOnConfigurationChanged = null;
-  private Method appLikeOnCreate = null;
-  private Method appLikeOnLowMemory = null;
-  private Method appLikeOnTerminate = null;
-  private Method appLikeOnTrimMemory = null;
-  private Object applicationLike = null;
-  private long applicationStartElapsedTime;
-  private long applicationStartMillisTime;
   private final String delegateClassName;
   private final String loaderClassName;
+  protected ClassLoader mCurrentClassLoader = null;
+  private Handler mInlineFence = null;
   private final int tinkerFlags;
   private final boolean tinkerLoadVerifyFlag;
-  private Intent tinkerResultIntent;
+  protected Intent tinkerResultIntent;
+  private final boolean useDelegateLastClassLoader;
   private boolean useSafeMode;
   
   protected TinkerApplication(int paramInt)
   {
-    this(paramInt, "com.tencent.tinker.entry.DefaultApplicationLike", TinkerLoader.class.getName(), false);
+    this(paramInt, "com.tencent.tinker.entry.DefaultApplicationLike", TinkerLoader.class.getName(), false, false);
   }
   
   protected TinkerApplication(int paramInt, String paramString)
   {
-    this(paramInt, paramString, TinkerLoader.class.getName(), false);
+    this(paramInt, paramString, TinkerLoader.class.getName(), false, false);
   }
   
   protected TinkerApplication(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.tinkerFlags = paramInt;
-    this.delegateClassName = paramString1;
-    this.loaderClassName = paramString2;
-    this.tinkerLoadVerifyFlag = paramBoolean;
+    this(paramInt, paramString1, paramString2, paramBoolean, true);
   }
   
-  private Object createDelegate()
+  protected TinkerApplication(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    try
+    synchronized (SELF_HOLDER)
     {
-      Object localObject = Class.forName(this.delegateClassName, false, getClassLoader()).getConstructor(new Class[] { Application.class, Integer.TYPE, Boolean.TYPE, Long.TYPE, Long.TYPE, Intent.class }).newInstance(new Object[] { this, Integer.valueOf(this.tinkerFlags), Boolean.valueOf(this.tinkerLoadVerifyFlag), Long.valueOf(this.applicationStartElapsedTime), Long.valueOf(this.applicationStartMillisTime), this.tinkerResultIntent });
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      throw new TinkerRuntimeException("createDelegate failed", localThrowable);
-    }
-  }
-  
-  private void ensureDelegate()
-  {
-    try
-    {
-      if (this.applicationLike == null) {
-        this.applicationLike = createDelegate();
-      }
+      SELF_HOLDER[0] = this;
+      this.tinkerFlags = paramInt;
+      this.delegateClassName = paramString1;
+      this.loaderClassName = paramString2;
+      this.tinkerLoadVerifyFlag = paramBoolean1;
+      this.useDelegateLastClassLoader = paramBoolean2;
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
-  private AssetManager invokeAppLikeGetAssets(Object paramObject, AssetManager paramAssetManager)
+  private Handler createInlineFence(Application paramApplication, int paramInt, String paramString, boolean paramBoolean, long paramLong1, long paramLong2, Intent paramIntent)
   {
     try
     {
-      if (this.appLikeGetAssets == null) {
-        this.appLikeGetAssets = ShareReflectUtil.b(this.applicationLike, "getAssets", new Class[] { AssetManager.class });
-      }
-      paramObject = (AssetManager)this.appLikeGetAssets.invoke(paramObject, new Object[] { paramAssetManager });
-      return paramObject;
+      paramApplication = Class.forName(paramString, false, this.mCurrentClassLoader).getConstructor(new Class[] { Application.class, Integer.TYPE, Boolean.TYPE, Long.TYPE, Long.TYPE, Intent.class }).newInstance(new Object[] { paramApplication, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramIntent });
+      paramString = Class.forName("com.tencent.tinker.entry.TinkerApplicationInlineFence", false, this.mCurrentClassLoader).getConstructor(new Class[] { Class.forName("com.tencent.tinker.entry.ApplicationLike", false, this.mCurrentClassLoader) });
+      paramString.setAccessible(true);
+      paramApplication = (Handler)paramString.newInstance(new Object[] { paramApplication });
+      return paramApplication;
     }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke getAssets of appLike.", paramObject);
-    }
+    finally {}
   }
   
-  private Object invokeAppLikeGetBaseContext(Object paramObject, Context paramContext)
+  public static TinkerApplication getInstance()
   {
-    try
+    synchronized (SELF_HOLDER)
     {
-      if (this.appLikeGetBaseContext == null) {
-        this.appLikeGetBaseContext = ShareReflectUtil.b(this.applicationLike, "getBaseContext", new Class[] { Context.class });
+      if (SELF_HOLDER[0] == null) {
+        throw new IllegalStateException("TinkerApplication is not initialized.");
       }
-      paramObject = this.appLikeGetBaseContext.invoke(paramObject, new Object[] { paramContext });
-      return paramObject;
     }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke getBaseContext of appLike.", paramObject);
-    }
-  }
-  
-  private ClassLoader invokeAppLikeGetClassLoader(Object paramObject, ClassLoader paramClassLoader)
-  {
-    try
-    {
-      if (this.appLikeGetClassLoader == null) {
-        this.appLikeGetClassLoader = ShareReflectUtil.b(this.applicationLike, "getClassLoader", new Class[] { ClassLoader.class });
-      }
-      paramObject = (ClassLoader)this.appLikeGetClassLoader.invoke(paramObject, new Object[] { paramClassLoader });
-      return paramObject;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke getClassLoader of appLike.", paramObject);
-    }
-  }
-  
-  private Resources invokeAppLikeGetResources(Object paramObject, Resources paramResources)
-  {
-    try
-    {
-      if (this.appLikeGetResources == null) {
-        this.appLikeGetResources = ShareReflectUtil.b(this.applicationLike, "getResources", new Class[] { Resources.class });
-      }
-      paramObject = (Resources)this.appLikeGetResources.invoke(paramObject, new Object[] { paramResources });
-      return paramObject;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke getResources of appLike.", paramObject);
-    }
-  }
-  
-  private Object invokeAppLikeGetSystemService(Object paramObject1, String paramString, Object paramObject2)
-  {
-    try
-    {
-      if (this.appLikeGetSystemService == null) {
-        this.appLikeGetSystemService = ShareReflectUtil.b(this.applicationLike, "getSystemService", new Class[] { String.class, Object.class });
-      }
-      paramObject1 = this.appLikeGetSystemService.invoke(paramObject1, new Object[] { paramString, paramObject2 });
-      return paramObject1;
-    }
-    catch (Throwable paramObject1)
-    {
-      throw new TinkerRuntimeException("fail to invoke getSystemService of appLike.", paramObject1);
-    }
-  }
-  
-  private void invokeAppLikeOnBaseContextAttached(Object paramObject, Context paramContext)
-  {
-    try
-    {
-      if (this.appLikeOnBaseContextAttached == null) {
-        this.appLikeOnBaseContextAttached = ShareReflectUtil.b(this.applicationLike, "onBaseContextAttached", new Class[] { Context.class });
-      }
-      this.appLikeOnBaseContextAttached.invoke(paramObject, new Object[] { paramContext });
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke onBaseContextAttached of appLike.", paramObject);
-    }
-  }
-  
-  private void invokeAppLikeOnConfigurationChanged(Object paramObject, Configuration paramConfiguration)
-  {
-    try
-    {
-      if (this.appLikeOnConfigurationChanged == null) {
-        this.appLikeOnConfigurationChanged = ShareReflectUtil.b(this.applicationLike, "onConfigurationChanged", new Class[] { Configuration.class });
-      }
-      this.appLikeOnConfigurationChanged.invoke(paramObject, new Object[] { paramConfiguration });
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke onConfigurationChanged of appLike.", paramObject);
-    }
-  }
-  
-  private void invokeAppLikeOnCreate(Object paramObject)
-  {
-    try
-    {
-      if (this.appLikeOnCreate == null) {
-        this.appLikeOnCreate = ShareReflectUtil.b(this.applicationLike, "onCreate", new Class[0]);
-      }
-      this.appLikeOnCreate.invoke(paramObject, new Object[0]);
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke onCreate of appLike.", paramObject);
-    }
-  }
-  
-  private void invokeAppLikeOnLowMemory(Object paramObject)
-  {
-    try
-    {
-      if (this.appLikeOnLowMemory == null) {
-        this.appLikeOnLowMemory = ShareReflectUtil.b(this.applicationLike, "onLowMemory", new Class[0]);
-      }
-      this.appLikeOnLowMemory.invoke(paramObject, new Object[0]);
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke onLowMemory of appLike.", paramObject);
-    }
-  }
-  
-  private void invokeAppLikeOnTerminate(Object paramObject)
-  {
-    try
-    {
-      if (this.appLikeOnTerminate == null) {
-        this.appLikeOnTerminate = ShareReflectUtil.b(this.applicationLike, "onTerminate", new Class[0]);
-      }
-      this.appLikeOnTerminate.invoke(paramObject, new Object[0]);
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke onTerminate of appLike.", paramObject);
-    }
-  }
-  
-  private void invokeAppLikeOnTrimMemory(Object paramObject, int paramInt)
-  {
-    try
-    {
-      if (this.appLikeOnTrimMemory == null) {
-        this.appLikeOnTrimMemory = ShareReflectUtil.b(this.applicationLike, "onTrimMemory", new Class[] { Integer.TYPE });
-      }
-      this.appLikeOnTrimMemory.invoke(paramObject, new Object[] { Integer.valueOf(paramInt) });
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      throw new TinkerRuntimeException("fail to invoke onTrimMemory of appLike.", paramObject);
-    }
+    TinkerApplication localTinkerApplication = SELF_HOLDER[0];
+    return localTinkerApplication;
   }
   
   private void loadTinker()
   {
     try
     {
-      Class localClass = Class.forName(this.loaderClassName, false, getClassLoader());
+      Class localClass = Class.forName(this.loaderClassName, false, TinkerApplication.class.getClassLoader());
       this.tinkerResultIntent = ((Intent)localClass.getMethod("tryLoad", new Class[] { TinkerApplication.class }).invoke(localClass.getConstructor(new Class[0]).newInstance(new Object[0]), new Object[] { this }));
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       this.tinkerResultIntent = new Intent();
-      ShareIntentUtil.b(this.tinkerResultIntent, -20);
-      this.tinkerResultIntent.putExtra("intent_patch_exception", localThrowable);
-    }
-  }
-  
-  private void onBaseContextAttached(Context paramContext)
-  {
-    try
-    {
-      this.applicationStartElapsedTime = SystemClock.elapsedRealtime();
-      this.applicationStartMillisTime = System.currentTimeMillis();
-      loadTinker();
-      ensureDelegate();
-      invokeAppLikeOnBaseContextAttached(this.applicationLike, paramContext);
-      if (this.useSafeMode) {
-        ShareTinkerInternals.aG(this, 0);
-      }
-      return;
-    }
-    catch (TinkerRuntimeException paramContext)
-    {
-      throw paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      throw new TinkerRuntimeException(paramContext.getMessage(), paramContext);
+      ShareIntentUtil.setIntentReturnCode(this.tinkerResultIntent, -20);
+      this.tinkerResultIntent.putExtra("intent_patch_exception", localSerializable);
     }
   }
   
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = System.currentTimeMillis();
     Thread.setDefaultUncaughtExceptionHandler(new TinkerUncaughtHandler(this));
-    onBaseContextAttached(paramContext);
+    onBaseContextAttached(paramContext, l1, l2);
   }
   
   public AssetManager getAssets()
   {
-    AssetManager localAssetManager2 = super.getAssets();
-    AssetManager localAssetManager1 = localAssetManager2;
-    if (this.applicationLike != null) {
-      localAssetManager1 = invokeAppLikeGetAssets(this.applicationLike, localAssetManager2);
+    AssetManager localAssetManager = super.getAssets();
+    if (this.mInlineFence == null) {
+      return localAssetManager;
     }
-    return localAssetManager1;
+    return TinkerInlineFenceAction.callGetAssets(this.mInlineFence, localAssetManager);
   }
   
   public Context getBaseContext()
   {
-    Context localContext2 = super.getBaseContext();
-    Context localContext1 = localContext2;
-    if (this.applicationLike != null) {
-      localContext1 = (Context)invokeAppLikeGetBaseContext(this.applicationLike, localContext2);
+    Context localContext = super.getBaseContext();
+    if (this.mInlineFence == null) {
+      return localContext;
     }
-    return localContext1;
+    return TinkerInlineFenceAction.callGetBaseContext(this.mInlineFence, localContext);
   }
   
   public ClassLoader getClassLoader()
   {
-    ClassLoader localClassLoader2 = super.getClassLoader();
-    ClassLoader localClassLoader1 = localClassLoader2;
-    if (this.applicationLike != null) {
-      localClassLoader1 = invokeAppLikeGetClassLoader(this.applicationLike, localClassLoader2);
+    ClassLoader localClassLoader = super.getClassLoader();
+    if (this.mInlineFence == null) {
+      return localClassLoader;
     }
-    return localClassLoader1;
+    return TinkerInlineFenceAction.callGetClassLoader(this.mInlineFence, localClassLoader);
   }
   
   public Resources getResources()
   {
-    Resources localResources2 = super.getResources();
-    Resources localResources1 = localResources2;
-    if (this.applicationLike != null) {
-      localResources1 = invokeAppLikeGetResources(this.applicationLike, localResources2);
+    Resources localResources = super.getResources();
+    if (this.mInlineFence == null) {
+      return localResources;
     }
-    return localResources1;
+    return TinkerInlineFenceAction.callGetResources(this.mInlineFence, localResources);
   }
   
   public Object getSystemService(String paramString)
   {
-    Object localObject2 = super.getSystemService(paramString);
-    Object localObject1 = localObject2;
-    if (this.applicationLike != null) {
-      localObject1 = invokeAppLikeGetSystemService(this.applicationLike, paramString, localObject2);
+    Object localObject = super.getSystemService(paramString);
+    if (this.mInlineFence == null) {
+      return localObject;
     }
-    return localObject1;
+    return TinkerInlineFenceAction.callGetSystemService(this.mInlineFence, paramString, localObject);
   }
   
   public int getTinkerFlags()
@@ -374,88 +165,121 @@ public abstract class TinkerApplication
     return this.tinkerLoadVerifyFlag;
   }
   
-  public void onConfigurationChanged(Configuration paramConfiguration)
+  public boolean isUseDelegateLastClassLoader()
   {
-    super.onConfigurationChanged(paramConfiguration);
-    if (this.applicationLike != null) {
-      invokeAppLikeOnConfigurationChanged(this.applicationLike, paramConfiguration);
+    return this.useDelegateLastClassLoader;
+  }
+  
+  public int mzNightModeUseOf()
+  {
+    if (this.mInlineFence == null) {
+      return 1;
     }
+    return TinkerInlineFenceAction.callMZNightModeUseOf(this.mInlineFence);
   }
   
   /* Error */
-  public void onCreate()
+  protected void onBaseContextAttached(Context paramContext, long paramLong1, long paramLong2)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 337	android/app/Application:onCreate	()V
+    //   1: invokespecial 241	com/tencent/tinker/loader/app/TinkerApplication:loadTinker	()V
     //   4: aload_0
-    //   5: invokespecial 273	com/tencent/tinker/loader/app/TinkerApplication:ensureDelegate	()V
-    //   8: invokestatic 342	com/tencent/tinker/loader/hotplug/ComponentHotplug:dWA	()V
-    //   11: aload_0
+    //   5: aload_1
+    //   6: invokevirtual 244	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   9: putfield 53	com/tencent/tinker/loader/app/TinkerApplication:mCurrentClassLoader	Ljava/lang/ClassLoader;
     //   12: aload_0
-    //   13: getfield 61	com/tencent/tinker/loader/app/TinkerApplication:applicationLike	Ljava/lang/Object;
-    //   16: invokespecial 344	com/tencent/tinker/loader/app/TinkerApplication:invokeAppLikeOnCreate	(Ljava/lang/Object;)V
-    //   19: return
-    //   20: astore_1
-    //   21: new 147	com/tencent/tinker/loader/TinkerRuntimeException
-    //   24: dup
-    //   25: ldc_w 346
-    //   28: aload_1
-    //   29: invokespecial 152	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   32: athrow
-    //   33: astore_1
-    //   34: aload_1
-    //   35: athrow
-    //   36: astore_1
-    //   37: new 147	com/tencent/tinker/loader/TinkerRuntimeException
-    //   40: dup
-    //   41: aload_1
-    //   42: invokevirtual 286	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   45: aload_1
-    //   46: invokespecial 152	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   49: athrow
+    //   13: aload_0
+    //   14: aload_0
+    //   15: aload_0
+    //   16: getfield 57	com/tencent/tinker/loader/app/TinkerApplication:tinkerFlags	I
+    //   19: aload_0
+    //   20: getfield 59	com/tencent/tinker/loader/app/TinkerApplication:delegateClassName	Ljava/lang/String;
+    //   23: aload_0
+    //   24: getfield 63	com/tencent/tinker/loader/app/TinkerApplication:tinkerLoadVerifyFlag	Z
+    //   27: lload_2
+    //   28: lload 4
+    //   30: aload_0
+    //   31: getfield 150	com/tencent/tinker/loader/app/TinkerApplication:tinkerResultIntent	Landroid/content/Intent;
+    //   34: invokespecial 246	com/tencent/tinker/loader/app/TinkerApplication:createInlineFence	(Landroid/app/Application;ILjava/lang/String;ZJJLandroid/content/Intent;)Landroid/os/Handler;
+    //   37: putfield 55	com/tencent/tinker/loader/app/TinkerApplication:mInlineFence	Landroid/os/Handler;
+    //   40: aload_0
+    //   41: getfield 55	com/tencent/tinker/loader/app/TinkerApplication:mInlineFence	Landroid/os/Handler;
+    //   44: aload_1
+    //   45: invokestatic 250	com/tencent/tinker/loader/app/TinkerInlineFenceAction:callOnBaseContextAttached	(Landroid/os/Handler;Landroid/content/Context;)V
+    //   48: aload_0
+    //   49: getfield 252	com/tencent/tinker/loader/app/TinkerApplication:useSafeMode	Z
+    //   52: ifeq +8 -> 60
+    //   55: aload_0
+    //   56: iconst_0
+    //   57: invokestatic 258	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:setSafeModeCount	(Landroid/content/Context;I)V
+    //   60: return
+    //   61: astore_1
+    //   62: aload_1
+    //   63: athrow
+    //   64: astore_1
+    //   65: new 119	com/tencent/tinker/loader/TinkerRuntimeException
+    //   68: dup
+    //   69: aload_1
+    //   70: invokevirtual 263	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   73: aload_1
+    //   74: invokespecial 124	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   77: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	50	0	this	TinkerApplication
-    //   20	9	1	localUnsupportedEnvironmentException	com.tencent.tinker.loader.hotplug.UnsupportedEnvironmentException
-    //   33	2	1	localTinkerRuntimeException	TinkerRuntimeException
-    //   36	10	1	localThrowable	Throwable
+    //   0	78	0	this	TinkerApplication
+    //   0	78	1	paramContext	Context
+    //   0	78	2	paramLong1	long
+    //   0	78	4	paramLong2	long
     // Exception table:
     //   from	to	target	type
-    //   8	11	20	com/tencent/tinker/loader/hotplug/UnsupportedEnvironmentException
-    //   4	8	33	com/tencent/tinker/loader/TinkerRuntimeException
-    //   8	11	33	com/tencent/tinker/loader/TinkerRuntimeException
-    //   11	19	33	com/tencent/tinker/loader/TinkerRuntimeException
-    //   21	33	33	com/tencent/tinker/loader/TinkerRuntimeException
-    //   4	8	36	java/lang/Throwable
-    //   8	11	36	java/lang/Throwable
-    //   11	19	36	java/lang/Throwable
-    //   21	33	36	java/lang/Throwable
+    //   0	60	61	com/tencent/tinker/loader/TinkerRuntimeException
+    //   0	60	64	finally
+  }
+  
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    if (this.mInlineFence == null) {
+      return;
+    }
+    TinkerInlineFenceAction.callOnConfigurationChanged(this.mInlineFence, paramConfiguration);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (this.mInlineFence == null) {
+      return;
+    }
+    TinkerInlineFenceAction.callOnCreate(this.mInlineFence);
   }
   
   public void onLowMemory()
   {
     super.onLowMemory();
-    if (this.applicationLike != null) {
-      invokeAppLikeOnLowMemory(this.applicationLike);
+    if (this.mInlineFence == null) {
+      return;
     }
+    TinkerInlineFenceAction.callOnLowMemory(this.mInlineFence);
   }
   
   public void onTerminate()
   {
     super.onTerminate();
-    if (this.applicationLike != null) {
-      invokeAppLikeOnTerminate(this.applicationLike);
+    if (this.mInlineFence == null) {
+      return;
     }
+    TinkerInlineFenceAction.callOnTerminate(this.mInlineFence);
   }
   
-  @TargetApi(14)
   public void onTrimMemory(int paramInt)
   {
     super.onTrimMemory(paramInt);
-    if (this.applicationLike != null) {
-      invokeAppLikeOnTrimMemory(this.applicationLike, paramInt);
+    if (this.mInlineFence == null) {
+      return;
     }
+    TinkerInlineFenceAction.callOnTrimMemory(this.mInlineFence, paramInt);
   }
   
   public void setUseSafeMode(boolean paramBoolean)
@@ -465,7 +289,7 @@ public abstract class TinkerApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.app.TinkerApplication
  * JD-Core Version:    0.7.0.1
  */

@@ -1,596 +1,243 @@
 package com.tencent.mm.plugin.expt.e;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.plugin.expt.d.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.b.h;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
 
 public final class d
-  extends j<a>
 {
-  public static final String[] INDEX_CREATE;
-  public static final String[] SQL_CREATE;
-  private e db;
+  private static String TAG;
+  private static d zNm;
+  private static final com.tencent.mm.b.f<Integer, Long> zNn;
+  private String name;
+  private com.tencent.mm.b.f<Integer, c> zMa;
   
   static
   {
-    AppMethodBeat.i(73631);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "ExptItem") };
-    INDEX_CREATE = new String[0];
-    AppMethodBeat.o(73631);
+    AppMethodBeat.i(299524);
+    TAG = "MicroMsg.ExptManager";
+    zNn = new h(50);
+    AppMethodBeat.o(299524);
   }
   
-  public d(e parame)
+  protected d()
   {
-    super(parame, a.info, "ExptItem", INDEX_CREATE);
-    this.db = parame;
+    AppMethodBeat.i(156049);
+    this.zMa = new h(50);
+    this.name = null;
+    AppMethodBeat.o(156049);
   }
   
-  private boolean a(a parama)
+  public static boolean Mi(int paramInt)
   {
-    AppMethodBeat.i(73627);
-    if (parama == null)
+    AppMethodBeat.i(182039);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WxExptConfig");
+    if (localMultiProcessMMKV != null)
     {
-      AppMethodBeat.o(73627);
-      return false;
-    }
-    try
-    {
-      bool = super.replace(parama);
-      ab.d("MicroMsg.ExptStorage", "replace expt ret[%b] item[%s]", new Object[] { Boolean.valueOf(bool), parama.toString() });
-      AppMethodBeat.o(73627);
+      boolean bool = localMultiProcessMMKV.putInt("expt_uin", paramInt).commit();
+      AppMethodBeat.o(182039);
       return bool;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.ExptStorage", "replace expt error [%s]", new Object[] { localException.toString() });
-        boolean bool = false;
-      }
-    }
-  }
-  
-  private boolean vz(int paramInt)
-  {
-    AppMethodBeat.i(73626);
-    try
-    {
-      paramInt = this.db.delete("ExptItem", "exptId=?", new String[] { String.valueOf(paramInt) });
-      if (paramInt > 0)
-      {
-        AppMethodBeat.o(73626);
-        return true;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.ExptStorage", "delete expt by id [%s]", new Object[] { localException.toString() });
-        paramInt = 0;
-      }
-      AppMethodBeat.o(73626);
-    }
+    AppMethodBeat.o(182039);
     return false;
   }
   
-  public final List<a> bE(List<a> paramList)
+  private c Mj(int paramInt)
   {
-    long l = -1L;
-    AppMethodBeat.i(73628);
-    if ((paramList == null) || (paramList.size() <= 0))
+    AppMethodBeat.i(156052);
+    if (paramInt <= 0)
     {
-      AppMethodBeat.o(73628);
+      AppMethodBeat.o(156052);
       return null;
     }
-    h localh;
-    if ((this.db instanceof h))
+    Object localObject = atj();
+    if (localObject == null)
     {
-      localh = (h)this.db;
-      l = localh.kr(-1L);
+      AppMethodBeat.o(156052);
+      return null;
+    }
+    String str = ((MultiProcessMMKV)localObject).getString(String.valueOf(paramInt), "");
+    if (Util.isNullOrNil(str))
+    {
+      AppMethodBeat.o(156052);
+      return null;
+    }
+    localObject = (c)this.zMa.get(Integer.valueOf(paramInt));
+    if (localObject != null)
+    {
+      if (Util.isEqual(str, ((c)localObject).field_exptContent))
+      {
+        AppMethodBeat.o(156052);
+        return localObject;
+      }
+      this.zMa.remove(Integer.valueOf(paramInt));
+    }
+    localObject = new c();
+    if (((c)localObject).TZ(str)) {
+      this.zMa.put(Integer.valueOf(paramInt), localObject);
     }
     for (;;)
     {
-      LinkedList localLinkedList;
-      try
-      {
-        localLinkedList = new LinkedList();
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          a locala = (a)paramList.next();
-          if (!a(locala)) {
-            continue;
-          }
-          localLinkedList.add(locala);
-          continue;
-        }
-        if (localh == null) {
-          break label147;
-        }
-      }
-      finally
-      {
-        if (localh != null) {
-          localh.nY(l);
-        }
-        AppMethodBeat.o(73628);
-      }
-      localh.nY(l);
-      label147:
-      AppMethodBeat.o(73628);
-      return localLinkedList;
-      localh = null;
+      AppMethodBeat.o(156052);
+      return localObject;
+      localObject = null;
     }
   }
   
-  public final int btl()
+  private static boolean a(c paramc, String paramString1, String paramString2)
   {
-    int i = 0;
-    AppMethodBeat.i(73630);
-    try
+    AppMethodBeat.i(299519);
+    paramc = String.format("%d,%d,%d,%d,%d,%s,%s", new Object[] { Integer.valueOf(paramc.field_exptId), Integer.valueOf(paramc.field_groupId), Integer.valueOf(paramc.field_exptSeq), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), paramString1, paramString2 });
+    int i = paramc.hashCode();
+    paramString1 = (Long)zNn.get(Integer.valueOf(i));
+    if (paramString1 != null) {}
+    for (long l = paramString1.longValue();; l = 0L)
     {
-      int j = this.db.delete("ExptItem", null, null);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (Util.milliSecondsToNow(l) < 300000L)
       {
-        ab.e("MicroMsg.ExptStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
+        Log.v(TAG, "clock report [%s] less than 5 min, don't report", new Object[] { paramc });
+        AppMethodBeat.o(299519);
+        return false;
       }
+      if (com.tencent.mm.plugin.report.f.Ozc.cH(15452, paramc)) {
+        zNn.put(Integer.valueOf(i), Long.valueOf(Util.nowMilliSecond()));
+      }
+      AppMethodBeat.o(299519);
+      return true;
     }
-    AppMethodBeat.o(73630);
+  }
+  
+  private int atq(String paramString)
+  {
+    AppMethodBeat.i(156051);
+    MultiProcessMMKV localMultiProcessMMKV = atj();
+    if (localMultiProcessMMKV == null)
+    {
+      AppMethodBeat.o(156051);
+      return -1;
+    }
+    int i = localMultiProcessMMKV.getInt(paramString, -1);
+    AppMethodBeat.o(156051);
     return i;
   }
   
-  /* Error */
-  public final List<a> bto()
+  public static d dNI()
   {
-    // Byte code:
-    //   0: ldc 155
-    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 48	com/tencent/mm/plugin/expt/e/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   9: ldc 157
-    //   11: aconst_null
-    //   12: invokeinterface 161 3 0
-    //   17: astore_2
-    //   18: aload_2
-    //   19: ifnull +183 -> 202
-    //   22: aload_2
-    //   23: astore_3
-    //   24: new 120	java/util/LinkedList
-    //   27: dup
-    //   28: invokespecial 122	java/util/LinkedList:<init>	()V
-    //   31: astore_1
-    //   32: aload_2
-    //   33: astore_3
-    //   34: aload_2
-    //   35: invokeinterface 166 1 0
-    //   40: ifeq +80 -> 120
-    //   43: aload_2
-    //   44: astore_3
-    //   45: new 23	com/tencent/mm/plugin/expt/d/a
-    //   48: dup
-    //   49: invokespecial 167	com/tencent/mm/plugin/expt/d/a:<init>	()V
-    //   52: astore 4
-    //   54: aload_2
-    //   55: astore_3
-    //   56: aload 4
-    //   58: aload_2
-    //   59: invokevirtual 171	com/tencent/mm/plugin/expt/d/a:convertFrom	(Landroid/database/Cursor;)V
-    //   62: aload_2
-    //   63: astore_3
-    //   64: aload_1
-    //   65: aload 4
-    //   67: invokeinterface 142 2 0
-    //   72: pop
-    //   73: goto -41 -> 32
-    //   76: astore 4
-    //   78: aload_2
-    //   79: astore_3
-    //   80: ldc 59
-    //   82: ldc 173
-    //   84: iconst_1
-    //   85: anewarray 63	java/lang/Object
-    //   88: dup
-    //   89: iconst_0
-    //   90: aload 4
-    //   92: invokevirtual 82	java/lang/Exception:toString	()Ljava/lang/String;
-    //   95: aastore
-    //   96: invokestatic 85	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   99: aload_1
-    //   100: astore_3
-    //   101: aload_2
-    //   102: ifnull +11 -> 113
-    //   105: aload_2
-    //   106: invokeinterface 176 1 0
-    //   111: aload_1
-    //   112: astore_3
-    //   113: ldc 155
-    //   115: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   118: aload_3
-    //   119: areturn
-    //   120: aload_2
-    //   121: astore_3
-    //   122: ldc 59
-    //   124: ldc 178
-    //   126: iconst_1
-    //   127: anewarray 63	java/lang/Object
-    //   130: dup
-    //   131: iconst_0
-    //   132: aload_1
-    //   133: invokeinterface 112 1 0
-    //   138: invokestatic 183	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   141: aastore
-    //   142: invokestatic 79	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   145: aload_1
-    //   146: astore_3
-    //   147: aload_2
-    //   148: ifnull -35 -> 113
-    //   151: aload_2
-    //   152: invokeinterface 176 1 0
-    //   157: aload_1
-    //   158: astore_3
-    //   159: goto -46 -> 113
-    //   162: astore_1
-    //   163: aconst_null
-    //   164: astore_3
-    //   165: aload_3
-    //   166: ifnull +9 -> 175
-    //   169: aload_3
-    //   170: invokeinterface 176 1 0
-    //   175: ldc 155
-    //   177: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   180: aload_1
-    //   181: athrow
-    //   182: astore_1
-    //   183: goto -18 -> 165
-    //   186: astore 4
-    //   188: aconst_null
-    //   189: astore_2
-    //   190: aconst_null
-    //   191: astore_1
-    //   192: goto -114 -> 78
-    //   195: astore 4
-    //   197: aconst_null
-    //   198: astore_1
-    //   199: goto -121 -> 78
-    //   202: aconst_null
-    //   203: astore_1
-    //   204: goto -59 -> 145
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	207	0	this	d
-    //   31	127	1	localLinkedList	LinkedList
-    //   162	19	1	localObject1	Object
-    //   182	1	1	localObject2	Object
-    //   191	13	1	localObject3	Object
-    //   17	173	2	localCursor	android.database.Cursor
-    //   23	147	3	localObject4	Object
-    //   52	14	4	locala	a
-    //   76	15	4	localException1	Exception
-    //   186	1	4	localException2	Exception
-    //   195	1	4	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   34	43	76	java/lang/Exception
-    //   45	54	76	java/lang/Exception
-    //   56	62	76	java/lang/Exception
-    //   64	73	76	java/lang/Exception
-    //   122	145	76	java/lang/Exception
-    //   5	18	162	finally
-    //   24	32	182	finally
-    //   34	43	182	finally
-    //   45	54	182	finally
-    //   56	62	182	finally
-    //   64	73	182	finally
-    //   80	99	182	finally
-    //   122	145	182	finally
-    //   5	18	186	java/lang/Exception
-    //   24	32	195	java/lang/Exception
+    AppMethodBeat.i(156048);
+    if (zNm == null) {
+      zNm = new d();
+    }
+    d locald = zNm;
+    AppMethodBeat.o(156048);
+    return locald;
   }
   
-  /* Error */
-  public final java.util.ArrayList<Integer> btp()
+  public static int getUin()
   {
-    // Byte code:
-    //   0: ldc 187
-    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 48	com/tencent/mm/plugin/expt/e/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   9: ldc 189
-    //   11: aconst_null
-    //   12: invokeinterface 161 3 0
-    //   17: astore_2
-    //   18: aload_2
-    //   19: ifnull +96 -> 115
-    //   22: aload_2
-    //   23: astore_3
-    //   24: new 191	java/util/ArrayList
-    //   27: dup
-    //   28: invokespecial 192	java/util/ArrayList:<init>	()V
-    //   31: astore 5
-    //   33: aload 5
-    //   35: astore_1
-    //   36: aload_2
-    //   37: astore_3
-    //   38: aload_2
-    //   39: invokeinterface 166 1 0
-    //   44: ifeq +73 -> 117
-    //   47: aload_2
-    //   48: astore_3
-    //   49: aload 5
-    //   51: aload_2
-    //   52: iconst_0
-    //   53: invokeinterface 196 2 0
-    //   58: invokestatic 183	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   61: invokevirtual 197	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   64: pop
-    //   65: goto -32 -> 33
-    //   68: astore 4
-    //   70: aload 5
-    //   72: astore_1
-    //   73: aload_2
-    //   74: astore_3
-    //   75: ldc 59
-    //   77: ldc 199
-    //   79: iconst_1
-    //   80: anewarray 63	java/lang/Object
-    //   83: dup
-    //   84: iconst_0
-    //   85: aload 4
-    //   87: invokevirtual 82	java/lang/Exception:toString	()Ljava/lang/String;
-    //   90: aastore
-    //   91: invokestatic 85	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   94: aload_1
-    //   95: astore_3
-    //   96: aload_2
-    //   97: ifnull +11 -> 108
-    //   100: aload_2
-    //   101: invokeinterface 176 1 0
-    //   106: aload_1
-    //   107: astore_3
-    //   108: ldc 187
-    //   110: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   113: aload_3
-    //   114: areturn
-    //   115: aconst_null
-    //   116: astore_1
-    //   117: aload_1
-    //   118: astore_3
-    //   119: aload_2
-    //   120: ifnull -12 -> 108
-    //   123: aload_2
-    //   124: invokeinterface 176 1 0
-    //   129: aload_1
-    //   130: astore_3
-    //   131: goto -23 -> 108
-    //   134: astore_1
-    //   135: aconst_null
-    //   136: astore_3
-    //   137: aload_3
-    //   138: ifnull +9 -> 147
-    //   141: aload_3
-    //   142: invokeinterface 176 1 0
-    //   147: ldc 187
-    //   149: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   152: aload_1
-    //   153: athrow
-    //   154: astore_1
-    //   155: goto -18 -> 137
-    //   158: astore 4
-    //   160: aconst_null
-    //   161: astore_2
-    //   162: aconst_null
-    //   163: astore_1
-    //   164: goto -91 -> 73
-    //   167: astore 4
-    //   169: aconst_null
-    //   170: astore_1
-    //   171: goto -98 -> 73
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	d
-    //   35	95	1	localArrayList1	java.util.ArrayList
-    //   134	19	1	localObject1	Object
-    //   154	1	1	localObject2	Object
-    //   163	8	1	localObject3	Object
-    //   17	145	2	localCursor	android.database.Cursor
-    //   23	119	3	localObject4	Object
-    //   68	18	4	localException1	Exception
-    //   158	1	4	localException2	Exception
-    //   167	1	4	localException3	Exception
-    //   31	40	5	localArrayList2	java.util.ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   38	47	68	java/lang/Exception
-    //   49	65	68	java/lang/Exception
-    //   5	18	134	finally
-    //   24	33	154	finally
-    //   38	47	154	finally
-    //   49	65	154	finally
-    //   75	94	154	finally
-    //   5	18	158	java/lang/Exception
-    //   24	33	167	java/lang/Exception
+    AppMethodBeat.i(182040);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WxExptConfig");
+    if (localMultiProcessMMKV != null) {}
+    for (int i = localMultiProcessMMKV.getInt("expt_uin", 0); i != 0; i = 0)
+    {
+      AppMethodBeat.o(182040);
+      return i;
+    }
+    i = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", g.aQe()).getInt("default_uin", 0);
+    AppMethodBeat.o(182040);
+    return i;
   }
   
-  public final int by(List<Integer> paramList)
+  private String info()
   {
-    long l = -1L;
-    int i = 0;
-    AppMethodBeat.i(73629);
-    if ((paramList == null) || (paramList.size() <= 0))
+    AppMethodBeat.i(156056);
+    String str = hashCode();
+    AppMethodBeat.o(156056);
+    return str;
+  }
+  
+  public final String a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(156054);
+    Object localObject1 = new PString();
+    if (b.dNr().a(paramString1, paramString2, (PString)localObject1) > 0)
     {
-      AppMethodBeat.o(73629);
-      return 0;
+      paramString1 = ((PString)localObject1).value;
+      AppMethodBeat.o(156054);
+      return paramString1;
     }
-    h localh;
-    if ((this.db instanceof h))
+    long l = Util.currentTicks();
+    int i = atq(paramString1);
+    Object localObject2;
+    if (i > 0)
     {
-      localh = (h)this.db;
-      l = localh.kr(-1L);
-    }
-    for (;;)
-    {
-      try
+      c localc = Mj(i);
+      if ((localc != null) && (localc.isReady()))
       {
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
+        localObject1 = localc.dNo();
+        if ((localObject1 != null) && (!((HashMap)localObject1).isEmpty()))
         {
-          boolean bool = vz(((Integer)paramList.next()).intValue());
-          if (bool)
+          localObject2 = (String)((HashMap)localObject1).get(paramString1);
+          if (!paramBoolean1)
           {
-            i += 1;
-            continue;
+            localObject1 = localObject2;
+            if (!localc.dNE()) {}
           }
-          continue;
+          else
+          {
+            a(localc, paramString1, (String)localObject2);
+          }
         }
-        return i;
       }
-      finally
-      {
-        if (localh != null) {
-          localh.nY(l);
-        }
-        AppMethodBeat.o(73629);
+    }
+    for (localObject1 = localObject2;; localObject1 = paramString2)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = paramString2;
       }
-      localh = null;
+      if (paramBoolean2) {
+        Log.i(TAG, "%s get mulit expt result[%s] key[%s] def[%s] cost[%d]", new Object[] { info(), localObject2, paramString1, paramString2, Long.valueOf(Util.ticksToNow(l)) });
+      }
+      AppMethodBeat.o(156054);
+      return localObject2;
     }
   }
   
-  /* Error */
-  public final a vy(int paramInt)
+  public final MultiProcessMMKV atj()
   {
-    // Byte code:
-    //   0: ldc 212
-    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 48	com/tencent/mm/plugin/expt/e/d:db	Lcom/tencent/mm/sdk/e/e;
-    //   9: ldc 29
-    //   11: aconst_null
-    //   12: ldc 90
-    //   14: iconst_1
-    //   15: anewarray 21	java/lang/String
-    //   18: dup
-    //   19: iconst_0
-    //   20: iload_1
-    //   21: invokestatic 93	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   24: aastore
-    //   25: aconst_null
-    //   26: aconst_null
-    //   27: aconst_null
-    //   28: invokeinterface 216 8 0
-    //   33: astore_3
-    //   34: aload_3
-    //   35: ifnull +144 -> 179
-    //   38: aload_3
-    //   39: astore 4
-    //   41: aload_3
-    //   42: invokeinterface 219 1 0
-    //   47: ifeq +132 -> 179
-    //   50: aload_3
-    //   51: astore 4
-    //   53: new 23	com/tencent/mm/plugin/expt/d/a
-    //   56: dup
-    //   57: invokespecial 167	com/tencent/mm/plugin/expt/d/a:<init>	()V
-    //   60: astore_2
-    //   61: aload_3
-    //   62: astore 4
-    //   64: aload_2
-    //   65: aload_3
-    //   66: invokevirtual 171	com/tencent/mm/plugin/expt/d/a:convertFrom	(Landroid/database/Cursor;)V
-    //   69: aload_2
-    //   70: astore 4
-    //   72: aload_3
-    //   73: ifnull +12 -> 85
-    //   76: aload_3
-    //   77: invokeinterface 176 1 0
-    //   82: aload_2
-    //   83: astore 4
-    //   85: ldc 212
-    //   87: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   90: aload 4
-    //   92: areturn
-    //   93: astore 5
-    //   95: aconst_null
-    //   96: astore_3
-    //   97: aconst_null
-    //   98: astore_2
-    //   99: aload_3
-    //   100: astore 4
-    //   102: ldc 59
-    //   104: ldc 221
-    //   106: iconst_1
-    //   107: anewarray 63	java/lang/Object
-    //   110: dup
-    //   111: iconst_0
-    //   112: aload 5
-    //   114: invokevirtual 82	java/lang/Exception:toString	()Ljava/lang/String;
-    //   117: aastore
-    //   118: invokestatic 85	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   121: aload_2
-    //   122: astore 4
-    //   124: aload_3
-    //   125: ifnull -40 -> 85
-    //   128: aload_3
-    //   129: invokeinterface 176 1 0
-    //   134: aload_2
-    //   135: astore 4
-    //   137: goto -52 -> 85
-    //   140: astore_2
-    //   141: aconst_null
-    //   142: astore 4
-    //   144: aload 4
-    //   146: ifnull +10 -> 156
-    //   149: aload 4
-    //   151: invokeinterface 176 1 0
-    //   156: ldc 212
-    //   158: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   161: aload_2
-    //   162: athrow
-    //   163: astore_2
-    //   164: goto -20 -> 144
-    //   167: astore 5
-    //   169: aconst_null
-    //   170: astore_2
-    //   171: goto -72 -> 99
-    //   174: astore 5
-    //   176: goto -77 -> 99
-    //   179: aconst_null
-    //   180: astore_2
-    //   181: goto -112 -> 69
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	184	0	this	d
-    //   0	184	1	paramInt	int
-    //   60	75	2	locala	a
-    //   140	22	2	localObject1	Object
-    //   163	1	2	localObject2	Object
-    //   170	11	2	localObject3	Object
-    //   33	96	3	localCursor	android.database.Cursor
-    //   39	111	4	localObject4	Object
-    //   93	20	5	localException1	Exception
-    //   167	1	5	localException2	Exception
-    //   174	1	5	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   5	34	93	java/lang/Exception
-    //   5	34	140	finally
-    //   41	50	163	finally
-    //   53	61	163	finally
-    //   64	69	163	finally
-    //   102	121	163	finally
-    //   41	50	167	java/lang/Exception
-    //   53	61	167	java/lang/Exception
-    //   64	69	174	java/lang/Exception
+    AppMethodBeat.i(156050);
+    int i = getUin();
+    if (i == 0)
+    {
+      AppMethodBeat.o(156050);
+      return null;
+    }
+    Object localObject = i + "_WxExptmmkv";
+    if (!Util.isEqual(this.name, (String)localObject))
+    {
+      Log.i(TAG, "%s get mmkv change uin old[%s] new[%s]", new Object[] { info(), this.name, localObject });
+      this.name = ((String)localObject);
+    }
+    localObject = MultiProcessMMKV.getMMKV(this.name);
+    AppMethodBeat.o(156050);
+    return localObject;
+  }
+  
+  public final String hx(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(156053);
+    paramString1 = a(paramString1, paramString2, false, true);
+    AppMethodBeat.o(156053);
+    return paramString1;
   }
 }
 

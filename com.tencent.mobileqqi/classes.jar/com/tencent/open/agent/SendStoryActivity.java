@@ -32,7 +32,7 @@ import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.settings.ServerSetting;
 import com.tencent.open.widget.CursorEditText;
 import com.tencent.qphone.base.util.QLog;
-import hjn;
+import hjm;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -285,22 +285,22 @@ public class SendStoryActivity
   
   protected void d()
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232183));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131232158);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231376));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231456));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231457));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231380));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232182));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131232157);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231375));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231455));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231456));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231379));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131232188));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232186));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232189));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131232184));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232190));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232191));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232192));
+    this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131232187));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232185));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232188));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131232183));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232189));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232190));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232191));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new SendStoryActivity.CustomLengthInputFilter(this, this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText, 80) };
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
@@ -512,7 +512,7 @@ public class SendStoryActivity
     Object localObject1 = new StringBuilder();
     Object localObject2 = this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.getEditableText();
     Object localObject3 = (Friend[])((Editable)localObject2).getSpans(0, ((Editable)localObject2).length(), Friend.class);
-    Arrays.sort((Object[])localObject3, new hjn(this, (Editable)localObject2));
+    Arrays.sort((Object[])localObject3, new hjm(this, (Editable)localObject2));
     HashSet localHashSet = new HashSet();
     int n = localObject3.length;
     int j = 0;

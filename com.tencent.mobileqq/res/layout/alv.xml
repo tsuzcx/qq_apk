@@ -7,7 +7,7 @@
     <View android:id="@id/ad2" android:background="@drawable/ag7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true" />
     <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/c_g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:maxLines="2" />
     <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/c_j" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <FrameLayout android:id="@id/ayx" android:paddingLeft="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+    <FrameLayout android:id="@id/mw8" android:paddingLeft="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
         <ImageView android:id="@id/dc9" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/list_checkbox_selected" android:scaleType="centerCrop" />
     </FrameLayout>
 </RelativeLayout>

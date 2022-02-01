@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/chat_top_bar" android:background="@drawable/common_tips_bg_white" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <ImageView android:id="@id/tip_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="11.0dip" android:src="@drawable/qvip_color_ring_aio_icon" android:contentDescription="@null" />
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/chat_top_bar_text" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/color_ring_guide_aio_tip" android:singleLine="true" android:contentDescription="@string/color_ring_guide_aio_tip" style="@style/common_tips_blue_font" />
+    </LinearLayout>
+    <ImageView android:id="@id/icon_multi_video_arrow" android:background="@drawable/common_tips_arrow_blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

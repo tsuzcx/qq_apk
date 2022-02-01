@@ -1,20 +1,23 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import io.flutter.embedding.engine.dart.DartExecutor;
+import androidx.annotation.NonNull;
 import io.flutter.plugin.common.BasicMessageChannel;
+import io.flutter.plugin.common.BasicMessageChannel.Reply;
+import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.JSONMessageCodec;
 import java.util.HashMap;
 import java.util.Map;
 
 public class KeyEventChannel
 {
+  private static final String TAG = "KeyEventChannel";
   @NonNull
   public final BasicMessageChannel<Object> channel;
+  private KeyEventChannel.EventResponseHandler eventResponseHandler;
   
-  public KeyEventChannel(@NonNull DartExecutor paramDartExecutor)
+  public KeyEventChannel(@NonNull BinaryMessenger paramBinaryMessenger)
   {
-    this.channel = new BasicMessageChannel(paramDartExecutor, "flutter/keyevent", JSONMessageCodec.INSTANCE);
+    this.channel = new BasicMessageChannel(paramBinaryMessenger, "flutter/keyevent", JSONMessageCodec.INSTANCE);
   }
   
   private void encodeKeyEvent(@NonNull KeyEventChannel.FlutterKeyEvent paramFlutterKeyEvent, @NonNull Map<String, Object> paramMap)
@@ -31,6 +34,13 @@ public class KeyEventChannel
     paramMap.put("source", Integer.valueOf(paramFlutterKeyEvent.source));
     paramMap.put("vendorId", Integer.valueOf(paramFlutterKeyEvent.vendorId));
     paramMap.put("productId", Integer.valueOf(paramFlutterKeyEvent.productId));
+    paramMap.put("deviceId", Integer.valueOf(paramFlutterKeyEvent.deviceId));
+    paramMap.put("repeatCount", Integer.valueOf(paramFlutterKeyEvent.repeatCount));
+  }
+  
+  BasicMessageChannel.Reply<Object> createReplyHandler(long paramLong)
+  {
+    return new KeyEventChannel.1(this, paramLong);
   }
   
   public void keyDown(@NonNull KeyEventChannel.FlutterKeyEvent paramFlutterKeyEvent)
@@ -39,7 +49,7 @@ public class KeyEventChannel
     localHashMap.put("type", "keydown");
     localHashMap.put("keymap", "android");
     encodeKeyEvent(paramFlutterKeyEvent, localHashMap);
-    this.channel.send(localHashMap);
+    this.channel.send(localHashMap, createReplyHandler(paramFlutterKeyEvent.eventId));
   }
   
   public void keyUp(@NonNull KeyEventChannel.FlutterKeyEvent paramFlutterKeyEvent)
@@ -48,12 +58,17 @@ public class KeyEventChannel
     localHashMap.put("type", "keyup");
     localHashMap.put("keymap", "android");
     encodeKeyEvent(paramFlutterKeyEvent, localHashMap);
-    this.channel.send(localHashMap);
+    this.channel.send(localHashMap, createReplyHandler(paramFlutterKeyEvent.eventId));
+  }
+  
+  public void setEventResponseHandler(KeyEventChannel.EventResponseHandler paramEventResponseHandler)
+  {
+    this.eventResponseHandler = paramEventResponseHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.KeyEventChannel
  * JD-Core Version:    0.7.0.1
  */

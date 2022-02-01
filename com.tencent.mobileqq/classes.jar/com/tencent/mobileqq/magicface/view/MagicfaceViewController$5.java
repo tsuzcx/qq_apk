@@ -2,25 +2,24 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.widget.Button;
 import android.widget.RelativeLayout.LayoutParams;
-import atzj;
-import bdgz;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.utils.DisplayUtils;
 
-public class MagicfaceViewController$5
+class MagicfaceViewController$5
   implements Runnable
 {
-  public MagicfaceViewController$5(atzj paramatzj) {}
+  MagicfaceViewController$5(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.c.getLayoutParams();
-    localLayoutParams.rightMargin = ((int)bdgz.a(this.this$0.a.a(), 10.0F));
-    this.this$0.c.setLayoutParams(localLayoutParams);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.n.getLayoutParams();
+    localLayoutParams.rightMargin = ((int)DisplayUtils.a(this.this$0.b.aX(), 10.0F));
+    this.this$0.n.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.5
  * JD-Core Version:    0.7.0.1
  */

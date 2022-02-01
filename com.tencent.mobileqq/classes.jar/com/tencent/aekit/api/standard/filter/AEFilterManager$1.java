@@ -1,30 +1,49 @@
 package com.tencent.aekit.api.standard.filter;
 
+import android.media.AudioTrack;
+import android.support.annotation.RequiresApi;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import org.light.AudioFrame;
+import org.light.AudioOutput;
 
 class AEFilterManager$1
   implements Runnable
 {
   AEFilterManager$1(AEFilterManager paramAEFilterManager) {}
   
+  @RequiresApi(api=21)
   public void run()
   {
-    if (AEFilterManager.access$000(this.this$0) == null)
+    try
     {
-      AEFilterManager.access$002(this.this$0, new AEFaceTransform());
-      LogUtils.i(AEFilterManager.access$100(), "create faceTransform action done");
+      if (AEFilterManager.access$000(this.this$0) != null)
+      {
+        for (AudioFrame localAudioFrame = AEFilterManager.access$000(this.this$0).copyNextSample(); localAudioFrame != null; localAudioFrame = AEFilterManager.access$000(this.this$0).copyNextSample())
+        {
+          if (!AEFilterManager.access$100(this.this$0)) {
+            AEFilterManager.access$200(this.this$0).play();
+          }
+          AEFilterManager.access$200(this.this$0).write(localAudioFrame.data, (int)localAudioFrame.length, 0);
+        }
+        if ((AEFilterManager.access$200(this.this$0) != null) && (AEFilterManager.access$200(this.this$0).getState() == 1)) {
+          AEFilterManager.access$200(this.this$0).stop();
+        }
+      }
+      else
+      {
+        LogUtils.e("AEFilterManager", "audioReader is null!");
+        return;
+      }
     }
-    if ((AEFilterManager.access$200(this.this$0)) && (AEFilterManager.access$000(this.this$0) != null))
+    catch (Exception localException)
     {
-      LogUtils.i(AEFilterManager.access$100(), "create faceTransform action done, but GLThread has exited, so do cleaning");
-      AEFilterManager.access$000(this.this$0).clear();
-      AEFilterManager.access$002(this.this$0, null);
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFilterManager.1
  * JD-Core Version:    0.7.0.1
  */

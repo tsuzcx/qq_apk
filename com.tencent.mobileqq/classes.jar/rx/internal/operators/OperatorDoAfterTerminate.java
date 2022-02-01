@@ -11,10 +11,12 @@ public final class OperatorDoAfterTerminate<T>
   
   public OperatorDoAfterTerminate(Action0 paramAction0)
   {
-    if (paramAction0 == null) {
-      throw new NullPointerException("Action can not be null");
+    if (paramAction0 != null)
+    {
+      this.action = paramAction0;
+      return;
     }
-    this.action = paramAction0;
+    throw new NullPointerException("Action can not be null");
   }
   
   public Subscriber<? super T> call(Subscriber<? super T> paramSubscriber)
@@ -24,7 +26,7 @@ public final class OperatorDoAfterTerminate<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorDoAfterTerminate
  * JD-Core Version:    0.7.0.1
  */

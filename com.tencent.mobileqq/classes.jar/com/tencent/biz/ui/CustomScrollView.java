@@ -8,23 +8,19 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import aobw;
-import bhzg;
-import com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import androidx.lifecycle.MutableLiveData;
 import com.tencent.qphone.base.util.QLog;
-import yxh;
+import com.tencent.widget.OverScroller;
 
 @TargetApi(9)
 public class CustomScrollView
   extends RelativeLayout
   implements TouchWebView.OnOverScrollHandler
 {
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  private bhzg jdField_a_of_type_Bhzg;
-  private PublicAccountCompactSwipeBackLayout jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout;
-  private boolean jdField_a_of_type_Boolean = true;
+  DisplayMetrics a;
+  public MutableLiveData<Integer> b = new MutableLiveData();
+  private OverScroller c;
+  private boolean d = true;
   
   public CustomScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,10 +36,14 @@ public class CustomScrollView
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomScrollView", 2, " springBack y:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" springBack y:");
+      localStringBuilder.append(paramInt);
+      QLog.d("CustomScrollView", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Bhzg.a(getScrollX(), getScrollY(), 0, 0, -paramInt, 0)) {
+    if (this.c.springBack(getScrollX(), getScrollY(), 0, 0, -paramInt, 0)) {
       invalidate();
     }
   }
@@ -53,33 +53,19 @@ public class CustomScrollView
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(0);
     }
-    this.jdField_a_of_type_Bhzg = new bhzg(getContext());
+    this.c = new OverScroller(getContext());
     try
     {
-      this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-      ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+      this.a = new DisplayMetrics();
+      ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.a);
       return;
     }
     catch (Throwable paramContext) {}
   }
   
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.a(paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   protected boolean a()
@@ -87,31 +73,18 @@ public class CustomScrollView
     return true;
   }
   
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.a(paramBoolean);
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.b(paramBoolean);
-    }
-  }
-  
   public void computeScroll()
   {
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, " computeScroll:");
     }
-    if ((this.jdField_a_of_type_Bhzg != null) && (this.jdField_a_of_type_Bhzg.b()))
+    OverScroller localOverScroller = this.c;
+    if ((localOverScroller != null) && (localOverScroller.computeScrollOffset()))
     {
       int i = getScrollX();
       int j = getScrollY();
-      int k = this.jdField_a_of_type_Bhzg.a();
-      int m = this.jdField_a_of_type_Bhzg.b();
+      int k = this.c.getCurrX();
+      int m = this.c.getCurrY();
       if (((i != k) || (j != m)) && (Build.VERSION.SDK_INT >= 9)) {
         overScrollBy(k - i, m - j, i, j, 0, 0, 0, 5000, false);
       }
@@ -124,30 +97,29 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, "onBack:");
     }
-    if (this.jdField_a_of_type_Bhzg.a(getScrollX(), getScrollY(), 0, 0, 0, 0)) {
+    if (this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, 0)) {
       invalidate();
     }
   }
   
   public void onOverScroll(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomScrollView", 2, " onOverScroll y:" + paramInt);
-    }
-    if ((this.jdField_a_of_type_Boolean) && (Build.VERSION.SDK_INT >= 9))
+    if (QLog.isColorLevel())
     {
-      if (getScrollY() + paramInt <= 0) {
-        break label91;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" onOverScroll y:");
+      localStringBuilder.append(paramInt);
+      QLog.d("CustomScrollView", 2, localStringBuilder.toString());
+    }
+    if ((this.d) && (Build.VERSION.SDK_INT >= 9))
+    {
+      int i = paramInt;
+      if (getScrollY() + paramInt > 0) {
+        i = -getScrollY();
       }
-      paramInt = -getScrollY();
-    }
-    label91:
-    for (;;)
-    {
       if (a()) {
-        overScrollBy(0, paramInt, getScrollX(), getScrollY(), 0, 0, 0, 5000, true);
+        overScrollBy(0, i, getScrollX(), getScrollY(), 0, 0, 0, 5000, true);
       }
-      return;
     }
   }
   
@@ -156,46 +128,24 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, " onOverScrolled");
     }
-    if (!this.jdField_a_of_type_Bhzg.a())
+    this.b.postValue(Integer.valueOf(paramInt2));
+    if (!this.c.isFinished())
     {
       super.scrollTo(paramInt1, paramInt2);
       if ((paramBoolean1) || (paramBoolean2)) {
-        this.jdField_a_of_type_Bhzg.a(getScrollX(), getScrollY(), 0, 0, 0, 0);
+        this.c.springBack(getScrollX(), getScrollY(), 0, 0, 0, 0);
       }
     }
-    for (;;)
+    else
     {
-      awakenScrollBars();
-      return;
       super.scrollTo(paramInt1, paramInt2);
     }
-  }
-  
-  public void setOnFlingGesture(yxh paramyxh)
-  {
-    if ((paramyxh instanceof WebViewFragment))
-    {
-      Object localObject = ((WebViewFragment)paramyxh).getActivity();
-      if ((localObject != null) && ((localObject instanceof QQBrowserActivity)))
-      {
-        localObject = ((QQBrowserActivity)localObject).a();
-        if (localObject != null)
-        {
-          localObject = ((aobw)localObject).a();
-          if ((localObject instanceof PublicAccountCompactSwipeBackLayout)) {
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout = ((PublicAccountCompactSwipeBackLayout)localObject);
-          }
-        }
-        if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.setWebViewFragment((WebViewFragment)paramyxh);
-        }
-      }
-    }
+    awakenScrollBars();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.CustomScrollView
  * JD-Core Version:    0.7.0.1
  */

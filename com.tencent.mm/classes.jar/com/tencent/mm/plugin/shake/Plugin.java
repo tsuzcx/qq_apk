@@ -1,48 +1,58 @@
 package com.tencent.mm.plugin.shake;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.shake.model.m;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  private b qMA;
+  private c PyK;
   
   public Plugin()
   {
-    AppMethodBeat.i(24408);
-    this.qMA = new Plugin.1(this);
-    AppMethodBeat.o(24408);
+    AppMethodBeat.i(28083);
+    this.PyK = new c()
+    {
+      public final com.tencent.mm.pluginsdk.c.a al(Context paramAnonymousContext, String paramAnonymousString)
+      {
+        AppMethodBeat.i(28082);
+        paramAnonymousContext = new com.tencent.mm.plugin.shake.ui.a(paramAnonymousContext);
+        AppMethodBeat.o(28082);
+        return paramAnonymousContext;
+      }
+    };
+    AppMethodBeat.o(28083);
   }
   
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(24409);
-    a locala = new a();
-    AppMethodBeat.o(24409);
-    return locala;
+    AppMethodBeat.i(28084);
+    b localb = new b();
+    AppMethodBeat.o(28084);
+    return localb;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(24410);
+    AppMethodBeat.i(28085);
     m localm = new m();
-    AppMethodBeat.o(24410);
+    AppMethodBeat.o(28085);
     return localm;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
-    return this.qMA;
+    return this.PyK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.Plugin
  * JD-Core Version:    0.7.0.1
  */

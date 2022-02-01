@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ailj;
 import java.util.List;
 
-public class BindNumberActivity$10$1
+class BindNumberActivity$10$1
   implements Runnable
 {
-  public BindNumberActivity$10$1(ailj paramailj, int paramInt, List paramList) {}
+  BindNumberActivity$10$1(BindNumberActivity.10 param10, int paramInt, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ailj.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    this.c.a.a(this.a, this.b);
   }
 }
 

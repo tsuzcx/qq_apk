@@ -1,26 +1,46 @@
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.international.LocaleString;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.QQToastNotifier;
 
 public class hhi
-  extends Toast
+  extends Handler
 {
-  public hhi(Context paramContext)
+  public hhi(QQToastNotifier paramQQToastNotifier, Looper paramLooper)
   {
-    super(paramContext);
+    super(paramLooper);
   }
   
-  public void show()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    paramMessage = (hhj)paramMessage.obj;
+    if (this.a.jdField_a_of_type_AndroidWidgetToast == null)
     {
-      super.show();
-      return;
+      if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {}
+      for (this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, LocaleString.p(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_JavaLangString), paramMessage.c).a(paramMessage.d);; this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, paramMessage.b, paramMessage.c).a(paramMessage.d))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetToast.show();
+        return;
+      }
     }
-    catch (Throwable localThrowable)
+    View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
+    TextView localTextView = (TextView)localView.findViewById(2131232010);
+    if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {
+      localTextView.setText(LocaleString.p(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_JavaLangString));
+    }
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QQToast", 2, "", localThrowable);
+      ((ImageView)localView.findViewById(2131232009)).setImageResource(QQToast.a(paramMessage.jdField_a_of_type_Int));
+      this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(paramMessage.c);
+      break;
+      localTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getString(paramMessage.b));
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Timer;
 
@@ -18,11 +18,11 @@ public class PrinterItemMsgRecord
   public static final int status_running = 2;
   public static final int status_transfer_fail = 12;
   public String filename;
-  @awhp
-  public Timer mTimer_for_Print;
-  public double progress;
+  @notColumn
+  public Timer mTimer_for_Print = null;
+  public double progress = 0.0D;
   public int status = 1;
-  public long uSessionID;
+  public long uSessionID = 0L;
   
   public PrinterItemMsgRecord()
   {
@@ -54,7 +54,7 @@ public class PrinterItemMsgRecord
     return null;
   }
   
-  public Class<? extends awge> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return PrinterItemMsgRecord.class;
   }
@@ -64,7 +64,7 @@ public class PrinterItemMsgRecord
     return "mr_dataline_printer";
   }
   
-  public void postRead() {}
+  protected void postRead() {}
 }
 
 

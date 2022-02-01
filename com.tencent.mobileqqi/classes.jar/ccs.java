@@ -1,11 +1,28 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ccs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public MessageRecord a;
+  public ccs(ChatSettingActivity paramChatSettingActivity) {}
   
-  private ccs(ChatHistory paramChatHistory) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (ChatSettingActivity.a(this.a) == paramBoolean) {
+      return;
+    }
+    if (paramBoolean) {
+      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EE", "0X80040EE", 0, 0, "2", "1", "", "");
+    }
+    for (;;)
+    {
+      ChatSettingActivity.a(this.a);
+      return;
+      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EE", "0X80040EE", 0, 0, "2", "0", "", "");
+    }
+  }
 }
 
 

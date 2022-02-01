@@ -42,7 +42,10 @@ public final class CompositeException
     paramString.add(new NullPointerException());
     localArrayList.addAll(paramString);
     this.exceptions = Collections.unmodifiableList(localArrayList);
-    this.message = (this.exceptions.size() + " exceptions occurred. ");
+    paramString = new StringBuilder();
+    paramString.append(this.exceptions.size());
+    paramString.append(" exceptions occurred. ");
+    this.message = paramString.toString();
   }
   
   public CompositeException(Collection<? extends Throwable> paramCollection)
@@ -59,43 +62,42 @@ public final class CompositeException
     {
       int j = paramVarArgs.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Throwable localThrowable = paramVarArgs[i];
         if ((localThrowable instanceof CompositeException)) {
           localLinkedHashSet.addAll(((CompositeException)localThrowable).getExceptions());
+        } else if (localThrowable != null) {
+          localLinkedHashSet.add(localThrowable);
+        } else {
+          localLinkedHashSet.add(new NullPointerException());
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (localThrowable != null) {
-            localLinkedHashSet.add(localThrowable);
-          } else {
-            localLinkedHashSet.add(new NullPointerException());
-          }
-        }
+        i += 1;
       }
     }
-    else
-    {
-      localLinkedHashSet.add(new NullPointerException());
-    }
+    localLinkedHashSet.add(new NullPointerException());
     localArrayList.addAll(localLinkedHashSet);
     this.exceptions = Collections.unmodifiableList(localArrayList);
-    this.message = (this.exceptions.size() + " exceptions occurred. ");
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append(this.exceptions.size());
+    paramVarArgs.append(" exceptions occurred. ");
+    this.message = paramVarArgs.toString();
   }
   
   private void appendStackTrace(StringBuilder paramStringBuilder, Throwable paramThrowable, String paramString)
   {
-    paramStringBuilder.append(paramString).append(paramThrowable).append("\n");
+    paramStringBuilder.append(paramString);
+    paramStringBuilder.append(paramThrowable);
+    paramStringBuilder.append("\n");
     paramString = paramThrowable.getStackTrace();
     int j = paramString.length;
     int i = 0;
     while (i < j)
     {
       Object localObject = paramString[i];
-      paramStringBuilder.append("\t\tat ").append(localObject).append("\n");
+      paramStringBuilder.append("\t\tat ");
+      paramStringBuilder.append(localObject);
+      paramStringBuilder.append("\n");
       i += 1;
     }
     if (paramThrowable.getCause() != null)
@@ -113,18 +115,21 @@ public final class CompositeException
     if (localThrowable == null) {
       return localArrayList;
     }
-    do
+    for (;;)
     {
-      paramThrowable = paramThrowable.getCause();
       localArrayList.add(paramThrowable);
-    } while (paramThrowable.getCause() != null);
-    return localArrayList;
+      if (paramThrowable.getCause() == null) {
+        return localArrayList;
+      }
+      paramThrowable = paramThrowable.getCause();
+    }
   }
   
   private void printStackTrace(CompositeException.PrintStreamOrWriter paramPrintStreamOrWriter)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this).append("\n");
+    localStringBuilder.append(this);
+    localStringBuilder.append("\n");
     ??? = getStackTrace();
     int j = ???.length;
     int i = 0;
@@ -132,7 +137,9 @@ public final class CompositeException
     while (i < j)
     {
       localObject2 = ???[i];
-      localStringBuilder.append("\tat ").append(localObject2).append("\n");
+      localStringBuilder.append("\tat ");
+      localStringBuilder.append(localObject2);
+      localStringBuilder.append("\n");
       i += 1;
     }
     ??? = this.exceptions.iterator();
@@ -140,7 +147,10 @@ public final class CompositeException
     while (((Iterator)???).hasNext())
     {
       localObject2 = (Throwable)((Iterator)???).next();
-      localStringBuilder.append("  ComposedException ").append(i).append(" :").append("\n");
+      localStringBuilder.append("  ComposedException ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" :");
+      localStringBuilder.append("\n");
       appendStackTrace(localStringBuilder, (Throwable)localObject2, "\t");
       i += 1;
     }
@@ -149,63 +159,69 @@ public final class CompositeException
       paramPrintStreamOrWriter.println(localStringBuilder.toString());
       return;
     }
+    for (;;)
+    {
+      throw paramPrintStreamOrWriter;
+    }
   }
   
   public Throwable getCause()
   {
-    CompositeException.CompositeExceptionCausalChain localCompositeExceptionCausalChain;
     for (;;)
     {
       try
       {
-        if (this.cause != null) {
-          break label184;
-        }
-        localCompositeExceptionCausalChain = new CompositeException.CompositeExceptionCausalChain();
-        HashSet localHashSet = new HashSet();
-        Iterator localIterator1 = this.exceptions.iterator();
-        localObject3 = localCompositeExceptionCausalChain;
-        if (!localIterator1.hasNext()) {
-          break label179;
-        }
-        Object localObject1 = (Throwable)localIterator1.next();
-        if (localHashSet.contains(localObject1)) {
-          continue;
-        }
-        localHashSet.add(localObject1);
-        Iterator localIterator2 = getListOfCauses((Throwable)localObject1).iterator();
-        if (!localIterator2.hasNext()) {
-          break label157;
-        }
-        Throwable localThrowable3 = (Throwable)localIterator2.next();
-        if (localHashSet.contains(localThrowable3))
+        if (this.cause == null)
         {
-          localObject1 = new RuntimeException("Duplicate found in causal chain so cropping to prevent loop ...");
-          continue;
+          localCompositeExceptionCausalChain = new CompositeException.CompositeExceptionCausalChain();
+          HashSet localHashSet = new HashSet();
+          Iterator localIterator1 = this.exceptions.iterator();
+          localObject1 = localCompositeExceptionCausalChain;
+          if (localIterator1.hasNext())
+          {
+            localObject3 = (Throwable)localIterator1.next();
+            if (localHashSet.contains(localObject3)) {
+              continue;
+            }
+            localHashSet.add(localObject3);
+            Iterator localIterator2 = getListOfCauses((Throwable)localObject3).iterator();
+            if (localIterator2.hasNext())
+            {
+              Throwable localThrowable2 = (Throwable)localIterator2.next();
+              if (localHashSet.contains(localThrowable2))
+              {
+                localObject3 = new RuntimeException("Duplicate found in causal chain so cropping to prevent loop ...");
+                continue;
+              }
+              localHashSet.add(localThrowable2);
+              continue;
+            }
+          }
         }
-        localHashSet.add(localThrowable3);
       }
-      finally {}
-      continue;
+      finally
+      {
+        CompositeException.CompositeExceptionCausalChain localCompositeExceptionCausalChain;
+        Object localObject1;
+        Object localObject3;
+        continue;
+        throw localObject2;
+        continue;
+      }
       try
       {
-        label157:
-        ((Throwable)localObject3).initCause(localThrowable1);
-        localObject3 = ((Throwable)localObject3).getCause();
-        localObject2 = localObject3;
+        ((Throwable)localObject1).initCause((Throwable)localObject3);
+        localObject1 = ((Throwable)localObject1).getCause();
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable1)
       {
-        label170:
-        break label170;
+        continue;
       }
-      Object localObject3 = localObject2;
+      localObject1 = localObject3;
     }
-    label179:
     this.cause = localCompositeExceptionCausalChain;
-    label184:
-    Object localObject2 = this.cause;
-    return localObject2;
+    localObject1 = this.cause;
+    return localObject1;
   }
   
   public List<Throwable> getExceptions()
@@ -235,7 +251,7 @@ public final class CompositeException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.exceptions.CompositeException
  * JD-Core Version:    0.7.0.1
  */

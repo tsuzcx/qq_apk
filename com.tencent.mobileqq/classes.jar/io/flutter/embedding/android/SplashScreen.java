@@ -3,9 +3,9 @@ package io.flutter.embedding.android;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public abstract interface SplashScreen
 {
@@ -23,7 +23,7 @@ public abstract interface SplashScreen
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.SplashScreen
  * JD-Core Version:    0.7.0.1
  */

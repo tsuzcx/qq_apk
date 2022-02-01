@@ -8,29 +8,29 @@ import java.lang.reflect.Method;
 final class i
   implements InvocationHandler
 {
-  private final h alI;
-  private final IBinder alN;
+  private final h api;
+  private final IBinder apn;
   
   i(IBinder paramIBinder, h paramh)
   {
-    this.alN = paramIBinder;
-    this.alI = paramh;
+    this.apn = paramIBinder;
+    this.api = paramh;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     if ("queryLocalInterface".equals(paramMethod.getName()))
     {
-      paramMethod = this.alN.getInterfaceDescriptor();
+      paramMethod = this.apn.getInterfaceDescriptor();
       if (paramMethod.equals("android.app.IActivityManager")) {}
       for (paramMethod = "android.app.ActivityManagerNative";; paramMethod = paramMethod + "$Stub")
       {
-        paramMethod = (IInterface)com.tencent.tinker.loader.a.h.a(Class.forName(paramMethod), "asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.alN });
-        paramObject = new j(paramMethod, (IBinder)paramObject, this.alI);
-        return g.b(g.d(paramMethod.getClass()), paramObject);
+        paramMethod = (IInterface)com.tencent.tinker.loader.a.h.a(Class.forName(paramMethod), "asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.apn });
+        paramObject = new j(paramMethod, (IBinder)paramObject, this.api);
+        return g.b(g.j(paramMethod.getClass()), paramObject);
       }
     }
-    return paramMethod.invoke(this.alN, paramArrayOfObject);
+    return paramMethod.invoke(this.apn, paramArrayOfObject);
   }
 }
 

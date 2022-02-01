@@ -24,12 +24,20 @@ public class ViewRecord
   
   public String toString()
   {
-    return "ViewRecord{mRecentDecorViewHashcode=" + this.mRecentDecorViewHashcode + ", mRecentTotalViewNum=" + this.mRecentTotalViewNum + ", mRecentHookTime=" + this.mRecentHookTime + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ViewRecord{mRecentDecorViewHashcode=");
+    localStringBuilder.append(this.mRecentDecorViewHashcode);
+    localStringBuilder.append(", mRecentTotalViewNum=");
+    localStringBuilder.append(this.mRecentTotalViewNum);
+    localStringBuilder.append(", mRecentHookTime=");
+    localStringBuilder.append(this.mRecentHookTime);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.models.ViewRecord
  * JD-Core Version:    0.7.0.1
  */

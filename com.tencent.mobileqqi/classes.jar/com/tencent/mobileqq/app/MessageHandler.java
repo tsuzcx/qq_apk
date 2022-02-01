@@ -150,6 +150,7 @@ import com.tencent.util.EUCountryUtils;
 import com.tencent.util.MsgAutoMonitorUtil;
 import cooperation.qlink.QQServiceForQlink;
 import cooperation.qlink.QlinkServiceManager;
+import fdl;
 import fdm;
 import fdn;
 import fdo;
@@ -163,10 +164,9 @@ import fdv;
 import fdw;
 import fdx;
 import fdy;
-import fdz;
+import fea;
 import feb;
-import fec;
-import fee;
+import fed;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -391,11 +391,11 @@ public class MessageHandler
   private final String G = "Q.msg.MessageHandler";
   private final String H = "Q.msg.MessageHandler";
   private volatile Pair jdField_a_of_type_AndroidUtilPair = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fdn(this);
-  ProxyListener jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener = new fdw(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fdm(this);
+  ProxyListener jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener = new fdv(this);
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
   public MessageCache a;
-  fee jdField_a_of_type_Fee;
+  fed jdField_a_of_type_Fed;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Thread jdField_a_of_type_JavaLangThread = null;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -404,7 +404,7 @@ public class MessageHandler
   private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private final int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private feb[] jdField_a_of_type_ArrayOfFeb = null;
+  private fea[] jdField_a_of_type_ArrayOfFea = null;
   private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
   private Object jdField_b_of_type_JavaLangObject = new Object();
   private ArrayList jdField_b_of_type_JavaUtilArrayList = null;
@@ -628,12 +628,12 @@ public class MessageHandler
     return new Pair(Long.valueOf(paramLong2), Long.valueOf(paramLong3));
   }
   
-  private fee a()
+  private fed a()
   {
-    if (this.jdField_a_of_type_Fee == null) {
-      this.jdField_a_of_type_Fee = new fee(this, ThreadManager.b());
+    if (this.jdField_a_of_type_Fed == null) {
+      this.jdField_a_of_type_Fed = new fed(this, ThreadManager.b());
     }
-    return this.jdField_a_of_type_Fee;
+    return this.jdField_a_of_type_Fed;
   }
   
   public static String a(FromServiceMsg paramFromServiceMsg)
@@ -744,7 +744,7 @@ public class MessageHandler
   private void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg arg3, Object paramObject)
   {
     f();
-    paramToServiceMsg = new fec(paramInt, paramToServiceMsg, ???, paramObject);
+    paramToServiceMsg = new feb(paramInt, paramToServiceMsg, ???, paramObject);
     if (paramInt == 1) {
       synchronized (this.jdField_d_of_type_JavaUtilArrayList)
       {
@@ -1936,14 +1936,14 @@ public class MessageHandler
     {
       synchronized (this.jdField_c_of_type_JavaLangObject)
       {
-        if ((this.jdField_a_of_type_ArrayOfFeb != null) && (this.jdField_a_of_type_ArrayOfFeb.length > 1)) {
+        if ((this.jdField_a_of_type_ArrayOfFea != null) && (this.jdField_a_of_type_ArrayOfFea.length > 1)) {
           break label77;
         }
         return true;
-        if (i1 >= this.jdField_a_of_type_ArrayOfFeb.length) {
+        if (i1 >= this.jdField_a_of_type_ArrayOfFea.length) {
           break label73;
         }
-        if ((this.jdField_a_of_type_ArrayOfFeb[i1] != null) && (this.jdField_a_of_type_ArrayOfFeb[i1].b())) {
+        if ((this.jdField_a_of_type_ArrayOfFea[i1] != null) && (this.jdField_a_of_type_ArrayOfFea[i1].b())) {
           return false;
         }
       }
@@ -3275,7 +3275,7 @@ public class MessageHandler
       }
       localNotificationManager.cancel(bO);
       localNotificationManager.notify(bO, (Notification)localObject1);
-      this.jdField_a_of_type_JavaLangThread = new Thread(new fdr(this, localNotificationManager));
+      this.jdField_a_of_type_JavaLangThread = new Thread(new fdq(this, localNotificationManager));
       this.jdField_a_of_type_JavaLangThread.start();
       return;
       ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130838590));
@@ -4654,7 +4654,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fdt(this, paramLong1, paramLong2, l1, l2));
+      localSendMessageHandler.a(new fds(this, paramLong1, paramLong2, l1, l2));
       i1 += 1;
     }
     i1 = 0;
@@ -4835,7 +4835,7 @@ public class MessageHandler
           i2 = 0;
           while (i2 < 12)
           {
-            localSendMessageHandler.a(new fdx(this, localMessageRecord, l1));
+            localSendMessageHandler.a(new fdw(this, localMessageRecord, l1));
             i2 += 1;
           }
           i2 = 0;
@@ -4878,7 +4878,7 @@ public class MessageHandler
     int i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fdm(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
+      localSendMessageHandler.a(new fdl(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
       i1 += 1;
     }
     i1 = 0;
@@ -5749,7 +5749,7 @@ public class MessageHandler
   {
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
     for (long l1 = 0L; l1 < 3L; l1 += 1L) {
-      localSendMessageHandler.postDelayed(new fds(this, l1, paramString1, paramString2, paramByte, paramString3, paramLong1, paramLong2), 30000L * l1);
+      localSendMessageHandler.postDelayed(new fdr(this, l1, paramString1, paramString2, paramByte, paramString3, paramLong1, paramLong2), 30000L * l1);
     }
     a(paramLong1, localSendMessageHandler);
   }
@@ -5838,9 +5838,9 @@ public class MessageHandler
       i1 = 0;
       while (i1 < paramArrayList1.size())
       {
-        arrayOfLong[i1] = ((fdz)paramArrayList1.get(i1)).jdField_a_of_type_Long;
-        localObject[i1] = ((fdz)paramArrayList1.get(i1)).jdField_a_of_type_Int;
-        arrayOfShort[i1] = ((fdz)paramArrayList1.get(i1)).jdField_a_of_type_Short;
+        arrayOfLong[i1] = ((fdy)paramArrayList1.get(i1)).jdField_a_of_type_Long;
+        localObject[i1] = ((fdy)paramArrayList1.get(i1)).jdField_a_of_type_Int;
+        arrayOfShort[i1] = ((fdy)paramArrayList1.get(i1)).jdField_a_of_type_Short;
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "--->>delC2CMessage i: " + i1 + " fromUin:" + arrayOfLong[i1] + " msgTime: " + localObject[i1] + " msgSeq:" + arrayOfShort[i1]);
         }
@@ -6184,7 +6184,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fdu(this, paramLong1, paramLong2, l1, l2));
+      localSendMessageHandler.a(new fdt(this, paramLong1, paramLong2, l1, l2));
       i1 += 1;
     }
     i1 = 0;
@@ -6235,7 +6235,7 @@ public class MessageHandler
           ((MessageForPtt)paramMessageRecord).richText = null;
         }
       }
-      localSendMessageHandler.a(new fdo(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
+      localSendMessageHandler.a(new fdn(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
       localSendMessageHandler.getClass();
       localSendMessageHandler.a(0L, 30000L, "period");
     } while (!QLog.isColorLevel());
@@ -6341,7 +6341,7 @@ public class MessageHandler
     paramInt = 0;
     while (paramInt < 9)
     {
-      localSendMessageHandler.a(new fdq(this, paramString, l2, l1));
+      localSendMessageHandler.a(new fdp(this, paramString, l2, l1));
       paramInt += 1;
     }
     paramInt = 0;
@@ -6482,7 +6482,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fdv(this, paramArrayList, l1, l2));
+      localSendMessageHandler.a(new fdu(this, paramArrayList, l1, l2));
       i1 += 1;
     }
     i1 = 0;
@@ -6609,7 +6609,7 @@ public class MessageHandler
     localRequestCustomSig.reserved = new byte[0];
     localHashMap.put("RequestCustomSig", localRequestCustomSig);
     localHashMap.put("OpenAppid", paramString);
-    localAccountManager.changeToken(localHashMap, new fdy(this, paramString));
+    localAccountManager.changeToken(localHashMap, new fdx(this, paramString));
   }
   
   public void d(boolean paramBoolean)
@@ -6794,27 +6794,27 @@ public class MessageHandler
     {
       synchronized (this.jdField_c_of_type_JavaLangObject)
       {
-        if (this.jdField_a_of_type_ArrayOfFeb != null) {
+        if (this.jdField_a_of_type_ArrayOfFea != null) {
           break label193;
         }
         this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(20);
         this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(10);
-        this.jdField_a_of_type_ArrayOfFeb = new feb[6];
+        this.jdField_a_of_type_ArrayOfFea = new fea[6];
         break label193;
-        if (i1 < this.jdField_a_of_type_ArrayOfFeb.length)
+        if (i1 < this.jdField_a_of_type_ArrayOfFea.length)
         {
-          if ((this.jdField_a_of_type_ArrayOfFeb[i1] != null) && (!this.jdField_a_of_type_ArrayOfFeb[i1].a())) {
+          if ((this.jdField_a_of_type_ArrayOfFea[i1] != null) && (!this.jdField_a_of_type_ArrayOfFea[i1].a())) {
             break label198;
           }
           if (i1 == 0)
           {
-            this.jdField_a_of_type_ArrayOfFeb[i1] = new feb(this, this.jdField_d_of_type_JavaUtilArrayList);
-            this.jdField_a_of_type_ArrayOfFeb[i1].setName("MessageHandleThread" + (i1 + 1));
-            this.jdField_a_of_type_ArrayOfFeb[i1].setPriority(5);
-            this.jdField_a_of_type_ArrayOfFeb[i1].start();
+            this.jdField_a_of_type_ArrayOfFea[i1] = new fea(this, this.jdField_d_of_type_JavaUtilArrayList);
+            this.jdField_a_of_type_ArrayOfFea[i1].setName("MessageHandleThread" + (i1 + 1));
+            this.jdField_a_of_type_ArrayOfFea[i1].setPriority(5);
+            this.jdField_a_of_type_ArrayOfFea[i1].start();
             break label198;
           }
-          this.jdField_a_of_type_ArrayOfFeb[i1] = new feb(this, this.jdField_c_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_ArrayOfFea[i1] = new fea(this, this.jdField_c_of_type_JavaUtilArrayList);
         }
       }
       return;
@@ -6830,12 +6830,12 @@ public class MessageHandler
   {
     synchronized (this.jdField_c_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_ArrayOfFeb != null)
+      if (this.jdField_a_of_type_ArrayOfFea != null)
       {
         int i1 = 0;
-        while (i1 < this.jdField_a_of_type_ArrayOfFeb.length)
+        while (i1 < this.jdField_a_of_type_ArrayOfFea.length)
         {
-          this.jdField_a_of_type_ArrayOfFeb[i1].a();
+          this.jdField_a_of_type_ArrayOfFea[i1].a();
           i1 += 1;
         }
       }
@@ -6844,7 +6844,7 @@ public class MessageHandler
         this.jdField_c_of_type_JavaUtilArrayList.notifyAll();
         this.jdField_d_of_type_JavaUtilArrayList = null;
         this.jdField_c_of_type_JavaUtilArrayList = null;
-        this.jdField_a_of_type_ArrayOfFeb = null;
+        this.jdField_a_of_type_ArrayOfFea = null;
         return;
       }
     }
@@ -6993,7 +6993,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fdp(this, localPbMsgReadedReportReq, l2, l1));
+      localSendMessageHandler.a(new fdo(this, localPbMsgReadedReportReq, l2, l1));
       i1 += 1;
     }
     i1 = 0;

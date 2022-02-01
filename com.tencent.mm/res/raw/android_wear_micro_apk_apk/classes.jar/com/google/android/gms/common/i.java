@@ -4,22 +4,22 @@ import android.content.Context;
 
 final class i
 {
-  private static final Object Lm = new Object();
-  private static Context Ln;
+  private static final Object Nb = new Object();
+  private static Context Nc;
   
   /* Error */
-  static void m(Context paramContext)
+  static void n(Context paramContext)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 20	com/google/android/gms/common/i:Ln	Landroid/content/Context;
+    //   3: getstatic 20	com/google/android/gms/common/i:Nc	Landroid/content/Context;
     //   6: ifnonnull +18 -> 24
     //   9: aload_0
     //   10: ifnull +10 -> 20
     //   13: aload_0
     //   14: invokevirtual 26	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   17: putstatic 20	com/google/android/gms/common/i:Ln	Landroid/content/Context;
+    //   17: putstatic 20	com/google/android/gms/common/i:Nc	Landroid/content/Context;
     //   20: ldc 2
     //   22: monitorexit
     //   23: return

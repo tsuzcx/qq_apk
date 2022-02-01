@@ -35,7 +35,6 @@ final class SequencesKt__SequencesKt$ifEmpty$1
   {
     Intrinsics.checkParameterIsNotNull(paramContinuation, "completion");
     paramContinuation = new 1(this.$this_ifEmpty, this.$defaultValue, paramContinuation);
-    SequenceScope localSequenceScope = (SequenceScope)paramObject;
     paramContinuation.p$ = ((SequenceScope)paramObject);
     return paramContinuation;
   }
@@ -49,15 +48,21 @@ final class SequencesKt__SequencesKt$ifEmpty$1
   public final Object invokeSuspend(@NotNull Object paramObject)
   {
     Object localObject = IntrinsicsKt.getCOROUTINE_SUSPENDED();
-    Iterator localIterator;
-    switch (this.label)
+    int i = this.label;
+    if (i != 0)
     {
-    default: 
-      throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-    case 0: 
+      if ((i != 1) && (i != 2)) {
+        throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+      }
+      localObject = (Iterator)this.L$1;
+      localObject = (SequenceScope)this.L$0;
+      ResultKt.throwOnFailure(paramObject);
+    }
+    else
+    {
       ResultKt.throwOnFailure(paramObject);
       paramObject = this.p$;
-      localIterator = this.$this_ifEmpty.iterator();
+      Iterator localIterator = this.$this_ifEmpty.iterator();
       if (localIterator.hasNext())
       {
         this.L$0 = paramObject;
@@ -67,32 +72,23 @@ final class SequencesKt__SequencesKt$ifEmpty$1
           return localObject;
         }
       }
-      break;
-    case 1: 
-      localObject = (Iterator)this.L$1;
-      localObject = (SequenceScope)this.L$0;
-      ResultKt.throwOnFailure(paramObject);
-    }
-    for (;;)
-    {
-      return Unit.INSTANCE;
-      Sequence localSequence = (Sequence)this.$defaultValue.invoke();
-      this.L$0 = paramObject;
-      this.L$1 = localIterator;
-      this.label = 2;
-      if (paramObject.yieldAll(localSequence, this) == localObject)
+      else
       {
-        return localObject;
-        localObject = (Iterator)this.L$1;
-        localObject = (SequenceScope)this.L$0;
-        ResultKt.throwOnFailure(paramObject);
+        Sequence localSequence = (Sequence)this.$defaultValue.invoke();
+        this.L$0 = paramObject;
+        this.L$1 = localIterator;
+        this.label = 2;
+        if (paramObject.yieldAll(localSequence, this) == localObject) {
+          return localObject;
+        }
       }
     }
+    return Unit.INSTANCE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.SequencesKt__SequencesKt.ifEmpty.1
  * JD-Core Version:    0.7.0.1
  */

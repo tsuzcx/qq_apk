@@ -1,123 +1,188 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 
 public final class dbf
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String session_id;
-  public String ygb;
-  public int yhq;
-  public int yhr;
-  public String yhs;
-  public int yht;
-  public boolean yhu = false;
-  public boolean yhv = false;
+  public String MQZ;
+  public String aaGH;
+  public String aaGI;
+  public String aaGJ;
+  public String aaGK;
+  public String aaoi;
+  public String price;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124389);
+    AppMethodBeat.i(72507);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.yhq);
-      paramVarArgs.aO(2, this.yhr);
-      if (this.session_id != null) {
-        paramVarArgs.e(3, this.session_id);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.MQZ == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: product_id");
+        AppMethodBeat.o(72507);
+        throw paramVarArgs;
       }
-      if (this.yhs != null) {
-        paramVarArgs.e(4, this.yhs);
+      if (this.price == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: price");
+        AppMethodBeat.o(72507);
+        throw paramVarArgs;
       }
-      if (this.ygb != null) {
-        paramVarArgs.e(5, this.ygb);
+      if (this.aaoi == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: currency_type");
+        AppMethodBeat.o(72507);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(6, this.yht);
-      paramVarArgs.aS(7, this.yhu);
-      paramVarArgs.aS(8, this.yhv);
-      AppMethodBeat.o(124389);
+      if (this.aaGH == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: session_data");
+        AppMethodBeat.o(72507);
+        throw paramVarArgs;
+      }
+      if (this.MQZ != null) {
+        paramVarArgs.g(1, this.MQZ);
+      }
+      if (this.price != null) {
+        paramVarArgs.g(2, this.price);
+      }
+      if (this.aaoi != null) {
+        paramVarArgs.g(3, this.aaoi);
+      }
+      if (this.aaGH != null) {
+        paramVarArgs.g(4, this.aaGH);
+      }
+      if (this.aaGI != null) {
+        paramVarArgs.g(5, this.aaGI);
+      }
+      if (this.aaGJ != null) {
+        paramVarArgs.g(6, this.aaGJ);
+      }
+      if (this.aaGK != null) {
+        paramVarArgs.g(7, this.aaGK);
+      }
+      AppMethodBeat.o(72507);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.MQZ == null) {
+        break label766;
+      }
+    }
+    label766:
+    for (int i = i.a.a.b.b.a.h(1, this.MQZ) + 0;; i = 0)
     {
-      int i = e.a.a.b.b.a.bl(1, this.yhq) + 0 + e.a.a.b.b.a.bl(2, this.yhr);
       paramInt = i;
-      if (this.session_id != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.session_id);
+      if (this.price != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.price);
       }
       i = paramInt;
-      if (this.yhs != null) {
-        i = paramInt + e.a.a.b.b.a.f(4, this.yhs);
+      if (this.aaoi != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.aaoi);
       }
       paramInt = i;
-      if (this.ygb != null) {
-        paramInt = i + e.a.a.b.b.a.f(5, this.ygb);
+      if (this.aaGH != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.aaGH);
       }
-      i = e.a.a.b.b.a.bl(6, this.yht);
-      int j = e.a.a.b.b.a.eW(7);
-      int k = e.a.a.b.b.a.eW(8);
-      AppMethodBeat.o(124389);
-      return paramInt + i + (j + 1) + (k + 1);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      i = paramInt;
+      if (this.aaGI != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.aaGI);
       }
-      AppMethodBeat.o(124389);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      dbf localdbf = (dbf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.aaGJ != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.aaGJ);
+      }
+      i = paramInt;
+      if (this.aaGK != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.aaGK);
+      }
+      AppMethodBeat.o(72507);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(124389);
-        return -1;
-      case 1: 
-        localdbf.yhq = locala.CLY.sl();
-        AppMethodBeat.o(124389);
-        return 0;
-      case 2: 
-        localdbf.yhr = locala.CLY.sl();
-        AppMethodBeat.o(124389);
-        return 0;
-      case 3: 
-        localdbf.session_id = locala.CLY.readString();
-        AppMethodBeat.o(124389);
-        return 0;
-      case 4: 
-        localdbf.yhs = locala.CLY.readString();
-        AppMethodBeat.o(124389);
-        return 0;
-      case 5: 
-        localdbf.ygb = locala.CLY.readString();
-        AppMethodBeat.o(124389);
-        return 0;
-      case 6: 
-        localdbf.yht = locala.CLY.sl();
-        AppMethodBeat.o(124389);
-        return 0;
-      case 7: 
-        localdbf.yhu = locala.CLY.emu();
-        AppMethodBeat.o(124389);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.MQZ == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: product_id");
+          AppMethodBeat.o(72507);
+          throw paramVarArgs;
+        }
+        if (this.price == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: price");
+          AppMethodBeat.o(72507);
+          throw paramVarArgs;
+        }
+        if (this.aaoi == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: currency_type");
+          AppMethodBeat.o(72507);
+          throw paramVarArgs;
+        }
+        if (this.aaGH == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: session_data");
+          AppMethodBeat.o(72507);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(72507);
         return 0;
       }
-      localdbf.yhv = locala.CLY.emu();
-      AppMethodBeat.o(124389);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        dbf localdbf = (dbf)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(72507);
+          return -1;
+        case 1: 
+          localdbf.MQZ = locala.ajGk.readString();
+          AppMethodBeat.o(72507);
+          return 0;
+        case 2: 
+          localdbf.price = locala.ajGk.readString();
+          AppMethodBeat.o(72507);
+          return 0;
+        case 3: 
+          localdbf.aaoi = locala.ajGk.readString();
+          AppMethodBeat.o(72507);
+          return 0;
+        case 4: 
+          localdbf.aaGH = locala.ajGk.readString();
+          AppMethodBeat.o(72507);
+          return 0;
+        case 5: 
+          localdbf.aaGI = locala.ajGk.readString();
+          AppMethodBeat.o(72507);
+          return 0;
+        case 6: 
+          localdbf.aaGJ = locala.ajGk.readString();
+          AppMethodBeat.o(72507);
+          return 0;
+        }
+        localdbf.aaGK = locala.ajGk.readString();
+        AppMethodBeat.o(72507);
+        return 0;
+      }
+      AppMethodBeat.o(72507);
+      return -1;
     }
-    AppMethodBeat.o(124389);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dbf
  * JD-Core Version:    0.7.0.1
  */

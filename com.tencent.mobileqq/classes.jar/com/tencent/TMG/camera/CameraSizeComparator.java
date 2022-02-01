@@ -10,14 +10,15 @@ public class CameraSizeComparator
   {
     paramObject1 = (Camera.Size)paramObject1;
     paramObject2 = (Camera.Size)paramObject2;
-    if (paramObject1.width < paramObject2.width) {}
-    do
-    {
+    if (paramObject1.width < paramObject2.width) {
       return -1;
-      if (paramObject1.width > paramObject2.width) {
-        return 1;
-      }
-    } while (paramObject1.height < paramObject2.height);
+    }
+    if (paramObject1.width > paramObject2.width) {
+      return 1;
+    }
+    if (paramObject1.height < paramObject2.height) {
+      return -1;
+    }
     if (paramObject1.height > paramObject2.height) {
       return 1;
     }
@@ -26,7 +27,7 @@ public class CameraSizeComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.camera.CameraSizeComparator
  * JD-Core Version:    0.7.0.1
  */

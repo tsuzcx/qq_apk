@@ -24,10 +24,10 @@ public class JceOutputStream
   
   public JceOutputStream(int paramInt)
   {
-    AppMethodBeat.i(117107);
+    AppMethodBeat.i(109661);
     this.sServerEncoding = "GBK";
     this.bs = ByteBuffer.allocate(paramInt);
-    AppMethodBeat.o(117107);
+    AppMethodBeat.o(109661);
   }
   
   public JceOutputStream(ByteBuffer paramByteBuffer)
@@ -38,18 +38,18 @@ public class JceOutputStream
   
   public static void main(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(117141);
+    AppMethodBeat.i(109695);
     paramArrayOfString = new JceOutputStream();
     paramArrayOfString.write(1311768467283714885L, 0);
     ByteBuffer localByteBuffer = paramArrayOfString.getByteBuffer();
     System.out.println(HexUtil.bytes2HexStr(localByteBuffer.array()));
     System.out.println(Arrays.toString(paramArrayOfString.toByteArray()));
-    AppMethodBeat.o(117141);
+    AppMethodBeat.o(109695);
   }
   
   private void writeArray(Object[] paramArrayOfObject, int paramInt)
   {
-    AppMethodBeat.i(117130);
+    AppMethodBeat.i(109684);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfObject.length, 0);
@@ -59,7 +59,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117130);
+        AppMethodBeat.o(109684);
         return;
       }
       write(paramArrayOfObject[paramInt], 0);
@@ -74,14 +74,14 @@ public class JceOutputStream
   
   public void reserve(int paramInt)
   {
-    AppMethodBeat.i(117109);
+    AppMethodBeat.i(109663);
     if (this.bs.remaining() < paramInt)
     {
       ByteBuffer localByteBuffer = ByteBuffer.allocate((this.bs.capacity() + paramInt) * 2);
       localByteBuffer.put(this.bs.array(), 0, this.bs.position());
       this.bs = localByteBuffer;
     }
-    AppMethodBeat.o(117109);
+    AppMethodBeat.o(109663);
   }
   
   public int setServerEncoding(String paramString)
@@ -92,267 +92,267 @@ public class JceOutputStream
   
   public byte[] toByteArray()
   {
-    AppMethodBeat.i(117108);
+    AppMethodBeat.i(109662);
     byte[] arrayOfByte = new byte[this.bs.position()];
     System.arraycopy(this.bs.array(), 0, arrayOfByte, 0, this.bs.position());
-    AppMethodBeat.o(117108);
+    AppMethodBeat.o(109662);
     return arrayOfByte;
   }
   
   public void write(byte paramByte, int paramInt)
   {
-    AppMethodBeat.i(117112);
+    AppMethodBeat.i(109666);
     reserve(3);
     if (paramByte == 0)
     {
       writeHead((byte)12, paramInt);
-      AppMethodBeat.o(117112);
+      AppMethodBeat.o(109666);
       return;
     }
     writeHead((byte)0, paramInt);
     this.bs.put(paramByte);
-    AppMethodBeat.o(117112);
+    AppMethodBeat.o(109666);
   }
   
   public void write(double paramDouble, int paramInt)
   {
-    AppMethodBeat.i(117117);
+    AppMethodBeat.i(109671);
     reserve(10);
     writeHead((byte)5, paramInt);
     this.bs.putDouble(paramDouble);
-    AppMethodBeat.o(117117);
+    AppMethodBeat.o(109671);
   }
   
   public void write(float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(117116);
+    AppMethodBeat.i(109670);
     reserve(6);
     writeHead((byte)4, paramInt);
     this.bs.putFloat(paramFloat);
-    AppMethodBeat.o(117116);
+    AppMethodBeat.o(109670);
   }
   
   public void write(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(117114);
+    AppMethodBeat.i(109668);
     reserve(6);
     if ((paramInt1 >= -32768) && (paramInt1 <= 32767))
     {
       write((short)paramInt1, paramInt2);
-      AppMethodBeat.o(117114);
+      AppMethodBeat.o(109668);
       return;
     }
     writeHead((byte)2, paramInt2);
     this.bs.putInt(paramInt1);
-    AppMethodBeat.o(117114);
+    AppMethodBeat.o(109668);
   }
   
   public void write(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(117115);
+    AppMethodBeat.i(109669);
     reserve(10);
     if ((paramLong >= -2147483648L) && (paramLong <= 2147483647L))
     {
       write((int)paramLong, paramInt);
-      AppMethodBeat.o(117115);
+      AppMethodBeat.o(109669);
       return;
     }
     writeHead((byte)3, paramInt);
     this.bs.putLong(paramLong);
-    AppMethodBeat.o(117115);
+    AppMethodBeat.o(109669);
   }
   
   public void write(JceStruct paramJceStruct, int paramInt)
   {
-    AppMethodBeat.i(117132);
+    AppMethodBeat.i(109686);
     reserve(2);
     writeHead((byte)10, paramInt);
     paramJceStruct.writeTo(this);
     reserve(2);
     writeHead((byte)11, 0);
-    AppMethodBeat.o(117132);
+    AppMethodBeat.o(109686);
   }
   
   public void write(Boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(117134);
+    AppMethodBeat.i(109688);
     write(paramBoolean.booleanValue(), paramInt);
-    AppMethodBeat.o(117134);
+    AppMethodBeat.o(109688);
   }
   
   public void write(Byte paramByte, int paramInt)
   {
-    AppMethodBeat.i(117133);
+    AppMethodBeat.i(109687);
     write(paramByte.byteValue(), paramInt);
-    AppMethodBeat.o(117133);
+    AppMethodBeat.o(109687);
   }
   
   public void write(Double paramDouble, int paramInt)
   {
-    AppMethodBeat.i(117139);
+    AppMethodBeat.i(109693);
     write(paramDouble.doubleValue(), paramInt);
-    AppMethodBeat.o(117139);
+    AppMethodBeat.o(109693);
   }
   
   public void write(Float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(117138);
+    AppMethodBeat.i(109692);
     write(paramFloat.floatValue(), paramInt);
-    AppMethodBeat.o(117138);
+    AppMethodBeat.o(109692);
   }
   
   public void write(Integer paramInteger, int paramInt)
   {
-    AppMethodBeat.i(117136);
+    AppMethodBeat.i(109690);
     write(paramInteger.intValue(), paramInt);
-    AppMethodBeat.o(117136);
+    AppMethodBeat.o(109690);
   }
   
   public void write(Long paramLong, int paramInt)
   {
-    AppMethodBeat.i(117137);
+    AppMethodBeat.i(109691);
     write(paramLong.longValue(), paramInt);
-    AppMethodBeat.o(117137);
+    AppMethodBeat.o(109691);
   }
   
   public void write(Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(117140);
+    AppMethodBeat.i(109694);
     if ((paramObject instanceof Byte))
     {
       write(((Byte)paramObject).byteValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Boolean))
     {
       write(((Boolean)paramObject).booleanValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Short))
     {
       write(((Short)paramObject).shortValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Integer))
     {
       write(((Integer)paramObject).intValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Long))
     {
       write(((Long)paramObject).longValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Float))
     {
       write(((Float)paramObject).floatValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Double))
     {
       write(((Double)paramObject).doubleValue(), paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof String))
     {
       write((String)paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Map))
     {
       write((Map)paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof List))
     {
       write((List)paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof JceStruct))
     {
       write((JceStruct)paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof byte[]))
     {
       write((byte[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof boolean[]))
     {
       write((boolean[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof short[]))
     {
       write((short[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof int[]))
     {
       write((int[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof long[]))
     {
       write((long[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof float[]))
     {
       write((float[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof double[]))
     {
       write((double[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if (paramObject.getClass().isArray())
     {
       writeArray((Object[])paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     if ((paramObject instanceof Collection))
     {
       write((Collection)paramObject, paramInt);
-      AppMethodBeat.o(117140);
+      AppMethodBeat.o(109694);
       return;
     }
     paramObject = new JceEncodeException("write object error: unsupport type. " + paramObject.getClass());
-    AppMethodBeat.o(117140);
+    AppMethodBeat.o(109694);
     throw paramObject;
   }
   
   public void write(Short paramShort, int paramInt)
   {
-    AppMethodBeat.i(117135);
+    AppMethodBeat.i(109689);
     write(paramShort.shortValue(), paramInt);
-    AppMethodBeat.o(117135);
+    AppMethodBeat.o(109689);
   }
   
   public void write(String paramString, int paramInt)
   {
-    AppMethodBeat.i(117120);
+    AppMethodBeat.i(109674);
     try
     {
       byte[] arrayOfByte = paramString.getBytes(this.sServerEncoding);
@@ -367,7 +367,7 @@ public class JceOutputStream
       writeHead((byte)6, paramInt);
       this.bs.put((byte)paramString.length);
       this.bs.put(paramString);
-      AppMethodBeat.o(117120);
+      AppMethodBeat.o(109674);
     }
     reserve(paramString.length + 10);
     if (paramString.length > 255)
@@ -375,14 +375,14 @@ public class JceOutputStream
       writeHead((byte)7, paramInt);
       this.bs.putInt(paramString.length);
       this.bs.put(paramString);
-      AppMethodBeat.o(117120);
+      AppMethodBeat.o(109674);
       return;
     }
   }
   
   public <T> void write(Collection<T> paramCollection, int paramInt)
   {
-    AppMethodBeat.i(117131);
+    AppMethodBeat.i(109685);
     reserve(8);
     writeHead((byte)9, paramInt);
     if (paramCollection == null)
@@ -397,7 +397,7 @@ public class JceOutputStream
     {
       if (!paramCollection.hasNext())
       {
-        AppMethodBeat.o(117131);
+        AppMethodBeat.o(109685);
         return;
         paramInt = paramCollection.size();
         break;
@@ -408,7 +408,7 @@ public class JceOutputStream
   
   public <K, V> void write(Map<K, V> paramMap, int paramInt)
   {
-    AppMethodBeat.i(117121);
+    AppMethodBeat.i(109675);
     reserve(8);
     writeHead((byte)8, paramInt);
     if (paramMap == null)
@@ -423,7 +423,7 @@ public class JceOutputStream
     {
       if (!paramMap.hasNext())
       {
-        AppMethodBeat.o(117121);
+        AppMethodBeat.o(109675);
         return;
         paramInt = paramMap.size();
         break;
@@ -436,45 +436,45 @@ public class JceOutputStream
   
   public void write(short paramShort, int paramInt)
   {
-    AppMethodBeat.i(117113);
+    AppMethodBeat.i(109667);
     reserve(4);
     if ((paramShort >= -128) && (paramShort <= 127))
     {
       write((byte)paramShort, paramInt);
-      AppMethodBeat.o(117113);
+      AppMethodBeat.o(109667);
       return;
     }
     writeHead((byte)1, paramInt);
     this.bs.putShort(paramShort);
-    AppMethodBeat.o(117113);
+    AppMethodBeat.o(109667);
   }
   
   public void write(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(117111);
+    AppMethodBeat.i(109665);
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
       write((byte)i, paramInt);
-      AppMethodBeat.o(117111);
+      AppMethodBeat.o(109665);
       return;
     }
   }
   
   public void write(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(117123);
+    AppMethodBeat.i(109677);
     reserve(paramArrayOfByte.length + 8);
     writeHead((byte)13, paramInt);
     writeHead((byte)0, 0);
     write(paramArrayOfByte.length, 0);
     this.bs.put(paramArrayOfByte);
-    AppMethodBeat.o(117123);
+    AppMethodBeat.o(109677);
   }
   
   public void write(double[] paramArrayOfDouble, int paramInt)
   {
-    AppMethodBeat.i(117128);
+    AppMethodBeat.i(109682);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfDouble.length, 0);
@@ -484,7 +484,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117128);
+        AppMethodBeat.o(109682);
         return;
       }
       write(paramArrayOfDouble[paramInt], 0);
@@ -494,7 +494,7 @@ public class JceOutputStream
   
   public void write(float[] paramArrayOfFloat, int paramInt)
   {
-    AppMethodBeat.i(117127);
+    AppMethodBeat.i(109681);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfFloat.length, 0);
@@ -504,7 +504,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117127);
+        AppMethodBeat.o(109681);
         return;
       }
       write(paramArrayOfFloat[paramInt], 0);
@@ -514,7 +514,7 @@ public class JceOutputStream
   
   public void write(int[] paramArrayOfInt, int paramInt)
   {
-    AppMethodBeat.i(117125);
+    AppMethodBeat.i(109679);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfInt.length, 0);
@@ -524,7 +524,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117125);
+        AppMethodBeat.o(109679);
         return;
       }
       write(paramArrayOfInt[paramInt], 0);
@@ -534,7 +534,7 @@ public class JceOutputStream
   
   public void write(long[] paramArrayOfLong, int paramInt)
   {
-    AppMethodBeat.i(117126);
+    AppMethodBeat.i(109680);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfLong.length, 0);
@@ -544,7 +544,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117126);
+        AppMethodBeat.o(109680);
         return;
       }
       write(paramArrayOfLong[paramInt], 0);
@@ -554,14 +554,14 @@ public class JceOutputStream
   
   public <T> void write(T[] paramArrayOfT, int paramInt)
   {
-    AppMethodBeat.i(117129);
+    AppMethodBeat.i(109683);
     writeArray(paramArrayOfT, paramInt);
-    AppMethodBeat.o(117129);
+    AppMethodBeat.o(109683);
   }
   
   public void write(short[] paramArrayOfShort, int paramInt)
   {
-    AppMethodBeat.i(117124);
+    AppMethodBeat.i(109678);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfShort.length, 0);
@@ -571,7 +571,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117124);
+        AppMethodBeat.o(109678);
         return;
       }
       write(paramArrayOfShort[paramInt], 0);
@@ -581,7 +581,7 @@ public class JceOutputStream
   
   public void write(boolean[] paramArrayOfBoolean, int paramInt)
   {
-    AppMethodBeat.i(117122);
+    AppMethodBeat.i(109676);
     reserve(8);
     writeHead((byte)9, paramInt);
     write(paramArrayOfBoolean.length, 0);
@@ -591,7 +591,7 @@ public class JceOutputStream
     {
       if (paramInt >= i)
       {
-        AppMethodBeat.o(117122);
+        AppMethodBeat.o(109676);
         return;
       }
       write(paramArrayOfBoolean[paramInt], 0);
@@ -601,7 +601,7 @@ public class JceOutputStream
   
   public void writeByteString(String paramString, int paramInt)
   {
-    AppMethodBeat.i(117119);
+    AppMethodBeat.i(109673);
     reserve(paramString.length() + 10);
     paramString = HexUtil.hexStr2Bytes(paramString);
     if (paramString.length > 255)
@@ -609,24 +609,24 @@ public class JceOutputStream
       writeHead((byte)7, paramInt);
       this.bs.putInt(paramString.length);
       this.bs.put(paramString);
-      AppMethodBeat.o(117119);
+      AppMethodBeat.o(109673);
       return;
     }
     writeHead((byte)6, paramInt);
     this.bs.put((byte)paramString.length);
     this.bs.put(paramString);
-    AppMethodBeat.o(117119);
+    AppMethodBeat.o(109673);
   }
   
   public void writeHead(byte paramByte, int paramInt)
   {
-    AppMethodBeat.i(117110);
+    AppMethodBeat.i(109664);
     byte b;
     if (paramInt < 15)
     {
       b = (byte)(paramInt << 4 | paramByte);
       this.bs.put(b);
-      AppMethodBeat.o(117110);
+      AppMethodBeat.o(109664);
       return;
     }
     if (paramInt < 256)
@@ -634,17 +634,17 @@ public class JceOutputStream
       b = (byte)(paramByte | 0xF0);
       this.bs.put(b);
       this.bs.put((byte)paramInt);
-      AppMethodBeat.o(117110);
+      AppMethodBeat.o(109664);
       return;
     }
     JceEncodeException localJceEncodeException = new JceEncodeException("tag is too large: ".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(117110);
+    AppMethodBeat.o(109664);
     throw localJceEncodeException;
   }
   
   public void writeStringByte(String paramString, int paramInt)
   {
-    AppMethodBeat.i(117118);
+    AppMethodBeat.i(109672);
     paramString = HexUtil.hexStr2Bytes(paramString);
     reserve(paramString.length + 10);
     if (paramString.length > 255)
@@ -652,18 +652,18 @@ public class JceOutputStream
       writeHead((byte)7, paramInt);
       this.bs.putInt(paramString.length);
       this.bs.put(paramString);
-      AppMethodBeat.o(117118);
+      AppMethodBeat.o(109672);
       return;
     }
     writeHead((byte)6, paramInt);
     this.bs.put((byte)paramString.length);
     this.bs.put(paramString);
-    AppMethodBeat.o(117118);
+    AppMethodBeat.o(109672);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.JceOutputStream
  * JD-Core Version:    0.7.0.1
  */

@@ -7,24 +7,20 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import asuw;
-import asux;
-import asuy;
-import aswk;
-import aswl;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotPicRecyclerView
   extends FooterRecyclerView
-  implements aswl
+  implements ScrollVelometer.SpeedListener
 {
-  public int a;
-  public asux a;
-  asuy jdField_a_of_type_Asuy;
-  public aswk a;
-  boolean jdField_a_of_type_Boolean = false;
-  public int[] a;
-  boolean b = false;
+  public static boolean e = false;
+  int b = 0;
+  int[] c = new int[3];
+  boolean d = false;
+  HotPicRecyclerView.PullAndFastScrollListener f;
+  ScrollVelometer g = new ScrollVelometer(200, this);
+  HotPicRecyclerView.ScrollStatusChengedListener h;
+  boolean i = false;
   
   public HotPicRecyclerView(Context paramContext)
   {
@@ -34,237 +30,260 @@ public class HotPicRecyclerView
   public HotPicRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_Aswk = new aswk(200, this);
-    setOnScrollListener(new asuw(this));
+    setOnScrollListener(new HotPicRecyclerView.1(this));
   }
   
   public static void a(String paramString)
   {
-    String str = "LogAutoScrollInfo ";
-    if (paramString != null) {
-      str = "LogAutoScrollInfo " + paramString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HotPicRecyclerView", 2, str);
-    }
-  }
-  
-  public int a()
-  {
-    float f2 = 0.0F;
-    Object localObject = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
-    if (i >= 0) {
-      return i;
-    }
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
-    localObject = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-    i = localObject[0];
-    if (j == i) {
-      return j;
-    }
-    localObject = findViewHolderForPosition(j);
-    RecyclerView.ViewHolder localViewHolder = findViewHolderForPosition(i);
-    if (localObject != null) {}
-    for (float f1 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom() / ((RecyclerView.ViewHolder)localObject).itemView.getHeight();; f1 = 0.0F)
+    Object localObject = "LogAutoScrollInfo ";
+    if (paramString != null)
     {
-      if (localViewHolder != null) {
-        f2 = (getHeight() - localViewHolder.itemView.getTop()) / localViewHolder.itemView.getHeight();
-      }
-      if (f1 < f2) {
-        break;
-      }
-      return j;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LogAutoScrollInfo ");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
-  }
-  
-  void a()
-  {
-    Object localObject = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
-    localObject = " nEndIndex = " + i;
-    localObject = (String)localObject + " nCompletelyEndIndex = " + j;
-    int[] arrayOfInt = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions(arrayOfInt);
-    i = arrayOfInt[0];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
-    j = arrayOfInt[0];
-    localObject = (String)localObject + " nStartIndex = " + i;
-    localObject = (String)localObject + " nCompletelyStartIndex = " + j;
     if (QLog.isColorLevel()) {
       QLog.i("HotPicRecyclerView", 2, (String)localObject);
     }
   }
   
+  void a()
+  {
+    Object localObject1 = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject1);
+    int j = localObject1[0];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject1);
+    int k = localObject1[0];
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(" nEndIndex = ");
+    ((StringBuilder)localObject1).append(j);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" nCompletelyEndIndex = ");
+    ((StringBuilder)localObject2).append(k);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject2);
+    j = localObject2[0];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject2);
+    k = localObject2[0];
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" nStartIndex = ");
+    ((StringBuilder)localObject2).append(j);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" nCompletelyStartIndex = ");
+    ((StringBuilder)localObject2).append(k);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("HotPicRecyclerView", 2, (String)localObject1);
+    }
+  }
+  
   public void a(int paramInt1, int paramInt2)
   {
-    a("ScrollItem Start nScollFromIndex is " + paramInt1 + " nScrollToIndex is " + paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ScrollItem Start nScollFromIndex is ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" nScrollToIndex is ");
+    ((StringBuilder)localObject).append(paramInt2);
+    a(((StringBuilder)localObject).toString());
     a();
-    Object localObject = new int[1];
+    localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
+    int j = localObject[0];
     int[] arrayOfInt = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
-    int j = arrayOfInt[0];
-    if ((i == -1) && (j == -1)) {
-      paramInt1 = 0;
-    }
-    for (;;)
+    int k = arrayOfInt[0];
+    if ((j == -1) && (k == -1)) {}
+    do
     {
-      localObject = findViewHolderForPosition(paramInt2);
-      if (localObject != null)
+      paramInt1 = 0;
+      break;
+      if ((paramInt1 < k) || ((paramInt1 > j) && (j >= 0))) {
+        break label265;
+      }
+      localObject = findViewHolderForPosition(paramInt1);
+    } while (localObject == null);
+    paramInt1 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+    localObject = findViewHolderForPosition(paramInt2);
+    if (localObject != null)
+    {
+      paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("StartY = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      a(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EndY = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      a(((StringBuilder)localObject).toString());
+      paramInt2 -= paramInt1;
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = paramInt2 + 1;
+      }
+      smoothScrollBy(0, paramInt1);
+      return;
+    }
+    smoothScrollToPosition(paramInt2);
+    return;
+    label265:
+    if (paramInt2 < k)
+    {
+      smoothScrollToPosition(paramInt2);
+      return;
+    }
+    if ((paramInt2 > j) && (j >= 0))
+    {
+      ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
+      paramInt1 = localObject[0];
+      if (paramInt2 == paramInt1)
       {
-        paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-        a("StartY = " + paramInt1);
-        a("EndY = " + paramInt2);
-        paramInt2 -= paramInt1;
-        paramInt1 = paramInt2;
-        if (paramInt2 == 0) {
-          paramInt1 = paramInt2 + 1;
-        }
-        smoothScrollBy(0, paramInt1);
-        return;
-        if ((paramInt1 < j) || ((paramInt1 > i) && (i >= 0)))
+        localObject = findViewHolderForPosition(paramInt1);
+        if (localObject != null)
         {
-          if (paramInt2 < j)
-          {
-            smoothScrollToPosition(paramInt2);
-            return;
+          paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+          paramInt1 = paramInt2;
+          if (paramInt2 == 0) {
+            paramInt1 = paramInt2 + 1;
           }
-          if ((paramInt2 > i) && (i >= 0))
-          {
-            ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-            paramInt1 = localObject[0];
-            if (paramInt2 == paramInt1)
-            {
-              localObject = findViewHolderForPosition(paramInt1);
-              if (localObject != null)
-              {
-                paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-                paramInt1 = paramInt2;
-                if (paramInt2 == 0) {
-                  paramInt1 = paramInt2 + 1;
-                }
-                smoothScrollBy(0, paramInt1);
-                return;
-              }
-              smoothScrollToPosition(paramInt2);
-              return;
-            }
-            if (paramInt2 == paramInt1 + 1)
-            {
-              localObject = findViewHolderForPosition(paramInt1);
-              if (localObject != null)
-              {
-                paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom();
-                paramInt1 = paramInt2;
-                if (paramInt2 == 0) {
-                  paramInt1 = paramInt2 + 1;
-                }
-                smoothScrollBy(0, paramInt1);
-                return;
-              }
-              smoothScrollToPosition(paramInt2);
-              return;
-            }
-            smoothScrollToPosition(paramInt2);
-            return;
-          }
-          localObject = findViewHolderForPosition(paramInt2);
-          if (localObject != null)
-          {
-            paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-            paramInt1 = paramInt2;
-            if (paramInt2 == 0) {
-              paramInt1 = paramInt2 + 1;
-            }
-            smoothScrollBy(0, paramInt1);
-            return;
-          }
-          smoothScrollToPosition(paramInt2);
+          smoothScrollBy(0, paramInt1);
           return;
         }
-        localObject = findViewHolderForPosition(paramInt1);
-        if (localObject != null) {
-          paramInt1 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-        }
-      }
-      else
-      {
         smoothScrollToPosition(paramInt2);
         return;
       }
-      paramInt1 = 0;
+      if (paramInt2 == paramInt1 + 1)
+      {
+        localObject = findViewHolderForPosition(paramInt1);
+        if (localObject != null)
+        {
+          paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom();
+          paramInt1 = paramInt2;
+          if (paramInt2 == 0) {
+            paramInt1 = paramInt2 + 1;
+          }
+          smoothScrollBy(0, paramInt1);
+          return;
+        }
+        smoothScrollToPosition(paramInt2);
+        return;
+      }
+      smoothScrollToPosition(paramInt2);
+      return;
     }
+    localObject = findViewHolderForPosition(paramInt2);
+    if (localObject != null)
+    {
+      paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = paramInt2 + 1;
+      }
+      smoothScrollBy(0, paramInt1);
+      return;
+    }
+    smoothScrollToPosition(paramInt2);
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_Asux != null) && (HotPicPageView.b)) {
-      this.jdField_a_of_type_Asux.c();
+    if ((paramBoolean) && (this.f != null) && (HotPicPageView.z)) {
+      this.f.c();
     }
-    this.jdField_a_of_type_Aswk.a(false);
+    this.g.a(false);
   }
   
   public boolean a(int paramInt)
   {
-    a("CheckItemIsNeedToScroll Start nCheckIndex is " + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CheckItemIsNeedToScroll Start nCheckIndex is ");
+    ((StringBuilder)localObject).append(paramInt);
+    a(((StringBuilder)localObject).toString());
     a();
-    Object localObject = new int[1];
+    localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
+    int j = localObject[0];
     localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
-    if ((i == -1) && (j == -1))
+    int k = localObject[0];
+    if ((j == -1) && (k == -1))
     {
       localObject = findViewHolderForPosition(paramInt);
       if (localObject == null) {
         return false;
       }
-      if (((RecyclerView.ViewHolder)localObject).itemView == null) {
-        break label145;
+      if (((RecyclerView.ViewHolder)localObject).itemView != null) {
+        paramInt = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+      } else {
+        paramInt = 0;
       }
+      return paramInt != 0;
     }
-    label145:
-    for (paramInt = ((RecyclerView.ViewHolder)localObject).itemView.getTop();; paramInt = 0)
-    {
-      if (paramInt != 0) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      if ((paramInt >= j) && ((paramInt <= i) || (i < 0))) {
-        break;
-      }
-      return true;
+    if (paramInt >= k) {
+      return (paramInt > j) && (j >= 0);
     }
+    return true;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Asuy != null) {
-      this.jdField_a_of_type_Asuy.g();
+    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.h;
+    if (localScrollStatusChengedListener != null) {
+      localScrollStatusChengedListener.g();
     }
-    this.b = false;
+    this.i = false;
   }
   
   public void c()
   {
-    if (this.b) {}
-    do
-    {
+    if (this.i) {
       return;
-      this.b = true;
-    } while (this.jdField_a_of_type_Asuy == null);
-    this.jdField_a_of_type_Asuy.f();
+    }
+    this.i = true;
+    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.h;
+    if (localScrollStatusChengedListener != null) {
+      localScrollStatusChengedListener.f();
+    }
+  }
+  
+  public int d()
+  {
+    Object localObject = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
+    int j = localObject[0];
+    if (j >= 0) {
+      return j;
+    }
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject);
+    j = localObject[0];
+    localObject = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
+    int k = localObject[0];
+    if (j == k) {
+      return j;
+    }
+    localObject = findViewHolderForPosition(j);
+    RecyclerView.ViewHolder localViewHolder = findViewHolderForPosition(k);
+    float f2 = 0.0F;
+    float f1;
+    if (localObject != null) {
+      f1 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom() / ((RecyclerView.ViewHolder)localObject).itemView.getHeight();
+    } else {
+      f1 = 0.0F;
+    }
+    if (localViewHolder != null) {
+      f2 = (getHeight() - localViewHolder.itemView.getTop()) / localViewHolder.itemView.getHeight();
+    }
+    if (f1 >= f2) {
+      return j;
+    }
+    return k;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -284,12 +303,16 @@ public class HotPicRecyclerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    HotPicPageView.b = true;
+    HotPicPageView.z = true;
     if (paramMotionEvent.getAction() == 1)
     {
-      ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.jdField_a_of_type_ArrayOfInt);
-      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_Asux != null)) {
-        this.jdField_a_of_type_Asux.d();
+      ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.c);
+      if (this.c[0] == 0)
+      {
+        HotPicRecyclerView.PullAndFastScrollListener localPullAndFastScrollListener = this.f;
+        if (localPullAndFastScrollListener != null) {
+          localPullAndFastScrollListener.d();
+        }
       }
     }
     try
@@ -301,14 +324,14 @@ public class HotPicRecyclerView
     return true;
   }
   
-  public void setScrollStatusChengedListener(asuy paramasuy)
+  public void setScrollStatusChengedListener(HotPicRecyclerView.ScrollStatusChengedListener paramScrollStatusChengedListener)
   {
-    this.jdField_a_of_type_Asuy = paramasuy;
+    this.h = paramScrollStatusChengedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicRecyclerView
  * JD-Core Version:    0.7.0.1
  */

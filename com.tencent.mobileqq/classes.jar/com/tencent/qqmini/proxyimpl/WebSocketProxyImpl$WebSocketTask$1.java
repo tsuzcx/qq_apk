@@ -1,6 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Nullable;
 import okhttp3.Headers;
@@ -16,36 +17,39 @@ class WebSocketProxyImpl$WebSocketTask$1
   
   public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    this.this$1.socketClosedCallbacked = true;
-    this.this$1.mListener.onClose(this.this$1.mSocketId, paramInt, paramString);
-    this.this$1.this$0.taskMap.remove(Integer.valueOf(this.this$1.mSocketId));
+    paramWebSocket = this.b;
+    paramWebSocket.e = true;
+    paramWebSocket.c.onClose(this.b.a, paramInt, paramString);
+    this.b.f.a.remove(Integer.valueOf(this.b.a));
   }
   
   public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
-    this.this$1.mListener.onError(this.this$1.mSocketId, HttpUtil.getRetCodeFrom(paramThrowable, -1), "WebSocket error:network");
-    this.this$1.this$0.taskMap.remove(Integer.valueOf(this.this$1.mSocketId));
+    QLog.e("WebSocketProxyImpl", 1, "onFailure : ", paramThrowable);
+    this.b.c.onError(this.b.a, HttpUtil.a(paramThrowable, -1), paramThrowable.getMessage());
+    this.b.f.a.remove(Integer.valueOf(this.b.a));
   }
   
   public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    this.this$1.mListener.onMessage(this.this$1.mSocketId, paramString);
+    this.b.c.onMessage(this.b.a, paramString);
   }
   
   public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
   {
-    this.this$1.mListener.onMessage(this.this$1.mSocketId, paramByteString.toByteArray());
+    this.b.c.onMessage(this.b.a, paramByteString.toByteArray());
   }
   
   public void onOpen(WebSocket paramWebSocket, Response paramResponse)
   {
-    this.this$1.mWebSocket = paramWebSocket;
-    this.this$1.mListener.onOpen(this.this$1.mSocketId, paramResponse.code(), paramResponse.headers().toMultimap());
+    WebSocketProxyImpl.WebSocketTask localWebSocketTask = this.b;
+    localWebSocketTask.d = paramWebSocket;
+    localWebSocketTask.c.onOpen(this.b.a, paramResponse.code(), paramResponse.headers().toMultimap());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.WebSocketTask.1
  * JD-Core Version:    0.7.0.1
  */

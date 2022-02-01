@@ -11,13 +11,13 @@ public class ResultReceiver
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
-  final boolean iK = false;
-  a iL;
-  final Handler mHandler = null;
+  final Handler dG = null;
+  final boolean kI = false;
+  a kJ;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.iL = b.c(paramParcel.readStrongBinder());
+    this.kJ = b.c(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -29,12 +29,12 @@ public class ResultReceiver
   
   public final void send(int paramInt, Bundle paramBundle)
   {
-    if (this.iK) {
-      if (this.mHandler != null) {
-        this.mHandler.post(new e(this, paramInt, paramBundle));
+    if (this.kI) {
+      if (this.dG != null) {
+        this.dG.post(new e(this, paramInt, paramBundle));
       }
     }
-    while (this.iL == null)
+    while (this.kJ == null)
     {
       return;
       onReceiveResult(paramInt, paramBundle);
@@ -42,7 +42,7 @@ public class ResultReceiver
     }
     try
     {
-      this.iL.send(paramInt, paramBundle);
+      this.kJ.send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -52,10 +52,10 @@ public class ResultReceiver
   {
     try
     {
-      if (this.iL == null) {
-        this.iL = new d(this);
+      if (this.kJ == null) {
+        this.kJ = new d(this);
       }
-      paramParcel.writeStrongBinder(this.iL.asBinder());
+      paramParcel.writeStrongBinder(this.kJ.asBinder());
       return;
     }
     finally {}

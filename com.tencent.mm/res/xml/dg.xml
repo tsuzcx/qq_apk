@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_emoji_unicode" android:persistent="false" android:title="@string/fo_" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_ilink_login" android:persistent="false" android:title="@string/fof" />
+    <Preference android:defaultValue="false" android:key="show_dict_info" android:layout="@layout/bdi" android:persistent="false" android:title="@string/fom" />
+    <Preference android:defaultValue="false" android:key="force_fetch_dict" android:layout="@layout/bdi" android:persistent="false" android:title="@string/foj" />
+    <Preference android:defaultValue="false" android:key="clear_active_process" android:layout="@layout/bdi" android:persistent="false" android:title="@string/fo3" />
+    <Preference android:defaultValue="false" android:key="refresh_contact_data" android:layout="@layout/bdi" android:persistent="false" android:title="@string/fol" />
+    <Preference android:defaultValue="false" android:key="delete_dict_data" android:layout="@layout/bdi" android:persistent="false" android:title="@string/fo7" />
+    <CheckBoxPreference android:defaultValue="false" android:key="can_print_click_data" android:persistent="false" android:title="@string/fo1" />
+    <CheckBoxPreference android:defaultValue="false" android:key="can_print_engine_log" android:persistent="false" android:title="@string/fo2" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_pre_input" android:persistent="false" android:title="@string/foh" />
+    <Preference android:defaultValue="false" android:key="config_delete_key" android:layout="@layout/bdi" android:persistent="false" android:title="@string/fo4" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_selfdraw_keyboard" android:persistent="false" android:title="@string/foi" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_move_cursor" android:persistent="false" android:title="@string/fog" />
+    <Preference android:defaultValue="false" android:key="enable_emoji_config_clear" android:layout="@layout/bdi" android:persistent="false" android:title="@string/fo9" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault" android:persistent="false" android:title="@string/foa" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault_exchange" android:persistent="false" android:title="@string/fob" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault_insert_at_middle" android:persistent="false" android:title="@string/foc" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fault_skip" android:persistent="false" android:title="@string/fod" />
+    <CheckBoxPreference android:defaultValue="false" android:key="enable_fuzzy_syllables" android:persistent="false" android:title="@string/foe" />
+    <Preference android:defaultValue="false" android:key="op_req_one" android:layout="@layout/bdi" android:persistent="false" android:title="@string/hev" />
+    <Preference android:defaultValue="false" android:key="op_req_two" android:layout="@layout/bdi" android:persistent="false" android:title="@string/hex" />
+    <Preference android:defaultValue="false" android:key="op_req_three" android:layout="@layout/bdi" android:persistent="false" android:title="@string/hew" />
+</PreferenceScreen>

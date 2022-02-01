@@ -1,28 +1,35 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.ui.base.u.i;
 
 final class MobileInputUI$18
-  implements n.c
+  implements u.i
 {
   MobileInputUI$18(MobileInputUI paramMobileInputUI) {}
   
-  public final void onCreateMMMenu(l paraml)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(125178);
-    if (paraml.dEc())
+    AppMethodBeat.i(305079);
+    switch (paramMenuItem.getItemId())
     {
-      paraml.hx(5001, 2131305945);
-      paraml.hx(5002, 2131305943);
     }
-    AppMethodBeat.o(125178);
+    for (;;)
+    {
+      AppMethodBeat.o(305079);
+      return;
+      MobileInputUI.c(this.qcW);
+      AppMethodBeat.o(305079);
+      return;
+      MobileInputUI.X(this.qcW, this.qcW.getString(r.j.wechat_help_center_url) + LocaleUtil.getApplicationLanguage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileInputUI.18
  * JD-Core Version:    0.7.0.1
  */

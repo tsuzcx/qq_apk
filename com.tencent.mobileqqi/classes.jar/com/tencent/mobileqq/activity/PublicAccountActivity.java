@@ -40,6 +40,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
+import dai;
 import daj;
 import dak;
 import dal;
@@ -48,7 +49,6 @@ import dan;
 import dao;
 import dap;
 import daq;
-import dar;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -69,12 +69,12 @@ public class PublicAccountActivity
   View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private SearchResultDialog jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dan(this);
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new dao(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dam(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new dan(this);
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   public XListView a;
-  dap jdField_a_of_type_Dap;
-  private daq jdField_a_of_type_Daq = new daq(this);
+  dao jdField_a_of_type_Dao;
+  private dap jdField_a_of_type_Dap = new dap(this);
   public final ArrayList a;
   public boolean a;
   private View jdField_b_of_type_AndroidViewView;
@@ -96,7 +96,7 @@ public class PublicAccountActivity
       return;
     }
     Contacts.a += 1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new daj(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new dai(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setCanceledOnTouchOutside(true);
     paramInt = d();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -104,9 +104,9 @@ public class PublicAccountActivity
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new dak(this));
-    localTranslateAnimation2.setAnimationListener(new dal(this, paramInt));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new dam(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new daj(this));
+    localTranslateAnimation2.setAnimationListener(new dak(this, paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(new dal(this, paramInt, localTranslateAnimation2));
     this.jdField_b_of_type_AndroidViewView.startAnimation(localTranslateAnimation1);
   }
   
@@ -156,12 +156,12 @@ public class PublicAccountActivity
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232072));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232071));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
     LayoutInflater localLayoutInflater = LayoutInflater.from(this);
     View localView = localLayoutInflater.inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    localView.findViewById(2131233086).setVisibility(8);
-    EditText localEditText = (EditText)localView.findViewById(2131233087);
+    localView.findViewById(2131233085).setVisibility(8);
+    EditText localEditText = (EditText)localView.findViewById(2131233086);
     localEditText.setFocusableInTouchMode(false);
     localEditText.setOnClickListener(this);
     localEditText.setCursorVisible(false);
@@ -171,8 +171,8 @@ public class PublicAccountActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130903325, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232073);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131232075).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232072);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131232074).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.jdField_a_of_type_AndroidViewView);
     a(true);
   }
@@ -180,24 +180,24 @@ public class PublicAccountActivity
   private void e()
   {
     this.jdField_b_of_type_AndroidViewView = ((LinearLayout)findViewById(2131231116));
-    this.c = ((RelativeLayout)findViewById(2131231374));
+    this.c = ((RelativeLayout)findViewById(2131231373));
     this.c.setVisibility(8);
-    Object localObject = (TextView)findViewById(2131231376);
+    Object localObject = (TextView)findViewById(2131231375);
     ((TextView)localObject).setText(2131562981);
     setTitle(2131562981);
     ((TextView)localObject).setContentDescription(getResources().getString(2131562981));
-    localObject = (TextView)findViewById(2131231456);
+    localObject = (TextView)findViewById(2131231455);
     ((TextView)localObject).setVisibility(0);
     ((TextView)localObject).setOnClickListener(this);
     ((TextView)localObject).setText(2131561870);
     IphoneTitleBarActivity.b((View)localObject);
-    ((TextView)findViewById(2131231457)).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231380));
+    ((TextView)findViewById(2131231456)).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231379));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562332);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetTextView);
-    localObject = (ImageView)findViewById(2131231461);
+    localObject = (ImageView)findViewById(2131231460);
     ((ImageView)localObject).setVisibility(8);
     ((ImageView)localObject).setImageResource(2130840117);
     ((ImageView)localObject).setOnClickListener(this);
@@ -244,17 +244,17 @@ public class PublicAccountActivity
         }
       }
     }
-    if (this.jdField_a_of_type_Dap == null) {
-      this.jdField_a_of_type_Dap = new dap(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);
+    if (this.jdField_a_of_type_Dao == null) {
+      this.jdField_a_of_type_Dao = new dao(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);
     }
-    this.jdField_a_of_type_Dap.notifyDataSetChanged();
+    this.jdField_a_of_type_Dao.notifyDataSetChanged();
   }
   
   public boolean a(int paramInt, View paramView, ListView paramListView)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(a());
     if (!c()) {
-      this.jdField_a_of_type_Daq.sendEmptyMessageDelayed(2, 1000L);
+      this.jdField_a_of_type_Dap.sendEmptyMessageDelayed(2, 1000L);
     }
     return true;
   }
@@ -286,10 +286,10 @@ public class PublicAccountActivity
   
   protected void doOnDestroy()
   {
-    this.jdField_a_of_type_Daq.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Dap.removeCallbacksAndMessages(null);
     b(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
     b(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_Dap.b();
+    this.jdField_a_of_type_Dao.b();
     super.doOnDestroy();
   }
   
@@ -308,7 +308,7 @@ public class PublicAccountActivity
       return;
       a(3);
       return;
-      paramView = (dar)paramView.getTag();
+      paramView = (daq)paramView.getTag();
     } while (paramView == null);
     a(paramView.a);
   }

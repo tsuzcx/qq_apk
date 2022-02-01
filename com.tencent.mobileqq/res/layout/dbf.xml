@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/oer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/azw"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/pvb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip">
+        <com.qzone.cover.ui.QzoneAvatarDecorator android:id="@id/ppx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="20.0dip" android:textColor="@color/skin_bar_text" android:id="@id/qo3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_toRightOf="@id/ppx" android:layout_centerVertical="true" />
+        <TextView android:id="@id/qo2" android:background="@drawable/j9k" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/o68" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:minHeight="12.0dip">
+        <com.tencent.biz.subscribe.part.block.base.RefreshHeaderView android:layout_gravity="center" android:id="@id/pu2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <ViewStub android:id="@id/hui" android:layout="@layout/bl8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

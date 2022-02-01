@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/g44" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/g45" android:paddingLeft="@dimen/a15" android:paddingTop="@dimen/a17" android:paddingRight="@dimen/a16" android:paddingBottom="@dimen/a14" android:layout_width="fill_parent" android:layout_height="@dimen/a13">
+        <ImageView android:id="@id/icon" android:layout_width="@dimen/a12" android:layout_height="@dimen/a12" android:layout_marginRight="@dimen/a11" android:src="@drawable/icon" android:scaleType="fitCenter" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/f5l" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/a1a" android:textColor="@color/skin_dark_gray" android:ellipsize="end" android:id="@id/kh3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+                <ImageView android:id="@id/asu" android:visibility="visible" android:layout_width="@dimen/a0y" android:layout_height="@dimen/a0y" android:layout_marginLeft="@dimen/a0x" android:src="@drawable/dlr" android:scaleType="fitCenter" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/a10" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/kh2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a0z" android:maxLines="2" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/g3r" android:layout_width="fill_parent" android:layout_height="1.0px" android:src="@drawable/b3i" />
+    <com.tencent.mobileqq.widget.PublicMenuBar android:id="@id/g3o" android:layout_width="fill_parent" android:layout_height="@dimen/a18" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" android:src="@drawable/b3i" />
+</LinearLayout>

@@ -21,7 +21,7 @@ public class l
   
   public static Network a(Context paramContext, int paramInt)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     try
@@ -59,7 +59,7 @@ public class l
   
   public static NetworkInfo a(Context paramContext, Network paramNetwork)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     if (paramNetwork == null) {
@@ -83,37 +83,42 @@ public class l
   
   public static void a(Context paramContext)
   {
-    if (!b.f()) {}
-    for (;;)
-    {
+    if (!b.g()) {
       return;
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (paramContext != null) {
-        try
+    }
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return;
+    }
+    try
+    {
+      if (d.compareAndSet(0, 1))
+      {
+        NetworkRequest.Builder localBuilder = new NetworkRequest.Builder();
+        localBuilder.addCapability(12);
+        localBuilder.addTransportType(0);
+        paramContext.requestNetwork(localBuilder.build(), f);
+        if (QLog.isColorLevel())
         {
-          if (d.compareAndSet(0, 1))
-          {
-            NetworkRequest.Builder localBuilder = new NetworkRequest.Builder();
-            localBuilder.addCapability(12);
-            localBuilder.addTransportType(0);
-            paramContext.requestNetwork(localBuilder.build(), f);
-            if (QLog.isColorLevel()) {
-              QLog.d("NetworkChannelManager", 2, "requestMobileNetworkIfNot refCount=" + d.get() + " mobileCallbackObj=" + Integer.toHexString(f.hashCode()));
-            }
-            if (e != null)
-            {
-              e.a(0);
-              return;
-            }
-          }
+          paramContext = new StringBuilder();
+          paramContext.append("requestMobileNetworkIfNot refCount=");
+          paramContext.append(d.get());
+          paramContext.append(" mobileCallbackObj=");
+          paramContext.append(Integer.toHexString(f.hashCode()));
+          QLog.d("NetworkChannelManager", 2, paramContext.toString());
         }
-        catch (Throwable paramContext)
+        if (e != null)
         {
-          d.set(0);
-          QLog.i("NetworkChannelManager", 1, paramContext.getMessage(), paramContext);
-          paramContext.printStackTrace();
+          e.a(0);
+          return;
         }
       }
+    }
+    catch (Throwable paramContext)
+    {
+      d.set(0);
+      QLog.i("NetworkChannelManager", 1, paramContext.getMessage(), paramContext);
+      paramContext.printStackTrace();
     }
   }
   
@@ -140,7 +145,7 @@ public class l
   
   public static Network b(Context paramContext)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     try
@@ -165,7 +170,7 @@ public class l
   
   public static NetworkInfo b(Context paramContext, int paramInt)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     try
@@ -210,11 +215,17 @@ public class l
         if (e != null) {
           e.b(0);
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("NetworkChannelManager", 2, "unregisterMobileNetworkCallback refCount=" + d.get() + " mobileCallbackObj=" + Integer.toHexString(f.hashCode()));
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("unregisterMobileNetworkCallback refCount=");
+          paramContext.append(d.get());
+          paramContext.append(" mobileCallbackObj=");
+          paramContext.append(Integer.toHexString(f.hashCode()));
+          QLog.i("NetworkChannelManager", 2, paramContext.toString());
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramContext)
     {
@@ -226,7 +237,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.l
  * JD-Core Version:    0.7.0.1
  */

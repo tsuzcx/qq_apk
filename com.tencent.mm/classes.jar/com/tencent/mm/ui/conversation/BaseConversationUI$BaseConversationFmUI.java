@@ -1,25 +1,25 @@
 package com.tencent.mm.ui.conversation;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragment;
 
 public class BaseConversationUI$BaseConversationFmUI
   extends MMFragment
 {
-  private BaseConversationUI.a fmStatus = BaseConversationUI.a.AgX;
+  private BaseConversationUI.a fmStatus = BaseConversationUI.a.afmj;
   public BaseConversationUI ui;
   
   public void finish()
   {
-    AppMethodBeat.i(34068);
+    AppMethodBeat.i(38187);
     thisActivity().finish();
-    AppMethodBeat.o(34068);
+    AppMethodBeat.o(38187);
   }
   
   public int getLayoutId()
@@ -34,55 +34,63 @@ public class BaseConversationUI$BaseConversationFmUI
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AppMethodBeat.i(34066);
-    this.fmStatus = BaseConversationUI.a.AgX;
+    AppMethodBeat.i(38185);
+    this.fmStatus = BaseConversationUI.a.afmj;
     this.ui = ((BaseConversationUI)thisActivity());
-    paramLayoutInflater = paramLayoutInflater.inflate(getLayoutId(), paramViewGroup, false);
-    setHasOptionsMenu(true);
-    AppMethodBeat.o(34066);
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    AppMethodBeat.o(38185);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(34071);
-    if (this.fmStatus != BaseConversationUI.a.AgZ)
+    AppMethodBeat.i(38190);
+    if (this.fmStatus != BaseConversationUI.a.afml)
     {
-      ab.w("MicroMsg.BaseConversationUI", "fmStatus != ActivityStatus.ACTIVITY_PAUSE when fm onDestroy");
+      Log.w("MicroMsg.BaseConversationUI", "fmStatus != ActivityStatus.ACTIVITY_PAUSE when fm onDestroy");
       onPause();
     }
     super.onDestroy();
-    AppMethodBeat.o(34071);
+    AppMethodBeat.o(38190);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(34070);
+    AppMethodBeat.i(38189);
     super.onPause();
-    this.fmStatus = BaseConversationUI.a.AgZ;
-    AppMethodBeat.o(34070);
+    this.fmStatus = BaseConversationUI.a.afml;
+    AppMethodBeat.o(38189);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(34069);
+    AppMethodBeat.i(38188);
     super.onResume();
-    this.fmStatus = BaseConversationUI.a.AgY;
-    AppMethodBeat.o(34069);
+    this.fmStatus = BaseConversationUI.a.afmk;
+    AppMethodBeat.o(38188);
+  }
+  
+  public void setMMTitle(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(256753);
+    if (this.ui != null) {
+      this.ui.setCustomTitle(paramCharSequence);
+    }
+    AppMethodBeat.o(256753);
   }
   
   public void setMMTitle(String paramString)
   {
-    AppMethodBeat.i(34067);
+    AppMethodBeat.i(38186);
     if (this.ui != null) {
       this.ui.setTitle(paramString);
     }
-    AppMethodBeat.o(34067);
+    AppMethodBeat.o(38186);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.BaseConversationUI.BaseConversationFmUI
  * JD-Core Version:    0.7.0.1
  */

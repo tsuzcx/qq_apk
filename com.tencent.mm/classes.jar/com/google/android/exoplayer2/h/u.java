@@ -3,54 +3,60 @@ package com.google.android.exoplayer2.h;
 import android.net.Uri;
 import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
 
 public final class u<T>
   implements t.c
 {
-  private final g aBo;
-  public final j aQI;
-  private final u.a<? extends T> aZC;
-  public volatile long aZD;
+  private final g cLk;
+  public final j daF;
+  private final a<? extends T> diX;
+  public volatile long diY;
   private volatile boolean isCanceled;
   public volatile T result;
   public final int type;
   
-  public u(g paramg, Uri paramUri, u.a<? extends T> parama)
+  public u(g paramg, Uri paramUri, a<? extends T> parama)
   {
-    AppMethodBeat.i(95856);
-    this.aBo = paramg;
-    this.aQI = new j(paramUri);
+    AppMethodBeat.i(210318);
+    this.cLk = paramg;
+    this.daF = new j(paramUri, 1);
     this.type = 4;
-    this.aZC = parama;
-    AppMethodBeat.o(95856);
+    this.diX = parama;
+    AppMethodBeat.o(210318);
   }
   
-  public final void pf()
+  public final void Tb()
   {
     this.isCanceled = true;
   }
   
-  public final boolean pg()
+  public final boolean Tc()
   {
     return this.isCanceled;
   }
   
-  public final void ph()
+  public final void Td()
   {
-    AppMethodBeat.i(95857);
-    i locali = new i(this.aBo, this.aQI);
+    AppMethodBeat.i(93101);
+    i locali = new i(this.cLk, this.daF);
     try
     {
-      locali.qo();
-      this.result = this.aZC.b(this.aBo.getUri(), locali);
+      locali.checkOpened();
+      this.result = this.diX.b(this.cLk.getUri(), locali);
       return;
     }
     finally
     {
-      this.aZD = locali.aYw;
+      this.diY = locali.totalBytesRead;
       x.closeQuietly(locali);
-      AppMethodBeat.o(95857);
+      AppMethodBeat.o(93101);
     }
+  }
+  
+  public static abstract interface a<T>
+  {
+    public abstract T b(Uri paramUri, InputStream paramInputStream);
   }
 }
 

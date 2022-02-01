@@ -1,141 +1,162 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.n;
-import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.u;
-import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.PreferenceCategory;
-import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
-import com.tencent.mm.ui.base.preference.f;
-import junit.framework.Assert;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.autogen.a.ly;
+import com.tencent.mm.ay.l;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.x;
 
 public final class h
-  implements com.tencent.mm.pluginsdk.b.a
+  extends n
+  implements MStorageEx.IOnStorageChange
 {
-  private ad contact;
-  Context context;
-  private String eeu;
-  u efi;
-  private int gyR;
-  private int pAe;
-  ContactListExpandPreference pAf;
-  private boolean pyp;
-  private boolean pyq;
-  private f screen;
-  
   public h(Context paramContext)
   {
-    AppMethodBeat.i(23533);
-    this.context = paramContext;
-    this.pAf = new ContactListExpandPreference(paramContext, 0);
-    AppMethodBeat.o(23533);
+    super(paramContext, new s(paramContext));
+    AppMethodBeat.i(27137);
+    new ly().publish();
+    AppMethodBeat.o(27137);
   }
   
-  public final boolean Ke(String paramString)
+  public static void clearData()
   {
-    AppMethodBeat.i(23534);
-    ab.d("MicroMsg.ContactWidgetGroupCard", "handleEvent ".concat(String.valueOf(paramString)));
-    aw.aaz();
-    paramString = c.YA().arw(paramString);
-    if ((paramString == null) || ((int)paramString.euF <= 0))
+    AppMethodBeat.i(27138);
+    bh.bCz();
+    com.tencent.mm.model.c.bzD().aLO("feedsapp");
+    bh.bCz();
+    com.tencent.mm.model.c.bzG().bxK("feedsapp");
+    AppMethodBeat.o(27138);
+  }
+  
+  protected final void Av(boolean paramBoolean)
+  {
+    AppMethodBeat.i(27140);
+    Context localContext = this.context;
+    if (paramBoolean) {}
+    for (String str = localContext.getString(R.l.settings_plugins_installing);; str = localContext.getString(R.l.settings_plugins_uninstalling))
     {
-      AppMethodBeat.o(23534);
+      localContext.getString(R.l.app_tip);
+      new MTimerHandler(new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(27135);
+          int i = z.bBf();
+          if (this.xve) {
+            i &= 0xFFFF7FFF;
+          }
+          for (;;)
+          {
+            bh.bCz();
+            com.tencent.mm.model.c.ban().B(34, Integer.valueOf(i));
+            bh.bCz();
+            com.tencent.mm.model.c.bzz().d(new l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.xve) {
+              h.clearData();
+            }
+            if (this.KNw != null) {
+              this.KNw.onNotifyChange(null, null);
+            }
+            if (this.xin != null) {
+              this.xin.dismiss();
+            }
+            AppMethodBeat.o(27135);
+            return true;
+            i |= 0x8000;
+          }
+        }
+      }, false).startTimer(1500L);
+      AppMethodBeat.o(27140);
+      return;
+    }
+  }
+  
+  public final boolean anl(String paramString)
+  {
+    AppMethodBeat.i(27142);
+    if ("contact_info_plugin_view".equals(paramString))
+    {
+      paramString = new Intent();
+      paramString.putExtra("sns_timeline_NeedFirstLoadint", true);
+      com.tencent.mm.br.c.b(this.context, "sns", ".ui.SnsTimeLineUI", paramString);
+      AppMethodBeat.o(27142);
       return true;
     }
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.context, ContactInfoUI.class);
-    localIntent.putExtra("Contact_User", paramString.field_username);
-    this.context.startActivity(localIntent);
-    AppMethodBeat.o(23534);
-    return true;
-  }
-  
-  public final boolean a(f paramf, ad paramad, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(23535);
-    if (paramad != null)
+    Intent localIntent;
+    if ("contact_info_plugin_outsize".equals(paramString))
     {
-      bool = true;
-      Assert.assertTrue(bool);
-      if (bo.nullAsNil(paramad.field_username).length() <= 0) {
-        break label364;
-      }
-      bool = true;
-      label34:
-      Assert.assertTrue(bool);
-      if (paramf == null) {
-        break label370;
-      }
+      localIntent = new Intent();
+      localIntent.putExtra("k_sns_tag_id", 4L);
+      com.tencent.mm.br.c.b(this.context, "sns", ".ui.SnsBlackDetailUI", localIntent);
     }
-    label364:
-    label370:
-    for (boolean bool = true;; bool = false)
+    if ("contact_info_plugin_black".equals(paramString))
     {
-      Assert.assertTrue(bool);
-      this.screen = paramf;
-      this.contact = paramad;
-      this.pyp = paramBoolean;
-      this.gyR = paramInt;
-      this.pyq = ((Activity)this.context).getIntent().getBooleanExtra("User_Verify", false);
-      this.pAe = ((Activity)this.context).getIntent().getIntExtra("Kdel_from", -1);
-      this.eeu = paramad.field_username;
-      aw.aaz();
-      this.efi = c.YJ().oV(this.eeu);
-      this.screen.removeAll();
-      paramf = new PreferenceSmallCategory(this.context);
-      this.screen.b(paramf);
-      this.pAf.setKey("roominfo_contact_anchor");
-      this.screen.b(this.pAf);
-      paramf = new PreferenceCategory(this.context);
-      this.screen.b(paramf);
-      paramf = new NormalUserFooterPreference(this.context);
-      paramf.setLayoutResource(2130969237);
-      paramf.setKey("contact_info_footer_normal");
-      if (paramf.a(this.contact, "", this.pyp, this.pyq, false, this.gyR, this.pAe, false, false, 0L, "")) {
-        this.screen.b(paramf);
-      }
-      this.pAf.a(this.screen, this.pAf.mKey);
-      paramf = n.nt(this.eeu);
-      this.pAf.pf(false).pg(false);
-      this.pAf.v(this.eeu, paramf);
-      this.pAf.a(new h.1(this));
-      AppMethodBeat.o(23535);
+      localIntent = new Intent();
+      localIntent.putExtra("k_sns_tag_id", 5L);
+      com.tencent.mm.br.c.b(this.context, "sns", ".ui.SnsTagDetailUI", localIntent);
+    }
+    if (paramString.equals("contact_info_plugin_uninstall"))
+    {
+      k.b(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint_by_sns), "", this.context.getString(R.l.app_stop), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(27136);
+          h.this.Av(false);
+          AppMethodBeat.o(27136);
+        }
+      }, null);
+      AppMethodBeat.o(27142);
       return true;
-      bool = false;
-      break;
-      bool = false;
-      break label34;
     }
+    boolean bool = super.anl(paramString);
+    AppMethodBeat.o(27142);
+    return bool;
   }
   
-  public final boolean bkb()
+  protected final void clear()
   {
-    AppMethodBeat.i(23536);
-    NormalUserFooterPreference localNormalUserFooterPreference = (NormalUserFooterPreference)this.screen.atx("contact_info_footer_normal");
-    if (localNormalUserFooterPreference != null) {
-      localNormalUserFooterPreference.bkb();
-    }
-    AppMethodBeat.o(23536);
-    return true;
+    AppMethodBeat.i(27139);
+    clearData();
+    AppMethodBeat.o(27139);
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  protected final boolean gBD()
+  {
+    AppMethodBeat.i(27141);
+    if ((z.bBf() & 0x8000) == 0)
+    {
+      AppMethodBeat.o(27141);
+      return true;
+    }
+    AppMethodBeat.o(27141);
+    return false;
+  }
+  
+  protected final int getResourceId()
+  {
+    return R.o.haN;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.h
  * JD-Core Version:    0.7.0.1
  */

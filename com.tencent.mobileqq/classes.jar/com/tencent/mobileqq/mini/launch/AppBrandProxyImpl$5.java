@@ -12,11 +12,17 @@ class AppBrandProxyImpl$5
   {
     if (this.this$0.getService() == null)
     {
-      QLog.e("miniapp-process_AppBrandProxy", 1, "sendCmd IAppBrandService Connection is Null 1. cmd=" + this.val$cmd);
-      if (this.val$callback != null) {}
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendCmd IAppBrandService Connection is Null 1. cmd=");
+      ((StringBuilder)localObject).append(this.val$cmd);
+      QLog.e("miniapp-process_AppBrandProxy", 1, ((StringBuilder)localObject).toString());
+      localObject = this.val$callback;
+      if (localObject == null) {
+        return;
+      }
       try
       {
-        this.val$callback.onCmdResult(false, new Bundle());
+        ((CmdCallback)localObject).onCmdResult(false, new Bundle());
         return;
       }
       catch (Throwable localThrowable1)
@@ -38,7 +44,7 @@ class AppBrandProxyImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

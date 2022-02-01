@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/rl_title_bar" layout="@layout/custom_commen_title" />
+    <com.tencent.widget.PinnedHeaderExpandableListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:layout_gravity="center_horizontal" android:id="@id/friend_list" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:groupIndicator="@null" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" />
+</LinearLayout>

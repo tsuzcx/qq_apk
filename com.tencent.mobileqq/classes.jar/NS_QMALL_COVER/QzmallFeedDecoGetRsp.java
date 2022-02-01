@@ -10,7 +10,7 @@ public final class QzmallFeedDecoGetRsp
   extends JceStruct
 {
   static Map<Long, byte[]> cache_mapRsp = new HashMap();
-  public Map<Long, byte[]> mapRsp;
+  public Map<Long, byte[]> mapRsp = null;
   
   static
   {
@@ -33,14 +33,15 @@ public final class QzmallFeedDecoGetRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapRsp != null) {
-      paramJceOutputStream.write(this.mapRsp, 0);
+    Map localMap = this.mapRsp;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallFeedDecoGetRsp
  * JD-Core Version:    0.7.0.1
  */

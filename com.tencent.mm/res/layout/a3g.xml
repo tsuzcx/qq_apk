@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:id="@id/c40" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cxs" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="right" android:id="@id/c41" android:layout_width="375.0dip" android:layout_height="104.0dip" android:scaleType="fitXY" />
-    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr" android:layout_marginRight="140.0dip">
-        <TextView android:textSize="@dimen/kg" android:textStyle="bold" android:textColor="@color/qj" android:id="@id/c42" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="@dimen/kg" android:textStyle="bold" android:textColor="@color/qj" android:ellipsize="end" android:id="@id/c43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jw" android:singleLine="true" android:layout_toRightOf="@id/c42" />
-        <com.tencent.mm.plugin.game.widget.EllipsizingTextView android:textSize="@dimen/kg" android:textColor="@color/qh" android:id="@id/c44" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jw" android:layout_below="@id/c42" />
-    </RelativeLayout>
-</FrameLayout>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_v" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/gav" />
+    </LinearLayout>
+</LinearLayout>

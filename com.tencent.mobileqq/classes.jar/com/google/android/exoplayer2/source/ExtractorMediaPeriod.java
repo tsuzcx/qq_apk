@@ -101,29 +101,33 @@ final class ExtractorMediaPeriod
   
   private boolean configureRetry(ExtractorMediaPeriod.ExtractingLoadable paramExtractingLoadable, int paramInt)
   {
-    int i = 0;
-    if ((this.length != -1L) || ((this.seekMap != null) && (this.seekMap.getDurationUs() != -9223372036854775807L)))
+    if (this.length == -1L)
     {
-      this.extractedSamplesCountAtStartOfLoad = paramInt;
-      return true;
+      Object localObject = this.seekMap;
+      if ((localObject == null) || (((SeekMap)localObject).getDurationUs() == -9223372036854775807L))
+      {
+        boolean bool = this.prepared;
+        paramInt = 0;
+        if ((bool) && (!suppressRead()))
+        {
+          this.pendingDeferredRetry = true;
+          return false;
+        }
+        this.notifyDiscontinuity = this.prepared;
+        this.lastSeekPositionUs = 0L;
+        this.extractedSamplesCountAtStartOfLoad = 0;
+        localObject = this.sampleQueues;
+        int i = localObject.length;
+        while (paramInt < i)
+        {
+          localObject[paramInt].reset();
+          paramInt += 1;
+        }
+        paramExtractingLoadable.setLoadPosition(0L, 0L);
+        return true;
+      }
     }
-    if ((this.prepared) && (!suppressRead()))
-    {
-      this.pendingDeferredRetry = true;
-      return false;
-    }
-    this.notifyDiscontinuity = this.prepared;
-    this.lastSeekPositionUs = 0L;
-    this.extractedSamplesCountAtStartOfLoad = 0;
-    SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
-    int j = arrayOfSampleQueue.length;
-    paramInt = i;
-    while (paramInt < j)
-    {
-      arrayOfSampleQueue[paramInt].reset();
-      paramInt += 1;
-    }
-    paramExtractingLoadable.setLoadPosition(0L, 0L);
+    this.extractedSamplesCountAtStartOfLoad = paramInt;
     return true;
   }
   
@@ -136,9 +140,9 @@ final class ExtractorMediaPeriod
   
   private int getExtractedSamplesCount()
   {
-    int i = 0;
     SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
     int k = arrayOfSampleQueue.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -150,9 +154,9 @@ final class ExtractorMediaPeriod
   
   private long getLargestQueuedTimestampUs()
   {
-    long l = -9223372036854775808L;
     SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
     int j = arrayOfSampleQueue.length;
+    long l = -9223372036854775808L;
     int i = 0;
     while (i < j)
     {
@@ -174,52 +178,58 @@ final class ExtractorMediaPeriod
   
   private void maybeFinishPrepare()
   {
-    if ((this.released) || (this.prepared) || (this.seekMap == null) || (!this.sampleQueuesBuilt)) {
-      return;
-    }
-    Object localObject1 = this.sampleQueues;
-    int j = localObject1.length;
-    int i = 0;
-    for (;;)
+    if ((!this.released) && (!this.prepared) && (this.seekMap != null))
     {
-      if (i >= j) {
-        break label63;
+      if (!this.sampleQueuesBuilt) {
+        return;
       }
-      if (localObject1[i].getUpstreamFormat() == null) {
-        break;
-      }
-      i += 1;
-    }
-    label63:
-    this.loadCondition.close();
-    j = this.sampleQueues.length;
-    localObject1 = new TrackGroup[j];
-    this.trackIsAudioVideoFlags = new boolean[j];
-    this.trackEnabledStates = new boolean[j];
-    this.trackFormatNotificationSent = new boolean[j];
-    this.durationUs = this.seekMap.getDurationUs();
-    i = 0;
-    if (i < j)
-    {
-      Object localObject2 = this.sampleQueues[i].getUpstreamFormat();
-      localObject1[i] = new TrackGroup(new Format[] { localObject2 });
-      localObject2 = ((Format)localObject2).sampleMimeType;
-      if ((MimeTypes.isVideo((String)localObject2)) || (MimeTypes.isAudio((String)localObject2))) {}
-      for (int k = 1;; k = 0)
+      Object localObject1 = this.sampleQueues;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
+        if (localObject1[i].getUpstreamFormat() == null) {
+          return;
+        }
+        i += 1;
+      }
+      this.loadCondition.close();
+      j = this.sampleQueues.length;
+      localObject1 = new TrackGroup[j];
+      this.trackIsAudioVideoFlags = new boolean[j];
+      this.trackEnabledStates = new boolean[j];
+      this.trackFormatNotificationSent = new boolean[j];
+      this.durationUs = this.seekMap.getDurationUs();
+      i = 0;
+      for (;;)
+      {
+        int m = 1;
+        if (i >= j) {
+          break;
+        }
+        Object localObject2 = this.sampleQueues[i].getUpstreamFormat();
+        localObject1[i] = new TrackGroup(new Format[] { localObject2 });
+        localObject2 = ((Format)localObject2).sampleMimeType;
+        int k = m;
+        if (!MimeTypes.isVideo((String)localObject2)) {
+          if (MimeTypes.isAudio((String)localObject2)) {
+            k = m;
+          } else {
+            k = 0;
+          }
+        }
         this.trackIsAudioVideoFlags[i] = k;
         this.haveAudioVideoTracks = (k | this.haveAudioVideoTracks);
         i += 1;
-        break;
       }
+      this.tracks = new TrackGroupArray((TrackGroup[])localObject1);
+      if ((this.minLoadableRetryCount == -1) && (this.length == -1L) && (this.seekMap.getDurationUs() == -9223372036854775807L)) {
+        this.actualMinLoadableRetryCount = 6;
+      }
+      this.prepared = true;
+      this.listener.onSourceInfoRefreshed(this.durationUs, this.seekMap.isSeekable());
+      this.callback.onPrepared(this);
     }
-    this.tracks = new TrackGroupArray((TrackGroup[])localObject1);
-    if ((this.minLoadableRetryCount == -1) && (this.length == -1L) && (this.seekMap.getDurationUs() == -9223372036854775807L)) {
-      this.actualMinLoadableRetryCount = 6;
-    }
-    this.prepared = true;
-    this.listener.onSourceInfoRefreshed(this.durationUs, this.seekMap.isSeekable());
-    this.callback.onPrepared(this);
   }
   
   private void maybeNotifyTrackFormat(int paramInt)
@@ -234,36 +244,44 @@ final class ExtractorMediaPeriod
   
   private void maybeStartDeferredRetry(int paramInt)
   {
-    int i = 0;
-    if ((!this.pendingDeferredRetry) || (this.trackIsAudioVideoFlags[paramInt] == 0) || (this.sampleQueues[paramInt].hasNextSample())) {
-      return;
-    }
-    this.pendingResetPositionUs = 0L;
-    this.pendingDeferredRetry = false;
-    this.notifyDiscontinuity = true;
-    this.lastSeekPositionUs = 0L;
-    this.extractedSamplesCountAtStartOfLoad = 0;
-    SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
-    int j = arrayOfSampleQueue.length;
-    paramInt = i;
-    while (paramInt < j)
+    if ((this.pendingDeferredRetry) && (this.trackIsAudioVideoFlags[paramInt] != 0))
     {
-      arrayOfSampleQueue[paramInt].reset();
-      paramInt += 1;
+      if (this.sampleQueues[paramInt].hasNextSample()) {
+        return;
+      }
+      this.pendingResetPositionUs = 0L;
+      paramInt = 0;
+      this.pendingDeferredRetry = false;
+      this.notifyDiscontinuity = true;
+      this.lastSeekPositionUs = 0L;
+      this.extractedSamplesCountAtStartOfLoad = 0;
+      SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
+      int i = arrayOfSampleQueue.length;
+      while (paramInt < i)
+      {
+        arrayOfSampleQueue[paramInt].reset();
+        paramInt += 1;
+      }
+      this.callback.onContinueLoadingRequested(this);
     }
-    this.callback.onContinueLoadingRequested(this);
   }
   
   private boolean seekInsideBufferUs(long paramLong)
   {
     int k = this.sampleQueues.length;
     int i = 0;
-    while (i < k)
+    for (;;)
     {
+      int j = 1;
+      if (i >= k) {
+        break;
+      }
       SampleQueue localSampleQueue = this.sampleQueues[i];
       localSampleQueue.rewind();
-      if (localSampleQueue.advanceTo(paramLong, true, false) != -1) {}
-      for (int j = 1; (j == 0) && ((this.trackIsAudioVideoFlags[i] != 0) || (!this.haveAudioVideoTracks)); j = 0) {
+      if (localSampleQueue.advanceTo(paramLong, true, false) == -1) {
+        j = 0;
+      }
+      if ((j == 0) && ((this.trackIsAudioVideoFlags[i] != 0) || (!this.haveAudioVideoTracks))) {
         return false;
       }
       i += 1;
@@ -277,7 +295,8 @@ final class ExtractorMediaPeriod
     if (this.prepared)
     {
       Assertions.checkState(isPendingReset());
-      if ((this.durationUs != -9223372036854775807L) && (this.pendingResetPositionUs >= this.durationUs))
+      l = this.durationUs;
+      if ((l != -9223372036854775807L) && (this.pendingResetPositionUs >= l))
       {
         this.loadingFinished = true;
         this.pendingResetPositionUs = -9223372036854775807L;
@@ -298,17 +317,17 @@ final class ExtractorMediaPeriod
   
   public boolean continueLoading(long paramLong)
   {
-    boolean bool;
-    if ((this.loadingFinished) || (this.pendingDeferredRetry) || ((this.prepared) && (this.enabledTrackCount == 0))) {
-      bool = false;
-    }
-    do
+    if ((!this.loadingFinished) && (!this.pendingDeferredRetry) && ((!this.prepared) || (this.enabledTrackCount != 0)))
     {
+      boolean bool = this.loadCondition.open();
+      if (!this.loader.isLoading())
+      {
+        startLoading();
+        bool = true;
+      }
       return bool;
-      bool = this.loadCondition.open();
-    } while (this.loader.isLoading());
-    startLoading();
-    return true;
+    }
+    return false;
   }
   
   public void discardBuffer(long paramLong, boolean paramBoolean)
@@ -339,40 +358,37 @@ final class ExtractorMediaPeriod
   
   public long getBufferedPositionUs()
   {
-    long l1;
     if (this.loadingFinished) {
-      l1 = -9223372036854775808L;
+      return -9223372036854775808L;
     }
-    long l2;
-    do
+    if (isPendingReset()) {
+      return this.pendingResetPositionUs;
+    }
+    if (this.haveAudioVideoTracks)
     {
-      return l1;
-      if (isPendingReset()) {
-        return this.pendingResetPositionUs;
-      }
-      if (this.haveAudioVideoTracks)
+      l1 = 9223372036854775807L;
+      int j = this.sampleQueues.length;
+      int i = 0;
+      for (;;)
       {
-        int j = this.sampleQueues.length;
-        l1 = 9223372036854775807L;
-        int i = 0;
-        for (;;)
-        {
-          l2 = l1;
-          if (i >= j) {
-            break;
-          }
-          l2 = l1;
-          if (this.trackIsAudioVideoFlags[i] != 0) {
-            l2 = Math.min(l1, this.sampleQueues[i].getLargestQueuedTimestampUs());
-          }
-          i += 1;
-          l1 = l2;
+        l2 = l1;
+        if (i >= j) {
+          break;
         }
+        l2 = l1;
+        if (this.trackIsAudioVideoFlags[i] != 0) {
+          l2 = Math.min(l1, this.sampleQueues[i].getLargestQueuedTimestampUs());
+        }
+        i += 1;
+        l1 = l2;
       }
-      l2 = getLargestQueuedTimestampUs();
-      l1 = l2;
-    } while (l2 != -9223372036854775808L);
-    return this.lastSeekPositionUs;
+    }
+    long l2 = getLargestQueuedTimestampUs();
+    long l1 = l2;
+    if (l2 == -9223372036854775808L) {
+      l1 = this.lastSeekPositionUs;
+    }
+    return l1;
   }
   
   public long getNextLoadPositionUs()
@@ -427,22 +443,19 @@ final class ExtractorMediaPeriod
   {
     if (this.durationUs == -9223372036854775807L)
     {
-      l = getLargestQueuedTimestampUs();
-      if (l != -9223372036854775808L) {
-        break label109;
+      long l = getLargestQueuedTimestampUs();
+      if (l == -9223372036854775808L) {
+        l = 0L;
+      } else {
+        l += 10000L;
       }
-    }
-    label109:
-    for (long l = 0L;; l += 10000L)
-    {
       this.durationUs = l;
       this.listener.onSourceInfoRefreshed(this.durationUs, this.seekMap.isSeekable());
-      this.eventDispatcher.loadCompleted(ExtractorMediaPeriod.ExtractingLoadable.access$400(paramExtractingLoadable), 1, -1, null, 0, null, ExtractorMediaPeriod.ExtractingLoadable.access$500(paramExtractingLoadable), this.durationUs, paramLong1, paramLong2, ExtractorMediaPeriod.ExtractingLoadable.access$600(paramExtractingLoadable));
-      copyLengthFromLoader(paramExtractingLoadable);
-      this.loadingFinished = true;
-      this.callback.onContinueLoadingRequested(this);
-      return;
     }
+    this.eventDispatcher.loadCompleted(ExtractorMediaPeriod.ExtractingLoadable.access$400(paramExtractingLoadable), 1, -1, null, 0, null, ExtractorMediaPeriod.ExtractingLoadable.access$500(paramExtractingLoadable), this.durationUs, paramLong1, paramLong2, ExtractorMediaPeriod.ExtractingLoadable.access$600(paramExtractingLoadable));
+    copyLengthFromLoader(paramExtractingLoadable);
+    this.loadingFinished = true;
+    this.callback.onContinueLoadingRequested(this);
   }
   
   public int onLoadError(ExtractorMediaPeriod.ExtractingLoadable paramExtractingLoadable, long paramLong1, long paramLong2, IOException paramIOException)
@@ -457,17 +470,15 @@ final class ExtractorMediaPeriod
     int i;
     if (j > this.extractedSamplesCountAtStartOfLoad) {
       i = 1;
+    } else {
+      i = 0;
     }
-    while (configureRetry(paramExtractingLoadable, j)) {
-      if (i != 0)
-      {
+    if (configureRetry(paramExtractingLoadable, j))
+    {
+      if (i != 0) {
         return 1;
-        i = 0;
       }
-      else
-      {
-        return 0;
-      }
+      return 0;
     }
     return 2;
   }
@@ -503,16 +514,15 @@ final class ExtractorMediaPeriod
       return -3;
     }
     int i = this.sampleQueues[paramInt].read(paramFormatHolder, paramDecoderInputBuffer, paramBoolean, this.loadingFinished, this.lastSeekPositionUs);
-    if (i == -4) {
-      maybeNotifyTrackFormat(paramInt);
-    }
-    for (;;)
+    if (i == -4)
     {
+      maybeNotifyTrackFormat(paramInt);
       return i;
-      if (i == -3) {
-        maybeStartDeferredRetry(paramInt);
-      }
     }
+    if (i == -3) {
+      maybeStartDeferredRetry(paramInt);
+    }
+    return i;
   }
   
   public long readDiscontinuity()
@@ -553,48 +563,41 @@ final class ExtractorMediaPeriod
   
   public long seekToUs(long paramLong)
   {
-    int i = 0;
-    if (this.seekMap.isSeekable())
-    {
-      this.lastSeekPositionUs = paramLong;
-      this.notifyDiscontinuity = false;
-      if ((isPendingReset()) || (!seekInsideBufferUs(paramLong))) {
-        break label46;
-      }
-    }
-    for (;;)
-    {
-      return paramLong;
+    if (!this.seekMap.isSeekable()) {
       paramLong = 0L;
-      break;
-      label46:
-      this.pendingDeferredRetry = false;
-      this.pendingResetPositionUs = paramLong;
-      this.loadingFinished = false;
-      if (this.loader.isLoading())
-      {
-        this.loader.cancelLoading();
-        return paramLong;
-      }
-      SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
-      int j = arrayOfSampleQueue.length;
-      while (i < j)
-      {
-        arrayOfSampleQueue[i].reset();
-        i += 1;
-      }
     }
+    this.lastSeekPositionUs = paramLong;
+    int i = 0;
+    this.notifyDiscontinuity = false;
+    if ((!isPendingReset()) && (seekInsideBufferUs(paramLong))) {
+      return paramLong;
+    }
+    this.pendingDeferredRetry = false;
+    this.pendingResetPositionUs = paramLong;
+    this.loadingFinished = false;
+    if (this.loader.isLoading())
+    {
+      this.loader.cancelLoading();
+      return paramLong;
+    }
+    SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
+    int j = arrayOfSampleQueue.length;
+    while (i < j)
+    {
+      arrayOfSampleQueue[i].reset();
+      i += 1;
+    }
+    return paramLong;
   }
   
   public long selectTracks(TrackSelection[] paramArrayOfTrackSelection, boolean[] paramArrayOfBoolean1, SampleStream[] paramArrayOfSampleStream, boolean[] paramArrayOfBoolean2, long paramLong)
   {
+    Assertions.checkState(this.prepared);
+    int j = this.enabledTrackCount;
     int n = 0;
     int i1 = 0;
     int m = 0;
-    Assertions.checkState(this.prepared);
-    int j = this.enabledTrackCount;
     int i = 0;
-    int k;
     while (i < paramArrayOfTrackSelection.length)
     {
       if ((paramArrayOfSampleStream[i] != null) && ((paramArrayOfTrackSelection[i] == null) || (paramArrayOfBoolean1[i] == 0)))
@@ -607,86 +610,55 @@ final class ExtractorMediaPeriod
       }
       i += 1;
     }
-    label129:
-    boolean bool;
-    if (this.seenFirstTrackSelection) {
-      if (j == 0)
+    if (this.seenFirstTrackSelection ? j == 0 : paramLong != 0L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    j = 0;
+    for (int k = i; j < paramArrayOfTrackSelection.length; k = i)
+    {
+      i = k;
+      if (paramArrayOfSampleStream[j] == null)
       {
-        i = 1;
-        j = 0;
-        k = i;
-        if (j >= paramArrayOfTrackSelection.length) {
-          break label375;
-        }
         i = k;
-        if (paramArrayOfSampleStream[j] == null)
+        if (paramArrayOfTrackSelection[j] != null)
         {
+          paramArrayOfBoolean1 = paramArrayOfTrackSelection[j];
+          boolean bool;
+          if (paramArrayOfBoolean1.length() == 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          Assertions.checkState(bool);
+          if (paramArrayOfBoolean1.getIndexInTrackGroup(0) == 0) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          Assertions.checkState(bool);
+          int i2 = this.tracks.indexOf(paramArrayOfBoolean1.getTrackGroup());
+          Assertions.checkState(this.trackEnabledStates[i2] ^ 0x1);
+          this.enabledTrackCount += 1;
+          this.trackEnabledStates[i2] = true;
+          paramArrayOfSampleStream[j] = new ExtractorMediaPeriod.SampleStreamImpl(this, i2);
+          paramArrayOfBoolean2[j] = true;
           i = k;
-          if (paramArrayOfTrackSelection[j] != null)
+          if (k == 0)
           {
-            paramArrayOfBoolean1 = paramArrayOfTrackSelection[j];
-            if (paramArrayOfBoolean1.length() != 1) {
-              break label351;
-            }
-            bool = true;
-            label176:
-            Assertions.checkState(bool);
-            if (paramArrayOfBoolean1.getIndexInTrackGroup(0) != 0) {
-              break label357;
-            }
-            bool = true;
-            label194:
-            Assertions.checkState(bool);
-            int i2 = this.tracks.indexOf(paramArrayOfBoolean1.getTrackGroup());
-            if (this.trackEnabledStates[i2] != 0) {
-              break label363;
-            }
-            bool = true;
-            label227:
-            Assertions.checkState(bool);
-            this.enabledTrackCount += 1;
-            this.trackEnabledStates[i2] = true;
-            paramArrayOfSampleStream[j] = new ExtractorMediaPeriod.SampleStreamImpl(this, i2);
-            paramArrayOfBoolean2[j] = true;
-            i = k;
-            if (k == 0)
-            {
-              paramArrayOfBoolean1 = this.sampleQueues[i2];
-              paramArrayOfBoolean1.rewind();
-              if ((paramArrayOfBoolean1.advanceTo(paramLong, true, true) != -1) || (paramArrayOfBoolean1.getReadIndex() == 0)) {
-                break label369;
-              }
+            paramArrayOfBoolean1 = this.sampleQueues[i2];
+            paramArrayOfBoolean1.rewind();
+            if ((paramArrayOfBoolean1.advanceTo(paramLong, true, true) == -1) && (paramArrayOfBoolean1.getReadIndex() != 0)) {
+              i = 1;
+            } else {
+              i = 0;
             }
           }
         }
       }
-    }
-    label351:
-    label357:
-    label363:
-    label369:
-    for (i = 1;; i = 0)
-    {
       j += 1;
-      k = i;
-      break label129;
-      i = 0;
-      break;
-      if (paramLong != 0L)
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-      bool = false;
-      break label176;
-      bool = false;
-      break label194;
-      bool = false;
-      break label227;
     }
-    label375:
     long l;
     if (this.enabledTrackCount == 0)
     {
@@ -705,58 +677,69 @@ final class ExtractorMediaPeriod
         this.loader.cancelLoading();
         l = paramLong;
       }
-    }
-    do
-    {
-      this.seenFirstTrackSelection = true;
-      return l;
-      paramArrayOfTrackSelection = this.sampleQueues;
-      j = paramArrayOfTrackSelection.length;
-      i = n;
-      for (;;)
+      else
       {
-        l = paramLong;
-        if (i >= j) {
-          break;
+        paramArrayOfTrackSelection = this.sampleQueues;
+        j = paramArrayOfTrackSelection.length;
+        i = n;
+        for (;;)
+        {
+          l = paramLong;
+          if (i >= j) {
+            break;
+          }
+          paramArrayOfTrackSelection[i].reset();
+          i += 1;
         }
-        paramArrayOfTrackSelection[i].reset();
-        i += 1;
       }
-      l = paramLong;
-    } while (k == 0);
-    paramLong = seekToUs(paramLong);
-    i = i1;
-    for (;;)
+    }
+    else
     {
       l = paramLong;
-      if (i >= paramArrayOfSampleStream.length) {
-        break;
+      if (k != 0)
+      {
+        paramLong = seekToUs(paramLong);
+        i = i1;
+        for (;;)
+        {
+          l = paramLong;
+          if (i >= paramArrayOfSampleStream.length) {
+            break;
+          }
+          if (paramArrayOfSampleStream[i] != null) {
+            paramArrayOfBoolean2[i] = true;
+          }
+          i += 1;
+        }
       }
-      if (paramArrayOfSampleStream[i] != null) {
-        paramArrayOfBoolean2[i] = true;
-      }
-      i += 1;
     }
+    this.seenFirstTrackSelection = true;
+    return l;
   }
   
   int skipData(int paramInt, long paramLong)
   {
+    boolean bool = suppressRead();
     int i = 0;
-    if (suppressRead()) {
+    if (bool) {
       return 0;
     }
     SampleQueue localSampleQueue = this.sampleQueues[paramInt];
-    if ((this.loadingFinished) && (paramLong > localSampleQueue.getLargestQueuedTimestampUs())) {
+    if ((this.loadingFinished) && (paramLong > localSampleQueue.getLargestQueuedTimestampUs()))
+    {
       i = localSampleQueue.advanceToEnd();
     }
-    while (i > 0)
+    else
     {
-      maybeNotifyTrackFormat(paramInt);
-      return i;
       int j = localSampleQueue.advanceTo(paramLong, true, true);
       if (j != -1) {
         i = j;
       }
+    }
+    if (i > 0)
+    {
+      maybeNotifyTrackFormat(paramInt);
+      return i;
     }
     maybeStartDeferredRetry(paramInt);
     return i;
@@ -775,18 +758,20 @@ final class ExtractorMediaPeriod
     }
     SampleQueue localSampleQueue = new SampleQueue(this.allocator);
     localSampleQueue.setUpstreamFormatChangeListener(this);
-    this.sampleQueueTrackIds = Arrays.copyOf(this.sampleQueueTrackIds, j + 1);
+    int[] arrayOfInt = this.sampleQueueTrackIds;
+    i = j + 1;
+    this.sampleQueueTrackIds = Arrays.copyOf(arrayOfInt, i);
     this.sampleQueueTrackIds[j] = paramInt1;
-    this.sampleQueueTrackTypes = Arrays.copyOf(this.sampleQueueTrackTypes, j + 1);
+    this.sampleQueueTrackTypes = Arrays.copyOf(this.sampleQueueTrackTypes, i);
     this.sampleQueueTrackTypes[j] = paramInt2;
-    this.sampleQueues = ((SampleQueue[])Arrays.copyOf(this.sampleQueues, j + 1));
+    this.sampleQueues = ((SampleQueue[])Arrays.copyOf(this.sampleQueues, i));
     this.sampleQueues[j] = localSampleQueue;
     return localSampleQueue;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ExtractorMediaPeriod
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,18 @@ public class ErrorView
   private View.OnClickListener d;
   private int e = 0;
   private boolean f = false;
-  private View.OnClickListener g = new x(this);
+  private View.OnClickListener g = new View.OnClickListener()
+  {
+    public final void onClick(View paramAnonymousView)
+    {
+      if (ErrorView.a(ErrorView.this) != null)
+      {
+        paramAnonymousView.setTag(ErrorView.this.getTag());
+        ErrorView.a(ErrorView.this).onClick(paramAnonymousView);
+      }
+      ErrorView.this.setVisibility(8);
+    }
+  };
   
   public ErrorView(Context paramContext)
   {
@@ -31,28 +42,19 @@ public class ErrorView
     this.a = paramContext;
   }
   
-  private void c()
+  private void a()
   {
-    if (this.f) {}
-    for (int i = 2130968644;; i = 2130968643)
-    {
-      this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
-      this.c = this.b.inflate(i, null);
-      removeAllViews();
-      addView(this.c, new LinearLayout.LayoutParams(-1, -1));
-      this.c.setOnClickListener(this.g);
-      return;
+    int i;
+    if (this.f) {
+      i = 2131296330;
+    } else {
+      i = 2131296329;
     }
-  }
-  
-  public void a()
-  {
-    setVisibility(0);
-  }
-  
-  public void b()
-  {
-    setVisibility(8);
+    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
+    this.c = this.b.inflate(i, null);
+    removeAllViews();
+    addView(this.c, new LinearLayout.LayoutParams(-1, -1));
+    this.c.setOnClickListener(this.g);
   }
   
   public void setAction(View.OnClickListener paramOnClickListener)
@@ -66,15 +68,17 @@ public class ErrorView
       return;
     }
     this.e = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      this.f = false;
-      c();
-      return;
+    if ((paramInt != 10005) && (paramInt != 100004)) {
+      switch (paramInt)
+      {
+      default: 
+        this.f = false;
+        a();
+        return;
+      }
     }
     this.f = true;
-    c();
+    a();
   }
 }
 

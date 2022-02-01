@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
 public class fpj
-  extends Handler
+  implements Runnable
 {
-  public fpj(EquipmentLockImpl paramEquipmentLockImpl) {}
+  public fpj(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.b();
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fpj
  * JD-Core Version:    0.7.0.1
  */

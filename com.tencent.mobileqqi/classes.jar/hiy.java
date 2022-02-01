@@ -1,30 +1,38 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
 import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendDataManager;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class hiy
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
   public hiy(FriendChooser paramFriendChooser) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.d)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      this.a.l();
+      return;
     }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
+    this.a.i();
+    paramView.g();
+    this.a.b(true);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 

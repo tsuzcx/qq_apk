@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <integer name="0">3</integer>
+    <integer name="1">654316592</integer>
+    <integer name="2">220</integer>
+    <integer name="3">150</integer>
+    <integer name="4">300</integer>
+    <integer name="5">150</integer>
     <integer name="a">5</integer>
     <integer name="b">4</integer>
+    <integer name="6">150</integer>
+    <integer name="7">127</integer>
     <integer name="c">300</integer>
+    <integer name="8">150</integer>
     <integer name="d">2</integer>
+    <integer name="9">2</integer>
+    <integer name="al">300</integer>
     <integer name="e">3</integer>
     <integer name="f">22</integer>
     <integer name="g">12</integer>
@@ -14,10 +25,22 @@
     <integer name="l">8</integer>
     <integer name="m">400</integer>
     <integer name="n">200</integer>
+    <integer name="am">1900</integer>
+    <integer name="an">320</integer>
     <integer name="o">4500</integer>
     <integer name="p">300</integer>
     <integer name="q">300</integer>
     <integer name="r">16</integer>
+    <integer name="ao">4</integer>
+    <integer name="ap">100</integer>
+    <integer name="aq">100</integer>
+    <integer name="ar">1</integer>
+    <integer name="as">1</integer>
+    <integer name="at">3</integer>
+    <integer name="au">75</integer>
+    <integer name="av">120</integer>
+    <integer name="aw">100</integer>
+    <integer name="ax">250</integer>
     <integer name="s">150</integer>
     <integer name="t">150</integer>
     <integer name="u">152</integer>
@@ -44,6 +67,8 @@
     <integer name="ac">3</integer>
     <integer name="ad">4</integer>
     <integer name="ae">18</integer>
+    <integer name="ay">200</integer>
+    <integer name="az">999</integer>
     <integer name="af">12</integer>
     <integer name="ag">16</integer>
     <integer name="ah">2100</integer>

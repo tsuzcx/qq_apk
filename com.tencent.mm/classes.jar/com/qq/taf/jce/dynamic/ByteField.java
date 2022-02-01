@@ -20,9 +20,9 @@ public final class ByteField
   
   public final Number getNumber()
   {
-    AppMethodBeat.i(117017);
+    AppMethodBeat.i(109571);
     byte b = this.data;
-    AppMethodBeat.o(117017);
+    AppMethodBeat.o(109571);
     return Byte.valueOf(b);
   }
   
@@ -33,7 +33,7 @@ public final class ByteField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.ByteField
  * JD-Core Version:    0.7.0.1
  */

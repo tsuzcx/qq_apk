@@ -23,22 +23,20 @@ public class SlideNotBackRecyclerView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
+    if (paramMotionEvent.getAction() != 0) {
       return bool;
-      for (paramMotionEvent = getParent(); !(paramMotionEvent instanceof ListView); paramMotionEvent = paramMotionEvent.getParent()) {}
-      paramMotionEvent = paramMotionEvent.getParent();
-    } while (paramMotionEvent == null);
-    paramMotionEvent.requestDisallowInterceptTouchEvent(true);
+    }
+    for (paramMotionEvent = getParent(); !(paramMotionEvent instanceof ListView); paramMotionEvent = paramMotionEvent.getParent()) {}
+    paramMotionEvent = paramMotionEvent.getParent();
+    if (paramMotionEvent != null) {
+      paramMotionEvent.requestDisallowInterceptTouchEvent(true);
+    }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideNotBackRecyclerView
  * JD-Core Version:    0.7.0.1
  */

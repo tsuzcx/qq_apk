@@ -1,10 +1,17 @@
-import android.os.Handler;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class cws
-  extends Handler
+  implements Runnable
 {
-  public cws(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public cws(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g);
+  }
 }
 
 

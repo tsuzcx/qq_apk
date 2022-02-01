@@ -1,34 +1,18 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.qphone.base.util.QLog;
 
 class bze
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  bze(bzc parambzc) {}
+  bze(bzd parambzd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    if ((ChatActivity.b(this.a.a.a) != null) && (ChatActivity.b(this.a.a.a).getParent() != null)) {
+      ((ViewGroup)ChatActivity.b(this.a.a.a).getParent()).removeView(ChatActivity.b(this.a.a.a));
     }
-    this.a.a.a.post(new bzf(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    ChatActivity.b(this.a.a.a, null);
   }
 }
 

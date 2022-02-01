@@ -61,24 +61,21 @@ public final class LatmReader
       this.streamMuxRead = true;
       parseStreamMuxConfig(paramParsableBitArray);
     }
-    while (this.audioMuxVersionA == 0) {
-      if (this.numSubframes != 0)
+    else if (!this.streamMuxRead)
+    {
+      return;
+    }
+    if (this.audioMuxVersionA == 0)
+    {
+      if (this.numSubframes == 0)
       {
-        throw new ParserException();
-        if (this.streamMuxRead) {
-          break;
+        parsePayloadMux(paramParsableBitArray, parsePayloadLengthInfo(paramParsableBitArray));
+        if (this.otherDataPresent) {
+          paramParsableBitArray.skipBits((int)this.otherDataLenBits);
         }
-      }
-      else
-      {
-        do
-        {
-          return;
-          parsePayloadMux(paramParsableBitArray, parsePayloadLengthInfo(paramParsableBitArray));
-        } while (!this.otherDataPresent);
-        paramParsableBitArray.skipBits((int)this.otherDataLenBits);
         return;
       }
+      throw new ParserException();
     }
     throw new ParserException();
   }
@@ -95,31 +92,33 @@ public final class LatmReader
   private void parseFrameLength(ParsableBitArray paramParsableBitArray)
   {
     this.frameLengthType = paramParsableBitArray.readBits(3);
-    switch (this.frameLengthType)
+    int i = this.frameLengthType;
+    if (i != 0)
     {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      paramParsableBitArray.skipBits(8);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if ((i != 3) && (i != 4) && (i != 5))
+        {
+          if ((i != 6) && (i != 7)) {
+            return;
+          }
+          paramParsableBitArray.skipBits(1);
+          return;
+        }
+        paramParsableBitArray.skipBits(6);
+        return;
+      }
       paramParsableBitArray.skipBits(9);
       return;
-    case 3: 
-    case 4: 
-    case 5: 
-      paramParsableBitArray.skipBits(6);
-      return;
     }
-    paramParsableBitArray.skipBits(1);
+    paramParsableBitArray.skipBits(8);
   }
   
   private int parsePayloadLengthInfo(ParsableBitArray paramParsableBitArray)
   {
-    int i = 0;
     if (this.frameLengthType == 0)
     {
+      int i = 0;
       int k;
       int j;
       do
@@ -130,93 +129,103 @@ public final class LatmReader
       } while (k == 255);
       return j;
     }
-    throw new ParserException();
+    paramParsableBitArray = new ParserException();
+    for (;;)
+    {
+      throw paramParsableBitArray;
+    }
   }
   
   private void parsePayloadMux(ParsableBitArray paramParsableBitArray, int paramInt)
   {
     int i = paramParsableBitArray.getPosition();
-    if ((i & 0x7) == 0) {
+    if ((i & 0x7) == 0)
+    {
       this.sampleDataBuffer.setPosition(i >> 3);
     }
-    for (;;)
+    else
     {
-      this.output.sampleData(this.sampleDataBuffer, paramInt);
-      this.output.sampleMetadata(this.timeUs, 1, paramInt, 0, null);
-      this.timeUs += this.sampleDurationUs;
-      return;
       paramParsableBitArray.readBits(this.sampleDataBuffer.data, 0, paramInt * 8);
       this.sampleDataBuffer.setPosition(0);
     }
+    this.output.sampleData(this.sampleDataBuffer, paramInt);
+    this.output.sampleMetadata(this.timeUs, 1, paramInt, 0, null);
+    this.timeUs += this.sampleDurationUs;
   }
   
   private void parseStreamMuxConfig(ParsableBitArray paramParsableBitArray)
   {
     int j = paramParsableBitArray.readBits(1);
-    if (j == 1) {}
-    for (int i = paramParsableBitArray.readBits(1);; i = 0)
+    int i;
+    if (j == 1) {
+      i = paramParsableBitArray.readBits(1);
+    } else {
+      i = 0;
+    }
+    this.audioMuxVersionA = i;
+    if (this.audioMuxVersionA == 0)
     {
-      this.audioMuxVersionA = i;
-      if (this.audioMuxVersionA != 0) {
-        break label320;
-      }
       if (j == 1) {
         latmGetValue(paramParsableBitArray);
       }
-      if (paramParsableBitArray.readBit()) {
-        break;
-      }
-      throw new ParserException();
-    }
-    this.numSubframes = paramParsableBitArray.readBits(6);
-    i = paramParsableBitArray.readBits(4);
-    int k = paramParsableBitArray.readBits(3);
-    if ((i != 0) || (k != 0)) {
-      throw new ParserException();
-    }
-    if (j == 0)
-    {
-      i = paramParsableBitArray.getPosition();
-      k = parseAudioSpecificConfig(paramParsableBitArray);
-      paramParsableBitArray.setPosition(i);
-      Object localObject = new byte[(k + 7) / 8];
-      paramParsableBitArray.readBits((byte[])localObject, 0, k);
-      localObject = Format.createAudioSampleFormat(this.formatId, "audio/mp4a-latm", null, -1, -1, this.channelCount, this.sampleRateHz, Collections.singletonList(localObject), null, 0, this.language);
-      if (!((Format)localObject).equals(this.format))
+      if (paramParsableBitArray.readBit())
       {
-        this.format = ((Format)localObject);
-        this.sampleDurationUs = (1024000000L / ((Format)localObject).sampleRate);
-        this.output.format((Format)localObject);
-      }
-      parseFrameLength(paramParsableBitArray);
-      this.otherDataPresent = paramParsableBitArray.readBit();
-      this.otherDataLenBits = 0L;
-      if (this.otherDataPresent)
-      {
-        if (j != 1) {
-          break label287;
+        this.numSubframes = paramParsableBitArray.readBits(6);
+        i = paramParsableBitArray.readBits(4);
+        int k = paramParsableBitArray.readBits(3);
+        if ((i == 0) && (k == 0))
+        {
+          if (j == 0)
+          {
+            i = paramParsableBitArray.getPosition();
+            k = parseAudioSpecificConfig(paramParsableBitArray);
+            paramParsableBitArray.setPosition(i);
+            Object localObject = new byte[(k + 7) / 8];
+            paramParsableBitArray.readBits((byte[])localObject, 0, k);
+            localObject = Format.createAudioSampleFormat(this.formatId, "audio/mp4a-latm", null, -1, -1, this.channelCount, this.sampleRateHz, Collections.singletonList(localObject), null, 0, this.language);
+            if (!((Format)localObject).equals(this.format))
+            {
+              this.format = ((Format)localObject);
+              this.sampleDurationUs = (1024000000L / ((Format)localObject).sampleRate);
+              this.output.format((Format)localObject);
+            }
+          }
+          else
+          {
+            paramParsableBitArray.skipBits((int)latmGetValue(paramParsableBitArray) - parseAudioSpecificConfig(paramParsableBitArray));
+          }
+          parseFrameLength(paramParsableBitArray);
+          this.otherDataPresent = paramParsableBitArray.readBit();
+          this.otherDataLenBits = 0L;
+          if (this.otherDataPresent) {
+            if (j == 1)
+            {
+              this.otherDataLenBits = latmGetValue(paramParsableBitArray);
+            }
+            else
+            {
+              boolean bool;
+              do
+              {
+                bool = paramParsableBitArray.readBit();
+                this.otherDataLenBits = ((this.otherDataLenBits << 8) + paramParsableBitArray.readBits(8));
+              } while (bool);
+            }
+          }
+          if (paramParsableBitArray.readBit()) {
+            paramParsableBitArray.skipBits(8);
+          }
+          return;
         }
-        this.otherDataLenBits = latmGetValue(paramParsableBitArray);
+        throw new ParserException();
       }
+      throw new ParserException();
     }
+    paramParsableBitArray = new ParserException();
     for (;;)
     {
-      if (paramParsableBitArray.readBit()) {
-        paramParsableBitArray.skipBits(8);
-      }
-      return;
-      paramParsableBitArray.skipBits((int)latmGetValue(paramParsableBitArray) - parseAudioSpecificConfig(paramParsableBitArray));
-      break;
-      label287:
-      boolean bool;
-      do
-      {
-        bool = paramParsableBitArray.readBit();
-        this.otherDataLenBits = ((this.otherDataLenBits << 8) + paramParsableBitArray.readBits(8));
-      } while (bool);
+      throw paramParsableBitArray;
     }
-    label320:
-    throw new ParserException();
   }
   
   private void resetBufferForSize(int paramInt)
@@ -229,46 +238,52 @@ public final class LatmReader
   {
     while (paramParsableByteArray.bytesLeft() > 0)
     {
-      switch (this.state)
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
-        if (paramParsableByteArray.readUnsignedByte() != 86) {
-          continue;
-        }
-        this.state = 1;
-        break;
-      case 1: 
-        i = paramParsableByteArray.readUnsignedByte();
-        if ((i & 0xE0) == 224)
+        if (i != 1)
         {
-          this.secondHeaderByte = i;
-          this.state = 2;
-          continue;
+          if (i != 2)
+          {
+            if (i == 3)
+            {
+              i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
+              paramParsableByteArray.readBytes(this.sampleBitArray.data, this.bytesRead, i);
+              this.bytesRead += i;
+              if (this.bytesRead == this.sampleSize)
+              {
+                this.sampleBitArray.setPosition(0);
+                parseAudioMuxElement(this.sampleBitArray);
+                this.state = 0;
+              }
+            }
+          }
+          else
+          {
+            this.sampleSize = ((this.secondHeaderByte & 0xFFFFFF1F) << 8 | paramParsableByteArray.readUnsignedByte());
+            if (this.sampleSize > this.sampleDataBuffer.data.length) {
+              resetBufferForSize(this.sampleSize);
+            }
+            this.bytesRead = 0;
+            this.state = 3;
+          }
         }
-        if (i == 86) {
-          continue;
+        else
+        {
+          i = paramParsableByteArray.readUnsignedByte();
+          if ((i & 0xE0) == 224)
+          {
+            this.secondHeaderByte = i;
+            this.state = 2;
+          }
+          else if (i != 86)
+          {
+            this.state = 0;
+          }
         }
-        this.state = 0;
-        break;
-      case 2: 
-        this.sampleSize = ((this.secondHeaderByte & 0xFFFFFF1F) << 8 | paramParsableByteArray.readUnsignedByte());
-        if (this.sampleSize > this.sampleDataBuffer.data.length) {
-          resetBufferForSize(this.sampleSize);
-        }
-        this.bytesRead = 0;
-        this.state = 3;
-        break;
       }
-      int i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
-      paramParsableByteArray.readBytes(this.sampleBitArray.data, this.bytesRead, i);
-      this.bytesRead = (i + this.bytesRead);
-      if (this.bytesRead == this.sampleSize)
-      {
-        this.sampleBitArray.setPosition(0);
-        parseAudioMuxElement(this.sampleBitArray);
-        this.state = 0;
+      else if (paramParsableByteArray.readUnsignedByte() == 86) {
+        this.state = 1;
       }
     }
   }
@@ -295,7 +310,7 @@ public final class LatmReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.LatmReader
  * JD-Core Version:    0.7.0.1
  */

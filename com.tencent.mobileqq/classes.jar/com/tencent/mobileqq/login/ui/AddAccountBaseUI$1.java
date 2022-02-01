@@ -1,0 +1,23 @@
+package com.tencent.mobileqq.login.ui;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class AddAccountBaseUI$1
+  implements View.OnClickListener
+{
+  AddAccountBaseUI$1(AddAccountBaseUI paramAddAccountBaseUI) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.login.ui.AddAccountBaseUI.1
+ * JD-Core Version:    0.7.0.1
+ */

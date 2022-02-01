@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.utilities.ui.QMToggleView android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" qm:duration_fade="@integer/ap" qm:duration_slide="@integer/aq"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/npg" android:background="@color/as6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:layout_gravity="top" android:id="@id/npb" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ai2">
+        <ListView android:layout_gravity="top" android:id="@id/npf" android:background="@color/aqd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:listSelector="@null" android:divider="@null" android:dividerHeight="1.0dip" android:footerDividersEnabled="false" />
+        <ImageView android:layout_gravity="bottom" android:background="@drawable/h3o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</com.tencent.qqmail.utilities.ui.QMToggleView>

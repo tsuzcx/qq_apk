@@ -25,14 +25,15 @@ public final class MqqLbsPack$RspGetLBSRPList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 80, 88, 98, 104, 112, 120, 128 }, new String[] { "msg_head", "rpt_poi_info_list", "bytes_page_cookie", "uint32_flush_dist", "uint32_flush_time", "bytes_cookie", "uint32_lbs_interval", "uint32_show_map_grid", "uint32_patch_button_stat", "uint32_get_award_range" }, new Object[] { null, null, localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RspGetLBSRPList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 80, 88, 98, 104, 112, 120, 128 }, new String[] { "msg_head", "rpt_poi_info_list", "bytes_page_cookie", "uint32_flush_dist", "uint32_flush_time", "bytes_cookie", "uint32_lbs_interval", "uint32_show_map_grid", "uint32_patch_button_stat", "uint32_get_award_range" }, new Object[] { null, null, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger }, RspGetLBSRPList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.RspGetLBSRPList
  * JD-Core Version:    0.7.0.1
  */

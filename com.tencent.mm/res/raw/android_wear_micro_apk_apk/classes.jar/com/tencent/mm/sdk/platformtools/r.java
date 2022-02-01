@@ -2,18 +2,19 @@ package com.tencent.mm.sdk.platformtools;
 
 public final class r
 {
-  private static boolean Yf = false;
-  private static String Yg = null;
-  private static boolean Yh = false;
+  private static boolean aah = false;
+  private static String aai = null;
+  private static boolean aaj = false;
+  private static boolean aak = false;
   
-  public static boolean lr()
+  public static boolean lD()
   {
-    return Yh;
+    return aaj;
   }
   
-  public static boolean ls()
+  public static boolean lE()
   {
-    return Yf;
+    return aah;
   }
 }
 

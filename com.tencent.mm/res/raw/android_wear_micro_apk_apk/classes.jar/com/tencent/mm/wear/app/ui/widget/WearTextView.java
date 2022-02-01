@@ -13,19 +13,19 @@ public class WearTextView
   public WearTextView(Context paramContext)
   {
     super(paramContext);
-    setTypeface(i.afr);
+    setTypeface(i.aiT);
   }
   
   public WearTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setTypeface(i.afr);
+    setTypeface(i.aiT);
   }
   
   public WearTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setTypeface(i.afr);
+    setTypeface(i.aiT);
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -33,7 +33,7 @@ public class WearTextView
     Object localObject = paramCharSequence;
     if ((paramCharSequence instanceof String))
     {
-      e.mB();
+      e.nn();
       localObject = e.a(getContext(), paramCharSequence, (int)getTextSize());
     }
     super.setText((CharSequence)localObject, paramBufferType);

@@ -19,38 +19,38 @@ public final class zzfl
   public zzfl(Activity paramActivity, GoogleApi.Settings paramSettings)
   {
     super(paramActivity, paramSettings);
-    AppMethodBeat.i(71321);
+    AppMethodBeat.i(101304);
     this.zzem = new zzfg();
-    AppMethodBeat.o(71321);
+    AppMethodBeat.o(101304);
   }
   
   public zzfl(Context paramContext, GoogleApi.Settings paramSettings)
   {
     super(paramContext, paramSettings);
-    AppMethodBeat.i(71320);
+    AppMethodBeat.i(101303);
     this.zzem = new zzfg();
-    AppMethodBeat.o(71320);
+    AppMethodBeat.o(101303);
   }
   
   public final Task<List<Node>> getConnectedNodes()
   {
-    AppMethodBeat.i(71323);
+    AppMethodBeat.i(101306);
     Task localTask = PendingResultUtil.toTask(this.zzem.getConnectedNodes(asGoogleApiClient()), zzfn.zzbx);
-    AppMethodBeat.o(71323);
+    AppMethodBeat.o(101306);
     return localTask;
   }
   
   public final Task<Node> getLocalNode()
   {
-    AppMethodBeat.i(71322);
+    AppMethodBeat.i(101305);
     Task localTask = PendingResultUtil.toTask(this.zzem.getLocalNode(asGoogleApiClient()), zzfm.zzbx);
-    AppMethodBeat.o(71322);
+    AppMethodBeat.o(101305);
     return localTask;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzfl
  * JD-Core Version:    0.7.0.1
  */

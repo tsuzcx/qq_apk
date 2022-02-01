@@ -1,17 +1,13 @@
 import com.tencent.mobileqq.activity.SpaceGateActivity;
-import com.tencent.mobileqq.data.MessageRecord;
 
 public class djf
   implements Runnable
 {
-  public djf(SpaceGateActivity paramSpaceGateActivity, MessageRecord paramMessageRecord) {}
+  public djf(SpaceGateActivity paramSpaceGateActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1009) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpaceGateActivity.a(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpaceGateActivity.c();
+    this.a.a(0);
   }
 }
 

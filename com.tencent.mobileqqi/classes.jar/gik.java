@@ -1,11 +1,11 @@
 class gik
   implements Runnable
 {
-  gik(gii paramgii, long paramLong1, long paramLong2, long paramLong3) {}
+  gik(gih paramgih, long paramLong1, boolean paramBoolean, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Gii.b(this.jdField_a_of_type_Long, this.b, this.c);
+    this.jdField_a_of_type_Gih.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

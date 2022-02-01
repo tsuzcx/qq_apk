@@ -1,59 +1,62 @@
 package com.tencent.mobileqq.teamwork;
 
-import alud;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bahp;
-import baif;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkHttpUtils;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import org.json.JSONObject;
 
-public class TenDocOCRExportHandler$1
+class TenDocOCRExportHandler$1
   implements Runnable
 {
-  public TenDocOCRExportHandler$1(baif parambaif, String paramString) {}
+  TenDocOCRExportHandler$1(TenDocOCRExportHandler paramTenDocOCRExportHandler, String paramString) {}
   
   public void run()
   {
-    if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
-      return;
-    }
-    baif localbaif = (baif)this.this$0.app.a(157);
-    JSONObject localJSONObject = bahp.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
-    if (localJSONObject != null)
+    if (TenDocOCRExportHandler.a(this.this$0) != null)
     {
-      String str = localJSONObject.optString("url");
-      int i = localJSONObject.optInt("ret");
-      try
+      if (TextUtils.isEmpty(this.a)) {
+        return;
+      }
+      TenDocOCRExportHandler localTenDocOCRExportHandler = (TenDocOCRExportHandler)TenDocOCRExportHandler.a(this.this$0).getBusinessHandler(TenDocOCRExportHandler.class.getName());
+      JSONObject localJSONObject = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).ocrExportUploadImage(TenDocOCRExportHandler.a(this.this$0), this.a, TenDocOCRExportHandler.a(this.this$0).getCurrentAccountUin());
+      if (localJSONObject != null)
       {
-        str = URLDecoder.decode(str, "UTF-8");
-        if ((i == 0) && (str.length() > 0))
+        String str = localJSONObject.optString("url");
+        int i = localJSONObject.optInt("ret");
+        try
         {
-          Bundle localBundle = new Bundle();
-          localBundle.putString("url", str);
-          localbaif.notifyUI(3, true, new Object[] { localJSONObject });
-          QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
+          str = URLDecoder.decode(str, "UTF-8");
+          if ((i == 0) && (str.length() > 0))
+          {
+            Bundle localBundle = new Bundle();
+            localBundle.putString("url", str);
+            localTenDocOCRExportHandler.notifyUI(3, true, new Object[] { localJSONObject });
+            QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
+            return;
+          }
+          localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912156), this.a });
+          return;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912157), this.a });
+          localUnsupportedEncodingException.printStackTrace();
           return;
         }
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localbaif.notifyUI(1, true, new Object[] { alud.a(2131715234), this.a });
-        localUnsupportedEncodingException.printStackTrace();
-        return;
-      }
-      localbaif.notifyUI(1, true, new Object[] { alud.a(2131715233), this.a });
-      return;
+      localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912155), this.a });
     }
-    localbaif.notifyUI(1, true, new Object[] { alud.a(2131715232), this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1
  * JD-Core Version:    0.7.0.1
  */

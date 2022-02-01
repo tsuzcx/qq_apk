@@ -17,7 +17,8 @@ class QQAVImageBeautyGaussianBlurFilter$1
       {
         ((QQAVImageFilter)QQAVImageBeautyGaussianBlurFilter.access$200(this.this$0).get(i)).init();
         ((QQAVImageFilter)QQAVImageBeautyGaussianBlurFilter.access$500(this.this$0).get(i)).onOutputSizeChanged(QQAVImageBeautyGaussianBlurFilter.access$300(this.this$0), QQAVImageBeautyGaussianBlurFilter.access$400(this.this$0));
-        this.this$0.onOutputSizeChanged(QQAVImageBeautyGaussianBlurFilter.access$600(this.this$0), QQAVImageBeautyGaussianBlurFilter.access$700(this.this$0));
+        QQAVImageBeautyGaussianBlurFilter localQQAVImageBeautyGaussianBlurFilter = this.this$0;
+        localQQAVImageBeautyGaussianBlurFilter.onOutputSizeChanged(QQAVImageBeautyGaussianBlurFilter.access$600(localQQAVImageBeautyGaussianBlurFilter), QQAVImageBeautyGaussianBlurFilter.access$700(this.this$0));
         i += 1;
       }
     }
@@ -25,7 +26,7 @@ class QQAVImageBeautyGaussianBlurFilter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.beauty.QQAVImageBeautyGaussianBlurFilter.1
  * JD-Core Version:    0.7.0.1
  */

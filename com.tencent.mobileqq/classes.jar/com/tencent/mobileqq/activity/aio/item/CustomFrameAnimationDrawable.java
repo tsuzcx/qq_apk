@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afkw;
-import afkx;
-import afky;
-import afkz;
-import afla;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -17,8 +12,9 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qqcommon.api.IHapticManagerApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,339 +25,442 @@ public class CustomFrameAnimationDrawable
   extends Drawable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  afkw jdField_a_of_type_Afkw = null;
-  public afkx a;
-  private afky jdField_a_of_type_Afky;
-  private afkz jdField_a_of_type_Afkz;
-  Resources jdField_a_of_type_AndroidContentResResources = null;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  CustomFrameAnimationDrawable.DecodeRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable = null;
-  private String jdField_a_of_type_JavaLangString;
-  ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList;
-  private Vector<Bitmap> jdField_a_of_type_JavaUtilVector;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 160;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = true;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  
-  private CustomFrameAnimationDrawable(afkx paramafkx, Resources paramResources)
-  {
-    this.jdField_a_of_type_Afkx = paramafkx;
-    a(paramResources);
-  }
+  ArrayList<Bitmap> a;
+  public CustomFrameAnimationDrawable.FrameAnimationState b;
+  Resources c = null;
+  Rect d = new Rect();
+  RectF e = new RectF();
+  Bitmap f = null;
+  MqqHandler g;
+  CustomFrameAnimationDrawable.DecodeRunnable h = null;
+  CustomFrameAnimationDrawable.AnimationEndListener i = null;
+  private String j;
+  private int k;
+  private int l = 160;
+  private int m;
+  private int n;
+  private CustomFrameAnimationDrawable.FrameListener o = null;
+  private boolean p = false;
+  private boolean q = true;
+  private boolean r;
+  private CustomFrameAnimationDrawable.KeyGenerator s;
+  private boolean t = true;
+  private int u;
+  private boolean v;
+  private Vector<Bitmap> w;
   
   public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Afkx = new afkx();
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    int j;
+    this.g = paramMqqHandler;
+    this.f = paramBitmap;
+    this.a = null;
+    this.c = paramResources;
+    this.a = null;
+    this.b = new CustomFrameAnimationDrawable.FrameAnimationState();
+    this.w = new Vector();
     if (paramResources != null)
     {
-      j = paramResources.getDisplayMetrics().densityDpi;
-      if (j != 0) {}
-    }
-    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Afkx.jdField_b_of_type_Int)
-    {
-      this.jdField_a_of_type_Afkx.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      if (paramBitmap == null) {
-        break label200;
+      int i2 = paramResources.getDisplayMetrics().densityDpi;
+      i1 = i2;
+      if (i2 == 0) {
+        i1 = 160;
       }
-      this.jdField_c_of_type_Int = paramBitmap.getScaledWidth(this.jdField_b_of_type_Int);
-      this.jdField_d_of_type_Int = paramBitmap.getScaledHeight(this.jdField_b_of_type_Int);
-      return;
-      i = j;
-      break;
+      this.l = i1;
     }
-    label200:
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
+    else
+    {
+      this.l = this.b.e;
+    }
+    paramResources = this.b;
+    int i1 = this.l;
+    paramResources.e = i1;
+    if (paramBitmap != null)
+    {
+      this.m = paramBitmap.getScaledWidth(i1);
+      this.n = paramBitmap.getScaledHeight(this.l);
+      return;
+    }
+    this.n = -1;
+    this.m = -1;
   }
   
-  public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler, afkx paramafkx, String paramString, boolean paramBoolean)
+  public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler, CustomFrameAnimationDrawable.FrameAnimationState paramFrameAnimationState, String paramString, boolean paramBoolean)
   {
     this(paramResources, paramBitmap, paramMqqHandler);
-    this.jdField_a_of_type_Afkx = paramafkx;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
+    this.b = paramFrameAnimationState;
+    this.j = paramString;
+    this.p = paramBoolean;
+    if ((this.j != null) && (this.p)) {
       ThreadManager.postImmediately(new CustomFrameAnimationDrawable.1(this), null, true);
     }
   }
   
-  private void a(Resources paramResources)
+  private CustomFrameAnimationDrawable(CustomFrameAnimationDrawable.FrameAnimationState paramFrameAnimationState, Resources paramResources)
   {
-    int i;
-    if (paramResources != null)
-    {
-      int j = paramResources.getDisplayMetrics().densityDpi;
-      i = j;
-      if (j == 0) {
-        i = 160;
-      }
-    }
-    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Afkx.jdField_b_of_type_Int)
-    {
-      m();
-      return;
-    }
+    this.b = paramFrameAnimationState;
+    a(paramResources);
   }
   
-  public static boolean a()
+  private void a(int paramInt, long paramLong)
+  {
+    if (paramInt < this.b.b.size())
+    {
+      if (paramInt - this.b.j < 2)
+      {
+        localObject = (CustomFrameAnimationDrawable.OneFrame)this.b.b.get(paramInt);
+        if (this.h == null)
+        {
+          this.h = new CustomFrameAnimationDrawable.DecodeRunnable(this, paramInt, ((CustomFrameAnimationDrawable.OneFrame)localObject).c, ((CustomFrameAnimationDrawable.OneFrame)localObject).d, this.b.f);
+          this.h.a(this.c);
+          localObject = this.g;
+          if (localObject != null) {
+            ((MqqHandler)localObject).post(this.h);
+          }
+          localObject = this.b;
+          ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).j += 1;
+          if (!this.b.i)
+          {
+            localObject = this.b;
+            ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).j %= this.b.b.size();
+          }
+        }
+      }
+      localObject = (CustomFrameAnimationDrawable.OneFrame)this.b.b.get(this.b.c);
+      if (paramLong == 0L) {
+        paramLong = SystemClock.uptimeMillis() + ((CustomFrameAnimationDrawable.OneFrame)localObject).b;
+      } else {
+        paramLong += SystemClock.uptimeMillis();
+      }
+      scheduleSelf(this, paramLong);
+      if ((this.j != null) && (this.p)) {
+        ((IHapticManagerApi)QRoute.api(IHapticManagerApi.class)).update(this.k, this.b.c * ((CustomFrameAnimationDrawable.OneFrame)localObject).b);
+      }
+      return;
+    }
+    Object localObject = this.i;
+    if (localObject != null) {
+      ((CustomFrameAnimationDrawable.AnimationEndListener)localObject).a();
+    }
+    if (this.q)
+    {
+      m();
+      this.b.b.clear();
+    }
+    localObject = this.b;
+    ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).d = false;
+    ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).h = true;
+  }
+  
+  private void a(Resources paramResources)
+  {
+    if (paramResources != null)
+    {
+      int i2 = paramResources.getDisplayMetrics().densityDpi;
+      int i1 = i2;
+      if (i2 == 0) {
+        i1 = 160;
+      }
+      this.l = i1;
+    }
+    else
+    {
+      this.l = this.b.e;
+    }
+    q();
+  }
+  
+  public static boolean p()
   {
     return (!Build.VERSION.RELEASE.equals("5.0.2")) || ((!Build.MODEL.equals("SM-A5009")) && (!Build.MODEL.equals("SM-A7000")) && (!Build.MODEL.equals("Redmi Note 2")));
   }
   
-  private void m()
+  private void q()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
-        break label48;
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).size() == 0) {
+        localObject = null;
+      } else {
+        localObject = (Bitmap)this.a.get(0);
       }
-    }
-    label48:
-    for (Bitmap localBitmap = null; localBitmap != null; localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(0))
-    {
-      this.jdField_c_of_type_Int = localBitmap.getScaledWidth(this.jdField_b_of_type_Int);
-      this.jdField_d_of_type_Int = localBitmap.getScaledHeight(this.jdField_b_of_type_Int);
-      return;
-    }
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Afkx.jdField_a_of_type_Int;
-  }
-  
-  public afla a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Afkx != null)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList != null)
+      if (localObject != null)
       {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        this.m = ((Bitmap)localObject).getScaledWidth(this.l);
+        this.n = ((Bitmap)localObject).getScaledHeight(this.l);
+        return;
+      }
+      this.n = -1;
+      this.m = -1;
+    }
+  }
+  
+  private void r()
+  {
+    Object localObject = h();
+    if (localObject != null)
+    {
+      Bitmap localBitmap = this.f;
+      if ((!this.r) && (this.w.size() <= 2)) {
+        this.w.add(localBitmap);
+      }
+      this.f = ((Bitmap)localObject);
+      localObject = this.b;
+      ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).c += 1;
+      if (!this.b.i)
+      {
+        localObject = this.b;
+        ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).c %= this.b.b.size();
+      }
+      localObject = this.o;
+      if (localObject != null) {
+        ((CustomFrameAnimationDrawable.FrameListener)localObject).onUpdate(this.b.c);
+      }
+      invalidateSelf();
+    }
+    int i2 = this.b.j + 1;
+    long l1 = 0L;
+    int i1 = i2;
+    long l2 = l1;
+    if (!this.b.i)
+    {
+      if (i2 >= this.b.b.size()) {
+        l1 = this.u;
+      }
+      i1 = i2 % this.b.b.size();
+      l2 = l1;
+    }
+    a(i1, l2);
+  }
+  
+  private void s()
+  {
+    Object localObject;
+    if (this.b.i)
+    {
+      if (this.b.c < this.b.b.size())
+      {
+        invalidateSelf();
+        localObject = this.o;
+        if (localObject != null) {
+          ((CustomFrameAnimationDrawable.FrameListener)localObject).onUpdate(this.b.c);
+        }
+        localObject = (CustomFrameAnimationDrawable.OneFrame)this.b.b.get(this.b.c);
+        scheduleSelf(this, SystemClock.uptimeMillis() + ((CustomFrameAnimationDrawable.OneFrame)localObject).b);
+        localObject = this.b;
+        ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).c += 1;
+        return;
+      }
+      if (!this.b.h)
+      {
+        localObject = this.i;
+        if (localObject != null) {
+          ((CustomFrameAnimationDrawable.AnimationEndListener)localObject).a();
+        }
+        localObject = this.b;
+        ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).d = false;
+        ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).h = true;
+        if (this.j != null)
         {
-          localObject1 = localObject2;
-          if (paramInt >= 0)
-          {
-            localObject1 = localObject2;
-            if (paramInt < this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size()) {
-              localObject1 = (afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-            }
+          if (this.p) {
+            ((IHapticManagerApi)QRoute.api(IHapticManagerApi.class)).stopEffect(this.k);
           }
+          this.k = 0;
         }
       }
     }
-    return localObject1;
-  }
-  
-  public Bitmap a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList != null)
+    else
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
-        localObject1 = (Bitmap)this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList.remove(0);
+      localObject = this.b;
+      ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).c %= this.b.b.size();
+      invalidateSelf();
+      localObject = this.o;
+      if (localObject != null) {
+        ((CustomFrameAnimationDrawable.FrameListener)localObject).onUpdate(this.b.c);
       }
+      localObject = (CustomFrameAnimationDrawable.OneFrame)this.b.b.get(this.b.c);
+      scheduleSelf(this, SystemClock.uptimeMillis() + ((CustomFrameAnimationDrawable.OneFrame)localObject).b);
+      localObject = this.b;
+      ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).c += 1;
     }
-    return localObject1;
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.q = false;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Afkx.jdField_d_of_type_Int = paramInt;
+    this.b.k = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    afla localafla = new afla();
-    localafla.jdField_a_of_type_Int = paramInt1;
-    localafla.jdField_b_of_type_Int = paramInt2;
-    localafla.jdField_c_of_type_Int = paramInt3;
-    localafla.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.add(localafla);
+    CustomFrameAnimationDrawable.OneFrame localOneFrame = new CustomFrameAnimationDrawable.OneFrame();
+    localOneFrame.a = paramInt1;
+    localOneFrame.b = paramInt2;
+    localOneFrame.d = paramInt3;
+    localOneFrame.c = null;
+    this.b.b.add(localOneFrame);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    afla localafla = new afla();
-    localafla.jdField_a_of_type_Int = paramInt1;
-    localafla.jdField_b_of_type_Int = paramInt2;
-    localafla.jdField_a_of_type_JavaLangString = paramString;
-    localafla.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.add(localafla);
-  }
-  
-  public void a(afkw paramafkw)
-  {
-    this.jdField_a_of_type_Afkw = paramafkw;
-  }
-  
-  public void a(afky paramafky)
-  {
-    this.jdField_a_of_type_Afky = paramafky;
+    CustomFrameAnimationDrawable.OneFrame localOneFrame = new CustomFrameAnimationDrawable.OneFrame();
+    localOneFrame.a = paramInt1;
+    localOneFrame.b = paramInt2;
+    localOneFrame.c = paramString;
+    localOneFrame.d = 0;
+    this.b.b.add(localOneFrame);
   }
   
   public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.f = paramBitmap;
+  }
+  
+  public void a(CustomFrameAnimationDrawable.AnimationEndListener paramAnimationEndListener)
+  {
+    this.i = paramAnimationEndListener;
+  }
+  
+  public void a(CustomFrameAnimationDrawable.FrameListener paramFrameListener)
+  {
+    this.o = paramFrameListener;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Afkx.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+    this.b.g = paramBoolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Afkx.jdField_b_of_type_Boolean = true;
+    this.b.g = true;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Afkx.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Afkx.jdField_c_of_type_Int = paramInt;
+    CustomFrameAnimationDrawable.FrameAnimationState localFrameAnimationState = this.b;
+    localFrameAnimationState.c = paramInt;
+    localFrameAnimationState.j = paramInt;
+  }
+  
+  public CustomFrameAnimationDrawable.OneFrame c(int paramInt)
+  {
+    CustomFrameAnimationDrawable.FrameAnimationState localFrameAnimationState = this.b;
+    if ((localFrameAnimationState != null) && (localFrameAnimationState.b != null) && (this.b.b.size() > 0) && (paramInt >= 0) && (paramInt < this.b.b.size())) {
+      return (CustomFrameAnimationDrawable.OneFrame)this.b.b.get(paramInt);
+    }
+    return null;
   }
   
   public void c()
   {
     unscheduleSelf(this);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((this.a == null) && (this.f != null))
     {
-      this.jdField_a_of_type_Afkx.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Afkx.jdField_c_of_type_Int = 0;
+      localFrameAnimationState = this.b;
+      localFrameAnimationState.c = 0;
+      localFrameAnimationState.j = 0;
       invalidateSelf();
       scheduleSelf(this, 0L);
     }
-    while (this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    else if (this.b.b.size() != 0)
     {
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Int = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
+      if ((this.b.b.size() != -1) && (this.b.b.size() != 0)) {
+        this.b.c = 0;
+      } else {
+        this.b.c = -1;
       }
-      this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Afkx.jdField_c_of_type_Boolean = false;
-      return;
-    }
-    if ((this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() == -1) || (this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
-    for (this.jdField_a_of_type_Afkx.jdField_a_of_type_Int = -1;; this.jdField_a_of_type_Afkx.jdField_a_of_type_Int = 0)
-    {
       scheduleSelf(this, 0L);
-      break;
     }
+    if ((this.j != null) && (this.p)) {
+      this.k = ((IHapticManagerApi)QRoute.api(IHapticManagerApi.class)).playEffect(this.j, 2);
+    }
+    CustomFrameAnimationDrawable.FrameAnimationState localFrameAnimationState = this.b;
+    localFrameAnimationState.d = true;
+    localFrameAnimationState.h = false;
   }
   
   public void d()
   {
-    this.jdField_e_of_type_Boolean = false;
+    this.v = false;
     unscheduleSelf(this);
-    this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean = true;
+    this.b.d = true;
     scheduleSelf(this, 0L);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint = this.jdField_a_of_type_Afkx.jdField_a_of_type_AndroidGraphicsPaint;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomFrameAnimationDrawable", 2, "draw use recycle bitmap");
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-    }
-    label484:
-    for (;;)
+    Paint localPaint = this.b.a;
+    Object localObject2 = this.a;
+    Object localObject1 = null;
+    if (localObject2 == null)
     {
-      return;
-      Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      if (this.jdField_a_of_type_Afkx.jdField_b_of_type_Boolean)
+      localObject2 = this.f;
+      if (localObject2 != null)
       {
-        paramCanvas.save();
-        paramCanvas.scale(-1.0F, 1.0F, this.jdField_c_of_type_Int / 2, this.jdField_d_of_type_Int / 2);
-      }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-      int i = paramCanvas.getWidth();
-      float f = paramCanvas.getHeight() * 1.0F / this.jdField_d_of_type_Int;
-      if (this.jdField_a_of_type_Afkx.jdField_d_of_type_Int == 1) {
-        paramCanvas.translate((i / f - this.jdField_c_of_type_Int) / 2.0F, 0.0F);
-      }
-      for (;;)
-      {
-        paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, localPaint);
-        if (!this.jdField_a_of_type_Afkx.jdField_b_of_type_Boolean) {
-          break;
+        if (((Bitmap)localObject2).isRecycled())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CustomFrameAnimationDrawable", 2, "draw use recycle bitmap");
+          }
+          this.f = null;
+          return;
+        }
+        localObject1 = this.f;
+        if (this.b.g)
+        {
+          paramCanvas.save();
+          paramCanvas.scale(-1.0F, 1.0F, this.m / 2, this.n / 2);
+        }
+        this.d.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+        this.e.set(0.0F, 0.0F, this.m, this.n);
+        int i1 = paramCanvas.getWidth();
+        float f1 = paramCanvas.getHeight() * 1.0F / this.n;
+        if (this.b.k == 1) {
+          paramCanvas.translate((i1 / f1 - this.m) / 2.0F, 0.0F);
+        } else if (this.b.k == 2) {
+          paramCanvas.translate(Math.abs(i1 / f1 - this.m) / 2.0F, 0.0F);
+        }
+        paramCanvas.drawBitmap((Bitmap)localObject1, this.d, this.e, localPaint);
+        if (!this.b.g) {
+          return;
         }
         paramCanvas.restore();
         return;
-        if (this.jdField_a_of_type_Afkx.jdField_d_of_type_Int == 2) {
-          paramCanvas.translate(Math.abs(i / f - this.jdField_c_of_type_Int) / 2.0F, 0.0F);
+      }
+    }
+    if (this.a != null)
+    {
+      if (this.b.c >= 0) {
+        if (this.b.c >= this.b.b.size())
+        {
+          localObject1 = (Bitmap)this.a.get(((CustomFrameAnimationDrawable.OneFrame)this.b.b.get(this.b.b.size() - 1)).a);
+        }
+        else
+        {
+          localObject1 = (CustomFrameAnimationDrawable.OneFrame)this.b.b.get(this.b.c);
+          localObject1 = (Bitmap)this.a.get(((CustomFrameAnimationDrawable.OneFrame)localObject1).a);
         }
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      if (localObject1 != null)
       {
-        if (this.jdField_a_of_type_Afkx.jdField_a_of_type_Int < 0) {
-          localObject = null;
-        }
-        for (;;)
-        {
-          if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
-            break label484;
-          }
-          if (this.jdField_a_of_type_Afkx.jdField_b_of_type_Boolean)
-          {
-            paramCanvas.save();
-            paramCanvas.scale(-1.0F, 1.0F, ((Bitmap)localObject).getWidth() / 2, ((Bitmap)localObject).getHeight() / 2);
-          }
-          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-          this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-          paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, localPaint);
-          if (!this.jdField_a_of_type_Afkx.jdField_b_of_type_Boolean) {
-            break;
-          }
-          paramCanvas.restore();
+        if (((Bitmap)localObject1).isRecycled()) {
           return;
-          if (this.jdField_a_of_type_Afkx.jdField_a_of_type_Int >= this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
-          }
-          else
-          {
-            localObject = (afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((afla)localObject).jdField_a_of_type_Int);
-          }
+        }
+        if (this.b.g)
+        {
+          paramCanvas.save();
+          paramCanvas.scale(-1.0F, 1.0F, ((Bitmap)localObject1).getWidth() / 2, ((Bitmap)localObject1).getHeight() / 2);
+        }
+        this.d.set(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+        this.e.set(0.0F, 0.0F, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
+        paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, localPaint);
+        if (this.b.g) {
+          paramCanvas.restore();
         }
       }
     }
@@ -369,51 +468,52 @@ public class CustomFrameAnimationDrawable
   
   public void e()
   {
-    this.jdField_e_of_type_Boolean = true;
+    this.v = true;
     f();
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean) {
+    if (this.b.d) {
       unscheduleSelf(this);
     }
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_d_of_type_Boolean))
+    if ((this.a == null) && (this.f != null) && (this.t))
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList.size())
+      int i1 = 0;
+      while (i1 < this.b.f.size())
       {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList.remove(0);
-        if (localBitmap != null) {
-          localBitmap.recycle();
+        localObject = (Bitmap)this.b.f.remove(0);
+        if (localObject != null) {
+          ((Bitmap)localObject).recycle();
         }
-        i += 1;
+        i1 += 1;
       }
-      this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Afkx.jdField_c_of_type_Int = this.jdField_a_of_type_Afkx.jdField_a_of_type_Int;
+      this.b.f.clear();
+      Object localObject = this.b;
+      ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).j = ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).c;
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean) {
+    if (this.b.d) {
       unscheduleSelf(this);
     }
   }
   
   public int getAlpha()
   {
-    return this.jdField_a_of_type_Afkx.jdField_a_of_type_AndroidGraphicsPaint.getAlpha();
+    return this.b.a.getAlpha();
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_d_of_type_Int;
+    return this.n;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_c_of_type_Int;
+    return this.m;
   }
   
   public int getOpacity()
@@ -421,26 +521,52 @@ public class CustomFrameAnimationDrawable
     return -3;
   }
   
-  public void h()
+  public Bitmap h()
   {
-    this.jdField_a_of_type_Afkx.jdField_d_of_type_Boolean = true;
+    ArrayList localArrayList = this.b.f;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
+    {
+      localObject1 = localObject2;
+      if (this.b.f.size() > 0) {
+        localObject1 = (Bitmap)this.b.f.remove(0);
+      }
+    }
+    return localObject1;
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b.i = true;
+  }
+  
+  public int j()
+  {
+    return this.b.c;
+  }
+  
+  public int k()
+  {
+    return this.b.b.size() - 1;
+  }
+  
+  public void l()
+  {
+    if (this.b.b != null) {
+      this.b.b.clear();
     }
   }
   
-  public void j()
+  public void m()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Object localObject1 = this.f;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      ((Bitmap)localObject1).recycle();
+      this.f = null;
     }
-    Object localObject1 = this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList;
+    localObject1 = this.b.f;
     Object localObject2 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -450,9 +576,10 @@ public class CustomFrameAnimationDrawable
       }
     }
     ((ArrayList)localObject1).clear();
-    if (this.jdField_a_of_type_JavaUtilVector != null)
+    localObject1 = this.w;
+    if (localObject1 != null)
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilVector.iterator();
+      localObject1 = ((Vector)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Bitmap)((Iterator)localObject1).next();
@@ -460,216 +587,88 @@ public class CustomFrameAnimationDrawable
           ((Bitmap)localObject2).recycle();
         }
       }
-      this.jdField_a_of_type_JavaUtilVector.clear();
+      this.w.clear();
     }
   }
   
-  public void k()
+  public void n()
   {
     unscheduleSelf(this);
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
-      HapticManager.a().a(this.jdField_a_of_type_Int);
+    if ((this.j != null) && (this.p)) {
+      ((IHapticManagerApi)QRoute.api(IHapticManagerApi.class)).pauseEffect(this.k);
     }
   }
   
-  public void l()
+  public void o()
   {
     scheduleSelf(this, SystemClock.uptimeMillis() + 50L);
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
-      HapticManager.a().b(this.jdField_a_of_type_Int);
+    if ((this.j != null) && (this.p)) {
+      ((IHapticManagerApi)QRoute.api(IHapticManagerApi.class)).resumeEffect(this.k);
     }
   }
   
   public void run()
   {
-    if (this.jdField_e_of_type_Boolean)
+    if (this.v)
     {
       if (QLog.isColorLevel()) {
         QLog.i("CustomFrameAnimationDrawable", 2, "paused");
       }
       return;
     }
-    int j;
-    int i;
-    Object localObject1;
-    Object localObject2;
-    long l;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    Object localObject;
+    if ((this.a == null) && (this.f != null))
     {
-      j = this.jdField_a_of_type_Afkx.jdField_a_of_type_Int + 1;
-      i = j;
-      if (!this.jdField_a_of_type_Afkx.jdField_d_of_type_Boolean) {
-        i = j % this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size();
+      int i2 = this.b.c + 1;
+      int i1 = i2;
+      if (!this.b.i) {
+        i1 = i2 % this.b.b.size();
       }
-      if (i < this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size())
+      if (i1 < this.b.b.size())
       {
-        localObject1 = a();
-        if (localObject1 != null)
-        {
-          localObject2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-          if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilVector.size() <= 2)) {
-            this.jdField_a_of_type_JavaUtilVector.add(localObject2);
-          }
-          this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-          localObject1 = this.jdField_a_of_type_Afkx;
-          ((afkx)localObject1).jdField_a_of_type_Int += 1;
-          if (!this.jdField_a_of_type_Afkx.jdField_d_of_type_Boolean)
-          {
-            localObject1 = this.jdField_a_of_type_Afkx;
-            ((afkx)localObject1).jdField_a_of_type_Int %= this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size();
-          }
-          if (this.jdField_a_of_type_Afky != null) {
-            this.jdField_a_of_type_Afky.onUpdate(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-          }
-          invalidateSelf();
+        r();
+        return;
+      }
+      localObject = this.i;
+      if (localObject != null) {
+        ((CustomFrameAnimationDrawable.AnimationEndListener)localObject).a();
+      }
+      if (this.q)
+      {
+        m();
+        this.b.b.clear();
+      }
+      localObject = this.b;
+      ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).d = false;
+      ((CustomFrameAnimationDrawable.FrameAnimationState)localObject).h = true;
+      if (this.j != null)
+      {
+        if (this.p) {
+          ((IHapticManagerApi)QRoute.api(IHapticManagerApi.class)).stopEffect(this.k);
         }
-        i = this.jdField_a_of_type_Afkx.jdField_c_of_type_Int + 1;
-        if (this.jdField_a_of_type_Afkx.jdField_d_of_type_Boolean) {
-          break label1019;
-        }
-        if (i < this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label1014;
-        }
-        l = this.jdField_e_of_type_Int;
-        label259:
-        i %= this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size();
+        this.k = 0;
       }
     }
-    for (;;)
+    else
     {
-      if (i < this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if (i - this.jdField_a_of_type_Afkx.jdField_c_of_type_Int < 2)
-        {
-          localObject1 = (afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable = new CustomFrameAnimationDrawable.DecodeRunnable(this, i, ((afla)localObject1).jdField_a_of_type_JavaLangString, ((afla)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_Afkx.jdField_b_of_type_JavaUtilArrayList);
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable.a(this.jdField_a_of_type_AndroidContentResResources);
-            if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-              this.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable);
-            }
-            localObject1 = this.jdField_a_of_type_Afkx;
-            ((afkx)localObject1).jdField_c_of_type_Int += 1;
-            if (!this.jdField_a_of_type_Afkx.jdField_d_of_type_Boolean)
-            {
-              localObject1 = this.jdField_a_of_type_Afkx;
-              ((afkx)localObject1).jdField_c_of_type_Int %= this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size();
-            }
-          }
-        }
-        localObject1 = (afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-        if (l != 0L) {
-          break label582;
-        }
-      }
-      label582:
-      for (l = SystemClock.uptimeMillis() + ((afla)localObject1).jdField_b_of_type_Int;; l = SystemClock.uptimeMillis() + l)
-      {
-        scheduleSelf(this, l);
-        if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localObject2 = HapticManager.a();
-        i = this.jdField_a_of_type_Int;
-        j = this.jdField_a_of_type_Afkx.jdField_a_of_type_Int;
-        ((HapticManager)localObject2).a(i, ((afla)localObject1).jdField_b_of_type_Int * j);
-        return;
-        if (this.jdField_a_of_type_Afkw != null) {
-          this.jdField_a_of_type_Afkw.a();
-        }
-        if (this.jdField_b_of_type_Boolean)
-        {
-          j();
-          this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.clear();
-        }
-        this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Afkx.jdField_c_of_type_Boolean = true;
-        return;
-      }
-      if (this.jdField_a_of_type_Afkw != null) {
-        this.jdField_a_of_type_Afkw.a();
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        j();
-        this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Afkx.jdField_c_of_type_Boolean = true;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        HapticManager.a().c(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_Int = 0;
-      return;
-      if (this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size() == 1)
+      if (this.b.b.size() == 1)
       {
         invalidateSelf();
-        if (this.jdField_a_of_type_Afky == null) {
-          break;
+        localObject = this.o;
+        if (localObject != null) {
+          ((CustomFrameAnimationDrawable.FrameListener)localObject).onUpdate(this.b.c);
         }
-        this.jdField_a_of_type_Afky.onUpdate(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
         return;
       }
-      if (this.jdField_a_of_type_Afkx.jdField_d_of_type_Boolean == true)
-      {
-        if (this.jdField_a_of_type_Afkx.jdField_a_of_type_Int < this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          invalidateSelf();
-          if (this.jdField_a_of_type_Afky != null) {
-            this.jdField_a_of_type_Afky.onUpdate(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-          }
-          localObject1 = (afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-          l = SystemClock.uptimeMillis();
-          scheduleSelf(this, ((afla)localObject1).jdField_b_of_type_Int + l);
-          localObject1 = this.jdField_a_of_type_Afkx;
-          ((afkx)localObject1).jdField_a_of_type_Int += 1;
-          return;
-        }
-        if (this.jdField_a_of_type_Afkx.jdField_c_of_type_Boolean) {
-          break;
-        }
-        if (this.jdField_a_of_type_Afkw != null) {
-          this.jdField_a_of_type_Afkw.a();
-        }
-        this.jdField_a_of_type_Afkx.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Afkx.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_JavaLangString == null) {
-          break;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          HapticManager.a().c(this.jdField_a_of_type_Int);
-        }
-        this.jdField_a_of_type_Int = 0;
-        return;
-      }
-      this.jdField_a_of_type_Afkx.jdField_a_of_type_Int %= this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.size();
-      invalidateSelf();
-      if (this.jdField_a_of_type_Afky != null) {
-        this.jdField_a_of_type_Afky.onUpdate(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-      }
-      localObject1 = (afla)this.jdField_a_of_type_Afkx.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afkx.jdField_a_of_type_Int);
-      l = SystemClock.uptimeMillis();
-      scheduleSelf(this, ((afla)localObject1).jdField_b_of_type_Int + l);
-      localObject1 = this.jdField_a_of_type_Afkx;
-      ((afkx)localObject1).jdField_a_of_type_Int += 1;
-      return;
-      label1014:
-      l = 0L;
-      break label259;
-      label1019:
-      l = 0L;
+      s();
     }
   }
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Afkx.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.b.a.getAlpha())
     {
-      this.jdField_a_of_type_Afkx.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.b.a.setAlpha(paramInt);
       invalidateSelf();
     }
   }
@@ -681,13 +680,13 @@ public class CustomFrameAnimationDrawable
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_Afkx.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.b.a.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

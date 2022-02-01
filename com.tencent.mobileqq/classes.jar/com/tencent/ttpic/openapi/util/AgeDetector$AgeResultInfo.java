@@ -18,8 +18,8 @@ class AgeDetector$AgeResultInfo
   
   private int calculateAge()
   {
-    int j = 0;
     int[] arrayOfInt1 = new int[AgeDetector.AGE_RANGS.length];
+    int k = 0;
     int i = 0;
     while (i < arrayOfInt1.length)
     {
@@ -27,62 +27,45 @@ class AgeDetector$AgeResultInfo
       i += 1;
     }
     int[] arrayOfInt2 = this.agesDetected;
-    int n = arrayOfInt2.length;
-    int k = 0;
-    i = 0;
-    int m;
-    if (k < n)
+    int i1 = arrayOfInt2.length;
+    int m = 0;
+    int j = 0;
+    i = k;
+    while (i < i1)
     {
-      m = AgeDetector.getRangeIndex(arrayOfInt2[k]);
-      arrayOfInt1[m] += 1;
-      if (arrayOfInt1[m] <= i) {
-        break label120;
-      }
-      j = arrayOfInt1[m];
-      i = m;
-    }
-    for (;;)
-    {
-      m = k + 1;
+      int n = AgeDetector.getRangeIndex(arrayOfInt2[i]);
+      arrayOfInt1[n] += 1;
       k = j;
-      j = i;
-      i = k;
-      k = m;
-      break;
-      return calculateAvg(AgeDetector.AGE_RANGS[j]) / i;
-      label120:
-      m = i;
-      i = j;
-      j = m;
+      if (arrayOfInt1[n] > j)
+      {
+        k = arrayOfInt1[n];
+        m = n;
+      }
+      i += 1;
+      j = k;
     }
+    return calculateAvg(AgeDetector.AGE_RANGS[m]) / j;
   }
   
   private int calculateAvg(AgeDetector.AgeRang paramAgeRang)
   {
-    int i = 0;
-    int k;
-    if (paramAgeRang == null)
-    {
-      k = AgeType.DEFAULT.value;
-      return k;
+    if (paramAgeRang == null) {
+      return AgeType.DEFAULT.value;
     }
     int[] arrayOfInt = this.agesDetected;
     int m = arrayOfInt.length;
-    int j = 0;
-    for (;;)
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      k = i;
-      if (j >= m) {
-        break;
-      }
-      int n = arrayOfInt[j];
-      k = i;
+      int n = arrayOfInt[i];
+      k = j;
       if (paramAgeRang.isMatch(n)) {
-        k = i + n;
+        k = j + n;
       }
-      j += 1;
-      i = k;
+      i += 1;
     }
+    return j;
   }
   
   public int getAge()
@@ -100,12 +83,17 @@ class AgeDetector$AgeResultInfo
     return this.detectTimes < 5;
   }
   
+  public void setAgeResult(int paramInt)
+  {
+    this.ageResult = paramInt;
+  }
+  
   public void updateAge(int paramInt)
   {
-    if (this.detectTimes < 5)
+    int i = this.detectTimes;
+    if (i < 5)
     {
       int[] arrayOfInt = this.agesDetected;
-      int i = this.detectTimes;
       this.detectTimes = (i + 1);
       arrayOfInt[i] = paramInt;
       if (this.detectTimes == 5) {
@@ -116,7 +104,7 @@ class AgeDetector$AgeResultInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AgeDetector.AgeResultInfo
  * JD-Core Version:    0.7.0.1
  */

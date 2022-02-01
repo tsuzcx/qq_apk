@@ -13,6 +13,11 @@ final class PTSJNIHandler$1
     PTSAppInstance localPTSAppInstance = PTSJNIHandler.access$000(this.val$appInstanceUniqueID);
     if (localPTSAppInstance != null)
     {
+      if (localPTSAppInstance.getRootNode() == null)
+      {
+        PTSLog.e(PTSJNIHandler.access$100(), "[refreshNodeList], rootNode is null.");
+        return;
+      }
       localPTSAppInstance.getRootNode().refreshNodeList(this.val$nodeInfoList);
       return;
     }
@@ -21,7 +26,7 @@ final class PTSJNIHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.PTSJNIHandler.1
  * JD-Core Version:    0.7.0.1
  */

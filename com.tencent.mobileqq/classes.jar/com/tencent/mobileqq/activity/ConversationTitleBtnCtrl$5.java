@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acth;
-
-public class ConversationTitleBtnCtrl$5
+class ConversationTitleBtnCtrl$5
   implements Runnable
 {
-  public ConversationTitleBtnCtrl$5(acth paramacth) {}
+  ConversationTitleBtnCtrl$5(ConversationTitleBtnCtrl paramConversationTitleBtnCtrl) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ConversationTitleBtnCtrl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.5
  * JD-Core Version:    0.7.0.1
  */

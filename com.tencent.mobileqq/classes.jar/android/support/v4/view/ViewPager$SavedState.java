@@ -33,7 +33,13 @@ public class ViewPager$SavedState
   
   public String toString()
   {
-    return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.position + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FragmentPager.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" position=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/db"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textColor="@color/gb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cv" android:layout_alignParentEnd="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cc" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/df" android:layout_alignParentEnd="true" app:iconColor="#ff000000" />
+</RelativeLayout>

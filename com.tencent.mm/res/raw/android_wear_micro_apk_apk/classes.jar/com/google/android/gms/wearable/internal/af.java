@@ -11,7 +11,7 @@ public final class af
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 2, paramzzbr.statusCode);
-    c.a(paramParcel, 3, paramzzbr.Ty, paramInt);
+    c.a(paramParcel, 3, paramzzbr.Vn, paramInt);
     c.v(paramParcel, i);
   }
 }

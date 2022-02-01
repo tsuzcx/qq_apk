@@ -1,144 +1,43 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.halley.common.j;
-import java.io.File;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
 public final class h
+  extends JceStruct
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static int d;
-  public static boolean e;
-  public static int f = 50;
-  private static int g = 2;
-  private static int h = 3;
-  private static String i;
-  private static volatile int j;
-  private static int k = 20000;
+  static ArrayList<Integer> c = new ArrayList();
+  public int a = 0;
+  public ArrayList<Integer> b = null;
   
   static
   {
-    a = "";
-    b = "";
-    c = "";
-    d = 5;
-    i = ".temp";
-    e = true;
-    j = 500;
+    c.add(Integer.valueOf(0));
   }
   
-  public static int a()
+  public final JceStruct newInit()
   {
-    return g;
+    return new h();
   }
   
-  public static String a(String paramString)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    return paramString + ".bdcfg";
+    this.a = paramJceInputStream.read(this.a, 0, false);
+    this.b = ((ArrayList)paramJceInputStream.read(c, 1, false));
   }
   
-  public static void a(int paramInt)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    g = Math.min(Math.max(paramInt, 1), 4);
-  }
-  
-  public static int b()
-  {
-    return h;
-  }
-  
-  public static String b(String paramString)
-  {
-    return paramString + i;
-  }
-  
-  public static void b(int paramInt)
-  {
-    h = Math.min(Math.max(paramInt, 1), 6);
-  }
-  
-  public static int c()
-  {
-    o.e();
-    return 20000;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return !j.a(paramString);
-  }
-  
-  public static int d()
-  {
-    o.e();
-    return 20000;
-  }
-  
-  public static int e()
-  {
-    switch ()
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return 1048576;
+    int i = this.a;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    return 524288;
-  }
-  
-  public static int f()
-  {
-    return 524288;
-  }
-  
-  public static String g()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int m;
-    if ("mounted".equals(Environment.getExternalStorageState()))
-    {
-      m = 1;
-      if (m == 0) {
-        break label98;
-      }
-      str1 = j.e();
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    label98:
-    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + str1 + "/HalleyDownload";; str1 = "")
-    {
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1)) {
-        str2 = com.tencent.halley.common.h.a().getFilesDir().toString();
-      }
-      localStringBuilder.append(str2);
-      return localStringBuilder.toString();
-      m = 0;
-      break;
-    }
-  }
-  
-  public static int h()
-  {
-    return j;
-  }
-  
-  public static int i()
-  {
-    return 60000;
-  }
-  
-  public static int j()
-  {
-    return 20000;
-  }
-  
-  public static int k()
-  {
-    return k;
   }
 }
 

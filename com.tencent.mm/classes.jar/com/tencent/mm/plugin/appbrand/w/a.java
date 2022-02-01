@@ -1,76 +1,147 @@
 package com.tencent.mm.plugin.appbrand.w;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.as;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/UseXWebCanvas;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-appbrand-integration_release"})
-public final class a
-  implements com.tencent.mm.pluginsdk.cmd.a
+public abstract interface a
+  extends IInterface
 {
-  public static final a.a jyb;
+  public abstract int Cd(int paramInt);
   
-  static
-  {
-    AppMethodBeat.i(154368);
-    jyb = new a.a((byte)0);
-    AppMethodBeat.o(154368);
-  }
+  public abstract void a(b paramb);
   
-  public static final void uD()
+  public static abstract class a
+    extends Binder
+    implements a
   {
-    AppMethodBeat.i(154369);
-    b.a((com.tencent.mm.pluginsdk.cmd.a)new a(), new String[] { "//skia" });
-    AppMethodBeat.o(154369);
-  }
-  
-  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
-  {
-    AppMethodBeat.i(154367);
-    j.q(paramContext, "context");
-    j.q(paramArrayOfString, "args");
-    j.q(paramString, "username");
-    if (j.e("//skia", paramArrayOfString[0]))
+    public a()
     {
-      if (paramArrayOfString.length < 2)
-      {
-        AppMethodBeat.o(154367);
-        return false;
+      attachInterface(this, "com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
+    }
+    
+    public static a cId()
+    {
+      return a.tMw;
+    }
+    
+    public static a x(IBinder paramIBinder)
+    {
+      if (paramIBinder == null) {
+        return null;
       }
-      paramContext = paramArrayOfString[1];
-      switch (paramContext.hashCode())
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
+      if ((localIInterface != null) && ((localIInterface instanceof a))) {
+        return (a)localIInterface;
+      }
+      return new a(paramIBinder);
+    }
+    
+    public IBinder asBinder()
+    {
+      return this;
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      switch (paramInt1)
       {
       default: 
-        a.a.aSs().clear();
-        a.a.aSs().commit();
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(154367);
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
         return true;
-        if (!paramContext.equals("true")) {
-          break;
+      case 1: 
+        paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
+        paramInt1 = Cd(paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      }
+      paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
+      a(b.a.z(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+    }
+    
+    static final class a
+      implements a
+    {
+      public static a tMw;
+      private IBinder mRemote;
+      
+      a(IBinder paramIBinder)
+      {
+        this.mRemote = paramIBinder;
+      }
+      
+      public final int Cd(int paramInt)
+      {
+        AppMethodBeat.i(47999);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
+          localParcel1.writeInt(paramInt);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.cId() != null))
+          {
+            paramInt = a.a.cId().Cd(paramInt);
+            return paramInt;
+          }
+          localParcel2.readException();
+          paramInt = localParcel2.readInt();
+          return paramInt;
         }
-        a.a.aSs().putBoolean("use_skia_canvas", true);
-        a.a.aSs().commit();
-        continue;
-        if (!paramContext.equals("false")) {
-          break;
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(47999);
         }
-        a.a.aSs().putBoolean("use_skia_canvas", false);
-        a.a.aSs().commit();
+      }
+      
+      public final void a(b paramb)
+      {
+        AppMethodBeat.i(48000);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
+          if (paramb != null) {}
+          for (IBinder localIBinder = paramb.asBinder();; localIBinder = null)
+          {
+            localParcel1.writeStrongBinder(localIBinder);
+            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (a.a.cId() == null)) {
+              break;
+            }
+            a.a.cId().a(paramb);
+            return;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(48000);
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
     }
-    AppMethodBeat.o(154367);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.w.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cii;
 import cij;
 import cik;
-import cil;
+import cin;
 import cio;
 import cip;
 import ciq;
@@ -25,10 +26,9 @@ import ciu;
 import civ;
 import ciw;
 import cix;
-import ciy;
+import cja;
 import cjb;
 import cjc;
-import cjd;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,7 +56,7 @@ public class DoodleActivity
   private float jdField_a_of_type_Float;
   public Uri a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cip(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cio(this);
   public ImageView a;
   public LinearLayout a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -66,7 +66,7 @@ public class DoodleActivity
   public boolean a;
   public int[] a;
   public ImageView[] a;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ciq(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new cip(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   public LinearLayout b;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -74,7 +74,7 @@ public class DoodleActivity
   protected boolean b;
   public int[] b;
   public ImageView[] b;
-  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new cir(this);
+  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new ciq(this);
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
   public LinearLayout c;
   private String jdField_c_of_type_JavaLangString;
@@ -93,13 +93,13 @@ public class DoodleActivity
   
   public DoodleActivity()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131231582, 2131231583, 2131231584, 2131231585, 2131231586, 2131231587 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131231591, 2131231592, 2131231593, 2131231594, 2131231595, 2131231596 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131231581, 2131231582, 2131231583, 2131231584, 2131231585, 2131231586 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131231590, 2131231591, 2131231592, 2131231593, 2131231594, 2131231595 };
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { null, null, null, null, null, null };
     this.jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { null, null, null, null, null, null };
     this.jdField_c_of_type_ArrayOfInt = new int[] { 15, 13, 11, 9, 7, 5 };
     this.jdField_d_of_type_ArrayOfInt = new int[] { -16777216, -2474221, -417499, -1191381, -9719783, -14582051 };
-    this.jdField_a_of_type_AndroidOsHandler = new cis(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cir(this);
   }
   
   private long a(String paramString)
@@ -174,7 +174,7 @@ public class DoodleActivity
       k += 1;
     }
     localActionSheet.d(2131561746);
-    localActionSheet.a(new cit(this, localActionSheet));
+    localActionSheet.a(new cis(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -182,17 +182,17 @@ public class DoodleActivity
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ciw(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new civ(this));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setHandler(this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cix(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ciw(this));
     this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
     this.g.setVisibility(8);
-    this.h.setOnClickListener(new ciy(this));
-    this.i.setOnClickListener(new cjb(this));
+    this.h.setOnClickListener(new cix(this));
+    this.i.setOnClickListener(new cja(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
@@ -204,18 +204,18 @@ public class DoodleActivity
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new cjc(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new cjb(this));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cjd(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cjc(this));
     this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
     this.g.setVisibility(0);
-    this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new cik(this));
-    this.h.setOnClickListener(new cil(this));
-    this.i.setOnClickListener(new cio(this));
+    this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(new cij(this));
+    this.h.setOnClickListener(new cik(this));
+    this.i.setOnClickListener(new cin(this));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
@@ -520,24 +520,24 @@ public class DoodleActivity
     this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("groupUin");
     this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("photofilepath");
     this.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231569));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231572));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231571));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231574));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView = ((DoodleTextView)findViewById(2131231577));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView = ((DoodlePicView)findViewById(2131231578));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231588));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231580));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231599));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231605));
-    this.g = ((ImageView)findViewById(2131231603));
-    this.h = ((ImageView)findViewById(2131231579));
-    this.i = ((ImageView)findViewById(2131231602));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231498));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231590));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231581));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231589));
-    this.j = ((ImageView)findViewById(2131231575));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231568));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231571));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231570));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231573));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView = ((DoodleTextView)findViewById(2131231576));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView = ((DoodlePicView)findViewById(2131231577));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231587));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231579));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231598));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231604));
+    this.g = ((ImageView)findViewById(2131231602));
+    this.h = ((ImageView)findViewById(2131231578));
+    this.i = ((ImageView)findViewById(2131231601));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231497));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231589));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231580));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231588));
+    this.j = ((ImageView)findViewById(2131231574));
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     if (this.jdField_a_of_type_Boolean) {
       a();
@@ -560,9 +560,9 @@ public class DoodleActivity
     this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setBackgroundResource(2130839732);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintThickness(this.jdField_c_of_type_ArrayOfInt[2]);
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setBackgroundResource(2130839734);
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new cij(this));
-    this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(new ciu(this));
-    this.j.setOnClickListener(new civ(this));
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new cii(this));
+    this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(new cit(this));
+    this.j.setOnClickListener(new ciu(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPhotoFile(this.jdField_d_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.invalidate();
     if (paramBundle != null)

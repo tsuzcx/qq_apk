@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.app.Activity;
-import azri;
+import com.tencent.qqperf.monitor.crash.tools.ActivityLifeCycleInfoRecordHelper;
 import mqq.util.WeakReference;
 
 class BaseActivity2$LogActivityOnCreateRunnalbe
@@ -18,13 +18,13 @@ class BaseActivity2$LogActivityOnCreateRunnalbe
   {
     Activity localActivity = (Activity)this.a.get();
     if (localActivity != null) {
-      azri.a(localActivity).a(localActivity);
+      ActivityLifeCycleInfoRecordHelper.a(localActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseActivity2.LogActivityOnCreateRunnalbe
  * JD-Core Version:    0.7.0.1
  */

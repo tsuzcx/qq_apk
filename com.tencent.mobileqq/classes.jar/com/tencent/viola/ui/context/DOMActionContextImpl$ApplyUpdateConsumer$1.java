@@ -11,11 +11,11 @@ class DOMActionContextImpl$ApplyUpdateConsumer$1
   
   public void execute()
   {
-    if (DOMActionContextImpl.access$100(this.this$1.this$0) != null)
+    if (DOMActionContextImpl.access$000(this.this$1.this$0) != null)
     {
-      DOMActionContextImpl.access$100(this.this$1.this$0).setLayout(DOMActionContextImpl.access$200(this.this$1.this$0), this.val$copy.getRef(), this.val$dom);
+      DOMActionContextImpl.access$000(this.this$1.this$0).setLayout(DOMActionContextImpl.access$100(this.this$1.this$0), this.val$copy.getRef(), this.val$dom);
       if (this.val$copy.getExtra() != null) {
-        DOMActionContextImpl.access$100(this.this$1.this$0).setExtra(DOMActionContextImpl.access$200(this.this$1.this$0), this.val$copy.getRef(), this.val$copy.getExtra());
+        DOMActionContextImpl.access$000(this.this$1.this$0).setExtra(DOMActionContextImpl.access$100(this.this$1.this$0), this.val$copy.getRef(), this.val$copy.getExtra());
       }
     }
   }
@@ -27,7 +27,7 @@ class DOMActionContextImpl$ApplyUpdateConsumer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.ApplyUpdateConsumer.1
  * JD-Core Version:    0.7.0.1
  */

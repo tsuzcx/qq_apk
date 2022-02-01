@@ -3,30 +3,29 @@ package com.tencent.mm.vending.a;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.vending.e.a;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class c<_Struct, _Index, _Change>
-  implements a
+  implements com.tencent.mm.vending.e.a
 {
-  private n YU;
-  private Looper YV;
-  private Looper YW;
-  private Handler YX;
-  private Handler YY;
-  private AtomicBoolean YZ = new AtomicBoolean(false);
-  private e Za;
-  private byte[] Zb = new byte[0];
-  private byte[] Zc = new byte[0];
-  private boolean Zd = false;
-  private boolean Ze = false;
-  private k<_Index> Zf = new k((byte)0);
-  private volatile com.tencent.mm.vending.b.c Zg = new com.tencent.mm.vending.b.c(com.tencent.mm.vending.g.d.aaa) {};
-  private volatile com.tencent.mm.vending.b.c Zh = new com.tencent.mm.vending.b.c(com.tencent.mm.vending.g.d.aaa) {};
-  private l<_Index, m<_Struct, _Index>> Zi = new l();
-  HashSet<c<_Struct, _Index, _Change>.h> Zj = new HashSet();
-  private boolean Zk = false;
+  private e acA;
+  private byte[] acB = new byte[0];
+  private byte[] acC = new byte[0];
+  private boolean acD = false;
+  private boolean acE = false;
+  private k<_Index> acF = new k((byte)0);
+  private volatile com.tencent.mm.vending.b.c acG = new com.tencent.mm.vending.b.c(com.tencent.mm.vending.h.d.adB) {};
+  private volatile com.tencent.mm.vending.b.c acH = new com.tencent.mm.vending.b.c(com.tencent.mm.vending.h.d.adB) {};
+  private l<_Index, m<_Struct, _Index>> acI = new l();
+  HashSet<c<_Struct, _Index, _Change>.h> acJ = new HashSet();
+  private boolean acK = false;
+  private n acu;
+  private Looper acv;
+  private Looper acw;
+  private Handler acx;
+  private Handler acy;
+  private AtomicBoolean acz = new AtomicBoolean(false);
   
   public c()
   {
@@ -35,42 +34,46 @@ public abstract class c<_Struct, _Index, _Change>
   
   private c(Looper paramLooper)
   {
-    this.YV = paramLooper;
-    this.YW = com.tencent.mm.vending.h.b.lJ().getLooper();
-    this.Zi.a(new j()
+    this.acv = paramLooper;
+    this.acw = com.tencent.mm.vending.i.b.mw().getLooper();
+    this.acI.a(new j()
     {
-      public final void lx()
+      public final void me()
       {
+        com.tencent.mm.vending.f.a.mq();
         c.a(c.this);
       }
     });
-    this.YU = new n(this.YV, this.YW);
-    this.YU.a(new o()
+    this.acu = new n(this.acv, this.acw);
+    this.acu.a(new o()
     {
-      public final void lA()
+      public final void mf()
       {
         c localc = c.this;
-        if (c.e(c.this) != null) {
-          c.e(c.this).lF();
-        }
+        com.tencent.mm.vending.f.a.mq();
+        c.b(c.this).mi();
       }
       
-      public final void ly()
+      public final void mg()
       {
         c localc = c.this;
-        c.b(c.this).lB();
-      }
-      
-      public final void lz()
-      {
-        c localc = c.this;
-        c.this.Zj.clear();
-        c.b(c.this).lB();
+        com.tencent.mm.vending.f.a.mq();
+        c.this.acJ.clear();
+        c.b(c.this).mi();
         c.c(c.this).removeCallbacksAndMessages(null);
         c.d(c.this).clear();
       }
+      
+      public final void mh()
+      {
+        c localc = c.this;
+        com.tencent.mm.vending.f.a.mq();
+        if (c.e(c.this) != null) {
+          c.e(c.this).mn();
+        }
+      }
     });
-    this.YX = new Handler(this.YV)
+    this.acx = new Handler(this.acv)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -83,7 +86,7 @@ public abstract class c<_Struct, _Index, _Change>
         c.a(c.this, m.a(paramAnonymousMessage));
       }
     };
-    this.YY = new Handler(this.YW)
+    this.acy = new Handler(this.acw)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -95,13 +98,15 @@ public abstract class c<_Struct, _Index, _Change>
         c.f(c.this);
       }
     };
-    this.Za = new e(this.YW, new f()
+    this.acA = new e(this.acw, new f()
     {
-      public final void K(_Index paramAnonymous_Index)
+      public final void T(_Index paramAnonymous_Index)
       {
-        m localm = c.this.I(paramAnonymous_Index);
+        m localm = c.this.R(paramAnonymous_Index);
         boolean bool = c.a(c.this, localm, paramAnonymous_Index);
-        if (m.b(localm)) {}
+        if (m.b(localm)) {
+          com.tencent.mm.vending.f.a.mr();
+        }
         while (bool) {
           return;
         }
@@ -121,9 +126,9 @@ public abstract class c<_Struct, _Index, _Change>
     {
       if ((!m.j(paramm)) || (m.f(paramm)) || (m.k(paramm)))
       {
-        this.Zk = true;
-        Object localObject = G(param_Index);
-        this.Zk = false;
+        this.acK = true;
+        Object localObject = P(param_Index);
+        this.acK = false;
         if (m.b(paramm)) {
           return false;
         }
@@ -132,7 +137,7 @@ public abstract class c<_Struct, _Index, _Change>
         m.g(paramm);
         m.h(paramm);
         m.i(paramm);
-        if (this.Zf.Zy == paramm) {
+        if (this.acF.acY == paramm) {
           m.a(paramm, true);
         }
         m.e(paramm).notify();
@@ -145,17 +150,20 @@ public abstract class c<_Struct, _Index, _Change>
   private m<_Struct, _Index> b(m<_Struct, _Index> paramm, _Index param_Index)
   {
     int i = 0;
-    if (!com.tencent.mm.vending.h.b.lJ().isRunning()) {
+    if (!com.tencent.mm.vending.i.b.mw().isRunning())
+    {
+      com.tencent.mm.vending.f.a.mo();
       return paramm;
     }
     for (;;)
     {
       synchronized (m.e(paramm))
       {
-        if (this.YZ.get())
+        if (this.acz.get())
         {
+          com.tencent.mm.vending.f.a.mo();
           if ((m.j(paramm)) && (!m.f(paramm))) {
-            break label115;
+            break label127;
           }
           if (i != 0) {
             break;
@@ -163,18 +171,20 @@ public abstract class c<_Struct, _Index, _Change>
           return paramm;
         }
       }
-      this.Za.L(param_Index);
+      this.acA.U(param_Index);
       i = 1;
     }
-    this.Zf.Zx.M(param_Index);
-    this.Zf.Zy = paramm;
+    this.acF.acX.V(param_Index);
+    this.acF.acY = paramm;
+    com.tencent.mm.vending.f.a.mq();
     System.nanoTime();
     try
     {
       m.e(paramm).wait();
       System.nanoTime();
-      this.Zf.lx();
-      label115:
+      com.tencent.mm.vending.f.a.mq();
+      this.acF.me();
+      label127:
       return paramm;
     }
     catch (InterruptedException param_Index)
@@ -186,71 +196,74 @@ public abstract class c<_Struct, _Index, _Change>
     }
   }
   
-  protected abstract _Struct G(_Index param_Index);
+  protected abstract _Struct P(_Index param_Index);
   
-  protected final m<_Struct, _Index> I(_Index param_Index)
+  protected final m<_Struct, _Index> R(_Index param_Index)
   {
-    synchronized (this.Zb)
+    synchronized (this.acB)
     {
-      m localm2 = (m)this.Zi.get(param_Index);
+      m localm2 = (m)this.acI.get(param_Index);
       m localm1 = localm2;
       if (localm2 == null)
       {
         localm1 = new m();
-        this.Zi.put(param_Index, localm1);
+        this.acI.put(param_Index, localm1);
       }
       return localm1;
     }
   }
   
-  protected final c<_Struct, _Index, _Change>.h J(_Index param_Index)
+  protected final c<_Struct, _Index, _Change>.h S(_Index param_Index)
   {
-    if (Looper.myLooper() != this.YW) {
+    if (Looper.myLooper() != this.acw) {
       throw new IllegalAccessError("Call from wrong looper");
     }
-    if (!this.Zk) {
+    if (!this.acK)
+    {
+      com.tencent.mm.vending.f.a.mp();
       return null;
     }
-    m.d(I(param_Index));
+    m.d(R(param_Index));
     param_Index = new h(this, param_Index);
-    this.Zj.add(param_Index);
+    this.acJ.add(param_Index);
     return param_Index;
   }
   
   public final com.tencent.mm.vending.b.b<d> a(d paramd)
   {
-    return this.Zh.N(paramd);
+    return this.acH.W(paramd);
   }
   
   public final <T> T get(_Index param_Index)
   {
     Looper localLooper = Looper.myLooper();
-    if ((localLooper != this.YV) && (localLooper != this.YW)) {
+    if ((localLooper != this.acv) && (localLooper != this.acw)) {
       throw new IllegalAccessError("Call from wrong looper");
     }
-    if (this.YZ.get()) {
+    if (this.acz.get()) {
       return null;
     }
-    m localm = I(param_Index);
-    if (localLooper == this.YV) {
-      return b(localm, param_Index).lC();
+    m localm = R(param_Index);
+    if (localLooper == this.acv) {
+      return b(localm, param_Index).mj();
     }
     a(localm, param_Index);
-    return localm.lC();
+    return localm.mj();
   }
   
-  public final void lw()
+  public final void md()
   {
     Looper localLooper = Looper.myLooper();
-    if ((localLooper != this.YV) && (localLooper != this.YW)) {
+    if ((localLooper != this.acv) && (localLooper != this.acw)) {
       throw new IllegalAccessError("Call from wrong looper");
     }
-    this.YZ.set(true);
-    this.YY.removeCallbacksAndMessages(null);
-    this.YX.removeCallbacksAndMessages(null);
-    this.Za.stop();
-    this.Za.lB();
-    this.YY.sendMessage(this.YY.obtainMessage(2));
+    com.tencent.mm.vending.f.a.mq();
+    this.acz.set(true);
+    this.acy.removeCallbacksAndMessages(null);
+    this.acx.removeCallbacksAndMessages(null);
+    this.acA.stop();
+    this.acA.mi();
+    this.acy.sendMessage(this.acy.obtainMessage(2));
   }
 }
 

@@ -9,26 +9,26 @@ public class SoterExportResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterExportResult> CREATOR;
-  public byte[] BmP;
-  public int BmQ;
-  public int bpE;
+  public byte[] ahxG;
+  public int ahxH;
+  public int resultCode;
   
   static
   {
-    AppMethodBeat.i(73110);
+    AppMethodBeat.i(88746);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(73110);
+    AppMethodBeat.o(88746);
   }
   
   public SoterExportResult() {}
   
   public SoterExportResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(73108);
-    this.bpE = paramParcel.readInt();
-    this.BmP = paramParcel.createByteArray();
-    this.BmQ = paramParcel.readInt();
-    AppMethodBeat.o(73108);
+    AppMethodBeat.i(88744);
+    this.resultCode = paramParcel.readInt();
+    this.ahxG = paramParcel.createByteArray();
+    this.ahxH = paramParcel.readInt();
+    AppMethodBeat.o(88744);
   }
   
   public int describeContents()
@@ -38,16 +38,16 @@ public class SoterExportResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(73109);
-    paramParcel.writeInt(this.bpE);
-    paramParcel.writeByteArray(this.BmP);
-    paramParcel.writeInt(this.BmQ);
-    AppMethodBeat.o(73109);
+    AppMethodBeat.i(88745);
+    paramParcel.writeInt(this.resultCode);
+    paramParcel.writeByteArray(this.ahxG);
+    paramParcel.writeInt(this.ahxH);
+    AppMethodBeat.o(88745);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterExportResult
  * JD-Core Version:    0.7.0.1
  */

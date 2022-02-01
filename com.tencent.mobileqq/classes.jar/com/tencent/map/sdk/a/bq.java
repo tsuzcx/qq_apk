@@ -20,7 +20,11 @@ public final class bq
       String str = Build.MODEL;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return "null";
   }
   
@@ -46,53 +50,65 @@ public final class bq
       String str = Build.VERSION.RELEASE;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return "null";
   }
   
   private static String b(Context paramContext)
   {
-    int j = 0;
     Object localObject = paramContext.getPackageName();
-    for (;;)
+    try
     {
-      int i;
-      int k;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo((String)localObject, 0);
-        localObject = paramContext.versionName;
-        int m = paramContext.versionCode;
-        if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
-          return String.valueOf(m);
-        }
-        paramContext = ((String)localObject).trim().replace('\n', ' ').replace('\r', ' ').replace("|", "%7C");
-        localObject = paramContext.toCharArray();
-        i = 0;
-        if (i < localObject.length)
-        {
-          k = j;
-          if (localObject[i] != '.') {
-            break label151;
-          }
-          k = j + 1;
-          break label151;
-        }
-        if (j < 3)
-        {
-          paramContext = paramContext + "." + m;
-          return paramContext;
-        }
+      paramContext = paramContext.getPackageManager();
+      i = 0;
+      paramContext = paramContext.getPackageInfo((String)localObject, 0);
+      localObject = paramContext.versionName;
+      m = paramContext.versionCode;
+      if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
+        break label155;
       }
-      catch (Throwable paramContext)
-      {
-        return "";
-      }
-      return paramContext;
-      label151:
-      i += 1;
-      j = k;
+      paramContext = ((String)localObject).trim().replace('\n', ' ').replace('\r', ' ').replace("|", "%7C");
+      localObject = paramContext.toCharArray();
+      j = 0;
     }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        int i;
+        int m;
+        int k;
+        label155:
+        continue;
+        i += 1;
+        int j = k;
+      }
+    }
+    if (i < localObject.length)
+    {
+      k = j;
+      if (localObject[i] == '.') {
+        k = j + 1;
+      }
+    }
+    else
+    {
+      if (j >= 3) {
+        return paramContext;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(m);
+      return ((StringBuilder)localObject).toString();
+      return String.valueOf(m);
+      return "";
+    }
+    return paramContext;
   }
   
   private static String c()
@@ -102,7 +118,11 @@ public final class bq
       String str = Build.VERSION.SDK;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return "null";
   }
   
@@ -113,7 +133,11 @@ public final class bq
       String str = Build.BRAND;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return null;
   }
 }

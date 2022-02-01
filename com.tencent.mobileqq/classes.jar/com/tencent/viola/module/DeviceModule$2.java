@@ -17,22 +17,21 @@ class DeviceModule$2
     try
     {
       localJSONObject.put("value", paramFloat);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, localJSONObject, true);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("brightnessChange", "getSystemBrightness error:" + localException.getMessage());
-        localException.printStackTrace();
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSystemBrightness error:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("brightnessChange", localStringBuilder.toString());
+      localException.printStackTrace();
     }
+    ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, localJSONObject, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.DeviceModule.2
  * JD-Core Version:    0.7.0.1
  */

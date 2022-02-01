@@ -11,12 +11,13 @@ public final class PlatformDependent
   
   static
   {
-    if (ANDROID_API_VERSION != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      IS_ANDROID = bool;
-      return;
+    boolean bool;
+    if (ANDROID_API_VERSION != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    IS_ANDROID = bool;
   }
   
   public static int getAndroidApiVersion()
@@ -44,13 +45,17 @@ public final class PlatformDependent
       int i = ((Integer)Class.forName("android.os.Build$VERSION", true, getSystemClassLoader()).getField("SDK_INT").get(null)).intValue();
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label27:
+      break label27;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.PlatformDependent
  * JD-Core Version:    0.7.0.1
  */

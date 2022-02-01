@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="255px"
+    version="1.1"
+    viewBox="0 0 255 255"
+    width="255px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>video_no_sd_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Template"
+        stroke="none"
+        stroke-width="1">
+        <g
+            fill="#FFFFFF"
+            id="video_no_sd_icon">
+            <g
+                id="Group-6"
+                transform="translate(74.000000, 65.000000)">
+                <path
+                    d="M98.0003771,0 L21.9996229,0 L24,0 L12,12 L12,10.000714 L12,126 L108,126 L108,10.000714 L108,12 L96,0 L98.0003771,0 Z M108,114 L96,126 L108,126 L108,114 Z M0,48 L12,48 L12,126 L0,126 L0,48 Z M0,114 L12,126 L0,126 L0,114 Z M0,60 L12,48 L0,48 L0,60 Z M36,12 L48,12 L48,42 L36,42 L36,12 Z M54,12 L66,12 L66,42 L54,42 L54,12 Z M72,12 L84,12 L84,42 L72,42 L72,12 Z"
+                    id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/h79" android:paddingLeft="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="45.0dip"
+<RelativeLayout android:id="@id/nqd" android:background="#ffffffff" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/z3" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/cri" android:layout_centerVertical="true" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/jmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="12.0dip" android:text="@string/wnj" android:singleLine="true" android:layout_toRightOf="@id/z3" android:layout_centerVertical="true" />
+    <RelativeLayout android:background="@drawable/bk9" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="11.5dip" android:layout_marginRight="11.5dip">
+        <CheckBox android:id="@id/dv_" android:background="@drawable/blm" android:clickable="false" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="9.5dip" android:checked="false" android:button="@null" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff666666" android:ellipsize="end" android:id="@id/nof" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="121212" android:singleLine="true" android:layout_toRightOf="@id/dv_" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/noc" android:padding="4.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/bq6" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/x00" />
+    </RelativeLayout>
 </RelativeLayout>

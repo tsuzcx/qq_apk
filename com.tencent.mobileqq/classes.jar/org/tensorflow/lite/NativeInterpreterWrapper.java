@@ -52,16 +52,18 @@ final class NativeInterpreterWrapper
   
   NativeInterpreterWrapper(ByteBuffer paramByteBuffer, int paramInt)
   {
-    if ((paramByteBuffer == null) || ((!(paramByteBuffer instanceof MappedByteBuffer)) && ((!paramByteBuffer.isDirect()) || (paramByteBuffer.order() != ByteOrder.nativeOrder())))) {
-      throw new IllegalArgumentException("Model ByteBuffer should be either a MappedByteBuffer of the model file, or a direct ByteBuffer using ByteOrder.nativeOrder() which contains bytes of model content.");
+    if ((paramByteBuffer != null) && (((paramByteBuffer instanceof MappedByteBuffer)) || ((paramByteBuffer.isDirect()) && (paramByteBuffer.order() == ByteOrder.nativeOrder()))))
+    {
+      this.modelByteBuffer = paramByteBuffer;
+      this.errorHandle = createErrorReporter(512);
+      this.modelHandle = createModelWithBuffer(this.modelByteBuffer, this.errorHandle);
+      this.interpreterHandle = createInterpreter(this.modelHandle, this.errorHandle, paramInt);
+      this.isMemoryAllocated = true;
+      this.inputTensors = new Tensor[getInputCount(this.interpreterHandle)];
+      this.outputTensors = new Tensor[getOutputCount(this.interpreterHandle)];
+      return;
     }
-    this.modelByteBuffer = paramByteBuffer;
-    this.errorHandle = createErrorReporter(512);
-    this.modelHandle = createModelWithBuffer(this.modelByteBuffer, this.errorHandle);
-    this.interpreterHandle = createInterpreter(this.modelHandle, this.errorHandle, paramInt);
-    this.isMemoryAllocated = true;
-    this.inputTensors = new Tensor[getInputCount(this.interpreterHandle)];
-    this.outputTensors = new Tensor[getOutputCount(this.interpreterHandle)];
+    throw new IllegalArgumentException("Model ByteBuffer should be either a MappedByteBuffer of the model file, or a direct ByteBuffer using ByteOrder.nativeOrder() which contains bytes of model content.");
   }
   
   private static native long allocateTensors(long paramLong1, long paramLong2);
@@ -135,31 +137,43 @@ final class NativeInterpreterWrapper
     if (this.inputsIndexes.containsKey(paramString)) {
       return ((Integer)this.inputsIndexes.get(paramString)).intValue();
     }
-    throw new IllegalArgumentException(String.format("Input error: '%s' is not a valid name for any input. Names of inputs and their indexes are %s", new Object[] { paramString, this.inputsIndexes.toString() }));
+    paramString = new IllegalArgumentException(String.format("Input error: '%s' is not a valid name for any input. Names of inputs and their indexes are %s", new Object[] { paramString, this.inputsIndexes.toString() }));
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   Tensor getInputTensor(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.inputTensors.length)) {
-      throw new IllegalArgumentException("Invalid input Tensor index: " + paramInt);
-    }
-    Object localObject2 = this.inputTensors[paramInt];
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    if (paramInt >= 0)
     {
-      localObject2 = this.inputTensors;
-      localObject1 = Tensor.fromHandle(getInputTensor(this.interpreterHandle, paramInt));
-      localObject2[paramInt] = localObject1;
+      Tensor[] arrayOfTensor = this.inputTensors;
+      if (paramInt < arrayOfTensor.length)
+      {
+        Tensor localTensor = arrayOfTensor[paramInt];
+        localObject = localTensor;
+        if (localTensor == null)
+        {
+          localObject = Tensor.fromHandle(getInputTensor(this.interpreterHandle, paramInt));
+          arrayOfTensor[paramInt] = localObject;
+        }
+        return localObject;
+      }
     }
-    return localObject1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Invalid input Tensor index: ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   Long getLastNativeInferenceDurationNanoseconds()
   {
-    if (this.inferenceDurationNanoseconds < 0L) {
+    long l = this.inferenceDurationNanoseconds;
+    if (l < 0L) {
       return null;
     }
-    return Long.valueOf(this.inferenceDurationNanoseconds);
+    return Long.valueOf(l);
   }
   
   int getOutputIndex(String paramString)
@@ -181,7 +195,11 @@ final class NativeInterpreterWrapper
     if (this.outputsIndexes.containsKey(paramString)) {
       return ((Integer)this.outputsIndexes.get(paramString)).intValue();
     }
-    throw new IllegalArgumentException(String.format("Input error: '%s' is not a valid name for any output. Names of outputs and their indexes are %s", new Object[] { paramString, this.outputsIndexes.toString() }));
+    paramString = new IllegalArgumentException(String.format("Input error: '%s' is not a valid name for any output. Names of outputs and their indexes are %s", new Object[] { paramString, this.outputsIndexes.toString() }));
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   float getOutputQuantizationScale(int paramInt)
@@ -196,18 +214,25 @@ final class NativeInterpreterWrapper
   
   Tensor getOutputTensor(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.outputTensors.length)) {
-      throw new IllegalArgumentException("Invalid output Tensor index: " + paramInt);
-    }
-    Object localObject2 = this.outputTensors[paramInt];
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    if (paramInt >= 0)
     {
-      localObject2 = this.outputTensors;
-      localObject1 = Tensor.fromHandle(getOutputTensor(this.interpreterHandle, paramInt));
-      localObject2[paramInt] = localObject1;
+      Tensor[] arrayOfTensor = this.outputTensors;
+      if (paramInt < arrayOfTensor.length)
+      {
+        Tensor localTensor = arrayOfTensor[paramInt];
+        localObject = localTensor;
+        if (localTensor == null)
+        {
+          localObject = Tensor.fromHandle(getOutputTensor(this.interpreterHandle, paramInt));
+          arrayOfTensor[paramInt] = localObject;
+        }
+        return localObject;
+      }
     }
-    return localObject1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Invalid output Tensor index: ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   void resizeInput(int paramInt, int[] paramArrayOfInt)
@@ -221,46 +246,53 @@ final class NativeInterpreterWrapper
   
   void run(Object[] paramArrayOfObject, Map<Integer, Object> paramMap)
   {
-    int j = 0;
     this.inferenceDurationNanoseconds = -1L;
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      throw new IllegalArgumentException("Input error: Inputs should not be null or empty.");
-    }
-    if ((paramMap == null) || (paramMap.isEmpty())) {
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length != 0))
+    {
+      if ((paramMap != null) && (!paramMap.isEmpty()))
+      {
+        int j = 0;
+        int i = 0;
+        while (i < paramArrayOfObject.length)
+        {
+          int[] arrayOfInt = getInputTensor(i).getInputShapeIfDifferent(paramArrayOfObject[i]);
+          if (arrayOfInt != null) {
+            resizeInput(i, arrayOfInt);
+          }
+          i += 1;
+        }
+        i = j;
+        if (!this.isMemoryAllocated)
+        {
+          allocateTensors(this.interpreterHandle, this.errorHandle);
+          this.isMemoryAllocated = true;
+          Arrays.fill(this.outputTensors, null);
+          i = j;
+        }
+        while (i < paramArrayOfObject.length)
+        {
+          getInputTensor(i).setTo(paramArrayOfObject[i]);
+          i += 1;
+        }
+        long l1 = System.nanoTime();
+        run(this.interpreterHandle, this.errorHandle);
+        long l2 = System.nanoTime();
+        paramArrayOfObject = paramMap.entrySet().iterator();
+        while (paramArrayOfObject.hasNext())
+        {
+          paramMap = (Map.Entry)paramArrayOfObject.next();
+          getOutputTensor(((Integer)paramMap.getKey()).intValue()).copyTo(paramMap.getValue());
+        }
+        this.inferenceDurationNanoseconds = (l2 - l1);
+        return;
+      }
       throw new IllegalArgumentException("Input error: Outputs should not be null or empty.");
     }
-    int i = 0;
-    while (i < paramArrayOfObject.length)
+    paramArrayOfObject = new IllegalArgumentException("Input error: Inputs should not be null or empty.");
+    for (;;)
     {
-      int[] arrayOfInt = getInputTensor(i).getInputShapeIfDifferent(paramArrayOfObject[i]);
-      if (arrayOfInt != null) {
-        resizeInput(i, arrayOfInt);
-      }
-      i += 1;
+      throw paramArrayOfObject;
     }
-    i = j;
-    if (!this.isMemoryAllocated)
-    {
-      allocateTensors(this.interpreterHandle, this.errorHandle);
-      this.isMemoryAllocated = true;
-      Arrays.fill(this.outputTensors, null);
-      i = j;
-    }
-    while (i < paramArrayOfObject.length)
-    {
-      getInputTensor(i).setTo(paramArrayOfObject[i]);
-      i += 1;
-    }
-    long l1 = System.nanoTime();
-    run(this.interpreterHandle, this.errorHandle);
-    long l2 = System.nanoTime();
-    paramArrayOfObject = paramMap.entrySet().iterator();
-    while (paramArrayOfObject.hasNext())
-    {
-      paramMap = (Map.Entry)paramArrayOfObject.next();
-      getOutputTensor(((Integer)paramMap.getKey()).intValue()).copyTo(paramMap.getValue());
-    }
-    this.inferenceDurationNanoseconds = (l2 - l1);
   }
   
   void setNumThreads(int paramInt)
@@ -275,7 +307,7 @@ final class NativeInterpreterWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.tensorflow.lite.NativeInterpreterWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -2,78 +2,78 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bf;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.bu;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static void a(bf parambf)
+  public static void a(bu parambu)
   {
-    AppMethodBeat.i(73360);
-    if (parambf == null)
+    AppMethodBeat.i(121880);
+    if (parambu == null)
     {
-      AppMethodBeat.o(73360);
+      AppMethodBeat.o(121880);
       return;
     }
     Object localObject = null;
     try
     {
-      parambf = parambf.toByteArray();
-      b.v("hell_astackd_mmkv_key", parambf);
-      AppMethodBeat.o(73360);
+      parambu = parambu.toByteArray();
+      b.u("hell_astackd_mmkv_key", parambu);
+      AppMethodBeat.o(121880);
       return;
     }
-    catch (Exception parambf)
+    catch (Exception parambu)
     {
       for (;;)
       {
-        ab.printErrStackTrace("ActivityStackDao", parambf, "ActivityStackDao write", new Object[0]);
-        parambf = localObject;
+        Log.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambu, "ActivityStackDao write", new Object[0]);
+        parambu = localObject;
       }
     }
   }
   
-  public static bf brA()
+  public static bu dJe()
   {
-    AppMethodBeat.i(73359);
-    bf localbf2 = brB();
-    bf localbf1 = localbf2;
-    if (localbf2 == null)
+    AppMethodBeat.i(121879);
+    bu localbu2 = dJf();
+    bu localbu1 = localbu2;
+    if (localbu2 == null)
     {
-      localbf1 = new bf();
-      a(localbf1);
+      localbu1 = new bu();
+      a(localbu1);
     }
-    AppMethodBeat.o(73359);
-    return localbf1;
+    AppMethodBeat.o(121879);
+    return localbu1;
   }
   
-  private static bf brB()
+  private static bu dJf()
   {
-    AppMethodBeat.i(73361);
-    byte[] arrayOfByte = b.getBytes("hell_astackd_mmkv_key");
+    AppMethodBeat.i(121881);
+    byte[] arrayOfByte = b.ard("hell_astackd_mmkv_key");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      AppMethodBeat.o(73361);
+      AppMethodBeat.o(121881);
       return null;
     }
-    bf localbf = new bf();
+    bu localbu = new bu();
     try
     {
-      localbf.parseFrom(arrayOfByte);
-      AppMethodBeat.o(73361);
-      return localbf;
+      localbu.parseFrom(arrayOfByte);
+      AppMethodBeat.o(121881);
+      return localbu;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
-      AppMethodBeat.o(73361);
+      Log.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
+      AppMethodBeat.o(121881);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.c
  * JD-Core Version:    0.7.0.1
  */

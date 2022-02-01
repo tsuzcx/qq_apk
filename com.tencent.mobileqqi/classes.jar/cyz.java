@@ -1,24 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity.BaseLbsObserver;
+import java.util.List;
 
 public class cyz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cyz(PeopleAroundBaseActivity paramPeopleAroundBaseActivity, View paramView1, Drawable[] paramArrayOfDrawable, LinearLayout paramLinearLayout, View paramView2) {}
+  public cyz(PeopleAroundBaseActivity.BaseLbsObserver paramBaseLbsObserver, String paramString1, List paramList, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) {
-      PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setCompoundDrawables(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
-    }
-    PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity$BaseLbsObserver.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

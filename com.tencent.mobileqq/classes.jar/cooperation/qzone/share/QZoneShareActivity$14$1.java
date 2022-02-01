@@ -1,8 +1,8 @@
 package cooperation.qzone.share;
 
-import alud;
 import android.content.res.Resources;
 import android.widget.TextView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneShareActivity$14$1
@@ -12,33 +12,37 @@ class QZoneShareActivity$14$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int <= 0) {
-          break;
-        }
-        String str = alud.a(2131712723) + this.jdField_a_of_type_Int + alud.a(2131712735);
-        int i = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.getResources().getColor(2131166664);
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setTextColor(i);
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setText(str);
-        if (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.getVisibility() != 0) {
-          this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setVisibility(0);
-        }
-      } while (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.b);
-      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0, 2131718710, 0).a();
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.b = false;
+    if (this.this$1.this$0.viewTextCount == null) {
       return;
-    } while (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.getVisibility() == 8);
-    this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setVisibility(8);
+    }
+    if (this.val$exceedCount > 0)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131909880));
+      ((StringBuilder)localObject).append(this.val$exceedCount);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131909892));
+      localObject = ((StringBuilder)localObject).toString();
+      int i = this.this$1.this$0.getResources().getColor(2131167720);
+      this.this$1.this$0.viewTextCount.setTextColor(i);
+      this.this$1.this$0.viewTextCount.setText((CharSequence)localObject);
+      if (this.this$1.this$0.viewTextCount.getVisibility() != 0) {
+        this.this$1.this$0.viewTextCount.setVisibility(0);
+      }
+      if (this.this$1.this$0.showMaxLen)
+      {
+        QQToast.makeText(this.this$1.this$0, 2131915206, 0).show();
+        this.this$1.this$0.showMaxLen = false;
+      }
+    }
+    else if (this.this$1.this$0.viewTextCount.getVisibility() != 8)
+    {
+      this.this$1.this$0.viewTextCount.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

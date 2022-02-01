@@ -1,14 +1,12 @@
 package com.tencent.mm.wallet_core.c;
 
+import com.tencent.mm.am.p;
+
 public abstract interface e
 {
-  public abstract void onCancel();
+  public abstract void b(p paramp, boolean paramBoolean);
   
-  public abstract void onEnter();
-  
-  public abstract void onUrlCancel();
-  
-  public abstract void onUrlOk();
+  public abstract void fXe();
 }
 
 

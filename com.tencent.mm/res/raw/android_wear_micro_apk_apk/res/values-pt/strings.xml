@@ -1,53 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="r">999+</string>
-    <string name="s">WeChat</string>
-    <string name="t">Sair</string>
-    <string name="u">Ali</string>
-    <string name="v">Mr. Luo History</string>
-    <string name="w">Kiss</string>
-    <string name="x">Robot Six</string>
-    <string name="y">Este sticker está sendo baixado...</string>
-    <string name="z">Enviar batimentos cardíacos</string>
-    <string name="a0">Eu medi o batimento cardíaco com relógio:%d vezes/min.</string>
-    <string name="a1">Falha ao carregar a imagem</string>
-    <string name="a2">Impossível carregar a fonte. Depois de reiniciar o WeChat no celular. Toque para tentar novamente.</string>
-    <string name="a3">Assegure que seu celular e relógio estão conectados. WeChat de Ceular foi registrado. Toque para tentar de novo.</string>
-    <string name="a4">Impossível fazer log in. Depois de reiniciar o WeChat no celular. Toque para tentar novamente.</string>
-    <string name="a5">￥%s</string>
-    <string name="a6">CNY</string>
-    <string name="a7">"Mais sorte na
-próxima vez"</string>
-    <string name="a8">Aceitar</string>
-    <string name="a9">Ignorar</string>
-    <string name="a_">Notificações</string>
-    <string name="aa">Abrir no celular</string>
-    <string name="ab">Texto</string>
-    <string name="ac">Reenviar</string>
-    <string name="ad">Pagar</string>
-    <string name="ae">Talvez</string>
-    <string name="af">Não</string>
-    <string name="ag">Sim</string>
-    <string name="ah">Enviar</string>
-    <string name="ai">Galeria de Stickers</string>
-    <string name="aj">Texto</string>
-    <string name="ak">Áudio</string>
-    <string name="al">Responder</string>
-    <string name="am">Fale...</string>
-    <string name="an">%d</string>
-    <string name="ao">"Erro de Reconhecimento
-Segure para Falar novamente"</string>
-    <string name="ap">Convertendo em Texto</string>
-    <string name="aq">%d</string>
-    <string name="ar">Enviando</string>
-    <string name="as">"Mensagem muito curta
-Segure para Falar novamente"</string>
-    <string name="at">1300  1030  7150  9660  79</string>
-    <string name="au">Esperando imagem</string>
-    <string name="av">Carregando...</string>
-    <string name="aw">Esperando fonte</string>
-    <string name="ax">Fazendo login…</string>
-    <string name="ay">Página de pagamento aberta no celular</string>
-    <string name="az">Dispositivo não suporta a reprodução de áudio.</string>
-    <string name="b0">Bem-vindo ao WeChat</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="dismiss_overlay_button_label">Sair</string>
 </resources>

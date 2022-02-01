@@ -2,60 +2,88 @@ package com.tencent.mm.plugin.welab.c;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.ac;
-import com.tencent.mm.plugin.websearch.api.m;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.a.qw;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.al;
+import com.tencent.mm.plugin.websearch.api.as;
+import com.tencent.mm.plugin.websearch.api.i;
 import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
   implements b
 {
-  public final String dhr()
+  public final String iDG()
   {
-    AppMethodBeat.i(26577);
-    String str = ac.agv("discoverRecommendEntry").optString("labIcon");
-    AppMethodBeat.o(26577);
+    AppMethodBeat.i(30250);
+    String str = al.bix("discoverRecommendEntry").optString("labIcon");
+    AppMethodBeat.o(30250);
     return str;
   }
   
-  public final String dhs()
+  public final String iDH()
   {
-    AppMethodBeat.i(26578);
-    String str = ac.agv("discoverRecommendEntry").optString("wording");
-    if (bo.isNullOrNil(str))
+    AppMethodBeat.i(30251);
+    String str = al.bix("discoverRecommendEntry").optString("wording");
+    if (Util.isNullOrNil(str))
     {
-      str = ah.getContext().getString(2131299915);
-      AppMethodBeat.o(26578);
+      str = MMApplicationContext.getContext().getString(R.l.find_friends_look);
+      AppMethodBeat.o(30251);
       return str;
     }
-    AppMethodBeat.o(26578);
+    AppMethodBeat.o(30251);
     return str;
   }
   
-  public final void h(Activity paramActivity, String paramString)
+  public final void p(final Activity paramActivity, final String paramString)
   {
-    AppMethodBeat.i(26576);
-    if (!aa.Je(0))
+    AppMethodBeat.i(30249);
+    if (!aj.asX(0))
     {
-      ab.e("MicroMsg.FTS.LookOneLookOpener", "fts h5 template not avail");
-      AppMethodBeat.o(26576);
+      Log.e("MicroMsg.FTS.LookOneLookOpener", "fts h5 template not avail");
+      AppMethodBeat.o(30249);
       return;
     }
-    paramString = ac.agv("discoverRecommendEntry").optString("wording");
-    if (bo.isNullOrNil(paramString))
+    paramString = al.bix("discoverRecommendEntry").optString("wording");
+    if (Util.isNullOrNil(paramString))
     {
-      ab.e("MicroMsg.FTS.LookOneLookOpener", "empty query");
-      AppMethodBeat.o(26576);
+      Log.e("MicroMsg.FTS.LookOneLookOpener", "empty query");
+      AppMethodBeat.o(30249);
       return;
     }
-    ((m)g.E(m.class)).a(ah.getContext(), new a.1(this, paramString, paramActivity));
-    AppMethodBeat.o(26576);
+    ((i)h.ax(i.class)).a(MMApplicationContext.getContext(), new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(30248);
+        Intent localIntent = aj.ipS();
+        localIntent.putExtra("ftsbizscene", 21);
+        localIntent.putExtra("ftsQuery", paramString);
+        localIntent.putExtra("title", paramString);
+        localIntent.putExtra("isWebwx", paramString);
+        localIntent.putExtra("ftscaneditable", false);
+        Object localObject = aj.r(21, false, 2);
+        ((Map)localObject).put("query", paramString);
+        ((Map)localObject).put("sceneActionType", "2");
+        localIntent.putExtra("rawUrl", aj.h((Map)localObject, 1));
+        localObject = new qw();
+        ((qw)localObject).hTT.scene = 0;
+        ((qw)localObject).publish();
+        c.b(paramActivity, "webview", ".ui.tools.fts.FTSWebViewUI", localIntent);
+        as.dE(21, paramString);
+        AppMethodBeat.o(30248);
+      }
+    });
+    AppMethodBeat.o(30249);
   }
 }
 

@@ -8,7 +8,7 @@ public final class RespUpdateQQFace
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public RespHead stHeader;
+  public RespHead stHeader = null;
   
   public RespUpdateQQFace() {}
   
@@ -32,7 +32,7 @@ public final class RespUpdateQQFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespUpdateQQFace
  * JD-Core Version:    0.7.0.1
  */

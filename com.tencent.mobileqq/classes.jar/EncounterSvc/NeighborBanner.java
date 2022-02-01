@@ -10,10 +10,10 @@ public final class NeighborBanner
   static byte[] cache_description = (byte[])new byte[1];
   static byte[] cache_pic_url;
   static byte[] cache_skip_url;
-  public byte[] description;
-  public byte[] pic_url;
-  public int postion;
-  public byte[] skip_url;
+  public byte[] description = null;
+  public byte[] pic_url = null;
+  public int postion = 0;
+  public byte[] skip_url = null;
   
   static
   {
@@ -52,7 +52,7 @@ public final class NeighborBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.NeighborBanner
  * JD-Core Version:    0.7.0.1
  */

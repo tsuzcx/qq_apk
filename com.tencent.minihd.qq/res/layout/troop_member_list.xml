@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/troop_member_page" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/title_bar" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/custom_commen_title" />
+    <RelativeLayout android:id="@id/list_zone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.PinnedDividerListView android:id="@id/troop_member_list" android:visibility="visible" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <com.tencent.mobileqq.widget.IndexView android:id="@id/index_view" android:background="@drawable/index_view_background" android:paddingLeft="8.0dip" android:paddingTop="6.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/recent_list_head_height" android:layout_marginBottom="@dimen/recent_list_head_height" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ProgressBar android:id="@id/refresh_progress" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

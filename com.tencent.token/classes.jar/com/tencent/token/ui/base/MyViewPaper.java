@@ -18,25 +18,25 @@ public class MyViewPaper
   {
     switch (paramMotionEvent.getAction())
     {
-    }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
+    default: 
+      break;
+    case 2: 
+      if (Math.abs(paramMotionEvent.getX() - 0.0F) > Math.abs(paramMotionEvent.getY() - 0.0F)) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      } else {
+        getParent().requestDisallowInterceptTouchEvent(false);
+      }
+      break;
+    case 1: 
+    case 3: 
+      getParent().requestDisallowInterceptTouchEvent(false);
+      break;
+    case 0: 
       paramMotionEvent.getX();
       paramMotionEvent.getY();
       getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      if (Math.abs(paramMotionEvent.getX() - 0.0F) > Math.abs(paramMotionEvent.getY() - 0.0F))
-      {
-        getParent().requestDisallowInterceptTouchEvent(true);
-      }
-      else
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        continue;
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
 }
 

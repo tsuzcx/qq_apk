@@ -1,0 +1,1876 @@
+[
+  {
+    "dynamicFields": {},
+    "id": "100041",
+    "materials": [
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_fangzheng_yuejin",
+        "packageMd5": "4b870bf1057627e30e1b8913162b6607",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/45a3d25e-74de-11eb-8e56-a2ecb18294e0-font_fangzheng_yuejin.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5484cff8-74de-11eb-bfb0-a2ecb18294e0-方正跃进体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_wenyue_guyasong",
+        "packageMd5": "b8f73ec1a0f1a8d897f075103cb2c68a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6f2f6138-74de-11eb-8f2d-a2ecb18294e0-font_wenyue_guyasong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/00fe3408-74e0-11eb-8a22-a2ecb18294e0-文悦古雅宋体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_fangzheng_bangshu",
+        "packageMd5": "45ec34c9d46f84f798931d9bc18220d2",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/20eebbcc-74de-11eb-b46d-a2ecb18294e0-font_fangzheng_bangshu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1725a54c-74de-11eb-8938-a2ecb18294e0-方正榜书体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1",
+          "effectType": ""
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_wenyue_qiuyinong",
+        "packageMd5": "74f01cce736a4936a860db851ba492e1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/89f2a9da-74de-11eb-aa32-a2ecb18294e0-font_wenyue_qiuyinong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7d6f5d7a-74de-11eb-a1be-a2ecb18294e0-文悦秋意浓体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_wenyue_xinqingnian",
+        "packageMd5": "f1ec555900af5d17c73e60f497b08bae",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e3a6c90c-74de-11eb-8eb9-a2ecb18294e0-font_wenyue_xinqingnian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/981d33f4-74de-11eb-9a07-a2ecb18294e0-文悦新青年.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_zaozi_subai",
+        "packageMd5": "8853b933e012b6ec4fd45a75ba31d133",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0f464560-74df-11eb-b1c4-a2ecb18294e0-font_zaozi_subai.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/150e50aa-74df-11eb-ad3d-a2ecb18294e0-造字素白体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_fangzheng_qingning",
+        "packageMd5": "f7d79a6ddefb756b6852777dbe895ac5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/364f2c22-74de-11eb-84b1-a2ecb18294e0-font_fangzheng_qingning.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2e47287c-74de-11eb-a671-a2ecb18294e0-方正青柠体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "",
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huangyou_shisan",
+        "packageMd5": "fc166fb9e7f18e740457b9b83f5fb639",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/43f1ae9a-6944-11eb-b85e-7ac5100db047-font_huangyou_shisan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1310782c-6a27-11eb-a7a1-7ac5100db047-黄油拾叁体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_ruizi_shoushu",
+        "packageMd5": "1f9c66b35b31b390aadc479fd5550ddf",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fbc1997e-6a28-11eb-9a48-7ac5100db047-font_ruizi_shoushu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e6212a58-6a28-11eb-af3d-7ac5100db047-锐字手书体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "",
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_haipai_gunshi",
+        "packageMd5": "77c3cd333b21939bcb9f4ea99f49f37c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/357b54d8-6944-11eb-a099-7ac5100db047-font_haipai_gunshi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1ba314e0-6a27-11eb-a790-7ac5100db047-海派滚石体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "",
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_zaozi_shangya",
+        "packageMd5": "180e8c953eedfa1956a3debf12d6499d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5ec1c878-6943-11eb-8fe8-7ac5100db047-font_zaozi_shangya.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/065ed9e8-6a27-11eb-bdae-7ac5100db047-造字尚雅体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huakang_wawa",
+        "packageMd5": "8f3e76b9eed45024ef1f2b9560a6b4d7",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/299e0a54-6a28-11eb-8278-7ac5100db047-font_huakang_wawa.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/23155a2a-6a28-11eb-ae3d-7ac5100db047-华康娃娃体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huakang_pianpian",
+        "packageMd5": "3427c327cff900c0f998761852aa7669",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fbe24e86-6a27-11eb-8a9e-7ac5100db047-font_huakang_pianpian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f25ce3e4-6a27-11eb-b070-7ac5100db047-华康翩翩体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huakang_yuanti",
+        "packageMd5": "3385f8bd65e428786f1c2d28e851720b",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/67399888-6a28-11eb-a1a3-7ac5100db047-font_huakang_yuanti.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/61498230-6a28-11eb-bdd2-7ac5100db047-华康圆体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_ruizi_mengxiang",
+        "packageMd5": "7f3c012e1e8790d13b2a28c2af76b267",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/822929ce-6a28-11eb-99e8-7ac5100db047-font_ruizi_mengxiang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7a9ea80a-6a28-11eb-9f47-7ac5100db047-锐字梦想体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_ruizi_nufang",
+        "packageMd5": "56e8421cc9134efed978ae45cd154bb4",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/99a03ec6-6a28-11eb-b911-7ac5100db047-font_ruizi_nufang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8deb26ea-6a28-11eb-b061-7ac5100db047-锐字怒放体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_ruizi_qingchun",
+        "packageMd5": "38e7dcf2091b43a8b955a8c2999973d1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/aff1b0a6-6a28-11eb-bc57-7ac5100db047-font_ruizi_qingchun.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a850d6e2-6a28-11eb-930a-7ac5100db047-锐字青春体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_ruizi_ruixian",
+        "packageMd5": "bfdd973bb35919d8a24ba7768f825bf8",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c3ea6ef4-6a28-11eb-b07c-7ac5100db047-font_ruizi_ruixian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bb221cae-6a28-11eb-bd6f-7ac5100db047-锐字锐线体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_ruizi_xingshu",
+        "packageMd5": "7b88a62cf20583c13b17ff3fb94a5fca",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/66486c46-6a29-11eb-be39-7ac5100db047-font_ruizi_xingshu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/09a03474-6a29-11eb-bb7c-7ac5100db047-锐字行书体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_haipai_qingxia",
+        "packageMd5": "37817a8e88fbf6d55eb09cc0c0a8b729",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a2aaa020-6a27-11eb-abce-7ac5100db047-font_haipai_qingxia.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9e16077a-6a27-11eb-bdf6-7ac5100db047-海派清夏体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_hanyi_runyuan",
+        "packageMd5": "64984f9afc1cc705732f78bae54bf100",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ba0fd3a2-6a27-11eb-a70e-7ac5100db047-font_hanyi_runyuan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b019c90c-6a27-11eb-b283-7ac5100db047-汉仪润圆体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huakang_lijin",
+        "packageMd5": "1893206e5cc0f2360f89ed5341ebb2a7",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e5c3d764-6a27-11eb-a3da-7ac5100db047-font_huakang_lijin.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dcbba7e6-6a27-11eb-8837-7ac5100db047-华康俪金体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "",
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_fangzheng_miaowu",
+        "packageMd5": "4da372680503f2edd30061b3bde0fae6",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/524193c0-6944-11eb-96fa-7ac5100db047-font_fangzheng_miaowu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/214eeb12-6a27-11eb-aeef-7ac5100db047-方正喵呜体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_fangzheng_tehei",
+        "packageMd5": "1c6b98cb5c7566bb464a90ae939c50f8",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/469b37b8-6a27-11eb-9c9c-7ac5100db047-font_fangzheng_tehei.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/36107eb2-6a27-11eb-be6d-7ac5100db047-方正特黑体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huakang_shaonv",
+        "packageMd5": "e5c096cfc2519a72fe01eb3c16ee7acb",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1690e418-6a28-11eb-a3c7-7ac5100db047-font_huakang_shaonv.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0b909360-6a28-11eb-9089-7ac5100db047-华康少女体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_huakang_haibao",
+        "packageMd5": "7cfebc0f0df77cf83e2d87edb7c3b5a9",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cf1362c8-6a27-11eb-ad97-7ac5100db047-font_huakang_haibao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c7621966-6a27-11eb-bd0f-7ac5100db047-华康海报体.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Font",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "font_mono_minute",
+        "packageMd5": "39e18da553d61b8e2bde960ee0294056",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4c7d75ca-7b33-11eb-ba7c-260ddf59845b-font_mono_minute.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3199b354-7b33-11eb-ae37-260ddf59845b-monominute.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "字体",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100042",
+    "materials": [
+      {
+        "additionalFields": {
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_moren",
+        "packageMd5": "d76dd891539d47f27990549e80a174da",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9be4b9aa-7b2b-11eb-b776-260ddf59845b-fancyfont_moren.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e9b260b4-784d-11eb-b439-260ddf59845b-默认.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_zaozi_shangya",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_wenyi",
+        "packageMd5": "82fc4a7ac6deaf6e5e94365bf6b0194d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6564c898-7b2b-11eb-adbf-260ddf59845b-fancyfont_wenyi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b2d70e90-784e-11eb-baee-260ddf59845b-文艺.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_zaozi_subai",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_subai",
+        "packageMd5": "4c4757b249b4ab33a7ea6f8ae4122f68",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7385fbc2-7b2b-11eb-b594-260ddf59845b-fancyfont_subai.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5956f7d6-784e-11eb-97ee-260ddf59845b-素白.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_faguang",
+        "packageMd5": "fca670efbbe10b95a4e3b5290b0bea86",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d409118c-7b2b-11eb-888c-260ddf59845b-fancyfont_faguang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8dc47c6a-784d-11eb-9054-260ddf59845b-反光.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_wenyue_guyasong",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_fugu",
+        "packageMd5": "7de1fbf5d42c9e7770005726c25a9158",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c55e110a-7b2b-11eb-b30d-260ddf59845b-fancyfont_fugu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a55e6cf0-784d-11eb-8358-260ddf59845b-复古.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_xiehei",
+        "packageMd5": "3c20ff14ecc4e7f79a48e4953bc834bb",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4eae7054-7b2b-11eb-b2d3-260ddf59845b-fancyfont_xiehei.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d6c58714-784e-11eb-b8bc-260ddf59845b-斜黑.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_wenyue_xinqingnian",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_qingnian",
+        "packageMd5": "5f3c6177e75ee6254ce4e466f8b023ef",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/800fac26-7b2b-11eb-a2e3-260ddf59845b-fancyfont_qingnian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/34d09d22-784e-11eb-b33e-260ddf59845b-青年.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_wenyue_qiuyinong",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_xiaosong",
+        "packageMd5": "37934bd62a2fc96db4452579eb0d9c2e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/592f37e8-7b2b-11eb-912b-260ddf59845b-fancyfont_xiaosong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c445499e-784e-11eb-97bf-260ddf59845b-小松.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_wenyue_xinqingnian",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_nihong",
+        "packageMd5": "890adcfa0d7ae6a31dda72e0bb63a75d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8fa6ae28-7b2b-11eb-a50a-260ddf59845b-fancyfont_nihong.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0482deaa-784e-11eb-a5c0-260ddf59845b-霓虹.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_haipai_gunshi",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_gunshi",
+        "packageMd5": "f769e6784a0e8df17b869060bac0d7c2",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b819d89e-7b2b-11eb-a797-260ddf59845b-fancyfont_gunshi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c1c0205a-784d-11eb-bd71-260ddf59845b-滚石.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huakang_lijin",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_guochao",
+        "packageMd5": "f28e16dd07d131c02916a84bc8f1d13e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/aa790a5c-7b2b-11eb-9d59-260ddf59845b-fancyfont_guochao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d62e6b32-784d-11eb-82d9-260ddf59845b-国潮.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_anshizhangda",
+        "packageMd5": "a26878b6fad7073765e7c38975b1c818",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0b4d2be2-7b2c-11eb-820f-260ddf59845b-fancyfont_anshizhangda.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e2fe3c70-777b-11eb-a892-a2ecb18294e0-按时长大.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_chengtuanchudao",
+        "packageMd5": "718411803f5cc8e8e5359764d6cc672f",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f8297a84-7b2b-11eb-ac59-260ddf59845b-fancyfont_chengtuanchudao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fe0f8f0a-777b-11eb-b9bf-a2ecb18294e0-成团出道.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_haipai_gunshi",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_bingxue",
+        "packageMd5": "6589e2b7d38fff590f4fc776a88abdf2",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/eb4d8878-7b2b-11eb-ae4f-260ddf59845b-fancyfont_bingxue.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e0a5ec76-7b2b-11eb-ab76-260ddf59845b-冰雪.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huakang_haibao",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "fancyfont_zongyi",
+        "packageMd5": "88830202b105c6edc70417c4d8c9e7c3",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/45155c06-7b2b-11eb-ba09-260ddf59845b-fancyfont_zongyi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e9611794-784e-11eb-a9fc-260ddf59845b-综艺.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "ff_chengtuanchudao",
+        "packageMd5": "60aacbbfa7a7580c605e6c12872122ef",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4973994c-62bd-11eb-93e4-7ac5100db047-ff_chengtuanchudao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1b811726-7776-11eb-9c89-a2ecb18294e0-成团出道.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "ff_anshizhangda",
+        "packageMd5": "6cacf52ac261a5d98cb196ccf679da63",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/19f44e1e-62bd-11eb-9721-7ac5100db047-ff_anshizhangda.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/22eb8c8a-7776-11eb-83fa-a2ecb18294e0-按时长大.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "花字",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100043",
+    "materials": [
+      {
+        "additionalFields": {
+          "fontID": "font_wenyue_qiuyinong",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_meiweizhiyu_title",
+        "packageMd5": "9844ac59acdfbe82ab403384c37b7787",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/11aa14cc-7b37-11eb-aae1-260ddf59845b-style_meiweizhiyu_title.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/075f27d2-7b37-11eb-85ae-260ddf59845b-美味治愈-标题.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_mono_minute",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_meiweizhiyu_yummy",
+        "packageMd5": "9d12eb0f7443952d6619a4d5298d7c6d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b640edc6-7b37-11eb-aa9c-260ddf59845b-style_meiweizhiyu_yummy.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/aec371c2-7b37-11eb-8008-260ddf59845b-美味治愈-yummy.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_mono_minute",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_meiweizhiyu_energy",
+        "packageMd5": "67cd0d4ba094410e8eb67717b5bc73b1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9c52986a-7b37-11eb-8259-260ddf59845b-style_meiweizhiyu_energy.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9569eb20-7b37-11eb-96df-260ddf59845b-美味治愈-energy.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huakang_haibao",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_haoyunpenwu",
+        "packageMd5": "a8d4fc7bc47ca0f6736ba1dc98098db7",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/525ffcf6-7b29-11eb-a739-260ddf59845b-style_haoyunpenwu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/443abd96-7b29-11eb-8af1-260ddf59845b-好运喷雾.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_haipai_gunshi",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_ootd",
+        "packageMd5": "bfc08e3d722b21f1629580216a7e708f",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7942ad78-7b29-11eb-8b0d-260ddf59845b-style_ootd.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/67d0ee88-7b29-11eb-b3e9-260ddf59845b-ootd.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huakang_wawa",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_qinpiaopiao",
+        "packageMd5": "11686989e714f34dc7601cd392c67dbe",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/958727ca-7b29-11eb-9cfe-260ddf59845b-style_qinpiaopiao.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8debf2de-7b29-11eb-9ebd-260ddf59845b-轻飘飘.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huangyou_shisan",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_weilaikeqi",
+        "packageMd5": "fa3db258ced0b997aa4e4a09282dbd48",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a8734606-7b2a-11eb-b45a-260ddf59845b-style_weilaikeqi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a3ee07a2-7b29-11eb-b46b-260ddf59845b-未来可期.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_hanyi_runyuan",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_hourunatie",
+        "packageMd5": "ca4d7321d092aaa9aeab3c046c137113",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/68e6ce2a-7a78-11eb-bc80-260ddf59845b-style_hourunatie.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/eea317d6-7b26-11eb-aa84-260ddf59845b-厚乳拿铁.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huangyou_shisan",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_kanzheli",
+        "packageMd5": "7876a23f591301415db2713547d79392",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/95686aee-7771-11eb-955d-a2ecb18294e0-style_kanzheli.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/28f0ba9c-7b27-11eb-b422-260ddf59845b-看这里.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huangyou_shisan",
+          "textStickerResourceType": "Style",
+          "displayDownloadIcon": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_xiarixianding",
+        "packageMd5": "aa4ec5062e5013d0d843b082ae705eb9",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a26d498e-7772-11eb-85f7-a2ecb18294e0-style_xiarixianding.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0aa565ba-7b27-11eb-b328-260ddf59845b-夏日限定.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_chanshiguanderichang",
+        "packageMd5": "f8691e6d6c1cfe2c1fc04ca0ba60bce0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b1178b36-7770-11eb-b664-a2ecb18294e0-style_chanshiguanderichang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/411c764c-7b27-11eb-bf9b-260ddf59845b-铲屎官的日常.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_chihezhinan",
+        "packageMd5": "d2a73e1a4f1c7ca92b83f592f8c4015e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d3c71bb0-7770-11eb-98e8-a2ecb18294e0-style_chihezhinan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3b2404d0-7b27-11eb-8404-260ddf59845b-吃喝指南.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_jingshenxiaohuo",
+        "packageMd5": "014ffa3a756314242fff42470a2922b7",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/64863668-7771-11eb-a7e8-a2ecb18294e0-style_jingshenxiaohuo.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/35a4c102-7b27-11eb-99ae-260ddf59845b-精神小伙.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_jintianyeyaokaixina",
+        "packageMd5": "851d0ea53c0e1c7efb5968adc81e4f01",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/809eb4a6-7771-11eb-aa0a-a2ecb18294e0-style_jintianyeyaokaixina.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2e98694a-7b27-11eb-8f33-260ddf59845b-今天也要开心啊.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_zaozi_shangya",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_meirichuanda",
+        "packageMd5": "856c6e828e32b8537e3c40710a04367a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/abaca4a0-7771-11eb-8dad-a2ecb18294e0-style_meirichuanda.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/22292636-7b27-11eb-a764-260ddf59845b-每日穿搭.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_naichashaonv",
+        "packageMd5": "9fbd37762d4304f6f0236eddb7e90d2d",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/14545dfe-7772-11eb-88be-a2ecb18294e0-style_naichashaonv.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1b56d632-7b27-11eb-900e-260ddf59845b-奶茶少女.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_tehei",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_wanwukeai",
+        "packageMd5": "ec07d998204cc19061faa8e048a686fb",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/29dd366e-7772-11eb-8365-a2ecb18294e0-style_wanwukeai.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/158695ee-7b27-11eb-b849-260ddf59845b-万物可爱.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_wuroubuhuan",
+        "packageMd5": "625b39113d3464ff2a31fe4588c947ae",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/436ad3a2-7772-11eb-a4f2-a2ecb18294e0-style_wuroubuhuan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/10d77cf2-7b27-11eb-b328-260ddf59845b-无肉不欢.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huangyou_shisan",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_xiangwangdeshenghuo",
+        "packageMd5": "307bc6f9a2a54d145cb410939505b8ba",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a56fed8a-7786-11eb-8584-a2ecb18294e0-style_xiangwangdeshenghuo.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0502a4ce-7b27-11eb-8898-260ddf59845b-向往的生活.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_xiaoshijie",
+        "packageMd5": "34cea29943fab87efbf83e3b39226083",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b0df2fa0-7786-11eb-af4d-a2ecb18294e0-style_xiaoshijie.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fed3120a-7b26-11eb-961e-260ddf59845b-小世界.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_xuexidakaday1",
+        "packageMd5": "841532ce0aa96c9c16a447491152c06b",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f807362a-7772-11eb-958b-a2ecb18294e0-style_xuexidakaday1.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f8f03dea-7b26-11eb-9cb2-260ddf59845b-学习打卡day1.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "style_yuanqimanman",
+        "packageMd5": "0954fbfe25525decf2b2865582b45dd4",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0b3cdc4a-7773-11eb-bee7-a2ecb18294e0-style_yuanqimanman.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f3aec7de-7b26-11eb-beda-260ddf59845b-元气满满.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "st_jintianyeyaokaixina",
+        "packageMd5": "2926ca78497cc6c3888f89730acecaaa",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ccb4bb1a-62bd-11eb-8cc9-7ac5100db047-st_jintianyeyaokaixina.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/28b26e8a-776d-11eb-b180-a2ecb18294e0-今天也要开心啊.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_huangyou_shisan",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "st_kanzheli",
+        "packageMd5": "659056042a818afdf21fdca6e41200df",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e08e1d5c-62bd-11eb-b95c-7ac5100db047-st_kanzheli.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1e340306-776d-11eb-8ce9-a2ecb18294e0-看这里.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "st_chanshiguanderichang",
+        "packageMd5": "3d4af7bc5b1474d7bd04ed7553365069",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/79573024-62bd-11eb-bc10-7ac5100db047-st_chanshiguanderichang.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/530eae14-776d-11eb-8c4b-a2ecb18294e0-铲屎官的日常.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "st_chihezhinan",
+        "packageMd5": "46ce1098fa9252c5ec0f5ae9d6917f35",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9617c642-62bd-11eb-bba1-7ac5100db047-st_chihezhinan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4dd97aaa-776d-11eb-8c98-a2ecb18294e0-吃喝指南.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "fontID": "font_fangzheng_miaowu",
+          "textStickerResourceType": "Style"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "st_jingshenxiaohuo",
+        "packageMd5": "97ae7fd163b5b7af31e7ebb4617668e0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b12d55e6-62bd-11eb-9c72-7ac5100db047-st_jingshenxiaohuo.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/41251dc8-776d-11eb-b62b-a2ecb18294e0-精神小伙.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "样式",
+    "subCategories": [],
+    "thumbUrl": ""
+  }
+]

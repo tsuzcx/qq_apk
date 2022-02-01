@@ -3,56 +3,49 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avcv;
 
 public class LocalMediaInfo
   implements Parcelable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new avcv();
-  public int a;
-  public long a;
-  public Integer a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new LocalMediaInfo.1();
+  public String a = "";
+  public int b = 2;
   public long c;
-  public String c;
-  public int d;
-  public long d;
   public String d;
-  public int e;
   public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
+  public long f;
+  public long g;
   public int h;
-  public int i;
+  public long i;
   public int j;
-  
-  public LocalMediaInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(-1);
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-  }
+  public int k;
+  public int l = 0;
+  public int m = 0;
+  public int n = 0;
+  public int o;
+  public int p;
+  public int q;
+  public Integer r = Integer.valueOf(-1);
+  public String s;
+  public String t = "";
+  public String u = "";
+  public String v = "";
   
   public int a(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (paramLocalMediaInfo == null) {}
-    do
-    {
+    int i1 = -1;
+    if (paramLocalMediaInfo == null) {
       return -1;
-      if (paramLocalMediaInfo.jdField_d_of_type_Long > this.jdField_d_of_type_Long) {
-        return 1;
-      }
-    } while (paramLocalMediaInfo.jdField_d_of_type_Long != this.jdField_d_of_type_Long);
-    return 0;
+    }
+    long l1 = paramLocalMediaInfo.g;
+    long l2 = this.g;
+    if (l1 > l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      i1 = 0;
+    }
+    return i1;
   }
   
   public int describeContents()
@@ -62,35 +55,71 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this.jdField_a_of_type_Long + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_b_of_type_Long + ", addedDate=" + this.jdField_c_of_type_Long + ", modifiedDate=" + this.jdField_d_of_type_Long + ", orientation=" + this.jdField_b_of_type_Int + ", mDuration=" + this.jdField_e_of_type_Long + ", selectStatus=" + this.jdField_a_of_type_Int + ", rotation=" + this.jdField_e_of_type_Int + ", thumbWidth=" + this.h + ", thumbHeight=" + this.i + ", index=" + this.j + ", position=" + this.jdField_a_of_type_JavaLangInteger + ", mMimeType='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mediaWidth=" + this.jdField_c_of_type_Int + ", mediaHeight=" + this.jdField_d_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LocalMediaInfo{_id=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", addedDate=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", modifiedDate=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", orientation=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", mDuration=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", selectStatus=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", rotation=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", thumbWidth=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", thumbHeight=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", index=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(", position=");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(", mMimeType='");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mediaWidth=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", mediaHeight=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeLong(this.jdField_e_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeLong(this.f);
+    paramParcel.writeLong(this.g);
     paramParcel.writeInt(this.h);
-    paramParcel.writeInt(this.i);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeLong(this.i);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeInt(this.q);
+    paramParcel.writeInt(this.r.intValue());
+    paramParcel.writeString(this.s);
+    paramParcel.writeString(this.t);
     paramParcel.writeInt(this.j);
-    paramParcel.writeInt(this.jdField_a_of_type_JavaLangInteger.intValue());
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.g);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
+    paramParcel.writeInt(this.k);
+    paramParcel.writeInt(this.n);
+    paramParcel.writeInt(this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

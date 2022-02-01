@@ -10,30 +10,30 @@ public class RTChattingEmojiViewFrom
   public RTChattingEmojiViewFrom(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(62502);
+    AppMethodBeat.i(104738);
     initView();
-    AppMethodBeat.o(62502);
+    AppMethodBeat.o(104738);
   }
   
   public RTChattingEmojiViewFrom(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(62503);
+    AppMethodBeat.i(104739);
     initView();
-    AppMethodBeat.o(62503);
+    AppMethodBeat.o(104739);
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(62504);
+    AppMethodBeat.i(104740);
     super.initView();
-    dpa();
-    AppMethodBeat.o(62504);
+    iNs();
+    AppMethodBeat.o(104740);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom
  * JD-Core Version:    0.7.0.1
  */

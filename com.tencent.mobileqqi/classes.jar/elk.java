@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class elk
-  implements DialogInterface.OnKeyListener
+  extends Handler
 {
-  public elk(DialogBaseActivity paramDialogBaseActivity) {}
+  private WeakReference a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public elk(DialogBaseActivity paramDialogBaseActivity)
   {
-    return paramInt == 4;
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localDialogBaseActivity.a(paramMessage.arg1);
+      return;
+    }
+    localDialogBaseActivity.finish();
   }
 }
 

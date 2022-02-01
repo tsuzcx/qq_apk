@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -13,17 +14,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.platformtools.g;
-import com.tencent.mm.plugin.fts.a.f;
-import com.tencent.mm.plugin.ipcall.a.g.b;
-import com.tencent.mm.plugin.ipcall.a.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.ipcall.model.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.PhoneFormater;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.x;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,83 +35,108 @@ import java.util.List;
 import java.util.Map;
 
 public final class c
-  extends p<com.tencent.mm.plugin.ipcall.a.g.c>
-  implements d.a
+  extends x<com.tencent.mm.plugin.ipcall.model.h.c>
+  implements AvatarStorage.a
 {
-  static HashMap<String, com.tencent.mm.plugin.ipcall.a.g.c> nQb = null;
-  HashMap<String, Integer> ejN;
-  av gIk;
-  private String gvZ;
-  boolean jTS;
+  static HashMap<String, com.tencent.mm.plugin.ipcall.model.h.c> JJR = null;
+  private d JKQ;
+  private HashMap<Long, com.tencent.mm.plugin.ipcall.model.h.c> JKR;
+  private HashSet<String> JKS;
+  private boolean JKT;
+  private View.OnClickListener JKU;
+  HashMap<String, Integer> lNs;
   private Context mContext;
-  private d nRb;
-  private HashMap<Long, com.tencent.mm.plugin.ipcall.a.g.c> nRc;
-  private HashSet<String> nRd;
-  private boolean nRe;
-  private View.OnClickListener nRf;
+  private String pRp;
+  PhoneFormater qfC;
+  boolean vDm;
   
   public c(Context paramContext)
   {
     super(paramContext, null);
-    AppMethodBeat.i(21997);
-    this.nRc = new HashMap();
-    this.ejN = new HashMap();
-    this.nRd = new HashSet();
-    this.nRe = false;
-    this.jTS = false;
-    this.nRf = new c.1(this);
-    this.gIk = new av();
-    qp(true);
+    AppMethodBeat.i(25613);
+    this.JKR = new HashMap();
+    this.lNs = new HashMap();
+    this.JKS = new HashSet();
+    this.JKT = false;
+    this.vDm = false;
+    this.JKU = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(25611);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallAddressAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        if ((paramAnonymousView.getTag() instanceof Integer))
+        {
+          int i = ((Integer)paramAnonymousView.getTag()).intValue();
+          localObject = c.this.Zk(i);
+          paramAnonymousView = new Intent(c.a(c.this), IPCallUserProfileUI.class);
+          paramAnonymousView.putExtra("IPCallProfileUI_contactid", ((com.tencent.mm.plugin.ipcall.model.h.c)localObject).field_contactId);
+          paramAnonymousView.putExtra("IPCallProfileUI_systemUsername", ((com.tencent.mm.plugin.ipcall.model.h.c)localObject).field_systemAddressBookUsername);
+          paramAnonymousView.putExtra("IPCallProfileUI_wechatUsername", ((com.tencent.mm.plugin.ipcall.model.h.c)localObject).field_wechatUsername);
+          localObject = c.b(c.this);
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/ipcall/ui/IPCallAddressAdapter$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject).startActivity((Intent)paramAnonymousView.sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressAdapter$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(25611);
+      }
+    };
+    this.qfC = new PhoneFormater();
+    Lh(true);
     this.mContext = paramContext;
-    this.nRb = new d(paramContext);
-    o.acQ().a(this);
-    AppMethodBeat.o(21997);
+    this.JKQ = new d(paramContext);
+    q.bFp().a(this);
+    AppMethodBeat.o(25613);
   }
   
-  private static String Rm(String paramString)
+  private static String a(com.tencent.mm.plugin.ipcall.model.h.c paramc, String paramString)
   {
-    AppMethodBeat.i(22007);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(25622);
+    if ((paramc != null) && (paramc.JJS != null))
     {
-      AppMethodBeat.o(22007);
-      return "";
-    }
-    if (paramString.startsWith(b.ejM))
-    {
-      AppMethodBeat.o(22007);
-      return "#";
-    }
-    paramString = paramString.toUpperCase().substring(0, 1);
-    AppMethodBeat.o(22007);
-    return paramString;
-  }
-  
-  private static String a(com.tencent.mm.plugin.ipcall.a.g.c paramc, String paramString)
-  {
-    AppMethodBeat.i(22006);
-    if ((paramc != null) && (paramc.nQc != null))
-    {
-      paramc = paramc.nQc.iterator();
+      paramc = paramc.JJS.iterator();
       while (paramc.hasNext())
       {
         String str = (String)paramc.next();
         if (str.contains(paramString))
         {
-          AppMethodBeat.o(22006);
+          AppMethodBeat.o(25622);
           return str;
         }
       }
     }
-    AppMethodBeat.o(22006);
+    AppMethodBeat.o(25622);
     return null;
   }
   
-  private void bKc()
+  private static String aJi(String paramString)
   {
-    AppMethodBeat.i(22012);
-    if (getCursor() != null)
+    AppMethodBeat.i(25623);
+    if (Util.isNullOrNil(paramString))
     {
-      Cursor localCursor = getCursor();
+      AppMethodBeat.o(25623);
+      return "";
+    }
+    if (paramString.startsWith(com.tencent.mm.plugin.ipcall.model.h.b.lNr))
+    {
+      AppMethodBeat.o(25623);
+      return "#";
+    }
+    paramString = paramString.toUpperCase().substring(0, 1);
+    AppMethodBeat.o(25623);
+    return paramString;
+  }
+  
+  private void fSe()
+  {
+    AppMethodBeat.i(25628);
+    if (Fv() != null)
+    {
+      Cursor localCursor = Fv();
       Object localObject1 = null;
       try
       {
@@ -119,11 +147,11 @@ public final class c
         if (localCursor.isAfterLast()) {
           break label153;
         }
-        Object localObject2 = new com.tencent.mm.plugin.ipcall.a.g.c();
-        ((com.tencent.mm.plugin.ipcall.a.g.c)localObject2).convertFrom(localCursor);
-        localObject2 = Rm(((com.tencent.mm.plugin.ipcall.a.g.c)localObject2).field_sortKey);
+        Object localObject2 = new com.tencent.mm.plugin.ipcall.model.h.c();
+        ((com.tencent.mm.plugin.ipcall.model.h.c)localObject2).convertFrom(localCursor);
+        localObject2 = aJi(((com.tencent.mm.plugin.ipcall.model.h.c)localObject2).field_sortKey);
         if (i == 0) {
-          this.ejN.put(localObject2, Integer.valueOf(i));
+          this.lNs.put(localObject2, Integer.valueOf(i));
         }
         for (;;)
         {
@@ -132,14 +160,14 @@ public final class c
           localObject1 = localObject2;
           break;
           if ((localObject1 != null) && (!((String)localObject2).equals(localObject1))) {
-            this.ejN.put(localObject2, Integer.valueOf(i));
+            this.lNs.put(localObject2, Integer.valueOf(i));
           }
         }
-        AppMethodBeat.o(22012);
+        AppMethodBeat.o(25628);
       }
       catch (Exception localException)
       {
-        ab.e("MicroMsg.IPCallAddressAdapter", "initSectionPosMap error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.IPCallAddressAdapter", "initSectionPosMap error: %s", new Object[] { localException.getMessage() });
       }
     }
     else
@@ -147,119 +175,159 @@ public final class c
       return;
     }
     label153:
-    AppMethodBeat.o(22012);
+    AppMethodBeat.o(25628);
   }
   
-  public final void Ku()
+  public final void LM(String paramString)
   {
-    AppMethodBeat.i(22002);
+    AppMethodBeat.i(25626);
+    if (this.JKS.contains(paramString)) {
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(25612);
+          c.this.notifyDataSetChanged();
+          AppMethodBeat.o(25612);
+        }
+      });
+    }
+    AppMethodBeat.o(25626);
+  }
+  
+  public final void SM(String paramString)
+  {
+    AppMethodBeat.i(25617);
+    this.pRp = paramString;
+    if (Util.isNullOrNil(this.pRp)) {}
+    for (this.JKT = false;; this.JKT = true)
+    {
+      this.adDw.clear();
+      aNy();
+      notifyDataSetChanged();
+      AppMethodBeat.o(25617);
+      return;
+    }
+  }
+  
+  public final com.tencent.mm.plugin.ipcall.model.h.c Zk(int paramInt)
+  {
+    AppMethodBeat.i(25616);
+    com.tencent.mm.plugin.ipcall.model.h.c localc = (com.tencent.mm.plugin.ipcall.model.h.c)super.getItem(paramInt);
+    AppMethodBeat.o(25616);
+    return localc;
+  }
+  
+  public final void aNy()
+  {
+    AppMethodBeat.i(25618);
     Cursor localCursor;
-    if (!this.nRe) {
-      localCursor = i.bJt().bJV();
+    if (!this.JKT) {
+      localCursor = h.fRw().fRX();
     }
     for (;;)
     {
       if (localCursor != null) {
         localCursor.moveToFirst();
       }
-      setCursor(localCursor);
-      bKc();
-      AppMethodBeat.o(22002);
+      w(localCursor);
+      fSe();
+      AppMethodBeat.o(25618);
       return;
-      this.jTS = true;
-      localCursor = i.bJt().Rc(this.gvZ);
-      this.jTS = false;
+      this.vDm = true;
+      localCursor = h.fRw().aIY(this.pRp);
+      this.vDm = false;
     }
   }
   
-  public final void Kv()
+  public final void aNz()
   {
-    AppMethodBeat.i(22004);
-    super.bKb();
-    Ku();
-    AppMethodBeat.o(22004);
+    AppMethodBeat.i(25620);
+    super.fSd();
+    aNy();
+    AppMethodBeat.o(25620);
   }
   
-  public final int bKa()
+  public final int fSc()
   {
-    AppMethodBeat.i(21999);
+    AppMethodBeat.i(25615);
     int i = super.getCount();
-    AppMethodBeat.o(21999);
+    AppMethodBeat.o(25615);
     return i;
   }
   
-  public final void bKb()
+  public final void fSd()
   {
-    AppMethodBeat.i(22003);
-    super.bKb();
-    AppMethodBeat.o(22003);
+    AppMethodBeat.i(25619);
+    super.fSd();
+    AppMethodBeat.o(25619);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(21998);
+    AppMethodBeat.i(25614);
     int i = super.getCount();
-    AppMethodBeat.o(21998);
+    AppMethodBeat.o(25614);
     return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(22008);
+    AppMethodBeat.i(25624);
     paramInt = super.getItemViewType(paramInt);
-    AppMethodBeat.o(22008);
+    AppMethodBeat.o(25624);
     return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(22005);
+    AppMethodBeat.i(25621);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.context).inflate(2130969934, paramViewGroup, false);
-      paramView = new c.b(this, (byte)0);
-      paramView.nRr = localView.findViewById(2131825263);
-      paramView.nRs = localView.findViewById(2131825264);
-      paramView.ehv = ((ImageView)localView.findViewById(2131821210));
-      paramView.gvQ = ((TextView)localView.findViewById(2131823254));
-      paramView.nRj = ((TextView)localView.findViewById(2131825211));
-      paramView.nRk = ((LinearLayout)localView.findViewById(2131825267));
-      paramView.nRl = ((TextView)localView.findViewById(2131825268));
-      paramView.nRm = ((TextView)localView.findViewById(2131825269));
-      paramView.nRn = ((TextView)localView.findViewById(2131825262));
-      paramView.nRo = ((TextView)localView.findViewById(2131825261));
-      paramView.nRp = ((ImageView)localView.findViewById(2131825270));
-      paramView.nRq = localView.findViewById(2131825266);
-      paramView.nRq.setClickable(true);
-      paramView.nRt = ((ImageView)localView.findViewById(2131821148));
+      localView = LayoutInflater.from(this.context).inflate(R.i.gkS, paramViewGroup, false);
+      paramView = new b((byte)0);
+      paramView.JLg = localView.findViewById(R.h.fLC);
+      paramView.JLh = localView.findViewById(R.h.divider_bottom);
+      paramView.lKK = ((ImageView)localView.findViewById(R.h.avatar_iv));
+      paramView.pRg = ((TextView)localView.findViewById(R.h.nickname_tv));
+      paramView.JKY = ((TextView)localView.findViewById(R.h.fTj));
+      paramView.JKZ = ((LinearLayout)localView.findViewById(R.h.fUh));
+      paramView.JLa = ((TextView)localView.findViewById(R.h.fUi));
+      paramView.JLb = ((TextView)localView.findViewById(R.h.fUj));
+      paramView.JLc = ((TextView)localView.findViewById(R.h.fqO));
+      paramView.JLd = ((TextView)localView.findViewById(R.h.fqH));
+      paramView.JLe = ((ImageView)localView.findViewById(R.h.fqI));
+      paramView.JLf = localView.findViewById(R.h.fLD);
+      paramView.JLf.setClickable(true);
+      paramView.JLi = ((ImageView)localView.findViewById(R.h.divider));
       localView.setTag(paramView);
     }
-    paramViewGroup = (c.b)localView.getTag();
-    paramViewGroup.nRq.setClickable(true);
-    paramViewGroup.nRq.setTag(Integer.valueOf(paramInt));
-    paramViewGroup.nRt.setVisibility(8);
+    paramViewGroup = (b)localView.getTag();
+    paramViewGroup.JLf.setClickable(true);
+    paramViewGroup.JLf.setTag(Integer.valueOf(paramInt));
+    paramViewGroup.JLi.setVisibility(8);
     int j;
     int i;
-    if (xj(paramInt))
+    if (XL(paramInt))
     {
-      paramViewGroup.gvQ.setVisibility(8);
-      paramViewGroup.nRj.setVisibility(8);
-      paramViewGroup.nRk.setVisibility(8);
-      paramViewGroup.ehv.setVisibility(8);
-      paramViewGroup.ehv.setTag(null);
-      paramViewGroup.nRo.setVisibility(8);
-      paramViewGroup.nRn.setVisibility(8);
-      paramViewGroup.nRp.setVisibility(8);
+      paramViewGroup.pRg.setVisibility(8);
+      paramViewGroup.JKY.setVisibility(8);
+      paramViewGroup.JKZ.setVisibility(8);
+      paramViewGroup.lKK.setVisibility(8);
+      paramViewGroup.lKK.setTag(null);
+      paramViewGroup.JLd.setVisibility(8);
+      paramViewGroup.JLc.setVisibility(8);
+      paramViewGroup.JLe.setVisibility(8);
       j = 1;
       i = j;
-      if (xM(paramInt + 1) != null)
+      if (Zk(paramInt + 1) != null)
       {
         i = j;
-        if (xM(paramInt) != null)
+        if (Zk(paramInt) != null)
         {
           i = j;
-          if (!Rm(xM(paramInt + 1).field_sortKey).equals(Rm(xM(paramInt).field_sortKey))) {
+          if (!aJi(Zk(paramInt + 1).field_sortKey).equals(aJi(Zk(paramInt).field_sortKey))) {
             i = 0;
           }
         }
@@ -267,110 +335,110 @@ public final class c
       if ((paramInt + 1 != getCount()) && (i != 0)) {
         break label1583;
       }
-      paramViewGroup.nRs.setVisibility(8);
+      paramViewGroup.JLh.setVisibility(8);
     }
     for (;;)
     {
-      AppMethodBeat.o(22005);
+      AppMethodBeat.o(25621);
       return localView;
-      com.tencent.mm.plugin.ipcall.a.g.c localc = xM(paramInt);
+      com.tencent.mm.plugin.ipcall.model.h.c localc = Zk(paramInt);
       if (localc != null)
       {
-        if (bo.isNullOrNil(localc.field_systemAddressBookUsername)) {
+        if (Util.isNullOrNil(localc.field_systemAddressBookUsername)) {
           break label1430;
         }
-        paramViewGroup.gvQ.setVisibility(0);
-        if (!this.nRe) {
+        paramViewGroup.pRg.setVisibility(0);
+        if (!this.JKT) {
           break label919;
         }
-        paramViewGroup.nRj.setVisibility(0);
-        paramView = (FrameLayout.LayoutParams)paramViewGroup.nRr.getLayoutParams();
-        paramView.height = ((int)paramViewGroup.nRj.getContext().getResources().getDimension(2131427492));
-        paramViewGroup.nRr.setLayoutParams(paramView);
-        paramView = (RelativeLayout.LayoutParams)paramViewGroup.ehv.getLayoutParams();
-        paramView.height = ((int)paramViewGroup.ehv.getContext().getResources().getDimension(2131427403));
-        paramView.width = ((int)paramViewGroup.ehv.getContext().getResources().getDimension(2131427403));
-        paramViewGroup.ehv.setLayoutParams(paramView);
+        paramViewGroup.JKY.setVisibility(0);
+        paramView = (FrameLayout.LayoutParams)paramViewGroup.JLg.getLayoutParams();
+        paramView.height = ((int)paramViewGroup.JKY.getContext().getResources().getDimension(R.f.fls));
+        paramViewGroup.JLg.setLayoutParams(paramView);
+        paramView = (RelativeLayout.LayoutParams)paramViewGroup.lKK.getLayoutParams();
+        paramView.height = ((int)paramViewGroup.lKK.getContext().getResources().getDimension(R.f.flp));
+        paramView.width = ((int)paramViewGroup.lKK.getContext().getResources().getDimension(R.f.flp));
+        paramViewGroup.lKK.setLayoutParams(paramView);
         label602:
-        if ((!this.nRe) || (localc.nQc != null) || (nQb == null) || (!nQb.containsKey(localc.field_contactId))) {
+        if ((!this.JKT) || (localc.JJS != null) || (JJR == null) || (!JJR.containsKey(localc.field_contactId))) {
           break label1032;
         }
-        localc.nQc = ((com.tencent.mm.plugin.ipcall.a.g.c)nQb.get(localc.field_contactId)).nQc;
+        localc.JJS = ((com.tencent.mm.plugin.ipcall.model.h.c)JJR.get(localc.field_contactId)).JJS;
         label659:
-        if ((bo.isNullOrNil(this.gvZ)) || ((!bo.D(this.gvZ.charAt(0))) && (!this.gvZ.startsWith("+")))) {
+        if ((Util.isNullOrNil(this.pRp)) || ((!Util.isNum(this.pRp.charAt(0))) && (!this.pRp.startsWith("+")))) {
           break label1083;
         }
-        paramView = f.a(a(localc, this.gvZ), av.apx(this.gvZ));
-        paramViewGroup.nRj.setText(paramView);
-        paramView = f.a(localc.field_systemAddressBookUsername, this.gvZ);
-        paramViewGroup.gvQ.setText(paramView);
+        paramView = com.tencent.mm.plugin.fts.a.f.b(a(localc, this.pRp), PhoneFormater.formatMobileString(this.pRp));
+        paramViewGroup.JKY.setText(paramView);
+        paramView = com.tencent.mm.plugin.fts.a.f.b(localc.field_systemAddressBookUsername, this.pRp);
+        paramViewGroup.pRg.setText(paramView);
         label745:
-        paramView = paramViewGroup.ehv;
+        paramView = paramViewGroup.lKK;
         if (paramView != null)
         {
           paramView.setVisibility(0);
           paramView.setTag(null);
-          paramView.setImageResource(2130839181);
+          paramView.setImageResource(R.g.fnV);
           if (localc != null)
           {
-            if ((bo.isNullOrNil(localc.field_contactId)) || (bo.isNullOrNil(localc.field_wechatUsername))) {
+            if ((Util.isNullOrNil(localc.field_contactId)) || (Util.isNullOrNil(localc.field_wechatUsername))) {
               break label1451;
             }
-            this.nRb.a(localc.field_contactId, localc.field_wechatUsername, paramView);
+            this.JKQ.a(localc.field_contactId, localc.field_wechatUsername, paramView);
             label816:
-            if (!bo.isNullOrNil(localc.field_wechatUsername)) {
-              this.nRd.add(localc.field_wechatUsername);
+            if (!Util.isNullOrNil(localc.field_wechatUsername)) {
+              this.JKS.add(localc.field_wechatUsername);
             }
           }
         }
-        paramViewGroup.nRk.setVisibility(8);
-        paramView = Rm(localc.field_sortKey);
+        paramViewGroup.JKZ.setVisibility(8);
+        paramView = aJi(localc.field_sortKey);
         if (paramInt != 0) {
           break label1505;
         }
-        paramViewGroup.nRn.setVisibility(0);
-        paramViewGroup.nRn.setText(paramView);
-        paramViewGroup.nRo.setVisibility(8);
+        paramViewGroup.JLc.setVisibility(0);
+        paramViewGroup.JLc.setText(paramView);
+        paramViewGroup.JLd.setVisibility(8);
       }
       for (;;)
       {
-        paramViewGroup.nRq.setVisibility(8);
-        paramViewGroup.nRp.setVisibility(8);
-        paramViewGroup.nRp.setOnClickListener(this.nRf);
+        paramViewGroup.JLf.setVisibility(8);
+        paramViewGroup.JLe.setVisibility(8);
+        paramViewGroup.JLe.setOnClickListener(this.JKU);
         break;
         label919:
-        paramViewGroup.nRj.setVisibility(8);
-        paramView = (FrameLayout.LayoutParams)paramViewGroup.nRr.getLayoutParams();
-        paramView.height = ((int)paramViewGroup.nRj.getContext().getResources().getDimension(2131427404));
-        paramViewGroup.nRr.setLayoutParams(paramView);
-        paramView = (RelativeLayout.LayoutParams)paramViewGroup.ehv.getLayoutParams();
-        paramView.height = ((int)paramViewGroup.ehv.getContext().getResources().getDimension(2131427490));
-        paramView.width = ((int)paramViewGroup.ehv.getContext().getResources().getDimension(2131427490));
-        paramViewGroup.ehv.setLayoutParams(paramView);
+        paramViewGroup.JKY.setVisibility(8);
+        paramView = (FrameLayout.LayoutParams)paramViewGroup.JLg.getLayoutParams();
+        paramView.height = ((int)paramViewGroup.JKY.getContext().getResources().getDimension(R.f.flr));
+        paramViewGroup.JLg.setLayoutParams(paramView);
+        paramView = (RelativeLayout.LayoutParams)paramViewGroup.lKK.getLayoutParams();
+        paramView.height = ((int)paramViewGroup.lKK.getContext().getResources().getDimension(R.f.flq));
+        paramView.width = ((int)paramViewGroup.lKK.getContext().getResources().getDimension(R.f.flq));
+        paramViewGroup.lKK.setLayoutParams(paramView);
         break label602;
         label1032:
-        if ((!this.nRe) || (localc.nQc != null) || ((nQb != null) && (!nQb.containsKey(localc.field_contactId)))) {
+        if ((!this.JKT) || (localc.JJS != null) || ((JJR != null) && (!JJR.containsKey(localc.field_contactId)))) {
           break label659;
         }
-        localc.nQc = b.QZ(localc.field_contactId);
+        localc.JJS = com.tencent.mm.plugin.ipcall.model.h.b.aIV(localc.field_contactId);
         break label659;
         label1083:
-        if ((!bo.isNullOrNil(this.gvZ)) && (!bo.D(this.gvZ.charAt(0))))
+        if ((!Util.isNullOrNil(this.pRp)) && (!Util.isNum(this.pRp.charAt(0))))
         {
           String str1 = localc.field_systemAddressBookUsername;
           Object localObject = localc.field_systemAddressBookUsername;
-          paramView = this.gvZ;
-          if ((bo.isNullOrNil(paramView)) || (bo.isNullOrNil((String)localObject))) {
+          paramView = this.pRp;
+          if ((Util.isNullOrNil(paramView)) || (Util.isNullOrNil((String)localObject))) {
             paramView = "";
           }
           label1402:
           for (;;)
           {
-            paramView = f.a(str1, paramView);
-            paramViewGroup.gvQ.setText(paramView);
-            paramViewGroup.nRj.setText(a(localc, this.gvZ));
+            paramView = com.tencent.mm.plugin.fts.a.f.b(str1, paramView);
+            paramViewGroup.pRg.setText(paramView);
+            paramViewGroup.JKY.setText(a(localc, this.pRp));
             break;
-            if ((!bo.apE(paramView)) && (bo.apF(paramView)))
+            if ((!Util.isChinese(paramView)) && (Util.isAllAlpha(paramView)))
             {
               ArrayList localArrayList = new ArrayList();
               i = 0;
@@ -378,7 +446,7 @@ public final class c
               while (i < ((String)localObject).length())
               {
                 str2 = ((String)localObject).substring(i, i + 1);
-                localArrayList.add(new c.a(this, g.wq(str2), str2));
+                localArrayList.add(new a(com.tencent.mm.platformtools.f.RZ(str2), str2));
                 i += 1;
               }
               i = 2;
@@ -388,7 +456,7 @@ public final class c
                 while (j <= ((String)localObject).length() - i)
                 {
                   str2 = ((String)localObject).substring(j, j + i);
-                  localArrayList.add(new c.a(this, g.wq(str2), str2));
+                  localArrayList.add(new a(com.tencent.mm.platformtools.f.RZ(str2), str2));
                   j += 1;
                 }
                 i += 1;
@@ -399,10 +467,10 @@ public final class c
                 if (i >= localArrayList.size()) {
                   break label1402;
                 }
-                localObject = (c.a)localArrayList.get(i);
-                if (((c.a)localObject).nRh.contains(paramView))
+                localObject = (a)localArrayList.get(i);
+                if (((a)localObject).JKW.contains(paramView))
                 {
-                  paramView = ((c.a)localObject).nRi;
+                  paramView = ((a)localObject).JKX;
                   break;
                 }
                 i += 1;
@@ -410,91 +478,90 @@ public final class c
             }
           }
         }
-        if (!bo.isNullOrNil(this.gvZ)) {
+        if (!Util.isNullOrNil(this.pRp)) {
           break label745;
         }
-        paramViewGroup.gvQ.setText(localc.field_systemAddressBookUsername);
+        paramViewGroup.pRg.setText(localc.field_systemAddressBookUsername);
         break label745;
         label1430:
-        paramViewGroup.gvQ.setVisibility(8);
-        paramViewGroup.nRj.setVisibility(8);
+        paramViewGroup.pRg.setVisibility(8);
+        paramViewGroup.JKY.setVisibility(8);
         break label745;
         label1451:
-        if (!bo.isNullOrNil(localc.field_contactId))
+        if (!Util.isNullOrNil(localc.field_contactId))
         {
-          this.nRb.c(localc.field_contactId, paramView);
+          this.JKQ.e(localc.field_contactId, paramView);
           break label816;
         }
-        if (bo.isNullOrNil(localc.field_wechatUsername)) {
+        if (Util.isNullOrNil(localc.field_wechatUsername)) {
           break label816;
         }
-        this.nRb.e(localc.field_wechatUsername, paramView);
+        this.JKQ.g(localc.field_wechatUsername, paramView);
         break label816;
         label1505:
-        if (!Rm(xM(paramInt - 1).field_sortKey).equals(paramView))
+        if (!aJi(Zk(paramInt - 1).field_sortKey).equals(paramView))
         {
-          paramViewGroup.nRn.setVisibility(0);
-          paramViewGroup.nRn.setText(paramView);
-          paramViewGroup.nRo.setVisibility(8);
+          paramViewGroup.JLc.setVisibility(0);
+          paramViewGroup.JLc.setText(paramView);
+          paramViewGroup.JLd.setVisibility(8);
         }
         else
         {
-          paramViewGroup.nRn.setVisibility(8);
-          paramViewGroup.nRn.setText("");
-          paramViewGroup.nRo.setVisibility(8);
+          paramViewGroup.JLc.setVisibility(8);
+          paramViewGroup.JLc.setText("");
+          paramViewGroup.JLd.setVisibility(8);
         }
       }
       label1583:
-      paramViewGroup.nRs.setVisibility(0);
+      paramViewGroup.JLh.setVisibility(0);
     }
   }
   
   public final int getViewTypeCount()
   {
-    AppMethodBeat.i(22009);
+    AppMethodBeat.i(25625);
     int i = super.getViewTypeCount();
-    AppMethodBeat.o(22009);
+    AppMethodBeat.o(25625);
     return i;
   }
   
   public final void notifyDataSetChanged()
   {
-    AppMethodBeat.i(22011);
-    this.nRc.clear();
+    AppMethodBeat.i(25627);
+    this.JKR.clear();
     super.notifyDataSetChanged();
-    AppMethodBeat.o(22011);
+    AppMethodBeat.o(25627);
   }
   
-  public final void re(String paramString)
+  final class a
   {
-    AppMethodBeat.i(22010);
-    if (this.nRd.contains(paramString)) {
-      al.d(new c.2(this));
-    }
-    AppMethodBeat.o(22010);
-  }
-  
-  public final void wQ(String paramString)
-  {
-    AppMethodBeat.i(22001);
-    this.gvZ = paramString;
-    if (bo.isNullOrNil(this.gvZ)) {}
-    for (this.nRe = false;; this.nRe = true)
+    String JKW;
+    String JKX;
+    
+    public a(String paramString1, String paramString2)
     {
-      this.zap.clear();
-      Ku();
-      notifyDataSetChanged();
-      AppMethodBeat.o(22001);
-      return;
+      this.JKX = paramString2;
+      this.JKW = paramString1;
     }
   }
   
-  public final com.tencent.mm.plugin.ipcall.a.g.c xM(int paramInt)
+  final class b
   {
-    AppMethodBeat.i(22000);
-    com.tencent.mm.plugin.ipcall.a.g.c localc = (com.tencent.mm.plugin.ipcall.a.g.c)super.getItem(paramInt);
-    AppMethodBeat.o(22000);
-    return localc;
+    TextView JKY;
+    LinearLayout JKZ;
+    TextView JLa;
+    TextView JLb;
+    TextView JLc;
+    TextView JLd;
+    ImageView JLe;
+    View JLf;
+    View JLg;
+    View JLh;
+    ImageView JLi;
+    ImageView lKK;
+    TextView pRg;
+    
+    private b() {}
   }
 }
 

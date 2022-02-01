@@ -1,0 +1,33 @@
+package com.tencent.mobileqq.phonecontact.api.impl;
+
+import com.tencent.mobileqq.phonecontact.listener.IPhoneContactListener;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+class PhoneContactServiceImpl$10
+  implements Runnable
+{
+  PhoneContactServiceImpl$10(PhoneContactServiceImpl paramPhoneContactServiceImpl, int paramInt) {}
+  
+  public void run()
+  {
+    synchronized (PhoneContactServiceImpl.access$3100(this.this$0))
+    {
+      Iterator localIterator = PhoneContactServiceImpl.access$3100(this.this$0).iterator();
+      while (localIterator.hasNext()) {
+        ((IPhoneContactListener)localIterator.next()).b(this.a);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl.10
+ * JD-Core Version:    0.7.0.1
+ */

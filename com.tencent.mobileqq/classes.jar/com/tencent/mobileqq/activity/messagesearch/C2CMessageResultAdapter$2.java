@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import aign;
-import aihj;
 import android.os.Message;
-import bhsl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-public class C2CMessageResultAdapter$2
+class C2CMessageResultAdapter$2
   implements Runnable
 {
-  public C2CMessageResultAdapter$2(aign paramaign, String paramString, long paramLong) {}
+  C2CMessageResultAdapter$2(C2CMessageResultAdapter paramC2CMessageResultAdapter, String paramString, long paramLong) {}
   
   public void run()
   {
+    Object localObject = this.this$0.h.getMessageFacade().a(this.a, this.this$0.g.b, this.this$0.g.a, this.this$0.g.e);
     int j = 0;
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -33,15 +31,15 @@ public class C2CMessageResultAdapter$2
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (this.this$0.a(localMessageRecord))
         {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new aihj(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-          this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
+          this.this$0.a.add(new MessageItem(this.this$0.h, localMessageRecord));
+          this.this$0.b.add(Long.valueOf(localMessageRecord.shmsgseq));
         }
         i += 1;
       }
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = this.this$0.h.getMessageFacade().b(this.this$0.g.b, this.this$0.g.a, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
@@ -50,20 +48,24 @@ public class C2CMessageResultAdapter$2
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (this.this$0.a(localMessageRecord))
           {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new aihj(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-            this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
+            this.this$0.a.add(new MessageItem(this.this$0.h, localMessageRecord));
+            this.this$0.b.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
           i += 1;
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMessageResultAdapter", 2, "localCacheMsgs size: " + this.this$0.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("localCacheMsgs size: ");
+      ((StringBuilder)localObject).append(this.this$0.a.size());
+      QLog.d("C2CMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    this.this$0.jdField_a_of_type_Bhsl.obtainMessage(8, localObject).sendToTarget();
+    ((HashMap)localObject).put("keyword", this.a);
+    ((HashMap)localObject).put("sequence", Long.valueOf(this.b));
+    this.this$0.f.obtainMessage(8, localObject).sendToTarget();
   }
 }
 

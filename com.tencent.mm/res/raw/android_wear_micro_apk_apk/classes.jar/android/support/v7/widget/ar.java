@@ -5,163 +5,163 @@ import java.util.ArrayList;
 
 final class ar
 {
-  final int ac;
-  private ArrayList<View> vY;
-  int vZ;
-  int wa;
-  int wb;
+  final int bL;
+  private ArrayList<View> xN;
+  int xO;
+  int xP;
+  int xQ;
   
-  private void eA()
+  private void eO()
   {
-    Object localObject = (View)this.vY.get(this.vY.size() - 1);
+    Object localObject = (View)this.xN.get(0);
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)((View)localObject).getLayoutParams();
-    this.wa = this.vL.vv.af((View)localObject);
-    if (localLayoutParams.vO)
+    this.xO = this.xA.xk.al((View)localObject);
+    if (localLayoutParams.xD)
     {
-      localObject = this.vL.vA.aG(localLayoutParams.uo.eg());
-      if ((localObject != null) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).vQ == 1))
+      localObject = this.xA.xp.ba(localLayoutParams.wd.ev());
+      if ((localObject != null) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).xF == -1)) {
+        this.xO -= ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).bb(this.bL);
+      }
+    }
+  }
+  
+  private void eQ()
+  {
+    Object localObject = (View)this.xN.get(this.xN.size() - 1);
+    StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)((View)localObject).getLayoutParams();
+    this.xP = this.xA.xk.am((View)localObject);
+    if (localLayoutParams.xD)
+    {
+      localObject = this.xA.xp.ba(localLayoutParams.wd.ev());
+      if ((localObject != null) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).xF == 1))
       {
-        int i = this.wa;
-        this.wa = (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).aH(this.ac) + i);
+        int i = this.xP;
+        this.xP = (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).bb(this.bL) + i);
       }
     }
   }
   
-  private void ey()
-  {
-    Object localObject = (View)this.vY.get(0);
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)((View)localObject).getLayoutParams();
-    this.vZ = this.vL.vv.ae((View)localObject);
-    if (localLayoutParams.vO)
-    {
-      localObject = this.vL.vA.aG(localLayoutParams.uo.eg());
-      if ((localObject != null) && (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).vQ == -1)) {
-        this.vZ -= ((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)localObject).aH(this.ac);
-      }
-    }
-  }
-  
-  final void aB(View paramView)
+  final void aK(View paramView)
   {
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.vN = this;
-    this.vY.add(0, paramView);
-    this.vZ = -2147483648;
-    if (this.vY.size() == 1) {
-      this.wa = -2147483648;
+    localLayoutParams.xC = this;
+    this.xN.add(0, paramView);
+    this.xO = -2147483648;
+    if (this.xN.size() == 1) {
+      this.xP = -2147483648;
     }
-    if ((localLayoutParams.uo.isRemoved()) || (localLayoutParams.uo.eo())) {
-      this.wb += this.vL.vv.ag(paramView);
+    if ((localLayoutParams.wd.isRemoved()) || (localLayoutParams.wd.eD())) {
+      this.xQ += this.xA.xk.an(paramView);
     }
   }
   
-  final void aC(View paramView)
+  final void aL(View paramView)
   {
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.vN = this;
-    this.vY.add(paramView);
-    this.wa = -2147483648;
-    if (this.vY.size() == 1) {
-      this.vZ = -2147483648;
+    localLayoutParams.xC = this;
+    this.xN.add(paramView);
+    this.xP = -2147483648;
+    if (this.xN.size() == 1) {
+      this.xO = -2147483648;
     }
-    if ((localLayoutParams.uo.isRemoved()) || (localLayoutParams.uo.eo())) {
-      this.wb += this.vL.vv.ag(paramView);
+    if ((localLayoutParams.wd.isRemoved()) || (localLayoutParams.wd.eD())) {
+      this.xQ += this.xA.xk.an(paramView);
     }
   }
   
-  final int aI(int paramInt)
+  final int bc(int paramInt)
   {
-    if (this.vZ != -2147483648) {
-      paramInt = this.vZ;
+    if (this.xO != -2147483648) {
+      paramInt = this.xO;
     }
-    while (this.vY.size() == 0) {
+    while (this.xN.size() == 0) {
       return paramInt;
     }
-    ey();
-    return this.vZ;
+    eO();
+    return this.xO;
   }
   
-  final int aJ(int paramInt)
+  final int bd(int paramInt)
   {
-    if (this.wa != -2147483648) {
-      paramInt = this.wa;
+    if (this.xP != -2147483648) {
+      paramInt = this.xP;
     }
-    while (this.vY.size() == 0) {
+    while (this.xN.size() == 0) {
       return paramInt;
     }
-    eA();
-    return this.wa;
+    eQ();
+    return this.xP;
   }
   
-  final void aK(int paramInt)
+  final void be(int paramInt)
   {
-    this.vZ = paramInt;
-    this.wa = paramInt;
+    this.xO = paramInt;
+    this.xP = paramInt;
   }
   
-  final void aL(int paramInt)
+  final void bf(int paramInt)
   {
-    if (this.vZ != -2147483648) {
-      this.vZ += paramInt;
+    if (this.xO != -2147483648) {
+      this.xO += paramInt;
     }
-    if (this.wa != -2147483648) {
-      this.wa += paramInt;
+    if (this.xP != -2147483648) {
+      this.xP += paramInt;
     }
   }
   
   final void clear()
   {
-    this.vY.clear();
-    this.vZ = -2147483648;
-    this.wa = -2147483648;
-    this.wb = 0;
+    this.xN.clear();
+    this.xO = -2147483648;
+    this.xP = -2147483648;
+    this.xQ = 0;
   }
   
-  final int eB()
+  final int eP()
   {
-    if (this.wa != -2147483648) {
-      return this.wa;
+    if (this.xO != -2147483648) {
+      return this.xO;
     }
-    eA();
-    return this.wa;
+    eO();
+    return this.xO;
   }
   
-  final void eC()
+  final int eR()
   {
-    int i = this.vY.size();
-    View localView = (View)this.vY.remove(i - 1);
+    if (this.xP != -2147483648) {
+      return this.xP;
+    }
+    eQ();
+    return this.xP;
+  }
+  
+  final void eS()
+  {
+    int i = this.xN.size();
+    View localView = (View)this.xN.remove(i - 1);
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
-    localLayoutParams.vN = null;
-    if ((localLayoutParams.uo.isRemoved()) || (localLayoutParams.uo.eo())) {
-      this.wb -= this.vL.vv.ag(localView);
+    localLayoutParams.xC = null;
+    if ((localLayoutParams.wd.isRemoved()) || (localLayoutParams.wd.eD())) {
+      this.xQ -= this.xA.xk.an(localView);
     }
     if (i == 1) {
-      this.vZ = -2147483648;
+      this.xO = -2147483648;
     }
-    this.wa = -2147483648;
+    this.xP = -2147483648;
   }
   
-  final void eD()
+  final void eT()
   {
-    View localView = (View)this.vY.remove(0);
+    View localView = (View)this.xN.remove(0);
     StaggeredGridLayoutManager.LayoutParams localLayoutParams = (StaggeredGridLayoutManager.LayoutParams)localView.getLayoutParams();
-    localLayoutParams.vN = null;
-    if (this.vY.size() == 0) {
-      this.wa = -2147483648;
+    localLayoutParams.xC = null;
+    if (this.xN.size() == 0) {
+      this.xP = -2147483648;
     }
-    if ((localLayoutParams.uo.isRemoved()) || (localLayoutParams.uo.eo())) {
-      this.wb -= this.vL.vv.ag(localView);
+    if ((localLayoutParams.wd.isRemoved()) || (localLayoutParams.wd.eD())) {
+      this.xQ -= this.xA.xk.an(localView);
     }
-    this.vZ = -2147483648;
-  }
-  
-  final int ez()
-  {
-    if (this.vZ != -2147483648) {
-      return this.vZ;
-    }
-    ey();
-    return this.vZ;
+    this.xO = -2147483648;
   }
 }
 

@@ -51,34 +51,47 @@ public class QZoneRequestDirector
           paramHttpContext = paramHttpResponse.getURI().getAuthority();
           this.mHost = paramHttpContext;
           Header[] arrayOfHeader = paramHttpResponse.getAllHeaders();
-          if (arrayOfHeader != null)
+          if (arrayOfHeader == null) {
+            return paramRoutedRequest;
+          }
+          int j = arrayOfHeader.length;
+          int i = 0;
+          while (i < j)
           {
-            int j = arrayOfHeader.length;
-            int i = 0;
-            while (i < j)
+            StringBuilder localStringBuilder;
+            if ("Host".equals(arrayOfHeader[i].getName()))
             {
-              if ("Host".equals(arrayOfHeader[i].getName()))
-              {
-                paramHttpResponse.removeHeader(arrayOfHeader[i]);
-                if (!TextUtils.isEmpty(paramHttpContext)) {
-                  paramHttpResponse.addHeader("Host", paramHttpContext);
-                }
-                if (QDLog.isInfoEnable()) {
-                  QDLog.i("http", "download redirect orig host:" + arrayOfHeader[i].getValue() + " new host:" + paramHttpContext);
-                }
+              paramHttpResponse.removeHeader(arrayOfHeader[i]);
+              if (!TextUtils.isEmpty(paramHttpContext)) {
+                paramHttpResponse.addHeader("Host", paramHttpContext);
               }
-              if ("x-online-host".equals(arrayOfHeader[i].getName()))
+              if (QDLog.isInfoEnable())
               {
-                paramHttpResponse.removeHeader(arrayOfHeader[i]);
-                if (!TextUtils.isEmpty(paramHttpContext)) {
-                  paramHttpResponse.addHeader("x-online-host", paramHttpContext);
-                }
-                if (QDLog.isInfoEnable()) {
-                  QDLog.i("http", "download redirect orig x-online-host:" + arrayOfHeader[i].getValue() + " new x-online-host:" + paramHttpContext);
-                }
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("download redirect orig host:");
+                localStringBuilder.append(arrayOfHeader[i].getValue());
+                localStringBuilder.append(" new host:");
+                localStringBuilder.append(paramHttpContext);
+                QDLog.i("http", localStringBuilder.toString());
               }
-              i += 1;
             }
+            if ("x-online-host".equals(arrayOfHeader[i].getName()))
+            {
+              paramHttpResponse.removeHeader(arrayOfHeader[i]);
+              if (!TextUtils.isEmpty(paramHttpContext)) {
+                paramHttpResponse.addHeader("x-online-host", paramHttpContext);
+              }
+              if (QDLog.isInfoEnable())
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("download redirect orig x-online-host:");
+                localStringBuilder.append(arrayOfHeader[i].getValue());
+                localStringBuilder.append(" new x-online-host:");
+                localStringBuilder.append(paramHttpContext);
+                QDLog.i("http", localStringBuilder.toString());
+              }
+            }
+            i += 1;
           }
         }
         return paramRoutedRequest;
@@ -88,25 +101,30 @@ public class QZoneRequestDirector
         QDLog.e("http", "handleResponse error", paramHttpResponse);
       }
     }
+    return paramRoutedRequest;
   }
   
   protected void rewriteRequestURI(RequestWrapper paramRequestWrapper, HttpRoute paramHttpRoute)
   {
     super.rewriteRequestURI(paramRequestWrapper, paramHttpRoute);
-    if ((!this.mDirected) || (paramRequestWrapper == null)) {}
-    do
+    if (this.mDirected)
     {
-      return;
+      if (paramRequestWrapper == null) {
+        return;
+      }
       paramRequestWrapper.removeHeaders("Host");
       paramRequestWrapper.removeHeaders("x-online-host");
-    } while (TextUtils.isEmpty(this.mHost));
-    paramRequestWrapper.addHeader("Host", this.mHost);
-    paramRequestWrapper.addHeader("x-online-host", this.mHost);
+      if (!TextUtils.isEmpty(this.mHost))
+      {
+        paramRequestWrapper.addHeader("Host", this.mHost);
+        paramRequestWrapper.addHeader("x-online-host", this.mHost);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.http.base.QZoneRequestDirector
  * JD-Core Version:    0.7.0.1
  */

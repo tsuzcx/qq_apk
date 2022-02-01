@@ -11,14 +11,14 @@ final class IPCallRechargeUI$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(22262);
-    this.nUW.finish();
-    AppMethodBeat.o(22262);
+    AppMethodBeat.i(25882);
+    this.JOI.finish();
+    AppMethodBeat.o(25882);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallRechargeUI.11
  * JD-Core Version:    0.7.0.1
  */

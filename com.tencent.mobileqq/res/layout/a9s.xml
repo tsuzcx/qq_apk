@@ -9,12 +9,12 @@
                     <TextView android:textColor="#ff242322" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/c08" android:maxLines="1" android:maxLength="10" style="@style/TitleText" />
                 </LinearLayout>
                 <ImageView android:layout_gravity="center_vertical" android:id="@id/dte" android:padding="7.0dip" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/glb" android:layout_toRightOf="@id/dtf" android:layout_centerVertical="true" />
-                <TextView android:textColor="#ff242322" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/glf" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@string/pum" android:maxLines="1" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+                <TextView android:textColor="#ff242322" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/glf" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@string/lr0" android:maxLines="1" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
                 <ImageView android:id="@id/ivTitleBtnRightImage" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/gld" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
             </RelativeLayout>
             <View android:id="@id/jta" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="0.5dip" />
         </LinearLayout>
     </FrameLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout android:id="@id/dk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.kandian.base.view.widget.ReadInjoySlideAnimLayout android:id="@id/dk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/jqg" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

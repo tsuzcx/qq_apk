@@ -1,64 +1,75 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cmb;
-import com.tencent.mm.protocal.protobuf.cmc;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.fqr;
+import com.tencent.mm.protocal.protobuf.fqs;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
 
 public final class d
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private b rr;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
   
-  public d(String paramString)
+  public d()
   {
-    AppMethodBeat.i(13327);
-    b.a locala = new b.a();
-    locala.fsX = new cmb();
-    locala.fsY = new cmc();
-    locala.uri = "/cgi-bin/micromsg-bin/unbindqq";
-    locala.funcId = 253;
-    locala.reqCmdId = 0;
+    AppMethodBeat.i(109749);
+    c.a locala = new c.a();
+    locala.otE = new fqr();
+    locala.otF = new fqs();
+    locala.uri = "/cgi-bin/micromsg-bin/unbindlinkedincontact";
+    locala.funcId = getType();
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((cmb)this.rr.fsV.fta).wQf = paramString;
-    AppMethodBeat.o(13327);
+    this.rr = locala.bEF();
+    ((fqr)c.b.b(this.rr.otB)).YKH = 1;
+    AppMethodBeat.o(109749);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(13328);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(13328);
+    AppMethodBeat.i(109750);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(109750);
     return i;
   }
   
   public final int getType()
   {
-    return 253;
+    return 550;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(13329);
-    updateDispatchId(paramInt1);
+    AppMethodBeat.i(109751);
+    Log.d("MicroMsg.NetSceneUnBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    c.b.b(this.rr.otB);
+    c.c.b(this.rr.otC);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      com.tencent.mm.kernel.h.baE().ban().B(286722, "");
+      com.tencent.mm.kernel.h.baE().ban().B(286721, "");
+      com.tencent.mm.kernel.h.baE().ban().B(286723, "");
+    }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(13329);
+    AppMethodBeat.o(109751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,120 @@
 package com.tencent.mm.ui.chatting.l;
 
-import android.database.Cursor;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.view.MenuItem;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.f.d.b;
-import java.util.List;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.f.b;
+import com.tencent.mm.plugin.messenger.f.b.b;
+import com.tencent.mm.plugin.messenger.foundation.a.e.b;
+import com.tencent.mm.plugin.messenger.foundation.a.e.c;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.Map;
 
 public final class c
-  implements e<bi>
+  extends b
 {
-  private Cursor Js;
-  private int ejZ;
-  private String ejr;
-  private int mCount;
-  
-  public c(String paramString, int paramInt1, int paramInt2)
+  public c(b.b paramb)
   {
-    this.ejr = paramString;
-    this.mCount = paramInt1;
-    this.ejZ = paramInt2;
+    super(paramb);
   }
   
-  public final void a(d.b paramb)
+  public final CharSequence b(final Map<String, String> paramMap, final String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(32706);
-    long l = ((j)g.E(j.class)).Zc().Tb(this.ejr);
-    ab.d("MicroMsg.ChattingLoader.ChattingNormalDataSource", "[ChattingNormalDataSource] talker:%s count:%d mTotalCount:%d createTime:%d", new Object[] { this.ejr, Integer.valueOf(this.mCount), Integer.valueOf(this.ejZ), Long.valueOf(l) });
-    aw.aaz();
-    this.Js = com.tencent.mm.model.c.YC().k(this.ejr, this.mCount, l);
-    paramb.next();
-    AppMethodBeat.o(32706);
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(32708);
-    this.Js.close();
-    AppMethodBeat.o(32708);
-  }
-  
-  public final int dwi()
-  {
-    return this.ejZ;
-  }
-  
-  public final void fs(List<bi> paramList)
-  {
-    AppMethodBeat.i(32707);
-    try
+    AppMethodBeat.i(254396);
+    String str1 = (String)paramMap.get(paramString + ".title");
+    final String str2 = (String)paramMap.get(paramString + ".username");
+    final String str3 = (String)paramMap.get(paramString + ".appid");
+    paramString = (String)paramMap.get(paramString + ".appname");
+    final String str4 = (String)paramMap.get(".sysmsg.sysmsgtemplate.content_template.link_list.link.memberlist.member.nickname");
+    final String str5 = paramBundle.getString("conv_talker_username");
+    SpannableString localSpannableString = new SpannableString(str1);
+    localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a(paramWeakReference)
     {
-      this.Js.moveToFirst();
-      while (!this.Js.isAfterLast())
+      public final void onClickImp(final View paramAnonymousView)
       {
-        bi localbi = new bi();
-        localbi.convertFrom(this.Js);
-        paramList.add(localbi);
-        this.Js.moveToNext();
+        AppMethodBeat.i(254388);
+        paramAnonymousView = (Context)paramWeakReference.get();
+        if (paramAnonymousView == null)
+        {
+          AppMethodBeat.o(254388);
+          return;
+        }
+        final f localf = new f(paramAnonymousView, 1, true);
+        localf.h(Util.safeFormatString(paramAnonymousView.getString(R.l.gwr), new Object[] { str4, paramString }), 17, com.tencent.mm.cd.a.fromDPToPix(paramAnonymousView, 14));
+        localf.Vtg = new u.g()
+        {
+          public final void onCreateMMMenu(s paramAnonymous2s)
+          {
+            AppMethodBeat.i(254391);
+            paramAnonymous2s.c(100, paramAnonymousView.getResources().getString(R.l.gTI));
+            paramAnonymous2s.c(101, Util.safeFormatString(paramAnonymousView.getResources().getString(R.l.gwq), new Object[] { c.1.this.qHo }));
+            AppMethodBeat.o(254391);
+          }
+        };
+        localf.GAC = new u.i()
+        {
+          public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(254392);
+            localf.cyW();
+            switch (paramAnonymous2MenuItem.getItemId())
+            {
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(254392);
+              return;
+              paramAnonymous2MenuItem = c.this;
+              Object localObject1 = c.1.this.lzC;
+              Object localObject2 = new LinkedList();
+              ((LinkedList)localObject2).add(localObject1);
+              paramAnonymous2MenuItem.a(-1L, (LinkedList)localObject2, 0);
+              AppMethodBeat.o(254392);
+              return;
+              paramAnonymous2MenuItem = c.this;
+              localObject1 = paramAnonymousView;
+              localObject2 = c.1.this.etl;
+              String str1 = c.1.this.qHo;
+              String str2 = c.1.this.aexg;
+              f localf = new f((Context)localObject1, 1, true);
+              localf.h(Util.safeFormatString(((Context)localObject1).getString(R.l.gwp, new Object[] { str1 }), new Object[0]), 17, com.tencent.mm.cd.a.fromDPToPix((Context)localObject1, 14));
+              localf.Vtg = new c.2(paramAnonymous2MenuItem, (Context)localObject1);
+              localf.GAC = new c.3(paramAnonymous2MenuItem, (String)localObject2, str2, (Context)localObject1, localf);
+              localf.dDn();
+            }
+          }
+        };
+        localf.dDn();
+        ((com.tencent.mm.plugin.messenger.a.e)h.ax(com.tencent.mm.plugin.messenger.a.e.class)).a("link_revoke_unbindapp", paramMap, paramBundle);
+        AppMethodBeat.o(254388);
       }
-      AppMethodBeat.o(32707);
-    }
-    catch (Exception paramList)
-    {
-      ab.printErrStackTrace("MicroMsg.ChattingLoader.ChattingNormalDataSource", paramList, "", new Object[0]);
-      AppMethodBeat.o(32707);
-      return;
-    }
+    }, 0, str1.length(), 33);
+    AppMethodBeat.o(254396);
+    return localSpannableString;
+  }
+  
+  public final String gbt()
+  {
+    return "link_revoke_unbindapp";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.l.c
  * JD-Core Version:    0.7.0.1
  */

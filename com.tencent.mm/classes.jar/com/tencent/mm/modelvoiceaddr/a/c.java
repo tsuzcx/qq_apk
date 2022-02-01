@@ -2,14 +2,14 @@ package com.tencent.mm.modelvoiceaddr.a;
 
 import android.content.SharedPreferences;
 import android.os.Looper;
+import android.os.Message;
 import com.qq.wx.voice.vad.EVadNative;
 import com.qq.wx.voice.vad.MMVoipVadNative;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.PrintStream;
 import java.util.Locale;
 import java.util.Map;
@@ -18,76 +18,95 @@ public class c
 {
   private static final String TAG;
   public static SharedPreferences sp;
-  private boolean eVX;
-  private boolean gcf;
-  private int gcg;
-  private boolean gch;
-  private boolean gci;
-  private long gcj;
-  private int gck;
-  private a gcl;
-  private com.qq.wx.voice.vad.a gcm;
-  public c.a gcn;
-  private short[] gco;
-  private ak handler;
+  private MMHandler handler;
+  private boolean isReleased;
+  private short[] pgA;
+  private boolean pgr;
+  private int pgs;
+  private boolean pgt;
+  private boolean pgu;
+  private long pgv;
+  private int pgw;
+  private a pgx;
+  private com.qq.wx.voice.vad.a pgy;
+  public a pgz;
   
   static
   {
-    AppMethodBeat.i(116763);
+    AppMethodBeat.i(148609);
     TAG = c.class.getSimpleName();
-    sp = ah.dsQ();
-    AppMethodBeat.o(116763);
+    sp = MMApplicationContext.getDefaultPreference();
+    AppMethodBeat.o(148609);
   }
   
   public c(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(116760);
-    this.gcf = true;
-    this.gcg = 3;
-    this.gch = false;
-    this.gci = false;
-    this.gcj = 0L;
-    this.gck = 3500;
-    this.eVX = false;
-    this.handler = new c.1(this, Looper.getMainLooper());
-    this.gcl = null;
-    this.gcm = null;
-    this.gck = paramInt1;
-    this.gcm = new com.qq.wx.voice.vad.a();
+    AppMethodBeat.i(148606);
+    this.pgr = true;
+    this.pgs = 3;
+    this.pgt = false;
+    this.pgu = false;
+    this.pgv = 0L;
+    this.pgw = 3500;
+    this.isReleased = false;
+    this.handler = new MMHandler(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(148603);
+        if (paramAnonymousMessage.what != 0)
+        {
+          AppMethodBeat.o(148603);
+          return;
+        }
+        if (c.a(c.this) != null) {
+          c.a(c.this).aEN();
+        }
+        AppMethodBeat.o(148603);
+      }
+    };
+    this.pgx = null;
+    this.pgy = null;
+    this.pgw = paramInt1;
+    this.pgy = new com.qq.wx.voice.vad.a();
     int j = 0;
     int i = j;
     Object localObject;
-    if (ah.brt())
+    if (MMApplicationContext.isMMProcess())
     {
-      localObject = com.tencent.mm.model.c.c.abU().me("100235");
+      localObject = com.tencent.mm.model.newabtest.d.bEt().Fd("100235");
       i = j;
-      if (((com.tencent.mm.storage.c)localObject).isValid()) {
-        i = bo.getInt((String)((com.tencent.mm.storage.c)localObject).dvN().get("MMVoipVadOn"), 0);
+      if (localObject != null)
+      {
+        i = j;
+        if (((com.tencent.mm.storage.c)localObject).isValid()) {
+          i = Util.getInt((String)((com.tencent.mm.storage.c)localObject).iWZ().get("MMVoipVadOn"), 0);
+        }
       }
     }
-    ab.i(TAG, "VoiceSilentDetectAPI: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
+    Log.i(TAG, "VoiceSilentDetectAPI: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
-      com.qq.wx.voice.vad.a.aT(false);
-      localObject = this.gcm;
-      if (!com.qq.wx.voice.vad.a.bmj) {
-        break label304;
+      com.qq.wx.voice.vad.a.cB(false);
+      localObject = this.pgy;
+      if (!com.qq.wx.voice.vad.a.dYX) {
+        break label313;
       }
-      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).bmi.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
-      label206:
+      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).dYW.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
+      label215:
       if (com.qq.wx.voice.vad.a.DEBUG) {
         System.out.println("EVad Init handle = " + ((com.qq.wx.voice.vad.a)localObject).handle);
       }
       if (((com.qq.wx.voice.vad.a)localObject).handle != 0L) {
-        break label329;
+        break label338;
       }
       paramInt2 = 1;
-      label250:
+      label259:
       if (paramInt2 != 1)
       {
-        localObject = this.gcm;
+        localObject = this.pgy;
         if (((com.qq.wx.voice.vad.a)localObject).handle != 0L) {
-          break label334;
+          break label343;
         }
         paramInt2 = 1;
       }
@@ -95,95 +114,95 @@ public class c
     for (;;)
     {
       if (paramInt2 != 1) {
-        break label406;
+        break label415;
       }
       localObject = new b("Init ERROR");
-      AppMethodBeat.o(116760);
+      AppMethodBeat.o(148606);
       throw ((Throwable)localObject);
-      com.qq.wx.voice.vad.a.aT(true);
+      com.qq.wx.voice.vad.a.cB(true);
       break;
-      label304:
-      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).bmh.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
-      break label206;
-      label329:
+      label313:
+      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).dYV.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
+      break label215;
+      label338:
       paramInt2 = 0;
-      break label250;
-      label334:
+      break label259;
+      label343:
       if (com.qq.wx.voice.vad.a.DEBUG) {
         System.out.println("EVad Reset handle = " + ((com.qq.wx.voice.vad.a)localObject).handle);
       }
-      if (com.qq.wx.voice.vad.a.bmj) {
-        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).bmi.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
+      if (com.qq.wx.voice.vad.a.dYX) {
+        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).dYW.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
       } else {
-        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).bmh.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
+        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).dYV.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
       }
     }
-    label406:
-    this.gcl = new a(paramInt5 * 16);
-    this.gco = new short[4000];
+    label415:
+    this.pgx = new a(paramInt5 * 16);
+    this.pgA = new short[4000];
     this.handler.removeMessages(0);
     this.handler.sendEmptyMessageDelayed(0, paramInt1);
-    this.gch = paramBoolean1;
-    this.gci = paramBoolean2;
-    AppMethodBeat.o(116760);
+    this.pgt = paramBoolean1;
+    this.pgu = paramBoolean2;
+    AppMethodBeat.o(148606);
   }
   
   public c(boolean paramBoolean1, boolean paramBoolean2)
   {
     this(3500, sp.getInt("sil_time", 1000), sp.getFloat("s_n_ration", 2.5F), sp.getInt("s_window", 500), sp.getInt("s_length", 350), sp.getInt("s_delay_time", 550), paramBoolean1, paramBoolean2);
-    AppMethodBeat.i(155555);
-    AppMethodBeat.o(155555);
+    AppMethodBeat.i(148605);
+    AppMethodBeat.o(148605);
   }
   
-  public static String amS()
+  public static String bPH()
   {
-    AppMethodBeat.i(116758);
+    AppMethodBeat.i(148604);
     String str = String.format(Locale.CHINA, "%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s", new Object[] { "sil_time", Integer.valueOf(sp.getInt("sil_time", 500)), "s_n_ration", Float.valueOf(sp.getFloat("s_n_ration", 2.5F)), "s_window", Integer.valueOf(sp.getInt("s_window", 500)), "s_length", Integer.valueOf(sp.getInt("s_length", 350)), "s_delay_time", Integer.valueOf(sp.getInt("s_delay_time", 550)) });
-    AppMethodBeat.o(116758);
+    AppMethodBeat.o(148604);
     return str;
   }
   
   public final void f(short[] paramArrayOfShort, int paramInt)
   {
-    AppMethodBeat.i(116761);
-    ab.d(TAG, "input() called with: voice = [%s], length = [%s]", new Object[] { paramArrayOfShort, Integer.valueOf(paramInt) });
+    AppMethodBeat.i(148607);
+    Log.d(TAG, "input() called with: voice = [%s], length = [%s]", new Object[] { paramArrayOfShort, Integer.valueOf(paramInt) });
     if ((paramArrayOfShort == null) || (paramArrayOfShort.length == 0) || (paramInt <= 0) || (paramInt > paramArrayOfShort.length))
     {
-      AppMethodBeat.o(116761);
+      AppMethodBeat.o(148607);
       return;
     }
-    if (this.eVX)
+    if (this.isReleased)
     {
-      ab.i(TAG, "VoiceSilentDetectAPI is released.");
-      AppMethodBeat.o(116761);
+      Log.i(TAG, "VoiceSilentDetectAPI is released.");
+      AppMethodBeat.o(148607);
       return;
     }
-    if (this.gcl == null)
+    if (this.pgx == null)
     {
-      ab.i(TAG, "input, circleBuffer is null.");
-      AppMethodBeat.o(116761);
+      Log.i(TAG, "input, circleBuffer is null.");
+      AppMethodBeat.o(148607);
       return;
     }
-    int n = this.gcm.b(paramArrayOfShort, paramInt);
-    ab.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.gcg), Boolean.valueOf(this.gch), Boolean.valueOf(this.gci) });
+    int n = this.pgy.b(paramArrayOfShort, paramInt);
+    Log.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.pgs), Boolean.valueOf(this.pgt), Boolean.valueOf(this.pgu) });
     long l;
     int i;
     int k;
-    if (this.gch) {
-      if (this.gci)
+    if (this.pgt) {
+      if (this.pgu)
       {
         l = System.currentTimeMillis();
-        if (this.gcn != null) {
-          this.gcn.amN();
+        if (this.pgz != null) {
+          this.pgz.bPC();
         }
-        this.gcj = l;
-        if (this.eVX)
+        this.pgv = l;
+        if (this.isReleased)
         {
-          AppMethodBeat.o(116761);
+          AppMethodBeat.o(148607);
           return;
         }
-        i = this.gcl.gcd;
-        k = this.gco.length;
+        i = this.pgx.pgp;
+        k = this.pgA.length;
         if (i > 0) {
           if (k <= i) {
             break label811;
@@ -195,53 +214,53 @@ public class c
     label811:
     for (int j = i;; j = k)
     {
-      this.gcl.d(this.gco, j);
+      this.pgx.d(this.pgA, j);
       int m = i - j;
       i = m;
-      if (this.gcn == null) {
+      if (this.pgz == null) {
         break;
       }
-      this.gcn.c(this.gco, j);
+      this.pgz.c(this.pgA, j);
       i = m;
       break;
-      this.gci = false;
+      this.pgu = false;
       this.handler.removeMessages(0);
-      this.handler.sendEmptyMessageDelayed(0, this.gck);
+      this.handler.sendEmptyMessageDelayed(0, this.pgw);
       for (;;)
       {
-        this.gcf = false;
-        this.gcg = n;
-        if (!this.eVX) {
+        this.pgr = false;
+        this.pgs = n;
+        if (!this.isReleased) {
           break;
         }
-        AppMethodBeat.o(116761);
+        AppMethodBeat.o(148607);
         return;
-        if ((this.gcg == 3) && (n == 2)) {
-          this.gch = false;
+        if ((this.pgs == 3) && (n == 2)) {
+          this.pgt = false;
         }
-        if ((this.gcg != 3) || (n != 3))
+        if ((this.pgs != 3) || (n != 3))
         {
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.gck);
+          this.handler.sendEmptyMessageDelayed(0, this.pgw);
         }
       }
-      if ((this.gcg == 3) && (n == 2))
+      if ((this.pgs == 3) && (n == 2))
       {
-        this.gcg = n;
+        this.pgs = n;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.gck);
+        this.handler.sendEmptyMessageDelayed(0, this.pgw);
         l = System.currentTimeMillis();
-        if (this.gcn != null) {
-          this.gcn.amN();
+        if (this.pgz != null) {
+          this.pgz.bPC();
         }
-        this.gcj = l;
-        if (this.eVX)
+        this.pgv = l;
+        if (this.isReleased)
         {
-          AppMethodBeat.o(116761);
+          AppMethodBeat.o(148607);
           return;
         }
-        i = this.gcl.gcd;
-        k = this.gco.length;
+        i = this.pgx.pgp;
+        k = this.pgA.length;
         label506:
         if (i > 0) {
           if (k <= i) {
@@ -251,57 +270,57 @@ public class c
       }
       for (j = i;; j = k)
       {
-        this.gcl.d(this.gco, j);
+        this.pgx.d(this.pgA, j);
         m = i - j;
         i = m;
-        if (this.gcn == null) {
+        if (this.pgz == null) {
           break label506;
         }
-        this.gcn.c(this.gco, j);
+        this.pgz.c(this.pgA, j);
         i = m;
         break label506;
-        this.gcf = false;
+        this.pgr = false;
         break;
-        if ((this.gcg == 2) && (n == 3))
+        if ((this.pgs == 2) && (n == 3))
         {
-          this.gcg = n;
-          this.gcf = true;
+          this.pgs = n;
+          this.pgr = true;
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.gck);
+          this.handler.sendEmptyMessageDelayed(0, this.pgw);
           l = System.currentTimeMillis();
-          if (this.gcn != null) {
-            this.gcn.amM();
+          if (this.pgz != null) {
+            this.pgz.bPB();
           }
-          this.gcj = l;
-          if (!this.eVX) {
+          this.pgv = l;
+          if (!this.isReleased) {
             break;
           }
-          AppMethodBeat.o(116761);
+          AppMethodBeat.o(148607);
           return;
         }
-        if ((this.gcg == 3) && (n == 3))
+        if ((this.pgs == 3) && (n == 3))
         {
-          this.gcf = true;
+          this.pgr = true;
           break;
         }
-        if ((this.gcg != 2) || (n != 2)) {
+        if ((this.pgs != 2) || (n != 2)) {
           break;
         }
-        this.gcf = false;
+        this.pgr = false;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.gck);
+        this.handler.sendEmptyMessageDelayed(0, this.pgw);
         break;
-        this.gcl.e(paramArrayOfShort, paramInt);
-        ab.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.gcf) });
-        if (this.gcf)
+        this.pgx.e(paramArrayOfShort, paramInt);
+        Log.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.pgr) });
+        if (this.pgr)
         {
-          AppMethodBeat.o(116761);
+          AppMethodBeat.o(148607);
           return;
         }
-        if (this.gcn != null) {
-          this.gcn.c(paramArrayOfShort, paramInt);
+        if (this.pgz != null) {
+          this.pgz.c(paramArrayOfShort, paramInt);
         }
-        AppMethodBeat.o(116761);
+        AppMethodBeat.o(148607);
         return;
       }
     }
@@ -309,35 +328,46 @@ public class c
   
   public final void release()
   {
-    AppMethodBeat.i(116762);
-    ab.d(TAG, "released");
-    this.eVX = true;
-    this.gch = false;
-    this.gci = false;
-    if (this.gcm != null)
+    AppMethodBeat.i(148608);
+    Log.d(TAG, "released");
+    this.isReleased = true;
+    this.pgt = false;
+    this.pgu = false;
+    if (this.pgy != null)
     {
-      if (this.gcm.tc() == 1)
+      if (this.pgy.akp() == 1)
       {
         b localb = new b();
-        AppMethodBeat.o(116762);
+        AppMethodBeat.o(148608);
         throw localb;
       }
-      this.gcm = null;
+      this.pgy = null;
     }
-    this.gcl = null;
-    this.gco = null;
+    this.pgx = null;
+    this.pgA = null;
     if (this.handler != null)
     {
       this.handler.removeMessages(0);
       this.handler = null;
     }
-    this.gcn = null;
-    AppMethodBeat.o(116762);
+    this.pgz = null;
+    AppMethodBeat.o(148608);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void aEN();
+    
+    public abstract void bPB();
+    
+    public abstract void bPC();
+    
+    public abstract void c(short[] paramArrayOfShort, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.a.c
  * JD-Core Version:    0.7.0.1
  */

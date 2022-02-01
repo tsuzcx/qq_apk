@@ -5,8 +5,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
-import com.tencent.faceBeauty.FaceDetect;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.FaceDetect;
+import com.tencent.facebeauty.FaceParam;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
@@ -32,42 +32,42 @@ public class TTpicBitmapFaceDetect
     this.mDetectedFace = false;
     this.mFaceParams.clear();
     this.faceCount = 0;
-    if ((!this.inited) || (!BitmapUtils.isLegal(paramBitmap))) {
-      return;
-    }
-    int m = paramBitmap.getWidth();
-    int n = paramBitmap.getHeight();
-    int i;
-    if (m > n)
+    if (this.inited)
     {
-      i = m;
-      i /= 512;
-      if (i >= 1) {
-        break label1035;
+      if (!BitmapUtils.isLegal(paramBitmap)) {
+        return;
       }
-      i = 1;
-    }
-    label1029:
-    label1035:
-    for (;;)
-    {
-      Bitmap localBitmap;
-      int j;
+      int m = paramBitmap.getWidth();
+      int n = paramBitmap.getHeight();
+      int i;
+      if (m > n) {
+        i = m;
+      } else {
+        i = n;
+      }
+      i /= 512;
+      if (i < 1) {
+        i = 1;
+      }
       try
       {
-        localBitmap = Bitmap.createBitmap(m / i, n / i, Bitmap.Config.ARGB_8888);
+        Bitmap localBitmap = Bitmap.createBitmap(m / i, n / i, Bitmap.Config.ARGB_8888);
         new Canvas(localBitmap).drawBitmap(paramBitmap, new Rect(0, 0, m, n), new Rect(0, 0, m / i, n / i), null);
-        if (!paramBoolean) {
-          break label1009;
-        }
-        if (paramRect == null)
+        if (paramBoolean)
         {
-          paramBitmap = nativeDetectBitmapByEyes(localBitmap, paramPoint1.x / i, paramPoint1.y / i, paramPoint2.x / i, paramPoint2.y / i);
-          this.faceCount = size(paramBitmap);
-          j = 0;
-          if (j >= this.faceCount) {
-            break label1029;
+          if (paramRect == null) {
+            paramBitmap = nativeDetectBitmapByEyes(localBitmap, paramPoint1.x / i, paramPoint1.y / i, paramPoint2.x / i, paramPoint2.y / i);
+          } else {
+            paramBitmap = nativeDetectBitmapByFace(localBitmap, paramRect.left / i, paramRect.top / i, paramRect.width() / i, paramRect.height() / i);
           }
+        }
+        else {
+          paramBitmap = nativeDetectBitmap(localBitmap, false);
+        }
+        this.faceCount = size(paramBitmap);
+        int j = 0;
+        while (j < this.faceCount)
+        {
           paramPoint1 = paramBitmap[j];
           this.mDetectedFace = true;
           paramRect = new FaceParam();
@@ -89,20 +89,28 @@ public class TTpicBitmapFaceDetect
           if (paramPoint2.bottom > n) {
             paramPoint2.bottom = n;
           }
-          int k = (int)(paramPoint1.h * i * 0.16D);
-          int i1 = (int)(k * 2.0D);
+          double d = paramPoint1.h * i;
+          Double.isNaN(d);
+          int k = (int)(d * 0.16D);
+          d = k;
+          Double.isNaN(d);
+          int i1 = (int)(d * 2.0D);
           paramPoint2 = new Rect();
           paramRect.mLeftEye = paramPoint2;
-          paramPoint2.left = (paramPoint1.leftEyeX * i - i1 / 2);
+          int i3 = paramPoint1.leftEyeX;
+          int i2 = i1 / 2;
+          paramPoint2.left = (i3 * i - i2);
           paramPoint2.right = (paramPoint2.left + i1);
-          paramPoint2.top = (paramPoint1.leftEyeY * i - k / 2);
+          i3 = paramPoint1.leftEyeY;
+          int i4 = k / 2;
+          paramPoint2.top = (i3 * i - i4);
           paramPoint2.bottom = (paramPoint2.top + k);
           paramRect.mLeftEyeCenter = new Point(paramPoint1.leftEyeX * i, paramPoint1.leftEyeY * i);
           Rect localRect1 = new Rect();
           paramRect.mRightEye = localRect1;
-          localRect1.left = (paramPoint1.rightEyeX * i - i1 / 2);
+          localRect1.left = (paramPoint1.rightEyeX * i - i2);
           localRect1.right = (i1 + localRect1.left);
-          localRect1.top = (paramPoint1.rightEyeY * i - k / 2);
+          localRect1.top = (paramPoint1.rightEyeY * i - i4);
           localRect1.bottom = (k + localRect1.top);
           paramRect.mRightEyeCenter = new Point(paramPoint1.rightEyeX * i, paramPoint1.rightEyeY * i);
           Rect localRect2 = new Rect();
@@ -123,52 +131,46 @@ public class TTpicBitmapFaceDetect
           if (localRect2.bottom > n) {
             localRect2.bottom = n;
           }
-          k = (int)(paramPoint1.w * i * 0.4D);
-          i1 = (int)(paramPoint1.h * i * 0.16D);
+          d = paramPoint1.w * i;
+          Double.isNaN(d);
+          k = (int)(d * 0.4D);
+          d = paramPoint1.h * i;
+          Double.isNaN(d);
+          i1 = (int)(d * 0.16D);
           paramPoint2 = new Rect();
           paramRect.mMouth = paramPoint2;
           paramPoint2.left = (paramPoint1.mouthX * i - k / 2);
           paramPoint2.top = (paramPoint1.mouthY * i - i1 / 2);
-          paramPoint2.right = (paramPoint2.left + k);
-          paramPoint2.bottom = (paramPoint2.top + i1);
+          paramPoint2.right = (k + paramPoint2.left);
+          paramPoint2.bottom = (i1 + paramPoint2.top);
           paramRect.width = m;
           paramRect.height = n;
           this.mFaceParams.add(paramRect);
           if (this.mGetFaceGender) {
             this.mFemale.add(Boolean.valueOf(true));
           }
-          if (!this.mGetFaceFeatures) {
-            break label1020;
+          if (this.mGetFaceFeatures)
+          {
+            paramPoint1 = nativeGetFeatures(j);
+            paramRect.mFaceOutline = paramPoint1;
+            i1 = size(paramPoint1);
+            k = 0;
+            while (k < i1)
+            {
+              paramPoint1[k][0] *= i;
+              paramPoint1[k][1] *= i;
+              k += 1;
+            }
           }
-          paramPoint1 = nativeGetFeatures(j);
-          paramRect.mFaceOutline = paramPoint1;
-          i1 = size(paramPoint1);
-          k = 0;
-          if (k >= i1) {
-            break label1020;
-          }
-          paramPoint1[k][0] *= i;
-          paramPoint1[k][1] *= i;
-          k += 1;
-          continue;
-          i = n;
+          j += 1;
         }
+        localBitmap.recycle();
+        return;
       }
       catch (OutOfMemoryError paramBitmap)
       {
         paramBitmap.printStackTrace();
-        return;
       }
-      paramBitmap = nativeDetectBitmapByFace(localBitmap, paramRect.left / i, paramRect.top / i, paramRect.width() / i, paramRect.height() / i);
-      continue;
-      label1009:
-      paramBitmap = nativeDetectBitmap(localBitmap, false);
-      continue;
-      label1020:
-      j += 1;
-      continue;
-      localBitmap.recycle();
-      return;
     }
   }
   
@@ -209,14 +211,14 @@ public class TTpicBitmapFaceDetect
     detectParam(paramBitmap, true, paramRect, paramPoint1, paramPoint2);
   }
   
-  public void doDetectFace(Bitmap paramBitmap)
+  protected void doDetectFace(Bitmap paramBitmap)
   {
     detectParam(paramBitmap, false, null, null, null);
   }
   
-  public void doInitial() {}
+  protected void doInitial() {}
   
-  public void doRelease() {}
+  protected void doRelease() {}
   
   public float[] getFaceAngles(int paramInt)
   {
@@ -224,7 +226,9 @@ public class TTpicBitmapFaceDetect
     paramInt = 0;
     while (paramInt < arrayOfFloat.length)
     {
-      arrayOfFloat[paramInt] = ((float)(arrayOfFloat[paramInt] * 3.141592653589793D / 180.0D));
+      double d = arrayOfFloat[paramInt];
+      Double.isNaN(d);
+      arrayOfFloat[paramInt] = ((float)(d * 3.141592653589793D / 180.0D));
       paramInt += 1;
     }
     return arrayOfFloat;
@@ -240,7 +244,7 @@ public class TTpicBitmapFaceDetect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.TTpicBitmapFaceDetect
  * JD-Core Version:    0.7.0.1
  */

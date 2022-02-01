@@ -1,57 +1,71 @@
 package com.tencent.mm.plugin.downloader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.api.bucket.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class b
-  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader.a.d
+  implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader.a.d
 {
-  private com.tencent.mm.plugin.downloader.g.b kVg;
-  private long kVh = 0L;
+  private com.tencent.mm.plugin.downloader.f.b xkf;
+  private long xkg = 0L;
   
-  public final com.tencent.mm.plugin.downloader.g.b YG()
+  public final com.tencent.mm.plugin.downloader.f.b bzH()
   {
-    AppMethodBeat.i(2273);
-    g.RM();
-    g.RJ().QQ();
-    com.tencent.mm.plugin.downloader.g.b localb = this.kVg;
-    AppMethodBeat.o(2273);
+    AppMethodBeat.i(88817);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.downloader.f.b localb = this.xkf;
+    AppMethodBeat.o(88817);
     return localb;
   }
   
-  public final HashMap<Integer, h.d> collectDatabaseFactory()
+  public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(2274);
-    ab.d("MicroMsg.FileDownloaderService", "collectDatabaseFactory");
+    AppMethodBeat.i(88818);
+    Log.d("MicroMsg.FileDownloaderService", "collectDatabaseFactory");
     HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf("FILEDOWNLOAD_TABLE".hashCode()), new b.1(this));
-    AppMethodBeat.o(2274);
+    localHashMap.put(Integer.valueOf("FILEDOWNLOAD_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.downloader.f.b.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(88818);
     return localHashMap;
   }
   
-  public final void gq(boolean paramBoolean)
+  public final void nz(boolean paramBoolean)
   {
-    AppMethodBeat.i(2275);
-    ab.i("MicroMsg.FileDownloaderService", "active: ".concat(String.valueOf(paramBoolean)));
-    if ((!paramBoolean) && ((System.currentTimeMillis() - this.kVh) / 1000L > 1800L))
+    AppMethodBeat.i(88819);
+    Log.i("MicroMsg.FileDownloaderService", "active: ".concat(String.valueOf(paramBoolean)));
+    if ((!paramBoolean) && ((System.currentTimeMillis() - this.xkg) / 1000L > 1800L))
     {
-      com.tencent.mm.sdk.g.d.post(new b.2(this), "checkDownloadFile");
-      this.kVh = System.currentTimeMillis();
+      ThreadPool.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(88815);
+          b.dum();
+          AppMethodBeat.o(88815);
+        }
+      }, "checkDownloadFile");
+      this.xkg = System.currentTimeMillis();
     }
-    AppMethodBeat.o(2275);
+    AppMethodBeat.o(88819);
   }
   
-  public final void onDataBaseClosed(h paramh1, h paramh2) {}
+  public final void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
   
-  public final void onDataBaseOpened(h paramh1, h paramh2)
+  public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
-    AppMethodBeat.i(2272);
-    this.kVg = new com.tencent.mm.plugin.downloader.g.b(paramh1);
-    AppMethodBeat.o(2272);
+    AppMethodBeat.i(88816);
+    this.xkf = new com.tencent.mm.plugin.downloader.f.b(paramh1);
+    AppMethodBeat.o(88816);
   }
 }
 

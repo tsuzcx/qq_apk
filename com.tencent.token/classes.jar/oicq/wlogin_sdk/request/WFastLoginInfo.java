@@ -8,12 +8,13 @@ import java.io.Serializable;
 public class WFastLoginInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new WFastLoginInfo.1();
+  public static final Parcelable.Creator<WFastLoginInfo> CREATOR = new WFastLoginInfo.1();
   private static final long serialVersionUID = 1L;
   public byte[] _outA1 = new byte[0];
   public String adUrl = "";
   public String iconUrl = "";
   public String profileUrl = "";
+  public String userJson = "";
   
   public WFastLoginInfo()
   {
@@ -42,18 +43,17 @@ public class WFastLoginInfo
   
   public void get_clone(WFastLoginInfo paramWFastLoginInfo)
   {
-    if (paramWFastLoginInfo != null) {
-      if (paramWFastLoginInfo._outA1 == null) {
-        break label50;
-      }
-    }
-    label50:
-    for (this._outA1 = ((byte[])paramWFastLoginInfo._outA1.clone());; this._outA1 = new byte[0])
+    if (paramWFastLoginInfo != null)
     {
+      byte[] arrayOfByte = paramWFastLoginInfo._outA1;
+      if (arrayOfByte != null) {
+        this._outA1 = ((byte[])arrayOfByte.clone());
+      } else {
+        this._outA1 = new byte[0];
+      }
       this.iconUrl = paramWFastLoginInfo.iconUrl;
       this.adUrl = paramWFastLoginInfo.adUrl;
       this.profileUrl = paramWFastLoginInfo.profileUrl;
-      return;
     }
   }
   

@@ -14,7 +14,11 @@ public final class jg$f
       JSONObject localJSONObject = new JSONObject().put("wtc", this.a);
       return localJSONObject;
     }
-    catch (JSONException localJSONException) {}
+    catch (JSONException localJSONException)
+    {
+      label19:
+      break label19;
+    }
     return null;
   }
 }

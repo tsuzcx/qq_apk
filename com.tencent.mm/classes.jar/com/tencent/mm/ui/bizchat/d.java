@@ -4,143 +4,147 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.a.b;
-import com.tencent.mm.aj.a.c;
-import com.tencent.mm.aj.a.j;
-import com.tencent.mm.aj.a.k;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.a.b;
+import com.tencent.mm.an.a.c;
+import com.tencent.mm.an.a.k;
+import com.tencent.mm.an.a.l;
+import com.tencent.mm.an.af;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.h;
-import com.tencent.mm.ui.contact.m;
+import com.tencent.mm.ui.contact.a.j;
 import com.tencent.mm.ui.contact.o;
-import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.r;
 
 public final class d
-  extends p
-  implements n.b
+  extends r
+  implements MStorageEx.IOnStorageChange
 {
-  private Cursor gqa;
-  private String jUE;
-  private int qoX;
+  private int OpX;
+  private Cursor pKb;
+  private String vEu;
   
   public d(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, null, false, false);
-    AppMethodBeat.i(30242);
-    ab.i("MicroMsg.RecentConversationAdapter", "create!");
-    this.jUE = paramString;
-    Kg();
-    AppMethodBeat.o(30242);
+    AppMethodBeat.i(34092);
+    Log.i("MicroMsg.RecentConversationAdapter", "create!");
+    this.vEu = paramString;
+    aNm();
+    AppMethodBeat.o(34092);
   }
   
-  private void Kg()
+  public final void aNm()
   {
-    AppMethodBeat.i(30243);
-    ab.i("MicroMsg.RecentConversationAdapter", "resetData");
-    if (this.gqa != null)
+    AppMethodBeat.i(34093);
+    Log.i("MicroMsg.RecentConversationAdapter", "resetData");
+    if (this.pKb != null)
     {
-      this.gqa.close();
-      this.gqa = null;
+      this.pKb.close();
+      this.pKb = null;
     }
-    this.gqa = z.afl().si(this.jUE);
-    this.qoX = 0;
-    AppMethodBeat.o(30243);
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(30247);
-    Kg();
-    notifyDataSetChanged();
-    AppMethodBeat.o(30247);
+    this.pKb = af.bHi().MW(this.vEu);
+    this.OpX = 0;
+    AppMethodBeat.o(34093);
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(30246);
+    AppMethodBeat.i(34096);
     super.finish();
-    ab.i("MicroMsg.RecentConversationAdapter", "finish!");
-    if (this.gqa != null)
+    Log.i("MicroMsg.RecentConversationAdapter", "finish!");
+    if (this.pKb != null)
     {
-      this.gqa.close();
-      this.gqa = null;
+      this.pKb.close();
+      this.pKb = null;
     }
-    AppMethodBeat.o(30246);
+    AppMethodBeat.o(34096);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(30244);
-    int i = this.gqa.getCount();
-    AppMethodBeat.o(30244);
+    AppMethodBeat.i(34094);
+    int i = this.pKb.getCount();
+    AppMethodBeat.o(34094);
     return i + 1;
   }
   
-  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(30245);
+    AppMethodBeat.i(34097);
+    aNm();
+    notifyDataSetChanged();
+    AppMethodBeat.o(34097);
+  }
+  
+  public final com.tencent.mm.ui.contact.a.a yk(int paramInt)
+  {
+    AppMethodBeat.i(34095);
     Object localObject = null;
-    if (paramInt == this.qoX)
+    if (paramInt == this.OpX)
     {
-      localObject = new h(paramInt);
-      ((h)localObject).mZq = this.Adk.getActivity().getResources().getString(2131303057);
+      localObject = new j(paramInt);
+      ((j)localObject).header = this.afex.getActivity().getResources().getString(R.l.gUE);
     }
     for (;;)
     {
-      AppMethodBeat.o(30245);
+      AppMethodBeat.o(34095);
       return localObject;
-      if ((paramInt > this.qoX) && (this.gqa.moveToPosition(paramInt - this.qoX - 1)))
+      if ((paramInt > this.OpX) && (this.pKb.moveToPosition(paramInt - this.OpX - 1)))
       {
         a locala = new a(paramInt);
-        com.tencent.mm.aj.a.a locala1 = new com.tencent.mm.aj.a.a();
-        locala1.convertFrom(this.gqa);
+        com.tencent.mm.an.a.a locala1 = new com.tencent.mm.an.a.a();
+        locala1.convertFrom(this.pKb);
         localObject = locala;
-        if (locala.jUy == -1L)
+        if (locala.vEb == -1L)
         {
-          locala.jUy = locala1.field_bizChatId;
-          localObject = z.afk().aG(locala1.field_bizChatId);
-          if (((c)localObject).isGroup())
+          locala.vEb = locala1.field_bizChatId;
+          localObject = af.bHh().dW(locala1.field_bizChatId);
+          if ((localObject != null) && (((c)localObject).bHx()))
           {
-            locala.gpH = ((c)localObject).field_chatName;
-            locala.zsU = ((c)localObject).field_headImageUrl;
+            locala.pJG = ((c)localObject).field_chatName;
+            locala.nnS = ((c)localObject).field_headImageUrl;
             locala.username = ((c)localObject).field_brandUserName;
           }
           for (;;)
           {
-            if (bo.aa(locala.gpH)) {
-              locala.gpH = this.Adk.getActivity().getResources().getString(2131302712);
+            if (Util.isNullOrNil(locala.pJG)) {
+              locala.pJG = this.afex.getActivity().getResources().getString(R.l.gTN);
             }
             localObject = locala;
-            if (!bo.isNullOrNil(locala.username)) {
+            if (!Util.isNullOrNil(locala.username)) {
               break;
             }
             locala.username = locala1.field_brandUserName;
             localObject = locala;
             break;
-            localObject = z.afm().df(((c)localObject).field_bizChatServId);
             if (localObject != null)
             {
-              locala.gpH = ((j)localObject).field_userName;
-              locala.zsU = ((j)localObject).field_headImageUrl;
-              locala.username = ((j)localObject).field_brandUserName;
+              localObject = af.bHj().hM(((c)localObject).field_bizChatServId);
+              if (localObject != null)
+              {
+                locala.pJG = ((k)localObject).field_userName;
+                locala.nnS = ((k)localObject).field_headImageUrl;
+                locala.username = ((k)localObject).field_brandUserName;
+              }
             }
           }
         }
       }
       else
       {
-        ab.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+        Log.e("MicroMsg.RecentConversationAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.d
  * JD-Core Version:    0.7.0.1
  */

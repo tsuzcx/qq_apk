@@ -32,13 +32,14 @@ public final class qqstory_710_message$StoryMessage
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 74, 82, 90, 98, 106, 114, 122, 130, 138 }, new String[] { "like_info", "comment_info", "publish_info", "video_info", "feed_id", "message_id", "src_type", "src_uid", "official_info", "share_info", "medal_info", "vote_info", "grade_info", "answer_info", "agree_info", "chall_info", "photo_info" }, new Object[] { null, null, null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, null, null, null, null, null, null, null, null }, StoryMessage.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 74, 82, 90, 98, 106, 114, 122, 130, 138 }, new String[] { "like_info", "comment_info", "publish_info", "video_info", "feed_id", "message_id", "src_type", "src_uid", "official_info", "share_info", "medal_info", "vote_info", "grade_info", "answer_info", "agree_info", "chall_info", "photo_info" }, new Object[] { null, null, null, null, localByteStringMicro, localInteger, localInteger, Long.valueOf(0L), null, null, null, null, null, null, null, null, null }, StoryMessage.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage
  * JD-Core Version:    0.7.0.1
  */

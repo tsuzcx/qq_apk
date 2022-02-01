@@ -31,15 +31,15 @@ public final class JSONMethodCodec
           }
         }
       }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Invalid envelope: ");
+      ((StringBuilder)localObject1).append(paramByteBuffer);
+      throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
     }
     catch (JSONException paramByteBuffer)
     {
       throw new IllegalArgumentException("Invalid JSON", paramByteBuffer);
     }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("Invalid envelope: ");
-    ((StringBuilder)localObject1).append(paramByteBuffer);
-    throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
   }
   
   public MethodCall decodeMethodCall(ByteBuffer paramByteBuffer)
@@ -70,6 +70,11 @@ public final class JSONMethodCodec
   public ByteBuffer encodeErrorEnvelope(String paramString1, String paramString2, Object paramObject)
   {
     return JSONMessageCodec.INSTANCE.encodeMessage(new JSONArray().put(paramString1).put(JSONUtil.wrap(paramString2)).put(JSONUtil.wrap(paramObject)));
+  }
+  
+  public ByteBuffer encodeErrorEnvelopeWithStacktrace(String paramString1, String paramString2, Object paramObject, String paramString3)
+  {
+    return JSONMessageCodec.INSTANCE.encodeMessage(new JSONArray().put(paramString1).put(JSONUtil.wrap(paramString2)).put(JSONUtil.wrap(paramObject)).put(JSONUtil.wrap(paramString3)));
   }
   
   public ByteBuffer encodeMethodCall(MethodCall paramMethodCall)
@@ -104,7 +109,7 @@ public final class JSONMethodCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.common.JSONMethodCodec
  * JD-Core Version:    0.7.0.1
  */

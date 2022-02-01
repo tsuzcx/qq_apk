@@ -1,17 +1,28 @@
-import com.tencent.biz.qrcode.util.QRUtils;
+import android.content.Context;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
+import java.util.Timer;
 
 public class exb
-  implements Runnable
+  implements IPluginManager.OnPluginReadyListener
 {
   public exb(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    this.a.a.hide();
-    QRUtils.a(1, 2131562452);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramContext = new exc(this);
+      new Timer().schedule(paramContext, 100L);
+      return;
+    }
+    VoipTencentPayActivity.a().post(new exd(this, paramContext));
   }
 }
 

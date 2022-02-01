@@ -24,7 +24,7 @@ public class VideoFilterBase
   private static final String BASIC_VERTEX_SHADER = "precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nuniform mat4 Projection;\nuniform mat4 Modelview; \nuniform mat4 tMat;\nvoid main(void)\n{\n   gl_Position = Projection * Modelview *position;\n   vec4 tmp = tMat*vec4(inputTextureCoordinate.x,inputTextureCoordinate.y,0.0,1.0);\n   textureCoordinate = tmp.xy;\n}";
   public static final String DefaultFragmentShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
   private static boolean mDumpFilterParams = false;
-  public String dataPath;
+  protected String dataPath;
   private String fragmentShader;
   protected int height;
   private Map<String, AttributeParam> mAttrParams;
@@ -89,10 +89,11 @@ public class VideoFilterBase
   {
     if (paramBoolean)
     {
-      this.mFilterViewMat[0] = (-this.mFilterViewMat[0]);
-      this.mFilterViewMat[1] = (-this.mFilterViewMat[1]);
-      this.mFilterViewMat[2] = (-this.mFilterViewMat[2]);
-      this.mFilterViewMat[3] = (-this.mFilterViewMat[3]);
+      float[] arrayOfFloat = this.mFilterViewMat;
+      arrayOfFloat[0] = (-arrayOfFloat[0]);
+      arrayOfFloat[1] = (-arrayOfFloat[1]);
+      arrayOfFloat[2] = (-arrayOfFloat[2]);
+      arrayOfFloat[3] = (-arrayOfFloat[3]);
     }
   }
   
@@ -100,10 +101,11 @@ public class VideoFilterBase
   {
     if (paramBoolean)
     {
-      this.mFilterViewMat[4] = (-this.mFilterViewMat[4]);
-      this.mFilterViewMat[5] = (-this.mFilterViewMat[5]);
-      this.mFilterViewMat[6] = (-this.mFilterViewMat[6]);
-      this.mFilterViewMat[7] = (-this.mFilterViewMat[7]);
+      float[] arrayOfFloat = this.mFilterViewMat;
+      arrayOfFloat[4] = (-arrayOfFloat[4]);
+      arrayOfFloat[5] = (-arrayOfFloat[5]);
+      arrayOfFloat[6] = (-arrayOfFloat[6]);
+      arrayOfFloat[7] = (-arrayOfFloat[7]);
     }
   }
   
@@ -126,12 +128,16 @@ public class VideoFilterBase
   private void rotate(int paramInt)
   {
     Matrix.setIdentityM(this.mFilterViewMat, 0);
-    float f1 = (float)Math.cos(paramInt * 3.1415926D / 180.0D);
-    float f2 = (float)Math.sin(paramInt * 3.1415926D / 180.0D);
-    this.mFilterViewMat[0] = f1;
-    this.mFilterViewMat[1] = (-f2);
-    this.mFilterViewMat[4] = f2;
-    this.mFilterViewMat[5] = f1;
+    double d = paramInt;
+    Double.isNaN(d);
+    d = d * 3.1415926D / 180.0D;
+    float f1 = (float)Math.cos(d);
+    float f2 = (float)Math.sin(d);
+    float[] arrayOfFloat = this.mFilterViewMat;
+    arrayOfFloat[0] = f1;
+    arrayOfFloat[1] = (-f2);
+    arrayOfFloat[4] = f2;
+    arrayOfFloat[5] = f1;
   }
   
   public static void setDumpFilterParams(boolean paramBoolean)
@@ -165,31 +171,30 @@ public class VideoFilterBase
   public void OnDrawFrameGLSL()
   {
     boolean bool;
-    if (this.shader != null)
-    {
+    if (this.shader != null) {
       bool = true;
-      AEOpenRenderConfig.checkStrictMode(bool, "shader == null");
-      if (this.shader != null) {
-        break label28;
-      }
-    }
-    for (;;)
-    {
-      return;
+    } else {
       bool = false;
-      break;
-      label28:
-      this.shader.bind();
-      Iterator localIterator = this.mParamList.values().iterator();
-      while (localIterator.hasNext()) {
-        ((UniformParam)localIterator.next()).setParams(this.shader.getShaderProgram());
-      }
-      localIterator = this.mAttrParams.values().iterator();
-      while (localIterator.hasNext())
+    }
+    AEOpenRenderConfig.checkStrictMode(bool, "shader == null");
+    Object localObject = this.shader;
+    if (localObject == null) {
+      return;
+    }
+    ((Shader)localObject).bind();
+    localObject = this.mParamList.values().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((UniformParam)((Iterator)localObject).next()).setParams(this.shader.getShaderProgram());
+    }
+    localObject = this.mAttrParams.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      AttributeParam localAttributeParam = (AttributeParam)((Iterator)localObject).next();
+      if (localAttributeParam.handle >= 0)
       {
-        AttributeParam localAttributeParam = (AttributeParam)localIterator.next();
-        if ((localAttributeParam.handle >= 0) && (this.shader != null)) {
-          localAttributeParam.setParams(this.shader.getShaderProgram());
+        Shader localShader = this.shader;
+        if (localShader != null) {
+          localAttributeParam.setParams(localShader.getShaderProgram());
         }
       }
     }
@@ -198,25 +203,20 @@ public class VideoFilterBase
   public void OnDrawFrameGLSLSuper()
   {
     boolean bool;
-    if (this.shader != null)
-    {
+    if (this.shader != null) {
       bool = true;
-      AEOpenRenderConfig.checkStrictMode(bool, "shader == null");
-      if (this.shader != null) {
-        break label28;
-      }
-    }
-    for (;;)
-    {
-      return;
+    } else {
       bool = false;
-      break;
-      label28:
-      this.shader.bind();
-      Iterator localIterator = this.mParamList.values().iterator();
-      while (localIterator.hasNext()) {
-        ((UniformParam)localIterator.next()).setParams(this.shader.getShaderProgram());
-      }
+    }
+    AEOpenRenderConfig.checkStrictMode(bool, "shader == null");
+    Object localObject = this.shader;
+    if (localObject == null) {
+      return;
+    }
+    ((Shader)localObject).bind();
+    localObject = this.mParamList.values().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((UniformParam)((Iterator)localObject).next()).setParams(this.shader.getShaderProgram());
     }
   }
   
@@ -249,18 +249,19 @@ public class VideoFilterBase
     if (paramAttributeParam == null) {
       return;
     }
-    AttributeParam localAttributeParam2 = (AttributeParam)this.mAttrParams.get(paramAttributeParam.name);
-    AttributeParam localAttributeParam1 = localAttributeParam2;
-    if (localAttributeParam2 == null)
+    Object localObject2 = (AttributeParam)this.mAttrParams.get(paramAttributeParam.name);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localAttributeParam1 = new AttributeParam(paramAttributeParam.name, paramAttributeParam.vertices, paramAttributeParam.perVertexFloat, false);
-      if (this.shader != null) {
-        localAttributeParam1.initialParams(this.shader.getShaderProgram());
+      localObject1 = new AttributeParam(paramAttributeParam.name, paramAttributeParam.vertices, paramAttributeParam.perVertexFloat, false);
+      localObject2 = this.shader;
+      if (localObject2 != null) {
+        ((AttributeParam)localObject1).initialParams(((Shader)localObject2).getShaderProgram());
       }
-      this.mAttrParams.put(paramAttributeParam.name, localAttributeParam1);
+      this.mAttrParams.put(paramAttributeParam.name, localObject1);
     }
-    localAttributeParam1.setVertices(paramAttributeParam.vertices);
-    localAttributeParam1.perVertexFloat = paramAttributeParam.perVertexFloat;
+    ((AttributeParam)localObject1).setVertices(paramAttributeParam.vertices);
+    ((AttributeParam)localObject1).perVertexFloat = paramAttributeParam.perVertexFloat;
   }
   
   public void addAttribParam(String paramString, float[] paramArrayOfFloat)
@@ -273,36 +274,39 @@ public class VideoFilterBase
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    AttributeParam localAttributeParam2 = (AttributeParam)this.mAttrParams.get(paramString);
-    AttributeParam localAttributeParam1 = localAttributeParam2;
-    if (localAttributeParam2 == null)
+    Object localObject2 = (AttributeParam)this.mAttrParams.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localAttributeParam1 = new AttributeParam(paramString, paramArrayOfFloat, paramBoolean);
-      if (this.shader != null) {
-        localAttributeParam1.initialParams(this.shader.getShaderProgram());
+      localObject1 = new AttributeParam(paramString, paramArrayOfFloat, paramBoolean);
+      localObject2 = this.shader;
+      if (localObject2 != null) {
+        ((AttributeParam)localObject1).initialParams(((Shader)localObject2).getShaderProgram());
       }
-      this.mAttrParams.put(paramString, localAttributeParam1);
+      this.mAttrParams.put(paramString, localObject1);
     }
-    localAttributeParam1.setVertices(paramArrayOfFloat);
+    ((AttributeParam)localObject1).setVertices(paramArrayOfFloat);
   }
   
   public void addParam(UniformParam paramUniformParam)
   {
-    if (paramUniformParam == null) {}
-    UniformParam localUniformParam;
-    do
-    {
+    if (paramUniformParam == null) {
       return;
-      localUniformParam = (UniformParam)this.mParamList.get(paramUniformParam.name);
-      if (localUniformParam != null) {
-        break;
-      }
+    }
+    Object localObject = (UniformParam)this.mParamList.get(paramUniformParam.name);
+    if (localObject == null)
+    {
       this.mParamList.put(paramUniformParam.name, paramUniformParam);
-    } while (this.shader == null);
-    paramUniformParam.initialParams(this.shader.getShaderProgram());
-    return;
-    paramUniformParam.handle = localUniformParam.handle;
-    this.mParamList.put(paramUniformParam.name, paramUniformParam);
+      localObject = this.shader;
+      if (localObject != null) {
+        paramUniformParam.initialParams(((Shader)localObject).getShaderProgram());
+      }
+    }
+    else
+    {
+      paramUniformParam.handle = ((UniformParam)localObject).handle;
+      this.mParamList.put(paramUniformParam.name, paramUniformParam);
+    }
   }
   
   public void apply()
@@ -319,42 +323,51 @@ public class VideoFilterBase
   
   public void clearGLSLSelf()
   {
-    if (this.shader != null) {
-      this.shader.clear();
+    Object localObject = this.shader;
+    if (localObject != null) {
+      ((Shader)localObject).clear();
     }
     this.shader = null;
-    Iterator localIterator = this.mParamList.values().iterator();
-    while (localIterator.hasNext()) {
-      ((UniformParam)localIterator.next()).clear();
+    localObject = this.mParamList.values().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((UniformParam)((Iterator)localObject).next()).clear();
     }
-    localIterator = this.mAttrParams.values().iterator();
-    while (localIterator.hasNext()) {
-      ((AttributeParam)localIterator.next()).clear();
+    localObject = this.mAttrParams.values().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AttributeParam)((Iterator)localObject).next()).clear();
     }
   }
   
   public String dump()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("class = %s\n", new Object[] { getClass().getName() }));
-    localStringBuilder.append(String.format("uniform inputImageTexture = %s\n", new Object[] { String.valueOf(this.srcTexture) }));
-    localStringBuilder.append(String.format("uniform Projection = %s\n", new Object[] { Arrays.toString(this.mFilterProjMat) }));
-    localStringBuilder.append(String.format("uniform Modelview = %s\n", new Object[] { Arrays.toString(this.mFilterViewMat) }));
-    localStringBuilder.append(String.format("uniform tMat = %s\n", new Object[] { Arrays.toString(this.mTMat) }));
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(String.format("class = %s\n", new Object[] { getClass().getName() }));
+    localStringBuilder1.append(String.format("uniform inputImageTexture = %s\n", new Object[] { String.valueOf(this.srcTexture) }));
+    localStringBuilder1.append(String.format("uniform Projection = %s\n", new Object[] { Arrays.toString(this.mFilterProjMat) }));
+    localStringBuilder1.append(String.format("uniform Modelview = %s\n", new Object[] { Arrays.toString(this.mFilterViewMat) }));
+    localStringBuilder1.append(String.format("uniform tMat = %s\n", new Object[] { Arrays.toString(this.mTMat) }));
     Object localObject = this.mAttrParams.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      localStringBuilder.append(String.format("attribute %s\n", new Object[] { ((AttributeParam)((Iterator)localObject).next()).toString() }));
+      localStringBuilder1.append(String.format("attribute %s\n", new Object[] { ((AttributeParam)((Iterator)localObject).next()).toString() }));
     }
     localObject = this.mParamList.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      localStringBuilder.append(String.format("uniform %s \n", new Object[] { ((UniformParam)((Iterator)localObject).next()).toString() }));
+      localStringBuilder1.append(String.format("uniform %s \n", new Object[] { ((UniformParam)((Iterator)localObject).next()).toString() }));
     }
     localObject = new boolean[1];
     GLES20.glGetBooleanv(3042, (boolean[])localObject, 0);
-    localStringBuilder.append(String.format("blend enable = " + localObject[0] + "\n", new Object[0]));
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("blend enable = ");
+    localStringBuilder2.append(localObject[0]);
+    localStringBuilder2.append("\n");
+    localStringBuilder1.append(String.format(localStringBuilder2.toString(), new Object[0]));
     GLES20.glGetBooleanv(2929, (boolean[])localObject, 0);
-    localStringBuilder.append(String.format("depth test enable = " + localObject[0] + "\n", new Object[0]));
-    return localStringBuilder.toString();
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("depth test enable = ");
+    localStringBuilder2.append(localObject[0]);
+    localStringBuilder2.append("\n");
+    localStringBuilder1.append(String.format(localStringBuilder2.toString(), new Object[0]));
+    return localStringBuilder1.toString();
   }
   
   public AttributeParam getAttribParam(String paramString)
@@ -381,7 +394,8 @@ public class VideoFilterBase
   
   public boolean isValid()
   {
-    return (this.shader != null) && (this.shader.getShaderProgram() > 0);
+    Shader localShader = this.shader;
+    return (localShader != null) && (localShader.getShaderProgram() > 0);
   }
   
   public Frame render(Frame paramFrame)
@@ -405,45 +419,28 @@ public class VideoFilterBase
     if (mDumpFilterParams) {
       RenderMonitor.record(getClass().getSimpleName(), dump());
     }
-    if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP)
-    {
+    if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP) {
       GLES20.glDrawArrays(5, 0, this.mCoordNum);
-      if (this.mRenderMode != 0) {
-        break label284;
-      }
-      GLES20.glFinish();
-    }
-    label284:
-    while (this.mRenderMode != 1)
-    {
-      return true;
-      if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLES)
-      {
-        GLES20.glDrawArrays(4, 0, this.mCoordNum);
-        break;
-      }
-      if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_FAN)
-      {
-        GLES20.glDrawArrays(6, 0, this.mCoordNum);
-        break;
-      }
-      if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.LINES)
-      {
-        GLES20.glDrawArrays(1, 0, this.mCoordNum);
-        break;
-      }
-      if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.LINES_STRIP)
-      {
-        GLES20.glDrawArrays(3, 0, this.mCoordNum);
-        break;
-      }
-      if (this.mDrawMode != AEOpenRenderConfig.DRAW_MODE.POINTS) {
-        break;
-      }
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLES) {
+      GLES20.glDrawArrays(4, 0, this.mCoordNum);
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_FAN) {
+      GLES20.glDrawArrays(6, 0, this.mCoordNum);
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.LINES) {
+      GLES20.glDrawArrays(1, 0, this.mCoordNum);
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.LINES_STRIP) {
+      GLES20.glDrawArrays(3, 0, this.mCoordNum);
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.POINTS) {
       GLES20.glDrawArrays(0, 0, this.mCoordNum);
-      break;
     }
-    GLES20.glFlush();
+    paramInt1 = this.mRenderMode;
+    if (paramInt1 == 0)
+    {
+      GLES20.glFinish();
+      return true;
+    }
+    if (paramInt1 == 1) {
+      GLES20.glFlush();
+    }
     return true;
   }
   
@@ -515,11 +512,12 @@ public class VideoFilterBase
   
   public boolean updateMatrix(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 16)) {
-      return false;
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 16))
+    {
+      this.mTMat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
+      return true;
     }
-    this.mTMat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
-    return true;
+    return false;
   }
   
   public void updatePreview(Object paramObject) {}
@@ -535,7 +533,7 @@ public class VideoFilterBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.internal.VideoFilterBase
  * JD-Core Version:    0.7.0.1
  */

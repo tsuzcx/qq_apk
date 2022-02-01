@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/n8t" android:background="@drawable/e78" android:paddingLeft="5.0dip" android:paddingRight="27.0dip" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" android:drawableLeft="@drawable/icr" android:drawablePadding="1.0dip" />
+    <ImageView android:gravity="center" android:layout_gravity="center|right" android:id="@id/n8q" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/id_" />
+</FrameLayout>

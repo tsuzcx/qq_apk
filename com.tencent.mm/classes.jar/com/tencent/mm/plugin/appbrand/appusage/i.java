@@ -1,188 +1,104 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qz;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandGuideUI.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.appbrand.af.o;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import com.tencent.mm.sdk.storage.MStorage;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
-public enum i
+public final class i
+  extends MStorage
 {
-  public static final c<qz> hba;
+  private static volatile i qOz = null;
   
-  static
+  public static i ciJ()
   {
-    AppMethodBeat.i(129546);
-    hbb = new i[0];
-    hba = new i.1();
-    AppMethodBeat.o(129546);
+    AppMethodBeat.i(44482);
+    if (qOz == null) {}
+    try
+    {
+      if (qOz == null) {
+        qOz = new i();
+      }
+      i locali = qOz;
+      AppMethodBeat.o(44482);
+      return locali;
+    }
+    finally
+    {
+      AppMethodBeat.o(44482);
+    }
   }
   
-  public static boolean awU()
+  public static boolean ciL()
   {
-    AppMethodBeat.i(129537);
-    if (!com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(44485);
+    if (!com.tencent.mm.kernel.h.baz())
     {
-      AppMethodBeat.o(129537);
+      AppMethodBeat.o(44485);
       return false;
     }
-    if (com.tencent.mm.m.g.Nq().getInt("WeAppForbiddenSwitch", 0) == 1)
-    {
-      ab.i("MicroMsg.AppBrandEntranceLogic", "showInFindMore, WeAppForbiddenSwitch == 1, not show");
-      AppMethodBeat.o(129537);
-      return false;
-    }
-    if ((awZ()) || (r.axm()))
-    {
-      AppMethodBeat.o(129537);
-      return true;
-    }
-    AppMethodBeat.o(129537);
-    return false;
-  }
-  
-  public static void awV()
-  {
-    AppMethodBeat.i(129538);
-    if (!com.tencent.mm.kernel.g.RG())
-    {
-      AppMethodBeat.o(129538);
-      return;
-    }
-    if (awW())
-    {
-      r.e locale = r.e.hcb;
-      r.e.a("", 0L, 2, 1);
-    }
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCY, Boolean.FALSE);
-    AppMethodBeat.o(129538);
-  }
-  
-  static boolean awW()
-  {
-    AppMethodBeat.i(129539);
-    if (!com.tencent.mm.kernel.g.RG())
-    {
-      AppMethodBeat.o(129539);
-      return false;
-    }
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCY, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(129539);
+    boolean bool = ((Boolean)com.tencent.mm.kernel.h.baE().ban().get(at.a.acNm, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(44485);
     return bool;
   }
   
-  public static boolean awX()
+  public static void release()
   {
-    AppMethodBeat.i(129543);
-    if (!com.tencent.mm.kernel.g.RG())
-    {
-      AppMethodBeat.o(129543);
-      return false;
-    }
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCN, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(129543);
-    return bool;
+    qOz = null;
   }
   
-  public static boolean awY()
+  public final void a(long paramLong, boolean paramBoolean, Bundle paramBundle, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(129544);
-    t.axy();
-    if (!com.tencent.mm.kernel.g.RG())
-    {
-      AppMethodBeat.o(129544);
-      return false;
-    }
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCM, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(129544);
-    return bool;
+    AppMethodBeat.i(44484);
+    a(paramLong, paramBoolean, paramBundle, paramInt1, paramInt2, -1, -1L, null);
+    AppMethodBeat.o(44484);
   }
   
-  public static boolean awZ()
+  public final void a(final long paramLong1, final boolean paramBoolean, Bundle paramBundle, final int paramInt1, final int paramInt2, final int paramInt3, final long paramLong2, final i.a parama)
   {
-    AppMethodBeat.i(129545);
-    if ((awY()) || (awX()))
+    AppMethodBeat.i(319331);
+    o.cNm().postToWorker(new Runnable()
     {
-      AppMethodBeat.o(129545);
-      return true;
-    }
-    AppMethodBeat.o(129545);
-    return false;
-  }
-  
-  private static void h(boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(129541);
-    if (!com.tencent.mm.kernel.g.RG())
-    {
-      AppMethodBeat.o(129541);
-      return;
-    }
-    Object localObject = (Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCN, null);
-    if ((localObject != null) && (!((Boolean)localObject).booleanValue()) && (paramBoolean))
-    {
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCY, Boolean.TRUE);
-      localObject = r.e.hcb;
-      r.e.axv();
-    }
-    for (int i = 1;; i = 0)
-    {
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCN, Boolean.valueOf(paramBoolean));
-      if (i != 0)
+      public final void run()
       {
-        localObject = com.tencent.mm.plugin.appbrand.app.g.auE();
-        if (localObject != null) {
-          ((AppBrandGuideUI.a)localObject).Fd(paramString);
+        AppMethodBeat.i(44480);
+        i locali = i.this;
+        int j = paramInt1;
+        int k = paramInt2;
+        if ((paramBoolean & u.cjf())) {}
+        for (int i = 2;; i = 0)
+        {
+          i.a(locali, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.qOG);
+          AppMethodBeat.o(44480);
+          return;
         }
       }
-      AppMethodBeat.o(129541);
-      return;
-    }
+    });
+    AppMethodBeat.o(319331);
   }
   
-  static void nr(int paramInt)
+  public final void ciK()
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(129540);
-    if (!com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(44483);
+    o.cNm().postToWorker(new Runnable()
     {
-      AppMethodBeat.o(129540);
-      return;
-    }
-    z localz = com.tencent.mm.kernel.g.RL().Ru();
-    ac.a locala;
-    if ((paramInt & 0x2) > 0)
-    {
-      bool1 = true;
-      h(bool1, "");
-      locala = ac.a.yCM;
-      if ((paramInt & 0x1) <= 0) {
-        break label74;
+      public final void run()
+      {
+        AppMethodBeat.i(44478);
+        i.a(i.this, 1, 0, 7, 0L, true, null, -1, -1L, null);
+        AppMethodBeat.o(44478);
       }
-    }
-    label74:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localz.set(locala, Boolean.valueOf(bool1));
-      AppMethodBeat.o(129540);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  static void zu(String paramString)
-  {
-    AppMethodBeat.i(129542);
-    h(true, paramString);
-    AppMethodBeat.o(129542);
+    });
+    AppMethodBeat.o(44483);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.i
  * JD-Core Version:    0.7.0.1
  */

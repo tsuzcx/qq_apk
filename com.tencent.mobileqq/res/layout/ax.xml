@@ -27,6 +27,10 @@
             <TextView android:layout_width="0.0dip" android:layout_marginLeft="@dimen/l" android:text="@string/giz" android:layout_weight="1.0" style="@style/ni" />
             <com.tencent.widget.Switch android:id="@id/hm0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l" />
         </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/p9m" android:background="@drawable/skin_setting_strip_bottom_unpressed" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/i">
+            <TextView android:layout_width="0.0dip" android:layout_marginLeft="@dimen/l" android:text="@string/xws" android:layout_weight="1.0" style="@style/ni" />
+            <com.tencent.widget.Switch android:id="@id/p9n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l" android:checked="true" />
+        </LinearLayout>
         <View android:layout_width="fill_parent" android:layout_height="15.0dip" />
     </LinearLayout>
 </RelativeLayout>

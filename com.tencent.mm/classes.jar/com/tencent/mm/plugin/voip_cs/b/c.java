@@ -1,95 +1,51 @@
 package com.tencent.mm.plugin.voip_cs.b;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public class c
-  implements at
+public final class c
 {
-  private static c tJH = null;
-  private com.tencent.mm.plugin.voip_cs.b.b.a tJI;
-  private e tJJ;
-  private d tJK;
-  private com.tencent.mm.plugin.voip_cs.a.a tJL;
-  private com.tencent.mm.sdk.b.c tJM;
+  public static final int Grd;
+  public static final int LtR;
+  public static final int LtS;
+  public static final int LtT;
+  public static final int LtV;
+  public static final int LtZ;
+  public static final int Lub;
+  public static final int Luj;
+  public static final int Lum;
+  public static final int Lur;
+  private static int UYU;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(135290);
-    this.tJI = new com.tencent.mm.plugin.voip_cs.b.b.a();
-    this.tJJ = new e();
-    this.tJK = new d();
-    this.tJL = new com.tencent.mm.plugin.voip_cs.a.a();
-    this.tJM = new c.1(this);
-    AppMethodBeat.o(135290);
+    AppMethodBeat.i(125492);
+    LtR = a.fromDPToPix(MMApplicationContext.getContext(), 3);
+    Grd = a.fromDPToPix(MMApplicationContext.getContext(), 4);
+    LtS = a.fromDPToPix(MMApplicationContext.getContext(), 8);
+    LtT = a.fromDPToPix(MMApplicationContext.getContext(), 10);
+    LtV = a.fromDPToPix(MMApplicationContext.getContext(), 14);
+    LtZ = a.fromDPToPix(MMApplicationContext.getContext(), 30);
+    Lub = a.fromDPToPix(MMApplicationContext.getContext(), 32);
+    Lum = a.fromDPToPix(MMApplicationContext.getContext(), 96);
+    Luj = a.fromDPToPix(MMApplicationContext.getContext(), 76);
+    Lur = a.fromDPToPix(MMApplicationContext.getContext(), 230);
+    UYU = 0;
+    AppMethodBeat.o(125492);
   }
   
-  private static c cQl()
+  public static int kD(Context paramContext)
   {
-    AppMethodBeat.i(135291);
-    c localc = (c)q.S(c.class);
-    AppMethodBeat.o(135291);
-    return localc;
-  }
-  
-  public static com.tencent.mm.plugin.voip_cs.b.b.a cQm()
-  {
-    AppMethodBeat.i(135292);
-    com.tencent.mm.plugin.voip_cs.b.b.a locala = cQl().tJI;
-    AppMethodBeat.o(135292);
-    return locala;
-  }
-  
-  public static e cQn()
-  {
-    AppMethodBeat.i(135293);
-    g.RJ().QQ();
-    if (cQl().tJJ == null) {
-      cQl().tJJ = new e();
+    AppMethodBeat.i(125491);
+    if (UYU == 0) {
+      UYU = a.mt(paramContext);
     }
-    e locale = cQl().tJJ;
-    AppMethodBeat.o(135293);
-    return locale;
+    int i = UYU;
+    AppMethodBeat.o(125491);
+    return i;
   }
-  
-  public static d cQo()
-  {
-    AppMethodBeat.i(135294);
-    d locald = cQl().tJK;
-    AppMethodBeat.o(135294);
-    return locald;
-  }
-  
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
-  {
-    return null;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(135295);
-    ab.d("MicroMsg.SubCoreVoipCS", "now account reset!");
-    com.tencent.mm.sdk.b.a.ymk.c(this.tJL);
-    com.tencent.mm.sdk.b.a.ymk.c(this.tJM);
-    AppMethodBeat.o(135295);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(135296);
-    com.tencent.mm.sdk.b.a.ymk.d(this.tJL);
-    com.tencent.mm.sdk.b.a.ymk.d(this.tJM);
-    AppMethodBeat.o(135296);
-  }
-  
-  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

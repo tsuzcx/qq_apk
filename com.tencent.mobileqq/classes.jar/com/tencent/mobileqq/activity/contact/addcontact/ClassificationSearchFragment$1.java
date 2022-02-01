@@ -1,27 +1,17 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahip;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
 
-public class ClassificationSearchFragment$1
+class ClassificationSearchFragment$1
   implements Runnable
 {
-  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, ahip paramahip) {}
+  ClassificationSearchFragment$1(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
   
   public void run()
   {
-    ClassificationSearchFragment localClassificationSearchFragment;
-    if (this.a != null)
-    {
-      localClassificationSearchFragment = this.this$0;
-      if (this.a.a) {
-        break label30;
-      }
-    }
-    label30:
-    for (int i = 1;; i = 0)
-    {
-      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
-      return;
+    SearchResult localSearchResult = this.a;
+    if (localSearchResult != null) {
+      ClassificationSearchFragment.a(this.this$0, localSearchResult.c ^ true);
     }
   }
 }

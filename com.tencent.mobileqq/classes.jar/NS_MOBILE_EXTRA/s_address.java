@@ -29,20 +29,23 @@ public final class s_address
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.countryid != null) {
-      paramJceOutputStream.write(this.countryid, 0);
+    String str = this.countryid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.provinceid != null) {
-      paramJceOutputStream.write(this.provinceid, 1);
+    str = this.provinceid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.cityid != null) {
-      paramJceOutputStream.write(this.cityid, 2);
+    str = this.cityid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.s_address
  * JD-Core Version:    0.7.0.1
  */

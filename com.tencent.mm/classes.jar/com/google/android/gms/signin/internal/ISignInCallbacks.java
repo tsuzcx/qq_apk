@@ -80,56 +80,56 @@ public abstract interface ISignInCallbacks
       
       public void onAuthAccountComplete(ConnectionResult paramConnectionResult, AuthAccountResult paramAuthAccountResult)
       {
-        AppMethodBeat.i(61666);
+        AppMethodBeat.i(12158);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramConnectionResult);
         zzc.zza(localParcel, paramAuthAccountResult);
         transactAndReadExceptionReturnVoid(3, localParcel);
-        AppMethodBeat.o(61666);
+        AppMethodBeat.o(12158);
       }
       
       public void onGetCurrentAccountComplete(Status paramStatus, GoogleSignInAccount paramGoogleSignInAccount)
       {
-        AppMethodBeat.i(61669);
+        AppMethodBeat.i(12161);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramStatus);
         zzc.zza(localParcel, paramGoogleSignInAccount);
         transactAndReadExceptionReturnVoid(7, localParcel);
-        AppMethodBeat.o(61669);
+        AppMethodBeat.o(12161);
       }
       
       public void onRecordConsentComplete(Status paramStatus)
       {
-        AppMethodBeat.i(61668);
+        AppMethodBeat.i(12160);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramStatus);
         transactAndReadExceptionReturnVoid(6, localParcel);
-        AppMethodBeat.o(61668);
+        AppMethodBeat.o(12160);
       }
       
       public void onSaveAccountToSessionStoreComplete(Status paramStatus)
       {
-        AppMethodBeat.i(61667);
+        AppMethodBeat.i(12159);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramStatus);
         transactAndReadExceptionReturnVoid(4, localParcel);
-        AppMethodBeat.o(61667);
+        AppMethodBeat.o(12159);
       }
       
       public void onSignInComplete(SignInResponse paramSignInResponse)
       {
-        AppMethodBeat.i(61670);
+        AppMethodBeat.i(12162);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramSignInResponse);
         transactAndReadExceptionReturnVoid(8, localParcel);
-        AppMethodBeat.o(61670);
+        AppMethodBeat.o(12162);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.signin.internal.ISignInCallbacks
  * JD-Core Version:    0.7.0.1
  */

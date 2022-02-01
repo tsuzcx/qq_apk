@@ -1,17 +1,70 @@
 package com.tencent.token;
 
-import java.util.TimerTask;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import java.io.PrintWriter;
 
-class cr
-  extends TimerTask
+public abstract class cr<E>
+  extends cp
 {
-  cr(cp paramcp) {}
+  public final Activity b;
+  public final Context c;
+  public final Handler d;
+  final int e;
+  public final ct f = new ct();
   
-  public void run()
+  private cr(Activity paramActivity, Context paramContext, Handler paramHandler)
   {
-    this.a.e.OnGetStWithoutPasswd(null, 0L, 0L, 0, 0L, null, 8192, new ErrMsg());
+    this.b = paramActivity;
+    this.c = paramContext;
+    this.d = paramHandler;
+    this.e = 0;
+  }
+  
+  protected cr(FragmentActivity paramFragmentActivity)
+  {
+    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
+  }
+  
+  public View a(int paramInt)
+  {
+    return null;
+  }
+  
+  protected void a(Fragment paramFragment) {}
+  
+  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public LayoutInflater c()
+  {
+    return LayoutInflater.from(this.c);
+  }
+  
+  public void d() {}
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public int f()
+  {
+    return this.e;
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.a;
-import com.tencent.mm.plugin.game.d.df;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.game.protobuf.ec;
 
 public final class ag
   extends x
 {
-  public df noT;
+  public ec IFH;
   
   public ag(a parama)
   {
-    AppMethodBeat.i(111389);
+    AppMethodBeat.i(41554);
     if (parama == null)
     {
-      this.noT = new df();
-      AppMethodBeat.o(111389);
+      this.IFH = new ec();
+      AppMethodBeat.o(41554);
       return;
     }
-    this.noT = ((df)parama);
-    AppMethodBeat.o(111389);
+    this.IFH = ((ec)parama);
+    AppMethodBeat.o(41554);
   }
 }
 

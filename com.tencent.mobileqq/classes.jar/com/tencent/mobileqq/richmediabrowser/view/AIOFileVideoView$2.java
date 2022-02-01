@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import axyt;
-import axzv;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.richmediabrowser.presenter.AIOFileVideoPresenter;
+import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 
-public class AIOFileVideoView$2
+class AIOFileVideoView$2
   implements Runnable
 {
-  public AIOFileVideoView$2(axzv paramaxzv) {}
+  AIOFileVideoView$2(AIOFileVideoView paramAIOFileVideoView, AIOFileVideoData paramAIOFileVideoData) {}
   
   public void run()
   {
-    this.this$0.updateView(this.this$0.a.getSelectedIndex(), "", "", this.this$0.galleryView, false);
+    AIOFileVideoView localAIOFileVideoView = this.this$0;
+    AIOFileVideoView.a(localAIOFileVideoView, localAIOFileVideoView.k.c.getCurrentPosition(), this.a.z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView.2
  * JD-Core Version:    0.7.0.1
  */

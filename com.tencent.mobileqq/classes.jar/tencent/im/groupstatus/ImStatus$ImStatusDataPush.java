@@ -33,15 +33,16 @@ public final class ImStatus$ImStatusDataPush
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 72, 80, 88, 96, 106, 112, 120, 130, 136 }, new String[] { "uint64_uin", "uint32_type", "uint32_ip", "uint32_port", "uint32_status", "uint32_ptl", "bytes_key", "uint32_flag", "uint32_rs_seq", "uint32_rs_refresh", "uint32_sub_state", "uint32_sub_flag", "bytes_imei", "uint32_ext_online_status", "int32_battery_status", "bytes_music_info", "uint32_music_info_refresh" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, ImStatusDataPush.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 72, 80, 88, 96, 106, 112, 120, 130, 136 }, new String[] { "uint64_uin", "uint32_type", "uint32_ip", "uint32_port", "uint32_status", "uint32_ptl", "bytes_key", "uint32_flag", "uint32_rs_seq", "uint32_rs_refresh", "uint32_sub_state", "uint32_sub_flag", "bytes_imei", "uint32_ext_online_status", "int32_battery_status", "bytes_music_info", "uint32_music_info_refresh" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3, localInteger }, ImStatusDataPush.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.groupstatus.ImStatus.ImStatusDataPush
  * JD-Core Version:    0.7.0.1
  */

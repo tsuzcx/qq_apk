@@ -12,34 +12,34 @@ import android.view.KeyEvent;
 final class g
   extends b
 {
-  private final Intent hP;
-  private final BroadcastReceiver.PendingResult hQ;
-  private MediaBrowserCompat hR;
+  private final Intent jO;
+  private final BroadcastReceiver.PendingResult jP;
+  private MediaBrowserCompat jQ;
   private final Context mContext;
   
   g(Context paramContext, Intent paramIntent, BroadcastReceiver.PendingResult paramPendingResult)
   {
     this.mContext = paramContext;
-    this.hP = paramIntent;
-    this.hQ = paramPendingResult;
+    this.jO = paramIntent;
+    this.jP = paramPendingResult;
   }
   
   private void finish()
   {
-    this.hR.disconnect();
-    this.hQ.finish();
+    this.jQ.disconnect();
+    this.jP.finish();
   }
   
   final void a(MediaBrowserCompat paramMediaBrowserCompat)
   {
-    this.hR = paramMediaBrowserCompat;
+    this.jQ = paramMediaBrowserCompat;
   }
   
   public final void onConnected()
   {
     try
     {
-      new MediaControllerCompat(this.mContext, this.hR.aG()).dispatchMediaButtonEvent((KeyEvent)this.hP.getParcelableExtra("android.intent.extra.KEY_EVENT"));
+      new MediaControllerCompat(this.mContext, this.jQ.aW()).dispatchMediaButtonEvent((KeyEvent)this.jO.getParcelableExtra("android.intent.extra.KEY_EVENT"));
       finish();
       return;
     }

@@ -8,65 +8,108 @@ import com.tencent.tav.core.compositing.VideoCompositing;
 import com.tencent.tav.core.composition.VideoComposition;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.decoder.AssetWriterVideoEncoder;
 import com.tencent.tav.decoder.EncoderWriter.OutputConfig;
 import com.tencent.tav.decoder.RenderContextParams;
+import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.decoder.muxer.MediaMuxerFactory.MediaMuxerCreator;
 import java.util.List;
 
 public class AssetExportSession
 {
   public static final String TAG = "AssetExportSession";
-  boolean appliesPreferredTrackTransform = false;
   Asset asset;
   AssetExtension assetExtension;
   @Nullable
   private AudioMix audioMix;
+  private boolean audioRevertMode = false;
+  @Nullable
+  private AssetExportSession.ErrorInterceptor errorInterceptor;
+  @NonNull
+  private ExportConfig exportConfig;
   @Nullable
   ExportErrorStatus exportErrorStatus;
   private AssetExportThread exportThread;
   private List<MetadataItem> metadata;
-  EncoderWriter.OutputConfig outputConfig;
+  MediaMuxerFactory.MediaMuxerCreator muxerCreator;
   String outputFilePath;
   String outputFileType = "mp4";
   private String presetName;
   float progress;
   private RenderContextParams renderContextParams;
-  private boolean revertMode = false;
+  int retryIndex = 0;
   AssetExportSession.AssetExportSessionStatus status;
   private List<String> supportedFileTypes;
   CMTimeRange timeRange;
   VideoCompositing videoCompositing;
   @Nullable
   VideoComposition videoComposition;
+  AssetWriterVideoEncoder videoEncoder;
+  private boolean videoRevertMode = false;
   
-  public AssetExportSession(@NonNull Asset paramAsset, @Nullable EncoderWriter.OutputConfig paramOutputConfig)
+  public AssetExportSession(@NonNull Asset paramAsset, ExportConfig paramExportConfig)
   {
-    this(paramAsset, paramOutputConfig, new AssetExtension("export"));
+    this(paramAsset, paramExportConfig, new AssetExtension("export"));
   }
   
-  public AssetExportSession(@NonNull Asset paramAsset, @Nullable EncoderWriter.OutputConfig paramOutputConfig, AssetExtension paramAssetExtension)
+  public AssetExportSession(@NonNull Asset paramAsset, ExportConfig paramExportConfig, AssetExtension paramAssetExtension)
   {
     this.asset = paramAsset;
     this.assetExtension = paramAssetExtension;
-    paramAssetExtension = paramOutputConfig;
-    if (paramOutputConfig == null)
+    if (paramExportConfig != null)
     {
-      paramAssetExtension = new EncoderWriter.OutputConfig();
-      paramAssetExtension.VIDEO_TARGET_HEIGHT = ((int)paramAsset.getNaturalSize().height);
-      paramAssetExtension.VIDEO_TARGET_WIDTH = ((int)paramAsset.getNaturalSize().width);
+      paramAssetExtension = paramExportConfig;
+      if (paramExportConfig.available()) {}
     }
-    this.outputConfig = paramAssetExtension;
+    else
+    {
+      Logger.e("AssetExportSession", "AssetExportSession: encodeOption 不合法");
+      paramAssetExtension = new ExportConfig((int)paramAsset.getNaturalSize().width, (int)paramAsset.getNaturalSize().height);
+    }
+    this.exportConfig = paramAssetExtension;
+  }
+  
+  @Deprecated
+  public AssetExportSession(@NonNull Asset paramAsset, EncoderWriter.OutputConfig paramOutputConfig)
+  {
+    this(paramAsset, new ExportConfig(paramOutputConfig), new AssetExtension("export"));
+  }
+  
+  private void interceptHandlerCallback(AssetExportSession paramAssetExportSession, AssetExportSession.ExportCallbackHandler paramExportCallbackHandler)
+  {
+    if (paramAssetExportSession.getStatus() == AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusFailed)
+    {
+      AssetExportSession.ErrorInterceptor localErrorInterceptor = this.errorInterceptor;
+      if ((localErrorInterceptor != null) && (localErrorInterceptor.needRetry(paramAssetExportSession, this.retryIndex)))
+      {
+        this.retryIndex += 1;
+        exportAsynchronouslyWithCompletionHandler(paramExportCallbackHandler);
+        return;
+      }
+    }
+    paramExportCallbackHandler.handlerCallback(paramAssetExportSession);
   }
   
   public void cancelExport()
   {
-    if (this.exportThread != null) {
-      this.exportThread.cancel();
+    AssetExportThread localAssetExportThread = this.exportThread;
+    if (localAssetExportThread != null) {
+      localAssetExportThread.cancel();
     }
+    this.errorInterceptor = null;
   }
   
   public void exportAsynchronouslyWithCompletionHandler(AssetExportSession.ExportCallbackHandler paramExportCallbackHandler)
   {
-    this.exportThread = new AssetExportThread(this, paramExportCallbackHandler, this.audioMix);
+    Object localObject = this.videoComposition;
+    if (localObject != null) {
+      this.videoCompositing = ((VideoComposition)localObject).getCustomVideoCompositor();
+    }
+    localObject = this.exportThread;
+    if (localObject != null) {
+      ((AssetExportThread)localObject).removeCallback();
+    }
+    this.exportThread = new AssetExportThread(this, new AssetExportSession.1(this, paramExportCallbackHandler), this.audioMix, this.exportConfig);
     this.exportThread.setRenderContextParams(this.renderContextParams);
     this.exportThread.startExport();
   }
@@ -84,10 +127,17 @@ public class AssetExportSession
   
   public int getErrCode()
   {
-    if (this.exportErrorStatus != null) {
-      return this.exportErrorStatus.code;
+    ExportErrorStatus localExportErrorStatus = this.exportErrorStatus;
+    if (localExportErrorStatus != null) {
+      return localExportErrorStatus.code;
     }
     return 0;
+  }
+  
+  @NonNull
+  public ExportConfig getExportConfig()
+  {
+    return this.exportConfig;
   }
   
   @Nullable
@@ -126,6 +176,11 @@ public class AssetExportSession
     return this.renderContextParams;
   }
   
+  public int getRetryIndex()
+  {
+    return this.retryIndex;
+  }
+  
   public AssetExportSession.AssetExportSessionStatus getStatus()
   {
     return this.status;
@@ -134,6 +189,15 @@ public class AssetExportSession
   public List<String> getSupportedFileTypes()
   {
     return this.supportedFileTypes;
+  }
+  
+  public Throwable getThrowable()
+  {
+    ExportErrorStatus localExportErrorStatus = this.exportErrorStatus;
+    if (localExportErrorStatus != null) {
+      return localExportErrorStatus.throwable;
+    }
+    return null;
   }
   
   public CMTimeRange getTimeRange()
@@ -146,23 +210,35 @@ public class AssetExportSession
     return this.videoComposition;
   }
   
+  public AssetWriterVideoEncoder getVideoEncoder()
+  {
+    return this.videoEncoder;
+  }
+  
+  public boolean isAudioRevertMode()
+  {
+    return this.audioRevertMode;
+  }
+  
+  @Deprecated
   public boolean isRevertMode()
   {
-    return this.revertMode;
+    return this.videoRevertMode;
+  }
+  
+  public boolean isVideoRevertMode()
+  {
+    return this.videoRevertMode;
   }
   
   void release()
   {
-    if (this.audioMix != null)
+    AudioMix localAudioMix = this.audioMix;
+    if (localAudioMix != null)
     {
-      this.audioMix.release();
+      localAudioMix.release();
       this.audioMix = null;
     }
-  }
-  
-  public void setAppliesPreferredTrackTransform(boolean paramBoolean)
-  {
-    this.appliesPreferredTrackTransform = paramBoolean;
   }
   
   public void setAudioMix(AudioMix paramAudioMix)
@@ -170,9 +246,29 @@ public class AssetExportSession
     this.audioMix = paramAudioMix;
   }
   
+  public void setAudioRevertModel(boolean paramBoolean)
+  {
+    this.audioRevertMode = paramBoolean;
+  }
+  
+  public void setErrorInterceptor(@Nullable AssetExportSession.ErrorInterceptor paramErrorInterceptor)
+  {
+    this.errorInterceptor = paramErrorInterceptor;
+  }
+  
+  public void setExportConfig(@NonNull ExportConfig paramExportConfig)
+  {
+    this.exportConfig = paramExportConfig;
+  }
+  
   public void setMetadata(List<MetadataItem> paramList)
   {
     this.metadata = paramList;
+  }
+  
+  public void setMuxerCreator(MediaMuxerFactory.MediaMuxerCreator paramMediaMuxerCreator)
+  {
+    this.muxerCreator = paramMediaMuxerCreator;
   }
   
   public void setOutputFilePath(String paramString)
@@ -188,14 +284,16 @@ public class AssetExportSession
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
     this.renderContextParams = paramRenderContextParams;
-    if (this.exportThread != null) {
-      this.exportThread.setRenderContextParams(paramRenderContextParams);
+    AssetExportThread localAssetExportThread = this.exportThread;
+    if (localAssetExportThread != null) {
+      localAssetExportThread.setRenderContextParams(paramRenderContextParams);
     }
   }
   
+  @Deprecated
   public void setRevertMode(boolean paramBoolean)
   {
-    this.revertMode = paramBoolean;
+    this.videoRevertMode = paramBoolean;
   }
   
   public void setTimeRange(CMTimeRange paramCMTimeRange)
@@ -206,14 +304,21 @@ public class AssetExportSession
   public void setVideoComposition(@Nullable VideoComposition paramVideoComposition)
   {
     this.videoComposition = paramVideoComposition;
-    if (paramVideoComposition != null) {
-      this.videoCompositing = paramVideoComposition.getCustomVideoCompositor();
-    }
+  }
+  
+  public void setVideoEncoder(AssetWriterVideoEncoder paramAssetWriterVideoEncoder)
+  {
+    this.videoEncoder = paramAssetWriterVideoEncoder;
+  }
+  
+  public void setVideoRevertMode(boolean paramBoolean)
+  {
+    this.videoRevertMode = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportSession
  * JD-Core Version:    0.7.0.1
  */

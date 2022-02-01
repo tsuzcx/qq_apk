@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.OnTroopListClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
 public class eyr
-  implements View.OnClickListener
+  implements Comparator
 {
-  public eyr(TroopListAdapter2 paramTroopListAdapter2) {}
-  
-  public void onClick(View paramView)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {}
-    do
-    {
-      return;
-      paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
-    } while ((paramView.a == null) || (paramView.a.a == null));
-    this.a.a.a(paramView.a.a, paramView.a.i);
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
+    }
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
 }
 

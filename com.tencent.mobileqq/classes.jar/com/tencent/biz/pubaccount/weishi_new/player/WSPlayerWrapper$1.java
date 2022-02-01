@@ -1,40 +1,49 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
 import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayer;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import java.util.Properties;
-import thh;
-import thn;
-import tho;
 
-public class WSPlayerWrapper$1
+class WSPlayerWrapper$1
   implements Runnable
 {
-  public WSPlayerWrapper$1(tho paramtho, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  WSPlayerWrapper$1(WSPlayerWrapper paramWSPlayerWrapper, IWSPlayer paramIWSPlayer) {}
   
   public void run()
   {
-    Object localObject = null;
-    if (this.a != null) {
-      localObject = this.a.getStreamDumpInfo();
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = ((IWSPlayer)localObject).m();
+    } else {
+      localObject = null;
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return;
+    }
+    localObject = WSPlayerUtils.a((String)localObject);
+    if (localObject == null) {
+      return;
+    }
+    try
     {
-      localObject = thn.a((String)localObject);
-      if (localObject != null)
-      {
-        tho.a(this.this$0, Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue());
-        localObject = tho.a(this.this$0);
-        if (localObject != null) {
-          ((thh)localObject).a(this.this$0, tho.a(this.this$0));
-        }
-      }
+      WSPlayerWrapper.a(this.this$0, Long.parseLong(((Properties)localObject).getProperty("VideoBitRate")));
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      WSLog.d("WS_VIDEO_PLAYER", localNumberFormatException.getLocalizedMessage());
+    }
+    WSPlayerListenerAdapter localWSPlayerListenerAdapter = WSPlayerWrapper.a(this.this$0);
+    if (localWSPlayerListenerAdapter != null)
+    {
+      WSPlayerWrapper localWSPlayerWrapper = this.this$0;
+      localWSPlayerListenerAdapter.a(localWSPlayerWrapper, WSPlayerWrapper.b(localWSPlayerWrapper));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerWrapper.1
  * JD-Core Version:    0.7.0.1
  */

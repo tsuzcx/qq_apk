@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class JoinShareAlbumRsp
   extends JceStruct
 {
-  public boolean isAutoJoin;
+  public boolean isAutoJoin = false;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public JoinShareAlbumRsp() {}
   
@@ -30,15 +30,16 @@ public final class JoinShareAlbumRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.isAutoJoin, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.JoinShareAlbumRsp
  * JD-Core Version:    0.7.0.1
  */

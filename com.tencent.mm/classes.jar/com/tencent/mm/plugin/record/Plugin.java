@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.record.b.t;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.record.model.v;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(24161);
-    a locala = new a();
-    AppMethodBeat.o(24161);
-    return locala;
+    AppMethodBeat.i(27798);
+    b localb = new b();
+    AppMethodBeat.o(27798);
+    return localb;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(24162);
-    t localt = new t();
-    AppMethodBeat.o(24162);
-    return localt;
+    AppMethodBeat.i(27799);
+    v localv = new v();
+    AppMethodBeat.o(27799);
+    return localv;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.Plugin
  * JD-Core Version:    0.7.0.1
  */

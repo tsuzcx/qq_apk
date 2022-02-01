@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/nsb" android:background="@color/au4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.qqmail.view.ReadMailTitle android:id="@id/nrt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.qqmail.view.ReadMailTagViews android:id="@id/nrs" android:paddingLeft="@dimen/bqg" android:paddingRight="@dimen/bqg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bqf" qm:childHorizontalSpacing="@dimen/bqi" qm:childVerticalSpacing="@dimen/bqj" />
+        <include android:id="@id/nrq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bqf" layout="@layout/cv3" />
+        <View android:id="@id/o0r" android:layout_marginTop="@dimen/bq9" style="@style/acc" />
+        <include android:id="@id/nsh" android:visibility="gone" layout="@layout/cvm" />
+        <include android:id="@id/nsi" android:visibility="gone" layout="@layout/cvn" />
+        <include android:id="@id/nse" android:visibility="gone" layout="@layout/cvl" />
+    </LinearLayout>
+</FrameLayout>

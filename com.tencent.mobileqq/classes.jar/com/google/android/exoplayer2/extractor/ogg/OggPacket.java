@@ -47,69 +47,64 @@ final class OggPacket
   
   public boolean populate(ExtractorInput paramExtractorInput)
   {
-    if (paramExtractorInput != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      if (this.populated)
-      {
-        this.populated = false;
-        this.packetArray.reset();
-      }
-      if (this.populated) {
-        break label284;
-      }
-      if (this.currentSegmentIndex >= 0) {
-        break label123;
-      }
-      if (this.pageHeader.populate(paramExtractorInput, true)) {
-        break;
-      }
-      return false;
+    boolean bool;
+    if (paramExtractorInput != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    int i = this.pageHeader.headerSize;
-    if (((this.pageHeader.type & 0x1) == 1) && (this.packetArray.limit() == 0)) {
-      i += calculatePacketSize(0);
-    }
-    for (int j = this.segmentCount + 0;; j = 0)
+    Assertions.checkState(bool);
+    if (this.populated)
     {
-      paramExtractorInput.skipFully(i);
-      this.currentSegmentIndex = j;
-      label123:
-      j = calculatePacketSize(this.currentSegmentIndex);
-      i = this.currentSegmentIndex + this.segmentCount;
-      if (j > 0)
+      this.populated = false;
+      this.packetArray.reset();
+    }
+    while (!this.populated)
+    {
+      if (this.currentSegmentIndex < 0)
       {
-        if (this.packetArray.capacity() < this.packetArray.limit() + j) {
-          this.packetArray.data = Arrays.copyOf(this.packetArray.data, this.packetArray.limit() + j);
+        if (!this.pageHeader.populate(paramExtractorInput, true)) {
+          return false;
         }
-        paramExtractorInput.readFully(this.packetArray.data, this.packetArray.limit(), j);
-        this.packetArray.setLimit(j + this.packetArray.limit());
-        if (this.pageHeader.laces[(i - 1)] != 255)
+        i = this.pageHeader.headerSize;
+        if (((this.pageHeader.type & 0x1) == 1) && (this.packetArray.limit() == 0))
         {
-          bool = true;
-          label248:
-          this.populated = bool;
+          i += calculatePacketSize(0);
+          j = this.segmentCount + 0;
         }
+        else
+        {
+          j = 0;
+        }
+        paramExtractorInput.skipFully(i);
+        this.currentSegmentIndex = j;
       }
-      else
+      int i = calculatePacketSize(this.currentSegmentIndex);
+      int j = this.currentSegmentIndex + this.segmentCount;
+      if (i > 0)
       {
-        if (i != this.pageHeader.pageSegmentCount) {
-          break label281;
+        if (this.packetArray.capacity() < this.packetArray.limit() + i)
+        {
+          localParsableByteArray = this.packetArray;
+          localParsableByteArray.data = Arrays.copyOf(localParsableByteArray.data, this.packetArray.limit() + i);
         }
+        paramExtractorInput.readFully(this.packetArray.data, this.packetArray.limit(), i);
+        ParsableByteArray localParsableByteArray = this.packetArray;
+        localParsableByteArray.setLimit(localParsableByteArray.limit() + i);
+        if (this.pageHeader.laces[(j - 1)] != 255) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        this.populated = bool;
+      }
+      i = j;
+      if (j == this.pageHeader.pageSegmentCount) {
         i = -1;
       }
-      label281:
-      for (;;)
-      {
-        this.currentSegmentIndex = i;
-        break;
-        bool = false;
-        break label248;
-      }
-      label284:
-      return true;
+      this.currentSegmentIndex = i;
     }
+    return true;
   }
   
   public void reset()
@@ -125,12 +120,13 @@ final class OggPacket
     if (this.packetArray.data.length == 65025) {
       return;
     }
-    this.packetArray.data = Arrays.copyOf(this.packetArray.data, Math.max(65025, this.packetArray.limit()));
+    ParsableByteArray localParsableByteArray = this.packetArray;
+    localParsableByteArray.data = Arrays.copyOf(localParsableByteArray.data, Math.max(65025, this.packetArray.limit()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.OggPacket
  * JD-Core Version:    0.7.0.1
  */

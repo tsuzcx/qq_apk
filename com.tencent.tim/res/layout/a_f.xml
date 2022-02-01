@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/hdt" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/gm7" android:background="#33000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="#ff333333" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/az6" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/close" android:layout_width="wrap_content" android:layout_height="25.0dip" android:src="@drawable/hss" android:scaleType="centerInside" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/b3r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/e_1" android:layout_below="@id/jp7">
+        <com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView android:id="@id/b4j" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+        <include android:id="@id/b40" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a65" />
+    </RelativeLayout>
+    <View android:id="@id/e_1" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/input" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/input" android:background="@drawable/z0" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="8.0dip" android:layout_toLeftOf="@id/aaf" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/dtx" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:layout_gravity="center_vertical" android:id="@id/iku" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="" />
+    </LinearLayout>
+    <ViewStub android:id="@id/hzr" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

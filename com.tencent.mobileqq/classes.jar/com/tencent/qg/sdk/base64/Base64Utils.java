@@ -11,7 +11,10 @@ public class Base64Utils
     if ((i > 0) && (i < paramString.length())) {
       return paramString.substring(i + 1, paramString.length());
     }
-    throw new RuntimeException("bad dataUrl format! url = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bad dataUrl format! url = ");
+    localStringBuilder.append(paramString);
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   public static String getDataUrlHead(String paramString)
@@ -20,7 +23,10 @@ public class Base64Utils
     if (i > 0) {
       return paramString.substring(0, i);
     }
-    throw new RuntimeException("bad format! dataUrl = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bad format! dataUrl = ");
+    localStringBuilder.append(paramString);
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   public static String getMineType(String paramString)
@@ -33,14 +39,20 @@ public class Base64Utils
       if (paramString.contains("image/jpeg")) {
         return "image/jpeg";
       }
-      throw new RuntimeException("unsupport minetype! urlHead = " + getDataUrlHead(paramString));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unsupport minetype! urlHead = ");
+      localStringBuilder.append(getDataUrlHead(paramString));
+      throw new RuntimeException(localStringBuilder.toString());
     }
-    throw new RuntimeException("unknow dataUrl format: " + getDataUrlHead(paramString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unknow dataUrl format: ");
+    localStringBuilder.append(getDataUrlHead(paramString));
+    throw new RuntimeException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.base64.Base64Utils
  * JD-Core Version:    0.7.0.1
  */

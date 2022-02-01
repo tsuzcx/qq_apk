@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import alzl;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import suv;
 
 class SubscriptFeedsActivity$7
   implements Runnable
@@ -11,13 +11,13 @@ class SubscriptFeedsActivity$7
   
   public void run()
   {
-    ((alzl)this.this$0.app.getManager(56)).a();
-    suv.a().c(this.this$0.app);
+    ((IPublicAccountDataManager)this.this$0.app.getRuntimeService(IPublicAccountDataManager.class, "all")).initPublicAccountDataManager();
+    TroopBarAssistantManager.a().d(this.this$0.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.7
  * JD-Core Version:    0.7.0.1
  */

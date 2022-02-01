@@ -19,74 +19,72 @@ public final class DynamicOutputStream
     super(paramByteBuffer);
   }
   
-  public void write(JceField paramJceField)
+  public final void write(JceField paramJceField)
   {
+    int k = paramJceField.getTag();
+    boolean bool = paramJceField instanceof ZeroField;
     int j = 0;
     int i = 0;
-    int k = paramJceField.getTag();
-    if ((paramJceField instanceof ZeroField)) {
-      write(0, k);
-    }
-    for (;;)
+    if (bool)
     {
+      write(0, k);
       return;
-      if ((paramJceField instanceof IntField))
+    }
+    if ((paramJceField instanceof IntField))
+    {
+      write(((IntField)paramJceField).get(), k);
+      return;
+    }
+    if ((paramJceField instanceof ShortField))
+    {
+      write(((ShortField)paramJceField).get(), k);
+      return;
+    }
+    if ((paramJceField instanceof ByteField))
+    {
+      write(((ByteField)paramJceField).get(), k);
+      return;
+    }
+    if ((paramJceField instanceof StringField))
+    {
+      write(((StringField)paramJceField).get(), k);
+      return;
+    }
+    if ((paramJceField instanceof ByteArrayField))
+    {
+      write(((ByteArrayField)paramJceField).get(), k);
+      return;
+    }
+    if ((paramJceField instanceof ListField))
+    {
+      paramJceField = (ListField)paramJceField;
+      reserve(8);
+      writeHead((byte)9, k);
+      write(paramJceField.size(), 0);
+      paramJceField = paramJceField.get();
+      j = paramJceField.length;
+      while (i < j)
       {
-        write(((IntField)paramJceField).get(), k);
-        return;
+        write(paramJceField[i]);
+        i += 1;
       }
-      if ((paramJceField instanceof ShortField))
+      return;
+    }
+    if ((paramJceField instanceof MapField))
+    {
+      paramJceField = (MapField)paramJceField;
+      reserve(8);
+      writeHead((byte)8, k);
+      k = paramJceField.size();
+      write(k, 0);
+      i = j;
+      while (i < k)
       {
-        write(((ShortField)paramJceField).get(), k);
-        return;
+        write(paramJceField.getKey(i));
+        write(paramJceField.getValue(i));
+        i += 1;
       }
-      if ((paramJceField instanceof ByteField))
-      {
-        write(((ByteField)paramJceField).get(), k);
-        return;
-      }
-      if ((paramJceField instanceof StringField))
-      {
-        write(((StringField)paramJceField).get(), k);
-        return;
-      }
-      if ((paramJceField instanceof ByteArrayField))
-      {
-        write(((ByteArrayField)paramJceField).get(), k);
-        return;
-      }
-      if ((paramJceField instanceof ListField))
-      {
-        paramJceField = (ListField)paramJceField;
-        reserve(8);
-        writeHead((byte)9, k);
-        write(paramJceField.size(), 0);
-        paramJceField = paramJceField.get();
-        j = paramJceField.length;
-        while (i < j)
-        {
-          write(paramJceField[i]);
-          i += 1;
-        }
-      }
-      else
-      {
-        if (!(paramJceField instanceof MapField)) {
-          break;
-        }
-        paramJceField = (MapField)paramJceField;
-        reserve(8);
-        writeHead((byte)8, k);
-        k = paramJceField.size();
-        write(k, 0);
-        i = j;
-        while (i < k)
-        {
-          write(paramJceField.getKey(i));
-          write(paramJceField.getValue(i));
-          i += 1;
-        }
-      }
+      return;
     }
     if ((paramJceField instanceof StructField))
     {
@@ -120,7 +118,9 @@ public final class DynamicOutputStream
       write(((DoubleField)paramJceField).get(), k);
       return;
     }
-    throw new JceDecodeException("unknow JceField type: " + paramJceField.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder("unknow JceField type: ");
+    localStringBuilder.append(paramJceField.getClass().getName());
+    throw new JceDecodeException(localStringBuilder.toString());
   }
 }
 

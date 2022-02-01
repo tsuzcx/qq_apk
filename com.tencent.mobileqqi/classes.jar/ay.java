@@ -43,7 +43,7 @@ public class ay
     if ((LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity) != null) && (LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).isShowing())) {
       LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).dismiss();
     }
-    if (2131234884 == paramView.getId())
+    if (2131234883 == paramView.getId())
     {
       StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.a(), "dl_copy");
       ((ClipboardManager)LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).getContext().getSystemService("clipboard")).setText(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msg);
@@ -51,7 +51,7 @@ public class ay
     do
     {
       return;
-      if (2131234878 == paramView.getId())
+      if (2131234877 == paramView.getId())
       {
         StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.a(), "dl_delete");
         paramView = new az(this);
@@ -59,7 +59,7 @@ public class ay
         DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131558507), this.jdField_a_of_type_AndroidContentContext.getString(2131558527), 2131561746, 2131558509, paramView, (DialogInterface.OnClickListener)localObject1).show();
         return;
       }
-      if (2131231190 == paramView.getId())
+      if (2131231189 == paramView.getId())
       {
         StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.a(), "dl_forward");
         if (this.jdField_a_of_type_JavaLangString.isEmpty())
@@ -96,7 +96,7 @@ public class ay
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivityForResult((Intent)localObject2, 4);
         return;
       }
-      if (2131231192 == paramView.getId())
+      if (2131231191 == paramView.getId())
       {
         if (this.jdField_a_of_type_JavaLangString.isEmpty())
         {
@@ -108,7 +108,7 @@ public class ay
         QfavReport.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b, 64, 3);
         return;
       }
-    } while (2131234885 != paramView.getId());
+    } while (2131234884 != paramView.getId());
     StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b.a(), "dl_save2weiyun");
     long l = FileUtils.a(this.jdField_a_of_type_JavaLangString);
     Object localObject1 = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);

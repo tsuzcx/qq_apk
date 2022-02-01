@@ -27,15 +27,15 @@ public final class KRect
   
   public final String toString()
   {
-    AppMethodBeat.i(141370);
+    AppMethodBeat.i(135882);
     String str = "KRect{mOrigin=" + this.mOrigin + ",mSize=" + this.mSize + "}";
-    AppMethodBeat.o(141370);
+    AppMethodBeat.o(135882);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.KRect
  * JD-Core Version:    0.7.0.1
  */

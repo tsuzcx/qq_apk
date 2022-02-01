@@ -11,8 +11,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import heu;
-import hew;
+import het;
+import hev;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -432,14 +432,14 @@ public class DownloaderFactory
         switch (localDownloadConfig.b)
         {
         case 1: 
-          paramDownloadConfig = new heu(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localDownloadConfig);
+          paramDownloadConfig = new het(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localDownloadConfig);
           jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(localDownloadConfig.a), new WeakReference(paramDownloadConfig));
           return paramDownloadConfig;
         }
       }
-      paramDownloadConfig = new hew(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localDownloadConfig);
+      paramDownloadConfig = new hev(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localDownloadConfig);
       continue;
-      paramDownloadConfig = new heu(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localDownloadConfig);
+      paramDownloadConfig = new het(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localDownloadConfig);
     }
   }
   

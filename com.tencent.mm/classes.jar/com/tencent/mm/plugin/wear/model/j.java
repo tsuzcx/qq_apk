@@ -1,72 +1,67 @@
 package com.tencent.mm.plugin.wear.model;
 
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class j
 {
-  HandlerThread handlerThread;
-  ak ipC;
+  MMHandler tiG;
   
   public j()
   {
-    AppMethodBeat.i(26354);
-    if (com.tencent.mm.compatible.util.d.iU(18))
+    AppMethodBeat.i(30036);
+    if (com.tencent.mm.compatible.util.d.rd(18))
     {
-      this.handlerThread = com.tencent.mm.sdk.g.d.aqu("WearWorker_worker_thread");
-      this.handlerThread.start();
-      this.ipC = new a(this.handlerThread.getLooper());
-      ab.i("MicroMsg.Wear.WearWorker", "start worker %d", new Object[] { Integer.valueOf(this.handlerThread.getThreadId()) });
+      this.tiG = new a("WearWorker_worker_thread");
+      Log.i("MicroMsg.Wear.WearWorker", "start worker");
     }
-    AppMethodBeat.o(26354);
+    AppMethodBeat.o(30036);
   }
   
   public final void a(com.tencent.mm.plugin.wear.model.f.d paramd)
   {
-    AppMethodBeat.i(26355);
-    if (this.ipC != null)
+    AppMethodBeat.i(30037);
+    if (this.tiG != null)
     {
-      paramd = this.ipC.obtainMessage(0, paramd);
-      this.ipC.sendMessage(paramd);
+      paramd = this.tiG.obtainMessage(0, paramd);
+      this.tiG.sendMessage(paramd);
     }
-    AppMethodBeat.o(26355);
+    AppMethodBeat.o(30037);
   }
   
   final class a
-    extends ak
+    extends MMHandler
   {
-    public a(Looper paramLooper)
+    public a(String paramString)
     {
       super();
     }
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(26353);
+      AppMethodBeat.i(30035);
       paramMessage = (com.tencent.mm.plugin.wear.model.f.d)paramMessage.obj;
       if (paramMessage != null) {
         try
         {
           paramMessage.run();
-          AppMethodBeat.o(26353);
+          AppMethodBeat.o(30035);
           return;
         }
         catch (Exception localException)
         {
-          ab.printErrStackTrace("MicroMsg.Wear.WearWorker", localException.getCause(), "run task %s occur exception", new Object[] { paramMessage.getName() });
+          Log.printErrStackTrace("MicroMsg.Wear.WearWorker", localException.getCause(), "run task %s occur exception", new Object[] { paramMessage.getName() });
         }
       }
-      AppMethodBeat.o(26353);
+      AppMethodBeat.o(30035);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.j
  * JD-Core Version:    0.7.0.1
  */

@@ -5,46 +5,42 @@ import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Properties;
-import vwo;
 
-public class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2
+class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2
   implements Runnable
 {
-  public StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2(vwo paramvwo, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2(StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener paramTVKSDKOnEventBaseListener, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
     String str = this.a.getStreamDumpInfo();
-    Properties localProperties;
-    if (!TextUtils.isEmpty(str)) {
-      localProperties = new Properties();
-    }
-    try
+    if (!TextUtils.isEmpty(str))
     {
-      localProperties.load(new StringReader(str));
-      if (localProperties != null)
+      Properties localProperties = new Properties();
+      Object localObject;
+      try
       {
-        vwo.a(this.this$0).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
-        vwo.a(this.this$0).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
-        vwo.a(this.this$0).c = localProperties.getProperty("AudioCodec");
-        vwo.a(this.this$0).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
-        vwo.a(this.this$0).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
+        localProperties.load(new StringReader(str));
       }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      catch (IOException localIOException)
       {
         localIOException.printStackTrace();
-        Object localObject = null;
+        localObject = null;
+      }
+      if (localObject != null)
+      {
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).h = Long.valueOf(localObject.getProperty("VideoBitRate")).longValue();
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).e = localObject.getProperty("VideoCodec");
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).i = localObject.getProperty("AudioCodec");
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).f = Integer.valueOf(localObject.getProperty("Width")).intValue();
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).g = Integer.valueOf(localObject.getProperty("Height")).intValue();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.2
  * JD-Core Version:    0.7.0.1
  */

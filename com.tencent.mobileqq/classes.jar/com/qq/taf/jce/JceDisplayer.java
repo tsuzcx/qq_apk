@@ -39,72 +39,92 @@ public final class JceDisplayer
       this.sb.append('\t');
       i += 1;
     }
-    if (paramString != null) {
-      this.sb.append(paramString).append(": ");
+    if (paramString != null)
+    {
+      StringBuilder localStringBuilder = this.sb;
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": ");
     }
   }
   
   public JceDisplayer display(byte paramByte, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramByte).append('\n');
+    paramString = this.sb;
+    paramString.append(paramByte);
+    paramString.append('\n');
     return this;
   }
   
   public JceDisplayer display(char paramChar, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramChar).append('\n');
+    paramString = this.sb;
+    paramString.append(paramChar);
+    paramString.append('\n');
     return this;
   }
   
   public JceDisplayer display(double paramDouble, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramDouble).append('\n');
+    paramString = this.sb;
+    paramString.append(paramDouble);
+    paramString.append('\n');
     return this;
   }
   
   public JceDisplayer display(float paramFloat, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramFloat).append('\n');
+    paramString = this.sb;
+    paramString.append(paramFloat);
+    paramString.append('\n');
     return this;
   }
   
   public JceDisplayer display(int paramInt, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramInt).append('\n');
+    paramString = this.sb;
+    paramString.append(paramInt);
+    paramString.append('\n');
     return this;
   }
   
   public JceDisplayer display(long paramLong, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramLong).append('\n');
+    paramString = this.sb;
+    paramString.append(paramLong);
+    paramString.append('\n');
     return this;
   }
   
   public JceDisplayer display(JceStruct paramJceStruct, String paramString)
   {
     display('{', paramString);
-    if (paramJceStruct == null) {
-      this.sb.append('\t').append("null");
-    }
-    for (;;)
+    if (paramJceStruct == null)
     {
-      display('}', null);
-      return this;
+      paramJceStruct = this.sb;
+      paramJceStruct.append('\t');
+      paramJceStruct.append("null");
+    }
+    else
+    {
       paramJceStruct.display(this.sb, this._level + 1);
     }
+    display('}', null);
+    return this;
   }
   
   public <T> JceDisplayer display(T paramT, String paramString)
   {
     if (paramT == null)
     {
-      this.sb.append("null").append('\n');
+      paramT = this.sb;
+      paramT.append("null");
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof Byte))
@@ -210,10 +230,14 @@ public final class JceDisplayer
     ps(paramString2);
     if (paramString1 == null)
     {
-      this.sb.append("null").append('\n');
+      paramString1 = this.sb;
+      paramString1.append("null");
+      paramString1.append('\n');
       return this;
     }
-    this.sb.append(paramString1).append('\n');
+    paramString2 = this.sb;
+    paramString2.append(paramString1);
+    paramString2.append('\n');
     return this;
   }
   
@@ -222,7 +246,9 @@ public final class JceDisplayer
     if (paramCollection == null)
     {
       ps(paramString);
-      this.sb.append("null").append('\t');
+      paramCollection = this.sb;
+      paramCollection.append("null");
+      paramCollection.append('\t');
       return this;
     }
     return display(paramCollection.toArray(), paramString);
@@ -233,15 +259,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramMap == null)
     {
-      this.sb.append("null").append('\n');
+      paramMap = this.sb;
+      paramMap.append("null");
+      paramMap.append('\n');
       return this;
     }
     if (paramMap.isEmpty())
     {
-      this.sb.append(paramMap.size()).append(", {}").append('\n');
+      paramString = this.sb;
+      paramString.append(paramMap.size());
+      paramString.append(", {}");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramMap.size()).append(", {").append('\n');
+    paramString = this.sb;
+    paramString.append(paramMap.size());
+    paramString.append(", {");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 2);
     paramMap = paramMap.entrySet().iterator();
@@ -260,7 +294,9 @@ public final class JceDisplayer
   public JceDisplayer display(short paramShort, String paramString)
   {
     ps(paramString);
-    this.sb.append(paramShort).append('\n');
+    paramString = this.sb;
+    paramString.append(paramShort);
+    paramString.append('\n');
     return this;
   }
   
@@ -268,12 +304,15 @@ public final class JceDisplayer
   {
     ps(paramString);
     paramString = this.sb;
-    if (paramBoolean) {}
-    for (char c = 'T';; c = 'F')
-    {
-      paramString.append(c).append('\n');
-      return this;
+    char c;
+    if (paramBoolean) {
+      c = 'T';
+    } else {
+      c = 'F';
     }
+    paramString.append(c);
+    paramString.append('\n');
+    return this;
   }
   
   public JceDisplayer display(byte[] paramArrayOfByte, String paramString)
@@ -281,15 +320,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfByte == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfByte = this.sb;
+      paramArrayOfByte.append("null");
+      paramArrayOfByte.append('\n');
       return this;
     }
     if (paramArrayOfByte.length == 0)
     {
-      this.sb.append(paramArrayOfByte.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfByte.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfByte.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfByte.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -307,15 +354,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfChar == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfChar = this.sb;
+      paramArrayOfChar.append("null");
+      paramArrayOfChar.append('\n');
       return this;
     }
     if (paramArrayOfChar.length == 0)
     {
-      this.sb.append(paramArrayOfChar.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfChar.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfChar.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfChar.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfChar.length;
     int i = 0;
@@ -333,15 +388,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfDouble == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfDouble = this.sb;
+      paramArrayOfDouble.append("null");
+      paramArrayOfDouble.append('\n');
       return this;
     }
     if (paramArrayOfDouble.length == 0)
     {
-      this.sb.append(paramArrayOfDouble.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfDouble.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfDouble.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfDouble.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfDouble.length;
     int i = 0;
@@ -359,15 +422,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfFloat == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfFloat = this.sb;
+      paramArrayOfFloat.append("null");
+      paramArrayOfFloat.append('\n');
       return this;
     }
     if (paramArrayOfFloat.length == 0)
     {
-      this.sb.append(paramArrayOfFloat.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfFloat.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfFloat.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfFloat.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfFloat.length;
     int i = 0;
@@ -385,15 +456,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfInt == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfInt = this.sb;
+      paramArrayOfInt.append("null");
+      paramArrayOfInt.append('\n');
       return this;
     }
     if (paramArrayOfInt.length == 0)
     {
-      this.sb.append(paramArrayOfInt.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfInt.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfInt.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfInt.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -411,15 +490,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfLong == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfLong = this.sb;
+      paramArrayOfLong.append("null");
+      paramArrayOfLong.append('\n');
       return this;
     }
     if (paramArrayOfLong.length == 0)
     {
-      this.sb.append(paramArrayOfLong.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfLong.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfLong.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfLong.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfLong.length;
     int i = 0;
@@ -437,15 +524,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfT == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfT = this.sb;
+      paramArrayOfT.append("null");
+      paramArrayOfT.append('\n');
       return this;
     }
     if (paramArrayOfT.length == 0)
     {
-      this.sb.append(paramArrayOfT.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfT.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfT.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfT.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfT.length;
     int i = 0;
@@ -463,15 +558,23 @@ public final class JceDisplayer
     ps(paramString);
     if (paramArrayOfShort == null)
     {
-      this.sb.append("null").append('\n');
+      paramArrayOfShort = this.sb;
+      paramArrayOfShort.append("null");
+      paramArrayOfShort.append('\n');
       return this;
     }
     if (paramArrayOfShort.length == 0)
     {
-      this.sb.append(paramArrayOfShort.length).append(", []").append('\n');
+      paramString = this.sb;
+      paramString.append(paramArrayOfShort.length);
+      paramString.append(", []");
+      paramString.append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfShort.length).append(", [").append('\n');
+    paramString = this.sb;
+    paramString.append(paramArrayOfShort.length);
+    paramString.append(", [");
+    paramString.append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfShort.length;
     int i = 0;
@@ -541,25 +644,30 @@ public final class JceDisplayer
   public JceDisplayer displaySimple(JceStruct paramJceStruct, boolean paramBoolean)
   {
     this.sb.append("{");
-    if (paramJceStruct == null) {
-      this.sb.append('\t').append("null");
-    }
-    for (;;)
+    if (paramJceStruct == null)
     {
-      this.sb.append("}");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-      return this;
+      paramJceStruct = this.sb;
+      paramJceStruct.append('\t');
+      paramJceStruct.append("null");
+    }
+    else
+    {
       paramJceStruct.displaySimple(this.sb, this._level + 1);
     }
+    this.sb.append("}");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
+    return this;
   }
   
   public <T> JceDisplayer displaySimple(T paramT, boolean paramBoolean)
   {
     if (paramT == null)
     {
-      this.sb.append("null").append('\n');
+      paramT = this.sb;
+      paramT.append("null");
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof Byte))
@@ -664,15 +772,13 @@ public final class JceDisplayer
   {
     if (paramString == null) {
       this.sb.append("null");
-    }
-    for (;;)
-    {
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-      return this;
+    } else {
       this.sb.append(paramString);
     }
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
+    return this;
   }
   
   public <T> JceDisplayer displaySimple(Collection<T> paramCollection, boolean paramBoolean)
@@ -690,16 +796,8 @@ public final class JceDisplayer
   
   public <K, V> JceDisplayer displaySimple(Map<K, V> paramMap, boolean paramBoolean)
   {
-    if ((paramMap == null) || (paramMap.isEmpty()))
+    if ((paramMap != null) && (!paramMap.isEmpty()))
     {
-      this.sb.append("{}");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("{");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 2);
       paramMap = paramMap.entrySet().iterator();
@@ -713,8 +811,15 @@ public final class JceDisplayer
         localJceDisplayer.displaySimple(localEntry.getValue(), false);
       }
       this.sb.append("}");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("{}");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
@@ -730,61 +835,55 @@ public final class JceDisplayer
   public JceDisplayer displaySimple(boolean paramBoolean1, boolean paramBoolean2)
   {
     StringBuilder localStringBuilder = this.sb;
-    if (paramBoolean1) {}
-    for (char c = 'T';; c = 'F')
-    {
-      localStringBuilder.append(c);
-      if (paramBoolean2) {
-        this.sb.append("|");
-      }
-      return this;
+    char c;
+    if (paramBoolean1) {
+      c = 'T';
+    } else {
+      c = 'F';
     }
+    localStringBuilder.append(c);
+    if (paramBoolean2) {
+      this.sb.append("|");
+    }
+    return this;
   }
   
   public JceDisplayer displaySimple(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+    {
+      this.sb.append(HexUtil.bytes2HexStr(paramArrayOfByte));
       if (paramBoolean) {
         this.sb.append("|");
       }
-    }
-    do
-    {
       return this;
-      this.sb.append(HexUtil.bytes2HexStr(paramArrayOfByte));
-    } while (!paramBoolean);
-    this.sb.append("|");
+    }
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public JceDisplayer displaySimple(char[] paramArrayOfChar, boolean paramBoolean)
   {
-    if ((paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {
+    if ((paramArrayOfChar != null) && (paramArrayOfChar.length != 0))
+    {
+      this.sb.append(new String(paramArrayOfChar));
       if (paramBoolean) {
         this.sb.append("|");
       }
-    }
-    do
-    {
       return this;
-      this.sb.append(new String(paramArrayOfChar));
-    } while (!paramBoolean);
-    this.sb.append("|");
+    }
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public JceDisplayer displaySimple(double[] paramArrayOfDouble, boolean paramBoolean)
   {
-    if ((paramArrayOfDouble == null) || (paramArrayOfDouble.length == 0))
+    if ((paramArrayOfDouble != null) && (paramArrayOfDouble.length != 0))
     {
-      this.sb.append("[]");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
@@ -798,23 +897,22 @@ public final class JceDisplayer
         i += 1;
       }
       this.sb.append("[");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("[]");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public JceDisplayer displaySimple(float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0))
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length != 0))
     {
-      this.sb.append("[]");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
@@ -828,23 +926,22 @@ public final class JceDisplayer
         i += 1;
       }
       this.sb.append("]");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("[]");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public JceDisplayer displaySimple(int[] paramArrayOfInt, boolean paramBoolean)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length != 0))
     {
-      this.sb.append("[]");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
@@ -858,23 +955,22 @@ public final class JceDisplayer
         i += 1;
       }
       this.sb.append("]");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("[]");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public JceDisplayer displaySimple(long[] paramArrayOfLong, boolean paramBoolean)
   {
-    if ((paramArrayOfLong == null) || (paramArrayOfLong.length == 0))
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length != 0))
     {
-      this.sb.append("[]");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
@@ -888,23 +984,22 @@ public final class JceDisplayer
         i += 1;
       }
       this.sb.append("]");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("[]");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public <T> JceDisplayer displaySimple(T[] paramArrayOfT, boolean paramBoolean)
   {
-    if ((paramArrayOfT == null) || (paramArrayOfT.length == 0))
+    if ((paramArrayOfT != null) && (paramArrayOfT.length != 0))
     {
-      this.sb.append("[]");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
@@ -918,23 +1013,22 @@ public final class JceDisplayer
         i += 1;
       }
       this.sb.append("]");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("[]");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
   
   public JceDisplayer displaySimple(short[] paramArrayOfShort, boolean paramBoolean)
   {
-    if ((paramArrayOfShort == null) || (paramArrayOfShort.length == 0))
+    if ((paramArrayOfShort != null) && (paramArrayOfShort.length != 0))
     {
-      this.sb.append("[]");
-      if (paramBoolean) {
-        this.sb.append("|");
-      }
-    }
-    do
-    {
-      return this;
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
@@ -948,14 +1042,21 @@ public final class JceDisplayer
         i += 1;
       }
       this.sb.append("]");
-    } while (!paramBoolean);
-    this.sb.append("|");
+      if (paramBoolean) {
+        this.sb.append("|");
+      }
+      return this;
+    }
+    this.sb.append("[]");
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.taf.jce.JceDisplayer
  * JD-Core Version:    0.7.0.1
  */

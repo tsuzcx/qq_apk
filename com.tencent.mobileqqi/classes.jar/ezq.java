@@ -1,14 +1,15 @@
 import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.data.CircleGroup;
+import java.util.Comparator;
 
-class ezq
-  implements Runnable
+public class ezq
+  implements Comparator
 {
-  ezq(ezp paramezp) {}
+  public ezq(CircleManager paramCircleManager) {}
   
-  public void run()
+  public int a(CircleGroup paramCircleGroup1, CircleGroup paramCircleGroup2)
   {
-    CircleManager.b(this.a.a);
-    CircleManager.d(this.a.a);
+    return paramCircleGroup1.showIndex - paramCircleGroup2.showIndex;
   }
 }
 

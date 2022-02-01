@@ -1,17 +1,12 @@
 package android.arch.a.a;
 
-final class c<K, V>
-  extends g<K, V>
+public abstract class c
 {
-  c(e<K, V> parame1, e<K, V> parame2)
-  {
-    super(parame1, parame2);
-  }
+  public abstract void a(Runnable paramRunnable);
   
-  final e<K, V> a(e<K, V> parame)
-  {
-    return parame.h;
-  }
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract boolean b();
 }
 
 

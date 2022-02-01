@@ -1,552 +1,450 @@
 package com.tencent.mm.x;
 
-import android.util.SparseArray;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.j;
+import com.tencent.mm.plugin.fts.a.m;
+import com.tencent.mm.plugin.fts.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Random;
-import java.util.Set;
+import java.util.List;
 
 public final class b
+  extends com.tencent.mm.plugin.fts.a.b
 {
-  SparseArray<b.a> eDj;
-  HashMap<ac.a, b.a> eDk;
-  SparseArray<b.b> eDl;
-  HashMap<ac.a, b.b> eDm;
-  private Random eDn;
-  z eDo;
+  private m msU;
+  private a msV;
+  private MStorageEx.IOnStorageChange msW;
   
   public b()
   {
-    AppMethodBeat.i(77724);
-    this.eDj = new SparseArray();
-    this.eDk = new HashMap();
-    this.eDl = new SparseArray();
-    this.eDm = new HashMap();
-    this.eDn = new Random();
-    this.eDo = null;
-    AppMethodBeat.o(77724);
+    AppMethodBeat.i(127644);
+    this.msW = new MStorageEx.IOnStorageChange()
+    {
+      public final void onNotifyChange(int paramAnonymousInt, MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(127632);
+        if (!b.aXy())
+        {
+          AppMethodBeat.o(127632);
+          return;
+        }
+        if ((paramAnonymousObject != null) && ((paramAnonymousObject instanceof String)))
+        {
+          paramAnonymousMStorageEx = (String)paramAnonymousObject;
+          switch (paramAnonymousInt)
+          {
+          }
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(127632);
+          return;
+          paramAnonymousMStorageEx = null;
+          break;
+          if (paramAnonymousMStorageEx != null)
+          {
+            b.b(b.this).a(65636, new b.f(b.this, paramAnonymousMStorageEx));
+            AppMethodBeat.o(127632);
+            return;
+            if (paramAnonymousMStorageEx == null)
+            {
+              b.b(b.this).a(65636, new b.c(b.this));
+              AppMethodBeat.o(127632);
+              return;
+            }
+            b.b(b.this).a(65636, new b.d(b.this, paramAnonymousMStorageEx));
+          }
+        }
+      }
+    };
+    AppMethodBeat.o(127644);
   }
   
-  private b.a a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public final com.tencent.mm.plugin.fts.a.a.c a(l paraml)
   {
-    AppMethodBeat.i(77737);
-    b.a locala = new b.a(this);
-    locala.eDf = paramInt1;
-    locala.type = paramInt2;
-    locala.value = paramString1;
-    locala.crs = paramString2;
-    AppMethodBeat.o(77737);
-    return locala;
+    AppMethodBeat.i(127647);
+    paraml = new b.g(this, paraml);
+    paraml = this.msU.a(-65536, paraml);
+    AppMethodBeat.o(127647);
+    return paraml;
   }
   
-  private b.a a(ac.a parama, int paramInt, String paramString1, String paramString2)
+  public final boolean aXx()
   {
-    AppMethodBeat.i(77738);
-    b.a locala = new b.a(this);
-    locala.eDg = parama;
-    locala.type = paramInt;
-    locala.value = paramString1;
-    locala.crs = paramString2;
-    AppMethodBeat.o(77738);
-    return locala;
+    AppMethodBeat.i(127646);
+    ((com.tencent.mm.plugin.account.sdk.a.a)h.az(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg().remove(this.msW);
+    AppMethodBeat.o(127646);
+    return true;
   }
   
-  private void a(b.a parama)
+  public final String getName()
   {
-    AppMethodBeat.i(77727);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(parama.type);
-    localStringBuffer.append("|");
-    localStringBuffer.append(escape(parama.value));
-    localStringBuffer.append("|");
-    localStringBuffer.append(escape(parama.crs));
-    if (parama.eDg != null)
-    {
-      this.eDo.set(parama.eDg, localStringBuffer.toString());
-      AppMethodBeat.o(77727);
-      return;
-    }
-    this.eDo.set(parama.eDf, localStringBuffer.toString());
-    AppMethodBeat.o(77727);
+    return "FTS5SearchFriendLogic";
   }
   
-  private b.a c(ac.a parama)
+  public final boolean onCreate()
   {
-    AppMethodBeat.i(77730);
-    String str = (String)this.eDo.get(parama, null);
-    if (str == null)
+    AppMethodBeat.i(127645);
+    if (!((n)h.az(n.class)).isFTSContextReady())
     {
-      AppMethodBeat.o(77730);
-      return null;
+      Log.i("MicroMsg.FTS.FTS5SearchFriendLogic", "Create Fail!");
+      AppMethodBeat.o(127645);
+      return false;
     }
-    String[] arrayOfString = str.split("\\|");
-    if (arrayOfString.length != 3)
-    {
-      ab.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
-      AppMethodBeat.o(77730);
-      return null;
-    }
-    try
-    {
-      parama = a(parama, Integer.valueOf(arrayOfString[0]).intValue(), unescape(arrayOfString[1]), unescape(arrayOfString[2]));
-      AppMethodBeat.o(77730);
-      return parama;
-    }
-    catch (Exception parama)
-    {
-      ab.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bo.l(parama) });
-      ab.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
-      AppMethodBeat.o(77730);
-    }
-    return null;
+    Log.i("MicroMsg.FTS.FTS5SearchFriendLogic", "Create Success!");
+    this.msV = ((a)((n)h.az(n.class)).getFTSIndexStorage(1280));
+    this.msU = ((n)h.az(n.class)).getFTSTaskDaemon();
+    this.msU.a(131172, new b((byte)0));
+    ((com.tencent.mm.plugin.account.sdk.a.a)h.az(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg().add(this.msW);
+    AppMethodBeat.o(127645);
+    return true;
   }
   
-  private b.a c(ac.a parama, int paramInt)
+  static final class a
   {
-    AppMethodBeat.i(77740);
-    b.a locala2 = f(parama);
-    b.a locala1 = locala2;
-    if (locala2 == null)
+    String hRk;
+    long id;
+    String msY;
+    String msZ;
+    String mta;
+    String mtb;
+    String nickName;
+    String realName;
+    int status;
+    int type;
+    String userName;
+    
+    a() {}
+    
+    a(com.tencent.mm.plugin.account.friend.model.a parama)
     {
-      locala1 = a(parama, paramInt, "", "");
-      this.eDk.put(parama, locala1);
-      a(locala1);
+      AppMethodBeat.i(127633);
+      this.id = com.tencent.mm.plugin.account.friend.model.a.SQ(parama.getMd5());
+      this.realName = parama.bWI();
+      this.msY = parama.bWK();
+      this.msZ = parama.bWJ();
+      this.nickName = parama.getNickName();
+      this.mta = parama.bWM();
+      this.mtb = parama.bWL();
+      this.userName = parama.getUsername();
+      this.hRk = parama.bWN();
+      this.type = parama.type;
+      this.status = parama.status;
+      AppMethodBeat.o(127633);
     }
-    AppMethodBeat.o(77740);
-    return locala1;
   }
   
-  private b.a cf(int paramInt1, int paramInt2)
+  final class b
+    extends com.tencent.mm.plugin.fts.a.a.c
   {
-    AppMethodBeat.i(77739);
-    b.a locala2 = ju(paramInt1);
-    b.a locala1 = locala2;
-    if (locala2 == null)
+    public boolean mtc;
+    private HashSet<Long> mtd;
+    private long mte;
+    private int mtf;
+    private HashMap<int[], b.e> mtg;
+    
+    private b()
     {
-      locala1 = a(paramInt1, paramInt2, "", "");
-      this.eDj.put(paramInt1, locala1);
-      a(locala1);
+      AppMethodBeat.i(127634);
+      this.mtc = false;
+      this.mtd = null;
+      this.mte = -9223372036854775808L;
+      this.mtf = -1;
+      this.mtg = new HashMap();
+      AppMethodBeat.o(127634);
     }
-    AppMethodBeat.o(77739);
-    return locala1;
-  }
-  
-  private b.b d(ac.a parama)
-  {
-    AppMethodBeat.i(77733);
-    String str = (String)this.eDo.get(parama, null);
-    if (str == null)
+    
+    public final boolean aXz()
     {
-      parama = e(parama);
-      AppMethodBeat.o(77733);
-      return parama;
-    }
-    String[] arrayOfString = str.split("\\|");
-    if (arrayOfString.length % 2 != 0)
-    {
-      ab.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { str });
-      AppMethodBeat.o(77733);
-      return null;
-    }
-    for (;;)
-    {
+      AppMethodBeat.i(127635);
+      Log.i("MicroMsg.FTS.FTS5SearchFriendLogic", "Start building friend index.");
+      this.mtc = b.aXy();
+      if (this.mtf < 0) {
+        this.mtf = 0;
+      }
+      Log.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[BuildFriendIndexTask mBuildMobileIndex : %s, mCurrentTask : %d]", new Object[] { Boolean.valueOf(this.mtc), Integer.valueOf(this.mtf) });
+      Object localObject1;
+      long l;
       int i;
-      try
-      {
-        parama = e(parama);
-        i = 0;
-        if (i < arrayOfString.length) {
-          if (lV(arrayOfString[i])) {
-            parama.eDr.put(Integer.valueOf(arrayOfString[i]).intValue(), unescape(arrayOfString[(i + 1)]));
-          } else {
-            parama.eDs.put(arrayOfString[i], unescape(arrayOfString[(i + 1)]));
+      Object localObject2;
+      if (this.mtf == 0) {
+        if (this.mtc)
+        {
+          if (!this.mtg.containsKey(com.tencent.mm.plugin.fts.a.c.Hrm)) {
+            this.mtg.put(com.tencent.mm.plugin.fts.a.c.Hrm, new b.e((byte)0));
+          }
+          if (this.mtd == null)
+          {
+            this.mtd = new HashSet();
+            localObject1 = b.a(b.this).a(com.tencent.mm.plugin.fts.a.c.Hrm, false, true, false, false, false);
+            while (((Cursor)localObject1).moveToNext())
+            {
+              l = ((Cursor)localObject1).getLong(0);
+              this.mtd.add(Long.valueOf(l));
+            }
+            ((Cursor)localObject1).close();
+          }
+          if (Thread.interrupted())
+          {
+            localObject1 = new InterruptedException();
+            AppMethodBeat.o(127635);
+            throw ((Throwable)localObject1);
+          }
+          localObject1 = ((n)h.az(n.class)).getFTSMainDB().h("SELECT id, realname, realnamequanpin, realnamepyinitial, nickname, nicknamequanpin, nicknamepyinitial, username, status, moblie FROM addr_upload2 WHERE id > ? AND type=0 ORDER BY id;", new String[] { Long.toString(this.mte) });
+          i = 50;
+          while (((Cursor)localObject1).moveToNext())
+          {
+            if (Thread.interrupted())
+            {
+              ((Cursor)localObject1).close();
+              b.a(b.this).commit();
+              localObject1 = new InterruptedException();
+              AppMethodBeat.o(127635);
+              throw ((Throwable)localObject1);
+            }
+            l = ((Cursor)localObject1).getLong(0);
+            this.mte = l;
+            localObject2 = new b.a();
+            ((b.a)localObject2).id = l;
+            ((b.a)localObject2).realName = ((Cursor)localObject1).getString(1);
+            ((b.a)localObject2).msY = ((Cursor)localObject1).getString(2);
+            ((b.a)localObject2).msZ = ((Cursor)localObject1).getString(3);
+            ((b.a)localObject2).nickName = ((Cursor)localObject1).getString(4);
+            ((b.a)localObject2).mta = ((Cursor)localObject1).getString(5);
+            ((b.a)localObject2).mtb = ((Cursor)localObject1).getString(6);
+            ((b.a)localObject2).userName = ((Cursor)localObject1).getString(7);
+            ((b.a)localObject2).status = ((Cursor)localObject1).getInt(8);
+            ((b.a)localObject2).hRk = ((Cursor)localObject1).getString(9);
+            ((b.a)localObject2).type = 0;
+            if (((b.a)localObject2).status == 65536) {
+              ((b.a)localObject2).status = 0;
+            }
+            if ((b.a((b.a)localObject2)) && (!this.mtd.remove(Long.valueOf(((b.a)localObject2).id))))
+            {
+              if (i < 50) {
+                break label793;
+              }
+              b.a(b.this).commit();
+              b.a(b.this).beginTransaction();
+            }
           }
         }
       }
-      catch (Exception parama)
+      label790:
+      label793:
+      for (int j = 0;; j = i)
       {
-        ab.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bo.l(parama) });
-        ab.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { str });
-        AppMethodBeat.o(77733);
-        return null;
-      }
-      AppMethodBeat.o(77733);
-      return parama;
-      i += 2;
-    }
-  }
-  
-  private static String escape(String paramString)
-  {
-    AppMethodBeat.i(77725);
-    paramString = paramString.replaceAll("\\|", "%7C");
-    AppMethodBeat.o(77725);
-    return paramString;
-  }
-  
-  private b.a jr(int paramInt)
-  {
-    AppMethodBeat.i(77729);
-    String str = (String)this.eDo.get(paramInt, null);
-    if (str == null)
-    {
-      AppMethodBeat.o(77729);
-      return null;
-    }
-    Object localObject = str.split("\\|");
-    if (localObject.length != 3)
-    {
-      ab.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
-      AppMethodBeat.o(77729);
-      return null;
-    }
-    try
-    {
-      localObject = a(paramInt, Integer.valueOf(localObject[0]).intValue(), unescape(localObject[1]), unescape(localObject[2]));
-      AppMethodBeat.o(77729);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bo.l(localException) });
-      ab.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
-      AppMethodBeat.o(77729);
-    }
-    return null;
-  }
-  
-  private b.b js(int paramInt)
-  {
-    AppMethodBeat.i(77732);
-    Object localObject = (String)this.eDo.get(paramInt, null);
-    if (localObject == null)
-    {
-      localObject = jt(paramInt);
-      AppMethodBeat.o(77732);
-      return localObject;
-    }
-    String[] arrayOfString = ((String)localObject).split("\\|");
-    if (arrayOfString.length % 2 != 0)
-    {
-      ab.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { localObject });
-      AppMethodBeat.o(77732);
-      return null;
-    }
-    for (;;)
-    {
-      b.b localb;
-      try
-      {
-        localb = jt(paramInt);
-        paramInt = 0;
-        if (paramInt < arrayOfString.length) {
-          if (lV(arrayOfString[paramInt])) {
-            localb.eDr.put(Integer.valueOf(arrayOfString[paramInt]).intValue(), unescape(arrayOfString[(paramInt + 1)]));
-          } else {
-            localb.eDs.put(arrayOfString[paramInt], unescape(arrayOfString[(paramInt + 1)]));
+        b.e locale;
+        for (;;)
+        {
+          i = j;
+          try
+          {
+            j += b.a(b.this, (b.a)localObject2);
+            i = j;
+            localObject2 = (b.e)this.mtg.get(com.tencent.mm.plugin.fts.a.c.Hrm);
+            i = j;
+            ((b.e)localObject2).mtj += 1;
+            i = j;
+          }
+          catch (Exception localException)
+          {
+            Log.printErrStackTrace("MicroMsg.FTS.FTS5SearchFriendLogic", localException, "Build mobile friend index failed with exception.", new Object[0]);
+            locale = (b.e)this.mtg.get(com.tencent.mm.plugin.fts.a.c.Hrm);
+            locale.mFailedCount += 1;
           }
         }
+        break;
+        ((Cursor)localObject1).close();
+        b.a(b.this).commit();
+        localObject1 = this.mtd.iterator();
+        i = 50;
+        if (((Iterator)localObject1).hasNext())
+        {
+          if (i < 50) {
+            break label790;
+          }
+          b.a(b.this).commit();
+          b.a(b.this).beginTransaction();
+          i = 0;
+        }
+        for (;;)
+        {
+          l = ((Long)((Iterator)localObject1).next()).longValue();
+          b.a(b.this).c(com.tencent.mm.plugin.fts.a.c.Hrm, l);
+          locale = (b.e)this.mtg.get(com.tencent.mm.plugin.fts.a.c.Hrm);
+          locale.mtk += 1;
+          ((Iterator)localObject1).remove();
+          i += 1;
+          break;
+          b.a(b.this).commit();
+          this.mtd = null;
+          this.mte = -9223372036854775808L;
+          this.mtf = -1;
+          AppMethodBeat.o(127635);
+          return true;
+        }
       }
-      catch (Exception localException)
+    }
+    
+    public final int getId()
+    {
+      return 2;
+    }
+    
+    public final String getName()
+    {
+      return "BuildFriendIndexTask";
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(127636);
+      if (this.mtg.containsKey(com.tencent.mm.plugin.fts.a.c.Hrm))
       {
-        ab.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bo.l(localException) });
-        ab.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { localObject });
-        AppMethodBeat.o(77732);
-        return null;
+        String str = "BuildFriendIndex IDXTYPE_SET_CONTACT_FRIEND [new: " + ((b.e)this.mtg.get(com.tencent.mm.plugin.fts.a.c.Hrm)).mtj + ", removed: " + ((b.e)this.mtg.get(com.tencent.mm.plugin.fts.a.c.Hrm)).mtk + ", failed: " + ((b.e)this.mtg.get(com.tencent.mm.plugin.fts.a.c.Hrm)).mFailedCount + "]";
+        AppMethodBeat.o(127636);
+        return str;
       }
-      AppMethodBeat.o(77732);
-      return localb;
-      paramInt += 2;
+      AppMethodBeat.o(127636);
+      return "";
     }
   }
   
-  private static boolean lV(String paramString)
+  final class c
+    extends com.tencent.mm.plugin.fts.a.a.c
   {
-    AppMethodBeat.i(77731);
-    if ((!bo.isNullOrNil(paramString)) && (paramString.matches("^[\\d]+$")))
+    private int mCount = 0;
+    private int mth = 0;
+    
+    public c() {}
+    
+    public final boolean aXz()
     {
-      AppMethodBeat.o(77731);
+      AppMethodBeat.i(127637);
+      Log.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[DeleteAllFriendsTask mFriendType: %s]", new Object[] { Integer.valueOf(this.mth) });
+      if (this.mth == 0) {
+        this.mCount = b.a(b.this).w(com.tencent.mm.plugin.fts.a.c.Hrm, -1).size();
+      }
+      AppMethodBeat.o(127637);
       return true;
     }
-    AppMethodBeat.o(77731);
-    return false;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(127638);
+      String str = "DeleteAllFriends [" + this.mCount + ", " + this.mth + "]";
+      AppMethodBeat.o(127638);
+      return str;
+    }
   }
   
-  private static String unescape(String paramString)
+  final class d
+    extends com.tencent.mm.plugin.fts.a.a.c
   {
-    AppMethodBeat.i(77726);
-    paramString = paramString.replaceAll("%7C", "|");
-    AppMethodBeat.o(77726);
-    return paramString;
-  }
-  
-  public final b.a F(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(77747);
-    ab.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceId %d, watcherId %d, type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    b.a locala = ju(paramInt1);
-    if (locala == null)
+    private int mth;
+    private String mti;
+    
+    public d(String paramString)
     {
-      ab.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
-      AppMethodBeat.o(77747);
-      return null;
+      this.mti = paramString;
+      this.mth = 0;
     }
-    if ((locala.type & paramInt3) == 0)
+    
+    public final boolean aXz()
     {
-      ab.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
-      AppMethodBeat.o(77747);
-      return null;
-    }
-    b.b localb = jv(paramInt2);
-    if (localb != null)
-    {
-      String str = (String)localb.eDr.get(paramInt1);
-      if ((str != null) && (str.equals(locala.crs)))
+      AppMethodBeat.i(127639);
+      Log.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[DeleteFriendTask mEntityId: %s, mFriendType: %s]", new Object[] { this.mti, Integer.valueOf(this.mth) });
+      if (this.mth == 0)
       {
-        AppMethodBeat.o(77747);
-        return null;
+        long l = com.tencent.mm.plugin.account.friend.model.a.SQ(this.mti);
+        b.a(b.this).c(com.tencent.mm.plugin.fts.a.c.Hrm, l);
       }
-      if (str == null)
+      AppMethodBeat.o(127639);
+      return true;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(127640);
+      String str = "DeleteFriend(\"" + this.mti + "\", " + this.mth + ")";
+      AppMethodBeat.o(127640);
+      return str;
+    }
+  }
+  
+  static final class e
+  {
+    public int mFailedCount = 0;
+    public int mtj = 0;
+    public int mtk = 0;
+  }
+  
+  final class f
+    extends com.tencent.mm.plugin.fts.a.a.c
+  {
+    private int mth;
+    private String mti;
+    private boolean mtl = false;
+    
+    public f(String paramString)
+    {
+      this.mti = paramString;
+      this.mth = 0;
+    }
+    
+    public final boolean aXz()
+    {
+      AppMethodBeat.i(127641);
+      Log.d("MicroMsg.FTS.FTS5SearchFriendLogic", "[InsertFriendTask mEntityId: %s, mFriendType: %s]", new Object[] { this.mti, Integer.valueOf(this.mth) });
+      if (this.mth == 0)
       {
-        str = PH();
-        localb.eDr.put(paramInt1, str);
-        a(localb);
+        Object localObject = ((com.tencent.mm.plugin.account.friend.model.b)((com.tencent.mm.plugin.account.sdk.a.a)h.az(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).SU(this.mti);
+        if (localObject == null)
+        {
+          this.mtl = true;
+          AppMethodBeat.o(127641);
+          return true;
+        }
+        localObject = new b.a((com.tencent.mm.plugin.account.friend.model.a)localObject);
+        if (!b.a((b.a)localObject)) {
+          break label112;
+        }
+        b.a(b.this, (b.a)localObject);
       }
-      AppMethodBeat.o(77747);
-      return locala;
-    }
-    ab.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
-    AppMethodBeat.o(77747);
-    return null;
-  }
-  
-  final String PH()
-  {
-    AppMethodBeat.i(77734);
-    String str = String.format("%d%04d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.eDn.nextInt(Math.abs(this.eDn.nextInt(2147483647))) % 10000) });
-    AppMethodBeat.o(77734);
-    return str;
-  }
-  
-  public final b.a a(ac.a parama1, ac.a parama2, int paramInt)
-  {
-    AppMethodBeat.i(77748);
-    ab.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceKey %s, watcherKey %s, type %d", new Object[] { parama1, parama2, Integer.valueOf(paramInt) });
-    b.a locala = f(parama1);
-    if (locala == null)
-    {
-      ab.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
-      AppMethodBeat.o(77748);
-      return null;
-    }
-    if ((locala.type & paramInt) == 0)
-    {
-      ab.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
-      AppMethodBeat.o(77748);
-      return null;
-    }
-    parama2 = g(parama2);
-    if (parama2 != null)
-    {
-      String str = (String)parama2.eDs.get(parama1.name());
-      if ((str != null) && (str.equals(locala.crs)))
+      for (;;)
       {
-        AppMethodBeat.o(77748);
-        return null;
+        AppMethodBeat.o(127641);
+        return true;
+        label112:
+        this.mtl = true;
       }
-      if (str == null)
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(127642);
+      StringBuilder localStringBuilder = new StringBuilder("InsertFriend(\"").append(this.mti).append("\", ").append(this.mth).append(")");
+      if (this.mtl) {}
+      for (String str = " [skipped]";; str = "")
       {
-        str = PH();
-        parama2.eDs.put(parama1.name(), str);
-        a(parama2);
-      }
-      AppMethodBeat.o(77748);
-      return locala;
-    }
-    ab.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
-    AppMethodBeat.o(77748);
-    return null;
-  }
-  
-  final void a(b.b paramb)
-  {
-    int m = 0;
-    AppMethodBeat.i(77728);
-    StringBuffer localStringBuffer = new StringBuffer();
-    Object localObject1 = paramb.eDs.entrySet().iterator();
-    int i = 0;
-    int j;
-    int k;
-    for (;;)
-    {
-      j = i;
-      k = m;
-      if (!((Iterator)localObject1).hasNext()) {
-        break;
-      }
-      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      String str = (String)((Map.Entry)localObject2).getKey();
-      localObject2 = (String)((Map.Entry)localObject2).getValue();
-      if (i != 0) {
-        localStringBuffer.append("|");
-      }
-      localStringBuffer.append(str);
-      localStringBuffer.append("|");
-      localStringBuffer.append(escape((String)localObject2));
-      i += 1;
-    }
-    while (k < paramb.eDr.size())
-    {
-      i = paramb.eDr.keyAt(k);
-      localObject1 = (String)paramb.eDr.get(i);
-      if (j != 0) {
-        localStringBuffer.append("|");
-      }
-      localStringBuffer.append(i);
-      localStringBuffer.append("|");
-      localStringBuffer.append(escape((String)localObject1));
-      j += 1;
-      k += 1;
-    }
-    if (paramb.eDi != null)
-    {
-      this.eDo.set(paramb.eDi, localStringBuffer.toString());
-      AppMethodBeat.o(77728);
-      return;
-    }
-    this.eDo.set(paramb.eDq, localStringBuffer.toString());
-    AppMethodBeat.o(77728);
-  }
-  
-  public final void b(ac.a parama, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(77746);
-    ab.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceKey %s, type %d, value %s", new Object[] { parama, Integer.valueOf(paramInt), paramString });
-    parama = c(parama, paramInt);
-    parama.value = paramString;
-    parama.type = paramInt;
-    parama.crs = PH();
-    a(parama);
-    AppMethodBeat.o(77746);
-  }
-  
-  final b.b e(ac.a parama)
-  {
-    AppMethodBeat.i(77736);
-    b.b localb = new b.b(this);
-    localb.eDi = parama;
-    AppMethodBeat.o(77736);
-    return localb;
-  }
-  
-  public final b.a f(ac.a parama)
-  {
-    AppMethodBeat.i(77742);
-    b.a locala2 = (b.a)this.eDk.get(parama);
-    b.a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala2 = c(parama);
-      locala1 = locala2;
-      if (locala2 != null)
-      {
-        this.eDk.put(parama, locala2);
-        locala1 = locala2;
+        str = str;
+        AppMethodBeat.o(127642);
+        return str;
       }
     }
-    AppMethodBeat.o(77742);
-    return locala1;
-  }
-  
-  final b.b g(ac.a parama)
-  {
-    AppMethodBeat.i(77744);
-    b.b localb2 = (b.b)this.eDm.get(parama);
-    b.b localb1 = localb2;
-    if (localb2 == null)
-    {
-      localb1 = d(parama);
-      if (localb1 == null)
-      {
-        ab.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
-        AppMethodBeat.o(77744);
-        return null;
-      }
-      this.eDm.put(parama, localb1);
-    }
-    AppMethodBeat.o(77744);
-    return localb1;
-  }
-  
-  public final void h(int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(77745);
-    ab.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceId %d, type %d, value %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    b.a locala = cf(paramInt1, paramInt2);
-    locala.value = paramString;
-    locala.type = paramInt2;
-    locala.crs = PH();
-    a(locala);
-    AppMethodBeat.o(77745);
-  }
-  
-  final b.b jt(int paramInt)
-  {
-    AppMethodBeat.i(77735);
-    b.b localb = new b.b(this);
-    localb.eDq = paramInt;
-    AppMethodBeat.o(77735);
-    return localb;
-  }
-  
-  public final b.a ju(int paramInt)
-  {
-    AppMethodBeat.i(77741);
-    b.a locala2 = (b.a)this.eDj.get(paramInt);
-    b.a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala2 = jr(paramInt);
-      locala1 = locala2;
-      if (locala2 != null)
-      {
-        this.eDj.put(paramInt, locala2);
-        locala1 = locala2;
-      }
-    }
-    AppMethodBeat.o(77741);
-    return locala1;
-  }
-  
-  final b.b jv(int paramInt)
-  {
-    AppMethodBeat.i(77743);
-    b.b localb2 = (b.b)this.eDl.get(paramInt);
-    b.b localb1 = localb2;
-    if (localb2 == null)
-    {
-      localb1 = js(paramInt);
-      if (localb1 == null)
-      {
-        ab.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
-        AppMethodBeat.o(77743);
-        return null;
-      }
-      this.eDl.put(paramInt, localb1);
-    }
-    AppMethodBeat.o(77743);
-    return localb1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.x.b
  * JD-Core Version:    0.7.0.1
  */

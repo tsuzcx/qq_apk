@@ -7,8 +7,7 @@ public class hwb
   
   public void run()
   {
-    Gallery.a(this.a, false);
-    this.a.B_();
+    Gallery.a(this.a);
   }
 }
 

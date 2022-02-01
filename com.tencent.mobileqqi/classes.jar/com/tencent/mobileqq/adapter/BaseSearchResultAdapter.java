@@ -18,8 +18,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
+import exj;
 import exk;
-import exl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,12 +29,12 @@ public abstract class BaseSearchResultAdapter
   extends BaseAdapter
   implements FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new exk();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new exj();
   private int jdField_a_of_type_Int = 0;
   public ConversationSearchAdapter.SearchResultCallBack a;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private exl jdField_a_of_type_Exl = null;
+  private exk jdField_a_of_type_Exk = null;
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList;
   public boolean a;
@@ -226,13 +226,13 @@ public abstract class BaseSearchResultAdapter
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
-    if (this.jdField_a_of_type_Exl != null)
+    if (this.jdField_a_of_type_Exk != null)
     {
-      this.jdField_a_of_type_Exl.cancel(true);
-      this.jdField_a_of_type_Exl = null;
+      this.jdField_a_of_type_Exk.cancel(true);
+      this.jdField_a_of_type_Exk = null;
     }
-    this.jdField_a_of_type_Exl = new exl(this, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Exl.execute(new Void[0]);
+    this.jdField_a_of_type_Exk = new exk(this, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Exk.execute(new Void[0]);
   }
   
   public void a(List paramList)

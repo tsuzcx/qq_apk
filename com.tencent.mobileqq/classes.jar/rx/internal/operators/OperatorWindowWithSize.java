@@ -18,21 +18,23 @@ public final class OperatorWindowWithSize<T>
   
   public Subscriber<? super T> call(Subscriber<? super Observable<T>> paramSubscriber)
   {
-    if (this.skip == this.size)
+    int i = this.skip;
+    int j = this.size;
+    if (i == j)
     {
-      localObject = new OperatorWindowWithSize.WindowExact(paramSubscriber, this.size);
+      localObject = new OperatorWindowWithSize.WindowExact(paramSubscriber, j);
       paramSubscriber.add(((OperatorWindowWithSize.WindowExact)localObject).cancel);
       paramSubscriber.setProducer(((OperatorWindowWithSize.WindowExact)localObject).createProducer());
       return localObject;
     }
-    if (this.skip > this.size)
+    if (i > j)
     {
-      localObject = new OperatorWindowWithSize.WindowSkip(paramSubscriber, this.size, this.skip);
+      localObject = new OperatorWindowWithSize.WindowSkip(paramSubscriber, j, i);
       paramSubscriber.add(((OperatorWindowWithSize.WindowSkip)localObject).cancel);
       paramSubscriber.setProducer(((OperatorWindowWithSize.WindowSkip)localObject).createProducer());
       return localObject;
     }
-    Object localObject = new OperatorWindowWithSize.WindowOverlap(paramSubscriber, this.size, this.skip);
+    Object localObject = new OperatorWindowWithSize.WindowOverlap(paramSubscriber, j, i);
     paramSubscriber.add(((OperatorWindowWithSize.WindowOverlap)localObject).cancel);
     paramSubscriber.setProducer(((OperatorWindowWithSize.WindowOverlap)localObject).createProducer());
     return localObject;
@@ -40,7 +42,7 @@ public final class OperatorWindowWithSize<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorWindowWithSize
  * JD-Core Version:    0.7.0.1
  */

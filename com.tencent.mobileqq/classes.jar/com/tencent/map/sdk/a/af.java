@@ -62,68 +62,39 @@ public final class af
   public static void c()
   {
     Object localObject1 = cy.d().f().a();
-    int i;
-    label45:
-    al localal;
-    af.a locala;
-    if (localObject1 != null) {
-      if (as.a("app_schdule_use_ipv6", 0, 1, 1) == 1)
-      {
+    if (localObject1 != null)
+    {
+      int i = 0;
+      if (as.a("app_schdule_use_ipv6", 0, 1, 1) == 1) {
         i = 1;
-        e.clear();
-        localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label271;
-        }
-        localal = (al)((Iterator)localObject1).next();
-        locala = new af.a(a);
+      }
+      e.clear();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        al localal = (al)((Iterator)localObject1).next();
+        af.a locala = new af.a(a);
         locala.b = localal.a;
         locala.e = localal.b;
-        if (!locala.e.startsWith("bottom")) {
-          break label272;
-        }
-      }
-    }
-    label271:
-    label272:
-    for (int j = 1;; j = 0)
-    {
-      Object localObject2 = localal.c.iterator();
-      label120:
-      while (((Iterator)localObject2).hasNext())
-      {
-        ad localad = (ad)((Iterator)localObject2).next();
-        if ((i != 0) || (!localad.c())) {
-          if (ao.h() == 1) {
-            if (localad.c()) {
-              break;
+        boolean bool = locala.e.startsWith("bottom");
+        Object localObject2 = localal.c.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          ad localad = (ad)((Iterator)localObject2).next();
+          if (((i != 0) || (!localad.c())) && (ao.h() == 1 ? !localad.c() : (ao.h() != 3) || (localad.c())))
+          {
+            if (bool) {
+              localad.e = 5;
             }
-          } else {
-            for (;;)
-            {
-              if (j != 0) {
-                localad.e = 5;
-              }
-              locala.a(localad);
-              break label120;
-              i = 0;
-              break;
-              if (ao.h() == 3) {
-                if (!localad.c()) {
-                  break label120;
-                }
-              }
-            }
+            locala.a(localad);
           }
         }
+        localObject2 = new ad(localal.a);
+        ((ad)localObject2).e = 3;
+        locala.a((ad)localObject2);
+        Collections.sort(locala.d, new an());
+        e.put(localal.a, locala);
       }
-      localObject2 = new ad(localal.a);
-      ((ad)localObject2).e = 3;
-      locala.a((ad)localObject2);
-      Collections.sort(locala.d, new an());
-      e.put(localal.a, locala);
-      break label45;
-      return;
     }
   }
 }

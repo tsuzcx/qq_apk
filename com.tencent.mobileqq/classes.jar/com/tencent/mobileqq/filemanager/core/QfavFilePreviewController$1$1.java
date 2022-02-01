@@ -1,48 +1,51 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import aqlx;
-import arab;
-import arac;
 import com.tencent.qphone.base.util.QLog;
 
-public class QfavFilePreviewController$1$1
+class QfavFilePreviewController$1$1
   implements Runnable
 {
-  public QfavFilePreviewController$1$1(arac paramarac, Bundle paramBundle) {}
+  QfavFilePreviewController$1$1(QfavFilePreviewController.1 param1, Bundle paramBundle) {}
   
   public void run()
   {
-    boolean bool = true;
-    arab.a(this.jdField_a_of_type_Arac.a, this.jdField_a_of_type_AndroidOsBundle.getInt("previewPort", 80));
-    arab.a(this.jdField_a_of_type_Arac.a, this.jdField_a_of_type_AndroidOsBundle.getLong("previewCode", 0L));
-    arab.a(this.jdField_a_of_type_Arac.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewUid"));
-    arab.b(this.jdField_a_of_type_Arac.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewHost"));
-    arab.c(this.jdField_a_of_type_Arac.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewKey"));
-    if (QLog.isColorLevel()) {
-      QLog.i("QfavFilePreviewController", 2, "handleRemoteCmd: mHost=" + arab.a(this.jdField_a_of_type_Arac.a) + ", port=" + String.valueOf(arab.a(this.jdField_a_of_type_Arac.a)) + ", key=" + arab.b(this.jdField_a_of_type_Arac.a) + ", retCode =" + String.valueOf(arab.a(this.jdField_a_of_type_Arac.a)));
-    }
-    aqlx localaqlx;
-    if (1 == arab.b(this.jdField_a_of_type_Arac.a))
+    QfavFilePreviewController.a(this.b.a, this.a.getInt("previewPort", 80));
+    QfavFilePreviewController.a(this.b.a, this.a.getLong("previewCode", 0L));
+    QfavFilePreviewController.a(this.b.a, this.a.getString("previewUid"));
+    QfavFilePreviewController.b(this.b.a, this.a.getString("previewHost"));
+    QfavFilePreviewController.c(this.b.a, this.a.getString("previewKey"));
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      localaqlx = this.jdField_a_of_type_Arac.a.a;
-      if (0L != arab.a(this.jdField_a_of_type_Arac.a)) {
-        break label321;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleRemoteCmd: mHost=");
+      ((StringBuilder)localObject).append(QfavFilePreviewController.a(this.b.a));
+      ((StringBuilder)localObject).append(", port=");
+      ((StringBuilder)localObject).append(String.valueOf(QfavFilePreviewController.b(this.b.a)));
+      ((StringBuilder)localObject).append(", key=");
+      ((StringBuilder)localObject).append(QfavFilePreviewController.c(this.b.a));
+      ((StringBuilder)localObject).append(", retCode =");
+      ((StringBuilder)localObject).append(String.valueOf(QfavFilePreviewController.d(this.b.a)));
+      QLog.i("QfavFilePreviewController", 2, ((StringBuilder)localObject).toString());
+    }
+    if (1 == QfavFilePreviewController.e(this.b.a))
+    {
+      localObject = this.b.a.a;
+      boolean bool;
+      if (0L == QfavFilePreviewController.d(this.b.a)) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      ((ControlerCallback)localObject).a(bool, QfavFilePreviewController.a(this.b.a), String.valueOf(QfavFilePreviewController.b(this.b.a)), QfavFilePreviewController.d(this.b.a), null, QfavFilePreviewController.c(this.b.a), null, QfavFilePreviewController.f(this.b.a), null);
     }
-    for (;;)
-    {
-      localaqlx.a(bool, arab.a(this.jdField_a_of_type_Arac.a), String.valueOf(arab.a(this.jdField_a_of_type_Arac.a)), arab.a(this.jdField_a_of_type_Arac.a), null, arab.b(this.jdField_a_of_type_Arac.a), null, arab.c(this.jdField_a_of_type_Arac.a), null);
-      arab.b(this.jdField_a_of_type_Arac.a, 3);
-      return;
-      label321:
-      bool = false;
-    }
+    QfavFilePreviewController.b(this.b.a, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1
  * JD-Core Version:    0.7.0.1
  */

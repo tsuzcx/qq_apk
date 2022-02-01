@@ -16,19 +16,25 @@ public class UploadSoDefaultLoader
     try
     {
       System.loadLibrary(paramString);
-      UploadLog.d("UploadSoDefaultLoader", "loadLibrary :" + paramString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadLibrary :");
+      localStringBuilder.append(paramString);
+      UploadLog.d("UploadSoDefaultLoader", localStringBuilder.toString());
       return true;
     }
     catch (Throwable paramString)
     {
-      UploadLog.e("UploadSoDefaultLoader", "error :" + paramString.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error :");
+      localStringBuilder.append(paramString.toString());
+      UploadLog.e("UploadSoDefaultLoader", localStringBuilder.toString());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.base.UploadSoDefaultLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,24 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+
 public final class ai
+  extends MAutoStorage<ah>
 {
-  private static int gVm;
+  public static final String[] nVW;
   
-  public static int avE()
+  static
   {
-    try
-    {
-      int i = gVm;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.i(44314);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(ah.DB_INFO, "PkgUpdateStats") };
+    AppMethodBeat.o(44314);
   }
   
-  static void nn(int paramInt)
+  public ai(ISQLiteDatabase paramISQLiteDatabase)
   {
-    try
-    {
-      gVm = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    super(paramISQLiteDatabase, ah.DB_INFO, "PkgUpdateStats", ah.INDEX_CREATE);
   }
 }
 

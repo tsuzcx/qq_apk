@@ -18,10 +18,10 @@ public abstract class MediaBrowserServiceCompat
   extends Service
 {
   static final boolean DEBUG = Log.isLoggable("MBServiceCompat", 3);
-  final a<IBinder, ab> gT = new a();
-  ab gU;
-  final ag gV = new ag(this);
-  MediaSessionCompat.Token gW;
+  final a<IBinder, ab> iR = new a();
+  ab iS;
+  final ag iT = new ag(this);
+  MediaSessionCompat.Token iU;
   
   static List<MediaBrowserCompat.MediaItem> a(List<MediaBrowserCompat.MediaItem> paramList, Bundle paramBundle)
   {
@@ -54,9 +54,9 @@ public abstract class MediaBrowserServiceCompat
   static boolean a(String paramString, ab paramab, IBinder paramIBinder)
   {
     if (paramIBinder == null) {
-      return paramab.hg.remove(paramString) != null;
+      return paramab.je.remove(paramString) != null;
     }
-    List localList = (List)paramab.hg.get(paramString);
+    List localList = (List)paramab.je.get(paramString);
     boolean bool1;
     if (localList != null)
     {
@@ -71,7 +71,7 @@ public abstract class MediaBrowserServiceCompat
       }
       bool2 = bool1;
       if (localList.size() == 0) {
-        paramab.hg.remove(paramString);
+        paramab.je.remove(paramString);
       }
     }
     for (boolean bool2 = bool1;; bool2 = false) {
@@ -81,7 +81,7 @@ public abstract class MediaBrowserServiceCompat
   
   final void a(final String paramString, final ab paramab, IBinder paramIBinder, final Bundle paramBundle)
   {
-    Object localObject = (List)paramab.hg.get(paramString);
+    Object localObject = (List)paramab.je.get(paramString);
     if (localObject == null) {
       localObject = new ArrayList();
     }
@@ -100,19 +100,19 @@ public abstract class MediaBrowserServiceCompat
       {
         return;
         ((List)localObject).add(new m(paramIBinder, paramBundle));
-        paramab.hg.put(paramString, localObject);
+        paramab.je.put(paramString, localObject);
         paramIBinder = new ac(paramString) {};
-        this.gU = paramab;
+        this.iS = paramab;
         if (paramBundle != null) {
           paramIBinder.setFlags(1);
         }
-        this.gU = null;
+        this.iS = null;
       } while (paramIBinder.isDone());
-      throw new IllegalStateException("onLoadChildren must call detach() or sendResult() before returning for package=" + paramab.hc + " id=" + paramString);
+      throw new IllegalStateException("onLoadChildren must call detach() or sendResult() before returning for package=" + paramab.ja + " id=" + paramString);
     }
   }
   
-  public abstract aa aK();
+  public abstract aa ba();
 }
 
 

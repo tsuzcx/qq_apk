@@ -1,68 +1,64 @@
 package com.tencent.widget;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import bhuz;
-import bhva;
-import bhvb;
-import bhzi;
+import androidx.viewpager.widget.PagerAdapter;
 
 public class AdapterViewPagerAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<AdapterView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private bhva jdField_a_of_type_Bhva;
-  private bhvb jdField_a_of_type_Bhvb;
-  private bhzi jdField_a_of_type_Bhzi;
+  private AdapterViewPagerAdapter.AdapterViewFactory a;
+  private PagerBaseAdapterWrapper b;
+  private SparseArray<AdapterView> c = new SparseArray();
+  private Context d;
+  private AdapterViewPagerAdapter.PageInflateDelegate e;
   
   public AdapterViewPagerAdapter(Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bhzi = new bhzi(paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Bhzi.registerDataSetObserver(new bhuz(this));
+    this.d = paramContext;
+    this.b = new PagerBaseAdapterWrapper(paramBaseAdapter, paramInt);
+    this.b.registerDataSetObserver(new AdapterViewPagerAdapter.1(this));
   }
   
   public AdapterView a(int paramInt)
   {
-    Object localObject2 = (AdapterView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject2 = (AdapterView)this.c.get(paramInt);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      if (this.jdField_a_of_type_Bhva != null) {
-        localObject1 = this.jdField_a_of_type_Bhva.a(this.jdField_a_of_type_AndroidContentContext, paramInt);
+      localObject1 = this.a;
+      if (localObject1 != null) {
+        localObject1 = ((AdapterViewPagerAdapter.AdapterViewFactory)localObject1).a(this.d, paramInt);
+      } else {
+        throw new IllegalArgumentException("setAdapterViewFactory should be invoked first!");
       }
     }
-    else
+    if (localObject1 != null)
     {
-      if (localObject1 != null)
-      {
-        localObject2 = new bhzi(this.jdField_a_of_type_Bhzi.a(), this.jdField_a_of_type_Bhzi.a());
-        ((bhzi)localObject2).a(paramInt);
-        ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
-      }
-      return localObject1;
+      localObject2 = new PagerBaseAdapterWrapper(this.b.a(), this.b.b());
+      ((PagerBaseAdapterWrapper)localObject2).a(paramInt);
+      ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
+      this.c.put(paramInt, localObject1);
     }
-    throw new IllegalArgumentException("setAdapterViewFactory should be invoked first!");
+    return localObject1;
   }
   
-  public void a(bhva parambhva)
+  public void a(AdapterViewPagerAdapter.AdapterViewFactory paramAdapterViewFactory)
   {
-    this.jdField_a_of_type_Bhva = parambhva;
+    this.a = paramAdapterViewFactory;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bhvb != null)
+    AdapterViewPagerAdapter.PageInflateDelegate localPageInflateDelegate = this.e;
+    if (localPageInflateDelegate != null)
     {
-      this.jdField_a_of_type_Bhvb.a(paramViewGroup, (View)paramObject, paramInt);
+      localPageInflateDelegate.a(paramViewGroup, (View)paramObject, paramInt);
       return;
     }
     paramViewGroup.removeView((View)paramObject);
@@ -70,7 +66,7 @@ public class AdapterViewPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Bhzi.b();
+    return this.b.c();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -79,8 +75,9 @@ public class AdapterViewPagerAdapter
     if (localAdapterView == null) {
       return null;
     }
-    if (this.jdField_a_of_type_Bhvb != null) {
-      return this.jdField_a_of_type_Bhvb.a(paramViewGroup, localAdapterView, paramInt);
+    AdapterViewPagerAdapter.PageInflateDelegate localPageInflateDelegate = this.e;
+    if (localPageInflateDelegate != null) {
+      return localPageInflateDelegate.a(paramViewGroup, localAdapterView, paramInt);
     }
     paramViewGroup.addView(localAdapterView);
     return localAdapterView;
@@ -93,7 +90,7 @@ public class AdapterViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AdapterViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

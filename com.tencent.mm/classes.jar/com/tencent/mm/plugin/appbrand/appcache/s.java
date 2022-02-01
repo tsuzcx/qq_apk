@@ -1,45 +1,38 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.InputStream;
+import java.util.List;
 
-public final class s
-  implements z.b
+public abstract interface s
 {
-  private static final ConcurrentHashMap<String, Boolean> gUC;
+  public abstract WxaPkg Vc(String paramString);
   
-  static
-  {
-    AppMethodBeat.i(129390);
-    gUC = new ConcurrentHashMap();
-    AppMethodBeat.o(129390);
-  }
+  public abstract InputStream Vd(String paramString);
   
-  public static void yp(String paramString)
-  {
-    AppMethodBeat.i(129388);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(129388);
-      return;
-    }
-    gUC.put(paramString, Boolean.TRUE);
-    AppMethodBeat.o(129388);
-  }
+  public abstract a Ve(String paramString);
   
-  public final z.a a(a parama)
+  public abstract boolean Vf(String paramString);
+  
+  public abstract boolean an(String paramString, boolean paramBoolean);
+  
+  public abstract void cge();
+  
+  public abstract List<ModulePkgInfo> cgf();
+  
+  public abstract List<String> cgg();
+  
+  public abstract void close();
+  
+  public static class a
   {
-    AppMethodBeat.i(129387);
-    if ((aq.class == parama.getClass()) || (ak.class == parama.getClass()) || (al.class == parama.getClass()) || (bd.class == parama.getClass()))
-    {
-      parama = new s.a(parama, (byte)0);
-      AppMethodBeat.o(129387);
-      return parama;
-    }
-    AppMethodBeat.o(129387);
-    return null;
+    public int appVersion;
+    public String fileName;
+    public String qEr;
+    public String qEs;
+    public WxaPkg qEt;
+    public String qEu;
+    public int qEv;
+    public int qEw;
   }
 }
 

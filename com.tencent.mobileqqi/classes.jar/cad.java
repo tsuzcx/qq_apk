@@ -1,23 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class cad
-  implements Runnable
+class cad
+  implements ActionSheet.OnButtonClickListener
 {
-  public cad(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  cad(cac paramcac, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131560601));
-    localActionSheet.a(2131561917, 3);
-    localActionSheet.d(2131561746);
-    localActionSheet.a(new cae(this, localActionSheet));
-    localActionSheet.show();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ChatActivityFacade.b(this.jdField_a_of_type_Cac.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Cac.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      if (!(this.jdField_a_of_type_Cac.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
+      {
+        this.jdField_a_of_type_Cac.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Cac.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        return;
+      }
+      ((ChatActivity)this.jdField_a_of_type_Cac.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Cac.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    }
   }
 }
 

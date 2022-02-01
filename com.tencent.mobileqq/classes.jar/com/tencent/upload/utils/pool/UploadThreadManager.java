@@ -13,22 +13,37 @@ public class UploadThreadManager
     int i = paramThreadPoolExecutor.getActiveCount();
     int j = paramThreadPoolExecutor.getMaximumPoolSize();
     int k = paramThreadPoolExecutor.getPoolSize();
-    paramThreadPoolExecutor = new StringBuilder(" Thread pool " + paramString);
-    paramThreadPoolExecutor.append(" activeNum: " + i).append(" maxNum: " + j).append(" curNum: " + k);
+    paramThreadPoolExecutor = new StringBuilder();
+    paramThreadPoolExecutor.append(" Thread pool ");
+    paramThreadPoolExecutor.append(paramString);
+    paramThreadPoolExecutor = new StringBuilder(paramThreadPoolExecutor.toString());
+    paramString = new StringBuilder();
+    paramString.append(" activeNum: ");
+    paramString.append(i);
+    paramThreadPoolExecutor.append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(" maxNum: ");
+    paramString.append(j);
+    paramThreadPoolExecutor.append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(" curNum: ");
+    paramString.append(k);
+    paramThreadPoolExecutor.append(paramString.toString());
     return paramThreadPoolExecutor.toString();
   }
   
   public static UploadThreadManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new UploadThreadManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new UploadThreadManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public ThreadPool getDataThreadPool()
@@ -45,12 +60,15 @@ public class UploadThreadManager
   {
     String str1 = getExecutorMessage(this.mWorkThreadPool.getExecutor(), "UploadThread");
     String str2 = getExecutorMessage(this.mDataThreadPool.getExecutor(), "DataThread");
-    return str1 + str2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append(str2);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.utils.pool.UploadThreadManager
  * JD-Core Version:    0.7.0.1
  */

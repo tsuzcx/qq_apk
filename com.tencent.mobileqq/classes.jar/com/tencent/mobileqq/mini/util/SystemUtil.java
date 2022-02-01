@@ -27,17 +27,14 @@ public class SystemUtil
     {
       bool1 = bool2;
       if (TextUtils.isEmpty(getSystemProperty("ro.miui.ui.version.name"))) {
-        if (TextUtils.isEmpty(getSystemProperty("ro.miui.internal.storage"))) {
-          break label50;
+        if (!TextUtils.isEmpty(getSystemProperty("ro.miui.internal.storage"))) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
         }
       }
     }
-    label50:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      isMiui = bool1;
-      return;
-    }
+    isMiui = bool1;
   }
   
   public static long getSDCardAvailableSize()
@@ -49,7 +46,11 @@ public class SystemUtil
       l = localStatFs.getAvailableBlocks() * l / 1024L;
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
     return 0L;
   }
   
@@ -62,7 +63,11 @@ public class SystemUtil
       l = localStatFs.getAvailableBlocks() * l / 1024L;
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label31:
+      break label31;
+    }
     return 0L;
   }
   
@@ -72,123 +77,134 @@ public class SystemUtil
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: new 83	java/io/BufferedReader
-    //   5: dup
-    //   6: new 85	java/io/InputStreamReader
+    //   2: invokestatic 85	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   5: astore_1
+    //   6: new 87	java/lang/StringBuilder
     //   9: dup
-    //   10: invokestatic 91	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   13: new 93	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   20: ldc 96
-    //   22: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_0
-    //   26: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokevirtual 107	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   35: invokevirtual 113	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   38: invokespecial 116	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   41: sipush 1024
-    //   44: invokespecial 119	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   47: astore_1
-    //   48: aload_1
-    //   49: astore_0
-    //   50: aload_1
-    //   51: invokevirtual 122	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   54: astore_2
-    //   55: aload_1
-    //   56: astore_0
-    //   57: aload_1
-    //   58: invokevirtual 125	java/io/BufferedReader:close	()V
-    //   61: aload_1
-    //   62: ifnull +7 -> 69
+    //   10: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   13: astore_3
+    //   14: aload_3
+    //   15: ldc 90
+    //   17: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: pop
+    //   21: aload_3
+    //   22: aload_0
+    //   23: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: new 96	java/io/BufferedReader
+    //   30: dup
+    //   31: new 98	java/io/InputStreamReader
+    //   34: dup
+    //   35: aload_1
+    //   36: aload_3
+    //   37: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokevirtual 105	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   43: invokevirtual 111	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   46: invokespecial 114	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   49: sipush 1024
+    //   52: invokespecial 117	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   55: astore_1
+    //   56: aload_1
+    //   57: astore_0
+    //   58: aload_1
+    //   59: invokevirtual 120	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   62: astore_2
+    //   63: aload_1
+    //   64: astore_0
     //   65: aload_1
-    //   66: invokevirtual 125	java/io/BufferedReader:close	()V
-    //   69: aload_2
-    //   70: areturn
-    //   71: astore_0
-    //   72: getstatic 25	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
-    //   75: iconst_2
-    //   76: ldc 127
-    //   78: aload_0
-    //   79: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   82: aload_2
-    //   83: areturn
-    //   84: astore_2
-    //   85: aconst_null
-    //   86: astore_1
-    //   87: aload_1
-    //   88: astore_0
-    //   89: getstatic 25	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
-    //   92: iconst_2
-    //   93: ldc 135
-    //   95: aload_2
-    //   96: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   99: aload_1
-    //   100: ifnull +7 -> 107
-    //   103: aload_1
-    //   104: invokevirtual 125	java/io/BufferedReader:close	()V
-    //   107: aconst_null
-    //   108: areturn
-    //   109: astore_0
-    //   110: getstatic 25	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
-    //   113: iconst_2
-    //   114: ldc 127
-    //   116: aload_0
-    //   117: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   120: goto -13 -> 107
+    //   66: invokevirtual 123	java/io/BufferedReader:close	()V
+    //   69: aload_1
+    //   70: invokevirtual 123	java/io/BufferedReader:close	()V
+    //   73: aload_2
+    //   74: areturn
+    //   75: astore_0
+    //   76: getstatic 125	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
+    //   79: iconst_2
+    //   80: ldc 127
+    //   82: aload_0
+    //   83: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   86: aload_2
+    //   87: areturn
+    //   88: astore_2
+    //   89: goto +12 -> 101
+    //   92: astore_0
+    //   93: aload_2
+    //   94: astore_1
+    //   95: goto +46 -> 141
+    //   98: astore_2
+    //   99: aconst_null
+    //   100: astore_1
+    //   101: aload_1
+    //   102: astore_0
+    //   103: getstatic 125	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
+    //   106: iconst_2
+    //   107: ldc 135
+    //   109: aload_2
+    //   110: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   113: aload_1
+    //   114: ifnull +20 -> 134
+    //   117: aload_1
+    //   118: invokevirtual 123	java/io/BufferedReader:close	()V
+    //   121: aconst_null
+    //   122: areturn
     //   123: astore_0
-    //   124: aload_2
-    //   125: astore_1
-    //   126: aload_1
-    //   127: ifnull +7 -> 134
-    //   130: aload_1
-    //   131: invokevirtual 125	java/io/BufferedReader:close	()V
-    //   134: aload_0
-    //   135: athrow
-    //   136: astore_1
-    //   137: getstatic 25	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
-    //   140: iconst_2
-    //   141: ldc 127
-    //   143: aload_1
-    //   144: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   147: goto -13 -> 134
-    //   150: astore_2
-    //   151: aload_0
+    //   124: getstatic 125	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
+    //   127: iconst_2
+    //   128: ldc 127
+    //   130: aload_0
+    //   131: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   134: aconst_null
+    //   135: areturn
+    //   136: astore_2
+    //   137: aload_0
+    //   138: astore_1
+    //   139: aload_2
+    //   140: astore_0
+    //   141: aload_1
+    //   142: ifnull +21 -> 163
+    //   145: aload_1
+    //   146: invokevirtual 123	java/io/BufferedReader:close	()V
+    //   149: goto +14 -> 163
     //   152: astore_1
-    //   153: aload_2
-    //   154: astore_0
-    //   155: goto -29 -> 126
-    //   158: astore_2
-    //   159: goto -72 -> 87
+    //   153: getstatic 125	com/tencent/mobileqq/mini/util/SystemUtil:TAG	Ljava/lang/String;
+    //   156: iconst_2
+    //   157: ldc 127
+    //   159: aload_1
+    //   160: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   163: aload_0
+    //   164: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	162	0	paramString	String
-    //   47	84	1	localObject1	Object
-    //   136	8	1	localIOException1	java.io.IOException
-    //   152	1	1	str1	String
-    //   1	82	2	str2	String
-    //   84	41	2	localIOException2	java.io.IOException
-    //   150	4	2	localObject2	Object
-    //   158	1	2	localIOException3	java.io.IOException
+    //   0	165	0	paramString	String
+    //   5	141	1	localObject1	Object
+    //   152	8	1	localIOException1	java.io.IOException
+    //   1	86	2	str	String
+    //   88	6	2	localIOException2	java.io.IOException
+    //   98	12	2	localIOException3	java.io.IOException
+    //   136	4	2	localObject2	Object
+    //   13	24	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   65	69	71	java/io/IOException
-    //   2	48	84	java/io/IOException
-    //   103	107	109	java/io/IOException
-    //   2	48	123	finally
-    //   130	134	136	java/io/IOException
-    //   50	55	150	finally
-    //   57	61	150	finally
-    //   89	99	150	finally
-    //   50	55	158	java/io/IOException
-    //   57	61	158	java/io/IOException
+    //   69	73	75	java/io/IOException
+    //   58	63	88	java/io/IOException
+    //   65	69	88	java/io/IOException
+    //   2	56	92	finally
+    //   2	56	98	java/io/IOException
+    //   117	121	123	java/io/IOException
+    //   58	63	136	finally
+    //   65	69	136	finally
+    //   103	113	136	finally
+    //   145	149	152	java/io/IOException
   }
   
   public static void init(Context paramContext)
   {
-    if (paramContext != null) {
-      APP_ROOT = paramContext.getApplicationContext().getFilesDir().getAbsolutePath() + "/";
+    if (paramContext != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getApplicationContext().getFilesDir().getAbsolutePath());
+      localStringBuilder.append("/");
+      APP_ROOT = localStringBuilder.toString();
     }
   }
   
@@ -233,7 +249,7 @@ public class SystemUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.SystemUtil
  * JD-Core Version:    0.7.0.1
  */

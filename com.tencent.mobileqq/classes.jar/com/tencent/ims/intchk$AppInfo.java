@@ -24,14 +24,15 @@ public final class intchk$AppInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40 }, new String[] { "uint32_platform_type", "bytes_package_name", "bytes_app_version", "uint32_intchk_module_version", "uint32_net_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, AppInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40 }, new String[] { "uint32_platform_type", "bytes_package_name", "bytes_app_version", "uint32_intchk_module_version", "uint32_net_type" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger }, AppInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.intchk.AppInfo
  * JD-Core Version:    0.7.0.1
  */

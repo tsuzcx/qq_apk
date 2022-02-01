@@ -7,16 +7,16 @@ import java.util.concurrent.Executor;
 public final class cd
   implements Executor
 {
-  private final Handler mHandler;
+  private final Handler dG;
   
   public cd(Looper paramLooper)
   {
-    this.mHandler = new Handler(paramLooper);
+    this.dG = new Handler(paramLooper);
   }
   
   public final void execute(Runnable paramRunnable)
   {
-    this.mHandler.post(paramRunnable);
+    this.dG.post(paramRunnable);
   }
 }
 

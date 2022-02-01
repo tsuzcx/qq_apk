@@ -2,22 +2,24 @@ package cooperation.smartdevice;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdin;
-import bety;
-import bhtb;
-import bkce;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -25,114 +27,150 @@ public class SmartDevicePluginDownloadActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, Observer
 {
-  private static String jdField_a_of_type_JavaLangString = "SmartDevicePluginDownloadActivity";
+  private static String e = "SmartDevicePluginDownloadActivity";
   protected Button a;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  bety jdField_a_of_type_Bety = null;
+  QQProgressDialog b = null;
+  LinearLayout c = null;
+  TextView d = null;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bety == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_Bety = new bety(this, super.getResources().getDimensionPixelSize(2131298914));
-      this.jdField_a_of_type_Bety.c(2131691993);
+      this.b = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131299920));
+      this.b.c(2131888809);
     }
-    this.jdField_a_of_type_Bety.show();
+    this.b.show();
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
+    QQProgressDialog localQQProgressDialog = this.b;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()))
     {
-      this.jdField_a_of_type_Bety.cancel();
-      this.jdField_a_of_type_Bety = null;
+      this.b.cancel();
+      this.b = null;
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     if (getIntent().getBooleanExtra("KEY_OPENAV_RECEIVE", false))
     {
       paramBundle = getIntent();
-      bkce.a().a(this, this.app, this.app.getAccount(), paramBundle, "com.tencent.device.activities.openav.OpenAVActivity", -1, null, SmartDevicePluginProxyActivity.class);
+      SmartDevicePluginLoader.a().a(this, this.app, this.app.getAccount(), paramBundle, "com.tencent.device.activities.openav.OpenAVActivity", -1, null, SmartDevicePluginProxyActivity.class);
       finish();
       return false;
     }
-    super.setContentView(2131559007);
-    super.setTitle(2131691431);
-    bkce.a().addObserver(this);
-    this.leftView.setText(2131690382);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365185));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365182));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370782));
-    if (!bdin.h(this.app.getApp())) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    super.setContentView(2131624698);
+    super.setTitle(2131888325);
+    SmartDevicePluginLoader.a().addObserver(this);
+    this.leftView.setText(2131887440);
+    this.a = ((Button)super.findViewById(2131431820));
+    this.a.setOnClickListener(this);
+    this.c = ((LinearLayout)super.findViewById(2131431817));
+    this.d = ((TextView)super.findViewById(2131438913));
+    if (!NetworkUtil.isWifiConnected(this.app.getApp())) {
+      this.c.setVisibility(0);
     }
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    bkce.a().deleteObserver(this);
+    SmartDevicePluginLoader.a().deleteObserver(this);
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    if (!bkce.a().a(this.app))
+    this.c.setVisibility(4);
+    if (!SmartDevicePluginLoader.a().a(this.app))
     {
       a();
-      bkce.a().a();
+      SmartDevicePluginLoader.a().b();
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("nickname", this.app.getCurrentNickname());
-    localIntent.putExtra("bitmap", this.app.a(this.app.getCurrentAccountUin(), (byte)2, false));
+    localIntent.putExtra("bitmap", this.app.getFaceBitmap(this.app.getCurrentAccountUin(), (byte)2, false));
     localIntent.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
-    paramView = "com.tencent.device.activities.DeviceSearchActivity";
-    localView = paramView;
+    String str1 = "com.tencent.device.activities.DeviceSearchActivity";
+    str2 = str1;
     try
     {
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4);
-      localView = paramView;
-      boolean bool = ((SharedPreferences)localObject).getBoolean("enable_public_device_" + this.app.getCurrentAccountUin(), true);
-      localView = paramView;
-      String str = ((SharedPreferences)localObject).getString("square_url_" + this.app.getCurrentAccountUin(), "");
+      localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4);
+      str2 = str1;
+      Object localObject2 = new StringBuilder();
+      str2 = str1;
+      ((StringBuilder)localObject2).append("enable_public_device_");
+      str2 = str1;
+      ((StringBuilder)localObject2).append(this.app.getCurrentAccountUin());
+      str2 = str1;
+      boolean bool = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), true);
+      str2 = str1;
+      localObject2 = new StringBuilder();
+      str2 = str1;
+      ((StringBuilder)localObject2).append("square_url_");
+      str2 = str1;
+      ((StringBuilder)localObject2).append(this.app.getCurrentAccountUin());
+      str2 = str1;
+      localObject2 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
       if (bool) {
-        paramView = "com.tencent.device.activities.DeviceSquareActivity";
+        str1 = "com.tencent.device.activities.DeviceSquareActivity";
       }
-      localView = paramView;
-      if (!TextUtils.isEmpty(str))
+      str2 = str1;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localView = paramView;
-        localIntent.putExtra("url", str);
+        str2 = str1;
+        localIntent.putExtra("url", (String)localObject2);
       }
-      localView = paramView;
-      bool = ((SharedPreferences)localObject).getBoolean("search_device_enable_https_" + this.app.getCurrentAccountUin(), false);
-      localObject = paramView;
-      localView = paramView;
-      if (bhtb.d())
+      str2 = str1;
+      localObject2 = new StringBuilder();
+      str2 = str1;
+      ((StringBuilder)localObject2).append("search_device_enable_https_");
+      str2 = str1;
+      ((StringBuilder)localObject2).append(this.app.getCurrentAccountUin());
+      str2 = str1;
+      bool = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
+      localObject1 = str1;
+      str2 = str1;
+      if (VersionUtils.d())
       {
-        localObject = paramView;
+        localObject1 = str1;
         if (bool)
         {
-          localView = paramView;
+          str2 = str1;
           localIntent.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
-          localObject = paramView;
+          localObject1 = str1;
         }
       }
     }
-    catch (Exception paramView)
+    catch (Exception localException)
     {
       for (;;)
       {
-        Object localObject = localView;
+        Object localObject1 = str2;
       }
     }
-    bkce.a().a(this, this.app, this.app.getAccount(), localIntent, (String)localObject, 0, null, SmartDevicePluginProxyActivity.class);
+    SmartDevicePluginLoader.a().a(this, this.app, this.app.getAccount(), localIntent, (String)localObject1, 0, null, SmartDevicePluginProxyActivity.class);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -140,21 +178,26 @@ public class SmartDevicePluginDownloadActivity
     if ((paramObject instanceof Integer))
     {
       paramObservable = (Integer)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "recv notify : plugin install finished with code " + paramObservable);
+      if (QLog.isColorLevel())
+      {
+        paramObject = e;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("recv notify : plugin install finished with code ");
+        localStringBuilder.append(paramObservable);
+        QLog.d(paramObject, 2, localStringBuilder.toString());
       }
       b();
       if (paramObservable.intValue() != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131691986);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.d.setText(2131888799);
+        this.c.setVisibility(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.SmartDevicePluginDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ class ArkVsync$1
   
   public void run()
   {
-    ArkVsync.ENV.logI("ArkApp.ArkVsync", "addFrameCallback, start vsync");
+    Logger.logI("ArkApp.ArkVsync", "addFrameCallback, start vsync");
     this.this$0.mImpl.start(this.val$_this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkVsync.1
  * JD-Core Version:    0.7.0.1
  */

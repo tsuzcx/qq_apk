@@ -14,11 +14,13 @@ public abstract class ProxyDrawable
   
   public ProxyDrawable(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {
-      throw new IllegalArgumentException("proxy drawable can't be null!");
+    if (paramDrawable != null)
+    {
+      this.mCurrDrawable = paramDrawable;
+      this.mCurrDrawable.setCallback(this);
+      return;
     }
-    this.mCurrDrawable = paramDrawable;
-    this.mCurrDrawable.setCallback(this);
+    throw new IllegalArgumentException("proxy drawable can't be null!");
   }
   
   public int getChangingConfigurations()
@@ -78,8 +80,9 @@ public abstract class ProxyDrawable
   
   protected void onBoundsChange(Rect paramRect)
   {
-    if (this.mCurrDrawable != null) {
-      this.mCurrDrawable.setBounds(paramRect);
+    Drawable localDrawable = this.mCurrDrawable;
+    if (localDrawable != null) {
+      localDrawable.setBounds(paramRect);
     }
   }
   
@@ -105,8 +108,9 @@ public abstract class ProxyDrawable
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.mCurrDrawable != null) {
-      this.mCurrDrawable.setColorFilter(paramColorFilter);
+    Drawable localDrawable = this.mCurrDrawable;
+    if (localDrawable != null) {
+      localDrawable.setColorFilter(paramColorFilter);
     }
   }
   
@@ -122,7 +126,7 @@ public abstract class ProxyDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.ProxyDrawable
  * JD-Core Version:    0.7.0.1
  */

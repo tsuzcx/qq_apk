@@ -15,30 +15,30 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public final WebResourceResponse bG(String paramString)
+  public final String atp()
   {
-    AppMethodBeat.i(90943);
+    return "^luggage://bridge$";
+  }
+  
+  public final WebResourceResponse eI(String paramString)
+  {
+    AppMethodBeat.i(140556);
     try
     {
       paramString = new WebResourceResponse("application/javascript", "UTF-8", this.mContext.getAssets().open("LuggageBridge.js"));
-      AppMethodBeat.o(90943);
+      AppMethodBeat.o(140556);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(90943);
+      AppMethodBeat.o(140556);
     }
     return null;
-  }
-  
-  public final String xd()
-  {
-    return "^luggage://bridge$";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.webview.a.a
  * JD-Core Version:    0.7.0.1
  */

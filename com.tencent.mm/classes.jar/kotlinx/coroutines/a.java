@@ -1,248 +1,142 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.f.b.j;
-import a.l;
-import a.y;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.d.a.b;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlin.d.f.c;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
+import kotlin.p;
+import kotlinx.coroutines.internal.ag;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/AbstractContinuation;", "T", "Lkotlinx/coroutines/DispatchedTask;", "Lkotlin/coroutines/Continuation;", "delegate", "resumeMode", "", "(Lkotlin/coroutines/Continuation;I)V", "_decision", "Lkotlinx/atomicfu/AtomicInt;", "_state", "Lkotlinx/atomicfu/AtomicRef;", "", "getDelegate", "()Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "parentHandle", "Lkotlinx/coroutines/DisposableHandle;", "state", "getState$kotlinx_coroutines_core", "()Ljava/lang/Object;", "cancel", "cause", "", "cancelImpl", "completeStateUpdate", "", "expect", "Lkotlinx/coroutines/NotCompleted;", "update", "mode", "dispatchResume", "getContinuationCancellationCause", "parent", "Lkotlinx/coroutines/Job;", "getResult", "handleException", "exception", "initParentJobInternal", "initParentJobInternal$kotlinx_coroutines_core", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "loopOnState", "", "block", "makeHandler", "Lkotlinx/coroutines/CancelHandler;", "nameString", "", "resumeImpl", "proposedUpdate", "resumeWith", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "resumeWithExceptionMode", "resumeWithExceptionMode$kotlinx_coroutines_core", "stateString", "takeState", "toString", "tryResume", "trySuspend", "tryUpdateStateToFinal", "updateStateToFinal", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/AbstractCoroutine;", "T", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/Continuation;", "Lkotlinx/coroutines/CoroutineScope;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "initParentJob", "", "active", "(Lkotlin/coroutines/CoroutineContext;ZZ)V", "context", "getContext$annotations", "()V", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "coroutineContext", "getCoroutineContext", "isActive", "()Z", "afterResume", "", "state", "", "cancellationExceptionMessage", "", "handleOnCompletionException", "exception", "", "handleOnCompletionException$kotlinx_coroutines_core", "nameString", "nameString$kotlinx_coroutines_core", "onCancelled", "cause", "handled", "onCompleted", "value", "(Ljava/lang/Object;)V", "onCompletionInternal", "resumeWith", "result", "Lkotlin/Result;", "start", "R", "Lkotlinx/coroutines/CoroutineStart;", "receiver", "block", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/CoroutineStart;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a<T>
-  extends an<T>
-  implements c<T>
+  extends ci
+  implements d<T>, aq
 {
-  private static final AtomicIntegerFieldUpdater CHg = AtomicIntegerFieldUpdater.newUpdater(a.class, "CHf");
-  private static final AtomicReferenceFieldUpdater CHi = AtomicReferenceFieldUpdater.newUpdater(a.class, Object.class, "CHh");
-  public final c<T> BMP;
-  private volatile int CHf;
-  public volatile Object CHh;
-  public volatile ap CHj;
+  private final f aMa;
   
-  public a(c<? super T> paramc)
+  public a(f paramf, boolean paramBoolean)
   {
-    super(1);
-    this.BMP = paramc;
-    this.CHf = 0;
-    this.CHh = b.epq();
+    super(paramBoolean);
+    f((cb)paramf.get((f.c)cb.ajws));
+    this.aMa = paramf.plus((f)this);
   }
   
-  private final void Wf(int paramInt)
+  public final void M(Throwable paramThrowable)
   {
-    int j = 0;
+    an.b(this.aMa, paramThrowable);
+  }
+  
+  public final <R> void a(as paramas, R paramR, m<? super R, ? super d<? super T>, ? extends Object> paramm)
+  {
+    d locald = (d)this;
+    switch (as.a.$EnumSwitchMapping$0[paramas.ordinal()])
+    {
+    default: 
+      throw new p();
+    case 1: 
+      kotlinx.coroutines.c.a.b(paramm, paramR, locald);
+    }
     do
     {
-      i = j;
-      switch (this.CHf)
-      {
-      default: 
-        throw ((Throwable)new IllegalStateException("Already resumed".toString()));
-      }
-    } while (!CHg.compareAndSet(this, 0, 2));
-    int i = 1;
-    if (i != 0) {
       return;
-    }
-    am.a(this, paramInt);
-  }
-  
-  public static Throwable a(bc parambc)
-  {
-    j.q(parambc, "parent");
-    return (Throwable)parambc.epQ();
-  }
-  
-  private boolean a(bm parambm, Object paramObject)
-  {
-    j.q(parambm, "expect");
-    if (!(paramObject instanceof bm)) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
-    }
-    if (!CHi.compareAndSet(this, parambm, paramObject)) {
-      return false;
-    }
-    parambm = this.CHj;
-    if (parambm != null)
-    {
-      parambm.dispose();
-      this.CHj = ((ap)bl.CIC);
-    }
-    return true;
-  }
-  
-  private void b(bm parambm, Object paramObject, int paramInt)
-  {
-    Object localObject2 = null;
-    j.q(parambm, "expect");
-    if (!(paramObject instanceof q)) {}
-    for (Object localObject1 = null;; localObject1 = paramObject)
-    {
-      localObject1 = (q)localObject1;
-      if (((paramObject instanceof k)) && ((parambm instanceof g))) {}
+      s.u(paramm, "$this$startCoroutine");
+      s.u(locald, "completion");
+      paramas = b.au(b.a(paramm, paramR, locald));
+      paramR = ah.aiuX;
+      paramm = Result.Companion;
+      paramas.resumeWith(Result.constructor-impl(paramR));
+      return;
+      s.u(locald, "completion");
+      Object localObject;
       try
       {
-        g localg = (g)parambm;
-        paramObject = localObject2;
-        if (localObject1 != null) {
-          paramObject = ((q)localObject1).cause;
-        }
-        localg.v(paramObject);
-      }
-      catch (Throwable paramObject)
-      {
-        for (;;)
-        {
-          t((Throwable)new u("Exception in completion handler " + parambm + " for " + this, paramObject));
-        }
-      }
-      Wf(paramInt);
-      return;
-    }
-  }
-  
-  private final void t(Throwable paramThrowable)
-  {
-    z.a(eaV(), paramThrowable, null);
-  }
-  
-  final boolean a(bm parambm, Object paramObject, int paramInt)
-  {
-    if (!a(parambm, paramObject)) {
-      return false;
-    }
-    b(parambm, paramObject, paramInt);
-    return true;
-  }
-  
-  public final void dg(Object paramObject)
-  {
-    k(r.dY(paramObject), this.CHQ);
-  }
-  
-  public final Object epm()
-  {
-    return this.CHh;
-  }
-  
-  public final boolean epn()
-  {
-    do
-    {
-      switch (this.CHf)
-      {
-      case 1: 
-      default: 
-        throw ((Throwable)new IllegalStateException("Already suspended".toString()));
-      }
-    } while (!CHg.compareAndSet(this, 0, 1));
-    return true;
-    return false;
-  }
-  
-  protected String epo()
-  {
-    return af.ea(this);
-  }
-  
-  public final c<T> epp()
-  {
-    return this.BMP;
-  }
-  
-  public final void k(a.f.a.b<? super Throwable, y> paramb)
-  {
-    Object localObject3 = null;
-    j.q(paramb, "handler");
-    Object localObject1 = null;
-    Object localObject4 = this.CHh;
-    if ((localObject4 instanceof d))
-    {
-      if (localObject1 != null) {
-        break label176;
-      }
-      if ((paramb instanceof g)) {
-        localObject1 = (g)paramb;
-      }
-    }
-    label170:
-    label176:
-    for (Object localObject2 = localObject1;; localObject2 = localObject1)
-    {
-      if (CHi.compareAndSet(this, localObject4, localObject2))
-      {
-        do
-        {
-          return;
-          localObject1 = (g)new az(paramb);
-          break;
-          if ((localObject4 instanceof g)) {
-            throw ((Throwable)new IllegalStateException(("It's prohibited to register multiple handlers, tried to register " + paramb + ", already has " + localObject4).toString()));
+        paramas = locald.getContext();
+        localObject = ag.b(paramas, null);
+        if (paramm == null) {
+          try
+          {
+            throw new NullPointerException("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
           }
-        } while (!(localObject4 instanceof k));
-        if ((localObject4 instanceof q)) {
-          break label170;
+          finally
+          {
+            ag.c(paramas, localObject);
+          }
         }
+        paramR = ((m)kotlin.g.b.an.y(paramm, 2)).invoke(paramR, locald);
       }
-      for (localObject1 = null;; localObject1 = localObject4)
+      finally
       {
-        localObject2 = (q)localObject1;
-        localObject1 = localObject3;
-        if (localObject2 != null) {
-          localObject1 = ((q)localObject2).cause;
-        }
-        paramb.S(localObject1);
+        paramR = Result.Companion;
+        locald.resumeWith(Result.constructor-impl(ResultKt.createFailure(paramas)));
         return;
-        break;
       }
-    }
+      ag.c(paramas, localObject);
+    } while (paramR == kotlin.d.a.a.aiwj);
+    paramas = Result.Companion;
+    locald.resumeWith(Result.constructor-impl(paramR));
   }
   
-  protected final void k(Object paramObject, int paramInt)
+  protected void b(Throwable paramThrowable, boolean paramBoolean) {}
+  
+  public final f getContext()
   {
-    Object localObject;
-    do
-    {
-      localObject = this.CHh;
-      if (!(localObject instanceof bm)) {
-        break;
-      }
-    } while (!a((bm)localObject, paramObject, paramInt));
-    do
-    {
+    return this.aMa;
+  }
+  
+  public f getCoroutineContext()
+  {
+    return this.aMa;
+  }
+  
+  public boolean isActive()
+  {
+    return super.isActive();
+  }
+  
+  protected final void iu(Object paramObject)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  protected void iv(Object paramObject)
+  {
+    iw(paramObject);
+  }
+  
+  protected void kBs() {}
+  
+  protected final String kBt()
+  {
+    return s.X(getClass().getSimpleName(), " was cancelled");
+  }
+  
+  public String kBu()
+  {
+    String str = ak.b(this.aMa);
+    if (str == null) {
+      return super.kBu();
+    }
+    return "\"" + str + "\":" + super.kBu();
+  }
+  
+  public final void resumeWith(Object paramObject)
+  {
+    paramObject = iK(ai.e(paramObject, null));
+    if (paramObject == cj.ajwE) {
       return;
-      if (!(localObject instanceof k)) {
-        break;
-      }
-    } while (!(paramObject instanceof q));
-    t(((q)paramObject).cause);
-    return;
-    throw ((Throwable)new IllegalStateException("Already resumed, but proposed with update ".concat(String.valueOf(paramObject)).toString()));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append(epo()).append('{');
-    Object localObject = this.CHh;
-    if ((localObject instanceof bm)) {
-      localObject = "Active";
     }
-    for (;;)
-    {
-      return (String)localObject + "}@" + af.dZ(this);
-      if ((localObject instanceof k)) {
-        localObject = "Cancelled";
-      } else if ((localObject instanceof q)) {
-        localObject = "CompletedExceptionally";
-      } else {
-        localObject = "Completed";
-      }
-    }
+    iv(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a
  * JD-Core Version:    0.7.0.1
  */

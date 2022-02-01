@@ -26,8 +26,10 @@ public final class ej
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      throw new AssertionError();
+      label10:
+      break label10;
     }
+    throw new AssertionError();
   }
   
   private boolean a(Since paramSince)
@@ -82,17 +84,16 @@ public final class ej
     if (a(paramClass)) {
       return true;
     }
-    if (paramBoolean) {}
-    for (paramClass = this.f;; paramClass = this.g)
-    {
-      paramClass = paramClass.iterator();
-      do
-      {
-        if (!paramClass.hasNext()) {
-          break;
-        }
-      } while (!((dj)paramClass.next()).b());
-      return true;
+    if (paramBoolean) {
+      paramClass = this.f;
+    } else {
+      paramClass = this.g;
+    }
+    paramClass = paramClass.iterator();
+    while (paramClass.hasNext()) {
+      if (((dj)paramClass.next()).b()) {
+        return true;
+      }
     }
     return false;
   }

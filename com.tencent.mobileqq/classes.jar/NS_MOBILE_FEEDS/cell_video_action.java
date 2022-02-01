@@ -9,7 +9,7 @@ public final class cell_video_action
 {
   static s_button cache_rooftop_button = new s_button();
   public String relation_desc = "";
-  public s_button rooftop_button;
+  public s_button rooftop_button = null;
   
   public cell_video_action() {}
   
@@ -27,17 +27,19 @@ public final class cell_video_action
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.relation_desc != null) {
-      paramJceOutputStream.write(this.relation_desc, 0);
+    Object localObject = this.relation_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.rooftop_button != null) {
-      paramJceOutputStream.write(this.rooftop_button, 1);
+    localObject = this.rooftop_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_video_action
  * JD-Core Version:    0.7.0.1
  */

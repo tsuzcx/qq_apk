@@ -1,49 +1,31 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bg;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
-import java.io.File;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.crd;
+import com.tencent.mm.protocal.protobuf.cre;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class g
+  extends z<cre>
 {
-  private static String ond;
-  private static c<bg> one;
-  
-  static
+  public g(String paramString)
   {
-    AppMethodBeat.i(42285);
-    ond = null;
-    one = new c() {};
-    AppMethodBeat.o(42285);
-  }
-  
-  public static void aoR()
-  {
-    AppMethodBeat.i(42281);
-    ab.i("MicroMsg.LuckMoneyEffectResourceMgr", "unInit");
-    a.ymk.d(one);
-    AppMethodBeat.o(42281);
-  }
-  
-  public static void bNi()
-  {
-    AppMethodBeat.i(42282);
-    File localFile = new File(b.eQz + "wallet/luckyMoneyEffect/");
-    ab.d("MicroMsg.LuckMoneyEffectResourceMgr", "no media");
-    if ((localFile.isDirectory()) && (localFile.exists())) {
-      ab.i("MicroMsg.LuckMoneyEffectResourceMgr", "delete unused files: %s", new Object[] { Boolean.valueOf(e.O(localFile.getPath(), true)) });
-    }
-    AppMethodBeat.o(42282);
+    AppMethodBeat.i(163540);
+    crd localcrd = new crd();
+    c.a locala = new c.a();
+    locala.otE = localcrd;
+    locala.otF = new cre();
+    locala.funcId = 3858;
+    locala.uri = "/cgi-bin/micromsg-bin/getredpacketpreview";
+    localcrd.url = paramString;
+    c(locala.bEF());
+    AppMethodBeat.o(163540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.g
  * JD-Core Version:    0.7.0.1
  */

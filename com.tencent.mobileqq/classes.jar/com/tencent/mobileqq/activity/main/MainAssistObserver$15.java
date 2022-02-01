@@ -1,23 +1,16 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiez;
-import axap;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qqexpand.network.ExpandObserver;
 
-public class MainAssistObserver$15
-  implements Runnable
+class MainAssistObserver$15
+  extends ExpandObserver
 {
-  public MainAssistObserver$15(aiez paramaiez, QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade) {}
+  MainAssistObserver$15(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  protected void a(int paramInt)
   {
-    int i = axap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "updateTab = " + i);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new MainAssistObserver.15.1(this, i));
+    this.a.g();
+    this.a.h();
   }
 }
 

@@ -1,156 +1,238 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.au.b;
 import com.tencent.mm.au.b.a;
 import com.tencent.mm.modelsimple.BindWordingContent;
+import com.tencent.mm.plugin.account.bind.a.d;
+import com.tencent.mm.plugin.account.bind.a.e;
+import com.tencent.mm.plugin.account.bind.a.f;
+import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.ui.i;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMobileUI
   extends MMWizardActivity
 {
   private String countryCode = null;
-  private String czF;
-  private String fHT = null;
-  private EditText gtH;
-  private LinearLayout gtI;
-  private TextView gtK;
-  private TextView gtL;
-  private String gtM = null;
-  private i gtr;
-  private BindWordingContent gub;
-  private int guc;
-  private TextView gui;
-  private Button guj;
-  private TextView guk;
-  private TextView gul;
-  private CheckBox gum;
-  private CheckBox gun;
-  private LinearLayout guo;
-  private ImageView gup;
-  private boolean guq;
+  private String hRk;
+  private TextView mll;
+  private String oLl = null;
+  private i pOH;
+  private EditText pOW;
+  private LinearLayout pOX;
+  private TextView pOZ;
+  private Button pPB;
+  private TextView pPC;
+  private TextView pPD;
+  private CheckBox pPE;
+  private CheckBox pPF;
+  private LinearLayout pPG;
+  private ImageView pPH;
+  private boolean pPI;
+  private TextView pPa;
+  private String pPb = null;
+  private BindWordingContent pPu;
+  private int pPv;
   
   public int getLayoutId()
   {
-    return 2130968841;
+    return a.f.bind_mcontact_input_phonenum;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(13519);
-    this.gtH = ((EditText)findViewById(2131821768));
-    this.gtI = ((LinearLayout)findViewById(2131821765));
-    this.gtK = ((TextView)findViewById(2131821767));
-    this.gtL = ((TextView)findViewById(2131821766));
-    this.gui = ((TextView)findViewById(2131821764));
-    this.guj = ((Button)findViewById(2131821769));
-    this.guk = ((TextView)findViewById(2131821775));
-    this.gui.setText(getString(2131297588));
-    this.gul = ((TextView)findViewById(2131821773));
-    this.guo = ((LinearLayout)findViewById(2131821770));
-    this.gun = ((CheckBox)findViewById(2131821772));
-    this.gum = ((CheckBox)findViewById(2131821771));
-    this.gup = ((ImageView)findViewById(2131821763));
-    if (this.gub != null)
+    AppMethodBeat.i(109946);
+    this.pOW = ((EditText)findViewById(a.e.bind_mcontact_mobile));
+    this.pOX = ((LinearLayout)findViewById(a.e.country_code_ll));
+    this.pOZ = ((TextView)findViewById(a.e.country_name));
+    this.pPa = ((TextView)findViewById(a.e.country_code));
+    this.mll = ((TextView)findViewById(a.e.bind_mcontact_title_tv));
+    this.pPB = ((Button)findViewById(a.e.bind_m_contact_bind_mobile));
+    this.pPC = ((TextView)findViewById(a.e.bind_mcontact_skip_bind));
+    this.mll.setText(getString(a.i.bind_mcontact_security_bander_hint));
+    this.pPD = ((TextView)findViewById(a.e.bind_m_contact_bind_mobile_hint));
+    this.pPG = ((LinearLayout)findViewById(a.e.bind_mcontact_sync_contact_cb_ll));
+    this.pPF = ((CheckBox)findViewById(a.e.bind_mcontact_agree_cb_recom_friend));
+    this.pPE = ((CheckBox)findViewById(a.e.bind_mcontact_agree_cb));
+    this.pPH = ((ImageView)findViewById(a.e.bind_mcontact_icon));
+    if (this.pPu != null)
     {
-      if ((this.gub.title != null) && (this.gub.title.length() > 0)) {
-        this.gui.setText(this.gub.title);
+      if ((this.pPu.title != null) && (this.pPu.title.length() > 0)) {
+        this.mll.setText(this.pPu.title);
       }
-      if ((this.gub.content != null) && (this.gub.content.length() > 0)) {
-        this.gul.setText(this.gub.content);
+      if ((this.pPu.content != null) && (this.pPu.content.length() > 0)) {
+        this.pPD.setText(this.pPu.content);
       }
     }
-    switch (this.gub.bOw.intValue())
+    switch (this.pPu.type.intValue())
     {
     default: 
-      switch (this.guc)
+      switch (this.pPv)
       {
       default: 
-        label320:
-        if ((bo.isNullOrNil(this.fHT)) && (bo.isNullOrNil(this.countryCode))) {}
+        label332:
+        if ((Util.isNullOrNil(this.oLl)) && (Util.isNullOrNil(this.countryCode))) {}
         break;
       }
       break;
     }
     for (;;)
     {
-      if ((this.fHT != null) && (!this.fHT.equals(""))) {
-        this.gtK.setText(this.fHT);
+      if ((this.oLl != null) && (!this.oLl.equals(""))) {
+        this.pOZ.setText(this.oLl);
       }
       if ((this.countryCode != null) && (!this.countryCode.equals(""))) {
-        this.gtL.setText("+" + this.countryCode);
+        this.pPa.setText("+" + this.countryCode);
       }
-      if ((this.gtM != null) && (!this.gtM.equals(""))) {
-        this.gtH.setText(this.gtM);
+      if ((this.pPb != null) && (!this.pPb.equals(""))) {
+        this.pOW.setText(this.pPb);
       }
-      this.guj.setOnClickListener(new BindMobileUI.2(this));
-      this.guk.setOnClickListener(new BindMobileUI.3(this));
-      if (this.guq)
+      this.pPB.setOnClickListener(new View.OnClickListener()
       {
-        setMMTitle(2131297556);
-        this.gup.setVisibility(8);
-        this.gui.setText(2131297577);
-        this.guo.setVisibility(8);
-        this.gun.setVisibility(8);
-        this.gun.setChecked(false);
-        this.gum.setVisibility(0);
-        this.gum.setChecked(false);
-        this.gul.setVisibility(8);
-        this.gul.setText(getString(2131297558));
-        this.guk.setVisibility(8);
-        this.guj.setText(2131297556);
-        setBackBtn(new BindMobileUI.4(this));
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109937);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if ((BindMobileUI.a(BindMobileUI.this).getText().toString() == null) || (BindMobileUI.a(BindMobileUI.this).getText().toString().length() == 0))
+          {
+            Toast.makeText(BindMobileUI.this, BindMobileUI.this.getString(a.i.bind_mcontact_err_format), 0).show();
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(109937);
+            return;
+          }
+          BindMobileUI.b(BindMobileUI.this, BindMobileUI.b(BindMobileUI.this).getText().toString().trim() + Util.trimPhoneNumber(BindMobileUI.a(BindMobileUI.this).getText().toString()));
+          Log.i("MicroMsg.BindMContactUI", "do next, send sms to self");
+          BindMobileUI.c(BindMobileUI.this, BindMobileUI.c(BindMobileUI.this));
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(109937);
+        }
+      });
+      this.pPC.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109938);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          BindMobileUI.d(BindMobileUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(109938);
+        }
+      });
+      if (this.pPI)
+      {
+        setMMTitle(a.i.bind_mcontact_bind_for_chatroom_title);
+        this.pPH.setVisibility(8);
+        this.mll.setText(a.i.bind_mcontact_for_chatroom_title);
+        this.pPG.setVisibility(8);
+        this.pPF.setVisibility(8);
+        this.pPF.setChecked(false);
+        this.pPE.setVisibility(0);
+        this.pPE.setChecked(false);
+        this.pPD.setVisibility(8);
+        this.pPD.setText(getString(a.i.bind_mcontact_bind_mobile_warnning_hint));
+        this.pPC.setVisibility(8);
+        this.pPB.setText(a.i.bind_mcontact_bind_for_chatroom_title);
+        setBackBtn(new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(109939);
+            BindMobileUI.e(BindMobileUI.this);
+            AppMethodBeat.o(109939);
+            return true;
+          }
+        });
       }
-      this.gtI.setOnClickListener(new BindMobileUI.5(this));
-      this.gtI.setOnClickListener(new BindMobileUI.6(this));
-      AppMethodBeat.o(13519);
+      this.pOX.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109940);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("country_name", BindMobileUI.f(BindMobileUI.this));
+          paramAnonymousView.putExtra("couttry_code", BindMobileUI.g(BindMobileUI.this));
+          com.tencent.mm.plugin.account.sdk.a.pFn.b(paramAnonymousView, BindMobileUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(109940);
+        }
+      });
+      this.pOX.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109941);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("country_name", BindMobileUI.f(BindMobileUI.this));
+          paramAnonymousView.putExtra("couttry_code", BindMobileUI.g(BindMobileUI.this));
+          com.tencent.mm.plugin.account.sdk.a.pFn.b(paramAnonymousView, BindMobileUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(109941);
+        }
+      });
+      AppMethodBeat.o(109946);
       return;
-      this.gup.setImageResource(2130837902);
+      this.pPH.setImageResource(a.d.bind_mcontact_protect);
       break;
-      this.gup.setImageResource(2130837905);
+      this.pPH.setImageResource(a.d.bind_mcontact_warning);
       break;
-      this.gup.setImageResource(2130837903);
+      this.pPH.setImageResource(a.d.bind_mcontact_reco_friends);
       break;
-      this.guo.setVisibility(0);
-      this.gun.setVisibility(0);
-      this.gul.setVisibility(8);
-      break label320;
-      this.guo.setVisibility(8);
-      this.gun.setVisibility(8);
-      this.gul.setVisibility(0);
-      break label320;
+      this.pPG.setVisibility(0);
+      this.pPF.setVisibility(0);
+      this.pPD.setVisibility(8);
+      break label332;
+      this.pPG.setVisibility(8);
+      this.pPF.setVisibility(8);
+      this.pPD.setVisibility(0);
+      break label332;
       Object localObject = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
-      ab.d("MicroMsg.BindMContactUI", "tm.getSimCountryIso()".concat(String.valueOf(localObject)));
-      if (bo.isNullOrNil((String)localObject))
+      Log.d("MicroMsg.BindMContactUI", "tm.getSimCountryIso()".concat(String.valueOf(localObject)));
+      if (Util.isNullOrNil((String)localObject))
       {
-        ab.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
+        Log.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
       }
       else
       {
-        localObject = b.k(this, (String)localObject, getString(2131298871));
+        localObject = com.tencent.mm.au.b.bH((String)localObject, getString(a.i.country_code));
         if (localObject == null)
         {
-          ab.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
+          Log.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
         }
         else
         {
-          this.fHT = ((b.a)localObject).fHT;
-          this.countryCode = ((b.a)localObject).fHS;
+          this.oLl = ((b.a)localObject).oLl;
+          this.countryCode = ((b.a)localObject).oLk;
         }
       }
     }
@@ -158,62 +240,62 @@ public class BindMobileUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(13520);
+    AppMethodBeat.i(109947);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     switch (paramInt2)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(13520);
+      AppMethodBeat.o(109947);
       return;
-      this.fHT = bo.bf(paramIntent.getStringExtra("country_name"), "");
-      this.countryCode = bo.bf(paramIntent.getStringExtra("couttry_code"), "");
-      if (!this.fHT.equals("")) {
-        this.gtK.setText(this.fHT);
+      this.oLl = Util.nullAs(paramIntent.getStringExtra("country_name"), "");
+      this.countryCode = Util.nullAs(paramIntent.getStringExtra("couttry_code"), "");
+      if (!this.oLl.equals("")) {
+        this.pOZ.setText(this.oLl);
       }
       if (!this.countryCode.equals("")) {
-        this.gtL.setText("+" + this.countryCode);
+        this.pPa.setText("+" + this.countryCode);
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(13516);
+    AppMethodBeat.i(109943);
     super.onCreate(paramBundle);
-    setMMTitle(2131297592);
-    this.fHT = bo.bf(getIntent().getStringExtra("country_name"), "");
-    this.countryCode = bo.bf(getIntent().getStringExtra("couttry_code"), "");
-    this.gtM = bo.bf(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
-    this.gub = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
-    this.guc = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
-    this.guq = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
+    setMMTitle(a.i.bind_mcontact_security_title);
+    this.oLl = Util.nullAs(getIntent().getStringExtra("country_name"), "");
+    this.countryCode = Util.nullAs(getIntent().getStringExtra("couttry_code"), "");
+    this.pPb = Util.nullAs(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
+    this.pPu = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
+    this.pPv = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
+    this.pPI = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
     initView();
-    AppMethodBeat.o(13516);
+    AppMethodBeat.o(109943);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(13517);
+    AppMethodBeat.i(109944);
     super.onDestroy();
-    if (this.gtr != null) {
-      this.gtr.recycle();
+    if (this.pOH != null) {
+      this.pOH.recycle();
     }
-    AppMethodBeat.o(13517);
+    AppMethodBeat.o(109944);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(13518);
+    AppMethodBeat.i(109945);
     if (paramInt == 4)
     {
-      Oi(1);
-      AppMethodBeat.o(13518);
+      aAp(1);
+      AppMethodBeat.o(109945);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(13518);
+    AppMethodBeat.o(109945);
     return bool;
   }
   

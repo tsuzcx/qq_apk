@@ -67,12 +67,17 @@ public abstract class BasicTexture
     synchronized (sAllTextures)
     {
       Iterator localIterator = sAllTextures.keySet().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         BasicTexture localBasicTexture = (BasicTexture)localIterator.next();
         localBasicTexture.mState = 0;
         localBasicTexture.setAssociatedCanvas(null);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -81,9 +86,14 @@ public abstract class BasicTexture
     synchronized (sAllTextures)
     {
       Iterator localIterator = sAllTextures.keySet().iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((BasicTexture)localIterator.next()).yield();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -141,49 +151,32 @@ public abstract class BasicTexture
   
   public boolean isExistTextureid(int paramInt)
   {
-    for (;;)
+    boolean bool1;
+    boolean bool2;
+    int i;
+    label128:
+    synchronized (sAllTextures)
     {
-      boolean bool1;
-      int i;
-      synchronized (sAllTextures)
+      Iterator localIterator = sAllTextures.entrySet().iterator();
+      bool1 = false;
+      BasicTexture localBasicTexture;
+      do
       {
-        Iterator localIterator = sAllTextures.entrySet().iterator();
-        bool1 = false;
-        if (!localIterator.hasNext()) {
-          break label110;
-        }
-        BasicTexture localBasicTexture = (BasicTexture)((Map.Entry)localIterator.next()).getKey();
-        if ((localBasicTexture == null) || (localBasicTexture.mId == null)) {
-          break label130;
-        }
-        i = 0;
-        if (i < localBasicTexture.mId.length)
-        {
-          if (paramInt != localBasicTexture.mId[i]) {
-            break label123;
-          }
-          bool1 = true;
-          break label113;
-          return bool1;
-        }
-      }
-      break label113;
-      label110:
-      continue;
-      label113:
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        continue;
-        label123:
-        i += 1;
-        continue;
-        label130:
         bool2 = bool1;
-      }
-      else
-      {
-        bool1 = bool2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localBasicTexture = (BasicTexture)((Map.Entry)localIterator.next()).getKey();
+      } while ((localBasicTexture == null) || (localBasicTexture.mId == null));
+      i = 0;
+      bool2 = bool1;
+      if (i < localBasicTexture.mId.length) {
+        if (paramInt == localBasicTexture.mId[i])
+        {
+          bool2 = true;
+          break label128;
+          return bool2;
+        }
       }
     }
   }
@@ -249,7 +242,7 @@ public abstract class BasicTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.texture.BasicTexture
  * JD-Core Version:    0.7.0.1
  */

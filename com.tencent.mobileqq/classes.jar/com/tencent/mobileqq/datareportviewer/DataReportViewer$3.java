@@ -1,28 +1,19 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import android.widget.TextView;
-import aphl;
-import aphn;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class DataReportViewer$3
-  implements Runnable
+  implements View.OnClickListener
 {
-  DataReportViewer$3(DataReportViewer paramDataReportViewer) {}
+  DataReportViewer$3(DataReportViewer paramDataReportViewer, WindowManager paramWindowManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.this$0.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.this$0.jdField_a_of_type_JavaUtilArrayList.size()));
-      this.this$0.jdField_a_of_type_Aphl.notifyDataSetChanged();
-      this.this$0.a();
-    }
-    while (!aphn.a) {
-      return;
-    }
-    aphn.a().b();
+    this.a.removeViewImmediate(this.b.m);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

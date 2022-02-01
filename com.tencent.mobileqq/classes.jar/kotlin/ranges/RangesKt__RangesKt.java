@@ -12,9 +12,14 @@ class RangesKt__RangesKt
   public static final void checkStepIsPositive(boolean paramBoolean, @NotNull Number paramNumber)
   {
     Intrinsics.checkParameterIsNotNull(paramNumber, "step");
-    if (!paramBoolean) {
-      throw ((Throwable)new IllegalArgumentException("Step must be positive, was: " + paramNumber + '.'));
+    if (paramBoolean) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Step must be positive, was: ");
+    localStringBuilder.append(paramNumber);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @SinceKotlin(version="1.3")
@@ -49,7 +54,7 @@ class RangesKt__RangesKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.RangesKt__RangesKt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,361 +1,224 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.h;
-import com.tencent.mm.ai.h.a;
-import com.tencent.mm.ai.h.b;
-import com.tencent.mm.ai.i;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.util.Iterator;
+import com.tencent.mm.plugin.sns.c.d;
+import com.tencent.mm.plugin.sns.c.l;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.ari;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class n
-  implements h.a, h.b, SensorController.a
 {
-  static SensorController mub;
-  private List<n.a> callbacks;
-  private int cve;
-  long lastShakeTime;
-  public h mtU;
-  private boolean mtV;
-  private boolean mtW;
-  private boolean mtX;
-  bf mtY;
-  boolean mtZ;
-  private int mua;
-  public String path;
-  
-  public n()
+  public static void a(a parama, g paramg)
   {
-    AppMethodBeat.i(102702);
-    this.mtV = true;
-    this.mtX = false;
-    this.lastShakeTime = -1L;
-    this.callbacks = new LinkedList();
-    this.mtU = ((i)com.tencent.mm.kernel.g.E(i.class)).BP();
-    Boolean localBoolean = (Boolean)com.tencent.mm.kernel.g.RL().Ru().get(26, Boolean.FALSE);
-    this.mtW = localBoolean.booleanValue();
-    boolean bool;
-    if (!localBoolean.booleanValue())
+    AppMethodBeat.i(103438);
+    if ((paramg.field_favProto.vEn == null) || (paramg.field_favProto.vEn.isEmpty()))
     {
-      bool = true;
-      this.mtV = bool;
-      if (this.mtU == null) {
-        break label185;
-      }
-      this.mtU.a(this);
-      this.mtU.a(this);
-      this.mtU.bx(this.mtV);
-    }
-    for (;;)
-    {
-      if (mub == null) {
-        mub = new SensorController(ah.getContext());
-      }
-      if (this.mtY == null) {
-        this.mtY = new bf(ah.getContext());
-      }
-      AppMethodBeat.o(102702);
-      return;
-      bool = false;
-      break;
-      label185:
-      ab.w("MicroMsg.FavVoiceLogic", "get voice player fail, it is null");
-    }
-  }
-  
-  private void bwC()
-  {
-    AppMethodBeat.i(102714);
-    if (mub != null) {
-      mub.dtJ();
-    }
-    if (this.mtY != null) {
-      this.mtY.dtK();
-    }
-    AppMethodBeat.o(102714);
-  }
-  
-  public final void Es()
-  {
-    AppMethodBeat.i(102713);
-    ab.d("MicroMsg.FavVoiceLogic", "on completion, do stop play");
-    stopPlay();
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      ((n.a)localIterator.next()).onFinish();
-    }
-    AppMethodBeat.o(102713);
-  }
-  
-  public final void a(n.a parama)
-  {
-    AppMethodBeat.i(102703);
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      if (parama == (n.a)localIterator.next())
-      {
-        AppMethodBeat.o(102703);
-        return;
-      }
-    }
-    this.callbacks.add(parama);
-    AppMethodBeat.o(102703);
-  }
-  
-  public final boolean ad(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(102707);
-    if (this.mtU == null)
-    {
-      ab.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(102707);
-      return false;
-    }
-    this.mtU.stop();
-    Object localObject = this.callbacks.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((n.a)((Iterator)localObject).next()).bK(paramString, paramInt2);
-    }
-    if ((mub != null) && (!mub.yqq))
-    {
-      mub.a(this);
-      localObject = new n.2(this);
-      if (!this.mtY.ai((Runnable)localObject)) {
-        break label202;
-      }
-    }
-    label202:
-    for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
-    {
-      this.path = paramString;
-      this.cve = paramInt1;
-      if ((bo.isNullOrNil(paramString)) || (!this.mtU.a(paramString, this.mtV, paramInt1, paramInt2))) {
-        break;
-      }
-      aj.apk("keep_app_silent");
-      com.tencent.mm.compatible.b.g.KC().d(this.mtV, false, false);
-      AppMethodBeat.o(102707);
-      return true;
-    }
-    AppMethodBeat.o(102707);
-    return false;
-  }
-  
-  public final boolean bwA()
-  {
-    AppMethodBeat.i(102709);
-    ab.i("MicroMsg.FavVoiceLogic", "resume play");
-    aj.apk("keep_app_silent");
-    if (this.mtU == null)
-    {
-      ab.w("MicroMsg.FavVoiceLogic", "resum play error, player is null");
-      AppMethodBeat.o(102709);
-      return false;
-    }
-    boolean bool = this.mtU.Eo();
-    AppMethodBeat.o(102709);
-    return bool;
-  }
-  
-  public final boolean bwB()
-  {
-    AppMethodBeat.i(102710);
-    ab.i("MicroMsg.FavVoiceLogic", "pause play");
-    aj.apl("keep_app_silent");
-    if (this.mtU == null)
-    {
-      ab.w("MicroMsg.FavVoiceLogic", "pause play error, player is null");
-      AppMethodBeat.o(102710);
-      return false;
-    }
-    boolean bool = this.mtU.pause();
-    AppMethodBeat.o(102710);
-    return bool;
-  }
-  
-  public final boolean bwz()
-  {
-    AppMethodBeat.i(102708);
-    if (this.mtU == null)
-    {
-      ab.w("MicroMsg.FavVoiceLogic", "check is play, but player is null");
-      AppMethodBeat.o(102708);
-      return false;
-    }
-    boolean bool = this.mtU.isPlaying();
-    AppMethodBeat.o(102708);
-    return bool;
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(102704);
-    pause();
-    bwC();
-    mub = null;
-    this.callbacks.clear();
-    AppMethodBeat.o(102704);
-  }
-  
-  public final void hv(boolean paramBoolean)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(102715);
-    if (bo.isNullOrNil(this.path))
-    {
-      AppMethodBeat.o(102715);
+      AppMethodBeat.o(103438);
       return;
     }
-    if (this.mtX)
+    Object localObject = ((arf)paramg.field_favProto.vEn.getFirst()).ZzE;
+    if (localObject == null)
     {
-      if (!paramBoolean) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        this.mtX = paramBoolean;
-        AppMethodBeat.o(102715);
-        return;
-      }
-    }
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bo.av(this.lastShakeTime) > 400L))
-    {
-      this.mtX = true;
-      AppMethodBeat.o(102715);
+      AppMethodBeat.o(103438);
       return;
     }
-    this.mtX = false;
-    if ((this.mtU != null) && (this.mtU.Ep()))
+    com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+    localn.s("20source_publishid", ((ari)localObject).nTB + ",");
+    localn.s("21uxinfo", ((ari)localObject).nTA + ",");
+    localn.s("22clienttime", Util.nowMilliSecond() + ",");
+    localn.s("23video_statu", ",");
+    localObject = new StringBuilder();
+    if (paramg.field_type == 16) {}
+    for (int i = 1;; i = 2)
     {
-      AppMethodBeat.o(102715);
+      localn.s("24source_type", i + ",");
+      localn.s("25scene", "5,");
+      localn.s("26action_type", a.a(parama) + ",");
+      localn.s("27scene_chatname", ",");
+      localn.s("28scene_username", paramg.field_fromUser + ",");
+      localn.s("29curr_publishid", ",");
+      localn.s("30curr_msgid", "0,");
+      localn.s("31curr_favid", paramg.field_id + ",");
+      localn.s("32elapsed_time", "0,");
+      localn.s("33load_time", "0,");
+      localn.s("34is_load_complete", "0,");
+      localn.s("35destination", "0,");
+      localn.s("36chatroom_membercount", "0,");
+      Log.i("MicroMsg.FavVideoStatistic", "report snsad_video_action: " + localn.aIF());
+      ((d)com.tencent.mm.kernel.h.ax(d.class)).b(12990, new Object[] { localn });
+      AppMethodBeat.o(103438);
       return;
     }
-    if (this.mtW)
-    {
-      if (this.mtU != null) {
-        this.mtU.bx(false);
-      }
-      com.tencent.mm.compatible.b.g.KC().d(false, false, false);
-      this.mtV = false;
-      AppMethodBeat.o(102715);
-      return;
-    }
-    if ((this.mtU != null) && (!this.mtU.isPlaying()) && (!this.mtZ))
-    {
-      this.mtU.bx(true);
-      this.mtV = true;
-      AppMethodBeat.o(102715);
-      return;
-    }
-    if (com.tencent.mm.compatible.b.g.KC().KH())
-    {
-      ab.d("MicroMsg.FavVoiceLogic", "onSensorEvent, connecting bluetooth, omit sensor event");
-      AppMethodBeat.o(102715);
-      return;
-    }
-    if (this.mtU != null) {
-      this.mtU.bx(paramBoolean);
-    }
-    this.mtV = paramBoolean;
-    if ((this.mtZ) && (!paramBoolean))
-    {
-      ad(this.path, this.cve, this.mua);
-      AppMethodBeat.o(102715);
-      return;
-    }
-    if (!paramBoolean) {
-      startPlay(this.path, this.cve);
-    }
-    AppMethodBeat.o(102715);
   }
   
-  public final void onError()
+  public static void a(c paramc, g paramg, d paramd, int paramInt)
   {
-    AppMethodBeat.i(102712);
-    ab.d("MicroMsg.FavVoiceLogic", "on error, do stop play");
-    stopPlay();
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      ((n.a)localIterator.next()).onFinish();
-    }
-    AppMethodBeat.o(102712);
-  }
-  
-  public final void pause()
-  {
-    AppMethodBeat.i(102705);
-    if (this.mtU == null)
+    AppMethodBeat.i(103439);
+    if ((paramg.field_favProto.vEn == null) || (paramg.field_favProto.vEn.isEmpty()))
     {
-      ab.w("MicroMsg.FavVoiceLogic", "do pause, but player is null");
-      AppMethodBeat.o(102705);
+      AppMethodBeat.o(103439);
       return;
     }
-    if (this.mtU.isPlaying()) {
-      bwB();
+    ari localari = ((arf)paramg.field_favProto.vEn.getFirst()).ZzE;
+    if (localari == null)
+    {
+      AppMethodBeat.o(103439);
+      return;
     }
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      ((n.a)localIterator.next()).onPause();
+    com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+    localn.s("20source_publishid", localari.nTB + ",");
+    localn.s("21uxinfo", localari.nTA + ",");
+    localn.s("22clienttime", Util.nowMilliSecond() + ",");
+    localn.s("23video_statu", d.a(paramd) + ",");
+    paramd = new StringBuilder();
+    if (paramg.field_type == 16) {}
+    for (int i = 1;; i = 2)
+    {
+      localn.s("24source_type", i + ",");
+      localn.s("25scene", "5,");
+      localn.s("26action_type", c.a(paramc) + ",");
+      localn.s("27scene_chatname", ",");
+      localn.s("28scene_username", paramg.field_fromUser + ",");
+      localn.s("29curr_publishid", ",");
+      localn.s("30curr_msgid", "0,");
+      localn.s("31curr_favid", paramg.field_id + ",");
+      localn.s("32chatroom_membercount", "0,");
+      localn.s("33chatroom_toMemberCount", paramInt + ",");
+      Log.i("MicroMsg.FavVideoStatistic", "report snsad_video_spread: " + localn.aIF());
+      com.tencent.mm.plugin.report.service.h.OAn.b(12991, new Object[] { localn });
+      AppMethodBeat.o(103439);
+      return;
     }
-    AppMethodBeat.o(102705);
   }
   
-  public final boolean startPlay(String paramString, int paramInt)
+  public static void x(g paramg)
   {
-    AppMethodBeat.i(102706);
-    if (this.mtU == null)
+    AppMethodBeat.i(103437);
+    if ((paramg.field_favProto.vEn == null) || (paramg.field_favProto.vEn.isEmpty()))
     {
-      ab.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(102706);
-      return false;
+      AppMethodBeat.o(103437);
+      return;
     }
-    this.mtU.stop();
-    Object localObject = this.callbacks.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((n.a)((Iterator)localObject).next()).bK(paramString, 0);
-    }
-    if ((mub != null) && (!mub.yqq))
+    arf localarf = (arf)paramg.field_favProto.vEn.getFirst();
+    Object localObject = localarf.ZzE;
+    if (localObject == null)
     {
-      mub.a(this);
-      localObject = new n.1(this);
-      if (!this.mtY.ai((Runnable)localObject)) {
-        break label187;
-      }
+      AppMethodBeat.o(103437);
+      return;
     }
-    label187:
-    for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
+    com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+    localn.s("20source_publishid", ((ari)localObject).nTB + ",");
+    localn.s("21uxinfo", ((ari)localObject).nTA + ",");
+    localn.s("22clienttime", Util.nowMilliSecond() + ",");
+    localObject = new StringBuilder();
+    if (paramg.field_type == 16) {}
+    for (int i = 1;; i = 2)
     {
-      this.path = paramString;
-      this.cve = paramInt;
-      if ((bo.isNullOrNil(paramString)) || (!this.mtU.a(paramString, this.mtV, true, paramInt))) {
-        break;
-      }
-      aj.apk("keep_app_silent");
-      AppMethodBeat.o(102706);
-      return true;
+      localn.s("23source_type", i + ",");
+      localn.s("24scene", "5,");
+      localn.s("25scene_chatname", ",");
+      localn.s("26scene_username", paramg.field_fromUser + ",");
+      localn.s("27curr_publishid", ",");
+      localn.s("28curr_msgid", "0,");
+      localn.s("29curr_favid", paramg.field_id + ",");
+      localn.s("30isdownload", "0,");
+      localn.s("31chatroom_membercount", "0,");
+      ((l)com.tencent.mm.kernel.h.ax(l.class)).b(localarf.iah, localn);
+      Log.i("MicroMsg.FavVideoStatistic", "report snsad_video_exposure: " + localn.aIF());
+      com.tencent.mm.plugin.report.service.h.OAn.b(12989, new Object[] { localn });
+      AppMethodBeat.o(103437);
+      return;
     }
-    AppMethodBeat.o(102706);
-    return false;
   }
   
-  public final void stopPlay()
+  public static enum a
   {
-    AppMethodBeat.i(102711);
-    ab.d("MicroMsg.FavVoiceLogic", "stop play");
-    aj.apl("keep_app_silent");
-    if (this.mtU != null) {
-      this.mtU.stop();
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103427);
+      AcZ = new a("PlayIcon", 0, 1);
+      Ada = new a("EnterFullScreen", 1, 2);
+      Adb = new a("EnterCompleteVideo", 2, 3);
+      Adc = new a("DetailInVideo", 3, 4);
+      Add = new a("LeavelFullScreen", 4, 5);
+      Ade = new a("LeaveCompleteVideo", 5, 6);
+      Adf = new a("SightLoaded", 6, 7);
+      Adg = new a[] { AcZ, Ada, Adb, Adc, Add, Ade, Adf };
+      AppMethodBeat.o(103427);
     }
-    bwC();
-    AppMethodBeat.o(102711);
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum b
+  {
+    public int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103430);
+      Adh = new b("Sight", 0, 1);
+      Adi = new b("AdUrl", 1, 2);
+      Adj = new b("Chat", 2, 3);
+      Adk = new b("TalkChat", 3, 4);
+      Adl = new b("Fav", 4, 5);
+      Adm = new b[] { Adh, Adi, Adj, Adk, Adl };
+      AppMethodBeat.o(103430);
+    }
+    
+    private b(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum c
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103433);
+      Adn = new c("Chat", 0, 2);
+      Ado = new c("Chatroom", 1, 3);
+      Adp = new c("Sns", 2, 4);
+      Adq = new c[] { Adn, Ado, Adp };
+      AppMethodBeat.o(103433);
+    }
+    
+    private c(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum d
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103436);
+      Adr = new d("Samll", 0, 1);
+      Ads = new d("Full", 1, 2);
+      Adt = new d("Complete", 2, 3);
+      Adu = new d[] { Adr, Ads, Adt };
+      AppMethodBeat.o(103436);
+    }
+    
+    private d(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 

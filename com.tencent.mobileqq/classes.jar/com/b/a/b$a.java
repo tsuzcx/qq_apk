@@ -57,134 +57,105 @@ public class b$a
   {
     // Byte code:
     //   0: ldc 70
-    //   2: astore 5
-    //   4: ldc 70
-    //   6: astore_3
-    //   7: ldc 70
-    //   9: astore 4
-    //   11: aload_3
-    //   12: astore_1
-    //   13: aload 5
-    //   15: astore_2
-    //   16: new 77	org/json/JSONObject
-    //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 80	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   24: astore 6
-    //   26: aload_3
-    //   27: astore_1
-    //   28: aload 5
-    //   30: astore_2
-    //   31: aload 6
-    //   33: ldc 82
-    //   35: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   38: astore_0
-    //   39: aload_3
-    //   40: astore_1
-    //   41: aload_0
-    //   42: astore_2
-    //   43: aload 6
-    //   45: ldc 87
-    //   47: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   50: astore_3
-    //   51: aload_3
-    //   52: astore_1
-    //   53: aload_0
-    //   54: astore_2
-    //   55: aload 6
-    //   57: ldc 89
-    //   59: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   62: astore 5
-    //   64: aload 5
-    //   66: astore_1
-    //   67: aload 6
-    //   69: ldc 91
-    //   71: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   74: astore 5
-    //   76: aload_3
-    //   77: astore 4
-    //   79: aload_1
-    //   80: astore_2
-    //   81: aload 5
-    //   83: astore_3
-    //   84: new 77	org/json/JSONObject
-    //   87: dup
-    //   88: invokespecial 92	org/json/JSONObject:<init>	()V
-    //   91: astore_1
-    //   92: aload_1
-    //   93: ldc 94
-    //   95: aload_0
-    //   96: invokevirtual 98	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   99: pop
-    //   100: aload_1
-    //   101: invokevirtual 101	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   104: astore_0
-    //   105: new 103	com/qq/a/a/a/d
-    //   108: dup
-    //   109: invokestatic 107	com/b/a/j:e	()Ljava/lang/String;
-    //   112: invokestatic 109	com/b/a/j:a	()Ljava/lang/String;
-    //   115: invokestatic 111	com/b/a/j:b	()Ljava/lang/String;
-    //   118: invokespecial 114	com/qq/a/a/a/d:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   121: aload 4
-    //   123: aload_2
-    //   124: aload_3
+    //   2: astore 4
+    //   4: new 77	org/json/JSONObject
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 80	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   12: astore_3
+    //   13: aload_3
+    //   14: ldc 82
+    //   16: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: astore_1
+    //   20: aload_3
+    //   21: ldc 87
+    //   23: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: astore_2
+    //   27: aload_3
+    //   28: ldc 89
+    //   30: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   33: astore_0
+    //   34: aload_3
+    //   35: ldc 91
+    //   37: invokevirtual 85	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: astore_3
+    //   41: goto +35 -> 76
+    //   44: astore_3
+    //   45: goto +24 -> 69
+    //   48: astore_3
+    //   49: ldc 70
+    //   51: astore_0
+    //   52: goto +17 -> 69
+    //   55: astore_3
+    //   56: goto +7 -> 63
+    //   59: astore_3
+    //   60: ldc 70
+    //   62: astore_1
+    //   63: ldc 70
+    //   65: astore_2
+    //   66: ldc 70
+    //   68: astore_0
+    //   69: aload_3
+    //   70: invokevirtual 92	org/json/JSONException:printStackTrace	()V
+    //   73: aload 4
+    //   75: astore_3
+    //   76: new 77	org/json/JSONObject
+    //   79: dup
+    //   80: invokespecial 93	org/json/JSONObject:<init>	()V
+    //   83: astore 4
+    //   85: aload 4
+    //   87: ldc 95
+    //   89: aload_1
+    //   90: invokevirtual 99	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   93: pop
+    //   94: goto +8 -> 102
+    //   97: astore_1
+    //   98: aload_1
+    //   99: invokevirtual 92	org/json/JSONException:printStackTrace	()V
+    //   102: aload 4
+    //   104: invokevirtual 102	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   107: astore_1
+    //   108: new 104	com/qq/a/a/a/d
+    //   111: dup
+    //   112: invokestatic 108	com/b/a/j:e	()Ljava/lang/String;
+    //   115: invokestatic 110	com/b/a/j:a	()Ljava/lang/String;
+    //   118: invokestatic 112	com/b/a/j:b	()Ljava/lang/String;
+    //   121: invokespecial 115	com/qq/a/a/a/d:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   124: aload_2
     //   125: aload_0
-    //   126: invokevirtual 117	com/qq/a/a/a/d:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   129: astore_0
-    //   130: aload_0
-    //   131: areturn
-    //   132: astore_3
-    //   133: ldc 70
-    //   135: astore 5
-    //   137: aload_2
-    //   138: astore_0
-    //   139: aload 5
-    //   141: astore_2
-    //   142: aload_3
-    //   143: invokevirtual 118	org/json/JSONException:printStackTrace	()V
-    //   146: aload 4
-    //   148: astore_3
-    //   149: aload_1
-    //   150: astore 4
-    //   152: goto -68 -> 84
-    //   155: astore_0
-    //   156: aload_0
-    //   157: invokevirtual 118	org/json/JSONException:printStackTrace	()V
-    //   160: goto -60 -> 100
-    //   163: astore_0
-    //   164: aload_0
-    //   165: invokevirtual 119	com/qq/a/a/a/a:printStackTrace	()V
-    //   168: aconst_null
-    //   169: areturn
-    //   170: astore 5
-    //   172: aload_1
-    //   173: astore_2
-    //   174: aload_3
-    //   175: astore_1
-    //   176: aload 5
-    //   178: astore_3
-    //   179: goto -37 -> 142
+    //   126: aload_3
+    //   127: aload_1
+    //   128: invokevirtual 118	com/qq/a/a/a/d:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   131: astore_0
+    //   132: aload_0
+    //   133: areturn
+    //   134: astore_0
+    //   135: aload_0
+    //   136: invokevirtual 119	com/qq/a/a/a/a:printStackTrace	()V
+    //   139: aconst_null
+    //   140: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	182	0	paramString	String
-    //   12	164	1	localObject1	Object
-    //   15	159	2	localObject2	Object
-    //   6	119	3	str1	String
-    //   132	11	3	localJSONException1	JSONException
-    //   148	31	3	localObject3	Object
-    //   9	142	4	localObject4	Object
-    //   2	138	5	str2	String
-    //   170	7	5	localJSONException2	JSONException
-    //   24	44	6	localJSONObject	JSONObject
+    //   0	141	0	paramString	String
+    //   19	71	1	str1	String
+    //   97	2	1	localJSONException1	JSONException
+    //   107	21	1	str2	String
+    //   26	99	2	str3	String
+    //   12	29	3	localObject1	Object
+    //   44	1	3	localJSONException2	JSONException
+    //   48	1	3	localJSONException3	JSONException
+    //   55	1	3	localJSONException4	JSONException
+    //   59	11	3	localJSONException5	JSONException
+    //   75	52	3	localObject2	Object
+    //   2	101	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   16	26	132	org/json/JSONException
-    //   31	39	132	org/json/JSONException
-    //   43	51	132	org/json/JSONException
-    //   55	64	132	org/json/JSONException
-    //   92	100	155	org/json/JSONException
-    //   105	130	163	com/qq/a/a/a/a
-    //   67	76	170	org/json/JSONException
+    //   34	41	44	org/json/JSONException
+    //   27	34	48	org/json/JSONException
+    //   20	27	55	org/json/JSONException
+    //   4	20	59	org/json/JSONException
+    //   85	94	97	org/json/JSONException
+    //   108	132	134	com/qq/a/a/a/a
   }
   
   public static String a(String paramString1, String paramString2, String paramString3)
@@ -211,15 +182,12 @@ public class b$a
       localJSONObject.put("signature", paramString3);
       localJSONObject.put("timestamp", paramString4);
       localJSONObject.put("nonce", paramString5);
-      return localJSONObject.toString();
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
+      paramString1.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public static void a(m<?> paramm) {}
@@ -256,25 +224,24 @@ public class b$a
       paramString = ((MessageDigest)localObject).digest();
       localObject = new StringBuffer();
       int j = 0;
-      if (j < paramString.length)
+      while (j < paramString.length)
       {
-        if (Integer.toHexString(paramString[j] & 0xFF).length() == 1) {
-          ((StringBuffer)localObject).append("0").append(Integer.toHexString(paramString[j] & 0xFF));
-        }
-        for (;;)
+        int k;
+        if (Integer.toHexString(paramString[j] & 0xFF).length() == 1)
         {
-          j += 1;
-          break;
-          ((StringBuffer)localObject).append(Integer.toHexString(paramString[j] & 0xFF));
+          ((StringBuffer)localObject).append("0");
+          k = paramString[j];
         }
+        else
+        {
+          k = paramString[j];
+        }
+        ((StringBuffer)localObject).append(Integer.toHexString(k & 0xFF));
+        j += 1;
       }
       return ((StringBuffer)localObject).toString();
     }
-    catch (UnsupportedEncodingException paramString)
-    {
-      return null;
-    }
-    catch (NoSuchAlgorithmException paramString) {}
+    catch (NoSuchAlgorithmException|UnsupportedEncodingException paramString) {}
     return null;
   }
   
@@ -302,7 +269,7 @@ public class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.b.a
  * JD-Core Version:    0.7.0.1
  */

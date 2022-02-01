@@ -3,145 +3,154 @@ package com.tencent.mm.cache;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Stack;
 
 public final class a
-  implements e<com.tencent.mm.y.a>
+  implements f<com.tencent.mm.ab.a>
 {
-  public Stack<com.tencent.mm.y.a> ecq;
-  private Stack<com.tencent.mm.y.a> ecr;
-  public Matrix ecs;
-  private int ect;
+  private Stack<com.tencent.mm.ab.a> lvL;
+  private Stack<com.tencent.mm.ab.a> lvM;
+  public Matrix lvN;
+  private int lvO;
   
   public a()
   {
-    AppMethodBeat.i(116215);
-    this.ecs = new Matrix();
-    AppMethodBeat.o(116215);
+    AppMethodBeat.i(9187);
+    this.lvN = new Matrix();
+    AppMethodBeat.o(9187);
   }
   
-  public final void CH()
+  public final void a(com.tencent.mm.ab.a parama)
   {
-    this.ect += 1;
-  }
-  
-  public final void Jd()
-  {
-    AppMethodBeat.i(116219);
-    ab.i("MicroMsg.CropCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.ecq.size()) });
-    this.ecq.clear();
-    if (this.ecr != null)
-    {
-      ab.i("MicroMsg.CropCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.ecr.size()) });
-      this.ecq.addAll(this.ecr);
+    AppMethodBeat.i(9193);
+    if (this.lvL != null) {
+      this.lvL.push(parama);
     }
-    AppMethodBeat.o(116219);
+    AppMethodBeat.o(9193);
   }
   
-  public final com.tencent.mm.y.a Je()
+  public final void aEG()
   {
-    AppMethodBeat.i(116220);
-    if (this.ecq.size() <= 0)
+    this.lvO += 1;
+  }
+  
+  public final void aLx()
+  {
+    AppMethodBeat.i(9191);
+    Log.i("MicroMsg.CropCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.lvL.size()) });
+    this.lvL.clear();
+    if (this.lvM != null)
     {
-      ab.e("MicroMsg.CropCache", "[pop]");
-      AppMethodBeat.o(116220);
+      Log.i("MicroMsg.CropCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.lvM.size()) });
+      this.lvL.addAll(this.lvM);
+    }
+    AppMethodBeat.o(9191);
+  }
+  
+  public final com.tencent.mm.ab.a aLy()
+  {
+    AppMethodBeat.i(9192);
+    if (this.lvL.size() <= 0)
+    {
+      Log.e("MicroMsg.CropCache", "[pop]");
+      AppMethodBeat.o(9192);
       return null;
     }
-    com.tencent.mm.y.a locala = (com.tencent.mm.y.a)this.ecq.pop();
-    AppMethodBeat.o(116220);
+    com.tencent.mm.ab.a locala = (com.tencent.mm.ab.a)this.lvL.pop();
+    AppMethodBeat.o(9192);
     return locala;
   }
   
-  public final com.tencent.mm.y.a Jf()
+  public final com.tencent.mm.ab.a aLz()
   {
-    AppMethodBeat.i(116222);
-    if ((this.ecq != null) && (this.ecq.size() > 0))
+    AppMethodBeat.i(9194);
+    if ((this.lvL != null) && (this.lvL.size() > 0))
     {
-      com.tencent.mm.y.a locala = (com.tencent.mm.y.a)this.ecq.peek();
-      AppMethodBeat.o(116222);
+      com.tencent.mm.ab.a locala = (com.tencent.mm.ab.a)this.lvL.peek();
+      AppMethodBeat.o(9194);
       return locala;
     }
-    AppMethodBeat.o(116222);
+    AppMethodBeat.o(9194);
     return null;
   }
   
-  public final void a(Canvas paramCanvas, boolean paramBoolean) {}
-  
-  public final void a(com.tencent.mm.y.a parama)
+  public final int aR(boolean paramBoolean)
   {
-    AppMethodBeat.i(116221);
-    if (this.ecq != null) {
-      this.ecq.push(parama);
-    }
-    AppMethodBeat.o(116221);
-  }
-  
-  public final int ad(boolean paramBoolean)
-  {
-    AppMethodBeat.i(116223);
+    AppMethodBeat.i(9195);
     int i;
     if (paramBoolean)
     {
-      if (this.ecq != null)
+      if (this.lvL != null)
       {
-        i = this.ecq.size();
-        AppMethodBeat.o(116223);
+        i = this.lvL.size();
+        AppMethodBeat.o(9195);
         return i;
       }
-      AppMethodBeat.o(116223);
+      AppMethodBeat.o(9195);
       return 0;
     }
-    if (this.ecr != null)
+    if (this.lvM != null)
     {
-      i = this.ecr.size();
-      AppMethodBeat.o(116223);
+      i = this.lvM.size();
+      AppMethodBeat.o(9195);
       return i;
     }
-    AppMethodBeat.o(116223);
+    AppMethodBeat.o(9195);
     return 0;
   }
   
-  public final void bH(boolean paramBoolean)
+  public final void b(Canvas paramCanvas, boolean paramBoolean) {}
+  
+  public final void clear()
   {
-    AppMethodBeat.i(116218);
-    ab.i("MicroMsg.CropCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.ecq.size()) });
-    if (this.ecr != null) {
-      this.ecr.clear();
+    AppMethodBeat.i(232045);
+    if (this.lvL != null) {
+      this.lvL.clear();
     }
-    this.ecr = ((Stack)this.ecq.clone());
-    if (paramBoolean) {
-      this.ecq.clear();
-    }
-    AppMethodBeat.o(116218);
+    AppMethodBeat.o(232045);
   }
   
-  public final void c(Canvas paramCanvas) {}
+  public final void ex(boolean paramBoolean)
+  {
+    AppMethodBeat.i(9190);
+    Log.i("MicroMsg.CropCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.lvL.size()) });
+    if (this.lvM != null) {
+      this.lvM.clear();
+    }
+    this.lvM = ((Stack)this.lvL.clone());
+    if (paramBoolean) {
+      this.lvL.clear();
+    }
+    AppMethodBeat.o(9190);
+  }
+  
+  public final void i(Canvas paramCanvas) {}
   
   public final void onCreate()
   {
-    AppMethodBeat.i(116216);
-    ab.i("MicroMsg.CropCache", "[onCreate]");
-    this.ecq = new Stack();
-    AppMethodBeat.o(116216);
+    AppMethodBeat.i(9188);
+    Log.i("MicroMsg.CropCache", "[onCreate]");
+    this.lvL = new Stack();
+    AppMethodBeat.o(9188);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(116217);
-    if (this.ecq != null) {
-      this.ecq.clear();
+    AppMethodBeat.i(9189);
+    if (this.lvL != null) {
+      this.lvL.clear();
     }
-    if (this.ecr != null) {
-      this.ecr.clear();
+    if (this.lvM != null) {
+      this.lvM.clear();
     }
-    this.ecs.reset();
-    AppMethodBeat.o(116217);
+    this.lvN.reset();
+    AppMethodBeat.o(9189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.cache.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjoo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,41 +11,57 @@ import org.json.JSONObject;
 public class PluginRecord
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<PluginRecord> CREATOR = new bjoo();
-  public static final String LIVE_PLUGIN_ID = "qzone_live_video_plugin_hack.apk";
-  public static final String QZONE_LIVE_FULL_PROCESS_NAME = "com.tencent.mobileqq:qzonelive";
-  public static final String QZONE_VIDEO_VERTICAL_LAYER_FULL_PROCESS_NAME = "com.tencent.mobileqq:qzone";
-  public static final String QZONE_WEISHI_FEEDS_FULL_PROCESS_NAME = "com.tencent.mobileqq:qzonelive";
-  public static final int STATE_DOWNLOADED = 2;
-  public static final int STATE_DOWNLOADING = 1;
-  public static final int STATE_INSTALLED = 4;
-  public static final int STATE_INSTALLING = 3;
-  public static final int STATE_NODOWNLOAD = 0;
-  public static final String VERTICAL_VIDEO_LAYER_PLUGIN_ID = "qzone_vertical_video_plugin.apk";
-  public static final String VERTICAL_VIDEO_PLUGIN_NAME = "QZoneVerticalVideo";
-  public static final String WEISHI_FEEDS_PLUGIN_ID = "qzone_weishi_feeds_plugin.apk";
-  public static final String WEISHI_FEEDS_PLUGIN_NAME = "QZoneWeishiFeedsVideo";
+  public static final Parcelable.Creator<PluginRecord> CREATOR = new PluginRecord.1();
   public int actype;
-  public String app = "";
-  public String id = "";
-  boolean loaded = false;
+  public String app;
+  public String id;
+  boolean loaded;
   public String mInstalledPath;
   public String mProcesses;
-  public String mainVersion = "";
-  public String md5 = "";
-  public String md5_2 = "";
-  public String name = "";
-  public String old_ver = "";
+  public String mainVersion;
+  public String md5;
+  public String md5_2;
+  public String name;
+  public String old_ver;
   public float progress;
   public long size;
   public int state;
-  public String url = "";
-  public String ver = "";
+  public String url;
+  public String ver;
   
-  public PluginRecord() {}
-  
-  public PluginRecord(Parcel paramParcel)
+  public PluginRecord()
   {
+    this.state = 0;
+    this.progress = 0.0F;
+    this.url = "";
+    this.app = "";
+    this.ver = "";
+    this.old_ver = "";
+    this.name = "";
+    this.id = "";
+    this.mainVersion = "";
+    this.md5 = "";
+    this.md5_2 = "";
+    this.actype = 0;
+    this.loaded = false;
+  }
+  
+  protected PluginRecord(Parcel paramParcel)
+  {
+    boolean bool = false;
+    this.state = 0;
+    this.progress = 0.0F;
+    this.url = "";
+    this.app = "";
+    this.ver = "";
+    this.old_ver = "";
+    this.name = "";
+    this.id = "";
+    this.mainVersion = "";
+    this.md5 = "";
+    this.md5_2 = "";
+    this.actype = 0;
+    this.loaded = false;
     this.state = paramParcel.readInt();
     this.progress = paramParcel.readFloat();
     this.url = paramParcel.readString();
@@ -70,6 +85,19 @@ public class PluginRecord
   
   public PluginRecord(PluginRecord paramPluginRecord)
   {
+    this.state = 0;
+    this.progress = 0.0F;
+    this.url = "";
+    this.app = "";
+    this.ver = "";
+    this.old_ver = "";
+    this.name = "";
+    this.id = "";
+    this.mainVersion = "";
+    this.md5 = "";
+    this.md5_2 = "";
+    this.actype = 0;
+    this.loaded = false;
     this.state = paramPluginRecord.state;
     this.progress = paramPluginRecord.progress;
     this.url = paramPluginRecord.url;
@@ -96,7 +124,7 @@ public class PluginRecord
     return paramString1.equals(paramString2);
   }
   
-  public PluginRecord clone()
+  protected PluginRecord clone()
   {
     return new PluginRecord(this);
   }
@@ -108,21 +136,68 @@ public class PluginRecord
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof PluginRecord))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      return false;
+      if (!(paramObject instanceof PluginRecord)) {
+        return false;
+      }
       paramObject = (PluginRecord)paramObject;
-    } while ((this.actype != paramObject.actype) || (!equals(this.url, paramObject.url)) || (!equals(this.app, paramObject.app)) || (!equals(this.ver, paramObject.ver)) || (!equals(this.name, paramObject.name)) || (!equals(this.id, paramObject.id)) || (!equals(this.mainVersion, paramObject.mainVersion)) || (!equals(this.md5, paramObject.md5)) || (!equals(this.old_ver, paramObject.old_ver)) || (!equals(this.md5_2, paramObject.md5_2)));
-    return true;
+      bool1 = bool2;
+      if (this.actype == paramObject.actype)
+      {
+        bool1 = bool2;
+        if (equals(this.url, paramObject.url))
+        {
+          bool1 = bool2;
+          if (equals(this.app, paramObject.app))
+          {
+            bool1 = bool2;
+            if (equals(this.ver, paramObject.ver))
+            {
+              bool1 = bool2;
+              if (equals(this.name, paramObject.name))
+              {
+                bool1 = bool2;
+                if (equals(this.id, paramObject.id))
+                {
+                  bool1 = bool2;
+                  if (equals(this.mainVersion, paramObject.mainVersion))
+                  {
+                    bool1 = bool2;
+                    if (equals(this.md5, paramObject.md5))
+                    {
+                      bool1 = bool2;
+                      if (equals(this.old_ver, paramObject.old_ver))
+                      {
+                        bool1 = bool2;
+                        if (equals(this.md5_2, paramObject.md5_2)) {
+                          bool1 = true;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void fromJson(String paramString)
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "fromJson :" + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("fromJson :");
+        localStringBuilder.append(paramString);
+        QLog.d("QZonePluginManger", 2, localStringBuilder.toString());
       }
       paramString = new JSONObject(paramString);
       this.state = paramString.optInt("state");
@@ -148,28 +223,24 @@ public class PluginRecord
   
   public int hashCode()
   {
+    String str = this.id;
     int j = 0;
     int i;
-    if (this.id == null)
-    {
+    if (str == null) {
       i = 0;
-      if (this.ver != null) {
-        break label40;
-      }
+    } else {
+      i = str.hashCode();
     }
-    for (;;)
-    {
-      return (i + 527) * 31 + j;
-      i = this.id.hashCode();
-      break;
-      label40:
-      j = this.ver.hashCode();
+    str = this.ver;
+    if (str != null) {
+      j = str.hashCode();
     }
+    return (527 + i) * 31 + j;
   }
   
   public boolean isValid()
   {
-    return !TextUtils.isEmpty(this.id);
+    return TextUtils.isEmpty(this.id) ^ true;
   }
   
   public void reset()
@@ -207,23 +278,32 @@ public class PluginRecord
       localJSONObject.put("mInstalledPath", this.mInstalledPath);
       localJSONObject.put("old_ver", this.old_ver);
       localJSONObject.put("md5_2", this.md5_2);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "toJson :" + localJSONObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("toJson :");
+        localStringBuilder.append(localJSONObject);
+        QLog.d("QZonePluginManger", 2, localStringBuilder.toString());
       }
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("PluginRecord", 1, localJSONException, new Object[0]);
-      }
+      QLog.e("PluginRecord", 1, localJSONException, new Object[0]);
     }
+    return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "PluginRecord{" + this.id + " " + this.ver + " " + this.state + " }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PluginRecord{");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.ver);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -241,19 +321,14 @@ public class PluginRecord
     paramParcel.writeLong(this.size);
     paramParcel.writeString(this.mProcesses);
     paramParcel.writeString(this.mInstalledPath);
-    if (this.loaded) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.old_ver);
-      paramParcel.writeString(this.md5_2);
-      return;
-    }
+    paramParcel.writeByte((byte)this.loaded);
+    paramParcel.writeString(this.old_ver);
+    paramParcel.writeString(this.md5_2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.plugin.PluginRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -5,62 +5,62 @@ import java.util.ArrayList;
 
 public class ShareDexDiffPatchInfo
 {
-  public final String BuQ;
-  public final String BuR;
-  public final String BuS;
-  public final String BuT;
-  public final String BuU;
-  public final String BuV;
-  public final String BuW;
-  public final boolean BuX;
-  public final String ezj;
+  public final String destMd5InArt;
+  public final String destMd5InDvm;
+  public final String dexDiffMd5;
+  public final String dexMode;
+  public final boolean isJarMode;
+  public final String newOrPatchedDexCrC;
+  public final String oldDexCrC;
   public final String path;
+  public final String rawName;
+  public final String realName;
   
   public ShareDexDiffPatchInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    this.BuQ = paramString1;
+    this.rawName = paramString1;
     this.path = paramString2;
-    this.BuR = paramString3;
-    this.BuS = paramString4;
-    this.BuV = paramString5;
-    this.BuT = paramString6;
-    this.BuU = paramString7;
-    this.BuW = paramString8;
+    this.destMd5InDvm = paramString3;
+    this.destMd5InArt = paramString4;
+    this.dexDiffMd5 = paramString5;
+    this.oldDexCrC = paramString6;
+    this.newOrPatchedDexCrC = paramString7;
+    this.dexMode = paramString8;
     if (paramString8.equals("jar"))
     {
-      this.BuX = true;
-      if (SharePatchFileUtil.axe(paramString1))
+      this.isJarMode = true;
+      if (SharePatchFileUtil.isRawDexFile(paramString1))
       {
-        this.ezj = (paramString1 + ".jar");
+        this.realName = (paramString1 + ".jar");
         return;
       }
-      this.ezj = paramString1;
+      this.realName = paramString1;
       return;
     }
     if (paramString8.equals("raw"))
     {
-      this.BuX = false;
-      this.ezj = paramString1;
+      this.isJarMode = false;
+      this.realName = paramString1;
       return;
     }
     throw new TinkerRuntimeException("can't recognize dex mode:".concat(String.valueOf(paramString8)));
   }
   
-  public static boolean c(ShareDexDiffPatchInfo paramShareDexDiffPatchInfo)
+  public static boolean checkDexDiffPatchInfo(ShareDexDiffPatchInfo paramShareDexDiffPatchInfo)
   {
     if (paramShareDexDiffPatchInfo == null) {}
     for (;;)
     {
       return false;
-      String str = paramShareDexDiffPatchInfo.BuQ;
-      if (ShareTinkerInternals.dWE()) {}
-      for (paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.BuS; (str != null) && (str.length() > 0) && (paramShareDexDiffPatchInfo != null) && (paramShareDexDiffPatchInfo.length() == 32); paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.BuR) {
+      String str = paramShareDexDiffPatchInfo.rawName;
+      if (ShareTinkerInternals.isVmArt()) {}
+      for (paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.destMd5InArt; (str != null) && (str.length() > 0) && (paramShareDexDiffPatchInfo != null) && (paramShareDexDiffPatchInfo.length() == 32); paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.destMd5InDvm) {
         return true;
       }
     }
   }
   
-  public static void o(String paramString, ArrayList<ShareDexDiffPatchInfo> paramArrayList)
+  public static void parseDexDiffPatchInfo(String paramString, ArrayList<ShareDexDiffPatchInfo> paramArrayList)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
     for (;;)
@@ -87,27 +87,27 @@ public class ShareDexDiffPatchInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.BuQ);
+    localStringBuffer.append(this.rawName);
     localStringBuffer.append(",");
     localStringBuffer.append(this.path);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuR);
+    localStringBuffer.append(this.destMd5InDvm);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuS);
+    localStringBuffer.append(this.destMd5InArt);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuT);
+    localStringBuffer.append(this.oldDexCrC);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuU);
+    localStringBuffer.append(this.newOrPatchedDexCrC);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuV);
+    localStringBuffer.append(this.dexDiffMd5);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuW);
+    localStringBuffer.append(this.dexMode);
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareDexDiffPatchInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
+import fbv;
 import fbw;
 import fbx;
 import fby;
 import fbz;
 import fca;
 import fcb;
-import fcc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,7 +44,7 @@ public class EmoticonManagerImp
   public EmoticonManagerImp(QQAppInterface paramQQAppInterface)
   {
     this.b = new LRULinkedHashMap(250);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new fbz(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new fby(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
     g();
@@ -60,7 +60,7 @@ public class EmoticonManagerImp
   
   private void a(boolean paramBoolean, long paramLong)
   {
-    ThreadManager.a(new fcb(this, paramLong, paramBoolean));
+    ThreadManager.a(new fca(this, paramLong, paramBoolean));
   }
   
   private void d(String paramString)
@@ -97,7 +97,7 @@ public class EmoticonManagerImp
   
   private void e(String paramString)
   {
-    ThreadManager.a(new fcc(this, paramString));
+    ThreadManager.a(new fcb(this, paramString));
   }
   
   private void g()
@@ -490,7 +490,7 @@ public class EmoticonManagerImp
   public void a()
   {
     EmosmHandler localEmosmHandler = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    localEmosmHandler.a(new fbx(this, localEmosmHandler));
+    localEmosmHandler.a(new fbw(this, localEmosmHandler));
     localEmosmHandler.a(0, 0);
   }
   
@@ -629,7 +629,7 @@ public class EmoticonManagerImp
   public void b()
   {
     EmosmHandler localEmosmHandler = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    localEmosmHandler.a(new fby(this, localEmosmHandler));
+    localEmosmHandler.a(new fbx(this, localEmosmHandler));
     localEmosmHandler.a(0, 0);
   }
   
@@ -646,7 +646,7 @@ public class EmoticonManagerImp
   
   public void b(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    ThreadManager.a(new fbw(this, paramString1, paramInt1));
+    ThreadManager.a(new fbv(this, paramString1, paramInt1));
   }
   
   public void b(List paramList)
@@ -724,7 +724,7 @@ public class EmoticonManagerImp
   
   public void f()
   {
-    ThreadManager.a(new fca(this));
+    ThreadManager.a(new fbz(this));
   }
   
   public void onDestroy() {}

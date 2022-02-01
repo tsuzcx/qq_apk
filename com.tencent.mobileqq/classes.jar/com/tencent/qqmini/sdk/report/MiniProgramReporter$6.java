@@ -1,32 +1,32 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
-import bhch;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class MiniProgramReporter$6
+class MiniProgramReporter$6
   implements Runnable
 {
-  public MiniProgramReporter$6(bhch parambhch, Collection paramCollection) {}
+  MiniProgramReporter$6(MiniProgramReporter paramMiniProgramReporter, Collection paramCollection) {}
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.val$data;
+    if (localObject != null)
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      localObject = ((Collection)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        APP_REPORT_TRANSFER.SingleDcData localSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)localIterator.next();
-        this.this$0.a(localSingleDcData);
+        APP_REPORT_TRANSFER.SingleDcData localSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)((Iterator)localObject).next();
+        this.this$0.addData(localSingleDcData);
       }
     }
-    bhch.a(this.this$0);
+    MiniProgramReporter.access$300(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramReporter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,18 @@ public class TVKHandlerThread
   public TVKHandlerThread(String paramString, int paramInt)
   {
     super(paramString, paramInt);
-    TVKLogUtil.i("TVKHandlerThread", "handlerThread create:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handlerThread create:");
+    localStringBuilder.append(paramString);
+    TVKLogUtil.i("TVKHandlerThread", localStringBuilder.toString());
   }
   
   public boolean quit()
   {
-    TVKLogUtil.i("TVKHandlerThread", "handlerThread quit:" + getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handlerThread quit:");
+    localStringBuilder.append(getName());
+    TVKLogUtil.i("TVKHandlerThread", localStringBuilder.toString());
     return super.quit();
   }
   
@@ -29,12 +35,15 @@ public class TVKHandlerThread
     if (!isAlive()) {
       super.start();
     }
-    TVKLogUtil.i("TVKHandlerThread", "handlerThread start:" + getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handlerThread start:");
+    localStringBuilder.append(getName());
+    TVKLogUtil.i("TVKHandlerThread", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKHandlerThread
  * JD-Core Version:    0.7.0.1
  */

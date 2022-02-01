@@ -20,27 +20,23 @@ public final class Schedulers
   private Schedulers()
   {
     Scheduler localScheduler = RxJavaPlugins.getInstance().getSchedulersHook().getComputationScheduler();
+    if (localScheduler != null) {
+      this.computationScheduler = localScheduler;
+    } else {
+      this.computationScheduler = new EventLoopsScheduler();
+    }
+    localScheduler = RxJavaPlugins.getInstance().getSchedulersHook().getIOScheduler();
+    if (localScheduler != null) {
+      this.ioScheduler = localScheduler;
+    } else {
+      this.ioScheduler = new CachedThreadScheduler();
+    }
+    localScheduler = RxJavaPlugins.getInstance().getSchedulersHook().getNewThreadScheduler();
     if (localScheduler != null)
     {
-      this.computationScheduler = localScheduler;
-      localScheduler = RxJavaPlugins.getInstance().getSchedulersHook().getIOScheduler();
-      if (localScheduler == null) {
-        break label76;
-      }
-    }
-    label76:
-    for (this.ioScheduler = localScheduler;; this.ioScheduler = new CachedThreadScheduler())
-    {
-      localScheduler = RxJavaPlugins.getInstance().getSchedulersHook().getNewThreadScheduler();
-      if (localScheduler == null) {
-        break label90;
-      }
       this.newThreadScheduler = localScheduler;
       return;
-      this.computationScheduler = new EventLoopsScheduler();
-      break;
     }
-    label90:
     this.newThreadScheduler = NewThreadScheduler.instance();
   }
   
@@ -121,7 +117,7 @@ public final class Schedulers
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.schedulers.Schedulers
  * JD-Core Version:    0.7.0.1
  */

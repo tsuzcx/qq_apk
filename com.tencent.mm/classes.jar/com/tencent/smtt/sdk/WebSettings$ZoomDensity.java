@@ -8,12 +8,12 @@ public enum WebSettings$ZoomDensity
   
   static
   {
-    AppMethodBeat.i(64723);
+    AppMethodBeat.i(54628);
     FAR = new ZoomDensity("FAR", 0, 150);
     MEDIUM = new ZoomDensity("MEDIUM", 1, 100);
     CLOSE = new ZoomDensity("CLOSE", 2, 75);
     $VALUES = new ZoomDensity[] { FAR, MEDIUM, CLOSE };
-    AppMethodBeat.o(64723);
+    AppMethodBeat.o(54628);
   }
   
   private WebSettings$ZoomDensity(int paramInt)
@@ -23,7 +23,7 @@ public enum WebSettings$ZoomDensity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebSettings.ZoomDensity
  * JD-Core Version:    0.7.0.1
  */

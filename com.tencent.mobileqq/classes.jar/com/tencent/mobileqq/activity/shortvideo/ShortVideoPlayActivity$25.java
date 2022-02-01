@@ -9,7 +9,7 @@ class ShortVideoPlayActivity$25
   
   public void run()
   {
-    this.this$0.a(this.a);
+    this.this$0.innerOnCompletion(this.a);
   }
 }
 

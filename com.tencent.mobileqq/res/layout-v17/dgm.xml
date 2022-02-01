@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/ayo" android:textStyle="bold" android:textColor="#ff1a1a1a" android:id="@id/q_w" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="16.0dip" android:text="@string/zcv" android:includeFontPadding="false" android:layout_marginStart="16.0dip" />
+    <TextView android:textSize="@dimen/ayk" android:textColor="#7f000000" android:id="@id/q_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:includeFontPadding="false" android:layout_below="@id/q_w" android:layout_alignLeft="@id/q_w" />
+    <TextView android:textSize="@dimen/ayk" android:textColor="#7f000000" android:id="@id/q_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:includeFontPadding="false" android:drawablePadding="2.0dip" android:layout_toRightOf="@id/q_u" android:layout_alignBottom="@id/q_u" />
+    <ImageView android:id="@id/q_t" android:padding="2.0dip" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="@dimen/mr" android:src="@drawable/jhm" android:layout_alignTop="@id/q_w" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/q_y" android:padding="2.0dip" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="@dimen/mr" android:src="@drawable/jia" android:layout_toLeftOf="@id/q_t" android:layout_alignTop="@id/q_t" />
+    <ImageView android:id="@id/q_z" android:padding="2.0dip" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="@dimen/mr" android:src="@drawable/jic" android:layout_toLeftOf="@id/q_y" android:layout_alignTop="@id/q_t" />
+</merge>

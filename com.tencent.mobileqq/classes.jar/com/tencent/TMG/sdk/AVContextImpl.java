@@ -40,48 +40,90 @@ class AVContextImpl
   {
     QLog.i("SdkJni", 0, "configUpdate");
     int i = AndroidCodec.checkSupportMediaCodecFeature();
-    QLog.i("SdkJni", 0, "[Rson] check hardware feature: " + i);
-    String str;
-    if (i > 0) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[Rson] check hardware feature: ");
+    ((StringBuilder)localObject).append(i);
+    QLog.i("SdkJni", 0, ((StringBuilder)localObject).toString());
+    StringBuilder localStringBuilder;
+    if (i > 0)
+    {
       if ((i & 0x1) == 1)
       {
-        str = "" + "HW_AVC_DEC=1;";
-        if ((i & 0x2) != 2) {
-          break label181;
-        }
-        str = str + "HW_AVC_ENC=1;";
-        label96:
-        if ((i & 0x4) != 4) {
-          break label204;
-        }
-        str = str + "HW_HEVC_DEC=1;";
-        label123:
-        if ((i & 0x8) != 8) {
-          break label227;
-        }
-        str = str + "HW_HEVC_ENC=1;";
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append("HW_AVC_DEC=1;");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append("HW_AVC_DEC=0;");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      if ((i & 0x2) == 2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("HW_AVC_ENC=1;");
+        localObject = localStringBuilder.toString();
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("HW_AVC_ENC=0;");
+        localObject = localStringBuilder.toString();
+      }
+      if ((i & 0x4) == 4)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("HW_HEVC_DEC=1;");
+        localObject = localStringBuilder.toString();
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("HW_HEVC_DEC=0;");
+        localObject = localStringBuilder.toString();
+      }
+      if ((i & 0x8) == 8)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("HW_HEVC_ENC=1;");
+        localObject = localStringBuilder.toString();
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("HW_HEVC_ENC=0;");
+        localObject = localStringBuilder.toString();
       }
     }
-    for (;;)
+    else
     {
-      nativeUpdateConfig(str);
-      return;
-      str = "" + "HW_AVC_DEC=0;";
-      break;
-      label181:
-      str = str + "HW_AVC_ENC=0;";
-      break label96;
-      label204:
-      str = str + "HW_HEVC_DEC=0;";
-      break label123;
-      label227:
-      str = str + "HW_HEVC_ENC=0;";
-      continue;
-      str = "" + "HW_AVC_ENC=0;";
-      str = str + "HW_AVC_DEC=0;";
-      str = str + "HW_HEVC_DEC=0;";
-      str = str + "HW_HEVC_ENC=0;";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append("HW_AVC_ENC=0;");
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("HW_AVC_DEC=0;");
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("HW_HEVC_DEC=0;");
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("HW_HEVC_ENC=0;");
+      localObject = localStringBuilder.toString();
     }
+    nativeUpdateConfig((String)localObject);
   }
   
   public static int getSoExtractError()
@@ -100,85 +142,223 @@ class AVContextImpl
   @SuppressLint({"NewApi"})
   private void initDeviceInfos(Context paramContext)
   {
-    Object localObject1 = "PRODUCT=" + Build.PRODUCT + ";";
-    localObject1 = (String)localObject1 + "CPU_ABI=" + Build.CPU_ABI + ";";
-    localObject1 = (String)localObject1 + "TAGS=" + Build.TAGS + ";";
-    localObject1 = (String)localObject1 + "VERSION_CODES_BASE=1;";
-    localObject1 = (String)localObject1 + "MODEL=" + Build.MODEL + ";";
-    localObject1 = (String)localObject1 + "SDK=" + Build.VERSION.SDK_INT + ";";
-    localObject1 = (String)localObject1 + "VERSION_RELEASE=" + Build.VERSION.RELEASE + ";";
-    localObject1 = (String)localObject1 + "DEVICE=" + Build.DEVICE + ";";
-    localObject1 = (String)localObject1 + "DISPLAY=" + Build.DISPLAY + ";";
-    localObject1 = (String)localObject1 + "BRAND=" + Build.BRAND + ";";
-    localObject1 = (String)localObject1 + "BOARD=" + Build.BOARD + ";";
-    localObject1 = (String)localObject1 + "FINGERPRINT=" + Build.FINGERPRINT + ";";
-    localObject1 = (String)localObject1 + "ID=" + Build.ID + ";";
-    localObject1 = (String)localObject1 + "MANUFACTURER=" + Build.MANUFACTURER + ";";
-    localObject1 = (String)localObject1 + "USER=" + Build.USER + ";";
-    Object localObject2 = (String)localObject1 + "PROCESSORS=" + Runtime.getRuntime().availableProcessors() + ";";
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("PRODUCT=");
+    ((StringBuilder)localObject1).append(Build.PRODUCT);
+    ((StringBuilder)localObject1).append(";");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("CPU_ABI=");
+    ((StringBuilder)localObject2).append(Build.CPU_ABI);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("TAGS=");
+    ((StringBuilder)localObject2).append(Build.TAGS);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("VERSION_CODES_BASE=1;");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("MODEL=");
+    ((StringBuilder)localObject2).append(Build.MODEL);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("SDK=");
+    ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("VERSION_RELEASE=");
+    ((StringBuilder)localObject2).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("DEVICE=");
+    ((StringBuilder)localObject2).append(Build.DEVICE);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("DISPLAY=");
+    ((StringBuilder)localObject2).append(Build.DISPLAY);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("BRAND=");
+    ((StringBuilder)localObject2).append(Build.BRAND);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("BOARD=");
+    ((StringBuilder)localObject2).append(Build.BOARD);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("FINGERPRINT=");
+    ((StringBuilder)localObject2).append(Build.FINGERPRINT);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("ID=");
+    ((StringBuilder)localObject2).append(Build.ID);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("MANUFACTURER=");
+    ((StringBuilder)localObject2).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("USER=");
+    ((StringBuilder)localObject2).append(Build.USER);
+    ((StringBuilder)localObject2).append(";");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("PROCESSORS=");
+    ((StringBuilder)localObject2).append(Runtime.getRuntime().availableProcessors());
+    ((StringBuilder)localObject2).append(";");
+    localObject2 = ((StringBuilder)localObject2).toString();
     localObject1 = paramContext.getApplicationInfo();
-    localObject2 = (String)localObject2 + "DATADIR=" + ((ApplicationInfo)localObject1).dataDir + ";";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("DATADIR=");
+    localStringBuilder.append(((ApplicationInfo)localObject1).dataDir);
+    localStringBuilder.append(";");
+    localObject2 = localStringBuilder.toString();
     if (Build.VERSION.SDK_INT >= 9)
     {
-      localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).nativeLibraryDir + ";";
-      localObject2 = localObject1;
-      if (SoUtil.customLibPath != null)
-      {
-        localObject2 = localObject1;
-        if (!SoUtil.customLibPath.equalsIgnoreCase("")) {
-          localObject2 = (String)localObject1 + "CSTLIBDIR=" + SoUtil.customLibPath + ";";
-        }
-      }
-      AndroidCodec.setDeviceInfos(paramContext);
-      int i = AndroidCodec.checkSupportMediaCodecFeature();
-      Log.i("SdkJni", "[Rson] check hardware feature: " + i);
-      if (i <= 0) {
-        break label905;
-      }
-      if ((i & 0x1) != 1) {
-        break label812;
-      }
-      paramContext = (String)localObject2 + "HW_AVC_DEC=1;";
-      label686:
-      if ((i & 0x2) != 2) {
-        break label836;
-      }
-      paramContext = paramContext + "HW_AVC_ENC=1;";
-      label713:
-      if ((i & 0x4) != 4) {
-        break label859;
-      }
-      paramContext = paramContext + "HW_HEVC_DEC=1;";
-      label740:
-      if ((i & 0x8) != 8) {
-        break label882;
-      }
-      paramContext = paramContext + "HW_HEVC_ENC=1;";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("LIBDIR=");
+      localStringBuilder.append(((ApplicationInfo)localObject1).nativeLibraryDir);
+      localStringBuilder.append(";");
+      localObject1 = localStringBuilder.toString();
     }
-    for (;;)
+    else
     {
-      nativeSetAndroidAppPath(paramContext);
-      return;
-      localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).dataDir + "/lib;";
-      break;
-      label812:
-      paramContext = (String)localObject2 + "HW_AVC_DEC=0;";
-      break label686;
-      label836:
-      paramContext = paramContext + "HW_AVC_ENC=0;";
-      break label713;
-      label859:
-      paramContext = paramContext + "HW_HEVC_DEC=0;";
-      break label740;
-      label882:
-      paramContext = paramContext + "HW_HEVC_ENC=0;";
-      continue;
-      label905:
-      paramContext = (String)localObject2 + "HW_AVC_ENC=0;";
-      paramContext = paramContext + "HW_AVC_DEC=0;";
-      paramContext = paramContext + "HW_HEVC_DEC=0;";
-      paramContext = paramContext + "HW_HEVC_ENC=0;";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("LIBDIR=");
+      localStringBuilder.append(((ApplicationInfo)localObject1).dataDir);
+      localStringBuilder.append("/lib;");
+      localObject1 = localStringBuilder.toString();
     }
+    localObject2 = localObject1;
+    if (SoUtil.customLibPath != null)
+    {
+      localObject2 = localObject1;
+      if (!SoUtil.customLibPath.equalsIgnoreCase(""))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("CSTLIBDIR=");
+        ((StringBuilder)localObject2).append(SoUtil.customLibPath);
+        ((StringBuilder)localObject2).append(";");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+    }
+    AndroidCodec.setDeviceInfos(paramContext);
+    int i = AndroidCodec.checkSupportMediaCodecFeature();
+    paramContext = new StringBuilder();
+    paramContext.append("[Rson] check hardware feature: ");
+    paramContext.append(i);
+    Log.i("SdkJni", paramContext.toString());
+    if (i > 0)
+    {
+      if ((i & 0x1) == 1)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append((String)localObject2);
+        paramContext.append("HW_AVC_DEC=1;");
+        paramContext = paramContext.toString();
+      }
+      else
+      {
+        paramContext = new StringBuilder();
+        paramContext.append((String)localObject2);
+        paramContext.append("HW_AVC_DEC=0;");
+        paramContext = paramContext.toString();
+      }
+      if ((i & 0x2) == 2)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("HW_AVC_ENC=1;");
+        paramContext = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("HW_AVC_ENC=0;");
+        paramContext = ((StringBuilder)localObject1).toString();
+      }
+      if ((i & 0x4) == 4)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("HW_HEVC_DEC=1;");
+        paramContext = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("HW_HEVC_DEC=0;");
+        paramContext = ((StringBuilder)localObject1).toString();
+      }
+      if ((i & 0x8) == 8)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("HW_HEVC_ENC=1;");
+        paramContext = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramContext);
+        ((StringBuilder)localObject1).append("HW_HEVC_ENC=0;");
+        paramContext = ((StringBuilder)localObject1).toString();
+      }
+    }
+    else
+    {
+      paramContext = new StringBuilder();
+      paramContext.append((String)localObject2);
+      paramContext.append("HW_AVC_ENC=0;");
+      paramContext = paramContext.toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append("HW_AVC_DEC=0;");
+      paramContext = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append("HW_HEVC_DEC=0;");
+      paramContext = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append("HW_HEVC_ENC=0;");
+      paramContext = ((StringBuilder)localObject1).toString();
+    }
+    nativeSetAndroidAppPath(paramContext);
   }
   
   private void initLogSetting(Context paramContext)
@@ -189,7 +369,10 @@ class AVContextImpl
       Log.e("SdkJni", "getVersion() null");
       return;
     }
-    Log.e("SdkJni", "avsdk version" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("avsdk version");
+    localStringBuilder.append(str);
+    Log.e("SdkJni", localStringBuilder.toString());
     int i = str.lastIndexOf('.');
     if (-1 == i)
     {
@@ -277,48 +460,59 @@ class AVContextImpl
   
   public boolean create(Context paramContext, boolean paramBoolean)
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      Log.e("SdkJni", "create context not in main thread");
-    }
-    do
+    Looper localLooper1 = Looper.myLooper();
+    Looper localLooper2 = Looper.getMainLooper();
+    boolean bool = false;
+    if (localLooper1 != localLooper2)
     {
+      Log.e("SdkJni", "create context not in main thread");
       return false;
-      if (paramBoolean)
-      {
-        SoUtil.setAppContext(paramContext.getApplicationContext());
-        SoUtil.setCopySoInfo(paramBoolean);
-        sExtractSoError = SoUtil.extractAVModulesFromAssets();
-      }
-      if (sExtractSoError != 0)
-      {
-        Log.e("SdkJni", "create context , sExtractSoError = " + sExtractSoError);
-        return false;
-      }
-      if (loadSdkLibrary())
-      {
-        this.mAppContext = paramContext.getApplicationContext();
-        initLogSetting(paramContext);
-        this.mNativeEntity = nativeCreate(this.mAppContext);
-      }
-    } while (this.mNativeEntity == 0);
-    return true;
+    }
+    if (paramBoolean)
+    {
+      SoUtil.setAppContext(paramContext.getApplicationContext());
+      SoUtil.setCopySoInfo(paramBoolean);
+      sExtractSoError = SoUtil.extractAVModulesFromAssets();
+    }
+    if (sExtractSoError != 0)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("create context , sExtractSoError = ");
+      paramContext.append(sExtractSoError);
+      Log.e("SdkJni", paramContext.toString());
+      return false;
+    }
+    if (loadSdkLibrary())
+    {
+      this.mAppContext = paramContext.getApplicationContext();
+      initLogSetting(paramContext);
+      this.mNativeEntity = nativeCreate(this.mAppContext);
+    }
+    paramBoolean = bool;
+    if (this.mNativeEntity != 0) {
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   public void destroy()
   {
-    if (this.mAudioCtrl != null)
+    Object localObject = this.mAudioCtrl;
+    if (localObject != null)
     {
-      this.mAudioCtrl.uninit();
+      ((AVAudioCtrl)localObject).uninit();
       this.mAudioCtrl = null;
     }
-    if (this.mVideoCtrl != null)
+    localObject = this.mVideoCtrl;
+    if (localObject != null)
     {
-      this.mVideoCtrl.unInit();
+      ((AVVideoCtrl)localObject).unInit();
       this.mVideoCtrl = null;
     }
-    if (this.mAudioEffectCtrl != null)
+    localObject = this.mAudioEffectCtrl;
+    if (localObject != null)
     {
-      this.mAudioEffectCtrl.uninit();
+      ((AVAudioEffectCtrl)localObject).uninit();
       this.mAudioEffectCtrl = null;
     }
     nativeDestroy(this.mNativeEntity);
@@ -331,8 +525,9 @@ class AVContextImpl
   
   public void enterRoom(AVRoomMulti.EventListener paramEventListener, AVRoomMulti.EnterParam paramEnterParam)
   {
-    if (this.mAppContext != null) {
-      nativeInitNetType(this.mNativeEntity, PhoneStatusTools.getNetWorkType(this.mAppContext));
+    Context localContext = this.mAppContext;
+    if (localContext != null) {
+      nativeInitNetType(this.mNativeEntity, PhoneStatusTools.getNetWorkType(localContext));
     }
     Log.d("SdkJni", "enterRoom");
     if (paramEnterParam == null) {
@@ -343,28 +538,31 @@ class AVContextImpl
       QLog.i("SdkJni", 0, "InternalEnterRoom run.");
       nativeInternalEnterRoom(this.mNativeEntity, this.mAppContext, paramEventListener, paramEnterParam);
     }
-    for (;;)
+    else
     {
-      startTipsTimer();
-      paramEventListener = getVideoCtrl();
-      if (paramEventListener != null) {
-        paramEventListener.resetTime();
-      }
-      return;
       QLog.i("SdkJni", 0, "ExternalEnterRoom run.");
       nativeEnterRoom(this.mNativeEntity, this.mAppContext, paramEventListener, paramEnterParam);
+    }
+    startTipsTimer();
+    paramEventListener = getVideoCtrl();
+    if (paramEventListener != null) {
+      paramEventListener.resetTime();
     }
   }
   
   public int exitRoom()
   {
     stopTipsTimer();
-    AVVideoCtrl localAVVideoCtrl = getVideoCtrl();
-    if (localAVVideoCtrl != null)
+    Object localObject = getVideoCtrl();
+    if (localObject != null)
     {
-      int i = localAVVideoCtrl.getFilterTime();
-      int j = localAVVideoCtrl.getPendantTime();
-      QLog.d("SdkJni", 0, "geteffectTime" + i + j);
+      int i = ((AVVideoCtrl)localObject).getFilterTime();
+      int j = ((AVVideoCtrl)localObject).getPendantTime();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("geteffectTime");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(j);
+      QLog.d("SdkJni", 0, ((StringBuilder)localObject).toString());
       nativeSetEffectTime(this.mNativeEntity, i, j);
     }
     return nativeExitRoom(this.mNativeEntity);
@@ -476,18 +674,18 @@ class AVContextImpl
       AVChannelManager.setAppChannel(new KSAppChannel());
       AVChannelManager.getAppChannel().loginWithParam(paramStartParam);
     }
-    for (;;)
+    else if (i == 0)
     {
-      initDeviceInfos(this.mAppContext);
-      nativeSetTwoSecondReportPath(AVLoggerClient.getLogDir());
-      nativeSetLocalConfigDirectory(this.mAppContext.getFilesDir().getAbsolutePath() + "/");
-      paramAVCallback = new AVContextImpl.AVStartCallback(this, paramStartParam, paramAVCallback);
-      nativeStart(this.mNativeEntity, paramStartParam, paramAVCallback);
-      return;
-      if (i == 0) {
-        AVChannelManager.setAppChannel(null);
-      }
+      AVChannelManager.setAppChannel(null);
     }
+    initDeviceInfos(this.mAppContext);
+    nativeSetTwoSecondReportPath(AVLoggerClient.getLogDir());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mAppContext.getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/");
+    nativeSetLocalConfigDirectory(localStringBuilder.toString());
+    paramAVCallback = new AVContextImpl.AVStartCallback(this, paramStartParam, paramAVCallback);
+    nativeStart(this.mNativeEntity, paramStartParam, paramAVCallback);
   }
   
   public void start(AVContext.StartParam paramStartParam, AVSDKLogSetting paramAVSDKLogSetting, AVCallback paramAVCallback)
@@ -498,21 +696,21 @@ class AVContextImpl
       AVChannelManager.setAppChannel(new KSAppChannel());
       AVChannelManager.getAppChannel().loginWithParam(paramStartParam);
     }
-    for (;;)
+    else if (i == 0)
     {
-      if (paramAVSDKLogSetting != null) {
-        AVLoggerClient.setLogSetting(paramAVSDKLogSetting);
-      }
-      initDeviceInfos(this.mAppContext);
-      nativeSetTwoSecondReportPath(AVLoggerClient.getLogDir());
-      nativeSetLocalConfigDirectory(this.mAppContext.getFilesDir().getAbsolutePath() + "/");
-      paramAVSDKLogSetting = new AVContextImpl.AVStartCallback(this, paramStartParam, paramAVCallback);
-      nativeStart(this.mNativeEntity, paramStartParam, paramAVSDKLogSetting);
-      return;
-      if (i == 0) {
-        AVChannelManager.setAppChannel(null);
-      }
+      AVChannelManager.setAppChannel(null);
     }
+    if (paramAVSDKLogSetting != null) {
+      AVLoggerClient.setLogSetting(paramAVSDKLogSetting);
+    }
+    initDeviceInfos(this.mAppContext);
+    nativeSetTwoSecondReportPath(AVLoggerClient.getLogDir());
+    paramAVSDKLogSetting = new StringBuilder();
+    paramAVSDKLogSetting.append(this.mAppContext.getFilesDir().getAbsolutePath());
+    paramAVSDKLogSetting.append("/");
+    nativeSetLocalConfigDirectory(paramAVSDKLogSetting.toString());
+    paramAVSDKLogSetting = new AVContextImpl.AVStartCallback(this, paramStartParam, paramAVCallback);
+    nativeStart(this.mNativeEntity, paramStartParam, paramAVSDKLogSetting);
   }
   
   public int startPreservingEncData(String paramString1, String paramString2)
@@ -547,7 +745,7 @@ class AVContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVContextImpl
  * JD-Core Version:    0.7.0.1
  */

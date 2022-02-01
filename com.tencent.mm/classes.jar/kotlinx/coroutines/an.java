@@ -1,124 +1,55 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.c.e;
-import a.c.e.c;
-import a.l;
-import a.p;
-import a.v;
-import a.y;
-import kotlinx.coroutines.a.o;
-import kotlinx.coroutines.c.i;
-import kotlinx.coroutines.c.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.b;
+import kotlin.d.f;
+import kotlin.d.f.c;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/DispatchedTask;", "T", "Lkotlinx/coroutines/scheduling/Task;", "Lkotlinx/coroutines/SchedulerTask;", "resumeMode", "", "(I)V", "delegate", "Lkotlin/coroutines/Continuation;", "getDelegate", "()Lkotlin/coroutines/Continuation;", "getExceptionalResult", "", "state", "", "getSuccessfulResult", "(Ljava/lang/Object;)Ljava/lang/Object;", "run", "", "takeState", "kotlinx-coroutines-core"})
-public abstract class an<T>
-  extends i
+@Metadata(d1={""}, d2={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class an
 {
-  public int CHQ;
-  
-  public an(int paramInt)
+  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
   {
-    this.CHQ = paramInt;
-  }
-  
-  public static Throwable eb(Object paramObject)
-  {
-    Object localObject = null;
-    if (!(paramObject instanceof q)) {
-      paramObject = null;
-    }
-    for (;;)
+    AppMethodBeat.i(118053);
+    if (paramThrowable1 == paramThrowable2)
     {
-      q localq = (q)paramObject;
-      paramObject = localObject;
-      if (localq != null) {
-        paramObject = localq.cause;
-      }
-      return paramObject;
+      AppMethodBeat.o(118053);
+      return paramThrowable1;
     }
+    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
+    b.a((Throwable)paramThrowable2, paramThrowable1);
+    paramThrowable1 = (Throwable)paramThrowable2;
+    AppMethodBeat.o(118053);
+    return paramThrowable1;
   }
   
-  public <T> T dX(Object paramObject)
+  public static final void b(f paramf, Throwable paramThrowable)
   {
-    return paramObject;
-  }
-  
-  public abstract Object epm();
-  
-  public abstract c<T> epp();
-  
-  public final void run()
-  {
-    j localj = this.CKA;
+    AppMethodBeat.i(188845);
     try
     {
-      c localc1 = epp();
-      if (localc1 == null) {
-        throw new v("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<T>");
+      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.ajvG);
+      if (localCoroutineExceptionHandler != null)
+      {
+        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
+        AppMethodBeat.o(188845);
+        return;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      throw ((Throwable)new ak("Unexpected exception running ".concat(String.valueOf(this)), localThrowable));
     }
     finally
     {
-      localj.eqH();
+      am.a(paramf, b(paramThrowable, localThrowable));
+      AppMethodBeat.o(188845);
+      return;
     }
-    Object localObject5 = (al)localObject1;
-    c localc2 = ((al)localObject5).CHO;
-    e locale = localc2.eaV();
-    Object localObject2;
-    Object localObject6;
-    if (bo.Wg(this.CHQ))
-    {
-      localObject2 = (bc)locale.get((e.c)bc.CIk);
-      localObject6 = epm();
-      localObject5 = o.b(locale, ((al)localObject5).CHM);
-      if (localObject2 == null) {
-        break label183;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!((bc)localObject2).isActive())
-        {
-          localObject2 = (Throwable)((bc)localObject2).epQ();
-          localObject6 = p.BLX;
-          localc2.dg(p.de(a.q.n((Throwable)localObject2)));
-          localObject2 = y.BMg;
-          o.a(locale, localObject5);
-          localj.eqH();
-          return;
-          localObject2 = null;
-          break;
-        }
-        label183:
-        localObject2 = eb(localObject6);
-        if (localObject2 != null)
-        {
-          localObject6 = p.BLX;
-          localc2.dg(p.de(a.q.n((Throwable)localObject2)));
-          continue;
-        }
-        localObject4 = dX(localObject6);
-      }
-      finally
-      {
-        o.a(locale, localObject5);
-      }
-      Object localObject4;
-      localObject6 = p.BLX;
-      localc2.dg(p.de(localObject4));
-    }
+    am.a(paramf, paramThrowable);
+    AppMethodBeat.o(188845);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.an
  * JD-Core Version:    0.7.0.1
  */

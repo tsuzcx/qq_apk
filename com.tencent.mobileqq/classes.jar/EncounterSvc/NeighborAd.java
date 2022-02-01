@@ -8,8 +8,8 @@ public final class NeighborAd
   extends JceStruct
 {
   public String ad_item = "";
-  public int ad_postion;
-  public int ad_source;
+  public int ad_postion = 0;
+  public int ad_source = 0;
   
   public NeighborAd() {}
   
@@ -36,7 +36,7 @@ public final class NeighborAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.NeighborAd
  * JD-Core Version:    0.7.0.1
  */

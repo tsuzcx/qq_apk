@@ -13,14 +13,14 @@ class ChatHistoryBubbleListFragment$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Int == 1) {}
-    for (Object localObject = this.this$0.b;; localObject = this.this$0.jdField_a_of_type_JavaLangString)
-    {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.this$0.jdField_a_of_type_Int, 9223372036854775807L, 20);
-      if (localObject != null) {
-        ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.1.1(this, (List)localObject));
-      }
-      return;
+    if (this.this$0.a == 1) {
+      localObject = this.this$0.c;
+    } else {
+      localObject = this.this$0.b;
+    }
+    Object localObject = this.this$0.f.getMessageFacade().a((String)localObject, this.this$0.a, 9223372036854775807L, 20);
+    if (localObject != null) {
+      ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.1.1(this, (List)localObject));
     }
   }
 }

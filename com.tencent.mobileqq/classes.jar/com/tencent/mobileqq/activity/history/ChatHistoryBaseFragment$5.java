@@ -9,9 +9,14 @@ class ChatHistoryBaseFragment$5
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.dismiss();
+    try
+    {
+      if (this.this$0.q != null) {
+        this.this$0.q.dismiss();
+      }
+      return;
     }
+    catch (Throwable localThrowable) {}
   }
 }
 

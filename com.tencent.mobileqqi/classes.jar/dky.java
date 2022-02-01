@@ -1,23 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
 import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
+import java.util.ArrayList;
 
 public class dky
-  implements Handler.Callback
+  implements Runnable
 {
   public dky(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    StrangerHandler localStrangerHandler = (StrangerHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(28);
+    if (this.a.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.B();
-    }
+    localStrangerHandler.a(this.a.jdField_b_of_type_JavaUtilArrayList);
+    this.a.jdField_b_of_type_JavaUtilArrayList.clear();
   }
 }
 

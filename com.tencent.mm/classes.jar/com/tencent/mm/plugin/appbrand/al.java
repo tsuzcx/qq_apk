@@ -1,148 +1,70 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mm.af.l;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.g.a.so;
-import com.tencent.mm.g.a.so.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.w;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.k.a.a;
+import com.tencent.mm.plugin.appbrand.k.a.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-public abstract class al
-  extends com.tencent.mm.plugin.w.a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/EmbedHalfScreenWxaManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;)V", "currentEmbedWxaAppId", "", "markShouldReShowEmbedWxa", "Ljava/util/concurrent/atomic/AtomicBoolean;", "closeEmbedWxaBeforeHostDisappear", "", "host", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "resumeEmbedWxaWhenHostResumed", "afterCloseTask", "Ljava/lang/Runnable;", "onInitConfigUpdated", "", "initConfigWC", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "onRuntimeResume", "onStop", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class al
 {
-  protected abstract int A(Intent paramIntent);
+  public static final al.a qxB;
+  final w qxC;
+  String qxD;
+  AtomicBoolean qxE;
   
-  protected void a(Context paramContext, Intent paramIntent, boolean paramBoolean) {}
-  
-  protected void b(Context paramContext, Intent paramIntent, boolean paramBoolean)
+  static
   {
-    String str2;
-    String str1;
-    int i;
-    if (paramBoolean)
-    {
-      str2 = c.dd(w.n(paramIntent, "id"), q.getAndroidId());
-      str1 = c.dd(w.n(paramIntent, "ext_info"), q.getAndroidId());
-      i = w.a(paramIntent, "ext_info_1", 0);
-      so localso = new so();
-      localso.cIQ.appId = str1;
-      localso.cIQ.userName = str2;
-      localso.cIQ.cIT = i;
-      localso.cIQ.scene = A(paramIntent);
-      localso.cIQ.cIW = true;
-      localso.cIQ.context = paramContext;
-      localso.cIQ.cIX = false;
-      com.tencent.mm.sdk.b.a.ymk.l(localso);
-      if (!localso.cIR.cJh) {
-        break label182;
-      }
-      ab.i("MiroMsg.WxaShortcutEntry", "open wxa with id : %s", new Object[] { str2 });
-    }
-    label182:
-    do
-    {
-      return;
-      str2 = c.decrypt(w.n(paramIntent, "id"));
-      str1 = c.decrypt(w.n(paramIntent, "ext_info"));
-      break;
-      if (i == 1)
-      {
-        Toast.makeText(paramContext, 2131296604, 0).show();
-        return;
-      }
-    } while (i != 2);
-    Toast.makeText(paramContext, 2131296746, 0).show();
+    AppMethodBeat.i(316675);
+    qxB = new al.a((byte)0);
+    AppMethodBeat.o(316675);
   }
   
-  protected boolean b(Intent paramIntent, boolean paramBoolean)
+  public al(w paramw)
   {
-    Object localObject;
-    if (paramBoolean) {
-      localObject = c.dd(w.n(paramIntent, "id"), q.getAndroidId());
-    }
-    String str2;
-    int i;
-    for (String str1 = c.dd(w.n(paramIntent, "ext_info"), q.getAndroidId());; str1 = c.decrypt(w.n(paramIntent, "ext_info")))
-    {
-      str2 = w.n(paramIntent, "token");
-      i = w.a(paramIntent, "ext_info_1", 0);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-        break;
-      }
-      ab.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, username or appId or token is null or nil.");
-      return false;
-      localObject = c.decrypt(w.n(paramIntent, "id"));
-    }
-    if (!l.na((String)localObject))
-    {
-      ab.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, username %s invalid ", new Object[] { localObject });
-      e.qrI.idkeyStat(647L, 1L, 1L, false);
-      return false;
-    }
-    paramIntent = new StringBuilder();
-    g.RJ();
-    if (!str2.equals(c.de(str1, com.tencent.mm.kernel.a.getUin())))
-    {
-      paramIntent = ah.getContext().getSharedPreferences("app_brand_global_sp", 0);
-      if (paramIntent == null)
-      {
-        ab.w("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, sp is null.");
-        return false;
-      }
-      localObject = paramIntent.getStringSet("uin_set", new HashSet());
-      if ((localObject == null) || (((Set)localObject).isEmpty()))
-      {
-        ab.w("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, uin set is null or nil.");
-        return false;
-      }
-      paramIntent = new HashSet();
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramIntent.add(c.de(str1, (String)((Iterator)localObject).next()));
-      }
-      if (!paramIntent.contains(str2))
-      {
-        ab.e("MiroMsg.WxaShortcutEntry", "jump to Wxa failed, illegal token(%s).", new Object[] { str2 });
-        return false;
-      }
-    }
-    if ((!b.dsf()) && (i == 1))
-    {
-      ab.i("MiroMsg.WxaShortcutEntry", "can not open testing WeApp in released WeChat.");
-      return false;
-    }
-    return true;
+    AppMethodBeat.i(316672);
+    this.qxC = paramw;
+    this.qxD = "";
+    this.qxE = new AtomicBoolean(false);
+    AppMethodBeat.o(316672);
   }
   
-  public void l(Context paramContext, Intent paramIntent)
+  public final boolean a(AppBrandRuntime paramAppBrandRuntime, boolean paramBoolean, Runnable paramRunnable)
   {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (boolean bool = true; !b(paramIntent, bool); bool = false)
+    AppMethodBeat.i(316678);
+    s.u(paramAppBrandRuntime, "host");
+    s.u(paramRunnable, "afterCloseTask");
+    Object localObject = paramAppBrandRuntime.qsc;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((ap)localObject).getActiveRuntime())
     {
-      a(paramContext, paramIntent, false);
-      return;
+      AppMethodBeat.o(316678);
+      return false;
     }
-    a(paramContext, paramIntent, true);
-    b(paramContext, paramIntent, bool);
+    a.a locala = a.ruh;
+    if (a.a.F((w)paramAppBrandRuntime))
+    {
+      ((AppBrandRuntime)localObject).b(null, paramRunnable);
+      Log.i("MicroMsg.EmbedHalfScreenWxaManager", "[onCloseEmbedWxaBeforeHostClose] mark down embedded wxa appid for re-show when host back to the front");
+      if (paramBoolean)
+      {
+        paramAppBrandRuntime = ((AppBrandRuntime)localObject).mAppId;
+        s.s(paramAppBrandRuntime, "activeRuntime.appId");
+        this.qxD = paramAppBrandRuntime;
+      }
+      AppMethodBeat.o(316678);
+      return true;
+    }
+    AppMethodBeat.o(316678);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.al
  * JD-Core Version:    0.7.0.1
  */

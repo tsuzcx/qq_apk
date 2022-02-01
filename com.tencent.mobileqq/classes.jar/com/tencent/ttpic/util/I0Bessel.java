@@ -13,33 +13,32 @@ public class I0Bessel
     {
       paramDouble = paramDouble * paramDouble * 0.0625D;
       i = (int)paramDouble * 13;
-      return paramDouble * (((((((((((a[i] * paramDouble + a[(i + 1)]) * paramDouble + a[(i + 2)]) * paramDouble + a[(i + 3)]) * paramDouble + a[(i + 4)]) * paramDouble + a[(i + 5)]) * paramDouble + a[(i + 6)]) * paramDouble + a[(i + 7)]) * paramDouble + a[(i + 8)]) * paramDouble + a[(i + 9)]) * paramDouble + a[(i + 10)]) * paramDouble + a[(i + 11)]) + a[(i + 12)];
+      arrayOfDouble = a;
+      paramDouble = (((((((((((arrayOfDouble[i] * paramDouble + arrayOfDouble[(i + 1)]) * paramDouble + arrayOfDouble[(i + 2)]) * paramDouble + arrayOfDouble[(i + 3)]) * paramDouble + arrayOfDouble[(i + 4)]) * paramDouble + arrayOfDouble[(i + 5)]) * paramDouble + arrayOfDouble[(i + 6)]) * paramDouble + arrayOfDouble[(i + 7)]) * paramDouble + arrayOfDouble[(i + 8)]) * paramDouble + arrayOfDouble[(i + 9)]) * paramDouble + arrayOfDouble[(i + 10)]) * paramDouble + arrayOfDouble[(i + 11)]) * paramDouble;
     }
-    if (paramDouble < 12.5D)
+    for (double d = arrayOfDouble[(i + 12)];; d = arrayOfDouble[(i + 13)])
     {
+      return paramDouble + d;
+      if (paramDouble >= 12.5D) {
+        break;
+      }
       i = (int)paramDouble;
-      paramDouble -= i;
+      d = i;
+      Double.isNaN(d);
+      paramDouble -= d;
       i = (i - 8) * 14;
-      return paramDouble * ((((((((((((b[i] * paramDouble + b[(i + 1)]) * paramDouble + b[(i + 2)]) * paramDouble + b[(i + 3)]) * paramDouble + b[(i + 4)]) * paramDouble + b[(i + 5)]) * paramDouble + b[(i + 6)]) * paramDouble + b[(i + 7)]) * paramDouble + b[(i + 8)]) * paramDouble + b[(i + 9)]) * paramDouble + b[(i + 10)]) * paramDouble + b[(i + 11)]) * paramDouble + b[(i + 12)]) + b[(i + 13)];
+      arrayOfDouble = b;
+      paramDouble = ((((((((((((arrayOfDouble[i] * paramDouble + arrayOfDouble[(i + 1)]) * paramDouble + arrayOfDouble[(i + 2)]) * paramDouble + arrayOfDouble[(i + 3)]) * paramDouble + arrayOfDouble[(i + 4)]) * paramDouble + arrayOfDouble[(i + 5)]) * paramDouble + arrayOfDouble[(i + 6)]) * paramDouble + arrayOfDouble[(i + 7)]) * paramDouble + arrayOfDouble[(i + 8)]) * paramDouble + arrayOfDouble[(i + 9)]) * paramDouble + arrayOfDouble[(i + 10)]) * paramDouble + arrayOfDouble[(i + 11)]) * paramDouble + arrayOfDouble[(i + 12)]) * paramDouble;
     }
-    double d1 = 60.0D / paramDouble;
-    int i = (int)d1 * 9;
-    double d2 = c[i];
-    double d3 = c[(i + 1)];
-    double d4 = c[(i + 2)];
-    double d5 = c[(i + 3)];
-    double d6 = c[(i + 4)];
-    double d7 = c[(i + 5)];
-    double d8 = c[(i + 6)];
-    double d9 = c[(i + 7)];
-    double d10 = c[(i + 8)];
-    double d11 = Math.sqrt(d1);
-    return Math.exp(paramDouble) * (d11 * (d10 + (((((((d2 * d1 + d3) * d1 + d4) * d1 + d5) * d1 + d6) * d1 + d7) * d1 + d8) * d1 + d9) * d1));
+    d = 60.0D / paramDouble;
+    int i = (int)d * 9;
+    double[] arrayOfDouble = c;
+    return ((((((((arrayOfDouble[i] * d + arrayOfDouble[(i + 1)]) * d + arrayOfDouble[(i + 2)]) * d + arrayOfDouble[(i + 3)]) * d + arrayOfDouble[(i + 4)]) * d + arrayOfDouble[(i + 5)]) * d + arrayOfDouble[(i + 6)]) * d + arrayOfDouble[(i + 7)]) * d + arrayOfDouble[(i + 8)]) * Math.sqrt(d) * Math.exp(paramDouble);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.I0Bessel
  * JD-Core Version:    0.7.0.1
  */

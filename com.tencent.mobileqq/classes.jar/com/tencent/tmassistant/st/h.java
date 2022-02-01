@@ -1,5 +1,6 @@
 package com.tencent.tmassistant.st;
 
+import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistant.common.jce.ReqHead;
 import com.tencent.tmassistant.common.jce.Request;
@@ -16,7 +17,7 @@ import java.util.Iterator;
 public class h
   extends PostHttpRequest
 {
-  protected static h a = null;
+  protected static h a;
   protected d b = null;
   private StatReportRequest c;
   
@@ -24,19 +25,28 @@ public class h
   {
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      Iterator localIterator = paramArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = paramArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        StatItem localStatItem = (StatItem)localIterator.next();
-        ab.c("SDKREPORT", ">>sendRequest type = " + localStatItem.type + " data = " + g.a(localStatItem.records));
+        StatItem localStatItem = (StatItem)((Iterator)localObject).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(">>sendRequest type = ");
+        localStringBuilder.append(localStatItem.type);
+        localStringBuilder.append(" data = ");
+        localStringBuilder.append(g.a(localStatItem.records));
+        ab.c("SDKREPORT", localStringBuilder.toString());
       }
       if (this.c == null) {
         this.c = new StatReportRequest();
       }
-      this.c.data = paramArrayList;
-      paramArrayList = ProtocolPackage.buildRequest(this.c);
+      localObject = this.c;
+      ((StatReportRequest)localObject).data = paramArrayList;
+      paramArrayList = ProtocolPackage.buildRequest((JceStruct)localObject);
       int i = paramArrayList.head.requestId;
-      ab.c("StatReportEngine", "selfUpdateReport sendStatReportRequest ret = " + i);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("selfUpdateReport sendStatReportRequest ret = ");
+      ((StringBuilder)localObject).append(i);
+      ab.c("StatReportEngine", ((StringBuilder)localObject).toString());
       paramArrayList = ProtocolPackage.buildPostData(paramArrayList);
       ab.c("StatReportEngine", "selfUpdateReport sendStatReportRequest");
       super.sendRequest(paramArrayList);
@@ -50,55 +60,61 @@ public class h
     this.b = paramd;
   }
   
-  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    ab.c("StatReportEngine", "errorCode: " + paramInt);
-    Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("errorCode: ");
+    ((StringBuilder)localObject).append(paramInt);
+    ab.c("StatReportEngine", ((StringBuilder)localObject).toString());
+    localObject = ProtocolPackage.unpackPackage(paramArrayOfByte2);
     paramArrayOfByte1 = (Request)ProtocolPackage.bytes2JceObj(paramArrayOfByte1, Request.class);
-    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
-    for (int i = paramArrayOfByte1.head.requestId;; i = 0)
+    int i;
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {
+      i = paramArrayOfByte1.head.requestId;
+    } else {
+      i = 0;
+    }
+    if (paramArrayOfByte2 == null)
     {
-      if (paramArrayOfByte2 == null)
+      ab.c("StatReportEngine", "response is null");
+      this.b.onStatReportFinish(i, null, null, paramInt);
+      return;
+    }
+    if ((localObject != null) && (((Response)localObject).body != null))
+    {
+      paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(((Response)localObject).body, StatReportResponse.class);
+      if (paramArrayOfByte1 != null)
       {
-        ab.c("StatReportEngine", "response is null");
-        this.b.onStatReportFinish(i, null, null, paramInt);
-        return;
-      }
-      if ((localResponse != null) && (localResponse.body != null))
-      {
-        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(localResponse.body, StatReportResponse.class);
-        if (paramArrayOfByte1 != null) {
-          if ((this.b != null) && (paramInt == 0)) {
-            if ((paramArrayOfByte1 instanceof StatReportResponse))
-            {
-              paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
-              if (paramArrayOfByte1.ret != 0) {
-                break label166;
-              }
+        if ((this.b != null) && (paramInt == 0))
+        {
+          if ((paramArrayOfByte1 instanceof StatReportResponse))
+          {
+            paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
+            if (paramArrayOfByte1.ret == 0) {
               this.b.onStatReportFinish(i, null, paramArrayOfByte1, 0);
+            } else {
+              this.b.onStatReportFinish(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
             }
           }
         }
+        else {
+          this.b.onStatReportFinish(i, null, null, paramInt);
+        }
       }
-      for (;;)
-      {
-        ab.c("StatReportEngine", "exit");
-        return;
-        label166:
-        this.b.onStatReportFinish(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
-        continue;
-        this.b.onStatReportFinish(i, null, null, paramInt);
-        continue;
-        this.b.onStatReportFinish(i, null, null, paramInt);
-        continue;
+      else {
         this.b.onStatReportFinish(i, null, null, paramInt);
       }
     }
+    else
+    {
+      this.b.onStatReportFinish(i, null, null, paramInt);
+    }
+    ab.c("StatReportEngine", "exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.st.h
  * JD-Core Version:    0.7.0.1
  */

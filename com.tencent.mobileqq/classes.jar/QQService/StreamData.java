@@ -8,8 +8,8 @@ public final class StreamData
   extends JceStruct
 {
   static byte[] cache_vData;
-  public short shPackSeq;
-  public byte[] vData;
+  public short shPackSeq = 0;
+  public byte[] vData = null;
   
   public StreamData() {}
   
@@ -38,7 +38,7 @@ public final class StreamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.StreamData
  * JD-Core Version:    0.7.0.1
  */

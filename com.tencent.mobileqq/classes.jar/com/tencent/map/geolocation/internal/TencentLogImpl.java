@@ -23,25 +23,26 @@ public final class TencentLogImpl
   public TencentLogImpl(Context paramContext, @Nullable File paramFile)
   {
     this.mBackupDir = paramFile;
-    if ((paramFile != null) && ((paramFile.exists()) || (paramFile.mkdirs()))) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((paramFile != null) && ((paramFile.exists()) || (paramFile.mkdirs()))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mPrepared = bool;
+    if (this.mPrepared)
     {
-      this.mPrepared = bool;
-      if (this.mPrepared)
-      {
-        this.mWorker = new HandlerThread("log_worker", 10);
-        this.mWorker.start();
-        this.mHandler = new TencentLogImpl.LogHandler(this, this.mWorker.getLooper(), null);
+      this.mWorker = new HandlerThread("log_worker", 10);
+      this.mWorker.start();
+      this.mHandler = new TencentLogImpl.LogHandler(this, this.mWorker.getLooper(), null);
+    }
+    this.mKiller = new TencentLogImpl.1(this);
+    if (DEBUG)
+    {
+      new StringBuilder("log dir=").append(this.mBackupDir);
+      if (!this.mPrepared) {
+        new StringBuilder("init failed: mPrepared=").append(this.mPrepared);
       }
-      this.mKiller = new TencentLogImpl.1(this);
-      if (DEBUG)
-      {
-        new StringBuilder("log dir=").append(this.mBackupDir);
-        if (!this.mPrepared) {
-          new StringBuilder("init failed: mPrepared=").append(this.mPrepared);
-        }
-      }
-      return;
     }
   }
   
@@ -62,8 +63,9 @@ public final class TencentLogImpl
   
   public final String getDirString()
   {
-    if (this.mBackupDir != null) {
-      return this.mBackupDir.getName();
+    File localFile = this.mBackupDir;
+    if (localFile != null) {
+      return localFile.getName();
     }
     return null;
   }
@@ -79,8 +81,11 @@ public final class TencentLogImpl
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(DateFormat.format("yyyy-MM-dd kk:mm:ss", System.currentTimeMillis()));
-      localStringBuilder.append(":").append(paramString1);
-      localStringBuilder.append(":").append(paramString2).append("\n");
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("\n");
       this.mHandler.obtainMessage(1, localStringBuilder.toString()).sendToTarget();
     }
   }
@@ -96,18 +101,17 @@ public final class TencentLogImpl
   
   public final boolean tryRestart()
   {
-    boolean bool = false;
     if (_isPrepared())
     {
       this.mHandler.removeCallbacks(this.mKiller);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.geolocation.internal.TencentLogImpl
  * JD-Core Version:    0.7.0.1
  */

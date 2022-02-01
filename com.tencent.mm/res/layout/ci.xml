@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/c2" android:layout_width="fill_parent" android:layout_height="@dimen/s8"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/jp" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="15.0dip" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/se" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="20.0dip" android:src="@raw/ic_appbrand_star_mark" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <FrameLayout android:id="@id/rb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/se" android:layout_toRightOf="@id/jp">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <TextView android:id="@id/c6" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/sj" />
-                <TextView android:id="@id/rd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" style="@style/sk" />
-            </LinearLayout>
-            <TextView android:id="@id/q9" android:background="@drawable/c5" android:padding="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/sl" />
-        </LinearLayout>
-    </FrameLayout>
-    <TextView android:textSize="11.0dip" android:id="@id/sf" android:background="@drawable/c5" android:padding="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" style="@style/sl" />
-    <View android:id="@id/pm" android:layout_alignLeft="@id/rb" android:layout_alignParentBottom="true" android:layout_alignStart="@id/rb" style="@style/ww" />
-</RelativeLayout>
+<com.tencent.mm.plugin.sns.ad.widget.living.LivingStatusLayout android:layout_width="@dimen/da" android:layout_height="@dimen/cr"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/i6" android:layout_width="fill_parent" android:layout_height="fill_parent" app:desc_color="@color/az" app:desc_margin_left="2.0dip" app:desc_text="@string/e71" app:desc_text_size="11.0dip" app:logo_color="@color/az" app:logo_height="@dimen/cd" app:logo_margin_left="6.0dip" app:logo_mode="hmb" app:logo_style="f3g" app:logo_width="@dimen/cd" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:textSize="11.0dip" android:textColor="@color/az" android:gravity="center" android:id="@id/i7" android:background="@drawable/bi" android:layout_width="fill_parent" android:layout_height="fill_parent" app:autoSizeMaxTextSize="11.0dip" app:autoSizeMinTextSize="5.0dip" app:autoSizeTextType="l08" />
+</com.tencent.mm.plugin.sns.ad.widget.living.LivingStatusLayout>

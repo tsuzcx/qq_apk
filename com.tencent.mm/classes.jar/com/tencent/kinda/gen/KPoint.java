@@ -27,9 +27,9 @@ public final class KPoint
   
   public final String toString()
   {
-    AppMethodBeat.i(141354);
+    AppMethodBeat.i(135866);
     String str = "KPoint{mX=" + this.mX + ",mY=" + this.mY + "}";
-    AppMethodBeat.o(141354);
+    AppMethodBeat.o(135866);
     return str;
   }
 }

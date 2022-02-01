@@ -1,8 +1,8 @@
 package io.flutter.embedding.android;
 
-import android.support.annotation.NonNull;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 
 class FlutterSurfaceView$1
@@ -20,7 +20,7 @@ class FlutterSurfaceView$1
   
   public void surfaceCreated(@NonNull SurfaceHolder paramSurfaceHolder)
   {
-    Log.v("FlutterSurfaceView", "SurfaceHolder.Callback.surfaceCreated()");
+    Log.v("FlutterSurfaceView", "SurfaceHolder.Callback.startRenderingToSurface()");
     FlutterSurfaceView.access$002(this.this$0, true);
     if (FlutterSurfaceView.access$100(this.this$0)) {
       FlutterSurfaceView.access$200(this.this$0);
@@ -29,7 +29,7 @@ class FlutterSurfaceView$1
   
   public void surfaceDestroyed(@NonNull SurfaceHolder paramSurfaceHolder)
   {
-    Log.v("FlutterSurfaceView", "SurfaceHolder.Callback.surfaceDestroyed()");
+    Log.v("FlutterSurfaceView", "SurfaceHolder.Callback.stopRenderingToSurface()");
     FlutterSurfaceView.access$002(this.this$0, false);
     if (FlutterSurfaceView.access$100(this.this$0)) {
       FlutterSurfaceView.access$400(this.this$0);
@@ -38,7 +38,7 @@ class FlutterSurfaceView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSurfaceView.1
  * JD-Core Version:    0.7.0.1
  */

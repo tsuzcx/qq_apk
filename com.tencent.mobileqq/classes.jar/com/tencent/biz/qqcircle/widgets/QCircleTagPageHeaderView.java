@@ -1,33 +1,28 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alud;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import androidx.annotation.NonNull;
+import com.tencent.biz.qqcircle.utils.HardCodeUtil;
+import com.tencent.biz.qqcircle.utils.QCircleAvatarListUtils;
+import com.tencent.biz.richframework.part.block.BlockMerger.ShareData;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import feedcloud.FeedCloudMeta.StTagInfo;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import ufs;
-import yif;
 
 public class QCircleTagPageHeaderView
-  extends BaseWidgetView<yif>
+  extends QCircleBaseWidgetView<BlockMerger.ShareData>
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AvatarListView jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView;
-  private QCircleFollowTagView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView;
-  private FeedCloudMeta.StTagInfo jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo;
-  private TextView b;
+  private QCircleAvatarListView a;
+  private FeedCloudMeta.StTagInfo b;
+  private TextView c;
+  private TextView d;
+  private ImageView e;
+  private QCircleFollowTagView f;
   
   public QCircleTagPageHeaderView(@NonNull Context paramContext)
   {
@@ -35,41 +30,45 @@ public class QCircleTagPageHeaderView
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
   }
   
-  public int a()
+  protected void a(BlockMerger.ShareData paramShareData, int paramInt)
   {
-    return 2131560593;
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131363000));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
-    this.b = ((TextView)paramView.findViewById(2131378918));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368719));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView = ((QCircleFollowTagView)paramView.findViewById(2131373248));
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setItemReportListener(new ufs(this));
-  }
-  
-  protected void a(yif paramyif)
-  {
-    if ((paramyif != null) && ((paramyif.a instanceof FeedCloudMeta.StTagInfo)))
+    if ((paramShareData != null) && ((paramShareData.a instanceof FeedCloudMeta.StTagInfo)))
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = ((FeedCloudMeta.StTagInfo)paramyif.a);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
-      this.b.setText(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagTotalUser.get() + alud.a(2131698390));
-      paramyif = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.userList.get().iterator();
-      while (localIterator.hasNext()) {
-        paramyif.add(((FeedCloudMeta.StUser)localIterator.next()).id.get());
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramyif);
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.setTagInfo(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo);
+      this.b = ((FeedCloudMeta.StTagInfo)paramShareData.a);
+      this.c.setText(this.b.tagName.get());
+      paramShareData = this.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b.tagTotalUser.get());
+      localStringBuilder.append(HardCodeUtil.a(2131895924));
+      paramShareData.setText(localStringBuilder.toString());
+      this.a.setData(QCircleAvatarListUtils.a(this.b.userList.get(), 2147483647));
+      this.f.setTagInfo(this.b);
     }
+  }
+  
+  public int getLayoutId()
+  {
+    return 2131626969;
+  }
+  
+  protected String getLogTag()
+  {
+    return "QCircleTagPageHeaderView";
+  }
+  
+  protected void onInitView(Context paramContext, View paramView)
+  {
+    this.a = ((QCircleAvatarListView)paramView.findViewById(2131429025));
+    this.c = ((TextView)paramView.findViewById(2131448814));
+    this.d = ((TextView)paramView.findViewById(2131448637));
+    this.e = ((ImageView)paramView.findViewById(2131436287));
+    this.f = ((QCircleFollowTagView)paramView.findViewById(2131441894));
+    this.f.setItemReportListener(new QCircleTagPageHeaderView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView
  * JD-Core Version:    0.7.0.1
  */

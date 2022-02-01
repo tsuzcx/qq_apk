@@ -1,7 +1,7 @@
 package com.tencent.matrix.iocanary.core;
 
-import com.tencent.matrix.g.c;
-import com.tencent.mrs.b.a.a;
+import com.tencent.b.a.a.a;
+import com.tencent.matrix.e.c;
 import java.util.ArrayList;
 
 public class IOCanaryJniBridge
@@ -10,6 +10,7 @@ public class IOCanaryJniBridge
   private static boolean sIsLoadJniLib;
   private static boolean sIsTryInstall;
   private static OnJniIssuePublishListener sOnIssuePublishListener;
+  private byte _hellAccFlag_;
   
   private static native boolean doHook();
   
@@ -24,7 +25,7 @@ public class IOCanaryJniBridge
       JavaContext localJavaContext = new JavaContext(null);
       return localJavaContext;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       c.printErrStackTrace("Matrix.IOCanaryJniBridge", localThrowable, "get javacontext exception", new Object[0]);
     }
@@ -46,20 +47,20 @@ public class IOCanaryJniBridge
     if (parama != null) {}
     try
     {
-      if (parama.yU())
+      if (parama.axO())
       {
         enableDetector(0);
-        setConfig(0, parama.bMc.get(a.a.BaA.name(), 500) * 1000L);
+        setConfig(0, parama.eVt.L(a.a.ahal.name(), 500) * 1000L);
       }
-      if (parama.yW())
+      if (parama.axQ())
       {
         enableDetector(1);
-        setConfig(1, parama.bMc.get(a.a.BaD.name(), 4096));
+        setConfig(1, parama.eVt.L(a.a.ahan.name(), 4096));
       }
-      if (parama.yV())
+      if (parama.axP())
       {
         enableDetector(2);
-        setConfig(2, parama.bMc.get(a.a.BaF.name(), 5));
+        setConfig(2, parama.eVt.L(a.a.ahaq.name(), 5));
       }
       doHook();
       sIsTryInstall = true;
@@ -78,7 +79,11 @@ public class IOCanaryJniBridge
     }
     try
     {
-      System.loadLibrary("io-canary");
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("io-canary");
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/matrix/iocanary/core/IOCanaryJniBridge", "loadJni", "()Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/matrix/iocanary/core/IOCanaryJniBridge", "loadJni", "()Z", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       sIsLoadJniLib = true;
       return true;
     }
@@ -109,29 +114,22 @@ public class IOCanaryJniBridge
     sIsTryInstall = false;
   }
   
-  static final class ConfigKey
-  {
-    static final int MAIN_THREAD_THRESHOLD = 0;
-    static final int REPEAT_READ_THRESHOLD = 2;
-    static final int SMALL_BUFFER_THRESHOLD = 1;
-  }
-  
-  static final class DetectorType
-  {
-    static final int MAIN_THREAD_IO = 0;
-    static final int REPEAT_READ = 2;
-    static final int SMALL_BUFFER = 1;
-  }
-  
   static final class JavaContext
   {
     private final String stack = com.tencent.matrix.iocanary.c.a.getThrowableStack(new Throwable());
-    private final String threadName = Thread.currentThread().getName();
+    private String threadName;
+    
+    private JavaContext()
+    {
+      if (Thread.currentThread() != null) {
+        this.threadName = Thread.currentThread().getName();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.iocanary.core.IOCanaryJniBridge
  * JD-Core Version:    0.7.0.1
  */

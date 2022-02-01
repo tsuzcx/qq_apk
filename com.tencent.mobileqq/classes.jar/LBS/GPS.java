@@ -33,7 +33,16 @@ public final class GPS
   
   public String toString()
   {
-    return "GPS[eType=" + this.eType + ",lat=" + this.iLat + ",lon=" + this.iLon + ",alt=" + this.iAlt + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder("GPS[eType=");
+    localStringBuilder.append(this.eType);
+    localStringBuilder.append(",lat=");
+    localStringBuilder.append(this.iLat);
+    localStringBuilder.append(",lon=");
+    localStringBuilder.append(this.iLon);
+    localStringBuilder.append(",alt=");
+    localStringBuilder.append(this.iAlt);
+    localStringBuilder.append("]\n");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)

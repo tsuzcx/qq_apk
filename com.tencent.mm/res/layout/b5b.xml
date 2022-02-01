@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="20.0dip" android:textColor="#ff515151" android:gravity="center" android:id="@id/ff9" android:background="@drawable/a76" android:layout_width="fill_parent" android:layout_height="111.0dip" android:layout_margin="0.0dip" android:maxHeight="111.0dip" android:minHeight="111.0dip" android:text="@string/fms" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/aks" android:id="@id/j1l" android:paddingBottom="@dimen/apc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</merge>

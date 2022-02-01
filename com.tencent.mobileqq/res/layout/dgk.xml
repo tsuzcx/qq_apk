@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:clipChildren="false" android:layout_width="69.0dip" android:layout_height="wrap_content">
+        <com.tencent.timi.game.team.impl.team.MicWaveViewLottie android:id="@id/njs" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="10.5dip" android:layout_centerHorizontal="true" />
+        <FrameLayout android:id="@id/njm" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="18.0dip" android:layout_centerHorizontal="true">
+            <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:id="@id/njl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/nji" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ji2" />
+            <ImageView android:id="@id/nm1" android:background="@drawable/jhj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.image.URLImageView android:layout_gravity="bottom|center" android:id="@id/nlo" android:layout_width="53.0dip" android:layout_height="53.0dip" android:layout_marginBottom="4.0dip" />
+        </FrameLayout>
+        <ImageView android:id="@id/njn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginRight="-2.0dip" android:src="@drawable/jhz" android:layout_alignTop="@id/njm" android:layout_alignRight="@id/njm" />
+        <com.tencent.timi.game.userinfo.api.view.AvatarSpeakingMicImageView android:id="@id/njo" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginBottom="-4.0dip" android:layout_alignBottom="@id/njm" android:layout_centerHorizontal="true" />
+        <com.tencent.timi.game.userinfo.api.view.AvatarTextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center" android:id="@id/njp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_below="@id/njm" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff999999" android:ellipsize="end" android:gravity="center" android:id="@id/njj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="4.0dip" android:text="@string/zfl" android:maxLines="1" android:includeFontPadding="false" android:layout_below="@id/njm" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/njq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="34.0dip" android:layout_alignRight="@id/njm" android:layout_alignBottom="@id/njm" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/njk" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="center" android:layout_alignTop="@id/njm" android:layout_alignRight="@id/njm" />
+        <com.tencent.timi.game.team.impl.team.TeamLaneStateView android:id="@id/qa6" android:layout_width="54.0dip" android:layout_height="15.0dip" android:layout_marginTop="1.5dip" android:layout_below="@id/njp" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="10.0dip" android:textColor="#ff999999" android:ellipsize="end" android:gravity="center" android:id="@id/njr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:maxLines="1" android:layout_below="@id/qa6" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</FrameLayout>

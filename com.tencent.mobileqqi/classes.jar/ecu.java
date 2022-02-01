@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.book.ResizeLayout;
-import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
+import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
 
 public class ecu
-  implements Runnable
+  implements IGroupObserver
 {
-  public ecu(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ecu(CircleMemberListActivity paramCircleMemberListActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    if (paramInt == 2) {
+      CircleMemberListActivity.a(this.a);
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.b, this.a.jdField_a_of_type_JavaUtilArrayList, false);
+      this.a.jdField_a_of_type_Edd.notifyDataSetChanged();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.isShowing())) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.a(this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(-1000, 1));
+      }
+    }
   }
 }
 

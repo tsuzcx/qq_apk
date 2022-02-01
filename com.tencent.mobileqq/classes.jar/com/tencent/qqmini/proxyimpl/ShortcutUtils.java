@@ -1,98 +1,70 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alud;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import bdhj;
-import bgor;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.util.Iterator;
 import java.util.List;
 
 public class ShortcutUtils
 {
-  public static final String ACTION_ANDROID = "android.settings.action.MANAGE_OVERLAY_PERMISSION";
-  public static final String ACTION_HUAWEI = "huawei.intent.action.NOTIFICATIONMANAGER";
-  public static final String ACTION_MEIZU = "com.meizu.safe.security.SHOW_APPSEC";
-  public static final String ACTION_MIUI = "miui.intent.action.APP_PERM_EDITOR";
-  public static final String ACTION_VIVO = "permission.intent.action.softPermissionDetail";
-  public static final String CLASS_HUAWEI = "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity";
-  public static final String CLASS_MEIZU = "com.meizu.safe.security.AppSecActivity";
-  public static final String CLASS_MIUI = "com.miui.permcenter.permissions.AppPermissionsEditorActivity";
-  public static final String EXTRA_MEIZU = "packageName";
-  public static final String EXTRA_MIUI = "extra_pkgname";
-  public static final String INTENT_ACTION_CREATE_MINI_SHORTCUT = "com.tencent.mini.CreateShortcutSucceedReceiver";
-  public static final String PACKAGE_HUAWEI = "com.huawei.systemmanager";
-  public static final String PACKAGE_MEIZU = "com.meizu.safe";
-  public static final String PACKAGE_MIUI = "com.miui.securitycenter";
-  public static final int RESULT_ADD_FAIL = 1;
-  public static final int RESULT_ADD_FAIL_NO_PERMISSION = 2;
-  public static final int RESULT_ADD_SUCC = 0;
-  private static final String TAG = "Shortcut";
-  
-  public static void addShortcut(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  public static int a()
   {
-    addShortcut(paramActivity, paramMiniAppInfo, null);
+    ToastUtil.a().a("已添加桌面快捷方式，如未成功，请在设置中打开【桌面快捷方式】权限并重新添加");
+    return 0;
   }
   
-  public static void addShortcut(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShortcutUtils.AddShortcutCallback paramAddShortcutCallback)
+  public static int a(Context paramContext)
   {
-    if ((paramActivity == null) || (paramMiniAppInfo == null)) {
-      QLog.e("Shortcut", 1, "addShortcut params invalid!");
+    String str = Build.MANUFACTURER.toLowerCase();
+    if (str.contains("huawei")) {
+      return b(paramContext);
     }
-    do
-    {
-      return;
-      if (hasRightsToShortCutInVIVO(paramActivity)) {
-        break;
-      }
-      paramActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramActivity, alud.a(2131714401), alud.a(2131714414), alud.a(2131714416), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
-      paramActivity.showCheckbox(false);
-      paramActivity.show();
-    } while (paramAddShortcutCallback == null);
-    paramAddShortcutCallback.onAddResult(2, alud.a(2131714395));
-    return;
-    doAddShortcut(paramActivity, paramMiniAppInfo, paramAddShortcutCallback);
-  }
-  
-  public static void doAddShortcut(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShortcutUtils.AddShortcutCallback paramAddShortcutCallback)
-  {
-    ThreadManagerV2.executeOnSubThread(new ShortcutUtils.3(paramActivity, paramMiniAppInfo, paramAddShortcutCallback));
-  }
-  
-  private static Bitmap getLaunchBitmap(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
-  {
-    paramMiniAppInfo = bdhj.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
-    int i = (int)paramActivity.getResources().getDimension(17104896);
-    int j = ((ActivityManager)paramActivity.getSystemService("activity")).getLauncherLargeIconSize();
-    if (j > i) {
-      i = j;
+    if (str.contains("xiaomi")) {
+      return d(paramContext);
     }
-    for (;;)
-    {
-      return bdhj.a(getResizedBitmap(paramMiniAppInfo, i, i), (int)(i * 0.15D));
+    if (str.contains("oppo")) {
+      return e(paramContext);
     }
+    if (str.contains("vivo")) {
+      return c(paramContext);
+    }
+    if ((!str.contains("samsung")) && (!str.contains("meizu"))) {
+      return 3;
+    }
+    return 0;
   }
   
-  public static Bitmap getResizedBitmap(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
@@ -105,218 +77,489 @@ public class ShortcutUtils
     return localObject;
   }
   
-  /* Error */
-  public static boolean hasRightsToShortCutInVIVO(Context paramContext)
+  public static void a(Activity paramActivity)
   {
-    // Byte code:
-    //   0: getstatic 229	android/os/Build:MODEL	Ljava/lang/String;
-    //   3: invokevirtual 235	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   6: ldc 237
-    //   8: invokevirtual 241	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   11: ifeq +197 -> 208
-    //   14: getstatic 246	android/os/Build$VERSION:SDK_INT	I
-    //   17: bipush 27
-    //   19: if_icmplt +189 -> 208
-    //   22: aload_0
-    //   23: invokevirtual 252	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   26: ldc 254
-    //   28: invokestatic 260	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   31: aconst_null
-    //   32: ldc_w 262
-    //   35: iconst_1
-    //   36: anewarray 231	java/lang/String
-    //   39: dup
-    //   40: iconst_0
-    //   41: ldc_w 264
-    //   44: aastore
-    //   45: aconst_null
-    //   46: invokevirtual 270	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   49: astore_2
-    //   50: aload_2
-    //   51: ifnull +147 -> 198
-    //   54: aload_2
-    //   55: astore_0
-    //   56: aload_2
-    //   57: invokeinterface 275 1 0
-    //   62: ifle +136 -> 198
-    //   65: aload_2
-    //   66: astore_0
-    //   67: aload_2
-    //   68: invokeinterface 279 1 0
-    //   73: pop
-    //   74: aload_2
-    //   75: astore_0
-    //   76: aload_2
-    //   77: aload_2
-    //   78: ldc_w 281
-    //   81: invokeinterface 285 2 0
-    //   86: invokeinterface 288 2 0
-    //   91: astore_3
-    //   92: aload_2
-    //   93: astore_0
-    //   94: aload_2
-    //   95: aload_2
-    //   96: ldc_w 290
-    //   99: invokeinterface 285 2 0
-    //   104: invokeinterface 294 2 0
-    //   109: istore_1
-    //   110: aload_2
-    //   111: astore_0
-    //   112: ldc 57
-    //   114: iconst_1
-    //   115: iconst_3
-    //   116: anewarray 4	java/lang/Object
-    //   119: dup
-    //   120: iconst_0
-    //   121: ldc_w 296
-    //   124: aastore
-    //   125: dup
-    //   126: iconst_1
-    //   127: aload_3
-    //   128: aastore
-    //   129: dup
-    //   130: iconst_2
-    //   131: new 298	java/lang/StringBuilder
-    //   134: dup
-    //   135: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   138: ldc_w 301
-    //   141: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: iload_1
-    //   145: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 311	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: aastore
-    //   152: invokestatic 317	cooperation/qzone/util/QZLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   155: aload_2
-    //   156: astore_0
-    //   157: aload_2
-    //   158: invokeinterface 320 1 0
-    //   163: iload_1
-    //   164: iconst_1
-    //   165: if_icmpeq +9 -> 174
-    //   168: iload_1
-    //   169: bipush 17
-    //   171: if_icmpne +15 -> 186
-    //   174: aload_2
-    //   175: ifnull +9 -> 184
-    //   178: aload_2
-    //   179: invokeinterface 320 1 0
-    //   184: iconst_0
-    //   185: ireturn
-    //   186: aload_2
-    //   187: ifnull +9 -> 196
-    //   190: aload_2
-    //   191: invokeinterface 320 1 0
-    //   196: iconst_1
-    //   197: ireturn
-    //   198: aload_2
-    //   199: ifnull +9 -> 208
-    //   202: aload_2
-    //   203: invokeinterface 320 1 0
-    //   208: iconst_1
-    //   209: ireturn
-    //   210: astore_3
-    //   211: aconst_null
-    //   212: astore_2
-    //   213: aload_2
-    //   214: astore_0
-    //   215: ldc 57
-    //   217: iconst_1
-    //   218: ldc_w 322
-    //   221: aload_3
-    //   222: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   225: aload_2
-    //   226: ifnull -18 -> 208
-    //   229: aload_2
-    //   230: invokeinterface 320 1 0
-    //   235: goto -27 -> 208
-    //   238: astore_2
-    //   239: aconst_null
-    //   240: astore_0
-    //   241: aload_0
-    //   242: ifnull +9 -> 251
-    //   245: aload_0
-    //   246: invokeinterface 320 1 0
-    //   251: aload_2
-    //   252: athrow
-    //   253: astore_2
-    //   254: goto -13 -> 241
-    //   257: astore_3
-    //   258: goto -45 -> 213
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	261	0	paramContext	Context
-    //   109	63	1	i	int
-    //   49	181	2	localCursor	android.database.Cursor
-    //   238	14	2	localObject1	Object
-    //   253	1	2	localObject2	Object
-    //   91	37	3	str	String
-    //   210	12	3	localThrowable1	java.lang.Throwable
-    //   257	1	3	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   22	50	210	java/lang/Throwable
-    //   22	50	238	finally
-    //   56	65	253	finally
-    //   67	74	253	finally
-    //   76	92	253	finally
-    //   94	110	253	finally
-    //   112	155	253	finally
-    //   157	163	253	finally
-    //   215	225	253	finally
-    //   56	65	257	java/lang/Throwable
-    //   67	74	257	java/lang/Throwable
-    //   76	92	257	java/lang/Throwable
-    //   94	110	257	java/lang/Throwable
-    //   112	155	257	java/lang/Throwable
-    //   157	163	257	java/lang/Throwable
+    paramActivity = ShortcutUtils.PermissionDialog.a(paramActivity, HardCodeUtil.a(2131911419), HardCodeUtil.a(2131898212), HardCodeUtil.a(2131911432), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
+    paramActivity.a(false);
+    paramActivity.show();
   }
   
-  public static boolean isIntentAvailable(Context paramContext, String paramString)
+  public static void a(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  {
+    a(paramActivity, paramMiniAppInfo, null);
+  }
+  
+  public static void a(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShortcutUtils.AddShortcutCallback paramAddShortcutCallback)
+  {
+    if ((paramActivity != null) && (paramMiniAppInfo != null))
+    {
+      if (a(paramActivity) == 1)
+      {
+        a(paramActivity);
+        if (paramAddShortcutCallback != null) {
+          paramAddShortcutCallback.a(2, HardCodeUtil.a(2131911413));
+        }
+        return;
+      }
+      b(paramActivity, paramMiniAppInfo, paramAddShortcutCallback);
+      return;
+    }
+    QLog.e("Shortcut", 1, "addShortcut params invalid!");
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
   {
     return paramContext.getPackageManager().queryIntentActivities(new Intent(paramString), 65536).size() > 0;
   }
   
   @RequiresApi(api=25)
-  public static boolean isShortcutCreated_O(String paramString, ShortcutManager paramShortcutManager)
+  public static boolean a(String paramString, ShortcutManager paramShortcutManager)
   {
+    boolean bool2 = false;
     if (paramShortcutManager == null) {
       return false;
     }
     paramShortcutManager = paramShortcutManager.getPinnedShortcuts().iterator();
     do
     {
+      bool1 = bool2;
       if (!paramShortcutManager.hasNext()) {
         break;
       }
     } while (!paramString.equals(((ShortcutInfo)paramShortcutManager.next()).getId()));
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    boolean bool1 = true;
+    return bool1;
   }
   
-  private static void jumpToAppDetailSetting(Activity paramActivity)
+  public static int b(@NonNull Context paramContext)
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
+    QLog.i("Shortcut", 1, "checkOnEMUI");
+    Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+    try
     {
-      localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramActivity.getPackageName(), null));
+      Class localClass = Class.forName("com.huawei.hsm.permission.PermissionManager");
+      boolean bool = ((Boolean)localClass.getDeclaredMethod("canSendBroadcast", new Class[] { Context.class, Intent.class }).invoke(localClass, new Object[] { paramContext, localIntent })).booleanValue();
+      paramContext = new StringBuilder();
+      paramContext.append("EMUI check permission canSendBroadcast invoke result = ");
+      paramContext.append(bool);
+      QLog.i("Shortcut", 1, paramContext.toString());
+      if (bool) {
+        return 0;
+      }
+      return 1;
     }
-    for (;;)
+    catch (Throwable paramContext)
     {
-      paramActivity.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
+      QLog.i("Shortcut", 1, paramContext.getMessage(), paramContext);
+    }
+    return 3;
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    String str = paramActivity.getPackageName();
+    StringBuilder localStringBuilder;
+    if (a(paramActivity, "miui.intent.action.APP_PERM_EDITOR"))
+    {
+      Intent localIntent3 = new Intent("miui.intent.action.APP_PERM_EDITOR");
+      localIntent3.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+      localIntent3.putExtra("extra_pkgname", str);
+      try
       {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramActivity.getPackageName());
+        paramActivity.getBaseContext().startActivity(localIntent3);
+        bool1 = true;
+      }
+      catch (Exception localException3)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openPermissionActivity e = ");
+        localStringBuilder.append(localException3);
+        QLog.e("Shortcut", 1, localStringBuilder.toString());
+        bool1 = false;
+      }
+      j = 1;
+    }
+    else
+    {
+      bool1 = false;
+      j = 0;
+    }
+    boolean bool2 = bool1;
+    int i = j;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      i = j;
+      if (a(paramActivity, "com.meizu.safe.security.SHOW_APPSEC"))
+      {
+        i = 2;
+        Intent localIntent4 = new Intent("com.meizu.safe.security.SHOW_APPSEC");
+        localIntent4.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
+        localIntent4.putExtra("packageName", str);
+        try
+        {
+          paramActivity.getBaseContext().startActivity(localIntent4);
+          bool2 = true;
+        }
+        catch (Exception localException4)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("openPermissionActivity e = ");
+          localStringBuilder.append(localException4);
+          QLog.e("Shortcut", 1, localStringBuilder.toString());
+          bool2 = false;
+        }
       }
     }
+    boolean bool1 = bool2;
+    int j = i;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      j = i;
+      if (a(paramActivity, "huawei.intent.action.NOTIFICATIONMANAGER"))
+      {
+        i = 3;
+        Intent localIntent5 = new Intent();
+        localIntent5.setClassName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
+        localIntent5.addFlags(268435456);
+        try
+        {
+          paramActivity.getBaseContext().startActivity(localIntent5);
+          bool2 = true;
+        }
+        catch (Exception localException5)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("openPermissionActivity e = ");
+          localStringBuilder.append(localException5);
+          QLog.e("Shortcut", 1, localStringBuilder.toString());
+          bool2 = false;
+        }
+        bool1 = bool2;
+        j = i;
+        if (!bool2)
+        {
+          Intent localIntent6 = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
+          try
+          {
+            paramActivity.getBaseContext().startActivity(localIntent6);
+            bool1 = true;
+            j = i;
+          }
+          catch (Exception localException6)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("openPermissionActivity e = ");
+            localStringBuilder.append(localException6);
+            QLog.e("Shortcut", 1, localStringBuilder.toString());
+            bool1 = false;
+            j = i;
+          }
+        }
+      }
+    }
+    bool2 = bool1;
+    Object localObject;
+    if (!bool1)
+    {
+      j = 4;
+      localObject = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      try
+      {
+        ((Intent)localObject).setData(Uri.fromParts("package", str, null));
+        paramActivity.getBaseContext().startActivity((Intent)localObject);
+        bool2 = true;
+      }
+      catch (Exception localException1)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openPermissionActivity e = ");
+        ((StringBuilder)localObject).append(localException1);
+        QLog.e("Shortcut", 1, ((StringBuilder)localObject).toString());
+        bool2 = false;
+      }
+    }
+    bool1 = bool2;
+    i = j;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      i = j;
+      if (a(paramActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))
+      {
+        i = 5;
+        Intent localIntent1 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
+        try
+        {
+          paramActivity.getBaseContext().startActivity(localIntent1);
+          bool1 = true;
+        }
+        catch (Exception localException2)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("openPermissionActivity e = ");
+          ((StringBuilder)localObject).append(localException2);
+          QLog.e("Shortcut", 1, ((StringBuilder)localObject).toString());
+          bool1 = false;
+        }
+      }
+    }
+    if (!bool1)
+    {
+      i = 6;
+      Intent localIntent2 = new Intent(paramActivity, QQBrowserActivity.class);
+      localIntent2.putExtra("hide_left_button", false);
+      localIntent2.putExtra("show_right_close_button", false);
+      localIntent2.putExtra("startOpenPageTime", System.currentTimeMillis());
+      VasWebviewUtil.b(paramActivity, "https://kf.qq.com/touch/sappfaq/190605Vn2EBv190605zuiEbY.html?scene_id=kf172&platform=15", 524288L, localIntent2, false, -1);
+    }
+    paramActivity = new StringBuilder();
+    paramActivity.append("请求权限, which[");
+    paramActivity.append(i);
+    paramActivity.append("], openSuccess[");
+    paramActivity.append(bool1);
+    paramActivity.append("]");
+    QLog.w("Shortcut", 1, paramActivity.toString());
   }
   
-  private static Intent obtainShortcutIntent(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  public static void b(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShortcutUtils.AddShortcutCallback paramAddShortcutCallback)
+  {
+    ThreadManagerV2.executeOnSubThread(new ShortcutUtils.3(paramActivity, paramMiniAppInfo, paramAddShortcutCallback));
+  }
+  
+  /* Error */
+  public static int c(@NonNull Context paramContext)
+  {
+    // Byte code:
+    //   0: ldc 130
+    //   2: iconst_1
+    //   3: ldc_w 383
+    //   6: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9: aload_0
+    //   10: invokevirtual 387	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   13: astore_3
+    //   14: aload_3
+    //   15: ifnonnull +14 -> 29
+    //   18: ldc 130
+    //   20: iconst_1
+    //   21: ldc_w 389
+    //   24: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: iconst_3
+    //   28: ireturn
+    //   29: ldc_w 391
+    //   32: invokestatic 395	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   35: astore 4
+    //   37: getstatic 401	android/os/Build$VERSION:SDK_INT	I
+    //   40: bipush 23
+    //   42: if_icmplt +37 -> 79
+    //   45: aload_0
+    //   46: ldc_w 403
+    //   49: invokevirtual 407	android/content/Context:checkSelfPermission	(Ljava/lang/String;)I
+    //   52: ifne +8 -> 60
+    //   55: iconst_1
+    //   56: istore_1
+    //   57: goto +5 -> 62
+    //   60: iconst_0
+    //   61: istore_1
+    //   62: iload_1
+    //   63: ifne +16 -> 79
+    //   66: ldc 130
+    //   68: iconst_1
+    //   69: ldc_w 409
+    //   72: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: invokestatic 411	com/tencent/qqmini/proxyimpl/ShortcutUtils:a	()I
+    //   78: ireturn
+    //   79: aconst_null
+    //   80: astore_2
+    //   81: aload_3
+    //   82: aload 4
+    //   84: aconst_null
+    //   85: aconst_null
+    //   86: aconst_null
+    //   87: aconst_null
+    //   88: invokevirtual 417	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   91: astore_3
+    //   92: aload_3
+    //   93: astore_2
+    //   94: goto +14 -> 108
+    //   97: astore_3
+    //   98: ldc 130
+    //   100: iconst_1
+    //   101: ldc_w 419
+    //   104: aload_3
+    //   105: invokestatic 421	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   108: aload_2
+    //   109: ifnonnull +14 -> 123
+    //   112: ldc 130
+    //   114: iconst_1
+    //   115: ldc_w 423
+    //   118: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   121: iconst_3
+    //   122: ireturn
+    //   123: aload_2
+    //   124: invokeinterface 428 1 0
+    //   129: ifeq +171 -> 300
+    //   132: aload_2
+    //   133: aload_2
+    //   134: ldc_w 430
+    //   137: invokeinterface 433 2 0
+    //   142: invokeinterface 436 2 0
+    //   147: astore_3
+    //   148: new 231	java/lang/StringBuilder
+    //   151: dup
+    //   152: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   155: astore 4
+    //   157: aload 4
+    //   159: ldc_w 438
+    //   162: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: pop
+    //   166: aload 4
+    //   168: aload_3
+    //   169: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: pop
+    //   173: ldc 130
+    //   175: iconst_1
+    //   176: aload 4
+    //   178: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: aload_3
+    //   185: invokestatic 443	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   188: ifne -65 -> 123
+    //   191: aload_3
+    //   192: aload_0
+    //   193: invokestatic 447	com/tencent/qqmini/proxyimpl/ShortcutUtils:f	(Landroid/content/Context;)Ljava/lang/String;
+    //   196: invokevirtual 193	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   199: ifeq -76 -> 123
+    //   202: aload_2
+    //   203: aload_2
+    //   204: ldc_w 449
+    //   207: invokeinterface 433 2 0
+    //   212: invokeinterface 453 2 0
+    //   217: istore_1
+    //   218: new 231	java/lang/StringBuilder
+    //   221: dup
+    //   222: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   225: astore_3
+    //   226: aload_3
+    //   227: ldc_w 455
+    //   230: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: pop
+    //   234: aload_3
+    //   235: iload_1
+    //   236: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: ldc 130
+    //   242: iconst_1
+    //   243: aload_3
+    //   244: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   250: iload_1
+    //   251: iconst_1
+    //   252: if_icmpeq +40 -> 292
+    //   255: iload_1
+    //   256: bipush 17
+    //   258: if_icmpne +6 -> 264
+    //   261: goto +31 -> 292
+    //   264: iload_1
+    //   265: bipush 16
+    //   267: if_icmpne +11 -> 278
+    //   270: aload_2
+    //   271: invokeinterface 458 1 0
+    //   276: iconst_0
+    //   277: ireturn
+    //   278: iload_1
+    //   279: bipush 18
+    //   281: if_icmpne -158 -> 123
+    //   284: aload_2
+    //   285: invokeinterface 458 1 0
+    //   290: iconst_2
+    //   291: ireturn
+    //   292: aload_2
+    //   293: invokeinterface 458 1 0
+    //   298: iconst_1
+    //   299: ireturn
+    //   300: aload_2
+    //   301: invokeinterface 458 1 0
+    //   306: iconst_3
+    //   307: ireturn
+    //   308: astore_0
+    //   309: goto +18 -> 327
+    //   312: astore_0
+    //   313: ldc 130
+    //   315: iconst_1
+    //   316: aload_0
+    //   317: invokevirtual 459	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   320: aload_0
+    //   321: invokestatic 250	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   324: goto -24 -> 300
+    //   327: aload_2
+    //   328: invokeinterface 458 1 0
+    //   333: goto +5 -> 338
+    //   336: aload_0
+    //   337: athrow
+    //   338: goto -2 -> 336
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	341	0	paramContext	Context
+    //   56	226	1	i	int
+    //   80	248	2	localObject1	Object
+    //   13	80	3	localObject2	Object
+    //   97	8	3	localException	Exception
+    //   147	97	3	localObject3	Object
+    //   35	142	4	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   81	92	97	java/lang/Exception
+    //   123	250	308	finally
+    //   313	324	308	finally
+    //   123	250	312	java/lang/Exception
+  }
+  
+  public static int d(@NonNull Context paramContext)
+  {
+    QLog.i("Shortcut", 1, "checkOnMIUI");
+    if (Build.VERSION.SDK_INT < 19) {
+      return 3;
+    }
+    try
+    {
+      Object localObject = (AppOpsManager)paramContext.getSystemService("appops");
+      String str = paramContext.getApplicationContext().getPackageName();
+      int i = paramContext.getApplicationInfo().uid;
+      paramContext = Class.forName(AppOpsManager.class.getName()).getDeclaredMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localObject, new Object[] { Integer.valueOf(10017), Integer.valueOf(i), str });
+      if (paramContext == null)
+      {
+        QLog.i("Shortcut", 1, "MIUI check permission checkOpNoThrowMethod(AppOpsManager) invoke result is null");
+        return 3;
+      }
+      paramContext = paramContext.toString();
+      i = Integer.valueOf(paramContext).intValue();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MIUI check permission checkOpNoThrowMethod(AppOpsManager) invoke result = ");
+      ((StringBuilder)localObject).append(paramContext);
+      QLog.i("Shortcut", 1, ((StringBuilder)localObject).toString());
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 5) {
+            return 3;
+          }
+          return 2;
+        }
+        return 1;
+      }
+      return 0;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.i("Shortcut", 1, paramContext.getMessage(), paramContext);
+    }
+    return 3;
+  }
+  
+  private static Intent d(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
   {
     Intent localIntent = new Intent();
     localIntent.setAction("android.intent.action.VIEW");
@@ -332,161 +575,204 @@ public class ShortcutUtils
     return localIntent;
   }
   
-  private static void onCreateShortcutFailed(Activity paramActivity)
+  private static void d(Activity paramActivity)
   {
-    bgor.a(new ShortcutUtils.4(paramActivity));
+    AppBrandTask.runTaskOnUiThread(new ShortcutUtils.4(paramActivity));
   }
   
-  public static void openPermissionActivity(Activity paramActivity)
+  /* Error */
+  public static int e(@NonNull Context paramContext)
   {
-    Object localObject = paramActivity.getPackageName();
-    Intent localIntent;
-    if (isIntentAvailable(paramActivity, "miui.intent.action.APP_PERM_EDITOR"))
-    {
-      localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
-      localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
-      localIntent.putExtra("extra_pkgname", (String)localObject);
+    // Byte code:
+    //   0: ldc 130
+    //   2: iconst_1
+    //   3: ldc_w 576
+    //   6: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9: aload_0
+    //   10: invokevirtual 387	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ifnonnull +14 -> 29
+    //   18: ldc 130
+    //   20: iconst_1
+    //   21: ldc_w 389
+    //   24: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: iconst_3
+    //   28: ireturn
+    //   29: aload_2
+    //   30: ldc_w 578
+    //   33: invokestatic 395	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   36: aconst_null
+    //   37: aconst_null
+    //   38: aconst_null
+    //   39: aconst_null
+    //   40: invokevirtual 417	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   43: astore_2
+    //   44: aload_2
+    //   45: ifnonnull +14 -> 59
+    //   48: ldc 130
+    //   50: iconst_1
+    //   51: ldc_w 580
+    //   54: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: iconst_3
+    //   58: ireturn
+    //   59: aload_0
+    //   60: invokevirtual 477	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   63: invokevirtual 478	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   66: astore_0
+    //   67: aload_2
+    //   68: invokeinterface 428 1 0
+    //   73: ifeq +156 -> 229
+    //   76: aload_2
+    //   77: aload_2
+    //   78: ldc_w 582
+    //   81: invokeinterface 585 2 0
+    //   86: invokeinterface 436 2 0
+    //   91: astore_3
+    //   92: new 231	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   99: astore 4
+    //   101: aload 4
+    //   103: ldc_w 455
+    //   106: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: aload 4
+    //   112: aload_3
+    //   113: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: ldc 130
+    //   119: iconst_1
+    //   120: aload 4
+    //   122: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: aload_3
+    //   129: invokestatic 443	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   132: ifne -65 -> 67
+    //   135: new 231	java/lang/StringBuilder
+    //   138: dup
+    //   139: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   142: astore 4
+    //   144: aload 4
+    //   146: aload_0
+    //   147: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload 4
+    //   153: ldc_w 587
+    //   156: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload_3
+    //   161: aload 4
+    //   163: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   166: invokevirtual 40	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   169: istore_1
+    //   170: iload_1
+    //   171: ifeq +11 -> 182
+    //   174: aload_2
+    //   175: invokeinterface 458 1 0
+    //   180: iconst_0
+    //   181: ireturn
+    //   182: new 231	java/lang/StringBuilder
+    //   185: dup
+    //   186: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   189: astore 4
+    //   191: aload 4
+    //   193: aload_0
+    //   194: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: aload 4
+    //   200: ldc_w 589
+    //   203: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: pop
+    //   207: aload_3
+    //   208: aload 4
+    //   210: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   213: invokevirtual 40	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   216: istore_1
+    //   217: iload_1
+    //   218: ifeq -151 -> 67
+    //   221: aload_2
+    //   222: invokeinterface 458 1 0
+    //   227: iconst_1
+    //   228: ireturn
+    //   229: aload_2
+    //   230: invokeinterface 458 1 0
+    //   235: iconst_3
+    //   236: ireturn
+    //   237: astore_0
+    //   238: goto +23 -> 261
+    //   241: astore_0
+    //   242: ldc 130
+    //   244: iconst_1
+    //   245: aload_0
+    //   246: invokevirtual 459	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   249: aload_0
+    //   250: invokestatic 250	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   253: aload_2
+    //   254: invokeinterface 458 1 0
+    //   259: iconst_3
+    //   260: ireturn
+    //   261: aload_2
+    //   262: invokeinterface 458 1 0
+    //   267: goto +5 -> 272
+    //   270: aload_0
+    //   271: athrow
+    //   272: goto -2 -> 270
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	275	0	paramContext	Context
+    //   169	49	1	bool	boolean
+    //   13	249	2	localObject	Object
+    //   91	117	3	str	String
+    //   99	110	4	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   59	67	237	finally
+    //   67	170	237	finally
+    //   182	217	237	finally
+    //   242	253	237	finally
+    //   59	67	241	java/lang/Exception
+    //   67	170	241	java/lang/Exception
+    //   182	217	241	java/lang/Exception
+  }
+  
+  private static Bitmap e(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  {
+    paramMiniAppInfo = ImageUtil.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
+    int i = (int)paramActivity.getResources().getDimension(17104896);
+    int j = ((ActivityManager)paramActivity.getSystemService("activity")).getLauncherLargeIconSize();
+    if (j > i) {
+      i = j;
     }
-    for (;;)
+    paramActivity = a(paramMiniAppInfo, i, i);
+    double d = i;
+    Double.isNaN(d);
+    return ImageUtil.a(paramActivity, (int)(d * 0.15D));
+  }
+  
+  private static String f(Context paramContext)
+  {
+    try
     {
-      try
-      {
-        paramActivity.getBaseContext().startActivity(localIntent);
-        i = 1;
-        bool1 = true;
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      paramContext = localPackageManager.getPackageInfo(paramContext.getApplicationContext().getPackageName(), 0);
+      if (paramContext == null) {
+        return null;
       }
-      catch (Exception localException3)
-      {
-        QLog.e("Shortcut", 1, "openPermissionActivity e = " + localException3);
-        i = 1;
-        bool1 = false;
-        continue;
-      }
-      int j = i;
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        j = i;
-        bool2 = bool1;
-        if (isIntentAvailable(paramActivity, "com.meizu.safe.security.SHOW_APPSEC"))
-        {
-          localIntent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
-          localIntent.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
-          localIntent.putExtra("packageName", (String)localObject);
-        }
-      }
-      try
-      {
-        paramActivity.getBaseContext().startActivity(localIntent);
-        j = 2;
-        bool2 = true;
-      }
-      catch (Exception localException4)
-      {
-        QLog.e("Shortcut", 1, "openPermissionActivity e = " + localException4);
-        j = 2;
-        bool2 = false;
-        continue;
-      }
-      int i = j;
-      boolean bool1 = bool2;
-      if (!bool2)
-      {
-        i = j;
-        bool1 = bool2;
-        if (isIntentAvailable(paramActivity, "huawei.intent.action.NOTIFICATIONMANAGER"))
-        {
-          localIntent = new Intent();
-          localIntent.setClassName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
-          localIntent.addFlags(268435456);
-        }
-      }
-      try
-      {
-        paramActivity.getBaseContext().startActivity(localIntent);
-        bool1 = true;
-      }
-      catch (Exception localException5)
-      {
-        QLog.e("Shortcut", 1, "openPermissionActivity e = " + localException5);
-        bool1 = false;
-        continue;
-        i = 3;
-        continue;
-      }
-      if (!bool1)
-      {
-        localIntent = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
-        try
-        {
-          paramActivity.getBaseContext().startActivity(localIntent);
-          i = 3;
-          bool1 = true;
-        }
-        catch (Exception localException6)
-        {
-          QLog.e("Shortcut", 1, "openPermissionActivity e = " + localException6);
-          i = 3;
-          bool1 = false;
-          continue;
-        }
-        bool2 = bool1;
-        if (!bool1) {
-          localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-        }
-        try
-        {
-          localIntent.setData(Uri.fromParts("package", (String)localObject, null));
-          paramActivity.getBaseContext().startActivity(localIntent);
-          i = 4;
-          bool2 = true;
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("Shortcut", 1, "openPermissionActivity e = " + localException1);
-          i = 4;
-          bool2 = false;
-          continue;
-          bool1 = bool2;
-          continue;
-        }
-        if ((!bool2) && (isIntentAvailable(paramActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION")))
-        {
-          localObject = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
-          try
-          {
-            paramActivity.getBaseContext().startActivity((Intent)localObject);
-            i = 5;
-            bool1 = true;
-          }
-          catch (Exception localException2)
-          {
-            QLog.e("Shortcut", 1, "openPermissionActivity e = " + localException2);
-            i = 5;
-            bool1 = false;
-            continue;
-          }
-          if (!bool1)
-          {
-            localObject = new Intent(paramActivity, QQBrowserActivity.class);
-            ((Intent)localObject).putExtra("hide_left_button", false);
-            ((Intent)localObject).putExtra("show_right_close_button", false);
-            ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-            VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, "https://kf.qq.com/touch/sappfaq/190605Vn2EBv190605zuiEbY.html?scene_id=kf172&platform=15", 524288L, (Intent)localObject, false, -1);
-            i = 6;
-          }
-          QLog.w("Shortcut", 1, "请求权限, which[" + i + "], openSuccess[" + bool1 + "]");
-          return;
-        }
-      }
-      i = 0;
-      bool1 = false;
+      paramContext = paramContext.applicationInfo.loadLabel(localPackageManager).toString();
+      return paramContext;
     }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label40:
+      break label40;
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils
  * JD-Core Version:    0.7.0.1
  */

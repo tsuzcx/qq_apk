@@ -1,28 +1,21 @@
-import android.content.res.Resources;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnu
-  implements Runnable
+  implements Animation.AnimationListener
 {
   public cnu(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_c_of_type_Boolean = false;
-    if (this.a.a != 0L)
-    {
-      this.a.b.setVisibility(0);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131427548), 0.0F);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
-      return;
-    }
-    this.a.b.setVisibility(8);
+    this.a.c = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

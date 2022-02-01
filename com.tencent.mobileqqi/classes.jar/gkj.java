@@ -1,52 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public final class gkj
-  extends AsyncTask
+  implements PluginRuntime.IClickEventReportor
 {
-  public gkj(String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    paramVarArgs = BaseApplicationImpl.getContext();
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(paramVarArgs);
-    if (((SharedPreferences)localObject).getBoolean("hasReportDeviceProfile", false)) {
-      return null;
-    }
-    ((SharedPreferences)localObject).edit().putBoolean("hasReportDeviceProfile", true);
-    localObject = new HashMap();
-    int i = MainAcitivityReportHelper.a(paramVarArgs);
-    int j = DeviceInfoUtil.b() * 100 + MainAcitivityReportHelper.b();
-    if (i <= 240) {
-      i = j + 1;
-    }
-    for (;;)
-    {
-      ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a, "reportDeviceProfile", false, 0L, 0L, (HashMap)localObject, "");
-      return null;
-      if (i <= 320) {
-        i = j + 2;
-      } else if (i <= 480) {
-        i = j + 3;
-      } else if (i <= 640) {
-        i = j + 4;
-      } else if (i <= 720) {
-        i = j + 5;
-      } else if (i <= 1080) {
-        i = j + 6;
-      } else {
-        i = j + 7;
-      }
-    }
+    ReportController.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+  }
+  
+  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    ReportController.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
 }
 

@@ -1,16 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class ebt
-  implements Runnable
+public class ebt
+  implements View.OnClickListener
 {
-  ebt(ebq paramebq, AIOImageData[] paramArrayOfAIOImageData, int paramInt) {}
+  public ebt(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ebp.e(this.jdField_a_of_type_Ebq.a) != null) {
-      ((AIOGalleryScene)ebp.f(this.jdField_a_of_type_Ebq.a)).a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Int);
-    }
+    ReportController.b(null, "CliOper", "", "", "View_pic", "View_pic_menu", 0, 0, "1", "", "", "");
+    AIOGalleryScene.a(this.a);
   }
 }
 

@@ -1,4 +1,8 @@
-public class hie {}
+public class hie
+{
+  public String a = "";
+  public String b = "";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

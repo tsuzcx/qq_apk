@@ -3,165 +3,207 @@ package com.tencent.mm.ui.tools.b;
 import android.text.InputFilter;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.tools.f;
-import com.tencent.mm.ui.tools.f.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.tools.g;
+import com.tencent.mm.ui.tools.g.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class c
   extends a
 {
-  public boolean AyD = true;
-  public WeakReference<EditText> AyE;
-  private int AyF;
-  private int AyG;
-  private ArrayList<InputFilter> AyH;
-  public a AyI;
-  public f.a jmp;
-  private String mText;
+  protected boolean afMe = true;
+  public WeakReference<EditText> afMf;
+  protected int afMg;
+  protected int afMh;
+  protected ArrayList<InputFilter> afMi;
+  public a afMj;
+  protected String mText;
+  protected g.a uGI;
   
   public c(String paramString)
   {
     this.mText = paramString;
-    this.jmp = f.a.Avn;
-    this.AyD = false;
+    this.uGI = g.a.afII;
+    this.afMe = false;
   }
   
   public c(WeakReference<EditText> paramWeakReference)
   {
-    this.AyE = paramWeakReference;
-    this.jmp = f.a.Avn;
-    this.AyD = false;
+    this.afMf = paramWeakReference;
+    this.uGI = g.a.afII;
+    this.afMe = false;
   }
   
-  public static c d(EditText paramEditText)
+  public static String bCI(String paramString)
   {
-    AppMethodBeat.i(67866);
+    AppMethodBeat.i(251160);
+    String str = paramString;
+    if (!Util.isNullOrNil(paramString))
+    {
+      int i = g.bCx(paramString);
+      g.ek(32, paramString);
+      str = paramString;
+      if (i > 32)
+      {
+        i = g.ei(32, paramString);
+        str = paramString;
+        if (i > 0)
+        {
+          str = paramString;
+          if (i < 32)
+          {
+            str = paramString;
+            if (i < paramString.length()) {
+              str = paramString.substring(0, i);
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(251160);
+    return str;
+  }
+  
+  public static c i(EditText paramEditText)
+  {
+    AppMethodBeat.i(133841);
     paramEditText = new c(new WeakReference(paramEditText));
-    AppMethodBeat.o(67866);
+    AppMethodBeat.o(133841);
     return paramEditText;
   }
   
-  public final c QS(int paramInt)
+  public final c Nc(boolean paramBoolean)
   {
-    this.AyG = 0;
-    this.AyF = paramInt;
+    this.afMe = paramBoolean;
     return this;
   }
   
-  protected f a(int paramInt, f.a parama)
+  protected g a(int paramInt, g.a parama)
   {
-    AppMethodBeat.i(67870);
-    parama = new f(paramInt, parama);
-    AppMethodBeat.o(67870);
+    AppMethodBeat.i(133845);
+    parama = new g(paramInt, parama);
+    AppMethodBeat.o(133845);
     return parama;
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(67867);
-    this.AyI = parama;
-    bEI();
-    AppMethodBeat.o(67867);
+    AppMethodBeat.i(133842);
+    this.afMj = parama;
+    fBQ();
+    AppMethodBeat.o(133842);
   }
   
-  protected final int azZ()
+  public final c aEg(int paramInt)
   {
-    AppMethodBeat.i(67868);
-    if (bo.isNullOrNil(this.mText))
+    this.afMh = 0;
+    this.afMg = paramInt;
+    return this;
+  }
+  
+  public final c b(g.a parama)
+  {
+    this.uGI = parama;
+    return this;
+  }
+  
+  protected int cnU()
+  {
+    AppMethodBeat.i(133843);
+    if (Util.isNullOrNil(this.mText))
     {
-      if (this.AyE == null)
+      if (this.afMf == null)
       {
-        AppMethodBeat.o(67868);
+        AppMethodBeat.o(133843);
         return 1;
       }
-      this.mText = ((EditText)this.AyE.get()).getText().toString().trim();
+      this.mText = ((EditText)this.afMf.get()).getText().toString().trim();
     }
-    int j = f.a(this.mText, this.jmp);
+    int j = g.a(this.mText, this.uGI);
     if (j < 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ab.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
-      AppMethodBeat.o(67868);
+      Log.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
+      AppMethodBeat.o(133843);
       return 2;
     }
-    if (j < this.AyG)
+    if (j < this.afMh)
     {
-      AppMethodBeat.o(67868);
+      AppMethodBeat.o(133843);
       return 1;
     }
-    if (j > this.AyF)
+    if (j > this.afMg)
     {
-      AppMethodBeat.o(67868);
+      AppMethodBeat.o(133843);
       return 2;
     }
-    AppMethodBeat.o(67868);
+    AppMethodBeat.o(133843);
     return 0;
   }
   
-  protected final void bEI()
+  protected void fBQ()
   {
-    AppMethodBeat.i(67869);
+    AppMethodBeat.i(133844);
     Object localObject;
-    if (!this.AyD)
+    if (!this.afMe)
     {
-      if (this.AyE == null)
+      if (this.afMf == null)
       {
-        ab.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
-        AppMethodBeat.o(67869);
+        Log.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
+        AppMethodBeat.o(133844);
         return;
       }
-      if (bo.es(this.AyH))
+      if (Util.isNullOrNil(this.afMi))
       {
-        localObject = a(this.AyF, this.jmp);
-        ((EditText)this.AyE.get()).setFilters(new InputFilter[] { localObject });
+        localObject = a(this.afMg, this.uGI);
+        ((EditText)this.afMf.get()).setFilters(new InputFilter[] { localObject });
       }
     }
-    else if (this.AyI != null)
+    else if (this.afMj != null)
     {
-      switch (azZ())
+      switch (cnU())
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(67869);
+      AppMethodBeat.o(133844);
       return;
-      this.AyH.add(a(this.AyF, this.jmp));
-      localObject = (InputFilter[])this.AyH.toArray(new InputFilter[this.AyH.size()]);
-      ((EditText)this.AyE.get()).setFilters((InputFilter[])localObject);
+      this.afMi.add(a(this.afMg, this.uGI));
+      localObject = (InputFilter[])this.afMi.toArray(new InputFilter[this.afMi.size()]);
+      ((EditText)this.afMf.get()).setFilters((InputFilter[])localObject);
       break;
-      this.AyI.kY(this.mText);
-      AppMethodBeat.o(67869);
+      this.afMj.Tw(this.mText);
+      AppMethodBeat.o(133844);
       return;
-      this.AyI.JU();
-      AppMethodBeat.o(67869);
+      this.afMj.Tx(this.mText);
+      AppMethodBeat.o(133844);
       return;
-      this.AyI.vn();
+      this.afMj.eY(this.mText);
     }
   }
   
-  public final c hR(int paramInt1, int paramInt2)
+  public final c oF(int paramInt1, int paramInt2)
   {
-    this.AyG = paramInt1;
-    this.AyF = paramInt2;
+    this.afMh = paramInt1;
+    this.afMg = paramInt2;
     return this;
   }
   
   public static abstract interface a
   {
-    public abstract void JU();
+    public abstract void Tw(String paramString);
     
-    public abstract void kY(String paramString);
+    public abstract void Tx(String paramString);
     
-    public abstract void vn();
+    public abstract void eY(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.b.c
  * JD-Core Version:    0.7.0.1
  */

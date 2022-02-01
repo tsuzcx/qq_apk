@@ -33,20 +33,20 @@ public class WearableDialogActivity
   extends Activity
   implements Handler.Callback, r, View.OnApplyWindowInsetsListener, View.OnClickListener, View.OnLayoutChangeListener
 {
-  private ObservableScrollView DW;
-  private ViewGroup DX;
-  private ViewGroup DY;
-  private TextView DZ;
-  private TextView Ea;
-  private Button Eb;
-  private Button Ec;
-  private Button Ed;
-  private ObjectAnimator Ee;
-  private PropertyValuesHolder Ef;
-  private boolean Eg;
-  private float Eh;
-  private int Ei;
-  private Handler mHandler;
+  private ObservableScrollView FL;
+  private ViewGroup FM;
+  private ViewGroup FN;
+  private TextView FO;
+  private TextView FP;
+  private Button FQ;
+  private Button FR;
+  private Button FS;
+  private ObjectAnimator FT;
+  private PropertyValuesHolder FU;
+  private boolean FV;
+  private float FW;
+  private int FX;
+  private Handler dG;
   private Interpolator mInterpolator;
   
   private static boolean a(Button paramButton, CharSequence paramCharSequence, Drawable paramDrawable)
@@ -61,31 +61,31 @@ public class WearableDialogActivity
     return true;
   }
   
-  private int fv()
+  private int fE()
   {
-    return fx() - Math.min(this.DX.getHeight(), this.Ei);
+    return fG() - Math.min(this.FM.getHeight(), this.FX);
   }
   
-  private int fw()
+  private int fF()
   {
-    return Math.min(fx(), 0);
+    return Math.min(fG(), 0);
   }
   
-  private int fx()
+  private int fG()
   {
-    return -this.DX.getTop() + Math.max(this.DW.getScrollY(), 0) + this.DW.getHeight();
+    return -this.FM.getTop() + Math.max(this.FL.getScrollY(), 0) + this.FL.getHeight();
   }
   
-  private void fy()
+  private void fH()
   {
-    if ((!this.Eg) || (this.Ee == null))
+    if ((!this.FV) || (this.FT == null))
     {
-      if (this.Ee != null) {
-        this.Ee.cancel();
+      if (this.FT != null) {
+        this.FT.cancel();
       }
-      this.Ef = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, new float[] { fv(), fw() });
-      this.Ee = ObjectAnimator.ofPropertyValuesHolder(this.DX, new PropertyValuesHolder[] { this.Ef, PropertyValuesHolder.ofFloat(View.TRANSLATION_Z, new float[] { this.Eh, 0.0F }) });
-      this.Ee.addListener(new AnimatorListenerAdapter()
+      this.FU = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, new float[] { fE(), fF() });
+      this.FT = ObjectAnimator.ofPropertyValuesHolder(this.FM, new PropertyValuesHolder[] { this.FU, PropertyValuesHolder.ofFloat(View.TRANSLATION_Z, new float[] { this.FW, 0.0F }) });
+      this.FT.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
@@ -94,44 +94,44 @@ public class WearableDialogActivity
           WearableDialogActivity.b(WearableDialogActivity.this).setTranslationZ(0.0F);
         }
       });
-      this.Ee.setDuration(500L);
-      this.Ee.setInterpolator(this.mInterpolator);
-      this.Ee.start();
+      this.FT.setDuration(500L);
+      this.FT.setInterpolator(this.mInterpolator);
+      this.FT.start();
     }
     for (;;)
     {
-      this.Eg = true;
+      this.FV = true;
       return;
-      if (this.Ee.isRunning())
+      if (this.FT.isRunning())
       {
-        int i = fv();
-        int j = fw();
+        int i = fE();
+        int j = fF();
         if (i < j)
         {
-          this.Ef.setFloatValues(new float[] { i, j });
-          if (this.DX.getTranslationY() < i) {
-            this.DX.setTranslationY(i);
+          this.FU.setFloatValues(new float[] { i, j });
+          if (this.FM.getTranslationY() < i) {
+            this.FM.setTranslationY(i);
           }
         }
         else
         {
-          this.Ee.cancel();
-          this.DX.setTranslationY(0.0F);
-          this.DX.setTranslationZ(0.0F);
+          this.FT.cancel();
+          this.FM.setTranslationY(0.0F);
+          this.FM.setTranslationZ(0.0F);
         }
       }
       else
       {
-        this.DX.setTranslationY(0.0F);
-        this.DX.setTranslationZ(0.0F);
+        this.FM.setTranslationY(0.0F);
+        this.FM.setTranslationZ(0.0F);
       }
     }
   }
   
-  public final void fp()
+  public final void fy()
   {
-    this.mHandler.removeMessages(1001);
-    fy();
+    this.dG.removeMessages(1001);
+    fH();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -141,7 +141,7 @@ public class WearableDialogActivity
     default: 
       return false;
     }
-    fy();
+    fH();
     return true;
   }
   
@@ -150,17 +150,17 @@ public class WearableDialogActivity
     Resources localResources = getResources();
     if (paramWindowInsets.isRound())
     {
-      this.Ei = localResources.getDimensionPixelSize(e.ws);
-      this.DZ.setPadding(localResources.getDimensionPixelSize(e.wo), localResources.getDimensionPixelSize(e.wp), localResources.getDimensionPixelSize(e.wo), 0);
-      this.DZ.setGravity(17);
-      this.Ea.setPadding(localResources.getDimensionPixelSize(e.wo), 0, localResources.getDimensionPixelSize(e.wo), localResources.getDimensionPixelSize(e.wn));
-      this.Ea.setGravity(17);
-      this.DX.setPadding(localResources.getDimensionPixelSize(e.wo), 0, localResources.getDimensionPixelSize(e.wm), localResources.getDimensionPixelSize(e.wl));
+      this.FX = localResources.getDimensionPixelSize(e.yh);
+      this.FO.setPadding(localResources.getDimensionPixelSize(e.yd), localResources.getDimensionPixelSize(e.ye), localResources.getDimensionPixelSize(e.yd), 0);
+      this.FO.setGravity(17);
+      this.FP.setPadding(localResources.getDimensionPixelSize(e.yd), 0, localResources.getDimensionPixelSize(e.yd), localResources.getDimensionPixelSize(e.yc));
+      this.FP.setGravity(17);
+      this.FM.setPadding(localResources.getDimensionPixelSize(e.yd), 0, localResources.getDimensionPixelSize(e.yb), localResources.getDimensionPixelSize(e.ya));
     }
     for (;;)
     {
       return paramView.onApplyWindowInsets(paramWindowInsets);
-      this.Ei = getResources().getDimensionPixelSize(e.wr);
+      this.FX = getResources().getDimensionPixelSize(e.yg);
     }
   }
   
@@ -185,35 +185,35 @@ public class WearableDialogActivity
     int m = 1;
     int k = 0;
     super.onCreate(paramBundle);
-    setTheme(j.wK);
-    setContentView(i.wG);
-    this.DY = ((ViewGroup)findViewById(g.wx));
-    this.DZ = ((TextView)this.DY.findViewById(g.ww));
-    this.Ea = ((TextView)this.DY.findViewById(16908299));
-    this.DX = ((ViewGroup)this.DY.findViewById(g.wy));
-    this.Eb = ((Button)this.DX.findViewById(16908313));
-    this.Eb.setOnClickListener(this);
-    this.Ec = ((Button)this.DX.findViewById(16908314));
-    this.Ec.setOnClickListener(this);
-    this.Ed = ((Button)this.DX.findViewById(16908315));
-    this.Ed.setOnClickListener(this);
+    setTheme(j.yz);
+    setContentView(i.yv);
+    this.FN = ((ViewGroup)findViewById(g.ym));
+    this.FO = ((TextView)this.FN.findViewById(g.yl));
+    this.FP = ((TextView)this.FN.findViewById(16908299));
+    this.FM = ((ViewGroup)this.FN.findViewById(g.yn));
+    this.FQ = ((Button)this.FM.findViewById(16908313));
+    this.FQ.setOnClickListener(this);
+    this.FR = ((Button)this.FM.findViewById(16908314));
+    this.FR.setOnClickListener(this);
+    this.FS = ((Button)this.FM.findViewById(16908315));
+    this.FS.setOnClickListener(this);
     label197:
     label227:
     int j;
     if (TextUtils.isEmpty(null))
     {
-      this.DZ.setVisibility(8);
+      this.FO.setVisibility(8);
       if (!TextUtils.isEmpty(null)) {
         break label361;
       }
-      this.Ea.setVisibility(8);
-      boolean bool = a(this.Eb, null, null);
-      if ((!a(this.Ec, null, null)) && (!bool)) {
+      this.FP.setVisibility(8);
+      boolean bool = a(this.FQ, null, null);
+      if ((!a(this.FR, null, null)) && (!bool)) {
         break label380;
       }
       i = 1;
       j = m;
-      if (!a(this.Ed, null, null))
+      if (!a(this.FS, null, null))
       {
         if (i == 0) {
           break label385;
@@ -221,7 +221,7 @@ public class WearableDialogActivity
         j = m;
       }
       label249:
-      paramBundle = this.DX;
+      paramBundle = this.FM;
       if (j == 0) {
         break label390;
       }
@@ -231,20 +231,20 @@ public class WearableDialogActivity
     for (int i = k;; i = 8)
     {
       paramBundle.setVisibility(i);
-      this.mHandler = new Handler(this);
+      this.dG = new Handler(this);
       this.mInterpolator = AnimationUtils.loadInterpolator(this, 17563661);
-      this.Eh = getResources().getDimension(e.wq);
-      this.DW = ((ObservableScrollView)findViewById(g.wB));
-      this.DW.addOnLayoutChangeListener(this);
-      this.DW.a(this);
-      this.DW.setOnApplyWindowInsetsListener(this);
+      this.FW = getResources().getDimension(e.yf);
+      this.FL = ((ObservableScrollView)findViewById(g.yq));
+      this.FL.addOnLayoutChangeListener(this);
+      this.FL.a(this);
+      this.FL.setOnApplyWindowInsetsListener(this);
       return;
-      this.Ea.setVisibility(0);
-      this.DZ.setText(null);
+      this.FP.setVisibility(0);
+      this.FO.setText(null);
       break;
       label361:
-      this.Ea.setVisibility(0);
-      this.Ea.setText(null);
+      this.FP.setVisibility(0);
+      this.FP.setText(null);
       break label197;
       label380:
       i = 0;
@@ -256,25 +256,25 @@ public class WearableDialogActivity
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.Ee != null) {
-      this.Ee.cancel();
+    if (this.FT != null) {
+      this.FT.cancel();
     }
-    this.mHandler.removeMessages(1001);
-    this.Eg = false;
-    if (this.DY.getHeight() > this.DW.getHeight())
+    this.dG.removeMessages(1001);
+    this.FV = false;
+    if (this.FN.getHeight() > this.FL.getHeight())
     {
-      this.DX.setTranslationZ(this.Eh);
-      this.mHandler.sendEmptyMessageDelayed(1001, 1500L);
-      this.Ee = ObjectAnimator.ofPropertyValuesHolder(this.DX, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, new float[] { fw(), fv() }), PropertyValuesHolder.ofFloat(View.TRANSLATION_Z, new float[] { 0.0F, this.Eh }) });
-      this.Ee.setDuration(500L);
-      this.Ee.setInterpolator(this.mInterpolator);
-      this.Ee.start();
+      this.FM.setTranslationZ(this.FW);
+      this.dG.sendEmptyMessageDelayed(1001, 1500L);
+      this.FT = ObjectAnimator.ofPropertyValuesHolder(this.FM, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, new float[] { fF(), fE() }), PropertyValuesHolder.ofFloat(View.TRANSLATION_Z, new float[] { 0.0F, this.FW }) });
+      this.FT.setDuration(500L);
+      this.FT.setInterpolator(this.mInterpolator);
+      this.FT.start();
       return;
     }
-    this.DX.setTranslationY(0.0F);
-    this.DX.setTranslationZ(0.0F);
-    this.DX.offsetTopAndBottom(this.DW.getHeight() - this.DY.getHeight());
-    this.DY.setBottom(this.DW.getHeight());
+    this.FM.setTranslationY(0.0F);
+    this.FM.setTranslationZ(0.0F);
+    this.FM.offsetTopAndBottom(this.FL.getHeight() - this.FN.getHeight());
+    this.FN.setBottom(this.FL.getHeight());
   }
 }
 

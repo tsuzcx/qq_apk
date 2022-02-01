@@ -1,26 +1,31 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
 
 final class LoginUI$11
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
   LoginUI$11(LoginUI paramLoginUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(152558);
-    d.H(this.gFf, "login_exdevice", ".ui.LoginAsExDeviceUI");
-    this.gFf.overridePendingTransition(2131034227, 2131034130);
-    AppMethodBeat.o(152558);
+    AppMethodBeat.i(305087);
+    if ((paramInt == 6) || (paramInt == 5))
+    {
+      LoginUI.e(this.qbD);
+      AppMethodBeat.o(305087);
+      return true;
+    }
+    AppMethodBeat.o(305087);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.11
  * JD-Core Version:    0.7.0.1
  */

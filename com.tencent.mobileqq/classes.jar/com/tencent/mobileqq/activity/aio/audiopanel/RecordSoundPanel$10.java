@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class RecordSoundPanel$10
   implements Runnable
@@ -9,13 +9,13 @@ class RecordSoundPanel$10
   
   public void run()
   {
-    this.this$0.a.b(this.a, null);
-    this.this$0.b();
+    ((AudioPanelAioHelper)this.this$0.a.q(128)).a(this.a, null);
+    this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel.10
  * JD-Core Version:    0.7.0.1
  */

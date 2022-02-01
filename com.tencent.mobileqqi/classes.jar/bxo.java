@@ -10,7 +10,7 @@ public class bxo
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.u();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, true);
   }
 }
 

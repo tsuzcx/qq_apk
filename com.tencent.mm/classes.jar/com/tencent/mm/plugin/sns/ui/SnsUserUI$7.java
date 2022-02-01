@@ -1,52 +1,30 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.mmsight.SightCaptureResult;
-import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
-import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
-import com.tencent.mm.protocal.protobuf.bby;
-import com.tencent.mm.vfs.e;
-import com.tencent.xweb.util.d;
 
 final class SnsUserUI$7
-  implements CaptureDataManager.b
+  implements MenuItem.OnMenuItemClickListener
 {
   SnsUserUI$7(SnsUserUI paramSnsUserUI) {}
   
-  public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(145670);
-    paramBundle = new bby();
-    paramBundle.xra = true;
-    paramBundle.xqZ = false;
-    String str = e.avM(paramCaptureVideoNormalModel.videoPath);
-    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.qbj.longValue() / 1000L), paramBundle);
-    if (paramCaptureVideoNormalModel.qbk.booleanValue())
-    {
-      paramBundle.oFG = true;
-      paramBundle.mCu = false;
-      paramBundle.oFO = paramCaptureVideoNormalModel.thumbPath;
-    }
-    paramCaptureVideoNormalModel = new Intent();
-    paramCaptureVideoNormalModel.putExtra("key_req_result", paramBundle);
-    ((Activity)paramContext).setResult(-1, paramCaptureVideoNormalModel);
-    ((Activity)paramContext).finish();
-    AppMethodBeat.o(145670);
-  }
-  
-  public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
-  {
-    return false;
+    AppMethodBeat.i(308412);
+    paramMenuItem = new Intent();
+    paramMenuItem.setClass(this.REI, SnsMsgUI.class);
+    paramMenuItem.putExtra("sns_msg_force_show_all", true);
+    paramMenuItem.putExtra("sns_msg_comment_list_scene", 2);
+    this.REI.startActivityForResult(paramMenuItem, 8);
+    AppMethodBeat.o(308412);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUserUI.7
  * JD-Core Version:    0.7.0.1
  */

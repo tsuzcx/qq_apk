@@ -48,31 +48,37 @@ public final class IPCBaseParam
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.hostAppId, 0);
-    if (this.taskAppId != null) {
-      paramJceOutputStream.write(this.taskAppId, 1);
+    String str = this.taskAppId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.taskVersion, 2);
     paramJceOutputStream.write(this.taskPackageName, 3);
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 4);
+    str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.uinType != null) {
-      paramJceOutputStream.write(this.uinType, 5);
+    str = this.uinType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.via != null) {
-      paramJceOutputStream.write(this.via, 6);
+    str = this.via;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 7);
+    str = this.channelId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.extra != null) {
-      paramJceOutputStream.write(this.extra, 8);
+    str = this.extra;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCBaseParam
  * JD-Core Version:    0.7.0.1
  */

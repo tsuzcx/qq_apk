@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class TagInfo
   extends JceStruct
 {
-  public byte bType;
-  public long iTagId;
+  public byte bType = 0;
+  public long iTagId = 0L;
   public String strContent = "";
   
   public TagInfo() {}
@@ -31,14 +31,15 @@ public final class TagInfo
   {
     paramJceOutputStream.write(this.bType, 0);
     paramJceOutputStream.write(this.iTagId, 1);
-    if (this.strContent != null) {
-      paramJceOutputStream.write(this.strContent, 2);
+    String str = this.strContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.TagInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,16 +16,16 @@ public final class MsgType0x210
   static MsgType0x210SubMsgType0xa cache_stMsgInfo0xa;
   static MsgType0x210SubMsgType0xe cache_stMsgInfo0xe;
   static byte[] cache_vProtobuf;
-  public MsgType0x210SubMsgType0x13 stMsgInfo0x13;
-  public MsgType0x210SubMsgType0x17 stMsgInfo0x17;
-  public MsgType0x210SubMsgType0x1d stMsgInfo0x1d;
-  public MsgType0x210SubMsgType0x2 stMsgInfo0x2;
-  public MsgType0x210SubMsgType0x20 stMsgInfo0x20;
-  public MsgType0x210SubMsgType0x24 stMsgInfo0x24;
-  public MsgType0x210SubMsgType0xa stMsgInfo0xa;
-  public MsgType0x210SubMsgType0xe stMsgInfo0xe;
-  public long uSubMsgType;
-  public byte[] vProtobuf;
+  public MsgType0x210SubMsgType0x13 stMsgInfo0x13 = null;
+  public MsgType0x210SubMsgType0x17 stMsgInfo0x17 = null;
+  public MsgType0x210SubMsgType0x1d stMsgInfo0x1d = null;
+  public MsgType0x210SubMsgType0x2 stMsgInfo0x2 = null;
+  public MsgType0x210SubMsgType0x20 stMsgInfo0x20 = null;
+  public MsgType0x210SubMsgType0x24 stMsgInfo0x24 = null;
+  public MsgType0x210SubMsgType0xa stMsgInfo0xa = null;
+  public MsgType0x210SubMsgType0xe stMsgInfo0xe = null;
+  public long uSubMsgType = 0L;
+  public byte[] vProtobuf = null;
   
   public MsgType0x210() {}
   
@@ -89,38 +89,47 @@ public final class MsgType0x210
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uSubMsgType, 0);
-    if (this.stMsgInfo0x2 != null) {
-      paramJceOutputStream.write(this.stMsgInfo0x2, 1);
+    Object localObject = this.stMsgInfo0x2;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stMsgInfo0xa != null) {
-      paramJceOutputStream.write(this.stMsgInfo0xa, 3);
+    localObject = this.stMsgInfo0xa;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stMsgInfo0xe != null) {
-      paramJceOutputStream.write(this.stMsgInfo0xe, 4);
+    localObject = this.stMsgInfo0xe;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stMsgInfo0x13 != null) {
-      paramJceOutputStream.write(this.stMsgInfo0x13, 5);
+    localObject = this.stMsgInfo0x13;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stMsgInfo0x17 != null) {
-      paramJceOutputStream.write(this.stMsgInfo0x17, 6);
+    localObject = this.stMsgInfo0x17;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stMsgInfo0x20 != null) {
-      paramJceOutputStream.write(this.stMsgInfo0x20, 7);
+    localObject = this.stMsgInfo0x20;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.stMsgInfo0x1d != null) {
-      paramJceOutputStream.write(this.stMsgInfo0x1d, 8);
+    localObject = this.stMsgInfo0x1d;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.stMsgInfo0x24 != null) {
-      paramJceOutputStream.write(this.stMsgInfo0x24, 9);
+    localObject = this.stMsgInfo0x24;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.vProtobuf != null) {
-      paramJceOutputStream.write(this.vProtobuf, 10);
+    localObject = this.vProtobuf;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
+import oicq.wlogin_sdk.tlv_type.RegTLV;
+import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.util;
 
 public class WUserSigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new WUserSigInfo.1();
-  public List _domains = new ArrayList();
+  public static final Parcelable.Creator<WUserSigInfo> CREATOR = new WUserSigInfo.1();
+  public byte[] _device_token = new byte[0];
+  public List<String> _domains = new ArrayList();
   public byte[] _fastLoginBuf;
   public byte[] _in_ksid;
+  public HashMap<Integer, tlv_t> _loginExtraProductTLVMap = new HashMap();
   public int _login_bitmap = 0;
   public byte[] _reserveData;
   public long _seqence = 0L;
   public int _source_type = 0;
-  public List _tickets = new ArrayList();
-  public HashMap extraLoginTLVMap = new HashMap();
-  public HashMap extraRegTLVMap = new HashMap();
-  public HashMap loginResultTLVMap = new HashMap();
-  public HashMap loginTLVMap = new HashMap();
-  public HashMap regTLVMap = new HashMap();
+  public List<Ticket> _tickets = new ArrayList();
+  public int businessType = 0;
+  public HashMap<Integer, tlv_t> extraLoginTLVMap = new HashMap();
+  public HashMap<Integer, RegTLV> extraRegTLVMap = new HashMap();
+  public HashMap<Integer, tlv_t> loginResultTLVMap = new HashMap();
+  public HashMap<Integer, tlv_t> loginTLVMap = new HashMap();
+  public HashMap<Integer, tlv_t> regTLVMap = new HashMap();
   public byte[][] stList;
   public String uin = "";
   public long userSeq = 0L;
@@ -47,7 +52,9 @@ public class WUserSigInfo
   {
     if (paramWloginSigInfo.cacheTickets != null)
     {
-      util.LOGI("WUserSigInfo::get_clone using cacheTickets last update stamp " + paramWloginSigInfo.cacheUpdateStamp, "");
+      StringBuilder localStringBuilder = new StringBuilder("WUserSigInfo::get_clone ");
+      localStringBuilder.append(paramWloginSigInfo.cacheUpdateStamp);
+      util.LOGI(localStringBuilder.toString(), "");
       this._tickets = paramWloginSigInfo.cacheTickets;
       return;
     }
@@ -69,15 +76,17 @@ public class WUserSigInfo
     this._tickets.add(new Ticket(32, paramWloginSigInfo._userStWebSig, null, paramWloginSigInfo._userStWebSig_create_time, paramWloginSigInfo._userStWebSig_expire_time));
     this._tickets.add(new Ticket(8388608, paramWloginSigInfo._pay_token, null, 0L, 0L));
     this._tickets.add(new Ticket(16777216, paramWloginSigInfo._pf, paramWloginSigInfo._pfKey, 0L, 0L));
-    if (paramWloginSigInfo._DA2 != null) {}
-    for (int i = paramWloginSigInfo._DA2.length;; i = 0)
-    {
-      util.LOGI(String.format("WUserSigInfo.get_clone add da2 %d", new Object[] { Integer.valueOf(i) }), "");
-      this._tickets.add(new Ticket(33554432, paramWloginSigInfo._DA2, null, 0L, 0L));
-      paramWloginSigInfo.cacheTickets = this._tickets;
-      paramWloginSigInfo.cacheUpdateStamp = util.get_server_cur_time();
-      return;
+    int i;
+    if (paramWloginSigInfo._DA2 != null) {
+      i = paramWloginSigInfo._DA2.length;
+    } else {
+      i = 0;
     }
+    util.LOGI(String.format("WUserSigInfo.get_clone add da2 %d", new Object[] { Integer.valueOf(i) }), "");
+    this._tickets.add(new Ticket(33554432, paramWloginSigInfo._DA2, null, 0L, 0L));
+    this._device_token = paramWloginSigInfo._device_token;
+    paramWloginSigInfo.cacheTickets = this._tickets;
+    paramWloginSigInfo.cacheUpdateStamp = util.get_server_cur_time();
   }
   
   public void readFromParcel(Parcel paramParcel)
@@ -89,13 +98,30 @@ public class WUserSigInfo
     this._login_bitmap = paramParcel.readInt();
     this._domains = paramParcel.readArrayList(List.class.getClassLoader());
     paramParcel.readTypedList(this._tickets, Ticket.CREATOR);
-    paramParcel = paramParcel.readBundle();
-    if (paramParcel != null)
+    this._device_token = paramParcel.createByteArray();
+    Object localObject = paramParcel.readBundle();
+    if (localObject != null)
     {
-      this.regTLVMap = ((HashMap)paramParcel.getSerializable("regTLVMap"));
-      this.extraLoginTLVMap = ((HashMap)paramParcel.getSerializable("extraLoginTLVMap"));
-      this.extraRegTLVMap = ((HashMap)paramParcel.getSerializable("extraRegTLVMap"));
-      this.loginTLVMap = ((HashMap)paramParcel.getSerializable("loginTLVMap"));
+      this.regTLVMap = ((HashMap)((Bundle)localObject).getSerializable("regTLVMap"));
+      this.extraLoginTLVMap = ((HashMap)((Bundle)localObject).getSerializable("extraLoginTLVMap"));
+      this.extraRegTLVMap = ((HashMap)((Bundle)localObject).getSerializable("extraRegTLVMap"));
+      HashMap localHashMap = (HashMap)((Bundle)localObject).getSerializable("loginTLVMap");
+      if (localHashMap != null) {
+        this.loginTLVMap = localHashMap;
+      }
+      this._loginExtraProductTLVMap = ((HashMap)((Bundle)localObject).getSerializable("loginExtraProductTLVMap"));
+      this.loginResultTLVMap = ((HashMap)((Bundle)localObject).getSerializable("loginResultTLVMap"));
+    }
+    try
+    {
+      this.businessType = paramParcel.readInt();
+      return;
+    }
+    catch (Exception paramParcel)
+    {
+      localObject = new StringBuilder("WUserSigInfo::readFromParcel businessType ");
+      ((StringBuilder)localObject).append(paramParcel.getMessage());
+      util.LOGI(((StringBuilder)localObject).toString());
     }
   }
   
@@ -108,12 +134,16 @@ public class WUserSigInfo
     paramParcel.writeInt(this._login_bitmap);
     paramParcel.writeList(this._domains);
     paramParcel.writeTypedList(this._tickets);
+    paramParcel.writeByteArray(this._device_token);
     Bundle localBundle = new Bundle();
     localBundle.putSerializable("regTLVMap", this.regTLVMap);
     localBundle.putSerializable("extraLoginTLVMap", this.extraLoginTLVMap);
     localBundle.putSerializable("extraRegTLVMap", this.extraRegTLVMap);
     localBundle.putSerializable("loginTLVMap", this.loginTLVMap);
+    localBundle.putSerializable("loginExtraProductTLVMap", this._loginExtraProductTLVMap);
+    localBundle.putSerializable("loginResultTLVMap", this.loginResultTLVMap);
     paramParcel.writeBundle(localBundle);
+    paramParcel.writeInt(this.businessType);
   }
 }
 

@@ -21,8 +21,9 @@ public class gvj
     localObject2 = (BaseActivity)localObject2;
     Bundle localBundle = new Bundle();
     localBundle.putString("bid", ((TroopBarPageEntity)localObject1).id);
-    TroopBarUtils.a((BaseActivity)localObject2, localBundle, "http://xiaoqu.qq.com/cgi-bin/bar/sign", 1, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutBanner.a);
-    TroopBarUtils.a("Clk_sign", ((TroopBarPageEntity)localObject1).id, "");
+    localBundle.putString("op", "1");
+    TroopBarUtils.a((BaseActivity)localObject2, localBundle, "http://xiaoqu.qq.com/cgi-bin/bar/user/fbar", 2, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutBanner.a);
+    TroopBarUtils.a("Clk_focus", ((TroopBarPageEntity)localObject1).id, "");
   }
 }
 

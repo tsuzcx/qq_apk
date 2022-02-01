@@ -6,34 +6,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static b APe;
-  public HandlerThread a;
-  private Handler b;
+  private static b agvD;
+  public HandlerThread agvC;
+  private Handler mHandler;
   
   static
   {
-    AppMethodBeat.i(126146);
-    APe = new b();
-    AppMethodBeat.o(126146);
+    AppMethodBeat.i(74943);
+    agvD = new b();
+    AppMethodBeat.o(74943);
   }
   
   private b()
   {
-    AppMethodBeat.i(126145);
-    this.a = new HandlerThread("Vending-LogicThread");
-    this.a.start();
-    this.b = new Handler(this.a.getLooper());
-    AppMethodBeat.o(126145);
+    AppMethodBeat.i(74942);
+    this.agvC = new HandlerThread("Vending-LogicThread");
+    this.agvC.start();
+    this.mHandler = new Handler(this.agvC.getLooper());
+    AppMethodBeat.o(74942);
   }
   
-  public static b dQw()
+  public static b jJZ()
   {
-    return APe;
+    return agvD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.i.b
  * JD-Core Version:    0.7.0.1
  */

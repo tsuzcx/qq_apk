@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/jfb" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:text="加载demo数据" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/lap" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="@string/n0f" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/lb5" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="空间支持IMAX广告" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/text1" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="185竖屏广告-mockData" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/nfu" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="激励浏览-mockData" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/text2" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="185左横屏广告-mockData" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/jfh" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="185右横屏屏广告-mockData" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/jfg" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="585竖屏广告-mockData" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/dxl" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="185dialog竖屏广告-mock" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/jgm" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="@string/n0g" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/jg2" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="@string/n0e" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/e1" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="广告C2S点击监测" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/em" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="广告C2S曝光监测" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/l8_" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="广告C2S播放监测" />
+        <Button android:textSize="14.0sp" android:gravity="center" android:id="@id/mfz" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" android:text="天气areaid测试" />
+        <EditText android:textSize="14.0sp" android:gravity="center" android:id="@id/lgi" android:layout_width="fill_parent" android:layout_height="@dimen/cz" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d1" />
+    </LinearLayout>
+</ScrollView>

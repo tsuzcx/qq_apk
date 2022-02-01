@@ -195,3 +195,9 @@ cancelDownloadTask
 openADCanvas
 private_startFacialRecognitionVerify
 private_startFacialRecognitionVerifyAndUploadVideo
+insertXWebLivePlayer
+updateXWebLivePlayer
+removeXWebLivePlayer
+operateXWebLivePlayer
+insertXWebVideo
+removeXWebVideo

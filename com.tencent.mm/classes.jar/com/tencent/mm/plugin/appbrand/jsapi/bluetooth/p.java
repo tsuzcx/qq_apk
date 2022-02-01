@@ -1,85 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
-import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import kotlin.Metadata;
 
-@TargetApi(18)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/JsApiOperateGlobalMonitoredBluetoothDevice;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "doDelete", "", "env", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "callbackId", "", "doGetAll", "doSet", "invoke", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends c<g>
 {
-  private static final int CTRL_INDEX = 177;
-  private static final String NAME = "stopBluetoothDevicesDiscovery";
+  public static final int CTRL_INDEX = 1089;
+  public static final String NAME = "operateGlobalMonitoredBluetoothDevice";
+  public static final p.a rKv;
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  static
   {
-    AppMethodBeat.i(94213);
-    c.kS(101);
-    String str = paramc.getAppId();
-    Object localObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localObject = "";
-    }
-    ab.i("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "appId:%s stopBluetoothDevicesDiscovery data:%s", new Object[] { str, localObject });
-    paramJSONObject = a.BU(str);
-    if (paramJSONObject == null)
-    {
-      ab.e("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "bleWorker is null, may not open ble");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(10000));
-      paramc.h(paramInt, j("fail:not init", paramJSONObject));
-      c.df(103, 106);
-      AppMethodBeat.o(94213);
-      return;
-    }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aCw())
-    {
-      ab.e("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "adapter is null or not enabled!");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.h(paramInt, j("fail:not available", paramJSONObject));
-      c.df(103, 108);
-      AppMethodBeat.o(94213);
-      return;
-    }
-    if (paramJSONObject.hFw != null)
-    {
-      paramJSONObject = paramJSONObject.hFw;
-      if (paramJSONObject.hGb != null) {
-        paramJSONObject = paramJSONObject.hGb.aCr();
-      }
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "stopBleScan result:%s", new Object[] { paramJSONObject });
-      localObject = new HashMap();
-      switch (paramJSONObject.errCode)
-      {
-      default: 
-        ((Map)localObject).put("isDiscovering", Boolean.FALSE);
-        paramc.h(paramInt, j("fail", (Map)localObject));
-        c.kS(103);
-        AppMethodBeat.o(94213);
-        return;
-        paramJSONObject = j.hGO;
-        continue;
-        paramJSONObject = j.hGO;
-      }
-    }
-    ((Map)localObject).put("isDiscovering", Boolean.FALSE);
-    paramc.h(paramInt, j("ok", (Map)localObject));
-    c.kS(102);
-    m.c.a(paramc, true, false);
-    AppMethodBeat.o(94213);
+    AppMethodBeat.i(329547);
+    rKv = new p.a((byte)0);
+    AppMethodBeat.o(329547);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.p
  * JD-Core Version:    0.7.0.1
  */

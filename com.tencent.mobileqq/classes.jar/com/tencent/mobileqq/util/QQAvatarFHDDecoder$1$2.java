@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.util;
 
-import bddk;
-import bddl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
-public class QQAvatarFHDDecoder$1$2
+class QQAvatarFHDDecoder$1$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$2(bddl parambddl, String paramString) {}
+  QQAvatarFHDDecoder$1$2(QQAvatarFHDDecoder.1 param1, String paramString) {}
   
   public void run()
   {
-    if (bddk.a(this.jdField_a_of_type_Bddl.a)) {
+    if (QQAvatarFHDDecoder.b(this.b.a)) {
       return;
     }
-    Setting localSetting = bddk.a(this.jdField_a_of_type_Bddl.a).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bddl.a.a(localSetting);
+    Setting localSetting = QQAvatarFHDDecoder.c(this.b.a).getQQHeadSettingFromDB(this.a);
+    this.b.a.a(localSetting);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2
  * JD-Core Version:    0.7.0.1
  */

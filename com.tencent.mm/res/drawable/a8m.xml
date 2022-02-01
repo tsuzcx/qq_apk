@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@raw/webviewtab_refresh_disable" />
-    <item android:drawable="@raw/webviewtab_refresh_normal" />
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/ahe" />
+        </shape>
+    </item>
+    <item android:drawable="@color/ahb" />
 </selector>

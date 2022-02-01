@@ -1,13 +1,16 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 
 class fqy
   implements Runnable
 {
-  fqy(fqx paramfqx) {}
+  fqy(fqw paramfqw, long paramLong) {}
   
   public void run()
   {
-    FMRecentFileActivity.a(this.a.a);
+    FMRecentFileActivity.a(this.jdField_a_of_type_Fqw.a);
+    this.jdField_a_of_type_Fqw.a.b.a().a(this.jdField_a_of_type_Long);
   }
 }
 

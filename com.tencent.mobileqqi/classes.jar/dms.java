@@ -1,38 +1,15 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class dms
-  extends FriendListObserver
+  implements DialogInterface.OnDismissListener
 {
-  public dms(SubAccountSettingActivity paramSubAccountSettingActivity) {}
+  public dms(SubLoginActivity paramSubLoginActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramBoolean) && (SubAccountSettingActivity.a(this.a) != null) && (SubAccountSettingActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountSettingActivity.a(this.a).subuin.equals(paramString)))
-    {
-      paramString = ContactUtils.b(this.a.b, paramString, false);
-      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountSettingActivity.a(this.a).subname)) || (!paramString.equals(SubAccountSettingActivity.a(this.a).subname))))
-      {
-        SubAccountSettingActivity.a(this.a).subname = paramString;
-        SubAccountSettingActivity.a(this.a).setText(SubAccountSettingActivity.a(this.a).subname);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (SubAccountSettingActivity.a(this.a) == null) || (!paramString.equals(SubAccountSettingActivity.a(this.a).subuin))) {}
-    while (SubAccountSettingActivity.a(this.a) == null) {
-      return;
-    }
-    paramString = this.a.b.b(SubAccountSettingActivity.a(this.a).subuin);
-    SubAccountSettingActivity.a(this.a).setImageDrawable(paramString);
+    this.a.d = false;
   }
 }
 

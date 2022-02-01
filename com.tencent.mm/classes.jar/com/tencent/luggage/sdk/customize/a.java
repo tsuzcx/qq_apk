@@ -1,22 +1,28 @@
 package com.tencent.luggage.sdk.customize;
 
-import android.content.Context;
-import com.tencent.luggage.a.b;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
+import com.tencent.mm.plugin.appbrand.appstorage.v;
+import com.tencent.mm.plugin.appbrand.config.e;
 
+@Deprecated
 public abstract interface a
-  extends b
+  extends com.tencent.luggage.a.b
 {
-  public abstract boolean a(Context paramContext, LaunchParcel paramLaunchParcel);
+  public abstract g aqR();
   
-  public abstract boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, LaunchParamsOptional paramLaunchParamsOptional);
+  public abstract e aqS();
+  
+  public abstract com.tencent.mm.plugin.appbrand.appstorage.b.b aqT();
+  
+  public abstract void aqU();
+  
+  public abstract v f(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void fn(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.customize.a
  * JD-Core Version:    0.7.0.1
  */

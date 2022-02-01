@@ -24,10 +24,10 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import ftb;
 import ftc;
 import ftd;
 import fte;
-import ftf;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -112,7 +112,7 @@ public class FileViewerFacade
       paramString1.jdField_a_of_type_Long = l;
       FileManagerReporter.a(paramQQAppInterface.a(), paramString1);
       a();
-      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131562518), paramActivity.getString(2131563273), new ftc(str, l, paramQQAppInterface, paramActivity), new ftd()).show();
+      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131562518), paramActivity.getString(2131563273), new ftb(str, l, paramQQAppInterface, paramActivity), new ftc()).show();
       return;
     }
     paramString2 = new FileManagerReporter.fileAssistantReportData();
@@ -149,7 +149,7 @@ public class FileViewerFacade
       paramString1.jdField_a_of_type_Long = l;
       FileManagerReporter.a(paramQQAppInterface.a(), paramString1);
       a();
-      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131562563), paramActivity.getString(2131563272), new fte(str, l, paramQQAppInterface, paramActivity), new ftf()).show();
+      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131562563), paramActivity.getString(2131563272), new ftd(str, l, paramQQAppInterface, paramActivity), new fte()).show();
       return;
     }
     paramString2 = new FileManagerReporter.fileAssistantReportData();

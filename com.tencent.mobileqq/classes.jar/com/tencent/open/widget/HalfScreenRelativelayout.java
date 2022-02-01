@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
-import bdaq;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class HalfScreenRelativelayout
   extends RelativeLayout
@@ -38,18 +38,20 @@ public class HalfScreenRelativelayout
   
   private void a()
   {
-    this.a = ((int)(a(getContext()) / 2.0F) + bdaq.a(getContext(), 56.0F));
+    this.a = ((int)(a(getContext()) / 2.0F) + DisplayUtil.a(getContext(), 56.0F));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int j = View.MeasureSpec.getMode(paramInt2);
+    int k = View.MeasureSpec.getSize(paramInt2);
+    int m = this.a;
     int i = paramInt2;
-    if (View.MeasureSpec.getSize(paramInt2) > this.a)
+    if (k > m)
     {
       i = paramInt2;
       if (j != 0) {
-        i = View.MeasureSpec.makeMeasureSpec(this.a, j);
+        i = View.MeasureSpec.makeMeasureSpec(m, j);
       }
     }
     super.onMeasure(paramInt1, i);
@@ -65,7 +67,7 @@ public class HalfScreenRelativelayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.widget.HalfScreenRelativelayout
  * JD-Core Version:    0.7.0.1
  */

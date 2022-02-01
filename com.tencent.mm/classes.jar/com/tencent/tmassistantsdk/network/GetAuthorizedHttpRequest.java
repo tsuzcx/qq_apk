@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.ActionButton;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.AuthorizedResult;
@@ -21,7 +21,7 @@ public class GetAuthorizedHttpRequest
   
   private String authorizedInfoToString(TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo)
   {
-    AppMethodBeat.i(75833);
+    AppMethodBeat.i(102079);
     String str = "" + "?appId=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.appId);
     str = str + "&userId=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.userId);
     str = str + "&userIdType=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.userIdType);
@@ -34,13 +34,13 @@ public class GetAuthorizedHttpRequest
     str = str + "&verifyType=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.verifyType);
     str = str + "&via=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.via);
     paramTMOpenSDKAuthorizedInfo = str + "&actionType=" + paramTMOpenSDKAuthorizedInfo.actionType;
-    AppMethodBeat.o(75833);
+    AppMethodBeat.o(102079);
     return paramTMOpenSDKAuthorizedInfo;
   }
   
   private AuthorizedResult jsonObjectToRespData(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(75834);
+    AppMethodBeat.i(102080);
     AuthorizedResult localAuthorizedResult = new AuthorizedResult();
     localAuthorizedResult.hasAuthoried = paramJSONObject.getInt("hasAuthoried");
     localAuthorizedResult.errorCode = paramJSONObject.getInt("errorCode");
@@ -78,17 +78,17 @@ public class GetAuthorizedHttpRequest
     }
     localAuthorizedResult.tipsInfo = paramJSONObject;
     TMLog.i("GetAuthorizedHttpRequest", "dataInfo :" + localAuthorizedResult.toString());
-    AppMethodBeat.o(75834);
+    AppMethodBeat.o(102080);
     return localAuthorizedResult;
   }
   
   protected void onFinished(JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(75832);
+    AppMethodBeat.i(102078);
     if (this.mGetAuthorizedListener == null)
     {
       TMLog.i("GetAuthorizedHttpRequest", "mGetAuthorizedListener is null !");
-      AppMethodBeat.o(75832);
+      AppMethodBeat.o(102078);
       return;
     }
     if ((paramInt == 0) && (paramJSONObject != null)) {
@@ -99,30 +99,30 @@ public class GetAuthorizedHttpRequest
           break label103;
         }
         this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(paramJSONObject, 0);
-        AppMethodBeat.o(75832);
+        AppMethodBeat.o(102078);
         return;
       }
       catch (JSONException paramJSONObject)
       {
         this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, 704);
-        ab.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
-        AppMethodBeat.o(75832);
+        Log.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
+        AppMethodBeat.o(102078);
         return;
       }
     } else {
       this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, paramInt);
     }
     label103:
-    AppMethodBeat.o(75832);
+    AppMethodBeat.o(102078);
   }
   
   public void sendRequest(TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo)
   {
-    AppMethodBeat.i(75831);
+    AppMethodBeat.i(102077);
     if (paramTMOpenSDKAuthorizedInfo != null) {
       super.sendData(authorizedInfoToString(paramTMOpenSDKAuthorizedInfo));
     }
-    AppMethodBeat.o(75831);
+    AppMethodBeat.o(102077);
   }
   
   public void setListenner(IGetAuthorizedHttpRequestListenner paramIGetAuthorizedHttpRequestListenner)
@@ -132,7 +132,7 @@ public class GetAuthorizedHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetAuthorizedHttpRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#198a8aff" android:layout_width="fill_parent" android:layout_height="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.timi.game.ui.widget.RoundCornerImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/8n" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/8o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="76.0dip" android:includeFontPadding="false" />
+    <com.tencent.timi.game.ui.widget.CommonButton android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right" android:id="@id/8m" android:background="@drawable/gyl" android:layout_width="60.0dip" android:layout_height="28.0dip" android:layout_marginRight="16.0dip" android:text="移出" android:includeFontPadding="false" />
+</FrameLayout>

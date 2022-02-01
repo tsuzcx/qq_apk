@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/n9"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/k6" android:paddingLeft="@dimen/n_" android:paddingTop="14.0dip" android:paddingRight="@dimen/n_" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/vm" android:gravity="left" android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ems="4" android:singleLine="false" style="@style/lg" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/vl" android:gravity="left" android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ll" android:singleLine="false" style="@style/lj" />
-    </LinearLayout>
-    <View android:id="@id/pm" android:background="@color/yo" android:layout_width="fill_parent" android:layout_height="1.0px" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.order.ui.OrderTabView android:id="@id/hoz" android:layout_width="fill_parent" android:layout_height="93.0dip" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/l8k" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/hoz" />
+</androidx.constraintlayout.widget.ConstraintLayout>

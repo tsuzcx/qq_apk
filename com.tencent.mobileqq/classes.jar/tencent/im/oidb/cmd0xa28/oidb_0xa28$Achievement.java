@@ -18,13 +18,14 @@ public final class oidb_0xa28$Achievement
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_mvp_level", "uint64_super", "bytes_score", "uint64_round" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L) }, Achievement.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_mvp_level", "uint64_super", "bytes_score", "uint64_round" }, new Object[] { localLong, localLong, localByteStringMicro, localLong }, Achievement.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa28.oidb_0xa28.Achievement
  * JD-Core Version:    0.7.0.1
  */

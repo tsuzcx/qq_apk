@@ -1,14 +1,10 @@
 package com.tencent.mobileqq.ptt.preop;
 
 import android.os.Handler;
-import awye;
-import awyh;
-import awyi;
-import awyj;
-import azri;
-import bavg;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.pttlogic.api.IPTTPreDownloader.IPreDownloadStrategy;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -16,416 +12,419 @@ import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class PTTPreDownloadStrategy
-  implements awyh, Runnable
+  implements IPTTPreDownloader.IPreDownloadStrategy, Runnable
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private awye jdField_a_of_type_Awye = new awye(1);
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private awye b = new awye(3);
-  private awye c = new awye(2);
+  private volatile boolean a;
+  private PTTPreDownloadStrategy.StrategyInfo b = new PTTPreDownloadStrategy.StrategyInfo(1);
+  private PTTPreDownloadStrategy.StrategyInfo c = new PTTPreDownloadStrategy.StrategyInfo(3);
+  private PTTPreDownloadStrategy.StrategyInfo d = new PTTPreDownloadStrategy.StrategyInfo(2);
+  private WeakReference<AppRuntime> e;
+  private Handler f;
   
-  public PTTPreDownloadStrategy(QQAppInterface paramQQAppInterface, Handler paramHandler)
+  public PTTPreDownloadStrategy(AppRuntime paramAppRuntime, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Boolean = false;
+    this.e = new WeakReference(paramAppRuntime);
+    this.f = paramHandler;
+    this.a = false;
   }
   
-  private long a(MessageForPtt paramMessageForPtt)
+  private void a(PTTPreDownloadStrategy.StrategyInfo paramStrategyInfo)
   {
-    long l2 = 4096L;
-    long l1 = paramMessageForPtt.fileSize;
-    if (l1 <= 0L)
-    {
-      if (paramMessageForPtt.voiceType == 1) {
-        if (paramMessageForPtt.voiceLength <= 0) {
-          l1 = 10240L;
-        }
-      }
-      do
-      {
-        do
-        {
-          return l1;
-          return paramMessageForPtt.voiceLength * 1200;
-          l1 = l2;
-        } while (paramMessageForPtt.voiceType != 0);
-        l1 = l2;
-      } while (paramMessageForPtt.voiceLength <= 0);
-      return paramMessageForPtt.voiceLength * 700;
-    }
-    return l1;
-  }
-  
-  private void a(awye paramawye)
-  {
-    long l2;
-    if (paramawye.jdField_a_of_type_Awyj.jdField_a_of_type_Int == -2147483648)
+    if (paramStrategyInfo.a.a == -2147483648)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d("PTTPreDownloader", 4, "initStrategyInfoIfNeccessary");
+        QLog.d("PTTPreDownloadStrategy", 4, "initStrategyInfoIfNeccessary");
       }
       Date localDate = new Date();
-      Object localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      awyj localawyj1 = awyi.a((QQAppInterface)localObject1, paramawye.jdField_a_of_type_Int);
-      paramawye.jdField_a_of_type_Awyj.jdField_a_of_type_Int = localawyj1.jdField_a_of_type_Int;
+      Object localObject1 = (AppRuntime)this.e.get();
+      PreDownloadParams.Params localParams1 = PreDownloadParams.a((AppRuntime)localObject1, paramStrategyInfo.b);
+      paramStrategyInfo.a.a = localParams1.a;
       int i;
-      if (paramawye.jdField_a_of_type_Awyj.jdField_a_of_type_Int > 0)
+      if (paramStrategyInfo.a.a > 0)
       {
-        awyj localawyj2 = new awyj();
-        localObject1 = awyi.a((QQAppInterface)localObject1, paramawye.jdField_a_of_type_Int, localawyj2);
+        PreDownloadParams.Params localParams2 = new PreDownloadParams.Params();
+        localObject1 = PreDownloadParams.a((AppRuntime)localObject1, paramStrategyInfo.b, localParams2);
         Object localObject2 = new SimpleDateFormat("yyyy-MM-dd").format(localDate);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PTTPreDownloader", 4, "PreTime:" + (String)localObject1 + " curTime:" + (String)localObject2);
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("PreTime:");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(" curTime:");
+          localStringBuilder.append((String)localObject2);
+          QLog.d("PTTPreDownloadStrategy", 4, localStringBuilder.toString());
         }
         if (((String)localObject2).equals(localObject1))
         {
           i = 0;
           while (i <= 5)
           {
-            paramawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] = localawyj2.jdField_a_of_type_ArrayOfInt[i];
+            paramStrategyInfo.a.b[i] = localParams2.b[i];
             i += 1;
           }
         }
-        i = 0;
-        int j = 0;
-        if (localawyj2.jdField_a_of_type_Int > -1)
+        if (localParams2.a > -1)
         {
           localObject1 = new HashMap();
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(localawyj2.jdField_a_of_type_Int);
-          i = j;
+          ((StringBuilder)localObject2).append(localParams2.a);
+          i = 0;
           while (i <= 5)
           {
-            ((StringBuilder)localObject2).append('#').append(i).append('_').append(localawyj2.jdField_a_of_type_ArrayOfInt[i]);
+            ((StringBuilder)localObject2).append('#');
+            ((StringBuilder)localObject2).append(i);
+            ((StringBuilder)localObject2).append('_');
+            ((StringBuilder)localObject2).append(localParams2.b[i]);
             i += 1;
           }
           ((HashMap)localObject1).put("RemainCfg", ((StringBuilder)localObject2).toString());
           ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, "");
-          azri.a(BaseApplication.getContext()).a(null, "PttPreDownloadDailyRemain", true, 0L, 0L, (HashMap)localObject1, "");
-          i = 0;
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttPreDownloadDailyRemain", true, 0L, 0L, (HashMap)localObject1, "");
         }
+        i = 0;
         while (i <= 5)
         {
-          paramawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] = localawyj1.jdField_a_of_type_ArrayOfInt[i];
+          paramStrategyInfo.a.b[i] = localParams1.b[i];
           i += 1;
         }
       }
-      b(paramawye);
-      if (!this.jdField_a_of_type_Boolean)
+      b(paramStrategyInfo);
+      if (!this.a)
       {
-        l1 = localDate.getTime();
+        long l2 = localDate.getTime();
         i = localDate.getHours();
         localDate.setHours(0);
         localDate.setMinutes(0);
         localDate.setSeconds(0);
-        l2 = localDate.getTime();
-        if (i >= 0) {
-          break label494;
+        long l3 = localDate.getTime();
+        long l1;
+        if (i < 0) {
+          l1 = 0L;
+        } else {
+          l1 = 86400000L;
         }
+        l1 -= l2 - l3;
+        if (QLog.isDevelopLevel())
+        {
+          l2 = l1 / 1000L;
+          paramStrategyInfo = new StringBuilder();
+          paramStrategyInfo.append("Next reset time offset:");
+          paramStrategyInfo.append(l2 / 60L);
+          paramStrategyInfo.append(":");
+          paramStrategyInfo.append(l2 % 60L);
+          QLog.d("PTTPreDownloadStrategy", 4, paramStrategyInfo.toString());
+        }
+        this.a = true;
+        this.f.postDelayed(this, l1);
       }
-    }
-    label494:
-    for (long l1 = 0L - (l1 - l2);; l1 = 86400000L - (l1 - l2))
-    {
-      if (QLog.isDevelopLevel())
-      {
-        l2 = l1 / 1000L;
-        QLog.d("PTTPreDownloader", 4, "Next reset time offset:" + l2 / 60L + ":" + l2 % 60L);
-      }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, l1);
-      return;
     }
   }
   
-  private void b(awye paramawye)
+  private void b(PTTPreDownloadStrategy.StrategyInfo paramStrategyInfo)
   {
-    paramawye = paramawye.jdField_a_of_type_Int + ":" + paramawye.jdField_a_of_type_Awyj;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramStrategyInfo.b);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramStrategyInfo.a);
+    paramStrategyInfo = localStringBuilder.toString();
     if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, paramawye);
+      QLog.d("PTTPreDownloadStrategy", 4, paramStrategyInfo);
     }
+  }
+  
+  private long c(MessageForPtt paramMessageForPtt)
+  {
+    long l2 = paramMessageForPtt.fileSize;
+    long l1 = l2;
+    if (l2 <= 0L)
+    {
+      if (paramMessageForPtt.voiceType == 1) {
+        if (paramMessageForPtt.voiceLength <= 0) {
+          return 10240L;
+        }
+      }
+      for (int i = paramMessageForPtt.voiceLength * 1200;; i = paramMessageForPtt.voiceLength * 700)
+      {
+        return i;
+        if ((paramMessageForPtt.voiceType != 0) || (paramMessageForPtt.voiceLength <= 0)) {
+          break;
+        }
+      }
+      l1 = 4096L;
+    }
+    return l1;
   }
   
   private void c()
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "save");
+      QLog.d("PTTPreDownloadStrategy", 4, "save");
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {}
-    HashMap localHashMap;
-    do
-    {
+    AppRuntime localAppRuntime = (AppRuntime)this.e.get();
+    if (localAppRuntime == null) {
       return;
-      localHashMap = new HashMap();
-      if (this.jdField_a_of_type_Awye.jdField_a_of_type_Awyj.jdField_a_of_type_Int != -2147483648)
-      {
-        awyi.a(localQQAppInterface, this.jdField_a_of_type_Awye.jdField_a_of_type_Awyj, this.jdField_a_of_type_Awye.jdField_a_of_type_Int);
-        b(this.jdField_a_of_type_Awye);
-        localHashMap.put("C2CDownload", String.valueOf(this.jdField_a_of_type_Awye.b));
-        localHashMap.put("C2CView", String.valueOf(this.jdField_a_of_type_Awye.d));
-        localHashMap.put("C2CCancel", String.valueOf(this.jdField_a_of_type_Awye.e));
-        localHashMap.put("C2CEscape", String.valueOf(this.jdField_a_of_type_Awye.c));
-      }
-      if (this.b.jdField_a_of_type_Awyj.jdField_a_of_type_Int != -2147483648)
-      {
-        awyi.a(localQQAppInterface, this.b.jdField_a_of_type_Awyj, this.b.jdField_a_of_type_Int);
-        b(this.b);
-        b(this.jdField_a_of_type_Awye);
-        localHashMap.put("GroupDownload", String.valueOf(this.b.b));
-        localHashMap.put("GroupView", String.valueOf(this.b.d));
-        localHashMap.put("GroupCancel", String.valueOf(this.b.e));
-        localHashMap.put("GroupEscape", String.valueOf(this.b.c));
-      }
-      if (this.c.jdField_a_of_type_Awyj.jdField_a_of_type_Int != -2147483648)
-      {
-        awyi.a(localQQAppInterface, this.c.jdField_a_of_type_Awyj, this.c.jdField_a_of_type_Int);
-        b(this.c);
-        localHashMap.put("DiscussDownload", String.valueOf(this.c.b));
-        localHashMap.put("DiscussView", String.valueOf(this.c.d));
-        localHashMap.put("DiscussCancel", String.valueOf(this.c.e));
-        localHashMap.put("DiscussEscape", String.valueOf(this.c.c));
-      }
-    } while (localHashMap.size() <= 0);
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    azri.a(BaseApplication.getContext()).a(null, "PttPreDownloadPV", true, 0L, 0L, localHashMap, "");
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.b.a.a != -2147483648)
+    {
+      PreDownloadParams.a(localAppRuntime, this.b.a, this.b.b);
+      b(this.b);
+      localHashMap.put("C2CDownload", String.valueOf(this.b.c));
+      localHashMap.put("C2CView", String.valueOf(this.b.e));
+      localHashMap.put("C2CCancel", String.valueOf(this.b.f));
+      localHashMap.put("C2CEscape", String.valueOf(this.b.d));
+    }
+    if (this.c.a.a != -2147483648)
+    {
+      PreDownloadParams.a(localAppRuntime, this.c.a, this.c.b);
+      b(this.c);
+      b(this.b);
+      localHashMap.put("GroupDownload", String.valueOf(this.c.c));
+      localHashMap.put("GroupView", String.valueOf(this.c.e));
+      localHashMap.put("GroupCancel", String.valueOf(this.c.f));
+      localHashMap.put("GroupEscape", String.valueOf(this.c.d));
+    }
+    if (this.d.a.a != -2147483648)
+    {
+      PreDownloadParams.a(localAppRuntime, this.d.a, this.d.b);
+      b(this.d);
+      localHashMap.put("DiscussDownload", String.valueOf(this.d.c));
+      localHashMap.put("DiscussView", String.valueOf(this.d.e));
+      localHashMap.put("DiscussCancel", String.valueOf(this.d.f));
+      localHashMap.put("DiscussEscape", String.valueOf(this.d.d));
+    }
+    if (localHashMap.size() > 0)
+    {
+      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttPreDownloadPV", true, 0L, 0L, localHashMap, "");
+    }
   }
   
   public void a()
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "onDestroy");
+      QLog.d("PTTPreDownloadStrategy", 4, "onDestroy");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-    this.jdField_a_of_type_Boolean = false;
+    this.f.removeCallbacks(this);
+    this.a = false;
     c();
   }
   
   public boolean a(MessageForPtt paramMessageForPtt)
   {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (paramMessageForPtt.istroop == 0) {}
-    label393:
-    for (awye localawye = this.jdField_a_of_type_Awye;; localawye = null)
-    {
-      long l2;
-      int i;
-      if (localawye != null)
-      {
-        l2 = 0L;
-        i = bavg.a().a();
-      }
-      for (;;)
-      {
-        long l3;
-        try
-        {
-          a(localawye);
-          if (localawye.jdField_a_of_type_Awyj.jdField_a_of_type_Int <= 0)
-          {
-            l1 = l2;
-            bool1 = bool3;
-            bool2 = bool1;
-            if (QLog.isDevelopLevel())
-            {
-              QLog.d("PTTPreDownloader", 4, "canDownload:" + bool1 + " sesion:" + localawye.jdField_a_of_type_Int + " net:" + i + " " + l1 + " - " + paramMessageForPtt.estimatedSize + " = " + localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] + ", pttSize:" + paramMessageForPtt.fileSize);
-              bool2 = bool1;
-            }
-            return bool2;
-            if (paramMessageForPtt.istroop == 1)
-            {
-              localawye = this.b;
-              break;
-            }
-            if (paramMessageForPtt.istroop != 3000) {
-              break label393;
-            }
-            localawye = this.c;
-            break;
-          }
-          l3 = paramMessageForPtt.msgRecTime - paramMessageForPtt.msgTime;
-          bool1 = bool3;
-          l1 = l2;
-          if (l3 < -10000L) {
-            continue;
-          }
-          bool1 = bool3;
-          l1 = l2;
-          if (l3 > localawye.jdField_a_of_type_Awyj.jdField_a_of_type_Int * 24 * 60 * 60 * 100) {
-            continue;
-          }
-          l3 = a(paramMessageForPtt);
-          if (l3 > localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i])
-          {
-            localawye.c += 1;
-            bool1 = bool3;
-            l1 = l2;
-            continue;
-          }
-          localawye.b += 1;
-        }
-        finally {}
-        paramMessageForPtt.estimatedSize = l3;
-        long l1 = localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i];
-        int[] arrayOfInt = localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt;
-        arrayOfInt[i] = ((int)(arrayOfInt[i] - l3));
-        boolean bool1 = true;
-      }
+    PTTPreDownloadStrategy.StrategyInfo localStrategyInfo;
+    if (paramMessageForPtt.istroop == 0) {
+      localStrategyInfo = this.b;
+    } else if (paramMessageForPtt.istroop == 1) {
+      localStrategyInfo = this.c;
+    } else if (paramMessageForPtt.istroop == 3000) {
+      localStrategyInfo = this.d;
+    } else {
+      localStrategyInfo = null;
     }
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (localStrategyInfo != null)
+    {
+      long l1 = 0L;
+      int i = NetworkCenter.getInstance().getNetType();
+      try
+      {
+        a(localStrategyInfo);
+        Object localObject;
+        if (localStrategyInfo.a.a > 0)
+        {
+          long l2 = paramMessageForPtt.msgRecTime - paramMessageForPtt.msgTime;
+          if ((l2 >= -10000L) && (l2 <= localStrategyInfo.a.a * 24 * 60 * 60 * 100))
+          {
+            l2 = c(paramMessageForPtt);
+            if (l2 > localStrategyInfo.a.b[i])
+            {
+              localStrategyInfo.d += 1;
+            }
+            else
+            {
+              localStrategyInfo.c += 1;
+              paramMessageForPtt.estimatedSize = l2;
+              l1 = localStrategyInfo.a.b[i];
+              localObject = localStrategyInfo.a.b;
+              localObject[i] = ((int)(localObject[i] - l2));
+              bool1 = true;
+            }
+          }
+        }
+        bool2 = bool1;
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("canDownload:");
+          ((StringBuilder)localObject).append(bool1);
+          ((StringBuilder)localObject).append(" sesion:");
+          ((StringBuilder)localObject).append(localStrategyInfo.b);
+          ((StringBuilder)localObject).append(" net:");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(l1);
+          ((StringBuilder)localObject).append(" - ");
+          ((StringBuilder)localObject).append(paramMessageForPtt.estimatedSize);
+          ((StringBuilder)localObject).append(" = ");
+          ((StringBuilder)localObject).append(localStrategyInfo.a.b[i]);
+          ((StringBuilder)localObject).append(", pttSize:");
+          ((StringBuilder)localObject).append(paramMessageForPtt.fileSize);
+          QLog.d("PTTPreDownloadStrategy", 4, ((StringBuilder)localObject).toString());
+          return bool1;
+        }
+      }
+      finally {}
+    }
+    return bool2;
   }
   
   public boolean a(MessageForPtt paramMessageForPtt, int paramInt)
   {
-    boolean bool2 = false;
+    boolean bool = true;
     if (paramInt == 2) {
       return true;
     }
-    if (paramMessageForPtt.istroop == 0) {}
-    label389:
-    for (awye localawye = this.jdField_a_of_type_Awye;; localawye = null)
+    PTTPreDownloadStrategy.StrategyInfo localStrategyInfo = null;
+    if (paramMessageForPtt.istroop == 0) {
+      localStrategyInfo = this.b;
+    } else if (paramMessageForPtt.istroop == 1) {
+      localStrategyInfo = this.c;
+    } else if (paramMessageForPtt.istroop == 3000) {
+      localStrategyInfo = this.d;
+    }
+    if (localStrategyInfo != null)
     {
-      boolean bool1 = bool2;
       int i;
-      if (localawye != null)
-      {
-        if ((paramMessageForPtt.extFlag & 1L) <= 0L) {
-          break label289;
-        }
+      if ((paramMessageForPtt.extFlag & 1L) > 0L) {
         i = 1;
-        label45:
-        if (i == 0) {
-          break label336;
-        }
-        i = bavg.a().a();
+      } else {
+        i = 0;
       }
-      for (;;)
+      if (i != 0)
       {
+        i = NetworkCenter.getInstance().getNetType();
         try
         {
-          a(localawye);
-          long l1 = localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i];
+          a(localStrategyInfo);
+          long l1 = localStrategyInfo.a.b[i];
           long l2 = paramMessageForPtt.fileSize + l1;
-          awyj localawyj = awyi.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localawye.jdField_a_of_type_Int);
-          if (l2 > localawyj.jdField_a_of_type_ArrayOfInt[i])
-          {
-            localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] = localawyj.jdField_a_of_type_ArrayOfInt[i];
-            if (paramInt != 1) {
-              break label316;
-            }
-            localawye.d += 1;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("PTTPreDownloader", 4, "consume sesion:" + localawye.jdField_a_of_type_Int + " netType:" + i + ", " + l1 + " + " + paramMessageForPtt.fileSize + " = " + localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i]);
-            }
-            bool1 = true;
-            return bool1;
-            if (paramMessageForPtt.istroop == 1)
-            {
-              localawye = this.b;
-              break;
-            }
-            if (paramMessageForPtt.istroop != 3000) {
-              break label389;
-            }
-            localawye = this.c;
-            break;
-            label289:
-            i = 0;
-            break label45;
+          Object localObject = PreDownloadParams.a((AppRuntime)this.e.get(), localStrategyInfo.b);
+          if (l2 > localObject.b[i]) {
+            localStrategyInfo.a.b[i] = localObject.b[i];
+          } else {
+            localStrategyInfo.a.b[i] = ((int)l2);
           }
-          localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] = ((int)l2);
-          continue;
-          if (paramInt != 3) {
-            continue;
+          if (paramInt == 1) {
+            localStrategyInfo.e += 1;
+          } else if (paramInt == 3) {
+            localStrategyInfo.f += 1;
           }
+          if (!QLog.isDevelopLevel()) {
+            break label418;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("consume sesion:");
+          ((StringBuilder)localObject).append(localStrategyInfo.b);
+          ((StringBuilder)localObject).append(" netType:");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(l1);
+          ((StringBuilder)localObject).append(" + ");
+          ((StringBuilder)localObject).append(paramMessageForPtt.fileSize);
+          ((StringBuilder)localObject).append(" = ");
+          ((StringBuilder)localObject).append(localStrategyInfo.a.b[i]);
+          QLog.d("PTTPreDownloadStrategy", 4, ((StringBuilder)localObject).toString());
+          return true;
         }
         finally {}
-        label316:
-        localawye.e += 1;
-        continue;
-        label336:
-        bool1 = bool2;
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("PTTPreDownloader", 4, "consume sesion:" + localawye.jdField_a_of_type_Int + " not preDownload");
-          bool1 = bool2;
-        }
+      }
+      if (QLog.isDevelopLevel())
+      {
+        paramMessageForPtt = new StringBuilder();
+        paramMessageForPtt.append("consume sesion:");
+        paramMessageForPtt.append(localStrategyInfo.b);
+        paramMessageForPtt.append(" not preDownload");
+        QLog.d("PTTPreDownloadStrategy", 4, paramMessageForPtt.toString());
       }
     }
+    bool = false;
+    label418:
+    return bool;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Awye = new awye(1);
-    this.b = new awye(3);
-    this.c = new awye(2);
+    this.b = new PTTPreDownloadStrategy.StrategyInfo(1);
+    this.c = new PTTPreDownloadStrategy.StrategyInfo(3);
+    this.d = new PTTPreDownloadStrategy.StrategyInfo(2);
   }
   
   public boolean b(MessageForPtt paramMessageForPtt)
   {
-    boolean bool2 = true;
     if (paramMessageForPtt.estimatedSize <= 0L) {
       return false;
     }
-    awye localawye = null;
-    int i;
-    if (paramMessageForPtt.istroop == 0)
-    {
-      localawye = this.jdField_a_of_type_Awye;
-      if (localawye == null) {
-        break label266;
-      }
-      i = bavg.a().a();
+    PTTPreDownloadStrategy.StrategyInfo localStrategyInfo = null;
+    if (paramMessageForPtt.istroop == 0) {
+      localStrategyInfo = this.b;
+    } else if (paramMessageForPtt.istroop == 1) {
+      localStrategyInfo = this.c;
+    } else if (paramMessageForPtt.istroop == 3000) {
+      localStrategyInfo = this.d;
     }
-    for (;;)
+    if (localStrategyInfo != null)
     {
+      int i = NetworkCenter.getInstance().getNetType();
       try
       {
-        long l1 = localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i];
-        localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] += (int)(paramMessageForPtt.estimatedSize - paramMessageForPtt.fileSize);
+        long l1 = localStrategyInfo.a.b[i];
+        localStrategyInfo.a.b[i] += (int)(paramMessageForPtt.estimatedSize - paramMessageForPtt.fileSize);
         long l2 = paramMessageForPtt.estimatedSize;
         paramMessageForPtt.estimatedSize = 0L;
-        bool1 = bool2;
         if (QLog.isDevelopLevel())
         {
-          QLog.d("PTTPreDownloader", 4, "fixEstimatedSize sesion:" + localawye.jdField_a_of_type_Int + " net:" + i + ", " + l1 + " + " + l2 + " - " + paramMessageForPtt.fileSize + " = " + localawye.jdField_a_of_type_Awyj.jdField_a_of_type_ArrayOfInt[i] + ", PttSize:" + paramMessageForPtt.fileSize);
-          bool1 = bool2;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("fixEstimatedSize sesion:");
+          localStringBuilder.append(localStrategyInfo.b);
+          localStringBuilder.append(" net:");
+          localStringBuilder.append(i);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(l1);
+          localStringBuilder.append(" + ");
+          localStringBuilder.append(l2);
+          localStringBuilder.append(" - ");
+          localStringBuilder.append(paramMessageForPtt.fileSize);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(localStrategyInfo.a.b[i]);
+          localStringBuilder.append(", PttSize:");
+          localStringBuilder.append(paramMessageForPtt.fileSize);
+          QLog.d("PTTPreDownloadStrategy", 4, localStringBuilder.toString());
         }
-        return bool1;
+        return true;
       }
       finally {}
-      if (paramMessageForPtt.istroop == 1)
-      {
-        localawye = this.b;
-        break;
-      }
-      if (paramMessageForPtt.istroop != 3000) {
-        break;
-      }
-      localawye = this.c;
-      break;
-      label266:
-      boolean bool1 = false;
     }
+    return false;
   }
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "reset");
+      QLog.d("PTTPreDownloadStrategy", 4, "reset");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-    this.jdField_a_of_type_Boolean = false;
+    this.f.removeCallbacks(this);
+    this.a = false;
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PTTPreDownloadStrategy
  * JD-Core Version:    0.7.0.1
  */

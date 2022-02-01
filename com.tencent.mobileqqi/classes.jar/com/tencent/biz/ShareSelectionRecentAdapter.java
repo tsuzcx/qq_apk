@@ -120,8 +120,8 @@ public class ShareSelectionRecentAdapter
       localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(this.b, paramViewGroup, false);
     }
     Object localObject1 = (RecentUser)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localView.setTag(2131231416, Integer.valueOf(paramInt));
-    TextView localTextView = (TextView)localView.findViewById(2131231395);
+    localView.setTag(2131231415, Integer.valueOf(paramInt));
+    TextView localTextView = (TextView)localView.findViewById(2131231394);
     ImageView localImageView = (ImageView)localView.findViewById(2131230940);
     if ((localTextView == null) || (localImageView == null)) {
       return localView;
@@ -137,7 +137,7 @@ public class ShareSelectionRecentAdapter
       localObject2 = new QQServiceEntry.Tag();
     }
     localView.setTag(2131230985, null);
-    localView.setTag(2131233145, Integer.valueOf(paramInt));
+    localView.setTag(2131233144, Integer.valueOf(paramInt));
     switch (paramInt)
     {
     default: 

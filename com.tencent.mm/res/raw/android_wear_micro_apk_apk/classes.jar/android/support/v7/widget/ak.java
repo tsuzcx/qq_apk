@@ -8,69 +8,69 @@ import java.util.List;
 
 public final class ak
 {
-  private int uC = -1;
-  a<an, aa> uN = new a();
-  a<an, aa> uO = new a();
-  a<Long, an> uP = new a();
-  final List<View> uQ = new ArrayList();
-  private SparseArray<Object> uR;
-  int uS = 0;
-  private int uT = 0;
-  private int uU = 0;
-  private boolean uV = false;
-  private boolean uW = false;
-  private boolean uX = false;
-  private boolean uY = false;
+  a<an, aa> wC = new a();
+  a<an, aa> wD = new a();
+  a<Long, an> wE = new a();
+  final List<View> wF = new ArrayList();
+  private SparseArray<Object> wG;
+  int wH = 0;
+  private int wI = 0;
+  private int wJ = 0;
+  private boolean wK = false;
+  private boolean wL = false;
+  private boolean wM = false;
+  private boolean wN = false;
+  private int wr = -1;
   
-  final void aA(View paramView)
+  final void aG(View paramView)
   {
-    if (!this.uQ.contains(paramView)) {
-      this.uQ.add(paramView);
+    this.wF.remove(paramView);
+  }
+  
+  final void aH(View paramView)
+  {
+    if (!this.wF.contains(paramView)) {
+      this.wF.add(paramView);
     }
   }
   
-  final void az(View paramView)
+  public final boolean em()
   {
-    this.uQ.remove(paramView);
+    return this.wL;
   }
   
-  public final boolean dY()
+  public final boolean en()
   {
-    return this.uW;
+    return this.wN;
   }
   
-  public final boolean dZ()
+  public final int eo()
   {
-    return this.uY;
+    return this.wr;
   }
   
-  public final int ea()
+  public final boolean ep()
   {
-    return this.uC;
-  }
-  
-  public final boolean eb()
-  {
-    return this.uC != -1;
+    return this.wr != -1;
   }
   
   public final int getItemCount()
   {
-    if (this.uW) {
-      return this.uT - this.uU;
+    if (this.wL) {
+      return this.wI - this.wJ;
     }
-    return this.uS;
+    return this.wH;
   }
   
-  final void s(an paraman)
+  final void t(an paraman)
   {
-    this.uN.remove(paraman);
-    this.uO.remove(paraman);
+    this.wC.remove(paraman);
+    this.wD.remove(paraman);
     a locala;
     int i;
-    if (this.uP != null)
+    if (this.wE != null)
     {
-      locala = this.uP;
+      locala = this.wE;
       i = locala.size() - 1;
     }
     for (;;)
@@ -83,7 +83,7 @@ public final class ak
       }
       else
       {
-        this.uQ.remove(paraman.ve);
+        this.wF.remove(paraman.wT);
         return;
       }
       i -= 1;
@@ -92,7 +92,7 @@ public final class ak
   
   public final String toString()
   {
-    return "State{mTargetPosition=" + this.uC + ", mPreLayoutHolderMap=" + this.uN + ", mPostLayoutHolderMap=" + this.uO + ", mData=" + this.uR + ", mItemCount=" + this.uS + ", mPreviousLayoutItemCount=" + this.uT + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.uU + ", mStructureChanged=" + this.uV + ", mInPreLayout=" + this.uW + ", mRunSimpleAnimations=" + this.uX + ", mRunPredictiveAnimations=" + this.uY + '}';
+    return "State{mTargetPosition=" + this.wr + ", mPreLayoutHolderMap=" + this.wC + ", mPostLayoutHolderMap=" + this.wD + ", mData=" + this.wG + ", mItemCount=" + this.wH + ", mPreviousLayoutItemCount=" + this.wI + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.wJ + ", mStructureChanged=" + this.wK + ", mInPreLayout=" + this.wL + ", mRunSimpleAnimations=" + this.wM + ", mRunPredictiveAnimations=" + this.wN + '}';
   }
 }
 

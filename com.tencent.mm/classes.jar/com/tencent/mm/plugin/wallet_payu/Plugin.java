@@ -1,36 +1,34 @@
 package com.tencent.mm.plugin.wallet_payu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.wallet_payu.a.d;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements com.tencent.mm.pluginsdk.c.d
 {
-  public o createApplication()
+  public n createApplication()
   {
     return null;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(48319);
-    d locald = new d();
-    AppMethodBeat.o(48319);
+    AppMethodBeat.i(71960);
+    com.tencent.mm.plugin.wallet_payu.a.d locald = new com.tencent.mm.plugin.wallet_payu.a.d();
+    AppMethodBeat.o(71960);
     return locald;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.Plugin
  * JD-Core Version:    0.7.0.1
  */

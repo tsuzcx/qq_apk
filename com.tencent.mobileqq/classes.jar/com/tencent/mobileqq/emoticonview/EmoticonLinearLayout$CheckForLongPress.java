@@ -2,49 +2,50 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.view.View;
 import android.view.ViewParent;
-import apuc;
-import apuf;
 
 class EmoticonLinearLayout$CheckForLongPress
   implements Runnable
 {
-  private int a;
+  private int mOriginalWindowAttachCount;
   
   EmoticonLinearLayout$CheckForLongPress(EmoticonLinearLayout paramEmoticonLinearLayout) {}
   
-  public void a()
+  public void rememberWindowAttachCount()
   {
-    this.a = EmoticonLinearLayout.b(this.this$0);
+    this.mOriginalWindowAttachCount = EmoticonLinearLayout.access$100(this.this$0);
   }
   
   public void run()
   {
-    apuf localapuf;
-    if ((this.this$0.getParent() != null) && (this.a == EmoticonLinearLayout.a(this.this$0)) && (this.this$0.jdField_a_of_type_AndroidViewView != null))
+    if ((this.this$0.getParent() != null) && (this.mOriginalWindowAttachCount == EmoticonLinearLayout.access$000(this.this$0)) && (this.this$0.mPointView != null))
     {
-      localapuf = (apuf)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
-      if (localapuf != null)
+      EmoticonInfo localEmoticonInfo = (EmoticonInfo)this.this$0.mPointView.getTag();
+      if (localEmoticonInfo != null)
       {
-        if ((this.this$0.jdField_a_of_type_Apuc != null) && (this.this$0.jdField_a_of_type_Apuc.a(localapuf))) {
-          break label172;
+        if ((this.this$0.callback != null) && (this.this$0.callback.onLongClick(localEmoticonInfo)))
+        {
+          this.this$0.mPointView = null;
+          return;
         }
-        this.this$0.jdField_a_of_type_Boolean = true;
-        this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
+        EmoticonLinearLayout localEmoticonLinearLayout = this.this$0;
+        localEmoticonLinearLayout.mHasPerformedLongPress = true;
+        localEmoticonLinearLayout.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (!"delete".equals(localapuf.i)) {
-          break label132;
+        if ("delete".equals(localEmoticonInfo.action))
+        {
+          this.this$0.mDelete.run();
+          return;
         }
-        this.this$0.jdField_a_of_type_JavaLangRunnable.run();
+        if (!"setting".equals(localEmoticonInfo.action))
+        {
+          if ("add".equals(localEmoticonInfo.action)) {
+            return;
+          }
+          localEmoticonLinearLayout = this.this$0;
+          localEmoticonLinearLayout.showPopupEmo(localEmoticonLinearLayout.mPointView, localEmoticonInfo);
+        }
       }
     }
-    label132:
-    while (("setting".equals(localapuf.i)) || ("add".equals(localapuf.i))) {
-      return;
-    }
-    this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localapuf);
-    return;
-    label172:
-    this.this$0.jdField_a_of_type_AndroidViewView = null;
   }
 }
 

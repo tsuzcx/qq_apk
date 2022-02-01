@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="app_img" />
+    <item type="id" name="app_name" />
+    <item type="id" name="star_container" />
+    <item type="id" name="app_info" />
+    <item type="id" name="coupon_img" />
+    <item type="id" name="coupon_name" />
+    <item type="id" name="coupon_icon" />
+    <item type="id" name="coupon_price" />
+    <item type="id" name="coupon_position" />
+    <item type="id" name="movie_img" />
+    <item type="id" name="movie_name" />
+    <item type="id" name="movie_score" />
+    <item type="id" name="movie_type" />
+    <item type="id" name="book_img" />
+    <item type="id" name="book_name" />
+    <item type="id" name="book_type_and_auther" />
+    <item type="id" name="book_detail" />
+    <item type="id" name="item_img" />
+    <item type="id" name="item_name" />
+    <item type="id" name="jd_icon" />
+    <item type="id" name="item_price" />
+    <item type="id" name="item_comment" />
+    <item type="id" name="tribar_img" />
+    <item type="id" name="tribar_name" />
+    <item type="id" name="tribar_icon" />
+    <item type="id" name="tribar_secend_line" />
+    <item type="id" name="tribar_third_line" />
+</resources>

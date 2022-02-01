@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:background="@color/h6" style="@style/q1"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/en7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/ekr" android:background="#ff333333" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/al6" android:gravity="center_vertical" android:id="@id/emh" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/f_v" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ehr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ekr" />
+</RelativeLayout>

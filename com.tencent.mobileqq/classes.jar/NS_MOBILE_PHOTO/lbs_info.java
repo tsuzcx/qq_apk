@@ -7,23 +7,23 @@ import com.qq.taf.jce.JceStruct;
 public final class lbs_info
   extends JceStruct
 {
-  public int category_id;
+  public int category_id = 0;
   public String city = "";
-  public int city_id;
+  public int city_id = 0;
   public String continent = "";
   public String country = "";
   public String district = "";
-  public int eType;
+  public int eType = 0;
   public String geoDesc = "";
-  public int iAlt;
-  public int iLat;
-  public int iLon;
-  public int isInland;
+  public int iAlt = 0;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int isInland = 0;
   public String poiDesc = "";
   public String province = "";
   public String road = "";
   public String scenery = "";
-  public int source;
+  public int source = 0;
   public String town = "";
   
   public lbs_info() {}
@@ -79,44 +79,54 @@ public final class lbs_info
     paramJceOutputStream.write(this.eType, 2);
     paramJceOutputStream.write(this.iAlt, 3);
     paramJceOutputStream.write(this.isInland, 4);
-    if (this.continent != null) {
-      paramJceOutputStream.write(this.continent, 5);
+    String str = this.continent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.country != null) {
-      paramJceOutputStream.write(this.country, 6);
+    str = this.country;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 7);
+    str = this.province;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.city != null) {
-      paramJceOutputStream.write(this.city, 8);
+    str = this.city;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.district != null) {
-      paramJceOutputStream.write(this.district, 9);
+    str = this.district;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.town != null) {
-      paramJceOutputStream.write(this.town, 10);
+    str = this.town;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.road != null) {
-      paramJceOutputStream.write(this.road, 11);
+    str = this.road;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.scenery != null) {
-      paramJceOutputStream.write(this.scenery, 12);
+    str = this.scenery;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
     paramJceOutputStream.write(this.category_id, 13);
     paramJceOutputStream.write(this.city_id, 14);
-    if (this.geoDesc != null) {
-      paramJceOutputStream.write(this.geoDesc, 15);
+    str = this.geoDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
-    if (this.poiDesc != null) {
-      paramJceOutputStream.write(this.poiDesc, 16);
+    str = this.poiDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 16);
     }
     paramJceOutputStream.write(this.source, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.lbs_info
  * JD-Core Version:    0.7.0.1
  */

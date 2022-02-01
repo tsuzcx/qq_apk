@@ -38,14 +38,17 @@ public final class Qworkflow$ScheduleChangeNotification
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 18, 24, 32, 40, 50, 58, 64, 72, 80, 90, 98, 104, 112, 122 }, new String[] { "bytes_workflow_id", "uint32_main_type", "uint32_sub_type", "uint64_author_uin", "bytes_title", "msg_summary", "enum_change_type", "uint32_remind_bell_switch", "enum_repeated_type", "msg_changed_timespan", "rpt_msg_repeated_effective_timespan", "uint64_start_time", "uint64_end_time", "msg_busi_info" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2, null, Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(1), null, null, Long.valueOf(0L), Long.valueOf(0L), null }, ScheduleChangeNotification.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 18, 24, 32, 40, 50, 58, 64, 72, 80, 90, 98, 104, 112, 122 }, new String[] { "bytes_workflow_id", "uint32_main_type", "uint32_sub_type", "uint64_author_uin", "bytes_title", "msg_summary", "enum_change_type", "uint32_remind_bell_switch", "enum_repeated_type", "msg_changed_timespan", "rpt_msg_repeated_effective_timespan", "uint64_start_time", "uint64_end_time", "msg_busi_info" }, new Object[] { localByteStringMicro1, localInteger1, localInteger1, localLong, localByteStringMicro2, null, localInteger2, localInteger1, localInteger2, null, null, localLong, localLong, null }, ScheduleChangeNotification.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.ScheduleChangeNotification
  * JD-Core Version:    0.7.0.1
  */

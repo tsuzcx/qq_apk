@@ -13,11 +13,11 @@ import com.tencent.mm.pluginsdk.ui.a.b;
 public class SwitchContactDialogCustomView
   extends LinearLayout
 {
-  private TextView Nx;
-  private TextView oCR;
-  private ImageView oCS;
-  private TextView oCT;
-  private TextView oCU;
+  private TextView KPE;
+  private ImageView KPF;
+  private TextView KPG;
+  private TextView KPH;
+  private TextView fO;
   
   public SwitchContactDialogCustomView(Context paramContext)
   {
@@ -27,63 +27,63 @@ public class SwitchContactDialogCustomView
   public SwitchContactDialogCustomView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(136912);
-    LayoutInflater.from(paramContext).inflate(2130968646, this);
-    this.Nx = ((TextView)findViewById(2131820680));
-    this.oCR = ((TextView)findViewById(2131820946));
-    this.oCS = ((ImageView)findViewById(2131821114));
-    this.oCT = ((TextView)findViewById(2131821115));
-    this.oCU = ((TextView)findViewById(2131821116));
-    AppMethodBeat.o(136912);
+    AppMethodBeat.i(90742);
+    LayoutInflater.from(paramContext).inflate(b.c.alert_comfirm_custom_area, this);
+    this.fO = ((TextView)findViewById(b.b.title));
+    this.KPE = ((TextView)findViewById(b.b.content));
+    this.KPF = ((ImageView)findViewById(b.b.photo));
+    this.KPG = ((TextView)findViewById(b.b.desc));
+    this.KPH = ((TextView)findViewById(b.b.sub_desc));
+    AppMethodBeat.o(90742);
   }
   
   public void setContent(String paramString)
   {
-    AppMethodBeat.i(136914);
-    this.oCR.setText(paramString);
-    AppMethodBeat.o(136914);
+    AppMethodBeat.i(90744);
+    this.KPE.setText(paramString);
+    AppMethodBeat.o(90744);
   }
   
   public void setDesc(String paramString)
   {
-    AppMethodBeat.i(136915);
-    this.oCT.setText(paramString);
-    AppMethodBeat.o(136915);
+    AppMethodBeat.i(90745);
+    this.KPG.setText(paramString);
+    AppMethodBeat.o(90745);
   }
   
   public void setOnPhotoOnClick(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(136918);
-    if (this.oCS != null) {
-      this.oCS.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(90748);
+    if (this.KPF != null) {
+      this.KPF.setOnClickListener(paramOnClickListener);
     }
-    AppMethodBeat.o(136918);
+    AppMethodBeat.o(90748);
   }
   
   public void setPhoto(String paramString)
   {
-    AppMethodBeat.i(136917);
-    a.b.c(this.oCS, paramString);
-    AppMethodBeat.o(136917);
+    AppMethodBeat.i(90747);
+    a.b.g(this.KPF, paramString);
+    AppMethodBeat.o(90747);
   }
   
   public void setSubDesc(String paramString)
   {
-    AppMethodBeat.i(136916);
-    this.oCU.setText(paramString);
-    AppMethodBeat.o(136916);
+    AppMethodBeat.i(90746);
+    this.KPH.setText(paramString);
+    AppMethodBeat.o(90746);
   }
   
   public void setTilte(String paramString)
   {
-    AppMethodBeat.i(136913);
-    this.Nx.setText(paramString);
-    AppMethodBeat.o(136913);
+    AppMethodBeat.i(90743);
+    this.fO.setText(paramString);
+    AppMethodBeat.o(90743);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.SwitchContactDialogCustomView
  * JD-Core Version:    0.7.0.1
  */

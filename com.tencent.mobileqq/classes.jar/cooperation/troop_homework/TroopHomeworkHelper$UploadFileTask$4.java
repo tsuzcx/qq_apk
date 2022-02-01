@@ -1,11 +1,9 @@
 package cooperation.troop_homework;
 
-import bkdb;
-
-public class TroopHomeworkHelper$UploadFileTask$4
+class TroopHomeworkHelper$UploadFileTask$4
   implements Runnable
 {
-  public TroopHomeworkHelper$UploadFileTask$4(bkdb parambkdb) {}
+  TroopHomeworkHelper$UploadFileTask$4(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class TroopHomeworkHelper$UploadFileTask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask.4
  * JD-Core Version:    0.7.0.1
  */

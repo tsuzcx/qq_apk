@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestPushFStatus
   extends JceStruct
 {
-  public byte cStatus;
-  public long lUin;
+  public byte cStatus = 0;
+  public long lUin = 0L;
   public int uClientType = 99;
   
   public RequestPushFStatus() {}
@@ -36,7 +36,7 @@ public final class RequestPushFStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.RequestPushFStatus
  * JD-Core Version:    0.7.0.1
  */

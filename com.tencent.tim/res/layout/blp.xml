@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/bgx" android:background="@color/ajr" android:focusable="false" android:clickable="false" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="110.0dip">
+        <include android:id="@id/bmt" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bhr" />
+        <ImageView android:id="@id/h9g" android:background="@drawable/trans" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_face_click" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/h8m" android:background="@drawable/trans" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_at_click" android:layout_toRightOf="@id/h9g" android:layout_centerVertical="true" />
+        <TextView android:textSize="15.0sp" android:id="@id/cke" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="21.0dip" android:text="超出xx个字" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

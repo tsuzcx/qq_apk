@@ -4,75 +4,103 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.d;
-import com.tencent.mm.emoji.loader.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.autogen.a.ty;
+import com.tencent.mm.emoji.c.l;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class EmojiUpdateReceiver
   extends BroadcastReceiver
 {
-  public static String ACTION = "com.tencent.mm.Emoji_Update";
-  public static String exU = "type";
-  public static String exV = "update_all_custom_emoji";
-  public static String exW = "update_download_custom_emoji";
-  public static String exX = "update_store_emoji";
-  public static String exY = "update_group_info";
-  public static String exZ = "update_capture_emoji";
-  public static String eya = "update_emoji_download";
+  public static String KEY_TYPE = "type";
+  public static String mnL = "com.tencent.mm.Emoji_Update";
+  public static String mnM = "update_all_custom_emoji";
+  public static String mnN = "update_download_custom_emoji";
+  public static String mnO = "update_store_emoji";
+  public static String mnP = "update_group_info";
+  public static String mnQ = "update_capture_emoji";
+  public static String mnR = "TYPE_UPDATE_EMOJI_SYNC";
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(62269);
-    String str = paramIntent.getAction();
-    if (ACTION.equals(str))
+    AppMethodBeat.i(104486);
+    paramContext = paramIntent.getAction();
+    if (mnL.equals(paramContext))
     {
-      paramContext = paramIntent.getStringExtra(exU);
-      ab.i("MicroMsg.EmojiUpdateReceiver", "receive %s, %s", new Object[] { str, paramContext });
-      if (exV.equals(paramContext))
+      String str = paramIntent.getStringExtra(KEY_TYPE);
+      Log.i("MicroMsg.EmojiUpdateReceiver", "receive %s, %s", new Object[] { paramContext, str });
+      if (mnM.equals(str))
       {
-        d.Oz().cj(false);
-        AppMethodBeat.o(62269);
+        l.aUF().ff(false);
+        new ty().publish();
+        AppMethodBeat.o(104486);
         return;
       }
-      if (exW.equals(paramContext))
+      if (mnN.equals(str))
       {
-        d.Oz().ck(false);
-        AppMethodBeat.o(62269);
+        l.aUF().fg(false);
+        new ty().publish();
+        AppMethodBeat.o(104486);
         return;
       }
-      if (exX.equals(paramContext))
+      if (mnO.equals(str))
       {
-        d.Oz().ewt = true;
-        AppMethodBeat.o(62269);
+        l.aUF().mhO = true;
+        new ty().publish();
+        AppMethodBeat.o(104486);
         return;
       }
-      if (exY.equals(paramContext))
+      if (mnP.equals(str))
       {
-        d.Oz().cl(false);
-        AppMethodBeat.o(62269);
+        l.aUF().fh(false);
+        new ty().publish();
+        AppMethodBeat.o(104486);
         return;
       }
-      if (exZ.equals(paramContext))
+      if (mnQ.equals(str))
       {
-        d.Oz().cm(false);
-        AppMethodBeat.o(62269);
+        l.aUF().fi(false);
+        new ty().publish();
+        AppMethodBeat.o(104486);
         return;
       }
-      if (eya.equals(paramContext))
+      if (mnR.equals(str))
       {
-        str = paramIntent.getStringExtra("md5");
-        boolean bool = paramIntent.getBooleanExtra("result", false);
-        ab.i("MicroMsg.EmojiUpdateReceiver", "onReceive: %s, %s, %s", new Object[] { paramContext, str, Boolean.valueOf(bool) });
-        paramContext = a.evk;
-        a.r(str, bool);
+        paramIntent = (EmojiSyncLoaderIPC.EmojiSyncData)paramIntent.getParcelableExtra("data");
+        paramContext = g.mmX;
+        if (paramIntent != null)
+        {
+          if (paramIntent.mjd == 1)
+          {
+            paramContext = g.b.aWo();
+            if ((paramContext instanceof EmojiSyncLoaderIPC)) {}
+            for (paramContext = (EmojiSyncLoaderIPC)paramContext; paramContext != null; paramContext = null)
+            {
+              paramContext.a(paramIntent);
+              AppMethodBeat.o(104486);
+              return;
+            }
+          }
+          paramContext = g.b.aWn();
+          if (!(paramContext instanceof EmojiSyncLoaderIPC)) {
+            break label320;
+          }
+        }
       }
     }
-    AppMethodBeat.o(62269);
+    label320:
+    for (paramContext = (EmojiSyncLoaderIPC)paramContext;; paramContext = null)
+    {
+      if (paramContext != null) {
+        paramContext.a(paramIntent);
+      }
+      AppMethodBeat.o(104486);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.EmojiUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

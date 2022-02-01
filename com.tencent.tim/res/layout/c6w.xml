@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew android:id="@id/i24" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

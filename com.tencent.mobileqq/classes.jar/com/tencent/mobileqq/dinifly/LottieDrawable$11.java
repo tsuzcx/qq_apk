@@ -3,11 +3,11 @@ package com.tencent.mobileqq.dinifly;
 class LottieDrawable$11
   implements LottieDrawable.LazyCompositionTask
 {
-  LottieDrawable$11(LottieDrawable paramLottieDrawable, int paramInt1, int paramInt2) {}
+  LottieDrawable$11(LottieDrawable paramLottieDrawable, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run(LottieComposition paramLottieComposition)
   {
-    this.this$0.setMinAndMaxFrame(this.val$minFrame, this.val$maxFrame);
+    this.this$0.setMinAndMaxFrame(this.val$startMarkerName, this.val$endMarkerName, this.val$playEndMarkerStartFrame);
   }
 }
 

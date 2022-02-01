@@ -12,20 +12,20 @@ final class g$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(133658);
+    AppMethodBeat.i(49379);
     if (paramMotionEvent.getAction() == 1)
     {
-      this.jbM.dismiss();
-      AppMethodBeat.o(133658);
+      this.uzk.dismiss();
+      AppMethodBeat.o(49379);
       return true;
     }
-    AppMethodBeat.o(133658);
+    AppMethodBeat.o(49379);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.g.1
  * JD-Core Version:    0.7.0.1
  */

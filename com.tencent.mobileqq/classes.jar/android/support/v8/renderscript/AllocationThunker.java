@@ -25,16 +25,19 @@ class AllocationThunker
   
   static android.renderscript.Allocation.MipmapControl convertMipmapControl(Allocation.MipmapControl paramMipmapControl)
   {
-    switch (AllocationThunker.1.$SwitchMap$android$support$v8$renderscript$Allocation$MipmapControl[paramMipmapControl.ordinal()])
+    int i = AllocationThunker.1.$SwitchMap$android$support$v8$renderscript$Allocation$MipmapControl[paramMipmapControl.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return android.renderscript.Allocation.MipmapControl.MIPMAP_NONE;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return null;
+        }
+        return android.renderscript.Allocation.MipmapControl.MIPMAP_ON_SYNC_TO_TEXTURE;
+      }
       return android.renderscript.Allocation.MipmapControl.MIPMAP_FULL;
     }
-    return android.renderscript.Allocation.MipmapControl.MIPMAP_ON_SYNC_TO_TEXTURE;
+    return android.renderscript.Allocation.MipmapControl.MIPMAP_NONE;
   }
   
   public static Allocation createCubemapFromBitmap(RenderScript paramRenderScript, Bitmap paramBitmap, Allocation.MipmapControl paramMipmapControl, int paramInt)
@@ -309,7 +312,7 @@ class AllocationThunker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.AllocationThunker
  * JD-Core Version:    0.7.0.1
  */

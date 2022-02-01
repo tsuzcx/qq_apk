@@ -20,7 +20,7 @@ import com.tencent.mobileqq.transfile.TransfileUtile;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import iam;
+import ial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -315,7 +315,7 @@ public class QQProxyForQlink
           QLog.i("QQProxyForQlink", 2, "[QLINK]-QQ startTrans2InvaildTimer...");
         }
         this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new iam(this), 30000L, 30000L);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new ial(this), 30000L, 30000L);
       }
       return;
     }

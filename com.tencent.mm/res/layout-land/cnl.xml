@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/m60" android:background="@color/UN_BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/m5x" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/m6y" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:id="@id/m6y" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintDimensionRatio="w,1:1" app:layout_constraintRight_toRightOf="hr_" app:sheetDirection="0">
+        <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/m6x" android:background="@drawable/b6y" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:src="@raw/olympic_torch" android:layout_alignParentRight="true" app:iconColor="@color/az" />
+            <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/m63" android:layout_width="fill_parent" android:layout_height="@dimen/db" app:layout_constraintTop_toTopOf="hr_">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m5y" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_100_Alpha_0_8" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/m62" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lty" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <com.google.android.material.tabs.TabLayout android:id="@id/m61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_below="@id/m63" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/m63" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicatorColor="@color/BW_100_Alpha_0_8" app:tabIndicatorFullWidth="false" app:tabIndicatorHeight="2.0dip" app:tabMode="e_s" app:tabPaddingEnd="@dimen/cp" app:tabPaddingStart="@dimen/cp" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/BW_100_Alpha_0_8" app:tabTextColor="@color/BW_100_Alpha_0_8" />
+            <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/m64" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ce" android:layout_below="@id/m61" />
+        </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</androidx.constraintlayout.widget.ConstraintLayout>

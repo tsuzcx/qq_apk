@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils.MyLBSApiPOI;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class gxo
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public TroopBarUtils.MyLBSApiPOI a(Parcel paramParcel)
-  {
-    return new TroopBarUtils.MyLBSApiPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
+  public gxo(boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
-  public TroopBarUtils.MyLBSApiPOI[] a(int paramInt)
+  public void run()
   {
-    return null;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130837961, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

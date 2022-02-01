@@ -13,15 +13,15 @@ final class zzah
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(57548);
+    AppMethodBeat.i(2502);
     Log.isLoggable("InstanceID", 3);
     this.zzcx.zzh(paramIntent);
-    AppMethodBeat.o(57548);
+    AppMethodBeat.o(2502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzah
  * JD-Core Version:    0.7.0.1
  */

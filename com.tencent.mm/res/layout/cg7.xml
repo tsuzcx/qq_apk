@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bs_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/i9" android:layout_marginRight="@dimen/i9"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/hln" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/f2x" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@raw/icons_outlined_error" app:iconColor="@color/ajm" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:layout_gravity="center" android:id="@id/og" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/heq" />
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="24.0dip" android:weightSum="123.0" android:layout_weight="1.0" android:layout_below="@id/kmt" android:layout_alignParentBottom="true">
+        <View android:id="@id/l8z" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hml" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="24.0dip">
+            <CheckBox android:gravity="center" android:layout_gravity="center" android:id="@id/hmk" android:background="@drawable/ali" android:focusable="false" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:checked="false" android:includeFontPadding="false" style="@style/lq" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:id="@id/hmm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:includeFontPadding="false" />
+        </LinearLayout>
+        <Button android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/f1_" android:background="@drawable/j8" android:text="@string/heo" style="@style/oh" />
+        <View android:id="@id/l90" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="12.0dip" />
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/i9">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j0p" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j0o" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/pay_safe" app:iconColor="@color/UN_BW_0_Alpha_0_3" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/UN_BW_0_Alpha_0_3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/j0q" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:text="@string/kzx" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j0n" android:layout_width="8.0dip" android:layout_height="16.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/UN_BW_0_Alpha_0_3" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

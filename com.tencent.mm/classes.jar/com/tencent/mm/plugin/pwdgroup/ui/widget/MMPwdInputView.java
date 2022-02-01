@@ -8,19 +8,26 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.plugin.profile.ui.a.b;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import org.xwalk.core.Log;
 
 public class MMPwdInputView
   extends LinearLayout
 {
-  public StringBuilder ekE;
-  public int mpr;
-  private ImageView pHA;
-  private ImageView pHB;
-  private ImageView pHC;
-  private MMPwdInputView.a pHD;
-  private MMPwdInputView.b pHE;
-  private boolean pHy;
-  private ImageView pHz;
+  private boolean NhY;
+  private ImageView NhZ;
+  private ImageView Nia;
+  private ImageView Nib;
+  private ImageView Nic;
+  private a Nid;
+  private MMPwdInputView.b Nie;
+  public StringBuilder lOv;
+  public int zYG;
   
   public MMPwdInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,139 +37,153 @@ public class MMPwdInputView
   public MMPwdInputView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(24056);
-    this.ekE = new StringBuilder();
-    this.pHy = false;
-    this.pHE = MMPwdInputView.b.pHG;
-    paramContext = inflate(getContext(), 2130970476, null);
-    this.pHz = ((ImageView)paramContext.findViewById(2131826867));
-    this.pHA = ((ImageView)paramContext.findViewById(2131826868));
-    this.pHB = ((ImageView)paramContext.findViewById(2131826869));
-    this.pHC = ((ImageView)paramContext.findViewById(2131826870));
-    this.pHz.setImageResource(2130837819);
-    this.pHA.setImageResource(2130837819);
-    this.pHB.setImageResource(2130837819);
-    this.pHC.setImageResource(2130837819);
+    AppMethodBeat.i(27697);
+    this.lOv = new StringBuilder();
+    this.NhY = false;
+    this.Nie = MMPwdInputView.b.Nig;
+    paramContext = inflate(getContext(), R.i.gnn, null);
+    this.NhZ = ((ImageView)paramContext.findViewById(R.h.fIj));
+    this.Nia = ((ImageView)paramContext.findViewById(R.h.second));
+    this.Nib = ((ImageView)paramContext.findViewById(R.h.fZe));
+    this.Nic = ((ImageView)paramContext.findViewById(R.h.fIP));
+    this.NhZ.setImageResource(R.g.fmA);
+    this.Nia.setImageResource(R.g.fmA);
+    this.Nib.setImageResource(R.g.fmA);
+    this.Nic.setImageResource(R.g.fmA);
     addView(paramContext);
-    AppMethodBeat.o(24056);
+    AppMethodBeat.o(27697);
   }
   
-  private static void r(ImageView paramImageView, String paramString)
+  private static void w(ImageView paramImageView, String paramString)
   {
-    AppMethodBeat.i(24059);
+    AppMethodBeat.i(27700);
     if (paramImageView == null)
     {
-      AppMethodBeat.o(24059);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("0"))
     {
-      paramImageView.setImageResource(2130837809);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmq);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("1"))
     {
-      paramImageView.setImageResource(2130837810);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmr);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("2"))
     {
-      paramImageView.setImageResource(2130837811);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fms);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("3"))
     {
-      paramImageView.setImageResource(2130837812);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmt);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("4"))
     {
-      paramImageView.setImageResource(2130837813);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmu);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("5"))
     {
-      paramImageView.setImageResource(2130837814);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmv);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("6"))
     {
-      paramImageView.setImageResource(2130837815);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmw);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("7"))
     {
-      paramImageView.setImageResource(2130837816);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmx);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("8"))
     {
-      paramImageView.setImageResource(2130837817);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmy);
+      AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("9"))
     {
-      paramImageView.setImageResource(2130837818);
-      AppMethodBeat.o(24059);
+      paramImageView.setImageResource(R.g.fmz);
+      AppMethodBeat.o(27700);
       return;
     }
-    paramImageView.setImageResource(2130837819);
-    AppMethodBeat.o(24059);
+    paramImageView.setImageResource(R.g.fmA);
+    AppMethodBeat.o(27700);
   }
   
-  public final void axH()
+  public final void aSi(String paramString)
   {
-    AppMethodBeat.i(24061);
-    if (this.mpr > 0) {
-      this.ekE.delete(0, this.mpr);
-    }
-    bvD();
-    cdo();
-    AppMethodBeat.o(24061);
-  }
-  
-  public final void bvD()
-  {
-    AppMethodBeat.i(24060);
-    if (this.ekE != null)
+    AppMethodBeat.i(27703);
+    if ((TextUtils.isEmpty(paramString)) || (this.NhY))
     {
-      this.mpr = this.ekE.length();
-      if (this.mpr < 4) {
+      AppMethodBeat.o(27703);
+      return;
+    }
+    this.lOv.append(paramString);
+    dPM();
+    gDF();
+    AppMethodBeat.o(27703);
+  }
+  
+  public final void cju()
+  {
+    AppMethodBeat.i(27702);
+    if (this.zYG > 0) {
+      this.lOv.delete(0, this.zYG);
+    }
+    dPM();
+    gDF();
+    AppMethodBeat.o(27702);
+  }
+  
+  public final void dPM()
+  {
+    AppMethodBeat.i(27701);
+    if (this.lOv != null)
+    {
+      this.zYG = this.lOv.length();
+      if (this.zYG < 4) {
         break label79;
       }
     }
     label79:
-    for (this.pHy = true;; this.pHy = false)
+    for (this.NhY = true;; this.NhY = false)
     {
-      if (this.pHD != null) {
-        this.pHD.q(this.pHy, this.ekE.toString());
+      if (this.Nid != null) {
+        this.Nid.ar(this.NhY, this.lOv.toString());
       }
-      AppMethodBeat.o(24060);
+      AppMethodBeat.o(27701);
       return;
-      this.mpr = 0;
+      this.zYG = 0;
       break;
     }
   }
   
-  public final void cdo()
+  public final void gDF()
   {
-    AppMethodBeat.i(24058);
+    AppMethodBeat.i(27699);
     int i = 0;
     if (i < 4)
     {
       String str;
-      if (this.mpr > i)
+      if (this.zYG > i)
       {
-        str = this.ekE.toString().charAt(i);
+        str = this.lOv.toString().charAt(i);
         label46:
         switch (i)
         {
@@ -174,60 +195,63 @@ public class MMPwdInputView
         break;
         str = "";
         break label46;
-        r(this.pHz, str);
+        w(this.NhZ, str);
+        k localk = k.aeZF;
+        ((b)k.nq(getContext()).q(b.class)).setValue("title_num_1", str);
+        Log.i("MicroMsg.Facing.MMPwdInputView", "1, number = ".concat(String.valueOf(str)));
         continue;
-        r(this.pHA, str);
+        w(this.Nia, str);
+        localk = k.aeZF;
+        ((b)k.nq(getContext()).q(b.class)).setValue("title_num_2", str);
+        Log.i("MicroMsg.Facing.MMPwdInputView", "2, number = ".concat(String.valueOf(str)));
         continue;
-        r(this.pHB, str);
+        w(this.Nib, str);
+        localk = k.aeZF;
+        ((b)k.nq(getContext()).q(b.class)).setValue("title_num_3", str);
+        Log.i("MicroMsg.Facing.MMPwdInputView", "3, number = ".concat(String.valueOf(str)));
         continue;
-        r(this.pHC, str);
+        w(this.Nic, str);
+        localk = k.aeZF;
+        ((b)k.nq(getContext()).q(b.class)).setValue("title_num_4", str);
+        Log.i("MicroMsg.Facing.MMPwdInputView", "4, number = ".concat(String.valueOf(str)));
       }
     }
-    AppMethodBeat.o(24058);
-  }
-  
-  public final void input(String paramString)
-  {
-    AppMethodBeat.i(24062);
-    if ((TextUtils.isEmpty(paramString)) || (this.pHy))
-    {
-      AppMethodBeat.o(24062);
-      return;
-    }
-    this.ekE.append(paramString);
-    bvD();
-    cdo();
-    AppMethodBeat.o(24062);
+    AppMethodBeat.o(27699);
   }
   
   public void setNumberStyle(MMPwdInputView.b paramb)
   {
-    this.pHE = paramb;
+    this.Nie = paramb;
   }
   
   public void setNumberWidth(int paramInt)
   {
-    AppMethodBeat.i(24057);
-    if (this.pHz != null)
+    AppMethodBeat.i(27698);
+    if (this.NhZ != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.pHz.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.NhZ.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.pHz.setLayoutParams(localLayoutParams);
-      this.pHA.setLayoutParams(localLayoutParams);
-      this.pHB.setLayoutParams(localLayoutParams);
-      this.pHC.setLayoutParams(localLayoutParams);
+      this.NhZ.setLayoutParams(localLayoutParams);
+      this.Nia.setLayoutParams(localLayoutParams);
+      this.Nib.setLayoutParams(localLayoutParams);
+      this.Nic.setLayoutParams(localLayoutParams);
     }
-    AppMethodBeat.o(24057);
+    AppMethodBeat.o(27698);
   }
   
-  public void setOnFinishInputListener(MMPwdInputView.a parama)
+  public void setOnFinishInputListener(a parama)
   {
-    this.pHD = parama;
+    this.Nid = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void ar(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView
  * JD-Core Version:    0.7.0.1
  */

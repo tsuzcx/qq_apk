@@ -3,341 +3,497 @@ package okio;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import java.util.Arrays;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.MessageDigest;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.collections.ArraysKt;
+import kotlin.jvm.internal.Intrinsics;
+import okio.internal.SegmentedByteStringKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class SegmentedByteString
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/SegmentedByteString;", "Lokio/ByteString;", "segments", "", "", "directory", "", "([[B[I)V", "getDirectory$okio", "()[I", "getSegments$okio", "()[[B", "[[B", "asByteBuffer", "Ljava/nio/ByteBuffer;", "base64", "", "base64Url", "digest", "algorithm", "digest$okio", "equals", "", "other", "", "getSize", "", "getSize$okio", "hashCode", "hex", "hmac", "key", "hmac$okio", "indexOf", "fromIndex", "internalArray", "internalArray$okio", "internalGet", "", "pos", "internalGet$okio", "lastIndexOf", "rangeEquals", "offset", "otherOffset", "byteCount", "string", "charset", "Ljava/nio/charset/Charset;", "substring", "beginIndex", "endIndex", "toAsciiLowercase", "toAsciiUppercase", "toByteArray", "toByteString", "toString", "write", "", "out", "Ljava/io/OutputStream;", "buffer", "Lokio/Buffer;", "write$okio", "writeReplace", "Ljava/lang/Object;", "okio"}, k=1, mv={1, 1, 16})
+public final class SegmentedByteString
   extends ByteString
 {
-  final transient int[] directory;
-  final transient byte[][] segments;
+  @NotNull
+  private final transient int[] directory;
+  @NotNull
+  private final transient byte[][] segments;
   
-  SegmentedByteString(Buffer paramBuffer, int paramInt)
+  public SegmentedByteString(@NotNull byte[][] paramArrayOfByte, @NotNull int[] paramArrayOfInt)
   {
-    super(null);
-    Util.checkOffsetAndCount(paramBuffer.size, 0L, paramInt);
-    Segment localSegment = paramBuffer.head;
-    int i = 0;
-    int j = 0;
-    while (j < paramInt)
-    {
-      if (localSegment.limit == localSegment.pos) {
-        throw new AssertionError("s.limit == s.pos");
-      }
-      j += localSegment.limit - localSegment.pos;
-      i += 1;
-      localSegment = localSegment.next;
-    }
-    this.segments = new byte[i][];
-    this.directory = new int[i * 2];
-    paramBuffer = paramBuffer.head;
-    j = 0;
-    i = k;
-    while (i < paramInt)
-    {
-      this.segments[j] = paramBuffer.data;
-      k = paramBuffer.limit - paramBuffer.pos + i;
-      i = k;
-      if (k > paramInt) {
-        i = paramInt;
-      }
-      this.directory[j] = i;
-      this.directory[(this.segments.length + j)] = paramBuffer.pos;
-      paramBuffer.shared = true;
-      j += 1;
-      paramBuffer = paramBuffer.next;
-    }
+    super(ByteString.EMPTY.getData$okio());
+    this.segments = paramArrayOfByte;
+    this.directory = paramArrayOfInt;
   }
   
-  private int segment(int paramInt)
-  {
-    paramInt = Arrays.binarySearch(this.directory, 0, this.segments.length, paramInt + 1);
-    if (paramInt >= 0) {
-      return paramInt;
-    }
-    return paramInt ^ 0xFFFFFFFF;
-  }
-  
-  private ByteString toByteString()
+  private final ByteString toByteString()
   {
     return new ByteString(toByteArray());
   }
   
-  private Object writeReplace()
+  private final Object writeReplace()
   {
-    return toByteString();
+    ByteString localByteString = toByteString();
+    if (localByteString != null) {
+      return (Object)localByteString;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.Object");
   }
   
+  @NotNull
   public ByteBuffer asByteBuffer()
   {
-    return ByteBuffer.wrap(toByteArray()).asReadOnlyBuffer();
+    ByteBuffer localByteBuffer = ByteBuffer.wrap(toByteArray()).asReadOnlyBuffer();
+    Intrinsics.checkExpressionValueIsNotNull(localByteBuffer, "ByteBuffer.wrap(toByteArray()).asReadOnlyBuffer()");
+    return localByteBuffer;
   }
   
+  @NotNull
   public String base64()
   {
     return toByteString().base64();
   }
   
+  @NotNull
   public String base64Url()
   {
     return toByteString().base64Url();
   }
   
-  public boolean equals(Object paramObject)
+  @NotNull
+  public ByteString digest$okio(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "algorithm");
+    paramString = MessageDigest.getInstance(paramString);
+    int m = ((Object[])getSegments$okio()).length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      int n = getDirectory$okio()[(m + i)];
+      k = getDirectory$okio()[i];
+      paramString.update(getSegments$okio()[i], n, k - j);
+      i += 1;
+    }
+    paramString = paramString.digest();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "digest.digest()");
+    return new ByteString(paramString);
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
   {
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof ByteString)) && (((ByteString)paramObject).size() == size()) && (rangeEquals(0, (ByteString)paramObject, 0, size()))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((paramObject instanceof ByteString))
+    {
+      paramObject = (ByteString)paramObject;
+      if ((paramObject.size() == size()) && (rangeEquals(0, paramObject, 0, size()))) {
+        return true;
+      }
     }
+    return false;
   }
   
-  public byte getByte(int paramInt)
+  @NotNull
+  public final int[] getDirectory$okio()
   {
-    Util.checkOffsetAndCount(this.directory[(this.segments.length - 1)], paramInt, 1L);
-    int j = segment(paramInt);
-    if (j == 0) {}
-    for (int i = 0;; i = this.directory[(j - 1)])
-    {
-      int k = this.directory[(this.segments.length + j)];
-      return this.segments[j][(paramInt - i + k)];
-    }
+    return this.directory;
+  }
+  
+  @NotNull
+  public final byte[][] getSegments$okio()
+  {
+    return this.segments;
+  }
+  
+  public int getSize$okio()
+  {
+    return getDirectory$okio()[(((Object[])getSegments$okio()).length - 1)];
   }
   
   public int hashCode()
   {
-    int i = this.hashCode;
+    int i = getHashCode$okio();
     if (i != 0) {
       return i;
     }
-    i = 1;
-    int i2 = this.segments.length;
-    int j = 0;
+    int i2 = ((Object[])getSegments$okio()).length;
+    int k = 0;
+    int m = 1;
     int n;
-    for (int k = 0; j < i2; k = n)
+    for (int j = 0; k < i2; j = n)
     {
-      byte[] arrayOfByte = this.segments[j];
-      int i1 = this.directory[(i2 + j)];
-      n = this.directory[j];
-      int m = i1;
-      while (m < n - k + i1)
+      int i1 = getDirectory$okio()[(i2 + k)];
+      n = getDirectory$okio()[k];
+      byte[] arrayOfByte = getSegments$okio()[k];
+      i = i1;
+      while (i < n - j + i1)
       {
-        i = i * 31 + arrayOfByte[m];
-        m += 1;
+        m = m * 31 + arrayOfByte[i];
+        i += 1;
       }
-      j += 1;
+      k += 1;
     }
-    this.hashCode = i;
-    return i;
+    setHashCode$okio(m);
+    return m;
   }
   
+  @NotNull
   public String hex()
   {
     return toByteString().hex();
   }
   
-  public ByteString hmacSha1(ByteString paramByteString)
+  @NotNull
+  public ByteString hmac$okio(@NotNull String paramString, @NotNull ByteString paramByteString)
   {
-    return toByteString().hmacSha1(paramByteString);
+    Intrinsics.checkParameterIsNotNull(paramString, "algorithm");
+    Intrinsics.checkParameterIsNotNull(paramByteString, "key");
+    try
+    {
+      Mac localMac = Mac.getInstance(paramString);
+      localMac.init((Key)new SecretKeySpec(paramByteString.toByteArray(), paramString));
+      int m = ((Object[])getSegments$okio()).length;
+      int j = 0;
+      int k;
+      for (int i = 0; j < m; i = k)
+      {
+        int n = getDirectory$okio()[(m + j)];
+        k = getDirectory$okio()[j];
+        localMac.update(getSegments$okio()[j], n, k - i);
+        j += 1;
+      }
+      paramString = localMac.doFinal();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "mac.doFinal()");
+      paramString = new ByteString(paramString);
+      return paramString;
+    }
+    catch (InvalidKeyException paramString)
+    {
+      paramString = (Throwable)new IllegalArgumentException((Throwable)paramString);
+    }
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
-  public ByteString hmacSha256(ByteString paramByteString)
+  public int indexOf(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
-    return toByteString().hmacSha256(paramByteString);
-  }
-  
-  public int indexOf(byte[] paramArrayOfByte, int paramInt)
-  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "other");
     return toByteString().indexOf(paramArrayOfByte, paramInt);
   }
   
-  byte[] internalArray()
+  @NotNull
+  public byte[] internalArray$okio()
   {
     return toByteArray();
   }
   
-  public int lastIndexOf(byte[] paramArrayOfByte, int paramInt)
+  public byte internalGet$okio(int paramInt)
   {
+    -Util.checkOffsetAndCount(getDirectory$okio()[(((Object[])getSegments$okio()).length - 1)], paramInt, 1L);
+    int j = SegmentedByteStringKt.segment(this, paramInt);
+    int i;
+    if (j == 0) {
+      i = 0;
+    } else {
+      i = getDirectory$okio()[(j - 1)];
+    }
+    int k = getDirectory$okio()[(((Object[])getSegments$okio()).length + j)];
+    return getSegments$okio()[j][(paramInt - i + k)];
+  }
+  
+  public int lastIndexOf(@NotNull byte[] paramArrayOfByte, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "other");
     return toByteString().lastIndexOf(paramArrayOfByte, paramInt);
   }
   
-  public ByteString md5()
+  public boolean rangeEquals(int paramInt1, @NotNull ByteString paramByteString, int paramInt2, int paramInt3)
   {
-    return toByteString().md5();
+    Intrinsics.checkParameterIsNotNull(paramByteString, "other");
+    boolean bool = false;
+    if (paramInt1 >= 0)
+    {
+      if (paramInt1 > size() - paramInt3) {
+        return false;
+      }
+      int j = paramInt3 + paramInt1;
+      int i = SegmentedByteStringKt.segment(this, paramInt1);
+      paramInt3 = paramInt2;
+      paramInt2 = paramInt1;
+      paramInt1 = i;
+      while (paramInt2 < j)
+      {
+        if (paramInt1 == 0) {
+          i = 0;
+        } else {
+          i = getDirectory$okio()[(paramInt1 - 1)];
+        }
+        int m = getDirectory$okio()[paramInt1];
+        int k = getDirectory$okio()[(((Object[])getSegments$okio()).length + paramInt1)];
+        m = Math.min(j, m - i + i) - paramInt2;
+        if (!paramByteString.rangeEquals(paramInt3, getSegments$okio()[paramInt1], k + (paramInt2 - i), m)) {
+          return false;
+        }
+        paramInt3 += m;
+        paramInt2 += m;
+        paramInt1 += 1;
+      }
+      bool = true;
+    }
+    return bool;
   }
   
-  public boolean rangeEquals(int paramInt1, ByteString paramByteString, int paramInt2, int paramInt3)
+  public boolean rangeEquals(int paramInt1, @NotNull byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt1 > size() - paramInt3)) {
-      return false;
-    }
-    int j = segment(paramInt1);
-    int i = paramInt1;
-    paramInt1 = j;
-    label30:
-    if (paramInt3 > 0)
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "other");
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramInt1 >= 0)
     {
-      if (paramInt1 == 0) {}
-      for (j = 0;; j = this.directory[(paramInt1 - 1)])
+      bool1 = bool2;
+      if (paramInt1 <= size() - paramInt3)
       {
-        int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
-        int m = this.directory[(this.segments.length + paramInt1)];
-        if (!paramByteString.rangeEquals(paramInt2, this.segments[paramInt1], i - j + m, k)) {
-          break;
+        bool1 = bool2;
+        if (paramInt2 >= 0)
+        {
+          if (paramInt2 > paramArrayOfByte.length - paramInt3) {
+            return false;
+          }
+          int j = paramInt3 + paramInt1;
+          int i = SegmentedByteStringKt.segment(this, paramInt1);
+          paramInt3 = paramInt2;
+          paramInt2 = paramInt1;
+          paramInt1 = i;
+          while (paramInt2 < j)
+          {
+            if (paramInt1 == 0) {
+              i = 0;
+            } else {
+              i = getDirectory$okio()[(paramInt1 - 1)];
+            }
+            int m = getDirectory$okio()[paramInt1];
+            int k = getDirectory$okio()[(((Object[])getSegments$okio()).length + paramInt1)];
+            m = Math.min(j, m - i + i) - paramInt2;
+            if (!-Util.arrayRangeEquals(getSegments$okio()[paramInt1], k + (paramInt2 - i), paramArrayOfByte, paramInt3, m)) {
+              return false;
+            }
+            paramInt3 += m;
+            paramInt2 += m;
+            paramInt1 += 1;
+          }
+          bool1 = true;
         }
-        i += k;
-        paramInt2 += k;
-        paramInt3 -= k;
-        paramInt1 += 1;
-        break label30;
       }
     }
-    return true;
+    return bool1;
   }
   
-  public boolean rangeEquals(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  @NotNull
+  public String string(@NotNull Charset paramCharset)
   {
-    if ((paramInt1 < 0) || (paramInt1 > size() - paramInt3) || (paramInt2 < 0) || (paramInt2 > paramArrayOfByte.length - paramInt3)) {
-      return false;
-    }
-    int j = segment(paramInt1);
-    int i = paramInt1;
-    paramInt1 = j;
-    label43:
-    if (paramInt3 > 0)
-    {
-      if (paramInt1 == 0) {}
-      for (j = 0;; j = this.directory[(paramInt1 - 1)])
-      {
-        int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
-        int m = this.directory[(this.segments.length + paramInt1)];
-        if (!Util.arrayRangeEquals(this.segments[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
-          break;
-        }
-        i += k;
-        paramInt2 += k;
-        paramInt3 -= k;
-        paramInt1 += 1;
-        break label43;
-      }
-    }
-    return true;
-  }
-  
-  public ByteString sha1()
-  {
-    return toByteString().sha1();
-  }
-  
-  public ByteString sha256()
-  {
-    return toByteString().sha256();
-  }
-  
-  public int size()
-  {
-    return this.directory[(this.segments.length - 1)];
-  }
-  
-  public String string(Charset paramCharset)
-  {
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
     return toByteString().string(paramCharset);
   }
   
-  public ByteString substring(int paramInt)
-  {
-    return toByteString().substring(paramInt);
-  }
-  
+  @NotNull
   public ByteString substring(int paramInt1, int paramInt2)
   {
-    return toByteString().substring(paramInt1, paramInt2);
+    int j = 0;
+    int i;
+    if (paramInt1 >= 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      if (paramInt2 <= size()) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        int m = paramInt2 - paramInt1;
+        if (m >= 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          if ((paramInt1 == 0) && (paramInt2 == size())) {
+            return (ByteString)this;
+          }
+          if (paramInt1 == paramInt2) {
+            return ByteString.EMPTY;
+          }
+          int k = SegmentedByteStringKt.segment(this, paramInt1);
+          int n = SegmentedByteStringKt.segment(this, paramInt2 - 1);
+          localObject = (byte[][])ArraysKt.copyOfRange((Object[])getSegments$okio(), k, n + 1);
+          Object[] arrayOfObject = (Object[])localObject;
+          int[] arrayOfInt = new int[arrayOfObject.length * 2];
+          if (k <= n)
+          {
+            i = k;
+            paramInt2 = 0;
+            for (;;)
+            {
+              arrayOfInt[paramInt2] = Math.min(getDirectory$okio()[i] - paramInt1, m);
+              arrayOfInt[(paramInt2 + arrayOfObject.length)] = getDirectory$okio()[(((Object[])getSegments$okio()).length + i)];
+              if (i == n) {
+                break;
+              }
+              i += 1;
+              paramInt2 += 1;
+            }
+          }
+          if (k == 0) {
+            paramInt2 = j;
+          } else {
+            paramInt2 = getDirectory$okio()[(k - 1)];
+          }
+          i = arrayOfObject.length;
+          arrayOfInt[i] += paramInt1 - paramInt2;
+          return (ByteString)new SegmentedByteString((byte[][])localObject, arrayOfInt);
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("endIndex=");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" < beginIndex=");
+        ((StringBuilder)localObject).append(paramInt1);
+        throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("endIndex=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(" > length(");
+      ((StringBuilder)localObject).append(size());
+      ((StringBuilder)localObject).append(')');
+      throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("beginIndex=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" < 0");
+    localObject = (Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
+  @NotNull
   public ByteString toAsciiLowercase()
   {
     return toByteString().toAsciiLowercase();
   }
   
+  @NotNull
   public ByteString toAsciiUppercase()
   {
     return toByteString().toAsciiUppercase();
   }
   
+  @NotNull
   public byte[] toByteArray()
   {
+    byte[] arrayOfByte1 = new byte[size()];
+    int n = ((Object[])getSegments$okio()).length;
     int i = 0;
-    byte[] arrayOfByte = new byte[this.directory[(this.segments.length - 1)]];
-    int m = this.segments.length;
-    int k;
-    for (int j = 0; i < m; j = k)
+    int k = 0;
+    int j = 0;
+    while (i < n)
     {
-      int n = this.directory[(m + i)];
-      k = this.directory[i];
-      System.arraycopy(this.segments[i], n, arrayOfByte, j, k - j);
+      int i1 = getDirectory$okio()[(n + i)];
+      int m = getDirectory$okio()[i];
+      byte[] arrayOfByte2 = getSegments$okio()[i];
+      k = m - k;
+      ArraysKt.copyInto(arrayOfByte2, arrayOfByte1, j, i1, i1 + k);
+      j += k;
       i += 1;
+      k = m;
     }
-    return arrayOfByte;
+    return arrayOfByte1;
   }
   
+  @NotNull
   public String toString()
   {
     return toByteString().toString();
   }
   
-  public String utf8()
+  public void write(@NotNull OutputStream paramOutputStream)
   {
-    return toByteString().utf8();
-  }
-  
-  public void write(OutputStream paramOutputStream)
-  {
+    Intrinsics.checkParameterIsNotNull(paramOutputStream, "out");
+    int m = ((Object[])getSegments$okio()).length;
     int i = 0;
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("out == null");
-    }
-    int m = this.segments.length;
     int k;
     for (int j = 0; i < m; j = k)
     {
-      int n = this.directory[(m + i)];
-      k = this.directory[i];
-      paramOutputStream.write(this.segments[i], n, k - j);
+      int n = getDirectory$okio()[(m + i)];
+      k = getDirectory$okio()[i];
+      paramOutputStream.write(getSegments$okio()[i], n, k - j);
       i += 1;
     }
   }
   
-  void write(Buffer paramBuffer)
+  public void write$okio(@NotNull Buffer paramBuffer, int paramInt1, int paramInt2)
   {
-    int m = this.segments.length;
-    int j = 0;
-    int i = 0;
-    if (j < m)
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "buffer");
+    int j = paramInt2 + paramInt1;
+    int i = SegmentedByteStringKt.segment(this, paramInt1);
+    paramInt2 = paramInt1;
+    paramInt1 = i;
+    while (paramInt2 < j)
     {
-      int n = this.directory[(m + j)];
-      int k = this.directory[j];
-      Segment localSegment = new Segment(this.segments[j], n, n + k - i, true, false);
+      if (paramInt1 == 0) {
+        i = 0;
+      } else {
+        i = getDirectory$okio()[(paramInt1 - 1)];
+      }
+      int m = getDirectory$okio()[paramInt1];
+      int k = getDirectory$okio()[(((Object[])getSegments$okio()).length + paramInt1)];
+      m = Math.min(j, m - i + i) - paramInt2;
+      i = k + (paramInt2 - i);
+      Segment localSegment1 = new Segment(getSegments$okio()[paramInt1], i, i + m, true, false);
       if (paramBuffer.head == null)
       {
-        localSegment.prev = localSegment;
-        localSegment.next = localSegment;
-        paramBuffer.head = localSegment;
+        localSegment1.prev = localSegment1;
+        localSegment1.next = localSegment1.prev;
+        paramBuffer.head = localSegment1.next;
       }
-      for (;;)
+      else
       {
-        j += 1;
-        i = k;
-        break;
-        paramBuffer.head.prev.push(localSegment);
+        Segment localSegment2 = paramBuffer.head;
+        if (localSegment2 == null) {
+          Intrinsics.throwNpe();
+        }
+        localSegment2 = localSegment2.prev;
+        if (localSegment2 == null) {
+          Intrinsics.throwNpe();
+        }
+        localSegment2.push(localSegment1);
       }
+      paramInt2 += m;
+      paramInt1 += 1;
     }
-    paramBuffer.size += i;
+    paramBuffer.setSize$okio(paramBuffer.size() + size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.SegmentedByteString
  * JD-Core Version:    0.7.0.1
  */

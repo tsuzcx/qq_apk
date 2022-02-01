@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.medalwall;
 
-import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class MedalGuideView$3
   implements Runnable
@@ -10,12 +10,12 @@ class MedalGuideView$3
   
   public void run()
   {
-    azqs.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.e, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.F, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.3
  * JD-Core Version:    0.7.0.1
  */

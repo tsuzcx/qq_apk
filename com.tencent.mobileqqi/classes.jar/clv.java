@@ -1,28 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.ArrayList;
 
-class clv
-  implements Runnable
+public class clv
+  implements DialogInterface.OnClickListener
 {
-  clv(clr paramclr, Drawable paramDrawable) {}
+  public clv(ForwardOperations paramForwardOperations) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Clr.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Clr.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
-    {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_Clr.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a.get("PhotoConst.PHOTO_PATHS");
-      if (localArrayList != null) {
-        this.jdField_a_of_type_Clr.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, localArrayList.size());
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Clr.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, 0);
+    this.a.a.finish();
   }
 }
 

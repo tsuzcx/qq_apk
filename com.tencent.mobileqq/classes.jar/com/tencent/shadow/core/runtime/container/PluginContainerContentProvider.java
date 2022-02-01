@@ -22,16 +22,22 @@ public class PluginContainerContentProvider
   
   private void checkHostContentProviderDelegate()
   {
-    if (this.hostContentProviderDelegate == null) {
-      throw new IllegalArgumentException("hostContentProviderDelegate is null ,请检查ContentProviderDelegateProviderHolder.setDelegateProviderHolderPrepareListener是否调用，或" + getClass().getSimpleName() + " 是否和插件在同一进程");
+    if (this.hostContentProviderDelegate != null) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hostContentProviderDelegate is null ,请检查ContentProviderDelegateProviderHolder.setDelegateProviderHolderPrepareListener是否调用，或");
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(" 是否和插件在同一进程");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int bulkInsert(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.bulkInsert(paramUri, paramArrayOfContentValues);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.bulkInsert(paramUri, paramArrayOfContentValues);
     }
     return 0;
   }
@@ -39,8 +45,9 @@ public class PluginContainerContentProvider
   public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.call(paramString1, paramString2, paramBundle);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.call(paramString1, paramString2, paramBundle);
     }
     return null;
   }
@@ -48,8 +55,9 @@ public class PluginContainerContentProvider
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.delete(paramUri, paramString, paramArrayOfString);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.delete(paramUri, paramString, paramArrayOfString);
     }
     return 0;
   }
@@ -57,8 +65,9 @@ public class PluginContainerContentProvider
   public String getType(Uri paramUri)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.getType(paramUri);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.getType(paramUri);
     }
     return null;
   }
@@ -66,16 +75,18 @@ public class PluginContainerContentProvider
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.insert(paramUri, paramContentValues);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.insert(paramUri, paramContentValues);
     }
     return null;
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (this.hostContentProviderDelegate != null) {
-      this.hostContentProviderDelegate.onConfigurationChanged(paramConfiguration);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      localHostContentProviderDelegate.onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -86,23 +97,26 @@ public class PluginContainerContentProvider
   
   public void onLowMemory()
   {
-    if (this.hostContentProviderDelegate != null) {
-      this.hostContentProviderDelegate.onLowMemory();
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      localHostContentProviderDelegate.onLowMemory();
     }
   }
   
   public void onTrimMemory(int paramInt)
   {
-    if (this.hostContentProviderDelegate != null) {
-      this.hostContentProviderDelegate.onTrimMemory(paramInt);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      localHostContentProviderDelegate.onTrimMemory(paramInt);
     }
   }
   
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.openFile(paramUri, paramString);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.openFile(paramUri, paramString);
     }
     return super.openFile(paramUri, paramString);
   }
@@ -110,8 +124,9 @@ public class PluginContainerContentProvider
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString, CancellationSignal paramCancellationSignal)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.openFile(paramUri, paramString, paramCancellationSignal);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.openFile(paramUri, paramString, paramCancellationSignal);
     }
     return super.openFile(paramUri, paramString);
   }
@@ -119,8 +134,9 @@ public class PluginContainerContentProvider
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
     }
     return null;
   }
@@ -128,15 +144,16 @@ public class PluginContainerContentProvider
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
     checkHostContentProviderDelegate();
-    if (this.hostContentProviderDelegate != null) {
-      return this.hostContentProviderDelegate.update(paramUri, paramContentValues, paramString, paramArrayOfString);
+    HostContentProviderDelegate localHostContentProviderDelegate = this.hostContentProviderDelegate;
+    if (localHostContentProviderDelegate != null) {
+      return localHostContentProviderDelegate.update(paramUri, paramContentValues, paramString, paramArrayOfString);
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.core.runtime.container.PluginContainerContentProvider
  * JD-Core Version:    0.7.0.1
  */

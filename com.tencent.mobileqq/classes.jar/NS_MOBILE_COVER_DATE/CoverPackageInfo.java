@@ -40,14 +40,17 @@ public final class CoverPackageInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.prePic != null) {
-      paramJceOutputStream.write(this.prePic, 0);
+    String str = this.prePic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.PackageUrl != null) {
-      paramJceOutputStream.write(this.PackageUrl, 1);
+    str = this.PackageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 2);
+    str = this.md5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.weather, 3);
     paramJceOutputStream.write(this.daytime, 4);
@@ -56,7 +59,7 @@ public final class CoverPackageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COVER_DATE.CoverPackageInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,25 +15,18 @@ public final class mobile_group_count_rsp
   implements Cloneable
 {
   static Map<String, String> cache_extendinfo;
-  static ArrayList<Long> cache_vecUinList;
-  public Map<String, String> extendinfo;
-  public int iNextTimeout;
-  public int iShowRedPoint;
-  public long stCount;
-  public ArrayList<Long> vecUinList;
+  static ArrayList<Long> cache_vecUinList = new ArrayList();
+  public Map<String, String> extendinfo = null;
+  public int iNextTimeout = 0;
+  public int iShowRedPoint = 0;
+  public long stCount = 0L;
+  public ArrayList<Long> vecUinList = null;
   
   static
   {
-    if (!mobile_group_count_rsp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_vecUinList = new ArrayList();
-      cache_vecUinList.add(Long.valueOf(0L));
-      cache_extendinfo = new HashMap();
-      cache_extendinfo.put("", "");
-      return;
-    }
+    cache_vecUinList.add(Long.valueOf(0L));
+    cache_extendinfo = new HashMap();
+    cache_extendinfo.put("", "");
   }
   
   public mobile_group_count_rsp() {}
@@ -53,18 +47,17 @@ public final class mobile_group_count_rsp
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -89,13 +82,32 @@ public final class mobile_group_count_rsp
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (mobile_group_count_rsp)paramObject;
-    } while ((!JceUtil.equals(this.stCount, paramObject.stCount)) || (!JceUtil.equals(this.vecUinList, paramObject.vecUinList)) || (!JceUtil.equals(this.iShowRedPoint, paramObject.iShowRedPoint)) || (!JceUtil.equals(this.iNextTimeout, paramObject.iNextTimeout)) || (!JceUtil.equals(this.extendinfo, paramObject.extendinfo)));
-    return true;
+    }
+    paramObject = (mobile_group_count_rsp)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.stCount, paramObject.stCount))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.vecUinList, paramObject.vecUinList))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iShowRedPoint, paramObject.iShowRedPoint))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.iNextTimeout, paramObject.iNextTimeout))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.extendinfo, paramObject.extendinfo)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -178,19 +190,21 @@ public final class mobile_group_count_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stCount, 0);
-    if (this.vecUinList != null) {
-      paramJceOutputStream.write(this.vecUinList, 1);
+    Object localObject = this.vecUinList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.iShowRedPoint, 2);
     paramJceOutputStream.write(this.iNextTimeout, 3);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 4);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_GROUP_COUNT.mobile_group_count_rsp
  * JD-Core Version:    0.7.0.1
  */

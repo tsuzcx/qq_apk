@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:padding="@dimen/dp" android:layout_width="@dimen/a0r" android:layout_height="@dimen/a0r"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.emoji.ui.SquareImageView android:layout_gravity="center" android:id="@id/bip" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
+    <ImageView android:id="@id/icb" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/radio_off" />
+    <TextView android:textSize="@dimen/j7" android:textColor="#ff636363" android:id="@id/kpx" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
 </LinearLayout>

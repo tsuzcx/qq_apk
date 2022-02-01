@@ -22,15 +22,13 @@ public class LinkedListInjector
   public void addLast(Object paramObject)
   {
     paramObject = new SingleLinkedListNode(paramObject);
-    if (this.tailNode == null) {
+    SingleLinkedListNode localSingleLinkedListNode = this.tailNode;
+    if (localSingleLinkedListNode == null) {
       this.headNode = paramObject;
+    } else {
+      localSingleLinkedListNode.setNext(paramObject);
     }
-    for (;;)
-    {
-      this.tailNode = paramObject;
-      return;
-      this.tailNode.setNext(paramObject);
-    }
+    this.tailNode = paramObject;
   }
   
   public Object getOrCreateObject(Class<?> paramClass)
@@ -46,19 +44,20 @@ public class LinkedListInjector
   public void setHead(Object paramObject)
   {
     paramObject = new SingleLinkedListNode(paramObject);
-    if (this.headNode == null)
+    SingleLinkedListNode localSingleLinkedListNode = this.headNode;
+    if (localSingleLinkedListNode == null)
     {
       this.headNode = paramObject;
       this.tailNode = paramObject;
       return;
     }
-    paramObject.setNext(this.headNode);
+    paramObject.setNext(localSingleLinkedListNode);
     this.headNode = paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.index.LinkedListInjector
  * JD-Core Version:    0.7.0.1
  */

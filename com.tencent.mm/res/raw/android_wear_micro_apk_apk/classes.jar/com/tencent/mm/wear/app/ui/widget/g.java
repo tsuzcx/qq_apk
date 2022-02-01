@@ -14,136 +14,151 @@ import java.util.HashMap;
 
 public final class g
 {
-  private Paint AL;
-  private int aeN;
-  private int aeO;
-  private int aiA;
-  private RectF aiB;
-  private double aiC = 0.15D;
-  private double aiD;
-  private HashMap<Double, Double> aiE = new HashMap();
-  private double aiF = 5.0D;
-  private double aiG = this.aiF;
-  private int aiH;
-  private int aiI;
-  private int aiJ = 0;
-  private int aiy;
-  private int aiz;
+  private Paint CA;
+  private int aip;
+  private int aiq;
+  private int ama;
+  private int amb;
+  private int amc;
+  private RectF amd;
+  private double ame = 0.15D;
+  private double amf;
+  private HashMap<Double, Double> amg = new HashMap();
+  private double amh = 5.0D;
+  private double ami = this.amh;
+  private int amj;
+  private int amk;
+  private int aml = 0;
   
   public g(int paramInt1, int paramInt2)
   {
     d.c("MicroMsg.SiriWave", "Create Siri Wave screenWidth=%d screenHeight=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.aeO = paramInt1;
-    this.aeN = paramInt2;
-    this.aiH = this.aeO;
-    this.aiy = (this.aeO / 2);
-    this.aiz = (this.aeO / 4);
-    this.aiA = (this.aeN / 2 + 35);
-    this.aiB = new RectF();
-    this.AL = new Paint();
-    this.AL.setAntiAlias(true);
-    this.AL.setStrokeWidth(2.0F);
-    this.AL.setStyle(Paint.Style.STROKE);
+    this.aiq = paramInt1;
+    this.aip = paramInt2;
+    this.amj = this.aiq;
+    this.ama = (this.aiq / 2);
+    this.amb = (this.aiq / 4);
+    this.amc = (this.aip / 2 + 35);
+    this.amd = new RectF();
+    this.CA = new Paint();
+    this.CA.setAntiAlias(true);
+    this.CA.setStrokeWidth(2.0F);
+    this.CA.setStyle(Paint.Style.STROKE);
     float f = paramInt1;
     Object localObject = Shader.TileMode.CLAMP;
     localObject = new LinearGradient(0.0F, 0.0F, f, 0.0F, new int[] { 0, -9502781, -12744449, 0 }, new float[] { 0.0F, 0.2F, 0.8F, 1.0F }, (Shader.TileMode)localObject);
-    this.AL.setShader((Shader)localObject);
+    this.CA.setShader((Shader)localObject);
+  }
+  
+  private int a(double paramDouble)
+  {
+    return (int)(this.ama + this.amb * paramDouble);
+  }
+  
+  private int a(double paramDouble1, double paramDouble2, int paramInt)
+  {
+    double d = this.amc;
+    if (!this.amg.containsKey(Double.valueOf(paramDouble2))) {
+      this.amg.put(Double.valueOf(paramDouble2), Double.valueOf(Math.pow(4.0D / (Math.pow(paramDouble2, 4.0D) + 4.0D), 2.0D)));
+    }
+    return (int)(((Double)this.amg.get(Double.valueOf(paramDouble2))).doubleValue() * paramDouble1 * Math.sin(paramInt * paramDouble2 - this.amf) + d) - 10;
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, double paramDouble, int paramInt1, int paramInt2)
   {
     int i = 0;
-    double d1 = -2.0D;
+    double d = -2.0D;
     Path localPath = new Path();
-    int j = this.aiy;
+    int j = this.ama;
     int k = paramInt2 / 2;
-    int m = this.aiy;
+    int m = this.ama;
     int n = paramInt2 / 2;
     paramInt2 = i;
-    if (d1 <= 2.0D)
+    if (d <= 2.0D)
     {
-      i = (int)(this.aiy + this.aiz * d1);
-      int i1;
-      if ((i >= j - k) && (i <= n + m))
+      int i1 = a(d);
+      i = paramInt2;
+      if (i1 >= j - k)
       {
-        double d2 = this.aiA;
-        if (!this.aiE.containsKey(Double.valueOf(d1))) {
-          this.aiE.put(Double.valueOf(d1), Double.valueOf(Math.pow(4.0D / (4.0D + Math.pow(d1, 4.0D)), 2.0D)));
-        }
-        i1 = (int)(d2 + ((Double)this.aiE.get(Double.valueOf(d1))).doubleValue() * paramDouble * Math.sin(paramInt1 * d1 - this.aiD)) - 10;
-        if (paramInt2 == 0)
+        i = paramInt2;
+        if (i1 <= m + n)
         {
-          localPath.moveTo(i, i1);
-          paramInt2 = 1;
+          i = a(paramDouble, d, paramInt1);
+          if (paramInt2 != 0) {
+            break label135;
+          }
+          localPath.moveTo(i1, i);
         }
       }
-      for (;;)
+      for (i = 1;; i = paramInt2)
       {
-        d1 += 0.005D;
+        d += 0.005D;
+        paramInt2 = i;
         break;
-        localPath.lineTo(i, i1);
+        label135:
+        localPath.lineTo(i1, i);
       }
     }
     paramCanvas.drawPath(localPath, paramPaint);
   }
   
-  private void nF()
+  private void ot()
   {
-    this.aiD = ((this.aiD + 3.141592653589793D * this.aiC) % 6.283185307179586D);
+    this.amf = ((this.amf + 3.141592653589793D * this.ame) % 6.283185307179586D);
   }
   
   public final void a(Canvas paramCanvas, int paramInt)
   {
     if (paramInt == 4) {
-      if (this.aiH > 0)
+      if (this.amj > 0)
       {
-        this.aiC = 0.15D;
-        nF();
-        this.aiH -= 20;
-        this.aiG = a.a(this.aiF, this.aiG);
-        a(paramCanvas, this.AL, this.aiG, 2, this.aiH);
-        this.AL.setAlpha(255);
+        this.ame = 0.15D;
+        ot();
+        this.amj -= 20;
+        this.ami = a.a(this.amh, this.ami);
+        a(paramCanvas, this.CA, this.ami, 2, this.amj);
+        this.CA.setAlpha(255);
       }
     }
     while ((paramInt != 2) && (paramInt != 3))
     {
       return;
-      if (this.aiI < 40) {
-        this.aiI += 4;
+      if (this.amk < 40) {
+        this.amk += 4;
       }
-      Paint localPaint = this.AL;
-      this.aiB.set(this.aiy - this.aiI, this.aiA - this.aiI, this.aiy + this.aiI, this.aiA + this.aiI);
+      Paint localPaint = this.CA;
+      this.amd.set(this.ama - this.amk, this.amc - this.amk, this.ama + this.amk, this.amc + this.amk);
       Path localPath = new Path();
-      localPath.addArc(this.aiB, this.aiJ, 356.0F);
+      localPath.addArc(this.amd, this.aml, 356.0F);
       paramCanvas.drawPath(localPath, localPaint);
-      this.aiJ += 5;
-      this.aiJ %= 360;
+      this.aml += 5;
+      this.aml %= 360;
       return;
     }
-    this.aiH = this.aeO;
-    this.aiC = 0.15D;
-    nF();
-    this.aiG = a.a(this.aiF, this.aiG);
-    a(paramCanvas, this.AL, this.aiG, 2, this.aiH);
-    double d1 = this.aiG;
-    double d2 = this.aiG;
-    this.AL.setAlpha(100);
-    a(paramCanvas, this.AL, d1 * 0.6D, 2, this.aiH);
-    this.AL.setAlpha(40);
-    a(paramCanvas, this.AL, -(d2 * 0.2D), 4, this.aiH);
-    this.AL.setAlpha(255);
+    this.amj = this.aiq;
+    this.ame = 0.15D;
+    ot();
+    this.ami = a.a(this.amh, this.ami);
+    a(paramCanvas, this.CA, this.ami, 2, this.amj);
+    double d1 = this.ami;
+    double d2 = this.ami;
+    this.CA.setAlpha(100);
+    a(paramCanvas, this.CA, d1 * 0.6D, 2, this.amj);
+    this.CA.setAlpha(40);
+    a(paramCanvas, this.CA, -(d2 * 0.2D), 4, this.amj);
+    this.CA.setAlpha(255);
   }
   
-  public final void cd(int paramInt)
+  public final void cz(int paramInt)
   {
-    this.aiF = (paramInt * 50.0D / 3000.0D);
-    if (this.aiF > 50.0D) {
-      this.aiF = 50.0D;
+    this.amh = (paramInt * 50.0D / 3000.0D);
+    if (this.amh > 50.0D) {
+      this.amh = 50.0D;
     }
-    while (this.aiF >= 5.0D) {
+    while (this.amh >= 5.0D) {
       return;
     }
-    this.aiF = 5.0D;
+    this.amh = 5.0D;
   }
 }
 

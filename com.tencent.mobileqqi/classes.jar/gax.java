@@ -4,15 +4,11 @@ import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 class gax
   implements Runnable
 {
-  gax(gav paramgav, String paramString) {}
+  gax(gau paramgau, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      MagicfaceViewController.a(this.jdField_a_of_type_Gav.a).setVisibility(0);
-      MagicfaceViewController.a(this.jdField_a_of_type_Gav.a).setText(this.jdField_a_of_type_JavaLangString);
-    }
+    MagicfaceViewController.b(this.jdField_a_of_type_Gau.a).setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

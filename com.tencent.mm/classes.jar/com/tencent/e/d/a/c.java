@@ -1,7 +1,7 @@
 package com.tencent.e.d.a;
 
 import android.text.TextUtils;
-import com.tencent.e.d.b.d.a;
+import com.tencent.e.d.b.e.a;
 import com.tencent.e.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
@@ -10,54 +10,54 @@ import java.util.List;
 public final class c
   implements b
 {
-  private final List<d.a> Bkl;
+  private final List<e.a> ahtD;
   
   public c()
   {
-    AppMethodBeat.i(114503);
-    this.Bkl = new ArrayList();
-    AppMethodBeat.o(114503);
+    AppMethodBeat.i(138344);
+    this.ahtD = new ArrayList();
+    AppMethodBeat.o(138344);
   }
   
-  public final void a(d.a parama)
+  public final void a(e.a parama)
   {
-    AppMethodBeat.i(114504);
+    AppMethodBeat.i(138345);
     if (parama.uid != 0)
     {
-      AppMethodBeat.o(114504);
+      AppMethodBeat.o(138345);
       return;
     }
-    if ((TextUtils.isEmpty(parama.Bkt)) || (!"u:r:zygote:s0".equals(parama.Bkt)))
+    if ((TextUtils.isEmpty(parama.ahtL)) || (!"u:r:zygote:s0".equals(parama.ahtL)))
     {
-      AppMethodBeat.o(114504);
+      AppMethodBeat.o(138345);
       return;
     }
     if ((TextUtils.isEmpty(parama.name)) || ("zygote".equals(parama.name)) || ("zygote64".equals(parama.name)))
     {
-      AppMethodBeat.o(114504);
+      AppMethodBeat.o(138345);
       return;
     }
     new StringBuilder("JavaProcessAnalyzer match : ").append(parama.toString());
-    h.dUT();
-    this.Bkl.add(parama);
-    AppMethodBeat.o(114504);
+    h.jXC();
+    this.ahtD.add(parama);
+    AppMethodBeat.o(138345);
   }
   
-  public final boolean dUx()
+  public final boolean jXf()
   {
-    AppMethodBeat.i(114505);
-    if (this.Bkl.size() > 0)
+    AppMethodBeat.i(138346);
+    if (this.ahtD.size() > 0)
     {
-      AppMethodBeat.o(114505);
+      AppMethodBeat.o(138346);
       return true;
     }
-    AppMethodBeat.o(114505);
+    AppMethodBeat.o(138346);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.d.a.c
  * JD-Core Version:    0.7.0.1
  */

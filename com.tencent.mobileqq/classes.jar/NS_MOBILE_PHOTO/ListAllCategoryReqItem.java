@@ -9,7 +9,7 @@ public final class ListAllCategoryReqItem
 {
   static CategoryPoiMap cache_poi_map_req = new CategoryPoiMap();
   public String page_str = "";
-  public CategoryPoiMap poi_map_req;
+  public CategoryPoiMap poi_map_req = null;
   
   public ListAllCategoryReqItem() {}
   
@@ -27,17 +27,19 @@ public final class ListAllCategoryReqItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.page_str != null) {
-      paramJceOutputStream.write(this.page_str, 0);
+    Object localObject = this.page_str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.poi_map_req != null) {
-      paramJceOutputStream.write(this.poi_map_req, 1);
+    localObject = this.poi_map_req;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.ListAllCategoryReqItem
  * JD-Core Version:    0.7.0.1
  */

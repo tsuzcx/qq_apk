@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface a
   extends IInterface
 {
-  public abstract void L(IBinder paramIBinder);
+  public abstract void X(IBinder paramIBinder);
   
   public static abstract class a
     extends Binder
@@ -18,6 +18,11 @@ public abstract interface a
     public a()
     {
       attachInterface(this, "com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
+    }
+    
+    public static a iUC()
+    {
+      return a.acwo;
     }
     
     public IBinder asBinder()
@@ -36,7 +41,7 @@ public abstract interface a
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
-      L(paramParcel1.readStrongBinder());
+      X(paramParcel1.readStrongBinder());
       paramParcel2.writeNoException();
       return true;
     }
@@ -44,6 +49,7 @@ public abstract interface a
     static final class a
       implements a
     {
+      public static a acwo;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -51,16 +57,20 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      public final void L(IBinder paramIBinder)
+      public final void X(IBinder paramIBinder)
       {
-        AppMethodBeat.i(115267);
+        AppMethodBeat.i(125304);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
           localParcel1.writeStrongBinder(paramIBinder);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.iUC() != null))
+          {
+            a.a.iUC().X(paramIBinder);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -68,7 +78,7 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(115267);
+          AppMethodBeat.o(125304);
         }
       }
       
@@ -81,7 +91,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.service.a
  * JD-Core Version:    0.7.0.1
  */

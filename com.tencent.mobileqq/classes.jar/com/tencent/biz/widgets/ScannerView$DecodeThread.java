@@ -2,13 +2,15 @@ package com.tencent.biz.widgets;
 
 import android.os.HandlerThread;
 import android.os.Process;
-import bfwd;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.QBarConstants;
+import com.tencent.mobileqq.qrscan.api.IQRCodeApi;
 import com.tencent.qphone.base.util.QLog;
 
 class ScannerView$DecodeThread
   extends HandlerThread
 {
-  public boolean a;
+  public boolean a = false;
   
   public ScannerView$DecodeThread(ScannerView paramScannerView, String paramString)
   {
@@ -23,18 +25,15 @@ class ScannerView$DecodeThread
     }
     try
     {
-      bfwd.b();
-      return super.quit();
+      ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).releaseForCamera();
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScannerView", 2, localUnsatisfiedLinkError.toString());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("ScannerView", 2, localUnsatisfiedLinkError.toString());
       }
     }
+    return super.quit();
   }
   
   public void run()
@@ -42,25 +41,27 @@ class ScannerView$DecodeThread
     Process.setThreadPriority(-20);
     try
     {
-      int i = bfwd.b(0, "ANY", "UTF-8");
-      Object localObject = new int[2];
-      localObject[0] = 2;
-      localObject[1] = 1;
-      int j = bfwd.b((int[])localObject, localObject.length);
-      localObject = bfwd.a();
+      int i = ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).initForCamera(0, "ANY", "UTF-8");
+      int j = ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).setReadersForCamera(QBarConstants.c);
+      String str = ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).getVersion();
       if (QLog.isDevelopLevel())
       {
-        QLog.d("ScannerView", 4, "init for camera init_result1:" + i + ",init_result2:" + j);
-        QLog.d("ScannerView", 4, "version:" + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init for camera init_result1:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(",init_result2:");
+        localStringBuilder.append(j);
+        QLog.d("ScannerView", 4, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("version:");
+        localStringBuilder.append(str);
+        QLog.d("ScannerView", 4, localStringBuilder.toString());
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScannerView", 2, localUnsatisfiedLinkError.toString());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("ScannerView", 2, localUnsatisfiedLinkError.toString());
       }
     }
     super.run();
@@ -68,7 +69,7 @@ class ScannerView$DecodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.ScannerView.DecodeThread
  * JD-Core Version:    0.7.0.1
  */

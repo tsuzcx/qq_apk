@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/wy" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/w_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="35.0dip" />
+    <Button android:textColor="@color/ue" android:id="@id/b7m" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r" android:layout_marginBottom="42.0dip" android:layout_alignParentBottom="true" style="@style/t8" />
+    <ScrollView android:background="@drawable/hhl" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r" android:layout_marginBottom="100.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ccg" />
+            <RelativeLayout android:paddingLeft="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/ofy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yvk" android:layout_centerVertical="true" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff03081a" android:id="@id/o_e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:hint="@string/yvi" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <com.tencent.mobileqq.filemanager.widget.SearchFileFlowLayout android:id="@id/mx6" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View android:layout_marginLeft="@dimen/b7q" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/b7q" style="@style/sr" />
+            <RelativeLayout android:paddingLeft="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/tr" android:id="@id/md2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rg3" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/lnc" android:paddingLeft="12.0dip" android:paddingRight="19.0dip" android:layout_width="43.5dip" android:layout_height="fill_parent" android:src="@drawable/dy0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/rg5" />
+                <EditText android:textSize="15.0sp" android:textColor="@color/tr" android:textColorHint="@color/wb" android:ellipsize="end" android:gravity="right" android:id="@id/ep1" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/rg4" android:singleLine="true" android:layout_toLeftOf="@id/lnc" android:layout_toRightOf="@id/md2" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

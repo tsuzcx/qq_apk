@@ -25,8 +25,8 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.utils.MsgUtils;
+import gva;
 import gvb;
-import gvc;
 
 public class TroopAioNewMessageBar
   extends TroopAioAgent
@@ -40,7 +40,7 @@ public class TroopAioNewMessageBar
   private static int h = 3;
   private static int i = 0;
   private float jdField_a_of_type_Float = 0.0F;
-  private Handler jdField_a_of_type_AndroidOsHandler = new gvb(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new gva(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation = null;
   public LinearLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
@@ -148,7 +148,7 @@ public class TroopAioNewMessageBar
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setId(2131230788);
       Object localObject = new RelativeLayout.LayoutParams(-1, this.l);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131231201);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131231200);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setId(2131230825);
@@ -183,7 +183,7 @@ public class TroopAioNewMessageBar
       ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131230826);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new gvc(this));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new gvb(this));
     }
   }
   

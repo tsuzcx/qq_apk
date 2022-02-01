@@ -13,7 +13,6 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("weiyunDownload", "com.tencent.mobileqq.mini.out.nativePlugins.WeiyunDownloadFilePlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("refreshQzoneFeed", "com.tencent.mobileqq.mini.out.nativePlugins.RefreshQzoneFeedPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("getMultiMemList", "com.tencent.mobileqq.mini.out.nativePlugins.GroupPlugin"));
-    pluginList.add(new NativePluginManager.PluginInfo("checkin_invokeGYCamera", "com.tencent.mobileqq.mini.out.nativePlugins.LaunchCameraPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("requestWebSSO", "com.tencent.mobileqq.mini.out.nativePlugins.WebSsoJsPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("checkin_qzoneUploadAndPublish", "com.tencent.mobileqq.mini.out.nativePlugins.QzonePublishPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("checkin_uploadRes", "com.tencent.mobileqq.mini.out.nativePlugins.GroupCheckInUploadPlugin"));
@@ -23,6 +22,10 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("qWalletBridge", "com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin"));
     initQQPublicAccountPlugin();
     pluginList.add(new NativePluginManager.PluginInfo("tim_space", "com.tencent.mobileqq.mini.out.nativePlugins.TimTeamPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("getGUID", "com.tencent.mobileqq.mini.out.nativePlugins.DeviceInfoPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("sendMsg", "com.tencent.mobileqq.mini.out.nativePlugins.SmsPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("nowlive", "com.tencent.mobileqq.mini.out.nativePlugins.NowLiveNativePlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("freeTrafficCardModel", "com.tencent.mobileqq.mini.out.nativePlugins.TreasureCardMiniJsPlugin"));
   }
   
   public static Set<NativePluginManager.PluginInfo> getPluginInfo()
@@ -53,7 +56,7 @@ public class NativePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePluginManager
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public final class GetLastLoginInfoReq
   extends JceStruct
 {
   static LastLoginPageInfo cache_stPageInfo;
-  public LastLoginPageInfo stPageInfo;
-  public long uin;
+  public LastLoginPageInfo stPageInfo = null;
+  public long uin = 0L;
   
   public GetLastLoginInfoReq() {}
   
@@ -31,14 +31,15 @@ public final class GetLastLoginInfoReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.stPageInfo != null) {
-      paramJceOutputStream.write(this.stPageInfo, 1);
+    LastLoginPageInfo localLastLoginPageInfo = this.stPageInfo;
+    if (localLastLoginPageInfo != null) {
+      paramJceOutputStream.write(localLastLoginPageInfo, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetLastLoginInfoReq
  * JD-Core Version:    0.7.0.1
  */

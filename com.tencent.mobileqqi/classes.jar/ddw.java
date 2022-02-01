@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class ddw
-  implements DialogInterface.OnClickListener
+class ddw
+  implements Runnable
 {
-  public ddw(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  ddw(ddv paramddv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "", "", "", "");
-    if (!this.a.isFinishing())
-    {
-      paramDialogInterface.dismiss();
-      this.a.showDialog(1);
+    this.a.a.b.a().k();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    Handler localHandler = this.a.a.b.a(Conversation.class);
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(1009);
     }
-    ThreadManager.b(new ddx(this));
   }
 }
 

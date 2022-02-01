@@ -1,41 +1,22 @@
-import android.view.View;
-import android.widget.Button;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 
 public class fny
   implements Runnable
 {
-  public fny(BigEmoticonViewBinder paramBigEmoticonViewBinder, View paramView) {}
+  public fny(BigEmoticonViewBinder paramBigEmoticonViewBinder, ImageView paramImageView) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.a(0);
-    Button localButton;
-    View localView;
-    if (i == 2005)
-    {
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231615);
-      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131231617);
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-      if (localButton != null) {
-        localButton.setVisibility(0);
-      }
+    Bitmap localBitmap = EmosmUtils.getCoverBitmap(2, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+    if (localBitmap != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (i != 2004);
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231649);
-      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131231650);
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-    } while (localButton == null);
-    localButton.setVisibility(0);
   }
 }
 

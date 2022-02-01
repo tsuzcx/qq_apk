@@ -1,13 +1,10 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import aepi;
-import alzr;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,96 +14,94 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qroute.route.URIRequest;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SingleLineTextView;
 import java.net.URLDecoder;
-import nts;
-import ntt;
-import ntu;
-import nup;
-import syb;
 
 public class BusinessBrowser$BusinessBrowserFragment
   extends WebViewFragment
   implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = -1;
-  alzr jdField_a_of_type_Alzr = new ntu(this);
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ntt(this);
-  public View a;
-  public Animation a;
-  public ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public TextView a;
-  public String a;
-  public boolean a;
-  public int b;
-  public View b;
-  public Animation b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  public int c;
-  View jdField_c_of_type_AndroidViewView;
-  String jdField_c_of_type_JavaLangString;
-  public boolean c;
+  TextView a;
+  TextView b;
+  ImageView c;
+  View d;
+  RelativeLayout e;
+  String f;
+  String g;
+  boolean h;
+  boolean i = false;
+  View j;
+  View k;
+  int l = -1;
+  String m;
+  int n = 0;
+  boolean o = true;
+  Animation p;
+  Animation q;
+  int r;
+  IPublicAccountObserver s;
+  BroadcastReceiver t = new BusinessBrowser.BusinessBrowserFragment.4(this);
   
-  public BusinessBrowser$BusinessBrowserFragment()
+  void a()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
+    Intent localIntent = new Intent("action_follow_status");
+    localIntent.putExtra("puin", this.f);
+    super.getActivity().sendBroadcast(localIntent);
   }
   
-  public int a(Bundle paramBundle)
+  protected void a(Bundle paramBundle)
   {
-    int i = super.a(paramBundle);
-    if (!this.jdField_b_of_type_Boolean) {
-      return i;
+    if (!this.i) {
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131380185));
-    this.jdField_b_of_type_AndroidViewView = super.getActivity().findViewById(2131380175);
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidViewView != null))
+    this.e = ((RelativeLayout)super.getActivity().findViewById(2131450099));
+    this.j = super.getActivity().findViewById(2131450088);
+    if ((this.e != null) && (this.j != null))
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(super.getActivity(), 2131561703, null);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370086);
-      if (this.jdField_c_of_type_AndroidViewView != null)
-      {
-        if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
-          break label294;
+      this.d = View.inflate(super.getActivity(), 2131628314, null);
+      this.k = this.d.findViewById(2131437976);
+      if (this.k != null) {
+        if (ThemeUtil.isInNightMode(getAppRuntime())) {
+          this.k.setVisibility(0);
+        } else {
+          this.k.setVisibility(8);
         }
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977)).setText(String.valueOf(this.jdField_b_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367819));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366626));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369767));
-      paramBundle = new RelativeLayout.LayoutParams(-1, aepi.a(44.0F, super.getResources()));
+      this.d.setOnClickListener(this);
+      ((SingleLineTextView)this.d.findViewById(2131439121)).setText(String.valueOf(this.g));
+      this.c = ((ImageView)this.d.findViewById(2131435219));
+      this.a = ((TextView)this.d.findViewById(2131433513));
+      this.a.setOnClickListener(this);
+      this.b = ((TextView)this.d.findViewById(2131437622));
+      paramBundle = new RelativeLayout.LayoutParams(-1, AIOUtils.b(44.0F, super.getResources()));
       paramBundle.addRule(10);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, paramBundle);
-      a(this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new nts(this));
+      this.e.addView(this.d, paramBundle);
+      a(this.j, this.r);
+      this.webView.setOnScrollChangedListener(new BusinessBrowser.BusinessBrowserFragment.3(this));
       paramBundle = new Intent("action_get_PA_head");
-      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("uin", this.f);
       super.getActivity().sendBroadcast(paramBundle);
-      u_();
-      return i;
-      label294:
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      a();
     }
   }
   
-  public void a(View paramView, int paramInt)
+  void a(View paramView, int paramInt)
   {
     if (paramView != null)
     {
@@ -116,78 +111,86 @@ public class BusinessBrowser$BusinessBrowserFragment
     }
   }
   
-  public boolean a(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("jump_from", -1);
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("msg_id");
-    this.jdField_c_of_type_Int = aepi.a(44.0F, super.getResources());
-    Object localObject = Uri.parse(super.e());
-    boolean bool;
+    this.l = this.intent.getIntExtra("jump_from", -1);
+    this.m = this.intent.getStringExtra("msg_id");
+    this.r = AIOUtils.b(44.0F, super.getResources());
+    localObject = Uri.parse(super.getUrlFromIntent());
     if (((Uri)localObject).isHierarchical())
     {
-      this.jdField_a_of_type_JavaLangString = ((Uri)localObject).getQueryParameter("shopPuin");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label230;
-      }
-      bool = true;
+      this.f = ((Uri)localObject).getQueryParameter("shopPuin");
+      this.i = (TextUtils.isEmpty(this.f) ^ true);
+      this.g = ((Uri)localObject).getQueryParameter("shopNick");
+      localObject = this.g;
+      if (localObject == null) {}
     }
-    for (;;)
+    try
     {
-      this.jdField_b_of_type_Boolean = bool;
-      this.jdField_b_of_type_JavaLangString = ((Uri)localObject).getQueryParameter("shopNick");
-      if (this.jdField_b_of_type_JavaLangString != null) {}
+      this.g = URLDecoder.decode((String)localObject, "UTF-8");
+    }
+    catch (Exception localException1)
+    {
       try
       {
-        this.jdField_b_of_type_JavaLangString = URLDecoder.decode(this.jdField_b_of_type_JavaLangString, "UTF-8");
-        if (this.jdField_b_of_type_Boolean)
-        {
-          localObject = new IntentFilter("action_decode_finish");
-          ((IntentFilter)localObject).addAction("action_follow_status_finish");
-        }
+        BaseApplicationImpl.getApplication().registerReceiver(this.t, (IntentFilter)localObject);
+        this.p = new TranslateAnimation(0.0F, 0.0F, -this.r, 0.0F);
+        this.p.setDuration(100L);
+        this.p.setAnimationListener(this);
+        this.q = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.r);
+        this.q.setDuration(100L);
+        this.q.setAnimationListener(this);
+        this.s = ((IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class));
+        this.s.setOnCallback(new BusinessBrowser.BusinessBrowserFragment.1(this));
+        return super.doOnCreate(paramBundle);
+        localException1 = localException1;
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        try
-        {
-          label148:
-          label230:
-          do
-          {
-            BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-            this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, -this.jdField_c_of_type_Int, 0.0F);
-            this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(100L);
-            this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-            this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.jdField_c_of_type_Int);
-            this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(100L);
-            this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-            return super.a(paramBundle);
-            bool = false;
-            break;
-            localException1 = localException1;
-          } while (!QLog.isColorLevel());
-          QLog.i("WebLog_WebViewFragment", 2, "msg_id:" + this.jdField_c_of_type_JavaLangString + ",p_uin:" + this.jdField_a_of_type_JavaLangString + ",nick:" + this.jdField_b_of_type_JavaLangString);
-        }
-        catch (Exception localException2)
-        {
-          break label148;
-        }
+        break label225;
       }
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msg_id:");
+      ((StringBuilder)localObject).append(this.m);
+      ((StringBuilder)localObject).append(",p_uin:");
+      ((StringBuilder)localObject).append(this.f);
+      ((StringBuilder)localObject).append(",nick:");
+      ((StringBuilder)localObject).append(this.g);
+      QLog.i("WebLog_WebViewFragment", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.i)
+    {
+      localObject = new IntentFilter("action_decode_finish");
+      ((IntentFilter)localObject).addAction("action_follow_status_finish");
+    }
+  }
+  
+  public WebViewKernelCallBack getWebViewKernelCallBack()
+  {
+    return new BusinessBrowser.BusinessBrowserFragment.2(this, this.webViewSurface);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationAnimation)
+    if (paramAnimation == this.p)
     {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramAnimation = this.d;
+      if (paramAnimation != null) {
+        paramAnimation.setVisibility(0);
       }
-      a(this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-    }
-    while ((paramAnimation != this.jdField_b_of_type_AndroidViewAnimationAnimation) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      a(this.j, this.r);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if (paramAnimation == this.q)
+    {
+      paramAnimation = this.d;
+      if (paramAnimation != null) {
+        paramAnimation.setVisibility(4);
+      }
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -197,62 +200,55 @@ public class BusinessBrowser$BusinessBrowserFragment
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    int i = paramView.getId();
-    if (i == 2131366626)
+    int i1 = paramView.getId();
+    Object localObject;
+    if (i1 == 2131433513)
     {
-      paramView = (nup)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
-      if (paramView != null)
+      localObject = (EcshopReportHandler)((AppInterface)getAppRuntime()).getBusinessHandler(BrowserAppInterface.m);
+      if (localObject != null)
       {
-        if (this.jdField_a_of_type_Int != 1) {
-          break label79;
-        }
-        paramView.a(134249256, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, null, 0L, false);
-      }
-    }
-    label79:
-    while (i != 2131364050) {
-      for (;;)
-      {
-        syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alzr);
-        return;
-        if (this.jdField_a_of_type_Int == 2) {
-          paramView.a(134249251, this.jdField_a_of_type_JavaLangString, null, null, null, 0L, false);
+        i1 = this.l;
+        if (i1 == 1) {
+          ((EcshopReportHandler)localObject).a(134249256, this.f, this.m, null, null, 0L, false);
+        } else if (i1 == 2) {
+          ((EcshopReportHandler)localObject).a(134249251, this.f, null, null, null, 0L, false);
         }
       }
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin((AppInterface)getAppRuntime(), super.getActivity(), this.f, this.s);
     }
-    if (this.jdField_a_of_type_Int == 1) {
-      i = 134249257;
-    }
-    for (;;)
+    else if (i1 == 2131430424)
     {
-      paramView = new Intent(super.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("report_src_param_type", "");
-      paramView.putExtra("report_src_param_name", "");
-      if (i != -1) {
-        paramView.putExtra("report_business_tvalue", i);
-      }
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        paramView.putExtra("strp1", this.jdField_c_of_type_JavaLangString);
-      }
-      paramView.setFlags(67108864);
-      super.getActivity().startActivity(paramView);
-      return;
-      if (this.jdField_a_of_type_Int == 2) {
-        i = 134249252;
+      i1 = this.l;
+      if (i1 == 1) {
+        i1 = 134249257;
+      } else if (i1 == 2) {
+        i1 = 134249252;
       } else {
-        i = -1;
+        i1 = -1;
       }
+      localObject = new ActivityURIRequest(super.getActivity(), "/pubaccount/detail");
+      ((ActivityURIRequest)localObject).extra().putString("uin", this.f);
+      ((ActivityURIRequest)localObject).extra().putString("report_src_param_type", "");
+      ((ActivityURIRequest)localObject).extra().putString("report_src_param_name", "");
+      if (i1 != -1) {
+        ((ActivityURIRequest)localObject).extra().putInt("report_business_tvalue", i1);
+      }
+      if (this.m != null) {
+        ((ActivityURIRequest)localObject).extra().putString("strp1", this.m);
+      }
+      ((ActivityURIRequest)localObject).setFlags(67108864);
+      QRoute.startUri((URIRequest)localObject, null);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Alzr = null;
+    this.s = null;
     try
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      BaseApplicationImpl.getApplication().unregisterReceiver(this.t);
       return;
     }
     catch (Exception localException) {}
@@ -261,19 +257,12 @@ public class BusinessBrowser$BusinessBrowserFragment
   public void onResume()
   {
     super.onResume();
-    u_();
-  }
-  
-  void u_()
-  {
-    Intent localIntent = new Intent("action_follow_status");
-    localIntent.putExtra("puin", this.jdField_a_of_type_JavaLangString);
-    super.getActivity().sendBroadcast(localIntent);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

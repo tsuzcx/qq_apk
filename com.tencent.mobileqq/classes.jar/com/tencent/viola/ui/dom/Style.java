@@ -48,12 +48,16 @@ public class Style
     while (localIterator.hasNext()) {
       try
       {
-        String str = (String)localIterator.next();
-        put(str, paramJSONObject.get(str));
+        String str1 = (String)localIterator.next();
+        put(str1, paramJSONObject.get(str1));
       }
       catch (JSONException localJSONException)
       {
-        ViolaLogUtils.e(TAG, "Style JSONException e:" + localJSONException.getMessage());
+        String str2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Style JSONException e:");
+        localStringBuilder.append(localJSONException.getMessage());
+        ViolaLogUtils.e(str2, localStringBuilder.toString());
       }
     }
   }
@@ -193,78 +197,79 @@ public class Style
   
   public String getFontFamily()
   {
-    String str = null;
     Object localObject = get("fontFamily");
     if (localObject != null) {
-      str = localObject.toString();
+      return localObject.toString();
     }
-    return str;
+    return null;
   }
   
   public int getFontSize(int paramInt)
   {
     Object localObject = get("fontSize");
-    if (localObject == null) {
-      return (int)FlexConvertUtils.converPxByViewportToRealPx("12dp", paramInt);
+    if (localObject == null) {}
+    for (float f = FlexConvertUtils.converPxByViewportToRealPx("12dp", paramInt);; f = FlexConvertUtils.converPxByViewportToRealPx(localObject, paramInt)) {
+      return (int)f;
     }
-    return (int)FlexConvertUtils.converPxByViewportToRealPx(localObject, paramInt);
   }
   
   public int getFontStyle()
   {
     Object localObject = get("fontStyle");
-    if (localObject == null) {}
-    while (!localObject.toString().equals("italic")) {
+    int i = 0;
+    if (localObject == null) {
       return 0;
     }
-    return 2;
+    if (localObject.toString().equals("italic")) {
+      i = 2;
+    }
+    return i;
   }
   
   public int getFontWeight()
   {
-    int j = 1;
     Object localObject = get("fontWeight");
-    int i;
+    int i = 0;
     if (localObject != null)
     {
       localObject = localObject.toString();
       i = -1;
       switch (((String)localObject).hashCode())
       {
-      }
-    }
-    for (;;)
-    {
-      switch (i)
-      {
       default: 
-        j = 0;
-      }
-      return j;
-      if (((String)localObject).equals("600"))
-      {
-        i = 0;
-        continue;
-        if (((String)localObject).equals("700"))
-        {
-          i = 1;
-          continue;
-          if (((String)localObject).equals("800"))
-          {
-            i = 2;
-            continue;
-            if (((String)localObject).equals("900"))
-            {
-              i = 3;
-              continue;
-              if (((String)localObject).equals("bold")) {
-                i = 4;
-              }
-            }
-          }
+        break;
+      case 3029637: 
+        if (((String)localObject).equals("bold")) {
+          i = 4;
         }
+        break;
+      case 56313: 
+        if (((String)localObject).equals("900")) {
+          i = 3;
+        }
+        break;
+      case 55352: 
+        if (((String)localObject).equals("800")) {
+          i = 2;
+        }
+        break;
+      case 54391: 
+        if (((String)localObject).equals("700")) {
+          i = 1;
+        }
+        break;
+      case 53430: 
+        if (((String)localObject).equals("600")) {
+          i = 0;
+        }
+        break;
       }
+      if ((i != 0) && (i != 1) && (i != 2) && (i != 3) && (i != 4)) {
+        return 0;
+      }
+      i = 1;
     }
+    return i;
   }
   
   public float getHeight(int paramInt)
@@ -425,7 +430,7 @@ public class Style
       return Layout.Alignment.ALIGN_CENTER;
     }
     if (TextUtils.equals("right", str)) {
-      return Layout.Alignment.ALIGN_OPPOSITE;
+      localAlignment = Layout.Alignment.ALIGN_OPPOSITE;
     }
     return localAlignment;
   }
@@ -448,39 +453,40 @@ public class Style
     }
     localObject = localObject.toString();
     int i = -1;
-    switch (((String)localObject).hashCode())
+    int j = ((String)localObject).hashCode();
+    if (j != -1171789332)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (j != -1026963764)
       {
-      default: 
-        return TextDecoration.INVALID;
-        if (((String)localObject).equals("underline"))
+        if (j != 0)
         {
-          i = 0;
-          continue;
-          if (((String)localObject).equals("line-through"))
-          {
-            i = 1;
-            continue;
-            if (((String)localObject).equals("none"))
-            {
-              i = 2;
-              continue;
-              if (((String)localObject).equals("")) {
-                i = 3;
-              }
-            }
+          if ((j == 3387192) && (((String)localObject).equals("none"))) {
+            i = 2;
           }
         }
-        break;
+        else if (((String)localObject).equals("")) {
+          i = 3;
+        }
+      }
+      else if (((String)localObject).equals("underline")) {
+        i = 0;
       }
     }
+    else if (((String)localObject).equals("line-through")) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if ((i != 2) && (i != 3)) {
+          return TextDecoration.INVALID;
+        }
+        return TextDecoration.NONE;
+      }
+      return TextDecoration.LINETHROUGH;
+    }
     return TextDecoration.UNDERLINE;
-    return TextDecoration.LINETHROUGH;
-    return TextDecoration.NONE;
   }
   
   public TextUtils.TruncateAt getTextOverflow()
@@ -502,7 +508,7 @@ public class Style
       return Paint.Align.CENTER;
     }
     if (TextUtils.equals("right", str)) {
-      return Paint.Align.RIGHT;
+      localAlign = Paint.Align.RIGHT;
     }
     return localAlign;
   }
@@ -561,7 +567,7 @@ public class Style
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.Style
  * JD-Core Version:    0.7.0.1
  */

@@ -83,28 +83,30 @@ class ThreadPool$Worker<T>
     //   76: astore_1
     //   77: aload_0
     //   78: monitorexit
-    //   79: aload_1
-    //   80: athrow
-    //   81: astore_2
-    //   82: goto -16 -> 66
+    //   79: goto +5 -> 84
+    //   82: aload_1
+    //   83: athrow
+    //   84: goto -2 -> 82
+    //   87: astore_2
+    //   88: goto -22 -> 66
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	85	0	this	Worker
-    //   0	85	1	paramResourceCounter	ThreadPool.ResourceCounter
+    //   0	91	0	this	Worker
+    //   0	91	1	paramResourceCounter	ThreadPool.ResourceCounter
     //   71	4	2	localObject	Object
-    //   81	1	2	localInterruptedException	java.lang.InterruptedException
+    //   87	1	2	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   2	16	57	finally
-    //   18	25	57	finally
+    //   48	55	57	finally
     //   58	60	57	finally
     //   27	46	71	finally
     //   62	66	71	finally
     //   66	68	71	finally
     //   72	74	71	finally
-    //   48	55	76	finally
+    //   2	16	76	finally
+    //   18	25	76	finally
     //   77	79	76	finally
-    //   62	66	81	java/lang/InterruptedException
+    //   62	66	87	java/lang/InterruptedException
   }
   
   private ThreadPool.ResourceCounter modeToCounter(int paramInt)
@@ -129,67 +131,27 @@ class ThreadPool$Worker<T>
     finally {}
   }
   
-  /* Error */
   public void cancel()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 57	com/tencent/component/network/utils/thread/ThreadPool$Worker:mIsCancelled	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: iconst_1
-    //   16: putfield 57	com/tencent/component/network/utils/thread/ThreadPool$Worker:mIsCancelled	Z
-    //   19: aload_0
-    //   20: getfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
-    //   23: ifnull +19 -> 42
-    //   26: aload_0
-    //   27: getfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
-    //   30: astore_2
-    //   31: aload_2
-    //   32: monitorenter
-    //   33: aload_0
-    //   34: getfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
-    //   37: invokevirtual 82	java/lang/Object:notifyAll	()V
-    //   40: aload_2
-    //   41: monitorexit
-    //   42: aload_0
-    //   43: getfield 85	com/tencent/component/network/utils/thread/ThreadPool$Worker:mCancelListener	Lcom/tencent/component/network/utils/thread/ThreadPool$CancelListener;
-    //   46: ifnull -35 -> 11
-    //   49: aload_0
-    //   50: getfield 85	com/tencent/component/network/utils/thread/ThreadPool$Worker:mCancelListener	Lcom/tencent/component/network/utils/thread/ThreadPool$CancelListener;
-    //   53: invokeinterface 90 1 0
-    //   58: goto -47 -> 11
-    //   61: astore_2
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_2
-    //   65: athrow
-    //   66: astore_3
-    //   67: aload_2
-    //   68: monitorexit
-    //   69: aload_3
-    //   70: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	this	Worker
-    //   6	2	1	bool	boolean
-    //   61	7	2	localObject1	Object
-    //   66	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	61	finally
-    //   14	33	61	finally
-    //   42	58	61	finally
-    //   69	71	61	finally
-    //   33	42	66	finally
-    //   67	69	66	finally
+    try
+    {
+      boolean bool = this.mIsCancelled;
+      if (bool) {
+        return;
+      }
+      this.mIsCancelled = true;
+      if (this.mWaitOnResource != null) {
+        synchronized (this.mWaitOnResource)
+        {
+          this.mWaitOnResource.notifyAll();
+        }
+      }
+      if (this.mCancelListener != null) {
+        this.mCancelListener.onCancel();
+      }
+      return;
+    }
+    finally {}
   }
   
   public int compareTo(Worker paramWorker)
@@ -216,11 +178,14 @@ class ThreadPool$Worker<T>
           QDLog.w("Worker", "ignore exception", localException);
         }
       }
-      localObject2 = this.mResult;
+      Object localObject1 = this.mResult;
+      return localObject1;
     }
     finally {}
-    Object localObject2;
-    return localObject2;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public boolean isCancelled()
@@ -244,44 +209,45 @@ class ThreadPool$Worker<T>
   
   public void run()
   {
-    if (this.mListener != null) {
-      this.mListener.onFutureBegin(this);
+    Object localObject1 = this.mListener;
+    if (localObject1 != null) {
+      ((FutureListener)localObject1).onFutureBegin(this);
     }
     Object localObject4 = null;
-    Object localObject1 = localObject4;
-    if (setMode(1)) {}
-    try
-    {
-      localObject1 = this.mJob.run(this);
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
+    localObject1 = localObject4;
+    Object localObject2;
+    if (setMode(1)) {
+      try
       {
-        try
-        {
-          setMode(0);
-          this.mResult = localObject1;
-          this.mIsDone = true;
-          notifyAll();
-        }
-        finally {}
-        try
-        {
-          if (this.mListener != null) {
-            this.mListener.onFutureDone(this);
-          }
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          QDLog.w("Worker", "Exception in onFutureDone.", localThrowable2);
-        }
-        localThrowable1 = localThrowable1;
+        localObject1 = this.mJob.run(this);
+      }
+      catch (Throwable localThrowable1)
+      {
         QDLog.w("Worker", "Exception in running a job", localThrowable1);
-        Object localObject2 = localObject4;
+        localObject2 = localObject4;
       }
     }
+    try
+    {
+      setMode(0);
+      this.mResult = localObject2;
+      this.mIsDone = true;
+      notifyAll();
+      try
+      {
+        if (this.mListener != null)
+        {
+          this.mListener.onFutureDone(this);
+          return;
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        QDLog.w("Worker", "Exception in onFutureDone.", localThrowable2);
+      }
+      return;
+    }
+    finally {}
   }
   
   public void setCancelListener(ThreadPool.CancelListener paramCancelListener)
@@ -326,7 +292,7 @@ class ThreadPool$Worker<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.ThreadPool.Worker
  * JD-Core Version:    0.7.0.1
  */

@@ -21,25 +21,30 @@ final class TrimmingAudioProcessor
   
   public boolean configure(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt3 != 2) {
-      throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
-    }
-    this.channelCount = paramInt2;
-    this.sampleRateHz = paramInt1;
-    this.endBuffer = new byte[this.trimEndSamples * paramInt2 * 2];
-    this.endBufferSize = 0;
-    this.pendingTrimStartBytes = (this.trimStartSamples * paramInt2 * 2);
-    boolean bool2 = this.isActive;
-    if ((this.trimStartSamples != 0) || (this.trimEndSamples != 0)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    if (paramInt3 == 2)
     {
-      this.isActive = bool1;
-      if (bool2 == this.isActive) {
-        break;
+      this.channelCount = paramInt2;
+      this.sampleRateHz = paramInt1;
+      paramInt1 = this.trimEndSamples;
+      this.endBuffer = new byte[paramInt1 * paramInt2 * 2];
+      boolean bool2 = false;
+      this.endBufferSize = 0;
+      paramInt3 = this.trimStartSamples;
+      this.pendingTrimStartBytes = (paramInt2 * paramInt3 * 2);
+      boolean bool3 = this.isActive;
+      if ((paramInt3 == 0) && (paramInt1 == 0)) {
+        bool1 = false;
+      } else {
+        bool1 = true;
       }
-      return true;
+      this.isActive = bool1;
+      boolean bool1 = bool2;
+      if (bool3 != this.isActive) {
+        bool1 = true;
+      }
+      return bool1;
     }
-    return false;
+    throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
   }
   
   public void flush()
@@ -102,25 +107,23 @@ final class TrimmingAudioProcessor
     m = this.endBufferSize + k - this.endBuffer.length;
     if (this.buffer.capacity() < m) {
       this.buffer = ByteBuffer.allocateDirect(m).order(ByteOrder.nativeOrder());
-    }
-    for (;;)
-    {
-      j = Util.constrainValue(m, 0, this.endBufferSize);
-      this.buffer.put(this.endBuffer, 0, j);
-      m = Util.constrainValue(m - j, 0, k);
-      paramByteBuffer.limit(paramByteBuffer.position() + m);
-      this.buffer.put(paramByteBuffer);
-      paramByteBuffer.limit(i);
-      i = k - m;
-      this.endBufferSize -= j;
-      System.arraycopy(this.endBuffer, j, this.endBuffer, 0, this.endBufferSize);
-      paramByteBuffer.get(this.endBuffer, this.endBufferSize, i);
-      this.endBufferSize = (i + this.endBufferSize);
-      this.buffer.flip();
-      this.outputBuffer = this.buffer;
-      return;
+    } else {
       this.buffer.clear();
     }
+    j = Util.constrainValue(m, 0, this.endBufferSize);
+    this.buffer.put(this.endBuffer, 0, j);
+    m = Util.constrainValue(m - j, 0, k);
+    paramByteBuffer.limit(paramByteBuffer.position() + m);
+    this.buffer.put(paramByteBuffer);
+    paramByteBuffer.limit(i);
+    i = k - m;
+    this.endBufferSize -= j;
+    byte[] arrayOfByte = this.endBuffer;
+    System.arraycopy(arrayOfByte, j, arrayOfByte, 0, this.endBufferSize);
+    paramByteBuffer.get(this.endBuffer, this.endBufferSize, i);
+    this.endBufferSize += i;
+    this.buffer.flip();
+    this.outputBuffer = this.buffer;
   }
   
   public void reset()
@@ -140,7 +143,7 @@ final class TrimmingAudioProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.TrimmingAudioProcessor
  * JD-Core Version:    0.7.0.1
  */

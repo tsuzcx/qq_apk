@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- <html data-theme="dark"> -->
+<html>
+<head>
+    <script type="text/javascript">
+        var points = [];
+        points[0] = new Date().getTime();
+        var oldPoint = [];
+        oldPoint[0] = new Date().getTime();
+    </script>
+    <meta charset="UTF-8">
+    <title>搜一搜</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1642083324554"/>
+    <link rel="preconnect" href="https://wxa.weixin.qq.com" crossorigin/>
+</head>
+
+<body id="body" ontouchstart="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; width: 0; height: 0" id="__SVG_SPRITE_NODE__" aria-hidden="true"></svg>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <div id="app" class="app" :class="[view,platform,isIOS8]" ontouchstart="">
+        <!-- 加载页面 -->
+        <loading-page v-show="loading" :text="loadingText"></loading-page>
+
+        <custom-dialog></custom-dialog>
+        <toast></toast>
+        <cstest-pop></cstest-pop>
+        
+        <!--进度条，只有在结果页的时候才展示-->
+        <progress-bar v-show="view == 'result'"></progress-bar>
+        <!--end of 进度条-->
+
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
+    <script type="text/javascript">
+        points[1] = Date.now()
+    </script>
+    <script src="dist/build.js?t=1642083324554"></script>
+    <script type="text/javascript">
+        points[3] = Date.now()
+    </script>
+</body>
+</html>

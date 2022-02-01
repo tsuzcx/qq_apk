@@ -31,7 +31,7 @@ class Cache$2
     //   14: aload_0
     //   15: getfield 38	okhttp3/Cache$2:delegate	Ljava/util/Iterator;
     //   18: invokeinterface 49 1 0
-    //   23: ifeq +54 -> 77
+    //   23: ifeq +53 -> 76
     //   26: aload_0
     //   27: getfield 38	okhttp3/Cache$2:delegate	Ljava/util/Iterator;
     //   30: invokeinterface 53 1 0
@@ -51,48 +51,52 @@ class Cache$2
     //   62: astore_2
     //   63: aload_1
     //   64: invokevirtual 74	okhttp3/internal/cache/DiskLruCache$Snapshot:close	()V
-    //   67: goto -53 -> 14
-    //   70: astore_2
-    //   71: aload_1
-    //   72: invokevirtual 74	okhttp3/internal/cache/DiskLruCache$Snapshot:close	()V
-    //   75: aload_2
-    //   76: athrow
-    //   77: iconst_0
-    //   78: ireturn
+    //   67: aload_2
+    //   68: athrow
+    //   69: aload_1
+    //   70: invokevirtual 74	okhttp3/internal/cache/DiskLruCache$Snapshot:close	()V
+    //   73: goto -59 -> 14
+    //   76: iconst_0
+    //   77: ireturn
+    //   78: astore_2
+    //   79: goto -10 -> 69
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	79	0	this	2
-    //   38	34	1	localSnapshot	DiskLruCache.Snapshot
-    //   62	1	2	localIOException	java.io.IOException
-    //   70	6	2	localObject	Object
+    //   0	82	0	this	2
+    //   38	32	1	localSnapshot	DiskLruCache.Snapshot
+    //   62	6	2	localObject	Object
+    //   78	1	2	localIOException	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   39	56	62	java/io/IOException
-    //   39	56	70	finally
+    //   39	56	62	finally
+    //   39	56	78	java/io/IOException
   }
   
   public String next()
   {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
+    if (hasNext())
+    {
+      String str = this.nextUrl;
+      this.nextUrl = null;
+      this.canRemove = true;
+      return str;
     }
-    String str = this.nextUrl;
-    this.nextUrl = null;
-    this.canRemove = true;
-    return str;
+    throw new NoSuchElementException();
   }
   
   public void remove()
   {
-    if (!this.canRemove) {
-      throw new IllegalStateException("remove() before next()");
+    if (this.canRemove)
+    {
+      this.delegate.remove();
+      return;
     }
-    this.delegate.remove();
+    throw new IllegalStateException("remove() before next()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Cache.2
  * JD-Core Version:    0.7.0.1
  */

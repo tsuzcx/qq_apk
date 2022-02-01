@@ -1,191 +1,166 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bv;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.pluginsdk.b.a;
-import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.preference.CheckBoxPreference;
+import com.tencent.mm.plugin.sns.c.b;
+import com.tencent.mm.plugin.sns.c.k;
+import com.tencent.mm.plugin.sns.c.k.a;
+import com.tencent.mm.plugin.sns.c.q;
+import com.tencent.mm.pluginsdk.c.a;
+import com.tencent.mm.pluginsdk.model.v;
+import com.tencent.mm.sdk.platformtools.DoNotCheckLeakForActivities;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.f;
+import junit.framework.Assert;
 
+@DoNotCheckLeakForActivities({ContactInfoUI.class})
 public final class m
-  implements a, n.b
+  implements h, k.a, a
 {
-  private ad contact;
-  Context context;
-  private boolean enable;
-  private f screen;
+  public final void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, b paramb, boolean paramBoolean2) {}
   
-  public m(Context paramContext)
+  public final void a(String paramString, boolean paramBoolean, int paramInt, b paramb)
   {
-    this.context = paramContext;
+    AppMethodBeat.i(27203);
+    AppMethodBeat.o(27203);
+    throw null;
   }
   
-  private void bkc()
+  public final boolean a(f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(23600);
-    this.enable = r.ZJ();
-    Object localObject = (HelperHeaderPreference)this.screen.atx("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).aB(this.contact.field_username, this.contact.Of(), this.context.getString(2131298714));
-    int i;
-    if (this.enable)
+    boolean bool = true;
+    AppMethodBeat.i(27193);
+    if (paramau != null)
     {
-      i = 1;
-      ((HelperHeaderPreference)localObject).sb(i);
-      localObject = this.screen;
-      if (this.enable) {
-        break label176;
+      paramBoolean = true;
+      Assert.assertTrue(paramBoolean);
+      if (Util.nullAsNil(paramau.field_username).length() <= 0) {
+        break label62;
       }
-      bool1 = true;
-      label89:
-      ((f)localObject).cl("contact_info_go_to_sync", bool1);
-      localObject = this.screen;
-      if (this.enable) {
-        break label181;
-      }
-      bool1 = true;
-      label114:
-      ((f)localObject).cl("contact_info_remind_me_syncing_tip", bool1);
-      this.screen.cl("contact_info_qqsync_install", this.enable);
-      localObject = this.screen;
-      if (this.enable) {
-        break label186;
+      paramBoolean = true;
+      label34:
+      Assert.assertTrue(paramBoolean);
+      if (paramf == null) {
+        break label67;
       }
     }
-    label176:
-    label181:
-    label186:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label62:
+    label67:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      ((f)localObject).cl("contact_info_qqsync_uninstall", bool1);
-      AppMethodBeat.o(23600);
-      return;
-      i = 0;
+      Assert.assertTrue(paramBoolean);
+      AppMethodBeat.o(27193);
+      throw null;
+      paramBoolean = false;
       break;
-      bool1 = false;
-      break label89;
-      bool1 = false;
-      break label114;
+      paramBoolean = false;
+      break label34;
     }
   }
   
-  public final boolean Ke(String paramString)
+  public final boolean anl(String paramString)
   {
-    AppMethodBeat.i(23595);
-    if (bo.nullAsNil(paramString).length() <= 0)
+    AppMethodBeat.i(27190);
+    if (paramString.equals("contact_info_sns"))
     {
-      AppMethodBeat.o(23595);
-      return false;
-    }
-    if ("contact_info_go_to_sync".equals(paramString))
-    {
-      if (p.u(this.context, "com.tencent.qqpim"))
+      bh.bCz();
+      if (!c.isSDCardAvailable())
       {
-        paramString = this.context.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-        paramString.addFlags(268435456);
-        this.context.startActivity(paramString);
+        AppMethodBeat.o(27190);
+        throw null;
       }
-      for (;;)
-      {
-        AppMethodBeat.o(23595);
-        return true;
-        h.a(this.context, 2131298712, 2131297087, 2131296907, 2131296888, new m.2(this), null);
-      }
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    if ("contact_info_remind_me_syncing".equals(paramString))
+    if (paramString.equals("contact_info_more"))
     {
-      paramString = (CheckBoxPreference)this.screen.atx("contact_info_remind_me_syncing");
-      aw.aaz();
-      c.Ru().set(65792, Boolean.valueOf(paramString.isChecked()));
-      if (paramString.isChecked()) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        bv.v(6, paramString);
-        AppMethodBeat.o(23595);
-        return true;
-      }
+      new Intent();
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    if (paramString.equals("contact_info_qqsync_install"))
+    if (paramString.equals("contact_info_social"))
     {
-      s(this.context, true);
-      AppMethodBeat.o(23595);
-      return true;
+      new Intent();
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    if (paramString.equals("contact_info_qqsync_uninstall"))
+    if (paramString.equals("contact_info_invite_source"))
     {
-      h.d(this.context, this.context.getString(2131303384), "", this.context.getString(2131296891), this.context.getString(2131296888), new m.1(this), null);
-      AppMethodBeat.o(23595);
-      return true;
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    AppMethodBeat.o(23595);
-    return false;
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(23599);
-    if (this.enable != r.ZJ()) {
-      bkc();
-    }
-    AppMethodBeat.o(23599);
-  }
-  
-  public final boolean a(f paramf, ad paramad, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(23597);
-    aw.aaz();
-    c.Ru().a(this);
-    this.screen = paramf;
-    this.contact = paramad;
-    paramf.addPreferencesFromResource(2131165219);
-    bkc();
-    AppMethodBeat.o(23597);
+    AppMethodBeat.o(27190);
     return true;
   }
   
-  public final boolean bkb()
+  public final void b(String paramString, boolean paramBoolean, int paramInt, b paramb) {}
+  
+  public final boolean dvq()
   {
-    AppMethodBeat.i(23598);
-    aw.aaz();
-    c.Ru().b(this);
-    AppMethodBeat.o(23598);
-    return true;
+    AppMethodBeat.i(27201);
+    if (q.Qkn != null) {
+      q.Qkn.a(this, 3);
+    }
+    bh.aZW().b(30, this);
+    bh.aZW().b(453, this);
+    AppMethodBeat.o(27201);
+    throw null;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  final void s(Context paramContext, boolean paramBoolean)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(23596);
-    if (paramBoolean) {}
-    for (String str = paramContext.getString(2131303380);; str = paramContext.getString(2131303388))
+    AppMethodBeat.i(27202);
+    if ((paramp.getType() != 30) && (paramp.getType() != 458))
     {
-      paramContext.getString(2131297087);
-      paramContext = h.b(paramContext, str, true, null);
-      aw.RO().ac(new m.3(this, paramBoolean, paramContext));
-      AppMethodBeat.o(23596);
+      Log.w("MicroMsg.ContactWidgetNormal", "not expected scene,  type = " + paramp.getType());
+      AppMethodBeat.o(27202);
       return;
     }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if (paramp.getType() == 30)
+      {
+        paramString = (v)paramp;
+        if ((paramString.hId != 1) && (paramString.hId != 3))
+        {
+          AppMethodBeat.o(27202);
+          return;
+        }
+        if (paramString.XRr != null)
+        {
+          AppMethodBeat.o(27202);
+          throw null;
+        }
+        AppMethodBeat.o(27202);
+        throw null;
+      }
+      if (paramp.getType() == 453)
+      {
+        AppMethodBeat.o(27202);
+        throw null;
+      }
+    }
+    else if ((paramInt1 == 4) && (paramInt2 == -24) && (!Util.isNullOrNil(paramString)))
+    {
+      AppMethodBeat.o(27202);
+      throw null;
+    }
+    AppMethodBeat.o(27202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.m
  * JD-Core Version:    0.7.0.1
  */

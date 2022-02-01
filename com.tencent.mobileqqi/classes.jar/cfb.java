@@ -1,22 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 public class cfb
-  extends GameCenterObserver
+  extends BroadcastReceiver
 {
   public cfb(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2))
+    if ("login".equals(paramIntent.getStringExtra("status")))
     {
-      VipBannerInfo.a(this.a.a());
-      if (Conversation.c(this.a)) {
-        VipBannerInfo.a(this.a);
-      }
+      this.a.a.a(7, 2);
+      this.a.a.e = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a(null);
+      return;
     }
+    this.a.a.b();
   }
 }
 

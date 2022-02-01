@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.mini.servlet;
 
+import NS_COMM.COMM.Entry;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.text.TextUtils;
-import bjdl;
-import bjdm;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class ProtoBufRequest
@@ -29,9 +34,11 @@ public abstract class ProtoBufRequest
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProtoBufRequest", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
-      }
+      label27:
+      break label27;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProtoBufRequest", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
     }
     return null;
   }
@@ -43,28 +50,38 @@ public abstract class ProtoBufRequest
   
   public byte[] encode(Intent paramIntent, int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("req traceId is null!");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+      localStQWebReq.Seq.set(paramInt);
+      localStQWebReq.qua.set(QUA.getQUA3());
+      localStQWebReq.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
+      localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
+      if (!TextUtils.isEmpty(paramString)) {
+        localStQWebReq.traceid.set(paramString);
+      }
+      if (paramIntent != null) {
+        paramIntent.putExtra("traceid", paramString);
+      }
+      if (StudyModeManager.h())
+      {
+        paramIntent = new COMM.Entry();
+        paramIntent.key.set("teenager");
+        paramIntent.value.set(String.valueOf(1));
+        paramString = new ArrayList();
+        paramString.add(paramIntent);
+        localStQWebReq.Extinfo.set(paramString);
+      }
+      return localStQWebReq.toByteArray();
     }
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    localStQWebReq.Seq.set(paramInt);
-    localStQWebReq.qua.set(bjdm.a());
-    localStQWebReq.deviceInfo.set(bjdl.a().c());
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
-    if (!TextUtils.isEmpty(paramString)) {
-      localStQWebReq.traceid.set(paramString);
-    }
-    if (paramIntent != null) {
-      paramIntent.putExtra("traceid", paramString);
-    }
-    return localStQWebReq.toByteArray();
+    throw new RuntimeException("req traceId is null!");
   }
   
   public abstract byte[] getBusiBuf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

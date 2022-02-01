@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/aj5" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/ljx" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zv">
+            <TextView android:textSize="@dimen/hq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/krf" />
+            <ImageView android:id="@id/av7" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/i9" />
+            <com.tenpay.bankcard.TenpaySegmentEditText android:textSize="@dimen/j7" android:id="@id/cas" android:layout_width="fill_parent" android:layout_height="@dimen/j1" android:layout_marginTop="@dimen/i6" android:ems="10" />
+            <Button android:id="@id/hfl" android:layout_width="fill_parent" android:layout_marginTop="@dimen/jc" android:text="@string/a12" style="@style/og" />
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+</LinearLayout>

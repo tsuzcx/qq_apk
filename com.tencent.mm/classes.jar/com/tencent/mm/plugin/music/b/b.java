@@ -1,55 +1,91 @@
 package com.tencent.mm.plugin.music.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.music.cache.c;
-import com.tencent.mm.plugin.music.cache.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.d;
+import com.tencent.mm.autogen.a.ab;
+import com.tencent.mm.autogen.a.ab.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  private static long bQx = 0L;
-  private static boolean oWC = false;
-  
-  public static boolean bTW()
+  public static boolean a(ab paramab)
   {
-    AppMethodBeat.i(137261);
-    long l = System.currentTimeMillis();
-    if (l - bQx < 120000L)
-    {
-      bool = oWC;
-      AppMethodBeat.o(137261);
-      return bool;
+    boolean bool = true;
+    AppMethodBeat.i(137010);
+    if (paramab.hzS.action != 6) {
+      Log.d("MicroMsg.Audio.AudioActionListener", "callback, action:%d", new Object[] { Integer.valueOf(paramab.hzS.action) });
     }
-    bQx = l;
-    if (e.bVi())
+    switch (paramab.hzS.action)
     {
-      bool = ((c)com.tencent.mm.plugin.music.f.c.b.am(c.class)).bVe();
-      oWC = bool;
-      ab.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudio:%b", new Object[] { Boolean.valueOf(oWC) });
-      if (!oWC) {
-        if (!e.bVi()) {
-          break label153;
-        }
-      }
     }
-    for (boolean bool = ((c)com.tencent.mm.plugin.music.f.c.b.am(c.class)).bVf();; bool = false)
+    for (;;)
     {
-      oWC = bool;
-      ab.i("MicroMsg.Audio.AudioMixSupport", "isSupportMixAudioByCP:%b", new Object[] { Boolean.valueOf(oWC) });
-      bool = oWC;
-      AppMethodBeat.o(137261);
+      AppMethodBeat.o(137010);
       return bool;
-      ab.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
-      bool = false;
-      break;
-      label153:
-      ab.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      Object localObject = i.glV().bo(paramab.hzS.appId, paramab.hzS.hqQ);
+      paramab.hzS.hqQ = ((String)localObject);
+      continue;
+      bool = i.glV().l(paramab.hzS.hzU);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().b(paramab.hzS.hqQ, paramab.hzS.hzU);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().aOb(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().Lo(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().aOc(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().Lp(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().gk(paramab.hzS.hqQ, paramab.hzS.currentTime);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().aOd(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().Lq(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().jw(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().aOe(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
+      continue;
+      localObject = i.glV().aOf(paramab.hzS.hqQ);
+      paramab.hzT.hzW = ((d)localObject);
+      continue;
+      int i = i.glV().aOg(paramab.hzS.appId);
+      paramab.hzT.count = i;
+      continue;
+      i.glV().aOi(paramab.hzS.appId);
+      continue;
+      i.glV().aOj(paramab.hzS.appId);
+      continue;
+      i.glV().aOq(paramab.hzS.processName);
+      continue;
+      localObject = i.glV().Lr(paramab.hzS.hqQ);
+      paramab.hzS.hzU = ((com.tencent.mm.al.b)localObject);
+      continue;
+      bool = i.glV().m(paramab.hzS.hzU);
+      paramab.hzT.result = bool;
+      continue;
+      bool = i.glV().a(paramab.hzS.hzV);
+      paramab.hzT.result = bool;
+      continue;
+      paramab.hzT.hzV = i.glV().hzV;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.b
  * JD-Core Version:    0.7.0.1
  */

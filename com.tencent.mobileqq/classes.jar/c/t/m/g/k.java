@@ -28,57 +28,57 @@ public abstract class k
   
   public ao a()
   {
-    for (;;)
+    try
     {
-      try
+      this.g = x.a.a("app_http_proxy_timeout", 0, 20000, 5000);
+      if (this.f <= 0) {
+        this.f = x.a.a("app_req_timeout", 1000, 1000000, 15000);
+      }
+      if ((this.a.j > 0) && (this.a.j < this.f)) {
+        this.f = this.a.j;
+      }
+      int j = this.f;
+      ao localao;
+      for (;;)
       {
-        this.g = x.a.a("app_http_proxy_timeout", 0, 20000, 5000);
-        if (this.f <= 0) {
-          this.f = x.a.a("app_req_timeout", 1000, 1000000, 15000);
-        }
-        if ((this.a.j > 0) && (this.a.j < this.f)) {
-          this.f = this.a.j;
-        }
-        int j = this.f;
-        ao localao = a(j);
+        localao = a(j);
         j = cn.a((int)(this.f - (SystemClock.elapsedRealtime() - this.h)), this.f);
-        String str;
-        if ((localao.a == 0) && (localao.c >= 300) && (localao.c < 400) && (this.a.d) && (j > 200))
-        {
-          str = localao.a("location");
-          if (TextUtils.isEmpty(str)) {
-            localao.a = -6;
-          }
+        if ((localao.a != 0) || (localao.c < 300) || (localao.c >= 400) || (!this.a.d) || (j <= 200)) {
+          break;
         }
-        else
+        String str = localao.a("location");
+        if (TextUtils.isEmpty(str))
         {
-          boolean bool = this.a.i;
-          if (!this.a.m) {
-            break label296;
-          }
-          this.e.j = true;
-          this.e.i = true;
-          this.e.k = this.a.j;
-          this.e.a(false);
-          return localao;
+          localao.a = -6;
+          break;
         }
         this.c = str;
         this.i += 1;
         if (this.i > 5)
         {
           localao.a = -5;
-          continue;
+          break;
         }
         this.e.a(true);
       }
-      catch (Throwable localThrowable)
+      boolean bool = this.a.i;
+      if (this.a.m)
       {
-        localThrowable.printStackTrace();
-        return new ao(-1, cn.a(localThrowable));
+        this.e.j = true;
+        this.e.i = true;
+        this.e.k = this.a.j;
       }
-      continue;
-      label296:
-      this.e.k = (SystemClock.elapsedRealtime() - this.h);
+      else
+      {
+        this.e.k = (SystemClock.elapsedRealtime() - this.h);
+      }
+      this.e.a(false);
+      return localao;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      return new ao(-1, cn.a(localThrowable));
     }
   }
   
@@ -86,7 +86,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.k
  * JD-Core Version:    0.7.0.1
  */

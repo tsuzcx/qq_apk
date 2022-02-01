@@ -1,20 +1,17 @@
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class cso
   implements Runnable
 {
-  public cso(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
+  public cso(Leba paramLeba) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a().createEntityManager();
-    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
-    localEntityManager.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.leba", 2, "init leba list when init UI in refreshAllListInUI()");
+    }
+    Leba.c(this.a);
   }
 }
 

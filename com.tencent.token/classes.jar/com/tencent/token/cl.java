@@ -1,113 +1,287 @@
 package com.tencent.token;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.Activity;
+import android.app.SharedElementCallback;
+import android.app.SharedElementCallback.OnSharedElementsReadyListener;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.NotificationCompat.Builder;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.h;
-import com.tencent.token.ui.BaseActivity;
-import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.w;
-import gameloginsdk.CallbackAppidTypeStruct;
-import gameloginsdk.CallbackGameConfirmStruct;
-import gameloginsdk.CallbackPushStruct;
-import gameloginsdk.GameLoginConst;
-import gameloginsdk.IGameLoginCallback;
+import android.os.Looper;
+import android.os.Parcelable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import java.util.List;
+import java.util.Map;
 
-class cl
-  implements IGameLoginCallback
+public final class cl
+  extends dj
 {
-  cl(cj paramcj) {}
+  private static b a;
   
-  public void onPush(int paramInt, Object paramObject)
+  public static b a()
   {
-    h.d("game login push rsp callback: info=" + paramInt + ", obj=" + paramObject);
-    w.j();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
-    paramObject = (CallbackPushStruct)paramObject;
-    h.c(paramObject.toString() + ", foreground=" + BaseActivity.getIsAppForeground());
-    cj.a(this.a, paramObject);
-    cj.a(this.a, cx.c().s());
-    if (BaseActivity.getIsAppForeground())
-    {
-      this.a.b.sendEmptyMessage(0);
-      return;
-    }
-    IndexActivity.s_ShowGameLoginPushInfo = true;
-    paramObject = "QQ" + w.a(cj.a(this.a).uin) + RqdApplication.l().getResources().getString(2131231083);
-    Object localObject = new Intent(RqdApplication.l(), IndexActivity.class);
-    ((Intent)localObject).putExtra("index_from", 24);
-    localObject = PendingIntent.getActivity(RqdApplication.l(), 0, (Intent)localObject, 134217728);
-    Context localContext = RqdApplication.l();
-    RqdApplication.l();
-    ((NotificationManager)localContext.getSystemService("notification")).notify(3, new NotificationCompat.Builder(RqdApplication.l()).setDefaults(1).setAutoCancel(true).setContentTitle(RqdApplication.l().getResources().getString(2131230844)).setSmallIcon(2130837767).setContentIntent((PendingIntent)localObject).addAction(2130837767, RqdApplication.l().getResources().getString(2131230844), (PendingIntent)localObject).setContentText(paramObject).build());
+    return a;
   }
   
-  public void onRespCallback(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
+  public static void a(Activity paramActivity)
   {
-    h.d("game login rsp callback: ret=" + paramInt1 + ", respno=" + paramInt2 + ", info=" + paramInt3 + ", obj=" + paramObject);
-    switch (paramInt3)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (CallbackAppidTypeStruct)paramObject;
-        if (paramInt1 != 0)
-        {
-          switch (GameLoginConst.filterNormalCode(paramInt1))
-          {
-          }
-          w.j();
-        }
-        h.a("game login getflowtype: appidtype=" + paramObject.appidType);
-        cj.a(this.a, true);
-        if (paramObject.appidType == 1)
-        {
-          cj.b(this.a, true);
-          return;
-        }
-        cj.b(this.a, false);
-        return;
-      } while (paramInt1 == 0);
-      switch (GameLoginConst.filterNormalCode(paramInt1))
-      {
-      }
-      w.j();
+      paramActivity.finishAffinity();
       return;
-      paramObject = (CallbackGameConfirmStruct)paramObject;
-      h.b("game login confirm:" + paramObject);
-      paramInt2 = paramInt1;
-      if (paramInt1 != 0)
+    }
+    paramActivity.finish();
+  }
+  
+  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramActivity.startActivityForResult(paramIntent, paramInt, paramBundle);
+      return;
+    }
+    paramActivity.startActivityForResult(paramIntent, paramInt);
+  }
+  
+  public static void a(Activity paramActivity, IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      return;
+    }
+    paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public static void a(Activity paramActivity, dg paramdg)
+  {
+    int i = Build.VERSION.SDK_INT;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (i >= 23)
+    {
+      if (paramdg != null) {
+        localObject1 = new e(paramdg);
+      }
+      paramActivity.setEnterSharedElementCallback((SharedElementCallback)localObject1);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject1 = localObject2;
+      if (paramdg != null) {
+        localObject1 = new d(paramdg);
+      }
+      paramActivity.setEnterSharedElementCallback((SharedElementCallback)localObject1);
+    }
+  }
+  
+  public static void a(final Activity paramActivity, String[] paramArrayOfString, final int paramInt)
+  {
+    b localb = a;
+    if ((localb != null) && (localb.a())) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if ((paramActivity instanceof c)) {
+        ((c)paramActivity).validateRequestPermissionsRequestCode(paramInt);
+      }
+      paramActivity.requestPermissions(paramArrayOfString, paramInt);
+      return;
+    }
+    if ((paramActivity instanceof a)) {
+      new Handler(Looper.getMainLooper()).post(new Runnable()
       {
-        paramInt1 = GameLoginConst.filterNormalCode(paramInt1);
-        h.b("game login confirm: code=" + paramInt1);
-        paramInt2 = paramInt1;
-        switch (paramInt1)
+        public final void run()
         {
-        default: 
-          paramInt2 = paramInt1;
+          int[] arrayOfInt = new int[this.a.length];
+          PackageManager localPackageManager = paramActivity.getPackageManager();
+          String str = paramActivity.getPackageName();
+          int j = this.a.length;
+          int i = 0;
+          while (i < j)
+          {
+            arrayOfInt[i] = localPackageManager.checkPermission(this.a[i], str);
+            i += 1;
+          }
+          ((cl.a)paramActivity).onRequestPermissionsResult(paramInt, this.a, arrayOfInt);
+        }
+      });
+    }
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramActivity.finishAfterTransition();
+      return;
+    }
+    paramActivity.finish();
+  }
+  
+  public static void b(Activity paramActivity, dg paramdg)
+  {
+    int i = Build.VERSION.SDK_INT;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (i >= 23)
+    {
+      if (paramdg != null) {
+        localObject1 = new e(paramdg);
+      }
+      paramActivity.setExitSharedElementCallback((SharedElementCallback)localObject1);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject1 = localObject2;
+      if (paramdg != null) {
+        localObject1 = new d(paramdg);
+      }
+      paramActivity.setExitSharedElementCallback((SharedElementCallback)localObject1);
+    }
+  }
+  
+  public static void c(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramActivity.postponeEnterTransition();
+    }
+  }
+  
+  public static void d(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramActivity.startPostponedEnterTransition();
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract boolean a();
+    
+    public abstract boolean b();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void validateRequestPermissionsRequestCode(int paramInt);
+  }
+  
+  static class d
+    extends SharedElementCallback
+  {
+    protected dg a;
+    
+    d(dg paramdg)
+    {
+      this.a = paramdg;
+    }
+    
+    public Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
+    {
+      dg localdg = this.a;
+      if ((paramView instanceof ImageView))
+      {
+        localObject1 = (ImageView)paramView;
+        localObject2 = ((ImageView)localObject1).getDrawable();
+        Drawable localDrawable = ((ImageView)localObject1).getBackground();
+        if ((localObject2 != null) && (localDrawable == null))
+        {
+          localObject2 = dg.a((Drawable)localObject2);
+          if (localObject2 != null)
+          {
+            paramView = new Bundle();
+            paramView.putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject2);
+            paramView.putString("sharedElement:snapshot:imageScaleType", ((ImageView)localObject1).getScaleType().toString());
+            if (((ImageView)localObject1).getScaleType() == ImageView.ScaleType.MATRIX)
+            {
+              paramMatrix = ((ImageView)localObject1).getImageMatrix();
+              paramRectF = new float[9];
+              paramMatrix.getValues(paramRectF);
+              paramView.putFloatArray("sharedElement:snapshot:imageMatrix", paramRectF);
+            }
+            return paramView;
+          }
         }
       }
-    } while ((cj.a(this.a) == null) || (cj.b(this.a) == null));
-    Message localMessage = cj.b(this.a).obtainMessage(3040);
-    localMessage.arg1 = cj.c(this.a);
-    localMessage.arg2 = paramInt2;
-    localMessage.obj = paramObject;
-    cj.b(this.a).sendMessage(localMessage);
+      int j = Math.round(paramRectF.width());
+      int i = Math.round(paramRectF.height());
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (j > 0)
+      {
+        localObject1 = localObject2;
+        if (i > 0)
+        {
+          float f = Math.min(1.0F, dg.b / (j * i));
+          j = (int)(j * f);
+          i = (int)(i * f);
+          if (localdg.a == null) {
+            localdg.a = new Matrix();
+          }
+          localdg.a.set(paramMatrix);
+          localdg.a.postTranslate(-paramRectF.left, -paramRectF.top);
+          localdg.a.postScale(f, f);
+          localObject1 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
+          paramMatrix = new Canvas((Bitmap)localObject1);
+          paramMatrix.concat(localdg.a);
+          paramView.draw(paramMatrix);
+        }
+      }
+      return localObject1;
+    }
+    
+    public View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
+    {
+      return dg.a(paramContext, paramParcelable);
+    }
+    
+    public void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}
+    
+    public void onRejectSharedElements(List<View> paramList) {}
+    
+    public void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
+    
+    public void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
+  }
+  
+  static final class e
+    extends cl.d
+  {
+    e(dg paramdg)
+    {
+      super();
+    }
+    
+    public final void onSharedElementsArrived(List<String> paramList, List<View> paramList1, final SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
+    {
+      dg.a(new dg.a()
+      {
+        public final void a()
+        {
+          paramOnSharedElementsReadyListener.onSharedElementsReady();
+        }
+      });
+    }
   }
 }
 

@@ -19,57 +19,57 @@ public final class zzao
 {
   public final PendingResult<Status> delete(GoogleApiClient paramGoogleApiClient, Credential paramCredential)
   {
-    AppMethodBeat.i(50475);
+    AppMethodBeat.i(88370);
     Preconditions.checkNotNull(paramGoogleApiClient, "client must not be null");
     Preconditions.checkNotNull(paramCredential, "credential must not be null");
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzas(this, paramGoogleApiClient, paramCredential));
-    AppMethodBeat.o(50475);
+    AppMethodBeat.o(88370);
     return paramGoogleApiClient;
   }
   
   public final PendingResult<Status> disableAutoSignIn(GoogleApiClient paramGoogleApiClient)
   {
-    AppMethodBeat.i(50476);
+    AppMethodBeat.i(88371);
     Preconditions.checkNotNull(paramGoogleApiClient, "client must not be null");
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzat(this, paramGoogleApiClient));
-    AppMethodBeat.o(50476);
+    AppMethodBeat.o(88371);
     return paramGoogleApiClient;
   }
   
   public final PendingIntent getHintPickerIntent(GoogleApiClient paramGoogleApiClient, HintRequest paramHintRequest)
   {
-    AppMethodBeat.i(50473);
+    AppMethodBeat.i(88368);
     Preconditions.checkNotNull(paramGoogleApiClient, "client must not be null");
     Preconditions.checkNotNull(paramHintRequest, "request must not be null");
     Auth.AuthCredentialsOptions localAuthCredentialsOptions = ((zzax)paramGoogleApiClient.getClient(Auth.zzaj)).zzk();
     paramGoogleApiClient = zzaw.zzd(paramGoogleApiClient.getContext(), localAuthCredentialsOptions, paramHintRequest);
-    AppMethodBeat.o(50473);
+    AppMethodBeat.o(88368);
     return paramGoogleApiClient;
   }
   
   public final PendingResult<CredentialRequestResult> request(GoogleApiClient paramGoogleApiClient, CredentialRequest paramCredentialRequest)
   {
-    AppMethodBeat.i(50472);
+    AppMethodBeat.i(88367);
     Preconditions.checkNotNull(paramGoogleApiClient, "client must not be null");
     Preconditions.checkNotNull(paramCredentialRequest, "request must not be null");
     paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzap(this, paramGoogleApiClient, paramCredentialRequest));
-    AppMethodBeat.o(50472);
+    AppMethodBeat.o(88367);
     return paramGoogleApiClient;
   }
   
   public final PendingResult<Status> save(GoogleApiClient paramGoogleApiClient, Credential paramCredential)
   {
-    AppMethodBeat.i(50474);
+    AppMethodBeat.i(88369);
     Preconditions.checkNotNull(paramGoogleApiClient, "client must not be null");
     Preconditions.checkNotNull(paramCredential, "credential must not be null");
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzar(this, paramGoogleApiClient, paramCredential));
-    AppMethodBeat.o(50474);
+    AppMethodBeat.o(88369);
     return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzao
  * JD-Core Version:    0.7.0.1
  */

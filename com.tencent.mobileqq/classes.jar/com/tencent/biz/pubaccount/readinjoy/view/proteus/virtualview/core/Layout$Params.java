@@ -25,62 +25,75 @@ public class Layout$Params
     }
     catch (NumberFormatException paramString)
     {
-      LogUtil.QLog.d("Layout_TMTEST", 2, "strAttributeToPx: " + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("strAttributeToPx: ");
+      localStringBuilder.append(paramString.getMessage());
+      LogUtil.QLog.d("Layout_TMTEST", 2, localStringBuilder.toString());
     }
     return 0;
   }
   
   public boolean setAttribute(int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      this.mLayoutWidth = ((SizeValue)paramObject).getLayoutSize();
+      if (paramInt != 2) {
+        return false;
+      }
+      this.mLayoutHeight = ((SizeValue)paramObject).getLayoutSize();
       return true;
     }
-    this.mLayoutHeight = ((SizeValue)paramObject).getLayoutSize();
+    this.mLayoutWidth = ((SizeValue)paramObject).getLayoutSize();
     return true;
   }
   
   public boolean setAttribute(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    default: 
-    case 3: 
-    case 5: 
-    case 6: 
-    case 4: 
-      for (;;)
+      if (paramInt != 4)
       {
-        return false;
-        this.mLayoutMarginTop = strAttributeToPx(paramString);
-        continue;
-        this.mLayoutMarginRight = strAttributeToPx(paramString);
-        continue;
-        this.mLayoutMarginBottom = strAttributeToPx(paramString);
-        continue;
+        if (paramInt != 5)
+        {
+          if (paramInt != 6) {
+            switch (paramInt)
+            {
+            default: 
+              break;
+            case 61: 
+              this.mLayoutWidth = SizeValue.getLayoutSize(1003, Double.valueOf(paramString).doubleValue());
+              return true;
+            case 60: 
+              this.mLayoutHeight = SizeValue.getLayoutSize(1003, Double.valueOf(paramString).doubleValue());
+              return true;
+            case 59: 
+              this.mLayoutWidth = SizeValue.getLayoutSize(1004, Double.valueOf(paramString).doubleValue());
+              return true;
+            case 58: 
+              this.mLayoutHeight = SizeValue.getLayoutSize(1004, Double.valueOf(paramString).doubleValue());
+              return true;
+            }
+          } else {
+            this.mLayoutMarginBottom = strAttributeToPx(paramString);
+          }
+        }
+        else {
+          this.mLayoutMarginRight = strAttributeToPx(paramString);
+        }
+      }
+      else {
         this.mLayoutMarginLeft = strAttributeToPx(paramString);
       }
-    case 58: 
-      this.mLayoutHeight = SizeValue.getLayoutSize(1004, Double.valueOf(paramString).doubleValue());
-      return true;
-    case 59: 
-      this.mLayoutWidth = SizeValue.getLayoutSize(1004, Double.valueOf(paramString).doubleValue());
-      return true;
-    case 60: 
-      this.mLayoutHeight = SizeValue.getLayoutSize(1003, Double.valueOf(paramString).doubleValue());
-      return true;
     }
-    this.mLayoutWidth = SizeValue.getLayoutSize(1003, Double.valueOf(paramString).doubleValue());
-    return true;
+    else {
+      this.mLayoutMarginTop = strAttributeToPx(paramString);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params
  * JD-Core Version:    0.7.0.1
  */

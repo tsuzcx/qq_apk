@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pushdialog;
 
-import awge;
-import awhp;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -9,6 +7,8 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -18,20 +18,20 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.TemplParam;
 
 public class PushDialogTemplate
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   private static final byte[] KV_SEPARATOR = { 64, 33 };
-  @awhp
+  @notColumn
   private static final byte[] PARAM_SEPARATOR = { 35, 33 };
-  @awhp
+  @notColumn
   private static final String TAG = "PushDialogTemplate";
   public long busi_id;
   public long busi_type;
   public int c2c_type;
   public int ctrl_flag;
   public int friend_banned_flag = -1;
-  @awhp
+  @notColumn
   private List<submsgtype0x122.TemplParam> mParamList;
   public long mUin;
   public byte[] reserv;
@@ -82,7 +82,7 @@ public class PushDialogTemplate
   
   private static boolean isBitChecked(int paramInt1, int paramInt2)
   {
-    return (1 << paramInt2 & paramInt1) == 0;
+    return (paramInt1 & 1 << paramInt2) == 0;
   }
   
   private static boolean isMatch(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
@@ -100,8 +100,8 @@ public class PushDialogTemplate
   
   private static List<byte[]> split(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int i = 0;
     LinkedList localLinkedList = new LinkedList();
+    int i = 0;
     int j;
     for (int k = 0; i < paramArrayOfByte2.length; k = j)
     {
@@ -124,20 +124,20 @@ public class PushDialogTemplate
     ArrayList localArrayList = new ArrayList();
     paramArrayOfByte = split(PARAM_SEPARATOR, paramArrayOfByte);
     int i = 0;
-    if (i < paramArrayOfByte.size())
+    while (i < paramArrayOfByte.size())
     {
       submsgtype0x122.TemplParam localTemplParam = new submsgtype0x122.TemplParam();
       Object localObject = (byte[])paramArrayOfByte.get(i);
-      if (localObject.length <= KV_SEPARATOR.length) {}
-      for (;;)
+      int j = localObject.length;
+      byte[] arrayOfByte = KV_SEPARATOR;
+      if (j > arrayOfByte.length)
       {
-        i += 1;
-        break;
-        localObject = split(KV_SEPARATOR, (byte[])localObject);
+        localObject = split(arrayOfByte, (byte[])localObject);
         localTemplParam.bytes_name.set(ByteStringMicro.copyFrom((byte[])((List)localObject).get(0)));
         localTemplParam.bytes_value.set(ByteStringMicro.copyFrom((byte[])((List)localObject).get(1)));
         localArrayList.add(localTemplParam);
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -159,63 +159,53 @@ public class PushDialogTemplate
   
   public List<submsgtype0x122.TemplParam> getParamList()
   {
-    if (this.mParamList != null) {
-      return this.mParamList;
+    List localList = this.mParamList;
+    if (localList != null) {
+      return localList;
     }
     return transByteArrayToParamList(this.templ_param);
   }
   
   public boolean isFriendBanned()
   {
-    if (this.friend_banned_flag >= 0) {
-      if (this.friend_banned_flag != 1) {}
+    int i = this.friend_banned_flag;
+    if (i >= 0) {
+      return i == 1;
     }
-    label64:
-    label87:
-    do
+    if (this.reserv != null)
     {
-      return true;
-      return false;
-      if (this.reserv == null) {
-        break;
-      }
+      gray_tips_resv.ResvAttr localResvAttr1;
+      gray_tips_resv.ResvAttr localResvAttr2;
       try
       {
         localResvAttr1 = new gray_tips_resv.ResvAttr();
-        boolean bool;
-        localResvAttr2 = localResvAttr1;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-      {
         try
         {
           localResvAttr1.mergeFrom(this.reserv);
-          bool = localResvAttr1.uint32_friend_banned_flag.has();
+          boolean bool = localResvAttr1.uint32_friend_banned_flag.has();
           localResvAttr2 = localResvAttr1;
           if (bool) {
-            break label87;
+            break label91;
           }
           return false;
         }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-        {
-          gray_tips_resv.ResvAttr localResvAttr1;
-          gray_tips_resv.ResvAttr localResvAttr2;
-          int i;
-          break label64;
-        }
-        localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1) {}
+        localResvAttr2 = localResvAttr1;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+      {
         localResvAttr1 = null;
       }
       if (QLog.isColorLevel())
       {
-        QLog.e("PushDialogTemplate", 0, localInvalidProtocolBufferMicroException1.getMessage());
+        QLog.e("PushDialogTemplate", 0, localInvalidProtocolBufferMicroException2.getMessage());
         localResvAttr2 = localResvAttr1;
       }
+      label91:
       i = localResvAttr2.uint32_friend_banned_flag.get();
       this.friend_banned_flag = i;
-    } while (i == 1);
-    return false;
+      return i == 1;
+    }
     return false;
   }
   
@@ -236,7 +226,7 @@ public class PushDialogTemplate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogTemplate
  * JD-Core Version:    0.7.0.1
  */

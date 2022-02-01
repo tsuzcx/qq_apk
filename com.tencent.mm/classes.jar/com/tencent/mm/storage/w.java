@@ -1,125 +1,70 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ao;
-import com.tencent.mm.j.a.a.c;
-import com.tencent.mm.j.a.a.d;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import junit.framework.Assert;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/storage/BizMsgResortTest;", "", "()V", "TAG", "", "resortTestOpen", "", "getResortTestOpen", "()I", "setResortTestOpen", "(I)V", "checkReqData", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "beginTime", "", "checkReqLimit", "reqLimit", "itemSize", "checkRespData", "isResortTestOpen", "", "onCheckFail", "errMsg", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class w
-  extends ao
 {
-  protected static c.a info;
+  public static final w acEV;
+  private static int acEW;
   
   static
   {
-    AppMethodBeat.i(60106);
-    c.a locala = new c.a();
-    locala.yrK = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "username";
-    locala.yrM.put("username", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "username";
-    locala.columns[1] = "lastPushSeq";
-    locala.yrM.put("lastPushSeq", "LONG");
-    localStringBuilder.append(" lastPushSeq LONG");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "lastLocalSeq";
-    locala.yrM.put("lastLocalSeq", "LONG");
-    localStringBuilder.append(" lastLocalSeq LONG");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "lastPushCreateTime";
-    locala.yrM.put("lastPushCreateTime", "LONG");
-    localStringBuilder.append(" lastPushCreateTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "lastLocalCreateTime";
-    locala.yrM.put("lastLocalCreateTime", "LONG");
-    localStringBuilder.append(" lastLocalCreateTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "seqBlockInfo";
-    locala.yrM.put("seqBlockInfo", "BLOB");
-    localStringBuilder.append(" seqBlockInfo BLOB");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(60106);
+    AppMethodBeat.i(248762);
+    acEV = new w();
+    acEW = -1;
+    AppMethodBeat.o(248762);
   }
   
-  public final c.a getDBInfo()
+  public static void ayy(int paramInt)
   {
-    return info;
+    acEW = paramInt;
   }
   
-  public final List<c> ol(long paramLong)
+  static void bvz(String paramString)
   {
-    AppMethodBeat.i(60103);
-    LinkedList localLinkedList = new LinkedList();
-    if (this.field_seqBlockInfo == null)
+    AppMethodBeat.i(248759);
+    Log.e("MicroMsg.BizMsgResortTest", s.X("onCheckFail ", paramString));
+    if ((BuildInfo.DEBUG) || (Log.getLogLevel() <= 1))
     {
-      AppMethodBeat.o(60103);
-      return localLinkedList;
-    }
-    Iterator localIterator = this.field_seqBlockInfo.elE.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      if (localc.elD <= paramLong) {
-        localLinkedList.add(localc);
-      }
-    }
-    AppMethodBeat.o(60103);
-    return localLinkedList;
-  }
-  
-  public final List<c> om(long paramLong)
-  {
-    AppMethodBeat.i(60104);
-    LinkedList localLinkedList = new LinkedList();
-    if (this.field_seqBlockInfo == null)
-    {
-      AppMethodBeat.o(60104);
-      return localLinkedList;
-    }
-    Iterator localIterator = this.field_seqBlockInfo.elE.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      if (localc.elA > paramLong) {
-        localLinkedList.add(localc);
-      }
-    }
-    AppMethodBeat.o(60104);
-    return localLinkedList;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(60105);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("username:").append(this.field_username).append(" ");
-    ((StringBuilder)localObject).append("lastLocalSeq:").append(this.field_lastLocalSeq).append(" ");
-    ((StringBuilder)localObject).append("lastPushSeq:").append(this.field_lastPushSeq).append(" ");
-    if (this.field_seqBlockInfo != null)
-    {
-      ((StringBuilder)localObject).append("block:");
-      Iterator localIterator = this.field_seqBlockInfo.elE.iterator();
-      while (localIterator.hasNext())
+      MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleMMKV("brandService");
+      long l = System.currentTimeMillis();
+      if (Math.abs(l - localMultiProcessMMKV.decodeLong("lastResortCrashTime", -1L)) > 86400000L)
       {
-        c localc = (c)localIterator.next();
-        ((StringBuilder)localObject).append("[").append(localc.elA).append(":").append(localc.elB).append("][").append(localc.elC).append(":").append(localc.elD).append("] | ");
+        localMultiProcessMMKV.encode("lastResortCrashTime", l);
+        Assert.assertTrue(s.X("onCheckFail ", paramString), false);
       }
     }
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(60105);
-    return localObject;
+    AppMethodBeat.o(248759);
+  }
+  
+  static boolean iXX()
+  {
+    AppMethodBeat.i(248753);
+    if (acEW != -1)
+    {
+      if (acEW == 1)
+      {
+        AppMethodBeat.o(248753);
+        return true;
+      }
+      AppMethodBeat.o(248753);
+      return false;
+    }
+    if (((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger())) && (Log.getLogLevel() < 2))
+    {
+      AppMethodBeat.o(248753);
+      return true;
+    }
+    AppMethodBeat.o(248753);
+    return false;
   }
 }
 

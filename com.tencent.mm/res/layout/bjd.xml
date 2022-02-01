@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/iwt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_9" android:textColorHint="@color/BW_100_Alpha_0_5" android:layout_gravity="bottom" android:id="@id/bjb" android:background="@drawable/aiw" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="0.0dip" android:layout_marginTop="@dimen/df" android:maxHeight="@dimen/ae" android:minHeight="@dimen/ag" android:hint="@string/h1u" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a8b" style="@style/n9" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:id="@id/bjv" android:background="@null" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginLeft="@dimen/df" android:layout_marginBottom="@dimen/cd" android:src="@raw/icons_filled_add_emoji" android:scaleType="fitXY" android:contentDescription="@string/b3i" app:iconColor="@color/az" />
+    </LinearLayout>
+</LinearLayout>

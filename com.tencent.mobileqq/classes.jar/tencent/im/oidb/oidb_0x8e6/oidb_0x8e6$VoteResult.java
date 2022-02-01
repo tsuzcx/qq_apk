@@ -23,13 +23,15 @@ public final class oidb_0x8e6$VoteResult
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64 }, new String[] { "uint32_ret", "bytes_err_msg", "uint64_tinyid", "uint64_uin", "uint32_vote_count", "uint32_succ_free_vote_count", "uint32_succ_pay_vote_count", "uint64_pay_stock" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, VoteResult.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64 }, new String[] { "uint32_ret", "bytes_err_msg", "uint64_tinyid", "uint64_uin", "uint32_vote_count", "uint32_succ_free_vote_count", "uint32_succ_pay_vote_count", "uint64_pay_stock" }, new Object[] { localInteger, localByteStringMicro, localLong, localLong, localInteger, localInteger, localInteger, localLong }, VoteResult.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x8e6.oidb_0x8e6.VoteResult
  * JD-Core Version:    0.7.0.1
  */

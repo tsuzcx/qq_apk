@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/sharemusic_image_content" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginTop="8.0dip">
+        <com.tencent.image.URLImageView android:id="@id/sharemusic_item_image" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_gravity="center" android:id="@id/sharemusic_play_img" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/qb_group_troop_bar_publish_item_music_play" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/sharemusic_text_content" android:background="#fff6f6f6" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginTop="8.0dip" android:layout_toRightOf="@id/sharemusic_image_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/sharemusic_name" android:paddingLeft="7.0dip" android:paddingRight="20.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" />
+        <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:id="@id/sharemusic_auther" android:paddingLeft="7.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/music_icon_delete" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-10.0dip" android:src="@drawable/qb_group_troop_bar_pulish_delete_image_icon" android:scaleType="centerCrop" android:layout_toRightOf="@id/sharemusic_text_content" android:layout_alignParentTop="true" android:contentDescription="@string/qb_group_troop_bar_publish_drop_music_description" />
+</RelativeLayout>

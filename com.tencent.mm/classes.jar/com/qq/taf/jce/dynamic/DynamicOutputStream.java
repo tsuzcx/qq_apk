@@ -24,42 +24,42 @@ public final class DynamicOutputStream
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(117019);
+    AppMethodBeat.i(109573);
     int k = paramJceField.getTag();
     if ((paramJceField instanceof ZeroField))
     {
       write(0, k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof IntField))
     {
       write(((IntField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof ShortField))
     {
       write(((ShortField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof ByteField))
     {
       write(((ByteField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof StringField))
     {
       write(((StringField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof ByteArrayField))
     {
       write(((ByteArrayField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof ListField))
@@ -74,7 +74,7 @@ public final class DynamicOutputStream
       {
         if (i >= j)
         {
-          AppMethodBeat.o(117019);
+          AppMethodBeat.o(109573);
           return;
         }
         write(paramJceField[i]);
@@ -93,7 +93,7 @@ public final class DynamicOutputStream
       {
         if (i >= k)
         {
-          AppMethodBeat.o(117019);
+          AppMethodBeat.o(109573);
           return;
         }
         write(paramJceField.getKey(i));
@@ -115,7 +115,7 @@ public final class DynamicOutputStream
         {
           reserve(2);
           writeHead((byte)11, 0);
-          AppMethodBeat.o(117019);
+          AppMethodBeat.o(109573);
           return;
         }
         write(paramJceField[i]);
@@ -125,29 +125,29 @@ public final class DynamicOutputStream
     if ((paramJceField instanceof LongField))
     {
       write(((LongField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof FloatField))
     {
       write(((FloatField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     if ((paramJceField instanceof DoubleField))
     {
       write(((DoubleField)paramJceField).get(), k);
-      AppMethodBeat.o(117019);
+      AppMethodBeat.o(109573);
       return;
     }
     paramJceField = new JceDecodeException("unknow JceField type: " + paramJceField.getClass().getName());
-    AppMethodBeat.o(117019);
+    AppMethodBeat.o(109573);
     throw paramJceField;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.DynamicOutputStream
  * JD-Core Version:    0.7.0.1
  */

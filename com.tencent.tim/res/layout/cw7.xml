@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/e_k" android:paddingLeft="@dimen/bic" android:layout_width="fill_parent" android:layout_height="@dimen/blf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/brn" android:src="@drawable/grc" />
+    <TextView android:textSize="@dimen/brm" android:textColor="@color/atq" android:id="@id/content" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <com.tencent.qqmail.utilities.ui.PressableImageView android:id="@id/close" android:paddingLeft="@dimen/bic" android:paddingRight="@dimen/bic" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/gra" android:scaleType="center" />
+</LinearLayout>

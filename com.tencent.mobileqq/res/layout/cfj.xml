@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/b8q" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
-    <FrameLayout android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat android:layout_gravity="center_horizontal" android:id="@id/kip" android:layout_width="fill_parent" android:layout_height="44.0dip" app:tabCompatContentEnd="12.0dip" app:tabCompatContentStart="12.0dip" app:tabCompatMinWidth="88.0dip" app:tabCompatPaddingEnd="12.0dip" app:tabCompatPaddingStart="12.0dip" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/khm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:src="@drawable/dxz" />
-    </FrameLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/kks" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <FrameLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="48.0dip">
-        <TextView android:textSize="16.0sp" android:textColor="#ff19baff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kj1" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="确定" />
-    </FrameLayout>
-</LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/n0c" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/qgl" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" />
+        <FrameLayout android:layout_gravity="center|top" android:id="@id/n3j" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_behavior="@string/wjf" style="?3t" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/n3k" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

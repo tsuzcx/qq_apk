@@ -1,13 +1,10 @@
 package com.google.android.gms.common.api;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
-
 public abstract class ResultCallbacks<R extends Result>
   implements ResultCallback<R>
 {
   public abstract void onFailure(Status paramStatus);
   
-  @KeepForSdk
   public final void onResult(R paramR)
   {
     Status localStatus = paramR.getStatus();
@@ -35,7 +32,7 @@ public abstract class ResultCallbacks<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.ResultCallbacks
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,27 @@
 package com.tencent.mobileqq.matchchat;
 
-import abta;
-import abti;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import apib;
-import bamp;
-import bdgc;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class RecentMatchChatListItem
   extends RecentBaseData
 {
+  public static final String TAG = "expand.RecentMatchChatListItem";
   public int age = -1;
   public int career = -1;
   public int charmLevel;
@@ -27,111 +29,83 @@ public class RecentMatchChatListItem
   public int constellation = -1;
   public int gender = -1;
   public boolean mExtendFriendOnline;
-  public boolean mHasFlowerMsg;
-  MessageRecord messageRecord;
+  public boolean mHasFlowerMsg = false;
+  public MessageRecord messageRecord;
   public int vip = -1;
   
   public RecentMatchChatListItem(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {
-      throw new NullPointerException("RecentMatchChatListItem data is null");
+    if (paramMessageRecord != null)
+    {
+      this.messageRecord = paramMessageRecord;
+      return;
     }
-    this.messageRecord = paramMessageRecord;
+    throw new NullPointerException("RecentMatchChatListItem data is null");
   }
   
-  public int a()
+  public MsgSummary a()
   {
-    return this.messageRecord.istroop;
-  }
-  
-  public long a()
-  {
-    return this.messageRecord.time;
-  }
-  
-  public String a()
-  {
-    return this.messageRecord.senderuin;
+    return this.msgSummary;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    Object localObject = paramQQAppInterface.a();
-    abta localabta = paramQQAppInterface.a();
-    if (localObject != null) {}
-    for (localObject = ((QQMessageFacade)localObject).a(a(), a());; localObject = null)
+    Object localObject1 = paramQQAppInterface.getMessageFacade();
+    Object localObject2 = paramQQAppInterface.getConversationFacade();
+    if (localObject1 != null) {
+      localObject1 = ((QQMessageFacade)localObject1).getLastMessage(getRecentUserUin(), getRecentUserType());
+    } else {
+      localObject1 = null;
+    }
+    this.mExtraInfoColor = 0;
+    this.mMsgExtroInfo = null;
+    if (localObject1 != null)
     {
-      label78:
-      MsgSummary localMsgSummary;
-      if (localObject != null)
-      {
-        this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
-        if ((localabta != null) && (localObject != null))
-        {
-          this.mUnreadNum = localabta.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
-          if (abti.d((MessageRecord)localObject)) {
-            this.mUnreadFlag = 3;
-          }
-          localMsgSummary = super.a();
-          this.mHasFlowerMsg = false;
-          this.mExtraInfoColor = 0;
-          this.mMsgExtroInfo = null;
-          if (!apib.a(paramQQAppInterface, a(), 1001)) {
-            break label326;
-          }
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693391);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-          if (localabta != null) {
-            localMsgSummary.strContent = localabta.a(a(), 1001, paramContext.getResources().getString(2131693390), 0);
-          }
-          label171:
-          this.mTitleName = bdgc.b(paramQQAppInterface, a(), true);
-          this.mAuthenIconId = 0;
-          super.a(paramQQAppInterface);
-          a(paramQQAppInterface, localMsgSummary);
-          super.a(paramQQAppInterface, paramContext, localMsgSummary);
-          if (AppSetting.c)
-          {
-            paramQQAppInterface = new StringBuilder(24);
-            paramQQAppInterface.append(this.mTitleName);
-            if (this.mUnreadNum != 0) {
-              break label390;
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
-        }
-        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
-        this.mContentDesc = paramQQAppInterface.toString();
-        return;
+      this.mDisplayTime = ((Message)localObject1).time;
+      if ((localObject2 != null) && (localObject1 != null)) {
+        this.mUnreadNum = ((ConversationFacade)localObject2).a(((Message)localObject1).frienduin, ((Message)localObject1).istroop);
+      } else {
         this.mUnreadNum = 0;
-        break;
-        this.mUnreadNum = 0;
-        this.mDisplayTime = 0L;
-        break label78;
-        label326:
-        if (apib.b(paramQQAppInterface, a(), 1001))
-        {
-          this.mHasFlowerMsg = true;
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131694561);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-          break label171;
-        }
-        super.a((QQMessageFacade.Message)localObject, a(), paramQQAppInterface, paramContext, localMsgSummary);
-        break label171;
-        label390:
-        if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131699476));
-        } else if (this.mUnreadNum == 2) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131699477));
-        } else if (this.mUnreadNum > 0) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131699475, new Object[] { Integer.valueOf(this.mUnreadNum) }));
-        }
       }
+      if (UinTypeUtil.c((MessageRecord)localObject1)) {
+        this.mUnreadFlag = 3;
+      }
+    }
+    else
+    {
+      this.mUnreadNum = 0;
+      this.mDisplayTime = 0L;
+    }
+    localObject2 = super.getMsgSummaryTemp();
+    super.buildMessageBody((Message)localObject1, getRecentUserType(), paramQQAppInterface, paramContext, (MsgSummary)localObject2);
+    this.mHasFlowerMsg = false;
+    this.mTitleName = ContactUtils.a(paramQQAppInterface, getRecentUserUin(), true);
+    this.mAuthenIconId = 0;
+    super.dealStatus(paramQQAppInterface);
+    a(paramQQAppInterface, (MsgSummary)localObject2);
+    super.extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
+    if (AppSetting.e)
+    {
+      paramQQAppInterface = new StringBuilder(24);
+      paramQQAppInterface.append(this.mTitleName);
+      if (this.mUnreadNum == 1) {
+        paramQQAppInterface.append(paramContext.getResources().getString(2131897009));
+      } else if (this.mUnreadNum == 2) {
+        paramQQAppInterface.append(paramContext.getResources().getString(2131897010));
+      } else if (this.mUnreadNum > 0) {
+        paramQQAppInterface.append(paramContext.getResources().getString(2131897008, new Object[] { Integer.valueOf(this.mUnreadNum) }));
+      }
+      if (this.mMsgExtroInfo != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(this.mMsgExtroInfo);
+        paramContext.append(",");
+        paramQQAppInterface.append(paramContext.toString());
+      }
+      paramQQAppInterface.append(this.mLastMsg);
+      paramQQAppInterface.append(' ');
+      paramQQAppInterface.append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
     }
   }
   
@@ -142,31 +116,69 @@ public class RecentMatchChatListItem
       paramMsgSummary.bShowDraft = false;
       paramMsgSummary.mDraft = null;
     }
-    paramQQAppInterface = paramQQAppInterface.a();
-    if (paramQQAppInterface == null) {}
-    long l;
-    do
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    paramQQAppInterface = paramQQAppInterface.getDraftSummaryInfo(getRecentUserUin(), getRecentUserType());
+    if (paramQQAppInterface != null)
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramQQAppInterface.getSummary())) {
         return;
-        paramQQAppInterface = paramQQAppInterface.a(a(), a());
-      } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
-      l = paramQQAppInterface.getTime();
-    } while (this.mDisplayTime > l);
-    this.mDisplayTime = l;
-    paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new bamp(paramQQAppInterface.getSummary(), 3, 16);
+      }
+      long l = paramQQAppInterface.getTime();
+      if (this.mDisplayTime > l) {
+        return;
+      }
+      this.mDisplayTime = l;
+      if (paramMsgSummary != null)
+      {
+        paramMsgSummary.bShowDraft = true;
+        paramMsgSummary.mDraft = new QQText(paramQQAppInterface.getSummary(), 3, 16);
+      }
+    }
   }
   
-  public long b()
+  public void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
+  {
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramMsgSummary);
+    }
+  }
+  
+  public long getLastDraftTime()
   {
     return 0L;
+  }
+  
+  public long getLastMsgTime()
+  {
+    return this.messageRecord.time;
+  }
+  
+  public int getRecentUserType()
+  {
+    return this.messageRecord.istroop;
+  }
+  
+  public String getRecentUserUin()
+  {
+    return this.messageRecord.senderuin;
+  }
+  
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
+  {
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramContext);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("expand.RecentMatchChatListItem", 1, "msg update");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.RecentMatchChatListItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,106 @@
 package com.tencent.ad.tangram.util;
 
-import android.text.TextUtils;
+import android.annotation.SuppressLint;
 import com.tencent.ad.tangram.log.AdLog;
-import java.security.MessageDigest;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public final class a
 {
-  private static final String TAG = "AdMessageDigestUtil";
+  private static final String TAG = "AdCryptoUtil";
+  private static Cipher decryptCipher;
+  private static Cipher encryptCipher;
   
-  private static byte[] digest(String paramString, byte[] paramArrayOfByte)
+  public static byte[] decrypt(a.a parama, byte[] paramArrayOfByte)
+  {
+    if ((parama != null) && (parama.isValid())) {
+      try
+      {
+        parama = getDecryptCipher(parama).doFinal(paramArrayOfByte);
+        return parama;
+      }
+      catch (Throwable parama)
+      {
+        AdLog.e("AdCryptoUtil", "decrypt failed", parama);
+        return null;
+      }
+    }
+    AdLog.e("AdCryptoUtil", "decrypt params error");
+    return null;
+  }
+  
+  public static byte[] encrypt(a.a parama, byte[] paramArrayOfByte)
+  {
+    if ((parama != null) && (parama.isValid())) {
+      try
+      {
+        parama = getEncryptCipher(parama).doFinal(paramArrayOfByte);
+        return parama;
+      }
+      catch (Throwable parama)
+      {
+        AdLog.e("AdCryptoUtil", "encrypt failed", parama);
+        return null;
+      }
+    }
+    AdLog.e("AdCryptoUtil", "encrypt params error");
+    return null;
+  }
+  
+  private static Cipher getDecryptCipher(a.a parama)
   {
     try
     {
-      paramString = MessageDigest.getInstance(paramString).digest(paramArrayOfByte);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      AdLog.e("AdMessageDigestUtil", "digest", paramString);
-    }
-    return null;
-  }
-  
-  public static String md5(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      paramString1 = null;
-    }
-    for (;;)
-    {
-      return paramString1;
+      if (decryptCipher != null)
+      {
+        parama = decryptCipher;
+        return parama;
+      }
       try
       {
-        paramString1 = md5(paramString1.getBytes(paramString2));
-        paramString2 = AdHexUtil.bytes2HexString(paramString1);
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          paramString1 = paramString2;
-          if (paramString2.length() == 32) {}
-        }
-        else
-        {
-          AdLog.e("AdMessageDigestUtil", "md5 error");
-          return null;
-        }
+        Cipher localCipher = Cipher.getInstance(parama.cipherAlgorithm);
+        localCipher.init(2, new SecretKeySpec(parama.key, parama.keyAlgorithm));
+        decryptCipher = localCipher;
       }
-      catch (Throwable paramString1)
+      catch (Throwable parama)
       {
-        AdLog.e("AdMessageDigestUtil", "md5", paramString1);
+        AdLog.e("AdCryptoUtil", "fail to init cipher", parama);
       }
+      parama = decryptCipher;
+      return parama;
     }
-    return null;
+    finally {}
   }
   
-  public static byte[] md5(byte[] paramArrayOfByte)
+  @SuppressLint({"TrulyRandom"})
+  private static Cipher getEncryptCipher(a.a parama)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      paramArrayOfByte = null;
-    }
-    byte[] arrayOfByte;
-    do
+    try
     {
-      return paramArrayOfByte;
-      arrayOfByte = digest("md5", paramArrayOfByte);
-      if (arrayOfByte == null) {
-        break;
+      if (encryptCipher != null)
+      {
+        parama = encryptCipher;
+        return parama;
       }
-      paramArrayOfByte = arrayOfByte;
-    } while (arrayOfByte.length == 16);
-    AdLog.e("AdMessageDigestUtil", "md5 error");
-    return null;
+      try
+      {
+        Cipher localCipher = Cipher.getInstance(parama.cipherAlgorithm);
+        localCipher.init(1, new SecretKeySpec(parama.key, parama.keyAlgorithm));
+        encryptCipher = localCipher;
+      }
+      catch (Throwable parama)
+      {
+        AdLog.e("AdCryptoUtil", "fail to init cipher", parama);
+      }
+      parama = encryptCipher;
+      return parama;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.a
  * JD-Core Version:    0.7.0.1
  */

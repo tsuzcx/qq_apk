@@ -25,14 +25,15 @@ public final class oidb_0x8f9$GroupFeedsCommentRecord
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "bytes_feeds_id", "msg_source_id", "uint64_from_uin", "uint32_comment_id", "uint32_comment_flag", "uint32_create_time", "uint32_modify_time", "bytes_reserve", "msg_comment_content" }, new Object[] { localByteStringMicro1, null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, null }, GroupFeedsCommentRecord.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "bytes_feeds_id", "msg_source_id", "uint64_from_uin", "uint32_comment_id", "uint32_comment_flag", "uint32_create_time", "uint32_modify_time", "bytes_reserve", "msg_comment_content" }, new Object[] { localByteStringMicro1, null, Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, null }, GroupFeedsCommentRecord.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GroupFeedsCommentRecord
  * JD-Core Version:    0.7.0.1
  */

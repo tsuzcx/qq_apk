@@ -14,29 +14,25 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.animation.DecelerateInterpolator;
-import xul;
-import xum;
-import xun;
-import xuq;
 
 @TargetApi(11)
 public class NeoVideoRecordButton
   extends RingView
 {
-  public float a;
-  final int a;
-  public AnimatorSet a;
-  public ValueAnimator a;
-  public xuq a;
-  final int b;
-  public ValueAnimator b;
-  public xuq b;
-  final int c;
-  public ValueAnimator c;
-  public xuq c;
-  final int d;
-  final int e;
-  final int f;
+  public float a = 0.0F;
+  public RingView.DrawInfo b;
+  public RingView.DrawInfo c;
+  public RingView.DrawInfo d;
+  public ValueAnimator e;
+  public ValueAnimator f;
+  public AnimatorSet g;
+  public ValueAnimator h;
+  final int i;
+  final int j;
+  final int k;
+  final int l;
+  final int m;
+  final int n;
   
   public NeoVideoRecordButton(Context paramContext)
   {
@@ -46,41 +42,44 @@ public class NeoVideoRecordButton
   public NeoVideoRecordButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Int = a(paramContext, 37.5F);
-    this.jdField_b_of_type_Int = a(paramContext, 6.0F);
-    this.jdField_c_of_type_Int = a(paramContext, 1.0F);
-    this.f = a(paramContext, 45.5F);
-    this.e = a(paramContext, 6.0F);
-    this.d = a(paramContext, 31.799999F);
-    paramContext = new xuq(-90, 270, this.jdField_a_of_type_Int, 0.0F, this.jdField_b_of_type_Int, 0.0F, -15550475, -1, Paint.Style.STROKE);
-    this.jdField_a_of_type_Xuq = paramContext;
+    this.i = a(paramContext, 37.5F);
+    this.j = a(paramContext, 6.0F);
+    this.k = a(paramContext, 1.0F);
+    this.n = a(paramContext, 45.5F);
+    this.m = a(paramContext, 6.0F);
+    this.l = a(paramContext, 31.799999F);
+    paramContext = new RingView.DrawInfo(-90, 270, this.i, 0.0F, this.j, 0.0F, -15550475, -1, Paint.Style.STROKE);
+    this.b = paramContext;
     super.a(paramContext);
-    paramContext = new xuq(-90, 270, 1, 0.0F, 1, 0.0F, 1090519039, 0, Paint.Style.FILL);
-    this.jdField_c_of_type_Xuq = paramContext;
+    paramContext = new RingView.DrawInfo(-90, 270, 1, 0.0F, 1, 0.0F, 1090519039, 0, Paint.Style.FILL);
+    this.d = paramContext;
     super.a(paramContext);
-    paramContext = new xuq(-90, 270, this.jdField_c_of_type_Int, 0.0F, 1, 0.0F, -1, 0, Paint.Style.FILL);
-    this.jdField_b_of_type_Xuq = paramContext;
+    paramContext = new RingView.DrawInfo(-90, 270, this.k, 0.0F, 1, 0.0F, -1, 0, Paint.Style.FILL);
+    this.c = paramContext;
     super.a(paramContext);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("border", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.f) }), PropertyValuesHolder.ofObject("ring", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.e) }), PropertyValuesHolder.ofObject("center", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.d) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(-1), Integer.valueOf(-15550475) }) });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xul(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.f - this.jdField_b_of_type_Int) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(16777215), Integer.valueOf(16777215), Integer.valueOf(16777215), Integer.valueOf(2147483647), Integer.valueOf(16777215) }) });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xum(this));
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(this.jdField_a_of_type_AndroidAnimationValueAnimator).before(this.jdField_b_of_type_AndroidAnimationValueAnimator);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xun(this));
-    setProgress(this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_Xuq.a();
-    this.jdField_c_of_type_Xuq.a();
+    this.e = new ValueAnimator();
+    this.e.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("border", new IntEvaluator(), new Object[] { Integer.valueOf(this.i), Integer.valueOf(this.n) }), PropertyValuesHolder.ofObject("ring", new IntEvaluator(), new Object[] { Integer.valueOf(this.j), Integer.valueOf(this.m) }), PropertyValuesHolder.ofObject("center", new IntEvaluator(), new Object[] { Integer.valueOf(this.k), Integer.valueOf(this.l) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(-1), Integer.valueOf(-15550475) }) });
+    this.e.setDuration(400L);
+    this.e.addUpdateListener(new NeoVideoRecordButton.1(this));
+    this.f = new ValueAnimator();
+    paramContext = this.f;
+    paramAttributeSet = PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.n - this.j) });
+    ArgbEvaluator localArgbEvaluator = new ArgbEvaluator();
+    Integer localInteger = Integer.valueOf(16777215);
+    paramContext.setValues(new PropertyValuesHolder[] { paramAttributeSet, PropertyValuesHolder.ofObject("color", localArgbEvaluator, new Object[] { localInteger, localInteger, localInteger, Integer.valueOf(2147483647), localInteger }) });
+    this.f.setInterpolator(new DecelerateInterpolator());
+    this.f.setDuration(1500L);
+    this.f.setRepeatCount(-1);
+    this.f.setRepeatMode(1);
+    this.f.addUpdateListener(new NeoVideoRecordButton.2(this));
+    this.g = new AnimatorSet();
+    this.g.play(this.e).before(this.f);
+    this.h = new ValueAnimator();
+    this.h.setDuration(400L);
+    this.h.addUpdateListener(new NeoVideoRecordButton.3(this));
+    setProgress(this.a);
+    this.c.a();
+    this.d.a();
   }
   
   public static float a(Context paramContext)
@@ -97,12 +96,12 @@ public class NeoVideoRecordButton
     if (paramFloat > 1.0F) {
       f1 = paramFloat - 1.0F;
     }
-    return (int)(360.0F * f1) - 90;
+    return (int)(f1 * 360.0F) - 90;
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(a(paramContext) * paramFloat + 0.5F);
+    return (int)(paramFloat * a(paramContext) + 0.5F);
   }
   
   private void b()
@@ -115,16 +114,21 @@ public class NeoVideoRecordButton
     super.postInvalidate();
   }
   
+  public float getProgress()
+  {
+    return this.a;
+  }
+  
   public void setProgress(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Xuq.d = a(this.jdField_a_of_type_Float);
+    this.a = paramFloat;
+    this.b.g = a(this.a);
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.NeoVideoRecordButton
  * JD-Core Version:    0.7.0.1
  */

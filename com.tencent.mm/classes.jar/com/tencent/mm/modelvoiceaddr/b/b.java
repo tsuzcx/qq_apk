@@ -1,42 +1,64 @@
 package com.tencent.mm.modelvoiceaddr.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
-  implements f
+  implements com.tencent.mm.am.h
 {
-  public final void a(List<String> paramList, String paramString1, String paramString2)
+  public final void a(final List<String> paramList, final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(156615);
+    AppMethodBeat.i(148649);
     paramList = new ArrayList(paramList);
-    g.RO().ac(new b.2(this, paramList, paramString1, paramString2));
-    AppMethodBeat.o(156615);
+    com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(148648);
+        Object localObject1 = new LinkedList();
+        Object localObject2 = paramList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (String)((Iterator)localObject2).next();
+          ((LinkedList)localObject1).add(new etl().btH((String)localObject3));
+          Log.d("MicroMsg.NewVoiceInputReportManager", "mVoiceIdSet Id = %s", new Object[] { localObject3 });
+        }
+        localObject2 = new etl().btH(paramString1);
+        Object localObject3 = new etl().btH(paramString2);
+        com.tencent.mm.kernel.h.aZW().a(228, b.this);
+        localObject1 = new a(((LinkedList)localObject1).size(), (LinkedList)localObject1, (etl)localObject2, (etl)localObject3);
+        int i = this.lyQ;
+        if (((a)localObject1).phb != null) {
+          ((a)localObject1).phb.IJG = i;
+        }
+        com.tencent.mm.kernel.h.aZW().a((p)localObject1, 0);
+        AppMethodBeat.o(148648);
+      }
+    });
+    AppMethodBeat.o(148649);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(116800);
-    g.Rc().b(228, this);
-    if ((paramm instanceof a)) {
-      ab.i("MicroMsg.NewVoiceInputReportManager", "onSceneEnd errType = %s, errCode = %s, errMsg = %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(148650);
+    com.tencent.mm.kernel.h.aZW().b(228, this);
+    if ((paramp instanceof a)) {
+      Log.i("MicroMsg.NewVoiceInputReportManager", "onSceneEnd errType = %s, errCode = %s, errMsg = %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     }
-    AppMethodBeat.o(116800);
+    AppMethodBeat.o(148650);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.b.b
  * JD-Core Version:    0.7.0.1
  */

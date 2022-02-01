@@ -5,20 +5,20 @@ import a.a.a.b;
 public final class d
   extends com.tencent.mm.d.a
 {
-  public int Vq;
-  public String Vr;
+  public int Xl;
+  public String Xm;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vr == null) {
+      if (this.Xm == null) {
         throw new b("Not all required fields were included: MD5");
       }
-      paramVarArgs.aq(1, this.Vq);
-      if (this.Vr != null) {
-        paramVarArgs.d(2, this.Vr);
+      paramVarArgs.at(1, this.Xl);
+      if (this.Xm != null) {
+        paramVarArgs.d(2, this.Xm);
       }
       paramInt = 0;
     }
@@ -29,19 +29,19 @@ public final class d
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.ak(1, this.Vq) + 0;
+      i = a.a.a.a.an(1, this.Xl) + 0;
       paramInt = i;
-    } while (this.Vr == null);
-    return i + a.a.a.b.b.a.e(2, this.Vr);
+    } while (this.Xm == null);
+    return i + a.a.a.b.b.a.e(2, this.Xm);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.Vr == null) {
+      if (this.Xm == null) {
         throw new b("Not all required fields were included: MD5");
       }
       return 0;
@@ -55,10 +55,10 @@ public final class d
       default: 
         return -1;
       case 1: 
-        locald.Vq = locala.ot();
+        locald.Xl = locala.pg();
         return 0;
       }
-      locald.Vr = locala.ou();
+      locald.Xm = locala.ph();
       return 0;
     }
     return -1;

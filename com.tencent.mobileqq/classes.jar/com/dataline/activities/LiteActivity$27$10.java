@@ -1,21 +1,20 @@
 package com.dataline.activities;
 
-import at;
-import dt;
+import com.dataline.util.DatalineSessionAdapter;
 
-public class LiteActivity$27$10
+class LiteActivity$27$10
   implements Runnable
 {
-  public LiteActivity$27$10(at paramat) {}
+  LiteActivity$27$10(LiteActivity.27 param27) {}
   
   public void run()
   {
-    this.a.a.a.notifyDataSetChanged();
+    this.a.a.m.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27.10
  * JD-Core Version:    0.7.0.1
  */

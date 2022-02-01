@@ -12,26 +12,23 @@ class SelectCoverActivity$1
   
   public void run()
   {
-    Bitmap localBitmap = VideoDrawableHandler.a(this.this$0.a);
-    if (this.this$0.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
+    Bitmap localBitmap = VideoDrawableHandler.b(this.this$0.n);
+    if (this.this$0.F) {
       return;
-      if (localBitmap != null) {
-        this.this$0.jdField_b_of_type_AndroidOsHandler.obtainMessage(4, localBitmap).sendToTarget();
-      }
-      while ((this.this$0.d == 1) || (this.this$0.d == 3))
-      {
-        SelectCoverActivity.a(this.this$0);
-        return;
-        this.this$0.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(6);
-      }
+    }
+    if (localBitmap != null) {
+      this.this$0.j.obtainMessage(4, localBitmap).sendToTarget();
+    } else {
+      this.this$0.j.sendEmptyMessage(6);
+    }
+    if ((this.this$0.x == 1) || (this.this$0.x == 3)) {
+      SelectCoverActivity.a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.1
  * JD-Core Version:    0.7.0.1
  */

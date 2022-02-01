@@ -25,24 +25,26 @@ final class ChunkExtractorWrapper$BindingTrackOutput
   
   public void bind(ChunkExtractorWrapper.TrackOutputProvider paramTrackOutputProvider)
   {
-    if (paramTrackOutputProvider == null) {
-      this.trackOutput = new DummyTrackOutput();
-    }
-    do
+    if (paramTrackOutputProvider == null)
     {
+      this.trackOutput = new DummyTrackOutput();
       return;
-      this.trackOutput = paramTrackOutputProvider.track(this.id, this.type);
-    } while (this.sampleFormat == null);
-    this.trackOutput.format(this.sampleFormat);
+    }
+    this.trackOutput = paramTrackOutputProvider.track(this.id, this.type);
+    paramTrackOutputProvider = this.sampleFormat;
+    if (paramTrackOutputProvider != null) {
+      this.trackOutput.format(paramTrackOutputProvider);
+    }
   }
   
   public void format(Format paramFormat)
   {
-    Format localFormat = paramFormat;
-    if (this.manifestFormat != null) {
-      localFormat = paramFormat.copyWithManifestFormatInfo(this.manifestFormat);
+    Format localFormat2 = this.manifestFormat;
+    Format localFormat1 = paramFormat;
+    if (localFormat2 != null) {
+      localFormat1 = paramFormat.copyWithManifestFormatInfo(localFormat2);
     }
-    this.sampleFormat = localFormat;
+    this.sampleFormat = localFormat1;
     this.trackOutput.format(this.sampleFormat);
   }
   
@@ -63,7 +65,7 @@ final class ChunkExtractorWrapper$BindingTrackOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.ChunkExtractorWrapper.BindingTrackOutput
  * JD-Core Version:    0.7.0.1
  */

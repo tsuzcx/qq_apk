@@ -10,12 +10,21 @@ import java.net.URL;
 
 public class Reporter
 {
-  private static final String TAG = Reporter.class.getSimpleName() + "-" + Integer.toHexString(Reporter.class.hashCode());
+  private static final String TAG;
   private Boolean auto;
   private File dir;
   private Handler ioHandler = null;
   private HandlerThread ioThread = null;
   private Runnable uploadRunable = new Reporter.1(this);
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Reporter.class.getSimpleName());
+    localStringBuilder.append("-");
+    localStringBuilder.append(Integer.toHexString(Reporter.class.hashCode()));
+    TAG = localStringBuilder.toString();
+  }
   
   public Reporter(File paramFile, Boolean paramBoolean)
   {
@@ -31,21 +40,33 @@ public class Reporter
   
   private void report(String paramString)
   {
-    LogUtils.d(TAG, "report : " + paramString);
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("report : ");
+    ((StringBuilder)localObject2).append(paramString);
+    AVRLogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL("https://h.trace.qq.com/kv").openConnection();
-      localHttpURLConnection.setConnectTimeout(1000);
-      localHttpURLConnection.setRequestMethod("POST");
-      localHttpURLConnection.setDoInput(false);
-      localHttpURLConnection.setDoOutput(true);
-      BufferedWriter localBufferedWriter = new BufferedWriter(new OutputStreamWriter(localHttpURLConnection.getOutputStream(), "UTF-8"));
-      localBufferedWriter.write(paramString);
-      localBufferedWriter.flush();
-      localBufferedWriter.close();
-      LogUtils.d(TAG, "report: reponse code = " + localHttpURLConnection.getResponseCode());
-      LogUtils.d(TAG, "report: reponse msg = " + localHttpURLConnection.getResponseMessage());
-      localHttpURLConnection.disconnect();
+      localObject1 = (HttpURLConnection)new URL("https://h.trace.qq.com/kv").openConnection();
+      ((HttpURLConnection)localObject1).setConnectTimeout(1000);
+      ((HttpURLConnection)localObject1).setRequestMethod("POST");
+      ((HttpURLConnection)localObject1).setDoInput(false);
+      ((HttpURLConnection)localObject1).setDoOutput(true);
+      localObject2 = new BufferedWriter(new OutputStreamWriter(((HttpURLConnection)localObject1).getOutputStream(), "UTF-8"));
+      ((BufferedWriter)localObject2).write(paramString);
+      ((BufferedWriter)localObject2).flush();
+      ((BufferedWriter)localObject2).close();
+      paramString = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("report: reponse code = ");
+      ((StringBuilder)localObject2).append(((HttpURLConnection)localObject1).getResponseCode());
+      AVRLogUtils.d(paramString, ((StringBuilder)localObject2).toString());
+      paramString = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("report: reponse msg = ");
+      ((StringBuilder)localObject2).append(((HttpURLConnection)localObject1).getResponseMessage());
+      AVRLogUtils.d(paramString, ((StringBuilder)localObject2).toString());
+      ((HttpURLConnection)localObject1).disconnect();
       return;
     }
     catch (Exception paramString)
@@ -56,23 +77,28 @@ public class Reporter
   
   private void schedule()
   {
-    if ((this.auto.booleanValue()) && (this.ioHandler != null)) {
-      this.ioHandler.postDelayed(this.uploadRunable, 30000L);
+    if (this.auto.booleanValue())
+    {
+      Handler localHandler = this.ioHandler;
+      if (localHandler != null) {
+        localHandler.postDelayed(this.uploadRunable, 30000L);
+      }
     }
   }
   
   public void flush()
   {
-    if (this.ioHandler != null)
+    Handler localHandler = this.ioHandler;
+    if (localHandler != null)
     {
-      this.ioHandler.removeCallbacks(this.uploadRunable);
+      localHandler.removeCallbacks(this.uploadRunable);
       this.ioHandler.post(this.uploadRunable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.Reporter
  * JD-Core Version:    0.7.0.1
  */

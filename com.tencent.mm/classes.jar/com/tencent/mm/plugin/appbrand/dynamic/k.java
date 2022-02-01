@@ -1,63 +1,63 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class k
 {
-  private static final Map<String, WxaWidgetContext> hnE;
+  private static final Map<String, WxaWidgetContext> rky;
   
   static
   {
-    AppMethodBeat.i(10716);
-    hnE = new ConcurrentHashMap();
-    AppMethodBeat.o(10716);
+    AppMethodBeat.i(121197);
+    rky = new ConcurrentHashMap();
+    AppMethodBeat.o(121197);
   }
   
-  public static WxaWidgetContext Bd(String paramString)
+  public static WxaWidgetContext Zc(String paramString)
   {
-    AppMethodBeat.i(10714);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(121195);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(10714);
+      AppMethodBeat.o(121195);
       return null;
     }
-    paramString = (WxaWidgetContext)hnE.get(paramString);
-    AppMethodBeat.o(10714);
+    paramString = (WxaWidgetContext)rky.get(paramString);
+    AppMethodBeat.o(121195);
     return paramString;
   }
   
-  public static WxaWidgetContext Be(String paramString)
+  public static WxaWidgetContext Zd(String paramString)
   {
-    AppMethodBeat.i(10715);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(121196);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(10715);
+      AppMethodBeat.o(121196);
       return null;
     }
-    paramString = (WxaWidgetContext)hnE.remove(paramString);
-    AppMethodBeat.o(10715);
+    paramString = (WxaWidgetContext)rky.remove(paramString);
+    AppMethodBeat.o(121196);
     return paramString;
   }
   
   public static boolean a(String paramString, WxaWidgetContext paramWxaWidgetContext)
   {
-    AppMethodBeat.i(10713);
-    if ((bo.isNullOrNil(paramString)) || (paramWxaWidgetContext == null))
+    AppMethodBeat.i(121194);
+    if ((Util.isNullOrNil(paramString)) || (paramWxaWidgetContext == null))
     {
-      AppMethodBeat.o(10713);
+      AppMethodBeat.o(121194);
       return false;
     }
-    hnE.put(paramString, paramWxaWidgetContext);
-    AppMethodBeat.o(10713);
+    rky.put(paramString, paramWxaWidgetContext);
+    AppMethodBeat.o(121194);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,27 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.List;
 
-final class DesktopDataManager$13
+class DesktopDataManager$13
   implements Runnable
 {
-  DesktopDataManager$13(MiniAppInfo paramMiniAppInfo) {}
+  DesktopDataManager$13(DesktopDataManager paramDesktopDataManager) {}
   
   public void run()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null)
+    DesktopDataManager.access$1600(this.this$0).clear();
+    QLog.e("DesktopDataManager", 1, "handleEmptyModuleInStudyMode, desktopItemInfos is null.");
+    if (DesktopDataManager.access$1500(this.this$0) != null)
     {
-      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppRuntime.getManager(336);
-      if (localDesktopDataManager != null) {
-        DesktopDataManager.access$2500(localDesktopDataManager, this.val$appInfo);
-      }
-      QLog.d("DesktopDataManager", 1, "recordMiniAppStart, appInfo = " + this.val$appInfo + ", appRuntime = " + localAppRuntime + "， manager = " + localDesktopDataManager);
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      QLog.d("DesktopDataManager", 1, "handleEmptyModuleInStudyMode, convertData complete");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.13
  * JD-Core Version:    0.7.0.1
  */

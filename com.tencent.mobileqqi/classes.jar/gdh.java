@@ -1,31 +1,31 @@
-import MyCarrier.Carrier;
-import com.tencent.mobileqq.activity.QQSettingMe.UpdateMyBusinessReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.RecommendTroopInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.newfriend.RecommendTroopMessage;
+import java.util.List;
 
 public class gdh
-  extends MyBusinessObserver
+  extends TroopObserver
 {
-  public gdh(MyBusinessManager paramMyBusinessManager) {}
+  public gdh(RecommendTroopMessage paramRecommendTroopMessage) {}
   
-  public void a(boolean paramBoolean, Carrier paramCarrier, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MyBusinessManager", 4, "onCarrierQuery refreshTimeSpan = " + paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (this.a.jdField_a_of_type_Int > 86400) {
-      this.a.jdField_a_of_type_Int = 86400;
-    }
-    this.a.a(paramCarrier);
-    QQSettingMe.UpdateMyBusinessReceiver.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
+    paramString = (RecommendTroopInfo)RecommendTroopMessage.a(this.a).get(0);
+    if ((paramString == null) || (paramLong != Long.valueOf(paramString.uin).longValue())) {}
+    do
+    {
+      return;
+      RecommendTroopMessage.a(this.a).c(this.a.a);
+    } while (!paramBoolean);
+    paramString.option = paramTroopInfo.cGroupOption;
+    RecommendTroopMessage.a(this.a, paramString, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdh
  * JD-Core Version:    0.7.0.1
  */

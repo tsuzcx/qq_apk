@@ -30,11 +30,13 @@ public class CustomSSLWebSocketServerFactory
   public ByteChannel wrapChannel(SocketChannel paramSocketChannel, SelectionKey paramSelectionKey)
   {
     SSLEngine localSSLEngine = this.sslcontext.createSSLEngine();
-    if (this.enabledProtocols != null) {
-      localSSLEngine.setEnabledProtocols(this.enabledProtocols);
+    String[] arrayOfString = this.enabledProtocols;
+    if (arrayOfString != null) {
+      localSSLEngine.setEnabledProtocols(arrayOfString);
     }
-    if (this.enabledCiphersuites != null) {
-      localSSLEngine.setEnabledCipherSuites(this.enabledCiphersuites);
+    arrayOfString = this.enabledCiphersuites;
+    if (arrayOfString != null) {
+      localSSLEngine.setEnabledCipherSuites(arrayOfString);
     }
     localSSLEngine.setUseClientMode(false);
     return new SSLSocketChannel2(paramSocketChannel, localSSLEngine, this.exec, paramSelectionKey);
@@ -42,7 +44,7 @@ public class CustomSSLWebSocketServerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.server.CustomSSLWebSocketServerFactory
  * JD-Core Version:    0.7.0.1
  */

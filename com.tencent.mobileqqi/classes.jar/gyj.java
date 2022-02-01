@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import android.util.SparseArray;
+import android.widget.ProgressBar;
 import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
-class gyj
+public class gyj
   implements Runnable
 {
-  gyj(gyi paramgyi, Object paramObject) {}
+  public gyj(AvatarWallAdapter paramAvatarWallAdapter, int paramInt) {}
   
   public void run()
   {
-    AvatarWallAdapter.m = 0;
-    this.jdField_a_of_type_Gyi.a.n = 0;
-    int i = this.jdField_a_of_type_Gyi.a.b - this.jdField_a_of_type_Gyi.a.j;
-    if (i >= 8) {}
-    Object localObject;
-    do
+    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.get(this.jdField_a_of_type_Int);
+    if (localProgressBar != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (TroopUploadingThread.UploadState)this.jdField_a_of_type_JavaLangObject;
-          if (((TroopUploadingThread.UploadState)localObject).a != 1) {
-            break;
-          }
-          this.jdField_a_of_type_Gyi.a.a(i, ((TroopUploadingThread.UploadState)localObject).b, ((TroopUploadingThread.UploadState)localObject).c);
-        } while (this.jdField_a_of_type_Gyi.a.a(this.jdField_a_of_type_Gyi.a.g));
-        this.jdField_a_of_type_Gyi.a.d = false;
-        this.jdField_a_of_type_Gyi.a.b();
-        return;
-      } while (((TroopUploadingThread.UploadState)localObject).a != 2);
-      localObject = this.jdField_a_of_type_Gyi.a.a(((TroopUploadingThread.UploadState)localObject).b);
-    } while (localObject == null);
-    this.jdField_a_of_type_Gyi.a.a((String)localObject, i);
+      AvatarWallAdapter localAvatarWallAdapter = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter;
+      int i = localAvatarWallAdapter.n + 1;
+      localAvatarWallAdapter.n = i;
+      localProgressBar.setProgress(100 - i);
+    }
   }
 }
 

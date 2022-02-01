@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#4c000000" />
-    <size android:height="48.0dip" android:width="48.0dip" />
-    <corners android:radius="30.0dip" />
-</shape>
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/album_mention_icon_pressed" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/album_mention_icon_pressed" />
+    <item android:state_focused="false" android:drawable="@raw/album_mention_icon_normal" />
+</selector>

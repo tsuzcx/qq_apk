@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/gp8" android:background="@drawable/common_tips_bg_white" android:paddingLeft="@dimen/c_" android:paddingRight="@dimen/ca" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/c8" android:contentDescription="@string/f97"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/gp7" android:layout_width="@dimen/c7" android:layout_height="@dimen/c7" android:layout_marginRight="@dimen/c6" android:src="@drawable/emj" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <Button android:id="@id/gp6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f95" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/f96" style="@style/i0" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_blue" android:gravity="center_vertical" android:id="@id/gp9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c5" android:text="@string/f97" android:singleLine="true" android:layout_toLeftOf="@id/gp6" android:layout_toRightOf="@id/gp7" android:layout_centerVertical="true" />
+</RelativeLayout>

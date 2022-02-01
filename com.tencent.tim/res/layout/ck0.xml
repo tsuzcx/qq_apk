@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.contacts.view.ContactResetBaseLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/bhm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/mqg" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <Button android:textColor="@color/anx" android:id="@id/mqf" android:layout_marginTop="@dimen/bhn" android:text="@string/wyu" style="@style/ac0"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+    </LinearLayout>
+</com.tencent.qqmail.activity.contacts.view.ContactResetBaseLayout>

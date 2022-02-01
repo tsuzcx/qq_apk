@@ -6,18 +6,18 @@ import android.os.Looper;
 
 public class ea
 {
-  private static Looper lA = null;
-  private static Looper lB = null;
+  private static Looper lA;
+  private static Looper lB;
   private static Context lC;
-  private static dt lD = null;
+  private static dt lD;
   private static boolean lE = false;
-  private static String lF = null;
+  private static String lF;
   private static boolean lG = false;
   private static boolean lH = false;
-  private static eb lI = null;
-  private static dp lJ = null;
-  private static ds lK = null;
-  private static dw lL = null;
+  private static eb lI;
+  private static dp lJ;
+  private static ds lK;
+  private static dw lL;
   public static boolean ly = false;
   public static boolean lz = false;
   
@@ -34,30 +34,46 @@ public class ea
   
   public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
-      return paramArrayOfByte1;
+    byte[] arrayOfByte = paramArrayOfByte1;
+    if (paramArrayOfByte1 != null) {
+      if (paramArrayOfByte1.length == 0) {
+        return paramArrayOfByte1;
+      }
     }
     try
     {
       paramArrayOfByte1 = lK.a(paramArrayOfByte1, paramArrayOfByte2);
       return paramArrayOfByte1;
     }
-    catch (Throwable paramArrayOfByte1) {}
-    return null;
+    catch (Throwable paramArrayOfByte1)
+    {
+      label26:
+      break label26;
+    }
+    arrayOfByte = null;
+    return arrayOfByte;
   }
   
   public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
-      return paramArrayOfByte1;
+    byte[] arrayOfByte = paramArrayOfByte1;
+    if (paramArrayOfByte1 != null) {
+      if (paramArrayOfByte1.length == 0) {
+        return paramArrayOfByte1;
+      }
     }
     try
     {
       paramArrayOfByte1 = lK.b(paramArrayOfByte1, paramArrayOfByte2);
       return paramArrayOfByte1;
     }
-    catch (Throwable paramArrayOfByte1) {}
-    return null;
+    catch (Throwable paramArrayOfByte1)
+    {
+      label26:
+      break label26;
+    }
+    arrayOfByte = null;
+    return arrayOfByte;
   }
   
   public static dw bV()
@@ -100,15 +116,16 @@ public class ea
   
   public static eb cw()
   {
-    if (lI == null) {}
-    try
-    {
-      if (lI == null) {
-        lI = new ec(et.b(3, 8589934592L));
+    if (lI == null) {
+      try
+      {
+        if (lI == null) {
+          lI = new ec(et.b(3, 8589934592L));
+        }
       }
-      return lI;
+      finally {}
     }
-    finally {}
+    return lI;
   }
   
   public static boolean f(byte[] paramArrayOfByte)
@@ -118,18 +135,19 @@ public class ea
   
   public static Looper getLooper()
   {
-    if (lA == null) {}
-    try
-    {
-      if (lA == null)
+    if (lA == null) {
+      try
       {
-        HandlerThread localHandlerThread = bV().newFreeHandlerThread("Shark-Looper", 0);
-        localHandlerThread.start();
-        lA = localHandlerThread.getLooper();
+        if (lA == null)
+        {
+          HandlerThread localHandlerThread = bV().newFreeHandlerThread("Shark-Looper", 0);
+          localHandlerThread.start();
+          lA = localHandlerThread.getLooper();
+        }
       }
-      return lA;
+      finally {}
     }
-    finally {}
+    return lA;
   }
   
   public static void h(Context paramContext)
@@ -159,7 +177,7 @@ public class ea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ea
  * JD-Core Version:    0.7.0.1
  */

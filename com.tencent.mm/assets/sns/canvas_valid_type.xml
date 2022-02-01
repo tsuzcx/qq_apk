@@ -30,6 +30,19 @@
 		<subtype val="10" ios="1" android="1" desc="打电话" />
 		<subtype val="11" ios="1" android="1" desc="品牌心愿单" />
 		<subtype val="12" ios="1" android="1" desc="客服会话" />
+		<subtype val="13" ios="1" android="1" desc="智能中转电话" />
+		<subtype val="14" ios="1" android="1" desc="红包封面领取按钮" />
+		<subtype val="15" ios="1" android="1" desc="QRCode按钮,点击之后相当于识别二维码的效果" />
+		<subtype val="16" ios="1" android="1" desc="扫一扫识别" />
+		<subtype val="17" ios="1" android="1" desc="一键关注公众号" />
+		<subtype val="18" ios="1" android="1" desc="跳转个人profile页" />
+        <subtype val="19" ios="1" android="1" desc="商家券按钮" />
+        <subtype val="20" ios="1" android="1" desc="视频号直播预约按钮" />
+		<subtype val="21" ios="1" android="1" desc="跳转视频号profile页" />
+		<subtype val="22" ios="1" android="1" desc="跳转视频号Feeds页" />
+		<subtype val="23" ios="1" android="1" desc="领取表情" />
+		<subtype val="24" ios="1" android="1" desc="跳转客服会话页" />
+		<subtype val="25" ios="1" android="1" desc="新的预约按钮" />
 	</componenttype>
 	<componenttype val="41" ios="1" android="1" desc="纯图类型">
 		<subtype val="0" ios="1" android="1" desc="纯图default类型" />
@@ -88,4 +101,35 @@
 	<componenttype val="133" ios="1" android="1" desc="新的全景图组件">
 		<subtype val="0" ios="1" android="1" desc="新的全景图组件" />
 	</componenttype>
+	<componenttype val="134" ios="1" android="1" desc="落地页底部的悬浮按钮">
+		<subtype val="0" ios="1" android="1" desc="落地页底部的悬浮按钮" />
+	</componenttype>
+	<componenttype val="135" ios="1" android="1" desc="落地页上拉刷新">
+		<subtype val="0" ios="1" android="1" desc="落地页上拉刷新" />
+	</componenttype>
+	<componenttype val="136" ios="1" android="1" desc="新的webview">
+		<subtype val="0" ios="1" android="1" desc="新的webview" />
+	</componenttype>
+    <componenttype val="138" ios="1" android="1" desc="新的彩蛋悬浮跳转">
+        <subtype val="0" ios="1" android="1" desc="新的webview" />
+    </componenttype>
+	<componenttype val="139" ios="1" android="1" desc="容器组件，多个子view中选择一个展示">
+		<subtype val="0" ios="1" android="1" desc="容器组件，多个子view中选择一个展示" />
+	</componenttype>
+	<componenttype val="140" ios="1" android="1" desc="分享组件，点击弹出分享菜单">
+		<subtype val="0" ios="1" android="1" desc="分享组件，点击弹出分享菜单" />
+	</componenttype>
+	<componenttype val="141" ios="1" android="1" desc="广告原生页底部的动画悬浮按钮">
+		<subtype val="0" ios="1" android="1" desc="广告原生页底部的动画悬浮按钮" />
+	</componenttype>
+	<componenttype val="142" ios="1" android="1" desc="新视频播放器通用组件">
+		<subtype val="0" ios="1" android="1" desc="新视频播放器通用组件" />
+	</componenttype>
+	<componenttype val="143" ios="1" android="1" desc="社交卡片">
+		<subtype val="0" ios="1" android="1" desc="社交卡片" />
+	</componenttype>
+	<componenttype val="144" ios="1" android="1" desc="红包卡片">
+		<subtype val="0" ios="1" android="1" desc="红包卡片" />
+	</componenttype>
+
 </canvasvalidtype>

@@ -1,105 +1,157 @@
 package c.t.m.g;
 
-import android.content.Context;
-import android.util.Pair;
-import java.io.IOException;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.map.geolocation.internal.TencentLogImpl;
+import com.tencent.tencentmap.lbssdk.service.e;
+import java.io.ByteArrayOutputStream;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.zip.GZIPOutputStream;
 
-public final class ep
-  implements ez
+final class ep
 {
-  private static d a = null;
+  final LinkedBlockingQueue<ep.a> a;
+  final ea b;
+  long c;
+  long d;
+  long e;
+  long f;
+  volatile boolean g;
+  long h;
   
-  public ep(Context paramContext, String paramString)
+  ep(ea paramea)
   {
+    this.b = paramea;
+    this.a = new LinkedBlockingQueue(3);
+  }
+  
+  static String a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if ((!TencentLogImpl.isDebugEnabled()) && (paramArrayOfByte != null)) {}
     try
     {
-      a = a.a(new b(paramContext, "test_uuid", paramString));
+      if (e.o(paramArrayOfByte, 1) >= 0) {
+        return eg.a(paramInt, 1);
+      }
+      paramArrayOfByte = eg.a(paramInt, 0);
+      return paramArrayOfByte;
+    }
+    catch (UnsatisfiedLinkError paramArrayOfByte)
+    {
+      label35:
+      break label35;
+    }
+    return null;
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte)
+  {
+    Object localObject4 = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    Object localObject2 = localObject4;
+    try
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
+      localObject1 = localObject3;
+      localObject2 = localObject4;
+      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+      localObject1 = localObject3;
+      localObject2 = localObject4;
+      localGZIPOutputStream.write(paramArrayOfByte);
+      localObject1 = localObject3;
+      localObject2 = localObject4;
+      localGZIPOutputStream.close();
+      localObject1 = localObject3;
+      localObject2 = localObject4;
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      localObject1 = paramArrayOfByte;
+      localObject2 = paramArrayOfByte;
+      localByteArrayOutputStream.close();
+      return paramArrayOfByte;
+    }
+    catch (Error paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      return localObject1;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return localObject2;
+  }
+  
+  private void b()
+  {
+    this.c = 0L;
+    this.d = 0L;
+    this.e = 0L;
+    this.f = 0L;
+  }
+  
+  public final void a()
+  {
+    if (!this.g) {
       return;
     }
-    catch (Throwable paramContext)
+    this.g = false;
+    this.a.clear();
+    this.a.offer(ep.a.e);
+    this.h = 0L;
+    if (this.f != 0L)
     {
-      a = null;
+      long l1 = SystemClock.elapsedRealtime();
+      long l2 = this.f;
+      String.format(Locale.ENGLISH, "shutdown: duration=%ds, sent=%dB, recv=%dB, reqCount=%d", new Object[] { Long.valueOf((l1 - l2) / 1000L), Long.valueOf(this.d), Long.valueOf(this.e), Long.valueOf(this.c) });
+    }
+    b();
+  }
+  
+  final void a(ep.a parama)
+  {
+    ep.a.e(parama);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      if (ep.a.b((ep.a)localIterator.next()) == ep.a.b(parama))
+      {
+        i = 1;
+        break label48;
+      }
+    }
+    int i = 0;
+    label48:
+    if ((ep.a.f(parama) > 0) && (i == 0) && (ep.a.b(parama) != 2))
+    {
+      new StringBuilder("retryIfNeed: times=").append(ep.a.f(parama));
+      this.a.offer(parama);
     }
   }
   
-  private static String a(String paramString)
+  public final void a(String paramString)
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
-    if (paramString != null)
-    {
-      paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
-      {
-        str1 = paramString[i].trim();
-        int k = str1.indexOf("charset=");
-        if (-1 != k) {
-          str1 = str1.substring(k + 8, str1.length());
-        }
-      }
-      else
-      {
-        return str1;
-      }
-      i += 1;
-    }
-  }
-  
-  public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
-  {
-    if (a == null) {
-      throw new IOException("can not init net sdk");
-    }
     try
     {
-      d locald = a;
-      paramString = locald.a(paramString, paramArrayOfByte);
-      paramString.a("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-      paramString.b();
-      new StringBuilder("req id: ").append(paramString.a());
-      paramString = locald.a(paramString);
-      if (paramString.a() == 0) {
-        break label123;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      throw new IOException("net sdk error: errorCode=" + paramString.a());
-    }
-    catch (Exception paramString)
-    {
-      if (!(paramString instanceof IOException)) {
-        break label230;
+      Object localObject = a(paramString.getBytes("UTF-8"));
+      e.o((byte[])localObject, 2);
+      localObject = new ep.a(2, (byte[])localObject, "https://ue.indoorloc.map.qq.com/", null);
+      ((ep.a)localObject).b = paramString;
+      if (ep.a.a((ep.a)localObject) != null) {
+        this.a.offer(localObject);
       }
+      return;
     }
-    throw ((IOException)paramString);
-    label123:
-    switch (paramString.b())
-    {
-    }
-    for (;;)
-    {
-      throw new IOException("net sdk error: httpStatus=" + paramString.b());
-      if (paramString.c() != null)
-      {
-        paramArrayOfByte = a(paramString.a("content-type"));
-        return Pair.create(paramString.c(), paramArrayOfByte);
-      }
-      paramString = Pair.create("{}".getBytes(), "utf-8");
-      return paramString;
-      label230:
-      throw new IOException(paramString.getMessage());
-    }
+    catch (Exception|Error paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ep
  * JD-Core Version:    0.7.0.1
  */

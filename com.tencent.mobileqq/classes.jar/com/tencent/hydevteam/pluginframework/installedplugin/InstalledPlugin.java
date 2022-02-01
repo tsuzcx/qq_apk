@@ -35,34 +35,27 @@ public class InstalledPlugin
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              bool1 = bool2;
-            } while (paramObject == null);
-            bool1 = bool2;
-          } while (getClass() != paramObject.getClass());
-          paramObject = (InstalledPlugin)paramObject;
-          bool1 = bool2;
-        } while (!this.pluginPackageName.equals(paramObject.pluginPackageName));
-        bool1 = bool2;
-      } while (!this.pluginVersionForConfigPluginLoader.equals(paramObject.pluginVersionForConfigPluginLoader));
-      bool1 = bool2;
-    } while (!this.pluginVersionForPluginLoaderManage.equals(paramObject.pluginVersionForPluginLoaderManage));
-    return this.pluginFile.equals(paramObject.pluginFile);
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (InstalledPlugin)paramObject;
+      if (!this.pluginPackageName.equals(paramObject.pluginPackageName)) {
+        return false;
+      }
+      if (!this.pluginVersionForConfigPluginLoader.equals(paramObject.pluginVersionForConfigPluginLoader)) {
+        return false;
+      }
+      if (!this.pluginVersionForPluginLoaderManage.equals(paramObject.pluginVersionForPluginLoaderManage)) {
+        return false;
+      }
+      return this.pluginFile.equals(paramObject.pluginFile);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -72,12 +65,24 @@ public class InstalledPlugin
   
   public String toString()
   {
-    return "InstalledPlugin{pluginPackageName='" + this.pluginPackageName + '\'' + ", pluginVersionForConfigPluginLoader='" + this.pluginVersionForConfigPluginLoader + '\'' + ", pluginVersionForPluginLoaderManage='" + this.pluginVersionForPluginLoaderManage + '\'' + ", pluginFile=" + this.pluginFile + '}';
+    StringBuilder localStringBuilder = new StringBuilder("InstalledPlugin{pluginPackageName='");
+    localStringBuilder.append(this.pluginPackageName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pluginVersionForConfigPluginLoader='");
+    localStringBuilder.append(this.pluginVersionForConfigPluginLoader);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pluginVersionForPluginLoaderManage='");
+    localStringBuilder.append(this.pluginVersionForPluginLoaderManage);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pluginFile=");
+    localStringBuilder.append(this.pluginFile);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameCenterListView android:id="@id/eii" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a7n" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <RelativeLayout android:id="@id/civ" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/m4" android:gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/f7f" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/eqi" android:layout="@layout/ax1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" />
+</FrameLayout>

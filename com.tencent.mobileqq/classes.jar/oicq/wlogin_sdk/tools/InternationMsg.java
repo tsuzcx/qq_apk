@@ -9,9 +9,13 @@ public class InternationMsg
   public static String a(InternationMsg.MSG_TYPE paramMSG_TYPE)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if ((paramMSG_TYPE == a[i].b) && (t.u == a[i].a)) {
+      InternationMsg.a[] arrayOfa = a;
+      if (i >= arrayOfa.length) {
+        break;
+      }
+      if ((paramMSG_TYPE == arrayOfa[i].b) && (t.v == a[i].a)) {
         return a[i].c;
       }
       i += 1;
@@ -21,7 +25,7 @@ public class InternationMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.InternationMsg
  * JD-Core Version:    0.7.0.1
  */

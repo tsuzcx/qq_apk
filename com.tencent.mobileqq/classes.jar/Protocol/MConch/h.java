@@ -31,17 +31,19 @@ public final class h
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bv != 0) {
-      paramJceOutputStream.write(this.bv, 0);
+    int i = this.bv;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.bA != null) {
-      paramJceOutputStream.write(this.bA, 1);
+    ArrayList localArrayList = this.bA;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Protocol.MConch.h
  * JD-Core Version:    0.7.0.1
  */

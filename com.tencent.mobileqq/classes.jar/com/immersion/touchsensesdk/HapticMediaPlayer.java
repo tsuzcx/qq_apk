@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class HapticMediaPlayer
 {
-  private static final String TAG = HapticMediaPlayer.class.getSimpleName();
+  private static final String TAG = "HapticMediaPlayer";
   private static boolean sSDKHealthState = true;
   private ConnectionProxy mConnectionProxy;
   private long mNativeInstance = 0L;
@@ -220,23 +220,20 @@ public class HapticMediaPlayer
         if (!sSDKHealthState)
         {
           Log.e(TAG, "TouchSense SDK has previously encountered a fatal error is now inoperative! Haptics will not be played.");
-          paramContext = null;
-          return paramContext;
+          return null;
         }
         if (paramAsyncConnectionProxy != null)
         {
           paramAsyncConnectionProxy = (ConnectionProxy)paramAsyncConnectionProxy.getConnectionProxy();
           long l = _nCreate(paramContext, paramString1, paramString2, paramString3, paramAsyncConnectionProxy);
-          if (l == 0L)
-          {
-            paramContext = null;
-            continue;
+          if (l == 0L) {
+            return null;
           }
-          paramString1 = new HapticMediaPlayer(l);
-          paramString1.mConnectionProxy = paramAsyncConnectionProxy;
-          paramContext = paramString1;
-          if (paramString1.versionCheck()) {
-            continue;
+          paramContext = new HapticMediaPlayer(l);
+          paramContext.mConnectionProxy = paramAsyncConnectionProxy;
+          boolean bool = paramContext.versionCheck();
+          if (bool) {
+            return paramContext;
           }
           throw new IllegalStateException("HapticMediaPlayer could not be initialized. Version mismatch between TouchSenseSDK.jar and libTouchSenseSDK.so. Make sure the two libraries are compatible.");
         }
@@ -283,8 +280,8 @@ public class HapticMediaPlayer
   
   private final boolean versionCheck()
   {
-    Object localObject = new int[5];
-    Object tmp5_4 = localObject;
+    Object localObject1 = new int[5];
+    Object tmp5_4 = localObject1;
     tmp5_4[0] = 41;
     Object tmp10_5 = tmp5_4;
     tmp10_5[1] = 42;
@@ -295,28 +292,29 @@ public class HapticMediaPlayer
     Object tmp25_20 = tmp20_15;
     tmp25_20[4] = 45;
     tmp25_20;
-    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject2 = new StringBuilder();
     int i = 0;
-    for (;;)
+    while (i < localObject1.length)
     {
-      int j;
-      if (i < localObject.length)
-      {
-        j = getPlayerInfo(localObject[i]);
-        if (j >= 0) {}
-      }
-      else
-      {
-        localObject = localStringBuilder.toString().replaceAll("(\\.0)+$", "");
-        Log.i(TAG, "Native version: " + (String)localObject + ", Jar version: " + "v2.1.14.22");
-        return "v2.1.14.22".contains((CharSequence)localObject);
+      int j = getPlayerInfo(localObject1[i]);
+      if (j < 0) {
+        break;
       }
       if (i != 0) {
-        localStringBuilder.append(".");
+        ((StringBuilder)localObject2).append(".");
       }
-      localStringBuilder.append(j);
+      ((StringBuilder)localObject2).append(j);
       i += 1;
     }
+    localObject1 = ((StringBuilder)localObject2).toString().replaceAll("(\\.0)+$", "");
+    localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Native version: ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(", Jar version: ");
+    localStringBuilder.append("v2.1.14.22");
+    Log.i((String)localObject2, localStringBuilder.toString());
+    return "v2.1.14.22".contains((CharSequence)localObject1);
   }
   
   public final int addResource(String paramString, int paramInt)
@@ -329,9 +327,10 @@ public class HapticMediaPlayer
   
   public final int dispose()
   {
-    if (this.mConnectionProxy != null)
+    ConnectionProxy localConnectionProxy = this.mConnectionProxy;
+    if (localConnectionProxy != null)
     {
-      this.mConnectionProxy.abort();
+      localConnectionProxy.abort();
       this.mConnectionProxy = null;
     }
     if (sSDKHealthState) {
@@ -435,7 +434,7 @@ public class HapticMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.immersion.touchsensesdk.HapticMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ final class a$12
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(46676);
-    if (this.ueR) {
-      this.gjR.finish();
+    AppMethodBeat.i(70187);
+    if (this.VCx) {
+      this.hkm.finish();
     }
-    AppMethodBeat.o(46676);
+    AppMethodBeat.o(70187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.util.a.12
  * JD-Core Version:    0.7.0.1
  */

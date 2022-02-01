@@ -25,119 +25,119 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class aq
   implements Handler.Callback
 {
-  private static final Object KF = new Object();
-  public static final Status Or = new Status(4, "Sign-out occurred while this API call was in progress.");
-  private static final Status Os = new Status(4, "The user must be signed in to make this API call.");
-  private static aq Ou;
-  private final com.google.android.gms.common.b HF;
-  private final Map<ef<?>, ar<?>> MY = new ConcurrentHashMap(5, 0.75F, 1);
-  private long NT = 120000L;
-  private long NU = 5000L;
-  private final Set<ef<?>> OA = new a();
-  private long Ot = 10000L;
-  private int Ov = -1;
-  private final AtomicInteger Ow = new AtomicInteger(1);
-  private final AtomicInteger Ox = new AtomicInteger(0);
-  private x Oy = null;
-  private final Set<ef<?>> Oz = new a();
+  private static final Object Mu = new Object();
+  public static final Status Qg = new Status(4, "Sign-out occurred while this API call was in progress.");
+  private static final Status Qh = new Status(4, "The user must be signed in to make this API call.");
+  private static aq Qj;
+  private final com.google.android.gms.common.b Ju;
+  private final Map<ef<?>, ar<?>> ON = new ConcurrentHashMap(5, 0.75F, 1);
+  private long PI = 120000L;
+  private long PJ = 5000L;
+  private long Qi = 10000L;
+  private int Qk = -1;
+  private final AtomicInteger Ql = new AtomicInteger(1);
+  private final AtomicInteger Qm = new AtomicInteger(0);
+  private x Qn = null;
+  private final Set<ef<?>> Qo = new a();
+  private final Set<ef<?>> Qp = new a();
+  private final Handler dG;
   private final Context mContext;
-  private final Handler mHandler;
   
   private aq(Context paramContext, Looper paramLooper, com.google.android.gms.common.b paramb)
   {
     this.mContext = paramContext;
-    this.mHandler = new Handler(paramLooper, this);
-    this.HF = paramb;
-    this.mHandler.sendMessage(this.mHandler.obtainMessage(6));
+    this.dG = new Handler(paramLooper, this);
+    this.Ju = paramb;
+    this.dG.sendMessage(this.dG.obtainMessage(6));
   }
   
   private void c(ad<?> paramad)
   {
-    ef localef = paramad.gJ();
-    ar localar2 = (ar)this.MY.get(localef);
+    ef localef = paramad.gT();
+    ar localar2 = (ar)this.ON.get(localef);
     ar localar1 = localar2;
     if (localar2 == null)
     {
       localar1 = new ar(this, paramad);
-      this.MY.put(localef, localar1);
+      this.ON.put(localef, localar1);
     }
-    if (localar1.gs()) {
-      this.OA.add(localef);
+    if (localar1.gC()) {
+      this.Qp.add(localef);
     }
     localar1.connect();
   }
   
-  public static aq iH()
+  public static aq iP()
   {
-    synchronized (KF)
+    synchronized (Mu)
     {
-      com.google.android.gms.common.internal.d.e(Ou, "Must guarantee manager is non-null before using getInstance");
-      aq localaq = Ou;
+      com.google.android.gms.common.internal.d.g(Qj, "Must guarantee manager is non-null before using getInstance");
+      aq localaq = Qj;
       return localaq;
     }
   }
   
-  private void iJ()
+  private void iR()
   {
-    Iterator localIterator = this.OA.iterator();
+    Iterator localIterator = this.Qp.iterator();
     while (localIterator.hasNext())
     {
       ef localef = (ef)localIterator.next();
-      ((ar)this.MY.remove(localef)).iO();
+      ((ar)this.ON.remove(localef)).iX();
     }
-    this.OA.clear();
+    this.Qp.clear();
   }
   
-  public static aq s(Context paramContext)
+  public static aq t(Context paramContext)
   {
-    synchronized (KF)
+    synchronized (Mu)
     {
-      if (Ou == null)
+      if (Qj == null)
       {
         Object localObject2 = new HandlerThread("GoogleApiHandler", 9);
         ((HandlerThread)localObject2).start();
         localObject2 = ((HandlerThread)localObject2).getLooper();
-        Ou = new aq(paramContext.getApplicationContext(), (Looper)localObject2, com.google.android.gms.common.b.gp());
+        Qj = new aq(paramContext.getApplicationContext(), (Looper)localObject2, com.google.android.gms.common.b.gz());
       }
-      paramContext = Ou;
+      paramContext = Qj;
       return paramContext;
     }
   }
   
   final PendingIntent a(ef<?> paramef, int paramInt)
   {
-    if ((ar)this.MY.get(paramef) == null) {
+    if ((ar)this.ON.get(paramef) == null) {
       return null;
     }
-    paramef = ((ar)this.MY.get(paramef)).iW();
+    paramef = ((ar)this.ON.get(paramef)).jf();
     if (paramef == null) {
       return null;
     }
-    return PendingIntent.getActivity(this.mContext, paramInt, paramef.gu(), 134217728);
+    return PendingIntent.getActivity(this.mContext, paramInt, paramef.gE(), 134217728);
   }
   
   public final void a(ConnectionResult paramConnectionResult, int paramInt)
   {
     if (!c(paramConnectionResult, paramInt)) {
-      this.mHandler.sendMessage(this.mHandler.obtainMessage(5, paramInt, 0, paramConnectionResult));
+      this.dG.sendMessage(this.dG.obtainMessage(5, paramInt, 0, paramConnectionResult));
     }
   }
   
   public final <O extends com.google.android.gms.common.api.b> void a(ad<O> paramad, int paramInt, g<? extends w, com.google.android.gms.common.api.g> paramg)
   {
     paramg = new ec(paramInt, paramg);
-    this.mHandler.sendMessage(this.mHandler.obtainMessage(4, new bg(paramg, this.Ox.get(), paramad)));
+    this.dG.sendMessage(this.dG.obtainMessage(4, new bg(paramg, this.Qm.get(), paramad)));
   }
   
   public final void a(x paramx)
   {
-    synchronized (KF)
+    synchronized (Mu)
     {
-      if (this.Oy != paramx)
+      if (this.Qn != paramx)
       {
-        this.Oy = paramx;
-        this.Oz.clear();
-        this.Oz.addAll(paramx.is());
+        this.Qn = paramx;
+        this.Qo.clear();
+        this.Qo.addAll(paramx.iA());
       }
       return;
     }
@@ -150,30 +150,30 @@ public final class aq
     while (paramIterable.hasNext())
     {
       Object localObject = (ad)paramIterable.next();
-      localObject = (ar)this.MY.get(((ad)localObject).gJ());
+      localObject = (ar)this.ON.get(((ad)localObject).gT());
       if ((localObject == null) || (!((ar)localObject).isConnected()))
       {
-        this.mHandler.sendMessage(this.mHandler.obtainMessage(2, localc));
-        return localc.ia();
+        this.dG.sendMessage(this.dG.obtainMessage(2, localc));
+        return localc.ii();
       }
     }
-    localc.ib();
-    return localc.ia();
+    localc.ij();
+    return localc.ii();
   }
   
   public final void b(ad<?> paramad)
   {
-    this.mHandler.sendMessage(this.mHandler.obtainMessage(7, paramad));
+    this.dG.sendMessage(this.dG.obtainMessage(7, paramad));
   }
   
   final void b(x paramx)
   {
-    synchronized (KF)
+    synchronized (Mu)
     {
-      if (this.Oy == paramx)
+      if (this.Qn == paramx)
       {
-        this.Oy = null;
-        this.Oz.clear();
+        this.Qn = null;
+        this.Qo.clear();
       }
       return;
     }
@@ -181,12 +181,7 @@ public final class aq
   
   final boolean c(ConnectionResult paramConnectionResult, int paramInt)
   {
-    return this.HF.a(this.mContext, paramConnectionResult, paramInt);
-  }
-  
-  public final void hY()
-  {
-    this.mHandler.sendMessage(this.mHandler.obtainMessage(3));
+    return this.Ju.a(this.mContext, paramConnectionResult, paramInt);
   }
   
   public final boolean handleMessage(Message paramMessage)
@@ -205,22 +200,22 @@ public final class aq
       if (((Boolean)paramMessage.obj).booleanValue()) {}
       for (long l = 10000L;; l = 300000L)
       {
-        this.Ot = l;
-        this.mHandler.removeMessages(12);
-        paramMessage = this.MY.keySet().iterator();
+        this.Qi = l;
+        this.dG.removeMessages(12);
+        paramMessage = this.ON.keySet().iterator();
         while (paramMessage.hasNext())
         {
           localObject1 = (ef)paramMessage.next();
-          this.mHandler.sendMessageDelayed(this.mHandler.obtainMessage(12, localObject1), this.Ot);
+          this.dG.sendMessageDelayed(this.dG.obtainMessage(12, localObject1), this.Qi);
         }
       }
     case 2: 
       paramMessage = (c)paramMessage.obj;
-      localObject1 = paramMessage.hZ().iterator();
+      localObject1 = paramMessage.ih().iterator();
       if (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ef)((Iterator)localObject1).next();
-        localar = (ar)this.MY.get(localObject2);
+        localar = (ar)this.ON.get(localObject2);
         if (localar != null) {
           break label286;
         }
@@ -235,46 +230,46 @@ public final class aq
         return true;
         if (localar.isConnected())
         {
-          paramMessage.a((ef)localObject2, ConnectionResult.Hb);
+          paramMessage.a((ef)localObject2, ConnectionResult.IQ);
           break;
         }
-        if (localar.iR() != null)
+        if (localar.ja() != null)
         {
-          paramMessage.a((ef)localObject2, localar.iR());
+          paramMessage.a((ef)localObject2, localar.ja());
           break;
         }
         localar.a(paramMessage);
         break;
-        paramMessage = this.MY.values().iterator();
+        paramMessage = this.ON.values().iterator();
         while (paramMessage.hasNext())
         {
           localObject1 = (ar)paramMessage.next();
-          ((ar)localObject1).iQ();
+          ((ar)localObject1).iZ();
           ((ar)localObject1).connect();
         }
         localObject2 = (bg)paramMessage.obj;
-        localObject1 = (ar)this.MY.get(((bg)localObject2).Pg.gJ());
+        localObject1 = (ar)this.ON.get(((bg)localObject2).QV.gT());
         paramMessage = (Message)localObject1;
         if (localObject1 == null)
         {
-          c(((bg)localObject2).Pg);
-          paramMessage = (ar)this.MY.get(((bg)localObject2).Pg.gJ());
+          c(((bg)localObject2).QV);
+          paramMessage = (ar)this.ON.get(((bg)localObject2).QV.gT());
         }
-        if ((paramMessage.gs()) && (this.Ox.get() != ((bg)localObject2).Pf))
+        if ((paramMessage.gC()) && (this.Qm.get() != ((bg)localObject2).QU))
         {
-          ((bg)localObject2).Pe.i(Or);
-          paramMessage.iO();
+          ((bg)localObject2).QT.i(Qg);
+          paramMessage.iX();
         }
         else
         {
-          paramMessage.a(((bg)localObject2).Pe);
+          paramMessage.a(((bg)localObject2).QT);
         }
       }
     case 5: 
       label286:
       i = paramMessage.arg1;
       localObject1 = (ConnectionResult)paramMessage.obj;
-      localObject2 = this.MY.values().iterator();
+      localObject2 = this.ON.values().iterator();
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
@@ -287,8 +282,8 @@ public final class aq
     {
       if (paramMessage != null)
       {
-        localObject2 = String.valueOf(this.HF.bb(((ConnectionResult)localObject1).getErrorCode()));
-        localObject1 = String.valueOf(((ConnectionResult)localObject1).go());
+        localObject2 = String.valueOf(this.Ju.bv(((ConnectionResult)localObject1).getErrorCode()));
+        localObject1 = String.valueOf(((ConnectionResult)localObject1).gy());
         paramMessage.d(new Status(17, String.valueOf(localObject2).length() + 69 + String.valueOf(localObject1).length() + "Error resolution was canceled by the user, original error message: " + (String)localObject2 + ": " + (String)localObject1));
         break;
       }
@@ -299,44 +294,49 @@ public final class aq
         break;
       }
       d.a((Application)this.mContext.getApplicationContext());
-      d.ic().a(new e()
+      d.ik().a(new e()
       {
-        public final void x(boolean paramAnonymousBoolean)
+        public final void A(boolean paramAnonymousBoolean)
         {
           aq.a(aq.this).sendMessage(aq.a(aq.this).obtainMessage(1, Boolean.valueOf(paramAnonymousBoolean)));
         }
       });
-      if (d.ic().id()) {
+      if (d.ik().il()) {
         break;
       }
-      this.Ot = 300000L;
+      this.Qi = 300000L;
       break;
       c((ad)paramMessage.obj);
       break;
-      if (!this.MY.containsKey(paramMessage.obj)) {
+      if (!this.ON.containsKey(paramMessage.obj)) {
         break;
       }
-      ((ar)this.MY.get(paramMessage.obj)).resume();
+      ((ar)this.ON.get(paramMessage.obj)).resume();
       break;
-      iJ();
+      iR();
       break;
-      if (!this.MY.containsKey(paramMessage.obj)) {
+      if (!this.ON.containsKey(paramMessage.obj)) {
         break;
       }
-      ((ar)this.MY.get(paramMessage.obj)).iT();
+      ((ar)this.ON.get(paramMessage.obj)).jc();
       break;
-      if (!this.MY.containsKey(paramMessage.obj)) {
+      if (!this.ON.containsKey(paramMessage.obj)) {
         break;
       }
-      ((ar)this.MY.get(paramMessage.obj)).iV();
+      ((ar)this.ON.get(paramMessage.obj)).je();
       break;
       paramMessage = null;
     }
   }
   
-  public final int iI()
+  public final int iQ()
   {
-    return this.Ow.getAndIncrement();
+    return this.Ql.getAndIncrement();
+  }
+  
+  public final void ig()
+  {
+    this.dG.sendMessage(this.dG.obtainMessage(3));
   }
 }
 

@@ -38,17 +38,19 @@ public final class ICReq
     paramJceOutputStream.write(this.uUin, 0);
     paramJceOutputStream.write(this.uObjUin, 1);
     paramJceOutputStream.write(this.scence, 2);
-    if (this.device_info != null) {
-      paramJceOutputStream.write(this.device_info, 3);
+    String str = this.device_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 4);
+    str = this.qua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QZMALL_COMM_PROTOCOL.ICReq
  * JD-Core Version:    0.7.0.1
  */

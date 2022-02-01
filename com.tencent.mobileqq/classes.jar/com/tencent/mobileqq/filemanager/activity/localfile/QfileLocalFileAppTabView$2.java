@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import arqx;
-import arrj;
-import arvi;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView.ScanParams;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -15,31 +15,25 @@ class QfileLocalFileAppTabView$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject;
-    if (this.this$0.f)
+    if (this.this$0.n)
     {
-      arrj.a(this.this$0.a, this.this$0);
-      arrj.a(true, arqx.a().b(), ".apk", "", localHashMap, this.this$0);
-      localObject = arqx.a().a();
-      if (localObject != null) {
-        arrj.a(true, (String)localObject, ".apk", "", localHashMap, null);
+      FileCategoryUtil.a(this.this$0.C, this.this$0);
+      FileCategoryUtil.a(true, AppConstants.SDCARD_FILE_SAVE_PATH, ".apk", "", localHashMap, this.this$0);
+    }
+    else
+    {
+      Iterator localIterator = this.this$0.m.iterator();
+      while (localIterator.hasNext()) {
+        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".apk", "", localHashMap, this.this$0);
       }
     }
-    for (;;)
-    {
-      arrj.a(localHashMap);
-      QfileLocalFileAppTabView.a(this.this$0, new QfileLocalFileAppTabView.2.1(this));
-      return;
-      localObject = this.this$0.d.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        arrj.a(true, ((arvi)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
-      }
-    }
+    FileCategoryUtil.a(localHashMap);
+    QfileLocalFileAppTabView.a(this.this$0, new QfileLocalFileAppTabView.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.2
  * JD-Core Version:    0.7.0.1
  */

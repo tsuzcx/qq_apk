@@ -1,12 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import awhp;
-import bkbq;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.AdClickPos;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.CommentAdParams;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.experiment.AdExperimentData;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdReporter;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJCommonService;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.kandian.repo.video.IVideoCardUIModel;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -17,24 +25,21 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import obl;
-import obm;
-import oed;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qkd;
-import qlg;
 import tencent.im.oidb.articlesummary.articlesummary.AdInfo;
 import tencent.im.oidb.articlesummary.articlesummary.NegFeedback;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
 
 public class AdvertisementInfo
-  extends ArticleInfo
-  implements Parcelable
+  extends AbsBaseArticleInfo
 {
   public static final long ADVERTISEMENT_ALGORITHM_ID_MASK = 3L;
   public static final int AD_STYLE_0 = 0;
@@ -43,146 +48,208 @@ public class AdvertisementInfo
   public static final int AD_STYLE_3 = 3;
   public static final int APP_STATE_DOWNLOAD = 0;
   public static final int APP_STATE_OPEN = 1;
-  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new qkd();
+  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new AdvertisementInfo.1();
   public static final int IMAX_IMG_TYPE = 1002;
   public static final int IMAX_VIDEO_TYPE = 1001;
   public static final int PRODUCT_TYPE_APP = 12;
-  public static final String TABLE_NAME = AdvertisementInfo.class.getSimpleName();
-  @awhp
-  public int adStrategyType;
-  @awhp
-  public int adbt;
-  @awhp
-  public int adpa;
-  @awhp
-  public int adpb;
+  public static final String TABLE_NAME = "AdvertisementInfo";
+  public AdClickPos adClickPos;
+  @notColumn
+  public AdExperimentData adExperimentData = new AdExperimentData();
+  @notColumn
+  public int adPosType;
+  @notColumn
+  public int adStrategyType = 0;
+  @notColumn
+  public int adbt = 0;
+  @notColumn
+  public int adpa = 0;
+  @notColumn
+  public int adpb = 0;
+  @notColumn
+  public String amsNfbUrl;
+  @notColumn
+  public String chain_id;
   public int clickPos = -1;
-  public int clickType;
-  @awhp
+  public int clickType = 0;
+  @notColumn
   public int downloadState = 0;
-  @awhp
-  public VideoInfo.GameAdComData gameAdComData;
-  @awhp
+  @notColumn
+  public double ecpm;
+  @notColumn
+  public GameAdComData gameAdComData;
+  @notColumn
   public boolean hasAddExposure;
-  public boolean isClickFromPkFragment;
-  @awhp
-  public boolean isHideForAnimate;
-  @awhp
-  public boolean isIMaxAndNewStyle;
-  public boolean isMultiyVideo;
-  public boolean isShowBrandAnimate;
-  @awhp
-  public boolean isShowingGuide;
-  public long mADVideoAutoPlay;
-  public long mAdAdvertiseId;
-  public long mAdAid;
-  public String mAdAppDownLoadSchema;
-  public String mAdAppJson;
-  public String mAdApurl;
-  public String mAdBtnTxt;
-  public String mAdCanvasJson;
-  public String mAdCl;
-  public String mAdCorporateImageName;
-  public String mAdCorporateLogo;
-  public String mAdCorporationName;
-  public int mAdCostType;
-  public String mAdCustomizedInvokeUrl;
-  public String mAdDesc;
-  public int mAdDestType;
-  @awhp
-  public ArrayList<AdDislikeInfo> mAdDislikeInfos;
+  @notColumn
+  public boolean isBottomAd = false;
+  @notColumn
+  public boolean isClickClose;
+  public boolean isClickFromPkFragment = false;
+  @notColumn
+  public boolean isClickReplay;
+  @notColumn
+  public int isContract;
+  @notColumn
+  public boolean isHideForAnimate = false;
+  @notColumn
+  public boolean isIMaxAndNewStyle = false;
+  @notColumn
+  public boolean isKolGame;
+  public boolean isMultiyVideo = false;
+  @notColumn
+  public boolean isOutJump;
+  @notColumn
+  public int isShakeEggPage;
+  public boolean isShowBrandAnimate = false;
+  @notColumn
+  public boolean isShowingGuide = false;
+  @notColumn
+  public boolean isSmallCard;
+  @notColumn
+  public String liujinReportUrl;
+  public long mADVideoAutoPlay = 0L;
+  public long mAdAdvertiseId = 0L;
+  public long mAdAid = 0L;
+  public String mAdAppDownLoadSchema = null;
+  public String mAdAppJson = null;
+  public String mAdApurl = null;
+  public String mAdBtnTxt = null;
+  public String mAdCanvasJson = null;
+  public String mAdCl = null;
+  public String mAdCorporateImageName = null;
+  public String mAdCorporateLogo = null;
+  public String mAdCorporationName = null;
+  public int mAdCostType = 0;
+  public String mAdCustomizedInvokeUrl = null;
+  public String mAdDesc = null;
+  public int mAdDestType = 0;
+  @notColumn
+  public ArrayList<AdDislikeInfo> mAdDislikeInfos = null;
   public String mAdDownloadApiUrl;
-  public String mAdEffectUrl;
-  public String mAdExt;
-  public String mAdExtInfo;
-  public long mAdFeedId;
-  public long mAdFetchTime;
-  public String mAdImg;
+  public String mAdEffectUrl = null;
+  public String mAdExt = null;
+  public String mAdExtInfo = null;
+  public long mAdFeedId = 0L;
+  public long mAdFetchTime = 0L;
+  public String mAdImg = null;
   public ArrayList<String> mAdImgList = new ArrayList();
-  public String mAdImgs;
-  public String mAdInteractionReportUrl;
-  public int mAdJumpMode;
-  public int mAdKdPos;
-  public String mAdLandingPage;
-  public String mAdLandingPageReportUrl;
-  public int mAdLayout;
-  @awhp
+  public String mAdImgs = null;
+  public String mAdInteractionReportUrl = null;
+  public int mAdJumpMode = 0;
+  public int mAdKdPos = 0;
+  public String mAdLandingPage = null;
+  public String mAdLandingPageReportUrl = null;
+  public int mAdLayout = 0;
+  @notColumn
   public int mAdLocalSource = 1;
-  public int mAdMaterialHeight;
-  public int mAdMaterialId;
-  public int mAdMaterialWidth;
-  public long mAdNocoId;
-  public long mAdPosID;
-  public int mAdPosLayout;
-  public String mAdPrice;
-  public String mAdProductId;
-  public int mAdProductType;
-  public String mAdRl;
+  public int mAdMaterialHeight = 0;
+  public int mAdMaterialId = 0;
+  public int mAdMaterialWidth = 0;
+  public long mAdNocoId = 0L;
+  public long mAdPosID = 0L;
+  public int mAdPosLayout = 0;
+  public String mAdPrice = null;
+  public String mAdProductId = null;
+  public int mAdProductType = 0;
+  public String mAdRl = null;
   public int mAdScoreNum;
-  public String mAdTraceId;
-  public String mAdTxt;
-  public int mAdType;
-  public long mAdUin;
-  public String mAdVia;
-  public long mAdVideoFileSize;
-  public String mAdVideoUrl;
-  public String mAdViewId;
-  @awhp
-  public obl mAdvertisementExtInfo;
-  @awhp
-  public obm mAdvertisementSoftInfo;
-  @awhp
-  public ArrayList<String> mC2SClickUrl;
-  @awhp
-  public ArrayList<String> mC2SExposureUrl;
+  public String mAdTraceId = null;
+  public String mAdTxt = null;
+  public int mAdType = 0;
+  public long mAdUin = 0L;
+  public String mAdVia = null;
+  public long mAdVideoFileSize = 0L;
+  public String mAdVideoUrl = null;
+  public String mAdViewId = null;
+  @notColumn
+  public AdvertisementExtInfo mAdvertisementExtInfo;
+  @notColumn
+  public AdvertisementSoftInfo mAdvertisementSoftInfo;
+  @notColumn
+  public JSONObject mBusiJson;
   public int mC2SReportTriggerTime;
-  @awhp
-  public int mC2SSwitch;
-  @awhp
-  public ArrayList<String> mC2SVideoPlayUrl;
-  @awhp
+  @notColumn
+  public ArrayList<String> mC2SVideoPlayUrl = null;
+  @notColumn
+  public ArrayList<String> mCToSClickUrl = null;
+  @notColumn
+  public ArrayList<String> mCToSExposureUrl = null;
+  @notColumn
+  public int mCToSSwitch = 0;
+  @notColumn
+  public CommentAdParams mCommentAdParams;
+  @notColumn
+  public int mCommentAdReportType = -1;
+  @notColumn
   public String mImaxImg;
-  @awhp
+  @notColumn
   public int mImaxImgDisplayMs = 5000;
-  @awhp
+  @notColumn
   public int mImaxJumpLandingPage = 1;
-  @awhp
+  @notColumn
   public int mImaxShowAdType;
-  @awhp
+  @notColumn
   public int mImaxShowSlipAllowMs = 3000;
-  @awhp
+  @notColumn
   public String mImaxStyle = "0";
-  @awhp
+  @notColumn
   public String mImaxVideoUrl;
   public int mInteractEffectType;
   public String mInteractImageList = "";
   public int mInteractType;
-  public qlg mLocalInfo;
-  @awhp
+  public LocalInfo mLocalInfo = null;
+  @notColumn
   public int mOrigin;
   public int mPhoneComponetId;
   public String mPopFormH5Url;
-  @awhp
-  public boolean mProgressFromFeeds;
+  @notColumn
+  public JSONObject mReportDataJson;
   public int mRevisionVideoType = 1;
-  @awhp
+  @notColumn
   public String mRowKey;
   public boolean mShowAdButton = true;
   public String mSoftAdData;
   public int mSoftAdType;
   public String mSubordinateProductId;
-  public int materialGroup;
+  public int materialGroup = 0;
   public int miniProgramType;
-  @awhp
+  @notColumn
+  public String originalExposureUrl;
+  @notColumn
+  public String packageName;
+  @notColumn
   public int progress;
-  @awhp
+  @notColumn
   public int replay;
+  @notColumn
+  public String request_id;
+  @notColumn
+  public String scene;
+  @notColumn
+  public int shakeAppearTime;
+  @notColumn
+  public String shakeDiscription;
+  @notColumn
+  public String shakeEggBgImgUrl;
+  @notColumn
+  public String shakeEggBgUrl;
+  @notColumn
+  public String shakeEggImgUrl;
+  @notColumn
+  public String shakeEggVideoUrl;
+  @notColumn
+  public String shakeTitle;
+  @notColumn
+  public String shakeTransUrl;
+  @notColumn
+  public String ticket;
+  @notColumn
+  public int videoReplayCount;
   
   public AdvertisementInfo() {}
   
   public AdvertisementInfo(Parcel paramParcel)
   {
-    super(paramParcel);
     this.mAdFetchTime = paramParcel.readLong();
     this.mAdPosLayout = paramParcel.readInt();
     this.mAdPosID = paramParcel.readLong();
@@ -240,7 +307,8 @@ public class AdvertisementInfo
     this.mSoftAdType = paramParcel.readInt();
     this.mSoftAdData = paramParcel.readString();
     this.mRevisionVideoType = paramParcel.readInt();
-    this.mAdvertisementExtInfo = new obl(this.mAdExtInfo);
+    this.mChannelID = paramParcel.readLong();
+    this.mAdvertisementExtInfo = new AdvertisementExtInfo(this.mAdExtInfo);
     processAdExtraDataInfo(this.mAdExtInfo);
   }
   
@@ -294,6 +362,7 @@ public class AdvertisementInfo
     if (TextUtils.isEmpty(this.mAdExtInfo)) {
       this.mAdExtInfo = new JSONObject().toString();
     }
+    processAdExtInfo(this.mAdExtInfo);
     this.mAdAppDownLoadSchema = paramAdInfo.bytes_app_download_schema.get().toStringUtf8();
     this.mAdCanvasJson = paramAdInfo.string_canvas_json.get();
     this.mAdLandingPageReportUrl = paramAdInfo.bytes_landing_page_report_url.get().toStringUtf8();
@@ -322,49 +391,229 @@ public class AdvertisementInfo
     }
     this.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
     processAdExtraDataInfo(this.mAdExtInfo);
-    this.mLocalInfo = new qlg(paramAdInfo.local_info);
+    this.mLocalInfo = new LocalInfo(paramAdInfo.local_info);
     this.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
     if (paramAdInfo.string_interact_image_list.has()) {
       this.mInteractImageList = paramAdInfo.string_interact_image_list.get();
     }
     this.mInteractType = paramAdInfo.uint32_interact_type.get();
-    this.mAdvertisementExtInfo = new obl(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new AdvertisementExtInfo(this.mAdExtInfo);
     processAdExt(this.mAdExt);
   }
   
-  public static int getAdStyle(AdvertisementInfo paramAdvertisementInfo)
+  private void parseC2SClickUrl(JSONObject paramJSONObject)
   {
-    if (isAdvertisementInfo(paramAdvertisementInfo)) {
-      return oed.b(paramAdvertisementInfo);
-    }
-    return 0;
-  }
-  
-  public static int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return oed.b(paramAdvertisementInfo);
-    }
-    return 0;
-  }
-  
-  public static boolean isAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return AdvertisementInfo.class.isInstance(paramBaseArticleInfo);
-  }
-  
-  public static boolean isAppAdvertisementInfo(BaseArticleInfo paramBaseArticleInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (isAdvertisementInfo(paramBaseArticleInfo))
+    if (paramJSONObject.has("c2s_click_url"))
     {
-      bool1 = bool2;
-      if (((AdvertisementInfo)paramBaseArticleInfo).mAdProductType == 12) {
-        bool1 = true;
+      paramJSONObject = paramJSONObject.optJSONArray("c2s_click_url");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int j = paramJSONObject.length();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          String str = (String)paramJSONObject.opt(i);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" processAdExtraDataInfo clickUrl = ");
+            localStringBuilder.append(str);
+            QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
+          }
+          localArrayList.add(str);
+          i += 1;
+        }
+        this.mCToSClickUrl = localArrayList;
       }
     }
-    return bool1;
+  }
+  
+  private void parseC2SExposureUrl(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("c2s_exposure_url"))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("c2s_exposure_url");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int j = paramJSONObject.length();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          String str = (String)paramJSONObject.opt(i);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" processAdExtraDataInfo exposureUrl = ");
+            localStringBuilder.append(str);
+            QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
+          }
+          localArrayList.add(str);
+          i += 1;
+        }
+        this.mCToSExposureUrl = localArrayList;
+      }
+    }
+  }
+  
+  private void parseC2SVideoPlayUrl(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("c2s_video_play_url"))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("c2s_video_play_url");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        int j = paramJSONObject.length();
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          String str = (String)paramJSONObject.opt(i);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" processAdExtraDataInfo videoPlayUrl = ");
+            localStringBuilder.append(str);
+            QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
+          }
+          localArrayList.add(str);
+          i += 1;
+        }
+        this.mC2SVideoPlayUrl = localArrayList;
+      }
+    }
+  }
+  
+  private void parsePopFormH5Url(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("pop_sheet"))
+    {
+      paramJSONObject = new JSONObject(paramJSONObject.optString("pop_sheet")).getString("h5Url");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("h5Url = ");
+        localStringBuilder.append(paramJSONObject);
+        QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
+      }
+      this.mPopFormH5Url = paramJSONObject;
+    }
+  }
+  
+  private void parseShowAdButton(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("button_flag"))
+    {
+      paramJSONObject = paramJSONObject.optString("button_flag", "1");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("buttonFlag = ");
+        localStringBuilder.append(paramJSONObject);
+        QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
+      }
+      this.mShowAdButton = (paramJSONObject.equals("0") ^ true);
+    }
+  }
+  
+  private void processAdExtInfo(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (TextUtils.isEmpty(this.packageName))
+        {
+          this.packageName = paramString.optString("game_pkg_name");
+          if (TextUtils.isEmpty(this.packageName)) {
+            this.packageName = paramString.optString("pkg_name");
+          }
+        }
+        if (TextUtils.isEmpty(this.liujinReportUrl)) {
+          this.liujinReportUrl = paramString.optString("liujinReportUrl");
+        }
+        if (TextUtils.isEmpty(this.ticket))
+        {
+          this.ticket = paramString.optString("ticket");
+          if (TextUtils.isEmpty(this.ticket)) {
+            this.ticket = paramString.optString("ad_encrypted_ticket");
+          }
+        }
+        if (TextUtils.isEmpty(this.amsNfbUrl)) {
+          this.amsNfbUrl = paramString.optString("amsNfbUrl");
+        }
+        if (TextUtils.isEmpty(this.originalExposureUrl)) {
+          this.originalExposureUrl = paramString.optString("original_exposure_url");
+        }
+        this.request_id = "";
+        if (paramString.has("request_id")) {
+          this.request_id = paramString.optString("request_id");
+        }
+        this.chain_id = "";
+        if (paramString.has("chain_id")) {
+          this.chain_id = paramString.optString("chain_id");
+        }
+        bool = true;
+        this.isOutJump = true;
+        if (paramString.has("not_jump_out"))
+        {
+          if (paramString.optInt("not_jump_out") != 1) {
+            this.isOutJump = bool;
+          }
+        }
+        else
+        {
+          Object localObject = paramString.optString("interactive");
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONObject((String)localObject);
+            this.shakeAppearTime = ((JSONObject)localObject).optInt("mask_appear_time");
+            if (TextUtils.isEmpty(this.shakeTitle)) {
+              this.shakeTitle = ((JSONObject)localObject).optString("title");
+            }
+            if (TextUtils.isEmpty(this.shakeDiscription)) {
+              this.shakeDiscription = ((JSONObject)localObject).optString("description");
+            }
+            if (TextUtils.isEmpty(this.shakeTransUrl)) {
+              this.shakeTransUrl = ((JSONObject)localObject).optString("transition_animation_url");
+            }
+            ((IRIJAdReporter)QRoute.api(IRIJAdReporter.class)).init(this.request_id, this.chain_id);
+          }
+          paramString = paramString.optString("easter_egg");
+          this.isShakeEggPage = 0;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            paramString = new JSONObject(paramString);
+            if (TextUtils.isEmpty(this.shakeEggImgUrl)) {
+              this.shakeEggImgUrl = paramString.optString("image_url");
+            }
+            if (TextUtils.isEmpty(this.shakeEggVideoUrl)) {
+              this.shakeEggVideoUrl = paramString.optString("video_url");
+            }
+            if (TextUtils.isEmpty(this.shakeEggBgUrl)) {
+              this.shakeEggBgUrl = paramString.optString("drop_animation_url");
+            }
+            if (TextUtils.isEmpty(this.shakeEggBgImgUrl)) {
+              this.shakeEggBgImgUrl = paramString.optString("background_image_url");
+            }
+            this.isShakeEggPage = paramString.optInt("is_page", 0);
+          }
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        return;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public int describeContents()
+  {
+    return 0;
   }
   
   public int getAdbf()
@@ -375,25 +624,193 @@ public class AdvertisementInfo
     return 0;
   }
   
+  public String getAmsNfbUrl()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.amsNfbUrl)) {
+      return this.amsNfbUrl;
+    }
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).ah)))
+    {
+      this.amsNfbUrl = this.mAdvertisementSoftInfo.ah;
+      return this.amsNfbUrl;
+    }
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).L)))
+    {
+      this.amsNfbUrl = this.gameAdComData.L;
+      return this.amsNfbUrl;
+    }
+    return null;
+  }
+  
   public int getClickPos()
   {
     return this.clickPos;
   }
   
-  public boolean isGameAdSource()
+  public String getExtraParam(String paramString)
   {
-    return (this.mAdvertisementExtInfo != null) && (this.mAdvertisementExtInfo.j == 32768);
+    if (!TextUtils.isEmpty(paramString)) {
+      if (TextUtils.isEmpty(this.mAdExtInfo)) {
+        return "";
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(this.mAdExtInfo).optString(paramString, "");
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+    return "";
+  }
+  
+  protected IVideoCardUIModel getLazyModel()
+  {
+    return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoCardUIModel(this);
+  }
+  
+  public String getLiujinReportUrl()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.liujinReportUrl)) {
+      return this.liujinReportUrl;
+    }
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).af)))
+    {
+      this.liujinReportUrl = this.mAdvertisementSoftInfo.af;
+      return this.liujinReportUrl;
+    }
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).J)))
+    {
+      this.liujinReportUrl = this.gameAdComData.J;
+      return this.liujinReportUrl;
+    }
+    return null;
+  }
+  
+  public int getNextAdPosition()
+  {
+    String str = this.mAdExtInfo;
+    if (str != null) {
+      try
+      {
+        int i = new JSONObject(str).optInt("next_ad_position");
+        return i;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return 0;
+  }
+  
+  public PTSComposer.IPTSUpdateDataListener getPTSUpdateDataListener()
+  {
+    return null;
+  }
+  
+  public String getPackageName()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.packageName)) {
+      return this.packageName;
+    }
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).y)))
+    {
+      this.packageName = this.mAdvertisementSoftInfo.y;
+      return this.packageName;
+    }
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).e)))
+    {
+      this.packageName = this.gameAdComData.e;
+      return this.packageName;
+    }
+    return null;
+  }
+  
+  public String getTicket()
+  {
+    processAdExtInfo(this.mAdExtInfo);
+    if (!TextUtils.isEmpty(this.ticket)) {
+      return this.ticket;
+    }
+    Object localObject = this.mAdvertisementSoftInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementSoftInfo)localObject).ag)))
+    {
+      this.ticket = this.mAdvertisementSoftInfo.ag;
+      return this.ticket;
+    }
+    localObject = this.gameAdComData;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameAdComData)localObject).K)))
+    {
+      this.ticket = this.gameAdComData.K;
+      return this.ticket;
+    }
+    return null;
+  }
+  
+  public boolean isCommentAd()
+  {
+    CommentAdParams localCommentAdParams = this.mCommentAdParams;
+    if (localCommentAdParams != null) {
+      return localCommentAdParams.a;
+    }
+    return false;
+  }
+  
+  public boolean isGameAd()
+  {
+    return (this.gameAdComData != null) && (this.mSoftAdType == 1);
+  }
+  
+  public boolean isGameDownload()
+  {
+    return (isGameAd()) && (this.gameAdComData.t != null) && (this.gameAdComData.t.equals("2"));
+  }
+  
+  public boolean isKolSoftAd()
+  {
+    return (isSoftAd()) && (this.mAdvertisementSoftInfo.o == 3);
+  }
+  
+  public boolean isSoftAd()
+  {
+    return (this.mAdvertisementSoftInfo != null) && (this.mSoftAdType == 2);
   }
   
   public String logAdString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("AdvertisementInfo[");
-    localStringBuilder.append("mAdMaterialId:" + this.mAdMaterialId).append(",");
-    localStringBuilder.append("mAdKdPos:" + this.mAdKdPos).append(",");
-    localStringBuilder.append("mAdExtInfo:" + this.mAdExtInfo).append(",");
-    localStringBuilder.append("mAdTraceId:" + this.mAdTraceId).append(",");
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder("AdvertisementInfo[");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdMaterialId:");
+    localStringBuilder2.append(this.mAdMaterialId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdKdPos:");
+    localStringBuilder2.append(this.mAdKdPos);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdExtInfo:");
+    localStringBuilder2.append(this.mAdExtInfo);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mAdTraceId:");
+    localStringBuilder2.append(this.mAdTraceId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder1.append("]");
+    return localStringBuilder1.toString();
   }
   
   public oidb_cmd0x886.AdInfo makeReportAdInfo(int paramInt)
@@ -434,28 +851,34 @@ public class AdvertisementInfo
   
   public void processAdExt(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          if (paramString.has("subordinate_product_id")) {
-            this.mSubordinateProductId = paramString.optString("subordinate_product_id");
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("processAdExt", 2, " processAdExt mSubordinateProductId = " + this.mSubordinateProductId);
-            return;
-          }
-        }
-        catch (Exception paramString) {}
+      paramString = new JSONObject(paramString);
+      if (paramString.has("subordinate_product_id")) {
+        this.mSubordinateProductId = paramString.optString("subordinate_product_id");
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("processAdExt", 1, "processAdExt exception " + paramString.toString());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append(" processAdExt mSubordinateProductId = ");
+        paramString.append(this.mSubordinateProductId);
+        QLog.d("processAdExt", 2, paramString.toString());
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("processAdExt exception ");
+        localStringBuilder.append(paramString.toString());
+        QLog.e("processAdExt", 1, localStringBuilder.toString());
+      }
+    }
   }
   
   public void processAdExtraDataInfo(String paramString)
@@ -463,164 +886,102 @@ public class AdvertisementInfo
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("mini_program_type")) {
-          this.miniProgramType = paramString.optInt("mini_program_type");
-        }
-        if (paramString.has("c2s_switch")) {
-          this.mC2SSwitch = paramString.optInt("c2s_switch");
-        }
-        Object localObject;
-        int j;
-        ArrayList localArrayList;
-        int i;
-        String str;
-        if (paramString.has("c2s_click_url"))
-        {
-          localObject = paramString.optJSONArray("c2s_click_url");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            j = ((JSONArray)localObject).length();
-            localArrayList = new ArrayList();
-            i = 0;
-            if (i < j)
-            {
-              str = (String)((JSONArray)localObject).opt(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo clickUrl = " + str);
-              }
-              localArrayList.add(str);
-              i += 1;
-              continue;
-            }
-            this.mC2SClickUrl = localArrayList;
-          }
-        }
-        if (paramString.has("c2s_exposure_url"))
-        {
-          localObject = paramString.optJSONArray("c2s_exposure_url");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            j = ((JSONArray)localObject).length();
-            localArrayList = new ArrayList();
-            i = 0;
-            if (i < j)
-            {
-              str = (String)((JSONArray)localObject).opt(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo exposureUrl = " + str);
-              }
-              localArrayList.add(str);
-              i += 1;
-              continue;
-            }
-            this.mC2SExposureUrl = localArrayList;
-          }
-        }
-        if (paramString.has("c2s_video_play_url"))
-        {
-          localObject = paramString.optJSONArray("c2s_video_play_url");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            j = ((JSONArray)localObject).length();
-            localArrayList = new ArrayList();
-            i = 0;
-            if (i < j)
-            {
-              str = (String)((JSONArray)localObject).opt(i);
-              if (QLog.isColorLevel()) {
-                QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo videoPlayUrl = " + str);
-              }
-              localArrayList.add(str);
-              i += 1;
-              continue;
-            }
-            this.mC2SVideoPlayUrl = localArrayList;
-          }
-        }
-        if (paramString.has("video_play_duration")) {
-          this.mC2SReportTriggerTime = paramString.optInt("video_play_duration");
-        }
-        if (paramString.has("pop_sheet"))
-        {
-          localObject = new JSONObject(paramString.optString("pop_sheet")).getString("h5Url");
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, "h5Url = " + (String)localObject);
-          }
-          this.mPopFormH5Url = ((String)localObject);
-        }
-        if (paramString.has("button_flag"))
-        {
-          localObject = paramString.optString("button_flag", "1");
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, "buttonFlag = " + (String)localObject);
-          }
-          if (!((String)localObject).equals("0"))
-          {
-            bool = true;
-            this.mShowAdButton = bool;
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("processAdExtraDataInfo", 2, " processAdExtraDataInfo mAdCorporateImageName = " + this.mAdCorporateImageName + " mAdTraceId = " + this.mAdTraceId + "c2s_switch = " + this.mC2SSwitch);
-          }
-          if (paramString.has("phone_component_id")) {
-            this.mPhoneComponetId = paramString.optInt("phone_component_id");
-          }
-          if (paramString.has("showAdType")) {
-            this.mImaxShowAdType = paramString.optInt("showAdType");
-          }
-          if (paramString.has("imaxVideoUrl")) {
-            this.mImaxVideoUrl = paramString.optString("imaxVideoUrl");
-          }
-          if (paramString.has("imaxImg")) {
-            this.mImaxImg = paramString.optString("imaxImg");
-          }
-          if (paramString.has("imaxImgDisplayMs")) {
-            this.mImaxImgDisplayMs = paramString.optInt("imaxImgDisplayMs", 5000);
-          }
-          if (paramString.has("imaxJumpLandingPage")) {
-            this.mImaxJumpLandingPage = paramString.optInt("imaxJumpLandingPage", 1);
-          }
-          if (paramString.has("imaxShowSlipAllowMs")) {
-            this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
-          }
-          this.mImaxStyle = bkbq.a("sp_key_ad_imax_style");
-          if ((this.mImaxShowAdType != 1001) || (!"1".equals(this.mImaxStyle))) {
-            break;
-          }
-          this.isIMaxAndNewStyle = true;
-          return;
-        }
+      paramString = new JSONObject(paramString);
+      if (paramString.has("mini_program_type")) {
+        this.miniProgramType = paramString.optInt("mini_program_type");
       }
-      catch (Exception paramString)
-      {
-        QLog.e("processAdExtraDataInfo", 1, "processAdExtraDataInfo exception " + paramString.toString());
-        return;
+      if (paramString.has("c2s_switch")) {
+        this.mCToSSwitch = paramString.optInt("c2s_switch");
       }
-      boolean bool = false;
+      parseC2SClickUrl(paramString);
+      parseC2SExposureUrl(paramString);
+      parseC2SVideoPlayUrl(paramString);
+      if (paramString.has("video_play_duration")) {
+        this.mC2SReportTriggerTime = paramString.optInt("video_play_duration");
+      }
+      parsePopFormH5Url(paramString);
+      parseShowAdButton(paramString);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" processAdExtraDataInfo mAdCorporateImageName = ");
+        localStringBuilder.append(this.mAdCorporateImageName);
+        localStringBuilder.append(" mAdTraceId = ");
+        localStringBuilder.append(this.mAdTraceId);
+        localStringBuilder.append("c2s_switch = ");
+        localStringBuilder.append(this.mCToSSwitch);
+        QLog.d("processAdExtraDataInfo", 2, localStringBuilder.toString());
+      }
+      if (paramString.has("phone_component_id")) {
+        this.mPhoneComponetId = paramString.optInt("phone_component_id");
+      }
+      if (paramString.has("ecpm")) {
+        this.ecpm = paramString.optDouble("ecpm");
+      }
+      if (paramString.has("isContract")) {
+        this.isContract = paramString.optInt("isContract", 0);
+      }
+      if (paramString.has("showAdType")) {
+        this.mImaxShowAdType = paramString.optInt("showAdType");
+      }
+      if (paramString.has("imaxVideoUrl")) {
+        this.mImaxVideoUrl = paramString.optString("imaxVideoUrl");
+      }
+      if (paramString.has("imaxImg")) {
+        this.mImaxImg = paramString.optString("imaxImg");
+      }
+      if (paramString.has("imaxImgDisplayMs")) {
+        this.mImaxImgDisplayMs = paramString.optInt("imaxImgDisplayMs", 5000);
+      }
+      if (paramString.has("imaxJumpLandingPage")) {
+        this.mImaxJumpLandingPage = paramString.optInt("imaxJumpLandingPage", 1);
+      }
+      if (paramString.has("imaxShowSlipAllowMs")) {
+        this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
+      }
+      this.mImaxStyle = ((IRIJCommonService)QRoute.api(IRIJCommonService.class)).getProteusOfflineBid("sp_key_ad_imax_style");
+      if ((this.mImaxShowAdType == 1001) && ("1".equals(this.mImaxStyle))) {
+        this.isIMaxAndNewStyle = true;
+      }
+      this.mCommentAdParams = new CommentAdParams();
+      this.mCommentAdParams.a = paramString.optBoolean("comment_get_ads");
+      this.mCommentAdParams.b = paramString.optBoolean("comment_show_comment");
+      this.mCommentAdParams.d = paramString.optBoolean("comment_button_flag");
+      this.mCommentAdParams.c = paramString.optInt("comment_card_style");
+      this.mCommentAdParams.e = paramString.optInt("comment_exposure_time_limit");
+      this.mCommentAdParams.f = paramString.optInt("comment_exposure_count_limit");
+      this.mCommentAdParams.g = paramString.optInt("ad_start_time");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processAdExtraDataInfo exception ");
+      localStringBuilder.append(paramString.toString());
+      QLog.e("processAdExtraDataInfo", 1, localStringBuilder.toString());
     }
   }
   
   public void processSoftDataInfo(String paramString)
   {
-    this.mAdvertisementSoftInfo = new obm(paramString);
+    this.mAdvertisementSoftInfo = new AdvertisementSoftInfo(paramString);
   }
   
   public void processSoftDataInfo(JSONObject paramJSONObject)
   {
-    this.mAdvertisementSoftInfo = new obm(paramJSONObject);
+    this.mAdvertisementSoftInfo = new AdvertisementSoftInfo(paramJSONObject);
   }
   
   public void resetClickPos()
   {
     this.clickPos = -1;
+  }
+  
+  public void setAdClickPos(AdClickPos paramAdClickPos)
+  {
+    this.adClickPos = paramAdClickPos;
   }
   
   public void setClickPos(int paramInt)
@@ -630,7 +991,6 @@ public class AdvertisementInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeLong(this.mAdFetchTime);
     paramParcel.writeInt(this.mAdPosLayout);
     paramParcel.writeLong(this.mAdPosID);
@@ -688,11 +1048,12 @@ public class AdvertisementInfo
     paramParcel.writeInt(this.mSoftAdType);
     paramParcel.writeString(this.mSoftAdData);
     paramParcel.writeInt(this.mRevisionVideoType);
+    paramParcel.writeLong(this.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo
  * JD-Core Version:    0.7.0.1
  */

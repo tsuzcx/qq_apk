@@ -13,9 +13,9 @@ public class IPCInteger
   
   static
   {
-    AppMethodBeat.i(114154);
-    CREATOR = new IPCInteger.1();
-    AppMethodBeat.o(114154);
+    AppMethodBeat.i(158865);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(158865);
   }
   
   public IPCInteger() {}
@@ -32,10 +32,10 @@ public class IPCInteger
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(114153);
+    AppMethodBeat.i(158864);
     if (paramObject == this)
     {
-      AppMethodBeat.o(114153);
+      AppMethodBeat.o(158864);
       return true;
     }
     if ((paramObject instanceof IPCInteger))
@@ -43,40 +43,40 @@ public class IPCInteger
       paramObject = (IPCInteger)paramObject;
       if (this.value == paramObject.value)
       {
-        AppMethodBeat.o(114153);
+        AppMethodBeat.o(158864);
         return true;
       }
-      AppMethodBeat.o(114153);
+      AppMethodBeat.o(158864);
       return false;
     }
     if ((paramObject instanceof Integer))
     {
       boolean bool = paramObject.equals(Integer.valueOf(this.value));
-      AppMethodBeat.o(114153);
+      AppMethodBeat.o(158864);
       return bool;
     }
-    AppMethodBeat.o(114153);
+    AppMethodBeat.o(158864);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(114152);
+    AppMethodBeat.i(158863);
     String str = Integer.toString(this.value);
-    AppMethodBeat.o(114152);
+    AppMethodBeat.o(158863);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(114151);
+    AppMethodBeat.i(158862);
     paramParcel.writeInt(this.value);
-    AppMethodBeat.o(114151);
+    AppMethodBeat.o(158862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.type.IPCInteger
  * JD-Core Version:    0.7.0.1
  */

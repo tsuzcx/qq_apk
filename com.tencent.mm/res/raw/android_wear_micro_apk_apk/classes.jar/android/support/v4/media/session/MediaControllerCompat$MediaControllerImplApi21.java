@@ -13,28 +13,28 @@ import java.util.List;
 class MediaControllerCompat$MediaControllerImplApi21
   implements l
 {
-  protected final Object ia;
-  private final List<h> ib = new ArrayList();
-  private d ic;
-  private HashMap<h, m> ie = new HashMap();
+  protected final Object jZ;
+  private final List<h> ka = new ArrayList();
+  private d kb;
+  private HashMap<h, m> kc = new HashMap();
   
   public MediaControllerCompat$MediaControllerImplApi21(Context paramContext, MediaSessionCompat.Token paramToken)
   {
-    this.ia = new MediaController(paramContext, (MediaSession.Token)paramToken.bc());
-    if (this.ia == null) {
+    this.jZ = new MediaController(paramContext, (MediaSession.Token)paramToken.bt());
+    if (this.jZ == null) {
       throw new RemoteException();
     }
-    this.ic = paramToken.bd();
-    if (this.ic == null)
+    this.kb = paramToken.bu();
+    if (this.kb == null)
     {
       paramContext = new MediaControllerCompat.MediaControllerImplApi21.ExtraBinderRequestResultReceiver(this, new Handler());
-      ((MediaController)this.ia).sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, paramContext);
+      ((MediaController)this.jZ).sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, paramContext);
     }
   }
   
   public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
   {
-    return ((MediaController)this.ia).dispatchMediaButtonEvent(paramKeyEvent);
+    return ((MediaController)this.jZ).dispatchMediaButtonEvent(paramKeyEvent);
   }
 }
 

@@ -21,233 +21,206 @@ public final class d
   
   private static boolean a(Q paramQ, CrashStrategyBean paramCrashStrategyBean)
   {
-    if ((paramQ == null) || (paramCrashStrategyBean == null) || (paramQ.b == null) || (paramQ.b.size() == 0)) {
-      return false;
-    }
-    Object localObject = paramQ.b.keySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      e.b("key %s", new Object[] { (String)((Iterator)localObject).next() });
-    }
-    String str1 = (String)paramQ.b.get("B11");
-    String str2 = (String)paramQ.b.get("B12");
-    String str3 = (String)paramQ.b.get("B13");
-    String str4 = (String)paramQ.b.get("B21");
-    String str5 = (String)paramQ.b.get("B22");
-    String str6 = (String)paramQ.b.get(Integer.valueOf(60));
-    localObject = (String)paramQ.b.get(Integer.valueOf(50));
-    boolean bool1;
-    if (str1 != null) {
-      if (str1.equals("0"))
-      {
-        bool1 = false;
-        e.b("%b", new Object[] { Boolean.valueOf(bool1) });
-      }
-    }
-    for (boolean bool3 = bool1;; bool3 = true)
+    if ((paramQ != null) && (paramCrashStrategyBean != null) && (paramQ.b != null))
     {
-      if (str2 != null) {
-        if (str2.equals("0"))
-        {
-          bool1 = false;
-          label253:
-          e.b("%b", new Object[] { Boolean.valueOf(bool1) });
-        }
+      if (paramQ.b.size() == 0) {
+        return false;
       }
-      for (boolean bool4 = bool1;; bool4 = false)
+      Object localObject = paramQ.b.keySet().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        e.b("key %s", new Object[] { (String)((Iterator)localObject).next() });
+      }
+      String str1 = (String)paramQ.b.get("B11");
+      String str2 = (String)paramQ.b.get("B12");
+      String str3 = (String)paramQ.b.get("B13");
+      String str4 = (String)paramQ.b.get("B21");
+      String str5 = (String)paramQ.b.get("B22");
+      String str6 = (String)paramQ.b.get(Integer.valueOf(60));
+      localObject = (String)paramQ.b.get(Integer.valueOf(50));
+      boolean bool3;
+      if (str1 != null)
       {
-        if (str3 != null) {
-          if (str3.equals("0"))
-          {
-            bool1 = false;
-            label290:
-            e.b("%b", new Object[] { Boolean.valueOf(bool1) });
-          }
-        }
-        for (boolean bool5 = bool1;; bool5 = false)
+        bool3 = str1.equals("0") ^ true;
+        e.b("%b", new Object[] { Boolean.valueOf(bool3) });
+      }
+      else
+      {
+        bool3 = true;
+      }
+      boolean bool4;
+      if (str2 != null)
+      {
+        bool4 = str2.equals("0") ^ true;
+        e.b("%b", new Object[] { Boolean.valueOf(bool4) });
+      }
+      else
+      {
+        bool4 = false;
+      }
+      boolean bool5;
+      if (str3 != null)
+      {
+        bool5 = str3.equals("0") ^ true;
+        e.b("%b", new Object[] { Boolean.valueOf(bool5) });
+      }
+      else
+      {
+        bool5 = false;
+      }
+      if (str4 != null)
+      {
+        bool1 = str4.equals("0") ^ true;
+        if (paramCrashStrategyBean.isMerged() != bool1)
         {
-          if (str4 != null) {
-            if (str4.equals("0"))
-            {
-              bool1 = false;
-              label327:
-              if (paramCrashStrategyBean.isMerged() == bool1) {
-                break label711;
-              }
-              e.b("rqdp{  is merged changed} %b", new Object[] { Boolean.valueOf(bool1) });
-              paramCrashStrategyBean.setMerged(bool1);
-            }
-          }
-          label655:
-          label670:
-          label702:
-          label705:
-          label711:
-          for (bool1 = true;; bool1 = false)
-          {
-            if (str5 != null) {
-              if (str5.equals("0"))
-              {
-                bool2 = false;
-                label377:
-                if (paramCrashStrategyBean.isAssertOn() == bool2) {
-                  break label705;
-                }
-                paramCrashStrategyBean.setAssertEnable(bool2);
-                e.b("rqdp{ Assert enable changed: } %s", new Object[] { Boolean.valueOf(bool2) });
-              }
-            }
-            for (boolean bool2 = true;; bool2 = bool1)
-            {
-              bool1 = bool2;
-              if (str6 != null) {}
-              try
-              {
-                i = Integer.valueOf(str6).intValue();
-                bool1 = bool2;
-                if (paramCrashStrategyBean.getAssertTaskInterval() != i) {
-                  paramCrashStrategyBean.setAssertTaskInterval(i);
-                }
-              }
-              catch (Exception paramQ)
-              {
-                for (;;)
-                {
-                  int i;
-                  bool1 = bool2;
-                  if (!e.a(paramQ)) {
-                    paramQ.printStackTrace();
-                  }
-                }
-              }
-              for (;;)
-              {
-                try
-                {
-                  e.b("rqdp{ Assert task interval changed: } %s", new Object[] { Integer.valueOf(i) });
-                  bool1 = true;
-                  bool2 = bool1;
-                  if (localObject == null) {
-                    break;
-                  }
-                }
-                catch (Exception paramQ)
-                {
-                  bool1 = true;
-                  break label655;
-                }
-                try
-                {
-                  i = Integer.valueOf((String)localObject).intValue();
-                  bool2 = bool1;
-                  if (paramCrashStrategyBean.getAssertLimitCount() != i) {
-                    paramCrashStrategyBean.setAssertLimitCount(i);
-                  }
-                }
-                catch (Exception paramQ)
-                {
-                  bool2 = bool1;
-                  if (e.a(paramQ)) {
-                    break;
-                  }
-                  paramQ.printStackTrace();
-                  bool2 = bool1;
-                  break;
-                }
-              }
-              try
-              {
-                e.b("rqdp{ Assert task interval changed: } %s", new Object[] { Integer.valueOf(i) });
-                bool2 = true;
-                if (paramCrashStrategyBean.isOpenANR() != bool3)
-                {
-                  paramCrashStrategyBean.setOpenANR(bool3);
-                  e.b("rqdp{ anr changed: } %b", new Object[] { Boolean.valueOf(bool3) });
-                  bool2 = true;
-                }
-                if (paramCrashStrategyBean.isBroadcast() != bool4)
-                {
-                  paramCrashStrategyBean.setBroadcast(bool4);
-                  e.b("rqdp{ broad changed: } %b", new Object[] { Boolean.valueOf(bool4) });
-                  bool2 = true;
-                }
-                if (paramCrashStrategyBean.isReceiveBroadcast() == bool5) {
-                  break label702;
-                }
-                paramCrashStrategyBean.setReceiveBroadcast(bool5);
-                e.b("rqdp{ receiver changed: } %b", new Object[] { Boolean.valueOf(bool5) });
-                return true;
-              }
-              catch (Exception paramQ)
-              {
-                bool1 = true;
-                break label670;
-              }
-              bool1 = true;
-              break;
-              bool1 = true;
-              break label253;
-              bool1 = true;
-              break label290;
-              bool1 = true;
-              break label327;
-              bool2 = true;
-              break label377;
-              return bool2;
-            }
-          }
+          e.b("rqdp{  is merged changed} %b", new Object[] { Boolean.valueOf(bool1) });
+          paramCrashStrategyBean.setMerged(bool1);
+          bool1 = true;
+          break label371;
         }
       }
+      boolean bool1 = false;
+      label371:
+      boolean bool2 = bool1;
+      if (str5 != null)
+      {
+        boolean bool6 = str5.equals("0") ^ true;
+        bool2 = bool1;
+        if (paramCrashStrategyBean.isAssertOn() != bool6)
+        {
+          paramCrashStrategyBean.setAssertEnable(bool6);
+          e.b("rqdp{ Assert enable changed: } %s", new Object[] { Boolean.valueOf(bool6) });
+          bool2 = true;
+        }
+      }
+      bool1 = bool2;
+      int i;
+      if (str6 != null)
+      {
+        try
+        {
+          i = Integer.valueOf(str6).intValue();
+          bool1 = bool2;
+          if (paramCrashStrategyBean.getAssertTaskInterval() == i) {
+            break label505;
+          }
+          paramCrashStrategyBean.setAssertTaskInterval(i);
+          try
+          {
+            e.b("rqdp{ Assert task interval changed: } %s", new Object[] { Integer.valueOf(i) });
+            bool1 = true;
+          }
+          catch (Exception paramQ)
+          {
+            bool1 = true;
+          }
+          if (e.a(paramQ)) {
+            break label505;
+          }
+        }
+        catch (Exception paramQ)
+        {
+          bool1 = bool2;
+        }
+        paramQ.printStackTrace();
+      }
+      label505:
+      bool2 = bool1;
+      if (localObject != null)
+      {
+        try
+        {
+          i = Integer.valueOf((String)localObject).intValue();
+          bool2 = bool1;
+          if (paramCrashStrategyBean.getAssertLimitCount() == i) {
+            break label585;
+          }
+          paramCrashStrategyBean.setAssertLimitCount(i);
+          try
+          {
+            e.b("rqdp{ Assert task interval changed: } %s", new Object[] { Integer.valueOf(i) });
+            bool2 = true;
+          }
+          catch (Exception paramQ)
+          {
+            bool1 = true;
+          }
+          bool2 = bool1;
+        }
+        catch (Exception paramQ) {}
+        if (!e.a(paramQ))
+        {
+          paramQ.printStackTrace();
+          bool2 = bool1;
+        }
+      }
+      label585:
+      if (paramCrashStrategyBean.isOpenANR() != bool3)
+      {
+        paramCrashStrategyBean.setOpenANR(bool3);
+        e.b("rqdp{ anr changed: } %b", new Object[] { Boolean.valueOf(bool3) });
+        bool2 = true;
+      }
+      if (paramCrashStrategyBean.isBroadcast() != bool4)
+      {
+        paramCrashStrategyBean.setBroadcast(bool4);
+        e.b("rqdp{ broad changed: } %b", new Object[] { Boolean.valueOf(bool4) });
+        bool2 = true;
+      }
+      if (paramCrashStrategyBean.isReceiveBroadcast() != bool5)
+      {
+        paramCrashStrategyBean.setReceiveBroadcast(bool5);
+        e.b("rqdp{ receiver changed: } %b", new Object[] { Boolean.valueOf(bool5) });
+        return true;
+      }
+      return bool2;
     }
+    return false;
   }
   
   public final void a(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     if ((paramInt == 510) && (paramArrayOfByte != null)) {
-      for (;;)
+      try
       {
-        try
+        f localf = f.l();
+        if (localf == null)
         {
-          f localf = f.l();
-          if (localf == null)
+          e.c("rqdp{  imposiable handle response ,but no eup instance!}", new Object[0]);
+          return;
+        }
+        Q localQ = new Q();
+        localQ.a(new h(paramArrayOfByte));
+        CrashStrategyBean localCrashStrategyBean2 = localf.q();
+        CrashStrategyBean localCrashStrategyBean1 = localCrashStrategyBean2;
+        if (localCrashStrategyBean2 == null)
+        {
+          localCrashStrategyBean1 = localf.p();
+          if (localCrashStrategyBean1 == null)
           {
-            e.c("rqdp{  imposiable handle response ,but no eup instance!}", new Object[0]);
-            return;
-          }
-          Q localQ = new Q();
-          localQ.a(new h(paramArrayOfByte));
-          CrashStrategyBean localCrashStrategyBean2 = localf.q();
-          localCrashStrategyBean1 = localCrashStrategyBean2;
-          if (localCrashStrategyBean2 == null)
-          {
-            localCrashStrategyBean1 = localf.p();
-            if (localCrashStrategyBean1 == null)
-            {
-              e.b("rqdp{  init eup sStrategy by default}", new Object[0]);
-              localCrashStrategyBean1 = new CrashStrategyBean();
-              localf.a(localCrashStrategyBean1);
-            }
+            e.b("rqdp{  init eup sStrategy by default}", new Object[0]);
+            localCrashStrategyBean1 = new CrashStrategyBean();
           }
           else
           {
-            if ((a(localQ, localCrashStrategyBean1)) && (paramBoolean))
-            {
-              e.b("rqdp{  save eup strategy}", new Object[0]);
-              a.a(this.a, paramInt, paramArrayOfByte);
-            }
-            e.b("rqdp{  crashStrategy}[%s]", new Object[] { localQ });
-            return;
+            e.b("rqdp{  init eup sStrategy by uStrategy}", new Object[0]);
+            localCrashStrategyBean1 = localCrashStrategyBean1.clone();
           }
+          localf.a(localCrashStrategyBean1);
         }
-        catch (Throwable paramArrayOfByte)
+        if ((a(localQ, localCrashStrategyBean1)) && (paramBoolean))
         {
-          if (!e.a(paramArrayOfByte)) {
-            paramArrayOfByte.printStackTrace();
-          }
-          e.d("rqdp{  process crash strategy error} %s", new Object[] { paramArrayOfByte.toString() });
-          return;
+          e.b("rqdp{  save eup strategy}", new Object[0]);
+          a.a(this.a, paramInt, paramArrayOfByte);
         }
-        e.b("rqdp{  init eup sStrategy by uStrategy}", new Object[0]);
-        CrashStrategyBean localCrashStrategyBean1 = localCrashStrategyBean1.clone();
+        e.b("rqdp{  crashStrategy}[%s]", new Object[] { localQ });
+        return;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        if (!e.a(paramArrayOfByte)) {
+          paramArrayOfByte.printStackTrace();
+        }
+        e.d("rqdp{  process crash strategy error} %s", new Object[] { paramArrayOfByte.toString() });
       }
     }
   }

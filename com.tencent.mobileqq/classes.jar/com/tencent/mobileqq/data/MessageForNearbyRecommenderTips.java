@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import amrf;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 
 public class MessageForNearbyRecommenderTips
   extends ChatMessage
@@ -11,33 +11,30 @@ public class MessageForNearbyRecommenderTips
   
   protected void doParse()
   {
+    Object localObject;
     try
     {
-      MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)amrf.a(this.msgData);
-      if (localNearbyRecommenderInfo != null)
-      {
-        this.uRecommendTime = localNearbyRecommenderInfo.uRecommendTime;
-        this.readFlag = localNearbyRecommenderInfo.readFlag;
-        this.strBrief = localNearbyRecommenderInfo.strBrief;
-      }
-      return;
+      MessageForNearbyRecommenderTips.NearbyRecommenderInfo localNearbyRecommenderInfo = (MessageForNearbyRecommenderTips.NearbyRecommenderInfo)MessagePkgUtils.a(this.msgData);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      this.uRecommendTime = localObject.uRecommendTime;
+      this.readFlag = localObject.readFlag;
+      this.strBrief = localObject.strBrief;
     }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -50,7 +47,7 @@ public class MessageForNearbyRecommenderTips
     localNearbyRecommenderInfo.strBrief = this.strBrief;
     try
     {
-      this.msgData = amrf.a(localNearbyRecommenderInfo);
+      this.msgData = MessagePkgUtils.a(localNearbyRecommenderInfo);
       return;
     }
     catch (Exception localException)

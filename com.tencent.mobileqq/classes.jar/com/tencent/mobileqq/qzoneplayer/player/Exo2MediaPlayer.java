@@ -57,16 +57,18 @@ public class Exo2MediaPlayer
   
   public String getCurrentProxySegmentUrl()
   {
-    if (this.mProxyUrls != null) {
-      return (String)this.mProxyUrls.get(0);
+    List localList = this.mProxyUrls;
+    if (localList != null) {
+      return (String)localList.get(0);
     }
     return null;
   }
   
   public String getCurrentSegmentUrl()
   {
-    if (this.mSourceUrls != null) {
-      return (String)this.mSourceUrls.get(0);
+    List localList = this.mSourceUrls;
+    if (localList != null) {
+      return (String)localList.get(0);
     }
     return null;
   }
@@ -158,25 +160,28 @@ public class Exo2MediaPlayer
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo)
   {
-    if ((paramStreamInfo == null) || (paramStreamInfo.segmentInfos == null) || (paramStreamInfo.segmentInfos.get(0) == null)) {
-      return;
-    }
-    paramStreamInfo = paramStreamInfo.segmentInfos;
-    this.mSourceUrls = new ArrayList();
-    if (paramStreamInfo != null)
+    if ((paramStreamInfo != null) && (paramStreamInfo.segmentInfos != null))
     {
-      Iterator localIterator = paramStreamInfo.iterator();
-      while (localIterator.hasNext())
-      {
-        SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)localIterator.next();
-        this.mSourceUrls.add(localSegmentInfo.url);
+      if (paramStreamInfo.segmentInfos.get(0) == null) {
+        return;
       }
+      paramStreamInfo = paramStreamInfo.segmentInfos;
+      this.mSourceUrls = new ArrayList();
+      if (paramStreamInfo != null)
+      {
+        Iterator localIterator = paramStreamInfo.iterator();
+        while (localIterator.hasNext())
+        {
+          SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)localIterator.next();
+          this.mSourceUrls.add(localSegmentInfo.url);
+        }
+      }
+      this.mProxyUrls = VideoManager.getInstance().getUrl(this.mSourceUrls);
+      if ((paramStreamInfo != null) && (paramStreamInfo.size() > 1)) {
+        throw new UnsupportedOperationException("Exo2MediaPlayer is not support multiple video segment");
+      }
+      setDataSource((String)this.mProxyUrls.get(0));
     }
-    this.mProxyUrls = VideoManager.getInstance().getUrl(this.mSourceUrls);
-    if ((paramStreamInfo != null) && (paramStreamInfo.size() > 1)) {
-      throw new UnsupportedOperationException("Exo2MediaPlayer is not support multiple video segment");
-    }
-    setDataSource((String)this.mProxyUrls.get(0));
   }
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo, int paramInt)
@@ -287,7 +292,7 @@ public class Exo2MediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.player.Exo2MediaPlayer
  * JD-Core Version:    0.7.0.1
  */

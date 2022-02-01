@@ -7,87 +7,114 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RadioBelowSummarytAndIconPreference
   extends Preference
 {
-  int UM;
+  private LinearLayout VpI;
+  private ImageView VpJ;
+  private View VpK;
+  View.OnClickListener VpL;
+  int lR;
   private View mView;
-  private LinearLayout tYh;
-  private ImageView tYi;
-  private View tYj;
-  View.OnClickListener tYk;
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.UM = 0;
+    this.lR = 0;
   }
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(142374);
-    this.UM = 0;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(142374);
+    AppMethodBeat.i(69580);
+    this.lR = 0;
+    setLayoutResource(a.g.mm_preference);
+    AppMethodBeat.o(69580);
   }
   
-  public final void onBindView(View paramView)
+  public final void onBindView(final View paramView)
   {
-    AppMethodBeat.i(142376);
+    AppMethodBeat.i(69582);
     super.onBindView(paramView);
-    OW(8);
-    if ((this.tYi != null) && (this.tYk != null) && (!bo.hl(0, this.UM)))
+    aBq(8);
+    if ((this.VpJ != null) && (this.VpL != null) && (!Util.isEqual(0, this.lR)))
     {
-      this.tYi.setImageResource(this.UM);
-      this.tYi.post(new RadioBelowSummarytAndIconPreference.1(this, paramView));
-      this.tYj.setOnClickListener(new RadioBelowSummarytAndIconPreference.2(this));
-    }
-    while (this.tYh != null) {
-      if (this.zsq != 0)
+      this.VpJ.setImageResource(this.lR);
+      this.VpJ.post(new Runnable()
       {
-        this.tYh.removeAllViews();
-        View.inflate(this.mContext, this.zsq, this.tYh);
-        AppMethodBeat.o(142376);
+        public final void run()
+        {
+          AppMethodBeat.i(69578);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)RadioBelowSummarytAndIconPreference.a(RadioBelowSummarytAndIconPreference.this).getLayoutParams();
+          localLayoutParams.leftMargin = paramView.findViewById(16908304).getWidth();
+          RadioBelowSummarytAndIconPreference.a(RadioBelowSummarytAndIconPreference.this).setLayoutParams(localLayoutParams);
+          AppMethodBeat.o(69578);
+        }
+      });
+      this.VpK.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(69579);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          RadioBelowSummarytAndIconPreference.b(RadioBelowSummarytAndIconPreference.this).onClick(paramAnonymousView);
+          a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(69579);
+        }
+      });
+    }
+    while (this.VpI != null) {
+      if (this.aeaf != 0)
+      {
+        this.VpI.removeAllViews();
+        View.inflate(this.mContext, this.aeaf, this.VpI);
+        AppMethodBeat.o(69582);
         return;
-        if (this.tYi != null) {
-          this.tYi.setVisibility(8);
+        if (this.VpJ != null) {
+          this.VpJ.setVisibility(8);
         }
       }
       else
       {
-        this.tYh.setVisibility(8);
+        this.VpI.setVisibility(8);
       }
     }
-    AppMethodBeat.o(142376);
+    AppMethodBeat.o(69582);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(142375);
+    AppMethodBeat.i(69581);
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
       localViewGroup.removeAllViews();
-      this.tYh = ((LinearLayout)paramViewGroup.findViewById(16908312));
-      View.inflate(this.mContext, 2130970260, localViewGroup);
-      this.tYi = ((ImageView)localViewGroup.findViewById(2131826258));
-      this.tYj = localViewGroup.findViewById(2131826259);
+      this.VpI = ((LinearLayout)paramViewGroup.findViewById(16908312));
+      View.inflate(this.mContext, a.g.mm_preference_summary_icon_below, localViewGroup);
+      this.VpJ = ((ImageView)localViewGroup.findViewById(a.f.summary_icon));
+      this.VpK = localViewGroup.findViewById(a.f.summary_click);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;
-    AppMethodBeat.o(142375);
+    AppMethodBeat.o(69581);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference
  * JD-Core Version:    0.7.0.1
  */

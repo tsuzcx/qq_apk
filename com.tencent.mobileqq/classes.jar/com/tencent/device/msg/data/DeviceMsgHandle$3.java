@@ -1,25 +1,24 @@
 package com.tencent.device.msg.data;
 
-import ayzl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import zxz;
+import com.tencent.mobileqq.service.message.MessageCache;
 
-public class DeviceMsgHandle$3
+class DeviceMsgHandle$3
   implements Runnable
 {
-  public DeviceMsgHandle$3(zxz paramzxz, MessageRecord paramMessageRecord) {}
+  DeviceMsgHandle$3(DeviceMsgHandle paramDeviceMsgHandle, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.this$0.app.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq);
-    this.this$0.app.a().a(this.a);
+    DeviceMsgHandle.a(this.this$0).getMsgCache().b(this.a.frienduin, this.a.istroop, this.a.uniseq);
+    DeviceMsgHandle.a(this.this$0).getMessageFacade().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.3
  * JD-Core Version:    0.7.0.1
  */

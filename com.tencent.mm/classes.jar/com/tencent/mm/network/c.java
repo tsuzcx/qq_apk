@@ -1,60 +1,29 @@
 package com.tencent.mm.network;
 
-public abstract interface c
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.j.b;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+
+public final class c
 {
-  public abstract int R(byte[] paramArrayOfByte);
+  public static final String pnD;
+  public static final int[] pnE;
+  public static final String pnF;
+  public static final int[] pnG;
   
-  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
-  
-  public abstract byte[] adB();
-  
-  public abstract boolean adC();
-  
-  public abstract byte[] adD();
-  
-  public abstract String adE();
-  
-  public abstract byte[] adF();
-  
-  public abstract void adG();
-  
-  public abstract void adH();
-  
-  public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
-  
-  public abstract void cP(boolean paramBoolean);
-  
-  public abstract void g(int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract int getUin();
-  
-  public abstract String getUsername();
-  
-  public abstract boolean isForeground();
-  
-  public abstract byte[] jN(int paramInt);
-  
-  public abstract void o(String paramString, byte[] paramArrayOfByte);
-  
-  public abstract void reset();
-  
-  public abstract byte[] rm(String paramString);
-  
-  public abstract byte[] rn(String paramString);
-  
-  public abstract byte[] ro(String paramString);
-  
-  public abstract byte[] rp(String paramString);
-  
-  public abstract boolean rq(String paramString);
-  
-  public abstract void setUin(int paramInt);
-  
-  public abstract void setUsername(String paramString);
+  static
+  {
+    AppMethodBeat.i(241165);
+    pnD = WeChatHosts.domainString(j.b.host_long_weixin_qq_com);
+    pnE = new int[] { 8080, 80, 443 };
+    pnF = WeChatHosts.domainString(j.b.host_short_weixin_qq_com);
+    pnG = new int[] { 80 };
+    AppMethodBeat.o(241165);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.c
  * JD-Core Version:    0.7.0.1
  */

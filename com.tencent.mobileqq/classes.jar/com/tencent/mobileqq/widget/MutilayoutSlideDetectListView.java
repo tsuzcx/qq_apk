@@ -19,7 +19,7 @@ public class MutilayoutSlideDetectListView
     super(paramContext, paramAttributeSet);
   }
   
-  private View a(View paramView)
+  private View b(View paramView)
   {
     if ((paramView instanceof ShaderAnimLayout)) {
       return paramView;
@@ -33,7 +33,7 @@ public class MutilayoutSlideDetectListView
         int i = 0;
         while (i < j)
         {
-          View localView = a(paramView.getChildAt(i));
+          View localView = b(paramView.getChildAt(i));
           if ((localView instanceof ShaderAnimLayout)) {
             return localView;
           }
@@ -48,7 +48,7 @@ public class MutilayoutSlideDetectListView
   {
     paramView = (View)paramView.getParent();
     int i = paramView.getTop();
-    while (paramView != this.jdField_a_of_type_AndroidViewView)
+    while (paramView != this.d)
     {
       paramView = (View)paramView.getParent();
       i += paramView.getTop();
@@ -58,81 +58,88 @@ public class MutilayoutSlideDetectListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector == null)
+    if (this.m == null)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener, new Handler(Looper.getMainLooper()));
-      this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
+      this.m = new GestureDetector(getContext(), this.l, new Handler(Looper.getMainLooper()));
+      this.m.setIsLongpressEnabled(false);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    label88:
-    int i;
-    switch (paramMotionEvent.getAction())
+    this.m.onTouchEvent(paramMotionEvent);
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    default: 
-    case 0: 
-      for (;;)
+      if (i == 1) {
+        this.c = false;
+      }
+    }
+    else
+    {
+      this.a = ((int)paramMotionEvent.getY());
+      this.n = false;
+      i = a(this.a);
+      if ((this.d != null) && (b(i) == this.d))
       {
-        if (this.jdField_e_of_type_Boolean == true)
+        if (paramMotionEvent.getX() >= this.d.getWidth() - this.g)
         {
-          return false;
-          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-          this.jdField_e_of_type_Boolean = false;
-          i = a(this.jdField_a_of_type_Int);
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (a(i) == this.jdField_a_of_type_AndroidViewView))
+          if ((this.h > 0) && (this.d.getHeight() > 0))
           {
-            if (paramMotionEvent.getX() < this.jdField_a_of_type_AndroidViewView.getWidth() - this.d) {
-              continue;
-            }
-            if ((this.jdField_e_of_type_Int <= 0) || (this.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
-              break label372;
-            }
-            View localView1 = a(this.jdField_a_of_type_AndroidViewView);
-            if (localView1 != null)
+            Object localObject = b(this.d);
+            if (localObject != null)
             {
-              View localView2 = (View)localView1.getParent();
-              i = a(localView1);
-              i = localView2.getHeight() / 2 + i;
-              int j = this.jdField_e_of_type_Int / 2;
-              int k = this.jdField_e_of_type_Int / 2;
-              if ((this.jdField_a_of_type_Int <= j + i) && (this.jdField_a_of_type_Int >= i - k)) {
-                break label372;
+              View localView = (View)((View)localObject).getParent();
+              i = a((View)localObject) + localView.getHeight() / 2;
+              int j = this.h / 2;
+              int k = this.h / 2;
+              if ((this.a <= j + i) && (this.a >= i - k)) {
+                break label319;
               }
-              if (QLog.isColorLevel()) {
-                QLog.d("SlideDetectListView", 2, "accurate in delete:ycenter:" + i + ",motionheight:" + this.jdField_a_of_type_AndroidViewView.getHeight() + "deleareaHeight:" + this.jdField_e_of_type_Int);
+              if (QLog.isColorLevel())
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("accurate in delete:ycenter:");
+                ((StringBuilder)localObject).append(i);
+                ((StringBuilder)localObject).append(",motionheight:");
+                ((StringBuilder)localObject).append(this.d.getHeight());
+                ((StringBuilder)localObject).append("deleareaHeight:");
+                ((StringBuilder)localObject).append(this.h);
+                QLog.d("SlideDetectListView", 2, ((StringBuilder)localObject).toString());
               }
-              i = 0;
             }
+            i = 0;
+            break label321;
+          }
+          label319:
+          i = 1;
+          label321:
+          if (i != 0)
+          {
+            this.n = true;
+            return false;
           }
         }
       }
-    }
-    while (i != 0)
-    {
-      this.jdField_e_of_type_Boolean = true;
-      return false;
-      i = 0;
-      continue;
-      if (this.jdField_a_of_type_Boolean != true) {
-        break;
-      }
-      return true;
-      this.b = false;
-      break;
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Boolean == true)) {
+      else if (this.b == true) {
         return true;
       }
-      if (this.b) {
-        break label88;
+    }
+    if (this.n == true) {
+      return false;
+    }
+    if (this.a != 0)
+    {
+      if (this.b == true) {
+        return true;
+      }
+      if (this.c) {
+        return false;
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
-      label372:
-      i = 1;
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MutilayoutSlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

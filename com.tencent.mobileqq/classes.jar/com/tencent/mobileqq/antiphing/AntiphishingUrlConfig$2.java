@@ -1,31 +1,27 @@
 package com.tencent.mobileqq.antiphing;
 
-import aknf;
-import akni;
 import android.content.Context;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 
-public class AntiphishingUrlConfig$2
+class AntiphishingUrlConfig$2
   implements Runnable
 {
-  public AntiphishingUrlConfig$2(aknf paramaknf, Context paramContext, String paramString1, String paramString2) {}
+  AntiphishingUrlConfig$2(AntiphishingUrlConfig paramAntiphishingUrlConfig, Context paramContext, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (aknf.a() > 3000000L)
+    if (AntiphishingUrlConfig.c() > 3000000L)
     {
-      if (new akni(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, aknf.b(this.this$0), this.b, false))
+      if (new DownloadFileHelper(this.a).a(this.b, AntiphishingUrlConfig.d(this.this$0), this.c, false))
       {
-        QLog.d(aknf.a(this.this$0), 1, "Successfully Update Config!");
-        aknf.a(this.this$0).sendEmptyMessage(aknf.a(this.this$0));
+        QLog.d(AntiphishingUrlConfig.b(this.this$0), 1, "Successfully Update Config!");
+        AntiphishingUrlConfig.e(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.a(this.this$0));
+        return;
       }
+      AntiphishingUrlConfig.e(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.c(this.this$0));
+      QLog.d(AntiphishingUrlConfig.b(this.this$0), 1, "Update Config Error!");
     }
-    else {
-      return;
-    }
-    aknf.a(this.this$0).sendEmptyMessage(aknf.b(this.this$0));
-    QLog.d(aknf.a(this.this$0), 1, "Update Config Error!");
   }
 }
 

@@ -9,11 +9,11 @@ public final class GetMusicListRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   static MusicListInfo cache_stMusicList = new MusicListInfo();
-  public CommRsp errInfo;
-  public long iTotal;
+  public CommRsp errInfo = null;
+  public long iTotal = 0L;
   public boolean isEnd = true;
   public String sCookie = "";
-  public MusicListInfo stMusicList;
+  public MusicListInfo stMusicList = null;
   
   public GetMusicListRsp() {}
   
@@ -37,14 +37,17 @@ public final class GetMusicListRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.errInfo != null) {
-      paramJceOutputStream.write(this.errInfo, 0);
+    Object localObject = this.errInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stMusicList != null) {
-      paramJceOutputStream.write(this.stMusicList, 1);
+    localObject = this.stMusicList;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.sCookie != null) {
-      paramJceOutputStream.write(this.sCookie, 2);
+    localObject = this.sCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.isEnd, 3);
     paramJceOutputStream.write(this.iTotal, 4);
@@ -52,7 +55,7 @@ public final class GetMusicListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GetMusicListRsp
  * JD-Core Version:    0.7.0.1
  */

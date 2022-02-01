@@ -20,7 +20,11 @@ final class NotNullVar<T>
     if (paramObject != null) {
       return paramObject;
     }
-    throw ((Throwable)new IllegalStateException("Property " + paramKProperty.getName() + " should be initialized before get."));
+    paramObject = new StringBuilder();
+    paramObject.append("Property ");
+    paramObject.append(paramKProperty.getName());
+    paramObject.append(" should be initialized before get.");
+    throw ((Throwable)new IllegalStateException(paramObject.toString()));
   }
   
   public void setValue(@Nullable Object paramObject, @NotNull KProperty<?> paramKProperty, @NotNull T paramT)
@@ -32,7 +36,7 @@ final class NotNullVar<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.properties.NotNullVar
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public abstract interface m
 {
   public abstract String getId();
   
-  public abstract String kw();
+  public abstract String kF();
 }
 
 

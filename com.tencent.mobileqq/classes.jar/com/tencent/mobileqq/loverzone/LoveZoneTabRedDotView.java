@@ -13,33 +13,28 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import atwg;
-import bdoo;
-import bkbb;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.zipanimate.IZipAnimationDrawable;
 import common.config.service.QzoneConfig;
 import org.json.JSONObject;
 
 public class LoveZoneTabRedDotView
   extends View
 {
-  public static final String a;
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = 11;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new atwg(this);
-  private bkbb jdField_a_of_type_Bkbb;
-  public boolean a;
-  private String b = "";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("sweet_miniapp", "love_zone_red_dot_frame_ani", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/love_zone_setting_src/setting_me_love_zone_frame_ani.zip");
-  }
+  public static final String a = QzoneConfig.getInstance().getConfig("sweet_miniapp", "love_zone_red_dot_frame_ani", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/love_zone_setting_src/setting_me_love_zone_frame_ani.zip");
+  public boolean b = false;
+  private String c = "";
+  private final int d = 11;
+  private Drawable e;
+  private Paint f;
+  private Rect g;
+  private float h;
+  private Drawable.Callback i = new LoveZoneTabRedDotView.1(this);
   
   public LoveZoneTabRedDotView(Context paramContext)
   {
@@ -58,7 +53,7 @@ public class LoveZoneTabRedDotView
       paramAppInfo = paramAppInfo.buffer.get();
       try
       {
-        Object localObject = new JSONObject(paramAppInfo);
+        localObject = new JSONObject(paramAppInfo);
         paramAppInfo = ((JSONObject)localObject).optJSONObject("param");
         localObject = ((JSONObject)localObject).optString("_show_mission");
         if ((paramAppInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
@@ -66,8 +61,8 @@ public class LoveZoneTabRedDotView
           paramAppInfo = (JSONObject)paramAppInfo.opt((String)localObject);
           if (paramAppInfo != null)
           {
-            this.b = paramAppInfo.optString((String)localObject);
-            boolean bool = TextUtils.isEmpty(this.b);
+            this.c = paramAppInfo.optString((String)localObject);
+            boolean bool = TextUtils.isEmpty(this.c);
             if (!bool) {
               return true;
             }
@@ -76,7 +71,10 @@ public class LoveZoneTabRedDotView
       }
       catch (Exception paramAppInfo)
       {
-        QLog.e("LoveZoneTabRedDotView", 1, "buffer handle exception:" + paramAppInfo);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("buffer handle exception:");
+        ((StringBuilder)localObject).append(paramAppInfo);
+        QLog.e("LoveZoneTabRedDotView", 1, ((StringBuilder)localObject).toString());
         paramAppInfo.printStackTrace();
       }
     }
@@ -85,111 +83,113 @@ public class LoveZoneTabRedDotView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) || (getVisibility() == 0))
+    if ((this.b) || (getVisibility() == 0))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       setVisibility(8);
-      if (this.jdField_a_of_type_Bkbb != null)
+      if (this.e != null)
       {
-        this.jdField_a_of_type_Bkbb.stop();
-        this.jdField_a_of_type_Bkbb.b();
-        this.jdField_a_of_type_Bkbb = null;
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.e);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).release(this.e);
+        this.e = null;
       }
     }
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (getVisibility() == 0))
+    if ((this.b) && (getVisibility() == 0))
     {
-      if (this.jdField_a_of_type_Bkbb == null) {
+      if (this.e == null)
+      {
         requestLayout();
+        return;
       }
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).restartAnimation(this.e);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Bkbb.d();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsPaint == null) || (TextUtils.isEmpty(this.b))) {
-      return;
-    }
-    paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130845635);
-    localDrawable.getBounds();
-    localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    localDrawable.draw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + bdoo.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Bkbb == null)
+    if ((this.b) && (this.g != null) && (this.f != null))
     {
-      this.jdField_a_of_type_Bkbb = new bkbb();
-      this.jdField_a_of_type_Bkbb.a(jdField_a_of_type_JavaLangString, 18);
-      this.jdField_a_of_type_Bkbb.a(false);
-      this.jdField_a_of_type_Bkbb.b(true);
-      this.jdField_a_of_type_Bkbb.c();
-      this.jdField_a_of_type_Bkbb.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-      this.jdField_a_of_type_Bkbb.start();
+      if (TextUtils.isEmpty(this.c)) {
+        return;
+      }
+      paramCanvas.save();
+      Drawable localDrawable = getResources().getDrawable(2130847702);
+      localDrawable.getBounds();
+      localDrawable.setBounds(this.g.left, this.g.top, this.g.right, this.g.bottom);
+      localDrawable.draw(paramCanvas);
+      this.f.setColor(-1);
+      paramCanvas.drawText(this.c, this.g.left + ViewUtils.dpToPx(25.0F), this.h, this.f);
+      if (this.e == null)
+      {
+        this.e = ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).getZipAnimationDrawable();
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setAnimationRes(this.e, a, 18);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setRepeatAnimation(this.e, false);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setShowLastFrameWhenStop(this.e, true);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).loadAndShowFirstFrame(this.e);
+        this.e.setCallback(this.i);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).start(this.e);
+      }
+      this.e.setBounds(this.g.left, this.g.top - ViewUtils.dpToPx(2.0F) * 3, this.g.left + ViewUtils.dpToPx(25.0F), this.g.top + ViewUtils.dpToPx(25.0F) - ViewUtils.dpToPx(2.0F) * 3);
+      this.e.draw(paramCanvas);
+      paramCanvas.restore();
     }
-    this.jdField_a_of_type_Bkbb.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - bdoo.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + bdoo.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + bdoo.b(25.0F) - bdoo.b(2.0F) * 3);
-    this.jdField_a_of_type_Bkbb.draw(paramCanvas);
-    paramCanvas.restore();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (TextUtils.isEmpty(this.b)) {
+    if (TextUtils.isEmpty(this.c)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bdoo.b(11.0F));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
+      this.f = new Paint(1);
+      this.f.setTextSize(ViewUtils.dpToPx(11.0F));
+      this.f.setTextAlign(Paint.Align.LEFT);
     }
-    int j = View.MeasureSpec.getSize(paramInt2);
-    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + bdoo.b(6.0F) + bdoo.b(25.0F);
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    int i = (int)(localFontMetrics.bottom - localFontMetrics.top);
-    j = j / 2 - i / 2 - bdoo.b(2.0F);
-    int k = bdoo.b(2.0F);
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    int k = View.MeasureSpec.getSize(paramInt2);
+    paramInt1 = (int)this.f.measureText(this.c) + ViewUtils.dpToPx(6.0F) + ViewUtils.dpToPx(25.0F);
+    Paint.FontMetrics localFontMetrics = this.f.getFontMetrics();
+    int j = (int)(localFontMetrics.bottom - localFontMetrics.top);
+    k = k / 2 - j / 2 - ViewUtils.dpToPx(2.0F);
+    int m = ViewUtils.dpToPx(2.0F);
+    if (this.g == null) {
+      this.g = new Rect();
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-    this.jdField_a_of_type_AndroidGraphicsRect.top = j;
-    this.jdField_a_of_type_AndroidGraphicsRect.right = (paramInt1 + 0);
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = (i + k * 2 + j);
-    this.jdField_a_of_type_Float = (j + bdoo.b(2.0F) - localFontMetrics.top);
+    Rect localRect = this.g;
+    localRect.left = 0;
+    localRect.top = k;
+    localRect.right = (paramInt1 + 0);
+    localRect.bottom = (j + m * 2 + k);
+    this.h = (k + ViewUtils.dpToPx(2.0F) - localFontMetrics.top);
     setMeasuredDimension(paramInt1, paramInt2);
   }
   
   public void setRedDotData(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    this.jdField_a_of_type_Boolean = a(paramAppInfo);
-    if (!this.jdField_a_of_type_Boolean)
+    this.b = a(paramAppInfo);
+    if (!this.b)
     {
       a();
       setVisibility(8);
     }
-    for (;;)
+    else
     {
-      invalidate();
-      return;
       setVisibility(0);
       requestLayout();
       b();
     }
+    invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView
  * JD-Core Version:    0.7.0.1
  */

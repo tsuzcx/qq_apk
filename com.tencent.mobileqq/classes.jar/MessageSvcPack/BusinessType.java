@@ -5,28 +5,19 @@ import java.io.Serializable;
 public final class BusinessType
   implements Serializable
 {
-  public static final BusinessType BusinessType_Friend;
-  public static final BusinessType BusinessType_LBS_YSS;
+  public static final BusinessType BusinessType_Friend = new BusinessType(1, 1, "BusinessType_Friend");
+  public static final BusinessType BusinessType_LBS_YSS = new BusinessType(2, 101, "BusinessType_LBS_YSS");
   public static final BusinessType BusinessType_MQQ;
   public static final int _BusinessType_Friend = 1;
   public static final int _BusinessType_LBS_YSS = 101;
   public static final int _BusinessType_MQQ = 0;
-  private static BusinessType[] a;
+  private static BusinessType[] a = new BusinessType[3];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!BusinessType.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new BusinessType[3];
-      BusinessType_MQQ = new BusinessType(0, 0, "BusinessType_MQQ");
-      BusinessType_Friend = new BusinessType(1, 1, "BusinessType_Friend");
-      BusinessType_LBS_YSS = new BusinessType(2, 101, "BusinessType_LBS_YSS");
-      return;
-    }
+    BusinessType_MQQ = new BusinessType(0, 0, "BusinessType_MQQ");
   }
   
   private BusinessType(int paramInt1, int paramInt2, String paramString)
@@ -39,15 +30,16 @@ public final class BusinessType
   public static BusinessType convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      BusinessType[] arrayOfBusinessType = a;
+      if (i >= arrayOfBusinessType.length) {
+        break;
+      }
+      if (arrayOfBusinessType[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -55,15 +47,16 @@ public final class BusinessType
   public static BusinessType convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      BusinessType[] arrayOfBusinessType = a;
+      if (i >= arrayOfBusinessType.length) {
+        break;
+      }
+      if (arrayOfBusinessType[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -80,7 +73,7 @@ public final class BusinessType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.BusinessType
  * JD-Core Version:    0.7.0.1
  */

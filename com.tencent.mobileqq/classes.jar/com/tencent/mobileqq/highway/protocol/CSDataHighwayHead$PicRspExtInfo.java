@@ -20,12 +20,13 @@ public final class CSDataHighwayHead$PicRspExtInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_skey", "uint32_client_ip", "uint64_up_offset", "uint64_block_size" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, PicRspExtInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_skey", "uint32_client_ip", "uint64_up_offset", "uint64_block_size" }, new Object[] { localByteStringMicro, Integer.valueOf(0), localLong, localLong }, PicRspExtInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.PicRspExtInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,11 @@ class ComparisonFailure$ComparisonCompactor$DiffExtractor
   
   private String extractDiff(String paramString)
   {
-    return "[" + paramString.substring(this.sharedPrefix.length(), paramString.length() - this.sharedSuffix.length()) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString.substring(this.sharedPrefix.length(), paramString.length() - this.sharedSuffix.length()));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public String actualDiff()
@@ -26,7 +30,11 @@ class ComparisonFailure$ComparisonCompactor$DiffExtractor
     if (this.sharedPrefix.length() <= ComparisonFailure.ComparisonCompactor.access$500(this.this$0)) {
       return this.sharedPrefix;
     }
-    return "..." + this.sharedPrefix.substring(this.sharedPrefix.length() - ComparisonFailure.ComparisonCompactor.access$500(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("...");
+    String str = this.sharedPrefix;
+    localStringBuilder.append(str.substring(str.length() - ComparisonFailure.ComparisonCompactor.access$500(this.this$0)));
+    return localStringBuilder.toString();
   }
   
   public String compactSuffix()
@@ -34,7 +42,10 @@ class ComparisonFailure$ComparisonCompactor$DiffExtractor
     if (this.sharedSuffix.length() <= ComparisonFailure.ComparisonCompactor.access$500(this.this$0)) {
       return this.sharedSuffix;
     }
-    return this.sharedSuffix.substring(0, ComparisonFailure.ComparisonCompactor.access$500(this.this$0)) + "...";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.sharedSuffix.substring(0, ComparisonFailure.ComparisonCompactor.access$500(this.this$0)));
+    localStringBuilder.append("...");
+    return localStringBuilder.toString();
   }
   
   public String expectedDiff()
@@ -44,7 +55,7 @@ class ComparisonFailure$ComparisonCompactor$DiffExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.ComparisonFailure.ComparisonCompactor.DiffExtractor
  * JD-Core Version:    0.7.0.1
  */

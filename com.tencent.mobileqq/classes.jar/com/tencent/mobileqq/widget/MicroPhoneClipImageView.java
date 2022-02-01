@@ -8,15 +8,10 @@ import android.widget.ImageView;
 public class MicroPhoneClipImageView
   extends ImageView
 {
-  public static final int[] a;
-  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 3658, 4390, 5182, 6036, 6829, 7621, 8536, 9207 };
-  }
+  public static final int[] a = { 3658, 4390, 5182, 6036, 6829, 7621, 8536, 9207 };
+  private int[] b = null;
+  private boolean c;
+  private ClipDrawable d;
   
   public MicroPhoneClipImageView(Context paramContext)
   {
@@ -38,60 +33,63 @@ public class MicroPhoneClipImageView
   
   private int a(int paramInt)
   {
-    int j = jdField_a_of_type_ArrayOfInt.length - 2;
+    int[] arrayOfInt = a;
+    int k = arrayOfInt.length - 2;
     if (this.b == null)
     {
-      this.b = new int[jdField_a_of_type_ArrayOfInt.length];
-      i = 0;
-      while (i < j)
+      this.b = new int[arrayOfInt.length];
+      int j;
+      for (i = 0; i < k; i = j)
       {
-        this.b[(i + 1)] = (8000 - (j - i) * 7900 / j);
-        i += 1;
+        arrayOfInt = this.b;
+        j = i + 1;
+        arrayOfInt[j] = (8000 - 7900 * (k - i) / k);
       }
-      this.b[0] = 0;
-      this.b[(this.b.length - 1)] = 8000;
+      arrayOfInt = this.b;
+      arrayOfInt[0] = 0;
+      arrayOfInt[(arrayOfInt.length - 1)] = 8000;
     }
     int i = this.b.length - 1;
-    if (i >= 0) {
-      if (paramInt < this.b[i]) {}
-    }
-    for (;;)
+    while (i >= 0)
     {
-      if (i == -1)
-      {
-        return 0;
-        i -= 1;
-        break;
+      if (paramInt >= this.b[i]) {
+        break label126;
       }
-      return i;
-      i = -1;
+      i -= 1;
     }
+    i = -1;
+    label126:
+    paramInt = i;
+    if (i == -1) {
+      paramInt = 0;
+    }
+    return paramInt;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)getDrawable());
+    this.d = ((ClipDrawable)getDrawable());
   }
   
   public void setRecordState(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setSoundWave(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       paramInt = a(paramInt);
-      this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(jdField_a_of_type_ArrayOfInt[paramInt]);
+      this.d.setLevel(a[paramInt]);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(0);
+    this.d.setLevel(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MicroPhoneClipImageView
  * JD-Core Version:    0.7.0.1
  */

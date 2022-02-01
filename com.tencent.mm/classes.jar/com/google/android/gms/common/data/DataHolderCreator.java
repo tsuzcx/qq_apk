@@ -14,7 +14,7 @@ public class DataHolderCreator
   
   public DataHolder createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61123);
+    AppMethodBeat.i(11615);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     Bundle localBundle = null;
     int i = 0;
@@ -48,7 +48,7 @@ public class DataHolderCreator
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new DataHolder(j, arrayOfString, arrayOfCursorWindow, i, localBundle);
     paramParcel.validateContents();
-    AppMethodBeat.o(61123);
+    AppMethodBeat.o(11615);
     return paramParcel;
   }
   
@@ -59,7 +59,7 @@ public class DataHolderCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.DataHolderCreator
  * JD-Core Version:    0.7.0.1
  */

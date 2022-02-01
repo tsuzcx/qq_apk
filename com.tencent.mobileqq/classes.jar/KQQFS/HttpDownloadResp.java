@@ -10,19 +10,19 @@ public final class HttpDownloadResp
   static byte[] cache_encryKey;
   static VerifyCode cache_stVerifyCode;
   static byte[] cache_vFileData;
-  public int encryFrom;
-  public byte[] encryKey;
-  public int encryTo;
-  public byte encryType;
-  public int iReplyCode;
-  public long lMID;
-  public int sessionID;
-  public VerifyCode stVerifyCode;
+  public int encryFrom = 0;
+  public byte[] encryKey = null;
+  public int encryTo = 0;
+  public byte encryType = 0;
+  public int iReplyCode = 0;
+  public long lMID = 0L;
+  public int sessionID = 0;
+  public VerifyCode stVerifyCode = null;
   public String strFileName = "";
   public String strResult = "";
-  public long uFileLen;
-  public int uSeq;
-  public byte[] vFileData;
+  public long uFileLen = 0L;
+  public int uSeq = 0;
+  public byte[] vFileData = null;
   
   public HttpDownloadResp() {}
   
@@ -86,17 +86,19 @@ public final class HttpDownloadResp
     paramJceOutputStream.write(this.encryFrom, 8);
     paramJceOutputStream.write(this.encryTo, 9);
     paramJceOutputStream.write(this.vFileData, 10);
-    if (this.stVerifyCode != null) {
-      paramJceOutputStream.write(this.stVerifyCode, 11);
+    Object localObject = this.stVerifyCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.strFileName != null) {
-      paramJceOutputStream.write(this.strFileName, 12);
+    localObject = this.strFileName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.HttpDownloadResp
  * JD-Core Version:    0.7.0.1
  */

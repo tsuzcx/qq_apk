@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/dwj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hp" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:text="@string/e5v" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cv" android:text="@string/e5u" android:layout_below="@id/ko8" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <CheckBox android:id="@id/fnj" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" style="@style/lq" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/Link" android:id="@id/fnk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dfk" />
+    </LinearLayout>
+</RelativeLayout>

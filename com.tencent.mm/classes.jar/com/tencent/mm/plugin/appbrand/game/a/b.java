@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.plugin.expt.b.c.a;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigAllowOpenGL3;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigAllowOpenGL3;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends g<Boolean>
+  extends z<Boolean>
 {
-  public static final b hsd;
+  public static final b rpU;
   
   static
   {
-    AppMethodBeat.i(134605);
-    hsd = new b();
-    AppMethodBeat.o(134605);
+    AppMethodBeat.i(50357);
+    rpU = new b();
+    AppMethodBeat.o(50357);
   }
   
-  protected final String aAs()
+  protected final String coJ()
   {
     return "opengl3";
   }
   
-  protected final a.a aAt()
+  protected final c.a coK()
   {
     return null;
   }
   
-  protected final boolean aAu()
+  protected final boolean coL()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.b
  * JD-Core Version:    0.7.0.1
  */

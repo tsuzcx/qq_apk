@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="top" android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.widget.FixSizeImageView android:id="@id/mmg" android:paddingLeft="10.0dip" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mmn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvg" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mmq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvh" android:layout_toRightOf="@id/mmn" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvi" android:layout_toRightOf="@id/mmq" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mmo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvj" android:layout_toRightOf="@id/mml" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mmm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvm" android:layout_toRightOf="@id/mmo" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mmh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvk" android:layout_toRightOf="@id/mmm" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/mmp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wvl" android:layout_toRightOf="@id/mmh" />
+    </RelativeLayout>
+    <ProgressBar android:id="@id/mna" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_marginTop="5.0dip" android:max="100" android:progress="20" style="@style/ab4" />
+    <FrameLayout android:layout_gravity="bottom" android:background="#ffaeaeae" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginBottom="-1.0dip" />
+</LinearLayout>

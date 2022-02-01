@@ -1,40 +1,40 @@
 package com.tencent.tmediacodec.codec;
 
 import android.media.MediaCodec;
+import android.support.annotation.NonNull;
 import com.tencent.tmediacodec.reuse.ReuseHelper;
 import com.tencent.tmediacodec.reuse.ReuseHelper.ReuseType;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/codec/AudioCodecWrapper;", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "codec", "Landroid/media/MediaCodec;", "format", "Lcom/tencent/tmediacodec/codec/FormatWrapper;", "(Landroid/media/MediaCodec;Lcom/tencent/tmediacodec/codec/FormatWrapper;)V", "canReuse", "Lcom/tencent/tmediacodec/reuse/ReuseHelper$ReuseType;", "newFormat", "toString", "", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class AudioCodecWrapper
   extends ReuseCodecWrapper
 {
-  public AudioCodecWrapper(@NotNull MediaCodec paramMediaCodec, @NotNull FormatWrapper paramFormatWrapper)
+  public AudioCodecWrapper(@NonNull MediaCodec paramMediaCodec, @NonNull FormatWrapper paramFormatWrapper)
   {
     super(paramMediaCodec, paramFormatWrapper);
   }
   
-  @NotNull
-  public ReuseHelper.ReuseType canReuse(@NotNull FormatWrapper paramFormatWrapper)
+  @NonNull
+  public ReuseHelper.ReuseType canReuse(@NonNull FormatWrapper paramFormatWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "newFormat");
-    if (ReuseHelper.isSeamlessAdaptationSupported$default(ReuseHelper.INSTANCE, (ReuseCodecWrapper)this, paramFormatWrapper, false, 4, null)) {
+    if (ReuseHelper.isSeamlessAdaptationSupported(this, paramFormatWrapper)) {
       return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITHOUT_RECONFIGURATION;
     }
     return ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO;
   }
   
-  @NotNull
+  @NonNull
   public String toString()
   {
-    return "AudioCodecWrapper[" + hashCode() + ']';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioCodecWrapper[");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.AudioCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -41,10 +41,11 @@ public class FabbyStrokeFilterExt
   public FabbyStrokeFilterExt(List<StickerItem> paramList)
   {
     addParam(new UniformParam.IntParam("useMaskAlpha", 0));
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       this.mStickerItemsMap = new HashMap();
       paramList = paramList.iterator();
       while (paramList.hasNext())
@@ -66,15 +67,13 @@ public class FabbyStrokeFilterExt
   
   private void initSmoothFilter(int paramInt1, int paramInt2, float paramFloat)
   {
-    if ((paramInt1 < 10) || (paramInt2 < 10) || (paramFloat < 2.0F)) {}
-    do
+    if ((paramInt1 >= 10) && (paramInt2 >= 10))
     {
-      do
+      if (paramFloat < 2.0F) {
+        return;
+      }
+      if (this.gaussianMaskFilter == null)
       {
-        do
-        {
-          return;
-        } while (this.gaussianMaskFilter != null);
         float f = paramFloat;
         if (paramFloat > 15.0F) {
           f = 15.0F;
@@ -87,12 +86,20 @@ public class FabbyStrokeFilterExt
         this.copyFilter.addParam(new UniformParam.IntParam("useBg", 0));
         this.copyFilter.addParam(new UniformParam.Float4fParam("strokeColor", 0.0F, 0.0F, 0.0F, 0.0F));
         this.copyFilter.apply();
-      } while (this.mMaskTextureID < 0);
-      if (this.gaussianMaskFilter != null) {
-        this.gaussianMaskFilter.setMaskTextureId(this.mMaskTextureID);
+        paramInt1 = this.mMaskTextureID;
+        if (paramInt1 >= 0)
+        {
+          Object localObject = this.gaussianMaskFilter;
+          if (localObject != null) {
+            ((OptimGaussianMaskFilter)localObject).setMaskTextureId(paramInt1);
+          }
+          localObject = this.copyFilter;
+          if (localObject != null) {
+            ((BaseFilter)localObject).addParam(new UniformParam.TextureParam("inputImageTexture2", this.mMaskTextureID, 33986));
+          }
+        }
       }
-    } while (this.copyFilter == null);
-    this.copyFilter.addParam(new UniformParam.TextureParam("inputImageTexture2", this.mMaskTextureID, 33986));
+    }
   }
   
   private void smoothStroke(int paramInt1, int paramInt2, Frame paramFrame, float paramFloat)
@@ -124,41 +131,51 @@ public class FabbyStrokeFilterExt
   {
     this.mFrameWidth = paramInt2;
     this.mFrameHeight = paramInt3;
+    Object localObject = this.ZERO_COLOR;
+    StickerItem localStickerItem = this.item;
     float f2 = 0.0F;
-    float f1 = 0.0F;
-    float[] arrayOfFloat = this.ZERO_COLOR;
-    if (this.item != null)
+    float f1;
+    if (localStickerItem != null)
     {
       f2 = (float)this.item.strokeGap * Math.min(paramInt2, paramInt3);
-      f1 = (float)this.item.strokeWidth;
-      f1 = Math.min(paramInt2, paramInt3) * f1;
-      arrayOfFloat = this.item.strokeColor;
+      f1 = (float)this.item.strokeWidth * Math.min(paramInt2, paramInt3);
+      localObject = this.item.strokeColor;
+    }
+    else
+    {
+      f1 = 0.0F;
     }
     this.mCurrentFilter.setStrokeGapInPixel(f2);
     this.mCurrentFilter.setStrokeWidthInPixel(f1);
-    this.mCurrentFilter.setStrokeColor(arrayOfFloat);
-    if (this.mCurrentFilter == this)
+    this.mCurrentFilter.setStrokeColor((float[])localObject);
+    localObject = this.mCurrentFilter;
+    if (localObject == this)
     {
       super.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
       if ((this.item != null) && (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.MASK_LINE_STROKE.type)) {
         smoothStroke(paramInt2, paramInt3, paramFrame, f1 / 3.0F);
       }
-      return;
     }
-    this.mCurrentFilter.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
+    else
+    {
+      ((FabbyStrokeFilterExt)localObject).RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
+    }
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    if (this.gaussianMaskFilter != null) {
-      this.gaussianMaskFilter.clear();
+    Object localObject = this.gaussianMaskFilter;
+    if (localObject != null) {
+      ((OptimGaussianMaskFilter)localObject).clear();
     }
-    if (this.copyFilter != null) {
-      this.copyFilter.clearGLSLSelf();
+    localObject = this.copyFilter;
+    if (localObject != null) {
+      ((BaseFilter)localObject).clearGLSLSelf();
     }
-    if (this.mOutLineLightFilter != null) {
-      this.mOutLineLightFilter.clearGLSLSelf();
+    localObject = this.mOutLineLightFilter;
+    if (localObject != null) {
+      ((FabbyOutlineLightFilter)localObject).clearGLSLSelf();
     }
   }
   
@@ -171,8 +188,9 @@ public class FabbyStrokeFilterExt
   public void setStrokeColor(float[] paramArrayOfFloat)
   {
     super.setStrokeColor(paramArrayOfFloat);
-    if (this.copyFilter != null) {
-      this.copyFilter.addParam(new UniformParam.Float4fParam("strokeColor", paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]));
+    BaseFilter localBaseFilter = this.copyFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.addParam(new UniformParam.Float4fParam("strokeColor", paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]));
     }
   }
   
@@ -180,14 +198,17 @@ public class FabbyStrokeFilterExt
   {
     super.setmMaskTex(paramInt);
     this.mMaskTextureID = paramInt;
-    if (this.mCurrentFilter != this) {
-      this.mCurrentFilter.setmMaskTex(paramInt);
+    Object localObject = this.mCurrentFilter;
+    if (localObject != this) {
+      ((FabbyStrokeFilterExt)localObject).setmMaskTex(paramInt);
     }
-    if (this.gaussianMaskFilter != null) {
-      this.gaussianMaskFilter.setMaskTextureId(paramInt);
+    localObject = this.gaussianMaskFilter;
+    if (localObject != null) {
+      ((OptimGaussianMaskFilter)localObject).setMaskTextureId(paramInt);
     }
-    if (this.copyFilter != null) {
-      this.copyFilter.addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
+    localObject = this.copyFilter;
+    if (localObject != null) {
+      ((BaseFilter)localObject).addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
     }
   }
   
@@ -204,56 +225,36 @@ public class FabbyStrokeFilterExt
   
   public void updateTextureParam(PTDetectInfo paramPTDetectInfo)
   {
-    int k = 1;
+    Map localMap = this.mStickerItemsMap;
     int j = 0;
-    if ((this.mStickerItemsMap == null) || (paramPTDetectInfo == null))
+    if ((localMap != null) && (paramPTDetectInfo != null))
     {
-      this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", 0));
-      this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", 0));
-    }
-    do
-    {
-      return;
-      this.item = ((StickerItem)this.mStickerItemsMap.get(this.itemId));
-    } while (this.item == null);
-    int i;
-    if (this.renderEnded)
-    {
-      this.mCurrentFilter = this;
-      this.item = null;
-      i = 0;
-    }
-    for (;;)
-    {
-      this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", i));
-      this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", j));
-      if (this.copyFilter == null) {
-        break;
-      }
-      this.copyFilter.addParam(new UniformParam.IntParam("useBg", j));
-      return;
-      if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.NONE.type)
+      this.item = ((StickerItem)localMap.get(this.itemId));
+      if (this.item != null)
       {
-        this.item.strokeColor = this.ZERO_COLOR;
-        this.item.strokeWidth = 0.0D;
-        this.item.strokeGap = 0.0D;
-        this.mCurrentFilter = this;
-        i = 0;
-      }
-      else
-      {
-        boolean bool;
-        if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.ALL_LINE_STROKE.type)
+        boolean bool2 = this.renderEnded;
+        int k = 1;
+        boolean bool1 = true;
+        if (bool2)
         {
-          if (this.item.strokeStyle == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE.OUTLIGHT_LINE.style) {}
-          for (bool = true;; bool = false)
-          {
-            useOutlineFilter(bool);
-            i = 0;
-            break;
-          }
+          this.mCurrentFilter = this;
+          this.item = null;
         }
-        if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.MASK_LINE_STROKE.type)
+        else if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.NONE.type)
+        {
+          this.item.strokeColor = this.ZERO_COLOR;
+          this.item.strokeWidth = 0.0D;
+          this.item.strokeGap = 0.0D;
+          this.mCurrentFilter = this;
+        }
+        else if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.ALL_LINE_STROKE.type)
+        {
+          if (this.item.strokeStyle != VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE.OUTLIGHT_LINE.style) {
+            bool1 = false;
+          }
+          useOutlineFilter(bool1);
+        }
+        else if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.MASK_LINE_STROKE.type)
         {
           if (this.gaussianMaskFilter == null)
           {
@@ -262,33 +263,46 @@ public class FabbyStrokeFilterExt
             initSmoothFilter(this.mFrameWidth, this.mFrameHeight, f1 * f2 / 3.0F);
           }
           i = updateStrokeBitmap(paramPTDetectInfo);
-          if (this.copyFilter != null) {
-            this.copyFilter.addParam(new UniformParam.TextureParam("inputImageTexture3", i, 33987));
+          paramPTDetectInfo = this.copyFilter;
+          if (paramPTDetectInfo != null) {
+            paramPTDetectInfo.addParam(new UniformParam.TextureParam("inputImageTexture3", i, 33987));
           }
-          if (this.item.strokeStyle == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE.OUTLIGHT_LINE.style) {}
-          for (bool = true;; bool = false)
-          {
-            useOutlineFilter(bool);
-            if (this.mCurrentFilter != this) {
-              this.mCurrentFilter.addParam(new UniformParam.TextureParam("inputImageTexture3", i, 33987));
-            }
-            i = k;
-            if (this.item.strokeStyle != VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE.MASK_COLOR.style) {
-              break;
-            }
-            j = 1;
-            i = k;
-            break;
+          if (this.item.strokeStyle == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE.OUTLIGHT_LINE.style) {
+            bool1 = true;
+          } else {
+            bool1 = false;
           }
+          useOutlineFilter(bool1);
+          paramPTDetectInfo = this.mCurrentFilter;
+          if (paramPTDetectInfo != this) {
+            paramPTDetectInfo.addParam(new UniformParam.TextureParam("inputImageTexture3", i, 33987));
+          }
+          i = k;
+          if (this.item.strokeStyle != VideoFilterFactory.SEGMENT_STROKE_TRIGGER_STYLE.MASK_COLOR.style) {
+            break label363;
+          }
+          j = 1;
+          i = k;
+          break label363;
         }
-        i = 0;
+        int i = 0;
+        label363:
+        this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", i));
+        this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", j));
+        paramPTDetectInfo = this.copyFilter;
+        if (paramPTDetectInfo != null) {
+          paramPTDetectInfo.addParam(new UniformParam.IntParam("useBg", j));
+        }
       }
+      return;
     }
+    this.mCurrentFilter.addParam(new UniformParam.IntParam("useBg", 0));
+    this.mCurrentFilter.addParam(new UniformParam.IntParam("useMaskAlpha", 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyStrokeFilterExt
  * JD-Core Version:    0.7.0.1
  */

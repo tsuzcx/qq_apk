@@ -21,7 +21,7 @@ public final class obj_msg$MsgContentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.obj_msg.MsgContentInfo
  * JD-Core Version:    0.7.0.1
  */

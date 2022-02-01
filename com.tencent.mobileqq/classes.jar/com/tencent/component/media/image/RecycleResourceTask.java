@@ -7,17 +7,14 @@ public class RecycleResourceTask
 {
   private static double averageTime;
   private static int mObjectPoolSize;
-  private static long requestNum = 0L;
+  private static long requestNum;
   private static RecycleResourceTask sPool;
-  private static final Object sPoolSync;
+  private static final Object sPoolSync = new Object();
   private RecycleResourceTask next = null;
   private long startTime = 0L;
   
   static
   {
-    averageTime = 0.0D;
-    sPool = null;
-    sPoolSync = new Object();
     mObjectPoolSize = 0;
     clearAndInitSize();
   }
@@ -43,32 +40,49 @@ public class RecycleResourceTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static RecycleResourceTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        RecycleResourceTask localRecycleResourceTask = sPool;
-        sPool = sPool.next;
-        localRecycleResourceTask.next = null;
-        mObjectPoolSize -= 1;
-        localRecycleResourceTask.setImageTask(paramImageTask);
-        return localRecycleResourceTask;
+        if (sPool != null)
+        {
+          RecycleResourceTask localRecycleResourceTask = sPool;
+          sPool = sPool.next;
+          localRecycleResourceTask.next = null;
+          mObjectPoolSize -= 1;
+          localRecycleResourceTask.setImageTask(paramImageTask);
+          return localRecycleResourceTask;
+        }
       }
-      return new RecycleResourceTask(paramImageTask);
     }
+    return new RecycleResourceTask(paramImageTask);
   }
   
   private void updateTime(long paramLong)
   {
     try
     {
-      averageTime = (requestNum * averageTime + paramLong) / (requestNum + 1L);
-      Log.i("ttt", "ImageTask averageTime: " + averageTime);
+      double d1 = requestNum;
+      double d2 = averageTime;
+      Double.isNaN(d1);
+      double d3 = paramLong;
+      Double.isNaN(d3);
+      paramLong = requestNum;
+      double d4 = paramLong + 1L;
+      Double.isNaN(d4);
+      d1 = (d1 * d2 + d3) / d4;
+      averageTime = d1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ImageTask averageTime: ");
+      localStringBuilder.append(averageTime);
+      Log.i("ttt", localStringBuilder.toString());
       requestNum += 1L;
       return;
     }
@@ -88,7 +102,14 @@ public class RecycleResourceTask
   protected void onResult(int paramInt, Object... paramVarArgs)
   {
     ImageTaskTracer.removeImageTaskLifeCycleRecord(this.mImageKey.hashCodeEx());
-    Log.d("RecycleResourceTask", "onResult type:" + paramInt + " hashcode:" + this.mImageKey.hashCodeEx() + " url:" + getImageKey().url);
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("onResult type:");
+    paramVarArgs.append(paramInt);
+    paramVarArgs.append(" hashcode:");
+    paramVarArgs.append(this.mImageKey.hashCodeEx());
+    paramVarArgs.append(" url:");
+    paramVarArgs.append(getImageKey().url);
+    Log.d("RecycleResourceTask", paramVarArgs.toString());
     ImageTaskManager.removeImageTask(getImageKey());
     ImageTask localImageTask;
     for (paramVarArgs = this.mNextTask; paramVarArgs != null; paramVarArgs = localImageTask)
@@ -119,7 +140,7 @@ public class RecycleResourceTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.RecycleResourceTask
  * JD-Core Version:    0.7.0.1
  */

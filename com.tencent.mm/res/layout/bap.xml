@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/glx" android:background="@drawable/afj" android:padding="0.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gly" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/he0" android:visibility="visible" android:layout_width="37.0dip" android:layout_height="37.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:importantForAccessibility="no" />
+        <RelativeLayout android:id="@id/glw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_alignParentTop="true">
+            <ImageView android:id="@id/glv" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:importantForAccessibility="no" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_0" android:gravity="center_horizontal" android:id="@id/gm0" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="false" android:layout_below="@id/glv" android:layout_centerHorizontal="true" style="@style/ma" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/m_" android:textColor="#ff999999" android:id="@id/glu" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/glw" android:layout_centerHorizontal="true" style="@style/ma" />
+    </RelativeLayout>
+    <ImageView android:id="@id/c8j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="@color/abn" android:scaleType="fitXY" android:layout_alignParentTop="true" android:importantForAccessibility="no" />
+    <ImageView android:id="@id/c89" android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="@color/abn" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:importantForAccessibility="no" />
+    <ImageView android:id="@id/c8d" android:visibility="gone" android:layout_width="0.5dip" android:layout_height="fill_parent" android:src="@color/abn" android:scaleType="fitXY" android:layout_above="@id/c89" android:layout_below="@id/c8j" android:layout_alignParentLeft="true" android:importantForAccessibility="no" />
+    <ImageView android:id="@id/c8h" android:layout_width="0.5dip" android:layout_height="fill_parent" android:src="@color/abn" android:scaleType="fitXY" android:layout_above="@id/c89" android:layout_below="@id/c8j" android:layout_alignParentRight="true" android:layout_alignWithParentIfMissing="true" android:importantForAccessibility="no" />
+</RelativeLayout>

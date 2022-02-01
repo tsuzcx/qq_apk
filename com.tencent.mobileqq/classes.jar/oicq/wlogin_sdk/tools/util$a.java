@@ -17,13 +17,17 @@ public class util$a
     {
       throw paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label50:
+      break label50;
+    }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.util.a
  * JD-Core Version:    0.7.0.1
  */

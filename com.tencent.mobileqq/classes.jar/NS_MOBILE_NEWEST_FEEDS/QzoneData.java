@@ -8,8 +8,8 @@ public final class QzoneData
   extends JceStruct
 {
   static byte[] cache_vcByte = (byte[])new byte[1];
-  public int iType;
-  public byte[] vcByte;
+  public int iType = 0;
+  public byte[] vcByte = null;
   
   static
   {
@@ -33,14 +33,15 @@ public final class QzoneData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iType, 0);
-    if (this.vcByte != null) {
-      paramJceOutputStream.write(this.vcByte, 1);
+    byte[] arrayOfByte = this.vcByte;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.QzoneData
  * JD-Core Version:    0.7.0.1
  */

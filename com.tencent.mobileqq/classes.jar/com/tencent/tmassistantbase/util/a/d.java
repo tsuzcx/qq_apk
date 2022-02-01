@@ -37,8 +37,9 @@ public class d
   
   public void a(boolean paramBoolean)
   {
-    if (this.d != null) {
-      this.d.a(paramBoolean);
+    e locale = this.d;
+    if (locale != null) {
+      locale.a(paramBoolean);
     }
   }
   
@@ -54,37 +55,39 @@ public class d
       localMethod.setAccessible(true);
       Field localField2 = localClass.getDeclaredField("mInstance");
       localField2.setAccessible(true);
-      if (localClass.isInstance(localObject)) {}
-      for (this.a = localMethod.invoke(localObject, new Object[0]);; this.a = localObject)
+      if (localClass.isInstance(localObject)) {
+        this.a = localMethod.invoke(localObject, new Object[0]);
+      } else {
+        this.a = localObject;
+      }
+      this.b = a(this.a);
+      if (localClass.isInstance(localObject))
       {
-        this.b = a(this.a);
-        if (!localClass.isInstance(localObject)) {
-          break;
-        }
         localField2.set(localObject, this.b);
         return;
       }
-      localThrowable.set(localObject, this.b);
+      localField1.set(localObject, this.b);
+      return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("HookManager_AMHook", "inject MActivityManagerService exception!");
       localThrowable.printStackTrace();
-      return;
     }
   }
   
   public boolean c()
   {
-    if (this.d != null) {
-      return this.d.b();
+    e locale = this.d;
+    if (locale != null) {
+      return locale.b();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.d
  * JD-Core Version:    0.7.0.1
  */

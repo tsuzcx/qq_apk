@@ -1,46 +1,44 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaoj;
-import aaom;
-import aase;
 import android.text.TextUtils;
+import com.tencent.gdtad.log.GdtLog;
 
-public class GdtArkPreDownloadTask$1
+class GdtArkPreDownloadTask$1
   implements Runnable
 {
-  public GdtArkPreDownloadTask$1(aaoj paramaaoj) {}
+  GdtArkPreDownloadTask$1(GdtArkPreDownloadTask paramGdtArkPreDownloadTask) {}
   
   public void run()
   {
-    aase.b("GdtArkPreDownloadTask", String.format("run status:%d", new Object[] { Integer.valueOf(aaoj.a(this.this$0)) }));
-    if (!aaoj.a(this.this$0))
+    GdtLog.b("GdtArkPreDownloadTask", String.format("run status:%d", new Object[] { Integer.valueOf(GdtArkPreDownloadTask.a(this.this$0)) }));
+    if (!GdtArkPreDownloadTask.b(this.this$0))
     {
-      aaoj.a(this.this$0, 1);
-      aaoj.a(this.this$0, 4, -2147483648, 0L);
-    }
-    for (;;)
-    {
+      GdtArkPreDownloadTask.a(this.this$0, 1);
+      GdtArkPreDownloadTask.a(this.this$0, 4, -2147483648, 0L);
       return;
-      aaoj.a(this.this$0, 1);
-      aaom.a();
-      if (TextUtils.isEmpty(aaoj.a(this.this$0)))
-      {
-        aaoj.a(this.this$0, 2);
-        aaoj.a(this.this$0);
-      }
-      while (aaoj.a(this.this$0) >= 0L)
-      {
-        aaoj.a(this.this$0, 13, -2147483648, aaoj.a(this.this$0));
-        return;
-        aaoj.a(this.this$0, 3);
-        aaoj.b(this.this$0);
-      }
+    }
+    GdtArkPreDownloadTask.a(this.this$0, 1);
+    GdtArkUtil.a();
+    if (TextUtils.isEmpty(GdtArkPreDownloadTask.c(this.this$0)))
+    {
+      GdtArkPreDownloadTask.a(this.this$0, 2);
+      GdtArkPreDownloadTask.d(this.this$0);
+    }
+    else
+    {
+      GdtArkPreDownloadTask.a(this.this$0, 3);
+      GdtArkPreDownloadTask.e(this.this$0);
+    }
+    if (GdtArkPreDownloadTask.f(this.this$0) >= 0L)
+    {
+      GdtArkPreDownloadTask localGdtArkPreDownloadTask = this.this$0;
+      GdtArkPreDownloadTask.a(localGdtArkPreDownloadTask, 13, -2147483648, GdtArkPreDownloadTask.f(localGdtArkPreDownloadTask));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.1
  * JD-Core Version:    0.7.0.1
  */

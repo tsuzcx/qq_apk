@@ -16,43 +16,44 @@ class PoiManager$3
   
   public void onError(int paramInt, String paramString)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onError(paramInt, paramString, this.val$reqCompleted);
+    PoiManager.IFetchPoiListener localIFetchPoiListener = this.val$listener;
+    if (localIFetchPoiListener != null) {
+      localIFetchPoiListener.onError(paramInt, paramString, this.val$reqCompleted);
     }
   }
   
   public void onSuccess(List<PoiItem> paramList)
   {
-    Object localObject = paramList;
+    int i = 0;
+    Object localObject1 = paramList;
     if (paramList == null) {
-      localObject = new ArrayList(0);
+      localObject1 = new ArrayList(0);
     }
-    if (!((List)localObject).isEmpty())
+    if (!((List)localObject1).isEmpty())
     {
       int j = this.val$singleReq.length;
-      paramList = ((List)localObject).iterator();
-      int i = 0;
-      if (paramList.hasNext())
+      paramList = ((List)localObject1).iterator();
+      while (paramList.hasNext())
       {
-        PoiItem localPoiItem1 = (PoiItem)paramList.next();
+        localObject2 = (PoiItem)paramList.next();
         if (i < j)
         {
-          PoiItem localPoiItem2 = this.val$singleReq[i];
-          localPoiItem1.longitude = localPoiItem2.longitude;
-          localPoiItem1.latitude = localPoiItem2.latitude;
+          PoiItem localPoiItem = this.val$singleReq[i];
+          ((PoiItem)localObject2).longitude = localPoiItem.longitude;
+          ((PoiItem)localObject2).latitude = localPoiItem.latitude;
           i += 1;
         }
-        for (;;)
+        else
         {
-          break;
           paramList.remove();
           WyLog.w("PoiManager", "fetchPOI: server respond error.");
         }
       }
     }
-    paramList = new ArrayList((Collection)localObject);
-    if (this.val$listener != null) {
-      this.val$listener.onSuccess((List)localObject, this.val$reqCompleted);
+    paramList = new ArrayList((Collection)localObject1);
+    Object localObject2 = this.val$listener;
+    if (localObject2 != null) {
+      ((PoiManager.IFetchPoiListener)localObject2).onSuccess((List)localObject1, this.val$reqCompleted);
     }
     Collections.sort(paramList, PoiManager.access$100(this.this$0));
     PoiHelper.insertPoi(paramList);
@@ -60,7 +61,7 @@ class PoiManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.poi.PoiManager.3
  * JD-Core Version:    0.7.0.1
  */

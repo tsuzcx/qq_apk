@@ -16,24 +16,32 @@ final class NowSchemeUtil$1
     long l = System.currentTimeMillis();
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$gdt_url).openConnection();
-      localHttpURLConnection.connect();
-      if (localHttpURLConnection.getResponseCode() == 200) {
-        localHttpURLConnection.getInputStream();
+      Object localObject1 = (HttpURLConnection)new URL(this.val$gdt_url).openConnection();
+      ((HttpURLConnection)localObject1).connect();
+      if (((HttpURLConnection)localObject1).getResponseCode() == 200) {
+        ((HttpURLConnection)localObject1).getInputStream();
       }
-      XLog.i(NowSchemeUtil.access$000(), "ping gdt time = " + (System.currentTimeMillis() - l));
+      localObject1 = NowSchemeUtil.access$000();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ping gdt time = ");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+      XLog.i((String)localObject1, ((StringBuilder)localObject2).toString());
       return;
     }
     catch (IOException localIOException)
     {
-      DefaultLog.e(NowSchemeUtil.access$000(), "ping gdt e = " + localIOException.getMessage());
+      Object localObject2 = NowSchemeUtil.access$000();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ping gdt e = ");
+      localStringBuilder.append(localIOException.getMessage());
+      DefaultLog.e((String)localObject2, localStringBuilder.toString());
       localIOException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.proxyinner.util.NowSchemeUtil.1
  * JD-Core Version:    0.7.0.1
  */

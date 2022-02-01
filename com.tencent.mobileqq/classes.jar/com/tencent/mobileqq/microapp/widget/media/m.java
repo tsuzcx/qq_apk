@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.widget.media;
 
+import com.tencent.mobileqq.microapp.appbrand.b.a;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
-import com.tencent.mobileqq.microapp.appbrand.utils.a;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 import org.json.JSONObject;
@@ -20,7 +20,14 @@ final class m
     {
       paramTVK_IMediaPlayer = new JSONObject();
       paramTVK_IMediaPlayer.put("data", this.a.b);
-      this.a.c.evaluteJs("WeixinJSBridge.subscribeHandler(\"onVideoEnded\", " + paramTVK_IMediaPlayer + "," + this.a.d + ")");
+      ServiceWebview localServiceWebview = this.a.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onVideoEnded\", ");
+      localStringBuilder.append(paramTVK_IMediaPlayer);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.a.d);
+      localStringBuilder.append(")");
+      localServiceWebview.evaluteJs(localStringBuilder.toString());
       a.a(new o(this));
       return;
     }
@@ -32,7 +39,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.m
  * JD-Core Version:    0.7.0.1
  */

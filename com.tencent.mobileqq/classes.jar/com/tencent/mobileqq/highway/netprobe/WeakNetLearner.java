@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
+import com.tencent.mobileqq.highway.IHwManager;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WeakNetLearner
+  implements IHwManager
 {
   private static final long REPORT_INTERVAL = 600000L;
   public static final String REPORT_TAG_NAME = "actWeaknetProbe";
@@ -21,7 +23,7 @@ public class WeakNetLearner
   public static Context mContext;
   private WeakNetCallback cb;
   private AtomicInteger doneNum = new AtomicInteger(0);
-  private volatile boolean isDestroy;
+  private volatile boolean isDestroy = false;
   public long lastReportTime = -1L;
   private WeakNetLearner.ProbeHandler probeHandler;
   private HandlerThread probeThread;
@@ -43,69 +45,73 @@ public class WeakNetLearner
   private void doAfterOverflow()
   {
     HashMap localHashMap = getReportParams(this.reports);
-    if ((this.cb != null) && (localHashMap != null)) {
-      this.cb.onResultOverflow(localHashMap);
+    WeakNetCallback localWeakNetCallback = this.cb;
+    if ((localWeakNetCallback != null) && (localHashMap != null)) {
+      localWeakNetCallback.onResultOverflow(localHashMap);
     }
   }
   
   private HashMap<String, String> getReportParams(HashMap<String, String> paramHashMap)
   {
-    if ((paramHashMap == null) || (paramHashMap.size() <= 0)) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    Object localObject1 = new ArrayList();
+    HashMap localHashMap;
     Object localObject2;
-    String str1;
-    try
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      Iterator localIterator = paramHashMap.entrySet().iterator();
-      for (;;)
+      localHashMap = new HashMap();
+      localObject2 = new ArrayList();
+    }
+    for (;;)
+    {
+      try
       {
-        if (!localIterator.hasNext()) {
-          break label238;
+        Iterator localIterator = paramHashMap.entrySet().iterator();
+        if (localIterator.hasNext())
+        {
+          Object localObject3 = (Map.Entry)localIterator.next();
+          String str1 = (String)((Map.Entry)localObject3).getKey();
+          localObject3 = ((String)((Map.Entry)localObject3).getValue()).trim();
+          if (((String)localObject3).length() >= 1000) {
+            break label295;
+          }
+          localHashMap.put(str1.trim(), localObject3);
+          continue;
+          if (i <= ((String)localObject3).length())
+          {
+            String str2 = ((String)localObject3).substring(j, i);
+            int m = i + 1000;
+            j = m;
+            if (m >= ((String)localObject3).length()) {
+              j = ((String)localObject3).length();
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str1.trim());
+            localStringBuilder.append("_");
+            localStringBuilder.append(k);
+            localHashMap.put(localStringBuilder.toString(), str2);
+            m = k + 1;
+            k = i;
+            i = j;
+            j = k;
+            k = m;
+            continue;
+          }
+          ((ArrayList)localObject2).add(str1);
+          continue;
         }
-        localObject2 = (Map.Entry)localIterator.next();
-        str1 = (String)((Map.Entry)localObject2).getKey();
-        localObject2 = ((String)((Map.Entry)localObject2).getValue()).trim();
-        if (((String)localObject2).length() >= 1000) {
-          break;
+        localObject2 = ((ArrayList)localObject2).iterator();
+        if (((Iterator)localObject2).hasNext())
+        {
+          paramHashMap.remove((String)((Iterator)localObject2).next());
+          continue;
         }
-        localHashMap.put(str1.trim(), localObject2);
-        ((ArrayList)localObject1).add(str1);
+        return localHashMap;
       }
-      k = 1;
-    }
-    finally {}
-    int k;
-    int j = 0;
-    int i = 1000;
-    label144:
-    String str2;
-    if (i <= ((String)localObject2).length())
-    {
-      str2 = ((String)localObject2).substring(j, i);
-      if (i + 1000 < ((String)localObject2).length()) {
-        break label278;
-      }
-    }
-    label278:
-    for (j = ((String)localObject2).length();; j = i + 1000)
-    {
-      localHashMap1.put(str1.trim() + "_" + k, str2);
-      int m = k + 1;
-      k = j;
-      j = i;
-      i = k;
-      k = m;
-      break label144;
-      break;
-      label238:
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        paramHashMap.remove((String)((Iterator)localObject1).next());
-      }
-      return localHashMap1;
+      finally {}
+      return null;
+      label295:
+      int k = 1;
+      int i = 1000;
+      int j = 0;
     }
   }
   
@@ -122,58 +128,70 @@ public class WeakNetLearner
       doAfterOverflow();
       this.doneNum = null;
     }
-    this.probeHandler = null;
+    WeakNetLearner.ProbeHandler localProbeHandler = this.probeHandler;
+    if (localProbeHandler != null) {
+      localProbeHandler.sendEmptyMessage(2);
+    }
     this.reports.clear();
     mContext = null;
   }
   
+  public void onInit() {}
+  
   public void onTaskFinish(ProbeTask paramProbeTask)
   {
-    if (this.isDestroy) {}
-    for (;;)
-    {
+    if (this.isDestroy) {
       return;
-      synchronized (this.reports)
+    }
+    synchronized (this.reports)
+    {
+      this.reports.put(paramProbeTask.getKey(), paramProbeTask.resp.getResult());
+      int i = this.doneNum.incrementAndGet();
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.lastReportTime;
+      if ((l2 <= 0L) || (l1 - l2 >= 600000L) || (i >= 12))
       {
-        this.reports.put(paramProbeTask.getKey(), paramProbeTask.resp.getResult());
-        int i = this.doneNum.incrementAndGet();
-        long l = SystemClock.uptimeMillis();
-        if ((this.lastReportTime > 0L) && (l - this.lastReportTime < 600000L) && (i < 12)) {
-          continue;
-        }
         doAfterOverflow();
         this.doneNum.set(0);
-        this.lastReportTime = l;
-        return;
+        this.lastReportTime = l1;
       }
+      return;
     }
   }
   
   public boolean startProbe(ProbeTask paramProbeTask)
   {
-    if ((paramProbeTask == null) || (this.isDestroy)) {
-      return false;
-    }
-    ??? = (Long)this.repeactTaskMonitor.get(paramProbeTask.getKey());
-    long l = SystemClock.uptimeMillis();
-    if ((??? != null) && (l - ((Long)???).longValue() < 60000L)) {
-      return false;
-    }
-    synchronized (this.repeactTaskMonitor)
+    if (paramProbeTask != null)
     {
-      this.repeactTaskMonitor.put(paramProbeTask.getKey(), Long.valueOf(l));
-      paramProbeTask.learner = new WeakReference(this);
-      ??? = this.probeHandler.obtainMessage();
-      ((Message)???).what = 1;
-      ((Message)???).obj = paramProbeTask;
-      this.probeHandler.sendMessage((Message)???);
-      return true;
+      if (this.isDestroy) {
+        return false;
+      }
+      ??? = (Long)this.repeactTaskMonitor.get(paramProbeTask.getKey());
+      long l = SystemClock.uptimeMillis();
+      if ((??? != null) && (l - ((Long)???).longValue() < 60000L)) {
+        return false;
+      }
+      synchronized (this.repeactTaskMonitor)
+      {
+        this.repeactTaskMonitor.put(paramProbeTask.getKey(), Long.valueOf(l));
+        paramProbeTask.learner = new WeakReference(this);
+        ??? = this.probeHandler;
+        if (??? != null)
+        {
+          ??? = ((WeakNetLearner.ProbeHandler)???).obtainMessage();
+          ((Message)???).what = 1;
+          ((Message)???).obj = paramProbeTask;
+          this.probeHandler.sendMessage((Message)???);
+        }
+        return true;
+      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.WeakNetLearner
  * JD-Core Version:    0.7.0.1
  */

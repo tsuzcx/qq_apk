@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.FavOpenTroopActivity;
-import com.tencent.mobileqq.troop.activity.FavOpenTroopActivity.TroopAdapter;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class gpo
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public gpo(FavOpenTroopActivity paramFavOpenTroopActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.a.notifyDataSetChanged();
+    if ((FavOpenTroopActivity.a(this.a) != null) && (FavOpenTroopActivity.a(this.a).isShowing())) {
+      FavOpenTroopActivity.a(this.a).dismiss();
     }
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    this.a.g();
   }
 }
 

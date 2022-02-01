@@ -25,13 +25,14 @@ public final class WirelessPsw$CWirelessPswReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40 }, new String[] { "uin", "ip", "time", "ksid", "cmd" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, CWirelessPswReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40 }, new String[] { "uin", "ip", "time", "ksid", "cmd" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro, localInteger }, CWirelessPswReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.pb.WirelessPsw.CWirelessPswReq
  * JD-Core Version:    0.7.0.1
  */

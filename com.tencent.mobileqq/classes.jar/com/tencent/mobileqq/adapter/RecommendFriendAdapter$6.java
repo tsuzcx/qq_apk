@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.adapter;
 
-import akkn;
-
-public class RecommendFriendAdapter$6
+class RecommendFriendAdapter$6
   implements Runnable
 {
-  public RecommendFriendAdapter$6(akkn paramakkn) {}
+  RecommendFriendAdapter$6(RecommendFriendAdapter paramRecommendFriendAdapter) {}
   
   public void run()
   {

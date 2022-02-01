@@ -17,79 +17,83 @@ class HttpModule$1
   
   public void onResponse(HttpResponse paramHttpResponse, Map<String, String> paramMap)
   {
-    int i = 1;
-    if (this.val$callbackId != null)
+    if (this.val$callbackId != null) {}
+    for (;;)
     {
-      JSONObject localJSONObject;
-      for (;;)
+      try
       {
-        try
+        localObject = new JSONObject();
+        if ((paramHttpResponse != null) && (!"-1".equals(paramHttpResponse.statusCode)))
         {
-          localJSONObject = new JSONObject();
-          if ((paramHttpResponse == null) || ("-1".equals(paramHttpResponse.statusCode)))
-          {
-            localJSONObject.put("success", 0);
-            localJSONObject.put("errorText", "ERR_CONNECT_FAILED");
-            paramHttpResponse = Message.obtain();
-            paramHttpResponse.what = 1;
-            paramMap = new Bundle();
-            paramMap.putString("callback", this.val$callbackId);
-            paramMap.putString("resp", localJSONObject.toString());
-            paramMap.putString("inctanceId", this.val$instanceId);
-            paramHttpResponse.setData(paramMap);
-            if (HttpModule.access$000(this.this$0) == null) {
-              return;
-            }
-            HttpModule.access$000(this.this$0).sendMessage(paramHttpResponse);
-            return;
+          i = Integer.parseInt(paramHttpResponse.statusCode);
+          ((JSONObject)localObject).put("code", i);
+          if ((i < 200) || (i > 299)) {
+            break label328;
           }
-          int j = Integer.parseInt(paramHttpResponse.statusCode);
-          localJSONObject.put("code", j);
-          if ((j >= 200) && (j <= 299))
+          i = 1;
+          ((JSONObject)localObject).put("success", i);
+          byte[] arrayOfByte = paramHttpResponse.originalData;
+          if (arrayOfByte == null)
           {
-            localJSONObject.put("success", i);
-            if (paramHttpResponse.originalData != null) {
-              break;
-            }
-            localJSONObject.put("data", null);
-            localJSONObject.put("errorText", HttpStatusText.getStatusText(paramHttpResponse.statusCode));
+            ((JSONObject)localObject).put("data", null);
           }
           else
           {
-            i = 0;
+            arrayOfByte = paramHttpResponse.originalData;
+            if (paramMap == null) {
+              break label333;
+            }
+            paramMap = HttpModule.getHeader(paramMap, "Content-Type");
+            paramMap = HttpModule.readAsString(arrayOfByte, paramMap);
           }
         }
-        catch (JSONException paramHttpResponse)
-        {
-          ViolaLogUtils.e(HttpModule.TAG, "JSONException e:" + paramHttpResponse.getMessage());
-          return;
-        }
       }
-      byte[] arrayOfByte = paramHttpResponse.originalData;
-      if (paramMap != null) {}
-      for (paramMap = HttpModule.getHeader(paramMap, "Content-Type");; paramMap = "")
+      catch (JSONException paramHttpResponse)
       {
-        for (;;)
-        {
-          paramMap = HttpModule.readAsString(arrayOfByte, paramMap);
-          try
-          {
-            localJSONObject.put("data", this.this$0.parseData(paramMap, "json"));
-          }
-          catch (JSONException paramMap)
-          {
-            localJSONObject.put("success", 0);
-            localJSONObject.put("code", -1);
-          }
-        }
-        break;
+        paramMap = HttpModule.TAG;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("JSONException e:");
+        ((StringBuilder)localObject).append(paramHttpResponse.getMessage());
+        ViolaLogUtils.e(paramMap, ((StringBuilder)localObject).toString());
       }
+      try
+      {
+        ((JSONObject)localObject).put("data", this.this$0.parseData(paramMap, "json"));
+      }
+      catch (JSONException paramMap)
+      {
+        continue;
+      }
+      ((JSONObject)localObject).put("success", 0);
+      ((JSONObject)localObject).put("code", -1);
+      ((JSONObject)localObject).put("errorText", HttpStatusText.getStatusText(paramHttpResponse.statusCode));
+      continue;
+      ((JSONObject)localObject).put("success", 0);
+      ((JSONObject)localObject).put("errorText", "ERR_CONNECT_FAILED");
+      paramHttpResponse = Message.obtain();
+      paramHttpResponse.what = 1;
+      paramMap = new Bundle();
+      paramMap.putString("callback", this.val$callbackId);
+      paramMap.putString("resp", ((JSONObject)localObject).toString());
+      paramMap.putString("inctanceId", this.val$instanceId);
+      paramHttpResponse.setData(paramMap);
+      if (HttpModule.access$000(this.this$0) != null)
+      {
+        HttpModule.access$000(this.this$0).sendMessage(paramHttpResponse);
+        return;
+      }
+      return;
+      label328:
+      int i = 0;
+      continue;
+      label333:
+      paramMap = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.HttpModule.1
  * JD-Core Version:    0.7.0.1
  */

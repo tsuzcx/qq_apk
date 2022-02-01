@@ -1,78 +1,33 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsi;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
-  public static final String[] fkl;
-  private e db;
+  public static final String[] nVW;
+  ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(129737);
-    fkl = new String[] { j.getCreateSQLs(a.info, "AppBrandRecommendCard") };
-    AppMethodBeat.o(129737);
+    AppMethodBeat.i(44668);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(a.info, "AppBrandRecommendCard") };
+    AppMethodBeat.o(44668);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "AppBrandRecommendCard", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "AppBrandRecommendCard", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final void axH()
+  public final void cju()
   {
-    AppMethodBeat.i(129734);
+    AppMethodBeat.i(44665);
     this.db.execSQL("AppBrandRecommendCard", "delete from AppBrandRecommendCard");
-    AppMethodBeat.o(129734);
-  }
-  
-  public final LinkedList<bsi> axI()
-  {
-    AppMethodBeat.i(129736);
-    Cursor localCursor = this.db.rawQuery("select * from AppBrandRecommendCard LIMIT 100", null);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(129736);
-      return null;
-    }
-    ab.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "getRecommendWxaList()");
-    LinkedList localLinkedList = new LinkedList();
-    while (localCursor.moveToNext())
-    {
-      a locala = new a();
-      locala.convertFrom(localCursor);
-      localLinkedList.add(locala.field_recommendCard);
-    }
-    localCursor.close();
-    AppMethodBeat.o(129736);
-    return localLinkedList;
-  }
-  
-  public final void t(LinkedList<bsi> paramLinkedList)
-  {
-    AppMethodBeat.i(129735);
-    ab.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "addRecommendWxaList()");
-    Object localObject = new LinkedList();
-    ((LinkedList)localObject).addAll(paramLinkedList);
-    paramLinkedList = ((LinkedList)localObject).iterator();
-    while (paramLinkedList.hasNext())
-    {
-      localObject = (bsi)paramLinkedList.next();
-      a locala = new a();
-      locala.field_appId = ((bsi)localObject).xFL;
-      locala.field_recommendCard = ((bsi)localObject);
-      insert(locala);
-    }
-    AppMethodBeat.o(129735);
+    AppMethodBeat.o(44665);
   }
 }
 

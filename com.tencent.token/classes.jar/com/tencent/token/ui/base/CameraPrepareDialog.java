@@ -14,27 +14,28 @@ public class CameraPrepareDialog
 {
   private Activity a;
   
-  public CameraPrepareDialog(Activity paramActivity, int paramInt)
+  public CameraPrepareDialog(Activity paramActivity)
   {
-    super(paramActivity, paramInt);
+    super(paramActivity, 2131558791);
     this.a = paramActivity;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
+    Object localObject = this.a;
+    if ((localObject != null) && ((localObject == null) || (!((Activity)localObject).isFinishing())))
     {
-      dismiss();
+      super.onCreate(paramBundle);
+      setContentView(2131296307);
+      setCanceledOnTouchOutside(false);
+      paramBundle = getWindow();
+      paramBundle.setBackgroundDrawableResource(2131099877);
+      localObject = (ViewGroup.MarginLayoutParams)findViewById(2131165362).getLayoutParams();
+      ((ViewGroup.MarginLayoutParams)localObject).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      ((ViewGroup.MarginLayoutParams)localObject).height = paramBundle.getWindowManager().getDefaultDisplay().getHeight();
       return;
     }
-    super.onCreate(paramBundle);
-    setContentView(2130968625);
-    setCanceledOnTouchOutside(false);
-    paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837730);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)findViewById(2131558745).getLayoutParams();
-    localMarginLayoutParams.width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-    localMarginLayoutParams.height = paramBundle.getWindowManager().getDefaultDisplay().getHeight();
+    dismiss();
   }
 }
 

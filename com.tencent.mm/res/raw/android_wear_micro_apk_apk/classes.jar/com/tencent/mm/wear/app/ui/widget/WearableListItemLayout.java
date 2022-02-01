@@ -11,9 +11,9 @@ public class WearableListItemLayout
   extends LinearLayout
   implements aa
 {
-  private ImageView aeA;
-  private TextView afL;
-  private final float aiK = 0.6F;
+  private ImageView aic;
+  private TextView ajn;
+  private final float amm = 0.6F;
   
   public WearableListItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,25 +25,25 @@ public class WearableListItemLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void fK()
+  public final void fU()
   {
-    this.afL.setAlpha(1.0F);
-    this.aeA.setScaleX(1.3F);
-    this.aeA.setScaleY(1.3F);
+    this.ajn.setAlpha(1.0F);
+    this.aic.setScaleX(1.3F);
+    this.aic.setScaleY(1.3F);
   }
   
-  public final void fL()
+  public final void fV()
   {
-    this.afL.setAlpha(this.aiK);
-    this.aeA.setScaleX(1.0F);
-    this.aeA.setScaleY(1.0F);
+    this.ajn.setAlpha(this.amm);
+    this.aic.setScaleX(1.0F);
+    this.aic.setScaleY(1.0F);
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.aeA = ((ImageView)findViewById(2131558442));
-    this.afL = ((TextView)findViewById(2131558443));
+    this.aic = ((ImageView)findViewById(2131558443));
+    this.ajn = ((TextView)findViewById(2131558444));
   }
 }
 

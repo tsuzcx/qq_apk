@@ -12,15 +12,15 @@ public class HDRHSVFilter$ChannelStretchFilter
     super(BaseFilter.getFragmentShader(30));
   }
   
-  public void ClearGLSL()
-  {
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     addParam(new UniformParam.FloatParam("strength", this.stretechMag));
     super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
+  }
+  
+  public void clearGLSL()
+  {
+    super.clearGLSL();
   }
   
   public void updateparam(float paramFloat)
@@ -31,7 +31,7 @@ public class HDRHSVFilter$ChannelStretchFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.HDRHSVFilter.ChannelStretchFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -31,13 +31,14 @@ public final class FeedCloudHead$FCHead
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 50, 56, 66, 74, 82, 88, 96 }, new String[] { "userIP", "seq", "qua", "deviceInfo", "tracerID", "AuthInfo", "retCode", "retMsg", "bizData", "extInfo", "reqFrom", "fcAppid" }, new Object[] { "", Long.valueOf(0L), "", "", "", null, Long.valueOf(0L), "", localByteStringMicro, null, Integer.valueOf(1), Integer.valueOf(0) }, FCHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 50, 56, 66, 74, 82, 88, 96 }, new String[] { "userIP", "seq", "qua", "deviceInfo", "tracerID", "AuthInfo", "retCode", "retMsg", "bizData", "extInfo", "reqFrom", "fcAppid" }, new Object[] { "", localLong, "", "", "", null, localLong, "", localByteStringMicro, null, Integer.valueOf(1), Integer.valueOf(0) }, FCHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudHead.FCHead
  * JD-Core Version:    0.7.0.1
  */

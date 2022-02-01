@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/j9j" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/j9h" android:background="@drawable/b9w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ProgressBar android:id="@id/j9i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" style="@style/a85" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/al6" android:id="@id/j9k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iyl" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/j9g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/j9l" android:background="@drawable/b9y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iyk" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/j9m" android:background="@drawable/b9x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b9v" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/j9f" android:background="@drawable/b9w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="13.0sp" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iyj" android:singleLine="true" />
+    </LinearLayout>
+</FrameLayout>

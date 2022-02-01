@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import alud;
-import aoom;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MainPageFragment$3$1
@@ -17,17 +17,22 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (aoom.g())
+    if (MiniAppConfProcessor.e())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131706825) + aoom.c() + alud.a(2131706821), 0).a();
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131904350));
+      localStringBuilder.append(MiniAppConfProcessor.f());
+      localStringBuilder.append(HardCodeUtil.a(2131904346));
+      QQToast.makeText(localBaseApplicationImpl, localStringBuilder.toString(), 0).show();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131694435), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131891807), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

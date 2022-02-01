@@ -1,131 +1,236 @@
 package com.tencent.mm.plugin.address.ui;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.c;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.address.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class InvoiceListUI
   extends MMActivity
-  implements f
+  implements h
 {
-  private boolean gLC;
-  private TextView gLr;
-  private com.tencent.mm.plugin.j.a.b gMf;
-  private InvoiceListUI.a gMg;
-  private ListView gMh;
-  private com.tencent.mm.plugin.address.b.b.a gMi;
-  private TextView gMj;
-  private LinkedList<com.tencent.mm.plugin.j.a.b> gMk;
-  private boolean gMl;
-  private boolean gMm;
   private Object lockObj;
+  private ListView nlI;
+  private boolean qiC;
+  private TextView qir;
+  private com.tencent.mm.plugin.o.a.b qjd;
+  private a qje;
+  private com.tencent.mm.plugin.address.b.b.a qjf;
+  private TextView qjg;
+  private LinkedList<com.tencent.mm.plugin.o.a.b> qjh;
+  private boolean qji;
+  private boolean qjj;
   
   public InvoiceListUI()
   {
-    AppMethodBeat.i(16869);
-    this.gMi = null;
+    AppMethodBeat.i(20912);
+    this.qjf = null;
     this.lockObj = new Object();
-    this.gMj = null;
-    this.gLr = null;
-    this.gMk = new LinkedList();
-    this.gLC = false;
-    this.gMl = false;
-    this.gMm = false;
-    AppMethodBeat.o(16869);
+    this.qjg = null;
+    this.qir = null;
+    this.qjh = new LinkedList();
+    this.qiC = false;
+    this.qji = false;
+    this.qjj = false;
+    AppMethodBeat.o(20912);
   }
   
-  private void asx()
+  private void bZr()
   {
-    AppMethodBeat.i(16873);
+    AppMethodBeat.i(20916);
     synchronized (this.lockObj)
     {
-      com.tencent.mm.plugin.address.a.a.asl();
-      this.gMk = com.tencent.mm.plugin.address.a.a.asm().gKJ.nLl;
-      this.gMg.items = this.gMk;
-      this.gMk.size();
-      this.gMg.notifyDataSetChanged();
-      AppMethodBeat.o(16873);
+      com.tencent.mm.plugin.address.a.a.bZe();
+      this.qjh = com.tencent.mm.plugin.address.a.a.bZf().qhF.JFf;
+      this.qje.bMQ = this.qjh;
+      this.qjh.size();
+      this.qje.notifyDataSetChanged();
+      AppMethodBeat.o(20916);
       return;
     }
   }
   
-  private void nb(int paramInt)
+  private void yC(int paramInt)
   {
-    AppMethodBeat.i(16876);
-    Intent localIntent = new Intent();
+    AppMethodBeat.i(20919);
+    Object localObject = new Intent();
     if (paramInt != 0)
     {
-      localIntent.setClass(this, QrcodeInvoiceUI.class);
-      localIntent.putExtra("invoice_id", paramInt);
+      ((Intent)localObject).setClass(this, QrcodeInvoiceUI.class);
+      ((Intent)localObject).putExtra("invoice_id", paramInt);
     }
     for (;;)
     {
-      startActivity(localIntent);
-      AppMethodBeat.o(16876);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/address/ui/InvoiceListUI", "editInvoiceUI", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/address/ui/InvoiceListUI", "editInvoiceUI", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(20919);
       return;
-      localIntent.setClass(this, AddInvoiceUI.class);
-      localIntent.putExtra("launch_from_invoicelist_webview", this.gLC);
-      localIntent.putExtra("invoice_id", paramInt);
+      ((Intent)localObject).setClass(this, AddInvoiceUI.class);
+      ((Intent)localObject).putExtra("launch_from_invoicelist_webview", this.qiC);
+      ((Intent)localObject).putExtra("invoice_id", paramInt);
     }
   }
   
   public int getLayoutId()
   {
-    return 2130969916;
+    return R.i.gkB;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(16874);
-    this.gMj = ((TextView)findViewById(2131825163));
-    if (this.gMj != null) {
-      this.gMj.setVisibility(8);
+    AppMethodBeat.i(20917);
+    this.qjg = ((TextView)findViewById(R.h.fKz));
+    if (this.qjg != null) {
+      this.qjg.setVisibility(8);
     }
-    if (this.gLC)
+    if (this.qiC)
     {
-      this.gLr = ((TextView)findViewById(2131825164));
-      if (this.gLr != null) {
-        this.gLr.setVisibility(0);
+      this.qir = ((TextView)findViewById(R.h.fLR));
+      if (this.qir != null) {
+        this.qir.setVisibility(0);
       }
     }
     for (;;)
     {
-      this.gMj.setOnClickListener(new InvoiceListUI.1(this));
-      this.gMh = ((ListView)findViewById(2131825161));
-      this.gMg = new InvoiceListUI.a(this, this);
-      this.gMh.setAdapter(this.gMg);
-      this.gMh.setOnItemClickListener(new InvoiceListUI.2(this));
-      this.gMh.setOnItemLongClickListener(new InvoiceListUI.3(this));
-      this.gMg.notifyDataSetChanged();
+      this.qjg.setOnClickListener(new InvoiceListUI.1(this));
+      this.nlI = ((ListView)findViewById(R.h.fVZ));
+      this.qje = new a(this);
+      this.nlI.setAdapter(this.qje);
+      this.nlI.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      {
+        public final void onItemClick(AdapterView<?> arg1, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(20901);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(???);
+          localb.cH(paramAnonymousView);
+          localb.sc(paramAnonymousInt);
+          localb.hB(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/InvoiceListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+          Log.d("MicroMsg.InvoiceListUI", "select pos ".concat(String.valueOf(paramAnonymousInt)));
+          synchronized (InvoiceListUI.b(InvoiceListUI.this))
+          {
+            if (paramAnonymousInt < InvoiceListUI.c(InvoiceListUI.this).size())
+            {
+              InvoiceListUI.a(InvoiceListUI.this, (com.tencent.mm.plugin.o.a.b)InvoiceListUI.c(InvoiceListUI.this).get(paramAnonymousInt));
+              if ((InvoiceListUI.d(InvoiceListUI.this)) || (InvoiceListUI.e(InvoiceListUI.this) == null)) {
+                break label185;
+              }
+              InvoiceListUI.a(InvoiceListUI.this, InvoiceListUI.e(InvoiceListUI.this).JFg);
+            }
+            label185:
+            while ((InvoiceListUI.e(InvoiceListUI.this) == null) || (InvoiceListUI.e(InvoiceListUI.this).JFg == 0))
+            {
+              InvoiceListUI.f(InvoiceListUI.this).notifyDataSetChanged();
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/InvoiceListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(20901);
+              return;
+            }
+            paramAnonymousView = new Intent();
+            paramAnonymousView.putExtra("choose_invoice_title_info", e.a(InvoiceListUI.e(InvoiceListUI.this)));
+            InvoiceListUI.this.setResult(-1, paramAnonymousView);
+            InvoiceListUI.this.finish();
+          }
+        }
+      });
+      this.nlI.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+      {
+        public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(20903);
+          paramAnonymousAdapterView = InvoiceListUI.this.getResources().getStringArray(R.c.fjR);
+          k.a(InvoiceListUI.this.getContext(), null, paramAnonymousAdapterView, null, new k.d()
+          {
+            public final void qz(int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(20902);
+              for (;;)
+              {
+                synchronized (InvoiceListUI.b(InvoiceListUI.this))
+                {
+                  if (paramAnonymousInt >= InvoiceListUI.c(InvoiceListUI.this).size()) {
+                    break label194;
+                  }
+                  com.tencent.mm.plugin.o.a.b localb = (com.tencent.mm.plugin.o.a.b)InvoiceListUI.c(InvoiceListUI.this).get(paramAnonymousInt);
+                  if (localb == null)
+                  {
+                    AppMethodBeat.o(20902);
+                    return;
+                  }
+                }
+                switch (paramAnonymous2Int)
+                {
+                }
+                for (;;)
+                {
+                  AppMethodBeat.o(20902);
+                  return;
+                  InvoiceListUI.a(InvoiceListUI.this, localObject1.JFg);
+                  AppMethodBeat.o(20902);
+                  return;
+                  locala = new com.tencent.mm.plugin.address.model.a(localObject1.JFg);
+                  InvoiceListUI.a(InvoiceListUI.this, null);
+                  bh.aZW().a(locala, 0);
+                  AppMethodBeat.o(20902);
+                  return;
+                  InvoiceListUI.b(InvoiceListUI.this, locala);
+                }
+                label194:
+                com.tencent.mm.plugin.address.model.a locala = null;
+              }
+            }
+          });
+          AppMethodBeat.o(20903);
+          return true;
+        }
+      });
+      this.qje.notifyDataSetChanged();
       setBackBtn(new InvoiceListUI.4(this));
-      addIconOptionMenu(0, 2131303200, 2131230736, new InvoiceListUI.5(this));
-      AppMethodBeat.o(16874);
+      addIconOptionMenu(0, R.l.settings_add_invoice, R.k.actionbar_icon_dark_add, new InvoiceListUI.5(this));
+      AppMethodBeat.o(20917);
       return;
-      this.gLr = ((TextView)findViewById(2131825164));
-      if (this.gLr != null) {
-        this.gLr.setVisibility(8);
+      this.qir = ((TextView)findViewById(R.h.fLR));
+      if (this.qir != null) {
+        this.qir.setVisibility(8);
       }
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(16877);
+    AppMethodBeat.i(20920);
     Object localObject;
     if (paramInt1 == 1)
     {
@@ -135,7 +240,7 @@ public class InvoiceListUI
       if (paramIntent != null) {
         break label71;
       }
-      ab.e("MicroMsg.InvoiceUtil", "intent is null");
+      Log.e("MicroMsg.InvoiceUtil", "intent is null");
       paramIntent = null;
       localObject = new Intent();
       ((Intent)localObject).putExtra("choose_invoice_title_info", e.a(paramIntent));
@@ -144,23 +249,23 @@ public class InvoiceListUI
     for (;;)
     {
       finish();
-      AppMethodBeat.o(16877);
+      AppMethodBeat.o(20920);
       return;
       label71:
-      localObject = new com.tencent.mm.plugin.j.a.b();
-      ((com.tencent.mm.plugin.j.a.b)localObject).type = paramIntent.getStringExtra("type");
-      if ((((com.tencent.mm.plugin.j.a.b)localObject).type != null) && (((com.tencent.mm.plugin.j.a.b)localObject).type.equals("1")))
+      localObject = new com.tencent.mm.plugin.o.a.b();
+      ((com.tencent.mm.plugin.o.a.b)localObject).type = paramIntent.getStringExtra("type");
+      if ((((com.tencent.mm.plugin.o.a.b)localObject).type != null) && (((com.tencent.mm.plugin.o.a.b)localObject).type.equals("1")))
       {
-        ((com.tencent.mm.plugin.j.a.b)localObject).nLn = paramIntent.getStringExtra("title");
+        ((com.tencent.mm.plugin.o.a.b)localObject).JFh = paramIntent.getStringExtra("title");
         paramIntent = (Intent)localObject;
         break;
       }
-      ((com.tencent.mm.plugin.j.a.b)localObject).title = paramIntent.getStringExtra("title");
-      ((com.tencent.mm.plugin.j.a.b)localObject).nLo = paramIntent.getStringExtra("tax_number");
-      ((com.tencent.mm.plugin.j.a.b)localObject).nLu = paramIntent.getStringExtra("company_address");
-      ((com.tencent.mm.plugin.j.a.b)localObject).nLs = paramIntent.getStringExtra("telephone");
-      ((com.tencent.mm.plugin.j.a.b)localObject).nLq = paramIntent.getStringExtra("bank_name");
-      ((com.tencent.mm.plugin.j.a.b)localObject).nLp = paramIntent.getStringExtra("bank_account");
+      ((com.tencent.mm.plugin.o.a.b)localObject).title = paramIntent.getStringExtra("title");
+      ((com.tencent.mm.plugin.o.a.b)localObject).JFi = paramIntent.getStringExtra("tax_number");
+      ((com.tencent.mm.plugin.o.a.b)localObject).JFo = paramIntent.getStringExtra("company_address");
+      ((com.tencent.mm.plugin.o.a.b)localObject).JFm = paramIntent.getStringExtra("telephone");
+      ((com.tencent.mm.plugin.o.a.b)localObject).JFk = paramIntent.getStringExtra("bank_name");
+      ((com.tencent.mm.plugin.o.a.b)localObject).JFj = paramIntent.getStringExtra("bank_account");
       paramIntent = (Intent)localObject;
       break;
       label209:
@@ -170,81 +275,81 @@ public class InvoiceListUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(16870);
+    AppMethodBeat.i(20913);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.gLC = paramBundle.getBooleanExtra("launch_from_webview", false);
-    this.gMl = paramBundle.getBooleanExtra("launch_from_appbrand", false);
-    if ((this.gLC) || (this.gMl)) {
-      this.gLC = true;
+    this.qiC = paramBundle.getBooleanExtra("launch_from_webview", false);
+    this.qji = paramBundle.getBooleanExtra("launch_from_appbrand", false);
+    if ((this.qiC) || (this.qji)) {
+      this.qiC = true;
     }
-    if (this.gLC)
+    if (this.qiC)
     {
-      aw.aaz();
-      boolean bool = ((Boolean)c.Ru().get(ac.a.yDy, Boolean.TRUE)).booleanValue();
-      ab.i("MicroMsg.InvoiceListUI", "showDisclaimerDailog..isShowDisclaimerDialog ".concat(String.valueOf(bool)));
+      bh.bCz();
+      boolean bool = ((Boolean)c.ban().get(at.a.acNX, Boolean.TRUE)).booleanValue();
+      Log.i("MicroMsg.InvoiceListUI", "showDisclaimerDailog..isShowDisclaimerDialog ".concat(String.valueOf(bool)));
       if (bool)
       {
-        ab.i("MicroMsg.InvoiceListUI", "showDisclaimerDialog");
-        h.a(this, getString(2131300811), getString(2131300812), getString(2131296332), false, new InvoiceListUI.6(this));
-        aw.aaz();
-        c.Ru().set(ac.a.yDy, Boolean.FALSE);
+        Log.i("MicroMsg.InvoiceListUI", "showDisclaimerDialog");
+        k.a(this, getString(R.l.gJX), getString(R.l.gJY), getString(R.l.gps), false, new InvoiceListUI.6(this));
+        bh.bCz();
+        c.ban().set(at.a.acNX, Boolean.FALSE);
       }
     }
-    setMMTitle(2131303330);
-    aw.Rc().a(1194, this);
-    aw.Rc().a(1191, this);
+    setMMTitle(R.l.settings_my_invoice_information);
+    bh.aZW().a(1194, this);
+    bh.aZW().a(1191, this);
     initView();
-    asx();
-    AppMethodBeat.o(16870);
+    bZr();
+    AppMethodBeat.o(20913);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(16871);
-    aw.Rc().b(1194, this);
-    aw.Rc().b(1191, this);
+    AppMethodBeat.i(20914);
+    bh.aZW().b(1194, this);
+    bh.aZW().b(1191, this);
     super.onDestroy();
-    AppMethodBeat.o(16871);
+    AppMethodBeat.o(20914);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(16872);
+    AppMethodBeat.i(20915);
     com.tencent.mm.plugin.address.model.b localb = new com.tencent.mm.plugin.address.model.b();
-    aw.Rc().a(localb, 0);
+    bh.aZW().a(localb, 0);
     super.onResume();
-    AppMethodBeat.o(16872);
+    AppMethodBeat.o(20915);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(16875);
+    AppMethodBeat.i(20918);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (paramm.getType() == 1191)
+      if (paramp.getType() == 1191)
       {
-        asx();
-        if (this.gLC)
+        bZr();
+        if (this.qiC)
         {
-          com.tencent.mm.plugin.address.a.a.asl();
-          if ((com.tencent.mm.plugin.address.a.a.asm().gKJ.nLl.size() == 0) && (!this.gMm))
+          com.tencent.mm.plugin.address.a.a.bZe();
+          if ((com.tencent.mm.plugin.address.a.a.bZf().qhF.JFf.size() == 0) && (!this.qjj))
           {
             paramString = new Intent();
             paramString.setClass(this, AddInvoiceUI.class);
             paramString.putExtra("launch_from_webview", true);
             startActivityForResult(paramString, 1);
-            AppMethodBeat.o(16875);
+            AppMethodBeat.o(20918);
           }
         }
       }
-      else if (paramm.getType() == 1194)
+      else if (paramp.getType() == 1194)
       {
         paramString = new com.tencent.mm.plugin.address.model.b();
-        aw.Rc().a(paramString, 0);
-        this.gMm = true;
+        bh.aZW().a(paramString, 0);
+        this.qjj = true;
       }
     }
-    AppMethodBeat.o(16875);
+    AppMethodBeat.o(20918);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -252,10 +357,97 @@ public class InvoiceListUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public final class a
+    extends BaseAdapter
+  {
+    List<com.tencent.mm.plugin.o.a.b> bMQ;
+    private final Context context;
+    
+    public a(Context paramContext)
+    {
+      AppMethodBeat.i(20907);
+      this.bMQ = new ArrayList();
+      this.context = paramContext;
+      AppMethodBeat.o(20907);
+    }
+    
+    private com.tencent.mm.plugin.o.a.b yD(int paramInt)
+    {
+      AppMethodBeat.i(20910);
+      com.tencent.mm.plugin.o.a.b localb = (com.tencent.mm.plugin.o.a.b)this.bMQ.get(paramInt);
+      AppMethodBeat.o(20910);
+      return localb;
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(20909);
+      int i = this.bMQ.size();
+      AppMethodBeat.o(20909);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(20908);
+      paramViewGroup = new a();
+      com.tencent.mm.plugin.o.a.b localb;
+      if (paramView == null)
+      {
+        paramView = View.inflate(this.context, R.i.gpd, null);
+        paramViewGroup.qjm = ((ImageView)paramView.findViewById(R.h.fBk));
+        paramViewGroup.noc = ((TextView)paramView.findViewById(R.h.fqE));
+        paramViewGroup.lDF = ((TextView)paramView.findViewById(R.h.fqL));
+        paramView.setTag(paramViewGroup);
+        localb = yD(paramInt);
+        if ((localb.type == null) || (!localb.type.equals("0"))) {
+          break label195;
+        }
+        paramViewGroup.noc.setText(R.l.gJQ);
+        paramViewGroup.lDF.setText(localb.title);
+        label128:
+        if ((!InvoiceListUI.d(InvoiceListUI.this)) || (InvoiceListUI.e(InvoiceListUI.this) == null) || (InvoiceListUI.e(InvoiceListUI.this).JFg != localb.JFg)) {
+          break label241;
+        }
+        paramViewGroup.qjm.setImageResource(R.k.radio_on);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(20908);
+        return paramView;
+        paramViewGroup = (a)paramView.getTag();
+        break;
+        label195:
+        if ((localb.type == null) || (!localb.type.equals("1"))) {
+          break label128;
+        }
+        paramViewGroup.noc.setText(R.l.gJS);
+        paramViewGroup.lDF.setText(localb.JFh);
+        break label128;
+        label241:
+        paramViewGroup.qjm.setImageBitmap(null);
+      }
+    }
+    
+    final class a
+    {
+      TextView lDF;
+      TextView noc;
+      ImageView qjm;
+      
+      a() {}
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceListUI
  * JD-Core Version:    0.7.0.1
  */

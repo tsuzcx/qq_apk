@@ -2,150 +2,195 @@ package com.tencent.mm.plugin.fts;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.fts.a.h;
+import com.tencent.mm.b.g;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.jni.FTSJNIUtils;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteDirectCursor;
 import com.tencent.wcdb.database.SQLiteDoneException;
 import com.tencent.wcdb.database.SQLiteStatement;
-import java.io.File;
 
-public final class d
-  implements h
+public class d
+  implements com.tencent.mm.plugin.fts.a.h
 {
-  public boolean mPB;
-  public SQLiteDatabase mPC;
-  private SQLiteStatement mPD;
-  private SQLiteStatement mPE;
-  private SQLiteStatement mPF;
+  public boolean Hqd;
+  private SQLiteDatabase Hqe;
+  private SQLiteStatement Hqf;
+  private SQLiteStatement Hqg;
+  private SQLiteStatement Hqh;
   
   public d(String paramString)
   {
-    AppMethodBeat.i(136546);
-    ab.i("MicroMsg.FTS.FTSIndexDB", "Create SearchStorage: %s", new Object[] { paramString + "FTS5IndexMicroMsg_encrypt.db" });
-    if (this.mPC != null)
+    AppMethodBeat.i(52528);
+    Log.i("MicroMsg.FTS.FTSIndexDB", "Create SearchStorage: %s", new Object[] { paramString + "FTS5IndexMicroMsg_encrypt.db" });
+    if (this.Hqe != null)
     {
-      ab.w("MicroMsg.FTS.FTSIndexDB", "before initDB, pre DB is not close, why?");
-      this.mPC.close();
+      Log.w("MicroMsg.FTS.FTSIndexDB", "before initDB, pre DB is not close, why?");
+      this.Hqe.close();
     }
-    paramString = new File(paramString, "FTS5IndexMicroMsg_encrypt.db").getAbsolutePath();
+    String str = ah.v(new u(paramString, "FTS5IndexMicroMsg_encrypt.db").jKT());
     long l1 = System.currentTimeMillis();
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RJ();
-    this.mPC = SQLiteDatabase.openOrCreateDatabase(paramString, com.tencent.mm.a.g.w((com.tencent.mm.kernel.a.QC() + q.bP(true) + r.Zn()).getBytes()).substring(0, 7).getBytes(), null, ((PluginFTS)com.tencent.mm.kernel.g.G(PluginFTS.class)).getDatabaseErrorHandler());
-    localObject = q.bP(true);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ();
-    long l2 = com.tencent.mm.kernel.a.getUin();
-    localObject = com.tencent.mm.a.g.x(((String)localObject + l2).getBytes());
-    SQLiteDatabase localSQLiteDatabase = this.mPC;
-    l2 = localSQLiteDatabase.acquireNativeConnectionHandle("initFTS", false, false);
-    this.mPB = false;
-    bBQ();
-    FTSJNIUtils.nativeInitFts(l2, (byte[])localObject);
-    localSQLiteDatabase.releaseNativeConnection(l2, null);
-    this.mPC.rawQuery("PRAGMA journal_mode=WAL;", null).close();
-    this.mPC.execSQL("PRAGMA synchronous=NORMAL;");
-    this.mPC.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (type INTEGER PRIMARY KEY, version INTEGER);", new Object[] { "FTS5IndexVersion" }));
-    this.mPD = this.mPC.compileStatement(String.format("SELECT version FROM %s WHERE type=?;", new Object[] { "FTS5IndexVersion" }));
-    this.mPE = this.mPC.compileStatement(String.format("INSERT OR REPLACE INTO %s (type, version) VALUES (?, ?);", new Object[] { "FTS5IndexVersion" }));
-    this.mPF = this.mPC.compileStatement(String.format("DELETE FROM %s WHERE type=?", new Object[] { "FTS5IndexVersion" }));
+    com.tencent.mm.kernel.h.baF();
+    Object localObject = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acTa, "");
+    paramString = (String)localObject;
+    if (Util.isNullOrNil((String)localObject))
+    {
+      paramString = new StringBuilder();
+      com.tencent.mm.kernel.h.baC();
+      paramString = g.getMessageDigest((b.aZs() + q.eD(true) + z.bAM()).getBytes()).substring(0, 7);
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acTa, paramString);
+    }
+    this.Hqe = SQLiteDatabase.openOrCreateDatabase(str, paramString.getBytes(), null, ((PluginFTS)com.tencent.mm.kernel.h.az(PluginFTS.class)).getDatabaseErrorHandler());
+    paramString = q.eD(true);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC();
+    long l2 = b.getUin();
+    paramString = g.U((paramString + l2).getBytes());
+    localObject = this.Hqe;
+    l2 = ((SQLiteDatabase)localObject).acquireNativeConnectionHandle("initFTS", false, false);
+    this.Hqd = false;
+    fxm();
+    FTSJNIUtils.nativeInitFts(l2, paramString);
+    ((SQLiteDatabase)localObject).releaseNativeConnection(l2, null);
+    this.Hqe.rawQuery("PRAGMA journal_mode=WAL;", null).close();
+    this.Hqe.execSQL("PRAGMA synchronous=NORMAL;");
+    this.Hqe.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (type INTEGER PRIMARY KEY, version INTEGER);", new Object[] { "FTS5IndexVersion" }));
+    this.Hqf = this.Hqe.compileStatement(String.format("SELECT version FROM %s WHERE type=?;", new Object[] { "FTS5IndexVersion" }));
+    this.Hqg = this.Hqe.compileStatement(String.format("INSERT OR REPLACE INTO %s (type, version) VALUES (?, ?);", new Object[] { "FTS5IndexVersion" }));
+    this.Hqh = this.Hqe.compileStatement(String.format("DELETE FROM %s WHERE type=?", new Object[] { "FTS5IndexVersion" }));
     l2 = System.currentTimeMillis();
-    com.tencent.mm.plugin.fts.a.e.P(18, l2 - l1);
-    ab.i("MicroMsg.FTS.FTSIndexDB", "initDB index params %d %s %s supportICU %b", new Object[] { Long.valueOf(l2 - l1), bo.b(paramString.length(), 2.0D), q.bP(true), Boolean.valueOf(this.mPB) });
-    AppMethodBeat.o(136546);
+    e.aA(18, l2 - l1);
+    long l3 = aF(-310L, 0L);
+    int i = (int)aF(-310L, 0L);
+    Log.i("MicroMsg.FTS.FTSIndexDB", "initDB index params %d %s %s supportICU %b finalStartBuildMessageTimestamp %s finalStartBuildMessageClientVersion %s", new Object[] { Long.valueOf(l2 - l1), Util.getSizeMB(y.bEl(str), 2.0D), q.eD(true), Boolean.valueOf(this.Hqd), com.tencent.mm.pluginsdk.platformtools.f.formatTime("yyyy-MM-dd HH:mm:ss", l3 / 1000L), Integer.toHexString(i) });
+    AppMethodBeat.o(52528);
   }
   
-  protected static final void bBO()
+  protected static final void fxk()
   {
-    AppMethodBeat.i(136561);
+    AppMethodBeat.i(52543);
     Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    localObject = com.tencent.mm.kernel.g.RL().cachePath + "FTS5IndexMicroMsg_encrypt.db";
+    com.tencent.mm.kernel.h.baF();
+    localObject = com.tencent.mm.kernel.h.baE().cachePath + "FTS5IndexMicroMsg_encrypt.db";
     int i = 0;
     while (i < 4)
     {
       String str = new String[] { "", "-journal", "-wal", "-shm" }[i];
-      ab.i("MicroMsg.FTS.FTSIndexDB", "deleteIndexDB %s", new Object[] { (String)localObject + str });
-      com.tencent.mm.vfs.e.deleteFile((String)localObject + str);
+      str = (String)localObject + str;
+      Log.i("MicroMsg.FTS.FTSIndexDB", "deleteIndexDB %s %s", new Object[] { str, Boolean.valueOf(y.ZC(str)) });
+      y.deleteFile(str);
       i += 1;
     }
-    AppMethodBeat.o(136561);
+    AppMethodBeat.o(52543);
   }
   
-  public static final File bBP()
+  public static final u fxl()
   {
-    AppMethodBeat.i(136562);
-    com.tencent.mm.kernel.g.RM();
-    File localFile = new File(com.tencent.mm.kernel.g.RL().cachePath, "FTS5IndexMicroMsg_encrypt.db");
-    AppMethodBeat.o(136562);
-    return localFile;
+    AppMethodBeat.i(176903);
+    com.tencent.mm.kernel.h.baF();
+    u localu = new u(com.tencent.mm.kernel.h.baE().cachePath, "FTS5IndexMicroMsg_encrypt.db");
+    AppMethodBeat.o(176903);
+    return localu;
   }
   
-  private static void bBQ()
+  private static void fxm()
   {
-    AppMethodBeat.i(136563);
-    File[] arrayOfFile = new File("/system/usr/icu").listFiles();
-    if (arrayOfFile != null)
+    AppMethodBeat.i(52547);
+    u[] arrayOfu = new u("/system/usr/icu").jKX();
+    if (arrayOfu != null)
     {
-      int j = arrayOfFile.length;
+      int j = arrayOfu.length;
       int i = 0;
       while (i < j)
       {
-        ab.i("MicroMsg.FTS.FTSIndexDB", "icu file %s", new Object[] { arrayOfFile[i].getName() });
+        Log.i("MicroMsg.FTS.FTSIndexDB", "icu file %s", new Object[] { arrayOfu[i].getName() });
         i += 1;
       }
     }
-    AppMethodBeat.o(136563);
+    AppMethodBeat.o(52547);
   }
   
-  public final long L(long paramLong1, long paramLong2)
+  public final Cursor aDY(String paramString)
   {
-    AppMethodBeat.i(136551);
-    this.mPD.bindLong(1, paramLong1);
+    AppMethodBeat.i(52530);
+    Log.v("MicroMsg.FTS.FTSIndexDB", "rawQuery: execute sql = %s", new Object[] { paramString });
+    paramString = new a(this.Hqe.rawQueryWithFactory(SQLiteDirectCursor.FACTORY, paramString, null, null, null));
+    AppMethodBeat.o(52530);
+    return paramString;
+  }
+  
+  public final boolean aDZ(String paramString)
+  {
+    AppMethodBeat.i(52535);
+    paramString = this.Hqe.rawQuery("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?;", new String[] { paramString });
+    boolean bool = paramString.moveToNext();
+    paramString.close();
+    AppMethodBeat.o(52535);
+    return bool;
+  }
+  
+  public final long aF(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(52533);
+    this.Hqf.bindLong(1, paramLong1);
     try
     {
-      paramLong1 = this.mPD.simpleQueryForLong();
-      AppMethodBeat.o(136551);
+      paramLong1 = this.Hqf.simpleQueryForLong();
+      AppMethodBeat.o(52533);
       return paramLong1;
     }
     catch (SQLiteDoneException localSQLiteDoneException)
     {
-      AppMethodBeat.o(136551);
+      AppMethodBeat.o(52533);
     }
     return paramLong2;
   }
   
-  public final void M(long paramLong1, long paramLong2)
+  public final void aF(String paramString, long paramLong)
   {
-    AppMethodBeat.i(136552);
-    this.mPE.bindLong(1, paramLong1);
-    this.mPE.bindLong(2, paramLong2);
-    this.mPE.execute();
-    AppMethodBeat.o(136552);
+    AppMethodBeat.i(52545);
+    long l = System.currentTimeMillis();
+    execSQL(String.format("DELETE FROM %s WHERE rowid IN (SELECT docid FROM %s WHERE aux_index=? AND timestamp <= ?);", new Object[] { "FTS5IndexMessage", "FTS5MetaMessage" }), new String[] { paramString, String.valueOf(paramLong) });
+    execSQL(String.format("DELETE FROM %s WHERE aux_index=? AND timestamp <= ?", new Object[] { "FTS5MetaMessage" }), new String[] { paramString, String.valueOf(paramLong) });
+    l = System.currentTimeMillis() - l;
+    Log.i("MicroMsg.FTS.FTSIndexDB", "deleteTalkerMsgByTimestamp use time %d talker %s timestamp %s", new Object[] { Long.valueOf(l), paramString, com.tencent.mm.pluginsdk.platformtools.f.formatTime("yyyy-MM-dd HH:mm:ss", paramLong / 1000L) });
+    com.tencent.mm.plugin.report.f.Ozc.idkeyStat(729L, 10L, 1L, false);
+    if (l > 500L)
+    {
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(79L, 11L, 1L, false);
+      AppMethodBeat.o(52545);
+      return;
+    }
+    if (l > 1000L)
+    {
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(79L, 12L, 1L, false);
+      AppMethodBeat.o(52545);
+      return;
+    }
+    if (l > 10000L) {
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(79L, 13L, 1L, false);
+    }
+    AppMethodBeat.o(52545);
   }
   
-  public final Cursor OR(String paramString)
+  public final void aG(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(136548);
-    ab.v("MicroMsg.FTS.FTSIndexDB", "rawQuery: execute sql = %s", new Object[] { paramString });
-    paramString = new a(this.mPC.rawQueryWithFactory(SQLiteDirectCursor.FACTORY, paramString, null, null, null));
-    AppMethodBeat.o(136548);
-    return paramString;
-  }
-  
-  public final boolean OS(String paramString)
-  {
-    AppMethodBeat.i(136553);
-    paramString = this.mPC.rawQuery("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?;", new String[] { paramString });
-    boolean bool = paramString.moveToNext();
-    paramString.close();
-    AppMethodBeat.o(136553);
-    return bool;
+    AppMethodBeat.i(52534);
+    this.Hqg.bindLong(1, paramLong1);
+    this.Hqg.bindLong(2, paramLong2);
+    this.Hqg.execute();
+    AppMethodBeat.o(52534);
   }
   
   /* Error */
@@ -154,25 +199,25 @@ public final class d
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 330
+    //   2: ldc_w 428
     //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   9: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
     //   12: ifnull +13 -> 25
     //   15: aload_0
-    //   16: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   19: invokevirtual 333	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
+    //   16: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   19: invokevirtual 431	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
     //   22: ifeq +12 -> 34
-    //   25: ldc_w 330
-    //   28: invokestatic 232	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc_w 428
+    //   28: invokestatic 297	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
     //   33: return
     //   34: aload_0
-    //   35: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   38: invokevirtual 335	com/tencent/wcdb/database/SQLiteDatabase:beginTransaction	()V
-    //   41: ldc_w 330
-    //   44: invokestatic 232	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   38: invokevirtual 433	com/tencent/wcdb/database/SQLiteDatabase:beginTransaction	()V
+    //   41: ldc_w 428
+    //   44: invokestatic 297	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: goto -16 -> 31
     //   50: astore_1
     //   51: aload_0
@@ -192,26 +237,26 @@ public final class d
   
   public final void close()
   {
-    AppMethodBeat.i(136556);
-    SQLiteDatabase localSQLiteDatabase = this.mPC;
-    if (this.mPC == null) {}
-    for (boolean bool = false;; bool = this.mPC.isOpen())
+    AppMethodBeat.i(52538);
+    SQLiteDatabase localSQLiteDatabase = this.Hqe;
+    if (this.Hqe == null) {}
+    for (boolean bool = false;; bool = this.Hqe.isOpen())
     {
-      ab.w("MicroMsg.FTS.FTSIndexDB", "close db:%s isOpen:%b ", new Object[] { localSQLiteDatabase, Boolean.valueOf(bool) });
-      if ((this.mPC == null) || (!this.mPC.isOpen())) {
+      Log.w("MicroMsg.FTS.FTSIndexDB", "close db:%s isOpen:%b ", new Object[] { localSQLiteDatabase, Boolean.valueOf(bool) });
+      if ((this.Hqe == null) || (!this.Hqe.isOpen())) {
         break label142;
       }
-      ab.w("MicroMsg.FTS.FTSIndexDB", "close in trans :%b ", new Object[] { Boolean.valueOf(this.mPC.inTransaction()) });
-      while (this.mPC.inTransaction()) {
-        this.mPC.endTransaction();
+      Log.w("MicroMsg.FTS.FTSIndexDB", "close in trans :%b ", new Object[] { Boolean.valueOf(this.Hqe.inTransaction()) });
+      while (this.Hqe.inTransaction()) {
+        this.Hqe.endTransaction();
       }
     }
-    this.mPD.close();
-    this.mPE.close();
-    this.mPC.close();
-    this.mPC = null;
+    this.Hqf.close();
+    this.Hqg.close();
+    this.Hqe.close();
+    this.Hqe = null;
     label142:
-    AppMethodBeat.o(136556);
+    AppMethodBeat.o(52538);
   }
   
   /* Error */
@@ -220,28 +265,28 @@ public final class d
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 351
+    //   2: ldc_w 449
     //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   9: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
     //   12: ifnull +13 -> 25
     //   15: aload_0
-    //   16: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   19: invokevirtual 333	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
+    //   16: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   19: invokevirtual 431	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
     //   22: ifne +12 -> 34
-    //   25: ldc_w 351
-    //   28: invokestatic 232	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc_w 449
+    //   28: invokestatic 297	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
     //   33: return
     //   34: aload_0
-    //   35: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   38: invokevirtual 354	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
+    //   35: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   38: invokevirtual 452	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
     //   41: aload_0
-    //   42: getfield 50	com/tencent/mm/plugin/fts/d:mPC	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   45: invokevirtual 348	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-    //   48: ldc_w 351
-    //   51: invokestatic 232	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: getfield 50	com/tencent/mm/plugin/fts/d:Hqe	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   45: invokevirtual 446	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+    //   48: ldc_w 449
+    //   51: invokestatic 297	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: goto -23 -> 31
     //   57: astore_1
     //   58: aload_0
@@ -261,113 +306,113 @@ public final class d
   
   public final SQLiteStatement compileStatement(String paramString)
   {
-    AppMethodBeat.i(136549);
-    ab.v("MicroMsg.FTS.FTSIndexDB", "compileStatement sql = %s", new Object[] { paramString });
-    paramString = this.mPC.compileStatement(paramString);
-    AppMethodBeat.o(136549);
+    AppMethodBeat.i(52531);
+    Log.v("MicroMsg.FTS.FTSIndexDB", "compileStatement sql = %s", new Object[] { paramString });
+    paramString = this.Hqe.compileStatement(paramString);
+    AppMethodBeat.o(52531);
     return paramString;
   }
   
   public final void deleteMsgById(long paramLong)
   {
-    AppMethodBeat.i(156173);
+    AppMethodBeat.i(52546);
     long l = System.currentTimeMillis();
     String str = String.format("UPDATE %s SET status=? WHERE entity_id=?;", new Object[] { "FTS5MetaMessage" });
-    this.mPC.execSQL(str, new String[] { "-1", String.valueOf(paramLong) });
+    this.Hqe.execSQL(str, new String[] { "-1", String.valueOf(paramLong) });
     execSQL(String.format("DELETE FROM %s WHERE rowid IN (SELECT docid FROM %s WHERE entity_id=?);", new Object[] { "FTS5IndexMessage", "FTS5MetaMessage" }), new String[] { String.valueOf(paramLong) });
     execSQL(String.format("DELETE FROM %s WHERE entity_id=?", new Object[] { "FTS5MetaMessage" }), new String[] { String.valueOf(paramLong) });
-    ab.i("MicroMsg.FTS.FTSIndexDB", "deleteMsgById use time %d msgId %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Long.valueOf(paramLong) });
-    AppMethodBeat.o(156173);
-  }
-  
-  public final boolean er(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(136550);
-    if ((OS("FTS5IndexVersion")) && (this.mPD != null)) {}
-    for (paramInt1 = (int)L(paramInt1, 0L);; paramInt1 = 0)
-    {
-      ab.i("MicroMsg.FTS.FTSIndexDB", "dbVersion=%d | targetVersion=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (paramInt1 == paramInt2)
-      {
-        AppMethodBeat.o(136550);
-        return true;
-      }
-      AppMethodBeat.o(136550);
-      return false;
-    }
+    Log.i("MicroMsg.FTS.FTSIndexDB", "deleteMsgById use time %d msgId %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Long.valueOf(paramLong) });
+    AppMethodBeat.o(52546);
   }
   
   public final void execSQL(String paramString)
   {
-    AppMethodBeat.i(136554);
-    ab.d("MicroMsg.FTS.FTSIndexDB", "execSQL: execute sql = %s", new Object[] { paramString });
-    this.mPC.execSQL(paramString);
-    AppMethodBeat.o(136554);
+    AppMethodBeat.i(52536);
+    Log.d("MicroMsg.FTS.FTSIndexDB", "execSQL: execute sql = %s", new Object[] { paramString });
+    this.Hqe.execSQL(paramString);
+    AppMethodBeat.o(52536);
   }
   
   public final void execSQL(String paramString, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(136555);
-    ab.d("MicroMsg.FTS.FTSIndexDB", "execSQL: execute sql = %s", new Object[] { paramString });
-    this.mPC.execSQL(paramString, paramArrayOfObject);
-    AppMethodBeat.o(136555);
+    AppMethodBeat.i(52537);
+    Log.d("MicroMsg.FTS.FTSIndexDB", "execSQL: execute sql = %s", new Object[] { paramString });
+    this.Hqe.execSQL(paramString, paramArrayOfObject);
+    AppMethodBeat.o(52537);
   }
   
-  public final boolean inTransaction()
-  {
-    AppMethodBeat.i(136558);
-    if ((this.mPC == null) || (!this.mPC.inTransaction()))
-    {
-      AppMethodBeat.o(136558);
-      return false;
-    }
-    AppMethodBeat.o(136558);
-    return true;
-  }
-  
-  public final Cursor rawQuery(String paramString, String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(136547);
-    ab.v("MicroMsg.FTS.FTSIndexDB", "rawQuery: execute sql = %s", new Object[] { paramString });
-    paramString = new a(this.mPC.rawQueryWithFactory(SQLiteDirectCursor.FACTORY, paramString, paramArrayOfString, null));
-    AppMethodBeat.o(136547);
-    return paramString;
-  }
-  
-  public final void rollback()
+  public final void fxj()
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(136560);
-        if ((this.mPC != null) && (this.mPC.isOpen()) && (this.mPC.inTransaction())) {
+        AppMethodBeat.i(52542);
+        if ((this.Hqe != null) && (this.Hqe.isOpen()) && (this.Hqe.inTransaction())) {
           continue;
         }
-        AppMethodBeat.o(136560);
+        AppMethodBeat.o(52542);
       }
       finally
       {
         try
         {
-          this.mPC.endTransaction();
-          AppMethodBeat.o(136560);
+          this.Hqe.endTransaction();
+          AppMethodBeat.o(52542);
         }
         catch (Exception localException)
         {
-          ab.printErrStackTrace("MicroMsg.FTS.FTSIndexDB", localException, "occur error \n%s", new Object[] { localException });
-          AppMethodBeat.o(136560);
+          Log.printErrStackTrace("MicroMsg.FTS.FTSIndexDB", localException, "occur error \n%s", new Object[] { localException });
+          AppMethodBeat.o(52542);
         }
         localObject = finally;
       }
       return;
-      ab.i("MicroMsg.FTS.FTSIndexDB", "rollback");
+      Log.i("MicroMsg.FTS.FTSIndexDB", "rollback");
     }
+  }
+  
+  public final boolean iV(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(52532);
+    if ((aDZ("FTS5IndexVersion")) && (this.Hqf != null)) {}
+    for (int i = (int)aF(paramInt1, 0L);; i = 0)
+    {
+      Log.i("MicroMsg.FTS.FTSIndexDB", "type=%d | dbVersion=%d | targetVersion=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2) });
+      if (i == paramInt2)
+      {
+        AppMethodBeat.o(52532);
+        return true;
+      }
+      AppMethodBeat.o(52532);
+      return false;
+    }
+  }
+  
+  public final boolean inTransaction()
+  {
+    AppMethodBeat.i(52540);
+    if ((this.Hqe == null) || (!this.Hqe.inTransaction()))
+    {
+      AppMethodBeat.o(52540);
+      return false;
+    }
+    AppMethodBeat.o(52540);
+    return true;
+  }
+  
+  public final Cursor rawQuery(String paramString, String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(52529);
+    Log.v("MicroMsg.FTS.FTSIndexDB", "rawQuery: execute sql = %s", new Object[] { paramString });
+    paramString = new a(this.Hqe.rawQueryWithFactory(SQLiteDirectCursor.FACTORY, paramString, paramArrayOfString, null));
+    AppMethodBeat.o(52529);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.d
  * JD-Core Version:    0.7.0.1
  */

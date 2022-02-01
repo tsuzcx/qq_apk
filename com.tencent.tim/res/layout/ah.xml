@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2e" />
+    <EditText android:id="@id/w9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0sp" android:hint="appid;appid;appid" />
+    <Button android:id="@id/an_" android:layout_width="120.0dip" android:layout_height="wrap_content" android:text="@string/j2y" />
+    <Button android:id="@id/ams" android:layout_width="120.0dip" android:layout_height="wrap_content" android:text="@string/j28" />
+</LinearLayout>

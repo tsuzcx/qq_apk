@@ -1,20 +1,20 @@
 package com.tencent.mm.au;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 
 public final class a
 {
-  public static int tI(String paramString)
+  public static int Oz(String paramString)
   {
     k = 0;
-    AppMethodBeat.i(59950);
+    AppMethodBeat.i(43007);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ab.e("Big5Util", "getStrokesCount buffer is empty");
-      AppMethodBeat.o(59950);
+      Log.e("Big5Util", "getStrokesCount buffer is empty");
+      AppMethodBeat.o(43007);
       return 0;
     }
     for (;;)
@@ -25,7 +25,7 @@ public final class a
         if ((paramString != null) && (paramString.length >= 2)) {
           continue;
         }
-        ab.e("Big5Util", "byteToShort");
+        Log.e("Big5Util", "byteToShort");
         j = 0;
         if ((j < 42048) || (j > 42049)) {
           continue;
@@ -35,11 +35,11 @@ public final class a
       catch (UnsupportedEncodingException paramString)
       {
         int j;
-        ab.e("Big5Util", "exception:%s", new Object[] { bo.l(paramString) });
+        Log.e("Big5Util", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         int i = k;
         continue;
       }
-      AppMethodBeat.o(59950);
+      AppMethodBeat.o(43007);
       return i;
       i = 0;
       j = 0;
@@ -179,7 +179,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.au.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class MsgTabNodeEntity
-  extends awge
+  extends Entity
 {
   public long cacheSeq;
   public boolean firstExp = true;
@@ -23,7 +23,7 @@ public class MsgTabNodeEntity
   public long reqTimeStamp;
   public String title;
   public long uid;
-  @awhs
+  @unique
   public String unionId;
   public String videoCover;
   public int videoCoverType;
@@ -31,12 +31,70 @@ public class MsgTabNodeEntity
   
   public String toString()
   {
-    return "MsgTabNodeEntity{nodeType=" + this.nodeType + ", uid=" + this.uid + ", unionId='" + this.unionId + '\'' + ", videoInfoList='" + this.videoInfoList + '\'' + ", reqTimeStamp=" + this.reqTimeStamp + ", nodeInfoTimeStamp=" + this.nodeInfoTimeStamp + ", localSuccessVideoList='" + this.localSuccessVideoList + '\'' + ", title='" + this.title + '\'' + ", headUrl='" + this.headUrl + '\'' + ", recommendId=" + this.recommendId + ", jumpUrl='" + this.jumpUrl + '\'' + ", nodeVid='" + this.nodeVid + '\'' + ", videoCover='" + this.videoCover + '\'' + ", nodePosition=" + this.nodePosition + '\'' + ", recommandNameIconUrl=" + this.recommandNameIconUrl + '\'' + ", cacheSeq='" + this.cacheSeq + '\'' + ", passthrough=" + this.passthrough + '\'' + ", redPoint=" + this.redPoint + '\'' + ", videoCoverType=" + this.videoCoverType + '\'' + ", firstExp=" + this.firstExp + '\'' + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabNodeEntity{nodeType=");
+    localStringBuilder.append(this.nodeType);
+    localStringBuilder.append(", uid=");
+    localStringBuilder.append(this.uid);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoInfoList='");
+    localStringBuilder.append(this.videoInfoList);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", reqTimeStamp=");
+    localStringBuilder.append(this.reqTimeStamp);
+    localStringBuilder.append(", nodeInfoTimeStamp=");
+    localStringBuilder.append(this.nodeInfoTimeStamp);
+    localStringBuilder.append(", localSuccessVideoList='");
+    localStringBuilder.append(this.localSuccessVideoList);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", title='");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", headUrl='");
+    localStringBuilder.append(this.headUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommendId=");
+    localStringBuilder.append(this.recommendId);
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nodeVid='");
+    localStringBuilder.append(this.nodeVid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoCover='");
+    localStringBuilder.append(this.videoCover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nodePosition=");
+    localStringBuilder.append(this.nodePosition);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommandNameIconUrl=");
+    localStringBuilder.append(this.recommandNameIconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cacheSeq='");
+    localStringBuilder.append(this.cacheSeq);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", passthrough=");
+    localStringBuilder.append(this.passthrough);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", redPoint=");
+    localStringBuilder.append(this.redPoint);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoCoverType=");
+    localStringBuilder.append(this.videoCoverType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", firstExp=");
+    localStringBuilder.append(this.firstExp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.MsgTabNodeEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class MiniAppExposureManager$CommonExposureData
   private String reserves;
   private String reserves2;
   private String reserves3;
-  private String reserves4;
+  private String reserves4 = null;
   private String subActionType;
   
   public MiniAppExposureManager$CommonExposureData(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -28,7 +28,7 @@ public class MiniAppExposureManager$CommonExposureData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CommonExposureData
  * JD-Core Version:    0.7.0.1
  */

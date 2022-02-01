@@ -21,14 +21,15 @@ public final class oidb_cmd0x64e$FeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 90, 160 }, new String[] { "feeds_type", "uint32_business_id", "bytes_business_name", "bytes_business_url", "msg_social_feeds_info", "enum_ugc_src" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(0) }, FeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 90, 160 }, new String[] { "feeds_type", "uint32_business_id", "bytes_business_name", "bytes_business_url", "msg_social_feeds_info", "enum_ugc_src" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, null, localInteger }, FeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

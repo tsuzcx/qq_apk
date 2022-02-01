@@ -5,8 +5,8 @@ import android.os.Environment;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import com.tencent.mobileqq.app.BaseActivity;
+import deh;
 import dei;
-import dej;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +24,7 @@ public class QuickLoginActivity
   ListView jdField_a_of_type_AndroidWidgetListView;
   SimpleAdapter jdField_a_of_type_AndroidWidgetSimpleAdapter;
   public ArrayList a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dej(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dei(this);
   
   private void d()
   {
@@ -47,7 +47,7 @@ public class QuickLoginActivity
     }
     this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2130903072, new String[] { "text" }, new int[] { 2131231026 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new dei(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new deh(this));
   }
   
   private void f()

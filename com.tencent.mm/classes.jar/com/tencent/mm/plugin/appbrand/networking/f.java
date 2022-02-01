@@ -1,81 +1,77 @@
 package com.tencent.mm.plugin.appbrand.networking;
 
-import android.os.HandlerThread;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.cm.g;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bp;
-import com.tencent.mm.vending.h.h;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver;", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceImpl;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "TAG", "", "appContext", "Landroid/content/Context;", "getAppContext", "()Landroid/content/Context;", "mNetworkStateChangedReceiver", "com/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1;", "onRegister", "", "onUnregister", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements a
+  extends g
 {
-  protected static final boolean gPS;
-  public static final f itR;
-  protected static final h itS;
-  protected static final Map<String, Integer> itT;
+  private final String TAG;
+  private final NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1 tpW;
   
-  static
+  public f(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(132321);
-    itR = new f();
-    gPS = bp.dud();
-    itS = new h(new al("MicroMsg.WxaCgiServiceWC").oNc.getLooper(), "MicroMsg.WxaCgiServiceWC");
-    HashMap local1 = new HashMap() {};
-    itT = local1;
-    local1.put("/cgi-bin/mmbiz-bin/wxaapp/verifyplugin", Integer.valueOf(1714));
-    itT.put("/cgi-bin/mmbiz-bin/wxabusiness/reportwxaappexpose", Integer.valueOf(1345));
-    itT.put("/cgi-bin/mmbiz-bin/wxaapp_getauthinfo", Integer.valueOf(1115));
-    itT.put("/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket", Integer.valueOf(1862));
-    itT.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo", Integer.valueOf(1194));
-    itT.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo", Integer.valueOf(1191));
-    itT.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/saveinfo", Integer.valueOf(1180));
-    itT.put("/cgi-bin/mmbiz-bin/wxaapp/autofill/authinfo", Integer.valueOf(1183));
-    itT.put("/cgi-bin/mmbiz-bin/js-authorize", Integer.valueOf(1157));
-    itT.put("/cgi-bin/mmbiz-bin/js-authorize-confirm", Integer.valueOf(1158));
-    AppMethodBeat.o(132321);
+    super(paramAppBrandRuntime);
+    AppMethodBeat.i(135584);
+    this.TAG = "Luggage.WXA.NetworkServiceBySystemReceiver";
+    this.tpW = new NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1(this);
+    AppMethodBeat.o(135584);
   }
   
-  private <Resp extends bvk> com.tencent.mm.cm.f<Resp> b(String paramString, com.tencent.mm.bv.a parama, Class<Resp> paramClass)
+  public final void bbB()
   {
-    AppMethodBeat.i(132319);
-    final com.tencent.mm.ai.b.a locala = new com.tencent.mm.ai.b.a();
-    locala.funcId = ((Integer)itT.get(paramString)).intValue();
-    locala.uri = paramString;
-    locala.fsX = parama;
+    AppMethodBeat.i(135582);
+    super.bbB();
     try
     {
-      locala.fsY = ((com.tencent.mm.bv.a)paramClass.newInstance());
-      paramString = g.dTg().d(itS).g(new com.tencent.mm.vending.c.a() {});
-      AppMethodBeat.o(132319);
-      return paramString;
+      Context localContext = MMApplicationContext.getContext();
+      s.checkNotNull(localContext);
+      BroadcastReceiver localBroadcastReceiver = (BroadcastReceiver)this.tpW;
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+      ah localah = ah.aiuX;
+      localContext.registerReceiver(localBroadcastReceiver, localIntentFilter);
+      AppMethodBeat.o(135582);
+      return;
     }
-    catch (InstantiationException paramString)
+    finally
     {
-      do
-      {
-        ab.e("MicroMsg.WxaCgiServiceWC", "new Response failed %s", new Object[] { paramClass.getName() });
-      } while (!gPS);
-      paramString = new RuntimeException(paramString);
-      AppMethodBeat.o(132319);
-      throw paramString;
+      Log.e(this.TAG, s.X("register network receiver, t=", localObject));
+      AppMethodBeat.o(135582);
     }
-    catch (IllegalAccessException paramString)
+  }
+  
+  public final void bbC()
+  {
+    AppMethodBeat.i(135583);
+    super.bbC();
+    try
     {
-      label89:
-      break label89;
+      Context localContext = MMApplicationContext.getContext();
+      s.checkNotNull(localContext);
+      localContext.unregisterReceiver((BroadcastReceiver)this.tpW);
+      AppMethodBeat.o(135583);
+      return;
+    }
+    finally
+    {
+      Log.e(this.TAG, s.X("unregister network receiver, t=", localObject));
+      AppMethodBeat.o(135583);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.networking.f
  * JD-Core Version:    0.7.0.1
  */

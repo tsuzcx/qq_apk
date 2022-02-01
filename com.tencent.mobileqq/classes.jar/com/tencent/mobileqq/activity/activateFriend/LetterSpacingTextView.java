@@ -10,8 +10,8 @@ import android.widget.TextView.BufferType;
 public class LetterSpacingTextView
   extends TextView
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
+  private float a = 0.0F;
+  private CharSequence b = "";
   
   public LetterSpacingTextView(Context paramContext)
   {
@@ -32,26 +32,29 @@ public class LetterSpacingTextView
   
   private void a()
   {
-    if ((this == null) || (this.jdField_a_of_type_JavaLangCharSequence == null)) {
+    if (this.b == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaLangCharSequence.length())
+    while (i < this.b.length())
     {
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence.charAt(i));
-      if (i + 1 < this.jdField_a_of_type_JavaLangCharSequence.length()) {
+      localStringBuilder.append(this.b.charAt(i));
+      j = i + 1;
+      i = j;
+      if (j < this.b.length())
+      {
         localStringBuilder.append(" ");
+        i = j;
       }
-      i += 1;
     }
     SpannableString localSpannableString = new SpannableString(localStringBuilder.toString());
-    if (localStringBuilder.toString().length() > 1)
-    {
-      i = 1;
+    int j = localStringBuilder.toString().length();
+    i = 1;
+    if (j > 1) {
       while (i < localStringBuilder.toString().length())
       {
-        localSpannableString.setSpan(new ScaleXSpan(this.jdField_a_of_type_Float), i, i + 1, 33);
+        localSpannableString.setSpan(new ScaleXSpan(this.a), i, i + 1, 33);
         i += 2;
       }
     }
@@ -60,26 +63,31 @@ public class LetterSpacingTextView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet) {}
   
+  public float getSpacing()
+  {
+    return this.a;
+  }
+  
   public CharSequence getText()
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    return this.b;
   }
   
   public void setSpacing(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
     a();
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.b = paramCharSequence;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.LetterSpacingTextView
  * JD-Core Version:    0.7.0.1
  */

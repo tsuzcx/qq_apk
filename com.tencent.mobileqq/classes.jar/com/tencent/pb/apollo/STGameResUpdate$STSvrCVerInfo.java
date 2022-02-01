@@ -29,13 +29,15 @@ public final class STGameResUpdate$STSvrCVerInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 66, 72, 80, 88, 96 }, new String[] { "busId", "itemId", "updateFlag", "isPatch", "patchContent", "patchUrl", "url", "md5", "svrVer", "packageSize", "tipsSize", "subCode" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, "", "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, STSvrCVerInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 66, 72, 80, 88, 96 }, new String[] { "busId", "itemId", "updateFlag", "isPatch", "patchContent", "patchUrl", "url", "md5", "svrVer", "packageSize", "tipsSize", "subCode" }, new Object[] { localInteger, "", localInteger, localInteger, localByteStringMicro, "", "", "", localInteger, localLong, localLong, localInteger }, STSvrCVerInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.apollo.STGameResUpdate.STSvrCVerInfo
  * JD-Core Version:    0.7.0.1
  */

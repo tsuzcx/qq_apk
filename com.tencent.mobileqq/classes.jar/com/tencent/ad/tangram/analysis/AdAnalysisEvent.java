@@ -70,39 +70,38 @@ public final class AdAnalysisEvent
   
   public boolean isValid()
   {
-    return (this.event != null) && (!TextUtils.isEmpty(this.event.eventId)) && (this.event.currentTime != -2147483648L) && (!TextUtils.isEmpty(this.uuid)) && (this.strategy != -2147483648);
+    gdt_analysis_event localgdt_analysis_event = this.event;
+    return (localgdt_analysis_event != null) && (!TextUtils.isEmpty(localgdt_analysis_event.eventId)) && (this.event.currentTime != -2147483648L) && (!TextUtils.isEmpty(this.uuid)) && (this.strategy != -2147483648);
   }
   
   public String toString()
   {
-    if (!isValid()) {
-      AdLog.e("AdAnalysisEvent", "toString error");
-    }
-    for (;;)
+    boolean bool = isValid();
+    String str = null;
+    if (!bool)
     {
+      AdLog.e("AdAnalysisEvent", "toString error");
       return null;
-      try
-      {
-        Object localObject1 = AdJSON.fromObject(this.event);
-        if (localObject1 == null) {
-          continue;
-        }
-        return localObject1.toString();
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          AdLog.e("AdAnalysisEvent", "toString", localThrowable);
-          Object localObject2 = null;
-        }
-      }
     }
+    Object localObject2;
+    try
+    {
+      Object localObject1 = AdJSON.fromObject(this.event);
+    }
+    catch (Throwable localThrowable)
+    {
+      AdLog.e("AdAnalysisEvent", "toString", localThrowable);
+      localObject2 = null;
+    }
+    if (localObject2 != null) {
+      str = localObject2.toString();
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.analysis.AdAnalysisEvent
  * JD-Core Version:    0.7.0.1
  */

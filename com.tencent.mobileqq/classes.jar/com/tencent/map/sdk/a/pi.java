@@ -14,15 +14,19 @@ public final class pi
   
   public final void a()
   {
-    if ((this.a == null) || (this.a.C == null)) {
-      return;
+    pn localpn = this.a;
+    if (localpn != null)
+    {
+      if (localpn.C == null) {
+        return;
+      }
+      this.a.C.sendEmptyMessage(1);
     }
-    this.a.C.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pi
  * JD-Core Version:    0.7.0.1
  */

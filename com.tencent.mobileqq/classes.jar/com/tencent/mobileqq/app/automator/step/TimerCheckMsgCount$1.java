@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import abta;
-import bkbq;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.MsgCountChecker;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.qphone.base.util.QLog;
-import orl;
+import com.tencent.mobileqq.kandian.base.report.api.IReadInJoyDoingSomething;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class TimerCheckMsgCount$1
   implements Runnable
@@ -17,37 +17,27 @@ class TimerCheckMsgCount$1
   
   public void run()
   {
-    this.this$0.a.app.a().l();
-    ((HotChatManager)this.this$0.a.app.getManager(60)).b();
-    this.this$0.a.app.a().c();
-    if (!bkbq.n(this.this$0.a.app)) {}
-    while (!((Boolean)bkbq.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue())
-    {
-      return;
+    TimerCheckMsgCount.a(this.this$0).a(this.this$0.mAutomator.k);
+    ((HotChatManager)this.this$0.mAutomator.k.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).k();
+    this.this$0.mAutomator.k.getConversationFacade().f();
+    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKanDianReportTTSwitch()) {
       try
       {
-        TimerCheckMsgCount.a(this.this$0);
-        ReadInJoyDoingSomething.a();
+        TimerCheckMsgCount.b(this.this$0);
+        ((IReadInJoyDoingSomething)QRoute.api(IReadInJoyDoingSomething.class)).reportManyAppsData();
       }
-      catch (Exception localException1)
+      catch (Exception localException)
       {
-        localException1.printStackTrace();
+        localException.printStackTrace();
       }
     }
-    try
-    {
-      orl.a();
-      return;
-    }
-    catch (Exception localException2)
-    {
-      QLog.e("QQInitHandler", 1, "TImerCheckMsgCount run: ", localException2);
-    }
+    ((Boolean)((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySpValue("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue();
+    TimerCheckMsgCount.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.TimerCheckMsgCount.1
  * JD-Core Version:    0.7.0.1
  */

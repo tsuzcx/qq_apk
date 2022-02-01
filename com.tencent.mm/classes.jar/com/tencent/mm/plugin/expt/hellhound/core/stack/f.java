@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.app.Activity;
-import com.tencent.mm.protocal.protobuf.be;
+import com.tencent.mm.protocal.protobuf.bt;
 
 public abstract interface f
 {
-  public abstract void a(Activity paramActivity, be parambe1, be parambe2);
+  @Deprecated
+  public abstract void a(Activity paramActivity, bt parambt1, bt parambt2);
   
-  public abstract void a(be parambe1, be parambe2);
+  public abstract void a(bt parambt1, bt parambt2);
   
-  public abstract void b(be parambe1, be parambe2);
+  public abstract void b(bt parambt1, bt parambt2);
   
-  public abstract void c(be parambe1, be parambe2);
+  public abstract void c(bt parambt1, bt parambt2);
+  
+  public abstract void d(bt parambt1, bt parambt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.f
  * JD-Core Version:    0.7.0.1
  */

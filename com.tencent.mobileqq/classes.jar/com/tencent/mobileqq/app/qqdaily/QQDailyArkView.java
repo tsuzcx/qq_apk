@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.app.qqdaily;
 
-import aepi;
-import afii;
-import amov;
-import amow;
-import ampa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -15,51 +10,45 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anob;
-import anqy;
-import azqs;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModel;
 import com.tencent.ark.ArkViewModelBase.Size;
 import com.tencent.ark.open.ArkAppInfo.Size;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
 public class QQDailyArkView
   extends RelativeLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private ArkAppLoadLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
-  private QQDailyArkView.UnsetPressed jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView$UnsetPressed;
   public WrappedArkView a;
-  private boolean jdField_a_of_type_Boolean;
+  private ArkAppLoadLayout b;
+  private RelativeLayout c;
+  private Context d;
+  private boolean e = false;
+  private QQDailyArkView.UnsetPressed f;
   
   static
   {
-    anqy.a(true);
-    anqy.a();
+    ArkMultiProcUtil.a(true);
+    ArkMultiProcUtil.a();
   }
   
   public QQDailyArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131561395, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView = ((WrappedArkView)findViewById(2131362798));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362821));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)findViewById(2131369757));
-    c();
-  }
-  
-  private void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDailyArkView", 2, "WrappedArkView onClick");
-    }
-    azqs.b(null, "dc00898", "", "", "0X800AC02", "0X800AC02", 0, 0, "", "", "", "");
+    this.d = paramContext;
+    LayoutInflater.from(paramContext).inflate(2131627948, this, true);
+    this.a = ((WrappedArkView)findViewById(2131428746));
+    this.c = ((RelativeLayout)findViewById(2131428772));
+    this.b = ((ArkAppLoadLayout)findViewById(2131437612));
+    e();
   }
   
   private void a(View paramView, int paramInt)
@@ -67,154 +56,182 @@ public class QQDailyArkView
     paramView = (RelativeLayout)paramView.getParent();
     if (paramView != null)
     {
-      paramView = paramView.findViewById(2131362801);
+      paramView = paramView.findViewById(2131428751);
       if (paramView != null) {
         paramView.setVisibility(paramInt);
       }
     }
   }
   
-  private void b()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
-    localLayoutParams.addRule(14);
-    localLayoutParams.width = (ampa.a(this.jdField_a_of_type_AndroidContentContext) - getContext().getResources().getDimensionPixelSize(2131297180));
-    localLayoutParams.height = getContext().getResources().getDimensionPixelSize(2131298324);
-    int i = ampa.a(getContext(), 6);
-    localLayoutParams.setMargins(i, i, i, i);
-  }
-  
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setArkView(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.mViewImpl);
-      b();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDailyArkView", 2, "WrappedArkView onClick");
     }
-    ArkAppInfo.Size localSize = new ArkAppInfo.Size(ampa.a(this.jdField_a_of_type_AndroidContentContext) - getContext().getResources().getDimensionPixelSize(2131297180), getContext().getResources().getDimensionPixelSize(2131298324));
-    this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.setSize(localSize, localSize, localSize);
-    this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.setOnLoadListener(new amow(this));
+    ReportController.b(null, "dc00898", "", "", "0X800AC02", "0X800AC02", 0, 0, "", "", "", "");
   }
   
   private void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.mViewImpl.getViewModel();
-    int j;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    localLayoutParams.addRule(14);
+    localLayoutParams.width = (QQDailyUtils.a(this.d) - getContext().getResources().getDimensionPixelSize(2131297757));
+    localLayoutParams.height = getContext().getResources().getDimensionPixelSize(2131299285);
+    int i = QQDailyUtils.a(getContext(), 6);
+    localLayoutParams.setMargins(i, i, i, i);
+  }
+  
+  private void e()
+  {
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      ((ArkAppLoadLayout)localObject).setArkView(this.a.mViewImpl);
+      d();
+    }
+    localObject = new ArkAppInfo.Size(QQDailyUtils.a(this.d) - getContext().getResources().getDimensionPixelSize(2131297757), getContext().getResources().getDimensionPixelSize(2131299285));
+    this.a.setSize((ArkAppInfo.Size)localObject, (ArkAppInfo.Size)localObject, (ArkAppInfo.Size)localObject);
+    this.a.setOnLoadListener(new QQDailyArkView.2(this));
+  }
+  
+  private void f()
+  {
+    Object localObject = this.a.mViewImpl.getViewModel();
     int i;
-    int k;
-    if (localObject != null) {
-      if ((localObject instanceof afii))
+    if (localObject != null)
+    {
+      if ((localObject instanceof ArkAppContainer))
       {
-        ArkViewModelBase.Size localSize = ((afii)localObject).a();
-        if ((localSize != null) && (localSize.height > 0))
-        {
+        ArkViewModelBase.Size localSize = ((ArkAppContainer)localObject).i();
+        if ((localSize != null) && (localSize.height > 0)) {
           j = localSize.height;
-          if ((localSize == null) || (localSize.width <= 0)) {
-            break label221;
-          }
+        } else {
+          j = 0;
+        }
+        if ((localSize != null) && (localSize.width > 0))
+        {
           i = localSize.width;
           k = j;
-          label75:
-          j = k;
-          if (k <= 0) {
-            j = (int)(((ArkViewModel)localObject).getHeight() * this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.mViewImpl.mScale);
-          }
-          if (i > 0) {
-            break label228;
-          }
-          i = (int)(((ArkViewModel)localObject).getWidth() * this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.mViewImpl.mScale);
+        }
+        else
+        {
+          i = 0;
+          k = j;
         }
       }
-    }
-    for (;;)
-    {
-      k = j;
-      if (j <= 0) {
-        k = aepi.a(352.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getResources());
+      else
+      {
+        i = 0;
+        k = 0;
       }
-      j = i;
+      j = k;
+      if (k <= 0) {
+        j = (int)(((ArkViewModel)localObject).getHeight() * this.a.mViewImpl.mScale);
+      }
       if (i <= 0) {
-        j = BaseChatItemLayout.e;
+        i = (int)(((ArkViewModel)localObject).getWidth() * this.a.mViewImpl.mScale);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).height = k;
-      ((ViewGroup.LayoutParams)localObject).width = j;
-      if (QLog.isColorLevel()) {
-        QLog.i("QQDailyArkView", 2, String.format(Locale.CHINA, "resizeLoadingView.view.%h.w.%d.h.%d", new Object[] { this, Integer.valueOf(j), Integer.valueOf(k) }));
-      }
-      return;
-      j = 0;
-      break;
-      label221:
-      i = 0;
-      k = j;
-      break label75;
-      label228:
-      continue;
-      i = 0;
-      k = 0;
-      break label75;
+    }
+    else
+    {
       i = 0;
       j = 0;
+    }
+    int k = j;
+    if (j <= 0) {
+      k = AIOUtils.b(352.0F, this.b.getResources());
+    }
+    int j = i;
+    if (i <= 0) {
+      j = BaseChatItemLayout.f;
+    }
+    localObject = this.b.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = k;
+    ((ViewGroup.LayoutParams)localObject).width = j;
+    if (QLog.isColorLevel()) {
+      QLog.i("QQDailyArkView", 2, String.format(Locale.CHINA, "resizeLoadingView.view.%h.w.%d.h.%d", new Object[] { this, Integer.valueOf(j), Integer.valueOf(k) }));
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDailyArkView", 2, "load: [" + paramString1 + "][" + paramString2 + "][" + paramString3 + "][" + paramString4 + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load: [");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("][");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("][");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append("][");
+      localStringBuilder.append(paramString4);
+      localStringBuilder.append("]");
+      QLog.d("QQDailyArkView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.setClipRadius(8.0F);
-    this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView.load(paramString1, paramString2, paramString3, paramString4, anob.a(), new amov(this));
+    this.a.setClipRadius(8.0F);
+    this.a.load(paramString1, paramString2, paramString3, paramString4, ArkAppCenterUtil.c(), new QQDailyArkView.1(this));
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
+  }
+  
+  public void b()
+  {
+    this.a.onDestroy();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if (isPressed())
+      if (i != 1)
       {
-        a();
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView$UnsetPressed == null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView$UnsetPressed = new QQDailyArkView.UnsetPressed(this, null);
+        if (i != 2)
+        {
+          if (i == 3) {
+            setPressed(false);
+          }
         }
-        setPressed(true);
-        removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView$UnsetPressed);
-        postDelayed(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyArkView$UnsetPressed, ViewConfiguration.getPressedStateDuration());
-        continue;
-        setPressed(false);
-        continue;
-        setPressed(false);
+        else {
+          setPressed(false);
+        }
+      }
+      else if (isPressed()) {
+        c();
       }
     }
+    else
+    {
+      if (this.f == null) {
+        this.f = new QQDailyArkView.UnsetPressed(this, null);
+      }
+      setPressed(true);
+      removeCallbacks(this.f);
+      postDelayed(this.f, ViewConfiguration.getPressedStateDuration());
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void setDarkMode(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845785);
+      this.c.setBackgroundResource(2130847910);
     }
     setPadding(0, 0, 0, 0);
   }
   
   public void setExpReported(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyArkView
  * JD-Core Version:    0.7.0.1
  */

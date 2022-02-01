@@ -42,8 +42,9 @@ public final class IPCQueryDownloadInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.url, 0);
-    if (this.savePath != null) {
-      paramJceOutputStream.write(this.savePath, 1);
+    String str = this.savePath;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.state, 2);
     paramJceOutputStream.write(this.receivedLen, 3);
@@ -54,7 +55,7 @@ public final class IPCQueryDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCQueryDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

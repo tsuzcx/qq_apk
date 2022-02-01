@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/b8q" android:background="@drawable/4f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView android:id="@id/oid" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:id="@id/bw1" android:background="#ffefeff0" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_below="@id/oid" />
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/black" android:gravity="center" android:id="@id/close" android:layout_width="fill_parent" android:layout_height="57.5dip" android:text="取消" android:layout_below="@id/bw1" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="biometric_pay_close" android:layout="@layout/bdi" android:persistent="false" android:title="@string/kni" android:widgetLayout="@layout/bff" />
+</PreferenceScreen>

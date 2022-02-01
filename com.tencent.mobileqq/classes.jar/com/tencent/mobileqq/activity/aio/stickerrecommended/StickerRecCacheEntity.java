@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="md5")
 public class StickerRecCacheEntity
-  extends awge
+  extends Entity
 {
   public String filePath;
   public long lastTime;
@@ -23,14 +23,18 @@ public class StickerRecCacheEntity
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while ((getClass() != paramObject.getClass()) || (!(paramObject instanceof StickerRecCacheEntity)));
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    if (!(paramObject instanceof StickerRecCacheEntity)) {
+      return false;
+    }
     paramObject = (StickerRecCacheEntity)paramObject;
     return this.md5.equals(paramObject.md5);
   }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import aixs;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
+import com.tencent.mobileqq.qwallet.config.IQWalletConfigService;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 
@@ -10,17 +10,12 @@ public class ManagerProxy
 {
   public static ApkgConfigManager getApkgConfigManager(AppRuntime paramAppRuntime)
   {
-    return (ApkgConfigManager)paramAppRuntime.getManager(287);
+    return (ApkgConfigManager)paramAppRuntime.getManager(QQManagerFactory.APKG_CONFIG_MANAGER);
   }
   
-  public static PreloadManager getPreloadManager(AppRuntime paramAppRuntime)
+  public static IQWalletConfigService getQWalletConfigManager(AppRuntime paramAppRuntime)
   {
-    return (PreloadManager)paramAppRuntime.getManager(151);
-  }
-  
-  public static aixs getQWalletConfigManager(AppRuntime paramAppRuntime)
-  {
-    return (aixs)paramAppRuntime.getManager(245);
+    return (IQWalletConfigService)paramAppRuntime.getRuntimeService(IQWalletConfigService.class, "");
   }
   
   public static TicketManager getTicketManager(AppRuntime paramAppRuntime)
@@ -30,7 +25,7 @@ public class ManagerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.ext.ManagerProxy
  * JD-Core Version:    0.7.0.1
  */

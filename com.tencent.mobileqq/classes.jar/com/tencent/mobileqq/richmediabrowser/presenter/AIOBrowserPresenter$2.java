@@ -1,50 +1,56 @@
 package com.tencent.mobileqq.richmediabrowser.presenter;
 
-import aghu;
-import axyi;
-import axyq;
-import axzm;
-import axzo;
+import android.app.Activity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.mobileqq.richmediabrowser.api.IBrowserDepend;
+import com.tencent.mobileqq.richmediabrowser.model.AIOBrowserModel;
+import com.tencent.mobileqq.richmediabrowser.view.AIOBrowserBaseView;
+import com.tencent.mobileqq.richmediabrowser.view.AIOBrowserScene;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.view.BrowserAdapter;
-import com.tencent.richmediabrowser.view.BrowserBaseView;
-import com.tencent.richmediabrowser.view.page.Gallery;
 
-public class AIOBrowserPresenter$2
+class AIOBrowserPresenter$2
   implements Runnable
 {
-  public AIOBrowserPresenter$2(axyq paramaxyq, long paramLong, AIOBrowserBaseData paramAIOBrowserBaseData, boolean paramBoolean) {}
+  AIOBrowserPresenter$2(AIOBrowserPresenter paramAIOBrowserPresenter, long paramLong, AIOBrowserBaseData paramAIOBrowserBaseData, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOBrowserBaseData.jdField_a_of_type_Long) || (this.jdField_a_of_type_Boolean))
+    Object localObject;
+    if ((this.a != this.b.a) && (!this.c))
     {
-      BrowserBaseView localBrowserBaseView = this.this$0.jdField_a_of_type_Axzo.getCurrentView();
-      if ((localBrowserBaseView instanceof axzm)) {
-        ((axzm)localBrowserBaseView).a(this.jdField_a_of_type_Long);
-      }
-      aghu.a(this.this$0.jdField_a_of_type_Axzo.mActivity, this.this$0.jdField_a_of_type_Axzo.mRoot);
-    }
-    int i;
-    do
-    {
-      return;
-      if (this.this$0.jdField_a_of_type_Axyi.b(this.jdField_a_of_type_Long) == null)
+      if (this.this$0.b.c(this.a) == null)
       {
-        BrowserLogHelper.getInstance().getGalleryLog().i("AIOGalleryPresenter", 2, "onRevokeMsg seq:" + this.jdField_a_of_type_Long + ", selectItem seq:" + this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOBrowserBaseData.jdField_a_of_type_Long);
+        localObject = BrowserLogHelper.getInstance().getGalleryLog();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onRevokeMsg seq:");
+        localStringBuilder.append(this.a);
+        localStringBuilder.append(", selectItem seq:");
+        localStringBuilder.append(this.b.a);
+        ((IBrowserLog)localObject).i("AIOGalleryPresenter", 2, localStringBuilder.toString());
         return;
       }
-      i = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOBrowserBaseData.jdField_a_of_type_Long);
-    } while ((i < 0) || (this.this$0.jdField_a_of_type_Axzo.mAdapter == null));
-    this.this$0.jdField_a_of_type_Axzo.mAdapter.notifyDataSetChanged();
-    this.this$0.jdField_a_of_type_Axzo.mGallery.setSelection(i);
+      int i = this.this$0.c(this.b.a);
+      if ((i >= 0) && (i < this.this$0.b.getCount()))
+      {
+        this.this$0.b.setSelectedIndex(i);
+        this.this$0.a.notifyImageModelDataChanged();
+      }
+    }
+    else
+    {
+      localObject = this.this$0.a.c();
+      if ((localObject instanceof AIOBrowserBaseView)) {
+        ((AIOBrowserBaseView)localObject).a(this.a);
+      }
+      ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).buildMessageRevokeUI((Activity)this.this$0.a.mContext, this.this$0.a.mRoot);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserPresenter.2
  * JD-Core Version:    0.7.0.1
  */

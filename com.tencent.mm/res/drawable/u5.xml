@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/bcx" />
-</selector>
+    <item android:duration="90" android:drawable="@drawable/bvm" />
+    <item android:duration="90" android:drawable="@drawable/bvn" />
+    <item android:duration="90" android:drawable="@drawable/bvo" />
+    <item android:duration="90" android:drawable="@drawable/bvp" />
+    <item android:duration="90" android:drawable="@drawable/bvq" />
+    <item android:duration="90" android:drawable="@drawable/bvr" />
+</animation-list>

@@ -27,7 +27,7 @@ public class AstSDKDBHelper
   {
     try
     {
-      AppMethodBeat.i(76182);
+      AppMethodBeat.i(102428);
       if (mInstance == null)
       {
         localObject1 = GlobalUtil.getInstance().getContext();
@@ -36,7 +36,7 @@ public class AstSDKDBHelper
         }
       }
       Object localObject1 = mInstance;
-      AppMethodBeat.o(76182);
+      AppMethodBeat.o(102428);
       return localObject1;
     }
     finally {}
@@ -54,7 +54,7 @@ public class AstSDKDBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,23 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StDelUserAppReq
   extends MessageMicro<StDelUserAppReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48 }, new String[] { "extInfo", "appId", "verType", "isRecommend", "source", "noDelTop" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, StDelUserAppReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appId = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBInt32Field isRecommend = PBField.initInt32(0);
   public final PBInt32Field noDelTop = PBField.initInt32(0);
   public final PBInt32Field source = PBField.initInt32(0);
   public final PBEnumField verType = PBField.initEnum(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48 }, new String[] { "extInfo", "appId", "verType", "isRecommend", "source", "noDelTop" }, new Object[] { null, "", localInteger, localInteger, localInteger, localInteger }, StDelUserAppReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StDelUserAppReq
  * JD-Core Version:    0.7.0.1
  */

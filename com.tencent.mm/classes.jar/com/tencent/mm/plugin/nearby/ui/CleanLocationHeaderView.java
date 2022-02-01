@@ -7,44 +7,48 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.nearby.b.c;
+import com.tencent.mm.plugin.nearby.b.d;
+import com.tencent.mm.plugin.nearby.b.f;
+import com.tencent.mm.plugin.nearby.b.g;
 
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private ImageView iQd;
-  private TextView pcA;
+  private TextView MoK;
+  private ImageView lPb;
   
   public CleanLocationHeaderView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(55409);
-    aA(paramContext);
-    AppMethodBeat.o(55409);
+    AppMethodBeat.i(89807);
+    ci(paramContext);
+    AppMethodBeat.o(89807);
   }
   
   public CleanLocationHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(55408);
-    aA(paramContext);
-    AppMethodBeat.o(55408);
+    AppMethodBeat.i(89806);
+    ci(paramContext);
+    AppMethodBeat.o(89806);
   }
   
-  private void aA(Context paramContext)
+  private void ci(Context paramContext)
   {
-    AppMethodBeat.i(55410);
-    paramContext = View.inflate(paramContext, 2130970342, this);
-    this.pcA = ((TextView)paramContext.findViewById(2131826487));
-    this.pcA.setSingleLine(false);
-    this.iQd = ((ImageView)paramContext.findViewById(2131826486));
-    this.pcA.setText(2131298381);
-    this.iQd.setImageResource(2131231857);
-    AppMethodBeat.o(55410);
+    AppMethodBeat.i(89808);
+    paramContext = View.inflate(paramContext, b.d.Moe, this);
+    this.MoK = ((TextView)paramContext.findViewById(b.c.Mod));
+    this.MoK.setSingleLine(false);
+    this.lPb = ((ImageView)paramContext.findViewById(b.c.Mob));
+    this.MoK.setText(b.g.Moj);
+    this.lPb.setImageResource(b.f.peoplenearby_icon);
+    AppMethodBeat.o(89808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.CleanLocationHeaderView
  * JD-Core Version:    0.7.0.1
  */

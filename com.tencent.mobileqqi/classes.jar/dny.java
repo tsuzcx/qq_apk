@@ -1,27 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.NightModeLogic;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 
-public class dny
-  implements View.OnClickListener
+class dny
+  extends NightModeLogic.NightModeCallback
 {
-  public dny(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
+  dny(dnx paramdnx) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    ThemeSwitchDlgActivity.a(this.a, true);
-    ThemeSwitchDlgActivity.a(this.a, new NightModeLogic(this.a.getAppRuntime(), this.a));
-    ThemeSwitchDlgActivity.a(this.a).registerModeCallback(new dnz(this));
-    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
-    {
-      ThemeSwitchDlgActivity.a(this.a).dismiss();
-      ThemeSwitchDlgActivity.a(this.a, null);
-    }
-    ThemeSwitchDlgActivity.a(this.a).setupNightTheme();
-    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "1", "", "", "");
+    this.a.a.finish();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (paramBundle.getInt("start_status") == 2) {}
   }
 }
 

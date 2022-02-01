@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.story.model.f;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
-import com.tencent.mm.sdk.e.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.f.c;
+import com.tencent.mm.loader.f.e;
+import com.tencent.mm.loader.f.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
-final class a$g
-  extends k
-  implements a<y>
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/model/upload/PostTask$uploadCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a$g
+  implements e<c>
 {
-  a$g(m paramm)
+  public final void a(c paramc, i parami)
   {
-    super(0);
+    AppMethodBeat.i(119086);
+    s.u(paramc, "task");
+    s.u(parami, "status");
+    AppMethodBeat.o(119086);
   }
 }
 

@@ -1,28 +1,72 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.applist.WebAppActivity;
+import com.tencent.open.applist.WebAppActivity.HttpGetAppInfoAsyncTask;
 import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.sdk.WebView;
 
 public class hlh
-  implements DownloadListener
+  extends Handler
 {
   public hlh(WebAppActivity paramWebAppActivity) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    LogUtility.c("WebAppActivity", "url= " + paramString1);
-    LogUtility.c("WebAppActivity", "minetype= " + paramString4);
-    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
-    try
+    LogUtility.c("WebAppActivity", "handleMessage >>> " + paramMessage.what);
+    switch (paramMessage.what)
     {
-      this.a.startActivity(paramString1);
+    default: 
+    case 2: 
+    case 3: 
+    case 4: 
+      do
+      {
+        return;
+        this.a.jdField_a_of_type_ComTencentOpenApplistWebAppActivity$HttpGetAppInfoAsyncTask = new WebAppActivity.HttpGetAppInfoAsyncTask(this.a);
+        paramMessage = new Bundle();
+        this.a.jdField_a_of_type_ComTencentOpenApplistWebAppActivity$HttpGetAppInfoAsyncTask.execute(new Bundle[] { paramMessage });
+        return;
+        if (this.a.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
+          this.a.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+        }
+        this.a.d();
+        if (TextUtils.isEmpty(CommonDataAdapter.a().a()))
+        {
+          Toast.makeText(this.a, 2131559992, 0).show();
+          this.a.i();
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentOpenApplistWebAppActivity$HttpGetAppInfoAsyncTask = new WebAppActivity.HttpGetAppInfoAsyncTask(this.a);
+        paramMessage = new Bundle();
+        this.a.jdField_a_of_type_ComTencentOpenApplistWebAppActivity$HttpGetAppInfoAsyncTask.execute(new Bundle[] { paramMessage });
+        return;
+        if (this.a.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
+          this.a.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+        }
+        this.a.j();
+      } while (this.a.jdField_a_of_type_ComTencentSmttSdkWebView == null);
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.a.f);
+      return;
+    case 5: 
+      Toast.makeText(this.a, 2131559993, 0).show();
+      this.a.i();
+      return;
+    case 6: 
+      Toast.makeText(this.a, 2131559991, 0).show();
+      this.a.i();
+      return;
+    case 7: 
+      Toast.makeText(this.a, 2131559992, 0).show();
+      this.a.i();
       return;
     }
-    catch (Exception paramString1)
-    {
-      LogUtility.c("WebAppActivity", "no activity handle Intent.ACTION_VIEW ", paramString1);
-    }
+    Toast.makeText(this.a, 2131559990, 0).show();
+    this.a.i();
   }
 }
 

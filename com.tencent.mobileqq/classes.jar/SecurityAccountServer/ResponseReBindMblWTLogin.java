@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ResponseReBindMblWTLogin
   extends JceStruct
 {
-  public int result;
+  public int result = 0;
   
   public ResponseReBindMblWTLogin() {}
   
@@ -28,7 +28,7 @@ public final class ResponseReBindMblWTLogin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponseReBindMblWTLogin
  * JD-Core Version:    0.7.0.1
  */

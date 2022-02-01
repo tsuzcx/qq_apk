@@ -5,13 +5,13 @@ import java.util.Locale;
 
 public class f<K, V>
 {
-  private final LinkedHashMap<K, V> jf;
-  private int jg;
-  private int jh;
-  private int ji;
-  private int jj;
-  private int jk;
-  private int jl;
+  private final LinkedHashMap<K, V> lc;
+  private int ld;
+  private int le;
+  private int lf;
+  private int lg;
+  private int lh;
+  private int li;
   private int size;
   
   public f(int paramInt)
@@ -19,13 +19,13 @@ public class f<K, V>
     if (paramInt <= 0) {
       throw new IllegalArgumentException("maxSize <= 0");
     }
-    this.jg = paramInt;
-    this.jf = new LinkedHashMap(0, 0.75F, true);
+    this.ld = paramInt;
+    this.lc = new LinkedHashMap(0, 0.75F, true);
   }
   
-  private int c(K paramK, V paramV)
+  private int d(K paramK, V paramV)
   {
-    int i = l(paramV);
+    int i = s(paramV);
     if (i < 0) {
       throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
     }
@@ -42,7 +42,7 @@ public class f<K, V>
     //   3: getfield 71	android/support/v4/b/f:size	I
     //   6: iflt +20 -> 26
     //   9: aload_0
-    //   10: getfield 38	android/support/v4/b/f:jf	Ljava/util/LinkedHashMap;
+    //   10: getfield 38	android/support/v4/b/f:lc	Ljava/util/LinkedHashMap;
     //   13: invokevirtual 75	java/util/LinkedHashMap:isEmpty	()Z
     //   16: ifeq +48 -> 64
     //   19: aload_0
@@ -72,14 +72,14 @@ public class f<K, V>
     //   68: iload_1
     //   69: if_icmple +13 -> 82
     //   72: aload_0
-    //   73: getfield 38	android/support/v4/b/f:jf	Ljava/util/LinkedHashMap;
+    //   73: getfield 38	android/support/v4/b/f:lc	Ljava/util/LinkedHashMap;
     //   76: invokevirtual 75	java/util/LinkedHashMap:isEmpty	()Z
     //   79: ifeq +6 -> 85
     //   82: aload_0
     //   83: monitorexit
     //   84: return
     //   85: aload_0
-    //   86: getfield 38	android/support/v4/b/f:jf	Ljava/util/LinkedHashMap;
+    //   86: getfield 38	android/support/v4/b/f:lc	Ljava/util/LinkedHashMap;
     //   89: invokevirtual 91	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
     //   92: invokeinterface 97 1 0
     //   97: invokeinterface 103 1 0
@@ -92,7 +92,7 @@ public class f<K, V>
     //   114: invokeinterface 111 1 0
     //   119: astore_3
     //   120: aload_0
-    //   121: getfield 38	android/support/v4/b/f:jf	Ljava/util/LinkedHashMap;
+    //   121: getfield 38	android/support/v4/b/f:lc	Ljava/util/LinkedHashMap;
     //   124: aload_2
     //   125: invokevirtual 115	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   128: pop
@@ -102,15 +102,15 @@ public class f<K, V>
     //   134: aload_0
     //   135: aload_2
     //   136: aload_3
-    //   137: invokespecial 117	android/support/v4/b/f:c	(Ljava/lang/Object;Ljava/lang/Object;)I
+    //   137: invokespecial 117	android/support/v4/b/f:d	(Ljava/lang/Object;Ljava/lang/Object;)I
     //   140: isub
     //   141: putfield 71	android/support/v4/b/f:size	I
     //   144: aload_0
     //   145: aload_0
-    //   146: getfield 119	android/support/v4/b/f:jj	I
+    //   146: getfield 119	android/support/v4/b/f:lg	I
     //   149: iconst_1
     //   150: iadd
-    //   151: putfield 119	android/support/v4/b/f:jj	I
+    //   151: putfield 119	android/support/v4/b/f:lg	I
     //   154: aload_0
     //   155: monitorexit
     //   156: goto -156 -> 0
@@ -149,13 +149,13 @@ public class f<K, V>
     Object localObject1;
     try
     {
-      localObject1 = this.jf.get(paramK);
+      localObject1 = this.lc.get(paramK);
       if (localObject1 != null)
       {
-        this.jk += 1;
+        this.lh += 1;
         return localObject1;
       }
-      this.jl += 1;
+      this.li += 1;
       localObject1 = create(paramK);
       if (localObject1 == null) {
         return null;
@@ -164,28 +164,23 @@ public class f<K, V>
     finally {}
     try
     {
-      this.ji += 1;
-      Object localObject2 = this.jf.put(paramK, localObject1);
+      this.lf += 1;
+      Object localObject2 = this.lc.put(paramK, localObject1);
       if (localObject2 != null) {
-        this.jf.put(paramK, localObject2);
+        this.lc.put(paramK, localObject2);
       }
       for (;;)
       {
         if (localObject2 != null) {
           break;
         }
-        trimToSize(this.jg);
+        trimToSize(this.ld);
         return localObject1;
-        this.size += c(paramK, localObject1);
+        this.size += d(paramK, localObject1);
       }
       return localObject2;
     }
     finally {}
-  }
-  
-  protected int l(V paramV)
-  {
-    return 1;
   }
   
   public final V put(K paramK, V paramV)
@@ -195,16 +190,21 @@ public class f<K, V>
     }
     try
     {
-      this.jh += 1;
-      this.size += c(paramK, paramV);
-      paramV = this.jf.put(paramK, paramV);
+      this.le += 1;
+      this.size += d(paramK, paramV);
+      paramV = this.lc.put(paramK, paramV);
       if (paramV != null) {
-        this.size -= c(paramK, paramV);
+        this.size -= d(paramK, paramV);
       }
-      trimToSize(this.jg);
+      trimToSize(this.ld);
       return paramV;
     }
     finally {}
+  }
+  
+  protected int s(V paramV)
+  {
+    return 1;
   }
   
   public final String toString()
@@ -212,11 +212,11 @@ public class f<K, V>
     int i = 0;
     try
     {
-      int j = this.jk + this.jl;
+      int j = this.lh + this.li;
       if (j != 0) {
-        i = this.jk * 100 / j;
+        i = this.lh * 100 / j;
       }
-      String str = String.format(Locale.US, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.jg), Integer.valueOf(this.jk), Integer.valueOf(this.jl), Integer.valueOf(i) });
+      String str = String.format(Locale.US, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.ld), Integer.valueOf(this.lh), Integer.valueOf(this.li), Integer.valueOf(i) });
       return str;
     }
     finally {}

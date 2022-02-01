@@ -9,10 +9,10 @@
                     <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
                         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
                             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-                                <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/kjp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                                <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/kjo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:id="@id/kjp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                                <TextView android:textSize="14.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/kjo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
                             </LinearLayout>
-                            <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="left" android:id="@id/kjr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="left" android:id="@id/kjr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                     <TextView android:textSize="11.0dip" android:textColor="#ff787878" android:id="@id/kk1" android:layout_width="wrap_content" android:layout_height="wrap_content" />

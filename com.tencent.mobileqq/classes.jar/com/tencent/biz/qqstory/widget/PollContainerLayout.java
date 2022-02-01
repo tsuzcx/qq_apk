@@ -7,20 +7,20 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import uxk;
-import wxe;
-import xrr;
-import xrs;
-import xrx;
-import xry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem.PollLayout;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.IPollWidget;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OptionElement;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
 
 public class PollContainerLayout
   extends FrameLayout
 {
-  public StoryVideoItem a;
-  public uxk a;
-  private final xrs jdField_a_of_type_Xrs = xrr.a(getContext(), 1, 1, null);
-  boolean jdField_a_of_type_Boolean = false;
+  public StoryVideoItem.PollLayout a;
+  boolean b = false;
+  public StoryVideoItem c;
+  private final PollWidgetUtils.IPollWidget d = PollWidgetUtils.a(getContext(), 1, 1, null);
   
   public PollContainerLayout(@NonNull Context paramContext)
   {
@@ -30,9 +30,9 @@ public class PollContainerLayout
   public PollContainerLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Xrs.a(false);
+    this.d.a(false);
     paramContext = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_Xrs.a(), paramContext);
+    addView(this.d.a(), paramContext);
     setVisibility(4);
     setClipChildren(false);
     setClickable(false);
@@ -40,16 +40,57 @@ public class PollContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Uxk == null) {
+    StoryVideoItem.PollLayout localPollLayout = this.a;
+    if (localPollLayout == null) {
       return;
     }
-    this.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Uxk, paramInt1, paramInt2);
-    this.jdField_a_of_type_Xrs.a();
+    this.d.a(localPollLayout, paramInt1, paramInt2);
+    this.d.c();
+  }
+  
+  public void a(StoryVideoItem.PollLayout paramPollLayout, int paramInt, int[] paramArrayOfInt)
+  {
+    this.a = paramPollLayout;
+    if (paramPollLayout == null)
+    {
+      setVisibility(4);
+      return;
+    }
+    setVisibility(0);
+    paramPollLayout = paramPollLayout.j;
+    this.d.b().a(paramPollLayout[0]);
+    int i = 1;
+    while (i < paramPollLayout.length)
+    {
+      PollWidgetUtils.IPollWidget localIPollWidget = this.d;
+      int j = i - 1;
+      localIPollWidget.a(j).a(paramPollLayout[i]);
+      this.d.a(j).a(false);
+      i += 1;
+    }
+    if ((this.b) && (paramInt >= 0))
+    {
+      this.d.a(paramInt).a(true);
+      if (paramArrayOfInt != null)
+      {
+        this.d.a(paramArrayOfInt);
+        this.d.a(true);
+      }
+      else
+      {
+        this.d.a(false);
+      }
+    }
+    else
+    {
+      this.d.a(false);
+    }
+    a(getWidth(), getHeight());
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.c = paramStoryVideoItem;
     if (paramStoryVideoItem != null)
     {
       a(paramStoryVideoItem.getPollLayout(), paramStoryVideoItem.mPollResult, paramStoryVideoItem.mPollNumbers);
@@ -58,60 +99,25 @@ public class PollContainerLayout
     a(null, -1, null);
   }
   
-  public void a(uxk paramuxk, int paramInt, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Uxk = paramuxk;
-    if (paramuxk == null)
-    {
-      setVisibility(4);
-      return;
-    }
-    setVisibility(0);
-    paramuxk = paramuxk.a;
-    this.jdField_a_of_type_Xrs.a().a(paramuxk[0]);
-    int i = 1;
-    while (i < paramuxk.length)
-    {
-      this.jdField_a_of_type_Xrs.a(i - 1).a(paramuxk[i]);
-      this.jdField_a_of_type_Xrs.a(i - 1).b(false);
-      i += 1;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0))
-    {
-      this.jdField_a_of_type_Xrs.a(paramInt).b(true);
-      if (paramArrayOfInt != null)
-      {
-        this.jdField_a_of_type_Xrs.a(paramArrayOfInt);
-        this.jdField_a_of_type_Xrs.a(true);
-      }
-    }
-    for (;;)
-    {
-      a(getWidth(), getHeight());
-      return;
-      this.jdField_a_of_type_Xrs.a(false);
-      continue;
-      this.jdField_a_of_type_Xrs.a(false);
-    }
-  }
-  
   public boolean a(boolean paramBoolean)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    boolean bool = this.b;
+    this.b = paramBoolean;
     return bool;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    a(paramInt3 - paramInt1, paramInt4 - paramInt2);
-    wxe.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
+    paramInt1 = paramInt3 - paramInt1;
+    paramInt2 = paramInt4 - paramInt2;
+    a(paramInt1, paramInt2);
+    SLog.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.PollContainerLayout
  * JD-Core Version:    0.7.0.1
  */

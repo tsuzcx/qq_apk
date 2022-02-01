@@ -4,8 +4,8 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Process;
-import bjih;
 import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.cache.QZoneFilePath;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServerListProvider
 {
-  private static String SERVER_DIR = bjih.l;
+  private static String SERVER_DIR = QZoneFilePath.SERVER_DIR;
   private static final String TAG = "ServerListProvider";
   public static final int VALUE_DB2 = 13;
   public static final int VALUE_DB3 = 86;
@@ -91,8 +91,8 @@ public class ServerListProvider
   {
     try
     {
-      File localFile = new File(bjih.m);
-      if ((localFile != null) && (localFile.exists())) {
+      File localFile = new File(QZoneFilePath.TESTSERVER_PATH);
+      if (localFile.exists()) {
         localFile.delete();
       }
       return;
@@ -113,175 +113,162 @@ public class ServerListProvider
   private static void generateServerFile()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: invokestatic 206	cooperation/qzone/ServerListProvider:isServerFileExits	()Z
-    //   7: ifeq +4 -> 11
-    //   10: return
-    //   11: new 170	java/io/File
-    //   14: dup
-    //   15: getstatic 161	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
-    //   18: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
-    //   21: astore_0
-    //   22: aload_0
-    //   23: invokevirtual 180	java/io/File:exists	()Z
-    //   26: ifne +8 -> 34
-    //   29: aload_0
-    //   30: invokevirtual 209	java/io/File:mkdirs	()Z
-    //   33: pop
-    //   34: new 170	java/io/File
-    //   37: dup
-    //   38: getstatic 173	bjih:m	Ljava/lang/String;
-    //   41: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
-    //   44: astore_0
-    //   45: aload_0
-    //   46: invokevirtual 180	java/io/File:exists	()Z
-    //   49: ifne -39 -> 10
-    //   52: aload_0
-    //   53: invokevirtual 212	java/io/File:createNewFile	()Z
-    //   56: ifeq +165 -> 221
-    //   59: new 214	java/io/FileWriter
-    //   62: dup
-    //   63: aload_0
-    //   64: invokespecial 217	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   67: astore_0
-    //   68: new 219	java/io/BufferedWriter
-    //   71: dup
-    //   72: aload_0
-    //   73: invokespecial 222	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   76: astore_1
-    //   77: aload_1
-    //   78: ldc 224
-    //   80: invokevirtual 227	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   83: aload_1
-    //   84: invokevirtual 230	java/io/BufferedWriter:close	()V
-    //   87: aload_1
-    //   88: ifnull +7 -> 95
-    //   91: aload_1
-    //   92: invokevirtual 230	java/io/BufferedWriter:close	()V
-    //   95: aload_0
-    //   96: ifnull -86 -> 10
-    //   99: aload_0
-    //   100: invokevirtual 231	java/io/FileWriter:close	()V
-    //   103: return
-    //   104: astore_0
-    //   105: aload_0
-    //   106: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   109: return
-    //   110: astore_1
-    //   111: aload_1
-    //   112: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   115: goto -20 -> 95
-    //   118: astore_0
-    //   119: aconst_null
-    //   120: astore_0
-    //   121: aload_2
-    //   122: astore_1
-    //   123: aload_1
-    //   124: ifnull +7 -> 131
-    //   127: aload_1
-    //   128: invokevirtual 230	java/io/BufferedWriter:close	()V
-    //   131: aload_0
-    //   132: ifnull -122 -> 10
-    //   135: aload_0
-    //   136: invokevirtual 231	java/io/FileWriter:close	()V
-    //   139: return
-    //   140: astore_0
-    //   141: aload_0
-    //   142: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   145: return
-    //   146: astore_1
-    //   147: aload_1
-    //   148: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   151: goto -20 -> 131
-    //   154: astore_0
-    //   155: aconst_null
-    //   156: astore_1
-    //   157: aload_3
-    //   158: astore_2
-    //   159: aload_1
-    //   160: ifnull +7 -> 167
-    //   163: aload_1
-    //   164: invokevirtual 230	java/io/BufferedWriter:close	()V
-    //   167: aload_2
-    //   168: ifnull +7 -> 175
-    //   171: aload_2
-    //   172: invokevirtual 231	java/io/FileWriter:close	()V
-    //   175: aload_0
-    //   176: athrow
-    //   177: astore_1
-    //   178: aload_1
-    //   179: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   182: goto -15 -> 167
-    //   185: astore_1
-    //   186: aload_1
-    //   187: invokevirtual 234	java/lang/Exception:printStackTrace	()V
-    //   190: goto -15 -> 175
-    //   193: astore_3
-    //   194: aconst_null
-    //   195: astore_1
+    //   0: invokestatic 204	cooperation/qzone/ServerListProvider:isServerFileExits	()Z
+    //   3: ifeq +4 -> 7
+    //   6: return
+    //   7: new 168	java/io/File
+    //   10: dup
+    //   11: getstatic 159	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
+    //   14: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
+    //   17: astore_0
+    //   18: aload_0
+    //   19: invokevirtual 178	java/io/File:exists	()Z
+    //   22: ifne +8 -> 30
+    //   25: aload_0
+    //   26: invokevirtual 207	java/io/File:mkdirs	()Z
+    //   29: pop
+    //   30: new 168	java/io/File
+    //   33: dup
+    //   34: getstatic 171	cooperation/qzone/cache/QZoneFilePath:TESTSERVER_PATH	Ljava/lang/String;
+    //   37: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: astore_1
+    //   41: aload_1
+    //   42: invokevirtual 178	java/io/File:exists	()Z
+    //   45: ifne +165 -> 210
+    //   48: aconst_null
+    //   49: astore_2
+    //   50: aconst_null
+    //   51: astore_3
+    //   52: aconst_null
+    //   53: astore_0
+    //   54: aload_1
+    //   55: invokevirtual 210	java/io/File:createNewFile	()Z
+    //   58: ifeq +54 -> 112
+    //   61: new 212	java/io/FileWriter
+    //   64: dup
+    //   65: aload_1
+    //   66: invokespecial 215	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   69: astore_0
+    //   70: new 217	java/io/BufferedWriter
+    //   73: dup
+    //   74: aload_0
+    //   75: invokespecial 220	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   78: astore_1
+    //   79: aload_1
+    //   80: ldc 222
+    //   82: invokevirtual 225	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   85: aload_1
+    //   86: invokevirtual 228	java/io/BufferedWriter:close	()V
+    //   89: goto +25 -> 114
+    //   92: astore_3
+    //   93: aload_1
+    //   94: astore_2
+    //   95: aload_3
+    //   96: astore_1
+    //   97: goto +45 -> 142
+    //   100: goto +80 -> 180
+    //   103: astore_1
+    //   104: goto +38 -> 142
+    //   107: aload_3
+    //   108: astore_1
+    //   109: goto +71 -> 180
+    //   112: aconst_null
+    //   113: astore_1
+    //   114: aload_1
+    //   115: ifnull +15 -> 130
+    //   118: aload_1
+    //   119: invokevirtual 228	java/io/BufferedWriter:close	()V
+    //   122: goto +8 -> 130
+    //   125: astore_1
+    //   126: aload_1
+    //   127: invokevirtual 231	java/lang/Exception:printStackTrace	()V
+    //   130: aload_0
+    //   131: ifnull +79 -> 210
+    //   134: aload_0
+    //   135: invokevirtual 232	java/io/FileWriter:close	()V
+    //   138: return
+    //   139: astore_1
+    //   140: aconst_null
+    //   141: astore_0
+    //   142: aload_2
+    //   143: ifnull +15 -> 158
+    //   146: aload_2
+    //   147: invokevirtual 228	java/io/BufferedWriter:close	()V
+    //   150: goto +8 -> 158
+    //   153: astore_2
+    //   154: aload_2
+    //   155: invokevirtual 231	java/lang/Exception:printStackTrace	()V
+    //   158: aload_0
+    //   159: ifnull +15 -> 174
+    //   162: aload_0
+    //   163: invokevirtual 232	java/io/FileWriter:close	()V
+    //   166: goto +8 -> 174
+    //   169: astore_0
+    //   170: aload_0
+    //   171: invokevirtual 231	java/lang/Exception:printStackTrace	()V
+    //   174: aload_1
+    //   175: athrow
+    //   176: aconst_null
+    //   177: astore_0
+    //   178: aload_3
+    //   179: astore_1
+    //   180: aload_1
+    //   181: ifnull +15 -> 196
+    //   184: aload_1
+    //   185: invokevirtual 228	java/io/BufferedWriter:close	()V
+    //   188: goto +8 -> 196
+    //   191: astore_1
+    //   192: aload_1
+    //   193: invokevirtual 231	java/lang/Exception:printStackTrace	()V
     //   196: aload_0
-    //   197: astore_2
-    //   198: aload_3
-    //   199: astore_0
-    //   200: goto -41 -> 159
-    //   203: astore_3
-    //   204: aload_0
-    //   205: astore_2
-    //   206: aload_3
-    //   207: astore_0
-    //   208: goto -49 -> 159
-    //   211: astore_1
-    //   212: aload_2
-    //   213: astore_1
-    //   214: goto -91 -> 123
-    //   217: astore_2
-    //   218: goto -95 -> 123
-    //   221: aconst_null
-    //   222: astore_0
-    //   223: aconst_null
-    //   224: astore_1
-    //   225: goto -138 -> 87
+    //   197: ifnull +13 -> 210
+    //   200: aload_0
+    //   201: invokevirtual 232	java/io/FileWriter:close	()V
+    //   204: return
+    //   205: astore_0
+    //   206: aload_0
+    //   207: invokevirtual 231	java/lang/Exception:printStackTrace	()V
+    //   210: return
+    //   211: astore_0
+    //   212: goto -36 -> 176
+    //   215: astore_1
+    //   216: goto -109 -> 107
+    //   219: astore_2
+    //   220: goto -120 -> 100
     // Local variable table:
     //   start	length	slot	name	signature
-    //   21	79	0	localObject1	Object
-    //   104	2	0	localException1	Exception
-    //   118	1	0	localException2	Exception
-    //   120	16	0	localObject2	Object
-    //   140	2	0	localException3	Exception
-    //   154	43	0	localObject3	Object
-    //   199	24	0	localObject4	Object
-    //   76	16	1	localBufferedWriter	java.io.BufferedWriter
-    //   110	2	1	localException4	Exception
-    //   122	6	1	localObject5	Object
-    //   146	2	1	localException5	Exception
-    //   156	8	1	localObject6	Object
-    //   177	2	1	localException6	Exception
-    //   185	2	1	localException7	Exception
-    //   195	1	1	localObject7	Object
-    //   211	1	1	localException8	Exception
-    //   213	12	1	localObject8	Object
-    //   3	210	2	localObject9	Object
-    //   217	1	2	localException9	Exception
-    //   1	157	3	localObject10	Object
-    //   193	6	3	localObject11	Object
-    //   203	4	3	localObject12	Object
+    //   17	146	0	localObject1	Object
+    //   169	2	0	localException1	Exception
+    //   177	24	0	localObject2	Object
+    //   205	2	0	localException2	Exception
+    //   211	1	0	localException3	Exception
+    //   40	57	1	localObject3	Object
+    //   103	1	1	localObject4	Object
+    //   108	11	1	localObject5	Object
+    //   125	2	1	localException4	Exception
+    //   139	36	1	localObject6	Object
+    //   179	6	1	localObject7	Object
+    //   191	2	1	localException5	Exception
+    //   215	1	1	localException6	Exception
+    //   49	98	2	localObject8	Object
+    //   153	2	2	localException7	Exception
+    //   219	1	2	localException8	Exception
+    //   51	1	3	localObject9	Object
+    //   92	87	3	localObject10	Object
     // Exception table:
     //   from	to	target	type
-    //   99	103	104	java/lang/Exception
-    //   91	95	110	java/lang/Exception
-    //   52	68	118	java/lang/Exception
-    //   135	139	140	java/lang/Exception
-    //   127	131	146	java/lang/Exception
-    //   52	68	154	finally
-    //   163	167	177	java/lang/Exception
-    //   171	175	185	java/lang/Exception
-    //   68	77	193	finally
-    //   77	87	203	finally
-    //   68	77	211	java/lang/Exception
-    //   77	87	217	java/lang/Exception
+    //   79	89	92	finally
+    //   70	79	103	finally
+    //   118	122	125	java/lang/Exception
+    //   54	70	139	finally
+    //   146	150	153	java/lang/Exception
+    //   162	166	169	java/lang/Exception
+    //   184	188	191	java/lang/Exception
+    //   134	138	205	java/lang/Exception
+    //   200	204	205	java/lang/Exception
+    //   54	70	211	java/lang/Exception
+    //   70	79	215	java/lang/Exception
+    //   79	89	219	java/lang/Exception
   }
   
   public static String getCmdPrefix()
@@ -309,7 +296,7 @@ public class ServerListProvider
     boolean bool2 = false;
     try
     {
-      File localFile = new File(bjih.m);
+      File localFile = new File(QZoneFilePath.TESTSERVER_PATH);
       boolean bool1 = bool2;
       if (localFile.exists())
       {
@@ -336,7 +323,11 @@ public class ServerListProvider
         while (localIterator.hasNext())
         {
           ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-          if (localRunningAppProcessInfo.processName.equals(localBaseApplication.getPackageName() + ":MSF"))
+          String str = localRunningAppProcessInfo.processName;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localBaseApplication.getPackageName());
+          localStringBuilder.append(":MSF");
+          if (str.equals(localStringBuilder.toString()))
           {
             Process.killProcess(localRunningAppProcessInfo.pid);
             return true;
@@ -344,7 +335,11 @@ public class ServerListProvider
         }
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label102:
+      break label102;
+    }
     return false;
   }
   
@@ -353,14 +348,13 @@ public class ServerListProvider
     if (!isServerFileExits())
     {
       generateServerFile();
-      if (!killMSF()) {}
+      if (killMSF()) {
+        return true;
+      }
+      delServerFile();
+      return false;
     }
-    else
-    {
-      return true;
-    }
-    delServerFile();
-    return false;
+    return true;
   }
   
   public static boolean switchToZhengshi()
@@ -368,19 +362,18 @@ public class ServerListProvider
     if (isServerFileExits())
     {
       delServerFile();
-      if (!killMSF()) {}
+      if (killMSF()) {
+        return true;
+      }
+      generateServerFile();
+      return false;
     }
-    else
-    {
-      return true;
-    }
-    generateServerFile();
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.ServerListProvider
  * JD-Core Version:    0.7.0.1
  */

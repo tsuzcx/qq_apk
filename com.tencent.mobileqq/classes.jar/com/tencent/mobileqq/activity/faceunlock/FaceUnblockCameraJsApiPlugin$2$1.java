@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import ahxx;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -15,8 +14,8 @@ class FaceUnblockCameraJsApiPlugin$2$1
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("retCode", 0);
-      localJSONObject.put("base64", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFaceunlockFaceUnblockCameraJsApiPlugin$2.this$0.callJs(ahxx.a(this.jdField_a_of_type_ComTencentMobileqqActivityFaceunlockFaceUnblockCameraJsApiPlugin$2.this$0), new String[] { localJSONObject.toString() });
+      localJSONObject.put("base64", this.a);
+      this.b.this$0.callJs(FaceUnblockCameraJsApiPlugin.a(this.b.this$0), new String[] { localJSONObject.toString() });
       return;
     }
     catch (Exception localException)

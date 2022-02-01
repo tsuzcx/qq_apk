@@ -12,7 +12,7 @@ public final class BitmapDescriptor
   
   public BitmapDescriptor(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(101150);
+    AppMethodBeat.i(87553);
     this.w = 0;
     this.h = 0;
     if (paramBitmap != null)
@@ -21,7 +21,7 @@ public final class BitmapDescriptor
       this.h = paramBitmap.getHeight();
       this.mBitmap = paramBitmap;
     }
-    AppMethodBeat.o(101150);
+    AppMethodBeat.o(87553);
   }
   
   private BitmapDescriptor(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -35,9 +35,9 @@ public final class BitmapDescriptor
   
   public final BitmapDescriptor clone()
   {
-    AppMethodBeat.i(101151);
+    AppMethodBeat.i(87554);
     BitmapDescriptor localBitmapDescriptor = new BitmapDescriptor(Bitmap.createBitmap(this.mBitmap), this.w, this.h);
-    AppMethodBeat.o(101151);
+    AppMethodBeat.o(87554);
     return localBitmapDescriptor;
   }
   
@@ -58,7 +58,7 @@ public final class BitmapDescriptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.BitmapDescriptor
  * JD-Core Version:    0.7.0.1
  */

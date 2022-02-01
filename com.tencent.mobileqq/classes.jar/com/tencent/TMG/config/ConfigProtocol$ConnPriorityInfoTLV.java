@@ -46,19 +46,20 @@ public class ConfigProtocol$ConnPriorityInfoTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((this.m_length != getLength()) || (paramByteBuffer.length() < this.m_length)) {
-      return false;
+    if ((this.m_length == getLength()) && (paramByteBuffer.length() >= this.m_length))
+    {
+      this.m_LocalDirectConnPri = paramByteBuffer.ReadUInt8();
+      this.m_RelayConnPri = paramByteBuffer.ReadUInt8();
+      this.m_StunDirectConnPri = paramByteBuffer.ReadUInt8();
+      this.m_param1 = paramByteBuffer.ReadUInt8();
+      return true;
     }
-    this.m_LocalDirectConnPri = paramByteBuffer.ReadUInt8();
-    this.m_RelayConnPri = paramByteBuffer.ReadUInt8();
-    this.m_StunDirectConnPri = paramByteBuffer.ReadUInt8();
-    this.m_param1 = paramByteBuffer.ReadUInt8();
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigProtocol.ConnPriorityInfoTLV
  * JD-Core Version:    0.7.0.1
  */

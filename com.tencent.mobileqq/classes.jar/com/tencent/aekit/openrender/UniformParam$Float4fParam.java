@@ -26,17 +26,30 @@ public class UniformParam$Float4fParam
       return;
     }
     GLES20.glUniform4f(this.handle, this.x, this.y, this.z, this.w);
-    GlUtil.checkGlError("Float4fParam setParams: " + toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Float4fParam setParams: ");
+    localStringBuilder.append(toString());
+    GlUtil.checkGlError(localStringBuilder.toString());
   }
   
   public String toString()
   {
-    return this.name + " = " + this.x + ", " + this.y + ", " + this.z + ", " + this.w;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.w);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.UniformParam.Float4fParam
  * JD-Core Version:    0.7.0.1
  */

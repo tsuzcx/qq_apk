@@ -6,19 +6,19 @@ import java.util.Arrays;
 
 public abstract class g
 {
-  protected final DataHolder Ia;
-  protected int Iu;
-  private int Iv;
+  protected final DataHolder JP;
+  protected int Kj;
+  private int Kk;
   
   public g(DataHolder paramDataHolder, int paramInt)
   {
-    this.Ia = ((DataHolder)d.u(paramDataHolder));
-    if ((paramInt >= 0) && (paramInt < this.Ia.Ik)) {}
+    this.JP = ((DataHolder)d.D(paramDataHolder));
+    if ((paramInt >= 0) && (paramInt < this.JP.JZ)) {}
     for (boolean bool = true;; bool = false)
     {
-      d.v(bool);
-      this.Iu = paramInt;
-      this.Iv = this.Ia.be(this.Iu);
+      d.y(bool);
+      this.Kj = paramInt;
+      this.Kk = this.JP.by(this.Kj);
       return;
     }
   }
@@ -31,13 +31,13 @@ public abstract class g
     {
       paramObject = (g)paramObject;
       bool1 = bool2;
-      if (b.b(Integer.valueOf(paramObject.Iu), Integer.valueOf(this.Iu)))
+      if (b.c(Integer.valueOf(paramObject.Kj), Integer.valueOf(this.Kj)))
       {
         bool1 = bool2;
-        if (b.b(Integer.valueOf(paramObject.Iv), Integer.valueOf(this.Iv)))
+        if (b.c(Integer.valueOf(paramObject.Kk), Integer.valueOf(this.Kk)))
         {
           bool1 = bool2;
-          if (paramObject.Ia == this.Ia) {
+          if (paramObject.JP == this.JP) {
             bool1 = true;
           }
         }
@@ -48,22 +48,22 @@ public abstract class g
   
   protected final byte[] getByteArray(String paramString)
   {
-    return this.Ia.d(paramString, this.Iu, this.Iv);
+    return this.JP.d(paramString, this.Kj, this.Kk);
   }
   
   protected final int getInteger(String paramString)
   {
-    return this.Ia.b(paramString, this.Iu, this.Iv);
+    return this.JP.b(paramString, this.Kj, this.Kk);
   }
   
   protected final String getString(String paramString)
   {
-    return this.Ia.c(paramString, this.Iu, this.Iv);
+    return this.JP.c(paramString, this.Kj, this.Kk);
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.Iu), Integer.valueOf(this.Iv), this.Ia });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.Kj), Integer.valueOf(this.Kk), this.JP });
   }
 }
 

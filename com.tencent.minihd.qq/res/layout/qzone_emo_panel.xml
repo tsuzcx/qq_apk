@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.EmoEditPanel android:id="@id/qz_emo_ed_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qzone_emo_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/qzone_emo_container" layout="@layout/qzone_inpute_window_compoment" />
+</com.qzone.widget.EmoEditPanel>

@@ -1,18 +1,19 @@
 package com.tencent.mm.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.d;
+import com.tencent.mm.autogen.a.xg;
+import com.tencent.mm.sdk.event.IListener;
 
-final class FindMoreFriendsUI$10
-  implements Runnable
+class FindMoreFriendsUI$10
+  extends IListener<xg>
 {
-  FindMoreFriendsUI$10(FindMoreFriendsUI paramFindMoreFriendsUI) {}
-  
-  public final void run()
+  FindMoreFriendsUI$10(FindMoreFriendsUI paramFindMoreFriendsUI, q paramq)
   {
-    AppMethodBeat.i(29220);
-    d.aNX();
-    AppMethodBeat.o(29220);
+    super(paramq);
+    AppMethodBeat.i(249066);
+    this.__eventId = xg.class.getName().hashCode();
+    AppMethodBeat.o(249066);
   }
 }
 

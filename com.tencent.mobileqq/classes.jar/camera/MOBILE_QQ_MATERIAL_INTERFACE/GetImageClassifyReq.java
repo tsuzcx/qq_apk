@@ -8,7 +8,7 @@ public final class GetImageClassifyReq
   extends JceStruct
 {
   static SmartFilterReqItem cache_SinglePic = new SmartFilterReqItem();
-  public SmartFilterReqItem SinglePic;
+  public SmartFilterReqItem SinglePic = null;
   
   public GetImageClassifyReq() {}
   
@@ -24,14 +24,15 @@ public final class GetImageClassifyReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.SinglePic != null) {
-      paramJceOutputStream.write(this.SinglePic, 0);
+    SmartFilterReqItem localSmartFilterReqItem = this.SinglePic;
+    if (localSmartFilterReqItem != null) {
+      paramJceOutputStream.write(localSmartFilterReqItem, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImageClassifyReq
  * JD-Core Version:    0.7.0.1
  */

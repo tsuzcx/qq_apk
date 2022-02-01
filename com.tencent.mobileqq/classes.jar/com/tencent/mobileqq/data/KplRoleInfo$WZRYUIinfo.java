@@ -14,19 +14,21 @@ public class KplRoleInfo$WZRYUIinfo
   
   public static String buildNickName(String paramString1, String paramString2)
   {
-    String str;
     if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
-      str = "";
+      return "";
     }
-    do
-    {
-      return str;
-      str = paramString1;
-    } while (TextUtils.isEmpty(paramString2));
+    if (TextUtils.isEmpty(paramString2)) {
+      return paramString1;
+    }
     if (TextUtils.isEmpty(paramString1)) {
       return paramString2;
     }
-    return paramString2 + "(" + paramString1 + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("(");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static WZRYUIinfo createInfo(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)

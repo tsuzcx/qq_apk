@@ -21,10 +21,10 @@ public final class de
   extends ac<da>
   implements cr
 {
-  private Integer JT;
-  private final x Kf;
-  private final boolean QJ;
-  private final Bundle Qy;
+  private Integer LI;
+  private final x LU;
+  private final Bundle Sn;
+  private final boolean Sy;
   
   public de(Context paramContext, Looper paramLooper, x paramx, r paramr, s params)
   {
@@ -34,17 +34,17 @@ public final class de
   public de(Context paramContext, Looper paramLooper, boolean paramBoolean, x paramx, Bundle paramBundle, r paramr, s params)
   {
     super(paramContext, paramLooper, 44, paramx, paramr, params);
-    this.QJ = paramBoolean;
-    this.Kf = paramx;
-    this.Qy = paramBundle;
-    this.JT = paramx.ht();
+    this.Sy = paramBoolean;
+    this.LU = paramx;
+    this.Sn = paramBundle;
+    this.LI = paramx.hD();
   }
   
   public final void a(ak paramak, boolean paramBoolean)
   {
     try
     {
-      ((da)hh()).a(paramak, this.JT.intValue(), paramBoolean);
+      ((da)hr()).a(paramak, this.LI.intValue(), paramBoolean);
       return;
     }
     catch (RemoteException paramak)
@@ -55,16 +55,16 @@ public final class de
   
   public final void a(cx paramcx)
   {
-    d.e(paramcx, "Expecting a valid ISignInCallbacks");
+    d.g(paramcx, "Expecting a valid ISignInCallbacks");
     try
     {
-      Account localAccount = this.Kf.hm();
+      Account localAccount = this.LU.hw();
       Object localObject = null;
       if ("<<default account>>".equals(localAccount.name)) {
-        localObject = c.c(getContext()).gj();
+        localObject = c.c(getContext()).gt();
       }
-      localObject = new zzad(localAccount, this.JT.intValue(), (GoogleSignInAccount)localObject);
-      ((da)hh()).a(new zzbau((zzad)localObject), paramcx);
+      localObject = new zzad(localAccount, this.LI.intValue(), (GoogleSignInAccount)localObject);
+      ((da)hr()).a(new zzbau((zzad)localObject), paramcx);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -87,35 +87,35 @@ public final class de
     a(new u(this));
   }
   
-  public final boolean gs()
+  public final boolean gC()
   {
-    return this.QJ;
+    return this.Sy;
   }
   
-  protected final String gv()
+  protected final String gF()
   {
     return "com.google.android.gms.signin.service.START";
   }
   
-  protected final String gw()
+  protected final String gG()
   {
     return "com.google.android.gms.signin.internal.ISignInService";
   }
   
-  protected final Bundle hg()
+  protected final Bundle hq()
   {
-    String str = this.Kf.hq();
+    String str = this.LU.hA();
     if (!getContext().getPackageName().equals(str)) {
-      this.Qy.putString("com.google.android.gms.signin.internal.realClientPackageName", this.Kf.hq());
+      this.Sn.putString("com.google.android.gms.signin.internal.realClientPackageName", this.LU.hA());
     }
-    return this.Qy;
+    return this.Sn;
   }
   
-  public final void jE()
+  public final void jN()
   {
     try
     {
-      ((da)hh()).bo(this.JT.intValue());
+      ((da)hr()).bI(this.LI.intValue());
       return;
     }
     catch (RemoteException localRemoteException)

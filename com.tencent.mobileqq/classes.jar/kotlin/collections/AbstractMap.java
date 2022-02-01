@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import kotlin.Metadata;
 import kotlin.SinceKotlin;
-import kotlin.TypeCastException;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.markers.KMappedMarker;
@@ -26,17 +25,18 @@ public abstract class AbstractMap<K, V>
   private final Map.Entry<K, V> implFindEntry(K paramK)
   {
     Iterator localIterator = ((Iterable)entrySet()).iterator();
-    Object localObject;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
+      Object localObject = localIterator.next();
+      if (Intrinsics.areEqual(((Map.Entry)localObject).getKey(), paramK))
+      {
+        paramK = localObject;
+        break label52;
       }
-      localObject = localIterator.next();
-    } while (!Intrinsics.areEqual(((Map.Entry)localObject).getKey(), paramK));
-    for (paramK = localObject;; paramK = null) {
-      return (Map.Entry)paramK;
     }
+    paramK = null;
+    label52:
+    return (Map.Entry)paramK;
   }
   
   private final String toString(Object paramObject)
@@ -49,7 +49,11 @@ public abstract class AbstractMap<K, V>
   
   private final String toString(Map.Entry<? extends K, ? extends V> paramEntry)
   {
-    return toString(paramEntry.getKey()) + "=" + toString(paramEntry.getValue());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(toString(paramEntry.getKey()));
+    localStringBuilder.append("=");
+    localStringBuilder.append(toString(paramEntry.getValue()));
+    return localStringBuilder.toString();
   }
   
   public void clear()
@@ -64,23 +68,12 @@ public abstract class AbstractMap<K, V>
     }
     Object localObject1 = paramEntry.getKey();
     paramEntry = paramEntry.getValue();
-    if (this == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, V>");
-    }
-    Object localObject2 = ((Map)this).get(localObject1);
+    Map localMap = (Map)this;
+    Object localObject2 = localMap.get(localObject1);
     if ((Intrinsics.areEqual(paramEntry, localObject2) ^ true)) {
       return false;
     }
-    if (localObject2 == null)
-    {
-      if (this == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
-      }
-      if (!((Map)this).containsKey(localObject1)) {
-        return false;
-      }
-    }
-    return true;
+    return (localObject2 != null) || (localMap.containsKey(localObject1));
   }
   
   public boolean containsKey(Object paramObject)
@@ -91,16 +84,21 @@ public abstract class AbstractMap<K, V>
   public boolean containsValue(Object paramObject)
   {
     Object localObject = (Iterable)entrySet();
-    if (((localObject instanceof Collection)) && (((Collection)localObject).isEmpty())) {
+    boolean bool1 = localObject instanceof Collection;
+    boolean bool2 = false;
+    if ((bool1) && (((Collection)localObject).isEmpty())) {
       return false;
     }
     localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (Intrinsics.areEqual(((Map.Entry)((Iterator)localObject).next()).getValue(), paramObject)) {
-        return true;
+    do
+    {
+      bool1 = bool2;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
-    }
-    return false;
+    } while (!Intrinsics.areEqual(((Map.Entry)((Iterator)localObject).next()).getValue(), paramObject));
+    bool1 = true;
+    return bool1;
   }
   
   public final Set<Map.Entry<K, V>> entrySet()
@@ -110,40 +108,33 @@ public abstract class AbstractMap<K, V>
   
   public boolean equals(@Nullable Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramObject == (AbstractMap)this) {
-      bool1 = true;
+    AbstractMap localAbstractMap = (AbstractMap)this;
+    boolean bool2 = true;
+    if (paramObject == localAbstractMap) {
+      return true;
     }
+    if (!(paramObject instanceof Map)) {
+      return false;
+    }
+    int i = size();
+    paramObject = (Map)paramObject;
+    if (i != paramObject.size()) {
+      return false;
+    }
+    paramObject = (Iterable)paramObject.entrySet();
+    if (((paramObject instanceof Collection)) && (((Collection)paramObject).isEmpty())) {
+      return true;
+    }
+    paramObject = paramObject.iterator();
     do
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof Map));
       bool1 = bool2;
-    } while (size() != ((Map)paramObject).size());
-    paramObject = (Iterable)((Map)paramObject).entrySet();
-    if (((paramObject instanceof Collection)) && (((Collection)paramObject).isEmpty())) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      return bool1;
-      paramObject = paramObject.iterator();
-      for (;;)
-      {
-        if (paramObject.hasNext()) {
-          if (!containsEntry$kotlin_stdlib((Map.Entry)paramObject.next()))
-          {
-            bool1 = false;
-            break;
-          }
-        }
+      if (!paramObject.hasNext()) {
+        break;
       }
-      bool1 = true;
-    }
+    } while (containsEntry$kotlin_stdlib((Map.Entry)paramObject.next()));
+    boolean bool1 = false;
+    return bool1;
   }
   
   @Nullable
@@ -237,7 +228,7 @@ public abstract class AbstractMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.AbstractMap
  * JD-Core Version:    0.7.0.1
  */

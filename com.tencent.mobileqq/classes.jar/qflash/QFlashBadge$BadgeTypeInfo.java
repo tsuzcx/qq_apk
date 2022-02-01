@@ -1,0 +1,26 @@
+package qflash;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+
+public final class QFlashBadge$BadgeTypeInfo
+  extends MessageMicro<BadgeTypeInfo>
+{
+  static final MessageMicro.FieldMap __fieldMap__;
+  public final PBInt32Field badgeMainTypeValue = PBField.initInt32(0);
+  public final PBInt32Field badgeSubTypeValue = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "badgeMainTypeValue", "badgeSubTypeValue" }, new Object[] { localInteger, localInteger }, BadgeTypeInfo.class);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     qflash.QFlashBadge.BadgeTypeInfo
+ * JD-Core Version:    0.7.0.1
+ */

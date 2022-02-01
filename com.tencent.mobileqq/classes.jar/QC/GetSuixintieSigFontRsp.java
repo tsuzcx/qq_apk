@@ -4,16 +4,17 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetSuixintieSigFontRsp
   extends JceStruct
 {
   static CommonRsp cache_stRet = new CommonRsp();
   static ArrayList<UniBusiSimpleItemDetail> cache_vItems = new ArrayList();
-  public int isEnd;
-  public CommonRsp stRet;
+  public int isEnd = 0;
+  public CommonRsp stRet = null;
   public String strAttachInfo = "";
-  public ArrayList<UniBusiSimpleItemDetail> vItems;
+  public ArrayList<UniBusiSimpleItemDetail> vItems = null;
   
   static
   {
@@ -41,21 +42,24 @@ public final class GetSuixintieSigFontRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stRet != null) {
-      paramJceOutputStream.write(this.stRet, 0);
+    Object localObject = this.stRet;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vItems != null) {
-      paramJceOutputStream.write(this.vItems, 1);
+    localObject = this.vItems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 2);
+    localObject = this.strAttachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.isEnd, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.GetSuixintieSigFontRsp
  * JD-Core Version:    0.7.0.1
  */

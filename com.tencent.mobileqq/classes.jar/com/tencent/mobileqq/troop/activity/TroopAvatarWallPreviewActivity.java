@@ -1,13 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
-import adet;
-import aepi;
-import ainn;
-import alof;
-import alud;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -24,14 +20,15 @@ import android.os.Handler;
 import android.provider.Settings.System;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
 import android.view.ViewStub;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -43,376 +40,199 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arso;
-import awqa;
-import axjq;
-import azqs;
-import baqn;
-import bauz;
-import bbht;
-import bbhu;
-import bbhv;
-import bbhw;
-import bbhx;
-import bbhy;
-import bbhz;
-import bbia;
-import bbib;
-import bbif;
-import bbig;
-import bbii;
-import bbij;
-import bbik;
-import bbil;
-import bbim;
-import bbin;
-import bbio;
-import bbip;
-import bbiq;
-import bbir;
-import bckq;
-import bcrz;
-import bdgm;
-import bdhj;
-import bdjz;
-import bety;
-import bhuf;
-import bhus;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
+import com.tencent.av.smallscreen.SmallScreenUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ImagePreviewAnimationUtil;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.kandian.base.utils.TimeUtil;
+import com.tencent.mobileqq.kandian.biz.account.api.IFastModule;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngine;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngineFactory;
+import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelObserver;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.qrscan.api.IScanUtilApi;
+import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.NearbyImgDownloader;
+import com.tencent.mobileqq.troop.api.ITroopAvatarUtilApi;
+import com.tencent.mobileqq.troop.avatar.AvatarInfo;
+import com.tencent.mobileqq.troop.viewmodel.MainPictureShowActionNotifier;
+import com.tencent.mobileqq.troop.viewmodel.PictureShowViewModel;
+import com.tencent.mobileqq.troop.viewmodel.PictureShowViewModelFactory;
+import com.tencent.mobileqq.troop.viewmodel.SocialBottomBarData;
+import com.tencent.mobileqq.troop.viewmodel.ToolPictureShowActionNotifier;
+import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.PageParams;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.Gallery;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import mbt;
-import nrt;
+import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
-import ors;
-import owy;
-import pfo;
-import sds;
-import szp;
-import yak;
-import zjc;
 
+@RoutePage(desc="大图展示 TroopAvatarWallPreviewActivity", path="/base/troop/activity/TroopAvatarWallPreviewActivity")
 public class TroopAvatarWallPreviewActivity
   extends BaseActivity
 {
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  static boolean h;
-  public int a;
-  protected long a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bbif(this);
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected View.OnClickListener a;
-  protected View a;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  protected FrameLayout a;
-  protected ImageButton a;
-  public ImageView a;
-  protected RelativeLayout a;
-  public TextView a;
-  public awqa a;
-  private bbir jdField_a_of_type_Bbir;
-  public bcrz a;
-  bety jdField_a_of_type_Bety;
-  private PublicAccountShowPictureReport jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport = new PublicAccountShowPictureReport();
-  public ImageAnimationView a;
-  CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager;
-  public Gallery a;
-  Runnable jdField_a_of_type_JavaLangRunnable = null;
-  public String a;
-  protected ArrayList<String> a;
-  public List<String> a;
-  public boolean a;
-  protected boolean[] a;
-  public int b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bbio(this);
-  public View b;
-  private TranslateAnimation jdField_b_of_type_AndroidViewAnimationTranslateAnimation;
-  protected ImageView b;
-  protected RelativeLayout b;
-  public TextView b;
-  protected String b;
-  public ArrayList<String> b;
-  protected List<String> b;
-  public boolean b;
-  protected View c;
-  protected ImageView c;
-  protected TextView c;
-  protected String c;
-  public ArrayList<String> c;
-  public boolean c;
-  protected View d;
-  protected TextView d;
-  public String d;
-  protected ArrayList<Rect> d;
-  public boolean d;
-  protected ArrayList<String> e;
-  public boolean e;
-  protected ArrayList<String> f;
-  public boolean f;
-  protected boolean g;
-  protected boolean i;
-  public boolean j;
-  protected boolean k = true;
-  public boolean l;
-  public boolean m = false;
-  private boolean n = true;
+  public static final String CURTYPE_KEY = "curType";
+  public static final String FACE_ID_KEY = "faceid";
+  public static final String FRIEND_UIN_KEY = "friendUin";
+  public static final String ID_KEY = "_id";
+  public static final String INDEX_KEY = "index";
+  public static final String KANDIAN_IMAGE_SID = "4";
+  public static final String KEY_ACTICLE_INFO_ROWKEY = "acticle_info_rowkey";
+  public static final String KEY_BTN_TEXT = "btntext";
+  public static final String KEY_BUNDLE_DATA_EXTRA = "bundle_data_extra";
+  public static final String KEY_CALLBACK_SEQ = "callback_seq";
+  public static final String KEY_DEFAULT_AVATOR_INDEX = "default_avator_index";
+  public static final String KEY_DT_PG_ID = "dt_page_id";
+  public static final String KEY_DT_PG_PARAMS = "dt_page_params";
+  public static final String KEY_EXTEND_FRIEND_DELETE_PATH_LIST = "extend_friend_delete_path_list";
+  public static final String KEY_FROM_EXTEND_FRIEND_EDIT = "from_extend_Friend_edit";
+  public static final String KEY_FROM_PERSONALITY_LABEL = "from_personality_label";
+  public static final String KEY_FROM_TYPE = "from_type";
+  public static final String KEY_IS_FROM_TOOL_PROCESS = "is_from_tool_process";
+  public static final String KEY_IS_NOT_SHOW_INDEX = "is_not_show_index";
+  public static final String KEY_NEED_TO_AIO = "is_need_to_aio";
+  public static final String KEY_ORIGIN_LIST = "origin_list";
+  public static final String KEY_ORIGIN_SIZE_LIST = "origin_size_list";
+  public static final String KEY_SAVE_INTENT_TO_FILE = "save_intent_to_file";
+  public static final String KEY_SEQ_NUM = "seqNum";
+  public static final String KEY_SHOW_SOCIAL_BOTTOM_BAR = "show_social_bottom_bar";
+  public static final String KEY_SHOW_SOCIAL_BOTTOM_BAR_DATA = "show_social_bottom_bar_data";
+  public static final String KEY_SHOW_TITLE_BAR = "show_title_bar";
+  public static final String KEY_SRC_ID = "src_id";
+  public static final String KEY_STR_DATA_EXTRA = "str_data_extra";
+  public static final String KEY_THUMBNAL_BOUND = "KEY_THUMBNAL_BOUND";
+  public static final String NEARBY_WEB = "5";
+  public static final String PUBLIC_ACCOUNT_IMAGE_SID = "2000";
+  public static final String READINJOY_PIC_GALLERY_DETAIL = "6";
+  public static final String REQUEST_TYPE_KEY = "requestTypeKey";
+  public static final String TAG = "TroopAvatarWallPreviewActivity";
+  public static final String TRIBE_IMAGE_SID = "2";
+  public static final String URL_KEY = "url";
+  static boolean mIsOpen = false;
+  static Object sLock = new Object();
+  boolean animated = false;
+  private ArrayList<String> extendFriendDeletePathList = new ArrayList();
+  protected ImageView imageView;
+  protected boolean isFromPlugin = false;
+  protected boolean isGridImageReport = false;
+  protected boolean isNeedToAio = true;
+  protected boolean isShowContentUrl = false;
+  protected TroopAvatarBigPhotoAdapter mAdapter;
+  protected ImageAnimationView mAnimationView;
+  protected View mBgView;
+  protected View mBottomBar;
+  protected View mBottomBarSwitch;
+  protected RelativeLayout mBottomBlock;
+  private TranslateAnimation mBottomLayoutTranslateDownAnimation;
+  private TranslateAnimation mBottomLayoutTranslateUpAnimation;
+  protected View.OnClickListener mClickLis = new TroopAvatarWallPreviewActivity.32(this);
+  protected ImageView mCommentBtn;
+  protected View mContentUrlLayout;
+  CookieManager mCookieMgr;
+  protected List<String> mDelList;
+  protected ImageButton mDelbtn;
+  protected boolean mDeleteAbility = false;
+  protected ArrayList<String> mDescs;
+  protected TextView mDetailBtn;
+  protected long mEnterAnimationDuring = 300L;
+  private Bundle mExtras;
+  protected String mExtrasStr;
+  protected Gallery mGallery;
+  protected int mIndex;
+  private boolean mIsBottomBarUp = true;
+  protected boolean mIsEdit = false;
+  protected boolean mIsFromPhotoWall;
+  protected boolean mIsNotShowIndex;
+  protected boolean mIsShowAction;
+  protected boolean mIsShowMenu;
+  protected boolean mIsTroopMember = false;
+  protected ImageView mLikeBtn;
+  protected boolean[] mLikes;
+  protected ImageView mMenuBtn;
+  protected boolean mNeedBottomBar = false;
+  protected ArrayList<String> mOriginList;
+  protected TextView mOriginPicBtn;
+  protected ArrayList<String> mOriginSizeList;
+  PersonalityLabelObserver mPersonalityLabelObserver = new TroopAvatarWallPreviewActivity.35(this);
+  protected TextView mPhotoDesc;
+  protected ArrayList<String> mPhotoIds;
+  protected ArrayList<String> mPhotoTimes;
+  protected ArrayList<Integer> mPreviewPhotoLocation;
+  QQProgressDialog mProgressDialog;
+  private PublicAccountShowPictureReport mPublicAccountShowPictureReport = new PublicAccountShowPictureReport();
+  private BroadcastReceiver mReceiver = new TroopAvatarWallPreviewActivity.31(this);
+  protected RelativeLayout mRoot;
+  protected FrameLayout mRootParent;
+  private TroopAvatarWallPreviewActivity.RotationObserver mRotationObserver;
+  protected int mSeqListLength;
+  protected List<String> mSeqNumList;
+  protected String mSrcId;
+  protected TextView mTextView;
+  protected ArrayList<Rect> mThumbRect;
+  protected String mTroopUin;
+  private View.OnClickListener operateBarListener = new TroopAvatarWallPreviewActivity.15(this);
+  private PictureShowViewModel pictureShowViewModel;
+  Runnable setAnimateFlagRunnable = null;
+  private View socialBottomBar;
+  String tempPath;
+  private TextView titleBarTitle;
   
-  public TroopAvatarWallPreviewActivity()
+  private boolean applyExitAnimation()
   {
-    this.jdField_a_of_type_Long = 300L;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbig(this);
-    this.jdField_a_of_type_Awqa = new bbik(this);
-  }
-  
-  private Bitmap a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, Drawable paramDrawable, boolean paramBoolean)
-  {
-    Rect localRect;
-    if (this.jdField_d_of_type_JavaUtilArrayList != null)
-    {
-      localRect = (Rect)this.jdField_d_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      localObject = a(paramBoolean);
-      if ((localObject == null) || (localRect == null)) {
-        return null;
-      }
-    }
-    else
-    {
-      return null;
-    }
-    String str = b(paramBoolean);
-    if (((String)localObject).equals(ainn.jdField_a_of_type_JavaLangString)) {}
-    for (Object localObject = paramDrawable; localObject == null; localObject = a(paramBoolean, (String)localObject)) {
-      return null;
-    }
-    if ((paramDrawable == null) && ((!paramBoolean) || (localObject == null))) {
-      return null;
-    }
-    int i5;
-    int i6;
-    int i1;
-    label186:
-    int i2;
-    label197:
-    int i4;
-    label261:
-    int i3;
-    if (paramDrawable == null)
-    {
-      if ((TextUtils.isEmpty(str)) || (str.equals(ainn.jdField_a_of_type_JavaLangString))) {
-        return null;
-      }
-      paramDrawable = a(paramBoolean, str);
-      if (paramDrawable == null) {
-        return null;
-      }
-      ((URLDrawable)paramDrawable).setAutoDownload(true);
-      i5 = this.jdField_a_of_type_ComTencentWidgetGallery.getWidth();
-      i6 = this.jdField_a_of_type_ComTencentWidgetGallery.getHeight();
-      if (((Drawable)localObject).getIntrinsicWidth() != 0) {
-        break label430;
-      }
-      i1 = 1;
-      if (((Drawable)localObject).getIntrinsicHeight() != 0) {
-        break label440;
-      }
-      i2 = 1;
-      localObject = zjc.a(this.jdField_a_of_type_ComTencentWidgetGallery);
-      if (localObject != null) {
-        localRect.offset(((Rect)localObject).left, -((Rect)localObject).top);
-      }
-      paramRect3.set(localRect);
-      if ((!paramBoolean) || (((URLDrawable)paramDrawable).getStatus() != 1)) {
-        break label470;
-      }
-      if (paramDrawable.getIntrinsicWidth() != 0) {
-        break label450;
-      }
-      i4 = 1;
-      if (paramDrawable.getIntrinsicHeight() != 0) {
-        break label460;
-      }
-      i3 = 1;
-    }
-    for (;;)
-    {
-      float f1 = adet.a(i4, i3);
-      paramRect1.set(adet.a(i1, i2, i4, i3));
-      paramRect2.set(adet.b(i4, i3, i5, i6));
-      paramRect4.set(adet.c(i4, i3, i5, i6));
-      adet.a(paramRect1, f1);
-      adet.a(paramRect2, f1);
-      i1 = (int)(i4 * f1);
-      i2 = (int)(i3 * f1);
-      try
-      {
-        paramRect3 = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_4444);
-        paramRect4 = new Canvas(paramRect3);
-        localObject = new Rect(0, 0, i4, i3);
-        adet.a((Rect)localObject, f1);
-        paramDrawable.setBounds((Rect)localObject);
-        paramRect4.clipRect(adet.a(paramRect1, paramRect2));
-        paramDrawable.draw(paramRect4);
-        return paramRect3;
-      }
-      catch (Throwable paramRect1)
-      {
-        if (!QLog.isColorLevel()) {
-          break label516;
-        }
-        QLog.e("ImagePreveiew", 2, "makeAnimationRect " + paramRect1.getMessage());
-      }
-      break;
-      label430:
-      i1 = ((Drawable)localObject).getIntrinsicWidth();
-      break label186;
-      label440:
-      i2 = ((Drawable)localObject).getIntrinsicHeight();
-      break label197;
-      label450:
-      i4 = paramDrawable.getIntrinsicWidth();
-      break label261;
-      label460:
-      i3 = paramDrawable.getIntrinsicHeight();
-      continue;
-      label470:
-      i3 = i2;
-      i4 = i1;
-    }
-    label516:
-    return null;
-  }
-  
-  private void a(int paramInt, Bundle paramBundle)
-  {
-    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_Bcrz.getCount() - 1) || (this.jdField_b_of_type_JavaUtilArrayList == null) || (paramInt > this.jdField_b_of_type_JavaUtilArrayList.size() - 1)) {
-      return;
-    }
-    azqs.b(this.app, "dc00898", "", "", "0X8007FD5", "0X8007FD5", 0, 0, "0", "0", "", "");
-    bdgm.a(this, 230).setTitle(getString(2131699660)).setPositiveButton(getString(2131694953), new bbij(this, paramBundle, paramInt)).setNegativeButton(getString(2131690648), new bbii(this)).show();
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAvatarWallPreviewActivity", 2, "ReadInJoy Grid Images isShowContentUrl: true");
-    }
-    String str2 = paramBundle.getString("article_title", "");
-    String str1 = paramBundle.getString("article_url", "");
-    int i1 = paramBundle.getInt("channel_id", 0);
-    long l1 = paramBundle.getLong("articleSeq", 0L);
-    ArticleInfo localArticleInfo = owy.a().a(i1, l1);
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && ((this.jdField_a_of_type_AndroidWidgetTextView.getParent() instanceof RelativeLayout)))
-    {
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).addRule(10);
-      ((RelativeLayout.LayoutParams)localObject).addRule(12, 0);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, aepi.a(20.0F, getResources()), 0, 0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    paramBundle = paramBundle.getString("btntext", "");
-    if (!TextUtils.isEmpty(str1))
-    {
-      this.jdField_d_of_type_AndroidViewView = ((ViewStub)findViewById(2131377166)).inflate();
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      if ((this.jdField_d_of_type_AndroidViewView != null) && ((this.jdField_d_of_type_AndroidViewView instanceof LinearLayout)))
-      {
-        localObject = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131377938);
-        if (!TextUtils.isEmpty(str2)) {
-          ((TextView)localObject).setText(str2);
-        }
-        localObject = (Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131375235);
-        if (!TextUtils.isEmpty(paramBundle)) {
-          ((Button)localObject).setText(paramBundle);
-        }
-        QLog.d("TroopAvatarWallPreviewActivity", 1, "init,btnText:" + paramBundle + " articleTitle:" + str2 + " articleUrl:" + str1);
-        paramBundle = new GradientDrawable();
-        paramBundle.setStroke(aepi.a(1.0F, getResources()), -1996488705);
-        ((Button)localObject).setBackgroundDrawable(paramBundle);
-        ((Button)localObject).setOnClickListener(new bbil(this, localArticleInfo, str1));
-      }
-    }
-  }
-  
-  private void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    ors.a(this, paramArticleInfo);
-  }
-  
-  private void a(ArticleInfo paramArticleInfo, String paramString)
-  {
-    sds.b("fast_web_show_light_house_1");
-    owy.a().a().a(paramString, String.valueOf(paramArticleInfo.innerUniqueID), paramArticleInfo.mSubscribeID, 1, null);
-    a(paramArticleInfo, null);
-  }
-  
-  private void a(String paramString)
-  {
-    if (isFinishing()) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Bety == null) {
-        this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
-      }
-      this.jdField_a_of_type_Bety.a(paramString);
-    } while (isFinishing());
-    this.jdField_a_of_type_Bety.show();
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_AndroidViewView != null)
-    {
-      if (paramBoolean)
-      {
-        this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidViewView.getHeight());
-        this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(300L);
-        this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new bbim(this));
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_b_of_type_AndroidViewView.getHeight(), 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new bbin(this));
-  }
-  
-  private boolean a()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
+    Object localObject1 = this.mGallery.getSelectedView();
     if (localObject1 == null) {
       return false;
     }
-    Object localObject2 = ((ImageView)((View)localObject1).findViewById(2131367921)).getDrawable();
+    Object localObject2 = ((ImageView)((View)localObject1).findViewById(2131435357)).getDrawable();
     if ((localObject2 != null) && ((localObject2 instanceof URLDrawable)))
     {
       if (((URLDrawable)localObject2).getStatus() != 1) {
@@ -422,800 +242,1030 @@ public class TroopAvatarWallPreviewActivity
     else if (localObject2 == null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(0);
+    this.mRootParent.setVisibility(0);
+    this.mAnimationView.setVisibility(0);
     localObject1 = new Rect();
     Rect localRect1 = new Rect();
     Rect localRect2 = new Rect();
     Rect localRect3 = new Rect();
-    localObject2 = a(localRect2, localRect3, (Rect)localObject1, localRect1, (Drawable)localObject2, localObject2 instanceof URLDrawable);
+    localObject2 = makeAnimationRect(localRect2, localRect3, (Rect)localObject1, localRect1, (Drawable)localObject2, localObject2 instanceof URLDrawable);
     if (localObject2 == null) {
       return false;
     }
-    this.m = true;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.a((Bitmap)localObject2, localRect3, localRect2, localRect1, (Rect)localObject1, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setAnimationListener(new bbia(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new TroopAvatarWallPreviewActivity.18(this), this.jdField_a_of_type_Long);
+    this.animated = true;
+    this.mAnimationView.a((Bitmap)localObject2, localRect3, localRect2, localRect1, (Rect)localObject1, this.mEnterAnimationDuring);
+    this.mAnimationView.setInterpolator(new DecelerateInterpolator());
+    this.mAnimationView.setAnimationListener(new TroopAvatarWallPreviewActivity.27(this));
+    this.mAnimationView.a();
+    this.mRootParent.postDelayed(new TroopAvatarWallPreviewActivity.28(this), this.mEnterAnimationDuring);
     localObject1 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject1).setInterpolator(new DecelerateInterpolator());
     ((AlphaAnimation)localObject1).setDuration(500L);
     ((AlphaAnimation)localObject1).setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject1);
+    this.mBgView.startAnimation((Animation)localObject1);
     return true;
   }
   
-  private void b(Bundle paramBundle)
+  private void configDtReportParam()
   {
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
-    localIntent.putExtras(new Bundle(paramBundle));
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.isReport) || ("2".equals(this.jdField_b_of_type_JavaLangString)) || ("6".equals(this.jdField_b_of_type_JavaLangString)) || ("4".equals(this.jdField_b_of_type_JavaLangString))) {
-      ForwardUtils.a(this.app, this, this, localIntent, null);
-    }
-    for (;;)
-    {
-      finish();
+    Object localObject = getIntent();
+    if (localObject == null) {
       return;
-      startActivity(localIntent);
+    }
+    String str = ((Intent)localObject).getStringExtra("dt_page_id");
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    VideoReport.addToDetectionWhitelist(this);
+    VideoReport.setPageId(this, str);
+    localObject = ((Intent)localObject).getSerializableExtra("dt_page_params");
+    if ((localObject instanceof Map)) {
+      VideoReport.setPageParams(this, new PageParams((HashMap)localObject));
     }
   }
   
-  private void b(URLDrawable paramURLDrawable, String paramString)
+  private void deleteExtendFriendPhotoWall(int paramInt)
   {
-    new bbhx(this, paramURLDrawable, paramString).execute(new Void[0]);
+    if ((paramInt < 0) && (paramInt > this.mAdapter.getCount() - 1)) {
+      return;
+    }
+    DialogUtil.a(this, 230).setTitle(getString(2131896842)).setPositiveButton(getString(2131892267), new TroopAvatarWallPreviewActivity.26(this)).setNegativeButton(getString(2131887648), new TroopAvatarWallPreviewActivity.25(this)).show();
   }
   
-  private void b(String paramString)
+  private void deletePernalityLabelPhoto(int paramInt, Bundle paramBundle)
   {
-    QQToast.a(BaseApplication.getContext(), paramString, 0).b(getTitleBarHeight());
-  }
-  
-  private void b(String paramString1, String paramString2)
-  {
-    if (getIntent().getBooleanExtra("from_photo_wall", false))
+    if ((paramInt >= 0) && (paramInt <= this.mAdapter.getCount() - 1))
     {
-      if (getIntent().getBooleanExtra("delete_ability", false)) {
-        azqs.b(this.app, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", "", "");
+      ArrayList localArrayList = this.mPhotoIds;
+      if (localArrayList != null)
+      {
+        if (paramInt > localArrayList.size() - 1) {
+          return;
+        }
+        ReportController.b(this.app, "dc00898", "", "", "0X8007FD5", "0X8007FD5", 0, 0, "0", "0", "", "");
+        DialogUtil.a(this, 230).setTitle(getString(2131897160)).setPositiveButton(getString(2131892267), new TroopAvatarWallPreviewActivity.34(this, paramBundle, paramInt)).setNegativeButton(getString(2131887648), new TroopAvatarWallPreviewActivity.33(this)).show();
       }
     }
-    else {
+  }
+  
+  private void dismissWaittingDialog()
+  {
+    QQProgressDialog localQQProgressDialog = this.mProgressDialog;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()) && (!isFinishing())) {
+      this.mProgressDialog.dismiss();
+    }
+  }
+  
+  private void downloadOrgImage()
+  {
+    ArrayList localArrayList = this.mOriginList;
+    if ((localArrayList != null) && (this.mIndex < localArrayList.size()) && (!TextUtils.isEmpty((CharSequence)this.mOriginList.get(this.mIndex))))
+    {
+      this.mAdapter.d(true);
+      this.mAdapter.a(this.mOriginPicBtn);
+      this.mAdapter.notifyDataSetChanged();
+      LpReportInfo_pf00064.allReport(301, 34, 2);
+    }
+  }
+  
+  private void handleShowContentUrl(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAvatarWallPreviewActivity", 2, "ReadInJoy Grid Images isShowContentUrl: true");
+    }
+    String str2 = paramBundle.getString("article_title", "");
+    String str1 = paramBundle.getString("article_url", "");
+    int i = paramBundle.getInt("channel_id", 0);
+    long l = paramBundle.getLong("articleSeq", 0L);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a(i, l);
+    Object localObject = this.mTextView;
+    if ((localObject != null) && ((((TextView)localObject).getParent() instanceof RelativeLayout)))
+    {
+      localObject = (RelativeLayout.LayoutParams)this.mTextView.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).addRule(10);
+      ((RelativeLayout.LayoutParams)localObject).addRule(12, 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, AIOUtils.b(20.0F, getResources()), 0, 0);
+      this.mTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    paramBundle = paramBundle.getString("btntext", "");
+    if (!TextUtils.isEmpty(str1))
+    {
+      this.mContentUrlLayout = ((ViewStub)findViewById(2131446486)).inflate();
+      this.mContentUrlLayout.setVisibility(0);
+      localObject = this.mContentUrlLayout;
+      if ((localObject != null) && ((localObject instanceof LinearLayout)))
+      {
+        localObject = (TextView)((View)localObject).findViewById(2131447463);
+        if (!TextUtils.isEmpty(str2)) {
+          ((TextView)localObject).setText(str2);
+        }
+        localObject = (Button)this.mContentUrlLayout.findViewById(2131444203);
+        if (!TextUtils.isEmpty(paramBundle)) {
+          ((Button)localObject).setText(paramBundle);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init,btnText:");
+        localStringBuilder.append(paramBundle);
+        localStringBuilder.append(" articleTitle:");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(" articleUrl:");
+        localStringBuilder.append(str1);
+        QLog.d("TroopAvatarWallPreviewActivity", 1, localStringBuilder.toString());
+        paramBundle = new GradientDrawable();
+        paramBundle.setStroke(AIOUtils.b(1.0F, getResources()), -1996488705);
+        ((Button)localObject).setBackgroundDrawable(paramBundle);
+        ((Button)localObject).setOnClickListener(new TroopAvatarWallPreviewActivity.12(this, localAbsBaseArticleInfo, str1));
+      }
+    }
+  }
+  
+  private void init()
+  {
+    if (isFinishing()) {
       return;
     }
-    azqs.b(this.app, "CliOper", "", "", paramString2, paramString2, 0, 0, "", "", "", "");
-  }
-  
-  private boolean b()
-  {
-    return ("2".equals(this.jdField_b_of_type_JavaLangString)) || ("4".equals(this.jdField_b_of_type_JavaLangString));
-  }
-  
-  private void c()
-  {
+    this.imageView = ((ImageView)findViewById(2131435357));
     Bundle localBundle = getIntent().getExtras();
     if (localBundle == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.parse(localBundle.getString("PublicAccountShowPictureReport"));
-    if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.isReport) {
-      this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.showStart();
+    this.mPublicAccountShowPictureReport.parse(localBundle.getString("PublicAccountShowPictureReport"));
+    if (this.mPublicAccountShowPictureReport.isReport) {
+      this.mPublicAccountShowPictureReport.showStart();
     }
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367020));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377606));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376034));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363383));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363034);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131376037));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131365065));
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView = ((ImageAnimationView)findViewById(2131362576));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362279));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131371457);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371466));
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371976));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_EDIT");
-    label280:
-    label327:
-    Object localObject;
-    if (this.jdField_d_of_type_Boolean)
+    this.mGallery = ((Gallery)findViewById(2131433934));
+    this.mGallery.setVisibility(0);
+    this.mTextView = ((TextView)findViewById(2131447062));
+    this.mRoot = ((RelativeLayout)findViewById(2131445137));
+    this.mBottomBlock = ((RelativeLayout)findViewById(2131429644));
+    this.mBgView = findViewById(2131429234);
+    this.mRootParent = ((FrameLayout)findViewById(2131445141));
+    this.mDelbtn = ((ImageButton)findViewById(2131431689));
+    this.mBgView.setBackgroundColor(-16777216);
+    this.mAnimationView = ((ImageAnimationView)findViewById(2131428368));
+    this.mMenuBtn = ((ImageView)findViewById(2131427966));
+    this.mBottomBarSwitch = findViewById(2131439675);
+    this.mOriginPicBtn = ((TextView)findViewById(2131439700));
+    this.mOriginPicBtn.setOnClickListener(this.mClickLis);
+    this.mPhotoDesc = ((TextView)findViewById(2131440272));
+    this.mRootParent.setVisibility(0);
+    this.mIsEdit = localBundle.getBoolean("IS_EDIT");
+    if (this.mIsEdit)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_f_of_type_Boolean = localBundle.getBoolean("SHOW_MENU");
-      if (!this.jdField_f_of_type_Boolean) {
-        break label1005;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837935);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_d_of_type_JavaUtilArrayList = localBundle.getParcelableArrayList("KEY_THUMBNAL_BOUND");
-      this.jdField_e_of_type_Boolean = localBundle.getBoolean("is_show_action", true);
-      this.k = localBundle.getBoolean("is_need_to_aio", true);
-      this.l = localBundle.getBoolean("is_from_plugin", false);
-      this.jdField_b_of_type_Boolean = localBundle.getBoolean("needBottomBar");
-      if (!this.jdField_b_of_type_Boolean) {
-        break label1016;
-      }
-      localObject = ((ViewStub)findViewById(2131377169)).inflate();
-      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131371439);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131371440));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131371437));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371438));
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841234);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      ((ImageView)this.jdField_c_of_type_AndroidViewView).setImageResource(2130848110);
+      this.mDelbtn.setVisibility(0);
+      this.mDelbtn.setOnClickListener(this.mClickLis);
+    }
+    else
+    {
+      this.mDelbtn.setVisibility(4);
+    }
+    this.mIsShowMenu = localBundle.getBoolean("SHOW_MENU");
+    if (this.mIsShowMenu)
+    {
+      this.mMenuBtn.setImageResource(2130838020);
+      this.mMenuBtn.setOnClickListener(this.mClickLis);
+      this.mMenuBtn.setVisibility(0);
+    }
+    else
+    {
+      this.mMenuBtn.setVisibility(4);
+    }
+    this.mBottomBarSwitch.setOnClickListener(this.operateBarListener);
+    this.mThumbRect = localBundle.getParcelableArrayList("KEY_THUMBNAL_BOUND");
+    this.mIsShowAction = localBundle.getBoolean("is_show_action", true);
+    this.isNeedToAio = localBundle.getBoolean("is_need_to_aio", true);
+    this.isFromPlugin = localBundle.getBoolean("is_from_plugin", false);
+    this.mNeedBottomBar = localBundle.getBoolean("needBottomBar");
+    if (this.mNeedBottomBar)
+    {
+      localObject = ((ViewStub)findViewById(2131446489)).inflate();
+      this.mBottomBar = ((View)localObject).findViewById(2131439642);
+      this.mLikeBtn = ((ImageView)((View)localObject).findViewById(2131439643));
+      this.mCommentBtn = ((ImageView)((View)localObject).findViewById(2131439640));
+      this.mDetailBtn = ((TextView)((View)localObject).findViewById(2131439641));
+      this.mBottomBar.setBackgroundResource(2130842519);
+      this.mLikeBtn.setOnClickListener(this.operateBarListener);
+      this.mCommentBtn.setOnClickListener(this.operateBarListener);
+      this.mDetailBtn.setOnClickListener(this.operateBarListener);
+      this.mBottomBar.setVisibility(0);
+      this.mBottomBarSwitch.setVisibility(0);
+      ((ImageView)this.mBottomBarSwitch).setImageResource(2130850535);
       localObject = new IntentFilter("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      label563:
-      this.jdField_a_of_type_ArrayOfBoolean = localBundle.getBooleanArray("likes");
-      this.jdField_a_of_type_Bcrz = new bcrz(this, this.app);
-      this.jdField_a_of_type_JavaLangString = localBundle.getString("troop_uin");
-      this.jdField_c_of_type_Boolean = localBundle.getBoolean("troop_info_is_member");
-      this.jdField_a_of_type_JavaUtilList = localBundle.getStringArrayList("seqNum");
-      if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "Clicl Big Data: first img url:" + (String)this.jdField_a_of_type_JavaUtilList.get(0));
-      }
-      this.jdField_a_of_type_JavaUtilArrayList = localBundle.getStringArrayList("descs");
-      this.jdField_b_of_type_JavaUtilArrayList = localBundle.getStringArrayList("photoIds");
-      this.jdField_c_of_type_JavaUtilArrayList = localBundle.getStringArrayList("photoTimes");
-      this.jdField_a_of_type_Boolean = localBundle.getBoolean("delete_ability");
-      this.g = localBundle.getBoolean("is_not_show_index", true);
-      this.jdField_b_of_type_JavaLangString = localBundle.getString("src_id");
-      this.jdField_a_of_type_AndroidOsBundle = localBundle.getBundle("bundle_data_extra");
-      this.jdField_c_of_type_JavaLangString = localBundle.getString("str_data_extra", "");
-      this.jdField_e_of_type_JavaUtilArrayList = localBundle.getStringArrayList("origin_list");
-      this.jdField_f_of_type_JavaUtilArrayList = localBundle.getStringArrayList("origin_size_list");
-      if (this.jdField_e_of_type_JavaUtilArrayList == null) {
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        azqs.b(this.app, "P_CliOper", "Grp_picViewer", "", "picViewer", "open", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
-      }
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-      }
-      if (!this.g) {
-        break label1028;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      registerReceiver(this.mReceiver, (IntentFilter)localObject);
     }
-    for (;;)
+    else
     {
-      this.i = localBundle.getBoolean("is_show_content_url", false);
-      this.j = localBundle.getBoolean("is_grid_image_report", false);
-      if (this.i) {
-        a(localBundle);
-      }
-      ThreadManager.post(new TroopAvatarWallPreviewActivity.2(this, localBundle), 8, null, true);
-      if (!b()) {
-        break;
-      }
-      this.jdField_a_of_type_Bbir = new bbir(this, new Handler());
-      this.jdField_a_of_type_Bbir.a();
-      if (Settings.System.getInt(getContentResolver(), "accelerometer_rotation", -1) != 1) {
-        break;
-      }
-      setRequestedOrientation(4);
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
-      break label280;
-      label1005:
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      break label327;
-      label1016:
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      break label563;
-      label1028:
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if ((localBundle.getBoolean("is_index_show_bottom", false)) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && ((this.jdField_a_of_type_AndroidWidgetTextView.getParent() instanceof RelativeLayout)))
+      this.mBottomBarSwitch.setVisibility(8);
+    }
+    this.mLikes = localBundle.getBooleanArray("likes");
+    this.mAdapter = new TroopAvatarBigPhotoAdapter(this, this.app);
+    this.mTroopUin = localBundle.getString("troop_uin");
+    this.mIsTroopMember = localBundle.getBoolean("troop_info_is_member");
+    this.mSeqNumList = localBundle.getStringArrayList("seqNum");
+    this.mPreviewPhotoLocation = localBundle.getIntegerArrayList("mPreviewPhotoLocation");
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
+    ArrayList localArrayList = this.mPreviewPhotoLocation;
+    if (localArrayList != null)
+    {
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ((Integer)localArrayList.get(2)).intValue();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((Integer)this.mPreviewPhotoLocation.get(3)).intValue();
+    }
+    if ((QLog.isColorLevel()) && (!this.mSeqNumList.isEmpty()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Clicl Big Data: first img url:");
+      ((StringBuilder)localObject).append((String)this.mSeqNumList.get(0));
+      QLog.d("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    this.mDescs = localBundle.getStringArrayList("descs");
+    this.mPhotoIds = localBundle.getStringArrayList("photoIds");
+    this.mPhotoTimes = localBundle.getStringArrayList("photoTimes");
+    this.mDeleteAbility = localBundle.getBoolean("delete_ability");
+    this.mIsNotShowIndex = localBundle.getBoolean("is_not_show_index", true);
+    this.mSrcId = localBundle.getString("src_id");
+    this.mExtras = localBundle.getBundle("bundle_data_extra");
+    this.mExtrasStr = localBundle.getString("str_data_extra", "");
+    this.mOriginList = localBundle.getStringArrayList("origin_list");
+    this.mOriginSizeList = localBundle.getStringArrayList("origin_size_list");
+    this.mIsFromPhotoWall = localBundle.getBoolean("from_photo_wall", false);
+    if ((this.mOriginList == null) && (!this.mIsFromPhotoWall)) {
+      this.mOriginPicBtn.setVisibility(0);
+    }
+    if (this.mSrcId != null) {
+      ReportController.b(this.app, "P_CliOper", "Grp_picViewer", "", "picViewer", "open", 0, 0, this.mSrcId, "", "", "");
+    }
+    localObject = this.mSeqNumList;
+    if (localObject != null) {
+      this.mSeqListLength = ((List)localObject).size();
+    }
+    if (this.mIsNotShowIndex)
+    {
+      this.mTextView.setVisibility(4);
+    }
+    else
+    {
+      this.mTextView.setVisibility(0);
+      if (localBundle.getBoolean("is_index_show_bottom", false))
       {
-        localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).addRule(10);
-        ((RelativeLayout.LayoutParams)localObject).addRule(12, 0);
-        ((RelativeLayout.LayoutParams)localObject).setMargins(0, aepi.a(20.0F, getResources()), 0, 0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = this.mTextView;
+        if ((localObject != null) && ((((TextView)localObject).getParent() instanceof RelativeLayout)))
+        {
+          localObject = (RelativeLayout.LayoutParams)this.mTextView.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).addRule(10);
+          ((RelativeLayout.LayoutParams)localObject).addRule(12, 0);
+          ((RelativeLayout.LayoutParams)localObject).setMargins(0, AIOUtils.b(20.0F, getResources()), 0, 0);
+          this.mTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
       }
     }
-  }
-  
-  private void c(URLDrawable paramURLDrawable)
-  {
-    d(paramURLDrawable);
-  }
-  
-  private void d()
-  {
-    if (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0)
+    this.isShowContentUrl = localBundle.getBoolean("is_show_content_url", false);
+    this.isGridImageReport = localBundle.getBoolean("is_grid_image_report", false);
+    if (this.isShowContentUrl) {
+      handleShowContentUrl(localBundle);
+    }
+    if (this.mIsFromPhotoWall) {
+      initGallery(localBundle);
+    }
+    ThreadManager.post(new TroopAvatarWallPreviewActivity.2(this, localBundle), 8, null, true);
+    if (isSrcIdSupportRotate())
     {
-      ((ImageView)this.jdField_c_of_type_AndroidViewView).setImageResource(2130848110);
-      if (this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == null) {
-        a(true);
+      this.mRotationObserver = new TroopAvatarWallPreviewActivity.RotationObserver(this, new Handler());
+      this.mRotationObserver.a();
+      if (Settings.System.getInt(getContentResolver(), "accelerometer_rotation", -1) == 1) {
+        setRequestedOrientation(4);
       }
-      this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
-      this.n = false;
-      return;
     }
-    ((ImageView)this.jdField_c_of_type_AndroidViewView).setImageResource(2130848111);
-    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == null) {
-      a(false);
+    configDtReportParam();
+    if (localBundle.getBoolean("show_title_bar")) {
+      initTitleBar(this.mIndex, this.mSeqListLength);
     }
-    this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.n = true;
+    initSocialBottomBar(localBundle);
   }
   
-  private void d(int paramInt)
+  private void initFooterAnimation(boolean paramBoolean)
   {
-    int i1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    View localView = this.mBottomBar;
+    if (localView != null)
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(axjq.a((String)localObject, this.app));
-      TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      if (paramBoolean)
       {
-        i1 = 8;
-        localTextView.setVisibility(i1);
+        this.mBottomLayoutTranslateDownAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localView.getHeight());
+        this.mBottomLayoutTranslateDownAnimation.setDuration(300L);
+        this.mBottomLayoutTranslateDownAnimation.setAnimationListener(new TroopAvatarWallPreviewActivity.13(this));
+        return;
       }
+      this.mBottomLayoutTranslateUpAnimation = new TranslateAnimation(0.0F, 0.0F, localView.getHeight(), 0.0F);
+      this.mBottomLayoutTranslateUpAnimation.setDuration(300L);
+      this.mBottomLayoutTranslateUpAnimation.setAnimationListener(new TroopAvatarWallPreviewActivity.14(this));
     }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ArrayOfBoolean != null) && (this.jdField_a_of_type_ArrayOfBoolean.length > paramInt)) {
-        break label101;
-      }
-      return;
-      i1 = 0;
-      break;
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    label101:
-    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-    if (this.jdField_a_of_type_ArrayOfBoolean[paramInt] != 0) {}
-    for (paramInt = 2130848116;; paramInt = 2130848119)
-    {
-      ((ImageView)localObject).setImageResource(paramInt);
-      this.n = LocalMultiProcConfig.getBool("BasePictureViewController#mIsBottomBarUp", true);
-      if (!this.n) {
-        break;
-      }
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      ((ImageView)this.jdField_c_of_type_AndroidViewView).setImageResource(2130848111);
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    ((ImageView)this.jdField_c_of_type_AndroidViewView).setImageResource(2130848110);
   }
   
-  private void d(URLDrawable paramURLDrawable)
+  private void initSocialBottomBar(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    boolean bool = paramBundle.getBoolean("show_social_bottom_bar");
+    Object localObject1 = paramBundle.getString("show_social_bottom_bar_data");
+    if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
+      try
+      {
+        Object localObject2 = paramBundle.getString("acticle_info_rowkey", "");
+        String str1 = paramBundle.getString("callback_seq", "");
+        localObject1 = new JSONObject((String)localObject1);
+        String str2 = ((JSONObject)localObject1).optString("commentNum", "0");
+        String str3 = ((JSONObject)localObject1).optString("likeNum", "0");
+        String str4 = ((JSONObject)localObject1).optString("shareNum", "0");
+        bool = ((JSONObject)localObject1).optBoolean("liked", false);
+        this.socialBottomBar = ((ViewStub)findViewById(2131446132)).inflate();
+        localObject1 = this.socialBottomBar.findViewById(2131446133);
+        View localView1 = this.socialBottomBar.findViewById(2131446135);
+        View localView2 = this.socialBottomBar.findViewById(2131446138);
+        TextView localTextView1 = (TextView)this.socialBottomBar.findViewById(2131446134);
+        TextView localTextView2 = (TextView)this.socialBottomBar.findViewById(2131446137);
+        ImageView localImageView = (ImageView)this.socialBottomBar.findViewById(2131446136);
+        TextView localTextView3 = (TextView)this.socialBottomBar.findViewById(2131446139);
+        localObject2 = new SocialBottomBarData((String)localObject2, str1, str2, str3, str4, bool);
+        if (paramBundle.getBoolean("is_from_tool_process", false)) {
+          paramBundle = new ToolPictureShowActionNotifier(getAppRuntime());
+        } else {
+          paramBundle = new MainPictureShowActionNotifier();
+        }
+        this.pictureShowViewModel = ((PictureShowViewModel)new ViewModelProvider(this, new PictureShowViewModelFactory((SocialBottomBarData)localObject2, paramBundle)).get(PictureShowViewModel.class));
+        this.pictureShowViewModel.a().observe(this, new TroopAvatarWallPreviewActivity.4(this, localTextView1));
+        this.pictureShowViewModel.b().observe(this, new TroopAvatarWallPreviewActivity.5(this, localTextView2));
+        this.pictureShowViewModel.c().observe(this, new TroopAvatarWallPreviewActivity.6(this, localTextView3));
+        this.pictureShowViewModel.d().observe(this, new TroopAvatarWallPreviewActivity.7(this, localImageView));
+        paramBundle = new TroopAvatarWallPreviewActivity.8(this);
+        ((View)localObject1).setOnClickListener(paramBundle);
+        localView1.setOnClickListener(paramBundle);
+        localView2.setOnClickListener(paramBundle);
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        QLog.e("TroopAvatarWallPreviewActivity", 2, paramBundle, new Object[0]);
+      }
+    }
+  }
+  
+  private void initTitleBar(int paramInt1, int paramInt2)
+  {
+    int i = ImmersiveUtils.getStatusBarHeight(this);
+    Object localObject = ((ViewStub)findViewById(2131447484)).inflate();
+    ((RelativeLayout.LayoutParams)((View)localObject).getLayoutParams()).topMargin = i;
+    View localView = ((View)localObject).findViewById(2131447486);
+    this.titleBarTitle = ((TextView)((View)localObject).findViewById(2131447495));
+    localView.setOnClickListener(new TroopAvatarWallPreviewActivity.3(this));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1 + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    this.titleBarTitle.setText((CharSequence)localObject);
+  }
+  
+  private boolean isSrcIdSupportRotate()
+  {
+    return ("2".equals(this.mSrcId)) || ("4".equals(this.mSrcId));
+  }
+  
+  private Bitmap makeAnimationRect(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, Drawable paramDrawable, boolean paramBoolean)
+  {
+    Object localObject = this.mThumbRect;
+    if (localObject != null)
+    {
+      Rect localRect = (Rect)((ArrayList)localObject).get(this.mIndex);
+      localObject = getThumbPath(paramBoolean);
+      if (localObject != null)
+      {
+        if (localRect == null) {
+          return null;
+        }
+        String str = getBigPath(paramBoolean);
+        Drawable localDrawable;
+        if (((String)localObject).equals(AvatarInfo.a)) {
+          localDrawable = paramDrawable;
+        } else {
+          localDrawable = getDrawable(paramBoolean, (String)localObject);
+        }
+        if (localDrawable == null) {
+          return null;
+        }
+        if ((paramDrawable == null) && ((!paramBoolean) || (localDrawable == null))) {
+          return null;
+        }
+        int k = 1;
+        localObject = paramDrawable;
+        if (paramDrawable == null) {
+          if (!TextUtils.isEmpty(str))
+          {
+            if (str.equals(AvatarInfo.a)) {
+              return null;
+            }
+            localObject = getDrawable(paramBoolean, str);
+            if (localObject == null) {
+              return null;
+            }
+            ((URLDrawable)localObject).setAutoDownload(true);
+          }
+          else
+          {
+            return null;
+          }
+        }
+        int n = this.mGallery.getWidth();
+        int i1 = this.mGallery.getHeight();
+        if (localDrawable.getIntrinsicWidth() == 0) {
+          i = 1;
+        } else {
+          i = localDrawable.getIntrinsicWidth();
+        }
+        if (localDrawable.getIntrinsicHeight() == 0) {
+          j = 1;
+        } else {
+          j = localDrawable.getIntrinsicHeight();
+        }
+        paramDrawable = com.tencent.common.galleryactivity.AnimationUtils.a(this.mGallery);
+        if (paramDrawable != null) {
+          localRect.offset(paramDrawable.left, -paramDrawable.top);
+        }
+        paramRect3.set(localRect);
+        int m;
+        if ((paramBoolean) && (((URLDrawable)localObject).getStatus() == 1))
+        {
+          if (((Drawable)localObject).getIntrinsicWidth() == 0) {
+            m = 1;
+          } else {
+            m = ((Drawable)localObject).getIntrinsicWidth();
+          }
+          if (((Drawable)localObject).getIntrinsicHeight() != 0) {
+            k = ((Drawable)localObject).getIntrinsicHeight();
+          }
+        }
+        else
+        {
+          k = j;
+          m = i;
+        }
+        float f = ImagePreviewAnimationUtil.a(m, k);
+        paramRect1.set(ImagePreviewAnimationUtil.a(i, j, m, k));
+        paramRect2.set(ImagePreviewAnimationUtil.b(m, k, n, i1));
+        paramRect4.set(ImagePreviewAnimationUtil.c(m, k, n, i1));
+        ImagePreviewAnimationUtil.a(paramRect1, f);
+        ImagePreviewAnimationUtil.a(paramRect2, f);
+        int i = (int)(m * f);
+        int j = (int)(k * f);
+        try
+        {
+          paramRect3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
+          paramRect4 = new Canvas(paramRect3);
+          paramDrawable = new Rect(0, 0, m, k);
+          ImagePreviewAnimationUtil.a(paramDrawable, f);
+          ((Drawable)localObject).setBounds(paramDrawable);
+          paramRect4.clipRect(ImagePreviewAnimationUtil.a(paramRect1, paramRect2));
+          ((Drawable)localObject).draw(paramRect4);
+          return paramRect3;
+        }
+        catch (Throwable paramRect1)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramRect2 = new StringBuilder();
+            paramRect2.append("makeAnimationRect ");
+            paramRect2.append(paramRect1.getMessage());
+            QLog.e("ImagePreveiew", 2, paramRect2.toString());
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  private void onBottomBarSwitchClick()
+  {
+    if (this.mBottomBar.getVisibility() == 0)
+    {
+      ((ImageView)this.mBottomBarSwitch).setImageResource(2130850535);
+      if (this.mBottomLayoutTranslateDownAnimation == null) {
+        initFooterAnimation(true);
+      }
+      this.mBottomBar.startAnimation(this.mBottomLayoutTranslateDownAnimation);
+      this.mIsBottomBarUp = false;
+      return;
+    }
+    ((ImageView)this.mBottomBarSwitch).setImageResource(2130850536);
+    if (this.mBottomLayoutTranslateUpAnimation == null) {
+      initFooterAnimation(false);
+    }
+    this.mBottomBar.startAnimation(this.mBottomLayoutTranslateUpAnimation);
+    this.mIsBottomBarUp = true;
+  }
+  
+  private void onCommentClick()
+  {
+    Intent localIntent = new Intent("android.intent.action.WEBJSCALL");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{op:1,index:");
+    localStringBuilder.append(this.mIndex);
+    localStringBuilder.append("}");
+    localIntent.putExtra("callback", localStringBuilder.toString());
+    sendBroadcast(localIntent);
+  }
+  
+  private void onDetailClick()
+  {
+    Intent localIntent = new Intent("android.intent.action.WEBJSCALL");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{op:3,index:");
+    localStringBuilder.append(this.mIndex);
+    localStringBuilder.append("}");
+    localIntent.putExtra("callback", localStringBuilder.toString());
+    sendBroadcast(localIntent);
+  }
+  
+  private void onLikeClick()
+  {
+    Object localObject = this.mLikes;
+    if (localObject != null)
+    {
+      int i = localObject.length;
+      int j = this.mIndex;
+      if (i <= j) {
+        return;
+      }
+      if (localObject[j] == 0)
+      {
+        this.mLikeBtn.setImageResource(2130850541);
+        localObject = android.view.animation.AnimationUtils.loadAnimation(this, 2130772430);
+        this.mLikeBtn.startAnimation((Animation)localObject);
+      }
+      else
+      {
+        this.mLikeBtn.setImageResource(2130850544);
+      }
+      localObject = this.mLikes;
+      i = this.mIndex;
+      localObject[i] ^= 0x1;
+      localObject = new Intent("android.intent.action.WEBJSCALL");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{op:2,index:");
+      localStringBuilder.append(this.mIndex);
+      localStringBuilder.append("}");
+      ((Intent)localObject).putExtra("callback", localStringBuilder.toString());
+      sendBroadcast((Intent)localObject);
+    }
+  }
+  
+  private void openFastWeb(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
+  {
+    TimeUtil.b("fast_web_show_light_house_1");
+    ((IFastModule)QRoute.api(IFastModule.class)).getArticleContent(paramString, String.valueOf(paramAbsBaseArticleInfo.innerUniqueID), paramAbsBaseArticleInfo.mSubscribeID, 1, null);
+    startWebFastActivity(paramAbsBaseArticleInfo, null);
+  }
+  
+  private void reportGridImageScroll()
+  {
+    if (getIntent() != null)
+    {
+      if (getIntent().getExtras() == null) {
+        return;
+      }
+      Object localObject = getIntent().getExtras();
+      if (this.isGridImageReport)
+      {
+        String str1 = ((Bundle)localObject).getString("article_id", "");
+        String str2 = ((Bundle)localObject).getString("to_uin", "");
+        String str3 = ((Bundle)localObject).getString("feeds_id", "");
+        String str4 = ((Bundle)localObject).getString("scroll_image_r5", "");
+        String str5 = ((Bundle)localObject).getString("strategy_id", "");
+        long l = ((Bundle)localObject).getLong("channel_id", 0L);
+        if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(l)) {
+          localObject = "0X8009364";
+        } else {
+          localObject = "0X800888B";
+        }
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", str2, (String)localObject, (String)localObject, 0, 0, str3, str1, str5, str4, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopAvatarWallPreviewActivity", 2, new Object[] { "scroll Image report(in TroopAvatarWallPreviewActivity) toUin: ", str2, ", r2(feedsId): ", str3, ", r3(articleId): ", str1, " r4(imagePos): ", Integer.valueOf(this.mIndex + 1), ", r5: ", str4 });
+        }
+      }
+    }
+  }
+  
+  private void reportPhotoWallAction(String paramString1, String paramString2)
+  {
+    if (getIntent().getBooleanExtra("from_photo_wall", false))
+    {
+      if (getIntent().getBooleanExtra("delete_ability", false))
+      {
+        ReportController.b(this.app, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(this.app, "CliOper", "", "", paramString2, paramString2, 0, 0, "", "", "", "");
+    }
+  }
+  
+  private void reportReadArticleClick()
+  {
+    if (getIntent() != null)
+    {
+      if (getIntent().getExtras() == null) {
+        return;
+      }
+      Object localObject = getIntent().getExtras();
+      if (this.isGridImageReport)
+      {
+        String str1 = ((Bundle)localObject).getString("to_uin", "");
+        String str2 = ((Bundle)localObject).getString("feeds_id", "");
+        String str3 = ((Bundle)localObject).getString("article_id", "");
+        String str4 = ((Bundle)localObject).getString("read_article_r5", "");
+        String str5 = ((Bundle)localObject).getString("strategy_id", "");
+        long l = ((Bundle)localObject).getLong("channel_id", 0L);
+        if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(l)) {
+          localObject = "0X8009365";
+        } else {
+          localObject = "0X80088A8";
+        }
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", str1, (String)localObject, (String)localObject, 0, 0, str2, str3, str5, str4, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopAvatarWallPreviewActivity", 2, new Object[] { "readArticle click report(in TroopAvatarWallPreviewActivity) toUin: ", str1, ", r2(feedsId): ", str2, ", r3(articleId): ", str3, " r4(imagePos): ", Integer.valueOf(this.mIndex + 1), ", r5: ", str4 });
+        }
+      }
+    }
+  }
+  
+  private void savePhoto(URLDrawable paramURLDrawable, String paramString)
+  {
+    new TroopAvatarWallPreviewActivity.22(this, paramURLDrawable, paramString).execute(new Void[0]);
+  }
+  
+  private void savePic(URLDrawable paramURLDrawable)
+  {
+    savePicWithPermission(paramURLDrawable);
+  }
+  
+  private void savePicWithPermission(URLDrawable paramURLDrawable)
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        requestPermissions(new bbhu(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new TroopAvatarWallPreviewActivity.19(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
-      b(paramURLDrawable);
+      savePicWithOverwrite(paramURLDrawable);
       return;
     }
-    b(paramURLDrawable);
+    savePicWithOverwrite(paramURLDrawable);
   }
   
-  private void e()
+  private void setOriginButton(int paramInt)
   {
-    Intent localIntent = new Intent("android.intent.action.WEBJSCALL");
-    localIntent.putExtra("callback", "{op:3,index:" + this.jdField_a_of_type_Int + "}");
-    sendBroadcast(localIntent);
-  }
-  
-  private void e(int paramInt)
-  {
-    if ((this.jdField_e_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_e_of_type_JavaUtilArrayList.size()) && (!TextUtils.isEmpty((CharSequence)this.jdField_e_of_type_JavaUtilArrayList.get(paramInt))) && (baqn.a((String)this.jdField_e_of_type_JavaUtilArrayList.get(paramInt)) == null))
+    ArrayList localArrayList = this.mOriginList;
+    if ((localArrayList != null) && (paramInt < localArrayList.size()) && (!TextUtils.isEmpty((CharSequence)this.mOriginList.get(paramInt))) && (AbsDownloader.getFile((String)this.mOriginList.get(paramInt)) == null))
     {
-      if ((this.jdField_f_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty((CharSequence)this.jdField_f_of_type_JavaUtilArrayList.get(paramInt)))) {}
-      for (;;)
+      long l2 = -1L;
+      localArrayList = this.mOriginSizeList;
+      long l1 = l2;
+      if (localArrayList != null)
       {
-        try
-        {
-          paramInt = Integer.parseInt((String)this.jdField_f_of_type_JavaUtilArrayList.get(paramInt));
-          l1 = paramInt;
-          if (l1 <= 0L) {
-            break label173;
+        l1 = l2;
+        if (!TextUtils.isEmpty((CharSequence)localArrayList.get(paramInt))) {
+          try
+          {
+            paramInt = Integer.parseInt((String)this.mOriginSizeList.get(paramInt));
+            l1 = paramInt;
           }
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, getResources().getString(2131695502), new Object[] { arso.a(l1) }));
-          this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-          LpReportInfo_pf00064.allReport(301, 34, 1);
-          return;
+          catch (Exception localException)
+          {
+            QLog.e("TroopAvatarWallPreviewActivity", 2, "setOriginButton exception", localException);
+            l1 = l2;
+          }
         }
-        catch (Exception localException)
-        {
-          QLog.e("TroopAvatarWallPreviewActivity", 2, "setOriginButton exception", localException);
-        }
-        long l1 = -1L;
-        continue;
-        label173:
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(2131695499);
       }
-    }
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  private void f()
-  {
-    Intent localIntent = new Intent("android.intent.action.WEBJSCALL");
-    localIntent.putExtra("callback", "{op:1,index:" + this.jdField_a_of_type_Int + "}");
-    sendBroadcast(localIntent);
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_ArrayOfBoolean == null) || (this.jdField_a_of_type_ArrayOfBoolean.length <= this.jdField_a_of_type_Int)) {
-      return;
-    }
-    Object localObject;
-    int i1;
-    if (this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] == 0)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848116);
-      localObject = AnimationUtils.loadAnimation(this, 2130772289);
-      this.jdField_b_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
-      localObject = this.jdField_a_of_type_ArrayOfBoolean;
-      i1 = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] != 0) {
-        break label153;
+      if (l1 > 0L) {
+        this.mOriginPicBtn.setText(String.format(Locale.CHINA, getResources().getString(2131892727), new Object[] { FileUtil.a(l1) }));
+      } else {
+        this.mOriginPicBtn.setText(2131892724);
       }
-    }
-    label153:
-    for (int i2 = 1;; i2 = 0)
-    {
-      localObject[i1] = i2;
-      localObject = new Intent("android.intent.action.WEBJSCALL");
-      ((Intent)localObject).putExtra("callback", "{op:2,index:" + this.jdField_a_of_type_Int + "}");
-      sendBroadcast((Intent)localObject);
+      this.mOriginPicBtn.setVisibility(0);
+      LpReportInfo_pf00064.allReport(301, 34, 1);
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848119);
-      break;
     }
+    this.mOriginPicBtn.setVisibility(8);
   }
   
-  private void h()
+  private void showActionSheet()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetGallery == null)
-    {
-      QQToast.a(this, getString(2131693338), 0).a();
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
+    Object localObject = this.mGallery;
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131693338), 0).a();
+      QQToast.makeText(this, getString(2131890214), 0).show();
       return;
     }
-    localObject = ((ImageView)((View)localObject).findViewById(2131367921)).getDrawable();
-    if ((localObject == null) || (!(localObject instanceof URLDrawable)))
+    localObject = ((Gallery)localObject).getSelectedView();
+    if (localObject == null)
     {
-      QQToast.a(this, getString(2131693338), 0).a();
+      QQToast.makeText(this, getString(2131890214), 0).show();
       return;
     }
-    localObject = (URLDrawable)localObject;
-    if (((URLDrawable)localObject).getStatus() != 1)
+    localObject = ((ImageView)((View)localObject).findViewById(2131435357)).getDrawable();
+    ActionSheet localActionSheet;
+    if ((localObject != null) && ((localObject instanceof URLDrawable)))
     {
-      QQToast.a(this, getString(2131693338), 0).a();
-      return;
-    }
-    if ("5".equals(this.jdField_b_of_type_JavaLangString))
-    {
-      a((URLDrawable)localObject);
-      return;
-    }
-    bhuf localbhuf = (bhuf)bhus.a(this, null);
-    if (this.jdField_e_of_type_Boolean)
-    {
-      localbhuf.a(2131693487, 1);
-      localbhuf.a(2131693497, 1);
-      if (!getIntent().getBooleanExtra("from_photo_wall", false)) {
-        ThreadManagerV2.excute(new TroopAvatarWallPreviewActivity.8(this, (URLDrawable)localObject, localbhuf), 128, null, false);
+      localObject = (URLDrawable)localObject;
+      if (((URLDrawable)localObject).getStatus() != 1)
+      {
+        QQToast.makeText(this, getString(2131890214), 0).show();
+        return;
       }
+      if ("5".equals(this.mSrcId))
+      {
+        showNearbyActionSheet((URLDrawable)localObject);
+        return;
+      }
+      localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
+      if (this.mIsShowAction)
+      {
+        localActionSheet.addButton(2131890804, 1);
+        localActionSheet.addButton(2131890810, 1);
+        if (!getIntent().getBooleanExtra("from_photo_wall", false)) {
+          ThreadManagerV2.excute(new TroopAvatarWallPreviewActivity.16(this, (URLDrawable)localObject, localActionSheet), 128, null, false);
+        }
+      }
+      if ((this.mDeleteAbility) && (canDelete(this.mIndex))) {
+        localActionSheet.addButton(2131890801, 1);
+      }
+      if (this.mIsEdit)
+      {
+        localActionSheet.addButton(2131895534, 5);
+        localActionSheet.addButton(2131890801, 3);
+      }
+      localActionSheet.addCancelButton(2131887648);
+      localActionSheet.setOnButtonClickListener(new TroopAvatarWallPreviewActivity.17(this, localActionSheet, (URLDrawable)localObject));
     }
-    if ((this.jdField_a_of_type_Boolean) && (a(this.jdField_a_of_type_Int))) {
-      localbhuf.a(2131693484, 1);
-    }
-    if (this.jdField_d_of_type_Boolean)
-    {
-      localbhuf.a(2131698183, 5);
-      localbhuf.a(2131693484, 3);
-    }
-    localbhuf.c(2131690648);
-    localbhuf.a(new bbiq(this, localbhuf, (URLDrawable)localObject));
     try
     {
-      localbhuf.show();
+      localActionSheet.show();
       return;
     }
     catch (Exception localException) {}
-  }
-  
-  private void i()
-  {
-    if ((this.jdField_e_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_Int < this.jdField_e_of_type_JavaUtilArrayList.size()) && (!TextUtils.isEmpty((CharSequence)this.jdField_e_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int))))
-    {
-      this.jdField_a_of_type_Bcrz.c(true);
-      this.jdField_a_of_type_Bcrz.a(this.jdField_d_of_type_AndroidWidgetTextView);
-      this.jdField_a_of_type_Bcrz.notifyDataSetChanged();
-      LpReportInfo_pf00064.allReport(301, 34, 2);
-    }
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_Bety.dismiss();
-    }
-  }
-  
-  private void k()
-  {
-    if ((getIntent() == null) || (getIntent().getExtras() == null)) {}
-    do
-    {
-      return;
-      localObject = getIntent().getExtras();
-    } while (!this.j);
-    String str1 = ((Bundle)localObject).getString("article_id", "");
-    String str2 = ((Bundle)localObject).getString("to_uin", "");
-    String str3 = ((Bundle)localObject).getString("feeds_id", "");
-    String str4 = ((Bundle)localObject).getString("scroll_image_r5", "");
-    String str5 = ((Bundle)localObject).getString("strategy_id", "");
-    if (szp.a(((Bundle)localObject).getLong("channel_id", 0L))) {}
-    for (Object localObject = "0X8009364";; localObject = "0X800888B")
-    {
-      nrt.a(null, "CliOper", "", str2, (String)localObject, (String)localObject, 0, 0, str3, str1, str5, str4, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopAvatarWallPreviewActivity", 2, new Object[] { "scroll Image report(in TroopAvatarWallPreviewActivity) toUin: ", str2, ", r2(feedsId): ", str3, ", r3(articleId): ", str1, " r4(imagePos): ", Integer.valueOf(this.jdField_a_of_type_Int + 1), ", r5: ", str4 });
-      return;
-    }
-  }
-  
-  private void l()
-  {
-    if ((getIntent() == null) || (getIntent().getExtras() == null)) {}
-    do
-    {
-      return;
-      localObject = getIntent().getExtras();
-    } while (!this.j);
-    String str1 = ((Bundle)localObject).getString("to_uin", "");
-    String str2 = ((Bundle)localObject).getString("feeds_id", "");
-    String str3 = ((Bundle)localObject).getString("article_id", "");
-    String str4 = ((Bundle)localObject).getString("read_article_r5", "");
-    String str5 = ((Bundle)localObject).getString("strategy_id", "");
-    if (szp.a(((Bundle)localObject).getLong("channel_id", 0L))) {}
-    for (Object localObject = "0X8009365";; localObject = "0X80088A8")
-    {
-      nrt.a(null, "CliOper", "", str1, (String)localObject, (String)localObject, 0, 0, str2, str3, str5, str4, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopAvatarWallPreviewActivity", 2, new Object[] { "readArticle click report(in TroopAvatarWallPreviewActivity) toUin: ", str1, ", r2(feedsId): ", str2, ", r3(articleId): ", str3, " r4(imagePos): ", Integer.valueOf(this.jdField_a_of_type_Int + 1), ", r5: ", str4 });
-      return;
-    }
-  }
-  
-  Drawable a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      paramString = URLDrawable.getDrawable(bauz.a(paramString));
-      return paramString;
-    }
-    catch (MalformedURLException paramString) {}
-    BitmapFactory.Options localOptions = bdhj.a(paramString, 100);
-    try
-    {
-      paramString = BitmapFactory.decodeFile(paramString, localOptions);
-      return new BitmapDrawable(paramString);
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "getDrawable out off memory");
-      }
-      System.gc();
-      return null;
-    }
-    return null;
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "picIndex" + this.jdField_a_of_type_Int + ",mSeqNumList.size()" + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      localObject = null;
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = (String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-      localObject = str;
-    } while (!paramBoolean);
-    if ((str != null) && (str.equals(ainn.jdField_a_of_type_JavaLangString))) {
-      return ainn.jdField_a_of_type_JavaLangString;
-    }
-    return bckq.a(bckq.a(str, this.jdField_a_of_type_JavaLangString, 1));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.leave_mode = 1;
-    if ((!this.m) && (this.jdField_a_of_type_ComTencentWidgetGallery != null) && (!this.jdField_a_of_type_ComTencentWidgetGallery.a(false)))
-    {
-      if ((this.jdField_d_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedItemId() != this.jdField_a_of_type_Int)) {
-        break label68;
-      }
-      if (!a()) {
-        b();
-      }
-    }
+    QQToast.makeText(this, getString(2131890214), 0).show();
     return;
-    label68:
-    b();
   }
   
-  public void a(int paramInt)
+  private void showToast(String paramString)
   {
-    if ((paramInt < 0) && (paramInt > this.jdField_a_of_type_Bcrz.getCount() - 1)) {
+    QQToast.makeText(BaseApplication.getContext(), paramString, 0).show(getTitleBarHeight());
+  }
+  
+  private void showWaitingDialog(String paramString)
+  {
+    if (isFinishing()) {
       return;
     }
-    if ((this.jdField_a_of_type_Bcrz.getCount() == 2) && (this.jdField_a_of_type_Bcrz.a(0) != null) && (this.jdField_a_of_type_Bcrz.a(0).equals(ainn.jdField_a_of_type_JavaLangString)))
-    {
-      a();
+    if (this.mProgressDialog == null) {
+      this.mProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
+    }
+    this.mProgressDialog.a(paramString);
+    if (isFinishing()) {
       return;
     }
-    if (this.jdField_a_of_type_Bcrz.getCount() > 1)
+    this.mProgressDialog.show();
+  }
+  
+  private void startChatAndSendMsg(Bundle paramBundle)
+  {
+    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
+    localIntent.putExtras(new Bundle(paramBundle));
+    if ((!this.mPublicAccountShowPictureReport.isReport) && (!"2".equals(this.mSrcId)) && (!"6".equals(this.mSrcId)) && (!"4".equals(this.mSrcId))) {
+      startActivity(localIntent);
+    } else {
+      ForwardUtils.a(this.app, this, this, localIntent, null);
+    }
+    finish();
+  }
+  
+  private void startWebFastActivity(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).startWebFastActivity(this, paramAbsBaseArticleInfo);
+  }
+  
+  private void updateOperateBar(int paramInt)
+  {
+    Object localObject1 = this.mDescs;
+    Object localObject2;
+    if ((localObject1 != null) && (paramInt < ((ArrayList)localObject1).size()))
     {
-      if (this.jdField_b_of_type_JavaUtilList == null) {
-        this.jdField_b_of_type_JavaUtilList = new ArrayList();
+      localObject1 = (String)this.mDescs.get(paramInt);
+      this.mPhotoDesc.setText(QzoneContactsFeedUtils.a((String)localObject1, this.app));
+      localObject2 = this.mPhotoDesc;
+      int i;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        i = 8;
+      } else {
+        i = 0;
       }
-      this.jdField_b_of_type_JavaUtilList.add("" + paramInt);
-      if (this.jdField_b_of_type_JavaUtilList != null)
+      ((TextView)localObject2).setVisibility(i);
+    }
+    else
+    {
+      this.mPhotoDesc.setVisibility(8);
+    }
+    localObject1 = this.mLikes;
+    if (localObject1 != null)
+    {
+      if (localObject1.length <= paramInt) {
+        return;
+      }
+      localObject2 = this.mLikeBtn;
+      if (localObject1[paramInt] != 0) {
+        paramInt = 2130850541;
+      } else {
+        paramInt = 2130850544;
+      }
+      ((ImageView)localObject2).setImageResource(paramInt);
+      this.mIsBottomBarUp = LocalMultiProcConfig.getBool("BasePictureViewController#mIsBottomBarUp", true);
+      if (this.mIsBottomBarUp)
       {
-        getIntent().putStringArrayListExtra("del_list", (ArrayList)this.jdField_b_of_type_JavaUtilList);
+        if (!TextUtils.isEmpty(this.mPhotoDesc.getText())) {
+          this.mPhotoDesc.setVisibility(0);
+        }
+        this.mBottomBar.setVisibility(0);
+        ((ImageView)this.mBottomBarSwitch).setImageResource(2130850536);
+        return;
+      }
+      this.mPhotoDesc.setVisibility(8);
+      this.mBottomBar.setVisibility(8);
+      ((ImageView)this.mBottomBarSwitch).setImageResource(2130850535);
+    }
+  }
+  
+  void back()
+  {
+    this.mPublicAccountShowPictureReport.leave_mode = 1;
+    if (!this.animated)
+    {
+      Gallery localGallery = this.mGallery;
+      if ((localGallery != null) && (!localGallery.resetScale(false))) {
+        if ((this.mThumbRect != null) && (this.mGallery.getSelectedItemId() == this.mIndex))
+        {
+          if (!applyExitAnimation()) {
+            scaleExit();
+          }
+        }
+        else {
+          scaleExit();
+        }
+      }
+    }
+  }
+  
+  boolean canDelete(int paramInt)
+  {
+    Object localObject = this.mPhotoIds;
+    if ((localObject != null) && (paramInt <= ((ArrayList)localObject).size() - 1))
+    {
+      localObject = this.mExtras;
+      if ((localObject != null) && (((Bundle)localObject).getBoolean("from_personality_label", false))) {
+        return true;
+      }
+    }
+    localObject = this.mExtras;
+    if ((localObject != null) && (((Bundle)localObject).getBoolean("from_extend_Friend_edit", false))) {
+      return true;
+    }
+    localObject = this.mPhotoIds;
+    if ((localObject != null) && (this.mPhotoTimes != null) && (paramInt <= ((ArrayList)localObject).size() - 1))
+    {
+      if (paramInt > this.mPhotoTimes.size() - 1) {
+        return false;
+      }
+      return !TextUtils.isEmpty((String)this.mPhotoIds.get(paramInt));
+    }
+    return false;
+  }
+  
+  void deletePhotoWall(int paramInt)
+  {
+    if ((paramInt < 0) && (paramInt > this.mAdapter.getCount() - 1)) {
+      return;
+    }
+    ArrayList localArrayList = this.mPhotoIds;
+    if ((localArrayList != null) && (this.mPhotoTimes != null) && (paramInt <= localArrayList.size() - 1))
+    {
+      if (paramInt > this.mPhotoTimes.size() - 1) {
+        return;
+      }
+      DialogUtil.a(this, 230).setTitle(getString(2131892872)).setPositiveButton(getString(2131892267), new TroopAvatarWallPreviewActivity.24(this, paramInt)).setNegativeButton(getString(2131887648), new TroopAvatarWallPreviewActivity.23(this)).show();
+      reportPhotoWallAction("0X8006A83", "");
+    }
+  }
+  
+  void deletePic(int paramInt)
+  {
+    if ((paramInt < 0) && (paramInt > this.mAdapter.getCount() - 1)) {
+      return;
+    }
+    if ((this.mAdapter.getCount() == 2) && (this.mAdapter.a(0) != null) && (this.mAdapter.a(0).equals(AvatarInfo.a)))
+    {
+      back();
+      return;
+    }
+    if (this.mAdapter.getCount() > 1)
+    {
+      if (this.mDelList == null) {
+        this.mDelList = new ArrayList();
+      }
+      List localList = this.mDelList;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt);
+      localList.add(localStringBuilder.toString());
+      if (this.mDelList != null)
+      {
+        getIntent().putStringArrayListExtra("del_list", (ArrayList)this.mDelList);
         setResult(-1, getIntent());
       }
       finish();
       return;
     }
-    QQToast.a(this, getString(2131696549), 1).b(getTitleBarHeight());
+    QQToast.makeText(this, getString(2131893837), 1).show(getTitleBarHeight());
   }
   
-  protected void a(URLDrawable paramURLDrawable)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAvatarWallPreviewActivity", 2, "showNearbyActionSheet: extra=" + this.jdField_c_of_type_JavaLangString);
-    }
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
-    do
-    {
-      return;
-      try
-      {
-        Object localObject = new JSONObject(this.jdField_c_of_type_JavaLangString);
-        ((JSONObject)localObject).optString("feedId");
-        String str = ((JSONObject)localObject).optString("tinyId");
-        ((JSONObject)localObject).optString("reason");
-        localObject = ((JSONObject)localObject).optString("uin");
-        bhuf localbhuf = (bhuf)bhus.a(this, null);
-        localbhuf.a(2131693497, 1);
-        if (!this.app.getCurrentAccountUin().equals(localObject)) {
-          localbhuf.a(alud.a(2131715604), 0);
-        }
-        localbhuf.c(2131690648);
-        localbhuf.a(new bbht(this, localbhuf, paramURLDrawable, str, (String)localObject));
-        localbhuf.show();
-        return;
-      }
-      catch (Exception paramURLDrawable) {}
-    } while (!QLog.isColorLevel());
-    QLog.w("TroopAvatarWallPreviewActivity", 2, "showNearbyActionSheet err:", paramURLDrawable);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public void a(URLDrawable paramURLDrawable, String paramString)
-  {
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      azqs.b(this.app, "P_CliOper", "Grp_picViewer", "", "picViewer_actionSheet", "Clk_share", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
-    }
-    new bbip(this, paramURLDrawable, paramString).execute(new Void[0]);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent(this, ScannerActivity.class);
-    localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString1);
-    localIntent.putExtra("QRDecode", true);
-    localIntent.putExtra("QRDecodeResult", paramString1);
-    localIntent.putExtra("report_params", yak.a(null, paramString2, null, null, null, 7));
-    startActivity(localIntent);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (paramInt <= this.jdField_b_of_type_JavaUtilArrayList.size() - 1) && (this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("from_personality_label", false))) {
-      return true;
-    }
-    if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_c_of_type_JavaUtilArrayList == null) || (paramInt > this.jdField_b_of_type_JavaUtilArrayList.size() - 1) || (paramInt > this.jdField_c_of_type_JavaUtilArrayList.size() - 1)) {
-      return false;
-    }
-    return !TextUtils.isEmpty((String)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt));
-  }
-  
-  public String b(boolean paramBoolean)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "picIndex" + this.jdField_a_of_type_Int + ",mSeqNumList.size()" + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      localObject = null;
-    }
-    String str;
-    do
-    {
-      return localObject;
-      str = (String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-      localObject = str;
-    } while (!paramBoolean);
-    if ((str != null) && (str.equals(ainn.jdField_a_of_type_JavaLangString))) {
-      return ainn.jdField_a_of_type_JavaLangString;
-    }
-    return bckq.b(bckq.a(str, this.jdField_a_of_type_JavaLangString, 1));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.m = true;
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setInterpolator(new DecelerateInterpolator());
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.5F, 1.0F, 1.5F, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(500L);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    if (!"5".equals(this.jdField_b_of_type_JavaLangString)) {
-      localAnimationSet.addAnimation(localScaleAnimation);
-    }
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bbib(this));
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new TroopAvatarWallPreviewActivity.20(this);
-    }
-    this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-    this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    if ((this.i) && (this.jdField_d_of_type_AndroidViewView != null)) {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(4);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt < 0) && (paramInt > this.jdField_a_of_type_Bcrz.getCount() - 1)) {}
-    while ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_c_of_type_JavaUtilArrayList == null) || (paramInt > this.jdField_b_of_type_JavaUtilArrayList.size() - 1) || (paramInt > this.jdField_c_of_type_JavaUtilArrayList.size() - 1)) {
-      return;
-    }
-    bdgm.a(this, 230).setTitle(getString(2131695655)).setPositiveButton(getString(2131694953), new bbhz(this, paramInt)).setNegativeButton(getString(2131690648), new bbhy(this)).show();
-    b("0X8006A83", "");
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      azqs.b(this.app, "P_CliOper", "Grp_picViewer", "", "picViewer_actionSheet", "Clk_save", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
-    }
-    if (paramURLDrawable.getStatus() != 1) {
-      return;
-    }
-    new File(alof.bd).mkdirs();
-    String str = alof.bd + this.jdField_a_of_type_JavaLangString + Utils.Crc64String(paramURLDrawable.getURL().toString());
-    File localFile = new File(str);
-    if (!localFile.exists()) {}
-    for (;;)
-    {
-      try
-      {
-        if (localFile.createNewFile()) {
-          b(paramURLDrawable, localFile.getPath());
-        }
-        b("0X8006A82", "0X8006A96");
-        return;
-      }
-      catch (IOException paramURLDrawable)
-      {
-        QQToast.a(this, getString(2131695350), 0).a();
-        continue;
-      }
-      bdgm.a(this, 230).setTitle(getString(2131719335)).setMessage(getString(2131695343)).setPositiveButton(getString(2131719209), new bbhw(this, paramURLDrawable, str)).setNegativeButton(getString(2131694806), new bbhv(this)).show();
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt < 0) && (paramInt > this.jdField_a_of_type_Bcrz.getCount() - 1)) {
-      return;
-    }
-    getIntent().putExtra("default_avator_index", paramInt);
-    setResult(-1, getIntent());
-    finish();
-  }
-  
-  public boolean doOnCreate(Bundle arg1)
+  protected boolean doOnCreate(Bundle arg1)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(???);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sLock)
     {
-      if (h)
+      if (mIsOpen)
       {
         super.finish();
         return false;
       }
-      h = true;
-      if ((this.app == null) || (TextUtils.isEmpty(this.app.getAccount())))
-      {
-        finish();
-        return false;
+      mIsOpen = true;
+      if ((this.app != null) && (!TextUtils.isEmpty(this.app.getAccount()))) {
+        try
+        {
+          setContentView(2131625166);
+          ThreadManager.post(new TroopAvatarWallPreviewActivity.1(this), 8, null, true);
+          return true;
+        }
+        catch (IllegalStateException ???)
+        {
+          QLog.e("TroopAvatarWallPreviewActivity", 1, "setContentView IllegalStateException", ???);
+          return false;
+        }
       }
+      finish();
+      return false;
     }
-    setContentView(2131559181);
-    ThreadManager.post(new TroopAvatarWallPreviewActivity.1(this), 8, null, true);
-    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_b_of_type_Boolean)
+    if (this.mNeedBottomBar)
     {
-      LocalMultiProcConfig.putBool("BasePictureViewController#mIsBottomBarUp", this.n);
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      LocalMultiProcConfig.putBool("BasePictureViewController#mIsBottomBarUp", this.mIsBottomBarUp);
+      unregisterReceiver(this.mReceiver);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.isReport)
+    if (this.mPublicAccountShowPictureReport.isReport)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.showEnd();
-      this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.report(this.app);
+      this.mPublicAccountShowPictureReport.showEnd();
+      this.mPublicAccountShowPictureReport.report(this.app);
     }
-    if ((this.jdField_a_of_type_ComTencentWidgetGallery != null) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-      this.jdField_a_of_type_ComTencentWidgetGallery.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = this.mGallery;
+    if (localObject != null)
+    {
+      Runnable localRunnable = this.setAnimateFlagRunnable;
+      if (localRunnable != null) {
+        ((Gallery)localObject).removeCallbacks(localRunnable);
+      }
     }
-    if (this.jdField_a_of_type_Bbir != null) {
-      this.jdField_a_of_type_Bbir.b();
+    localObject = this.mRotationObserver;
+    if (localObject != null) {
+      ((TroopAvatarWallPreviewActivity.RotationObserver)localObject).b();
+    }
+    localObject = this.pictureShowViewModel;
+    if (localObject != null) {
+      ((PictureShowViewModel)localObject).h();
     }
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.finish();
   }
@@ -1226,72 +1276,375 @@ public class TroopAvatarWallPreviewActivity
     overridePendingTransition(0, 0);
   }
   
-  public boolean isWrapContent()
+  void forward(URLDrawable paramURLDrawable, String paramString)
+  {
+    if (this.mSrcId != null) {
+      ReportController.b(this.app, "P_CliOper", "Grp_picViewer", "", "picViewer_actionSheet", "Clk_share", 0, 0, this.mSrcId, "", "", "");
+    }
+    new TroopAvatarWallPreviewActivity.ForwardAsyncTask(this, this.mTroopUin, this.isFromPlugin, paramURLDrawable, paramString).execute(new Void[0]);
+  }
+  
+  public String getBigPath(boolean paramBoolean)
+  {
+    if (this.mIndex >= this.mSeqNumList.size())
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("picIndex");
+        ((StringBuilder)localObject).append(this.mIndex);
+        ((StringBuilder)localObject).append(",mSeqNumList.size()");
+        ((StringBuilder)localObject).append(this.mSeqNumList.size());
+        QLog.d("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      return null;
+    }
+    Object localObject = (String)this.mSeqNumList.get(this.mIndex);
+    if (paramBoolean)
+    {
+      if ((localObject != null) && (((String)localObject).equals(AvatarInfo.a))) {
+        return AvatarInfo.a;
+      }
+      ITroopAvatarUtilApi localITroopAvatarUtilApi = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
+      return localITroopAvatarUtilApi.getArtWork(localITroopAvatarUtilApi.getAvatarAddress((String)localObject, this.mTroopUin, 1));
+    }
+    return localObject;
+  }
+  
+  Drawable getDrawable(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      paramString = URLDrawable.getDrawable(NearbyImgDownloader.convertURL(paramString));
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      BitmapFactory.Options localOptions;
+      return null;
+    }
+    localOptions = ImageUtil.a(paramString, 100);
+    try
+    {
+      paramString = BitmapFactory.decodeFile(paramString, localOptions);
+      return new BitmapDrawable(paramString);
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      label36:
+      break label36;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAvatarWallPreviewActivity", 2, "getDrawable out off memory");
+    }
+    System.gc();
+    return null;
+  }
+  
+  public String getThumbPath(boolean paramBoolean)
+  {
+    if (this.mIndex >= this.mSeqNumList.size())
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("picIndex");
+        ((StringBuilder)localObject).append(this.mIndex);
+        ((StringBuilder)localObject).append(",mSeqNumList.size()");
+        ((StringBuilder)localObject).append(this.mSeqNumList.size());
+        QLog.d("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      return null;
+    }
+    Object localObject = (String)this.mSeqNumList.get(this.mIndex);
+    if (paramBoolean)
+    {
+      if ((localObject != null) && (((String)localObject).equals(AvatarInfo.a))) {
+        return AvatarInfo.a;
+      }
+      ITroopAvatarUtilApi localITroopAvatarUtilApi = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
+      return localITroopAvatarUtilApi.getThumbPhoto(localITroopAvatarUtilApi.getAvatarAddress((String)localObject, this.mTroopUin, 1));
+    }
+    return localObject;
+  }
+  
+  void initGallery(Bundle paramBundle)
+  {
+    this.mAdapter.a(this.mSrcId);
+    this.mAdapter.a(this.mSeqNumList);
+    this.mAdapter.a(this.mIsFromPhotoWall);
+    ArrayList localArrayList = this.mPreviewPhotoLocation;
+    if (localArrayList != null) {
+      this.mAdapter.a(localArrayList);
+    }
+    this.mAdapter.notifyDataSetChanged();
+    localArrayList = this.mOriginList;
+    if (localArrayList != null) {
+      this.mAdapter.b(localArrayList);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAvatarWallPreviewActivity", 2, " [updateAdapter] 传入链接");
+    }
+    this.mAdapter.b(paramBundle.getBoolean("from_photo_wall", false) ^ true);
+    this.mAdapter.c(paramBundle.getBoolean("is_use_path", false));
+    this.mIndex = paramBundle.getInt("index", -1);
+    this.mGallery.setAdapter(this.mAdapter);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAvatarWallPreviewActivity", 2, " [updateAdapter] 传入adapter");
+    }
+    this.mGallery.setSpacing(getResources().getDimensionPixelSize(2131297535));
+    this.mGallery.setSelection(this.mIndex);
+    this.mGallery.setOnItemClickListener(new TroopAvatarWallPreviewActivity.9(this));
+    this.mGallery.setOnItemSelectedListener(new TroopAvatarWallPreviewActivity.10(this));
+    this.mGallery.setOnItemLongClickListener(new TroopAvatarWallPreviewActivity.11(this));
+  }
+  
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt2 == -1) && (paramInt1 == 21) && (this.k)) {
-      b(paramIntent.getExtras());
+    if ((paramInt2 == -1) && (paramInt1 == 21) && (this.isNeedToAio)) {
+      startChatAndSendMsg(paramIntent.getExtras());
     }
     if ((paramInt1 == 10922) && (paramInt2 == -10069))
     {
       paramIntent = getIntent().getExtras().getString("article_url", "");
-      ors.a(getActivity(), paramIntent);
-      if (this.j) {
-        l();
+      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).jumpTo(getActivity(), paramIntent);
+      if (this.isGridImageReport) {
+        reportReadArticleClick();
       }
     }
   }
   
   public void onBackPressed()
   {
-    a();
+    back();
   }
   
-  public void onDestroy()
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onDestroy()
   {
     super.onDestroy();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sLock)
     {
-      h = false;
-      removeObserver(this.jdField_a_of_type_Awqa);
+      mIsOpen = false;
+      removeObserver(this.mPersonalityLabelObserver);
       return;
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((82 == paramKeyEvent.getKeyCode()) && (this.jdField_f_of_type_Boolean))
+    if ((82 == paramKeyEvent.getKeyCode()) && (this.mIsShowMenu))
     {
-      h();
+      showActionSheet();
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
-    mbt.a(BaseApplicationImpl.getContext(), false);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), false);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
   }
   
-  public void onResume()
+  void onQRDecodeSucceed(String paramString1, String paramString2)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString1);
+    localIntent.putExtra("fromPicQRDecode", true);
+    localIntent.putExtra("report_params", ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).buildQRScanReportParams(null, paramString2, null, null, null, 7));
+    RouteUtils.a(this, localIntent, "/qrscan/scanner");
+  }
+  
+  protected void onResume()
   {
     super.onResume();
-    mbt.a(BaseApplicationImpl.getContext(), true);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), true);
     AbstractGifImage.resumeAll();
     ApngImage.playByTag(0);
+  }
+  
+  void savePicWithOverwrite(URLDrawable paramURLDrawable)
+  {
+    if (this.mSrcId != null) {
+      ReportController.b(this.app, "P_CliOper", "Grp_picViewer", "", "picViewer_actionSheet", "Clk_save", 0, 0, this.mSrcId, "", "", "");
+    }
+    if (paramURLDrawable.getStatus() != 1) {
+      return;
+    }
+    new File(AppConstants.SDCARD_IMG_SAVE).mkdirs();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(AppConstants.SDCARD_IMG_SAVE);
+    ((StringBuilder)localObject1).append(this.mTroopUin);
+    ((StringBuilder)localObject1).append(Utils.Crc64String(paramURLDrawable.getURL().toString()));
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (((String)localObject1).indexOf(".") == -1)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(".gif");
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    else
+    {
+      localObject2 = localObject1;
+    }
+    if (((String)localObject1).indexOf(".") == -1)
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(".jpg");
+      localObject3 = ((StringBuilder)localObject3).toString();
+    }
+    else
+    {
+      localObject3 = localObject1;
+    }
+    Object localObject2 = new File((String)localObject2);
+    Object localObject3 = new File((String)localObject3);
+    if ((!((File)localObject2).exists()) && (!((File)localObject3).exists())) {
+      savePhoto(paramURLDrawable, (String)localObject1);
+    } else {
+      DialogUtil.a(this, 230).setTitle(getString(2131915885)).setMessage(getString(2131892633)).setPositiveButton(getString(2131915687), new TroopAvatarWallPreviewActivity.21(this, paramURLDrawable, (String)localObject1)).setNegativeButton(getString(2131892140), new TroopAvatarWallPreviewActivity.20(this)).show();
+    }
+    reportPhotoWallAction("0X8006A82", "0X8006A96");
+  }
+  
+  public void scaleExit()
+  {
+    Object localObject = this.mPreviewPhotoLocation;
+    int j = 0;
+    int i;
+    int k;
+    int m;
+    if (localObject != null)
+    {
+      j = ((Integer)((ArrayList)localObject).get(0)).intValue();
+      i = ((Integer)this.mPreviewPhotoLocation.get(1)).intValue();
+      k = ((Integer)this.mPreviewPhotoLocation.get(2)).intValue();
+      m = ((Integer)this.mPreviewPhotoLocation.get(3)).intValue();
+    }
+    else
+    {
+      i = 0;
+      k = 0;
+      m = 0;
+    }
+    this.mTextView.setVisibility(4);
+    this.mDelbtn.setVisibility(4);
+    this.mMenuBtn.setVisibility(4);
+    localObject = this.socialBottomBar;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(4);
+    }
+    this.animated = true;
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setInterpolator(new DecelerateInterpolator());
+    localAlphaAnimation.setDuration(500L);
+    localAlphaAnimation.setFillAfter(true);
+    if (this.mIsFromPhotoWall)
+    {
+      float f = j;
+      localObject = new ScaleAnimation(1.0F, 0.2F, 1.0F, 0.2F, 0, k / 2.0F + f, 0, i + m / 2.0F);
+      ((ScaleAnimation)localObject).setDuration(400L);
+      localAlphaAnimation.setDuration(400L);
+    }
+    else
+    {
+      localObject = new ScaleAnimation(1.0F, 1.5F, 1.0F, 1.5F, 1, 0.5F, 1, 0.5F);
+      ((ScaleAnimation)localObject).setDuration(500L);
+    }
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    if (!"5".equals(this.mSrcId)) {
+      localAnimationSet.addAnimation((Animation)localObject);
+    }
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setAnimationListener(new TroopAvatarWallPreviewActivity.29(this));
+    if (this.setAnimateFlagRunnable == null) {
+      this.setAnimateFlagRunnable = new TroopAvatarWallPreviewActivity.30(this);
+    }
+    this.mGallery.postDelayed(this.setAnimateFlagRunnable, 500L);
+    if (this.mIsFromPhotoWall) {
+      this.mGallery.animate().translationX(j).translationY(i);
+    }
+    this.mGallery.startAnimation(localAnimationSet);
+    this.mBgView.startAnimation(localAlphaAnimation);
+    if (this.isShowContentUrl)
+    {
+      localObject = this.mContentUrlLayout;
+      if (localObject != null) {
+        ((View)localObject).setVisibility(4);
+      }
+    }
+  }
+  
+  void setDefaultAvatar(int paramInt)
+  {
+    if ((paramInt < 0) && (paramInt > this.mAdapter.getCount() - 1)) {
+      return;
+    }
+    getIntent().putExtra("default_avator_index", paramInt);
+    setResult(-1, getIntent());
+    finish();
+  }
+  
+  protected void showNearbyActionSheet(URLDrawable paramURLDrawable)
+  {
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("showNearbyActionSheet: extra=");
+      ((StringBuilder)localObject1).append(this.mExtrasStr);
+      QLog.d("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (TextUtils.isEmpty(this.mExtrasStr)) {
+      return;
+    }
+    try
+    {
+      Object localObject2 = new JSONObject(this.mExtrasStr);
+      ((JSONObject)localObject2).optString("feedId");
+      localObject1 = ((JSONObject)localObject2).optString("tinyId");
+      ((JSONObject)localObject2).optString("reason");
+      localObject2 = ((JSONObject)localObject2).optString("uin");
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
+      localActionSheet.addButton(2131890810, 1);
+      if (!this.app.getCurrentAccountUin().equals(localObject2)) {
+        localActionSheet.addButton(HardCodeUtil.a(2131912485), 0);
+      }
+      localActionSheet.addCancelButton(2131887648);
+      localActionSheet.setOnButtonClickListener(new TroopAvatarWallPreviewActivity.18(this, localActionSheet, paramURLDrawable, (String)localObject1, (String)localObject2));
+      localActionSheet.show();
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopAvatarWallPreviewActivity", 2, "showNearbyActionSheet err:", paramURLDrawable);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -47,14 +47,16 @@ public class GLLyricsView
   
   public void drawText()
   {
-    this.mBitmap = Bitmap.createBitmap((int)(getTextWidth() + this.textShadowPadding), this.textSize + this.textShadowPadding, Bitmap.Config.ARGB_8888);
+    float f = getTextWidth();
+    int i = this.textShadowPadding;
+    this.mBitmap = Bitmap.createBitmap((int)(f + i), this.textSize + i, Bitmap.Config.ARGB_8888);
     this.mCanvas = new Canvas(this.mBitmap);
     this.mTextPaint.setTextSize(this.textSize);
     this.mTextPaint.setColor(this.textColor);
     this.mTextPaint.setAntiAlias(true);
     this.mTextPaint.setFakeBoldText(true);
     this.mTextPaint.setDither(true);
-    float f = Math.abs(this.mTextPaint.getFontMetrics().ascent) + this.textShadowPadding / 2;
+    f = Math.abs(this.mTextPaint.getFontMetrics().ascent) + this.textShadowPadding / 2;
     if (this.mStrokePaint == null)
     {
       this.mStrokePaint = new TextPaint();
@@ -136,7 +138,7 @@ public class GLLyricsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLLyricsView
  * JD-Core Version:    0.7.0.1
  */

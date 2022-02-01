@@ -8,10 +8,10 @@ public final class TNowBroadcastInfo
   extends JceStruct
 {
   static byte[] cache_vAnchorDataRsp = (byte[])new byte[1];
-  public int iFlag;
+  public int iFlag = 0;
   public String strHrefURL = "";
   public String strIconURL = "";
-  public byte[] vAnchorDataRsp;
+  public byte[] vAnchorDataRsp = null;
   
   static
   {
@@ -39,20 +39,23 @@ public final class TNowBroadcastInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iFlag, 0);
-    if (this.strIconURL != null) {
-      paramJceOutputStream.write(this.strIconURL, 1);
+    Object localObject = this.strIconURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strHrefURL != null) {
-      paramJceOutputStream.write(this.strHrefURL, 2);
+    localObject = this.strHrefURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vAnchorDataRsp != null) {
-      paramJceOutputStream.write(this.vAnchorDataRsp, 3);
+    localObject = this.vAnchorDataRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TNowBroadcastInfo
  * JD-Core Version:    0.7.0.1
  */

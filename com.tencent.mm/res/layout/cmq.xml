@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/j4l" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/koq" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/a">
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/gb" android:gravity="center" android:id="@id/ko8" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/a" android:text="aaa" android:alpha="0.0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/a2w" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_filled_back" />
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

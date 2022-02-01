@@ -4,31 +4,30 @@ public abstract class j<T>
 {
   private volatile T mInstance;
   
-  protected abstract T dTV();
-  
   public final T get()
   {
-    Object localObject1 = this.mInstance;
-    if (localObject1 == null) {
-      try
+    Object localObject3 = this.mInstance;
+    Object localObject1 = localObject3;
+    if (localObject3 == null) {}
+    try
+    {
+      localObject3 = this.mInstance;
+      localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        Object localObject2 = this.mInstance;
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = dTV();
-          this.mInstance = localObject1;
-        }
-        return localObject1;
+        localObject1 = gtQ();
+        this.mInstance = localObject1;
       }
-      finally {}
+      return localObject1;
     }
-    return ?;
+    finally {}
   }
+  
+  protected abstract T gtQ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.f.j
  * JD-Core Version:    0.7.0.1
  */

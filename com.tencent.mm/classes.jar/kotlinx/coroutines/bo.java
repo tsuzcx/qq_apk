@@ -1,117 +1,37 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.f.b.j;
-import a.l;
-import a.p;
-import a.p.a;
-import a.q;
-import a.y;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.a.o;
+import java.util.concurrent.locks.LockSupport;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"MODE_ATOMIC_DEFAULT", "", "MODE_ATOMIC_DEFAULT$annotations", "()V", "MODE_CANCELLABLE", "MODE_CANCELLABLE$annotations", "MODE_DIRECT", "MODE_DIRECT$annotations", "MODE_IGNORE", "MODE_IGNORE$annotations", "MODE_UNDISPATCHED", "MODE_UNDISPATCHED$annotations", "isCancellableMode", "", "(I)Z", "isDispatchedMode", "resumeMode", "", "T", "Lkotlin/coroutines/Continuation;", "value", "mode", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;I)V", "resumeUninterceptedMode", "resumeUninterceptedWithExceptionMode", "exception", "", "resumeWithExceptionMode", "kotlinx-coroutines-core"})
-public final class bo
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class bo
+  extends bm
 {
-  public static final boolean Wg(int paramInt)
+  protected final void Co()
   {
-    return paramInt == 1;
+    Thread localThread = getThread();
+    if ((Thread.currentThread() != localThread) && (c.ajvf == null)) {
+      LockSupport.unpark(localThread);
+    }
   }
   
-  public static final <T> void a(c<? super T> paramc, T paramT, int paramInt)
+  protected final void c(long paramLong, bn.c paramc)
   {
-    AppMethodBeat.i(118527);
-    j.q(paramc, "receiver$0");
-    Object localObject1;
-    switch (paramInt)
+    if (au.ASSERTIONS_ENABLED)
     {
-    default: 
-      paramc = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-      AppMethodBeat.o(118527);
-      throw paramc;
-    case 0: 
-      localObject1 = p.BLX;
-      paramc.dg(p.de(paramT));
-      AppMethodBeat.o(118527);
-      return;
-    case 1: 
-      am.a(paramc, paramT);
-      AppMethodBeat.o(118527);
-      return;
-    case 2: 
-      am.b(paramc, paramT);
-      AppMethodBeat.o(118527);
-      return;
-    case 3: 
-      Object localObject2 = (al)paramc;
-      paramc = ((al)localObject2).eaV();
-      localObject1 = o.b(paramc, ((al)localObject2).CHM);
-      try
-      {
-        localObject2 = ((al)localObject2).CHO;
-        p.a locala = p.BLX;
-        ((c)localObject2).dg(p.de(paramT));
-        paramT = y.BMg;
-        return;
-      }
-      finally
-      {
-        o.a(paramc, localObject1);
-        AppMethodBeat.o(118527);
+      if (this != aw.ajvR) {}
+      for (int i = 1; i == 0; i = 0) {
+        throw new AssertionError();
       }
     }
-    AppMethodBeat.o(118527);
+    aw.ajvR.a(paramLong, paramc);
   }
   
-  public static final <T> void a(c<? super T> paramc, Throwable paramThrowable, int paramInt)
-  {
-    AppMethodBeat.i(118528);
-    j.q(paramc, "receiver$0");
-    j.q(paramThrowable, "exception");
-    Object localObject1;
-    switch (paramInt)
-    {
-    default: 
-      paramc = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-      AppMethodBeat.o(118528);
-      throw paramc;
-    case 0: 
-      localObject1 = p.BLX;
-      paramc.dg(p.de(q.n(paramThrowable)));
-      AppMethodBeat.o(118528);
-      return;
-    case 1: 
-      am.a(paramc, paramThrowable);
-      AppMethodBeat.o(118528);
-      return;
-    case 2: 
-      am.b(paramc, paramThrowable);
-      AppMethodBeat.o(118528);
-      return;
-    case 3: 
-      Object localObject2 = (al)paramc;
-      paramc = ((al)localObject2).eaV();
-      localObject1 = o.b(paramc, ((al)localObject2).CHM);
-      try
-      {
-        localObject2 = ((al)localObject2).CHO;
-        p.a locala = p.BLX;
-        ((c)localObject2).dg(p.de(q.n(paramThrowable)));
-        paramThrowable = y.BMg;
-        return;
-      }
-      finally
-      {
-        o.a(paramc, localObject1);
-        AppMethodBeat.o(118528);
-      }
-    }
-    AppMethodBeat.o(118528);
-  }
+  protected abstract Thread getThread();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bo
  * JD-Core Version:    0.7.0.1
  */

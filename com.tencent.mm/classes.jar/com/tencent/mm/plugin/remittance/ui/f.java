@@ -1,129 +1,180 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.i;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import java.lang.ref.WeakReference;
 
 public final class f
-  extends i
-  implements View.OnClickListener
 {
-  protected View iCk;
-  private int mScene;
-  private View.OnClickListener qoU;
+  WeakReference<Context> eIW;
   
-  private f(Context paramContext)
+  public static f gMD()
   {
-    this(paramContext, (byte)0);
-  }
-  
-  private f(Context paramContext, byte paramByte)
-  {
-    super(paramContext, 2131493885);
-    AppMethodBeat.i(44982);
-    this.mScene = 0;
-    this.iCk = View.inflate(paramContext, 2130970573, null);
-    setContentView(this.iCk);
-    ((Button)this.iCk.findViewById(2131822887)).setOnClickListener(this);
-    ((Button)this.iCk.findViewById(2131827307)).setOnClickListener(this);
-    AppMethodBeat.o(44982);
-  }
-  
-  public static f a(Context paramContext, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3, String paramString, View.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(44985);
-    ab.i("RemittanceChargeDialog", "showCostDetail");
-    f localf = new f(paramContext);
-    localf.mScene = paramInt;
-    if (paramDouble1 == 0.0D) {
-      ab.i("RemittanceChargeDialog", "showCostDetail ::: remian_fee = 0");
-    }
-    ((TextView)localf.findViewById(2131827303)).setText(e.F(paramDouble1));
-    ((TextView)localf.findViewById(2131827304)).setText(e.F(paramDouble2));
-    if (paramDouble3 == 0.0D) {
-      ab.e("RemittanceChargeDialog", "showCostDetail ::: transaction_costs = 0");
-    }
-    ((TextView)localf.findViewById(2131827301)).setText(e.F(paramDouble3));
-    localf.findViewById(2131827300).setVisibility(0);
-    if (!bo.isNullOrNil(paramString))
+    try
     {
-      TextView localTextView = (TextView)localf.findViewById(2131827297);
-      localTextView.setText(paramString);
-      localTextView.setVisibility(0);
-    }
-    localf.findViewById(2131827305).setVisibility(0);
-    localf.qoU = paramOnClickListener;
-    localf.findViewById(2131823301).setOnClickListener(new f.1(localf));
-    localf.show();
-    com.tencent.mm.ui.base.h.a(paramContext, localf);
-    if (paramInt == 1) {
-      com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(10), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(44985);
+      f localf = a.OmO;
       return localf;
-      com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public static void a(Context paramContext, int paramInt, String paramString, double paramDouble)
+  public final e a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44984);
-    ab.i("RemittanceChargeDialog", "showAlert");
-    f localf = new f(paramContext);
-    localf.mScene = paramInt;
-    ab.i("RemittanceChargeDialog", "showTips");
-    TextView localTextView = (TextView)localf.findViewById(2131827297);
-    if (bo.isNullOrNil(paramString)) {
-      ab.e("RemittanceChargeDialog", "desc is null");
-    }
-    for (;;)
+    AppMethodBeat.i(67989);
+    Log.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert2() msg:%s, title:%s", new Object[] { Util.nullAsNil(paramString), Util.nullAsNil(null) });
+    Context localContext = (Context)this.eIW.get();
+    if (localContext == null)
     {
-      ((TextView)localf.findViewById(2131827299)).setText(paramContext.getResources().getString(2131302587, new Object[] { e.F(paramDouble) }));
-      localf.findViewById(2131827306).setVisibility(0);
-      localf.findViewById(2131827298).setVisibility(0);
-      localf.show();
-      com.tencent.mm.ui.base.h.a(paramContext, localf);
-      AppMethodBeat.o(44984);
-      return;
-      localTextView.setText(paramString);
-      localTextView.setVisibility(0);
+      Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      AppMethodBeat.o(67989);
+      return null;
     }
+    paramString = k.a(localContext, paramString, null, false, paramOnClickListener);
+    AppMethodBeat.o(67989);
+    return paramString;
   }
   
-  public final void onClick(View paramView)
+  public final e a(String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    AppMethodBeat.i(44983);
-    if (paramView.getId() != 2131823301)
+    AppMethodBeat.i(67988);
+    Log.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert1() msg:%s, title:%s, yes:%s, no:%s", new Object[] { Util.nullAsNil(paramString1), Util.nullAsNil(paramString2), Util.nullAsNil(paramString3), Util.nullAsNil(paramString4) });
+    Context localContext = (Context)this.eIW.get();
+    if (localContext == null)
     {
-      ab.i("RemittanceChargeDialog", "click cancel");
-      dismiss();
+      Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      AppMethodBeat.o(67988);
+      return null;
     }
-    if (paramView.getId() == 2131822887)
+    paramString1 = k.b(localContext, paramString1, paramString2, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2);
+    AppMethodBeat.o(67988);
+    return paramString1;
+  }
+  
+  public final boolean gME()
+  {
+    AppMethodBeat.i(163813);
+    Log.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitF2fDCodeAndLMRemindUI()");
+    Context localContext = (Context)this.eIW.get();
+    if (localContext == null)
     {
-      if (this.mScene == 1)
-      {
-        com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(11), Integer.valueOf(1) });
-        AppMethodBeat.o(44983);
-        return;
-      }
-      com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+      Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      AppMethodBeat.o(163813);
+      return false;
     }
-    AppMethodBeat.o(44983);
+    if ((localContext instanceof RemittanceF2fDynamicCodeUI))
+    {
+      Log.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fDynamicCodeUI");
+      ((Activity)localContext).finish();
+      AppMethodBeat.o(163813);
+      return true;
+    }
+    if ((localContext instanceof RemittanceF2fLargeMoneyUI))
+    {
+      Log.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fLargeMoneyUI");
+      ((Activity)localContext).finish();
+      AppMethodBeat.o(163813);
+      return true;
+    }
+    AppMethodBeat.o(163813);
+    return false;
+  }
+  
+  public final boolean gMF()
+  {
+    AppMethodBeat.i(163814);
+    Log.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitLMRemindUI()");
+    Context localContext = (Context)this.eIW.get();
+    if (localContext == null)
+    {
+      Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      AppMethodBeat.o(163814);
+      return false;
+    }
+    if ((localContext instanceof RemittanceF2fLargeMoneyUI))
+    {
+      Log.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fLargeMoneyUI");
+      ((Activity)localContext).finish();
+      AppMethodBeat.o(163814);
+      return true;
+    }
+    AppMethodBeat.o(163814);
+    return false;
+  }
+  
+  public final boolean gMG()
+  {
+    AppMethodBeat.i(163815);
+    Log.w("MicroMsg.RemittanceBusiDialogMgr", "showSafeProgress()");
+    Context localContext = (Context)this.eIW.get();
+    if (localContext == null)
+    {
+      Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      AppMethodBeat.o(163815);
+      return false;
+    }
+    if ((localContext instanceof RemittanceBusiUI))
+    {
+      AppMethodBeat.o(163815);
+      return false;
+    }
+    if ((localContext instanceof WalletBaseUI))
+    {
+      ((WalletBaseUI)localContext).showSafeProgress();
+      AppMethodBeat.o(163815);
+      return true;
+    }
+    AppMethodBeat.o(163815);
+    return false;
+  }
+  
+  public final Context getContext()
+  {
+    AppMethodBeat.i(163812);
+    Context localContext = (Context)this.eIW.get();
+    if (localContext == null)
+    {
+      Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
+      AppMethodBeat.o(163812);
+      return null;
+    }
+    AppMethodBeat.o(163812);
+    return localContext;
+  }
+  
+  public final void jt(Context paramContext)
+  {
+    AppMethodBeat.i(67986);
+    Log.i("MicroMsg.RemittanceBusiDialogMgr", "attach() %s", new Object[] { paramContext.getClass().getSimpleName() });
+    this.eIW = new WeakReference(paramContext);
+    AppMethodBeat.o(67986);
+  }
+  
+  static final class a
+  {
+    static f OmO;
+    
+    static
+    {
+      AppMethodBeat.i(67985);
+      OmO = new f();
+      AppMethodBeat.o(67985);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.f
  * JD-Core Version:    0.7.0.1
  */

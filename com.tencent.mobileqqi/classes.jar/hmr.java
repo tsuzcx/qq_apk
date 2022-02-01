@@ -1,37 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public final class hmr
-  implements Parcelable.Creator
+public class hmr
+  implements Runnable
 {
-  public DownloadInfo a(Parcel paramParcel)
-  {
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.d = paramParcel.readString();
-    localDownloadInfo.e = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.a = paramParcel.readInt();
-    localDownloadInfo.g = paramParcel.readString();
-    localDownloadInfo.h = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.j = paramParcel.readInt();
-    localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDownloadInfo.jdField_c_of_type_Boolean = bool;
-      return localDownloadInfo;
-    }
-  }
+  public hmr(DownloadManager paramDownloadManager) {}
   
-  public DownloadInfo[] a(int paramInt)
+  public void run()
   {
-    return new DownloadInfo[paramInt];
+    if (!this.a.a)
+    {
+      if (!MyAppApi.a().b()) {
+        this.a.a(true);
+      }
+      this.a.a = true;
+    }
   }
 }
 

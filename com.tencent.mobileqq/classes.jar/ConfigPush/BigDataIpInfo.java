@@ -8,8 +8,8 @@ public final class BigDataIpInfo
   extends JceStruct
 {
   public String sIp = "";
-  public long uPort;
-  public long uType;
+  public long uPort = 0L;
+  public long uType = 0L;
   
   public BigDataIpInfo() {}
   
@@ -36,7 +36,7 @@ public final class BigDataIpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.BigDataIpInfo
  * JD-Core Version:    0.7.0.1
  */

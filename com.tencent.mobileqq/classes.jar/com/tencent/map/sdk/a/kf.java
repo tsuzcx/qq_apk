@@ -66,42 +66,44 @@ public final class kf
   
   public final void c()
   {
-    int m;
-    for (;;)
+    synchronized (this.h)
     {
-      nv localnv;
-      synchronized (this.h)
+      this.j.clear();
+      this.i.clear();
+      int m = 0;
+      Object localObject1 = this.g.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        this.j.clear();
-        this.i.clear();
-        Iterator localIterator = this.g.iterator();
-        m = 0;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localnv = (nv)localIterator.next();
+        nv localnv = (nv)((Iterator)localObject1).next();
         if (localnv.m)
         {
           m = 1;
           this.i.add(localnv);
         }
+        else
+        {
+          this.j.add(localnv);
+        }
       }
-      this.j.add(localnv);
-    }
-    this.g.clear();
-    Object localObject2;
-    if (m != 0)
-    {
-      localObject2 = this.g;
-      this.g = this.i;
-      this.i = ((ArrayList)localObject2);
-    }
-    if (this.j.size() > 0)
-    {
-      localObject2 = this.j.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((nv)((Iterator)localObject2).next()).a();
+      this.g.clear();
+      if (m != 0)
+      {
+        localObject1 = this.g;
+        this.g = this.i;
+        this.i = ((ArrayList)localObject1);
       }
+      if (this.j.size() > 0)
+      {
+        localObject1 = this.j.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((nv)((Iterator)localObject1).next()).a();
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -119,17 +121,12 @@ public final class kf
           this.g.remove(localnv);
         }
       }
-    }
-    synchronized (this.h)
-    {
-      boolean bool = this.g.isEmpty();
-      if (!bool)
+      synchronized (this.h)
       {
-        return true;
-        localObject1 = finally;
-        throw localObject1;
-        localObject2 = finally;
-        throw localObject2;
+        boolean bool = this.g.isEmpty();
+        if (!bool) {
+          return true;
+        }
       }
     }
     return false;
@@ -137,7 +134,7 @@ public final class kf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.kf
  * JD-Core Version:    0.7.0.1
  */

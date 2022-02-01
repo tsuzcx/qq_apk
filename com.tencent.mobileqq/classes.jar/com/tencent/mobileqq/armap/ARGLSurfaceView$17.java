@@ -7,12 +7,13 @@ class ARGLSurfaceView$17
   
   public void run()
   {
-    this.this$0.native_updatePitch(this.this$0.mEngineHandler, this.val$pitch);
+    ARGLSurfaceView localARGLSurfaceView = this.this$0;
+    localARGLSurfaceView.native_updatePitch(localARGLSurfaceView.mEngineHandler, this.val$pitch);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView.17
  * JD-Core Version:    0.7.0.1
  */

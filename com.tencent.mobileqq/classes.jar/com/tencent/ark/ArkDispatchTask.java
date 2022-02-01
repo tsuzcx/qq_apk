@@ -10,8 +10,8 @@ public class ArkDispatchTask
 {
   protected static final ArkEnvironmentManager ENV = ;
   protected static final String LOG_TAG = "ArkApp.DispatchTask";
-  private Handler mMainHandler = new Handler(Looper.getMainLooper());
-  private Handler mSubHandler;
+  private final Handler mMainHandler = new Handler(Looper.getMainLooper());
+  private final Handler mSubHandler;
   private HandlerThread mSubThread = ENV.createHandlerThread("ArkAppThread");
   
   private ArkDispatchTask()
@@ -19,7 +19,7 @@ public class ArkDispatchTask
     if (this.mSubThread == null)
     {
       this.mSubThread = new HandlerThread("ArkAppThread", -1);
-      ENV.logD("ArkApp.DispatchTask", "ENV not init thread use Ark's HandlerThread");
+      Logger.logD("ArkApp.DispatchTask", "ENV not init thread use Ark's HandlerThread");
     }
     this.mSubThread.start();
     this.mSubHandler = new Handler(this.mSubThread.getLooper());
@@ -41,7 +41,7 @@ public class ArkDispatchTask
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ENV.logD("ArkApp.DispatchTask", "DispatchTask.CheckQueueValid false, queuekey is empty ");
+      Logger.logD("ArkApp.DispatchTask", "DispatchTask.CheckQueueValid false, queuekey is empty ");
       return false;
     }
     return true;
@@ -59,95 +59,133 @@ public class ArkDispatchTask
   
   public void post(String paramString, Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (!CheckQueueValid(paramString))) {
-      return;
-    }
-    try
+    if (paramRunnable != null)
     {
-      ArkDispatchQueue.asyncRun(paramString, paramRunnable);
-      return;
-    }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      ENV.logE("ArkApp.DispatchTask", "DispatchTask.post.exception: " + paramString.getLocalizedMessage());
+      if (!CheckQueueValid(paramString)) {
+        return;
+      }
+      try
+      {
+        ArkDispatchQueue.asyncRun(paramString, paramRunnable);
+        return;
+      }
+      catch (UnsatisfiedLinkError paramString)
+      {
+        paramRunnable = new StringBuilder();
+        paramRunnable.append("DispatchTask.post.exception: ");
+        paramRunnable.append(paramString.getLocalizedMessage());
+        Logger.logE("ArkApp.DispatchTask", paramRunnable.toString());
+      }
     }
   }
   
   public void postDelayed(String paramString, Runnable paramRunnable, long paramLong)
   {
-    if ((paramRunnable == null) || (!CheckQueueValid(paramString))) {
-      return;
-    }
-    try
+    if (paramRunnable != null)
     {
-      ArkDispatchQueue.asyncRun(paramString, paramRunnable, paramLong);
-      return;
-    }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      ENV.logE("ArkApp.DispatchTask", "DispatchTask.postDelayed.exception: " + paramString.getLocalizedMessage());
+      if (!CheckQueueValid(paramString)) {
+        return;
+      }
+      try
+      {
+        ArkDispatchQueue.asyncRun(paramString, paramRunnable, paramLong);
+        return;
+      }
+      catch (UnsatisfiedLinkError paramString)
+      {
+        paramRunnable = new StringBuilder();
+        paramRunnable.append("DispatchTask.postDelayed.exception: ");
+        paramRunnable.append(paramString.getLocalizedMessage());
+        Logger.logE("ArkApp.DispatchTask", paramRunnable.toString());
+      }
     }
   }
   
   public void postToArkThread(Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (this.mSubHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.mSubHandler;
+      if (localHandler == null) {
+        return;
+      }
+      postImpl(localHandler, paramRunnable, 0L);
     }
-    postImpl(this.mSubHandler, paramRunnable, 0L);
   }
   
   public void postToArkThreadDelay(Runnable paramRunnable, long paramLong)
   {
-    if ((paramRunnable == null) || (this.mSubHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.mSubHandler;
+      if (localHandler == null) {
+        return;
+      }
+      postImpl(localHandler, paramRunnable, paramLong);
     }
-    postImpl(this.mSubHandler, paramRunnable, paramLong);
   }
   
   public void postToMainThread(Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (this.mMainHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.mMainHandler;
+      if (localHandler == null) {
+        return;
+      }
+      postImpl(localHandler, paramRunnable, 0L);
     }
-    postImpl(this.mMainHandler, paramRunnable, 0L);
   }
   
   public void postToMainThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    if ((paramRunnable == null) || (this.mMainHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.mMainHandler;
+      if (localHandler == null) {
+        return;
+      }
+      localHandler.postDelayed(paramRunnable, paramLong);
     }
-    this.mMainHandler.postDelayed(paramRunnable, paramLong);
   }
   
   public void removeTaskInMainThread(Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (this.mMainHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.mMainHandler;
+      if (localHandler == null) {
+        return;
+      }
+      localHandler.removeCallbacks(paramRunnable);
     }
-    this.mMainHandler.removeCallbacks(paramRunnable);
   }
   
   public void send(String paramString, Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (!CheckQueueValid(paramString))) {
-      return;
-    }
-    try
+    if (paramRunnable != null)
     {
-      ArkDispatchQueue.syncRun(paramString, paramRunnable);
-      return;
-    }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      ENV.logE("ArkApp.DispatchTask", "DispatchTask.send.exception: " + paramString.getLocalizedMessage());
+      if (!CheckQueueValid(paramString)) {
+        return;
+      }
+      try
+      {
+        ArkDispatchQueue.syncRun(paramString, paramRunnable);
+        return;
+      }
+      catch (UnsatisfiedLinkError paramString)
+      {
+        paramRunnable = new StringBuilder();
+        paramRunnable.append("DispatchTask.send.exception: ");
+        paramRunnable.append(paramString.getLocalizedMessage());
+        Logger.logE("ArkApp.DispatchTask", paramRunnable.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkDispatchTask
  * JD-Core Version:    0.7.0.1
  */

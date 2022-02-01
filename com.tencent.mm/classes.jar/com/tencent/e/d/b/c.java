@@ -1,62 +1,47 @@
 package com.tencent.e.d.b;
 
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Method;
+import java.io.Closeable;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public final class c
 {
-  private static Object Bkp;
-  private static Method Bkq;
-  private static boolean Bkr;
-  
-  static
+  public static void closeQuietly(Closeable paramCloseable)
   {
-    AppMethodBeat.i(114521);
-    Bkp = null;
-    Bkq = null;
-    if (Build.VERSION.SDK_INT >= 14) {
-      try
-      {
-        Bkp = e.iR("libcore.io.Libcore", "os");
-        Bkq = e.a("libcore.io.Os", "stat", new Class[] { String.class });
-        Bkr = true;
-        AppMethodBeat.o(114521);
-        return;
+    AppMethodBeat.i(138359);
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(138359);
+    }
+  }
+  
+  public static long f(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    AppMethodBeat.i(138360);
+    byte[] arrayOfByte = new byte[4096];
+    int i;
+    for (long l = 0L;; l += i)
+    {
+      i = paramInputStream.read(arrayOfByte);
+      if (-1 == i) {
+        break;
       }
-      catch (Throwable localThrowable) {}
+      paramOutputStream.write(arrayOfByte, 0, i);
     }
-    Bkr = false;
-    AppMethodBeat.o(114521);
-  }
-  
-  public static int awC(String paramString)
-  {
-    AppMethodBeat.i(114520);
-    if (!Bkr)
-    {
-      AppMethodBeat.o(114520);
-      return 0;
-    }
-    paramString = Bkq.invoke(Bkp, new Object[] { paramString });
-    if (paramString == null)
-    {
-      AppMethodBeat.o(114520);
-      return 0;
-    }
-    int i = ((Integer)e.a(paramString.getClass(), "st_mode", paramString)).intValue();
-    AppMethodBeat.o(114520);
-    return i;
-  }
-  
-  public static boolean isAvailable()
-  {
-    return Bkr;
+    AppMethodBeat.o(138360);
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.e.d.b.c
  * JD-Core Version:    0.7.0.1
  */

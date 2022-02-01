@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stComment
   extends JceStruct
 {
-  public int count;
+  public int count = 0;
   
   public stComment() {}
   
@@ -28,7 +28,7 @@ public final class stComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stComment
  * JD-Core Version:    0.7.0.1
  */

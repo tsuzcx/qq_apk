@@ -2,268 +2,277 @@ package com.tencent.mm.model.b;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
 public class b
 {
-  private boolean fot;
   public ArrayList<b.a> mListeners;
+  private boolean ooj;
   
   public b()
   {
-    AppMethodBeat.i(16355);
+    AppMethodBeat.i(20401);
     this.mListeners = new ArrayList();
-    this.fot = false;
-    AppMethodBeat.o(16355);
+    this.ooj = false;
+    AppMethodBeat.o(20401);
   }
   
   private void a(String paramString1, String paramString2, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean3, boolean paramBoolean4, String paramString5)
   {
-    AppMethodBeat.i(16364);
-    aw.aaz();
-    c.Ru().set(ac.a.yGP, paramString3);
-    aw.aaz();
-    c.Ru().set(ac.a.yGQ, paramString4);
-    aw.aaz();
-    c.Ru().set(ac.a.yGR, Long.valueOf(paramLong2));
-    aw.aaz();
-    c.Ru().set(ac.a.yGS, Boolean.valueOf(paramBoolean3));
-    aw.aaz();
-    c.Ru().set(ac.a.yGT, Boolean.valueOf(paramBoolean4));
-    aw.aaz();
-    c.Ru().set(ac.a.yGV, paramString5);
-    aw.aaz();
-    c.Ru().set(ac.a.yGU, Boolean.FALSE);
-    aw.aaz();
-    c.Ru().set(ac.a.yGW, paramString1);
-    aw.aaz();
-    c.Ru().set(ac.a.yGX, paramString2);
-    aw.aaz();
-    c.Ru().set(ac.a.yGY, Long.valueOf(paramLong1));
-    aw.aaz();
-    c.Ru().set(ac.a.yGZ, Boolean.valueOf(paramBoolean1));
-    aw.aaz();
-    c.Ru().set(ac.a.yHa, Boolean.valueOf(paramBoolean2));
-    aw.aaz();
-    c.Ru().set(ac.a.yHc, Long.valueOf(bo.aox()));
-    aw.aaz();
-    c.Ru().set(ac.a.yHb, Boolean.FALSE);
-    aw.aaz();
-    c.Ru().set(ac.a.yHd, Boolean.FALSE);
-    aw.aaz();
-    c.Ru().dww();
-    abG();
-    AppMethodBeat.o(16364);
+    AppMethodBeat.i(20410);
+    bh.bCz();
+    c.ban().set(at.a.acRZ, paramString3);
+    bh.bCz();
+    c.ban().set(at.a.acSa, paramString4);
+    bh.bCz();
+    c.ban().set(at.a.acSb, Long.valueOf(paramLong2));
+    bh.bCz();
+    c.ban().set(at.a.acSc, Boolean.valueOf(paramBoolean3));
+    bh.bCz();
+    c.ban().set(at.a.acSd, Boolean.valueOf(paramBoolean4));
+    bh.bCz();
+    c.ban().set(at.a.acSf, paramString5);
+    bh.bCz();
+    c.ban().set(at.a.acSe, Boolean.FALSE);
+    bh.bCz();
+    c.ban().set(at.a.acSg, paramString1);
+    bh.bCz();
+    c.ban().set(at.a.acSh, paramString2);
+    bh.bCz();
+    c.ban().set(at.a.acSi, Long.valueOf(paramLong1));
+    bh.bCz();
+    c.ban().set(at.a.acSj, Boolean.valueOf(paramBoolean1));
+    bh.bCz();
+    c.ban().set(at.a.acSk, Boolean.valueOf(paramBoolean2));
+    bh.bCz();
+    c.ban().set(at.a.acSm, Long.valueOf(Util.nowSecond()));
+    bh.bCz();
+    c.ban().set(at.a.acSl, Boolean.FALSE);
+    bh.bCz();
+    c.ban().set(at.a.acSn, Boolean.FALSE);
+    bh.bCz();
+    c.ban().iZy();
+    bEc();
+    AppMethodBeat.o(20410);
   }
   
   public static boolean a(b.b paramb)
   {
-    AppMethodBeat.i(16367);
-    ab.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: is checking monitor banner scene: %s", new Object[] { paramb });
-    long l2 = bo.aox();
-    aw.aaz();
-    long l3 = ((Long)c.Ru().get(ac.a.yHc, Long.valueOf(-1L))).longValue();
-    aw.aaz();
-    String str = (String)c.Ru().get(ac.a.yGV, "");
+    AppMethodBeat.i(20413);
+    Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: is checking monitor banner scene: %s", new Object[] { paramb });
+    long l2 = Util.nowSecond();
+    bh.bCz();
+    long l3 = ((Long)c.ban().get(at.a.acSm, Long.valueOf(-1L))).longValue();
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSf, "");
     long l1;
     boolean bool2;
     boolean bool1;
-    if (paramb == b.b.fow)
+    if (paramb == b.b.ool)
     {
-      aw.aaz();
-      l1 = ((Long)c.Ru().get(ac.a.yGR, Long.valueOf(0L))).longValue();
-      aw.aaz();
-      bool2 = ((Boolean)c.Ru().get(ac.a.yGU, Boolean.FALSE)).booleanValue();
-      bool1 = abF();
-      paramb = abC();
+      bh.bCz();
+      l1 = ((Long)c.ban().get(at.a.acSb, Long.valueOf(0L))).longValue();
+      bh.bCz();
+      bool2 = ((Boolean)c.ban().get(at.a.acSe, Boolean.FALSE)).booleanValue();
+      bool1 = bEa();
+      paramb = bDX();
     }
-    while (!bo.isNullOrNil(str)) {
+    while (!Util.isNullOrNil(str)) {
       if (!str.equals(Build.FINGERPRINT))
       {
-        h.qsU.idkeyStat(633L, 5L, 1L, false);
-        ab.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] NOT equals current device's [%s] , should NOT show banner", new Object[] { str, Build.FINGERPRINT });
-        AppMethodBeat.o(16367);
+        h.OAn.idkeyStat(633L, 5L, 1L, false);
+        Log.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] NOT equals current device's [%s] , should NOT show banner", new Object[] { str, Build.FINGERPRINT });
+        AppMethodBeat.o(20413);
         return false;
-        aw.aaz();
-        l1 = ((Long)c.Ru().get(ac.a.yGY, Long.valueOf(0L))).longValue();
-        aw.aaz();
-        bool2 = ((Boolean)c.Ru().get(ac.a.yHb, Boolean.FALSE)).booleanValue();
-        aw.aaz();
-        bool1 = ((Boolean)c.Ru().get(ac.a.yHa, Boolean.FALSE)).booleanValue();
-        paramb = abz();
+        bh.bCz();
+        l1 = ((Long)c.ban().get(at.a.acSi, Long.valueOf(0L))).longValue();
+        bh.bCz();
+        bool2 = ((Boolean)c.ban().get(at.a.acSl, Boolean.FALSE)).booleanValue();
+        bh.bCz();
+        bool1 = ((Boolean)c.ban().get(at.a.acSk, Boolean.FALSE)).booleanValue();
+        paramb = bDU();
       }
       else
       {
-        ab.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] equals current device's [%s] , should show banner", new Object[] { str, Build.FINGERPRINT });
+        Log.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] equals current device's [%s] , should show banner", new Object[] { str, Build.FINGERPRINT });
       }
     }
-    if (bo.isNullOrNil(paramb))
+    if (Util.isNullOrNil(paramb))
     {
-      ab.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not get wording");
-      AppMethodBeat.o(16367);
+      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not get wording");
+      AppMethodBeat.o(20413);
       return false;
     }
     if (bool2)
     {
-      ab.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not check trigger and already closed");
-      AppMethodBeat.o(16367);
+      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not check trigger and already closed");
+      AppMethodBeat.o(20413);
       return false;
     }
     if (l3 < 0L)
     {
-      ab.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: no msg occurs");
-      AppMethodBeat.o(16367);
+      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: no msg occurs");
+      AppMethodBeat.o(20413);
       return false;
     }
-    if ((bool1) && (!isTriggered()))
+    if ((bool1) && (!bEb()))
     {
-      ab.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: should check triggered but not triggered");
-      AppMethodBeat.o(16367);
+      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: should check triggered but not triggered");
+      AppMethodBeat.o(20413);
       return false;
     }
     if (l1 == -1L)
     {
-      ab.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: should always show");
-      AppMethodBeat.o(16367);
+      Log.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: should always show");
+      AppMethodBeat.o(20413);
       return true;
     }
     if (l3 + l1 > l2)
     {
-      ab.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: still in show time. show banner");
-      AppMethodBeat.o(16367);
+      Log.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: still in show time. show banner");
+      AppMethodBeat.o(20413);
       return true;
     }
-    ab.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: expired.");
-    AppMethodBeat.o(16367);
+    Log.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: expired.");
+    AppMethodBeat.o(20413);
     return false;
   }
   
-  public static String abA()
+  public static String bDU()
   {
-    AppMethodBeat.i(16357);
-    aw.aaz();
-    String str = (String)c.Ru().get(ac.a.yGX, "");
-    AppMethodBeat.o(16357);
+    AppMethodBeat.i(20402);
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSg, "");
+    AppMethodBeat.o(20402);
     return str;
   }
   
-  public static boolean abB()
+  public static String bDV()
   {
-    AppMethodBeat.i(16358);
-    aw.aaz();
-    boolean bool = ((Boolean)c.Ru().get(ac.a.yGZ, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(16358);
-    return bool;
-  }
-  
-  public static String abC()
-  {
-    AppMethodBeat.i(16359);
-    aw.aaz();
-    String str = (String)c.Ru().get(ac.a.yGP, "");
-    AppMethodBeat.o(16359);
+    AppMethodBeat.i(20403);
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSh, "");
+    AppMethodBeat.o(20403);
     return str;
   }
   
-  public static String abD()
+  public static boolean bDW()
   {
-    AppMethodBeat.i(16360);
-    aw.aaz();
-    String str = (String)c.Ru().get(ac.a.yGQ, "");
-    AppMethodBeat.o(16360);
+    AppMethodBeat.i(20404);
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSj, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(20404);
+    return bool;
+  }
+  
+  public static String bDX()
+  {
+    AppMethodBeat.i(20405);
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acRZ, "");
+    AppMethodBeat.o(20405);
     return str;
   }
   
-  public static boolean abE()
+  public static String bDY()
   {
-    AppMethodBeat.i(16361);
-    aw.aaz();
-    boolean bool = ((Boolean)c.Ru().get(ac.a.yGS, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(16361);
+    AppMethodBeat.i(20406);
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSa, "");
+    AppMethodBeat.o(20406);
+    return str;
+  }
+  
+  public static boolean bDZ()
+  {
+    AppMethodBeat.i(20407);
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSc, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(20407);
     return bool;
   }
   
-  private static boolean abF()
+  private static boolean bEa()
   {
-    AppMethodBeat.i(16362);
-    aw.aaz();
-    boolean bool = ((Boolean)c.Ru().get(ac.a.yGT, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(16362);
+    AppMethodBeat.i(20408);
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSd, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(20408);
     return bool;
   }
   
-  private void abG()
+  private static boolean bEb()
   {
-    AppMethodBeat.i(16368);
+    AppMethodBeat.i(20409);
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSn, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(20409);
+    return bool;
+  }
+  
+  private void bEc()
+  {
+    AppMethodBeat.i(20414);
     try
     {
       Iterator localIterator = this.mListeners.iterator();
       while (localIterator.hasNext()) {
-        ((b.a)localIterator.next()).abI();
+        ((b.a)localIterator.next()).bEe();
       }
     }
     finally
     {
-      AppMethodBeat.o(16368);
+      AppMethodBeat.o(20414);
     }
-    AppMethodBeat.o(16368);
-  }
-  
-  public static String abz()
-  {
-    AppMethodBeat.i(16356);
-    aw.aaz();
-    String str = (String)c.Ru().get(ac.a.yGW, "");
-    AppMethodBeat.o(16356);
-    return str;
+    AppMethodBeat.o(20414);
   }
   
   private void h(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(16366);
+    AppMethodBeat.i(20412);
     String str4 = paramString + "chatting.";
-    String str1 = bo.nullAsNil((String)paramMap.get(str4 + "fingerprint"));
-    if ((str4.equals(".sysmsg.banner.monitorbanner_n.")) && (!bo.isNullOrNil(str1)))
+    String str1 = Util.nullAsNil((String)paramMap.get(str4 + "fingerprint"));
+    if ((str4.equals(".sysmsg.banner.monitorbanner_n.")) && (!Util.isNullOrNil(str1)))
     {
-      ab.e("MicroMsg.ChattingMonitoredBannerStorage", "monitorbanner_n must NOT contain fingerprint.");
-      AppMethodBeat.o(16366);
+      Log.e("MicroMsg.ChattingMonitoredBannerStorage", "monitorbanner_n must NOT contain fingerprint.");
+      AppMethodBeat.o(20412);
       return;
     }
-    String str2 = bo.nullAsNil((String)paramMap.get(str4 + "url"));
-    String str3 = bo.nullAsNil((String)paramMap.get(str4 + "wording"));
-    long l1 = bo.getLong((String)paramMap.get(str4 + "duration"), 0L);
+    String str2 = Util.nullAsNil((String)paramMap.get(str4 + "url"));
+    String str3 = Util.nullAsNil((String)paramMap.get(str4 + "wording"));
+    long l1 = Util.getLong((String)paramMap.get(str4 + "duration"), 0L);
     boolean bool1;
     boolean bool2;
     label284:
     String str5;
     long l2;
     boolean bool3;
-    if (bo.getInt((String)paramMap.get(str4 + "autotrigger"), 0) == 1)
+    if (Util.getInt((String)paramMap.get(str4 + "autotrigger"), 0) == 1)
     {
       bool1 = true;
-      if (bo.getInt((String)paramMap.get(str4 + "closable"), 0) != 1) {
+      if (Util.getInt((String)paramMap.get(str4 + "closable"), 0) != 1) {
         break label619;
       }
       bool2 = true;
       paramString = paramString + "mainframe.";
-      str4 = bo.nullAsNil((String)paramMap.get(paramString + "url"));
-      str5 = bo.nullAsNil((String)paramMap.get(paramString + "wording"));
-      l2 = bo.getLong((String)paramMap.get(paramString + "duration"), 0L);
-      if (bo.getInt((String)paramMap.get(paramString + "autotrigger"), 0) != 1) {
+      str4 = Util.nullAsNil((String)paramMap.get(paramString + "url"));
+      str5 = Util.nullAsNil((String)paramMap.get(paramString + "wording"));
+      l2 = Util.getLong((String)paramMap.get(paramString + "duration"), 0L);
+      if (Util.getInt((String)paramMap.get(paramString + "autotrigger"), 0) != 1) {
         break label625;
       }
       bool3 = true;
       label448:
-      if (bo.getInt((String)paramMap.get(paramString + "closable"), 0) != 1) {
+      if (Util.getInt((String)paramMap.get(paramString + "closable"), 0) != 1) {
         break label631;
       }
     }
@@ -272,12 +281,12 @@ public class b
     label631:
     for (boolean bool4 = true;; bool4 = false)
     {
-      if ((!bo.isNullOrNil(str5)) || (!bo.isNullOrNil(str3)))
+      if ((!Util.isNullOrNil(str5)) || (!Util.isNullOrNil(str3)))
       {
-        ab.d("MicroMsg.ChattingMonitoredBannerStorage", "received msg:\nchattingUrl = " + str2 + "\nchattingWording = " + str3 + "\nchattingDuration = " + l1 + "\nchattingAutotrigger = " + bool1 + "\nchattingCloseable = " + bool2 + "\nfingerPrint = " + str1);
+        Log.d("MicroMsg.ChattingMonitoredBannerStorage", "received msg:\nchattingUrl = " + str2 + "\nchattingWording = " + str3 + "\nchattingDuration = " + l1 + "\nchattingAutotrigger = " + bool1 + "\nchattingCloseable = " + bool2 + "\nfingerPrint = " + str1);
         a(str5, str4, l2, bool4, bool3, str3, str2, l1, bool2, bool1, str1);
       }
-      AppMethodBeat.o(16366);
+      AppMethodBeat.o(20412);
       return;
       bool1 = false;
       break;
@@ -288,95 +297,86 @@ public class b
     }
   }
   
-  private static boolean isTriggered()
+  public final void C(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(16363);
-    aw.aaz();
-    boolean bool = ((Boolean)c.Ru().get(ac.a.yHd, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(16363);
-    return bool;
-  }
-  
-  public final void abH()
-  {
-    AppMethodBeat.i(16369);
-    if (isTriggered() != true)
+    AppMethodBeat.i(20411);
+    if (paramMap == null)
     {
-      ab.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: monitored illegal set text. mark now as the start time ");
-      aw.aaz();
-      c.Ru().set(ac.a.yHc, Long.valueOf(bo.aox()));
-      aw.aaz();
-      c.Ru().set(ac.a.yHd, Boolean.TRUE);
-      abG();
+      AppMethodBeat.o(20411);
+      return;
     }
-    AppMethodBeat.o(16369);
+    h.OAn.idkeyStat(633L, 3L, 1L, false);
+    Log.d("MicroMsg.ChattingMonitoredBannerStorage", "origin values: ".concat(String.valueOf(paramMap)));
+    h(".sysmsg.banner.monitorbanner_n.", paramMap);
+    h(".sysmsg.banner.monitorbanner_o.", paramMap);
+    AppMethodBeat.o(20411);
   }
   
   public final void b(b.b paramb)
   {
-    AppMethodBeat.i(16370);
-    if (paramb == b.b.fou)
+    AppMethodBeat.i(20416);
+    if (paramb == b.b.ook)
     {
-      aw.aaz();
-      c.Ru().set(ac.a.yHb, Boolean.FALSE);
+      bh.bCz();
+      c.ban().set(at.a.acSl, Boolean.FALSE);
     }
     for (;;)
     {
-      abG();
-      AppMethodBeat.o(16370);
+      bEc();
+      AppMethodBeat.o(20416);
       return;
-      aw.aaz();
-      c.Ru().set(ac.a.yGU, Boolean.FALSE);
+      bh.bCz();
+      c.ban().set(at.a.acSe, Boolean.FALSE);
     }
+  }
+  
+  public final void bEd()
+  {
+    AppMethodBeat.i(20415);
+    if (bEb() != true)
+    {
+      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: monitored illegal set text. mark now as the start time ");
+      bh.bCz();
+      c.ban().set(at.a.acSm, Long.valueOf(Util.nowSecond()));
+      bh.bCz();
+      c.ban().set(at.a.acSn, Boolean.TRUE);
+      bEc();
+    }
+    AppMethodBeat.o(20415);
   }
   
   public final void c(b.b paramb)
   {
-    AppMethodBeat.i(16371);
-    if (paramb == b.b.fou)
+    AppMethodBeat.i(20417);
+    if (paramb == b.b.ook)
     {
-      aw.aaz();
-      c.Ru().set(ac.a.yGY, Long.valueOf(0L));
+      bh.bCz();
+      c.ban().set(at.a.acSi, Long.valueOf(0L));
     }
     for (;;)
     {
-      abG();
+      bEc();
       do
       {
-        AppMethodBeat.o(16371);
+        AppMethodBeat.o(20417);
         return;
-      } while (paramb != b.b.fow);
-      if (!abF())
+      } while (paramb != b.b.ool);
+      if (!bEa())
       {
-        aw.aaz();
-        c.Ru().set(ac.a.yGR, Long.valueOf(0L));
+        bh.bCz();
+        c.ban().set(at.a.acSb, Long.valueOf(0L));
       }
       else
       {
-        aw.aaz();
-        c.Ru().set(ac.a.yGU, Boolean.TRUE);
+        bh.bCz();
+        c.ban().set(at.a.acSe, Boolean.TRUE);
       }
     }
-  }
-  
-  public final void o(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(16365);
-    if (paramMap == null)
-    {
-      AppMethodBeat.o(16365);
-      return;
-    }
-    h.qsU.idkeyStat(633L, 3L, 1L, false);
-    ab.d("MicroMsg.ChattingMonitoredBannerStorage", "origin values: ".concat(String.valueOf(paramMap)));
-    h(".sysmsg.banner.monitorbanner_n.", paramMap);
-    h(".sysmsg.banner.monitorbanner_o.", paramMap);
-    AppMethodBeat.o(16365);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.b.b
  * JD-Core Version:    0.7.0.1
  */

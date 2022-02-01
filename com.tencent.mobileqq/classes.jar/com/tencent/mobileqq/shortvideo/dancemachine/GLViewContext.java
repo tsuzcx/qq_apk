@@ -38,31 +38,29 @@ public class GLViewContext
   
   private void calledInGlThread(int paramInt1, int paramInt2)
   {
-    Object localObject1 = this.mSoundPoolIdCache.values().iterator();
-    while (((Iterator)localObject1).hasNext())
+    Object localObject = this.mSoundPoolIdCache.values().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localObject2 = (GLViewContext.AudioItem)((Iterator)localObject1).next();
-      if (((GLViewContext.AudioItem)localObject2).sampleId == paramInt1)
+      localAudioItem = (GLViewContext.AudioItem)((Iterator)localObject).next();
+      if (localAudioItem.sampleId == paramInt1)
       {
-        ((GLViewContext.AudioItem)localObject2).loaded = true;
-        ((GLViewContext.AudioItem)localObject2).status = paramInt2;
+        localAudioItem.loaded = true;
+        localAudioItem.status = paramInt2;
       }
     }
-    Object localObject2 = this.mPlayCommandList.iterator();
-    while (((Iterator)localObject2).hasNext())
+    GLViewContext.AudioItem localAudioItem = null;
+    Iterator localIterator = this.mPlayCommandList.iterator();
+    do
     {
-      localObject1 = (GLViewContext.AudioItem)((Iterator)localObject2).next();
-      if (((GLViewContext.AudioItem)localObject1).sampleId == paramInt1) {
-        playAudioItem((GLViewContext.AudioItem)localObject1);
+      localObject = localAudioItem;
+      if (!localIterator.hasNext()) {
+        break;
       }
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        this.mPlayCommandList.remove(localObject1);
-      }
-      return;
-      localObject1 = null;
+      localObject = (GLViewContext.AudioItem)localIterator.next();
+    } while (((GLViewContext.AudioItem)localObject).sampleId != paramInt1);
+    playAudioItem((GLViewContext.AudioItem)localObject);
+    if (localObject != null) {
+      this.mPlayCommandList.remove(localObject);
     }
   }
   
@@ -71,13 +69,10 @@ public class GLViewContext
     GLES20.glEnable(2884);
     if (GlView.ENABLE_X_INVERSE) {
       GLES20.glFrontFace(2304);
-    }
-    for (;;)
-    {
-      GLES20.glCullFace(1029);
-      return;
+    } else {
       GLES20.glFrontFace(2305);
     }
+    GLES20.glCullFace(1029);
   }
   
   public static void filterCullEnd()
@@ -87,19 +82,17 @@ public class GLViewContext
   
   private void playAudioItem(GLViewContext.AudioItem paramAudioItem)
   {
-    if (paramAudioItem.loaded) {
+    if (paramAudioItem.loaded)
+    {
       if (paramAudioItem.status == 0)
       {
-        i = this.mSoundPool.play(paramAudioItem.sampleId, 1.0F, 1.0F, paramAudioItem.priority, paramAudioItem.loop, 1.0F);
+        int i = this.mSoundPool.play(paramAudioItem.sampleId, 1.0F, 1.0F, paramAudioItem.priority, paramAudioItem.loop, 1.0F);
         this.mStreamIdCache.add(Integer.valueOf(i));
       }
     }
-    while (this.mPlayCommandList.contains(paramAudioItem))
-    {
-      int i;
-      return;
+    else if (!this.mPlayCommandList.contains(paramAudioItem)) {
+      this.mPlayCommandList.add(paramAudioItem);
     }
-    this.mPlayCommandList.add(paramAudioItem);
   }
   
   private void playSoundInternal(String paramString, int paramInt1, int paramInt2)
@@ -120,21 +113,25 @@ public class GLViewContext
   
   public void allPauseAudio()
   {
-    if (this.mSoundPool != null) {
-      this.mSoundPool.autoPause();
+    Object localObject = this.mSoundPool;
+    if (localObject != null) {
+      ((SoundPool)localObject).autoPause();
     }
-    if (this.mBgmPlayer != null) {
-      this.mBgmPlayer.pauseAudio();
+    localObject = this.mBgmPlayer;
+    if (localObject != null) {
+      ((BgmPlayer)localObject).pauseAudio();
     }
   }
   
   public void allResumeAudio()
   {
-    if (this.mSoundPool != null) {
-      this.mSoundPool.autoResume();
+    Object localObject = this.mSoundPool;
+    if (localObject != null) {
+      ((SoundPool)localObject).autoResume();
     }
-    if (this.mBgmPlayer != null) {
-      this.mBgmPlayer.resumeAudio();
+    localObject = this.mBgmPlayer;
+    if (localObject != null) {
+      ((BgmPlayer)localObject).resumeAudio();
     }
   }
   
@@ -187,15 +184,16 @@ public class GLViewContext
   
   public void loadSoundResource(List<String> paramList)
   {
-    if ((this.mSoundPool != null) || (paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if ((this.mSoundPool == null) && (paramList != null))
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       this.mSoundPoolIdCache.clear();
       this.mStreamIdCache.clear();
+      int i = 0;
       this.mSoundPool = new SoundPool(3, 3, 0);
       this.mSoundPool.setOnLoadCompleteListener(this);
-      int i = 0;
       while (i < paramList.size())
       {
         GLViewContext.AudioItem localAudioItem = new GLViewContext.AudioItem(this.mSoundPool.load((String)paramList.get(i), 1));
@@ -208,7 +206,7 @@ public class GLViewContext
   public final void mapNormalRegion(RectF paramRectF)
   {
     float f = getViewPortRatio();
-    paramRectF.set(paramRectF.left * f, paramRectF.top * f, paramRectF.right * f, f * paramRectF.bottom);
+    paramRectF.set(paramRectF.left * f, paramRectF.top * f, paramRectF.right * f, paramRectF.bottom * f);
   }
   
   public void onLoadComplete(SoundPool arg1, int paramInt1, int paramInt2)
@@ -225,8 +223,9 @@ public class GLViewContext
   
   public void playBackGroundSound(String paramString)
   {
-    if (this.mBgmPlayer != null) {
-      this.mBgmPlayer.playAsync(paramString);
+    BgmPlayer localBgmPlayer = this.mBgmPlayer;
+    if (localBgmPlayer != null) {
+      localBgmPlayer.playAsync(paramString);
     }
   }
   
@@ -247,30 +246,32 @@ public class GLViewContext
   
   public void releaseSoundResource()
   {
-    if (this.mSoundPool == null) {}
-    do
-    {
+    if (this.mSoundPool == null) {
       return;
-      Iterator localIterator = this.mStreamIdCache.iterator();
-      while (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        this.mSoundPool.stop(i);
-      }
-      this.mStreamIdCache.clear();
-      localIterator = this.mSoundPoolIdCache.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        localObject = (GLViewContext.AudioItem)this.mSoundPoolIdCache.get(localObject);
-        this.mSoundPool.unload(((GLViewContext.AudioItem)localObject).sampleId);
-      }
-      this.mSoundPoolIdCache.clear();
-      this.mSoundPool.release();
-      this.mSoundPool = null;
-    } while (this.mBgmPlayer == null);
-    this.mBgmPlayer.releaseResource();
-    this.mBgmPlayer = null;
+    }
+    Object localObject1 = this.mStreamIdCache.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      int i = ((Integer)((Iterator)localObject1).next()).intValue();
+      this.mSoundPool.stop(i);
+    }
+    this.mStreamIdCache.clear();
+    localObject1 = this.mSoundPoolIdCache.keySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (String)((Iterator)localObject1).next();
+      localObject2 = (GLViewContext.AudioItem)this.mSoundPoolIdCache.get(localObject2);
+      this.mSoundPool.unload(((GLViewContext.AudioItem)localObject2).sampleId);
+    }
+    this.mSoundPoolIdCache.clear();
+    this.mSoundPool.release();
+    this.mSoundPool = null;
+    localObject1 = this.mBgmPlayer;
+    if (localObject1 != null)
+    {
+      ((BgmPlayer)localObject1).releaseResource();
+      this.mBgmPlayer = null;
+    }
   }
   
   public final void setSurfaceSize(Rect paramRect)
@@ -290,16 +291,17 @@ public class GLViewContext
   {
     if (this.mSoundPool != null)
     {
-      Iterator localIterator = this.mStreamIdCache.iterator();
-      while (localIterator.hasNext())
+      localObject = this.mStreamIdCache.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        int i = ((Integer)localIterator.next()).intValue();
+        int i = ((Integer)((Iterator)localObject).next()).intValue();
         this.mSoundPool.stop(i);
       }
       this.mStreamIdCache.clear();
     }
-    if (this.mBgmPlayer != null) {
-      this.mBgmPlayer.stop();
+    Object localObject = this.mBgmPlayer;
+    if (localObject != null) {
+      ((BgmPlayer)localObject).stop();
     }
   }
   
@@ -311,7 +313,7 @@ public class GLViewContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext
  * JD-Core Version:    0.7.0.1
  */

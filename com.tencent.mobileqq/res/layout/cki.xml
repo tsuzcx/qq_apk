@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/o10" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/pza" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/pz_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:lines="1" android:includeFontPadding="false" />
+        <ImageView android:id="@id/pz5" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/pz9" android:background="@drawable/ido" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="49.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentLeft="true">
+        <com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerView android:textSize="24.0dip" android:textColor="@color/intimate_relationship_text_color" android:id="@id/pz8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/pz7" android:visibility="gone" android:layout_width="64.0dip" android:layout_height="76.79999dip" android:layout_marginLeft="20.0dip" android:scaleType="centerInside" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/intimate_relationship_text_color" android:ellipsize="end" android:id="@id/pzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="47.0dip" android:text="" android:lines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/pz9" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/intimate_relationship_text_gray_color" android:ellipsize="end" android:id="@id/pz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="71.0dip" android:layout_marginBottom="16.0dip" android:text="" android:lines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/pz9" />
+    <Button android:id="@id/pz4" android:layout_width="wrap_content" android:layout_height="@dimen/b95" android:layout_marginTop="52.0dip" android:layout_marginRight="17.0dip" android:text="" android:layout_alignParentRight="true" style="@style/i9" />
+</RelativeLayout>

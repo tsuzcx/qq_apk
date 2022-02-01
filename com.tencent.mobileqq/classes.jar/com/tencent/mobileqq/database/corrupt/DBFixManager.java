@@ -6,20 +6,23 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import apgd;
-import ayzl;
-import azri;
-import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
@@ -27,67 +30,74 @@ import mqq.manager.Manager;
 public class DBFixManager
   implements Manager
 {
-  public static int a;
-  public static long a;
-  public static boolean a;
-  public static int b;
-  public static String b;
-  public static int c;
-  public static String c;
-  public static int d;
-  public static String d;
-  public static int e;
-  public static String e;
-  public static int f;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j;
-  public static String k;
-  public static String l = "dbcorrupt_report_nodb";
-  public static String m = "dbcorrupt_report_copy_fail";
-  public static String n = "dbcorrupt_report_fix";
-  private static String o = "DBFix";
-  Context jdField_a_of_type_AndroidContentContext;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_b_of_type_JavaLangString = "dbfix";
-    jdField_c_of_type_JavaLangString = "dbfix_config";
-    jdField_d_of_type_JavaLangString = "dbfix_flag";
-    jdField_e_of_type_JavaLangString = "dbfix_count";
-    jdField_a_of_type_Int = 5;
-    jdField_a_of_type_Long = -1L;
-    jdField_c_of_type_Int = 5;
-    jdField_f_of_type_JavaLangString = "key_dbfixso_load_count";
-    g = "dbcorrupt_flag";
-    h = "dbcorrupt_report_fix_succ";
-    i = "dbcorrupt_report_fix_fail";
-    j = "dbcorrupt_report_fix_other";
-    k = "fix_fail_reason";
-    jdField_d_of_type_Int = 1;
-    jdField_e_of_type_Int = 2;
-    jdField_f_of_type_Int = 3;
-  }
+  public static String d = "dbfix";
+  public static String e = "dbfix_config";
+  public static String f = "dbfix_flag";
+  public static String g = "dbfix_count";
+  public static int h = 5;
+  public static long i = -1L;
+  public static boolean j = false;
+  public static int k = 0;
+  public static int l = 5;
+  public static String m = "key_dbfixso_load_count";
+  public static String n = "dbcorrupt_flag";
+  public static String o = "dbcorrupt_report_fix_zero";
+  public static String p = "dbcorrupt_report_fix_succ";
+  public static String q = "dbcorrupt_report_fix_fail";
+  public static String r = "dbcorrupt_report_fix_other";
+  public static String s = "fix_fail_reason";
+  public static int t = 1;
+  public static int u = 2;
+  public static int v = 3;
+  public static String w = "dbcorrupt_report_nodb";
+  public static String x = "dbcorrupt_report_copy_fail";
+  public static String y = "dbcorrupt_report_fix";
+  private static String z = "DBFix";
+  QQAppInterface a;
+  Context b;
+  String c;
   
   public DBFixManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    this.a = paramQQAppInterface;
+    this.b = this.a.getApp();
+    this.c = this.a.getCurrentAccountUin();
   }
   
-  public void a()
+  public static void a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, DBFixDialogActivity.class);
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
+    {
+      localObject1 = (QQAppInterface)localObject1;
+      Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences(((QQAppInterface)localObject1).getCurrentAccountUin(), 0);
+      localObject1 = ((SharedPreferences)localObject2).edit();
+      ((SharedPreferences.Editor)localObject1).remove("getMsgV4_vSyncCookie");
+      ((SharedPreferences.Editor)localObject1).remove("getlastMessageTime");
+      ((SharedPreferences.Editor)localObject1).remove("getMsgV4_vPubAccountCookie");
+      ((SharedPreferences.Editor)localObject1).remove("getTroopDiscMsgLastTime");
+      localObject2 = ((SharedPreferences)localObject2).getAll().entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Map.Entry)((Iterator)localObject2).next()).getKey();
+        if ((!TextUtils.isEmpty(str)) && ((str.startsWith("getTroopLastMessageTime")) || (str.startsWith("getDiscussionLastMessageTime")))) {
+          ((SharedPreferences.Editor)localObject1).remove(str);
+        }
+      }
+      ((SharedPreferences.Editor)localObject1).commit();
+      QLog.e(z, 1, "clearAllMsgSyncFlags");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Intent localIntent = new Intent(this.b, DBFixDialogActivity.class);
     localIntent.addFlags(268435456);
     localIntent.addFlags(536870912);
     localIntent.addFlags(67108864);
     localIntent.addFlags(131072);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    localIntent.putExtra(g, paramInt);
+    this.b.startActivity(localIntent);
   }
   
   public void a(Context paramContext)
@@ -97,50 +107,75 @@ public class DBFixManager
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    boolean bool = localSharedPreferences.getBoolean(str + jdField_d_of_type_JavaLangString, false);
-    if ((paramBoolean) && (bool)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!b()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(o, 2, "onCorruptionInstant, db fixing");
+    Object localObject1 = this.a.getApplication().getSharedPreferences(d, 0);
+    String str = this.a.getCurrentAccountUin();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(f);
+    boolean bool = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
+    if ((paramBoolean) && (bool)) {
       return;
-      File localFile = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db");
-      if ((localFile.exists()) && (localFile.length() != 0L)) {
-        break;
-      }
-      QLog.d(o, 1, new Object[] { "onCorruptionInstant, db not exists, ", Boolean.valueOf(localFile.exists()) });
-      localSharedPreferences.edit().remove(str + g).commit();
-    } while (!bool);
-    paramContext = localSharedPreferences.edit();
-    paramContext.remove(str + jdField_d_of_type_JavaLangString);
-    paramContext.remove(str + jdField_e_of_type_JavaLangString);
-    paramContext.commit();
-    return;
-    if (paramBoolean) {
-      a();
     }
-    for (;;)
+    if (e())
     {
-      paramContext = localSharedPreferences.edit();
-      if ((!TextUtils.isEmpty(str)) && (!bool)) {
-        paramContext.putBoolean(str + jdField_d_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(z, 2, "onCorruptionInstant, db fixing");
       }
-      int i1 = localSharedPreferences.getInt(str + jdField_e_of_type_JavaLangString, 0);
-      str = str + jdField_e_of_type_JavaLangString;
-      i1 += 1;
-      paramContext.putInt(str, i1);
-      paramContext.commit();
-      QLog.d(o, 1, new Object[] { "onCorruptionInstant, start activity and write sp ", Integer.valueOf(i1), " onCorrupt: ", Boolean.valueOf(paramBoolean) });
       return;
-      new apgd(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+    }
+    localObject2 = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(".db");
+    localObject2 = ((Context)localObject2).getDatabasePath(localStringBuilder.toString());
+    if ((((File)localObject2).exists()) && (((File)localObject2).length() != 0L))
+    {
+      localObject2 = ((SharedPreferences)localObject1).edit();
+      if ((!TextUtils.isEmpty(str)) && (!bool))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(f);
+        ((SharedPreferences.Editor)localObject2).putBoolean(localStringBuilder.toString(), true);
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(g);
+      int i1 = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), 0);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(g);
+      str = ((StringBuilder)localObject1).toString();
+      i1 += 1;
+      ((SharedPreferences.Editor)localObject2).putInt(str, i1);
+      ((SharedPreferences.Editor)localObject2).commit();
+      QLog.d(z, 1, new Object[] { "onCorruptionInstant, start activity and write sp ", Integer.valueOf(i1), " onCorrupt: ", Boolean.valueOf(paramBoolean) });
+      if (paramBoolean)
+      {
+        a(i1);
+        return;
+      }
+      new DBFixDialogUI(paramContext, this.a).a(i1);
+      return;
+    }
+    QLog.d(z, 1, new Object[] { "onCorruptionInstant, db not exists, ", Boolean.valueOf(((File)localObject2).exists()) });
+    paramContext = ((SharedPreferences)localObject1).edit();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(n);
+    paramContext.remove(((StringBuilder)localObject2).toString()).commit();
+    if (bool)
+    {
+      paramContext = ((SharedPreferences)localObject1).edit();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(f);
+      paramContext.remove(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(g);
+      paramContext.remove(((StringBuilder)localObject1).toString());
+      paramContext.commit();
     }
   }
   
@@ -148,114 +183,161 @@ public class DBFixManager
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendOnlineStatus(AppRuntime.Status.offline, false, 0L, false);
-      Intent localIntent = new Intent("mqq.intent.action.EXIT" + this.jdField_a_of_type_AndroidContentContext.getPackageName());
-      this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+      ((IOnlineStatusService)this.a.getRuntimeService(IOnlineStatusService.class)).sendOnlineStatus(AppRuntime.Status.offline, false, 0L, false);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mqq.intent.action.EXIT");
+      ((StringBuilder)localObject).append(this.b.getPackageName());
+      localObject = new Intent(((StringBuilder)localObject).toString());
+      this.b.sendBroadcast((Intent)localObject);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.p();
-  }
-  
-  public boolean a()
-  {
-    if ((!jdField_a_of_type_Boolean) && (jdField_b_of_type_Int == 0)) {
-      jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0).getInt(this.jdField_a_of_type_JavaLangString + jdField_f_of_type_JavaLangString, 0);
-    }
-    boolean bool;
-    if ((!jdField_a_of_type_Boolean) && (jdField_b_of_type_Int <= jdField_c_of_type_Int))
-    {
-      if (Build.VERSION.SDK_INT >= 18) {
-        break label219;
-      }
-      if ((!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq")) || (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "DBFix"))) {
-        break label214;
-      }
-      bool = true;
-      jdField_a_of_type_Boolean = bool;
-      label110:
-      if (jdField_a_of_type_Boolean) {
-        break label233;
-      }
-      jdField_b_of_type_Int += 1;
-      QLog.e(o, 1, new Object[] { "db fix so load failed, ", Integer.valueOf(jdField_b_of_type_Int) });
-    }
-    for (;;)
-    {
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0).edit();
-      localEditor.putInt(this.jdField_a_of_type_JavaLangString + jdField_f_of_type_JavaLangString, jdField_b_of_type_Int);
-      localEditor.commit();
-      return jdField_a_of_type_Boolean;
-      label214:
-      bool = false;
-      break;
-      label219:
-      jdField_a_of_type_Boolean = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "DBFix");
-      break label110;
-      label233:
-      jdField_b_of_type_Int = 0;
-    }
-  }
-  
-  public void b()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (!TextUtils.isEmpty(str))
-    {
-      QLog.d(o, 1, "clearLocalSPFlag, remove sp");
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0).edit();
-      localEditor.remove(str + jdField_d_of_type_JavaLangString);
-      localEditor.remove(str + jdField_e_of_type_JavaLangString);
-      localEditor.commit();
-    }
-    ayzl.j();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("acc_info" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("isFriendlistok", false).commit();
-    QLog.d(o, 1, "cleared friendlist flag");
+    this.a.sendRegisterPush();
   }
   
   public void b(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db");
-    long l1 = ((File)localObject).length();
-    bdhb.d(((File)localObject).getPath());
-    bdhb.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db-journal").getPath());
-    bdhb.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-wal").getPath());
-    bdhb.d(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString + "-shm").getPath());
+    Object localObject1 = this.b;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append(".db");
+    localObject1 = ((Context)localObject1).getDatabasePath(((StringBuilder)localObject2).toString());
+    long l1 = ((File)localObject1).length();
+    FileUtils.deleteFile(((File)localObject1).getPath());
+    localObject1 = this.b;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append(".db-journal");
+    FileUtils.deleteFile(((Context)localObject1).getDatabasePath(((StringBuilder)localObject2).toString()).getPath());
+    localObject1 = this.b;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append(".db-wal");
+    localObject1 = ((Context)localObject1).getDatabasePath(((StringBuilder)localObject2).toString());
+    localObject2 = ((File)localObject1).getAbsolutePath();
+    boolean bool1 = ((File)localObject1).exists();
+    boolean bool2 = FileUtils.deleteFile((String)localObject2);
+    QLog.d(z, 1, new Object[] { "deleteDbFile walDeleteResult:", Boolean.valueOf(bool2), ", file exist: ", Boolean.valueOf(bool1), ", walPath: ", localObject2 });
+    localObject1 = this.b;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append(".db-shm");
+    localObject1 = ((Context)localObject1).getDatabasePath(((StringBuilder)localObject2).toString());
+    localObject2 = ((File)localObject1).getAbsolutePath();
+    bool1 = ((File)localObject1).exists();
+    bool2 = FileUtils.deleteFile((String)localObject2);
+    QLog.d(z, 1, new Object[] { "deleteDbFile shmDeleteResult:", Boolean.valueOf(bool2), ", file exist: ", Boolean.valueOf(bool1), ", shmPath: ", localObject2 });
     if (!paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(jdField_b_of_type_JavaLangString, 0);
-      ((SharedPreferences)localObject).edit().remove(this.jdField_a_of_type_JavaLangString + g).commit();
-      localObject = ((SharedPreferences)localObject).getString(this.jdField_a_of_type_JavaLangString + k, "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("failReason", localObject);
-      localHashMap.put("dblen", String.valueOf(l1));
-      azri.a(BaseApplication.getContext()).a(null, i, true, -1L, 0L, localHashMap, null, false);
-      QLog.d(o, 1, new Object[] { "onCorruptionInstant, deleteDbFile, isSuc: ", Boolean.valueOf(paramBoolean), " failReason: ", localObject });
+      localObject1 = this.a.getApplication().getSharedPreferences(d, 0);
+      localObject2 = ((SharedPreferences)localObject1).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(n);
+      ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString()).commit();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append(s);
+      localObject1 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("failReason", localObject1);
+      ((HashMap)localObject2).put("dblen", String.valueOf(l1));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, q, true, -1L, 0L, (HashMap)localObject2, null, false);
+      QLog.d(z, 1, new Object[] { "onCorruptionInstant, deleteDbFile, isSuc: ", Boolean.valueOf(paramBoolean), " failReason: ", localObject1 });
     }
   }
   
   public boolean b()
   {
-    return apgd.a != null;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if ((!j) && (k == 0))
+    {
+      localObject = this.a.getApplication().getSharedPreferences(d, 0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(m);
+      k = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+    }
+    if ((!j) && (k <= l))
+    {
+      if (Build.VERSION.SDK_INT < 18)
+      {
+        boolean bool;
+        if ((SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq")) && (SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "DBFix"))) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        j = bool;
+      }
+      else
+      {
+        j = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "DBFix");
+      }
+      if (!j)
+      {
+        k += 1;
+        QLog.e(z, 1, new Object[] { "db fix so load failed, ", Integer.valueOf(k) });
+      }
+      else
+      {
+        k = 0;
+      }
+      localObject = this.a.getApplication().getSharedPreferences(d, 0).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(m);
+      ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), k);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+    return j;
   }
   
   public void c()
   {
-    QLog.d(o, 1, "exitQQMainProcess");
+    Object localObject1 = this.a.getCurrentAccountUin();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      QLog.d(z, 1, "clearLocalSPFlag, remove sp");
+      localObject2 = this.a.getApplication().getSharedPreferences(d, 0).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(f);
+      ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(g);
+      ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+      ((SharedPreferences.Editor)localObject2).commit();
+    }
+    a();
+    localObject1 = this.a.getApp();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("acc_info");
+    ((StringBuilder)localObject2).append(this.a.getAccount());
+    ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).edit().putBoolean("isFriendlistok", false).commit();
+    QLog.d(z, 1, "cleared friendlist flag");
+  }
+  
+  public void d()
+  {
+    QLog.d(z, 1, "exitQQMainProcess");
     a(false);
     QLog.flushLog();
-    if (QQPlayerService.a())
+    if (QQPlayerService.b())
     {
       Intent localIntent = new Intent();
       localIntent.setAction("qqplayer_exit_action");
-      this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+      this.b.sendBroadcast(localIntent);
     }
-    QQMusicPlayService.b(o);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(false);
+    QQMusicPlayService.b(z);
+    this.a.exit(false);
   }
   
-  public native boolean dbfixRepair(String paramString1, String paramString2, DBFixResult paramDBFixResult);
-  
-  public native boolean dumpRepair(String paramString1, String paramString2, DBFixResult paramDBFixResult);
+  public boolean e()
+  {
+    return DBFixDialogUI.d != null;
+  }
   
   public void onDestroy() {}
 }

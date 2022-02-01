@@ -74,7 +74,6 @@ public abstract class SQLiteClosable
     //   from	to	target	type
     //   2	14	36	finally
     //   20	22	36	finally
-    //   37	39	36	finally
   }
   
   /* Error */
@@ -120,12 +119,11 @@ public abstract class SQLiteClosable
     //   from	to	target	type
     //   2	14	36	finally
     //   20	22	36	finally
-    //   37	39	36	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteClosable
  * JD-Core Version:    0.7.0.1
  */

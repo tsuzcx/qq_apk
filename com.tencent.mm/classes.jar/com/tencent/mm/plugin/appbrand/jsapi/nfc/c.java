@@ -1,35 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONObject;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import kotlin.Metadata;
 
-public final class c
-  extends JsApiAppBrandNFCBase
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/IHostNFCSwitcher;", "Lcom/tencent/luggage/base/ICustomize;", "disableHostNFC", "", "enableHostNFC", "isNFCUsing", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-commons_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface c
+  extends b
 {
-  public static final int CTRL_INDEX = 354;
-  public static final String NAME = "sendHCEMessage";
+  public abstract void cty();
   
-  static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(137871);
-    ab.i("MicroMsg.JsApiNFCSendHCEResponseCommand", "alvinluo sendHCEMessage callback json: %s", new Object[] { paramString });
-    if (paramc != null) {
-      paramc.h(paramInt, paramString);
-    }
-    AppMethodBeat.o(137871);
-  }
+  public abstract void ctz();
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(137870);
-    a(new c.1(this, paramc, paramInt, paramJSONObject));
-    AppMethodBeat.o(137870);
-  }
+  public abstract boolean z(f paramf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.c
  * JD-Core Version:    0.7.0.1
  */

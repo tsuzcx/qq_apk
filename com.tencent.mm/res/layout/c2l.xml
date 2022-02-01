@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bs_" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ad.widget.twistad.TwistDegreeView android:id="@id/kzb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/hv2" android:layout_width="58.0dip" android:layout_height="58.0dip" android:layout_marginTop="4.0dip" android:src="@drawable/bkc" android:scaleType="centerInside" />
+    <TextView android:textSize="@dimen/arq" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/kpz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="30.0dip" android:singleLine="true" android:includeFontPadding="false" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+    <TextView android:textSize="@dimen/arp" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/c2i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:singleLine="true" android:includeFontPadding="false" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+</LinearLayout>

@@ -1,91 +1,80 @@
 package com.tencent.mm.plugin.webview.luggage.c;
 
-import android.os.Looper;
-import android.webkit.URLUtil;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.plugin.webview.model.am;
-import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONObject;
 
 public final class b
 {
-  public static JSONObject BJ(String paramString)
+  public static int a(Window paramWindow, boolean paramBoolean)
   {
-    AppMethodBeat.i(6505);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(78762);
+    int i = paramWindow.getDecorView().getSystemUiVisibility();
+    int j;
+    if (paramBoolean)
     {
-      AppMethodBeat.o(6505);
-      return null;
+      j = i | 0x400 | 0x100;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 20) {
+        i = j | 0x200 | 0x2;
+      }
+      j = i | 0x4;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = j | 0x1000;
+      }
     }
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      AppMethodBeat.o(6505);
-      return paramString;
+      AppMethodBeat.o(78762);
+      return i;
+      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 20) {
+        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
+      }
+      j = i & 0xFFFFFFFB;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = j & 0xFFFFEFFF;
+      }
     }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.LuggageWebViewUtil", paramString.getMessage());
-      AppMethodBeat.o(6505);
-    }
-    return null;
   }
   
-  public static boolean Fl(String paramString)
+  public static void b(Window paramWindow, final boolean paramBoolean)
   {
-    AppMethodBeat.i(153129);
-    if ((!bo.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
+    AppMethodBeat.i(78761);
+    if (paramBoolean)
     {
-      AppMethodBeat.o(153129);
-      return true;
-    }
-    AppMethodBeat.o(153129);
-    return false;
-  }
-  
-  public static WebViewJSSDKFileItem agY(String paramString)
-  {
-    AppMethodBeat.i(6506);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.LuggageWebViewUtil", "get by local id error, local id is null or nil");
-      AppMethodBeat.o(6506);
-      return null;
-    }
-    if (ah.brt())
-    {
-      paramString = g.dcE().ahh(paramString);
-      AppMethodBeat.o(6506);
-      return paramString;
-    }
-    paramString = (WebViewJSSDKFileItem)f.a("com.tencent.mm", new IPCString(paramString), b.a.class);
-    AppMethodBeat.o(6506);
-    return paramString;
-  }
-  
-  public static void runOnUiThread(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(6504);
-    if (Thread.currentThread() != Looper.getMainLooper().getThread())
-    {
-      al.d(paramRunnable);
-      AppMethodBeat.o(6504);
+      i = a(paramWindow, paramBoolean);
+      paramWindow.getDecorView().setSystemUiVisibility(i);
+      paramWindow.setFlags(1024, 1024);
+      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+      {
+        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(78760);
+          if ((paramAnonymousInt & 0x4) == 0) {
+            b.this.getDecorView().setSystemUiVisibility(b.a(b.this, paramBoolean));
+          }
+          AppMethodBeat.o(78760);
+        }
+      });
+      AppMethodBeat.o(78761);
       return;
     }
-    paramRunnable.run();
-    AppMethodBeat.o(6504);
+    int i = a(paramWindow, paramBoolean);
+    paramWindow.getDecorView().setSystemUiVisibility(i);
+    paramWindow.clearFlags(1024);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
+    AppMethodBeat.o(78761);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.c.b
  * JD-Core Version:    0.7.0.1
  */

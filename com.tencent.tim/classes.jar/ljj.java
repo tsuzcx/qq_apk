@@ -1,0 +1,11 @@
+class ljj
+  implements lji.b<BEAN>
+{
+  ljj(lji paramlji, ljh.a parama) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes14.jar
+ * Qualified Name:     ljj
+ * JD-Core Version:    0.7.0.1
+ */

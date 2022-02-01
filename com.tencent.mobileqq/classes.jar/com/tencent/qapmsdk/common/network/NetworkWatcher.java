@@ -17,6 +17,7 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/network/NetworkWatcher;", "", "()V", "ACTION_CONN_CHANGE", "", "TAG", "apn", "Lcom/tencent/qapmsdk/common/network/Apn;", "getApn", "()Lcom/tencent/qapmsdk/common/network/Apn;", "setApn", "(Lcom/tencent/qapmsdk/common/network/Apn;)V", "carrier", "carrierInterval", "", "ctx", "Ljava/lang/ref/WeakReference;", "Landroid/content/Context;", "handler", "Landroid/os/Handler;", "isInited", "", "isNetMonitor", "()Z", "setNetMonitor", "(Z)V", "isWifiAvailable", "setWifiAvailable", "lastCarrierTime", "", "netStatusReceive", "com/tencent/qapmsdk/common/network/NetworkWatcher$netStatusReceive$1", "Lcom/tencent/qapmsdk/common/network/NetworkWatcher$netStatusReceive$1;", "activeNetworkCarrier", "checkConnInfo", "", "getNetworkState", "Lcom/tencent/qapmsdk/common/network/NetworkState;", "getOperatorName", "init", "context", "resetApn", "unInit", "common_release"}, k=1, mv={1, 1, 15})
 public final class NetworkWatcher
@@ -40,245 +41,12 @@ public final class NetworkWatcher
   {
     resetApn();
     Apn localApn = getApn();
-    switch (NetworkWatcher.WhenMappings.$EnumSwitchMapping$0[localApn.ordinal()])
-    {
+    int i = NetworkWatcher.WhenMappings.$EnumSwitchMapping$0[localApn.ordinal()];
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
     }
-    for (boolean bool = false;; bool = true)
-    {
-      isWifiAvailable = bool;
-      return;
-    }
-  }
-  
-  private final NetworkState getNetworkState()
-  {
-    Object localObject3 = null;
-    Object localObject1 = ctx;
-    if (localObject1 != null)
-    {
-      localObject1 = (Context)((WeakReference)localObject1).get();
-      if (localObject1 == null) {}
-    }
-    Object localObject2;
-    for (localObject1 = ((Context)localObject1).getSystemService("connectivity");; localObject1 = null)
-    {
-      localObject2 = localObject1;
-      if (!(localObject1 instanceof ConnectivityManager)) {
-        localObject2 = null;
-      }
-      localObject1 = (ConnectivityManager)localObject2;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-      if ((localObject2 != null) && (((NetworkInfo)localObject2).isAvailable())) {
-        break label85;
-      }
-      return NetworkState.NETWORK_NONE;
-    }
-    return NetworkState.NETWORK_NONE;
-    label85:
-    if (Build.VERSION.SDK_INT < 21)
-    {
-      if ((((NetworkInfo)localObject2).isConnectedOrConnecting()) && (((NetworkInfo)localObject2).getType() == 1)) {
-        return NetworkState.NETWORK_WIFI;
-      }
-    }
-    else
-    {
-      localObject2 = ((ConnectivityManager)localObject1).getAllNetworks();
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        NetworkInfo localNetworkInfo = ((ConnectivityManager)localObject1).getNetworkInfo(localObject2[i]);
-        if ((localNetworkInfo != null) && (localNetworkInfo.getType() == 1) && ((localNetworkInfo.getState() == NetworkInfo.State.CONNECTED) || (localNetworkInfo.getState() == NetworkInfo.State.CONNECTING))) {
-          return NetworkState.NETWORK_WIFI;
-        }
-        i += 1;
-      }
-    }
-    localObject1 = ctx;
-    if (localObject1 != null)
-    {
-      localObject1 = (Context)((WeakReference)localObject1).get();
-      if (localObject1 != null)
-      {
-        localObject1 = ((Context)localObject1).getSystemService("phone");
-        localObject2 = localObject1;
-        if (!(localObject1 instanceof TelephonyManager)) {
-          localObject2 = null;
-        }
-        localObject2 = (TelephonyManager)localObject2;
-        localObject1 = localObject3;
-        if (localObject2 != null) {
-          localObject1 = Integer.valueOf(((TelephonyManager)localObject2).getNetworkType());
-        }
-        if (localObject1 != null) {
-          break label321;
-        }
-        label256:
-        if (localObject1 != null) {
-          break label333;
-        }
-        if (localObject1 != null) {
-          break label344;
-        }
-        label264:
-        if (localObject1 != null) {
-          break label355;
-        }
-        label268:
-        if (localObject1 != null) {
-          break label367;
-        }
-        label272:
-        if (localObject1 != null) {
-          break label379;
-        }
-        label276:
-        if (localObject1 != null) {
-          break label392;
-        }
-        if (localObject1 != null) {
-          break label403;
-        }
-        label284:
-        if (localObject1 != null) {
-          break label414;
-        }
-        label288:
-        if (localObject1 != null) {
-          break label426;
-        }
-        label292:
-        if (localObject1 != null) {
-          break label438;
-        }
-        label296:
-        if (localObject1 != null) {
-          break label450;
-        }
-        label300:
-        if (localObject1 != null) {
-          break label462;
-        }
-        label304:
-        if (localObject1 != null) {
-          break label474;
-        }
-        label308:
-        if (localObject1 != null) {
-          break label486;
-        }
-      }
-    }
-    label321:
-    label333:
-    label344:
-    label355:
-    label367:
-    label379:
-    while (((Integer)localObject1).intValue() != 13)
-    {
-      return NetworkState.NETWORK_MOBILE;
-      localObject1 = null;
-      break;
-      if (((Integer)localObject1).intValue() != 1) {
-        break label256;
-      }
-      for (;;)
-      {
-        return NetworkState.NETWORK_2G;
-        if (((Integer)localObject1).intValue() != 4) {
-          break;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 2) {
-          break label264;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 7) {
-          break label268;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 11) {
-          break label272;
-        }
-      }
-      if (((Integer)localObject1).intValue() != 6) {
-        break label276;
-      }
-      for (;;)
-      {
-        return NetworkState.NETWORK_3G;
-        if (((Integer)localObject1).intValue() != 3) {
-          break;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 5) {
-          break label284;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 8) {
-          break label288;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 9) {
-          break label292;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 10) {
-          break label296;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 12) {
-          break label300;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 14) {
-          break label304;
-        }
-        continue;
-        if (((Integer)localObject1).intValue() != 15) {
-          break label308;
-        }
-      }
-    }
-    label392:
-    label403:
-    label414:
-    label426:
-    label438:
-    label450:
-    label462:
-    label474:
-    label486:
-    return NetworkState.NETWORK_4G;
-  }
-  
-  private final String getOperatorName()
-  {
-    Object localObject3 = null;
-    Object localObject1 = ctx;
-    if (localObject1 != null)
-    {
-      localObject1 = (Context)((WeakReference)localObject1).get();
-      if (localObject1 == null) {}
-    }
-    for (localObject1 = ((Context)localObject1).getSystemService("phone");; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (!(localObject1 instanceof TelephonyManager)) {
-        localObject2 = null;
-      }
-      localObject2 = (TelephonyManager)localObject2;
-      localObject1 = localObject3;
-      if (localObject2 != null) {
-        localObject1 = ((TelephonyManager)localObject2).getSimOperatorName();
-      }
-      return localObject1;
-    }
+    isWifiAvailable = bool;
   }
   
   private final void resetApn()
@@ -287,95 +55,109 @@ public final class NetworkWatcher
     {
       try
       {
-        Object localObject = getOperatorName();
-        NetworkState localNetworkState = getNetworkState();
-        if (localObject != null) {}
-        switch (((String)localObject).hashCode())
+        Object localObject1 = getOperatorName();
+        localObject2 = getNetworkState();
+        int i;
+        if (localObject1 != null)
         {
-        case 618596989: 
-          localObject = Apn.TYPE_NET;
-          break label355;
-          apn = (Apn)localObject;
-          switch (NetworkWatcher.WhenMappings.$EnumSwitchMapping$4[localNetworkState.ordinal()])
+          i = ((String)localObject1).hashCode();
+          if (i != 618558396)
           {
-          case 1: 
-            localObject = getApn();
-            apn = (Apn)localObject;
-            return;
-            if (!((String)localObject).equals("中国移动")) {
-              continue;
-            }
-            switch (NetworkWatcher.WhenMappings.$EnumSwitchMapping$1[localNetworkState.ordinal()])
+            if (i != 618596989)
             {
-            case 1: 
-              localObject = Apn.T_APN_CMLTE;
+              if ((i == 618663094) && (((String)localObject1).equals("中国联通")))
+              {
+                i = NetworkWatcher.WhenMappings.$EnumSwitchMapping$3[localObject2.ordinal()];
+                if (i != 1)
+                {
+                  if (i != 2)
+                  {
+                    localObject1 = Apn.T_APN_WONET;
+                    break label302;
+                  }
+                  localObject1 = Apn.T_APN_3GNET;
+                  break label302;
+                }
+                localObject1 = Apn.T_APN_UNINET;
+                break label302;
+              }
             }
-            break;
+            else if (((String)localObject1).equals("中国移动"))
+            {
+              i = NetworkWatcher.WhenMappings.$EnumSwitchMapping$1[localObject2.ordinal()];
+              if (i != 1)
+              {
+                if (i != 2)
+                {
+                  localObject1 = Apn.T_APN_CMLTE;
+                  break label302;
+                }
+                localObject1 = Apn.T_APN_CM3G;
+                break label302;
+              }
+              localObject1 = Apn.T_APN_CMNET;
+              break label302;
+            }
           }
-          break;
-        case 618558396: 
-          if (!((String)localObject).equals("中国电信")) {
-            continue;
-          }
-          switch (NetworkWatcher.WhenMappings.$EnumSwitchMapping$2[localNetworkState.ordinal()])
+          else if (((String)localObject1).equals("中国电信"))
           {
-          case 1: 
-            localObject = Apn.T_APN_CTLTE;
+            i = NetworkWatcher.WhenMappings.$EnumSwitchMapping$2[localObject2.ordinal()];
+            if (i != 1)
+            {
+              if (i != 2)
+              {
+                localObject1 = Apn.T_APN_CTLTE;
+                break label302;
+              }
+              localObject1 = Apn.T_APN_CTNET;
+              break label302;
+            }
+            localObject1 = Apn.TYPE_UNKNOWN;
+            break label302;
           }
-          break;
-        case 618663094: 
-          if (!((String)localObject).equals("中国联通")) {
-            continue;
-          }
-          switch (NetworkWatcher.WhenMappings.$EnumSwitchMapping$3[localNetworkState.ordinal()])
-          {
-          case 1: 
-            localObject = Apn.T_APN_WONET;
-            break;
-            localObject = Apn.T_APN_CMNET;
-            break;
-            localObject = Apn.T_APN_CM3G;
-            break;
-            localObject = Apn.TYPE_UNKNOWN;
-            break;
-            localObject = Apn.T_APN_CTNET;
-            break;
-            localObject = Apn.T_APN_UNINET;
-            break;
-          case 2: 
-            localObject = Apn.T_APN_3GNET;
-            break;
-            localObject = Apn.TYPE_NET;
-            continue;
-            localObject = Apn.TYPE_WIFI;
-            continue;
-            localObject = Apn.TYPE_UNKNOWN;
-          }
-          break;
+          localObject1 = Apn.TYPE_NET;
         }
-        continue;
+        else
+        {
+          localObject1 = Apn.TYPE_NET;
+          apn = (Apn)localObject1;
+          i = NetworkWatcher.WhenMappings.$EnumSwitchMapping$4[localObject2.ordinal()];
+          if (i != 1)
+          {
+            if (i != 2) {
+              localObject1 = getApn();
+            } else {
+              localObject1 = Apn.TYPE_UNKNOWN;
+            }
+          }
+          else {
+            localObject1 = Apn.TYPE_WIFI;
+          }
+          apn = (Apn)localObject1;
+          return;
+        }
       }
       catch (Exception localException)
       {
-        Logger.INSTANCE.w(new String[] { "QAPM_common_NetworkWatcher", localException + ": cannot get apn from network state, so use default" });
+        Object localObject2 = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localException);
+        localStringBuilder.append(": cannot get apn from network state, so use default");
+        ((Logger)localObject2).w(new String[] { "QAPM_common_NetworkWatcher", localStringBuilder.toString() });
         apn = Apn.TYPE_UNKNOWN;
         return;
       }
-      label355:
-      if (localException != null)
-      {
-        continue;
-        continue;
-        continue;
-      }
+      label302:
+      if (localException == null) {}
     }
   }
   
   @NotNull
   public final String activeNetworkCarrier()
   {
-    Object localObject3 = null;
-    if (((Intrinsics.areEqual(carrier, "00000") ^ true)) && (System.currentTimeMillis() - lastCarrierTime < 120000)) {
+    boolean bool = Intrinsics.areEqual(carrier, "00000");
+    int j = 1;
+    if (((bool ^ true)) && (System.currentTimeMillis() - lastCarrierTime < 120000)) {
       return carrier;
     }
     lastCarrierTime = System.currentTimeMillis();
@@ -386,32 +168,35 @@ public final class NetworkWatcher
       if (localObject1 != null)
       {
         localObject1 = ((Context)localObject1).getSystemService("phone");
-        Object localObject2 = localObject1;
-        if (!(localObject1 instanceof TelephonyManager)) {
-          localObject2 = null;
-        }
-        localObject2 = (TelephonyManager)localObject2;
-        localObject1 = localObject3;
-        if (localObject2 != null) {
-          localObject1 = ((TelephonyManager)localObject2).getSimOperator();
-        }
-        localObject2 = (CharSequence)localObject1;
-        if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-          break label135;
-        }
+        break label81;
       }
     }
-    label135:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        localObject1 = "00000";
-      }
-      carrier = (String)localObject1;
-      return carrier;
+    localObject1 = null;
+    label81:
+    Object localObject2 = localObject1;
+    if (!(localObject1 instanceof TelephonyManager)) {
+      localObject2 = null;
+    }
+    localObject1 = (TelephonyManager)localObject2;
+    if (localObject1 != null) {
+      localObject1 = ((TelephonyManager)localObject1).getSimOperator();
+    } else {
       localObject1 = null;
-      break;
     }
+    localObject2 = (CharSequence)localObject1;
+    int i = j;
+    if (localObject2 != null) {
+      if (((CharSequence)localObject2).length() == 0) {
+        i = j;
+      } else {
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      localObject1 = "00000";
+    }
+    carrier = (String)localObject1;
+    return carrier;
   }
   
   @NotNull
@@ -421,6 +206,117 @@ public final class NetworkWatcher
       resetApn();
     }
     return apn;
+  }
+  
+  @NotNull
+  public final NetworkState getNetworkState()
+  {
+    Object localObject1 = ctx;
+    Object localObject3 = null;
+    if (localObject1 != null)
+    {
+      localObject1 = (Context)((WeakReference)localObject1).get();
+      if (localObject1 != null)
+      {
+        localObject1 = ((Context)localObject1).getSystemService("connectivity");
+        break label36;
+      }
+    }
+    localObject1 = null;
+    label36:
+    Object localObject2 = localObject1;
+    if (!(localObject1 instanceof ConnectivityManager)) {
+      localObject2 = null;
+    }
+    localObject1 = (ConnectivityManager)localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
+      if ((localObject2 != null) && (((NetworkInfo)localObject2).isAvailable()))
+      {
+        if (Build.VERSION.SDK_INT < 21)
+        {
+          if ((((NetworkInfo)localObject2).isConnectedOrConnecting()) && (((NetworkInfo)localObject2).getType() == 1)) {
+            return NetworkState.NETWORK_WIFI;
+          }
+        }
+        else
+        {
+          localObject2 = ((ConnectivityManager)localObject1).getAllNetworks();
+          int j = localObject2.length;
+          int i = 0;
+          while (i < j)
+          {
+            NetworkInfo localNetworkInfo = ((ConnectivityManager)localObject1).getNetworkInfo(localObject2[i]);
+            if ((localNetworkInfo != null) && (localNetworkInfo.getType() == 1) && ((localNetworkInfo.getState() == NetworkInfo.State.CONNECTED) || (localNetworkInfo.getState() == NetworkInfo.State.CONNECTING))) {
+              return NetworkState.NETWORK_WIFI;
+            }
+            i += 1;
+          }
+        }
+        localObject1 = ctx;
+        if (localObject1 != null)
+        {
+          localObject1 = (Context)((WeakReference)localObject1).get();
+          if (localObject1 != null)
+          {
+            localObject1 = ((Context)localObject1).getSystemService("phone");
+            break label216;
+          }
+        }
+        localObject1 = null;
+        label216:
+        localObject2 = localObject1;
+        if (!(localObject1 instanceof TelephonyManager)) {
+          localObject2 = null;
+        }
+        localObject2 = (TelephonyManager)localObject2;
+        localObject1 = localObject3;
+        if (localObject2 != null) {
+          localObject1 = Integer.valueOf(((TelephonyManager)localObject2).getNetworkType());
+        }
+        if (((localObject1 != null) && (((Integer)localObject1).intValue() == 1)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 4)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 2)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 7)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 11))) {
+          return NetworkState.NETWORK_2G;
+        }
+        if (((localObject1 != null) && (((Integer)localObject1).intValue() == 6)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 3)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 5)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 8)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 9)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 10)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 12)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 14)) || ((localObject1 != null) && (((Integer)localObject1).intValue() == 15))) {
+          return NetworkState.NETWORK_3G;
+        }
+        if ((localObject1 != null) && (((Integer)localObject1).intValue() == 13)) {
+          return NetworkState.NETWORK_4G;
+        }
+        return NetworkState.NETWORK_MOBILE;
+      }
+      return NetworkState.NETWORK_NONE;
+    }
+    return NetworkState.NETWORK_NONE;
+  }
+  
+  @Nullable
+  public final String getOperatorName()
+  {
+    Object localObject1 = ctx;
+    Object localObject3 = null;
+    if (localObject1 != null)
+    {
+      localObject1 = (Context)((WeakReference)localObject1).get();
+      if (localObject1 != null)
+      {
+        localObject1 = ((Context)localObject1).getSystemService("phone");
+        break label34;
+      }
+    }
+    localObject1 = null;
+    label34:
+    Object localObject2 = localObject1;
+    if (!(localObject1 instanceof TelephonyManager)) {
+      localObject2 = null;
+    }
+    localObject2 = (TelephonyManager)localObject2;
+    localObject1 = localObject3;
+    if (localObject2 != null) {
+      localObject1 = ((TelephonyManager)localObject2).getSimOperatorName();
+    }
+    return localObject1;
   }
   
   public final void init(@NotNull Context paramContext)
@@ -496,7 +392,7 @@ public final class NetworkWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.network.NetworkWatcher
  * JD-Core Version:    0.7.0.1
  */

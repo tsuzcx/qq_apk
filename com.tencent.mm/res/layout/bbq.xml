@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/gpk" style="@style/a72" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gpa" android:background="@drawable/n5" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2">
+        <TextView android:id="@id/gpb" style="@style/a70" />
+        <TextView android:id="@id/gpe" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/m2" style="@style/a70" />
+        <View style="@style/a71" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/gpg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/al6" android:gravity="bottom|center|right" android:id="@id/gph" android:background="@drawable/b9h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/gpd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bk8" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <View style="@style/a71" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/gp_" style="@style/a6z" />
+    </LinearLayout>
+</LinearLayout>

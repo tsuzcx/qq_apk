@@ -10,8 +10,8 @@ public final class RespGetSwitches
 {
   static RespHeader cache_stHeader;
   static ArrayList<Switch> cache_switches;
-  public RespHeader stHeader;
-  public ArrayList<Switch> switches;
+  public RespHeader stHeader = null;
+  public ArrayList<Switch> switches = null;
   
   public RespGetSwitches() {}
   
@@ -44,7 +44,7 @@ public final class RespGetSwitches
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.RespGetSwitches
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class tlv_t16a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t16a
  * JD-Core Version:    0.7.0.1
  */

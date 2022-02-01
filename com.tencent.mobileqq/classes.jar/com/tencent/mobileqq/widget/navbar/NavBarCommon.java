@@ -1,87 +1,107 @@
 package com.tencent.mobileqq.widget.navbar;
 
-import aepi;
-import alud;
+import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
+import android.view.ViewStub;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bczz;
-import bdoo;
-import bexc;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class NavBarCommon
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bexc jdField_a_of_type_Bexc;
-  private boolean jdField_a_of_type_Boolean = true;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
+  private static final int CUSTOM_VIEW_MARGIN = 24;
+  public static final String INDIVIDUATION_URL_SOURCE_TYPE = "individuation_url_type";
+  public static final int REPORT_FROM_AIO = 40300;
+  public static final int REPORT_FROM_AIO_EMOTICON_MANAGER = 40313;
+  private Drawable ad;
+  private View animView;
+  private TextView bottomTitle;
+  private TextView centerView;
+  private TextView leftView;
+  private TextView leftViewNotBack;
+  private OnItemSelectListener listener;
+  private ViewStub mBottomTitleStub;
+  private ImageView mLeftBackIcon;
+  private TextView mLeftBackText;
+  private RelativeLayout mLoadingParent;
+  private ImageView mLoadingView;
+  private boolean mNotShowLeftText = true;
+  private Drawable[] mOldDrawables;
+  private int mOldPadding;
+  protected boolean mUseOptimizMode = false;
+  private ImageView rightViewImg;
+  private ImageView rightViewImg1;
+  private TextView rightViewText;
+  private TextView rightViewText2;
+  private RelativeLayout titleContainer;
+  private TextView topTitle;
   
   public NavBarCommon(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public NavBarCommon(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    init(paramContext);
   }
   
   public NavBarCommon(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a(Context paramContext)
+  private void init(Context paramContext)
   {
-    View.inflate(paramContext, 2131558914, this);
-    setBackgroundResource(2130849536);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
-    this.e = ((TextView)findViewById(2131378616));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368979));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368626));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368670));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377989));
-    this.g = ((TextView)findViewById(2131378029));
-    this.h = ((TextView)findViewById(2131377968));
-    this.d = ((TextView)findViewById(2131368655));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368644));
-    this.f = ((TextView)findViewById(2131368656));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368638));
-    if (AppSetting.c)
+    View.inflate(paramContext, 2131624582, this);
+    setBackgroundResource(2130852228);
+    this.leftView = ((TextView)findViewById(2131436180));
+    this.mLeftBackText = ((TextView)findViewById(2131448219));
+    this.mLeftBackIcon = ((ImageView)findViewById(2131436666));
+    this.leftViewNotBack = ((TextView)findViewById(2131436182));
+    this.centerView = ((TextView)findViewById(2131436227));
+    this.titleContainer = ((RelativeLayout)findViewById(2131447534));
+    this.topTitle = ((TextView)findViewById(2131447581));
+    this.bottomTitle = ((TextView)findViewById(2131447497));
+    this.rightViewText = ((TextView)findViewById(2131436211));
+    this.rightViewImg1 = ((ImageView)findViewById(2131436199));
+    this.rightViewText2 = ((TextView)findViewById(2131436212));
+    this.rightViewImg = ((ImageView)findViewById(2131436194));
+    this.mBottomTitleStub = ((ViewStub)findViewById(2131447498));
+    if (AppSetting.e)
     {
-      bczz.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
-      if (this.e != null) {
-        bczz.b(this.e, Button.class.getName());
+      AccessibilityUtil.b(this.leftView, Button.class.getName());
+      paramContext = this.mLeftBackText;
+      if (paramContext != null) {
+        AccessibilityUtil.b(paramContext, Button.class.getName());
       }
-      if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-        bczz.b(this.jdField_b_of_type_AndroidWidgetImageView, Button.class.getName());
+      paramContext = this.mLeftBackIcon;
+      if (paramContext != null) {
+        AccessibilityUtil.b(paramContext, Button.class.getName());
       }
     }
   }
@@ -94,356 +114,635 @@ public class NavBarCommon
     paramView.setLayerType(0, null);
   }
   
-  public void a()
+  public void changeBg(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.e.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    int i;
+    if (paramBoolean) {
+      i = 2131168464;
+    } else {
+      i = 2130852228;
+    }
+    setBackgroundResource(i);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131167988);
+    this.leftView.setTextColor(localColorStateList);
+    TextView localTextView = this.leftView;
+    if (paramBoolean) {
+      i = 2130841082;
+    } else {
+      i = 2130853297;
+    }
+    localTextView.setBackgroundResource(i);
+    this.leftViewNotBack.setTextColor(localColorStateList);
+    this.mLeftBackText.setTextColor(localColorStateList);
+    this.centerView.setTextColor(localColorStateList);
+    this.rightViewText.setTextColor(localColorStateList);
+    this.rightViewText2.setTextColor(localColorStateList);
   }
   
-  public void a(boolean paramBoolean)
+  public TextView getLeftBackIcon()
   {
-    ColorStateList localColorStateList;
-    TextView localTextView;
-    if (paramBoolean)
+    return this.leftView;
+  }
+  
+  public TextView getRightViewText2()
+  {
+    return this.rightViewText2;
+  }
+  
+  public void hideLeft()
+  {
+    this.leftView.setVisibility(8);
+    this.mLeftBackText.setVisibility(8);
+    this.mLeftBackIcon.setVisibility(8);
+    this.leftViewNotBack.setVisibility(8);
+  }
+  
+  public void hideLeftText()
+  {
+    ViewUtils.setVisible(this.leftViewNotBack, 8);
+  }
+  
+  public boolean isTitleProgressShowing()
+  {
+    if ((this.mUseOptimizMode) && (this.mLoadingParent != null))
     {
-      i = 2131167194;
-      setBackgroundResource(i);
-      localColorStateList = getResources().getColorStateList(2131166898);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (!paramBoolean) {
-        break label96;
+      ImageView localImageView = this.mLoadingView;
+      if ((localImageView != null) && (localImageView.getVisibility() != 8)) {
+        return true;
       }
     }
-    label96:
-    for (int i = 2130840097;; i = 2130850060)
+    else if (this.ad != null)
     {
-      localTextView.setBackgroundResource(i);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
-      this.e.setTextColor(localColorStateList);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
-      this.d.setTextColor(localColorStateList);
-      this.f.setTextColor(localColorStateList);
-      return;
-      i = 2130849536;
-      break;
+      return true;
     }
-  }
-  
-  public void b()
-  {
-    bdoo.b(this.jdField_b_of_type_AndroidWidgetTextView, 8);
+    return false;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bexc == null) {}
-    for (;;)
+    if (this.listener != null)
     {
-      return;
       int i = 0;
-      switch (paramView.getId())
+      int j = paramView.getId();
+      if ((j != 2131436180) && (j != 2131448219) && (j != 2131436666))
       {
+        if (j == 2131436211) {
+          i = 2;
+        } else if (j == 2131436194) {
+          i = 4;
+        } else if (j == 2131436212) {
+          i = 3;
+        } else if (j == 2131436199) {
+          i = 5;
+        } else if ((j != 2131436227) && (j != 2131447534))
+        {
+          if (j == 2131436182) {
+            i = 8;
+          }
+        }
+        else {
+          i = 7;
+        }
       }
-      while (i != 0)
-      {
-        this.jdField_a_of_type_Bexc.a(paramView, i);
-        return;
+      else {
         i = 1;
-        continue;
-        i = 2;
-        continue;
-        i = 4;
-        continue;
-        i = 3;
-        continue;
-        i = 5;
-        continue;
-        i = 7;
-        continue;
-        i = 8;
+      }
+      if (i != 0) {
+        this.listener.onItemSelect(paramView, i);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public View setBottomTitleLayoutIdAndInflateIt(String paramString, int paramInt)
+  {
+    this.centerView.setVisibility(8);
+    this.titleContainer.setVisibility(0);
+    this.topTitle.setText(paramString);
+    this.topTitle.setContentDescription(paramString);
+    this.mBottomTitleStub.setLayoutResource(paramInt);
+    return this.mBottomTitleStub.inflate().findViewById(2131447499);
   }
   
   public void setCustomView(View paramView)
   {
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, aepi.a(29.0F, getResources()));
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, ViewUtils.dip2px(29.0F));
+    this.centerView.setVisibility(8);
     localLayoutParams1.addRule(13, -1);
-    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    int i = aepi.a(24.0F, getResources());
+    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.titleContainer.getLayoutParams();
+    int i = ViewUtils.dip2px(24.0F);
     localLayoutParams2.leftMargin = i;
     localLayoutParams2.rightMargin = i;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams2);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView, localLayoutParams1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.titleContainer.setLayoutParams(localLayoutParams2);
+    this.titleContainer.addView(paramView, localLayoutParams1);
+    this.titleContainer.setVisibility(0);
   }
   
   public void setLeftBackVisible(int paramInt)
   {
-    bdoo.b(this.jdField_a_of_type_AndroidWidgetTextView, paramInt);
+    ViewUtils.setVisible(this.leftView, paramInt);
   }
   
   public void setLeftButton(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368626));
-    setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.leftView.setVisibility(8);
+    this.leftViewNotBack = ((TextView)findViewById(2131436182));
+    setLayerType(this.leftViewNotBack);
+    this.leftViewNotBack.setVisibility(0);
+    this.leftViewNotBack.setText(paramInt);
   }
   
   public void setLeftButton(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368626));
-    setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.leftView.setVisibility(8);
+    this.leftViewNotBack = ((TextView)findViewById(2131436182));
+    setLayerType(this.leftViewNotBack);
+    this.leftViewNotBack.setVisibility(0);
+    this.leftViewNotBack.setText(paramString);
   }
   
   public void setLeftViewName(int paramInt)
   {
-    Object localObject2;
-    TextView localTextView;
-    Object localObject1;
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.leftView != null)
     {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      Object localObject1 = this.leftViewNotBack;
+      if (localObject1 != null) {
+        ((TextView)localObject1).setVisibility(8);
       }
-      localObject2 = getContext().getString(paramInt);
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      Object localObject2 = getContext().getString(paramInt);
+      TextView localTextView = this.leftView;
       localObject1 = localObject2;
       if ("".equals(localObject2)) {
-        localObject1 = getContext().getString(2131690623);
+        localObject1 = getContext().getString(2131887625);
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label139;
+      if (this.mNotShowLeftText) {
+        localTextView.setText("  ");
+      } else {
+        localTextView.setText((CharSequence)localObject1);
       }
-      localTextView.setText("  ");
-    }
-    for (;;)
-    {
       localTextView.setVisibility(0);
-      if (AppSetting.c)
+      if (AppSetting.e)
       {
         localObject2 = localObject1;
-        if (!((String)localObject1).contains(getContext().getString(2131690623))) {
-          localObject2 = getContext().getString(2131690623) + (String)localObject1;
+        if (!((String)localObject1).contains(getContext().getString(2131887625)))
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(getContext().getString(2131887625));
+          ((StringBuilder)localObject2).append((String)localObject1);
+          localObject2 = ((StringBuilder)localObject2).toString();
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject2);
+        this.leftView.setContentDescription((CharSequence)localObject2);
       }
-      return;
-      label139:
-      localTextView.setText((CharSequence)localObject1);
     }
   }
   
   public void setLeftViewName(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramBundle != null))
+    Object localObject;
+    if ((this.leftView != null) && (paramBundle != null))
     {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      localObject = this.leftViewNotBack;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
       }
-      try
+    }
+    try
+    {
+      TextView localTextView = this.leftView;
+      String str = paramBundle.getString("leftViewText");
+      int i = paramBundle.getInt("individuation_url_type");
+      localObject = str;
+      if (i >= 40300)
       {
-        TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-        Object localObject = paramBundle.getString("leftViewText");
-        int i = paramBundle.getInt("individuation_url_type");
-        paramBundle = (Bundle)localObject;
-        if (i >= 40300)
+        localObject = str;
+        if (i <= 40313)
         {
-          paramBundle = (Bundle)localObject;
-          if (i <= 40313)
+          localObject = str;
+          if (!TextUtils.isEmpty(str))
           {
-            paramBundle = (Bundle)localObject;
-            if (!TextUtils.isEmpty((CharSequence)localObject))
-            {
-              paramBundle = (Bundle)localObject;
-              if (((String)localObject).contains(alud.a(2131707474))) {
-                paramBundle = getContext().getString(2131690623);
-              }
+            localObject = str;
+            if (str.contains(HardCodeUtil.a(2131904954))) {
+              localObject = getContext().getString(2131887625);
             }
           }
         }
-        localObject = paramBundle;
-        if (paramBundle == null) {
-          localObject = getContext().getString(2131690623);
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          localTextView.setText("  ");
-        }
-        for (;;)
-        {
-          localTextView.setVisibility(0);
-          if (!AppSetting.c) {
-            break;
-          }
-          paramBundle = (Bundle)localObject;
-          if (!((String)localObject).contains(getContext().getString(2131690623))) {
-            paramBundle = getContext().getString(2131690623) + (String)localObject;
-          }
-          this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramBundle);
-          return;
-          localTextView.setText((CharSequence)localObject);
-        }
-        return;
       }
-      catch (Exception paramBundle) {}
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = getContext().getString(2131887625);
+      }
+      if (this.mNotShowLeftText) {
+        localTextView.setText("  ");
+      } else {
+        localTextView.setText(paramBundle);
+      }
+      localTextView.setVisibility(0);
+      if (AppSetting.e)
+      {
+        localObject = paramBundle;
+        if (!paramBundle.contains(getContext().getString(2131887625)))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(getContext().getString(2131887625));
+          ((StringBuilder)localObject).append(paramBundle);
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        this.leftView.setContentDescription((CharSequence)localObject);
+      }
+      return;
     }
+    catch (Exception paramBundle) {}
   }
   
-  public void setOnItemSelectListener(bexc parambexc)
+  public void setNotShowLeftText(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bexc = parambexc;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    if (this.e != null) {
-      this.e.setOnClickListener(this);
+    this.mNotShowLeftText = paramBoolean;
+  }
+  
+  public void setOnItemSelectListener(OnItemSelectListener paramOnItemSelectListener)
+  {
+    this.listener = paramOnItemSelectListener;
+    this.leftView.setOnClickListener(this);
+    paramOnItemSelectListener = this.mLeftBackText;
+    if (paramOnItemSelectListener != null) {
+      paramOnItemSelectListener.setOnClickListener(this);
     }
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    paramOnItemSelectListener = this.mLeftBackIcon;
+    if (paramOnItemSelectListener != null) {
+      paramOnItemSelectListener.setOnClickListener(this);
     }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    paramOnItemSelectListener = this.leftViewNotBack;
+    if (paramOnItemSelectListener != null) {
+      paramOnItemSelectListener.setOnClickListener(this);
     }
-    this.d.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.f.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.rightViewText.setOnClickListener(this);
+    this.rightViewImg1.setOnClickListener(this);
+    this.rightViewText2.setOnClickListener(this);
+    this.rightViewImg.setOnClickListener(this);
+    this.centerView.setOnClickListener(this);
+    this.titleContainer.setOnClickListener(this);
   }
   
   public void setRightButton(int paramInt)
   {
-    this.d.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.d.setText(paramInt);
-    this.d.setEnabled(true);
-    if (AppSetting.c) {
-      this.d.setContentDescription(this.d.getText() + alud.a(2131707475));
+    this.rightViewText.setVisibility(0);
+    this.rightViewImg1.setVisibility(8);
+    this.rightViewText.setText(paramInt);
+    this.rightViewText.setEnabled(true);
+    if (AppSetting.e)
+    {
+      TextView localTextView = this.rightViewText;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.rightViewText.getText());
+      localStringBuilder.append(HardCodeUtil.a(2131904955));
+      localTextView.setContentDescription(localStringBuilder.toString());
     }
   }
   
   public void setRightButton(String paramString)
   {
-    this.d.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.d.setText(paramString);
-    this.d.setEnabled(true);
-    if (AppSetting.c) {
-      this.d.setContentDescription(this.d.getText() + alud.a(2131707473));
+    this.rightViewText.setVisibility(0);
+    this.rightViewImg1.setVisibility(8);
+    this.rightViewText.setText(paramString);
+    this.rightViewText.setEnabled(true);
+    if (AppSetting.e)
+    {
+      paramString = this.rightViewText;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.rightViewText.getText());
+      localStringBuilder.append(HardCodeUtil.a(2131904955));
+      paramString.setContentDescription(localStringBuilder.toString());
     }
   }
   
   public void setRightButton2(int paramInt)
   {
-    this.f.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.f.setText(paramInt);
-    this.f.setEnabled(true);
-    if (AppSetting.c) {
-      this.d.setContentDescription(this.d.getText() + alud.a(2131707476));
+    this.rightViewText2.setVisibility(0);
+    this.rightViewImg.setVisibility(8);
+    this.rightViewText2.setText(paramInt);
+    this.rightViewText2.setEnabled(true);
+    if (AppSetting.e)
+    {
+      TextView localTextView = this.rightViewText;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.rightViewText.getText());
+      localStringBuilder.append(HardCodeUtil.a(2131904955));
+      localTextView.setContentDescription(localStringBuilder.toString());
     }
   }
   
   public void setRightImage(Drawable paramDrawable)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.d.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.rightViewImg1.setVisibility(0);
+    this.rightViewText.setVisibility(8);
+    this.rightViewImg1.setImageDrawable(paramDrawable);
+  }
+  
+  public void setRightImage(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    this.rightViewImg1.setVisibility(0);
+    this.rightViewText.setVisibility(8);
+    this.rightViewImg1.setImageDrawable(paramDrawable1);
+    this.rightViewImg1.setBackgroundDrawable(paramDrawable2);
   }
   
   public void setRightImage2(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.f.setVisibility(8);
+    this.rightViewImg.setImageDrawable(paramDrawable);
+    this.rightViewImg.setVisibility(0);
+    this.rightViewText2.setVisibility(8);
   }
   
   public void setRightImage2Desc(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramString);
+    this.rightViewImg.setContentDescription(paramString);
   }
   
   public void setRightImageDesc(String paramString)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(paramString);
+    this.rightViewImg1.setContentDescription(paramString);
   }
   
   public void setRightViewTextVisible(int paramInt)
   {
-    bdoo.b(this.d, paramInt);
+    ViewUtils.setVisible(this.rightViewText, paramInt);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.centerView;
+    if (localTextView != null)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      localTextView.setText(paramCharSequence);
+      this.centerView.setVisibility(0);
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    paramCharSequence = this.titleContainer;
+    if (paramCharSequence != null) {
+      paramCharSequence.setVisibility(8);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, CharSequence paramCharSequence4)
   {
-    if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 8) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (this.centerView.getVisibility() != 8) {
+      this.centerView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if (this.titleContainer.getVisibility() != 0) {
+      this.titleContainer.setVisibility(0);
     }
-    if (!TextUtils.equals(paramCharSequence1, this.g.getText()))
+    if (!TextUtils.equals(paramCharSequence1, this.topTitle.getText()))
     {
-      this.g.setText(paramCharSequence1);
-      this.g.setContentDescription(paramCharSequence2);
+      this.topTitle.setText(paramCharSequence1);
+      this.topTitle.setContentDescription(paramCharSequence2);
     }
-    if (!TextUtils.equals(paramCharSequence3, this.h.getText()))
+    if (!TextUtils.equals(paramCharSequence3, this.bottomTitle.getText()))
     {
-      this.h.setText(paramCharSequence3);
-      this.h.setContentDescription(paramCharSequence4);
+      this.bottomTitle.setText(paramCharSequence3);
+      this.bottomTitle.setContentDescription(paramCharSequence4);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence, String paramString)
   {
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.centerView;
+    if (localTextView != null)
     {
-      if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (localTextView.getVisibility() != 0) {
+        this.centerView.setVisibility(0);
       }
-      if (!TextUtils.equals(paramCharSequence, this.jdField_c_of_type_AndroidWidgetTextView.getText())) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      if (!TextUtils.equals(paramCharSequence, this.centerView.getText())) {
+        this.centerView.setText(paramCharSequence);
       }
-      if ((!TextUtils.equals(paramString, this.jdField_c_of_type_AndroidWidgetTextView.getContentDescription())) && (AppSetting.c)) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(paramString);
+      if ((!TextUtils.equals(paramString, this.centerView.getContentDescription())) && (AppSetting.e)) {
+        this.centerView.setContentDescription(paramString);
       }
     }
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 8)) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    paramCharSequence = this.titleContainer;
+    if ((paramCharSequence != null) && (paramCharSequence.getVisibility() != 8)) {
+      this.titleContainer.setVisibility(8);
     }
   }
   
   public void setTitleColor(int paramInt)
   {
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.centerView;
+    if (localTextView != null)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      localTextView.setTextColor(paramInt);
+      this.centerView.setVisibility(0);
+    }
+  }
+  
+  public void showLeftText()
+  {
+    ViewUtils.setVisible(this.leftViewNotBack, 0);
+  }
+  
+  public boolean startTitleProgress()
+  {
+    if (this.centerView == null) {
+      return false;
+    }
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    if (this.mUseOptimizMode)
+    {
+      localObject1 = (RelativeLayout)findViewById(2131447534);
+      if (this.centerView.getVisibility() == 0)
+      {
+        localObject1 = this.centerView;
+        localObject2 = ((TextView)localObject1).getParent();
+      }
+      else if ((localObject1 != null) && (((RelativeLayout)localObject1).getVisibility() == 0))
+      {
+        localObject2 = ((RelativeLayout)localObject1).getParent();
+      }
+      else
+      {
+        localObject1 = null;
+        localObject2 = localObject1;
+      }
+      localObject3 = this.mLoadingParent;
+      if ((localObject3 != null) && (localObject3 != localObject2))
+      {
+        localObject3 = this.mLoadingView;
+        if (localObject3 != null)
+        {
+          localObject3 = ((ImageView)localObject3).getParent();
+          RelativeLayout localRelativeLayout = this.mLoadingParent;
+          if (localObject3 == localRelativeLayout)
+          {
+            localRelativeLayout.removeView(this.mLoadingView);
+            this.mLoadingView = null;
+          }
+        }
+        this.mLoadingParent = null;
+      }
+      if ((this.mLoadingParent == null) && ((localObject2 instanceof RelativeLayout))) {
+        this.mLoadingParent = ((RelativeLayout)localObject2);
+      }
+      localObject2 = localObject1;
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        if (this.mLoadingView != null)
+        {
+          int i = ((View)localObject1).getId();
+          localObject3 = (RelativeLayout.LayoutParams)this.mLoadingView.getLayoutParams();
+          localObject2 = localObject1;
+          if (localObject3.getRules()[0] != i)
+          {
+            localObject2 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
+            ((RelativeLayout.LayoutParams)localObject2).rightMargin = 0;
+            ((RelativeLayout.LayoutParams)localObject2).leftMargin = 0;
+            ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+            ((RelativeLayout.LayoutParams)localObject3).addRule(0, i);
+            this.mLoadingView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+            localObject2 = localObject1;
+          }
+        }
+      }
+    }
+    else
+    {
+      localObject2 = null;
+    }
+    if ((this.mUseOptimizMode) && (this.mLoadingParent != null))
+    {
+      localObject1 = this.mLoadingView;
+      if ((localObject1 == null) || (((ImageView)localObject1).getVisibility() != 0))
+      {
+        if (this.mLoadingView == null)
+        {
+          localObject1 = (RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = 0;
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
+          ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          this.mLoadingView = new ImageView(getContext());
+          this.mLoadingView.setId(2131437631);
+          localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
+          ((RelativeLayout.LayoutParams)localObject1).addRule(15);
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ViewUtils.dip2px(7.0F);
+          this.mLoadingParent.addView(this.mLoadingView, (ViewGroup.LayoutParams)localObject1);
+          localObject1 = getResources().getDrawable(2130839588);
+          this.mLoadingView.setImageDrawable((Drawable)localObject1);
+          if ((localObject1 instanceof Animatable)) {
+            ((Animatable)localObject1).start();
+          }
+        }
+        if (this.mLoadingView.getVisibility() != 0) {
+          this.mLoadingView.setVisibility(0);
+        }
+        return true;
+      }
+    }
+    else if (this.ad == null)
+    {
+      this.ad = getResources().getDrawable(2130839588);
+      this.mOldDrawables = this.centerView.getCompoundDrawables();
+      this.mOldPadding = this.centerView.getCompoundDrawablePadding();
+      this.centerView.setCompoundDrawablePadding(10);
+      localObject1 = this.centerView;
+      localObject2 = this.ad;
+      localObject3 = this.mOldDrawables;
+      ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject2, localObject3[1], localObject3[2], localObject3[3]);
+      ((Animatable)this.ad).start();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean stopTitleProgress()
+  {
+    Object localObject;
+    if ((this.mUseOptimizMode) && (this.mLoadingParent != null))
+    {
+      localObject = this.mLoadingView;
+      if ((localObject != null) && (((ImageView)localObject).getVisibility() != 8))
+      {
+        this.mLoadingView.setVisibility(8);
+        return true;
+      }
+    }
+    else
+    {
+      localObject = this.ad;
+      if (localObject != null)
+      {
+        ((Animatable)localObject).stop();
+        this.ad = null;
+        this.centerView.setCompoundDrawablePadding(this.mOldPadding);
+        localObject = this.centerView;
+        Drawable[] arrayOfDrawable = this.mOldDrawables;
+        ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void toggleAnim(boolean paramBoolean, Animator.AnimatorListener paramAnimatorListener)
+  {
+    if (this.animView == null)
+    {
+      if (!paramBoolean) {
+        return;
+      }
+      this.animView = new View(getContext());
+      this.animView.setBackgroundResource(2130852228);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      addView(this.animView, 0, localLayoutParams);
+    }
+    if (paramBoolean)
+    {
+      this.animView.animate().alpha(1.0F).setDuration(300L).setInterpolator(new AccelerateInterpolator()).setListener(paramAnimatorListener);
+      return;
+    }
+    this.animView.animate().alpha(0.0F).setDuration(300L).setInterpolator(new AccelerateInterpolator()).setListener(paramAnimatorListener);
+  }
+  
+  public void updateRedDot(int paramInt, boolean paramBoolean)
+  {
+    View localView;
+    if (paramInt != 2)
+    {
+      if (paramInt != 3)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 5) {
+            localView = null;
+          } else {
+            localView = findViewById(2131436198);
+          }
+        }
+        else {
+          localView = findViewById(2131436193);
+        }
+      }
+      else {
+        localView = findViewById(2131436214);
+      }
+    }
+    else {
+      localView = findViewById(2131436213);
+    }
+    if (localView != null)
+    {
+      if (paramBoolean) {
+        paramInt = 0;
+      } else {
+        paramInt = 8;
+      }
+      localView.setVisibility(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.navbar.NavBarCommon
  * JD-Core Version:    0.7.0.1
  */

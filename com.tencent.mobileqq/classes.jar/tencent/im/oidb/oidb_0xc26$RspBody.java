@@ -32,13 +32,15 @@ public final class oidb_0xc26$RspBody
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 72, 80, 90, 96, 106, 114 }, new String[] { "rpt_msg_persons", "rpt_entry_inuse", "rpt_entry_close", "uint32_next_gap", "uint32_timestamp", "uint32_msg_up", "rpt_entry_delays", "uint32_list_switch", "uint32_add_page_list_switch", "em_rsp_data_type", "rpt_msg_rgroup_items", "bool_is_newuser", "rpt_msg_tables", "bytes_cookies" }, new Object[] { null, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), null, Boolean.valueOf(false), null, localByteStringMicro }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 72, 80, 90, 96, 106, 114 }, new String[] { "rpt_msg_persons", "rpt_entry_inuse", "rpt_entry_close", "uint32_next_gap", "uint32_timestamp", "uint32_msg_up", "rpt_entry_delays", "uint32_list_switch", "uint32_add_page_list_switch", "em_rsp_data_type", "rpt_msg_rgroup_items", "bool_is_newuser", "rpt_msg_tables", "bytes_cookies" }, new Object[] { null, localInteger2, localInteger2, localInteger1, localInteger1, localInteger1, null, localInteger1, localInteger1, localInteger2, null, Boolean.valueOf(false), null, localByteStringMicro }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xc26.RspBody
  * JD-Core Version:    0.7.0.1
  */

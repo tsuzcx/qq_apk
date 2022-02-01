@@ -3,35 +3,37 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avcp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comments
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comments> CREATOR = new avcp();
+  public static final Parcelable.Creator<Comments> CREATOR = new Comments.1();
   public long a;
-  public List<Comments.Comment> a;
-  public boolean a;
-  public List<Comments.Comment> b = new ArrayList();
+  public boolean b;
+  public List<Comments.Comment> c = new ArrayList();
+  public List<Comments.Comment> d = new ArrayList();
+  public Comments.LastDeleteInfo e = null;
   
-  public Comments()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public Comments() {}
   
   public Comments(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Comments.Comment.CREATOR);
-      return;
+    this.a = paramParcel.readLong();
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.b = bool;
+    paramParcel.readTypedList(this.c, Comments.Comment.CREATOR);
+  }
+  
+  public boolean a(Comments.Comment paramComment)
+  {
+    return this.c.contains(paramComment);
   }
   
   public int describeContents()
@@ -56,19 +58,14 @@ public class Comments
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
+    paramParcel.writeLong(this.a);
+    paramParcel.writeByte((byte)this.b);
+    paramParcel.writeTypedList(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.Comments
  * JD-Core Version:    0.7.0.1
  */

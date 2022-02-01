@@ -5,38 +5,17 @@ import java.security.MessageDigest;
 
 public final class g
 {
-  public static boolean isNullOrNil(String paramString)
+  public static long Bd(long paramLong)
   {
-    AppMethodBeat.i(73036);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(73036);
-      return true;
-    }
-    AppMethodBeat.o(73036);
-    return false;
-  }
-  
-  public static String nullAsNil(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
-  }
-  
-  public static long oZ(long paramLong)
-  {
-    AppMethodBeat.i(73037);
+    AppMethodBeat.i(88664);
     paramLong = (System.nanoTime() - paramLong) / 1000L / 1000L;
-    AppMethodBeat.o(73037);
+    AppMethodBeat.o(88664);
     return paramLong;
   }
   
-  public static String w(byte[] paramArrayOfByte)
+  public static String getMessageDigest(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73038);
+    AppMethodBeat.i(88665);
     char[] arrayOfChar = new char[16];
     char[] tmp13_11 = arrayOfChar;
     tmp13_11[0] = 48;
@@ -89,11 +68,11 @@ public final class g
       }
       catch (Exception paramArrayOfByte)
       {
-        AppMethodBeat.o(73038);
+        AppMethodBeat.o(88665);
         return null;
       }
       paramArrayOfByte = new String((char[])localObject);
-      AppMethodBeat.o(73038);
+      AppMethodBeat.o(88665);
       return paramArrayOfByte;
       while (i < k)
       {
@@ -106,10 +85,31 @@ public final class g
       }
     }
   }
+  
+  public static boolean isNullOrNil(String paramString)
+  {
+    AppMethodBeat.i(88663);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(88663);
+      return true;
+    }
+    AppMethodBeat.o(88663);
+    return false;
+  }
+  
+  public static String nullAsNil(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.core.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -36,13 +36,15 @@ public class NearbyGrayTipsManager$GreetWording
   public static String getPath(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NearbyGrayTipsManager.a()).append(GreetWording.class.getSimpleName()).append("_").append(paramInt);
+    localStringBuilder.append(NearbyGrayTipsManager.d());
+    localStringBuilder.append(GreetWording.class.getSimpleName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
     return localStringBuilder.toString();
   }
   
   public String getWording(Random paramRandom)
   {
-    String str = "";
     synchronized (this.list)
     {
       int k = this.list.size();
@@ -54,18 +56,23 @@ public class NearbyGrayTipsManager$GreetWording
           i = (this.lastIndex + 1) % k;
         }
         this.lastIndex = i;
-        str = (String)this.list.get(i);
+        paramRandom = (String)this.list.get(i);
       }
-      return str;
+      else
+      {
+        paramRandom = "";
+      }
+      return paramRandom;
     }
   }
   
   public void saveWording(long paramLong, List<String> paramList, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       Object localObject2 = null;
       synchronized (this.list)
       {
@@ -89,10 +96,9 @@ public class NearbyGrayTipsManager$GreetWording
             ((GreetWording)localObject1).list.addAll(paramList);
           }
         }
-        if ((!paramBoolean) || (localObject1 == null)) {
-          continue;
+        if ((paramBoolean) && (localObject1 != null)) {
+          ThreadManager.getFileThreadHandler().post(new NearbyGrayTipsManager.GreetWording.1(this, (GreetWording)localObject1));
         }
-        ThreadManager.getFileThreadHandler().post(new NearbyGrayTipsManager.GreetWording.1(this, (GreetWording)localObject1));
         return;
       }
     }
@@ -101,27 +107,37 @@ public class NearbyGrayTipsManager$GreetWording
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('[').append(this.id).append(',').append(this.createTime).append(',').append(this.lastIndex).append(',');
-    if (this.list.size() == 0) {
+    localStringBuffer.append('[');
+    localStringBuffer.append(this.id);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.createTime);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.lastIndex);
+    localStringBuffer.append(',');
+    if (this.list.size() == 0)
+    {
       localStringBuffer.append("size is 0");
     }
-    for (;;)
+    else
     {
-      localStringBuffer.append(']');
-      return localStringBuffer.toString();
-      localStringBuffer.append("size = ").append(this.list.size());
+      localStringBuffer.append("size = ");
+      localStringBuffer.append(this.list.size());
       localStringBuffer.append('(');
       Iterator localIterator = this.list.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuffer.append((String)localIterator.next()).append(',');
+      while (localIterator.hasNext())
+      {
+        localStringBuffer.append((String)localIterator.next());
+        localStringBuffer.append(',');
       }
       localStringBuffer.append(')');
     }
+    localStringBuffer.append(']');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.GreetWording
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdbk;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import java.util.HashMap;
 
 class AccountManageActivity$14$1
@@ -14,28 +14,31 @@ class AccountManageActivity$14$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.this$0.app) || (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e.a == this.e.this$0.app)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      AccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.this$0).put(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      if (this.e.a == null) {
+        return;
+      }
+      if (this.a)
+      {
+        this.e.e.setText(this.b);
+        AccountManageActivity.g(this.e.this$0).put(this.e.b, this.b);
+      }
+      if ((this.e.f.getDrawable() != null) && ((this.e.f.getDrawable() instanceof FaceDrawable))) {
+        ((FaceDrawable)this.e.f.getDrawable()).cancel();
+      }
+      if (this.c != null)
+      {
+        this.e.f.setImageBitmap(this.c);
+        return;
+      }
+      this.e.f.setImageDrawable(this.d);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_AndroidWidgetImageView.getDrawable() != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof bdbk))) {
-      ((bdbk)this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).a();
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$14.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

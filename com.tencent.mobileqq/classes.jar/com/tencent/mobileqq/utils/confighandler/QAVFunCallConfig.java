@@ -47,72 +47,68 @@ public class QAVFunCallConfig
   
   protected boolean parse(JSONObject paramJSONObject)
   {
-    boolean bool2 = true;
     ConfigHandler.checkUin("QAVConfig_382", this.mUin);
-    for (;;)
+    try
     {
-      boolean bool1;
-      int i;
-      try
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+      localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      paramJSONObject = paramJSONObject.optJSONArray("list");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
       {
-        SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        paramJSONObject = paramJSONObject.optJSONArray("list");
-        bool1 = bool2;
-        if (paramJSONObject != null)
+        int i = 0;
+        while (i < paramJSONObject.length())
         {
-          bool1 = bool2;
-          if (paramJSONObject.length() > 0)
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          Object localObject;
+          if ((localJSONObject.has("fcid")) && (localJSONObject.has("begin")) && (localJSONObject.has("end")) && (localJSONObject.has("media")))
           {
-            i = 0;
-            bool1 = bool2;
-            if (i < paramJSONObject.length())
-            {
-              JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-              if ((!localJSONObject.has("fcid")) || (!localJSONObject.has("begin")) || (!localJSONObject.has("end")) || (!localJSONObject.has("media")))
-              {
-                QLog.w("QAVConfig_382", 1, "parse, 缺少字段，[" + localJSONObject.toString() + "]");
-              }
-              else
-              {
-                QAVFunCallConfig.FCItem localFCItem = new QAVFunCallConfig.FCItem();
-                localFCItem.fcid = localJSONObject.optInt("fcid");
-                localFCItem.begin = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
-                localFCItem.end = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
-                localFCItem.media = localJSONObject.optString("media");
-                this.fcItems.put(Integer.valueOf(localFCItem.fcid), localFCItem);
-              }
-            }
+            localObject = new QAVFunCallConfig.FCItem();
+            ((QAVFunCallConfig.FCItem)localObject).fcid = localJSONObject.optInt("fcid");
+            ((QAVFunCallConfig.FCItem)localObject).begin = localSimpleDateFormat.parse(localJSONObject.optString("begin")).getTime();
+            ((QAVFunCallConfig.FCItem)localObject).end = localSimpleDateFormat.parse(localJSONObject.optString("end")).getTime();
+            ((QAVFunCallConfig.FCItem)localObject).media = localJSONObject.optString("media");
+            this.fcItems.put(Integer.valueOf(((QAVFunCallConfig.FCItem)localObject).fcid), localObject);
           }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("parse, 缺少字段，[");
+            ((StringBuilder)localObject).append(localJSONObject.toString());
+            ((StringBuilder)localObject).append("]");
+            QLog.w("QAVConfig_382", 1, ((StringBuilder)localObject).toString());
+          }
+          i += 1;
         }
       }
-      catch (Exception paramJSONObject)
-      {
-        this.fcItems.clear();
-        QLog.w("QAVConfig_382", 1, "parseJson, Exception", paramJSONObject);
-        bool1 = false;
-      }
-      return bool1;
-      i += 1;
+      return true;
     }
+    catch (Exception paramJSONObject)
+    {
+      this.fcItems.clear();
+      QLog.w("QAVConfig_382", 1, "parseJson, Exception", paramJSONObject);
+    }
+    return false;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("Size[").append(this.fcItems.size()).append("]");
+    localStringBuilder.append("Size[");
+    localStringBuilder.append(this.fcItems.size());
+    localStringBuilder.append("]");
     Iterator localIterator = this.fcItems.values().iterator();
     while (localIterator.hasNext())
     {
       QAVFunCallConfig.FCItem localFCItem = (QAVFunCallConfig.FCItem)localIterator.next();
-      localStringBuilder.append("\n").append(localFCItem);
+      localStringBuilder.append("\n");
+      localStringBuilder.append(localFCItem);
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig
  * JD-Core Version:    0.7.0.1
  */

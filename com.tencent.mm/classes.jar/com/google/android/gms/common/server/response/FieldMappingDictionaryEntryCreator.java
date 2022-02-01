@@ -13,7 +13,7 @@ public class FieldMappingDictionaryEntryCreator
   
   public FieldMappingDictionary.Entry createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61578);
+    AppMethodBeat.i(12070);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     ArrayList localArrayList = null;
@@ -38,7 +38,7 @@ public class FieldMappingDictionaryEntryCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new FieldMappingDictionary.Entry(i, str, localArrayList);
-    AppMethodBeat.o(61578);
+    AppMethodBeat.o(12070);
     return paramParcel;
   }
   
@@ -49,7 +49,7 @@ public class FieldMappingDictionaryEntryCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FieldMappingDictionaryEntryCreator
  * JD-Core Version:    0.7.0.1
  */

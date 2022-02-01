@@ -3,13 +3,12 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bcqw;
 import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class ExtendInputMethodRelativeLayout
   extends InputMethodRelativeLayout
 {
-  private bcqw a;
+  private ExtendInputMethodRelativeLayout.OnDownListener b;
   
   public ExtendInputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,12 +17,18 @@ public class ExtendInputMethodRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    ExtendInputMethodRelativeLayout.OnDownListener localOnDownListener;
     if (paramMotionEvent.getAction() == 0)
     {
-      if ((this.a == null) || (!this.a.a(paramMotionEvent))) {}
+      localOnDownListener = this.b;
+      if ((localOnDownListener != null) && (localOnDownListener.a(paramMotionEvent))) {
+        return true;
+      }
     }
-    else {
-      while ((this.a != null) && (this.a.b(paramMotionEvent))) {
+    else
+    {
+      localOnDownListener = this.b;
+      if ((localOnDownListener != null) && (localOnDownListener.b(paramMotionEvent))) {
         return true;
       }
     }
@@ -36,14 +41,14 @@ public class ExtendInputMethodRelativeLayout
     return true;
   }
   
-  public void setOnDownListener(bcqw parambcqw)
+  public void setOnDownListener(ExtendInputMethodRelativeLayout.OnDownListener paramOnDownListener)
   {
-    this.a = parambcqw;
+    this.b = paramOnDownListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExtendInputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

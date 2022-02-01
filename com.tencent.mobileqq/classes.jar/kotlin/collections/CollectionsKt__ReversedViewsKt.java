@@ -29,26 +29,36 @@ class CollectionsKt__ReversedViewsKt
   private static final int reverseElementIndex$CollectionsKt__ReversedViewsKt(@NotNull List<?> paramList, int paramInt)
   {
     int i = CollectionsKt.getLastIndex(paramList);
-    if (paramInt < 0) {}
-    while (i < paramInt) {
-      throw ((Throwable)new IndexOutOfBoundsException("Element index " + paramInt + " must be in range [" + new IntRange(0, CollectionsKt.getLastIndex(paramList)) + "]."));
+    if ((paramInt >= 0) && (i >= paramInt)) {
+      return CollectionsKt.getLastIndex(paramList) - paramInt;
     }
-    return CollectionsKt.getLastIndex(paramList) - paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Element index ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" must be in range [");
+    localStringBuilder.append(new IntRange(0, CollectionsKt.getLastIndex(paramList)));
+    localStringBuilder.append("].");
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   private static final int reversePositionIndex$CollectionsKt__ReversedViewsKt(@NotNull List<?> paramList, int paramInt)
   {
     int i = paramList.size();
-    if (paramInt < 0) {}
-    while (i < paramInt) {
-      throw ((Throwable)new IndexOutOfBoundsException("Position index " + paramInt + " must be in range [" + new IntRange(0, paramList.size()) + "]."));
+    if ((paramInt >= 0) && (i >= paramInt)) {
+      return paramList.size() - paramInt;
     }
-    return paramList.size() - paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Position index ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" must be in range [");
+    localStringBuilder.append(new IntRange(0, paramList.size()));
+    localStringBuilder.append("].");
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__ReversedViewsKt
  * JD-Core Version:    0.7.0.1
  */

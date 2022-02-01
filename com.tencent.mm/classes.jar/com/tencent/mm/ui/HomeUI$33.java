@@ -1,13 +1,13 @@
 package com.tencent.mm.ui;
 
-import android.support.v7.app.ActionBar;
 import android.view.View;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.pluginsdk.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
 
 final class HomeUI$33
   implements Runnable
@@ -16,26 +16,26 @@ final class HomeUI$33
   
   public final void run()
   {
-    AppMethodBeat.i(29379);
-    HomeUI.a(this.yYw);
-    aw.aaz();
-    c.Ru().setInt(327947, HomeUI.g(this.yYw).getHeight());
-    ab.i("MicroMsg.LauncherUI.HomeUI", "contentView.post then setFullScreenAfterSetContentView, padding: %s", new Object[] { Integer.valueOf(HomeUI.h(this.yYw).getPaddingTop()) });
-    f.b(HomeUI.b(this.yYw), HomeUI.h(this.yYw));
-    AppMethodBeat.o(29379);
+    AppMethodBeat.i(33209);
+    HomeUI.b(this.adBf);
+    bh.bCz();
+    c.ban().setInt(327947, HomeUI.h(this.adBf).getHeight());
+    Log.i("MicroMsg.LauncherUI.HomeUI", "contentView.post then setFullScreenAfterSetContentView, padding: %s", new Object[] { Integer.valueOf(HomeUI.i(this.adBf).getPaddingTop()) });
+    h.a(HomeUI.c(this.adBf), HomeUI.i(this.adBf));
+    AppMethodBeat.o(33209);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(29380);
+    AppMethodBeat.i(33210);
     String str = super.toString() + "|updateTitle";
-    AppMethodBeat.o(29380);
+    AppMethodBeat.o(33210);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.33
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,154 @@
 package com.tencent.mobileqq.activity;
 
-import adwa;
-import adwb;
-import adwc;
-import altm;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdbk;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import com.tencent.mobileqq.search.model.SearchResultItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import ndv;
 
 public class SearchFriendListActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private adwb jdField_a_of_type_Adwb;
-  private altm jdField_a_of_type_Altm = new adwa(this);
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ArrayList<SearchResultItem> jdField_a_of_type_JavaUtilArrayList;
+  private XListView a;
+  private SearchFriendListActivity.SearchFriendAdapter b;
+  private ArrayList<SearchResultItem> c;
+  private AvatarObserver d = new SearchFriendListActivity.1(this);
   
-  public void a(View paramView, int paramInt)
+  void a(View paramView, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    do
+    if (paramInt >= 0)
     {
-      return;
-      localObject2 = (SearchResultItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    } while (localObject2 == null);
-    Object localObject1 = ((SearchResultItem)localObject2).jdField_a_of_type_JavaLangString;
-    String str1 = String.valueOf(((SearchResultItem)localObject2).jdField_a_of_type_Long);
-    String str2 = ((SearchResultItem)localObject2).b;
-    int i = ((SearchResultItem)localObject2).jdField_a_of_type_Int;
-    Object localObject2 = (adwc)paramView.getTag();
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      ((adwc)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      if (i != 1) {
-        break label194;
+      if (paramInt >= this.c.size()) {
+        return;
       }
-      ((adwc)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bdbk.a(this.app, str1, (byte)3));
-      ((adwc)localObject2).b.setText("QQ号码: " + str1);
-    }
-    for (;;)
-    {
-      ((adwc)localObject2).jdField_a_of_type_Int = paramInt;
-      paramView.setContentDescription(((adwc)localObject2).jdField_a_of_type_AndroidWidgetTextView.getText());
-      return;
-      TextView localTextView = ((adwc)localObject2).jdField_a_of_type_AndroidWidgetTextView;
-      if (i == 1) {}
-      for (localObject1 = str1;; localObject1 = str2)
+      Object localObject4 = (SearchResultItem)this.c.get(paramInt);
+      if (localObject4 == null) {
+        return;
+      }
+      Object localObject1 = ((SearchResultItem)localObject4).c;
+      Object localObject2 = String.valueOf(((SearchResultItem)localObject4).a);
+      Object localObject3 = ((SearchResultItem)localObject4).d;
+      int i = ((SearchResultItem)localObject4).b;
+      localObject4 = (SearchFriendListActivity.ViewHolder)paramView.getTag();
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localTextView.setText((CharSequence)localObject1);
-        break;
+        ((SearchFriendListActivity.ViewHolder)localObject4).b.setText((CharSequence)localObject1);
       }
-      label194:
-      ((adwc)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bdbk.b(this.app, str2, (byte)3));
-      ((adwc)localObject2).b.setText(alud.a(2131714020) + str2);
+      else
+      {
+        TextView localTextView = ((SearchFriendListActivity.ViewHolder)localObject4).b;
+        if (i == 1) {
+          localObject1 = localObject2;
+        } else {
+          localObject1 = localObject3;
+        }
+        localTextView.setText((CharSequence)localObject1);
+      }
+      if (i == 1)
+      {
+        ((SearchFriendListActivity.ViewHolder)localObject4).a.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.app, (String)localObject2, (byte)3));
+        localObject1 = ((SearchFriendListActivity.ViewHolder)localObject4).c;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("QQ号码: ");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((TextView)localObject1).setText(((StringBuilder)localObject3).toString());
+      }
+      else
+      {
+        ((SearchFriendListActivity.ViewHolder)localObject4).a.setImageDrawable(FaceDrawable.getMobileFaceDrawable(this.app, (String)localObject3, (byte)3));
+        localObject1 = ((SearchFriendListActivity.ViewHolder)localObject4).c;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131911096));
+        ((StringBuilder)localObject2).append((String)localObject3);
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
+      }
+      ((SearchFriendListActivity.ViewHolder)localObject4).d = paramInt;
+      paramView.setContentDescription(((SearchFriendListActivity.ViewHolder)localObject4).b.getText());
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562589);
-    setContentBackgroundResource(2130838592);
-    setTitle(alud.a(2131714019));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131376257));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838592);
-    addObserver(this.jdField_a_of_type_Altm);
-    this.jdField_a_of_type_JavaUtilArrayList = getIntent().getParcelableArrayListExtra("param_search_result_item_list");
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super.setContentView(2131629222);
+    setContentBackgroundResource(2130838958);
+    setTitle(HardCodeUtil.a(2131911095));
+    this.a = ((XListView)findViewById(2131445423));
+    this.a.setContentBackground(2130838958);
+    addObserver(this.d);
+    this.c = getIntent().getParcelableArrayListExtra("param_search_result_item_list");
+    if (this.c == null) {
+      this.c = new ArrayList();
     }
-    this.jdField_a_of_type_Adwb = new adwb(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Adwb);
+    this.b = new SearchFriendListActivity.SearchFriendAdapter(this, null);
+    this.a.setAdapter(this.b);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Altm);
+    removeObserver(this.d);
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    int i;
-    if ((paramView.getTag() instanceof adwc))
+    if ((paramView.getTag() instanceof SearchFriendListActivity.ViewHolder))
     {
-      i = ((adwc)paramView.getTag()).jdField_a_of_type_Int;
-      if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-        break label90;
-      }
-    }
-    label90:
-    for (paramView = (SearchResultItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);; paramView = null)
-    {
-      if (paramView == null) {
-        return;
-      }
-      if (paramView.c == 0)
+      int i = ((SearchFriendListActivity.ViewHolder)paramView.getTag()).d;
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (i >= 0)
       {
-        AddFriendActivity.a(this, paramView, this.app, false, 1);
-        return;
+        localObject1 = localObject2;
+        if (i < this.c.size()) {
+          localObject1 = (SearchResultItem)this.c.get(i);
+        }
       }
-      ndv.a(this, null, String.valueOf(paramView.jdField_a_of_type_Long), false, -1, true, -1);
-      return;
+      if (localObject1 != null) {
+        if (((SearchResultItem)localObject1).g == 0) {
+          AddFriendActivity.startProfileCardActivity(this, (SearchResultItem)localObject1, this.app, false, 1);
+        } else {
+          CrmUtils.a(this, null, String.valueOf(((SearchResultItem)localObject1).a), false, -1, true, -1);
+        }
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SearchFriendListActivity
  * JD-Core Version:    0.7.0.1
  */

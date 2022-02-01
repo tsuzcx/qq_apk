@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class QIMFollwerAdd
-  extends awge
+  extends Entity
 {
-  public long careSCount;
-  public long fansCount;
+  public long careSCount = 0L;
+  public long fansCount = 0L;
   public int gender = -1;
-  public boolean isRead;
+  public boolean isRead = false;
   public String longNick = "";
   public int opType = 1;
   public String smartRemark = "";
   public String source = "";
-  public long totalNum;
-  @awhs
-  public long uin;
-  public long upTime;
+  public long totalNum = 0L;
+  @unique
+  public long uin = 0L;
+  public long upTime = 0L;
 }
 
 

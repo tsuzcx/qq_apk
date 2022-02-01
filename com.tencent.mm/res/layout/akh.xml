@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.downloader_app.ui.NoTaskLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/c9o" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="181.0dip" android:src="@drawable/avb" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="16.0dip" android:textColor="#ff999999" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/d_w" android:layout_below="@id/c9o" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView android:id="@id/dn_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/us" android:layout_marginBottom="@dimen/us" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="14.0dip" android:textColor="@color/a49" android:id="@id/bcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="看看好友在玩什么" android:layout_centerInParent="true" />
-        <ImageView android:layout_width="5.0dip" android:layout_height="9.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/av3" android:layout_toRightOf="@id/bcs" android:layout_centerVertical="true" />
-    </com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView>
-</com.tencent.mm.plugin.downloader_app.ui.NoTaskLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:gravity="center_vertical" android:id="@id/e3k" android:paddingLeft="@dimen/cv" android:layout_width="fill_parent" android:layout_height="@dimen/dc" android:text="@string/e83" />
+    <ImageView android:id="@id/c7o" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" style="@style/i7" />
+    <include android:id="@id/e3i" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/amj" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/db">
+        <Button android:textColor="@color/al9" android:id="@id/apy" android:background="@drawable/a53" android:minWidth="120.0dip" android:text="@string/we" style="@style/ng" />
+        <Button android:textColor="@color/al9" android:id="@id/hls" android:background="@drawable/a16" android:layout_marginLeft="@dimen/d0" android:minWidth="120.0dip" android:text="@string/a17" style="@style/ng" />
+    </LinearLayout>
+</LinearLayout>

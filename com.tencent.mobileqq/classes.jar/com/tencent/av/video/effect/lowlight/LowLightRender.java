@@ -29,16 +29,20 @@ public class LowLightRender
   {
     this.mContextReference = new WeakReference(paramContext);
     this.mLowLightImage = LowLightTools.getLowLightImage(paramContext, paramString);
-    Log.d("LowLightRender", "new LowLightRender resPath = " + paramString);
+    paramContext = new StringBuilder();
+    paramContext.append("new LowLightRender resPath = ");
+    paramContext.append(paramString);
+    Log.d("LowLightRender", paramContext.toString());
     addTaskBeforeProcess(new LowLightRender.1(this));
   }
   
   public void destroy()
   {
     super.destroy();
-    if (this.mLowLightFilter != null)
+    QQAVImageLowLightFilter localQQAVImageLowLightFilter = this.mLowLightFilter;
+    if (localQQAVImageLowLightFilter != null)
     {
-      this.mLowLightFilter.destroy();
+      localQQAVImageLowLightFilter.destroy();
       this.mLowLightFilter = null;
     }
   }
@@ -46,21 +50,23 @@ public class LowLightRender
   public void preProcess(int paramInt1, int paramInt2)
   {
     baseProcess(paramInt1, paramInt2);
-    if (this.mLowLightFilter != null) {
-      this.mLowLightFilter.onOutputSizeChanged(paramInt1, paramInt2);
+    QQAVImageLowLightFilter localQQAVImageLowLightFilter = this.mLowLightFilter;
+    if (localQQAVImageLowLightFilter != null) {
+      localQQAVImageLowLightFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public EffectTexture process(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     EffectTexture localEffectTexture = super.process(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mLowLightFilter == null)
+    QQAVImageLowLightFilter localQQAVImageLowLightFilter = this.mLowLightFilter;
+    if (localQQAVImageLowLightFilter == null)
     {
       Log.d("LowLightRender", "mLowLightFilter = null");
       CommonUtils.glCheckError();
       return localEffectTexture;
     }
-    this.mLowLightFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
+    localQQAVImageLowLightFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
     this.mLowLightFilter.onDraw2(localEffectTexture.getTextureId(), this.mOutFbo);
     CommonUtils.glCheckError();
     return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
@@ -68,7 +74,7 @@ public class LowLightRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.lowlight.LowLightRender
  * JD-Core Version:    0.7.0.1
  */

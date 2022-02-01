@@ -1,29 +1,28 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import upq;
-import ups;
 
-public class VideoSaveToAlbumHelper$2
+class VideoSaveToAlbumHelper$2
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$2(upq paramupq, ups paramups, int paramInt, String paramString)
+  VideoSaveToAlbumHelper$2(VideoSaveToAlbumHelper paramVideoSaveToAlbumHelper, VideoSaveToAlbumHelper.VideoSaveToAlbumTaskInfo paramVideoSaveToAlbumTaskInfo, int paramInt, String paramString)
   {
     add(this.val$taskInfo.c);
-    if ((this.val$rotation != 0) && (this.val$rotation != -1)) {}
-    for (paramupq = this.val$hflipPath;; paramupq = this.val$taskInfo.jdField_b_of_type_JavaLangString)
-    {
-      add(paramupq);
-      add(this.val$taskInfo.d);
-      add(Integer.valueOf(this.val$taskInfo.a));
-      add(Integer.valueOf(this.val$taskInfo.jdField_b_of_type_Int));
-      return;
+    paramInt = this.val$rotation;
+    if ((paramInt != 0) && (paramInt != -1)) {
+      paramVideoSaveToAlbumHelper = this.val$hflipPath;
+    } else {
+      paramVideoSaveToAlbumHelper = this.val$taskInfo.b;
     }
+    add(paramVideoSaveToAlbumHelper);
+    add(this.val$taskInfo.f);
+    add(Integer.valueOf(this.val$taskInfo.d));
+    add(Integer.valueOf(this.val$taskInfo.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.2
  * JD-Core Version:    0.7.0.1
  */

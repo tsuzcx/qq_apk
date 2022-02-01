@@ -35,6 +35,7 @@ public final class ilive_feeds_tmem$VideoFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -47,12 +48,12 @@ public final class ilive_feeds_tmem$VideoFeed
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro12 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 56, 64, 72, 82, 90, 96, 104, 114, 122, 130, 138, 146, 152 }, new String[] { "pic_url", "video_url", "anchor_uin", "topic", "desc", "file_id", "video_width", "video_hight", "video_time", "video_md5", "vid", "start_time", "end_time", "doodle_pic_url", "lng", "lat", "city", "feed_id", "has_face" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, Integer.valueOf(0) }, VideoFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 56, 64, 72, 82, 90, 96, 104, 114, 122, 130, 138, 146, 152 }, new String[] { "pic_url", "video_url", "anchor_uin", "topic", "desc", "file_id", "video_width", "video_hight", "video_time", "video_md5", "vid", "start_time", "end_time", "doodle_pic_url", "lng", "lat", "city", "feed_id", "has_face" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localInteger, localInteger, localInteger, localByteStringMicro6, localByteStringMicro7, localInteger, localInteger, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localInteger }, VideoFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.VideoFeed
  * JD-Core Version:    0.7.0.1
  */

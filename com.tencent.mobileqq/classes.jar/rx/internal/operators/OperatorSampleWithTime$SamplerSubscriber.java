@@ -21,15 +21,16 @@ final class OperatorSampleWithTime$SamplerSubscriber<T>
   public void call()
   {
     Object localObject = this.value.getAndSet(EMPTY_TOKEN);
-    if (localObject != EMPTY_TOKEN) {}
-    try
-    {
-      this.subscriber.onNext(localObject);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Exceptions.throwOrReport(localThrowable, this);
+    if (localObject != EMPTY_TOKEN) {
+      try
+      {
+        this.subscriber.onNext(localObject);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Exceptions.throwOrReport(localThrowable, this);
+      }
     }
   }
   
@@ -57,7 +58,7 @@ final class OperatorSampleWithTime$SamplerSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorSampleWithTime.SamplerSubscriber
  * JD-Core Version:    0.7.0.1
  */

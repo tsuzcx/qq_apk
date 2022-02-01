@@ -44,19 +44,21 @@ public final class f
     paramJceOutputStream.write(this.a, 1);
     paramJceOutputStream.write(this.b, 2);
     paramJceOutputStream.write(this.c, 3);
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 4);
+    String str = this.d;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.e, 5);
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 6);
+    str = this.f;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.g, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.e.f
  * JD-Core Version:    0.7.0.1
  */

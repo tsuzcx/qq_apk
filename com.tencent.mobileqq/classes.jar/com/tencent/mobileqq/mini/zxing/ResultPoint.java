@@ -17,10 +17,7 @@ public class ResultPoint
   {
     float f1 = paramResultPoint2.x;
     float f2 = paramResultPoint2.y;
-    float f3 = paramResultPoint3.x;
-    float f4 = paramResultPoint1.y;
-    float f5 = paramResultPoint3.y;
-    return (f3 - f1) * (f4 - f2) - (paramResultPoint1.x - f1) * (f5 - f2);
+    return (paramResultPoint3.x - f1) * (paramResultPoint1.y - f2) - (paramResultPoint3.y - f2) * (paramResultPoint1.x - f1);
   }
   
   public static float distance(ResultPoint paramResultPoint1, ResultPoint paramResultPoint2)
@@ -33,47 +30,45 @@ public class ResultPoint
     float f1 = distance(paramArrayOfResultPoint[0], paramArrayOfResultPoint[1]);
     float f2 = distance(paramArrayOfResultPoint[1], paramArrayOfResultPoint[2]);
     float f3 = distance(paramArrayOfResultPoint[0], paramArrayOfResultPoint[2]);
-    ResultPoint localResultPoint;
-    Object localObject2;
-    Object localObject1;
+    ResultPoint localResultPoint3;
+    ResultPoint localResultPoint1;
+    ResultPoint localResultPoint2;
     if ((f2 >= f1) && (f2 >= f3))
     {
-      localResultPoint = paramArrayOfResultPoint[0];
-      localObject2 = paramArrayOfResultPoint[1];
-      localObject1 = paramArrayOfResultPoint[2];
-      if (crossProductZ((ResultPoint)localObject2, localResultPoint, (ResultPoint)localObject1) >= 0.0F) {
-        break label135;
-      }
+      localResultPoint3 = paramArrayOfResultPoint[0];
+      localResultPoint1 = paramArrayOfResultPoint[1];
+      localResultPoint2 = paramArrayOfResultPoint[2];
     }
-    for (;;)
+    else if ((f3 >= f2) && (f3 >= f1))
     {
-      paramArrayOfResultPoint[0] = localObject1;
-      paramArrayOfResultPoint[1] = localResultPoint;
-      paramArrayOfResultPoint[2] = localObject2;
-      return;
-      if ((f3 >= f2) && (f3 >= f1))
-      {
-        localResultPoint = paramArrayOfResultPoint[1];
-        localObject2 = paramArrayOfResultPoint[0];
-        localObject1 = paramArrayOfResultPoint[2];
-        break;
-      }
-      localResultPoint = paramArrayOfResultPoint[2];
-      localObject2 = paramArrayOfResultPoint[0];
-      localObject1 = paramArrayOfResultPoint[1];
-      break;
-      label135:
-      Object localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
+      localResultPoint3 = paramArrayOfResultPoint[1];
+      localResultPoint1 = paramArrayOfResultPoint[0];
+      localResultPoint2 = paramArrayOfResultPoint[2];
     }
+    else
+    {
+      localResultPoint3 = paramArrayOfResultPoint[2];
+      localResultPoint1 = paramArrayOfResultPoint[0];
+      localResultPoint2 = paramArrayOfResultPoint[1];
+    }
+    ResultPoint localResultPoint5 = localResultPoint1;
+    ResultPoint localResultPoint4 = localResultPoint2;
+    if (crossProductZ(localResultPoint1, localResultPoint3, localResultPoint2) < 0.0F)
+    {
+      localResultPoint4 = localResultPoint1;
+      localResultPoint5 = localResultPoint2;
+    }
+    paramArrayOfResultPoint[0] = localResultPoint5;
+    paramArrayOfResultPoint[1] = localResultPoint3;
+    paramArrayOfResultPoint[2] = localResultPoint4;
   }
   
   public final boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof ResultPoint;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof ResultPoint))
+    if (bool3)
     {
       paramObject = (ResultPoint)paramObject;
       bool1 = bool2;
@@ -105,12 +100,18 @@ public class ResultPoint
   
   public final String toString()
   {
-    return "(" + this.x + ',' + this.y + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(',');
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.ResultPoint
  * JD-Core Version:    0.7.0.1
  */

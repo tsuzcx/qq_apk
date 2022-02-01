@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/k41" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/fb" />
+    <ImageView android:id="@id/k3x" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/fa" android:layout_marginStart="8.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/k3y" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/k3z" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginStart="8.0dip" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/k40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/joy" android:layout_marginStart="4.0dip" />
+    </LinearLayout>
+</merge>

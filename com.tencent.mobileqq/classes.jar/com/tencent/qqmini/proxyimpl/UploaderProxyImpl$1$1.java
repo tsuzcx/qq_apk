@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 import okhttp3.Call;
@@ -13,39 +13,39 @@ import okhttp3.ResponseBody;
 class UploaderProxyImpl$1$1
   implements Callback
 {
-  private volatile boolean canceled;
+  private volatile boolean b = false;
   
   UploaderProxyImpl$1$1(UploaderProxyImpl.1 param1) {}
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    QLog.e("UploaderProxyImpl", 1, "httpConnect err url:" + this.this$1.val$url, paramIOException);
+    paramCall = new StringBuilder();
+    paramCall.append("httpConnect err url:");
+    paramCall.append(this.a.a);
+    QLog.e("UploaderProxyImpl", 1, paramCall.toString(), paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage())) {
-      this.this$1.val$listener.onUploadFailed(-5, "download error:cancel");
+      this.a.g.onUploadFailed(-5, "download error:cancel");
+    } else {
+      this.a.g.onUploadFailed(HttpUtil.a(paramIOException, -1), "request error:network");
     }
-    for (;;)
-    {
-      this.this$1.this$0.taskMap.remove(this.this$1.val$url);
-      return;
-      this.this$1.val$listener.onUploadFailed(HttpUtil.getRetCodeFrom(paramIOException, -1), "request error:network");
-    }
+    this.a.this$0.a.remove(this.a.a);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    if (this.canceled) {
+    if (this.b) {
       return;
     }
     int i = paramResponse.code();
     paramCall = paramResponse.headers().toMultimap();
-    this.this$1.val$listener.onUploadHeadersReceived(i, paramCall);
-    this.this$1.val$listener.onUploadSucceed(i, paramResponse.body().bytes(), paramCall);
-    this.this$1.this$0.taskMap.remove(this.this$1.val$url);
+    this.a.g.onUploadHeadersReceived(i, paramCall);
+    this.a.g.onUploadSucceed(i, paramResponse.body().bytes(), paramCall);
+    this.a.this$0.a.remove(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

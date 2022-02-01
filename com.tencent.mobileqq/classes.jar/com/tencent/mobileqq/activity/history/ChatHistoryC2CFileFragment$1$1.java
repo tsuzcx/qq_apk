@@ -9,8 +9,8 @@ class ChatHistoryC2CFileFragment$1$1
   
   public void run()
   {
-    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment$1.this$0, this.jdField_a_of_type_JavaUtilLinkedHashMap);
-    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment$1.this$0);
+    ChatHistoryC2CFileFragment.a(this.b.this$0, this.a);
+    ChatHistoryC2CFileFragment.a(this.b.this$0);
   }
 }
 

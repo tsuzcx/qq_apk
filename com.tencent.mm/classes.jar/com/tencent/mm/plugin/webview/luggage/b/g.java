@@ -2,51 +2,43 @@ package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.app.Activity;
 import android.content.Context;
+import com.tencent.luggage.d.j;
+import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.permission.LuggageGetA8Key;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.ui.base.s;
 
 public final class g
   extends a
 {
-  private com.tencent.mm.plugin.webview.modeltools.a uSO;
-  
   public g()
   {
-    super(7);
-    AppMethodBeat.i(6435);
-    this.uSO = new com.tencent.mm.plugin.webview.modeltools.a();
-    AppMethodBeat.o(6435);
+    super(27);
   }
   
-  public final void a(Context paramContext, e parame)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
-    AppMethodBeat.i(6437);
-    String str2 = parame.dba().agU(parame.getUrl());
-    String str1 = str2;
-    if (bo.isNullOrNil(str2)) {
-      str1 = parame.getUrl();
+    AppMethodBeat.i(78695);
+    if ((!paramg.iue()) && (!paramg.eje.aow().aom())) {
+      ((Activity)paramg.mContext).finish();
     }
-    if ((paramContext instanceof Activity)) {
-      com.tencent.mm.plugin.webview.modeltools.a.g((Activity)paramContext, str1);
-    }
-    h.qsU.cT(982, 6);
-    AppMethodBeat.o(6437);
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(982, 11);
+    AppMethodBeat.o(78695);
   }
   
-  public final void a(Context paramContext, e parame, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, s params)
   {
-    AppMethodBeat.i(6436);
-    paraml.a(7, paramContext.getString(2131306004), 2131231004);
-    AppMethodBeat.o(6436);
+    AppMethodBeat.i(78694);
+    if (paramg.isFullScreen()) {
+      params.a(27, paramContext.getString(c.i.readerapp_finish_webview), c.h.bottomsheet_icon_exit);
+    }
+    AppMethodBeat.o(78694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.b.g
  * JD-Core Version:    0.7.0.1
  */

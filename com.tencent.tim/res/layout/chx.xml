@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/bsl" android:paddingBottom="@dimen/bsl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/btw"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.activity.compose.ComposeAddrView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mo7" android:background="@drawable/e_y" android:paddingLeft="@dimen/bic" android:paddingRight="@dimen/bic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/blf">
+        <com.tencent.qqmail.activity.compose.MailAddrsViewControl android:id="@id/mo9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/mob" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" style="@style/abp" />
+            <TextView android:id="@id/moc" style="@style/abm" />
+            <AutoCompleteTextView android:textColorHint="@color/aw2" android:id="@id/mo8" android:fadingEdge="vertical" android:fadingEdgeLength="4.0dip" android:hint="@string/woq" android:inputType="textEmailAddress" android:dropDownAnchor="@id/mo9" android:dropDownVerticalOffset="@dimen/bpu" style="@style/abn" />
+        </com.tencent.qqmail.activity.compose.MailAddrsViewControl>
+        <ImageView android:id="@id/moa" android:visibility="gone" android:contentDescription="@string/pb" style="@style/abl" />
+    </com.tencent.qqmail.activity.compose.ComposeAddrView>
+    <TextView android:textSize="@dimen/bkx" android:textColor="@color/ats" android:gravity="left" android:paddingLeft="@dimen/bic" android:paddingRight="@dimen/bic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bsh" android:text="@string/wpl" android:lineSpacingMultiplier="1.1" />
+</LinearLayout>

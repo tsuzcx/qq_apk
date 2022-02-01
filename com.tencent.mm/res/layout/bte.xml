@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:layout_gravity="center_horizontal" android:id="@id/k0z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="开始搜索" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/cjw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="结束搜索" style="@style/oh" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/k1r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" />
+</LinearLayout>

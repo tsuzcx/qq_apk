@@ -5,13 +5,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetPlayShowCatMatTreeRsp
   extends JceStruct
 {
   static ArrayList<PSMetaCategory> cache_Categories = new ArrayList();
-  public ArrayList<PSMetaCategory> Categories;
-  public int Code;
+  public ArrayList<PSMetaCategory> Categories = null;
+  public int Code = 0;
   public String ETag = "";
   
   static
@@ -39,17 +40,19 @@ public final class GetPlayShowCatMatTreeRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Code, 0);
-    if (this.ETag != null) {
-      paramJceOutputStream.write(this.ETag, 1);
+    Object localObject = this.ETag;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.Categories != null) {
-      paramJceOutputStream.write(this.Categories, 2);
+    localObject = this.Categories;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp
  * JD-Core Version:    0.7.0.1
  */

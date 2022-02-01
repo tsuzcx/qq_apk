@@ -33,13 +33,14 @@ public class AutoBgImageView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (isPressed()) {}
-    for (float f = this.a;; f = 1.0F)
-    {
-      setAlpha(f);
-      postInvalidate();
-      return;
+    float f;
+    if (isPressed()) {
+      f = this.a;
+    } else {
+      f = 1.0F;
     }
+    setAlpha(f);
+    postInvalidate();
   }
   
   public void setPressedAlpha(float paramFloat)
@@ -49,7 +50,7 @@ public class AutoBgImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AutoBgImageView
  * JD-Core Version:    0.7.0.1
  */

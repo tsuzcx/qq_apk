@@ -12,7 +12,7 @@ public class Ftyp
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
-    AppMethodBeat.i(128486);
+    AppMethodBeat.i(114265);
     super.parse(paramParsable, paramBox);
     this.majorBrand = paramParsable.readInt();
     this.minorVersion = paramParsable.readInt();
@@ -20,12 +20,12 @@ public class Ftyp
     if (i > 0) {
       this.compatibleBrands = paramParsable.readIntArray(i);
     }
-    AppMethodBeat.o(128486);
+    AppMethodBeat.o(114265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Ftyp
  * JD-Core Version:    0.7.0.1
  */

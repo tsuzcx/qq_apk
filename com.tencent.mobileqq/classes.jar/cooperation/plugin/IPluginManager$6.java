@@ -1,22 +1,43 @@
 package cooperation.plugin;
 
 import android.content.Context;
-import biqw;
-import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import android.content.Intent;
+import com.tencent.mobileqq.qshadow.core.QShadow;
+import com.tencent.qphone.base.util.QLog;
 
-public final class IPluginManager$6
-  implements Runnable
+final class IPluginManager$6
+  implements IPluginManager.OnPluginReadyListener
 {
-  public IPluginManager$6(Context paramContext, biqw parambiqw) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Biqw.d, this.jdField_a_of_type_Biqw.b, this.jdField_a_of_type_Biqw.c, this.jdField_a_of_type_Biqw.e, this.jdField_a_of_type_Biqw.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("launchPluginService onPluginReady.");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean)
+    {
+      if (paramPluginParams.b == 1)
+      {
+        QShadow.getInstance().startService(paramPluginParams.e, paramPluginParams.h, paramPluginParams.j.getExtras(), new IPluginManager.6.1(this, paramPluginParams));
+        return;
+      }
+      if (paramPluginParams.b == 2)
+      {
+        IPluginManager.g(paramContext, paramPluginParams);
+        return;
+      }
+      IPluginManager.h(paramContext, paramPluginParams);
+      return;
+    }
+    PluginReporter.a(paramPluginParams, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.6
  * JD-Core Version:    0.7.0.1
  */

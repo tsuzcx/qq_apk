@@ -18,19 +18,23 @@ public class CheckSessionRequest
   
   public static PROTOCAL.StQWebRsp onResponse(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      paramArrayOfInt = new PROTOCAL.StQWebRsp();
-      try
-      {
-        paramArrayOfInt.mergeFrom(paramArrayOfByte);
-        return paramArrayOfInt;
-      }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ProtoBufRequest", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
+    }
+    paramArrayOfInt = new PROTOCAL.StQWebRsp();
+    try
+    {
+      paramArrayOfInt.mergeFrom(paramArrayOfByte);
+      return paramArrayOfInt;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      label22:
+      break label22;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProtoBufRequest", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
+    }
     return null;
   }
   
@@ -41,7 +45,7 @@ public class CheckSessionRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CheckSessionRequest
  * JD-Core Version:    0.7.0.1
  */

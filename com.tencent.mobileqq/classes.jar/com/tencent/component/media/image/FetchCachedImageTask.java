@@ -6,7 +6,7 @@ public class FetchCachedImageTask
   extends ImageTask
 {
   private static int mObjectPoolSize;
-  private static FetchCachedImageTask sPool = null;
+  private static FetchCachedImageTask sPool;
   private static final Object sPoolSync = new Object();
   private FetchCachedImageTask next = null;
   
@@ -37,24 +37,29 @@ public class FetchCachedImageTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static FetchCachedImageTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        FetchCachedImageTask localFetchCachedImageTask = sPool;
-        sPool = sPool.next;
-        localFetchCachedImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localFetchCachedImageTask.setImageTask(paramImageTask);
-        return localFetchCachedImageTask;
+        if (sPool != null)
+        {
+          FetchCachedImageTask localFetchCachedImageTask = sPool;
+          sPool = sPool.next;
+          localFetchCachedImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localFetchCachedImageTask.setImageTask(paramImageTask);
+          return localFetchCachedImageTask;
+        }
       }
-      return new FetchCachedImageTask(paramImageTask);
     }
+    return new FetchCachedImageTask(paramImageTask);
   }
   
   public void excuteTask()
@@ -78,23 +83,23 @@ public class FetchCachedImageTask
   
   protected void onResult(int paramInt, Object... paramVarArgs)
   {
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 10: 
-    default: 
-      setResult(paramInt, paramVarArgs);
-      return;
-    case 8: 
-      setResult(6, new Object[] { (Drawable)paramVarArgs[0], (BitmapReference)paramVarArgs[1] });
-      return;
-    case 9: 
-      setResult(4, new Object[0]);
-      return;
-    case 11: 
+      if (paramInt != 11)
+      {
+        if (paramInt != 8)
+        {
+          if (paramInt != 9)
+          {
+            setResult(paramInt, paramVarArgs);
+            return;
+          }
+          setResult(4, new Object[0]);
+          return;
+        }
+        setResult(6, new Object[] { (Drawable)paramVarArgs[0], (BitmapReference)paramVarArgs[1] });
+        return;
+      }
       setResult(6, new Object[] { (Drawable)paramVarArgs[0], null });
       return;
     }
@@ -121,7 +126,7 @@ public class FetchCachedImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.FetchCachedImageTask
  * JD-Core Version:    0.7.0.1
  */

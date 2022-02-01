@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@color/tf" />
-    <item android:state_enabled="true" android:state_selected="true" android:drawable="@color/tf" />
-    <item android:state_enabled="false" android:drawable="@drawable/b9y" />
-    <item android:drawable="@drawable/b9y" />
-</selector>
+    <item android:left="3.0dip" android:top="3.0dip" android:right="3.0dip" android:bottom="3.0dip">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffebebeb" />
+            <corners android:radius="2.0dip" />
+            <padding android:left="7.0dip" android:top="7.0dip" android:right="7.0dip" android:bottom="7.0dip" />
+        </shape>
+    </item>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/b7o" />
+    </item>
+</layer-list>

@@ -1,24 +1,26 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import ajmw;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.view.View;
 
-public class CareNotificationBar$3
+class CareNotificationBar$3
   implements Runnable
 {
-  public CareNotificationBar$3(ajmw paramajmw) {}
+  CareNotificationBar$3(CareNotificationBar paramCareNotificationBar, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((ajmw.a(this.this$0) > 0) || (ajmw.b(this.this$0) > 0))
-    {
-      ajmw.a(this.this$0);
-      this.this$0.c();
-    }
-    while (ajmw.a(this.this$0) == null) {
-      return;
-    }
-    ajmw.a(this.this$0).setVisibility(8);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofInt(this.a, "backgroundColor", new int[] { this.b, this.c });
+    localObjectAnimator1.setDuration(300L);
+    localObjectAnimator1.setEvaluator(new ArgbEvaluator());
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofInt(this.a, "backgroundColor", new int[] { this.c, this.b });
+    localObjectAnimator2.setDuration(300L);
+    localObjectAnimator2.setEvaluator(new ArgbEvaluator());
+    localObjectAnimator1.addListener(new CareNotificationBar.3.1(this, localObjectAnimator2));
+    localObjectAnimator2.addListener(new CareNotificationBar.3.2(this));
+    localObjectAnimator1.start();
   }
 }
 

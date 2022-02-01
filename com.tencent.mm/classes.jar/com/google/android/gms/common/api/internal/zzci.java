@@ -13,7 +13,7 @@ final class zzci
   
   public final void run()
   {
-    AppMethodBeat.i(60889);
+    AppMethodBeat.i(11381);
     try
     {
       BasePendingResult.zzez.set(Boolean.TRUE);
@@ -25,7 +25,7 @@ final class zzci
       if (localObject1 != null) {
         ((GoogleApiClient)localObject1).zzb(this.zzml);
       }
-      AppMethodBeat.o(60889);
+      AppMethodBeat.o(11381);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -42,13 +42,13 @@ final class zzci
       if (localGoogleApiClient2 != null) {
         localGoogleApiClient2.zzb(this.zzml);
       }
-      AppMethodBeat.o(60889);
+      AppMethodBeat.o(11381);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzci
  * JD-Core Version:    0.7.0.1
  */

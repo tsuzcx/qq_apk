@@ -1,5 +1,6 @@
+import android.widget.ImageButton;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.util.InputMethodUtil;
 
 public class gsl
   implements Runnable
@@ -8,7 +9,9 @@ public class gsl
   
   public void run()
   {
-    InputMethodUtil.a(this.a.b);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839370);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131558490));
   }
 }
 

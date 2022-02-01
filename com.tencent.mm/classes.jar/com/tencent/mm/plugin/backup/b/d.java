@@ -2,84 +2,84 @@ package com.tencent.mm.plugin.backup.b;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean eGO = false;
-  private static int jyJ = 0;
-  private static byte[] jyK = "key".getBytes();
-  private static SharedPreferences jyM;
-  public String jyF = "id";
-  public String jyG = "hello";
-  public String jyH = "ok";
-  public e jyI;
-  public byte[] jyL;
+  private static boolean mBG = false;
+  private static int uWc = 0;
+  private static byte[] uWd = "key".getBytes();
+  private static SharedPreferences uWf;
+  public String uVY = "id";
+  public String uVZ = "hello";
+  public String uWa = "ok";
+  public e uWb;
+  public byte[] uWe;
   
-  public static int aSO()
+  public static void Fd(int paramInt)
   {
-    return jyJ;
+    uWc = paramInt;
   }
   
-  public static byte[] aSP()
+  public static void bf(byte[] paramArrayOfByte)
   {
-    return jyK;
+    uWd = paramArrayOfByte;
   }
   
-  public static SharedPreferences aSQ()
+  public static int cUM()
   {
-    if (jyM == null) {
-      jyM = ah.getContext().getSharedPreferences("BACKUP_CONFIG", h.Mp());
+    return uWc;
+  }
+  
+  public static byte[] cUN()
+  {
+    return uWd;
+  }
+  
+  public static SharedPreferences cUO()
+  {
+    if (uWf == null) {
+      uWf = MMApplicationContext.getContext().getSharedPreferences("BACKUP_CONFIG", g.aQe());
     }
-    return jyM;
+    return uWf;
   }
   
-  public static void aSR()
+  public static void cUP()
   {
-    ab.i(TAG, "holdReset");
-    eGO = true;
+    Log.i(TAG, "holdReset");
+    mBG = true;
   }
   
-  public static boolean aSS()
+  public static boolean cUQ()
   {
-    return eGO;
+    return mBG;
   }
   
-  public static void aST()
+  public static void cUR()
   {
-    jyK = "key".getBytes();
-    jyJ = 0;
-    jyM = null;
-    eGO = false;
+    uWd = "key".getBytes();
+    uWc = 0;
+    uWf = null;
+    mBG = false;
   }
   
-  public static void an(byte[] paramArrayOfByte)
+  public final e cUJ()
   {
-    jyK = paramArrayOfByte;
-  }
-  
-  public static void rg(int paramInt)
-  {
-    jyJ = paramInt;
-  }
-  
-  public final e aSL()
-  {
-    if (this.jyI == null) {
-      this.jyI = new e();
+    if (this.uWb == null) {
+      this.uWb = new e();
     }
-    return this.jyI;
+    return this.uWb;
   }
   
-  public abstract void aSM();
+  public abstract void cUK();
   
-  public abstract void aSN();
+  public abstract void cUL();
   
-  public abstract void m(Object... paramVarArgs);
+  public abstract void p(Object... paramVarArgs);
 }
 
 

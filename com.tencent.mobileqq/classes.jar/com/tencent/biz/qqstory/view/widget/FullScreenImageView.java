@@ -7,8 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import wxe;
-import xsm;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class FullScreenImageView
   extends ImageView
@@ -28,7 +28,10 @@ public class FullScreenImageView
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof BitmapDrawable)) && (((BitmapDrawable)localDrawable).getBitmap().isRecycled()))
     {
-      wxe.e("", "can not draw a bitmap which is recycled " + this);
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("can not draw a bitmap which is recycled ");
+      paramCanvas.append(this);
+      SLog.e("", paramCanvas.toString());
       return;
     }
     super.onDraw(paramCanvas);
@@ -36,12 +39,12 @@ public class FullScreenImageView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(xsm.a(super.getContext()), xsm.d(super.getContext()));
+    setMeasuredDimension(UIUtils.b(super.getContext()), UIUtils.e(super.getContext()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.FullScreenImageView
  * JD-Core Version:    0.7.0.1
  */

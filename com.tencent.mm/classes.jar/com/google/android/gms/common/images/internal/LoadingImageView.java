@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Path;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -31,7 +32,7 @@ public final class LoadingImageView
   private int zzqo;
   private boolean zzqp;
   private int zzqq;
-  private LoadingImageView.ClipPathProvider zzqr;
+  private ClipPathProvider zzqr;
   private int zzqs;
   private float zzqt;
   
@@ -48,7 +49,7 @@ public final class LoadingImageView
   public LoadingImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(61282);
+    AppMethodBeat.i(11774);
     this.zzqo = 0;
     this.zzpl = true;
     this.zzpm = false;
@@ -58,39 +59,39 @@ public final class LoadingImageView
     this.zzqs = 0;
     this.zzqt = 1.0F;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.LoadingImageView);
-    this.zzqs = paramContext.getInt(0, 0);
-    this.zzqt = paramContext.getFloat(1, 1.0F);
-    setCircleCropEnabled(paramContext.getBoolean(2, false));
+    this.zzqs = paramContext.getInt(R.styleable.LoadingImageView_imageAspectRatioAdjust, 0);
+    this.zzqt = paramContext.getFloat(R.styleable.LoadingImageView_imageAspectRatio, 1.0F);
+    setCircleCropEnabled(paramContext.getBoolean(R.styleable.LoadingImageView_circleCrop, false));
     paramContext.recycle();
-    AppMethodBeat.o(61282);
+    AppMethodBeat.o(11774);
   }
   
   private final void zzc(boolean paramBoolean)
   {
-    AppMethodBeat.i(61295);
+    AppMethodBeat.i(11787);
     if (this.mOnImageLoadedListener != null) {
       this.mOnImageLoadedListener.onImageLoaded(this.zzqn, null, paramBoolean);
     }
-    AppMethodBeat.o(61295);
+    AppMethodBeat.o(11787);
   }
   
   public final void clearAspectRatioAdjust()
   {
-    AppMethodBeat.i(61292);
+    AppMethodBeat.i(11784);
     if (this.zzqs != 0)
     {
       this.zzqs = 0;
       requestLayout();
     }
-    AppMethodBeat.o(61292);
+    AppMethodBeat.o(11784);
   }
   
   public final void clearImage()
   {
-    AppMethodBeat.i(61283);
+    AppMethodBeat.i(11775);
     loadUri(null);
     this.zzqp = true;
-    AppMethodBeat.o(61283);
+    AppMethodBeat.o(11775);
   }
   
   public final int getLoadedNoDataPlaceholderResId()
@@ -105,29 +106,29 @@ public final class LoadingImageView
   
   public final void loadUri(Uri paramUri)
   {
-    AppMethodBeat.i(61284);
+    AppMethodBeat.i(11776);
     loadUri(paramUri, 0, true, false);
-    AppMethodBeat.o(61284);
+    AppMethodBeat.o(11776);
   }
   
   public final void loadUri(Uri paramUri, int paramInt)
   {
-    AppMethodBeat.i(61285);
+    AppMethodBeat.i(11777);
     loadUri(paramUri, paramInt, true, false);
-    AppMethodBeat.o(61285);
+    AppMethodBeat.o(11777);
   }
   
   public final void loadUri(Uri paramUri, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(61286);
+    AppMethodBeat.i(11778);
     loadUri(paramUri, paramInt, paramBoolean, false);
-    AppMethodBeat.o(61286);
+    AppMethodBeat.o(11778);
   }
   
   public final void loadUri(Uri paramUri, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(61287);
+    AppMethodBeat.i(11779);
     if (paramUri != null) {
       bool1 = paramUri.equals(this.zzqn);
     }
@@ -135,7 +136,7 @@ public final class LoadingImageView
       if (this.zzqn != null)
       {
         zzc(true);
-        AppMethodBeat.o(61287);
+        AppMethodBeat.o(11779);
         return;
         if (this.zzqn == null) {
           bool1 = true;
@@ -146,7 +147,7 @@ public final class LoadingImageView
       else if (this.zzqo == paramInt)
       {
         zzc(false);
-        AppMethodBeat.o(61287);
+        AppMethodBeat.o(11779);
         return;
       }
     }
@@ -158,10 +159,10 @@ public final class LoadingImageView
     boolean bool1 = bool2;
     if (!this.zzpm) {
       if (!this.zzqp) {
-        break label214;
+        break label218;
       }
     }
-    label214:
+    label218:
     for (bool1 = bool2;; bool1 = false)
     {
       this.zzqp = false;
@@ -174,14 +175,14 @@ public final class LoadingImageView
       paramUri.setOnImageLoadedListener(this.mOnImageLoadedListener);
       paramUri.setUseNewDrawable(paramBoolean2);
       zzqm.loadImage(paramUri);
-      AppMethodBeat.o(61287);
+      AppMethodBeat.o(11779);
       return;
     }
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(61294);
+    AppMethodBeat.i(11786);
     if (this.zzqr != null) {
       paramCanvas.clipPath(this.zzqr.getClipPath(getWidth(), getHeight()));
     }
@@ -189,17 +190,17 @@ public final class LoadingImageView
     if (this.zzqq != 0) {
       paramCanvas.drawColor(this.zzqq);
     }
-    AppMethodBeat.o(61294);
+    AppMethodBeat.o(11786);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(61293);
+    AppMethodBeat.i(11785);
     super.onMeasure(paramInt1, paramInt2);
     switch (this.zzqs)
     {
     default: 
-      AppMethodBeat.o(61293);
+      AppMethodBeat.o(11785);
       return;
     case 1: 
       paramInt1 = getMeasuredHeight();
@@ -208,7 +209,7 @@ public final class LoadingImageView
     for (;;)
     {
       setMeasuredDimension(paramInt2, paramInt1);
-      AppMethodBeat.o(61293);
+      AppMethodBeat.o(11785);
       return;
       paramInt2 = getMeasuredWidth();
       paramInt1 = (int)(paramInt2 / this.zzqt);
@@ -225,14 +226,14 @@ public final class LoadingImageView
     this.mPostProcessingFlags &= 0xFFFFFFFE;
   }
   
-  public final void setClipPathProvider(LoadingImageView.ClipPathProvider paramClipPathProvider)
+  public final void setClipPathProvider(ClipPathProvider paramClipPathProvider)
   {
-    AppMethodBeat.i(61290);
+    AppMethodBeat.i(11782);
     this.zzqr = paramClipPathProvider;
     if (!PlatformVersion.isAtLeastJellyBean()) {
       setLayerType(1, null);
     }
-    AppMethodBeat.o(61290);
+    AppMethodBeat.o(11782);
   }
   
   public final void setCrossFadeAlwaysEnabled(boolean paramBoolean)
@@ -248,7 +249,7 @@ public final class LoadingImageView
   public final void setImageAspectRatioAdjust(int paramInt, float paramFloat)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(61291);
+    AppMethodBeat.i(11783);
     if ((paramInt == 0) || (paramInt == 1) || (paramInt == 2))
     {
       bool1 = true;
@@ -264,7 +265,7 @@ public final class LoadingImageView
       this.zzqs = paramInt;
       this.zzqt = paramFloat;
       requestLayout();
-      AppMethodBeat.o(61291);
+      AppMethodBeat.o(11783);
       return;
       bool1 = false;
       break;
@@ -288,7 +289,7 @@ public final class LoadingImageView
   
   public final void setTintColor(int paramInt)
   {
-    AppMethodBeat.i(61289);
+    AppMethodBeat.i(11781);
     this.zzqq = paramInt;
     if (this.zzqq != 0) {
       setColorFilter(ColorFilters.COLOR_FILTER_BW);
@@ -296,7 +297,7 @@ public final class LoadingImageView
     for (;;)
     {
       invalidate();
-      AppMethodBeat.o(61289);
+      AppMethodBeat.o(11781);
       return;
       setColorFilter(null);
     }
@@ -304,7 +305,7 @@ public final class LoadingImageView
   
   public final void setTintColorId(int paramInt)
   {
-    AppMethodBeat.i(61288);
+    AppMethodBeat.i(11780);
     int j = 0;
     int i = j;
     if (paramInt > 0)
@@ -316,12 +317,17 @@ public final class LoadingImageView
       }
     }
     setTintColor(i);
-    AppMethodBeat.o(61288);
+    AppMethodBeat.o(11780);
+  }
+  
+  public static abstract interface ClipPathProvider
+  {
+    public abstract Path getClipPath(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.images.internal.LoadingImageView
  * JD-Core Version:    0.7.0.1
  */

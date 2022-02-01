@@ -16,7 +16,7 @@ public class RecoveryUploadService
   }
   
   /* Error */
-  public static void i(android.content.Context paramContext, String paramString)
+  public static void j(android.content.Context paramContext, String paramString)
   {
     // Byte code:
     //   0: ldc 2
@@ -30,7 +30,7 @@ public class RecoveryUploadService
     //   14: monitorexit
     //   15: return
     //   16: aload_0
-    //   17: invokestatic 32	com/tencent/recovery/b/d:A	(Landroid/content/Context;)Lcom/tencent/recovery/b/a;
+    //   17: invokestatic 32	com/tencent/recovery/b/d:B	(Landroid/content/Context;)Lcom/tencent/recovery/b/a;
     //   20: astore 7
     //   22: aload_0
     //   23: ldc 34
@@ -55,7 +55,7 @@ public class RecoveryUploadService
     //   59: dup
     //   60: iconst_1
     //   61: lload_3
-    //   62: invokestatic 64	com/tencent/recovery/e/a:k	(J)Ljava/lang/String;
+    //   62: invokestatic 64	com/tencent/recovery/e/a:n	(J)Ljava/lang/String;
     //   65: aastore
     //   66: invokestatic 70	com/tencent/recovery/a/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   69: new 72	android/content/Intent
@@ -84,7 +84,7 @@ public class RecoveryUploadService
     //   112: lload_3
     //   113: lsub
     //   114: aload 7
-    //   116: invokevirtual 97	com/tencent/recovery/b/a:nQ	()J
+    //   116: invokevirtual 97	com/tencent/recovery/b/a:oE	()J
     //   119: lcmp
     //   120: ifle +122 -> 242
     //   123: aload_1
@@ -110,7 +110,7 @@ public class RecoveryUploadService
     //   171: invokestatic 92	android/app/PendingIntent:getService	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
     //   174: astore_1
     //   175: aload 7
-    //   177: invokevirtual 97	com/tencent/recovery/b/a:nQ	()J
+    //   177: invokevirtual 97	com/tencent/recovery/b/a:oE	()J
     //   180: lload 5
     //   182: ladd
     //   183: ldc2_w 118
@@ -139,7 +139,7 @@ public class RecoveryUploadService
     //   223: dup
     //   224: iconst_1
     //   225: lload_3
-    //   226: invokestatic 64	com/tencent/recovery/e/a:k	(J)Ljava/lang/String;
+    //   226: invokestatic 64	com/tencent/recovery/e/a:n	(J)Ljava/lang/String;
     //   229: aastore
     //   230: invokestatic 70	com/tencent/recovery/a/d:c	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   233: goto -221 -> 12
@@ -201,11 +201,11 @@ public class RecoveryUploadService
     if (paramIntent != null) {
       paramIntent.cancel();
     }
-    d.c("Recovery.RecoveryUploadService", "RecoveryUploadReceiver.uploadDataResult %b", new Object[] { Boolean.valueOf(true) });
-    if ((d.nN() instanceof c))
+    d.c("Recovery.RecoveryUploadService", "RecoveryUploadReceiver.uploadDataResult %b", new Object[] { Boolean.TRUE });
+    if ((d.oB() instanceof c))
     {
       d.c("Recovery.RecoveryUploadService", "send broadcast action", new Object[0]);
-      d.nK();
+      d.oy();
       paramIntent = new Intent();
       paramIntent.setPackage(getPackageName());
       paramIntent.setAction("com.tecent.recovery.intent.action.LOG");

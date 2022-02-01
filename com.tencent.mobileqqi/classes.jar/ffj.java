@@ -1,16 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ffj
-  extends BroadcastReceiver
+  implements Runnable
 {
   public ffj(QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    this.a.a(paramContext);
+    QQToast.a(QQAppInterface.c(this.a).getApplicationContext(), 2131562935, 3000).a();
   }
 }
 

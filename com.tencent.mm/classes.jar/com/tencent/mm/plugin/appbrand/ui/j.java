@@ -1,243 +1,285 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.view.t;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.b;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import androidx.core.g.z;
+import com.tencent.luggage.m.a.a;
+import com.tencent.luggage.m.a.g;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.k;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.weishi.e;
-import com.tencent.mm.plugin.appbrand.widget.d;
-import com.tencent.mm.ui.MMFragmentActivity.a;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.f;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.f;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.aw;
 
-public final class j
-  implements s
+public class j
+  extends com.tencent.mm.ui.statusbar.b
+  implements ah, aj
 {
-  public static boolean I(i parami)
+  private w qts;
+  private WxaAttributes.WxaVersionInfo rbC;
+  private f ubx;
+  private kotlin.g.a.a<kotlin.ah> uby;
+  
+  public j(Context paramContext, w paramw, WxaAttributes.WxaVersionInfo paramWxaVersionInfo)
   {
-    AppMethodBeat.i(133162);
-    if ((parami instanceof o))
+    super(paramContext);
+    AppMethodBeat.i(322221);
+    this.qts = paramw;
+    this.rbC = paramWxaVersionInfo;
+    setBackgroundColor(getResources().getColor(a.a.BG_2));
+    this.ubx = new ar(paramContext);
+    this.ubx.setBackgroundColor(com.tencent.mm.cd.a.w(paramContext, a.a.transparent));
+    addView(this.ubx.getActionView());
+    cKP();
+    AppMethodBeat.o(322221);
+  }
+  
+  private boolean asE()
+  {
+    AppMethodBeat.i(322226);
+    if ((this.qts != null) && ((this.qts instanceof d)) && (this.qts.asE()))
     {
-      parami = (o)parami;
-      if ((parami.atM()) || (parami.wS().bDh.scene == 1099))
-      {
-        AppMethodBeat.o(133162);
-        return true;
-      }
-      AppMethodBeat.o(133162);
-      return false;
+      AppMethodBeat.o(322226);
+      return true;
     }
-    AppMethodBeat.o(133162);
+    AppMethodBeat.o(322226);
     return false;
   }
   
-  private static int a(AppBrandStatObject paramAppBrandStatObject)
+  public final void Cj(int paramInt)
   {
-    if (paramAppBrandStatObject == null) {
-      return 0;
-    }
-    return paramAppBrandStatObject.scene;
+    AppMethodBeat.i(147674);
+    setBackgroundColor(androidx.core.graphics.b.av(paramInt, getContext().getResources().getColor(a.a.BG_2)));
+    AppMethodBeat.o(147674);
   }
   
-  private static void a(i parami, final int paramInt, final Runnable paramRunnable)
+  public final void as(final kotlin.g.a.a<kotlin.ah> parama)
   {
-    AppMethodBeat.i(133161);
-    if (!t.as(parami.gPC))
+    AppMethodBeat.i(322261);
+    post(new Runnable()
     {
-      parami.gPC.setWillNotDraw(true);
-      parami.gPC.post(new Runnable()
+      public final void run()
       {
-        public final void run()
-        {
-          AppMethodBeat.i(133154);
-          j.b(this.gWQ, paramInt, paramRunnable);
-          AppMethodBeat.o(133154);
+        AppMethodBeat.i(147670);
+        j.this.setVisibility(8);
+        if (j.this.getParent() != null) {
+          ((ViewGroup)j.this.getParent()).removeView(j.this);
         }
-      });
-      AppMethodBeat.o(133161);
-      return;
-    }
-    Animation localAnimation = AnimationUtils.loadAnimation(parami.getContext(), paramInt);
-    localAnimation.setAnimationListener(new j.2(paramRunnable, parami));
-    parami.gPC.startAnimation(localAnimation);
-    AppMethodBeat.o(133161);
+        j.c(j.this).destroy();
+        if (parama != null) {
+          parama.invoke();
+        }
+        AppMethodBeat.o(147670);
+      }
+    });
+    AppMethodBeat.o(322261);
   }
   
-  public final void a(Activity paramActivity, AppBrandInitConfig paramAppBrandInitConfig)
+  public final void av(kotlin.g.a.a<kotlin.ah> parama)
   {
-    AppMethodBeat.i(133157);
-    if ((paramActivity == null) || (paramActivity.getIntent() == null))
+    this.uby = parama;
+  }
+  
+  protected final void b(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  {
+    AppMethodBeat.i(322248);
+    this.ubx.setMainTitle(paramString1);
+    this.ubx.setForegroundStyle(paramString2);
+    this.ubx.setLoadingIconVisibility(true);
+    this.ubx.setForegroundColor(paramInt2);
+    aj(paramInt1, "black".equals(paramString2));
+    AppMethodBeat.o(322248);
+  }
+  
+  protected void cKP()
+  {
+    AppMethodBeat.i(322242);
+    this.ubx.hZ(false);
+    Object localObject = new View.OnClickListener()
     {
-      AppMethodBeat.o(133157);
-      return;
-    }
-    if (!(paramAppBrandInitConfig instanceof AppBrandInitConfigWC))
-    {
-      AppMethodBeat.o(133157);
-      return;
-    }
-    AppBrandStatObject localAppBrandStatObject = ((AppBrandInitConfigWC)paramAppBrandInitConfig).bDh;
-    try
-    {
-      boolean bool = k.a(paramActivity, paramAppBrandInitConfig, localAppBrandStatObject);
-      if (bool)
+      public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.o(133157);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      if (e.b(paramActivity, paramAppBrandInitConfig))
-      {
-        AppMethodBeat.o(133157);
-        return;
-      }
-      if (((AppBrandInitConfigWC)paramAppBrandInitConfig).hiD)
-      {
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
-        AppMethodBeat.o(133157);
-        return;
-      }
-      if (a(localAppBrandStatObject) == 1023)
-      {
-        i = 1;
-        if (i == 0) {
-          if ((a(localAppBrandStatObject) != 1113) && (a(localAppBrandStatObject) != 1114)) {
-            break label170;
+        AppMethodBeat.i(147669);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandPluginLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (j.a(j.this) != null)
+        {
+          k.a(j.a(j.this).mAppId, k.d.qrG);
+          j.a(j.this).finish();
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandPluginLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(147669);
+          return;
+          if (j.b(j.this) != null) {
+            j.b(j.this).invoke();
           }
         }
       }
-      label170:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label175;
-        }
-        paramActivity.overridePendingTransition(2131034144, 2131034130);
-        AppMethodBeat.o(133157);
-        return;
-        i = 0;
-        break;
-      }
-      label175:
-      if (1024 == a(localAppBrandStatObject)) {
-        if (localAppBrandStatObject == null)
-        {
-          i = 0;
-          if (6 != i) {
-            break label230;
-          }
-        }
-      }
-      label230:
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label235;
-        }
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.zbZ, MMFragmentActivity.a.zca);
-        AppMethodBeat.o(133157);
-        return;
-        i = localAppBrandStatObject.cJb;
-        break;
-      }
-      label235:
-      paramAppBrandInitConfig = paramActivity.getIntent();
-      if ((paramAppBrandInitConfig != null) && (paramAppBrandInitConfig.getBooleanExtra("key_appbrand_bring_ui_to_front_from_task_Base_by_task_top_ui", false))) {}
-      for (i = 1; i != 0; i = 0)
-      {
-        paramActivity.overridePendingTransition(2131034144, 2131034130);
-        AppMethodBeat.o(133157);
-        return;
-      }
-      if (1090 == a(localAppBrandStatObject))
-      {
-        paramActivity.overridePendingTransition(2131034145, 2131034143);
-        AppMethodBeat.o(133157);
-        return;
-      }
-      paramActivity.overridePendingTransition(2131034144, 2131034143);
-      AppMethodBeat.o(133157);
-    }
-  }
-  
-  public final void a(i parami1, i parami2)
-  {
-    AppMethodBeat.i(133159);
-    if (parami1 == null)
+    };
+    this.ubx.setCloseButtonClickListener((View.OnClickListener)localObject);
+    this.ubx.setBackButtonClickListener((View.OnClickListener)localObject);
+    int k = getContext().getResources().getColor(a.a.BG_2);
+    int i = getContext().getResources().getColor(a.a.normal_text_color);
+    String str = "white";
+    if (this.qts == null)
     {
-      AppMethodBeat.o(133159);
+      localObject = null;
+      if ((localObject == null) || (!((AppBrandInitConfigWC)localObject).qAT.isEnable()) || ((((AppBrandInitConfigWC)localObject).qAT.ckP() != HalfScreenConfig.f.rax) && (((AppBrandInitConfigWC)localObject).qAT.ckP() != HalfScreenConfig.f.raw))) {
+        break label249;
+      }
+      if (((AppBrandInitConfigWC)localObject).qAT.ckP() != HalfScreenConfig.f.rax) {
+        break label214;
+      }
+      j = Color.parseColor("#191919");
+      i = Color.parseColor("#CCFFFFFF");
+    }
+    for (localObject = "black";; localObject = "white")
+    {
+      this.ubx.setLoadingIconVisibility(false);
+      b(getContext().getString(a.g.app_brand_action_plugin_splash_loading), j, (String)localObject, i);
+      Cj(j);
+      AppMethodBeat.o(322242);
       return;
-    }
-    if (I(parami1))
-    {
-      i = MMFragmentActivity.a.zbX;
-      a(parami1, i, null);
-      if (parami2 != null) {
-        if (!I(parami1)) {
-          break label65;
-        }
-      }
-    }
-    label65:
-    for (int i = MMFragmentActivity.a.zbY;; i = 2131034130)
-    {
-      a(parami2, i, null);
-      AppMethodBeat.o(133159);
-      return;
-      i = 2131034144;
+      localObject = this.qts.getInitConfig();
       break;
+      label214:
+      j = getContext().getResources().getColor(a.a.White);
+      i = getContext().getResources().getColor(a.a.UN_BW_0_Alpha_0_9);
     }
-  }
-  
-  public final void a(i parami1, i parami2, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(133160);
-    if (parami2 == null)
+    label249:
+    int m = k;
+    int j = i;
+    localObject = str;
+    if (this.rbC != null)
     {
-      AppMethodBeat.o(133160);
-      return;
-    }
-    if (I(parami2))
-    {
-      i = MMFragmentActivity.a.zca;
-      a(parami2, i, paramRunnable);
-      if (parami1 != null) {
-        if (!I(parami2)) {
-          break label70;
-        }
+      if (!aw.isDarkMode()) {
+        break label378;
       }
+      j = k;
+      if (!Util.isNullOrNil(this.rbC.rcy)) {
+        j = i.dq(this.rbC.rcy, getContext().getResources().getColor(a.a.BG_2));
+      }
+      if (!Util.isNullOrNil(this.rbC.rcx)) {
+        i = i.dq(this.rbC.rcx, getContext().getResources().getColor(a.a.normal_text_color));
+      }
+      localObject = "white";
+      k = i;
+      i = j;
     }
-    label70:
-    for (int i = MMFragmentActivity.a.zbZ;; i = 2131034130)
+    for (;;)
     {
-      a(parami1, i, null);
-      AppMethodBeat.o(133160);
-      return;
-      i = 2131034142;
+      this.ubx.setLoadingIconVisibility(true);
+      j = k;
+      m = i;
+      i = j;
+      j = m;
       break;
+      label378:
+      if (!Util.isNullOrNil(this.rbC.rcw)) {
+        k = i.dq(this.rbC.rcw, getContext().getResources().getColor(a.a.BG_2));
+      }
+      j = i;
+      if (!Util.isNullOrNil(this.rbC.rcv)) {
+        j = i.dq(this.rbC.rcv, getContext().getResources().getColor(a.a.normal_text_color));
+      }
+      localObject = "black";
+      i = k;
+      k = j;
     }
   }
   
-  public final void j(Activity paramActivity)
+  public final void eT(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(133158);
-    paramActivity.overridePendingTransition(2131034141, 2131034142);
-    AppMethodBeat.o(133158);
+    AppMethodBeat.i(147672);
+    this.ubx.setMainTitle(getContext().getString(a.g.app_brand_action_plugin_splash_loading));
+    AppMethodBeat.o(147672);
   }
+  
+  public View getView()
+  {
+    return this;
+  }
+  
+  public final boolean post(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(322276);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(322276);
+      return false;
+    }
+    if ((!z.ay(this)) && (asE()))
+    {
+      MMHandlerThread.postToMainThread(paramRunnable);
+      AppMethodBeat.o(322276);
+      return true;
+    }
+    boolean bool = super.post(paramRunnable);
+    AppMethodBeat.o(322276);
+    return bool;
+  }
+  
+  public final boolean postDelayed(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(322282);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(322282);
+      return false;
+    }
+    if ((!z.ay(this)) && (asE()))
+    {
+      MMHandlerThread.postToMainThreadDelayed(paramRunnable, paramLong);
+      AppMethodBeat.o(322282);
+      return true;
+    }
+    boolean bool = super.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(322282);
+    return bool;
+  }
+  
+  public void setBackButtonVisibility(boolean paramBoolean)
+  {
+    AppMethodBeat.i(322254);
+    f localf = this.ubx;
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localf.setNavHidden(paramBoolean);
+      AppMethodBeat.o(322254);
+      return;
+    }
+  }
+  
+  public void setLoadingIconVisibility(boolean paramBoolean)
+  {
+    AppMethodBeat.i(322251);
+    this.ubx.setLoadingIconVisibility(paramBoolean);
+    AppMethodBeat.o(322251);
+  }
+  
+  public void setProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.sqlitelint.R.id;
+import com.tencent.sqlitelint.R.layout;
+import com.tencent.sqlitelint.R.string;
 import com.tencent.sqlitelint.behaviour.persistence.IssueStorage;
 import com.tencent.sqlitelint.behaviour.persistence.SQLiteLintDbHelper;
 import com.tencent.sqlitelint.util.SLog;
-import com.tencent.sqlitelint.util.SQLiteLintUtil;
 import java.util.List;
 
 public class CheckedDatabaseListActivity
@@ -28,61 +26,44 @@ public class CheckedDatabaseListActivity
   
   private void initView()
   {
-    AppMethodBeat.i(94055);
-    setTitle(getString(2131306137));
-    this.mListView = ((ListView)findViewById(2131821002));
+    AppMethodBeat.i(52899);
+    setTitle(getString(R.string.checked_database_list_title));
+    this.mListView = ((ListView)findViewById(R.id.list));
     this.mListAdapter = new CheckedDatabaseListAdapter(this);
     this.mListView.setAdapter(this.mListAdapter);
-    this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(94046);
-        paramAnonymousAdapterView = (String)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
-        if (SQLiteLintUtil.isNullOrNil(paramAnonymousAdapterView))
-        {
-          AppMethodBeat.o(94046);
-          return;
-        }
-        paramAnonymousView = new Intent();
-        paramAnonymousView.setClass(CheckedDatabaseListActivity.this, CheckResultActivity.class);
-        paramAnonymousView.putExtra("db_label", paramAnonymousAdapterView);
-        CheckedDatabaseListActivity.this.startActivity(paramAnonymousView);
-        AppMethodBeat.o(94046);
-      }
-    });
-    AppMethodBeat.o(94055);
+    this.mListView.setOnItemClickListener(new CheckedDatabaseListActivity.1(this));
+    AppMethodBeat.o(52899);
   }
   
   private void refreshView()
   {
-    AppMethodBeat.i(94056);
+    AppMethodBeat.i(52900);
     List localList = IssueStorage.getDbPathList();
     SLog.i("SQLiteLint.CheckedDatabaseListActivity", "refreshView defectiveDbList is %d", new Object[] { Integer.valueOf(localList.size()) });
     this.mListAdapter.setData(localList);
-    AppMethodBeat.o(94056);
+    AppMethodBeat.o(52900);
   }
   
   protected int getLayoutId()
   {
-    return 2130968623;
+    return R.layout.activity_checked_database_list;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(94053);
+    AppMethodBeat.i(52897);
     super.onCreate(paramBundle);
     SQLiteLintDbHelper.INSTANCE.initialize(this);
     initView();
-    AppMethodBeat.o(94053);
+    AppMethodBeat.o(52897);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(94054);
+    AppMethodBeat.i(52898);
     super.onResume();
     refreshView();
-    AppMethodBeat.o(94054);
+    AppMethodBeat.o(52898);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -99,29 +80,29 @@ public class CheckedDatabaseListActivity
     
     CheckedDatabaseListAdapter(Context paramContext)
     {
-      AppMethodBeat.i(94047);
+      AppMethodBeat.i(52891);
       this.mInflater = LayoutInflater.from(paramContext);
-      AppMethodBeat.o(94047);
+      AppMethodBeat.o(52891);
     }
     
     public int getCount()
     {
-      AppMethodBeat.i(94049);
+      AppMethodBeat.i(52893);
       if (this.mDefectiveDbList == null)
       {
-        AppMethodBeat.o(94049);
+        AppMethodBeat.o(52893);
         return 0;
       }
       int i = this.mDefectiveDbList.size();
-      AppMethodBeat.o(94049);
+      AppMethodBeat.o(52893);
       return i;
     }
     
     public String getItem(int paramInt)
     {
-      AppMethodBeat.i(94050);
+      AppMethodBeat.i(52894);
       String str = (String)this.mDefectiveDbList.get(paramInt);
-      AppMethodBeat.o(94050);
+      AppMethodBeat.o(52894);
       return str;
     }
     
@@ -132,19 +113,19 @@ public class CheckedDatabaseListActivity
     
     public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(94051);
+      AppMethodBeat.i(52895);
       if (paramView == null)
       {
-        paramView = this.mInflater.inflate(2130971078, paramViewGroup, false);
+        paramView = this.mInflater.inflate(R.layout.view_checked_database_item, paramViewGroup, false);
         paramViewGroup = new CheckedDatabaseListActivity.ViewHolder();
-        paramViewGroup.dbPathTv = ((TextView)paramView.findViewById(2131828737));
+        paramViewGroup.dbPathTv = ((TextView)paramView.findViewById(R.id.db_path));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
         String str = getItem(paramInt);
         paramViewGroup.dbPathTv.setText(str);
-        AppMethodBeat.o(94051);
+        AppMethodBeat.o(52895);
         return paramView;
         paramViewGroup = (CheckedDatabaseListActivity.ViewHolder)paramView.getTag();
       }
@@ -152,10 +133,10 @@ public class CheckedDatabaseListActivity
     
     public void setData(List<String> paramList)
     {
-      AppMethodBeat.i(94048);
+      AppMethodBeat.i(52892);
       this.mDefectiveDbList = paramList;
       notifyDataSetChanged();
-      AppMethodBeat.o(94048);
+      AppMethodBeat.o(52892);
     }
   }
   
@@ -166,7 +147,7 @@ public class CheckedDatabaseListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckedDatabaseListActivity
  * JD-Core Version:    0.7.0.1
  */

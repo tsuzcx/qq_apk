@@ -1,33 +1,50 @@
 package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.pa;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.a;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.a;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.c;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-public enum d
+public final class d
+  extends a
 {
-  int errCode;
-  String errMsg;
+  public static final int CTRL_INDEX = 592;
+  public static final String NAME = "openBusinessView";
+  w psR;
+  boolean rWH = false;
+  private IListener<pa> rWI;
   
-  static
+  private void a(com.tencent.mm.plugin.appbrand.g paramg, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(131042);
-    hLF = new d("OK", 0, 0, "ok");
-    hLG = new d("SYSTEM_ERROR", 1, -1, "fail system error");
-    hLH = new d("CGI_ERROR", 2, -2, "fail CGI error");
-    hLI = new d("CANCEL", 3, -3, "fail cancel");
-    hLJ = new d("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
-    hLK = new d[] { hLF, hLG, hLH, hLI, hLJ };
-    AppMethodBeat.o(131042);
+    AppMethodBeat.i(46291);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", Integer.valueOf(paramInt2));
+    paramg.callback(paramInt1, m(paramString, localHashMap));
+    AppMethodBeat.o(46291);
   }
   
-  private d(int paramInt, String paramString)
+  public final c csb()
   {
-    this.errCode = paramInt;
-    this.errMsg = paramString;
+    return g.rWW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.d
  * JD-Core Version:    0.7.0.1
  */

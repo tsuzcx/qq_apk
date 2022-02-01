@@ -28,20 +28,23 @@ public final class ag
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ct != null) {
-      paramJceOutputStream.write(this.ct, 0);
+    Object localObject = this.ct;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.cu != null) {
-      paramJceOutputStream.write(this.cu, 1);
+    localObject = this.cu;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.cv != null) {
-      paramJceOutputStream.write(this.cv, 3);
+    localObject = this.cv;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ag
  * JD-Core Version:    0.7.0.1
  */

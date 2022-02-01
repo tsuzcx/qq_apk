@@ -2,8 +2,9 @@
 <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/iyb" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iyk" android:background="@drawable/a0z" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip">
-        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/icon" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="4.0dip" />
+        <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView android:id="@id/icon" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="4.0dip" />
         <TextView android:textSize="14.0sp" android:textColor="#ff03081a" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="4.0dip" android:text="1条新消息" android:includeFontPadding="false" />
-        <ImageView android:id="@id/za" android:layout_width="7.0dip" android:layout_height="12.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/dvl" />
+        <TextView android:textSize="11.5dip" android:textColor="@color/al3" android:id="@id/oro" android:background="@drawable/ew6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.5dip" android:text="8" />
+        <ImageView android:id="@id/za" android:layout_width="wrap_content" android:layout_height="12.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/dvl" android:scaleType="fitXY" />
     </LinearLayout>
 </LinearLayout>

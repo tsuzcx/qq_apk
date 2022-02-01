@@ -1,15 +1,34 @@
 package cooperation.qappcenter;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QAppCenterPluginProxyActivityQzone
   extends PluginProxyActivity
 {
-  public static boolean a;
+  public static boolean a = false;
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     QAppCenterPluginProxyActivityTools.a(this);
     Intent localIntent = getIntent();
@@ -19,13 +38,13 @@ public class QAppCenterPluginProxyActivityQzone
     super.onCreate(paramBundle);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     a = false;
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     a = true;
@@ -33,7 +52,7 @@ public class QAppCenterPluginProxyActivityQzone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qappcenter.QAppCenterPluginProxyActivityQzone
  * JD-Core Version:    0.7.0.1
  */

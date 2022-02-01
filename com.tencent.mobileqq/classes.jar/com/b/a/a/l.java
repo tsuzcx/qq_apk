@@ -28,33 +28,35 @@ public class l
   {
     try
     {
-      String str1 = new String(paramj.a, d.a(paramj.b));
-      return o.a(str1, d.a(paramj));
+      str = new String(paramj.a, d.a(paramj.b));
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        String str2 = new String(paramj.a);
-      }
+      String str;
+      label22:
+      break label22;
     }
+    str = new String(paramj.a);
+    return o.a(str, d.a(paramj));
   }
   
   private static o<String> c(j paramj)
   {
-    String str1 = "";
     try
     {
       GZIPInputStream localGZIPInputStream = new GZIPInputStream(new ByteArrayInputStream(paramj.a));
       InputStreamReader localInputStreamReader = new InputStreamReader(localGZIPInputStream);
       BufferedReader localBufferedReader = new BufferedReader(localInputStreamReader);
-      for (;;)
+      StringBuilder localStringBuilder;
+      for (String str1 = "";; str1 = localStringBuilder.toString())
       {
         String str2 = localBufferedReader.readLine();
         if (str2 == null) {
           break;
         }
-        str1 = str1 + str2;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str2);
       }
       localInputStreamReader.close();
       localBufferedReader.close();
@@ -66,7 +68,7 @@ public class l
     return o.a(new com.b.a.l(paramj));
   }
   
-  public final o<String> a(j paramj)
+  protected final o<String> a(j paramj)
   {
     String str = (String)paramj.b.get("Content-Encoding");
     if ((str != null) && (str.equals("gzip"))) {
@@ -77,7 +79,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.l
  * JD-Core Version:    0.7.0.1
  */

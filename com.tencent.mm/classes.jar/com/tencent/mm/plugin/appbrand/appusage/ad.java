@@ -1,21 +1,32 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.au;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class ad
-  extends ai
+  extends au
 {
   public final String getTag()
   {
     return "MicroMsg.AppBrand.DuplicateUsageUsernameSetFlagDataTransfer";
   }
   
-  public final boolean kv(int paramInt)
+  public final void vb(int paramInt)
+  {
+    AppMethodBeat.i(44648);
+    if (vc(paramInt))
+    {
+      at.a locala = at.a.acNL;
+      h.baE().ban().set(locala, Boolean.FALSE);
+    }
+    AppMethodBeat.o(44648);
+  }
+  
+  public final boolean vc(int paramInt)
   {
     int j = 1;
     int i;
@@ -34,21 +45,10 @@ public final class ad
       break;
     }
   }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(129715);
-    if (kv(paramInt))
-    {
-      ac.a locala = ac.a.yDm;
-      g.RL().Ru().set(locala, Boolean.FALSE);
-    }
-    AppMethodBeat.o(129715);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ad
  * JD-Core Version:    0.7.0.1
  */

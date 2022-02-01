@@ -13,7 +13,7 @@ public class SignInRequestCreator
   
   public SignInRequest createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61699);
+    AppMethodBeat.i(12191);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     ResolveAccountRequest localResolveAccountRequest = null;
@@ -34,7 +34,7 @@ public class SignInRequestCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new SignInRequest(i, localResolveAccountRequest);
-    AppMethodBeat.o(61699);
+    AppMethodBeat.o(12191);
     return paramParcel;
   }
   
@@ -45,7 +45,7 @@ public class SignInRequestCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.signin.internal.SignInRequestCreator
  * JD-Core Version:    0.7.0.1
  */

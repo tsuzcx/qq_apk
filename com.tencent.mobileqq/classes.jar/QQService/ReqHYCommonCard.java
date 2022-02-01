@@ -8,9 +8,9 @@ public final class ReqHYCommonCard
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public byte bReqType;
-  public long lUIN;
-  public ReqHead stHeader;
+  public byte bReqType = 0;
+  public long lUIN = 0L;
+  public ReqHead stHeader = null;
   public int uFaceTimeStamp = -1;
   
   public ReqHYCommonCard() {}
@@ -44,7 +44,7 @@ public final class ReqHYCommonCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqHYCommonCard
  * JD-Core Version:    0.7.0.1
  */

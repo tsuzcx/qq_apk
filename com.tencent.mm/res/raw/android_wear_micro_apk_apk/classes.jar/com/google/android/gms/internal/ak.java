@@ -5,16 +5,16 @@ import java.lang.ref.WeakReference;
 final class ak
   extends au
 {
-  private WeakReference<ai> Og;
+  private WeakReference<ai> PV;
   
   ak(ai paramai)
   {
-    this.Og = new WeakReference(paramai);
+    this.PV = new WeakReference(paramai);
   }
   
-  public final void jdMethod_if()
+  public final void in()
   {
-    ai localai = (ai)this.Og.get();
+    ai localai = (ai)this.PV.get();
     if (localai == null) {
       return;
     }

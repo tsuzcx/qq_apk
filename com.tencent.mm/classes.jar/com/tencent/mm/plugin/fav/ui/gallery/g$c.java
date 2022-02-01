@@ -6,17 +6,17 @@ public enum g$c
 {
   static
   {
-    AppMethodBeat.i(74589);
-    mCI = new c("TYPE_IMAGE_AND_VIDEO");
-    mCJ = new c[] { mCI };
-    AppMethodBeat.o(74589);
+    AppMethodBeat.i(107422);
+    AnT = new c("TYPE_IMAGE_AND_VIDEO");
+    AnU = new c[] { AnT };
+    AppMethodBeat.o(107422);
   }
   
   private g$c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.g.c
  * JD-Core Version:    0.7.0.1
  */

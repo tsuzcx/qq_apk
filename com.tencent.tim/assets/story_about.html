@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="http://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8; " />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于</title>
+<style type="text/css">
+*{ margin:0; padding:0;}
+body{ background:#F8F8F8; color:#555;}
+h1{ height:30px; line-height:30px; border-bottom:1px solid #e8e8e8; padding:0 13px;font-size:12px;}
+h1 sub{ font-size:13px;}
+#context{ padding:13px; font-size:12px; line-height:1.5;}
+	#context p{ margin:0 0 15px 0;}
+#copyright{ padding:13px;  font-size:12px; line-height:1.5; border-bottom:1px solid #e8e8e8; }
+	#copyright-zh{ font-size:14px; font-weight:bold;}
+	#copyright-en{ font-size:10px;}
+#address{ padding:13px; font-size:12px; line-height:1.5;}
+</style>
+</head>
+
+<body>
+
+<h1>手机QQ2012(Android)3.1Build0215</h1>
+
+<div id="context">
+<a id="open_weishi" title="打开微视" href="https://h5.weishi.qq.com/weishi/wsplay/recommend?_proxy=1&from=discovery&qzUseTransparentNavBar=1&_wwv=12&_wv=16778243"><H1>打开微视</H1></a>
+<a id="link_close" title="Event: Close" href="#" onclick="event_close();return false;"><H1>Close ME</H1></a>
+<a id="link_close" title="Event: Close" href="#" onclick="event_close();return false;"><p>Close ME</p></a>
+</div>
+
+<div id="address" style="border-bottom:1px solid #e8e8e8;">
+    <a id="link_close" title="Event: Close" href="#" onclick="event_close();return false;"><H1>Close ME 关闭我</H1></a>
+	<a id="link_close" title="Event: Close" href="#" onclick="event_close();return false;"><p>Close ME</p></a>
+</div>
+
+<div id="copyright">
+	<p id="copyright-zh">腾讯公司 版权所有</p>
+	<p id="copyright-en">Copyright © 2010-2012 Tencent. All Rights Reserved.</p>
+</div>
+<div id="test">
+	<p id="copyright-zh">腾讯公司 版权所有</p>
+	<p id="copyright-en">Copyright © 2010-2012 Tencent. All Rights Reserved.</p>
+	<a id="link_close" title="Event: Close" href="#" onclick="event_close();return false;">link text</a>
+	<button type="button" onclick="event_close()">Click Me!</button> 
+</div>
+ <script>
+// document.getElementById("test").innerHTML = "Hello JavaScript!";
+function event_close() {
+    mqq.dispatchEvent("closeMeEvent", {}, {echo: false,
+         broadcast: false,
+         domains: "com.tencent.mobileqq.story.player.webview.event"});
+}
+mqq.dispatchEvent("readyEvent", {}, {echo: false,
+	 broadcast: false,
+	 domains: "com.tencent.mobileqq.story.player.webview.event"});
+</script> 
+
+</body>
+</html>

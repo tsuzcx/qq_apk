@@ -4,7 +4,7 @@ public abstract interface e
 {
   public abstract void c(int paramInt, long paramLong);
   
-  public abstract void f(long paramLong);
+  public abstract void g(long paramLong);
 }
 
 

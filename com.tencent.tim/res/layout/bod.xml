@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/hm2" android:layout_width="42.0dip" android:layout_height="42.0dip" />
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/hm3" android:layout_width="42.0dip" android:layout_height="42.0dip" />
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/hm4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ViewStub android:id="@id/hm8" android:layout="@layout/bpy" android:inflatedId="@id/hm8" android:layout_width="38.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ViewStub android:id="@id/hm5" android:layout="@layout/bk8" android:inflatedId="@id/hm5" android:layout_width="38.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ViewStub android:gravity="center" android:id="@id/hm9" android:layout="@layout/bof" android:inflatedId="@id/hm9" android:layout_width="36.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ViewStub android:id="@id/hma" android:layout="@layout/bry" android:inflatedId="@id/hma" android:layout_width="36.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ViewStub android:gravity="center" android:id="@id/hm6" android:layout="@layout/boe" android:inflatedId="@id/hm6" android:layout_width="36.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

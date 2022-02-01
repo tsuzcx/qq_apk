@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.utils.AlbumUtil;
 
 public class emi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public emi(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    AlbumUtil.a(this.a, true, false);
+    this.a.a = null;
   }
 }
 

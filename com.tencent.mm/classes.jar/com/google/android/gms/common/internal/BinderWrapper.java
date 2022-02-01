@@ -4,10 +4,8 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepName;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepName
 public final class BinderWrapper
   implements Parcelable
 {
@@ -16,9 +14,9 @@ public final class BinderWrapper
   
   static
   {
-    AppMethodBeat.i(89584);
+    AppMethodBeat.i(4606);
     CREATOR = new zza();
-    AppMethodBeat.o(89584);
+    AppMethodBeat.o(4606);
   }
   
   public BinderWrapper()
@@ -34,10 +32,10 @@ public final class BinderWrapper
   
   private BinderWrapper(Parcel paramParcel)
   {
-    AppMethodBeat.i(89582);
+    AppMethodBeat.i(4604);
     this.zzry = null;
     this.zzry = paramParcel.readStrongBinder();
-    AppMethodBeat.o(89582);
+    AppMethodBeat.o(4604);
   }
   
   public final int describeContents()
@@ -57,14 +55,14 @@ public final class BinderWrapper
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89583);
+    AppMethodBeat.i(4605);
     paramParcel.writeStrongBinder(this.zzry);
-    AppMethodBeat.o(89583);
+    AppMethodBeat.o(4605);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.BinderWrapper
  * JD-Core Version:    0.7.0.1
  */

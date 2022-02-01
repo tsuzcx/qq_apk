@@ -1,28 +1,43 @@
 package com.tencent.qqmini.proxyimpl;
 
-import android.app.Activity;
-import bdgm;
-import bdjz;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.mini.util.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class ShareProxyImpl$4$1
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  ShareProxyImpl$4$1(ShareProxyImpl.4 param4, long paramLong, String paramString) {}
+  ShareProxyImpl$4$1(ShareProxyImpl.4 param4, String paramString) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
-    {
-      bdgm.a(this.this$1.val$activity, 233, this.this$1.val$activity.getString(2131720035), this.val$finalErrMsg, new ShareProxyImpl.4.1.1(this), null).show();
-      return;
+    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadCanceled get an exception when handling URLbmp:");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadFialed when handling URLbmp");
+    ShareProxyImpl.a(this.b.f, this.b.c, this.b.a, this.b.d, this.b.e, this.b.c.name, this.a);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadProgressed get an exception when handling URLbmp:");
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = ImageUtil.drawableToBitmap(paramURLDrawable.getCurrDrawable());
+    if (paramURLDrawable != null) {
+      ShareProxyImpl.a(this.b.f, this.b.c, this.b.d, this.b.e, this.b.c.name, ShareProxyImpl.a(this.b.f, paramURLDrawable), this.a);
     }
-    QQToast.a(this.this$1.val$activity, 1, 2131694434, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

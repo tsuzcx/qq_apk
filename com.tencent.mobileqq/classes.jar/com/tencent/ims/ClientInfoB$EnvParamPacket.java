@@ -22,13 +22,14 @@ public final class ClientInfoB$EnvParamPacket
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58 }, new String[] { "u32_platform", "str_sysversion", "u32_appid", "str_uin", "str_qqversion", "str_safeversion", "bytes_guid" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", localByteStringMicro }, EnvParamPacket.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58 }, new String[] { "u32_platform", "str_sysversion", "u32_appid", "str_uin", "str_qqversion", "str_safeversion", "bytes_guid" }, new Object[] { localInteger, "", localInteger, "", "", "", localByteStringMicro }, EnvParamPacket.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.ClientInfoB.EnvParamPacket
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import hai;
 import haj;
-import hak;
 
 public class FaceDrawable
   extends Drawable
@@ -39,8 +39,8 @@ public class FaceDrawable
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = null;
+  private hai jdField_a_of_type_Hai;
   private haj jdField_a_of_type_Haj;
-  private hak jdField_a_of_type_Hak;
   private Drawable b = null;
   private Drawable c = null;
   private int i = 0;
@@ -61,8 +61,8 @@ public class FaceDrawable
       paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString1);
       if (paramInt1 == 101)
       {
-        this.jdField_a_of_type_Haj = new haj(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Haj);
+        this.jdField_a_of_type_Hai = new hai(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hai);
       }
       if (paramString1 != null) {
         break;
@@ -179,10 +179,10 @@ public class FaceDrawable
     }
     if ((paramFaceInfo.jdField_a_of_type_Int == 1) || (paramFaceInfo.jdField_a_of_type_Int == 11) || (paramFaceInfo.jdField_a_of_type_Int == 4))
     {
-      if (this.jdField_a_of_type_Hak == null)
+      if (this.jdField_a_of_type_Haj == null)
       {
-        this.jdField_a_of_type_Hak = new hak(this, null);
-        paramQQAppInterface.a(this.jdField_a_of_type_Hak);
+        this.jdField_a_of_type_Haj = new haj(this, null);
+        paramQQAppInterface.a(this.jdField_a_of_type_Haj);
       }
       paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
       if (paramFaceInfo.jdField_a_of_type_Int == 1) {

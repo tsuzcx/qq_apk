@@ -21,7 +21,7 @@ public final class GetAppSimpleDetailRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76043);
+    AppMethodBeat.i(102289);
     if (cache_appReqList == null)
     {
       cache_appReqList = new ArrayList();
@@ -29,16 +29,16 @@ public final class GetAppSimpleDetailRequest
       cache_appReqList.add(localAppDetailParam);
     }
     this.appReqList = ((ArrayList)paramJceInputStream.read(cache_appReqList, 0, false));
-    AppMethodBeat.o(76043);
+    AppMethodBeat.o(102289);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76042);
+    AppMethodBeat.i(102288);
     if (this.appReqList != null) {
       paramJceOutputStream.write(this.appReqList, 0);
     }
-    AppMethodBeat.o(76042);
+    AppMethodBeat.o(102288);
   }
 }
 

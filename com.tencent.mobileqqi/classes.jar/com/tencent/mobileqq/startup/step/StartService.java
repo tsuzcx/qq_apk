@@ -27,7 +27,7 @@ public class StartService
           continue;
         }
         QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-        if (!localQQAppInterface.d()) {
+        if (!localQQAppInterface.e()) {
           continue;
         }
         Automator localAutomator1 = localQQAppInterface.a;

@@ -9,15 +9,15 @@ public final class VideoLayerUserAction
   extends JceStruct
   implements Comparable<VideoLayerUserAction>
 {
-  public int appid;
-  public boolean has_comment;
-  public boolean has_follow;
-  public boolean has_forward;
-  public boolean has_like;
-  public int index;
+  public int appid = 0;
+  public boolean has_comment = false;
+  public boolean has_follow = false;
+  public boolean has_forward = false;
+  public boolean has_like = false;
+  public int index = 0;
   public String mkey = "";
-  public long video_duration;
-  public int video_integrity;
+  public long video_duration = 0L;
+  public int video_integrity = 0;
   
   public VideoLayerUserAction() {}
   
@@ -36,24 +36,17 @@ public final class VideoLayerUserAction
   
   public int compareTo(VideoLayerUserAction paramVideoLayerUserAction)
   {
-    int k = 0;
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = JceUtil.compareTo(this.index, paramVideoLayerUserAction.index);
     int i = 0;
-    for (;;)
+    while (i < arrayOfInt.length)
     {
-      int j = k;
-      if (i < arrayOfInt.length)
-      {
-        if (arrayOfInt[i] != 0) {
-          j = arrayOfInt[i];
-        }
-      }
-      else {
-        return j;
+      if (arrayOfInt[i] != 0) {
+        return arrayOfInt[i];
       }
       i += 1;
     }
+    return 0;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -79,14 +72,15 @@ public final class VideoLayerUserAction
     paramJceOutputStream.write(this.has_comment, 5);
     paramJceOutputStream.write(this.has_forward, 6);
     paramJceOutputStream.write(this.has_follow, 7);
-    if (this.mkey != null) {
-      paramJceOutputStream.write(this.mkey, 8);
+    String str = this.mkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.VideoLayerUserAction
  * JD-Core Version:    0.7.0.1
  */

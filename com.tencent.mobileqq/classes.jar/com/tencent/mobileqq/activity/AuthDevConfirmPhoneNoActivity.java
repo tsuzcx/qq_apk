@@ -1,216 +1,258 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import aqax;
-import aqaz;
-import aqbd;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
+import com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
 public class AuthDevConfirmPhoneNoActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  private String e;
-  private String f;
+  private String a = null;
+  private String b = null;
+  private String c = null;
+  private TextView d = null;
+  private TextView e = null;
+  private TextView f = null;
+  private Button g = null;
+  private Button h = null;
+  private String i;
+  private String j;
+  private String k;
+  private DevlockInfo l = null;
   
   private void a()
   {
-    super.setContentView(2131560924);
-    setTitle(2131692213);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377678));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377677));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377720));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363549));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363627));
-    if ((QLog.isColorLevel()) && ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_b_of_type_AndroidWidgetButton == null)))
+    super.setContentView(2131627392);
+    setTitle(2131888985);
+    this.d = ((TextView)findViewById(2131447148));
+    this.e = ((TextView)findViewById(2131447147));
+    this.f = ((TextView)findViewById(2131447195));
+    this.g = ((Button)findViewById(2131429847));
+    this.h = ((Button)findViewById(2131429930));
+    if ((QLog.isColorLevel()) && ((this.d == null) || (this.e == null) || (this.f == null) || (this.g == null) || (this.h == null)))
     {
       QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "one or more controls is null! ");
       return;
     }
     onCreateRightView();
-    setRightButton(2131692184, this);
-    Object localObject = (TextView)findViewById(2131368624);
+    setRightButton(2131888963, this);
+    Object localObject = (TextView)findViewById(2131436180);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    localObject = this.a;
+    if (localObject != null) {
+      this.d.setText((CharSequence)localObject);
     }
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+    localObject = this.b;
+    if (localObject != null) {
+      this.e.setText((CharSequence)localObject);
     }
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
+    localObject = this.c;
+    if (localObject != null) {
+      this.f.setText((CharSequence)localObject);
     }
-    localObject = getString(2131692181);
-    String str = getString(2131692215);
-    this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
-    this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setText(str);
-    this.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    localObject = getString(2131888960);
+    String str = getString(2131888987);
+    this.g.setText((CharSequence)localObject);
+    this.g.setClickable(true);
+    this.g.setOnClickListener(this);
+    this.h.setText(str);
+    this.h.setClickable(true);
+    this.h.setOnClickListener(this);
     try
     {
-      aqbd.a().a(null, this.app.getCurrentAccountUin(), 6);
+      EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 6);
       return;
     }
     catch (Exception localException) {}
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
-    {
-    }
     Object localObject;
-    do
+    if (paramInt1 != 1001)
     {
-      do
+      if (paramInt1 != 1002) {
+        return;
+      }
+      if (paramIntent != null)
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "verify page call back resultCode = " + paramInt2);
-            }
-            if (paramInt2 == -1)
-            {
-              if (paramIntent != null) {}
-              for (paramIntent = new Intent(paramIntent);; paramIntent = new Intent())
-              {
-                paramIntent.putExtra("requestCode", paramInt1);
-                setResult(-1, paramIntent);
-                finish();
-                return;
-              }
-            }
-          } while (paramInt2 != 0);
-          return;
-        } while (paramIntent == null);
         localObject = paramIntent.getExtras();
-      } while (localObject == null);
-      paramInt2 = ((Bundle)localObject).getInt("resultState", 1);
-      localObject = ((Bundle)localObject).getString("resultMobileMask");
-    } while (paramInt2 == 1);
-    if (paramInt2 == 2) {
-      aqax.a().a(aqax.d);
+        if (localObject == null) {
+          return;
+        }
+        paramInt2 = ((Bundle)localObject).getInt("resultState", 1);
+        localObject = ((Bundle)localObject).getString("resultMobileMask");
+        if (paramInt2 != 1)
+        {
+          if (paramInt2 == 2)
+          {
+            DevlockPhoneStatus.a().a(DevlockPhoneStatus.e);
+          }
+          else if (paramInt2 == 3)
+          {
+            DevlockPhoneStatus.a().a(DevlockPhoneStatus.d);
+            DevlockPhoneStatus.a().a(0L);
+          }
+          paramIntent = new Intent(paramIntent);
+          paramIntent.putExtra("requestCode", paramInt1);
+          paramIntent.putExtra("phone_num", (String)localObject);
+          setResult(-1, paramIntent);
+          finish();
+        }
+      }
     }
-    for (;;)
+    else
     {
-      paramIntent = new Intent(paramIntent);
-      paramIntent.putExtra("requestCode", paramInt1);
-      paramIntent.putExtra("phone_num", (String)localObject);
-      setResult(-1, paramIntent);
-      finish();
-      return;
-      if (paramInt2 == 3)
+      if (QLog.isColorLevel())
       {
-        aqax.a().a(aqax.c);
-        aqax.a().a(0L);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("verify page call back resultCode = ");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      if (paramInt2 == -1)
+      {
+        if (paramIntent != null) {
+          paramIntent = new Intent(paramIntent);
+        } else {
+          paramIntent = new Intent();
+        }
+        paramIntent.putExtra("requestCode", paramInt1);
+        setResult(-1, paramIntent);
+        finish();
       }
     }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     finish();
-    overridePendingTransition(0, 2130772001);
+    overridePendingTransition(0, 2130772018);
     return false;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int m = paramView.getId();
+    if (m != 2131429847)
     {
-    default: 
-      return;
-    case 2131363549: 
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click confirm mobile phone button! ");
-      }
-      break;
-    }
-    try
-    {
-      aqbd.a().a(null, this.app.getCurrentAccountUin(), 7);
-      label71:
-      paramView = new Intent(this, AuthDevVerifyCodeActivity.class);
-      paramView.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
-      paramView.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
-      paramView.putExtra("mobile_type", 0);
-      startActivityForResult(paramView, 1001);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click modify mobile phone button! ");
-      }
-      try
+      if (m != 2131429930)
       {
-        aqbd.a().a(null, this.app.getCurrentAccountUin(), 8);
-        label157:
-        if (this.app != null) {
-          this.app.sendWirelessMeibaoReq(1);
+        if (m != 2131436211) {
+          break label401;
         }
-        if ((!TextUtils.isEmpty(this.e)) && (this.e.equals("subaccount")))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "subaccount enter webview mUin=" + this.d + " mMainAccount=" + this.f);
-          }
-          if ((TextUtils.isEmpty(this.d)) && (QLog.isColorLevel())) {
-            QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
-          }
-          aqaz.a(this, this.f, this.d, aqaz.c, 1002, null);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mainaccount enter webview mUin=" + this.d);
-        }
-        if ((TextUtils.isEmpty(this.d)) && (QLog.isColorLevel())) {
-          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
-        }
-        aqaz.a(this, this.d, this.d, aqaz.c, 1002, null);
-        return;
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "onClick right cancel button! ");
         }
         finish();
-        overridePendingTransition(0, 2130772001);
-        return;
+        overridePendingTransition(0, 2130772018);
+        break label401;
       }
-      catch (Exception paramView)
-      {
-        break label157;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click modify mobile phone button! ");
       }
     }
-    catch (Exception paramView)
+    try
     {
-      break label71;
+      EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 8);
+      if (this.app != null) {
+        this.app.sendWirelessMeibaoReq(1);
+      }
+      if ((!TextUtils.isEmpty(this.j)) && (this.j.equals("subaccount")))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("subaccount enter webview mUin=");
+          ((StringBuilder)localObject).append(this.i);
+          ((StringBuilder)localObject).append(" mMainAccount=");
+          ((StringBuilder)localObject).append(this.k);
+          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, ((StringBuilder)localObject).toString());
+        }
+        if ((TextUtils.isEmpty(this.i)) && (QLog.isColorLevel())) {
+          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
+        }
+        EquipLockWebEntrance.a(this, this.k, this.i, EquipLockWebEntrance.c, 1002, null);
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mainaccount enter webview mUin=");
+          ((StringBuilder)localObject).append(this.i);
+          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, ((StringBuilder)localObject).toString());
+        }
+        if ((TextUtils.isEmpty(this.i)) && (QLog.isColorLevel())) {
+          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
+        }
+        localObject = this.i;
+        EquipLockWebEntrance.a(this, (String)localObject, (String)localObject, EquipLockWebEntrance.c, 1002, null);
+        break label401;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click confirm mobile phone button! ");
+        }
+      }
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 7);
+        label344:
+        Object localObject = new Intent();
+        ((Intent)localObject).putExtra("phone_num", this.l.Mobile);
+        ((Intent)localObject).putExtra("country_code", this.l.CountryCode);
+        ((Intent)localObject).putExtra("mobile_type", 0);
+        RouteUtils.a(this, (Intent)localObject, "/base/login/authDevVerifyCode", 1001);
+        label401:
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        localException1 = localException1;
+      }
+      catch (Exception localException2)
+      {
+        break label344;
+      }
     }
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     Object localObject = getIntent();
     if (localObject == null)
@@ -226,17 +268,23 @@ public class AuthDevConfirmPhoneNoActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_JavaLangString = ((Bundle)localObject).getString("ParaTextUp");
-    this.jdField_b_of_type_JavaLangString = ((Bundle)localObject).getString("ParaTextDown");
-    this.jdField_c_of_type_JavaLangString = ((Bundle)localObject).getString("PhoneNO");
-    this.d = ((Bundle)localObject).getString("uin");
-    this.e = ((Bundle)localObject).getString("from_where");
-    this.f = ((Bundle)localObject).getString("mainaccount");
-    this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = ((DevlockInfo)((Bundle)localObject).get("DevlockInfo"));
+    this.a = ((Bundle)localObject).getString("ParaTextUp");
+    this.b = ((Bundle)localObject).getString("ParaTextDown");
+    this.c = ((Bundle)localObject).getString("PhoneNO");
+    this.i = ((Bundle)localObject).getString("uin");
+    this.j = ((Bundle)localObject).getString("from_where");
+    this.k = ((Bundle)localObject).getString("mainaccount");
+    this.l = ((DevlockInfo)((Bundle)localObject).get("DevlockInfo"));
     if (QLog.isColorLevel())
     {
-      QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "on Create strParaGraphUp : " + this.jdField_a_of_type_JavaLangString);
-      QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "on Create strParaGraphDown : " + this.jdField_b_of_type_JavaLangString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("on Create strParaGraphUp : ");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("on Create strParaGraphDown : ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, ((StringBuilder)localObject).toString());
     }
     super.onCreate(paramBundle);
     a();
@@ -244,7 +292,7 @@ public class AuthDevConfirmPhoneNoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevConfirmPhoneNoActivity
  * JD-Core Version:    0.7.0.1
  */

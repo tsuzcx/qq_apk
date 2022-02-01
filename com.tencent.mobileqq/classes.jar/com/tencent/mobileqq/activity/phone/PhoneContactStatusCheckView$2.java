@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class PhoneContactStatusCheckView$2
   implements Runnable
 {
-  PhoneContactStatusCheckView$2(PhoneContactStatusCheckView paramPhoneContactStatusCheckView, PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  PhoneContactStatusCheckView$2(PhoneContactStatusCheckView paramPhoneContactStatusCheckView, IPhoneContactService paramIPhoneContactService) {}
   
   public void run()
   {

@@ -12,19 +12,19 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import bdoo;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class MiniAppDialog
   extends Dialog
 {
   private static final int mAnimationDuration = 200;
   private View mContentView;
-  private boolean mIsAnimating;
+  private boolean mIsAnimating = false;
   private MiniAppDialog.OnBottomSheetShowListener mOnBottomSheetShowListener;
   
   public MiniAppDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755054);
+    super(paramContext, 2131951678);
   }
   
   private void animateDown()
@@ -75,17 +75,14 @@ public class MiniAppDialog
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -2;
     paramBundle.gravity = 81;
-    int i = bdoo.a();
-    int j = bdoo.b();
-    if (i < j) {}
-    for (;;)
-    {
-      paramBundle.width = i;
-      getWindow().setAttributes(paramBundle);
-      setCanceledOnTouchOutside(true);
-      return;
+    int i = ViewUtils.getScreenWidth();
+    int j = ViewUtils.getScreenHeight();
+    if (i >= j) {
       i = j;
     }
+    paramBundle.width = i;
+    getWindow().setAttributes(paramBundle);
+    setCanceledOnTouchOutside(true);
   }
   
   public void setContentView(int paramInt)
@@ -110,14 +107,15 @@ public class MiniAppDialog
   {
     super.show();
     animateUp();
-    if (this.mOnBottomSheetShowListener != null) {
-      this.mOnBottomSheetShowListener.onShow();
+    MiniAppDialog.OnBottomSheetShowListener localOnBottomSheetShowListener = this.mOnBottomSheetShowListener;
+    if (localOnBottomSheetShowListener != null) {
+      localOnBottomSheetShowListener.onShow();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MiniAppDialog
  * JD-Core Version:    0.7.0.1
  */

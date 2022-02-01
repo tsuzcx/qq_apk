@@ -1,28 +1,56 @@
-import android.widget.ImageView;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapController;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class ddb
-  implements Runnable
+public class ddb
+  extends BroadcastReceiver
 {
-  ddb(dda paramdda, SOSOMapLBSApiResult paramSOSOMapLBSApiResult, String paramString) {}
+  public ddb(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    GeoPoint localGeoPoint = new GeoPoint((int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Longitude * 1000000.0D));
-    this.jdField_a_of_type_Dda.a.a.setCenter(localGeoPoint);
-    if (this.jdField_a_of_type_Dda.a.h) {}
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Dda.a.a(localGeoPoint, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Dda.a.h();
       return;
-      this.jdField_a_of_type_Dda.a.j = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Dda.a.b.setVisibility(0);
-      this.jdField_a_of_type_Dda.a.c.setVisibility(0);
-      this.jdField_a_of_type_Dda.a.a(localGeoPoint);
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!QQMapActivity.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.i.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
+      }
     }
   }
 }

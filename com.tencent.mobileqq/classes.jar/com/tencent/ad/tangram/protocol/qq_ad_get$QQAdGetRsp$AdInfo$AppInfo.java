@@ -10,6 +10,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$AppInfo
   public String app_package_version;
   public String app_score;
   public int app_score_num = 0;
+  public String app_standard_info_url;
   public String channel_id;
   public String customized_invoke_url;
   public long download_num = 0L;
@@ -19,7 +20,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.AppInfo
  * JD-Core Version:    0.7.0.1
  */

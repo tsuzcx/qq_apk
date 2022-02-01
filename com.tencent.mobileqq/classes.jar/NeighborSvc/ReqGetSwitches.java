@@ -10,8 +10,8 @@ public final class ReqGetSwitches
 {
   static ReqHeader cache_stHeader;
   static ArrayList<Integer> cache_types;
-  public ReqHeader stHeader;
-  public ArrayList<Integer> types;
+  public ReqHeader stHeader = null;
+  public ArrayList<Integer> types = null;
   
   public ReqGetSwitches() {}
   
@@ -43,7 +43,7 @@ public final class ReqGetSwitches
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.ReqGetSwitches
  * JD-Core Version:    0.7.0.1
  */

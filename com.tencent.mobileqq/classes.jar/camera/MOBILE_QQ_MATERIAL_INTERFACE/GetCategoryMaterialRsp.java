@@ -5,15 +5,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetCategoryMaterialRsp
   extends JceStruct
 {
   static BubbleData cache_BubbleData = new BubbleData();
   static ArrayList<MetaCategory> cache_Categories = new ArrayList();
-  public BubbleData BubbleData;
-  public ArrayList<MetaCategory> Categories;
-  public int Code;
+  public BubbleData BubbleData = null;
+  public ArrayList<MetaCategory> Categories = null;
+  public int Code = 0;
   public String ETag = "";
   
   static
@@ -43,20 +44,23 @@ public final class GetCategoryMaterialRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Code, 0);
-    if (this.ETag != null) {
-      paramJceOutputStream.write(this.ETag, 1);
+    Object localObject = this.ETag;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.Categories != null) {
-      paramJceOutputStream.write(this.Categories, 2);
+    localObject = this.Categories;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.BubbleData != null) {
-      paramJceOutputStream.write(this.BubbleData, 3);
+    localObject = this.BubbleData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp
  * JD-Core Version:    0.7.0.1
  */

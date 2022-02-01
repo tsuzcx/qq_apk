@@ -9,40 +9,40 @@ public class BindWordingContent
   implements Parcelable
 {
   public static final Parcelable.Creator<BindWordingContent> CREATOR;
-  public Integer bOw;
   public String content;
   public String title;
+  public Integer type;
   
   static
   {
-    AppMethodBeat.i(123428);
-    CREATOR = new BindWordingContent.1();
-    AppMethodBeat.o(123428);
+    AppMethodBeat.i(134147);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(134147);
   }
   
   public BindWordingContent(Parcel paramParcel)
   {
-    AppMethodBeat.i(123426);
+    AppMethodBeat.i(134145);
     this.title = "";
     this.content = "";
-    this.bOw = Integer.valueOf(0);
+    this.type = Integer.valueOf(0);
     String[] arrayOfString = new String[2];
     paramParcel.readStringArray(arrayOfString);
     this.title = arrayOfString[0];
     this.content = arrayOfString[1];
-    this.bOw = Integer.valueOf(paramParcel.readInt());
-    AppMethodBeat.o(123426);
+    this.type = Integer.valueOf(paramParcel.readInt());
+    AppMethodBeat.o(134145);
   }
   
   public BindWordingContent(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(123425);
+    AppMethodBeat.i(134144);
     this.title = "";
     this.content = "";
-    this.bOw = Integer.valueOf(0);
+    this.type = Integer.valueOf(0);
     this.title = paramString1;
     this.content = paramString2;
-    AppMethodBeat.o(123425);
+    AppMethodBeat.o(134144);
   }
   
   public int describeContents()
@@ -52,15 +52,15 @@ public class BindWordingContent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(123427);
+    AppMethodBeat.i(134146);
     paramParcel.writeStringArray(new String[] { this.title, this.content });
-    paramParcel.writeInt(this.bOw.intValue());
-    AppMethodBeat.o(123427);
+    paramParcel.writeInt(this.type.intValue());
+    AppMethodBeat.o(134146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.BindWordingContent
  * JD-Core Version:    0.7.0.1
  */

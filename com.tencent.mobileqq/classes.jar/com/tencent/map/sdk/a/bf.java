@@ -17,13 +17,18 @@ public final class bf
   
   public final boolean equals(Object paramObject)
   {
-    if ((TextUtils.isEmpty(this.a)) || (!(paramObject instanceof bf))) {}
-    do
+    if (!TextUtils.isEmpty(this.a))
     {
-      return false;
+      if (!(paramObject instanceof bf)) {
+        return false;
+      }
       paramObject = ((bf)paramObject).a;
-    } while (TextUtils.isEmpty(paramObject));
-    return this.a.equals(paramObject);
+      if (TextUtils.isEmpty(paramObject)) {
+        return false;
+      }
+      return this.a.equals(paramObject);
+    }
+    return false;
   }
   
   public final boolean verify(String paramString, SSLSession paramSSLSession)

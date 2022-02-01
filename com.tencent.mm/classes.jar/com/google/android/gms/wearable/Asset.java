@@ -9,41 +9,27 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
-@SafeParcelable.Class(creator="AssetCreator")
-@SafeParcelable.Reserved({1})
-@VisibleForTesting
 public class Asset
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<Asset> CREATOR;
-  @SafeParcelable.Field(getter="getData", id=2)
   private byte[] data;
-  @SafeParcelable.Field(id=5)
   private Uri uri;
-  @SafeParcelable.Field(getter="getDigest", id=3)
   private String zze;
-  @SafeParcelable.Field(id=4)
   private ParcelFileDescriptor zzf;
   
   static
   {
-    AppMethodBeat.i(70793);
+    AppMethodBeat.i(100776);
     CREATOR = new zze();
-    AppMethodBeat.o(70793);
+    AppMethodBeat.o(100776);
   }
   
-  @SafeParcelable.Constructor
-  Asset(@SafeParcelable.Param(id=2) byte[] paramArrayOfByte, @SafeParcelable.Param(id=3) String paramString, @SafeParcelable.Param(id=4) ParcelFileDescriptor paramParcelFileDescriptor, @SafeParcelable.Param(id=5) Uri paramUri)
+  Asset(byte[] paramArrayOfByte, String paramString, ParcelFileDescriptor paramParcelFileDescriptor, Uri paramUri)
   {
     this.data = paramArrayOfByte;
     this.zze = paramString;
@@ -51,65 +37,62 @@ public class Asset
     this.uri = paramUri;
   }
   
-  @VisibleForTesting
   public static Asset createFromBytes(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(70787);
+    AppMethodBeat.i(100770);
     Asserts.checkNotNull(paramArrayOfByte);
     paramArrayOfByte = new Asset(paramArrayOfByte, null, null, null);
-    AppMethodBeat.o(70787);
+    AppMethodBeat.o(100770);
     return paramArrayOfByte;
   }
   
-  @VisibleForTesting
   public static Asset createFromFd(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(70788);
+    AppMethodBeat.i(100771);
     Asserts.checkNotNull(paramParcelFileDescriptor);
     paramParcelFileDescriptor = new Asset(null, null, paramParcelFileDescriptor, null);
-    AppMethodBeat.o(70788);
+    AppMethodBeat.o(100771);
     return paramParcelFileDescriptor;
   }
   
   public static Asset createFromRef(String paramString)
   {
-    AppMethodBeat.i(70786);
+    AppMethodBeat.i(100769);
     Asserts.checkNotNull(paramString);
     paramString = new Asset(null, paramString, null, null);
-    AppMethodBeat.o(70786);
+    AppMethodBeat.o(100769);
     return paramString;
   }
   
-  @VisibleForTesting
   public static Asset createFromUri(Uri paramUri)
   {
-    AppMethodBeat.i(70789);
+    AppMethodBeat.i(100772);
     Asserts.checkNotNull(paramUri);
     paramUri = new Asset(null, null, null, paramUri);
-    AppMethodBeat.o(70789);
+    AppMethodBeat.o(100772);
     return paramUri;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70791);
+    AppMethodBeat.i(100774);
     if (this == paramObject)
     {
-      AppMethodBeat.o(70791);
+      AppMethodBeat.o(100774);
       return true;
     }
     if (!(paramObject instanceof Asset))
     {
-      AppMethodBeat.o(70791);
+      AppMethodBeat.o(100774);
       return false;
     }
     paramObject = (Asset)paramObject;
     if ((Arrays.equals(this.data, paramObject.data)) && (Objects.equal(this.zze, paramObject.zze)) && (Objects.equal(this.zzf, paramObject.zzf)) && (Objects.equal(this.uri, paramObject.uri)))
     {
-      AppMethodBeat.o(70791);
+      AppMethodBeat.o(100774);
       return true;
     }
-    AppMethodBeat.o(70791);
+    AppMethodBeat.o(100774);
     return false;
   }
   
@@ -135,15 +118,15 @@ public class Asset
   
   public int hashCode()
   {
-    AppMethodBeat.i(70790);
+    AppMethodBeat.i(100773);
     int i = Arrays.deepHashCode(new Object[] { this.data, this.zze, this.zzf, this.uri });
-    AppMethodBeat.o(70790);
+    AppMethodBeat.o(100773);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(70792);
+    AppMethodBeat.i(100775);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Asset[@");
     ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
@@ -169,7 +152,7 @@ public class Asset
       }
       ((StringBuilder)localObject).append("]");
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(70792);
+      AppMethodBeat.o(100775);
       return localObject;
       ((StringBuilder)localObject).append(", ");
       ((StringBuilder)localObject).append(this.zze);
@@ -178,7 +161,7 @@ public class Asset
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(70785);
+    AppMethodBeat.i(100768);
     Asserts.checkNotNull(paramParcel);
     paramInt |= 0x1;
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
@@ -187,12 +170,12 @@ public class Asset
     SafeParcelWriter.writeParcelable(paramParcel, 4, this.zzf, paramInt, false);
     SafeParcelWriter.writeParcelable(paramParcel, 5, this.uri, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(70785);
+    AppMethodBeat.o(100768);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.Asset
  * JD-Core Version:    0.7.0.1
  */

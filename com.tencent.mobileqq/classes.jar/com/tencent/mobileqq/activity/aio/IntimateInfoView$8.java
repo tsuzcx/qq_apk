@@ -1,24 +1,40 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesk;
-import asii;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.IntimateInfo;
+import mqq.os.MqqHandler;
 
-public class IntimateInfoView$8
+class IntimateInfoView$8
   implements Runnable
 {
-  public IntimateInfoView$8(aesk paramaesk) {}
+  IntimateInfoView$8(IntimateInfoView paramIntimateInfoView, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    if ((aesk.a(this.this$0) != null) && (this.this$0.a != null)) {
-      ((asii)this.this$0.a.getManager(323)).a(aesk.a(this.this$0));
-    }
+    Bitmap localBitmap = Bitmap.createBitmap(750, 1272, Bitmap.Config.ARGB_8888);
+    Object localObject1 = new Canvas(localBitmap);
+    this.a.setBounds(0, 0, 750, 1272);
+    this.a.draw((Canvas)localObject1);
+    localObject1 = this.this$0;
+    BaseActivity localBaseActivity = ((IntimateInfoView)localObject1).b;
+    QQAppInterface localQQAppInterface = this.this$0.a;
+    IntimateInfo localIntimateInfo = IntimateInfoView.c(this.this$0);
+    Object localObject2 = this.this$0;
+    localObject2 = ((IntimateInfoView)localObject2).b(((IntimateInfoView)localObject2).a.getCurrentAccountUin());
+    IntimateInfoView localIntimateInfoView = this.this$0;
+    IntimateInfoView.a((IntimateInfoView)localObject1, new IntimateInfoShareHelper(localBaseActivity, localQQAppInterface, localIntimateInfo, (Bitmap)localObject2, localIntimateInfoView.b(localIntimateInfoView.d), localBitmap));
+    ThreadManager.getUIHandler().post(new IntimateInfoView.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.8
  * JD-Core Version:    0.7.0.1
  */

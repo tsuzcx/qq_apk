@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class ReportedBanner
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public long cid;
   public long endtime;
   public String md5;

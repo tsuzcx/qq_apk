@@ -5,23 +5,28 @@ import SummaryCard.TPraiseInfo;
 import SummaryCard.TVideoHeadInfo;
 import android.os.Parcel;
 import android.text.TextUtils;
-import antx;
+import android.util.Pair;
 import appoint.define.appoint_define.InterestTag;
-import auxg;
-import avau;
-import awge;
-import awhp;
-import awqq;
-import bdhb;
-import bdnn;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
+import com.tencent.mobileqq.nearby.business.NearbyCardConstants;
+import com.tencent.mobileqq.nearby.interestTag.IInterestTagUtils;
+import com.tencent.mobileqq.nearby.interestTag.InterestTag;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.picbrowser.PicInfo;
+import com.tencent.mobileqq.profilecard.entity.ProfileBusiEntry;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.nowsummarycard.NowSummaryCard.CommonTag;
+import com.tencent.nowsummarycard.NowSummaryCard.NearbyTag;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,24 +48,28 @@ import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
 import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
 
 public class NearbyPeopleCard
-  extends awge
+  extends Entity
 {
+  private static final String TAG = "Q.nearby_people_card.";
   public String addPicBtnDownloadAppTips = "";
   public int age;
   public String aioDistanceAndTime;
-  public short bAvailVoteCnt;
-  public short bHaveVotedCnt;
+  public short bAvailVoteCnt = 0;
+  public short bHaveVotedCnt = 0;
   public String bVideoHeadUrl;
   public byte bVoted;
   public int birthday;
   public String busiEntry;
   public long charm;
   public int charmLevel;
+  @notColumn
+  public long chatId;
   public String college;
   public long collegeId;
   public String commonLabelString;
-  @awhp
+  @notColumn
   public List<String> commonLabels;
+  public NowSummaryCard.CommonTag commonTag;
   public String company;
   public byte constellation;
   public int curThreshold;
@@ -78,8 +87,9 @@ public class NearbyPeopleCard
   public int faceScoreWordingColor;
   public int favoriteSource;
   public long feedPreviewTime;
+  public String firstOfficialMsg;
   public byte gender = -1;
-  public boolean godFlag;
+  public boolean godFlag = false;
   public String guideAppNowDownloadUrl;
   public String guideAppNowJumpUri;
   public String guideAppNowPackage;
@@ -87,59 +97,69 @@ public class NearbyPeopleCard
   public String guideAppNowTipLeftBtn;
   public String guideAppNowTipRightBtnInstalled;
   public String guideAppNowTipRightBtnNotInstalled;
+  public String guideVerifiedDialogRightBtnText;
+  public String guideVerifiedDialogTitle;
   public String hiWanInfo;
   public List<NearbyPeopleCard.HiWanItem> hiWanList;
-  public int highScoreNum;
+  public int highScoreNum = 0;
   public String hometownCity;
   public String hometownCountry;
   public String hometownDistrict;
   public String hometownProvice;
-  @awhp
+  @notColumn
   public HotChatInfo hotInfo;
   public int iIsGodFlag;
-  @awhp
-  public List<avau> interestTags;
-  public boolean isForbidSendGiftMsg;
-  public boolean isForbidSendGiftMsgForTribar;
-  public boolean isForbidSendMsg;
-  public boolean isForbidSendMsgForTribar;
+  @notColumn
+  public List<InterestTag> interestTags;
+  public boolean isForbidSendGiftMsg = false;
+  public boolean isForbidSendGiftMsgForTribar = false;
+  public boolean isForbidSendMsg = false;
+  public boolean isForbidSendMsgForTribar = false;
+  @notColumn
+  public boolean isFriend;
+  @notColumn
+  public boolean isHostSelf;
   public boolean isPhotoUseCache;
   public boolean isSendMsgBtnDownloadAppOpen = true;
+  public boolean isVerified;
   public int job;
-  public long lUserFlag;
+  public long lUserFlag = 0L;
   public long lastUpdateNickTime;
   public int likeCount;
   public int likeCountInc;
-  public boolean mHasStory;
+  public boolean mHasStory = false;
   public int mHeartNum;
   public byte[] mQQStoryData;
   public byte maritalStatus;
   public int maskMsgFlag;
   public int nLastGameFlag;
   public byte[] nearbyInfo;
-  @awhp
+  @notColumn
   public cmd0xac5.NearbyNowData nearbyNowData;
   public byte[] nearbyNowDataBytes;
+  public NowSummaryCard.NearbyTag nearbyTag;
   public int nextThreshold;
   public String nickname;
   public long nowId;
   public int nowUserType;
   public int oldPhotoCount;
   public String picInfo;
-  @awhp
+  @notColumn
   public List<PicInfo> picList;
-  @awhp
+  @notColumn
   public List<TPraiseInfo> praiseList;
   public int profPercent;
-  @awhp
-  public List<awqq> profileBusiEntry;
+  @notColumn
+  public List<ProfileBusiEntry> profileBusiEntry;
   public String qzoneFeed;
   public String qzoneName;
   public String qzonePicUrl_1;
   public String qzonePicUrl_2;
   public String qzonePicUrl_3;
+  public Pair<Long, String> recentlyJoinedGroup;
   public int sayHelloFlag;
   public String sendMsgBtnDownloadAppTips = "";
+  public String sign;
   public String strFreshNewsInfo;
   public String strGodJumpUrl;
   public String strHotChatInfo;
@@ -155,12 +175,13 @@ public class NearbyPeopleCard
   public int taskFinished;
   public int taskTotal;
   public String timeDiff;
-  public long tinyId;
+  public long tinyId = 0L;
   public String tribeAppDownloadPageUrl = "";
   public long uRoomid;
   public long uiShowControl;
   public String uin;
-  public long ulShowControl;
+  public long ulShowControl = 0L;
+  public String unverifyGrayTips;
   public long userFlag;
   public byte[] vActivityList;
   public byte[] vCookies;
@@ -169,42 +190,39 @@ public class NearbyPeopleCard
   public byte[] vSeed;
   public byte[] vTempChatSig;
   public String videoDetails;
-  public boolean videoHeadFlag;
+  public boolean videoHeadFlag = false;
   public PicInfo videoInfo;
   public byte[] xuanYan;
   
-  public void addOrUpdateBuisEntry(awqq paramawqq)
+  public void addOrUpdateBuisEntry(ProfileBusiEntry paramProfileBusiEntry)
   {
-    int k = 0;
-    if (paramawqq == null) {
+    if (paramProfileBusiEntry == null) {
       return;
     }
-    int m = paramawqq.jdField_a_of_type_Int;
+    int m = paramProfileBusiEntry.nBusiEntryType;
     if (this.profileBusiEntry == null) {
       getBusiEntrys();
     }
+    int k = 0;
     int i = 0;
+    int j;
     for (;;)
     {
-      int j = k;
-      if (i < this.profileBusiEntry.size())
-      {
-        if (((awqq)this.profileBusiEntry.get(i)).jdField_a_of_type_Int == m)
-        {
-          j = 1;
-          this.profileBusiEntry.remove(i);
-          this.profileBusiEntry.add(paramawqq);
-        }
+      j = k;
+      if (i >= this.profileBusiEntry.size()) {
+        break;
       }
-      else
+      if (((ProfileBusiEntry)this.profileBusiEntry.get(i)).nBusiEntryType == m)
       {
-        if (j != 0) {
-          break;
-        }
-        this.profileBusiEntry.add(paramawqq);
-        return;
+        this.profileBusiEntry.remove(i);
+        this.profileBusiEntry.add(paramProfileBusiEntry);
+        j = 1;
+        break;
       }
       i += 1;
+    }
+    if (j == 0) {
+      this.profileBusiEntry.add(paramProfileBusiEntry);
     }
   }
   
@@ -235,56 +253,51 @@ public class NearbyPeopleCard
     this.mQQStoryData = null;
   }
   
-  public List<awqq> getBusiEntrys()
+  public List<ProfileBusiEntry> getBusiEntrys()
   {
     if (this.profileBusiEntry == null)
     {
       this.profileBusiEntry = new ArrayList();
-      if (TextUtils.isEmpty(this.busiEntry)) {}
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(this.busiEntry);
-        i = 0;
-        if (i < localJSONArray.length())
+      if (!TextUtils.isEmpty(this.busiEntry)) {
+        try
         {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label178;
+          JSONArray localJSONArray = new JSONArray(this.busiEntry);
+          int i = 0;
+          while (i < localJSONArray.length())
+          {
+            JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+            if (localJSONObject != null)
+            {
+              ProfileBusiEntry localProfileBusiEntry = new ProfileBusiEntry();
+              localProfileBusiEntry.nBusiEntryType = localJSONObject.getInt("nBusiEntryType");
+              localProfileBusiEntry.strLogoUrl = localJSONObject.getString("strLogoUrl");
+              localProfileBusiEntry.strTitle = localJSONObject.getString("strTitle");
+              localProfileBusiEntry.strContent = localJSONObject.getString("strContent");
+              localProfileBusiEntry.strJumpUrl = localJSONObject.getString("strJumpUrl");
+              if (!localProfileBusiEntry.isEmpty()) {
+                this.profileBusiEntry.add(localProfileBusiEntry);
+              }
+            }
+            i += 1;
           }
-          awqq localawqq = new awqq();
-          localawqq.jdField_a_of_type_Int = localJSONObject.getInt("nBusiEntryType");
-          localawqq.jdField_a_of_type_JavaLangString = localJSONObject.getString("strLogoUrl");
-          localawqq.b = localJSONObject.getString("strTitle");
-          localawqq.c = localJSONObject.getString("strContent");
-          localawqq.d = localJSONObject.getString("strJumpUrl");
-          if (localawqq.a()) {
-            break label178;
+          return this.profileBusiEntry;
+        }
+        catch (JSONException localJSONException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.profilecard.SummaryCard", 2, localJSONException.toString());
           }
-          this.profileBusiEntry.add(localawqq);
         }
       }
-      catch (JSONException localJSONException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.SummaryCard", 2, localJSONException.toString());
-        }
-      }
-      return this.profileBusiEntry;
-      label178:
-      i += 1;
     }
   }
   
-  public avau getCommonTagInfos()
+  public InterestTag getCommonTagInfos()
   {
     if (this.commonLabels == null) {
       return null;
     }
-    avau localavau = new avau(8);
+    InterestTag localInterestTag = new InterestTag(8);
     Iterator localIterator = this.commonLabels.iterator();
     while (localIterator.hasNext())
     {
@@ -296,58 +309,63 @@ public class NearbyPeopleCard
         localInterestTagInfo.tagTextColor = "#4b83d3";
         localInterestTagInfo.tagIconUrl = "";
         localInterestTagInfo.tagName = str;
-        localavau.jdField_a_of_type_JavaUtilArrayList.add(localInterestTagInfo);
+        localInterestTag.b.add(localInterestTagInfo);
       }
     }
-    return localavau;
+    return localInterestTag;
+  }
+  
+  public boolean getIsHostSelf(String paramString)
+  {
+    this.isHostSelf = TextUtils.equals(this.uin, paramString);
+    return this.isHostSelf;
   }
   
   public List<String> getQQStoryList()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = localArrayList;
-    Object localObject2;
-    Object localObject3;
+    Object localObject3 = localArrayList;
     if (this.mQQStoryData != null)
     {
-      localObject2 = localArrayList;
-      localObject3 = localArrayList;
-    }
-    try
-    {
-      Parcel localParcel = Parcel.obtain();
-      localObject2 = localArrayList;
-      localObject3 = localArrayList;
-      localParcel.unmarshall(this.mQQStoryData, 0, this.mQQStoryData.length);
-      localObject2 = localArrayList;
-      localObject3 = localArrayList;
-      localParcel.setDataPosition(0);
-      localObject2 = localArrayList;
-      localObject3 = localArrayList;
-      localObject1 = localParcel.readArrayList(getClass().getClassLoader());
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localParcel.recycle();
-    }
-    catch (Exception localException)
-    {
-      do
+      Object localObject1 = localArrayList;
+      Object localObject2 = localArrayList;
+      try
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.i("SummaryCard, getQQStoryList:", 2, localException.toString());
-      return localObject2;
-    }
-    catch (Error localError)
-    {
-      do
+        Parcel localParcel = Parcel.obtain();
+        localObject1 = localArrayList;
+        localObject2 = localArrayList;
+        localParcel.unmarshall(this.mQQStoryData, 0, this.mQQStoryData.length);
+        localObject1 = localArrayList;
+        localObject2 = localArrayList;
+        localParcel.setDataPosition(0);
+        localObject1 = localArrayList;
+        localObject2 = localArrayList;
+        localObject3 = localParcel.readArrayList(getClass().getClassLoader());
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        localParcel.recycle();
+        return localObject3;
+      }
+      catch (Error localError)
       {
-        localObject1 = localException;
-      } while (!QLog.isColorLevel());
-      QLog.i("SummaryCard, getQQStoryList:", 2, localError.toString());
+        localObject3 = localObject1;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("SummaryCard, getQQStoryList:", 2, localError.toString());
+          return localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        localObject3 = localError;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("SummaryCard, getQQStoryList:", 2, localException.toString());
+          localObject3 = localError;
+        }
+      }
     }
-    return localObject1;
-    return localException;
+    return localObject3;
   }
   
   public List<String> getQZonePhotoList()
@@ -365,63 +383,85 @@ public class NearbyPeopleCard
     return localArrayList;
   }
   
-  public avau getTagInfos(int paramInt)
+  public String getSafetyUin()
   {
-    if ((paramInt < 1) || (paramInt > 11) || (this.interestTags == null) || (this.interestTags.size() == 0)) {
-      return null;
+    if ((!TextUtils.isEmpty(this.uin)) && (!"0".equals(this.uin))) {
+      return this.uin;
     }
-    Iterator localIterator = this.interestTags.iterator();
-    while (localIterator.hasNext())
-    {
-      avau localavau = (avau)localIterator.next();
-      if ((localavau != null) && (localavau.jdField_a_of_type_Int == paramInt)) {
-        return localavau;
-      }
-    }
-    return null;
+    return String.valueOf(this.tinyId);
   }
   
-  public void getTagInfos(avau[] paramArrayOfavau)
+  public InterestTag getTagInfos(int paramInt)
   {
-    if ((paramArrayOfavau == null) || (paramArrayOfavau.length <= 0)) {
-      return;
-    }
-    int j = paramArrayOfavau.length;
-    int i = 0;
-    label15:
-    avau localavau1;
-    if (i < j)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 1)
     {
-      localavau1 = paramArrayOfavau[i];
-      if (localavau1 != null) {
-        break label37;
+      localObject1 = localObject2;
+      if (paramInt <= 11)
+      {
+        Object localObject3 = this.interestTags;
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          if (((List)localObject3).size() == 0) {
+            return null;
+          }
+          localObject3 = this.interestTags.iterator();
+          do
+          {
+            localObject1 = localObject2;
+            if (!((Iterator)localObject3).hasNext()) {
+              break;
+            }
+            localObject1 = (InterestTag)((Iterator)localObject3).next();
+          } while ((localObject1 == null) || (((InterestTag)localObject1).a != paramInt));
+        }
       }
     }
-    for (;;)
+    return localObject1;
+  }
+  
+  public void getTagInfos(InterestTag[] paramArrayOfInterestTag)
+  {
+    if (paramArrayOfInterestTag != null)
     {
-      i += 1;
-      break label15;
-      break;
-      label37:
-      avau localavau2 = getTagInfos(localavau1.jdField_a_of_type_Int);
-      localavau1.jdField_a_of_type_JavaUtilArrayList.clear();
-      if ((localavau2 != null) && (localavau2.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        localavau1.jdField_a_of_type_JavaUtilArrayList.addAll(localavau2.jdField_a_of_type_JavaUtilArrayList);
+      if (paramArrayOfInterestTag.length <= 0) {
+        return;
+      }
+      int j = paramArrayOfInterestTag.length;
+      int i = 0;
+      while (i < j)
+      {
+        InterestTag localInterestTag1 = paramArrayOfInterestTag[i];
+        if (localInterestTag1 != null)
+        {
+          InterestTag localInterestTag2 = getTagInfos(localInterestTag1.a);
+          localInterestTag1.b.clear();
+          if ((localInterestTag2 != null) && (localInterestTag2.b.size() > 0)) {
+            localInterestTag1.b.addAll(localInterestTag2.b);
+          }
+        }
+        i += 1;
       }
     }
   }
   
   public boolean hasInterestTag()
   {
-    if ((this.interestTags == null) || (this.interestTags.isEmpty())) {
-      return false;
-    }
-    Iterator localIterator = this.interestTags.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.interestTags;
+    if (localObject != null)
     {
-      avau localavau = (avau)localIterator.next();
-      if ((localavau.jdField_a_of_type_JavaUtilArrayList != null) && (!localavau.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-        return true;
+      if (((List)localObject).isEmpty()) {
+        return false;
+      }
+      localObject = this.interestTags.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        InterestTag localInterestTag = (InterestTag)((Iterator)localObject).next();
+        if ((localInterestTag.b != null) && (!localInterestTag.b.isEmpty())) {
+          return true;
+        }
       }
     }
     return false;
@@ -432,7 +472,7 @@ public class NearbyPeopleCard
     Object localObject = getTagInfos(paramInt);
     if (localObject != null)
     {
-      localObject = ((avau)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = ((InterestTag)localObject).b.iterator();
       while (((Iterator)localObject).hasNext()) {
         if (((InterestTagInfo)((Iterator)localObject).next()).tagId == paramLong) {
           return true;
@@ -444,7 +484,7 @@ public class NearbyPeopleCard
   
   public boolean hasQzonePhotoUrl()
   {
-    return (!bdnn.a(this.qzonePicUrl_1)) || (!bdnn.a(this.qzonePicUrl_2)) || (!bdnn.a(this.qzonePicUrl_3));
+    return (!StringUtil.isEmpty(this.qzonePicUrl_1)) || (!StringUtil.isEmpty(this.qzonePicUrl_2)) || (!StringUtil.isEmpty(this.qzonePicUrl_3));
   }
   
   public boolean isAddPicBtnDownloadAppOpen()
@@ -472,265 +512,249 @@ public class NearbyPeopleCard
     return this.isPhotoUseCache;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
-    if (TextUtils.isEmpty(this.tagInfo))
+    boolean bool = TextUtils.isEmpty(this.tagInfo);
+    int j = 0;
+    int i;
+    Object localObject;
+    if (bool)
     {
       this.interestTags = null;
-      if (!TextUtils.isEmpty(this.picInfo)) {
-        break label243;
-      }
-      this.picList = null;
-      label34:
-      if (!TextUtils.isEmpty(this.videoDetails)) {
-        break label257;
-      }
-      this.videoInfo = null;
-      label49:
-      this.hiWanList = new ArrayList();
-      if (!TextUtils.isEmpty(this.hiWanInfo)) {
-        break label339;
-      }
-      this.hiWanList = null;
-      label75:
-      this.commonLabels = new ArrayList();
-      if (!TextUtils.isEmpty(this.commonLabelString)) {
-        break label545;
-      }
-      this.commonLabels = null;
-      label101:
-      if (!TextUtils.isEmpty(this.strHotChatInfo)) {
-        break label631;
-      }
-      this.hotInfo = null;
     }
-    label257:
-    label545:
+    else
+    {
+      this.interestTags = new ArrayList();
+      try
+      {
+        JSONArray localJSONArray1 = new JSONArray(this.tagInfo);
+        i = 0;
+        while (i < localJSONArray1.length())
+        {
+          localObject = localJSONArray1.getJSONObject(i);
+          if (localObject != null)
+          {
+            localObject = (InterestTag)((IInterestTagUtils)QRoute.api(IInterestTagUtils.class)).convertFromJSONObject((JSONObject)localObject);
+            if (localObject != null) {
+              this.interestTags.add(localObject);
+            }
+          }
+          i += 1;
+        }
+        if (!TextUtils.isEmpty(this.picInfo)) {
+          break label173;
+        }
+      }
+      catch (Exception localException1)
+      {
+        if (QLog.isDevelopLevel()) {
+          localException1.printStackTrace();
+        } else if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.", 2, localException1.toString());
+        }
+      }
+    }
+    this.picList = null;
+    break label184;
+    label173:
+    this.picList = PicInfo.a(this.picInfo);
+    label184:
+    if (TextUtils.isEmpty(this.videoDetails)) {
+      this.videoInfo = null;
+    } else {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.videoDetails);
+        this.videoInfo = new PicInfo();
+        if (localJSONObject.has("videoUrl")) {
+          this.videoInfo.e = localJSONObject.getString("videoUrl");
+        }
+        if (localJSONObject.has("bigPicUrl")) {
+          this.videoInfo.b = localJSONObject.getString("bigPicUrl");
+        }
+      }
+      catch (JSONException localJSONException1)
+      {
+        localJSONException1.printStackTrace();
+      }
+    }
+    this.hiWanList = new ArrayList();
+    if (TextUtils.isEmpty(this.hiWanInfo)) {
+      this.hiWanList = null;
+    } else {
+      try
+      {
+        JSONArray localJSONArray2 = new JSONArray(this.hiWanInfo);
+        i = 0;
+        while (i < localJSONArray2.length())
+        {
+          localObject = localJSONArray2.getJSONObject(i);
+          NearbyPeopleCard.HiWanItem localHiWanItem = new NearbyPeopleCard.HiWanItem();
+          if (((JSONObject)localObject).has("title")) {
+            localHiWanItem.title = ((JSONObject)localObject).getString("title");
+          }
+          if (((JSONObject)localObject).has("icon")) {
+            localHiWanItem.icon = ((JSONObject)localObject).getString("icon");
+          }
+          if (((JSONObject)localObject).has("url")) {
+            localHiWanItem.url = ((JSONObject)localObject).getString("url");
+          }
+          if (((JSONObject)localObject).has("status")) {
+            localHiWanItem.status = ((JSONObject)localObject).getInt("status");
+          }
+          if (((JSONObject)localObject).has("type")) {
+            localHiWanItem.type = ((JSONObject)localObject).getInt("type");
+          }
+          this.hiWanList.add(localHiWanItem);
+          i += 1;
+        }
+        this.commonLabels = new ArrayList();
+      }
+      catch (JSONException localJSONException2)
+      {
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("hiWanList convertFrom exception : ");
+          ((StringBuilder)localObject).append(localJSONException2.getMessage());
+          QLog.i("Q.nearby_people_card.", 4, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
+    if (TextUtils.isEmpty(this.commonLabelString)) {
+      this.commonLabels = null;
+    } else {
+      try
+      {
+        JSONArray localJSONArray3 = new JSONArray(this.commonLabelString);
+        i = j;
+        while (i < localJSONArray3.length())
+        {
+          localObject = localJSONArray3.getString(i);
+          this.commonLabels.add(localObject);
+          i += 1;
+        }
+        if (!TextUtils.isEmpty(this.strHotChatInfo)) {
+          break label691;
+        }
+      }
+      catch (JSONException localJSONException3)
+      {
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("hiWanList convertFrom exception : ");
+          ((StringBuilder)localObject).append(localJSONException3.getMessage());
+          QLog.i("Q.nearby_people_card.", 4, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
+    this.hotInfo = null;
+    break label699;
+    label691:
+    updateHotChatInfo(this.strHotChatInfo);
     try
     {
-      label116:
+      label699:
       this.nearbyNowData = new cmd0xac5.NearbyNowData();
       this.nearbyNowData.mergeFrom(this.nearbyNowDataBytes);
       return;
     }
     catch (Exception localException2)
     {
-      label243:
-      label631:
-      this.nearbyNowData = null;
-      label339:
-      return;
+      label723:
+      break label723;
     }
-    this.interestTags = new ArrayList();
-    for (;;)
-    {
-      int i;
-      for (;;)
-      {
-        Object localObject;
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              JSONArray localJSONArray1 = new JSONArray(this.tagInfo);
-              i = 0;
-              if (i >= localJSONArray1.length()) {
-                break;
-              }
-              localObject = localJSONArray1.getJSONObject(i);
-              if (localObject == null) {
-                break label649;
-              }
-              localObject = avau.a((JSONObject)localObject);
-              if (localObject == null) {
-                break label649;
-              }
-              this.interestTags.add(localObject);
-            }
-            catch (Exception localException1)
-            {
-              if (QLog.isDevelopLevel())
-              {
-                localException1.printStackTrace();
-                break;
-              }
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("Q.nearby_people_card.", 2, localException1.toString());
-            break;
-            this.picList = PicInfo.a(this.picInfo);
-            break label34;
-            try
-            {
-              JSONObject localJSONObject = new JSONObject(this.videoDetails);
-              this.videoInfo = new PicInfo();
-              if (localJSONObject.has("videoUrl")) {
-                this.videoInfo.d = localJSONObject.getString("videoUrl");
-              }
-              if (!localJSONObject.has("bigPicUrl")) {
-                break label49;
-              }
-              this.videoInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("bigPicUrl");
-            }
-            catch (JSONException localJSONException1)
-            {
-              localJSONException1.printStackTrace();
-            }
-          }
-          break label49;
-          try
-          {
-            JSONArray localJSONArray2 = new JSONArray(this.hiWanInfo);
-            i = 0;
-            while (i < localJSONArray2.length())
-            {
-              localObject = localJSONArray2.getJSONObject(i);
-              NearbyPeopleCard.HiWanItem localHiWanItem = new NearbyPeopleCard.HiWanItem();
-              if (((JSONObject)localObject).has("title")) {
-                localHiWanItem.title = ((JSONObject)localObject).getString("title");
-              }
-              if (((JSONObject)localObject).has("icon")) {
-                localHiWanItem.icon = ((JSONObject)localObject).getString("icon");
-              }
-              if (((JSONObject)localObject).has("url")) {
-                localHiWanItem.url = ((JSONObject)localObject).getString("url");
-              }
-              if (((JSONObject)localObject).has("status")) {
-                localHiWanItem.status = ((JSONObject)localObject).getInt("status");
-              }
-              if (((JSONObject)localObject).has("type")) {
-                localHiWanItem.type = ((JSONObject)localObject).getInt("type");
-              }
-              this.hiWanList.add(localHiWanItem);
-              i += 1;
-            }
-            if (!QLog.isDevelopLevel()) {
-              break label75;
-            }
-          }
-          catch (JSONException localJSONException2) {}
-        }
-        QLog.i("Q.nearby_people_card.", 4, "hiWanList convertFrom exception : " + localJSONException2.getMessage());
-        break label75;
-        try
-        {
-          JSONArray localJSONArray3 = new JSONArray(this.commonLabelString);
-          i = 0;
-          while (i < localJSONArray3.length())
-          {
-            localObject = localJSONArray3.getString(i);
-            this.commonLabels.add(localObject);
-            i += 1;
-          }
-          if (!QLog.isDevelopLevel()) {
-            break label101;
-          }
-        }
-        catch (JSONException localJSONException3) {}
-      }
-      QLog.i("Q.nearby_people_card.", 4, "hiWanList convertFrom exception : " + localJSONException3.getMessage());
-      break label101;
-      updateHotChatInfo(this.strHotChatInfo);
-      break label116;
-      label649:
-      i += 1;
-    }
+    this.nearbyNowData = null;
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
   }
   
-  public void removeBuisEntry(awqq paramawqq)
+  public void removeBuisEntry(ProfileBusiEntry paramProfileBusiEntry)
   {
-    if (paramawqq == null) {}
-    for (;;)
-    {
+    if (paramProfileBusiEntry == null) {
       return;
-      int j = paramawqq.jdField_a_of_type_Int;
-      if (this.profileBusiEntry == null) {
-        getBusiEntrys();
-      }
-      int i = 0;
-      while (i < this.profileBusiEntry.size())
+    }
+    int j = paramProfileBusiEntry.nBusiEntryType;
+    if (this.profileBusiEntry == null) {
+      getBusiEntrys();
+    }
+    int i = 0;
+    while (i < this.profileBusiEntry.size())
+    {
+      if (((ProfileBusiEntry)this.profileBusiEntry.get(i)).nBusiEntryType == j)
       {
-        if (((awqq)this.profileBusiEntry.get(i)).jdField_a_of_type_Int == j)
-        {
-          this.profileBusiEntry.remove(i);
-          return;
-        }
-        i += 1;
+        this.profileBusiEntry.remove(i);
+        return;
       }
+      i += 1;
     }
   }
   
-  public void saveBusiEntrys(List<awqq> paramList)
+  public void saveBusiEntrys(List<ProfileBusiEntry> paramList)
   {
-    JSONStringer localJSONStringer = new JSONStringer();
+    Object localObject = new JSONStringer();
+    int j = 0;
     int i;
-    if (paramList == null)
-    {
+    if (paramList == null) {
       i = 0;
-      if (i <= 0) {
-        break label210;
-      }
+    } else {
+      i = paramList.size();
     }
+    if (i > 0) {}
     for (;;)
     {
       try
       {
-        localJSONStringer.array();
-        int j = 0;
+        ((JSONStringer)localObject).array();
         if (j < i)
         {
-          awqq localawqq = (awqq)paramList.get(j);
-          if ((localawqq != null) && (!localawqq.a())) {
-            localJSONStringer.object().key("nBusiEntryType").value(localawqq.jdField_a_of_type_Int).key("strLogoUrl").value(localawqq.jdField_a_of_type_JavaLangString).key("strTitle").value(localawqq.b).key("strContent").value(localawqq.c).key("strJumpUrl").value(localawqq.d).endObject();
+          ProfileBusiEntry localProfileBusiEntry = (ProfileBusiEntry)paramList.get(j);
+          if ((localProfileBusiEntry == null) || (localProfileBusiEntry.isEmpty())) {
+            continue;
           }
-          j += 1;
+          ((JSONStringer)localObject).object().key("nBusiEntryType").value(localProfileBusiEntry.nBusiEntryType).key("strLogoUrl").value(localProfileBusiEntry.strLogoUrl).key("strTitle").value(localProfileBusiEntry.strTitle).key("strContent").value(localProfileBusiEntry.strContent).key("strJumpUrl").value(localProfileBusiEntry.strJumpUrl).endObject();
           continue;
-          i = paramList.size();
-          break;
         }
-        localJSONStringer.endArray();
-        this.busiEntry = localJSONStringer.toString();
+        ((JSONStringer)localObject).endArray();
+        this.busiEntry = ((JSONStringer)localObject).toString();
       }
       catch (JSONException localJSONException)
       {
-        label210:
-        this.busiEntry = "";
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("Q.profilecard.SummaryCard", 2, localJSONException.toString());
         continue;
       }
-      if (this.profileBusiEntry != null)
+      this.busiEntry = "";
+      continue;
+      this.busiEntry = "";
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.SummaryCard", 2, ((JSONException)localObject).toString());
+      }
+      localObject = this.profileBusiEntry;
+      if (localObject != null)
       {
-        this.profileBusiEntry.clear();
+        ((List)localObject).clear();
         if ((paramList != null) && (paramList.size() > 0)) {
           this.profileBusiEntry.addAll(paramList);
         }
       }
       return;
-      this.busiEntry = "";
+      j += 1;
     }
   }
   
   public void setPhotoUseCache(long paramLong)
   {
-    if ((1L & paramLong) != 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isPhotoUseCache = bool;
-      return;
+    boolean bool;
+    if ((paramLong & 1L) != 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isPhotoUseCache = bool;
   }
   
   public boolean shouldShowHobby()
@@ -757,7 +781,6 @@ public class NearbyPeopleCard
   {
     int i = -1;
     int j = i;
-    Object localObject;
     if (paramTVideoHeadInfo != null)
     {
       if ((!this.videoHeadFlag) && (paramTVideoHeadInfo.iNearbyFlag == 1))
@@ -768,349 +791,407 @@ public class NearbyPeopleCard
         }
       }
       j = i;
-      if (paramTVideoHeadInfo.vMsg != null) {
-        localObject = new oidb_0x74b.RspBody();
+      if (paramTVideoHeadInfo.vMsg != null)
+      {
+        localObject1 = new oidb_0x74b.RspBody();
+        try
+        {
+          ((oidb_0x74b.RspBody)localObject1).mergeFrom(paramTVideoHeadInfo.vMsg);
+        }
+        catch (InvalidProtocolBufferMicroException paramTVideoHeadInfo)
+        {
+          paramTVideoHeadInfo.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.nearby_people_card.", 2, ".onNearbyCardDownload(), parse vedio head info fail.");
+          }
+        }
+        j = i;
+        if (((oidb_0x74b.RspBody)localObject1).rpt_msg_uin_head_list.has())
+        {
+          paramTVideoHeadInfo = ((oidb_0x74b.OneUinHeadInfo)((oidb_0x74b.RspBody)localObject1).rpt_msg_uin_head_list.get().get(0)).rpt_msg_head_list.get();
+          j = i;
+          if (paramTVideoHeadInfo != null)
+          {
+            paramTVideoHeadInfo = paramTVideoHeadInfo.iterator();
+            do
+            {
+              j = i;
+              if (!paramTVideoHeadInfo.hasNext()) {
+                break;
+              }
+              localObject1 = (oidb_0x74b.HeadInfo)paramTVideoHeadInfo.next();
+            } while (((oidb_0x74b.HeadInfo)localObject1).uint32_type.get() != 17);
+            if (((oidb_0x74b.HeadInfo)localObject1).uint32_id.has()) {
+              i = ((oidb_0x74b.HeadInfo)localObject1).uint32_id.get();
+            }
+            if (((oidb_0x74b.HeadInfo)localObject1).rpt_videoheadlist.has()) {
+              paramTVideoHeadInfo = ((oidb_0x74b.HeadInfo)localObject1).rpt_videoheadlist.get();
+            } else {
+              paramTVideoHeadInfo = null;
+            }
+            j = i;
+            if (paramTVideoHeadInfo != null)
+            {
+              paramTVideoHeadInfo = paramTVideoHeadInfo.iterator();
+              do
+              {
+                j = i;
+                if (!paramTVideoHeadInfo.hasNext()) {
+                  break;
+                }
+                localObject1 = (oidb_0x74b.VideoHeadInfo)paramTVideoHeadInfo.next();
+              } while (((oidb_0x74b.VideoHeadInfo)localObject1).uint32_video_size.get() != 640);
+              paramTVideoHeadInfo = ((oidb_0x74b.VideoHeadInfo)localObject1).str_url.get();
+              break label307;
+            }
+          }
+        }
       }
     }
+    paramTVideoHeadInfo = null;
+    i = j;
+    label307:
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateDisplayPicInfos|basicVideoUrl: ");
+      ((StringBuilder)localObject1).append(paramTVideoHeadInfo);
+      ((StringBuilder)localObject1).append(" ,basicVideoId:");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(",videoHeadFlag:");
+      ((StringBuilder)localObject1).append(this.videoHeadFlag);
+      ((StringBuilder)localObject1).append(",isMySelf:");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("Q.nearby_people_card.", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (!TextUtils.isEmpty(paramTVideoHeadInfo)) {
+      this.bVideoHeadUrl = paramTVideoHeadInfo;
+    }
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    Object localObject1 = new GetPhotoList.RspBody();
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      ((GetPhotoList.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label442:
+      Object localObject2;
+      int k;
+      break label442;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby_people_card.", 2, ".onNearbyCardDownload(), parse head info fail.");
+    }
+    if (!((GetPhotoList.RspBody)localObject1).rpt_msg_uin_heads.has()) {
+      return null;
+    }
+    paramArrayOfByte = (GetPhotoList.HeadInfo)((GetPhotoList.UinHeadInfo)((GetPhotoList.RspBody)localObject1).rpt_msg_uin_heads.get().get(0)).msg_verify_video_info.get();
+    paramTVideoHeadInfo = "";
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.get() != null) && (!TextUtils.isEmpty(((GetPhotoList.HeadInfo)paramArrayOfByte.get()).str_video_id.get())))
+    {
+      this.videoInfo = new PicInfo();
+      this.videoInfo.g = ((GetPhotoList.HeadInfo)paramArrayOfByte.get()).str_video_id.get();
+      this.videoInfo.e = paramArrayOfByte.str_video_url.get();
+      this.videoInfo.b = paramArrayOfByte.str_headurl.get();
+      paramArrayOfByte = this.videoInfo.a();
+      if (paramArrayOfByte != null) {
+        this.videoDetails = paramArrayOfByte.toString();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("updateDisplayPicInfos, videoUrl:");
+        paramArrayOfByte.append(this.videoInfo.e);
+        paramArrayOfByte.append(", bigPicUrl:");
+        paramArrayOfByte.append(this.videoInfo.b);
+        QLog.d("Q.nearby_people_card.", 2, paramArrayOfByte.toString());
+      }
+    }
+    else
+    {
+      this.videoInfo = null;
+      this.videoDetails = "";
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos, videoInfo is null .");
+      }
+    }
+    localObject1 = ((GetPhotoList.UinHeadInfo)((GetPhotoList.RspBody)localObject1).rpt_msg_uin_heads.get().get(0)).rpt_msg_headinfo.get();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("head size = ");
+      if (localObject1 == null) {
+        paramArrayOfByte = "null";
+      } else {
+        paramArrayOfByte = Integer.valueOf(((List)localObject1).size());
+      }
+      ((StringBuilder)localObject2).append(paramArrayOfByte);
+      QLog.d("Q.nearby_people_card.", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).isEmpty()) {
+        return null;
+      }
+      this.picList = new ArrayList();
+      localObject2 = new JSONArray();
+      k = Math.min(18, ((List)localObject1).size());
+      i = 0;
+      while (i < k)
+      {
+        GetPhotoList.HeadInfo localHeadInfo = (GetPhotoList.HeadInfo)((List)localObject1).get(i);
+        PicInfo localPicInfo = new PicInfo();
+        localPicInfo.a = localHeadInfo.uint32_headid.get();
+        localPicInfo.b = localHeadInfo.str_headurl.get();
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append(localPicInfo.b);
+        paramArrayOfByte.append("250");
+        localPicInfo.c = paramArrayOfByte.toString();
+        if ((i == 0) || (paramBoolean))
+        {
+          if (localHeadInfo.str_video_url.has()) {
+            paramArrayOfByte = localHeadInfo.str_video_url.get();
+          } else {
+            paramArrayOfByte = null;
+          }
+          localPicInfo.e = paramArrayOfByte;
+          if (localHeadInfo.str_video_id.has()) {
+            paramArrayOfByte = localHeadInfo.str_video_id.get();
+          } else {
+            paramArrayOfByte = null;
+          }
+          localPicInfo.g = paramArrayOfByte;
+          if (localHeadInfo.uint32_video_size.has()) {
+            j = localHeadInfo.uint32_video_size.get();
+          } else {
+            j = 0;
+          }
+          if (!TextUtils.isEmpty(localPicInfo.e)) {
+            localPicInfo.f = DynamicAvatarDownloadManager.c(localPicInfo.e);
+          }
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("updateDisplayPicInfos, videoUrlSize:");
+            paramArrayOfByte.append(j);
+            QLog.d("Q.nearby_people_card.", 2, paramArrayOfByte.toString());
+          }
+        }
+        this.picList.add(localPicInfo);
+        paramArrayOfByte = localPicInfo.a();
+        if (paramArrayOfByte != null) {
+          ((JSONArray)localObject2).put(paramArrayOfByte);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("updateDisplayPicInfos, picInfo:");
+          paramArrayOfByte.append(localPicInfo);
+          QLog.d("Q.nearby_people_card.", 2, paramArrayOfByte.toString());
+        }
+        i += 1;
+      }
+      if (((JSONArray)localObject2).length() <= 0) {
+        paramArrayOfByte = paramTVideoHeadInfo;
+      } else {
+        paramArrayOfByte = ((JSONArray)localObject2).toString();
+      }
+      this.picInfo = paramArrayOfByte;
+      return this.picList;
+    }
+    return null;
+  }
+  
+  public List<PicInfo> updateEditPicInfos(byte[] paramArrayOfByte, PicInfo paramPicInfo)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    Object localObject1 = new UpdatePhotoList.RspBody();
     for (;;)
     {
       try
       {
-        ((oidb_0x74b.RspBody)localObject).mergeFrom(paramTVideoHeadInfo.vMsg);
-        j = i;
-        if (!((oidb_0x74b.RspBody)localObject).rpt_msg_uin_head_list.has()) {
-          break label1125;
+        ((UpdatePhotoList.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+        if (!((UpdatePhotoList.RspBody)localObject1).rpt_msg_headinfo.has()) {
+          break label673;
         }
-        paramTVideoHeadInfo = ((oidb_0x74b.OneUinHeadInfo)((oidb_0x74b.RspBody)localObject).rpt_msg_uin_head_list.get().get(0)).rpt_msg_head_list.get();
-        j = i;
-        if (paramTVideoHeadInfo == null) {
-          break label1125;
-        }
-        paramTVideoHeadInfo = paramTVideoHeadInfo.iterator();
-        j = i;
-        if (!paramTVideoHeadInfo.hasNext()) {
-          break label1125;
-        }
-        localObject = (oidb_0x74b.HeadInfo)paramTVideoHeadInfo.next();
-        if (((oidb_0x74b.HeadInfo)localObject).uint32_type.get() != 17) {
-          continue;
-        }
-        if (((oidb_0x74b.HeadInfo)localObject).uint32_id.has()) {
-          i = ((oidb_0x74b.HeadInfo)localObject).uint32_id.get();
-        }
-        if (((oidb_0x74b.HeadInfo)localObject).rpt_videoheadlist.has())
+        paramArrayOfByte = ((UpdatePhotoList.RspBody)localObject1).rpt_msg_headinfo.get();
+        if (paramArrayOfByte != null)
         {
-          paramTVideoHeadInfo = ((oidb_0x74b.HeadInfo)localObject).rpt_videoheadlist.get();
-          j = i;
-          if (paramTVideoHeadInfo == null) {
-            break label1125;
+          if (paramArrayOfByte.isEmpty()) {
+            return null;
           }
-          paramTVideoHeadInfo = paramTVideoHeadInfo.iterator();
-          j = i;
-          if (!paramTVideoHeadInfo.hasNext()) {
-            break label1125;
-          }
-          localObject = (oidb_0x74b.VideoHeadInfo)paramTVideoHeadInfo.next();
-          if (((oidb_0x74b.VideoHeadInfo)localObject).uint32_video_size.get() != 640) {
-            continue;
-          }
-          paramTVideoHeadInfo = ((oidb_0x74b.VideoHeadInfo)localObject).str_url.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos|basicVideoUrl: " + paramTVideoHeadInfo + " ,basicVideoId:" + i + ",videoHeadFlag:" + this.videoHeadFlag + ",isMySelf:" + paramBoolean);
-          }
-          if (!TextUtils.isEmpty(paramTVideoHeadInfo)) {
-            this.bVideoHeadUrl = paramTVideoHeadInfo;
-          }
-          if (paramArrayOfByte != null) {
-            continue;
-          }
-          return null;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramTVideoHeadInfo)
-      {
-        paramTVideoHeadInfo.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.nearby_people_card.", 2, ".onNearbyCardDownload(), parse vedio head info fail.");
-        continue;
-        paramTVideoHeadInfo = null;
-        continue;
-        paramTVideoHeadInfo = new GetPhotoList.RspBody();
-        if (paramArrayOfByte != null) {}
-        try
-        {
-          paramTVideoHeadInfo.mergeFrom(paramArrayOfByte);
-          if (!paramTVideoHeadInfo.rpt_msg_uin_heads.has()) {
-            continue;
-          }
-          paramArrayOfByte = (GetPhotoList.HeadInfo)((GetPhotoList.UinHeadInfo)paramTVideoHeadInfo.rpt_msg_uin_heads.get().get(0)).msg_verify_video_info.get();
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.get() != null) && (!TextUtils.isEmpty(((GetPhotoList.HeadInfo)paramArrayOfByte.get()).str_video_id.get())))
+          if (QLog.isColorLevel())
           {
-            this.videoInfo = new PicInfo();
-            this.videoInfo.f = ((GetPhotoList.HeadInfo)paramArrayOfByte.get()).str_video_id.get();
-            this.videoInfo.d = paramArrayOfByte.str_video_url.get();
-            this.videoInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_headurl.get();
-            paramArrayOfByte = this.videoInfo.a();
-            if (paramArrayOfByte != null) {
-              this.videoDetails = paramArrayOfByte.toString();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos, videoUrl:" + this.videoInfo.d + ", bigPicUrl:" + this.videoInfo.jdField_a_of_type_JavaLangString);
-            }
-            paramTVideoHeadInfo = ((GetPhotoList.UinHeadInfo)paramTVideoHeadInfo.rpt_msg_uin_heads.get().get(0)).rpt_msg_headinfo.get();
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder().append("head size = ");
-              if (paramTVideoHeadInfo != null) {
-                continue;
-              }
-              paramArrayOfByte = "null";
-              QLog.d("Q.nearby_people_card.", 2, paramArrayOfByte);
-            }
-            if ((paramTVideoHeadInfo == null) || (paramTVideoHeadInfo.isEmpty())) {
-              continue;
-            }
-            this.picList = new ArrayList();
-            localObject = new JSONArray();
-            int k = Math.min(18, paramTVideoHeadInfo.size());
-            i = 0;
-            if (i >= k) {
-              continue;
-            }
-            GetPhotoList.HeadInfo localHeadInfo = (GetPhotoList.HeadInfo)paramTVideoHeadInfo.get(i);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("edit head size = ");
+            ((StringBuilder)localObject1).append(paramArrayOfByte.size());
+            ((StringBuilder)localObject1).append(",extraPicInfo:");
+            ((StringBuilder)localObject1).append(paramPicInfo);
+            QLog.d("Q.nearby_people_card.", 2, ((StringBuilder)localObject1).toString());
+          }
+          this.picList = new ArrayList();
+          localObject1 = new JSONArray();
+          int i = 0;
+          Iterator localIterator = paramArrayOfByte.iterator();
+          if (localIterator.hasNext())
+          {
+            Object localObject2 = (UpdatePhotoList.HeadInfo)localIterator.next();
             PicInfo localPicInfo = new PicInfo();
-            localPicInfo.jdField_a_of_type_Int = localHeadInfo.uint32_headid.get();
-            localPicInfo.jdField_a_of_type_JavaLangString = localHeadInfo.str_headurl.get();
-            localPicInfo.b = (localPicInfo.jdField_a_of_type_JavaLangString + "250");
-            if ((i == 0) || (paramBoolean))
+            if (!((UpdatePhotoList.HeadInfo)localObject2).uint32_headid.has()) {
+              break label678;
+            }
+            j = ((UpdatePhotoList.HeadInfo)localObject2).uint32_headid.get();
+            localPicInfo.a = j;
+            if (!((UpdatePhotoList.HeadInfo)localObject2).str_headurl.has()) {
+              break label684;
+            }
+            paramArrayOfByte = ((UpdatePhotoList.HeadInfo)localObject2).str_headurl.get();
+            localPicInfo.b = paramArrayOfByte;
+            if (TextUtils.isEmpty(localPicInfo.b))
             {
-              if (!localHeadInfo.str_video_url.has()) {
-                continue;
-              }
-              paramArrayOfByte = localHeadInfo.str_video_url.get();
-              localPicInfo.d = paramArrayOfByte;
-              if (!localHeadInfo.str_video_id.has()) {
-                continue;
-              }
-              paramArrayOfByte = localHeadInfo.str_video_id.get();
-              localPicInfo.f = paramArrayOfByte;
-              if (!localHeadInfo.uint32_video_size.has()) {
-                continue;
-              }
-              j = localHeadInfo.uint32_video_size.get();
-              if (!TextUtils.isEmpty(localPicInfo.d)) {
-                localPicInfo.e = antx.b(localPicInfo.d);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos, videoUrlSize:" + j);
+              paramArrayOfByte = "";
+            }
+            else
+            {
+              paramArrayOfByte = new StringBuilder();
+              paramArrayOfByte.append(localPicInfo.b);
+              paramArrayOfByte.append("250");
+              paramArrayOfByte = paramArrayOfByte.toString();
+            }
+            localPicInfo.c = paramArrayOfByte;
+            j = i;
+            if (((UpdatePhotoList.HeadInfo)localObject2).str_video_url.has())
+            {
+              j = i;
+              if (((UpdatePhotoList.HeadInfo)localObject2).str_video_id.has())
+              {
+                localPicInfo.e = ((UpdatePhotoList.HeadInfo)localObject2).str_video_url.get();
+                localPicInfo.f = DynamicAvatarDownloadManager.c(localPicInfo.e);
+                localPicInfo.g = ((UpdatePhotoList.HeadInfo)localObject2).str_video_id.get();
+                if ((paramPicInfo == null) || (paramPicInfo.a != localPicInfo.a) || (TextUtils.isEmpty(localPicInfo.e))) {
+                  break label690;
+                }
+                boolean bool = localPicInfo.f.equals(paramPicInfo.f);
+                if (bool) {
+                  break label690;
+                }
+                try
+                {
+                  FileUtils.copyFile(paramPicInfo.f, localPicInfo.f);
+                }
+                catch (Exception paramArrayOfByte)
+                {
+                  if (!QLog.isColorLevel()) {
+                    break label690;
+                  }
+                }
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("copy videoHead exception:");
+                ((StringBuilder)localObject2).append(paramArrayOfByte.getMessage());
+                QLog.d("Q.nearby_people_card.", 2, ((StringBuilder)localObject2).toString());
+                break label690;
               }
             }
             this.picList.add(localPicInfo);
             paramArrayOfByte = localPicInfo.a();
             if (paramArrayOfByte != null) {
-              ((JSONArray)localObject).put(paramArrayOfByte);
+              ((JSONArray)localObject1).put(paramArrayOfByte);
             }
+            i = j;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("picInfo = ");
+            paramArrayOfByte.append(localPicInfo);
+            QLog.d("Q.nearby_people_card.", 2, paramArrayOfByte.toString());
+            i = j;
+            continue;
+          }
+          if ((!this.videoHeadFlag) && (i != 0))
+          {
+            this.videoHeadFlag = true;
             if (QLog.isColorLevel()) {
-              QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos, picInfo:" + localPicInfo);
+              QLog.d("Q.nearby_people_card.", 2, "rsp_5ea,set videoHeadFlag true");
             }
-            i += 1;
-            continue;
           }
+          if (((JSONArray)localObject1).length() <= 0) {
+            paramArrayOfByte = "";
+          } else {
+            paramArrayOfByte = ((JSONArray)localObject1).toString();
+          }
+          this.picInfo = paramArrayOfByte;
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        else
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.nearby_people_card.", 2, ".onNearbyCardDownload(), parse head info fail.");
-          continue;
-          this.videoInfo = null;
-          this.videoDetails = "";
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos, videoInfo is null .");
-          continue;
-          paramArrayOfByte = Integer.valueOf(paramTVideoHeadInfo.size());
-          continue;
-          paramArrayOfByte = null;
-          continue;
-          paramArrayOfByte = null;
-          continue;
-          j = 0;
-          continue;
-        }
-        if (((JSONArray)localObject).length() > 0) {}
-      }
-      for (paramArrayOfByte = "";; paramArrayOfByte = ((JSONArray)localObject).toString())
-      {
-        this.picInfo = paramArrayOfByte;
-        return this.picList;
-      }
-      label1125:
-      paramTVideoHeadInfo = null;
-      i = j;
-    }
-  }
-  
-  public List<PicInfo> updateEditPicInfos(byte[] paramArrayOfByte, PicInfo paramPicInfo)
-  {
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
-      return null;
-      Object localObject = new UpdatePhotoList.RspBody();
-      try
-      {
-        ((UpdatePhotoList.RspBody)localObject).mergeFrom(paramArrayOfByte);
-        if (((UpdatePhotoList.RspBody)localObject).rpt_msg_headinfo.has())
-        {
-          paramArrayOfByte = ((UpdatePhotoList.RspBody)localObject).rpt_msg_headinfo.get();
-          if ((paramArrayOfByte == null) || (paramArrayOfByte.isEmpty())) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.nearby_people_card.", 2, "edit head size = " + paramArrayOfByte.size() + ",extraPicInfo:" + paramPicInfo);
-          }
-          this.picList = new ArrayList();
-          localObject = new JSONArray();
-          i = 0;
-          Iterator localIterator = paramArrayOfByte.iterator();
-          if (localIterator.hasNext())
-          {
-            UpdatePhotoList.HeadInfo localHeadInfo = (UpdatePhotoList.HeadInfo)localIterator.next();
-            PicInfo localPicInfo = new PicInfo();
-            if (!localHeadInfo.uint32_headid.has()) {
-              break label619;
-            }
-            j = localHeadInfo.uint32_headid.get();
-            localPicInfo.jdField_a_of_type_Int = j;
-            if (!localHeadInfo.str_headurl.has()) {
-              break label625;
-            }
-            paramArrayOfByte = localHeadInfo.str_headurl.get();
-            localPicInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte;
-            if (TextUtils.isEmpty(localPicInfo.jdField_a_of_type_JavaLangString)) {}
-            for (paramArrayOfByte = "";; paramArrayOfByte = localPicInfo.jdField_a_of_type_JavaLangString + "250")
-            {
-              localPicInfo.b = paramArrayOfByte;
-              if ((!localHeadInfo.str_video_url.has()) || (!localHeadInfo.str_video_id.has())) {
-                break;
-              }
-              localPicInfo.d = localHeadInfo.str_video_url.get();
-              localPicInfo.e = antx.b(localPicInfo.d);
-              localPicInfo.f = localHeadInfo.str_video_id.get();
-              if ((paramPicInfo == null) || (paramPicInfo.jdField_a_of_type_Int != localPicInfo.jdField_a_of_type_Int) || (TextUtils.isEmpty(localPicInfo.d))) {
-                break label631;
-              }
-              boolean bool = localPicInfo.e.equals(paramPicInfo.e);
-              if (bool) {
-                break label631;
-              }
-              try
-              {
-                bdhb.d(paramPicInfo.e, localPicInfo.e);
-                i = 1;
-                this.picList.add(localPicInfo);
-                paramArrayOfByte = localPicInfo.a();
-                if (paramArrayOfByte != null) {
-                  ((JSONArray)localObject).put(paramArrayOfByte);
-                }
-                if (!QLog.isColorLevel()) {
-                  break label611;
-                }
-                QLog.d("Q.nearby_people_card.", 2, "picInfo = " + localPicInfo);
-              }
-              catch (Exception paramArrayOfByte)
-              {
-                if (!QLog.isColorLevel()) {
-                  break label631;
-                }
-              }
-            }
-            QLog.d("Q.nearby_people_card.", 2, "copy videoHead exception:" + paramArrayOfByte.getMessage());
-            break label631;
-          }
-          else
-          {
-            if ((!this.videoHeadFlag) && (i != 0))
-            {
-              this.videoHeadFlag = true;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.nearby_people_card.", 2, "rsp_5ea,set videoHeadFlag true");
-              }
-            }
-            if (((JSONArray)localObject).length() <= 0) {}
-            for (paramArrayOfByte = "";; paramArrayOfByte = ((JSONArray)localObject).toString())
-            {
-              this.picInfo = paramArrayOfByte;
-              return this.picList;
-            }
-          }
+          return null;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        for (;;)
+        if ((NearbyCardConstants.a) && (QLog.isColorLevel()))
         {
-          if ((auxg.a) && (QLog.isColorLevel())) {
-            QLog.d("Q.nearby_people_card.", 2, "rsp_5ea" + paramArrayOfByte.toString());
-          }
-          this.picInfo = "";
-          continue;
-          continue;
-          label611:
-          continue;
-          paramArrayOfByte = null;
-          continue;
-          label619:
-          int j = -1;
-          continue;
-          label625:
-          paramArrayOfByte = "";
-          continue;
-          label631:
-          int i = 1;
+          paramPicInfo = new StringBuilder();
+          paramPicInfo.append("rsp_5ea");
+          paramPicInfo.append(paramArrayOfByte.toString());
+          QLog.d("Q.nearby_people_card.", 2, paramPicInfo.toString());
         }
+        this.picInfo = "";
       }
+      return this.picList;
+      label673:
+      paramArrayOfByte = null;
+      continue;
+      label678:
+      int j = -1;
+      continue;
+      label684:
+      paramArrayOfByte = "";
+      continue;
+      label690:
+      j = 1;
     }
   }
   
   public void updateHotChatInfo(HotChatInfo paramHotChatInfo)
   {
-    if (paramHotChatInfo == null) {
-      this.hotInfo = null;
-    }
-    for (;;)
+    if (paramHotChatInfo == null)
     {
+      this.hotInfo = null;
       return;
-      this.hotInfo = paramHotChatInfo;
-      paramHotChatInfo = new JSONObject();
-      try
-      {
-        paramHotChatInfo.put("name", this.hotInfo.name);
-        paramHotChatInfo.put("subType", this.hotInfo.subType);
-        paramHotChatInfo.put("joinUrl", this.hotInfo.joinUrl);
-        paramHotChatInfo.put("troopUin", this.hotInfo.troopUin);
-        paramHotChatInfo.put("troopCode", this.hotInfo.troopCode);
-        this.strHotChatInfo = paramHotChatInfo.toString();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("Q.nearby_people_card.", 2, "convertHotChatInfo2Json : " + paramHotChatInfo.toString());
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.nearby_people_card.", 2, "convertHotChatInfo2Json error.");
-          }
-        }
-      }
+    }
+    this.hotInfo = paramHotChatInfo;
+    paramHotChatInfo = new JSONObject();
+    try
+    {
+      paramHotChatInfo.put("name", this.hotInfo.name);
+      paramHotChatInfo.put("subType", this.hotInfo.subType);
+      paramHotChatInfo.put("joinUrl", this.hotInfo.joinUrl);
+      paramHotChatInfo.put("troopUin", this.hotInfo.troopUin);
+      paramHotChatInfo.put("troopCode", this.hotInfo.troopCode);
+      this.strHotChatInfo = paramHotChatInfo.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      label109:
+      StringBuilder localStringBuilder;
+      break label109;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "convertHotChatInfo2Json error.");
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("convertHotChatInfo2Json : ");
+      localStringBuilder.append(paramHotChatInfo.toString());
+      QLog.i("Q.nearby_people_card.", 2, localStringBuilder.toString());
     }
   }
   
@@ -1135,103 +1216,104 @@ public class NearbyPeopleCard
       if (paramString.has("troopUin")) {
         this.hotInfo.troopUin = paramString.getString("troopUin");
       }
-      if (paramString.has("troopCode")) {
-        this.hotInfo.troopCode = paramString.getString("troopCode");
+      if (!paramString.has("troopCode")) {
+        break label170;
       }
+      this.hotInfo.troopCode = paramString.getString("troopCode");
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.nearby_people_card.", 2, "convert2HotChatInfoFromJson error.");
-        }
-      }
+      label155:
+      label170:
+      break label155;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.", 2, "convert2HotChatInfoFromJson: " + this.hotInfo);
+      QLog.d("Q.nearby_people_card.", 2, "convert2HotChatInfoFromJson error.");
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("convert2HotChatInfoFromJson: ");
+      paramString.append(this.hotInfo);
+      QLog.d("Q.nearby_people_card.", 2, paramString.toString());
     }
   }
   
   public void updateInterestTags(long paramLong, List<appoint_define.InterestTag> paramList)
   {
     this.tagFlag = paramLong;
-    if ((paramList == null) || (paramList.size() == 0))
+    Object localObject1;
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      if (this.interestTags != null) {
-        this.interestTags.clear();
+      localObject1 = this.interestTags;
+      if (localObject1 == null) {
+        this.interestTags = new ArrayList(paramList.size());
+      } else {
+        ((List)localObject1).clear();
       }
-      if ((this.interestTags != null) && (this.interestTags.size() != 0)) {
-        break label254;
-      }
-      this.tagInfo = "";
+      paramList = paramList.iterator();
     }
-    for (;;)
+    while (paramList.hasNext())
     {
-      if (QLog.isDevelopLevel())
+      localObject1 = (appoint_define.InterestTag)paramList.next();
+      localObject1 = (InterestTag)((IInterestTagUtils)QRoute.api(IInterestTagUtils.class)).convertFrom(localObject1);
+      if (localObject1 != null)
       {
-        paramList = new StringBuilder();
-        paramList.append("updateInterestTags,");
-        if ((this.interestTags != null) && (this.interestTags.size() > 0))
-        {
-          paramList.append(this.interestTags.size()).append(", {");
-          Object localObject1 = this.interestTags.iterator();
-          for (;;)
-          {
-            for (;;)
-            {
-              if (!((Iterator)localObject1).hasNext()) {
-                break label357;
-              }
-              paramList.append(((avau)((Iterator)localObject1).next()).toString()).append(",");
-              continue;
-              if (this.interestTags == null) {
-                this.interestTags = new ArrayList(paramList.size());
-              }
-              for (;;)
-              {
-                paramList = paramList.iterator();
-                while (paramList.hasNext())
-                {
-                  localObject1 = avau.a((appoint_define.InterestTag)paramList.next());
-                  if (localObject1 != null) {
-                    this.interestTags.add(localObject1);
-                  }
-                }
-                break;
-                this.interestTags.clear();
-              }
-              try
-              {
-                label254:
-                paramList = new JSONArray();
-                localObject1 = this.interestTags.iterator();
-                while (((Iterator)localObject1).hasNext())
-                {
-                  Object localObject2 = (avau)((Iterator)localObject1).next();
-                  if ((localObject2 != null) && (((avau)localObject2).jdField_a_of_type_JavaUtilArrayList.size() != 0))
-                  {
-                    localObject2 = ((avau)localObject2).a();
-                    if (localObject2 != null) {
-                      paramList.put(localObject2);
-                    }
-                  }
-                }
-              }
-              catch (OutOfMemoryError paramList)
-              {
-                System.gc();
-                this.tagInfo = "";
-              }
-            }
-            this.tagInfo = paramList.toString();
-            break;
-          }
-          label357:
-          paramList.append("}");
+        this.interestTags.add(localObject1);
+        continue;
+        paramList = this.interestTags;
+        if (paramList != null) {
+          paramList.clear();
         }
-        QLog.i("InterestTag", 4, paramList.toString());
       }
+    }
+    paramList = this.interestTags;
+    if ((paramList != null) && (paramList.size() != 0)) {}
+    try
+    {
+      paramList = new JSONArray();
+      localObject1 = this.interestTags.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (InterestTag)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (((InterestTag)localObject2).b.size() != 0))
+        {
+          localObject2 = ((InterestTag)localObject2).a();
+          if (localObject2 != null) {
+            paramList.put(localObject2);
+          }
+        }
+      }
+      this.tagInfo = paramList.toString();
+    }
+    catch (OutOfMemoryError paramList)
+    {
+      label256:
+      label274:
+      break label256;
+    }
+    System.gc();
+    this.tagInfo = "";
+    break label274;
+    this.tagInfo = "";
+    if (QLog.isDevelopLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("updateInterestTags,");
+      localObject1 = this.interestTags;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        paramList.append(this.interestTags.size());
+        paramList.append(", {");
+        localObject1 = this.interestTags.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          paramList.append(((InterestTag)((Iterator)localObject1).next()).toString());
+          paramList.append(",");
+        }
+        paramList.append("}");
+      }
+      QLog.i("InterestTag", 4, paramList.toString());
     }
   }
   
@@ -1242,27 +1324,36 @@ public class NearbyPeopleCard
   
   public void updateLastGameInfo(RespLastGameInfo paramRespLastGameInfo)
   {
-    if ((paramRespLastGameInfo == null) || (paramRespLastGameInfo.iResult != 0))
+    if ((paramRespLastGameInfo != null) && (paramRespLastGameInfo.iResult == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SummaryCard", 2, "handleGetSummaryCard|updateLastGameInfo|info = null or info.iResult != 0");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("SummaryCard", 2, "updateLastGameInfo|info.bShowGameLogo = " + paramRespLastGameInfo.bShowGameLogo + "|info.bNative = " + paramRespLastGameInfo.bNative + "|info.sLogoUrl = " + paramRespLastGameInfo.sLogoUrl);
-    }
-    if (paramRespLastGameInfo.bShowGameLogo)
-    {
-      this.nLastGameFlag |= 0x1;
-      if (paramRespLastGameInfo.bNative) {}
-      for (this.nLastGameFlag |= 0x2;; this.nLastGameFlag &= 0xFFFFFFFD)
+      if (QLog.isColorLevel())
       {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateLastGameInfo|info.bShowGameLogo = ");
+        localStringBuilder.append(paramRespLastGameInfo.bShowGameLogo);
+        localStringBuilder.append("|info.bNative = ");
+        localStringBuilder.append(paramRespLastGameInfo.bNative);
+        localStringBuilder.append("|info.sLogoUrl = ");
+        localStringBuilder.append(paramRespLastGameInfo.sLogoUrl);
+        QLog.i("SummaryCard", 2, localStringBuilder.toString());
+      }
+      if (paramRespLastGameInfo.bShowGameLogo)
+      {
+        this.nLastGameFlag |= 0x1;
+        if (paramRespLastGameInfo.bNative) {
+          this.nLastGameFlag |= 0x2;
+        } else {
+          this.nLastGameFlag &= 0xFFFFFFFD;
+        }
         this.strProfileUrl = paramRespLastGameInfo.sProfileUrl;
         return;
       }
+      this.nLastGameFlag &= 0xFFFFFFFE;
+      return;
     }
-    this.nLastGameFlag &= 0xFFFFFFFE;
+    if (QLog.isColorLevel()) {
+      QLog.i("SummaryCard", 2, "handleGetSummaryCard|updateLastGameInfo|info = null or info.iResult != 0");
+    }
   }
 }
 

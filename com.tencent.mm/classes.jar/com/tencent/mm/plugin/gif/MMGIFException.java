@@ -26,9 +26,9 @@ public class MMGIFException
   public MMGIFException(int paramInt)
   {
     super("MicroMsg.GIF.MMGIFException".concat(String.valueOf(paramInt)));
-    AppMethodBeat.i(62407);
+    AppMethodBeat.i(104641);
     this.errorCode = paramInt;
-    AppMethodBeat.o(62407);
+    AppMethodBeat.o(104641);
   }
   
   public int getErrorCode()

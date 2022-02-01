@@ -7,99 +7,181 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dh;
-import com.tencent.mm.g.b.a.di;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.b;
+import com.tencent.mm.am.z;
+import com.tencent.mm.autogen.mmdata.rpt.jh;
+import com.tencent.mm.autogen.mmdata.rpt.tv;
+import com.tencent.mm.autogen.mmdata.rpt.uq;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.u;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.websearch.a.h;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.api.WidgetData.MoreFooter;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.f;
-import com.tencent.mm.plugin.websearch.api.i;
+import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.plugin.websearch.api.af;
+import com.tencent.mm.plugin.websearch.api.ag;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.d;
+import com.tencent.mm.plugin.websearch.api.e;
+import com.tencent.mm.plugin.websearch.api.j;
+import com.tencent.mm.plugin.websearch.api.m;
 import com.tencent.mm.plugin.websearch.api.n;
+import com.tencent.mm.plugin.websearch.widget.b.a.1;
+import com.tencent.mm.plugin.websearch.widget.b.a.2;
 import com.tencent.mm.plugin.websearch.widget.view.footer.BtnSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.DirectionSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.DownArrowSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.MoreFooter;
-import com.tencent.mm.plugin.websearch.widget.view.footer.a.a;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.eqy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import com.tencent.mm.storage.c;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
 public final class b
-  implements com.tencent.mm.plugin.websearch.api.q
+  implements m
 {
-  ViewGroup eyt;
-  boolean gDG;
-  MMActivity hwZ;
+  TextView DGu;
+  View ESX;
+  boolean ICx;
+  LinearLayout WtA;
+  d WtB;
+  String WtC;
+  String WtD;
+  View WtE;
+  private com.tencent.mm.plugin.websearch.widget.view.footer.a WtF;
+  LinearLayout WtG;
+  MoreFooter WtH;
+  float[] WtI;
+  int WtJ;
+  a WtK;
+  e WtL;
+  WidgetData WtM;
+  private WidgetData WtN;
+  ThreeDotsLoadingView WtO;
+  View WtP;
+  View WtQ;
+  private com.tencent.mm.plugin.websearch.widget.view.footer.a.a WtR;
+  View.OnClickListener WtS;
+  View Wtz;
+  MMActivity activity;
   volatile boolean isLoading;
-  boolean isRetry;
-  i mXR;
-  com.tencent.mm.plugin.websearch.api.g mYf;
-  private boolean nmm;
-  TextView qhL;
-  b.b uMP;
-  View uMT;
-  LinearLayout uMU;
-  f uMV;
-  String uMW;
-  String uMX;
-  View uMY;
-  View uMZ;
-  private com.tencent.mm.plugin.websearch.widget.view.footer.a uNa;
-  LinearLayout uNb;
-  MoreFooter uNc;
-  float[] uNd;
-  int uNe;
-  b.a uNf;
-  WidgetData uNg;
-  WidgetData uNh;
-  ThreeDotsLoadingView uNi;
-  View uNj;
-  View uNk;
-  private a.a uNl;
-  View.OnClickListener uNm;
+  boolean isSelected;
+  ViewGroup parent;
+  boolean vBn;
   View view;
   
   public b()
   {
-    AppMethodBeat.i(91536);
-    this.uNd = new float[2];
-    this.uNl = new b.1(this);
-    this.uNm = new b.2(this);
-    AppMethodBeat.o(91536);
+    AppMethodBeat.i(116713);
+    this.WtI = new float[2];
+    this.WtR = new com.tencent.mm.plugin.websearch.widget.view.footer.a.a()
+    {
+      public final int getItemCount()
+      {
+        AppMethodBeat.i(116694);
+        int i = b.this.WtK.irm();
+        AppMethodBeat.o(116694);
+        return i;
+      }
+      
+      public final boolean hasNext()
+      {
+        AppMethodBeat.i(116692);
+        boolean bool = b.this.WtK.hasNext();
+        AppMethodBeat.o(116692);
+        return bool;
+      }
+      
+      public final boolean hasPrevious()
+      {
+        AppMethodBeat.i(116693);
+        boolean bool = b.this.WtK.iro();
+        AppMethodBeat.o(116693);
+        return bool;
+      }
+      
+      public final void irl()
+      {
+        AppMethodBeat.i(116689);
+        List localList = b.this.WtK.irn();
+        if ((localList == null) || (localList.isEmpty()) || (localList.size() == 1))
+        {
+          AppMethodBeat.o(116689);
+          return;
+        }
+        Object localObject = b.this.WtM;
+        String str = ((WidgetData)localObject).Wqn.oqe;
+        tv localtv = new tv();
+        localtv.ilF = localtv.F("appId", str, true);
+        localtv.iFe = 1L;
+        localtv.jFe = (System.currentTimeMillis() / 1000L);
+        localtv.jFf = ((WidgetData)localObject).Wqn.serviceType;
+        localtv.jFg = localtv.F("statBuffer", ((WidgetData)localObject).Wqn.Wqt, true);
+        localtv.jFh = localtv.F("switchId", String.format("%s-%s-%s", new Object[] { ((WidgetData)localObject).Wqn.mpa, Integer.valueOf(((WidgetData)localObject).Wqn.serviceType), Long.valueOf(System.currentTimeMillis() / 1000L) }), true);
+        localObject = localtv.aIE();
+        ((j)h.ax(j.class)).dB(14688, (String)localObject);
+        b.this.WtJ = ((com.tencent.mm.plugin.websearch.api.f)h.ax(com.tencent.mm.plugin.websearch.api.f.class)).a(b.this.activity, MMApplicationContext.getContext().getString(a.h.service_widget_choose_widget_actionsheet_title), "", localList, new af()
+        {
+          public final void na(int paramAnonymous2Int1, int paramAnonymous2Int2)
+          {
+            if (paramAnonymous2Int2 != b.this.WtJ) {}
+          }
+        });
+        AppMethodBeat.o(116689);
+      }
+    };
+    this.WtS = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(116695);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (b.this.WtM.Wqm != null)
+        {
+          b.this.aH(b.this.WtM.Wqm.Wqw, b.this.WtM.Wqm.Wqv, b.this.WtM.Wqn.tgv);
+          b.this.sK(true);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(116695);
+      }
+    };
+    AppMethodBeat.o(116713);
   }
   
-  private static void ap(Map<String, String> paramMap)
+  static void bu(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(91555);
-    buo localbuo = new buo();
-    localbuo.xHP = aq(paramMap);
-    com.tencent.mm.ai.w.a(new com.tencent.mm.plugin.websearch.api.w(localbuo).fBd, null);
-    AppMethodBeat.o(91555);
+    AppMethodBeat.i(116726);
+    eqy localeqy = new eqy();
+    localeqy.abuE = bv(paramMap);
+    z.a(new ae(localeqy).oDw, null);
+    AppMethodBeat.o(116726);
   }
   
-  private static String aq(Map<String, String> paramMap)
+  private static String bv(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(91556);
+    AppMethodBeat.i(116727);
     StringBuilder localStringBuilder = new StringBuilder();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -108,205 +190,151 @@ public final class b
       localStringBuilder.append((String)localEntry.getKey()).append("=").append(URLEncoder.encode((String)localEntry.getValue())).append("&");
     }
     paramMap = localStringBuilder.toString();
-    AppMethodBeat.o(91556);
+    AppMethodBeat.o(116727);
     return paramMap;
   }
   
-  private void cnq()
+  private void e(WidgetData paramWidgetData)
   {
-    AppMethodBeat.i(91549);
-    switch (this.uNg.uKC)
+    AppMethodBeat.i(116717);
+    if (paramWidgetData != null)
+    {
+      this.isLoading = true;
+      this.WtP.setVisibility(8);
+      this.WtO.jFf();
+      this.WtA.removeView(this.WtO);
+      this.WtN = paramWidgetData;
+      this.Wtz.setVisibility(8);
+      this.WtA.setVisibility(0);
+      this.WtB.bis(this.WtC);
+      this.WtM = paramWidgetData;
+      this.WtC = ("widgetid_" + System.currentTimeMillis());
+      this.WtB.a(paramWidgetData, this.WtC, ((j)h.ax(j.class)).ipB(), 47);
+      updateView();
+      Log.v("WidgetView", "%s, last %s, cur %s", new Object[] { toString(), this.WtN.toString(), this.WtM.toString() });
+    }
+    AppMethodBeat.o(116717);
+  }
+  
+  private void gZl()
+  {
+    AppMethodBeat.i(116719);
+    switch (this.WtM.Wqp)
     {
     default: 
-      ab.w("WidgetView", "unknown footer type %d", new Object[] { Integer.valueOf(this.uNg.uKC) });
-      AppMethodBeat.o(91549);
+      Log.w("WidgetView", "unknown footer type %d", new Object[] { Integer.valueOf(this.WtM.Wqp) });
+      AppMethodBeat.o(116719);
       return;
     case 2: 
-      this.uNb.setVisibility(8);
-      this.uNc.setVisibility(0);
-      dan();
-      AppMethodBeat.o(91549);
+      this.WtG.setVisibility(8);
+      this.WtH.setVisibility(0);
+      irh();
+      AppMethodBeat.o(116719);
       return;
     }
-    this.uNc.setVisibility(8);
-    this.uNb.setVisibility(0);
-    dao();
-    AppMethodBeat.o(91549);
+    this.WtH.setVisibility(8);
+    this.WtG.setVisibility(0);
+    iri();
+    AppMethodBeat.o(116719);
   }
   
-  private void dak()
+  private void irh()
   {
-    AppMethodBeat.i(91539);
-    boolean bool;
-    Object localObject;
-    if (this.view != null)
+    AppMethodBeat.i(116720);
+    if (this.WtM.Wqm != null)
     {
-      bool = this.nmm;
-      if (this.view.getVisibility() != 0)
-      {
-        this.nmm = false;
-        AppMethodBeat.o(91539);
-        return;
-      }
-      localObject = new int[2];
-      this.view.getLocationOnScreen((int[])localObject);
-      if ((this.mYf == null) || (!this.mYf.w((int[])localObject))) {
-        break label517;
-      }
-    }
-    label517:
-    for (this.nmm = true;; this.nmm = false)
-    {
-      if ((bool != this.nmm) && (this.nmm))
-      {
-        ab.i("WidgetView", "exposure");
-        localObject = String.format("262144:%s:%d:%s;", new Object[] { this.uNg.uKA.uKI, Long.valueOf(System.currentTimeMillis() / 1000L), this.uNg.uKA.uKJ });
-        String str1 = this.uNg.uKA.fmF + ";";
-        String str2 = "262144:" + this.uNg.uKA.fmF + ";";
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("isexpose", "1");
-        localHashMap.put("content", localObject);
-        localHashMap.put("searchid", this.uNg.uKA.hng);
-        localHashMap.put("scene", "47");
-        localHashMap.put("query", this.uNg.query);
-        localHashMap.put("sessionid", this.uNg.uKD);
-        localHashMap.put("resulttype", str2);
-        localHashMap.put("resultsubtypelist", str1);
-        localHashMap.put("ishomepage", "1");
-        localHashMap.put("height", this.uMU.getHeight() + ";");
-        localHashMap.put("requestid", System.currentTimeMillis());
-        ap(localHashMap);
-        if (this.mYf != null) {
-          this.mYf.bCU();
-        }
-        localObject = new di().iH((String)localObject).iK(this.uNg.query).iM(str1).iL(str2).iI(this.uNg.uKA.hng).iJ(this.uNg.uKD);
-        ((di)localObject).cTE = 47L;
-        ((di)localObject).ake();
-      }
-      AppMethodBeat.o(91539);
+      this.WtH.setTitle(this.WtM.Wqm.title);
+      AppMethodBeat.o(116720);
       return;
     }
+    this.WtH.setVisibility(8);
+    Log.e("WidgetView", "more footer has empty title");
+    AppMethodBeat.o(116720);
   }
   
-  private void dan()
+  private void iri()
   {
-    AppMethodBeat.i(91550);
-    if (this.uNg.uKz != null)
-    {
-      this.uNc.setTitle(this.uNg.uKz.title);
-      AppMethodBeat.o(91550);
-      return;
-    }
-    this.uNc.setVisibility(8);
-    ab.e("WidgetView", "more footer has empty title");
-    AppMethodBeat.o(91550);
-  }
-  
-  private void dao()
-  {
-    AppMethodBeat.i(91551);
-    Object localObject = a.b.eEW;
-    localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.me("100443");
+    AppMethodBeat.i(116721);
+    Object localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.a.mzH;
+    localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.Fd("100443");
     if (localObject == null)
     {
-      ab.i("WidgetView", "openSearchPreload item is null");
-      AppMethodBeat.o(91551);
+      Log.i("WidgetView", "openSearchPreload item is null");
+      AppMethodBeat.o(116721);
       return;
     }
     int i = 3;
     if (((c)localObject).isValid()) {
-      i = bo.apV((String)((c)localObject).dvN().get("switchType"));
+      i = Util.safeParseInt((String)((c)localObject).iWZ().get("switchType"));
     }
     switch (i)
     {
     default: 
-      if (!(this.uNa instanceof DownArrowSwitchFooter))
+      if (!(this.WtF instanceof DownArrowSwitchFooter))
       {
-        this.uNb.removeView((View)this.uNa);
-        this.uNa = new DownArrowSwitchFooter(this.uNb.getContext());
-        this.uNb.addView((View)this.uNa);
+        this.WtG.removeView((View)this.WtF);
+        this.WtF = new DownArrowSwitchFooter(this.WtG.getContext());
+        this.WtG.addView((View)this.WtF);
       }
       break;
     }
     for (;;)
     {
-      this.uNa.setCallback(this.uNl);
-      this.uNa.setTitle(daq());
-      this.uNa.setIcon(this.uNg.uKA.iconUrl);
-      AppMethodBeat.o(91551);
+      this.WtF.setCallback(this.WtR);
+      this.WtF.setTitle(irk());
+      this.WtF.setIcon(this.WtM.Wqn.iconUrl);
+      AppMethodBeat.o(116721);
       return;
-      if (!(this.uNa instanceof BtnSwitchFooter))
+      if (!(this.WtF instanceof BtnSwitchFooter))
       {
-        this.uNb.removeView((View)this.uNa);
-        this.uNa = new BtnSwitchFooter(this.uNb.getContext());
-        this.uNb.addView((View)this.uNa);
+        this.WtG.removeView((View)this.WtF);
+        this.WtF = new BtnSwitchFooter(this.WtG.getContext());
+        this.WtG.addView((View)this.WtF);
         continue;
-        if (!(this.uNa instanceof DirectionSwitchFooter))
+        if (!(this.WtF instanceof DirectionSwitchFooter))
         {
-          this.uNb.removeView((View)this.uNa);
-          this.uNa = new DirectionSwitchFooter(this.uNb.getContext());
-          this.uNb.addView((View)this.uNa);
+          this.WtG.removeView((View)this.WtF);
+          this.WtF = new DirectionSwitchFooter(this.WtG.getContext());
+          this.WtG.addView((View)this.WtF);
         }
       }
     }
   }
   
-  private String dap()
+  private String irj()
   {
-    AppMethodBeat.i(91552);
-    if (!TextUtils.isEmpty(this.uNg.uKA.uKL))
+    AppMethodBeat.i(116722);
+    if (!TextUtils.isEmpty(this.WtM.Wqn.Wqu))
     {
-      str = this.uNg.uKA.uKL;
-      AppMethodBeat.o(91552);
+      str = this.WtM.Wqn.Wqu;
+      AppMethodBeat.o(116722);
       return str;
     }
-    String str = ah.getContext().getString(2131306216);
-    AppMethodBeat.o(91552);
+    String str = MMApplicationContext.getContext().getString(a.h.service_widget_local_search_title);
+    AppMethodBeat.o(116722);
     return str;
   }
   
-  private String daq()
+  private String irk()
   {
-    AppMethodBeat.i(91553);
-    if (!TextUtils.isEmpty(this.uNg.uKA.kmN))
+    AppMethodBeat.i(116723);
+    if (!TextUtils.isEmpty(this.WtM.Wqn.footerWording))
     {
-      str = this.uNg.uKA.kmN;
-      AppMethodBeat.o(91553);
+      str = this.WtM.Wqn.footerWording;
+      AppMethodBeat.o(116723);
       return str;
     }
-    String str = ah.getContext().getString(2131306214, new Object[] { this.uNg.uKA.blZ });
-    AppMethodBeat.o(91553);
+    String str = MMApplicationContext.getContext().getString(a.h.service_widget_footer_title, new Object[] { this.WtM.Wqn.nickName });
+    AppMethodBeat.o(116723);
     return str;
   }
   
-  private void f(WidgetData paramWidgetData)
+  final void aH(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(91547);
-    if (paramWidgetData != null)
+    AppMethodBeat.i(116714);
+    if (this.WtM == null)
     {
-      this.isLoading = true;
-      this.uNj.setVisibility(8);
-      this.uNi.dOW();
-      this.uMU.removeView(this.uNi);
-      this.uNh = paramWidgetData;
-      this.uMT.setVisibility(8);
-      this.uMU.setVisibility(0);
-      this.uMV.ago(this.uMW);
-      this.uNg = paramWidgetData;
-      this.uMW = ("widgetid_" + System.currentTimeMillis());
-      this.uMV.a(paramWidgetData, this.uMW, ((n)com.tencent.mm.kernel.g.E(n.class)).cYY(), 47);
-      bJ();
-      ab.v("WidgetView", "%s, last %s, cur %s", new Object[] { toString(), this.uNh.toString(), this.uNg.toString() });
-    }
-    AppMethodBeat.o(91547);
-  }
-  
-  final void P(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(91537);
-    if (this.uNg == null)
-    {
-      AppMethodBeat.o(91537);
+      AppMethodBeat.o(116714);
       return;
     }
     Object localObject1 = paramString1;
@@ -329,35 +357,37 @@ public final class b
     u.i("WidgetView", "open app with path %s", new Object[] { localObject1 });
     Object localObject2 = new AppBrandStatObject();
     ((AppBrandStatObject)localObject2).scene = 1108;
-    paramString1 = String.format("1:%s:%d:%s:%s:%s:%s:%d:%s", new Object[] { "", Long.valueOf(System.currentTimeMillis()), this.uNg.uKA.uKJ, "isWidget=1", this.uMW, this.uNg.uKA.fqf, Integer.valueOf(this.uNg.uKA.fmF), Integer.valueOf(0) });
-    ((AppBrandStatObject)localObject2).cmF = (this.uNg.uKD + "::" + this.uNg.uKA.hng + ":" + this.uNg.uKA.uKI + ":1:" + paramString1);
+    paramString1 = String.format("1:%s:%d:%s:%s:%s:%s:%d:%s", new Object[] { "", Long.valueOf(System.currentTimeMillis()), this.WtM.Wqn.Wqt, "isWidget=1", this.WtC, this.WtM.Wqn.oqe, Integer.valueOf(this.WtM.Wqn.serviceType), Integer.valueOf(0) });
+    ((AppBrandStatObject)localObject2).hzx = (this.WtM.hVW + "::" + this.WtM.Wqn.mpa + ":" + this.WtM.Wqn.HsD + ":1:" + paramString1);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      paramString1 = this.uNg.uKA.cmG;
+      paramString1 = this.WtM.Wqn.hzy;
       if (!TextUtils.isEmpty(paramString2)) {
-        break label491;
+        break label502;
       }
-      paramString2 = this.uNg.uKA.userName;
+      paramString2 = this.WtM.Wqn.userName;
       label341:
-      localObject1 = (j)com.tencent.mm.kernel.g.E(j.class);
-      localObject3 = ah.getContext();
+      localObject1 = (t)h.ax(t.class);
+      localObject3 = MMApplicationContext.getContext();
       if (paramInt != -1) {
-        break label494;
+        break label505;
       }
-      paramInt = this.uNg.uKA.uKH;
+      paramInt = this.WtM.Wqn.tgv;
     }
-    label491:
-    label494:
+    label502:
+    label505:
     for (;;)
     {
-      ((j)localObject1).a((Context)localObject3, paramString2, null, paramInt, this.uNg.uKA.version, paramString1, (AppBrandStatObject)localObject2);
-      localObject1 = this.uNg;
-      localObject2 = new com.tencent.mm.g.b.a.q();
-      ((com.tencent.mm.g.b.a.q)localObject2).cSf = 1L;
-      paramString1 = ((com.tencent.mm.g.b.a.q)localObject2).fm(paramString1).fl(((WidgetData)localObject1).query).Fl().fj(((WidgetData)localObject1).uKA.hng);
-      paramString1.cSi = ((WidgetData)localObject1).uKA.fmF;
-      paramString1.fk(((WidgetData)localObject1).uKD).fn(paramString2).ake();
-      AppMethodBeat.o(91537);
+      ((t)localObject1).a((Context)localObject3, paramString2, null, paramInt, this.WtM.Wqn.version, paramString1, (AppBrandStatObject)localObject2);
+      localObject1 = this.WtM;
+      localObject2 = new jh();
+      ((jh)localObject2).iSv = 1L;
+      paramString1 = ((jh)localObject2).sf(paramString1).se(((WidgetData)localObject1).query).aIN().sc(((WidgetData)localObject1).Wqn.mpa);
+      paramString1.iSx = ((WidgetData)localObject1).Wqn.serviceType;
+      paramString1 = paramString1.sd(((WidgetData)localObject1).hVW);
+      paramString1.iSw = paramString1.F("WeappUsrname", paramString2, true);
+      paramString1.bMH();
+      AppMethodBeat.o(116714);
       return;
       paramString1 = (String)localObject1;
       break;
@@ -365,204 +395,99 @@ public final class b
     }
   }
   
-  final void bJ()
+  final void irg()
   {
-    AppMethodBeat.i(91548);
-    if (this.uNg == null)
+    AppMethodBeat.i(116716);
+    if ((this.parent == null) || (this.WtN == this.WtM))
     {
-      AppMethodBeat.o(91548);
+      Log.v("WidgetView", "%s same widgetData", new Object[] { toString() });
+      AppMethodBeat.o(116716);
       return;
     }
-    if (this.uNg.uKA.uKM)
-    {
-      this.uMZ.setVisibility(0);
-      this.uMY.setVisibility(0);
-      cnq();
-    }
-    for (;;)
-    {
-      this.qhL.setText(dap());
-      AppMethodBeat.o(91548);
-      return;
-      this.uMZ.setVisibility(8);
-      this.uMY.setVisibility(8);
-    }
+    this.Wtz.setVisibility(8);
+    this.WtA.setVisibility(0);
+    e(this.WtM);
+    AppMethodBeat.o(116716);
   }
   
-  public final void bdM()
+  public final void sK(boolean paramBoolean)
   {
-    AppMethodBeat.i(91545);
-    this.uMV.ago(this.uMW);
-    AppMethodBeat.o(91545);
-  }
-  
-  final void dal()
-  {
-    AppMethodBeat.i(91544);
-    this.uMT.setVisibility(8);
-    this.uMU.setVisibility(8);
-    this.uNj.setVisibility(0);
-    this.uNi.dOV();
-    if (this.uMV != null) {
-      this.uMV.ago(this.uMW);
-    }
-    AppMethodBeat.o(91544);
-  }
-  
-  final void dam()
-  {
-    AppMethodBeat.i(91546);
-    if ((this.eyt == null) || (this.uNh == this.uNg))
-    {
-      ab.v("WidgetView", "%s same widgetData", new Object[] { toString() });
-      AppMethodBeat.o(91546);
-      return;
-    }
-    this.uMT.setVisibility(8);
-    this.uMU.setVisibility(0);
-    f(this.uNg);
-    AppMethodBeat.o(91546);
-  }
-  
-  public final void e(WidgetData paramWidgetData)
-  {
-    AppMethodBeat.i(91543);
-    if (paramWidgetData == null)
-    {
-      AppMethodBeat.o(91543);
-      return;
-    }
-    this.uNg = paramWidgetData;
-    ab.v("WidgetView", "%s, cur data %s", new Object[] { toString(), this.uNg.toString() });
-    if (this.gDG)
-    {
-      dam();
-      AppMethodBeat.o(91543);
-      return;
-    }
-    if (this.uNg != this.uNh) {
-      dal();
-    }
-    AppMethodBeat.o(91543);
-  }
-  
-  public final void hide()
-  {
-    AppMethodBeat.i(91538);
-    if (!this.gDG)
-    {
-      AppMethodBeat.o(91538);
-      return;
-    }
-    onPause();
-    AppMethodBeat.o(91538);
-  }
-  
-  public final void iL(boolean paramBoolean)
-  {
-    AppMethodBeat.i(91557);
-    ab.i("WidgetView", "report click");
+    AppMethodBeat.i(116728);
+    Log.i("WidgetView", "report click");
     HashMap localHashMap = new HashMap();
-    localHashMap.put("content", String.format("262144:%s:%d:%s", new Object[] { this.uNg.uKA.uKI, Long.valueOf(System.currentTimeMillis() / 1000L), this.uNg.uKA.uKJ }));
-    localHashMap.put("searchid", this.uNg.uKA.hng);
+    localHashMap.put("content", String.format("262144:%s:%d:%s", new Object[] { this.WtM.Wqn.HsD, Long.valueOf(System.currentTimeMillis() / 1000L), this.WtM.Wqn.Wqt }));
+    localHashMap.put("searchid", this.WtM.Wqn.mpa);
     localHashMap.put("scene", "47");
-    localHashMap.put("query", this.uNg.query);
-    localHashMap.put("sessionid", this.uNg.uKD);
-    localHashMap.put("docid", this.uNg.uKA.uKI);
+    localHashMap.put("query", this.WtM.query);
+    localHashMap.put("sessionid", this.WtM.hVW);
+    localHashMap.put("docid", this.WtM.Wqn.HsD);
     localHashMap.put("timestamp", System.currentTimeMillis() / 1000L);
-    localHashMap.put("jumpurl", this.uNg.uKA.cmG);
-    String str1 = this.uNg.uKA.uKJ;
+    localHashMap.put("jumpurl", this.WtM.Wqn.hzy);
+    String str1 = this.WtM.Wqn.Wqt;
     String str2 = System.currentTimeMillis();
     if (paramBoolean) {}
     for (Object localObject = "1";; localObject = "0")
     {
       localHashMap.put("expand2", String.format("{\"statBuffer\":\"%s\";\"adBuffer\":\"\";\"clickId\":%s;\"isMore\":%s}", new Object[] { str1, str2, localObject }));
       localHashMap.put("businesstype", "262144");
-      localHashMap.put("h5version", aa.Jf(0));
+      localHashMap.put("h5version", aj.asY(0));
       localHashMap.put("resulttype", "262144");
-      localHashMap.put("resultsubtype", this.uNg.uKA.fmF);
-      ap(localHashMap);
-      if (this.mYf != null) {
-        this.mYf.onClick();
-      }
-      localObject = new dh();
-      ((dh)localObject).dfd = bo.apV((String)localHashMap.get("businesstype"));
-      localObject = ((dh)localObject).iD((String)localHashMap.get("docid")).iE((String)localHashMap.get("expand2")).iF((String)localHashMap.get("query"));
-      ((dh)localObject).dfh = bo.apV((String)localHashMap.get("resultsubtype"));
-      ((dh)localObject).dff = System.currentTimeMillis();
-      localObject = ((dh)localObject).iC(this.uNg.uKA.hng).iG(this.uNg.uKD);
-      ((dh)localObject).cTE = 47L;
-      ((dh)localObject).ake();
-      AppMethodBeat.o(91557);
+      localHashMap.put("resultsubtype", this.WtM.Wqn.serviceType);
+      bu(localHashMap);
+      localObject = new uq();
+      ((uq)localObject).iqZ = Util.safeParseInt((String)localHashMap.get("businesstype"));
+      ((uq)localObject).jHJ = ((uq)localObject).F("docid", (String)localHashMap.get("docid"), true);
+      ((uq)localObject).jHL = ((uq)localObject).F("expand2", (String)localHashMap.get("expand2"), true);
+      ((uq)localObject).iKB = ((uq)localObject).F("query", (String)localHashMap.get("query"), true);
+      ((uq)localObject).jHM = Util.safeParseInt((String)localHashMap.get("resultsubtype"));
+      ((uq)localObject).jHK = System.currentTimeMillis();
+      ((uq)localObject).jHI = ((uq)localObject).F("searchid", this.WtM.Wqn.mpa, true);
+      ((uq)localObject).inx = ((uq)localObject).F("sessionid", this.WtM.hVW, true);
+      ((uq)localObject).iuA = 47L;
+      ((uq)localObject).bMH();
+      AppMethodBeat.o(116728);
       return;
     }
   }
   
-  public final void onDestroy()
+  final void updateView()
   {
-    AppMethodBeat.i(91542);
-    if (this.uMV == null)
+    AppMethodBeat.i(116718);
+    if (this.WtM == null)
     {
-      AppMethodBeat.o(91542);
+      AppMethodBeat.o(116718);
       return;
     }
-    this.uMV.ago(this.uMW);
-    this.uMV.onDestroy();
-    this.uNg = null;
-    this.uMW = null;
-    this.hwZ = null;
-    AppMethodBeat.o(91542);
+    if (this.WtM.Wqn.FYI)
+    {
+      this.WtE.setVisibility(0);
+      this.ESX.setVisibility(0);
+      gZl();
+    }
+    for (;;)
+    {
+      this.DGu.setText(irj());
+      AppMethodBeat.o(116718);
+      return;
+      this.WtE.setVisibility(8);
+      this.ESX.setVisibility(8);
+    }
   }
   
-  public final void onPause()
+  public static abstract interface a
   {
-    AppMethodBeat.i(91541);
-    if (!this.gDG)
-    {
-      AppMethodBeat.o(91541);
-      return;
-    }
-    if (this.uMV != null) {
-      this.uMV.onPause();
-    }
-    this.nmm = false;
-    ab.v("WidgetView", "%s paused", new Object[] { toString() });
-    AppMethodBeat.o(91541);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(91540);
-    if (!this.gDG)
-    {
-      AppMethodBeat.o(91540);
-      return;
-    }
-    this.uMV.onResume();
-    dak();
-    ab.v("WidgetView", "%s resume", new Object[] { toString() });
-    AppMethodBeat.o(91540);
-  }
-  
-  public final void setSelected(boolean paramBoolean)
-  {
-    AppMethodBeat.i(91554);
-    ab.v("WidgetView", "%s selected %b", new Object[] { toString(), Boolean.valueOf(paramBoolean) });
-    this.gDG = paramBoolean;
-    if (this.gDG)
-    {
-      dam();
-      dak();
-      AppMethodBeat.o(91554);
-      return;
-    }
-    this.nmm = false;
-    AppMethodBeat.o(91554);
+    public abstract boolean hasNext();
+    
+    public abstract int irm();
+    
+    public abstract List<ag> irn();
+    
+    public abstract boolean iro();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.QMListItemView android:background="@drawable/e_y" android:layout_width="fill_parent" android:layout_height="@dimen/blg"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mk_" android:layout_marginRight="@dimen/brl" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wrz" style="@style/adt" />
+    <ImageView android:id="@id/dce" android:duplicateParentState="true" android:layout_width="@dimen/blg" android:layout_height="@dimen/blg" android:layout_marginRight="2.0dip" android:scaleType="center" android:layout_alignParentLeft="true" android:contentDescription="@string/xm_" />
+    <LinearLayout android:orientation="vertical" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/brl" android:layout_toRightOf="@id/dce" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/blm" android:textColor="@color/aii" android:ellipsize="middle" android:id="@id/o5l" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/blj" android:textColor="@color/air" android:ellipsize="end" android:id="@id/bh1" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</com.tencent.qqmail.view.QMListItemView>

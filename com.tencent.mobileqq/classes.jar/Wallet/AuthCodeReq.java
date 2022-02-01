@@ -4,14 +4,15 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AuthCodeReq
   extends JceStruct
 {
   static ArrayList<Long> cache_apps = new ArrayList();
-  public ArrayList<Long> apps;
+  public ArrayList<Long> apps = null;
   public String skey = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -28,17 +29,19 @@ public final class AuthCodeReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.skey != null) {
-      paramJceOutputStream.write(this.skey, 1);
+    Object localObject = this.skey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.apps != null) {
-      paramJceOutputStream.write(this.apps, 2);
+    localObject = this.apps;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AuthCodeReq
  * JD-Core Version:    0.7.0.1
  */

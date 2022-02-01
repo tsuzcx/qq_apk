@@ -111,66 +111,55 @@ final class OperatorGroupBy$State<T, K>
     Subscriber localSubscriber = this.actual;
     NotificationLite localNotificationLite = NotificationLite.instance();
     int i = 1;
-    label33:
-    label77:
-    label223:
     for (;;)
     {
-      long l2;
-      int j;
       if (localSubscriber != null)
       {
         if (checkTerminated(this.done, localQueue.isEmpty(), localSubscriber, bool2)) {
-          break;
+          return;
         }
-        l2 = this.requested;
-        if (l2 != 9223372036854775807L) {
-          break label186;
+        long l2 = this.requested;
+        if (l2 == 9223372036854775807L) {
+          j = 1;
+        } else {
+          j = 0;
         }
-        j = 1;
-      }
-      for (long l1 = 0L;; l1 -= 1L)
-      {
-        boolean bool3;
-        Object localObject;
-        if (l2 != 0L)
+        for (long l1 = 0L; l2 != 0L; l1 -= 1L)
         {
-          bool3 = this.done;
-          localObject = localQueue.poll();
-          if (localObject != null) {
-            break label191;
+          boolean bool3 = this.done;
+          Object localObject = localQueue.poll();
+          boolean bool1;
+          if (localObject == null) {
+            bool1 = true;
+          } else {
+            bool1 = false;
           }
-        }
-        for (boolean bool1 = true;; bool1 = false)
-        {
           if (checkTerminated(bool3, bool1, localSubscriber, bool2)) {
-            break label194;
+            return;
           }
-          if (!bool1) {
-            break label196;
-          }
-          if (l1 != 0L)
-          {
-            if (j == 0) {
-              REQUESTED.addAndGet(this, l1);
-            }
-            this.parent.s.request(-l1);
-          }
-          i = addAndGet(-i);
-          if (i == 0) {
+          if (bool1) {
             break;
           }
-          if (localSubscriber != null) {
-            break label223;
-          }
-          localSubscriber = this.actual;
-          break label33;
-          j = 0;
-          break label77;
+          localSubscriber.onNext(localNotificationLite.getValue(localObject));
+          l2 -= 1L;
         }
-        break;
-        localSubscriber.onNext(localNotificationLite.getValue(localObject));
-        l2 -= 1L;
+        if (l1 != 0L)
+        {
+          if (j == 0) {
+            REQUESTED.addAndGet(this, l1);
+          }
+          this.parent.s.request(-l1);
+        }
+      }
+      int j = addAndGet(-i);
+      if (j == 0) {
+        return;
+      }
+      i = j;
+      if (localSubscriber == null)
+      {
+        localSubscriber = this.actual;
+        i = j;
       }
     }
   }
@@ -200,24 +189,28 @@ final class OperatorGroupBy$State<T, K>
       this.error = new NullPointerException();
       this.done = true;
     }
-    for (;;)
+    else
     {
-      drain();
-      return;
       this.queue.offer(NotificationLite.instance().next(paramT));
     }
+    drain();
   }
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= required but it was " + paramLong);
-    }
-    if (paramLong != 0L)
+    if (paramLong >= 0L)
     {
-      BackpressureUtils.getAndAddRequest(REQUESTED, this, paramLong);
-      drain();
+      if (paramLong != 0L)
+      {
+        BackpressureUtils.getAndAddRequest(REQUESTED, this, paramLong);
+        drain();
+      }
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void unsubscribe()
@@ -229,7 +222,7 @@ final class OperatorGroupBy$State<T, K>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorGroupBy.State
  * JD-Core Version:    0.7.0.1
  */

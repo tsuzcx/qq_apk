@@ -1,31 +1,21 @@
 package com.tencent.common.app;
 
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qroute.utils.IProcessCheck;
+import com.tencent.mobileqq.qroute.utils.ProcessChecker;
 
 class BaseApplicationImpl$2
-  implements TeleScreenRunnable
+  implements IProcessCheck
 {
-  BaseApplicationImpl$2(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent, Bundle paramBundle) {}
+  BaseApplicationImpl$2(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public void run()
+  public boolean check(Class<?> paramClass, String paramString, boolean paramBoolean)
   {
-    try
-    {
-      BaseApplicationImpl.access$101(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("BaseApplicationImpl", 1, localThrowable, new Object[0]);
-    }
+    return ProcessChecker.check(paramClass, paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.BaseApplicationImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,33 @@
 package com.tencent.mobileqq.widget;
 
-import bdne;
+import android.content.Context;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 class ArcImageView$2
   implements Runnable
 {
   public void run()
   {
-    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    int i = bdne.e(localMobileQQ);
-    if (bdne.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString))
+    Object localObject = this.a.getApplication();
+    int i = SharedPreUtils.h((Context)localObject);
+    if (SharedPreUtils.b((Context)localObject, this.a.getCurrentAccountUin(), i, this.b))
     {
-      bdne.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, this.jdField_a_of_type_JavaLangString + " close redDot");
+      SharedPreUtils.a((Context)localObject, this.a.getCurrentAccountUin(), i, this.b);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(" close redDot");
+        QLog.d("Q.recent", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ArcImageView.2
  * JD-Core Version:    0.7.0.1
  */

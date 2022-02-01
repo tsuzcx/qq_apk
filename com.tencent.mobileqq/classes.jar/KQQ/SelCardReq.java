@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SelCardReq
   extends JceStruct
 {
-  public long m_LastOthMsg;
-  public long m_LastPic;
+  public long m_LastOthMsg = 0L;
+  public long m_LastPic = 0L;
   
   public SelCardReq() {}
   
@@ -32,7 +32,7 @@ public final class SelCardReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SelCardReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import aepi;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,22 +8,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import bchl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class AtPanelTouchController
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 1;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bchl jdField_a_of_type_Bchl;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c = true;
-  private boolean d;
-  private boolean e;
+  boolean a = false;
+  private float b = 0.0F;
+  private boolean c = false;
+  private boolean d = true;
+  private boolean e = false;
+  private int f = 1;
+  private Scroller g;
+  private AtPanelTouchController.AtPanelTouchListener h;
+  private int i = 0;
+  private boolean j = false;
+  private View k = null;
   
   public AtPanelTouchController(@NonNull Context paramContext)
   {
@@ -44,94 +44,86 @@ public class AtPanelTouchController
     a();
   }
   
-  private int a()
-  {
-    int i = 0;
-    int k;
-    for (int j = 0; i < getChildCount(); j = k)
-    {
-      View localView = getChildAt(i);
-      k = j;
-      if (localView.getVisibility() == 0) {
-        k = j + localView.getHeight();
-      }
-      i += 1;
-    }
-    this.jdField_b_of_type_Int = j;
-    return j / 3;
-  }
-  
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+    this.g = new Scroller(getContext());
   }
   
   public static boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == null) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    do
-    {
+    if (paramView == null) {
       return false;
-      i = (int)paramMotionEvent.getRawY();
-      j = (int)paramMotionEvent.getRawX();
-      paramMotionEvent = new int[2];
-      paramView.getLocationOnScreen(paramMotionEvent);
-      k = paramMotionEvent[0];
-      m = paramMotionEvent[1];
-      n = paramView.getMeasuredWidth();
-      i1 = paramView.getMeasuredHeight();
-    } while ((i < m) || (i > i1 + m) || (j < k) || (j > n + k));
-    return true;
+    }
+    int m = (int)paramMotionEvent.getRawY();
+    int n = (int)paramMotionEvent.getRawX();
+    paramMotionEvent = new int[2];
+    paramView.getLocationOnScreen(paramMotionEvent);
+    int i1 = paramMotionEvent[0];
+    int i2 = paramMotionEvent[1];
+    int i3 = paramView.getMeasuredWidth();
+    int i4 = paramView.getMeasuredHeight();
+    return (m >= i2) && (m <= i4 + i2) && (n >= i1) && (n <= i3 + i1);
   }
   
   private boolean b(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.c) {
       return true;
     }
-    if ((!this.c) || (a(paramView, paramMotionEvent)))
+    if ((this.d) && (!a(paramView, paramMotionEvent))) {
+      return false;
+    }
+    this.c = true;
+    return true;
+  }
+  
+  private int getMaxScrollDistance()
+  {
+    int m = 0;
+    int i1;
+    for (int n = 0; m < getChildCount(); n = i1)
     {
-      this.jdField_b_of_type_Boolean = true;
-      return true;
+      View localView = getChildAt(m);
+      i1 = n;
+      if (localView.getVisibility() == 0) {
+        i1 = n + localView.getHeight();
+      }
+      m += 1;
     }
-    return false;
+    this.i = n;
+    return n / 3;
   }
   
   public float a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    int i;
-    int j;
-    for (float f = 0.0F;; f = 20.0F)
-    {
-      i = aepi.a(f, getContext().getResources());
-      j = (int)(getScrollY() + paramFloat);
-      if (j >= i) {
-        break;
-      }
+    float f1;
+    if (this.a) {
+      f1 = 0.0F;
+    } else {
+      f1 = 20.0F;
+    }
+    int m = AIOUtils.b(f1, getContext().getResources());
+    int n = (int)(getScrollY() + paramFloat);
+    if (n < m) {
       return paramFloat;
     }
-    if (j >= i)
+    if (n >= m)
     {
-      if (this.jdField_a_of_type_Bchl != null) {
-        this.jdField_a_of_type_Bchl.c();
+      AtPanelTouchController.AtPanelTouchListener localAtPanelTouchListener = this.h;
+      if (localAtPanelTouchListener != null) {
+        localAtPanelTouchListener.d();
       }
-      return i - getScrollY();
+      return m - getScrollY();
     }
     return 0.0F;
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller != null)
+    Scroller localScroller = this.g;
+    if (localScroller != null)
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
+      localScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
       invalidate();
       return;
     }
@@ -140,9 +132,10 @@ public class AtPanelTouchController
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller != null)
+    Scroller localScroller = this.g;
+    if (localScroller != null)
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, getScrollY(), 0, paramInt1 - getScrollY(), paramInt2);
+      localScroller.startScroll(0, getScrollY(), 0, paramInt1 - getScrollY(), paramInt2);
       invalidate();
       return;
     }
@@ -152,88 +145,100 @@ public class AtPanelTouchController
   public void computeScroll()
   {
     super.computeScroll();
-    if ((this.jdField_a_of_type_AndroidWidgetScroller != null) && (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()))
+    Object localObject = this.g;
+    if ((localObject != null) && (((Scroller)localObject).computeScrollOffset()))
     {
-      scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      scrollTo(this.g.getCurrX(), this.g.getCurrY());
       invalidate();
+      return;
     }
-    do
+    if (this.j)
     {
-      do
-      {
-        return;
-      } while (!this.e);
-      this.e = false;
-    } while (this.jdField_a_of_type_Bchl == null);
-    this.jdField_a_of_type_Bchl.a(this.jdField_a_of_type_Int);
+      this.j = false;
+      localObject = this.h;
+      if (localObject != null) {
+        ((AtPanelTouchController.AtPanelTouchListener)localObject).a(this.f);
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    if ((!b(getChildAt(0), paramMotionEvent)) && (this.jdField_a_of_type_Int != 1)) {
+    if ((!b(getChildAt(0), paramMotionEvent)) && (this.f != 1)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     float f1 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int m = paramMotionEvent.getAction();
+    if (m != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.d = false;
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      super.dispatchTouchEvent(paramMotionEvent);
-      return true;
-      float f2 = -(f1 - this.jdField_a_of_type_Float);
-      float f3 = a(f2);
-      if (QLog.isColorLevel()) {
-        QLog.d("UUUU", 2, "NKSS=" + f3 + " differ=" + f2);
-      }
-      if ((this.jdField_b_of_type_Boolean) && (f3 != 0.0F)) {
-        scrollBy(0, (int)f3);
-      }
-      for (;;)
-      {
-        if (Math.abs(f2) > 5.0F) {
-          this.d = true;
-        }
-        if (this.jdField_a_of_type_Bchl != null)
+      if (m != 1) {
+        if (m != 2)
         {
-          paramMotionEvent = this.jdField_a_of_type_Bchl;
-          if (getScrollY() > 0) {
-            bool = true;
+          if (m != 3) {
+            return false;
           }
-          paramMotionEvent.a(bool);
         }
-        this.jdField_a_of_type_Float = f1;
-        return true;
-        if (f3 > 0.0F) {
-          scrollBy(0, (int)f3);
+        else
+        {
+          float f2 = -(f1 - this.b);
+          float f3 = a(f2);
+          if (QLog.isColorLevel())
+          {
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("NKSS=");
+            paramMotionEvent.append(f3);
+            paramMotionEvent.append(" differ=");
+            paramMotionEvent.append(f2);
+            QLog.d("UUUU", 2, paramMotionEvent.toString());
+          }
+          if ((this.c) && (f3 != 0.0F)) {
+            scrollBy(0, (int)f3);
+          } else if (f3 > 0.0F) {
+            scrollBy(0, (int)f3);
+          }
+          if (Math.abs(f2) > 5.0F) {
+            this.e = true;
+          }
+          paramMotionEvent = this.h;
+          if (paramMotionEvent != null)
+          {
+            if (getScrollY() > 0) {
+              bool = true;
+            }
+            paramMotionEvent.a(bool);
+          }
+          this.b = f1;
+          return true;
         }
       }
-      this.jdField_b_of_type_Boolean = false;
-      if (!this.d) {
+      this.c = false;
+      if (!this.e) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
-      if (-getScrollY() < a()) {}
-      for (int i = 1;; i = 0)
+      if (-getScrollY() < getMaxScrollDistance()) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if (m == 1)
       {
-        if (i != 1) {
-          break label303;
-        }
         a(0);
-        break;
+        return false;
       }
-      label303:
-      if (this.jdField_a_of_type_Bchl != null)
+      if (this.h != null)
       {
-        this.e = true;
-        a(-this.jdField_b_of_type_Int);
+        this.j = true;
+        a(-this.i);
       }
+      return false;
     }
+    this.e = false;
+    this.b = paramMotionEvent.getY();
+    super.dispatchTouchEvent(paramMotionEvent);
+    return true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -241,29 +246,29 @@ public class AtPanelTouchController
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setAtPanelTouchListener(bchl parambchl)
+  public void setAtPanelTouchListener(AtPanelTouchController.AtPanelTouchListener paramAtPanelTouchListener)
   {
-    this.jdField_a_of_type_Bchl = parambchl;
+    this.h = paramAtPanelTouchListener;
   }
   
   public void setControlLitTongue(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setDisableMinScrollY(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void setMode(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController
  * JD-Core Version:    0.7.0.1
  */

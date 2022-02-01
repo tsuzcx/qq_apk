@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/eqh" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:divider="@null" android:layout_weight="1.0" style="@style/mn" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/a8i" android:gravity="center" android:id="@id/eqi" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/ero" />
+    <View android:background="#ffefeff4" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/iq" />
+    <TextView android:textSize="@dimen/m_" android:textStyle="bold" android:textColor="@color/x1" android:ellipsize="end" android:id="@id/enz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/x1" android:ellipsize="end" android:id="@id/eo0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" />
 </LinearLayout>

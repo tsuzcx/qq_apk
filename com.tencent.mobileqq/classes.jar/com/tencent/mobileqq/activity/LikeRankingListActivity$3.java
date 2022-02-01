@@ -1,31 +1,36 @@
 package com.tencent.mobileqq.activity;
 
-import avsm;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
+import com.tencent.qphone.base.util.QLog;
 
 class LikeRankingListActivity$3
-  implements Runnable
+  extends ProfileCardObserver
 {
   LikeRankingListActivity$3(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void run()
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    avsm localavsm = (avsm)this.this$0.app.getManager(160);
-    RedTouchItem localRedTouchItem1 = localavsm.a(100601);
-    if (localavsm.a(localRedTouchItem1, false))
+    if (QLog.isColorLevel())
     {
-      RedTouchItem localRedTouchItem2 = localavsm.a(-7);
-      if ((localavsm.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
-        localRedTouchItem2.unReadFlag = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCardDownload isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("LikeRankingListActivity", 2, localStringBuilder.toString());
+    }
+    if ((paramBoolean) && ((paramObject instanceof Card)))
+    {
+      paramObject = (Card)paramObject;
+      if (paramObject.uin.equals(this.a.g)) {
+        this.a.app.execute(new LikeRankingListActivity.3.1(this, paramObject));
       }
-      localavsm.a(100601);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.3
  * JD-Core Version:    0.7.0.1
  */

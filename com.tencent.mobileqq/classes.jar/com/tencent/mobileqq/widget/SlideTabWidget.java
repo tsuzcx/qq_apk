@@ -9,103 +9,102 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TabWidget;
-import bevo;
-import bevp;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class SlideTabWidget
   extends TabWidget
 {
-  private static int jdField_c_of_type_Int = (int)(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density * 3.0F + 0.5F);
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bevo(this);
-  private bevp jdField_a_of_type_Bevp;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
+  private static int d = (int)(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density * 3.0F + 0.5F);
+  private int a = -1;
+  private int b = -1;
+  private boolean c = false;
+  private float e;
+  private Paint f = new Paint();
+  private boolean g = false;
+  private boolean h = false;
+  private SlideTabWidget.OnTabSlideCompleteListener i;
+  private Handler j = new SlideTabWidget.1(this);
   
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166911));
+    this.f.setColor(getResources().getColor(2131168002));
   }
   
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166911));
+    this.f.setColor(getResources().getColor(2131168002));
   }
   
   public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if ((this.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_Float >= 1.0F) || (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int))) {}
-    do
-    {
+    if ((this.g) && ((this.e >= 1.0F) || (this.b == this.a))) {
       return;
-      View localView1 = getChildTabViewAt(this.jdField_b_of_type_Int);
-      if (localView1 != null)
+    }
+    View localView1 = getChildTabViewAt(this.b);
+    if (localView1 != null)
+    {
+      int n = localView1.getLeft();
+      int i1 = localView1.getRight();
+      int m = n;
+      int k = i1;
+      if (this.e > 0.0F)
       {
-        int k = localView1.getLeft();
-        int m = localView1.getRight();
-        int j = m;
-        int i = k;
-        if (this.jdField_a_of_type_Float > 0.0F)
+        View localView2 = getChildAt(this.a);
+        m = n;
+        k = i1;
+        if (localView2 != null)
         {
-          View localView2 = getChildAt(this.jdField_a_of_type_Int);
-          j = m;
-          i = k;
-          if (localView2 != null)
-          {
-            i = (int)(localView1.getLeft() + this.jdField_a_of_type_Float * (localView2.getLeft() - localView1.getLeft()));
-            float f1 = localView1.getRight();
-            float f2 = this.jdField_a_of_type_Float;
-            j = (int)(f1 + (localView2.getRight() - localView1.getRight()) * f2);
-          }
+          m = (int)(localView1.getLeft() + this.e * (localView2.getLeft() - localView1.getLeft()));
+          k = (int)(localView1.getRight() + this.e * (localView2.getRight() - localView1.getRight()));
         }
-        paramCanvas.drawRect(i, getHeight() - jdField_c_of_type_Int, j, getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bevp == null) || (!this.jdField_c_of_type_Boolean));
-    this.jdField_c_of_type_Boolean = false;
-    post(new SlideTabWidget.2(this));
+      paramCanvas.drawRect(m, getHeight() - d, k, getHeight(), this.f);
+    }
+    if ((!this.g) && (this.i != null) && (this.h))
+    {
+      this.h = false;
+      post(new SlideTabWidget.2(this));
+    }
   }
   
   public void setCurrentTab(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > getTabCount()) || (paramInt == this.jdField_b_of_type_Int)) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramInt >= 0) && (paramInt <= getTabCount()))
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-    }
-    for (;;)
-    {
+      if (paramInt == this.b) {
+        return;
+      }
+      this.h = true;
+      this.a = paramInt;
+      if (this.c)
+      {
+        this.g = true;
+        this.j.sendEmptyMessage(0);
+      }
+      else
+      {
+        this.b = this.a;
+      }
       super.setCurrentTab(paramInt);
-      return;
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     }
   }
   
-  public void setOnTabSlideCompleteListener(bevp parambevp)
+  public void setOnTabSlideCompleteListener(SlideTabWidget.OnTabSlideCompleteListener paramOnTabSlideCompleteListener)
   {
-    this.jdField_a_of_type_Bevp = parambevp;
+    this.i = paramOnTabSlideCompleteListener;
   }
   
   public void setSlideAnimaPlay(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideTabWidget
  * JD-Core Version:    0.7.0.1
  */

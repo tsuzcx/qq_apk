@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anfp;
 
 public class ArLBSActivity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new anfp();
+  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new ArLBSActivity.1();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -20,7 +19,7 @@ public class ArLBSActivity
   
   public ArLBSActivity() {}
   
-  public ArLBSActivity(Parcel paramParcel)
+  protected ArLBSActivity(Parcel paramParcel)
   {
     this.a = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -40,14 +39,22 @@ public class ArLBSActivity
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ArLBSActivity{");
-    localStringBuffer.append("activityName = ").append(this.a);
-    localStringBuffer.append(", logoUrl = ").append(this.b);
-    localStringBuffer.append(", mapBackgroundUrl = ").append(this.c);
-    localStringBuffer.append(", prizeImageUrl = ").append(this.d);
-    localStringBuffer.append(", prizeName = ").append(this.e);
-    localStringBuffer.append(", tipsForOutsideLBSLocation = ").append(this.f);
-    localStringBuffer.append(", tipsTitleForNoLBSLocation = ").append(this.g);
-    localStringBuffer.append(", tipsContentForNoLBSLocation = ").append(this.h);
+    localStringBuffer.append("activityName = ");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append(", logoUrl = ");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", mapBackgroundUrl = ");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append(", prizeImageUrl = ");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append(", prizeName = ");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append(", tipsForOutsideLBSLocation = ");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append(", tipsTitleForNoLBSLocation = ");
+    localStringBuffer.append(this.g);
+    localStringBuffer.append(", tipsContentForNoLBSLocation = ");
+    localStringBuffer.append(this.h);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -66,7 +73,7 @@ public class ArLBSActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArLBSActivity
  * JD-Core Version:    0.7.0.1
  */

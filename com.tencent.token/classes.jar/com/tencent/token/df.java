@@ -1,83 +1,33 @@
 package com.tencent.token;
 
-import com.tencent.token.global.c;
+import android.app.RemoteInput;
+import android.app.RemoteInput.Builder;
+import android.os.Bundle;
+import java.util.Set;
 
-public class df
+public final class df
 {
-  public byte[] f = null;
-  public long g;
-  public short h;
-  public byte i = 1;
-  public short j = 0;
-  public short k = 0;
-  public int l;
-  public int m;
-  public short n;
-  public short o = c.b();
-  public short p = c.c();
-  public short q = c.d();
-  public String r = "";
-  public byte[] s = new byte[32];
-  public byte[] t = new byte[32];
+  final String a;
+  final CharSequence b;
+  final CharSequence[] c;
+  final boolean d;
+  final Bundle e;
+  final Set<String> f;
   
-  public void a(long paramLong, int paramInt1, int paramInt2, short paramShort)
+  static RemoteInput[] a(df[] paramArrayOfdf)
   {
-    this.g = paramLong;
-    this.l = paramInt1;
-    this.m = paramInt2;
-    this.n = paramShort;
-  }
-  
-  public byte[] a()
-  {
-    this.o = c.b();
-    this.p = c.c();
-    this.q = c.d();
-    byte[] arrayOfByte1 = this.r.getBytes();
-    int i3 = arrayOfByte1.length;
-    if ((this.f != null) && (this.f.length > 0)) {}
-    for (int i1 = this.f.length;; i1 = 0)
-    {
-      int i2 = this.t.length + 92 + i1 + 32 + 1;
-      this.h = ((short)i2);
-      byte[] arrayOfByte2 = new byte[i2];
-      arrayOfByte2[0] = 2;
-      dg.a(arrayOfByte2, 1, this.g);
-      dg.a(arrayOfByte2, 5, this.h);
-      arrayOfByte2[7] = this.i;
-      dg.a(arrayOfByte2, 8, this.j);
-      dg.a(arrayOfByte2, 10, this.k);
-      dg.a(arrayOfByte2, 12, this.l);
-      dg.a(arrayOfByte2, 16, this.m);
-      dg.a(arrayOfByte2, 20, this.n);
-      dg.a(arrayOfByte2, 22, this.o);
-      dg.a(arrayOfByte2, 24, this.p);
-      dg.a(arrayOfByte2, 26, this.q);
-      byte[] arrayOfByte3 = new byte[64];
-      if (i3 > 0)
-      {
-        i2 = i3;
-        if (i3 > 64) {
-          i2 = 64;
-        }
-        dg.a(arrayOfByte3, 0, arrayOfByte1, 0, i2);
-      }
-      dg.a(arrayOfByte2, 28, arrayOfByte3, 0, 64);
-      dg.a(arrayOfByte2, 92, this.t, 0, this.t.length);
-      i2 = this.t.length + 92;
-      if (i1 > 0)
-      {
-        dg.a(arrayOfByte2, i2, this.f, 0, i1);
-        i1 += i2;
-      }
-      for (;;)
-      {
-        dg.a(arrayOfByte2, i1, this.s, 0, this.s.length);
-        arrayOfByte2[(i1 + this.s.length)] = 3;
-        return arrayOfByte2;
-        i1 = i2;
-      }
+    if (paramArrayOfdf == null) {
+      return null;
     }
+    RemoteInput[] arrayOfRemoteInput = new RemoteInput[paramArrayOfdf.length];
+    int i = 0;
+    while (i < paramArrayOfdf.length)
+    {
+      df localdf = paramArrayOfdf[i];
+      arrayOfRemoteInput[i] = new RemoteInput.Builder(localdf.a).setLabel(localdf.b).setChoices(localdf.c).setAllowFreeFormInput(localdf.d).addExtras(localdf.e).build();
+      i += 1;
+    }
+    return arrayOfRemoteInput;
   }
 }
 

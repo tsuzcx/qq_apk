@@ -10,10 +10,10 @@ public final class tag_deatail_info
 {
   static ArrayList<String> cache_vecReferenceTagList;
   static ArrayList<String> cache_vecTagList = new ArrayList();
-  public long uFirstClassId;
-  public long uSecondClassId;
-  public ArrayList<String> vecReferenceTagList;
-  public ArrayList<String> vecTagList;
+  public long uFirstClassId = 0L;
+  public long uSecondClassId = 0L;
+  public ArrayList<String> vecReferenceTagList = null;
+  public ArrayList<String> vecTagList = null;
   
   static
   {
@@ -42,19 +42,21 @@ public final class tag_deatail_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecTagList != null) {
-      paramJceOutputStream.write(this.vecTagList, 0);
+    ArrayList localArrayList = this.vecTagList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
     paramJceOutputStream.write(this.uFirstClassId, 1);
     paramJceOutputStream.write(this.uSecondClassId, 2);
-    if (this.vecReferenceTagList != null) {
-      paramJceOutputStream.write(this.vecReferenceTagList, 3);
+    localArrayList = this.vecReferenceTagList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.tag_deatail_info
  * JD-Core Version:    0.7.0.1
  */

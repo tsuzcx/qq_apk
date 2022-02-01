@@ -25,85 +25,123 @@ class MiniAppDesktopAdapter$MoveItemRunnable
   
   public void run()
   {
-    if ((this.moveFromIndex < 0) || (this.pendingMoveTargetIndex < 0)) {}
-    while ((this.pendingMoveTargetIndex == this.moveTargetIndex) || (MiniAppDesktopAdapter.access$200(this.this$0))) {
-      return;
-    }
-    this.moveTargetIndex = this.pendingMoveTargetIndex;
-    QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag MoveReady from:" + this.moveFromIndex + " target:" + this.moveTargetIndex + " oldTarget:" + this.oldMoveTargetIndex);
-    int i = this.moveFromIndex;
-    int k = this.moveTargetIndex;
-    MiniAppDesktopAdapter.access$1102(this.this$0, i);
-    MiniAppDesktopAdapter.access$302(this.this$0, k);
-    MiniAppDesktopAdapter.access$400(this.this$0);
-    DesktopAppInfo localDesktopAppInfo1 = (DesktopAppInfo)MiniAppDesktopAdapter.access$1200(this.this$0).get(i);
-    if (k >= this.this$0.getItemCount())
+    if (this.moveFromIndex >= 0)
     {
-      QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag OP_INSERT_BLANK from:" + MiniAppDesktopAdapter.access$1300(this.this$0) + " target:" + this.this$0.getItemCount());
-      localDesktopAppInfo1 = new DesktopAppInfo(3, localDesktopAppInfo1.mMiniAppInfo);
-      localDesktopAppInfo1.setIsTemp(true);
-      MiniAppDesktopAdapter.access$1400(this.this$0).add(k, localDesktopAppInfo1);
-      this.oldMoveTargetIndex = (MiniAppDesktopAdapter.access$1500(this.this$0).size() - 1);
-      this.this$0.notifyItemInserted(k);
-      return;
-    }
-    DesktopAppInfo localDesktopAppInfo2 = (DesktopAppInfo)MiniAppDesktopAdapter.access$1600(this.this$0).get(k);
-    if (localDesktopAppInfo1.mModuleType == localDesktopAppInfo2.mModuleType)
-    {
-      QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag OP_SWAP from:" + i + " target:" + k);
-      if (i < k)
+      int i = this.pendingMoveTargetIndex;
+      if (i < 0) {
+        return;
+      }
+      if (i == this.moveTargetIndex) {
+        return;
+      }
+      if (MiniAppDesktopAdapter.access$200(this.this$0)) {
+        return;
+      }
+      this.moveTargetIndex = this.pendingMoveTargetIndex;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Desktop-Drag MoveReady from:");
+      ((StringBuilder)localObject1).append(this.moveFromIndex);
+      ((StringBuilder)localObject1).append(" target:");
+      ((StringBuilder)localObject1).append(this.moveTargetIndex);
+      ((StringBuilder)localObject1).append(" oldTarget:");
+      ((StringBuilder)localObject1).append(this.oldMoveTargetIndex);
+      QLog.i("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject1).toString());
+      i = this.moveFromIndex;
+      int m = this.moveTargetIndex;
+      MiniAppDesktopAdapter.access$1102(this.this$0, i);
+      MiniAppDesktopAdapter.access$302(this.this$0, m);
+      MiniAppDesktopAdapter.access$400(this.this$0);
+      localObject1 = (DesktopAppInfo)MiniAppDesktopAdapter.access$1200(this.this$0).get(i);
+      if (m >= this.this$0.getItemCount())
       {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Desktop-Drag OP_INSERT_BLANK from:");
+        ((StringBuilder)localObject2).append(MiniAppDesktopAdapter.access$1300(this.this$0));
+        ((StringBuilder)localObject2).append(" target:");
+        ((StringBuilder)localObject2).append(this.this$0.getItemCount());
+        QLog.i("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject2).toString());
+        localObject1 = new DesktopAppInfo(3, ((DesktopAppInfo)localObject1).mMiniAppInfo);
+        ((DesktopItemInfo)localObject1).setIsTemp(true);
+        MiniAppDesktopAdapter.access$1400(this.this$0).add(m, localObject1);
+        this.oldMoveTargetIndex = (MiniAppDesktopAdapter.access$1500(this.this$0).size() - 1);
+        this.this$0.notifyItemInserted(m);
+        return;
+      }
+      Object localObject2 = (DesktopAppInfo)MiniAppDesktopAdapter.access$1600(this.this$0).get(m);
+      if (((DesktopAppInfo)localObject1).mModuleType == ((DesktopAppInfo)localObject2).mModuleType)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Desktop-Drag OP_SWAP from:");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(" target:");
+        ((StringBuilder)localObject1).append(m);
+        QLog.i("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject1).toString());
+        if (i < m)
+        {
+          int k;
+          for (j = i; j < m; j = k)
+          {
+            localObject1 = MiniAppDesktopAdapter.access$1700(this.this$0);
+            k = j + 1;
+            Collections.swap((List)localObject1, j, k);
+          }
+        }
         j = i;
-        while (j < k)
+        while (j > m)
         {
-          Collections.swap(MiniAppDesktopAdapter.access$1700(this.this$0), j, j + 1);
-          j += 1;
+          Collections.swap(MiniAppDesktopAdapter.access$1800(this.this$0), j, j - 1);
+          j -= 1;
         }
+        this.this$0.notifyItemMoved(i, m);
+        this.oldMoveTargetIndex = 0;
+        return;
       }
-      int j = i;
-      while (j > k)
+      int j = this.oldMoveTargetIndex;
+      if (j > 0)
       {
-        Collections.swap(MiniAppDesktopAdapter.access$1800(this.this$0), j, j - 1);
-        j -= 1;
-      }
-      this.this$0.notifyItemMoved(i, k);
-      this.oldMoveTargetIndex = 0;
-      return;
-    }
-    if (this.oldMoveTargetIndex > 0)
-    {
-      if (this.oldMoveTargetIndex < k)
-      {
-        i = this.oldMoveTargetIndex;
-        while (i < k)
+        i = j;
+        if (j < m) {
+          while (j < m)
+          {
+            localObject1 = MiniAppDesktopAdapter.access$1900(this.this$0);
+            i = j + 1;
+            Collections.swap((List)localObject1, j, i);
+            j = i;
+          }
+        }
+        while (i > m)
         {
-          Collections.swap(MiniAppDesktopAdapter.access$1900(this.this$0), i, i + 1);
-          i += 1;
+          Collections.swap(MiniAppDesktopAdapter.access$2000(this.this$0), i, i - 1);
+          i -= 1;
         }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Desktop-Drag OP_SWAP fromOld:");
+        ((StringBuilder)localObject1).append(this.oldMoveTargetIndex);
+        ((StringBuilder)localObject1).append(" target:");
+        ((StringBuilder)localObject1).append(m);
+        QLog.i("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject1).toString());
+        this.this$0.notifyItemMoved(this.oldMoveTargetIndex, m);
+        this.oldMoveTargetIndex = m;
+        return;
       }
-      i = this.oldMoveTargetIndex;
-      while (i > k)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Desktop-Drag OP_INSERT from:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" target:");
+      localStringBuilder.append(m);
+      QLog.i("MiniAppDesktopAdapter", 1, localStringBuilder.toString());
+      if (((DesktopAppInfo)localObject2).isTemp)
       {
-        Collections.swap(MiniAppDesktopAdapter.access$2000(this.this$0), i, i - 1);
-        i -= 1;
+        QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag OP_INSERT insert into temp item, invalid!");
+        this.oldMoveTargetIndex = m;
+        return;
       }
-      QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag OP_SWAP fromOld:" + this.oldMoveTargetIndex + " target:" + k);
-      this.this$0.notifyItemMoved(this.oldMoveTargetIndex, k);
-      this.oldMoveTargetIndex = k;
-      return;
+      localObject1 = new DesktopAppInfo(((DesktopAppInfo)localObject2).mModuleType, ((DesktopAppInfo)localObject1).mMiniAppInfo);
+      ((DesktopItemInfo)localObject1).setIsTemp(true);
+      MiniAppDesktopAdapter.access$2100(this.this$0).add(m, localObject1);
+      this.oldMoveTargetIndex = m;
+      this.this$0.notifyItemInserted(m);
     }
-    QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag OP_INSERT from:" + i + " target:" + k);
-    if (localDesktopAppInfo2.isTemp)
-    {
-      QLog.i("MiniAppDesktopAdapter", 1, "Desktop-Drag OP_INSERT insert into temp item, invalid!");
-      this.oldMoveTargetIndex = k;
-      return;
-    }
-    localDesktopAppInfo1 = new DesktopAppInfo(localDesktopAppInfo2.mModuleType, localDesktopAppInfo1.mMiniAppInfo);
-    localDesktopAppInfo1.setIsTemp(true);
-    MiniAppDesktopAdapter.access$2100(this.this$0).add(k, localDesktopAppInfo1);
-    this.oldMoveTargetIndex = k;
-    this.this$0.notifyItemInserted(k);
   }
   
   public void setMoveAction(int paramInt1, int paramInt2)
@@ -120,7 +158,7 @@ class MiniAppDesktopAdapter$MoveItemRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.MoveItemRunnable
  * JD-Core Version:    0.7.0.1
  */

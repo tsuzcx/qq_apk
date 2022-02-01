@@ -37,18 +37,20 @@ public final class ThemeInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stThemeItem != null) {
-      paramJceOutputStream.write(this.stThemeItem, 0);
+    Object localObject = this.stThemeItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stCoverItem != null) {
-      paramJceOutputStream.write(this.stCoverItem, 1);
+    localObject = this.stCoverItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.uTotalSize, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.ThemeInfo
  * JD-Core Version:    0.7.0.1
  */

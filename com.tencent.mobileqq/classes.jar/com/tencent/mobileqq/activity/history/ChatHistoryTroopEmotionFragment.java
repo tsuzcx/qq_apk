@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.history;
 
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ChatHistoryTroopEmotionFragment
   extends ChatHistoryEmotionBaseFragment
 {
-  public void e()
+  public void i()
   {
-    super.e();
-    azqs.b(this.a, "dc00898", "", "", "0X800A0B9", "0X800A0B9", 3, 0, "", "", "", "");
+    super.i();
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0B9", "0X800A0B9", 3, 0, "", "", "", "");
   }
   
-  void p()
+  void v()
   {
-    azqs.b(this.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 2, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 2, 0, "", "", "", "");
   }
   
-  void q()
+  void w()
   {
-    azqs.b(this.a, "dc00898", "", "", "0X800A0BB", "0X800A0BB", 2, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0BB", "0X800A0BB", 2, 0, "", "", "", "");
   }
   
-  void r()
+  void x()
   {
-    azqs.b(this.a, "dc00898", "", "", "0X800A0BC", "0X800A0BC", 2, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0BC", "0X800A0BC", 2, 0, "", "", "", "");
   }
   
-  void s()
+  void y()
   {
-    azqs.b(this.a, "dc00898", "", "", "0X800A0BA", "0X800A0BA", 2, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A0BA", "0X800A0BA", 2, 0, "", "", "", "");
   }
 }
 

@@ -1,72 +1,102 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bmp
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public String xAZ;
-  public String xBa;
+  public bcz ZVf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(96281);
+    AppMethodBeat.i(258994);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xAZ != null) {
-        paramVarArgs.e(1, this.xAZ);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.xBa != null) {
-        paramVarArgs.e(2, this.xBa);
+      if (this.ZVf != null)
+      {
+        paramVarArgs.qD(2, this.ZVf.computeSize());
+        this.ZVf.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(96281);
+      AppMethodBeat.o(258994);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xAZ == null) {
-        break label274;
+      if (this.BaseResponse == null) {
+        break label418;
       }
     }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.xAZ) + 0;; paramInt = 0)
+    label418:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xBa != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.xBa);
+      if (this.ZVf != null) {
+        i = paramInt + i.a.a.a.qC(2, this.ZVf.computeSize());
       }
-      AppMethodBeat.o(96281);
+      AppMethodBeat.o(258994);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(96281);
+        AppMethodBeat.o(258994);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         bmp localbmp = (bmp)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(96281);
+          AppMethodBeat.o(258994);
           return -1;
         case 1: 
-          localbmp.xAZ = locala.CLY.readString();
-          AppMethodBeat.o(96281);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbmp.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258994);
           return 0;
         }
-        localbmp.xBa = locala.CLY.readString();
-        AppMethodBeat.o(96281);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bcz();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bcz)localObject2).parseFrom((byte[])localObject1);
+          }
+          localbmp.ZVf = ((bcz)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(258994);
         return 0;
       }
-      AppMethodBeat.o(96281);
+      AppMethodBeat.o(258994);
       return -1;
     }
   }

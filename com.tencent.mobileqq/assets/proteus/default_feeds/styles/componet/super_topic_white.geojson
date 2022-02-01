@@ -5,7 +5,7 @@
     "event_type":"cmd_super_topic_click",
     "align_parent_left":"YES",
     "align_parent_top":"YES",
-    "margin_left":"12",
+    "margin_left":"14",
     "margin_bottom":"10",
     "height":{
         "type":"relative",
@@ -13,7 +13,7 @@
     },
     "width":{
         "type":"relative",
-        "value":"351"
+        "value":"347"
     },
     "attributes":{
         "setAttatchInfo:":"-1",
@@ -36,7 +36,6 @@
                 "value":"65"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setImageWithURLString:lineup:":["-1","-1"],
                 "setBackgroundColorString:":"#ffffff"
                 }
@@ -57,7 +56,6 @@
                 "value":"14"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setImageWithURLString:lineup:":["-1","-1"],
                 "setBackgroundColorString:":"#000000"
                 }
@@ -111,7 +109,6 @@
                             "type":"match_parent"
                             },
                             "attributes":{
-                            "setFrameString":"-1",
                             "setText:":"-1",
                             "setTextColorString:":"#D9000000",
                             "setFontSizeString:":"16",
@@ -130,7 +127,6 @@
                             "type":"match_parent"
                             },
                             "attributes":{
-                            "setFrameString:":"-1",
                             "setText:":"-1",
                             "setTextColorString:":"#8C000000",
                             "setFontSizeString:":"12",

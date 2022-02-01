@@ -8,34 +8,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends JceStruct
 {
-  static b Bls;
-  public b Blr = null;
+  static b ahuI;
+  public b ahuH = null;
   public int errorCode = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114581);
+    AppMethodBeat.i(138422);
     this.errorCode = paramJceInputStream.read(this.errorCode, 0, true);
-    if (Bls == null) {
-      Bls = new b();
+    if (ahuI == null) {
+      ahuI = new b();
     }
-    this.Blr = ((b)paramJceInputStream.read(Bls, 1, false));
-    AppMethodBeat.o(114581);
+    this.ahuH = ((b)paramJceInputStream.read(ahuI, 1, false));
+    AppMethodBeat.o(138422);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114580);
+    AppMethodBeat.i(138421);
     paramJceOutputStream.write(this.errorCode, 0);
-    if (this.Blr != null) {
-      paramJceOutputStream.write(this.Blr, 1);
+    if (this.ahuH != null) {
+      paramJceOutputStream.write(this.ahuH, 1);
     }
-    AppMethodBeat.o(114580);
+    AppMethodBeat.o(138421);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.e.a.b.d
  * JD-Core Version:    0.7.0.1
  */

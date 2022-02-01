@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ve" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <ImageButton android:id="@id/vb" android:background="@drawable/tu" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:src="@drawable/d95" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageButton android:id="@id/vc" android:background="@drawable/tu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:src="@drawable/d95" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/bp" android:id="@id/vd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:singleLine="true" android:layout_centerInParent="true" />
+        <View android:id="@id/acz" android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <View android:id="@id/vf" android:background="@drawable/h94" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+</merge>

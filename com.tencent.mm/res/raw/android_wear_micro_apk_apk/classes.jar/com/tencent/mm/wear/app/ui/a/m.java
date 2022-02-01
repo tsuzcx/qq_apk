@@ -24,26 +24,26 @@ public final class m
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903071, paramViewGroup, false);
     paramViewGroup = new n(this);
-    paramViewGroup.ahm = ((TextView)paramContext.findViewById(2131558461));
+    paramViewGroup.akO = ((TextView)paramContext.findViewById(2131558462));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
   
   public final void a(Context paramContext, b paramb)
   {
-    paramb = ((n)paramb).ahm;
-    e.mB();
-    paramb.setText(e.a(paramContext, this.ahe.afg.Vx, 21));
+    paramb = ((n)paramb).akO;
+    e.nn();
+    paramb.setText(e.a(paramContext, this.akG.aiI.Xs, 21));
   }
   
   public final boolean a(Context paramContext, a parama)
   {
-    com.tencent.mm.wear.app.d.a.bN(7);
+    com.tencent.mm.wear.app.d.a.cj(7);
     com.tencent.mm.e.a.n localn = new com.tencent.mm.e.a.n();
-    localn.VO = parama.ahe.afg.VO;
-    localn.VN = parama.ahe.afg.VN;
-    localn.Vw = parama.ahe.afg.VT;
-    localn.Vx = parama.ahe.afg.Vx;
+    localn.XJ = parama.akG.aiI.XJ;
+    localn.XI = parama.akG.aiI.XI;
+    localn.Xr = parama.akG.aiI.XO;
+    localn.Xs = parama.akG.aiI.Xs;
     parama = new Intent(paramContext, ReplyLuckyUI.class);
     try
     {

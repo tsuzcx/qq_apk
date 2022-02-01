@@ -24,13 +24,15 @@ public final class oidb_0xc0b$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 40, 50, 56, 66, 74 }, new String[] { "uint32_is_open_coin_entry", "uint32_can_get_coin_count", "bytes_coin_icon_url", "uint64_last_completed_task_stamp", "rpt_cms_wording", "uint64_last_cms_activity_stamp", "msg_kandian_coin_remind", "msg_kandian_task_remind" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), null, Long.valueOf(0L), null, null }, RspBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 40, 50, 56, 66, 74 }, new String[] { "uint32_is_open_coin_entry", "uint32_can_get_coin_count", "bytes_coin_icon_url", "uint64_last_completed_task_stamp", "rpt_cms_wording", "uint64_last_cms_activity_stamp", "msg_kandian_coin_remind", "msg_kandian_task_remind" }, new Object[] { localInteger, localInteger, localByteStringMicro, localLong, null, localLong, null, null }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xc0b.RspBody
  * JD-Core Version:    0.7.0.1
  */

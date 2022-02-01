@@ -1,41 +1,16 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.uinterface.IUploadService;
-import com.tencent.upload.uinterface.IUploadService.UploadServiceCreator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import cooperation.qzone.UploadServerSetting;
-import cooperation.qzone.UploadServerSetting.ConfigItem;
 
 public class icc
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  public icc(UploadServerSetting paramUploadServerSetting) {}
+  public icc(UploadServerSetting paramUploadServerSetting, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = ((BaseAdapter)paramAdapterView.getAdapter());
-    if (paramInt == 4) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UploadServerSetting", 2, "ShareAlbum update upload server");
-        }
-        IUploadService.UploadServiceCreator.getInstance().setTestServer(paramInt);
-        return;
-      }
-      catch (Exception paramAdapterView)
-      {
-        paramAdapterView.printStackTrace();
-      }
-      paramAdapterView = (UploadServerSetting.ConfigItem)paramAdapterView.getItemAtPosition(paramInt);
-      this.a.a(paramAdapterView);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

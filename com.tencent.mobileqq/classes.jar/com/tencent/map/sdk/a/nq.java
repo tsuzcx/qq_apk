@@ -25,7 +25,7 @@ public final class nq
   public final nq a()
   {
     ArrayList localArrayList = this.e;
-    int j = this.e.size();
+    int j = localArrayList.size();
     np[] arrayOfnp = new np[j];
     int i = 0;
     while (i < j)
@@ -42,7 +42,11 @@ public final class nq
     int i = 0;
     while (i < this.a)
     {
-      str = str + ((np)this.e.get(i)).a() + "  ";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(((np)this.e.get(i)).a());
+      localStringBuilder.append("  ");
+      str = localStringBuilder.toString();
       i += 1;
     }
     return str;
@@ -50,7 +54,7 @@ public final class nq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.nq
  * JD-Core Version:    0.7.0.1
  */

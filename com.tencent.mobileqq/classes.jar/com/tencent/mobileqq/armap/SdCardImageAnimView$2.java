@@ -9,16 +9,16 @@ class SdCardImageAnimView$2
   
   public void run()
   {
-    if (SdCardImageAnimView.a(this.this$0) != null)
+    if (SdCardImageAnimView.c(this.this$0) != null)
     {
-      Bitmap localBitmap = SdCardImageAnimView.a(this.this$0).a(0);
+      Bitmap localBitmap = SdCardImageAnimView.c(this.this$0).b(0);
       this.this$0.post(new SdCardImageAnimView.2.1(this, localBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView.2
  * JD-Core Version:    0.7.0.1
  */

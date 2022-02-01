@@ -11,11 +11,11 @@ public final class RequestUpdateAddressBookNotBind
   static ArrayList<AddressBookItem> cache_AddressBookAddList;
   static ArrayList<AddressBookItem> cache_AddressBookDelList;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList<AddressBookItem> AddressBookAddList;
-  public ArrayList<AddressBookItem> AddressBookDelList;
+  public ArrayList<AddressBookItem> AddressBookAddList = null;
+  public ArrayList<AddressBookItem> AddressBookDelList = null;
   public String MobileUniqueNo = "";
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   static
   {
@@ -59,7 +59,7 @@ public final class RequestUpdateAddressBookNotBind
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestUpdateAddressBookNotBind
  * JD-Core Version:    0.7.0.1
  */

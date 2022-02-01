@@ -5,22 +5,27 @@ import com.tencent.mm.compatible.util.d;
 
 public final class a
 {
-  public static boolean a(int paramInt, a.a parama)
+  public static boolean a(int paramInt, a parama)
   {
-    AppMethodBeat.i(51922);
-    if (d.fv(paramInt))
+    AppMethodBeat.i(157475);
+    if (d.rb(paramInt))
     {
       parama.run();
-      AppMethodBeat.o(51922);
+      AppMethodBeat.o(157475);
       return true;
     }
-    AppMethodBeat.o(51922);
+    AppMethodBeat.o(157475);
     return false;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.a.a
  * JD-Core Version:    0.7.0.1
  */

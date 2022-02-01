@@ -32,7 +32,7 @@ public class WebViewClient
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
   public static final int INTERCEPT_BY_ISP = -16;
-  w a;
+  k a;
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {}
   
@@ -40,55 +40,57 @@ public class WebViewClient
   
   public void onFormResubmission(WebView paramWebView, Message paramMessage1, Message paramMessage2)
   {
-    AppMethodBeat.i(65029);
+    AppMethodBeat.i(54653);
     paramMessage1.sendToTarget();
-    AppMethodBeat.o(65029);
+    AppMethodBeat.o(54653);
   }
   
   public void onLoadResource(WebView paramWebView, String paramString) {}
+  
+  public void onPageCommitVisible(WebView paramWebView, String paramString) {}
   
   public void onPageFinished(WebView paramWebView, String paramString) {}
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(65025);
+    AppMethodBeat.i(54649);
     if (this.a != null) {
       this.a.a(paramWebView, paramString, paramBitmap);
     }
-    AppMethodBeat.o(65025);
+    AppMethodBeat.o(54649);
   }
   
   public void onReceivedClientCertRequest(WebView paramWebView, ClientCertRequest paramClientCertRequest)
   {
-    AppMethodBeat.i(65032);
+    AppMethodBeat.i(54656);
     paramClientCertRequest.cancel();
-    AppMethodBeat.o(65032);
+    AppMethodBeat.o(54656);
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
   
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
-    AppMethodBeat.i(65026);
+    AppMethodBeat.i(54650);
     if (this.a != null)
     {
       if (paramWebResourceRequest.isForMainFrame())
       {
         this.a.onReceivedError(paramWebView.c(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
-        AppMethodBeat.o(65026);
+        AppMethodBeat.o(54650);
       }
     }
     else if (paramWebResourceRequest.isForMainFrame()) {
       onReceivedError(paramWebView, paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
     }
-    AppMethodBeat.o(65026);
+    AppMethodBeat.o(54650);
   }
   
   public void onReceivedHttpAuthRequest(WebView paramWebView, HttpAuthHandler paramHttpAuthHandler, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(65030);
+    AppMethodBeat.i(54654);
     paramHttpAuthHandler.cancel();
-    AppMethodBeat.o(65030);
+    AppMethodBeat.o(54654);
   }
   
   public void onReceivedHttpError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse) {}
@@ -97,9 +99,9 @@ public class WebViewClient
   
   public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
-    AppMethodBeat.i(65031);
+    AppMethodBeat.i(54655);
     paramSslErrorHandler.cancel();
-    AppMethodBeat.o(65031);
+    AppMethodBeat.o(54655);
   }
   
   public void onScaleChanged(WebView paramWebView, float paramFloat1, float paramFloat2) {}
@@ -110,28 +112,28 @@ public class WebViewClient
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(65027);
+    AppMethodBeat.i(54651);
     if (this.a != null)
     {
       paramWebView = this.a.shouldInterceptRequest(paramWebView.c(), paramWebResourceRequest.getUrl().toString());
-      AppMethodBeat.o(65027);
+      AppMethodBeat.o(54651);
       return paramWebView;
     }
     paramWebView = shouldInterceptRequest(paramWebView, paramWebResourceRequest.getUrl().toString());
-    AppMethodBeat.o(65027);
+    AppMethodBeat.o(54651);
     return paramWebView;
   }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    AppMethodBeat.i(65028);
+    AppMethodBeat.i(54652);
     if (this.a != null)
     {
       paramWebView = this.a.shouldInterceptRequest(paramWebView.c(), paramWebResourceRequest);
-      AppMethodBeat.o(65028);
+      AppMethodBeat.o(54652);
       return paramWebView;
     }
-    AppMethodBeat.o(65028);
+    AppMethodBeat.o(54652);
     return null;
   }
   
@@ -147,15 +149,15 @@ public class WebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(65024);
+    AppMethodBeat.i(54648);
     if (this.a != null)
     {
       bool = this.a.shouldOverrideUrlLoading(paramWebView.c(), paramWebResourceRequest.getUrl().toString());
-      AppMethodBeat.o(65024);
+      AppMethodBeat.o(54648);
       return bool;
     }
     boolean bool = shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest.getUrl().toString());
-    AppMethodBeat.o(65024);
+    AppMethodBeat.o(54648);
     return bool;
   }
   
@@ -166,7 +168,7 @@ public class WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewClient
  * JD-Core Version:    0.7.0.1
  */

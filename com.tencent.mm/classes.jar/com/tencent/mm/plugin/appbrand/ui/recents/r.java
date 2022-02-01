@@ -1,39 +1,25 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import android.support.v7.h.c.a;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import androidx.recyclerview.widget.RecyclerView.v;
 
-public abstract class r<T>
-  extends c.a
+abstract class r<_Data, _ViewHolder extends RecyclerView.v>
 {
-  protected final List<T> iVE;
-  protected final List<T> iVF;
-  
-  public r(List<T> paramList1, List<T> paramList2)
+  public boolean a(_ViewHolder param_ViewHolder, Object paramObject)
   {
-    this.iVE = paramList1;
-    this.iVF = paramList2;
+    return false;
   }
   
-  public final int fv()
-  {
-    if (this.iVE == null) {
-      return 0;
-    }
-    return this.iVE.size();
-  }
+  public abstract _ViewHolder b(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
   
-  public final int fw()
-  {
-    if (this.iVF == null) {
-      return 0;
-    }
-    return this.iVF.size();
-  }
+  public abstract void b(_ViewHolder param_ViewHolder, _Data param_Data);
+  
+  public abstract long ei(_Data param_Data);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.r
  * JD-Core Version:    0.7.0.1
  */

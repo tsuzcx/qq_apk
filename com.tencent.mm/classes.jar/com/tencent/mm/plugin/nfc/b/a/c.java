@@ -5,39 +5,39 @@ import android.nfc.tech.NfcA;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.a.a;
 import com.tencent.mm.plugin.nfc.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   implements d
 {
-  private NfcA pgu;
+  private NfcA Mto;
   
   public c(Tag paramTag)
   {
-    AppMethodBeat.i(23044);
-    this.pgu = NfcA.get(paramTag);
-    AppMethodBeat.o(23044);
+    AppMethodBeat.i(26671);
+    this.Mto = NfcA.get(paramTag);
+    AppMethodBeat.o(26671);
   }
   
   public final com.tencent.mm.plugin.nfc.a.c a(a parama)
   {
-    AppMethodBeat.i(23045);
-    if (this.pgu == null)
+    AppMethodBeat.i(26672);
+    if (this.Mto == null)
     {
-      ab.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
+      Log.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
       parama = new IllegalStateException("NfcA is null");
-      AppMethodBeat.o(23045);
+      AppMethodBeat.o(26672);
       throw parama;
     }
-    connect();
+    cmB();
     Object localObject = null;
     a locala = parama;
     parama = (a)localObject;
-    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.pgu.transceive(locala.getBytes()));
+    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.Mto.transceive(locala.getBytes()));
     localObject = parama;
-    if (localc.pgd.length != 0)
+    if (localc.MsX.length != 0)
     {
-      if (localc.pgd.length - 2 >= 0) {
+      if (localc.MsX.length - 2 >= 0) {
         break label100;
       }
       localObject = localc;
@@ -45,12 +45,12 @@ public final class c
     for (;;)
     {
       label92:
-      AppMethodBeat.o(23045);
+      AppMethodBeat.o(26672);
       return localObject;
       label100:
-      if (localc.bWV() == 108)
+      if (localc.gtn() == 108)
       {
-        locala.AI(localc.bWW());
+        locala.aeN(localc.gto());
         break;
       }
       if (parama == null) {
@@ -59,61 +59,61 @@ public final class c
       for (;;)
       {
         localObject = parama;
-        if (localc.bWV() != 97) {
+        if (localc.gtn() != 97) {
           break label92;
         }
-        if (localc.bWW() == 0) {
+        if (localc.gto() == 0) {
           break label174;
         }
-        locala = new a((byte[])b.pgl.clone());
+        locala = new a((byte[])b.Mtf.clone());
         break;
         parama.a(localc);
       }
       label174:
-      parama.pgd[(parama.pgd.length - 1)] = -112;
+      parama.MsX[(parama.MsX.length - 1)] = -112;
       localObject = parama;
     }
   }
   
-  public final boolean bWZ()
+  public final void close()
   {
-    AppMethodBeat.i(23049);
-    close();
-    connect();
-    AppMethodBeat.o(23049);
+    AppMethodBeat.i(26674);
+    if (this.Mto.isConnected()) {
+      this.Mto.close();
+    }
+    AppMethodBeat.o(26674);
+  }
+  
+  public final boolean cmB()
+  {
+    AppMethodBeat.i(26673);
+    if (!this.Mto.isConnected()) {
+      this.Mto.connect();
+    }
+    AppMethodBeat.o(26673);
     return true;
   }
   
-  public final void close()
+  public final boolean gtr()
   {
-    AppMethodBeat.i(23047);
-    if (this.pgu.isConnected()) {
-      this.pgu.close();
-    }
-    AppMethodBeat.o(23047);
-  }
-  
-  public final boolean connect()
-  {
-    AppMethodBeat.i(23046);
-    if (!this.pgu.isConnected()) {
-      this.pgu.connect();
-    }
-    AppMethodBeat.o(23046);
+    AppMethodBeat.i(26676);
+    close();
+    cmB();
+    AppMethodBeat.o(26676);
     return true;
   }
   
   public final boolean isConnected()
   {
-    AppMethodBeat.i(23048);
-    boolean bool = this.pgu.isConnected();
-    AppMethodBeat.o(23048);
+    AppMethodBeat.i(26675);
+    boolean bool = this.Mto.isConnected();
+    AppMethodBeat.o(26675);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc.b.a.c
  * JD-Core Version:    0.7.0.1
  */

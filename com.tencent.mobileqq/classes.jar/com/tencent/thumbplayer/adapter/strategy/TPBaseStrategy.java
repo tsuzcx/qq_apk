@@ -22,66 +22,88 @@ public abstract class TPBaseStrategy
   
   boolean isSystemPlayerEnable(TPPlaybackInfo paramTPPlaybackInfo)
   {
+    if (TPStrategyUtils.isTVPlatform()) {
+      return true;
+    }
     return (TPStrategyUtils.isSystemPlayerEnable()) && (TPStrategyUtils.enablePlayBySystemPlayer(paramTPPlaybackInfo));
   }
   
   boolean isThumbPlayerEnable(TPPlaybackInfo paramTPPlaybackInfo)
   {
+    if (TPStrategyUtils.isTVPlatform()) {
+      return TPStrategyUtils.isThumbPlayerEnable();
+    }
     return (TPStrategyUtils.isThumbPlayerEnable()) && (TPStrategyUtils.enablePlayByThumbPlayer(paramTPPlaybackInfo));
   }
   
   public int[] strategyForDec()
   {
-    switch (this.tpStrategyConfig.getDecStrategy())
+    int i = this.tpStrategyConfig.getDecStrategy();
+    if (i != 0)
     {
-    default: 
-      return null;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return null;
+            }
+            return new int[] { 101, 102 };
+          }
+          return new int[] { 101 };
+        }
+        return new int[] { 102, 101 };
+      }
       return new int[] { 102 };
-    case 2: 
-      return new int[] { 102, 101 };
-    case 3: 
-      return new int[] { 101 };
-    case 4: 
-      return new int[] { 101, 102 };
     }
     return new int[] { 102, 101 };
   }
   
   public int strategyForOpen(TPPlaybackInfo paramTPPlaybackInfo)
   {
-    int i = 2;
-    switch (this.tpStrategyConfig.getPlayerStrategy())
+    int i = this.tpStrategyConfig.getPlayerStrategy();
+    if (i != 0)
     {
-    default: 
-      i = 0;
-    }
-    do
-    {
-      do
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          do
+          if (i != 3)
           {
-            return i;
-          } while (isThumbPlayerEnable(paramTPPlaybackInfo));
+            if (i != 4) {
+              return 0;
+            }
+            if (isSystemPlayerEnable(paramTPPlaybackInfo)) {
+              return 1;
+            }
+            if (TPStrategyUtils.isThumbPlayerEnable()) {
+              return 2;
+            }
+            return 0;
+          }
+          if (isSystemPlayerEnable(paramTPPlaybackInfo)) {
+            return 1;
+          }
           return 0;
-        } while (isThumbPlayerEnable(paramTPPlaybackInfo));
+        }
+        if (isThumbPlayerEnable(paramTPPlaybackInfo)) {
+          return 2;
+        }
         if (TPStrategyUtils.isSystemPlayerEnable()) {
           return 1;
         }
         return 0;
-        if (isSystemPlayerEnable(paramTPPlaybackInfo)) {
-          return 1;
-        }
-        return 0;
-        if (isSystemPlayerEnable(paramTPPlaybackInfo)) {
-          return 1;
-        }
-      } while (TPStrategyUtils.isThumbPlayerEnable());
+      }
+      if (isThumbPlayerEnable(paramTPPlaybackInfo)) {
+        return 2;
+      }
       return 0;
-    } while (isThumbPlayerEnable(paramTPPlaybackInfo));
+    }
+    if (isThumbPlayerEnable(paramTPPlaybackInfo)) {
+      return 2;
+    }
     if (TPStrategyUtils.isSystemPlayerEnable()) {
       return 1;
     }
@@ -90,79 +112,51 @@ public abstract class TPBaseStrategy
   
   public int strategyForRetry(TPPlaybackInfo paramTPPlaybackInfo, TPStrategyContext paramTPStrategyContext)
   {
-    int j = 0;
-    int k = this.tpStrategyConfig.getPlayerStrategy();
-    int i;
+    int i = this.tpStrategyConfig.getPlayerStrategy();
     if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 0)) {
-      i = strategyForOpen(paramTPPlaybackInfo);
+      return strategyForOpen(paramTPPlaybackInfo);
     }
-    label169:
-    do
+    if (!checkNeedDoRetry(paramTPStrategyContext)) {
+      return 0;
+    }
+    if (i != 0)
     {
-      do
-      {
-        do
+      if (i != 1) {
+        if (i != 2)
         {
-          do
+          if (i != 3)
           {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          return i;
-                          i = j;
-                        } while (!checkNeedDoRetry(paramTPStrategyContext));
-                        i = j;
-                        switch (k)
-                        {
-                        case 1: 
-                        case 3: 
-                        default: 
-                          return 0;
-                        case 0: 
-                          if ((paramTPStrategyContext == null) || (paramTPStrategyContext.getPlayerType() != 1)) {
-                            break label169;
-                          }
-                          i = j;
-                        }
-                      } while (!isThumbPlayerEnable(paramTPPlaybackInfo));
-                      return 2;
-                      i = j;
-                    } while (paramTPStrategyContext == null);
-                    i = j;
-                  } while (paramTPStrategyContext.getPlayerType() != 2);
-                  i = j;
-                } while (!isSystemPlayerEnable(paramTPPlaybackInfo));
-                return 1;
-                i = j;
-              } while (paramTPStrategyContext == null);
-              i = j;
-            } while (paramTPStrategyContext.getPlayerType() != 1);
-            i = j;
-          } while (!isThumbPlayerEnable(paramTPPlaybackInfo));
-          return 2;
-          i = j;
-        } while (paramTPStrategyContext == null);
-        i = j;
-      } while (paramTPStrategyContext.getPlayerType() != 2);
-      i = j;
-    } while (!isSystemPlayerEnable(paramTPPlaybackInfo));
-    return 1;
+            if (i != 4) {
+              return 0;
+            }
+            if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 1) && (isThumbPlayerEnable(paramTPPlaybackInfo))) {
+              return 2;
+            }
+            return 0;
+          }
+        }
+        else if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 2) && (isSystemPlayerEnable(paramTPPlaybackInfo))) {
+          return 1;
+        }
+      }
+      return 0;
+    }
+    if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 1))
+    {
+      if (isThumbPlayerEnable(paramTPPlaybackInfo)) {
+        return 2;
+      }
+      return 0;
+    }
+    if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 2) && (isSystemPlayerEnable(paramTPPlaybackInfo))) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.TPBaseStrategy
  * JD-Core Version:    0.7.0.1
  */

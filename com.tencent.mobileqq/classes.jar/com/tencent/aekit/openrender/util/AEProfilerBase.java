@@ -15,29 +15,24 @@ public class AEProfilerBase
   @CallSuper
   public long endByTag(@Nullable String paramString)
   {
-    if (!this.mEnableBase) {}
-    while (TextUtils.isEmpty(paramString)) {
+    if (!this.mEnableBase) {
       return 0L;
     }
-    int i = -1;
-    switch (paramString.hashCode())
+    if (!TextUtils.isEmpty(paramString))
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
+      int i = -1;
+      if ((paramString.hashCode() == 1459121842) && (paramString.equals("IAEProfiler-calFps"))) {
+        i = 0;
+      }
+      if (i != 0) {
         return 0L;
       }
       if (this.mStartTime != 0L) {
         this.mOneFrameCost = (System.currentTimeMillis() - this.mStartTime);
       }
       return this.mOneFrameCost;
-      if (paramString.equals("IAEProfiler-calFps")) {
-        i = 0;
-      }
     }
+    return 0L;
   }
   
   public String print()
@@ -55,32 +50,25 @@ public class AEProfilerBase
   @CallSuper
   public void startByTag(@Nullable String paramString)
   {
-    if (!this.mEnableBase) {}
-    while (TextUtils.isEmpty(paramString)) {
+    if (!this.mEnableBase) {
       return;
     }
-    int i = -1;
-    switch (paramString.hashCode())
+    if (!TextUtils.isEmpty(paramString))
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
+      int i = -1;
+      if ((paramString.hashCode() == 1459121842) && (paramString.equals("IAEProfiler-calFps"))) {
+        i = 0;
+      }
+      if (i != 0) {
         return;
       }
       this.mStartTime = System.currentTimeMillis();
-      return;
-      if (paramString.equals("IAEProfiler-calFps")) {
-        i = 0;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.util.AEProfilerBase
  * JD-Core Version:    0.7.0.1
  */

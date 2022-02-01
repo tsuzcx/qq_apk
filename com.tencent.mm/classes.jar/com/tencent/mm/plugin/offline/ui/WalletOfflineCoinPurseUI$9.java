@@ -1,39 +1,24 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.x.a;
-import com.tencent.mm.x.c;
+import com.tencent.mm.autogen.a.xq;
+import com.tencent.mm.sdk.event.IListener;
 
-final class WalletOfflineCoinPurseUI$9
-  implements View.OnClickListener
+class WalletOfflineCoinPurseUI$9
+  extends IListener<xq>
 {
-  WalletOfflineCoinPurseUI$9(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, ImageView paramImageView) {}
-  
-  public final void onClick(View paramView)
+  WalletOfflineCoinPurseUI$9(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, q paramq)
   {
-    AppMethodBeat.i(43513);
-    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "click f2f lucky");
-    h.qsU.e(14021, new Object[] { Integer.valueOf(4), Integer.valueOf(WalletOfflineCoinPurseUI.p(this.pny)) });
-    d.H(this.pny.getContext(), "luckymoney", ".f2f.ui.LuckyMoneyF2FQRCodeUI");
-    if (c.PJ().b(ac.a.yIC, ac.a.yHA))
-    {
-      c.PJ().c(ac.a.yIC, ac.a.yHA);
-      this.pnJ.setVisibility(8);
-      h.qsU.e(14396, new Object[] { Integer.valueOf(5) });
-    }
-    AppMethodBeat.o(43513);
+    super(paramq);
+    AppMethodBeat.i(269170);
+    this.__eventId = xq.class.getName().hashCode();
+    AppMethodBeat.o(269170);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.9
  * JD-Core Version:    0.7.0.1
  */

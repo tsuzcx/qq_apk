@@ -8,8 +8,8 @@ public final class MsgItem
   extends JceStruct
 {
   static byte[] cache_MsgContent;
-  public byte[] MsgContent;
-  public byte cType;
+  public byte[] MsgContent = null;
+  public byte cType = 0;
   
   public MsgItem() {}
   
@@ -38,7 +38,7 @@ public final class MsgItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.MsgItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,26 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public final class s
-  extends t
+  extends aa
 {
-  public List<t> aWy;
+  public LinkedList<aa> QKh;
+  public boolean QKi;
+  public int backgroundColor;
   
   public s()
   {
-    AppMethodBeat.i(36941);
-    this.aWy = new ArrayList();
-    AppMethodBeat.o(36941);
-  }
-  
-  public final List<t> cqF()
-  {
-    return this.aWy;
+    AppMethodBeat.i(96319);
+    this.QKh = new LinkedList();
+    this.QKi = false;
+    AppMethodBeat.o(96319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s
  * JD-Core Version:    0.7.0.1
  */

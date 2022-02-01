@@ -2,134 +2,126 @@ package com.tencent.mqq.shared_file_accessor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SharedPreferencesProxyManager
 {
-  static boolean a;
-  static boolean b = false;
-  private static SharedPreferencesProxyManager c = null;
-  private static SharedPreferencesProxyManager.ISpLogCallback h;
+  private static final int LOCK_BUCKET_SIZE = 8;
+  private static final String LOG_TAG = "SharedPreferencesProxyManager";
+  private static volatile SharedPreferencesProxyManager sInstance;
+  static boolean sIsCrashing = false;
+  static boolean sIsDebugVersion = false;
+  static SharedPreferencesProxyManager.ISpLogCallback sLogCallback;
   public static String sSystemSpExceptionMsg;
-  private Map d = new ConcurrentHashMap(5);
-  private Map e = new ConcurrentHashMap(5);
-  private final Object[] f = new Object[8];
-  private WeakReference g = null;
+  SharedPreferencesProxyManager.IAdapter adapter;
+  private WeakReference<Context> mBoundContext = null;
+  private Map<String, SharedPreferences> mLocalSPs = new ConcurrentHashMap(5);
+  private final Object[] mLocksBucket = new Object[8];
+  private Map<String, SharedPreferences> mRemoteSPs = new ConcurrentHashMap(5);
   
-  static
+  public static SharedPreferencesProxyManager getInstance()
   {
-    a = false;
-    sSystemSpExceptionMsg = null;
+    if (sInstance != null) {
+      return sInstance;
+    }
+    try
+    {
+      if (sInstance == null) {
+        sInstance = new SharedPreferencesProxyManager();
+      }
+      return sInstance;
+    }
+    finally {}
   }
   
-  private SharedPreferencesProxyManager a(Context paramContext)
+  private void printLog(boolean paramBoolean, String paramString1, String paramString2, Exception paramException)
   {
-    a(true, "SpManager", "init " + paramContext, null);
+    SharedPreferencesProxyManager.ISpLogCallback localISpLogCallback = sLogCallback;
+    if (localISpLogCallback != null) {
+      localISpLogCallback.printLog(paramBoolean, paramString1, paramString2, paramException);
+    }
+  }
+  
+  private SharedPreferencesProxyManager realInit(Context paramContext, String paramString, SharedPreferencesProxyManager.IAdapter paramIAdapter)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init ");
+    localStringBuilder.append(paramContext);
+    printLog(true, "SpManager", localStringBuilder.toString(), null);
+    this.adapter = paramIAdapter;
     if (paramContext == null)
     {
-      a(true, "SpManager", "init context is null", new RuntimeException());
-      if (a) {
+      printLog(true, "SpManager", "init context is null", new RuntimeException());
+      if (sIsDebugVersion) {
         throw new RuntimeException("init context is null");
       }
     }
-    if ((this.g == null) && (paramContext != null))
+    if ((this.mBoundContext == null) && (paramContext != null))
     {
-      k.a(paramContext);
-      this.g = new WeakReference(paramContext.getApplicationContext());
+      if (TextUtils.isEmpty(paramString)) {
+        Utils.initCurrentProcessName(paramContext);
+      } else {
+        Utils.initCurrentProcessName(paramContext, paramString);
+      }
+      this.mBoundContext = new WeakReference(paramContext);
     }
     int i = 0;
     while (i < 8)
     {
-      this.f[i] = new Object();
+      this.mLocksBucket[i] = new Object();
       i += 1;
     }
     return this;
   }
   
-  static void a(String paramString1, String paramString2, Object paramObject)
-  {
-    if (h != null) {
-      h.onIllegalModify(paramString1, paramString2, paramObject);
-    }
-  }
-  
-  private static void a(boolean paramBoolean, String paramString1, String paramString2, Exception paramException)
-  {
-    if (h != null) {
-      h.printLog(true, paramString1, paramString2, paramException);
-    }
-  }
-  
-  static boolean a()
-  {
-    return h != null;
-  }
-  
-  public static SharedPreferencesProxyManager getInstance()
-  {
-    if (c != null) {
-      return c;
-    }
-    try
-    {
-      if (c == null) {
-        c = new SharedPreferencesProxyManager();
-      }
-      return c;
-    }
-    finally {}
-  }
-  
   public static void setLogCallback(SharedPreferencesProxyManager.ISpLogCallback paramISpLogCallback)
   {
-    h = paramISpLogCallback;
+    sLogCallback = paramISpLogCallback;
   }
   
-  final SharedPreferences a(String paramString, int paramInt, boolean paramBoolean)
+  public SharedPreferences getProxy(String paramString, int paramInt)
+  {
+    return getProxyInner(paramString, paramInt, true);
+  }
+  
+  SharedPreferences getProxyInner(String paramString, int paramInt, boolean paramBoolean)
   {
     String str = paramString;
     if (paramString == null) {
       str = "null";
     }
-    Map localMap;
-    if (((paramInt & 0x4) == 4) && (!k.b)) {
-      localMap = this.e;
+    if (((paramInt & 0x4) == 4) && (!Utils.sIsSameProcessAsCP)) {
+      paramString = this.mRemoteSPs;
+    } else {
+      paramString = this.mLocalSPs;
     }
-    for (;;)
+    Object localObject1 = (SharedPreferences)paramString.get(str);
+    if (localObject1 == null)
     {
-      SharedPreferences localSharedPreferences = (SharedPreferences)localMap.get(str);
-      paramString = localSharedPreferences;
-      int i;
-      if (localSharedPreferences == null) {
-        i = Math.abs(str.hashCode() % 8);
-      }
-      synchronized (this.f[i])
+      int i = Math.abs(str.hashCode() % 8);
+      synchronized (this.mLocksBucket[i])
       {
-        localSharedPreferences = (SharedPreferences)localMap.get(str);
-        paramString = localSharedPreferences;
+        SharedPreferences localSharedPreferences = (SharedPreferences)paramString.get(str);
+        localObject1 = localSharedPreferences;
         if (localSharedPreferences == null)
         {
-          paramString = new i(this.g, str, paramInt, paramBoolean);
-          localMap.put(str, paramString);
+          localObject1 = new SharedPreferencesProxy(this.mBoundContext, str, paramInt, paramBoolean);
+          paramString.put(str, localObject1);
         }
-        return paramString;
-        localMap = this.d;
+        return localObject1;
       }
     }
+    return localObject1;
   }
   
-  public SharedPreferences getProxy(String paramString, int paramInt)
-  {
-    return a(paramString, paramInt, true);
-  }
-  
-  public SharedPreferencesProxyManager init(Context paramContext)
+  public SharedPreferencesProxyManager init(Context paramContext, SharedPreferencesProxyManager.IAdapter paramIAdapter)
   {
     try
     {
-      paramContext = a(paramContext);
+      paramContext = realInit(paramContext, null, paramIAdapter);
       return paramContext;
     }
     finally
@@ -139,12 +131,11 @@ public class SharedPreferencesProxyManager
     }
   }
   
-  public SharedPreferencesProxyManager init(Context paramContext, boolean paramBoolean)
+  public SharedPreferencesProxyManager init(Context paramContext, String paramString, SharedPreferencesProxyManager.IAdapter paramIAdapter)
   {
     try
     {
-      a = paramBoolean;
-      paramContext = a(paramContext);
+      paramContext = realInit(paramContext, paramString, paramIAdapter);
       return paramContext;
     }
     finally
@@ -152,11 +143,54 @@ public class SharedPreferencesProxyManager
       paramContext = finally;
       throw paramContext;
     }
+  }
+  
+  public SharedPreferencesProxyManager init(Context paramContext, boolean paramBoolean, SharedPreferencesProxyManager.IAdapter paramIAdapter)
+  {
+    try
+    {
+      sIsDebugVersion = paramBoolean;
+      paramContext = realInit(paramContext, null, paramIAdapter);
+      return paramContext;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public SharedPreferencesProxyManager init(Context paramContext, boolean paramBoolean, String paramString, SharedPreferencesProxyManager.IAdapter paramIAdapter)
+  {
+    try
+    {
+      sIsDebugVersion = paramBoolean;
+      paramContext = realInit(paramContext, paramString, paramIAdapter);
+      return paramContext;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  boolean isMonitored()
+  {
+    return sLogCallback != null;
   }
   
   public void onCrashStart()
   {
-    b = true;
+    sIsCrashing = true;
+  }
+  
+  void onModifySp(String paramString1, String paramString2, Object paramObject)
+  {
+    SharedPreferencesProxyManager.ISpLogCallback localISpLogCallback = sLogCallback;
+    if (localISpLogCallback != null) {
+      localISpLogCallback.onIllegalModify(paramString1, paramString2, paramObject);
+    }
   }
   
   public void setCatLogEnabled(boolean paramBoolean) {}
@@ -165,7 +199,7 @@ public class SharedPreferencesProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager
  * JD-Core Version:    0.7.0.1
  */

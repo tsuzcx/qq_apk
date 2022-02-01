@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.dom.Style;
 import com.tencent.viola.ui.view.VSeekBarView;
 import com.tencent.viola.utils.ViolaUtils;
 import java.util.Set;
@@ -56,22 +58,22 @@ public class VSeekBar
         return;
       }
       Object localObject1 = (VSeekBarView)getHostView();
-      if (localObject1 != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        Object localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("progress", paramInt / ((VSeekBarView)localObject1).getMax());
-        ((JSONObject)localObject2).put("isFromUser", paramBoolean);
-        localJSONObject.put("progressChange", localObject2);
-        localObject1 = new JSONArray();
-        localObject2 = this.mDomObj.getRef();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONArray)localObject1).put(localObject2);
-        }
-        ((JSONArray)localObject1).put("progressChange");
-        fireEvent("progressChange", localObject1, localJSONObject);
+      if (localObject1 == null) {
         return;
       }
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("progress", paramInt / ((VSeekBarView)localObject1).getMax());
+      ((JSONObject)localObject2).put("isFromUser", paramBoolean);
+      localJSONObject.put("progressChange", localObject2);
+      localObject1 = new JSONArray();
+      localObject2 = this.mDomObj.getRef();
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((JSONArray)localObject1).put(localObject2);
+      }
+      ((JSONArray)localObject1).put("progressChange");
+      fireEvent("progressChange", localObject1, localJSONObject);
+      return;
     }
     catch (Exception localException) {}
   }
@@ -84,21 +86,21 @@ public class VSeekBar
         return;
       }
       Object localObject1 = (VSeekBarView)getHostView();
-      if (localObject1 != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        Object localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("progress", paramInt / ((VSeekBarView)localObject1).getMax());
-        localJSONObject.put("startSeek", localObject2);
-        localObject1 = new JSONArray();
-        localObject2 = this.mDomObj.getRef();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONArray)localObject1).put(localObject2);
-        }
-        ((JSONArray)localObject1).put("startSeek");
-        fireEvent("startSeek", localObject1, localJSONObject);
+      if (localObject1 == null) {
         return;
       }
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("progress", paramInt / ((VSeekBarView)localObject1).getMax());
+      localJSONObject.put("startSeek", localObject2);
+      localObject1 = new JSONArray();
+      localObject2 = this.mDomObj.getRef();
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((JSONArray)localObject1).put(localObject2);
+      }
+      ((JSONArray)localObject1).put("startSeek");
+      fireEvent("startSeek", localObject1, localJSONObject);
+      return;
     }
     catch (Exception localException) {}
   }
@@ -111,21 +113,21 @@ public class VSeekBar
         return;
       }
       Object localObject1 = (VSeekBarView)getHostView();
-      if (localObject1 != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        Object localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("progress", paramInt / ((VSeekBarView)localObject1).getMax());
-        localJSONObject.put("stopSeek", localObject2);
-        localObject1 = new JSONArray();
-        localObject2 = this.mDomObj.getRef();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONArray)localObject1).put(localObject2);
-        }
-        ((JSONArray)localObject1).put("stopSeek");
-        fireEvent("stopSeek", localObject1, localJSONObject);
+      if (localObject1 == null) {
         return;
       }
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("progress", paramInt / ((VSeekBarView)localObject1).getMax());
+      localJSONObject.put("stopSeek", localObject2);
+      localObject1 = new JSONArray();
+      localObject2 = this.mDomObj.getRef();
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((JSONArray)localObject1).put(localObject2);
+      }
+      ((JSONArray)localObject1).put("stopSeek");
+      fireEvent("stopSeek", localObject1, localJSONObject);
+      return;
     }
     catch (Exception localException) {}
   }
@@ -207,9 +209,19 @@ public class VSeekBar
   private void setSeekBarHeight(Object paramObject)
   {
     VSeekBarView localVSeekBarView = (VSeekBarView)getHostView();
-    if (localVSeekBarView != null) {
+    if (localVSeekBarView != null)
+    {
       localVSeekBarView.setSeekBarHeight(ViolaUtils.getInt(paramObject));
+      localVSeekBarView.invalidateProgressDrawable();
     }
+  }
+  
+  public int getThumbSize()
+  {
+    if (this.mDomObj == null) {
+      return 0;
+    }
+    return ViolaUtils.getInt(this.mDomObj.getStyle().get("cycleThumbSize"));
   }
   
   protected VSeekBarView initComponentHostView(@NonNull Context paramContext)
@@ -240,96 +252,106 @@ public class VSeekBar
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
     onStopSeek(paramSeekBar.getProgress());
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
   
-  public boolean setProperty(String paramString, Object paramObject)
+  protected boolean setProperty(String paramString, Object paramObject)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return super.setProperty(paramString, paramObject);
-        if (paramString.equals("enable"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("backgroundProgressColor"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("progressColor"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("cycleThumbColor"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("seekBarHeight"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("cycleThumbSize"))
-                  {
-                    i = 5;
-                    continue;
-                    if (paramString.equals("paddingLeft"))
-                    {
-                      i = 6;
-                      continue;
-                      if (paramString.equals("paddingRight"))
-                      {
-                        i = 7;
-                        continue;
-                        if (paramString.equals("progress"))
-                        {
-                          i = 8;
-                          continue;
-                          if (paramString.equals("maxProgress")) {
-                            i = 9;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1031219121: 
+      if (paramString.equals("maxProgress")) {
+        i = 9;
       }
+      break;
+    case 755159350: 
+      if (paramString.equals("progressColor")) {
+        i = 2;
+      }
+      break;
+    case 713848971: 
+      if (paramString.equals("paddingRight")) {
+        i = 7;
+      }
+      break;
+    case 110056625: 
+      if (paramString.equals("cycleThumbSize")) {
+        i = 5;
+      }
+      break;
+    case -897822541: 
+      if (paramString.equals("cycleThumbColor")) {
+        i = 3;
+      }
+      break;
+    case -1001078227: 
+      if (paramString.equals("progress")) {
+        i = 8;
+      }
+      break;
+    case -1298848381: 
+      if (paramString.equals("enable")) {
+        i = 0;
+      }
+      break;
+    case -1409714302: 
+      if (paramString.equals("seekBarHeight")) {
+        i = 4;
+      }
+      break;
+    case -1501175880: 
+      if (paramString.equals("paddingLeft")) {
+        i = 6;
+      }
+      break;
+    case -1663695192: 
+      if (paramString.equals("backgroundProgressColor")) {
+        i = 1;
+      }
+      break;
+    }
+    int i = -1;
+    switch (i)
+    {
+    default: 
+      return super.setProperty(paramString, paramObject);
+    case 9: 
+      setMax(paramObject);
+      return true;
+    case 8: 
+      setProgress(paramObject);
+      return true;
+    case 7: 
+      setPaddingRight(paramObject);
+      return true;
+    case 6: 
+      setPaddingLeft(paramObject);
+      return true;
+    case 5: 
+      setCycleThumbSize(paramObject);
+      return true;
+    case 4: 
+      setSeekBarHeight(paramObject);
+      return true;
+    case 3: 
+      setCycleThumbColor(paramObject);
+      return true;
+    case 2: 
+      setProgressColor(paramObject);
+      return true;
+    case 1: 
+      setBackgroundColor(paramObject);
+      return true;
     }
     setEnable(ViolaUtils.getBoolean(paramObject));
-    return true;
-    setBackgroundColor(paramObject);
-    return true;
-    setProgressColor(paramObject);
-    return true;
-    setCycleThumbColor(paramObject);
-    return true;
-    setSeekBarHeight(paramObject);
-    return true;
-    setCycleThumbSize(paramObject);
-    return true;
-    setPaddingLeft(paramObject);
-    return true;
-    setPaddingRight(paramObject);
-    return true;
-    setProgress(paramObject);
-    return true;
-    setMax(paramObject);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VSeekBar
  * JD-Core Version:    0.7.0.1
  */

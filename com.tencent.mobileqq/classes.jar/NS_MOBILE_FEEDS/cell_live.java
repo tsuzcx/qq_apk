@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,18 +16,18 @@ public final class cell_live
   static ArrayList<SpecialMsg> cache_vctCommentList;
   static ArrayList<liveUser> cache_vctLiveUserList;
   public String exception_tips = "";
-  public Map<String, String> extendInfo;
-  public int giftNum;
-  public int likeNum;
-  public int liveType;
-  public int livetime;
-  public Map<Integer, String> mapExtendInfo;
+  public Map<String, String> extendInfo = null;
+  public int giftNum = 0;
+  public int likeNum = 0;
+  public int liveType = 0;
+  public int livetime = 0;
+  public Map<Integer, String> mapExtendInfo = null;
   public String roomid = "";
-  public int roomstat;
+  public int roomstat = 0;
   public String tipsMessage = "";
-  public int usercount;
-  public ArrayList<SpecialMsg> vctCommentList;
-  public ArrayList<liveUser> vctLiveUserList;
+  public int usercount = 0;
+  public ArrayList<SpecialMsg> vctCommentList = null;
+  public ArrayList<liveUser> vctLiveUserList = null;
   
   static
   {
@@ -79,38 +80,45 @@ public final class cell_live
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.roomid != null) {
-      paramJceOutputStream.write(this.roomid, 0);
+    Object localObject = this.roomid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.roomstat, 1);
     paramJceOutputStream.write(this.usercount, 2);
     paramJceOutputStream.write(this.livetime, 3);
     paramJceOutputStream.write(this.giftNum, 5);
     paramJceOutputStream.write(this.likeNum, 6);
-    if (this.tipsMessage != null) {
-      paramJceOutputStream.write(this.tipsMessage, 7);
+    localObject = this.tipsMessage;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 8);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.exception_tips != null) {
-      paramJceOutputStream.write(this.exception_tips, 9);
+    localObject = this.exception_tips;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.vctCommentList != null) {
-      paramJceOutputStream.write(this.vctCommentList, 10);
+    localObject = this.vctCommentList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.vctLiveUserList != null) {
-      paramJceOutputStream.write(this.vctLiveUserList, 11);
+    localObject = this.vctLiveUserList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
     paramJceOutputStream.write(this.liveType, 12);
-    if (this.mapExtendInfo != null) {
-      paramJceOutputStream.write(this.mapExtendInfo, 13);
+    localObject = this.mapExtendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_live
  * JD-Core Version:    0.7.0.1
  */

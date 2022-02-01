@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.mobileqq.videoplatform.api.PlayerState;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
 import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 import com.tencent.superplayer.api.ISuperPlayer;
@@ -27,7 +26,7 @@ public class VideoPlayerProxy
 {
   private long bufferEndtime;
   private long bufferStartTime;
-  private VideoPlayerCallback mCallback;
+  private VideoPlayerInnerCallback mCallback;
   private Context mContext;
   public long mID;
   private PlayProgressChecker mPlayPgsChecker;
@@ -36,174 +35,332 @@ public class VideoPlayerProxy
   boolean mScaleFullScreen;
   public AtomicInteger mState = new AtomicInteger(0);
   private VideoPlayParam mVideoParam;
-  private View mVideoView;
+  private ISPlayerVideoView mVideoView;
   
-  public VideoPlayerProxy(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, VideoPlayerCallback paramVideoPlayerCallback, boolean paramBoolean)
+  public VideoPlayerProxy(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, VideoPlayerInnerCallback paramVideoPlayerInnerCallback, boolean paramBoolean)
   {
     this.mContext = paramContext;
     this.mID = paramLong;
     this.mVideoParam = paramVideoPlayParam;
-    this.mCallback = paramVideoPlayerCallback;
+    this.mCallback = paramVideoPlayerInnerCallback;
     this.mScaleFullScreen = paramBoolean;
+    this.mVideoView = createVideoView();
     init();
   }
   
   private void createMediaPlayer()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "createMediaPlayer");
-        }
-        if (this.mVideoParam == null)
-        {
-          LogUtil.e(getLogTag(), 1, "createMediaPlayer, mVideoParam is null.");
-          return;
-        }
-        changeState(3);
-        this.mPlayer = SuperPlayerFactory.createMediaPlayer(this.mContext.getApplicationContext(), this.mVideoParam.mSceneId, (ISPlayerVideoView)this.mVideoView);
-        if (this.mScaleFullScreen)
-        {
-          this.mPlayer.setXYaxis(2);
-          this.mPlayer.setOnVideoPreparedListener(this);
-          this.mPlayer.setOnCompletionListener(this);
-          this.mPlayer.setOnSeekCompleteListener(this);
-          this.mPlayer.setOnInfoListener(this);
-          this.mPlayer.setOnErrorListener(this);
-          this.mPlayer.setOnCaptureImageListener(this);
-        }
-        else
-        {
-          this.mPlayer.setXYaxis(0);
-        }
+      if (LogUtil.isColorLevel()) {
+        LogUtil.d(getLogTag(), 2, "createMediaPlayer");
       }
-      finally {}
+      if (this.mVideoParam == null)
+      {
+        LogUtil.e(getLogTag(), 1, "createMediaPlayer, mVideoParam is null.");
+        return;
+      }
+      changeState(3);
+      this.mPlayer = SuperPlayerFactory.createMediaPlayer(this.mContext.getApplicationContext(), this.mVideoParam.mSceneId, this.mVideoView);
+      if (this.mScaleFullScreen) {
+        this.mPlayer.setXYaxis(2);
+      } else {
+        this.mPlayer.setXYaxis(0);
+      }
+      this.mPlayer.setOnVideoPreparedListener(this);
+      this.mPlayer.setOnCompletionListener(this);
+      this.mPlayer.setOnSeekCompleteListener(this);
+      this.mPlayer.setOnInfoListener(this);
+      this.mPlayer.setOnErrorListener(this);
+      this.mPlayer.setOnCaptureImageListener(this);
+      if (this.mVideoView != null) {
+        this.mVideoView.addViewCallBack(this);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private ISPlayerVideoView createVideoView()
+  {
+    return SuperPlayerFactory.createPlayerVideoView(this.mContext.getApplicationContext());
+  }
+  
+  private void doOnAllDownloadFinish()
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "doOnAllDownloadFinish.");
+    }
+    VideoPlayerInnerCallback localVideoPlayerInnerCallback = this.mCallback;
+    if (localVideoPlayerInnerCallback != null) {
+      localVideoPlayerInnerCallback.onDownloadComplete(this.mID);
     }
   }
   
-  private View createVideoView()
+  private void doOnBufferEnd()
   {
-    ISPlayerVideoView localISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(this.mContext.getApplicationContext());
-    localISPlayerVideoView.addViewCallBack(this);
-    return (View)localISPlayerVideoView;
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "doOnBufferEnd.");
+    }
+    this.bufferEndtime = System.currentTimeMillis();
+    if ((this.bufferStartTime > 0L) && (this.bufferEndtime > 0L))
+    {
+      QAReport localQAReport = this.mReporter;
+      if (localQAReport != null) {
+        localQAReport.totalBufferingDuration += this.bufferEndtime - this.bufferStartTime;
+      }
+    }
+    this.bufferStartTime = 0L;
+    this.bufferEndtime = 0L;
+    try
+    {
+      if (this.mState.get() == 6) {
+        return;
+      }
+      changeState(4);
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
+  private void doOnBufferStart()
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "doOnBufferStart.");
+    }
+    QAReport localQAReport = this.mReporter;
+    if (localQAReport != null) {
+      localQAReport.bufferCount += 1L;
+    }
+    this.bufferStartTime = System.currentTimeMillis();
+    try
+    {
+      if (this.mState.get() == 6) {
+        return;
+      }
+      changeState(5);
+      return;
+    }
+    finally {}
+  }
+  
+  private void doOnCurLoopEnd()
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "doOnCurLoopEnd.");
+    }
+    VideoPlayerInnerCallback localVideoPlayerInnerCallback = this.mCallback;
+    if (localVideoPlayerInnerCallback != null)
+    {
+      ISuperPlayer localISuperPlayer = this.mPlayer;
+      if (localISuperPlayer != null) {
+        localVideoPlayerInnerCallback.onLoopBack(this.mID, localISuperPlayer.getCurrentPositionMs());
+      }
+    }
+  }
+  
+  private void doOnDownProgressUpdate(Object paramObject)
+  {
+    if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo))
+    {
+      long l = ((TPPlayerMsg.TPDownLoadProgressInfo)paramObject).currentDownloadSize;
+      if (LogUtil.isColorLevel())
+      {
+        paramObject = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doOnDownProgressUpdate, curDownSize =  ");
+        localStringBuilder.append(l);
+        LogUtil.d(paramObject, 2, localStringBuilder.toString());
+      }
+      paramObject = this.mCallback;
+      if (paramObject != null) {
+        paramObject.onDownloadProgress(this.mID, l);
+      }
+    }
+  }
+  
+  private void doOnFirstFrameRendered()
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "doOnFirstFrameRendered.");
+    }
+    Object localObject = this.mReporter;
+    if ((localObject != null) && (((QAReport)localObject).firstRenderTime == 0L)) {
+      this.mReporter.firstRenderTime = System.currentTimeMillis();
+    }
+    localObject = this.mCallback;
+    if (localObject != null) {
+      ((VideoPlayerInnerCallback)localObject).onFirstFrameRendered(this.mID);
+    }
+  }
+  
+  private void doOnVideoDecoderType(long paramLong)
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "doOnVideoDecoderType.");
+    }
+    if (paramLong == 102L)
+    {
+      QAReport localQAReport = this.mReporter;
+      if (localQAReport != null)
+      {
+        localQAReport.lastTryDecoderMode = 102;
+        localQAReport.isMediaCodec = 1;
+      }
+    }
+  }
+  
+  private void doPlay()
+  {
+    if (this.mPlayer != null)
+    {
+      if (LogUtil.isColorLevel()) {
+        LogUtil.d(getLogTag(), 2, "play, mPlayer != null ");
+      }
+      if (this.mState.get() == 6)
+      {
+        if (LogUtil.isColorLevel())
+        {
+          String str = getLogTag();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("play, mPlayer.isPausing() =  ");
+          localStringBuilder.append(this.mPlayer.isPausing());
+          LogUtil.d(str, 2, localStringBuilder.toString());
+        }
+        startPlayer();
+        if (LogUtil.isColorLevel()) {
+          LogUtil.d(getLogTag(), 2, "play, startPlayer() ");
+        }
+      }
+      else
+      {
+        openPlayer();
+      }
+    }
+    else
+    {
+      createMediaPlayer();
+      openPlayer();
+    }
+  }
+  
   private void init()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 186	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:getInstance	()Lcom/tencent/mobileqq/videoplatform/VideoPlaySDKManager;
-    //   5: invokevirtual 189	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:isSDKReady	()Z
-    //   8: ifeq +14 -> 22
-    //   11: aload_0
-    //   12: aload_0
-    //   13: invokespecial 96	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:createVideoView	()Landroid/view/View;
-    //   16: putfield 89	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:mVideoView	Landroid/view/View;
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: iconst_1
-    //   24: invokevirtual 122	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:changeState	(I)V
-    //   27: invokestatic 186	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:getInstance	()Lcom/tencent/mobileqq/videoplatform/VideoPlaySDKManager;
-    //   30: aload_0
-    //   31: getfield 56	com/tencent/mobileqq/videoplatform/VideoPlayerProxy:mContext	Landroid/content/Context;
-    //   34: aload_0
-    //   35: invokevirtual 193	com/tencent/mobileqq/videoplatform/VideoPlaySDKManager:initSDKAsync	(Landroid/content/Context;Lcom/tencent/mobileqq/videoplatform/SDKInitListener;)V
-    //   38: goto -19 -> 19
-    //   41: astore_1
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: aload_1
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	this	VideoPlayerProxy
-    //   41	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	41	finally
-    //   22	38	41	finally
+    try
+    {
+      if (!VideoPlaySDKManager.getInstance().isSDKReady())
+      {
+        changeState(1);
+        VideoPlaySDKManager.getInstance().initSDKAsync(this.mContext, this);
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void logPlayDoNothing()
+  {
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d(getLogTag(), 2, "play, do nothing.");
+    }
+    if ((this.mPlayer != null) && (LogUtil.isColorLevel()))
+    {
+      String str = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("play, mPlayer.isPlaying() = ");
+      localStringBuilder.append(this.mPlayer.isPlaying());
+      LogUtil.d(str, 2, localStringBuilder.toString());
+    }
   }
   
   private void openPlayer()
   {
-    for (;;)
+    try
     {
-      try
+      if (LogUtil.isColorLevel()) {
+        LogUtil.d(getLogTag(), 2, "openPlayer ");
+      }
+      this.mReporter = new QAReport();
+      this.mReporter.videoPlayParam = this.mVideoParam;
+      this.mReporter.openPlayerTime = System.currentTimeMillis();
+      if ((this.mPlayer != null) && (this.mVideoParam != null))
       {
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "openPlayer ");
-        }
-        this.mReporter = new QAReport();
-        this.mReporter.videoPlayParam = this.mVideoParam;
-        this.mReporter.openPlayerTime = System.currentTimeMillis();
-        if ((this.mPlayer != null) && (this.mVideoParam != null))
-        {
-          changeState(3);
-          if (this.mVideoParam.mMaxPlayTimeMs <= 0L) {
-            continue;
-          }
+        changeState(3);
+        if (this.mVideoParam.mMaxPlayTimeMs > 0L) {
           this.mPlayer.setLoopback(this.mVideoParam.mIsLoop, 0L, this.mVideoParam.mMaxPlayTimeMs);
-          this.mPlayer.setOutputMute(this.mVideoParam.mIsMute);
-          if (!this.mVideoParam.mIsLocal) {
-            break label244;
-          }
+        } else {
+          this.mPlayer.setLoopback(this.mVideoParam.mIsLoop);
+        }
+        this.mPlayer.setOutputMute(this.mVideoParam.mIsMute);
+        Object localObject1;
+        Object localObject3;
+        if (this.mVideoParam.mIsLocal)
+        {
           if (this.mVideoParam.mVideoPath != null)
           {
-            SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mVideoPath, 101, this.mVideoParam.mFileID);
-            this.mPlayer.openMediaPlayer(this.mContext, localSuperPlayerVideoInfo, 0L);
+            localObject1 = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mVideoPath, this.mVideoParam.mVideoFormat, this.mVideoParam.mFileID);
+            this.mPlayer.openMediaPlayer(this.mContext, (SuperPlayerVideoInfo)localObject1, this.mVideoParam.mStartPlayPosMs);
             this.mVideoParam.mLastPlayPosMs = 0L;
-            LogUtil.d(getLogTag(), 2, "openPlayer, videoPath = " + this.mVideoParam.mVideoPath);
+            localObject1 = getLogTag();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("openPlayer, videoPath = ");
+            ((StringBuilder)localObject3).append(this.mVideoParam.mVideoPath);
+            LogUtil.d((String)localObject1, 2, ((StringBuilder)localObject3).toString());
           }
         }
-        return;
-        this.mPlayer.setLoopback(this.mVideoParam.mIsLoop);
-        continue;
-        if (this.mVideoParam.mUrls == null) {
-          continue;
-        }
-      }
-      finally {}
-      label244:
-      Object localObject2 = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mUrls, 101, this.mVideoParam.mFileID, this.mVideoParam.mSavePath);
-      this.mPlayer.openMediaPlayer(this.mContext, (SuperPlayerVideoInfo)localObject2, 0L);
-      this.mVideoParam.mLastPlayPosMs = 0L;
-      if (LogUtil.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        String[] arrayOfString = this.mVideoParam.mUrls;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
+        else if (this.mVideoParam.mUrls != null)
         {
-          ((StringBuilder)localObject2).append(arrayOfString[i]).append(" ; ");
-          i += 1;
+          localObject1 = SuperPlayerFactory.createVideoInfoForUrl(this.mVideoParam.mUrls, this.mVideoParam.mVideoFormat, this.mVideoParam.mFileID, this.mVideoParam.mSavePath);
+          ((SuperPlayerVideoInfo)localObject1).setCookies(this.mVideoParam.mCookies);
+          this.mPlayer.openMediaPlayer(this.mContext, (SuperPlayerVideoInfo)localObject1, this.mVideoParam.mStartPlayPosMs);
+          this.mVideoParam.mLastPlayPosMs = 0L;
+          if (LogUtil.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            localObject3 = this.mVideoParam.mUrls;
+            int j = localObject3.length;
+            int i = 0;
+            while (i < j)
+            {
+              ((StringBuilder)localObject1).append(localObject3[i]);
+              ((StringBuilder)localObject1).append(" ; ");
+              i += 1;
+            }
+            localObject3 = getLogTag();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("openPlayer, mVideoParam.mSavePath = ");
+            localStringBuilder.append(this.mVideoParam.mSavePath);
+            localStringBuilder.append(" urls = ");
+            localStringBuilder.append(((StringBuilder)localObject1).toString());
+            LogUtil.d((String)localObject3, 2, localStringBuilder.toString());
+          }
         }
-        LogUtil.d(getLogTag(), 2, "openPlayer, mVideoParam.mSavePath = " + this.mVideoParam.mSavePath + " urls = " + ((StringBuilder)localObject2).toString());
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   private void startCheckPlayProgress()
   {
-    if ((this.mVideoParam != null) && (this.mVideoParam.mNeedPlayProgress))
+    Object localObject = this.mVideoParam;
+    if ((localObject != null) && (((VideoPlayParam)localObject).mNeedPlayProgress))
     {
-      if (this.mPlayPgsChecker != null) {
-        break label55;
+      localObject = this.mPlayPgsChecker;
+      if (localObject == null) {
+        this.mPlayPgsChecker = new PlayProgressChecker(this.mID, this.mPlayer, this.mCallback);
+      } else {
+        ((PlayProgressChecker)localObject).mPlayer = this.mPlayer;
       }
-      this.mPlayPgsChecker = new PlayProgressChecker(this.mID, this.mPlayer, this.mCallback);
-    }
-    for (;;)
-    {
       this.mPlayPgsChecker.start();
-      return;
-      label55:
-      this.mPlayPgsChecker.mPlayer = this.mPlayer;
     }
   }
   
@@ -229,50 +386,49 @@ public class VideoPlayerProxy
   
   private void stopCheckPlayProgress()
   {
-    if (this.mPlayPgsChecker != null) {
-      this.mPlayPgsChecker.stop();
+    PlayProgressChecker localPlayProgressChecker = this.mPlayPgsChecker;
+    if (localPlayProgressChecker != null) {
+      localPlayProgressChecker.stop();
     }
   }
   
   public void captureCurFrame(long paramLong, int paramInt1, int paramInt2)
   {
-    if (this.mPlayer != null) {}
-    try
-    {
-      this.mPlayer.captureImageInTime(paramLong, paramInt1, paramInt2);
-      return;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      LogUtil.e(getLogTag(), 2, "captuerCurFrame", localIllegalAccessException);
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      try
+      {
+        localISuperPlayer.captureImageInTime(paramLong, paramInt1, paramInt2);
+        return;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        LogUtil.e(getLogTag(), 2, "captuerCurFrame", localIllegalAccessException);
+      }
     }
   }
   
   protected void changeState(int paramInt)
   {
-    VideoPlayerProxy.5 local5;
     if (paramInt != this.mState.get())
     {
-      if (LogUtil.isColorLevel()) {
-        LogUtil.d(getLogTag(), 2, "changeState() , newState = " + PlayerState.getStateStr(paramInt));
+      if (LogUtil.isColorLevel())
+      {
+        String str = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("changeState() , newState = ");
+        localStringBuilder.append(PlayerState.getStateStr(paramInt));
+        LogUtil.d(str, 2, localStringBuilder.toString());
       }
       this.mState.set(paramInt);
-      local5 = new VideoPlayerProxy.5(this, paramInt);
-      if (paramInt == 4) {
-        ThreadUtil.postOnUIThreadDelayed(local5, 300L);
-      }
+      ThreadUtil.postOnUIThread(new VideoPlayerProxy.5(this, paramInt));
     }
-    else
-    {
-      return;
-    }
-    ThreadUtil.postOnUIThread(local5);
   }
   
   public long getCurPostionMs()
   {
-    l2 = -1L;
-    l1 = l2;
+    long l2 = -1L;
+    long l1 = l2;
     try
     {
       if (this.mPlayer != null)
@@ -285,13 +441,16 @@ public class VideoPlayerProxy
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        l1 = l2;
-      }
+      LogUtil.e(getLogTag(), 1, "getCurPlayingPos() error .", localThrowable);
+      l1 = l2;
     }
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d(getLogTag(), 2, "getCurPlayingPos() curPosi = " + l1);
+    if (LogUtil.isColorLevel())
+    {
+      String str = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurPlayingPos() curPosi = ");
+      localStringBuilder.append(l1);
+      LogUtil.d(str, 2, localStringBuilder.toString());
     }
     return l1;
   }
@@ -303,24 +462,34 @@ public class VideoPlayerProxy
   
   protected String getLogTag()
   {
-    return "[VideoPlatForm]VideoPlayerProxy[" + getLogId() + "][state:" + PlayerState.getStateStr(this.mState.get()) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[VideoPlatForm]VideoPlayerProxy[");
+    localStringBuilder.append(getLogId());
+    localStringBuilder.append("][state:");
+    localStringBuilder.append(PlayerState.getStateStr(this.mState.get()));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public long getVideoDurationMs()
   {
-    if (this.mPlayer != null) {}
-    for (long l1 = this.mPlayer.getDurationMs();; l1 = 0L)
-    {
-      long l2 = l1;
-      if (l1 <= 0L)
-      {
-        l2 = l1;
-        if (this.mVideoParam != null) {
-          l2 = this.mVideoParam.mVideoFileTimeMs;
-        }
-      }
-      return l2;
+    Object localObject = this.mPlayer;
+    long l1;
+    if (localObject != null) {
+      l1 = ((ISuperPlayer)localObject).getDurationMs();
+    } else {
+      l1 = 0L;
     }
+    long l2 = l1;
+    if (l1 <= 0L)
+    {
+      localObject = this.mVideoParam;
+      l2 = l1;
+      if (localObject != null) {
+        l2 = ((VideoPlayParam)localObject).mVideoFileTimeMs;
+      }
+    }
+    return l2;
   }
   
   public VideoPlayParam getVideoParam()
@@ -330,34 +499,62 @@ public class VideoPlayerProxy
   
   public View getVideoView()
   {
-    return this.mVideoView;
+    return (View)this.mVideoView;
+  }
+  
+  public boolean isMute()
+  {
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.isOutputMute();
+    }
+    return false;
   }
   
   public boolean isPlaying()
   {
-    if (this.mPlayer != null) {
-      return this.mPlayer.isPlaying();
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.isPlaying();
     }
     return false;
   }
   
   public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.e(getLogTag(), 2, "onCaptureImageSucceed() , id = " + paramInt1 + " , errCode = " + paramInt2);
+    if (LogUtil.isColorLevel())
+    {
+      paramISuperPlayer = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCaptureImageSucceed() , id = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" , errCode = ");
+      localStringBuilder.append(paramInt2);
+      LogUtil.e(paramISuperPlayer, 2, localStringBuilder.toString());
     }
-    if (this.mCallback != null) {
-      this.mCallback.onCapFrame(paramInt1, false, 0, 0, null);
+    paramISuperPlayer = this.mCallback;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.onCapFrame(paramInt1, false, 0, 0, null);
     }
   }
   
   public void onCaptureImageSucceed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d(getLogTag(), 2, "onCaptureImageSucceed(), id = " + paramInt1 + " , width = " + paramInt2 + " , height = " + paramInt3);
+    if (LogUtil.isColorLevel())
+    {
+      paramISuperPlayer = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCaptureImageSucceed(), id = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" , width = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" , height = ");
+      localStringBuilder.append(paramInt3);
+      LogUtil.d(paramISuperPlayer, 2, localStringBuilder.toString());
     }
-    if (this.mCallback != null) {
-      this.mCallback.onCapFrame(paramInt1, true, paramInt2, paramInt3, paramBitmap);
+    paramISuperPlayer = this.mCallback;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.onCapFrame(paramInt1, true, paramInt2, paramInt3, paramBitmap);
     }
   }
   
@@ -382,8 +579,21 @@ public class VideoPlayerProxy
   {
     try
     {
-      paramISuperPlayer = "errorModule=" + paramInt1 + "errorType = " + paramInt2 + " , errorCode = " + paramInt3 + " ,extraInfo = " + paramString;
-      LogUtil.d(getLogTag(), 1, "onError, " + paramISuperPlayer);
+      paramISuperPlayer = new StringBuilder();
+      paramISuperPlayer.append("errorModule=");
+      paramISuperPlayer.append(paramInt1);
+      paramISuperPlayer.append("errorType = ");
+      paramISuperPlayer.append(paramInt2);
+      paramISuperPlayer.append(" , errorCode = ");
+      paramISuperPlayer.append(paramInt3);
+      paramISuperPlayer.append(" ,extraInfo = ");
+      paramISuperPlayer.append(paramString);
+      paramISuperPlayer = paramISuperPlayer.toString();
+      String str = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onError, ");
+      localStringBuilder.append(paramISuperPlayer);
+      LogUtil.d(str, 1, localStringBuilder.toString());
       changeState(7);
       if (this.mCallback != null) {
         this.mCallback.onPlayError(this.mID, paramInt1, paramInt2, paramInt3, paramString);
@@ -403,105 +613,67 @@ public class VideoPlayerProxy
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d(getLogTag(), 2, "onInfo, msg = " + paramInt);
-    }
-    switch (paramInt)
+    if (LogUtil.isColorLevel())
     {
+      paramISuperPlayer = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onInfo, msg = ");
+      localStringBuilder.append(paramInt);
+      LogUtil.d(paramISuperPlayer, 2, localStringBuilder.toString());
     }
-    for (;;)
+    if (paramInt != 105)
     {
-      return false;
-      if (LogUtil.isColorLevel()) {
-        LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_FIRST_VIDEO_FRAME_RENDERED ");
-      }
-      if ((this.mReporter != null) && (this.mReporter.firstRenderTime == 0L))
+      if (paramInt != 108)
       {
-        this.mReporter.firstRenderTime = System.currentTimeMillis();
-        continue;
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_VIDEO_DECODER_TYPE ");
-        }
-        if ((paramLong1 == 102L) && (this.mReporter != null))
+        if (paramInt != 115)
         {
-          this.mReporter.lastTryDecoderMode = 102;
-          this.mReporter.isMediaCodec = 1;
-          continue;
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_BUFFERING_START ");
-          }
-          if (this.mReporter != null)
+          if (paramInt != 201)
           {
-            paramISuperPlayer = this.mReporter;
-            paramISuperPlayer.bufferCount += 1L;
-          }
-          this.bufferStartTime = System.currentTimeMillis();
-          try
-          {
-            if (this.mState.get() == 6) {
-              continue;
-            }
-          }
-          finally {}
-          changeState(5);
-          continue;
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_BUFFERING_END ");
-          }
-          this.bufferEndtime = System.currentTimeMillis();
-          if ((this.bufferStartTime > 0L) && (this.bufferEndtime > 0L) && (this.mReporter != null))
-          {
-            paramISuperPlayer = this.mReporter;
-            paramISuperPlayer.totalBufferingDuration += this.bufferEndtime - this.bufferStartTime;
-          }
-          this.bufferStartTime = 0L;
-          this.bufferEndtime = 0L;
-          try
-          {
-            if (this.mState.get() == 6) {
-              continue;
-            }
-          }
-          finally {}
-          changeState(4);
-          continue;
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_ALL_DOWNLOAD_FINISH ");
-          }
-          if (this.mCallback != null)
-          {
-            this.mCallback.onDownloadComplete(this.mID);
-            continue;
-            if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo))
+            if (paramInt != 207)
             {
-              paramLong1 = ((TPPlayerMsg.TPDownLoadProgressInfo)paramObject).currentDownloadSize;
-              if (LogUtil.isColorLevel()) {
-                LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.TP_PLAYER_INFO_OBJECT_DOWNLOAD_PROGRESS_UPDATE, currentDownloadSize =  " + paramLong1);
-              }
-              if (this.mCallback != null)
+              if (paramInt != 112)
               {
-                this.mCallback.onDownloadProgress(this.mID, paramLong1);
-                continue;
-                if (LogUtil.isColorLevel()) {
-                  LogUtil.d(getLogTag(), 2, "onInfo, SuperPlayerMsg.PLAYER_INFO_CURRENT_LOOP_END ");
+                if (paramInt == 113) {
+                  doOnBufferEnd();
                 }
-                if ((this.mCallback != null) && (this.mPlayer != null)) {
-                  this.mCallback.onLoopBack(this.mID, this.mPlayer.getCurrentPositionMs());
-                }
+              }
+              else {
+                doOnBufferStart();
               }
             }
+            else {
+              doOnDownProgressUpdate(paramObject);
+            }
           }
+          else {
+            doOnAllDownloadFinish();
+          }
+        }
+        else {
+          doOnVideoDecoderType(paramLong1);
         }
       }
+      else {
+        doOnCurLoopEnd();
+      }
     }
+    else {
+      doOnFirstFrameRendered();
+    }
+    return false;
   }
   
   public void onSDKInited(boolean paramBoolean)
   {
     try
     {
-      if (LogUtil.isColorLevel()) {
-        LogUtil.d(getLogTag(), 2, "onSDKInited, isSucceed =  " + paramBoolean);
+      if (LogUtil.isColorLevel())
+      {
+        String str = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onSDKInited, isSucceed =  ");
+        localStringBuilder.append(paramBoolean);
+        LogUtil.d(str, 2, localStringBuilder.toString());
       }
       ThreadUtil.postOnUIThread(new VideoPlayerProxy.4(this));
       return;
@@ -525,37 +697,41 @@ public class VideoPlayerProxy
     if (LogUtil.isColorLevel()) {
       LogUtil.e(getLogTag(), 2, "onSurfaceDestroy() ");
     }
+    paramObject = this.mCallback;
+    if (paramObject != null) {
+      paramObject.onSurfaceDestroy(this.mID);
+    }
     release(false, false);
   }
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    StringBuilder localStringBuilder;
     if (LogUtil.isColorLevel())
     {
       paramISuperPlayer = getLogTag();
-      localStringBuilder = new StringBuilder().append("onVideoPrepared, mPlayer == null ? ");
-      if (this.mPlayer != null) {
-        break label100;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVideoPrepared, mPlayer == null ? ");
+      boolean bool;
+      if (this.mPlayer == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      LogUtil.d(paramISuperPlayer, 2, localStringBuilder.toString());
     }
-    label100:
-    for (boolean bool = true;; bool = false)
+    try
     {
-      LogUtil.d(paramISuperPlayer, 2, bool);
-      try
+      if ((this.mState.get() == 5) || (this.mState.get() == 3))
       {
-        if ((this.mState.get() == 5) || (this.mState.get() == 3))
-        {
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "onVideoPrepared, startPlayer.");
-          }
-          startPlayer();
+        if (LogUtil.isColorLevel()) {
+          LogUtil.d(getLogTag(), 2, "onVideoPrepared, startPlayer.");
         }
-        return;
+        startPlayer();
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
   public void pause()
@@ -576,65 +752,35 @@ public class VideoPlayerProxy
   
   public void pauseDownload()
   {
-    if (this.mPlayer != null) {
-      this.mPlayer.pauseDownload();
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pauseDownload();
     }
   }
   
   public void play()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "play");
-        }
-        if (!VideoPlaySDKManager.getInstance().isSDKReady())
-        {
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "play, sdk not ready, return.");
-          }
-          return;
-        }
-        if ((this.mState.get() == 4) || (this.mState.get() == 5) || (this.mState.get() == 3))
-        {
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "play, do nothing.");
-          }
-          if ((this.mPlayer == null) || (!LogUtil.isColorLevel())) {
-            continue;
-          }
-          LogUtil.d(getLogTag(), 2, "play, mPlayer.isPlaying() = " + this.mPlayer.isPlaying());
-          continue;
-        }
-        if (this.mPlayer == null) {
-          break label264;
-        }
-      }
-      finally {}
       if (LogUtil.isColorLevel()) {
-        LogUtil.d(getLogTag(), 2, "play, mPlayer != null ");
+        LogUtil.d(getLogTag(), 2, "play");
       }
-      if (this.mState.get() == 6)
+      if (!VideoPlaySDKManager.getInstance().isSDKReady())
       {
+        VideoPlaySDKManager.getInstance().addSDKInstalledListener(this);
         if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "play, mPlayer.isPauseing() =  " + this.mPlayer.isPausing());
+          LogUtil.d(getLogTag(), 2, "play, sdk not ready, return.");
         }
-        startPlayer();
-        if (LogUtil.isColorLevel()) {
-          LogUtil.d(getLogTag(), 2, "play, startPlayer() ");
-        }
+        return;
       }
-      else
-      {
-        openPlayer();
-        continue;
-        label264:
-        createMediaPlayer();
-        openPlayer();
+      if ((this.mState.get() != 4) && (this.mState.get() != 5) && (this.mState.get() != 3)) {
+        doPlay();
+      } else {
+        logPlayDoNothing();
       }
+      return;
     }
+    finally {}
   }
   
   public void release(boolean paramBoolean1, boolean paramBoolean2)
@@ -642,53 +788,62 @@ public class VideoPlayerProxy
     if (LogUtil.isColorLevel()) {
       LogUtil.d(getLogTag(), 2, "releasePlayer");
     }
-    for (;;)
+    try
     {
-      try
+      if (this.mState.get() == 9)
       {
-        if (this.mState.get() == 9)
-        {
-          if (LogUtil.isColorLevel()) {
-            LogUtil.d(getLogTag(), 2, "has released, do nothing.");
-          }
-          return;
+        if (LogUtil.isColorLevel()) {
+          LogUtil.d(getLogTag(), 2, "has released, do nothing.");
         }
-        changeState(9);
-        stopCheckPlayProgress();
-        if (this.mReporter != null)
-        {
-          QAReport localQAReport = this.mReporter;
-          if (!paramBoolean2)
-          {
-            paramBoolean2 = true;
-            localQAReport.doReport(paramBoolean2);
-          }
-        }
-        else
-        {
-          if ((this.mVideoView != null) && ((this.mVideoView instanceof ISPlayerVideoView))) {
-            ((ISPlayerVideoView)this.mVideoView).removeViewCallBack(this);
-          }
-          ThreadUtil.postOnSubThread(new VideoPlayerProxy.1(this, paramBoolean1));
-          return;
-        }
+        return;
       }
-      finally {}
-      paramBoolean2 = false;
+      changeState(9);
+      stopCheckPlayProgress();
+      Object localObject1 = this.mReporter;
+      if (localObject1 != null) {
+        ((QAReport)localObject1).doReport(paramBoolean2 ^ true);
+      }
+      localObject1 = this.mVideoView;
+      if (localObject1 != null) {
+        ((ISPlayerVideoView)localObject1).removeViewCallBack(this);
+      }
+      ThreadUtil.postOnSubThread(new VideoPlayerProxy.1(this, paramBoolean1));
+      VideoPlaySDKManager.getInstance().removeSDKInstalledListener(this);
+      return;
     }
+    finally {}
   }
   
   public void resumeDownload()
   {
-    if (this.mPlayer != null) {
-      this.mPlayer.resumeDownload();
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.resumeDownload();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.mPlayer != null) {
-      this.mPlayer.seekTo(paramInt);
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.seekTo(paramInt);
+    }
+  }
+  
+  public void setID(long paramLong)
+  {
+    this.mID = paramLong;
+    PlayProgressChecker localPlayProgressChecker = this.mPlayPgsChecker;
+    if (localPlayProgressChecker != null) {
+      localPlayProgressChecker.setId(paramLong);
+    }
+  }
+  
+  public void setMute(boolean paramBoolean)
+  {
+    ISuperPlayer localISuperPlayer = this.mPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOutputMute(paramBoolean);
     }
   }
   
@@ -699,7 +854,7 @@ public class VideoPlayerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

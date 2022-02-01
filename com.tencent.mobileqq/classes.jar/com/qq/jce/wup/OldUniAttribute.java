@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class OldUniAttribute
+class OldUniAttribute
 {
   protected HashMap<String, HashMap<String, byte[]>> _data = new HashMap();
   JceInputStream _is = new JceInputStream();
@@ -26,51 +26,54 @@ public class OldUniAttribute
   {
     if (paramObject.getClass().isArray())
     {
-      if (!paramObject.getClass().getComponentType().toString().equals("byte")) {
-        throw new IllegalArgumentException("only byte[] is supported");
+      if (paramObject.getClass().getComponentType().toString().equals("byte"))
+      {
+        if (Array.getLength(paramObject) > 0)
+        {
+          paramArrayList.add("java.util.List");
+          checkObjectType(paramArrayList, Array.get(paramObject, 0));
+          return;
+        }
+        paramArrayList.add("Array");
+        paramArrayList.add("?");
+        return;
       }
-      if (Array.getLength(paramObject) > 0)
+      throw new IllegalArgumentException("only byte[] is supported");
+    }
+    if (!(paramObject instanceof Array))
+    {
+      if ((paramObject instanceof List))
       {
         paramArrayList.add("java.util.List");
-        checkObjectType(paramArrayList, Array.get(paramObject, 0));
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          checkObjectType(paramArrayList, paramObject.get(0));
+          return;
+        }
+        paramArrayList.add("?");
         return;
       }
-      paramArrayList.add("Array");
-      paramArrayList.add("?");
-      return;
-    }
-    if ((paramObject instanceof Array)) {
-      throw new IllegalArgumentException("can not support Array, please use List");
-    }
-    if ((paramObject instanceof List))
-    {
-      paramArrayList.add("java.util.List");
-      paramObject = (List)paramObject;
-      if (paramObject.size() > 0)
+      if ((paramObject instanceof Map))
       {
-        checkObjectType(paramArrayList, paramObject.get(0));
+        paramArrayList.add("java.util.Map");
+        Object localObject = (Map)paramObject;
+        if (((Map)localObject).size() > 0)
+        {
+          paramObject = ((Map)localObject).keySet().iterator().next();
+          localObject = ((Map)localObject).get(paramObject);
+          paramArrayList.add(paramObject.getClass().getName());
+          checkObjectType(paramArrayList, localObject);
+          return;
+        }
+        paramArrayList.add("?");
+        paramArrayList.add("?");
         return;
       }
-      paramArrayList.add("?");
+      paramArrayList.add(paramObject.getClass().getName());
       return;
     }
-    if ((paramObject instanceof Map))
-    {
-      paramArrayList.add("java.util.Map");
-      Object localObject = (Map)paramObject;
-      if (((Map)localObject).size() > 0)
-      {
-        paramObject = ((Map)localObject).keySet().iterator().next();
-        localObject = ((Map)localObject).get(paramObject);
-        paramArrayList.add(paramObject.getClass().getName());
-        checkObjectType(paramArrayList, localObject);
-        return;
-      }
-      paramArrayList.add("?");
-      paramArrayList.add("?");
-      return;
-    }
-    paramArrayList.add(paramObject.getClass().getName());
+    throw new IllegalArgumentException("can not support Array, please use List");
   }
   
   private Object getCacheProxy(String paramString)
@@ -119,34 +122,36 @@ public class OldUniAttribute
   
   public <T> T get(String paramString)
   {
+    boolean bool = this._data.containsKey(paramString);
     Object localObject2 = null;
-    if (!this._data.containsKey(paramString)) {
+    if (!bool) {
       return null;
     }
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject1 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
-    if (((Iterator)localObject1).hasNext())
+    Object localObject3 = (HashMap)this._data.get(paramString);
+    Object localObject1 = new byte[0];
+    localObject3 = ((HashMap)localObject3).entrySet().iterator();
+    if (((Iterator)localObject3).hasNext())
     {
-      localObject1 = (Map.Entry)((Iterator)localObject1).next();
+      localObject1 = (Map.Entry)((Iterator)localObject3).next();
       localObject2 = (String)((Map.Entry)localObject1).getKey();
+      localObject1 = (byte[])((Map.Entry)localObject1).getValue();
     }
-    for (localObject1 = (byte[])((Map.Entry)localObject1).getValue();; localObject1 = new byte[0]) {
-      try
-      {
-        localObject2 = getCacheProxy((String)localObject2);
-        this._is.wrap((byte[])localObject1);
-        this._is.setServerEncoding(this.encodeName);
-        localObject1 = this._is.read(localObject2, 0, true);
-        saveDataCache(paramString, localObject1);
-        return localObject1;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        throw new ObjectCreateException(paramString);
-      }
+    try
+    {
+      localObject2 = getCacheProxy((String)localObject2);
+      this._is.wrap((byte[])localObject1);
+      this._is.setServerEncoding(this.encodeName);
+      localObject1 = this._is.read(localObject2, 0, true);
+      saveDataCache(paramString, localObject1);
+      return localObject1;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new ObjectCreateException(paramString);
     }
   }
   
@@ -158,34 +163,34 @@ public class OldUniAttribute
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject1 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
-    Object localObject2;
-    if (((Iterator)localObject1).hasNext())
+    Object localObject2 = (HashMap)this._data.get(paramString);
+    Object localObject1 = new byte[0];
+    localObject2 = ((HashMap)localObject2).entrySet().iterator();
+    if (((Iterator)localObject2).hasNext())
     {
-      localObject1 = (Map.Entry)((Iterator)localObject1).next();
+      localObject1 = (Map.Entry)((Iterator)localObject2).next();
       localObject2 = (String)((Map.Entry)localObject1).getKey();
       localObject1 = (byte[])((Map.Entry)localObject1).getValue();
     }
-    for (;;)
+    else
     {
-      try
-      {
-        localObject2 = getCacheProxy((String)localObject2);
-        this._is.wrap((byte[])localObject1);
-        this._is.setServerEncoding(this.encodeName);
-        localObject1 = this._is.read(localObject2, 0, true);
-        saveDataCache(paramString, localObject1);
-        return localObject1;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        saveDataCache(paramString, paramObject);
-        return paramObject;
-      }
-      byte[] arrayOfByte = new byte[0];
       localObject2 = "";
     }
+    try
+    {
+      localObject2 = getCacheProxy((String)localObject2);
+      this._is.wrap((byte[])localObject1);
+      this._is.setServerEncoding(this.encodeName);
+      localObject1 = this._is.read(localObject2, 0, true);
+      saveDataCache(paramString, localObject1);
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      saveDataCache(paramString, paramObject);
+    }
+    return paramObject;
   }
   
   public String getEncodeName()
@@ -195,35 +200,36 @@ public class OldUniAttribute
   
   public <T> T getJceStruct(String paramString)
   {
-    if (!this._data.containsKey(paramString)) {
+    boolean bool = this._data.containsKey(paramString);
+    Object localObject2 = null;
+    if (!bool) {
       return null;
     }
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject1 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
-    if (((Iterator)localObject1).hasNext())
+    Object localObject3 = (HashMap)this._data.get(paramString);
+    Object localObject1 = new byte[0];
+    localObject3 = ((HashMap)localObject3).entrySet().iterator();
+    if (((Iterator)localObject3).hasNext())
     {
-      localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      localObject1 = (String)((Map.Entry)localObject2).getKey();
+      localObject1 = (Map.Entry)((Iterator)localObject3).next();
+      localObject2 = (String)((Map.Entry)localObject1).getKey();
+      localObject1 = (byte[])((Map.Entry)localObject1).getValue();
     }
-    for (Object localObject2 = (byte[])((Map.Entry)localObject2).getValue();; localObject2 = new byte[0])
+    try
     {
-      try
-      {
-        localObject1 = getCacheProxy((String)localObject1);
-        this._is.wrap((byte[])localObject2);
-        this._is.setServerEncoding(this.encodeName);
-        localObject1 = this._is.directRead((JceStruct)localObject1, 0, true);
-        saveDataCache(paramString, localObject1);
-        return localObject1;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        throw new ObjectCreateException(paramString);
-      }
-      localObject1 = null;
+      localObject2 = getCacheProxy((String)localObject2);
+      this._is.wrap((byte[])localObject1);
+      this._is.setServerEncoding(this.encodeName);
+      localObject1 = this._is.directRead((JceStruct)localObject2, 0, true);
+      saveDataCache(paramString, localObject1);
+      return localObject1;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new ObjectCreateException(paramString);
     }
   }
   
@@ -239,25 +245,29 @@ public class OldUniAttribute
   
   public <T> void put(String paramString, T paramT)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("put key can not is null");
-    }
-    if (paramT == null) {
+    if (paramString != null)
+    {
+      if (paramT != null)
+      {
+        if (!(paramT instanceof Set))
+        {
+          Object localObject = new JceOutputStream();
+          ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+          ((JceOutputStream)localObject).write(paramT, 0);
+          localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+          HashMap localHashMap = new HashMap(1);
+          ArrayList localArrayList = new ArrayList(1);
+          checkObjectType(localArrayList, paramT);
+          localHashMap.put(BasicClassTypeUtil.transTypeList(localArrayList), localObject);
+          this.cachedData.remove(paramString);
+          this._data.put(paramString, localHashMap);
+          return;
+        }
+        throw new IllegalArgumentException("can not support Set");
+      }
       throw new IllegalArgumentException("put value can not is null");
     }
-    if ((paramT instanceof Set)) {
-      throw new IllegalArgumentException("can not support Set");
-    }
-    Object localObject = new JceOutputStream();
-    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-    ((JceOutputStream)localObject).write(paramT, 0);
-    localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-    HashMap localHashMap = new HashMap(1);
-    ArrayList localArrayList = new ArrayList(1);
-    checkObjectType(localArrayList, paramT);
-    localHashMap.put(BasicClassTypeUtil.transTypeList(localArrayList), localObject);
-    this.cachedData.remove(paramString);
-    this._data.put(paramString, localHashMap);
+    throw new IllegalArgumentException("put key can not is null");
   }
   
   public <T> T remove(String paramString)
@@ -265,31 +275,31 @@ public class OldUniAttribute
     if (!this._data.containsKey(paramString)) {
       return null;
     }
-    paramString = ((HashMap)this._data.remove(paramString)).entrySet().iterator();
-    Object localObject;
-    if (paramString.hasNext())
+    Object localObject = (HashMap)this._data.remove(paramString);
+    paramString = new byte[0];
+    localObject = ((HashMap)localObject).entrySet().iterator();
+    if (((Iterator)localObject).hasNext())
     {
-      paramString = (Map.Entry)paramString.next();
+      paramString = (Map.Entry)((Iterator)localObject).next();
       localObject = (String)paramString.getKey();
       paramString = (byte[])paramString.getValue();
     }
-    for (;;)
+    else
     {
-      try
-      {
-        localObject = BasicClassTypeUtil.createClassByUni((String)localObject);
-        this._is.wrap(paramString);
-        this._is.setServerEncoding(this.encodeName);
-        paramString = this._is.read(localObject, 0, true);
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        throw new ObjectCreateException(paramString);
-      }
-      paramString = new byte[0];
       localObject = "";
+    }
+    try
+    {
+      localObject = BasicClassTypeUtil.createClassByUni((String)localObject);
+      this._is.wrap(paramString);
+      this._is.setServerEncoding(this.encodeName);
+      paramString = this._is.read(localObject, 0, true);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new ObjectCreateException(paramString);
     }
   }
   
@@ -305,7 +315,7 @@ public class OldUniAttribute
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.jce.wup.OldUniAttribute
  * JD-Core Version:    0.7.0.1
  */

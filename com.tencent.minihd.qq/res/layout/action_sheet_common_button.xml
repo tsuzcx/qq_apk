@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.HongbaoRelativeLayout android:background="@drawable/qq_call_item_bg" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/action_sheet_button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/action_sheet_btn_style" />
+    <TextView android:textSize="16.0sp" android:textColor="#8c000000" android:gravity="center|left" android:id="@id/tv" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/action_sheet_checkedIcon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/common_bottom_dialog_checked_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</com.tencent.widget.HongbaoRelativeLayout>

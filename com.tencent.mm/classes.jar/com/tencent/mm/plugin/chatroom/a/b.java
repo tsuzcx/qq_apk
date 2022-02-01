@@ -1,27 +1,25 @@
 package com.tencent.mm.plugin.chatroom.a;
 
-import com.tencent.mm.protocal.protobuf.rc;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.model.ar;
+import com.tencent.mm.storagebase.h;
 
 public abstract interface b
-  extends com.tencent.mm.kernel.c.a
+  extends a
 {
-  public abstract boolean N(String paramString, int paramInt);
+  public abstract boolean alP(String paramString);
   
-  public abstract String R(List<String> paramList);
+  public abstract boolean alQ(String paramString);
   
-  public abstract boolean a(String paramString1, String paramString2, rc paramrc, String paramString3, com.tencent.mm.j.a.a.a parama, com.tencent.mm.sdk.b.b paramb);
+  public abstract ar bzK();
   
-  public abstract boolean a(String paramString1, ArrayList<String> paramArrayList, String paramString2);
+  public abstract ar c(h paramh);
   
-  public abstract List<String> nt(String paramString);
-  
-  public abstract int nv(String paramString);
+  public abstract void setDebugMode(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.chatroom.a.b
  * JD-Core Version:    0.7.0.1
  */

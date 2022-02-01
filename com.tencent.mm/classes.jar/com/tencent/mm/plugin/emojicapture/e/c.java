@@ -1,26 +1,20 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.f.b.j;
-import a.l;
-import a.v;
-import a.y;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
-import android.graphics.RectF;
+import android.content.DialogInterface;
+import android.graphics.Matrix;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.k;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.api.t;
+import com.tencent.mm.plugin.emojicapture.a.i;
 import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
 import com.tencent.mm.plugin.emojicapture.c.b.a;
 import com.tencent.mm.plugin.emojicapture.c.b.b;
+import com.tencent.mm.plugin.emojicapture.model.d.a;
 import com.tencent.mm.plugin.emojicapture.proxy.CgiEmojiTextSpamProxy;
 import com.tencent.mm.plugin.emojicapture.proxy.EmojiCaptureProxy;
 import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.b;
@@ -29,496 +23,586 @@ import com.tencent.mm.plugin.emojicapture.ui.EmojiVideoPlayTextureView;
 import com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer;
 import com.tencent.mm.plugin.emojicapture.ui.editor.EmojiEditorItemView;
 import com.tencent.mm.plugin.emojicapture.ui.editor.TextEditorItemView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sticker.f;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/presenter/EditorPresenter;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IPresenter;", "context", "Landroid/content/Context;", "view", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IView;", "uiNavigation", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;", "imitateMd5", "", "reporter", "Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IView;Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;)V", "cgiEmojiTextSpamProxy", "Lcom/tencent/mm/plugin/emojicapture/proxy/CgiEmojiTextSpamProxy;", "emojiCaptureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "hideLoadingRunnable", "Ljava/lang/Runnable;", "isRemoveBg", "", "isSpeedup", "mixCallback", "com/tencent/mm/plugin/emojicapture/presenter/EditorPresenter$mixCallback$1", "Lcom/tencent/mm/plugin/emojicapture/presenter/EditorPresenter$mixCallback$1;", "mixingInfo", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "originVideoPath", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "textColor", "", "viewPrepared", "voiceText", "voiceTextPrepared", "addEmoji", "", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "checkText", "text", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "shouldBlock", "createMixingEmojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "attachedText", "attachedEmojiMd5", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "destroy", "exportOriginVideo", "mix", "mixImpl", "onBack", "onVoiceTextFinished", "pause", "prepareCheck", "removeBg", "reset", "resume", "setup", "speedUp", "toggleTouch", "enable", "updateText", "color", "change", "updateTextWithoutCheck", "Companion", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/presenter/EditorPresenter;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IPresenter;", "context", "Landroid/content/Context;", "view", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IView;", "uiNavigation", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;", "imitateMd5", "", "reporter", "Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IView;Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;)V", "cgiEmojiTextSpamProxy", "Lcom/tencent/mm/plugin/emojicapture/proxy/CgiEmojiTextSpamProxy;", "emojiCaptureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "hideLoadingRunnable", "Ljava/lang/Runnable;", "isRemoveBg", "", "isSpeedup", "mixCallback", "com/tencent/mm/plugin/emojicapture/presenter/EditorPresenter$mixCallback$1", "Lcom/tencent/mm/plugin/emojicapture/presenter/EditorPresenter$mixCallback$1;", "mixingInfo", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "originVideoPath", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "textColor", "", "viewPrepared", "voiceText", "voiceTextPrepared", "addEmoji", "", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "touchMatrix", "Landroid/graphics/Matrix;", "checkText", "text", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "shouldBlock", "createMixingEmojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "attachedText", "attachedEmojiMd5", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "destroy", "exportOriginVideo", "mix", "mixImpl", "onBack", "onVoiceTextFinished", "pause", "prepareCheck", "removeBg", "reset", "resume", "setup", "speedUp", "toggleTouch", "enable", "updateText", "color", "change", "updateTextWithoutCheck", "Companion", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   implements b.a
 {
-  public static final c.a lwt;
+  public static final c.a yjk;
   private Context context;
-  private final com.tencent.mm.remoteservice.d evl;
-  private final String ewH;
-  private final EmojiCaptureReporter lsY;
-  private boolean lux;
-  private String lvL;
-  private com.tencent.mm.plugin.emojicapture.model.a.a lvM;
-  private EmojiCaptureUI.b lvR;
-  private String lwk;
-  private boolean lwl;
-  private boolean lwm;
-  private boolean lwn;
-  private final CgiEmojiTextSpamProxy lwo;
-  private com.tencent.mm.plugin.emojicapture.model.b.d lwp;
-  private final c.e lwq;
-  private final Runnable lwr;
-  private b.b lws;
+  private String oYm;
+  private final com.tencent.mm.remoteservice.d pfZ;
   private int textColor;
+  private boolean yhT;
+  private EmojiCaptureUI.b yiH;
+  private final EmojiCaptureReporter yiI;
+  private String yiM;
+  private com.tencent.mm.plugin.emojicapture.model.a.b yiN;
+  private b.b yjl;
+  private final String yjm;
+  private boolean yjn;
+  private boolean yjo;
+  private boolean yjp;
+  private final CgiEmojiTextSpamProxy yjq;
+  private com.tencent.mm.plugin.emojicapture.model.b.d yjr;
+  private final c yjs;
+  private final Runnable yjt;
   
   static
   {
-    AppMethodBeat.i(2794);
-    lwt = new c.a((byte)0);
-    AppMethodBeat.o(2794);
+    AppMethodBeat.i(372);
+    yjk = new c.a((byte)0);
+    AppMethodBeat.o(372);
   }
   
   public c(Context paramContext, b.b paramb, EmojiCaptureUI.b paramb1, String paramString, EmojiCaptureReporter paramEmojiCaptureReporter)
   {
-    AppMethodBeat.i(2793);
+    AppMethodBeat.i(371);
     this.context = paramContext;
-    this.lws = paramb;
-    this.lvR = paramb1;
-    this.ewH = paramString;
-    this.lsY = paramEmojiCaptureReporter;
-    this.evl = new com.tencent.mm.remoteservice.d(this.context);
-    this.lwo = new CgiEmojiTextSpamProxy(this.evl);
-    this.lvM = new com.tencent.mm.plugin.emojicapture.model.a.a();
-    this.lwq = new c.e(this);
-    this.lwr = ((Runnable)new c.c(this));
-    AppMethodBeat.o(2793);
+    this.yjl = paramb;
+    this.yiH = paramb1;
+    this.yjm = paramString;
+    this.yiI = paramEmojiCaptureReporter;
+    this.pfZ = new com.tencent.mm.remoteservice.d(this.context);
+    this.yjq = new CgiEmojiTextSpamProxy(this.pfZ);
+    this.yiN = new com.tencent.mm.plugin.emojicapture.model.a.b();
+    this.yjs = new c(this);
+    this.yjt = new c..ExternalSyntheticLambda2(this);
+    AppMethodBeat.o(371);
   }
   
   private final EmojiInfo a(String paramString, int paramInt, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(2786);
-    String str1 = this.lvM.thumbPath;
-    String str2 = com.tencent.mm.vfs.e.avP(str1);
+    AppMethodBeat.i(364);
+    String str1 = this.yiN.thumbPath;
+    String str2 = y.bub(str1);
     EmojiInfo localEmojiInfo = new EmojiInfo();
-    String str3 = EmojiInfo.dQD() + str2;
-    if (!com.tencent.mm.a.e.cN(str3)) {
-      com.tencent.mm.vfs.e.C(str1, str3);
+    String str3 = s.X(EmojiInfo.kMp(), str2);
+    if (!y.ZC(str3)) {
+      y.O(str1, str3, false);
     }
-    ab.i("MicroMsg.EditorPresenter", "create loading EmojiInfo. md5: " + str2 + " outputPath: " + str3);
-    localEmojiInfo.wW(str2);
-    localEmojiInfo.avG("capture");
-    localEmojiInfo.NC(EmojiInfo.yPg);
+    Log.i("MicroMsg.EditorPresenter", "create loading EmojiInfo. md5: " + str2 + " outputPath: " + str3);
+    localEmojiInfo.field_md5 = str2;
+    localEmojiInfo.field_groupId = "capture";
+    localEmojiInfo.field_catalog = EmojiInfo.aklG;
     localEmojiInfo.field_attachedText = paramString;
-    paramString = com.tencent.mm.plugin.emojicapture.model.c.ltu;
-    localEmojiInfo.field_width = com.tencent.mm.plugin.emojicapture.model.c.bnQ();
-    paramString = com.tencent.mm.plugin.emojicapture.model.c.ltu;
-    localEmojiInfo.field_height = com.tencent.mm.plugin.emojicapture.model.c.bnQ();
-    localEmojiInfo.a(EmojiInfo.a.yPC);
-    localEmojiInfo.am(paramArrayList);
-    localEmojiInfo.field_imitateMd5 = this.ewH;
-    localEmojiInfo.field_captureEnterTime = this.lsY.eyh;
-    paramString = this.lvM.ltF;
-    if (paramString != null) {}
-    for (paramString = paramString.lsW;; paramString = null)
+    paramString = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+    localEmojiInfo.field_width = com.tencent.mm.plugin.emojicapture.model.d.dDH();
+    paramString = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+    localEmojiInfo.field_height = com.tencent.mm.plugin.emojicapture.model.d.dDH();
+    localEmojiInfo.a(EmojiInfo.a.admf);
+    localEmojiInfo.cb(paramArrayList);
+    localEmojiInfo.field_imitateMd5 = this.yjm;
+    localEmojiInfo.field_captureEnterTime = this.yiI.mnX;
+    paramString = this.yiN.yhc;
+    if (paramString == null) {}
+    for (paramString = null;; paramString = paramString.ygo)
     {
       localEmojiInfo.field_lensId = paramString;
-      paramString = com.tencent.mm.plugin.emojicapture.model.c.ltu;
-      localEmojiInfo.field_attachTextColor = com.tencent.mm.plugin.emojicapture.model.c.a.uF(paramInt);
-      localEmojiInfo.field_captureScene = this.lsY.scene;
-      paramString = EmojiCaptureProxy.lwI;
+      paramString = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+      localEmojiInfo.field_attachTextColor = d.a.KR(paramInt);
+      localEmojiInfo.field_captureScene = this.yiI.scene;
+      paramString = EmojiCaptureProxy.yjA;
       EmojiCaptureProxy.access$getInstance$cp().createEmojiInfo(localEmojiInfo);
-      AppMethodBeat.o(2786);
+      AppMethodBeat.o(364);
       return localEmojiInfo;
     }
   }
   
-  private final void b(String paramString, a.f.a.b<? super Boolean, y> paramb)
+  private static final void a(c paramc)
   {
-    AppMethodBeat.i(2787);
-    if (bo.isNullOrNil(paramString))
-    {
-      paramb.S(Boolean.FALSE);
-      AppMethodBeat.o(2787);
-      return;
-    }
-    this.lwo.cgiEmojiTextSpam(paramString, (a.f.a.b)new c.b(paramb));
-    AppMethodBeat.o(2787);
+    AppMethodBeat.i(269319);
+    s.u(paramc, "this$0");
+    paramc.yiH.dEE();
+    aa.makeText(paramc.context, a.i.yfT, 0).show();
+    paramc.resume();
+    AppMethodBeat.o(269319);
   }
   
-  private final void boN()
+  private static final void a(c paramc, DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(2785);
-    Object localObject2 = new StringBuilder("start mix ");
-    Object localObject1 = this.lws.getVideoPlayView();
-    if (localObject1 != null)
+    AppMethodBeat.i(269324);
+    s.u(paramc, "this$0");
+    paramc.dEy();
+    AppMethodBeat.o(269324);
+  }
+  
+  private static final void a(c paramc, ah.f paramf, View paramView)
+  {
+    AppMethodBeat.i(269323);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.cH(paramf);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emojicapture/presenter/EditorPresenter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "this$0");
+    s.u(paramf, "$itemView");
+    paramc.yjl.a(true, ((TextEditorItemView)paramf.aqH).getText(), ((TextEditorItemView)paramf.aqH).getTextColor());
+    EmojiCaptureReporter.a(13, paramc.yiI.mnX, 0L, 0L, 0L, 0L, 0, 0, paramc.yiI.scene);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/emojicapture/presenter/EditorPresenter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(269323);
+  }
+  
+  private final void dEy()
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(363);
+    Object localObject1 = this.yjl.getVideoPlayView();
+    Object localObject3;
+    Object localObject5;
+    if (localObject1 == null)
     {
-      localObject1 = ((EmojiVideoPlayTextureView)localObject1).getVideoPath();
-      ab.i("MicroMsg.EditorPresenter", (String)localObject1);
-      localObject2 = new com.tencent.mm.plugin.emojicapture.model.b.a(this.lws.getItemContainer().getValidRect());
-      localObject1 = this.lws.getItemContainer().getAllItemViews();
-      localObject3 = this.lws.getItemContainer().getAllEmojiMd5();
-      localObject4 = this.lws.getItemContainer().getTextItem();
-      if (localObject4 == null) {
-        break label192;
+      localObject1 = null;
+      Log.i("MicroMsg.EditorPresenter", s.X("start mix ", localObject1));
+      localObject3 = new com.tencent.mm.plugin.emojicapture.model.b.a(this.yjl.getItemContainer().getValidRect());
+      localObject1 = this.yjl.getItemContainer().getAllItemViews();
+      localObject4 = this.yjl.getItemContainer().getAllEmojiMd5();
+      localObject5 = this.yjl.getItemContainer().getTextItem();
+      if (localObject5 != null) {
+        break label181;
       }
     }
-    label192:
-    for (int i = ((TextEditorItemView)localObject4).getTextColor();; i = 0)
+    label181:
+    for (int i = 0;; i = ((TextEditorItemView)localObject5).getTextColor())
     {
-      localObject4 = this.lws.getItemContainer().getAttachedText();
+      localObject5 = this.yjl.getItemContainer().getAttachedText();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((com.tencent.mm.plugin.emojicapture.model.b.a)localObject2).a(((com.tencent.mm.plugin.emojicapture.ui.editor.a)((Iterator)localObject1).next()).UH());
+        ((com.tencent.mm.plugin.emojicapture.model.b.a)localObject3).a(((com.tencent.mm.plugin.recordvideo.ui.editor.item.h)((Iterator)localObject1).next()).e(null));
       }
-      localObject1 = null;
+      localObject1 = ((EmojiVideoPlayTextureView)localObject1).getVideoPath();
       break;
     }
-    label386:
-    boolean bool2;
-    if (this.lwp == null)
+    if (this.yjr == null)
     {
-      this.lsY.ewF = this.lws.getItemContainer().getAttachedText();
-      this.lsY.textColor = i;
-      this.lsY.lsQ = this.lux;
-      this.lsY.lsR = this.lwn;
-      this.lsY.lsS = ((ArrayList)localObject3).size();
-      this.lsY.cew = (System.currentTimeMillis() - this.lsY.eyh);
-      EmojiCaptureReporter localEmojiCaptureReporter = this.lsY;
-      localObject1 = this.lvM.ltF;
-      if (localObject1 != null)
+      this.yiI.ygi = this.yjl.getItemContainer().getAttachedText();
+      this.yiI.textColor = i;
+      this.yiI.ygj = this.yhT;
+      this.yiI.ygk = this.yjp;
+      this.yiI.ygl = ((ArrayList)localObject4).size();
+      this.yiI.hqS = (System.currentTimeMillis() - this.yiI.mnX);
+      EmojiCaptureReporter localEmojiCaptureReporter = this.yiI;
+      localObject1 = this.yiN.yhc;
+      if (localObject1 == null)
       {
-        localObject1 = ((com.tencent.mm.plugin.emojicapture.model.a.b)localObject1).lsW;
-        localEmojiCaptureReporter.lsW = ((String)localObject1);
-        this.lsY.bny();
-        localObject1 = a((String)localObject4, i, (ArrayList)localObject3);
-        localObject3 = com.tencent.mm.plugin.emojicapture.model.b.e.luE;
-        j = this.lvM.scene;
+        localObject1 = localObject2;
+        localEmojiCaptureReporter.ygo = ((String)localObject1);
+        this.yiI.dDv();
+        localObject1 = a((String)localObject5, i, (ArrayList)localObject4);
+        localObject2 = com.tencent.mm.plugin.emojicapture.model.b.e.yhW;
+        j = this.yiN.scene;
         l = ((EmojiInfo)localObject1).field_captureEnterTime;
-        localObject3 = this.lvM.videoPath;
-        localObject4 = this.lws.getVideoPlayView();
-        if (localObject4 == null) {
-          break label538;
-        }
-        i = (int)((EmojiVideoPlayTextureView)localObject4).getPlayRate();
-        bool2 = this.lux;
-        if (this.lvM.ltF == null) {
-          break label543;
+        localObject2 = this.yiN.videoPath;
+        localObject4 = this.yjl.getVideoPlayView();
+        if (localObject4 != null) {
+          break label515;
         }
       }
-      label538:
-      label543:
-      for (bool1 = true;; bool1 = false)
+      label515:
+      for (i = 1;; i = (int)((EmojiVideoPlayTextureView)localObject4).getPlayRate())
       {
-        this.lwp = com.tencent.mm.plugin.emojicapture.model.b.e.a(j, l, (String)localObject3, (com.tencent.mm.plugin.emojicapture.model.b.a)localObject2, i, bool2, bool1, (EmojiInfo)localObject1);
+        this.yjr = com.tencent.mm.plugin.emojicapture.model.b.e.a(j, l, (String)localObject2, (com.tencent.mm.plugin.emojicapture.model.b.a)localObject3, i, this.yhT, this.yiN.yhc, (EmojiInfo)localObject1);
         pause();
-        if (!com.tencent.mm.plugin.emojicapture.ui.a.uO(this.lvM.scene)) {
-          break label682;
+        if (!com.tencent.mm.plugin.emojicapture.ui.b.KV(this.yiN.scene)) {
+          break label640;
         }
-        al.ae(this.lwr);
-        al.p(this.lwr, 60000L);
-        localObject1 = this.lvR;
+        MMHandlerThread.removeRunnable(this.yjt);
+        MMHandlerThread.postToMainThreadDelayed(this.yjt, 60000L);
+        localObject1 = this.yiH;
         localObject2 = this.context;
-        localObject3 = this.context.getString(2131299143);
-        j.p(localObject3, "context.getString(R.string.emoji_generating)");
+        localObject3 = this.context.getString(a.i.yfU);
+        s.s(localObject3, "context.getString(R.string.emoji_generating)");
         EmojiCaptureUI.b.a.a((EmojiCaptureUI.b)localObject1, (Context)localObject2, (CharSequence)localObject3);
-        localObject1 = com.tencent.mm.emoji.d.b.eyc;
-        com.tencent.mm.emoji.d.b.a(this.lvM.eyh, (com.tencent.mm.emoji.d.a)this.lwq);
-        AppMethodBeat.o(2785);
+        localObject1 = com.tencent.mm.emoji.e.b.mnS;
+        com.tencent.mm.emoji.e.b.a(this.yiN.mnX, (com.tencent.mm.emoji.e.a)this.yjs);
+        AppMethodBeat.o(363);
         return;
-        localObject1 = null;
+        localObject1 = ((f)localObject1).ygo;
         break;
-        i = 1;
-        break label386;
       }
     }
-    localObject1 = EmojiCaptureProxy.lwI;
-    EmojiCaptureProxy.access$getInstance$cp().deleteEmojiInfoByEnterTime(this.lsY.eyh);
-    localObject1 = a((String)localObject4, i, (ArrayList)localObject3);
-    Object localObject3 = com.tencent.mm.plugin.emojicapture.model.b.e.luE;
-    int j = this.lvM.scene;
+    localObject1 = EmojiCaptureProxy.yjA;
+    EmojiCaptureProxy.access$getInstance$cp().deleteEmojiInfoByEnterTime(this.yiI.mnX);
+    localObject1 = a((String)localObject5, i, (ArrayList)localObject4);
+    localObject2 = com.tencent.mm.plugin.emojicapture.model.b.e.yhW;
+    int j = this.yiN.scene;
     long l = ((EmojiInfo)localObject1).field_captureEnterTime;
-    localObject3 = this.lvM.videoPath;
-    Object localObject4 = this.lws.getVideoPlayView();
-    if (localObject4 != null)
+    localObject2 = this.yiN.videoPath;
+    Object localObject4 = this.yjl.getVideoPlayView();
+    if (localObject4 == null) {}
+    for (i = 1;; i = (int)((EmojiVideoPlayTextureView)localObject4).getPlayRate())
     {
-      i = (int)((EmojiVideoPlayTextureView)localObject4).getPlayRate();
-      label629:
-      bool2 = this.lux;
-      if (this.lvM.ltF == null) {
-        break label676;
-      }
-    }
-    label676:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.lwp = com.tencent.mm.plugin.emojicapture.model.b.e.a(j, l, (String)localObject3, (com.tencent.mm.plugin.emojicapture.model.b.a)localObject2, i, bool2, bool1, (EmojiInfo)localObject1);
+      this.yjr = com.tencent.mm.plugin.emojicapture.model.b.e.a(j, l, (String)localObject2, (com.tencent.mm.plugin.emojicapture.model.b.a)localObject3, i, this.yhT, this.yiN.yhc, (EmojiInfo)localObject1);
       break;
-      i = 1;
-      break label629;
     }
-    label682:
-    EmojiCaptureUI.b.a.a(this.lvR, true);
-    AppMethodBeat.o(2785);
+    label640:
+    EmojiCaptureUI.b.a.a(this.yiH, true);
+    AppMethodBeat.o(363);
   }
   
-  private final void gV(boolean paramBoolean)
+  private final void m(String paramString, kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(2788);
-    ab.i("MicroMsg.EditorPresenter", "toggleTouch: ".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.i(365);
+    if (Util.isNullOrNil(paramString))
+    {
+      paramb.invoke(Boolean.FALSE);
+      AppMethodBeat.o(365);
+      return;
+    }
+    this.yjq.cgiEmojiTextSpam(paramString, (kotlin.g.a.b)new c.b(paramb));
+    AppMethodBeat.o(365);
+  }
+  
+  private final void os(boolean paramBoolean)
+  {
+    AppMethodBeat.i(366);
+    Log.i("MicroMsg.EditorPresenter", s.X("toggleTouch: ", Boolean.valueOf(paramBoolean)));
     if ((this.context instanceof Activity))
     {
-      Object localObject = this.context;
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(2788);
-        throw ((Throwable)localObject);
-      }
-      localObject = (Activity)localObject;
+      Activity localActivity = (Activity)this.context;
       if (paramBoolean)
       {
-        ((Activity)localObject).getWindow().clearFlags(16);
-        AppMethodBeat.o(2788);
+        localActivity.getWindow().clearFlags(16);
+        AppMethodBeat.o(366);
         return;
       }
-      ((Activity)localObject).getWindow().addFlags(16);
+      localActivity.getWindow().addFlags(16);
     }
-    AppMethodBeat.o(2788);
+    AppMethodBeat.o(366);
   }
   
-  public final void Lm(String paramString)
+  public final void a(t paramt, Matrix paramMatrix)
   {
-    AppMethodBeat.i(2779);
-    ab.i("MicroMsg.EditorPresenter", "voice text callback");
-    b(paramString, (a.f.a.b)new c.f(this, paramString));
-    AppMethodBeat.o(2779);
-  }
-  
-  public final void b(com.tencent.mm.plugin.emojicapture.model.a.a parama)
-  {
-    AppMethodBeat.i(2778);
-    j.q(parama, "emojiCaptureInfo");
-    ab.i("MicroMsg.EditorPresenter", "setup");
-    this.lvM = parama;
-    this.lwk = parama.videoPath;
-    this.lux = parama.lsQ;
-    this.textColor = parama.ltH;
-    this.lws.a(parama, parama.videoPath, parama.ltI, this.lux, (a.f.a.a)new c.h(this));
-    com.tencent.mm.ab.b.a("EditorPresenter_setup", (a.f.a.a)new c.i(parama));
-    AppMethodBeat.o(2778);
-  }
-  
-  public final boolean bnA()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(2780);
-    ab.i("MicroMsg.EditorPresenter", "removeBg " + this.lux);
-    if (!this.lvM.ltI)
+    AppMethodBeat.i(360);
+    s.u(paramt, "emojiInfo");
+    if ((paramt instanceof EmojiInfo))
     {
-      AppMethodBeat.o(2780);
-      return false;
-    }
-    EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-    if ((localEmojiVideoPlayTextureView != null) && (localEmojiVideoPlayTextureView.isPlaying() == true))
-    {
-      if (!this.lux) {}
-      for (;;)
+      if (this.yjl.getItemContainer().getAllEmojiMd5().size() >= 8)
       {
-        this.lux = bool;
-        localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-        if (localEmojiVideoPlayTextureView != null) {
-          EmojiVideoPlayTextureView.a(localEmojiVideoPlayTextureView, this.lux);
-        }
-        bool = this.lux;
-        AppMethodBeat.o(2780);
-        return bool;
-        bool = false;
-      }
-    }
-    AppMethodBeat.o(2780);
-    return false;
-  }
-  
-  public final boolean bnB()
-  {
-    AppMethodBeat.i(2781);
-    ab.i("MicroMsg.EditorPresenter", "speedUp " + this.lwn);
-    EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-    if ((localEmojiVideoPlayTextureView != null) && (localEmojiVideoPlayTextureView.getPlayRate() == 1.0F))
-    {
-      localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-      if (localEmojiVideoPlayTextureView != null) {
-        localEmojiVideoPlayTextureView.setPlayRate(2.0F);
-      }
-      this.lwn = true;
-      AppMethodBeat.o(2781);
-      return true;
-    }
-    localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-    if (localEmojiVideoPlayTextureView != null) {
-      localEmojiVideoPlayTextureView.setPlayRate(1.0F);
-    }
-    this.lwn = false;
-    AppMethodBeat.o(2781);
-    return false;
-  }
-  
-  public final void bnC()
-  {
-    AppMethodBeat.i(2784);
-    if (!bo.isNullOrNil(this.ewH))
-    {
-      com.tencent.mm.kernel.b.a locala = g.G(com.tencent.mm.plugin.emoji.b.d.class);
-      j.p(locala, "MMKernel.plugin(IPluginEmoji::class.java)");
-      if (!((Boolean)((com.tencent.mm.plugin.emoji.b.d)locala).getProvider().c(ac.a.yKp, Boolean.FALSE)).booleanValue())
-      {
-        new com.tencent.mm.ui.widget.b.c.a(this.context).Rf(2131298976).Ri(2131298975).a((DialogInterface.OnDismissListener)new c.d(this)).show();
-        locala = g.G(com.tencent.mm.plugin.emoji.b.d.class);
-        j.p(locala, "MMKernel.plugin(IPluginEmoji::class.java)");
-        ((com.tencent.mm.plugin.emoji.b.d)locala).getProvider().d(ac.a.yKp, Boolean.TRUE);
-        AppMethodBeat.o(2784);
-        return;
-      }
-    }
-    boN();
-    AppMethodBeat.o(2784);
-  }
-  
-  public final void c(k paramk)
-  {
-    AppMethodBeat.i(2782);
-    j.q(paramk, "emojiInfo");
-    if ((paramk instanceof EmojiInfo))
-    {
-      if (this.lws.getItemContainer().getAllEmojiMd5().size() >= 8)
-      {
-        t.makeText(this.context, 2131299101, 0).show();
-        AppMethodBeat.o(2782);
+        aa.makeText(this.context, a.i.yfM, 0).show();
+        AppMethodBeat.o(360);
         return;
       }
       com.tencent.mm.plugin.emojicapture.ui.editor.a locala = (com.tencent.mm.plugin.emojicapture.ui.editor.a)new EmojiEditorItemView(this.context);
-      ((EmojiEditorItemView)locala).setEmojiInfo((EmojiInfo)paramk);
-      locala.resume();
-      paramk = this.lws.getItemContainer();
-      j.q(locala, "itemView");
-      Object localObject = new RelativeLayout.LayoutParams(-1, -1);
-      paramk.lzD.addView((View)locala, (ViewGroup.LayoutParams)localObject);
-      localObject = paramk.getValidRect();
-      Context localContext = paramk.getContext();
-      j.p(localContext, "context");
-      locala.a((RectF)localObject, localContext.getResources().getDimension(2131427333));
-      paramk.setEditing(locala);
-      paramk.lzD.bringChildToFront((View)paramk.getTextItem());
+      ((EmojiEditorItemView)locala).setEmojiInfo((EmojiInfo)paramt);
+      ((EmojiEditorItemView)locala).resume();
+      this.yjl.getItemContainer().a(locala, paramMatrix);
     }
-    AppMethodBeat.o(2782);
+    AppMethodBeat.o(360);
+  }
+  
+  public final void a(com.tencent.mm.plugin.emojicapture.model.a.b paramb)
+  {
+    AppMethodBeat.i(356);
+    s.u(paramb, "emojiCaptureInfo");
+    Log.i("MicroMsg.EditorPresenter", "setup");
+    this.yiN = paramb;
+    this.oYm = paramb.videoPath;
+    this.yhT = paramb.ygj;
+    this.textColor = paramb.yhe;
+    this.yjl.a(paramb, paramb.videoPath, paramb.yhf, this.yhT, (kotlin.g.a.a)new f(this));
+    com.tencent.mm.ae.d.d("EditorPresenter_setup", (kotlin.g.a.a)new g(paramb));
+    AppMethodBeat.o(356);
+  }
+  
+  public final boolean aAx()
+  {
+    AppMethodBeat.i(367);
+    Log.i("MicroMsg.EditorPresenter", "onBack: " + this.yjl.cvt() + ' ' + this.yjl.dDB() + ' ' + this.yjl.dDC());
+    if (this.yjl.cvt())
+    {
+      if (this.yjl.dDB())
+      {
+        this.yjl.a(false, null, 0);
+        AppMethodBeat.o(367);
+        return true;
+      }
+      if (this.yjl.dDC())
+      {
+        this.yjl.oo(false);
+        AppMethodBeat.o(367);
+        return true;
+      }
+      this.yhT = false;
+      this.yjp = false;
+      this.yiM = null;
+      this.yjn = false;
+      this.yjo = false;
+      Object localObject = this.yjl.getVideoPlayView();
+      if (localObject == null) {}
+      for (localObject = null;; localObject = ((EmojiVideoPlayTextureView)localObject).getVideoPath())
+      {
+        y.deleteFile((String)localObject);
+        this.yjl.reset();
+        localObject = this.yjl.getItemContainer();
+        ((EditorItemContainer)localObject).pause();
+        ((EditorItemContainer)localObject).yms.removeAllViews();
+        this.yjr = null;
+        os(true);
+        this.yiH.dEC();
+        EmojiCaptureReporter.a(9, this.yiI.mnX, 0L, 0L, 0L, 0L, 0, 0, this.yiI.scene);
+        AppMethodBeat.o(367);
+        return true;
+      }
+    }
+    AppMethodBeat.o(367);
+    return false;
+  }
+  
+  public final void api(final String paramString)
+  {
+    AppMethodBeat.i(357);
+    Log.i("MicroMsg.EditorPresenter", "voice text callback");
+    m(paramString, (kotlin.g.a.b)new d(this, paramString));
+    AppMethodBeat.o(357);
+  }
+  
+  public final boolean dDx()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(358);
+    Log.i("MicroMsg.EditorPresenter", s.X("removeBg ", Boolean.valueOf(this.yhT)));
+    if (!this.yiN.yhf)
+    {
+      AppMethodBeat.o(358);
+      return false;
+    }
+    EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = this.yjl.getVideoPlayView();
+    int i;
+    if ((localEmojiVideoPlayTextureView != null) && (localEmojiVideoPlayTextureView.isPlaying() == true))
+    {
+      i = 1;
+      if (i == 0) {
+        break label129;
+      }
+      if (this.yhT) {
+        break label124;
+      }
+    }
+    for (;;)
+    {
+      this.yhT = bool;
+      localEmojiVideoPlayTextureView = this.yjl.getVideoPlayView();
+      if (localEmojiVideoPlayTextureView != null) {
+        localEmojiVideoPlayTextureView.setRemoveBackground(this.yhT);
+      }
+      bool = this.yhT;
+      AppMethodBeat.o(358);
+      return bool;
+      i = 0;
+      break;
+      label124:
+      bool = false;
+    }
+    label129:
+    AppMethodBeat.o(358);
+    return false;
+  }
+  
+  public final boolean dDy()
+  {
+    AppMethodBeat.i(359);
+    Log.i("MicroMsg.EditorPresenter", s.X("speedUp ", Boolean.valueOf(this.yjp)));
+    Object localObject = this.yjl.getVideoPlayView();
+    if (localObject == null) {}
+    for (localObject = null; s.a((Float)localObject, 1.0F); localObject = Float.valueOf(((EmojiVideoPlayTextureView)localObject).getPlayRate()))
+    {
+      localObject = this.yjl.getVideoPlayView();
+      if (localObject != null) {
+        ((EmojiVideoPlayTextureView)localObject).setPlayRate(2.0F);
+      }
+      this.yjp = true;
+      AppMethodBeat.o(359);
+      return true;
+    }
+    localObject = this.yjl.getVideoPlayView();
+    if (localObject != null) {
+      ((EmojiVideoPlayTextureView)localObject).setPlayRate(1.0F);
+    }
+    this.yjp = false;
+    AppMethodBeat.o(359);
+    return false;
+  }
+  
+  public final void dDz()
+  {
+    AppMethodBeat.i(362);
+    if ((!Util.isNullOrNil(this.yjm)) && (!((Boolean)((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getProvider().c(at.a.acWU, Boolean.FALSE)).booleanValue()))
+    {
+      new e.a(this.context).aEO(a.i.yfF).aER(a.i.yfE).c(new c..ExternalSyntheticLambda0(this)).jHH().show();
+      ((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getProvider().d(at.a.acWU, Boolean.TRUE);
+      AppMethodBeat.o(362);
+      return;
+    }
+    dEy();
+    AppMethodBeat.o(362);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(2792);
-    ab.i("MicroMsg.EditorPresenter", "destroy");
-    Object localObject = this.lws.getVideoPlayView();
+    AppMethodBeat.i(370);
+    Log.i("MicroMsg.EditorPresenter", "destroy");
+    Object localObject = this.yjl.getVideoPlayView();
     if (localObject != null) {
       ((EmojiVideoPlayTextureView)localObject).stop();
     }
-    this.lws.getItemContainer().pause();
-    this.lws.destroy();
-    this.evl.release();
-    this.lwo.setCallback(null);
-    localObject = com.tencent.mm.emoji.d.b.eyc;
-    com.tencent.mm.emoji.d.b.b(this.lvM.eyh, (com.tencent.mm.emoji.d.a)this.lwq);
-    AppMethodBeat.o(2792);
-  }
-  
-  public final void n(String paramString, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(2783);
-    ab.i("MicroMsg.EditorPresenter", "updateText ".concat(String.valueOf(paramString)));
-    b(paramString, (a.f.a.b)new c.j(this, p.b(this.context, (CharSequence)this.context.getString(2131301086), true, null), paramString, paramInt, paramBoolean));
-    AppMethodBeat.o(2783);
+    this.yjl.getItemContainer().pause();
+    this.yjl.destroy();
+    this.pfZ.release();
+    this.yjq.setCallback(null);
+    localObject = com.tencent.mm.emoji.e.b.mnS;
+    com.tencent.mm.emoji.e.b.b(this.yiN.mnX, (com.tencent.mm.emoji.e.a)this.yjs);
+    AppMethodBeat.o(370);
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(2790);
-    ab.i("MicroMsg.EditorPresenter", "pause");
-    EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-    if ((localEmojiVideoPlayTextureView != null) && (localEmojiVideoPlayTextureView.isPlaying() == true))
+    int i = 1;
+    AppMethodBeat.i(368);
+    Log.i("MicroMsg.EditorPresenter", "pause");
+    EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = this.yjl.getVideoPlayView();
+    if ((localEmojiVideoPlayTextureView != null) && (localEmojiVideoPlayTextureView.isPlaying() == true)) {}
+    for (;;)
     {
-      localEmojiVideoPlayTextureView = this.lws.getVideoPlayView();
-      if (localEmojiVideoPlayTextureView != null) {
-        localEmojiVideoPlayTextureView.pause();
+      if (i != 0)
+      {
+        localEmojiVideoPlayTextureView = this.yjl.getVideoPlayView();
+        if (localEmojiVideoPlayTextureView != null) {
+          localEmojiVideoPlayTextureView.pause();
+        }
       }
+      this.yjl.getItemContainer().pause();
+      os(false);
+      AppMethodBeat.o(368);
+      return;
+      i = 0;
     }
-    this.lws.getItemContainer().pause();
-    gV(false);
-    AppMethodBeat.o(2790);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(2791);
-    ab.i("MicroMsg.EditorPresenter", "resume");
-    Object localObject = this.lws.getVideoPlayView();
-    if (localObject != null) {
-      ((EmojiVideoPlayTextureView)localObject).start();
+    AppMethodBeat.i(369);
+    Log.i("MicroMsg.EditorPresenter", "resume");
+    EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = this.yjl.getVideoPlayView();
+    if (localEmojiVideoPlayTextureView != null) {
+      localEmojiVideoPlayTextureView.start();
     }
-    localObject = this.lws.getItemContainer();
-    int j = ((EditorItemContainer)localObject).lzD.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = ((EditorItemContainer)localObject).lzD.getChildAt(i);
-      if ((localView instanceof com.tencent.mm.plugin.emojicapture.ui.editor.a)) {
-        ((com.tencent.mm.plugin.emojicapture.ui.editor.a)localView).resume();
-      }
-      i += 1;
-    }
-    gV(true);
-    AppMethodBeat.o(2791);
+    this.yjl.getItemContainer().resume();
+    os(true);
+    AppMethodBeat.o(369);
   }
   
-  public final boolean zY()
+  public final void s(final String paramString, final int paramInt, final boolean paramBoolean)
   {
-    AppMethodBeat.i(2789);
-    ab.i("MicroMsg.EditorPresenter", "onBack: " + this.lws.Pk() + ' ' + this.lws.bnE() + ' ' + this.lws.bnF());
-    if (this.lws.Pk())
+    AppMethodBeat.i(361);
+    Log.i("MicroMsg.EditorPresenter", s.X("updateText ", paramString));
+    m(paramString, (kotlin.g.a.b)new h(w.a(this.context, (CharSequence)this.context.getString(a.i.loading_tips), true, 0, null), this, paramString, paramInt, paramBoolean));
+    AppMethodBeat.o(361);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/emojicapture/presenter/EditorPresenter$mixCallback$1", "Lcom/tencent/mm/emoji/upload/EmojiCaptureCallback;", "onResult", "", "timeEnter", "", "success", "", "md5", "", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements com.tencent.mm.emoji.e.a
+  {
+    c(c paramc) {}
+    
+    public final void a(long paramLong, final boolean paramBoolean, final String paramString)
     {
-      if (this.lws.bnE())
+      AppMethodBeat.i(349);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this.yju, paramBoolean, paramString));
+      AppMethodBeat.o(349);
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements kotlin.g.a.a<ah>
+    {
+      a(c paramc, boolean paramBoolean, String paramString)
       {
-        this.lws.a(false, null, 0);
-        AppMethodBeat.o(2789);
-        return true;
-      }
-      if (this.lws.bnF())
-      {
-        this.lws.gT(false);
-        AppMethodBeat.o(2789);
-        return true;
-      }
-      this.lux = false;
-      this.lwn = false;
-      this.lvL = null;
-      this.lwl = false;
-      this.lwm = false;
-      Object localObject = this.lws.getVideoPlayView();
-      if (localObject != null) {}
-      for (localObject = ((EmojiVideoPlayTextureView)localObject).getVideoPath();; localObject = null)
-      {
-        com.tencent.mm.vfs.e.deleteFile((String)localObject);
-        this.lws.reset();
-        localObject = this.lws.getItemContainer();
-        ((EditorItemContainer)localObject).pause();
-        ((EditorItemContainer)localObject).lzD.removeAllViews();
-        this.lwp = null;
-        gV(true);
-        this.lvR.boQ();
-        EmojiCaptureReporter.a(9, this.lsY.eyh, 0L, 0L, 0L, 0L, 0L, 0, 0, this.lsY.scene);
-        AppMethodBeat.o(2789);
-        return true;
+        super();
       }
     }
-    AppMethodBeat.o(2789);
-    return false;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "shouldBlock", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
+  {
+    d(c paramc, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    e(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    f(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    g(com.tencent.mm.plugin.emojicapture.model.a.b paramb)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "shouldBlock", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
+  {
+    h(w paramw, c paramc, String paramString, int paramInt, boolean paramBoolean)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.e.c
  * JD-Core Version:    0.7.0.1
  */

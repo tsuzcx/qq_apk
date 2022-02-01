@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespondQueryIPwdStat
   extends JceStruct
 {
-  public long uIsSetPwd;
+  public long uIsSetPwd = 0L;
   
   public RespondQueryIPwdStat() {}
   
@@ -28,7 +28,7 @@ public final class RespondQueryIPwdStat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IPwdPxyMQQ.RespondQueryIPwdStat
  * JD-Core Version:    0.7.0.1
  */

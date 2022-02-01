@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zv">
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/lcn" style="@style/a07" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+            <TextView android:gravity="center|left" android:paddingRight="5.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="80.0dip" android:text="@string/lcm" android:singleLine="true" style="@style/a07" />
+            <TextView android:textColor="#ff999999" android:gravity="center|left" android:id="@id/lki" android:background="@drawable/ap" android:layout_height="fill_parent" style="@style/a0j" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="80.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/m1" android:text="@string/lci" style="@style/a07" />
+            <EditText android:id="@id/lk9" style="@style/a0j" />
+            <TextView android:id="@id/lkc" android:background="@drawable/ap" android:visibility="gone" style="@style/a0j" />
+        </LinearLayout>
+        <TextView android:textColor="#ff999999" android:id="@id/lkj" android:background="@drawable/p5" android:paddingLeft="4.0dip" android:layout_marginLeft="80.0dip" style="@style/a0j" />
+        <EditText android:id="@id/lk_" android:layout_marginLeft="80.0dip" style="@style/a0j" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:minHeight="@dimen/m1">
+            <TextView android:gravity="center|left" android:paddingRight="5.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="80.0dip" android:text="@string/lcm" android:singleLine="true" style="@style/a07" />
+            <TextView android:textColor="#ff999999" android:gravity="center|left" android:id="@id/lkk" android:background="@drawable/ap" android:layout_height="fill_parent" style="@style/a0j" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="80.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/m1" android:text="@string/lci" style="@style/a07" />
+            <EditText android:id="@id/lka" style="@style/a0j" />
+            <TextView android:id="@id/lkd" android:background="@drawable/ap" android:visibility="gone" style="@style/a0j" />
+        </LinearLayout>
+        <TextView android:textColor="#ff999999" android:id="@id/lkl" android:background="@drawable/p5" android:paddingLeft="4.0dip" android:layout_marginLeft="80.0dip" style="@style/a0j" />
+        <EditText android:id="@id/lkb" android:layout_marginLeft="80.0dip" style="@style/a0j" />
+        <Button android:id="@id/hfl" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/a12" style="@style/og" />
+    </LinearLayout>
+</ScrollView>

@@ -20,7 +20,7 @@ public class ThemeNoviceGuideActivity
   private void d()
   {
     a(2131561842, null);
-    ((Button)findViewById(2131234585)).setOnClickListener(this);
+    ((Button)findViewById(2131234584)).setOnClickListener(this);
   }
   
   protected String a_()
@@ -37,7 +37,7 @@ public class ThemeNoviceGuideActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131234585)
+    if (paramView.getId() == 2131234584)
     {
       if (Utils.e())
       {

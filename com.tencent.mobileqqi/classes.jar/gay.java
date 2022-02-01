@@ -1,14 +1,34 @@
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceActionListener;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-class gay
-  implements Runnable
+public class gay
+  implements MagicfaceActionManager.MagicfaceActionListener
 {
-  gay(gav paramgav, String paramString) {}
+  public gay(MagicfaceViewController paramMagicfaceViewController, int paramInt) {}
   
-  public void run()
+  public void a(ActionGlobalData paramActionGlobalData)
   {
-    MagicfaceViewController.b(this.jdField_a_of_type_Gav.a).setText(this.jdField_a_of_type_JavaLangString);
+    boolean bool;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      bool = MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).b();
+      MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).c(bool);
+    }
+    for (;;)
+    {
+      MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gaz(this, paramActionGlobalData));
+      return;
+      bool = MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).c();
+      MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).c(bool);
+    }
+  }
+  
+  public void b(ActionGlobalData paramActionGlobalData)
+  {
+    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gba(this, paramActionGlobalData));
   }
 }
 

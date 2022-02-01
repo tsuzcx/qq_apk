@@ -1,20 +1,18 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 
-class dnz
-  extends NightModeLogic.NightModeCallback
+public class dnz
+  implements DialogInterface.OnDismissListener
 {
-  dnz(dny paramdny) {}
+  public dnz(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.finish();
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if (paramBundle.getInt("start_status") == 2) {}
+    if (ThemeSwitchDlgActivity.a(this.a)) {
+      return;
+    }
+    this.a.finish();
   }
 }
 

@@ -1,32 +1,27 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aghu;
-import agjh;
-import agji;
-import agkf;
-
-public class AIOImageListScene$8
+class AIOImageListScene$8
   implements Runnable
 {
-  public AIOImageListScene$8(agji paramagji, long paramLong, boolean paramBoolean) {}
+  AIOImageListScene$8(AIOImageListScene paramAIOImageListScene, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.u != null)
     {
-      agkf localagkf = this.this$0.a.a();
-      if (this.this$0.a.a(this.jdField_a_of_type_Long) != null) {
-        this.this$0.h();
+      AIORichMediaInfo localAIORichMediaInfo = this.this$0.u.c();
+      if (this.this$0.u.a(this.a) != null) {
+        this.this$0.l();
       }
-      if ((this.jdField_a_of_type_Boolean) && (localagkf != null) && (this.jdField_a_of_type_Long == localagkf.a.f)) {
-        aghu.a(agji.r(this.this$0));
+      if ((this.b) && (localAIORichMediaInfo != null) && (this.a == localAIORichMediaInfo.a.L)) {
+        AIOGalleryMsgRevokeMgr.a(AIOImageListScene.B(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.8
  * JD-Core Version:    0.7.0.1
  */

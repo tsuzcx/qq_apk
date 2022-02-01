@@ -41,7 +41,9 @@ public class HDRHSVFilter
     localObject1 = this.rgb2hsvFilter.RenderProcess(((Frame)localObject2).getTextureId(), paramInt2, paramInt3);
     ((Frame)localObject2).unlock();
     this.stretech.setTextureParam(((Frame)localObject1).getTextureId(), 0);
-    paramInt1 = (int)Math.ceil(Math.max(paramInt2, paramInt3) / 200.0D);
+    double d = Math.max(paramInt2, paramInt3);
+    Double.isNaN(d);
+    paramInt1 = (int)Math.ceil(d / 200.0D);
     localObject2 = RendererUtils.saveTexture2QImage(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height);
     QImage localQImage = ((QImage)localObject2).InplaceBlur8bitQImage(paramInt1, 10);
     ((QImage)localObject2).Dispose();
@@ -62,11 +64,8 @@ public class HDRHSVFilter
       ((Frame)localObject1).unlock();
       localObject1 = localObject2;
     }
-    for (;;)
-    {
-      setNextFilter(localBaseFilter, null);
-      return localObject1;
-    }
+    setNextFilter(localBaseFilter, null);
+    return localObject1;
   }
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
@@ -99,7 +98,8 @@ public class HDRHSVFilter
     this.saturationFilter = new BaseFilter(BaseFilter.getFragmentShader(31));
     this.saturationFilter.addParam(new UniformParam.FloatParam("saturation", this.saturationMag));
     this.saturationFilter.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
@@ -112,7 +112,8 @@ public class HDRHSVFilter
     this.rgb2hsvFilter.clearGLSLSelf();
     this.saturationFilter.clearGLSLSelf();
     this.hsv2rgbFilter.clearGLSLSelf();
-    GlUtil.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public boolean isAdjustFilter()
@@ -125,11 +126,13 @@ public class HDRHSVFilter
     paramFloat = (float)Math.max((float)Math.min(paramFloat, 1.0D), 0.0D);
     this.stretechMag = (50.0F * paramFloat);
     this.sharpnessMag = (paramFloat * 0.6F);
-    if (this.stretech != null) {
-      this.stretech.updateparam(this.stretechMag);
+    Object localObject = this.stretech;
+    if (localObject != null) {
+      ((HDRHSVFilter.ChannelStretchFilter)localObject).updateparam(this.stretechMag);
     }
-    if (this.sharpen != null) {
-      this.sharpen.addParam(new UniformParam.FloatParam("sharpness", this.sharpnessMag));
+    localObject = this.sharpen;
+    if (localObject != null) {
+      ((BaseFilter)localObject).addParam(new UniformParam.FloatParam("sharpness", this.sharpnessMag));
     }
   }
   
@@ -153,7 +156,7 @@ public class HDRHSVFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.HDRHSVFilter
  * JD-Core Version:    0.7.0.1
  */

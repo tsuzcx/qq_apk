@@ -27,45 +27,54 @@ final class ScalarSynchronousObservable$ScalarAsyncProducer<T>
   public void call()
   {
     Subscriber localSubscriber = this.actual;
-    if (localSubscriber.isUnsubscribed()) {}
-    for (;;)
-    {
+    if (localSubscriber.isUnsubscribed()) {
       return;
-      Object localObject = this.value;
-      try
-      {
-        localSubscriber.onNext(localObject);
-        if (!localSubscriber.isUnsubscribed())
-        {
-          localSubscriber.onCompleted();
-          return;
-        }
+    }
+    Object localObject = this.value;
+    try
+    {
+      localSubscriber.onNext(localObject);
+      if (localSubscriber.isUnsubscribed()) {
+        return;
       }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwOrReport(localThrowable, localSubscriber, localObject);
-      }
+      localSubscriber.onCompleted();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwOrReport(localThrowable, localSubscriber, localObject);
     }
   }
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required but it was " + paramLong);
+    if (paramLong >= 0L)
+    {
+      if ((paramLong != 0L) && (compareAndSet(false, true))) {
+        this.actual.add((Subscription)this.onSchedule.call(this));
+      }
+      return;
     }
-    if ((paramLong != 0L) && (compareAndSet(false, true))) {
-      this.actual.add((Subscription)this.onSchedule.call(this));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= 0 required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public String toString()
   {
-    return "ScalarAsyncProducer[" + this.value + ", " + get() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ScalarAsyncProducer[");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(get());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.ScalarSynchronousObservable.ScalarAsyncProducer
  * JD-Core Version:    0.7.0.1
  */

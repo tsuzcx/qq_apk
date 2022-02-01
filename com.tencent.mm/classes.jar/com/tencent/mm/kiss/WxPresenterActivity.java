@@ -1,6 +1,5 @@
 package com.tencent.mm.kiss;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
@@ -10,45 +9,45 @@ import com.tencent.mm.vending.c.b;
 public abstract class WxPresenterActivity
   extends MMActivity
 {
-  protected c eKO = new c();
+  protected c mGc = new c();
   
-  public final <T extends b<? extends com.tencent.mm.vending.app.a>> T P(Class<? extends b<? extends com.tencent.mm.vending.app.a>> paramClass)
+  public final <T extends b<? extends com.tencent.mm.vending.app.a>> T aI(Class<? extends b<? extends com.tencent.mm.vending.app.a>> paramClass)
   {
-    return this.eKO.a(this, paramClass);
+    return this.mGc.a(this, paramClass);
   }
   
-  public final com.tencent.mm.vending.app.a SF()
+  public final com.tencent.mm.vending.app.a bbE()
   {
-    return this.eKO.SF();
+    return this.mGc.bbE();
   }
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    this.eKO.keep(parama);
+    this.mGc.keep(parama);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.eKO.A(getIntent(), this);
+    this.mGc.z(getIntent(), this);
   }
   
   public void onDestroy()
   {
-    this.eKO.onDestroy();
+    this.mGc.onDestroy();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.eKO.a(3);
+    this.mGc.aFE(3);
     super.onPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.eKO.a(2);
+    this.mGc.aFE(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -59,7 +58,7 @@ public abstract class WxPresenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kiss.WxPresenterActivity
  * JD-Core Version:    0.7.0.1
  */

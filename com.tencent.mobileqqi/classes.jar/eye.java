@@ -1,63 +1,30 @@
-import android.content.AsyncQueryHandler;
-import android.content.Context;
-import android.database.Cursor;
 import com.tencent.mobileqq.adapter.ForwardFriendListAdapter;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.List;
 
-public final class eye
-  extends AsyncQueryHandler
+class eye
+  implements Runnable
 {
-  public eye(ForwardFriendListAdapter paramForwardFriendListAdapter, Context paramContext)
-  {
-    super(paramContext.getContentResolver());
-  }
+  eye(eyd parameyd) {}
   
-  public void onQueryComplete(int paramInt, Object paramObject, Cursor paramCursor)
+  public void run()
   {
-    if (paramCursor == null) {}
-    label266:
-    for (;;)
-    {
-      return;
-      int j = this.a.getGroupCount();
-      int k = (int)this.a.getGroupId(j - 1);
-      int i = 0;
-      for (;;)
+    int i = 0;
+    List localList = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().a(Friends.class, false, "groupid>=?", new String[] { "0" }, null, null, "status,name", null);
+    ChnToSpell.a(this.a.a.jdField_a_of_type_AndroidAppActivity);
+    if (localList != null) {
+      while (i < localList.size())
       {
-        if (i >= j) {
-          break label266;
-        }
-        long l = this.a.getGroupId(i);
-        if (l == paramInt)
-        {
-          if (i == 0)
-          {
-            this.a.c = 0;
-            this.a.jdField_b_of_type_JavaUtilMap.clear();
-          }
-          if ((j <= 1) && (!this.a.jdField_b_of_type_JavaUtilMap.containsKey(Long.valueOf(l))))
-          {
-            paramObject = this.a;
-            paramObject.c += paramCursor.getCount();
-            this.a.jdField_b_of_type_JavaUtilMap.put(Long.valueOf(l), Boolean.valueOf(true));
-          }
-          if (l == k)
-          {
-            this.a.jdField_b_of_type_Int = this.a.c;
-            this.a.c = 0;
-            this.a.jdField_b_of_type_JavaUtilMap.clear();
-          }
-          this.a.a.put(Integer.valueOf(i), paramCursor);
-          this.a.setChildrenCursor(i, paramCursor);
-          if ((l != this.a.getGroupId(1)) || (paramCursor == null)) {
-            break;
-          }
-          new Thread(new eyf(this)).start();
-          return;
-        }
+        ChnToSpell.a(((Friends)localList.get(i)).name, 2);
+        ChnToSpell.a(((Friends)localList.get(i)).name, 1);
         i += 1;
       }
     }
+    ForwardFriendListAdapter.a(this.a.a, localList);
   }
 }
 

@@ -1,36 +1,18 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnPlayListener;
 
 public class gzn
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
   public gzn(VideoViewX paramVideoViewX) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (VideoViewX.a(this.a) != null)
-    {
-      if (VideoViewX.a(this.a).getCurrentPosition() > 0)
-      {
-        if (this.a.a)
-        {
-          this.a.a = false;
-          if (VideoViewX.a(this.a) != null) {
-            VideoViewX.a(this.a).b();
-          }
-        }
-        if (VideoViewX.a(this.a) != null) {
-          VideoViewX.a(this.a).a(VideoViewX.a(this.a));
-        }
-        VideoViewX.c(this.a, false);
-      }
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onClick(paramView);
     }
-    else {
-      return;
-    }
-    this.a.postDelayed(VideoViewX.a(this.a), 300L);
   }
 }
 

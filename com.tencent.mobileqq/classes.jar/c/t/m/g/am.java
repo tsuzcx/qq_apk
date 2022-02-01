@@ -17,13 +17,18 @@ public final class am
   
   public final boolean equals(Object paramObject)
   {
-    if ((TextUtils.isEmpty(this.a)) || (!(paramObject instanceof am))) {}
-    do
+    if (!TextUtils.isEmpty(this.a))
     {
-      return false;
+      if (!(paramObject instanceof am)) {
+        return false;
+      }
       paramObject = ((am)paramObject).a;
-    } while (TextUtils.isEmpty(paramObject));
-    return this.a.equals(paramObject);
+      if (TextUtils.isEmpty(paramObject)) {
+        return false;
+      }
+      return this.a.equals(paramObject);
+    }
+    return false;
   }
   
   public final boolean verify(String paramString, SSLSession paramSSLSession)
@@ -33,7 +38,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.am
  * JD-Core Version:    0.7.0.1
  */

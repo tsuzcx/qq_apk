@@ -1,15 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gnp
-  implements Runnable
+  extends TimerTask
 {
-  public gnp(NetworkCenter paramNetworkCenter) {}
+  public gnp(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
   
   public void run()
   {
-    this.a.b();
-    NetworkCenter.a(this.a).postDelayed(this, 120000L);
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.a.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

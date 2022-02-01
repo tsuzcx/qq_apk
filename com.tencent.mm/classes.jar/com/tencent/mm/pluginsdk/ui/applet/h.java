@@ -1,76 +1,114 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import android.content.Context;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.i;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.q;
-import com.tencent.mm.ui.widget.b.c;
-import com.tencent.mm.ui.widget.b.c.a;
+import com.tencent.mm.modelimage.loader.c.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory;", "", "()V", "TAG", "", "httpURLConnectionGet", "Lcom/tencent/mm/modelimage/loader/model/Response;", "url", "forceNormal", "", "connectionListener", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "onCreateConnection", "Lkotlin/Function1;", "Ljava/net/HttpURLConnection;", "Lkotlin/ParameterName;", "name", "conn", "", "receiveHeaders", "", "", "headers", "shouldCheckNoCache", "HttpUrlConnectionHelper", "ImageHttpUrlConnection", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  implements i
 {
-  public final o a(q paramq, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
+  public static final h Ybr;
+  
+  static
   {
-    AppMethodBeat.i(27711);
-    paramq = g.a(paramq, paramString1, paramString2, paramString3, paramString4, paramString5, parama);
-    AppMethodBeat.o(27711);
-    return paramq;
+    AppMethodBeat.i(124867);
+    Ybr = new h();
+    AppMethodBeat.o(124867);
   }
   
-  public final c a(Context paramContext, String paramString1, View paramView, String paramString2, q.a parama)
+  public static b a(String paramString, boolean paramBoolean, j paramj)
   {
-    AppMethodBeat.i(27714);
-    paramContext = new g.a(paramContext).cq(paramString1).eC(paramView).i(Boolean.TRUE).dnA();
-    paramContext.vTu = paramString2;
-    paramContext = paramContext.a(parama).gwf;
-    AppMethodBeat.o(27714);
-    return paramContext;
+    AppMethodBeat.i(124866);
+    s.u(paramString, "url");
+    paramString = b(paramString, paramBoolean, paramj);
+    AppMethodBeat.o(124866);
+    return paramString;
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, q.a parama)
+  private static b b(String paramString, boolean paramBoolean, j paramj)
   {
-    AppMethodBeat.i(27716);
-    paramContext = new g.a(paramContext);
-    paramContext.cq(paramString1);
-    paramContext.amo(paramString2);
-    paramContext.i(Boolean.TRUE);
-    paramContext.vTu = paramString3;
-    paramContext.a(parama).gwf.show();
-    AppMethodBeat.o(27716);
+    AppMethodBeat.i(245251);
+    s.u(paramString, "url");
+    Object localObject = a.Ybs;
+    paramString = a.c(paramString, paramBoolean, paramj);
+    try
+    {
+      paramString.iKZ();
+      int i = paramString.getResponseCode();
+      paramj = paramString.getInputStream();
+      if (i >= 300)
+      {
+        paramString.aa(paramj);
+        paramString.disconnect();
+        Log.w("MicroMsg.BizImageHttpClientFactory", "httpURLConnectionGet responseCode: %d", new Object[] { Integer.valueOf(i) });
+        paramString.awn(i);
+        AppMethodBeat.o(245251);
+        return null;
+      }
+      localObject = paramString.ab(paramj);
+      paramString.aa(paramj);
+      paramString.disconnect();
+      paramString.a((b)localObject);
+      AppMethodBeat.o(245251);
+      return localObject;
+    }
+    catch (Exception paramj)
+    {
+      Log.printErrStackTrace("MicroMsg.BizImageHttpClientFactory", (Throwable)paramj, "alvinluo httpURLConnectionGet exception: ", new Object[0]);
+      paramString.awn(-1);
+      AppMethodBeat.o(245251);
+    }
+    return null;
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory$HttpUrlConnectionHelper;", "", "()V", "createBizImageHttpUrlConnection", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory$ImageHttpUrlConnection;", "url", "", "forceNormal", "", "connectionListener", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    AppMethodBeat.i(27715);
-    paramContext = new g.a(paramContext);
-    paramContext.cq(paramString1).amm(paramString2).vTu = paramString3;
-    paramContext.amn(paramString5).dnz();
-    paramContext.vTt.avq(paramString4);
-    paramContext.a(parama).gwf.show();
-    AppMethodBeat.o(27715);
+    public static final a Ybs;
+    
+    static
+    {
+      AppMethodBeat.i(124865);
+      Ybs = new a();
+      AppMethodBeat.o(124865);
+    }
+    
+    public static h.b c(String paramString, boolean paramBoolean, j paramj)
+    {
+      AppMethodBeat.i(124864);
+      paramString = (h.b)new i(paramString, paramBoolean, paramj);
+      AppMethodBeat.o(124864);
+      return paramString;
+    }
   }
   
-  public final void a(q paramq, String paramString1, String paramString2, String paramString3, q.a parama)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory$ImageHttpUrlConnection;", "", "closeInputStream", "", "inputStream", "Ljava/io/InputStream;", "disconnect", "getDataResponse", "Lcom/tencent/mm/modelimage/loader/model/Response;", "getInputStream", "getResponseCode", "", "newConnection", "Ljava/net/HttpURLConnection;", "onResultError", "responseCode", "onResultSuccess", "response", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface b
   {
-    AppMethodBeat.i(27712);
-    g.a(paramq, paramString1, paramString2, paramString3, parama);
-    AppMethodBeat.o(27712);
-  }
-  
-  public final c b(q paramq, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
-  {
-    AppMethodBeat.i(27713);
-    paramq = g.b(paramq, paramString1, paramString2, paramString3, paramString4, paramString5, parama);
-    AppMethodBeat.o(27713);
-    return paramq;
+    public abstract void a(b paramb);
+    
+    public abstract void aa(InputStream paramInputStream);
+    
+    public abstract b ab(InputStream paramInputStream);
+    
+    public abstract void awn(int paramInt);
+    
+    public abstract void disconnect();
+    
+    public abstract InputStream getInputStream();
+    
+    public abstract int getResponseCode();
+    
+    public abstract HttpURLConnection iKZ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.h
  * JD-Core Version:    0.7.0.1
  */

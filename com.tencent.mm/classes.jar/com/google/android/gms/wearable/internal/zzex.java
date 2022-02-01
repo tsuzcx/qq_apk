@@ -18,16 +18,16 @@ final class zzex
   private zzex(GoogleApiClient paramGoogleApiClient, MessageApi.MessageListener paramMessageListener, ListenerHolder<MessageApi.MessageListener> paramListenerHolder, IntentFilter[] paramArrayOfIntentFilter)
   {
     super(paramGoogleApiClient);
-    AppMethodBeat.i(71295);
+    AppMethodBeat.i(101278);
     this.zzeg = ((MessageApi.MessageListener)Preconditions.checkNotNull(paramMessageListener));
     this.zzax = ((ListenerHolder)Preconditions.checkNotNull(paramListenerHolder));
     this.zzba = ((IntentFilter[])Preconditions.checkNotNull(paramArrayOfIntentFilter));
-    AppMethodBeat.o(71295);
+    AppMethodBeat.o(101278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzex
  * JD-Core Version:    0.7.0.1
  */

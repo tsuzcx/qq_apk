@@ -47,7 +47,7 @@ public class RecoveryUploadService
     //   14: monitorexit
     //   15: return
     //   16: aload_0
-    //   17: invokestatic 62	com/tencent/recovery/option/OptionFactory:iR	(Landroid/content/Context;)Lcom/tencent/recovery/option/CommonOptions;
+    //   17: invokestatic 62	com/tencent/recovery/option/OptionFactory:getCommonOptions	(Landroid/content/Context;)Lcom/tencent/recovery/option/CommonOptions;
     //   20: astore 7
     //   22: aload_0
     //   23: ldc 64
@@ -72,7 +72,7 @@ public class RecoveryUploadService
     //   59: dup
     //   60: iconst_1
     //   61: lload_3
-    //   62: invokestatic 92	com/tencent/recovery/util/Util:oW	(J)Ljava/lang/String;
+    //   62: invokestatic 92	com/tencent/recovery/util/Util:getTimeFormat	(J)Ljava/lang/String;
     //   65: aastore
     //   66: invokestatic 98	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   69: new 24	android/content/Intent
@@ -101,7 +101,7 @@ public class RecoveryUploadService
     //   112: lload_3
     //   113: lsub
     //   114: aload 7
-    //   116: getfield 104	com/tencent/recovery/option/CommonOptions:BiA	J
+    //   116: invokevirtual 103	com/tencent/recovery/option/CommonOptions:getUploadInterval	()J
     //   119: lcmp
     //   120: ifle +122 -> 242
     //   123: aload_1
@@ -109,54 +109,54 @@ public class RecoveryUploadService
     //   127: aload_1
     //   128: invokevirtual 47	android/app/PendingIntent:cancel	()V
     //   131: ldc 8
-    //   133: ldc 106
+    //   133: ldc 105
     //   135: iconst_0
     //   136: anewarray 88	java/lang/Object
     //   139: invokestatic 98	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   142: aload 8
-    //   144: invokeinterface 110 1 0
+    //   144: invokeinterface 109 1 0
     //   149: ldc 72
     //   151: lload 5
-    //   153: invokeinterface 116 4 0
-    //   158: invokeinterface 120 1 0
+    //   153: invokeinterface 115 4 0
+    //   158: invokeinterface 119 1 0
     //   163: pop
     //   164: aload_0
     //   165: ldc 37
     //   167: aload 9
-    //   169: ldc 121
+    //   169: ldc 120
     //   171: invokestatic 44	android/app/PendingIntent:getService	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
     //   174: astore_1
     //   175: aload 7
-    //   177: getfield 104	com/tencent/recovery/option/CommonOptions:BiA	J
+    //   177: invokevirtual 103	com/tencent/recovery/option/CommonOptions:getUploadInterval	()J
     //   180: lload 5
     //   182: ladd
-    //   183: ldc2_w 122
+    //   183: ldc2_w 121
     //   186: lsub
     //   187: lstore_3
     //   188: aload_0
-    //   189: ldc 125
-    //   191: invokevirtual 129	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   194: checkcast 131	android/app/AlarmManager
+    //   189: ldc 124
+    //   191: invokevirtual 128	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   194: checkcast 130	android/app/AlarmManager
     //   197: astore_0
     //   198: aload_0
     //   199: iconst_0
     //   200: lload_3
     //   201: aload_1
-    //   202: invokevirtual 135	android/app/AlarmManager:set	(IJLandroid/app/PendingIntent;)V
+    //   202: invokevirtual 134	android/app/AlarmManager:set	(IJLandroid/app/PendingIntent;)V
     //   205: ldc 8
-    //   207: ldc 137
+    //   207: ldc 136
     //   209: iconst_2
     //   210: anewarray 88	java/lang/Object
     //   213: dup
     //   214: iconst_0
     //   215: aload_1
-    //   216: invokevirtual 141	android/app/PendingIntent:hashCode	()I
-    //   219: invokestatic 147	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   216: invokevirtual 140	android/app/PendingIntent:hashCode	()I
+    //   219: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   222: aastore
     //   223: dup
     //   224: iconst_1
     //   225: lload_3
-    //   226: invokestatic 92	com/tencent/recovery/util/Util:oW	(J)Ljava/lang/String;
+    //   226: invokestatic 92	com/tencent/recovery/util/Util:getTimeFormat	(J)Ljava/lang/String;
     //   229: aastore
     //   230: invokestatic 98	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   233: goto -221 -> 12
@@ -166,7 +166,7 @@ public class RecoveryUploadService
     //   240: aload_0
     //   241: athrow
     //   242: ldc 8
-    //   244: ldc 149
+    //   244: ldc 148
     //   246: iconst_0
     //   247: anewarray 88	java/lang/Object
     //   250: invokestatic 98	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -174,10 +174,10 @@ public class RecoveryUploadService
     //   256: astore_0
     //   257: ldc 8
     //   259: aload_0
-    //   260: ldc 151
+    //   260: ldc 150
     //   262: iconst_0
     //   263: anewarray 88	java/lang/Object
-    //   266: invokestatic 155	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   266: invokestatic 154	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   269: goto -64 -> 205
     // Local variable table:
     //   start	length	slot	name	signature
@@ -222,7 +222,7 @@ public class RecoveryUploadService
     try
     {
       paramContext.set(0, paramLong, paramString);
-      RecoveryLog.i("Recovery.RecoveryUploadService", "startAlarmAfter pendingIntent:%d %s", new Object[] { Integer.valueOf(paramString.hashCode()), Util.oW(paramLong) });
+      RecoveryLog.i("Recovery.RecoveryUploadService", "startAlarmAfter pendingIntent:%d %s", new Object[] { Integer.valueOf(paramString.hashCode()), Util.getTimeFormat(paramLong) });
       return;
     }
     catch (Exception paramContext)
@@ -245,13 +245,13 @@ public class RecoveryUploadService
     }
     cancelAlarm(this, paramIntent);
     if (!bool) {
-      startAlarmAfter(this, paramIntent, OptionFactory.iR(this).BiA);
+      startAlarmAfter(this, paramIntent, OptionFactory.getCommonOptions(this).getUploadInterval());
     }
     RecoveryLog.i("Recovery.RecoveryUploadService", "RecoveryUploadReceiver.uploadDataResult %b", new Object[] { Boolean.valueOf(bool) });
-    if ((RecoveryLog.dUq() instanceof RecoveryFileLog))
+    if ((RecoveryLog.getLogImpl() instanceof RecoveryFileLog))
     {
       RecoveryLog.i("Recovery.RecoveryUploadService", "send broadcast action", new Object[0]);
-      RecoveryLog.dUp();
+      RecoveryLog.appendLog();
       paramIntent = new Intent();
       paramIntent.setPackage(getPackageName());
       paramIntent.setAction("com.tecent.recovery.intent.action.LOG");
@@ -267,7 +267,7 @@ public class RecoveryUploadService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.service.RecoveryUploadService
  * JD-Core Version:    0.7.0.1
  */

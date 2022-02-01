@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import alpy;
-import alqc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,55 +11,57 @@ class ConditionSearchManager$2$1
   
   public void run()
   {
-    alpy.a(this.a.this$0, false);
-    if (this.a.this$0.c) {
-      for (;;)
+    ConditionSearchManager.a(this.a.this$0, false);
+    if (this.a.this$0.d) {}
+    for (;;)
+    {
+      try
       {
-        try
+        if (this.a.this$0.F != null)
         {
-          if (this.a.this$0.jdField_a_of_type_JavaUtilLinkedList == null) {
-            continue;
-          }
           Object localObject = new LinkedList();
-          ((LinkedList)localObject).addAll(this.a.this$0.jdField_a_of_type_JavaUtilLinkedList);
+          ((LinkedList)localObject).addAll(this.a.this$0.F);
           localObject = ((LinkedList)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
+          if (((Iterator)localObject).hasNext())
+          {
+            ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)((Iterator)localObject).next();
+            if (ConditionSearchManager.b(this.a.this$0) == null) {
+              break label241;
+            }
+            bool = true;
+            localIConfigListener.a(2, bool);
             continue;
           }
-          localalqc = (alqc)((Iterator)localObject).next();
-          if (alpy.a(this.a.this$0) == null) {
-            continue;
-          }
-          bool = true;
         }
-        catch (Exception localException)
-        {
-          alqc localalqc;
-          QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
-          if ((!this.a.this$0.d) || (alpy.a(this.a.this$0) == null)) {
-            continue;
-          }
-          this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard);
-          return;
-          boolean bool = false;
-          continue;
-          this.a.this$0.d = false;
-          this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
-          this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
-          return;
+        if (!QLog.isColorLevel()) {
+          break label228;
         }
-        localalqc.a(2, bool);
       }
-    }
-    if (QLog.isColorLevel()) {
+      catch (Exception localException)
+      {
+        QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
+        if ((this.a.this$0.f) && (ConditionSearchManager.b(this.a.this$0) != null))
+        {
+          this.a.this$0.a(this.a.this$0.g);
+          return;
+        }
+        this.a.this$0.f = false;
+        this.a.this$0.g = null;
+        this.a.this$0.b(this.a.this$0.h);
+        return;
+      }
       QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
+      label228:
+      ConditionSearchManager.a(this.a.this$0, null);
+      return;
+      label241:
+      boolean bool = false;
     }
-    alpy.a(this.a.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.2.1
  * JD-Core Version:    0.7.0.1
  */

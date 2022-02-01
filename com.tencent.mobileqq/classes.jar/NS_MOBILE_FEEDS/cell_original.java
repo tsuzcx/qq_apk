@@ -33,14 +33,15 @@ public final class cell_original
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.original_data != null) {
-      paramJceOutputStream.write(this.original_data, 0);
+    Map localMap = this.original_data;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_original
  * JD-Core Version:    0.7.0.1
  */

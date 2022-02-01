@@ -8,10 +8,10 @@ public final class ReqFaceInfo
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public byte bReqType;
-  public long lUIN;
-  public ReqHead stHeader;
-  public int uFaceTimeStamp;
+  public byte bReqType = 0;
+  public long lUIN = 0L;
+  public ReqHead stHeader = null;
+  public int uFaceTimeStamp = 0;
   
   public ReqFaceInfo() {}
   
@@ -44,7 +44,7 @@ public final class ReqFaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqFaceInfo
  * JD-Core Version:    0.7.0.1
  */

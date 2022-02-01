@@ -1,12 +1,12 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class r
-  extends g
+  extends j
 {
   private static String v = "GPUSharpen";
   private int r;
@@ -27,37 +27,37 @@ public class r
   
   public void a(float paramFloat)
   {
-    AppMethodBeat.i(146342);
+    AppMethodBeat.i(15027);
     this.s = paramFloat;
     TXCLog.i(v, "set Sharpness ".concat(String.valueOf(paramFloat)));
     a(this.r, this.s);
-    AppMethodBeat.o(146342);
+    AppMethodBeat.o(15027);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146341);
+    AppMethodBeat.i(15026);
     super.a(paramInt1, paramInt2);
     a(this.t, 1.0F / paramInt1);
     a(this.u, 1.0F / paramInt2);
-    AppMethodBeat.o(146341);
+    AppMethodBeat.o(15026);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(66980);
+    AppMethodBeat.i(15025);
     boolean bool = super.b();
-    this.r = GLES20.glGetUniformLocation(p(), "sharpness");
-    this.t = GLES20.glGetUniformLocation(p(), "imageWidthFactor");
-    this.u = GLES20.glGetUniformLocation(p(), "imageHeightFactor");
+    this.r = GLES20.glGetUniformLocation(q(), "sharpness");
+    this.t = GLES20.glGetUniformLocation(q(), "imageWidthFactor");
+    this.u = GLES20.glGetUniformLocation(q(), "imageHeightFactor");
     a(this.s);
-    AppMethodBeat.o(66980);
+    AppMethodBeat.o(15025);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.r
  * JD-Core Version:    0.7.0.1
  */

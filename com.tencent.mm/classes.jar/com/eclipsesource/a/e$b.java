@@ -4,49 +4,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e$b
 {
-  private final h aub;
+  private final h cBY;
   private final String name;
   
   e$b(String paramString, h paramh)
   {
     this.name = paramString;
-    this.aub = paramh;
+    this.cBY = paramh;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70538);
+    AppMethodBeat.i(74725);
     if (this == paramObject)
     {
-      AppMethodBeat.o(70538);
+      AppMethodBeat.o(74725);
       return true;
     }
     if (paramObject == null)
     {
-      AppMethodBeat.o(70538);
+      AppMethodBeat.o(74725);
       return false;
     }
     if (getClass() != paramObject.getClass())
     {
-      AppMethodBeat.o(70538);
+      AppMethodBeat.o(74725);
       return false;
     }
     paramObject = (b)paramObject;
-    if ((this.name.equals(paramObject.name)) && (this.aub.equals(paramObject.aub)))
+    if ((this.name.equals(paramObject.name)) && (this.cBY.equals(paramObject.cBY)))
     {
-      AppMethodBeat.o(70538);
+      AppMethodBeat.o(74725);
       return true;
     }
-    AppMethodBeat.o(70538);
+    AppMethodBeat.o(74725);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(70537);
+    AppMethodBeat.i(74724);
     int i = this.name.hashCode();
-    int j = this.aub.hashCode();
-    AppMethodBeat.o(70537);
+    int j = this.cBY.hashCode();
+    AppMethodBeat.o(74724);
     return (i + 31) * 31 + j;
   }
 }

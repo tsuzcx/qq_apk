@@ -1,28 +1,33 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.config.k.a;
-import com.tencent.mm.plugin.appbrand.config.s;
-import java.util.HashSet;
-import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Ljava/lang/Runnable;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "username", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class AppBrandCollectionDisplayVerticalList$e
-  extends k
-  implements a<Runnable>
+  extends u
+  implements b<String, ah>
 {
-  AppBrandCollectionDisplayVerticalList$e(AppBrandCollectionDisplayVerticalList paramAppBrandCollectionDisplayVerticalList)
+  public static final e uif;
+  
+  static
   {
-    super(0);
+    AppMethodBeat.i(175222);
+    uif = new e();
+    AppMethodBeat.o(175222);
+  }
+  
+  AppBrandCollectionDisplayVerticalList$e()
+  {
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.AppBrandCollectionDisplayVerticalList.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mm.sdk.a;
 
-import com.tencent.mm.vending.g.d;
+import com.tencent.mm.vending.h.d;
 
 public final class b
   extends d
@@ -10,7 +10,7 @@ public final class b
     paramRunnable.run();
   }
   
-  public final void b(Runnable paramRunnable)
+  public final void d(Runnable paramRunnable)
   {
     paramRunnable.run();
   }

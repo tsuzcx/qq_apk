@@ -1,58 +1,60 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cmg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.fqx;
+import com.tencent.mm.protocal.protobuf.fqy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class n
-  extends p
+  extends r
 {
+  public fqy JAJ;
   private final String TAG;
-  public cmg nHp;
   
   public n(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(41743);
+    AppMethodBeat.i(64638);
     this.TAG = "MicroMsg.NetSceneUnbindHoneyPayCard";
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cmf();
-    ((b.a)localObject).fsY = new cmg();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/unbindhpcard";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cmf)this.rr.fsV.fta;
-    ((cmf)localObject).xcf = paramString1;
-    ((cmf)localObject).wOx = paramString2;
-    AppMethodBeat.o(41743);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fqx();
+    ((c.a)localObject).otF = new fqy();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/unbindhpcard";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fqx)c.b.b(this.rr.otB);
+    ((fqx)localObject).aatc = paramString1;
+    ((fqx)localObject).ZpZ = paramString2;
+    AppMethodBeat.o(64638);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(41744);
-    ab.i("MicroMsg.NetSceneUnbindHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nHp = ((cmg)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneUnbindHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nHp.koj), this.nHp.kok });
+    AppMethodBeat.i(64639);
+    Log.i("MicroMsg.NetSceneUnbindHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.JAJ = ((fqy)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneUnbindHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.JAJ.wuz), this.JAJ.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(41744);
+    AppMethodBeat.o(64639);
   }
   
-  public final void e(q paramq)
+  public final void f(s params)
   {
-    paramq = (cmg)((b)paramq).fsW.fta;
-    this.AXb = paramq.koj;
-    this.AXc = paramq.kok;
+    AppMethodBeat.i(267294);
+    params = (fqy)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(267294);
   }
   
   public final int getType()
@@ -62,7 +64,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a.n
  * JD-Core Version:    0.7.0.1
  */

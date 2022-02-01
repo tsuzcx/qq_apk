@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="@drawable/awu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/gs4" layout="@layout/ccw" />
+    <include android:id="@id/gs9" layout="@layout/ccw" />
+    <include android:id="@id/gsz" layout="@layout/ccw" />
+    <include android:id="@id/gsy" layout="@layout/ccw" />
+</LinearLayout>

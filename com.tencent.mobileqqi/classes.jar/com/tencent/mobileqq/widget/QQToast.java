@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import hhi;
+import hhh;
 
 public class QQToast
 {
@@ -89,21 +89,21 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    hhi localhhi = new hhi(this.jdField_a_of_type_AndroidContentContext);
+    hhh localhhh = new hhh(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903298, null);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      ((ImageView)localView.findViewById(2131232010)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((ImageView)localView.findViewById(2131232009)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        ((TextView)localView.findViewById(2131232011)).setText(this.jdField_a_of_type_JavaLangCharSequence);
+        ((TextView)localView.findViewById(2131232010)).setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      localhhi.setGravity(55, 0, paramInt);
-      localhhi.setView(localView);
-      localhhi.setDuration(this.e);
-      return localhhi;
-      ImageView localImageView = (ImageView)localView.findViewById(2131232010);
+      localhhh.setGravity(55, 0, paramInt);
+      localhhh.setView(localView);
+      localhhh.setDuration(this.e);
+      return localhhh;
+      ImageView localImageView = (ImageView)localView.findViewById(2131232009);
     }
   }
   

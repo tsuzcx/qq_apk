@@ -1,71 +1,40 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import alse;
-import alul;
-import azqs;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AccountNotMatchException;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.IFileVideoDownloadInfoListener;
+import com.tencent.mobileqq.filemanager.fileviewer.data.BaseVideoBiz;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import java.util.ArrayList;
 
 class AIOImageProviderService$7
-  implements Runnable
+  implements IFileVideoDownloadInfoListener
 {
-  AIOImageProviderService$7(AIOImageProviderService paramAIOImageProviderService, long paramLong) {}
+  AIOImageProviderService$7(AIOImageProviderService paramAIOImageProviderService, BaseVideoBiz paramBaseVideoBiz, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.this$0.a);
-      ChatMessage localChatMessage = this.this$0.a(this.a);
-      QQMessageFacade localQQMessageFacade;
-      if (localChatMessage != null)
-      {
-        localQQMessageFacade = localQQAppInterface.a();
-        if (!alul.a(localChatMessage)) {
-          break label157;
-        }
-        alul.a(localChatMessage);
-        break label180;
-      }
-      for (;;)
-      {
-        localQQMessageFacade.a(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.this$0.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
-        }
-        azqs.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
-        return;
-        label157:
-        alse.a(localChatMessage);
-        Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
-        label180:
-        if (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord.uniseq != this.a) {
-            break;
-          }
-          alse.a(localMessageRecord);
-        }
-      }
-      return;
+    if (this.e.y != null) {
+      this.e.y.a(this.b, this.c, this.d, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
     }
-    catch (AccountNotMatchException localAccountNotMatchException)
+  }
+  
+  public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
+  {
+    if (this.e.y != null)
     {
-      QLog.d("Q.hotchat", 2, "setFlashPicReaded，account no match exception");
+      ArrayList localArrayList = paramSuperPlayerVideoInfo.getCookie();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("savepath", paramSuperPlayerVideoInfo.getLocalSavePath());
+      localBundle.putStringArrayList("cookies", localArrayList);
+      localBundle.putString("contextid", this.a.a());
+      localBundle.putString("fileid", paramSuperPlayerVideoInfo.getFileId());
+      this.e.y.a(this.b, this.c, this.d, this.a.c(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.7
  * JD-Core Version:    0.7.0.1
  */

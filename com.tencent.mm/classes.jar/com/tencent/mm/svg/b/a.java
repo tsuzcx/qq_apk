@@ -5,81 +5,81 @@ import java.lang.reflect.Field;
 
 public final class a<T>
 {
-  private String classname;
-  public Field erN;
-  private String fieldName;
-  private boolean inited;
+  public Field dEn;
+  private String lYr;
+  private boolean lYs;
+  private String lYt;
   public Object obj;
   
   public a(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(70119);
+    AppMethodBeat.i(148753);
     if (paramObject == null)
     {
       paramObject = new IllegalArgumentException("obj cannot be null");
-      AppMethodBeat.o(70119);
+      AppMethodBeat.o(148753);
       throw paramObject;
     }
     this.obj = paramObject;
-    this.fieldName = paramString;
-    this.classname = null;
-    AppMethodBeat.o(70119);
+    this.lYr = paramString;
+    this.lYt = null;
+    AppMethodBeat.o(148753);
   }
   
-  public final boolean Mb()
+  public final boolean aPM()
   {
-    AppMethodBeat.i(70122);
+    AppMethodBeat.i(148756);
     prepare();
-    if (this.erN != null)
+    if (this.dEn != null)
     {
-      AppMethodBeat.o(70122);
+      AppMethodBeat.o(148756);
       return true;
     }
-    AppMethodBeat.o(70122);
+    AppMethodBeat.o(148756);
     return false;
   }
   
   public final T get()
   {
-    AppMethodBeat.i(70121);
+    AppMethodBeat.i(148755);
     prepare();
     Object localObject;
-    if (this.erN == null)
+    if (this.dEn == null)
     {
       localObject = new NoSuchFieldException();
-      AppMethodBeat.o(70121);
+      AppMethodBeat.o(148755);
       throw ((Throwable)localObject);
     }
     try
     {
-      localObject = this.erN.get(this.obj);
-      AppMethodBeat.o(70121);
+      localObject = this.dEn.get(this.obj);
+      AppMethodBeat.o(148755);
       return localObject;
     }
     catch (ClassCastException localClassCastException)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
-      AppMethodBeat.o(70121);
+      AppMethodBeat.o(148755);
       throw localIllegalArgumentException;
     }
   }
   
   public final void prepare()
   {
-    AppMethodBeat.i(70120);
-    if (this.inited)
+    AppMethodBeat.i(148754);
+    if (this.lYs)
     {
-      AppMethodBeat.o(70120);
+      AppMethodBeat.o(148754);
       return;
     }
-    this.inited = true;
+    this.lYs = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
-        Field localField1 = localClass.getDeclaredField(this.fieldName);
+        Field localField1 = localClass.getDeclaredField(this.lYr);
         localField1.setAccessible(true);
-        this.erN = localField1;
+        this.dEn = localField1;
         return;
       }
       catch (Exception localException1)
@@ -88,7 +88,7 @@ public final class a<T>
         {
           try
           {
-            if ((this.classname != null) && (!this.classname.equals("")))
+            if ((this.lYt != null) && (!this.lYt.equals("")))
             {
               Field[] arrayOfField = localClass.getDeclaredFields();
               int j = arrayOfField.length;
@@ -96,11 +96,11 @@ public final class a<T>
               if (i < j)
               {
                 Field localField2 = arrayOfField[i];
-                if (!localField2.getType().getName().equals(this.classname)) {
+                if (!localField2.getType().getName().equals(this.lYt)) {
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.erN = localField2;
+                this.dEn = localField2;
               }
             }
           }
@@ -117,10 +117,10 @@ public final class a<T>
       finally
       {
         localClass.getSuperclass();
-        AppMethodBeat.o(70120);
+        AppMethodBeat.o(148754);
       }
     }
-    AppMethodBeat.o(70120);
+    AppMethodBeat.o(148754);
   }
 }
 

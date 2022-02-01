@@ -155,7 +155,6 @@ public class TPReportParams
   public void resetAllParam()
   {
     this.commonParams.reset();
-    this.initParams.reset();
     this.firstLoadParams.reset();
     this.firstRenderParams.reset();
     this.loadSubtitleParams.reset();
@@ -170,7 +169,7 @@ public class TPReportParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams
  * JD-Core Version:    0.7.0.1
  */

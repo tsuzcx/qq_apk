@@ -15,29 +15,29 @@ public final class zza
   public zza(Activity paramActivity)
   {
     this(zza.zzb(paramActivity));
-    AppMethodBeat.i(60673);
-    AppMethodBeat.o(60673);
+    AppMethodBeat.i(11165);
+    AppMethodBeat.o(11165);
   }
   
   private zza(zza paramzza)
   {
-    AppMethodBeat.i(60674);
+    AppMethodBeat.i(11166);
     this.zzds = new WeakReference(paramzza);
-    AppMethodBeat.o(60674);
+    AppMethodBeat.o(11166);
   }
   
   public final ActivityLifecycleObserver onStopCallOnce(Runnable paramRunnable)
   {
-    AppMethodBeat.i(60675);
+    AppMethodBeat.i(11167);
     zza localzza = (zza)this.zzds.get();
     if (localzza == null)
     {
       paramRunnable = new IllegalStateException("The target activity has already been GC'd");
-      AppMethodBeat.o(60675);
+      AppMethodBeat.o(11167);
       throw paramRunnable;
     }
     zza.zza(localzza, paramRunnable);
-    AppMethodBeat.o(60675);
+    AppMethodBeat.o(11167);
     return this;
   }
   
@@ -49,15 +49,15 @@ public final class zza
     private zza(LifecycleFragment paramLifecycleFragment)
     {
       super();
-      AppMethodBeat.i(60668);
+      AppMethodBeat.i(11160);
       this.zzdt = new ArrayList();
       this.mLifecycleFragment.addCallback("LifecycleObserverOnStop", this);
-      AppMethodBeat.o(60668);
+      AppMethodBeat.o(11160);
     }
     
     private static zza zza(Activity paramActivity)
     {
-      AppMethodBeat.i(60667);
+      AppMethodBeat.i(11159);
       try
       {
         LifecycleFragment localLifecycleFragment = getFragment(paramActivity);
@@ -70,7 +70,7 @@ public final class zza
       }
       finally
       {
-        AppMethodBeat.o(60667);
+        AppMethodBeat.o(11159);
       }
     }
     
@@ -78,9 +78,9 @@ public final class zza
     {
       try
       {
-        AppMethodBeat.i(60669);
+        AppMethodBeat.i(11161);
         this.zzdt.add(paramRunnable);
-        AppMethodBeat.o(60669);
+        AppMethodBeat.o(11161);
         return;
       }
       finally
@@ -92,27 +92,25 @@ public final class zza
     
     public void onStop()
     {
-      AppMethodBeat.i(60670);
+      AppMethodBeat.i(11162);
       try
       {
         Object localObject1 = this.zzdt;
         this.zzdt = new ArrayList();
         localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          ((Runnable)((Iterator)localObject1).next()).run();
-        }
-        AppMethodBeat.o(60670);
+        if (((Iterator)localObject1).hasNext()) {}
+        return;
       }
       finally
       {
-        AppMethodBeat.o(60670);
+        AppMethodBeat.o(11162);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zza
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,15 @@ public final class u
   {
     paramJceOutputStream.write(this.bS, 0);
     paramJceOutputStream.write(this.bT, 1);
-    if (this.bU != null) {
-      paramJceOutputStream.write(this.bU, 2);
+    String str = this.bU;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.u
  * JD-Core Version:    0.7.0.1
  */

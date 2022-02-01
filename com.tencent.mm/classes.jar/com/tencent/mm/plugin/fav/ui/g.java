@@ -1,318 +1,276 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.li;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.h.a;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.aby;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.acb;
-import com.tencent.mm.protocal.protobuf.acc;
-import com.tencent.mm.protocal.protobuf.ack;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acs;
-import com.tencent.mm.protocal.protobuf.acw;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.e;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class g
+  implements p
 {
-  private static String NX(String paramString)
+  private String Ahe;
+  private int height;
+  private String url;
+  private int width;
+  
+  public g(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(74032);
-    paramString = paramString.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll(" ", "&nbsp;");
-    AppMethodBeat.o(74032);
-    return paramString;
+    this.Ahe = paramString1;
+    this.url = paramString2;
+    this.width = paramInt1;
+    this.height = paramInt2;
   }
   
-  private static String a(Context paramContext, aca paramaca)
+  /* Error */
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
-    AppMethodBeat.i(74033);
-    switch (paramaca.dataType)
-    {
-    default: 
-      paramContext = paramaca.desc;
-      AppMethodBeat.o(74033);
-      return paramContext;
-    case 5: 
-      str = "";
-      paramContext = str;
-      if (paramaca.wTw != null)
-      {
-        paramContext = str;
-        if (paramaca.wTw.wUb != null) {
-          paramContext = paramaca.wTw.wUb.link;
-        }
-      }
-      if (bo.isNullOrNil(paramContext))
-      {
-        paramContext = paramaca.wSJ;
-        AppMethodBeat.o(74033);
-        return paramContext;
-      }
-      AppMethodBeat.o(74033);
-      return paramContext;
-    case 17: 
-      paramContext = paramContext.getString(2131297055);
-      AppMethodBeat.o(74033);
-      return paramContext;
-    case 19: 
-      paramContext = paramContext.getString(2131296544);
-    }
-    try
-    {
-      paramaca = paramContext + " " + paramaca.wTw.wUs.wSs;
-      paramContext = paramaca;
-    }
-    catch (Exception paramaca)
-    {
-      label197:
-      break label197;
-    }
-    AppMethodBeat.o(74033);
-    return paramContext;
-    paramContext = paramContext.getString(2131296967);
-    try
-    {
-      com.tencent.mm.kernel.g.RM();
-      paramaca = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Ty(paramaca.desc);
-      paramaca = paramContext + " " + paramaca.nickname;
-      paramContext = paramaca;
-    }
-    catch (Exception paramaca)
-    {
-      label267:
-      break label267;
-    }
-    AppMethodBeat.o(74033);
-    return paramContext;
-    paramContext = paramContext.getString(2131297105) + " " + j.C(paramContext, paramaca.duration / 1000) + "\n";
-    AppMethodBeat.o(74033);
-    return paramContext;
-    String str = paramaca.desc;
-    paramContext = str;
-    if (!bo.isNullOrNil(paramaca.title)) {
-      paramContext = paramaca.title + " " + str;
-    }
-    AppMethodBeat.o(74033);
-    return paramContext;
+    // Byte code:
+    //   0: ldc 33
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: astore_3
+    //   7: getstatic 45	com/tencent/mm/platformtools/p$a:pAS	Lcom/tencent/mm/platformtools/p$a;
+    //   10: aload_2
+    //   11: if_acmpne +172 -> 183
+    //   14: aload_1
+    //   15: astore_3
+    //   16: ldc 47
+    //   18: ldc 49
+    //   20: iconst_1
+    //   21: anewarray 4	java/lang/Object
+    //   24: dup
+    //   25: iconst_0
+    //   26: aload_0
+    //   27: getfield 21	com/tencent/mm/plugin/fav/ui/g:url	Ljava/lang/String;
+    //   30: aastore
+    //   31: invokestatic 55	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: aload_1
+    //   35: astore_3
+    //   36: new 57	com/tencent/mm/vfs/u
+    //   39: dup
+    //   40: invokestatic 63	com/tencent/mm/plugin/fav/a/b:dPW	()Ljava/lang/String;
+    //   43: invokespecial 66	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   46: astore_2
+    //   47: aload_1
+    //   48: astore_3
+    //   49: aload_2
+    //   50: invokevirtual 70	com/tencent/mm/vfs/u:jKS	()Z
+    //   53: ifne +10 -> 63
+    //   56: aload_1
+    //   57: astore_3
+    //   58: aload_2
+    //   59: invokevirtual 73	com/tencent/mm/vfs/u:jKY	()Z
+    //   62: pop
+    //   63: aload_1
+    //   64: astore_2
+    //   65: aload_1
+    //   66: astore_3
+    //   67: aload_0
+    //   68: getfield 23	com/tencent/mm/plugin/fav/ui/g:width	I
+    //   71: ifle +30 -> 101
+    //   74: aload_1
+    //   75: astore_2
+    //   76: aload_1
+    //   77: astore_3
+    //   78: aload_0
+    //   79: getfield 25	com/tencent/mm/plugin/fav/ui/g:height	I
+    //   82: ifle +19 -> 101
+    //   85: aload_1
+    //   86: astore_3
+    //   87: aload_1
+    //   88: aload_0
+    //   89: getfield 23	com/tencent/mm/plugin/fav/ui/g:width	I
+    //   92: aload_0
+    //   93: getfield 25	com/tencent/mm/plugin/fav/ui/g:height	I
+    //   96: iconst_1
+    //   97: invokestatic 79	com/tencent/mm/sdk/platformtools/BitmapUtil:getCenterCropBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   100: astore_2
+    //   101: aload_2
+    //   102: astore_3
+    //   103: new 57	com/tencent/mm/vfs/u
+    //   106: dup
+    //   107: aload_0
+    //   108: invokevirtual 82	com/tencent/mm/plugin/fav/ui/g:bTC	()Ljava/lang/String;
+    //   111: invokespecial 66	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   114: astore 5
+    //   116: aload_2
+    //   117: astore_3
+    //   118: aload 5
+    //   120: invokevirtual 85	com/tencent/mm/vfs/u:jKZ	()Z
+    //   123: pop
+    //   124: aconst_null
+    //   125: astore 4
+    //   127: aconst_null
+    //   128: astore_1
+    //   129: aload 5
+    //   131: invokestatic 91	com/tencent/mm/vfs/y:ap	(Lcom/tencent/mm/vfs/u;)Ljava/io/OutputStream;
+    //   134: astore 5
+    //   136: aload 5
+    //   138: astore_1
+    //   139: aload 5
+    //   141: astore 4
+    //   143: aload_2
+    //   144: getstatic 97	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   147: bipush 100
+    //   149: aload 5
+    //   151: invokevirtual 103	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   154: pop
+    //   155: aload 5
+    //   157: astore_1
+    //   158: aload 5
+    //   160: astore 4
+    //   162: aload 5
+    //   164: invokevirtual 108	java/io/OutputStream:flush	()V
+    //   167: aload_2
+    //   168: astore_3
+    //   169: aload 5
+    //   171: ifnull +12 -> 183
+    //   174: aload_2
+    //   175: astore_3
+    //   176: aload 5
+    //   178: invokevirtual 111	java/io/OutputStream:close	()V
+    //   181: aload_2
+    //   182: astore_3
+    //   183: ldc 33
+    //   185: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: aload_3
+    //   189: areturn
+    //   190: astore_3
+    //   191: aload_1
+    //   192: astore 4
+    //   194: ldc 47
+    //   196: aload_3
+    //   197: ldc 116
+    //   199: iconst_0
+    //   200: anewarray 4	java/lang/Object
+    //   203: invokestatic 120	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: aload_2
+    //   207: astore_3
+    //   208: aload_1
+    //   209: ifnull -26 -> 183
+    //   212: aload_2
+    //   213: astore_3
+    //   214: aload_1
+    //   215: invokevirtual 111	java/io/OutputStream:close	()V
+    //   218: aload_2
+    //   219: astore_3
+    //   220: goto -37 -> 183
+    //   223: astore_1
+    //   224: ldc 47
+    //   226: aload_1
+    //   227: ldc 116
+    //   229: iconst_0
+    //   230: anewarray 4	java/lang/Object
+    //   233: invokestatic 120	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   236: goto -53 -> 183
+    //   239: astore_1
+    //   240: aload 4
+    //   242: ifnull +10 -> 252
+    //   245: aload_2
+    //   246: astore_3
+    //   247: aload 4
+    //   249: invokevirtual 111	java/io/OutputStream:close	()V
+    //   252: aload_2
+    //   253: astore_3
+    //   254: ldc 33
+    //   256: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   259: aload_2
+    //   260: astore_3
+    //   261: aload_1
+    //   262: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	263	0	this	g
+    //   0	263	1	paramBitmap	Bitmap
+    //   0	263	2	parama	p.a
+    //   0	263	3	paramString	String
+    //   125	123	4	localObject1	Object
+    //   114	63	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   129	136	190	java/io/FileNotFoundException
+    //   143	155	190	java/io/FileNotFoundException
+    //   162	167	190	java/io/FileNotFoundException
+    //   16	34	223	java/io/IOException
+    //   36	47	223	java/io/IOException
+    //   49	56	223	java/io/IOException
+    //   58	63	223	java/io/IOException
+    //   67	74	223	java/io/IOException
+    //   78	85	223	java/io/IOException
+    //   87	101	223	java/io/IOException
+    //   103	116	223	java/io/IOException
+    //   118	124	223	java/io/IOException
+    //   176	181	223	java/io/IOException
+    //   214	218	223	java/io/IOException
+    //   247	252	223	java/io/IOException
+    //   254	259	223	java/io/IOException
+    //   261	263	223	java/io/IOException
+    //   129	136	239	finally
+    //   143	155	239	finally
+    //   162	167	239	finally
+    //   194	206	239	finally
   }
   
-  private static void a(com.tencent.mm.plugin.fav.a.g paramg, int paramInt, String paramString)
+  public final void a(p.a parama) {}
+  
+  public final p.b bTB()
   {
-    AppMethodBeat.i(74034);
-    aca localaca = new aca();
-    localaca.MI(1);
-    localaca.anr(paramString);
-    paramg.field_favProto.wVc.add(paramInt, localaca);
-    AppMethodBeat.o(74034);
+    return null;
   }
   
-  public static void a(MMActivity paramMMActivity, long paramLong, h.a parama)
+  public final String bTC()
   {
-    AppMethodBeat.i(74031);
-    for (;;)
-    {
-      int k;
-      try
-      {
-        com.tencent.mm.plugin.fav.a.g localg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(paramLong);
-        com.tencent.mm.plugin.report.service.h.qsU.e(15378, new Object[] { Integer.valueOf(localg.field_id), Integer.valueOf(localg.field_type) });
-        ab.d("fav.FavNoteConvertLogic", "report 15378, id:%s, type:%s", new Object[] { Integer.valueOf(localg.field_id), Integer.valueOf(localg.field_type) });
-        localg.field_flag = 0;
-        localg.field_updateTime = System.currentTimeMillis();
-        localg.field_localId = -1L;
-        localg.field_sourceType = 6;
-        if (localg.field_favProto.wVa != null)
-        {
-          localg.field_favProto.wVa.aop("");
-          localg.field_favProto.wVa.MR(6);
-          localg.field_favProto.wVa.aon(r.Zn());
-        }
-        localg.field_fromUser = r.Zn();
-        Object localObject1;
-        Object localObject2;
-        if (localg.field_type == 1)
-        {
-          localObject1 = new LinkedList();
-          localg.field_favProto.aJ((LinkedList)localObject1);
-          a(localg, 0, NX(localg.field_favProto.desc));
-          localg.field_localId = System.currentTimeMillis();
-          localg.field_type = 18;
-          localg.field_xml = com.tencent.mm.plugin.fav.a.g.s(localg);
-          localObject1 = new acs();
-          if (parama != null)
-          {
-            ((acs)localObject1).scene = parama.scene;
-            ((acs)localObject1).kbN = parama.kbN;
-            ((acs)localObject1).index = parama.index;
-            ((acs)localObject1).query = parama.query;
-            ((acs)localObject1).cpW = parama.sid;
-            ((acs)localObject1).mtm = parama.mtm;
-          }
-          parama = new li();
-          parama.cBr.field_localId = localg.field_localId;
-          parama.cBr.cBx = 5;
-          parama.cBr.cBt = localg.field_xml;
-          parama.cBr.context = paramMMActivity;
-          localObject2 = new Bundle();
-          localObject3 = localg.field_favProto.wjV;
-          if (localObject3 != null)
-          {
-            ((Bundle)localObject2).putString("noteauthor", ((ack)localObject3).wUT);
-            ((Bundle)localObject2).putString("noteeditor", ((ack)localObject3).wUU);
-          }
-          ((Bundle)localObject2).putLong("edittime", localg.field_updateTime);
-          parama.cBr.cBw = ((Bundle)localObject2);
-          parama.cBr.field_favProto = localg.field_favProto;
-          parama.cBr.type = 2;
-          parama.cBr.cBz = true;
-          parama.cBr.cBA = ((acs)localObject1);
-          a.ymk.l(parama);
-          paramMMActivity.finish();
-          AppMethodBeat.o(74031);
-          return;
-        }
-        if (localg.field_favProto.wVc == null) {
-          continue;
-        }
-        j = 1;
-        i = 0;
-        if (i >= localg.field_favProto.wVc.size()) {
-          continue;
-        }
-        Object localObject3 = (aca)localg.field_favProto.wVc.get(i);
-        if ((localg.field_type != 18) || (!((aca)localObject3).wTE.equals("WeNoteHtmlFile")))
-        {
-          localObject1 = b.b((aca)localObject3);
-          localObject2 = b.c((aca)localObject3);
-          ((aca)localObject3).anD(b.cj(localObject3.toString(), 18));
-          String str1 = b.b((aca)localObject3);
-          String str2 = b.c((aca)localObject3);
-          if ((!bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil(str1)) && (e.cN((String)localObject1))) {
-            e.C((String)localObject1, str1);
-          }
-          if ((!bo.isNullOrNil((String)localObject2)) && (!bo.isNullOrNil(str2)) && (e.cN((String)localObject2))) {
-            e.C((String)localObject2, str2);
-          }
-        }
-        if (localg.field_type != 18)
-        {
-          if (((aca)localObject3).dataType == 1)
-          {
-            if (localg.field_type == 14)
-            {
-              if (((aca)localObject3).desc == null)
-              {
-                localObject1 = "\n";
-                if (((aca)localObject3).wTy == null)
-                {
-                  localObject2 = "";
-                  ((aca)localObject3).anr(NX((String)localObject2 + (String)localObject1 + "\n"));
-                  break label1173;
-                }
-              }
-              else
-              {
-                localObject1 = ((aca)localObject3).desc + "\n";
-                continue;
-              }
-              localObject2 = ((aca)localObject3).wTy + ":\n";
-              continue;
-            }
-            if (!bo.isNullOrNil(((aca)localObject3).desc))
-            {
-              ((aca)localObject3).anr(NX(((aca)localObject3).desc));
-              break label1173;
-            }
-          }
-          else
-          {
-            localObject1 = new StringBuilder("WeNote_");
-            k = j + 1;
-            ((aca)localObject3).anN(j);
-            j = i;
-            if (localg.field_type == 14)
-            {
-              j = i;
-              if (((aca)localObject3).wTy != null)
-              {
-                a(localg, i, NX(((aca)localObject3).wTy + ":"));
-                j = i + 1;
-              }
-            }
-            i = ((aca)localObject3).dataType;
-            if ((i == 1) || (i == 2) || (i == 3) || (i == 6) || (i == 8) || (i == 4)) {
-              break label1182;
-            }
-            if (i != 0) {
-              break label1188;
-            }
-            break label1182;
-            if (i == 0)
-            {
-              localg.field_favProto.wVc.remove(j);
-              localObject1 = a(paramMMActivity, (aca)localObject3);
-              if (localObject1 == null)
-              {
-                localObject1 = "\n\n";
-                a(localg, j, NX((String)localObject1));
-              }
-            }
-            else
-            {
-              if (((aca)localObject3).dataType != 3) {
-                break label1165;
-              }
-              ((aca)localObject3).MI(20);
-              i = j;
-              j = k;
-              break label1173;
-            }
-            localObject1 = "\n" + (String)localObject1 + "\n\n";
-            continue;
-          }
-        }
-        else if (((aca)localObject3).dataType == 20)
-        {
-          ((aca)localObject3).anu("");
-          ((aca)localObject3).anv("");
-        }
-      }
-      catch (Throwable parama)
-      {
-        Toast.makeText(paramMMActivity, paramMMActivity.getString(2131299816), 0).show();
-        AppMethodBeat.o(74031);
-        return;
-      }
-      label1165:
-      int i = j;
-      int j = k;
-      label1173:
-      i += 1;
-      continue;
-      label1182:
-      i = 1;
-      continue;
-      label1188:
-      i = 0;
-    }
+    AppMethodBeat.i(106733);
+    String str = b.dPW() + com.tencent.mm.b.g.getMessageDigest(this.url.getBytes());
+    AppMethodBeat.o(106733);
+    return str;
+  }
+  
+  public final String bTD()
+  {
+    return this.url;
+  }
+  
+  public final String bTE()
+  {
+    return this.Ahe;
+  }
+  
+  public final boolean bTF()
+  {
+    return true;
+  }
+  
+  public final boolean bTG()
+  {
+    return false;
+  }
+  
+  public final Bitmap bTH()
+  {
+    AppMethodBeat.i(106734);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), q.d.nosdcard_headimg);
+    AppMethodBeat.o(106734);
+    return localBitmap;
+  }
+  
+  public final void bTI() {}
+  
+  public final void bTJ() {}
+  
+  public final String getCacheKey()
+  {
+    return this.Ahe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.g
  * JD-Core Version:    0.7.0.1
  */

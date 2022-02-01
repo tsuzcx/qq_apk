@@ -4,8 +4,8 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class QQAlbumInfo
 {
-  public String _id;
   public long coverDate;
+  public String id;
   public LocalMediaInfo mCoverInfo = new LocalMediaInfo();
   public int mMediaFileCount;
   public String name;

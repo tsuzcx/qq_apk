@@ -1,61 +1,59 @@
 import android.os.Handler;
-import android.view.View;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class cdy
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public cdy(ChatSettingForTroop paramChatSettingForTroop, int paramInt, ActionSheet paramActionSheet) {}
+  public cdy(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562449, 1500);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = -1;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b, "P_CliOper", "Grp_msg", "", "data_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, String.valueOf(paramInt - 1), "", "");
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
     }
-    catch (Exception paramView)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.chatopttroop", 2, paramView.toString());
+      Object localObject3;
+      try
+      {
+        localObject3 = this.a.b.a().createEntityManager();
+        if (localObject3 == null) {
+          break label182;
+        }
+        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c }, null, null, null, null);
+        ((EntityManager)localObject3).a();
+        if (localObject1 == null) {
+          break label179;
+        }
+        localObject3 = new ArrayList(((List)localObject1).size());
+        localObject1 = ((List)localObject1).iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
+          continue;
+        }
+        if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+          break label179;
+        }
+      }
+      finally {}
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 13;
+      localMessage.obj = localObject3;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      label179:
+      return;
+      label182:
+      localMessage = null;
     }
   }
 }

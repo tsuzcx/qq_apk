@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.ui.widget.a.i;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.ActionButton;
 import com.tencent.tmassistantsdk.util.Res;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -58,16 +58,16 @@ public class PopDialog
   
   private void initHeaderView()
   {
-    AppMethodBeat.i(75956);
+    AppMethodBeat.i(102202);
     this.titleView.setPadding(px(30), 0, px(30), 0);
     this.contentLayout.setPadding(px(30), 0, px(30), px(30));
     this.contentView.setPadding(0, px(30), 0, px(30));
-    AppMethodBeat.o(75956);
+    AppMethodBeat.o(102202);
   }
   
   private void initMulDialog()
   {
-    AppMethodBeat.i(75958);
+    AppMethodBeat.i(102204);
     this.negativeBtn.setHeight(px(78));
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.negativeBtn.getLayoutParams();
     localMarginLayoutParams.setMargins(0, 0, px(30), 0);
@@ -76,21 +76,21 @@ public class PopDialog
     this.positiveBtn.setTextSize(px(30));
     this.downloadProgressBar.setMinimumHeight(px(78));
     this.downloadText.setHeight(px(78));
-    AppMethodBeat.o(75958);
+    AppMethodBeat.o(102204);
   }
   
   private void initSingleDialog()
   {
-    AppMethodBeat.i(75957);
+    AppMethodBeat.i(102203);
     this.positiveLayout.setVisibility(8);
     this.negativeBtn.setHeight(px(78));
     this.negativeBtn.setText(this.mContext.getString(this.rTool.string("white_list_submit")));
-    AppMethodBeat.o(75957);
+    AppMethodBeat.o(102203);
   }
   
   private int px(int paramInt)
   {
-    AppMethodBeat.i(75970);
+    AppMethodBeat.i(102216);
     int i = getScreenHeight();
     int j = getScreenWidth();
     TMLog.i("PopDialog", " width = " + j + "  height = " + i);
@@ -100,7 +100,7 @@ public class PopDialog
       float f = paramInt;
       i = (int)((i + 0.0F) * f / 1280.0F);
       TMLog.i("PopDialog", "rtn" + paramInt + ":" + i);
-      AppMethodBeat.o(75970);
+      AppMethodBeat.o(102216);
       return i;
       i = j;
     }
@@ -108,17 +108,17 @@ public class PopDialog
   
   private void relayoutView()
   {
-    AppMethodBeat.i(75955);
+    AppMethodBeat.i(102201);
     initHeaderView();
     switch (this.style)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(75955);
+      AppMethodBeat.o(102201);
       return;
       initSingleDialog();
-      AppMethodBeat.o(75955);
+      AppMethodBeat.o(102201);
       return;
       initMulDialog();
     }
@@ -126,33 +126,33 @@ public class PopDialog
   
   public int getScreenHeight()
   {
-    AppMethodBeat.i(75969);
+    AppMethodBeat.i(102215);
     if (this.mContext != null)
     {
       int i = this.mContext.getResources().getDisplayMetrics().heightPixels;
-      AppMethodBeat.o(75969);
+      AppMethodBeat.o(102215);
       return i;
     }
-    AppMethodBeat.o(75969);
+    AppMethodBeat.o(102215);
     return 0;
   }
   
   public int getScreenWidth()
   {
-    AppMethodBeat.i(75968);
+    AppMethodBeat.i(102214);
     if (this.mContext != null)
     {
       int i = this.mContext.getResources().getDisplayMetrics().widthPixels;
-      AppMethodBeat.o(75968);
+      AppMethodBeat.o(102214);
       return i;
     }
-    AppMethodBeat.o(75968);
+    AppMethodBeat.o(102214);
     return 0;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(75954);
+    AppMethodBeat.i(102200);
     super.onCreate(paramBundle);
     this.rTool = new Res(this.mContext);
     super.setContentView(this.rTool.layout("com_tencent_tmassistant_sdk_white_list_dlg"));
@@ -167,93 +167,93 @@ public class PopDialog
     this.downloadText = ((TextView)findViewById(this.rTool.id("progress_txt_tv")));
     this.negativeBtn = ((Button)findViewById(this.rTool.id("negtive_btn")));
     relayoutView();
-    AppMethodBeat.o(75954);
+    AppMethodBeat.o(102200);
   }
   
   public void setContent(String paramString)
   {
-    AppMethodBeat.i(75960);
+    AppMethodBeat.i(102206);
     if (!TextUtils.isEmpty(paramString)) {
       this.contentView.setText(paramString);
     }
-    AppMethodBeat.o(75960);
+    AppMethodBeat.o(102206);
   }
   
   public void setNegativeBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(75967);
+    AppMethodBeat.i(102213);
     if (paramOnClickListener != null) {
       this.negativeBtn.setOnClickListener(paramOnClickListener);
     }
-    AppMethodBeat.o(75967);
+    AppMethodBeat.o(102213);
   }
   
   public void setNegativeBtnText(String paramString)
   {
-    AppMethodBeat.i(75966);
+    AppMethodBeat.i(102212);
     if (!TextUtils.isEmpty(paramString)) {
       this.negativeBtn.setText(paramString);
     }
-    AppMethodBeat.o(75966);
+    AppMethodBeat.o(102212);
   }
   
   public void setPositiveBtnBgResource(int paramInt)
   {
-    AppMethodBeat.i(75964);
+    AppMethodBeat.i(102210);
     if (paramInt != 0) {
       this.positiveBtn.setBackgroundResource(paramInt);
     }
-    AppMethodBeat.o(75964);
+    AppMethodBeat.o(102210);
   }
   
   public void setPositiveBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(75962);
+    AppMethodBeat.i(102208);
     if (paramOnClickListener != null) {
       this.positiveBtn.setOnClickListener(paramOnClickListener);
     }
-    AppMethodBeat.o(75962);
+    AppMethodBeat.o(102208);
   }
   
   public void setPositiveBtnEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(75965);
+    AppMethodBeat.i(102211);
     if (this.positiveBtn != null) {
       this.positiveBtn.setEnabled(paramBoolean);
     }
-    AppMethodBeat.o(75965);
+    AppMethodBeat.o(102211);
   }
   
   public void setPositiveBtnTag(ActionButton paramActionButton)
   {
-    AppMethodBeat.i(75961);
+    AppMethodBeat.i(102207);
     if (paramActionButton != null) {
       this.positiveBtn.setTag(paramActionButton);
     }
-    AppMethodBeat.o(75961);
+    AppMethodBeat.o(102207);
   }
   
   public void setPositiveBtnText(String paramString)
   {
-    AppMethodBeat.i(75963);
+    AppMethodBeat.i(102209);
     if (!TextUtils.isEmpty(paramString)) {
       this.downloadText.setText(paramString);
     }
-    AppMethodBeat.o(75963);
+    AppMethodBeat.o(102209);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(75959);
+    AppMethodBeat.i(102205);
     if (!TextUtils.isEmpty(paramString)) {
       this.titleView.setText(paramString);
     }
-    AppMethodBeat.o(75959);
+    AppMethodBeat.o(102205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.opensdktomsdk.component.PopDialog
  * JD-Core Version:    0.7.0.1
  */

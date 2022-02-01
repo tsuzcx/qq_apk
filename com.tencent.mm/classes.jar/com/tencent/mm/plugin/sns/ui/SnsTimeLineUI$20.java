@@ -1,27 +1,24 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.ListView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.autogen.a.cg;
+import com.tencent.mm.sdk.event.IListener;
 
-final class SnsTimeLineUI$20
-  implements Runnable
+class SnsTimeLineUI$20
+  extends IListener<cg>
 {
-  SnsTimeLineUI$20(SnsTimeLineUI paramSnsTimeLineUI) {}
-  
-  public final void run()
+  SnsTimeLineUI$20(SnsTimeLineUI paramSnsTimeLineUI, q paramq)
   {
-    AppMethodBeat.i(145570);
-    int i = SnsTimeLineUI.l(this.rYv).list.getFirstVisiblePosition();
-    int j = SnsTimeLineUI.l(this.rYv).list.getLastVisiblePosition();
-    ab.d("MicroMsg.SnsTimeLineUI", "notifyList from:%s to:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    SnsTimeLineUI.a(this.rYv, i, j);
-    AppMethodBeat.o(145570);
+    super(paramq);
+    AppMethodBeat.i(308599);
+    this.__eventId = cg.class.getName().hashCode();
+    AppMethodBeat.o(308599);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.20
  * JD-Core Version:    0.7.0.1
  */

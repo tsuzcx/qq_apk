@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:id="@id/d8" android:background="@drawable/b4v" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="48.0dip" android:singleLine="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/cyf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/d0" android:src="@raw/icons_filled_error" app:iconColor="@color/a7q" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/c1l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d91" />
+</LinearLayout>

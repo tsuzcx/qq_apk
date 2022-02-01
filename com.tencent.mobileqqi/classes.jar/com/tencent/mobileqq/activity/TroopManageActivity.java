@@ -28,8 +28,8 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.XListView;
 import com.tencent.widget.XSimpleListAdapter;
+import dpx;
 import dpy;
-import dpz;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +72,7 @@ public class TroopManageActivity
     this.jdField_d_of_type_JavaLangString = "199";
     this.jdField_e_of_type_JavaLangString = ("http://imgcache.qq.com/club/client/group/release/index.html?_bid=" + this.jdField_d_of_type_JavaLangString + "&pvsrc=troopManage&sid=%1$s&groupId=%2$s&_wv=5123");
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpz(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpy(this);
   }
   
   private int a()
@@ -126,7 +126,7 @@ public class TroopManageActivity
     Object localObject = this.jdField_a_of_type_ArrayOfAndroidViewView[0];
     if (localObject != null)
     {
-      TextView localTextView = (TextView)((View)localObject).findViewById(2131231507);
+      TextView localTextView = (TextView)((View)localObject).findViewById(2131231506);
       localObject = paramCharSequence;
       if (paramCharSequence == null) {
         localObject = "";
@@ -193,7 +193,7 @@ public class TroopManageActivity
     }
     for (;;)
     {
-      localActionSheet.a(new dpy(this, localActionSheet));
+      localActionSheet.a(new dpx(this, localActionSheet));
       localActionSheet.d(2131561746);
       localActionSheet.show();
       return;
@@ -221,10 +221,10 @@ public class TroopManageActivity
         str = "";
       }
       localTextView.setText(str);
-      paramString = paramView.findViewById(2131232623);
+      paramString = paramView.findViewById(2131232622);
       paramString.setVisibility(0);
       paramString.setVisibility(8);
-      paramString = (TextView)paramView.findViewById(2131231507);
+      paramString = (TextView)paramView.findViewById(2131231506);
       paramView = paramCharSequence;
       if (paramCharSequence == null) {
         paramView = "";
@@ -255,7 +255,7 @@ public class TroopManageActivity
     if (localObject != null)
     {
       ((View)localObject).setVisibility(0);
-      localTextView = (TextView)((View)localObject).findViewById(2131231507);
+      localTextView = (TextView)((View)localObject).findViewById(2131231506);
       localObject = paramCharSequence;
       if (paramCharSequence == null) {
         localObject = "";
@@ -366,11 +366,11 @@ public class TroopManageActivity
         } while (localObject == null);
         this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((FriendManager)localObject).a(this.jdField_b_of_type_JavaLangString);
       } while (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-      ((TextView)paramIntent.findViewById(2131231507)).setText(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum + "/" + this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberMax);
+      ((TextView)paramIntent.findViewById(2131231506)).setText(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum + "/" + this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberMax);
       return;
       paramIntent = this.jdField_a_of_type_ArrayOfAndroidViewView[1];
     } while (paramIntent == null);
-    ((TextView)paramIntent.findViewById(2131231507)).setText(a() + "/" + this.n);
+    ((TextView)paramIntent.findViewById(2131231506)).setText(a() + "/" + this.n);
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -491,7 +491,7 @@ public class TroopManageActivity
           }
         }
         paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903260, null);
-        localObject = (XListView)paramBundle.findViewById(2131231313);
+        localObject = (XListView)paramBundle.findViewById(2131231312);
         ((XListView)localObject).setVerticalScrollBarEnabled(false);
         ((XListView)localObject).setDivider(null);
         ((XListView)localObject).setFocusable(false);

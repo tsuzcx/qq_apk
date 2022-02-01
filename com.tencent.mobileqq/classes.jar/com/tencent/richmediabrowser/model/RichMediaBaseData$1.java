@@ -8,17 +8,7 @@ final class RichMediaBaseData$1
 {
   public RichMediaBaseData createFromParcel(Parcel paramParcel)
   {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = RichMediaBaseData.newInstance((String)localObject);
-      ((RichMediaBaseData)localObject).readFromParcel(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
+    return null;
   }
   
   public RichMediaBaseData[] newArray(int paramInt)
@@ -28,7 +18,7 @@ final class RichMediaBaseData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.model.RichMediaBaseData.1
  * JD-Core Version:    0.7.0.1
  */

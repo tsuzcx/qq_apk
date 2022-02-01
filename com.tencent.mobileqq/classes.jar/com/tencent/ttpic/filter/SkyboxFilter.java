@@ -73,7 +73,12 @@ public class SkyboxFilter
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     setCoordNum(36);
     this.sensorUtil = new SensorUtil();
-    this.skyBitmapUtil = new SkyBitmapUtil(paramString + File.separator + paramStickerItem.id + File.separator);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramStickerItem.id);
+    localStringBuilder.append(File.separator);
+    this.skyBitmapUtil = new SkyBitmapUtil(localStringBuilder.toString());
     this.skyBitmapUtil.decode(0, new ArrayList(Arrays.asList(new String[] { "left", "right", "front", "back", "top", "bottom" })));
     Matrix.setIdentityM(this.mMVPMatrix, 0);
     Matrix.setIdentityM(this.mModelMatrix, 0);
@@ -84,7 +89,8 @@ public class SkyboxFilter
   
   private void initCubemap()
   {
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     GLES20.glActiveTexture(33987);
     GLES20.glBindTexture(34067, this.tex[0]);
   }
@@ -96,10 +102,13 @@ public class SkyboxFilter
     Matrix.setIdentityM(this.mProjectMatrix, 0);
     Matrix.setIdentityM(this.mMVPMatrix, 0);
     Matrix.setIdentityM(this.mIdentityMatrix, 0);
-    Matrix.setLookAtM(this.mViewMatrix, 0, 0.0F, 0.0F, 0.0F, this.mCenterUp[0], this.mCenterUp[1], this.mCenterUp[2], this.mCenterUp[3], this.mCenterUp[4], this.mCenterUp[5]);
+    float[] arrayOfFloat1 = this.mViewMatrix;
+    float[] arrayOfFloat2 = this.mCenterUp;
+    Matrix.setLookAtM(arrayOfFloat1, 0, 0.0F, 0.0F, 0.0F, arrayOfFloat2[0], arrayOfFloat2[1], arrayOfFloat2[2], arrayOfFloat2[3], arrayOfFloat2[4], arrayOfFloat2[5]);
     Matrix.perspectiveM(this.mProjectMatrix, 0, 72.0F, paramInt1 / paramInt2, 1.0F, 300.0F);
     Matrix.multiplyMM(this.mMVPMatrix, 0, this.mViewMatrix, 0, this.mIdentityMatrix, 0);
-    Matrix.multiplyMM(this.mMVPMatrix, 0, this.mProjectMatrix, 0, this.mMVPMatrix, 0);
+    arrayOfFloat1 = this.mMVPMatrix;
+    Matrix.multiplyMM(arrayOfFloat1, 0, this.mProjectMatrix, 0, arrayOfFloat1, 0);
   }
   
   private List<String> lookSides(long paramLong)
@@ -136,41 +145,76 @@ public class SkyboxFilter
   {
     this.isCurTrigged = this.triggerCtrlItem.isTriggered();
     paramInt = this.triggerCtrlItem.getFrameIndex();
-    String str5 = this.dataPath + File.separator + this.stickerItem.id + File.separator;
-    paramPTDetectInfo = str5 + paramInt + "_left" + ".png";
-    String str1 = str5 + paramInt + "_right" + ".png";
-    String str2 = str5 + paramInt + "_top" + ".png";
-    String str3 = str5 + paramInt + "_bottom" + ".png";
-    String str4 = str5 + paramInt + "_back" + ".png";
-    str5 = str5 + paramInt + "_front" + ".png";
-    if (FileUtils.assetAndPathExist(AEModule.getContext(), paramPTDetectInfo))
+    paramPTDetectInfo = new StringBuilder();
+    paramPTDetectInfo.append(this.dataPath);
+    paramPTDetectInfo.append(File.separator);
+    paramPTDetectInfo.append(this.stickerItem.id);
+    paramPTDetectInfo.append(File.separator);
+    paramPTDetectInfo = paramPTDetectInfo.toString();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramPTDetectInfo);
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append("_left");
+    ((StringBuilder)localObject1).append(".png");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramPTDetectInfo);
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append("_right");
+    ((StringBuilder)localObject2).append(".png");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramPTDetectInfo);
+    ((StringBuilder)localObject3).append(paramInt);
+    ((StringBuilder)localObject3).append("_top");
+    ((StringBuilder)localObject3).append(".png");
+    localObject3 = ((StringBuilder)localObject3).toString();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(paramPTDetectInfo);
+    ((StringBuilder)localObject4).append(paramInt);
+    ((StringBuilder)localObject4).append("_bottom");
+    ((StringBuilder)localObject4).append(".png");
+    localObject4 = ((StringBuilder)localObject4).toString();
+    Object localObject5 = new StringBuilder();
+    ((StringBuilder)localObject5).append(paramPTDetectInfo);
+    ((StringBuilder)localObject5).append(paramInt);
+    ((StringBuilder)localObject5).append("_back");
+    ((StringBuilder)localObject5).append(".png");
+    localObject5 = ((StringBuilder)localObject5).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramPTDetectInfo);
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_front");
+    localStringBuilder.append(".png");
+    paramPTDetectInfo = localStringBuilder.toString();
+    if (FileUtils.assetAndPathExist(AEModule.getContext(), (String)localObject1))
     {
-      this.left = paramPTDetectInfo;
+      this.left = ((String)localObject1);
       this.leftUpdate = true;
     }
-    if (FileUtils.assetAndPathExist(AEModule.getContext(), str1))
+    if (FileUtils.assetAndPathExist(AEModule.getContext(), (String)localObject2))
     {
-      this.right = str1;
+      this.right = ((String)localObject2);
       this.rightUpdate = true;
     }
-    if (FileUtils.assetAndPathExist(AEModule.getContext(), str2))
+    if (FileUtils.assetAndPathExist(AEModule.getContext(), (String)localObject3))
     {
-      this.top = str2;
+      this.top = ((String)localObject3);
       this.topUpdate = true;
     }
-    if (FileUtils.assetAndPathExist(AEModule.getContext(), str3))
+    if (FileUtils.assetAndPathExist(AEModule.getContext(), (String)localObject4))
     {
-      this.bottom = str3;
+      this.bottom = ((String)localObject4);
       this.bottomUpdate = true;
     }
-    if (FileUtils.assetAndPathExist(AEModule.getContext(), str4))
+    if (FileUtils.assetAndPathExist(AEModule.getContext(), (String)localObject5))
     {
-      this.back = str4;
+      this.back = ((String)localObject5);
       this.backUpdate = true;
     }
-    if (FileUtils.assetAndPathExist(AEModule.getContext(), str5))
+    if (FileUtils.assetAndPathExist(AEModule.getContext(), paramPTDetectInfo))
     {
-      this.front = str5;
+      this.front = paramPTDetectInfo;
       this.frontUpdate = true;
     }
     return paramInt;
@@ -224,135 +268,133 @@ public class SkyboxFilter
         if (BitmapUtils.isLegal(this.bitmap)) {
           GLUtils.texImage2D(34069, 0, this.bitmap, 0);
         }
-        this.leftUpdate = false;
-        this.leftLoad = true;
       }
-    }
-    else
-    {
-      if (((this.rightUpdate) && (seeRight(this.mCenterUp))) || (!this.rightLoad))
+      else
       {
-        if ((paramHashMap == null) || (!BitmapUtils.isLegal((Bitmap)paramHashMap.get("right")))) {
-          break label626;
+        this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.left, 1);
+        if (BitmapUtils.isLegal(this.bitmap))
+        {
+          GLUtils.texImage2D(34069, 0, this.bitmap, 0);
+          this.bitmap.recycle();
         }
+      }
+      this.leftUpdate = false;
+      this.leftLoad = true;
+    }
+    if (((this.rightUpdate) && (seeRight(this.mCenterUp))) || (!this.rightLoad))
+    {
+      if ((paramHashMap != null) && (BitmapUtils.isLegal((Bitmap)paramHashMap.get("right"))))
+      {
         this.bitmap = ((Bitmap)paramHashMap.get("right"));
         if (BitmapUtils.isLegal(this.bitmap)) {
           GLUtils.texImage2D(34070, 0, this.bitmap, 0);
         }
-        label168:
-        this.rightUpdate = false;
-        this.rightLoad = true;
       }
-      if (((this.topUpdate) && (seeTop(this.mCenterUp))) || (!this.topLoad))
+      else
       {
-        if ((paramHashMap == null) || (!BitmapUtils.isLegal((Bitmap)paramHashMap.get("top")))) {
-          break label673;
+        this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.right, 1);
+        if (BitmapUtils.isLegal(this.bitmap))
+        {
+          GLUtils.texImage2D(34070, 0, this.bitmap, 0);
+          this.bitmap.recycle();
         }
+      }
+      this.rightUpdate = false;
+      this.rightLoad = true;
+    }
+    Bitmap localBitmap;
+    if (((this.topUpdate) && (seeTop(this.mCenterUp))) || (!this.topLoad))
+    {
+      if ((paramHashMap != null) && (BitmapUtils.isLegal((Bitmap)paramHashMap.get("top"))))
+      {
         this.bitmap = ((Bitmap)paramHashMap.get("top"));
         if (BitmapUtils.isLegal(this.bitmap)) {
           GLUtils.texImage2D(34071, 0, this.bitmap, 0);
         }
-        label257:
-        this.topUpdate = false;
-        this.topLoad = true;
       }
-      if (((this.bottomUpdate) && (seeBottom(this.mCenterUp))) || (!this.bottomLoad))
+      else
       {
-        if ((paramHashMap == null) || (!BitmapUtils.isLegal((Bitmap)paramHashMap.get("bottom")))) {
-          break label733;
+        this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.top, 1);
+        if (BitmapUtils.isLegal(this.bitmap))
+        {
+          localBitmap = BitmapUtils.rotateBitmap(this.bitmap, 180, false);
+          GLUtils.texImage2D(34071, 0, localBitmap, 0);
+          this.bitmap.recycle();
+          localBitmap.recycle();
         }
+      }
+      this.topUpdate = false;
+      this.topLoad = true;
+    }
+    if (((this.bottomUpdate) && (seeBottom(this.mCenterUp))) || (!this.bottomLoad))
+    {
+      if ((paramHashMap != null) && (BitmapUtils.isLegal((Bitmap)paramHashMap.get("bottom"))))
+      {
         this.bitmap = ((Bitmap)paramHashMap.get("bottom"));
         if (BitmapUtils.isLegal(this.bitmap)) {
           GLUtils.texImage2D(34072, 0, this.bitmap, 0);
         }
-        label346:
-        this.bottomUpdate = false;
-        this.bottomLoad = true;
       }
-      if (((this.backUpdate) && (seeBack(this.mCenterUp))) || (!this.backLoad))
+      else
       {
-        if ((paramHashMap == null) || (!BitmapUtils.isLegal((Bitmap)paramHashMap.get("back")))) {
-          break label793;
+        this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.bottom, 1);
+        if (BitmapUtils.isLegal(this.bitmap))
+        {
+          localBitmap = BitmapUtils.rotateBitmap(this.bitmap, 180, false);
+          GLUtils.texImage2D(34072, 0, localBitmap, 0);
+          this.bitmap.recycle();
+          localBitmap.recycle();
         }
+      }
+      this.bottomUpdate = false;
+      this.bottomLoad = true;
+    }
+    if (((this.backUpdate) && (seeBack(this.mCenterUp))) || (!this.backLoad))
+    {
+      if ((paramHashMap != null) && (BitmapUtils.isLegal((Bitmap)paramHashMap.get("back"))))
+      {
         this.bitmap = ((Bitmap)paramHashMap.get("back"));
         if (BitmapUtils.isLegal(this.bitmap)) {
           GLUtils.texImage2D(34073, 0, this.bitmap, 0);
         }
-        label435:
-        this.backUpdate = false;
-        this.backLoad = true;
       }
-      if (((this.frontUpdate) && (seeFront(this.mCenterUp))) || (!this.frontLoad))
+      else
       {
-        if ((paramHashMap == null) || (!BitmapUtils.isLegal((Bitmap)paramHashMap.get("front")))) {
-          break label840;
+        this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.back, 1);
+        if (BitmapUtils.isLegal(this.bitmap))
+        {
+          GLUtils.texImage2D(34073, 0, this.bitmap, 0);
+          this.bitmap.recycle();
         }
+      }
+      this.backUpdate = false;
+      this.backLoad = true;
+    }
+    if (((this.frontUpdate) && (seeFront(this.mCenterUp))) || (!this.frontLoad))
+    {
+      if ((paramHashMap != null) && (BitmapUtils.isLegal((Bitmap)paramHashMap.get("front"))))
+      {
         this.bitmap = ((Bitmap)paramHashMap.get("front"));
         if (BitmapUtils.isLegal(this.bitmap)) {
           GLUtils.texImage2D(34074, 0, this.bitmap, 0);
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.front, 1);
+        if (BitmapUtils.isLegal(this.bitmap))
+        {
+          GLUtils.texImage2D(34074, 0, this.bitmap, 0);
+          this.bitmap.recycle();
+        }
+      }
       this.frontUpdate = false;
       this.frontLoad = true;
-      GLES20.glTexParameterf(34067, 10240, 9729.0F);
-      GLES20.glTexParameterf(34067, 10241, 9729.0F);
-      GLES20.glTexParameterf(34067, 10242, 33071.0F);
-      GLES20.glTexParameterf(34067, 10243, 33071.0F);
-      return;
-      this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.left, 1);
-      if (!BitmapUtils.isLegal(this.bitmap)) {
-        break;
-      }
-      GLUtils.texImage2D(34069, 0, this.bitmap, 0);
-      this.bitmap.recycle();
-      break;
-      label626:
-      this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.right, 1);
-      if (!BitmapUtils.isLegal(this.bitmap)) {
-        break label168;
-      }
-      GLUtils.texImage2D(34070, 0, this.bitmap, 0);
-      this.bitmap.recycle();
-      break label168;
-      label673:
-      this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.top, 1);
-      if (!BitmapUtils.isLegal(this.bitmap)) {
-        break label257;
-      }
-      Bitmap localBitmap = BitmapUtils.rotateBitmap(this.bitmap, 180, false);
-      GLUtils.texImage2D(34071, 0, localBitmap, 0);
-      this.bitmap.recycle();
-      localBitmap.recycle();
-      break label257;
-      label733:
-      this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.bottom, 1);
-      if (!BitmapUtils.isLegal(this.bitmap)) {
-        break label346;
-      }
-      localBitmap = BitmapUtils.rotateBitmap(this.bitmap, 180, false);
-      GLUtils.texImage2D(34072, 0, localBitmap, 0);
-      this.bitmap.recycle();
-      localBitmap.recycle();
-      break label346;
-      label793:
-      this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.back, 1);
-      if (!BitmapUtils.isLegal(this.bitmap)) {
-        break label435;
-      }
-      GLUtils.texImage2D(34073, 0, this.bitmap, 0);
-      this.bitmap.recycle();
-      break label435;
-      label840:
-      this.bitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.front, 1);
-      if (BitmapUtils.isLegal(this.bitmap))
-      {
-        GLUtils.texImage2D(34074, 0, this.bitmap, 0);
-        this.bitmap.recycle();
-      }
     }
+    GLES20.glTexParameterf(34067, 10240, 9729.0F);
+    GLES20.glTexParameterf(34067, 10241, 9729.0F);
+    GLES20.glTexParameterf(34067, 10242, 33071.0F);
+    GLES20.glTexParameterf(34067, 10243, 33071.0F);
   }
   
   public void ApplyGLSLFilter()
@@ -366,7 +408,8 @@ public class SkyboxFilter
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     super.clearGLSLSelf();
     this.sensorUtil.stop();
   }
@@ -379,22 +422,32 @@ public class SkyboxFilter
   public Frame render(Frame paramFrame, PTDetectInfo paramPTDetectInfo, int paramInt)
   {
     paramInt = nextFrame(paramPTDetectInfo, paramInt);
-    if (!this.isCurTrigged) {}
-    do
-    {
+    if (!this.isCurTrigged) {
       return paramFrame;
-      paramPTDetectInfo = paramPTDetectInfo.aiAttr;
-    } while ((paramPTDetectInfo == null) || (paramPTDetectInfo.getSurfaceTime() <= 0L) || (paramPTDetectInfo.getNextSurfaceTime() <= 0L));
-    System.arraycopy(this.sensorUtil.centerUp(paramPTDetectInfo.getSurfaceTime()), 0, this.mCenterUp, 0, 6);
-    this.skyBitmapUtil.decode(this.triggerCtrlItem.getFrameIndexElapse(), lookSides(paramPTDetectInfo.getNextSurfaceTime()));
-    this.shader.bind();
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(34067, this.tex[0]);
-    updateCubemap(this.skyBitmapUtil.getBitmap(paramInt));
-    GLES20.glUniform1i(this.mCubeTextureHandle, 3);
-    initMVP(paramFrame.width, paramFrame.height);
-    GLES20.glUniformMatrix4fv(this.mMVPMatrixHandle, 1, false, this.mMVPMatrix, 0);
-    return super.render(paramFrame);
+    }
+    AIAttr localAIAttr = paramPTDetectInfo.aiAttr;
+    paramPTDetectInfo = paramFrame;
+    if (localAIAttr != null)
+    {
+      paramPTDetectInfo = paramFrame;
+      if (localAIAttr.getSurfaceTime() > 0L)
+      {
+        if (localAIAttr.getNextSurfaceTime() <= 0L) {
+          return paramFrame;
+        }
+        System.arraycopy(this.sensorUtil.centerUp(localAIAttr.getSurfaceTime()), 0, this.mCenterUp, 0, 6);
+        this.skyBitmapUtil.decode(this.triggerCtrlItem.getFrameIndexElapse(), lookSides(localAIAttr.getNextSurfaceTime()));
+        this.shader.bind();
+        GLES20.glActiveTexture(33987);
+        GLES20.glBindTexture(34067, this.tex[0]);
+        updateCubemap(this.skyBitmapUtil.getBitmap(paramInt));
+        GLES20.glUniform1i(this.mCubeTextureHandle, 3);
+        initMVP(paramFrame.width, paramFrame.height);
+        GLES20.glUniformMatrix4fv(this.mMVPMatrixHandle, 1, false, this.mMVPMatrix, 0);
+        paramPTDetectInfo = super.render(paramFrame);
+      }
+    }
+    return paramPTDetectInfo;
   }
   
   public void setTriggerCtrlItem(TriggerCtrlItem paramTriggerCtrlItem)
@@ -404,7 +457,7 @@ public class SkyboxFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.SkyboxFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,11 @@ abstract class FileTreeWalk$DirectoryState
     if (_Assertions.ENABLED)
     {
       boolean bool = paramFile.isDirectory();
-      if ((_Assertions.ENABLED) && (!bool)) {
+      if (_Assertions.ENABLED)
+      {
+        if (bool) {
+          return;
+        }
         throw ((Throwable)new AssertionError("rootDir must be verified to be directory beforehand."));
       }
     }
@@ -23,7 +27,7 @@ abstract class FileTreeWalk$DirectoryState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.FileTreeWalk.DirectoryState
  * JD-Core Version:    0.7.0.1
  */

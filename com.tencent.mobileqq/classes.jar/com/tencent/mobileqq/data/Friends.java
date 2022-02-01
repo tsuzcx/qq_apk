@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import aheq;
 import android.database.Cursor;
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.PrimaryKeyJoinColumn;
+import com.tencent.mobileqq.persistence.defaultValue;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
+@PrimaryKeyJoinColumn(name="uin")
 public class Friends
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public static final int CLIENT_DEFAULT = 0;
@@ -28,6 +29,7 @@ public class Friends
   public static final int NET_2G = 2;
   public static final int NET_3G = 3;
   public static final int NET_4G = 4;
+  public static final int NET_5G = 5;
   public static final int NET_UNKNOW = 0;
   public static final int NET_WIFI = 1;
   public static final int TERM_TYPE_ANDROID_PAD = 68104;
@@ -54,33 +56,47 @@ public class Friends
   public static final int TERM_TYPE_TV_QQ = 69130;
   public static final int TERM_TYPE_WIN8 = 69899;
   public static final int TERM_TYPE_WINPHONE = 65804;
-  public long abilityBits;
+  public long abilityBits = 0L;
+  public String adCode;
   public int age;
   public String alias;
-  public int bigClubInfo;
-  public int bigClubTemplateId;
-  @Deprecated
-  public byte cNetwork = 0;
-  public int cNewLoverDiamondFlag;
+  public String area;
+  public long autoStatusUpdateSecond;
+  public int bigClubExtTemplateId = 0;
+  public int bigClubInfo = 0;
+  public int bigClubTemplateId = 0;
+  public int cNewLoverDiamondFlag = 0;
   public byte cSpecialFlag;
+  public String city;
+  public String constellationBgImageUrl;
+  public String constellationDateStr;
+  public String constellationIconUrl;
+  public String constellationJumpUrl;
+  public String constellationLuckyColor;
+  public String constellationLuckyNumber;
+  public String constellationTodayTrend;
+  public String constellationTomorrowTrend;
+  public long curOlympicRank = -1L;
   public String customModel = "";
-  @awhp
+  @notColumn
   public String customOnlineStatus;
-  @awhp
+  @notColumn
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
+  public int diyFontId = 0;
   public int eNetwork = 0;
   @Deprecated
   public short faceid;
-  public int friendType;
+  public int friendType = 0;
+  public int gameCardId = 0;
   public byte gathtertype = 0;
   public byte gender;
-  public int grayNameplateFlag;
+  public int grayNameplateFlag = 0;
   public int groupid = -1;
   @Deprecated
-  public int hollywoodVipInfo;
-  public int iBatteryStatus;
+  public int hollywoodVipInfo = 0;
+  public int iBatteryStatus = 0;
   public int iTermType;
   @Deprecated
   public byte isIphoneOnline;
@@ -89,43 +105,41 @@ public class Friends
   @Deprecated
   public byte isRemark = 1;
   public long lastLoginType;
+  public double latitude;
+  public double longitude;
   public int mComparePartInt;
   public String mCompareSpell;
   public String medalsInfo;
   @Deprecated
   public byte memberLevel;
-  public int multiFlags;
+  public int multiFlags = 0;
   public volatile String name;
   public int namePlateOfKingDan;
   public boolean namePlateOfKingDanDisplatSwitch;
   public long namePlateOfKingGameId;
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
-  public int nameplateVipType;
-  @awhp
+  public int nameplateVipType = 0;
+  @notColumn
   public int netTypeIconId;
-  public int qqVipInfo;
+  public int poiFlag;
+  public String poiName;
+  public long poiUpdateTime;
+  public int qqVipInfo = 0;
   public String recommReason;
-  public int relationIconFlag;
+  public int relationIconFlag = 0;
   public String remark;
-  @Deprecated
-  public byte[] richBuffer;
-  @awhp
-  @Deprecated
-  public RichStatus richStatus;
-  @Deprecated
-  public long richTime;
   public long showLoginClient;
   @Deprecated
   public String signature;
   public String singerName;
   public String smartRemark;
-  @awhp
+  @notColumn
   public int songDuration;
   public long songEndTime;
   public String songId;
   public String songName;
-  @awhp
+  @notColumn
   public int songPauseRemainTime;
   public int songSourceType;
   @Deprecated
@@ -135,14 +149,22 @@ public class Friends
   @Deprecated
   public byte status = 10;
   public String strMasterUin = "";
-  @awhp
+  @notColumn
   public String strTermDesc;
-  public int superQqInfo;
-  public int superVipInfo;
-  public int superVipTemplateId;
-  public long uExtOnlineStatus;
-  @awhs
+  public int superQqInfo = 0;
+  public int superVipInfo = 0;
+  public int superVipTemplateId = 0;
+  public String temper;
+  public long uExtOnlineStatus = 0L;
+  @unique
   public String uin;
+  public String weatherDecs;
+  @defaultValue(defaultInteger=1)
+  public int weatherFlag;
+  public String weatherTip;
+  public String weatherType;
+  public String weatherTypeId;
+  public long weatherUpdateTime;
   
   public static boolean isValidUin(long paramLong)
   {
@@ -168,21 +190,23 @@ public class Friends
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.contacttab.", 2, "Friends clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Friends clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("FriendsManager", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
     this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
     this.remark = paramCursor.getString(paramCursor.getColumnIndex("remark"));
@@ -213,6 +237,9 @@ public class Friends
     this.strMasterUin = paramCursor.getString(paramCursor.getColumnIndex("strMasterUin"));
     this.superVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("superVipTemplateId"));
     this.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
+    this.bigClubExtTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubExtTemplateId"));
+    this.gameCardId = paramCursor.getInt(paramCursor.getColumnIndex("gameCardId"));
+    this.diyFontId = paramCursor.getInt(paramCursor.getColumnIndex("diyFontId"));
     this.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
     this.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
     this.cNewLoverDiamondFlag = paramCursor.getInt(paramCursor.getColumnIndex("cNewLoverDiamondFlag"));
@@ -222,8 +249,34 @@ public class Friends
     this.uExtOnlineStatus = paramCursor.getLong(paramCursor.getColumnIndex("uExtOnlineStatus"));
     this.iBatteryStatus = paramCursor.getInt(paramCursor.getColumnIndex("iBatteryStatus"));
     this.customModel = paramCursor.getString(paramCursor.getColumnIndex("customModel"));
-    if (QLog.isColorLevel()) {
-      QLog.i("Friends", 2, "entityByCursor uin=" + this.uin + ", cSpecialFlag=" + this.cSpecialFlag);
+    this.constellationTodayTrend = paramCursor.getString(paramCursor.getColumnIndex("constellationTodayTrend"));
+    this.constellationTomorrowTrend = paramCursor.getString(paramCursor.getColumnIndex("constellationTomorrowTrend"));
+    this.constellationBgImageUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationBgImageUrl"));
+    this.constellationIconUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationIconUrl"));
+    this.constellationJumpUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationJumpUrl"));
+    this.constellationDateStr = paramCursor.getString(paramCursor.getColumnIndex("constellationDateStr"));
+    this.constellationLuckyColor = paramCursor.getString(paramCursor.getColumnIndex("constellationLuckyColor"));
+    this.constellationLuckyNumber = paramCursor.getString(paramCursor.getColumnIndex("constellationLuckyNumber"));
+    this.temper = paramCursor.getString(paramCursor.getColumnIndex("temper"));
+    this.weatherType = paramCursor.getString(paramCursor.getColumnIndex("weatherType"));
+    this.weatherTypeId = paramCursor.getString(paramCursor.getColumnIndex("weatherTypeId"));
+    this.weatherTip = paramCursor.getString(paramCursor.getColumnIndex("weatherTip"));
+    this.adCode = paramCursor.getString(paramCursor.getColumnIndex("adCode"));
+    this.city = paramCursor.getString(paramCursor.getColumnIndex("city"));
+    this.area = paramCursor.getString(paramCursor.getColumnIndex("area"));
+    this.weatherUpdateTime = paramCursor.getLong(paramCursor.getColumnIndex("weatherUpdateTime"));
+    this.weatherFlag = paramCursor.getInt(paramCursor.getColumnIndex("weatherFlag"));
+    this.weatherDecs = paramCursor.getString(paramCursor.getColumnIndex("weatherDecs"));
+    this.autoStatusUpdateSecond = paramCursor.getLong(paramCursor.getColumnIndex("autoStatusUpdateSecond"));
+    this.curOlympicRank = paramCursor.getLong(paramCursor.getColumnIndex("curOlympicRank"));
+    if (QLog.isColorLevel())
+    {
+      paramCursor = new StringBuilder();
+      paramCursor.append("entityByCursor uin=");
+      paramCursor.append(this.uin);
+      paramCursor.append(", cSpecialFlag=");
+      paramCursor.append(this.cSpecialFlag);
+      QLog.i("Friends", 2, paramCursor.toString());
     }
     return true;
   }
@@ -272,108 +325,81 @@ public class Friends
   
   public String getFriendNickWithoutUin()
   {
-    String str = "";
     if (!TextUtils.isEmpty(this.remark)) {
-      str = this.remark;
+      return this.remark;
     }
-    while (TextUtils.isEmpty(this.name)) {
-      return str;
+    if (!TextUtils.isEmpty(this.name)) {
+      return this.name;
     }
-    return this.name;
+    return "";
   }
   
   public long getLastLoginType()
   {
-    if (this.lastLoginType == 0L) {
-      return 10L;
+    long l2 = this.lastLoginType;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = 10L;
     }
-    return this.lastLoginType;
-  }
-  
-  public int getNetWorkType()
-  {
-    int j = 2;
-    aheq localaheq = aheq.a();
-    int i;
-    if (this.eNetwork == 0)
-    {
-      if ((this.iTermType == 69378) || (this.iTermType == 73474) || (this.iTermType == 73730)) {
-        i = 0;
-      }
-      do
-      {
-        return i;
-        i = j;
-      } while (1 != localaheq.a(this.iTermType, 1));
-    }
-    if (1 != localaheq.a(this.iTermType, 1)) {
-      i = j;
-    }
-    switch (this.netTypeIconId)
-    {
-    case 2: 
-    case 5: 
-    case 6: 
-    default: 
-      if ((this.netTypeIconId == 7) || (this.netTypeIconId == 8) || (this.netTypeIconId == 9)) {}
-      switch (this.netTypeIconId)
-      {
-      default: 
-        return this.eNetwork;
-      }
-    case 1: 
-      return 1;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
-    case 7: 
-      return 7;
-    case 8: 
-      return 8;
-    }
-    return 9;
-    return 7;
-    return 8;
-    return 9;
+    return l1;
   }
   
   public int getServiceLevel(EVIPSPEC paramEVIPSPEC)
   {
-    switch (paramEVIPSPEC.value())
+    int i = paramEVIPSPEC.value();
+    if (i != 1)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      return 0;
-    case 1: 
-      return this.qqVipInfo & 0xFFFF;
-    case 2: 
-      return this.superQqInfo & 0xFFFF;
-    case 3: 
-      return this.superVipInfo & 0xFFFF;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 7) {
+            return 0;
+          }
+          i = this.bigClubInfo;
+        }
+        else
+        {
+          i = this.superVipInfo;
+        }
+      }
+      else {
+        i = this.superQqInfo;
+      }
     }
-    return this.bigClubInfo & 0xFFFF;
+    else {
+      i = this.qqVipInfo;
+    }
+    return i & 0xFFFF;
   }
   
   public int getServiceType(EVIPSPEC paramEVIPSPEC)
   {
-    switch (paramEVIPSPEC.value())
+    int i = paramEVIPSPEC.value();
+    if (i != 1)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      return 0;
-    case 1: 
-      return (this.qqVipInfo & 0xFF0000) >>> 16;
-    case 2: 
-      return (this.superQqInfo & 0xFF0000) >>> 16;
-    case 3: 
-      return (this.superVipInfo & 0xFF0000) >>> 16;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 7) {
+            return 0;
+          }
+          i = this.bigClubInfo;
+        }
+        else
+        {
+          i = this.superVipInfo;
+        }
+      }
+      else {
+        i = this.superQqInfo;
+      }
     }
-    return (this.bigClubInfo & 0xFF0000) >>> 16;
+    else {
+      i = this.qqVipInfo;
+    }
+    return (i & 0xFF0000) >>> 16;
   }
   
   public boolean isBatteryCharging()
@@ -388,47 +414,40 @@ public class Friends
   
   public boolean isServiceEnabled(EVIPSPEC paramEVIPSPEC)
   {
-    boolean bool = true;
-    switch (paramEVIPSPEC.value())
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        do
+    int i = paramEVIPSPEC.value();
+    if (i != 1) {
+      if (i != 2) {
+        if (i != 3)
         {
-          do
-          {
-            return bool;
-          } while ((this.qqVipInfo & 0xFF000000) != 0);
-          return false;
-        } while ((this.superQqInfo & 0xFF000000) != 0);
-        return false;
-      } while ((this.superVipInfo & 0xFF000000) != 0);
-      return false;
-    } while ((this.bigClubInfo & 0xFF000000) != 0);
+          if (i != 7) {
+            return false;
+          }
+          if ((this.bigClubInfo & 0xFF000000) == 0) {
+            break label83;
+          }
+        }
+      }
+    }
+    while ((this.qqVipInfo & 0xFF000000) != 0) {
+      for (;;)
+      {
+        return true;
+        if ((this.superVipInfo & 0xFF000000) == 0) {
+          break;
+        }
+        continue;
+        if ((this.superQqInfo & 0xFF000000) == 0) {
+          break;
+        }
+      }
+    }
+    label83:
     return false;
   }
   
   public boolean isShield()
   {
     return (this.multiFlags & MULTI_FLAGS_MASK_SHIELD) > 0;
-  }
-  
-  public void setOlympicTorchFlag(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.multiFlags |= MULTI_FLAGS_MASK_OLYMPICTORCH;
-      return;
-    }
-    this.multiFlags &= (MULTI_FLAGS_MASK_OLYMPICTORCH ^ 0xFFFFFFFF);
   }
   
   public void setShieldFlag(boolean paramBoolean)
@@ -440,10 +459,31 @@ public class Friends
     }
     this.multiFlags &= (MULTI_FLAGS_MASK_SHIELD ^ 0xFFFFFFFF);
   }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Friends{uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", remark='");
+    localStringBuilder.append(this.remark);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", groupid=");
+    localStringBuilder.append(this.groupid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", gathtertype=");
+    localStringBuilder.append(this.gathtertype);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Friends
  * JD-Core Version:    0.7.0.1
  */

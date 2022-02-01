@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/zp" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:id="@id/hwq" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="-1.0dip" android:layout_centerVertical="true">
-            <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/hx4" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/f_h" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/hx4" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/f_h" android:scaleType="centerCrop" />
             <com.tencent.widget.FixSizeImageView android:id="@id/hwf" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/f_h" android:scaleType="fitXY" />
             <com.tencent.widget.FixSizeImageView android:id="@id/hwg" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/f_h" android:scaleType="fitXY" />
             <com.tencent.widget.FixSizeImageView android:id="@id/hwh" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/f_h" android:scaleType="fitXY" />
@@ -18,5 +18,5 @@
         </LinearLayout>
         <View android:background="#ffe2e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/asx" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend android:id="@id/d4c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderFriendRecommend android:id="@id/d4c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </FrameLayout>

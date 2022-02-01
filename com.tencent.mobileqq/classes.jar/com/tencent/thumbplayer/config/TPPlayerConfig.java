@@ -5,22 +5,30 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.thumbplayer.core.config.TPPlayerCoreConfig;
 import com.tencent.thumbplayer.utils.TPLogUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TPPlayerConfig
 {
   private static String DOT = "\\.";
   public static final boolean ISOTT = false;
   private static final String TAG = "TPPlayerConfig";
-  public static final String VERSION = "1.3.0.1023";
+  public static final String VERSION = "2.16.0.1123";
   private static String appVersion = "";
   private static String appVersionName;
+  public static String beacon_log_host;
+  public static String beacon_policy_host;
   private static long buildNum = -1L;
+  private static String host_config;
   private static String mGuid = "";
+  private static String mOutNetIp;
   private static int mPlatform;
   private static SparseArray<String> mProxyCacheDirs = new SparseArray(1);
-  private static SparseArray<String> mProxyConfigStrs;
+  private static String mProxyConfigStr;
   private static SparseArray<String> mProxyDataDirs = new SparseArray(1);
+  private static int mProxyMaxUseMemoryMB;
   private static int mProxyServiceType;
   private static boolean mUseP2P;
   private static boolean mUserIsVip;
@@ -30,22 +38,22 @@ public class TPPlayerConfig
   
   static
   {
-    mProxyConfigStrs = new SparseArray(1);
+    mProxyConfigStr = "";
     mProxyServiceType = -1;
     mUserUpc = "";
     mUserUpcState = 0;
+    mOutNetIp = "";
     mUseP2P = true;
     mPlatform = -1;
+    beacon_policy_host = "";
+    beacon_log_host = "";
+    host_config = "";
+    mProxyMaxUseMemoryMB = 100;
   }
   
   public static void addProxyCacheDir(int paramInt, String paramString)
   {
     mProxyCacheDirs.put(paramInt, paramString);
-  }
-  
-  public static void addProxyConfigStr(int paramInt, String paramString)
-  {
-    mProxyConfigStrs.put(paramInt, paramString);
   }
   
   public static void addProxyDataDir(int paramInt, String paramString)
@@ -66,63 +74,70 @@ public class TPPlayerConfig
       if (arrayOfString != null)
       {
         paramContext = str;
-        if (arrayOfString.length != 4) {}
+        if (arrayOfString.length == 4) {
+          paramContext = str.substring(0, str.lastIndexOf("."));
+        }
       }
     }
-    for (paramContext = str.substring(0, str.lastIndexOf("."));; paramContext = "0.0.0")
+    else
     {
-      appVersion = paramContext;
-      return paramContext;
+      paramContext = "0.0.0";
     }
+    appVersion = paramContext;
+    return paramContext;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    Object localObject;
     if (!TextUtils.isEmpty(appVersionName)) {
-      localObject = appVersionName;
+      return appVersionName;
     }
-    for (;;)
+    if (paramContext == null) {
+      return "";
+    }
+    try
     {
-      return localObject;
-      localObject = "";
-      if (paramContext != null) {
-        try
-        {
-          appVersionName = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-          paramContext = appVersionName;
-          localObject = paramContext;
-          if (paramContext == null) {
-            return "";
-          }
-        }
-        catch (Throwable paramContext) {}
+      appVersionName = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      String str = appVersionName;
+      paramContext = str;
+      if (str == null) {
+        paramContext = "";
       }
+      return paramContext;
     }
+    catch (Throwable paramContext) {}
     return "";
   }
   
   public static long getBuildNumber(Context paramContext)
   {
-    if (-1L != buildNum) {
-      return buildNum;
+    long l = buildNum;
+    if (-1L != l) {
+      return l;
     }
     try
     {
       buildNum = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      long l = buildNum;
+      l = buildNum;
       return l;
     }
     catch (Throwable paramContext)
     {
-      TPLogUtil.e("TPPlayerConfig", "getLongVersionCode less api 28");
+      label38:
+      break label38;
     }
+    TPLogUtil.e("TPPlayerConfig", "getLongVersionCode less api 28");
     return buildNum;
   }
   
   public static String getGuid()
   {
     return mGuid;
+  }
+  
+  public static String getOutNetIp()
+  {
+    return mOutNetIp;
   }
   
   public static int getPlatform()
@@ -135,9 +150,30 @@ public class TPPlayerConfig
     return (String)mProxyCacheDirs.get(paramInt);
   }
   
-  public static String getProxyConfigStr(int paramInt)
+  public static String getProxyConfigDir()
   {
-    return (String)mProxyConfigStrs.get(paramInt);
+    if (TextUtils.isEmpty(host_config)) {
+      return "";
+    }
+    try
+    {
+      Object localObject = new JSONObject(host_config);
+      if (!((JSONObject)localObject).has("httpproxy_config")) {
+        return "";
+      }
+      localObject = ((JSONObject)localObject).getString("httpproxy_config");
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      TPLogUtil.e("TPPlayerConfig", localJSONException);
+    }
+    return "";
+  }
+  
+  public static String getProxyConfigStr()
+  {
+    return mProxyConfigStr;
   }
   
   public static String getProxyDataDir(int paramInt)
@@ -145,10 +181,19 @@ public class TPPlayerConfig
     return (String)mProxyDataDirs.get(paramInt);
   }
   
+  public static int getProxyMaxUseMemoryMB()
+  {
+    return mProxyMaxUseMemoryMB;
+  }
+  
   public static int getProxyServiceType()
   {
-    if ((mProxyServiceType == -1) && (mPlatform != -1)) {
-      return mPlatform;
+    if (mProxyServiceType == -1)
+    {
+      int i = mPlatform;
+      if (i != -1) {
+        return i;
+      }
     }
     return mProxyServiceType;
   }
@@ -168,6 +213,11 @@ public class TPPlayerConfig
     return mUserUpcState;
   }
   
+  public static int getVideoMediaCodecCoexistMaxCnt()
+  {
+    return TPPlayerCoreConfig.getVideoMediaCodecCoexistMaxCnt();
+  }
+  
   public static boolean isUseP2P()
   {
     return mUseP2P;
@@ -176,6 +226,43 @@ public class TPPlayerConfig
   public static boolean isUserIsVip()
   {
     return mUserIsVip;
+  }
+  
+  public static void parseHostConfig(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      TPLogUtil.w("TPPlayerConfig", "parseHostConfig, config is null.");
+      return;
+    }
+    host_config = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseHostConfig:");
+    localStringBuilder.append(paramString);
+    TPLogUtil.i("TPPlayerConfig", localStringBuilder.toString());
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("player_host_config"))
+      {
+        paramString = paramString.getJSONObject("player_host_config");
+        if (paramString.has("beacon_policy_host")) {
+          beacon_policy_host = paramString.getString("beacon_policy_host");
+        }
+        if (paramString.has("beacon_log_host"))
+        {
+          beacon_log_host = paramString.getString("beacon_log_host");
+          return;
+        }
+      }
+    }
+    catch (Throwable paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseHostConfig exception: ");
+      localStringBuilder.append(paramString.toString());
+      TPLogUtil.w("TPPlayerConfig", localStringBuilder.toString());
+    }
   }
   
   public static void setDebugEnable(boolean paramBoolean)
@@ -188,6 +275,11 @@ public class TPPlayerConfig
     mGuid = paramString;
   }
   
+  public static void setOutNetIp(String paramString)
+  {
+    mOutNetIp = paramString;
+  }
+  
   public static void setP2PEnable(boolean paramBoolean)
   {
     mUseP2P = paramBoolean;
@@ -196,6 +288,16 @@ public class TPPlayerConfig
   public static void setPlatform(int paramInt)
   {
     mPlatform = paramInt;
+  }
+  
+  public static void setProxyConfigStr(String paramString)
+  {
+    mProxyConfigStr = paramString;
+  }
+  
+  public static void setProxyMaxUseMemoryMB(int paramInt)
+  {
+    mProxyMaxUseMemoryMB = paramInt;
   }
   
   public static void setProxyServiceType(int paramInt)
@@ -222,10 +324,15 @@ public class TPPlayerConfig
   {
     mUserUpcState = paramInt;
   }
+  
+  public static void setVideoMediaCodecCoexistMaxCnt(int paramInt)
+  {
+    TPPlayerCoreConfig.setVideoMediaCodecCoexistMaxCnt(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.config.TPPlayerConfig
  * JD-Core Version:    0.7.0.1
  */

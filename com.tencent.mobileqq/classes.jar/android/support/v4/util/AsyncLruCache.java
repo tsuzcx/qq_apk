@@ -19,26 +19,34 @@ public class AsyncLruCache<K, V>
   
   public AsyncLruCache(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxSize <= 0");
+    if (paramInt > 0)
+    {
+      this.maxSize = paramInt;
+      this.map = new LinkedHashMap(0, 0.75F, true);
+      return;
     }
-    this.maxSize = paramInt;
-    this.map = new LinkedHashMap(0, 0.75F, true);
+    throw new IllegalArgumentException("maxSize <= 0");
   }
   
   private int safeSizeOf(K paramK, V paramV)
   {
     int i = sizeOf(paramK, paramV);
-    if (i < 0) {
-      throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
+    if (i >= 0) {
+      return i;
     }
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Negative size: ");
+    localStringBuilder.append(paramK);
+    localStringBuilder.append("=");
+    localStringBuilder.append(paramV);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public final int cacheCount()
   {
-    if (this.map != null) {
-      return this.map.size();
+    LinkedHashMap localLinkedHashMap = this.map;
+    if (localLinkedHashMap != null) {
+      return localLinkedHashMap.size();
     }
     return 0;
   }
@@ -67,33 +75,35 @@ public class AsyncLruCache<K, V>
   
   public final V get(K paramK)
   {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
-    }
-    Object localObject1 = this.map.get(paramK);
-    if (localObject1 != null)
+    if (paramK != null)
     {
-      this.hitCount += 1;
+      Object localObject1 = this.map.get(paramK);
+      if (localObject1 != null)
+      {
+        this.hitCount += 1;
+        return localObject1;
+      }
+      this.missCount += 1;
+      localObject1 = create(paramK);
+      if (localObject1 == null) {
+        return null;
+      }
+      this.createCount += 1;
+      Object localObject2 = this.map.put(paramK, localObject1);
+      if (localObject2 != null) {
+        this.map.put(paramK, localObject2);
+      } else {
+        this.size += safeSizeOf(paramK, localObject1);
+      }
+      if (localObject2 != null)
+      {
+        entryRemoved(false, paramK, localObject1, localObject2);
+        return localObject2;
+      }
+      trimToSize(this.maxSize);
       return localObject1;
     }
-    this.missCount += 1;
-    localObject1 = create(paramK);
-    if (localObject1 == null) {
-      return null;
-    }
-    this.createCount += 1;
-    Object localObject2 = this.map.put(paramK, localObject1);
-    if (localObject2 != null) {
-      this.map.put(paramK, localObject2);
-    }
-    while (localObject2 != null)
-    {
-      entryRemoved(false, paramK, localObject1, localObject2);
-      return localObject2;
-      this.size += safeSizeOf(paramK, localObject1);
-    }
-    trimToSize(this.maxSize);
-    return localObject1;
+    throw new NullPointerException("key == null");
   }
   
   public final int hitCount()
@@ -113,20 +123,21 @@ public class AsyncLruCache<K, V>
   
   public final V put(K paramK, V paramV)
   {
-    if ((paramK == null) || (paramV == null)) {
-      throw new NullPointerException("key == null || value == null");
+    if ((paramK != null) && (paramV != null))
+    {
+      this.putCount += 1;
+      this.size += safeSizeOf(paramK, paramV);
+      Object localObject = this.map.put(paramK, paramV);
+      if (localObject != null) {
+        this.size -= safeSizeOf(paramK, localObject);
+      }
+      if (localObject != null) {
+        entryRemoved(false, paramK, localObject, paramV);
+      }
+      trimToSize(this.maxSize);
+      return localObject;
     }
-    this.putCount += 1;
-    this.size += safeSizeOf(paramK, paramV);
-    Object localObject = this.map.put(paramK, paramV);
-    if (localObject != null) {
-      this.size -= safeSizeOf(paramK, localObject);
-    }
-    if (localObject != null) {
-      entryRemoved(false, paramK, localObject, paramV);
-    }
-    trimToSize(this.maxSize);
-    return localObject;
+    throw new NullPointerException("key == null || value == null");
   }
   
   public final int putCount()
@@ -136,17 +147,18 @@ public class AsyncLruCache<K, V>
   
   public final V remove(K paramK)
   {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
+    if (paramK != null)
+    {
+      Object localObject = this.map.remove(paramK);
+      if (localObject != null) {
+        this.size -= safeSizeOf(paramK, localObject);
+      }
+      if (localObject != null) {
+        entryRemoved(false, paramK, localObject, null);
+      }
+      return localObject;
     }
-    Object localObject = this.map.remove(paramK);
-    if (localObject != null) {
-      this.size -= safeSizeOf(paramK, localObject);
-    }
-    if (localObject != null) {
-      entryRemoved(false, paramK, localObject, null);
-    }
-    return localObject;
+    throw new NullPointerException("key == null");
   }
   
   public final void resetMaxSize(int paramInt)
@@ -174,30 +186,44 @@ public class AsyncLruCache<K, V>
   
   public final String toString()
   {
-    int i = this.hitCount + this.missCount;
-    if (i != 0) {}
-    for (i = this.hitCount * 100 / i;; i = 0) {
-      return String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
+    int i = this.hitCount;
+    int j = this.missCount + i;
+    if (j != 0) {
+      i = i * 100 / j;
+    } else {
+      i = 0;
     }
+    return String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
   }
   
   public void trimToSize(int paramInt)
   {
-    for (;;)
-    {
-      if ((this.size < 0) || ((this.map.isEmpty()) && (this.size != 0))) {
-        throw new IllegalStateException(getClass().getName() + ".sizeOf() is reporting inconsistent results!");
+    while ((this.size >= 0) && ((!this.map.isEmpty()) || (this.size == 0))) {
+      if (this.size > paramInt)
+      {
+        if (this.map.isEmpty()) {
+          return;
+        }
+        Object localObject2 = (Map.Entry)this.map.entrySet().iterator().next();
+        localObject1 = ((Map.Entry)localObject2).getKey();
+        localObject2 = ((Map.Entry)localObject2).getValue();
+        this.map.remove(localObject1);
+        this.size -= safeSizeOf(localObject1, localObject2);
+        this.evictionCount += 1;
+        entryRemoved(true, localObject1, localObject2, null);
       }
-      if ((this.size <= paramInt) || (this.map.isEmpty())) {
+      else
+      {
         return;
       }
-      Object localObject2 = (Map.Entry)this.map.entrySet().iterator().next();
-      Object localObject1 = ((Map.Entry)localObject2).getKey();
-      localObject2 = ((Map.Entry)localObject2).getValue();
-      this.map.remove(localObject1);
-      this.size -= safeSizeOf(localObject1, localObject2);
-      this.evictionCount += 1;
-      entryRemoved(true, localObject1, localObject2, null);
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getClass().getName());
+    ((StringBuilder)localObject1).append(".sizeOf() is reporting inconsistent results!");
+    localObject1 = new IllegalStateException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
 }

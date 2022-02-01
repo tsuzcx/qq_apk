@@ -316,7 +316,7 @@ public class WtloginServlet
       localBundle.putInt("code", paramFromServiceMsg.getResultCode());
       if (paramFromServiceMsg.isSuccess())
       {
-        if (!"com.tencent.mobileqq:openSdk".equals(getAppRuntime().getApplication().getProcessName()))
+        if (!"com.tencent.mobileqq:openSdk".equals(getAppRuntime().getApplication().getProcessNames()))
         {
           MsfSdkUtils.addSimpleAccount(paramFromServiceMsg.getUin());
           MsfSdkUtils.updateSimpleAccount(paramFromServiceMsg.getUin(), true);

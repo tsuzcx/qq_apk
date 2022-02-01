@@ -35,22 +35,19 @@ class JpegCompressor$JpegDataDestImpl
       paramObject = new byte[paramByteBuffer.capacity()];
       paramByteBuffer.get(paramObject);
       this.writer.write(paramObject, 0, paramObject.length);
-      if (!paramBoolean) {}
     }
     catch (Exception paramByteBuffer)
     {
-      for (;;)
+      paramByteBuffer.printStackTrace();
+    }
+    if (paramBoolean) {
+      try
       {
-        try
-        {
-          this.writer.close();
-          return;
-        }
-        catch (IOException paramByteBuffer)
-        {
-          paramByteBuffer.printStackTrace();
-        }
-        paramByteBuffer = paramByteBuffer;
+        this.writer.close();
+        return;
+      }
+      catch (IOException paramByteBuffer)
+      {
         paramByteBuffer.printStackTrace();
       }
     }
@@ -58,7 +55,7 @@ class JpegCompressor$JpegDataDestImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.JpegCompressor.JpegDataDestImpl
  * JD-Core Version:    0.7.0.1
  */

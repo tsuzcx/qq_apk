@@ -5,47 +5,47 @@ import com.google.android.gms.common.internal.d;
 
 public final class bb<L>
 {
-  private volatile L JL;
-  private final bc OZ;
-  private final bd<L> Pa;
+  private volatile L LA;
+  private final bc QO;
+  private final bd<L> QP;
   
   bb(Looper paramLooper, L paramL, String paramString)
   {
-    this.OZ = new bc(this, paramLooper);
-    this.JL = d.e(paramL, "Listener must not be null");
-    this.Pa = new bd(paramL, d.l(paramString));
+    this.QO = new bc(this, paramLooper);
+    this.LA = d.g(paramL, "Listener must not be null");
+    this.QP = new bd(paramL, d.l(paramString));
   }
   
   public final void a(be<? super L> parambe)
   {
-    d.e(parambe, "Notifier must not be null");
-    parambe = this.OZ.obtainMessage(1, parambe);
-    this.OZ.sendMessage(parambe);
+    d.g(parambe, "Notifier must not be null");
+    parambe = this.QO.obtainMessage(1, parambe);
+    this.QO.sendMessage(parambe);
   }
   
   final void b(be<? super L> parambe)
   {
-    Object localObject = this.JL;
+    Object localObject = this.LA;
     if (localObject == null)
     {
-      parambe.jc();
+      parambe.jl();
       return;
     }
     try
     {
-      parambe.y(localObject);
+      parambe.H(localObject);
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      parambe.jc();
+      parambe.jl();
       throw localRuntimeException;
     }
   }
   
   public final void clear()
   {
-    this.JL = null;
+    this.LA = null;
   }
 }
 

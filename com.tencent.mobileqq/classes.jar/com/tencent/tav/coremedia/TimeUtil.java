@@ -17,7 +17,7 @@ public class TimeUtil
   
   public static long getAudioDuration(long paramLong, int paramInt1, int paramInt2)
   {
-    return 1000000L * paramLong / (paramInt1 * 2 * paramInt2);
+    return paramLong * 1000000L / (paramInt1 * 2 * paramInt2);
   }
   
   public static String long2str(long paramLong, String paramString)
@@ -36,7 +36,7 @@ public class TimeUtil
   
   public static long milli2Us(long paramLong)
   {
-    return 1000L * paramLong;
+    return paramLong * 1000L;
   }
   
   public static String milliToSecond(long paramLong)
@@ -47,32 +47,43 @@ public class TimeUtil
   
   public static long second2Ms(float paramFloat)
   {
-    return (1000.0F * paramFloat);
+    return (paramFloat * 1000.0F);
   }
   
   public static String second2String(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int i = paramInt / 60;
-    if (i > 0) {
-      localStringBuilder.append(i + "'");
+    StringBuilder localStringBuilder2;
+    if (i > 0)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(i);
+      localStringBuilder2.append("'");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
     paramInt %= 60;
-    if (paramInt >= 10) {
-      localStringBuilder.append(paramInt + "\"");
-    }
-    for (;;)
+    if (paramInt >= 10)
     {
-      return localStringBuilder.toString();
-      if (paramInt >= 0) {
-        localStringBuilder.append("0" + paramInt + "\"");
-      }
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(paramInt);
+      localStringBuilder2.append("\"");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
+    else if (paramInt >= 0)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("0");
+      localStringBuilder2.append(paramInt);
+      localStringBuilder2.append("\"");
+      localStringBuilder1.append(localStringBuilder2.toString());
+    }
+    return localStringBuilder1.toString();
   }
   
   public static long second2Us(float paramFloat)
   {
-    return (1000000.0F * paramFloat);
+    return (paramFloat * 1000000.0F);
   }
   
   public static CMTime us2CMTime(long paramLong)
@@ -98,7 +109,7 @@ public class TimeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.TimeUtil
  * JD-Core Version:    0.7.0.1
  */

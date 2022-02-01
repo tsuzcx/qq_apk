@@ -45,6 +45,7 @@ public class async_context
   public tlv_t17b _t17b = new tlv_t17b();
   public tlv_t402 _t402 = new tlv_t402();
   public tlv_t403 _t403 = new tlv_t403();
+  public byte[] _t542_data = new byte[0];
   public tlv_t543 _t543 = new tlv_t543();
   public tlv_t546 _t546 = new tlv_t546();
   public byte[] _tgtgt_key = new byte[16];
@@ -58,6 +59,7 @@ public class async_context
   public tlv_t tlv528;
   public tlv_t tlv530;
   public tlv_t tlv540;
+  public tlv_t543 tlv543In119;
   
   public boolean ifQQLoginInQim(long paramLong)
   {
@@ -66,7 +68,7 @@ public class async_context
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.async_context
  * JD-Core Version:    0.7.0.1
  */

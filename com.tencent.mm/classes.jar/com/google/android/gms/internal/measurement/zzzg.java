@@ -16,14 +16,14 @@ final class zzzg
   private zzzg(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super(null);
-    AppMethodBeat.i(3558);
+    AppMethodBeat.i(40348);
     this.zzbrk = 2147483647;
     this.buffer = paramArrayOfByte;
     this.limit = (paramInt1 + paramInt2);
     this.pos = paramInt1;
     this.zzbrj = this.pos;
     this.zzbrh = paramBoolean;
-    AppMethodBeat.o(3558);
+    AppMethodBeat.o(40348);
   }
   
   private final void zzta()
@@ -41,12 +41,12 @@ final class zzzg
   
   public final int zzaf(int paramInt)
   {
-    AppMethodBeat.i(3559);
+    AppMethodBeat.i(40349);
     zzzt localzzzt;
     if (paramInt < 0)
     {
       localzzzt = zzzt.zztn();
-      AppMethodBeat.o(3559);
+      AppMethodBeat.o(40349);
       throw localzzzt;
     }
     paramInt = zzsz() + paramInt;
@@ -54,12 +54,12 @@ final class zzzg
     if (paramInt > i)
     {
       localzzzt = zzzt.zztm();
-      AppMethodBeat.o(3559);
+      AppMethodBeat.o(40349);
       throw localzzzt;
     }
     this.zzbrk = paramInt;
     zzta();
-    AppMethodBeat.o(3559);
+    AppMethodBeat.o(40349);
     return i;
   }
   
@@ -70,7 +70,7 @@ final class zzzg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzg
  * JD-Core Version:    0.7.0.1
  */

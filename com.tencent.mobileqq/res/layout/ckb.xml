@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.widgets.RoundBackgroundTextView android:textSize="14.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/jsg" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TOAST" app:roundBackgroundColor="@color/bz" app:roundBackgroundRadius="3.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/n0u" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/n0x">
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/n0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/x_l" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/n0w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginRight="4.0dip" android:text="@string/x_k" android:layout_toLeftOf="@id/n0s" />
+        <ImageView android:id="@id/n0s" android:layout_width="10.0dip" android:layout_height="14.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignParentRight="true" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/n0v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/n0x" />
+    </RelativeLayout>
+</merge>

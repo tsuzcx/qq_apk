@@ -35,22 +35,25 @@ public final class SDKDataReportRequest
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.appData != null) {
-      paramJceOutputStream.write(this.appData, 0);
+    String str = this.appData;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.timeCost, 1);
     paramJceOutputStream.write(this.uin, 2);
-    if (this.qimei != null) {
-      paramJceOutputStream.write(this.qimei, 3);
+    str = this.qimei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.qadid != null) {
-      paramJceOutputStream.write(this.qadid, 4);
+    str = this.qadid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.SDKDataReportRequest
  * JD-Core Version:    0.7.0.1
  */

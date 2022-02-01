@@ -2,10 +2,10 @@ package com.tencent.mobileqq.data;
 
 public class MessageForScribble$FileExistInfo
 {
-  public boolean mCombineFileExist;
-  public boolean mDataFileExist;
-  public boolean mInit;
-  public boolean mLocalPathExist;
+  public boolean mCombineFileExist = false;
+  public boolean mDataFileExist = false;
+  public boolean mInit = false;
+  public boolean mLocalPathExist = false;
   
   public MessageForScribble$FileExistInfo(MessageForScribble paramMessageForScribble) {}
 }

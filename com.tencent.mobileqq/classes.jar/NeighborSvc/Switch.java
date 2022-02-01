@@ -8,8 +8,8 @@ public final class Switch
   extends JceStruct
 {
   static int cache_type;
-  public byte is_open;
-  public int type;
+  public byte is_open = 0;
+  public int type = 0;
   
   public Switch() {}
   
@@ -33,7 +33,7 @@ public final class Switch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.Switch
  * JD-Core Version:    0.7.0.1
  */

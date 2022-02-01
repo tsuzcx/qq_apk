@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class DisMsgReadedNotify
   extends JceStruct
 {
-  public long lDisMsgSeq;
-  public long lDisUin;
-  public long lMemberSeq;
-  public long lOpType;
+  public long lDisMsgSeq = 0L;
+  public long lDisUin = 0L;
+  public long lMemberSeq = 0L;
+  public long lOpType = 0L;
   
   public DisMsgReadedNotify() {}
   
@@ -40,7 +40,7 @@ public final class DisMsgReadedNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.DisMsgReadedNotify
  * JD-Core Version:    0.7.0.1
  */

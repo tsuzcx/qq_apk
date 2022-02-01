@@ -2,84 +2,73 @@ package com.tencent.mobileqq.troop.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import beft;
-import com.tencent.common.app.AppInterface;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class TroopTagViewActivity$TroopTagViewFragment
   extends WebViewFragment
 {
-  protected int a;
   protected String a;
-  protected boolean a;
-  public int b;
   protected String b;
   protected String c;
+  protected int d;
+  protected boolean e = false;
+  public int f = 1;
   
-  public TroopTagViewActivity$TroopTagViewFragment()
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_b_of_type_Int = 1;
+    Bundle localBundle = this.intent.getExtras();
+    this.d = localBundle.getInt("act_type", 3);
+    this.b = localBundle.getString("tags");
+    if (localBundle.containsKey("subclass")) {
+      this.c = localBundle.getString("subclass");
+    } else {
+      this.c = "";
+    }
+    this.a = localBundle.getString("troopuin");
+    this.e = localBundle.getBoolean("isAdmin");
+    this.f = localBundle.getInt("modifyToSrv", 1);
+    return super.doOnCreate(paramBundle);
   }
   
-  public int a(Bundle paramBundle)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Beft.c.setText(2131692017);
-      this.jdField_a_of_type_Beft.c.setVisibility(0);
-      this.jdField_a_of_type_Beft.a.setVisibility(8);
-      this.jdField_a_of_type_Beft.c.setOnClickListener(this);
-      return i;
-    }
-    this.jdField_a_of_type_Beft.c.setVisibility(8);
-    this.jdField_a_of_type_Beft.a.setVisibility(8);
-    return i;
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-    this.jdField_a_of_type_Int = localBundle.getInt("act_type", 3);
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("tags");
-    if (localBundle.containsKey("subclass")) {}
-    for (this.c = localBundle.getString("subclass");; this.c = "")
-    {
-      this.jdField_a_of_type_JavaLangString = localBundle.getString("troopuin");
-      this.jdField_a_of_type_Boolean = localBundle.getBoolean("isAdmin");
-      this.jdField_b_of_type_Int = localBundle.getInt("modifyToSrv", 1);
-      return super.a(paramBundle);
-    }
+    return new TroopTagViewActivity.TroopTagViewFragment.1(this, this.webViewSurface);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Beft.c)
+    if (paramView == getSwiftTitleUI().f)
     {
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
+      if ((this.d == 1) && (this.e))
       {
-        paramView = new Intent(super.getActivity(), TroopTagViewActivity.class);
-        paramView.putExtra("troopuin", this.jdField_a_of_type_JavaLangString);
-        paramView.putExtra("tags", this.jdField_b_of_type_JavaLangString);
-        paramView.putExtra("act_type", 2);
-        paramView.putExtra("modifyToSrv", this.jdField_b_of_type_Int);
-        paramView.putExtra("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-        super.getActivity().startActivity(paramView);
-        return;
+        Intent localIntent = new Intent(super.getActivity(), TroopTagViewActivity.class);
+        localIntent.putExtra("troopuin", this.a);
+        localIntent.putExtra("tags", this.b);
+        localIntent.putExtra("act_type", 2);
+        localIntent.putExtra("modifyToSrv", this.f);
+        localIntent.putExtra("uin", getAppRuntime().getCurrentAccountUin());
+        super.getActivity().startActivity(localIntent);
       }
-      super.onClick(paramView);
-      return;
+      else
+      {
+        super.onClick(paramView);
+      }
     }
-    super.onClick(paramView);
+    else {
+      super.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity.TroopTagViewFragment
  * JD-Core Version:    0.7.0.1
  */

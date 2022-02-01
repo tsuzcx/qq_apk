@@ -6,8 +6,8 @@ import java.io.File;
 
 public final class c
 {
-  public static final String aiQ = MMApplication.getContext().getFilesDir().getAbsolutePath();
-  public static final String aiR = MMApplication.getContext().getCacheDir().getAbsolutePath();
+  public static final String ams = MMApplication.getContext().getFilesDir().getAbsolutePath();
+  public static final String amt = MMApplication.getContext().getCacheDir().getAbsolutePath();
 }
 
 

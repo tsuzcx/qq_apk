@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/m0" style="@style/lx"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/bjn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:maxLines="2" android:layout_centerVertical="true" style="@style/ln" />
-</RelativeLayout>
+    <ProgressBar android:layout_gravity="start|center" android:id="@id/g3q" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/df" android:layout_marginStart="@dimen/df" style="@style/a74" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/az" android:layout_gravity="center|right" android:id="@id/g3w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/k_9" android:layout_marginStart="@dimen/d0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/a81" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_margin="6.0dip" android:src="@raw/icons_filled_cutie" />
+</merge>

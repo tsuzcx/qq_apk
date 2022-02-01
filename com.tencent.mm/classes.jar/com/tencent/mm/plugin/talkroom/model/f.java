@@ -1,135 +1,135 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
 {
-  private long eBS;
-  int nMZ;
-  long nNa;
-  private int tcA;
-  private int tcB;
-  private int tcC;
-  private int tcD;
-  private int tcE;
-  private int tcF;
-  String tcG;
-  int tcH;
-  int tcI;
-  long tcJ;
-  int tcK;
-  long tcL;
-  long tcM;
-  boolean tcN;
-  boolean tcO;
-  private int tck;
-  private long tcl;
-  int tcm = 0;
-  private int tcn;
-  long tco;
-  int tcp;
-  int tcq;
-  private int tcr;
-  private int tcs;
-  private int tct;
-  int tcu;
-  int tcv;
-  public int tcw = 0;
-  private int tcx;
-  private int tcy;
-  private int tcz;
+  long Hnt;
+  private int SNA;
+  private int SNB;
+  private int SNC;
+  private int SND;
+  private int SNE;
+  String SNF;
+  int SNG;
+  int SNH;
+  long SNI;
+  int SNJ;
+  long SNK;
+  long SNL;
+  boolean SNM;
+  boolean SNN;
+  private int SNj;
+  private long SNk;
+  int SNl = 0;
+  private int SNm;
+  long SNn;
+  int SNo;
+  int SNp;
+  private int SNq;
+  private int SNr;
+  private int SNs;
+  int SNt;
+  int SNu;
+  public int SNv = 0;
+  private int SNw;
+  private int SNx;
+  private int SNy;
+  private int SNz;
+  private long mwJ;
+  int roomId;
   
-  public final void Gp(int paramInt)
+  public final void anN(int paramInt)
   {
-    AppMethodBeat.i(25795);
-    if (this.tcJ == 0L)
+    AppMethodBeat.i(29477);
+    if (this.SNI == 0L)
     {
-      AppMethodBeat.o(25795);
+      AppMethodBeat.o(29477);
       return;
     }
-    this.tck = paramInt;
-    this.tcl = bo.av(this.tcJ);
-    AppMethodBeat.o(25795);
+    this.SNj = paramInt;
+    this.SNk = Util.ticksToNow(this.SNI);
+    AppMethodBeat.o(29477);
   }
   
-  public final void cHA()
+  public final void exitRoom()
   {
-    AppMethodBeat.i(25796);
-    if (this.tcJ == 0L)
+    AppMethodBeat.i(29479);
+    if (this.SNI == 0L)
     {
-      AppMethodBeat.o(25796);
+      AppMethodBeat.o(29479);
       return;
     }
-    this.eBS = bo.av(this.tcJ);
-    AppMethodBeat.o(25796);
+    this.SNm = ((int)(Util.ticksToNow(this.SNI) / 1000L));
+    AppMethodBeat.o(29479);
   }
   
-  public final void cHB()
+  public final void hCA()
   {
-    AppMethodBeat.i(25797);
-    if (this.tcJ == 0L)
+    AppMethodBeat.i(29480);
+    if (this.SNL == 0L)
     {
-      AppMethodBeat.o(25797);
+      AppMethodBeat.o(29480);
       return;
     }
-    this.tcn = ((int)(bo.av(this.tcJ) / 1000L));
-    AppMethodBeat.o(25797);
-  }
-  
-  public final void cHC()
-  {
-    this.tct += 1;
-  }
-  
-  public final void cHD()
-  {
-    AppMethodBeat.i(25798);
-    if (this.tcM == 0L)
-    {
-      AppMethodBeat.o(25798);
-      return;
-    }
-    long l = bo.av(this.tcM) / 1000L;
+    long l = Util.ticksToNow(this.SNL) / 1000L;
     if (l < 2L) {
-      this.tcx += 1;
+      this.SNw += 1;
     }
     for (;;)
     {
-      this.tcM = 0L;
-      AppMethodBeat.o(25798);
+      this.SNL = 0L;
+      AppMethodBeat.o(29480);
       return;
       if (l < 6L) {
-        this.tcy += 1;
+        this.SNx += 1;
       } else if (l < 11L) {
-        this.tcz += 1;
+        this.SNy += 1;
       } else if (l < 21L) {
-        this.tcA += 1;
+        this.SNz += 1;
       } else if (l < 31L) {
-        this.tcB += 1;
+        this.SNA += 1;
       } else if (l < 41L) {
-        this.tcC += 1;
+        this.SNB += 1;
       } else if (l < 51L) {
-        this.tcD += 1;
+        this.SNC += 1;
       } else if (l < 61L) {
-        this.tcE += 1;
+        this.SND += 1;
       } else {
-        this.tcF += 1;
+        this.SNE += 1;
       }
     }
   }
   
+  public final void hCy()
+  {
+    AppMethodBeat.i(29478);
+    if (this.SNI == 0L)
+    {
+      AppMethodBeat.o(29478);
+      return;
+    }
+    this.mwJ = Util.ticksToNow(this.SNI);
+    AppMethodBeat.o(29478);
+  }
+  
+  public final void hCz()
+  {
+    this.SNs += 1;
+  }
+  
   public final String toString()
   {
-    AppMethodBeat.i(25799);
-    String str = this.tck + "," + this.tcl + "," + this.eBS + "," + this.tcm + "," + this.tcn + "," + this.tco + "," + this.tcp + "," + this.tcq + "," + this.tcr + "," + this.tcs + "," + this.tct + "," + this.tcu + "," + this.tcv + "," + this.tcw + "," + this.tcx + "," + this.tcy + "," + this.tcz + "," + this.tcA + "," + this.tcB + "," + this.tcC + "," + this.tcD + "," + this.tcE + "," + this.tcF + "," + this.tcG + "," + this.nMZ + "," + this.nNa + "," + this.tcH + "," + this.tcI;
-    AppMethodBeat.o(25799);
+    AppMethodBeat.i(29481);
+    String str = this.SNj + "," + this.SNk + "," + this.mwJ + "," + this.SNl + "," + this.SNm + "," + this.SNn + "," + this.SNo + "," + this.SNp + "," + this.SNq + "," + this.SNr + "," + this.SNs + "," + this.SNt + "," + this.SNu + "," + this.SNv + "," + this.SNw + "," + this.SNx + "," + this.SNy + "," + this.SNz + "," + this.SNA + "," + this.SNB + "," + this.SNC + "," + this.SND + "," + this.SNE + "," + this.SNF + "," + this.roomId + "," + this.Hnt + "," + this.SNG + "," + this.SNH;
+    AppMethodBeat.o(29481);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.f
  * JD-Core Version:    0.7.0.1
  */

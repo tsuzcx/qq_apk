@@ -132,6 +132,7 @@ public abstract interface TbsListener$ErrorCode
   public static final int READ_RESPONSE_ERROR = 103;
   public static final int RENAME_EXCEPTION = 219;
   public static final int RENAME_FAIL = 231;
+  public static final int RENAME_NO_NEED_SENDREQUEST = 129;
   public static final int RENAME_SUCCESS = 230;
   public static final int ROM_NOT_ENOUGH = 210;
   public static final int SERVER_ERROR = 102;
@@ -166,7 +167,7 @@ public abstract interface TbsListener$ErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsListener.ErrorCode
  * JD-Core Version:    0.7.0.1
  */

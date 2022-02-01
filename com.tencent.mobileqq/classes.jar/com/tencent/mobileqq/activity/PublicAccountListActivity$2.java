@@ -1,20 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import alzl;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class PublicAccountListActivity$2
-  implements Runnable
+  implements Handler.Callback
 {
   PublicAccountListActivity$2(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.this$0.a.a();
+    if (paramMessage.what == 0) {
+      this.a.c();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.2
  * JD-Core Version:    0.7.0.1
  */

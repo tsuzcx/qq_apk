@@ -1,8 +1,6 @@
 package com.tencent.qqmini.sdk.core.tissue;
 
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.manager.EngineVersion;
 import java.io.File;
 
@@ -15,52 +13,42 @@ public class TissueGlobal
   
   public static boolean checkEngineAvailable(String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      Log.w("Tissue", "basePath is empty");
+    if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
     Object localObject = new File(paramString1);
-    if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()))
+    if (((File)localObject).exists())
     {
-      Log.w("Tissue", localObject + " not exists or not a dir");
-      return false;
-    }
-    localObject = EngineVersion.a(((File)localObject).getName());
-    QMLog.i("Tissue", "currentVersion:" + localObject + ",requiredVersion:" + paramString2);
-    if ((localObject != null) && (EngineVersion.a(((EngineVersion)localObject).b, paramString2) >= 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool)
-      {
-        QMLog.i("Tissue", "versionCheck:" + bool);
+      if (!((File)localObject).isDirectory()) {
         return false;
       }
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString2 = new File(paramString1, paramArrayOfString[i]);
-        if (!paramString2.exists())
-        {
-          Log.w("Tissue", paramString2.getAbsolutePath() + " not exists");
-          return false;
-        }
-        if (!paramString2.isFile())
-        {
-          Log.w("Tissue", paramString2.getAbsolutePath() + " not a file");
-          return false;
-        }
-        if (!paramString2.canRead())
-        {
-          Log.w("Tissue", paramString2.getAbsolutePath() + " not readable");
-          return false;
-        }
-        i += 1;
+      localObject = EngineVersion.fromFolderName(((File)localObject).getName());
+      if ((localObject != null) && (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) >= 0)) {
+        return checkFileExists(paramString1, paramArrayOfString);
       }
-      Log.i("Tissue", paramString1 + " is fine");
-      return true;
     }
+    return false;
+  }
+  
+  private static boolean checkFileExists(String paramString, String[] paramArrayOfString)
+  {
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      File localFile = new File(paramString, paramArrayOfString[i]);
+      if (!localFile.exists()) {
+        return false;
+      }
+      if (!localFile.isFile()) {
+        return false;
+      }
+      if (!localFile.canRead()) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
   
   public static boolean verifyTissueEngine(String paramString)
@@ -71,7 +59,7 @@ public class TissueGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.tissue.TissueGlobal
  * JD-Core Version:    0.7.0.1
  */

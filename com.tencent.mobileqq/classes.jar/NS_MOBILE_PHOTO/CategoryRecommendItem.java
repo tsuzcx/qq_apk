@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CategoryRecommendItem
   extends JceStruct
@@ -11,7 +12,7 @@ public final class CategoryRecommendItem
   static ArrayList<PhotoFeedsData> cache_photos = new ArrayList();
   public String categoryid = "";
   public String desc = "";
-  public ArrayList<PhotoFeedsData> photos;
+  public ArrayList<PhotoFeedsData> photos = null;
   
   static
   {
@@ -37,20 +38,23 @@ public final class CategoryRecommendItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 0);
+    Object localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 1);
+    localObject = this.categoryid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.CategoryRecommendItem
  * JD-Core Version:    0.7.0.1
  */

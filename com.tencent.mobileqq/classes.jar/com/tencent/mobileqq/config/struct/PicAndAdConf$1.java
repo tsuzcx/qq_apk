@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.config.struct;
 
-import aozv;
-import aozw;
-
-public class PicAndAdConf$1
+class PicAndAdConf$1
   implements Runnable
 {
-  public PicAndAdConf$1(aozv paramaozv, aozw paramaozw) {}
+  PicAndAdConf$1(PicAndAdConf paramPicAndAdConf, PicAndAdConf.PicStruct paramPicStruct) {}
   
   public void run()
   {
-    this.this$0.c(this.a.b);
+    this.this$0.b(this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.PicAndAdConf.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,352 +8,381 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a;
-import com.tencent.mm.at.o;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.topstory.ui.c.a;
+import com.tencent.mm.plugin.topstory.ui.c.b;
+import com.tencent.mm.plugin.topstory.ui.c.c;
+import com.tencent.mm.plugin.topstory.ui.c.d;
+import com.tencent.mm.plugin.topstory.ui.c.e;
+import com.tencent.mm.plugin.topstory.ui.c.f;
 import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.plugin.topstory.ui.video.g;
-import com.tencent.mm.protocal.protobuf.ccp;
-import com.tencent.mm.protocal.protobuf.ckx;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.topstory.ui.video.n;
+import com.tencent.mm.protocal.protobuf.fcl;
+import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public class f
   extends g
 {
-  public TextView naO;
-  public TextView naP;
-  public TextView qzL;
+  public TextView IXv;
+  private foh TIZ;
+  public ImageView TLV;
+  public View TNZ;
+  public View TOa;
+  public ImageView TOb;
+  public TextView TOc;
+  public View TOd;
+  public View TOe;
+  public View TOf;
+  public View TOg;
+  public View TOh;
+  public View TOi;
+  public View TOj;
+  public TextView TOk;
+  public TextView TOl;
+  public ImageView TOm;
+  public ImageView TOn;
+  public View TOo;
+  MTimerHandler TOp;
+  private a TOq;
+  private boolean TOr;
   public TextView titleTv;
-  public ImageView tiu;
-  private ckx tjR;
-  public View tkA;
-  public View tkB;
-  public View tkC;
-  public View tkD;
-  public ImageView tkE;
-  public ImageView tkF;
-  public View tkG;
-  ap tkH;
-  private f.a tkI;
-  private boolean tkp;
-  public View tkt;
-  public View tku;
-  public ImageView tkv;
-  public TextView tkw;
-  public View tkx;
-  public View tky;
-  public View tkz;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final boolean Pk()
+  public final boolean cvt()
   {
-    AppMethodBeat.i(141941);
+    AppMethodBeat.i(126309);
     if (getVisibility() == 0)
     {
-      AppMethodBeat.o(141941);
+      AppMethodBeat.o(126309);
       return true;
     }
-    AppMethodBeat.o(141941);
+    AppMethodBeat.o(126309);
     return false;
   }
   
-  public final void aFn()
+  public final void cvy()
   {
-    AppMethodBeat.i(1931);
-    if (this.tkH != null)
+    AppMethodBeat.i(126312);
+    if (this.TOp != null)
     {
-      this.tkH.stopTimer();
-      this.tkH.ag(2000L, 2000L);
+      this.TOp.stopTimer();
+      this.TOp.startTimer(2000L);
     }
-    AppMethodBeat.o(1931);
+    AppMethodBeat.o(126312);
   }
   
-  public final void aFy()
+  public final void cxb()
   {
-    AppMethodBeat.i(1942);
-    super.aFy();
-    if ((this.tkI != null) && (this.tjR != null)) {
-      this.tkI.a(this.tjR, this.mPosition, getVideoTotalTime());
+    AppMethodBeat.i(126321);
+    super.cxb();
+    if ((this.TOq != null) && (this.TIZ != null)) {
+      this.TOq.b(this.TIZ, this.mPosition, getVideoTotalTime());
     }
-    AppMethodBeat.o(1942);
-  }
-  
-  public final void baj()
-  {
-    AppMethodBeat.i(1930);
-    if (this.tkH != null) {
-      this.tkH.stopTimer();
-    }
-    AppMethodBeat.o(1930);
-  }
-  
-  public final void cKo()
-  {
-    AppMethodBeat.i(1940);
-    this.qTF.setVisibility(8);
-    AppMethodBeat.o(1940);
-  }
-  
-  public final void cKp()
-  {
-    AppMethodBeat.i(1941);
-    this.qTF.setVisibility(0);
-    AppMethodBeat.o(1941);
+    AppMethodBeat.o(126321);
   }
   
   public int getBarPointWidth()
   {
-    AppMethodBeat.i(1932);
-    int i = this.qTE.getWidth();
-    AppMethodBeat.o(1932);
+    AppMethodBeat.i(126313);
+    int i = this.sHo.getWidth();
+    AppMethodBeat.o(126313);
     return i;
   }
   
   public int getLayoutId()
   {
-    return 2130971014;
+    return c.e.top_story_fs_video_control_bar;
   }
   
   public View getWowView()
   {
-    return this.tku;
+    return this.TOa;
+  }
+  
+  public final void hON()
+  {
+    AppMethodBeat.i(126311);
+    if (this.TOp != null) {
+      this.TOp.stopTimer();
+    }
+    AppMethodBeat.o(126311);
+  }
+  
+  public final void hOO()
+  {
+    AppMethodBeat.i(126319);
+    this.sHp.setVisibility(8);
+    AppMethodBeat.o(126319);
+  }
+  
+  public final void hOP()
+  {
+    AppMethodBeat.i(126320);
+    this.sHp.setVisibility(0);
+    AppMethodBeat.o(126320);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(156795);
+    AppMethodBeat.i(369749);
     setVisibility(8);
-    AppMethodBeat.o(156795);
-  }
-  
-  public final void i(ckx paramckx)
-  {
-    AppMethodBeat.i(1927);
-    if ((paramckx.xVl & 0x80) > 0)
-    {
-      this.tku.setVisibility(0);
-      if (paramckx.xVp)
-      {
-        this.tkv.setImageResource(2131232125);
-        this.tkw.setTextColor(getResources().getColor(2131690603));
-        AppMethodBeat.o(1927);
-        return;
-      }
-      this.tkv.setImageResource(2131232126);
-      this.tkw.setTextColor(getResources().getColor(2131690709));
-      AppMethodBeat.o(1927);
-      return;
-    }
-    this.tku.setVisibility(8);
-    AppMethodBeat.o(1927);
+    AppMethodBeat.o(369749);
   }
   
   public void init()
   {
-    AppMethodBeat.i(1926);
+    AppMethodBeat.i(126305);
     super.init();
-    this.tkx = this.contentView.findViewById(2131828558);
-    this.tkt = this.contentView.findViewById(2131828545);
-    this.tku = this.contentView.findViewById(2131828542);
-    this.tkv = ((ImageView)this.contentView.findViewById(2131828543));
-    this.tkw = ((TextView)this.contentView.findViewById(2131828544));
-    this.tky = this.contentView.findViewById(2131828547);
-    this.tkz = this.contentView.findViewById(2131828557);
-    this.tkA = this.contentView.findViewById(2131828549);
-    this.tkB = this.contentView.findViewById(2131828550);
-    this.tkC = this.contentView.findViewById(2131828551);
-    this.tkD = this.contentView.findViewById(2131828554);
-    this.naO = ((TextView)this.contentView.findViewById(2131828553));
-    this.naP = ((TextView)this.contentView.findViewById(2131828556));
-    this.tkE = ((ImageView)this.contentView.findViewById(2131828552));
-    this.tkF = ((ImageView)this.contentView.findViewById(2131828555));
-    this.tiu = ((ImageView)this.contentView.findViewById(2131828540));
-    this.qzL = ((TextView)this.contentView.findViewById(2131821550));
-    this.tkG = this.contentView.findViewById(2131828541);
-    this.titleTv = ((TextView)this.contentView.findViewById(2131821212));
-    AppMethodBeat.o(1926);
+    this.TOd = this.contentView.findViewById(c.d.content_area_layout);
+    this.TNZ = this.contentView.findViewById(c.d.share_iv);
+    this.TOa = this.contentView.findViewById(c.d.wow_iv);
+    this.TOb = ((ImageView)this.contentView.findViewById(c.d.wow_icon_view));
+    this.TOc = ((TextView)this.contentView.findViewById(c.d.wow_icon_text));
+    this.TOe = this.contentView.findViewById(c.d.progress_root_bg);
+    this.TOf = this.contentView.findViewById(c.d.progress_root);
+    this.TOg = this.contentView.findViewById(c.d.tag_desc_layout);
+    this.TOh = this.contentView.findViewById(c.d.bottom_tag_layout);
+    this.TOi = this.contentView.findViewById(c.d.tag_1_ll);
+    this.TOj = this.contentView.findViewById(c.d.tag_2_ll);
+    this.TOk = ((TextView)this.contentView.findViewById(c.d.tag_1_tv));
+    this.TOl = ((TextView)this.contentView.findViewById(c.d.tag_2_tv));
+    this.TOm = ((ImageView)this.contentView.findViewById(c.d.tag_1_icon));
+    this.TOn = ((ImageView)this.contentView.findViewById(c.d.tag_2_icon));
+    this.TLV = ((ImageView)this.contentView.findViewById(c.d.source_iv));
+    this.IXv = ((TextView)this.contentView.findViewById(c.d.source_tv));
+    this.TOo = this.contentView.findViewById(c.d.source_arrow);
+    this.titleTv = ((TextView)this.contentView.findViewById(c.d.title_tv));
+    AppMethodBeat.o(126305);
   }
   
-  public void j(ckx paramckx)
+  public final void m(foh paramfoh)
   {
-    AppMethodBeat.i(141939);
-    this.tjR = paramckx;
-    this.tkt.setVisibility(0);
-    float f = getResources().getDimensionPixelSize(2131428433);
-    this.qTG.setTextSize(0, f);
-    this.qTH.setTextSize(0, f);
-    Object localObject = this.tkz.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = getResources().getDimensionPixelSize(2131428432);
-    this.tkz.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (paramckx.wVo.size() > 0)
+    AppMethodBeat.i(126306);
+    if ((paramfoh.abOE & 0x80) > 0)
     {
-      if (this.tkA != null) {
-        this.tkA.setVisibility(0);
-      }
-      this.tkB.setVisibility(0);
-      localObject = (ccp)paramckx.wVo.get(0);
-      this.tkC.setTag(localObject);
-      this.naO.setText(((ccp)localObject).cyA);
-      this.naO.setVisibility(0);
-      this.tkC.setVisibility(0);
-      this.tkE.setVisibility(8);
-      if (!bo.isNullOrNil(((ccp)localObject).cDz))
+      this.TOa.setVisibility(0);
+      if (paramfoh.abOJ)
       {
-        o.ahG().a(((ccp)localObject).cDz, this.tkE, d.tfE);
-        this.tkE.setVisibility(0);
+        this.TOb.setImageResource(c.f.top_story_wow_selected);
+        this.TOc.setTextColor(getResources().getColor(c.a.top_story_wow_like));
       }
-      if (paramckx.wVo.size() > 1)
+      for (;;)
       {
-        localObject = (ccp)paramckx.wVo.get(1);
-        this.tkD.setTag(localObject);
-        this.naP.setText(((ccp)localObject).cyA);
-        this.naP.setVisibility(0);
-        this.tkD.setVisibility(0);
-        this.tkF.setVisibility(8);
-        if (!bo.isNullOrNil(((ccp)localObject).cDz))
+        this.TOc.setText(d.aoN(paramfoh.abON));
+        AppMethodBeat.o(126306);
+        return;
+        this.TOb.setImageResource(c.f.top_story_wow_unselected);
+        this.TOc.setTextColor(getResources().getColor(c.a.white_text_color));
+      }
+    }
+    this.TOa.setVisibility(8);
+    AppMethodBeat.o(126306);
+  }
+  
+  public void n(foh paramfoh)
+  {
+    AppMethodBeat.i(126307);
+    this.TIZ = paramfoh;
+    this.TNZ.setVisibility(0);
+    float f = getResources().getDimensionPixelSize(c.b.fts_web_video_fullscreen_control_bar_time_textsize);
+    this.sHq.setTextSize(0, f);
+    this.sHr.setTextSize(0, f);
+    Object localObject = this.TOf.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = getResources().getDimensionPixelSize(c.b.fts_web_video_fullscreen_control_bar_height);
+    this.TOf.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (paramfoh.Idn.size() > 0)
+    {
+      if (this.TOg != null) {
+        this.TOg.setVisibility(0);
+      }
+      this.TOh.setVisibility(0);
+      localObject = (fcl)paramfoh.Idn.get(0);
+      this.TOi.setTag(localObject);
+      this.TOk.setText(((fcl)localObject).wording);
+      this.TOk.setVisibility(0);
+      this.TOi.setVisibility(0);
+      this.TOm.setVisibility(8);
+      if (!Util.isNullOrNil(((fcl)localObject).icon))
+      {
+        r.bKe().a(((fcl)localObject).icon, this.TOm, d.TJk);
+        this.TOm.setVisibility(0);
+      }
+      if (paramfoh.Idn.size() > 1)
+      {
+        localObject = (fcl)paramfoh.Idn.get(1);
+        this.TOj.setTag(localObject);
+        this.TOl.setText(((fcl)localObject).wording);
+        this.TOl.setVisibility(0);
+        this.TOj.setVisibility(0);
+        this.TOn.setVisibility(8);
+        if (!Util.isNullOrNil(((fcl)localObject).icon))
         {
-          o.ahG().a(((ccp)localObject).cDz, this.tkF, d.tfE);
-          this.tkF.setVisibility(0);
+          r.bKe().a(((fcl)localObject).icon, this.TOn, d.TJk);
+          this.TOn.setVisibility(0);
         }
-        i(paramckx);
-        if (this.tkp) {
-          this.tkB.setVisibility(8);
+        m(paramfoh);
+        if (this.TOr) {
+          this.TOh.setVisibility(8);
         }
-        if ((this.tkG != null) && (this.qzL != null) && (this.tiu != null))
+        if ((this.TOo != null) && (this.IXv != null) && (this.TLV != null))
         {
-          this.tkG.setVisibility(8);
-          this.qzL.setVisibility(8);
-          this.tiu.setVisibility(8);
-          if (!bo.isNullOrNil(paramckx.source))
+          this.TOo.setVisibility(8);
+          this.IXv.setVisibility(8);
+          this.TLV.setVisibility(8);
+          if (!Util.isNullOrNil(paramfoh.source))
           {
-            this.qzL.setText(paramckx.source);
-            this.qzL.setVisibility(0);
-            if (!bo.isNullOrNil(paramckx.puE)) {
-              this.tkG.setVisibility(0);
+            this.IXv.setText(paramfoh.source);
+            this.IXv.setVisibility(0);
+            if (n.i(paramfoh)) {
+              this.TOo.setVisibility(0);
             }
-            if (bo.isNullOrNil(paramckx.xVg)) {
-              break label526;
+            if (Util.isNullOrNil(paramfoh.aaXP)) {
+              break label527;
             }
-            o.ahG().a(paramckx.xVg, this.tiu, d.tfD);
+            r.bKe().a(paramfoh.aaXP, this.TLV, d.TJj);
           }
         }
       }
     }
     for (;;)
     {
-      this.tiu.setVisibility(0);
+      this.TLV.setVisibility(0);
       if (this.titleTv != null) {
-        this.titleTv.setText(paramckx.title);
+        this.titleTv.setText(paramfoh.title);
       }
-      AppMethodBeat.o(141939);
+      AppMethodBeat.o(126307);
       return;
-      this.tkD.setVisibility(8);
-      this.naP.setVisibility(8);
+      this.TOj.setVisibility(8);
+      this.TOl.setVisibility(8);
       break;
-      if (this.tkA != null) {
-        this.tkA.setVisibility(8);
+      if (this.TOg != null) {
+        this.TOg.setVisibility(8);
       }
-      this.tkB.setVisibility(8);
+      this.TOh.setVisibility(8);
       break;
-      label526:
-      this.tiu.setImageResource(2130838493);
+      label527:
+      this.TLV.setImageResource(c.c.default_avatar);
     }
   }
   
-  public void setOnUpdateProgressLenListener(f.a parama)
+  public void setOnUpdateProgressLenListener(a parama)
   {
-    this.tkI = parama;
+    this.TOq = parama;
   }
   
   public void setOnlyFS(boolean paramBoolean)
   {
-    this.tkp = paramBoolean;
+    this.TOr = paramBoolean;
   }
   
   public void setShareBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1935);
-    this.tkt.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1935);
+    AppMethodBeat.i(126314);
+    this.TNZ.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(126314);
   }
   
   public void setSourceItemClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1938);
-    if (this.qzL != null) {
-      this.qzL.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(126317);
+    if (this.IXv != null) {
+      this.IXv.setOnClickListener(paramOnClickListener);
     }
-    if (this.tiu != null) {
-      this.tiu.setOnClickListener(paramOnClickListener);
+    if (this.TLV != null) {
+      this.TLV.setOnClickListener(paramOnClickListener);
     }
-    if (this.tkG != null) {
-      this.tkG.setOnClickListener(paramOnClickListener);
+    if (this.TOo != null) {
+      this.TOo.setOnClickListener(paramOnClickListener);
     }
-    AppMethodBeat.o(1938);
+    AppMethodBeat.o(126317);
   }
   
   public void setTagBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1936);
-    this.tkC.setOnClickListener(paramOnClickListener);
-    this.tkD.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1936);
+    AppMethodBeat.i(126315);
+    this.TOi.setOnClickListener(paramOnClickListener);
+    this.TOj.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(126315);
   }
   
   public void setTitleClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1939);
+    AppMethodBeat.i(126318);
     this.titleTv.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1939);
+    AppMethodBeat.o(126318);
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(1943);
+    AppMethodBeat.i(126322);
     super.setVisibility(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if (this.tkI != null)
+      if (this.TOq != null)
       {
-        this.tkI.cKn();
-        AppMethodBeat.o(1943);
+        this.TOq.hOM();
+        AppMethodBeat.o(126322);
       }
     }
-    else if ((paramInt == 0) && (this.tkI != null)) {
-      this.tkI.cKm();
+    else if ((paramInt == 0) && (this.TOq != null)) {
+      this.TOq.hOL();
     }
-    AppMethodBeat.o(1943);
+    AppMethodBeat.o(126322);
   }
   
   public void setWowBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1937);
-    this.tku.setVisibility(0);
-    this.tku.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1937);
+    AppMethodBeat.i(126316);
+    this.TOa.setVisibility(0);
+    this.TOa.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(126316);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(1929);
+    AppMethodBeat.i(126310);
     setVisibility(0);
-    cKp();
-    if (this.tkH == null) {
-      this.tkH = new ap(new f.1(this), false);
+    hOP();
+    if (this.TOp == null) {
+      this.TOp = new MTimerHandler(new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(126304);
+          f.this.setVisibility(8);
+          f.a(f.this).stopTimer();
+          AppMethodBeat.o(126304);
+          return false;
+        }
+      }, false);
     }
-    this.tkH.stopTimer();
-    this.tkH.ag(2000L, 2000L);
-    AppMethodBeat.o(1929);
+    this.TOp.stopTimer();
+    this.TOp.startTimer(2000L);
+    AppMethodBeat.o(126310);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void b(foh paramfoh, int paramInt1, int paramInt2);
+    
+    public abstract void hOL();
+    
+    public abstract void hOM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.f
  * JD-Core Version:    0.7.0.1
  */

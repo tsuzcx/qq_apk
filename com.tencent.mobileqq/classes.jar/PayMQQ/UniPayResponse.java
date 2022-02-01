@@ -13,21 +13,11 @@ public final class UniPayResponse
   implements Cloneable
 {
   static Map<String, String> cache_mapResponse;
-  public int iShowOpen;
-  public int iUniPayType;
-  public Map<String, String> mapResponse;
+  public int iShowOpen = 0;
+  public int iUniPayType = 0;
+  public Map<String, String> mapResponse = null;
   public String sProductID = "";
   public String sUin = "";
-  
-  static
-  {
-    if (!UniPayResponse.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public UniPayResponse() {}
   
@@ -47,18 +37,17 @@ public final class UniPayResponse
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -83,13 +72,32 @@ public final class UniPayResponse
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UniPayResponse)paramObject;
-    } while ((!JceUtil.equals(this.sUin, paramObject.sUin)) || (!JceUtil.equals(this.iShowOpen, paramObject.iShowOpen)) || (!JceUtil.equals(this.iUniPayType, paramObject.iUniPayType)) || (!JceUtil.equals(this.sProductID, paramObject.sProductID)) || (!JceUtil.equals(this.mapResponse, paramObject.mapResponse)));
-    return true;
+    }
+    paramObject = (UniPayResponse)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.sUin, paramObject.sUin))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.iShowOpen, paramObject.iShowOpen))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iUniPayType, paramObject.iUniPayType))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.sProductID, paramObject.sProductID))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.mapResponse, paramObject.mapResponse)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -185,7 +193,7 @@ public final class UniPayResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PayMQQ.UniPayResponse
  * JD-Core Version:    0.7.0.1
  */

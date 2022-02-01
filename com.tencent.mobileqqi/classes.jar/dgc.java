@@ -1,17 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.EUCountryUtils;
 
 class dgc
   implements DialogInterface.OnClickListener
 {
-  dgc(dgb paramdgb) {}
+  dgc(dga paramdga) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    String str = RegisterPhoneNumActivity.a(this.a.a).getText().toString();
+    QLog.e("testt", 2, "Register cancel uin: " + str);
+    EUCountryUtils.a(str, false);
     paramDialogInterface.dismiss();
-    this.a.a.a(2131562877);
-    RegisterPhoneNumActivity.c(this.a.a);
   }
 }
 

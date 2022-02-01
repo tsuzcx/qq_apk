@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dna" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/md" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginBottom="@dimen/mc" android:layout_alignParentTop="true" />
+    <TextView android:textSize="@dimen/aek" android:textColor="@color/fl" android:id="@id/dialogTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ma" android:layout_marginRight="@dimen/mb" android:layout_marginBottom="@dimen/ls" android:text="发现QQv6.5.5新版本" android:singleLine="true" android:layout_below="@id/bif" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/aej" android:textColor="@color/fl" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lq" android:layout_marginRight="@dimen/lr" android:text="@string/l6v" android:layout_below="@id/dialogTitle" android:lineSpacingExtra="3.5dip" android:lineSpacingMultiplier="1.0" />
+    <LinearLayout android:id="@id/e2z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lq" android:layout_marginTop="@dimen/ls" android:layout_marginRight="@dimen/lr" android:layout_below="@id/dialogText" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/az8" android:textColor="@color/skin_gray2" android:id="@id/kdc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已在WiFi下省流量下载新版QQ" />
+    </LinearLayout>
+    <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_marginTop="@dimen/lp" android:layout_below="@id/e2z" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/biw">
+        <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/l6p" android:singleLine="true" android:layout_weight="1.0" />
+        <View android:id="@id/aet" android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/l6_" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

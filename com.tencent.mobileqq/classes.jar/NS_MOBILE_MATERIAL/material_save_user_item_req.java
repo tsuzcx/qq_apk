@@ -10,10 +10,10 @@ public final class material_save_user_item_req
   extends JceStruct
 {
   static Map<String, String> cache_mapExtInfo = new HashMap();
-  public int iAppid;
-  public int iSendFeed;
-  public long lUin;
-  public Map<String, String> mapExtInfo;
+  public int iAppid = 0;
+  public int iSendFeed = 0;
+  public long lUin = 0L;
+  public Map<String, String> mapExtInfo = null;
   public String strItemId = "";
   public String strQua = "";
   public String strSkey = "";
@@ -52,21 +52,24 @@ public final class material_save_user_item_req
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.iAppid, 1);
     paramJceOutputStream.write(this.strItemId, 2);
-    if (this.strQua != null) {
-      paramJceOutputStream.write(this.strQua, 3);
+    Object localObject = this.strQua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iSendFeed, 4);
-    if (this.strSkey != null) {
-      paramJceOutputStream.write(this.strSkey, 5);
+    localObject = this.strSkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 6);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_save_user_item_req
  * JD-Core Version:    0.7.0.1
  */

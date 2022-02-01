@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/age" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/agf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
-            <RelativeLayout android:id="@id/agg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <TextView android:textSize="@dimen/dq" android:textColor="#ccf2f2f2" android:id="@id/agh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-            <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/agi" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
-            <ImageView android:id="@id/agj" android:background="@drawable/avn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-            <ProgressBar android:layout_gravity="center" android:id="@id/a82" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a00" />
-            <TextView android:textColor="@color/y5" android:id="@id/agk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/k_k" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/bb">
+            <LinearLayout android:gravity="center_vertical" android:id="@id/g1q" android:background="@drawable/aw8" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="@dimen/bb">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ao7" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                <include android:id="@id/k_g" layout="@layout/bdp" />
+            </LinearLayout>
         </RelativeLayout>
-    </RelativeLayout>
-</LinearLayout>
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/k_i" android:paddingTop="@dimen/i9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:text="@string/ao6" />
+        <com.tencent.mm.msgsubscription.ui.MaxRecyclerView android:id="@id/k_d" android:background="@drawable/aw8" android:paddingTop="1.0px" android:paddingBottom="1.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:nestedScrollingEnabled="false" />
+    </LinearLayout>
+</ScrollView>

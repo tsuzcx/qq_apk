@@ -11,14 +11,14 @@ public final class ab
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramzzj.version);
-    c.c(paramParcel, 2, paramzzj.JX);
-    c.c(paramParcel, 3, paramzzj.JY);
-    c.a(paramParcel, 4, paramzzj.JZ);
-    c.a(paramParcel, 5, paramzzj.Ka);
-    c.a(paramParcel, 6, paramzzj.Kb, paramInt);
-    c.a(paramParcel, 7, paramzzj.Kc);
-    c.a(paramParcel, 8, paramzzj.Kd, paramInt);
-    c.a(paramParcel, 10, paramzzj.Ke, paramInt);
+    c.c(paramParcel, 2, paramzzj.LM);
+    c.c(paramParcel, 3, paramzzj.LN);
+    c.a(paramParcel, 4, paramzzj.LO);
+    c.a(paramParcel, 5, paramzzj.LP);
+    c.a(paramParcel, 6, paramzzj.LQ, paramInt);
+    c.a(paramParcel, 7, paramzzj.LR);
+    c.a(paramParcel, 8, paramzzj.LS, paramInt);
+    c.a(paramParcel, 10, paramzzj.LT, paramInt);
     c.v(paramParcel, i);
   }
 }

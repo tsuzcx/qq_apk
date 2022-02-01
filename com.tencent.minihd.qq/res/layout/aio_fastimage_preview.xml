@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.emoticonview.FastImagePreviewLayout android:orientation="horizontal" android:background="@drawable/aio_fastimage_bg_selector" android:visibility="gone" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

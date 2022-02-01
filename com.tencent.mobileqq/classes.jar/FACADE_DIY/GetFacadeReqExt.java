@@ -23,14 +23,15 @@ public final class GetFacadeReqExt
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cachedChecksum != null) {
-      paramJceOutputStream.write(this.cachedChecksum, 0);
+    String str = this.cachedChecksum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FACADE_DIY.GetFacadeReqExt
  * JD-Core Version:    0.7.0.1
  */

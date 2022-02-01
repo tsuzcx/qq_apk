@@ -11,8 +11,9 @@ final class ArkVsync$TimerVsync
   
   public void run()
   {
-    if (this.mVsync != null) {
-      this.mVsync.frameCallback();
+    ArkVsync localArkVsync = this.mVsync;
+    if (localArkVsync != null) {
+      localArkVsync.frameCallback();
     }
   }
   
@@ -28,9 +29,10 @@ final class ArkVsync$TimerVsync
   
   public void stop()
   {
-    if (this.mTimer != null)
+    Timer localTimer = this.mTimer;
+    if (localTimer != null)
     {
-      this.mTimer.cancel();
+      localTimer.cancel();
       this.mTimer.purge();
       this.mTimer = null;
     }
@@ -39,7 +41,7 @@ final class ArkVsync$TimerVsync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkVsync.TimerVsync
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.qk;
 import java.io.File;
 
 public class WXAppExtendObject
-  implements WXMediaMessage.IMediaObject
+  implements WXMediaMessage.a
 {
   public String extInfo;
   public byte[] fileData;
@@ -27,46 +27,66 @@ public class WXAppExtendObject
   
   public boolean checkArgs()
   {
-    if (((this.extInfo == null) || (this.extInfo.length() == 0)) && ((this.filePath == null) || (this.filePath.length() == 0)) && ((this.fileData == null) || (this.fileData.length == 0)))
+    Object localObject = this.extInfo;
+    if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, all arguments is null");
-      return false;
-    }
-    if ((this.extInfo != null) && (this.extInfo.length() > 2048))
-    {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, extInfo is invalid");
-      return false;
-    }
-    if ((this.filePath != null) && (this.filePath.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, filePath is invalid");
-      return false;
-    }
-    if (this.filePath != null)
-    {
-      Object localObject = this.filePath;
-      int i;
-      if ((localObject == null) || (((String)localObject).length() == 0)) {
-        i = 0;
-      }
-      while (i > 10485760)
+      localObject = this.filePath;
+      if ((localObject == null) || (((String)localObject).length() == 0))
       {
-        Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, fileSize is too large");
-        return false;
-        localObject = new File((String)localObject);
-        if (!((File)localObject).exists()) {
-          i = 0;
-        } else {
-          i = (int)((File)localObject).length();
+        localObject = this.fileData;
+        if ((localObject == null) || (localObject.length == 0)) {
+          break label193;
         }
       }
     }
-    if ((this.fileData != null) && (this.fileData.length > 10485760))
-    {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, fileData is too large");
-      return false;
+    localObject = this.extInfo;
+    if ((localObject != null) && (((String)localObject).length() > 2048)) {
+      localObject = "checkArgs fail, extInfo is invalid";
     }
-    return true;
+    for (;;)
+    {
+      qk.a("MicroMsg.SDK.WXAppExtendObject", (String)localObject);
+      return false;
+      localObject = this.filePath;
+      if ((localObject != null) && (((String)localObject).length() > 10240))
+      {
+        localObject = "checkArgs fail, filePath is invalid";
+      }
+      else
+      {
+        localObject = this.filePath;
+        if (localObject != null)
+        {
+          if ((localObject != null) && (((String)localObject).length() != 0))
+          {
+            localObject = new File((String)localObject);
+            if (((File)localObject).exists())
+            {
+              i = (int)((File)localObject).length();
+              break label157;
+            }
+          }
+          int i = 0;
+          label157:
+          if (i > 10485760)
+          {
+            localObject = "checkArgs fail, fileSize is too large";
+            continue;
+          }
+        }
+        localObject = this.fileData;
+        if ((localObject != null) && (localObject.length > 10485760))
+        {
+          localObject = "checkArgs fail, fileData is too large";
+        }
+        else
+        {
+          return true;
+          label193:
+          localObject = "checkArgs fail, all arguments is null";
+        }
+      }
+    }
   }
   
   public void serialize(Bundle paramBundle)

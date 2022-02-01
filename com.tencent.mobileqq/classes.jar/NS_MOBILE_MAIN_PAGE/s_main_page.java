@@ -15,34 +15,34 @@ public final class s_main_page
   public String family_des = "";
   public String family_url = "";
   public String family_url_traceinfo = "";
-  public long follow_flag;
-  public int frd_num;
+  public long follow_flag = 0L;
+  public int frd_num = 0;
   public String info_askfor_friend = "";
-  public int is_askfor_friend;
-  public int is_black;
-  public int is_both_friend;
+  public int is_askfor_friend = 0;
+  public int is_black = 0;
+  public int is_both_friend = 0;
   public boolean is_concerned = true;
-  public boolean is_family_open;
-  public boolean is_flower_switch_open;
-  public int is_friend;
-  public int is_host_gray_follow_usr;
-  public int is_host_gray_tongcheng_usr;
-  public int is_in_visitor_notify_list;
-  public int is_open_follow;
+  public boolean is_family_open = false;
+  public boolean is_flower_switch_open = false;
+  public int is_friend = 0;
+  public int is_host_gray_follow_usr = 0;
+  public int is_host_gray_tongcheng_usr = 0;
+  public int is_in_visitor_notify_list = 0;
+  public int is_open_follow = 0;
   public boolean is_readspace_followed = true;
-  public int is_realname;
-  public int is_recipient_yellow_banner;
-  public int is_reverse_black;
-  public int is_special;
-  public boolean is_special_concerned;
-  public int is_uncare;
-  public int is_visitor_gray_follow_usr;
-  public int is_visitor_gray_tongcheng_usr;
+  public int is_realname = 0;
+  public int is_recipient_yellow_banner = 0;
+  public int is_reverse_black = 0;
+  public int is_special = 0;
+  public boolean is_special_concerned = false;
+  public int is_uncare = 0;
+  public int is_visitor_gray_follow_usr = 0;
+  public int is_visitor_gray_tongcheng_usr = 0;
   public String msg = "";
-  public Map<Integer, String> prompt_msg;
-  public s_question question;
-  public int relation;
-  public int visit_right;
+  public Map<Integer, String> prompt_msg = null;
+  public s_question question = null;
+  public int relation = 0;
+  public int visit_right = 0;
   
   static
   {
@@ -128,25 +128,30 @@ public final class s_main_page
   {
     paramJceOutputStream.write(this.relation, 0);
     paramJceOutputStream.write(this.is_askfor_friend, 1);
-    if (this.info_askfor_friend != null) {
-      paramJceOutputStream.write(this.info_askfor_friend, 2);
+    Object localObject = this.info_askfor_friend;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.is_special, 3);
-    if (this.question != null) {
-      paramJceOutputStream.write(this.question, 4);
+    localObject = this.question;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 5);
+    localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.is_concerned, 6);
     paramJceOutputStream.write(this.is_black, 7);
     paramJceOutputStream.write(this.is_uncare, 8);
     paramJceOutputStream.write(this.is_realname, 9);
-    if (this.addblack_msg != null) {
-      paramJceOutputStream.write(this.addblack_msg, 10);
+    localObject = this.addblack_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.prompt_msg != null) {
-      paramJceOutputStream.write(this.prompt_msg, 11);
+    localObject = this.prompt_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
     paramJceOutputStream.write(this.is_readspace_followed, 12);
     paramJceOutputStream.write(this.is_both_friend, 13);
@@ -164,21 +169,24 @@ public final class s_main_page
     paramJceOutputStream.write(this.follow_flag, 25);
     paramJceOutputStream.write(this.is_flower_switch_open, 26);
     paramJceOutputStream.write(this.is_family_open, 27);
-    if (this.family_url != null) {
-      paramJceOutputStream.write(this.family_url, 28);
+    localObject = this.family_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 28);
     }
     paramJceOutputStream.write(this.frd_num, 29);
-    if (this.family_des != null) {
-      paramJceOutputStream.write(this.family_des, 30);
+    localObject = this.family_des;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.family_url_traceinfo != null) {
-      paramJceOutputStream.write(this.family_url_traceinfo, 31);
+    localObject = this.family_url_traceinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 31);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_main_page
  * JD-Core Version:    0.7.0.1
  */

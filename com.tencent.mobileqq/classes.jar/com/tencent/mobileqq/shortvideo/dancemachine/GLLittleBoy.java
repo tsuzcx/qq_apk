@@ -111,27 +111,28 @@ public class GLLittleBoy
         this.mCurrMatchTimes = 0;
       }
     }
-    do
+    else
     {
-      return;
       this.mMatched = paramBoolean;
-    } while (!this.mNeedContinuousMatch);
-    this.mCurrMatchTimes = 0;
+      if (this.mNeedContinuousMatch) {
+        this.mCurrMatchTimes = 0;
+      }
+    }
   }
   
   public void setMaxMatchTimes(int paramInt, boolean paramBoolean)
   {
-    if (paramInt < 1) {}
-    for (this.mMaxMatchTimes = 1;; this.mMaxMatchTimes = paramInt)
-    {
-      this.mNeedContinuousMatch = paramBoolean;
-      return;
+    if (paramInt < 1) {
+      this.mMaxMatchTimes = 1;
+    } else {
+      this.mMaxMatchTimes = paramInt;
     }
+    this.mNeedContinuousMatch = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy
  * JD-Core Version:    0.7.0.1
  */

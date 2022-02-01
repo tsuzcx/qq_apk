@@ -39,25 +39,24 @@ public class ParameterSignature
   
   private <T extends Annotation> T findDeepAnnotation(Annotation[] paramArrayOfAnnotation, Class<T> paramClass, int paramInt)
   {
-    if (paramInt == 0) {}
-    for (;;)
-    {
+    if (paramInt == 0) {
       return null;
-      int j = paramArrayOfAnnotation.length;
-      int i = 0;
-      while (i < j)
-      {
-        Annotation localAnnotation = paramArrayOfAnnotation[i];
-        if (paramClass.isInstance(localAnnotation)) {
-          return (Annotation)paramClass.cast(localAnnotation);
-        }
-        localAnnotation = findDeepAnnotation(localAnnotation.annotationType().getAnnotations(), paramClass, paramInt - 1);
-        if (localAnnotation != null) {
-          return (Annotation)paramClass.cast(localAnnotation);
-        }
-        i += 1;
-      }
     }
+    int j = paramArrayOfAnnotation.length;
+    int i = 0;
+    while (i < j)
+    {
+      Annotation localAnnotation = paramArrayOfAnnotation[i];
+      if (paramClass.isInstance(localAnnotation)) {
+        return (Annotation)paramClass.cast(localAnnotation);
+      }
+      localAnnotation = findDeepAnnotation(localAnnotation.annotationType().getAnnotations(), paramClass, paramInt - 1);
+      if (localAnnotation != null) {
+        return (Annotation)paramClass.cast(localAnnotation);
+      }
+      i += 1;
+    }
+    return null;
   }
   
   private boolean isAssignableViaTypeConversion(Class<?> paramClass1, Class<?> paramClass2)
@@ -149,7 +148,7 @@ public class ParameterSignature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.ParameterSignature
  * JD-Core Version:    0.7.0.1
  */

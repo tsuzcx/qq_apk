@@ -3,25 +3,18 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjkr;
 
 public class CoverCacheData$GameCoverInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameCoverInfo> CREATOR = new bjkr();
-  public double a;
-  public int a;
-  public String a;
-  public double b;
-  public String b;
-  public double c;
-  public double d;
-  
-  public CoverCacheData$GameCoverInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public static final Parcelable.Creator<GameCoverInfo> CREATOR = new CoverCacheData.GameCoverInfo.1();
+  public int jmpType = 0;
+  public String jmpUrl = "";
+  public String schema = "";
+  public double xCoordLU = 0.0D;
+  public double xCoordRD = 0.0D;
+  public double yCoordLU = 0.0D;
+  public double yCoordRD = 0.0D;
   
   public int describeContents()
   {
@@ -30,18 +23,18 @@ public class CoverCacheData$GameCoverInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeDouble(this.jdField_a_of_type_Double);
-    paramParcel.writeDouble(this.jdField_b_of_type_Double);
-    paramParcel.writeDouble(this.c);
-    paramParcel.writeDouble(this.d);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeDouble(this.xCoordLU);
+    paramParcel.writeDouble(this.yCoordLU);
+    paramParcel.writeDouble(this.xCoordRD);
+    paramParcel.writeDouble(this.yCoordRD);
+    paramParcel.writeString(this.jmpUrl);
+    paramParcel.writeString(this.schema);
+    paramParcel.writeInt(this.jmpType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData.GameCoverInfo
  * JD-Core Version:    0.7.0.1
  */

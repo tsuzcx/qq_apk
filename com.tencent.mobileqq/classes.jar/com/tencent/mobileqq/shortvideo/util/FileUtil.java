@@ -11,18 +11,16 @@ public class FileUtil
   
   public static boolean fileExistsAndNotEmpty(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      paramString = new File(paramString);
-    } while ((!paramString.exists()) || (paramString.length() <= 0L));
-    return true;
+    }
+    paramString = new File(paramString);
+    return (paramString.exists()) && (paramString.length() > 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.FileUtil
  * JD-Core Version:    0.7.0.1
  */

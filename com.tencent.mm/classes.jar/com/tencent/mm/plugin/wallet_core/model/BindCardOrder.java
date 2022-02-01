@@ -4,136 +4,121 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class BindCardOrder
   implements Parcelable
 {
   public static final Parcelable.Creator<BindCardOrder> CREATOR;
-  public static int ugA;
-  public static int ugB;
-  public static int ugC;
+  public static int VEj;
+  public static int VEk;
+  public static int VEl;
+  private String VEi;
+  public int VEm;
+  public String VEn;
+  public String VEo;
+  public String VEp;
+  public String VEq;
+  public String VEr;
+  public int VEs;
+  public int VEt;
+  public s VEu;
+  public s.a VEv;
+  public s.b VEw;
+  public String hAk;
   public int jumpType;
-  public String poq;
-  public int ugD;
-  public String ugE;
-  public String ugF;
-  public String ugG;
-  public String ugH;
-  public String ugI;
-  public int ugJ;
-  public int ugK;
-  public s ugL;
-  public s.a ugM;
-  public s.b ugN;
-  private String ugz;
   
   static
   {
-    AppMethodBeat.i(46725);
-    ugA = 1;
-    ugB = 2;
-    ugC = 6;
-    CREATOR = new BindCardOrder.1();
-    AppMethodBeat.o(46725);
+    AppMethodBeat.i(70242);
+    VEj = 1;
+    VEk = 2;
+    VEl = 6;
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70242);
   }
   
   public BindCardOrder()
   {
-    this.ugz = "";
-    this.ugE = "";
-    this.ugF = "";
-    this.ugG = "";
-    this.ugH = "";
-    this.ugI = "";
+    this.VEi = "";
+    this.VEn = "";
+    this.VEo = "";
+    this.VEp = "";
+    this.VEq = "";
+    this.VEr = "";
   }
   
   protected BindCardOrder(Parcel paramParcel)
   {
-    AppMethodBeat.i(46722);
-    this.ugz = "";
-    this.ugE = "";
-    this.ugF = "";
-    this.ugG = "";
-    this.ugH = "";
-    this.ugI = "";
-    this.ugz = paramParcel.readString();
+    AppMethodBeat.i(70239);
+    this.VEi = "";
+    this.VEn = "";
+    this.VEo = "";
+    this.VEp = "";
+    this.VEq = "";
+    this.VEr = "";
+    this.VEi = paramParcel.readString();
     try
     {
-      ax(new JSONObject(this.ugz));
-      AppMethodBeat.o(46722);
+      ch(new JSONObject(this.VEi));
+      AppMethodBeat.o(70239);
       return;
     }
     catch (Exception paramParcel)
     {
-      ab.printErrStackTrace("MicroMsg.BindCardOrder", paramParcel, "", new Object[0]);
-      AppMethodBeat.o(46722);
+      Log.printErrStackTrace("MicroMsg.BindCardOrder", paramParcel, "", new Object[0]);
+      AppMethodBeat.o(70239);
     }
   }
   
-  public final void ax(JSONObject paramJSONObject)
+  public final void ch(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46724);
+    AppMethodBeat.i(70241);
     if (paramJSONObject == null) {}
     for (Object localObject = "";; localObject = paramJSONObject.toString())
     {
-      this.ugz = ((String)localObject);
-      ab.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.ugz });
+      this.VEi = ((String)localObject);
+      Log.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.VEi });
       try
       {
-        this.ugD = paramJSONObject.optInt("show_bind_succ_page", 0);
-        this.ugE = paramJSONObject.optString("bind_succ_btn_wording", "");
-        this.ugF = paramJSONObject.optString("bind_succ_remind_wording", "");
+        this.VEm = paramJSONObject.optInt("show_bind_succ_page", 0);
+        this.VEn = paramJSONObject.optString("bind_succ_btn_wording", "");
+        this.VEo = paramJSONObject.optString("bind_succ_remind_wording", "");
         this.jumpType = paramJSONObject.optInt("jump_type", 0);
-        this.ugI = paramJSONObject.optString("bind_serial");
+        this.VEr = paramJSONObject.optString("bind_serial");
         localObject = paramJSONObject.optJSONObject("activity_info");
-        this.ugL = new s();
+        this.VEu = new s();
         if (localObject != null) {
-          this.ugL.aF((JSONObject)localObject);
+          this.VEu.cq((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("h5_info");
         if (localObject != null)
         {
-          this.ugM = new s.a();
-          this.ugM.aF((JSONObject)localObject);
+          this.VEv = new s.a();
+          this.VEv.cq((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("native_info");
         if (localObject != null)
         {
-          this.ugM = new s.a();
-          this.ugM.aF((JSONObject)localObject);
+          this.VEv = new s.a();
+          this.VEv.cq((JSONObject)localObject);
         }
         paramJSONObject = paramJSONObject.optJSONObject("tinyapp_info");
         if (paramJSONObject != null)
         {
-          this.ugN = new s.b();
-          this.ugN.aF(paramJSONObject);
+          this.VEw = new s.b();
+          this.VEw.cq(paramJSONObject);
         }
-        AppMethodBeat.o(46724);
+        AppMethodBeat.o(70241);
         return;
       }
       catch (Exception paramJSONObject)
       {
-        ab.printErrStackTrace("MicroMsg.BindCardOrder", paramJSONObject, "", new Object[0]);
-        AppMethodBeat.o(46724);
+        Log.printErrStackTrace("MicroMsg.BindCardOrder", paramJSONObject, "", new Object[0]);
+        AppMethodBeat.o(70241);
       }
     }
-  }
-  
-  public final boolean cTm()
-  {
-    return (this.jumpType == ugA) && (this.ugM != null);
-  }
-  
-  public final boolean cTn()
-  {
-    return (this.jumpType == ugB) && (this.ugN != null);
-  }
-  
-  public final boolean cTo()
-  {
-    return (this.jumpType == ugC) && (this.ugM != null);
   }
   
   public int describeContents()
@@ -141,16 +126,31 @@ public class BindCardOrder
     return 0;
   }
   
+  public final boolean iic()
+  {
+    return (this.jumpType == VEj) && (this.VEv != null);
+  }
+  
+  public final boolean iid()
+  {
+    return (this.jumpType == VEk) && (this.VEw != null);
+  }
+  
+  public final boolean iie()
+  {
+    return (this.jumpType == VEl) && (this.VEv != null);
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(46723);
-    paramParcel.writeString(this.ugz);
-    AppMethodBeat.o(46723);
+    AppMethodBeat.i(70240);
+    paramParcel.writeString(this.VEi);
+    AppMethodBeat.o(70240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.BindCardOrder
  * JD-Core Version:    0.7.0.1
  */

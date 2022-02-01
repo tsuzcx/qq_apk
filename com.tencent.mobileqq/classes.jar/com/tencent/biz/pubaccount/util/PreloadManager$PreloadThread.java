@@ -10,27 +10,31 @@ class PreloadManager$PreloadThread
   
   public void run()
   {
-    ??? = PreloadManager.a(this.this$0).iterator();
+    ??? = PreloadManager.b(this.this$0).iterator();
     while (((Iterator)???).hasNext())
     {
       String str = (String)((Iterator)???).next();
       PreloadManager.a(this.this$0, str);
     }
-    synchronized (this.this$0.b)
+    synchronized (this.this$0.f)
     {
-      PreloadManager.a(this.this$0).clear();
-      if (PreloadManager.b(this.this$0).size() > 0)
-      {
-        this.this$0.a();
-        return;
+      PreloadManager.b(this.this$0).clear();
+      if (PreloadManager.c(this.this$0).size() > 0) {
+        this.this$0.b();
+      } else {
+        this.this$0.b = false;
       }
-      this.this$0.a = false;
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.PreloadThread
  * JD-Core Version:    0.7.0.1
  */

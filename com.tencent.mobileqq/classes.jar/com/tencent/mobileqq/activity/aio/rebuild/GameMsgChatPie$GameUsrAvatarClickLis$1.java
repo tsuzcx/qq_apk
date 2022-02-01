@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqk;
-import agqp;
-import asmu;
-import bkjb;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.gamecenter.msginfo.GameUserInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class GameMsgChatPie$GameUsrAvatarClickLis$1
+class GameMsgChatPie$GameUsrAvatarClickLis$1
   implements Runnable
 {
-  public GameMsgChatPie$GameUsrAvatarClickLis$1(agqp paramagqp) {}
+  GameMsgChatPie$GameUsrAvatarClickLis$1(GameMsgChatPie.GameUsrAvatarClickLis paramGameUsrAvatarClickLis) {}
   
   public void run()
   {
@@ -19,37 +20,39 @@ public class GameMsgChatPie$GameUsrAvatarClickLis$1
     {
       try
       {
-        Object localObject = ((asmu)agqp.a(this.this$0).getManager(358)).a(agqp.a(this.this$0));
+        Object localObject = ((IGameMsgManagerService)GameMsgChatPie.GameUsrAvatarClickLis.a(this.this$0).getRuntimeService(IGameMsgManagerService.class, "")).findGameUserInfo(GameMsgChatPie.GameUsrAvatarClickLis.b(this.this$0));
         if (localObject == null)
         {
-          QLog.w(agqk.g, 1, "GameUsrAvatarClickLis, usrInfo is null");
+          QLog.w("GameCenterMsg.GameMsgChatPie", 1, "GameUsrAvatarClickLis, usrInfo is null");
           return;
         }
-        bkjb localbkjb = bkjb.a();
+        GameMsgChatPie.a(GameMsgChatPie.GameUsrAvatarClickLis.a(this.this$0), (Context)this.this$0.a.get(), GameMsgChatPie.GameUsrAvatarClickLis.b(this.this$0));
+        IGameMsgHelperApi localIGameMsgHelperApi = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
         String str2 = ((GameUserInfo)localObject).mAppId;
-        if (agqp.a(this.this$0))
+        if (GameMsgChatPie.GameUsrAvatarClickLis.c(this.this$0))
         {
           localObject = "0";
-          localbkjb.a(str2, "1", "145", "920", "92005", "206352", "", "", "20", (String)localObject);
-          if (!agqp.b(this.this$0)) {
-            break;
-          }
-          if (!QLog.isColorLevel()) {
+          localIGameMsgHelperApi.reportForGameMsg(str2, "1", "145", "920", "92005", "206352", "", "", "20", (String)localObject);
+          if (GameMsgChatPie.GameUsrAvatarClickLis.d(this.this$0))
+          {
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("GameCenterMsg.GameMsgChatPie", 2, "GameUsrAvatarClickLis already update.");
             return;
           }
-          QLog.d(agqk.g, 2, "GameUsrAvatarClickLis already update.");
+          GameMsgChatPie.GameUsrAvatarClickLis.a(this.this$0, GameMsgChatPie.GameUsrAvatarClickLis.b(this.this$0));
+          GameMsgChatPie.GameUsrAvatarClickLis.a(this.this$0, true);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        QLog.e(agqk.g, 1, localThrowable, new Object[0]);
+        QLog.e("GameCenterMsg.GameMsgChatPie", 1, localThrowable, new Object[0]);
         return;
       }
       String str1 = "1";
     }
-    agqp.a(this.this$0, agqp.a(this.this$0));
-    agqp.a(this.this$0, true);
   }
 }
 

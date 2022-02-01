@@ -1,24 +1,48 @@
+import android.graphics.Point;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-import java.util.Queue;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
+import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView.NearbyTroopsMapViewObserver;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class gzb
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public gzb(MessageSubtitleView paramMessageSubtitleView) {}
+  public gzb(NearbyTroopsMapView paramNearbyTroopsMapView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if ((MessageSubtitleView.a(this.a, paramAnimation)) && (!this.a.a.isEmpty())) {
-      MessageSubtitleView.a(this.a).post(MessageSubtitleView.a(this.a));
+    if (paramMessage == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramMessage.what != 3) {
+          break;
+        }
+      } while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewOverlayItem == null);
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapViewOverlayItem);
+      return;
+    } while ((paramMessage.obj == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver == null));
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    case 0: 
+      paramMessage = (GeoPoint)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver.a(paramMessage);
+      return;
+    case 1: 
+      paramMessage = (GeoPoint)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver.b(paramMessage);
+      return;
     }
+    paramMessage = (Point)paramMessage.obj;
+    int i = paramMessage.x;
+    int j = paramMessage.y;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView$NearbyTroopsMapViewObserver.b(i, j);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

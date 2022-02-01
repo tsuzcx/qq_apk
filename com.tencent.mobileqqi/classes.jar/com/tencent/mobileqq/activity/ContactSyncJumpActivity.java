@@ -18,11 +18,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import ceb;
 import cec;
 import ced;
 import cee;
 import cef;
-import ceg;
 import com.tencent.mobileqq.activity.voip.VoipDialData;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -63,13 +63,13 @@ public class ContactSyncJumpActivity
   private static final String jdField_g_of_type_JavaLangString = "ContactSync.JumpActivity";
   public int a;
   public Dialog a;
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new cef(this);
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new cec(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new cee(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ced(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new cee(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ceb(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ced(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cec(this);
   private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
   private ContactSyncManager jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ceg(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cef(this);
   private int b;
   private String h;
   private String i;
@@ -87,15 +87,15 @@ public class ContactSyncJumpActivity
   {
     Dialog localDialog = new Dialog(this, 2131624405);
     localDialog.setContentView(2130903563);
-    Object localObject2 = (ImageView)localDialog.findViewById(2131232928);
+    Object localObject2 = (ImageView)localDialog.findViewById(2131232927);
     if (this.k.equals("0")) {}
     for (Object localObject1 = FaceDrawable.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 11, this.i + this.j);; localObject1 = FaceDrawable.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.k))
     {
       ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-      Object localObject3 = (TextView)localDialog.findViewById(2131232929);
-      localObject1 = (TextView)localDialog.findViewById(2131232930);
-      TextView localTextView = (TextView)localDialog.findViewById(2131232926);
-      localObject2 = (TextView)localDialog.findViewById(2131232927);
+      Object localObject3 = (TextView)localDialog.findViewById(2131232928);
+      localObject1 = (TextView)localDialog.findViewById(2131232929);
+      TextView localTextView = (TextView)localDialog.findViewById(2131232925);
+      localObject2 = (TextView)localDialog.findViewById(2131232926);
       ((TextView)localObject3).setText(this.l);
       localTextView.setText(2131561757);
       localTextView.setOnClickListener(this);
@@ -120,10 +120,10 @@ public class ContactSyncJumpActivity
   {
     Dialog localDialog = new Dialog(this, 2131624405);
     localDialog.setContentView(2130903562);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131232924);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131232925);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131232926);
-    TextView localTextView4 = (TextView)localDialog.findViewById(2131232927);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131232923);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131232924);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131232925);
+    TextView localTextView4 = (TextView)localDialog.findViewById(2131232926);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramString);
     if (paramInt2 == 0) {
@@ -522,7 +522,7 @@ public class ContactSyncJumpActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131232926: 
+    case 2131232925: 
       do
       {
         return;

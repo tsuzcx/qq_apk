@@ -11,12 +11,29 @@ class MiniAppReportShareUtil$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.d("MiniAppReportShareUtil", 1, "report share success: " + paramBoolean + "  reportTime:" + this.val$reportTime + "  appid:" + this.val$appid + "  appType:" + this.val$appType + "  shareScene:" + this.val$mShareScene + "  shareType:" + 0 + "  destType:" + this.val$destType + "  destId:" + this.val$destId);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("report share success: ");
+    paramJSONObject.append(paramBoolean);
+    paramJSONObject.append("  reportTime:");
+    paramJSONObject.append(this.val$reportTime);
+    paramJSONObject.append("  appid:");
+    paramJSONObject.append(this.val$appid);
+    paramJSONObject.append("  appType:");
+    paramJSONObject.append(this.val$appType);
+    paramJSONObject.append("  shareScene:");
+    paramJSONObject.append(this.val$mShareScene);
+    paramJSONObject.append("  shareType:");
+    paramJSONObject.append(0);
+    paramJSONObject.append("  destType:");
+    paramJSONObject.append(this.val$destType);
+    paramJSONObject.append("  destId:");
+    paramJSONObject.append(this.val$destId);
+    QLog.d("MiniAppReportShareUtil", 1, paramJSONObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.MiniAppReportShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

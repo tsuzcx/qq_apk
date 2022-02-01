@@ -1,41 +1,190 @@
 package com.tencent.token;
 
-import java.net.Proxy.Type;
-import okhttp3.af;
-import okhttp3.ap;
+import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
 
-public final class hk
+public class hk
+  extends Drawable
+  implements Drawable.Callback
 {
-  public static String a(af paramaf)
-  {
-    String str1 = paramaf.h();
-    String str2 = paramaf.j();
-    paramaf = str1;
-    if (str2 != null) {
-      paramaf = str1 + '?' + str2;
-    }
-    return paramaf;
-  }
+  public Drawable a;
   
-  public static String a(ap paramap, Proxy.Type paramType)
+  public hk(Drawable paramDrawable)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramap.b());
-    localStringBuilder.append(' ');
-    if (b(paramap, paramType)) {
-      localStringBuilder.append(paramap.a());
+    Drawable localDrawable = this.a;
+    if (localDrawable != null) {
+      localDrawable.setCallback(null);
     }
-    for (;;)
-    {
-      localStringBuilder.append(" HTTP/1.1");
-      return localStringBuilder.toString();
-      localStringBuilder.append(a(paramap.a()));
+    this.a = paramDrawable;
+    if (paramDrawable != null) {
+      paramDrawable.setCallback(this);
     }
   }
   
-  private static boolean b(ap paramap, Proxy.Type paramType)
+  public void draw(Canvas paramCanvas)
   {
-    return (!paramap.g()) && (paramType == Proxy.Type.HTTP);
+    this.a.draw(paramCanvas);
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return this.a.getChangingConfigurations();
+  }
+  
+  public Drawable getCurrent()
+  {
+    return this.a.getCurrent();
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.a.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a.getIntrinsicWidth();
+  }
+  
+  public int getMinimumHeight()
+  {
+    return this.a.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    return this.a.getMinimumWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return this.a.getOpacity();
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    return this.a.getPadding(paramRect);
+  }
+  
+  public int[] getState()
+  {
+    return this.a.getState();
+  }
+  
+  public Region getTransparentRegion()
+  {
+    return this.a.getTransparentRegion();
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    invalidateSelf();
+  }
+  
+  public boolean isAutoMirrored()
+  {
+    return dy.a(this.a);
+  }
+  
+  public boolean isStateful()
+  {
+    return this.a.isStateful();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    this.a.jumpToCurrentState();
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.a.setBounds(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    return this.a.setLevel(paramInt);
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    scheduleSelf(paramRunnable, paramLong);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.a.setAlpha(paramInt);
+  }
+  
+  public void setAutoMirrored(boolean paramBoolean)
+  {
+    dy.a(this.a, paramBoolean);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    this.a.setChangingConfigurations(paramInt);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.a.setColorFilter(paramColorFilter);
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.a.setDither(paramBoolean);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    this.a.setFilterBitmap(paramBoolean);
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    dy.a(this.a, paramFloat1, paramFloat2);
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    dy.a(this.a, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    return this.a.setState(paramArrayOfInt);
+  }
+  
+  public void setTint(int paramInt)
+  {
+    dy.a(this.a, paramInt);
+  }
+  
+  public void setTintList(ColorStateList paramColorStateList)
+  {
+    dy.a(this.a, paramColorStateList);
+  }
+  
+  public void setTintMode(PorterDuff.Mode paramMode)
+  {
+    dy.a(this.a, paramMode);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return (super.setVisible(paramBoolean1, paramBoolean2)) || (this.a.setVisible(paramBoolean1, paramBoolean2));
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    unscheduleSelf(paramRunnable);
   }
 }
 

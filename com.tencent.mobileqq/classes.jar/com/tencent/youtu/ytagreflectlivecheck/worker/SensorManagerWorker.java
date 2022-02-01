@@ -3,7 +3,7 @@ package com.tencent.youtu.ytagreflectlivecheck.worker;
 import android.content.Context;
 import android.hardware.SensorManager;
 import android.util.Log;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 
 public class SensorManagerWorker
 {
@@ -22,7 +22,10 @@ public class SensorManagerWorker
   {
     if (this.mLightSensorListener != null)
     {
-      Log.d("MicroMsg.LightSensor", "Light lux: " + SensorManagerWorker.LightSensorListener.access$300(this.mLightSensorListener));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Light lux: ");
+      localStringBuilder.append(SensorManagerWorker.LightSensorListener.access$300(this.mLightSensorListener));
+      Log.d("MicroMsg.LightSensor", localStringBuilder.toString());
       return SensorManagerWorker.LightSensorListener.access$300(this.mLightSensorListener);
     }
     return -1.0F;
@@ -32,7 +35,7 @@ public class SensorManagerWorker
   {
     if (this.mHasStarted)
     {
-      YTLogger.i("MicroMsg.LightSensor", "[SensorManagerWorker.start] light sensor has started");
+      YTAGReflectLiveCheckJNIInterface.nativeLog("MicroMsg.LightSensor", "[SensorManagerWorker.start] light sensor has started");
       return 2;
     }
     this.mHasStarted = true;
@@ -45,22 +48,26 @@ public class SensorManagerWorker
       this.mOnGetValue = paramOnGetValue;
       return 0;
     }
-    YTLogger.i("MicroMsg.LightSensor", "[SensorManagerWorker.start] System do not have lightSensor");
+    YTAGReflectLiveCheckJNIInterface.nativeLog("MicroMsg.LightSensor", "[SensorManagerWorker.start] System do not have lightSensor");
     return 1;
   }
   
   public void stop()
   {
-    if ((!this.mHasStarted) || (this.mSensorManager == null)) {
-      return;
+    if (this.mHasStarted)
+    {
+      SensorManager localSensorManager = this.mSensorManager;
+      if (localSensorManager == null) {
+        return;
+      }
+      this.mHasStarted = false;
+      localSensorManager.unregisterListener(this.mLightSensorListener);
     }
-    this.mHasStarted = false;
-    this.mSensorManager.unregisterListener(this.mLightSensorListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker
  * JD-Core Version:    0.7.0.1
  */

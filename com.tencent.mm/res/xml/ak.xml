@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b27" android:key="contact_info_social_mobile" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b28" android:key="contact_info_social_qq" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b26" android:key="contact_info_social_linkedin" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b23" android:key="contact_info_social_facebook" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b25" android:key="contact_info_social_googlecontacts" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b2_" android:key="contact_info_social_weishop" android:layout="@layout/afi" />
+    <PreferenceSmallCategory android:key="join_rank_empty" />
+    <CheckBoxPreference android:defaultValue="true" android:key="join_rank" android:persistent="false" android:title="@string/cfp" />
+    <PreferenceSmallCategory android:key="join_rank_empty_bottom" />
+    <CheckBoxPreference android:defaultValue="true" android:key="notify_rank" android:layout="@layout/bdi" android:persistent="false" android:title="@string/cfr" />
+    <CheckBoxPreference android:defaultValue="true" android:key="notify_like" android:persistent="false" android:title="@string/cfq" />
+    <PreferenceSmallCategory android:key="notify_like_empty" />
+    <PreferenceSmallCategory android:key="black_contact_list_empty" />
+    <Preference android:key="black_contact_list" android:layout="@layout/bdi" android:title="@string/cer" />
 </PreferenceScreen>

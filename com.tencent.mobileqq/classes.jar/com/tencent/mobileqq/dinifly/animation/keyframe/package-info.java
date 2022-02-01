@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 abstract interface package-info {}
 
 

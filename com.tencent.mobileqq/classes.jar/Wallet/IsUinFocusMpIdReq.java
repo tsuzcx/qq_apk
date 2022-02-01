@@ -26,17 +26,19 @@ public final class IsUinFocusMpIdReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 0);
+    String str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 1);
+    str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.IsUinFocusMpIdReq
  * JD-Core Version:    0.7.0.1
  */

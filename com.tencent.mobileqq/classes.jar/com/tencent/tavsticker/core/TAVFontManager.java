@@ -8,9 +8,9 @@ import org.libpag.PAGFont;
 
 public class TAVFontManager
 {
-  public static final int CACHE_SIZE = 10;
-  private static final String TAG = TAVFontManager.class.getSimpleName();
-  private static volatile TAVFontManager sInstance = null;
+  private static final int CACHE_SIZE = 10;
+  private static final String TAG = "TAVFontManager";
+  private static volatile TAVFontManager sInstance;
   private LruCache<String, PAGFont> mapPagFont = null;
   
   private void checkPAGFontMap()
@@ -22,15 +22,16 @@ public class TAVFontManager
   
   public static TAVFontManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new TAVFontManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new TAVFontManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private boolean registerFontWithPath(String paramString)
@@ -54,27 +55,34 @@ public class TAVFontManager
   public PAGFont fontWithAssetPath(Context paramContext, String paramString)
   {
     checkPAGFontMap();
-    PAGFont localPAGFont = (PAGFont)this.mapPagFont.get("android_asset://" + paramString);
-    Object localObject;
-    if (localPAGFont != null) {
-      localObject = localPAGFont;
+    Object localObject1 = this.mapPagFont;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("android_asset://");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject2 = (PAGFont)((LruCache)localObject1).get(((StringBuilder)localObject2).toString());
+    if (localObject2 != null) {
+      return localObject2;
     }
-    do
+    localObject1 = localObject2;
+    if (paramContext != null)
     {
-      do
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramString))
       {
-        do
+        paramContext = PAGFont.RegisterFont(paramContext.getAssets(), paramString);
+        localObject1 = paramContext;
+        if (paramContext != null)
         {
-          return localObject;
-          localObject = localPAGFont;
-        } while (paramContext == null);
-        localObject = localPAGFont;
-      } while (TextUtils.isEmpty(paramString));
-      paramContext = PAGFont.RegisterFont(paramContext.getAssets(), paramString);
-      localObject = paramContext;
-    } while (paramContext == null);
-    this.mapPagFont.put("android_asset://" + paramString, paramContext);
-    return paramContext;
+          localObject1 = this.mapPagFont;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("android_asset://");
+          ((StringBuilder)localObject2).append(paramString);
+          ((LruCache)localObject1).put(((StringBuilder)localObject2).toString(), paramContext);
+          localObject1 = paramContext;
+        }
+      }
+    }
+    return localObject1;
   }
   
   public PAGFont fontWithPath(String paramString)
@@ -87,7 +95,7 @@ public class TAVFontManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVFontManager
  * JD-Core Version:    0.7.0.1
  */

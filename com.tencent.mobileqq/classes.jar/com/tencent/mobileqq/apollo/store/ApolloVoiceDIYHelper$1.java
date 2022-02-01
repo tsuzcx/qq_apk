@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.apollo.store;
 
-import alem;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
 
-public class ApolloVoiceDIYHelper$1
+class ApolloVoiceDIYHelper$1
   implements Runnable
 {
-  public ApolloVoiceDIYHelper$1(alem paramalem, ApolloTextureView paramApolloTextureView, double paramDouble) {}
+  ApolloVoiceDIYHelper$1(ApolloVoiceDIYHelper paramApolloVoiceDIYHelper, ApolloTextureView paramApolloTextureView, double paramDouble) {}
   
   public void run()
   {
-    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
+    ApolloRender localApolloRender = this.a.getRender();
     if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null)) {
-      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Double);
+      localApolloRender.getSavaWrapper().drawSpecialFrame(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1
  * JD-Core Version:    0.7.0.1
  */

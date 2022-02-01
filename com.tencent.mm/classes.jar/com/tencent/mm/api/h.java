@@ -1,16 +1,22 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.aj.a.c;
-import com.tencent.mm.kernel.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 
-public abstract interface h
-  extends a
+public final class h
 {
-  public abstract c aG(long paramLong);
+  public static final String AUTHORITY;
+  
+  static
+  {
+    AppMethodBeat.i(236247);
+    AUTHORITY = WeChatAuthorities.AUTHORITIES_STORAGE_PROVIDER_EMOTION();
+    AppMethodBeat.o(236247);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.h
  * JD-Core Version:    0.7.0.1
  */

@@ -37,14 +37,16 @@ public final class offlinepush$PbPushOffMsg
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 80, 88 }, new String[] { "from_uin", "to_uin", "msg_type", "from_nick", "msg_str", "group_info", "discuss_info", "c2c_tmp_msg_head", "svr_ip", "msg_flag", "dwViedoType" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, null, null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, PbPushOffMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 80, 88 }, new String[] { "from_uin", "to_uin", "msg_type", "from_nick", "msg_str", "group_info", "discuss_info", "c2c_tmp_msg_head", "svr_ip", "msg_flag", "dwViedoType" }, new Object[] { localLong, localLong, localInteger, localByteStringMicro1, localByteStringMicro2, null, null, null, localInteger, localInteger, localInteger }, PbPushOffMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.pb.offlinepush.PbPushOffMsg
  * JD-Core Version:    0.7.0.1
  */

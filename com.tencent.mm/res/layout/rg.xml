@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:paddingRight="@dimen/ft" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx">
-        <FrameLayout android:id="@id/b6c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g2" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="@dimen/dp" android:layout_alignParentEnd="true">
-            <ImageView android:id="@id/b6d" android:layout_width="@dimen/gb" android:layout_height="@dimen/gb" android:scaleType="centerCrop" />
-            <ImageView android:layout_gravity="center" android:id="@id/b6e" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerCrop" />
-        </FrameLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/b6c" android:layout_centerInParent="true">
-            <TextView android:textSize="17.0dip" android:textColor="@color/h9" android:ellipsize="end" android:id="@id/b6f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingMultiplier="1.17" />
-            <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/b3c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/fu">
-                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
-                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
-                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
-                <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="2.0dip" />
-                <TextView android:textSize="@dimen/na" android:textColor="@color/s4" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+<LinearLayout android:gravity="left" android:layout_gravity="left" style="@style/gq"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b3p" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="vertical" android:id="@id/b47" android:background="@drawable/lv" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="@dimen/ym" android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df">
+                <ImageView android:id="@id/d7a" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/default_avatar" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+                <TextView android:ellipsize="end" android:id="@id/e45" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="20.0dip" android:maxLines="1" app:layout_constraintBottom_toTopOf="@id/da8" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/d7a" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintVertical_chainStyle="hqs" app:layout_constraintWidth_default="lu2" style="@style/z8" />
+                <ImageView android:id="@id/da7" android:visibility="visible" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/bv" app:layout_constraintBottom_toBottomOf="@id/e45" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/e45" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/e45" />
+                <TextView android:ellipsize="end" android:id="@id/da8" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:maxLines="1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/d7a" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/e45" style="@style/i4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View android:background="@color/jn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="@dimen/bv" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b5z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv">
+                <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/eef" style="@style/i4" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
-    <View android:id="@id/b6g" android:background="@color/tb" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginStart="@dimen/ft" android:layout_marginEnd="104.0dip" />
+    </LinearLayout>
 </LinearLayout>

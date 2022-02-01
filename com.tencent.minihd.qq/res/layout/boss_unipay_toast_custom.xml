@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/boss_unipay_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" style="@style/boss_unipay_toast">
+        <View android:id="@id/boss_unipay_id_apToastImg" style="@style/boss_unipay_ic_right_toast" />
+        <TextView android:textColor="@color/boss_unipay_c_white" android:gravity="center" android:id="@id/boss_unipay_id_apToastText" android:layout_marginLeft="5.0dip" android:text="正在验证您的短信内容" style="@style/boss_unipay_tx" />
+    </LinearLayout>
+</RelativeLayout>

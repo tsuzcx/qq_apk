@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator android:textSize="16.0dip" android:id="@id/ixv" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/hd" app:indicatorAlpha="25" app:indicatorColor="@color/hd" app:indicatorMarginLeftRight="14.0dip" app:indicatorMarginTopBottom="0.0dip" app:indicatorRoundRectX="2.0dip" app:indicatorRoundRectY="2.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="6.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" app:underLine="true" app:underLineColor="@color/hd" app:underLineHeight="3.0dip" app:underLineMargin="6.0dip" app:underLineWidth="25.0dip" />
+    <View android:background="@color/e8" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

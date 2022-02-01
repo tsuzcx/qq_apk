@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class SpeechSynthesizer
 {
-  private static SpeechSynthesizer a = null;
+  private static SpeechSynthesizer a;
   private a b = new a();
   
   public static SpeechSynthesizer shareInstance()
@@ -61,7 +61,7 @@ public class SpeechSynthesizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.synthesizer.SpeechSynthesizer
  * JD-Core Version:    0.7.0.1
  */

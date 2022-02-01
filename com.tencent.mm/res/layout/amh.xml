@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/yn" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.scanner.ui.ProductScrollView android:id="@id/dt8" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_alignParentTop="true">
-        <LinearLayout android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/q1">
-            <com.tencent.mm.ui.base.MaxListView android:id="@android:id/list" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:divider="#00000000" android:dividerHeight="0.0px" />
-            <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:textSize="@dimen/ko" android:textColor="#ff406ca2" android:id="@id/dt9" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:paddingBottom="32.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.tencent.mm.plugin.scanner.ui.ProductScrollView>
-    <TextView android:id="@id/dt_" android:background="#ff7f7f7f" android:layout_width="fill_parent" android:layout_height="?e1" android:minHeight="?e1" android:layout_alignParentTop="true" />
+<RelativeLayout android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/gl6" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/iix" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView android:textColor="@color/BW_0_Alpha_0_3_night_mode" android:gravity="center" android:id="@id/hgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/c2" android:text="@string/eng" style="@style/zo" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:background="@color/a2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <ProgressBar android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ang" />
+    </LinearLayout>
+    <ListView android:id="@id/ews" android:background="@color/a2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/ka4" android:background="@color/a2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/e46" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/a_" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="start|center" android:id="@id/e48" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/df" android:text="@string/enh" android:layout_marginStart="@dimen/cp" />
+        <ListView android:id="@id/e47" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" />
+    </LinearLayout>
 </RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tab_min_w">50.0dip</dimen>
+    <dimen name="tab_min_h">30.0dip</dimen>
+    <dimen name="tab_left_padding_right">7.0dip</dimen>
+    <dimen name="tab_right_padding_left">7.0dip</dimen>
+    <dimen name="qzone_home_guest_cover_height">310.0dip</dimen>
+    <dimen name="qzone_home_guest_feeds_header_height">352.0dip</dimen>
+    <dimen name="qzone_home_guest_detail_marginTop">12.0dip</dimen>
+    <dimen name="qzone_home_guest_question_height">36.0dip</dimen>
+    <dimen name="qzone_home_guest_sendResult_marginTop">8.0dip</dimen>
+    <dimen name="friendfeeds_empty_icon_marginTop">20.0dip</dimen>
+    <dimen name="shuoshuo_recent_photo_grid_item_w">65.0dip</dimen>
+    <dimen name="shuoshuo_egg_photo_grid_item_w">65.0dip</dimen>
+    <dimen name="qzone_top_bar_title_max_width">160.0dip</dimen>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="60px"
+    version="1.1"
+    viewBox="0 0 60 60"
+    width="60px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>round_selector_checked_red</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="WeChat-Android-UI-Kit"
+        stroke="none"
+        stroke-width="1">
+        <g
+            fill="#F2483A"
+            fill-rule="nonzero"
+            id="Artboard-19"
+            transform="translate(-218.000000, -230.000000)">
+            <g
+                id="round_selector_checked_red"
+                transform="translate(224.000000, 236.000000)">
+                <g id="常用控件">
+                    <g>
+                        <g id="switches-4">
+                            <g id="switches-light">
+                                <g id="round_selector_checked_red">
+                                    <path
+                                        d="M0,24 C0,10.8 10.8,0 24,0 C37.2,0 48,10.8 48,24 C48,37.2 37.2,48 24,48 C10.8,48 0,37.2 0,24 Z M4,24 C4,35 13,44 24,44 C35,44 44,35 44,24 C44,13 35,4 24,4 C13,4 4,13 4,24 Z M10,24 C10,31.7 16.3,38 24,38 C31.7,38 38,31.7 38,24 C38,16.3 31.7,10 24,10 C16.3,10 10,16.3 10,24 Z"
+                                        id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

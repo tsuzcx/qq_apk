@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="60.0dip" android:paddingRight="60.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="20.0dip" android:textColor="@color/w_" android:gravity="center_horizontal" android:id="@id/fqp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="85.0dip" android:text="" />
-            <com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView android:id="@id/fqq" android:focusable="true" android:focusableInTouchMode="true" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" wallet:format="hk" wallet:EditTextBg="@drawable/b4u" wallet:PwdEncryptType="hx" style="@style/p1" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1e" />
-</LinearLayout>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/g4n" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="165.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/g4c" android:background="@drawable/ah8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/byi" />
+            <ImageView android:layout_gravity="center" android:id="@id/jfm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/g42" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="65.0dip">
+            <ProgressBar android:layout_gravity="center" android:id="@id/g4l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginBottom="5.0dip" style="@style/a85" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/al6" android:id="@id/g52" android:background="@drawable/byo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="300.0dip" android:minWidth="40.0dip" android:text="" android:maxLines="3" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

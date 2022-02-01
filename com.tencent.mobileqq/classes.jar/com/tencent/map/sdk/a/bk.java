@@ -17,29 +17,27 @@ public final class bk
     parama.put("B-Length", String.valueOf(paramInt1));
     if (paramInt2 == 1) {
       paramObject = "devlog";
+    } else if (paramBoolean) {
+      paramObject = "realtime_speed";
+    } else {
+      paramObject = "hllog";
     }
-    for (;;)
+    parama.put("HLReportCmd", paramObject);
+    paramArrayOfByte = be.a("https://up-hl.3g.qq.com/upreport", parama, paramArrayOfByte, 20000, dg.d());
+    paramArrayOfByte.o = false;
+    paramArrayOfByte.p = "event";
+    paramArrayOfByte = new bl(this, paramArrayOfByte, l);
+    try
     {
-      parama.put("HLReportCmd", paramObject);
-      paramArrayOfByte = be.a("https://up-hl.3g.qq.com/upreport", parama, paramArrayOfByte, 20000, dg.d());
-      paramArrayOfByte.o = false;
-      paramArrayOfByte.p = "event";
-      paramArrayOfByte = new bl(this, paramArrayOfByte, l);
-      try
-      {
-        as.a.a().a.execute(paramArrayOfByte);
-        return true;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        this.b.a(false, this.a);
-      }
-      if (paramBoolean) {
-        paramObject = "realtime_speed";
-      } else {
-        paramObject = "hllog";
-      }
+      as.a.a().a.execute(paramArrayOfByte);
+      return true;
     }
+    catch (Throwable paramArrayOfByte)
+    {
+      label130:
+      break label130;
+    }
+    this.b.a(false, this.a);
     return false;
   }
 }

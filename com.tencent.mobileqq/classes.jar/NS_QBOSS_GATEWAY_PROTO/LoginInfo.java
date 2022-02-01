@@ -8,10 +8,10 @@ public final class LoginInfo
   extends JceStruct
 {
   public String strAuthKey = "";
-  public long uAuthType;
-  public long uHostUin;
-  public long uPtId;
-  public long uUserIpNet;
+  public long uAuthType = 0L;
+  public long uHostUin = 0L;
+  public long uPtId = 0L;
+  public long uUserIpNet = 0L;
   
   public LoginInfo() {}
   
@@ -36,8 +36,9 @@ public final class LoginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uAuthType, 0);
-    if (this.strAuthKey != null) {
-      paramJceOutputStream.write(this.strAuthKey, 1);
+    String str = this.strAuthKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uUserIpNet, 2);
     paramJceOutputStream.write(this.uHostUin, 3);
@@ -46,7 +47,7 @@ public final class LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QBOSS_GATEWAY_PROTO.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

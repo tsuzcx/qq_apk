@@ -1,0 +1,27 @@
+package com.tencent.qqmail.model.mail;
+
+import com.tencent.qqmail.model.MailManagerDelegate;
+import com.tencent.qqmail.utilities.log.QMLog;
+import com.tencent.qqmail.utilities.qmnetwork.QMCallback.ISuccessCallback;
+import com.tencent.qqmail.utilities.qmnetwork.QMNetworkRequest;
+import com.tencent.qqmail.utilities.qmnetwork.QMNetworkResponse;
+
+class QMMailCGIManager$62
+  implements QMCallback.ISuccessCallback
+{
+  QMMailCGIManager$62(QMMailCGIManager paramQMMailCGIManager, MailManagerDelegate paramMailManagerDelegate) {}
+  
+  public void run(QMNetworkRequest paramQMNetworkRequest, QMNetworkResponse paramQMNetworkResponse)
+  {
+    QMLog.log(4, "mobileCancelBar", paramQMNetworkResponse.toString());
+    if (this.val$callback != null) {
+      this.val$callback.handleSuccess(paramQMNetworkRequest, paramQMNetworkResponse);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes11.jar
+ * Qualified Name:     com.tencent.qqmail.model.mail.QMMailCGIManager.62
+ * JD-Core Version:    0.7.0.1
+ */

@@ -70,8 +70,12 @@ public class SkinRegionComputeThread
   
   private Handler getMsgHandler()
   {
-    if ((this.mGlThreadMsg != null) && (this.mHandler != null)) {
-      return this.mHandler;
+    if (this.mGlThreadMsg != null)
+    {
+      Handler localHandler = this.mHandler;
+      if (localHandler != null) {
+        return localHandler;
+      }
     }
     return null;
   }
@@ -89,19 +93,22 @@ public class SkinRegionComputeThread
   
   private void releaseGLContext()
   {
-    if (this.mRenderBuffer != null)
+    Object localObject = this.mRenderBuffer;
+    if (localObject != null)
     {
-      this.mRenderBuffer.destroy();
+      ((RenderBuffer)localObject).destroy();
       this.mRenderBuffer = null;
     }
-    if (this.mEglSurfaceBase != null)
+    localObject = this.mEglSurfaceBase;
+    if (localObject != null)
     {
-      this.mEglSurfaceBase.releaseEglSurface();
+      ((EglSurfaceBase)localObject).releaseEglSurface();
       this.mEglSurfaceBase = null;
     }
-    if (this.mEglCore != null)
+    localObject = this.mEglCore;
+    if (localObject != null)
     {
-      this.mEglCore.release();
+      ((EglCore)localObject).release();
       this.mEglCore = null;
     }
     this.hasInitContext = false;
@@ -113,7 +120,6 @@ public class SkinRegionComputeThread
       return;
     }
     this.mRenderBuffer.bind();
-    byte[] arrayOfByte;
     synchronized (this.mTextureLock)
     {
       this.baseFilter.drawTexture(paramInt, null, null);
@@ -122,14 +128,24 @@ public class SkinRegionComputeThread
       this.mRenderBuffer.unbind();
       this.pixelBuffer.position(0);
       ??? = this.pixelBuffer.array();
-      arrayOfByte = new byte[this.mMaskWidth * this.mMaskHeight];
+      byte[] arrayOfByte = new byte[this.mMaskWidth * this.mMaskHeight];
       SkinRegionManager.newInstance().skinRegionCompute((byte[])???, this.inputTexWidth, this.inputTexHeight, arrayOfByte, paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]);
+      try
+      {
+        if ((this.maskData != null) && (arrayOfByte.length == this.maskData.length)) {
+          System.arraycopy(arrayOfByte, 0, this.maskData, 0, arrayOfByte.length);
+        }
+        this.mComputeStart = true;
+        return;
+      }
+      finally {}
     }
   }
   
   public boolean copyMaskData(byte[] paramArrayOfByte)
   {
-    if ((this.maskData.length > 0) && (paramArrayOfByte.length == this.maskData.length) && (this.mComputeStart)) {
+    byte[] arrayOfByte = this.maskData;
+    if ((arrayOfByte.length > 0) && (paramArrayOfByte.length == arrayOfByte.length) && (this.mComputeStart)) {
       try
       {
         System.arraycopy(this.maskData, 0, paramArrayOfByte, 0, this.maskData.length);
@@ -142,22 +158,25 @@ public class SkinRegionComputeThread
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return true;
-    case 1: 
-      initGlContext(paramMessage.arg1, paramMessage.arg2, (EGLContext)paramMessage.obj);
-      this.hasInitContext = true;
-      return true;
-    case 3: 
-      releaseGLContext();
-      releaseMsgThread();
-      this.mComputeStart = false;
-      this.hasInitContext = false;
+      if (i != 2)
+      {
+        if (i != 3) {
+          return true;
+        }
+        releaseGLContext();
+        releaseMsgThread();
+        this.mComputeStart = false;
+        this.hasInitContext = false;
+        return true;
+      }
+      skinRegionComputeAsnyc(paramMessage.arg1, (float[])paramMessage.obj);
       return true;
     }
-    skinRegionComputeAsnyc(paramMessage.arg1, (float[])paramMessage.obj);
+    initGlContext(paramMessage.arg1, paramMessage.arg2, (EGLContext)paramMessage.obj);
+    this.hasInitContext = true;
     return true;
   }
   
@@ -240,7 +259,7 @@ public class SkinRegionComputeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.renderer.SkinRegionComputeThread
  * JD-Core Version:    0.7.0.1
  */

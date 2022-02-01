@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import aujq;
-import awge;
-import awhp;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 
 public class MsgBackupMsgEntity
-  extends awge
+  extends Entity
 {
   public static final String TABLE_NAME = "msg";
   public int chatType;
   public String chatUin;
   public byte[] extensionData;
   public byte[] extraData;
-  @awhp
+  @notColumn
   public String extraDataStr;
   public long msgRandom;
   public long msgSeq;
@@ -25,36 +25,40 @@ public class MsgBackupMsgEntity
     return "msg";
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
-    aujq.a(this);
+    MsgBackupUtil.a(this);
     try
     {
-      if (this.extraData != null) {
-        this.extraDataStr = new String(this.extraData, "utf-8");
+      if (this.extraData == null) {
+        break label50;
       }
+      this.extraDataStr = new String(this.extraData, "utf-8");
       return;
     }
     catch (Exception localException)
     {
-      aujq.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
-      this.extraDataStr = "";
+      label33:
+      label50:
+      break label33;
     }
+    MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+    this.extraDataStr = "";
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    aujq.b(this);
+    MsgBackupUtil.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity
  * JD-Core Version:    0.7.0.1
  */

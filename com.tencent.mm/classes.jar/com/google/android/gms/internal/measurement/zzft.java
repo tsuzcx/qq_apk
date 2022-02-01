@@ -14,39 +14,39 @@ public final class zzft
   
   public zzft(zzfr paramzzfr, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(68960);
+    AppMethodBeat.i(1483);
     Preconditions.checkNotEmpty(paramString);
     this.zzny = paramString;
     this.zzako = true;
-    AppMethodBeat.o(68960);
+    AppMethodBeat.o(1483);
   }
   
   public final boolean get()
   {
-    AppMethodBeat.i(68961);
+    AppMethodBeat.i(1484);
     if (!this.zzakp)
     {
       this.zzakp = true;
       this.value = zzfr.zza(this.zzakq).getBoolean(this.zzny, this.zzako);
     }
     boolean bool = this.value;
-    AppMethodBeat.o(68961);
+    AppMethodBeat.o(1484);
     return bool;
   }
   
   public final void set(boolean paramBoolean)
   {
-    AppMethodBeat.i(68962);
+    AppMethodBeat.i(1485);
     SharedPreferences.Editor localEditor = zzfr.zza(this.zzakq).edit();
     localEditor.putBoolean(this.zzny, paramBoolean);
     localEditor.apply();
     this.value = paramBoolean;
-    AppMethodBeat.o(68962);
+    AppMethodBeat.o(1485);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/split_text" android:background="@color/color_hei_8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="14.0dip" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/color_hei" android:gravity="center_vertical" android:id="@id/item_text" android:background="@drawable/custom_dialog_list_item_bg_selector" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:focusable="true" android:clickable="true" android:layout_width="254.0dip" android:layout_height="54.0dip" android:layout_below="@id/split_text" />
+</RelativeLayout>

@@ -1,33 +1,42 @@
 package com.tencent.av.ui;
 
-import android.view.View;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import lyc;
+import android.content.Context;
+import android.widget.RelativeLayout;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.mobileqq.vas.vipav.api.VipFunCallUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class AVActivity$9
   implements Runnable
 {
-  AVActivity$9(AVActivity paramAVActivity, View paramView) {}
+  AVActivity$9(AVActivity paramAVActivity, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    VideoAppInterface localVideoAppInterface = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-    if (localVideoAppInterface == null) {}
-    do
+    if (this.this$0.I == null) {
+      return;
+    }
+    if ((this.this$0.I.k().i != 4) && (this.this$0.b == 1) && (!this.this$0.u) && (this.this$0.G != null) && (this.this$0.G.getParent() != null))
     {
-      do
-      {
+      if (this.this$0.L != null) {
+        this.this$0.L.T();
+      }
+      Object localObject = this.this$0;
+      if (VipFunCallUtil.a((Context)localObject, ((AVActivity)localObject).Y, this.a, this.b, this.this$0.am, this.c, false)) {
         return;
-      } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) || (this.this$0.isDestroyed()));
-      this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = lyc.a(localVideoAppInterface, this.a, 1);
-    } while ((this.a.getVisibility() != 8) || (this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(8);
+      }
+      localObject = this.this$0.i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("funcall --> play false :");
+      localStringBuilder.append(this.a);
+      QLog.e((String)localObject, 1, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.9
  * JD-Core Version:    0.7.0.1
  */

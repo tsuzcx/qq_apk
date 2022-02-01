@@ -16,7 +16,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"fill", "", "T", "", "value", "(Ljava/util/List;Ljava/lang/Object;)V", "shuffle", "random", "Ljava/util/Random;", "shuffled", "", "", "sort", "", "comparison", "Lkotlin/Function2;", "", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "sortWith", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt__MutableCollectionsJVMKt
+class CollectionsKt__MutableCollectionsJVMKt
   extends CollectionsKt__IteratorsKt
 {
   @SinceKotlin(version="1.2")
@@ -94,7 +94,7 @@ public class CollectionsKt__MutableCollectionsJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__MutableCollectionsJVMKt
  * JD-Core Version:    0.7.0.1
  */

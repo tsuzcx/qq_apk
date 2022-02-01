@@ -1,14 +1,14 @@
 package com.tencent.biz.videostory.db;
 
 import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class StoryFeedListEntity
-  extends awge
+  extends Entity
 {
-  public byte[] storyFeedList;
-  @awhs
+  public byte[] storyFeedList = null;
+  @unique
   public String uin;
   
   public void updateStoryFeedListEntity(String paramString, CLIENT.StGetStoryFeedListRsp paramStGetStoryFeedListRsp)
@@ -22,7 +22,7 @@ public class StoryFeedListEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.db.StoryFeedListEntity
  * JD-Core Version:    0.7.0.1
  */

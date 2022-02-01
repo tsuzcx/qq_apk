@@ -4,19 +4,38 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.youtu.sdkkitframework.common.YtLogger;
+import com.tencent.youtu.sdkkitframework.common.YtSDKStats;
+import com.tencent.youtu.sdkkitframework.net.YtSDKKitNetHelper;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class YtSDKKitFramework
 {
-  private static final String TAG = YtSDKKitFramework.class.getSimpleName();
+  private static final String TAG = "YtSDKKitFramework";
   private static YtSDKKitFramework instance;
-  private static final String version = "1.0.8.2h";
-  private Rect detectRect = new Rect(20, 270, 700, 1130);
+  private static final String version = "1.1.18.11";
+  private long defaultUpdateTimeoutMS = 8000L;
+  private Rect detectRect = new Rect(10, 110, 470, 530);
   private YtSDKKitFramework.IYtSDKKitFrameworkEventListener eventListener;
-  private Rect previewRect = new Rect(0, 0, 720, 1280);
+  private int networkRequestTimeoutMS = 60000;
+  private Rect previewRect = new Rect(0, 0, 480, 640);
+  
+  public static void clearInstance()
+  {
+    try
+    {
+      instance = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
   
   public static YtSDKKitFramework getInstance()
   {
@@ -35,33 +54,41 @@ public class YtSDKKitFramework
   {
     try
     {
-      YtFSMBaseState localYtFSMBaseState = (YtFSMBaseState)Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
-      YtLogger.e(TAG, "Parse state " + paramString + "failed:" + localThrowable1.getMessage());
-    }
-    catch (Throwable localThrowable1)
-    {
+      Object localObject = (YtFSMBaseState)Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
       try
       {
-        localYtFSMBaseState.loadStateWith(paramString, paramJSONObject);
-        return localYtFSMBaseState;
+        ((YtFSMBaseState)localObject).loadStateWith(paramString, paramJSONObject);
+        return localObject;
       }
       catch (Throwable localThrowable2)
       {
-        for (;;)
-        {
-          paramJSONObject = localThrowable1;
-          Object localObject = localThrowable2;
-        }
+        paramJSONObject = (JSONObject)localObject;
+        localObject = localThrowable2;
       }
-      localThrowable1 = localThrowable1;
+      localThrowable1.printStackTrace();
+    }
+    catch (Throwable localThrowable1)
+    {
       paramJSONObject = null;
     }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Parse state ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("failed:");
+    localStringBuilder.append(localThrowable1.getMessage());
+    YtLogger.e(str, localStringBuilder.toString());
     return paramJSONObject;
   }
   
   public int deInit()
   {
+    YtLogger.i(TAG, "sdkkit framework 1.1.18.11 deinit");
+    YtSDKKitNetHelper.clearInstance();
     YtFSM.getInstance().stop();
+    YtFSM.clearInstance();
+    YtSDKStats.getInstance().exitState();
+    YtSDKStats.clearInstance();
     return 0;
   }
   
@@ -85,7 +112,12 @@ public class YtSDKKitFramework
     return this.detectRect;
   }
   
-  public YtSDKKitFramework.YtSDKPlatformContex getPlatformContext()
+  public int getNetworkRequestTimeoutMS()
+  {
+    return this.networkRequestTimeoutMS;
+  }
+  
+  public YtSDKKitFramework.YtSDKPlatformContext getPlatformContext()
   {
     return YtFSM.getInstance().getContext();
   }
@@ -95,9 +127,10 @@ public class YtSDKKitFramework
     return this.previewRect;
   }
   
-  public int init(YtSDKKitFramework.YtSDKPlatformContex paramYtSDKPlatformContex, JSONObject paramJSONObject, YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, ArrayList<String> paramArrayList, YtSDKKitFramework.IYtSDKKitFrameworkEventListener paramIYtSDKKitFrameworkEventListener)
+  public int init(YtSDKKitFramework.YtSDKPlatformContext paramYtSDKPlatformContext, JSONObject paramJSONObject, YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, ArrayList<String> paramArrayList, YtSDKKitFramework.IYtSDKKitFrameworkEventListener paramIYtSDKKitFrameworkEventListener)
   {
-    if (paramYtSDKPlatformContex == null)
+    YtLogger.i(TAG, "sdkkit framework 1.1.18.11 init");
+    if (paramYtSDKPlatformContext == null)
     {
       YtLogger.e(TAG, "Context cannot be null");
       return -1;
@@ -114,14 +147,32 @@ public class YtSDKKitFramework
     }
     YtFSM.getInstance().stop();
     YtFSM.getInstance().setEventListener(paramIYtSDKKitFrameworkEventListener);
-    YtFSM.getInstance().setContext(paramYtSDKPlatformContex);
-    paramYtSDKPlatformContex = paramArrayList.iterator();
-    while (paramYtSDKPlatformContex.hasNext())
+    YtFSM.getInstance().setContext(paramYtSDKPlatformContext);
+    paramYtSDKPlatformContext = paramArrayList.iterator();
+    while (paramYtSDKPlatformContext.hasNext())
     {
-      paramIYtSDKKitFrameworkEventListener = parseStateFrom((String)paramYtSDKPlatformContex.next(), paramJSONObject);
+      paramIYtSDKKitFrameworkEventListener = parseStateFrom((String)paramYtSDKPlatformContext.next(), paramJSONObject);
       YtFSM.getInstance().registerState(paramIYtSDKKitFrameworkEventListener);
     }
-    YtFSM.getInstance().start((String)paramArrayList.get(0), paramYtSDKKitFrameworkWorkMode);
+    int i;
+    if (paramJSONObject.has("thread_priority")) {
+      try
+      {
+        i = paramJSONObject.getInt("thread_priority");
+      }
+      catch (JSONException paramYtSDKPlatformContext)
+      {
+        paramIYtSDKKitFrameworkEventListener = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("failed to get priority ");
+        localStringBuilder.append(paramYtSDKPlatformContext.getLocalizedMessage());
+        YtLogger.e(paramIYtSDKKitFrameworkEventListener, localStringBuilder.toString());
+      }
+    } else {
+      i = -8;
+    }
+    long l = paramJSONObject.optLong("frame_update_timeout_ms", this.defaultUpdateTimeoutMS);
+    YtFSM.getInstance().start((String)paramArrayList.get(0), paramYtSDKKitFrameworkWorkMode, i, l);
     return 0;
   }
   
@@ -135,25 +186,43 @@ public class YtSDKKitFramework
     this.detectRect = paramRect;
   }
   
+  public void setNetworkRequestTimeoutMS(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    this.networkRequestTimeoutMS = i;
+  }
+  
   public void setPreviewRect(Rect paramRect)
   {
     this.previewRect = paramRect;
   }
   
+  public void updateSDKSetting(JSONObject paramJSONObject)
+  {
+    YtFSM.getInstance().updateSDKSetting(paramJSONObject);
+  }
+  
   public int updateWithFrameData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    YtFSM.getInstance().update(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+    long l = System.currentTimeMillis();
+    if (l <= 946684800000L) {
+      return 3145731;
+    }
+    YtFSM.getInstance().update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, l);
     return 0;
   }
   
   public String version()
   {
-    return "1.0.8.2h";
+    return "1.1.18.11";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a4f" android:background="#99000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/b9t" android:background="@drawable/jjc" android:paddingLeft="12.0dip" android:paddingTop="23.0dip" android:paddingRight="12.0dip" android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="382.5dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="模式" />
+            <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@id/nio" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+            <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:text="段位" />
+            <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@id/nmp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+            <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:text="分路" />
+            <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@id/oaj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+        </LinearLayout>
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/b7p" android:background="@drawable/jj_" android:layout_width="137.5dip" android:layout_height="36.0dip" android:text="确定" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff7a7a7a" android:gravity="center" android:id="@id/ptr" android:background="@drawable/jj9" android:layout_width="137.5dip" android:layout_height="36.0dip" android:text="重置" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

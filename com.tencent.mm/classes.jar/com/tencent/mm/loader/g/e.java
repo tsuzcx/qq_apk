@@ -1,12 +1,33 @@
 package com.tencent.mm.loader.g;
 
-import a.l;
+import android.graphics.Bitmap;
 
-@l(eaO={1, 1, 13})
-public final class e {}
+public final class e<T>
+{
+  public e<?> nso;
+  public T value;
+  
+  public e() {}
+  
+  public e(T paramT)
+  {
+    this.value = paramT;
+  }
+  
+  public final boolean isValid()
+  {
+    if (this.value == null) {
+      return false;
+    }
+    if ((this.value instanceof Bitmap)) {
+      return !((Bitmap)this.value).isRecycled();
+    }
+    return true;
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.g.e
  * JD-Core Version:    0.7.0.1
  */

@@ -27,11 +27,16 @@ public class QQBeautyFilter
   
   private boolean beNeedShowBeauty()
   {
-    if (!SdkContext.getInstance().getDpcSwitcher().isBeautySwitchOpen()) {}
-    while ((this.isLevel0) || (QmcfManager.getInstance().isQmcfNoNeedBeauty()) || (getQQFilterRenderManager().getBusinessOperation().getAVFilterFilterType() == 3)) {
+    if (!SdkContext.getInstance().getDpcSwitcher().isBeautySwitchOpen()) {
       return false;
     }
-    return true;
+    if (this.isLevel0) {
+      return false;
+    }
+    if (QmcfManager.getInstance().isQmcfNoNeedBeauty()) {
+      return false;
+    }
+    return getQQFilterRenderManager().getBusinessOperation().getAVFilterFilterType() != 3;
   }
   
   private void initBeautyRender()
@@ -49,12 +54,8 @@ public class QQBeautyFilter
   
   private boolean needSkinColor()
   {
-    boolean bool = true;
     int i = getQQFilterRenderManager().getBusinessOperation().getAVFilterFilterType();
-    if ((i == 1) || (i == 2)) {
-      bool = false;
-    }
-    return bool;
+    return (i != 1) && (i != 2);
   }
   
   public boolean isFilterWork()
@@ -64,13 +65,14 @@ public class QQBeautyFilter
   
   public void onDrawFrame()
   {
-    if (this.mBeautyRender == null)
+    BeautyRender localBeautyRender = this.mBeautyRender;
+    if (localBeautyRender == null)
     {
       initBeautyRender();
       this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    if ((this.mBeautyRender != null) && (beNeedShowBeauty()))
+    if ((localBeautyRender != null) && (beNeedShowBeauty()))
     {
       boolean bool = needSkinColor();
       this.mBeautyRender.setNeedSkinColor(bool);
@@ -88,56 +90,74 @@ public class QQBeautyFilter
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
   {
-    if (((this.lastHeight != paramInt1) || (this.lastHeight != paramInt2)) && (this.mBeautyRender != null))
+    int i = this.lastHeight;
+    if ((i != paramInt1) || (i != paramInt2))
     {
-      this.mBeautyRender.destroy();
-      this.mBeautyRender = null;
+      BeautyRender localBeautyRender = this.mBeautyRender;
+      if (localBeautyRender != null)
+      {
+        localBeautyRender.destroy();
+        this.mBeautyRender = null;
+      }
     }
   }
   
   public void onSurfaceDestroy()
   {
-    if (this.mBeautyRender != null)
+    BeautyRender localBeautyRender = this.mBeautyRender;
+    if (localBeautyRender != null)
     {
-      this.mBeautyRender.destroy();
+      localBeautyRender.destroy();
       this.mBeautyRender = null;
     }
   }
   
   public void updateBeautyFilter(float paramFloat)
   {
-    if (paramFloat == 0.0F) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramFloat == 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.isLevel0 = bool;
+    float f = paramFloat / 100.0F;
+    Object localObject = this.mBeautyRender;
+    if (localObject != null)
     {
-      this.isLevel0 = bool;
-      float f = paramFloat / 100.0F;
-      if (this.mBeautyRender != null)
+      ((BeautyRender)localObject).setBeautyLevel(f * this.mediaCodecRate);
+      if (SLog.isEnable())
       {
-        this.mBeautyRender.setBeautyLevel(f * this.mediaCodecRate);
-        if (SLog.isEnable()) {
-          SLog.i("FilterBeauty", "setBeautyLevel " + paramFloat + " rate: " + this.mediaCodecRate);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setBeautyLevel ");
+        ((StringBuilder)localObject).append(paramFloat);
+        ((StringBuilder)localObject).append(" rate: ");
+        ((StringBuilder)localObject).append(this.mediaCodecRate);
+        SLog.i("FilterBeauty", ((StringBuilder)localObject).toString());
       }
-      return;
     }
   }
   
   public void updateBeautyFilterParam(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramFloat1 == 0.0F) && (paramFloat2 == 0.0F) && (paramFloat3 == 0.0F)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((paramFloat1 == 0.0F) && (paramFloat2 == 0.0F) && (paramFloat3 == 0.0F)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.isLevel0 = bool;
+    BeautyRender localBeautyRender = this.mBeautyRender;
+    if (localBeautyRender != null)
     {
-      this.isLevel0 = bool;
-      if (this.mBeautyRender != null) {
-        this.mBeautyRender.setBeautyLevel(this.mediaCodecRate * paramFloat1, this.mediaCodecRate * paramFloat2, this.mediaCodecRate * paramFloat3);
-      }
-      return;
+      float f = this.mediaCodecRate;
+      localBeautyRender.setBeautyLevel(paramFloat1 * f, paramFloat2 * f, paramFloat3 * f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQBeautyFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,162 +1,193 @@
 package com.tencent.mm.plugin.appbrand.jsapi.c;
 
-import android.annotation.TargetApi;
-import android.bluetooth.BluetoothAdapter;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.appbrand.e;
-import com.tencent.mm.plugin.appbrand.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vending.j.b;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import com.tencent.mm.plugin.appbrand.af.d;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
+import com.tencent.mm.plugin.appbrand.canvas.widget.a;
+import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.base.g;
+import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
+import java.nio.ByteBuffer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@TargetApi(18)
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<f>
 {
-  private static final int CTRL_INDEX = 221;
-  private static final String NAME = "startBeaconDiscovery";
-  private a.a.a hMp;
-  e.c hMu = null;
+  public static final int CTRL_INDEX = 373;
+  public static final String NAME = "canvasPutImageData";
   
-  private static UUID[] E(JSONObject paramJSONObject)
+  private static int[] p(ByteBuffer paramByteBuffer)
   {
+    AppMethodBeat.i(145529);
+    paramByteBuffer = d.s(paramByteBuffer);
+    int[] arrayOfInt = new int[paramByteBuffer.length / 4];
     int i = 0;
-    AppMethodBeat.i(94365);
-    Object localObject2 = null;
-    Object localObject3 = null;
-    if (paramJSONObject.has("uuids"))
+    int k;
+    for (int j = 0; i < arrayOfInt.length; j = k + 1)
     {
-      Object localObject1 = localObject3;
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("uuids"));
-        localObject1 = localObject3;
-        paramJSONObject = new UUID[localJSONArray.length()];
-        for (;;)
-        {
-          localObject1 = paramJSONObject;
-          localObject2 = paramJSONObject;
-          if (i >= localJSONArray.length()) {
-            break;
-          }
-          localObject1 = paramJSONObject;
-          localObject2 = localJSONArray.getString(i);
-          localObject1 = paramJSONObject;
-          ab.d("MicroMsg.JsApiStartBeaconDiscovery", "uuid %s", new Object[] { localObject2 });
-          localObject1 = paramJSONObject;
-          paramJSONObject[i] = UUID.fromString((String)localObject2);
-          i += 1;
-        }
-        AppMethodBeat.o(94365);
-      }
-      catch (JSONException paramJSONObject)
-      {
-        ab.e("MicroMsg.JsApiStartBeaconDiscovery", "get uuid error!");
-        localObject2 = localObject1;
-      }
+      k = j + 1;
+      j = paramByteBuffer[j];
+      int m = k + 1;
+      int n = paramByteBuffer[k];
+      k = m + 1;
+      m = paramByteBuffer[m];
+      arrayOfInt[i] = ((paramByteBuffer[k] & 0xFF) << 24 | m & 0xFF | (n & 0xFF) << 8 | (j & 0xFF) << 16);
+      i += 1;
     }
-    return localObject2;
+    AppMethodBeat.o(145529);
+    return arrayOfInt;
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(94364);
-    ab.i("MicroMsg.JsApiStartBeaconDiscovery", "startBeaconDiscovery data %s", new Object[] { paramJSONObject });
-    UUID[] arrayOfUUID = E(paramJSONObject);
-    if ((arrayOfUUID == null) || (arrayOfUUID.length <= 0))
+    AppMethodBeat.i(145528);
+    int n;
+    try
     {
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(11006));
-      paramc.h(paramInt, j("fail:invalid data", paramJSONObject));
-      AppMethodBeat.o(94364);
+      n = paramJSONObject.getInt("canvasId");
+      localObject1 = ((g)paramf.T(g.class)).c(paramf, paramJSONObject);
+      if (localObject1 == null)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.JsApiCanvasPutImageData", "invoke JsApi canvasPutImageData failed, component view is null.");
+        paramf.callback(paramInt, ZP("fail:page is null"));
+        AppMethodBeat.o(145528);
+        return;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.JsApiCanvasPutImageData", "get canvas id failed, %s", new Object[] { android.util.Log.getStackTraceString(paramJSONObject) });
+      paramf.callback(paramInt, ZP("fail:illegal canvasId"));
+      AppMethodBeat.o(145528);
       return;
     }
-    String str = paramc.getAppId();
-    Object localObject = a.Ca(paramc.getAppId());
-    paramJSONObject = (JSONObject)localObject;
-    if (localObject == null)
+    Object localObject1 = ((h)localObject1).ic(paramJSONObject.optBoolean("independent", false)).dU(n);
+    if (localObject1 == null)
     {
-      ab.i("MicroMsg.JsApiStartBeaconDiscovery", "beaconWorker init");
-      paramJSONObject = new a.a();
-      a.a(str, paramJSONObject);
-    }
-    if (this.hMp == null)
-    {
-      ab.i("MicroMsg.JsApiStartBeaconDiscovery", "onBeaconScanCallback init");
-      this.hMp = new c.1(this, paramc);
-    }
-    if (this.hMu == null)
-    {
-      ab.i("MicroMsg.JsApiStartBeaconDiscovery", "listener init");
-      this.hMu = new c.2(this, paramc);
-      e.a(paramc.getAppId(), this.hMu);
-    }
-    paramJSONObject.hMo = arrayOfUUID;
-    paramJSONObject.hMp = this.hMp;
-    ab.i("MicroMsg.BeaconManager", "BeaconWorker:%d start", new Object[] { Integer.valueOf(paramJSONObject.hashCode()) });
-    if (paramJSONObject.isStart())
-    {
-      ab.i("MicroMsg.BeaconManager", "BeaconWorker:%d, already start", new Object[] { Integer.valueOf(paramJSONObject.hashCode()) });
-      paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(11003), "fail:already start");
-      localObject = new HashMap();
-      ((Map)localObject).put("errCode", paramJSONObject.get(0));
-      if (((Integer)paramJSONObject.get(0)).intValue() != 0) {
-        break label535;
-      }
-    }
-    label535:
-    for (paramJSONObject = "ok";; paramJSONObject = (String)paramJSONObject.get(1))
-    {
-      paramc.h(paramInt, j(paramJSONObject, (Map)localObject));
-      AppMethodBeat.o(94364);
+      com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.JsApiCanvasPutImageData", "view(%s) is null.", new Object[] { Integer.valueOf(n) });
+      paramf.callback(paramInt, ZP("fail:view is null"));
+      AppMethodBeat.o(145528);
       return;
-      if (d.fw(18))
+    }
+    if (!(localObject1 instanceof CoverViewContainer))
+    {
+      com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.JsApiCanvasPutImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(n) });
+      paramf.callback(paramInt, ZP("fail:illegal view type"));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    localObject1 = (View)((CoverViewContainer)localObject1).aT(View.class);
+    if (!(localObject1 instanceof a))
+    {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.JsApiCanvasPutImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(n) });
+      paramf.callback(paramInt, ZP("fail:illegal view type"));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    float f = i.mn();
+    int j = paramJSONObject.optInt("x");
+    int m = paramJSONObject.optInt("y");
+    int i = paramJSONObject.optInt("width");
+    int k = paramJSONObject.optInt("height");
+    Math.round(j * f);
+    Math.round(m * f);
+    Math.round(i * f);
+    Math.round(f * k);
+    if ((i == 0) || (k == 0))
+    {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.JsApiCanvasPutImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(n) });
+      paramf.callback(paramInt, ZP("fail:width or height is 0"));
+      AppMethodBeat.o(145528);
+      return;
+    }
+    if (i < 0)
+    {
+      j += i;
+      i = -i;
+    }
+    for (;;)
+    {
+      if (k < 0)
       {
-        ab.e("MicroMsg.BeaconManager", "API version is below 18!");
-        paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(11000), "fail:not support");
-        break;
+        m += k;
+        k = -k;
+        try
+        {
+          Object localObject2;
+          JSONObject localJSONObject;
+          JSONArray localJSONArray;
+          for (;;)
+          {
+            paramJSONObject = paramJSONObject.get("data");
+            if (!(paramJSONObject instanceof ByteBuffer))
+            {
+              com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.JsApiCanvasPutImageData", "get data failed, value is not a ByteBuffer");
+              paramf.callback(paramInt, ZP("fail:illegal data"));
+              AppMethodBeat.o(145528);
+              return;
+            }
+            localObject2 = (ByteBuffer)paramJSONObject;
+            paramJSONObject = new JSONArray();
+            localObject2 = p((ByteBuffer)localObject2);
+            localJSONObject = new JSONObject();
+          }
+        }
+        catch (JSONException paramJSONObject)
+        {
+          try
+          {
+            localJSONArray = new JSONArray();
+            localJSONArray.put(j);
+            localJSONArray.put(m);
+            localJSONArray.put(i);
+            localJSONArray.put(k);
+            localJSONArray.put(Bitmap.createBitmap((int[])localObject2, i, k, Bitmap.Config.ARGB_8888));
+            localJSONObject.put("method", "__setPixels");
+            localJSONObject.put("data", localJSONArray);
+            paramJSONObject.put(localJSONObject);
+            localObject1 = (a)localObject1;
+            ((a)localObject1).b(paramJSONObject, new a.a()
+            {
+              public final void a(DrawCanvasArg paramAnonymousDrawCanvasArg)
+              {
+                AppMethodBeat.i(145527);
+                paramf.callback(paramInt, c.this.ZP("ok"));
+                AppMethodBeat.o(145527);
+              }
+            });
+            ((a)localObject1).cjV();
+            AppMethodBeat.o(145528);
+            return;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.JsApiCanvasPutImageData", "put json value error : %s", new Object[] { paramJSONObject });
+            paramf.callback(paramInt, ZP("fail:build action JSON error"));
+            AppMethodBeat.o(145528);
+            return;
+          }
+          paramJSONObject = paramJSONObject;
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.JsApiCanvasPutImageData", "get data failed, %s", new Object[] { android.util.Log.getStackTraceString(paramJSONObject) });
+          paramf.callback(paramInt, ZP("fail:missing data"));
+          AppMethodBeat.o(145528);
+          return;
+        }
       }
-      if (paramJSONObject.hMm == null)
-      {
-        ab.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
-        paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(11001), "fail:bluetooth service is unavailable");
-        break;
-      }
-      if (!paramJSONObject.hMm.isEnabled())
-      {
-        ab.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
-        paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(11001), "fail:bluetooth service is unavailable");
-        break;
-      }
-      if (paramJSONObject.hMm.isDiscovering())
-      {
-        ab.e("MicroMsg.BeaconManager", "bluetoothAdapter is Discovering!");
-        paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(11003), "fail:already start");
-        break;
-      }
-      paramJSONObject.hMn.clear();
-      boolean bool = paramJSONObject.hMm.startLeScan(paramJSONObject.hMs);
-      ab.i("MicroMsg.BeaconManager", "startLeScan:%b", new Object[] { Boolean.valueOf(bool) });
-      if (!bool)
-      {
-        paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(11005), "fail:system error");
-        break;
-      }
-      paramJSONObject.isStart = true;
-      paramJSONObject = com.tencent.mm.vending.j.c.C(Integer.valueOf(0), "");
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c.c
  * JD-Core Version:    0.7.0.1
  */

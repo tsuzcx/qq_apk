@@ -30,7 +30,7 @@ import java.util.Set;
 public class b
   implements f
 {
-  private static volatile b a = null;
+  private static volatile b a;
   private PackageManager b;
   private e c = new e();
   private long d = 0L;
@@ -54,23 +54,37 @@ public class b
   
   private long a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (paramString1 = this.e + File.separator + paramString1;; paramString1 = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + paramString2) {
-      return a.a(new File(paramString1));
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(this.e);
+      paramString2.append(File.separator);
+      paramString2.append(paramString1);
+      paramString1 = paramString2.toString();
     }
+    else
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      paramString1.append(File.separator);
+      paramString1.append(paramString2);
+      paramString1 = paramString1.toString();
+    }
+    return a.a(new File(paramString1));
   }
   
   public static b a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new b();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new b();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private d a(byte paramByte, AppExtInfoParam paramAppExtInfoParam, ApplicationInfo paramApplicationInfo, PackageInfo paramPackageInfo)
@@ -120,17 +134,17 @@ public class b
   
   private String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return paramString;
-        i = paramString.indexOf(".");
-      } while (i == -1);
-      i = paramString.indexOf(".", i + 1);
-    } while (i == -1);
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    int i = paramString.indexOf(".");
+    if (i == -1) {
+      return paramString;
+    }
+    i = paramString.indexOf(".", i + 1);
+    if (i == -1) {
+      return paramString;
+    }
     return paramString.substring(0, i);
   }
   
@@ -138,25 +152,28 @@ public class b
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = new HashMap();
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return localArrayList;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      String str = a((String)paramList.next());
-      if (((Map)localObject).containsKey(str)) {
-        ((Map)localObject).put(str, Integer.valueOf(((Integer)((Map)localObject).get(str)).intValue() + 1));
-      } else {
-        ((Map)localObject).put(str, Integer.valueOf(1));
+      if (paramList.size() == 0) {
+        return localArrayList;
       }
-    }
-    paramList = ((Map)localObject).entrySet().iterator();
-    while (paramList.hasNext())
-    {
-      localObject = (Map.Entry)paramList.next();
-      if (((Integer)((Map.Entry)localObject).getValue()).intValue() >= 7) {
-        localArrayList.add(((Map.Entry)localObject).getKey());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = a((String)paramList.next());
+        if (((Map)localObject).containsKey(str)) {
+          ((Map)localObject).put(str, Integer.valueOf(((Integer)((Map)localObject).get(str)).intValue() + 1));
+        } else {
+          ((Map)localObject).put(str, Integer.valueOf(1));
+        }
+      }
+      paramList = ((Map)localObject).entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (Map.Entry)paramList.next();
+        if (((Integer)((Map.Entry)localObject).getValue()).intValue() >= 7) {
+          localArrayList.add(((Map.Entry)localObject).getKey());
+        }
       }
     }
     return localArrayList;
@@ -186,72 +203,74 @@ public class b
     ArrayList localArrayList3 = new ArrayList();
     ArrayList localArrayList4 = new ArrayList();
     Object localObject1 = this.b.getInstalledPackages(0);
+    Object localObject5 = new ArrayList();
     Object localObject4 = new ArrayList();
-    Object localObject3 = new ArrayList();
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     HashMap localHashMap3 = new HashMap();
     System.currentTimeMillis();
     Iterator localIterator = ((List)localObject1).iterator();
     ApplicationInfo localApplicationInfo;
+    Object localObject3;
     while (localIterator.hasNext())
     {
       PackageInfo localPackageInfo = (PackageInfo)localIterator.next();
-      localObject1 = null;
+      localApplicationInfo = null;
       try
       {
-        Object localObject2 = this.b.getApplicationInfo(localPackageInfo.packageName, 0);
-        localObject1 = localObject2;
-        if (localObject1 != null)
+        localObject1 = this.b;
+        try
         {
-          localApplicationInfo = null;
-          localObject2 = localApplicationInfo;
-          if (paramAppDataReportConfig != null)
-          {
-            localObject2 = localApplicationInfo;
-            if (paramAppDataReportConfig.mapSpecialPkgs != null) {
-              localObject2 = (AppExtInfoParam)paramAppDataReportConfig.mapSpecialPkgs.get(localPackageInfo.packageName);
-            }
-          }
-          if (b(((ApplicationInfo)localObject1).flags))
-          {
-            localArrayList4.add(a((byte)3, (AppExtInfoParam)localObject2, (ApplicationInfo)localObject1, localPackageInfo));
-            ((List)localObject4).add(localPackageInfo.packageName);
-          }
+          localObject1 = ((PackageManager)localObject1).getApplicationInfo(localPackageInfo.packageName, 0);
         }
+        catch (PackageManager.NameNotFoundException localNameNotFoundException1) {}
+        localNameNotFoundException2.printStackTrace();
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException)
-      {
+      catch (PackageManager.NameNotFoundException localNameNotFoundException2) {}
+      localObject2 = null;
+      if (localObject2 != null) {
         for (;;)
         {
-          localNameNotFoundException.printStackTrace();
-        }
-        if (c(((ApplicationInfo)localObject1).flags))
-        {
-          ((List)localObject3).add(localPackageInfo.packageName);
-          localHashMap1.put(localPackageInfo.packageName, localObject1);
-          localHashMap2.put(localPackageInfo.packageName, localNameNotFoundException);
-          localHashMap3.put(localPackageInfo.packageName, localPackageInfo);
-        }
-        else
-        {
-          localArrayList2.add(a((byte)1, localNameNotFoundException, (ApplicationInfo)localObject1, localPackageInfo));
+          localObject3 = localApplicationInfo;
+          if (paramAppDataReportConfig != null)
+          {
+            localObject3 = localApplicationInfo;
+            if (paramAppDataReportConfig.mapSpecialPkgs != null) {
+              localObject3 = (AppExtInfoParam)paramAppDataReportConfig.mapSpecialPkgs.get(localPackageInfo.packageName);
+            }
+          }
+          if (b(((ApplicationInfo)localObject2).flags))
+          {
+            localArrayList4.add(a((byte)3, (AppExtInfoParam)localObject3, (ApplicationInfo)localObject2, localPackageInfo));
+            ((List)localObject5).add(localPackageInfo.packageName);
+          }
+          else if (c(((ApplicationInfo)localObject2).flags))
+          {
+            ((List)localObject4).add(localPackageInfo.packageName);
+            localHashMap1.put(localPackageInfo.packageName, localObject2);
+            localHashMap2.put(localPackageInfo.packageName, localObject3);
+            localHashMap3.put(localPackageInfo.packageName, localPackageInfo);
+          }
+          else
+          {
+            localArrayList2.add(a((byte)1, (AppExtInfoParam)localObject3, (ApplicationInfo)localObject2, localPackageInfo));
+          }
         }
       }
     }
     System.currentTimeMillis();
-    paramAppDataReportConfig = a((List)localObject4);
-    localObject1 = ((List)localObject3).iterator();
-    while (((Iterator)localObject1).hasNext())
+    paramAppDataReportConfig = a((List)localObject5);
+    Object localObject2 = ((List)localObject4).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      String str = (String)((Iterator)localObject1).next();
-      localApplicationInfo = (ApplicationInfo)localHashMap1.get(str);
-      localObject3 = (AppExtInfoParam)localHashMap2.get(str);
-      localObject4 = (PackageInfo)localHashMap3.get(str);
-      if (paramAppDataReportConfig.contains(a(str))) {
-        localArrayList3.add(a((byte)2, (AppExtInfoParam)localObject3, localApplicationInfo, (PackageInfo)localObject4));
+      localObject3 = (String)((Iterator)localObject2).next();
+      localApplicationInfo = (ApplicationInfo)localHashMap1.get(localObject3);
+      localObject4 = (AppExtInfoParam)localHashMap2.get(localObject3);
+      localObject5 = (PackageInfo)localHashMap3.get(localObject3);
+      if (paramAppDataReportConfig.contains(a((String)localObject3))) {
+        localArrayList3.add(a((byte)2, (AppExtInfoParam)localObject4, localApplicationInfo, (PackageInfo)localObject5));
       } else {
-        localArrayList2.add(a((byte)1, (AppExtInfoParam)localObject3, localApplicationInfo, (PackageInfo)localObject4));
+        localArrayList2.add(a((byte)1, (AppExtInfoParam)localObject4, localApplicationInfo, (PackageInfo)localObject5));
       }
     }
     System.currentTimeMillis();
@@ -259,18 +278,18 @@ public class b
     localArrayList1.addAll(localArrayList3);
     localArrayList1.addAll(localArrayList4);
     paramAppDataReportConfig = new StringBuilder();
-    localObject1 = localArrayList1.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      paramAppDataReportConfig.append(((d)((Iterator)localObject1).next()).toString());
+    localObject2 = localArrayList1.iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      paramAppDataReportConfig.append(((d)((Iterator)localObject2).next()).toString());
     }
     System.currentTimeMillis();
-    localObject1 = new SDKDataReportRequest();
-    ((SDKDataReportRequest)localObject1).appData = paramAppDataReportConfig.toString();
-    ((SDKDataReportRequest)localObject1).timeCost = (System.currentTimeMillis() - l);
-    ((SDKDataReportRequest)localObject1).uin = GlobalUtil.getUin();
-    ((SDKDataReportRequest)localObject1).qimei = GlobalUtil.getInstance().getQimei();
-    ((SDKDataReportRequest)localObject1).qadid = GlobalUtil.getInstance().getQadid();
-    this.g = this.c.a((SDKDataReportRequest)localObject1);
+    localObject2 = new SDKDataReportRequest();
+    ((SDKDataReportRequest)localObject2).appData = paramAppDataReportConfig.toString();
+    ((SDKDataReportRequest)localObject2).timeCost = (System.currentTimeMillis() - l);
+    ((SDKDataReportRequest)localObject2).uin = GlobalUtil.getUin();
+    ((SDKDataReportRequest)localObject2).qimei = GlobalUtil.getInstance().getQimei();
+    ((SDKDataReportRequest)localObject2).qadid = GlobalUtil.getInstance().getQadid();
+    this.g = this.c.a((SDKDataReportRequest)localObject2);
     System.currentTimeMillis();
   }
   
@@ -295,61 +314,73 @@ public class b
   
   private int d(int paramInt)
   {
-    int j = 0;
     if (!s.a()) {
-      j = -1;
+      return -1;
     }
-    for (;;)
+    if (paramInt == 0) {
+      return -2;
+    }
+    String str = GlobalUtil.getCurrentDay();
+    int i;
+    if (!str.equals(Settings.getInstance().getString("analysis_last_ana_day")))
     {
-      return j;
-      if (paramInt == 0) {
-        return -2;
-      }
-      String str = GlobalUtil.getCurrentDay();
-      if (!str.equals(Settings.getInstance().getString("analysis_last_ana_day")))
-      {
-        Settings.getInstance().setString("analysis_last_ana_day", str);
-        Settings.getInstance().setInt("analysis_succ_times", 0);
-      }
-      for (int i = 0; i >= paramInt; i = Settings.getInstance().getInt("analysis_succ_times")) {
-        return -3;
-      }
+      Settings.getInstance().setString("analysis_last_ana_day", str);
+      Settings.getInstance().setInt("analysis_succ_times", 0);
+      i = 0;
     }
+    else
+    {
+      i = Settings.getInstance().getInt("analysis_succ_times");
+    }
+    if (i >= paramInt) {
+      return -3;
+    }
+    return 0;
   }
   
   public void a(int paramInt)
   {
-    ab.c("InfoAnalyzer_", "requestFailed errorCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestFailed errorCode=");
+    localStringBuilder.append(paramInt);
+    ab.c("InfoAnalyzer_", localStringBuilder.toString());
     this.g = false;
   }
   
   public void a(AppDataReportConfig paramAppDataReportConfig)
   {
-    if (!o.a(GlobalUtil.getInstance().getContext())) {
-      ab.c("InfoAnalyzer_", "[begin] no available network!");
-    }
-    int i;
-    do
+    if (!o.a(GlobalUtil.getInstance().getContext()))
     {
+      ab.c("InfoAnalyzer_", "[begin] no available network!");
       return;
-      long l = System.currentTimeMillis();
-      if (l - this.d < 60000L)
-      {
-        ab.c("InfoAnalyzer_", "[begin] < 60 * 1000");
-        return;
-      }
-      this.d = l;
-      if (this.g)
-      {
-        ab.c("InfoAnalyzer_", "[begin] analyzing ");
-        return;
-      }
-      i = d(paramAppDataReportConfig.frequency);
-      ab.c("InfoAnalyzer_", "[begin] ret=" + i + ",cfg.fre=" + paramAppDataReportConfig.frequency + ",today succeed.times=" + Settings.getInstance().getInt("analysis_succ_times"));
-    } while (i != 0);
-    paramAppDataReportConfig = new Thread(new c(this, paramAppDataReportConfig), l.c.toString());
-    paramAppDataReportConfig.setPriority(1);
-    paramAppDataReportConfig.start();
+    }
+    long l = System.currentTimeMillis();
+    if (l - this.d < 60000L)
+    {
+      ab.c("InfoAnalyzer_", "[begin] < 60 * 1000");
+      return;
+    }
+    this.d = l;
+    if (this.g)
+    {
+      ab.c("InfoAnalyzer_", "[begin] analyzing ");
+      return;
+    }
+    int i = d(paramAppDataReportConfig.frequency);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[begin] ret=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(",cfg.fre=");
+    localStringBuilder.append(paramAppDataReportConfig.frequency);
+    localStringBuilder.append(",today succeed.times=");
+    localStringBuilder.append(Settings.getInstance().getInt("analysis_succ_times"));
+    ab.c("InfoAnalyzer_", localStringBuilder.toString());
+    if (i == 0)
+    {
+      paramAppDataReportConfig = new Thread(new c(this, paramAppDataReportConfig), l.c.toString());
+      paramAppDataReportConfig.setPriority(1);
+      paramAppDataReportConfig.start();
+    }
   }
   
   public void b()
@@ -361,7 +392,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.a.b
  * JD-Core Version:    0.7.0.1
  */

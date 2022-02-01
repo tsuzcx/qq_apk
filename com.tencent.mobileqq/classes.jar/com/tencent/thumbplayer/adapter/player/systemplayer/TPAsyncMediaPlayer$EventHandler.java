@@ -19,9 +19,18 @@ class TPAsyncMediaPlayer$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    TPLogUtil.i("TPThumbPlayer[TPAsyncMediaPlayer.java]", "EventHandler msg msg.what: " + paramMessage.what + ", value: " + paramMessage.what + ", arg1: " + paramMessage.arg1 + ", arg2: " + paramMessage.arg2);
-    TPAsyncMediaPlayer localTPAsyncMediaPlayer = (TPAsyncMediaPlayer)this.mWeakRef.get();
-    if (localTPAsyncMediaPlayer == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EventHandler msg msg.what: ");
+    ((StringBuilder)localObject).append(paramMessage.what);
+    ((StringBuilder)localObject).append(", value: ");
+    ((StringBuilder)localObject).append(paramMessage.what);
+    ((StringBuilder)localObject).append(", arg1: ");
+    ((StringBuilder)localObject).append(paramMessage.arg1);
+    ((StringBuilder)localObject).append(", arg2: ");
+    ((StringBuilder)localObject).append(paramMessage.arg2);
+    TPLogUtil.i("TPThumbPlayer[TPAsyncMediaPlayer.java]", ((StringBuilder)localObject).toString());
+    localObject = (TPAsyncMediaPlayer)this.mWeakRef.get();
+    if (localObject == null)
     {
       TPLogUtil.e("TPThumbPlayer[TPAsyncMediaPlayer.java]", "mWeakRef is null");
       return;
@@ -31,37 +40,37 @@ class TPAsyncMediaPlayer$EventHandler
     default: 
       TPLogUtil.i("TPThumbPlayer[TPAsyncMediaPlayer.java]", "eventHandler unknow msg");
       return;
-    case 1: 
-      localTPAsyncMediaPlayer.handleSetSurface(paramMessage);
-      return;
-    case 2: 
-      localTPAsyncMediaPlayer.handleStart();
-      return;
-    case 3: 
-      localTPAsyncMediaPlayer.handlePause();
-      return;
-    case 4: 
-      localTPAsyncMediaPlayer.handleSeekTo(paramMessage);
-      return;
-    case 5: 
-      localTPAsyncMediaPlayer.handleSeekToByMode(paramMessage);
-      return;
-    case 6: 
-      localTPAsyncMediaPlayer.handleStop();
-      return;
-    case 7: 
-      localTPAsyncMediaPlayer.handleReset();
+    case 9: 
+      ((TPAsyncMediaPlayer)localObject).handleSetPlaybackParams(paramMessage);
       return;
     case 8: 
-      localTPAsyncMediaPlayer.handleRelease();
+      ((TPAsyncMediaPlayer)localObject).handleRelease();
+      return;
+    case 7: 
+      ((TPAsyncMediaPlayer)localObject).handleReset();
+      return;
+    case 6: 
+      ((TPAsyncMediaPlayer)localObject).handleStop();
+      return;
+    case 5: 
+      ((TPAsyncMediaPlayer)localObject).handleSeekToByMode(paramMessage);
+      return;
+    case 4: 
+      ((TPAsyncMediaPlayer)localObject).handleSeekTo(paramMessage);
+      return;
+    case 3: 
+      ((TPAsyncMediaPlayer)localObject).handlePause();
+      return;
+    case 2: 
+      ((TPAsyncMediaPlayer)localObject).handleStart();
       return;
     }
-    localTPAsyncMediaPlayer.handleSetPlaybackParams(paramMessage);
+    ((TPAsyncMediaPlayer)localObject).handleSetSurface(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPAsyncMediaPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

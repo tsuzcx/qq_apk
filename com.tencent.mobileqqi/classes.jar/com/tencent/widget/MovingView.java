@@ -14,7 +14,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
-import hwm;
+import hwl;
 import java.util.Random;
 
 public class MovingView
@@ -65,21 +65,21 @@ public class MovingView
   public MovingView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new hwm(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new hwl(this, Looper.getMainLooper());
     f();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new hwm(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new hwl(this, Looper.getMainLooper());
     f();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler = new hwm(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new hwl(this, Looper.getMainLooper());
     f();
   }
   

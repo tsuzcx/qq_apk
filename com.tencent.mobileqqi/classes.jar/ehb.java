@@ -1,80 +1,101 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.fling.TopContentLayout;
+import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
 
 public class ehb
-  extends AsyncTask
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private static final int jdField_a_of_type_Int = 50;
+  private float jdField_a_of_type_Float;
   
-  public ehb(View paramView)
+  public ehb(TopContentLayout paramTopContentLayout, Context paramContext)
   {
-    if (paramView != null)
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    int i;
+    int j;
+    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
     {
-      Context localContext = paramView.getContext();
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-      paramView.setDrawingCacheEnabled(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
-      ScreenCapture.setSnapFile(localContext, false);
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
+      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      if (paramFloat1 <= 0.0F) {
+        break label96;
+      }
+      i -= j;
+    }
+    for (;;)
+    {
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label96:
+      i = -j;
     }
   }
   
-  protected Boolean a(String... paramVarArgs)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Boolean localBoolean = Boolean.FALSE;
-    if (isCancelled()) {}
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return localBoolean;
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramVarArgs = new File(paramVarArgs[0]);
-    File localFile = paramVarArgs.getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    try
+    float f1;
+    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
     {
-      paramVarArgs = new FileOutputStream(paramVarArgs);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
-      paramVarArgs.flush();
-      paramVarArgs.close();
-      paramVarArgs = Boolean.TRUE;
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
-    return localBoolean;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localView != null)
+      f1 = Math.abs(paramFloat2 / paramFloat1);
+      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
+      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
       {
-        if (paramBoolean.booleanValue()) {
-          ScreenCapture.setSnapFile(localView.getContext(), true);
+        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
+        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
+          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localView.setDrawingCacheEnabled(false);
-        localView.destroyDrawingCache();
+        return true;
+      }
+      f1 = paramFloat1;
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
+    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+    if ((paramFloat1 < 0.0F) && (j < i)) {
+      if (Math.abs(paramFloat1) > i - j) {
+        paramFloat1 = i - j;
+      }
+    }
+    for (;;)
+    {
+      f1 = paramFloat1;
+      if (Math.abs(paramFloat1) <= 0.0F) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
+      f1 = paramFloat1;
+      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
+        break;
+      }
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
+      f1 = paramFloat1;
+      break;
+      paramFloat1 = -paramFloat1;
+      continue;
+      if ((paramFloat1 > 0.0F) && (j > 0))
+      {
+        if (Math.abs(paramFloat1) > j) {
+          paramFloat1 = -j;
+        } else {
+          paramFloat1 = -paramFloat1;
+        }
+      }
+      else {
+        paramFloat1 = 0.0F;
       }
     }
   }
-  
-  protected void onCancelled() {}
 }
 
 

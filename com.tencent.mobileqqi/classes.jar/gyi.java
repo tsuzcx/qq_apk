@@ -1,50 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
 import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
 import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import java.util.Observable;
-import java.util.Observer;
 
-public class gyi
-  implements Observer
+class gyi
+  implements Runnable
 {
-  public gyi(AvatarWallAdapter paramAvatarWallAdapter) {}
+  gyi(gyh paramgyh, Object paramObject) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void run()
   {
-    if (paramObject == null) {}
-    label4:
+    AvatarWallAdapter.m = 0;
+    this.jdField_a_of_type_Gyh.a.n = 0;
+    int i = this.jdField_a_of_type_Gyh.a.b - this.jdField_a_of_type_Gyh.a.j;
+    if (i >= 8) {}
+    Object localObject;
     do
     {
-      int i;
       do
       {
         do
         {
-          break label4;
-          do
-          {
-            return;
-          } while (!(paramObject instanceof TroopUploadingThread.UploadState));
-          i = this.a.b - this.a.j;
-        } while (i >= 8);
-        paramObservable = (TroopUploadingThread.UploadState)paramObject;
-        if (paramObservable.a == 0)
-        {
-          this.a.a(paramObservable.b, i);
           return;
-        }
-        this.a.a.post(new gyj(this, paramObject));
-      } while ((paramObservable.a != 1) || (paramObservable.c < 0));
-      paramObject = (AvatarWallAdapter.AvatarInfo)this.a.getItem(i);
-    } while ((paramObject == null) || (paramObject.a == null));
-    paramObject = paramObject.a;
-    String str = AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.g, 1)));
-    this.a.a(paramObject, str);
-    paramObservable = AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.g, 1)));
-    this.a.a(paramObject, paramObservable);
+          localObject = (TroopUploadingThread.UploadState)this.jdField_a_of_type_JavaLangObject;
+          if (((TroopUploadingThread.UploadState)localObject).a != 1) {
+            break;
+          }
+          this.jdField_a_of_type_Gyh.a.a(i, ((TroopUploadingThread.UploadState)localObject).b, ((TroopUploadingThread.UploadState)localObject).c);
+        } while (this.jdField_a_of_type_Gyh.a.a(this.jdField_a_of_type_Gyh.a.g));
+        this.jdField_a_of_type_Gyh.a.d = false;
+        this.jdField_a_of_type_Gyh.a.b();
+        return;
+      } while (((TroopUploadingThread.UploadState)localObject).a != 2);
+      localObject = this.jdField_a_of_type_Gyh.a.a(((TroopUploadingThread.UploadState)localObject).b);
+    } while (localObject == null);
+    this.jdField_a_of_type_Gyh.a.a((String)localObject, i);
   }
 }
 

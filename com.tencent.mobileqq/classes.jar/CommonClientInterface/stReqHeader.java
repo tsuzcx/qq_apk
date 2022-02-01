@@ -40,7 +40,7 @@ public final class stReqHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     CommonClientInterface.stReqHeader
  * JD-Core Version:    0.7.0.1
  */

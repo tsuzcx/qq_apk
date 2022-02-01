@@ -10,13 +10,13 @@ class VideoCoverFragment$4
   
   public void run()
   {
-    VideoCoverFragment.a(this.this$0).setVisibility(4);
-    VideoCoverFragment.a(this.this$0).setVisibility(4);
+    VideoCoverFragment.h(this.this$0).setVisibility(4);
+    VideoCoverFragment.b(this.this$0).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.4
  * JD-Core Version:    0.7.0.1
  */

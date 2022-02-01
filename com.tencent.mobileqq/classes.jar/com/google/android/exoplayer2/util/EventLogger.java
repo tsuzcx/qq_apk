@@ -69,13 +69,15 @@ public class EventLogger
     if (paramInt1 < 2) {
       return "N/A";
     }
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      return "?";
-    case 16: 
-      return "YES";
-    case 8: 
+      if (paramInt2 != 8)
+      {
+        if (paramInt2 != 16) {
+          return "?";
+        }
+        return "YES";
+      }
       return "YES_NOT_SEAMLESS";
     }
     return "NO";
@@ -83,35 +85,47 @@ public class EventLogger
   
   private static String getDiscontinuityReasonString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "?";
-    case 0: 
-      return "PERIOD_TRANSITION";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return "?";
+            }
+            return "INTERNAL";
+          }
+          return "AD_INSERTION";
+        }
+        return "SEEK_ADJUSTMENT";
+      }
       return "SEEK";
-    case 2: 
-      return "SEEK_ADJUSTMENT";
-    case 3: 
-      return "AD_INSERTION";
     }
-    return "INTERNAL";
+    return "PERIOD_TRANSITION";
   }
   
   private static String getFormatSupportString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "?";
-    case 4: 
-      return "YES";
-    case 3: 
-      return "NO_EXCEEDS_CAPABILITIES";
-    case 2: 
-      return "NO_UNSUPPORTED_DRM";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return "?";
+            }
+            return "YES";
+          }
+          return "NO_EXCEEDS_CAPABILITIES";
+        }
+        return "NO_UNSUPPORTED_DRM";
+      }
       return "NO_UNSUPPORTED_TYPE";
     }
     return "NO";
@@ -119,16 +133,18 @@ public class EventLogger
   
   private static String getRepeatModeString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "?";
-    case 0: 
-      return "OFF";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return "?";
+        }
+        return "ALL";
+      }
       return "ONE";
     }
-    return "ALL";
+    return "OFF";
   }
   
   private String getSessionTimeString()
@@ -138,18 +154,22 @@ public class EventLogger
   
   private static String getStateString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "?";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return "?";
+          }
+          return "E";
+        }
+        return "R";
+      }
       return "B";
-    case 4: 
-      return "E";
-    case 1: 
-      return "I";
     }
-    return "R";
+    return "I";
   }
   
   private static String getTimeString(long paramLong)
@@ -162,24 +182,29 @@ public class EventLogger
   
   private static String getTimelineChangeReasonString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "?";
-    case 0: 
-      return "PREPARED";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return "?";
+        }
+        return "DYNAMIC";
+      }
       return "RESET";
     }
-    return "DYNAMIC";
+    return "PREPARED";
   }
   
   private static String getTrackStatusString(TrackSelection paramTrackSelection, TrackGroup paramTrackGroup, int paramInt)
   {
-    if ((paramTrackSelection != null) && (paramTrackSelection.getTrackGroup() == paramTrackGroup) && (paramTrackSelection.indexOf(paramInt) != -1)) {}
-    for (boolean bool = true;; bool = false) {
-      return getTrackStatusString(bool);
+    boolean bool;
+    if ((paramTrackSelection != null) && (paramTrackSelection.getTrackGroup() == paramTrackGroup) && (paramTrackSelection.indexOf(paramInt) != -1)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return getTrackStatusString(bool);
   }
   
   private static String getTrackStatusString(boolean paramBoolean)
@@ -192,65 +217,95 @@ public class EventLogger
   
   private void printInternalError(String paramString, Exception paramException)
   {
-    Log.e("EventLogger", "internalError [" + getSessionTimeString() + ", " + paramString + "]", paramException);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("internalError [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    Log.e("EventLogger", localStringBuilder.toString(), paramException);
   }
   
   private void printMetadata(Metadata paramMetadata, String paramString)
   {
     int i = 0;
-    if (i < paramMetadata.length())
+    while (i < paramMetadata.length())
     {
       Object localObject = paramMetadata.get(i);
+      StringBuilder localStringBuilder;
       if ((localObject instanceof TextInformationFrame))
       {
         localObject = (TextInformationFrame)localObject;
-        Log.d("EventLogger", paramString + String.format("%s: value=%s", new Object[] { ((TextInformationFrame)localObject).id, ((TextInformationFrame)localObject).value }));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s: value=%s", new Object[] { ((TextInformationFrame)localObject).id, ((TextInformationFrame)localObject).value }));
+        Log.d("EventLogger", localStringBuilder.toString());
       }
-      for (;;)
+      else if ((localObject instanceof UrlLinkFrame))
       {
-        i += 1;
-        break;
-        if ((localObject instanceof UrlLinkFrame))
-        {
-          localObject = (UrlLinkFrame)localObject;
-          Log.d("EventLogger", paramString + String.format("%s: url=%s", new Object[] { ((UrlLinkFrame)localObject).id, ((UrlLinkFrame)localObject).url }));
-        }
-        else if ((localObject instanceof PrivFrame))
-        {
-          localObject = (PrivFrame)localObject;
-          Log.d("EventLogger", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).owner }));
-        }
-        else if ((localObject instanceof GeobFrame))
-        {
-          localObject = (GeobFrame)localObject;
-          Log.d("EventLogger", paramString + String.format("%s: mimeType=%s, filename=%s, description=%s", new Object[] { ((GeobFrame)localObject).id, ((GeobFrame)localObject).mimeType, ((GeobFrame)localObject).filename, ((GeobFrame)localObject).description }));
-        }
-        else if ((localObject instanceof ApicFrame))
-        {
-          localObject = (ApicFrame)localObject;
-          Log.d("EventLogger", paramString + String.format("%s: mimeType=%s, description=%s", new Object[] { ((ApicFrame)localObject).id, ((ApicFrame)localObject).mimeType, ((ApicFrame)localObject).description }));
-        }
-        else if ((localObject instanceof CommentFrame))
-        {
-          localObject = (CommentFrame)localObject;
-          Log.d("EventLogger", paramString + String.format("%s: language=%s, description=%s", new Object[] { ((CommentFrame)localObject).id, ((CommentFrame)localObject).language, ((CommentFrame)localObject).description }));
-        }
-        else if ((localObject instanceof Id3Frame))
-        {
-          localObject = (Id3Frame)localObject;
-          Log.d("EventLogger", paramString + String.format("%s", new Object[] { ((Id3Frame)localObject).id }));
-        }
-        else if ((localObject instanceof EventMessage))
-        {
-          localObject = (EventMessage)localObject;
-          Log.d("EventLogger", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).schemeIdUri, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
-        }
-        else if ((localObject instanceof SpliceCommand))
-        {
-          localObject = String.format("SCTE-35 splice command: type=%s.", new Object[] { localObject.getClass().getSimpleName() });
-          Log.d("EventLogger", paramString + (String)localObject);
-        }
+        localObject = (UrlLinkFrame)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s: url=%s", new Object[] { ((UrlLinkFrame)localObject).id, ((UrlLinkFrame)localObject).url }));
+        Log.d("EventLogger", localStringBuilder.toString());
       }
+      else if ((localObject instanceof PrivFrame))
+      {
+        localObject = (PrivFrame)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).owner }));
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      else if ((localObject instanceof GeobFrame))
+      {
+        localObject = (GeobFrame)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s: mimeType=%s, filename=%s, description=%s", new Object[] { ((GeobFrame)localObject).id, ((GeobFrame)localObject).mimeType, ((GeobFrame)localObject).filename, ((GeobFrame)localObject).description }));
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      else if ((localObject instanceof ApicFrame))
+      {
+        localObject = (ApicFrame)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s: mimeType=%s, description=%s", new Object[] { ((ApicFrame)localObject).id, ((ApicFrame)localObject).mimeType, ((ApicFrame)localObject).description }));
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      else if ((localObject instanceof CommentFrame))
+      {
+        localObject = (CommentFrame)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s: language=%s, description=%s", new Object[] { ((CommentFrame)localObject).id, ((CommentFrame)localObject).language, ((CommentFrame)localObject).description }));
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      else if ((localObject instanceof Id3Frame))
+      {
+        localObject = (Id3Frame)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("%s", new Object[] { ((Id3Frame)localObject).id }));
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      else if ((localObject instanceof EventMessage))
+      {
+        localObject = (EventMessage)localObject;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).schemeIdUri, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      else if ((localObject instanceof SpliceCommand))
+      {
+        localObject = String.format("SCTE-35 splice command: type=%s.", new Object[] { localObject.getClass().getSimpleName() });
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append((String)localObject);
+        Log.d("EventLogger", localStringBuilder.toString());
+      }
+      i += 1;
     }
   }
   
@@ -270,49 +325,93 @@ public class EventLogger
   
   public void onAudioDecoderInitialized(String paramString, long paramLong1, long paramLong2)
   {
-    Log.d("EventLogger", "audioDecoderInitialized [" + getSessionTimeString() + ", " + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("audioDecoderInitialized [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onAudioDisabled(DecoderCounters paramDecoderCounters)
   {
-    Log.d("EventLogger", "audioDisabled [" + getSessionTimeString() + "]");
+    paramDecoderCounters = new StringBuilder();
+    paramDecoderCounters.append("audioDisabled [");
+    paramDecoderCounters.append(getSessionTimeString());
+    paramDecoderCounters.append("]");
+    Log.d("EventLogger", paramDecoderCounters.toString());
   }
   
   public void onAudioEnabled(DecoderCounters paramDecoderCounters)
   {
-    Log.d("EventLogger", "audioEnabled [" + getSessionTimeString() + "]");
+    paramDecoderCounters = new StringBuilder();
+    paramDecoderCounters.append("audioEnabled [");
+    paramDecoderCounters.append(getSessionTimeString());
+    paramDecoderCounters.append("]");
+    Log.d("EventLogger", paramDecoderCounters.toString());
   }
   
   public void onAudioInputFormatChanged(Format paramFormat)
   {
-    Log.d("EventLogger", "audioFormatChanged [" + getSessionTimeString() + ", " + Format.toLogString(paramFormat) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("audioFormatChanged [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(Format.toLogString(paramFormat));
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onAudioSessionId(int paramInt)
   {
-    Log.d("EventLogger", "audioSessionId [" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("audioSessionId [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onAudioSinkUnderrun(int paramInt, long paramLong1, long paramLong2)
   {
-    printInternalError("audioTrackUnderrun [" + paramInt + ", " + paramLong1 + ", " + paramLong2 + "]", null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("audioTrackUnderrun [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append("]");
+    printInternalError(localStringBuilder.toString(), null);
   }
   
   public void onDownstreamFormatChanged(int paramInt1, Format paramFormat, int paramInt2, Object paramObject, long paramLong) {}
   
   public void onDrmKeysLoaded()
   {
-    Log.d("EventLogger", "drmKeysLoaded [" + getSessionTimeString() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("drmKeysLoaded [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onDrmKeysRemoved()
   {
-    Log.d("EventLogger", "drmKeysRemoved [" + getSessionTimeString() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("drmKeysRemoved [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onDrmKeysRestored()
   {
-    Log.d("EventLogger", "drmKeysRestored [" + getSessionTimeString() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("drmKeysRestored [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onDrmSessionManagerError(Exception paramException)
@@ -322,7 +421,13 @@ public class EventLogger
   
   public void onDroppedFrames(int paramInt, long paramLong)
   {
-    Log.d("EventLogger", "droppedFrames [" + getSessionTimeString() + ", " + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("droppedFrames [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onInternalAdLoadError(RuntimeException paramRuntimeException)
@@ -343,7 +448,11 @@ public class EventLogger
   
   public void onLoadingChanged(boolean paramBoolean)
   {
-    Log.d("EventLogger", "loading [" + paramBoolean + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loading [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onMetadata(Metadata paramMetadata)
@@ -355,34 +464,61 @@ public class EventLogger
   
   public void onPlaybackParametersChanged(PlaybackParameters paramPlaybackParameters)
   {
-    Log.d("EventLogger", "playbackParameters " + String.format("[speed=%.2f, pitch=%.2f]", new Object[] { Float.valueOf(paramPlaybackParameters.speed), Float.valueOf(paramPlaybackParameters.pitch) }));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playbackParameters ");
+    localStringBuilder.append(String.format("[speed=%.2f, pitch=%.2f]", new Object[] { Float.valueOf(paramPlaybackParameters.speed), Float.valueOf(paramPlaybackParameters.pitch) }));
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onPlayerError(ExoPlaybackException paramExoPlaybackException)
   {
-    Log.e("EventLogger", "playerFailed [" + getSessionTimeString() + "]", paramExoPlaybackException);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playerFailed [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append("]");
+    Log.e("EventLogger", localStringBuilder.toString(), paramExoPlaybackException);
   }
   
   public void onPlayerStateChanged(boolean paramBoolean, int paramInt)
   {
-    Log.d("EventLogger", "state [" + getSessionTimeString() + ", " + paramBoolean + ", " + getStateString(paramInt) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(getStateString(paramInt));
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onPositionDiscontinuity(int paramInt)
   {
-    Log.d("EventLogger", "positionDiscontinuity [" + getDiscontinuityReasonString(paramInt) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("positionDiscontinuity [");
+    localStringBuilder.append(getDiscontinuityReasonString(paramInt));
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onRenderAudioData(byte[] paramArrayOfByte) {}
   
   public void onRenderedFirstFrame(Surface paramSurface)
   {
-    Log.d("EventLogger", "renderedFirstFrame [" + paramSurface + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("renderedFirstFrame [");
+    localStringBuilder.append(paramSurface);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onRepeatModeChanged(int paramInt)
   {
-    Log.d("EventLogger", "repeatMode [" + getRepeatModeString(paramInt) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("repeatMode [");
+    localStringBuilder.append(getRepeatModeString(paramInt));
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onSeekProcessed()
@@ -392,20 +528,35 @@ public class EventLogger
   
   public void onShuffleModeEnabledChanged(boolean paramBoolean)
   {
-    Log.d("EventLogger", "shuffleModeEnabled [" + paramBoolean + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("shuffleModeEnabled [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onTimelineChanged(Timeline paramTimeline, Object paramObject, int paramInt)
   {
-    int i = 0;
     int k = paramTimeline.getPeriodCount();
     int j = paramTimeline.getWindowCount();
-    Log.d("EventLogger", "timelineChanged [periodCount=" + k + ", windowCount=" + j + ", reason=" + getTimelineChangeReasonString(paramInt));
+    paramObject = new StringBuilder();
+    paramObject.append("timelineChanged [periodCount=");
+    paramObject.append(k);
+    paramObject.append(", windowCount=");
+    paramObject.append(j);
+    paramObject.append(", reason=");
+    paramObject.append(getTimelineChangeReasonString(paramInt));
+    Log.d("EventLogger", paramObject.toString());
+    int i = 0;
     paramInt = 0;
     while (paramInt < Math.min(k, 3))
     {
       paramTimeline.getPeriod(paramInt, this.period);
-      Log.d("EventLogger", "  period [" + getTimeString(this.period.getDurationMs()) + "]");
+      paramObject = new StringBuilder();
+      paramObject.append("  period [");
+      paramObject.append(getTimeString(this.period.getDurationMs()));
+      paramObject.append("]");
+      Log.d("EventLogger", paramObject.toString());
       paramInt += 1;
     }
     paramInt = i;
@@ -417,7 +568,15 @@ public class EventLogger
     while (paramInt < Math.min(j, 3))
     {
       paramTimeline.getWindow(paramInt, this.window);
-      Log.d("EventLogger", "  window [" + getTimeString(this.window.getDurationMs()) + ", " + this.window.isSeekable + ", " + this.window.isDynamic + "]");
+      paramObject = new StringBuilder();
+      paramObject.append("  window [");
+      paramObject.append(getTimeString(this.window.getDurationMs()));
+      paramObject.append(", ");
+      paramObject.append(this.window.isSeekable);
+      paramObject.append(", ");
+      paramObject.append(this.window.isDynamic);
+      paramObject.append("]");
+      Log.d("EventLogger", paramObject.toString());
       paramInt += 1;
     }
     if (j > 3) {
@@ -428,81 +587,120 @@ public class EventLogger
   
   public void onTracksChanged(TrackGroupArray paramTrackGroupArray, TrackSelectionArray paramTrackSelectionArray)
   {
-    paramTrackGroupArray = this.trackSelector.getCurrentMappedTrackInfo();
-    if (paramTrackGroupArray == null)
+    paramTrackGroupArray = this;
+    Object localObject3 = paramTrackGroupArray.trackSelector.getCurrentMappedTrackInfo();
+    if (localObject3 == null)
     {
       Log.d("EventLogger", "Tracks []");
       return;
     }
     Log.d("EventLogger", "Tracks [");
     int i = 0;
-    Object localObject2;
-    Object localObject1;
     int j;
-    if (i < paramTrackGroupArray.length)
+    Object localObject2;
+    String str1;
+    Object localObject1;
+    for (;;)
     {
-      localObject2 = paramTrackGroupArray.getTrackGroups(i);
-      localObject1 = paramTrackSelectionArray.get(i);
-      if (((TrackGroupArray)localObject2).length > 0)
+      j = ((MappingTrackSelector.MappedTrackInfo)localObject3).length;
+      localObject2 = "  ]";
+      str1 = " [";
+      if (i >= j) {
+        break;
+      }
+      localObject1 = ((MappingTrackSelector.MappedTrackInfo)localObject3).getTrackGroups(i);
+      TrackSelection localTrackSelection = paramTrackSelectionArray.get(i);
+      if (((TrackGroupArray)localObject1).length > 0)
       {
-        Log.d("EventLogger", "  Renderer:" + i + " [");
+        paramTrackGroupArray = new StringBuilder();
+        paramTrackGroupArray.append("  Renderer:");
+        paramTrackGroupArray.append(i);
+        paramTrackGroupArray.append(" [");
+        Log.d("EventLogger", paramTrackGroupArray.toString());
         j = 0;
-        while (j < ((TrackGroupArray)localObject2).length)
+        paramTrackGroupArray = (TrackGroupArray)localObject2;
+        while (j < ((TrackGroupArray)localObject1).length)
         {
-          TrackGroup localTrackGroup = ((TrackGroupArray)localObject2).get(j);
-          String str1 = getAdaptiveSupportString(localTrackGroup.length, paramTrackGroupArray.getAdaptiveSupport(i, j, false));
-          Log.d("EventLogger", "    Group:" + j + ", adaptive_supported=" + str1 + " [");
+          localObject2 = ((TrackGroupArray)localObject1).get(j);
+          String str2 = getAdaptiveSupportString(((TrackGroup)localObject2).length, ((MappingTrackSelector.MappedTrackInfo)localObject3).getAdaptiveSupport(i, j, false));
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("    Group:");
+          ((StringBuilder)localObject4).append(j);
+          ((StringBuilder)localObject4).append(", adaptive_supported=");
+          ((StringBuilder)localObject4).append(str2);
+          ((StringBuilder)localObject4).append(str1);
+          Log.d("EventLogger", ((StringBuilder)localObject4).toString());
           int k = 0;
-          while (k < localTrackGroup.length)
+          while (k < ((TrackGroup)localObject2).length)
           {
-            str1 = getTrackStatusString((TrackSelection)localObject1, localTrackGroup, k);
-            String str2 = getFormatSupportString(paramTrackGroupArray.getTrackFormatSupport(i, j, k));
-            Log.d("EventLogger", "      " + str1 + " Track:" + k + ", " + Format.toLogString(localTrackGroup.getFormat(k)) + ", supported=" + str2);
+            str2 = getTrackStatusString(localTrackSelection, (TrackGroup)localObject2, k);
+            localObject4 = getFormatSupportString(((MappingTrackSelector.MappedTrackInfo)localObject3).getTrackFormatSupport(i, j, k));
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("      ");
+            localStringBuilder.append(str2);
+            localStringBuilder.append(" Track:");
+            localStringBuilder.append(k);
+            localStringBuilder.append(", ");
+            localStringBuilder.append(Format.toLogString(((TrackGroup)localObject2).getFormat(k)));
+            localStringBuilder.append(", supported=");
+            localStringBuilder.append((String)localObject4);
+            Log.d("EventLogger", localStringBuilder.toString());
             k += 1;
           }
           Log.d("EventLogger", "    ]");
           j += 1;
         }
-        if (localObject1 != null) {
-          j = 0;
-        }
-      }
-      for (;;)
-      {
-        if (j < ((TrackSelection)localObject1).length())
+        if (localTrackSelection != null)
         {
-          localObject2 = ((TrackSelection)localObject1).getFormat(j).metadata;
-          if (localObject2 != null)
+          j = 0;
+          while (j < localTrackSelection.length())
           {
-            Log.d("EventLogger", "    Metadata [");
-            printMetadata((Metadata)localObject2, "      ");
-            Log.d("EventLogger", "    ]");
+            localObject1 = localTrackSelection.getFormat(j).metadata;
+            if (localObject1 != null)
+            {
+              Log.d("EventLogger", "    Metadata [");
+              printMetadata((Metadata)localObject1, "      ");
+              Log.d("EventLogger", "    ]");
+              break;
+            }
+            j += 1;
           }
         }
-        else
-        {
-          Log.d("EventLogger", "  ]");
-          i += 1;
-          break;
-        }
-        j += 1;
+        localObject1 = this;
+        Log.d("EventLogger", paramTrackGroupArray);
+        paramTrackGroupArray = (TrackGroupArray)localObject1;
       }
+      i += 1;
     }
-    paramTrackGroupArray = paramTrackGroupArray.getUnassociatedTrackGroups();
-    if (paramTrackGroupArray.length > 0)
+    paramTrackGroupArray = " [";
+    paramTrackSelectionArray = ((MappingTrackSelector.MappedTrackInfo)localObject3).getUnassociatedTrackGroups();
+    if (paramTrackSelectionArray.length > 0)
     {
       Log.d("EventLogger", "  Renderer:None [");
       i = 0;
-      while (i < paramTrackGroupArray.length)
+      while (i < paramTrackSelectionArray.length)
       {
-        Log.d("EventLogger", "    Group:" + i + " [");
-        paramTrackSelectionArray = paramTrackGroupArray.get(i);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("    Group:");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(paramTrackGroupArray);
+        Log.d("EventLogger", ((StringBuilder)localObject1).toString());
+        localObject1 = paramTrackSelectionArray.get(i);
         j = 0;
-        while (j < paramTrackSelectionArray.length)
+        while (j < ((TrackGroup)localObject1).length)
         {
-          localObject1 = getTrackStatusString(false);
+          str1 = getTrackStatusString(false);
           localObject2 = getFormatSupportString(0);
-          Log.d("EventLogger", "      " + (String)localObject1 + " Track:" + j + ", " + Format.toLogString(paramTrackSelectionArray.getFormat(j)) + ", supported=" + (String)localObject2);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("      ");
+          ((StringBuilder)localObject3).append(str1);
+          ((StringBuilder)localObject3).append(" Track:");
+          ((StringBuilder)localObject3).append(j);
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append(Format.toLogString(((TrackGroup)localObject1).getFormat(j)));
+          ((StringBuilder)localObject3).append(", supported=");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          Log.d("EventLogger", ((StringBuilder)localObject3).toString());
           j += 1;
         }
         Log.d("EventLogger", "    ]");
@@ -517,32 +715,58 @@ public class EventLogger
   
   public void onVideoDecoderInitialized(String paramString, long paramLong1, long paramLong2)
   {
-    Log.d("EventLogger", "videoDecoderInitialized [" + getSessionTimeString() + ", " + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("videoDecoderInitialized [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onVideoDisabled(DecoderCounters paramDecoderCounters)
   {
-    Log.d("EventLogger", "videoDisabled [" + getSessionTimeString() + "]");
+    paramDecoderCounters = new StringBuilder();
+    paramDecoderCounters.append("videoDisabled [");
+    paramDecoderCounters.append(getSessionTimeString());
+    paramDecoderCounters.append("]");
+    Log.d("EventLogger", paramDecoderCounters.toString());
   }
   
   public void onVideoEnabled(DecoderCounters paramDecoderCounters)
   {
-    Log.d("EventLogger", "videoEnabled [" + getSessionTimeString() + "]");
+    paramDecoderCounters = new StringBuilder();
+    paramDecoderCounters.append("videoEnabled [");
+    paramDecoderCounters.append(getSessionTimeString());
+    paramDecoderCounters.append("]");
+    Log.d("EventLogger", paramDecoderCounters.toString());
   }
   
   public void onVideoInputFormatChanged(Format paramFormat)
   {
-    Log.d("EventLogger", "videoFormatChanged [" + getSessionTimeString() + ", " + Format.toLogString(paramFormat) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("videoFormatChanged [");
+    localStringBuilder.append(getSessionTimeString());
+    localStringBuilder.append(", ");
+    localStringBuilder.append(Format.toLogString(paramFormat));
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
   
   public void onVideoSizeChanged(int paramInt1, int paramInt2, int paramInt3, float paramFloat)
   {
-    Log.d("EventLogger", "videoSizeChanged [" + paramInt1 + ", " + paramInt2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("videoSizeChanged [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    Log.d("EventLogger", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.EventLogger
  * JD-Core Version:    0.7.0.1
  */

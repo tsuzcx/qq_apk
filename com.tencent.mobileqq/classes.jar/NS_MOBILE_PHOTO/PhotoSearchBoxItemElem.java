@@ -8,11 +8,11 @@ public final class PhotoSearchBoxItemElem
   extends JceStruct
 {
   static face_show_info cache_face_show = new face_show_info();
-  static int cache_type = 0;
+  static int cache_type;
   public String categoryid = "";
   public String desc = "";
-  public face_show_info face_show;
-  public int type;
+  public face_show_info face_show = null;
+  public int type = 0;
   public String url = "";
   
   public PhotoSearchBoxItemElem() {}
@@ -38,23 +38,27 @@ public final class PhotoSearchBoxItemElem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 1);
+    Object localObject = this.categoryid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.face_show != null) {
-      paramJceOutputStream.write(this.face_show, 3);
+    localObject = this.face_show;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 4);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoSearchBoxItemElem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class dlq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public dlq(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.f();
+    if (SubAccountMessageActivity.a(this.a) != null) {
+      SubAccountMessageActivity.a(this.a).B();
+    }
   }
 }
 

@@ -3,33 +3,28 @@ package com.tencent.mobileqq.troop.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import antx;
-import bbgj;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
 import org.json.JSONObject;
 
 public class MediaPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new bbgj();
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new MediaPreviewInfo.1();
+  public int a = -1;
+  public String b = null;
+  public String c = null;
+  public String d = null;
   
-  public MediaPreviewInfo()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public MediaPreviewInfo() {}
   
   public MediaPreviewInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = -1;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("image");
-      this.b = paramJSONObject.optString("video");
-      this.c = antx.b(this.b);
+      this.a = paramJSONObject.optInt("type", -1);
+      this.b = paramJSONObject.optString("image");
+      this.c = paramJSONObject.optString("video");
+      this.d = DynamicAvatarDownloadManager.c(this.c);
     }
   }
   
@@ -40,20 +35,28 @@ public class MediaPreviewInfo
   
   public String toString()
   {
-    return "type = " + this.jdField_a_of_type_Int + ", imageUrl = " + this.jdField_a_of_type_JavaLangString + ", videoUrl = " + this.b + ", videoLocalPath = " + this.c;
+    StringBuffer localStringBuffer = new StringBuffer("type = ");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append(", imageUrl = ");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", videoUrl = ");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append(", videoLocalPath = ");
+    localStringBuffer.append(this.d);
+    return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

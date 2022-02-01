@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/n"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.wear.app.emoji.gif.MMGIFImageView android:id="@id/ba" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="30.0dip" />
-</LinearLayout>

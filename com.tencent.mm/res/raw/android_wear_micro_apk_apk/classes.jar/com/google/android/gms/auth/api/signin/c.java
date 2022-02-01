@@ -10,14 +10,14 @@ public final class c
   {
     int i = com.google.android.gms.common.internal.safeparcel.c.b(paramParcel);
     com.google.android.gms.common.internal.safeparcel.c.c(paramParcel, 1, paramGoogleSignInOptions.versionCode);
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 2, paramGoogleSignInOptions.fW());
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 3, paramGoogleSignInOptions.fX(), paramInt);
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 4, paramGoogleSignInOptions.fY());
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 5, paramGoogleSignInOptions.fZ());
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 6, paramGoogleSignInOptions.ga());
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 7, paramGoogleSignInOptions.gb());
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 8, paramGoogleSignInOptions.gd());
-    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 9, paramGoogleSignInOptions.ge());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 2, paramGoogleSignInOptions.gh());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 3, paramGoogleSignInOptions.gi(), paramInt);
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 4, paramGoogleSignInOptions.gj());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 5, paramGoogleSignInOptions.gk());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 6, paramGoogleSignInOptions.gl());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 7, paramGoogleSignInOptions.gm());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 8, paramGoogleSignInOptions.gn());
+    com.google.android.gms.common.internal.safeparcel.c.a(paramParcel, 9, paramGoogleSignInOptions.go());
     com.google.android.gms.common.internal.safeparcel.c.v(paramParcel, i);
   }
 }

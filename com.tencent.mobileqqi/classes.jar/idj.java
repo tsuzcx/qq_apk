@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.widget.RadioPreference.SavedState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 public final class idj
-  implements Parcelable.Creator
+  implements DialogInterface.OnDismissListener
 {
-  public RadioPreference.SavedState a(Parcel paramParcel)
-  {
-    return new RadioPreference.SavedState(paramParcel);
-  }
-  
-  public RadioPreference.SavedState[] a(int paramInt)
-  {
-    return new RadioPreference.SavedState[paramInt];
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_centerVertical="true">
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/cww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:button="@drawable/b88" />
+            <TextView android:textSize="@dimen/qs" android:textColor="@color/lb" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="11月20日" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/jpa" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+        <TextView android:textSize="@dimen/h9" android:textColor="@color/lb" android:ellipsize="end" android:id="@id/jp_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:maxWidth="260.0dip" android:text="@string/vne" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

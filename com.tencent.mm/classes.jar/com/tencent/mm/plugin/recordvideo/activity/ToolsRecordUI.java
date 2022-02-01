@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.recordvideo.activity;
 
-import a.l;
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/activity/ToolsRecordUI;", "Lcom/tencent/mm/plugin/recordvideo/activity/MMRecordUI;", "()V", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/activity/ToolsRecordUI;", "Lcom/tencent/mm/plugin/recordvideo/activity/MMRecordUI;", "()V", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ToolsRecordUI
   extends MMRecordUI
 {
@@ -16,7 +15,7 @@ public final class ToolsRecordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.activity.ToolsRecordUI
  * JD-Core Version:    0.7.0.1
  */

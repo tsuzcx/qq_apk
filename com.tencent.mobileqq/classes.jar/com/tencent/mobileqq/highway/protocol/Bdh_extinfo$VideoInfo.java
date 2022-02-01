@@ -33,13 +33,14 @@ public final class Bdh_extinfo$VideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56, 64, 72 }, new String[] { "uint32_idx", "uint32_size", "bytes_bin_md5", "uint32_format", "uint32_res_len", "uint32_res_width", "uint32_time", "uint64_starttime", "uint32_is_audio" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, VideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56, 64, 72 }, new String[] { "uint32_idx", "uint32_size", "bytes_bin_md5", "uint32_format", "uint32_res_len", "uint32_res_width", "uint32_time", "uint64_starttime", "uint32_is_audio" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L), localInteger }, VideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.Bdh_extinfo.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

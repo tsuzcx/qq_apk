@@ -20,7 +20,10 @@ class SonicSessionThreadPool
     }
     catch (Throwable paramRunnable)
     {
-      SonicUtils.log("SonicSdk_SonicSessionThreadPool", 6, "execute task error:" + paramRunnable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("execute task error:");
+      localStringBuilder.append(paramRunnable.getMessage());
+      SonicUtils.log("SonicSdk_SonicSessionThreadPool", 6, localStringBuilder.toString());
     }
     return false;
   }
@@ -32,7 +35,7 @@ class SonicSessionThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionThreadPool
  * JD-Core Version:    0.7.0.1
  */

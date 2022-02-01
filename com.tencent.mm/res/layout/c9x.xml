@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:background="@drawable/p5" android:paddingLeft="@dimen/ig" android:longClickable="true" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="top" android:id="@id/fcj" android:layout_marginTop="10.0dip" android:layout_marginRight="2.0dip" style="@style/gw" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/b7q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="2.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/gw" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/kxm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:lineSpacingExtra="0.0dip" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f6e" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_like" app:iconColor="@color/gb" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/kyu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+        </LinearLayout>
+        <FrameLayout android:layout_gravity="top" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip">
+            <TextView android:textSize="12.0dip" android:textColor="@color/adx" android:gravity="center" android:id="@id/h2x" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxHeight="60.0dip" android:text="" android:maxLines="3" />
+            <ImageView android:gravity="center" android:id="@id/fdu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <FrameLayout android:id="@id/flh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

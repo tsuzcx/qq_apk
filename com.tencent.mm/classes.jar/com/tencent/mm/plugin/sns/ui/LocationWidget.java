@@ -6,27 +6,38 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.compatible.e.q;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.compatible.util.Exif.a;
-import com.tencent.mm.kernel.a;
+import com.tencent.mm.k.i;
+import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.modelstat.n;
+import com.tencent.mm.plugin.report.service.l;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.i;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.pluginsdk.t;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.bap;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.bq;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.protocal.protobuf.djv;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.sdk.platformtools.WeChatLocaleUtil;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -34,107 +45,199 @@ import java.util.LinkedList;
 public class LocationWidget
   extends LinearLayout
 {
-  private float boo;
+  private d Hji;
+  private c.a Kcf;
+  private com.tencent.mm.modelgeo.c Khx;
+  private b.a MqJ;
+  private dgz MqZ;
+  private float Mqv;
+  private WeImageView Rbm;
+  private View ReO;
+  private View ReP;
+  private int[] ReQ;
+  private ImageView[] ReR;
+  private int ReS;
+  private TextView ReT;
+  private String ReU;
+  private String ReV;
+  private int ReW;
+  private float ReX;
+  private float ReY;
+  private int ReZ;
+  private a Rfa;
+  private boolean Rfb;
+  private b Rfc;
   private String city;
-  private int dqG;
-  private String eSM;
-  private float fBB;
-  private float fBC;
-  private boolean fBM;
-  private Activity gQx;
-  private c.a oae;
-  private c ofr;
-  private String ohe;
-  private com.tencent.mm.modelgeo.d peF;
-  private float peL;
-  private b.a peZ;
-  private azs pfp;
-  private ImageView rFb;
-  private TextView rGf;
-  private View rHX;
-  private View rHY;
-  private int[] rHZ;
-  private ImageView[] rIa;
-  private int rIb;
-  private TextView rIc;
-  private byte[] rId;
-  private String rIe;
-  private String rIf;
-  private int rIg;
-  private float rIh;
-  private int rIi;
-  private LocationWidget.a rIj;
-  private boolean rIk;
-  private LocationWidget.b rIl;
+  private byte[] ctx;
+  private String hOG;
+  private Activity mContext;
+  private float oDT;
+  private float oDU;
+  private boolean oEg;
+  private String poiName;
   private int score;
+  private int showFlag;
+  private TextView ycd;
   
   public LocationWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38290);
-    this.rHZ = new int[] { 2131825446, 2131825447, 2131825448, 2131825449, 2131825450 };
-    this.rIa = new ImageView[5];
-    this.fBB = -1000.0F;
-    this.fBC = -1000.0F;
-    this.rIg = 0;
-    this.pfp = null;
-    this.dqG = 0;
-    this.rIh = 0.0F;
-    this.peL = 0.0F;
-    this.boo = 0.0F;
-    this.rIi = -1;
-    this.fBM = true;
-    this.peF = com.tencent.mm.modelgeo.d.agQ();
-    this.rIj = null;
-    this.rIk = false;
-    this.oae = new LocationWidget.3(this);
-    this.peZ = new LocationWidget.4(this);
-    this.rIl = null;
-    j((MMActivity)paramContext);
-    AppMethodBeat.o(38290);
+    AppMethodBeat.i(97941);
+    this.ReQ = new int[] { b.f.score_iv_1, b.f.score_iv_2, b.f.score_iv_3, b.f.score_iv_4, b.f.score_iv_5 };
+    this.ReR = new ImageView[5];
+    this.oDT = -1000.0F;
+    this.oDU = -1000.0F;
+    this.ReW = 0;
+    this.MqZ = null;
+    this.showFlag = 0;
+    this.ReX = 0.0F;
+    this.Mqv = 0.0F;
+    this.ReY = 0.0F;
+    this.ReZ = -1;
+    this.oEg = true;
+    this.Hji = d.bJl();
+    this.Rfa = null;
+    this.Rfb = false;
+    this.Kcf = new c.a()
+    {
+      public final void b(Addr paramAnonymousAddr)
+      {
+        AppMethodBeat.i(97938);
+        Log.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAnonymousAddr.toString() });
+        if (!LocationWidget.e(LocationWidget.this))
+        {
+          AppMethodBeat.o(97938);
+          return;
+        }
+        LocationWidget.f(LocationWidget.this);
+        if (!Util.isNullOrNil(LocationWidget.g(LocationWidget.this)))
+        {
+          AppMethodBeat.o(97938);
+          return;
+        }
+        LocationWidget.a(LocationWidget.this, paramAnonymousAddr.oDK);
+        LocationWidget.f(LocationWidget.this);
+        AppMethodBeat.o(97938);
+      }
+    };
+    this.MqJ = new b.a()
+    {
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
+      {
+        AppMethodBeat.i(307749);
+        if (!paramAnonymousBoolean)
+        {
+          AppMethodBeat.o(307749);
+          return true;
+        }
+        Log.d("MicroMsg.LocationWidget", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+        n.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, 0);
+        if (!LocationWidget.e(LocationWidget.this))
+        {
+          AppMethodBeat.o(307749);
+          return false;
+        }
+        if ((LocationWidget.h(LocationWidget.this) == -1000.0F) || (LocationWidget.i(LocationWidget.this) == -1000.0F))
+        {
+          LocationWidget.a(LocationWidget.this, paramAnonymousFloat2);
+          LocationWidget.b(LocationWidget.this, paramAnonymousFloat1);
+        }
+        AppMethodBeat.o(307749);
+        return false;
+      }
+    };
+    this.Rfc = null;
+    s((MMActivity)paramContext);
+    AppMethodBeat.o(97941);
   }
   
   public LocationWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(38289);
-    this.rHZ = new int[] { 2131825446, 2131825447, 2131825448, 2131825449, 2131825450 };
-    this.rIa = new ImageView[5];
-    this.fBB = -1000.0F;
-    this.fBC = -1000.0F;
-    this.rIg = 0;
-    this.pfp = null;
-    this.dqG = 0;
-    this.rIh = 0.0F;
-    this.peL = 0.0F;
-    this.boo = 0.0F;
-    this.rIi = -1;
-    this.fBM = true;
-    this.peF = com.tencent.mm.modelgeo.d.agQ();
-    this.rIj = null;
-    this.rIk = false;
-    this.oae = new LocationWidget.3(this);
-    this.peZ = new LocationWidget.4(this);
-    this.rIl = null;
-    j((MMActivity)paramContext);
-    AppMethodBeat.o(38289);
+    AppMethodBeat.i(97940);
+    this.ReQ = new int[] { b.f.score_iv_1, b.f.score_iv_2, b.f.score_iv_3, b.f.score_iv_4, b.f.score_iv_5 };
+    this.ReR = new ImageView[5];
+    this.oDT = -1000.0F;
+    this.oDU = -1000.0F;
+    this.ReW = 0;
+    this.MqZ = null;
+    this.showFlag = 0;
+    this.ReX = 0.0F;
+    this.Mqv = 0.0F;
+    this.ReY = 0.0F;
+    this.ReZ = -1;
+    this.oEg = true;
+    this.Hji = d.bJl();
+    this.Rfa = null;
+    this.Rfb = false;
+    this.Kcf = new c.a()
+    {
+      public final void b(Addr paramAnonymousAddr)
+      {
+        AppMethodBeat.i(97938);
+        Log.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAnonymousAddr.toString() });
+        if (!LocationWidget.e(LocationWidget.this))
+        {
+          AppMethodBeat.o(97938);
+          return;
+        }
+        LocationWidget.f(LocationWidget.this);
+        if (!Util.isNullOrNil(LocationWidget.g(LocationWidget.this)))
+        {
+          AppMethodBeat.o(97938);
+          return;
+        }
+        LocationWidget.a(LocationWidget.this, paramAnonymousAddr.oDK);
+        LocationWidget.f(LocationWidget.this);
+        AppMethodBeat.o(97938);
+      }
+    };
+    this.MqJ = new b.a()
+    {
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
+      {
+        AppMethodBeat.i(307749);
+        if (!paramAnonymousBoolean)
+        {
+          AppMethodBeat.o(307749);
+          return true;
+        }
+        Log.d("MicroMsg.LocationWidget", "get location %f %f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+        n.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, 0);
+        if (!LocationWidget.e(LocationWidget.this))
+        {
+          AppMethodBeat.o(307749);
+          return false;
+        }
+        if ((LocationWidget.h(LocationWidget.this) == -1000.0F) || (LocationWidget.i(LocationWidget.this) == -1000.0F))
+        {
+          LocationWidget.a(LocationWidget.this, paramAnonymousFloat2);
+          LocationWidget.b(LocationWidget.this, paramAnonymousFloat1);
+        }
+        AppMethodBeat.o(307749);
+        return false;
+      }
+    };
+    this.Rfc = null;
+    s((MMActivity)paramContext);
+    AppMethodBeat.o(97940);
   }
   
-  private void Q(ArrayList<Exif.a> paramArrayList)
+  private void bD(ArrayList<Exif.a> paramArrayList)
   {
-    AppMethodBeat.i(38294);
+    AppMethodBeat.i(97945);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      AppMethodBeat.o(38294);
+      AppMethodBeat.o(97945);
       return;
     }
-    h.qsU.kvStat(11139, "1");
+    com.tencent.mm.plugin.report.service.h.OAn.kvStat(11139, "1");
     Exif.a locala1;
-    if ((Math.abs(-1000.0F - this.fBB) > 1.0E-006D) && (Math.abs(-1000.0F - this.fBC) > 1.0E-006D))
+    if ((Math.abs(-1000.0F - this.oDT) > 1.0E-006D) && (Math.abs(-1000.0F - this.oDU) > 1.0E-006D))
     {
       locala1 = (Exif.a)paramArrayList.get(paramArrayList.size() - 1);
-      if (b(locala1.latitude, locala1.longitude, this.fBB, this.fBC)) {
-        h.qsU.kvStat(11139, "2");
+      if (e(locala1.latitude, locala1.longitude, this.oDT, this.oDU)) {
+        com.tencent.mm.plugin.report.service.h.OAn.kvStat(11139, "2");
       }
     }
     int i = 0;
@@ -147,8 +250,8 @@ public class LocationWidget
       }
       locala1 = (Exif.a)paramArrayList.get(i);
       Exif.a locala2 = (Exif.a)paramArrayList.get(j);
-      if (b(locala1.latitude, locala1.longitude, locala2.latitude, locala2.longitude)) {
-        h.qsU.kvStat(11139, "3");
+      if (e(locala1.latitude, locala1.longitude, locala2.latitude, locala2.longitude)) {
+        com.tencent.mm.plugin.report.service.h.OAn.kvStat(11139, "3");
       }
     }
     label226:
@@ -161,269 +264,428 @@ public class LocationWidget
         j += 1;
         break label135;
       }
-      AppMethodBeat.o(38294);
+      AppMethodBeat.o(97945);
       return;
     }
   }
   
-  private static boolean b(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  private static boolean e(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    AppMethodBeat.i(38295);
-    if (t.c(paramDouble1, paramDouble2, paramDouble3, paramDouble4) > 1000.0D)
+    AppMethodBeat.i(97946);
+    if (t.f(paramDouble1, paramDouble2, paramDouble3, paramDouble4) > 1000.0D)
     {
-      AppMethodBeat.o(38295);
+      AppMethodBeat.o(97946);
       return true;
     }
-    AppMethodBeat.o(38295);
+    AppMethodBeat.o(97946);
     return false;
   }
   
-  private void ctF()
+  private void hme()
   {
     int i = 0;
-    AppMethodBeat.i(38292);
-    ab.i("MicroMsg.LocationWidget", "updateScoreItem scoreSwtich:%d, classifyId:%s, poiClassifyType:%d, showFlag:%d, isOverSea:%b", new Object[] { Integer.valueOf(this.rIb), this.rIf, Integer.valueOf(this.rIg), Integer.valueOf(this.dqG), Boolean.valueOf(bq.duf()) });
-    if ((bq.duf()) || (this.rIb == 0) || (bo.isNullOrNil(this.rIf)) || (this.rIg == 1) || ((this.dqG & 0x1) == 0))
+    AppMethodBeat.i(97943);
+    Log.i("MicroMsg.LocationWidget", "updateScoreItem scoreSwtich:%d, classifyId:%s, poiClassifyType:%d, showFlag:%d, isOverSea:%b", new Object[] { Integer.valueOf(this.ReS), this.ReV, Integer.valueOf(this.ReW), Integer.valueOf(this.showFlag), Boolean.valueOf(WeChatLocaleUtil.isOverseasUserByWechatLanguage()) });
+    if ((WeChatLocaleUtil.isOverseasUserByWechatLanguage()) || (this.ReS == 0) || (Util.isNullOrNil(this.ReV)) || (this.ReW == 1) || ((this.showFlag & 0x1) == 0))
     {
-      this.rHY.setVisibility(8);
-      AppMethodBeat.o(38292);
+      this.ReP.setVisibility(8);
+      AppMethodBeat.o(97943);
       return;
     }
-    this.rHY.setVisibility(0);
+    this.ReP.setVisibility(0);
     while (i < this.score)
     {
-      this.rIa[i].setImageResource(getSelectedStarImageResource());
+      this.ReR[i].setImageResource(getSelectedStarImageResource());
       i += 1;
     }
     i = this.score;
     while (i < 5)
     {
-      this.rIa[i].setImageResource(getNormalStarImageResource());
+      this.ReR[i].setImageResource(getNormalStarImageResource());
       i += 1;
     }
-    AppMethodBeat.o(38292);
+    AppMethodBeat.o(97943);
   }
   
-  private void ctH()
+  private void hmg()
   {
-    AppMethodBeat.i(38298);
-    if ((this.rIc != null) && (this.rGf != null))
+    AppMethodBeat.i(97949);
+    if ((this.ReT != null) && (this.ycd != null))
     {
-      if (bo.isNullOrNil(this.eSM)) {
-        break label124;
+      if (Util.isNullOrNil(this.poiName)) {
+        break label107;
       }
-      this.rIc.setText(this.eSM);
-      this.rIc.setTextColor(getResources().getColor(2131690139));
-      this.rGf.setVisibility(8);
+      this.ReT.setText(this.poiName);
+      this.ReT.setTextColor(getResources().getColor(b.c.green_text_color));
+      this.ycd.setVisibility(8);
     }
-    while ((!bo.isNullOrNil(this.eSM)) || (!bo.isNullOrNil(this.city)))
+    while ((!Util.isNullOrNil(this.poiName)) || (!Util.isNullOrNil(this.city)))
     {
-      this.rFb.setImageDrawable(aj.g(this.gQx, 2131230778, getContext().getResources().getColor(2131690701)));
-      AppMethodBeat.o(38298);
+      this.Rbm.oR(b.i.album_location_icon_pressed, b.c.wechat_green);
+      AppMethodBeat.o(97949);
       return;
-      label124:
-      if (!bo.isNullOrNil(this.city))
+      label107:
+      if (!Util.isNullOrNil(this.city))
       {
-        this.rIc.setText(this.city);
-        this.rIc.setTextColor(getResources().getColor(2131690139));
-        this.rGf.setVisibility(8);
+        this.ReT.setText(this.city);
+        this.ReT.setTextColor(getResources().getColor(b.c.green_text_color));
+        this.ycd.setVisibility(8);
       }
       else
       {
-        this.rIc.setText(2131303876);
-        this.rIc.setTextColor(getResources().getColor(2131690322));
-        this.rGf.setVisibility(8);
+        this.ReT.setText(b.j.sns_location_tips);
+        this.ReT.setTextColor(getResources().getColor(b.c.normal_text_color));
+        this.ycd.setVisibility(8);
       }
     }
-    this.rFb.setImageDrawable(aj.g(this.gQx, 2131230777, -16777216));
-    AppMethodBeat.o(38298);
+    this.Rbm.oR(b.i.album_location_icon_normal, b.c.icon_color);
+    AppMethodBeat.o(97949);
   }
   
-  private void ctI()
+  private void hmh()
   {
-    AppMethodBeat.i(38301);
-    if (this.rIj != null)
+    AppMethodBeat.i(97952);
+    if (this.Rfa != null)
     {
-      boolean bool = this.rIj.ctK();
-      Object localObject = this.rIj.ctJ();
+      boolean bool = this.Rfa.hmj();
+      Object localObject = this.Rfa.hmi();
       if ((localObject == null) || (((ArrayList)localObject).size() == 0))
       {
-        AppMethodBeat.o(38301);
+        AppMethodBeat.o(97952);
         return;
       }
       localObject = ((ArrayList)localObject).iterator();
       if (((Iterator)localObject).hasNext())
       {
         Exif.a locala = (Exif.a)((Iterator)localObject).next();
-        ab.d("MicroMsg.LocationWidget", "snsreport lat lng %f, %f", new Object[] { Double.valueOf(locala.latitude), Double.valueOf(locala.longitude) });
-        h localh = h.qsU;
+        Log.d("MicroMsg.LocationWidget", "snsreport lat lng %f, %f", new Object[] { Double.valueOf(locala.latitude), Double.valueOf(locala.longitude) });
+        com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.OAn;
         int j = (int)(locala.latitude * 1000000.0D);
         int k = (int)(locala.longitude * 1000000.0D);
         if (bool) {}
         for (int i = 1;; i = 2)
         {
-          localh.e(11345, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(2) });
+          localh.b(11345, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(2) });
           break;
         }
       }
     }
-    AppMethodBeat.o(38301);
+    AppMethodBeat.o(97952);
   }
   
-  private void j(MMActivity paramMMActivity)
+  private void s(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(38291);
-    this.gQx = paramMMActivity;
+    AppMethodBeat.i(97942);
+    this.mContext = paramMMActivity;
     View localView = View.inflate(paramMMActivity, getLayoutResource(), this);
-    this.rHX = localView.findViewById(2131825440);
-    this.rIc = ((TextView)this.rHX.findViewById(2131825439));
-    this.rGf = ((TextView)this.rHX.findViewById(2131825442));
-    this.rFb = ((ImageView)this.rHX.findViewById(2131825441));
-    this.rHY = localView.findViewById(2131825443);
-    int i = 0;
+    this.ReO = localView.findViewById(b.f.location_contentview);
+    this.ReT = ((TextView)this.ReO.findViewById(b.f.location_tips));
+    this.ycd = ((TextView)this.ReO.findViewById(b.f.location_poi));
+    this.Rbm = ((WeImageView)this.ReO.findViewById(b.f.location_iv));
+    this.ReP = localView.findViewById(b.f.score_contentview);
+    final int i = 0;
     while (i < 5)
     {
-      this.rIa[i] = ((ImageView)this.rHY.findViewById(this.rHZ[i]));
-      this.rIa[i].setOnClickListener(new LocationWidget.1(this, i));
+      this.ReR[i] = ((ImageView)this.ReP.findViewById(this.ReQ[i]));
+      this.ReR[i].setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(97936);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LocationWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (LocationWidget.a(LocationWidget.this) == i + 1) {
+            LocationWidget.b(LocationWidget.this);
+          }
+          for (;;)
+          {
+            LocationWidget.c(LocationWidget.this);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(97936);
+            return;
+            LocationWidget.a(LocationWidget.this, i + 1);
+          }
+        }
+      });
       i += 1;
     }
-    this.ofr = c.agN();
-    this.rHX.setOnClickListener(new LocationWidget.2(this));
-    this.rIf = paramMMActivity.getIntent().getStringExtra("kpoi_id");
-    if (!bo.isNullOrNil(this.rIf))
+    this.Khx = com.tencent.mm.modelgeo.c.bJh();
+    localView.setOnClickListener(new View.OnClickListener()
     {
-      this.fBB = paramMMActivity.getIntent().getFloatExtra("k_lat", -1000.0F);
-      this.fBC = paramMMActivity.getIntent().getFloatExtra("k_lng", -1000.0F);
-      this.eSM = paramMMActivity.getIntent().getStringExtra("kpoi_name");
-      this.rIe = paramMMActivity.getIntent().getStringExtra("Kpoi_address");
-      ctH();
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(97937);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (!WeChatBrands.Business.Entries.SessionLocation.checkAvailable(paramAnonymousView.getContext()))
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(97937);
+          return;
+        }
+        if (com.tencent.mm.au.b.OE((String)com.tencent.mm.kernel.h.baE().ban().d(274436, null)))
+        {
+          int i;
+          if ((com.tencent.mm.pluginsdk.permission.b.s(LocationWidget.d(LocationWidget.this), "android.permission.ACCESS_FINE_LOCATION")) && (com.tencent.mm.pluginsdk.permission.b.s(LocationWidget.d(LocationWidget.this), "android.permission.ACCESS_COARSE_LOCATION")))
+          {
+            i = 1;
+            if (i != 0) {
+              break label306;
+            }
+            if (((Boolean)com.tencent.mm.kernel.h.baE().ban().get(at.a.acXn, Boolean.FALSE)).booleanValue()) {
+              break label209;
+            }
+            com.tencent.mm.plugin.account.sdk.c.a.b(LocationWidget.d(LocationWidget.this), LocationWidget.this.getResources().getString(b.j.location_use_scene_gdpr_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 30764, true);
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(97937);
+            return;
+            i = 0;
+            break;
+            label209:
+            com.tencent.mm.pluginsdk.permission.b.a(LocationWidget.d(LocationWidget.this), new String[] { "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION" }, 64);
+          }
+        }
+        else
+        {
+          boolean bool = com.tencent.mm.pluginsdk.permission.b.a(LocationWidget.d(LocationWidget.this), new String[] { "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION" }, 64, null);
+          Log.i("MicroMsg.LocationWidget", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
+          if (!bool)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(97937);
+            return;
+          }
+        }
+        label306:
+        LocationWidget.this.hmf();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LocationWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(97937);
+      }
+    });
+    this.ReV = paramMMActivity.getIntent().getStringExtra("kpoi_id");
+    if (!Util.isNullOrNil(this.ReV))
+    {
+      this.oDT = paramMMActivity.getIntent().getFloatExtra("k_lat", -1000.0F);
+      this.oDU = paramMMActivity.getIntent().getFloatExtra("k_lng", -1000.0F);
+      this.poiName = paramMMActivity.getIntent().getStringExtra("kpoi_name");
+      this.ReU = paramMMActivity.getIntent().getStringExtra("Kpoi_address");
+      hmg();
     }
-    if (com.tencent.mm.kernel.g.RJ().QU()) {}
-    for (this.rIb = bo.getInt(com.tencent.mm.m.g.Nq().getValue("SnsPostPOICommentSwitch"), 0);; this.rIb = 0)
+    if (com.tencent.mm.kernel.h.baC().aZN()) {}
+    for (this.ReS = Util.getInt(i.aRC().getValue("SnsPostPOICommentSwitch"), 0);; this.ReS = 0)
     {
-      ctF();
-      AppMethodBeat.o(38291);
+      hme();
+      AppMethodBeat.o(97942);
       return;
     }
   }
   
-  public final boolean an(Intent paramIntent)
+  public final boolean by(Intent paramIntent)
   {
-    AppMethodBeat.i(38297);
+    AppMethodBeat.i(97948);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(38297);
+      AppMethodBeat.o(97948);
       return true;
     }
-    this.rIg = paramIntent.getIntExtra("get_poi_classify_type", 0);
-    this.dqG = paramIntent.getIntExtra("get_poi_showflag", 0);
-    ab.d("MicroMsg.LocationWidget", "onactivity result ok poiClassifyType %d", new Object[] { Integer.valueOf(this.rIg) });
-    this.eSM = bo.bf(paramIntent.getStringExtra("get_poi_name"), "");
-    this.city = bo.bf(paramIntent.getStringExtra("get_city"), "");
-    this.fBB = paramIntent.getFloatExtra("get_lat", -1000.0F);
-    this.fBC = paramIntent.getFloatExtra("get_lng", -1000.0F);
-    ab.i("MicroMsg.LocationWidget", "check cur lat " + this.rIh + " " + this.peL);
-    this.rIh = paramIntent.getFloatExtra("get_cur_lat", 0.0F);
-    this.peL = paramIntent.getFloatExtra("get_cur_lng", 0.0F);
-    this.rIi = paramIntent.getIntExtra("get_loctype", -1);
-    this.boo = paramIntent.getFloatExtra("get_accuracy", 0.0F);
-    this.fBM = paramIntent.getBooleanExtra("get_is_mars", true);
-    this.ohe = paramIntent.getStringExtra("request_id");
-    Object localObject = com.tencent.mm.modelstat.e.akz();
-    boolean bool;
-    if (this.rIi == 0)
+    this.ReW = paramIntent.getIntExtra("get_poi_classify_type", 0);
+    this.showFlag = paramIntent.getIntExtra("get_poi_showflag", 0);
+    Log.d("MicroMsg.LocationWidget", "onactivity result ok poiClassifyType %d", new Object[] { Integer.valueOf(this.ReW) });
+    this.poiName = Util.nullAs(paramIntent.getStringExtra("get_poi_name"), "");
+    this.city = Util.nullAs(paramIntent.getStringExtra("get_city"), "");
+    this.oDT = paramIntent.getFloatExtra("get_lat", -1000.0F);
+    this.oDU = paramIntent.getFloatExtra("get_lng", -1000.0F);
+    Log.i("MicroMsg.LocationWidget", "check cur lat " + this.ReX + " " + this.Mqv);
+    this.ReX = paramIntent.getFloatExtra("get_cur_lat", 0.0F);
+    this.Mqv = paramIntent.getFloatExtra("get_cur_lng", 0.0F);
+    this.ReZ = paramIntent.getIntExtra("get_loctype", -1);
+    this.ReY = paramIntent.getFloatExtra("get_accuracy", 0.0F);
+    this.oEg = paramIntent.getBooleanExtra("get_is_mars", true);
+    this.hOG = paramIntent.getStringExtra("request_id");
+    this.ctx = paramIntent.getByteArrayExtra("location_ctx");
+    if (!Util.isNullOrNil(this.poiName))
     {
-      bool = false;
-      ((com.tencent.mm.modelstat.e)localObject).a(2003, bool, this.fBM, this.fBC, this.fBB, (int)this.boo);
-      this.rId = paramIntent.getByteArrayExtra("location_ctx");
-      if (bo.isNullOrNil(this.eSM)) {
-        break label610;
-      }
-      this.rIe = bo.bf(paramIntent.getStringExtra("get_poi_address"), "");
-      this.rIf = bo.bf(paramIntent.getStringExtra("get_poi_classify_id"), "");
-      this.pfp = new azs();
+      this.ReU = Util.nullAs(paramIntent.getStringExtra("get_poi_address"), "");
+      this.ReV = Util.nullAs(paramIntent.getStringExtra("get_poi_classify_id"), "");
+      this.MqZ = new dgz();
     }
     for (;;)
     {
       try
       {
-        this.pfp = ((azs)this.pfp.parseFrom(paramIntent.getByteArrayExtra("get_poi_item_buf")));
-        if (!bo.isNullOrNil(this.rIf))
+        this.MqZ = ((dgz)this.MqZ.parseFrom(paramIntent.getByteArrayExtra("get_poi_item_buf")));
+        if (!Util.isNullOrNil(this.ReV))
         {
-          this.pfp = new azs();
-          this.pfp.pdW = this.rIf;
-          this.pfp.jKs = this.rIg;
-          this.pfp.Title = this.eSM;
-          this.pfp.peb.add(new bwc().aoF(this.rIe));
+          this.MqZ = new dgz();
+          this.MqZ.MpI = this.ReV;
+          this.MqZ.vhJ = this.ReW;
+          this.MqZ.hAP = this.poiName;
+          this.MqZ.MpN.add(new etl().btH(this.ReU));
         }
-        ab.d("MicroMsg.LocationWidget", "label %s poiname %s", new Object[] { this.rIe, this.eSM });
-        ctH();
-        ctF();
-        this.rIl = new LocationWidget.b(this);
-        localObject = this.rIl;
+        Log.d("MicroMsg.LocationWidget", "label %s poiname %s", new Object[] { this.ReU, this.poiName });
+        hmg();
+        hme();
+        this.Rfc = new b();
+        b localb = this.Rfc;
         if (paramIntent != null)
         {
-          ((LocationWidget.b)localObject).index = paramIntent.getIntExtra("report_index", -1);
-          ((LocationWidget.b)localObject).peO = paramIntent.getLongExtra("first_start_time", 0L);
-          ((LocationWidget.b)localObject).peP = paramIntent.getLongExtra("lastSuccStamp", 0L);
-          ((LocationWidget.b)localObject).peQ = paramIntent.getLongExtra("firstSuccStamp", 0L);
-          ((LocationWidget.b)localObject).peR = paramIntent.getIntExtra("reqLoadCnt", 0);
-          ((LocationWidget.b)localObject).ogt = paramIntent.getIntExtra("entry_time", 0);
-          ((LocationWidget.b)localObject).hng = paramIntent.getStringExtra("search_id");
+          localb.index = paramIntent.getIntExtra("report_index", -1);
+          localb.Mqy = paramIntent.getLongExtra("first_start_time", 0L);
+          localb.Mqz = paramIntent.getLongExtra("lastSuccStamp", 0L);
+          localb.MqA = paramIntent.getLongExtra("firstSuccStamp", 0L);
+          localb.MqB = paramIntent.getIntExtra("reqLoadCnt", 0);
+          localb.Kis = paramIntent.getIntExtra("entry_time", 0);
+          localb.mpa = paramIntent.getStringExtra("search_id");
         }
-        AppMethodBeat.o(38297);
+        AppMethodBeat.o(97948);
         return true;
-        bool = true;
       }
       catch (Exception localException)
       {
-        ab.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
-        this.pfp = null;
+        Log.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
+        this.MqZ = null;
         continue;
       }
-      label610:
-      if (!bo.isNullOrNil(this.city))
+      if (!Util.isNullOrNil(this.city))
       {
-        this.eSM = "";
-        this.rIe = "";
-        this.rIf = "";
-        this.pfp = null;
+        this.poiName = "";
+        this.ReU = "";
+        this.ReV = "";
+        this.MqZ = null;
       }
       else
       {
-        this.fBB = -1000.0F;
-        this.fBC = -1000.0F;
-        this.eSM = "";
-        this.rIe = "";
+        this.oDT = -1000.0F;
+        this.oDU = -1000.0F;
+        this.poiName = "";
+        this.ReU = "";
         this.city = "";
-        this.rIf = "";
-        this.pfp = null;
+        this.ReV = "";
+        this.MqZ = null;
       }
     }
   }
   
-  public final void ctG()
+  public djv getCurLocation()
   {
-    AppMethodBeat.i(38293);
+    AppMethodBeat.i(97951);
+    djv localdjv = new djv();
+    localdjv.ZaH = this.ReX;
+    localdjv.ZaG = this.Mqv;
+    localdjv.ReY = this.ReY;
+    localdjv.ReZ = this.ReZ;
+    AppMethodBeat.o(97951);
+    return localdjv;
+  }
+  
+  protected int getLayoutResource()
+  {
+    return b.g.location_widget;
+  }
+  
+  public djv getLocation()
+  {
+    AppMethodBeat.i(97950);
+    djv localdjv = new djv();
+    localdjv.ZaH = this.oDT;
+    localdjv.ZaG = this.oDU;
+    localdjv.aaPO = 0;
+    localdjv.score = this.score;
+    if (this.ctx != null) {
+      localdjv.aaPP = new com.tencent.mm.bx.b(this.ctx);
+    }
+    if (!Util.isNullOrNil(this.poiName))
+    {
+      localdjv.ReU = this.ReU;
+      localdjv.poiName = this.poiName;
+      localdjv.ZWG = this.ReV;
+      localdjv.pSh = this.city;
+      if ((this.ReW != 0) && (this.ReW == 1))
+      {
+        localdjv.ReW = 2;
+        Log.d("MicroMsg.LocationWidget", "getlocation type %d", new Object[] { Integer.valueOf(localdjv.ReW) });
+      }
+    }
+    for (;;)
+    {
+      if (this.Rfc != null)
+      {
+        String str = String.format("%f/%f", new Object[] { Float.valueOf(localdjv.ZaH), Float.valueOf(localdjv.ZaG) });
+        StringBuffer localStringBuffer = new StringBuffer();
+        localStringBuffer.append("index " + this.Rfc.index);
+        localStringBuffer.append("firstStartStamp " + this.Rfc.Mqy);
+        localStringBuffer.append("lastSuccStamp " + this.Rfc.MqA);
+        localStringBuffer.append("firstSuccStamp " + this.Rfc.Mqz);
+        localStringBuffer.append("reqLoadCnt " + this.Rfc.MqB);
+        localStringBuffer.append("classifyId " + this.ReV);
+        localStringBuffer.append("entryTime " + this.Rfc.Kis);
+        localStringBuffer.append("searchId" + this.Rfc.mpa);
+        Log.d("MicroMsg.LocationWidget", "report %s", new Object[] { localStringBuffer.toString() });
+        com.tencent.mm.plugin.report.service.h.OAn.b(11135, new Object[] { Integer.valueOf(5), Integer.valueOf(this.Rfc.index + 1), Long.valueOf(this.Rfc.Mqy), Long.valueOf(this.Rfc.MqA), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.Rfc.Mqz), Integer.valueOf(this.Rfc.MqB), str, this.ReV, Integer.valueOf(this.Rfc.Kis), this.Rfc.mpa, q.eD(true) });
+      }
+      hmh();
+      AppMethodBeat.o(97950);
+      return localdjv;
+      localdjv.ReW = 1;
+      break;
+      if (!Util.isNullOrNil(this.city)) {
+        localdjv.pSh = this.city;
+      }
+    }
+  }
+  
+  protected int getNormalStarImageResource()
+  {
+    return b.i.sns_shoot_star_normal;
+  }
+  
+  protected int getNormalStateImageResource()
+  {
+    return b.i.album_location_icon_normal;
+  }
+  
+  protected int getSelectedStarImageResource()
+  {
+    return b.i.sns_shoot_star_selected;
+  }
+  
+  protected int getSelectedStateImageResource()
+  {
+    return b.i.album_location_icon_pressed;
+  }
+  
+  public int getShowFlag()
+  {
+    return this.showFlag;
+  }
+  
+  public final void hmf()
+  {
+    AppMethodBeat.i(97944);
     Intent localIntent = new Intent();
     localIntent.putExtra("near_life_scene", 1);
     try
     {
-      localIntent.putExtra("get_poi_item_buf", this.pfp.toByteArray());
-      if (!bo.isNullOrNil(this.rIf))
+      localIntent.putExtra("get_poi_item_buf", this.MqZ.toByteArray());
+      if (!Util.isNullOrNil(this.ReV))
       {
-        localIntent.putExtra("get_poi_classify_id", this.rIf);
-        localIntent.putExtra("get_lat", this.fBB);
-        localIntent.putExtra("get_lng", this.fBC);
-        localIntent.putExtra("request_id", this.ohe);
-        if (this.rIj == null) {
+        localIntent.putExtra("get_poi_classify_id", this.ReV);
+        localIntent.putExtra("get_lat", this.oDT);
+        localIntent.putExtra("get_lng", this.oDU);
+        localIntent.putExtra("request_id", this.hOG);
+        if (this.Rfa == null) {
           break label237;
         }
-        Object localObject = this.rIj.ctJ();
+        Object localObject = this.Rfa.hmi();
         if (localObject == null) {
           break label237;
         }
-        Q((ArrayList)localObject);
+        bD((ArrayList)localObject);
         ArrayList localArrayList = new ArrayList();
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
@@ -437,131 +699,59 @@ public class LocationWidget
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.LocationWidget", localException, "", new Object[0]);
         continue;
-        if (!bo.isNullOrNil(this.city)) {
+        if (!Util.isNullOrNil(this.city)) {
           localIntent.putExtra("get_city", this.city);
         }
       }
       label237:
-      com.tencent.mm.bq.d.b(getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 10);
-      AppMethodBeat.o(38293);
+      com.tencent.mm.br.c.b(getContext(), "nearlife", "com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI", localIntent, 10);
+      l.kK(12, 10);
+      AppMethodBeat.o(97944);
     }
   }
   
-  public bap getCurLocation()
+  public void setLocationWidgetListener(a parama)
   {
-    AppMethodBeat.i(38300);
-    bap localbap = new bap();
-    localbap.wDi = this.rIh;
-    localbap.wDh = this.peL;
-    localbap.boo = this.boo;
-    localbap.rIi = this.rIi;
-    AppMethodBeat.o(38300);
-    return localbap;
-  }
-  
-  protected int getLayoutResource()
-  {
-    return 2130969996;
-  }
-  
-  public bap getLocation()
-  {
-    AppMethodBeat.i(38299);
-    bap localbap = new bap();
-    localbap.wDi = this.fBB;
-    localbap.wDh = this.fBC;
-    localbap.xpQ = 0;
-    localbap.score = this.score;
-    if (this.rId != null) {
-      localbap.xpR = new b(this.rId);
-    }
-    if (!bo.isNullOrNil(this.eSM))
-    {
-      localbap.rIe = this.rIe;
-      localbap.eSM = this.eSM;
-      localbap.xpN = this.rIf;
-      localbap.gwR = this.city;
-      if ((this.rIg != 0) && (this.rIg == 1))
-      {
-        localbap.rIg = 2;
-        ab.d("MicroMsg.LocationWidget", "getlocation type %d", new Object[] { Integer.valueOf(localbap.rIg) });
-      }
-    }
-    for (;;)
-    {
-      if (this.rIl != null)
-      {
-        String str = String.format("%f/%f", new Object[] { Float.valueOf(localbap.wDi), Float.valueOf(localbap.wDh) });
-        StringBuffer localStringBuffer = new StringBuffer();
-        localStringBuffer.append("index " + this.rIl.index);
-        localStringBuffer.append("firstStartStamp " + this.rIl.peO);
-        localStringBuffer.append("lastSuccStamp " + this.rIl.peQ);
-        localStringBuffer.append("firstSuccStamp " + this.rIl.peP);
-        localStringBuffer.append("reqLoadCnt " + this.rIl.peR);
-        localStringBuffer.append("classifyId " + this.rIf);
-        localStringBuffer.append("entryTime " + this.rIl.ogt);
-        localStringBuffer.append("searchId" + this.rIl.hng);
-        ab.d("MicroMsg.LocationWidget", "report %s", new Object[] { localStringBuffer.toString() });
-        h.qsU.e(11135, new Object[] { Integer.valueOf(5), Integer.valueOf(this.rIl.index + 1), Long.valueOf(this.rIl.peO), Long.valueOf(this.rIl.peQ), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.rIl.peP), Integer.valueOf(this.rIl.peR), str, this.rIf, Integer.valueOf(this.rIl.ogt), this.rIl.hng, q.bP(true) });
-      }
-      ctI();
-      AppMethodBeat.o(38299);
-      return localbap;
-      localbap.rIg = 1;
-      break;
-      if (!bo.isNullOrNil(this.city)) {
-        localbap.gwR = this.city;
-      }
-    }
-  }
-  
-  protected int getNormalStarImageResource()
-  {
-    return 2131232032;
-  }
-  
-  protected int getNormalStateImageResource()
-  {
-    return 2131230777;
-  }
-  
-  protected int getSelectedStarImageResource()
-  {
-    return 2131232033;
-  }
-  
-  protected int getSelectedStateImageResource()
-  {
-    return 2131230778;
-  }
-  
-  public int getShowFlag()
-  {
-    return this.dqG;
-  }
-  
-  public void setLocationWidgetListener(LocationWidget.a parama)
-  {
-    this.rIj = parama;
+    this.Rfa = parama;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(38296);
-    if (this.peF != null) {
-      this.peF.c(this.peZ);
+    AppMethodBeat.i(97947);
+    if (this.Hji != null) {
+      this.Hji.a(this.MqJ);
     }
-    if (this.ofr != null) {
-      this.ofr.a(this.oae);
+    if (this.Khx != null) {
+      this.Khx.a(this.Kcf);
     }
-    AppMethodBeat.o(38296);
+    AppMethodBeat.o(97947);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract ArrayList<Exif.a> hmi();
+    
+    public abstract boolean hmj();
+  }
+  
+  final class b
+  {
+    int Kis = 0;
+    long MqA = -1L;
+    int MqB = 0;
+    long Mqy = -1L;
+    long Mqz = -1L;
+    int index;
+    String mpa = "";
+    
+    b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.LocationWidget
  * JD-Core Version:    0.7.0.1
  */

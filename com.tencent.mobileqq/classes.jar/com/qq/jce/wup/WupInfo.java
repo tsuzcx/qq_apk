@@ -6,9 +6,9 @@ import java.util.Properties;
 
 public class WupInfo
 {
-  private static String clientBuilt = null;
-  private static String clientInfo = null;
-  private static String clientNumber = null;
+  private static String clientBuilt;
+  private static String clientInfo;
+  private static String clientNumber;
   
   static
   {
@@ -21,7 +21,7 @@ public class WupInfo
       clientInfo = localProperties.getProperty("client.info");
       clientBuilt = localProperties.getProperty("client.built");
       clientNumber = localProperties.getProperty("client.number");
-      label64:
+      label52:
       if (clientInfo == null) {
         clientInfo = "Tencent Taf";
       }
@@ -35,7 +35,7 @@ public class WupInfo
     }
     catch (Throwable localThrowable)
     {
-      break label64;
+      break label52;
     }
   }
   
@@ -57,33 +57,97 @@ public class WupInfo
   public static void main(String[] paramArrayOfString)
   {
     System.out.println(showString());
-    System.out.println("Client version: " + getClientInfo());
-    System.out.println("Client built:   " + getClientBuilt());
-    System.out.println("Client number:  " + getClientNumber());
-    System.out.println("OS Name:        " + System.getProperty("os.name"));
-    System.out.println("OS Version:     " + System.getProperty("os.version"));
-    System.out.println("Architecture:   " + System.getProperty("os.arch"));
-    System.out.println("JVM Version:    " + System.getProperty("java.runtime.version"));
-    System.out.println("JVM Vendor:     " + System.getProperty("java.vm.vendor"));
+    paramArrayOfString = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Client version: ");
+    localStringBuilder.append(getClientInfo());
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Client built:   ");
+    localStringBuilder.append(getClientBuilt());
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Client number:  ");
+    localStringBuilder.append(getClientNumber());
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OS Name:        ");
+    localStringBuilder.append(System.getProperty("os.name"));
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OS Version:     ");
+    localStringBuilder.append(System.getProperty("os.version"));
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Architecture:   ");
+    localStringBuilder.append(System.getProperty("os.arch"));
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JVM Version:    ");
+    localStringBuilder.append(System.getProperty("java.runtime.version"));
+    paramArrayOfString.println(localStringBuilder.toString());
+    paramArrayOfString = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JVM Vendor:     ");
+    localStringBuilder.append(System.getProperty("java.vm.vendor"));
+    paramArrayOfString.println(localStringBuilder.toString());
   }
   
   public static String showString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("Client version: " + getClientInfo() + "\n");
-    localStringBuffer.append("Client built:   " + getClientBuilt() + "\n");
-    localStringBuffer.append("Client number:  " + getClientNumber() + "\n");
-    localStringBuffer.append("OS Name:        " + System.getProperty("os.name") + "\n");
-    localStringBuffer.append("OS Version:     " + System.getProperty("os.version") + "\n");
-    localStringBuffer.append("Architecture:   " + System.getProperty("os.arch") + "\n");
-    localStringBuffer.append("JVM Version:    " + System.getProperty("java.runtime.version") + "\n");
-    localStringBuffer.append("JVM Vendor:     " + System.getProperty("java.vm.vendor") + "\n");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Client version: ");
+    localStringBuilder.append(getClientInfo());
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Client built:   ");
+    localStringBuilder.append(getClientBuilt());
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Client number:  ");
+    localStringBuilder.append(getClientNumber());
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OS Name:        ");
+    localStringBuilder.append(System.getProperty("os.name"));
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OS Version:     ");
+    localStringBuilder.append(System.getProperty("os.version"));
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Architecture:   ");
+    localStringBuilder.append(System.getProperty("os.arch"));
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JVM Version:    ");
+    localStringBuilder.append(System.getProperty("java.runtime.version"));
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JVM Vendor:     ");
+    localStringBuilder.append(System.getProperty("java.vm.vendor"));
+    localStringBuilder.append("\n");
+    localStringBuffer.append(localStringBuilder.toString());
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.jce.wup.WupInfo
  * JD-Core Version:    0.7.0.1
  */

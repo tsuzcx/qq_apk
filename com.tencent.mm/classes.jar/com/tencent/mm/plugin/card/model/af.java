@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.atc;
-import com.tencent.mm.protocal.protobuf.atd;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cxh;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class af
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  public String cHo;
-  private f callback;
-  public int koj;
-  public String kok;
-  private final b rr;
+  private h callback;
+  public String iaJ;
+  private final c rr;
+  public String wuA;
+  public int wuz;
   
   public af(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(87910);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new atc();
-    ((b.a)localObject).fsY = new atd();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/giftcarditem";
-    ((b.a)localObject).funcId = 652;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (atc)this.rr.fsV.fta;
-    ((atc)localObject).cHn = paramString1;
-    ((atc)localObject).xit = paramString2;
-    ((atc)localObject).xiu = paramInt;
-    AppMethodBeat.o(87910);
+    AppMethodBeat.i(112852);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cxh();
+    ((c.a)localObject).otF = new cxi();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/giftcarditem";
+    ((c.a)localObject).funcId = 1045;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cxh)c.b.b(this.rr.otB);
+    ((cxh)localObject).iaI = paramString1;
+    ((cxh)localObject).waL = paramString2;
+    ((cxh)localObject).aaCP = paramInt;
+    AppMethodBeat.o(112852);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(87911);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87911);
+    AppMethodBeat.i(112853);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(112853);
     return i;
   }
   
   public final int getType()
   {
-    return 652;
+    return 1045;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87912);
-    ab.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(112854);
+    Log.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (atd)this.rr.fsW.fta;
-      if (paramq != null)
+      params = (cxi)c.c.b(this.rr.otC);
+      if (params != null)
       {
-        this.cHo = paramq.cHo;
-        this.kok = paramq.kok;
-        this.koj = paramq.koj;
+        this.iaJ = params.iaJ;
+        this.wuA = params.wuA;
+        this.wuz = params.wuz;
       }
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(87912);
+      AppMethodBeat.o(112854);
       return;
-      paramq = (atd)this.rr.fsW.fta;
-      if (paramq != null)
+      params = (cxi)c.c.b(this.rr.otC);
+      if (params != null)
       {
-        this.cHo = paramq.cHo;
-        this.kok = paramq.kok;
-        this.koj = paramq.koj;
+        this.iaJ = params.iaJ;
+        this.wuA = params.wuA;
+        this.wuz = params.wuz;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.af
  * JD-Core Version:    0.7.0.1
  */

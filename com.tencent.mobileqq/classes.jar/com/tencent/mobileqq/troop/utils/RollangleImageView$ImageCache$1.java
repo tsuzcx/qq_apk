@@ -3,18 +3,16 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
-import bclh;
-import bclj;
 import java.util.LinkedList;
 
-public class RollangleImageView$ImageCache$1
+class RollangleImageView$ImageCache$1
   implements Runnable
 {
-  public RollangleImageView$ImageCache$1(bclh parambclh) {}
+  RollangleImageView$ImageCache$1(RollangleImageView.ImageCache paramImageCache) {}
   
   public void run()
   {
-    Object localObject1 = null;
+    RollangleImageView.ImageCache.QueueItem localQueueItem = null;
     for (;;)
     {
       if (this.this$0.a) {
@@ -26,25 +24,27 @@ public class RollangleImageView$ImageCache$1
         label19:
         synchronized (this.this$0)
         {
-          if (bclh.a(this.this$0) == null) {
+          if (RollangleImageView.ImageCache.a(this.this$0) == null) {
             return;
           }
+          if (localQueueItem != null) {
+            RollangleImageView.ImageCache.a(this.this$0).poll();
+          }
+          if (RollangleImageView.ImageCache.a(this.this$0).isEmpty()) {
+            return;
+          }
+          localQueueItem = (RollangleImageView.ImageCache.QueueItem)RollangleImageView.ImageCache.a(this.this$0).peek();
+          ??? = RollangleImageView.a(localQueueItem.a);
+          if (??? == null) {
+            continue;
+          }
+          MQLruCache localMQLruCache = RollangleImageView.c;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("troopfileimage://");
+          localStringBuilder.append(localQueueItem.a);
+          localMQLruCache.put(localStringBuilder.toString(), ???);
+          RollangleImageView.ImageCache.b(this.this$0).obtainMessage(0, new Object[] { localQueueItem.b, localQueueItem.a, ??? }).sendToTarget();
         }
-        if (localObject2 != null) {
-          bclh.a(this.this$0).poll();
-        }
-        if (bclh.a(this.this$0).isEmpty()) {
-          return;
-        }
-        bclj localbclj = (bclj)bclh.a(this.this$0).peek();
-        ??? = RollangleImageView.a(localbclj.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localbclj;
-        if (??? == null) {
-          continue;
-        }
-        RollangleImageView.a.put("troopfileimage://" + localbclj.jdField_a_of_type_JavaLangString, ???);
-        bclh.a(this.this$0).obtainMessage(0, new Object[] { localbclj.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbclj.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localbclj;
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -55,7 +55,7 @@ public class RollangleImageView$ImageCache$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache.1
  * JD-Core Version:    0.7.0.1
  */

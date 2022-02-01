@@ -3,12 +3,11 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apee;
 
 public class IPSiteModel$GameRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameRich> CREATOR = new apee();
+  public static final Parcelable.Creator<GameRich> CREATOR = new IPSiteModel.GameRich.1();
   public String anchorFaceUrl;
   public String anchorId;
   public String anchorName;
@@ -37,7 +36,30 @@ public class IPSiteModel$GameRich
   
   public String toString()
   {
-    return "GameRich{anchorFaceUrl='" + this.anchorFaceUrl + '\'' + ", anchorId='" + this.anchorId + '\'' + ", anchorName='" + this.anchorName + '\'' + ", coverUrl='" + this.coverUrl + '\'' + ", online='" + this.online + '\'' + ", title='" + this.title + '\'' + ", richJumpUrl='" + this.richJumpUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GameRich{anchorFaceUrl='");
+    localStringBuilder.append(this.anchorFaceUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", anchorId='");
+    localStringBuilder.append(this.anchorId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", anchorName='");
+    localStringBuilder.append(this.anchorName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", coverUrl='");
+    localStringBuilder.append(this.coverUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", online='");
+    localStringBuilder.append(this.online);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", title='");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", richJumpUrl='");
+    localStringBuilder.append(this.richJumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -8,7 +8,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat.Builder;
+import com.tencent.token.db.b;
 import com.tencent.token.ui.IndexActivity;
 
 public class GameLoginService
@@ -19,20 +19,6 @@ public class GameLoginService
   private Intent c;
   private final int d = 3000;
   private int e;
-  
-  private void a()
-  {
-    try
-    {
-      long l = System.currentTimeMillis();
-      this.a.set(1, l + 3000L, this.b);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -50,7 +36,9 @@ public class GameLoginService
     {
       this.e = ((int)System.currentTimeMillis());
       localObject = PendingIntent.getActivity(this, 0, this.c, 134217728);
-      localObject = new NotificationCompat.Builder(this).setContentIntent((PendingIntent)localObject).setDefaults(1).setAutoCancel(true).build();
+      db.b localb = new db.b(this, (byte)0);
+      localb.e = ((PendingIntent)localObject);
+      localObject = localb.c().b().d();
       startForeground(this.e, (Notification)localObject);
     }
   }
@@ -67,7 +55,15 @@ public class GameLoginService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     if (paramInt1 != 1) {
-      a();
+      try
+      {
+        long l = System.currentTimeMillis();
+        this.a.set(1, l + 3000L, this.b);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
     if (Build.VERSION.SDK_INT < 18) {
       return super.onStartCommand(paramIntent, paramInt1, paramInt2);

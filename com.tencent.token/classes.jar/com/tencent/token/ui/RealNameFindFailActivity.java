@@ -3,6 +3,7 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,27 +18,41 @@ public class RealNameFindFailActivity
   private void initView()
   {
     this.mBackArrow.setVisibility(4);
-    TextView localTextView1 = (TextView)findViewById(2131558753);
-    TextView localTextView2 = (TextView)findViewById(2131558754);
-    Button localButton = (Button)findViewById(2131558755);
+    TextView localTextView = (TextView)findViewById(2131165946);
+    Object localObject = (TextView)findViewById(2131165941);
+    Button localButton = (Button)findViewById(2131165940);
     if (this.mSourceId == 1) {
-      localTextView2.setText(2131231365);
+      ((TextView)localObject).setText(2131493516);
+    } else {
+      ((TextView)localObject).setText(2131493515);
     }
-    for (;;)
+    localObject = this.mErrInfoString;
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      localTextView.setText(this.mErrInfoString);
+    }
+    localButton.setOnClickListener(new View.OnClickListener()
     {
-      if ((this.mErrInfoString != null) && (this.mErrInfoString.length() > 0)) {
-        localTextView1.setText(this.mErrInfoString);
+      public final void onClick(View paramAnonymousView)
+      {
+        if (RealNameFindFailActivity.this.mSourceId == 1)
+        {
+          paramAnonymousView = new Intent(RealNameFindFailActivity.this, FindPasswdActivity.class);
+          paramAnonymousView.addFlags(67108864);
+          paramAnonymousView.putExtra("real_uin", RealNameFindFailActivity.this.mRealUin);
+          paramAnonymousView.putExtra("not_showLockVerify", true);
+          paramAnonymousView.putExtra("canchange_uin", RealNameFindFailActivity.this.canchange_uin);
+          RealNameFindFailActivity.this.startActivity(paramAnonymousView);
+          return;
+        }
+        RealNameFindFailActivity.this.finish();
       }
-      localButton.setOnClickListener(new ve(this));
-      return;
-      localTextView2.setText(2131231364);
-    }
+    });
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968628);
+    setContentView(2131296311);
     setNeverShowLockVerifyView();
     this.mSourceId = getIntent().getIntExtra("source_id", 0);
     this.mRealUin = getIntent().getLongExtra("real_uin", 0L);

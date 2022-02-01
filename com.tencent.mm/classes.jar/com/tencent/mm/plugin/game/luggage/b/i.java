@@ -1,85 +1,40 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.b.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class i
-  extends bi<f>
+  extends bv<com.tencent.luggage.d.a>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<com.tencent.luggage.d.a>.a paramb)
   {
-    AppMethodBeat.i(135872);
-    ab.i("MicroMsg.JsApiGetGameData", "invokeInMM");
-    paramString = com.tencent.luggage.g.i.ci(paramString);
-    if (paramString == null)
-    {
-      ab.e("MicroMsg.JsApiGetGameData", "data is null");
-      parama.c("null_data", null);
-      AppMethodBeat.o(135872);
-      return;
+    AppMethodBeat.i(277131);
+    Log.i("MicroMsg.JsApiCloseJsCore", "invokeInOwn");
+    if (com.tencent.mm.plugin.game.luggage.h.a.fFa() != null) {
+      com.tencent.mm.plugin.game.luggage.h.a.fFa().fFb();
     }
-    paramContext = paramString.optString("preVerifyAppId");
-    if (bo.isNullOrNil(paramContext))
-    {
-      ab.i("MicroMsg.JsApiGetGameData", "appId is null");
-      parama.c("appid_null", null);
-      AppMethodBeat.o(135872);
-      return;
-    }
-    paramString = paramString.optString("key");
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.i("MicroMsg.JsApiGetGameData", "key is null");
-      parama.c("null_key", null);
-      AppMethodBeat.o(135872);
-      return;
-    }
-    paramString = b.dav().hk(paramContext, paramString);
-    if (!bo.isNullOrNil(paramString.field_value)) {
-      paramContext = new JSONObject();
-    }
-    try
-    {
-      paramContext.put("value", paramString.field_value);
-      paramContext.put("weight", paramString.field_weight);
-      paramContext.put("expireTime", paramString.field_expireTime - System.currentTimeMillis() / 1000L);
-      label177:
-      parama.c(null, paramContext);
-      AppMethodBeat.o(135872);
-      return;
-      parama.c(null, null);
-      AppMethodBeat.o(135872);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      break label177;
-    }
+    AppMethodBeat.o(277131);
   }
   
-  public final void b(com.tencent.luggage.d.a<f>.a parama) {}
-  
-  public final int bjL()
+  public final int dgI()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "getGameData";
+    return "closeJsCore";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.i
  * JD-Core Version:    0.7.0.1
  */

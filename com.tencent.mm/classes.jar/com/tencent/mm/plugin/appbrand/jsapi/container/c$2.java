@@ -12,15 +12,15 @@ final class c$2
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(126282);
+    AppMethodBeat.i(137510);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.val$view.setY(f);
-    AppMethodBeat.o(126282);
+    AppMethodBeat.o(137510);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.c.2
  * JD-Core Version:    0.7.0.1
  */

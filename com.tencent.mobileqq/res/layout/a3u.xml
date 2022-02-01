@@ -2,7 +2,7 @@
 <FrameLayout android:layout_gravity="center|left|top" android:orientation="vertical" android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:layout_gravity="center|left|top" android:id="@id/jm8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.webviewplugin.Hole android:id="@id/d6b" android:background="#00ff0000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.biz.widgets.Hole android:id="@id/d6b" android:background="#00ff0000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <View android:background="@drawable/dkc" android:layout_width="320.0dip" android:layout_height="132.5dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="150.0dip" />
         <View android:background="@drawable/dkb" android:layout_width="74.5dip" android:layout_height="19.5dip" android:layout_marginLeft="150.0dip" android:layout_marginTop="250.0dip" />
     </FrameLayout>

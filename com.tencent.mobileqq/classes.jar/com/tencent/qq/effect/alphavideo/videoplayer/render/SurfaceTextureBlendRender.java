@@ -33,97 +33,85 @@ public class SurfaceTextureBlendRender
   
   public void draw(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
+      GLES20.glUseProgram(this.mShaderProgramOES);
+      GLES20.glClear(16384);
+      GLES20.glBindTexture(36197, this.mTexturesOES[0]);
+      GLES20.glActiveTexture(33984);
+      GLES20.glUniform1i(this.mTextureParamHandleOES, 0);
+      if (this.videoTexture != null)
       {
-        GLES20.glUseProgram(this.mShaderProgramOES);
-        GLES20.glClear(16384);
-        GLES20.glBindTexture(36197, this.mTexturesOES[0]);
-        GLES20.glActiveTexture(33984);
-        GLES20.glUniform1i(this.mTextureParamHandleOES, 0);
-        if (this.videoTexture != null)
-        {
-          this.videoTexture.updateTexImage();
-          this.videoTexture.getTransformMatrix(this.textureTransform);
-          GLES20.glEnableVertexAttribArray(this.mPositionHandleOES);
-          if (!paramBoolean)
-          {
-            GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer);
-            GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleOES);
-            GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleOES, 4, 5126, false, 0, this.textureCoordsBuffer);
-            GLES20.glUniformMatrix4fv(this.mTextureTransformHandleOES, 1, false, this.textureTransform, 0);
-            GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
-            GLES20.glDisableVertexAttribArray(this.mPositionHandleOES);
-            GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleOES);
-            GLES20.glBindTexture(36197, 0);
-            GLES20.glUseProgram(0);
-          }
+        this.videoTexture.updateTexImage();
+        this.videoTexture.getTransformMatrix(this.textureTransform);
+        GLES20.glEnableVertexAttribArray(this.mPositionHandleOES);
+        if (!paramBoolean) {
+          GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer);
+        } else {
+          GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer_horizonal_reverse);
         }
-        else
-        {
-          GLES20.glUseProgram(0);
-          GLES20.glBindTexture(36197, 0);
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        LogUtil.v("VideoPlayer|SurfaceTextureBlendRender", " Exception in draw oes");
-        paramArrayOfByte.printStackTrace();
+        GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleOES);
+        GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleOES, 4, 5126, false, 0, this.textureCoordsBuffer);
+        GLES20.glUniformMatrix4fv(this.mTextureTransformHandleOES, 1, false, this.textureTransform, 0);
+        GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
+        GLES20.glDisableVertexAttribArray(this.mPositionHandleOES);
+        GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleOES);
         GLES20.glBindTexture(36197, 0);
         GLES20.glUseProgram(0);
         return;
       }
-      GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer_horizonal_reverse);
+      GLES20.glUseProgram(0);
+      GLES20.glBindTexture(36197, 0);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      LogUtil.v("VideoPlayer|SurfaceTextureBlendRender", " Exception in draw oes");
+      paramArrayOfByte.printStackTrace();
+      GLES20.glBindTexture(36197, 0);
+      GLES20.glUseProgram(0);
     }
   }
   
   public void drawFBO(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
+      GLES20.glUseProgram(this.mShaderProgramOES);
+      GLES20.glClear(16384);
+      GLES20.glBindTexture(36197, this.mTexturesOES[0]);
+      GLES20.glActiveTexture(33984);
+      GLES20.glUniform1i(this.mTextureParamHandleOES, 0);
+      if (this.videoTexture != null)
       {
-        GLES20.glUseProgram(this.mShaderProgramOES);
-        GLES20.glClear(16384);
-        GLES20.glBindTexture(36197, this.mTexturesOES[0]);
-        GLES20.glActiveTexture(33984);
-        GLES20.glUniform1i(this.mTextureParamHandleOES, 0);
-        if (this.videoTexture != null)
-        {
-          this.videoTexture.updateTexImage();
-          this.videoTexture.getTransformMatrix(this.textureTransform);
-          GLES20.glEnableVertexAttribArray(this.mPositionHandleOES);
-          if (!paramBoolean)
-          {
-            GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer_vertical_reverse);
-            GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleOES);
-            GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleOES, 4, 5126, false, 0, this.textureCoordsBuffer);
-            GLES20.glUniformMatrix4fv(this.mTextureTransformHandleOES, 1, false, this.textureTransform, 0);
-            GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
-            GLES20.glDisableVertexAttribArray(this.mPositionHandleOES);
-            GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleOES);
-            GLES20.glBindTexture(36197, 0);
-            GLES20.glUseProgram(0);
-          }
+        this.videoTexture.updateTexImage();
+        this.videoTexture.getTransformMatrix(this.textureTransform);
+        GLES20.glEnableVertexAttribArray(this.mPositionHandleOES);
+        if (!paramBoolean) {
+          GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer_vertical_reverse);
+        } else {
+          GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer_horizonal_vertical_reverse);
         }
-        else
-        {
-          GLES20.glUseProgram(0);
-          GLES20.glBindTexture(36197, 0);
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        LogUtil.v("VideoPlayer|SurfaceTextureBlendRender", " Exception in drawFBO oes");
-        paramArrayOfByte.printStackTrace();
+        GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleOES);
+        GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleOES, 4, 5126, false, 0, this.textureCoordsBuffer);
+        GLES20.glUniformMatrix4fv(this.mTextureTransformHandleOES, 1, false, this.textureTransform, 0);
+        GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
+        GLES20.glDisableVertexAttribArray(this.mPositionHandleOES);
+        GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleOES);
         GLES20.glBindTexture(36197, 0);
         GLES20.glUseProgram(0);
         return;
       }
-      GLES20.glVertexAttribPointer(this.mPositionHandleOES, 2, 5126, false, 0, this.vertexBuffer_horizonal_vertical_reverse);
+      GLES20.glUseProgram(0);
+      GLES20.glBindTexture(36197, 0);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      LogUtil.v("VideoPlayer|SurfaceTextureBlendRender", " Exception in drawFBO oes");
+      paramArrayOfByte.printStackTrace();
+      GLES20.glBindTexture(36197, 0);
+      GLES20.glUseProgram(0);
     }
   }
   
@@ -139,9 +127,10 @@ public class SurfaceTextureBlendRender
   
   public void releaseSurface()
   {
-    if (this.mVideoSurface != null)
+    Surface localSurface = this.mVideoSurface;
+    if (localSurface != null)
     {
-      this.mVideoSurface.release();
+      localSurface.release();
       this.mVideoSurface = null;
       LogUtil.v("VideoPlayer|SurfaceTextureBlendRender", " release  surface");
     }
@@ -149,9 +138,10 @@ public class SurfaceTextureBlendRender
   
   public void releaseSurfaceTexture()
   {
-    if (this.videoTexture != null)
+    SurfaceTexture localSurfaceTexture = this.videoTexture;
+    if (localSurfaceTexture != null)
     {
-      this.videoTexture.release();
+      localSurfaceTexture.release();
       this.videoTexture = null;
       LogUtil.v("VideoPlayer|SurfaceTextureBlendRender", " release  surface texture");
     }
@@ -186,7 +176,7 @@ public class SurfaceTextureBlendRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.videoplayer.render.SurfaceTextureBlendRender
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahdr;
-import alud;
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -16,64 +16,68 @@ class ChatHistoryTroopAllFragment$4$1
   
   public void run()
   {
+    if (this.b.a != this.b.this$0.B)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("loadingContext changed, ignored result local=");
+        ((StringBuilder)localObject).append(this.b.a);
+        ((StringBuilder)localObject).append(", global=");
+        ((StringBuilder)localObject).append(this.b.this$0.B);
+        QLog.d("chatHistory.troop.msgList", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    Object localObject = this.b.this$0.u;
+    List localList = this.a;
+    int j = localList.size();
     int i = 1;
     int k = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Int)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("chatHistory.troop.msgList", 2, "loadingContext changed, ignored result local=" + this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.jdField_a_of_type_Int + ", global=" + this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Int);
-      }
-      return;
-    }
-    ahdr localahdr = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr;
-    List localList = this.jdField_a_of_type_JavaUtilList;
     boolean bool;
-    label115:
-    int m;
-    label237:
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 20)
-    {
+    if (j < 20) {
       bool = true;
-      m = localahdr.b(localList, bool);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getCount() > 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.b = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getCount() - 1)).shmsgseq;
-      }
-      if ((m == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
-        break label458;
-      }
-      if (i == 0) {
-        break label463;
-      }
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
-      k = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701992));
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.c);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getCount() == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setEmptyView(ChatHistoryTroopAllFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.notifyDataSetChanged();
-      if (i == 0) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelectionFromTop(j + m, k);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("chatHistory.troop.msgList", 2, "update position pos=" + j + ", offset=" + m + ", top=" + k);
-      return;
+    } else {
       bool = false;
-      break label115;
-      label458:
+    }
+    int m = ((ChatHistoryBubbleListAdapter)localObject).b(localList, bool);
+    if (this.b.this$0.u.getCount() > 0)
+    {
+      this.b.this$0.w = ((MessageRecord)this.b.this$0.u.getItem(0)).shmsgseq;
+      this.b.this$0.x = ((MessageRecord)this.b.this$0.u.getItem(this.b.this$0.u.getCount() - 1)).shmsgseq;
+    }
+    if ((m == 0) || (this.b.this$0.t.getChildCount() <= 0)) {
       i = 0;
-      break label237;
-      label463:
+    }
+    if (i != 0)
+    {
+      j = this.b.this$0.t.getFirstVisiblePosition();
+      k = this.b.this$0.t.getChildAt(0).getTop();
+    }
+    else
+    {
       j = 0;
+    }
+    this.b.this$0.A.setText(HardCodeUtil.a(2131899838));
+    this.b.this$0.a(this.b.this$0.u.s, this.b.this$0.u.t);
+    if (this.b.this$0.u.getCount() == 0) {
+      this.b.this$0.t.setEmptyView(ChatHistoryTroopAllFragment.a(this.b.this$0));
+    }
+    this.b.this$0.u.notifyDataSetChanged();
+    if (i != 0)
+    {
+      this.b.this$0.t.setSelectionFromTop(j + m, k);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("update position pos=");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", offset=");
+        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(", top=");
+        ((StringBuilder)localObject).append(k);
+        QLog.d("chatHistory.troop.msgList", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
 }

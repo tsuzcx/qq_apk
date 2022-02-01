@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:id="@id/e9o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/lb" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/a81" android:padding="6.0dip" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/finder_live_beauty_icon" app:iconColor="@color/ahw" />
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/a82" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" />
+</merge>

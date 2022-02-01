@@ -11,29 +11,28 @@ final class DownloadImageTask$1
 {
   private void processErrorInfo(ImageKey paramImageKey, ImageDownloadInfo paramImageDownloadInfo)
   {
-    JSONObject localJSONObject;
-    if ((paramImageKey != null) && (paramImageKey.options != null) && (paramImageDownloadInfo != null)) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if ((paramImageKey != null) && (paramImageKey.options != null) && (paramImageDownloadInfo != null))
     {
-      localJSONObject.put("问题描述", ImageTaskConst.getImageTaskErrorDescription(paramImageDownloadInfo.nocacheCode));
-      localJSONObject.put("serverIp", paramImageDownloadInfo.serverIp);
-      localJSONObject.put("clientIp", paramImageDownloadInfo.clientIp);
-      localJSONObject.put("nocacheStatus", String.valueOf(paramImageDownloadInfo.nocacheCode));
-      localJSONObject.put("filePath", paramImageKey.filePath);
-      localJSONObject.put("downloadDetailInfo", paramImageDownloadInfo.downloadDetailInfo);
-      paramImageKey.options.errCode = localJSONObject.toString();
-      ImageManagerLog.w("DownloadImageTask", "processErrorInfo, info = " + localJSONObject.toString());
-      return;
-    }
-    catch (JSONException paramImageDownloadInfo)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("问题描述", ImageTaskConst.getImageTaskErrorDescription(paramImageDownloadInfo.nocacheCode));
+        localJSONObject.put("serverIp", paramImageDownloadInfo.serverIp);
+        localJSONObject.put("clientIp", paramImageDownloadInfo.clientIp);
+        localJSONObject.put("nocacheStatus", String.valueOf(paramImageDownloadInfo.nocacheCode));
+        localJSONObject.put("filePath", paramImageKey.filePath);
+        localJSONObject.put("downloadDetailInfo", paramImageDownloadInfo.downloadDetailInfo);
+      }
+      catch (JSONException paramImageDownloadInfo)
       {
         ImageManagerLog.e("DownloadImageTask", "onDownloadFailed, Json Exception!");
         paramImageDownloadInfo.printStackTrace();
       }
+      paramImageKey.options.errCode = localJSONObject.toString();
+      paramImageKey = new StringBuilder();
+      paramImageKey.append("processErrorInfo, info = ");
+      paramImageKey.append(localJSONObject.toString());
+      ImageManagerLog.w("DownloadImageTask", paramImageKey.toString());
     }
   }
   
@@ -55,55 +54,57 @@ final class DownloadImageTask$1
     DownloadImageTask localDownloadImageTask = (DownloadImageTask)DownloadImageTask.access$000().remove(paramString);
     ImageTracer.downloadFail(paramString);
     ProgressTracer.print(1001, paramString);
-    ImageKey localImageKey;
-    int j;
-    int k;
-    int i;
     if (localDownloadImageTask != null)
     {
-      localImageKey = localDownloadImageTask.getImageKey();
+      ImageKey localImageKey = localDownloadImageTask.getImageKey();
       if ((localImageKey != null) && (localImageKey.options != null) && (paramImageDownloadInfo != null))
       {
-        j = paramImageDownloadInfo.failCode;
-        k = paramImageDownloadInfo.retCode;
-        if (paramImageDownloadInfo.retCode >= 0) {
-          break label309;
+        int j = paramImageDownloadInfo.failCode;
+        int k = paramImageDownloadInfo.retCode;
+        int i;
+        if (paramImageDownloadInfo.retCode < 0) {
+          i = 1;
+        } else {
+          i = 2;
         }
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("问题描述", ImageTaskConst.getImageTaskErrorDescription(paramImageDownloadInfo.retCode));
-        localJSONObject.put("failCode", String.valueOf(j));
-        localJSONObject.put("exceptionCode", String.valueOf(k));
-        localJSONObject.put("serverIp", paramImageDownloadInfo.serverIp);
-        localJSONObject.put("clientIp", paramImageDownloadInfo.clientIp);
-        localJSONObject.put("errType", String.valueOf(i));
-        localJSONObject.put("url", paramString);
-        localImageKey.options.errCode = localJSONObject.toString();
-        ImageManagerLog.e("DownloadImageTask", "onDownloadFailed, failCode=" + paramImageDownloadInfo.failCode + ", exceptionCode=" + paramImageDownloadInfo.retCode + ", serverIp=" + paramImageDownloadInfo.serverIp + ", clientIp=" + paramImageDownloadInfo.clientIp + ", contentType=" + paramImageDownloadInfo.contentType + "， url=" + paramString);
-        if ((localImageKey != null) && (localImageKey.urlKey != null))
+        Object localObject = new JSONObject();
+        try
         {
-          ImageTaskTracer.removeImageDownloadRecord(localImageKey.urlKey);
-          ImageTaskTracer.addImageDownloadFailedRecord(localImageKey.urlKey);
+          ((JSONObject)localObject).put("问题描述", ImageTaskConst.getImageTaskErrorDescription(paramImageDownloadInfo.retCode));
+          ((JSONObject)localObject).put("failCode", String.valueOf(j));
+          ((JSONObject)localObject).put("exceptionCode", String.valueOf(k));
+          ((JSONObject)localObject).put("serverIp", paramImageDownloadInfo.serverIp);
+          ((JSONObject)localObject).put("clientIp", paramImageDownloadInfo.clientIp);
+          ((JSONObject)localObject).put("errType", String.valueOf(i));
+          ((JSONObject)localObject).put("url", paramString);
         }
-        localDownloadImageTask.setResult(1, new Object[] { paramString });
-        return;
-        label309:
-        i = 2;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
+        catch (JSONException localJSONException)
         {
           ImageManagerLog.e("DownloadImageTask", "onDownloadFailed, Json Exception!");
           localJSONException.printStackTrace();
         }
+        localImageKey.options.errCode = ((JSONObject)localObject).toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDownloadFailed, failCode=");
+        ((StringBuilder)localObject).append(paramImageDownloadInfo.failCode);
+        ((StringBuilder)localObject).append(", exceptionCode=");
+        ((StringBuilder)localObject).append(paramImageDownloadInfo.retCode);
+        ((StringBuilder)localObject).append(", serverIp=");
+        ((StringBuilder)localObject).append(paramImageDownloadInfo.serverIp);
+        ((StringBuilder)localObject).append(", clientIp=");
+        ((StringBuilder)localObject).append(paramImageDownloadInfo.clientIp);
+        ((StringBuilder)localObject).append(", contentType=");
+        ((StringBuilder)localObject).append(paramImageDownloadInfo.contentType);
+        ((StringBuilder)localObject).append("， url=");
+        ((StringBuilder)localObject).append(paramString);
+        ImageManagerLog.e("DownloadImageTask", ((StringBuilder)localObject).toString());
       }
+      if ((localImageKey != null) && (localImageKey.urlKey != null))
+      {
+        ImageTaskTracer.removeImageDownloadRecord(localImageKey.urlKey);
+        ImageTaskTracer.addImageDownloadFailedRecord(localImageKey.urlKey);
+      }
+      localDownloadImageTask.setResult(1, new Object[] { paramString });
     }
   }
   
@@ -141,7 +142,12 @@ final class DownloadImageTask$1
     if ((paramString2 != null) && (paramString2.options != null)) {
       paramString2.options.errCode = ImageManager.getErrorString(paramString2, 800);
     }
-    ImageManagerLog.w("DownloadImageTask", "onDownloadSucceed, canDecode = " + bool + ", url=" + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("onDownloadSucceed, canDecode = ");
+    paramString2.append(bool);
+    paramString2.append(", url=");
+    paramString2.append(paramString1);
+    ImageManagerLog.w("DownloadImageTask", paramString2.toString());
     localDownloadImageTask.setResult(1, new Object[] { paramString1 });
   }
   
@@ -158,7 +164,7 @@ final class DownloadImageTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.DownloadImageTask.1
  * JD-Core Version:    0.7.0.1
  */

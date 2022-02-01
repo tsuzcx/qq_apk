@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dpr" android:background="@drawable/k" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="56.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.ThemeImageView android:id="@id/e7j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:src="@drawable/bza" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/e85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/afe" android:maxLines="1" android:singleLine="true" android:layout_toRightOf="@id/e7j" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/j_" android:textColor="@color/skin_gray3" android:ellipsize="end" android:gravity="center|right" android:id="@id/ian" android:layout_width="130.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="14.0dip" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/dce" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/dce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iu" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dpr" android:background="@drawable/6j" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/e7j" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/i4p" />
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/oc6" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="34.0dip" app:dinifly_loop="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/e85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/afe" android:maxLines="1" android:singleLine="true" />
+</LinearLayout>

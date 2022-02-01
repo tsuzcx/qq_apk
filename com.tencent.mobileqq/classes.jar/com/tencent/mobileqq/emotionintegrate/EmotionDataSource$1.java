@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import aqae;
-import aqah;
-import aqai;
 import java.util.List;
 
-public class EmotionDataSource$1
+class EmotionDataSource$1
   implements Runnable
 {
-  public EmotionDataSource$1(aqah paramaqah, boolean paramBoolean, aqai paramaqai, aqae paramaqae) {}
+  EmotionDataSource$1(EmotionDataSource paramEmotionDataSource, boolean paramBoolean, EmotionDataSource.DataLoadListener paramDataLoadListener, EmoticonPreviewData paramEmoticonPreviewData) {}
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Aqai != null) {
-      this.jdField_a_of_type_Aqai.a(localList, this.jdField_a_of_type_Aqae);
+    List localList = this.this$0.a(this.a);
+    EmotionDataSource.DataLoadListener localDataLoadListener = this.b;
+    if (localDataLoadListener != null) {
+      localDataLoadListener.a(localList, this.c);
     }
   }
 }

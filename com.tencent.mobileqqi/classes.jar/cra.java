@@ -1,45 +1,15 @@
-import QQService.DiscussMemberInfo;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class cra
-  extends FriendListObserver
+class cra
+  implements Runnable
 {
-  private cra(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  cra(cqz paramcqz, Bitmap paramBitmap) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    Object localObject;
-    if ((paramBoolean) && (this.a.jdField_a_of_type_JavaUtilList != null))
-    {
-      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (!this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
-      {
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() == this.a.c)
-        {
-          paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.f);
-          this.a.runOnUiThread(new crb(this, paramString));
-        }
-      }
-      return;
-    }
+    this.jdField_a_of_type_Cqz.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

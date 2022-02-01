@@ -20,18 +20,18 @@ public abstract class AbstractAVDecode
   
   private static boolean isLoadDecodeLib()
   {
-    if (!sInitedStatus) {
-      if (ShortVideoSoLoad.getShortVideoSoLoadStatus() != 0) {
-        break label26;
-      }
-    }
-    label26:
-    for (boolean bool = true;; bool = false)
+    if (!sInitedStatus)
     {
+      boolean bool;
+      if (ShortVideoSoLoad.getShortVideoSoLoadStatus() == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       soLoaded = bool;
       sInitedStatus = true;
-      return soLoaded;
     }
+    return soLoaded;
   }
   
   public abstract void close();
@@ -48,7 +48,7 @@ public abstract class AbstractAVDecode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.video.decode.AbstractAVDecode
  * JD-Core Version:    0.7.0.1
  */

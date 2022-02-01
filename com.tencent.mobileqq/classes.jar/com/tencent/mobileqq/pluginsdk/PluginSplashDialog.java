@@ -5,14 +5,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Handler;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class PluginSplashDialog
-  extends Dialog
+  extends ReportDialog
 {
   private Handler mHandler = new PluginSplashDialog.InternalHandler(this);
   private String mPluginApk;
   private String mPluginName;
-  private BroadcastReceiver mReceiver;
+  private BroadcastReceiver mReceiver = null;
   private int mTimeOut;
   
   public PluginSplashDialog(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2)
@@ -25,22 +26,20 @@ public class PluginSplashDialog
   
   public void dismiss()
   {
-    if (this.mReceiver != null) {}
-    try
+    if (this.mReceiver != null)
     {
-      getContext().unregisterReceiver(this.mReceiver);
-      this.mReceiver = null;
-      this.mHandler.removeMessages(0);
-      super.dismiss();
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
+      try
+      {
+        getContext().unregisterReceiver(this.mReceiver);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
         localIllegalArgumentException.printStackTrace();
       }
+      this.mReceiver = null;
     }
+    this.mHandler.removeMessages(0);
+    super.dismiss();
   }
   
   public void show()
@@ -67,7 +66,7 @@ public class PluginSplashDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginSplashDialog
  * JD-Core Version:    0.7.0.1
  */

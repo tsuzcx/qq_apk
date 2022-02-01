@@ -1,77 +1,42 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class ac
-  extends LinearLayout
+public abstract class ac
+  implements View.OnClickListener
 {
-  private String hint;
-  private EditText jfo;
-  private ImageView lzc;
-  private Context mContext;
-  private ImageButton mEh;
-  private ac.a zeN;
+  private long JqZ = -1L;
   
-  public ac(Context paramContext)
+  public abstract void dsb();
+  
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    AppMethodBeat.i(112462);
-    this.mContext = paramContext;
-    ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2130968615, this, true);
-    this.lzc = ((ImageView)findViewById(2131820989));
-    this.lzc.setOnClickListener(new ac.1(this));
-    this.jfo = ((EditText)findViewById(2131820990));
-    this.jfo.requestFocus();
-    this.mEh = ((ImageButton)findViewById(2131820991));
-    this.mEh.setOnClickListener(new ac.2(this));
-    this.jfo.addTextChangedListener(new TextWatcher()
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    Log.i("MicroMsg.MMCustomClickListener", "button onclick");
+    if (this.JqZ != -1L)
     {
-      public final void afterTextChanged(Editable paramAnonymousEditable)
+      long l = (System.nanoTime() - this.JqZ) / 1000000L;
+      if (l < 3000L)
       {
-        AppMethodBeat.i(112461);
-        if ((paramAnonymousEditable != null) && (paramAnonymousEditable.length() > 0))
-        {
-          ac.c(ac.this).setVisibility(0);
-          AppMethodBeat.o(112461);
-          return;
-        }
-        ac.c(ac.this).setVisibility(8);
-        AppMethodBeat.o(112461);
+        Log.i("MicroMsg.MMCustomClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(3000L) });
+        a.a(this, "com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        return;
       }
-      
-      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-      
-      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-    });
-    AppMethodBeat.o(112462);
-  }
-  
-  public final EditText getSearchEditText()
-  {
-    return this.jfo;
-  }
-  
-  public final void setHint(String paramString)
-  {
-    this.hint = paramString;
-  }
-  
-  public final void setSearchViewListener(ac.a parama)
-  {
-    this.zeN = parama;
+    }
+    this.JqZ = System.nanoTime();
+    dsb();
+    a.a(this, "com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.ac
  * JD-Core Version:    0.7.0.1
  */

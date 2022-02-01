@@ -1,190 +1,190 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import i.a.a.b;
 
 public final class m
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String jJD;
-  public String jJE;
-  public String jJF;
-  public String jJG;
-  public String jJH;
-  public int jJI;
-  public long jJJ;
+  public String vgV;
+  public String vgW;
+  public String vgX;
+  public String vgY;
+  public String vgZ;
+  public int vha;
+  public long vhb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(18060);
+    AppMethodBeat.i(22117);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.jJD == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.vgV == null)
       {
         paramVarArgs = new b("Not all required fields were included: DeviceID");
-        AppMethodBeat.o(18060);
+        AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.jJE == null)
+      if (this.vgW == null)
       {
         paramVarArgs = new b("Not all required fields were included: DeviceName");
-        AppMethodBeat.o(18060);
+        AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.jJF == null)
+      if (this.vgX == null)
       {
         paramVarArgs = new b("Not all required fields were included: Model");
-        AppMethodBeat.o(18060);
+        AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.jJG == null)
+      if (this.vgY == null)
       {
         paramVarArgs = new b("Not all required fields were included: SystemName");
-        AppMethodBeat.o(18060);
+        AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.jJH == null)
+      if (this.vgZ == null)
       {
         paramVarArgs = new b("Not all required fields were included: SystemVersion");
-        AppMethodBeat.o(18060);
+        AppMethodBeat.o(22117);
         throw paramVarArgs;
       }
-      if (this.jJD != null) {
-        paramVarArgs.e(1, this.jJD);
+      if (this.vgV != null) {
+        paramVarArgs.g(1, this.vgV);
       }
-      if (this.jJE != null) {
-        paramVarArgs.e(2, this.jJE);
+      if (this.vgW != null) {
+        paramVarArgs.g(2, this.vgW);
       }
-      if (this.jJF != null) {
-        paramVarArgs.e(3, this.jJF);
+      if (this.vgX != null) {
+        paramVarArgs.g(3, this.vgX);
       }
-      if (this.jJG != null) {
-        paramVarArgs.e(4, this.jJG);
+      if (this.vgY != null) {
+        paramVarArgs.g(4, this.vgY);
       }
-      if (this.jJH != null) {
-        paramVarArgs.e(5, this.jJH);
+      if (this.vgZ != null) {
+        paramVarArgs.g(5, this.vgZ);
       }
-      paramVarArgs.aO(6, this.jJI);
-      paramVarArgs.am(7, this.jJJ);
-      AppMethodBeat.o(18060);
+      paramVarArgs.bS(6, this.vha);
+      paramVarArgs.bv(7, this.vhb);
+      AppMethodBeat.o(22117);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jJD == null) {
-        break label811;
+      if (this.vgV == null) {
+        break label807;
       }
     }
-    label811:
-    for (int i = e.a.a.b.b.a.f(1, this.jJD) + 0;; i = 0)
+    label807:
+    for (int i = i.a.a.b.b.a.h(1, this.vgV) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.jJE != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.jJE);
+      if (this.vgW != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.vgW);
       }
       i = paramInt;
-      if (this.jJF != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.jJF);
+      if (this.vgX != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.vgX);
       }
       paramInt = i;
-      if (this.jJG != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.jJG);
+      if (this.vgY != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.vgY);
       }
       i = paramInt;
-      if (this.jJH != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.jJH);
+      if (this.vgZ != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.vgZ);
       }
-      paramInt = e.a.a.b.b.a.bl(6, this.jJI);
-      int j = e.a.a.b.b.a.p(7, this.jJJ);
-      AppMethodBeat.o(18060);
+      paramInt = i.a.a.b.b.a.cJ(6, this.vha);
+      int j = i.a.a.b.b.a.q(7, this.vhb);
+      AppMethodBeat.o(22117);
       return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.jJD == null)
+        if (this.vgV == null)
         {
           paramVarArgs = new b("Not all required fields were included: DeviceID");
-          AppMethodBeat.o(18060);
+          AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.jJE == null)
+        if (this.vgW == null)
         {
           paramVarArgs = new b("Not all required fields were included: DeviceName");
-          AppMethodBeat.o(18060);
+          AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.jJF == null)
+        if (this.vgX == null)
         {
           paramVarArgs = new b("Not all required fields were included: Model");
-          AppMethodBeat.o(18060);
+          AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.jJG == null)
+        if (this.vgY == null)
         {
           paramVarArgs = new b("Not all required fields were included: SystemName");
-          AppMethodBeat.o(18060);
+          AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        if (this.jJH == null)
+        if (this.vgZ == null)
         {
           paramVarArgs = new b("Not all required fields were included: SystemVersion");
-          AppMethodBeat.o(18060);
+          AppMethodBeat.o(22117);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(18060);
+        AppMethodBeat.o(22117);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         m localm = (m)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(18060);
+          AppMethodBeat.o(22117);
           return -1;
         case 1: 
-          localm.jJD = locala.CLY.readString();
-          AppMethodBeat.o(18060);
+          localm.vgV = locala.ajGk.readString();
+          AppMethodBeat.o(22117);
           return 0;
         case 2: 
-          localm.jJE = locala.CLY.readString();
-          AppMethodBeat.o(18060);
+          localm.vgW = locala.ajGk.readString();
+          AppMethodBeat.o(22117);
           return 0;
         case 3: 
-          localm.jJF = locala.CLY.readString();
-          AppMethodBeat.o(18060);
+          localm.vgX = locala.ajGk.readString();
+          AppMethodBeat.o(22117);
           return 0;
         case 4: 
-          localm.jJG = locala.CLY.readString();
-          AppMethodBeat.o(18060);
+          localm.vgY = locala.ajGk.readString();
+          AppMethodBeat.o(22117);
           return 0;
         case 5: 
-          localm.jJH = locala.CLY.readString();
-          AppMethodBeat.o(18060);
+          localm.vgZ = locala.ajGk.readString();
+          AppMethodBeat.o(22117);
           return 0;
         case 6: 
-          localm.jJI = locala.CLY.sl();
-          AppMethodBeat.o(18060);
+          localm.vha = locala.ajGk.aar();
+          AppMethodBeat.o(22117);
           return 0;
         }
-        localm.jJJ = locala.CLY.sm();
-        AppMethodBeat.o(18060);
+        localm.vhb = locala.ajGk.aaw();
+        AppMethodBeat.o(22117);
         return 0;
       }
-      AppMethodBeat.o(18060);
+      AppMethodBeat.o(22117);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.m
  * JD-Core Version:    0.7.0.1
  */

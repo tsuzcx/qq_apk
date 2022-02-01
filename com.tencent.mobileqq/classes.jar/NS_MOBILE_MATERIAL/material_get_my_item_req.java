@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class material_get_my_item_req
   extends JceStruct
 {
-  public int iAppid;
-  public long lUin;
+  public int iAppid = 0;
+  public long lUin = 0L;
   
   public material_get_my_item_req() {}
   
@@ -32,7 +32,7 @@ public final class material_get_my_item_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_get_my_item_req
  * JD-Core Version:    0.7.0.1
  */

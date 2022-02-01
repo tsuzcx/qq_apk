@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_set_red_key_data_rsp
   extends JceStruct
 {
-  public int rsp_code;
+  public int rsp_code = 0;
   public String rsp_msg = "";
   
   public mobile_set_red_key_data_rsp() {}
@@ -27,14 +27,15 @@ public final class mobile_set_red_key_data_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.rsp_code, 0);
-    if (this.rsp_msg != null) {
-      paramJceOutputStream.write(this.rsp_msg, 1);
+    String str = this.rsp_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_set_red_key_data_rsp
  * JD-Core Version:    0.7.0.1
  */

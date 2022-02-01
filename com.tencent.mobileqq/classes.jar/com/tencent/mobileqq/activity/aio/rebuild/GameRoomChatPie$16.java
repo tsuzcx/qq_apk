@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqq;
-import android.support.v4.app.FragmentActivity;
-import bemq;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 import mqq.os.MqqHandler;
 
-public class GameRoomChatPie$16
+class GameRoomChatPie$16
   implements Runnable
 {
-  public GameRoomChatPie$16(agqq paramagqq) {}
+  GameRoomChatPie$16(GameRoomChatPie paramGameRoomChatPie) {}
   
   public void run()
   {
     synchronized (this.this$0)
     {
-      if (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+      if (this.this$0.f.isFinishing()) {
         return;
       }
-      this.this$0.jdField_a_of_type_Bemq.a(this.this$0.a(), this.this$0);
-      agqq.a(this.this$0).post(new GameRoomChatPie.16.1(this));
+      this.this$0.bC.a(this.this$0.aX(), this.this$0);
+      GameRoomChatPie.d(this.this$0).post(new GameRoomChatPie.16.1(this));
       return;
     }
   }

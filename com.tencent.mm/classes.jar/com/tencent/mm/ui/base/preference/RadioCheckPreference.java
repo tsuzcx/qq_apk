@@ -10,17 +10,19 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 
 public class RadioCheckPreference
   extends Preference
 {
-  private TextView ubi;
-  private int ubj;
-  private String ubk;
-  private int ubl;
-  private boolean vxW;
-  private CheckBox zqy;
-  private int zqz;
+  private int VpO;
+  private String VpP;
+  private int VpQ;
+  private TextView Vtv;
+  private CheckBox adXS;
+  private int adXT;
+  private boolean duj;
   
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,68 +32,68 @@ public class RadioCheckPreference
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107286);
-    this.vxW = false;
-    this.ubj = -1;
-    this.ubk = "";
-    this.ubl = 8;
-    this.zqz = -1;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107286);
+    AppMethodBeat.i(142666);
+    this.duj = false;
+    this.VpO = -1;
+    this.VpP = "";
+    this.VpQ = 8;
+    this.adXT = -1;
+    setLayoutResource(a.h.mm_preference);
+    AppMethodBeat.o(142666);
+  }
+  
+  public final void Hy(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142669);
+    this.duj = paramBoolean;
+    if (this.adXS != null) {
+      this.adXS.setChecked(paramBoolean);
+    }
+    AppMethodBeat.o(142669);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107288);
+    AppMethodBeat.i(142668);
     super.onBindView(paramView);
-    OW(8);
-    this.zqy = ((CheckBox)paramView.findViewById(2131826260));
-    this.zqy.setChecked(this.vxW);
-    this.ubi = ((TextView)paramView.findViewById(2131826257));
-    paramView = this.ubk;
-    int i = this.ubj;
-    this.ubj = i;
-    this.ubk = paramView;
-    if (this.ubi != null)
+    aBq(8);
+    this.adXS = ((CheckBox)paramView.findViewById(a.g.radiocheck));
+    this.adXS.setChecked(this.duj);
+    this.Vtv = ((TextView)paramView.findViewById(a.g.tipicon));
+    paramView = this.VpP;
+    int i = this.VpO;
+    this.VpO = i;
+    this.VpP = paramView;
+    if (this.Vtv != null)
     {
       if (i > 0) {
-        this.ubi.setBackgroundResource(this.ubj);
+        this.Vtv.setBackgroundResource(this.VpO);
       }
-      if (!TextUtils.isEmpty(this.ubk)) {
-        this.ubi.setText(this.ubk);
+      if (!TextUtils.isEmpty(this.VpP)) {
+        this.Vtv.setText(this.VpP);
       }
     }
-    this.ubl = this.ubl;
-    if (this.ubi != null) {
-      this.ubi.setVisibility(this.ubl);
+    this.VpQ = this.VpQ;
+    if (this.Vtv != null) {
+      this.Vtv.setVisibility(this.VpQ);
     }
-    paramView = (LinearLayout.LayoutParams)this.zqy.getLayoutParams();
-    if (-1 != this.zqz) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.zqz, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.adXS.getLayoutParams();
+    if (-1 != this.adXT) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.adXT, paramView.bottomMargin);
     }
-    AppMethodBeat.o(107288);
+    AppMethodBeat.o(142668);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107287);
+    AppMethodBeat.i(142667);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970262, localViewGroup);
-    AppMethodBeat.o(107287);
+    localLayoutInflater.inflate(a.h.mm_preference_summary_radio_check, localViewGroup);
+    AppMethodBeat.o(142667);
     return paramViewGroup;
-  }
-  
-  public final void qH(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107289);
-    this.vxW = paramBoolean;
-    if (this.zqy != null) {
-      this.zqy.setChecked(paramBoolean);
-    }
-    AppMethodBeat.o(107289);
   }
 }
 

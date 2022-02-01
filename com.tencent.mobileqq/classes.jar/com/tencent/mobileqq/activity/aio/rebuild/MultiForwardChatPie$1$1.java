@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agso;
-import agsp;
-
-public class MultiForwardChatPie$1$1
+class MultiForwardChatPie$1$1
   implements Runnable
 {
-  public MultiForwardChatPie$1$1(agsp paramagsp) {}
+  MultiForwardChatPie$1$1(MultiForwardChatPie.1 param1) {}
   
   public void run()
   {
-    this.a.a.br();
+    this.a.a.bA();
   }
 }
 

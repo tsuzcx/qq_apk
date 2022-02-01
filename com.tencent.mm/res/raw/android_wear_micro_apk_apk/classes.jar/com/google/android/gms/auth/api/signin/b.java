@@ -12,16 +12,16 @@ public final class b
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramGoogleSignInAccount.versionCode);
     c.a(paramParcel, 2, paramGoogleSignInAccount.getId());
-    c.a(paramParcel, 3, paramGoogleSignInAccount.fN());
-    c.a(paramParcel, 4, paramGoogleSignInAccount.fO());
+    c.a(paramParcel, 3, paramGoogleSignInAccount.fX());
+    c.a(paramParcel, 4, paramGoogleSignInAccount.fY());
     c.a(paramParcel, 5, paramGoogleSignInAccount.getDisplayName());
-    c.a(paramParcel, 6, paramGoogleSignInAccount.fR(), paramInt);
-    c.a(paramParcel, 7, paramGoogleSignInAccount.fS());
-    c.a(paramParcel, 8, paramGoogleSignInAccount.fT());
-    c.a(paramParcel, 9, paramGoogleSignInAccount.fU());
-    c.a(paramParcel, 10, paramGoogleSignInAccount.Gy);
-    c.a(paramParcel, 11, paramGoogleSignInAccount.fP());
-    c.a(paramParcel, 12, paramGoogleSignInAccount.fQ());
+    c.a(paramParcel, 6, paramGoogleSignInAccount.gb(), paramInt);
+    c.a(paramParcel, 7, paramGoogleSignInAccount.gd());
+    c.a(paramParcel, 8, paramGoogleSignInAccount.ge());
+    c.a(paramParcel, 9, paramGoogleSignInAccount.gf());
+    c.a(paramParcel, 10, paramGoogleSignInAccount.In);
+    c.a(paramParcel, 11, paramGoogleSignInAccount.fZ());
+    c.a(paramParcel, 12, paramGoogleSignInAccount.ga());
     c.v(paramParcel, i);
   }
 }

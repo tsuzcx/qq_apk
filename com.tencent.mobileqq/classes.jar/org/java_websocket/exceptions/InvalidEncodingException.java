@@ -9,10 +9,12 @@ public class InvalidEncodingException
   
   public InvalidEncodingException(UnsupportedEncodingException paramUnsupportedEncodingException)
   {
-    if (paramUnsupportedEncodingException == null) {
-      throw new IllegalArgumentException();
+    if (paramUnsupportedEncodingException != null)
+    {
+      this.encodingException = paramUnsupportedEncodingException;
+      return;
     }
-    this.encodingException = paramUnsupportedEncodingException;
+    throw new IllegalArgumentException();
   }
   
   public UnsupportedEncodingException getEncodingException()
@@ -22,7 +24,7 @@ public class InvalidEncodingException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.exceptions.InvalidEncodingException
  * JD-Core Version:    0.7.0.1
  */

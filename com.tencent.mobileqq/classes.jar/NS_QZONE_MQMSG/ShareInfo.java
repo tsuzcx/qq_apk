@@ -11,9 +11,9 @@ public final class ShareInfo
   static ShareCell cache_shareToFriend = new ShareCell();
   static ShareCell cache_shareToQzone = new ShareCell();
   static single_feed cache_single_feed_data = new single_feed();
-  public ShareCell shareToFriend;
-  public ShareCell shareToQzone;
-  public single_feed single_feed_data;
+  public ShareCell shareToFriend = null;
+  public ShareCell shareToQzone = null;
+  public single_feed single_feed_data = null;
   
   public ShareInfo() {}
   
@@ -33,20 +33,23 @@ public final class ShareInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.shareToFriend != null) {
-      paramJceOutputStream.write(this.shareToFriend, 0);
+    Object localObject = this.shareToFriend;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.shareToQzone != null) {
-      paramJceOutputStream.write(this.shareToQzone, 1);
+    localObject = this.shareToQzone;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.single_feed_data != null) {
-      paramJceOutputStream.write(this.single_feed_data, 2);
+    localObject = this.single_feed_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.ShareInfo
  * JD-Core Version:    0.7.0.1
  */

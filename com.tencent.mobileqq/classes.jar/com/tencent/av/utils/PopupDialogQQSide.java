@@ -6,23 +6,22 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bdgm;
-import bdjz;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import mvd;
-import mve;
-import mvf;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class PopupDialogQQSide
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
 {
-  public bdjz a = null;
+  QQCustomDialog a = null;
   
   void a()
   {
-    if (this.a != null)
+    QQCustomDialog localQQCustomDialog = this.a;
+    if (localQQCustomDialog != null)
     {
-      this.a.dismiss();
+      localQQCustomDialog.dismiss();
       this.a = null;
     }
   }
@@ -30,48 +29,45 @@ public class PopupDialogQQSide
   void b()
   {
     Object localObject1 = (Bundle)getArguments().getParcelable("request");
-    int k = ((Bundle)localObject1).getInt("type", 230);
+    int m = ((Bundle)localObject1).getInt("type", 230);
     String str1 = ((Bundle)localObject1).getString("titleText");
     String str2 = ((Bundle)localObject1).getString("contentText");
-    int i = ((Bundle)localObject1).getInt("leftBtnText", 0);
-    int j = ((Bundle)localObject1).getInt("rightBtnText", 0);
+    int j = ((Bundle)localObject1).getInt("leftBtnText", 0);
+    int k = ((Bundle)localObject1).getInt("rightBtnText", 0);
     Object localObject2 = (ResultReceiver)((Bundle)localObject1).getParcelable("resultReceiver");
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new mvd(this, (ResultReceiver)localObject2);
-    localObject2 = new mve(this, (ResultReceiver)localObject2);
-    if (i == 0) {
-      i = 2131721336;
+    localObject1 = new PopupDialogQQSide.1(this, (ResultReceiver)localObject2);
+    localObject2 = new PopupDialogQQSide.2(this, (ResultReceiver)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = 2131917882;
     }
-    for (;;)
-    {
-      if (j == 0) {
-        j = 2131721336;
-      }
-      for (;;)
-      {
-        bdjz localbdjz = bdgm.a(getActivity(), k);
-        localbdjz.setMessage(str2);
-        localbdjz.setTitle(str1);
-        if (bool1) {
-          localbdjz.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
-        }
-        if (bool2) {
-          localbdjz.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
-        }
-        localbdjz.setOnDismissListener(new mvf(this));
-        localbdjz.setCancelable(true);
-        localbdjz.show();
-        this.a = localbdjz;
-        return;
-      }
+    j = k;
+    if (k == 0) {
+      j = 2131917882;
     }
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(getQBaseActivity(), m);
+    localQQCustomDialog.setMessage(str2);
+    localQQCustomDialog.setTitle(str1);
+    if (bool1) {
+      localQQCustomDialog.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+    }
+    if (bool2) {
+      localQQCustomDialog.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+    }
+    localQQCustomDialog.setOnDismissListener(new PopupDialogQQSide.3(this));
+    localQQCustomDialog.setCancelable(true);
+    localQQCustomDialog.show();
+    this.a = localQQCustomDialog;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -88,7 +84,7 @@ public class PopupDialogQQSide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialogQQSide
  * JD-Core Version:    0.7.0.1
  */

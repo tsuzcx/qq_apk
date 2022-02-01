@@ -9,6 +9,7 @@
             <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/mbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_toRightOf="@id/dgu" android:layout_centerVertical="true" />
             <Button android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/l8e" android:background="@drawable/hho" android:clickable="true" android:layout_width="90.0dip" android:layout_height="30.0dip" android:layout_marginRight="@dimen/mw" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         </RelativeLayout>
+        <com.tencent.gdtad.views.canvas.components.danmaku.GdtDanmakuPresenter android:layout_gravity="top" android:id="@id/nyw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
     </FrameLayout>
     <com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView android:id="@id/crt" android:layout_width="fill_parent" android:layout_height="1024.0dip">
         <View android:id="@id/lxq" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />

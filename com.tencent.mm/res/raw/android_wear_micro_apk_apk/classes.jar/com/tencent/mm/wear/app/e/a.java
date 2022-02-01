@@ -2,11 +2,11 @@ package com.tencent.mm.wear.app.e;
 
 public final class a
 {
-  public int aaN;
-  public int aaO;
-  public byte[] aaR;
-  public int aef;
-  public int aeg;
+  public int aeo;
+  public int aep;
+  public byte[] aes;
+  public int ahH;
+  public int ahI;
 }
 
 

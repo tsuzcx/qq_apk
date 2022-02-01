@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/zm" android:paddingTop="@dimen/l5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/r4" android:showDividers="middle"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:profile="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/ax2" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6i" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b21" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6j" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b3f" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/nc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/axb" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6k" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/ccz" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6l" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b2_" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6m" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b24" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b6n" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/b28" />
-    <View android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="@dimen/g8" android:layout_marginLeft="@dimen/g2" android:layout_marginRight="@dimen/g2" />
+<LinearLayout android:gravity="left" style="@style/gq"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b3p" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="vertical" android:id="@id/b47" android:background="@drawable/lv" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cd" android:layout_width="@dimen/zb" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b60" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b6m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="2" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/cd">
+                <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/b6h" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cd" android:text="" android:maxLines="2" android:layout_weight="1.0" />
+                <ImageView android:id="@id/b6i" android:background="@color/BW_90" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/icons_outlined_location" android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

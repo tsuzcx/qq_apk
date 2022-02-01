@@ -1,222 +1,39 @@
 package com.tencent.mm.media.c;
 
-import a.f.a.m;
-import a.f.b.j;
-import a.l;
-import a.y;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.nio.ByteBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/decoder/IAudioDecoder;", "", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacSampleRate", "", "getAacSampleRate", "()I", "setAacSampleRate", "(I)V", "audioChannelCount", "getAudioChannelCount", "setAudioChannelCount", "getAudioId", "()Ljava/lang/String;", "setAudioId", "(Ljava/lang/String;)V", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "getBufferInfo", "()Landroid/media/MediaCodec$BufferInfo;", "setBufferInfo", "(Landroid/media/MediaCodec$BufferInfo;)V", "decodeFrame", "", "getDecodeFrame", "()Z", "setDecodeFrame", "(Z)V", "decodeStartTick", "getDecodeStartTick", "()J", "setDecodeStartTick", "(J)V", "decoder", "Landroid/media/MediaCodec;", "getDecoder", "()Landroid/media/MediaCodec;", "setDecoder", "(Landroid/media/MediaCodec;)V", "decoderStop", "getDecoderStop", "setDecoderStop", "getEndTimeMs", "setEndTimeMs", "getFrameDecodeCallback", "()Lkotlin/jvm/functions/Function2;", "setFrameDecodeCallback", "(Lkotlin/jvm/functions/Function2;)V", "getFrameDecodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameDecodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "mMediaFormat", "Landroid/media/MediaFormat;", "getMMediaFormat", "()Landroid/media/MediaFormat;", "setMMediaFormat", "(Landroid/media/MediaFormat;)V", "getMediaExtractorWrapper", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "setMediaExtractorWrapper", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;)V", "mime", "getMime", "setMime", "getStartTimeMs", "setStartTimeMs", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalDecodeTime", "getTotalDecodeTime", "setTotalDecodeTime", "getChannelCount", "getSampleRate", "processDecodeBuffer", "byteBuffer", "Ljava/nio/ByteBuffer;", "startDecoder", "stopDecoder", "Companion", "plugin-mediaeditor_release"})
-public abstract class a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/constant/GLShaderConstant;", "", "()V", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a
 {
-  private static final int eRQ = 2048;
-  private static final int eRR = 4096;
-  public static final a.a eRS = new a.a((byte)0);
-  long aZw;
-  String ceu;
-  private String cfP;
-  protected MediaCodec eRD;
-  volatile boolean eRE;
-  public int eRF;
-  public int eRG;
-  final Object eRH;
-  long eRI;
-  private long eRJ;
-  private boolean eRK;
-  MediaCodec.BufferInfo eRL;
-  com.tencent.mm.media.e.a eRM;
-  long eRN;
-  private m<? super byte[], ? super Long, y> eRO;
-  private a.f.a.a<y> eRP;
-  MediaFormat mMediaFormat;
+  public static final a.a nxX;
+  private static final String nxY;
+  private static final String nxZ;
+  private static final String nya;
+  private static final String nyb;
+  private static final String nyc;
+  private static final String nyd;
+  private static final String nye;
+  private static final String vertexShaderCode;
   
-  public a(com.tencent.mm.media.e.a parama, String paramString, long paramLong1, long paramLong2, m<? super byte[], ? super Long, y> paramm, a.f.a.a<y> parama1)
+  static
   {
-    this.eRM = parama;
-    this.ceu = paramString;
-    this.aZw = paramLong1;
-    this.eRN = paramLong2;
-    this.eRO = paramm;
-    this.eRP = parama1;
-    this.eRH = new Object();
-    this.eRL = new MediaCodec.BufferInfo();
-    this.cfP = "";
-    this.mMediaFormat = this.eRM.eUU;
-    ab.i("MicroMsg.IAudioDecoder", "create MediaCodecAACDecoder, audioId:" + this.ceu + ", startTimeMs:" + this.aZw + ", endTimeMs:" + this.eRN + ", mediaFormat:" + this.mMediaFormat);
-    if (this.mMediaFormat != null)
-    {
-      parama = this.mMediaFormat;
-      if (parama == null) {
-        j.ebi();
-      }
-      this.eRF = parama.getInteger("channel-count");
-      parama = this.mMediaFormat;
-      if (parama != null) {
-        parama.setInteger("max-input-size", this.eRF * 16384);
-      }
-      parama = this.mMediaFormat;
-      if (parama == null) {
-        j.ebi();
-      }
-      this.eRG = parama.getInteger("sample-rate");
-      parama = this.mMediaFormat;
-      if (parama == null) {
-        j.ebi();
-      }
-      parama = parama.getString("mime");
-      j.p(parama, "mMediaFormat!!.getString(MediaFormat.KEY_MIME)");
-      this.cfP = parama;
-      parama = this.mMediaFormat;
-      if ((parama != null) && (parama.containsKey("encoder-delay") == true))
-      {
-        parama = this.mMediaFormat;
-        if (parama != null) {
-          parama.setInteger("encoder-delay", 0);
-        }
-      }
-      parama = this.mMediaFormat;
-      if ((parama != null) && (parama.containsKey("encoder-padding") == true))
-      {
-        parama = this.mMediaFormat;
-        if (parama != null) {
-          parama.setInteger("encoder-padding", 0);
-        }
-      }
-      this.eRM.UU();
-      if (this.aZw >= 0L) {
-        this.eRM.seek(this.aZw * 1000L);
-      }
-      parama = MediaCodec.createDecoderByType(this.cfP);
-      j.p(parama, "MediaCodec.createDecoderByType(mime)");
-      this.eRD = parama;
-      parama = this.eRD;
-      if (parama == null) {
-        j.ays("decoder");
-      }
-      parama.configure(this.mMediaFormat, null, null, 0);
-    }
-  }
-  
-  public final void UA()
-  {
-    ab.a("MicroMsg.IAudioDecoder", "stop decoder", new Object[0]);
-    synchronized (this.eRH)
-    {
-      ab.i("MicroMsg.IAudioDecoder", "stopDecoder in lock");
-      try
-      {
-        if (!this.eRE)
-        {
-          this.eRE = true;
-          localObject2 = this.eRD;
-          if (localObject2 == null) {
-            j.ays("decoder");
-          }
-          ((MediaCodec)localObject2).stop();
-          localObject2 = this.eRD;
-          if (localObject2 == null) {
-            j.ays("decoder");
-          }
-          ((MediaCodec)localObject2).release();
-          this.eRP.invoke();
-          ab.i("MicroMsg.IAudioDecoder", hashCode() + " total decode used " + this.eRJ);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          ab.printErrStackTrace("MicroMsg.IAudioDecoder", (Throwable)localException, "stopDecoder error", new Object[0]);
-        }
-      }
-      localObject2 = y.BMg;
-      return;
-    }
-  }
-  
-  protected final MediaCodec Uy()
-  {
-    MediaCodec localMediaCodec = this.eRD;
-    if (localMediaCodec == null) {
-      j.ays("decoder");
-    }
-    return localMediaCodec;
-  }
-  
-  public abstract void Uz();
-  
-  protected final void e(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    j.q(paramBufferInfo, "bufferInfo");
-    if (paramByteBuffer != null)
-    {
-      paramByteBuffer.position(paramBufferInfo.offset);
-      paramByteBuffer.limit(paramBufferInfo.offset + paramBufferInfo.size);
-      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
-      paramByteBuffer.position(0);
-      paramByteBuffer.get(arrayOfByte);
-      int i;
-      label187:
-      int j;
-      int k;
-      if (arrayOfByte.length == 0)
-      {
-        i = 1;
-        if (i != 0) {
-          return;
-        }
-        ab.i("MicroMsg.IAudioDecoder", "decoder pcmData size:" + arrayOfByte.length + ", pts:" + paramBufferInfo.presentationTimeUs + ", audioId:" + this.ceu);
-        long l = bo.av(this.eRI);
-        this.eRJ += l;
-        ab.i("MicroMsg.IAudioDecoder", hashCode() + " decode frame cost " + l);
-        this.eRK = true;
-        if (this.eRF != 1) {
-          break label338;
-        }
-        i = eRQ;
-        if (arrayOfByte.length <= i) {
-          break label352;
-        }
-        j = arrayOfByte.length;
-        k = 0;
-        label202:
-        if (j <= 0) {
-          return;
-        }
-        if (j <= i) {
-          break label345;
-        }
-      }
-      label338:
-      label345:
-      for (int m = i;; m = j)
-      {
-        paramByteBuffer = new byte[m];
-        System.arraycopy(arrayOfByte, k, paramByteBuffer, 0, m);
-        j -= m;
-        k += m;
-        ab.i("MicroMsg.IAudioDecoder", "split ret pcmData, leftSize:" + j + ", sizeOffset:" + k + ", maxBufferSize:" + i + ", copySize:" + m + ", data.size:" + paramByteBuffer.length);
-        this.eRO.h(paramByteBuffer, Long.valueOf(paramBufferInfo.presentationTimeUs));
-        break label202;
-        i = 0;
-        break;
-        i = eRR;
-        break label187;
-      }
-      label352:
-      this.eRO.h(arrayOfByte, Long.valueOf(paramBufferInfo.presentationTimeUs));
-    }
+    AppMethodBeat.i(236894);
+    nxX = new a.a((byte)0);
+    vertexShaderCode = "#version 300 es\n            precision highp float;\n            layout(location = 0) in vec4 a_position;\n            layout(location = 1) in vec2 a_texCoord;\n            uniform mat4 uMatrix;\n            out vec2 v_texCoord;\n            void main() {\n                v_texCoord = a_texCoord;\n                gl_Position = uMatrix * a_position;\n            }\n            ";
+    nxY = "#version 300 es\n            precision highp float;\n            layout(location = 0) out vec4 outColor;\n\n            uniform float xoffset;\n\n            uniform sampler2D inTexture;\n            in vec2 v_texCoord;\n\n            void main() {\n                float yCoord = v_texCoord.y;\n                float xCoord = v_texCoord.x;\n                vec4 color0 = texture(inTexture, vec2(xCoord, yCoord));\n                outColor[0] = -0.168736 * color0.r - 0.331264 * color0.g + 0.5 * color0.b + 0.5;\n                outColor[1] = 0.5 * color0.r - 0.418688 * color0.g - 0.081312 * color0.b + 0.5;\n\n                vec4 color1 = texture(inTexture, vec2(xCoord + xoffset * 2.0, yCoord));\n                outColor[2] = -0.168736 * color1.r - 0.331264 * color1.g + 0.5 * color1.b + 0.5;\n                outColor[3] = 0.5 * color1.r - 0.418688 * color1.g - 0.081312 * color1.b + 0.5;\n            }\n        ";
+    nxZ = "#version 300 es\n            precision highp float;\n\n            layout(location = 0) in vec4 a_position;\n            layout(location = 1) in vec2 a_texCoord;\n\n            uniform mat4 uMatrix;\n\n            out vec2 v_texCoord;\n            out float nextLine;\n\n            void main() {\n                v_texCoord = a_texCoord;\n                gl_Position = uMatrix * a_position;\n                nextLine = gl_Position.x;\n            }\n            ";
+    nya = "#version 300 es\n            precision highp float;\n            layout(location = 0) out vec4 outColor;\n\n            uniform float xoffset;\n\n            uniform sampler2D inTexture;\n            in vec2 v_texCoord;\n\n            void main() {\n                float xCoord = v_texCoord.x;\n                float yCoord = v_texCoord.y;\n                for (int i = 0; i < 4; i++) {\n                    float offsetXCoord = xCoord + float(i) * xoffset;\n                    vec4 color = texture(inTexture, vec2(offsetXCoord, yCoord));\n                    outColor[i] = 0.299 * color.r + 0.587 * color.g + 0.114 * color.b;\n                }\n            }\n        ";
+    nyb = "#version 300 es\n            precision highp float;\n            layout(location = 0) out vec4 outColor;\n\n            uniform float xoffset;\n            uniform float yoffset;\n            uniform vec4 preMultip;\n\n            uniform sampler2D inTexture;\n            in vec2 v_texCoord;\n            in float nextLine;\n\n            float getPointValue(float xCoord, float yCoord) {\n                vec4 color0 = texture(inTexture, vec2(xCoord, yCoord));\n                vec4 color1 = texture(inTexture, vec2(xCoord + xoffset, yCoord));\n                vec4 color2 = texture(inTexture, vec2(xCoord, yCoord - yoffset));\n                vec4 color3 = texture(inTexture, vec2(xCoord + xoffset, yCoord - yoffset));\n                vec4 values = preMultip * mat4(color0, color1, color2, color3);\n                float res = 0.0;\n                for (int i = 0; i < 4; i++) {\n                    res += values[i];\n                }\n                return res / 4.0;\n            }\n\n            void main() {\n                float nl = step(0.0, nextLine);\n                float xCoord = (v_texCoord.x * 2.0) - nl;\n                float yCoord = v_texCoord.y - nl * 2.0 * yoffset;\n\n                for (int i = 0; i < 4; i++) {\n                    outColor[i] = getPointValue(xCoord + float(i) * 2.0 * xoffset, yCoord);\n                }\n\n                outColor = outColor + 0.5;\n            }\n        ";
+    nyc = "#version 300 es\n            precision highp float;\n            layout(location = 0) in vec4 a_position;\n            layout(location = 1) in vec2 a_texCoord;\n            uniform float useY;\n            uniform float texLeft;\n            out vec2 v_texCoord;\n            out float texturePosY;\n            out float scaledYuvGap;\n            out float leftOffset;\n            void main() {\n                v_texCoord = a_texCoord;\n                texturePosY = (a_position.y + 1.0) / 2.0;\n                gl_Position = a_position;\n                scaledYuvGap = 0.33333333 * (1.0 - texLeft * 2.0);\n                leftOffset = texLeft;\n            }\n            ";
+    nyd = "#version 300 es\n            precision highp float;\n            layout(location = 0) out vec4 outColor;\n\n            uniform float useY;\n            uniform float xoffset;\n            float yuvGap = 0.33333333;\n            uniform float flipX;\n            uniform float flipY;\n\n            uniform sampler2D inTexture;\n            in vec2 v_texCoord;\n            in float texturePosY;\n            in float scaledYuvGap;\n            in float leftOffset;\n\n            float processScaleOffset(float base, float scale) {\n                return (base - leftOffset) * scale + leftOffset;\n            }\n\n            void fillYData() {\n                float flippedX = flipX * processScaleOffset(v_texCoord.x, 1.5)\n                    + (1.0 - flipX) * processScaleOffset(v_texCoord.x - scaledYuvGap, 1.5);\n                float flippedY = flipY * v_texCoord.y * 1.5 + (1.0 - flipY) * (v_texCoord.y - yuvGap) * 1.5;\n                float xCoord = useY * v_texCoord.x + (1.0 - useY) * flippedX;\n                float yCoord = (1.0 - useY) * v_texCoord.y + useY * flippedY;\n                for (int i = 0; i < 4; i++) {\n                    float of = float(i) * xoffset;\n                    vec4 color = texture(inTexture, vec2(\n                        xCoord + useY * (flipY * (0.0 - of) + (1.0 - flipY) * of),\n                        yCoord + (1.0 - useY) * (flipX * of + (1.0 - flipX) * (0.0 - of))));\n                    outColor[i] = 0.299 * color.r + 0.587 * color.g + 0.114 * color.b;\n                }\n            }\n\n            void fillUVData() {\n                float flippedX = (1.0 - flipX) * processScaleOffset(v_texCoord.x, 3.0)\n                    + flipX * processScaleOffset(v_texCoord.x - scaledYuvGap * 2.0, 3.0);\n                float flippedY = (1.0 - flipY) * v_texCoord.y * 3.0 + flipY * (v_texCoord.y - yuvGap * 2.0) * 3.0;\n                float xCoord = useY * v_texCoord.x + (1.0 - useY) * flippedX;\n                float yCoord = (1.0 - useY) * v_texCoord.y + useY * flippedY;\n                vec4 color0 = texture(inTexture, vec2(xCoord, yCoord));\n                outColor[0] = -0.168736 * color0.r - 0.331264 * color0.g + 0.5 * color0.b + 0.5;\n                outColor[1] = 0.5 * color0.r - 0.418688 * color0.g - 0.081312 * color0.b + 0.5;\n\n                float of = xoffset * 2.0;\n                vec4 color1 = texture(inTexture, vec2(\n                    xCoord + useY * (flipY * (0.0 - of) + (1.0 - flipY) * of),\n                    yCoord + (1.0 - useY) * (flipX * of + (1.0 - flipX) * (0.0 - of))));\n                outColor[2] = -0.168736 * color1.r - 0.331264 * color1.g + 0.5 * color1.b + 0.5;\n                outColor[3] = 0.5 * color1.r - 0.418688 * color1.g - 0.081312 * color1.b + 0.5;\n            }\n\n            void main() {\n                if (texturePosY > yuvGap) {\n                    fillYData();\n                } else {\n                    fillUVData();\n                }\n            }\n        ";
+    nye = "#version 300 es\n            precision highp float;\n            layout(location = 0) out vec4 outColor;\n\n            uniform float useY;\n            uniform float xoffset;\n            uniform float yoffset;\n            float yuvGap = 0.33333333;\n            float uvGap = 0.16666667;\n            uniform float flipX;\n            uniform float flipY;\n\n            uniform sampler2D inTexture;\n            in vec2 v_texCoord;\n            in float texturePosY;\n            in float texturePosX;\n            in float scaledYuvGap;\n            in float scaledUvGap;\n            in float leftOffset;\n            in float scaleRatio;\n\n            float processScaleOffset(float base, float scale) {\n                return (base - leftOffset) * scale + leftOffset;\n            }\n\n            void fillYData() {\n                float flippedX = flipX * processScaleOffset(v_texCoord.x, 1.5)\n                    + (1.0 - flipX) * processScaleOffset(v_texCoord.x - scaledYuvGap, 1.5);\n                float flippedY = flipY * v_texCoord.y * 1.5 + (1.0 - flipY) * (v_texCoord.y - yuvGap) * 1.5;\n                float xCoord = useY * v_texCoord.x + (1.0 - useY) * flippedX;\n                float yCoord = (1.0 - useY) * v_texCoord.y + useY * flippedY;\n                for (int i = 0; i < 4; i++) {\n                    float of = float(i) * xoffset;\n                    vec4 color = texture(inTexture, vec2(\n                        xCoord + useY * (flipY * (0.0 - of) + (1.0 - flipY) * of),\n                        yCoord + (1.0 - useY) * (flipX * of + (1.0 - flipX) * (0.0 - of))));\n                    outColor[i] = 0.299 * color.r + 0.587 * color.g + 0.114 * color.b;\n                }\n            }\n\n            void fillUData() {\n                float texOffsetY = step(0.0, texturePosX) * yoffset;\n                float flippedX = (1.0 - flipX) * processScaleOffset(v_texCoord.x - scaledUvGap, 6.0)\n                    + flipX * processScaleOffset(v_texCoord.x - scaledYuvGap * 2.0, 6.0) + texOffsetY;\n                float flippedY = (1.0 - flipY) * (v_texCoord.y - uvGap) * 6.0\n                    + flipY * (v_texCoord.y - yuvGap) * 6.0 + texOffsetY;\n                float xCoord = useY * (processScaleOffset(v_texCoord.x, 2.0) - step(0.5, v_texCoord.x) * scaleRatio) + (1.0 - useY) * flippedX;\n                float yCoord = (1.0 - useY) * (v_texCoord.y * 2.0 - step(0.5, v_texCoord.y)) + useY * flippedY;\n                for (int i = 0; i < 4; i++) {\n                    float of = float(i) * xoffset;\n                    vec4 color = texture(inTexture, vec2(\n                        xCoord + useY * (flipY * (0.0 - of) + (1.0 - flipY) * of),\n                        yCoord + (1.0 - useY) * (flipX * of + (1.0 - flipX) * (0.0 - of))));\n                    outColor[i] = -0.168736 * color.r - 0.331264 * color.g + 0.5 * color.b + 0.5;\n                }\n            }\n            void fillVData() {\n                float texOffsetY = step(0.0, texturePosX) * yoffset;\n                float flippedX = (1.0 - flipX) * processScaleOffset(v_texCoord.x, 6.0)\n                    + flipX * processScaleOffset(v_texCoord.x - scaledUvGap - scaledYuvGap * 2.0, 6.0) + texOffsetY;\n                float flippedY = (1.0 - flipY) * v_texCoord.y * 6.0\n                    + flipY * (v_texCoord.y - uvGap - yuvGap) * 6.0 + texOffsetY;\n                float xCoord = useY * (processScaleOffset(v_texCoord.x, 2.0) - step(0.5, v_texCoord.x) * scaleRatio) + (1.0 - useY) * flippedX;\n                float yCoord = (1.0 - useY) * (v_texCoord.y * 2.0 - step(0.5, v_texCoord.y)) + useY * flippedY;\n                for (int i = 0; i < 4; i++) {\n                    float of = float(i) * xoffset;\n                    vec4 color = texture(inTexture, vec2(\n                        xCoord + useY * (flipY * (0.0 - of) + (1.0 - flipY) * of),\n                        yCoord + (1.0 - useY) * (flipX * of + (1.0 - flipX) * (0.0 - of))));\n                    outColor[i] = 0.5 * color.r - 0.418688 * color.g - 0.081312 * color.b + 0.5;\n                }\n            }\n\n            void main() {\n                if (texturePosY > yuvGap) {\n                    fillYData();\n                } else if (texturePosY > uvGap) {\n                    fillUData();\n                } else {\n                    fillVData();\n                }\n                // V U Y\n            }\n        ";
+    AppMethodBeat.o(236894);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.c.a
  * JD-Core Version:    0.7.0.1
  */

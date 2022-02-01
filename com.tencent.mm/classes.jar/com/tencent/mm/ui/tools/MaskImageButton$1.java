@@ -9,15 +9,15 @@ final class MaskImageButton$1
   
   public final void run()
   {
-    AppMethodBeat.i(107741);
-    this.Awq.setPressed(false);
-    this.Awq.invalidate();
-    AppMethodBeat.o(107741);
+    AppMethodBeat.i(143199);
+    this.afJE.setPressed(false);
+    this.afJE.invalidate();
+    AppMethodBeat.o(143199);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MaskImageButton.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.sns.ui.widget.SnsAdBreakFrameVideoView android:id="@id/jp3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jp2" android:layout_width="0.0dip" android:layout_height="0.0dip">
+        <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/k1h" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</com.tencent.mm.plugin.sns.ui.widget.SnsAdBreakFrameVideoView>

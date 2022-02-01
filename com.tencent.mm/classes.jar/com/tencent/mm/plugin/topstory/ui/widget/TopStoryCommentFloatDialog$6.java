@@ -11,14 +11,14 @@ final class TopStoryCommentFloatDialog$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(2248);
-    this.tmJ.cKD();
-    AppMethodBeat.o(2248);
+    AppMethodBeat.i(126655);
+    this.TQC.hPa();
+    AppMethodBeat.o(126655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.TopStoryCommentFloatDialog.6
  * JD-Core Version:    0.7.0.1
  */

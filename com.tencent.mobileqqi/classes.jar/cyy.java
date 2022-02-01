@@ -1,32 +1,25 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
 
 public class cyy
-  implements OverScrollViewListener
+  implements View.OnClickListener
 {
-  public cyy(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
+  public cyy(PeopleAroundBaseActivity paramPeopleAroundBaseActivity, View paramView1, Drawable[] paramArrayOfDrawable, LinearLayout paramLinearLayout, View paramView2) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) {
+      PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setCompoundDrawables(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
+    }
+    PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.b);
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
-    this.a.a(true, true);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -41,7 +41,8 @@ public class GPUAvgPixelsFilter
     GLES31.glBindImageTexture(0, paramInt1, 0, true, 0, 35000, 32856);
     checkGlError("fill inputImage texture");
     GLES20.glBindBuffer(37074, paramArrayOfInt[0]);
-    GLES20.glBufferData(37074, paramInt2 * paramInt3 * 4, null, 35049);
+    int i = paramInt2 * paramInt3 * 4;
+    GLES20.glBufferData(37074, i, null, 35049);
     GLES30.glBindBufferBase(37074, 1, paramArrayOfInt[0]);
     GLES20.glBindBuffer(37074, 0);
     checkGlError("fill avgData buffer");
@@ -55,37 +56,32 @@ public class GPUAvgPixelsFilter
     checkGlError("fill uniform  imageWidth");
     paramInt1 = getAlignment16(paramInt2);
     paramInt4 = getAlignment16(paramInt3);
-    if (paramInt1 % 8 == 0)
-    {
+    if (paramInt1 % 8 == 0) {
       paramInt1 /= 8;
-      if (paramInt4 % 8 != 0) {
-        break label248;
-      }
-      paramInt4 /= 8;
-    }
-    for (;;)
-    {
-      GLES31.glDispatchCompute(paramInt1, paramInt4, 1);
-      checkGlError("glDispatchCompute");
-      GLES31.glMemoryBarrier(32);
-      checkGlError("glMemoryBarrier");
-      GLES20.glBindBuffer(37074, paramArrayOfInt[0]);
-      paramArrayOfInt = GLES30.glMapBufferRange(37074, 0, paramInt2 * paramInt3 * 4, 1);
-      checkGlError("glMapBufferRange");
-      paramArrayOfInt = copyDataGpuToCpu(paramInt3, paramInt2, paramArrayOfInt);
-      GLES30.glUnmapBuffer(37074);
-      GLES20.glBindBuffer(37074, 0);
-      return paramArrayOfInt;
+    } else {
       paramInt1 = paramInt1 / 8 + 1;
-      break;
-      label248:
+    }
+    if (paramInt4 % 8 == 0) {
+      paramInt4 /= 8;
+    } else {
       paramInt4 = paramInt4 / 8 + 1;
     }
+    GLES31.glDispatchCompute(paramInt1, paramInt4, 1);
+    checkGlError("glDispatchCompute");
+    GLES31.glMemoryBarrier(32);
+    checkGlError("glMemoryBarrier");
+    GLES20.glBindBuffer(37074, paramArrayOfInt[0]);
+    paramArrayOfInt = GLES30.glMapBufferRange(37074, 0, i, 1);
+    checkGlError("glMapBufferRange");
+    paramArrayOfInt = copyDataGpuToCpu(paramInt3, paramInt2, paramArrayOfInt);
+    GLES30.glUnmapBuffer(37074);
+    GLES20.glBindBuffer(37074, 0);
+    return paramArrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.computeShader.GPUAvgPixelsFilter
  * JD-Core Version:    0.7.0.1
  */

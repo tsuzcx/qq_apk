@@ -1,7 +1,7 @@
 package io.flutter.embedding.engine.systemchannels;
 
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.JSONMethodCodec;
@@ -27,7 +27,7 @@ public class LocalizationChannel
     Log.v("LocalizationChannel", "Sending Locales to Flutter.");
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Locale localLocale = (Locale)localIterator.next();
       paramList = new StringBuilder();
@@ -41,20 +41,20 @@ public class LocalizationChannel
       Log.v("LocalizationChannel", paramList.toString());
       localArrayList.add(localLocale.getLanguage());
       localArrayList.add(localLocale.getCountry());
-      if (Build.VERSION.SDK_INT >= 21) {}
-      for (paramList = localLocale.getScript();; paramList = "")
-      {
-        localArrayList.add(paramList);
-        localArrayList.add(localLocale.getVariant());
-        break;
+      if (Build.VERSION.SDK_INT >= 21) {
+        paramList = localLocale.getScript();
+      } else {
+        paramList = "";
       }
+      localArrayList.add(paramList);
+      localArrayList.add(localLocale.getVariant());
     }
     this.channel.invokeMethod("setLocale", localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.LocalizationChannel
  * JD-Core Version:    0.7.0.1
  */

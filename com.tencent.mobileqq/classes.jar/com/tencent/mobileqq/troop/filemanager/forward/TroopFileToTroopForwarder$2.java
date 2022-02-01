@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.troop.filemanager.forward;
 
-import alud;
 import android.content.res.Resources;
-import bbwv;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class TroopFileToTroopForwarder$2
+class TroopFileToTroopForwarder$2
   implements Runnable
 {
-  public TroopFileToTroopForwarder$2(bbwv parambbwv) {}
+  TroopFileToTroopForwarder$2(TroopFileToTroopForwarder paramTroopFileToTroopForwarder) {}
   
   public void run()
   {
-    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131298914);
-    QQToast.a(BaseApplicationImpl.sApplication, alud.a(2131715764), 0).b(i);
+    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131299920);
+    QQToast.makeText(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131912639), 0).show(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.2
  * JD-Core Version:    0.7.0.1
  */

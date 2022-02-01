@@ -4,7 +4,7 @@ import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.view.TextureRegistry.SurfaceTextureEntry;
 
@@ -45,7 +45,7 @@ final class FlutterRenderer$SurfaceTextureRegistryEntry
     localStringBuilder.append(").");
     Log.v("FlutterRenderer", localStringBuilder.toString());
     this.surfaceTexture.release();
-    FlutterRenderer.access$400(this.this$0, this.id);
+    FlutterRenderer.access$500(this.this$0, this.id);
     this.released = true;
   }
   
@@ -57,7 +57,7 @@ final class FlutterRenderer$SurfaceTextureRegistryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.renderer.FlutterRenderer.SurfaceTextureRegistryEntry
  * JD-Core Version:    0.7.0.1
  */

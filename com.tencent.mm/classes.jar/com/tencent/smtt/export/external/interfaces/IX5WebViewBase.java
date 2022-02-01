@@ -101,6 +101,8 @@ public abstract interface IX5WebViewBase
   
   public abstract View getView();
   
+  public abstract int getVisibility();
+  
   public abstract int getVisibleTitleHeight();
   
   public abstract IX5WebViewExtension getX5WebViewExtension();
@@ -177,7 +179,7 @@ public abstract interface IX5WebViewBase
   
   public abstract void setDownloadListener(DownloadListener paramDownloadListener);
   
-  public abstract void setFindListener(IX5WebViewBase.FindListener paramFindListener);
+  public abstract void setFindListener(FindListener paramFindListener);
   
   public abstract void setHorizontalScrollbarOverlay(boolean paramBoolean);
   
@@ -190,7 +192,7 @@ public abstract interface IX5WebViewBase
   
   public abstract void setNetworkAvailable(boolean paramBoolean);
   
-  public abstract void setPictureListener(IX5WebViewBase.PictureListener paramPictureListener);
+  public abstract void setPictureListener(PictureListener paramPictureListener);
   
   public abstract void setVerticalScrollbarOverlay(boolean paramBoolean);
   
@@ -206,6 +208,11 @@ public abstract interface IX5WebViewBase
   public abstract boolean zoomIn();
   
   public abstract boolean zoomOut();
+  
+  public static abstract interface FindListener
+  {
+    public abstract void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean);
+  }
   
   public static class HitTestResult
   {
@@ -223,10 +230,20 @@ public abstract interface IX5WebViewBase
     public static final int SRC_IMAGE_ANCHOR_TYPE = 8;
     public static final int UNKNOWN_TYPE = 0;
     private Object mData;
+    private DeepImageData mDeepImageData;
     private String mExtra;
-    private boolean mIsFromSinglePress = false;
+    private boolean mIsFromSinglePress;
     private Point mPoint;
-    private int mType = 0;
+    private int mType;
+    
+    public HitTestResult()
+    {
+      AppMethodBeat.i(53222);
+      this.mIsFromSinglePress = false;
+      this.mPoint = new Point(0, 0);
+      this.mType = 0;
+      AppMethodBeat.o(53222);
+    }
     
     protected Bitmap getBitmapData()
     {
@@ -238,6 +255,11 @@ public abstract interface IX5WebViewBase
       return this.mData;
     }
     
+    public DeepImageData getDeepImageData()
+    {
+      return this.mDeepImageData;
+    }
+    
     public String getExtra()
     {
       return this.mExtra;
@@ -245,9 +267,9 @@ public abstract interface IX5WebViewBase
     
     public Point getHitTestPoint()
     {
-      AppMethodBeat.i(63818);
+      AppMethodBeat.i(53223);
       Point localPoint = new Point(this.mPoint);
-      AppMethodBeat.o(63818);
+      AppMethodBeat.o(53223);
       return localPoint;
     }
     
@@ -264,6 +286,11 @@ public abstract interface IX5WebViewBase
     public void setData(Object paramObject)
     {
       this.mData = paramObject;
+    }
+    
+    public void setDeepImageData(DeepImageData paramDeepImageData)
+    {
+      this.mDeepImageData = paramDeepImageData;
     }
     
     public void setExtra(String paramString)
@@ -286,12 +313,41 @@ public abstract interface IX5WebViewBase
       this.mType = paramInt;
     }
     
-    public class EditableData
+    public class DeepImageData
     {
-      public String mEditableText;
-      public boolean mIsPassword;
+      public Bitmap mBmp;
+      public long mHeight;
+      public String mPicUrl;
+      public long mRawDataSize;
+      public long mWidth;
       
-      public EditableData() {}
+      public DeepImageData() {}
+      
+      public Bitmap getBitmap()
+      {
+        AppMethodBeat.i(53219);
+        Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
+        AppMethodBeat.o(53219);
+        return localBitmap;
+      }
+    }
+    
+    public class ImageAnchorData
+    {
+      public String mAHref;
+      public Bitmap mBmp;
+      public String mPicUrl;
+      public long mRawDataSize;
+      
+      public ImageAnchorData() {}
+      
+      public Bitmap getBitmap()
+      {
+        AppMethodBeat.i(53220);
+        Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
+        AppMethodBeat.o(53220);
+        return localBitmap;
+      }
     }
     
     public class ImageData
@@ -306,39 +362,59 @@ public abstract interface IX5WebViewBase
       
       public Bitmap getBitmap()
       {
-        AppMethodBeat.i(63817);
+        AppMethodBeat.i(53221);
         Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
-        AppMethodBeat.o(63817);
+        AppMethodBeat.o(53221);
         return localBitmap;
       }
     }
   }
   
-  public static class ImageInfo
+  @Deprecated
+  public static abstract interface PictureListener
   {
-    public boolean mIsGif;
-    public String mPicUrl;
-    public long mRawDataSize;
+    @Deprecated
+    public abstract void onNewPicture(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture, boolean paramBoolean);
     
-    public long getPicSize()
+    public abstract void onNewPictureIfHaveContent(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture);
+  }
+  
+  public static class WebViewTransport
+  {
+    private IX5WebViewBase mWebview;
+    
+    public IX5WebViewBase getWebView()
     {
-      return this.mRawDataSize;
+      try
+      {
+        IX5WebViewBase localIX5WebViewBase = this.mWebview;
+        return localIX5WebViewBase;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
     }
     
-    public String getPicUrl()
+    public void setWebView(IX5WebViewBase paramIX5WebViewBase)
     {
-      return this.mPicUrl;
-    }
-    
-    public boolean isGif()
-    {
-      return this.mIsGif;
+      try
+      {
+        this.mWebview = paramIX5WebViewBase;
+        return;
+      }
+      finally
+      {
+        paramIX5WebViewBase = finally;
+        throw paramIX5WebViewBase;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebViewBase
  * JD-Core Version:    0.7.0.1
  */

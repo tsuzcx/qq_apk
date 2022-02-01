@@ -1,66 +1,40 @@
 package com.tencent.xweb.sys;
 
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.webkit.WebResourceRequest;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.a.a;
-import com.tencent.xweb.r;
-import java.util.Map;
 
 public final class c$e
-  implements r
+  extends com.tencent.xweb.JsResult
 {
-  private boolean BHm;
-  private boolean BHn;
-  a BHo;
-  private String method;
-  private Uri url;
-  private Map<String, String> vOs;
+  public android.webkit.JsResult aime;
   
-  public c$e(WebResourceRequest paramWebResourceRequest)
+  public c$e(android.webkit.JsResult paramJsResult)
   {
-    AppMethodBeat.i(84658);
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      this.url = paramWebResourceRequest.getUrl();
-      this.BHm = paramWebResourceRequest.isForMainFrame();
-      this.BHn = paramWebResourceRequest.hasGesture();
-      this.method = paramWebResourceRequest.getMethod();
-      this.vOs = paramWebResourceRequest.getRequestHeaders();
-      this.BHo = new a(this);
+    this.aime = paramJsResult;
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(153665);
+    if (this.aime != null) {
+      this.aime.cancel();
     }
-    AppMethodBeat.o(84658);
+    AppMethodBeat.o(153665);
   }
   
-  public final String getMethod()
+  public final void confirm()
   {
-    return this.method;
+    AppMethodBeat.i(153664);
+    if (this.aime != null) {
+      this.aime.confirm();
+    }
+    AppMethodBeat.o(153664);
   }
   
-  public final Map<String, String> getRequestHeaders()
-  {
-    return this.vOs;
-  }
-  
-  public final Uri getUrl()
-  {
-    return this.url;
-  }
-  
-  public final boolean hasGesture()
-  {
-    return this.BHn;
-  }
-  
-  public final boolean isForMainFrame()
-  {
-    return this.BHm;
-  }
+  public final void confirmWithResult(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.c.e
  * JD-Core Version:    0.7.0.1
  */

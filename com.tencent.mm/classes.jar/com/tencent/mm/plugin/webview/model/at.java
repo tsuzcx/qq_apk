@@ -1,86 +1,61 @@
 package com.tencent.mm.plugin.webview.model;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.an.a;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 public final class at
+  extends a
 {
-  private static Map<String, String> uXi;
-  
-  static
+  private static String bM(Intent paramIntent)
   {
-    AppMethodBeat.i(6799);
-    uXi = new HashMap();
-    AppMethodBeat.o(6799);
+    AppMethodBeat.i(79039);
+    try
+    {
+      paramIntent = URLDecoder.decode(IntentUtil.getStringExtra(paramIntent, "ext_info"), "utf-8");
+      AppMethodBeat.o(79039);
+      return paramIntent;
+    }
+    catch (UnsupportedEncodingException paramIntent)
+    {
+      AppMethodBeat.o(79039);
+    }
+    return "";
   }
   
-  public static String agU(String paramString)
+  public final void C(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(6797);
-    ab.i("MicroMsg.WebviewSharedUrlCache", "rawUrl:[%s]", new Object[] { paramString });
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(79038);
+    paramIntent.putExtra("type", 4);
+    paramIntent.putExtra("id", "");
+    paramIntent = bM(paramIntent);
+    if (Util.isNullOrNil(paramIntent))
     {
-      ab.e("MicroMsg.WebviewSharedUrlCache", "rawUrl is null");
-      AppMethodBeat.o(6797);
-      return null;
-    }
-    String str2 = (String)uXi.get(paramString);
-    String str1 = str2;
-    int i;
-    if (bo.isNullOrNil(str2))
-    {
-      i = paramString.indexOf("#");
-      if (i >= 0) {
-        break label106;
-      }
-    }
-    label106:
-    for (str1 = paramString;; str1 = paramString.substring(0, i))
-    {
-      str1 = (String)uXi.get(str1);
-      if (!bo.isNullOrNil(str1)) {
-        break;
-      }
-      AppMethodBeat.o(6797);
-      return paramString;
-    }
-    AppMethodBeat.o(6797);
-    return str1;
-  }
-  
-  public static void clear()
-  {
-    AppMethodBeat.i(6798);
-    uXi.clear();
-    AppMethodBeat.o(6798);
-  }
-  
-  public static void hs(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(6796);
-    ab.i("MicroMsg.WebviewSharedUrlCache", "rawurl:[%s], shareUrl:[%s]", new Object[] { paramString1, paramString2 });
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
-    {
-      ab.e("MicroMsg.WebviewSharedUrlCache", "rawurl is null or share url is null");
-      AppMethodBeat.o(6796);
+      AppMethodBeat.o(79038);
       return;
     }
-    if (uXi.containsKey(paramString1))
-    {
-      ab.i("MicroMsg.WebviewSharedUrlCache", "has add this rawurl");
-      AppMethodBeat.o(6796);
-      return;
-    }
-    uXi.put(paramString1, paramString2);
-    AppMethodBeat.o(6796);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", paramIntent);
+    localIntent.putExtra("from_shortcut", true);
+    localIntent.addFlags(268435456);
+    c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(79038);
+  }
+  
+  public final int getType()
+  {
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.at
  * JD-Core Version:    0.7.0.1
  */

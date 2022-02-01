@@ -16,7 +16,7 @@ public final class nearby_troop_hot$HotQunMsg
   public static final int MSG_RSP_BODY_FIELD_NUMBER = 11;
   public static final int SEQ_FIELD_NUMBER = 4;
   public static final int UIN_FIELD_NUMBER = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 82, 90 }, new String[] { "magic", "uin", "cmd", "seq", "ext", "msg_req_body", "msg_rsp_body" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, null, null }, HotQunMsg.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field cmd = PBField.initUInt32(0);
   public nearby_troop_hot.ExtInfo ext = new nearby_troop_hot.ExtInfo();
   public final PBUInt32Field magic = PBField.initUInt32(0);
@@ -24,10 +24,16 @@ public final class nearby_troop_hot$HotQunMsg
   public nearby_troop_hot.HotQunRsp msg_rsp_body = new nearby_troop_hot.HotQunRsp();
   public final PBUInt32Field seq = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 82, 90 }, new String[] { "magic", "uin", "cmd", "seq", "ext", "msg_req_body", "msg_rsp_body" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localInteger, null, null, null }, HotQunMsg.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_hot.nearby_troop_hot.HotQunMsg
  * JD-Core Version:    0.7.0.1
  */

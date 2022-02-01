@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/b3d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:minHeight="50.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:textSize="@dimen/rh" android:textColor="@color/skin_black" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fzu" />
+            <EditText android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/password" android:background="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="1.0dip" android:layout_marginBottom="1.0dip" android:hint="@string/g06" android:singleLine="true" android:maxLength="16" android:digits="@string/fzv" android:inputType="textPassword" />
+        </LinearLayout>
+        <View android:background="@drawable/b3h" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:textSize="@dimen/rh" android:textColor="@android:color/black" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g0b" />
+            <EditText android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/hvz" android:background="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="1.0dip" android:layout_marginBottom="1.0dip" android:hint="@string/g04" android:singleLine="true" android:maxLength="16" android:digits="@string/fzv" android:inputType="textPassword" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/rg" android:textColor="@color/skin_black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/fzx" />
+</LinearLayout>

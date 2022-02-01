@@ -14,20 +14,20 @@ public class HttpClientUtil
 {
   public static HttpClient createHttpClient()
   {
-    AppMethodBeat.i(75769);
+    AppMethodBeat.i(102015);
     Object localObject = new BasicHttpParams();
     HttpConnectionParams.setConnectionTimeout((HttpParams)localObject, 30000);
     HttpConnectionParams.setSoTimeout((HttpParams)localObject, 30000);
     HttpConnectionParams.setSocketBufferSize((HttpParams)localObject, 4096);
     HttpClientParams.setRedirecting((HttpParams)localObject, false);
     localObject = new DefaultHttpClient((HttpParams)localObject);
-    AppMethodBeat.o(75769);
+    AppMethodBeat.o(102015);
     return localObject;
   }
   
   public static void setProxy(HttpClient paramHttpClient)
   {
-    AppMethodBeat.i(75768);
+    AppMethodBeat.i(102014);
     Object localObject = DownloadHelper.getNetStatus();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -35,7 +35,7 @@ public class HttpClientUtil
       {
         localObject = new HttpHost("10.0.0.172", 80);
         paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
-        AppMethodBeat.o(75768);
+        AppMethodBeat.o(102014);
         return;
       }
       if (((String)localObject).equalsIgnoreCase("ctwap"))
@@ -44,12 +44,12 @@ public class HttpClientUtil
         paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
       }
     }
-    AppMethodBeat.o(75768);
+    AppMethodBeat.o(102014);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.HttpClientUtil
  * JD-Core Version:    0.7.0.1
  */

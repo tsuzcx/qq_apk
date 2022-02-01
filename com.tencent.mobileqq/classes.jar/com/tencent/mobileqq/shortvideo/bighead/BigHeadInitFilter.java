@@ -17,6 +17,7 @@ public class BigHeadInitFilter
 {
   public static final String BGRA_NO_FILTER_FRAGMENT_SHADER = "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord).bgra;\n}\n";
   public static final String NO_FILTER_VERTEX_SHADER = "uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n";
+  private static final String TAG = "BigHeadInitFilter";
   public List<PointF> fullFaceCoords;
   public float[] inClipMatrix = new float[16];
   private float[] inMvpMatrix = new float[16];
@@ -74,47 +75,50 @@ public class BigHeadInitFilter
     if (paramRenderBuffer.getTexId() == 0)
     {
       this.mMaxTextureLength = getEvenInt((int)(this.mMaxConstLength * paramFloat));
-      paramRenderBuffer.setUserTextureId(GlUtil.createTextureAllocate(this.mMaxTextureLength, this.mMaxTextureLength, false));
-      paramRenderBuffer.setSize(this.mMaxTextureLength, this.mMaxTextureLength);
+      int i = this.mMaxTextureLength;
+      paramRenderBuffer.setUserTextureId(GlUtil.createTextureAllocate(i, i, false));
+      i = this.mMaxTextureLength;
+      paramRenderBuffer.setSize(i, i);
     }
   }
   
   public void drawTexture(int paramInt)
   {
-    int j = 0;
     if (!this.mInited)
     {
       if (SLog.isEnable()) {
-        SLog.d("BigHeadFilter", "BigHeadInitFilter:drawTexture mInited=false");
+        SLog.d("BigHeadInitFilter", "BigHeadInitFilter:drawTexture mInited=false");
       }
       return;
     }
     int i = this.mExtendRegion.width();
-    if (i != this.mRenderClip.getWidth())
+    int k = this.mRenderClip.getWidth();
+    int j = 0;
+    if (i != k)
     {
       GLES20.glDeleteTextures(1, new int[] { this.mRenderClip.getTexId() }, 0);
-      int k = GlUtil.createTextureAllocate(i, i, false);
+      k = GlUtil.createTextureAllocate(i, i, false);
       this.mRenderClip.setUserTextureId(k);
       this.mRenderClip.setSize(i, i);
     }
     this.mRenderClip.bind();
     GLES20.glClear(16384);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    if (this.mExtendRegion.left < 0) {}
-    for (i = -this.mExtendRegion.left;; i = 0)
-    {
-      if (this.mExtendRegion.top < 0) {
-        j = -this.mExtendRegion.top;
-      }
-      GLES20.glViewport(i, j, this.mClipRegion.width(), this.mClipRegion.height());
-      this.mGPU2DFilterClip.drawTexture(paramInt, this.inClipMatrix, null);
-      this.mRenderClip.unbind();
-      paramInt = this.mRenderClip.getTexId();
-      this.mRenderInitFBO.bind();
-      this.mGPU2DFilter.drawTexture(paramInt, null, this.inMvpMatrix);
-      this.mRenderInitFBO.unbind();
-      return;
+    if (this.mExtendRegion.left < 0) {
+      i = -this.mExtendRegion.left;
+    } else {
+      i = 0;
     }
+    if (this.mExtendRegion.top < 0) {
+      j = -this.mExtendRegion.top;
+    }
+    GLES20.glViewport(i, j, this.mClipRegion.width(), this.mClipRegion.height());
+    this.mGPU2DFilterClip.drawTexture(paramInt, this.inClipMatrix, null);
+    this.mRenderClip.unbind();
+    paramInt = this.mRenderClip.getTexId();
+    this.mRenderInitFBO.bind();
+    this.mGPU2DFilter.drawTexture(paramInt, null, this.inMvpMatrix);
+    this.mRenderInitFBO.unbind();
   }
   
   public void drawTextureOptimize(int paramInt)
@@ -122,7 +126,7 @@ public class BigHeadInitFilter
     if (!this.mInited)
     {
       if (SLog.isEnable()) {
-        SLog.d("BigHeadFilter", "BigHeadInitFilter:drawTexture mInited=false");
+        SLog.d("BigHeadInitFilter", "BigHeadInitFilter:drawTexture mInited=false");
       }
       return;
     }
@@ -130,41 +134,41 @@ public class BigHeadInitFilter
     this.mRenderClip.bind();
     GLES20.glClear(16384);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    int i = this.mOutputExtendRegion.width();
-    int j = (this.mMaxTextureLength - i) / 2;
-    this.mEnlargeSubRegion.set(j, j, j + i, i + j);
-    if (this.mExtendRegion.left < 0)
-    {
+    int j = this.mOutputExtendRegion.width();
+    int i = (this.mMaxTextureLength - j) / 2;
+    Rect localRect = this.mEnlargeSubRegion;
+    j += i;
+    localRect.set(i, i, j, j);
+    if (this.mExtendRegion.left < 0) {
       i = -this.mExtendRegion.left;
-      if (this.mExtendRegion.top >= 0) {
-        break label382;
-      }
-    }
-    label382:
-    for (j = -this.mExtendRegion.top;; j = 0)
-    {
-      i = (int)(i * this.mCurrentScaleRatio);
-      j = (int)(j * this.mCurrentScaleRatio);
-      int k = (int)(this.mClipRegion.width() * this.mCurrentScaleRatio);
-      int m = (int)(this.mClipRegion.height() * this.mCurrentScaleRatio);
-      GLES20.glViewport(i + this.mEnlargeSubRegion.left, j + this.mEnlargeSubRegion.top, k, m);
-      this.mGPU2DFilterClip.drawTexture(paramInt, this.inClipMatrix, null);
-      this.mRenderClip.unbind();
-      paramInt = this.mRenderClip.getTexId();
-      float f1 = this.mEnlargeSubRegion.left * 1.0F / this.mMaxTextureLength;
-      float f2 = this.mEnlargeSubRegion.top * 1.0F / this.mMaxTextureLength;
-      float f3 = this.mEnlargeSubRegion.width() * 1.0F / this.mMaxTextureLength;
-      float f4 = this.mEnlargeSubRegion.height() * 1.0F / this.mMaxTextureLength;
-      Matrix.setIdentityM(this.inClipMatrix, 0);
-      Matrix.translateM(this.inClipMatrix, 0, f1, f2, 0.0F);
-      Matrix.scaleM(this.inClipMatrix, 0, f3, f4, 1.0F);
-      this.mRenderInitFBO.bind();
-      this.mGPU2DFilter.drawTexture(paramInt, this.inClipMatrix, this.inMvpMatrix);
-      this.mRenderInitFBO.unbind();
-      return;
+    } else {
       i = 0;
-      break;
     }
+    if (this.mExtendRegion.top < 0) {
+      j = -this.mExtendRegion.top;
+    } else {
+      j = 0;
+    }
+    float f1 = i;
+    float f2 = this.mCurrentScaleRatio;
+    i = (int)(f1 * f2);
+    j = (int)(j * f2);
+    int k = (int)(this.mClipRegion.width() * this.mCurrentScaleRatio);
+    int m = (int)(this.mClipRegion.height() * this.mCurrentScaleRatio);
+    GLES20.glViewport(this.mEnlargeSubRegion.left + i, this.mEnlargeSubRegion.top + j, k, m);
+    this.mGPU2DFilterClip.drawTexture(paramInt, this.inClipMatrix, null);
+    this.mRenderClip.unbind();
+    paramInt = this.mRenderClip.getTexId();
+    f1 = this.mEnlargeSubRegion.left * 1.0F / this.mMaxTextureLength;
+    f2 = this.mEnlargeSubRegion.top * 1.0F / this.mMaxTextureLength;
+    float f3 = this.mEnlargeSubRegion.width() * 1.0F / this.mMaxTextureLength;
+    float f4 = this.mEnlargeSubRegion.height() * 1.0F / this.mMaxTextureLength;
+    Matrix.setIdentityM(this.inClipMatrix, 0);
+    Matrix.translateM(this.inClipMatrix, 0, f1, f2, 0.0F);
+    Matrix.scaleM(this.inClipMatrix, 0, f3, f4, 1.0F);
+    this.mRenderInitFBO.bind();
+    this.mGPU2DFilter.drawTexture(paramInt, this.inClipMatrix, this.inMvpMatrix);
+    this.mRenderInitFBO.unbind();
   }
   
   public int getClippedTextureId()
@@ -213,7 +217,7 @@ public class BigHeadInitFilter
     int i = getEvenInt((int)(paramRect1.width() * paramFloat) / 2);
     int j = this.zhongxin.x;
     int k = this.zhongxin.y;
-    paramRect2.set(j - i, k - i, j + i, i + k);
+    paramRect2.set(j - i, k - i, j + i, k + i);
   }
   
   public void release()
@@ -250,63 +254,72 @@ public class BigHeadInitFilter
   {
     this.mUpdateFaceData = true;
     this.fullFaceCoords = paramList;
-    if ((this.fullFaceCoords == null) || (this.fullFaceCoords.size() <= 0))
+    paramList = this.fullFaceCoords;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      this.mUpdateFaceData = false;
+      paramList = this.fullFaceCoords.iterator();
+      while (paramList.hasNext())
+      {
+        paramArrayOfFloat = (PointF)paramList.next();
+        double d1 = paramArrayOfFloat.x;
+        double d2 = this.mScreenScale;
+        Double.isNaN(d1);
+        paramArrayOfFloat.x = ((float)(d1 / d2));
+        d1 = paramArrayOfFloat.y;
+        d2 = this.mScreenScale;
+        Double.isNaN(d1);
+        paramArrayOfFloat.y = ((float)(d1 / d2));
+      }
+      paramList = (PointF)this.fullFaceCoords.get(9);
+      paramArrayOfFloat = (PointF)this.fullFaceCoords.get(86);
+      PointF localPointF = (PointF)this.fullFaceCoords.get(88);
+      if (!this.mTextureRegion.contains(paramList.x, paramList.y))
+      {
+        this.mUpdateFaceData = false;
+        return;
+      }
+      if (!this.mTextureRegion.contains(paramArrayOfFloat.x, paramArrayOfFloat.y))
+      {
+        this.mUpdateFaceData = false;
+        return;
+      }
+      if (!this.mTextureRegion.contains(localPointF.x, localPointF.y))
+      {
+        this.mUpdateFaceData = false;
+        return;
+      }
+      float f1 = DISTANCE_OF(paramArrayOfFloat, localPointF);
+      float f2 = DISTANCE_OF(paramList, paramArrayOfFloat);
+      float f3 = DISTANCE_OF(paramList, localPointF);
+      f2 = Math.max(Math.max(f2, f1), f3) * 1.46F;
+      int i = this.mMaxConstLength;
+      f1 = f2;
+      if (f2 > i) {
+        f1 = i;
+      }
+      int k = getEvenInt((int)(f1 * 0.5F));
+      f1 = k * 2;
+      this.zhongxin.set((int)((paramList.x + paramArrayOfFloat.x + localPointF.x) / 3.0F), (int)((paramList.y + paramArrayOfFloat.y + localPointF.y) / 3.0F));
+      paramList = this.zhongxin;
+      paramList.x = getEvenInt(paramList.x);
+      paramList = this.zhongxin;
+      paramList.y = getEvenInt(paramList.y);
+      i = this.zhongxin.x - k;
+      int j = (int)f1;
+      k = this.zhongxin.y - k;
+      this.mExtendRegion.set(i, k, i + j, j + k);
+      this.mClipRegion.setIntersect(this.mWindows, this.mExtendRegion);
+      f1 = this.mClipRegion.left * 1.0F / this.mTextureWidth;
+      f2 = this.mClipRegion.top * 1.0F / this.mTextureHeight;
+      f3 = this.mClipRegion.width() * 1.0F / this.mTextureWidth;
+      float f4 = this.mClipRegion.height() * 1.0F / this.mTextureHeight;
+      Matrix.setIdentityM(this.inClipMatrix, 0);
+      Matrix.translateM(this.inClipMatrix, 0, f1, f2, 0.0F);
+      Matrix.scaleM(this.inClipMatrix, 0, f3, f4, 1.0F);
+      regionScaleCenterInteger(this.mExtendRegion, this.mOutputExtendRegion, this.mCurrentScaleRatio);
       return;
     }
-    paramList = this.fullFaceCoords.iterator();
-    while (paramList.hasNext())
-    {
-      paramArrayOfFloat = (PointF)paramList.next();
-      paramArrayOfFloat.x = ((float)(paramArrayOfFloat.x / this.mScreenScale));
-      paramArrayOfFloat.y = ((float)(paramArrayOfFloat.y / this.mScreenScale));
-    }
-    paramList = (PointF)this.fullFaceCoords.get(9);
-    paramArrayOfFloat = (PointF)this.fullFaceCoords.get(86);
-    PointF localPointF = (PointF)this.fullFaceCoords.get(88);
-    if (!this.mTextureRegion.contains(paramList.x, paramList.y))
-    {
-      this.mUpdateFaceData = false;
-      return;
-    }
-    if (!this.mTextureRegion.contains(paramArrayOfFloat.x, paramArrayOfFloat.y))
-    {
-      this.mUpdateFaceData = false;
-      return;
-    }
-    if (!this.mTextureRegion.contains(localPointF.x, localPointF.y))
-    {
-      this.mUpdateFaceData = false;
-      return;
-    }
-    float f1 = DISTANCE_OF(paramArrayOfFloat, localPointF);
-    float f2 = DISTANCE_OF(paramList, paramArrayOfFloat);
-    float f3 = DISTANCE_OF(paramList, localPointF);
-    f2 = Math.max(Math.max(f2, f1), f3) * 1.46F;
-    f1 = f2;
-    if (f2 > this.mMaxConstLength) {
-      f1 = this.mMaxConstLength;
-    }
-    int k = getEvenInt((int)(f1 * 0.5F));
-    f1 = k * 2;
-    this.zhongxin.set((int)((paramList.x + paramArrayOfFloat.x + localPointF.x) / 3.0F), (int)((paramList.y + paramArrayOfFloat.y + localPointF.y) / 3.0F));
-    this.zhongxin.x = getEvenInt(this.zhongxin.x);
-    this.zhongxin.y = getEvenInt(this.zhongxin.y);
-    int i = this.zhongxin.x - k;
-    int j = (int)f1;
-    k = this.zhongxin.y - k;
-    int m = (int)f1;
-    this.mExtendRegion.set(i, k, j + i, m + k);
-    this.mClipRegion.setIntersect(this.mWindows, this.mExtendRegion);
-    f1 = this.mClipRegion.left * 1.0F / this.mTextureWidth;
-    f2 = this.mClipRegion.top * 1.0F / this.mTextureHeight;
-    f3 = this.mClipRegion.width() * 1.0F / this.mTextureWidth;
-    float f4 = this.mClipRegion.height() * 1.0F / this.mTextureHeight;
-    Matrix.setIdentityM(this.inClipMatrix, 0);
-    Matrix.translateM(this.inClipMatrix, 0, f1, f2, 0.0F);
-    Matrix.scaleM(this.inClipMatrix, 0, f3, f4, 1.0F);
-    regionScaleCenterInteger(this.mExtendRegion, this.mOutputExtendRegion, this.mCurrentScaleRatio);
+    this.mUpdateFaceData = false;
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -321,7 +334,7 @@ public class BigHeadInitFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadInitFilter
  * JD-Core Version:    0.7.0.1
  */

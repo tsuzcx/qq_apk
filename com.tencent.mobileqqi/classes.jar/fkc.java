@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
 import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
@@ -36,6 +36,9 @@ public class fkc
     }
     for (;;)
     {
+      Object localObject;
+      List localList;
+      int j;
       int i;
       try
       {
@@ -50,35 +53,20 @@ public class fkc
         localList = ((structmsg.RspNextSystemMsg)localObject).msgs.get();
         j = localList.size();
         if (!QLog.isColorLevel()) {
-          break label555;
+          break label543;
         }
-        QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg Resp : decode pb size = " + j);
+        QLog.e("Q.systemmsg.", 2, "<---sendGetNextGroupSystemMsg Resp : decode pb size = " + j);
       }
-      catch (Exception paramProtoResp)
-      {
-        Object localObject;
-        List localList;
-        int j;
-        MessageRecord localMessageRecord;
-        MessageForSystemMsg localMessageForSystemMsg;
-        long l2;
-        long l1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
-        this.a.a(4006, false, null);
-        return;
-      }
+      catch (Exception paramProtoResp) {}
       if (i < j)
       {
-        localMessageRecord = MessageRecordFactory.a(-2018);
+        MessageRecord localMessageRecord = MessageRecordFactory.a(-2018);
         localMessageRecord.msgtype = -2018;
         localMessageRecord.selfuin = paramProtoReq;
-        localMessageRecord.frienduin = AppConstants.Z;
+        localMessageRecord.frienduin = AppConstants.aa;
         localMessageRecord.senderuin = (((structmsg.StructMsg)localList.get(i)).req_uin.get() + "");
         localMessageRecord.istroop = 0;
-        localMessageForSystemMsg = (MessageForSystemMsg)localMessageRecord;
+        MessageForSystemMsg localMessageForSystemMsg = (MessageForSystemMsg)localMessageRecord;
         localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)localList.get(i)).get());
         localMessageRecord.msgData = localMessageForSystemMsg.structMsg.toByteArray();
         paramProtoResp.add(localMessageForSystemMsg);
@@ -89,18 +77,18 @@ public class fkc
         if (paramProtoResp.size() > 0)
         {
           if (paramProtoResp.size() < 10) {
-            FriendSystemMsgController.a().a(true, this.a.a);
+            GroupSystemMsgController.a().a(true, this.a.a);
           }
-          FriendSystemMsgController.a().a(false);
-          l2 = ((structmsg.RspNextSystemMsg)localObject).following_friend_seq.get();
-          l1 = l2;
+          GroupSystemMsgController.a().a(false);
+          long l2 = ((structmsg.RspNextSystemMsg)localObject).following_group_seq.get();
+          long l1 = l2;
           if (l2 <= 0L) {
-            l1 = this.a.a.a().d("following_friend_seq_47");
+            l1 = this.a.a.a().d("following_group_seq");
           }
           if (QLog.isColorLevel()) {
-            QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg : decode pb following_friend_seq" + l1);
+            QLog.e("Q.systemmsg.", 2, "<---sendGetNextGroupSystemMsg : decode pb following_group_seq" + l1);
           }
-          this.a.a.a().d("following_friend_seq_47", l1);
+          this.a.a.a().d("following_group_seq", l1);
           localObject = this.a.a.a();
           paramProtoReq = String.valueOf(paramProtoReq);
           if ((MessageHandlerUtils.a(paramProtoResp)) && (this.a.a.isBackground_Pause))
@@ -110,13 +98,18 @@ public class fkc
             this.a.a("handleGetSystemMsgResp", true, paramProtoResp.size(), false, false);
             this.a.a(4005, true, null);
             return;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
+            return;
           }
           boolean bool = false;
           continue;
         }
-        FriendSystemMsgController.a().a(true, this.a.a);
+        GroupSystemMsgController.a().a(true, this.a.a);
         continue;
-        label555:
+        label543:
         i = 0;
       }
     }

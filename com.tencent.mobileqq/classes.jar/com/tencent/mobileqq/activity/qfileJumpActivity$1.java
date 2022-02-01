@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import alud;
 import android.content.Intent;
 import android.os.Bundle;
-import azrh;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 
 class qfileJumpActivity$1
   implements Runnable
@@ -15,44 +12,34 @@ class qfileJumpActivity$1
   
   public void run()
   {
-    azrh.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_my_pc");
-    Intent localIntent = this.this$0.getIntent();
-    Object localObject1 = null;
-    try
+    Intent localIntent1 = new Intent();
+    Intent localIntent2 = this.this$0.getIntent();
+    Bundle localBundle;
+    if ((localIntent2 != null) && (localIntent2.getExtras() != null)) {
+      localBundle = localIntent2.getExtras();
+    } else {
+      localBundle = new Bundle();
+    }
+    localBundle.putString("leftBackText", HardCodeUtil.a(2131907368));
+    localBundle.putBoolean("isBack2Root", true);
+    localIntent1.addFlags(268435456);
+    localIntent1.addFlags(67108864);
+    localIntent1.putExtras(localBundle);
+    localIntent1.putExtras(localIntent2);
+    localIntent1.setAction(localIntent2.getAction());
+    localIntent1.setType(localIntent2.getType());
+    if (localIntent2.getAction() == "android.intent.action.SEND_MULTIPLE")
     {
-      localObject2 = localIntent.getExtras();
-      localObject1 = localObject2;
+      localIntent1.setAction("android.intent.action.MAIN");
+      localIntent1.putExtra("system_share_multi_send", true);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        localException.printStackTrace();
-      }
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new Bundle();
-    }
-    ((Bundle)localObject2).putString("leftBackText", alud.a(2131710059));
-    ((Bundle)localObject2).putBoolean("isBack2Root", true);
-    localObject1 = new Intent(this.this$0, LiteActivity.class);
-    ((Intent)localObject1).addFlags(268435456);
-    ((Intent)localObject1).addFlags(67108864);
-    ((Intent)localObject1).putExtra("dataline_share_finish", false);
-    ((Intent)localObject1).putExtras((Bundle)localObject2);
-    ((Intent)localObject1).putExtra("targetUin", this.this$0.a);
-    ((Intent)localObject1).putExtras(localIntent);
-    ((Intent)localObject1).setAction(localIntent.getAction());
-    ((Intent)localObject1).setType(localIntent.getType());
-    this.this$0.startActivity((Intent)localObject1);
+    QFileAssistantUtils.a(this.this$0, localIntent1);
     this.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qfileJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

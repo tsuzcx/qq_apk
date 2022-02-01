@@ -1,26 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PredownloadTest;
-import com.tencent.mobileqq.activity.PredownloadTest.ConfigInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.BaseStrategy;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PrivacyDeclareViewActivity;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper;
 
 public class czu
-  implements View.OnClickListener
+  extends Handler
 {
-  public czu(PredownloadTest paramPredownloadTest) {}
-  
-  public void onClick(View paramView)
+  public czu(PrivacyDeclareViewActivity paramPrivacyDeclareViewActivity, Looper paramLooper)
   {
-    paramView = new PredownloadTest.ConfigInfo();
-    paramView.a = this.a.a(this.a.a);
-    paramView.b = this.a.a(this.a.jdField_b_of_type_AndroidWidgetEditText);
-    paramView.c = this.a.a(this.a.c);
-    paramView.d = this.a.a(this.a.d);
-    paramView.e = this.a.a(this.a.e);
-    paramView.f = this.a.a(this.a.f);
-    this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a.a(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 101: 
+      paramMessage = new czv(this);
+      PrivacyDeclareViewActivity.a(this.a, null, PrivacyDeclareViewActivity.a(this.a, 2131563349), PrivacyDeclareViewActivity.a(this.a, 2131563363), PrivacyDeclareViewActivity.a(this.a, 2131561842), paramMessage);
+      return;
+    }
+    String str = PrivacyDeclareHelper.a(this.a, 2131563358, (String)paramMessage.obj);
+    paramMessage = PrivacyDeclareHelper.a(this.a, 2131562539, (String)paramMessage.obj);
+    PrivacyDeclareViewActivity.a(this.a, null, str, paramMessage, null, null);
   }
 }
 

@@ -4,6 +4,7 @@ public class MiniChatConstants
 {
   public static final String ACTION_GET_UNREAD = "action_get_unread";
   public static final String ACTION_MINI_AIO_TO_AIO = "action_mini_aio_to_aio";
+  public static final String ACTION_MINI_CREATE_UPDATABLE_MSG_CALLBACK = "actionMiniCreateUpdatableMsgCallback";
   public static final String ACTION_MINI_DIRECT_SHARE_FAIL_CALLBACK = "actionMiniDirectShareFailCallback";
   public static final String ACTION_MINI_DIRECT_SHARE_SUC_CALLBACK = "actionMiniDirectShareSucCallback";
   public static final String ACTION_MINI_MSGTAB_NOTIFY_TO_CONVERSATION = "action_mini_msgtab_notify_to_conversation";
@@ -15,11 +16,13 @@ public class MiniChatConstants
   public static final String ACTION_SYNC_UNREADCOUNT = "action_sync_unreadcount";
   public static final String CMD_GET_UNREAD = "cmd_get_unread";
   public static final String CMD_MINI_CLEAR_BUSINESS = "cmd_mini_clear_business";
+  public static final String CMD_MINI_CREATE_UPDATABLE_MSG_CALLBACK = "cmd_mini_create_updatable_msg_callback";
   public static final String CMD_MINI_DIRECT_SHARE_FAIL_CALLBACK = "cmd_mini_direct_share_fail";
   public static final String CMD_MINI_DIRECT_SHARE_SUC_CALLBACK = "cmd_mini_direct_share_suc";
   public static final String CMD_MINI_REPORT_EVENT = "cmd_mini_report_event";
   public static final String CMD_MINI_SHARE_FAIL_CALLBACK = "cmd_mini_share_fail";
   public static final String CMD_MINI_SHARE_SUC_CALLBACK = "cmd_mini_share_suc";
+  public static final String CMD_MINI_SHARE_UPLOAD_IMAGE = "cmd_mini_share_upload_image";
   public static final String CMD_MSG_TAB_BACK_REFRESH = "cmd_msg_tab_back_refresh";
   public static final String CMD_PROC_BACKGROUND = "cmd_proc_backgound";
   public static final String CMD_PROC_FOREGROUND = "cmd_proc_foregound";
@@ -36,6 +39,7 @@ public class MiniChatConstants
   public static final String KEY_MINI_AIO_MSG_SHMSGSEQ = "key_mini_aio_msg_shmsgseq";
   public static final String KEY_MINI_AIO_MSG_UNISEQ = "key_mini_aio_msg_uniseq";
   public static final String KEY_MINI_AIO_SCALE_RATION = "minaio_scaled_ration";
+  public static final String KEY_MINI_EXIT_ANIM = "key_mini_exit_anim";
   public static final String KEY_MINI_FROM = "key_mini_from";
   public static final String KEY_MINI_MSGTAB_BACK_PENDING_INTENT = "key_mini_msgtab_back_pending_intent";
   public static final String KEY_MINI_MSGTAB_BUSINAME = "key_mini_msgtab_businame";
@@ -56,6 +60,7 @@ public class MiniChatConstants
   public static final int MINI_MSG_BUSINESS_BODONG = 15;
   public static final int MINI_MSG_BUSINESS_CONFESS = 21;
   public static final int MINI_MSG_BUSINESS_DIANJING = 14;
+  public static final int MINI_MSG_BUSINESS_FORE_PUSH = 28;
   public static final int MINI_MSG_BUSINESS_GAMECENTER = 8;
   public static final int MINI_MSG_BUSINESS_GOOSECOMIC = 19;
   public static final int MINI_MSG_BUSINESS_GROUPVIDEO = 26;
@@ -76,12 +81,13 @@ public class MiniChatConstants
   public static final int MINI_MSG_BUSINESS_SPORT = 12;
   public static final int MINI_MSG_BUSINESS_STORY = 5;
   public static final int MINI_MSG_BUSINESS_SUBSCRIBE = 25;
+  public static final int MINI_MSG_BUSINESS_VAS_LIVE = 29;
   public static final int MINI_MSG_BUSINESS_WEATHER = 22;
-  public static final int MINI_MSG_BUSINESS_WEB = 100;
   public static final int MINI_MSG_BUSINESS_WEISHI = 6;
   public static final int MINI_MSG_BUSINESS_XINGQUBULUO = 4;
   public static final int MINI_MSG_BUSINESS_YUEDU = 7;
   public static final int MINI_MSG_ENTRY_COLOR_BLACK = 0;
+  public static final int MINI_MSG_ENTRY_COLOR_CUSTOM = 2;
   public static final int MINI_MSG_ENTRY_COLOR_WHITE = 1;
   public static final int MINI_MSG_ENTRY_TYPE_FIXED = 1;
   public static final int MINI_MSG_ENTRY_TYPE_FLOAT = 0;
@@ -92,6 +98,7 @@ public class MiniChatConstants
   public static final String MINI_TAG = "mini_msg_";
   public static final int MINi_AIO_MINMUN_HEIGHT = 300;
   public static final int MSG_EFRESH_FONT_BUBBLE = 8;
+  public static final int MSG_EFRESH_FOR_ITEM = 9;
   public static final int MSG_EFRESH_FOR_LIST = 6;
   public static final int MSG_EFRESH_MAGIC_FONT = 7;
   public static final int MSG_REFRESH_LIST_UNREAD = 5;
@@ -107,6 +114,7 @@ public class MiniChatConstants
   public static final String PARAM_PROC_UIN_TYPE = "param_proc_uin_type";
   public static final int SCREEN_DEFAULT_HEIGHT = 1080;
   public static int SCREEN_HEIGHT = -1;
+  public static final int VALUE_MINI_EXIT_ANIM_ALPHA = 1;
   public static final int VALUE_MINI_FROM_AIO = 2;
   public static final int VALUE_MINI_FROM_BARRAGE = 5;
   public static final int VALUE_MINI_FROM_FORWARD = 3;

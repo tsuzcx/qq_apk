@@ -1,41 +1,46 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import aeum;
-import ahag;
-import ahah;
-import ajkl;
-import alof;
-import alud;
-import alzl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import asmu;
-import asmw;
-import bdom;
-import bill;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
+import com.tencent.biz.pubaccount.weishi_new.api.IWSManager;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
+import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.ecshop.api.IEcshopUtilApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.kandian.biz.common.api.IWeiShiReportUtil;
+import com.tencent.mobileqq.kandian.biz.daily.api.IKandianDailyManager;
+import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.vas.nicknamemessage.NickNameManager;
+import cooperation.qzone.QZoneHelper;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import osm;
-import ssp;
-import swy;
-import szp;
-import tcn;
 
 public class RecentItemPublicAccountChatMsgData
   extends RecentItemChatMsgData
@@ -46,254 +51,365 @@ public class RecentItemPublicAccountChatMsgData
   public RecentItemPublicAccountChatMsgData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.isNewKandian = TextUtils.equals(paramRecentUser.uin, alof.az);
+    this.isNewKandian = TextUtils.equals(paramRecentUser.uin, AppConstants.NEW_KANDIAN_UIN);
     if (this.isNewKandian) {
       this.mUnreadFlag = 2;
     }
   }
   
+  public static PublicAccountInfo a(QQAppInterface paramQQAppInterface, IPublicAccountDataManager paramIPublicAccountDataManager, String paramString)
+  {
+    if ((paramIPublicAccountDataManager == null) || (RecentParcelUtil.a(paramQQAppInterface))) {}
+    try
+    {
+      paramQQAppInterface = (PublicAccountInfo)paramIPublicAccountDataManager.findPublicAccountInfo(paramString, true);
+      return paramQQAppInterface;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      label25:
+      break label25;
+    }
+    return (PublicAccountInfo)paramIPublicAccountDataManager.findPublicAccountInfo(paramString);
+    return (PublicAccountInfo)paramIPublicAccountDataManager.findPublicAccountInfo(paramString);
+    return null;
+  }
+  
+  private void a(Context paramContext, Message paramMessage)
+  {
+    Object localObject;
+    if ((paramMessage.lastMsg instanceof MessageForStructing))
+    {
+      localObject = (MessageForStructing)paramMessage.lastMsg;
+      paramMessage = (Message)localObject;
+      if (!((MessageForStructing)localObject).mIsParsed)
+      {
+        ((MessageForStructing)localObject).parse();
+        paramMessage = (Message)localObject;
+      }
+    }
+    else if (paramMessage.msgtype == -2011)
+    {
+      localObject = new MessageForStructing();
+      ((MessageForStructing)localObject).msgData = paramMessage.msgData;
+      ((MessageForStructing)localObject).parse();
+      paramMessage.lastMsg = ((MessageRecord)localObject);
+      paramMessage = (Message)localObject;
+    }
+    else
+    {
+      paramMessage = null;
+    }
+    if ((paramMessage != null) && (paramMessage.structingMsg != null))
+    {
+      this.msgSummary.strContent = paramMessage.structingMsg.mMsgBrief;
+      this.msgSummary.suffix = "";
+      if ((!TextUtils.isEmpty(paramMessage.structingMsg.mOrangeWord)) && (this.mUnreadNum > 0))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(paramMessage.structingMsg.mOrangeWord);
+        ((StringBuilder)localObject).append("]");
+        this.mMsgExtroInfo = ((StringBuilder)localObject).toString();
+        a(paramMessage.structingMsg, paramContext);
+        this.mExtraInfoColor = -881592;
+      }
+    }
+  }
+  
+  private void a(Message paramMessage)
+  {
+    paramMessage = paramMessage.getExtInfoFromExtStr("qzone_msg_box_promot");
+    if (!TextUtils.isEmpty(paramMessage)) {
+      this.msgSummary.strContent = paramMessage;
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    if ("3046055438".equals(this.mUser.uin)) {
+      ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).createCustomQQShopMsgSummary(paramQQAppInterface, this.msgSummary);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, Message paramMessage)
+  {
+    boolean bool;
+    if (this.mUnreadNum > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Object localObject = NickNameManager.a(paramQQAppInterface, paramMessage, bool);
+    if (localObject != null) {
+      this.msgSummary.strContent = ((CharSequence)localObject);
+    }
+    localObject = PubAccountTips.a(paramQQAppInterface, this.mUser.uin);
+    if ((localObject != null) && (((PubAccountTips.PubAccountTipsMsg)localObject).n == paramMessage.uniseq) && (((PubAccountTips.PubAccountTipsMsg)localObject).b())) {
+      ThreadManager.post(new RecentItemPublicAccountChatMsgData.1(this, paramQQAppInterface, (PubAccountTips.PubAccountTipsMsg)localObject), 2, null, false);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, Message paramMessage, PublicAccountInfo paramPublicAccountInfo, IPublicAccountDataManager paramIPublicAccountDataManager)
+  {
+    if ((paramPublicAccountInfo == null) && (paramIPublicAccountDataManager != null))
+    {
+      paramIPublicAccountDataManager = paramIPublicAccountDataManager.findAccountDetailInfo(this.mUser.uin);
+      if (paramIPublicAccountDataManager != null) {
+        this.mTitleName = paramIPublicAccountDataManager.getName();
+      }
+      if (this.isNewKandian) {
+        this.mTitleName = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getXinKandianName(paramQQAppInterface, paramQQAppInterface.getApp());
+      }
+    }
+    if (paramPublicAccountInfo != null)
+    {
+      this.mTitleName = paramPublicAccountInfo.name;
+      this.mAuthenIconId = 0;
+    }
+    else
+    {
+      this.mAuthenIconId = 0;
+    }
+    if (AppConstants.KANDIAN_DAILY_UIN.equals(this.mUser.uin)) {
+      this.mTitleName = ((IKandianDailyManager)QRoute.api(IKandianDailyManager.class)).getDailyMsgBoxName(paramMessage);
+    }
+  }
+  
   private void a(AbsStructMsg paramAbsStructMsg, Context paramContext)
   {
-    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alud.a(2131713570))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alud.a(2131713575))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alud.a(2131713567))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alud.a(2131713578))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alud.a(2131713581))))
+    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910667))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910672))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910664))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910675))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(HardCodeUtil.a(2131910678))))
     {
-      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131696913), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
+      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131894212), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
     }
     else {
       this.mMsgExtroInfo = "";
     }
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade paramQQMessageFacade, QQMessageFacade.Message paramMessage)
+  private boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Message paramMessage, QQMessageFacade paramQQMessageFacade, int paramInt)
   {
-    int i;
-    if (paramMessage != null)
+    if ((paramInt != -3006) && (paramInt != -5004))
     {
-      i = paramMessage.msgtype;
-      if ((i == -3006) || (i == -5004)) {
-        break label1094;
-      }
-      a(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
-      if ((i == -2025) && (this.mUnreadNum > 0) && (ssp.a(paramQQAppInterface, this.mUser.uin)))
+      buildMessageBody(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
+      if ((paramInt == -2025) && (this.mUnreadNum > 0) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.mUser.uin)))
       {
         this.mExtraInfoColor = -881592;
         this.mMsgExtroInfo = paramMessage.msg;
         this.msgSummary.strContent = "";
+        return false;
+      }
+      this.mMsgExtroInfo = "";
+      this.mExtraInfoColor = 0;
+      if (this.isNewKandian)
+      {
+        if (a(paramQQAppInterface, paramContext, paramQQMessageFacade)) {
+          return true;
+        }
+      }
+      else
+      {
+        if ((!AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(this.mUser.uin)) && (!AppConstants.KANDIAN_DAILY_UIN.equals(this.mUser.uin)))
+        {
+          if (("2290230341".equals(this.mUser.uin)) && (QZoneHelper.enableQZoneContextBox(paramQQAppInterface)))
+          {
+            a(paramMessage);
+            return false;
+          }
+          a(paramQQAppInterface, paramMessage);
+          return false;
+        }
+        a(paramContext, paramMessage);
+        return false;
       }
     }
     else
     {
-      paramContext = null;
-      paramQQMessageFacade = (alzl)paramQQAppInterface.getManager(56);
-      if ((paramQQMessageFacade != null) && (!ajkl.a(paramQQAppInterface))) {
-        break label1278;
+      this.msgSummary.strContent = "";
+      paramQQMessageFacade = XMLMessageUtils.a(paramMessage);
+      if ((paramQQMessageFacade != null) && (paramQQMessageFacade.items != null) && (paramQQMessageFacade.items.size() != 0))
+      {
+        paramContext = ((PAMessage.Item)paramQQMessageFacade.items.get(0)).title;
+        paramQQAppInterface = paramContext;
+        if (((PAMessage.Item)paramQQMessageFacade.items.get(0)).cover == null)
+        {
+          paramQQAppInterface = paramContext;
+          if (((PAMessage.Item)paramQQMessageFacade.items.get(0)).digestList != null)
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append(paramContext);
+            paramQQAppInterface.append(": ");
+            paramQQAppInterface.append((String)((PAMessage.Item)paramQQMessageFacade.items.get(0)).digestList.get(0));
+            paramQQAppInterface = paramQQAppInterface.toString();
+          }
+        }
+        this.msgSummary.strContent = paramQQAppInterface;
+        return false;
+      }
+      buildMessageBody(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
+    }
+    return false;
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade paramQQMessageFacade)
+  {
+    paramQQAppInterface = paramQQMessageFacade.r(this.mUser.uin, this.mUser.getType());
+    if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof MessageForStructing)))
+    {
+      paramQQAppInterface = (MessageForStructing)paramQQAppInterface;
+      if (paramQQAppInterface.structingMsg == null) {
+        paramQQAppInterface.parse();
+      }
+      if ((this.mUnreadNum > 0) && (paramQQAppInterface.structingMsg != null) && (!TextUtils.isEmpty(paramQQAppInterface.structingMsg.mOrangeWord)))
+      {
+        if (paramQQAppInterface.structingMsg.mOrangeWord.length() >= 8)
+        {
+          paramQQMessageFacade = new StringBuilder();
+          paramQQMessageFacade.append("[");
+          paramQQMessageFacade.append(paramQQAppInterface.structingMsg.mOrangeWord.substring(0, 8));
+          paramQQMessageFacade.append("]");
+          this.mMsgExtroInfo = paramQQMessageFacade.toString();
+        }
+        else
+        {
+          paramQQMessageFacade = new StringBuilder();
+          paramQQMessageFacade.append("[");
+          paramQQMessageFacade.append(paramQQAppInterface.structingMsg.mOrangeWord);
+          paramQQMessageFacade.append("]");
+          this.mMsgExtroInfo = paramQQMessageFacade.toString();
+        }
+        a(paramQQAppInterface.structingMsg, paramContext);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
+      }
+      if ((paramQQAppInterface.extInt == 1) && (paramQQAppInterface.extLong == 1)) {
+        return true;
       }
     }
-    for (;;)
+    return false;
+  }
+  
+  private void b(Message paramMessage)
+  {
+    if ((paramMessage != null) && (paramMessage.getMessageText() != null))
     {
-      try
+      this.mDisplayTime = paramMessage.time;
+      return;
+    }
+    this.mDisplayTime = this.mUser.lastmsgtime;
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((!this.isNewKandian) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.mUser.uin)))
+    {
+      int i = paramQQAppInterface.getConversationFacade().h(this.mUser.uin, this.mUser.getType());
+      if (this.mUnreadNum > 0)
       {
-        paramContext = paramQQMessageFacade.a(this.mUser.uin, true);
-        if ((paramContext == null) && (paramQQMessageFacade != null))
+        if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(this.mUser.uin))
         {
-          paramQQMessageFacade = paramQQMessageFacade.a(this.mUser.uin);
-          if (paramQQMessageFacade != null) {
-            this.mTitleName = paramQQMessageFacade.name;
-          }
-          if (this.isNewKandian) {
-            this.mTitleName = swy.b(paramQQAppInterface, paramQQAppInterface.getApp());
-          }
-        }
-        if (paramContext == null) {
-          break label1293;
-        }
-        this.mTitleName = paramContext.name;
-        this.mAuthenIconId = 0;
-        if (alof.aS.equals(this.mUser.uin)) {
-          this.mTitleName = KandianDailyManager.a(paramMessage);
-        }
-        if ((paramMessage == null) || (paramMessage.getMessageText() == null)) {
-          break label1301;
-        }
-        this.mDisplayTime = paramMessage.time;
-        if (("2747277822".equals(this.mUser.uin)) && (asmu.a())) {
-          asmw.a(paramQQAppInterface, paramMessage, this.msgSummary, this);
-        }
-        if ((!this.isNewKandian) && (ssp.a(paramQQAppInterface, this.mUser.uin)))
-        {
-          i = paramQQAppInterface.a().g(this.mUser.uin, this.mUser.getType());
-          if (this.mUnreadNum > 0)
+          if (i > 0)
           {
-            if (!alof.aR.equals(this.mUser.uin)) {
-              break label1323;
-            }
-            if (i <= 0) {
-              break label1315;
-            }
             this.mUnreadNum = 1;
             this.mUnreadFlag = 2;
-          }
-        }
-        if ((paramMessage != null) && (paramMessage.mExJsonObject != null)) {
-          this.mReportKeyBytesOacMsgxtend = paramMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend", null);
-        }
-        if (alof.aQ.equals(this.mUser.uin)) {
-          osm.a(this, 9);
-        }
-        tcn.a().a();
-        szp.a(this);
-        if (("2909288299".equals(this.mUser.uin)) && (this.mUnreadNum > 0))
-        {
-          paramContext = paramMessage.getExtInfoFromExtStr("news_has_report");
-          if ((TextUtils.isEmpty(paramContext)) || (!"1".equals(paramContext)))
-          {
-            paramMessage.saveExtInfoToExtStr("news_has_report", "1");
-            ThreadManager.getSubThreadHandler().postDelayed(new RecentItemPublicAccountChatMsgData.3(this, paramQQAppInterface), 10000L);
-          }
-        }
-        return;
-        this.mMsgExtroInfo = "";
-        this.mExtraInfoColor = 0;
-        if (this.isNewKandian)
-        {
-          paramQQMessageFacade = paramQQMessageFacade.b(this.mUser.uin, this.mUser.getType());
-          if ((paramQQMessageFacade == null) || (!(paramQQMessageFacade instanceof MessageForStructing))) {
-            break;
-          }
-          paramQQMessageFacade = (MessageForStructing)paramQQMessageFacade;
-          if (paramQQMessageFacade.structingMsg == null) {
-            paramQQMessageFacade.parse();
-          }
-          if ((this.mUnreadNum > 0) && (paramQQMessageFacade.structingMsg != null) && (!TextUtils.isEmpty(paramQQMessageFacade.structingMsg.mOrangeWord)))
-          {
-            if (paramQQMessageFacade.structingMsg.mOrangeWord.length() >= 8)
-            {
-              this.mMsgExtroInfo = ("[" + paramQQMessageFacade.structingMsg.mOrangeWord.substring(0, 8) + "]");
-              a(paramQQMessageFacade.structingMsg, paramContext);
-              this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-            }
-          }
-          else
-          {
-            if ((paramQQMessageFacade.extInt != 1) || (paramQQMessageFacade.extLong != 1)) {
-              break;
-            }
             return;
           }
-          this.mMsgExtroInfo = ("[" + paramQQMessageFacade.structingMsg.mOrangeWord + "]");
-          continue;
+          this.mUnreadFlag = 1;
+          return;
         }
-        if ((alof.aR.equals(this.mUser.uin)) || (alof.aS.equals(this.mUser.uin)))
+        if (AppConstants.KANDIAN_DAILY_UIN.equals(this.mUser.uin))
         {
-          paramQQMessageFacade = null;
-          if ((paramMessage.lastMsg instanceof MessageForStructing))
+          if (i > 0)
           {
-            MessageForStructing localMessageForStructing = (MessageForStructing)paramMessage.lastMsg;
-            paramQQMessageFacade = localMessageForStructing;
-            if (!localMessageForStructing.mIsParsed)
-            {
-              localMessageForStructing.parse();
-              paramQQMessageFacade = localMessageForStructing;
-            }
-            if ((paramQQMessageFacade == null) || (paramQQMessageFacade.structingMsg == null)) {
-              break;
-            }
-            this.msgSummary.strContent = paramQQMessageFacade.structingMsg.mMsgBrief;
-            this.msgSummary.suffix = "";
-            if ((TextUtils.isEmpty(paramQQMessageFacade.structingMsg.mOrangeWord)) || (this.mUnreadNum <= 0)) {
-              break;
-            }
-            this.mMsgExtroInfo = ("[" + paramQQMessageFacade.structingMsg.mOrangeWord + "]");
-            a(paramQQMessageFacade.structingMsg, paramContext);
-            this.mExtraInfoColor = -881592;
-            break;
+            this.mUnreadFlag = 2;
+            return;
           }
-          if (paramMessage.msgtype != -2011) {
-            continue;
-          }
-          paramQQMessageFacade = new MessageForStructing();
-          paramQQMessageFacade.msgData = paramMessage.msgData;
-          paramQQMessageFacade.parse();
-          paramMessage.lastMsg = paramQQMessageFacade;
-          continue;
+          this.mUnreadFlag = 1;
+          return;
         }
-        if (("2290230341".equals(this.mUser.uin)) && (bill.a(paramQQAppInterface)))
+        if ((this.mUnreadNum == 1) && (i > 0))
         {
-          paramContext = paramMessage.getExtInfoFromExtStr("qzone_msg_box_promot");
-          if (TextUtils.isEmpty(paramContext)) {
-            break;
-          }
-          this.msgSummary.strContent = paramContext;
-          break;
-        }
-        if (this.mUnreadNum > 0)
-        {
-          bool = true;
-          paramContext = bdom.a(paramQQAppInterface, paramMessage, bool);
-          if (paramContext != null) {
-            this.msgSummary.strContent = paramContext;
-          }
-          paramContext = ahag.a(paramQQAppInterface, this.mUser.uin);
-          if ((paramContext == null) || (paramContext.d != paramMessage.uniseq) || (!paramContext.b())) {
-            break;
-          }
-          ThreadManager.post(new RecentItemPublicAccountChatMsgData.2(this, paramQQAppInterface, paramContext), 2, null, false);
-          break;
-        }
-        boolean bool = false;
-        continue;
-        label1094:
-        this.msgSummary.strContent = "";
-        paramQQMessageFacade = aeum.a(paramMessage);
-        if ((paramQQMessageFacade == null) || (paramQQMessageFacade.items == null) || (paramQQMessageFacade.items.size() == 0))
-        {
-          a(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
-          break;
-        }
-        paramContext = ((PAMessage.Item)paramQQMessageFacade.items.get(0)).title;
-        if ((((PAMessage.Item)paramQQMessageFacade.items.get(0)).cover == null) && (((PAMessage.Item)paramQQMessageFacade.items.get(0)).digestList != null))
-        {
-          paramContext = paramContext + "：" + (String)((PAMessage.Item)paramQQMessageFacade.items.get(0)).digestList.get(0);
-          this.msgSummary.strContent = paramContext;
-          break;
-        }
-        continue;
-      }
-      catch (Throwable paramContext)
-      {
-        paramContext = paramQQMessageFacade.b(this.mUser.uin);
-        continue;
-      }
-      label1278:
-      paramContext = paramQQMessageFacade.b(this.mUser.uin);
-      continue;
-      label1293:
-      this.mAuthenIconId = 0;
-      continue;
-      label1301:
-      this.mDisplayTime = this.mUser.lastmsgtime;
-      continue;
-      label1315:
-      this.mUnreadFlag = 1;
-      continue;
-      label1323:
-      if (alof.aS.equals(this.mUser.uin))
-      {
-        if (i > 0) {
           this.mUnreadFlag = 2;
-        } else {
+          return;
+        }
+        if (i > 0)
+        {
+          this.mUnreadNum -= 1;
           this.mUnreadFlag = 1;
         }
       }
-      else if ((this.mUnreadNum == 1) && (i > 0))
-      {
-        this.mUnreadFlag = 2;
+    }
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface, Message paramMessage)
+  {
+    IGameMsgManagerService localIGameMsgManagerService = (IGameMsgManagerService)paramQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+    IGameMsgBoxManager localIGameMsgBoxManager = (IGameMsgBoxManager)paramQQAppInterface.getRuntimeService(IGameMsgBoxManager.class, "");
+    if (("2747277822".equals(this.mUser.uin)) && (localIGameMsgManagerService.isInited()))
+    {
+      Object localObject = localIGameMsgManagerService.getLastSessionInfoExceptDelSession();
+      if (localObject != null) {
+        localObject = ((GameCenterSessionInfo)localObject).h();
+      } else {
+        localObject = "-1";
       }
-      else if (i > 0)
+      if ((localIGameMsgManagerService != null) && (GameMsgUtil.a(localIGameMsgManagerService, localIGameMsgBoxManager, (String)localObject, paramQQAppInterface, this.msgSummary, this))) {
+        return;
+      }
+      GameMsgUtil.a(paramQQAppInterface, paramMessage, this.msgSummary, this);
+    }
+  }
+  
+  private void c(Message paramMessage)
+  {
+    if ((paramMessage != null) && (paramMessage.mExJsonObject != null)) {
+      this.mReportKeyBytesOacMsgxtend = paramMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend", null);
+    }
+  }
+  
+  private void c(QQAppInterface paramQQAppInterface, Message paramMessage)
+  {
+    if ((paramMessage != null) && ("2909288299".equals(this.mUser.uin)) && (this.mUnreadNum > 0))
+    {
+      String str = paramMessage.getExtInfoFromExtStr("news_has_report");
+      if ((TextUtils.isEmpty(str)) || (!"1".equals(str)))
       {
-        this.mUnreadNum -= 1;
-        this.mUnreadFlag = 1;
+        paramMessage.saveExtInfoToExtStr("news_has_report", "1");
+        ThreadManager.getSubThreadHandler().postDelayed(new RecentItemPublicAccountChatMsgData.3(this, paramQQAppInterface), 10000L);
       }
     }
+  }
+  
+  private void h()
+  {
+    if (AppConstants.WEISHI_UIN.equals(this.mUser.uin)) {
+      ((IWeiShiReportUtil)QRoute.api(IWeiShiReportUtil.class)).reportMsgExposure(this, 9);
+    }
+  }
+  
+  private void i() {}
+  
+  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, Message paramMessage)
+  {
+    if ((paramMessage != null) && (a(paramQQAppInterface, paramContext, paramMessage, paramQQAppInterface.getMessageFacade(), paramMessage.msgtype))) {
+      return;
+    }
+    paramContext = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    a(paramQQAppInterface, paramMessage, a(paramQQAppInterface, paramContext, this.mUser.uin), paramContext);
+    b(paramMessage);
+    b(paramQQAppInterface, paramMessage);
+    a(paramQQAppInterface);
+    b(paramQQAppInterface);
+    c(paramMessage);
+    h();
+    ((IWSManager)QRoute.api(IWSManager.class)).preloadData();
+    i();
+    ((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).reportMsgExposure(this);
+    c(paramQQAppInterface, paramMessage);
+  }
+  
+  public Message c()
+  {
+    return this.msg;
   }
 }
 

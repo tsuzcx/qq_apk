@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/iji" android:background="@drawable/skin_searchbar_input_theme_version2" android:layout_width="fill_parent" android:layout_height="46.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/av_" android:textColor="@color/awg" android:gravity="center_vertical" android:id="@id/kag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yag" android:drawableLeft="@drawable/ils" android:drawablePadding="2.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+</RelativeLayout>

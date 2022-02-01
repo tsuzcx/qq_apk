@@ -18,22 +18,22 @@ public final class zzi
   
   public final void zzd(zzg paramzzg)
   {
-    AppMethodBeat.i(57567);
+    AppMethodBeat.i(2521);
     if (Binder.getCallingUid() != Process.myUid())
     {
       paramzzg = new SecurityException("Binding only allowed within app");
-      AppMethodBeat.o(57567);
+      AppMethodBeat.o(2521);
       throw paramzzg;
     }
     Log.isLoggable("EnhancedIntentService", 3);
     Log.isLoggable("EnhancedIntentService", 3);
     this.zzbi.zzax.execute(new zzj(this, paramzzg));
-    AppMethodBeat.o(57567);
+    AppMethodBeat.o(2521);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzi
  * JD-Core Version:    0.7.0.1
  */

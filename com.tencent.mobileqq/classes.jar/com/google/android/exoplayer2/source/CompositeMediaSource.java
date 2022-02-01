@@ -28,14 +28,9 @@ public abstract class CompositeMediaSource<T>
   
   protected void prepareChildSource(@Nullable T paramT, MediaSource paramMediaSource)
   {
-    if (!this.childSources.containsKey(paramT)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      this.childSources.put(paramT, paramMediaSource);
-      paramMediaSource.prepareSource(this.player, false, new CompositeMediaSource.1(this, paramT, paramMediaSource));
-      return;
-    }
+    Assertions.checkArgument(this.childSources.containsKey(paramT) ^ true);
+    this.childSources.put(paramT, paramMediaSource);
+    paramMediaSource.prepareSource(this.player, false, new CompositeMediaSource.1(this, paramT, paramMediaSource));
   }
   
   @CallSuper
@@ -62,7 +57,7 @@ public abstract class CompositeMediaSource<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.CompositeMediaSource
  * JD-Core Version:    0.7.0.1
  */

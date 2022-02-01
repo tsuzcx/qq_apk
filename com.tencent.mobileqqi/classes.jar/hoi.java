@@ -1,14 +1,20 @@
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener;
+import com.tencent.open.downloadnew.MyAppDialog;
 
 public class hoi
   implements Runnable
 {
-  public hoi(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
+  public hoi(MyAppApi.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    DownloadManager.a().d();
+    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a.isShowing())) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a.dismiss();
+    }
+    DownloadManager.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 

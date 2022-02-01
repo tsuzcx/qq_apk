@@ -14,12 +14,12 @@ import com.tencent.image.URLImageView;
 public class EmoticonImageView
   extends URLImageView
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static Rect jdField_a_of_type_AndroidGraphicsRect;
-  private static Rect jdField_b_of_type_AndroidGraphicsRect;
-  private static boolean jdField_b_of_type_Boolean;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
+  private static boolean sDisableNewIcon;
+  private static Rect sDstRect;
+  private static Bitmap sNewIcon;
+  private static Rect sSrcRect;
+  private boolean mNewIconVisible;
+  private Paint mPaint;
   
   public EmoticonImageView(Context paramContext)
   {
@@ -36,63 +36,69 @@ public class EmoticonImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static void a(boolean paramBoolean)
+  public static void disableNewIcon(boolean paramBoolean)
   {
-    jdField_b_of_type_Boolean = paramBoolean;
+    sDisableNewIcon = paramBoolean;
   }
   
-  public static boolean b()
+  public static boolean isNewIconDisable()
   {
-    return jdField_b_of_type_Boolean;
+    return sDisableNewIcon;
   }
   
-  public boolean a()
+  public boolean isNewIconVisible()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.mNewIconVisible;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {}
-    for (;;)
+    if (!sDisableNewIcon)
     {
-      return;
-      if (jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      try
-      {
-        jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130838365);
-        label37:
-        if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          continue;
-        }
-        if (jdField_a_of_type_AndroidGraphicsRect == null)
-        {
-          int i = jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-          int j = jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-          int m = super.getWidth();
-          int k = super.getHeight();
-          jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, i, j);
-          m = (m - i) / 2;
-          k = (int)(k - super.getResources().getDisplayMetrics().density * 13.0F);
-          jdField_b_of_type_AndroidGraphicsRect = new Rect(m, k, i + m, j + k);
-        }
-        if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-          this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        }
-        paramCanvas.drawBitmap(jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_AndroidGraphicsRect, jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (!this.mNewIconVisible) {
         return;
       }
-      catch (Exception localException)
+      if (sNewIcon != null) {}
+    }
+    try
+    {
+      sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130852741);
+    }
+    catch (Exception localException)
+    {
+      label40:
+      Bitmap localBitmap;
+      int i;
+      int j;
+      int m;
+      int k;
+      break label40;
+    }
+    localBitmap = sNewIcon;
+    if (localBitmap != null)
+    {
+      if (sSrcRect == null)
       {
-        break label37;
+        i = localBitmap.getWidth();
+        j = sNewIcon.getHeight();
+        m = super.getWidth();
+        k = super.getHeight();
+        sSrcRect = new Rect(0, 0, i, j);
+        m = (m - i) / 2;
+        k = (int)(k - super.getResources().getDisplayMetrics().density * 13.0F);
+        sDstRect = new Rect(m, k, i + m, j + k);
       }
+      if (this.mPaint == null) {
+        this.mPaint = new Paint();
+      }
+      paramCanvas.drawBitmap(sNewIcon, sSrcRect, sDstRect, this.mPaint);
     }
   }
   
   public void setNewIconVisible(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mNewIconVisible = paramBoolean;
   }
 }
 

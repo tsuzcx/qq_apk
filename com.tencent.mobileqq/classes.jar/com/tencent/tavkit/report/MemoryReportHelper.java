@@ -1,6 +1,5 @@
 package com.tencent.tavkit.report;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
@@ -106,9 +105,7 @@ public class MemoryReportHelper
   @RequiresApi(api=5)
   public int getPidMemorySize(int paramInt, Context paramContext)
   {
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { paramInt });
-    paramContext[0].getTotalSharedDirty();
-    return paramContext[0].getTotalPss();
+    return ((android.app.ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { paramInt })[0].getTotalPss();
   }
   
   public void init(Context paramContext)
@@ -126,20 +123,26 @@ public class MemoryReportHelper
   
   public void tick(String paramString, long paramLong)
   {
-    MemoryReportHelper.Consumer localConsumer2 = (MemoryReportHelper.Consumer)this.consumerHashMap.get(paramString);
-    MemoryReportHelper.Consumer localConsumer1 = localConsumer2;
-    if (localConsumer2 == null)
+    MemoryReportHelper.Consumer localConsumer = (MemoryReportHelper.Consumer)this.consumerHashMap.get(paramString);
+    Object localObject = localConsumer;
+    if (localConsumer == null)
     {
-      localConsumer1 = new MemoryReportHelper.Consumer(paramString);
-      this.consumerHashMap.put(MemoryReportHelper.Consumer.access$100(localConsumer1), localConsumer1);
+      localObject = new MemoryReportHelper.Consumer(paramString);
+      this.consumerHashMap.put(MemoryReportHelper.Consumer.access$100((MemoryReportHelper.Consumer)localObject), localObject);
     }
-    MemoryReportHelper.Consumer.access$200(localConsumer1, paramLong);
-    Log.d("MemoryReportHelper", "tick() called with: key = [" + paramString + "], MB = [" + paramLong + "]");
+    MemoryReportHelper.Consumer.access$200((MemoryReportHelper.Consumer)localObject, paramLong);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tick() called with: key = [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], mb = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("MemoryReportHelper", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.report.MemoryReportHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,130 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.UserTask;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.net.Uri;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+import java.util.List;
 
-public class du
-  extends dt
+final class du
+  extends dw
 {
-  static du a = null;
+  private static final Class a;
+  private static final Constructor b;
+  private static final Method c;
+  private static final Method d;
   
-  private du()
+  static
   {
-    super("tbl_safe_msg");
-  }
-  
-  public static du a()
-  {
-    if (a == null) {
-      a = new du();
+    Object localObject1 = null;
+    try
+    {
+      localClass2 = Class.forName("android.graphics.FontFamily");
+      Constructor localConstructor = localClass2.getConstructor(new Class[0]);
+      localObject2 = localClass2.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
+      Method localMethod = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass2, 1).getClass() });
+      localObject1 = localConstructor;
     }
-    return a;
+    catch (NoSuchMethodException localNoSuchMethodException) {}catch (ClassNotFoundException localClassNotFoundException) {}
+    localClassNotFoundException.getClass().getName();
+    Class localClass2 = null;
+    Class localClass1 = localClass2;
+    Object localObject2 = localClass1;
+    b = localObject1;
+    a = localClass2;
+    c = (Method)localObject2;
+    d = localClass1;
   }
   
-  public f a(byte paramByte)
+  private static Typeface a(Object paramObject)
   {
-    return a(2, paramByte);
+    try
+    {
+      Object localObject = Array.newInstance(a, 1);
+      Array.set(localObject, 0, paramObject);
+      paramObject = (Typeface)d.invoke(null, new Object[] { localObject });
+      return paramObject;
+    }
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
   }
   
-  public void a(byte paramByte, Handler paramHandler)
+  public static boolean a()
   {
-    new dv(this, paramByte, paramHandler).c(new String[] { "" });
+    return c != null;
   }
   
-  public void a(Handler paramHandler)
+  private static boolean a(Object paramObject, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    b();
-    cw.a().a(0L, e, paramHandler);
+    try
+    {
+      paramBoolean = ((Boolean)c.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
+      return paramBoolean;
+    }
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
   }
   
-  public void b()
+  private static Object b()
   {
-    a(0);
+    try
+    {
+      Object localObject = b.newInstance(new Object[0]);
+      return localObject;
+    }
+    catch (InvocationTargetException localInvocationTargetException) {}catch (InstantiationException localInstantiationException) {}catch (IllegalAccessException localIllegalAccessException) {}
+    throw new RuntimeException(localIllegalAccessException);
+  }
+  
+  public final Typeface a(Context paramContext, dn.b paramb, Resources paramResources, int paramInt)
+  {
+    Object localObject1 = b();
+    paramb = paramb.a;
+    int i = paramb.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      Object localObject2 = paramb[paramInt];
+      ByteBuffer localByteBuffer = dx.a(paramContext, paramResources, localObject2.d);
+      if (localByteBuffer == null) {
+        return null;
+      }
+      if (!a(localObject1, localByteBuffer, 0, localObject2.b, localObject2.c)) {
+        return null;
+      }
+      paramInt += 1;
+    }
+    return a(localObject1);
+  }
+  
+  public final Typeface a(Context paramContext, ek.b[] paramArrayOfb, int paramInt)
+  {
+    Object localObject = b();
+    ex localex = new ex();
+    int j = paramArrayOfb.length;
+    int i = 0;
+    while (i < j)
+    {
+      ek.b localb = paramArrayOfb[i];
+      Uri localUri = localb.a;
+      ByteBuffer localByteBuffer2 = (ByteBuffer)localex.get(localUri);
+      ByteBuffer localByteBuffer1 = localByteBuffer2;
+      if (localByteBuffer2 == null)
+      {
+        localByteBuffer1 = dx.a(paramContext, localUri);
+        localex.put(localUri, localByteBuffer1);
+      }
+      if (!a(localObject, localByteBuffer1, localb.b, localb.c, localb.d)) {
+        return null;
+      }
+      i += 1;
+    }
+    return Typeface.create(a(localObject), paramInt);
   }
 }
 

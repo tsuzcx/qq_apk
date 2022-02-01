@@ -1,14 +1,21 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
 
-class dcm
-  implements Runnable
+public class dcm
+  implements View.OnClickListener
 {
-  dcm(dcl paramdcl) {}
+  public dcm(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.j = true;
-    this.a.a.p();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.h) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+    }
   }
 }
 

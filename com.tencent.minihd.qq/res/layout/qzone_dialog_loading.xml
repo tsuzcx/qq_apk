@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/qzone_loding_dialog_bg" android:layout_width="228.0dip" android:layout_height="90.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/progress" android:layout_width="32.0dip" android:layout_height="32.0dip" android:indeterminateDrawable="@anim/qzone_dialog_loading_animation" />
+    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" />
+</LinearLayout>

@@ -1,42 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.Executor;
-
-public class fhd
-  implements Executor
+class fhd
+  implements Runnable
 {
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  fhd(fhc paramfhc, Runnable paramRunnable) {}
   
-  protected void a()
+  public void run()
   {
     try
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        ThreadManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void execute(Runnable paramRunnable)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilQueue.offer(new fhe(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
+      this.jdField_a_of_type_JavaLangRunnable.run();
       return;
     }
     finally
     {
-      paramRunnable = finally;
-      throw paramRunnable;
+      this.jdField_a_of_type_Fhc.a();
     }
   }
 }

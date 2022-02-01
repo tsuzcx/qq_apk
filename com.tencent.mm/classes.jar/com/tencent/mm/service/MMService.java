@@ -4,27 +4,28 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class MMService
 {
-  int bOJ = 0;
-  ConcurrentHashMap<String, MMService> ytB = new ConcurrentHashMap();
-  protected Service ytK;
-  private Vector<Integer> ytL = new Vector();
-  private byte ytM = 0;
+  ConcurrentHashMap<String, MMService> acwi = new ConcurrentHashMap();
+  protected Service acws;
+  private Vector<Integer> acwt = new Vector();
+  private byte acwu = 0;
+  int eZg = 0;
+  protected long mDN;
   
-  public IBinder It()
+  public IBinder aKF()
   {
-    ab.i(getTag(), "%s onBind()", new Object[] { "MicroMsg.MMService" });
+    Log.i(getTag(), "%s onBind()", new Object[] { "MicroMsg.MMService" });
     return null;
   }
   
-  public final void duS()
+  public final void d(int paramInt, Notification paramNotification)
   {
-    this.ytK.stopForeground(true);
+    this.acws.startForeground(paramInt, paramNotification);
   }
   
   public String getTag()
@@ -32,40 +33,45 @@ public abstract class MMService
     return "MicroMsg.MMService";
   }
   
+  public final void iUE()
+  {
+    this.acws.stopForeground(true);
+  }
+  
   public void onCreate()
   {
-    ab.i(getTag(), "%s onCreate()", new Object[] { "MicroMsg.MMService" });
+    Log.i(getTag(), "%s onCreate()", new Object[] { "MicroMsg.MMService" });
   }
   
   public void onDestroy()
   {
-    ab.i(getTag(), "%s onDestroy()", new Object[] { "MicroMsg.MMService" });
+    Log.i(getTag(), "%s onDestroy()", new Object[] { "MicroMsg.MMService" });
   }
   
   @Deprecated
   public void onStart(Intent paramIntent, int paramInt)
   {
-    ab.i(getTag(), "%s onStart()", new Object[] { "MicroMsg.MMService" });
+    Log.i(getTag(), "%s onStart()", new Object[] { "MicroMsg.MMService" });
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    ab.i(getTag(), "%s onStartCommand()", new Object[] { "MicroMsg.MMService" });
+    Log.i(getTag(), "%s onStartCommand()", new Object[] { "MicroMsg.MMService" });
     onStart(paramIntent, paramInt2);
     return 0;
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    ab.i(getTag(), "%s onUnbind()", new Object[] { "MicroMsg.MMService" });
+    Log.i(getTag(), "%s onUnbind()", new Object[] { "MicroMsg.MMService" });
     return false;
   }
   
-  public final IBinder q(Intent paramIntent, String paramString)
+  public final IBinder r(Intent paramIntent, String paramString)
   {
     int i = 2;
-    String str = Integer.toBinaryString(this.ytM);
-    ab.i(getTag(), "%s callLifeCycle() callType = %s state = %s", new Object[] { "MicroMsg.MMService", paramString, str });
+    String str = Integer.toBinaryString(this.acwu);
+    Log.i(getTag(), "%s callLifeCycle() callType = %s state = %s", new Object[] { "MicroMsg.MMService", paramString, str });
     switch (paramString.hashCode())
     {
     default: 
@@ -106,75 +112,79 @@ public abstract class MMService
               }
               i = 3;
               break label86;
-              if ((this.ytM & 0x5) == 0) {
+              if ((this.acwu & 0x5) == 0) {
                 onCreate();
               }
-              i = this.bOJ + 1;
-              this.bOJ = i;
+              i = this.eZg + 1;
+              this.eZg = i;
               onStartCommand(paramIntent, 0, i);
-              this.ytM = ((byte)(this.ytM | 0x1));
+              this.acwu = ((byte)(this.acwu | 0x1));
               return null;
-              if (this.ytM == 1)
+              if (this.acwu == 1)
               {
                 onDestroy();
-                this.ytB.remove(getClass().getName());
+                this.acwi.remove(getClass().getName());
                 return null;
               }
-            } while (this.ytM == 4);
-            if (this.ytM == 5)
+            } while (this.acwu == 4);
+            if (this.acwu == 5)
             {
-              this.ytM = 7;
+              this.acwu = 7;
               return null;
             }
-          } while (this.ytM != 13);
+          } while (this.acwu != 13);
           onDestroy();
-          this.ytB.remove(getClass().getName());
+          this.acwi.remove(getClass().getName());
           return null;
           paramIntent = Integer.valueOf(paramIntent.getIntExtra("service_connection", -1));
-        } while (this.ytL.contains(paramIntent));
-        this.ytL.add(paramIntent);
-        if ((this.ytM & 0x5) == 0) {
+        } while (this.acwt.contains(paramIntent));
+        this.acwt.add(paramIntent);
+        if ((this.acwu & 0x5) == 0) {
           onCreate();
         }
-        this.ytM = ((byte)(this.ytM | 0x4));
-        return It();
+        this.acwu = ((byte)(this.acwu | 0x4));
+        return aKF();
         i = paramIntent.getIntExtra("service_connection", -1);
-        this.ytL.remove(Integer.valueOf(i));
-      } while (this.ytM == 1);
-      if (this.ytM == 4)
+        this.acwt.remove(Integer.valueOf(i));
+      } while (this.acwu == 1);
+      if (this.acwu == 4)
       {
         onUnbind(paramIntent);
         onDestroy();
-        this.ytB.remove(getClass().getName());
+        this.acwi.remove(getClass().getName());
         return null;
       }
-      if (this.ytM == 5)
+      if (this.acwu == 5)
       {
-        this.ytM = 13;
+        this.acwu = 13;
         onUnbind(paramIntent);
         return null;
       }
-    } while (this.ytM != 7);
+    } while (this.acwu != 7);
     onUnbind(paramIntent);
     onDestroy();
-    this.ytB.remove(getClass().getName());
+    this.acwi.remove(getClass().getName());
     return null;
   }
   
   public final void startActivity(Intent paramIntent)
   {
-    this.ytK.startActivity(paramIntent);
-  }
-  
-  public final void startForeground(int paramInt, Notification paramNotification)
-  {
-    this.ytK.startForeground(paramInt, paramNotification);
+    Service localService = this.acws;
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localService, paramIntent.aYi(), "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localService.startActivity((Intent)paramIntent.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localService, "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public final void stopSelf()
   {
-    ab.i(getTag(), "%s stopSelf()", new Object[] { "MicroMsg.MMService" });
-    q(new Intent(), "stop");
+    Log.i(getTag(), "%s stopSelf()", new Object[] { "MicroMsg.MMService" });
+    r(new Intent(), "stop");
+  }
+  
+  public final void yC(long paramLong)
+  {
+    this.mDN = paramLong;
   }
 }
 

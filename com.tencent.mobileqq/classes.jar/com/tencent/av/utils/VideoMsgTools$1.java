@@ -9,17 +9,18 @@ final class VideoMsgTools$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int == 9) || (this.jdField_a_of_type_Int == 62) || (this.jdField_a_of_type_Int == 63))
+    int j = this.a;
+    if ((j != 9) && (j != 62) && (j != 63))
     {
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      VideoMsgTools.a(this.b, this.c, j, this.e, this.g, this.f, this.h, this.i);
       return;
     }
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    VideoMsgTools.a(this.b, this.c, this.a, this.d, this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.1
  * JD-Core Version:    0.7.0.1
  */

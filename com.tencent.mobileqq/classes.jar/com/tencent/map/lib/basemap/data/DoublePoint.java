@@ -15,7 +15,15 @@ public class DoublePoint
   
   public boolean IsInUnitRange()
   {
-    return (this.x >= 0.0D) && (this.x <= 1.0D) && (this.y >= 0.0D) && (this.y <= 1.0D);
+    double d = this.x;
+    if ((d >= 0.0D) && (d <= 1.0D))
+    {
+      d = this.y;
+      if ((d >= 0.0D) && (d <= 1.0D)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public float distanceTo(DoublePoint paramDoublePoint)
@@ -25,21 +33,14 @@ public class DoublePoint
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if ((paramObject instanceof DoublePoint))
     {
       paramObject = (DoublePoint)paramObject;
-      bool1 = bool2;
-      if (this.x == paramObject.x)
-      {
-        bool1 = bool2;
-        if (this.y == paramObject.y) {
-          bool1 = true;
-        }
+      if ((this.x == paramObject.x) && (this.y == paramObject.y)) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public float length()
@@ -79,7 +80,8 @@ public class DoublePoint
   
   public DoublePoint rotated(float paramFloat)
   {
-    return new DoublePoint((float)(Math.cos(paramFloat) * this.x - Math.sin(paramFloat) * this.y), (float)(Math.sin(paramFloat) * this.x + Math.cos(paramFloat) * this.y));
+    double d = paramFloat;
+    return new DoublePoint((float)(Math.cos(d) * this.x - Math.sin(d) * this.y), (float)(Math.sin(d) * this.x + Math.cos(d) * this.y));
   }
   
   public DoublePoint rotated90(int paramInt)
@@ -104,7 +106,9 @@ public class DoublePoint
   
   public DoublePoint scaledTo(double paramDouble)
   {
-    return times(paramDouble / length());
+    double d = length();
+    Double.isNaN(d);
+    return times(paramDouble / d);
   }
   
   public void set(double paramDouble1, double paramDouble2)
@@ -120,12 +124,16 @@ public class DoublePoint
   
   public String toString()
   {
-    return this.x + "," + this.y;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.y);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.lib.basemap.data.DoublePoint
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ class QCircleRecommendImageView$5
   {
     if (this.a)
     {
-      QCircleRecommendImageView.d(this.this$0);
+      QCircleRecommendImageView.f(this.this$0);
       return;
     }
-    QCircleRecommendImageView.e(this.this$0);
+    QCircleRecommendImageView.g(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.5
  * JD-Core Version:    0.7.0.1
  */

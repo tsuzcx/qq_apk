@@ -1,20 +1,16 @@
 package com.tencent.mobileqq.applets;
 
-import afwq;
-import akgt;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ssp;
 
-public final class PublicAccountEventReport$1
+final class PublicAccountEventReport$1
   implements Runnable
 {
-  public PublicAccountEventReport$1(QQAppInterface paramQQAppInterface) {}
+  PublicAccountEventReport$1(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData) {}
   
   public void run()
   {
-    if (afwq.a(ssp.a().a())) {
-      akgt.a().a(this.a, 1);
-    }
+    PublicAccountEventReport.b(this.a, this.b);
   }
 }
 

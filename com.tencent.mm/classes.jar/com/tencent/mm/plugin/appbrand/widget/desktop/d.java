@@ -1,181 +1,152 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.util.DisplayMetrics;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.modelappbrand.a.g;
+import com.tencent.mm.plugin.appbrand.appcache.e;
+import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.plugin.appbrand.widget.recent.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public final class d
+public class d
+  extends RecyclerView.v
 {
-  private static boolean jej = false;
+  public TextView titleTv;
+  public ImageView ttT;
+  public RelativeLayout uAs;
+  public ImageView uAt;
+  public ViewGroup uAu;
+  public TextView uAv;
+  public ImageView uAw;
+  public ImageView uAx;
+  public AppBrandDesktopView.a uAy;
   
-  private static int a(int paramInt, Context paramContext, float paramFloat)
+  public d(View paramView)
   {
-    AppMethodBeat.i(133816);
-    if (paramContext == null)
+    super(paramView);
+    AppMethodBeat.i(49643);
+    this.uAs = ((RelativeLayout)paramView.findViewById(ba.f.icon_container));
+    this.ttT = ((ImageView)paramView.findViewById(ba.f.icon));
+    this.uAt = ((ImageView)paramView.findViewById(ba.f.icon_bg));
+    this.uAu = ((ViewGroup)paramView.findViewById(ba.f.icon_layout));
+    this.titleTv = ((TextView)paramView.findViewById(ba.f.title));
+    this.uAv = ((TextView)paramView.findViewById(ba.f.test_mask));
+    this.uAw = ((ImageView)paramView.findViewById(ba.f.status_icon));
+    this.uAx = ((ImageView)paramView.findViewById(ba.f.image_mask));
+    AppMethodBeat.o(49643);
+  }
+  
+  public final void b(View.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(324201);
+    cPF();
+    this.ttT.setColorFilter(null);
+    this.caK.setVisibility(0);
+    this.titleTv.setVisibility(0);
+    if (this.uAy.uAl == null)
     {
-      AppMethodBeat.o(133816);
-      return 0;
+      com.tencent.mm.modelappbrand.a.b.bEY().a(this.ttT, "", com.tencent.mm.modelappbrand.a.a.bEX(), g.org);
+      this.uAv.setVisibility(8);
+      this.titleTv.setText("");
+      Log.e("MicroMsg.AppBrandItemHolder", "item info is null!");
+      AppMethodBeat.o(324201);
+      return;
     }
-    int k = dn(paramContext);
-    int i;
-    if (b.aPf()) {
-      i = (int)((paramInt - k * paramFloat) / Math.ceil(paramFloat));
-    }
-    for (;;)
+    label214:
+    Object localObject;
+    label279:
+    String str;
+    if (!Util.isNullOrNil(this.uAy.uAl.epy))
     {
-      int j = i;
-      if (i < 0) {
-        j = 0;
+      this.titleTv.setText(this.uAy.uAl.epy);
+      this.titleTv.setVisibility(0);
+      Log.i("MicroMsg.AppBrandItemHolder", "ccf-log [onBindViewHolder] name=%s iconUrl=%s", new Object[] { this.uAy.uAl.nickname, this.uAy.uAl.qQb });
+      if (Util.isNullOrNil(this.uAy.uAl.qQb)) {
+        break label536;
       }
-      ab.i("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d, itemPadding: %d, viewWidth: %d, countPerPage: %f, leftRightPaddingZero: %b", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(paramInt), Float.valueOf(paramFloat), Boolean.valueOf(jej) });
-      AppMethodBeat.o(133816);
-      return j;
-      jej = false;
-      j = dp(paramContext);
-      i = (paramInt - j * 2 - (int)paramFloat * k) / (((int)paramFloat - 1) * 2);
-      if (i > j)
+      com.tencent.mm.modelappbrand.a.b.bEY().a(this.ttT, this.uAy.uAl.qQb, com.tencent.mm.modelappbrand.a.a.bEX(), g.org);
+      this.uAv.setVisibility(8);
+      this.uAx.setVisibility(8);
+      if (Util.isNullOrNil(e.zm(this.uAy.uAl.euz))) {
+        break label549;
+      }
+      this.uAv.setVisibility(0);
+      this.uAv.setText(e.zm(this.uAy.uAl.euz));
+      this.caK.setTag(ba.f.desktop_pop_menu, new com.tencent.mm.ui.widget.b.a(this.caK.getContext(), this.caK));
+      this.caK.setOnClickListener(paramOnClickListener);
+      this.caK.setHapticFeedbackEnabled(false);
+      localObject = this.caK;
+      str = this.titleTv.getText().toString();
+      if (this.uAv.getVisibility() != 0) {
+        break label619;
+      }
+    }
+    label536:
+    label549:
+    label619:
+    for (paramOnClickListener = this.uAv.getText().toString();; paramOnClickListener = "")
+    {
+      ((View)localObject).setContentDescription(String.format("%s,%s", new Object[] { str, paramOnClickListener }));
+      AppMethodBeat.o(324201);
+      return;
+      if (!Util.isNullOrNil(this.uAy.uAl.nickname))
       {
-        i = (paramInt - (int)paramFloat * k) / ((int)paramFloat * 2);
-        jej = true;
+        this.titleTv.setText(this.uAy.uAl.nickname);
+        this.titleTv.setVisibility(0);
+        break;
       }
-      else
+      if (!Util.isNullOrNil(this.uAy.uAl.username))
       {
-        jej = false;
+        Log.w("MicroMsg.AppBrandItemHolder", "[onBindCustomViewHolder] nickname is null! username:%s appId:%s", new Object[] { this.uAy.uAl.username, this.uAy.uAl.appId });
+        this.titleTv.setVisibility(0);
+        this.titleTv.setText(this.uAy.uAl.username);
+        break;
       }
-    }
-  }
-  
-  public static int c(int paramInt, Context paramContext)
-  {
-    AppMethodBeat.i(133814);
-    paramInt = a(paramInt, paramContext, b.getShowCountPerPage());
-    AppMethodBeat.o(133814);
-    return paramInt;
-  }
-  
-  public static int d(Context paramContext, float paramFloat)
-  {
-    AppMethodBeat.i(133817);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(133817);
-      return 0;
-    }
-    int i = a(getScreenWidth(paramContext), paramContext, paramFloat);
-    AppMethodBeat.o(133817);
-    return i;
-  }
-  
-  public static int dn(Context paramContext)
-  {
-    AppMethodBeat.i(133812);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(133812);
-      return 0;
-    }
-    int i = (int)(a.ap(paramContext, 2131427992) * dr(paramContext));
-    ab.i("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(133812);
-    return i;
-  }
-  
-  public static int jdMethod_do(Context paramContext)
-  {
-    AppMethodBeat.i(133813);
-    int i = d(paramContext, b.getShowCountPerPage());
-    AppMethodBeat.o(133813);
-    return i;
-  }
-  
-  public static int dp(Context paramContext)
-  {
-    AppMethodBeat.i(133818);
-    if (jej)
-    {
-      AppMethodBeat.o(133818);
-      return 0;
-    }
-    int j = paramContext.getResources().getDimensionPixelOffset(2131427993);
-    float f = dr(paramContext);
-    int i = j;
-    if (f != a.gg(paramContext))
-    {
-      i = j;
-      if (f != a.gf(paramContext)) {
-        if ((f != a.gh(paramContext)) && (f != a.gi(paramContext)) && (f != a.gj(paramContext))) {
-          break label117;
-        }
+      this.titleTv.setVisibility(0);
+      this.titleTv.setText("");
+      break;
+      this.ttT.setImageDrawable(com.tencent.mm.modelappbrand.a.a.bEX());
+      break label214;
+      if (!this.uAy.uAl.qQe) {
+        break label279;
       }
-    }
-    label117:
-    for (i = paramContext.getResources().getDimensionPixelOffset(2131427772);; i = paramContext.getResources().getDimensionPixelOffset(2131427808))
-    {
-      ab.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo getLeftRightPadding: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(133818);
-      return i;
+      this.uAx.setVisibility(0);
+      localObject = new ShapeDrawable(new OvalShape());
+      ((ShapeDrawable)localObject).getPaint().setColor(com.tencent.mm.plugin.multitask.ui.bg.a.gkK().mcd);
+      this.uAx.setBackground((Drawable)localObject);
+      this.uAx.setImageResource(ba.h.app_brand_destop_view_third_party_running_flag);
+      break label279;
     }
   }
   
-  public static float dq(Context paramContext)
+  public final void cPF()
   {
-    AppMethodBeat.i(133819);
-    float f = a.ap(paramContext, 2131427989) * dr(paramContext);
-    ab.i("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo iconSize: %f", new Object[] { Float.valueOf(f) });
-    AppMethodBeat.o(133819);
-    return f;
-  }
-  
-  public static float dr(Context paramContext)
-  {
-    AppMethodBeat.i(133820);
-    float f2 = a.dr(paramContext);
-    float f1;
-    if ((f2 != a.gk(paramContext)) && (f2 != a.gl(paramContext)))
-    {
-      f1 = f2;
-      if (f2 != a.gm(paramContext)) {}
-    }
-    else
-    {
-      f1 = a.gj(paramContext);
-    }
-    AppMethodBeat.o(133820);
-    return f1;
-  }
-  
-  private static int getScreenWidth(Context paramContext)
-  {
-    AppMethodBeat.i(133815);
-    try
-    {
-      if ((paramContext.getResources().getConfiguration().orientation == 2) && (af.hW(paramContext)))
-      {
-        i = af.hQ(paramContext).x;
-        AppMethodBeat.o(133815);
-        return i;
-      }
-      int i = paramContext.getResources().getDisplayMetrics().widthPixels;
-      AppMethodBeat.o(133815);
-      return i;
-    }
-    catch (Exception paramContext)
-    {
-      ab.printErrStackTrace("MicroMsg.AppBrandDesktopSizeHelper", paramContext, "alvinluo getScreenWidth exception", new Object[0]);
-      AppMethodBeat.o(133815);
-    }
-    return 0;
+    AppMethodBeat.i(324206);
+    int i = (int)f.fu(this.caK.getContext());
+    this.caK.getLayoutParams().width = b.ft(this.caK.getContext());
+    this.uAs.getLayoutParams().width = i;
+    this.uAs.getLayoutParams().height = i;
+    this.ttT.getLayoutParams().width = -1;
+    this.ttT.getLayoutParams().height = -1;
+    AppMethodBeat.o(324206);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.d
  * JD-Core Version:    0.7.0.1
  */

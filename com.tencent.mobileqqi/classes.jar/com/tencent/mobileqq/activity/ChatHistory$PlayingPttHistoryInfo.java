@@ -35,7 +35,7 @@ public class ChatHistory$PlayingPttHistoryInfo
     }
     label187:
     label189:
-    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231355);; localObject1 = null)
+    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231354);; localObject1 = null)
     {
       if (localObject1 != null)
       {
@@ -52,8 +52,8 @@ public class ChatHistory$PlayingPttHistoryInfo
           ImageView localImageView;
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
-            localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231353);
-            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231352);
+            localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231352);
+            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231351);
           }
           for (;;)
           {
@@ -85,7 +85,7 @@ public class ChatHistory$PlayingPttHistoryInfo
     }
     label186:
     label188:
-    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231355);; localObject1 = null)
+    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231354);; localObject1 = null)
     {
       Object localObject2;
       if ((localObject1 != null) && (((Button)localObject1).getTag().equals(this.jdField_a_of_type_JavaLangObject)))
@@ -102,8 +102,8 @@ public class ChatHistory$PlayingPttHistoryInfo
         {
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
-            localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231353);
-            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231352);
+            localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231352);
+            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231351);
           }
           for (;;)
           {

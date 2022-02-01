@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iwp" android:background="@drawable/ah0" android:layout_width="fill_parent" android:layout_height="@dimen/ik"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/g4d" android:background="@drawable/bgq" android:visibility="gone" android:layout_width="@dimen/j4" android:layout_height="@dimen/j4" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/m2" android:layout_marginRight="@dimen/m2" android:layout_marginBottom="@dimen/m2" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="@dimen/ik" android:layout_marginLeft="@dimen/j6" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/fno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/fnn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item price]" android:singleLine="true" />
+        <TextView android:textSize="@dimen/m8" android:textColor="@color/a17" android:id="@id/fnm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item desc]" android:singleLine="true" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j_h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/j6" android:src="@raw/radio_on" android:scaleType="fitXY" app:iconColor="#ff1aad19" />
+</LinearLayout>

@@ -22,16 +22,6 @@ public final class UploadReq
   public long uin = 0L;
   public int voice_length = 0;
   
-  static
-  {
-    if (!UploadReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public UploadReq() {}
   
   public UploadReq(long paramLong1, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, int paramInt3, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte2)
@@ -49,18 +39,17 @@ public final class UploadReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -79,13 +68,48 @@ public final class UploadReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UploadReq)paramObject;
-    } while ((!JceUtil.equals(this.uin, paramObject.uin)) || (!JceUtil.equals(this.format, paramObject.format)) || (!JceUtil.equals(this.appid, paramObject.appid)) || (!JceUtil.equals(this.data, paramObject.data)) || (!JceUtil.equals(this.voice_length, paramObject.voice_length)) || (!JceUtil.equals(this.client_ip, paramObject.client_ip)) || (!JceUtil.equals(this.server_ip, paramObject.server_ip)) || (!JceUtil.equals(this.key_type, paramObject.key_type)) || (!JceUtil.equals(this.key_value, paramObject.key_value)));
-    return true;
+    }
+    paramObject = (UploadReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.uin, paramObject.uin))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.format, paramObject.format))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.appid, paramObject.appid))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.data, paramObject.data))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.voice_length, paramObject.voice_length))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.client_ip, paramObject.client_ip))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.server_ip, paramObject.server_ip))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.key_type, paramObject.key_type))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.key_value, paramObject.key_value)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -134,14 +158,15 @@ public final class UploadReq
     paramJceOutputStream.write(this.client_ip, 5);
     paramJceOutputStream.write(this.server_ip, 6);
     paramJceOutputStream.write(this.key_type, 7);
-    if (this.key_value != null) {
-      paramJceOutputStream.write(this.key_value, 8);
+    byte[] arrayOfByte = this.key_value;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Sound.UploadReq
  * JD-Core Version:    0.7.0.1
  */

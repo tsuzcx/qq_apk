@@ -12,25 +12,29 @@ import com.tencent.aekit.openrender.UniformParam.Float3fParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.UniformParam.Mat4Param;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.manager.TouchTriggerManager;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.PTFaceLogUtil;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
@@ -42,7 +46,7 @@ import java.util.List;
 public abstract class NormalVideoFilter
   extends VideoFilterBase
 {
-  private static final String TAG = NormalVideoFilter.class.getSimpleName();
+  private static final String TAG = "NormalVideoFilter";
   protected float audioScaleFactor = 1.0F;
   protected long firstTriggerInStateTime = 0L;
   protected int frameIndex;
@@ -54,22 +58,27 @@ public abstract class NormalVideoFilter
   protected boolean isInState = false;
   protected boolean isRenderForBitmap;
   protected StickerItem item;
-  private int lastImageIndex = -1;
+  protected int lastImageIndex = -1;
   private boolean mAudioPause;
   private boolean mHasBodyDetected = false;
   private boolean mHasSeenValid = false;
+  private boolean mIsLastPause = false;
   private boolean mIsNeedSeekTime = false;
+  private int mLastPosition = -1;
+  private int mMusicPlayFirstSync = -1;
   private PlayerUtil.Player mPlayer;
   public List<PointF> mPreviousBodyPoints = null;
   private long mPreviousLostTime = System.currentTimeMillis();
   private long mTimesForLostProtect = 2000L;
   protected ActVideoDecoder mVideoDecoder;
+  protected int musicPlayCount = 1;
+  boolean needPlayMusic = false;
   protected int playMode = 0;
   private int spritePictureColumn;
   private int spritePictureHeight;
   private int spritePictureRow;
   private int spritePictureWidth;
-  private int[] tex = new int[2];
+  protected int[] tex = new int[2];
   protected boolean triggered = false;
   
   public NormalVideoFilter(StickerItem paramStickerItem, String paramString)
@@ -92,111 +101,66 @@ public abstract class NormalVideoFilter
   
   private void avoidBodyPointsShake(PTDetectInfo paramPTDetectInfo)
   {
-    if ((paramPTDetectInfo.bodyPoints == null) || (paramPTDetectInfo.bodyPoints.isEmpty()))
+    if ((paramPTDetectInfo.bodyPoints != null) && (!paramPTDetectInfo.bodyPoints.isEmpty()))
     {
-      this.mHasBodyDetected = false;
-      if (this.mHasSeenValid)
+      this.mHasBodyDetected = true;
+      this.mHasSeenValid = true;
+      this.mPreviousLostTime = System.currentTimeMillis();
+      this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
+      return;
+    }
+    this.mHasBodyDetected = false;
+    if (this.mHasSeenValid)
+    {
+      if (System.currentTimeMillis() - this.mPreviousLostTime < this.mTimesForLostProtect)
       {
-        if (System.currentTimeMillis() - this.mPreviousLostTime < this.mTimesForLostProtect) {
-          paramPTDetectInfo.bodyPoints = this.mPreviousBodyPoints;
-        }
-      }
-      else {
+        paramPTDetectInfo.bodyPoints = this.mPreviousBodyPoints;
         return;
       }
       this.mHasSeenValid = false;
       this.mPreviousBodyPoints = null;
-      return;
     }
-    this.mHasBodyDetected = true;
-    this.mHasSeenValid = true;
-    this.mPreviousLostTime = System.currentTimeMillis();
-    this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
   }
   
-  private int getNextFrame(int paramInt)
+  private void checkFirstSysnc()
   {
-    if (VideoMaterialUtil.isEmptyItem(this.item)) {
-      return this.tex[0];
-    }
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (this.mVideoDecoder != null))
+    if ((this.mMusicPlayFirstSync > 0) && (Math.abs(System.currentTimeMillis() - this.frameStartTime - this.mPlayer.getCurrentPosition()) > 500L))
     {
-      this.mVideoDecoder.decodeFrame(paramInt);
-      if (this.mVideoDecoder.updateFrame()) {
-        this.isImageReady = true;
-      }
-      this.lastImageIndex = paramInt;
-    }
-    label404:
-    for (;;)
-    {
-      return this.tex[0];
-      if (this.tex[0] != 0) {
-        if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
-        {
-          if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
-          {
-            this.isImageReady = true;
-            this.lastImageIndex = paramInt;
-          }
-        }
-        else
-        {
-          Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-          if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
-          {
-            localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-            localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-          }
-          for (int i = 1;; i = 0) {
-            for (;;)
-            {
-              if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-                break label404;
-              }
-              BenchUtil.benchStart("normal loadTexture");
-              try
-              {
-                GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-                BenchUtil.benchEnd("normal loadTexture");
-                this.spritePictureWidth = ((Bitmap)localObject).getWidth();
-                this.spritePictureHeight = ((Bitmap)localObject).getHeight();
-                if (i != 0)
-                {
-                  ((Bitmap)localObject).recycle();
-                  this.isImageReady = true;
-                  this.lastImageIndex = paramInt;
-                }
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  PTFaceLogUtil.e(TAG, "getNextFrame:loadTexture Exception:" + localException.getMessage());
-                  continue;
-                  VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
-                }
-              }
-            }
-          }
-        }
-      }
+      int i = (int)(System.currentTimeMillis() - this.frameStartTime);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mPlayer.getCurrentPosition());
+      localStringBuilder.append("||CORRECT:");
+      localStringBuilder.append(i);
+      LogUtils.i(str, localStringBuilder.toString());
+      PlayerUtil.seekPlayer(this.mPlayer, i);
+      this.mMusicPlayFirstSync = 0;
     }
   }
   
   private void initAudio()
   {
-    if (this.mPlayer != null) {}
-    while ((this.item == null) || (TextUtils.isEmpty(this.dataPath)) || (TextUtils.isEmpty(this.item.id)) || (TextUtils.isEmpty(this.item.audio))) {
+    if (this.mPlayer != null) {
       return;
     }
-    String str = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
-    if (str.startsWith("assets://"))
+    if ((this.item != null) && (!TextUtils.isEmpty(this.dataPath)) && (!TextUtils.isEmpty(this.item.id)) && (!TextUtils.isEmpty(this.item.audio)))
     {
-      this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), str.replace("assets://", ""), false);
-      return;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.id);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.audio);
+      localObject = ((StringBuilder)localObject).toString();
+      if (((String)localObject).startsWith("assets://")) {
+        this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false);
+      } else {
+        this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false);
+      }
+      if (this.mPlayer != null) {
+        TouchTriggerManager.getInstance().setMusicDuration(this.mPlayer.getDuration());
+      }
     }
-    this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false);
   }
   
   private boolean isFullScreenRender(AttributeParam paramAttributeParam)
@@ -207,49 +171,105 @@ public abstract class NormalVideoFilter
     paramAttributeParam = paramAttributeParam.vertices;
     int j = paramAttributeParam.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label52;
-      }
       float f = paramAttributeParam[i];
       if ((Float.compare(-1.0F, f) != 0) && (Float.compare(1.0F, f) != 0)) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label52:
     return true;
+  }
+  
+  private void playMusic(boolean paramBoolean)
+  {
+    int i = this.playMode;
+    if (i == 0)
+    {
+      PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+      recordMusicStartInfo(false);
+      checkFirstSysnc();
+      return;
+    }
+    if ((i == 1) && (this.mIsNeedSeekTime))
+    {
+      long l = System.currentTimeMillis();
+      PlayerUtil.Player localPlayer = this.mPlayer;
+      PlayerUtil.seekPlayer(localPlayer, (int)(l - this.firstTriggerInStateTime) % localPlayer.getDuration());
+      this.mIsNeedSeekTime = false;
+      return;
+    }
+    PlayerUtil.startPlayer(this.mPlayer, false);
+    recordMusicStartInfo(false);
+    checkFirstSysnc();
+  }
+  
+  private void recordMusicStartInfo(boolean paramBoolean)
+  {
+    if (this.mPlayer == null) {
+      return;
+    }
+    if (TouchTriggerManager.getInstance().getMusicStartTime() <= 0L) {
+      TouchTriggerManager.getInstance().setMusicStartTime(System.currentTimeMillis());
+    }
+    if ((!this.mIsLastPause) && (paramBoolean)) {
+      try
+      {
+        TouchTriggerManager.getInstance().setMusicCurrentPosition(this.mPlayer.getCurrentPosition());
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("IllegalStateException:mPlayer.getCurrentPosition()->");
+        localStringBuilder.append(localIllegalStateException.getMessage());
+        LogUtils.e(str, localStringBuilder.toString());
+      }
+    }
+    this.mIsLastPause = paramBoolean;
   }
   
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
     GlUtil.createEtcTexture(this.tex);
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG))
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG))
     {
-      String str2 = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id;
-      String str1 = str2;
-      if (!str2.endsWith(".mp4")) {
-        str1 = str2 + ".mp4";
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.subFolder);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.id);
+      String str = ((StringBuilder)localObject).toString();
+      localObject = str;
+      if (!str.endsWith(".mp4"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(".mp4");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      this.mVideoDecoder = new ActVideoDecoder(str1, this.tex[0]);
+      this.mVideoDecoder = new ActVideoDecoder((String)localObject, this.tex[0]);
     }
-    if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) {
+    if (this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) {
       VideoMemoryManager.getInstance().initInGLThread(this.item.id, this.tex[0]);
     }
   }
   
   public boolean canUseBlendMode()
   {
-    return (this.item != null) && (this.item.blendMode < 2);
+    StickerItem localStickerItem = this.item;
+    return (localStickerItem != null) && (localStickerItem.blendMode < 2) && (!this.item.isDisplacementMaterial());
   }
   
   public void clearGLSLSelf()
   {
-    int i = 0;
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    int i = 0;
     try
     {
       while (i < this.tex.length)
@@ -261,10 +281,15 @@ public abstract class NormalVideoFilter
       {
         this.mVideoDecoder.release();
         this.mVideoDecoder = null;
+        VideoMemoryManager.getInstance().setVideoPath(null);
       }
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   protected void clearTextureParam()
@@ -289,7 +314,9 @@ public abstract class NormalVideoFilter
     if (!this.triggered) {
       return 0.0F;
     }
-    return (float)((paramLong - this.frameStartTime) / 1000.0D);
+    double d = paramLong - this.frameStartTime;
+    Double.isNaN(d);
+    return (float)(d / 1000.0D);
   }
   
   public int getFrameIndex()
@@ -307,6 +334,127 @@ public abstract class NormalVideoFilter
     return this.lastImageIndex;
   }
   
+  protected int getNextFrame(int paramInt)
+  {
+    if (VideoMaterial.isEmptyItem(this.item)) {
+      return this.tex[0];
+    }
+    Object localObject = VideoMemoryManager.getInstance().getVideoPath();
+    String str;
+    StringBuilder localStringBuilder;
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG))
+    {
+      if ((localObject != null) && (((String)localObject).endsWith(".png")))
+      {
+        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+        if (BitmapUtils.isLegal((Bitmap)localObject))
+        {
+          BenchUtil.benchStart("1normal loadTexture");
+          try
+          {
+            GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+          }
+          catch (Exception localException1)
+          {
+            str = TAG;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("1getNextFrame:loadTexture Exception:");
+            localStringBuilder.append(localException1.getMessage());
+            LogUtils.e(str, localStringBuilder.toString());
+          }
+          this.isImageReady = true;
+          if (localObject != null) {
+            ((Bitmap)localObject).recycle();
+          }
+        }
+        localObject = this.mVideoDecoder;
+        if (localObject != null) {
+          ((ActVideoDecoder)localObject).release();
+        }
+        VideoMemoryManager.getInstance().setVideoPath(null);
+      }
+      else
+      {
+        ActVideoDecoder localActVideoDecoder = this.mVideoDecoder;
+        if (localActVideoDecoder != null)
+        {
+          localActVideoDecoder.decodeFrame(paramInt);
+          if (this.mVideoDecoder.updateFrame()) {
+            this.isImageReady = true;
+          }
+          this.lastImageIndex = paramInt;
+          if ((localObject != null) && (((String)localObject).endsWith(".mp4")))
+          {
+            this.mVideoDecoder.release();
+            this.mVideoDecoder = null;
+            this.mVideoDecoder = new ActVideoDecoder((String)localObject, this.tex[0]);
+            VideoMemoryManager.getInstance().setVideoPath(null);
+          }
+        }
+      }
+    }
+    else if (this.tex[0] != 0) {
+      if ((this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+      {
+        if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
+        {
+          this.isImageReady = true;
+          this.lastImageIndex = paramInt;
+        }
+      }
+      else
+      {
+        localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+        int i;
+        if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(this.dataPath));
+          ((StringBuilder)localObject).append(this.item.subFolder);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(this.item.id);
+          ((StringBuilder)localObject).append("_");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(".png");
+          localObject = ((StringBuilder)localObject).toString();
+          localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+          i = 1;
+        }
+        else
+        {
+          i = 0;
+        }
+        if (BitmapUtils.isLegal((Bitmap)localObject))
+        {
+          BenchUtil.benchStart("normal loadTexture");
+          try
+          {
+            GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+          }
+          catch (Exception localException2)
+          {
+            str = TAG;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getNextFrame:loadTexture Exception:");
+            localStringBuilder.append(localException2.getMessage());
+            PTFaceLogUtil.e(str, localStringBuilder.toString());
+          }
+          BenchUtil.benchEnd("normal loadTexture");
+          this.spritePictureWidth = ((Bitmap)localObject).getWidth();
+          this.spritePictureHeight = ((Bitmap)localObject).getHeight();
+          if (i != 0) {
+            ((Bitmap)localObject).recycle();
+          } else {
+            VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
+          }
+          this.isImageReady = true;
+          this.lastImageIndex = paramInt;
+        }
+      }
+    }
+    return this.tex[0];
+  }
+  
   public StickerItem getStickerItem()
   {
     return this.item;
@@ -319,37 +467,62 @@ public abstract class NormalVideoFilter
   
   public void initParams()
   {
-    int i = -1;
-    int j;
-    if (this.item.transformType == 1) {
-      j = 1;
-    }
-    for (;;)
+    int i = this.item.transformType;
+    int j = -1;
+    if (i == 1)
     {
-      addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
-      addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
-      addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
-      addParam(new UniformParam.IntParam("texNeedTransform", 1));
-      addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-      addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-      addParam(new UniformParam.FloatParam("texScale", 1.0F));
-      addParam(new UniformParam.FloatParam("texScaleX", j));
-      addParam(new UniformParam.FloatParam("texScaleY", i));
-      addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-      addParam(new UniformParam.FloatParam("alpha", 1.0F));
-      addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
-      return;
+      i = -1;
+    }
+    else
+    {
       if (this.item.transformType == 2)
       {
-        j = -1;
         i = 1;
+        break label40;
+      }
+      i = 1;
+    }
+    j = 1;
+    label40:
+    addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
+    addParam(new UniformParam.IntParam("texNeedTransform", 1));
+    addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+    addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
+    addParam(new UniformParam.FloatParam("texScale", 1.0F));
+    addParam(new UniformParam.FloatParam("texScaleX", j));
+    addParam(new UniformParam.FloatParam("texScaleY", i));
+    addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+    addParam(new UniformParam.FloatParam("alpha", 1.0F));
+    addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+    addParam(new UniformParam.Float2fParam("displacement", this.item.displacementX, this.item.displacementY));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.dataPath);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.item.displacementLutPath);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.item.isDisplacementMaterial()))
+    {
+      localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, 1);
+      if (BitmapUtils.isLegal((Bitmap)localObject))
+      {
+        addParam(new UniformParam.TextureBitmapParam("inputImageTexture4", (Bitmap)localObject, 33988, true));
+        addParam(new UniformParam.IntParam("displacementEnableLut", 1));
       }
       else
       {
-        i = 1;
-        j = 1;
+        addParam(new UniformParam.TextureParam("inputImageTexture4", 0, 33988));
+        addParam(new UniformParam.IntParam("displacementEnableLut", 0));
       }
     }
+    else
+    {
+      addParam(new UniformParam.TextureParam("inputImageTexture4", 0, 33988));
+      addParam(new UniformParam.IntParam("displacementEnableLut", 0));
+    }
+    addParam(new UniformParam.TextureParam("inputImageTexture5", 0, 33989));
+    addParam(new UniformParam.FloatParam("useDisplacementMask", 0.0F));
   }
   
   public boolean isFirstTriggered()
@@ -364,16 +537,21 @@ public abstract class NormalVideoFilter
   
   public boolean isStaticSticker()
   {
-    return (this.item != null) && ((this.item.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (this.item.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type));
+    StickerItem localStickerItem = this.item;
+    return (localStickerItem != null) && ((localStickerItem.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (this.item.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type));
   }
   
   public boolean needCopyTex()
   {
-    if (this.item == null) {}
-    while ((this.item.blendMode < 2) || (this.item.blendMode > 12)) {
+    StickerItem localStickerItem = this.item;
+    boolean bool = false;
+    if (localStickerItem == null) {
       return false;
     }
-    return true;
+    if (((localStickerItem.blendMode >= 2) && (this.item.blendMode <= 12)) || (this.item.isDisplacementMaterial())) {
+      bool = true;
+    }
+    return bool;
   }
   
   boolean needLoadImage()
@@ -386,12 +564,20 @@ public abstract class NormalVideoFilter
     return this.triggered;
   }
   
+  public void pauseAndSeekToOrigin()
+  {
+    PlayerUtil.pauseAndSeekToOrigin(this.mPlayer);
+  }
+  
   public void reset()
   {
     this.mHasBodyDetected = false;
     this.mHasSeenValid = false;
     this.mPreviousBodyPoints = null;
     this.mAudioPause = false;
+    pauseAndSeekToOrigin();
+    this.mLastPosition = -1;
+    this.musicPlayCount = 1;
   }
   
   public void setAudioPause(boolean paramBoolean)
@@ -402,6 +588,13 @@ public abstract class NormalVideoFilter
   public void setAudioScaleFactor(float paramFloat)
   {
     this.audioScaleFactor = paramFloat;
+  }
+  
+  public void setFirstPlaySync(int paramInt)
+  {
+    if (this.mMusicPlayFirstSync < 0) {
+      this.mMusicPlayFirstSync = paramInt;
+    }
   }
   
   public void setFirstTriggerInStateTime(long paramLong)
@@ -454,10 +647,7 @@ public abstract class NormalVideoFilter
     this.triggered = paramBoolean;
   }
   
-  public void stopAndResetAudio()
-  {
-    PlayerUtil.stopAndResetPlayer(this.mPlayer);
-  }
+  protected void updateCatFacePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat) {}
   
   public void updateHotArea(ArrayList<RedPacketPosition> paramArrayList)
   {
@@ -474,56 +664,46 @@ public abstract class NormalVideoFilter
       if ((this.playMode == 1) && (this.isInState)) {
         this.mIsNeedSeekTime = true;
       }
+      return;
     }
-    do
+    if ((!VideoPrefsUtil.getMaterialMute()) && (!this.mAudioPause))
     {
-      do
-      {
+      initAudio();
+      if (this.mPlayer == null) {
         return;
-        if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
-          break;
-        }
-        initAudio();
-      } while (this.mPlayer == null);
-      if (this.item.audioLoopCount <= 0) {
-        break;
       }
-    } while (!paramBoolean);
-    if (this.playMode == 0)
-    {
-      PlayerUtil.startPlayer(this.mPlayer, true);
-      return;
+      if (this.item.audioLoopCount > 0)
+      {
+        if (this.mLastPosition > this.mPlayer.getCurrentPosition())
+        {
+          this.musicPlayCount += 1;
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("music Count :");
+          localStringBuilder.append(this.musicPlayCount);
+          LogUtils.i(str, localStringBuilder.toString());
+        }
+        this.mLastPosition = this.mPlayer.getCurrentPosition();
+        if ((paramBoolean) || (this.musicPlayCount < this.item.audioLoopCount))
+        {
+          playMusic(paramBoolean);
+          this.needPlayMusic = false;
+        }
+      }
+      else
+      {
+        playMusic(paramBoolean);
+      }
     }
-    long l;
-    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
+    else
     {
-      l = System.currentTimeMillis();
-      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
-      this.mIsNeedSeekTime = false;
-      return;
+      PlayerUtil.stopPlayer(this.mPlayer);
+      recordMusicStartInfo(true);
+      LogUtils.i(TAG, "Stop !");
     }
-    PlayerUtil.startPlayer(this.mPlayer, false);
-    return;
-    if (this.playMode == 0)
-    {
-      PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
-      return;
-    }
-    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
-    {
-      l = System.currentTimeMillis();
-      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
-      this.mIsNeedSeekTime = false;
-      return;
-    }
-    PlayerUtil.startPlayer(this.mPlayer, false);
-    return;
-    PlayerUtil.stopPlayer(this.mPlayer);
   }
   
   protected void updatePositions(List<PointF> paramList) {}
-  
-  protected void updatePositions(List<PointF> paramList, int paramInt) {}
   
   protected abstract void updatePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat);
   
@@ -531,57 +711,57 @@ public abstract class NormalVideoFilter
   
   public void updatePreview(Object paramObject)
   {
-    int i;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
+      if ((this.item.isDisplacementMaterial()) && (paramObject.displacementMaskFrame != null) && (paramObject.displacementMaskFrame.getLastRenderTextureId() > 0))
+      {
+        addParam(new UniformParam.TextureParam("inputImageTexture5", paramObject.displacementMaskFrame.getLastRenderTextureId(), 33989));
+        addParam(new UniformParam.FloatParam("useDisplacementMask", 1.0F));
+      }
+      else
+      {
+        addParam(new UniformParam.TextureParam("inputImageTexture5", 0, 33989));
+        addParam(new UniformParam.FloatParam("useDisplacementMask", 0.0F));
+      }
+      if (VideoMaterial.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
       updatePlayer(this.isFirstTriggered);
-      i = this.frameIndex;
+      int i = this.frameIndex;
       if (!needRenderTexture())
       {
         clearTextureParam();
         VideoMemoryManager.getInstance().reset(this.item.id);
         updateTextureParam(0, paramObject.timestamp);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (VideoMaterialUtil.isGestureItem(this.item)) {
-      updatePositions(paramObject.handPoints);
-    }
-    for (;;)
-    {
-      updateTextureParam(i, paramObject.timestamp);
-      return;
-      if (VideoMaterialUtil.isBodyDetectItem(this.item))
+      if (VideoMaterial.isGestureItem(this.item))
       {
-        if (VideoMaterialUtil.isBody4AnchorItem(this.item)) {
+        updatePositions(paramObject.handPoints);
+      }
+      else if (VideoMaterial.isBodyDetectItem(this.item))
+      {
+        if (VideoMaterial.isBody4AnchorItem(this.item)) {
           updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
+        } else if (VideoMaterial.isBody2AnchorItem(this.item)) {
+          updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
+        } else {
+          updatePositions(paramObject.bodyPoints);
         }
-        for (;;)
-        {
-          if (this.mHasBodyDetected) {
-            break label177;
-          }
+        if (!this.mHasBodyDetected) {
           paramObject.bodyPoints = null;
-          break;
-          if (VideoMaterialUtil.isBody2AnchorItem(this.item)) {
-            updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
-          } else {
-            updatePositions(paramObject.bodyPoints);
-          }
         }
+      }
+      else if (VideoMaterial.isCatItem(this.item))
+      {
+        updateCatFacePositions(paramObject.catFacePoints, paramObject.catFaceAngles, paramObject.phoneAngle);
       }
       else
       {
-        label177:
         updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
       }
+      updateTextureParam(i, paramObject.timestamp);
     }
   }
   
@@ -599,63 +779,69 @@ public abstract class NormalVideoFilter
   protected void updateTextureParam(int paramInt, long paramLong)
   {
     if (!needLoadImage()) {
-      break label7;
-    }
-    for (;;)
-    {
-      label7:
       return;
-      if (paramInt != this.lastImageIndex)
+    }
+    if ((paramInt == this.lastImageIndex) && (this.item.isCanDiyPitcureVideo == 0)) {
+      return;
+    }
+    Object localObject;
+    if (this.lastImageIndex > paramInt)
+    {
+      localObject = this.mVideoDecoder;
+      if (localObject != null) {
+        ((ActVideoDecoder)localObject).reset();
+      }
+    }
+    if (this.item.stickerType == VideoFilterFactory.STICKER_TYPE.ETC.type)
+    {
+      localObject = VideoMemoryManager.getInstance().loadETCRGBTexture(this.item.id, paramInt);
+      ETC1Util.ETC1Texture localETC1Texture = VideoMemoryManager.getInstance().loadETCAlphaTexture(this.item.id, paramInt);
+      if ((localObject != null) && (localETC1Texture != null))
       {
-        if ((this.lastImageIndex > paramInt) && (this.mVideoDecoder != null)) {
-          this.mVideoDecoder.reset();
-        }
-        if (this.item.stickerType == VideoFilterFactory.STICKER_TYPE.ETC.type)
-        {
-          ETC1Util.ETC1Texture localETC1Texture1 = VideoMemoryManager.getInstance().loadETCRGBTexture(this.item.id, paramInt);
-          ETC1Util.ETC1Texture localETC1Texture2 = VideoMemoryManager.getInstance().loadETCAlphaTexture(this.item.id, paramInt);
-          if ((localETC1Texture1 == null) || (localETC1Texture2 == null)) {
-            break;
-          }
-          BenchUtil.benchStart("mPkmReader loadTexture");
-          GlUtil.loadTexture(this.tex[0], localETC1Texture1);
-          GlUtil.loadTexture(this.tex[1], localETC1Texture2);
-          BenchUtil.benchEnd("mPkmReader loadTexture");
-          addParam(new UniformParam.TextureParam("inputImageTexture2", this.tex[0], 33986));
-          addParam(new UniformParam.TextureParam("inputImageTexture3", this.tex[1], 33987));
-          this.isImageReady = true;
-          this.lastImageIndex = paramInt;
-          return;
-        }
-        if (this.item.stickerType != VideoFilterFactory.STICKER_TYPE.SPIRITE.type) {
-          break label453;
-        }
+        BenchUtil.benchStart("mPkmReader loadTexture");
+        GlUtil.loadTexture(this.tex[0], (ETC1Util.ETC1Texture)localObject);
+        GlUtil.loadTexture(this.tex[1], localETC1Texture);
+        BenchUtil.benchEnd("mPkmReader loadTexture");
+        addParam(new UniformParam.TextureParam("inputImageTexture2", this.tex[0], 33986));
+        addParam(new UniformParam.TextureParam("inputImageTexture3", this.tex[1], 33987));
+        this.isImageReady = true;
+        this.lastImageIndex = paramInt;
+      }
+    }
+    else
+    {
+      if (this.item.stickerType == VideoFilterFactory.STICKER_TYPE.SPIRITE.type)
+      {
         if (!this.gotSpritePicture)
         {
           addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
           this.gotSpritePicture = true;
-          if ((this.item.frameSize == null) || (this.item.frameSize.length < 2)) {
-            break label441;
+          if ((this.item.frameSize != null) && (this.item.frameSize.length >= 2))
+          {
+            this.spritePictureColumn = (this.spritePictureWidth / this.item.frameSize[0]);
+            this.spritePictureRow = (this.spritePictureHeight / this.item.frameSize[1]);
           }
-          this.spritePictureColumn = (this.spritePictureWidth / this.item.frameSize[0]);
-          this.spritePictureRow = (this.spritePictureHeight / this.item.frameSize[1]);
+          else
+          {
+            LogUtils.e(TAG, "SPIRITE Invalid frameSize.");
+          }
         }
-        while (paramInt < this.spritePictureColumn * this.spritePictureRow)
-        {
-          float f1 = 1.0F / this.spritePictureRow * Math.min(this.spritePictureRow - 1, paramInt / this.spritePictureColumn);
-          float f2 = Math.min(1.0F / this.spritePictureRow + f1, 1.0F);
-          float f3 = 1.0F / this.spritePictureColumn * (paramInt % this.spritePictureColumn);
-          float f4 = Math.min(1.0F / this.spritePictureColumn + f3, 1.0F);
-          setTexCords(new float[] { f3, f1, f3, f2, f4, f2, f4, f1 });
-          this.lastImageIndex = paramInt;
+        int i = this.spritePictureColumn;
+        int j = this.spritePictureRow;
+        if (paramInt >= i * j) {
           return;
-          label441:
-          LogUtils.e(TAG, "SPIRITE Invalid frameSize.");
         }
+        float f1 = 1.0F / j * Math.min(j - 1, paramInt / i);
+        float f2 = Math.min(1.0F / this.spritePictureRow + f1, 1.0F);
+        i = this.spritePictureColumn;
+        float f3 = 1.0F / i * (paramInt % i);
+        float f4 = Math.min(1.0F / i + f3, 1.0F);
+        setTexCords(new float[] { f3, f1, f3, f2, f4, f2, f4, f1 });
+        this.lastImageIndex = paramInt;
+        return;
       }
+      addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
     }
-    label453:
-    addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -666,7 +852,7 @@ public abstract class NormalVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.NormalVideoFilter
  * JD-Core Version:    0.7.0.1
  */

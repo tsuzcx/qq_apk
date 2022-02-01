@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_0" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_1" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_2" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_3" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_4" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_5" />
+</animation-list>

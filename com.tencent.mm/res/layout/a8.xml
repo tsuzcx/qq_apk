@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view android:id="@id/ku" android:scrollbars="vertical" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:divider="?en" android:overScrollMode="ifContentScrolls" android:textAlignment="viewStart" app:paddingBottomNoButtons="@dimen/pk" app:paddingTopNoTitle="@dimen/pl" style="@style/y_" class="android.support.v7.app.AlertController$RecycleListView"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/sy"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:ellipsize="end" android:id="@id/du" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <TextView android:ellipsize="end" android:id="@id/dt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/o4" android:singleLine="true" />
+</LinearLayout>

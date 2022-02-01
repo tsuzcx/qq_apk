@@ -3,10 +3,9 @@ package com.tencent.open.appcommon.js;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import bfjb;
-import bfpl;
+import com.tencent.open.downloadnew.MyAppDialog;
 
-public class AppInterface$2
+class AppInterface$2
   implements Runnable
 {
   AppInterface$2(AppInterface paramAppInterface, DialogInterface.OnClickListener paramOnClickListener) {}
@@ -14,22 +13,22 @@ public class AppInterface$2
   public void run()
   {
     Resources localResources = this.this$0.activity.getResources();
-    bfpl localbfpl = new bfpl(this.this$0.activity);
-    localbfpl.a(2131691724, this.a, true);
-    localbfpl.b(2131691725, this.a, true);
-    localbfpl.a(localResources.getString(2131691728));
-    localbfpl.b(localResources.getString(2131691713));
-    localbfpl.setCancelable(false);
-    localbfpl.setOnDismissListener(new bfjb(this));
+    MyAppDialog localMyAppDialog = new MyAppDialog(this.this$0.activity);
+    localMyAppDialog.a(2131888592, this.a, true);
+    localMyAppDialog.b(2131888593, this.a, true);
+    localMyAppDialog.a(localResources.getString(2131888596));
+    localMyAppDialog.b(localResources.getString(2131888581));
+    localMyAppDialog.setCancelable(false);
+    localMyAppDialog.setOnDismissListener(new AppInterface.2.1(this));
     if ((this.this$0.activity != null) && (!this.this$0.activity.isFinishing())) {
-      localbfpl.show();
+      localMyAppDialog.show();
     }
-    this.this$0.tipDialog = localbfpl;
+    this.this$0.tipDialog = localMyAppDialog;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface.2
  * JD-Core Version:    0.7.0.1
  */

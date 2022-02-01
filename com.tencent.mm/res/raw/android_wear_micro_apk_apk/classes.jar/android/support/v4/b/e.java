@@ -6,31 +6,31 @@ import java.io.Writer;
 public final class e
   extends Writer
 {
-  private final String bf;
-  private StringBuilder je = new StringBuilder(128);
+  private final String cQ;
+  private StringBuilder lb = new StringBuilder(128);
   
   public e(String paramString)
   {
-    this.bf = paramString;
+    this.cQ = paramString;
   }
   
-  private void bj()
+  private void bA()
   {
-    if (this.je.length() > 0)
+    if (this.lb.length() > 0)
     {
-      Log.d(this.bf, this.je.toString());
-      this.je.delete(0, this.je.length());
+      Log.d(this.cQ, this.lb.toString());
+      this.lb.delete(0, this.lb.length());
     }
   }
   
   public final void close()
   {
-    bj();
+    bA();
   }
   
   public final void flush()
   {
-    bj();
+    bA();
   }
   
   public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -40,13 +40,13 @@ public final class e
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
-        bj();
+        bA();
       }
       for (;;)
       {
         i += 1;
         break;
-        this.je.append(c);
+        this.lb.append(c);
       }
     }
   }

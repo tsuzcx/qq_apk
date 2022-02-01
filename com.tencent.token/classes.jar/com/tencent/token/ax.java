@@ -1,97 +1,62 @@
 package com.tencent.token;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.NetworkInfo;
-import com.tencent.halley.common.c;
-import com.tencent.halley.common.h;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
 
-final class ax
+public final class ax
+  extends JceStruct
 {
-  private static ax a = null;
-  private bc b;
-  private final BroadcastReceiver c = new ba(this);
-  private final BroadcastReceiver d = new bb(this);
+  static ap f;
+  static ArrayList g;
+  public int a = 0;
+  public int b = 0;
+  public int c = 1;
+  public ap d = null;
+  public ArrayList e = null;
   
-  public static ax a()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    try
-    {
-      if (a == null) {
-        a = new ax();
-      }
-      ax localax = a;
-      return localax;
+    this.a = paramJceInputStream.read(this.a, 0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
+    if (f == null) {
+      f = new ap();
     }
-    finally {}
+    this.d = ((ap)paramJceInputStream.read(f, 3, false));
+    if (g == null)
+    {
+      g = new ArrayList();
+      aw localaw = new aw();
+      g.add(localaw);
+    }
+    this.e = ((ArrayList)paramJceInputStream.read(g, 4, false));
   }
   
-  public final void a(NetworkInfo paramNetworkInfo)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    String str;
-    if (paramNetworkInfo != null)
-    {
-      paramNetworkInfo = cb.b;
-      cb.b();
-      str = cb.b;
-      if (!paramNetworkInfo.equals(str))
-      {
-        if ((!paramNetworkInfo.equals(cb.a)) || (!cb.f())) {
-          break label64;
-        }
-        if (this.b == null) {
-          break label56;
-        }
-        this.b.a();
-      }
+    int i = this.a;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    label56:
-    label64:
-    while ((str.equals(cb.a)) || (!cb.f()))
-    {
-      return;
-      c.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
-      return;
+    i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.b != null)
-    {
-      this.b.a();
-      return;
+    i = this.c;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    c.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
-  }
-  
-  public final void a(bc parambc)
-  {
-    this.b = parambc;
-    parambc = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    h.a().registerReceiver(this.c, parambc);
-    c.b("AccessSchedulerTrigger", "startListenNetworkChange...");
-    c.b("AccessSchedulerTrigger", "try startAccessSchedulerTimer...");
-    parambc = new IntentFilter("action.scheduler.access.trigger.timer");
-    h.a().registerReceiver(this.d, parambc);
-    parambc = (AlarmManager)h.a().getSystemService("alarm");
-    if (parambc != null)
-    {
-      long l = System.currentTimeMillis();
-      Intent localIntent = new Intent("action.scheduler.access.trigger.timer");
-      parambc.setRepeating(3, l + 1800000L, 1800000L, PendingIntent.getBroadcast(h.a(), 0, localIntent, 0));
-      c.a("AccessSchedulerTrigger", "startAccessSchedulerTimer timer start...");
+    Object localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-  }
-  
-  public final void b()
-  {
-    if (this.b != null)
-    {
-      this.b.a();
-      return;
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    c.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
   }
 }
 

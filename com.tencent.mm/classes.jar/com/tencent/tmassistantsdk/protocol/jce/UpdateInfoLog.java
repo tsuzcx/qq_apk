@@ -29,19 +29,19 @@ public final class UpdateInfoLog
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76159);
+    AppMethodBeat.i(102405);
     this.updateType = paramJceInputStream.read(this.updateType, 0, true);
     this.packageName = paramJceInputStream.readString(1, true);
     this.appid = paramJceInputStream.read(this.appid, 2, false);
     this.actionCode = paramJceInputStream.read(this.actionCode, 3, true);
     this.yybExistFlag = paramJceInputStream.read(this.yybExistFlag, 4, false);
     this.extra = paramJceInputStream.readString(5, false);
-    AppMethodBeat.o(76159);
+    AppMethodBeat.o(102405);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76158);
+    AppMethodBeat.i(102404);
     paramJceOutputStream.write(this.updateType, 0);
     paramJceOutputStream.write(this.packageName, 1);
     paramJceOutputStream.write(this.appid, 2);
@@ -50,12 +50,12 @@ public final class UpdateInfoLog
     if (this.extra != null) {
       paramJceOutputStream.write(this.extra, 5);
     }
-    AppMethodBeat.o(76158);
+    AppMethodBeat.o(102404);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.UpdateInfoLog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/l2">
-        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/b23" android:layout_width="@dimen/fk" android:layout_height="@dimen/fk" />
-            <ProgressBar android:layout_gravity="center" android:id="@id/a2o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a00" />
-        </FrameLayout>
-        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.edittext.PasterEditText android:textSize="@dimen/m2" android:textColor="@color/tc" android:ellipsize="end" android:id="@id/b24" android:background="@drawable/b9e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="0.0dip" android:maxLines="3" />
-        </ScrollView>
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.emoji.view.EmojiStatusView android:layout_gravity="center" android:id="@id/ka1" android:background="@drawable/smiley_item_bg2" android:layout_width="@dimen/a5j" android:layout_height="@dimen/a5j" android:scaleType="centerInside" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/bv"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

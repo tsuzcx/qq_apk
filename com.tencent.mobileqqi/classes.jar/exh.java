@@ -1,30 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.voip.VoipBuyGoods.BuyGoodsRsp;
-import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 public class exh
-  extends Handler
+  implements Comparator
 {
-  public exh(VoipTencentPayActivity paramVoipTencentPayActivity) {}
+  public exh(AllBuddyListAdapter paramAllBuddyListAdapter) {}
   
-  public void handleMessage(Message paramMessage)
+  private String a(Entity paramEntity)
   {
-    paramMessage = (VoipBuyGoods.BuyGoodsRsp)paramMessage.obj;
-    if (paramMessage.error_code.get() == 0)
-    {
-      VoipTencentPayActivity.a(this.a, paramMessage.url_params.get());
-      VoipTencentPayActivity.b(this.a);
-      return;
-    }
-    VoipTencentPayActivity.a(this.a);
+    paramEntity = (Friends)paramEntity;
+    return ContactUtils.a(paramEntity) + paramEntity.uin;
+  }
+  
+  public int a(Entity paramEntity1, Entity paramEntity2)
+  {
+    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exh
  * JD-Core Version:    0.7.0.1
  */

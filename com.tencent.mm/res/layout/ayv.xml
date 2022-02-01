@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/wl" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/eug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a_s" android:layout_marginBottom="@dimen/a_o" android:text="1900" android:singleLine="true" />
-</LinearLayout>
+    <ListView android:id="@id/ep2" android:background="@color/al2" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/cif" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/fdg" />
+</FrameLayout>

@@ -8,15 +8,15 @@ public final class stcustomPraise
   extends JceStruct
 {
   public int customPraisetype = 0;
-  public int iFrameRate;
-  public int iItemId;
-  public int iPraiseActId;
+  public int iFrameRate = 0;
+  public int iItemId = 0;
+  public int iPraiseActId = 0;
   public String strPraiseButton = "";
   public String strPraiseComboZip = "";
   public String strPraisePic = "";
   public String strPraiseZip = "";
-  public int subpraisetype;
-  public long uiComboCount;
+  public int subpraisetype = 0;
+  public long uiComboCount = 0L;
   
   public stcustomPraise() {}
   
@@ -51,18 +51,22 @@ public final class stcustomPraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strPraisePic != null) {
-      paramJceOutputStream.write(this.strPraisePic, 1);
+    String str = this.strPraisePic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strPraiseZip != null) {
-      paramJceOutputStream.write(this.strPraiseZip, 2);
+    str = this.strPraiseZip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strPraiseComboZip != null) {
-      paramJceOutputStream.write(this.strPraiseComboZip, 3);
+    str = this.strPraiseComboZip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iFrameRate, 4);
-    if (this.strPraiseButton != null) {
-      paramJceOutputStream.write(this.strPraiseButton, 5);
+    str = this.strPraiseButton;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.customPraisetype, 6);
     paramJceOutputStream.write(this.uiComboCount, 7);
@@ -72,7 +76,7 @@ public final class stcustomPraise
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.stcustomPraise
  * JD-Core Version:    0.7.0.1
  */

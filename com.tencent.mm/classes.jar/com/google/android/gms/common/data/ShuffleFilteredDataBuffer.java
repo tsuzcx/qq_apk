@@ -14,14 +14,14 @@ public final class ShuffleFilteredDataBuffer<T>
   public ShuffleFilteredDataBuffer(DataBuffer<T> paramDataBuffer, int paramInt)
   {
     super(paramDataBuffer);
-    AppMethodBeat.i(61169);
+    AppMethodBeat.i(11661);
     this.zzoi = paramInt;
     int i = this.zzoi;
     int j = this.mDataBuffer.getCount();
     if (i > j)
     {
       paramDataBuffer = new IllegalArgumentException("numIndexes must be smaller or equal to max");
-      AppMethodBeat.o(61169);
+      AppMethodBeat.o(11661);
       throw paramDataBuffer;
     }
     paramDataBuffer = new ArrayList(j);
@@ -33,34 +33,34 @@ public final class ShuffleFilteredDataBuffer<T>
     }
     Collections.shuffle(paramDataBuffer);
     this.zzoh = paramDataBuffer.subList(0, i);
-    AppMethodBeat.o(61169);
+    AppMethodBeat.o(11661);
   }
   
   public final int computeRealPosition(int paramInt)
   {
-    AppMethodBeat.i(61171);
+    AppMethodBeat.i(11663);
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException(53 + "Position " + paramInt + " is out of bounds for this buffer");
-      AppMethodBeat.o(61171);
+      AppMethodBeat.o(11663);
       throw localIllegalArgumentException;
     }
     paramInt = ((Integer)this.zzoh.get(paramInt)).intValue();
-    AppMethodBeat.o(61171);
+    AppMethodBeat.o(11663);
     return paramInt;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(61170);
+    AppMethodBeat.i(11662);
     int i = Math.min(this.zzoi, this.mDataBuffer.getCount());
-    AppMethodBeat.o(61170);
+    AppMethodBeat.o(11662);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.ShuffleFilteredDataBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/hkz" android:background="@drawable/acn" android:paddingTop="1.0dip" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="@dimen/ni" android:layout_marginTop="16.0dip" android:layout_marginRight="@dimen/ni" android:layout_marginBottom="0.0dip">
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/ayo" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/hl0" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/n2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/fby" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mz" android:src="@drawable/fy5" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/aym" android:textColor="#ffcccccc" android:gravity="center_vertical" android:id="@id/fbz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginRight="@dimen/nh" android:text="@string/qov" android:layout_toLeftOf="@id/fby" android:layout_centerVertical="true" />
+        <com.qzone.widget.AvatarImageView android:textSize="@dimen/ayo" android:textColor="#ffcccccc" android:gravity="center_vertical" android:id="@id/hky" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginRight="@dimen/nh" android:layout_toLeftOf="@id/fby" android:layout_centerVertical="true" />
+        <View android:id="@id/he9" android:background="@drawable/acm" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignTop="@id/hky" android:layout_alignRight="@id/hky" />
+    </RelativeLayout>
+    <com.qzone.module.feedcomponent.ui.NuanFriendList android:id="@id/hl1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

@@ -10,25 +10,24 @@ final class ln$4
   
   public final void a(float paramFloat, GeoPoint arg2)
   {
-    double d1 = 0.0D;
     ??? = fz.a(???);
-    double d2 = 20.0D - Math.log(1.0F / paramFloat) / Math.log(2.0D);
-    if (d2 < 0.0D) {}
-    for (;;)
-    {
-      this.a.f = new CameraPosition(???, (float)d1, this.a.b.az.h(), this.a.b.az.g());
-      synchronized (this.a.g)
-      {
-        this.a.g.notifyAll();
-        return;
-      }
+    double d1 = 20.0D - Math.log(1.0F / paramFloat) / Math.log(2.0D);
+    double d2 = 0.0D;
+    if (d1 < 0.0D) {
       d1 = d2;
+    }
+    ln localln = this.a;
+    localln.f = new CameraPosition(???, (float)d1, localln.b.az.h(), this.a.b.az.g());
+    synchronized (this.a.g)
+    {
+      this.a.g.notifyAll();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ln.4
  * JD-Core Version:    0.7.0.1
  */

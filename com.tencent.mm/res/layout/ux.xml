@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bhx" android:background="@raw/emoji_pop_bg_smiley" android:paddingTop="@dimen/a_0" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/bhy" android:layout_width="@dimen/a_3" android:layout_height="@dimen/a_3" android:layout_centerHorizontal="true" />
-    <android.support.v7.widget.AppCompatTextView android:gravity="center" android:id="@id/bhz" android:layout_width="@dimen/a9y" android:layout_height="@dimen/a9u" android:maxLines="1" android:layout_below="@id/bhy" android:layout_centerHorizontal="true" app:autoSizeTextType="ew" app:autoSizeStepGranularity="@dimen/a9x" app:autoSizeMinTextSize="@dimen/a9w" app:autoSizeMaxTextSize="@dimen/a9v" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/big" layout="@layout/ve" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:layout_gravity="center" android:id="@id/bgp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="27.0dip" android:textColor="@color/a7b" android:layout_gravity="top" android:id="@id/bgo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="¥" android:includeFontPadding="false" />
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="36.0dip" android:textColor="@color/a7b" android:id="@id/bgr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a78" android:layout_gravity="center" android:id="@id/bgq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="40.0dip" android:text="" />
+</LinearLayout>

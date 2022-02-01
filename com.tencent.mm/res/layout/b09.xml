@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/a3u" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginBottom="16.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ezy" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <ImageView android:id="@id/ezz" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-            <TextView android:textSize="@dimen/dw" android:textColor="@color/j" android:id="@id/f00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f01" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <ImageView android:id="@id/f02" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-            <TextView android:textSize="@dimen/dw" android:textColor="@color/j" android:id="@id/f03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-        </LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="no">
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="40.0dip" android:textColor="@color/FG_0" android:gravity="right" android:id="@id/ljz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:importantForAccessibility="no" wallet:walletTypeFace="k0_" />
+        <TextView android:id="@id/ljf" style="@style/a02" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="40.0dip" android:textColor="@color/FG_0" android:gravity="left" android:id="@id/lgl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:textCursorDrawable="@drawable/a9c" />
     </LinearLayout>
-</FrameLayout>
+</merge>

@@ -1,7 +1,7 @@
 {
     "view_type":"UILabel",
     "view_id":"id_article_main_body",
-    "margin_left":"8",
+    "margin_left":"12",
     "margin_top":"6.5",
     "margin_bottom":"2",
     "height":{
@@ -9,7 +9,7 @@
     },
     "width":{
         "type":"relative",
-        "value":"359"
+        "value":"347"
     },
     "attributes":{
         "setText:lineSpace:":["$article_main_body_text","3"],

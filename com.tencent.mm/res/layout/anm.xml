@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/hyy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:background="@drawable/aou" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/hyx" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+    <FrameLayout android:id="@id/cjf" android:background="@drawable/aou" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/ca" android:indeterminateDrawable="@drawable/ang" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/isi" android:paddingTop="@dimen/ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d8n" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="center" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ef2" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/kno" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/a7v" />
+    </FrameLayout>
+</FrameLayout>

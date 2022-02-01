@@ -1,0 +1,39 @@
+package com.tencent.qmsp.sdk.f;
+
+public class e
+{
+  private static final char[] a = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int i = 0;
+    try
+    {
+      while (i < paramArrayOfByte.length)
+      {
+        int k = paramArrayOfByte[i];
+        int j = i * 2;
+        arrayOfChar[(j + 1)] = a[(k & 0xF)];
+        k = (byte)(k >>> 4);
+        arrayOfChar[(j + 0)] = a[(k & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      g.a("Qp.b2h", 1, " === bytes2HexStr error === " + paramArrayOfByte.toString());
+    }
+    return null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qmsp.sdk.f.e
+ * JD-Core Version:    0.7.0.1
+ */

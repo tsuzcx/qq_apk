@@ -1,157 +1,171 @@
 package com.tencent.mm.ui;
 
-import android.support.v7.app.ActionBar;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Looper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.b.b;
-import com.tencent.mm.ui.b.b.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.m;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.a.i;
 
-public final class s
-  extends q
-  implements b.a
+final class s
+  extends i
+  implements DialogInterface
 {
-  private ActionBar mActionBar;
-  public MMFragment zbQ = null;
-  public b zbR;
+  Button BoW;
+  private LinearLayout acrm;
+  TextView acro;
+  private TextView acrq;
+  LinearLayout acrw;
+  private LinearLayout acry;
+  private boolean dqR;
+  private Context mContext;
+  private TextView pIp;
+  private View uyx;
   
-  public final boolean c(Menu paramMenu)
+  public s(Context paramContext)
   {
-    AppMethodBeat.i(106037);
-    if (this.zbQ != null) {
-      this.zbQ.onPrepareOptionsMenu(paramMenu);
+    super(paramContext, R.m.mmalertdialog);
+    AppMethodBeat.i(33393);
+    this.mContext = paramContext;
+    this.acrm = ((LinearLayout)af.mU(this.mContext).inflate(R.i.mm_alert_comfirm_lite_dependency, null));
+    this.BoW = ((Button)this.acrm.findViewById(R.h.mm_alert_ok_btn));
+    this.pIp = ((TextView)this.acrm.findViewById(R.h.mm_alert_title));
+    this.acro = ((TextView)this.acrm.findViewById(R.h.mm_alert_msg));
+    this.acrq = ((TextView)this.acrm.findViewById(R.h.mm_alert_msg_subtitle));
+    this.uyx = this.acrm.findViewById(R.h.mm_alert_title_area);
+    this.acrw = ((LinearLayout)this.acrm.findViewById(R.h.mm_alert_msg_area));
+    this.acry = ((LinearLayout)this.acrm.findViewById(R.h.mm_alert_custom_area));
+    setCanceledOnTouchOutside(true);
+    AppMethodBeat.o(33393);
+  }
+  
+  private void ayg(int paramInt)
+  {
+    AppMethodBeat.i(249172);
+    if (this.acro != null) {
+      this.acro.setTextColor(this.acro.getContext().getResources().getColor(paramInt));
     }
-    AppMethodBeat.o(106037);
-    return true;
+    AppMethodBeat.o(249172);
   }
   
-  public final boolean d(Menu paramMenu)
+  public final void dismiss()
   {
-    AppMethodBeat.i(106038);
-    this.zbQ.onCreateOptionsMenu(paramMenu, this.zbR.getMenuInflater());
-    AppMethodBeat.o(106038);
-    return true;
-  }
-  
-  protected final void dealContentView(View paramView)
-  {
-    AppMethodBeat.i(106029);
-    if (this.zbQ != null) {
-      this.zbQ.dealContentView(paramView);
-    }
-    AppMethodBeat.o(106029);
-  }
-  
-  public final boolean e(MenuItem paramMenuItem)
-  {
-    AppMethodBeat.i(106039);
-    boolean bool = super.onOptionsItemSelected(paramMenuItem);
-    AppMethodBeat.o(106039);
-    return bool;
-  }
-  
-  protected final boolean fromFullScreenActivity()
-  {
-    return false;
-  }
-  
-  protected final String getClassName()
-  {
-    AppMethodBeat.i(106034);
-    String str = this.zbQ.getClass().getName();
-    AppMethodBeat.o(106034);
-    return str;
-  }
-  
-  protected final String getIdentString()
-  {
-    AppMethodBeat.i(106030);
-    if (this.zbQ != null)
+    AppMethodBeat.i(33402);
+    if (Looper.myLooper() != Looper.getMainLooper())
     {
-      String str = this.zbQ.getIdentityString();
-      AppMethodBeat.o(106030);
-      return str;
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(33392);
+          s.this.dismiss();
+          AppMethodBeat.o(33392);
+        }
+      });
+      Log.e("MicroMsg.LiteDependDialog", Util.getStack().toString());
+      AppMethodBeat.o(33402);
+      return;
     }
-    AppMethodBeat.o(106030);
-    return null;
-  }
-  
-  protected final int getLayoutId()
-  {
-    AppMethodBeat.i(106028);
-    if (this.zbQ != null)
+    try
     {
-      int i = this.zbQ.getLayoutId();
-      AppMethodBeat.o(106028);
-      return i;
+      super.dismiss();
+      AppMethodBeat.o(33402);
+      return;
     }
-    AppMethodBeat.o(106028);
-    return -1;
-  }
-  
-  protected final View getLayoutView()
-  {
-    AppMethodBeat.i(106031);
-    if (this.zbQ != null)
+    catch (Exception localException)
     {
-      View localView = this.zbQ.getLayoutView();
-      AppMethodBeat.o(106031);
-      return localView;
+      Log.e("MicroMsg.LiteDependDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(33402);
     }
-    AppMethodBeat.o(106031);
-    return null;
   }
   
-  public final ActionBar getSupportActionBar()
+  public final void jjx()
   {
-    AppMethodBeat.i(106035);
-    if (this.mActionBar == null) {
-      this.mActionBar = this.zbR.dDu();
+    AppMethodBeat.i(33400);
+    super.setCancelable(false);
+    AppMethodBeat.o(33400);
+  }
+  
+  protected final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(33394);
+    super.onCreate(paramBundle);
+    setContentView(this.acrm);
+    AppMethodBeat.o(33394);
+  }
+  
+  public final void setCancelable(boolean paramBoolean)
+  {
+    AppMethodBeat.i(33399);
+    super.setCancelable(paramBoolean);
+    this.dqR = paramBoolean;
+    setCanceledOnTouchOutside(this.dqR);
+    AppMethodBeat.o(33399);
+  }
+  
+  public final void setMessage(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(33398);
+    this.acrw.setVisibility(0);
+    this.acro.setVisibility(0);
+    this.acro.setText(paramCharSequence);
+    AppMethodBeat.o(33398);
+  }
+  
+  public final void setTitle(int paramInt)
+  {
+    AppMethodBeat.i(33396);
+    this.uyx.setVisibility(0);
+    this.pIp.setVisibility(0);
+    this.pIp.setMaxLines(2);
+    this.pIp.setText(paramInt);
+    ayg(R.e.dialog_msg_color);
+    AppMethodBeat.o(33396);
+  }
+  
+  public final void setTitle(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(33395);
+    this.uyx.setVisibility(0);
+    this.pIp.setVisibility(0);
+    this.pIp.setMaxLines(2);
+    this.pIp.setText(paramCharSequence);
+    ayg(R.e.dialog_msg_color);
+    AppMethodBeat.o(33395);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(33401);
+    try
+    {
+      super.show();
+      AppMethodBeat.o(33401);
+      return;
     }
-    ActionBar localActionBar = this.mActionBar;
-    AppMethodBeat.o(106035);
-    return localActionBar;
-  }
-  
-  public final boolean interceptSupportInvalidateOptionsMenu()
-  {
-    return true;
-  }
-  
-  protected final void onCreateBeforeSetContentView()
-  {
-    AppMethodBeat.i(106033);
-    if (this.zbQ != null) {
-      this.zbQ.onCreateBeforeSetContentView();
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.LiteDependDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(33401);
     }
-    AppMethodBeat.o(106033);
-  }
-  
-  public final void onKeyboardStateChanged()
-  {
-    AppMethodBeat.i(106032);
-    if (this.zbQ != null) {
-      this.zbQ.onKeyboardStateChanged();
-    }
-    AppMethodBeat.o(106032);
-  }
-  
-  public final ActionMode startActionMode(ActionMode.Callback paramCallback)
-  {
-    AppMethodBeat.i(106027);
-    paramCallback = this.zbR.startActionMode(paramCallback);
-    AppMethodBeat.o(106027);
-    return paramCallback;
-  }
-  
-  public final void supportInvalidateOptionsMenu()
-  {
-    AppMethodBeat.i(106036);
-    this.zbR.supportInvalidateOptionsMenu();
-    AppMethodBeat.o(106036);
   }
 }
 

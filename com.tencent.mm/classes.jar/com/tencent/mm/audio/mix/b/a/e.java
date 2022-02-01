@@ -1,36 +1,36 @@
 package com.tencent.mm.audio.mix.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.d.h;
-import com.tencent.mm.audio.mix.d.i;
+import com.tencent.mm.audio.mix.decode.i;
+import com.tencent.mm.audio.mix.decode.j;
 
 public final class e
-  extends i
+  extends j
 {
-  private f ceI;
+  private f hrk;
   
   public e(f paramf, String paramString)
   {
     super(paramString);
-    this.ceI = paramf;
+    this.hrk = paramf;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(137007);
-    if (this.ceI != null)
+    AppMethodBeat.i(136755);
+    if (this.hrk != null)
     {
-      this.ceI.Dh();
-      this.ceI.end();
+      this.hrk.aFi();
+      this.hrk.end();
     }
-    this.ceI = null;
-    h.b(this);
-    AppMethodBeat.o(137007);
+    this.hrk = null;
+    i.b(this);
+    AppMethodBeat.o(136755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.e
  * JD-Core Version:    0.7.0.1
  */

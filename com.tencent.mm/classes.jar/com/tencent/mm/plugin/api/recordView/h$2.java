@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.api.recordView;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -13,27 +13,27 @@ final class h$2
   
   public final void run()
   {
-    AppMethodBeat.i(76387);
-    i locali = this.gOE.gOy;
+    AppMethodBeat.i(89271);
+    i locali = this.qqK.qqF;
     byte[] arrayOfByte = this.val$data;
-    int j = this.gOE.gNA;
-    int k = this.gOE.gNB;
-    int m = this.gOE.fbz;
-    int n = this.gOF;
+    int j = this.qqK.qpD;
+    int k = this.qqK.qpE;
+    int m = this.qqK.nKn;
+    int n = this.qqL;
     try
     {
-      if ((locali.gNB != k) || (locali.gNA != j) || (locali.rotate != m)) {
-        break label403;
+      if ((locali.qpE != k) || (locali.qpD != j) || (locali.hYK != m)) {
+        break label447;
       }
-      if (locali.gNH == n) {
-        break label398;
+      if (locali.qpM == n) {
+        break label442;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.e("MicroMsg.YUVDateRenderToRGBBufferRenderer", "setDrawFrame error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.YUVDateRenderToRGBBufferRenderer", "setDrawFrame error: %s", new Object[] { localException.getMessage() });
         continue;
         int i = 0;
         continue;
@@ -41,40 +41,43 @@ final class h$2
       }
     }
     if (i != 0) {
-      ab.d("MicroMsg.YUVDateRenderToRGBBufferRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { arrayOfByte, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(locali.fcx), Boolean.TRUE, locali });
+      Log.d("MicroMsg.YUVDateRenderToRGBBufferRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { arrayOfByte, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(locali.nKe), Boolean.TRUE, locali });
     }
-    locali.frameData = arrayOfByte;
-    locali.gNA = j;
-    locali.gNB = k;
-    locali.rotate = m;
-    locali.gNH = n;
+    if ((locali.frameData == null) || (locali.frameData.length != arrayOfByte.length)) {
+      locali.frameData = new byte[arrayOfByte.length];
+    }
+    System.arraycopy(arrayOfByte, 0, locali.frameData, 0, arrayOfByte.length);
+    locali.qpD = j;
+    locali.qpE = k;
+    locali.hYK = m;
+    locali.qpM = n;
     if (i != 0)
     {
-      locali.eZm = ByteBuffer.allocateDirect(k * j);
-      locali.eZn = ByteBuffer.allocateDirect(j * k / 2);
-      locali.eZm.order(ByteOrder.nativeOrder());
-      locali.eZn.order(ByteOrder.nativeOrder());
-      if (locali.gNF != null)
+      locali.nEJ = ByteBuffer.allocateDirect(k * j);
+      locali.nEQ = ByteBuffer.allocateDirect(j * k / 2);
+      locali.nEJ.order(ByteOrder.nativeOrder());
+      locali.nEQ.order(ByteOrder.nativeOrder());
+      if (locali.qpK != null)
       {
-        locali.eYv.put(locali.gNF);
-        locali.eYv.position(0);
+        locali.mVV.put(locali.qpK);
+        locali.mVV.position(0);
       }
     }
-    if ((locali.eZm != null) && (locali.eZn != null))
+    if ((locali.nEJ != null) && (locali.nEQ != null))
     {
-      locali.eZm.put(arrayOfByte, 0, j * k);
-      locali.eZm.position(0);
-      locali.eZn.put(arrayOfByte, j * k, j * k / 2);
-      locali.eZn.position(0);
+      locali.nEJ.put(locali.frameData, 0, j * k);
+      locali.nEJ.position(0);
+      locali.nEQ.put(locali.frameData, j * k, j * k / 2);
+      locali.nEQ.position(0);
     }
-    this.gOE.gOy.onDrawFrame(null);
-    this.gOE.gOz.asU();
-    AppMethodBeat.o(76387);
+    this.qqK.qqF.onDrawFrame(null);
+    this.qqK.qqG.cbc();
+    AppMethodBeat.o(89271);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.h.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public abstract class AbstractResultService
 {
   public AbstractResultService()
   {
-    super(AbstractResultService.class.getSimpleName());
+    super("TinkerResultService");
   }
   
   public static void a(Context paramContext, a parama, String paramString)
@@ -29,7 +29,7 @@ public abstract class AbstractResultService
     }
     catch (Throwable paramContext)
     {
-      com.tencent.tinker.lib.e.a.a("Tinker.AbstractResultService", "run result service fail, exception:" + paramContext, new Object[0]);
+      com.tencent.tinker.lib.e.a.a("Tinker.AbstractResultService", "run result service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
   }
   
@@ -42,7 +42,7 @@ public abstract class AbstractResultService
       com.tencent.tinker.lib.e.a.a("Tinker.AbstractResultService", "AbstractResultService received a null intent, ignoring.", new Object[0]);
       return;
     }
-    a((a)e.b(paramIntent, "result_extra"));
+    a((a)e.c(paramIntent, "result_extra"));
   }
 }
 

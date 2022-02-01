@@ -1,38 +1,37 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.view.View;
-import balm;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopTeamWorkFileSearchDialog$11
+class TroopTeamWorkFileSearchDialog$11
   implements Runnable
 {
-  public TroopTeamWorkFileSearchDialog$11(balm parambalm, View paramView, boolean paramBoolean) {}
+  TroopTeamWorkFileSearchDialog$11(TroopTeamWorkFileSearchDialog paramTroopTeamWorkFileSearchDialog, View paramView, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(this.jdField_a_of_type_Boolean);
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((View)localObject).setDrawingCacheEnabled(this.b);
     }
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("mBlurBackground == null :");
-      if (balm.a(this.this$0) != null) {
-        break label64;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mBlurBackground == null :");
+      boolean bool;
+      if (TroopTeamWorkFileSearchDialog.a(this.this$0) == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label64:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("TroopTeamWorkFileSearchDialog", 2, bool);
-      return;
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("TroopTeamWorkFileSearchDialog", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.11
  * JD-Core Version:    0.7.0.1
  */

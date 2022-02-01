@@ -30,11 +30,12 @@ public class BarcodeFormat
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (BarcodeFormat)paramObject;
+      return this.type.equals(paramObject.type);
     }
-    paramObject = (BarcodeFormat)paramObject;
-    return this.type.equals(paramObject.type);
+    return false;
   }
   
   public int hashCode()
@@ -49,12 +50,17 @@ public class BarcodeFormat
   
   public String toString()
   {
-    return "BarcodeFormat{type='" + this.type + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BarcodeFormat{type='");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.BarcodeFormat
  * JD-Core Version:    0.7.0.1
  */

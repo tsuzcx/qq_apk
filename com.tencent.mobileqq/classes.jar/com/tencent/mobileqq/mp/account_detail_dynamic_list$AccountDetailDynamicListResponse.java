@@ -21,13 +21,14 @@ public final class account_detail_dynamic_list$AccountDetailDynamicListResponse
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "ret_info", "puin", "last_msg_id", "msg_cnt", "msg_infos" }, new Object[] { null, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, AccountDetailDynamicListResponse.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "ret_info", "puin", "last_msg_id", "msg_cnt", "msg_infos" }, new Object[] { null, localLong, localLong, Integer.valueOf(0), localByteStringMicro }, AccountDetailDynamicListResponse.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListResponse
  * JD-Core Version:    0.7.0.1
  */

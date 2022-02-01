@@ -8,7 +8,7 @@ public final class RequestReBindMblWTLogin
   extends JceStruct
 {
   static byte[] cache_encryptBuffer;
-  public byte[] encryptBuffer;
+  public byte[] encryptBuffer = null;
   
   public RequestReBindMblWTLogin() {}
   
@@ -34,7 +34,7 @@ public final class RequestReBindMblWTLogin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestReBindMblWTLogin
  * JD-Core Version:    0.7.0.1
  */

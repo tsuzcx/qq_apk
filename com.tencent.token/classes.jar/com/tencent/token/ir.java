@@ -1,43 +1,70 @@
 package com.tencent.token;
 
-public class ir
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import android.view.View;
+
+final class ir
+  extends in
+  implements SubMenu
 {
-  private static float a(float paramFloat)
+  ir(Context paramContext, eg parameg)
   {
-    if (paramFloat <= 0.0031308F) {
-      return 12.92F * paramFloat;
-    }
-    return (float)(Math.pow(paramFloat, 0.416666656732559D) * 1.054999947547913D - 0.05499999970197678D);
+    super(paramContext, parameg);
   }
   
-  public static int a(float paramFloat, int paramInt1, int paramInt2)
+  public final void clearHeader()
   {
-    float f1 = (paramInt1 >> 24 & 0xFF) / 255.0F;
-    float f4 = (paramInt1 >> 16 & 0xFF) / 255.0F;
-    float f5 = (paramInt1 >> 8 & 0xFF) / 255.0F;
-    float f6 = (paramInt1 & 0xFF) / 255.0F;
-    float f2 = (paramInt2 >> 24 & 0xFF) / 255.0F;
-    float f8 = (paramInt2 >> 16 & 0xFF) / 255.0F;
-    float f7 = (paramInt2 >> 8 & 0xFF) / 255.0F;
-    float f3 = (paramInt2 & 0xFF) / 255.0F;
-    f4 = b(f4);
-    f5 = b(f5);
-    f6 = b(f6);
-    f8 = b(f8);
-    f7 = b(f7);
-    f3 = b(f3);
-    f4 = a(f4 + (f8 - f4) * paramFloat);
-    f5 = a(f5 + (f7 - f5) * paramFloat);
-    f3 = a(f6 + (f3 - f6) * paramFloat);
-    return Math.round((f1 + (f2 - f1) * paramFloat) * 255.0F) << 24 | Math.round(f4 * 255.0F) << 16 | Math.round(f5 * 255.0F) << 8 | Math.round(f3 * 255.0F);
+    ((eg)this.d).clearHeader();
   }
   
-  private static float b(float paramFloat)
+  public final MenuItem getItem()
   {
-    if (paramFloat <= 0.04045F) {
-      return paramFloat / 12.92F;
-    }
-    return (float)Math.pow((0.055F + paramFloat) / 1.055F, 2.400000095367432D);
+    return a(((eg)this.d).getItem());
+  }
+  
+  public final SubMenu setHeaderIcon(int paramInt)
+  {
+    ((eg)this.d).setHeaderIcon(paramInt);
+    return this;
+  }
+  
+  public final SubMenu setHeaderIcon(Drawable paramDrawable)
+  {
+    ((eg)this.d).setHeaderIcon(paramDrawable);
+    return this;
+  }
+  
+  public final SubMenu setHeaderTitle(int paramInt)
+  {
+    ((eg)this.d).setHeaderTitle(paramInt);
+    return this;
+  }
+  
+  public final SubMenu setHeaderTitle(CharSequence paramCharSequence)
+  {
+    ((eg)this.d).setHeaderTitle(paramCharSequence);
+    return this;
+  }
+  
+  public final SubMenu setHeaderView(View paramView)
+  {
+    ((eg)this.d).setHeaderView(paramView);
+    return this;
+  }
+  
+  public final SubMenu setIcon(int paramInt)
+  {
+    ((eg)this.d).setIcon(paramInt);
+    return this;
+  }
+  
+  public final SubMenu setIcon(Drawable paramDrawable)
+  {
+    ((eg)this.d).setIcon(paramDrawable);
+    return this;
   }
 }
 

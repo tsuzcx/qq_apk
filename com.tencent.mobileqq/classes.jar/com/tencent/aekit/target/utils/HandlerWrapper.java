@@ -22,22 +22,20 @@ public class HandlerWrapper
       try
       {
         ???.wait();
-        return;
       }
       catch (InterruptedException paramRunnable)
       {
-        for (;;)
-        {
-          paramRunnable.printStackTrace();
-        }
+        paramRunnable.printStackTrace();
       }
+      return;
     }
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    if (this.mh != null) {
-      this.mh.handleMessage(paramMessage);
+    HandlerWrapper.MessageHandler localMessageHandler = this.mh;
+    if (localMessageHandler != null) {
+      localMessageHandler.handleMessage(paramMessage);
     }
   }
   
@@ -48,7 +46,7 @@ public class HandlerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.target.utils.HandlerWrapper
  * JD-Core Version:    0.7.0.1
  */

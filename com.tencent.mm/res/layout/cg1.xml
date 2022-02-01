@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/kmt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i9" android:layout_marginTop="44.0dip" android:layout_marginRight="@dimen/i9" android:layout_centerHorizontal="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/f2x" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@raw/pay_safe" app:iconColor="@color/ajm" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:layout_gravity="center" android:id="@id/og" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="24.0dip" android:text="@string/kzp" />
+        </LinearLayout>
+        <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/kmt" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <Button android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/f1_" android:layout_marginBottom="64.0dip" android:text="@string/zq" style="@style/oh" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/au" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/kf8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="@string/kzq" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

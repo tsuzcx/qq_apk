@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.data;
 
-import aheq;
-import awge;
-import awhp;
-import awhs;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.friend.status.OnlineStatusIconHelper;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
 public class PhoneContact
-  extends awge
+  extends Entity
   implements Serializable, Cloneable
 {
+  private static final String TAG = "PhoneContact";
   public int ability;
-  public long abilityBits;
+  public long abilityBits = 0L;
   public int age;
   public long bindingDate;
   public int contactID;
@@ -21,20 +21,20 @@ public class PhoneContact
   public int eNetworkType;
   @Deprecated
   public String faceUrl;
-  public boolean hasSendAddReq;
+  public boolean hasSendAddReq = false;
   public long highLightTimeStamp;
   public int iTermType;
   public boolean isHiden;
   public boolean isNewRecommend;
   public int isRecommend;
-  public boolean isUploaded;
+  public boolean isUploaded = false;
   public String label;
   @Deprecated
   public long lastScanTime;
   public String md5;
   @Deprecated
   public String mobileCode;
-  @awhs
+  @unique
   public String mobileNo;
   public String name;
   @Deprecated
@@ -45,107 +45,112 @@ public class PhoneContact
   @Deprecated
   public long originBinder;
   public String pinyinAll;
-  @awhp
+  @notColumn
   public String pinyinFirst;
   public String pinyinInitial;
   public String remark;
   public byte[] richBuffer;
-  @awhp
-  private RichStatus richStatus;
   public long richTime;
   public int samFriend;
   public int sex;
-  public int sortWeight;
+  public int sortWeight = 0;
   public String strTermDesc = "";
   public int type;
   public String uin;
   public String unifiedCode;
   
+  private static int getNetTypeByIconType(int paramInt1, int paramInt2)
+  {
+    int i = 1;
+    if (paramInt1 != 1)
+    {
+      i = 2;
+      if (paramInt1 != 2)
+      {
+        i = 3;
+        if (paramInt1 != 3)
+        {
+          i = 4;
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 12) {
+              return paramInt2;
+            }
+            return 5;
+          }
+        }
+      }
+    }
+    return i;
+  }
+  
   public Object clone()
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("PhoneContact.Manager", 2, "PhoneContact clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PhoneContact clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("PhoneContact", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
   
   public int getNetWorkType()
   {
-    int j = 2;
     int i;
-    if ((this.detalStatusFlag == -55) && ((this.iTermType == 67586) || (this.iTermType == 66566) || (this.iTermType == 72194) || (this.iTermType == 65804) || (this.iTermType == 72706)) && ((this.abilityBits & 1L) == 0L))
+    if (this.detalStatusFlag == -55)
     {
-      i = j;
-      switch (this.netTypeIconIdIphoneOrWphoneNoWifi)
+      i = this.iTermType;
+      if (((i == 67586) || (i == 66566) || (i == 72194) || (i == 65804) || (i == 72706)) && ((this.abilityBits & 1L) == 0L)) {
+        return getNetTypeByIconType(this.netTypeIconIdIphoneOrWphoneNoWifi, this.eNetworkType);
+      }
+    }
+    if ((this.detalStatusFlag != -55) || (this.iTermType != 68361) || ((1L & this.abilityBits) != 0L))
+    {
+      i = this.iTermType;
+      if (i != 68104)
       {
-      default: 
-        i = this.netTypeIconId;
+        if (i == 65805) {
+          return 0;
+        }
+        OnlineStatusIconHelper localOnlineStatusIconHelper = OnlineStatusIconHelper.a();
+        if (this.eNetworkType == 0)
+        {
+          i = this.iTermType;
+          if ((i != 69378) && (i != 73474))
+          {
+            if (i == 73730) {
+              return 0;
+            }
+            if (1 != localOnlineStatusIconHelper.a(i, 1)) {
+              return 2;
+            }
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        if (1 != localOnlineStatusIconHelper.a(this.iTermType, 1)) {
+          return getNetTypeByIconType(this.netTypeIconId, this.eNetworkType);
+        }
+        return this.eNetworkType;
       }
     }
-    aheq localaheq;
-    do
-    {
-      return i;
-      return 3;
-      return 4;
-      if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
-        return 0;
-      }
-      localaheq = aheq.a();
-      if (this.eNetworkType != 0) {
-        break;
-      }
-      if ((this.iTermType == 69378) || (this.iTermType == 73474) || (this.iTermType == 73730)) {
-        return 0;
-      }
-      i = j;
-    } while (1 != localaheq.a(this.iTermType, 1));
-    if (1 != localaheq.a(this.iTermType, 1)) {
-      i = j;
-    }
-    switch (this.netTypeIconId)
-    {
-    case 2: 
-    default: 
-      return this.eNetworkType;
-    case 1: 
-      return 1;
-    case 3: 
-      return 3;
-    }
-    return 4;
-  }
-  
-  public RichStatus getRichStatus()
-  {
-    return new RichStatus("test");
-  }
-  
-  public RichStatus getRichStatus(boolean paramBoolean)
-  {
-    if (this.richStatus == null)
-    {
-      if (paramBoolean) {
-        return RichStatus.getEmptyStatus();
-      }
-      this.richStatus = RichStatus.parseStatus(this.richBuffer);
-    }
-    return this.richStatus;
+    return 0;
   }
   
   public void setRichBuffer(byte[] paramArrayOfByte, long paramLong)
   {
-    this.richStatus = null;
     this.richBuffer = paramArrayOfByte;
     this.richTime = paramLong;
   }

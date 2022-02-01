@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@color/common_tips_bar_blue_bg_color" android:layout_width="fill_parent" android:layout_height="@dimen/dp44" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp">
+        <ImageView android:id="@id/calltab_lightalk_tips_icon" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/qq_aio_tips_lightalk_icon" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/sig_tlp_tip_color" android:gravity="center_vertical" android:id="@id/calltab_lightalk_tips_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="手机号也是有性格的好吗" android:singleLine="true" android:layout_toRightOf="@id/calltab_lightalk_tips_icon" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/calltab_lightalk_tips_close" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qvip_sig_tip_close" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

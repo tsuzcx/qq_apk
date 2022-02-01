@@ -1,32 +1,67 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.vfs.u;
 
 public final class d
 {
-  public aca cuZ;
-  public g mCk;
+  public arf hIT;
+  public g xvD;
   
-  public d(g paramg, aca paramaca)
+  public d(g paramg, arf paramarf)
   {
-    this.mCk = paramg;
-    this.cuZ = paramaca;
+    this.xvD = paramg;
+    this.hIT = paramarf;
   }
   
-  public final boolean byj()
+  public final String aJL()
   {
-    return this.cuZ.dataType == 4;
+    AppMethodBeat.i(274523);
+    if (dSI())
+    {
+      str = this.hIT.hDd;
+      AppMethodBeat.o(274523);
+      return str;
+    }
+    if ((dSH()) || (dSJ()))
+    {
+      str = b.a(this.hIT);
+      AppMethodBeat.o(274523);
+      return str;
+    }
+    String str = b.d(this.hIT);
+    if (new u(str).jKS())
+    {
+      AppMethodBeat.o(274523);
+      return str;
+    }
+    str = b.a(this.hIT);
+    AppMethodBeat.o(274523);
+    return str;
   }
   
-  public final boolean byk()
+  public final boolean dSH()
   {
-    return this.cuZ.dataType == 15;
+    return this.hIT.dataType == 4;
+  }
+  
+  public final boolean dSI()
+  {
+    return (this.hIT.dataType == 4) && (this.hIT.Zzy != null) && (this.hIT.Zzy.ZAz != null);
+  }
+  
+  public final boolean dSJ()
+  {
+    return this.hIT.dataType == 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.d
  * JD-Core Version:    0.7.0.1
  */

@@ -48,7 +48,7 @@ public class ReportHandler$DownloadReportObject
     }
   }
   
-  public String getRefer()
+  protected String getRefer()
   {
     if (this.appIdType == 10) {
       return "mqun";
@@ -82,8 +82,9 @@ public class ReportHandler$DownloadReportObject
     localJSONObject.put("t_process", this.t_process);
     localJSONObject.put("content_type", this.content_type);
     localJSONObject.put("concurrent", this.concurrent);
-    if (this.refer != null) {
-      localJSONObject.put("refer", this.refer);
+    Object localObject = this.refer;
+    if (localObject != null) {
+      localJSONObject.put("refer", localObject);
     }
     if (!TextUtils.isEmpty(this.strategyInfo))
     {
@@ -98,18 +99,18 @@ public class ReportHandler$DownloadReportObject
       if (this.extend == null) {
         this.extend = new ExtendData();
       }
-      String str2 = Log.getStackTraceString(this.t);
-      String str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = str2.replaceAll("\n\t", "--");
+      String str = Log.getStackTraceString(this.t);
+      localObject = str;
+      if (!TextUtils.isEmpty(str)) {
+        localObject = str.replaceAll("\n\t", "--");
       }
-      this.extend.put(11, str1);
-      str2 = this.extend.getExtendString();
-      str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = str2.replaceAll(",", ";");
+      this.extend.put(11, (String)localObject);
+      str = this.extend.getExtendString();
+      localObject = str;
+      if (!TextUtils.isEmpty(str)) {
+        localObject = str.replaceAll(",", ";");
       }
-      localJSONObject.put("extend", str1);
+      localJSONObject.put("extend", localObject);
     }
     if (this.type == 2)
     {
@@ -131,7 +132,7 @@ public class ReportHandler$DownloadReportObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject
  * JD-Core Version:    0.7.0.1
  */

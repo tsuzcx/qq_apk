@@ -54,19 +54,18 @@ public class AndroidMediaPlayer
   
   private void releaseMediaDataSource()
   {
-    if (this.mMediaDataSource != null) {}
-    try
+    MediaDataSource localMediaDataSource = this.mMediaDataSource;
+    if (localMediaDataSource != null)
     {
-      this.mMediaDataSource.close();
-      this.mMediaDataSource = null;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      try
+      {
+        localMediaDataSource.close();
+      }
+      catch (IOException localIOException)
       {
         localIOException.printStackTrace();
       }
+      this.mMediaDataSource = null;
     }
   }
   
@@ -199,16 +198,12 @@ public class AndroidMediaPlayer
     try
     {
       this.mInternalMediaPlayer.reset();
-      releaseMediaDataSource();
-      return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      for (;;)
-      {
-        DebugLog.printStackTrace(localIllegalStateException);
-      }
+      DebugLog.printStackTrace(localIllegalStateException);
     }
+    releaseMediaDataSource();
   }
   
   public void seekTo(long paramLong)
@@ -280,16 +275,20 @@ public class AndroidMediaPlayer
   
   public void setNextMediaPlayer(IMediaPlayer paramIMediaPlayer)
   {
-    if (!SUPPORT_NEXT_MEDIA) {
-      throw new UnsupportedOperationException("setNextMediaPlayer is not supported");
-    }
-    if ((paramIMediaPlayer instanceof AndroidMediaPlayer))
+    if (SUPPORT_NEXT_MEDIA)
     {
-      paramIMediaPlayer = (AndroidMediaPlayer)paramIMediaPlayer;
-      this.mInternalMediaPlayer.setNextMediaPlayer(paramIMediaPlayer.getInternalMediaPlayer());
-      return;
+      if ((paramIMediaPlayer instanceof AndroidMediaPlayer))
+      {
+        paramIMediaPlayer = (AndroidMediaPlayer)paramIMediaPlayer;
+        this.mInternalMediaPlayer.setNextMediaPlayer(paramIMediaPlayer.getInternalMediaPlayer());
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setNextMediaPlayer is not supported for type ");
+      localStringBuilder.append(paramIMediaPlayer);
+      throw new UnsupportedOperationException(localStringBuilder.toString());
     }
-    throw new UnsupportedOperationException("setNextMediaPlayer is not supported for type " + paramIMediaPlayer);
+    throw new UnsupportedOperationException("setNextMediaPlayer is not supported");
   }
   
   public void setScreenOnWhilePlaying(boolean paramBoolean)
@@ -330,7 +329,7 @@ public class AndroidMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.AndroidMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.forward;
 
 import android.widget.ScrollView;
-import aseo;
 
-public class ForwardTribeShortVideoMsgOption$1
+class ForwardTribeShortVideoMsgOption$1
   implements Runnable
 {
-  public ForwardTribeShortVideoMsgOption$1(aseo paramaseo) {}
+  ForwardTribeShortVideoMsgOption$1(ForwardTribeShortVideoMsgOption paramForwardTribeShortVideoMsgOption) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ForwardTribeShortVideoMsgOption$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTribeShortVideoMsgOption.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,110 +22,122 @@ class t
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.NetConnTag", 2, "start tcpdump now");
     }
-    for (;;)
+    Object localObject3;
+    label638:
+    do
     {
       try
       {
-        localObject5 = BaseApplication.getContext().getAssets();
-        localObject4 = null;
-        localObject1 = null;
-        localObject3 = localObject4;
-      }
-      catch (Exception localException2)
-      {
-        Object localObject5;
-        Object localObject4;
-        Object localObject1;
-        Object localObject3;
-        int j;
-        int i;
-        int k;
-        Object localObject2;
-        if (!QLog.isColorLevel()) {
-          return;
+        localObject1 = BaseApplication.getContext().getAssets();
+        try
+        {
+          localObject4 = ((AssetManager)localObject1).list("");
+          int j = localObject4.length;
+          localObject1 = null;
+          int i = 0;
+          for (;;)
+          {
+            Object localObject2 = localObject1;
+            if (i >= j) {
+              break label638;
+            }
+            localObject2 = localObject4[i];
+            try
+            {
+              int k = localObject2.indexOf("tcpdump");
+              if (k != -1) {
+                localObject1 = localObject2;
+              }
+              i += 1;
+            }
+            catch (Exception localException2) {}
+          }
+          localException3.printStackTrace();
         }
-        QLog.d("MSF.C.NetConnTag", 2, "tcpdump: readLine Exception" + localException2);
-        return;
-        if (!QLog.isColorLevel()) {
-          continue;
+        catch (Exception localException3)
+        {
+          localObject1 = null;
         }
-        QLog.d("MSF.C.NetConnTag", 2, "tcpdump started Sleep for 10 minutes");
-        n.a(this.a, System.currentTimeMillis());
-        Thread.sleep(a.aC());
-        localException2.close();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MSF.C.NetConnTag", 2, "tcpdump end Sleep for 10 minutes");
-        n.p();
-        n.b(this.a, true);
-        return;
-        continue;
-        if (localObject3 != null) {
-          continue;
-        }
-      }
-      try
-      {
-        localObject5 = ((AssetManager)localObject5).list("");
-        localObject3 = localObject4;
-        j = localObject5.length;
-        i = 0;
         localObject3 = localObject1;
-        if (i >= j) {
-          continue;
-        }
-        localObject4 = localObject5[i];
-        localObject3 = localObject1;
-        k = ((String)localObject4).indexOf("tcpdump");
-        if (k == -1) {
-          continue;
-        }
-        localObject1 = localObject4;
-        i += 1;
-        continue;
-        BaseApplication.getContext().getDir("assets", 0).toString();
       }
       catch (Exception localException1)
       {
-        localException1.printStackTrace();
-      }
-    }
-    localObject2 = new StringBuilder();
-    n.a(BaseApplication.getContext());
-    new ProcessBuilder(new String[0]).command(new String[] { "chmod", "777", BaseApplication.getContext().getFilesDir().getParent() + "/txlib/tcpdump" }).redirectErrorStream(true).start();
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.NetConnTag", 2, "start tcpdump");
-    }
-    ((StringBuilder)localObject2).setLength(0);
-    localObject3 = BaseApplication.getContext().getPackageName();
-    localObject3 = Environment.getExternalStorageDirectory().getPath() + "/tencent/" + ((String)localObject3).replace(".", "/") + "/";
-    localObject4 = new File((String)localObject3);
-    if (!((File)localObject4).exists()) {
-      ((File)localObject4).mkdirs();
-    }
-    localObject4 = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date(System.currentTimeMillis()));
-    ((StringBuilder)localObject2).append((String)localObject3);
-    ((StringBuilder)localObject2).append((String)localObject4);
-    ((StringBuilder)localObject2).append(".pcap");
-    try
-    {
-      localObject2 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "su", "-c", BaseApplication.getContext().getFilesDir().getParent() + "/txlib/tcpdump  -p -l -vv -i any -s 0 -w " + localObject2 }).getErrorStream()));
-      if (!((BufferedReader)localObject2).readLine().toLowerCase().contains("syntax error")) {
-        break label511;
-      }
-      ((BufferedReader)localObject2).close();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      if (!QLog.isColorLevel()) {
+        Object localObject1;
+        Object localObject4;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("tcpdump: readLine Exception");
+        ((StringBuilder)localObject3).append(localException1);
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject3).toString());
         return;
       }
-    }
-    QLog.d("MSF.C.NetConnTag", 2, "Error running tcpdump, msg=" + localIOException.getMessage());
-    return;
-    label511:
+      BaseApplication.getContext().getDir("assets", 0).toString();
+      localObject1 = new StringBuilder();
+      n.a(BaseApplication.getContext());
+      localObject3 = new ProcessBuilder(new String[0]);
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(BaseApplication.getContext().getFilesDir().getParent());
+      ((StringBuilder)localObject4).append("/txlib/tcpdump");
+      ((ProcessBuilder)localObject3).command(new String[] { "chmod", "777", ((StringBuilder)localObject4).toString() }).redirectErrorStream(true).start();
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.NetConnTag", 2, "start tcpdump");
+      }
+      ((StringBuilder)localObject1).setLength(0);
+      localObject3 = BaseApplication.getContext().getPackageName();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(Environment.getExternalStorageDirectory().getPath());
+      ((StringBuilder)localObject4).append("/tencent/");
+      ((StringBuilder)localObject4).append(((String)localObject3).replace(".", "/"));
+      ((StringBuilder)localObject4).append("/");
+      localObject3 = ((StringBuilder)localObject4).toString();
+      localObject4 = new File((String)localObject3);
+      if (!((File)localObject4).exists()) {
+        ((File)localObject4).mkdirs();
+      }
+      localObject4 = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date(System.currentTimeMillis()));
+      ((StringBuilder)localObject1).append((String)localObject3);
+      ((StringBuilder)localObject1).append((String)localObject4);
+      ((StringBuilder)localObject1).append(".pcap");
+      try
+      {
+        localObject3 = Runtime.getRuntime();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(BaseApplication.getContext().getFilesDir().getParent());
+        ((StringBuilder)localObject4).append("/txlib/tcpdump  -p -l -vv -i any -s 0 -w ");
+        ((StringBuilder)localObject4).append(localObject1);
+        localObject1 = new BufferedReader(new InputStreamReader(((Runtime)localObject3).exec(new String[] { "su", "-c", ((StringBuilder)localObject4).toString() }).getErrorStream()));
+        if (((BufferedReader)localObject1).readLine().toLowerCase().contains("syntax error"))
+        {
+          ((BufferedReader)localObject1).close();
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, "tcpdump started Sleep for 10 minutes");
+        }
+        n.a(this.a, System.currentTimeMillis());
+        Thread.sleep(a.aC());
+        ((BufferedReader)localObject1).close();
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.NetConnTag", 2, "tcpdump end Sleep for 10 minutes");
+        }
+        n.p();
+        n.b(this.a, true);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("Error running tcpdump, msg=");
+          ((StringBuilder)localObject3).append(localIOException.getMessage());
+          QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject3).toString());
+        }
+        return;
+      }
+    } while (localObject3 != null);
   }
   
   public void run()
@@ -140,7 +152,7 @@ class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.t
  * JD-Core Version:    0.7.0.1
  */

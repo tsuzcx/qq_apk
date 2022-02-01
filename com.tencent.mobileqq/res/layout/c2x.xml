@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/mi_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/8h" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center" android:id="@id/d2a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:layout_width="30.0dip" android:layout_height="29.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/i_s" android:scaleType="centerCrop" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/xoo" android:layout_weight="1.0" />
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/i_v" android:scaleType="centerCrop" />
 </LinearLayout>

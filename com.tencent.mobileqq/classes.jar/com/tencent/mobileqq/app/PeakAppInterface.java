@@ -1,229 +1,159 @@
 package com.tencent.mobileqq.app;
 
-import alpd;
-import alpg;
-import alxd;
-import alyc;
-import ambz;
-import ammn;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.accessibility.AccessibilityManager;
-import awgg;
-import awgn;
-import awhq;
-import axnn;
-import axxr;
-import axxs;
-import ayyc;
-import azbe;
-import azjh;
-import baue;
-import bavd;
-import bkzp;
-import bkzt;
-import bljn;
-import blkf;
-import blro;
+import com.tencent.aelight.camera.api.IAEClassManager;
+import com.tencent.aelight.camera.api.IAEEditorProcess;
+import com.tencent.aelight.camera.api.IPeakJceService;
+import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.aelight.camera.qqstory.api.IAsyncControl;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
+import com.tencent.biz.qqstory.takevideo.slideshow.TransitionHandler;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseToolAppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableEntityManagerFactory;
 import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import com.tencent.mobileqq.richmedia.server.PeakMsfServletProxy;
+import com.tencent.mobileqq.servlet.AudioTransServlet;
+import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
+import com.tencent.mobileqq.transfile.NetEngineFactory;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
-import java.util.List;
-import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.IToolProcEventListener;
+import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import xnh;
 
 public class PeakAppInterface
-  extends AppInterface
+  extends BaseToolAppInterface
   implements IToolProcEventListener
 {
-  public static blro a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new alyc(this);
-  private awgg jdField_a_of_type_Awgg;
-  private awgn jdField_a_of_type_Awgn;
-  private axxs jdField_a_of_type_Axxs;
-  private ayyc jdField_a_of_type_Ayyc;
-  private bavd jdField_a_of_type_Bavd;
-  private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<alpg> jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap<Integer, Manager> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  public boolean a;
-  private alpd[] jdField_a_of_type_ArrayOfAlpd = new alpd[5];
-  private boolean b;
-  
-  static
-  {
-    jdField_a_of_type_Blro = new blro();
-  }
+  public static final String b = PeakAudioTransHandler.class.getName();
+  public static final String c = TransitionHandler.class.getName();
+  public static final String d = MiniCodePeakHandler.class.getName();
+  public static final String e = ((IAEClassManager)QRoute.api(IAEClassManager.class)).getCameraPeakServiceHandlerClass().getName();
+  public static final String f = ((IAEClassManager)QRoute.api(IAEClassManager.class)).getAEEditorDataServiceHandlerClass().getName();
+  public boolean a = false;
+  private EntityManagerFactory g;
+  private String h = "";
+  private QQStoryContext i;
+  private PeakMsfServletProxy j;
+  private IPeakJceService k;
+  private boolean l = false;
+  private ConcurrentHashMap<Integer, Manager> m = new ConcurrentHashMap(5);
+  private MessageRecordEntityManager n;
+  private PeakAppCrashReporter o;
+  private NetEngineFactory p = null;
+  private BroadcastReceiver q = new PeakAppInterface.1(this);
   
   public PeakAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
   }
   
-  private boolean a()
+  private boolean a(BaseApplication paramBaseApplication, Intent paramIntent)
+  {
+    AEQLog.d("PeakAppInterface", "exitPeakRunTime");
+    paramBaseApplication = paramIntent.getAction();
+    if (paramBaseApplication == null) {
+      return false;
+    }
+    if (paramBaseApplication.equals("com.tencent.process.exit"))
+    {
+      boolean bool = ((IAEEditorProcess)QRoute.api(IAEEditorProcess.class)).isGenerateWorking();
+      paramBaseApplication = new StringBuilder();
+      paramBaseApplication.append("isGenerateWorking");
+      paramBaseApplication.append(bool);
+      AEQLog.d("PeakAppInterface", paramBaseApplication.toString());
+      return bool;
+    }
+    return false;
+  }
+  
+  private boolean f()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.peak.q2v.AudioTransPush");
-    this.app.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    return this.app.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null;
-  }
-  
-  private boolean a(BaseApplication paramBaseApplication, Intent paramIntent)
-  {
-    paramBaseApplication = paramIntent.getAction();
-    if (paramBaseApplication == null) {}
-    do
-    {
-      return false;
-      bljn.b("PeakAppInterface", "exitPeakRunTime");
-    } while (!paramBaseApplication.equals("com.tencent.process.exit"));
-    return blkf.a().a();
-  }
-  
-  private alpd b(int paramInt)
-  {
-    System.currentTimeMillis();
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-      return new axxr(this);
-    case 1: 
-      return new xnh(this);
-    case 2: 
-      return new alxd(this);
-    case 3: 
-      return new bkzt(this);
-    }
-    return new bkzp(this);
-  }
-  
-  public alpd a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAlpd[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfAlpd)
-    {
-      alpd localalpd = this.jdField_a_of_type_ArrayOfAlpd[paramInt];
-      localObject1 = localalpd;
-      if (localalpd == null)
-      {
-        localalpd = b(paramInt);
-        localObject1 = localalpd;
-        if (localalpd != null)
-        {
-          this.jdField_a_of_type_ArrayOfAlpd[paramInt] = localalpd;
-          localObject1 = localalpd;
-        }
-      }
-      return localObject1;
-    }
-  }
-  
-  public awgn a()
-  {
-    if (this.jdField_a_of_type_Awgn == null)
-    {
-      String str = getCurrentAccountUin();
-      this.jdField_a_of_type_Awgn = new awgn(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
-    }
-    return this.jdField_a_of_type_Awgn;
-  }
-  
-  public QQStoryContext a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
-  }
-  
-  public SQLiteDatabase a()
-  {
-    Object localObject = getCurrentAccountUin();
-    localObject = ((QQEntityManagerFactory)getEntityManagerFactory((String)localObject)).build((String)localObject);
-    if (localObject != null) {
-      return ((ambz)localObject).b();
-    }
-    return null;
+    this.app.registerReceiver(this.q, localIntentFilter);
+    return this.app.registerReceiver(this.q, localIntentFilter) != null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext = new QQStoryContext();
-    this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext.a();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
-    {
-      this.jdField_a_of_type_Ayyc.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
-      return;
-    }
-    this.jdField_a_of_type_Axxs.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.i = new QQStoryContext();
+    this.i.b();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
-  public void addObserver(alpg paramalpg)
+  public MessageRecordEntityManager b()
   {
-    addObserver(paramalpg, false);
-  }
-  
-  public void addObserver(alpg paramalpg, boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramalpg)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramalpg);
+    if (this.n == null)
+    {
+      String str = getCurrentAccountUin();
+      this.n = new MessageRecordEntityManager(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
     }
+    return this.n;
   }
   
-  public SQLiteDatabase b()
+  public SQLiteDatabase c()
   {
     Object localObject = getCurrentAccountUin();
-    localObject = new awhq((String)localObject).build((String)localObject);
+    localObject = new QSlowTableEntityManagerFactory((String)localObject).build((String)localObject);
     if (localObject != null) {
-      return ((ambz)localObject).b();
+      return ((SQLiteOpenHelper)localObject).getReadableDatabase();
     }
     return null;
   }
   
-  public void b()
+  public QQStoryContext d()
   {
-    try
+    return this.i;
+  }
+  
+  public void e()
+  {
+    for (;;)
     {
-      AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.app.getSystemService("accessibility");
-      boolean bool1 = localAccessibilityManager.isEnabled();
-      boolean bool2 = localAccessibilityManager.isTouchExplorationEnabled();
-      if ((bool1) && (bool2)) {}
-      for (bool1 = true;; bool1 = false)
+      try
       {
-        AppSetting.c = bool1;
+        AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.app.getSystemService("accessibility");
+        bool1 = localAccessibilityManager.isEnabled();
+        boolean bool2 = localAccessibilityManager.isTouchExplorationEnabled();
+        if ((bool1) && (bool2))
+        {
+          bool1 = true;
+          AppSetting.e = bool1;
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
         return;
       }
-      return;
+      boolean bool1 = false;
     }
-    catch (Throwable localThrowable) {}
   }
   
   public BaseApplication getApp()
@@ -233,15 +163,7 @@ public class PeakAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
-  }
-  
-  public List<alpg> getBusinessObserver(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_JavaUtilList;
-    }
-    return null;
+    return AppSetting.d();
   }
   
   public String getCurrentAccountUin()
@@ -251,47 +173,45 @@ public class PeakAppInterface
   
   public String getCurrentNickname()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.h;
   }
   
-  public awgg getEntityManagerFactory(String paramString)
+  public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Awgg == null) {
-      this.jdField_a_of_type_Awgg = new QQEntityManagerFactory(getAccount());
+    if (this.g == null) {
+      this.g = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
-    return this.jdField_a_of_type_Awgg;
+    return this.g;
   }
   
   public Manager getManager(int paramInt)
   {
-    Object localObject2 = (Manager)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = (Manager)this.m.get(Integer.valueOf(paramInt));
     Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      switch (paramInt)
-      {
-      default: 
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)) != null) {
-          localObject1 = (Manager)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-        }
-        break;
-      }
-    }
-    for (;;)
+    if (localObject2 == null)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = super.getManager(paramInt);
+      if (paramInt == 4) {
+        localObject2 = new MessageCleanManager();
       }
-      return localObject2;
-      localObject2 = new ammn();
-      break;
-      localObject1 = localObject2;
-      if (localObject2 != null)
+      if (this.m.get(Integer.valueOf(paramInt)) != null)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject2);
+        localObject1 = (Manager)this.m.get(Integer.valueOf(paramInt));
+      }
+      else
+      {
         localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          this.m.put(Integer.valueOf(paramInt), localObject2);
+          localObject1 = localObject2;
+        }
       }
     }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = super.getManager(paramInt);
+    }
+    return localObject2;
   }
   
   public String getModuleId()
@@ -299,22 +219,25 @@ public class PeakAppInterface
     return "peak";
   }
   
-  public baue getNetEngine(int paramInt)
+  public SQLiteDatabase getReadableDatabase()
   {
-    if (this.jdField_a_of_type_Bavd == null) {
-      this.jdField_a_of_type_Bavd = new bavd();
+    Object localObject = getCurrentAccountUin();
+    localObject = ((QQEntityManagerFactory)getEntityManagerFactory((String)localObject)).build((String)localObject);
+    if (localObject != null) {
+      return ((SQLiteOpenHelper)localObject).getReadableDatabase();
     }
-    return this.jdField_a_of_type_Bavd.a(this, paramInt);
+    return null;
   }
   
   public void onBeforeExitProc()
   {
-    bljn.b("PeakAppInterface", "onBeforeExitProc");
-    blkf.a().b();
+    AEQLog.d("PeakAppInterface", "onBeforeExitProc");
+    ((IAEEditorProcess)QRoute.api(IAEEditorProcess.class)).clean();
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
+    long l1 = System.currentTimeMillis();
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.d("PeakAppInterface", 2, "onCreate");
@@ -322,117 +245,107 @@ public class PeakAppInterface
     new InitMemoryCache().step();
     new InitUrlDrawable().step();
     a();
-    this.jdField_a_of_type_JavaUtilList = new Vector();
-    this.b = a();
-    this.jdField_a_of_type_Axxs = new axxs(this);
-    this.jdField_a_of_type_Ayyc = new ayyc(this);
-    jdField_a_of_type_Blro.a("{1000,1002}");
+    this.l = f();
+    this.j = new PeakMsfServletProxy(this);
+    this.k = ((IPeakJceService)getRuntimeService(IPeakJceService.class, "all"));
+    ((IAsyncControl)QRoute.api(IAsyncControl.class)).startPeakPreLoadAsyncStep();
+    DtSdkInitStep.initDTSDK(0);
+    this.o = new PeakAppCrashReporter();
+    this.o.a();
+    paramBundle = new StringBuilder();
+    paramBundle.append("[onCreate...] + END, time cost:");
+    paramBundle.append(System.currentTimeMillis() - l1);
+    QLog.d("[Performance2]PeakAppInterface", 1, paramBundle.toString());
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    axnn.a().b(BaseApplicationImpl.sApplication);
-    ??? = PresendPicMgr.a(null);
-    if (??? != null) {
-      ((PresendPicMgr)???).b();
+    RichmediaClient.a().b(BaseApplicationImpl.sApplication);
+    Object localObject = PresendPicMgr.a(null);
+    if (localObject != null) {
+      ((PresendPicMgr)localObject).c();
     }
-    for (;;)
+    localObject = this.p;
+    if (localObject != null) {}
+    try
     {
-      int i;
-      synchronized (this.jdField_a_of_type_ArrayOfAlpd)
-      {
-        alpd[] arrayOfalpd = this.jdField_a_of_type_ArrayOfAlpd;
-        int j = arrayOfalpd.length;
-        i = 0;
-        if (i < j)
-        {
-          alpd localalpd = arrayOfalpd[i];
-          if (localalpd == null) {
-            break label168;
-          }
-          localalpd.onDestroy();
-          break label168;
-        }
-        if (this.jdField_a_of_type_Bavd == null) {}
-      }
-      try
-      {
-        this.jdField_a_of_type_Bavd.onDestroy();
-        this.jdField_a_of_type_Bavd = null;
-        if (this.b)
-        {
-          this.app.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.b = false;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          azjh.a(this).a(this);
-        }
-        jdField_a_of_type_Blro.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("PeakAppInterface", 2, "onDestroy");
-        }
-        return;
-        localObject2 = finally;
-        throw localObject2;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_Bavd.onDestroy();
-        }
-      }
-      label168:
-      i += 1;
+      ((NetEngineFactory)localObject).onDestroy();
+    }
+    catch (Exception localException)
+    {
+      label42:
+      break label42;
+    }
+    this.p.onDestroy();
+    this.p = null;
+    if (this.l)
+    {
+      this.app.unregisterReceiver(this.q);
+      this.l = false;
+    }
+    ((IAsyncControl)QRoute.api(IAsyncControl.class)).destory();
+    this.o.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakAppInterface", 2, "onDestroy");
     }
   }
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
   {
-    bljn.b("PeakAppInterface", "onReceiveAccountAction");
+    AEQLog.b("PeakAppInterface", "onReceiveAccountAction");
     return false;
   }
   
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
-    bljn.b("PeakAppInterface", "onReceiveAccountAction");
+    AEQLog.d("PeakAppInterface", "onReceiveAccountAction");
     return a(BaseApplicationImpl.getContext(), paramIntent);
   }
   
-  public void onRunningBackground()
+  protected void onRunningBackground()
   {
     if (QZLog.isColorLevel()) {
       QZLog.i("PeakAppInterface", 2, "onRunningBackground");
     }
     super.onRunningBackground();
+    this.o.c();
     LpReportManager.getInstance().startReportImediately(2);
   }
   
-  public void onRunningForeground()
+  protected void onRunningForeground()
   {
     super.onRunningForeground();
     ThreadManager.executeOnFileThread(new PeakAppInterface.2(this));
+    this.o.d();
   }
   
-  public void removeObserver(alpg paramalpg)
+  public void receiveToService(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramalpg);
+    if ((!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetRecommandTextByEmotion")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTextValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCameraConfig")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCategoryMaterial")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetOnlineUserNum")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetFontData")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetImgValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBulkImageClassify")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTABConfiguration")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
+    {
+      this.j.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+      return;
+    }
+    IPeakJceService localIPeakJceService = this.k;
+    if (localIPeakJceService != null) {
+      localIPeakJceService.handleResponse(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
+    }
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
+    if ((!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetRecommandTextByEmotion")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTextValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCameraConfig")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCategoryMaterial")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetOnlineUserNum")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetFontData")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetImgValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBulkImageClassify")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTABConfiguration")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
     {
-      this.jdField_a_of_type_Ayyc.a(paramToServiceMsg);
+      this.j.a(paramToServiceMsg, AudioTransServlet.class);
       return;
     }
-    this.jdField_a_of_type_Axxs.a(paramToServiceMsg, null, azbe.class);
+    this.k.handleRequest(paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PeakAppInterface
  * JD-Core Version:    0.7.0.1
  */

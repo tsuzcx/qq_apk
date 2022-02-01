@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" formItem:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ajo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="聊天记录漫游" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ago" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="删除聊天记录" formItem:showArrow="true" />
+    </LinearLayout>
+</RelativeLayout>

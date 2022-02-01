@@ -5,44 +5,70 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bahz;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class TeamWorkShareActionSheetBuilder$1
+class TeamWorkShareActionSheetBuilder$1
   implements Runnable
 {
-  public TeamWorkShareActionSheetBuilder$1(bahz parambahz, String paramString1, String paramString2) {}
+  TeamWorkShareActionSheetBuilder$1(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = (RelativeLayout.LayoutParams)bahz.a(this.this$0).getLayoutParams();
-    int j = bahz.a(this.this$0).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - bahz.a(this.this$0).getWidth() - bahz.b(this.this$0).getWidth();
-    if (bahz.c(this.this$0).getPaint().measureText(this.a + this.b) > j)
+    Object localObject1 = (RelativeLayout.LayoutParams)TeamWorkShareActionSheetBuilder.a(this.this$0).getLayoutParams();
+    int i = TeamWorkShareActionSheetBuilder.b(this.this$0).getWidth();
+    int j = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
+    int k = TeamWorkShareActionSheetBuilder.c(this.this$0).getWidth();
+    int m = TeamWorkShareActionSheetBuilder.d(this.this$0).getWidth();
+    localObject1 = TeamWorkShareActionSheetBuilder.e(this.this$0).getPaint();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.a);
+    ((StringBuilder)localObject2).append(this.b);
+    float f1 = ((TextPaint)localObject1).measureText(((StringBuilder)localObject2).toString());
+    float f2 = i - j - 80 - k - m;
+    if (f1 > f2)
     {
-      int i = 0;
-      for (;;)
+      i = 0;
+      while (i < this.a.length())
       {
-        if ((i >= this.a.length()) || (bahz.c(this.this$0).getPaint().measureText(this.a.substring(0, i) + bahz.a(this.this$0).getString(2131690331) + this.b) > j))
-        {
-          if (i == 0) {
-            break;
-          }
-          localObject = this.a.substring(0, i - 1);
-          bahz.c(this.this$0).setText(this.b + (String)localObject + bahz.a(this.this$0).getString(2131690331));
-          return;
+        localObject1 = TeamWorkShareActionSheetBuilder.e(this.this$0).getPaint();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.a.substring(0, i));
+        ((StringBuilder)localObject2).append(TeamWorkShareActionSheetBuilder.f(this.this$0).getString(2131887118));
+        ((StringBuilder)localObject2).append(this.b);
+        if (((TextPaint)localObject1).measureText(((StringBuilder)localObject2).toString()) > f2) {
+          break;
         }
         i += 1;
       }
-      bahz.c(this.this$0).setText(this.b + this.a.substring(0) + bahz.a(this.this$0).getString(2131690331));
+      if (i != 0)
+      {
+        localObject1 = this.a.substring(0, i - 1);
+        localObject2 = TeamWorkShareActionSheetBuilder.e(this.this$0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.b);
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(TeamWorkShareActionSheetBuilder.f(this.this$0).getString(2131887118));
+        ((TextView)localObject2).setText(localStringBuilder.toString());
+        return;
+      }
+      localObject1 = TeamWorkShareActionSheetBuilder.e(this.this$0);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(this.a.substring(0));
+      ((StringBuilder)localObject2).append(TeamWorkShareActionSheetBuilder.f(this.this$0).getString(2131887118));
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       return;
     }
-    localObject = this.b + this.a;
-    bahz.c(this.this$0).setText((CharSequence)localObject);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(this.a);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    TeamWorkShareActionSheetBuilder.e(this.this$0).setText((CharSequence)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder.1
  * JD-Core Version:    0.7.0.1
  */

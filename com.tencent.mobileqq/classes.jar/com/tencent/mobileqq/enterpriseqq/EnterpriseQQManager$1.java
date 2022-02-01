@@ -1,41 +1,44 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import aqau;
-import aqaw;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class EnterpriseQQManager$1
+class EnterpriseQQManager$1
   implements Runnable
 {
-  public EnterpriseQQManager$1(aqau paramaqau) {}
+  EnterpriseQQManager$1(EnterpriseQQManager paramEnterpriseQQManager) {}
   
   public void run()
   {
-    if ((aqau.a(this.this$0) != null) && (aqau.a(this.this$0) != null))
+    if ((EnterpriseQQManager.a(this.this$0) != null) && (EnterpriseQQManager.b(this.this$0) != null))
     {
-      SosoInterface.a(this.this$0.a);
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.this$0.b);
       return;
     }
-    synchronized (aqau.a())
+    synchronized (EnterpriseQQManager.a())
     {
-      if ((aqau.a(this.this$0) == null) || (aqau.a(this.this$0).size() <= 0)) {
-        break label144;
-      }
-      Iterator localIterator = aqau.a(this.this$0).iterator();
-      while (localIterator.hasNext())
+      if ((EnterpriseQQManager.c(this.this$0) != null) && (EnterpriseQQManager.c(this.this$0).size() > 0))
       {
-        aqaw localaqaw = (aqaw)localIterator.next();
-        if (localaqaw != null) {
-          this.this$0.a(aqau.a(this.this$0), aqau.a(this.this$0), localaqaw.a, localaqaw.b, false, 0.0D, 0.0D);
+        Iterator localIterator = EnterpriseQQManager.c(this.this$0).iterator();
+        while (localIterator.hasNext())
+        {
+          EnterpriseQQManager.EventRequest localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
+          if (localEventRequest != null) {
+            this.this$0.a(EnterpriseQQManager.a(this.this$0), EnterpriseQQManager.b(this.this$0), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
+          }
         }
+        EnterpriseQQManager.c(this.this$0).clear();
       }
+      EnterpriseQQManager.a(this.this$0, null);
+      EnterpriseQQManager.a(this.this$0, null);
+      return;
     }
-    aqau.a(this.this$0).clear();
-    label144:
-    aqau.a(this.this$0, null);
-    aqau.a(this.this$0, null);
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 

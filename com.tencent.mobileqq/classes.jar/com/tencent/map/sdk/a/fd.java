@@ -11,12 +11,14 @@ public class fd<T>
   protected fd()
   {
     Type localType = getClass().getGenericSuperclass();
-    if ((localType instanceof Class)) {
-      throw new RuntimeException("Missing type parameter.");
+    if (!(localType instanceof Class))
+    {
+      this.b = eh.a(((java.lang.reflect.ParameterizedType)localType).getActualTypeArguments()[0]);
+      this.a = eh.b(this.b);
+      this.c = this.b.hashCode();
+      return;
     }
-    this.b = eh.a(((java.lang.reflect.ParameterizedType)localType).getActualTypeArguments()[0]);
-    this.a = eh.b(this.b);
-    this.c = this.b.hashCode();
+    throw new RuntimeException("Missing type parameter.");
   }
   
   private fd(Type paramType)

@@ -4,24 +4,24 @@ import com.tencent.tinker.a.a.b.c;
 import java.util.Arrays;
 
 public final class b
-  extends t.a.a<b>
+  extends s.a.a<b>
 {
-  public int[] Box;
+  public int[] ahNm;
   
   public b(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.Box = paramArrayOfInt;
+    this.ahNm = paramArrayOfInt;
   }
   
   private int a(b paramb)
   {
     int k = 0;
-    int m = this.Box.length;
-    int i = paramb.Box.length;
+    int m = this.ahNm.length;
+    int i = paramb.ahNm.length;
     if (m != i)
     {
-      i = c.ip(m, i);
+      i = c.pR(m, i);
       return i;
     }
     int j = 0;
@@ -31,8 +31,8 @@ public final class b
       if (j >= m) {
         break;
       }
-      if (this.Box[j] != paramb.Box[j]) {
-        return c.ip(this.Box[j], paramb.Box[j]);
+      if (this.ahNm[j] != paramb.ahNm[j]) {
+        return c.pR(this.ahNm[j], paramb.ahNm[j]);
       }
       j += 1;
     }
@@ -49,12 +49,12 @@ public final class b
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.Box);
+    return Arrays.hashCode(this.ahNm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.b
  * JD-Core Version:    0.7.0.1
  */

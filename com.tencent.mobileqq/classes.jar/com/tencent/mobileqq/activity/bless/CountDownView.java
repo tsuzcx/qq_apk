@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahdn;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bdfi;
+import com.tencent.mobileqq.utils.AudioUtil;
 
 public class CountDownView
   extends ImageView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838605, 2130838604, 2130838603 };
-  private int jdField_a_of_type_Int;
-  private ahdn jdField_a_of_type_Ahdn;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CountDownView.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private static final int[] a = { 2130838974, 2130838973, 2130838972 };
+  private int b = 0;
+  private boolean c = false;
+  private CountDownView.CountDownFinishedListener d;
+  private Runnable e = new CountDownView.1(this);
   
   public CountDownView(Context paramContext)
   {
@@ -31,27 +30,27 @@ public class CountDownView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void b()
+  private void c()
   {
-    bdfi.a();
-    bdfi.a(2131230746, 1, null, null);
+    AudioUtil.b();
+    AudioUtil.a(2131230818, 1, null, null);
   }
   
   public void a()
   {
-    setImageResource(jdField_a_of_type_ArrayOfInt[0]);
-    this.jdField_a_of_type_Boolean = false;
+    setImageResource(a[0]);
+    this.c = false;
     Handler localHandler = getHandler();
     if (localHandler != null) {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      localHandler.removeCallbacks(this.e);
     }
-    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
     setVisibility(4);
   }
   
-  public void setListener(ahdn paramahdn)
+  public void setListener(CountDownView.CountDownFinishedListener paramCountDownFinishedListener)
   {
-    this.jdField_a_of_type_Ahdn = paramahdn;
+    this.d = paramCountDownFinishedListener;
   }
 }
 

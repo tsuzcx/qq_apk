@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/pxq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="162.0dip">
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/p28" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <com.tencent.timi.game.profile.impl.view.ProfileUserInfoView android:id="@id/qsa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" />
+        <ImageView android:id="@id/az2" android:padding="16.0dip" android:layout_width="53.0dip" android:layout_height="53.0dip" android:src="@drawable/jfi" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <com.tencent.timi.game.profile.impl.view.ProfileItemInTeamView android:id="@id/p2_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
+    <FrameLayout android:id="@id/pwu" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@color/black" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zfz" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:layout_gravity="end|center" android:id="@id/px0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableRight="@drawable/jfh" android:drawablePadding="4.0dip" />
+    </FrameLayout>
+    <com.tencent.timi.game.profile.impl.view.record.ProfileSmobaRecordView android:id="@id/q4g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
+    <FrameLayout android:id="@id/ow2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
+</LinearLayout>

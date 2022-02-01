@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f0g" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="52.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ra" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentEnd="true" />
-    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b95" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="" android:lines="1" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/ra" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/exn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_centerInParent="true">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/qo" android:ellipsize="end" android:id="@id/exo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/cu" android:maxLines="1" android:includeFontPadding="false" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/exm" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_back" android:contentDescription="@string/k4" android:rotation="180.0" android:layout_marginStart="@dimen/bt" app:iconColor="@color/qo" />
+    </LinearLayout>
 </RelativeLayout>

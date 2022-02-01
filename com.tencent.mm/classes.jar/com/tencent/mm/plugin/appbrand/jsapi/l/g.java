@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.y;
 
 public final class g
-  extends a<d>
+  extends c<y>
 {
-  public static final int CTRL_INDEX = 15;
-  public static final String NAME = "navigateBack";
+  private static final int CTRL_INDEX = 77;
+  private static final String NAME = "setKeyboardValue";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.g
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,11 @@ public class ParameterizedAssertionError
       paramObject = String.valueOf(paramObject);
       return paramObject;
     }
-    catch (Throwable paramObject) {}
+    catch (Throwable paramObject)
+    {
+      label7:
+      break label7;
+    }
     return "[toString failed]";
   }
   
@@ -57,7 +61,7 @@ public class ParameterizedAssertionError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.internal.ParameterizedAssertionError
  * JD-Core Version:    0.7.0.1
  */

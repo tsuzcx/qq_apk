@@ -18,7 +18,7 @@ import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
 import com.tencent.open.base.LogUtility;
-import hjm;
+import hjl;
 import java.util.HashMap;
 
 public class RecommendListManager
@@ -61,7 +61,7 @@ public class RecommendListManager
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new hjm(this, paramString, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new hjl(this, paramString, paramBitmap));
   }
   
   public void b()

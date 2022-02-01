@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class gdb
-  extends IQQPlayerCallback.Stub
+  extends BroadcastReceiver
 {
   public gdb(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    MusicGeneWebViewPlugin.a(this.a, paramInt);
-    if (paramInt == 2) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
-    }
-  }
-  
-  public void a(SongInfo paramSongInfo)
-  {
-    if (MusicGeneWebViewPlugin.a(this.a) != null) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      MusicGeneWebViewPlugin.a(this.a);
     }
   }
 }

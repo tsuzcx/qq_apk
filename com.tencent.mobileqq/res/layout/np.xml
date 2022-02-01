@@ -4,11 +4,11 @@
     <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_alignParentTop="true" />
     <LinearLayout android:orientation="vertical" android:id="@id/abb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="12.0dip">
         <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/jo3" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip">
-            <ImageView android:layout_gravity="center" android:id="@id/jo2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/fz5" android:tint="#ff89d043" />
+            <ImageView android:layout_gravity="center" android:id="@id/jo2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/qzone_commo_black_tips_icon_success" android:tint="#ff89d043" />
             <TextView android:textSize="@dimen/aej" android:textColor="@color/fl" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/jo1" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b1y" />
         </LinearLayout>
         <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/jny" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip">
-            <ImageView android:layout_gravity="center" android:id="@id/jnx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/fz4" android:tint="#fff21e1e" />
+            <ImageView android:layout_gravity="center" android:id="@id/jnx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/qzone_commo_black_tips_icon_caution" android:tint="#fff21e1e" />
             <TextView android:textSize="@dimen/aej" android:textColor="@color/fl" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/jnw" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b1s" />
         </LinearLayout>
     </LinearLayout>

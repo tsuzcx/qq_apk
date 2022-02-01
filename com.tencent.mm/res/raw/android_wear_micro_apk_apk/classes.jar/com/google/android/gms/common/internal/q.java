@@ -4,48 +4,50 @@ import java.util.ArrayList;
 
 public abstract class q<TListener>
 {
-  private TListener JL;
-  private boolean JM;
+  private TListener LA;
+  private boolean LB;
   
   public q(TListener paramTListener)
   {
     Object localObject;
-    this.JL = localObject;
-    this.JM = false;
+    this.LA = localObject;
+    this.LB = false;
   }
   
+  protected abstract void E(TListener paramTListener);
+  
   /* Error */
-  public final void hk()
+  public final void hu()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 21	com/google/android/gms/common/internal/q:JL	Ljava/lang/Object;
+    //   3: getfield 21	com/google/android/gms/common/internal/q:LA	Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_0
-    //   8: getfield 23	com/google/android/gms/common/internal/q:JM	Z
+    //   8: getfield 23	com/google/android/gms/common/internal/q:LB	Z
     //   11: ifeq +48 -> 59
     //   14: aload_0
-    //   15: invokestatic 35	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   15: invokestatic 37	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   18: astore_2
-    //   19: ldc 37
-    //   21: new 39	java/lang/StringBuilder
+    //   19: ldc 39
+    //   21: new 41	java/lang/StringBuilder
     //   24: dup
     //   25: aload_2
-    //   26: invokestatic 35	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   29: invokevirtual 43	java/lang/String:length	()I
+    //   26: invokestatic 37	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   29: invokevirtual 45	java/lang/String:length	()I
     //   32: bipush 47
     //   34: iadd
-    //   35: invokespecial 46	java/lang/StringBuilder:<init>	(I)V
-    //   38: ldc 48
-    //   40: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokespecial 48	java/lang/StringBuilder:<init>	(I)V
+    //   38: ldc 50
+    //   40: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: aload_2
-    //   44: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc 54
-    //   49: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokestatic 64	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   44: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: ldc 56
+    //   49: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokestatic 66	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
     //   58: pop
     //   59: aload_0
     //   60: monitorexit
@@ -53,12 +55,12 @@ public abstract class q<TListener>
     //   62: ifnull +8 -> 70
     //   65: aload_0
     //   66: aload_1
-    //   67: invokevirtual 68	com/google/android/gms/common/internal/q:v	(Ljava/lang/Object;)V
+    //   67: invokevirtual 68	com/google/android/gms/common/internal/q:E	(Ljava/lang/Object;)V
     //   70: aload_0
     //   71: monitorenter
     //   72: aload_0
     //   73: iconst_1
-    //   74: putfield 23	com/google/android/gms/common/internal/q:JM	Z
+    //   74: putfield 23	com/google/android/gms/common/internal/q:LB	Z
     //   77: aload_0
     //   78: monitorexit
     //   79: aload_0
@@ -95,11 +97,11 @@ public abstract class q<TListener>
     //   93	95	92	finally
   }
   
-  public final void hl()
+  public final void hv()
   {
     try
     {
-      this.JL = null;
+      this.LA = null;
       return;
     }
     finally {}
@@ -107,15 +109,13 @@ public abstract class q<TListener>
   
   public final void unregister()
   {
-    hl();
-    synchronized (l.c(this.JK))
+    hv();
+    synchronized (l.c(this.Lz))
     {
-      l.c(this.JK).remove(this);
+      l.c(this.Lz).remove(this);
       return;
     }
   }
-  
-  protected abstract void v(TListener paramTListener);
 }
 
 

@@ -1,25 +1,27 @@
 package com.tencent.xweb.extension.video;
 
-import android.content.ContentResolver;
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.View;
+import android.webkit.WebChromeClient.CustomViewCallback;
+import com.tencent.xweb.w;
 
-public final class a
+public abstract interface a
+  extends w
 {
-  private int BEQ;
-  private ContentResolver aYt;
+  public abstract void OV(boolean paramBoolean);
   
-  public a(Context paramContext)
-  {
-    AppMethodBeat.i(84557);
-    this.BEQ = 255;
-    this.aYt = paramContext.getContentResolver();
-    AppMethodBeat.o(84557);
-  }
+  public abstract void bV(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void hm(Object paramObject);
+  
+  public abstract boolean hn(Object paramObject);
+  
+  public abstract void onHideCustomView();
+  
+  public abstract void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.extension.video.a
  * JD-Core Version:    0.7.0.1
  */

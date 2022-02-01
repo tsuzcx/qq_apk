@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.colornote.data;
 
 import android.os.Bundle;
-import aocl;
-import aocr;
-import awge;
-import awhp;
-import bdnn;
+import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
-import java.util.Arrays;
 
+@KeepClassConstructor
 public class ColorNote
-  extends awge
+  extends Entity
   implements Serializable, Cloneable
 {
   public static final String PARAM_EXTRA = "param_extra";
+  public static final String PARAM_EXTRA_FLAG = "param_extra_flag";
   public static final String PARAM_MAINTITLE = "param_main_title";
   public static final String PARAM_PIC_URL = "param_pic_url";
   public static final String PARAM_RESERVE = "param_reserve";
@@ -28,8 +28,9 @@ public class ColorNote
   public static final int TYPE_HISTORY = 2;
   public static final int TYPE_NORMAL = 0;
   private static final long serialVersionUID = -2145926824830169542L;
-  @awhp
+  @notColumn
   public boolean animate;
+  public long mExtLong;
   public int mExtra = 0;
   public String mMainTitle;
   public String mPicUrl;
@@ -46,7 +47,11 @@ public class ColorNote
   {
     this.mServiceType = -1;
     this.mSubType = "";
-    this.mUniKey = (String.valueOf(this.mServiceType) + this.mSubType + this.mExtra);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.mServiceType));
+    localStringBuilder.append(this.mSubType);
+    localStringBuilder.append(this.mExtra);
+    this.mUniKey = localStringBuilder.toString();
     this.mTime = NetConnInfoCenter.getServerTime();
   }
   
@@ -55,30 +60,52 @@ public class ColorNote
     this.mServiceType = paramBundle.getInt("param_service_type", -1);
     this.mSubType = paramBundle.getString("param_sub_type", "");
     this.mExtra = paramBundle.getInt("param_extra", 1);
-    this.mUniKey = (String.valueOf(this.mServiceType) + this.mSubType + this.mExtra);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.mServiceType));
+    localStringBuilder.append(this.mSubType);
+    localStringBuilder.append(this.mExtra);
+    this.mUniKey = localStringBuilder.toString();
     this.mTime = NetConnInfoCenter.getServerTime();
     this.mMainTitle = paramBundle.getString("param_main_title");
     this.mSubTitle = paramBundle.getString("param_sub_title");
     this.mPicUrl = paramBundle.getString("param_pic_url");
     this.mReserve = paramBundle.getByteArray("param_reserve");
-    if (((this.mServiceType == -1) || (bdnn.a(this.mSubType))) && (QLog.isColorLevel())) {
-      QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
+    this.mExtLong = paramBundle.getLong("param_extra_flag", 0L);
+    if (((this.mServiceType == -1) || (TextUtils.isEmpty(this.mSubType))) && (QLog.isColorLevel()))
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("Illegal param mServiceType = ");
+      paramBundle.append(this.mServiceType);
+      paramBundle.append(", mSubType = ");
+      paramBundle.append(this.mSubType);
+      QLog.d("ColorNote", 2, paramBundle.toString());
     }
   }
   
-  public ColorNote(aocl paramaocl)
+  public ColorNote(ColorNote.Builder paramBuilder)
   {
-    this.mServiceType = paramaocl.jdField_a_of_type_Int;
-    this.mSubType = paramaocl.jdField_a_of_type_JavaLangString;
-    this.mSubTitle = paramaocl.c;
-    this.mMainTitle = paramaocl.jdField_b_of_type_JavaLangString;
-    this.mPicUrl = paramaocl.d;
-    this.mReserve = paramaocl.jdField_a_of_type_ArrayOfByte;
-    this.mExtra = paramaocl.jdField_b_of_type_Int;
-    this.mUniKey = (paramaocl.jdField_a_of_type_Int + paramaocl.jdField_a_of_type_JavaLangString + paramaocl.jdField_b_of_type_Int);
+    this.mServiceType = paramBuilder.a;
+    this.mSubType = paramBuilder.b;
+    this.mSubTitle = paramBuilder.e;
+    this.mMainTitle = paramBuilder.d;
+    this.mPicUrl = paramBuilder.f;
+    this.mReserve = paramBuilder.g;
+    this.mExtra = paramBuilder.c;
+    this.mExtLong = paramBuilder.h;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramBuilder.a);
+    localStringBuilder.append(paramBuilder.b);
+    localStringBuilder.append(paramBuilder.c);
+    this.mUniKey = localStringBuilder.toString();
     this.mTime = NetConnInfoCenter.getServerTime();
-    if (((this.mServiceType == -1) || (bdnn.a(this.mSubType))) && (QLog.isColorLevel())) {
-      QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
+    if (((this.mServiceType == -1) || (TextUtils.isEmpty(this.mSubType))) && (QLog.isColorLevel()))
+    {
+      paramBuilder = new StringBuilder();
+      paramBuilder.append("Illegal param mServiceType = ");
+      paramBuilder.append(this.mServiceType);
+      paramBuilder.append(", mSubType = ");
+      paramBuilder.append(this.mSubType);
+      QLog.d("ColorNote", 2, paramBuilder.toString());
     }
   }
   
@@ -95,11 +122,23 @@ public class ColorNote
     this.mState = paramColorNote.getState();
     this.mExtra = paramColorNote.mExtra;
     this.animate = paramColorNote.animate;
+    this.mExtLong = paramColorNote.mExtLong;
   }
   
   private ColorNote deepCopy()
   {
     return new ColorNote(this);
+  }
+  
+  private static boolean propertyEquals(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1) ^ true ^ TextUtils.isEmpty(paramString2) ^ true)) {
+      return false;
+    }
+    if (paramString1 == null) {
+      return true;
+    }
+    return paramString1.equals(paramString2);
   }
   
   public Object clone()
@@ -110,13 +149,38 @@ public class ColorNote
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof ColorNote)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof ColorNote;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (ColorNote)paramObject;
-    } while ((this.mServiceType != paramObject.getServiceType()) || (!aocr.a(this.mSubType, paramObject.getSubType())) || (!aocr.a(this.mMainTitle, paramObject.getMainTitle())) || (!aocr.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
-    return true;
+    }
+    paramObject = (ColorNote)paramObject;
+    bool1 = bool2;
+    if (this.mServiceType == paramObject.getServiceType())
+    {
+      bool1 = bool2;
+      if (propertyEquals(this.mSubType, paramObject.getSubType()))
+      {
+        bool1 = bool2;
+        if (propertyEquals(this.mMainTitle, paramObject.getMainTitle()))
+        {
+          bool1 = bool2;
+          if (propertyEquals(this.mSubTitle, paramObject.getSubTitle()))
+          {
+            bool1 = bool2;
+            if (this.mExtra == paramObject.mExtra) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public long getExtLong()
+  {
+    return this.mExtLong;
   }
   
   public String getMainTitle()
@@ -161,7 +225,11 @@ public class ColorNote
   
   public String getUniKey()
   {
-    return this.mServiceType + this.mSubType + this.mExtra;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mServiceType);
+    localStringBuilder.append(this.mSubType);
+    localStringBuilder.append(this.mExtra);
+    return localStringBuilder.toString();
   }
   
   public boolean isOpen()
@@ -171,7 +239,7 @@ public class ColorNote
   
   public boolean isTitleAndPicValid()
   {
-    return (!bdnn.a(this.mMainTitle)) && (!bdnn.a(this.mSubTitle)) && (!bdnn.a(this.mPicUrl));
+    return (!TextUtils.isEmpty(this.mMainTitle)) && (!TextUtils.isEmpty(this.mSubTitle)) && (!TextUtils.isEmpty(this.mPicUrl));
   }
   
   public Bundle parseBundle()
@@ -184,26 +252,26 @@ public class ColorNote
     localBundle.putString("param_pic_url", this.mPicUrl);
     localBundle.putByteArray("param_reserve", this.mReserve);
     localBundle.putInt("param_extra", this.mExtra);
+    localBundle.putLong("param_extra_flag", this.mExtLong);
     return localBundle;
   }
   
   public void setState(int paramInt)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("setState [ ");
-      if (paramInt != 2) {
-        break label47;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setState [ ");
+      String str;
+      if (paramInt == 2) {
+        str = "STATE_OPEN ]";
+      } else {
+        str = "STATE_NORMAL ]";
       }
+      localStringBuilder.append(str);
+      QLog.d("ColorNote", 2, localStringBuilder.toString());
     }
-    label47:
-    for (String str = "STATE_OPEN ]";; str = "STATE_NORMAL ]")
-    {
-      QLog.d("ColorNote", 2, str);
-      this.mState = paramInt;
-      return;
-    }
+    this.mState = paramInt;
   }
   
   public void setType(int paramInt)
@@ -213,12 +281,41 @@ public class ColorNote
   
   public String toString()
   {
-    return "ColorNote{mServiceType=" + this.mServiceType + ", mSubType='" + this.mSubType + '\'' + ", mUniKey='" + this.mUniKey + '\'' + ", mTime=" + this.mTime + ", mMainTitle='" + this.mMainTitle + '\'' + ", mSubTitle='" + this.mSubTitle + '\'' + ", mPicUrl='" + this.mPicUrl + '\'' + ", mReserve=" + Arrays.toString(this.mReserve) + ", mState=" + this.mState + ", mExtra" + this.mExtra + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hash: ");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(". ColorNote{mServiceType=");
+    localStringBuilder.append(this.mServiceType);
+    localStringBuilder.append(", mSubType='");
+    localStringBuilder.append(this.mSubType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUniKey='");
+    localStringBuilder.append(this.mUniKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mTime=");
+    localStringBuilder.append(this.mTime);
+    localStringBuilder.append(", mMainTitle='");
+    localStringBuilder.append(this.mMainTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mSubTitle='");
+    localStringBuilder.append(this.mSubTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPicUrl='");
+    localStringBuilder.append(this.mPicUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mState=");
+    localStringBuilder.append(this.mState);
+    localStringBuilder.append(", mExtra");
+    localStringBuilder.append(this.mExtra);
+    localStringBuilder.append(", extLong");
+    localStringBuilder.append(this.mExtLong);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNote
  * JD-Core Version:    0.7.0.1
  */

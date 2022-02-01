@@ -11,7 +11,7 @@ import java.util.Arrays;
 abstract class j
   extends ap
 {
-  private int Lo;
+  private int Nd;
   
   protected j(byte[] paramArrayOfByte)
   {
@@ -36,7 +36,7 @@ abstract class j
       }
       int i = localObject.length;
       com.google.android.gms.common.internal.d.b(bool, 55 + "cert hash data has incorrect length. length=" + i);
-      this.Lo = Arrays.hashCode((byte[])localObject);
+      this.Nd = Arrays.hashCode((byte[])localObject);
       return;
       label172:
       localObject = new StringBuilder((m + 16 - 1) / 16 * 57);
@@ -93,10 +93,10 @@ abstract class j
     try
     {
       paramObject = (ao)paramObject;
-      if (paramObject.hD() != hashCode()) {
+      if (paramObject.hN() != hashCode()) {
         return false;
       }
-      paramObject = paramObject.hC();
+      paramObject = paramObject.hM();
       if (paramObject == null) {
         return false;
       }
@@ -113,19 +113,19 @@ abstract class j
   
   abstract byte[] getBytes();
   
-  public final a hC()
+  public final a hM()
   {
-    return com.google.android.gms.a.d.w(getBytes());
+    return com.google.android.gms.a.d.F(getBytes());
   }
   
-  public final int hD()
+  public final int hN()
   {
     return hashCode();
   }
   
   public int hashCode()
   {
-    return this.Lo;
+    return this.Nd;
   }
 }
 

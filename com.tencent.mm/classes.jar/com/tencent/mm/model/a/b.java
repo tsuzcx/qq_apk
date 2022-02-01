@@ -5,35 +5,35 @@ import java.util.HashMap;
 
 public final class b
 {
-  public String ewh;
-  public String fof;
-  public String fog;
-  public String foh;
-  public HashMap<String, e> foi;
+  public String endTime;
+  public String mhv;
+  public String onX;
+  public String onY;
+  public HashMap<String, e> onZ;
   
   public b()
   {
-    AppMethodBeat.i(118140);
-    this.foi = new HashMap();
-    AppMethodBeat.o(118140);
+    AppMethodBeat.i(153089);
+    this.onZ = new HashMap();
+    AppMethodBeat.o(153089);
   }
   
-  public final e pL(String paramString)
+  public final e Km(String paramString)
   {
-    AppMethodBeat.i(118141);
-    if ((this.foi != null) && (this.foi.containsKey(paramString)))
+    AppMethodBeat.i(153090);
+    if ((this.onZ != null) && (this.onZ.containsKey(paramString)))
     {
-      paramString = (e)this.foi.get(paramString);
-      AppMethodBeat.o(118141);
+      paramString = (e)this.onZ.get(paramString);
+      AppMethodBeat.o(153090);
       return paramString;
     }
-    AppMethodBeat.o(118141);
+    AppMethodBeat.o(153090);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.model.a.b
  * JD-Core Version:    0.7.0.1
  */

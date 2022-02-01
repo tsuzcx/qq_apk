@@ -1,42 +1,23 @@
 package com.tencent.av;
 
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import lfu;
-
 class VideoController$29
   implements Runnable
 {
-  VideoController$29(VideoController paramVideoController) {}
+  VideoController$29(VideoController paramVideoController, String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    long l = AudioHelper.a() / 1000L;
-    Iterator localIterator = VideoController.a(this.this$0).iterator();
-    while (localIterator.hasNext())
-    {
-      lfu locallfu = (lfu)localIterator.next();
-      if ((locallfu.h) || (locallfu.d + 60L > l)) {
-        localArrayList.add(locallfu);
-      }
-    }
-    if (localArrayList.size() != VideoController.a(this.this$0).size())
-    {
-      VideoController.a(this.this$0, localArrayList);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(1L), Long.valueOf(1L), VideoController.a(this.this$0) });
-    }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(VideoController.a(this.this$0), 10000L);
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList call mRemoveUnAttenedMember");
+    VideoController localVideoController = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    localVideoController.a(localStringBuilder.toString(), this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.29
  * JD-Core Version:    0.7.0.1
  */

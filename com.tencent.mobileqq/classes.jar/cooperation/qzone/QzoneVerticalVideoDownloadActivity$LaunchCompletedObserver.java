@@ -8,30 +8,36 @@ import com.tencent.qphone.base.util.QLog;
 public class QzoneVerticalVideoDownloadActivity$LaunchCompletedObserver
   extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private String mPluginID;
+  private String mPluginName;
   
   public QzoneVerticalVideoDownloadActivity$LaunchCompletedObserver(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.mPluginName = paramString1;
+    this.mPluginID = paramString2;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getStringExtra("plugin_apk");
     paramIntent = paramIntent.getStringExtra("plugin_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVerticalVideoDownloadActivity", 1, "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LaunchCompletedObserver.onReceive: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramIntent);
+      QLog.d("QzoneVerticalVideoDownloadActivity", 1, localStringBuilder.toString());
     }
-    if ((this.b.equalsIgnoreCase(paramContext)) && (paramIntent != null)) {
-      this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity.finish();
+    if ((this.mPluginID.equalsIgnoreCase(paramContext)) && (paramIntent != null)) {
+      this.this$0.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneVerticalVideoDownloadActivity.LaunchCompletedObserver
  * JD-Core Version:    0.7.0.1
  */

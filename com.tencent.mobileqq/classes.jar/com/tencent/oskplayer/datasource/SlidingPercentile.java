@@ -49,45 +49,52 @@ public class SlidingPercentile
   public void addSample(int paramInt, float paramFloat)
   {
     ensureSortedByIndex();
+    int i = this.recycledSampleCount;
     Object localObject;
-    if (this.recycledSampleCount > 0)
+    if (i > 0)
     {
       localObject = this.recycledSamples;
-      int i = this.recycledSampleCount - 1;
+      i -= 1;
       this.recycledSampleCount = i;
       localObject = localObject[i];
-      i = this.nextSampleIndex;
-      this.nextSampleIndex = (i + 1);
-      ((SlidingPercentile.Sample)localObject).index = i;
-      ((SlidingPercentile.Sample)localObject).weight = paramInt;
-      ((SlidingPercentile.Sample)localObject).value = paramFloat;
-      this.samples.add(localObject);
-      this.totalWeight += paramInt;
     }
+    else
+    {
+      localObject = new SlidingPercentile.Sample(null);
+    }
+    i = this.nextSampleIndex;
+    this.nextSampleIndex = (i + 1);
+    ((SlidingPercentile.Sample)localObject).index = i;
+    ((SlidingPercentile.Sample)localObject).weight = paramInt;
+    ((SlidingPercentile.Sample)localObject).value = paramFloat;
+    this.samples.add(localObject);
+    this.totalWeight += paramInt;
     for (;;)
     {
-      if (this.totalWeight <= this.maxWeight) {
-        return;
+      paramInt = this.totalWeight;
+      i = this.maxWeight;
+      if (paramInt <= i) {
+        break;
       }
-      paramInt = this.totalWeight - this.maxWeight;
+      paramInt -= i;
       localObject = (SlidingPercentile.Sample)this.samples.get(0);
       if (((SlidingPercentile.Sample)localObject).weight <= paramInt)
       {
         this.totalWeight -= ((SlidingPercentile.Sample)localObject).weight;
         this.samples.remove(0);
-        if (this.recycledSampleCount >= 5) {
-          continue;
-        }
-        SlidingPercentile.Sample[] arrayOfSample = this.recycledSamples;
         paramInt = this.recycledSampleCount;
-        this.recycledSampleCount = (paramInt + 1);
-        arrayOfSample[paramInt] = localObject;
-        continue;
-        localObject = new SlidingPercentile.Sample(null);
-        break;
+        if (paramInt < 5)
+        {
+          SlidingPercentile.Sample[] arrayOfSample = this.recycledSamples;
+          this.recycledSampleCount = (paramInt + 1);
+          arrayOfSample[paramInt] = localObject;
+        }
       }
-      ((SlidingPercentile.Sample)localObject).weight -= paramInt;
-      this.totalWeight -= paramInt;
+      else
+      {
+        ((SlidingPercentile.Sample)localObject).weight -= paramInt;
+        this.totalWeight -= paramInt;
+      }
     }
   }
   
@@ -99,22 +106,23 @@ public class SlidingPercentile
     int j = 0;
     while (i < this.samples.size())
     {
-      SlidingPercentile.Sample localSample = (SlidingPercentile.Sample)this.samples.get(i);
-      j += localSample.weight;
+      localObject = (SlidingPercentile.Sample)this.samples.get(i);
+      j += ((SlidingPercentile.Sample)localObject).weight;
       if (j >= paramFloat * f) {
-        return localSample.value;
+        return ((SlidingPercentile.Sample)localObject).value;
       }
       i += 1;
     }
     if (this.samples.isEmpty()) {
       return (0.0F / 0.0F);
     }
-    return ((SlidingPercentile.Sample)this.samples.get(this.samples.size() - 1)).value;
+    Object localObject = this.samples;
+    return ((SlidingPercentile.Sample)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1)).value;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.SlidingPercentile
  * JD-Core Version:    0.7.0.1
  */

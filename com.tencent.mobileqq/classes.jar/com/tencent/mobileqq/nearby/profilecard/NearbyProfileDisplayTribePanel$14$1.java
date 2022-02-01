@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import auub;
-import auuc;
-import avmf;
-import avml;
+import com.tencent.mobileqq.nearby.FaceScoreConfig;
+import com.tencent.mobileqq.nearby.api.FaceScoreUtils;
 
-public class NearbyProfileDisplayTribePanel$14$1
+class NearbyProfileDisplayTribePanel$14$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$14$1(avml paramavml, auub paramauub) {}
+  NearbyProfileDisplayTribePanel$14$1(NearbyProfileDisplayTribePanel.14 param14, Object paramObject) {}
   
   public void run()
   {
-    auuc.a(this.jdField_a_of_type_Avml.a.a.getAppInterface(), this.jdField_a_of_type_Auub);
+    FaceScoreUtils.a(this.b.a.e.getAppInterface(), (FaceScoreConfig)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1
  * JD-Core Version:    0.7.0.1
  */

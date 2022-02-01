@@ -121,7 +121,7 @@ public class PubAccountAssistantSettingAdapter
       paramViewGroup = new bkz();
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131230941));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131232569));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131232568));
       paramView.setTag(paramViewGroup);
       PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localPublicAccountInfo.getUin(), true);

@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.open.base.http.HttpAsyncTask;
-import gxh;
+import gxg;
 import java.io.IOException;
 import java.util.HashMap;
 import org.json.JSONException;
@@ -91,7 +91,7 @@ public class HttpWebCgiAsyncTask
     if (isCancelled()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new gxh(this, paramJSONObject));
+    this.jdField_a_of_type_AndroidOsHandler.post(new gxg(this, paramJSONObject));
   }
 }
 

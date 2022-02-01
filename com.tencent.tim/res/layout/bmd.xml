@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/fre" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.proxy.feedcomponent.widget.FeedDate android:textSize="16.0sp" android:textColor="@color/a_j" android:gravity="center" android:layout_gravity="center" android:id="@id/jlb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/a_j" android:id="@id/fob" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.album.business.photolist.ui.listitem.BigPhotoView android:id="@id/hak" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" />
+        <View android:id="@id/a8k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</LinearLayout>

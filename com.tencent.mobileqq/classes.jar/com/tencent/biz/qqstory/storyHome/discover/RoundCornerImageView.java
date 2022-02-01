@@ -16,12 +16,12 @@ import com.tencent.biz.qqstory.view.PressDarkImageView;
 public class RoundCornerImageView
   extends PressDarkImageView
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private boolean jdField_a_of_type_Boolean;
-  private int b = Color.parseColor("#FFD5D5D5");
-  private int c;
-  private int d;
+  private Path e = new Path();
+  private Paint f = new Paint();
+  private int g = Color.parseColor("#FFD5D5D5");
+  private int h;
+  private boolean i = false;
+  private int j = 0;
   
   public RoundCornerImageView(Context paramContext)
   {
@@ -36,80 +36,82 @@ public class RoundCornerImageView
   public RoundCornerImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    if (Build.VERSION.SDK_INT >= 16) {
+    this.f.setColor(this.g);
+    this.f.setStyle(Paint.Style.STROKE);
+    this.f.setAntiAlias(true);
+    this.f.setFilterBitmap(true);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
       super.setLayerType(2, null);
-    }
-    while (Build.VERSION.SDK_INT < 14) {
       return;
     }
-    super.setLayerType(1, null);
+    if (Build.VERSION.SDK_INT >= 14) {
+      super.setLayerType(1, null);
+    }
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    if (this.e == null) {
+      this.e = new Path();
     }
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    int i = getWidth() - getPaddingLeft() - getPaddingRight();
-    int j = getHeight();
-    int k = getPaddingTop();
-    int m = getPaddingBottom();
-    RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + i, j - k - m + getPaddingTop());
-    if (this.d > 0) {
-      i = this.d;
+    this.e.reset();
+    int m = getWidth() - getPaddingLeft() - getPaddingRight();
+    int k = getHeight();
+    int n = getPaddingTop();
+    int i1 = getPaddingBottom();
+    RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + m, getPaddingTop() + (k - n - i1));
+    k = this.j;
+    if (k <= 0) {
+      k = m / 30;
     }
-    for (;;)
+    Path localPath = this.e;
+    float f1 = k;
+    localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CCW);
+    this.e.setFillType(Path.FillType.EVEN_ODD);
+    paramCanvas.clipPath(this.e);
+    super.draw(paramCanvas);
+    if (this.i)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
-      this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      super.draw(paramCanvas);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
-        if (this.c != 0) {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-        }
-        this.jdField_a_of_type_AndroidGraphicsPath.reset();
-        this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
-        paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.f.setColor(this.g);
+      k = this.h;
+      if (k != 0) {
+        this.f.setStrokeWidth(k);
       }
-      return;
-      i /= 30;
+      this.e.reset();
+      this.e.addRoundRect(localRectF, f1, f1, Path.Direction.CCW);
+      paramCanvas.drawRoundRect(localRectF, f1, f1, this.f);
     }
   }
   
   public void setBorder(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void setBorderWidth(int paramInt)
   {
-    this.c = paramInt;
+    this.h = paramInt;
   }
   
   public void setColor(int paramInt)
   {
-    this.b = paramInt;
+    this.g = paramInt;
   }
   
   public void setCorner(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("should not be less than 0");
+    if (paramInt > 0)
+    {
+      this.j = paramInt;
+      return;
     }
-    this.d = paramInt;
+    throw new IllegalArgumentException("should not be less than 0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

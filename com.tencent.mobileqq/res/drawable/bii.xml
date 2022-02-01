@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip android:gravity="bottom" android:drawable="@drawable/dsc" android:clipOrientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/bil" />
+    <item android:state_pressed="false" android:drawable="@drawable/bij" />
+</selector>

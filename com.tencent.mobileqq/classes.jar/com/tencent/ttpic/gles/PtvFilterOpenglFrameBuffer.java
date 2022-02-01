@@ -19,8 +19,14 @@ public class PtvFilterOpenglFrameBuffer
   public static void checkErrorCode(String paramString)
   {
     int i = GLES20.glGetError();
-    if (i != 0) {
-      GLLogMsg("checkErrorCode: errFunc =" + paramString + "err=" + i);
+    if (i != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkErrorCode: errFunc =");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("err=");
+      localStringBuilder.append(i);
+      GLLogMsg(localStringBuilder.toString());
     }
   }
   
@@ -63,7 +69,10 @@ public class PtvFilterOpenglFrameBuffer
     paramInt = GLES20.glCheckFramebufferStatus(36160);
     if (paramInt != 36053)
     {
-      checkErrorCode("glCheckFramebufferStatus: status=" + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("glCheckFramebufferStatus: status=");
+      localStringBuilder.append(paramInt);
+      checkErrorCode(localStringBuilder.toString());
       return false;
     }
     makeCurrentFrameBuffer();
@@ -94,8 +103,16 @@ public class PtvFilterOpenglFrameBuffer
   {
     GLES20.glBindFramebuffer(36160, this.mFrameBufferId[0]);
     GLES20.glGetIntegerv(36006, this.mStatusCheck, 0);
-    GLLogMsg("[makeCurrentFrameBuffer]GL_FRAMEBUFFER_BINDING: mStatusCheck=" + this.mStatusCheck[0] + " mFrameBufferId[0]=" + this.mFrameBufferId[0]);
-    checkErrorCode("glBindFramebuffer: [makeCurrentFrameBuffer]mFrameBufferId=" + this.mFrameBufferId[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[makeCurrentFrameBuffer]GL_FRAMEBUFFER_BINDING: mStatusCheck=");
+    localStringBuilder.append(this.mStatusCheck[0]);
+    localStringBuilder.append(" mFrameBufferId[0]=");
+    localStringBuilder.append(this.mFrameBufferId[0]);
+    GLLogMsg(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glBindFramebuffer: [makeCurrentFrameBuffer]mFrameBufferId=");
+    localStringBuilder.append(this.mFrameBufferId[0]);
+    checkErrorCode(localStringBuilder.toString());
   }
   
   public void release()
@@ -117,13 +134,16 @@ public class PtvFilterOpenglFrameBuffer
   {
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glGetIntegerv(36006, this.mStatusCheck, 0);
-    GLLogMsg("[restoreToWindFrameBuffer]GL_FRAMEBUFFER_BINDING: mStatusCheck=" + this.mStatusCheck[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[restoreToWindFrameBuffer]GL_FRAMEBUFFER_BINDING: mStatusCheck=");
+    localStringBuilder.append(this.mStatusCheck[0]);
+    GLLogMsg(localStringBuilder.toString());
     checkErrorCode("glBindFramebuffer: [restoreToWindFrameBuffer]mFrameBufferId=0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.gles.PtvFilterOpenglFrameBuffer
  * JD-Core Version:    0.7.0.1
  */

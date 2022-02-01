@@ -2,103 +2,147 @@ package com.tencent.tinker.loader.shareutil;
 
 import android.content.Intent;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ShareIntentUtil
 {
-  public static void a(Intent paramIntent, long paramLong)
-  {
-    paramIntent.putExtra("intent_patch_cost_time", paramLong);
-  }
+  public static final String INTENT_IS_PROTECTED_APP = "intent_is_protected_app";
+  public static final String INTENT_PATCH_COST_TIME = "intent_patch_cost_time";
+  public static final String INTENT_PATCH_DEXES_PATH = "intent_patch_dexes_path";
+  public static final String INTENT_PATCH_EXCEPTION = "intent_patch_exception";
+  public static final String INTENT_PATCH_INTERPRET_EXCEPTION = "intent_patch_interpret_exception";
+  public static final String INTENT_PATCH_LIBS_PATH = "intent_patch_libs_path";
+  public static final String INTENT_PATCH_MISMATCH_DEX_PATH = "intent_patch_mismatch_dex_path";
+  public static final String INTENT_PATCH_MISMATCH_LIB_PATH = "intent_patch_mismatch_lib_path";
+  public static final String INTENT_PATCH_MISSING_DEX_PATH = "intent_patch_missing_dex_path";
+  public static final String INTENT_PATCH_MISSING_LIB_PATH = "intent_patch_missing_lib_path";
+  public static final String INTENT_PATCH_NEW_VERSION = "intent_patch_new_version";
+  public static final String INTENT_PATCH_OAT_DIR = "intent_patch_oat_dir";
+  public static final String INTENT_PATCH_OLD_VERSION = "intent_patch_old_version";
+  public static final String INTENT_PATCH_PACKAGE_CONFIG = "intent_patch_package_config";
+  public static final String INTENT_PATCH_PACKAGE_PATCH_CHECK = "intent_patch_package_patch_check";
+  public static final String INTENT_PATCH_SYSTEM_OTA = "intent_patch_system_ota";
+  public static final String INTENT_RETURN_CODE = "intent_return_code";
+  private static final String TAG = "ShareIntentUtil";
   
-  public static void a(Intent paramIntent, ClassLoader paramClassLoader)
+  public static void fixIntentClassLoader(Intent paramIntent, ClassLoader paramClassLoader)
   {
     try
     {
       paramIntent.setExtrasClassLoader(paramClassLoader);
       return;
     }
-    catch (Throwable paramIntent) {}
+    finally {}
   }
   
-  public static void b(Intent paramIntent, int paramInt)
+  public static boolean getBooleanExtra(Intent paramIntent, String paramString, boolean paramBoolean)
   {
-    paramIntent.putExtra("intent_return_code", paramInt);
+    if (paramIntent == null) {
+      return paramBoolean;
+    }
+    try
+    {
+      boolean bool = paramIntent.getBooleanExtra(paramString, paramBoolean);
+      return bool;
+    }
+    catch (Exception paramIntent)
+    {
+      ShareTinkerLog.e("ShareIntentUtil", "getBooleanExtra exception:" + paramIntent.getMessage(), new Object[0]);
+    }
+    return paramBoolean;
   }
   
-  public static int bc(Intent paramIntent)
+  public static int getIntExtra(Intent paramIntent, String paramString, int paramInt)
   {
-    return v(paramIntent, "intent_return_code");
+    if (paramIntent == null) {
+      return paramInt;
+    }
+    try
+    {
+      int i = paramIntent.getIntExtra(paramString, paramInt);
+      return i;
+    }
+    catch (Exception paramIntent)
+    {
+      ShareTinkerLog.e("ShareIntentUtil", "getIntExtra exception:" + paramIntent.getMessage(), new Object[0]);
+    }
+    return paramInt;
   }
   
-  public static long bd(Intent paramIntent)
+  public static Throwable getIntentInterpretException(Intent paramIntent)
+  {
+    paramIntent = getSerializableExtra(paramIntent, "intent_patch_interpret_exception");
+    if (paramIntent != null) {
+      return (Throwable)paramIntent;
+    }
+    return null;
+  }
+  
+  public static HashMap<String, String> getIntentPackageConfig(Intent paramIntent)
+  {
+    paramIntent = getSerializableExtra(paramIntent, "intent_patch_package_config");
+    if (paramIntent != null) {
+      return (HashMap)paramIntent;
+    }
+    return null;
+  }
+  
+  public static long getIntentPatchCostTime(Intent paramIntent)
   {
     return paramIntent.getLongExtra("intent_patch_cost_time", 0L);
   }
   
-  public static Throwable be(Intent paramIntent)
+  public static HashMap<String, String> getIntentPatchDexPaths(Intent paramIntent)
   {
-    paramIntent = u(paramIntent, "intent_patch_exception");
+    paramIntent = getSerializableExtra(paramIntent, "intent_patch_dexes_path");
+    if (paramIntent != null) {
+      return (HashMap)paramIntent;
+    }
+    return null;
+  }
+  
+  public static Throwable getIntentPatchException(Intent paramIntent)
+  {
+    paramIntent = getSerializableExtra(paramIntent, "intent_patch_exception");
     if (paramIntent != null) {
       return (Throwable)paramIntent;
     }
     return null;
   }
   
-  public static Throwable bf(Intent paramIntent)
+  public static HashMap<String, String> getIntentPatchLibsPaths(Intent paramIntent)
   {
-    paramIntent = u(paramIntent, "intent_patch_interpret_exception");
-    if (paramIntent != null) {
-      return (Throwable)paramIntent;
-    }
-    return null;
-  }
-  
-  public static HashMap<String, String> bg(Intent paramIntent)
-  {
-    paramIntent = u(paramIntent, "intent_patch_dexes_path");
+    paramIntent = getSerializableExtra(paramIntent, "intent_patch_libs_path");
     if (paramIntent != null) {
       return (HashMap)paramIntent;
     }
     return null;
   }
   
-  public static HashMap<String, String> bh(Intent paramIntent)
+  public static int getIntentReturnCode(Intent paramIntent)
   {
-    paramIntent = u(paramIntent, "intent_patch_libs_path");
-    if (paramIntent != null) {
-      return (HashMap)paramIntent;
-    }
-    return null;
+    return getIntExtra(paramIntent, "intent_return_code", -10000);
   }
   
-  public static HashMap<String, String> bi(Intent paramIntent)
-  {
-    paramIntent = u(paramIntent, "intent_patch_package_config");
-    if (paramIntent != null) {
-      return (HashMap)paramIntent;
-    }
-    return null;
-  }
-  
-  public static String n(Intent paramIntent, String paramString)
+  public static long getLongExtra(Intent paramIntent, String paramString, long paramLong)
   {
     if (paramIntent == null) {
-      return null;
+      return paramLong;
     }
     try
     {
-      paramIntent = paramIntent.getStringExtra(paramString);
-      return paramIntent;
+      long l = paramIntent.getLongExtra(paramString, paramLong);
+      return l;
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getStringExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getIntExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
-    return null;
+    return paramLong;
   }
   
-  public static Serializable u(Intent paramIntent, String paramString)
+  public static Serializable getSerializableExtra(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
       return null;
@@ -110,48 +154,58 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getSerializableExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getSerializableExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return null;
   }
   
-  private static int v(Intent paramIntent, String paramString)
+  public static ArrayList<String> getStringArrayListExtra(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
-      return -10000;
+      return null;
     }
     try
     {
-      int i = paramIntent.getIntExtra(paramString, -10000);
-      return i;
+      paramIntent = paramIntent.getStringArrayListExtra(paramString);
+      return paramIntent;
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getIntExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getStringExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
-    return -10000;
+    return null;
   }
   
-  public static boolean w(Intent paramIntent, String paramString)
+  public static String getStringExtra(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
-      return false;
+      return null;
     }
     try
     {
-      boolean bool = paramIntent.getBooleanExtra(paramString, false);
-      return bool;
+      paramIntent = paramIntent.getStringExtra(paramString);
+      return paramIntent;
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getBooleanExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getStringExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
-    return false;
+    return null;
+  }
+  
+  public static void setIntentPatchCostTime(Intent paramIntent, long paramLong)
+  {
+    paramIntent.putExtra("intent_patch_cost_time", paramLong);
+  }
+  
+  public static void setIntentReturnCode(Intent paramIntent, int paramInt)
+  {
+    paramIntent.putExtra("intent_return_code", paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareIntentUtil
  * JD-Core Version:    0.7.0.1
  */

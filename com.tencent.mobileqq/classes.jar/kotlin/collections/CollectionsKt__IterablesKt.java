@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Iterable", "", "T", "iterator", "Lkotlin/Function0;", "", "collectionSizeOrDefault", "", "default", "collectionSizeOrNull", "(Ljava/lang/Iterable;)Ljava/lang/Integer;", "convertToSetForSetOperation", "", "convertToSetForSetOperationWith", "source", "flatten", "", "safeToConvertToSet", "", "safeToConvertToSet$CollectionsKt__IterablesKt", "unzip", "Lkotlin/Pair;", "R", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt__IterablesKt
+class CollectionsKt__IterablesKt
   extends CollectionsKt__CollectionsKt
 {
   @InlineOnly
@@ -55,10 +55,11 @@ public class CollectionsKt__IterablesKt
     }
     if ((paramIterable instanceof Collection))
     {
-      if (safeToConvertToSet$CollectionsKt__IterablesKt((Collection)paramIterable)) {
+      Collection localCollection = (Collection)paramIterable;
+      if (safeToConvertToSet$CollectionsKt__IterablesKt(localCollection)) {
         return (Collection)CollectionsKt.toHashSet(paramIterable);
       }
-      return (Collection)paramIterable;
+      return localCollection;
     }
     return (Collection)CollectionsKt.toHashSet(paramIterable);
   }
@@ -76,10 +77,11 @@ public class CollectionsKt__IterablesKt
       if (((paramIterable2 instanceof Collection)) && (((Collection)paramIterable2).size() < 2)) {
         return (Collection)paramIterable1;
       }
-      if (safeToConvertToSet$CollectionsKt__IterablesKt((Collection)paramIterable1)) {}
-      for (paramIterable1 = (Collection)CollectionsKt.toHashSet(paramIterable1);; paramIterable1 = (Collection)paramIterable1) {
-        return paramIterable1;
+      paramIterable2 = (Collection)paramIterable1;
+      if (safeToConvertToSet$CollectionsKt__IterablesKt(paramIterable2)) {
+        return (Collection)CollectionsKt.toHashSet(paramIterable1);
       }
+      return paramIterable2;
     }
     return (Collection)CollectionsKt.toHashSet(paramIterable1);
   }
@@ -122,7 +124,7 @@ public class CollectionsKt__IterablesKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__IterablesKt
  * JD-Core Version:    0.7.0.1
  */

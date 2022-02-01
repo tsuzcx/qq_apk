@@ -1,54 +1,54 @@
 package com.tencent.mobileqq.richstatus;
 
-import alzl;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import atgv;
-import awgf;
-import awgg;
-import ayea;
-import ayeb;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
+import com.tencent.biz.pubaccount.api.IPublicAccountProxy;
+import com.tencent.biz.pubaccount.api.IPublicAccountServlet;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import nrt;
-import nrz;
 
 public class StatusJsHandler
-  extends atgv
+  extends JsBridge.JsHandler
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public AccountDetail a;
-  public String a;
-  public WeakReference<BaseActivity> a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ayea(this);
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new ayeb(this);
-  boolean jdField_b_of_type_Boolean = false;
+  WeakReference<BaseActivity> a;
+  WeakReference<WebView> b;
   public String c;
+  IPublicAccountDetail d = null;
+  boolean e = false;
+  boolean f = false;
+  String g;
+  String h;
+  private Handler i;
+  private BusinessObserver j = new StatusJsHandler.3(this);
+  private BusinessObserver k = new StatusJsHandler.4(this);
   
   public StatusJsHandler(BaseActivity paramBaseActivity, WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramBaseActivity);
+    this.b = new WeakReference(paramWebView);
+    this.c = paramString;
   }
   
   private void a(BaseActivity paramBaseActivity, String paramString)
@@ -56,17 +56,17 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nrz.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.5,3,4555");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.8.17,3,5770");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
       localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(paramString));
       localNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-      localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+      localNewIntent.setObserver(this.j);
       paramBaseActivity.app.startServlet(localNewIntent);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest exit");
@@ -75,8 +75,10 @@ public class StatusJsHandler
     }
     catch (Exception paramBaseActivity)
     {
-      a(this.c, "false");
+      label138:
+      break label138;
     }
+    a(this.h, "false");
   }
   
   private void b(BaseActivity paramBaseActivity, String paramString)
@@ -84,7 +86,7 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "follow");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nrz.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
     localNewIntent.putExtra("cmd", "follow");
     mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
     try
@@ -92,9 +94,9 @@ public class StatusJsHandler
       localFollowRequest.uin.set((int)Long.parseLong(paramString));
       localFollowRequest.ext.set("0");
       localNewIntent.putExtra("data", localFollowRequest.toByteArray());
-      localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
+      localNewIntent.setObserver(this.k);
       paramBaseActivity.app.startServlet(localNewIntent);
-      nrt.a(paramBaseActivity.app, paramString, 0);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportFollowEvent(paramBaseActivity.app, paramString, 0);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "follow exit");
       }
@@ -102,71 +104,81 @@ public class StatusJsHandler
     }
     catch (Exception paramBaseActivity)
     {
-      a(this.c, "false");
+      label139:
+      break label139;
+    }
+    a(this.h, "false");
+  }
+  
+  void a(int paramInt)
+  {
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
+    if (localBaseActivity != null)
+    {
+      if (localBaseActivity.isFinishing()) {
+        return;
+      }
+      QQToast.makeText(localBaseActivity, paramInt, 0).show(localBaseActivity.getTitleBarHeight());
     }
   }
   
-  public void a(int paramInt)
+  void a(BaseActivity paramBaseActivity, IPublicAccountDetail paramIPublicAccountDetail)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
-    QQToast.a(localBaseActivity, paramInt, 0).b(localBaseActivity.getTitleBarHeight());
-  }
-  
-  public void a(BaseActivity paramBaseActivity, AccountDetail paramAccountDetail)
-  {
-    awgf localawgf = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.getId() != -1L))
+    EntityManager localEntityManager = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
+    IPublicAccountDetail localIPublicAccountDetail = this.d;
+    if ((localIPublicAccountDetail != null) && (localIPublicAccountDetail.getId() != -1L))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.richstatus.", 2, paramAccountDetail.name);
+        QLog.d("Q.richstatus.", 2, paramIPublicAccountDetail.getName());
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.clone(paramAccountDetail);
-      if (!localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
-        localawgf.a(AccountDetail.class);
+      this.d.clone(paramIPublicAccountDetail);
+      if (!localEntityManager.update(this.d.getEntity())) {
+        localEntityManager.drop(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class));
       }
     }
-    for (;;)
+    else
     {
-      localawgf.a();
-      paramBaseActivity = (alzl)paramBaseActivity.app.getManager(56);
-      if (paramBaseActivity != null) {
-        paramBaseActivity.a(paramAccountDetail);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = paramAccountDetail;
-      localawgf.a(paramAccountDetail);
+      this.d = paramIPublicAccountDetail;
+      localEntityManager.persist(paramIPublicAccountDetail.getEntity());
+    }
+    localEntityManager.close();
+    paramBaseActivity = (IPublicAccountDataManager)paramBaseActivity.app.getRuntimeService(IPublicAccountDataManager.class, "all");
+    if (paramBaseActivity != null) {
+      paramBaseActivity.saveAccountDetailInfoCache(paramIPublicAccountDetail);
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  void a(String paramString1, String paramString2)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((paramString1 == null) || (localBaseActivity == null) || (localBaseActivity.isFinishing()) || (localWebView == null)) {
-      return;
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
+    WebView localWebView = (WebView)this.b.get();
+    if ((paramString1 != null) && (localBaseActivity != null) && (!localBaseActivity.isFinishing()))
+    {
+      if (localWebView == null) {
+        return;
+      }
+      if (this.i == null) {
+        this.i = new Handler(Looper.getMainLooper());
+      }
+      this.i.post(new StatusJsHandler.2(this, paramString1, paramString2, localWebView));
     }
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new StatusJsHandler.2(this, paramString1, paramString2, localWebView));
   }
   
   public void followAccount(String paramString1, String paramString2)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localBaseActivity == null) {}
-    while (this.jdField_a_of_type_Boolean) {
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
+    if (localBaseActivity == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.c = paramString2;
+    if (this.e) {
+      return;
+    }
+    this.e = true;
+    this.h = paramString2;
     paramString2 = localBaseActivity.app.getEntityManagerFactory().createEntityManager();
-    AccountDetail localAccountDetail = (AccountDetail)paramString2.a(AccountDetail.class, paramString1);
-    paramString2.a();
-    if (localAccountDetail != null)
+    IPublicAccountDetail localIPublicAccountDetail = (IPublicAccountDetail)paramString2.find(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class), paramString1);
+    paramString2.close();
+    if (localIPublicAccountDetail != null)
     {
       b(localBaseActivity, paramString1);
       return;
@@ -176,29 +188,35 @@ public class StatusJsHandler
   
   public void getLocation(String paramString)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localBaseActivity == null) {}
-    while (this.jdField_b_of_type_Boolean) {
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
+    if (localBaseActivity == null) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    ThreadManager.post(new StatusJsHandler.1(this, (LocationManager)localBaseActivity.getSystemService("location")), 5, null, false);
+    if (this.f) {
+      return;
+    }
+    this.f = true;
+    this.g = paramString;
+    paramString = (LocationManager)localBaseActivity.getSystemService("location");
+    if (paramString == null) {
+      return;
+    }
+    ThreadManager.post(new StatusJsHandler.1(this, paramString), 5, null, false);
   }
   
   public boolean hasFollowAccount(String paramString)
   {
-    Object localObject = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (BaseActivity)this.a.get();
     if (localObject == null) {
       return false;
     }
-    localObject = (alzl)((BaseActivity)localObject).app.getManager(56);
-    return (localObject != null) && (((alzl)localObject).b(paramString) != null);
+    localObject = (IPublicAccountDataManager)((BaseActivity)localObject).app.getRuntimeService(IPublicAccountDataManager.class, "all");
+    return (localObject != null) && ((PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfo(paramString) != null);
   }
   
   public void setData(String paramString1, String paramString2)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
     if (localBaseActivity == null) {
       return;
     }
@@ -213,7 +231,7 @@ public class StatusJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler
  * JD-Core Version:    0.7.0.1
  */

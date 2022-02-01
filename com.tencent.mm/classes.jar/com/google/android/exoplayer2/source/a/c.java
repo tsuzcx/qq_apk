@@ -9,7 +9,7 @@ import java.util.Arrays;
 public abstract class c
   extends a
 {
-  private volatile boolean aPM;
+  private volatile boolean cZB;
   public byte[] data;
   private int limit;
   
@@ -19,34 +19,32 @@ public abstract class c
     this.data = paramArrayOfByte;
   }
   
-  protected abstract void d(byte[] paramArrayOfByte, int paramInt);
-  
-  public final void pf()
+  public final void Tb()
   {
-    this.aPM = true;
+    this.cZB = true;
   }
   
-  public final boolean pg()
+  public final boolean Tc()
   {
-    return this.aPM;
+    return this.cZB;
   }
   
-  public final void ph()
+  public final void Td()
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        this.aBo.a(this.aQI);
+        this.cLk.a(this.daF);
         this.limit = 0;
-        if ((i == -1) || (this.aPM)) {
+        if ((i == -1) || (this.cZB)) {
           break;
         }
         if (this.data == null)
         {
           this.data = new byte[16384];
-          int j = this.aBo.read(this.data, this.limit, 16384);
+          int j = this.cLk.read(this.data, this.limit, 16384);
           i = j;
           if (j == -1) {
             continue;
@@ -61,20 +59,22 @@ public abstract class c
       }
       finally
       {
-        x.a(this.aBo);
+        x.a(this.cLk);
       }
       this.data = Arrays.copyOf(this.data, this.data.length + 16384);
     }
-    if (!this.aPM) {
-      d(this.data, this.limit);
+    if (!this.cZB) {
+      f(this.data, this.limit);
     }
-    x.a(this.aBo);
+    x.a(this.cLk);
   }
   
-  public final long pt()
+  public final long To()
   {
     return this.limit;
   }
+  
+  protected abstract void f(byte[] paramArrayOfByte, int paramInt);
 }
 
 

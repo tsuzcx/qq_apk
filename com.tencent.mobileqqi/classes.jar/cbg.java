@@ -1,38 +1,84 @@
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.database.Cursor;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class cbg
-  extends SOSOMapLBSApiListener
+  implements Handler.Callback
 {
-  public cbg(ChatForEnterpriseActivity paramChatForEnterpriseActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
+  public cbg(ChatHistory paramChatHistory) {}
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "onLocationUpdate(): BEGIN");
-    }
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    if (paramSOSOMapLBSApiResult.Address == null) {}
-    for (String str = "";; str = paramSOSOMapLBSApiResult.Address)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "onLocationUpdate(): locResult=" + paramSOSOMapLBSApiResult + ", latitude=" + paramSOSOMapLBSApiResult.Latitude + ", longitude=" + paramSOSOMapLBSApiResult.Longitude + ", address=" + str);
-      }
-      ((EnterpriseQQHandler)this.a.b.a(20)).a(this.a.a.a, paramSOSOMapLBSApiResult.Latitude, paramSOSOMapLBSApiResult.Longitude, str);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "onLocationUpdate(): END");
-      }
-      return;
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return true;
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        } while (!NetworkUtil.e(BaseApplication.getContext()));
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.a.b.setVisibility(8);
+        return true;
+        this.a.jdField_a_of_type_AndroidAppDialog = new Dialog(this.a, 2131624405);
+        this.a.jdField_a_of_type_AndroidAppDialog.setContentView(2130903942);
+        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131231029)).setText(paramMessage.obj.toString());
+        this.a.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new cbh(this));
+        this.a.jdField_a_of_type_AndroidAppDialog.show();
+        return true;
+        this.a.g();
+        return true;
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        this.a.d();
+        return true;
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        this.a.a(2130837949, this.a.getString(2131563005));
+        return true;
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        this.a.a(2130837949, this.a.getString(2131562486));
+        return true;
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+        }
+        this.a.a(2130837949, this.a.getString(2131561770));
+        return true;
+        this.a.a(2130837949, this.a.getString(2131562085));
+        return true;
+      } while (paramMessage.obj == null);
+      paramMessage = (Cursor)paramMessage.obj;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter != null)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.getCursor() != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.getCursor().deactivate();
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.changeCursor(paramMessage);
+      }
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a < 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a >= 8));
+    ChatHistory.a(this.a).setSelection(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a + ChatHistory.a(this.a).getHeaderViewsCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a = -1;
+    return true;
   }
 }
 

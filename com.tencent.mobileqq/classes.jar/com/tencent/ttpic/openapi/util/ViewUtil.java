@@ -15,8 +15,8 @@ public class ViewUtil
   public void clear()
   {
     this.isInited = false;
-    this.mCopyFilter.ClearGLSL();
-    this.mViewFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
+    this.mViewFilter.clearGLSL();
     this.copyFrame.unlock();
     this.copyFrame.clear();
     this.viewFrame.unlock();
@@ -43,7 +43,7 @@ public class ViewUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.ViewUtil
  * JD-Core Version:    0.7.0.1
  */

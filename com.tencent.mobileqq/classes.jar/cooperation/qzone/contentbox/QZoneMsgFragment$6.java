@@ -1,7 +1,8 @@
 package cooperation.qzone.contentbox;
 
+import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import bdoo;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 
@@ -12,20 +13,22 @@ class QZoneMsgFragment$6
   
   public void run()
   {
-    if ((this.a != null) && (this.a.size() > 0)) {}
-    for (int i = 44;; i = 0)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)QZoneMsgFragment.a(this.this$0).getLayoutParams();
-      localLayoutParams.bottomMargin = bdoo.b(i);
-      QZoneMsgFragment.a(this.this$0).setLayoutParams(localLayoutParams);
-      QZoneMsgFragment.a(this.this$0).a(this.a);
-      return;
+    Object localObject = this.val$datas;
+    int i;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+      i = 44;
+    } else {
+      i = 0;
     }
+    localObject = (RelativeLayout.LayoutParams)QZoneMsgFragment.access$500(this.this$0).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.dpToPx(i);
+    QZoneMsgFragment.access$500(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    QZoneMsgFragment.access$600(this.this$0).updateData(this.val$datas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.6
  * JD-Core Version:    0.7.0.1
  */

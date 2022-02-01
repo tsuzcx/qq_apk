@@ -1,135 +1,87 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.xweb.ao;
 
-final class s
+public final class s
 {
-  static Pattern sAddressPattern;
-  String mAuthInfo;
-  String mHost;
-  String mPath;
-  int mPort;
-  String mScheme;
+  private static String Yui = null;
+  private static final String[] Yuj = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
   
-  static
+  public static void ik(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(80456);
-    sAddressPattern = Pattern.compile("(?:(http|https|file)\\:\\/\\/)?(?:([-A-Za-z0-9$_.+!*'(),;?&=]+(?:\\:[-A-Za-z0-9$_.+!*'(),;?&=]+)?)@)?([a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_-][a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_\\.-]*|\\[[0-9a-fA-F:\\.]+\\])?(?:\\:([0-9]*))?(\\/?[^#]*)?.*", 2);
-    AppMethodBeat.o(80456);
+    AppMethodBeat.i(133688);
+    if ((paramInt1 <= 0) || (paramInt1 > 7))
+    {
+      Log.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(133688);
+      return;
+    }
+    nN(paramInt1, paramInt2);
+    Object localObject = MMApplicationContext.getContext();
+    int i = ao.getInstalledTbsCoreVersion((Context)localObject);
+    int j = ao.getTbsSDKVersion((Context)localObject);
+    localObject = lF((Context)localObject);
+    h.OAn.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(133688);
   }
   
-  public s(String paramString)
+  private static String lF(Context paramContext)
   {
-    AppMethodBeat.i(80454);
-    if (paramString == null)
+    AppMethodBeat.i(133689);
+    if (Yui != null)
     {
-      paramString = new NullPointerException();
-      AppMethodBeat.o(80454);
-      throw paramString;
+      paramContext = Yui;
+      AppMethodBeat.o(133689);
+      return paramContext;
     }
-    this.mScheme = "";
-    this.mHost = "";
-    this.mPort = -1;
-    this.mPath = "/";
-    this.mAuthInfo = "";
-    paramString = sAddressPattern.matcher(paramString);
-    String str;
-    if (paramString.matches())
+    try
     {
-      str = paramString.group(1);
-      if (str != null) {
-        this.mScheme = str.toLowerCase();
-      }
-      str = paramString.group(2);
-      if (str != null) {
-        this.mAuthInfo = str;
-      }
-      str = paramString.group(3);
-      if (str != null) {
-        this.mHost = str;
-      }
-      str = paramString.group(4);
-      if ((str == null) || (str.length() <= 0)) {}
-    }
-    for (;;)
-    {
-      try
+      paramContext = paramContext.getPackageManager().getApplicationInfo(MMApplicationContext.getPackageName(), 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
       {
-        this.mPort = bo.getInt(str, this.mPort);
-        paramString = paramString.group(5);
-        if ((paramString != null) && (paramString.length() > 0))
+        paramContext = paramContext.metaData.getString("com.tencent.mtt.TBS_CODE");
+        if (!Util.isNullOrNil(paramContext))
         {
-          if (paramString.charAt(0) == '/') {
-            this.mPath = paramString;
-          }
-        }
-        else
-        {
-          if ((this.mPort != 443) || (!this.mScheme.equals(""))) {
-            break label284;
-          }
-          this.mScheme = "https";
-          if (this.mScheme.equals("")) {
-            this.mScheme = "http";
-          }
-          AppMethodBeat.o(80454);
-          return;
-        }
-      }
-      catch (NumberFormatException paramString)
-      {
-        paramString = new Exception("Bad port");
-        AppMethodBeat.o(80454);
-        throw paramString;
-      }
-      this.mPath = "/".concat(String.valueOf(paramString));
-      continue;
-      paramString = new Exception("Bad address");
-      AppMethodBeat.o(80454);
-      throw paramString;
-      label284:
-      if (this.mPort == -1) {
-        if (this.mScheme.equals("https")) {
-          this.mPort = 443;
-        } else {
-          this.mPort = 80;
+          Yui = paramContext;
+          AppMethodBeat.o(133689);
+          return paramContext;
         }
       }
     }
+    catch (Exception paramContext)
+    {
+      Log.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(133689);
+    }
+    return null;
   }
   
-  public final String toString()
+  private static void nN(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(80455);
-    String str2 = "";
-    if ((this.mPort == 443) || (!this.mScheme.equals("https")))
-    {
-      str1 = str2;
-      if (this.mPort != 80)
-      {
-        str1 = str2;
-        if (!this.mScheme.equals("http")) {}
-      }
-    }
-    else
-    {
-      str1 = ":" + Integer.toString(this.mPort);
-    }
-    str2 = "";
-    if (this.mAuthInfo.length() > 0) {
-      str2 = this.mAuthInfo + "@";
-    }
-    String str1 = this.mScheme + "://" + str2 + this.mHost + str1 + this.mPath;
-    AppMethodBeat.o(80455);
-    return str1;
+    AppMethodBeat.i(133690);
+    Log.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), Yuj[paramInt1], Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(133690);
+  }
+  
+  public static void rG(int paramInt)
+  {
+    AppMethodBeat.i(133687);
+    ik(paramInt, 0);
+    AppMethodBeat.o(133687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.s
  * JD-Core Version:    0.7.0.1
  */

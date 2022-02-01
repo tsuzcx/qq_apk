@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtk;
-import ajty;
-import alud;
 import android.widget.Toast;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 
-public class RMFileEventNotify$1
+class RMFileEventNotify$1
   implements Runnable
 {
-  public RMFileEventNotify$1(ajtk paramajtk) {}
+  RMFileEventNotify$1(RMFileEventNotify paramRMFileEventNotify) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[runOnUIThread][stopWatching-delete-quit]");
     }
-    Toast.makeText(VideoEnvironment.a(), alud.a(2131713844), 1).show();
+    Toast.makeText(VideoEnvironment.getContext(), HardCodeUtil.a(2131910928), 1).show();
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     localRMVideoStateMgr.a("RMFileEventNotify");
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.A();
+    if (localRMVideoStateMgr.v != null) {
+      localRMVideoStateMgr.v.j();
     }
   }
 }

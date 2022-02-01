@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.qq.jce.wup.UniAttribute;
 import com.tencent.securemodule.ar;
-import com.tencent.securemodule.ax;
+import com.tencent.securemodule.az;
 import com.tencent.securemodule.service.IControlService;
 
 public class TransparentActivity$a
@@ -20,39 +20,43 @@ public class TransparentActivity$a
   
   private void a()
   {
+    try
+    {
+      int i = this.b;
+      Message localMessage;
+      if (i < 5)
+      {
+        try
+        {
+          Thread.sleep(2000L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
+        localMessage = TransparentActivity.c(this.a).obtainMessage(4);
+        localMessage.arg1 = (this.b + 1);
+      }
+      for (Handler localHandler = TransparentActivity.c(this.a);; localHandler = TransparentActivity.c(this.a))
+      {
+        localHandler.sendMessage(localMessage);
+        break;
+        localMessage = TransparentActivity.c(this.a).obtainMessage(2);
+        localMessage.arg1 = 0;
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        int i = this.b;
-        if (i < 5) {
-          try
-          {
-            Thread.sleep(2000L);
-            Message localMessage1 = TransparentActivity.c(this.a).obtainMessage(4);
-            localMessage1.arg1 = (this.b + 1);
-            TransparentActivity.c(this.a).sendMessage(localMessage1);
-            return;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-            continue;
-          }
-        }
-        localMessage2 = TransparentActivity.c(this.a).obtainMessage(2);
-      }
-      finally {}
-      Message localMessage2;
-      localMessage2.arg1 = 0;
-      TransparentActivity.c(this.a).sendMessage(localMessage2);
+      throw localObject;
     }
   }
   
   public void run()
   {
-    j = 0;
-    i = j;
+    int j = 0;
+    int i = j;
     try
     {
       if (TransparentActivity.d(this.a) != null)
@@ -62,18 +66,15 @@ public class TransparentActivity$a
         ((UniAttribute)localObject).put("data", TransparentActivity.e(this.a));
         localObject = ((UniAttribute)localObject).encode();
         if (localObject != null) {
-          TransparentActivity.d(this.a).doRemoteTask(ax.a((byte[])localObject), new ar(this));
+          TransparentActivity.d(this.a).doRemoteTask(az.a((byte[])localObject), new ar(this));
         }
         i = 1;
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        i = j;
-      }
+      localThrowable.printStackTrace();
+      i = j;
     }
     if (i == 0) {
       a();
@@ -82,7 +83,7 @@ public class TransparentActivity$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.ui.TransparentActivity.a
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ public class TCWDatePickerDialog
     setIcon(0);
     paramContext = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903195, null);
     setView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetTCWDatePicker = ((TCWDatePicker)paramContext.findViewById(2131231551));
+    this.jdField_a_of_type_ComTencentWidgetTCWDatePicker = ((TCWDatePicker)paramContext.findViewById(2131231550));
     this.jdField_a_of_type_ComTencentWidgetTCWDatePicker.a(this.jdField_a_of_type_Int, this.b, this.c, this);
   }
   

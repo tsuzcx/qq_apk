@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import acne;
-import aghu;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryMsgRevokeMgr;
 
-public class ChatHistoryEmotionView$4
+class ChatHistoryEmotionView$4
   implements Runnable
 {
-  public ChatHistoryEmotionView$4(acne paramacne) {}
+  ChatHistoryEmotionView$4(ChatHistoryEmotionView paramChatHistoryEmotionView) {}
   
   public void run()
   {
-    if (this.this$0.a) {
-      aghu.a(acne.a(this.this$0));
+    if (this.this$0.d) {
+      AIOGalleryMsgRevokeMgr.a(ChatHistoryEmotionView.e(this.this$0));
     }
-    this.this$0.g();
+    this.this$0.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryEmotionView.4
  * JD-Core Version:    0.7.0.1
  */

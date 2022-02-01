@@ -1,29 +1,26 @@
 package cooperation.qqfav.ipc;
 
-import biwi;
-import biwj;
-import biwk;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class QfavRemoteProxyForQQ$2$1
+class QfavRemoteProxyForQQ$2$1
   extends Thread
 {
-  public QfavRemoteProxyForQQ$2$1(biwj parambiwj) {}
+  QfavRemoteProxyForQQ$2$1(QfavRemoteProxyForQQ.2 param2) {}
   
   public void run()
   {
-    while (!this.a.a.a.isEmpty())
+    while (!this.a.a.e.isEmpty())
     {
-      biwk localbiwk = (biwk)this.a.a.a.poll();
-      if (localbiwk != null) {
-        biwi.a(this.a.a, localbiwk);
+      QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper localQfavRemoteProxyCallWrapper = (QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper)this.a.a.e.poll();
+      if (localQfavRemoteProxyCallWrapper != null) {
+        QfavRemoteProxyForQQ.a(this.a.a, localQfavRemoteProxyCallWrapper);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1
  * JD-Core Version:    0.7.0.1
  */

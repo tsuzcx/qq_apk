@@ -30,7 +30,7 @@ public class ApiHelper$VERSION_CODES
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.api.ApiHelper.VERSION_CODES
  * JD-Core Version:    0.7.0.1
  */

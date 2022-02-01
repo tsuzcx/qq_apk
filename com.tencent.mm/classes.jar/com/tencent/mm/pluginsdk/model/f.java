@@ -1,117 +1,115 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Intent;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cm;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.fav.a.ad;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.acd;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acw;
-import com.tencent.mm.protocal.protobuf.adf;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
+import com.tencent.mm.message.v;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.biz.b.d;
+import com.tencent.mm.pluginsdk.ui.applet.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizImageLoader;", "", "()V", "TAG", "", "loadImage", "", "msgId", "", "msgIndex", "", "item", "Lcom/tencent/mm/message/BizReaderItem;", "scene", "url", "view", "Landroid/widget/ImageView;", "cellPosition", "isPreload", "", "options", "Lcom/tencent/mm/modelimage/loader/cfg/ImageLoaderOptions;", "imageLoaderListener", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoaderListener;", "imageLoadListener", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "ImageLoadListenerWrapper", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements ad
 {
-  public final boolean a(cm paramcm, int paramInt, String paramString)
+  public static final f XQM;
+  
+  static
   {
-    AppMethodBeat.i(27274);
-    boolean bool = e.a(paramcm, paramInt, paramString);
-    AppMethodBeat.o(27274);
-    return bool;
+    AppMethodBeat.i(124831);
+    XQM = new f();
+    AppMethodBeat.o(124831);
   }
   
-  public final boolean a(cm paramcm, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public static void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, boolean paramBoolean, c paramc, h paramh)
   {
-    AppMethodBeat.i(27272);
-    acq localacq = new acq();
-    acw localacw = new acw();
-    aca localaca = new aca();
-    localaca.MI(5);
-    localaca.anF(paramString7);
-    localaca.anw(paramString3);
-    localaca.MH(paramInt);
-    localaca.anq(paramString1);
-    localaca.anr(paramString2);
-    localaca.anO(paramString11);
-    paramString2 = new acd();
-    paramString2.fiQ = paramString1;
-    paramString2.wUJ = paramInt;
-    paramString2.fiO = paramString3;
-    paramString2.fiS = paramString5;
-    paramString2.fiR = paramString4;
-    paramString2.fiT = paramString6;
-    paramString2.fiU = paramString9;
-    paramString2.fiV = paramString10;
-    localaca.a(paramString2);
-    localacw.aon(paramString8);
-    localacw.aoo(r.Zn());
-    localacw.MR(0);
-    localacw.nI(bo.aoy());
-    localacq.a(localacw);
-    localacq.wVc.add(localaca);
-    paramcm.cpR.title = localaca.title;
-    paramcm.cpR.desc = localaca.title;
-    paramcm.cpR.cpT = localacq;
-    paramcm.cpR.type = 4;
-    AppMethodBeat.o(27272);
-    return true;
-  }
-  
-  public final boolean a(cm paramcm, long paramLong)
-  {
-    AppMethodBeat.i(27275);
-    boolean bool = e.a(paramcm, paramLong);
-    AppMethodBeat.o(27275);
-    return bool;
-  }
-  
-  public final boolean a(cm paramcm, Intent paramIntent)
-  {
-    AppMethodBeat.i(27273);
-    boolean bool = e.a(paramcm, paramIntent);
-    AppMethodBeat.o(27273);
-    return bool;
-  }
-  
-  public final boolean a(cm paramcm, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    AppMethodBeat.i(27276);
-    String str = String.format("%s#%s", new Object[] { paramString1, "" });
-    acq localacq = new acq();
-    acw localacw = new acw();
-    localacw.aon(paramString2);
-    localacw.MR(2);
-    localacw.nI(System.currentTimeMillis());
-    localacw.aos(String.valueOf(paramString1));
-    localacw.aop(str);
-    paramString1 = new aca();
-    paramString1.anI(str);
-    paramString1.pz(true);
-    paramString1.MI(5);
-    paramString1.anq(paramString3);
-    paramString1.anr(paramString4);
-    paramString1.anP(paramString5);
-    paramString1.py(true);
-    localacq.wVc.add(paramString1);
-    paramString1 = new adf();
-    paramString1.aoD(paramString6);
-    paramString1.aoC(paramString7);
-    localacq.b(paramString1);
-    localacq.a(localacw);
-    paramcm.cpR.cpT = localacq;
-    paramcm.cpR.desc = paramString3;
-    paramcm.cpR.type = 5;
-    AppMethodBeat.o(27276);
-    return true;
+    AppMethodBeat.i(124830);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124830);
+      return;
+    }
+    Object localObject = e.XQp;
+    String str2 = e.bpr(paramString);
+    if (paramImageView != null) {
+      paramImageView.setTag(b.d.biz_image_view_url, paramString);
+    }
+    String str1;
+    label59:
+    long l;
+    int i;
+    if (paramImageView == null)
+    {
+      localObject = null;
+      if (paramc != null) {
+        break label347;
+      }
+      str1 = null;
+      Log.d("MicroMsg.BizImageLoader", "alvinluo BizImage loadImage imageView: %s, isPreload: %b, id: %s, url: %s, fullPath: %s", new Object[] { localObject, Boolean.valueOf(paramBoolean), str2, paramString, str1 });
+      localObject = g.Ybp;
+      if ((g.awm(1)) && (!paramBoolean))
+      {
+        l = System.currentTimeMillis();
+        if (paramv != null)
+        {
+          localObject = e.XQp;
+          s.u(paramv, "item");
+          s.u(paramString, "url");
+          if (((CharSequence)paramString).length() != 0) {
+            break label357;
+          }
+          i = 1;
+          label158:
+          if ((i == 0) && (e.LDk.get(paramString) == null))
+          {
+            paramv = (String)e.XQq.get(e.aK(paramLong, paramInt1));
+            localObject = new e.b(paramString);
+            if (l == 0L) {
+              break label363;
+            }
+          }
+        }
+      }
+    }
+    label347:
+    label357:
+    label363:
+    for (paramLong = l;; paramLong = System.currentTimeMillis())
+    {
+      ((e.b)localObject).position = paramInt2;
+      if (paramv != null) {
+        ((e.b)localObject).bps(paramv);
+      }
+      ((e.b)localObject).bl(1, paramLong);
+      ((Map)e.LDk).put(paramString, localObject);
+      if (e.XQs)
+      {
+        Log.v("MicroMsg.BizImageBlankReporter", "alvinluo startLoad flinging id: %s, url: %s", new Object[] { e.bpr(paramString), paramString });
+        ((e.b)localObject).bl(9, paramLong);
+      }
+      paramv = e.XQp;
+      e.e(8, paramString, l);
+      r.bKe().a(paramString, paramImageView, paramc, null, (h)new f.a(paramString, paramh));
+      AppMethodBeat.o(124830);
+      return;
+      localObject = Integer.valueOf(paramImageView.hashCode());
+      break;
+      str1 = paramc.fullPath;
+      break label59;
+      i = 0;
+      break label158;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.f
  * JD-Core Version:    0.7.0.1
  */

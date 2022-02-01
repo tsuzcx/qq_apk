@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import amyr;
+import com.tencent.mobileqq.ar.ScanEntranceDPC;
 
 class QRScanEntryView$9
   implements Runnable
@@ -9,26 +9,25 @@ class QRScanEntryView$9
   
   public void run()
   {
-    if (!QRScanEntryView.b(this.this$0)) {
-      if (this.a > amyr.a().c) {
-        break label54;
-      }
-    }
-    label54:
-    for (boolean bool = true;; bool = false)
+    if (!QRScanEntryView.d(this.this$0))
     {
-      if (QRScanEntryView.a(this.this$0) != bool)
-      {
-        QRScanEntryView.b(this.this$0, bool);
-        QRScanEntryView.a(this.this$0, false);
+      boolean bool;
+      if (this.a <= ScanEntranceDPC.a().h) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      return;
+      if (QRScanEntryView.c(this.this$0) != bool)
+      {
+        QRScanEntryView.d(this.this$0, bool);
+        QRScanEntryView.b(this.this$0, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.9
  * JD-Core Version:    0.7.0.1
  */

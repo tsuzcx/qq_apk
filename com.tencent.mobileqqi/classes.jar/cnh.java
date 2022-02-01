@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-class cnh
-  implements PermissionDialogCallback
+public class cnh
+  extends BroadcastReceiver
 {
-  cnh(cng paramcng) {}
+  public cnh(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((this.a.a.a.a.equals(this.a.b.a())) && (FriendProfileCardActivity.a(this.a) != null)) {
+      FriendProfileCardActivity.a(this.a).sendEmptyMessage(2);
+    }
+  }
 }
 
 

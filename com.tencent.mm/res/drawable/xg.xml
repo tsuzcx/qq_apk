@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@raw/friendactivity_likeicon" android:right="1.0dip" />
-</layer-list>
+    <solid android:color="@color/y8" />
+    <corners android:radius="@dimen/cp" />
+</shape>

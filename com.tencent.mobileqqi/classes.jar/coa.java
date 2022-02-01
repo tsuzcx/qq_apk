@@ -1,15 +1,16 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class coa
-  implements Runnable
+public class coa
+  implements AdapterView.OnItemClickListener
 {
-  coa(cnz paramcnz) {}
+  public coa(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.a.a != null) && (!this.a.a.isFinishing())) {
-      this.a.a.a(2131562099, 1);
-    }
+    this.a.c();
   }
 }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/nw6" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/nge" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/h8y" formItem:showArrow="false" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mvf" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/h7t" formItem:showArrow="false" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mvc" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/h7r" formItem:showArrow="false" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mvb" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/h7p" formItem:showArrow="false" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mva" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/h7n" formItem:showArrow="false" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mve" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/y9w" formItem:showArrow="false" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/mvd" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/y9u" formItem:showArrow="false" />
+</LinearLayout>

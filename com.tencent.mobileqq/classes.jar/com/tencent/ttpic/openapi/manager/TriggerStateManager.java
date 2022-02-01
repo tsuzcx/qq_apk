@@ -24,11 +24,12 @@ public enum TriggerStateManager
   
   public void clear()
   {
-    if (this.mTriggerStateItemMap != null)
+    Object localObject = this.mTriggerStateItemMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mTriggerStateItemMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((TriggerStateItem)localIterator.next()).clear();
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TriggerStateItem)((Iterator)localObject).next()).clear();
       }
       this.mTriggerStateItemMap.clear();
     }
@@ -41,7 +42,8 @@ public enum TriggerStateManager
   
   public TriggerStateItem getTriggerStateItem(int paramInt)
   {
-    if ((this.mTriggerStateItemMap != null) && (this.mTriggerStateItemMap.containsKey(Integer.valueOf(paramInt)))) {
+    Map localMap = this.mTriggerStateItemMap;
+    if ((localMap != null) && (localMap.containsKey(Integer.valueOf(paramInt)))) {
       return (TriggerStateItem)this.mTriggerStateItemMap.get(Integer.valueOf(paramInt));
     }
     return null;
@@ -54,18 +56,20 @@ public enum TriggerStateManager
   
   public void putTriggerStateItem(int paramInt, TriggerStateItem paramTriggerStateItem)
   {
-    if (this.mTriggerStateItemMap != null) {
-      this.mTriggerStateItemMap.put(Integer.valueOf(paramInt), paramTriggerStateItem);
+    Map localMap = this.mTriggerStateItemMap;
+    if (localMap != null) {
+      localMap.put(Integer.valueOf(paramInt), paramTriggerStateItem);
     }
   }
   
   public void reset()
   {
-    if (this.mTriggerStateItemMap != null)
+    Object localObject = this.mTriggerStateItemMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mTriggerStateItemMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((TriggerStateItem)localIterator.next()).reset();
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TriggerStateItem)((Iterator)localObject).next()).reset();
       }
     }
   }
@@ -77,18 +81,19 @@ public enum TriggerStateManager
   
   public void updateAllTriggerState()
   {
-    if (this.mTriggerStateItemMap != null)
+    Object localObject = this.mTriggerStateItemMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mTriggerStateItemMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((TriggerStateItem)localIterator.next()).updateState();
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TriggerStateItem)((Iterator)localObject).next()).updateState();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.TriggerStateManager
  * JD-Core Version:    0.7.0.1
  */

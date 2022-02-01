@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mHeaderViewContainer" android:background="@null" android:layout_width="68.0dip" android:layout_height="69.0dip" android:layout_marginTop="50.0dip" android:layout_marginBottom="10.0dip">
+        <RelativeLayout android:id="@id/imgWrapper" android:background="@null" android:layout_width="@dimen/personal_photolist_header_face_avatar_size" android:layout_height="@dimen/personal_photolist_header_face_avatar_size" android:layout_centerHorizontal="true">
+            <com.qzone.widget.AvatarImageView android:id="@id/face_avatar" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.5dip" android:layout_centerInParent="true" qzone:avatarSize="@dimen/personal_photolist_header_face_avatar_size"
+              xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.minihd.qq" />
+            <View android:background="@drawable/qzone_selector_album_photolist_header_cover_face_item_shape" android:clickable="true" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/face_nickname" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxEms="4" android:singleLine="true" android:layout_below="@id/imgWrapper" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</FrameLayout>

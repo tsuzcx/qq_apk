@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView android:id="@id/x_list_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/troop_seperator_name" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="25.0dip" android:singleLine="true" />
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/layout_set_uncommonly_used" android:background="@drawable/qq_profilecard_btn" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="17.0dip" android:textColor="@color/skin_float_btn" android:gravity="center" android:id="@id/btn_set_uncommonly_used" android:background="@drawable/qq_profilecard_btn" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="50.0dip" android:text="@string/qq_gather_set_uncommonly_used_contacts" android:drawableLeft="@drawable/qq_contact_gather_uncommonly_used_contacts" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qq_gather_reload_layout" android:background="@drawable/bg_texture" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="26.599976dip" android:src="@drawable/qb_hc_forbid" />
+        <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/qq_gather_reload_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qq_gather_reload" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qq_gather_loading_layout" android:background="@drawable/bg_texture" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/qq_gather_loading_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qq_gather_loading" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qq_gather_null_layout" android:background="@drawable/bg_texture" android:paddingBottom="30.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="22.0dip" android:src="@drawable/qq_recommend_empty_image" />
+        <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/qq_gather_null_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="18.0dip" android:text="@string/qq_gather_null_data" android:contentDescription="@string/qq_gather_null_data" />
+        <Button android:gravity="center" android:id="@id/see_gathered_contacts_btn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="查看已收起不常联系好友" android:contentDescription="查看已收起不常联系好友" style="@style/ButtonBlue" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,20 +1,33 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.R.l;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.exdevice.model.ag.a;
 
 final class ExdeviceProfileUI$18
-  implements Runnable
+  implements ag.a
 {
   ExdeviceProfileUI$18(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final void run()
+  public final void apw(String paramString)
   {
-    AppMethodBeat.i(20042);
-    if (ExdeviceProfileUI.d(this.lOl) != null) {
-      ExdeviceProfileUI.d(this.lOl).show();
-    }
-    AppMethodBeat.o(20042);
+    AppMethodBeat.i(24115);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("Ksnsupload_appid", "wx7fa037cc7dfabad5");
+    localIntent.putExtra("Ksnsupload_appname", this.yBy.getString(R.l.exdevice_wechat_sport));
+    localIntent.putExtra("Ksnsupload_source", 1);
+    localIntent.putExtra("need_result", true);
+    String str = ad.Jo("wx_sport");
+    ad.bCb().M(str, true).q("prePublishId", "wx_sport");
+    localIntent.putExtra("reportSessionId", str);
+    localIntent.putExtra("Ksnsupload_type", 0);
+    localIntent.putExtra("sns_kemdia_path", paramString);
+    c.b(this.yBy, "sns", ".ui.SnsUploadUI", localIntent, 2);
+    AppMethodBeat.o(24115);
   }
 }
 

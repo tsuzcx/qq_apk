@@ -1,97 +1,75 @@
 package com.tencent.mm.platformtools;
 
-import android.content.Context;
-import android.content.res.AssetManager;
+import android.app.Activity;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.am.p;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
+  extends c
 {
-  public static j gjp;
-  private Map<String, String> gjq;
-  
-  static
+  public j(Activity paramActivity)
   {
-    AppMethodBeat.i(124534);
-    gjp = new j();
-    AppMethodBeat.o(124534);
+    super(paramActivity);
   }
   
-  public final Map<String, String> cr(Context paramContext)
+  public final boolean b(aa paramaa)
   {
-    AppMethodBeat.i(124533);
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramContext = bo.F(paramContext.getAssets().open("config/EmailAddress.xml"));
-        boolean bool = bo.isNullOrNil(paramContext);
-        if (bool)
-        {
-          AppMethodBeat.o(124533);
-          return null;
-        }
-        Map localMap = br.F(paramContext, "config");
-        if ((localMap == null) || (localMap.isEmpty()))
-        {
-          ab.d("MicroMsg.EmailFormater", "values null");
-          AppMethodBeat.o(124533);
-          return null;
-        }
-        if (this.gjq == null)
-        {
-          this.gjq = new HashMap();
-          i = 0;
-          Object localObject = new StringBuilder(".config.format");
-          if (i == 0)
-          {
-            paramContext = "";
-            localObject = paramContext;
-            if (localMap.get(localObject) == null) {
-              continue;
-            }
-            paramContext = (String)localObject + ".emaildomain";
-            localObject = (String)localObject + ".loginpage";
-            paramContext = (String)localMap.get(paramContext);
-            localObject = (String)localMap.get(localObject);
-            if ((bo.isNullOrNil(paramContext)) || (bo.isNullOrNil((String)localObject))) {
-              break label290;
-            }
-            this.gjq.put(paramContext, localObject);
-            break label290;
-          }
-        }
-        else
-        {
-          paramContext = this.gjq;
-          AppMethodBeat.o(124533);
-          return paramContext;
-        }
-        paramContext = Integer.valueOf(i);
-        continue;
-        paramContext = this.gjq;
-        AppMethodBeat.o(124533);
-        return paramContext;
-      }
-      catch (Exception paramContext)
-      {
-        ab.e("MicroMsg.EmailFormater", "parse email failed:[%s]", new Object[] { paramContext.getMessage() });
-        AppMethodBeat.o(124533);
-        return null;
-      }
-      label290:
-      i += 1;
-    }
+    AppMethodBeat.i(127704);
+    Log.d("MicroMsg.ErrorLabelProcessor", "handleOpenUrl");
+    Toast.makeText(this.activity, paramaa.content, 0).show();
+    AppMethodBeat.o(127704);
+    return true;
+  }
+  
+  public final boolean c(aa paramaa)
+  {
+    AppMethodBeat.i(127705);
+    Log.d("MicroMsg.ErrorLabelProcessor", "handleIgnore");
+    Toast.makeText(this.activity, paramaa.content, 0).show();
+    AppMethodBeat.o(127705);
+    return true;
+  }
+  
+  public final boolean d(aa paramaa)
+  {
+    AppMethodBeat.i(127706);
+    Log.d("MicroMsg.ErrorLabelProcessor", "handleFalseLast");
+    Toast.makeText(this.activity, paramaa.content, 0).show();
+    AppMethodBeat.o(127706);
+    return true;
+  }
+  
+  public final boolean e(aa paramaa)
+  {
+    AppMethodBeat.i(127707);
+    Log.d("MicroMsg.ErrorLabelProcessor", "handleFalseCancel");
+    Toast.makeText(this.activity, paramaa.content, 0).show();
+    AppMethodBeat.o(127707);
+    return true;
+  }
+  
+  public final boolean f(aa paramaa)
+  {
+    AppMethodBeat.i(234051);
+    Log.d("MicroMsg.ErrorLabelProcessor", "handleDoneBack");
+    Toast.makeText(this.activity, paramaa.content, 0).show();
+    this.activity.finish();
+    AppMethodBeat.o(234051);
+    return true;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(127703);
+    Log.i("MicroMsg.ErrorLabelProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.o(127703);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.j
  * JD-Core Version:    0.7.0.1
  */

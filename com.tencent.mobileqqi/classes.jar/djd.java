@@ -1,33 +1,69 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.database.Cursor;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SpaceGateActivity;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import com.tencent.mobileqq.widget.SlipLimitedListView;
 
 public class djd
-  implements CompoundButton.OnCheckedChangeListener
+  implements SlideDetectListView.OnSlideListener
 {
-  public djd(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
+  public djd(SpaceGateActivity paramSpaceGateActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramCompoundButton.putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.b.a(), paramBoolean);
-    paramCompoundButton.commit();
-    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    paramSlideDetectListView = paramView.findViewById(2131230987);
+    Object localObject = (Cursor)SpaceGateActivity.a(this.a).getItem(paramInt);
+    SpaceGateActivity.a(this.a, ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("senderuin")));
+    SpaceGateActivity.b(this.a, ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("selfuin")));
+    SpaceGateActivity.a(this.a).a(SpaceGateActivity.a(this.a) + "_" + 1009);
+    if (paramSlideDetectListView != null)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
-      return;
+      localObject = (Button)paramSlideDetectListView.findViewById(2131231700);
+      ((Button)localObject).setTag(Integer.valueOf(paramInt));
+      ((Button)localObject).setOnClickListener(SpaceGateActivity.a(this.a));
+      ((ShaderAnimLayout)paramSlideDetectListView).a();
+      SpaceGateActivity.a(this.a).setDeleteAreaWidth(paramSlideDetectListView.getLayoutParams().width);
+    }
+    paramSlideDetectListView = paramView.findViewById(2131231882);
+    if (paramSlideDetectListView != null)
+    {
+      SpaceGateActivity.a(this.a).removeMessages(0);
+      paramSlideDetectListView.setVisibility(8);
+    }
+  }
+  
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    paramSlideDetectListView = paramView.findViewById(2131230987);
+    SpaceGateActivity.a(this.a).a("");
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).d();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131231700);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
+    }
+    paramSlideDetectListView = (TextView)paramView.findViewById(2131231882);
+    if ((paramSlideDetectListView != null) && (!"".equals(paramSlideDetectListView.getText())))
+    {
+      SpaceGateActivity.a(this.a).removeMessages(0);
+      paramView = Message.obtain();
+      paramView.obj = paramSlideDetectListView;
+      paramView.arg1 = 0;
+      SpaceGateActivity.a(this.a).sendMessageDelayed(paramView, 300L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     djd
  * JD-Core Version:    0.7.0.1
  */

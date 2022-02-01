@@ -1,93 +1,139 @@
 package com.tencent.mm.plugin.webview.luggage;
 
+import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.luggage.d.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ball.c.e;
+import com.tencent.mm.plugin.ball.c.f;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.plugin.webview.luggage.d.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public final class s
 {
-  private String lang;
-  private boolean uSS;
-  private String uST;
-  private String uSU;
-  private String uSV;
-  private String uSW;
-  private String uSX;
-  private String uSY;
+  private static HashMap<String, Integer> WHC;
+  private static b.b WHD;
+  private static e WHE;
   
-  public s(Bundle paramBundle)
+  static
   {
-    AppMethodBeat.i(6233);
-    this.uSS = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.uST = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.uSU = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.uSV = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.uSW = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.uSX = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.uSY = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
-    this.lang = aa.gP(ah.getContext());
-    AppMethodBeat.o(6233);
-  }
-  
-  public final boolean dbw()
-  {
-    AppMethodBeat.i(6234);
-    if ((this.uSS) && (!bo.isNullOrNil(dbx())) && (!bo.isNullOrNil(dby())) && (!bo.isNullOrNil(dbz())))
+    AppMethodBeat.i(78434);
+    WHC = new HashMap();
+    WHD = new b.b()
     {
-      AppMethodBeat.o(6234);
-      return true;
-    }
-    AppMethodBeat.o(6234);
-    return false;
+      public final void r(MultiTaskInfo paramAnonymousMultiTaskInfo)
+      {
+        AppMethodBeat.i(295879);
+        ToolsProcessIPCService.a(new IPCString(paramAnonymousMultiTaskInfo.field_id), s.a.class, null);
+        AppMethodBeat.o(295879);
+      }
+    };
+    WHE = new f()
+    {
+      public final void b(BallInfo paramAnonymousBallInfo)
+      {
+        AppMethodBeat.i(295874);
+        if ((paramAnonymousBallInfo != null) && (paramAnonymousBallInfo.oSS != null))
+        {
+          Log.i("MicroMsg.LuggageWebViewFloatBallManager", "handleBallInfoClicked, openWebPage ballInfo:%s", new Object[] { paramAnonymousBallInfo });
+          String str1 = paramAnonymousBallInfo.key;
+          String str2 = paramAnonymousBallInfo.oSS.getString("rawUrl");
+          int i = paramAnonymousBallInfo.oSS.getInt("minimize_secene", 0);
+          Intent localIntent = new Intent();
+          localIntent.putExtras(paramAnonymousBallInfo.oSS);
+          localIntent.putExtra("rawUrl", str2);
+          localIntent.putExtra("minimize_secene", i);
+          localIntent.putExtra("float_ball_key", str1);
+          localIntent.putExtra("title", paramAnonymousBallInfo.name);
+          com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+        }
+        AppMethodBeat.o(295874);
+      }
+      
+      public final void c(BallInfo paramAnonymousBallInfo) {}
+      
+      public final void d(BallInfo paramAnonymousBallInfo) {}
+    };
+    AppMethodBeat.o(78434);
   }
   
-  public final String dbx()
+  public static void a(String paramString, p paramp, com.tencent.mm.plugin.webview.e.c paramc)
   {
-    AppMethodBeat.i(6235);
-    if ("zh_CN".equals(this.lang))
+    AppMethodBeat.i(295932);
+    if (WHC.containsKey(paramString))
     {
-      str = this.uST;
-      AppMethodBeat.o(6235);
-      return str;
+      AppMethodBeat.o(295932);
+      return;
     }
-    String str = this.uSU;
-    AppMethodBeat.o(6235);
-    return str;
+    int i = o.a(paramp, paramc);
+    Log.i("MicroMsg.LuggageWebViewFloatBallManager", "onMultiTaskItemClick, stash, ballKey = %s, ticket = %d", new Object[] { paramString, Integer.valueOf(i) });
+    WHC.put(paramString, Integer.valueOf(i));
+    AppMethodBeat.o(295932);
   }
   
-  public final String dby()
+  public static int bka(String paramString)
   {
-    AppMethodBeat.i(6236);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.uSV;
-      AppMethodBeat.o(6236);
-      return str;
-    }
-    String str = this.uSW;
-    AppMethodBeat.o(6236);
-    return str;
+    AppMethodBeat.i(78430);
+    Log.i("MicroMsg.LuggageWebViewFloatBallManager", "onMultiTaskItemClick, size = %d", new Object[] { Integer.valueOf(WHC.size()) });
+    int i = Util.nullAs((Integer)WHC.remove(paramString), -1);
+    AppMethodBeat.o(78430);
+    return i;
   }
   
-  public final String dbz()
+  public static void bkb(String paramString)
   {
-    AppMethodBeat.i(6237);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.uSX;
-      AppMethodBeat.o(6237);
-      return str;
+    AppMethodBeat.i(78431);
+    if (WHC.containsKey(paramString)) {
+      o.remove(Util.nullAsInt(WHC.remove(paramString), -1));
     }
-    String str = this.uSY;
-    AppMethodBeat.o(6237);
-    return str;
+    AppMethodBeat.o(78431);
   }
+  
+  public static void iuI()
+  {
+    AppMethodBeat.i(78432);
+    Log.d("MicroMsg.LuggageWebViewFloatBallManager", "addFloatBallInfoEventListener");
+    Object localObject = com.tencent.mm.plugin.webview.luggage.d.b.WKl;
+    localObject = WHD;
+    kotlin.g.b.s.u(localObject, "listener");
+    com.tencent.mm.plugin.webview.luggage.d.b.iuY().add(localObject);
+    if (h.ax(com.tencent.mm.plugin.ball.c.b.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.b)h.ax(com.tencent.mm.plugin.ball.c.b.class)).a(5, WHE);
+    }
+    AppMethodBeat.o(78432);
+  }
+  
+  public static void iuJ()
+  {
+    AppMethodBeat.i(78433);
+    Object localObject = com.tencent.mm.plugin.webview.luggage.d.b.WKl;
+    localObject = WHD;
+    kotlin.g.b.s.u(localObject, "listener");
+    com.tencent.mm.plugin.webview.luggage.d.b.iuY().remove(localObject);
+    if (h.ax(com.tencent.mm.plugin.ball.c.b.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.b)h.ax(com.tencent.mm.plugin.ball.c.b.class)).b(5, WHE);
+    }
+    AppMethodBeat.o(78433);
+  }
+  
+  static class a
+    implements d<IPCString, IPCVoid>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.s
  * JD-Core Version:    0.7.0.1
  */

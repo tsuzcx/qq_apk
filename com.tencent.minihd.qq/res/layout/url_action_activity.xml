@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/url_root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/url_action_err_view" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/font_size_small" android:textStyle="bold" android:textColor="#ffb6b6b6" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/troopseed_load_url_failed" android:drawableTop="@drawable/no_result" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/url_action_waiting_progress" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/indetermined_progress" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    <View android:id="@id/mask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

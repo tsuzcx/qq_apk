@@ -6,71 +6,71 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class TalkRoomService
   extends Service
 {
-  private g tbV;
+  private f SMU;
   
   static
   {
-    AppMethodBeat.i(25748);
-    ab.i("MicroMsg.TalkRoomService", Thread.currentThread().getId());
-    AppMethodBeat.o(25748);
+    AppMethodBeat.i(29430);
+    Log.i("MicroMsg.TalkRoomService", Thread.currentThread().getId());
+    AppMethodBeat.o(29430);
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    AppMethodBeat.i(25746);
-    ab.d("MicroMsg.TalkRoomService", "onBind~~~ threadID:" + Thread.currentThread());
-    paramIntent = this.tbV;
-    AppMethodBeat.o(25746);
+    AppMethodBeat.i(29428);
+    Log.d("MicroMsg.TalkRoomService", "onBind~~~ threadID:" + Thread.currentThread());
+    paramIntent = this.SMU;
+    AppMethodBeat.o(29428);
     return paramIntent;
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(25743);
-    ab.d("MicroMsg.TalkRoomService", "onCreate~~~threadID:" + Thread.currentThread());
+    AppMethodBeat.i(29425);
+    Log.d("MicroMsg.TalkRoomService", "onCreate~~~threadID:" + Thread.currentThread());
     super.onCreate();
     if (Build.VERSION.SDK_INT < 18) {
       startForeground(9999, new Notification());
     }
-    if (this.tbV == null) {
-      this.tbV = new g();
+    if (this.SMU == null) {
+      this.SMU = new f();
     }
-    AppMethodBeat.o(25743);
+    AppMethodBeat.o(29425);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(25744);
-    ab.d("MicroMsg.TalkRoomService", "onDestroy~~~ threadID:" + Thread.currentThread());
+    AppMethodBeat.i(29426);
+    Log.d("MicroMsg.TalkRoomService", "onDestroy~~~ threadID:" + Thread.currentThread());
     super.onDestroy();
-    AppMethodBeat.o(25744);
+    AppMethodBeat.o(29426);
   }
   
   public void onRebind(Intent paramIntent)
   {
-    AppMethodBeat.i(25747);
-    ab.d("MicroMsg.TalkRoomService", "onRebind~~~ threadID:" + Thread.currentThread());
+    AppMethodBeat.i(29429);
+    Log.d("MicroMsg.TalkRoomService", "onRebind~~~ threadID:" + Thread.currentThread());
     super.onRebind(paramIntent);
-    AppMethodBeat.o(25747);
+    AppMethodBeat.o(29429);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    AppMethodBeat.i(25745);
-    ab.d("MicroMsg.TalkRoomService", "onUnbind~~~ threadID:" + Thread.currentThread());
+    AppMethodBeat.i(29427);
+    Log.d("MicroMsg.TalkRoomService", "onUnbind~~~ threadID:" + Thread.currentThread());
     boolean bool = super.onUnbind(paramIntent);
-    AppMethodBeat.o(25745);
+    AppMethodBeat.o(29427);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.TalkRoomService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,40 @@
 package com.tencent.mm.plugin.game.commlib.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.do;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.storagebase.h;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.Iterator;
 
-public final class a
-  extends do
+public abstract class a<T>
+  extends d
 {
-  protected static c.a info;
-  
-  static
+  public a(h paramh)
   {
-    AppMethodBeat.i(59417);
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.yrM.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "key";
-    locala.columns[1] = "value";
-    locala.yrM.put("value", "BLOB");
-    localStringBuilder.append(" value BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(59417);
+    super(paramh);
   }
   
-  public final c.a getDBInfo()
+  protected abstract void a(SQLiteStatement paramSQLiteStatement, T paramT);
+  
+  public final void b(Iterable<? extends T> paramIterable)
   {
-    return info;
+    SQLiteStatement localSQLiteStatement = fEe();
+    try
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        a(localSQLiteStatement, paramIterable.next());
+        localSQLiteStatement.executeInsert();
+      }
+    }
+    finally
+    {
+      a(localSQLiteStatement);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.b.a
  * JD-Core Version:    0.7.0.1
  */

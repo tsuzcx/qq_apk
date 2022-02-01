@@ -11,16 +11,16 @@ public class WaitNotify
   
   public WaitNotify()
   {
-    AppMethodBeat.i(128382);
+    AppMethodBeat.i(114159);
     this.myMonitorObject = new MonitorObject();
     this.wasSignalled = false;
     this.isWaiting = false;
-    AppMethodBeat.o(128382);
+    AppMethodBeat.o(114159);
   }
   
   public void doNotify()
   {
-    AppMethodBeat.i(128385);
+    AppMethodBeat.i(114162);
     Logger.d("WaitNotify", "doNotify " + Thread.currentThread().getName());
     synchronized (this.myMonitorObject)
     {
@@ -28,21 +28,27 @@ public class WaitNotify
       Logger.d("WaitNotify", "doNotify internal " + Thread.currentThread().getName());
       this.myMonitorObject.notifyAll();
       Logger.d("WaitNotify", "doNotify over " + Thread.currentThread().getName());
-      AppMethodBeat.o(128385);
+      AppMethodBeat.o(114162);
       return;
     }
   }
   
   public void doWait()
   {
-    AppMethodBeat.i(128383);
-    doWait(9223372036854775807L, 0, new WaitNotify.1(this));
-    AppMethodBeat.o(128383);
+    AppMethodBeat.i(114160);
+    doWait(9223372036854775807L, 0, new WaitListener()
+    {
+      public boolean keepWaiting()
+      {
+        return true;
+      }
+    });
+    AppMethodBeat.o(114160);
   }
   
   public void doWait(long paramLong, int paramInt, WaitListener paramWaitListener)
   {
-    AppMethodBeat.i(128384);
+    AppMethodBeat.i(114161);
     Logger.d("WaitNotify", "doWait " + Thread.currentThread().getName());
     synchronized (this.myMonitorObject)
     {
@@ -52,7 +58,7 @@ public class WaitNotify
       if (!bool) {}
       try
       {
-        Logger.d("WaitNotify", "doWait internal " + Thread.currentThread().getName());
+        Logger.d("WaitNotify", "doWait internal " + Thread.currentThread().getName() + " " + i);
         this.isWaiting = true;
         if (i < paramInt)
         {
@@ -61,14 +67,14 @@ public class WaitNotify
           {
             doNotify();
             this.isWaiting = false;
-            AppMethodBeat.o(128384);
+            AppMethodBeat.o(114161);
           }
         }
         else
         {
           this.myMonitorObject.wait();
         }
-        Logger.d("WaitNotify", "doWait wake " + Thread.currentThread().getName());
+        Logger.d("WaitNotify", "doWait wake " + Thread.currentThread().getName() + " " + i);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -93,7 +99,7 @@ public class WaitNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.WaitNotify
  * JD-Core Version:    0.7.0.1
  */

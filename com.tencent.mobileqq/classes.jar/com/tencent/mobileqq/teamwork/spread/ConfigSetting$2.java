@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aoyo;
-import bajk;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocTipsConfigBean;
 
-public class ConfigSetting$2
+class ConfigSetting$2
   implements Runnable
 {
-  public ConfigSetting$2(bajk parambajk, aoyo paramaoyo) {}
+  ConfigSetting$2(ConfigSetting paramConfigSetting, TencentDocTipsConfigBean paramTencentDocTipsConfigBean) {}
   
   public void run()
   {
-    bajk.a(this.this$0, this.a);
+    ConfigSetting.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting.2
  * JD-Core Version:    0.7.0.1
  */

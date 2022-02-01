@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class mobile_festival_rsp
   extends JceStruct
@@ -49,21 +50,23 @@ public final class mobile_festival_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.play_flag, 0);
-    if (this.play_url_list != null) {
-      paramJceOutputStream.write(this.play_url_list, 1);
+    Object localObject = this.play_url_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.play_time, 2);
     paramJceOutputStream.write(this.interval, 3);
     paramJceOutputStream.write(this.start_time, 4);
     paramJceOutputStream.write(this.end_time, 5);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 6);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_festival_rsp
  * JD-Core Version:    0.7.0.1
  */

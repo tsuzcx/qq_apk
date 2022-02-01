@@ -1,530 +1,571 @@
 package com.tencent.open.agent.report;
 
-import bfhz;
-
-public class ReportCenter$5
+class ReportCenter$5
   implements Runnable
 {
-  public ReportCenter$5(bfhz parambfhz) {}
+  ReportCenter$5(ReportCenter paramReportCenter, boolean paramBoolean) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   4: invokevirtual 37	bfhz:b	()Landroid/os/Bundle;
-    //   7: astore 29
-    //   9: aload 29
+    //   1: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   4: invokevirtual 43	com/tencent/open/agent/report/ReportCenter:c	()Landroid/os/Bundle;
+    //   7: astore 30
+    //   9: aload 30
     //   11: ifnonnull +4 -> 15
     //   14: return
-    //   15: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   18: ifeq +32 -> 50
-    //   21: ldc 45
-    //   23: iconst_2
-    //   24: new 47	java/lang/StringBuilder
-    //   27: dup
-    //   28: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   31: ldc 50
-    //   33: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload 29
-    //   38: invokevirtual 60	android/os/Bundle:toString	()Ljava/lang/String;
-    //   41: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   50: invokestatic 70	bfnk:b	()I
-    //   53: istore 8
-    //   55: iconst_0
-    //   56: istore 4
-    //   58: iconst_0
-    //   59: istore 10
-    //   61: invokestatic 76	android/os/SystemClock:elapsedRealtime	()J
-    //   64: lstore 23
-    //   66: lconst_0
-    //   67: lstore 27
-    //   69: lconst_0
-    //   70: lstore 25
-    //   72: iconst_0
-    //   73: istore_3
-    //   74: iload 4
-    //   76: iconst_1
-    //   77: iadd
-    //   78: istore_2
-    //   79: iload 10
-    //   81: istore 11
-    //   83: iload_2
-    //   84: istore 7
-    //   86: iload 10
-    //   88: istore 12
-    //   90: iload_2
-    //   91: istore 4
-    //   93: iload 10
-    //   95: istore 13
-    //   97: iload 10
-    //   99: istore 14
-    //   101: iload_2
-    //   102: istore 5
-    //   104: iload 10
-    //   106: istore 15
-    //   108: iload_2
-    //   109: istore 6
-    //   111: iload 10
-    //   113: istore 16
-    //   115: ldc 78
-    //   117: ldc 80
-    //   119: aload 29
-    //   121: invokestatic 86	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lbfmg;
-    //   124: astore 30
-    //   126: iload 10
-    //   128: istore 11
-    //   130: iload_2
-    //   131: istore 7
-    //   133: iload 10
-    //   135: istore 12
-    //   137: iload_2
-    //   138: istore 4
-    //   140: iload 10
-    //   142: istore 13
-    //   144: iload 10
-    //   146: istore 14
-    //   148: iload_2
-    //   149: istore 5
-    //   151: iload 10
-    //   153: istore 15
+    //   15: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   18: ifeq +42 -> 60
+    //   21: new 51	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   28: astore 31
+    //   30: aload 31
+    //   32: ldc 54
+    //   34: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: aload 31
+    //   40: aload 30
+    //   42: invokevirtual 64	android/os/Bundle:toString	()Ljava/lang/String;
+    //   45: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: ldc 66
+    //   51: iconst_2
+    //   52: aload 31
+    //   54: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   60: invokestatic 77	com/tencent/open/business/viareport/ReportConfig:f	()I
+    //   63: istore 8
+    //   65: invokestatic 83	android/os/SystemClock:elapsedRealtime	()J
+    //   68: lstore 9
+    //   70: iconst_0
+    //   71: istore 4
+    //   73: iconst_0
+    //   74: istore 22
+    //   76: iconst_0
+    //   77: istore_3
+    //   78: lconst_0
+    //   79: lstore 17
+    //   81: lconst_0
+    //   82: lstore 15
+    //   84: iload 4
+    //   86: iconst_1
+    //   87: iadd
+    //   88: istore_2
+    //   89: iload 22
+    //   91: istore 23
+    //   93: iload_2
+    //   94: istore 4
+    //   96: iload 22
+    //   98: istore 24
+    //   100: iload 22
+    //   102: istore 25
+    //   104: iload_2
+    //   105: istore 5
+    //   107: iload 22
+    //   109: istore 26
+    //   111: iload_2
+    //   112: istore 6
+    //   114: iload 22
+    //   116: istore 27
+    //   118: iload_2
+    //   119: istore 7
+    //   121: iload 22
+    //   123: istore 28
+    //   125: iload 22
+    //   127: istore 29
+    //   129: ldc 85
+    //   131: ldc 87
+    //   133: aload 30
+    //   135: invokestatic 92	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lcom/tencent/open/base/http/HttpBaseUtil$Statistic;
+    //   138: astore 31
+    //   140: iload 22
+    //   142: istore 23
+    //   144: iload_2
+    //   145: istore 4
+    //   147: iload 22
+    //   149: istore 24
+    //   151: iload 22
+    //   153: istore 25
     //   155: iload_2
-    //   156: istore 6
-    //   158: iload 10
-    //   160: istore 16
-    //   162: aload 30
-    //   164: getfield 91	bfmg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   167: invokestatic 94	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   170: astore 31
-    //   172: iload 10
-    //   174: istore 11
-    //   176: iload_2
-    //   177: istore 7
-    //   179: iload 10
-    //   181: istore 12
-    //   183: iload_2
-    //   184: istore 4
-    //   186: iload 10
-    //   188: istore 13
-    //   190: iload 10
-    //   192: istore 14
+    //   156: istore 5
+    //   158: iload 22
+    //   160: istore 26
+    //   162: iload_2
+    //   163: istore 6
+    //   165: iload 22
+    //   167: istore 27
+    //   169: iload_2
+    //   170: istore 7
+    //   172: iload 22
+    //   174: istore 28
+    //   176: iload 22
+    //   178: istore 29
+    //   180: aload 31
+    //   182: getfield 97	com/tencent/open/base/http/HttpBaseUtil$Statistic:a	Ljava/lang/String;
+    //   185: invokestatic 100	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   188: astore 32
+    //   190: iload 22
+    //   192: istore 23
     //   194: iload_2
-    //   195: istore 5
-    //   197: iload 10
-    //   199: istore 16
-    //   201: aload 31
-    //   203: ldc 96
-    //   205: invokevirtual 102	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   208: istore_1
-    //   209: iload_1
-    //   210: ifeq +514 -> 724
-    //   213: iload 10
-    //   215: istore 9
-    //   217: iload_2
-    //   218: istore_1
-    //   219: iload 10
-    //   221: istore 11
-    //   223: iload_2
-    //   224: istore 7
-    //   226: iload 10
-    //   228: istore 12
-    //   230: iload_2
-    //   231: istore 4
-    //   233: iload 10
-    //   235: istore 13
-    //   237: iload 10
-    //   239: istore 14
-    //   241: iload_2
-    //   242: istore 5
-    //   244: iload 10
-    //   246: istore 15
-    //   248: iload_2
-    //   249: istore 6
-    //   251: iload 10
-    //   253: istore 16
-    //   255: aload 30
-    //   257: getfield 91	bfmg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   260: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   263: ifne +6 -> 269
-    //   266: goto +458 -> 724
-    //   269: iload 9
-    //   271: istore 11
-    //   273: iload_1
-    //   274: istore 7
-    //   276: iload 9
-    //   278: istore 12
-    //   280: iload_1
-    //   281: istore 4
-    //   283: iload 9
-    //   285: istore 13
-    //   287: iload 9
-    //   289: istore 14
-    //   291: iload_1
-    //   292: istore 5
-    //   294: iload 9
-    //   296: istore 15
-    //   298: iload_1
-    //   299: istore 6
-    //   301: iload 9
-    //   303: istore 16
-    //   305: aload 30
-    //   307: getfield 111	bfmg:jdField_a_of_type_Long	J
-    //   310: lstore 17
-    //   312: iload 9
-    //   314: istore 11
+    //   195: istore 4
+    //   197: iload 22
+    //   199: istore 24
+    //   201: iload 22
+    //   203: istore 25
+    //   205: iload_2
+    //   206: istore 5
+    //   208: iload 22
+    //   210: istore 26
+    //   212: iload_2
+    //   213: istore 6
+    //   215: iload 22
+    //   217: istore 28
+    //   219: iload 22
+    //   221: istore 29
+    //   223: aload 32
+    //   225: ldc 102
+    //   227: invokevirtual 108	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   230: istore_1
+    //   231: goto +6 -> 237
+    //   234: bipush 252
+    //   236: istore_1
+    //   237: iload_1
+    //   238: ifeq +557 -> 795
+    //   241: iload 22
+    //   243: istore 21
+    //   245: iload_2
+    //   246: istore_1
+    //   247: iload 22
+    //   249: istore 23
+    //   251: iload_2
+    //   252: istore 4
+    //   254: iload 22
+    //   256: istore 24
+    //   258: iload 22
+    //   260: istore 25
+    //   262: iload_2
+    //   263: istore 5
+    //   265: iload 22
+    //   267: istore 26
+    //   269: iload_2
+    //   270: istore 6
+    //   272: iload 22
+    //   274: istore 27
+    //   276: iload_2
+    //   277: istore 7
+    //   279: iload 22
+    //   281: istore 28
+    //   283: iload 22
+    //   285: istore 29
+    //   287: aload 31
+    //   289: getfield 97	com/tencent/open/base/http/HttpBaseUtil$Statistic:a	Ljava/lang/String;
+    //   292: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   295: ifne +6 -> 301
+    //   298: goto +497 -> 795
+    //   301: iload 21
+    //   303: istore 23
+    //   305: iload_1
+    //   306: istore 4
+    //   308: iload 21
+    //   310: istore 24
+    //   312: iload 21
+    //   314: istore 25
     //   316: iload_1
-    //   317: istore 7
-    //   319: iload 9
-    //   321: istore 12
+    //   317: istore 5
+    //   319: iload 21
+    //   321: istore 26
     //   323: iload_1
-    //   324: istore 4
-    //   326: iload 9
-    //   328: istore 14
+    //   324: istore 6
+    //   326: iload 21
+    //   328: istore 27
     //   330: iload_1
-    //   331: istore 5
-    //   333: iload 9
-    //   335: istore 15
-    //   337: iload_1
-    //   338: istore 6
-    //   340: iload 9
-    //   342: istore 16
-    //   344: aload 30
-    //   346: getfield 113	bfmg:b	J
-    //   349: lstore 27
-    //   351: iload_1
-    //   352: istore_2
-    //   353: lload 23
-    //   355: lstore 21
-    //   357: lload 17
-    //   359: lstore 19
-    //   361: lload 27
-    //   363: lstore 17
-    //   365: iload_3
-    //   366: istore_1
-    //   367: iload_1
-    //   368: istore_3
-    //   369: iload 9
-    //   371: istore 10
-    //   373: lload 17
-    //   375: lstore 25
-    //   377: lload 19
-    //   379: lstore 27
-    //   381: lload 21
-    //   383: lstore 23
-    //   385: iload_2
-    //   386: istore 4
-    //   388: iload_2
-    //   389: iload 8
-    //   391: if_icmplt -317 -> 74
-    //   394: lload 17
-    //   396: lstore 25
-    //   398: aload_0
-    //   399: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   402: ldc 78
-    //   404: lload 21
-    //   406: lload 19
-    //   408: lload 25
-    //   410: iload_1
-    //   411: invokestatic 118	bfbm:a	()Lbfbm;
-    //   414: invokevirtual 120	bfbm:a	()J
-    //   417: ldc 122
-    //   419: aconst_null
-    //   420: iconst_0
-    //   421: invokevirtual 125	bfhz:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;Z)V
-    //   424: iload 9
-    //   426: ifeq +257 -> 683
-    //   429: invokestatic 130	bfib:a	()Lbfib;
-    //   432: ldc 132
-    //   434: invokevirtual 135	bfib:a	(Ljava/lang/String;)V
-    //   437: aload_0
-    //   438: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   441: astore 29
-    //   443: aload 29
-    //   445: monitorenter
-    //   446: aload_0
-    //   447: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   450: getfield 138	bfhz:b	Ljava/util/ArrayList;
-    //   453: invokevirtual 143	java/util/ArrayList:clear	()V
-    //   456: aload 29
-    //   458: monitorexit
-    //   459: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   462: ifeq +261 -> 723
-    //   465: ldc 45
-    //   467: iconst_2
-    //   468: new 47	java/lang/StringBuilder
-    //   471: dup
-    //   472: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   475: ldc 145
-    //   477: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: iload 9
-    //   482: invokevirtual 148	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   485: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   488: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   491: return
-    //   492: astore 29
-    //   494: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   497: ifeq +226 -> 723
-    //   500: ldc 45
-    //   502: iconst_2
-    //   503: ldc 150
-    //   505: aload 29
-    //   507: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   510: return
-    //   511: astore 31
-    //   513: bipush 252
-    //   515: istore_1
-    //   516: goto -307 -> 209
-    //   519: astore 30
-    //   521: invokestatic 76	android/os/SystemClock:elapsedRealtime	()J
-    //   524: lstore 21
-    //   526: iload 7
-    //   528: istore_2
-    //   529: bipush 249
-    //   531: istore_1
-    //   532: lconst_0
-    //   533: lstore 17
-    //   535: lconst_0
-    //   536: lstore 19
-    //   538: iload 11
-    //   540: istore 9
-    //   542: goto -175 -> 367
-    //   545: astore 30
-    //   547: invokestatic 76	android/os/SystemClock:elapsedRealtime	()J
-    //   550: lstore 21
-    //   552: lconst_0
-    //   553: lstore 19
-    //   555: lconst_0
-    //   556: lstore 17
-    //   558: bipush 248
-    //   560: istore_1
-    //   561: iload 12
-    //   563: istore 9
-    //   565: iload 4
-    //   567: istore_2
-    //   568: goto -201 -> 367
-    //   571: astore 29
-    //   573: aload_0
-    //   574: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   577: astore 29
-    //   579: aload 29
-    //   581: monitorenter
-    //   582: aload_0
-    //   583: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   586: getfield 138	bfhz:b	Ljava/util/ArrayList;
-    //   589: invokevirtual 143	java/util/ArrayList:clear	()V
-    //   592: aload 29
-    //   594: monitorexit
-    //   595: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   598: ifeq +125 -> 723
-    //   601: ldc 45
-    //   603: iconst_2
-    //   604: ldc 155
-    //   606: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   609: return
-    //   610: astore 30
-    //   612: aload 29
-    //   614: monitorexit
-    //   615: aload 30
-    //   617: athrow
-    //   618: astore 29
-    //   620: iload 13
-    //   622: istore 9
-    //   624: aload 29
-    //   626: invokevirtual 158	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException:getMessage	()Ljava/lang/String;
-    //   629: ldc 160
-    //   631: ldc 162
-    //   633: invokevirtual 168	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   636: invokestatic 173	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   639: istore_1
-    //   640: iload_1
-    //   641: istore_3
-    //   642: iload_3
-    //   643: istore_1
-    //   644: lload 23
-    //   646: lstore 21
-    //   648: lload 27
-    //   650: lstore 19
-    //   652: goto -254 -> 398
-    //   655: astore 30
-    //   657: lconst_0
-    //   658: lstore 19
-    //   660: lconst_0
-    //   661: lstore 17
-    //   663: aload 30
-    //   665: invokestatic 178	bfmk:a	(Ljava/io/IOException;)I
-    //   668: istore_1
-    //   669: iload 14
-    //   671: istore 9
-    //   673: lload 23
-    //   675: lstore 21
-    //   677: iload 5
-    //   679: istore_2
-    //   680: goto -313 -> 367
-    //   683: invokestatic 130	bfib:a	()Lbfib;
-    //   686: ldc 132
-    //   688: aload_0
-    //   689: getfield 12	com/tencent/open/agent/report/ReportCenter$5:this$0	Lbfhz;
-    //   692: getfield 138	bfhz:b	Ljava/util/ArrayList;
-    //   695: invokevirtual 181	bfib:a	(Ljava/lang/String;Ljava/util/List;)V
-    //   698: goto -261 -> 437
-    //   701: astore 30
-    //   703: aload 29
-    //   705: monitorexit
-    //   706: aload 30
-    //   708: athrow
-    //   709: astore 29
-    //   711: goto -69 -> 642
-    //   714: astore 29
-    //   716: lload 17
-    //   718: lstore 27
-    //   720: goto -96 -> 624
-    //   723: return
-    //   724: iconst_1
-    //   725: istore 9
-    //   727: iload 8
-    //   729: istore_1
-    //   730: goto -461 -> 269
-    //   733: astore 30
-    //   735: lconst_0
-    //   736: lstore 19
-    //   738: lconst_0
-    //   739: lstore 17
-    //   741: bipush 252
-    //   743: istore_1
-    //   744: iload 15
-    //   746: istore 9
-    //   748: lload 23
-    //   750: lstore 21
-    //   752: iload 6
-    //   754: istore_2
-    //   755: goto -388 -> 367
-    //   758: astore 30
-    //   760: lconst_0
-    //   761: lstore 19
-    //   763: lconst_0
-    //   764: lstore 17
-    //   766: bipush 250
-    //   768: istore_1
-    //   769: iload 8
-    //   771: istore_2
-    //   772: iload 16
-    //   774: istore 9
-    //   776: lload 23
-    //   778: lstore 21
-    //   780: goto -413 -> 367
+    //   331: istore 7
+    //   333: iload 21
+    //   335: istore 28
+    //   337: iload 21
+    //   339: istore 29
+    //   341: aload 31
+    //   343: getfield 118	com/tencent/open/base/http/HttpBaseUtil$Statistic:b	J
+    //   346: lstore 11
+    //   348: iload 21
+    //   350: istore 23
+    //   352: iload_1
+    //   353: istore 4
+    //   355: iload 21
+    //   357: istore 25
+    //   359: iload_1
+    //   360: istore 5
+    //   362: iload 21
+    //   364: istore 26
+    //   366: iload_1
+    //   367: istore 6
+    //   369: iload 21
+    //   371: istore 27
+    //   373: iload_1
+    //   374: istore 7
+    //   376: iload 21
+    //   378: istore 28
+    //   380: iload 21
+    //   382: istore 29
+    //   384: aload 31
+    //   386: getfield 120	com/tencent/open/base/http/HttpBaseUtil$Statistic:c	J
+    //   389: lstore 13
+    //   391: lload 13
+    //   393: lstore 15
+    //   395: iload_3
+    //   396: istore_2
+    //   397: lload 9
+    //   399: lstore 19
+    //   401: lload 11
+    //   403: lstore 13
+    //   405: lload 15
+    //   407: lstore 11
+    //   409: goto +415 -> 824
+    //   412: astore 30
+    //   414: goto +68 -> 482
+    //   417: lconst_0
+    //   418: lstore 15
+    //   420: lconst_0
+    //   421: lstore 11
+    //   423: bipush 250
+    //   425: istore_1
+    //   426: iload 29
+    //   428: istore 21
+    //   430: lload 9
+    //   432: lstore 13
+    //   434: lload 15
+    //   436: lstore 9
+    //   438: goto +164 -> 602
+    //   441: iload 8
+    //   443: istore_1
+    //   444: bipush 250
+    //   446: istore_2
+    //   447: iload 28
+    //   449: istore 21
+    //   451: goto +363 -> 814
+    //   454: astore 31
+    //   456: aload 31
+    //   458: invokestatic 125	com/tencent/open/base/http/HttpCgiAsyncTask:a	(Ljava/io/IOException;)I
+    //   461: istore_2
+    //   462: iload 4
+    //   464: istore_1
+    //   465: iload 23
+    //   467: istore 21
+    //   469: goto +345 -> 814
+    //   472: astore 30
+    //   474: lload 17
+    //   476: lstore 11
+    //   478: iload 24
+    //   480: istore 21
+    //   482: aload 30
+    //   484: invokevirtual 128	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException:getMessage	()Ljava/lang/String;
+    //   487: ldc 130
+    //   489: ldc 132
+    //   491: invokevirtual 138	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   494: invokestatic 143	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   497: istore_1
+    //   498: iload_1
+    //   499: istore_3
+    //   500: iload_3
+    //   501: istore_1
+    //   502: lload 11
+    //   504: lstore 17
+    //   506: lload 15
+    //   508: lstore 11
+    //   510: lload 9
+    //   512: lstore 13
+    //   514: lload 17
+    //   516: lstore 9
+    //   518: goto +343 -> 861
+    //   521: aload_0
+    //   522: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   525: astore 30
+    //   527: aload 30
+    //   529: monitorenter
+    //   530: aload_0
+    //   531: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   534: getfield 146	com/tencent/open/agent/report/ReportCenter:d	Ljava/util/ArrayList;
+    //   537: invokevirtual 151	java/util/ArrayList:clear	()V
+    //   540: aload 30
+    //   542: monitorexit
+    //   543: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   546: ifeq +11 -> 557
+    //   549: ldc 66
+    //   551: iconst_2
+    //   552: ldc 153
+    //   554: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   557: return
+    //   558: astore 31
+    //   560: aload 30
+    //   562: monitorexit
+    //   563: aload 31
+    //   565: athrow
+    //   566: invokestatic 83	android/os/SystemClock:elapsedRealtime	()J
+    //   569: lstore 9
+    //   571: iload 6
+    //   573: istore_1
+    //   574: bipush 248
+    //   576: istore_2
+    //   577: iload 26
+    //   579: istore 21
+    //   581: goto +233 -> 814
+    //   584: invokestatic 83	android/os/SystemClock:elapsedRealtime	()J
+    //   587: lstore 9
+    //   589: iload 5
+    //   591: istore_1
+    //   592: bipush 249
+    //   594: istore_2
+    //   595: iload 25
+    //   597: istore 21
+    //   599: goto +215 -> 814
+    //   602: aload_0
+    //   603: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   606: ldc 85
+    //   608: lload 13
+    //   610: lload 9
+    //   612: lload 11
+    //   614: iload_1
+    //   615: invokestatic 158	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
+    //   618: invokevirtual 160	com/tencent/open/adapter/CommonDataAdapter:c	()J
+    //   621: ldc 162
+    //   623: aconst_null
+    //   624: iconst_0
+    //   625: aload_0
+    //   626: getfield 16	com/tencent/open/agent/report/ReportCenter$5:a	Z
+    //   629: invokevirtual 165	com/tencent/open/agent/report/ReportCenter:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;ZZ)V
+    //   632: iload 21
+    //   634: ifeq +14 -> 648
+    //   637: invokestatic 170	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
+    //   640: ldc 172
+    //   642: invokevirtual 175	com/tencent/open/agent/report/ReportDatabaseHelper:c	(Ljava/lang/String;)V
+    //   645: goto +18 -> 663
+    //   648: invokestatic 170	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
+    //   651: ldc 172
+    //   653: aload_0
+    //   654: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   657: getfield 146	com/tencent/open/agent/report/ReportCenter:d	Ljava/util/ArrayList;
+    //   660: invokevirtual 178	com/tencent/open/agent/report/ReportDatabaseHelper:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   663: aload_0
+    //   664: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   667: astore 30
+    //   669: aload 30
+    //   671: monitorenter
+    //   672: aload_0
+    //   673: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   676: getfield 146	com/tencent/open/agent/report/ReportCenter:d	Ljava/util/ArrayList;
+    //   679: invokevirtual 151	java/util/ArrayList:clear	()V
+    //   682: aload 30
+    //   684: monitorexit
+    //   685: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   688: ifeq +66 -> 754
+    //   691: new 51	java/lang/StringBuilder
+    //   694: dup
+    //   695: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   698: astore 30
+    //   700: aload 30
+    //   702: ldc 180
+    //   704: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   707: pop
+    //   708: aload 30
+    //   710: iload 21
+    //   712: invokevirtual 183	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   715: pop
+    //   716: ldc 66
+    //   718: iconst_2
+    //   719: aload 30
+    //   721: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   724: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   727: return
+    //   728: astore 31
+    //   730: aload 30
+    //   732: monitorexit
+    //   733: aload 31
+    //   735: athrow
+    //   736: astore 30
+    //   738: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   741: ifeq +13 -> 754
+    //   744: ldc 66
+    //   746: iconst_2
+    //   747: ldc 185
+    //   749: aload 30
+    //   751: invokestatic 188	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   754: return
+    //   755: astore 31
+    //   757: goto -173 -> 584
+    //   760: astore 31
+    //   762: goto -196 -> 566
+    //   765: astore 31
+    //   767: goto +37 -> 804
+    //   770: astore 30
+    //   772: goto -251 -> 521
+    //   775: astore 31
+    //   777: goto -336 -> 441
+    //   780: astore 30
+    //   782: goto -365 -> 417
+    //   785: astore 32
+    //   787: goto -553 -> 234
+    //   790: astore 30
+    //   792: goto -292 -> 500
+    //   795: iload 8
+    //   797: istore_1
+    //   798: iconst_1
+    //   799: istore 21
+    //   801: goto -500 -> 301
+    //   804: iload 7
+    //   806: istore_1
+    //   807: bipush 252
+    //   809: istore_2
+    //   810: iload 27
+    //   812: istore 21
+    //   814: lconst_0
+    //   815: lstore 13
+    //   817: lconst_0
+    //   818: lstore 11
+    //   820: lload 9
+    //   822: lstore 19
+    //   824: iload_1
+    //   825: istore 4
+    //   827: iload 21
+    //   829: istore 22
+    //   831: iload_2
+    //   832: istore_3
+    //   833: lload 19
+    //   835: lstore 9
+    //   837: lload 13
+    //   839: lstore 17
+    //   841: lload 11
+    //   843: lstore 15
+    //   845: iload_1
+    //   846: iload 8
+    //   848: if_icmplt -764 -> 84
+    //   851: iload_2
+    //   852: istore_1
+    //   853: lload 13
+    //   855: lstore 9
+    //   857: lload 19
+    //   859: lstore 13
+    //   861: goto -259 -> 602
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	783	0	this	5
-    //   208	561	1	i	int
-    //   78	694	2	j	int
-    //   73	570	3	k	int
-    //   56	510	4	m	int
-    //   102	576	5	n	int
-    //   109	644	6	i1	int
-    //   84	443	7	i2	int
-    //   53	717	8	i3	int
-    //   215	560	9	bool1	boolean
-    //   59	313	10	bool2	boolean
-    //   81	458	11	bool3	boolean
-    //   88	474	12	bool4	boolean
-    //   95	526	13	bool5	boolean
-    //   99	571	14	bool6	boolean
-    //   106	639	15	bool7	boolean
-    //   113	660	16	bool8	boolean
-    //   310	455	17	l1	long
-    //   359	403	19	l2	long
-    //   355	424	21	l3	long
-    //   64	713	23	l4	long
-    //   70	339	25	l5	long
-    //   67	652	27	l6	long
-    //   492	14	29	localException1	java.lang.Exception
-    //   571	1	29	localNetworkUnavailableException	com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException
-    //   618	86	29	localHttpStatusException1	com.tencent.open.base.http.HttpBaseUtil.HttpStatusException
-    //   709	1	29	localException2	java.lang.Exception
-    //   714	1	29	localHttpStatusException2	com.tencent.open.base.http.HttpBaseUtil.HttpStatusException
-    //   124	221	30	localbfmg	bfmg
-    //   519	1	30	localConnectTimeoutException	org.apache.http.conn.ConnectTimeoutException
-    //   545	1	30	localSocketTimeoutException	java.net.SocketTimeoutException
-    //   610	6	30	localObject2	Object
-    //   655	9	30	localIOException	java.io.IOException
-    //   701	6	30	localObject3	Object
-    //   733	1	30	localJSONException1	org.json.JSONException
-    //   758	1	30	localException3	java.lang.Exception
-    //   170	32	31	localJSONObject	org.json.JSONObject
-    //   511	1	31	localJSONException2	org.json.JSONException
+    //   0	864	0	this	5
+    //   230	623	1	i	int
+    //   88	764	2	j	int
+    //   77	756	3	k	int
+    //   71	755	4	m	int
+    //   105	485	5	n	int
+    //   112	460	6	i1	int
+    //   119	686	7	i2	int
+    //   63	786	8	i3	int
+    //   68	788	9	l1	long
+    //   346	496	11	l2	long
+    //   389	471	13	l3	long
+    //   82	762	15	l4	long
+    //   79	761	17	l5	long
+    //   399	459	19	l6	long
+    //   243	585	21	bool1	boolean
+    //   74	756	22	bool2	boolean
+    //   91	375	23	bool3	boolean
+    //   98	381	24	bool4	boolean
+    //   102	494	25	bool5	boolean
+    //   109	469	26	bool6	boolean
+    //   116	695	27	bool7	boolean
+    //   123	325	28	bool8	boolean
+    //   127	300	29	bool9	boolean
+    //   7	127	30	localBundle	android.os.Bundle
+    //   412	1	30	localHttpStatusException1	com.tencent.open.base.http.HttpBaseUtil.HttpStatusException
+    //   472	11	30	localHttpStatusException2	com.tencent.open.base.http.HttpBaseUtil.HttpStatusException
+    //   736	14	30	localException1	java.lang.Exception
+    //   770	1	30	localNetworkUnavailableException	com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException
+    //   780	1	30	localIncompatibleClassChangeError	java.lang.IncompatibleClassChangeError
+    //   790	1	30	localException2	java.lang.Exception
+    //   28	357	31	localObject2	Object
+    //   454	3	31	localIOException	java.io.IOException
+    //   558	6	31	localObject3	Object
+    //   728	6	31	localObject4	Object
+    //   755	1	31	localConnectTimeoutException	org.apache.http.conn.ConnectTimeoutException
+    //   760	1	31	localSocketTimeoutException	java.net.SocketTimeoutException
+    //   765	1	31	localJSONException1	org.json.JSONException
+    //   775	1	31	localException3	java.lang.Exception
+    //   188	36	32	localJSONObject	org.json.JSONObject
+    //   785	1	32	localJSONException2	org.json.JSONException
     // Exception table:
     //   from	to	target	type
-    //   0	9	492	java/lang/Exception
-    //   15	50	492	java/lang/Exception
-    //   50	55	492	java/lang/Exception
-    //   61	66	492	java/lang/Exception
-    //   398	424	492	java/lang/Exception
-    //   429	437	492	java/lang/Exception
-    //   437	446	492	java/lang/Exception
-    //   459	491	492	java/lang/Exception
-    //   521	526	492	java/lang/Exception
-    //   547	552	492	java/lang/Exception
-    //   573	582	492	java/lang/Exception
-    //   595	609	492	java/lang/Exception
-    //   615	618	492	java/lang/Exception
-    //   663	669	492	java/lang/Exception
-    //   683	698	492	java/lang/Exception
-    //   706	709	492	java/lang/Exception
-    //   201	209	511	org/json/JSONException
-    //   115	126	519	org/apache/http/conn/ConnectTimeoutException
-    //   162	172	519	org/apache/http/conn/ConnectTimeoutException
-    //   201	209	519	org/apache/http/conn/ConnectTimeoutException
-    //   255	266	519	org/apache/http/conn/ConnectTimeoutException
-    //   305	312	519	org/apache/http/conn/ConnectTimeoutException
-    //   344	351	519	org/apache/http/conn/ConnectTimeoutException
-    //   115	126	545	java/net/SocketTimeoutException
-    //   162	172	545	java/net/SocketTimeoutException
-    //   201	209	545	java/net/SocketTimeoutException
-    //   255	266	545	java/net/SocketTimeoutException
-    //   305	312	545	java/net/SocketTimeoutException
-    //   344	351	545	java/net/SocketTimeoutException
-    //   115	126	571	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
-    //   162	172	571	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
-    //   201	209	571	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
-    //   255	266	571	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
-    //   305	312	571	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
-    //   344	351	571	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
-    //   582	595	610	finally
-    //   612	615	610	finally
-    //   115	126	618	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
-    //   162	172	618	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
-    //   201	209	618	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
-    //   255	266	618	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
-    //   305	312	618	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
-    //   115	126	655	java/io/IOException
-    //   162	172	655	java/io/IOException
-    //   201	209	655	java/io/IOException
-    //   255	266	655	java/io/IOException
-    //   305	312	655	java/io/IOException
-    //   344	351	655	java/io/IOException
-    //   446	459	701	finally
-    //   703	706	701	finally
-    //   624	640	709	java/lang/Exception
-    //   344	351	714	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
-    //   115	126	733	org/json/JSONException
-    //   162	172	733	org/json/JSONException
-    //   255	266	733	org/json/JSONException
-    //   305	312	733	org/json/JSONException
-    //   344	351	733	org/json/JSONException
-    //   115	126	758	java/lang/Exception
-    //   162	172	758	java/lang/Exception
-    //   201	209	758	java/lang/Exception
-    //   255	266	758	java/lang/Exception
-    //   305	312	758	java/lang/Exception
-    //   344	351	758	java/lang/Exception
+    //   384	391	412	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
+    //   129	140	454	java/io/IOException
+    //   180	190	454	java/io/IOException
+    //   223	231	454	java/io/IOException
+    //   287	298	454	java/io/IOException
+    //   341	348	454	java/io/IOException
+    //   384	391	454	java/io/IOException
+    //   129	140	472	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
+    //   180	190	472	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
+    //   223	231	472	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
+    //   287	298	472	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
+    //   341	348	472	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException
+    //   530	543	558	finally
+    //   560	563	558	finally
+    //   672	685	728	finally
+    //   730	733	728	finally
+    //   0	9	736	java/lang/Exception
+    //   15	60	736	java/lang/Exception
+    //   60	70	736	java/lang/Exception
+    //   456	462	736	java/lang/Exception
+    //   521	530	736	java/lang/Exception
+    //   543	557	736	java/lang/Exception
+    //   563	566	736	java/lang/Exception
+    //   566	571	736	java/lang/Exception
+    //   584	589	736	java/lang/Exception
+    //   602	632	736	java/lang/Exception
+    //   637	645	736	java/lang/Exception
+    //   648	663	736	java/lang/Exception
+    //   663	672	736	java/lang/Exception
+    //   685	727	736	java/lang/Exception
+    //   733	736	736	java/lang/Exception
+    //   129	140	755	org/apache/http/conn/ConnectTimeoutException
+    //   180	190	755	org/apache/http/conn/ConnectTimeoutException
+    //   223	231	755	org/apache/http/conn/ConnectTimeoutException
+    //   287	298	755	org/apache/http/conn/ConnectTimeoutException
+    //   341	348	755	org/apache/http/conn/ConnectTimeoutException
+    //   384	391	755	org/apache/http/conn/ConnectTimeoutException
+    //   129	140	760	java/net/SocketTimeoutException
+    //   180	190	760	java/net/SocketTimeoutException
+    //   223	231	760	java/net/SocketTimeoutException
+    //   287	298	760	java/net/SocketTimeoutException
+    //   341	348	760	java/net/SocketTimeoutException
+    //   384	391	760	java/net/SocketTimeoutException
+    //   129	140	765	org/json/JSONException
+    //   180	190	765	org/json/JSONException
+    //   287	298	765	org/json/JSONException
+    //   341	348	765	org/json/JSONException
+    //   384	391	765	org/json/JSONException
+    //   129	140	770	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
+    //   180	190	770	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
+    //   223	231	770	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
+    //   287	298	770	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
+    //   341	348	770	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
+    //   384	391	770	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException
+    //   129	140	775	java/lang/Exception
+    //   180	190	775	java/lang/Exception
+    //   223	231	775	java/lang/Exception
+    //   287	298	775	java/lang/Exception
+    //   341	348	775	java/lang/Exception
+    //   384	391	775	java/lang/Exception
+    //   129	140	780	java/lang/IncompatibleClassChangeError
+    //   180	190	780	java/lang/IncompatibleClassChangeError
+    //   223	231	780	java/lang/IncompatibleClassChangeError
+    //   287	298	780	java/lang/IncompatibleClassChangeError
+    //   341	348	780	java/lang/IncompatibleClassChangeError
+    //   384	391	780	java/lang/IncompatibleClassChangeError
+    //   223	231	785	org/json/JSONException
+    //   482	498	790	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.5
  * JD-Core Version:    0.7.0.1
  */

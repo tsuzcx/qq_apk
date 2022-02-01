@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference mm:title="@string/ecy" mm:key="more_tab_setting_personal_info" mm:layout="@layout/ait" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/ebh" mm:icon="@raw/icons_outlined_wallet" mm:iconColor="@color/ai" mm:key="settings_mm_wallet" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/ebf" mm:icon="@raw/icons_outlined_colorful_favorites" mm:key="settings_mm_favorite" />
-    <NormalIconPreference mm:title="@string/ec0" mm:icon="@raw/icons_outlined_album" mm:iconColor="@color/bd" mm:key="settings_my_album" />
-    <NormalIconPreference mm:title="@string/ebd" mm:icon="@raw/more_my_card" mm:key="settings_mm_cardpackage" />
-    <NormalIconPreference mm:title="@string/e_s" mm:icon="@raw/icons_outlined_emoji" mm:iconColor="@color/c6" mm:key="settings_emoji_store" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/efx" mm:icon="@raw/icons_outlined_setting" mm:iconColor="@color/bd" mm:key="more_setting" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/f4t" mm:icon="@raw/more_ui_show" mm:key="more_uishow" />
+    <PreferenceTitleCategory android:title="@string/bd7" />
+    <NormalIconPreference android:icon="@raw/invite_friends_by_message" android:key="invite_friends_by_message" android:title="@string/frz" />
+    <NormalIconPreference android:icon="@raw/invite_friends_by_mail" android:key="invite_friends_by_mail" android:title="@string/frx" />
+    <NormalIconPreference android:icon="@raw/invite_friends_by_whatsapp" android:key="invite_friends_by_whatsapp" android:title="@string/fs1" />
+    <NormalIconPreference android:icon="@raw/invite_friends_by_facebook" android:key="invite_friends_by_facebook" android:title="@string/frv" />
+    <NormalIconPreference android:icon="@raw/invite_friends_by_twitter" android:key="invite_friends_by_twitter" android:title="@string/fs0" />
     <PreferenceCategory />
-    <Preference mm:key="settings_privacy_agreements" mm:layout="@layout/ah7" />
 </PreferenceScreen>

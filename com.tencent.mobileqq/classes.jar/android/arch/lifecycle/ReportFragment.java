@@ -9,7 +9,7 @@ import android.support.annotation.RestrictTo;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ReportFragment
-  extends Fragment
+  extends com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment
 {
   private static final String REPORT_FRAGMENT_TAG = "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag";
   private ReportFragment.ActivityInitializationListener mProcessListener;
@@ -17,18 +17,18 @@ public class ReportFragment
   private void dispatch(Lifecycle.Event paramEvent)
   {
     Object localObject = getActivity();
-    if ((localObject instanceof LifecycleRegistryOwner)) {
-      ((LifecycleRegistryOwner)localObject).getLifecycle().handleLifecycleEvent(paramEvent);
-    }
-    do
+    if ((localObject instanceof LifecycleRegistryOwner))
     {
-      do
-      {
-        return;
-      } while (!(localObject instanceof LifecycleOwner));
+      ((LifecycleRegistryOwner)localObject).getLifecycle().handleLifecycleEvent(paramEvent);
+      return;
+    }
+    if ((localObject instanceof LifecycleOwner))
+    {
       localObject = ((LifecycleOwner)localObject).getLifecycle();
-    } while (!(localObject instanceof LifecycleRegistry));
-    ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
+      if ((localObject instanceof LifecycleRegistry)) {
+        ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
+      }
+    }
   }
   
   private void dispatchCreate(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
@@ -114,7 +114,7 @@ public class ReportFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.ReportFragment
  * JD-Core Version:    0.7.0.1
  */

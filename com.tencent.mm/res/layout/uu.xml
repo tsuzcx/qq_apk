@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.SmileySubGrid android:id="@id/a01" android:visibility="gone" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/w6" android:cacheColorHint="#00000000" android:fastScrollEnabled="false" android:fadeScrollbars="false" android:fastScrollAlwaysVisible="false" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bhp" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="bottom|center" android:id="@id/bhq" android:layout_width="65.0dip" android:layout_height="65.0dip" android:src="@raw/emoji_add_capture" android:contentDescription="@string/ba6" />
-        <TextView android:textSize="17.0dip" android:textColor="#e6000000" android:id="@id/bhr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/ba6" />
-        <TextView android:textSize="12.0dip" android:textColor="#80000000" android:id="@id/bhs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bai" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.plugin.sns.ui.SnsTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:id="@id/c2h" android:background="@drawable/au1" android:paddingLeft="2.0dip" android:paddingTop="3.0dip" android:paddingRight="2.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:singleLine="true" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:id="@id/c2g" android:background="@drawable/aud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:gravity="center" android:id="@id/c2d" android:background="@drawable/ati" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" />
+</LinearLayout>

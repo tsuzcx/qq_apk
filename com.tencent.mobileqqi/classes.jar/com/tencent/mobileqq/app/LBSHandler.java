@@ -221,7 +221,7 @@ public class LBSHandler
   
   public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n()) {
       return;
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "NearbyGroup.ReqGetAreaList");
@@ -234,7 +234,7 @@ public class LBSHandler
   
   public void a(int paramInt1, boolean paramBoolean, long[] paramArrayOfLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n()) {
       return;
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "EncounterSvc.ReqGetEncounter");
@@ -350,7 +350,7 @@ public class LBSHandler
           bool1 = paramToServiceMsg.extraData.getBoolean("k_visible_for_near_people");
           if (paramObject == null)
           {
-            bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n();
+            bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.o();
             if (QLog.isColorLevel()) {
               QLog.i("Q.security", 2, "CMD_SET_PEOPLE_VISIBLE| visible = " + bool1 + ", fail");
             }
@@ -487,7 +487,7 @@ public class LBSHandler
           PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
           if ((paramObject == null) || (((RespSetStateSwitch)paramObject).stHeader.eReplyCode != 0))
           {
-            bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.o();
+            bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.p();
             bool2 = false;
           }
           for (;;)
@@ -626,7 +626,7 @@ public class LBSHandler
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n()) {
       return;
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "NearbyGroup.ReqGetGroupInArea");
@@ -676,7 +676,7 @@ public class LBSHandler
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     short s2 = 0;
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n()) {
       return;
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "NearbyGroup.GetGroupList");
@@ -732,7 +732,7 @@ public class LBSHandler
   
   public void a(byte[] paramArrayOfByte)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n()) {
       return;
     }
     ToServiceMsg localToServiceMsg = a("LBS.AddressService");

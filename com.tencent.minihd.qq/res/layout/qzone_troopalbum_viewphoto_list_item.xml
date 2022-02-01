@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qzone_white" android:paddingLeft="@dimen/album_grid_edge_none_padding" android:paddingTop="@dimen/album_grid_edge_padding_half" android:paddingRight="@dimen/album_grid_edge_none_padding" android:paddingBottom="@dimen/album_grid_edge_padding_half" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="container_root"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/timeData_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_marginBottom="32.0dip">
+        <CheckBox android:id="@id/item_select_all" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@drawable/qzone_checkbox_bg2" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_hei" android:id="@id/timeData" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo1" android:layout_width="@dimen/local_photo_list_cover_w" android:layout_height="@dimen/local_photo_list_cover_w" />
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo2" android:layout_width="@dimen/local_photo_list_cover_w" android:layout_height="@dimen/local_photo_list_cover_w" android:layout_marginLeft="@dimen/album_grid_item_horizontal_spacing" />
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo3" android:layout_width="@dimen/local_photo_list_cover_w" android:layout_height="@dimen/local_photo_list_cover_w" android:layout_marginLeft="@dimen/album_grid_item_horizontal_spacing" />
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo4" android:layout_width="@dimen/local_photo_list_cover_w" android:layout_height="@dimen/local_photo_list_cover_w" android:layout_marginLeft="@dimen/album_grid_item_horizontal_spacing" />
+    </LinearLayout>
+</LinearLayout>

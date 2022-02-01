@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sport.a.d;
 
 final class ExdeviceRankInfoUI$6
   implements View.OnClickListener
@@ -12,21 +16,25 @@ final class ExdeviceRankInfoUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(20140);
-    com.tencent.mm.plugin.sport.a.d.kS(24);
+    AppMethodBeat.i(24212);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    d.rG(24);
     paramView = new Intent();
     paramView.putExtra("Select_Talker_Name", "gh_43f2581f6fd6");
     paramView.putExtra("Select_block_List", "gh_43f2581f6fd6");
     paramView.putExtra("Select_Conv_Type", 3);
     paramView.putExtra("mutil_select_is_ret", true);
     paramView.putExtra("Select_Send_Card", true);
-    com.tencent.mm.bq.d.b(this.lPt, ".ui.transmit.SelectConversationUI", paramView, 3);
-    AppMethodBeat.o(20140);
+    c.d(this.yCI, ".ui.transmit.SelectConversationUI", paramView, 3);
+    a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(24212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI.6
  * JD-Core Version:    0.7.0.1
  */

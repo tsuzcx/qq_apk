@@ -20,14 +20,15 @@ public class RandomGenerator
   
   public long nextLong(long paramLong1, long paramLong2)
   {
-    if (paramLong2 - paramLong1 > 0L)
+    long l = paramLong2 - paramLong1;
+    if (l > 0L)
     {
-      long l2 = this.mRandom.nextLong() % (paramLong2 - paramLong1) + paramLong1;
-      long l1 = l2;
-      if (l2 < 0L) {
-        l1 = l2 + (paramLong2 - paramLong1);
+      paramLong2 = this.mRandom.nextLong() % l + paramLong1;
+      paramLong1 = paramLong2;
+      if (paramLong2 < 0L) {
+        paramLong1 = paramLong2 + l;
       }
-      return l1;
+      return paramLong1;
     }
     return 0L;
   }
@@ -45,7 +46,7 @@ public class RandomGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.RandomGenerator
  * JD-Core Version:    0.7.0.1
  */

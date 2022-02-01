@@ -1,385 +1,171 @@
 package com.tencent.mm.ui;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.Display;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jo;
-import com.tencent.mm.m.e;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.pluginsdk.f.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.applet.SecurityImage;
-import com.tencent.mm.ui.base.b;
-import java.util.Map;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.compatible.util.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.vendor.MIUI;
+import java.lang.reflect.Method;
 
-public final class v
+public class v
 {
-  static ProgressDialog eeN = null;
-  static SecurityImage gwg;
-  private static boolean zbS = false;
-  
-  static
+  public static int auk(int paramInt)
   {
-    gwg = null;
+    return ((int)((paramInt >> 24 & 0xFF) * 0.78F + 56.100006F) & 0xFF) << 24 | ((int)((paramInt >> 16 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 16 | ((int)((paramInt >> 8 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 8 | ((int)((paramInt & 0xFF) * 0.78F + 0.0F) & 0xFF) << 0;
   }
   
-  public static com.tencent.mm.ui.widget.b.c a(Activity paramActivity, String paramString1, String paramString2, Intent paramIntent)
+  public static Point bf(Context paramContext)
   {
-    AppMethodBeat.i(29610);
-    jo localjo = new jo();
-    localjo.cze.status = 0;
-    localjo.cze.aXG = 1;
-    com.tencent.mm.sdk.b.a.ymk.l(localjo);
-    paramActivity = com.tencent.mm.ui.base.h.a(paramActivity, paramString1, paramActivity.getString(2131297087), new v.1(paramString2, paramActivity, paramIntent), new v.2(paramString2, paramActivity, paramIntent));
-    AppMethodBeat.o(29610);
-    return paramActivity;
-  }
-  
-  public static boolean a(final Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent, String paramString)
-  {
-    AppMethodBeat.i(29609);
-    if (paramInt1 != 4)
+    AppMethodBeat.i(175980);
+    Point localPoint = new Point();
+    if (paramContext == null)
     {
-      AppMethodBeat.o(29609);
-      return false;
+      AppMethodBeat.o(175980);
+      return localPoint;
     }
-    ab.d("MicroMsg.MMErrorProcessor", "errType = " + paramInt1 + " errCode = " + paramInt2);
-    switch (paramInt2)
-    {
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    if (Build.VERSION.SDK_INT >= 17) {
+      paramContext.getRealSize(localPoint);
     }
     for (;;)
     {
-      AppMethodBeat.o(29609);
+      AppMethodBeat.o(175980);
+      return localPoint;
+      if (Build.VERSION.SDK_INT >= 14) {
+        try
+        {
+          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
+          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (Exception localException) {}
+      } else {
+        paramContext.getSize(localPoint);
+      }
+    }
+  }
+  
+  private static int bx(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(175975);
+    Rect localRect = new Rect();
+    ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (localRect.top > paramInt)
+    {
+      Log.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(175975);
+      return 0;
+    }
+    AppMethodBeat.o(175975);
+    return paramInt;
+  }
+  
+  public static boolean c(Window paramWindow, boolean paramBoolean)
+  {
+    AppMethodBeat.i(175978);
+    if ((paramWindow == null) || (paramWindow.getDecorView() == null))
+    {
+      AppMethodBeat.o(175978);
       return false;
-      ab.e("MicroMsg.MMErrorProcessor", "account expired=".concat(String.valueOf(paramInt2)));
-      com.tencent.mm.ui.base.h.a(paramActivity, 2131301418, 2131297087, new v.6(paramIntent, paramActivity));
-      AppMethodBeat.o(29609);
-      return true;
-      String str = aw.QD();
-      ab.e("MicroMsg.MMErrorProcessor", "account expired=" + paramInt2 + " lastKickReason=" + str);
-      paramString = new com.tencent.mm.g.a.w();
-      com.tencent.mm.sdk.b.a.ymk.l(paramString);
-      com.tencent.mm.kernel.a.hold();
-      paramString = new jo();
-      paramString.cze.status = 0;
-      paramString.cze.aXG = 1;
-      com.tencent.mm.sdk.b.a.ymk.l(paramString);
-      ah.getContext().getSharedPreferences("switch_account_preferences", 0).edit().putBoolean("last_logout_switch_account", false).commit();
-      if (zbS)
-      {
-        if (bo.isNullOrNil(str)) {}
-        for (paramActivity = "";; paramActivity = str)
-        {
-          ab.i("MicroMsg.MMErrorProcessor", "already show kickout dialog before, ignore. lastKickReason[%s]", new Object[] { paramActivity });
-          AppMethodBeat.o(29609);
-          return true;
-        }
+    }
+    if (jjJ())
+    {
+      paramWindow = paramWindow.getDecorView();
+      int i = paramWindow.getSystemUiVisibility();
+      if (paramBoolean) {
+        i |= 0x2000;
       }
-      if (!bo.isNullOrNil(str))
+      for (;;)
       {
-        paramString = com.tencent.mm.h.a.kO(str);
-        if (paramString != null)
-        {
-          ab.i("MicroMsg.MMErrorProcessor", "account expired br showType[%d]", new Object[] { Integer.valueOf(paramString.showType) });
-          if (((paramString.showType == 3) || (paramString.showType == 4)) && (paramString.a(paramActivity, new v.7(paramIntent, paramActivity, paramString), new v.8(paramIntent, paramActivity))))
-          {
-            zbS = true;
-            ab.i("MicroMsg.MMErrorProcessor", "show kickout dialog by new logic.");
-            AppMethodBeat.o(29609);
-            return true;
-          }
-        }
-      }
-      paramString = str;
-      Map localMap;
-      if (!bo.isNullOrNil(str))
-      {
-        paramString = str;
-        if (str.startsWith("<"))
-        {
-          localMap = br.F(str, "e");
-          paramString = str;
-          if (localMap != null)
-          {
-            paramString = str;
-            if (!bo.isNullOrNil((String)localMap.get(".e.Content")))
-            {
-              paramString = (String)localMap.get(".e.Content");
-              ab.i("MicroMsg.MMErrorProcessor", "account expired summerauthkick errmsg=" + paramString + " |v=" + localMap);
-            }
-          }
-        }
-      }
-      ab.i("MicroMsg.MMErrorProcessor", "account expired lastKickReason[%s]", new Object[] { paramString });
-      str = paramString;
-      if (bo.isNullOrNil(paramString)) {
-        str = com.tencent.mm.cb.a.aq(paramActivity, 2131301416);
-      }
-      com.tencent.mm.ui.base.h.a(paramActivity, str, paramActivity.getString(2131297087), new v.9(paramIntent, paramActivity), new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(29604);
-          if (this.zbT != null)
-          {
-            if (!(paramActivity instanceof LauncherUI)) {
-              paramActivity.finish();
-            }
-            paramActivity.startActivity(this.zbT);
-            b.K(paramActivity, this.zbT);
-            com.tencent.mm.platformtools.w.ct(paramActivity);
-          }
-          AppMethodBeat.o(29604);
-        }
-      });
-      zbS = true;
-      ab.i("MicroMsg.MMErrorProcessor", "show kickout dialog by old logic.");
-      AppMethodBeat.o(29609);
-      return true;
-      ab.e("MicroMsg.MMErrorProcessor", "account expired=".concat(String.valueOf(paramInt2)));
-      com.tencent.mm.ui.base.h.a(paramActivity, 2131296531, 2131297087, new v.11(paramIntent, paramActivity));
-      AppMethodBeat.o(29609);
-      return true;
-      ab.e("MicroMsg.MMErrorProcessor", "accout errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt2), paramString });
-      if ((!bo.isNullOrNil(paramString)) && (paramString.startsWith("autoauth_errmsg_"))) {
-        str = paramString.substring(16);
-      }
-      do
-      {
-        paramString = str;
-        if (!bo.isNullOrNil(str))
-        {
-          paramString = str;
-          if (str.startsWith("<"))
-          {
-            localMap = br.F(str, "e");
-            paramString = str;
-            if (localMap != null)
-            {
-              paramString = str;
-              if (!bo.isNullOrNil((String)localMap.get(".e.Content"))) {
-                paramString = (String)localMap.get(".e.Content");
-              }
-            }
-          }
-        }
-        str = paramString;
-        if (bo.isNullOrNil(paramString)) {
-          str = ah.getContext().getString(2131301418);
-        }
-        com.tencent.mm.ui.base.h.a(paramActivity, str, ah.getContext().getString(2131297087), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(29606);
-            if (this.zbT != null)
-            {
-              paramActivity.finish();
-              paramActivity.startActivity(this.zbT);
-              b.K(paramActivity, this.zbT);
-              com.tencent.mm.platformtools.w.ct(paramActivity);
-            }
-            AppMethodBeat.o(29606);
-          }
-        });
-        AppMethodBeat.o(29609);
+        paramWindow.setSystemUiVisibility(i);
+        AppMethodBeat.o(175978);
         return true;
-        str = paramString;
-      } while (paramInt2 != -104);
-      ab.i("MicroMsg.MMErrorProcessor", "MM_ERR_LOGIC but not autoauth showMsg[%s] break", new Object[] { paramString });
+        i &= 0xFFFFDFFF;
+      }
     }
-  }
-  
-  private static boolean aA(Activity paramActivity)
-  {
-    AppMethodBeat.i(29614);
-    com.tencent.mm.pluginsdk.model.app.a locala = com.tencent.mm.pluginsdk.model.app.a.dlr();
-    if (locala != null)
-    {
-      locala.dlu();
-      ab.i("MicroMsg.MMErrorProcessor", "alpha download in silence.");
-      AppMethodBeat.o(29614);
-      return true;
-    }
-    if (com.tencent.mm.plugin.p.d.bSu() != null)
-    {
-      com.tencent.mm.plugin.p.d.bSu().eB(paramActivity).update(2);
-      AppMethodBeat.o(29614);
-      return true;
-    }
-    AppMethodBeat.o(29614);
+    AppMethodBeat.o(175978);
     return false;
   }
   
-  public static boolean az(Activity paramActivity)
+  public static void g(Window paramWindow)
   {
-    int j = 1;
-    AppMethodBeat.i(29611);
-    if (bo.apV(com.tencent.mm.m.g.Nq().getValue("SilentDownloadApkAtWiFi")) != 0)
+    AppMethodBeat.i(175977);
+    if (paramWindow == null)
     {
-      AppMethodBeat.o(29611);
-      return false;
+      AppMethodBeat.o(175977);
+      return;
     }
-    aw.aaz();
-    int i;
-    if ((((Integer)com.tencent.mm.model.c.Ru().get(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      i = 1;
-      if ((!at.isWifi(paramActivity)) || (i == 0)) {
-        break label121;
-      }
-      i = j;
-      label75:
-      if ((com.tencent.mm.sdk.platformtools.g.bWw & 0x1) == 0) {
-        break label126;
-      }
-      ab.d("MicroMsg.MMErrorProcessor", "channel pack, not silence download.");
-      i = 0;
+      paramWindow.addFlags(-2147483648);
+      paramWindow.setStatusBarColor(0);
     }
-    for (;;)
+    AppMethodBeat.o(175977);
+  }
+  
+  public static boolean jjJ()
+  {
+    AppMethodBeat.i(175979);
+    if ((Build.VERSION.SDK_INT >= 23) && (!MIUI.isMIUIV8()))
     {
-      if ((i == 0) || (!i.dlV())) {
-        break label137;
-      }
-      boolean bool = aA(paramActivity);
-      AppMethodBeat.o(29611);
-      return bool;
-      i = 0;
-      break;
-      label121:
-      i = 0;
-      break label75;
-      label126:
-      ab.d("MicroMsg.MMErrorProcessor", "not channel pack.");
+      AppMethodBeat.o(175979);
+      return true;
     }
-    label137:
-    AppMethodBeat.o(29611);
+    AppMethodBeat.o(175979);
     return false;
   }
   
-  public static boolean c(Activity paramActivity, int paramInt1, int paramInt2)
+  public static int mL(Context paramContext)
   {
-    AppMethodBeat.i(29613);
-    ab.w("MicroMsg.MMErrorProcessor", "updateRequired [%d,%d] current version:%d  channel:%d updateMode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(com.tencent.mm.protocal.d.whH), Integer.valueOf(com.tencent.mm.sdk.platformtools.g.bWu), Integer.valueOf(com.tencent.mm.sdk.platformtools.g.bWw) });
-    if (paramInt1 != 4)
+    AppMethodBeat.i(175974);
+    int i = o.I(paramContext, -1);
+    if (i > 0)
     {
-      AppMethodBeat.o(29613);
-      return false;
+      i = bx(paramContext, i);
+      AppMethodBeat.o(175974);
+      return i;
     }
-    switch (paramInt2)
+    if ((paramContext instanceof Activity))
     {
-    default: 
-      AppMethodBeat.o(29613);
-      return false;
-    case -16: 
-      if (com.tencent.mm.plugin.p.d.bSu() != null)
+      Rect localRect = new Rect();
+      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+      i = ((Activity)paramContext).getWindow().getDecorView().getHeight();
+      int[] arrayOfInt = new int[2];
+      ((Activity)paramContext).getWindow().getDecorView().getLocationOnScreen(arrayOfInt);
+      if ((i - localRect.height() >= 0) && (arrayOfInt[1] > 200))
       {
-        paramActivity = com.tencent.mm.plugin.p.d.bSu().d(paramActivity, new v.4(paramActivity));
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 36L, 1L, true);
-        paramActivity.update(1);
-        AppMethodBeat.o(29613);
-        return true;
+        int j = localRect.height();
+        AppMethodBeat.o(175974);
+        return i - j;
       }
-      AppMethodBeat.o(29613);
-      return false;
+      i = localRect.top;
+      AppMethodBeat.o(175974);
+      return i;
     }
-    long l = ah.getContext().getSharedPreferences("system_config_prefs", 0).getLong("recomended_update_ignore", -1L);
-    ab.i("MicroMsg.MMErrorProcessor", "updateRequired last:%d  now:%d", new Object[] { Long.valueOf(l), Long.valueOf(bo.gz(l)) });
-    if ((l != -1L) && (bo.gz(l) < 86400L))
-    {
-      AppMethodBeat.o(29613);
-      return true;
-    }
-    if ((com.tencent.mm.sdk.platformtools.g.bWw & 0x2) != 0)
-    {
-      ab.d("MicroMsg.MMErrorProcessor", "channel pack, not silence download.");
-      AppMethodBeat.o(29613);
-      return true;
-    }
-    ab.d("MicroMsg.MMErrorProcessor", "not channel pack.");
-    String str = com.tencent.mm.m.g.Nq().getValue("SilentDownloadApkAtWiFi");
-    aw.aaz();
-    if ((((Integer)com.tencent.mm.model.c.Ru().get(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
-    {
-      paramInt1 = 1;
-      if ((paramInt1 == 0) || ((!bo.isNullOrNil(str)) && (bo.apV(str) != 0))) {
-        break label458;
-      }
-      bool = true;
-      label340:
-      if ((com.tencent.mm.sdk.platformtools.g.bWw & 0x1) == 0) {
-        break label464;
-      }
-      ab.d("MicroMsg.MMErrorProcessor", "channel pack, not silence download.");
-      bool = false;
-    }
-    for (;;)
-    {
-      if (bo.apV(str) != 0) {
-        ab.d("MicroMsg.MMErrorProcessor", "dynaCfg close silence wifi download.");
-      }
-      ab.d("MicroMsg.MMErrorProcessor", "summerupdate updateRequired silenceDownload[%b]", new Object[] { Boolean.valueOf(bool) });
-      if (bool) {
-        break label483;
-      }
-      if (com.tencent.mm.plugin.p.d.bSu() == null) {
-        break label475;
-      }
-      paramActivity = com.tencent.mm.plugin.p.d.bSu().d(paramActivity, new v.5(paramActivity));
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 38L, 1L, true);
-      paramActivity.update(2);
-      AppMethodBeat.o(29613);
-      return true;
-      paramInt1 = 0;
-      break;
-      label458:
-      bool = false;
-      break label340;
-      label464:
-      ab.d("MicroMsg.MMErrorProcessor", "not channel pack.");
-    }
-    label475:
-    AppMethodBeat.o(29613);
-    return false;
-    label483:
-    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 40L, 1L, true);
-    boolean bool = aA(paramActivity);
-    AppMethodBeat.o(29613);
-    return bool;
+    i = a.fromDPToPix(paramContext, 20);
+    AppMethodBeat.o(175974);
+    return i;
   }
   
-  public static boolean hL(Context paramContext)
+  public static void mM(Context paramContext)
   {
-    AppMethodBeat.i(29612);
-    String str = i.dlS();
-    int i = i.dlT();
-    ab.i("MicroMsg.MMErrorProcessor", "installRequired %s, updateType: %d", new Object[] { str, Integer.valueOf(i) });
-    if ((!bo.isNullOrNil(str)) && (!i.dlU()))
-    {
-      aw.RO().ac(new v.3(i, str, paramContext));
-      AppMethodBeat.o(29612);
-      return true;
-    }
-    AppMethodBeat.o(29612);
-    return false;
+    AppMethodBeat.i(249158);
+    g(((Activity)paramContext).getWindow());
+    AppMethodBeat.o(249158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.v
  * JD-Core Version:    0.7.0.1
  */

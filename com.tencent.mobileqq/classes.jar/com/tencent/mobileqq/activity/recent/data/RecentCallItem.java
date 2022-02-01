@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import alud;
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QCallRecent;
 
@@ -14,46 +15,56 @@ public class RecentCallItem
   private static final String TAG = "RecentCallItem";
   protected QCallRecent call;
   
-  public int a()
-  {
-    return this.call.type;
-  }
-  
-  public long a()
-  {
-    return this.call.lastCallTime;
-  }
-  
-  public String a()
-  {
-    return this.call.uin;
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
+    if (paramQQAppInterface != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      this.mTitleName = "123123123";
+      this.mLastMsg = this.call.lastCallMsg;
+      this.mStatus = 0;
+      this.mOnlineStatus = 4;
+      this.mAuthenIconId = 1;
+      this.mShowTime = "0";
+      this.mUnreadNum = 0;
+      this.mMenuFlag = 12288;
+      this.mCallingText = HardCodeUtil.a(2131910640);
+      this.call.isVideo = 1;
     }
-    this.mTitleName = "123123123";
-    this.mLastMsg = this.call.lastCallMsg;
-    this.mStatus = 0;
-    this.mOnlineStatus = 4;
-    this.mAuthenIconId = 1;
-    this.mShowTime = "0";
-    this.mUnreadNum = 0;
-    this.mMenuFlag = 12288;
-    this.mCallingText = alud.a(2131713543);
-    this.call.isVideo = 1;
   }
   
-  public long b()
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public long getLastDraftTime()
   {
     return 0L;
   }
   
-  public boolean b()
+  public long getLastMsgTime()
   {
-    return false;
+    return this.call.lastCallTime;
+  }
+  
+  public int getRecentUserType()
+  {
+    return this.call.type;
+  }
+  
+  public String getRecentUserUin()
+  {
+    return this.call.uin;
+  }
+  
+  public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
+  {
+    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
+      a((QQAppInterface)paramBaseQQAppInterface, paramContext);
+    }
   }
 }
 

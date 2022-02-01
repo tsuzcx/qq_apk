@@ -10,7 +10,7 @@ public final class stGetNewestFeedRsp
   extends JceStruct
 {
   static Map<Long, stGetNewestFeedRspInner> cache_mapRsp = new HashMap();
-  public Map<Long, stGetNewestFeedRspInner> mapRsp;
+  public Map<Long, stGetNewestFeedRspInner> mapRsp = null;
   
   static
   {
@@ -32,14 +32,15 @@ public final class stGetNewestFeedRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapRsp != null) {
-      paramJceOutputStream.write(this.mapRsp, 0);
+    Map localMap = this.mapRsp;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_WEISHI_QQ_PROFILE.stGetNewestFeedRsp
  * JD-Core Version:    0.7.0.1
  */

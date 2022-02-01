@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/i0x" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="86.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/c_i" android:background="@drawable/f3t" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="17.0dip" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <FrameLayout android:id="@id/mw1" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_toRightOf="@id/c_i" android:layout_centerVertical="true">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/c_5" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mw3" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginBottom="0.0dip" android:src="@drawable/bxx" android:scaleType="centerCrop" android:baselineAlignBottom="@id/c_5" />
+    </FrameLayout>
+    <Button android:gravity="center" android:id="@id/c1" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:visibility="visible" android:layout_width="65.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ie" android:text="已失效" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/a45" />
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/noz" android:visibility="gone" android:clickable="true" android:layout_width="80.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <Button android:textSize="14.0dip" android:textColor="@color/xa" android:id="@id/bex" android:background="@drawable/x1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ak3" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/c1" android:layout_toRightOf="@id/mw1">
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/skin_dark_gray" android:id="@id/c_g" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="文件名" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/k8" android:ellipsize="end" android:id="@id/c_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="大小" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/k8" android:ellipsize="end" android:id="@id/lastMsgTime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="来源" android:singleLine="true" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/c_h" android:duplicateParentState="true" android:layout_width="166.0dip" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="16.5dip" android:layout_marginBottom="5.0dip" android:maxHeight="3.0dip" android:max="100" android:progress="2" android:progressDrawable="@drawable/am" android:minHeight="3.0dip" android:layout_toLeftOf="@id/c1" android:layout_toRightOf="@id/mw1" android:layout_alignParentBottom="true" style="?android:progressBarStyleHorizontal" />
+    <View android:id="@id/enf" android:background="#80ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="86.0dip" />
+</RelativeLayout>

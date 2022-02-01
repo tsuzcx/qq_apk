@@ -35,13 +35,13 @@ public class ClassRoadie
       {
         localMethod.invoke(null, new Object[0]);
       }
-      catch (InvocationTargetException localInvocationTargetException)
-      {
-        addFailure(localInvocationTargetException.getTargetException());
-      }
       catch (Throwable localThrowable)
       {
         addFailure(localThrowable);
+      }
+      catch (InvocationTargetException localInvocationTargetException)
+      {
+        addFailure(localInvocationTargetException.getTargetException());
       }
     }
   }
@@ -50,24 +50,31 @@ public class ClassRoadie
   {
     try
     {
-      Iterator localIterator = this.testClass.getBefores().iterator();
-      while (localIterator.hasNext()) {
-        ((Method)localIterator.next()).invoke(null, new Object[0]);
+      try
+      {
+        Iterator localIterator = this.testClass.getBefores().iterator();
+        while (localIterator.hasNext()) {
+          ((Method)localIterator.next()).invoke(null, new Object[0]);
+        }
+        return;
       }
-      return;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      throw localInvocationTargetException.getTargetException();
+      catch (Throwable localThrowable) {}catch (InvocationTargetException localInvocationTargetException)
+      {
+        throw localInvocationTargetException.getTargetException();
+      }
+      addFailure(localInvocationTargetException);
+      throw new FailedBefore();
     }
     catch (AssumptionViolatedException localAssumptionViolatedException)
     {
-      throw new FailedBefore();
+      label67:
+      FailedBefore localFailedBefore;
+      break label67;
     }
-    catch (Throwable localThrowable)
+    localFailedBefore = new FailedBefore();
+    for (;;)
     {
-      addFailure(localThrowable);
-      throw new FailedBefore();
+      throw localFailedBefore;
     }
   }
   
@@ -84,27 +91,26 @@ public class ClassRoadie
     //   1: invokespecial 91	org/junit/internal/runners/ClassRoadie:runBefores	()V
     //   4: aload_0
     //   5: invokevirtual 94	org/junit/internal/runners/ClassRoadie:runUnprotected	()V
-    //   8: aload_0
-    //   9: invokespecial 96	org/junit/internal/runners/ClassRoadie:runAfters	()V
-    //   12: return
-    //   13: astore_1
-    //   14: aload_0
-    //   15: invokespecial 96	org/junit/internal/runners/ClassRoadie:runAfters	()V
-    //   18: return
-    //   19: astore_1
-    //   20: aload_0
-    //   21: invokespecial 96	org/junit/internal/runners/ClassRoadie:runAfters	()V
-    //   24: aload_1
-    //   25: athrow
+    //   8: goto +10 -> 18
+    //   11: astore_1
+    //   12: aload_0
+    //   13: invokespecial 96	org/junit/internal/runners/ClassRoadie:runAfters	()V
+    //   16: aload_1
+    //   17: athrow
+    //   18: aload_0
+    //   19: invokespecial 96	org/junit/internal/runners/ClassRoadie:runAfters	()V
+    //   22: return
+    //   23: astore_1
+    //   24: goto -6 -> 18
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	26	0	this	ClassRoadie
-    //   13	1	1	localFailedBefore	FailedBefore
-    //   19	6	1	localObject	Object
+    //   0	27	0	this	ClassRoadie
+    //   11	6	1	localObject	Object
+    //   23	1	1	localFailedBefore	FailedBefore
     // Exception table:
     //   from	to	target	type
-    //   0	8	13	org/junit/internal/runners/FailedBefore
-    //   0	8	19	finally
+    //   0	8	11	finally
+    //   0	8	23	org/junit/internal/runners/FailedBefore
   }
   
   protected void runUnprotected()
@@ -114,7 +120,7 @@ public class ClassRoadie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.ClassRoadie
  * JD-Core Version:    0.7.0.1
  */

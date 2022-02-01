@@ -1,25 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 
 public class fcg
-  extends Handler
+  implements ProxyListener
 {
-  public fcg(FriendListHandler paramFriendListHandler, Looper paramLooper)
+  public fcg(FriendListHandler paramFriendListHandler) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    super(paramLooper);
+    if (FriendListHandler.a(this.a) == 0)
+    {
+      this.a.a(1, true, Boolean.valueOf(true));
+      this.a.a(7, true, Boolean.valueOf(true));
+    }
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FriendListHandler.a(this.a);
-  }
+  public void b(String paramString, int paramInt) {}
 }
 
 

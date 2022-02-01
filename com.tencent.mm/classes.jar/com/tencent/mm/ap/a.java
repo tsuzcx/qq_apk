@@ -1,90 +1,82 @@
 package com.tencent.mm.ap;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.bi;
-import junit.framework.Assert;
+import com.tencent.mm.an.af;
+import com.tencent.mm.an.f;
+import com.tencent.mm.api.c.b;
+import com.tencent.mm.model.au;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class a
-  extends m
-  implements k
+  extends au
 {
-  private f callback;
-  private bi cmQ;
-  private ak handler;
-  
-  public a(String paramString1, String paramString2)
+  public final String getTag()
   {
-    AppMethodBeat.i(16438);
-    this.handler = new a.1(this);
-    this.cmQ = new bi();
-    this.cmQ.setStatus(1);
-    this.cmQ.kj(paramString1);
-    this.cmQ.fQ(bf.py(paramString1));
-    this.cmQ.hL(1);
-    this.cmQ.setContent(paramString2);
-    this.cmQ.setType(t.oF(paramString1));
-    aw.aaz();
-    long l = c.YC().Z(this.cmQ);
-    if (l != -1L) {}
-    for (;;)
+    return "MicroMsg.App.BizInfoDataTransfer";
+  }
+  
+  public final void vb(int paramInt)
+  {
+    AppMethodBeat.i(20475);
+    Log.d("MicroMsg.App.BizInfoDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramInt != 0) && (paramInt < 604372991))
     {
-      Assert.assertTrue(bool);
-      ab.i("MicroMsg.NetSceneSendMsgFake", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
-      AppMethodBeat.o(16438);
-      return;
-      bool = false;
+      com.tencent.mm.plugin.report.service.h.OAn.kJ(336, 12);
+      bh.bCz();
+      Object localObject2 = com.tencent.mm.model.c.getDataDB();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("select BizInfo.username, BizInfo.extInfo");
+      ((StringBuilder)localObject3).append(" from rcontact , BizInfo");
+      ((StringBuilder)localObject3).append(" where rcontact.username = BizInfo.username");
+      ((StringBuilder)localObject3).append(" and (rcontact.type & 1 ) != 0 ");
+      ((StringBuilder)localObject3).append(" and ( rcontact.verifyFlag & 8 ) != 0 ");
+      String str = ((StringBuilder)localObject3).toString();
+      Object localObject1 = new ArrayList();
+      Log.d("MicroMsg.App.BizInfoDataTransfer", "sql %s", new Object[] { str });
+      localObject2 = ((com.tencent.mm.storagebase.h)localObject2).rawQuery(((StringBuilder)localObject3).toString(), null, 2);
+      if (localObject2 != null)
+      {
+        while (((Cursor)localObject2).moveToNext())
+        {
+          localObject3 = new com.tencent.mm.api.c();
+          ((com.tencent.mm.api.c)localObject3).convertFrom((Cursor)localObject2);
+          if (((com.tencent.mm.api.c)localObject3).dO(false).getServiceType() == 1) {
+            ((List)localObject1).add(((com.tencent.mm.api.c)localObject3).field_username);
+          }
+        }
+        ((Cursor)localObject2).close();
+      }
+      if (((List)localObject1).size() > 0)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Update BizInfo set type = 1 where 1 !=1 ");
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject3 = (String)((Iterator)localObject1).next();
+          ((StringBuilder)localObject2).append(" or username = '").append((String)localObject3).append("'");
+        }
+        localObject1 = ((StringBuilder)localObject2).toString();
+        Log.d("MicroMsg.App.BizInfoDataTransfer", "update sql %s", new Object[] { localObject1 });
+        af.bHf().execSQL("BizInfo", (String)localObject1);
+      }
     }
+    AppMethodBeat.o(20475);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final boolean vc(int paramInt)
   {
-    AppMethodBeat.i(16439);
-    this.callback = paramf;
-    ab.i("MicroMsg.NetSceneSendMsgFake", "send local msg, msgId = " + this.cmQ.field_msgId);
-    this.handler.sendEmptyMessageDelayed(0, 500L);
-    AppMethodBeat.o(16439);
-    return 999;
-  }
-  
-  public final int getType()
-  {
-    return 522;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(16440);
-    ab.i("MicroMsg.NetSceneSendMsgFake", "recv local msg, msgId = " + this.cmQ.field_msgId);
-    this.cmQ.setStatus(2);
-    this.cmQ.fQ(bf.x(this.cmQ.field_talker, System.currentTimeMillis() / 1000L));
-    aw.aaz();
-    c.YC().a(this.cmQ.field_msgId, this.cmQ);
-    this.callback.onSceneEnd(0, 0, paramString, this);
-    AppMethodBeat.o(16440);
-  }
-  
-  public final m.b securityVerificationChecked(q paramq)
-  {
-    return m.b.ftu;
+    return (paramInt != 0) && (paramInt < 604372991);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ap.a
  * JD-Core Version:    0.7.0.1
  */

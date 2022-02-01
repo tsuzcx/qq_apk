@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class WiFiAccountReq
   extends JceStruct
 {
-  public byte barsetting;
-  public long crc;
-  public long seqno;
-  public long uin;
+  public byte barsetting = 0;
+  public long crc = 0L;
+  public long seqno = 0L;
+  public long uin = 0L;
   
   public WiFiAccountReq() {}
   
@@ -40,7 +40,7 @@ public final class WiFiAccountReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqwifi.WiFiAccountReq
  * JD-Core Version:    0.7.0.1
  */

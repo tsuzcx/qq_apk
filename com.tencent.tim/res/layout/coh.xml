@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.tim.widget.PullRefreshHeader android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <com.tencent.lottieNew.LottieAnimationView android:id="@id/mth" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</com.tencent.tim.widget.PullRefreshHeader>

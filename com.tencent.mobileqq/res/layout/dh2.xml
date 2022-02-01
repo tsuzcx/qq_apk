@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/q1s" android:background="@color/bx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+    <RelativeLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/mzr" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.timi.game.ui.widget.RoundCornerImageView android:id="@id/nv3" android:layout_width="fill_parent" android:layout_height="183.0dip" android:src="@color/85" android:scaleType="centerCrop" />
+        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@color/al3" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nv3">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="39.0dip">
+                <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/black" android:id="@id/n_a" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/jis" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="@color/ans" android:id="@id/n_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:maxLines="6" />
+            <LinearLayout android:orientation="vertical" android:background="@drawable/h1l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="36.0dip">
+                <RelativeLayout android:id="@id/n33" android:layout_width="fill_parent" android:layout_height="56.0dip">
+                    <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@id/n34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="我的王者帐号" android:layout_centerVertical="true" />
+                    <LinearLayout android:gravity="right" android:orientation="horizontal" android:id="@id/pwy" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+                        <TextView android:textSize="14.0dip" android:textColor="@color/ans" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/px1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="1" android:maxEms="10" />
+                        <ImageView android:layout_gravity="center_vertical" android:id="@id/pwz" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.5dip" android:layout_marginRight="12.0dip" android:src="@drawable/jiq" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="56.0dip">
+                    <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@id/q4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="授权设置" android:layout_centerVertical="true" />
+                    <LinearLayout android:orientation="horizontal" android:id="@id/loz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+                        <TextView android:textSize="14.0dip" android:textColor="@color/ans" android:layout_gravity="center_vertical" android:id="@id/lp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="授权QQ获取王者数据" />
+                        <ImageView android:layout_gravity="center_vertical" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.5dip" android:layout_marginRight="12.0dip" android:src="@drawable/jiq" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.timi.game.ui.widget.RoundCornerImageView android:id="@id/nuj" android:layout_width="66.0dip" android:layout_height="66.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="-33.0dip" android:src="@color/al3" android:layout_below="@id/nv3" />
+    </RelativeLayout>
+</merge>

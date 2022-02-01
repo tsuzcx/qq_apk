@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajpf;
-
 class EditLocalVideoMusicMixRunnable$1
   implements Runnable
 {

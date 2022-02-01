@@ -1,49 +1,25 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.base.http.HttpCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import com.tencent.open.base.http.HttpCgiAsyncTask;
+import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-public final class hlu
-  implements DbCacheData.DbCreator
+public class hlu
+  implements Runnable
 {
-  public int a()
-  {
-    return 1;
-  }
+  public hlu(HttpCgiAsyncTask paramHttpCgiAsyncTask, HashMap paramHashMap) {}
   
-  public HttpCacheData a(Cursor paramCursor)
+  public void run()
   {
-    try
+    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a != null)
     {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get("ResultType")).intValue() == 1) {
+        this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
+      }
     }
-    catch (Exception paramCursor)
-    {
-      paramCursor.printStackTrace();
+    else {
+      return;
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
+    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((Exception)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
   }
 }
 

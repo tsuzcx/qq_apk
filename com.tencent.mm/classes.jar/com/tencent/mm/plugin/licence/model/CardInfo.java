@@ -11,12 +11,12 @@ public class CardInfo
   
   public CardInfo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(72865);
+    AppMethodBeat.i(40585);
     this.width = 0;
     this.height = 0;
     this.bitmapLen = 0;
     this.bitmapData = new byte[(int)(0.8D * paramInt1) * (int)(0.52D * paramInt1) * 3 + 54];
-    AppMethodBeat.o(72865);
+    AppMethodBeat.o(40585);
   }
   
   public byte[] getData()
@@ -41,7 +41,7 @@ public class CardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.licence.model.CardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,4 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class ggf
-{
-  public int a;
-  public ImageView a;
-  public TextView a;
-}
+public class ggf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar

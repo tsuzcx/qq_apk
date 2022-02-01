@@ -1,16 +1,13 @@
 package com.tencent.qqvideo.proxy.common;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
-import android.net.TrafficStats;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
@@ -19,7 +16,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
+import com.tencent.mm.hellhoundlib.a.a;
 
 public class VcSystemInfo
 {
@@ -113,35 +110,35 @@ public class VcSystemInfo
   
   public static int GetNetAP(Context paramContext)
   {
-    AppMethodBeat.i(124434);
+    AppMethodBeat.i(89708);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 0;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null)
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 0;
     }
     paramContext = paramContext.getActiveNetworkInfo();
     if (paramContext == null)
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 0;
     }
     if ("wifi".equalsIgnoreCase(paramContext.getTypeName()))
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 1;
     }
-    AppMethodBeat.o(124434);
+    AppMethodBeat.o(89708);
     return 2;
   }
   
   /* Error */
-  public static String PrintStack(Throwable paramThrowable)
+  public static String PrintStack(java.lang.Throwable paramThrowable)
   {
     // Byte code:
     //   0: ldc 186
@@ -182,7 +179,7 @@ public class VcSystemInfo
     //   65: goto -25 -> 40
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	68	0	paramThrowable	Throwable
+    //   0	68	0	paramThrowable	java.lang.Throwable
     //   23	31	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
@@ -191,96 +188,120 @@ public class VcSystemInfo
     //   53	64	64	java/io/IOException
   }
   
+  /* Error */
   public static long getAppInstallTime(Context paramContext)
   {
-    AppMethodBeat.i(124442);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(124442);
-      return 0L;
-    }
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    try
-    {
-      long l = new File(localPackageManager.getApplicationInfo(paramContext.getPackageName(), 0).sourceDir).lastModified() / 1000L;
-      AppMethodBeat.o(124442);
-      return l;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      AppMethodBeat.o(124442);
-      return 0L;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(124442);
-    }
-    return 0L;
+    // Byte code:
+    //   0: ldc 211
+    //   2: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ifnonnull +10 -> 16
+    //   9: ldc 211
+    //   11: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: lconst_0
+    //   15: lreturn
+    //   16: aload_0
+    //   17: invokevirtual 215	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   20: astore_3
+    //   21: new 217	java/io/File
+    //   24: dup
+    //   25: aload_3
+    //   26: aload_0
+    //   27: invokevirtual 220	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   30: iconst_0
+    //   31: invokevirtual 226	android/content/pm/PackageManager:getApplicationInfo	(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+    //   34: getfield 231	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   37: invokespecial 234	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokevirtual 238	java/io/File:lastModified	()J
+    //   43: ldc2_w 239
+    //   46: ldiv
+    //   47: lstore_1
+    //   48: ldc 211
+    //   50: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: lload_1
+    //   54: lreturn
+    //   55: astore_0
+    //   56: ldc 211
+    //   58: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   61: lconst_0
+    //   62: lreturn
+    //   63: astore_0
+    //   64: ldc 211
+    //   66: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: lconst_0
+    //   70: lreturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	paramContext	Context
+    //   47	7	1	l	long
+    //   20	6	3	localPackageManager	PackageManager
+    // Exception table:
+    //   from	to	target	type
+    //   21	48	55	android/content/pm/PackageManager$NameNotFoundException
+    //   21	48	63	finally
   }
   
   public static String getAppName(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(124435);
+    AppMethodBeat.i(89709);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124435);
+      AppMethodBeat.o(89709);
       return "";
     }
     try
     {
       paramContext = paramContext.getPackageManager();
       paramContext = paramContext.getApplicationLabel(paramContext.getApplicationInfo(paramString, 0)).toString();
-      AppMethodBeat.o(124435);
       return paramContext;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124435);
+      AppMethodBeat.o(89709);
     }
     return "";
   }
   
   public static int getAppVersionCode(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(124437);
+    AppMethodBeat.i(89711);
     int i;
     if (appVersionCode != 0)
     {
       i = appVersionCode;
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
       return i;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
       return 0;
     }
     try
     {
       i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
       appVersionCode = i;
-      AppMethodBeat.o(124437);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
     }
     return 0;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(124436);
+    AppMethodBeat.i(89710);
     if (!TextUtils.isEmpty(appVersionName))
     {
       paramContext = appVersionName;
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
       return "";
     }
     try
@@ -291,28 +312,27 @@ public class VcSystemInfo
       if (str == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(124436);
       return paramContext;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
     }
     return "";
   }
   
   public static String getDeviceID(Context paramContext)
   {
-    AppMethodBeat.i(124431);
+    AppMethodBeat.i(89705);
     if (!TextUtils.isEmpty(deviceID))
     {
       paramContext = deviceID;
-      AppMethodBeat.o(124431);
+      AppMethodBeat.o(89705);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124431);
+      AppMethodBeat.o(89705);
       return "";
     }
     try
@@ -323,7 +343,7 @@ public class VcSystemInfo
         deviceID = "";
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
       for (;;)
       {
@@ -331,22 +351,22 @@ public class VcSystemInfo
       }
     }
     paramContext = deviceID;
-    AppMethodBeat.o(124431);
+    AppMethodBeat.o(89705);
     return paramContext;
   }
   
   public static String getDeviceIMEI(Context paramContext)
   {
-    AppMethodBeat.i(124429);
+    AppMethodBeat.i(89703);
     if (!TextUtils.isEmpty(deviceIMEI))
     {
       paramContext = deviceIMEI;
-      AppMethodBeat.o(124429);
+      AppMethodBeat.o(89703);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124429);
+      AppMethodBeat.o(89703);
       return "";
     }
     try
@@ -354,35 +374,34 @@ public class VcSystemInfo
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (paramContext != null)
       {
-        paramContext = paramContext.getDeviceId();
+        paramContext = (String)a.a(paramContext, "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getDeviceIMEI", "(Landroid/content/Context;)Ljava/lang/String;", "android/telephony/TelephonyManager", "getDeviceId", "()Ljava/lang/String;");
         deviceIMEI = paramContext;
         if (paramContext == null) {
           deviceIMEI = "";
         }
         paramContext = deviceIMEI;
-        AppMethodBeat.o(124429);
         return paramContext;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124429);
+      AppMethodBeat.o(89703);
     }
     return "";
   }
   
   public static String getDeviceIMSI(Context paramContext)
   {
-    AppMethodBeat.i(124430);
+    AppMethodBeat.i(89704);
     if (!TextUtils.isEmpty(deviceIMSI))
     {
       paramContext = deviceIMSI;
-      AppMethodBeat.o(124430);
+      AppMethodBeat.o(89704);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124430);
+      AppMethodBeat.o(89704);
       return "";
     }
     try
@@ -390,35 +409,34 @@ public class VcSystemInfo
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (paramContext != null)
       {
-        paramContext = paramContext.getSubscriberId();
+        paramContext = (String)a.a(paramContext, "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getDeviceIMSI", "(Landroid/content/Context;)Ljava/lang/String;", "android/telephony/TelephonyManager", "getSubscriberId", "()Ljava/lang/String;");
         deviceIMSI = paramContext;
         if (paramContext == null) {
           deviceIMSI = "";
         }
         paramContext = deviceIMSI;
-        AppMethodBeat.o(124430);
         return paramContext;
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124430);
+      AppMethodBeat.o(89704);
     }
     return "";
   }
   
   public static String getDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(124432);
+    AppMethodBeat.i(89706);
     if (!TextUtils.isEmpty(deviceMacAddr))
     {
       paramContext = deviceMacAddr;
-      AppMethodBeat.o(124432);
+      AppMethodBeat.o(89706);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124432);
+      AppMethodBeat.o(89706);
       return "";
     }
     try
@@ -426,7 +444,7 @@ public class VcSystemInfo
       paramContext = (WifiManager)paramContext.getSystemService("wifi");
       if (paramContext != null)
       {
-        paramContext = paramContext.getConnectionInfo();
+        paramContext = (WifiInfo)a.a(paramContext, "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getDeviceMacAddr", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         if (paramContext != null)
         {
           paramContext = paramContext.getMacAddress();
@@ -435,31 +453,30 @@ public class VcSystemInfo
             deviceMacAddr = "";
           }
           paramContext = deviceMacAddr;
-          AppMethodBeat.o(124432);
           return paramContext;
         }
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124432);
+      AppMethodBeat.o(89706);
     }
     return "";
   }
   
   public static int getMCC(Context paramContext)
   {
-    AppMethodBeat.i(124447);
+    AppMethodBeat.i(89721);
     int i;
     if (mMCC != 0)
     {
       i = mMCC;
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
       return i;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
       return 0;
     }
     try
@@ -469,29 +486,28 @@ public class VcSystemInfo
         mMCC = paramContext.mcc;
       }
       i = mMCC;
-      AppMethodBeat.o(124447);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
     }
     return 0;
   }
   
   public static int getMNC(Context paramContext)
   {
-    AppMethodBeat.i(124448);
+    AppMethodBeat.i(89722);
     int i;
     if (mMNC != 0)
     {
       i = mMNC;
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
       return i;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
       return 0;
     }
     try
@@ -501,12 +517,11 @@ public class VcSystemInfo
         mMNC = paramContext.mnc;
       }
       i = mMNC;
-      AppMethodBeat.o(124448);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
     }
     return 0;
   }
@@ -517,168 +532,127 @@ public class VcSystemInfo
     // Byte code:
     //   0: iconst_m1
     //   1: istore_2
-    //   2: ldc_w 347
+    //   2: ldc_w 359
     //   5: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: ifnonnull +11 -> 20
-    //   12: ldc_w 347
+    //   12: ldc_w 359
     //   15: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   18: iconst_m1
     //   19: ireturn
     //   20: aload_0
-    //   21: invokevirtual 351	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   24: invokevirtual 355	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   27: ldc_w 357
-    //   30: invokevirtual 363	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   33: astore_0
-    //   34: new 365	java/io/BufferedReader
+    //   21: invokevirtual 363	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   24: invokevirtual 367	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   27: ldc_w 369
+    //   30: invokevirtual 375	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   33: astore_3
+    //   34: new 377	java/io/BufferedReader
     //   37: dup
-    //   38: new 367	java/io/InputStreamReader
+    //   38: new 379	java/io/InputStreamReader
     //   41: dup
-    //   42: aload_0
-    //   43: invokespecial 370	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   46: invokespecial 373	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   49: astore 4
-    //   51: aload 4
-    //   53: invokevirtual 376	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   56: astore_3
-    //   57: iload_2
-    //   58: istore_1
-    //   59: aload_3
+    //   42: aload_3
+    //   43: invokespecial 382	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   46: invokespecial 385	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   49: astore_0
+    //   50: aload_0
+    //   51: invokevirtual 388	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   54: astore 4
+    //   56: iload_2
+    //   57: istore_1
+    //   58: aload 4
     //   60: invokestatic 273	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   63: ifne +46 -> 109
+    //   63: ifne +52 -> 115
     //   66: iload_2
     //   67: istore_1
-    //   68: aload_3
-    //   69: ldc_w 378
-    //   72: invokevirtual 381	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   75: ifeq +34 -> 109
-    //   78: aload_3
-    //   79: aload_3
-    //   80: ldc_w 383
-    //   83: invokevirtual 387	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   86: iconst_1
-    //   87: iadd
-    //   88: invokevirtual 391	java/lang/String:substring	(I)Ljava/lang/String;
-    //   91: astore_3
-    //   92: iload_2
-    //   93: istore_1
-    //   94: aload_3
-    //   95: invokestatic 273	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   98: ifne +11 -> 109
-    //   101: aload_3
-    //   102: invokevirtual 394	java/lang/String:trim	()Ljava/lang/String;
-    //   105: invokestatic 399	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   108: istore_1
-    //   109: aload_0
-    //   110: ifnull +7 -> 117
-    //   113: aload_0
-    //   114: invokevirtual 402	java/io/InputStream:close	()V
-    //   117: aload 4
-    //   119: invokevirtual 403	java/io/BufferedReader:close	()V
-    //   122: ldc_w 347
-    //   125: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: iload_1
-    //   129: ireturn
-    //   130: astore_0
-    //   131: aconst_null
-    //   132: astore_3
-    //   133: aconst_null
-    //   134: astore_0
-    //   135: aload_0
-    //   136: ifnull +7 -> 143
-    //   139: aload_0
-    //   140: invokevirtual 402	java/io/InputStream:close	()V
-    //   143: iload_2
-    //   144: istore_1
-    //   145: aload_3
-    //   146: ifnull -24 -> 122
-    //   149: aload_3
-    //   150: invokevirtual 403	java/io/BufferedReader:close	()V
-    //   153: iload_2
-    //   154: istore_1
-    //   155: goto -33 -> 122
-    //   158: astore_0
-    //   159: iload_2
-    //   160: istore_1
-    //   161: goto -39 -> 122
-    //   164: astore_3
-    //   165: aconst_null
-    //   166: astore 4
-    //   168: aconst_null
+    //   68: aload 4
+    //   70: ldc_w 390
+    //   73: invokevirtual 393	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   76: ifeq +39 -> 115
+    //   79: aload 4
+    //   81: aload 4
+    //   83: ldc_w 395
+    //   86: invokevirtual 399	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   89: iconst_1
+    //   90: iadd
+    //   91: invokevirtual 403	java/lang/String:substring	(I)Ljava/lang/String;
+    //   94: astore 4
+    //   96: iload_2
+    //   97: istore_1
+    //   98: aload 4
+    //   100: invokestatic 273	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   103: ifne +12 -> 115
+    //   106: aload 4
+    //   108: invokevirtual 406	java/lang/String:trim	()Ljava/lang/String;
+    //   111: invokestatic 411	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   114: istore_1
+    //   115: aload_3
+    //   116: ifnull +7 -> 123
+    //   119: aload_3
+    //   120: invokevirtual 414	java/io/InputStream:close	()V
+    //   123: aload_0
+    //   124: invokevirtual 415	java/io/BufferedReader:close	()V
+    //   127: ldc_w 359
+    //   130: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   133: iload_1
+    //   134: ireturn
+    //   135: astore_0
+    //   136: aconst_null
+    //   137: astore_0
+    //   138: aconst_null
+    //   139: astore_3
+    //   140: aload_3
+    //   141: ifnull +7 -> 148
+    //   144: aload_3
+    //   145: invokevirtual 414	java/io/InputStream:close	()V
+    //   148: iload_2
+    //   149: istore_1
+    //   150: aload_0
+    //   151: ifnull -24 -> 127
+    //   154: aload_0
+    //   155: invokevirtual 415	java/io/BufferedReader:close	()V
+    //   158: iload_2
+    //   159: istore_1
+    //   160: goto -33 -> 127
+    //   163: astore_0
+    //   164: iload_2
+    //   165: istore_1
+    //   166: goto -39 -> 127
     //   169: astore_0
-    //   170: aload_0
-    //   171: ifnull +7 -> 178
-    //   174: aload_0
-    //   175: invokevirtual 402	java/io/InputStream:close	()V
-    //   178: aload 4
-    //   180: ifnull +8 -> 188
-    //   183: aload 4
-    //   185: invokevirtual 403	java/io/BufferedReader:close	()V
-    //   188: ldc_w 347
-    //   191: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   194: aload_3
-    //   195: athrow
-    //   196: astore_0
-    //   197: goto -75 -> 122
-    //   200: astore_0
-    //   201: goto -13 -> 188
-    //   204: astore_3
-    //   205: aconst_null
-    //   206: astore 4
-    //   208: goto -38 -> 170
-    //   211: astore_3
-    //   212: goto -42 -> 170
-    //   215: astore_3
-    //   216: aconst_null
-    //   217: astore_3
-    //   218: goto -83 -> 135
-    //   221: astore_3
-    //   222: aload 4
-    //   224: astore_3
-    //   225: goto -90 -> 135
+    //   170: goto -43 -> 127
+    //   173: astore_0
+    //   174: aconst_null
+    //   175: astore_0
+    //   176: goto -36 -> 140
+    //   179: astore 4
+    //   181: goto -41 -> 140
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	228	0	paramContext	Context
-    //   58	103	1	i	int
-    //   1	159	2	j	int
-    //   56	94	3	str	String
-    //   164	31	3	localObject1	Object
-    //   204	1	3	localObject2	Object
-    //   211	1	3	localObject3	Object
-    //   215	1	3	localThrowable1	Throwable
-    //   217	1	3	localObject4	Object
-    //   221	1	3	localThrowable2	Throwable
-    //   224	1	3	localBufferedReader1	java.io.BufferedReader
-    //   49	174	4	localBufferedReader2	java.io.BufferedReader
+    //   0	184	0	paramContext	Context
+    //   57	109	1	i	int
+    //   1	164	2	j	int
+    //   33	112	3	localInputStream	java.io.InputStream
+    //   54	53	4	str	String
+    //   179	1	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   20	34	130	java/lang/Throwable
-    //   139	143	158	java/lang/Throwable
-    //   149	153	158	java/lang/Throwable
-    //   20	34	164	finally
-    //   113	117	196	java/lang/Throwable
-    //   117	122	196	java/lang/Throwable
-    //   174	178	200	java/lang/Throwable
-    //   183	188	200	java/lang/Throwable
-    //   34	51	204	finally
-    //   51	57	211	finally
-    //   59	66	211	finally
-    //   68	92	211	finally
-    //   94	109	211	finally
-    //   34	51	215	java/lang/Throwable
-    //   51	57	221	java/lang/Throwable
-    //   59	66	221	java/lang/Throwable
-    //   68	92	221	java/lang/Throwable
-    //   94	109	221	java/lang/Throwable
+    //   20	34	135	finally
+    //   144	148	163	finally
+    //   154	158	163	finally
+    //   119	123	169	finally
+    //   123	127	169	finally
+    //   34	50	173	finally
+    //   50	56	179	finally
+    //   58	66	179	finally
+    //   68	96	179	finally
+    //   98	115	179	finally
   }
   
   public static int getNetWorkType(Context paramContext)
   {
-    AppMethodBeat.i(124439);
+    AppMethodBeat.i(89713);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124439);
+      AppMethodBeat.o(89713);
       return 0;
     }
     for (;;)
@@ -726,7 +700,7 @@ public class VcSystemInfo
         i = 0;
         continue;
       }
-      AppMethodBeat.o(124439);
+      AppMethodBeat.o(89713);
       return i;
       i = 1;
     }
@@ -762,10 +736,10 @@ public class VcSystemInfo
   
   public static int getNetworkClass(Context paramContext)
   {
-    AppMethodBeat.i(124454);
+    AppMethodBeat.i(89728);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124454);
+      AppMethodBeat.o(89728);
       return 0;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -783,7 +757,7 @@ public class VcSystemInfo
     }
     for (;;)
     {
-      AppMethodBeat.o(124454);
+      AppMethodBeat.o(89728);
       return i;
       i = getNetworkClass(paramContext.getSubtype());
       continue;
@@ -818,7 +792,7 @@ public class VcSystemInfo
   
   public static int getOsVerIntFromVerStr()
   {
-    AppMethodBeat.i(124433);
+    AppMethodBeat.i(89707);
     String str = getOsVersion();
     j = getOsVerInt();
     i = j;
@@ -844,7 +818,7 @@ public class VcSystemInfo
         i = j;
         continue;
       }
-      AppMethodBeat.o(124433);
+      AppMethodBeat.o(89707);
       return i;
       i = j;
       if (k == 4) {
@@ -882,49 +856,68 @@ public class VcSystemInfo
     return Build.VERSION.INCREMENTAL;
   }
   
+  /* Error */
   public static long getRxBytesFromNetwork(Context paramContext)
   {
-    long l = -1L;
-    AppMethodBeat.i(124441);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(124441);
-      return -1L;
-    }
-    try
-    {
-      paramContext.getClassLoader().loadClass("android.net.TrafficStats");
-      if (-1L == -1L) {
-        l = TrafficStats.getTotalRxBytes();
-      }
-      AppMethodBeat.o(124441);
-      return l;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      AppMethodBeat.o(124441);
-      return 0L;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(124441);
-    }
-    return 0L;
+    // Byte code:
+    //   0: ldc2_w 470
+    //   3: lstore_1
+    //   4: ldc_w 472
+    //   7: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: aload_0
+    //   11: ifnonnull +13 -> 24
+    //   14: ldc_w 472
+    //   17: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   20: ldc2_w 470
+    //   23: lreturn
+    //   24: aload_0
+    //   25: invokevirtual 476	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   28: ldc_w 478
+    //   31: invokevirtual 484	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   34: pop
+    //   35: ldc2_w 470
+    //   38: ldc2_w 470
+    //   41: lcmp
+    //   42: ifne +7 -> 49
+    //   45: invokestatic 489	android/net/TrafficStats:getTotalRxBytes	()J
+    //   48: lstore_1
+    //   49: ldc_w 472
+    //   52: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: lload_1
+    //   56: lreturn
+    //   57: astore_0
+    //   58: ldc_w 472
+    //   61: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: lconst_0
+    //   65: lreturn
+    //   66: astore_0
+    //   67: ldc_w 472
+    //   70: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: lconst_0
+    //   74: lreturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	75	0	paramContext	Context
+    //   3	53	1	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   24	35	57	java/lang/ClassNotFoundException
+    //   24	35	66	finally
   }
   
   public static int getScreenHeight(Context paramContext)
   {
-    AppMethodBeat.i(124444);
+    AppMethodBeat.i(89718);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124444);
+      AppMethodBeat.o(89718);
       return 0;
     }
     int i;
     if (mScreenHeight != 0)
     {
       i = mScreenHeight;
-      AppMethodBeat.o(124444);
+      AppMethodBeat.o(89718);
       return i;
     }
     try
@@ -932,10 +925,10 @@ public class VcSystemInfo
       mScreenHeight = paramContext.getResources().getDisplayMetrics().heightPixels;
       label49:
       i = mScreenHeight;
-      AppMethodBeat.o(124444);
+      AppMethodBeat.o(89718);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
       break label49;
     }
@@ -943,17 +936,17 @@ public class VcSystemInfo
   
   public static int getScreenWidth(Context paramContext)
   {
-    AppMethodBeat.i(124443);
+    AppMethodBeat.i(89717);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124443);
+      AppMethodBeat.o(89717);
       return 0;
     }
     int i;
     if (mScreenWidth != 0)
     {
       i = mScreenWidth;
-      AppMethodBeat.o(124443);
+      AppMethodBeat.o(89717);
       return i;
     }
     try
@@ -961,10 +954,10 @@ public class VcSystemInfo
       mScreenWidth = paramContext.getResources().getDisplayMetrics().widthPixels;
       label49:
       i = mScreenWidth;
-      AppMethodBeat.o(124443);
+      AppMethodBeat.o(89717);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
       break label49;
     }
@@ -972,10 +965,10 @@ public class VcSystemInfo
   
   public static int getSystemCpuUsage(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(124451);
+    AppMethodBeat.i(89725);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(124451);
+      AppMethodBeat.o(89725);
       return -1;
     }
     float f2 = -1.0F;
@@ -1012,7 +1005,7 @@ public class VcSystemInfo
         }
       }
     }
-    catch (Throwable paramString1)
+    finally
     {
       for (;;)
       {
@@ -1021,65 +1014,90 @@ public class VcSystemInfo
       }
     }
     i = (int)f1;
-    AppMethodBeat.o(124451);
+    AppMethodBeat.o(89725);
     return i;
   }
   
   public static long getSystemIdleTime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124453);
+    AppMethodBeat.i(89727);
     try
     {
       long l = Long.parseLong(paramArrayOfString[4]);
-      AppMethodBeat.o(124453);
       return l;
     }
-    catch (Throwable paramArrayOfString)
+    finally
     {
-      AppMethodBeat.o(124453);
+      AppMethodBeat.o(89727);
     }
     return -1L;
   }
   
+  /* Error */
   public static long getSystemUptime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124452);
-    long l1 = 0L;
-    int i = 1;
-    for (;;)
-    {
-      if (i >= paramArrayOfString.length)
-      {
-        AppMethodBeat.o(124452);
-        return l1;
-      }
-      long l2 = l1;
-      if (4 != i) {}
-      try
-      {
-        l2 = Long.parseLong(paramArrayOfString[i]);
-        l2 = l1 + l2;
-        i += 1;
-        l1 = l2;
-      }
-      catch (Throwable paramArrayOfString)
-      {
-        AppMethodBeat.o(124452);
-      }
-    }
-    return -1L;
+    // Byte code:
+    //   0: ldc_w 531
+    //   3: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: lconst_0
+    //   7: lstore_2
+    //   8: iconst_1
+    //   9: istore_1
+    //   10: iload_1
+    //   11: aload_0
+    //   12: arraylength
+    //   13: if_icmplt +11 -> 24
+    //   16: ldc_w 531
+    //   19: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: lload_2
+    //   23: lreturn
+    //   24: lload_2
+    //   25: lstore 4
+    //   27: iconst_4
+    //   28: iload_1
+    //   29: if_icmpeq +17 -> 46
+    //   32: aload_0
+    //   33: iload_1
+    //   34: aaload
+    //   35: invokestatic 530	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   38: lstore 4
+    //   40: lload_2
+    //   41: lload 4
+    //   43: ladd
+    //   44: lstore 4
+    //   46: iload_1
+    //   47: iconst_1
+    //   48: iadd
+    //   49: istore_1
+    //   50: lload 4
+    //   52: lstore_2
+    //   53: goto -43 -> 10
+    //   56: astore_0
+    //   57: ldc_w 531
+    //   60: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: ldc2_w 470
+    //   66: lreturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	67	0	paramArrayOfString	String[]
+    //   9	41	1	i	int
+    //   7	46	2	l1	long
+    //   25	26	4	l2	long
+    // Exception table:
+    //   from	to	target	type
+    //   32	40	56	finally
   }
   
   public static String getWiFiMacAddress(Context paramContext)
   {
-    AppMethodBeat.i(124455);
+    AppMethodBeat.i(89729);
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
-      AppMethodBeat.o(124455);
+      paramContext = ((WifiInfo)a.a((WifiManager)paramContext.getSystemService("wifi"), "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getWiFiMacAddress", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;")).getMacAddress();
+      AppMethodBeat.o(89729);
       return paramContext;
     }
-    catch (Throwable paramContext)
+    finally
     {
       for (;;)
       {
@@ -1090,83 +1108,79 @@ public class VcSystemInfo
   
   public static int getWifiNetStrength(Context paramContext)
   {
-    AppMethodBeat.i(124440);
+    AppMethodBeat.i(89714);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 0;
     }
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (paramContext == null)
-      {
-        AppMethodBeat.o(124440);
-        return 0;
-      }
+      paramContext = (WifiInfo)a.a((WifiManager)paramContext.getSystemService("wifi"), "com/tencent/qqvideo/proxy/common/VcSystemInfo", "getWifiNetStrength", "(Landroid/content/Context;)I", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
+      if (paramContext != null) {}
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 0;
     }
     int i = paramContext.getRssi();
     if (Build.VERSION.SDK_INT >= 14)
     {
       i = WifiManager.calculateSignalLevel(paramContext.getRssi(), 101);
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return i;
     }
     if (i <= -100)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 0;
     }
     if (i >= -55)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 100;
     }
     i = (int)((i + 100) * 100.0F / 45.0F);
-    AppMethodBeat.o(124440);
+    AppMethodBeat.o(89714);
     return i;
   }
   
   public static boolean isNetworkAvailable(Context paramContext)
   {
-    AppMethodBeat.i(124438);
+    AppMethodBeat.i(89712);
     if (paramContext != null)
     {
       paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
       if (paramContext == null)
       {
-        AppMethodBeat.o(124438);
+        AppMethodBeat.o(89712);
         return false;
       }
       paramContext = paramContext.getActiveNetworkInfo();
       if ((paramContext == null) || (!paramContext.isAvailable()))
       {
-        AppMethodBeat.o(124438);
+        AppMethodBeat.o(89712);
         return false;
       }
       if (paramContext.getState() == NetworkInfo.State.CONNECTED)
       {
-        AppMethodBeat.o(124438);
+        AppMethodBeat.o(89712);
         return true;
       }
-      AppMethodBeat.o(124438);
+      AppMethodBeat.o(89712);
       return false;
     }
-    AppMethodBeat.o(124438);
+    AppMethodBeat.o(89712);
     return false;
   }
   
   public static boolean isNetworkTypeMobile(Context paramContext)
   {
-    AppMethodBeat.i(124445);
+    AppMethodBeat.i(89719);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124445);
+      AppMethodBeat.o(89719);
       return true;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -1179,14 +1193,14 @@ public class VcSystemInfo
         {
         case 1: 
         default: 
-          AppMethodBeat.o(124445);
+          AppMethodBeat.o(89719);
           return false;
         }
-        AppMethodBeat.o(124445);
+        AppMethodBeat.o(89719);
         return true;
       }
     }
-    AppMethodBeat.o(124445);
+    AppMethodBeat.o(89719);
     return true;
   }
   
@@ -1196,93 +1210,65 @@ public class VcSystemInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc_w 551
+    //   2: ldc_w 566
     //   5: invokestatic 150	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 553	java/io/RandomAccessFile
+    //   8: new 568	java/io/RandomAccessFile
     //   11: dup
-    //   12: ldc_w 555
-    //   15: ldc_w 557
-    //   18: invokespecial 560	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: astore_0
-    //   22: aload_0
-    //   23: invokevirtual 561	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
-    //   26: astore_1
-    //   27: aload_0
-    //   28: invokevirtual 562	java/io/RandomAccessFile:close	()V
-    //   31: ldc_w 551
+    //   12: ldc_w 570
+    //   15: ldc_w 572
+    //   18: invokespecial 575	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: astore_1
+    //   22: aload_1
+    //   23: invokevirtual 576	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
+    //   26: astore_0
+    //   27: aload_1
+    //   28: invokevirtual 577	java/io/RandomAccessFile:close	()V
+    //   31: ldc_w 566
     //   34: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   37: aload_1
+    //   37: aload_0
     //   38: areturn
     //   39: astore_0
     //   40: aconst_null
-    //   41: astore_0
+    //   41: astore_1
     //   42: aload_2
-    //   43: astore_1
-    //   44: aload_0
+    //   43: astore_0
+    //   44: aload_1
     //   45: ifnull -14 -> 31
-    //   48: aload_0
-    //   49: invokevirtual 562	java/io/RandomAccessFile:close	()V
+    //   48: aload_1
+    //   49: invokevirtual 577	java/io/RandomAccessFile:close	()V
     //   52: aload_2
-    //   53: astore_1
+    //   53: astore_0
     //   54: goto -23 -> 31
     //   57: astore_0
     //   58: aload_2
-    //   59: astore_1
+    //   59: astore_0
     //   60: goto -29 -> 31
-    //   63: astore_0
-    //   64: aconst_null
-    //   65: astore_1
-    //   66: aload_1
-    //   67: ifnull +7 -> 74
-    //   70: aload_1
-    //   71: invokevirtual 562	java/io/RandomAccessFile:close	()V
-    //   74: ldc_w 551
-    //   77: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: aload_0
-    //   81: athrow
-    //   82: astore_1
-    //   83: goto -9 -> 74
-    //   86: astore_0
-    //   87: goto -56 -> 31
-    //   90: astore_1
-    //   91: aload_0
-    //   92: astore_2
-    //   93: aload_1
-    //   94: astore_0
-    //   95: aload_2
-    //   96: astore_1
-    //   97: goto -31 -> 66
-    //   100: astore_1
-    //   101: goto -59 -> 42
+    //   63: astore_1
+    //   64: goto -33 -> 31
+    //   67: astore_0
+    //   68: goto -26 -> 42
     // Local variable table:
     //   start	length	slot	name	signature
-    //   21	7	0	localRandomAccessFile	java.io.RandomAccessFile
-    //   39	1	0	localThrowable1	Throwable
-    //   41	8	0	localObject1	Object
-    //   57	1	0	localThrowable2	Throwable
-    //   63	18	0	localObject2	Object
-    //   86	6	0	localThrowable3	Throwable
-    //   94	1	0	localObject3	Object
-    //   26	45	1	localObject4	Object
-    //   82	1	1	localThrowable4	Throwable
-    //   90	4	1	localObject5	Object
-    //   96	1	1	localObject6	Object
-    //   100	1	1	localThrowable5	Throwable
-    //   1	95	2	localObject7	Object
+    //   26	12	0	str	String
+    //   39	1	0	localObject1	Object
+    //   43	11	0	localObject2	Object
+    //   57	1	0	localObject3	Object
+    //   59	1	0	localObject4	Object
+    //   67	1	0	localObject5	Object
+    //   21	28	1	localRandomAccessFile	java.io.RandomAccessFile
+    //   63	1	1	localObject6	Object
+    //   1	58	2	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   8	22	39	java/lang/Throwable
-    //   48	52	57	java/lang/Throwable
-    //   8	22	63	finally
-    //   70	74	82	java/lang/Throwable
-    //   27	31	86	java/lang/Throwable
-    //   22	27	90	finally
-    //   22	27	100	java/lang/Throwable
+    //   8	22	39	finally
+    //   48	52	57	finally
+    //   27	31	63	finally
+    //   22	27	67	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.common.VcSystemInfo
  * JD-Core Version:    0.7.0.1
  */

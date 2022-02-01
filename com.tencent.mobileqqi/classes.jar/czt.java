@@ -1,30 +1,26 @@
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PredownloadTest;
+import com.tencent.mobileqq.activity.PredownloadTest.ConfigInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.BaseStrategy;
+import com.tencent.mobileqq.pic.PicPreDownloader;
 
 public class czt
-  extends PortraitImageview.SimpleOnScaleGestureListener
+  implements View.OnClickListener
 {
-  public czt(PortraitImageview paramPortraitImageview) {}
+  public czt(PredownloadTest paramPredownloadTest) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(View paramView)
   {
-    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
-      try
-      {
-        float f1 = this.a.a();
-        float f2 = paramScaleGestureDetector.getScaleFactor();
-        f1 = Math.min(this.a.e(), Math.max(f1 * f2, 0.1F));
-        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-        this.a.invalidate();
-        return true;
-      }
-      catch (IllegalArgumentException paramScaleGestureDetector)
-      {
-        paramScaleGestureDetector.printStackTrace();
-      }
-    }
-    return false;
+    paramView = new PredownloadTest.ConfigInfo();
+    paramView.a = this.a.a(this.a.a);
+    paramView.b = this.a.a(this.a.jdField_b_of_type_AndroidWidgetEditText);
+    paramView.c = this.a.a(this.a.c);
+    paramView.d = this.a.a(this.a.d);
+    paramView.e = this.a.a(this.a.e);
+    paramView.f = this.a.a(this.a.f);
+    this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a.a(paramView);
   }
 }
 

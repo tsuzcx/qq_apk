@@ -26,16 +26,18 @@ final class CompletableOnSubscribeConcatIterable$ConcatInnerSubscriber
   
   void next()
   {
-    if (this.sd.isUnsubscribed()) {}
-    do
+    if (this.sd.isUnsubscribed()) {
+      return;
+    }
+    if (getAndIncrement() != 0) {
+      return;
+    }
+    Iterator localIterator = this.sources;
+    for (;;)
     {
-      Iterator localIterator;
-      do
-      {
+      if (this.sd.isUnsubscribed()) {
         return;
-        while (getAndIncrement() != 0) {}
-        localIterator = this.sources;
-      } while (this.sd.isUnsubscribed());
+      }
       try
       {
         boolean bool = localIterator.hasNext();
@@ -44,29 +46,32 @@ final class CompletableOnSubscribeConcatIterable$ConcatInnerSubscriber
           this.actual.onCompleted();
           return;
         }
-      }
-      catch (Throwable localThrowable1)
-      {
-        this.actual.onError(localThrowable1);
-        return;
-      }
-      Completable localCompletable;
-      try
-      {
-        localCompletable = (Completable)localThrowable1.next();
-        if (localCompletable == null)
+        try
         {
-          this.actual.onError(new NullPointerException("The completable returned is null"));
+          Completable localCompletable = (Completable)localIterator.next();
+          if (localCompletable == null)
+          {
+            this.actual.onError(new NullPointerException("The completable returned is null"));
+            return;
+          }
+          localCompletable.subscribe(this);
+          if (decrementAndGet() != 0) {
+            continue;
+          }
           return;
         }
+        catch (Throwable localThrowable1)
+        {
+          this.actual.onError(localThrowable1);
+          return;
+        }
+        return;
       }
       catch (Throwable localThrowable2)
       {
         this.actual.onError(localThrowable2);
-        return;
       }
-      localCompletable.subscribe(this);
-    } while (decrementAndGet() != 0);
+    }
   }
   
   public void onCompleted()
@@ -86,7 +91,7 @@ final class CompletableOnSubscribeConcatIterable$ConcatInnerSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeConcatIterable.ConcatInnerSubscriber
  * JD-Core Version:    0.7.0.1
  */

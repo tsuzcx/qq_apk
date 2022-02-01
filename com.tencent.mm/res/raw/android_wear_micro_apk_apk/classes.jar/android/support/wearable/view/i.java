@@ -11,65 +11,46 @@ import android.view.ViewGroup;
 @TargetApi(20)
 public abstract class i
 {
-  public static final Drawable Cu = new j((byte)0);
-  public static final Point Cv = new Point(-1, -1);
-  public static final Point Cw = new Point(-2, -2);
-  private k Cx;
-  private DataSetObservable jV = new DataSetObservable();
+  public static final Drawable Ej = new j((byte)0);
+  public static final Point Ek = new Point(-1, -1);
+  public static final Point El = new Point(-2, -2);
+  private k Em;
+  private DataSetObservable lS = new DataSetObservable();
   
-  public static int fb()
+  public static Drawable fq()
   {
-    return 0;
+    return Ej;
   }
   
-  public static void fc() {}
-  
-  public static void fd() {}
-  
-  public static void fe() {}
-  
-  public static Drawable ff()
+  public static Drawable fr()
   {
-    return Cu;
+    return Ej;
   }
   
-  public static Drawable fg()
+  public static Point fs()
   {
-    return Cu;
+    return Ek;
   }
-  
-  public static Point fh()
-  {
-    return Cv;
-  }
-  
-  protected static void fi() {}
-  
-  public static void fj() {}
   
   public abstract Object a(ViewGroup paramViewGroup, int paramInt);
   
   final void a(k paramk)
   {
-    this.Cx = paramk;
+    this.Em = paramk;
   }
   
   public abstract boolean a(View paramView, Object paramObject);
   
   public abstract void b(ViewGroup paramViewGroup, Object paramObject);
   
-  public abstract int fa();
-  
-  public abstract int getRowCount();
-  
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.jV.registerObserver(paramDataSetObserver);
+    this.lS.registerObserver(paramDataSetObserver);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.jV.unregisterObserver(paramDataSetObserver);
+    this.lS.unregisterObserver(paramDataSetObserver);
   }
 }
 

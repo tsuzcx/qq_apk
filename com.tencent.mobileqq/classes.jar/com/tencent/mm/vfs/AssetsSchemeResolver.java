@@ -17,15 +17,17 @@ public final class AssetsSchemeResolver
   public Pair<FileSystem, String> resolve(SchemeResolver.ResolverContext paramResolverContext, Uri paramUri)
   {
     paramResolverContext = paramUri.getPath();
-    if (paramResolverContext == null) {}
-    for (paramResolverContext = "";; paramResolverContext = VFSUtils.normalizePath(paramResolverContext, true, true)) {
-      return new Pair(this.mFileSystem, paramResolverContext);
+    if (paramResolverContext == null) {
+      paramResolverContext = "";
+    } else {
+      paramResolverContext = VFSUtils.normalizePath(paramResolverContext, true, true);
     }
+    return new Pair(this.mFileSystem, paramResolverContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.AssetsSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,21 @@ class PotentialAssignment$1
   
   public String getDescription()
   {
-    String str1;
-    if (this.val$value == null) {
-      str1 = "null";
-    }
-    for (;;)
-    {
-      return String.format("%s <from %s>", new Object[] { str1, this.val$name });
+    Object localObject = this.val$value;
+    String str;
+    if (localObject == null) {
+      localObject = "null";
+    } else {
       try
       {
-        str1 = String.format("\"%s\"", new Object[] { this.val$value });
+        localObject = String.format("\"%s\"", new Object[] { localObject });
       }
       catch (Throwable localThrowable)
       {
-        String str2 = String.format("[toString() threw %s: %s]", new Object[] { localThrowable.getClass().getSimpleName(), localThrowable.getMessage() });
+        str = String.format("[toString() threw %s: %s]", new Object[] { localThrowable.getClass().getSimpleName(), localThrowable.getMessage() });
       }
     }
+    return String.format("%s <from %s>", new Object[] { str, this.val$name });
   }
   
   public Object getValue()
@@ -37,7 +36,7 @@ class PotentialAssignment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.PotentialAssignment.1
  * JD-Core Version:    0.7.0.1
  */

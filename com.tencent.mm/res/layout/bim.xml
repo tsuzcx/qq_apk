@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/iwl" android:background="@color/m0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/hqu" android:background="@color/m0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/a1z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/jnf" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/jne" android:background="@color/m0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hqu" android:layout_marginEnd="@dimen/cp" />
+    </FrameLayout>
+    <ListView android:id="@id/j9w" android:background="@color/m0" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:dividerHeight="0.0px" android:layout_below="@id/jnf" />
+    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/bpd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jnf" />
+    <ImageView android:id="@id/jfm" android:background="@drawable/btb" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bpd" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/hh0" android:background="@color/m0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bpd">
+        <TextView android:textColor="@color/al6" android:id="@id/hgy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/gmp" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a78" android:gravity="center_vertical" android:id="@id/j9u" android:background="#f2ebebeb" android:padding="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@drawable/aqn" android:drawablePadding="@dimen/j6" android:layout_below="@id/bpd" />
+</RelativeLayout>

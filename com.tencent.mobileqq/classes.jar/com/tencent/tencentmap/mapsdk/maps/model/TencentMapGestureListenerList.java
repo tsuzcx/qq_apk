@@ -15,13 +15,8 @@ public class TencentMapGestureListenerList
       if (!this.a.contains(paramTencentMapGestureListener)) {
         this.a.add(paramTencentMapGestureListener);
       }
-      return;
     }
-    finally
-    {
-      paramTencentMapGestureListener = finally;
-      throw paramTencentMapGestureListener;
-    }
+    finally {}
   }
   
   public boolean onDoubleTap(float paramFloat1, float paramFloat2)
@@ -37,6 +32,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean onDown(float paramFloat1, float paramFloat2)
@@ -52,6 +51,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean onFling(float paramFloat1, float paramFloat2)
@@ -67,6 +70,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean onLongPress(float paramFloat1, float paramFloat2)
@@ -82,6 +89,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void onMapStable()
@@ -97,6 +108,10 @@ public class TencentMapGestureListenerList
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean onScroll(float paramFloat1, float paramFloat2)
@@ -112,6 +127,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean onSingleTap(float paramFloat1, float paramFloat2)
@@ -127,6 +146,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean onUp(float paramFloat1, float paramFloat2)
@@ -142,6 +165,10 @@ public class TencentMapGestureListenerList
       return false;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void removeListener(TencentMapGestureListener paramTencentMapGestureListener)
@@ -160,7 +187,7 @@ public class TencentMapGestureListenerList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListenerList
  * JD-Core Version:    0.7.0.1
  */

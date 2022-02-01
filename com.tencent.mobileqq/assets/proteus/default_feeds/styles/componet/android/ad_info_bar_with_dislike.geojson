@@ -57,9 +57,8 @@
                     },
                     "event_type": "ad_Text_click",
                     "attributes":{
-                        "setFrameString:":"-1",
                         "setText:":"-1",
-                        "setTextColorString:":"#A6A6A6",
+                        "setTextColorString:":"#B0B3BF",
                         "setFontSizeString:":"12",
                         "setNumberOfLinesString:":"1"
                     }
@@ -97,7 +96,7 @@
                     },
                     "attributes":{
                         "setText:":"-1",
-                        "setTextColorString:":"#A6A6A6",
+                        "setTextColorString:":"#B0B3BF",
                         "setFontSizeString:":"12",
                         "setNumberOfLinesString:":"1"
                     }
@@ -115,7 +114,7 @@
                     },
                     "attributes": {
                         "setText:": "-1",
-                        "setTextColorString:": "#A6A6A6",
+                        "setTextColorString:": "#B0B3BF",
                         "setFontSizeString:": "12",
                         "setNumberOfLinesString:": "-1"
                     }
@@ -160,8 +159,6 @@
 
             },
             "attributes":{
-
-                "setFrameString:":"-1",
                 "setText:":"-1",
                 "setTextColorString:":"#12B7F5",
                 "setFontSizeString:":"14",

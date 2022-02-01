@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.multicard;
 
-import aumw;
 import java.util.List;
 import java.util.Map;
 
@@ -11,26 +10,26 @@ class MultiCardFragment$1$1
   
   public void run()
   {
-    if (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null) {
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, this.b);
+    if (MultiCardFragment.a(this.d.this$0) != null) {
+      MultiCardFragment.a(this.d.this$0).a(this.a, this.b, this.c);
     }
-    if (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null) {
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).e();
+    if (MultiCardFragment.b(this.d.this$0) != null) {
+      MultiCardFragment.b(this.d.this$0).g();
     }
-    if (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null) {
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).notifyDataSetChanged();
+    if (MultiCardFragment.c(this.d.this$0) != null) {
+      MultiCardFragment.c(this.d.this$0).notifyDataSetChanged();
     }
-    if (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null)
+    if (MultiCardFragment.d(this.d.this$0) != null)
     {
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(this.jdField_a_of_type_JavaUtilList.size());
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).b(0);
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a();
+      MultiCardFragment.d(this.d.this$0).a(this.a.size());
+      MultiCardFragment.d(this.d.this$0).b(0);
+      MultiCardFragment.d(this.d.this$0).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

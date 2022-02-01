@@ -1,26 +1,37 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.o;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.gdpr.c;
-import com.tencent.mm.plugin.webview.model.ad;
-import com.tencent.mm.plugin.webview.model.ai;
-import com.tencent.mm.protocal.protobuf.bgv;
-import com.tencent.mm.protocal.protobuf.bxa;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.opensdk.modelmsg.SendAuth.Options;
+import com.tencent.mm.plugin.webview.c.d;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.model.aa;
+import com.tencent.mm.plugin.webview.model.ac;
+import com.tencent.mm.plugin.webview.model.aj;
+import com.tencent.mm.protocal.protobuf.dve;
+import com.tencent.mm.protocal.protobuf.eux;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.w;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -28,137 +39,158 @@ import java.util.LinkedList;
 @com.tencent.mm.ui.base.a(3)
 public class SDKOAuthFriendUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private int accountType = 2;
+  private int VaW;
+  private aj WTf;
+  private eux WTg;
+  public LinkedList<String> WTm;
+  private boolean WTy;
   private String appId;
-  private String cJr;
-  private com.tencent.mm.ui.base.p ehb;
+  private String extData;
+  private String idu;
+  private w lKp;
+  private SendAuth.Options options;
+  private int rFX;
+  private String scope;
   private long startTime;
   private String state;
   private String transaction;
-  private ai vbn;
-  private bxa vbo;
-  private int vbp;
-  private boolean vbq = false;
   
-  private void Kr(int paramInt)
+  public SDKOAuthFriendUI()
   {
-    AppMethodBeat.i(7501);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SDKOAuthFriendUI", "accept go  MPGdprPolicyUtil.checkPolicy");
-    c.a(this, com.tencent.mm.model.gdpr.a.foA, this.appId, new SDKOAuthFriendUI.6(this, paramInt));
-    AppMethodBeat.o(7501);
+    AppMethodBeat.i(297008);
+    this.WTy = false;
+    this.VaW = 2;
+    this.WTm = new LinkedList();
+    AppMethodBeat.o(297008);
   }
   
-  private void a(bxa parambxa, Class<?> paramClass, int paramInt)
+  private void a(eux parameux, Class<?> paramClass, int paramInt)
   {
-    AppMethodBeat.i(7502);
+    AppMethodBeat.i(79704);
+    Log.i("MicroMsg.SDKOAuthFriendUI", "startScopeActivity  cls:".concat(String.valueOf(paramClass)));
     paramClass = new Intent(this, paramClass);
     paramClass.putExtra("0", this.appId);
     paramClass.putExtra("1", this.transaction);
     paramClass.putExtra("4", this.state);
-    paramClass.putExtra("6", paramInt);
-    paramClass.putExtra("auth_raw_url", this.cJr);
-    paramClass.putExtra("auth_from_scan", this.vbq);
+    paramClass.putExtra("7", this.extData);
+    paramClass.putExtra("3", paramInt);
+    paramClass.putExtra("auth_raw_url", this.idu);
+    paramClass.putExtra("has_selected_scope", this.WTm);
+    paramClass.putExtra("auth_from_scan", this.WTy);
+    if ((this.options != null) && (!Util.isNullOrNil(this.options.callbackClassName)))
+    {
+      Bundle localBundle = new Bundle();
+      this.options.toBundle(localBundle);
+      paramClass.putExtra("send_auth_option", localBundle);
+    }
     try
     {
-      paramClass.putExtra("2", parambxa.toByteArray());
-      startActivity(paramClass);
-      AppMethodBeat.o(7502);
+      paramClass.putExtra("2", parameux.toByteArray());
+      parameux = new com.tencent.mm.hellhoundlib.b.a().cG(paramClass);
+      com.tencent.mm.hellhoundlib.a.a.b(this, parameux.aYi(), "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI", "startScopeActivity", "(Lcom/tencent/mm/protocal/protobuf/SdkOauthAuthorizeResp;Ljava/lang/Class;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)parameux.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI", "startScopeActivity", "(Lcom/tencent/mm/protocal/protobuf/SdkOauthAuthorizeResp;Ljava/lang/Class;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(79704);
       return;
     }
-    catch (IOException parambxa)
+    catch (IOException parameux)
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SDKOAuthFriendUI", "SdkOauthAuthorizeResp toByteArray failed");
+        Log.e("MicroMsg.SDKOAuthFriendUI", "SdkOauthAuthorizeResp toByteArray failed");
       }
     }
   }
   
-  private void a(bxa parambxa, Class<?> paramClass, int paramInt1, int paramInt2, int paramInt3)
+  private void ddd()
   {
-    AppMethodBeat.i(7503);
-    paramClass = new Intent(this, paramClass);
-    paramClass.putExtra("0", this.appId);
-    paramClass.putExtra("1", this.transaction);
-    paramClass.putExtra("4", this.state);
-    paramClass.putExtra("3", paramInt1);
-    paramClass.putExtra("5", paramInt2);
-    paramClass.putExtra("6", paramInt3);
-    paramClass.putExtra("auth_raw_url", this.cJr);
-    paramClass.putExtra("auth_from_scan", this.vbq);
-    try
+    AppMethodBeat.i(79698);
+    if (this.lKp == null)
     {
-      paramClass.putExtra("2", parambxa.toByteArray());
-      startActivity(paramClass);
-      AppMethodBeat.o(7503);
+      AppMethodBeat.o(79698);
       return;
     }
-    catch (IOException parambxa)
-    {
-      for (;;)
-      {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SDKOAuthFriendUI", "SdkOauthAuthorizeResp toByteArray failed");
-      }
-    }
+    this.lKp.dismiss();
+    AppMethodBeat.o(79698);
   }
   
-  private void ddv()
+  private int ixs()
   {
-    AppMethodBeat.i(153180);
-    if (this.ehb == null)
+    AppMethodBeat.i(79701);
+    if ("snsapi_friend".equals(this.scope))
     {
-      AppMethodBeat.o(153180);
-      return;
+      AppMethodBeat.o(79701);
+      return 3;
     }
-    this.ehb.dismiss();
-    AppMethodBeat.o(153180);
-  }
-  
-  private void gO(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(7500);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SDKOAuthFriendUI", "accept go  MPGdprPolicyUtil.checkPolicy");
-    c.a(this, com.tencent.mm.model.gdpr.a.foA, this.appId, new SDKOAuthFriendUI.5(this, paramInt1, paramInt2));
-    AppMethodBeat.o(7500);
+    AppMethodBeat.o(79701);
+    return 4;
   }
   
   public int getLayoutId()
   {
-    return 2130970622;
+    return c.g.sdkoauth_friend_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(7495);
+    AppMethodBeat.i(79694);
+    Log.i("MicroMsg.SDKOAuthFriendUI", "onCreate");
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131689615));
-    hideActionbarLine();
-    setMMTitle(getString(2131301817));
-    setBackBtnVisible(false);
-    setTitleBarClickListener(null, new SDKOAuthFriendUI.2(this));
+    com.tencent.mm.kernel.h.aZW().a(1346, this);
+    com.tencent.mm.kernel.h.aZW().a(1137, this);
+    paramBundle = getSupportActionBar();
+    if (paramBundle != null) {
+      paramBundle.hide();
+    }
+    ((TextView)findViewById(c.f.leftClose)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(296377);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        com.tencent.mm.plugin.webview.k.b.XsD.a(SDKOAuthFriendUI.a(SDKOAuthFriendUI.this), SDKOAuthFriendUI.b(SDKOAuthFriendUI.this), 0, SDKOAuthFriendUI.c(SDKOAuthFriendUI.this), SDKOAuthFriendUI.d(SDKOAuthFriendUI.this), 1, 0);
+        SDKOAuthFriendUI.f(SDKOAuthFriendUI.this).a(-2, SDKOAuthFriendUI.e(SDKOAuthFriendUI.this));
+        SDKOAuthFriendUI.this.finish();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(296377);
+      }
+    });
     paramBundle = getIntent();
     this.appId = paramBundle.getStringExtra("0");
+    this.scope = paramBundle.getStringExtra("auth_scope");
     this.transaction = paramBundle.getStringExtra("1");
+    this.WTm = new LinkedList(paramBundle.getStringArrayListExtra("has_selected_scope"));
+    Object localObject2;
     try
     {
-      this.vbo = ((bxa)new bxa().parseFrom(paramBundle.getByteArrayExtra("2")));
+      this.WTg = ((eux)new eux().parseFrom(paramBundle.getByteArrayExtra("2")));
       this.state = paramBundle.getStringExtra("4");
-      this.vbq = paramBundle.getBooleanExtra("auth_from_scan", false);
-      if (this.vbq)
+      this.extData = paramBundle.getStringExtra("7");
+      this.WTy = paramBundle.getBooleanExtra("auth_from_scan", false);
+      if (this.WTy)
       {
-        this.accountType = 3;
-        this.cJr = paramBundle.getStringExtra("auth_raw_url");
-        this.vbn = new ai(this, this.appId, this.cJr);
-        this.vbp = paramBundle.getIntExtra("3", -1);
-        TextView localTextView = (TextView)findViewById(2131827481);
-        localObject2 = this.vbo.xvT.iterator();
-        while (((Iterator)localObject2).hasNext())
+        this.VaW = 3;
+        this.idu = paramBundle.getStringExtra("auth_raw_url");
+        this.WTf = new aj(this, this.appId, this.idu);
+        this.rFX = paramBundle.getIntExtra("3", -1);
+        paramBundle = paramBundle.getBundleExtra("send_auth_option");
+        if (paramBundle == null) {
+          break label416;
+        }
+        this.options = new SendAuth.Options();
+        this.options.fromBundle(paramBundle);
+        Log.i("MicroMsg.SDKOAuthFriendUI", "options.callbackClassName: " + this.options.callbackClassName + "  options.callbackFlags: " + this.options.callbackFlags);
+        paramBundle = (TextView)findViewById(c.f.auth_content_friendpage);
+        Iterator localIterator = this.WTg.abaS.iterator();
+        while (localIterator.hasNext())
         {
-          localObject3 = (bgv)((Iterator)localObject2).next();
-          if (((bgv)localObject3).scope.equals("snsapi_friend")) {
-            localTextView.setText(((bgv)localObject3).desc);
+          localObject2 = (dve)localIterator.next();
+          if (((dve)localObject2).scope.equals(this.scope)) {
+            paramBundle.setText(((dve)localObject2).desc);
           }
         }
       }
@@ -167,89 +199,131 @@ public class SDKOAuthFriendUI
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SDKOAuthFriendUI", "SdkOauthAuthorizeResp parseFrom byteArray failed");
+        Log.e("MicroMsg.SDKOAuthFriendUI", "SdkOauthAuthorizeResp parseFrom byteArray failed");
         continue;
-        this.vbn = new ai(this, this.appId, this.transaction, this.state);
+        this.WTf = new aj(this, this.appId, this.transaction, this.state, this.extData);
+        continue;
+        label416:
+        Log.i("MicroMsg.SDKOAuthFriendUI", "SendAuth.options, bundle is null");
       }
-      localIOException.getPaint().setFakeBoldText(true);
-      Object localObject1 = (ImageView)findViewById(2131827479);
-      Object localObject2 = (TextView)findViewById(2131827480);
-      Object localObject3 = new c.a();
-      ((c.a)localObject3).eNY = 2131231748;
-      ((c.a)localObject3).eOl = getResources().getDimension(2131428650);
-      ((c.a)localObject3).eOk = true;
-      o.ahG().a(this.vbo.xvU, (ImageView)localObject1, ((c.a)localObject3).ahY());
-      ((TextView)localObject2).setText(this.vbo.fhP);
-      localObject1 = (Button)findViewById(2131827482);
-      localObject2 = (Button)findViewById(2131827483);
-      localObject3 = ai.d("snsapi_friend", this.vbo.xvT);
-      int i = paramBundle.getIntExtra("5", -1);
+      paramBundle.getPaint().setFakeBoldText(true);
+      paramBundle = (TextView)findViewById(c.f.auth_content_detail);
+      if (Util.isNullOrNil(this.WTg.abxJ)) {
+        break label651;
+      }
+    }
+    paramBundle.setVisibility(0);
+    paramBundle.setText(this.WTg.abxJ);
+    for (;;)
+    {
+      this.WTf.WMa = this.WTg.abxy;
+      paramBundle = (ImageView)findViewById(c.f.new_app_icon_iv_friendpage);
+      Object localObject1 = (TextView)findViewById(c.f.new_app_name_tv_friendpage);
+      localObject2 = new c.a();
+      ((c.a)localObject2).oKB = c.h.native_oauth_default_head_img;
+      ((c.a)localObject2).oKI = getResources().getDimension(c.d.sdk_oauth_header_corners_size);
+      ((c.a)localObject2).nrc = true;
+      r.bKe().a(this.WTg.abaT, paramBundle, ((c.a)localObject2).bKx());
+      ((TextView)localObject1).setText(this.WTg.nSt);
+      paramBundle = (Button)findViewById(c.f.login_btn_agree_friendpage);
+      localObject1 = (Button)findViewById(c.f.login_btn_disagree_friendpage);
+      localObject2 = aj.f(this.scope, this.WTg.abaS);
       this.startTime = System.currentTimeMillis();
-      ((Button)localObject1).setOnClickListener(new SDKOAuthFriendUI.3(this, i));
-      ((Button)localObject2).setOnClickListener(new SDKOAuthFriendUI.4(this, (bgv)localObject3, i));
-      AppMethodBeat.o(7495);
+      paramBundle.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(79690);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          com.tencent.mm.plugin.webview.k.b.XsD.a(SDKOAuthFriendUI.a(SDKOAuthFriendUI.this), SDKOAuthFriendUI.b(SDKOAuthFriendUI.this), 1, SDKOAuthFriendUI.c(SDKOAuthFriendUI.this), SDKOAuthFriendUI.d(SDKOAuthFriendUI.this), 1, 0);
+          SDKOAuthFriendUI.a(SDKOAuthFriendUI.this, true, this.WTA);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(79690);
+        }
+      });
+      ((Button)localObject1).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(79691);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          com.tencent.mm.plugin.webview.k.b.XsD.a(SDKOAuthFriendUI.a(SDKOAuthFriendUI.this), SDKOAuthFriendUI.b(SDKOAuthFriendUI.this), 0, SDKOAuthFriendUI.c(SDKOAuthFriendUI.this), SDKOAuthFriendUI.d(SDKOAuthFriendUI.this), 1, 0);
+          SDKOAuthFriendUI.a(SDKOAuthFriendUI.this, false, this.WTA);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthFriendUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(79691);
+        }
+      });
+      AppMethodBeat.o(79694);
+      return;
+      label651:
+      paramBundle.setVisibility(8);
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(153179);
+    AppMethodBeat.i(79697);
     super.onDestroy();
-    ddv();
-    AppMethodBeat.o(153179);
+    ddd();
+    com.tencent.mm.kernel.h.aZW().b(1346, this);
+    com.tencent.mm.kernel.h.aZW().b(1137, this);
+    Log.i("MicroMsg.SDKOAuthFriendUI", "onDestroy");
+    AppMethodBeat.o(79697);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(7498);
+    AppMethodBeat.i(79699);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      this.vbn.JU(-2);
-      com.tencent.mm.plugin.webview.f.a.vtM.a(this.appId, this.startTime, 0, this.accountType, 3, 1, 0);
+      this.WTf.a(-2, this.options);
+      com.tencent.mm.plugin.webview.k.b.XsD.a(this.appId, this.startTime, 0, this.VaW, ixs(), 1, 0);
       finish();
-      AppMethodBeat.o(7498);
+      AppMethodBeat.o(79699);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(7498);
+    AppMethodBeat.o(79699);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(7497);
+    AppMethodBeat.i(79696);
     super.onPause();
-    g.Rc().b(1346, this);
-    g.Rc().b(1137, this);
-    AppMethodBeat.o(7497);
+    Log.i("MicroMsg.SDKOAuthFriendUI", "onPause");
+    AppMethodBeat.o(79696);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(7496);
+    AppMethodBeat.i(79695);
     super.onResume();
-    g.Rc().a(1346, this);
-    g.Rc().a(1137, this);
-    AppMethodBeat.o(7496);
+    Log.i("MicroMsg.SDKOAuthFriendUI", "onResume");
+    AppMethodBeat.o(79695);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(7499);
+    AppMethodBeat.i(79700);
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      com.tencent.mm.plugin.webview.f.a.vtM.a(this.appId, this.startTime, 2, this.accountType, 3, 1, paramInt2);
+      com.tencent.mm.plugin.webview.k.b.XsD.a(this.appId, this.startTime, 2, this.VaW, ixs(), 1, paramInt2);
     }
-    ddv();
-    if ((paramm instanceof ad))
+    ddd();
+    if ((paramp instanceof ac))
     {
-      this.vbn.h(paramInt1, paramInt2, paramString, paramm);
-      AppMethodBeat.o(7499);
+      this.WTf.a(paramInt1, paramInt2, paramString, paramp, this.options);
+      AppMethodBeat.o(79700);
       return;
     }
-    if ((paramm instanceof com.tencent.mm.plugin.webview.model.ab)) {
-      this.vbn.C(paramInt1, paramInt2, paramString);
+    if ((paramp instanceof aa)) {
+      this.WTf.a(paramInt1, paramInt2, paramString, this.options);
     }
-    AppMethodBeat.o(7499);
+    AppMethodBeat.o(79700);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -260,7 +334,7 @@ public class SDKOAuthFriendUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.SDKOAuthFriendUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,139 +1,112 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.c.e;
-import a.f.b.j;
-import a.l;
-import a.y;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.a.b;
-import kotlinx.coroutines.a.o;
-import kotlinx.coroutines.a.p;
+import kotlin.Metadata;
+import kotlin.d.a;
+import kotlin.d.b;
+import kotlin.d.d;
+import kotlin.d.e;
+import kotlin.d.f;
+import kotlin.d.f.b;
+import kotlin.d.f.c;
+import kotlin.d.f.c<TE;>;
+import kotlin.d.g;
+import kotlin.g.b.s;
+import kotlinx.coroutines.internal.h;
+import kotlinx.coroutines.internal.i;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/DispatchedContinuation;", "T", "Lkotlinx/coroutines/DispatchedTask;", "Lkotlin/coroutines/Continuation;", "dispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "continuation", "(Lkotlinx/coroutines/CoroutineDispatcher;Lkotlin/coroutines/Continuation;)V", "_state", "", "_state$annotations", "()V", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "countOrElement", "delegate", "getDelegate", "()Lkotlin/coroutines/Continuation;", "dispatchYield", "", "value", "dispatchYield$kotlinx_coroutines_core", "(Ljava/lang/Object;)V", "resumeCancellable", "resumeCancellableWithException", "exception", "", "resumeCancelled", "", "resumeUndispatched", "resumeUndispatchedWithException", "resumeWith", "result", "Lkotlin/Result;", "takeState", "toString", "", "kotlinx-coroutines-core"})
-public final class al<T>
-  extends an<T>
-  implements c<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "releaseInterceptedContinuation", "toString", "", "Key", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class al
+  extends a
+  implements e
 {
-  public final Object CHM;
-  public final w CHN;
-  public final c<T> CHO;
-  public Object CHh;
+  public static final al.a ajvE = new al.a((byte)0);
   
-  public al(w paramw, c<? super T> paramc)
+  public al()
   {
-    super(0);
-    AppMethodBeat.i(118516);
-    this.CHN = paramw;
-    this.CHO = paramc;
-    this.CHh = am.epG();
-    this.CHM = o.d(eaV());
-    AppMethodBeat.o(118516);
+    super((f.c)e.aiwc);
   }
   
-  public final void dg(Object paramObject)
+  public abstract void a(f paramf, Runnable paramRunnable);
+  
+  public final <T> d<T> as(d<? super T> paramd)
   {
-    AppMethodBeat.i(118514);
-    Object localObject1 = this.CHO.eaV();
-    Object localObject2 = r.dY(paramObject);
-    if (this.CHN.b((e)localObject1))
+    return (d)new h(this, paramd);
+  }
+  
+  public final void at(d<?> paramd)
+  {
+    paramd = (h)paramd;
+    while (paramd._reusableCancellableContinuation == i.ajAn) {}
+    paramd = paramd._reusableCancellableContinuation;
+    if ((paramd instanceof q)) {}
+    for (paramd = (q)paramd;; paramd = null)
     {
-      this.CHh = localObject2;
-      this.CHQ = 0;
-      this.CHN.a((e)localObject1, (Runnable)this);
-      AppMethodBeat.o(118514);
+      if (paramd != null) {
+        paramd.kBI();
+      }
       return;
     }
-    localObject1 = bu.CIG;
-    localObject1 = (bu.a)bu.CIF.get();
-    if (((bu.a)localObject1).isActive)
+  }
+  
+  public void b(f paramf, Runnable paramRunnable)
+  {
+    a(paramf, paramRunnable);
+  }
+  
+  public <E extends f.b> E get(f.c<E> paramc)
+  {
+    Object localObject = (e)this;
+    s.u(paramc, "key");
+    if ((paramc instanceof b))
     {
-      this.CHh = localObject2;
-      this.CHQ = 0;
-      ((bu.a)localObject1).CIH.addLast(this);
-      AppMethodBeat.o(118514);
-      return;
+      if (((b)paramc).a(((e)localObject).getKey()))
+      {
+        localObject = ((b)paramc).a((f.b)localObject);
+        paramc = (f.c<E>)localObject;
+        if ((localObject instanceof f.b)) {}
+      }
+      else
+      {
+        paramc = null;
+      }
+      return paramc;
     }
-    j.p(localObject1, "eventLoop");
-    for (;;)
+    if (e.aiwc == paramc) {
+      return (f.b)localObject;
+    }
+    return null;
+  }
+  
+  public boolean kBY()
+  {
+    return true;
+  }
+  
+  public f minusKey(f.c<?> paramc)
+  {
+    e locale = (e)this;
+    s.u(paramc, "key");
+    if ((paramc instanceof b))
     {
-      try
-      {
-        ((bu.a)localObject1).isActive = true;
-        localObject2 = eaV();
-        Object localObject3 = o.b((e)localObject2, this.CHM);
-        try
-        {
-          this.CHO.dg(paramObject);
-          paramObject = y.BMg;
-          o.a((e)localObject2, localObject3);
-          paramObject = (Runnable)((bu.a)localObject1).CIH.eqc();
-          if (paramObject == null) {
-            return;
-          }
-        }
-        finally
-        {
-          o.a((e)localObject2, localObject3);
-          AppMethodBeat.o(118514);
-        }
-        paramObject.run();
+      if ((((b)paramc).a(locale.getKey())) && (((b)paramc).a((f.b)locale) != null)) {
+        return (f)g.aiwf;
       }
-      catch (Throwable paramObject)
-      {
-        ((bu.a)localObject1).CIH.clear();
-        paramObject = (Throwable)new ak("Unexpected exception in undispatched event loop, clearing pending tasks", paramObject);
-        AppMethodBeat.o(118514);
-        throw paramObject;
-      }
-      finally
-      {
-        ((bu.a)localObject1).isActive = false;
-        AppMethodBeat.o(118514);
-      }
+      return (f)locale;
     }
-  }
-  
-  public final e eaV()
-  {
-    AppMethodBeat.i(118517);
-    e locale = this.CHO.eaV();
-    AppMethodBeat.o(118517);
-    return locale;
-  }
-  
-  public final Object epm()
-  {
-    AppMethodBeat.i(118513);
-    Object localObject = this.CHh;
-    if (localObject != am.epG()) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      localObject = (Throwable)new IllegalStateException("Check failed.".toString());
-      AppMethodBeat.o(118513);
-      throw ((Throwable)localObject);
+    if (e.aiwc == paramc) {
+      return (f)g.aiwf;
     }
-    this.CHh = am.epG();
-    AppMethodBeat.o(118513);
-    return localObject;
+    return (f)locale;
   }
   
-  public final c<T> epp()
+  public String toString()
   {
-    return (c)this;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118515);
-    String str = "DispatchedContinuation[" + this.CHN + ", " + af.d(this.CHO) + ']';
-    AppMethodBeat.o(118515);
-    return str;
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.al
  * JD-Core Version:    0.7.0.1
  */

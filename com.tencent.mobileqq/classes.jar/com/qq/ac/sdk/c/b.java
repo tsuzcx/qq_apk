@@ -66,16 +66,13 @@ public class b
       if (new JSONObject((String)localObject).getInt("ret") == 0) {
         paramString = com.b.a.b.a.a((String)localObject);
       }
-      return paramBaseInfoListener.onSyncResponse(paramString);
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = str;
-      }
+      paramString.printStackTrace();
+      paramString = str;
     }
+    return paramBaseInfoListener.onSyncResponse(paramString);
   }
   
   protected final void a(String paramString, int paramInt)
@@ -93,7 +90,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.ac.sdk.c.b
  * JD-Core Version:    0.7.0.1
  */

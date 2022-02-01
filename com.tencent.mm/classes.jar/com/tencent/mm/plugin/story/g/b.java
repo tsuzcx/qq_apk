@@ -1,605 +1,629 @@
 package com.tencent.mm.plugin.story.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.story.h.f;
+import com.tencent.mm.plugin.story.h.g;
 import com.tencent.mm.plugin.story.h.n;
-import com.tencent.mm.plugin.story.model.d.i;
-import com.tencent.mm.plugin.story.model.j.b;
-import com.tencent.mm.plugin.story.model.s;
-import com.tencent.mm.plugin.story.ui.view.gallery.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
+import com.tencent.mm.plugin.story.model.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat;", "", "()V", "ID", "", "TAG", "", "isWaiting", "", "isWifi", "lastStoryId", "last_selectedColumn", "", "last_selectedRow", "markGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "markStoryId", "onClickTime", "onCreateTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStoryLauncherTime", "preLoadInfo", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "storyIdsState", "", "unReadList", "Ljava/util/ArrayList;", "withCache", "canPlay", "", "user", "storyId", "chatting", "clickScene", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkReport", "checkStayTime", "checkUnRead", "clean", "downloadEnd", "enter", "list", "", "finish", "initID", "markInit", "markResumeTime", "netSpeed", "speed", "onDestroy", "onSelectItem", "group", "selectedRow", "selectedColumn", "onVideoEnd", "onVideoPlay", "onVideoWaiting", "playUser", "preLoadVideo", "galleryItem", "extinfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "preloadWithCache", "report", "IID", "key", "mval", "startDownload", "isAll", "startHttp", "Info", "State", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat;", "", "()V", "ID", "", "TAG", "", "isWaiting", "", "isWifi", "lastStoryId", "last_selectedColumn", "", "last_selectedRow", "markGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "markStoryId", "onClickTime", "onCreateTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStoryLauncherTime", "preLoadInfo", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "storyIdsState", "", "unReadList", "Ljava/util/ArrayList;", "withCache", "canPlay", "", "user", "storyId", "chatting", "clickScene", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkReport", "checkStayTime", "checkUnRead", "clean", "downloadEnd", "enter", "list", "", "finish", "initID", "markInit", "markResumeTime", "netSpeed", "speed", "onDestroy", "onSelectItem", "group", "selectedRow", "selectedColumn", "onVideoEnd", "onVideoPlay", "onVideoWaiting", "playUser", "preLoadVideo", "galleryItem", "extinfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "preloadWithCache", "report", "IID", "key", "mval", "startDownload", "isAll", "startHttp", "Info", "State", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
+  public static boolean Aey;
+  private static long Fpo;
+  private static long Fpp;
+  public static long ID;
+  private static ArrayList<String> SqA;
+  public static final b Sqn;
+  public static long Sqo;
+  public static final Map<Long, a> Sqp;
+  public static a Sqq;
+  public static long Sqr;
+  private static long Sqs;
+  public static com.tencent.mm.plugin.story.model.d.h Sqt;
+  public static boolean Squ;
+  public static long Sqv;
+  private static long Sqw;
+  private static int Sqx;
+  private static int Sqy;
+  private static boolean Sqz;
   private static boolean isWaiting;
-  public static long ltw;
-  public static boolean muY;
-  public static long sDC;
-  public static final Map<Long, b.a> sDD;
-  public static b.a sDE;
-  public static long sDF;
-  private static long sDG;
-  private static long sDH;
-  public static com.tencent.mm.plugin.story.model.d.g sDI;
-  public static boolean sDJ;
-  public static long sDK;
-  private static long sDL;
-  private static long sDM;
-  private static int sDN;
-  private static int sDO;
-  private static boolean sDP;
-  private static ArrayList<String> sDQ;
-  public static final b sDR;
   
   static
   {
-    AppMethodBeat.i(109780);
-    sDR = new b();
-    ltw = 998L;
-    muY = true;
+    AppMethodBeat.i(119402);
+    Sqn = new b();
+    ID = 998L;
+    Aey = true;
     Map localMap = Collections.synchronizedMap((Map)new HashMap());
-    a.f.b.j.p(localMap, "Collections.synchronizedMap(HashMap<Long, Info>())");
-    sDD = localMap;
-    AppMethodBeat.o(109780);
+    s.s(localMap, "synchronizedMap(HashMap<Long, Info>())");
+    Sqp = localMap;
+    AppMethodBeat.o(119402);
   }
   
-  public static void A(long paramLong, boolean paramBoolean)
+  public static void X(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(109775);
-    if (!sDD.containsKey(Long.valueOf(paramLong)))
+    AppMethodBeat.i(119397);
+    if (!Sqp.containsKey(Long.valueOf(paramLong)))
     {
-      AppMethodBeat.o(109775);
+      AppMethodBeat.o(119397);
       return;
     }
-    b.a locala = (b.a)sDD.get(Long.valueOf(paramLong));
+    a locala = (a)Sqp.get(Long.valueOf(paramLong));
     if (locala != null)
     {
-      locala.sDW = bo.aoy();
-      locala.kyS = paramBoolean;
-      AppMethodBeat.o(109775);
-      return;
+      locala.SqG = Util.nowMilliSecond();
+      locala.wFp = paramBoolean;
     }
-    AppMethodBeat.o(109775);
+    AppMethodBeat.o(119397);
   }
   
-  public static void FS(int paramInt)
+  public static void anm(int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    switch (paramInt)
     {
-      ltw = 998L;
+    default: 
+      ID = -1L;
+      return;
+    case 1: 
+    case 2: 
+      ID = 998L;
       return;
     }
-    if (paramInt == 3)
-    {
-      ltw = 1006L;
-      return;
-    }
-    ltw = -1L;
+    ID = 1006L;
   }
   
-  public static void FT(int paramInt)
+  public static void ann(int paramInt)
   {
-    AppMethodBeat.i(109771);
-    long l = bo.hl(sDM);
-    ab.i("MicroMsg.StoryBrowseDetailIDKeyStat", "cur speed " + paramInt + " cur: " + l);
+    AppMethodBeat.i(119393);
+    long l = Util.milliSecondsToNow(Fpo);
+    Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "cur speed " + paramInt + " cur: " + l);
     if (l > 5000L)
     {
       if (paramInt < 10)
       {
-        k(ltw, 82L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 82L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 100)
       {
-        k(ltw, 83L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 83L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 200)
       {
-        k(ltw, 89L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 89L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 250)
       {
-        k(ltw, 84L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 84L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 450)
       {
-        k(ltw, 85L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 85L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 900)
       {
-        k(ltw, 86L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 86L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 1350)
       {
-        k(ltw, 87L, 1L);
-        AppMethodBeat.o(109771);
+        q(ID, 87L, 1L);
+        AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 1800) {
-        k(ltw, 88L, 1L);
+        q(ID, 88L, 1L);
       }
     }
-    AppMethodBeat.o(109771);
+    AppMethodBeat.o(119393);
   }
   
-  public static boolean aiY()
+  private static int c(com.tencent.mm.plugin.story.model.d.j paramj)
   {
-    if (sDM <= 0L) {}
-    while (!muY) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static int b(i parami)
-  {
-    AppMethodBeat.i(109773);
-    Object localObject = s.swk;
-    localObject = s.a(parami);
-    if (((n)localObject).cFk())
+    AppMethodBeat.i(119395);
+    Object localObject = r.Slb;
+    localObject = r.a(paramj);
+    if (((n)localObject).hzD())
     {
-      ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay downloadFinish " + parami.cJA);
-      AppMethodBeat.o(109773);
+      Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", s.X("z checkCanPlay downloadFinish ", Long.valueOf(paramj.idH)));
+      AppMethodBeat.o(119395);
       return 1;
     }
     if (((n)localObject).field_totalSize <= 0)
     {
-      AppMethodBeat.o(109773);
+      AppMethodBeat.o(119395);
       return 0;
     }
     float f = ((n)localObject).field_cacheSize / ((n)localObject).field_totalSize;
-    parami = p.sUH;
-    if (f * 100.0F >= p.cGg().sTc)
+    paramj = com.tencent.mm.plugin.story.ui.view.gallery.j.SCD;
+    if (f * 100.0F >= com.tencent.mm.plugin.story.ui.view.gallery.j.hAl().SBq)
     {
-      ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay cachesize " + ((n)localObject).field_cacheSize + " totalSize: " + ((n)localObject).field_totalSize);
-      AppMethodBeat.o(109773);
+      Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay cachesize " + ((n)localObject).field_cacheSize + " totalSize: " + ((n)localObject).field_totalSize);
+      AppMethodBeat.o(119395);
       return 1;
     }
-    AppMethodBeat.o(109773);
+    AppMethodBeat.o(119395);
     return 0;
   }
   
-  public static void b(ArrayList<ArrayList<com.tencent.mm.plugin.story.model.d.g>> paramArrayList, int paramInt1, int paramInt2)
+  public static void clean()
   {
-    AppMethodBeat.i(109772);
-    a.f.b.j.q(paramArrayList, "group");
-    if (!aiY())
+    AppMethodBeat.i(119391);
+    Fpp = 0L;
+    Sqs = 0L;
+    Fpo = 0L;
+    Sqz = false;
+    Sqx = -1;
+    Sqy = -1;
+    Sqv = 0L;
+    Sqw = 0L;
+    Sqp.clear();
+    Squ = false;
+    Sqt = null;
+    isWaiting = false;
+    SqA = new ArrayList();
+    Sqq = null;
+    AppMethodBeat.o(119391);
+  }
+  
+  public static void g(ArrayList<ArrayList<com.tencent.mm.plugin.story.model.d.h>> paramArrayList, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(119394);
+    s.u(paramArrayList, "group");
+    if (!hxC())
     {
-      AppMethodBeat.o(109772);
+      AppMethodBeat.o(119394);
       return;
     }
-    ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", " last_selectedColumn:" + sDO + ",last_selectedRow:" + sDN + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
+    int j = 0;
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", " last_selectedColumn:" + Sqy + ",last_selectedRow:" + Sqx + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
     int i;
-    int j;
     if (paramArrayList.size() > 0) {
       if ((((ArrayList)paramArrayList.get(paramInt1)).size() > 0) && (paramInt2 + 1 < ((ArrayList)paramArrayList.get(paramInt1)).size()))
       {
-        if (!sDP) {
-          k(ltw, 101L, 1L);
+        if (!Sqz) {
+          q(ID, 101L, 1L);
         }
         i = 1;
         if (paramInt1 + 1 < paramArrayList.size())
         {
-          if (!sDP) {
-            k(ltw, 102L, 1L);
+          if (!Sqz) {
+            q(ID, 102L, 1L);
           }
           j = 1;
-          label167:
-          sDP = true;
+          label170:
+          Sqz = true;
         }
       }
     }
     for (;;)
     {
-      if ((sDO != -1) && (sDN != -1))
+      if ((Sqy != -1) && (Sqx != -1))
       {
         if (isWaiting)
         {
-          k(ltw, 100L, 1L);
+          q(ID, 100L, 1L);
           isWaiting = false;
         }
-        if (paramInt1 != sDN)
+        if (paramInt1 == Sqx) {
+          break label952;
+        }
+        if (i != 0) {
+          q(ID, 105L, 1L);
+        }
+        q(ID, 106L, 1L);
+        i = paramInt1 - Sqx;
+        if (i != 1) {
+          break label814;
+        }
+        q(ID, 110L, 1L);
+        if (paramArrayList.size() <= 0) {}
+      }
+      int k;
+      for (i = 0;; i = k)
+      {
+        k = i + 1;
+        if ((paramInt1 + i < paramArrayList.size()) && (((ArrayList)paramArrayList.get(paramInt1 + i)).size() > 0))
         {
-          if (i != 0) {
-            k(ltw, 105L, 1L);
-          }
-          k(ltw, 106L, 1L);
-          i = paramInt1 - sDN;
-          if (i == 1)
+          com.tencent.mm.plugin.story.model.d.j localj = ((com.tencent.mm.plugin.story.model.d.h)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).Smr;
+          if ((localj != null) && (localj.username != null) && (SqA != null))
           {
-            k(ltw, 110L, 1L);
-            if (paramArrayList.size() <= 0) {
-              break label585;
+            ArrayList localArrayList = SqA;
+            if ((localArrayList == null) || (localArrayList.contains(localj.username) != true)) {
+              break label868;
             }
-            i = 0;
-            label266:
-            if (i >= 3) {
-              break label585;
+            j = 1;
+            label368:
+            if (j != 0) {
+              if (c(localj) != 1) {}
             }
-            if ((paramInt1 + i < paramArrayList.size()) && (((ArrayList)paramArrayList.get(paramInt1 + i)).size() > 0))
+          }
+        }
+        switch (i)
+        {
+        default: 
+          switch (i)
+          {
+          default: 
+            if (k < 3) {}
+            break;
+          }
+        case 0: 
+        case 1: 
+        case 2: 
+          for (;;)
+          {
+            label408:
+            label436:
+            if ((Sqx >= 0) && (Sqx < paramArrayList.size()) && (Sqy >= 0) && (Sqy < ((ArrayList)paramArrayList.get(Sqx)).size()) && ((Sqy != paramInt2) || (Sqx != paramInt1)))
             {
-              i locali = ((com.tencent.mm.plugin.story.model.d.g)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).syr;
-              if ((locali != null) && (locali.username != null) && (sDQ != null))
+              long l = ((com.tencent.mm.plugin.story.model.d.h)((ArrayList)paramArrayList.get(Sqx)).get(Sqy)).Smr.idH;
+              Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime storyId " + l + " lastStoryId " + Sqo);
+              if ((hxC()) && (Sqp.containsKey(Long.valueOf(l))))
               {
-                ArrayList localArrayList = sDQ;
-                if ((localArrayList != null) && (localArrayList.contains(locali.username) == true))
+                paramArrayList = (a)Sqp.get(Long.valueOf(l));
+                if ((paramArrayList != null) && (paramArrayList.SqC <= 0L) && (!paramArrayList.Ris) && (paramArrayList.SqD >= 0L))
                 {
-                  if (b(locali) == 1)
+                  paramArrayList.SqC = Util.milliSecondsToNow(paramArrayList.SqD);
+                  Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime onStayTime " + l + ' ' + paramArrayList.SqC + " hasHttp:" + paramArrayList.SqF + "  isWaiting:" + paramArrayList.isWaiting);
+                  if (paramArrayList.SqF)
                   {
-                    if (i != 0) {
-                      break label460;
-                    }
-                    k(ltw, 120L, 1L);
+                    q(ID, 21L, 1L);
+                    q(ID, 20L, paramArrayList.SqC);
                   }
-                  label385:
-                  if (i != 0) {
-                    break label496;
+                  if (paramArrayList.isWaiting)
+                  {
+                    q(ID, 23L, 1L);
+                    q(ID, 22L, paramArrayList.SqC);
                   }
-                  k(ltw, 125L, 1L);
+                  q(ID, 25L, 1L);
+                  q(ID, 24L, paramArrayList.SqC);
+                  if (paramArrayList.nxG) {
+                    q(ID, 26L, 1L);
+                  }
                 }
               }
             }
-          }
-          for (;;)
-          {
-            i += 1;
-            break label266;
+            Sqy = paramInt2;
+            Sqx = paramInt1;
+            AppMethodBeat.o(119394);
+            return;
+            label814:
             if (i == 2)
             {
-              k(ltw, 111L, 1L);
+              q(ID, 111L, 1L);
               break;
             }
             if (i == 3)
             {
-              k(ltw, 112L, 1L);
+              q(ID, 112L, 1L);
               break;
             }
             if (i < 4) {
               break;
             }
-            k(ltw, 113L, 1L);
+            q(ID, 113L, 1L);
             break;
-            label460:
-            if (i == 1)
+            label868:
+            j = 0;
+            break label368;
+            q(ID, 120L, 1L);
+            break label408;
+            q(ID, 121L, 1L);
+            break label408;
+            q(ID, 122L, 1L);
+            break label408;
+            q(ID, 125L, 1L);
+            break label436;
+            q(ID, 126L, 1L);
+            break label436;
+            q(ID, 127L, 1L);
+            break label436;
+            label952:
+            if (paramInt2 != Sqy)
             {
-              k(ltw, 121L, 1L);
-              break label385;
-            }
-            if (i != 2) {
-              break label385;
-            }
-            k(ltw, 122L, 1L);
-            break label385;
-            label496:
-            if (i == 1) {
-              k(ltw, 126L, 1L);
-            } else if (i == 2) {
-              k(ltw, 127L, 1L);
-            }
-          }
-        }
-        else if (paramInt2 != sDO)
-        {
-          if (j != 0) {
-            k(ltw, 103L, 1L);
-          }
-          k(ltw, 104L, 1L);
-          i = paramInt2 - sDO;
-          if (i != 1) {
-            break label957;
-          }
-          k(ltw, 115L, 1L);
-        }
-      }
-      for (;;)
-      {
-        label585:
-        if ((sDN >= 0) && (sDN < paramArrayList.size()) && (sDO >= 0) && (sDO < ((ArrayList)paramArrayList.get(sDN)).size()) && ((sDO != paramInt2) || (sDN != paramInt1)))
-        {
-          long l = ((com.tencent.mm.plugin.story.model.d.g)((ArrayList)paramArrayList.get(sDN)).get(sDO)).syr.cJA;
-          ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime storyId " + l + " lastStoryId " + sDC);
-          if ((aiY()) && (sDD.containsKey(Long.valueOf(l))))
-          {
-            paramArrayList = (b.a)sDD.get(Long.valueOf(l));
-            if ((paramArrayList != null) && (paramArrayList.sDS <= 0L) && (!paramArrayList.rKr) && (paramArrayList.sDT >= 0L))
-            {
-              paramArrayList.sDS = bo.hl(paramArrayList.sDT);
-              ab.i("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime onStayTime " + l + ' ' + paramArrayList.sDS + " hasHttp:" + paramArrayList.sDV + "  isWaiting:" + paramArrayList.isWaiting);
-              if (paramArrayList.sDV)
-              {
-                k(ltw, 21L, 1L);
-                k(ltw, 20L, paramArrayList.sDS);
+              if (j != 0) {
+                q(ID, 103L, 1L);
               }
-              if (paramArrayList.isWaiting)
-              {
-                k(ltw, 23L, 1L);
-                k(ltw, 22L, paramArrayList.sDS);
-              }
-              k(ltw, 25L, 1L);
-              k(ltw, 24L, paramArrayList.sDS);
-              if (paramArrayList.eRq) {
-                k(ltw, 26L, 1L);
+              q(ID, 104L, 1L);
+              i = paramInt2 - Sqy;
+              if (i == 1) {
+                q(ID, 115L, 1L);
+              } else if (i == 2) {
+                q(ID, 116L, 1L);
+              } else if (i == 3) {
+                q(ID, 117L, 1L);
+              } else if (i >= 4) {
+                q(ID, 118L, 1L);
               }
             }
           }
-        }
-        sDO = paramInt2;
-        sDN = paramInt1;
-        AppMethodBeat.o(109772);
-        return;
-        label957:
-        if (i == 2) {
-          k(ltw, 116L, 1L);
-        } else if (i == 3) {
-          k(ltw, 117L, 1L);
-        } else if (i >= 4) {
-          k(ltw, 118L, 1L);
         }
       }
       j = 0;
-      break label167;
+      break label170;
       i = 0;
       break;
-      j = 0;
       i = 0;
     }
   }
   
-  public static void cCA()
+  public static void hxA()
   {
-    sDJ = true;
+    AppMethodBeat.i(119399);
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "makeResumeTime onResumeTime " + Fpp + " onPlayUser " + Sqs);
+    Fpp = Util.nowMilliSecond();
+    AppMethodBeat.o(119399);
   }
   
-  public static void cCB()
+  public static void hxB()
   {
-    AppMethodBeat.i(109777);
-    ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", "makeResumeTime onResumeTime " + sDG + " onPlayUser " + sDH);
-    sDG = bo.aoy();
-    AppMethodBeat.o(109777);
+    AppMethodBeat.i(119401);
+    Fpo = Util.nowMilliSecond();
+    AppMethodBeat.o(119401);
   }
   
-  public static void cCC()
+  public static boolean hxC()
   {
-    AppMethodBeat.i(109779);
-    sDM = bo.aoy();
-    AppMethodBeat.o(109779);
+    if (Fpo <= 0L) {}
+    while (!Aey) {
+      return false;
+    }
+    return true;
   }
   
-  public static void clean()
+  public static void hxz()
   {
-    AppMethodBeat.i(109769);
-    sDG = 0L;
-    sDH = 0L;
-    sDM = 0L;
-    sDP = false;
-    sDN = -1;
-    sDO = -1;
-    sDK = 0L;
-    sDL = 0L;
-    sDD.clear();
-    sDJ = false;
-    sDI = null;
-    isWaiting = false;
-    sDQ = new ArrayList();
-    sDE = null;
-    AppMethodBeat.o(109769);
+    Squ = true;
   }
   
-  public static void dE(List<String> paramList)
+  public static void lk(List<String> paramList)
   {
-    AppMethodBeat.i(109770);
-    a.f.b.j.q(paramList, "list");
+    AppMethodBeat.i(119392);
+    s.u(paramList, "list");
     ArrayList localArrayList = new ArrayList();
-    sDQ = localArrayList;
+    SqA = localArrayList;
     localArrayList.addAll((Collection)paramList);
-    AppMethodBeat.o(109770);
+    AppMethodBeat.o(119392);
   }
   
-  public static void k(long paramLong1, long paramLong2, long paramLong3)
+  public static void q(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(109768);
+    AppMethodBeat.i(119390);
     if (paramLong1 < 0L)
     {
-      AppMethodBeat.o(109768);
+      AppMethodBeat.o(119390);
       return;
     }
-    h.qsU.j(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(109768);
+    com.tencent.mm.plugin.report.service.h.OAn.p(paramLong1, paramLong2, paramLong3);
+    AppMethodBeat.o(119390);
   }
   
-  public static void k(String paramString, long paramLong, int paramInt)
+  public static void r(String paramString, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(109778);
-    a.f.b.j.q(paramString, "user");
-    if (!aiY())
+    AppMethodBeat.i(119400);
+    s.u(paramString, "user");
+    if (!hxC())
     {
-      AppMethodBeat.o(109778);
+      AppMethodBeat.o(119400);
       return;
     }
-    if ((sDK > 0L) && (sDL <= 0L))
+    if ((Sqv > 0L) && (Sqw <= 0L))
     {
-      sDL = bo.hl(sDK);
-      k(ltw, 130L, 1L);
-      k(ltw, 131L, sDL);
+      Sqw = Util.milliSecondsToNow(Sqv);
+      q(ID, 130L, 1L);
+      q(ID, 131L, Sqw);
     }
-    ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser user " + paramString + " storyId " + paramLong + " selectedColumn " + paramInt + " lastStoryId:" + sDC + " onStoryLauncherTime " + sDL);
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser user " + paramString + " storyId " + paramLong + " selectedColumn " + paramInt + " lastStoryId:" + Sqo + " onStoryLauncherTime " + Sqw);
     int j = 0;
     int i = j;
-    if (sDC != paramLong)
+    if (Sqo != paramLong)
     {
       i = j;
-      if (sDC != 0L) {
+      if (Sqo != 0L) {
         i = 1;
       }
     }
-    long l = sDC;
-    sDC = paramLong;
-    a.f.b.j.q(paramString, "user");
-    Object localObject = sDQ;
-    if ((localObject != null) && (((ArrayList)localObject).contains(paramString) == true)) {}
-    for (j = 1; j == 0; j = 0)
+    long l = Sqo;
+    Sqo = paramLong;
+    s.u(paramString, "user");
+    Object localObject = SqA;
+    if ((localObject != null) && (((ArrayList)localObject).contains(paramString) == true))
     {
-      AppMethodBeat.o(109778);
-      return;
+      j = 1;
+      if (j == 0) {
+        break label234;
+      }
     }
-    if ((sDD.containsKey(Long.valueOf(l))) && (i != 0))
+    label234:
+    for (j = 1;; j = 0)
     {
-      localObject = (b.a)sDD.get(Long.valueOf(l));
+      if (j != 0) {
+        break label240;
+      }
+      AppMethodBeat.o(119400);
+      return;
+      j = 0;
+      break;
+    }
+    label240:
+    if ((Sqp.containsKey(Long.valueOf(l))) && (i != 0))
+    {
+      localObject = (a)Sqp.get(Long.valueOf(l));
       if (localObject != null) {
-        ((b.a)localObject).rKr = true;
+        ((a)localObject).Ris = true;
       }
     }
     if (paramInt > 0)
     {
-      AppMethodBeat.o(109778);
+      AppMethodBeat.o(119400);
       return;
     }
-    localObject = sDD;
-    b.a locala = new b.a(paramString, b.b.sDZ);
-    locala.sDT = bo.aoy();
+    localObject = Sqp;
+    a locala = new a(paramString, b.b.SqI);
+    locala.SqD = Util.nowMilliSecond();
     ((Map)localObject).put(Long.valueOf(paramLong), locala);
-    sDH = bo.aoy();
-    ab.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser onResumeTime " + sDH);
-    localObject = com.tencent.mm.plugin.story.model.j.svi;
-    localObject = j.b.cAC().acU(paramString);
-    ab.i("MicroMsg.StoryBrowseDetailIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + bo.hk(((f)localObject).cES()));
-    k(ltw, 2L, 1L);
-    if (((f)localObject).cES() > 0L) {
-      k(ltw, 3L, 1L);
+    Sqs = Util.nowMilliSecond();
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", s.X("playUser onResumeTime ", Long.valueOf(Sqs)));
+    localObject = StoryCore.SjP;
+    localObject = StoryCore.b.hvS().bbJ(paramString);
+    Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + Util.getSizeKB(((f)localObject).hzl()));
+    q(ID, 2L, 1L);
+    if (((f)localObject).hzl() > 0L) {
+      q(ID, 3L, 1L);
     }
-    if (paramLong == sDF)
+    if (paramLong == Sqr)
     {
-      if (sDJ)
+      if (Squ)
       {
-        k(ltw, 6L, 1L);
-        if (((f)localObject).cES() > 0L)
+        q(ID, 6L, 1L);
+        if (((f)localObject).hzl() > 0L)
         {
-          if (!sDJ) {
-            break label545;
+          if (!Squ) {
+            break label552;
           }
-          k(ltw, 7L, 1L);
+          q(ID, 7L, 1L);
         }
       }
       for (;;)
       {
-        paramString = sDI;
-        if (paramString == null) {
+        paramString = Sqt;
+        if ((paramString == null) || (c(paramString.Smr) != 1)) {
           break label575;
         }
-        if (b(paramString.syr) != 1) {
-          break label568;
+        if (!Squ) {
+          break label565;
         }
-        if (!sDJ) {
-          break label558;
-        }
-        k(ltw, 8L, 1L);
-        AppMethodBeat.o(109778);
+        q(ID, 8L, 1L);
+        AppMethodBeat.o(119400);
         return;
-        k(ltw, 9L, 1L);
+        q(ID, 9L, 1L);
         break;
-        label545:
-        k(ltw, 10L, 1L);
+        label552:
+        q(ID, 10L, 1L);
       }
-      label558:
-      k(ltw, 11L, 1L);
-      label568:
-      AppMethodBeat.o(109778);
-      return;
+      label565:
+      q(ID, 11L, 1L);
     }
     label575:
-    AppMethodBeat.o(109778);
+    AppMethodBeat.o(119400);
   }
   
-  public static void mG(long paramLong)
+  public static void vQ(long paramLong)
   {
-    sDF = paramLong;
+    Sqr = paramLong;
   }
   
-  public static void mH(long paramLong)
+  public static void vR(long paramLong)
   {
-    AppMethodBeat.i(109776);
-    if (!sDD.containsKey(Long.valueOf(paramLong)))
+    AppMethodBeat.i(119398);
+    if (!Sqp.containsKey(Long.valueOf(paramLong)))
     {
-      AppMethodBeat.o(109776);
+      AppMethodBeat.o(119398);
       return;
     }
-    b.a locala = (b.a)sDD.get(Long.valueOf(paramLong));
-    if ((locala != null) && (locala.rKr))
+    a locala = (a)Sqp.get(Long.valueOf(paramLong));
+    if ((locala != null) && (locala.Ris))
     {
-      AppMethodBeat.o(109776);
+      AppMethodBeat.o(119398);
       return;
     }
-    if (paramLong == sDF)
+    if (paramLong == Sqr)
     {
-      locala = sDE;
+      locala = Sqq;
       if (locala != null)
       {
-        if (locala.sDW <= 0L)
+        if (locala.SqG <= 0L)
         {
-          AppMethodBeat.o(109776);
+          AppMethodBeat.o(119398);
           return;
         }
-        paramLong = bo.hl(locala.sDW);
-        ab.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd1 ".concat(String.valueOf(paramLong)));
-        if (locala.kyS)
+        paramLong = Util.milliSecondsToNow(locala.SqG);
+        Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", s.X("downloadEnd1 ", Long.valueOf(paramLong)));
+        if (locala.wFp)
         {
-          k(ltw, 62L, 1L);
-          k(ltw, 63L, paramLong);
+          q(ID, 62L, 1L);
+          q(ID, 63L, paramLong);
         }
-        k(ltw, 60L, 1L);
-        k(ltw, 61L, paramLong);
-        AppMethodBeat.o(109776);
-        return;
+        q(ID, 60L, 1L);
+        q(ID, 61L, paramLong);
+        AppMethodBeat.o(119398);
       }
-      AppMethodBeat.o(109776);
-      return;
     }
-    locala = (b.a)sDD.get(Long.valueOf(paramLong));
-    if (locala != null)
+    else
     {
-      if (locala.sDW <= 0L)
+      locala = (a)Sqp.get(Long.valueOf(paramLong));
+      if (locala != null)
       {
-        AppMethodBeat.o(109776);
-        return;
+        if (locala.SqG <= 0L)
+        {
+          AppMethodBeat.o(119398);
+          return;
+        }
+        paramLong = Util.milliSecondsToNow(locala.SqG);
+        Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", s.X("downloadEnd2 ", Long.valueOf(paramLong)));
+        if (locala.wFp)
+        {
+          q(ID, 62L, 1L);
+          q(ID, 63L, paramLong);
+        }
+        q(ID, 60L, 1L);
+        q(ID, 61L, paramLong);
       }
-      paramLong = bo.hl(locala.sDW);
-      ab.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd2 ".concat(String.valueOf(paramLong)));
-      if (locala.kyS)
-      {
-        k(ltw, 62L, 1L);
-        k(ltw, 63L, paramLong);
-      }
-      k(ltw, 60L, 1L);
-      k(ltw, 61L, paramLong);
-      AppMethodBeat.o(109776);
-      return;
     }
-    AppMethodBeat.o(109776);
+    AppMethodBeat.o(119398);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "", "user", "", "state", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "clean", "", "getClean", "()Z", "setClean", "(Z)V", "hasHttp", "getHasHttp", "setHasHttp", "isAll", "setAll", "isEnd", "setEnd", "isWaiting", "setWaiting", "onMarkPlayCall", "", "getOnMarkPlayCall", "()J", "setOnMarkPlayCall", "(J)V", "onMarkPlayingCall", "getOnMarkPlayingCall", "setOnMarkPlayingCall", "onStayTime", "getOnStayTime", "setOnStayTime", "startHttp", "getStartHttp", "setStartHttp", "getState", "()Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "setState", "(Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "getUser", "()Ljava/lang/String;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public boolean Ris;
+    private b.b SqB;
+    long SqC;
+    public long SqD;
+    public long SqE;
+    public boolean SqF;
+    public long SqG;
+    private final String hVQ;
+    public boolean isWaiting;
+    public boolean nxG;
+    public boolean wFp;
+    
+    public a(String paramString, b.b paramb)
+    {
+      AppMethodBeat.i(119386);
+      this.hVQ = paramString;
+      this.SqB = paramb;
+      AppMethodBeat.o(119386);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.g.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/ahb" android:paddingLeft="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/m4" android:ellipsize="end" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/kcx" android:visibility="invisible" android:layout_width="@dimen/df" android:layout_height="@dimen/df" android:layout_marginTop="-4.0dip" app:layout_constraintLeft_toRightOf="@id/kd0" app:layout_constraintTop_toTopOf="@id/kd0" style="@style/zi" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kd3" android:visibility="invisible" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_footstep" app:iconColor="@color/BW_0_Alpha_0_2" app:layout_constraintBottom_toBottomOf="@id/kd0" app:layout_constraintLeft_toRightOf="@id/kd0" app:layout_constraintTop_toTopOf="@id/kd0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

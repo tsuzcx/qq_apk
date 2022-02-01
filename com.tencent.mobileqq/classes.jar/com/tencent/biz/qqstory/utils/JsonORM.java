@@ -9,12 +9,10 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xrk;
-import xrl;
 
 public class JsonORM
 {
-  private static final Map<Class, xrl[]> a = new IdentityHashMap();
+  private static final Map<Class, JsonORM.ColumnInfo[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -36,197 +34,249 @@ public class JsonORM
     if (paramClass.isArray()) {
       return 6;
     }
-    if (paramClass.isPrimitive()) {
-      throw new JsonORM.JsonParseException("un-support primitive field : " + paramClass);
+    if (!paramClass.isPrimitive()) {
+      return 5;
     }
-    return 5;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("un-support primitive field : ");
+    localStringBuilder.append(paramClass);
+    throw new JsonORM.JsonParseException(localStringBuilder.toString());
   }
   
   @NonNull
   public static <T> T a(JSONObject paramJSONObject, Class<T> paramClass)
   {
-    if ((paramJSONObject == null) || (paramClass == null)) {
-      throw new IllegalArgumentException("both jsonObject and clazz should not be null");
-    }
-    Object localObject2 = (xrl[])a.get(paramClass);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    Object localObject2;
+    Object localObject1;
+    if ((paramJSONObject != null) && (paramClass != null))
     {
-      localObject1 = a(paramClass);
-      a.put(paramClass, localObject1);
-    }
-    int i;
-    try
-    {
-      localObject2 = paramClass.newInstance();
-      int j = localObject1.length;
-      i = 0;
-      if (i >= j) {
-        break label390;
-      }
-      paramClass = localObject1[i];
-      try
+      localObject2 = (JsonORM.ColumnInfo[])a.get(paramClass);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        switch (paramClass.jdField_a_of_type_Int)
-        {
-        case 0: 
-          label128:
-          throw new JsonORM.JsonParseException("un-support type : " + paramClass.jdField_a_of_type_Int);
-        }
-      }
-      catch (IllegalAccessException paramJSONObject)
-      {
-        throw new JsonORM.JsonParseException("access field failed : " + paramClass.jdField_a_of_type_JavaLangReflectField.getName(), paramJSONObject);
-      }
-      a(paramClass.jdField_a_of_type_Int, paramJSONObject, paramClass.jdField_a_of_type_JavaLangString, paramClass.jdField_a_of_type_JavaLangReflectField, localObject2);
-    }
-    catch (Exception paramJSONObject)
-    {
-      throw new JsonORM.JsonParseException("create class instance failed : " + paramClass.getName(), paramJSONObject);
-    }
-    break label396;
-    Object localObject3 = paramJSONObject.optJSONArray(paramClass.jdField_a_of_type_JavaLangString);
-    Class localClass;
-    int k;
-    if (localObject3 != null)
-    {
-      localClass = paramClass.jdField_a_of_type_JavaLangReflectField.getType().getComponentType();
-      k = a(localClass);
-      switch (k)
-      {
+        localObject1 = b(paramClass);
+        a.put(paramClass, localObject1);
       }
     }
     for (;;)
     {
-      paramClass.jdField_a_of_type_JavaLangReflectField.set(localObject2, a((JSONArray)localObject3, localClass));
-      break label396;
-      a(k, (JSONArray)localObject3, paramClass.jdField_a_of_type_JavaLangReflectField, localObject2);
-      break label396;
-      localObject3 = paramJSONObject.optJSONObject(paramClass.jdField_a_of_type_JavaLangString);
-      if (localObject3 != null)
+      int i;
+      try
       {
-        paramClass.jdField_a_of_type_JavaLangReflectField.set(localObject2, a((JSONObject)localObject3, paramClass.jdField_a_of_type_JavaLangReflectField.getType()));
-        break label396;
-        label390:
+        localObject2 = paramClass.newInstance();
+        int j = localObject1.length;
+        i = 0;
+        if (i < j)
+        {
+          paramClass = localObject1[i];
+          try
+          {
+            Object localObject3;
+            switch (paramClass.b)
+            {
+            case 6: 
+              continue;
+              localObject3 = paramJSONObject.optJSONArray(paramClass.a);
+              if (localObject3 == null) {
+                break label424;
+              }
+              Class localClass = paramClass.c.getType().getComponentType();
+              int k = a(localClass);
+              if ((k != 0) && (k != 1) && (k != 2) && (k != 3) && (k != 4)) {
+                paramClass.c.set(localObject2, a((JSONArray)localObject3, localClass));
+              } else {
+                a(k, (JSONArray)localObject3, paramClass.c, localObject2);
+              }
+              break;
+            case 5: 
+              localObject3 = paramJSONObject.optJSONObject(paramClass.a);
+              if (localObject3 == null) {
+                break label424;
+              }
+              paramClass.c.set(localObject2, a((JSONObject)localObject3, paramClass.c.getType()));
+              break;
+            case 0: 
+            case 1: 
+            case 2: 
+            case 3: 
+            case 4: 
+              a(paramClass.b, paramJSONObject, paramClass.a, paramClass.c, localObject2);
+              break label424;
+              paramJSONObject = new StringBuilder();
+              paramJSONObject.append("un-support type : ");
+              paramJSONObject.append(paramClass.b);
+              throw new JsonORM.JsonParseException(paramJSONObject.toString());
+            }
+          }
+          catch (IllegalAccessException paramJSONObject)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("access field failed : ");
+            ((StringBuilder)localObject1).append(paramClass.c.getName());
+            throw new JsonORM.JsonParseException(((StringBuilder)localObject1).toString(), paramJSONObject);
+          }
+        }
         return localObject2;
-        break label128;
       }
-      label396:
+      catch (Exception paramJSONObject)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("create class instance failed : ");
+        ((StringBuilder)localObject1).append(paramClass.getName());
+        throw new JsonORM.JsonParseException(((StringBuilder)localObject1).toString(), paramJSONObject);
+      }
+      paramJSONObject = new IllegalArgumentException("both jsonObject and clazz should not be null");
+      for (;;)
+      {
+        throw paramJSONObject;
+      }
+      continue;
+      label424:
       i += 1;
-      break;
     }
   }
   
   public static JSONObject a(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new IllegalArgumentException("object should not be null");
-    }
-    Class localClass = paramObject.getClass();
-    Object localObject2 = (xrl[])a.get(localClass);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    if (paramObject != null)
     {
-      localObject1 = a(localClass);
-      a.put(localClass, localObject1);
-    }
-    localObject2 = new JSONObject();
-    int j = localObject1.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
+      Class localClass = paramObject.getClass();
+      Object localObject2 = (JsonORM.ColumnInfo[])a.get(localClass);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = b(localClass);
+        a.put(localClass, localObject1);
+      }
+      localObject2 = new JSONObject();
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
         localClass = localObject1[i];
         try
         {
-          switch (localClass.jdField_a_of_type_Int)
+          int k = localClass.b;
+          Object localObject3;
+          if (k != 0)
           {
-          case 1: 
-            ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getBoolean(paramObject));
+            if (k != 1)
+            {
+              if (k != 2)
+              {
+                if (k != 3)
+                {
+                  if (k != 4)
+                  {
+                    if (k == 5)
+                    {
+                      localObject3 = localClass.c.get(paramObject);
+                      if (localObject3 != null) {
+                        ((JSONObject)localObject2).put(localClass.a, a(localObject3));
+                      }
+                    }
+                  }
+                  else {
+                    ((JSONObject)localObject2).put(localClass.a, localClass.c.getDouble(paramObject));
+                  }
+                }
+                else {
+                  ((JSONObject)localObject2).put(localClass.a, localClass.c.getLong(paramObject));
+                }
+              }
+              else {
+                ((JSONObject)localObject2).put(localClass.a, localClass.c.getInt(paramObject));
+              }
+            }
+            else {
+              ((JSONObject)localObject2).put(localClass.a, localClass.c.getBoolean(paramObject));
+            }
           }
-        }
-        catch (IllegalAccessException paramObject)
-        {
-          throw new JsonORM.JsonParseException("access field failed", paramObject);
-          ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getInt(paramObject));
+          else
+          {
+            localObject3 = localClass.c.get(paramObject);
+            if (localObject3 != null) {
+              ((JSONObject)localObject2).put(localClass.a, localObject3);
+            }
+          }
+          i += 1;
         }
         catch (JSONException paramObject)
         {
           throw new JsonORM.JsonParseException("operate json object error", paramObject);
         }
-        ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getLong(paramObject));
-        break label314;
-        ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getDouble(paramObject));
-        break label314;
-        Object localObject3 = localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject);
-        if (localObject3 != null)
+        catch (IllegalAccessException paramObject)
         {
-          ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localObject3);
-          break label314;
-          localObject3 = localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject);
-          if (localObject3 != null) {
-            ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, a(localObject3));
-          }
+          throw new JsonORM.JsonParseException("access field failed", paramObject);
         }
       }
-      else
-      {
-        return localObject2;
-      }
-      label314:
-      i += 1;
+      return localObject2;
+    }
+    paramObject = new IllegalArgumentException("object should not be null");
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
   private static void a(int paramInt, JSONArray paramJSONArray, Field paramField, Object paramObject)
   {
+    int i1 = paramJSONArray.length();
     int j = 0;
     int k = 0;
     int m = 0;
     int n = 0;
     int i = 0;
-    int i1 = paramJSONArray.length();
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      throw new JsonORM.JsonParseException("un-support array field type : " + paramInt);
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt == 4)
+            {
+              localObject = new double[i1];
+              paramInt = i;
+              while (paramInt < i1)
+              {
+                localObject[paramInt] = paramJSONArray.optDouble(paramInt);
+                paramInt += 1;
+              }
+              paramField.set(paramObject, localObject);
+              return;
+            }
+            paramJSONArray = new StringBuilder();
+            paramJSONArray.append("un-support array field type : ");
+            paramJSONArray.append(paramInt);
+            throw new JsonORM.JsonParseException(paramJSONArray.toString());
+          }
+          localObject = new long[i1];
+          paramInt = j;
+          while (paramInt < i1)
+          {
+            localObject[paramInt] = paramJSONArray.optLong(paramInt);
+            paramInt += 1;
+          }
+          paramField.set(paramObject, localObject);
+          return;
+        }
+        localObject = new int[i1];
+        paramInt = k;
+        while (paramInt < i1)
+        {
+          localObject[paramInt] = paramJSONArray.optInt(paramInt);
+          paramInt += 1;
+        }
+        paramField.set(paramObject, localObject);
+        return;
+      }
       localObject = new boolean[i1];
-      paramInt = i;
-      while (paramInt < i1)
-      {
-        localObject[paramInt] = paramJSONArray.optBoolean(paramInt);
-        paramInt += 1;
-      }
-      paramField.set(paramObject, localObject);
-      return;
-    case 2: 
-      localObject = new int[i1];
-      paramInt = j;
-      while (paramInt < i1)
-      {
-        localObject[paramInt] = paramJSONArray.optInt(paramInt);
-        paramInt += 1;
-      }
-      paramField.set(paramObject, localObject);
-      return;
-    case 3: 
-      localObject = new long[i1];
-      paramInt = k;
-      while (paramInt < i1)
-      {
-        localObject[paramInt] = paramJSONArray.optLong(paramInt);
-        paramInt += 1;
-      }
-      paramField.set(paramObject, localObject);
-      return;
-    case 4: 
-      localObject = new double[i1];
       paramInt = m;
       while (paramInt < i1)
       {
-        localObject[paramInt] = paramJSONArray.optDouble(paramInt);
+        localObject[paramInt] = paramJSONArray.optBoolean(paramInt);
         paramInt += 1;
       }
       paramField.set(paramObject, localObject);
@@ -244,73 +294,86 @@ public class JsonORM
   
   private static void a(int paramInt, JSONObject paramJSONObject, String paramString, Field paramField, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      throw new JsonORM.JsonParseException("un-support field type : " + paramInt);
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt == 4)
+            {
+              paramField.set(paramObject, Double.valueOf(paramJSONObject.optDouble(paramString)));
+              return;
+            }
+            paramJSONObject = new StringBuilder();
+            paramJSONObject.append("un-support field type : ");
+            paramJSONObject.append(paramInt);
+            throw new JsonORM.JsonParseException(paramJSONObject.toString());
+          }
+          paramField.set(paramObject, Long.valueOf(paramJSONObject.optLong(paramString)));
+          return;
+        }
+        paramField.set(paramObject, Integer.valueOf(paramJSONObject.optInt(paramString)));
+        return;
+      }
       paramField.set(paramObject, Boolean.valueOf(paramJSONObject.optBoolean(paramString)));
-      return;
-    case 2: 
-      paramField.set(paramObject, Integer.valueOf(paramJSONObject.optInt(paramString)));
-      return;
-    case 3: 
-      paramField.set(paramObject, Long.valueOf(paramJSONObject.optLong(paramString)));
-      return;
-    case 4: 
-      paramField.set(paramObject, Double.valueOf(paramJSONObject.optDouble(paramString)));
       return;
     }
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<xrl> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<JsonORM.ColumnInfo> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
-    if (i != paramClass.length)
+    while (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      xrk localxrk = (xrk)localField.getAnnotation(xrk.class);
-      if (localxrk == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramArrayList.add(new xrl(localxrk.a(), a(localField.getType()), localField));
+      JsonORM.Column localColumn = (JsonORM.Column)localField.getAnnotation(JsonORM.Column.class);
+      if (localColumn != null) {
+        paramArrayList.add(new JsonORM.ColumnInfo(localColumn.a(), a(localField.getType()), localField));
       }
+      i += 1;
     }
   }
   
   @NonNull
   public static <T> T[] a(JSONArray paramJSONArray, Class<T> paramClass)
   {
-    if ((paramJSONArray == null) || (paramClass == null)) {
-      throw new IllegalArgumentException("both jsonArray and clazz should not be null");
-    }
-    if (paramClass.isPrimitive()) {
-      throw new JsonORM.JsonParseException("do not support primitive array field : " + paramClass);
-    }
-    int j = paramJSONArray.length();
-    Object[] arrayOfObject = (Object[])Array.newInstance(paramClass, j);
-    int i = 0;
-    if (i < j)
+    if ((paramJSONArray != null) && (paramClass != null))
     {
-      JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      if (localJSONObject != null) {
-        arrayOfObject[i] = a(localJSONObject, paramClass);
-      }
-      for (;;)
+      if (!paramClass.isPrimitive())
       {
-        i += 1;
-        break;
-        arrayOfObject[i] = null;
+        int j = paramJSONArray.length();
+        Object[] arrayOfObject = (Object[])Array.newInstance(paramClass, j);
+        int i = 0;
+        while (i < j)
+        {
+          JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
+          if (localJSONObject != null) {
+            arrayOfObject[i] = a(localJSONObject, paramClass);
+          } else {
+            arrayOfObject[i] = null;
+          }
+          i += 1;
+        }
+        return arrayOfObject;
       }
+      paramJSONArray = new StringBuilder();
+      paramJSONArray.append("do not support primitive array field : ");
+      paramJSONArray.append(paramClass);
+      throw new JsonORM.JsonParseException(paramJSONArray.toString());
     }
-    return arrayOfObject;
+    paramJSONArray = new IllegalArgumentException("both jsonArray and clazz should not be null");
+    for (;;)
+    {
+      throw paramJSONArray;
+    }
   }
   
-  private static xrl[] a(Class<?> paramClass)
+  private static JsonORM.ColumnInfo[] b(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -318,14 +381,14 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new xrl[localArrayList.size()];
+    paramClass = new JsonORM.ColumnInfo[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.JsonORM
  * JD-Core Version:    0.7.0.1
  */

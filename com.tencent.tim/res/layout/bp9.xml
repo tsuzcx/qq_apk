@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/g1o" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/bwb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g75" />
+            <TextView android:textColor="#ffc3c7c9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bwj" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/ghb" />
+        </LinearLayout>
+        <com.tencent.plato.sdk.render.PlatoRootView android:id="@id/kw8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</FrameLayout>

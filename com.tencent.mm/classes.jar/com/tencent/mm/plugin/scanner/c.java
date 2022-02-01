@@ -1,24 +1,15 @@
 package com.tencent.mm.plugin.scanner;
 
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class c
-  implements o
+  extends IEvent
 {
-  public static n gmO;
-  
-  public final void a(m paramm) {}
-  
-  public final void a(n paramn)
-  {
-    gmO = paramn;
-  }
+  public String username;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,20 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdpd;
-import bjdm;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import cooperation.qzone.QUA;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.Packet;
+import org.json.JSONObject;
 
 public class MiniAppGetNewBaseLibForSDKServlet
   extends MiniAppAbstractServlet
@@ -29,31 +32,58 @@ public class MiniAppGetNewBaseLibForSDKServlet
     this.observerId = 1057;
   }
   
+  public String getBaseLibUrl64(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return paramString2;
+      }
+      paramString1 = new JSONObject(paramString1).optString("downloadUrl_64", paramString2);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      QMLog.e("MiniAppGetNewBaseLibForSDKServlet", "Failed to parse downloadUrl_64", paramString1);
+    }
+    return paramString2;
+  }
+  
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
     INTERFACE.StGetNewBaseLibRsp localStGetNewBaseLibRsp = new INTERFACE.StGetNewBaseLibRsp();
     localStGetNewBaseLibRsp.mergeFrom(paramArrayOfByte);
     int i = localStGetNewBaseLibRsp.interval.get();
-    QLog.i("MiniAppGetNewBaseLibForSDKServlet", 2, "[MiniEng] GetNewBaseLib interval:" + i);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("[MiniEng] GetNewBaseLib interval:");
+    paramArrayOfByte.append(i);
+    QLog.i("MiniAppGetNewBaseLibForSDKServlet", 2, paramArrayOfByte.toString());
     long l1 = i * 1000;
     long l2 = System.currentTimeMillis();
     StorageUtil.getPreference().edit().putLong("baselib_min_update_time", l1 + l2).apply();
-    StorageUtil.getPreference().edit().putString("baselib_update_qua", bjdm.a()).apply();
+    StorageUtil.getPreference().edit().putString("baselib_update_qua", QUA.getQUA3()).apply();
     paramArrayOfByte = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
     while (paramArrayOfByte.hasNext())
     {
-      INTERFACE.StBaseLibInfo localStBaseLibInfo = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
+      Object localObject = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
       BaseLibInfo localBaseLibInfo = new BaseLibInfo();
-      localBaseLibInfo.baseLibUrl = localStBaseLibInfo.downloadUrl.get();
-      localBaseLibInfo.baseLibVersion = localStBaseLibInfo.version.get();
+      if (QUAUtil.isAbi64()) {
+        localBaseLibInfo.baseLibUrl = getBaseLibUrl64(localBaseLibInfo.baseLibDesc, localBaseLibInfo.baseLibUrl);
+      } else {
+        localBaseLibInfo.baseLibUrl = ((INTERFACE.StBaseLibInfo)localObject).downloadUrl.get();
+      }
+      localBaseLibInfo.baseLibVersion = ((INTERFACE.StBaseLibInfo)localObject).version.get();
       localBaseLibInfo.baseLibKey = null;
-      localBaseLibInfo.baseLibDesc = localStBaseLibInfo.extInfo.get();
+      localBaseLibInfo.baseLibDesc = ((INTERFACE.StBaseLibInfo)localObject).extInfo.get();
       if (TextUtils.isEmpty(localBaseLibInfo.baseLibDesc)) {
         localBaseLibInfo.baseLibDesc = "{'file_length':-1}";
       }
-      localBaseLibInfo.baseLibType = localStBaseLibInfo.libType.get();
+      localBaseLibInfo.baseLibType = ((INTERFACE.StBaseLibInfo)localObject).libType.get();
       paramBundle.putParcelable(localBaseLibInfo.getKey(), localBaseLibInfo);
-      QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, "[MiniEng] GetNewBaseLib " + localBaseLibInfo);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng] GetNewBaseLib ");
+      ((StringBuilder)localObject).append(localBaseLibInfo);
+      QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, ((StringBuilder)localObject).toString());
     }
     paramBundle.putString("version", localStGetNewBaseLibRsp.libInfo.version.get());
     paramBundle.putString("downloadUrl", localStGetNewBaseLibRsp.libInfo.downloadUrl.get());
@@ -72,7 +102,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetNewBaseLib");
-    paramPacket.putSendData(bdpd.a((byte[])localObject));
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, "[MiniEng] GetNewBaseLibServlet send request");
     super.onSend(paramIntent, paramPacket);
@@ -80,7 +110,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetNewBaseLibForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

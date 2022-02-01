@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/eic" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/aym" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/v0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:includeFontPadding="false" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJHorizontalProgress android:layout_gravity="center" android:id="@id/nwh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJRoundProgressBar android:layout_gravity="center" android:id="@id/ifi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/ddt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

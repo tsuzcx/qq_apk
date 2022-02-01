@@ -15,212 +15,212 @@ public class NLog
   
   public static void D(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128446);
+    AppMethodBeat.i(114382);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128446);
+      AppMethodBeat.o(114382);
       return;
     }
     try
     {
       d(paramString1, paramString2);
-      AppMethodBeat.o(128446);
+      AppMethodBeat.o(114382);
       return;
     }
     catch (UnsatisfiedLinkError paramString1)
     {
       Logger.e("NLog", paramString1);
-      AppMethodBeat.o(128446);
+      AppMethodBeat.o(114382);
     }
   }
   
   public static void D(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(128450);
+    AppMethodBeat.i(114386);
     d(paramString1, paramString2 + "\n" + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(128450);
+    AppMethodBeat.o(114386);
   }
   
   public static void E(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128449);
+    AppMethodBeat.i(114385);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128449);
+      AppMethodBeat.o(114385);
       return;
     }
     try
     {
       e(paramString1, paramString2);
-      AppMethodBeat.o(128449);
+      AppMethodBeat.o(114385);
       return;
     }
     catch (UnsatisfiedLinkError paramString1)
     {
       Logger.e("NLog", paramString1);
-      AppMethodBeat.o(128449);
+      AppMethodBeat.o(114385);
     }
   }
   
   public static void E(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(128453);
+    AppMethodBeat.i(114389);
     e(paramString1, paramString2 + "\n" + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(128453);
+    AppMethodBeat.o(114389);
   }
   
   public static String GetLogPath()
   {
-    AppMethodBeat.i(128445);
+    AppMethodBeat.i(114381);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128445);
+      AppMethodBeat.o(114381);
       return "";
     }
     try
     {
       String str = getLogPath();
-      AppMethodBeat.o(128445);
+      AppMethodBeat.o(114381);
       return str;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       Logger.e("NLog", localUnsatisfiedLinkError);
-      AppMethodBeat.o(128445);
+      AppMethodBeat.o(114381);
     }
     return "";
   }
   
   public static void I(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128447);
+    AppMethodBeat.i(114383);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128447);
+      AppMethodBeat.o(114383);
       return;
     }
     try
     {
       i(paramString1, paramString2);
-      AppMethodBeat.o(128447);
+      AppMethodBeat.o(114383);
       return;
     }
     catch (UnsatisfiedLinkError paramString1)
     {
       Logger.e("NLog", paramString1);
-      AppMethodBeat.o(128447);
+      AppMethodBeat.o(114383);
     }
   }
   
   public static void I(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(128451);
+    AppMethodBeat.i(114387);
     i(paramString1, paramString2 + "\n" + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(128451);
+    AppMethodBeat.o(114387);
   }
   
   public static boolean Start(String paramString, int paramInt)
   {
-    AppMethodBeat.i(128442);
+    AppMethodBeat.i(114378);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128442);
+      AppMethodBeat.o(114378);
       return false;
     }
     try
     {
       boolean bool = start(paramString, paramInt);
-      AppMethodBeat.o(128442);
+      AppMethodBeat.o(114378);
       return bool;
     }
     catch (UnsatisfiedLinkError paramString)
     {
       Logger.e("NLog", paramString);
-      AppMethodBeat.o(128442);
+      AppMethodBeat.o(114378);
     }
     return false;
   }
   
   public static void Stop()
   {
-    AppMethodBeat.i(128443);
+    AppMethodBeat.i(114379);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128443);
+      AppMethodBeat.o(114379);
       return;
     }
     try
     {
       stop();
-      AppMethodBeat.o(128443);
+      AppMethodBeat.o(114379);
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       Logger.e("NLog", localUnsatisfiedLinkError);
-      AppMethodBeat.o(128443);
+      AppMethodBeat.o(114379);
     }
   }
   
   public static void W(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128448);
+    AppMethodBeat.i(114384);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128448);
+      AppMethodBeat.o(114384);
       return;
     }
     try
     {
       w(paramString1, paramString2);
-      AppMethodBeat.o(128448);
+      AppMethodBeat.o(114384);
       return;
     }
     catch (UnsatisfiedLinkError paramString1)
     {
       Logger.e("NLog", paramString1);
-      AppMethodBeat.o(128448);
+      AppMethodBeat.o(114384);
     }
   }
   
   public static void W(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(128452);
+    AppMethodBeat.i(114388);
     w(paramString1, paramString2 + "\n" + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(128452);
+    AppMethodBeat.o(114388);
   }
   
   private static void WriteLogCallback(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128441);
+    AppMethodBeat.i(114377);
     switch (paramInt)
     {
     default: 
       Logger.i(paramString1, paramString2);
-      AppMethodBeat.o(128441);
+      AppMethodBeat.o(114377);
       return;
     case 1: 
       Logger.d(paramString1, paramString2);
-      AppMethodBeat.o(128441);
+      AppMethodBeat.o(114377);
       return;
     case 2: 
       Logger.i(paramString1, paramString2);
-      AppMethodBeat.o(128441);
+      AppMethodBeat.o(114377);
       return;
     case 3: 
       Logger.w(paramString1, paramString2);
-      AppMethodBeat.o(128441);
+      AppMethodBeat.o(114377);
       return;
     }
     Logger.e(paramString1, paramString2);
-    AppMethodBeat.o(128441);
+    AppMethodBeat.o(114377);
   }
   
   private static native void d(String paramString1, String paramString2);
@@ -233,15 +233,15 @@ public class NLog
   
   public static boolean init(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(128454);
+    AppMethodBeat.i(114390);
     if (AudioPlayerConfigure.getSoLibraryLoader().load(paramString1))
     {
       mIsLoadSuccess = true;
       Start(paramString2, paramInt);
-      AppMethodBeat.o(128454);
+      AppMethodBeat.o(114390);
       return true;
     }
-    AppMethodBeat.o(128454);
+    AppMethodBeat.o(114390);
     return false;
   }
   
@@ -249,11 +249,11 @@ public class NLog
   
   public static void setWriteCallback(boolean paramBoolean)
   {
-    AppMethodBeat.i(128444);
+    AppMethodBeat.i(114380);
     if (!mIsLoadSuccess)
     {
       Logger.e("NLog", "Not load NLog lib!!!");
-      AppMethodBeat.o(128444);
+      AppMethodBeat.o(114380);
       return;
     }
     if (paramBoolean) {}
@@ -261,13 +261,13 @@ public class NLog
       try
       {
         setLogWriteCallback(i);
-        AppMethodBeat.o(128444);
+        AppMethodBeat.o(114380);
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
         Logger.e("NLog", localUnsatisfiedLinkError);
-        AppMethodBeat.o(128444);
+        AppMethodBeat.o(114380);
       }
     }
   }
@@ -280,7 +280,7 @@ public class NLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.NLog
  * JD-Core Version:    0.7.0.1
  */

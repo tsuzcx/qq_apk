@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/cu4" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:layout_gravity="center" android:id="@id/cu5" android:background="@drawable/w6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/b_3" />
-            <ImageView android:layout_gravity="center" android:id="@id/j_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" />
+<com.tencent.mm.plugin.finder.feed.RCLinearLayout android:orientation="horizontal" android:id="@id/d9m" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:orientation="vertical" android:id="@id/cz4" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/cd">
+        <ImageView android:id="@id/d9g" android:background="@color/hc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bvx" android:scaleType="centerCrop" />
+        <FrameLayout android:layout_gravity="center" android:id="@id/cz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/cz7" android:padding="1.0dip" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_play2" android:scaleType="fitCenter" app:iconColor="@color/al2" />
         </FrameLayout>
-    </LinearLayout>
-</RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/cz3" android:padding="1.0dip" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_play2" android:scaleType="fitCenter" app:iconColor="@color/al2" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/a76" android:layout_toEndOf="@id/cz4">
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/cz8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="没有理想的人不伤心（Remix）" android:singleLine="true" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/cz5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="新裤子乐队" android:singleLine="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/cz8" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.tencent.mm.plugin.finder.feed.RCLinearLayout>

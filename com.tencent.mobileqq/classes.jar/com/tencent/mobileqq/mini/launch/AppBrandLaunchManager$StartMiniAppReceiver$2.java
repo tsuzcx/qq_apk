@@ -27,19 +27,22 @@ class AppBrandLaunchManager$StartMiniAppReceiver$2
         COMM.StCommonExt localStCommonExt = (COMM.StCommonExt)paramJSONObject.extInfo.get();
         paramJSONObject = paramJSONObject.appInfos.get().iterator();
         while (paramJSONObject.hasNext()) {
-          AppBrandLaunchManager.access$700(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramJSONObject.next()), this.val$scene, "");
+          AppBrandLaunchManager.access$600(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramJSONObject.next()), this.val$scene, "");
         }
       }
     }
     else
     {
-      QLog.e("miniapp-process_AppBrandLaunchManager", 2, "StartMiniAppReceiver onReceive, onCmdListener, isSuc = " + paramBoolean);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("StartMiniAppReceiver onReceive, onCmdListener, isSuc = ");
+      paramJSONObject.append(paramBoolean);
+      QLog.e("miniapp-process_AppBrandLaunchManager", 2, paramJSONObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.StartMiniAppReceiver.2
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,10 @@ public final class QueuedProducer<T>
   final Queue<Object> queue;
   final AtomicInteger wip;
   
-  public QueuedProducer(Subscriber<? super T> paramSubscriber) {}
+  public QueuedProducer(Subscriber<? super T> paramSubscriber)
+  {
+    this(paramSubscriber, (Queue)localObject);
+  }
   
   public QueuedProducer(Subscriber<? super T> paramSubscriber, Queue<Object> paramQueue)
   {
@@ -56,72 +59,58 @@ public final class QueuedProducer<T>
   
   private void drain()
   {
-    Subscriber localSubscriber;
-    Queue localQueue;
     if (this.wip.getAndIncrement() == 0)
     {
-      localSubscriber = this.child;
-      localQueue = this.queue;
-      if (!checkTerminated(this.done, localQueue.isEmpty())) {}
-    }
-    else
-    {
-      label40:
-      return;
-    }
-    this.wip.lazySet(1);
-    long l2 = get();
-    for (long l1 = 0L;; l1 = 1L + l1)
-    {
-      boolean bool2;
-      Object localObject;
-      if (l2 != 0L)
+      Subscriber localSubscriber = this.child;
+      Queue localQueue = this.queue;
+      do
       {
-        bool2 = this.done;
-        localObject = localQueue.poll();
-        if (localObject != null) {
-          break label136;
+        if (checkTerminated(this.done, localQueue.isEmpty())) {
+          return;
         }
-      }
-      label136:
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        if (checkTerminated(bool2, bool1)) {
-          break label140;
-        }
-        if (localObject != null) {
-          break label142;
+        this.wip.lazySet(1);
+        long l2 = get();
+        long l1 = 0L;
+        while (l2 != 0L)
+        {
+          boolean bool2 = this.done;
+          Object localObject2 = localQueue.poll();
+          boolean bool1;
+          if (localObject2 == null) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          if (checkTerminated(bool2, bool1)) {
+            return;
+          }
+          if (localObject2 != null)
+          {
+            Object localObject1 = null;
+            try
+            {
+              if (localObject2 == NULL_SENTINEL) {
+                localSubscriber.onNext(null);
+              } else {
+                localSubscriber.onNext(localObject2);
+              }
+              l2 -= 1L;
+              l1 += 1L;
+            }
+            catch (Throwable localThrowable)
+            {
+              if (localObject2 != NULL_SENTINEL) {
+                localObject1 = localObject2;
+              }
+              Exceptions.throwOrReport(localThrowable, localSubscriber, localObject1);
+              return;
+            }
+          }
         }
         if ((l1 != 0L) && (get() != 9223372036854775807L)) {
           addAndGet(-l1);
         }
-        if (this.wip.decrementAndGet() != 0) {
-          break;
-        }
-        return;
-      }
-      label140:
-      break label40;
-      try
-      {
-        label142:
-        if (localObject == NULL_SENTINEL) {
-          localSubscriber.onNext(null);
-        } else {
-          localSubscriber.onNext(localObject);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        if (localObject == NULL_SENTINEL) {}
-      }
-      for (;;)
-      {
-        Exceptions.throwOrReport(localThrowable, localSubscriber, localObject);
-        return;
-        localObject = null;
-      }
-      l2 -= 1L;
+      } while (this.wip.decrementAndGet() != 0);
     }
   }
   
@@ -129,12 +118,12 @@ public final class QueuedProducer<T>
   {
     if (paramT == null)
     {
-      if (this.queue.offer(NULL_SENTINEL)) {}
-    }
-    else {
-      while (!this.queue.offer(paramT)) {
+      if (!this.queue.offer(NULL_SENTINEL)) {
         return false;
       }
+    }
+    else if (!this.queue.offer(paramT)) {
+      return false;
     }
     drain();
     return true;
@@ -162,19 +151,21 @@ public final class QueuedProducer<T>
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required");
-    }
-    if (paramLong > 0L)
+    if (paramLong >= 0L)
     {
-      BackpressureUtils.getAndAddRequest(this, paramLong);
-      drain();
+      if (paramLong > 0L)
+      {
+        BackpressureUtils.getAndAddRequest(this, paramLong);
+        drain();
+      }
+      return;
     }
+    throw new IllegalArgumentException("n >= 0 required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.producers.QueuedProducer
  * JD-Core Version:    0.7.0.1
  */

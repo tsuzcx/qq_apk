@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class PubAcctInfo
   extends JceStruct
 {
-  public int cert_level;
-  public int iDistance;
-  public long lUin;
+  public int cert_level = 0;
+  public int iDistance = 0;
+  public long lUin = 0L;
   public String strIntro = "";
   public String strLocation = "";
   public String strName = "";
@@ -48,7 +48,7 @@ public final class PubAcctInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyPubAcct.PubAcctInfo
  * JD-Core Version:    0.7.0.1
  */

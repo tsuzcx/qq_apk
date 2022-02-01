@@ -1,80 +1,109 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.f.a.b;
-import a.f.a.m;
-import a.f.b.k;
-import a.v;
-import a.y;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.m;
 import android.text.Html;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
+import com.tencent.mm.plugin.story.a.g;
 import com.tencent.mm.plugin.story.d.a.a;
 import com.tencent.mm.plugin.story.d.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.story.f.k;
+import com.tencent.mm.plugin.story.h.j;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "()V", "curDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "favPanel", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel;", "isSelf", "", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumPresenter;", "mUsername", "", "tipTv", "Landroid/widget/TextView;", "getLayoutId", "", "goFavGallery", "", "position", "dateList", "goFavSelector", "initActionBar", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "isAll", "onLoadFavFinish", "datas", "", "isAllEmpty", "onResume", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "()V", "curDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "favPanel", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel;", "isSelf", "", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumPresenter;", "mUsername", "", "tipTv", "Landroid/widget/TextView;", "getLayoutId", "", "goFavGallery", "", "position", "dateList", "goFavSelector", "initActionBar", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "isAll", "onLoadFavFinish", "datas", "", "isAllEmpty", "onResume", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class StoryFavAlbumUI
   extends MMActivity
   implements a.b
 {
-  private static final String TAG = "MicroMsg.StoryFavAlbumUI";
-  public static final StoryFavAlbumUI.a sJw;
-  private boolean ctJ;
-  private TextView gLI;
-  private String ikj;
-  private ArrayList<com.tencent.mm.plugin.story.h.j> sJt;
-  private StoryFavoritePanel sJu;
-  private a.a sJv;
+  public static final StoryFavAlbumUI.a Svu;
+  private static final String TAG;
+  private ArrayList<j> Svv;
+  private StoryFavoritePanel Svw;
+  private a.a Svx;
+  private boolean hHq;
+  private TextView pls;
+  private String sWX;
   
   static
   {
-    AppMethodBeat.i(138107);
-    sJw = new StoryFavAlbumUI.a((byte)0);
+    AppMethodBeat.i(119858);
+    Svu = new StoryFavAlbumUI.a((byte)0);
     TAG = "MicroMsg.StoryFavAlbumUI";
-    AppMethodBeat.o(138107);
+    AppMethodBeat.o(119858);
   }
   
   public StoryFavAlbumUI()
   {
-    AppMethodBeat.i(138876);
-    this.ikj = "";
-    this.sJt = new ArrayList();
-    this.ctJ = true;
-    AppMethodBeat.o(138876);
+    AppMethodBeat.i(119857);
+    this.sWX = "";
+    this.Svv = new ArrayList();
+    this.hHq = true;
+    AppMethodBeat.o(119857);
   }
   
-  public final int getLayoutId()
+  private static final void a(StoryFavAlbumUI paramStoryFavAlbumUI, View paramView)
   {
-    return 2130970914;
+    AppMethodBeat.i(367311);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramStoryFavAlbumUI);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramStoryFavAlbumUI, "this$0");
+    paramView = new Intent();
+    paramView.putExtra("Contact_User", paramStoryFavAlbumUI.sWX);
+    paramView.putExtra("CONTACT_INFO_UI_SOURCE", 12);
+    c.b((Context)paramStoryFavAlbumUI, "profile", ".ui.ContactInfoUI", paramView);
+    a.a(new Object(), "com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367311);
   }
   
-  public final void h(List<com.tencent.mm.plugin.story.h.j> paramList, boolean paramBoolean)
+  private static final boolean a(StoryFavAlbumUI paramStoryFavAlbumUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(138874);
-    a.f.b.j.q(paramList, "datas");
+    AppMethodBeat.i(367313);
+    s.u(paramStoryFavAlbumUI, "this$0");
+    paramStoryFavAlbumUI.finish();
+    AppMethodBeat.o(367313);
+    return true;
+  }
+  
+  public final void E(List<j> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(119855);
+    s.u(paramList, "datas");
     int i;
     if (!((Collection)paramList).isEmpty()) {
       i = 1;
@@ -82,213 +111,229 @@ public final class StoryFavAlbumUI
     Object localObject1;
     while ((i != 0) || (!paramBoolean))
     {
-      this.sJt.clear();
-      this.sJt.addAll((Collection)paramList);
-      localObject1 = this.sJu;
-      if (localObject1 != null)
-      {
-        paramBoolean = this.ctJ;
-        a.f.b.j.q(paramList, "favoriteStory");
-        ab.i(((StoryFavoritePanel)localObject1).TAG, "updateFavStory " + paramList.size());
-        Object localObject2 = ((StoryFavoritePanel)localObject1).sJF;
-        if (localObject2 != null) {
-          ((TextView)localObject2).setVisibility(8);
-        }
-        localObject2 = ((StoryFavoritePanel)localObject1).sJG;
-        if (localObject2 != null) {
-          ((RecyclerView)localObject2).setVisibility(0);
-        }
-        ((StoryFavoritePanel)localObject1).ctJ = paramBoolean;
-        ((StoryFavoritePanel)localObject1).sJK.clear();
-        if ((paramBoolean) && (((StoryFavoritePanel)localObject1).fromScene != StoryFavoritePanel.sJR)) {
-          ((StoryFavoritePanel)localObject1).sJK.add(new StoryFavoritePanel.c(new com.tencent.mm.plugin.story.h.j(), ((StoryFavoritePanel)localObject1).sJB));
-        }
-        paramList = ((Iterable)paramList).iterator();
-        for (;;)
-        {
-          if (paramList.hasNext())
-          {
-            localObject2 = (com.tencent.mm.plugin.story.h.j)paramList.next();
-            ((StoryFavoritePanel)localObject1).sJK.add(new StoryFavoritePanel.c((com.tencent.mm.plugin.story.h.j)localObject2, ((StoryFavoritePanel)localObject1).sJC));
-            continue;
-            i = 0;
-            break;
-          }
-        }
-        ((StoryFavoritePanel)localObject1).sJK.add(new StoryFavoritePanel.c(new com.tencent.mm.plugin.story.h.j(), ((StoryFavoritePanel)localObject1).swy));
-        ((StoryFavoritePanel)localObject1).sJH.notifyDataSetChanged();
-        AppMethodBeat.o(138874);
-        return;
+      this.Svv.clear();
+      this.Svv.addAll((Collection)paramList);
+      localObject1 = this.Svw;
+      if (localObject1 == null) {
+        break label361;
       }
-      AppMethodBeat.o(138874);
+      paramBoolean = this.hHq;
+      s.u(paramList, "favoriteStory");
+      Log.i(((StoryFavoritePanel)localObject1).TAG, s.X("updateFavStory ", Integer.valueOf(paramList.size())));
+      Object localObject2 = ((StoryFavoritePanel)localObject1).SvH;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(8);
+      }
+      localObject2 = ((StoryFavoritePanel)localObject1).SvI;
+      if (localObject2 != null) {
+        ((RecyclerView)localObject2).setVisibility(0);
+      }
+      ((StoryFavoritePanel)localObject1).hHq = paramBoolean;
+      ((StoryFavoritePanel)localObject1).SvL.clear();
+      if ((paramBoolean) && (((StoryFavoritePanel)localObject1).fromScene != StoryFavoritePanel.SvS)) {
+        ((StoryFavoritePanel)localObject1).SvL.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).SvD));
+      }
+      paramList = ((Iterable)paramList).iterator();
+      for (;;)
+      {
+        if (paramList.hasNext())
+        {
+          localObject2 = (j)paramList.next();
+          ((StoryFavoritePanel)localObject1).getMDatas().add(new StoryFavoritePanel.c((j)localObject2, ((StoryFavoritePanel)localObject1).SvE));
+          continue;
+          i = 0;
+          break;
+        }
+      }
+      ((StoryFavoritePanel)localObject1).SvL.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).NIQ));
+      ((StoryFavoritePanel)localObject1).SvJ.bZE.notifyChanged();
+      AppMethodBeat.o(119855);
       return;
     }
-    this.sJt.clear();
-    paramList = this.gLI;
+    this.Svv.clear();
+    paramList = this.pls;
     if (paramList != null) {
       paramList.setVisibility(8);
     }
-    paramList = this.sJu;
+    paramList = this.Svw;
     if (paramList != null)
     {
-      localObject1 = getContext();
-      a.f.b.j.p(localObject1, "context");
-      localObject1 = ((AppCompatActivity)localObject1).getResources().getString(2131304108);
-      a.f.b.j.p(localObject1, "context.resources.getStr…album_favorite_empty_tip)");
-      paramList.adI((String)localObject1);
-      AppMethodBeat.o(138874);
-      return;
+      localObject1 = getContext().getResources().getString(a.g.Shj);
+      s.s(localObject1, "context.resources.getStr…album_favorite_empty_tip)");
+      paramList.bcs((String)localObject1);
     }
-    AppMethodBeat.o(138874);
+    label361:
+    AppMethodBeat.o(119855);
   }
   
-  public final void lu(boolean paramBoolean)
+  public final void EF(boolean paramBoolean)
   {
-    AppMethodBeat.i(151130);
-    StoryFavoritePanel localStoryFavoritePanel = this.sJu;
-    if (localStoryFavoritePanel != null)
-    {
-      localStoryFavoritePanel.lu(paramBoolean);
-      AppMethodBeat.o(151130);
-      return;
+    AppMethodBeat.i(119856);
+    StoryFavoritePanel localStoryFavoritePanel = this.Svw;
+    if (localStoryFavoritePanel != null) {
+      localStoryFavoritePanel.EF(paramBoolean);
     }
-    AppMethodBeat.o(151130);
+    AppMethodBeat.o(119856);
+  }
+  
+  public final int getLayoutId()
+  {
+    return a.e.Sgi;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(138871);
+    Object localObject1 = null;
+    AppMethodBeat.i(119852);
     fixStatusbar(true);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    Object localObject;
-    if (paramBundle != null)
-    {
-      localObject = paramBundle.getStringExtra("username");
-      paramBundle = (Bundle)localObject;
-      if (localObject != null) {}
-    }
-    else
-    {
+    if (paramBundle == null) {
       paramBundle = "";
     }
-    this.ikj = paramBundle;
-    ab.i(TAG, "initViews username=" + this.ikj);
-    paramBundle = g.RL().Ru().get(2);
-    if (paramBundle == null)
+    Object localObject2;
+    for (;;)
     {
-      paramBundle = new v("null cannot be cast to non-null type kotlin.String");
-      AppMethodBeat.o(138871);
+      this.sWX = paramBundle;
+      Log.i(TAG, s.X("initViews username=", this.sWX));
+      paramBundle = h.baE().ban().d(2, null);
+      if (paramBundle != null) {
+        break;
+      }
+      paramBundle = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(119852);
       throw paramBundle;
+      localObject2 = paramBundle.getStringExtra("username");
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null) {
+        paramBundle = "";
+      }
     }
-    this.ctJ = bo.isEqual((String)paramBundle, this.ikj);
-    if (this.ctJ)
+    this.hHq = Util.isEqual((String)paramBundle, this.sWX);
+    if (this.hHq)
     {
-      setMMTitle(2131304109);
-      setBackBtn((MenuItem.OnMenuItemClickListener)new StoryFavAlbumUI.b(this));
-      this.sJv = ((a.a)new com.tencent.mm.plugin.story.f.l((a.b)this));
-      paramBundle = this.sJv;
-      if (paramBundle == null) {
-        a.f.b.j.ays("mPresenter");
+      setMMTitle(a.g.Shk);
+      setBackBtn(new StoryFavAlbumUI..ExternalSyntheticLambda0(this));
+      this.Svx = ((a.a)new k((a.b)this));
+      localObject2 = this.Svx;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("mPresenter");
+        paramBundle = null;
       }
-      paramBundle.onCreate(this.ikj);
-      this.gLI = ((TextView)findViewById(2131828230));
-      if (this.ctJ) {
-        break label508;
+      paramBundle.onCreate(this.sWX);
+      this.pls = ((TextView)findViewById(a.d.Sde));
+      if (this.hHq) {
+        break label501;
       }
-      paramBundle = this.gLI;
+      paramBundle = this.pls;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
+      label229:
+      this.Svw = ((StoryFavoritePanel)findViewById(a.d.Sdg));
+      paramBundle = this.Svw;
+      if (paramBundle != null)
+      {
+        localObject2 = StoryFavoritePanel.SvC;
+        paramBundle.setup(StoryFavoritePanel.hzK());
+      }
+      paramBundle = this.Svw;
+      if (paramBundle != null) {
+        paramBundle.setMOnAddItemClickListener((kotlin.g.a.b)new StoryFavAlbumUI.b(this));
+      }
+      paramBundle = this.Svw;
+      if (paramBundle != null) {
+        paramBundle.setMOnFavItemClickListener((m)new c(this));
+      }
+      paramBundle = this.Svw;
+      if (paramBundle != null) {
+        paramBundle.a((RecyclerView.l)new d(this));
+      }
+      localObject2 = this.Svx;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("mPresenter");
+        paramBundle = null;
+      }
+      paramBundle.hvi();
+      paramBundle = this.Svx;
+      if (paramBundle != null) {
+        break label568;
+      }
+      s.bIx("mPresenter");
+      paramBundle = localObject1;
     }
+    label568:
     for (;;)
     {
-      this.sJu = ((StoryFavoritePanel)findViewById(2131828231));
-      paramBundle = this.sJu;
-      if (paramBundle != null)
-      {
-        localObject = StoryFavoritePanel.sJS;
-        paramBundle.setup(StoryFavoritePanel.cFr());
-      }
-      paramBundle = this.sJu;
-      if (paramBundle != null) {
-        paramBundle.setMOnAddItemClickListener((b)new d(this));
-      }
-      paramBundle = this.sJu;
-      if (paramBundle != null) {
-        paramBundle.setMOnFavItemClickListener((m)new StoryFavAlbumUI.e(this));
-      }
-      paramBundle = this.sJu;
-      if (paramBundle != null) {
-        paramBundle.a((RecyclerView.m)new StoryFavAlbumUI.f(this));
-      }
-      paramBundle = this.sJv;
-      if (paramBundle == null) {
-        a.f.b.j.ays("mPresenter");
-      }
-      paramBundle.czI();
-      paramBundle = this.sJv;
-      if (paramBundle == null) {
-        a.f.b.j.ays("mPresenter");
-      }
-      paramBundle.czJ();
-      AppMethodBeat.o(138871);
+      paramBundle.hvj();
+      AppMethodBeat.o(119852);
       return;
-      paramBundle = g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
-      a.f.b.j.p(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-      paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.j)paramBundle).YA().arw(this.ikj);
-      localObject = (Context)getContext();
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.Of();
-        if (paramBundle == null) {}
+      paramBundle = ((n)h.ax(n.class)).bzA().JE(this.sWX);
+      Context localContext = (Context)getContext();
+      if (paramBundle == null) {
+        paramBundle = "";
       }
-      for (paramBundle = (CharSequence)paramBundle;; paramBundle = (CharSequence)"")
+      for (;;)
       {
-        View localView = findViewById(16908308);
-        a.f.b.j.p(localView, "findViewById<TextView>(android.R.id.text1)");
-        paramBundle = com.tencent.mm.pluginsdk.ui.d.j.b((Context)localObject, paramBundle, ((TextView)localView).getTextSize());
-        setMMTitle(paramBundle + getString(2131304110));
+        paramBundle = p.b(localContext, (CharSequence)paramBundle, ((TextView)findViewById(16908308)).getTextSize());
+        setMMTitle(paramBundle + getString(a.g.Shl));
         break;
+        localObject2 = paramBundle.aSV();
+        paramBundle = (Bundle)localObject2;
+        if (localObject2 == null) {
+          paramBundle = "";
+        }
       }
-      label508:
-      paramBundle = this.gLI;
+      label501:
+      paramBundle = this.pls;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.gLI;
+      paramBundle = this.pls;
       if (paramBundle != null) {
-        paramBundle.setText((CharSequence)Html.fromHtml(getResources().getString(2131304103)));
+        paramBundle.setText((CharSequence)Html.fromHtml(getResources().getString(a.g.Shi)));
       }
-      paramBundle = this.gLI;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new c(this));
+      paramBundle = this.pls;
+      if (paramBundle == null) {
+        break label229;
       }
+      paramBundle.setOnClickListener(new StoryFavAlbumUI..ExternalSyntheticLambda1(this));
+      break label229;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(138873);
+    AppMethodBeat.i(119854);
     super.onDestroy();
-    a.a locala = this.sJv;
-    if (locala == null) {
-      a.f.b.j.ays("mPresenter");
+    a.a locala2 = this.Svx;
+    a.a locala1 = locala2;
+    if (locala2 == null)
+    {
+      s.bIx("mPresenter");
+      locala1 = null;
     }
-    locala.bOo();
-    AppMethodBeat.o(138873);
+    locala1.hoB();
+    AppMethodBeat.o(119854);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(138872);
+    AppMethodBeat.i(119853);
     super.onResume();
-    a.a locala = this.sJv;
-    if (locala == null) {
-      a.f.b.j.ays("mPresenter");
+    a.a locala2 = this.Svx;
+    a.a locala1 = locala2;
+    if (locala2 == null)
+    {
+      s.bIx("mPresenter");
+      locala1 = null;
     }
-    locala.czJ();
-    AppMethodBeat.o(138872);
+    locala1.hvj();
+    AppMethodBeat.o(119853);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -297,37 +342,41 @@ public final class StoryFavAlbumUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "storyFavInfo", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "position", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements View.OnClickListener
+    extends u
+    implements m<StoryFavoritePanel.c, Integer, ah>
   {
-    c(StoryFavAlbumUI paramStoryFavAlbumUI) {}
-    
-    public final void onClick(View paramView)
+    c(StoryFavAlbumUI paramStoryFavAlbumUI)
     {
-      AppMethodBeat.i(138867);
-      paramView = new Intent();
-      paramView.putExtra("Contact_User", StoryFavAlbumUI.a(this.sJx));
-      paramView.putExtra("CONTACT_INFO_UI_SOURCE", 12);
-      d.b((Context)this.sJx, "profile", ".ui.ContactInfoUI", paramView);
-      AppMethodBeat.o(138867);
+      super();
     }
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "invoke"})
-  static final class d
-    extends k
-    implements b<StoryFavoritePanel.c, y>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI$initViews$4", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends e
   {
-    d(StoryFavAlbumUI paramStoryFavAlbumUI)
+    d(StoryFavAlbumUI paramStoryFavAlbumUI) {}
+    
+    public final void onLoadMore()
     {
-      super();
+      AppMethodBeat.i(119851);
+      a.a locala2 = StoryFavAlbumUI.c(this.Svy);
+      a.a locala1 = locala2;
+      if (locala2 == null)
+      {
+        s.bIx("mPresenter");
+        locala1 = null;
+      }
+      locala1.hvh();
+      AppMethodBeat.o(119851);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryFavAlbumUI
  * JD-Core Version:    0.7.0.1
  */

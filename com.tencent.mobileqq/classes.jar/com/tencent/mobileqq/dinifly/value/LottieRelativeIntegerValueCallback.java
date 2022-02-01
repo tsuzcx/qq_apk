@@ -7,10 +7,10 @@ public class LottieRelativeIntegerValueCallback
 {
   public Integer getOffset(LottieFrameInfo<Integer> paramLottieFrameInfo)
   {
-    if (this.value == null) {
-      throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
+    if (this.value != null) {
+      return (Integer)this.value;
     }
-    return (Integer)this.value;
+    throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
   }
   
   public Integer getValue(LottieFrameInfo<Integer> paramLottieFrameInfo)

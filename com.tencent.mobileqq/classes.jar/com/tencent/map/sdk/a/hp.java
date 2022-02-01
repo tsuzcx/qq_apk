@@ -31,16 +31,16 @@ public final class hp
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof hp)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof hp))
+    {
       paramObject = (hp)paramObject;
-    } while ((this.b == paramObject.b) && (this.a == paramObject.a));
-    return false;
+      if ((this.b == paramObject.b) && (this.a == paramObject.a)) {
+        return true;
+      }
+    }
     return false;
   }
   

@@ -1,13 +1,25 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.voip.VoipBuyGoods.BuyGoodsRsp;
 import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class exg
-  implements Runnable
+public class exg
+  extends Handler
 {
-  exg(exf paramexf) {}
+  public exg(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.finish();
+    paramMessage = (VoipBuyGoods.BuyGoodsRsp)paramMessage.obj;
+    if (paramMessage.error_code.get() == 0)
+    {
+      VoipTencentPayActivity.a(this.a, paramMessage.url_params.get());
+      VoipTencentPayActivity.b(this.a);
+      return;
+    }
+    VoipTencentPayActivity.a(this.a);
   }
 }
 

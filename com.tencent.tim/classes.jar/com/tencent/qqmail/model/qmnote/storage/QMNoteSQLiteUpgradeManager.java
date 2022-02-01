@@ -1,0 +1,35 @@
+package com.tencent.qqmail.model.qmnote.storage;
+
+import android.util.SparseArray;
+import com.tencent.qqmail.model.mail.upgrade.ISQLIteDatabaseUpgrade;
+import com.tencent.qqmail.model.mail.upgrade.QMSQLiteDatabaseUpgradeManager;
+
+public class QMNoteSQLiteUpgradeManager
+  extends QMSQLiteDatabaseUpgradeManager
+{
+  protected final int MIN_VERSION = 2;
+  protected final int VERSION = 5210;
+  
+  public SparseArray<ISQLIteDatabaseUpgrade> addVersions()
+  {
+    SparseArray localSparseArray = new SparseArray();
+    addVersion(localSparseArray, new QMNoteSQLiteUpgradeManager.1(this, this));
+    return localSparseArray;
+  }
+  
+  public int getMinVersion()
+  {
+    return 2;
+  }
+  
+  public int getVersion()
+  {
+    return 5210;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes11.jar
+ * Qualified Name:     com.tencent.qqmail.model.qmnote.storage.QMNoteSQLiteUpgradeManager
+ * JD-Core Version:    0.7.0.1
+ */

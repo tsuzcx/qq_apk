@@ -1,24 +1,55 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import agut;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.qroute.QRoute;
+import java.util.Iterator;
+import java.util.List;
 
-public class PublicAccountChatPie$50
+class PublicAccountChatPie$50
   implements Runnable
 {
-  public PublicAccountChatPie$50(agti paramagti) {}
+  PublicAccountChatPie$50(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if (((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMsgID(this.this$0.d, this.this$0.ah.b) != 0L) {
+      return;
+    }
+    Object localObject1 = this.this$0.d.getMessageFacade().o(this.this$0.ah.b, this.this$0.ah.a);
+    if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+      localObject1 = ((List)localObject1).iterator();
+    }
+    for (;;)
     {
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-      if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new agut(this));
+      Object localObject2;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ChatMessage)((Iterator)localObject1).next();
+        if (((localObject2 instanceof MessageForStructing)) || ((localObject2 instanceof MessageForPubAccount)))
+        {
+          localObject2 = ((ChatMessage)localObject2).getExtInfoFromExtStr("pa_msgId");
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {}
+        }
+      }
+      else
+      {
+        try
+        {
+          long l = Long.parseLong((String)localObject2);
+          if (l > 0L)
+          {
+            ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).setMsgID(this.this$0.d, this.this$0.ah.b, l);
+            return;
+          }
+        }
+        catch (Exception localException) {}
       }
     }
   }

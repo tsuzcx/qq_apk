@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import adpn;
-import aijf;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MiniChatActivity
   extends PublicFragmentActivity
 {
-  static boolean a;
+  static boolean a = false;
   
   public static void a(Activity paramActivity, int paramInt, String paramString1, String paramString2)
   {
@@ -30,7 +32,7 @@ public class MiniChatActivity
     localIntent.putExtra("minaio_scaled_ration", paramFloat2);
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_mini_from", 3);
-    adpn.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class);
   }
   
   public static void a(Activity paramActivity, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
@@ -47,9 +49,9 @@ public class MiniChatActivity
     localIntent.putExtra("key_mini_msgtab_businame", paramInt2);
     localIntent.putExtra("key_mini_from", 2);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    adpn.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
     if (paramBoolean) {
-      paramActivity.overridePendingTransition(2130771994, 2130771995);
+      paramActivity.overridePendingTransition(2130772011, 2130772012);
     }
   }
   
@@ -64,9 +66,9 @@ public class MiniChatActivity
     localIntent.putExtra("key_mini_aio_msg_shmsgseq", paramLong1);
     localIntent.putExtra("key_mini_from", 5);
     localIntent.putExtra("key_mini_aio_barrage_time_location", paramLong2);
-    adpn.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
     if (paramBoolean) {
-      paramActivity.overridePendingTransition(2130771994, 2130771995);
+      paramActivity.overridePendingTransition(2130772011, 2130772012);
     }
   }
   
@@ -74,37 +76,46 @@ public class MiniChatActivity
   {
     paramIntent.putExtra("key_mini_from", 1);
     paramIntent.putExtra("public_fragment_window_feature", 1);
-    adpn.a(paramActivity, paramIntent, MiniChatActivity.class, MiniMsgTabFragment.class, paramInt);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, MiniChatActivity.class, MiniMsgTabFragment.class, paramInt);
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     return a;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("key_mini_from", -1);
     if (localIntent.getBooleanExtra("key_mini_msgtab_need_full_screen", false)) {
       getWindow().setFlags(1024, 1024);
     }
-    switch (i)
+    if (i != 1)
     {
-    default: 
-      finish();
-    }
-    for (;;)
-    {
-      if (getIntent().getBooleanExtra("isLandscape", false)) {
-        findViewById(16908290).setBackgroundResource(2130840923);
+      if ((i != 2) && (i != 3) && (i != 4) && (i != 5)) {
+        finish();
       }
-      return super.doOnCreate(paramBundle);
+    }
+    else {
       getWindow().setDimAmount(0.0F);
     }
+    if (getIntent().getBooleanExtra("isLandscape", false)) {
+      findViewById(16908290).setBackgroundResource(2130842022);
+    }
+    return super.doOnCreate(paramBundle);
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
     a = true;
     if (QLog.isColorLevel()) {
@@ -113,7 +124,7 @@ public class MiniChatActivity
     super.doOnStart();
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     a = false;
     if (QLog.isColorLevel()) {
@@ -125,10 +136,17 @@ public class MiniChatActivity
   public void finish()
   {
     if (getIntent().getBooleanExtra("key_mini_need_update_unread", false)) {
-      aijf.a().b();
+      MiniMsgIPCServer.a().d();
     }
-    if (getIntent().getIntExtra("key_mini_from", 0) == 5) {}
+    getIntent().getIntExtra("key_mini_from", 0);
     super.finish();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 

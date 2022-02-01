@@ -10,16 +10,16 @@ import java.util.concurrent.ExecutorService;
 
 public final class ImageManager
 {
-  private static final Object Iy = new Object();
-  private static HashSet<Uri> Iz = new HashSet();
-  private final ExecutorService IA;
-  private final b IB;
-  private final bt IC;
-  private final Map<e, ImageManager.ImageReceiver> ID;
-  private final Map<Uri, ImageManager.ImageReceiver> IE;
-  private final Map<Uri, Long> IF;
+  private static final Object Kn = new Object();
+  private static HashSet<Uri> Ko = new HashSet();
+  private final ExecutorService Kp;
+  private final b Kq;
+  private final bt Kr;
+  private final Map<e, ImageManager.ImageReceiver> Ks;
+  private final Map<Uri, ImageManager.ImageReceiver> Kt;
+  private final Map<Uri, Long> Ku;
+  private final Handler dG;
   private final Context mContext;
-  private final Handler mHandler;
 }
 
 

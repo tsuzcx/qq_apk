@@ -1,108 +1,297 @@
 package com.google.android.exoplayer2.source;
 
-import com.google.android.exoplayer2.f;
-import com.google.android.exoplayer2.h.b;
+import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.g.f;
 import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 
 public final class d
-  implements i, i.a
+  implements j, j.a
 {
-  private final long aOY;
-  private final long aOZ;
-  private final boolean aPe;
-  private final ArrayList<c> aPf;
-  private i.a aPg;
-  private d.a aPh;
-  private final i awb;
+  public final j cGp;
+  private j.a cYN;
+  private long cYO;
+  private long cYP;
+  private d.a[] cYQ;
+  private boolean cYR;
   
-  public d(i parami, long paramLong1, long paramLong2)
+  public d(j paramj, boolean paramBoolean)
   {
-    this(parami, paramLong1, paramLong2, (byte)0);
+    AppMethodBeat.i(92615);
+    this.cGp = paramj;
+    this.cYO = -9223372036854775807L;
+    this.cYP = -9223372036854775807L;
+    this.cYQ = new d.a[0];
+    this.cYR = paramBoolean;
+    AppMethodBeat.o(92615);
   }
   
-  private d(i parami, long paramLong1, long paramLong2, byte paramByte)
+  public final void E(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(95467);
-    if (paramLong1 >= 0L) {}
+    this.cYO = paramLong1;
+    this.cYP = paramLong2;
+  }
+  
+  public final void SO()
+  {
+    AppMethodBeat.i(92617);
+    this.cGp.SO();
+    AppMethodBeat.o(92617);
+  }
+  
+  public final r SP()
+  {
+    AppMethodBeat.i(92618);
+    r localr = this.cGp.SP();
+    AppMethodBeat.o(92618);
+    return localr;
+  }
+  
+  public final long SQ()
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(92621);
+    if (this.cYR)
+    {
+      d.a[] arrayOfa = this.cYQ;
+      int j = arrayOfa.length;
+      int i = 0;
+      while (i < j)
+      {
+        d.a locala = arrayOfa[i];
+        if (locala != null) {
+          locala.cYS = false;
+        }
+        i += 1;
+      }
+      this.cYR = false;
+      l1 = SQ();
+      if (l1 != -9223372036854775807L)
+      {
+        AppMethodBeat.o(92621);
+        return l1;
+      }
+      AppMethodBeat.o(92621);
+      return 0L;
+    }
+    long l1 = this.cGp.SQ();
+    if (l1 == -9223372036854775807L)
+    {
+      AppMethodBeat.o(92621);
+      return -9223372036854775807L;
+    }
+    if (l1 >= this.cYO) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      a.checkState(bool1);
+      if (this.cYP != -9223372036854775808L)
+      {
+        bool1 = bool2;
+        if (l1 > this.cYP) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      a.checkState(bool1);
+      long l2 = this.cYO;
+      AppMethodBeat.o(92621);
+      return l1 - l2;
+    }
+  }
+  
+  public final long SR()
+  {
+    AppMethodBeat.i(92622);
+    long l = this.cGp.SR();
+    if ((l == -9223372036854775808L) || ((this.cYP != -9223372036854775808L) && (l >= this.cYP)))
+    {
+      AppMethodBeat.o(92622);
+      return -9223372036854775808L;
+    }
+    l = Math.max(0L, l - this.cYO);
+    AppMethodBeat.o(92622);
+    return l;
+  }
+  
+  public final long SS()
+  {
+    AppMethodBeat.i(92624);
+    long l1 = this.cGp.SS();
+    if ((l1 == -9223372036854775808L) || ((this.cYP != -9223372036854775808L) && (l1 >= this.cYP)))
+    {
+      AppMethodBeat.o(92624);
+      return -9223372036854775808L;
+    }
+    long l2 = this.cYO;
+    AppMethodBeat.o(92624);
+    return l1 - l2;
+  }
+  
+  public final long a(f[] paramArrayOff, boolean[] paramArrayOfBoolean1, n[] paramArrayOfn, boolean[] paramArrayOfBoolean2, long paramLong)
+  {
+    AppMethodBeat.i(92619);
+    this.cYQ = new d.a[paramArrayOfn.length];
+    n[] arrayOfn = new n[paramArrayOfn.length];
+    int i = 0;
+    if (i < paramArrayOfn.length)
+    {
+      this.cYQ[i] = ((d.a)paramArrayOfn[i]);
+      if (this.cYQ[i] != null) {}
+      for (n localn = this.cYQ[i].cFa;; localn = null)
+      {
+        arrayOfn[i] = localn;
+        i += 1;
+        break;
+      }
+    }
+    long l = this.cGp.a(paramArrayOff, paramArrayOfBoolean1, arrayOfn, paramArrayOfBoolean2, paramLong + this.cYO);
+    label170:
+    boolean bool;
+    if (this.cYR)
+    {
+      if (this.cYO == 0L) {
+        break label297;
+      }
+      int j = paramArrayOff.length;
+      i = 0;
+      if (i >= j) {
+        break label291;
+      }
+      paramArrayOfBoolean1 = paramArrayOff[i];
+      if ((paramArrayOfBoolean1 != null) && (!com.google.android.exoplayer2.i.j.df(paramArrayOfBoolean1.Ud().cGN)))
+      {
+        i = 1;
+        if (i == 0) {
+          break label297;
+        }
+        bool = true;
+        label178:
+        this.cYR = bool;
+      }
+    }
+    else
+    {
+      if ((l != this.cYO + paramLong) && ((l < this.cYO) || ((this.cYP != -9223372036854775808L) && (l > this.cYP)))) {
+        break label303;
+      }
+      bool = true;
+      label231:
+      a.checkState(bool);
+      i = 0;
+      label239:
+      if (i >= paramArrayOfn.length) {
+        break label369;
+      }
+      if (arrayOfn[i] != null) {
+        break label309;
+      }
+      this.cYQ[i] = null;
+    }
+    for (;;)
+    {
+      paramArrayOfn[i] = this.cYQ[i];
+      i += 1;
+      break label239;
+      i += 1;
+      break;
+      label291:
+      i = 0;
+      break label170;
+      label297:
+      bool = false;
+      break label178;
+      label303:
+      bool = false;
+      break label231;
+      label309:
+      if ((paramArrayOfn[i] == null) || (this.cYQ[i].cFa != arrayOfn[i])) {
+        this.cYQ[i] = new d.a(this, arrayOfn[i], this.cYO, this.cYP, this.cYR);
+      }
+    }
+    label369:
+    paramLong = this.cYO;
+    AppMethodBeat.o(92619);
+    return l - paramLong;
+  }
+  
+  public final void a(j.a parama, long paramLong)
+  {
+    AppMethodBeat.i(92616);
+    this.cYN = parama;
+    this.cGp.a(this, this.cYO + paramLong);
+    AppMethodBeat.o(92616);
+  }
+  
+  public final void a(j paramj)
+  {
+    AppMethodBeat.i(92626);
+    if ((this.cYO != -9223372036854775807L) && (this.cYP != -9223372036854775807L)) {}
     for (boolean bool = true;; bool = false)
     {
-      a.checkArgument(bool);
-      this.awb = ((i)a.checkNotNull(parami));
-      this.aOY = paramLong1;
-      this.aOZ = paramLong2;
-      this.aPe = true;
-      this.aPf = new ArrayList();
-      AppMethodBeat.o(95467);
+      a.checkState(bool);
+      this.cYN.a(this);
+      AppMethodBeat.o(92626);
       return;
     }
   }
   
-  public final h a(i.b paramb, b paramb1)
+  public final void cm(long paramLong)
   {
-    AppMethodBeat.i(95470);
-    paramb = new c(this.awb.a(paramb, paramb1), this.aPe);
-    this.aPf.add(paramb);
-    paramb.i(d.a.a(this.aPh), d.a.b(this.aPh));
-    AppMethodBeat.o(95470);
-    return paramb;
+    AppMethodBeat.i(92620);
+    this.cGp.cm(this.cYO + paramLong);
+    AppMethodBeat.o(92620);
   }
   
-  public final void a(f paramf, i.a parama)
+  public final long cn(long paramLong)
   {
-    AppMethodBeat.i(95468);
-    this.aPg = parama;
-    this.awb.a(paramf, this);
-    AppMethodBeat.o(95468);
-  }
-  
-  public final void a(w paramw, Object paramObject)
-  {
-    AppMethodBeat.i(95473);
-    this.aPh = new d.a(paramw, this.aOY, this.aOZ);
-    this.aPg.a(this.aPh, paramObject);
-    long l2 = d.a.a(this.aPh);
-    if (d.a.b(this.aPh) == -9223372036854775807L) {}
-    for (long l1 = -9223372036854775808L;; l1 = d.a.b(this.aPh))
+    boolean bool2 = false;
+    AppMethodBeat.i(92623);
+    d.a[] arrayOfa = this.cYQ;
+    int j = arrayOfa.length;
+    int i = 0;
+    while (i < j)
     {
-      int j = this.aPf.size();
-      int i = 0;
-      while (i < j)
+      d.a locala = arrayOfa[i];
+      if (locala != null) {
+        locala.cYT = false;
+      }
+      i += 1;
+    }
+    long l = this.cGp.cn(this.cYO + paramLong);
+    if (l != this.cYO + paramLong)
+    {
+      bool1 = bool2;
+      if (l < this.cYO) {
+        break label122;
+      }
+      if (this.cYP != -9223372036854775808L)
       {
-        ((c)this.aPf.get(i)).i(l2, l1);
-        i += 1;
+        bool1 = bool2;
+        if (l > this.cYP) {
+          break label122;
+        }
       }
     }
-    AppMethodBeat.o(95473);
+    boolean bool1 = true;
+    label122:
+    a.checkState(bool1);
+    paramLong = this.cYO;
+    AppMethodBeat.o(92623);
+    return l - paramLong;
   }
   
-  public final void b(h paramh)
+  public final boolean co(long paramLong)
   {
-    AppMethodBeat.i(95471);
-    a.checkState(this.aPf.remove(paramh));
-    this.awb.b(((c)paramh).awn);
-    AppMethodBeat.o(95471);
-  }
-  
-  public final void oY()
-  {
-    AppMethodBeat.i(95469);
-    this.awb.oY();
-    AppMethodBeat.o(95469);
-  }
-  
-  public final void oZ()
-  {
-    AppMethodBeat.i(95472);
-    this.awb.oZ();
-    AppMethodBeat.o(95472);
+    AppMethodBeat.i(92625);
+    boolean bool = this.cGp.co(this.cYO + paramLong);
+    AppMethodBeat.o(92625);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.d
  * JD-Core Version:    0.7.0.1
  */

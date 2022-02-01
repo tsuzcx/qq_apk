@@ -1,16 +1,25 @@
 package btmsdkobf;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.token.kn;
+import com.tencent.token.kp;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,17 +27,330 @@ import java.util.concurrent.Executors;
 public class db
   implements cy.c, cy.d, cy.e
 {
-  private static volatile db li = null;
-  private static int lj = 0;
+  private static volatile db li;
+  private static int lj;
   private static final long[] lk = { 100L, 60000L, 120000L };
   private final String TAG = "SharkProtocolQueue";
-  private cy hF;
+  public cy hF;
   private cl he;
   private ExecutorService jn;
-  private Handler jy = new hb(this, cx.getLooper());
-  private List kP = new ArrayList();
-  private ArrayList kQ = new ArrayList();
-  private dn kR = new dn(1000);
+  private Handler jy = new Handler(cx.getLooper())
+  {
+    public final void handleMessage(Message arg1)
+    {
+      int j = ???.what;
+      final int i = 0;
+      Object localObject6;
+      db.e locale;
+      switch (j)
+      {
+      default: 
+        return;
+      case 7: 
+        eh.f("SharkProtocolQueue", "[cu_guid]handle: MSG_REQUEST_REG_GUID");
+        cf.f(bc.n());
+        return;
+      case 6: 
+        ??? = new StringBuilder("[shark_vip] handle: MSG_RESET_VIP_RULE, expired VipRule: ");
+        ???.append(db.q(db.this));
+        eh.f("SharkProtocolQueue", ???.toString());
+        db.a(db.this, null);
+        eh.f("SharkProtocolQueue", "[shark_vip] triggle MSG_SEND_SHARK on VipRule expired ");
+        if (cx.iT)
+        {
+          db.b(db.this).sendEmptyMessage(1);
+          return;
+        }
+        break;
+      case 5: 
+        i = ???.arg1;
+        eh.e("SharkProtocolQueue", "[shark_push]handle MSG_CHECK_CACHED_PUSH for cmd: ".concat(String.valueOf(i)));
+        synchronized (db.t(db.this))
+        {
+          ??? = (dj)db.t(db.this).get(Integer.valueOf(i));
+          ??? = new ArrayList();
+          ??? = new ArrayList();
+          synchronized (db.s(db.this))
+          {
+            if (db.s(db.this).size() > 0)
+            {
+              localObject6 = db.s(db.this).iterator();
+              while (((Iterator)localObject6).hasNext())
+              {
+                db.b localb = (db.b)((Iterator)localObject6).next();
+                if (localb.c.bM == i) {
+                  ((List)???).add(localb);
+                } else {
+                  ((List)???).add(localb);
+                }
+              }
+              db.s(db.this).clear();
+              db.s(db.this).addAll((Collection)???);
+            }
+            ??? = new StringBuilder("[shark_push]handle MSG_CHECK_CACHED_PUSH, fixed: ");
+            ((StringBuilder)???).append(((List)???).size());
+            ((StringBuilder)???).append(" remain: ");
+            ((StringBuilder)???).append(((List)???).size());
+            eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+            if ((??? != null) && (((List)???).size() > 0)) {
+              ee.cT().addTask(new Runnable()
+              {
+                public final void run()
+                {
+                  Iterator localIterator = this.a.iterator();
+                  while (localIterator.hasNext())
+                  {
+                    db.b localb = (db.b)localIterator.next();
+                    StringBuilder localStringBuilder;
+                    if (localb.e == 0)
+                    {
+                      localStringBuilder = new StringBuilder("[shark_push]handle cached push, cmd: ");
+                      localStringBuilder.append(i);
+                      localStringBuilder.append(" pushId: ");
+                      localStringBuilder.append(localb.b);
+                      eh.e("SharkProtocolQueue", localStringBuilder.toString());
+                      db.a(db.this, localb.b, localb.c, localb.d, paramAnonymousMessage);
+                    }
+                    else
+                    {
+                      localStringBuilder = new StringBuilder("[shark_push]handle cached gift, cmd: ");
+                      localStringBuilder.append(i);
+                      localStringBuilder.append(" pushId: ");
+                      localStringBuilder.append(localb.b);
+                      eh.e("SharkProtocolQueue", localStringBuilder.toString());
+                      db.b(db.this, localb.b, localb.c, localb.d, paramAnonymousMessage);
+                    }
+                  }
+                }
+              }, "shark callback: check cached push");
+            }
+            return;
+          }
+        }
+      case 4: 
+        eh.e("SharkProtocolQueue", "[shark_push]handle MSG_CLEAR_PUSH_CACHE");
+        ??? = new ArrayList();
+        synchronized (db.s(db.this))
+        {
+          if (db.s(db.this).size() > 0)
+          {
+            ???.addAll(db.s(db.this));
+            db.s(db.this).clear();
+          }
+          ??? = new StringBuilder("[shark_push]handle MSG_CLEAR_PUSH_CACHE, ");
+          ((StringBuilder)???).append(???.size());
+          ((StringBuilder)???).append(" -> 0");
+          eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+          if (???.size() > 0)
+          {
+            ??? = ???.iterator();
+            while (???.hasNext())
+            {
+              ??? = (db.b)???.next();
+              if (((db.b)???).e == 0)
+              {
+                ??? = new StringBuilder("[shark_push]sendPushResp() on push cleared, cmd: ");
+                ((StringBuilder)???).append(((db.b)???).c.bM);
+                ((StringBuilder)???).append(" pushId: ");
+                ((StringBuilder)???).append(((db.b)???).b);
+                eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+                db.this.a(((db.b)???).c.dc, ((db.b)???).b, ((db.b)???).c.bM, null, null, -2, -1000000001);
+              }
+              else
+              {
+                ??? = new StringBuilder("[shark_push]no need to sendPushResp() on gift cleared, cmd: ");
+                ((StringBuilder)???).append(((db.b)???).c.bM);
+                ((StringBuilder)???).append(" pushId: ");
+                ((StringBuilder)???).append(((db.b)???).b);
+                eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+              }
+            }
+          }
+          return;
+        }
+      case 3: 
+        eh.e("SharkProtocolQueue", "[shark_push]handle MSG_CLEAR_EXPIRED_PUSH");
+        ??? = new ArrayList();
+        ??? = new ArrayList();
+        synchronized (db.s(db.this))
+        {
+          if (db.s(db.this).size() > 0)
+          {
+            long l = System.currentTimeMillis();
+            ??? = db.s(db.this).iterator();
+            while (((Iterator)???).hasNext())
+            {
+              localObject6 = (db.b)((Iterator)???).next();
+              if (l - ((db.b)localObject6).a >= 600000L) {
+                ???.add(localObject6);
+              } else {
+                ((List)???).add(localObject6);
+              }
+            }
+            db.s(db.this).clear();
+            db.s(db.this).addAll((Collection)???);
+          }
+          ??? = new StringBuilder("[shark_push]handle MSG_CLEAR_EXPIRED_PUSH, expired: ");
+          ((StringBuilder)???).append(???.size());
+          ((StringBuilder)???).append(" remain: ");
+          ((StringBuilder)???).append(((List)???).size());
+          eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+          if (???.size() > 0)
+          {
+            ??? = ???.iterator();
+            while (???.hasNext())
+            {
+              ??? = (db.b)???.next();
+              if (((db.b)???).e == 0)
+              {
+                ??? = new StringBuilder("[shark_push]sendPushResp() for expired push, cmd: ");
+                ((StringBuilder)???).append(((db.b)???).c.bM);
+                ((StringBuilder)???).append(" pushId: ");
+                ((StringBuilder)???).append(((db.b)???).b);
+                eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+                db.this.a(((db.b)???).c.dc, ((db.b)???).b, ((db.b)???).c.bM, null, null, -2, -1000000001);
+              }
+              else
+              {
+                ??? = new StringBuilder("[shark_push]no need to sendPushResp() for expired gift, cmd: ");
+                ((StringBuilder)???).append(((db.b)???).c.bM);
+                ((StringBuilder)???).append(" pushId: ");
+                ((StringBuilder)???).append(((db.b)???).b);
+                eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+              }
+            }
+          }
+          return;
+        }
+      case 2: 
+        cx.iT = true;
+        eh.e("SharkProtocolQueue", "[shark_init]=========== MSG_INIT_FINISH ==========");
+        synchronized (db.a(db.this))
+        {
+          i = db.a(db.this).size();
+          if (i > 0) {
+            db.b(db.this).sendEmptyMessage(1);
+          }
+          if (db.c(db.this)) {
+            db.this.x(false);
+          }
+          if (db.d(db.this)) {
+            db.this.x(true);
+          }
+          if (db.e(db.this)) {
+            db.this.ca();
+          }
+          if (db.f(db.this)) {
+            db.this.bH();
+          }
+          if (db.g(db.this)) {
+            db.this.onReady();
+          }
+          if (db.h(db.this)) {
+            db.this.cb();
+          }
+          if (db.i(db.this)) {
+            db.this.bM();
+          }
+          if (db.j(db.this)) {
+            db.this.bN();
+          }
+          if (db.k(db.this)) {
+            db.this.av();
+          }
+          if (db.l(db.this)) {
+            db.this.bY();
+          }
+          if (db.m(db.this) != null)
+          {
+            ??? = db.m(db.this).iterator();
+            while (???.hasNext())
+            {
+              ??? = (kn)???.next();
+              if (??? != null) {
+                db.this.b(((kn)???).a, ((kn)???).b, ((kn)???).c);
+              }
+            }
+            db.a(db.this, null);
+          }
+          if (db.n(db.this))
+          {
+            db.a(db.this, false);
+            ??? = db.this.getGuid();
+            if (!TextUtils.isEmpty(???))
+            {
+              eh.f("SharkProtocolQueue", "[cu_guid] notifyGuidGot on init finished");
+              db.a(db.this, 0, ???);
+            }
+          }
+          if (db.o(db.this)) {
+            db.this.cc();
+          }
+          if (db.p(db.this)) {
+            db.this.cd();
+          }
+          return;
+        }
+      case 1: 
+        db.b(db.this).removeMessages(1);
+        locale = new db.e(db.this, (byte)0);
+        ??? = new ArrayList();
+      }
+      for (;;)
+      {
+        synchronized (db.a(db.this))
+        {
+          ??? = db.a(db.this).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject6 = (db.d)((Iterator)???).next();
+            if (db.q(db.this) == null) {
+              break label1829;
+            }
+            bool = db.q(db.this).b(((db.d)localObject6).d, ((db.d)localObject6).c);
+            if ((((db.d)localObject6).i & 0x40000000) == 0)
+            {
+              if (!((db.d)localObject6).o.bA())
+              {
+                if (bool)
+                {
+                  j = ((db.d)localObject6).l;
+                  locale.a.put(Integer.valueOf(j), localObject6);
+                  break label1835;
+                }
+                ((ArrayList)???).add(localObject6);
+                continue;
+              }
+              cv.by().w(((db.d)localObject6).l);
+              continue;
+            }
+            if (!bool) {
+              continue;
+            }
+            db.e.a(locale).add(localObject6);
+            break label1835;
+          }
+          db.a(db.this).clear();
+          if (((ArrayList)???).size() > 0) {
+            db.a(db.this).addAll((Collection)???);
+          }
+          if (i > 0) {
+            db.r(db.this).submit(locale);
+          }
+          return;
+        }
+        return;
+        label1829:
+        boolean bool = true;
+        continue;
+        label1835:
+        i += 1;
+      }
+    }
+  };
+  private List<b> kP = new ArrayList();
+  private ArrayList<d> kQ = new ArrayList();
+  private dn<Long> kR = new dn(1000);
   private dl kS;
   private boolean kT = false;
   private boolean kU = false;
@@ -37,242 +359,123 @@ public class db
   private boolean kX = false;
   private boolean kY = false;
   private boolean kZ = false;
-  private TreeMap kq = new TreeMap();
-  private Handler kr = new ha(this, Looper.getMainLooper());
+  private TreeMap<Integer, dj<JceStruct, cm, c>> kq = new TreeMap();
+  private Handler kr = new Handler(Looper.getMainLooper())
+  {
+    public final void handleMessage(Message paramAnonymousMessage)
+    {
+      if (paramAnonymousMessage.what != 11) {
+        return;
+      }
+      paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
+      db.d locald = (db.d)paramAnonymousMessage[0];
+      if (locald.b > 0)
+      {
+        if (locald.k != null) {
+          locald.k.a(locald.a, locald.b, locald.l, ((Integer)paramAnonymousMessage[1]).intValue(), ((Integer)paramAnonymousMessage[2]).intValue(), ((Integer)paramAnonymousMessage[3]).intValue(), locald.h);
+        }
+      }
+      else {
+        locald.j.onFinish(locald.l, ((Integer)paramAnonymousMessage[1]).intValue(), ((Integer)paramAnonymousMessage[2]).intValue(), ((Integer)paramAnonymousMessage[3]).intValue(), locald.g);
+      }
+    }
+  };
   private boolean la = false;
   private boolean lb = false;
-  private LinkedList ld = null;
+  private LinkedList<kn> ld = null;
   private boolean le = false;
   private boolean lf = false;
   private boolean lg = false;
   private boolean lh = false;
-  private List ll = new ArrayList();
-  private List lm = new ArrayList();
-  private List ln = new ArrayList();
-  private he lo = null;
+  private List<ch> ll = new ArrayList();
+  private List<ch> lm = new ArrayList();
+  private List<cy.a> ln = new ArrayList();
+  private a lo = null;
   private Context mContext = bc.n();
   
-  /* Error */
-  private void a(long paramLong, ba paramba, byte[] paramArrayOfByte, dj paramdj)
+  private void a(long paramLong, ba paramba, byte[] paramArrayOfByte, dj<JceStruct, cm, c> paramdj)
   {
-    // Byte code:
-    //   0: aload_3
-    //   1: getfield 183	btmsdkobf/ba:data	[B
-    //   4: ifnull +311 -> 315
-    //   7: aload 5
-    //   9: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   12: checkcast 191	btmsdkobf/db$c
-    //   15: getfield 194	btmsdkobf/db$c:lE	Z
-    //   18: ifeq +208 -> 226
-    //   21: aload_0
-    //   22: getfield 168	btmsdkobf/db:mContext	Landroid/content/Context;
-    //   25: aload 4
-    //   27: aload_3
-    //   28: getfield 183	btmsdkobf/ba:data	[B
-    //   31: aload_3
-    //   32: getfield 197	btmsdkobf/ba:di	I
-    //   35: invokestatic 202	btmsdkobf/cd:a	(Landroid/content/Context;[B[BI)[B
-    //   38: astore 4
-    //   40: aconst_null
-    //   41: astore 6
-    //   43: aload 5
-    //   45: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   48: checkcast 191	btmsdkobf/db$c
-    //   51: getfield 194	btmsdkobf/db$c:lE	Z
-    //   54: ifeq +270 -> 324
-    //   57: aload 5
-    //   59: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   62: checkcast 207	btmsdkobf/cn
-    //   65: aload_3
-    //   66: getfield 210	btmsdkobf/ba:dc	I
-    //   69: lload_1
-    //   70: aload_3
-    //   71: getfield 213	btmsdkobf/ba:bM	I
-    //   74: aload 4
-    //   76: invokeinterface 216 6 0
-    //   81: astore 4
-    //   83: aload 4
-    //   85: ifnull +268 -> 353
-    //   88: ldc 80
-    //   90: new 218	java/lang/StringBuilder
-    //   93: dup
-    //   94: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   97: ldc 221
-    //   99: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: lload_1
-    //   103: invokevirtual 228	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   106: ldc 230
-    //   108: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: aload 4
-    //   113: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   116: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   119: ldc 235
-    //   121: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: aload 4
-    //   126: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   129: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 245	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   138: aload_0
-    //   139: aload_3
-    //   140: getfield 210	btmsdkobf/ba:dc	I
-    //   143: lload_1
-    //   144: aload 4
-    //   146: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   149: checkcast 247	java/lang/Integer
-    //   152: invokevirtual 251	java/lang/Integer:intValue	()I
-    //   155: aload 4
-    //   157: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   160: checkcast 253	com/qq/taf/jce/JceStruct
-    //   163: aconst_null
-    //   164: iconst_1
-    //   165: invokevirtual 256	btmsdkobf/db:a	(IJILcom/qq/taf/jce/JceStruct;[BI)Ljava/lang/ref/WeakReference;
-    //   168: pop
-    //   169: return
-    //   170: astore 4
-    //   172: ldc 80
-    //   174: new 218	java/lang/StringBuilder
-    //   177: dup
-    //   178: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   181: ldc_w 258
-    //   184: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: aload 4
-    //   189: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   192: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: aload 4
-    //   197: invokestatic 261	btmsdkobf/eh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   200: aload_0
-    //   201: aload_3
-    //   202: getfield 210	btmsdkobf/ba:dc	I
-    //   205: lload_1
-    //   206: aload_3
-    //   207: getfield 213	btmsdkobf/ba:bM	I
-    //   210: aconst_null
-    //   211: aconst_null
-    //   212: iconst_m1
-    //   213: invokevirtual 256	btmsdkobf/db:a	(IJILcom/qq/taf/jce/JceStruct;[BI)Ljava/lang/ref/WeakReference;
-    //   216: pop
-    //   217: aconst_null
-    //   218: astore 4
-    //   220: aconst_null
-    //   221: astore 6
-    //   223: goto -180 -> 43
-    //   226: aload 5
-    //   228: getfield 264	btmsdkobf/dj:first	Ljava/lang/Object;
-    //   231: ifnull +84 -> 315
-    //   234: aload_0
-    //   235: getfield 168	btmsdkobf/db:mContext	Landroid/content/Context;
-    //   238: aload 4
-    //   240: aload_3
-    //   241: getfield 183	btmsdkobf/ba:data	[B
-    //   244: aload 5
-    //   246: getfield 264	btmsdkobf/dj:first	Ljava/lang/Object;
-    //   249: checkcast 253	com/qq/taf/jce/JceStruct
-    //   252: iconst_1
-    //   253: aload_3
-    //   254: getfield 197	btmsdkobf/ba:di	I
-    //   257: invokestatic 267	btmsdkobf/cd:a	(Landroid/content/Context;[B[BLcom/qq/taf/jce/JceStruct;ZI)Lcom/qq/taf/jce/JceStruct;
-    //   260: astore 6
-    //   262: aconst_null
-    //   263: astore 4
-    //   265: goto -222 -> 43
-    //   268: astore 4
-    //   270: ldc 80
-    //   272: new 218	java/lang/StringBuilder
-    //   275: dup
-    //   276: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   279: ldc_w 269
-    //   282: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   285: aload 4
-    //   287: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   290: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: aload 4
-    //   295: invokestatic 261	btmsdkobf/eh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   298: aload_0
-    //   299: aload_3
-    //   300: getfield 210	btmsdkobf/ba:dc	I
-    //   303: lload_1
-    //   304: aload_3
-    //   305: getfield 213	btmsdkobf/ba:bM	I
-    //   308: aconst_null
-    //   309: aconst_null
-    //   310: iconst_m1
-    //   311: invokevirtual 256	btmsdkobf/db:a	(IJILcom/qq/taf/jce/JceStruct;[BI)Ljava/lang/ref/WeakReference;
-    //   314: pop
-    //   315: aconst_null
-    //   316: astore 4
-    //   318: aconst_null
-    //   319: astore 6
-    //   321: goto -278 -> 43
-    //   324: aload 5
-    //   326: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   329: checkcast 271	btmsdkobf/cm
-    //   332: aload_3
-    //   333: getfield 210	btmsdkobf/ba:dc	I
-    //   336: lload_1
-    //   337: aload_3
-    //   338: getfield 213	btmsdkobf/ba:bM	I
-    //   341: aload 6
-    //   343: invokeinterface 274 6 0
-    //   348: astore 4
-    //   350: goto -267 -> 83
-    //   353: ldc 80
-    //   355: new 218	java/lang/StringBuilder
-    //   358: dup
-    //   359: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   362: ldc_w 276
-    //   365: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   368: lload_1
-    //   369: invokevirtual 228	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   372: ldc 230
-    //   374: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   377: aload_3
-    //   378: getfield 213	btmsdkobf/ba:bM	I
-    //   381: invokevirtual 279	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   384: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   387: invokestatic 245	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   390: return
-    //   391: astore_3
-    //   392: ldc 80
-    //   394: new 218	java/lang/StringBuilder
-    //   397: dup
-    //   398: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   401: ldc_w 281
-    //   404: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: aload_3
-    //   408: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   411: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   414: aload_3
-    //   415: invokestatic 261	btmsdkobf/eh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   418: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	419	0	this	db
-    //   0	419	1	paramLong	long
-    //   0	419	3	paramba	ba
-    //   0	419	4	paramArrayOfByte	byte[]
-    //   0	419	5	paramdj	dj
-    //   41	301	6	localJceStruct	JceStruct
-    // Exception table:
-    //   from	to	target	type
-    //   21	40	170	java/lang/Exception
-    //   234	262	268	java/lang/Exception
-    //   43	83	391	java/lang/Exception
-    //   88	169	391	java/lang/Exception
-    //   324	350	391	java/lang/Exception
-    //   353	390	391	java/lang/Exception
+    Object localObject1 = paramba.data;
+    Object localObject2 = null;
+    if (localObject1 != null)
+    {
+      if (((c)paramdj.mU).lE) {
+        try
+        {
+          localObject1 = cd.a(this.mContext, paramArrayOfByte, paramba.data, paramba.di);
+          paramArrayOfByte = null;
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          localObject1 = "[shark_push]handleCallbackForPush(), dataForReceive2JceBytes exception: ";
+        }
+      } else {
+        for (;;)
+        {
+          eh.a("SharkProtocolQueue", ((String)localObject1).concat(String.valueOf(paramArrayOfByte)), paramArrayOfByte);
+          a(paramba.dc, paramLong, paramba.bM, null, null, -1);
+          break;
+          if (paramdj.first == null) {
+            break;
+          }
+          try
+          {
+            paramArrayOfByte = cd.a(this.mContext, paramArrayOfByte, paramba.data, (JceStruct)paramdj.first, true, paramba.di);
+            localObject1 = localObject2;
+          }
+          catch (Exception paramArrayOfByte)
+          {
+            localObject1 = "[shark_push]handleCallbackForPush(), dataForReceive2JceStruct exception: ";
+          }
+        }
+      }
+    }
+    else
+    {
+      paramArrayOfByte = null;
+      localObject1 = localObject2;
+    }
+    try
+    {
+      if (((c)paramdj.mU).lE) {
+        paramArrayOfByte = ((cn)paramdj.second).a(paramba.dc, paramLong, paramba.bM, (byte[])localObject1);
+      } else {
+        paramArrayOfByte = ((cm)paramdj.second).a(paramba.dc, paramLong, paramba.bM, paramArrayOfByte);
+      }
+      if (paramArrayOfByte != null)
+      {
+        paramdj = new StringBuilder("[shark_push]handleCallbackForPush(), send PushStatus for user: |pushId|");
+        paramdj.append(paramLong);
+        paramdj.append("|cmd|");
+        paramdj.append(paramArrayOfByte.second);
+        paramdj.append("|JceStruct|");
+        paramdj.append(paramArrayOfByte.mU);
+        eh.f("SharkProtocolQueue", paramdj.toString());
+        a(paramba.dc, paramLong, ((Integer)paramArrayOfByte.second).intValue(), (JceStruct)paramArrayOfByte.mU, null, 1);
+        return;
+      }
+      paramArrayOfByte = new StringBuilder("[shark_push]handleCallbackForPush(), donot send PushStatus for user: |pushId|");
+      paramArrayOfByte.append(paramLong);
+      paramArrayOfByte.append("|cmd|");
+      paramArrayOfByte.append(paramba.bM);
+      eh.f("SharkProtocolQueue", paramArrayOfByte.toString());
+      return;
+    }
+    catch (Exception paramba)
+    {
+      eh.a("SharkProtocolQueue", "[shark_push]handleCallbackForPush(), callback exception: ".concat(String.valueOf(paramba)), paramba);
+    }
   }
   
   public static boolean a(ba paramba)
   {
-    if (paramba == null) {}
-    while (paramba.dd == 0) {
+    if (paramba == null) {
       return false;
     }
-    return true;
+    return paramba.dd != 0;
   }
   
-  private void b(int paramInt, cs.b paramb)
+  private void b(int paramInt, cs.b arg2)
   {
     ArrayList localArrayList = new ArrayList();
     synchronized (this.ln)
@@ -283,200 +486,103 @@ public class db
       if (localArrayList.size() > 0)
       {
         ??? = localArrayList.iterator();
-        if (((Iterator)???).hasNext()) {
-          ((gm)((Iterator)???).next()).a(paramInt, paramb);
+        while (???.hasNext()) {
+          ((cy.a)???.next()).a(paramInt);
         }
       }
+      return;
     }
   }
   
-  /* Error */
-  private void b(long paramLong, ba paramba, byte[] paramArrayOfByte, dj paramdj)
+  private void b(long paramLong, ba paramba, byte[] paramArrayOfByte, dj<JceStruct, cm, c> paramdj)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_3
-    //   4: getfield 183	btmsdkobf/ba:data	[B
-    //   7: ifnull +248 -> 255
-    //   10: aload 5
-    //   12: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   15: checkcast 191	btmsdkobf/db$c
-    //   18: getfield 194	btmsdkobf/db$c:lE	Z
-    //   21: ifeq +143 -> 164
-    //   24: aload_0
-    //   25: getfield 168	btmsdkobf/db:mContext	Landroid/content/Context;
-    //   28: aload_0
-    //   29: getfield 328	btmsdkobf/db:hF	Lbtmsdkobf/cy;
-    //   32: invokevirtual 334	btmsdkobf/cy:ai	()Lbtmsdkobf/cs$b;
-    //   35: getfield 339	btmsdkobf/cs$b:is	Ljava/lang/String;
-    //   38: invokevirtual 345	java/lang/String:getBytes	()[B
-    //   41: aload_3
-    //   42: getfield 183	btmsdkobf/ba:data	[B
-    //   45: aload_3
-    //   46: getfield 197	btmsdkobf/ba:di	I
-    //   49: invokestatic 202	btmsdkobf/cd:a	(Landroid/content/Context;[B[BI)[B
-    //   52: astore 4
-    //   54: aload 5
-    //   56: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   59: checkcast 191	btmsdkobf/db$c
-    //   62: getfield 194	btmsdkobf/db$c:lE	Z
-    //   65: ifeq +196 -> 261
-    //   68: aload 5
-    //   70: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   73: checkcast 207	btmsdkobf/cn
-    //   76: aload_3
-    //   77: getfield 210	btmsdkobf/ba:dc	I
-    //   80: lload_1
-    //   81: aload_3
-    //   82: getfield 213	btmsdkobf/ba:bM	I
-    //   85: aload 4
-    //   87: invokeinterface 216 6 0
-    //   92: astore 4
-    //   94: aload 4
-    //   96: ifnull +31 -> 127
-    //   99: aload_0
-    //   100: aload_3
-    //   101: getfield 210	btmsdkobf/ba:dc	I
-    //   104: aload 4
-    //   106: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   109: checkcast 247	java/lang/Integer
-    //   112: invokevirtual 251	java/lang/Integer:intValue	()I
-    //   115: aload 4
-    //   117: getfield 189	btmsdkobf/dj:mU	Ljava/lang/Object;
-    //   120: checkcast 253	com/qq/taf/jce/JceStruct
-    //   123: invokevirtual 348	btmsdkobf/db:a	(IILcom/qq/taf/jce/JceStruct;)Ljava/lang/ref/WeakReference;
-    //   126: pop
-    //   127: return
-    //   128: astore 4
-    //   130: ldc 80
-    //   132: new 218	java/lang/StringBuilder
-    //   135: dup
-    //   136: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   139: ldc_w 350
-    //   142: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: aload 4
-    //   147: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: aload 4
-    //   155: invokestatic 261	btmsdkobf/eh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   158: aconst_null
-    //   159: astore 4
-    //   161: goto -107 -> 54
-    //   164: aload 5
-    //   166: getfield 264	btmsdkobf/dj:first	Ljava/lang/Object;
-    //   169: ifnull +86 -> 255
-    //   172: aload_0
-    //   173: getfield 168	btmsdkobf/db:mContext	Landroid/content/Context;
-    //   176: aload_0
-    //   177: getfield 328	btmsdkobf/db:hF	Lbtmsdkobf/cy;
-    //   180: invokevirtual 334	btmsdkobf/cy:ai	()Lbtmsdkobf/cs$b;
-    //   183: getfield 339	btmsdkobf/cs$b:is	Ljava/lang/String;
-    //   186: invokevirtual 345	java/lang/String:getBytes	()[B
-    //   189: aload_3
-    //   190: getfield 183	btmsdkobf/ba:data	[B
-    //   193: aload 5
-    //   195: getfield 264	btmsdkobf/dj:first	Ljava/lang/Object;
-    //   198: checkcast 253	com/qq/taf/jce/JceStruct
-    //   201: iconst_1
-    //   202: aload_3
-    //   203: getfield 197	btmsdkobf/ba:di	I
-    //   206: invokestatic 267	btmsdkobf/cd:a	(Landroid/content/Context;[B[BLcom/qq/taf/jce/JceStruct;ZI)Lcom/qq/taf/jce/JceStruct;
-    //   209: astore 4
-    //   211: aconst_null
-    //   212: astore 7
-    //   214: aload 4
-    //   216: astore 6
-    //   218: aload 7
-    //   220: astore 4
-    //   222: goto -168 -> 54
-    //   225: astore 4
-    //   227: ldc 80
-    //   229: new 218	java/lang/StringBuilder
-    //   232: dup
-    //   233: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   236: ldc_w 352
-    //   239: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: aload 4
-    //   244: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   247: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   250: aload 4
-    //   252: invokestatic 261	btmsdkobf/eh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   255: aconst_null
-    //   256: astore 4
-    //   258: goto -204 -> 54
-    //   261: aload 5
-    //   263: getfield 205	btmsdkobf/dj:second	Ljava/lang/Object;
-    //   266: checkcast 271	btmsdkobf/cm
-    //   269: aload_3
-    //   270: getfield 210	btmsdkobf/ba:dc	I
-    //   273: lload_1
-    //   274: aload_3
-    //   275: getfield 213	btmsdkobf/ba:bM	I
-    //   278: aload 6
-    //   280: invokeinterface 274 6 0
-    //   285: astore 4
-    //   287: goto -193 -> 94
-    //   290: astore_3
-    //   291: ldc 80
-    //   293: new 218	java/lang/StringBuilder
-    //   296: dup
-    //   297: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   300: ldc_w 354
-    //   303: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: aload_3
-    //   307: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   310: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   313: aload_3
-    //   314: invokestatic 261	btmsdkobf/eh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   317: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	318	0	this	db
-    //   0	318	1	paramLong	long
-    //   0	318	3	paramba	ba
-    //   0	318	4	paramArrayOfByte	byte[]
-    //   0	318	5	paramdj	dj
-    //   1	278	6	arrayOfByte	byte[]
-    //   212	7	7	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   24	54	128	java/lang/Exception
-    //   172	211	225	java/lang/Exception
-    //   54	94	290	java/lang/Exception
-    //   99	127	290	java/lang/Exception
-    //   261	287	290	java/lang/Exception
+    byte[] arrayOfByte;
+    if (paramba.data != null)
+    {
+      if (((c)paramdj.mU).lE) {
+        try
+        {
+          paramArrayOfByte = cd.a(this.mContext, this.hF.ai().is.getBytes(), paramba.data, paramba.di);
+          Object localObject = null;
+        }
+        catch (Exception localException1)
+        {
+          paramArrayOfByte = "[shark_push]handleCallbackForGift(), dataForReceive2JceBytes exception: ";
+        }
+      } else {
+        for (;;)
+        {
+          eh.a("SharkProtocolQueue", paramArrayOfByte.concat(String.valueOf(localException1)), localException1);
+          break;
+          if (paramdj.first == null) {
+            break;
+          }
+          try
+          {
+            JceStruct localJceStruct = cd.a(this.mContext, this.hF.ai().is.getBytes(), paramba.data, (JceStruct)paramdj.first, true, paramba.di);
+            paramArrayOfByte = null;
+          }
+          catch (Exception localException2)
+          {
+            paramArrayOfByte = "[shark_push]handleCallbackForGift(), dataForReceive2JceStruct exception: ";
+          }
+        }
+      }
+    }
+    else
+    {
+      paramArrayOfByte = null;
+      arrayOfByte = paramArrayOfByte;
+    }
+    try
+    {
+      if (((c)paramdj.mU).lE) {
+        paramArrayOfByte = ((cn)paramdj.second).a(paramba.dc, paramLong, paramba.bM, paramArrayOfByte);
+      } else {
+        paramArrayOfByte = ((cm)paramdj.second).a(paramba.dc, paramLong, paramba.bM, arrayOfByte);
+      }
+      if (paramArrayOfByte != null) {
+        a(paramba.dc, ((Integer)paramArrayOfByte.second).intValue(), (JceStruct)paramArrayOfByte.mU);
+      }
+      return;
+    }
+    catch (Exception paramba)
+    {
+      eh.a("SharkProtocolQueue", "[shark_push]handleCallbackForGift(), callback exception: ".concat(String.valueOf(paramba)), paramba);
+    }
   }
   
   public static boolean b(ba paramba)
   {
-    if (paramba == null) {}
-    while ((paramba.dd != 0) || (paramba.ds == null) || (paramba.ds.db == 0L)) {
+    if (paramba == null) {
       return false;
     }
-    return true;
+    if (paramba.dd != 0) {
+      return false;
+    }
+    return (paramba.ds != null) && (paramba.ds.db != 0L);
   }
   
   public static db bZ()
   {
-    if (li == null) {}
-    try
-    {
-      if (li == null) {
-        li = new db();
+    if (li == null) {
+      try
+      {
+        if (li == null) {
+          li = new db();
+        }
       }
-      return li;
+      finally {}
     }
-    finally {}
+    return li;
   }
   
   public static boolean c(ba paramba)
   {
-    if (paramba == null) {}
-    while ((a(paramba)) || (b(paramba))) {
+    if (paramba == null) {
       return false;
     }
-    return true;
+    return (!a(paramba)) && (!b(paramba));
   }
   
   private void f(int paramInt, String paramString)
@@ -489,91 +595,147 @@ public class db
         ((List)localObject).addAll(this.ll);
         this.ll.clear();
       }
-    }
-    synchronized (this.lm)
-    {
-      if (this.lm.size() > 0) {
-        ((List)localObject).addAll(this.lm);
-      }
-      if (((List)localObject).size() > 0)
+      synchronized (this.lm)
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          ((ch)((Iterator)localObject).next()).e(paramInt, paramString);
-          continue;
-          paramString = finally;
-          throw paramString;
+        if (this.lm.size() > 0) {
+          ((List)localObject).addAll(this.lm);
         }
+        if (((List)localObject).size() > 0)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((ch)((Iterator)localObject).next()).e(paramInt, paramString);
+          }
+        }
+        return;
       }
     }
   }
   
   public long a(boolean paramBoolean, int paramInt, ba paramba)
   {
-    if ((paramba == null) || (!b(paramba))) {
-      return -1L;
-    }
-    long l = 0L;
-    if (paramba.ds != null) {
-      l = paramba.ds.db;
-    }
-    eh.e("SharkProtocolQueue", "[shark_push]onPush(), ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + l + " isTcpChannel: " + paramBoolean);
-    a(l, paramba.bM, paramInt, paramba.dc, -1000000001);
-    if (paramba.df != 0)
+    if ((paramba != null) && (b(paramba)))
     {
-      eh.h("SharkProtocolQueue", "[shark_push]onPush(), push with error, drop it, ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + l + " isTcpChannel: " + paramBoolean + " retCode: " + paramba.df);
-      return -1L;
-    }
-    if (this.kR.b(Long.valueOf(l)))
-    {
-      eh.g("SharkProtocolQueue", "[shark_push]onPush(), push duplicate, drop it, ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + l);
-      return -1L;
-    }
-    this.kR.push(Long.valueOf(l));
-    dj localdj;
-    synchronized (this.kq)
-    {
-      localdj = (dj)this.kq.get(Integer.valueOf(paramba.bM));
-      if (localdj != null) {
-        break label528;
+      long l1 = 0L;
+      if (paramba.ds != null) {
+        l1 = paramba.ds.db;
       }
-    }
-    for (;;)
-    {
-      synchronized (this.kP)
+      ??? = new StringBuilder("[shark_push]onPush(), ECmd: ");
+      ((StringBuilder)???).append(paramba.bM);
+      ((StringBuilder)???).append(" seqNo: ");
+      ((StringBuilder)???).append(paramba.dc);
+      ((StringBuilder)???).append(" pushId: ");
+      ((StringBuilder)???).append(l1);
+      ((StringBuilder)???).append(" isTcpChannel: ");
+      ((StringBuilder)???).append(paramBoolean);
+      eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+      a(l1, paramba.bM, paramInt, paramba.dc, -1000000001);
+      if (paramba.df != 0)
       {
-        this.kP.add(new hg(this, 0, System.currentTimeMillis(), l, paramba, this.hF.ai().is.getBytes()));
-        paramInt = this.kP.size();
-        eh.g("SharkProtocolQueue", "[shark_push]onPush(), nobody listen to it, ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + l + " cache for " + 600 + "s" + " pushSize: " + paramInt);
-        this.jy.removeMessages(3);
-        if (paramInt >= 20)
-        {
-          this.jy.sendEmptyMessageDelayed(3, 2000L);
-          this.jy.sendEmptyMessageDelayed(3, 600000L);
-          return -1L;
-          paramba = finally;
-          throw paramba;
-        }
+        ??? = new StringBuilder("[shark_push]onPush(), push with error, drop it, ECmd: ");
+        ((StringBuilder)???).append(paramba.bM);
+        ((StringBuilder)???).append(" seqNo: ");
+        ((StringBuilder)???).append(paramba.dc);
+        ((StringBuilder)???).append(" pushId: ");
+        ((StringBuilder)???).append(l1);
+        ((StringBuilder)???).append(" isTcpChannel: ");
+        ((StringBuilder)???).append(paramBoolean);
+        ((StringBuilder)???).append(" retCode: ");
+        ((StringBuilder)???).append(paramba.df);
+        eh.h("SharkProtocolQueue", ((StringBuilder)???).toString());
+        return -1L;
       }
-      this.jy.sendEmptyMessageDelayed(3, 600000L);
-    }
-    label528:
-    eh.e("SharkProtocolQueue", "[shark_push]onPush(), someone listen to it, callback now, ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + l);
-    a(l, paramba, this.hF.ai().is.getBytes(), localdj);
-    if (localdj.mU != null) {
-      return ((db.c)localdj.mU).t;
+      if (this.kR.b(Long.valueOf(l1)))
+      {
+        ??? = new StringBuilder("[shark_push]onPush(), push duplicate, drop it, ECmd: ");
+        ((StringBuilder)???).append(paramba.bM);
+        ((StringBuilder)???).append(" seqNo: ");
+        ((StringBuilder)???).append(paramba.dc);
+        ((StringBuilder)???).append(" pushId: ");
+        ((StringBuilder)???).append(l1);
+        eh.g("SharkProtocolQueue", ((StringBuilder)???).toString());
+        return -1L;
+      }
+      this.kR.push(Long.valueOf(l1));
+      synchronized (this.kq)
+      {
+        Object localObject2 = (dj)this.kq.get(Integer.valueOf(paramba.bM));
+        if (localObject2 == null)
+        {
+          ??? = this.kP;
+          try
+          {
+            List localList = this.kP;
+            long l2 = System.currentTimeMillis();
+            byte[] arrayOfByte = this.hF.ai().is.getBytes();
+            localObject2 = ???;
+            ??? = localObject2;
+            ??? = paramba;
+          }
+          finally
+          {
+            try
+            {
+              localList.add(new b(0, l2, l1, paramba, arrayOfByte));
+              ??? = localObject2;
+              paramInt = this.kP.size();
+              ??? = localObject2;
+              ??? = new StringBuilder("[shark_push]onPush(), nobody listen to it, ECmd: ");
+              ((StringBuilder)???).append(paramba.bM);
+              ((StringBuilder)???).append(" seqNo: ");
+              ((StringBuilder)???).append(paramba.dc);
+              ((StringBuilder)???).append(" pushId: ");
+              ((StringBuilder)???).append(l1);
+              ((StringBuilder)???).append(" cache for 600s pushSize: ");
+              ((StringBuilder)???).append(paramInt);
+              eh.g("SharkProtocolQueue", ((StringBuilder)???).toString());
+              this.jy.removeMessages(3);
+              if (paramInt >= 20) {
+                this.jy.sendEmptyMessageDelayed(3, 2000L);
+              }
+              this.jy.sendEmptyMessageDelayed(3, 600000L);
+              return -1L;
+            }
+            finally
+            {
+              for (;;)
+              {
+                paramba = (ba)???;
+              }
+            }
+            localObject3 = finally;
+            paramba = (ba)???;
+          }
+          throw localObject3;
+        }
+        ??? = new StringBuilder("[shark_push]onPush(), someone listen to it, callback now, ECmd: ");
+        ((StringBuilder)???).append(paramba.bM);
+        ((StringBuilder)???).append(" seqNo: ");
+        ((StringBuilder)???).append(paramba.dc);
+        ((StringBuilder)???).append(" pushId: ");
+        ((StringBuilder)???).append(l1);
+        eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+        a(l1, paramba, this.hF.ai().is.getBytes(), localdj);
+        if (localdj.mU != null) {
+          return ((c)localdj.mU).t;
+        }
+        return -1L;
+      }
     }
     return -1L;
   }
   
-  public WeakReference a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, int paramInt4, JceStruct arg9, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt5, cj paramcj, ck paramck, long paramLong3, long paramLong4)
+  public WeakReference<cw> a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, int paramInt4, JceStruct arg9, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt5, cj paramcj, ck paramck, long paramLong3, long paramLong4)
   {
-    eh.e("SharkProtocolQueue", "sendShark() cmdId: " + paramInt4 + " pushSeqNo: " + paramInt3);
+    StringBuilder localStringBuilder = new StringBuilder("sendShark() cmdId: ");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(" pushSeqNo: ");
+    localStringBuilder.append(paramInt3);
+    eh.e("SharkProtocolQueue", localStringBuilder.toString());
     if (paramInt3 > 0) {
       return a(paramInt3, paramLong1, paramInt4, ???, paramArrayOfByte, 1);
     }
-    paramArrayOfByte = new hh(this, paramInt1, paramInt2, paramLong2, paramInt4, ???, paramArrayOfByte, paramJceStruct2, paramInt5, paramcj, paramck);
+    paramArrayOfByte = new d(paramInt1, paramInt2, paramLong2, paramInt4, ???, paramArrayOfByte, paramJceStruct2, paramInt5, paramcj, paramck);
     paramArrayOfByte.l = cu.bu().bm();
     paramArrayOfByte.p = paramLong3;
     paramArrayOfByte.q = paramLong4;
@@ -588,60 +750,116 @@ public class db
     }
   }
   
-  public WeakReference a(int paramInt1, int paramInt2, JceStruct paramJceStruct)
+  public WeakReference<cw> a(int paramInt1, final int paramInt2, JceStruct paramJceStruct)
   {
-    eh.f("SharkProtocolQueue", "[shark_push]sendGiftResp(): giftSeqNo: " + paramInt1 + " acmdId: " + paramInt2 + " respStruct: " + paramJceStruct);
-    if (paramInt2 == 156) {
-      eh.i("SharkProtocolQueue", "[ip_list]sendGiftResp(): giftSeqNo: " + paramInt1 + " acmdId: " + paramInt2 + " respStruct: " + paramJceStruct);
+    StringBuilder localStringBuilder = new StringBuilder("[shark_push]sendGiftResp(): giftSeqNo: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" acmdId: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" respStruct: ");
+    localStringBuilder.append(paramJceStruct);
+    eh.f("SharkProtocolQueue", localStringBuilder.toString());
+    if (paramInt2 == 156)
+    {
+      localStringBuilder = new StringBuilder("[ip_list]sendGiftResp(): giftSeqNo: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" acmdId: ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" respStruct: ");
+      localStringBuilder.append(paramJceStruct);
+      eh.i("SharkProtocolQueue", localStringBuilder.toString());
     }
-    return cx.bE().a(paramInt2, paramJceStruct, null, 0, new hd(this, paramInt2));
+    cx.bE().a(paramInt2, paramJceStruct, null, 0, new cj()
+    {
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        StringBuilder localStringBuilder = new StringBuilder("[shark_push]sendGiftResp()-onFinish() seqNo: ");
+        localStringBuilder.append(paramAnonymousInt1);
+        localStringBuilder.append(" cmdId: ");
+        localStringBuilder.append(paramAnonymousInt2);
+        localStringBuilder.append(" retCode: ");
+        localStringBuilder.append(paramAnonymousInt3);
+        localStringBuilder.append(" dataRetCode: ");
+        localStringBuilder.append(paramAnonymousInt4);
+        eh.f("SharkProtocolQueue", localStringBuilder.toString());
+        if (paramInt2 == 156)
+        {
+          localStringBuilder = new StringBuilder("[ip_list]sendGiftResp()-onFinish() seqNo: ");
+          localStringBuilder.append(paramAnonymousInt1);
+          localStringBuilder.append(" cmdId: ");
+          localStringBuilder.append(paramAnonymousInt2);
+          localStringBuilder.append(" retCode: ");
+          localStringBuilder.append(paramAnonymousInt3);
+          localStringBuilder.append(" dataRetCode: ");
+          localStringBuilder.append(paramAnonymousInt4);
+          localStringBuilder.append(" resp: ");
+          localStringBuilder.append(paramAnonymousJceStruct);
+          eh.i("SharkProtocolQueue", localStringBuilder.toString());
+        }
+      }
+    });
   }
   
-  public WeakReference a(int paramInt1, long paramLong, int paramInt2, JceStruct paramJceStruct, byte[] paramArrayOfByte, int paramInt3)
+  public WeakReference<cw> a(int paramInt1, long paramLong, int paramInt2, JceStruct paramJceStruct, byte[] paramArrayOfByte, int paramInt3)
   {
     return a(paramInt1, paramLong, paramInt2, paramJceStruct, paramArrayOfByte, paramInt3, 0);
   }
   
-  public WeakReference a(int paramInt1, long paramLong, int paramInt2, JceStruct arg5, byte[] paramArrayOfByte, int paramInt3, int paramInt4)
+  public WeakReference<cw> a(int paramInt1, long paramLong, int paramInt2, JceStruct arg5, byte[] paramArrayOfByte, int paramInt3, int paramInt4)
   {
-    eh.e("SharkProtocolQueue", "[shark_push]sendPushResp(), pushSeqNo: " + paramInt1 + " pushId: " + paramLong + " cmdId: " + paramInt2 + " result: " + paramInt3 + " retCode: " + paramInt4);
-    ak localak = new ak();
-    localak.bM = paramInt2;
-    localak.status = paramInt3;
+    Object localObject = new StringBuilder("[shark_push]sendPushResp(), pushSeqNo: ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" pushId: ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" cmdId: ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" result: ");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append(" retCode: ");
+    ((StringBuilder)localObject).append(paramInt4);
+    eh.e("SharkProtocolQueue", ((StringBuilder)localObject).toString());
+    localObject = new ak();
+    ((ak)localObject).bM = paramInt2;
+    ((ak)localObject).status = paramInt3;
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      localak.bN = paramArrayOfByte;
+      ((ak)localObject).bN = paramArrayOfByte;
+    } else if (??? != null) {
+      ((ak)localObject).bN = cp.b(???);
     }
-    for (;;)
+    paramArrayOfByte = new d(0, 0, -1L, 1103, ???, cd.a((JceStruct)localObject), null, 1073741824, null, null);
+    paramArrayOfByte.l = paramInt1;
+    paramArrayOfByte.r = paramLong;
+    paramArrayOfByte.m = paramInt4;
+    synchronized (this.kQ)
     {
-      paramArrayOfByte = new hh(this, 0, 0, -1L, 1103, ???, cd.a(localak), null, 1073741824, null, null);
-      paramArrayOfByte.l = paramInt1;
-      paramArrayOfByte.r = paramLong;
-      paramArrayOfByte.m = paramInt4;
-      synchronized (this.kQ)
-      {
-        this.kQ.add(paramArrayOfByte);
-        if (cx.iT) {
-          this.jy.sendEmptyMessage(1);
-        }
-        return new WeakReference(paramArrayOfByte.o);
-        if (??? == null) {
-          continue;
-        }
-        localak.bN = cp.b(???);
+      this.kQ.add(paramArrayOfByte);
+      if (cx.iT) {
+        this.jy.sendEmptyMessage(1);
       }
+      return new WeakReference(paramArrayOfByte.o);
     }
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    eh.e("SharkProtocolQueue", "autoReplyPush()  pushId: " + paramLong + " cmdId: " + paramInt1 + " serverSharkSeqNo: " + paramInt2 + " serverSashimiSeqNo: " + paramInt3 + " errCode: " + paramInt4);
-    hh localhh = new hh(this, Process.myPid(), 0, 0L, paramInt1, null, new byte[0], null, 1073741824, null, null);
-    localhh.m = paramInt4;
-    localhh.l = paramInt3;
-    localhh.r = paramLong;
+    ??? = new StringBuilder("autoReplyPush()  pushId: ");
+    ((StringBuilder)???).append(paramLong);
+    ((StringBuilder)???).append(" cmdId: ");
+    ((StringBuilder)???).append(paramInt1);
+    ((StringBuilder)???).append(" serverSharkSeqNo: ");
+    ((StringBuilder)???).append(paramInt2);
+    ((StringBuilder)???).append(" serverSashimiSeqNo: ");
+    ((StringBuilder)???).append(paramInt3);
+    ((StringBuilder)???).append(" errCode: ");
+    ((StringBuilder)???).append(paramInt4);
+    eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+    d locald = new d(Process.myPid(), 0, 0L, paramInt1, null, new byte[0], null, 1073741824, null, null);
+    locald.m = paramInt4;
+    locald.l = paramInt3;
+    locald.r = paramLong;
     synchronized (this.kQ)
     {
-      this.kQ.add(localhh);
+      this.kQ.add(locald);
       if (cx.iT) {
         this.jy.sendEmptyMessage(1);
       }
@@ -651,20 +869,17 @@ public class db
   
   public void a(long paramLong, int paramInt1, JceStruct paramJceStruct, int paramInt2, cm paramcm, boolean paramBoolean)
   {
-    if (paramcm == null) {}
-    for (;;)
-    {
+    if (paramcm == null) {
       return;
-      synchronized (this.kq)
-      {
-        this.kq.put(Integer.valueOf(paramInt1), new dj(paramJceStruct, paramcm, new db.c(paramBoolean, paramLong)));
-        eh.e("SharkProtocolQueue", "[shark_push]registerSharkPush(), for cmd: " + paramInt1);
-        if (!cx.iT) {
-          continue;
-        }
+    }
+    synchronized (this.kq)
+    {
+      this.kq.put(Integer.valueOf(paramInt1), new dj(paramJceStruct, paramcm, new c(paramBoolean, paramLong)));
+      eh.e("SharkProtocolQueue", "[shark_push]registerSharkPush(), for cmd: ".concat(String.valueOf(paramInt1)));
+      if (cx.iT) {
         this.jy.obtainMessage(5, paramInt1, 0).sendToTarget();
-        return;
       }
+      return;
     }
   }
   
@@ -682,30 +897,34 @@ public class db
     }
   }
   
-  public void a(dl paramdl, long paramLong)
+  public void a(cy.a parama)
   {
-    if (paramdl == null) {}
-    do
-    {
-      return;
-      eh.f("SharkProtocolQueue", "[shark_vip] setVipRule(): " + paramdl + ", valid time(ms): " + paramLong);
-      this.kS = paramdl;
-      this.jy.removeMessages(6);
-    } while (paramLong <= 0L);
-    this.jy.sendEmptyMessageDelayed(6, paramLong);
-  }
-  
-  public void a(gm paramgm)
-  {
-    if (paramgm == null) {
+    if (parama == null) {
       return;
     }
     synchronized (this.ln)
     {
-      if (!this.ln.contains(paramgm)) {
-        this.ln.add(paramgm);
+      if (!this.ln.contains(parama)) {
+        this.ln.add(parama);
       }
       return;
+    }
+  }
+  
+  public void a(dl paramdl, long paramLong)
+  {
+    if (paramdl == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("[shark_vip] setVipRule(): ");
+    localStringBuilder.append(paramdl);
+    localStringBuilder.append(", valid time(ms): ");
+    localStringBuilder.append(paramLong);
+    eh.f("SharkProtocolQueue", localStringBuilder.toString());
+    this.kS = paramdl;
+    this.jy.removeMessages(6);
+    if (paramLong > 0L) {
+      this.jy.sendEmptyMessageDelayed(6, paramLong);
     }
   }
   
@@ -730,47 +949,65 @@ public class db
   
   public long b(boolean paramBoolean, int paramInt, ba paramba)
   {
-    if ((paramba == null) || (!c(paramba))) {
-      return -1L;
-    }
-    eh.e("SharkProtocolQueue", "[shark_push]onGotGift(), ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + 0L + " isTcpChannel: " + paramBoolean);
-    if (paramba.df != 0)
+    if (paramba != null)
     {
-      eh.h("SharkProtocolQueue", "[shark_push]onGotGift(), gift with error, drop it, ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " pushId: " + 0L + " isTcpChannel: " + paramBoolean + " retCode: " + paramba.df);
-      return -1L;
-    }
-    dj localdj;
-    synchronized (this.kq)
-    {
-      localdj = (dj)this.kq.get(Integer.valueOf(paramba.bM));
-      if (localdj != null) {
-        break label394;
+      if (!c(paramba)) {
+        return -1L;
       }
-    }
-    for (;;)
-    {
-      synchronized (this.kP)
+      ??? = new StringBuilder("[shark_push]onGotGift(), ECmd: ");
+      ((StringBuilder)???).append(paramba.bM);
+      ((StringBuilder)???).append(" seqNo: ");
+      ((StringBuilder)???).append(paramba.dc);
+      ((StringBuilder)???).append(" pushId: 0 isTcpChannel: ");
+      ((StringBuilder)???).append(paramBoolean);
+      eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+      if (paramba.df != 0)
       {
-        this.kP.add(new hg(this, 1, System.currentTimeMillis(), 0L, paramba, this.hF.ai().is.getBytes()));
-        paramInt = this.kP.size();
-        eh.g("SharkProtocolQueue", "[shark_push]onGotGift(), nobody listen to it, ECmd: " + paramba.bM + " seqNo: " + paramba.dc + " cache for " + 600 + "s" + " pushSize: " + paramInt);
-        this.jy.removeMessages(3);
-        if (paramInt >= 20)
-        {
-          this.jy.sendEmptyMessageDelayed(3, 2000L);
-          this.jy.sendEmptyMessageDelayed(3, 600000L);
-          return -1L;
-          paramba = finally;
-          throw paramba;
-        }
+        ??? = new StringBuilder("[shark_push]onGotGift(), gift with error, drop it, ECmd: ");
+        ((StringBuilder)???).append(paramba.bM);
+        ((StringBuilder)???).append(" seqNo: ");
+        ((StringBuilder)???).append(paramba.dc);
+        ((StringBuilder)???).append(" pushId: 0 isTcpChannel: ");
+        ((StringBuilder)???).append(paramBoolean);
+        ((StringBuilder)???).append(" retCode: ");
+        ((StringBuilder)???).append(paramba.df);
+        eh.h("SharkProtocolQueue", ((StringBuilder)???).toString());
+        return -1L;
       }
-      this.jy.sendEmptyMessageDelayed(3, 600000L);
-    }
-    label394:
-    eh.e("SharkProtocolQueue", "[shark_push]onGotGift(), someone listen to it, callback now, ECmd: " + paramba.bM + " seqNo: " + paramba.dc);
-    b(0L, paramba, this.hF.ai().is.getBytes(), localdj);
-    if (localdj.mU != null) {
-      return ((db.c)localdj.mU).t;
+      synchronized (this.kq)
+      {
+        dj localdj = (dj)this.kq.get(Integer.valueOf(paramba.bM));
+        if (localdj == null) {
+          synchronized (this.kP)
+          {
+            this.kP.add(new b(1, System.currentTimeMillis(), 0L, paramba, this.hF.ai().is.getBytes()));
+            paramInt = this.kP.size();
+            ??? = new StringBuilder("[shark_push]onGotGift(), nobody listen to it, ECmd: ");
+            ((StringBuilder)???).append(paramba.bM);
+            ((StringBuilder)???).append(" seqNo: ");
+            ((StringBuilder)???).append(paramba.dc);
+            ((StringBuilder)???).append(" cache for 600s pushSize: ");
+            ((StringBuilder)???).append(paramInt);
+            eh.g("SharkProtocolQueue", ((StringBuilder)???).toString());
+            this.jy.removeMessages(3);
+            if (paramInt >= 20) {
+              this.jy.sendEmptyMessageDelayed(3, 2000L);
+            }
+            this.jy.sendEmptyMessageDelayed(3, 600000L);
+            return -1L;
+          }
+        }
+        ??? = new StringBuilder("[shark_push]onGotGift(), someone listen to it, callback now, ECmd: ");
+        ((StringBuilder)???).append(paramba.bM);
+        ((StringBuilder)???).append(" seqNo: ");
+        ((StringBuilder)???).append(paramba.dc);
+        eh.e("SharkProtocolQueue", ((StringBuilder)???).toString());
+        b(0L, paramba, this.hF.ai().is.getBytes(), localdj);
+        if (localdj.mU != null) {
+          return ((c)localdj.mU).t;
+        }
+        return -1L;
+      }
     }
     return -1L;
   }
@@ -785,7 +1022,7 @@ public class db
     if (this.ld == null) {
       this.ld = new LinkedList();
     }
-    this.ld.add(new fr(paramInt1, paramInt2, paramInt3));
+    this.ld.add(new kn(paramInt1, paramInt2, paramInt3));
   }
   
   public void b(ch paramch)
@@ -802,15 +1039,15 @@ public class db
     }
   }
   
-  public void b(gm paramgm)
+  public void b(cy.a parama)
   {
-    if (paramgm == null) {
+    if (parama == null) {
       return;
     }
     synchronized (this.ln)
     {
-      if (this.ln.contains(paramgm)) {
-        this.ln.remove(paramgm);
+      if (this.ln.contains(parama)) {
+        this.ln.remove(parama);
       }
       return;
     }
@@ -870,8 +1107,8 @@ public class db
     {
       if (this.lo == null)
       {
-        this.lo = new he(this, null);
-        he.a(this.lo, this.mContext);
+        this.lo = new a((byte)0);
+        a.a(this.lo, this.mContext);
         eh.e("SharkProtocolQueue", "[shark_init][cu_guid][rsa_key] initSync(), register guid & rsakey event");
       }
       return;
@@ -930,32 +1167,38 @@ public class db
   
   public cm e(int paramInt1, int paramInt2)
   {
-    cm localcm = null;
-    synchronized (this.kq)
+    for (;;)
     {
-      if (this.kq.containsKey(Integer.valueOf(paramInt1))) {
-        localcm = (cm)((dj)this.kq.remove(Integer.valueOf(paramInt1))).second;
+      synchronized (this.kq)
+      {
+        if (this.kq.containsKey(Integer.valueOf(paramInt1)))
+        {
+          cm localcm = (cm)((dj)this.kq.remove(Integer.valueOf(paramInt1))).second;
+          return localcm;
+        }
       }
-      return localcm;
+      Object localObject2 = null;
     }
   }
   
   public String getGuid()
   {
-    if (this.hF == null) {
+    cy localcy = this.hF;
+    if (localcy == null) {
       return "";
     }
-    return this.hF.getGuid();
+    return localcy.getGuid();
   }
   
   public void onReady()
   {
     if (cx.iT)
     {
-      if (this.hF == null) {
+      cy localcy = this.hF;
+      if (localcy == null) {
         return;
       }
-      this.hF.onReady();
+      localcy.onReady();
       return;
     }
     this.kX = true;
@@ -979,6 +1222,648 @@ public class db
       return;
     }
     this.kT = true;
+  }
+  
+  final class a
+    extends BroadcastReceiver
+  {
+    private boolean b;
+    
+    private a() {}
+    
+    public final void onReceive(final Context paramContext, final Intent paramIntent)
+    {
+      final String str = paramIntent.getAction();
+      if (paramIntent.getPackage().compareToIgnoreCase(bc.n().getPackageName()) != 0) {
+        return;
+      }
+      ee.cT().addTask(new Runnable()
+      {
+        public final void run()
+        {
+          String str3 = paramContext.getPackageName();
+          Object localObject1 = String.format("action.guid.got:%s", new Object[] { str3 });
+          Object localObject2 = String.format("action.rsa.got:%s", new Object[] { str3 });
+          String str1 = String.format("action.reg.guid:%s", new Object[] { str3 });
+          String str2 = String.format("action.up.rsa:%s", new Object[] { str3 });
+          str3 = String.format("action.d.a:%s", new Object[] { str3 });
+          int i;
+          if (((String)localObject1).equals(str))
+          {
+            db.b(db.this).removeMessages(7);
+            i = paramIntent.getIntExtra("k.rc", -1);
+            localObject1 = paramIntent.getStringExtra("k.g");
+            if ((i == 0) && (!cx.ax()))
+            {
+              eh.f("SharkProtocolQueue", "[cu_guid] doOnRecv(), !sendProcess, refreshGuid on recv broadcast");
+              db.this.x(true);
+            }
+            localObject2 = new StringBuilder("[cu_guid] doOnRecv(), notifyGuidGot on recv broadcast: ");
+            ((StringBuilder)localObject2).append(str);
+            eh.f("SharkProtocolQueue", ((StringBuilder)localObject2).toString());
+            db.a(db.this, i, (String)localObject1);
+            return;
+          }
+          if (((String)localObject2).equals(str))
+          {
+            i = paramIntent.getIntExtra("k.rc", -1);
+            localObject1 = null;
+            if (i == 0)
+            {
+              localObject2 = new cs.b();
+              ((cs.b)localObject2).is = paramIntent.getStringExtra("k.r.k");
+              ((cs.b)localObject2).ir = paramIntent.getStringExtra("k.r.s");
+              localObject1 = localObject2;
+              if (!cx.ax())
+              {
+                eh.f("SharkProtocolQueue", "[rsa_key] doOnRecv(), !sendProcess, refreshRsaKey on recv broadcast");
+                db.this.x(false);
+                localObject1 = localObject2;
+              }
+            }
+            localObject2 = new StringBuilder("[rsa_key] doOnRecv(), notifyRsaKeyGot on recv broadcast: ");
+            ((StringBuilder)localObject2).append(str);
+            eh.f("SharkProtocolQueue", ((StringBuilder)localObject2).toString());
+            db.a(db.this, i, (cs.b)localObject1);
+            return;
+          }
+          if (str1.equals(str))
+          {
+            if (cx.ax())
+            {
+              localObject1 = new StringBuilder("[rsa_key] doOnRecv(), triggerRegGuid on recv broadcast: ");
+              ((StringBuilder)localObject1).append(str);
+              eh.f("SharkProtocolQueue", ((StringBuilder)localObject1).toString());
+              db.this.bH();
+            }
+          }
+          else if (str2.equals(str))
+          {
+            if (cx.ax())
+            {
+              localObject1 = new StringBuilder("[rsa_key] doOnRecv(), triggerUpdateRsaKey on recv broadcast: ");
+              ((StringBuilder)localObject1).append(str);
+              eh.f("SharkProtocolQueue", ((StringBuilder)localObject1).toString());
+              db.this.ca();
+            }
+          }
+          else if ((str3.equals(str)) && (cx.ax())) {
+            try
+            {
+              i = paramIntent.getIntExtra("k.sa", 0);
+              if (i == 1)
+              {
+                localObject1 = paramIntent.getExtras();
+                localObject2 = (dl)((Bundle)localObject1).getSerializable("v.r");
+                long l = ((Bundle)localObject1).getLong("vt.m", 35000L);
+                db.this.a((dl)localObject2, l);
+                return;
+              }
+              if (i == 2) {
+                db.this.bY();
+              }
+              return;
+            }
+            catch (Throwable localThrowable)
+            {
+              eh.a("SharkProtocolQueue", "[shark_vip] doOnRecv(), setVipRule: ".concat(String.valueOf(localThrowable)), localThrowable);
+            }
+          }
+        }
+      }, "GuidOrRsaKeyGotReceiver onRecv");
+    }
+  }
+  
+  final class b
+  {
+    long a;
+    long b;
+    ba c;
+    byte[] d;
+    int e = 0;
+    
+    public b(int paramInt, long paramLong1, long paramLong2, ba paramba, byte[] paramArrayOfByte)
+    {
+      this.e = paramInt;
+      this.a = paramLong1;
+      this.b = paramLong2;
+      this.c = paramba;
+      this.d = paramArrayOfByte;
+    }
+  }
+  
+  public static class c
+  {
+    public boolean lE;
+    public long t;
+    
+    public c(boolean paramBoolean, long paramLong)
+    {
+      this.lE = paramBoolean;
+      this.t = paramLong;
+    }
+  }
+  
+  final class d
+  {
+    public int a;
+    public int b;
+    public long c;
+    public int d;
+    public JceStruct e;
+    public byte[] f;
+    public JceStruct g;
+    public byte[] h;
+    public int i;
+    public cj j;
+    public ck k;
+    public int l;
+    public int m;
+    public int n;
+    public cw o;
+    public long p = -1L;
+    public long q = 0L;
+    public long r;
+    public long s = System.currentTimeMillis();
+    
+    d(int paramInt1, int paramInt2, long paramLong, int paramInt3, JceStruct paramJceStruct1, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt4, cj paramcj, ck paramck)
+    {
+      this.a = paramInt1;
+      this.b = paramInt2;
+      this.c = paramLong;
+      this.d = paramInt3;
+      this.e = paramJceStruct1;
+      this.f = paramArrayOfByte;
+      this.g = paramJceStruct2;
+      this.i = paramInt4;
+      this.j = paramcj;
+      this.k = paramck;
+      this.o = new cw();
+    }
+    
+    public final boolean a()
+    {
+      long l2 = Math.abs(System.currentTimeMillis() - this.s);
+      long l1 = this.p;
+      if (l1 <= 0L) {
+        l1 = 30000L;
+      }
+      boolean bool;
+      if (l2 >= l1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      if (bool)
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("cmdId|");
+        localStringBuilder1.append(this.d);
+        localStringBuilder1.append("|mIpcSeqNo|");
+        localStringBuilder1.append(this.b);
+        localStringBuilder1.append("|mSeqNo|");
+        localStringBuilder1.append(this.l);
+        localStringBuilder1.append("|pushId|");
+        localStringBuilder1.append(this.r);
+        localStringBuilder1.append("|mCallerIdent|");
+        localStringBuilder1.append(this.c);
+        localStringBuilder1.append("|callBackTimeout|");
+        localStringBuilder1.append(this.p);
+        localStringBuilder1.append("|time(s)|");
+        localStringBuilder1.append(l2 / 1000L);
+        StringBuilder localStringBuilder2 = new StringBuilder("[ocean][time_out]SharkProtocolQueue.SharkSendTask.isTimeOut(), ");
+        localStringBuilder2.append(localStringBuilder1.toString());
+        eh.h("ocean", localStringBuilder2.toString());
+      }
+      return bool;
+    }
+  }
+  
+  final class e
+    implements Runnable
+  {
+    TreeMap<Integer, db.d> a = new TreeMap();
+    private ArrayList<db.d> c = new ArrayList();
+    private Handler d = new Handler(cx.getLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        kp localkp = (kp)paramAnonymousMessage.obj;
+        ba localba = new ba();
+        localba.df = -11050000;
+        localba.dd = paramAnonymousMessage.what;
+        if (localkp != null) {
+          localba.bM = localkp.a;
+        }
+        paramAnonymousMessage = new StringBuilder("接收超时：seq: ");
+        paramAnonymousMessage.append(localba.dd);
+        paramAnonymousMessage.append(" cmdId: ");
+        paramAnonymousMessage.append(localba.bM);
+        eh.h("SharkProtocolQueue", paramAnonymousMessage.toString());
+        db.e.a(db.e.this, localba);
+      }
+    };
+    private Handler e = new Handler(cx.getLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        if (paramAnonymousMessage.what != 1) {
+          return;
+        }
+        ba localba = new ba();
+        localba.df = -10000017;
+        localba.dd = paramAnonymousMessage.arg1;
+        localba.bM = paramAnonymousMessage.arg2;
+        paramAnonymousMessage = new StringBuilder("[time_out]发送请求超时： seq: ");
+        paramAnonymousMessage.append(localba.dd);
+        paramAnonymousMessage.append(" cmdId: ");
+        paramAnonymousMessage.append(localba.bM);
+        eh.h("SharkProtocolQueue", paramAnonymousMessage.toString());
+        db.e.a(db.e.this, localba);
+      }
+    };
+    
+    private e() {}
+    
+    private Set<Map.Entry<Integer, db.d>> a()
+    {
+      synchronized (this.a)
+      {
+        TreeMap localTreeMap2 = (TreeMap)this.a.clone();
+        return localTreeMap2.entrySet();
+      }
+    }
+    
+    private void a(ba paramba)
+    {
+      this.d.removeMessages(paramba.dd);
+      synchronized (this.a)
+      {
+        db.d locald = (db.d)this.a.get(Integer.valueOf(paramba.dd));
+        if (locald == null) {
+          return;
+        }
+        this.a.remove(Integer.valueOf(paramba.dd));
+        Object localObject2 = paramba.data;
+        ??? = null;
+        Object localObject5 = null;
+        Object localObject3 = null;
+        Object localObject4;
+        if ((localObject2 != null) && (paramba.df == 0))
+        {
+          try
+          {
+            if ((locald.k != null) && (locald.b > 0))
+            {
+              localObject2 = cd.a(db.u(db.this), db.v(db.this).ai().is.getBytes(), paramba.data, paramba.di);
+              ??? = localObject3;
+            }
+            else
+            {
+              localObject2 = cd.a(db.u(db.this), db.v(db.this).ai().is.getBytes(), paramba.data, locald.g, false, paramba.di);
+              ??? = localObject2;
+              localObject2 = null;
+            }
+            localObject3 = localObject2;
+            localObject5 = ???;
+            if (??? != null) {
+              break label279;
+            }
+            localObject3 = localObject2;
+            localObject5 = ???;
+            if (localObject2 != null) {
+              break label279;
+            }
+            localObject3 = localObject2;
+            localObject5 = ???;
+            try
+            {
+              if (locald.g == null) {
+                break label279;
+              }
+              paramba.df = bz.p(-11000300);
+              localObject3 = localObject2;
+              localObject5 = ???;
+            }
+            catch (Throwable localThrowable1) {}
+            eh.b("SharkProtocolQueue", "sashimi decode fail", localThrowable2);
+          }
+          catch (Throwable localThrowable2)
+          {
+            localObject2 = null;
+          }
+          paramba.df = bz.p(-11000900);
+          localObject4 = localObject2;
+          localObject5 = ???;
+        }
+        else
+        {
+          localObject4 = null;
+        }
+        label279:
+        if (locald.h != localObject4) {
+          locald.h = localObject4;
+        }
+        if (locald.g != localObject5) {
+          locald.g = localObject5;
+        }
+        try
+        {
+          a(paramba, locald, Integer.valueOf(paramba.bM), Integer.valueOf(paramba.df), Integer.valueOf(paramba.dg));
+          return;
+        }
+        catch (Exception paramba)
+        {
+          eh.a("SharkProtocolQueue", "callback crash", paramba);
+          return;
+        }
+      }
+    }
+    
+    private void a(ba paramba, final db.d paramd, final Integer paramInteger1, Integer paramInteger2, final Integer paramInteger3)
+    {
+      paramd.o.setState(2);
+      final int i = bz.p(paramInteger2.intValue());
+      if (paramba == null)
+      {
+        cv.by().a("SharkProtocolQueue", paramInteger1.intValue(), paramd.l, paramba, 30, i);
+        cv.by().x(paramd.l);
+      }
+      else
+      {
+        cv.by().a("SharkProtocolQueue", paramInteger1.intValue(), paramba.dd, paramba, 30, i);
+        cv.by().x(paramba.dd);
+      }
+      if ((paramd.j == null) && (paramd.k == null)) {
+        return;
+      }
+      int j = bv.k(paramd.i);
+      if (j != 8)
+      {
+        if (j != 16)
+        {
+          paramba = new Runnable()
+          {
+            public final void run()
+            {
+              if ((paramd.k != null) && (paramd.b > 0))
+              {
+                paramd.k.a(paramd.a, paramd.b, paramd.l, paramInteger1.intValue(), i, paramInteger3.intValue(), paramd.h);
+                return;
+              }
+              paramd.j.onFinish(paramd.l, paramInteger1.intValue(), i, paramInteger3.intValue(), paramd.g);
+            }
+          };
+          if ((paramInteger1.intValue() != 2016) && (paramInteger1.intValue() != 12016))
+          {
+            ee.cT().addTask(paramba, "shark callback");
+            return;
+          }
+          ee.cT().addUrgentTask(paramba, "shark callback(urgent)");
+          return;
+        }
+        if ((paramd.k != null) && (paramd.b > 0))
+        {
+          paramd.k.a(paramd.a, paramd.b, paramd.l, paramInteger1.intValue(), i, paramInteger3.intValue(), paramd.h);
+          return;
+        }
+        paramd.j.onFinish(paramd.l, paramInteger1.intValue(), i, paramInteger3.intValue(), paramd.g);
+        return;
+      }
+      paramba = db.w(db.this).obtainMessage(11, new Object[] { paramd, paramInteger1, Integer.valueOf(i), paramInteger3 });
+      db.w(db.this).sendMessage(paramba);
+    }
+    
+    private boolean a(int paramInt)
+    {
+      synchronized (this.a)
+      {
+        boolean bool = this.a.containsKey(Integer.valueOf(paramInt));
+        return bool;
+      }
+    }
+    
+    private void b(int paramInt)
+    {
+      Object localObject2 = a();
+      synchronized (this.a)
+      {
+        this.a.clear();
+        ??? = ((Set)localObject2).iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)???).next();
+          try
+          {
+            a(null, (db.d)((Map.Entry)localObject2).getValue(), Integer.valueOf(((db.d)((Map.Entry)localObject2).getValue()).d), Integer.valueOf(paramInt), Integer.valueOf(-1));
+          }
+          catch (Throwable localThrowable)
+          {
+            eh.b("SharkProtocolQueue", "callback crash", localThrowable);
+          }
+        }
+        return;
+      }
+    }
+    
+    public final void run()
+    {
+      for (;;)
+      {
+        try
+        {
+          localArrayList1 = new ArrayList();
+          localArrayList2 = new ArrayList();
+          localArrayList3 = new ArrayList();
+          localObject2 = new ArrayList();
+          Iterator localIterator = a().iterator();
+          l1 = 0L;
+          if (localIterator.hasNext())
+          {
+            localObject3 = (Map.Entry)localIterator.next();
+            if (((db.d)((Map.Entry)localObject3).getValue()).o.bA()) {
+              continue;
+            }
+            if (((db.d)((Map.Entry)localObject3).getValue()).a())
+            {
+              this.e.obtainMessage(1, ((db.d)((Map.Entry)localObject3).getValue()).l, ((db.d)((Map.Entry)localObject3).getValue()).d).sendToTarget();
+              continue;
+            }
+            ((db.d)((Map.Entry)localObject3).getValue()).o.setState(1);
+            localas = new as();
+            localas.bM = ((db.d)((Map.Entry)localObject3).getValue()).d;
+            localas.dc = ((db.d)((Map.Entry)localObject3).getValue()).l;
+            localas.de = ((db.d)((Map.Entry)localObject3).getValue()).c;
+            localas.dd = 0;
+            localas.data = null;
+            if (((db.d)((Map.Entry)localObject3).getValue()).f != null)
+            {
+              localObject1 = ((db.d)((Map.Entry)localObject3).getValue()).f;
+              localObject1 = cd.a(db.u(db.this), (byte[])localObject1, localas.bM, localas);
+              localas.data = ((byte[])localObject1);
+            }
+            else
+            {
+              localObject1 = ((db.d)((Map.Entry)localObject3).getValue()).e;
+              localObject1 = cd.a(db.u(db.this), (JceStruct)localObject1, localas.bM, localas);
+              continue;
+            }
+            long l3 = ((db.d)((Map.Entry)localObject3).getValue()).p;
+            long l2 = l3;
+            if (l3 <= 0L) {
+              l2 = 30000L;
+            }
+            localObject1 = new StringBuilder("[shark_timer]对seq: ");
+            ((StringBuilder)localObject1).append(localas.dc);
+            ((StringBuilder)localObject1).append("计时(ms): ");
+            ((StringBuilder)localObject1).append(l2);
+            eh.i("SharkProtocolQueue", ((StringBuilder)localObject1).toString());
+            localObject1 = new kp(localas.bM);
+            localObject1 = Message.obtain(this.d, localas.dc, localObject1);
+            this.d.sendMessageDelayed((Message)localObject1, l2);
+            if ((((db.d)((Map.Entry)localObject3).getValue()).i & 0x800) != 0) {
+              localArrayList1.add(localas);
+            } else if ((((db.d)((Map.Entry)localObject3).getValue()).i & 0x200) != 0) {
+              localArrayList2.add(localas);
+            } else if ((((db.d)((Map.Entry)localObject3).getValue()).i & 0x400) != 0) {
+              localArrayList3.add(localas);
+            } else {
+              ((ArrayList)localObject2).add(localas);
+            }
+            cv.by().a("SharkProtocolQueue", localas.bM, localas.dc, localas, 0);
+            if (((db.d)((Map.Entry)localObject3).getValue()).q <= l1) {
+              continue;
+            }
+            l1 = ((db.d)((Map.Entry)localObject3).getValue()).q;
+            continue;
+          }
+          localIterator = this.c.iterator();
+          if (localIterator.hasNext())
+          {
+            localObject3 = (db.d)localIterator.next();
+            if (((db.d)localObject3).a())
+            {
+              if (((db.d)localObject3).d == 1103)
+              {
+                localObject1 = new StringBuilder("[time_out]发送push的业务回包超时： mSeqNo: ");
+                ((StringBuilder)localObject1).append(((db.d)localObject3).l);
+                ((StringBuilder)localObject1).append(" pushId: ");
+                ((StringBuilder)localObject1).append(((db.d)localObject3).r);
+                localObject1 = ((StringBuilder)localObject1).toString();
+                eh.h("SharkProtocolQueue", (String)localObject1);
+                continue;
+              }
+              localObject1 = new StringBuilder("[time_out]发送push的自动回包超时： mSeqNo: ");
+              ((StringBuilder)localObject1).append(((db.d)localObject3).l);
+              ((StringBuilder)localObject1).append(" pushId: ");
+              ((StringBuilder)localObject1).append(((db.d)localObject3).r);
+              ((StringBuilder)localObject1).append(" mCmdId: ");
+              ((StringBuilder)localObject1).append(((db.d)localObject3).d);
+              localObject1 = ((StringBuilder)localObject1).toString();
+              continue;
+            }
+            localas = new as();
+            localas.bM = ((db.d)localObject3).d;
+            localas.dc = cu.bu().bm();
+            localas.dd = ((db.d)localObject3).l;
+            localas.data = null;
+            localas.df = ((db.d)localObject3).m;
+            localas.dg = ((db.d)localObject3).n;
+            localObject1 = new ar();
+            ((ar)localObject1).db = ((db.d)localObject3).r;
+            localas.dh = ((ar)localObject1);
+            localObject1 = new StringBuilder("resp push, seqNo: ");
+            ((StringBuilder)localObject1).append(localas.dc);
+            ((StringBuilder)localObject1).append(" pushId: ");
+            ((StringBuilder)localObject1).append(((db.d)localObject3).r);
+            eh.f("SharkProtocolQueue", ((StringBuilder)localObject1).toString());
+          }
+        }
+        catch (Exception localException1)
+        {
+          ArrayList localArrayList1;
+          ArrayList localArrayList2;
+          ArrayList localArrayList3;
+          long l1;
+          Object localObject3;
+          as localas;
+          Object localObject1;
+          Object localObject2 = new StringBuilder("run shark task e: ");
+          ((StringBuilder)localObject2).append(localException1.toString());
+          eh.b("SharkProtocolQueue", ((StringBuilder)localObject2).toString(), localException1);
+          b(-10001200);
+          return;
+        }
+        try
+        {
+          if (((db.d)localObject3).f != null)
+          {
+            localObject1 = ((db.d)localObject3).f;
+            localObject1 = cd.a(db.u(db.this), (byte[])localObject1, localas.bM, localas);
+            localas.data = ((byte[])localObject1);
+          }
+          else
+          {
+            localObject1 = ((db.d)localObject3).e;
+            localObject1 = cd.a(db.u(db.this), (JceStruct)localObject1, localas.bM, localas);
+            continue;
+          }
+        }
+        catch (Exception localException2)
+        {
+          continue;
+          continue;
+        }
+        if ((((db.d)localObject3).i & 0x800) != 0) {
+          localArrayList1.add(localas);
+        } else if ((((db.d)localObject3).i & 0x200) != 0) {
+          localArrayList2.add(localas);
+        } else if ((((db.d)localObject3).i & 0x400) != 0) {
+          localArrayList3.add(localas);
+        } else {
+          ((ArrayList)localObject2).add(localas);
+        }
+        cv.by().a("SharkProtocolQueue", localas.bM, localas.dc, localas, 0);
+      }
+      if (localArrayList1.size() > 0) {
+        db.v(db.this).a(2048, l1, true, localArrayList1, new cy.b()
+        {
+          public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+          {
+            db.e.a(db.e.this, paramAnonymousBoolean, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayList);
+          }
+        });
+      }
+      if (localArrayList2.size() > 0) {
+        db.v(db.this).a(512, l1, true, localArrayList2, new cy.b()
+        {
+          public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+          {
+            db.e.a(db.e.this, paramAnonymousBoolean, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayList);
+          }
+        });
+      }
+      if (localArrayList3.size() > 0)
+      {
+        db.v(db.this).a(1024, l1, true, localArrayList3, new cy.b()
+        {
+          public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+          {
+            db.e.a(db.e.this, paramAnonymousBoolean, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayList);
+          }
+        });
+        if (((ArrayList)localObject2).size() > 0) {
+          db.v(db.this).a(0, l1, true, (ArrayList)localObject2, new cy.b()
+          {
+            public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+            {
+              db.e.a(db.e.this, paramAnonymousBoolean, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayList);
+            }
+          });
+        }
+        return;
+      }
+    }
   }
 }
 

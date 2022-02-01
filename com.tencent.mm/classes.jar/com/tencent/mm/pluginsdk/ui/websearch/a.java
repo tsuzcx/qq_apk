@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.websearch;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.media.AudioManager;
@@ -7,22 +8,28 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uq;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.acd;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout.a;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout.b;
 import com.tencent.mm.pluginsdk.ui.VoiceInputScrollView;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,254 +37,409 @@ import java.util.List;
 public final class a
   extends LinearLayout
 {
-  private String ckq;
-  AudioManager elW;
+  private Toast HDo;
+  private boolean HDw;
+  private TelephonyManager JFz;
+  private List<String> TWp;
+  private MMEditText YaA;
+  private VoiceInputLayout.a Yav;
+  public int Yea;
+  private VoiceInputLayout YkL;
+  private ImageButton YkM;
+  private Button YkN;
+  private VoiceInputScrollView YkR;
+  private TextView YkS;
+  private long YkT;
+  private float YkV;
+  private float YkW;
+  private boolean YkX;
+  private boolean YkY;
+  private boolean YkZ;
+  private int Yla;
+  private boolean Ylc;
+  private boolean Yld;
+  private long Yle;
+  private long Ylf;
+  private long Ylg;
+  private boolean Ylh;
+  private boolean Yli;
+  private final int Ylj;
+  private boolean Ylk;
+  private IListener<acd> Yln;
+  private VoiceInputLayout.b Ylq;
+  public boolean Ylr;
+  private a YvA;
+  AudioManager audioManager;
+  private String hxm;
   private Context mContext;
-  private TelephonyManager nLF;
-  PhoneStateListener nLG;
-  private Toast nbU;
-  private boolean ncc;
-  private Button oxn;
-  private List<String> tqx;
-  private MMEditText vSC;
-  private VoiceInputLayout.a vSx;
-  public int vVr;
-  private boolean vZA;
-  private boolean vZB;
-  private int vZC;
-  private boolean vZE;
-  private boolean vZF;
-  private long vZG;
-  private long vZH;
-  private long vZI;
-  private boolean vZJ;
-  private boolean vZK;
-  private final int vZL;
-  private boolean vZM;
-  private c<uq> vZP;
-  private VoiceInputLayout.b vZU;
-  public boolean vZV;
-  private VoiceInputLayout vZn;
-  private ImageButton vZo;
-  private Button vZp;
-  private VoiceInputScrollView vZt;
-  private TextView vZu;
-  private long vZv;
-  private float vZx;
-  private float vZy;
-  private boolean vZz;
-  private a.a wgq;
+  private Button mkz;
+  PhoneStateListener swG;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(28251);
-    this.vZv = 0L;
-    this.vZx = 0.0F;
-    this.vZy = 0.0F;
-    this.vZz = false;
-    this.vZA = false;
-    this.ncc = false;
-    this.vZB = false;
-    this.vZC = 300;
-    this.vZE = false;
-    this.vZF = false;
-    this.vZG = 0L;
-    this.vZH = 0L;
-    this.vZI = 0L;
-    this.vZJ = false;
-    this.vZK = false;
-    this.vZL = 2;
-    this.vZM = false;
-    this.tqx = new ArrayList();
-    this.ckq = "";
-    this.vSx = new VoiceInputLayout.a()
+    AppMethodBeat.i(32054);
+    this.YkT = 0L;
+    this.YkV = 0.0F;
+    this.YkW = 0.0F;
+    this.YkX = false;
+    this.YkY = false;
+    this.HDw = false;
+    this.YkZ = false;
+    this.Yla = 300;
+    this.Ylc = false;
+    this.Yld = false;
+    this.Yle = 0L;
+    this.Ylf = 0L;
+    this.Ylg = 0L;
+    this.Ylh = false;
+    this.Yli = false;
+    this.Ylj = 2;
+    this.Ylk = false;
+    this.TWp = new ArrayList();
+    this.hxm = "";
+    this.Yav = new VoiceInputLayout.a()
     {
-      public final void bDz()
+      public final void fzu()
       {
-        AppMethodBeat.i(28240);
-        a.a(a.this, 2131304556);
-        AppMethodBeat.o(28240);
+        AppMethodBeat.i(32044);
+        a.a(a.this, R.l.gXS);
+        AppMethodBeat.o(32044);
       }
     };
-    this.nLG = new a.4(this);
-    this.vZU = new a.5(this);
-    this.vVr = com.tencent.mm.cb.a.fromDPToPix(getContext(), 280);
-    this.vZV = true;
-    this.mContext = paramContext;
-    ab.d("MicroMsg.VoiceInputPanel", "init");
-    View.inflate(getContext(), 2130971293, this);
-    this.vZo = ((ImageButton)findViewById(2131828755));
-    this.vZp = ((Button)findViewById(2131828756));
-    this.oxn = ((Button)findViewById(2131828758));
-    this.vZu = ((TextView)findViewById(2131828753));
-    this.vZo.setVisibility(0);
-    this.oxn.setVisibility(4);
-    this.vZp.setVisibility(8);
-    this.vSC = ((MMEditText)findViewById(2131828750));
-    this.vSC.setHintTextColor(getResources().getColor(2131690318));
-    this.vSC.setClickable(false);
-    this.vZt = ((VoiceInputScrollView)findViewById(2131828748));
-    this.vZo.setOnClickListener(new View.OnClickListener()
+    this.swG = new PhoneStateListener()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void onCallStateChanged(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(28239);
-        a.a(a.this);
-        AppMethodBeat.o(28239);
+        AppMethodBeat.i(32046);
+        super.onCallStateChanged(paramAnonymousInt, paramAnonymousString);
+        int i = -1;
+        if (a.f(a.this) != null) {
+          i = a.f(a.this).getCurrentState();
+        }
+        Log.d("MicroMsg.VoiceInputPanel", "onCallStateChanged :%s, currentState: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+        a.f(a.this);
+        if (i != 2)
+        {
+          AppMethodBeat.o(32046);
+          return;
+        }
+        a.this.pause();
+        AppMethodBeat.o(32046);
       }
-    });
-    this.vSC.clearFocus();
-    this.vSC.setFocusable(false);
-    this.vSC.setClickable(false);
-    this.vSC.setLongClickable(false);
-    this.elW = ((AudioManager)getContext().getSystemService("audio"));
-    this.ckq = String.valueOf(System.nanoTime());
-    ab.i("MicroMsg.VoiceInputPanel", "mToUser %s", new Object[] { this.ckq });
-    doW();
-    AppMethodBeat.o(28251);
+    };
+    this.Ylq = new VoiceInputLayout.b()
+    {
+      public final void bv(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(32053);
+        Log.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectError localerrorType = %s errorType = %s errCode = %s time %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(System.currentTimeMillis()) });
+        a.d(a.this);
+        if ((a.j(a.this) instanceof Activity)) {
+          ((Activity)a.j(a.this)).getWindow().clearFlags(128);
+        }
+        if (paramAnonymousInt1 == 12) {
+          a.a(a.this, R.l.gXR);
+        }
+        for (;;)
+        {
+          a.e(a.this).JE(false);
+          a.c(a.this).setHint(null);
+          AppMethodBeat.o(32053);
+          return;
+          a.a(a.this, R.l.app_err_system_busy_tip);
+        }
+      }
+      
+      public final void c(String[] paramAnonymousArrayOfString, List<String> paramAnonymousList)
+      {
+        AppMethodBeat.i(32052);
+        if ((paramAnonymousArrayOfString != null) && (paramAnonymousArrayOfString.length > 0) && (paramAnonymousArrayOfString[0].length() > 0))
+        {
+          if (a.n(a.this)) {
+            a.d(a.this, false);
+          }
+          Log.i("MicroMsg.VoiceInputPanel", "onDetected %s", new Object[] { paramAnonymousArrayOfString[0] });
+          a.c(a.this).setText(paramAnonymousArrayOfString[0]);
+          if ((!a.o(a.this)) && (paramAnonymousArrayOfString[0].length() != 0))
+          {
+            a.b(a.this, true);
+            a.b(a.this, System.currentTimeMillis());
+            Log.d("VOICEDEBUG", "First Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(a.p(a.this) - a.g(a.this)) });
+          }
+          a.q(a.this).addAll(paramAnonymousList);
+        }
+        AppMethodBeat.o(32052);
+      }
+      
+      public final void fzl()
+      {
+        AppMethodBeat.i(32047);
+        a.a(a.this, System.currentTimeMillis());
+        Log.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectStart time %s", new Object[] { Long.valueOf(a.g(a.this)) });
+        Log.d("VOICEDEBUG", "Start Record Time = %s", new Object[] { Long.valueOf(a.g(a.this)) });
+        a.b(a.this, false);
+        a.c(a.this, true);
+        a.d(a.this, true);
+        a.b(a.this, 0L);
+        a.h(a.this);
+        a.d(a.this);
+        a.i(a.this).setVisibility(8);
+        a.c(a.this, false);
+        a locala = a.this;
+        if (locala.audioManager != null) {
+          locala.audioManager.setStreamMute(3, true);
+        }
+        if ((a.j(a.this) instanceof Activity)) {
+          ((Activity)a.j(a.this)).getWindow().addFlags(128);
+        }
+        a.k(a.this).setVisibility(4);
+        a.l(a.this).setVisibility(4);
+        a.m(a.this).setVisibility(8);
+        a.c(a.this).setHint(a.this.getResources().getString(R.l.gXQ));
+        a.e(a.this).JE(true);
+        AppMethodBeat.o(32047);
+      }
+      
+      public final void fzo()
+      {
+        AppMethodBeat.i(32048);
+        a.e(a.this).JE(false);
+        a.c(a.this).setHint(null);
+        AppMethodBeat.o(32048);
+      }
+      
+      public final void fzp()
+      {
+        AppMethodBeat.i(32049);
+        Log.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectCancel time " + System.currentTimeMillis());
+        a.d(a.this);
+        if ((a.j(a.this) instanceof Activity)) {
+          ((Activity)a.j(a.this)).getWindow().clearFlags(128);
+        }
+        a.e(a.this).JE(false);
+        a.c(a.this).setHint(null);
+        a.b(a.this, 2);
+        AppMethodBeat.o(32049);
+      }
+      
+      public final void fzq()
+      {
+        AppMethodBeat.i(32050);
+        Log.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onStateReset time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        a.d(a.this);
+        if ((a.j(a.this) instanceof Activity)) {
+          ((Activity)a.j(a.this)).getWindow().clearFlags(128);
+        }
+        a.e(a.this).JE(false);
+        a.c(a.this).setHint(null);
+        AppMethodBeat.o(32050);
+      }
+      
+      public final void fzr()
+      {
+        AppMethodBeat.i(32051);
+        Log.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectFinish  time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        a.d(a.this);
+        if ((a.j(a.this) instanceof Activity)) {
+          ((Activity)a.j(a.this)).getWindow().clearFlags(128);
+        }
+        a.e(a.this).JE(false);
+        a.c(a.this).setHint(null);
+        a.b(a.this, 2);
+        AppMethodBeat.o(32051);
+      }
+    };
+    this.Yea = com.tencent.mm.cd.a.fromDPToPix(getContext(), 280);
+    this.Ylr = true;
+    this.mContext = paramContext;
+    Log.d("MicroMsg.VoiceInputPanel", "init");
+    View.inflate(getContext(), R.i.gph, this);
+    this.YkM = ((ImageButton)findViewById(R.h.gcN));
+    this.YkN = ((Button)findViewById(R.h.gcM));
+    this.mkz = ((Button)findViewById(R.h.gcR));
+    this.YkS = ((TextView)findViewById(R.h.fYf));
+    this.YkM.setVisibility(0);
+    this.mkz.setVisibility(4);
+    this.YkN.setVisibility(8);
+    this.YaA = ((MMEditText)findViewById(R.h.gcS));
+    this.YaA.setHintTextColor(getResources().getColor(R.e.normal_color));
+    this.YaA.setClickable(false);
+    this.YkR = ((VoiceInputScrollView)findViewById(R.h.gcQ));
+    this.YkM.setOnClickListener(new a.1(this));
+    this.YaA.clearFocus();
+    this.YaA.setFocusable(false);
+    this.YaA.setClickable(false);
+    this.YaA.setLongClickable(false);
+    this.audioManager = ((AudioManager)getContext().getSystemService("audio"));
+    this.hxm = String.valueOf(System.nanoTime());
+    Log.i("MicroMsg.VoiceInputPanel", "mToUser %s", new Object[] { this.hxm });
+    iNo();
+    AppMethodBeat.o(32054);
   }
   
-  private void KQ()
+  private void bLh()
   {
-    AppMethodBeat.i(28258);
-    if (this.elW != null) {
-      this.elW.setStreamMute(3, false);
+    AppMethodBeat.i(32061);
+    if (this.audioManager != null) {
+      this.audioManager.setStreamMute(3, false);
     }
-    AppMethodBeat.o(28258);
+    AppMethodBeat.o(32061);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(28255);
-    ab.i("MicroMsg.VoiceInputPanel", "destroy");
+    AppMethodBeat.i(32058);
+    Log.i("MicroMsg.VoiceInputPanel", "destroy");
     reset();
-    if (this.vZP != null)
+    if (this.Yln != null)
     {
-      com.tencent.mm.sdk.b.a.ymk.d(this.vZP);
-      this.vZP = null;
+      this.Yln.dead();
+      this.Yln = null;
     }
-    if (this.vZn != null)
+    if (this.YkL != null)
     {
-      this.vZn.amT();
-      this.vZn.setVoiceDetectListener(null);
-      this.vZn.bDG();
-      this.vZn.dnu();
-      this.vZn = null;
+      this.YkL.bPI();
+      this.YkL.setVoiceDetectListener(null);
+      this.YkL.fzH();
+      this.YkL.iKP();
+      this.YkL = null;
     }
-    if ((this.nLF != null) && (this.nLG != null))
+    if ((this.JFz != null) && (this.swG != null))
     {
-      this.nLF.listen(this.nLG, 0);
-      this.nLG = null;
+      TelephonyManager localTelephonyManager = this.JFz;
+      Object localObject = this.swG;
+      localObject = c.a(0, new com.tencent.mm.hellhoundlib.b.a()).cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/pluginsdk/ui/websearch/WebSearchVoiceInputPanel", "destroy", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(1)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localTelephonyManager, "com/tencent/mm/pluginsdk/ui/websearch/WebSearchVoiceInputPanel", "destroy", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      this.swG = null;
     }
-    this.nLF = null;
+    this.JFz = null;
     this.mContext = null;
-    AppMethodBeat.o(28255);
+    AppMethodBeat.o(32058);
   }
   
-  public final void doW()
+  public final void iNo()
   {
-    AppMethodBeat.i(28252);
-    this.vZv = bo.yB();
-    if (this.vZP == null)
+    AppMethodBeat.i(32055);
+    this.YkT = Util.currentTicks();
+    if (this.Yln == null)
     {
-      ab.i("MicroMsg.VoiceInputPanel", " initVoiceResultListener");
-      this.vZP = new a.3(this);
-      com.tencent.mm.sdk.b.a.ymk.c(this.vZP);
+      Log.i("MicroMsg.VoiceInputPanel", " initVoiceResultListener");
+      this.Yln = new WebSearchVoiceInputPanel.3(this, f.hfK);
+      this.Yln.alive();
     }
-    if (this.vZn == null)
+    if (this.YkL == null)
     {
-      this.vZn = ((VoiceInputLayout)findViewById(2131828757));
-      this.vZn.setVoiceDetectListener(this.vZU);
-      this.vZn.setLongClickLisnter(this.vSx);
+      this.YkL = ((VoiceInputLayout)findViewById(R.h.gcT));
+      this.YkL.setVoiceDetectListener(this.Ylq);
+      this.YkL.setLongClickLisnter(this.Yav);
     }
-    this.vZu.setVisibility(0);
-    this.nLF = ((TelephonyManager)ah.getContext().getSystemService("phone"));
-    this.nLF.listen(this.nLG, 32);
-    AppMethodBeat.o(28252);
+    this.YkS.setVisibility(0);
+    if (this.JFz == null)
+    {
+      this.JFz = ((TelephonyManager)MMApplicationContext.getContext().getSystemService("phone"));
+      TelephonyManager localTelephonyManager = this.JFz;
+      Object localObject = this.swG;
+      localObject = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localTelephonyManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/pluginsdk/ui/websearch/WebSearchVoiceInputPanel", "initAllListener", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      localTelephonyManager.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(1)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localTelephonyManager, "com/tencent/mm/pluginsdk/ui/websearch/WebSearchVoiceInputPanel", "initAllListener", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+    }
+    AppMethodBeat.o(32055);
   }
   
-  public final void doY()
+  public final void iNq()
   {
-    AppMethodBeat.i(28257);
-    ab.d("MicroMsg.VoiceInputPanel", "setTextHintAndColor");
-    if ((this.vSC != null) && (this.vSC.getText() != null) && (this.vSC.getText().length() == 0))
+    AppMethodBeat.i(32060);
+    Log.d("MicroMsg.VoiceInputPanel", "setTextHintAndColor");
+    if ((this.YaA != null) && (this.YaA.getText() != null) && (this.YaA.getText().length() == 0))
     {
-      this.oxn.setVisibility(4);
-      this.vZo.setVisibility(0);
-      this.vZp.setVisibility(8);
-      this.vZu.setVisibility(0);
+      this.mkz.setVisibility(4);
+      this.YkM.setVisibility(0);
+      this.YkN.setVisibility(8);
+      this.YkS.setVisibility(0);
     }
     for (;;)
     {
-      KQ();
-      if (!this.vZF)
+      bLh();
+      if (!this.Yld)
       {
-        this.vZF = true;
-        this.vZI = System.currentTimeMillis();
-        ab.d("VOICEDEBUG", "Last Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(this.vZI), Long.valueOf(this.vZI - this.vZH) });
+        this.Yld = true;
+        this.Ylg = System.currentTimeMillis();
+        Log.d("VOICEDEBUG", "Last Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(this.Ylg), Long.valueOf(this.Ylg - this.Ylf) });
       }
-      AppMethodBeat.o(28257);
+      AppMethodBeat.o(32060);
       return;
-      this.vZo.setVisibility(4);
-      this.vZu.setVisibility(8);
+      this.YkM.setVisibility(4);
+      this.YkS.setVisibility(8);
     }
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(28253);
-    ab.i("MicroMsg.VoiceInputPanel", "pause");
-    if (this.vZn != null) {
-      this.vZn.amT();
+    AppMethodBeat.i(32056);
+    Log.i("MicroMsg.VoiceInputPanel", "pause");
+    if (this.YkL != null) {
+      this.YkL.bPI();
     }
-    this.vZx = 0.0F;
-    this.vZy = 0.0F;
-    this.vZz = false;
-    this.vZA = false;
-    this.ncc = false;
-    this.vZB = false;
-    this.vZJ = false;
-    this.vZV = true;
-    AppMethodBeat.o(28253);
+    this.YkV = 0.0F;
+    this.YkW = 0.0F;
+    this.YkX = false;
+    this.YkY = false;
+    this.HDw = false;
+    this.YkZ = false;
+    this.Ylh = false;
+    this.Ylr = true;
+    AppMethodBeat.o(32056);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(28254);
-    ab.i("MicroMsg.VoiceInputPanel", "VoiceInputPanel reset");
+    AppMethodBeat.i(32057);
+    Log.i("MicroMsg.VoiceInputPanel", "VoiceInputPanel reset");
     pause();
-    this.vZK = false;
-    this.tqx.clear();
-    if (this.vSC != null)
+    this.Yli = false;
+    this.TWp.clear();
+    if (this.YaA != null)
     {
-      this.vSC.setText("");
-      doY();
+      this.YaA.setText("");
+      iNq();
     }
-    AppMethodBeat.o(28254);
+    AppMethodBeat.o(32057);
   }
   
-  public final void setCallback(a.a parama)
+  public final void setCallback(a parama)
   {
-    this.wgq = parama;
+    this.YvA = parama;
   }
   
   public final void setToUser(String paramString)
   {
-    AppMethodBeat.i(28256);
-    if (!bo.isNullOrNil(paramString))
+    AppMethodBeat.i(32059);
+    if (!Util.isNullOrNil(paramString))
     {
-      this.ckq = paramString;
-      AppMethodBeat.o(28256);
+      this.hxm = paramString;
+      AppMethodBeat.o(32059);
       return;
     }
-    ab.e("MicroMsg.VoiceInputPanel", "setToUser toUser is isNullOrNil");
-    AppMethodBeat.o(28256);
+    Log.e("MicroMsg.VoiceInputPanel", "setToUser toUser is isNullOrNil");
+    AppMethodBeat.o(32059);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void JE(boolean paramBoolean);
+    
+    public abstract void bqK(String paramString);
+    
+    public abstract void iKN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.websearch.a
  * JD-Core Version:    0.7.0.1
  */

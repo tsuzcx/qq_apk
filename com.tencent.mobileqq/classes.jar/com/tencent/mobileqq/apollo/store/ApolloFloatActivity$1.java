@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aepi;
+import android.content.Context;
 import android.content.res.Resources;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 class ApolloFloatActivity$1
   implements Runnable
@@ -13,32 +15,24 @@ class ApolloFloatActivity$1
   
   public void run()
   {
-    this.this$0.a = new TextView(this.this$0);
-    this.this$0.a.setBackgroundResource(2130850069);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aepi.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), aepi.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
-    if (ApolloFloatActivity.a(this.this$0) == 1)
-    {
-      this.this$0.a.setTextColor(-16777216);
-      this.this$0.a.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.this$0.a.setGravity(17);
-      this.this$0.a.setTextSize(17.0F);
-      this.this$0.a.setText(2131690885);
-      this.this$0.a.setOnClickListener(this.this$0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.a, localLayoutParams);
-      return;
-      localLayoutParams.addRule(10, -1);
-      localLayoutParams.addRule(11, -1);
-      localLayoutParams.rightMargin = aepi.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
-      this.this$0.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131166897));
-    }
+    Object localObject = this.this$0;
+    ((ApolloFloatActivity)localObject).rightView = new TextView((Context)localObject);
+    this.this$0.rightView.setBackgroundResource(2130853306);
+    localObject = new RelativeLayout.LayoutParams(ViewUtils.dip2px(50.0F), ViewUtils.dip2px(52.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.dip2px(5.0F);
+    this.this$0.rightView.setTextColor(this.a.getColor(2131167987));
+    this.this$0.rightView.setGravity(17);
+    this.this$0.rightView.setTextSize(17.0F);
+    this.this$0.rightView.setText(2131887812);
+    this.this$0.rightView.setOnClickListener(this.this$0);
+    this.b.addView(this.this$0.rightView, (ViewGroup.LayoutParams)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloFloatActivity.1
  * JD-Core Version:    0.7.0.1
  */

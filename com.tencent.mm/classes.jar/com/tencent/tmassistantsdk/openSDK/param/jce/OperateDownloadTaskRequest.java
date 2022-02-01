@@ -28,7 +28,7 @@ public final class OperateDownloadTaskRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76003);
+    AppMethodBeat.i(102249);
     this.requestType = paramJceInputStream.read(this.requestType, 0, true);
     if (cache_baseParam == null) {
       cache_baseParam = new IPCBaseParam();
@@ -37,12 +37,12 @@ public final class OperateDownloadTaskRequest
     this.opList = paramJceInputStream.readString(2, false);
     this.actionFlag = paramJceInputStream.readString(3, false);
     this.verifyType = paramJceInputStream.readString(4, false);
-    AppMethodBeat.o(76003);
+    AppMethodBeat.o(102249);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76002);
+    AppMethodBeat.i(102248);
     paramJceOutputStream.write(this.requestType, 0);
     paramJceOutputStream.write(this.baseParam, 1);
     if (this.opList != null) {
@@ -54,12 +54,12 @@ public final class OperateDownloadTaskRequest
     if (this.verifyType != null) {
       paramJceOutputStream.write(this.verifyType, 4);
     }
-    AppMethodBeat.o(76002);
+    AppMethodBeat.o(102248);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.OperateDownloadTaskRequest
  * JD-Core Version:    0.7.0.1
  */

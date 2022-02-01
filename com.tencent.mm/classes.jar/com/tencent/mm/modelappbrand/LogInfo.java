@@ -15,9 +15,9 @@ public class LogInfo
   
   static
   {
-    AppMethodBeat.i(70629);
+    AppMethodBeat.i(76377);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(70629);
+    AppMethodBeat.o(76377);
   }
   
   public int describeContents()
@@ -27,16 +27,16 @@ public class LogInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(70628);
+    AppMethodBeat.i(76376);
     paramParcel.writeLong(this.ts);
     paramParcel.writeInt(this.level);
     paramParcel.writeString(this.message);
-    AppMethodBeat.o(70628);
+    AppMethodBeat.o(76376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.LogInfo
  * JD-Core Version:    0.7.0.1
  */

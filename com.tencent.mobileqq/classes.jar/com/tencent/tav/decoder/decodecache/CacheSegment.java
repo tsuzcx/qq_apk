@@ -49,7 +49,7 @@ class CacheSegment
   
   CacheFrame popFrame(CMTime paramCMTime)
   {
-    if (this.cacheFrameList.size() > 0)
+    while (this.cacheFrameList.size() > 0)
     {
       CacheFrame localCacheFrame = (CacheFrame)this.cacheFrameList.get(0);
       if (!localCacheFrame.frameTime.smallThan(paramCMTime)) {
@@ -57,19 +57,14 @@ class CacheSegment
       }
       if (isCacheFrameUsable(localCacheFrame))
       {
-        if (localCacheFrame.texturePool != null) {
-          break label95;
+        if (localCacheFrame.texturePool == null) {
+          localCacheFrame.sampleBuffer.getTextureInfo().release();
+        } else {
+          localCacheFrame.texturePool.pushTexture(localCacheFrame.sampleBuffer.getTextureInfo());
         }
-        localCacheFrame.sampleBuffer.getTextureInfo().release();
-      }
-      for (;;)
-      {
         localCacheFrame.sampleBuffer = null;
-        this.cacheFrameList.remove(0);
-        break;
-        label95:
-        localCacheFrame.texturePool.pushTexture(localCacheFrame.sampleBuffer.getTextureInfo());
       }
+      this.cacheFrameList.remove(0);
     }
     return null;
   }
@@ -91,7 +86,7 @@ class CacheSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.CacheSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import android.content.Context;
-import android.widget.TextView;
-import arsg;
-import arsx;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 
-public final class QFileUtils$2
-  implements Runnable
+final class QFileUtils$2
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
-  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, arsg paramarsg) {}
+  QFileUtils$2(IFileWifiCheckCallback paramIFileWifiCheckCallback) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    arsx.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Arsg);
+    if (paramInt == 2) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.2
  * JD-Core Version:    0.7.0.1
  */

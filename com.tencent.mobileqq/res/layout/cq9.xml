@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.av.ui.effect.view.QavEffectSlidingTabView android:id="@id/e1y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentTop="true" app:tabIndicatorColor="#00000000" app:tabIndicatorHeight="0.0dip" app:tabIndicatorPadding="8.0dip" app:tabPadding="15.0dip" app:tabStartEndMargin="4.0dip" app:tabTextCheckedColor="@color/awe" app:tabTextNormalColor="@color/awd" app:tabTextSize="14.0dip" />
+    <View android:id="@id/e_1" android:background="#19ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/e1y" />
+    <com.tencent.av.ui.effect.view.EffectViewPager android:id="@id/kwk" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/e_1" />
+</RelativeLayout>

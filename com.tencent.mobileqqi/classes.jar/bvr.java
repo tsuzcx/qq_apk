@@ -1,102 +1,102 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.util.QQSettingUtil;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bvr
-  extends FriendListObserver
+  extends WtloginObserver
 {
   public bvr(AuthDevActivity paramAuthDevActivity) {}
   
-  protected void a(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    AuthDevActivity.a(this.a).setVisibility(8);
-    if (!AuthDevActivity.a(this.a)) {
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      AuthDevActivity.a(this.a, true);
+      AuthDevActivity.b(this.a);
+      if (paramInt != 0) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.success");
+      }
+      AuthDevActivity.b(this.a, true);
+      EquipmentLockImpl.a().a(this.a.b, this.a, this.a.b.a(), true);
+      AuthDevActivity.c(this.a, true);
+      AuthDevActivity.a(this.a).setText(this.a.getString(2131561947));
+      AuthDevActivity.a(this.a).setContentDescription(this.a.getString(2131561947));
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131562015), 0).b(this.a.d());
+      AuthDevActivity.c(this.a);
+      paramWUserSigInfo = this.a.b.a(LoginInfoActivity.class);
+    } while (paramWUserSigInfo == null);
+    paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+    return;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.d());
       return;
     }
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131562567), 0).b(this.a.d());
+  }
+  
+  public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AuthDevActivity.a(this.a, true);
+    AuthDevActivity.b(this.a);
+    if (paramInt == 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.success");
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.success");
       }
-      AuthDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = AuthDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.AuthDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
+      AuthDevActivity.b(this.a, false);
+      AuthDevActivity.a(this.a).setVisibility(8);
+      EquipmentLockImpl.a().a(this.a.b, this.a, this.a.b.a(), false);
+      AuthDevActivity.a(this.a).setText(this.a.getString(2131562008));
+      AuthDevActivity.a(this.a).setContentDescription(this.a.getString(2131562008));
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131561950), 0).b(this.a.d());
+      paramWUserSigInfo = this.a.b.a(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
       }
+      AuthDevActivity.a(this.a, null);
       AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
       return;
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label304;
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail errMsg=" + paramErrMsg.getMessage());
       }
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data is null");
     }
-    for (;;)
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      QQToast.a(this.a.a(), 1, this.a.getString(2131562570), 0).b(this.a.d());
-      return;
-      label304:
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onDelAuthDevResult.isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    AuthDevActivity.b(this.a);
-    if (paramBoolean)
-    {
-      if (paramInt > -1)
-      {
-        paramString = (SvcDevLoginInfo)AuthDevActivity.a(this.a).get(paramInt);
-        if (Arrays.equals(NetConnInfoCenter.GUID, paramString.vecGuid))
-        {
-          this.a.b.updateSubAccountLogin(this.a.b.getAccount(), false);
-          this.a.b.getApplication().refreAccountList();
-          QQSettingUtil.a(this.a, this.a.b, true);
-          return;
-        }
-        if (paramInt < AuthDevActivity.a(this.a).size())
-        {
-          AuthDevActivity.a(this.a).remove(paramInt);
-          AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
-        }
-      }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131561930), 0).b(this.a.d());
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.d());
       return;
     }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131561764), 0).b(this.a.d());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.d());
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131562039), 0).b(this.a.d());
   }
 }
 

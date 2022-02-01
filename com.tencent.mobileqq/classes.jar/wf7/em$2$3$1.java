@@ -21,10 +21,11 @@ class em$2$3$1
         em.d(this.nr.np.nm).sendEmptyMessage(1);
         return;
       }
-    }
-    if (paramInt3 > 0) {}
-    for (paramInt1 = Math.abs(-800000000) + paramInt3;; paramInt1 = -800000000 + paramInt3)
-    {
+      if (paramInt3 > 0) {
+        paramInt1 = Math.abs(-800000000) + paramInt3;
+      } else {
+        paramInt1 = -800000000 + paramInt3;
+      }
       em.a(this.nr.np.nm, false, false, paramInt1);
       return;
     }
@@ -32,7 +33,7 @@ class em$2$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.em.2.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,45 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.ipcall.a.i;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.ipcall.model.h;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  b nLO;
+  b JFI;
   
   public Plugin()
   {
-    AppMethodBeat.i(21703);
-    this.nLO = new b();
-    AppMethodBeat.o(21703);
+    AppMethodBeat.i(25326);
+    this.JFI = new b();
+    AppMethodBeat.o(25326);
   }
   
-  public o createApplication()
+  public n createApplication()
   {
-    return this.nLO;
+    return this.JFI;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(21704);
-    i locali = i.bJm();
-    AppMethodBeat.o(21704);
-    return locali;
+    AppMethodBeat.i(25327);
+    h localh = h.fRo();
+    AppMethodBeat.o(25327);
+    return localh;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.Plugin
  * JD-Core Version:    0.7.0.1
  */

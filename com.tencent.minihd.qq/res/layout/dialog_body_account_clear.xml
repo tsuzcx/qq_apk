@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.widget.PadQQCheckBox android:id="@id/checkBox1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" mobileqq:text="@string/clear_msg_history" mobileqq:checked="true" />
+</LinearLayout>

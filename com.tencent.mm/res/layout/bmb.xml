@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/k1f" android:layout_width="fill_parent" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="@dimen/amb" android:layout_height="@dimen/ama" layout="@layout/bm9" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/hjz" android:paddingTop="@dimen/amc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/ama" android:layout_weight="1.0" android:layout_toLeftOf="@id/apw" android:layout_toStartOf="@id/apw">
+        <FrameLayout android:id="@id/hjy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/am_" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0" android:layout_marginStart="@dimen/am_" android:layout_marginEnd="8.0dip" />
+        <FrameLayout android:id="@id/iu8" android:paddingTop="@dimen/amf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginEnd="8.0dip">
+            <DateTimeView android:textAppearance="@style/wg" android:layout_gravity="end|center|top" android:id="@id/kkt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <Chronometer android:textAppearance="@style/wg" android:layout_gravity="end|center|top" android:id="@id/bcw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textAppearance="@style/wb" android:layout_gravity="end|bottom|center" android:id="@id/f6y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:singleLine="true" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="end|center" android:orientation="horizontal" android:id="@id/gq3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layoutDirection="ltr" />
+    <include android:layout_width="48.0dip" android:layout_height="fill_parent" android:layout_marginRight="6.0dip" android:layout_marginEnd="6.0dip" layout="@layout/bm3" />
+    <ImageView android:id="@id/cjv" android:layout_width="6.0dip" android:layout_height="fill_parent" />
+</LinearLayout>

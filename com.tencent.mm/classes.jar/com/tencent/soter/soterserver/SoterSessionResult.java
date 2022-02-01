@@ -9,24 +9,24 @@ public class SoterSessionResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterSessionResult> CREATOR;
-  public long BmR;
-  public int bpE;
+  public long hBk;
+  public int resultCode;
   
   static
   {
-    AppMethodBeat.i(73114);
-    CREATOR = new SoterSessionResult.1();
-    AppMethodBeat.o(73114);
+    AppMethodBeat.i(88750);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(88750);
   }
   
   public SoterSessionResult() {}
   
   protected SoterSessionResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(73112);
-    this.BmR = paramParcel.readLong();
-    this.bpE = paramParcel.readInt();
-    AppMethodBeat.o(73112);
+    AppMethodBeat.i(88748);
+    this.hBk = paramParcel.readLong();
+    this.resultCode = paramParcel.readInt();
+    AppMethodBeat.o(88748);
   }
   
   public int describeContents()
@@ -36,15 +36,15 @@ public class SoterSessionResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(73113);
-    paramParcel.writeLong(this.BmR);
-    paramParcel.writeInt(this.bpE);
-    AppMethodBeat.o(73113);
+    AppMethodBeat.i(88749);
+    paramParcel.writeLong(this.hBk);
+    paramParcel.writeInt(this.resultCode);
+    AppMethodBeat.o(88749);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterSessionResult
  * JD-Core Version:    0.7.0.1
  */

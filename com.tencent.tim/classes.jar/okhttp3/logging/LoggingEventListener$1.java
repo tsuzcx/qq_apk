@@ -1,0 +1,9 @@
+package okhttp3.logging;
+
+class LoggingEventListener$1 {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes14.jar
+ * Qualified Name:     okhttp3.logging.LoggingEventListener.1
+ * JD-Core Version:    0.7.0.1
+ */

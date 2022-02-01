@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/pxp" android:layout_width="270.0dip" android:layout_height="107.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="10.0dip" android:textColor="#ff999999" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:text="选择你要玩的分路，提前沟通阵容" android:includeFontPadding="false" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/oh8" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="37.0dip" android:layout_marginRight="12.0dip" />
+</FrameLayout>

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alud;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ApkgBaseInfo$1
   implements Runnable
@@ -11,12 +12,17 @@ class ApkgBaseInfo$1
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + alud.a(2131700667) + this.val$lowCaseUrl, 1).show();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ApkgBaseInfo.access$000()[this.val$domainType]);
+    localStringBuilder.append(HardCodeUtil.a(2131898537));
+    localStringBuilder.append(this.val$lowCaseUrl);
+    Toast.makeText(localBaseApplication, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgBaseInfo.1
  * JD-Core Version:    0.7.0.1
  */

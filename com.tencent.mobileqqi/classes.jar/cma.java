@@ -1,13 +1,14 @@
 import com.tencent.mobileqq.activity.ForwardOperations;
+import java.util.HashMap;
 
 class cma
   implements Runnable
 {
-  cma(clz paramclz) {}
+  cma(cly paramcly, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(1004, 0, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b);
+    this.jdField_a_of_type_Cly.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Cly.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Cly.jdField_a_of_type_Int, this.jdField_a_of_type_Cly.b, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

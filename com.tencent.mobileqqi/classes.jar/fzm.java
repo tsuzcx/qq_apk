@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public class fzm
   implements Runnable
 {
-  public fzm(WebBridge.JsBridgeListener paramJsBridgeListener, JSONObject paramJSONObject, WebView paramWebView) {}
+  public fzm(WebBridge.JsBridgeListener paramJsBridgeListener, WebView paramWebView) {}
   
   public void run()
   {
@@ -15,10 +15,7 @@ public class fzm
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.a);
-      localJSONObject.put("responseData", this.jdField_a_of_type_OrgJsonJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete setMessage message:" + localJSONObject.toString());
-      }
+      localJSONObject.put("responseData", new JSONObject("{'result':-1,'message':'not find method'}"));
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:qqJSBridge.setMessage('" + localJSONObject.toString() + "');");
       return;
     }

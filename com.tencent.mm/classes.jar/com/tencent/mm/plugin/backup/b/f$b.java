@@ -5,28 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f$b
   implements Cloneable, Comparable<b>
 {
-  public String jza;
-  public long jzb = 0L;
-  public long jzc = 0L;
-  public long jzd = -1L;
-  public long jze = -1L;
+  public String uWu;
+  public long uWv = 0L;
+  public long uWw = 0L;
+  public long uWx = -1L;
+  public long uWy = -1L;
   
-  public final b aSV()
+  public final b cUT()
   {
-    AppMethodBeat.i(17114);
+    AppMethodBeat.i(21166);
     b localb = new b();
-    localb.jza = this.jza;
-    localb.jzb = this.jzb;
-    localb.jzc = this.jzc;
-    localb.jzd = this.jzd;
-    localb.jze = this.jze;
-    AppMethodBeat.o(17114);
+    localb.uWu = this.uWu;
+    localb.uWv = this.uWv;
+    localb.uWw = this.uWw;
+    localb.uWx = this.uWx;
+    localb.uWy = this.uWy;
+    AppMethodBeat.o(21166);
     return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.f.b
  * JD-Core Version:    0.7.0.1
  */

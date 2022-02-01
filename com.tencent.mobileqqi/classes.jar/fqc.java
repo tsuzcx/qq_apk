@@ -1,46 +1,13 @@
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-public class fqc
-  extends FMObserver
+class fqc
+  implements Runnable
 {
-  public fqc(FMActivity paramFMActivity) {}
+  fqc(fqb paramfqb) {}
   
-  protected void a()
+  public void run()
   {
-    super.a();
-    this.a.runOnUiThread(new fqg(this));
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.a.d) {
-      return;
-    }
-    this.a.runOnUiThread(new fqh(this, paramBoolean));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fqd(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.runOnUiThread(new fqe(this, paramLong2));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!this.a.d) {
-      FMToastUtil.a(paramString);
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fqf(this));
+    FMActivity.a(this.a.a);
   }
 }
 

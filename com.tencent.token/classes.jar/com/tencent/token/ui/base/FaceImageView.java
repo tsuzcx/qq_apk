@@ -15,7 +15,7 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.token.global.h;
+import com.tencent.token.xv;
 
 public class FaceImageView
   extends View
@@ -50,27 +50,34 @@ public class FaceImageView
     this.h.setAntiAlias(true);
     this.h.setStyle(Paint.Style.STROKE);
     this.h.setColor(-1);
-    this.h.setTextSize(18.0F * this.i);
+    this.h.setTextSize(this.i * 18.0F);
     this.h.setTextAlign(Paint.Align.CENTER);
     this.v = paramContext;
     paramAttributeSet = new BitmapFactory.Options();
     paramAttributeSet.inSampleSize = 2;
-    this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2130837691, paramAttributeSet);
-    this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2130837697);
+    this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2131099838, paramAttributeSet);
+    this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131099844);
     this.i = paramContext.getResources().getDisplayMetrics().density;
     paramAttributeSet = paramContext.getResources().getDisplayMetrics();
     this.j = paramAttributeSet.heightPixels;
     this.k = paramAttributeSet.widthPixels;
-    h.c("msg.arg1 screenWidth=" + this.j + ",screenHeight=" + this.k);
-    this.q = (140.0F * this.i);
-    this.r = (320.0F * this.i);
-    this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2130837703);
-    this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2130837717);
-    this.g = BitmapFactory.decodeResource(paramContext.getResources(), 2130837719);
-    this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2130837718);
-    this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2130837720);
+    paramAttributeSet = new StringBuilder("msg.arg1 screenWidth=");
+    paramAttributeSet.append(this.j);
+    paramAttributeSet.append(",screenHeight=");
+    paramAttributeSet.append(this.k);
+    xv.c(paramAttributeSet.toString());
+    float f1 = this.i;
+    this.q = (140.0F * f1);
+    this.r = (f1 * 320.0F);
+    this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131099850);
+    this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099864);
+    this.g = BitmapFactory.decodeResource(paramContext.getResources(), 2131099866);
+    this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2131099865);
+    this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2131099867);
     this.t = new RectF();
-    h.c("FaceImageView scale=" + this.i);
+    paramContext = new StringBuilder("FaceImageView scale=");
+    paramContext.append(this.i);
+    xv.c(paramContext.toString());
     this.p = (this.r / n);
   }
   
@@ -82,56 +89,64 @@ public class FaceImageView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.m == null) {
+    Object localObject = this.m;
+    if (localObject == null) {
       return;
     }
-    paramCanvas.drawBitmap(this.a, null, this.m, this.h);
+    paramCanvas.drawBitmap(this.a, null, (Rect)localObject, this.h);
+    int i1 = this.l;
     float f1;
-    if (this.l == 0)
+    if (i1 == 0)
     {
-      paramCanvas.drawBitmap(this.c, (this.j - this.c.getWidth()) / 2, this.k - this.i * 130.0F, this.h);
+      localObject = this.c;
+      paramCanvas.drawBitmap((Bitmap)localObject, (this.j - ((Bitmap)localObject).getWidth()) / 2, this.k - this.i * 130.0F, this.h);
       f1 = this.o % n * this.p + this.q;
-      if (f1 - this.b.getHeight() <= 0.0F)
-      {
+      if (f1 - this.b.getHeight() <= 0.0F) {
         f1 = this.q;
-        paramCanvas.drawBitmap(this.b, 0.0F, f1, this.h);
-        this.o += 1.0F;
+      } else {
+        f1 -= this.b.getHeight();
       }
+      paramCanvas.drawBitmap(this.b, 0.0F, f1, this.h);
+      this.o += 1.0F;
     }
-    for (;;)
+    else if (i1 == 1)
     {
-      invalidate();
-      return;
-      f1 -= this.b.getHeight();
-      break;
-      if (this.l == 1)
-      {
-        paramCanvas.drawBitmap(this.d, (this.j - this.d.getWidth()) / 2, this.k - this.i * 130.0F, this.h);
+      localObject = this.d;
+      paramCanvas.drawBitmap((Bitmap)localObject, (this.j - ((Bitmap)localObject).getWidth()) / 2, this.k - this.i * 130.0F, this.h);
+    }
+    else if (i1 == 2)
+    {
+      if (this.u == 0L) {
+        this.u = SystemClock.elapsedRealtime();
       }
-      else if (this.l == 2)
+      if (SystemClock.elapsedRealtime() - this.u > 10000L)
       {
-        if (this.u == 0L) {
-          this.u = SystemClock.elapsedRealtime();
-        }
-        if (SystemClock.elapsedRealtime() - this.u > 10000L)
-        {
-          paramCanvas.drawBitmap(this.g, (this.j - this.g.getWidth()) / 2, this.k - this.i * 130.0F, this.h);
-        }
-        else
-        {
-          this.t.set((this.j - this.e.getWidth()) / 2, this.k - this.i * 130.0F, (this.j - this.e.getWidth()) / 2 + this.e.getWidth() - 15.0F * this.i + this.s / 20.0F % 3.0F * 6.0F * this.i, this.k - this.i * 130.0F + this.e.getHeight());
-          paramCanvas.save();
-          paramCanvas.clipRect(this.t);
-          paramCanvas.drawBitmap(this.e, (this.j - this.e.getWidth()) / 2, this.k - this.i * 130.0F, this.h);
-          paramCanvas.restore();
-          this.s += 1.0F;
-        }
+        localObject = this.g;
+        paramCanvas.drawBitmap((Bitmap)localObject, (this.j - ((Bitmap)localObject).getWidth()) / 2, this.k - this.i * 130.0F, this.h);
       }
-      else if (this.l == 3)
+      else
       {
-        paramCanvas.drawBitmap(this.f, (this.j - this.f.getWidth()) / 2, this.k - this.i * 130.0F, this.h);
+        localObject = this.t;
+        f1 = (this.j - this.e.getWidth()) / 2;
+        float f2 = this.k;
+        float f3 = this.i;
+        float f4 = (this.j - this.e.getWidth()) / 2 + this.e.getWidth();
+        float f5 = this.i;
+        ((RectF)localObject).set(f1, f2 - f3 * 130.0F, f4 - 15.0F * f5 + this.s / 20.0F % 3.0F * 6.0F * f5, this.k - f5 * 130.0F + this.e.getHeight());
+        paramCanvas.save();
+        paramCanvas.clipRect(this.t);
+        localObject = this.e;
+        paramCanvas.drawBitmap((Bitmap)localObject, (this.j - ((Bitmap)localObject).getWidth()) / 2, this.k - this.i * 130.0F, this.h);
+        paramCanvas.restore();
+        this.s += 1.0F;
       }
     }
+    else if (i1 == 3)
+    {
+      localObject = this.f;
+      paramCanvas.drawBitmap((Bitmap)localObject, (this.j - ((Bitmap)localObject).getWidth()) / 2, this.k - this.i * 130.0F, this.h);
+    }
+    invalidate();
   }
   
   public void setStatus(int paramInt)

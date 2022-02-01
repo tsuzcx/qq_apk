@@ -49,28 +49,29 @@ final class OperatorSwitch$SwitchSubscriber<T>
         this.missed = true;
         return;
       }
+      Throwable localThrowable = this.error;
+      if (!this.mainDone) {
+        return;
+      }
+      if (localThrowable != null)
+      {
+        this.child.onError(localThrowable);
+        return;
+      }
+      this.child.onCompleted();
+      return;
     }
     finally {}
-    Throwable localThrowable = this.error;
-    if (!this.mainDone) {
-      return;
-    }
-    if (localThrowable != null)
-    {
-      this.child.onError(localThrowable);
-      return;
-    }
-    this.child.onCompleted();
   }
   
   void emit(T paramT, long paramLong)
   {
-    Object localObject;
     try
     {
       if (paramLong != this.index) {
         return;
       }
+      Object localObject;
       if (this.emitting)
       {
         List localList = this.queue;
@@ -84,91 +85,98 @@ final class OperatorSwitch$SwitchSubscriber<T>
         this.missed = true;
         return;
       }
-    }
-    finally {}
-    this.emitting = true;
-    this.child.onNext(paramT);
-    this.arbiter.produced(1L);
-    while (!this.child.isUnsubscribed())
-    {
-      try
+      this.emitting = true;
+      this.child.onNext(paramT);
+      this.arbiter.produced(1L);
+      for (;;)
       {
-        if (!this.missed)
-        {
-          this.emitting = false;
+        if (this.child.isUnsubscribed()) {
           return;
         }
-      }
-      finally {}
-      paramT = this.error;
-      boolean bool1 = this.mainDone;
-      localObject = this.queue;
-      boolean bool2 = this.innerActive;
-      if ((!this.delayError) && (paramT != null))
-      {
-        this.child.onError(paramT);
-        return;
-      }
-      if ((localObject == null) && (!bool2) && (bool1))
-      {
-        if (paramT != null)
+        try
         {
-          this.child.onError(paramT);
-          return;
-        }
-        this.child.onCompleted();
-        return;
-      }
-      if (localObject != null)
-      {
-        paramT = ((List)localObject).iterator();
-        int i = 0;
-        while (paramT.hasNext())
-        {
-          localObject = paramT.next();
-          if (this.child.isUnsubscribed()) {
+          boolean bool1 = this.missed;
+          int i = 0;
+          if (!bool1)
+          {
+            this.emitting = false;
             return;
           }
-          this.child.onNext(localObject);
-          i += 1;
+          paramT = this.error;
+          bool1 = this.mainDone;
+          localObject = this.queue;
+          boolean bool2 = this.innerActive;
+          if ((!this.delayError) && (paramT != null))
+          {
+            this.child.onError(paramT);
+            return;
+          }
+          if ((localObject == null) && (!bool2) && (bool1))
+          {
+            if (paramT != null)
+            {
+              this.child.onError(paramT);
+              return;
+            }
+            this.child.onCompleted();
+            return;
+          }
+          if (localObject != null)
+          {
+            paramT = ((List)localObject).iterator();
+            while (paramT.hasNext())
+            {
+              localObject = paramT.next();
+              if (this.child.isUnsubscribed()) {
+                return;
+              }
+              this.child.onNext(localObject);
+              i += 1;
+            }
+            this.arbiter.produced(i);
+          }
         }
-        this.arbiter.produced(i);
+        finally {}
       }
+      throw paramT;
     }
+    finally {}
+    for (;;) {}
   }
   
   void error(Throwable paramThrowable, long paramLong)
   {
-    int i = 0;
-    try
-    {
-      if (paramLong != this.index) {
-        break label80;
-      }
-      this.innerActive = false;
-      paramThrowable = updateError(paramThrowable);
-      if (this.emitting)
-      {
-        this.missed = true;
-        return;
-      }
-      if ((this.delayError) && (!this.mainDone)) {
-        return;
-      }
-    }
-    finally {}
-    this.emitting = true;
     for (;;)
     {
-      if (i == 0) {
-        break;
+      try
+      {
+        long l = this.index;
+        i = 0;
+        if (paramLong == l)
+        {
+          this.innerActive = false;
+          paramThrowable = updateError(paramThrowable);
+          if (this.emitting)
+          {
+            this.missed = true;
+            return;
+          }
+          if ((this.delayError) && (!this.mainDone)) {
+            return;
+          }
+          this.emitting = true;
+          if (i != 0)
+          {
+            pluginError(paramThrowable);
+            return;
+          }
+          this.child.onError(paramThrowable);
+          return;
+        }
       }
-      pluginError(paramThrowable);
-      return;
-      label80:
-      i = 1;
+      finally {}
+      int i = 1;
     }
-    this.child.onError(paramThrowable);
   }
   
   void init()
@@ -190,16 +198,17 @@ final class OperatorSwitch$SwitchSubscriber<T>
       if (this.innerActive) {
         return;
       }
-    }
-    finally {}
-    this.emitting = true;
-    Throwable localThrowable = this.error;
-    if (localThrowable == null)
-    {
-      this.child.onCompleted();
+      this.emitting = true;
+      Throwable localThrowable = this.error;
+      if (localThrowable == null)
+      {
+        this.child.onCompleted();
+        return;
+      }
+      this.child.onError(localThrowable);
       return;
     }
-    this.child.onError(localThrowable);
+    finally {}
   }
   
   public void onError(Throwable paramThrowable)
@@ -216,10 +225,11 @@ final class OperatorSwitch$SwitchSubscriber<T>
       if ((this.delayError) && (this.innerActive)) {
         return;
       }
+      this.emitting = true;
+      this.child.onError(paramThrowable);
+      return;
     }
     finally {}
-    this.emitting = true;
-    this.child.onError(paramThrowable);
   }
   
   public void onNext(Observable<? extends T> paramObservable)
@@ -265,7 +275,7 @@ final class OperatorSwitch$SwitchSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorSwitch.SwitchSubscriber
  * JD-Core Version:    0.7.0.1
  */

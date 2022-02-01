@@ -6,37 +6,44 @@ import java.util.Comparator;
 
 public final class r
 {
-  public static final Comparator<r.a> bbg;
-  public static final Comparator<r.a> bbh;
-  public final int bbi;
-  public final ArrayList<r.a> bbj;
-  public final r.a[] bbk;
-  public int bbl;
-  public int bbm;
-  public int bbn;
-  public int bbo;
+  public static final Comparator<a> dkF;
+  public static final Comparator<a> dkG;
+  public final int dkH;
+  public final ArrayList<a> dkI;
+  public final a[] dkJ;
+  public int dkK;
+  public int dkL;
+  public int dkM;
+  public int dkN;
   
   static
   {
-    AppMethodBeat.i(95933);
-    bbg = new r.1();
-    bbh = new r.2();
-    AppMethodBeat.o(95933);
+    AppMethodBeat.i(93197);
+    dkF = new Comparator() {};
+    dkG = new Comparator() {};
+    AppMethodBeat.o(93197);
   }
   
-  public r()
+  public r(int paramInt)
   {
-    AppMethodBeat.i(95932);
-    this.bbi = 2000;
-    this.bbk = new r.a[5];
-    this.bbj = new ArrayList();
-    this.bbl = -1;
-    AppMethodBeat.o(95932);
+    AppMethodBeat.i(210295);
+    this.dkH = 2000;
+    this.dkJ = new a[5];
+    this.dkI = new ArrayList();
+    this.dkK = -1;
+    AppMethodBeat.o(210295);
+  }
+  
+  public static final class a
+  {
+    public int index;
+    public float value;
+    public int weight;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.exoplayer2.i.r
  * JD-Core Version:    0.7.0.1
  */

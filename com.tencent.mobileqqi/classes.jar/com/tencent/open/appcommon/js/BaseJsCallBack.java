@@ -34,11 +34,11 @@ import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.MyAppApi;
+import hkq;
 import hkr;
 import hks;
 import hkt;
 import hku;
-import hkv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -139,7 +139,7 @@ public class BaseJsCallBack
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.mHandler.post(new hkv(this, paramString));
+    this.mHandler.post(new hku(this, paramString));
   }
   
   public void checkUpdateRes()
@@ -367,7 +367,7 @@ public class BaseJsCallBack
         if (!MyAppApi.a().c()) {
           break;
         }
-        ThreadManager.b().post(new hks(this, paramString2, bool1, bool2));
+        ThreadManager.b().post(new hkr(this, paramString2, bool1, bool2));
         return;
       }
       return;
@@ -382,7 +382,7 @@ public class BaseJsCallBack
     label272:
     if ((((DownloadInfo)localObject).h == 1) && (MyAppApi.a().b()))
     {
-      ThreadManager.b().post(new hkt(this, paramString2, bool1, bool2));
+      ThreadManager.b().post(new hks(this, paramString2, bool1, bool2));
       return;
     }
     goUrl(paramString1.optString("url"), true);
@@ -1138,7 +1138,7 @@ public class BaseJsCallBack
   
   public void onJsAlert(String paramString)
   {
-    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new hkr(this)).setCancelable(false).create().show();
+    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new hkq(this)).setCancelable(false).create().show();
   }
   
   public void onLoadResult(String paramString)
@@ -1232,7 +1232,7 @@ public class BaseJsCallBack
   public void setActionButton(String paramString)
   {
     LogUtility.c("TIME-STATISTIC", "JsCallBack--changeButtonStyle");
-    this.mHandler.post(new hku(this, paramString));
+    this.mHandler.post(new hkt(this, paramString));
   }
   
   public void setAllowCallBackEvent(String paramString)

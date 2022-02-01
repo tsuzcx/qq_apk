@@ -21,15 +21,15 @@ public final class zzbh
   public zzbh(Context paramContext, Looper paramLooper, ClientSettings paramClientSettings, zzh paramzzh, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
     super(paramContext, paramLooper, 16, paramClientSettings, paramConnectionCallbacks, paramOnConnectionFailedListener);
-    AppMethodBeat.i(77103);
+    AppMethodBeat.i(10762);
     if (paramzzh == null)
     {
       this.zzcf = new Bundle();
-      AppMethodBeat.o(77103);
+      AppMethodBeat.o(10762);
       return;
     }
     paramContext = new NoSuchMethodError();
-    AppMethodBeat.o(77103);
+    AppMethodBeat.o(10762);
     throw paramContext;
   }
   
@@ -55,14 +55,14 @@ public final class zzbh
   
   public final boolean requiresSignIn()
   {
-    AppMethodBeat.i(77104);
+    AppMethodBeat.i(10763);
     ClientSettings localClientSettings = getClientSettings();
     if ((!TextUtils.isEmpty(localClientSettings.getAccountName())) && (!localClientSettings.getApplicableScopes(zzf.API).isEmpty()))
     {
-      AppMethodBeat.o(77104);
+      AppMethodBeat.o(10763);
       return true;
     }
-    AppMethodBeat.o(77104);
+    AppMethodBeat.o(10763);
     return false;
   }
 }

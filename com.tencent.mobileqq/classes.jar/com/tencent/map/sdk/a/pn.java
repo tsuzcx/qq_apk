@@ -63,112 +63,206 @@ public final class pn
   extends pt
   implements TencentMap.OnCameraChangeListener
 {
-  public TencentMap.OnInfoWindowClickListener A = null;
-  public TencentMap.OnMapPoiClickListener B = null;
-  protected final Handler C = new pe(this);
-  public TencentMap.CancelableCallback D = null;
-  public TencentMap.OnCompassClickedListener E = null;
-  public ln.a F = null;
+  public TencentMap.OnInfoWindowClickListener A;
+  public TencentMap.OnMapPoiClickListener B;
+  protected final Handler C;
+  public TencentMap.CancelableCallback D;
+  public TencentMap.OnCompassClickedListener E;
+  public ln.a F;
   public Handler G;
   public ly H;
-  public Bitmap.Config I = Bitmap.Config.RGB_565;
-  public int J = -2147483648;
-  public int K = -2147483648;
-  public int L = -2147483648;
-  public int M = -2147483648;
-  public float N = 0.5F;
-  public float O = 0.5F;
-  public float P = 0.5F;
-  public float Q = 0.5F;
-  public boolean R = false;
-  public boolean S = true;
-  public int T = 0;
-  public int U = 0;
-  protected boolean V = true;
-  protected boolean W = true;
-  protected boolean X = true;
-  protected boolean Y = true;
-  protected boolean Z = true;
+  public Bitmap.Config I;
+  public int J;
+  public int K;
+  public int L;
+  public int M;
+  public float N;
+  public float O;
+  public float P;
+  public float Q;
+  public boolean R;
+  public boolean S;
+  public int T;
+  public int U;
+  protected boolean V;
+  protected boolean W;
+  protected boolean X;
+  protected boolean Y;
+  protected boolean Z;
   public final byte[] a = new byte[0];
   private String aI = "";
-  private List<mu> aJ = new ArrayList();
-  private List<mu> aK = new ArrayList();
-  private List<mu> aL = new ArrayList();
-  private Map<Class<? extends mu>, mb> aM = new HashMap();
-  private List<hc> aN = null;
-  private TencentMap.OnDismissCallback aO = null;
-  private final lh aP = new ph(this);
-  private ih aQ = new pg(this);
-  private final hb aR = new pr(this);
-  private he aS = new pi(this);
-  private Comparator<mu> aT = new pn.1(this);
-  private boolean aU = true;
-  private GeoPoint aV = null;
-  private jx aW = null;
-  private float aX = 100.0F;
-  private float aY = 100.0F;
-  private volatile boolean aZ = false;
-  protected boolean aa = true;
-  public int ab = 19;
-  public int ac = 3;
-  public Handler ad = null;
-  public boolean ae = true;
-  public boolean af = true;
-  public volatile boolean ag = false;
-  public volatile boolean ah = false;
-  protected int ai = 0;
-  public LatLng aj = null;
-  public LatLng ak = null;
-  public int al = 0;
-  public int am = 0;
-  public int an = 0;
-  public int ao = 0;
-  public int ap = 0;
-  public int aq = 0;
-  public int ar = 0;
-  public boolean as = false;
-  public ms at = null;
-  public boolean au = false;
+  private List<mu> aJ;
+  private List<mu> aK;
+  private List<mu> aL;
+  private Map<Class<? extends mu>, mb> aM;
+  private List<hc> aN;
+  private TencentMap.OnDismissCallback aO;
+  private final lh aP;
+  private ih aQ;
+  private final hb aR;
+  private he aS;
+  private Comparator<mu> aT;
+  private boolean aU;
+  private GeoPoint aV;
+  private jx aW;
+  private float aX;
+  private float aY;
+  private volatile boolean aZ;
+  protected boolean aa;
+  public int ab;
+  public int ac;
+  public Handler ad;
+  public boolean ae;
+  public boolean af;
+  public volatile boolean ag;
+  public volatile boolean ah;
+  protected int ai;
+  public LatLng aj;
+  public LatLng ak;
+  public int al;
+  public int am;
+  public int an;
+  public int ao;
+  public int ap;
+  public int aq;
+  public int ar;
+  public boolean as;
+  public ms at;
+  public boolean au;
   public hr av;
-  public List<ms> aw = new ArrayList();
-  public List<MapPoi> ax = new ArrayList();
+  public List<ms> aw;
+  public List<MapPoi> ax;
   public boolean b = false;
-  private boolean ba = false;
-  private int bb = 10;
-  private boolean bc = false;
-  private float bd = 0.0F;
-  private AtomicBoolean be = new AtomicBoolean(false);
-  private final gr bf = new pk(this);
+  private boolean ba;
+  private int bb;
+  private boolean bc;
+  private float bd;
+  private AtomicBoolean be;
+  private final gr bf;
   private fv bg;
-  private boolean bh = true;
-  public GlAnimation c = null;
-  public GlAnimation d = null;
-  public GlAnimation e = null;
+  private boolean bh;
+  public GlAnimation c;
+  public GlAnimation d;
+  public GlAnimation e;
   protected volatile IndoorBuilding f;
-  public int g = 22;
-  public List<mu> h = new ArrayList();
-  public List<mu> i = new ArrayList();
+  public int g;
+  public List<mu> h;
+  public List<mu> i;
   public lj j;
-  public jz k = null;
-  public jd l = null;
+  public jz k;
+  public jd l;
   public jr m;
   public ij n;
-  public kj o = null;
-  protected TencentMapGestureListenerList p = null;
-  public AnimationListener q = null;
-  public gw r = null;
-  public TencentMap.OnMapClickListener s = null;
-  public lq.a t = null;
-  public List<TencentMap.OnCameraChangeListener> u = new CopyOnWriteArrayList();
-  public TencentMap.OnMapLongClickListener v = null;
-  volatile boolean w = false;
-  public volatile TencentMap.OnMapLoadedCallback x = null;
+  public kj o;
+  protected TencentMapGestureListenerList p;
+  public AnimationListener q;
+  public gw r;
+  public TencentMap.OnMapClickListener s;
+  public lq.a t;
+  public List<TencentMap.OnCameraChangeListener> u;
+  public TencentMap.OnMapLongClickListener v;
+  volatile boolean w;
+  public volatile TencentMap.OnMapLoadedCallback x;
   protected TencentMap.OnIndoorStateChangeListener y;
-  public TencentMap.OnMarkerClickListener z = null;
+  public TencentMap.OnMarkerClickListener z;
   
   public pn(IMapRenderView paramIMapRenderView, Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
     super(paramIMapRenderView, paramContext, paramTencentMapOptions);
+    Object localObject = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.g = 22;
+    this.h = new ArrayList();
+    this.i = new ArrayList();
+    this.aJ = new ArrayList();
+    this.aK = new ArrayList();
+    this.k = null;
+    this.l = null;
+    this.aL = new ArrayList();
+    this.o = null;
+    this.p = null;
+    this.q = null;
+    this.r = null;
+    this.aM = new HashMap();
+    this.aN = null;
+    this.s = null;
+    this.t = null;
+    this.u = new CopyOnWriteArrayList();
+    this.v = null;
+    this.w = false;
+    this.x = null;
+    this.aO = null;
+    this.z = null;
+    this.A = null;
+    this.B = null;
+    this.aQ = new pg(this);
+    this.D = null;
+    this.E = null;
+    this.F = null;
+    this.aS = new pi(this);
+    this.aT = new pn.1(this);
+    this.I = Bitmap.Config.RGB_565;
+    this.aU = true;
+    this.J = -2147483648;
+    this.K = -2147483648;
+    this.L = -2147483648;
+    this.M = -2147483648;
+    this.N = 0.5F;
+    this.O = 0.5F;
+    this.P = 0.5F;
+    this.Q = 0.5F;
+    this.aV = null;
+    this.aW = null;
+    this.R = false;
+    this.aX = 100.0F;
+    this.aY = 100.0F;
+    this.S = true;
+    this.aZ = false;
+    this.ba = false;
+    this.bb = 10;
+    this.T = 0;
+    this.U = 0;
+    this.bc = false;
+    this.V = true;
+    this.W = true;
+    this.X = true;
+    this.Y = true;
+    this.Z = true;
+    this.aa = true;
+    this.ab = 19;
+    this.ac = 3;
+    this.bd = 0.0F;
+    this.be = new AtomicBoolean(false);
+    this.ad = null;
+    this.ae = true;
+    this.af = true;
+    this.ag = false;
+    this.ah = false;
+    this.ai = 0;
+    this.aj = null;
+    this.ak = null;
+    this.al = 0;
+    this.am = 0;
+    this.an = 0;
+    this.ao = 0;
+    this.ap = 0;
+    this.aq = 0;
+    this.ar = 0;
+    this.as = false;
+    this.at = null;
+    this.au = false;
+    this.bh = true;
+    this.aw = new ArrayList();
+    this.ax = new ArrayList();
+    this.C = new pe(this);
+    this.aR = new pr(this);
+    this.aQ = new pg(this);
+    this.bf = new pk(this);
+    this.aS = new pi(this);
+    this.aP = new ph(this);
+    this.aW = new jx();
     jx.a(paramContext);
     this.ab = this.az.c;
     this.ac = this.az.d;
@@ -180,100 +274,92 @@ public final class pn
     paramContext = paramContext.b.c.b;
     paramContext.b = paramIMapRenderView;
     boolean bool = paramIMapRenderView.a();
-    if ((paramContext.c == null) || (paramContext.c.get() != null))
-    {
-      this.az.a(this.aR);
-      this.az.a(this);
-      if (this.ad == null) {
-        this.ad = new Handler();
-      }
-      paramIMapRenderView = (WindowManager)this.ay.getSystemService("window");
-      this.aq = paramIMapRenderView.getDefaultDisplay().getWidth();
-      this.ar = paramIMapRenderView.getDefaultDisplay().getHeight();
-      if ((paramTencentMapOptions == null) || (nl.a(paramTencentMapOptions.getSubKey()))) {
-        break label935;
+    if ((paramContext.c != null) && (paramContext.c.get() == null)) {
+      if (bool) {
+        ((lf)paramContext.c.get()).b(paramContext);
+      } else {
+        ((lf)paramContext.c.get()).a(paramContext);
       }
     }
-    label935:
-    for (paramIMapRenderView = paramTencentMapOptions.getSubKey();; paramIMapRenderView = null)
+    this.az.a(this.aR);
+    this.az.a(this);
+    if (this.ad == null) {
+      this.ad = new Handler();
+    }
+    paramIMapRenderView = (WindowManager)this.ay.getSystemService("window");
+    this.aq = paramIMapRenderView.getDefaultDisplay().getWidth();
+    this.ar = paramIMapRenderView.getDefaultDisplay().getHeight();
+    paramIMapRenderView = localObject;
+    if (paramTencentMapOptions != null)
     {
-      this.o = new kj(this, paramIMapRenderView);
-      this.k = new jz(this);
-      if (paramTencentMapOptions != null)
-      {
-        this.R = paramTencentMapOptions.isHandDrawMapEnable();
-        this.as = paramTencentMapOptions.isMultipleInfoWindowEnable();
+      paramIMapRenderView = localObject;
+      if (!nl.a(paramTencentMapOptions.getSubKey())) {
+        paramIMapRenderView = paramTencentMapOptions.getSubKey();
       }
-      return;
-      if (bool)
-      {
-        ((lf)paramContext.c.get()).b(paramContext);
-        break;
-      }
-      ((lf)paramContext.c.get()).a(paramContext);
-      break;
+    }
+    this.o = new kj(this, paramIMapRenderView);
+    this.k = new jz(this);
+    if (paramTencentMapOptions != null)
+    {
+      this.R = paramTencentMapOptions.isHandDrawMapEnable();
+      this.as = paramTencentMapOptions.isMultipleInfoWindowEnable();
     }
   }
   
   private boolean a(mu parammu, float paramFloat1, float paramFloat2)
   {
-    if ((parammu == null) || (!parammu.a()) || (!parammu.m())) {
-      return false;
-    }
-    if (!parammu.a(paramFloat1, paramFloat2)) {
-      return false;
-    }
-    mb localmb = (mb)this.aM.get(parammu.getClass());
-    if (localmb != null) {
-      return localmb.a(parammu, this.az.b.h.a(new DoublePoint(paramFloat1, paramFloat2)));
+    if ((parammu != null) && (parammu.a()))
+    {
+      if (!parammu.m()) {
+        return false;
+      }
+      if (!parammu.a(paramFloat1, paramFloat2)) {
+        return false;
+      }
+      mb localmb = (mb)this.aM.get(parammu.getClass());
+      if (localmb != null) {
+        return localmb.a(parammu, this.az.b.h.a(new DoublePoint(paramFloat1, paramFloat2)));
+      }
     }
     return false;
   }
   
   public static boolean a(LatLng paramLatLng, fw[] paramArrayOffw)
   {
-    if (paramLatLng == null) {}
-    do
-    {
+    if (paramLatLng == null) {
       return false;
-      paramLatLng = kd.b(fz.a(paramLatLng));
-    } while ((paramLatLng.b < paramArrayOffw[0].b) || (paramLatLng.b > paramArrayOffw[1].b) || (paramLatLng.a > paramArrayOffw[0].a) || (paramLatLng.a < paramArrayOffw[1].a));
-    return true;
+    }
+    paramLatLng = kd.b(fz.a(paramLatLng));
+    return (paramLatLng.b >= paramArrayOffw[0].b) && (paramLatLng.b <= paramArrayOffw[1].b) && (paramLatLng.a <= paramArrayOffw[0].a) && (paramLatLng.a >= paramArrayOffw[1].a);
   }
   
   private String d(float paramFloat1, float paramFloat2)
   {
-    for (;;)
+    int i1;
+    Object localObject3;
+    synchronized (this.a)
     {
-      int i1;
-      synchronized (this.a)
+      i1 = this.h.size() - 1;
+      if (i1 >= 0)
       {
-        i1 = this.h.size() - 1;
-        if (i1 >= 0)
+        Object localObject1 = (mu)this.h.get(i1);
+        if ((localObject1 != null) && (((mu)localObject1).a()) && ((localObject1 instanceof ms)) && (((mu)localObject1).a(paramFloat1, paramFloat2)))
         {
-          Object localObject1 = (mu)this.h.get(i1);
-          if ((localObject1 == null) || (!((mu)localObject1).a()) || (!(localObject1 instanceof ms)) || (!((mu)localObject1).a(paramFloat1, paramFloat2))) {
-            break label98;
-          }
           localObject1 = ((mu)localObject1).L;
           return localObject1;
         }
       }
-      Object localObject3 = null;
-      continue;
-      label98:
-      i1 -= 1;
     }
   }
   
   private void g(boolean paramBoolean)
   {
-    if ((!paramBoolean) || (jx.d()))
+    if ((paramBoolean) && (!jx.d()))
     {
-      this.az.a(this.aP);
+      this.az.a(null);
       return;
     }
-    this.az.a(null);
+    this.az.a(this.aP);
   }
   
   public final mb a(Class<? extends mu> paramClass)
@@ -283,120 +369,134 @@ public final class pn
   
   public final mu a(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    if (bool) {
       return null;
     }
-    for (;;)
+    label155:
+    synchronized (this.a)
     {
-      synchronized (this.a)
+      Iterator localIterator = this.h.iterator();
+      Object localObject1;
+      do
       {
-        Iterator localIterator = this.h.iterator();
-        if (localIterator.hasNext())
-        {
-          mu localmu = (mu)localIterator.next();
-          if ((localmu == null) || (!TextUtils.equals(localmu.L, paramString))) {
-            continue;
-          }
-          localIterator.remove();
-          paramString = localmu;
-          if (paramBoolean)
-          {
-            localmu.h();
-            paramString = localmu;
-          }
-          if (paramString != null)
-          {
-            this.i.remove(paramString);
-            this.aJ.remove(paramString);
-            this.aK.remove(paramString);
-          }
-          return paramString;
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
         }
+        localObject1 = (mu)localIterator.next();
+      } while ((localObject1 == null) || (!TextUtils.equals(((mu)localObject1).L, paramString)));
+      localIterator.remove();
+      if (paramBoolean)
+      {
+        ((mu)localObject1).h();
+        break label155;
+        if (localObject1 != null)
+        {
+          this.i.remove(localObject1);
+          this.aJ.remove(localObject1);
+          this.aK.remove(localObject1);
+        }
+        return localObject1;
       }
-      paramString = null;
     }
   }
   
   public final void a()
   {
-    kl localkl = this.az.b.c;
-    if (localkl.d != null)
+    Object localObject1 = this.az.b.c;
+    Object localObject2;
+    if (((kl)localObject1).d != null)
     {
-      localkl.k();
-      Iterator localIterator = localkl.d.iterator();
-      while (localIterator.hasNext()) {
-        if ((gv)localIterator.next() != null) {}
+      ((kl)localObject1).k();
+      localObject2 = ((kl)localObject1).d.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        gv localgv = (gv)((Iterator)localObject2).next();
       }
     }
-    localkl.a.c();
-    double d2 = (0.0D - localkl.h()) % 360.0D;
-    double d1;
-    if (d2 > 180.0D) {
+    ((kl)localObject1).a.c();
+    double d1 = ((kl)localObject1).h();
+    Double.isNaN(d1);
+    double d2 = (0.0D - d1) % 360.0D;
+    if (d2 > 180.0D)
+    {
       d1 = d2 - 360.0D;
     }
-    for (;;)
+    else
     {
-      d2 = 0.0D - localkl.i();
-      if ((d1 != 0.0D) || (d2 != 0.0D))
-      {
-        or.a("postRotateAndSkew distance:" + d1 + "," + d2);
-        long l1 = System.currentTimeMillis();
-        float f1 = (float)(d1 * 0.1000000014901161D);
-        float f2 = (float)(d2 * 0.1000000014901161D);
-        localkl.a(new kl.2(localkl, new double[] { 0.0D, 0.0D, 0.0D, 0.0D }, l1, f1, f2, d1, d2));
-      }
-      if (this.E != null) {
-        this.E.onCompassClicked();
-      }
-      return;
       d1 = d2;
       if (d2 < -180.0D) {
         d1 = d2 + 360.0D;
       }
     }
+    d2 = ((kl)localObject1).i();
+    Double.isNaN(d2);
+    d2 = 0.0D - d2;
+    if ((d1 != 0.0D) || (d2 != 0.0D))
+    {
+      localObject2 = new StringBuilder("postRotateAndSkew distance:");
+      ((StringBuilder)localObject2).append(d1);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(d2);
+      or.a(((StringBuilder)localObject2).toString());
+      long l1 = System.currentTimeMillis();
+      float f1 = (float)(d1 * 0.1000000014901161D);
+      float f2 = (float)(0.1000000014901161D * d2);
+      ((kl)localObject1).a(new kl.2((kl)localObject1, new double[] { 0.0D, 0.0D, 0.0D, 0.0D }, l1, f1, f2, d1, d2));
+    }
+    localObject1 = this.E;
+    if (localObject1 != null) {
+      ((TencentMap.OnCompassClickedListener)localObject1).onCompassClicked();
+    }
   }
   
   public final void a(float paramFloat)
   {
-    if (this.bd == paramFloat) {}
-    do
-    {
+    if (this.bd == paramFloat) {
       return;
-      this.bd = paramFloat;
-    } while (this.r == null);
-    hj localhj = new hj();
-    localhj.a = 1;
-    localhj.d = this.az.c();
-    localhj.e = this.az.b.h.a(new Point(0, this.ar / 2), new Point(this.aq, this.ar / 2));
-    this.r.a(localhj);
+    }
+    this.bd = paramFloat;
+    if (this.r != null)
+    {
+      hj localhj = new hj();
+      localhj.a = 1;
+      localhj.d = this.az.c();
+      localhj.e = this.az.b.h.a(new Point(0, this.ar / 2), new Point(this.aq, this.ar / 2));
+      this.r.a(localhj);
+    }
   }
   
   public final void a(int paramInt1, int paramInt2)
   {
-    if (this.aN != null)
+    Object localObject1 = this.aN;
+    if (localObject1 != null)
     {
-      int i2 = this.aN.size();
+      int i2 = ((List)localObject1).size();
       int i1 = 0;
       while (i1 < i2)
       {
-        ??? = (hc)this.aN.get(i1);
-        if (??? != null) {
-          ((hc)???).a(paramInt1, paramInt2);
+        localObject1 = (hc)this.aN.get(i1);
+        if (localObject1 != null) {
+          ((hc)localObject1).a(paramInt1, paramInt2);
         }
         i1 += 1;
       }
     }
-    if (this.a != null) {
-      synchronized (this.a)
+    localObject1 = this.a;
+    if (localObject1 != null) {
+      try
       {
         if (this.h != null)
         {
           Iterator localIterator = this.h.iterator();
-          if (localIterator.hasNext()) {
+          while (localIterator.hasNext()) {
             localIterator.next();
           }
         }
+        return;
       }
+      finally {}
     }
   }
   
@@ -413,15 +513,17 @@ public final class pn
   
   public final void a(TencentMap.OnCameraChangeListener paramOnCameraChangeListener)
   {
-    if ((this.u != null) && (paramOnCameraChangeListener != null)) {
-      this.u.add(paramOnCameraChangeListener);
+    List localList = this.u;
+    if ((localList != null) && (paramOnCameraChangeListener != null)) {
+      localList.add(paramOnCameraChangeListener);
     }
-    if (paramOnCameraChangeListener == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g(bool);
-      return;
+    boolean bool;
+    if (paramOnCameraChangeListener == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    g(bool);
   }
   
   public final void a(TencentMap.OnIndoorStateChangeListener paramOnIndoorStateChangeListener)
@@ -458,8 +560,9 @@ public final class pn
     this.ar = paramInt2;
     d((int)(this.aq * this.N), (int)(this.ar * this.O));
     e((int)(this.aq * this.P), (int)(this.ar * this.Q));
-    if (this.F != null) {
-      this.F.a();
+    paramGL10 = this.F;
+    if (paramGL10 != null) {
+      paramGL10.a();
     }
   }
   
@@ -496,39 +599,52 @@ public final class pn
   
   public final boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.av != null) {
-      return this.av.dispatchHoverEvent(paramMotionEvent);
+    hr localhr = this.av;
+    if (localhr != null) {
+      return localhr.dispatchHoverEvent(paramMotionEvent);
     }
     return false;
   }
   
   public final boolean a(mu parammu)
   {
+    int i1 = 0;
     if (parammu == null) {
       return false;
     }
-    for (;;)
+    int i4;
+    int i2;
+    int i3;
+    int i5;
+    synchronized (this.a)
     {
-      int i1;
-      int i3;
-      int i2;
-      synchronized (this.a)
+      int i6 = this.h.size();
+      i4 = i6;
+      i2 = 0;
+      if (i1 < i6)
       {
-        int i5 = this.h.size();
-        i1 = 0;
-        i3 = 0;
-        i2 = i5;
-        if (i1 < i5)
+        mu localmu = (mu)this.h.get(i1);
+        i3 = i4;
+        i5 = i2;
+        if (localmu != null)
         {
-          mu localmu = (mu)this.h.get(i1);
-          if ((localmu == null) || (i3 != 0) || (localmu.i() < parammu.i())) {
-            break label231;
+          i3 = i4;
+          i5 = i2;
+          if (i2 == 0)
+          {
+            i3 = i4;
+            i5 = i2;
+            if (localmu.i() >= parammu.i())
+            {
+              i3 = i1;
+              i5 = 1;
+            }
           }
-          i2 = 1;
-          i3 = i1;
-          break label241;
         }
-        this.h.add(i2, parammu);
+      }
+      else
+      {
+        this.h.add(i4, parammu);
         if ((parammu != null) && (parammu.q() != null))
         {
           if (this.f != null) {
@@ -540,225 +656,200 @@ public final class pn
         {
           this.i.add(parammu);
           Collections.sort(this.i, this.aT);
-          return true;
         }
-      }
-      if ((parammu instanceof mw))
-      {
-        this.aJ.add(parammu);
-        Collections.sort(this.aJ, this.aT);
-      }
-      else
-      {
-        this.aK.add(parammu);
-        Collections.sort(this.aK, this.aT);
-        continue;
-        label231:
-        int i4 = i3;
-        i3 = i2;
-        i2 = i4;
-        label241:
-        i1 += 1;
-        i4 = i3;
-        i3 = i2;
-        i2 = i4;
+        else if ((parammu instanceof mw))
+        {
+          this.aJ.add(parammu);
+          Collections.sort(this.aJ, this.aT);
+        }
+        else
+        {
+          this.aK.add(parammu);
+          Collections.sort(this.aK, this.aT);
+        }
+        return true;
       }
     }
   }
   
   public final boolean a(GL10 paramGL10)
   {
-    byte[] arrayOfByte = this.a;
-    Object localObject1 = null;
     int i2;
-    int i1;
-    Object localObject3;
-    int i3;
     Object localObject2;
-    boolean bool2;
-    for (;;)
+    int i1;
+    int i3;
+    Object localObject1;
+    Object localObject3;
+    label305:
+    label576:
+    label834:
+    synchronized (this.a)
     {
-      try
+      i2 = this.h.size();
+      localObject2 = null;
+      i1 = 0;
+      if (i1 < i2)
       {
-        i2 = this.h.size();
-        i1 = 0;
-        if (i1 < i2)
-        {
-          localObject3 = null;
-          i3 = i2;
-          if (this.h.size() > i2) {
-            i3 = this.h.size();
-          }
-          if (i1 < this.h.size()) {
-            localObject3 = (mu)this.h.get(i1);
-          }
-          if (localObject3 == null) {
-            break label829;
-          }
-          if (TextUtils.equals(((mu)localObject3).L, this.aI))
-          {
-            localObject2 = localObject3;
-            if (((mu)localObject3).a()) {
-              break label815;
-            }
-            localObject2 = localObject3;
-            if (this.bc) {
-              break label815;
-            }
-            ((mu)localObject3).c();
-            localObject2 = localObject1;
-            break label815;
-          }
-          if ((localObject3 instanceof mv))
-          {
-            ((mv)localObject3).a(this.az.b.h, paramGL10);
-            localObject2 = localObject1;
-            break label815;
-          }
-          ((mu)localObject3).a(paramGL10);
-          break label829;
+        i3 = i2;
+        if (this.h.size() > i2) {
+          i3 = this.h.size();
         }
-        if (localObject1 != null) {
+        if (i1 < this.h.size())
+        {
+          localObject1 = (mu)this.h.get(i1);
+          localObject3 = localObject2;
+          if (localObject1 == null) {
+            break label834;
+          }
+          if (TextUtils.equals(((mu)localObject1).L, this.aI))
+          {
+            if ((((mu)localObject1).a()) || (this.bc)) {
+              break label830;
+            }
+            ((mu)localObject1).c();
+            localObject3 = localObject2;
+            break label834;
+          }
+          if ((localObject1 instanceof mv))
+          {
+            ((mv)localObject1).a(this.az.b.h, paramGL10);
+            localObject3 = localObject2;
+            break label834;
+          }
           ((mu)localObject1).a(paramGL10);
+          localObject3 = localObject2;
+          break label834;
         }
-        bool2 = super.a(paramGL10);
-        if (((this.G == null) && (this.w)) || (this.az == null) || (!this.az.a) || (this.k == null) || (!this.k.e)) {
-          break label411;
-        }
-        if (this.aA == null) {
-          break label402;
-        }
-        localObject1 = this.aA;
-        if (((lw)localObject1).a != null)
-        {
-          bool1 = ((lw)localObject1).a.f();
-          if (!bool1) {
-            break label402;
-          }
-          i1 = 1;
-          if (i1 == 0) {
-            break label411;
-          }
-          if ((!this.w) && (this.C != null)) {
-            this.C.sendEmptyMessage(2);
-          }
-          if (this.G == null) {
-            break label411;
-          }
-          if (!this.bh) {
-            break label414;
-          }
-          this.bh = false;
-          paramGL10 = this.m;
-          if (paramGL10.r == null) {
-            break;
-          }
-          localObject1 = paramGL10.r.iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          ((gs)((Iterator)localObject1).next()).a(paramGL10);
-          continue;
-        }
-        boolean bool1 = false;
       }
-      finally {}
-      continue;
-      label402:
-      i1 = 0;
-    }
-    t();
-    label411:
-    return bool2;
-    label414:
-    int i4;
-    if (paramGL10 != null)
-    {
-      i3 = this.aq;
-      i4 = this.ar;
-      localObject1 = new int[i3 * i4];
-      localObject2 = new int[i3 * i4];
-      localObject3 = IntBuffer.wrap((int[])localObject1);
-      ((IntBuffer)localObject3).position(0);
-      paramGL10.glReadPixels(0, 0, i3, i4, 6408, 5121, (Buffer)localObject3);
-      i1 = 0;
-      while (i1 < i4)
+      else
       {
-        i2 = 0;
-        while (i2 < i3)
-        {
-          int i5 = localObject1[(i1 * i3 + i2)];
-          localObject2[((i4 - i1 - 1) * i3 + i2)] = (i5 & 0xFF00FF00 | i5 << 16 & 0xFF0000 | i5 >> 16 & 0xFF);
-          i2 += 1;
+        if (localObject2 != null) {
+          ((mu)localObject2).a(paramGL10);
         }
-        i1 += 1;
-      }
-    }
-    try
-    {
-      paramGL10 = Bitmap.createBitmap((int[])localObject2, i3, i4, this.I);
-      localObject1 = paramGL10;
-      if (this.aE != null)
-      {
+        boolean bool2 = super.a(paramGL10);
+        int i4;
+        if (((this.G != null) || (!this.w)) && (this.az != null) && (this.az.a))
+        {
+          localObject1 = this.k;
+          if ((localObject1 != null) && (((jz)localObject1).e))
+          {
+            if (this.aA != null)
+            {
+              localObject1 = this.aA;
+              boolean bool1;
+              if (((lw)localObject1).a != null) {
+                bool1 = ((lw)localObject1).a.f();
+              } else {
+                bool1 = false;
+              }
+              if (bool1)
+              {
+                i1 = 1;
+                break label305;
+              }
+            }
+            i1 = 0;
+            if (i1 != 0)
+            {
+              if (!this.w)
+              {
+                localObject1 = this.C;
+                if (localObject1 != null) {
+                  ((Handler)localObject1).sendEmptyMessage(2);
+                }
+              }
+              if (this.G != null)
+              {
+                if (this.bh)
+                {
+                  this.bh = false;
+                  paramGL10 = this.m;
+                  if (paramGL10.r != null)
+                  {
+                    localObject1 = paramGL10.r.iterator();
+                    while (((Iterator)localObject1).hasNext()) {
+                      ((gs)((Iterator)localObject1).next()).a(paramGL10);
+                    }
+                  }
+                  t();
+                  return bool2;
+                }
+                if (paramGL10 != null)
+                {
+                  i3 = this.aq;
+                  i4 = this.ar;
+                  i1 = i3 * i4;
+                  localObject1 = new int[i1];
+                  localObject2 = new int[i1];
+                  localObject3 = IntBuffer.wrap((int[])localObject1);
+                  ((IntBuffer)localObject3).position(0);
+                  paramGL10.glReadPixels(0, 0, i3, i4, 6408, 5121, (Buffer)localObject3);
+                  i1 = 0;
+                  while (i1 < i4)
+                  {
+                    i2 = 0;
+                    while (i2 < i3)
+                    {
+                      int i5 = localObject1[(i1 * i3 + i2)];
+                      localObject2[((i4 - i1 - 1) * i3 + i2)] = (i5 & 0xFF00FF00 | i5 << 16 & 0xFF0000 | i5 >> 16 & 0xFF);
+                      i2 += 1;
+                    }
+                    i1 += 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        try
+        {
+          paramGL10 = Bitmap.createBitmap((int[])localObject2, i3, i4, this.I);
+        }
+        catch (OutOfMemoryError paramGL10)
+        {
+          break label576;
+        }
+        paramGL10 = null;
         localObject1 = paramGL10;
-        if (!(this.aE instanceof pw))
+        if (this.aE != null)
         {
           localObject1 = paramGL10;
-          if (this.m.h())
+          if (!(this.aE instanceof pw))
           {
-            localObject1 = this.m;
-            if (((jr)localObject1).b != null) {
-              break label703;
-            }
-            localObject1 = null;
-            if ((paramGL10 != null) && (!paramGL10.isRecycled()) && (localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
-              break label737;
-            }
-            paramGL10 = null;
             localObject1 = paramGL10;
+            if (this.m.h())
+            {
+              localObject1 = this.m;
+              if (((jr)localObject1).b == null) {}
+              do
+              {
+                localObject1 = null;
+                break;
+                localObject1 = ((jr)localObject1).b.getDrawable();
+              } while (localObject1 == null);
+              localObject1 = ((BitmapDrawable)localObject1).getBitmap();
+              if ((paramGL10 != null) && (!paramGL10.isRecycled()) && (localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+              {
+                localObject2 = Bitmap.createBitmap(paramGL10.getWidth(), paramGL10.getHeight(), paramGL10.getConfig());
+                localObject3 = new Canvas((Bitmap)localObject2);
+                ((Canvas)localObject3).drawBitmap(paramGL10, new Matrix(), null);
+                ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, this.m.d().left, this.m.d().top, null);
+                localObject1 = localObject2;
+              }
+              else
+              {
+                localObject1 = null;
+              }
+            }
           }
         }
+        paramGL10 = this.G;
+        paramGL10.sendMessage(paramGL10.obtainMessage(0, localObject1));
+        this.G = null;
+        this.m.i();
+        this.bh = true;
+        return bool2;
       }
-      this.G.sendMessage(this.G.obtainMessage(0, localObject1));
-      this.G = null;
-      this.m.i();
-      this.bh = true;
-      return bool2;
-    }
-    catch (OutOfMemoryError paramGL10)
-    {
-      for (;;)
-      {
-        paramGL10 = null;
-        continue;
-        label703:
-        localObject1 = ((jr)localObject1).b.getDrawable();
-        if (localObject1 == null)
-        {
-          localObject1 = null;
-        }
-        else
-        {
-          localObject1 = ((BitmapDrawable)localObject1).getBitmap();
-          continue;
-          label737:
-          localObject2 = Bitmap.createBitmap(paramGL10.getWidth(), paramGL10.getHeight(), paramGL10.getConfig());
-          localObject3 = new Canvas((Bitmap)localObject2);
-          ((Canvas)localObject3).drawBitmap(paramGL10, new Matrix(), null);
-          ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, this.m.d().left, this.m.d().top, null);
-          paramGL10 = (GL10)localObject2;
-        }
-      }
-    }
-    for (;;)
-    {
-      label815:
-      i1 += 1;
-      localObject1 = localObject2;
-      i2 = i3;
-      break;
-      label829:
-      localObject2 = localObject1;
     }
   }
   
@@ -784,8 +875,12 @@ public final class pn
           return paramString;
         }
       }
+      return null;
     }
-    return null;
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public final void b(int paramInt1, int paramInt2)
@@ -798,10 +893,11 @@ public final class pn
   
   public final void b(TencentMapGestureListener paramTencentMapGestureListener)
   {
-    if (this.p == null) {
+    TencentMapGestureListenerList localTencentMapGestureListenerList = this.p;
+    if (localTencentMapGestureListenerList == null) {
       return;
     }
-    this.p.removeListener(paramTencentMapGestureListener);
+    localTencentMapGestureListenerList.removeListener(paramTencentMapGestureListener);
   }
   
   public final void b(boolean paramBoolean)
@@ -811,259 +907,250 @@ public final class pn
   
   public final boolean b(float paramFloat1, float paramFloat2)
   {
-    Object localObject4 = null;
     boolean bool1;
-    label92:
     boolean bool2;
+    int i1;
+    label892:
+    label895:
+    Object localObject8;
+    label1042:
+    Object localObject3;
+    label1052:
+    label1065:
+    label1078:
     synchronized (this.a)
     {
-      Object localObject9 = (ms)c(this.aI);
-      if (localObject9 == null) {
-        break label1005;
-      }
-      Object localObject1 = ((ms)localObject9).J;
-      if ((this.aI.equals("")) || (localObject9 == null) || (localObject1 == null) || (!((gj)localObject1).e())) {
-        break label996;
-      }
-      bool1 = ((gj)localObject1).a(paramFloat1, paramFloat2);
-      if (!bool1) {
-        break label990;
-      }
-      localObject4 = ((ms)localObject9).G;
-      bool2 = bool1;
-      if (bool1) {
-        break label971;
-      }
-      i1 = this.i.size() - 1;
-      label113:
-      bool2 = bool1;
-      if (i1 < 0) {
-        break label971;
-      }
-      ms localms = (ms)this.i.get(i1);
-      localObject9 = localms.J;
-      if ((localms.L.equals(this.aI)) || (localObject9 == null) || (!((gj)localObject9).e())) {
-        break label968;
-      }
-      bool1 = ((gj)localObject9).a(paramFloat1, paramFloat2);
-      if (!bool1) {
-        break label1011;
-      }
-      localObject1 = localms.G;
-      localObject4 = localObject9;
-      label200:
-      if (bool1)
+      ??? = (ms)c(this.aI);
+      Object localObject12 = null;
+      if (??? != null)
       {
-        if ((this.az != null) && (this.A != null) && (localObject1 != null) && (localObject4 != null) && (((Marker)localObject1).isInfoWindowShown()))
+        Object localObject4 = ((ms)???).J;
+        if ((this.aI.equals("")) || (??? == null) || (localObject4 == null) || (!((gj)localObject4).e())) {
+          break label1052;
+        }
+        bool1 = ((gj)localObject4).a(paramFloat1, paramFloat2);
+        if (!bool1) {
+          break label1042;
+        }
+        ??? = ((ms)???).G;
+        Object localObject9 = ???;
+        Object localObject11 = localObject4;
+        bool2 = bool1;
+        if (!bool1)
         {
-          this.A.onInfoWindowClick((Marker)localObject1);
-          localObject1 = ((gj)localObject4).a(this.az.b.h);
-          if (localObject1 != null) {
-            this.A.onInfoWindowClickLocation(((Rect)localObject1).width(), ((Rect)localObject1).height(), (int)paramFloat1 - ((Rect)localObject1).left, (int)paramFloat2 - ((Rect)localObject1).top);
+          i1 = this.i.size() - 1;
+          localObject9 = ???;
+          localObject11 = localObject4;
+          bool2 = bool1;
+          if (i1 >= 0)
+          {
+            localObject9 = (ms)this.i.get(i1);
+            localObject11 = ((ms)localObject9).J;
+            bool2 = bool1;
+            if (((mu)localObject9).L.equals(this.aI)) {
+              break label1065;
+            }
+            bool2 = bool1;
+            if (localObject11 == null) {
+              break label1065;
+            }
+            bool2 = bool1;
+            if (!((gj)localObject11).e()) {
+              break label1065;
+            }
+            bool1 = ((gj)localObject11).a(paramFloat1, paramFloat2);
+            bool2 = bool1;
+            if (!bool1) {
+              break label1065;
+            }
+            localObject9 = ((ms)localObject9).G;
+            bool2 = bool1;
           }
         }
-        return true;
-      }
-      i1 = this.i.size();
-      bool1 = false;
-      i1 -= 1;
-      while (i1 >= 0)
-      {
-        bool2 = a((mu)this.i.get(i1), paramFloat1, paramFloat2);
-        bool1 = bool2;
+        if (bool2)
+        {
+          if ((this.az != null) && (this.A != null) && (localObject9 != null) && (localObject11 != null) && (((Marker)localObject9).isInfoWindowShown()))
+          {
+            this.A.onInfoWindowClick((Marker)localObject9);
+            ??? = ((gj)localObject11).a(this.az.b.h);
+            if (??? != null) {
+              this.A.onInfoWindowClickLocation(((Rect)???).width(), ((Rect)???).height(), (int)paramFloat1 - ((Rect)???).left, (int)paramFloat2 - ((Rect)???).top);
+            }
+          }
+          return true;
+        }
+        i1 = this.i.size() - 1;
+        for (bool1 = false; i1 >= 0; bool1 = bool2)
+        {
+          bool2 = a((mu)this.i.get(i1), paramFloat1, paramFloat2);
+          bool1 = bool2;
+          if (bool2) {
+            break;
+          }
+          i1 -= 1;
+        }
+        if (bool1) {
+          return bool1;
+        }
+        i1 = this.aJ.size() - 1;
+        while (i1 >= 0)
+        {
+          bool2 = a((mu)this.aJ.get(i1), paramFloat1, paramFloat2);
+          bool1 = bool2;
+          if (bool2) {
+            break;
+          }
+          i1 -= 1;
+          bool1 = bool2;
+        }
+        if (bool1) {
+          return bool1;
+        }
+        i1 = this.aK.size() - 1;
+        for (;;)
+        {
+          bool2 = bool1;
+          if (i1 < 0) {
+            break;
+          }
+          bool1 = a((mu)this.aK.get(i1), paramFloat1, paramFloat2);
+          bool2 = bool1;
+          if (bool1) {
+            break;
+          }
+          i1 -= 1;
+        }
         if (bool2) {
-          break;
+          return bool2;
         }
-        i1 -= 1;
-        bool1 = bool2;
-      }
-      if (bool1) {
-        return bool1;
-      }
-    }
-    int i1 = this.aJ.size() - 1;
-    while (i1 >= 0)
-    {
-      bool2 = a((mu)this.aJ.get(i1), paramFloat1, paramFloat2);
-      bool1 = bool2;
-      if (bool2) {
-        break;
-      }
-      i1 -= 1;
-      bool1 = bool2;
-    }
-    if (bool1) {
-      return bool1;
-    }
-    i1 = this.aK.size() - 1;
-    for (;;)
-    {
-      bool2 = bool1;
-      if (i1 < 0) {
-        break;
-      }
-      bool1 = a((mu)this.aK.get(i1), paramFloat1, paramFloat2);
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      i1 -= 1;
-    }
-    if (bool2) {
-      return bool2;
-    }
-    if (this.b)
-    {
-      ??? = this.a;
-      i1 = 0;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (i1 < this.i.size())
+        if (this.b)
         {
-          localObject4 = (ms)this.i.get(i1);
-          if (((ms)localObject4).J == null) {
-            break label1018;
+          ??? = this.a;
+          i1 = 0;
+          try
+          {
+            if (i1 < this.i.size())
+            {
+              localObject4 = (ms)this.i.get(i1);
+              if (((ms)localObject4).J == null) {
+                break label1078;
+              }
+              ((ms)localObject4).J.a(false);
+              break label1078;
+            }
           }
-          ((ms)localObject4).J.a(false);
-          break label1018;
+          finally {}
         }
         ??? = this.az.b;
-        if (((lw)???).a != null)
-        {
+        ??? = localObject12;
+        if (((lw)???).a != null) {
           ??? = ((lw)???).a.b(paramFloat1, paramFloat2);
-          if (??? == null) {
-            break label843;
-          }
-          switch (((TappedElement)???).type)
+        }
+        if (??? != null)
+        {
+          i1 = ((TappedElement)???).type;
+          if (i1 != 0)
           {
-          default: 
-            i1 = 0;
-            if (i1 == 0) {
-              break label848;
+            if (i1 != 1)
+            {
+              if (i1 != 8) {
+                break label892;
+              }
             }
-            return true;
+            else if (this.B != null)
+            {
+              if (((TappedElement)???).itemType == 1)
+              {
+                ??? = new IndoorMapPoi();
+                ((IndoorMapPoi)???).buildingName = ((TappedElement)???).buildingName;
+                ((IndoorMapPoi)???).buildingId = ((TappedElement)???).buildingId;
+                ((IndoorMapPoi)???).floorName = ((TappedElement)???).floorName;
+              }
+              else
+              {
+                ??? = new MapPoi();
+              }
+              ((MapPoi)???).name = ((TappedElement)???).name;
+              ??? = gb.a(((TappedElement)???).pixelX, ((TappedElement)???).pixelY);
+              double d1 = ((GeoPoint)???).getLatitudeE6();
+              Double.isNaN(d1);
+              d1 /= 1000000.0D;
+              double d2 = ((GeoPoint)???).getLongitudeE6();
+              Double.isNaN(d2);
+              ((MapPoi)???).position = new LatLng(d1, d2 / 1000000.0D);
+              this.B.onClicked((MapPoi)???);
+            }
+            i1 = 1;
+            break label895;
           }
         }
-      }
-      finally {}
-      ??? = null;
-      continue;
-      i1 = 0;
-      continue;
-      if (this.B != null)
-      {
-        if (((TappedElement)???).itemType != 1) {
-          break label831;
+        i1 = 0;
+        if (i1 != 0) {
+          return true;
         }
-        ??? = new IndoorMapPoi();
-        ((IndoorMapPoi)???).buildingName = ((TappedElement)???).buildingName;
-        ((IndoorMapPoi)???).buildingId = ((TappedElement)???).buildingId;
-        ((IndoorMapPoi)???).floorName = ((TappedElement)???).floorName;
-      }
-      for (;;)
-      {
-        ((MapPoi)???).name = ((TappedElement)???).name;
-        ??? = gb.a(((TappedElement)???).pixelX, ((TappedElement)???).pixelY);
-        ((MapPoi)???).position = new LatLng(((GeoPoint)???).getLatitudeE6() / 1000000.0D, ((GeoPoint)???).getLongitudeE6() / 1000000.0D);
-        this.B.onClicked((MapPoi)???);
-        i1 = 1;
-        break;
-        label831:
-        ??? = new MapPoi();
-      }
-      label843:
-      i1 = 0;
-      continue;
-      label848:
-      if ((this.s != null) && (this.aa))
-      {
-        ??? = new DoublePoint(paramFloat1, paramFloat2);
-        ??? = fz.a(this.az.b.h.a((DoublePoint)???));
-        this.s.onMapClick((LatLng)???);
-      }
-      synchronized (this.a)
-      {
+        if ((this.s != null) && (this.aa))
+        {
+          ??? = new DoublePoint(paramFloat1, paramFloat2);
+          ??? = fz.a(this.az.b.h.a((DoublePoint)???));
+          this.s.onMapClick((LatLng)???);
+        }
         synchronized (this.a)
         {
-          if (this.j != null) {
-            this.j.e();
+          synchronized (this.a)
+          {
+            if (this.j != null) {
+              this.j.e();
+            }
+            s();
+            return false;
           }
-          s();
-          return false;
         }
       }
-      label968:
-      break label1011;
-      label971:
-      bool1 = bool2;
-      Object localObject11 = localObject7;
-      Object localObject8 = ???;
-      ??? = localObject11;
-      break label200;
-      label990:
-      ??? = null;
-      break label92;
-      label996:
-      ??? = null;
-      bool1 = false;
-      break label92;
-      label1005:
-      ??? = null;
-      break;
-      label1011:
-      i1 -= 1;
-      break label113;
-      label1018:
-      i1 += 1;
     }
   }
   
   public final mu c(String paramString)
   {
-    for (;;)
+    int i1;
+    label93:
+    synchronized (this.a)
     {
-      int i1;
-      synchronized (this.a)
+      int i2 = this.h.size();
+      i1 = 0;
+      Object localObject = null;
+      if (i1 < i2)
       {
-        int i2 = this.h.size();
-        i1 = 0;
-        Object localObject = null;
-        if (i1 < i2)
-        {
-          mu localmu = (mu)this.h.get(i1);
-          localObject = localmu;
-          if (localmu == null) {
-            break label87;
-          }
-          localObject = localmu;
-          if (!TextUtils.equals(localmu.L, paramString))
-          {
-            localObject = null;
-            break label87;
-          }
+        mu localmu = (mu)this.h.get(i1);
+        localObject = localmu;
+        if (localmu == null) {
+          break label93;
         }
-        return localObject;
+        localObject = localmu;
+        if (!TextUtils.equals(localmu.L, paramString))
+        {
+          localObject = null;
+          break label93;
+        }
       }
-      label87:
-      i1 += 1;
+      return localObject;
     }
   }
   
   public final void c(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return;
-    }
-    if (this.aV == null)
+    if (paramInt1 != 0)
     {
-      GeoPoint localGeoPoint = this.az.b();
-      this.aV = new GeoPoint(localGeoPoint.getLatitudeE6(), localGeoPoint.getLongitudeE6());
+      if (paramInt2 == 0) {
+        return;
+      }
+      if (this.aV == null)
+      {
+        GeoPoint localGeoPoint = this.az.b();
+        this.aV = new GeoPoint(localGeoPoint.getLatitudeE6(), localGeoPoint.getLongitudeE6());
+      }
+      this.aV.setLatitudeE6(paramInt1);
+      this.aV.setLongitudeE6(paramInt2);
     }
-    this.aV.setLatitudeE6(paramInt1);
-    this.aV.setLongitudeE6(paramInt2);
   }
   
   public final void c(Class<? extends mu> paramClass)
@@ -1083,8 +1170,13 @@ public final class pn
           this.aK.remove(localmu);
         }
       }
+      this.az.b.k();
+      return;
     }
-    this.az.b.k();
+    for (;;)
+    {
+      throw paramClass;
+    }
   }
   
   public final void c(boolean paramBoolean)
@@ -1094,19 +1186,19 @@ public final class pn
   
   public final boolean c(float paramFloat1, float paramFloat2)
   {
-    if (!this.aa) {}
-    lm locallm;
-    TappedElement localTappedElement;
-    do
-    {
+    if (!this.aa) {
       return false;
-      locallm = this.az.b.e;
-      localTappedElement = locallm.a.g().b(paramFloat1, paramFloat2);
-    } while ((localTappedElement == null) || (localTappedElement.type != 3));
-    if (locallm.b != null) {
-      locallm.b.a();
     }
-    return true;
+    lm locallm = this.az.b.e;
+    TappedElement localTappedElement = locallm.a.g().b(paramFloat1, paramFloat2);
+    if ((localTappedElement != null) && (localTappedElement.type == 3))
+    {
+      if (locallm.b != null) {
+        locallm.b.a();
+      }
+      return true;
+    }
+    return false;
   }
   
   public final void d(int paramInt1, int paramInt2)
@@ -1135,20 +1227,28 @@ public final class pn
   {
     pm localpm = this.az;
     Object localObject = localpm.b();
-    if ((localObject == null) || (((this.u == null) || (this.u.size() <= 0)) && (this.bf == null))) {
-      return null;
+    if (localObject != null)
+    {
+      List localList = this.u;
+      if (((localList != null) && (localList.size() > 0)) || (this.bf != null))
+      {
+        localObject = fz.a((GeoPoint)localObject);
+        float f2 = localpm.g();
+        float f1 = f2;
+        if (f2 < 0.0F) {
+          f1 = f2 % 360.0F + 360.0F;
+        }
+        f2 = localpm.h();
+        float f3 = localpm.c();
+        double d2 = localpm.f();
+        double d1 = f3;
+        d2 = Math.log(d2) / Math.log(2.0D);
+        Double.isNaN(d1);
+        f3 = (float)(d1 + d2);
+        return CameraPosition.builder().zoom(f3).target((LatLng)localObject).bearing(f1).tilt(f2).build();
+      }
     }
-    localObject = fz.a((GeoPoint)localObject);
-    float f2 = localpm.g();
-    float f1 = f2;
-    if (f2 < 0.0F) {
-      f1 = f2 % 360.0F + 360.0F;
-    }
-    f2 = localpm.h();
-    float f3 = localpm.c();
-    double d1 = localpm.f();
-    f3 = (float)(f3 + Math.log(d1) / Math.log(2.0D));
-    return CameraPosition.builder().zoom(f3).target((LatLng)localObject).bearing(f1).tilt(f2).build();
+    return null;
   }
   
   public final void f(boolean paramBoolean)
@@ -1203,38 +1303,30 @@ public final class pn
   
   public final void m()
   {
-    if (this.ad != null) {
-      this.ad.removeCallbacksAndMessages(null);
+    ??? = this.ad;
+    if (??? != null) {
+      ((Handler)???).removeCallbacksAndMessages(null);
     }
-    if (this.C != null) {
-      this.C.removeCallbacksAndMessages(null);
+    ??? = this.C;
+    if (??? != null) {
+      ((Handler)???).removeCallbacksAndMessages(null);
     }
-    if (this.G != null) {
-      this.G.removeCallbacksAndMessages(null);
+    ??? = this.G;
+    if (??? != null) {
+      ((Handler)???).removeCallbacksAndMessages(null);
     }
-    if (this.aN != null)
+    ??? = this.aN;
+    if (??? != null)
     {
-      this.aN.clear();
+      ((List)???).clear();
       this.aN = null;
     }
-    for (;;)
+    synchronized (this.a)
     {
-      synchronized (this.a)
+      if (this.h != null)
       {
-        if (this.h == null)
-        {
-          if (this.aM != null) {
-            this.aM.clear();
-          }
-          this.s = null;
-          this.A = null;
-          this.v = null;
-          this.E = null;
-          this.q = null;
-          return;
-        }
         Iterator localIterator = this.h.iterator();
-        if (localIterator.hasNext())
+        while (localIterator.hasNext())
         {
           mu localmu = (mu)localIterator.next();
           if (localmu != null) {
@@ -1242,10 +1334,24 @@ public final class pn
           }
           localIterator.remove();
         }
+        this.i.clear();
+        this.aJ.clear();
+        this.aK.clear();
       }
-      this.i.clear();
-      this.aJ.clear();
-      this.aK.clear();
+      ??? = this.aM;
+      if (??? != null) {
+        ((Map)???).clear();
+      }
+      this.s = null;
+      this.A = null;
+      this.v = null;
+      this.E = null;
+      this.q = null;
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -1275,12 +1381,13 @@ public final class pn
   
   public final void onCameraChange(CameraPosition paramCameraPosition)
   {
-    if (this.u != null)
+    Object localObject = this.u;
+    if (localObject != null)
     {
-      Iterator localIterator = this.u.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        TencentMap.OnCameraChangeListener localOnCameraChangeListener = (TencentMap.OnCameraChangeListener)localIterator.next();
+        TencentMap.OnCameraChangeListener localOnCameraChangeListener = (TencentMap.OnCameraChangeListener)((Iterator)localObject).next();
         if (localOnCameraChangeListener != null) {
           localOnCameraChangeListener.onCameraChange(paramCameraPosition);
         }
@@ -1290,12 +1397,13 @@ public final class pn
   
   public final void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    if (this.u != null)
+    Object localObject = this.u;
+    if (localObject != null)
     {
-      Iterator localIterator = this.u.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        TencentMap.OnCameraChangeListener localOnCameraChangeListener = (TencentMap.OnCameraChangeListener)localIterator.next();
+        TencentMap.OnCameraChangeListener localOnCameraChangeListener = (TencentMap.OnCameraChangeListener)((Iterator)localObject).next();
         if (localOnCameraChangeListener != null) {
           localOnCameraChangeListener.onCameraChangeFinished(paramCameraPosition);
         }
@@ -1307,16 +1415,17 @@ public final class pn
   {
     super.onDestroy();
     this.az.a(null);
-    if (this.u != null) {
-      this.u.clear();
+    Object localObject = this.u;
+    if (localObject != null) {
+      ((List)localObject).clear();
     }
-    if (this.av != null)
+    localObject = this.av;
+    if (localObject != null)
     {
-      hr localhr = this.av;
-      localhr.d.az.b(localhr);
-      localhr.a.clear();
-      localhr.b.clear();
-      localhr.c.clear();
+      ((hr)localObject).d.az.b((he)localObject);
+      ((hr)localObject).a.clear();
+      ((hr)localObject).b.clear();
+      ((hr)localObject).c.clear();
     }
     this.ba = true;
   }
@@ -1351,7 +1460,8 @@ public final class pn
     super.onResume();
     this.ai = 0;
     this.ah = false;
-    if (u()) {
+    if (u())
+    {
       if ((this.aE instanceof View))
       {
         if (this.av == null)
@@ -1362,45 +1472,37 @@ public final class pn
         ViewCompat.setAccessibilityDelegate((View)this.aE, this.av);
       }
     }
-    Object localObject1;
-    String str;
-    Object localObject2;
-    do
+    else if (this.av != null)
     {
-      int i1;
-      for (;;)
+      ViewCompat.setAccessibilityDelegate((View)this.aE, null);
+      localObject1 = this.av;
+      ((hr)localObject1).d.az.b((he)localObject1);
+      this.av = null;
+    }
+    Object localObject1 = this.o;
+    if ((localObject1 != null) && (((kj)localObject1).i != null))
+    {
+      String str = ((kj)localObject1).i.getBuidlingId();
+      int i1 = ((kj)localObject1).i.getActiveLevelIndex();
+      Object localObject2 = ((kj)localObject1).i.getLevels();
+      if (localObject2 != null)
       {
-        if (this.o != null)
-        {
-          localObject1 = this.o;
-          if (((kj)localObject1).i != null)
-          {
-            str = ((kj)localObject1).i.getBuidlingId();
-            i1 = ((kj)localObject1).i.getActiveLevelIndex();
-            localObject2 = ((kj)localObject1).i.getLevels();
-            if ((localObject2 != null) && (i1 < ((List)localObject2).size())) {
-              break;
-            }
-          }
+        if (i1 >= ((List)localObject2).size()) {
+          return;
         }
-        return;
-        if (this.av != null)
-        {
-          ViewCompat.setAccessibilityDelegate((View)this.aE, null);
-          localObject1 = this.av;
-          ((hr)localObject1).d.az.b((he)localObject1);
-          this.av = null;
+        localObject2 = ((IndoorLevel)((List)localObject2).get(i1)).getName();
+        if ((!nl.a(str)) && (!nl.a((String)localObject2))) {
+          ((kj)localObject1).d.az.a(str, (String)localObject2);
         }
       }
-      localObject2 = ((IndoorLevel)((List)localObject2).get(i1)).getName();
-    } while ((nl.a(str)) || (nl.a((String)localObject2)));
-    ((kj)localObject1).d.az.a(str, (String)localObject2);
+    }
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.t != null) {
-      this.t.a(paramMotionEvent);
+    lq.a locala = this.t;
+    if (locala != null) {
+      locala.a(paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -1410,50 +1512,48 @@ public final class pn
     fw[] arrayOffw = q();
     fw localfw = kd.b(this.az.b());
     float f1 = this.az.c();
-    if (this.bg == null) {
+    fv localfv = this.bg;
+    if (localfv == null) {
       this.bg = new fv(localfw, arrayOffw, f1);
+    } else {
+      localfv.a(localfw, arrayOffw, f1);
     }
-    for (;;)
-    {
-      return this.bg;
-      this.bg.a(localfw, arrayOffw, f1);
-    }
+    return this.bg;
   }
   
   public final fw[] q()
   {
-    fw[] arrayOffw2 = new fw[8];
+    fw[] arrayOffw = new fw[8];
     float f1 = this.aq;
     float f2 = this.ar;
-    fw[] arrayOffw1;
-    if ((f1 <= 2.0F) || (f2 <= 2.0F))
+    if ((f1 > 2.0F) && (f2 > 2.0F))
     {
-      arrayOffw1 = null;
-      return arrayOffw1;
-    }
-    DoublePoint localDoublePoint1 = new DoublePoint(0.0D, 0.0D);
-    DoublePoint localDoublePoint2 = new DoublePoint(f1 / 2.0F, 0.0D);
-    DoublePoint localDoublePoint3 = new DoublePoint(f1, 0.0D);
-    DoublePoint localDoublePoint4 = new DoublePoint(f1, f2 / 2.0F);
-    DoublePoint localDoublePoint5 = new DoublePoint(f1, f2);
-    DoublePoint localDoublePoint6 = new DoublePoint(f1 / 2.0F, f2);
-    DoublePoint localDoublePoint7 = new DoublePoint(0.0D, f2);
-    DoublePoint localDoublePoint8 = new DoublePoint(0.0D, f2 / 2.0F);
-    int i1 = 0;
-    for (;;)
-    {
-      arrayOffw1 = arrayOffw2;
-      if (i1 >= 8) {
-        break;
+      DoublePoint localDoublePoint1 = new DoublePoint(0.0D, 0.0D);
+      int i1 = 0;
+      double d1 = f1 / 2.0F;
+      DoublePoint localDoublePoint2 = new DoublePoint(d1, 0.0D);
+      double d2 = f1;
+      DoublePoint localDoublePoint3 = new DoublePoint(d2, 0.0D);
+      double d3 = f2 / 2.0F;
+      DoublePoint localDoublePoint4 = new DoublePoint(d2, d3);
+      double d4 = f2;
+      DoublePoint localDoublePoint5 = new DoublePoint(d2, d4);
+      DoublePoint localDoublePoint6 = new DoublePoint(d1, d4);
+      DoublePoint localDoublePoint7 = new DoublePoint(0.0D, d4);
+      DoublePoint localDoublePoint8 = new DoublePoint(0.0D, d3);
+      while (i1 < 8)
+      {
+        arrayOffw[i1] = kd.b(this.az.b.h.a(new DoublePoint[] { localDoublePoint1, localDoublePoint2, localDoublePoint3, localDoublePoint4, localDoublePoint5, localDoublePoint6, localDoublePoint7, localDoublePoint8 }[i1]));
+        i1 += 1;
       }
-      arrayOffw2[i1] = kd.b(this.az.b.h.a(new DoublePoint[] { localDoublePoint1, localDoublePoint2, localDoublePoint3, localDoublePoint4, localDoublePoint5, localDoublePoint6, localDoublePoint7, localDoublePoint8 }[i1]));
-      i1 += 1;
+      return arrayOffw;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,104 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import apgm;
-import azri;
-import bhsl;
+import com.tencent.dbfix.DBFix;
+import com.tencent.dbfix.DBFixResult;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.File;
 import java.util.HashMap;
 
-public class DBFixLoadingDialog$2
+class DBFixLoadingDialog$2
   implements Runnable
 {
-  public DBFixLoadingDialog$2(apgm paramapgm) {}
+  DBFixLoadingDialog$2(DBFixLoadingDialog paramDBFixLoadingDialog) {}
   
   public void run()
   {
-    apgm.a(this.this$0, apgm.c);
-    if (apgm.a(this.this$0).exists()) {
-      apgm.a(this.this$0).delete();
+    DBFixReportHelper.a(DBFixLoadingDialog.a);
+    DBFixLoadingDialog.a(this.this$0, DBFixLoadingDialog.c);
+    if (DBFixLoadingDialog.a(this.this$0).exists()) {
+      DBFixLoadingDialog.a(this.this$0).delete();
     }
-    long l1 = System.currentTimeMillis();
-    Object localObject = (DBFixManager)apgm.a(this.this$0).getManager(205);
-    DBFixResult localDBFixResult = new DBFixResult();
-    QLog.d(apgm.a(), 1, new Object[] { "repair start, ", Integer.valueOf(apgm.a) });
+    long l4 = System.currentTimeMillis();
+    Object localObject2 = (DBFixManager)DBFixLoadingDialog.b(this.this$0).getManager(QQManagerFactory.DB_FIX_MANAGER);
+    Object localObject1 = new DBFixResult();
+    String str = DBFixLoadingDialog.b();
+    int i = 0;
+    QLog.d(str, 1, new Object[] { "repair start, ", Integer.valueOf(DBFixLoadingDialog.a) });
     boolean bool;
-    if (apgm.a == 1)
+    if (DBFixLoadingDialog.a == 1) {
+      bool = DBFix.getInstance().doDumpRepair(DBFixLoadingDialog.c(this.this$0).getAbsolutePath(), DBFixLoadingDialog.a(this.this$0).getAbsolutePath(), (DBFixResult)localObject1);
+    } else {
+      bool = DBFix.getInstance().doDBFixRepair(DBFixLoadingDialog.c(this.this$0).getAbsolutePath(), DBFixLoadingDialog.a(this.this$0).getAbsolutePath(), DBFixLoadingDialog.d(this.this$0).getAbsolutePath(), (DBFixResult)localObject1);
+    }
+    long l5 = System.currentTimeMillis();
+    QLog.d(DBFixLoadingDialog.b(), 1, new Object[] { "repair result, dur:", Double.valueOf(((DBFixResult)localObject1).duration), ", row:", Long.valueOf(((DBFixResult)localObject1).rowCount), ", table:", Long.valueOf(((DBFixResult)localObject1).tableCount), ", sucPage:", Long.valueOf(((DBFixResult)localObject1).sucPageCount), ", failPage:", Long.valueOf(((DBFixResult)localObject1).failPageCount), ", masterCorrupted:", Integer.valueOf(((DBFixResult)localObject1).masterCorrupted) });
+    long l3 = DBFixLoadingDialog.c(this.this$0).length();
+    long l1 = DBFixLoadingDialog.a(this.this$0).length();
+    long l2 = DBFixLoadingDialog.d(this.this$0).length();
+    if (bool)
     {
-      bool = ((DBFixManager)localObject).dumpRepair(apgm.b(this.this$0).getAbsolutePath(), apgm.a(this.this$0).getAbsolutePath(), localDBFixResult);
-      long l2 = System.currentTimeMillis();
-      QLog.d(apgm.a(), 1, new Object[] { "repair result, dur:", Double.valueOf(localDBFixResult.duration), ", row:", Long.valueOf(localDBFixResult.rowCount), ", table:", Long.valueOf(localDBFixResult.tableCount), ", sucPage:", Long.valueOf(localDBFixResult.sucPageCount), ", failPage:", Long.valueOf(localDBFixResult.failPageCount) });
-      if (!bool) {
-        break label622;
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("fixType", String.valueOf(DBFixLoadingDialog.a));
+      ((HashMap)localObject2).put("duration_1", String.valueOf((int)(((DBFixResult)localObject1).duration * 1000.0D)));
+      l4 = l5 - l4;
+      ((HashMap)localObject2).put("duration_2", String.valueOf(l4));
+      ((HashMap)localObject2).put("rowCount", String.valueOf(((DBFixResult)localObject1).rowCount));
+      ((HashMap)localObject2).put("tableCount", String.valueOf(((DBFixResult)localObject1).tableCount));
+      ((HashMap)localObject2).put("sucPage", String.valueOf(((DBFixResult)localObject1).sucPageCount));
+      ((HashMap)localObject2).put("failPage", String.valueOf(((DBFixResult)localObject1).failPageCount));
+      l3 /= 1024L;
+      ((HashMap)localObject2).put("oldSize", String.valueOf(l3));
+      l5 = l1 / 1024L;
+      ((HashMap)localObject2).put("fixSize", String.valueOf(l5));
+      ((HashMap)localObject2).put("fixSpeed", String.valueOf((float)l3 / (float)l4));
+      ((HashMap)localObject2).put("masterCorrupted", String.valueOf(((DBFixResult)localObject1).masterCorrupted));
+      localObject1 = "dump";
+      if (l1 != 0L)
+      {
+        str = DBFixLoadingDialog.b();
+        if (DBFixLoadingDialog.a != 1) {
+          localObject1 = "dbRepair";
+        }
+        QLog.d(str, 1, String.format("修复方式：%s 修复成功，耗时%dms，源文件：%dkB，修复后：%dkB，master备份：%dkB", new Object[] { localObject1, Long.valueOf(l4), Long.valueOf(l3), Long.valueOf(l5), Long.valueOf(l2 / 1024L) }));
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.p, true, -1L, 0L, (HashMap)localObject2, null, true);
       }
-      long l3 = apgm.b(this.this$0).length();
-      long l4 = apgm.a(this.this$0).length();
-      String str = apgm.a();
-      if (apgm.a != 1) {
-        break label615;
-      }
-      localObject = "dump";
-      label273:
-      QLog.d(str, 1, String.format("修复方式：%s 修复成功，耗时%dms，源文件：%dkB，修复后：%dkB", new Object[] { localObject, Long.valueOf(l2 - l1), Long.valueOf(l3 / 1024L), Long.valueOf(l4 / 1024L) }));
-      localObject = new HashMap();
-      ((HashMap)localObject).put("fixType", String.valueOf(apgm.a));
-      ((HashMap)localObject).put("duration_1", String.valueOf((int)(localDBFixResult.duration * 1000.0D)));
-      ((HashMap)localObject).put("duration_2", String.valueOf(l2 - l1));
-      ((HashMap)localObject).put("rowCount", String.valueOf(localDBFixResult.rowCount));
-      ((HashMap)localObject).put("tableCount", String.valueOf(localDBFixResult.tableCount));
-      ((HashMap)localObject).put("sucPage", String.valueOf(localDBFixResult.sucPageCount));
-      ((HashMap)localObject).put("failPage", String.valueOf(localDBFixResult.failPageCount));
-      ((HashMap)localObject).put("oldSize", String.valueOf(l3 / 1024L));
-      ((HashMap)localObject).put("fixSize", String.valueOf(l4 / 1024L));
-      ((HashMap)localObject).put("fixSpeed", String.valueOf((float)(l3 / 1024L) / (float)(l2 - l1)));
-      azri.a(BaseApplication.getContext()).a(null, DBFixManager.h, true, -1L, 0L, (HashMap)localObject, null, true);
-      label530:
-      localObject = this.this$0;
-      if (!bool) {
-        break label640;
+      else
+      {
+        str = DBFixLoadingDialog.b();
+        if (DBFixLoadingDialog.a != 1) {
+          localObject1 = "dbRepair";
+        }
+        QLog.d(str, 1, String.format("修复方式：%s 修复结果为0，耗时%dms，源文件：%dkB，修复后：%dkB，master备份：%dkB", new Object[] { localObject1, Long.valueOf(l4), Long.valueOf(l3), Integer.valueOf(0), Long.valueOf(l2 / 1024L) }));
+        this.this$0.a();
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.o, true, -1L, 0L, (HashMap)localObject2, null, true);
+        i = 1;
       }
     }
-    label640:
-    for (int i = apgm.d;; i = apgm.e)
+    else
     {
-      apgm.a((apgm)localObject, i);
-      apgm.a(this.this$0).removeMessages(apgm.f);
-      apgm.a(this.this$0).sendEmptyMessageDelayed(apgm.f, 100L);
-      return;
-      bool = ((DBFixManager)localObject).dbfixRepair(apgm.b(this.this$0).getAbsolutePath(), apgm.a(this.this$0).getAbsolutePath(), localDBFixResult);
-      break;
-      label615:
-      localObject = "dbRepair";
-      break label273;
-      label622:
-      ((DBFixManager)localObject).a(false);
-      QLog.d(apgm.a(), 1, "db fix failed");
-      break label530;
+      ((DBFixManager)localObject2).a(false);
+      QLog.d(DBFixLoadingDialog.b(), 1, "db fix failed");
     }
+    localObject1 = this.this$0;
+    if (bool)
+    {
+      if (i != 0) {
+        i = DBFixLoadingDialog.f;
+      } else {
+        i = DBFixLoadingDialog.d;
+      }
+    }
+    else {
+      i = DBFixLoadingDialog.e;
+    }
+    DBFixLoadingDialog.a((DBFixLoadingDialog)localObject1, i);
+    DBFixLoadingDialog.e(this.this$0).removeMessages(DBFixLoadingDialog.g);
+    DBFixLoadingDialog.e(this.this$0).sendEmptyMessageDelayed(DBFixLoadingDialog.g, 100L);
   }
 }
 

@@ -1,24 +1,17 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class enl
-  implements AdapterView.OnItemClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public enl(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public enl(PhotoPreviewActivity paramPhotoPreviewActivity, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (PhotoPreviewActivity.a(this.a))
-    {
-      PhotoPreviewActivity.a(this.a, false);
-      this.a.a.setVisibility(4);
-      this.a.b.setVisibility(4);
-      return;
-    }
-    PhotoPreviewActivity.a(this.a, true);
-    this.a.b.setVisibility(0);
+    PhotoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoPreviewActivity, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentWidgetActionSheet, paramInt);
   }
 }
 

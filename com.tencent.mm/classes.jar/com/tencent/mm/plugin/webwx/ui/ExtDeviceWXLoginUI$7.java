@@ -1,31 +1,40 @@
 package com.tencent.mm.plugin.webwx.ui;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.webwx.a.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class ExtDeviceWXLoginUI$7
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  ExtDeviceWXLoginUI$7(ExtDeviceWXLoginUI paramExtDeviceWXLoginUI, c paramc) {}
+  ExtDeviceWXLoginUI$7(ExtDeviceWXLoginUI paramExtDeviceWXLoginUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(26527);
-    aw.Rc().a(this.vuz);
-    if (ExtDeviceWXLoginUI.f(this.vux) != null) {
-      ExtDeviceWXLoginUI.f(this.vux).cancel();
+    AppMethodBeat.i(265338);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    Log.i("MicroMsg.ExtDeviceWXLoginUI", "spam url %s", new Object[] { ExtDeviceWXLoginUI.h(this.Xxl) });
+    if ((ExtDeviceWXLoginUI.i(this.Xxl) == 0) && (!Util.isNullOrNil(ExtDeviceWXLoginUI.h(this.Xxl)))) {
+      ExtDeviceWXLoginUI.ct(this.Xxl, ExtDeviceWXLoginUI.h(this.Xxl));
     }
-    AppMethodBeat.o(26527);
+    for (;;)
+    {
+      a.a(this, "com/tencent/mm/plugin/webwx/ui/ExtDeviceWXLoginUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(265338);
+      return;
+      ExtDeviceWXLoginUI.j(this.Xxl);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.ExtDeviceWXLoginUI.7
  * JD-Core Version:    0.7.0.1
  */

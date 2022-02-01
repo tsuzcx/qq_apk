@@ -13,32 +13,32 @@ import java.util.List;
 public final class b
   extends x
 {
-  private String afs;
-  private List<String> aft;
-  private c afu;
+  private String aiU;
+  private List<String> aiV;
+  private c aiW;
   private Context context;
   
   public b(Context paramContext, String paramString)
   {
     this.context = paramContext;
-    this.afs = paramString;
-    this.aft = new ArrayList();
+    this.aiU = paramString;
+    this.aiV = new ArrayList();
   }
   
   public final void a(c paramc)
   {
-    this.afu = paramc;
+    this.aiW = paramc;
   }
   
   public final int getItemCount()
   {
-    return this.aft.size();
+    return this.aiV.size();
   }
   
-  public final void nl()
+  public final void nY()
   {
     Object localObject = new f();
-    ((f)localObject).Vt = this.afs;
+    ((f)localObject).Xo = this.aiU;
     try
     {
       localObject = new com.tencent.mm.wear.app.f.b(11004, ((f)localObject).toByteArray());
@@ -54,9 +54,9 @@ public final class b
           {
             localg.h(paramAnonymousArrayOfByte);
             label20:
-            b.a(b.this).addAll(localg.Vu);
+            b.a(b.this).addAll(localg.Xp);
             paramAnonymousArrayOfByte = b.this;
-            com.tencent.mm.wear.a.b.a.aiT.post(new b.2(paramAnonymousArrayOfByte));
+            com.tencent.mm.wear.a.b.a.amv.post(new b.2(paramAnonymousArrayOfByte));
             return;
           }
           catch (IOException paramAnonymousArrayOfByte)
@@ -65,7 +65,7 @@ public final class b
           }
         }
       });
-      h.mc().a((com.tencent.mm.wear.app.g.a)localObject);
+      h.mP().a((com.tencent.mm.wear.app.g.a)localObject);
       return;
     }
     catch (IOException localIOException) {}

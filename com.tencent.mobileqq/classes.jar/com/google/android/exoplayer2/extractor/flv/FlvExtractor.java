@@ -46,100 +46,102 @@ public final class FlvExtractor
       this.extractorOutput.seekMap(new SeekMap.Unseekable(-9223372036854775807L));
       this.outputSeekMap = true;
     }
-    if (this.mediaTagTimestampOffsetUs == -9223372036854775807L) {
-      if (this.metadataReader.getDurationUs() != -9223372036854775807L) {
-        break label68;
-      }
-    }
-    label68:
-    for (long l = -this.tagTimestampUs;; l = 0L)
+    if (this.mediaTagTimestampOffsetUs == -9223372036854775807L)
     {
+      long l;
+      if (this.metadataReader.getDurationUs() == -9223372036854775807L) {
+        l = -this.tagTimestampUs;
+      } else {
+        l = 0L;
+      }
       this.mediaTagTimestampOffsetUs = l;
-      return;
     }
   }
   
   private ParsableByteArray prepareTagData(ExtractorInput paramExtractorInput)
   {
-    if (this.tagDataSize > this.tagData.capacity()) {
-      this.tagData.reset(new byte[Math.max(this.tagData.capacity() * 2, this.tagDataSize)], 0);
-    }
-    for (;;)
+    if (this.tagDataSize > this.tagData.capacity())
     {
-      this.tagData.setLimit(this.tagDataSize);
-      paramExtractorInput.readFully(this.tagData.data, 0, this.tagDataSize);
-      return this.tagData;
+      ParsableByteArray localParsableByteArray = this.tagData;
+      localParsableByteArray.reset(new byte[Math.max(localParsableByteArray.capacity() * 2, this.tagDataSize)], 0);
+    }
+    else
+    {
       this.tagData.setPosition(0);
     }
+    this.tagData.setLimit(this.tagDataSize);
+    paramExtractorInput.readFully(this.tagData.data, 0, this.tagDataSize);
+    return this.tagData;
   }
   
   private boolean readFlvHeader(ExtractorInput paramExtractorInput)
   {
+    byte[] arrayOfByte = this.headerBuffer.data;
     int j = 0;
-    if (!paramExtractorInput.readFully(this.headerBuffer.data, 0, 9, true)) {
+    if (!paramExtractorInput.readFully(arrayOfByte, 0, 9, true)) {
       return false;
     }
     this.headerBuffer.setPosition(0);
     this.headerBuffer.skipBytes(4);
     int k = this.headerBuffer.readUnsignedByte();
-    if ((k & 0x4) != 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((k & 0x1) != 0) {
-        j = 1;
-      }
-      if ((i != 0) && (this.audioReader == null)) {
-        this.audioReader = new AudioTagPayloadReader(this.extractorOutput.track(8, 1));
-      }
-      if ((j != 0) && (this.videoReader == null)) {
-        this.videoReader = new VideoTagPayloadReader(this.extractorOutput.track(9, 2));
-      }
-      this.extractorOutput.endTracks();
-      this.bytesToNextTagHeader = (this.headerBuffer.readInt() - 9 + 4);
-      this.state = 2;
-      return true;
+    int i;
+    if ((k & 0x4) != 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if ((k & 0x1) != 0) {
+      j = 1;
+    }
+    if ((i != 0) && (this.audioReader == null)) {
+      this.audioReader = new AudioTagPayloadReader(this.extractorOutput.track(8, 1));
+    }
+    if ((j != 0) && (this.videoReader == null)) {
+      this.videoReader = new VideoTagPayloadReader(this.extractorOutput.track(9, 2));
+    }
+    this.extractorOutput.endTracks();
+    this.bytesToNextTagHeader = (this.headerBuffer.readInt() - 9 + 4);
+    this.state = 2;
+    return true;
   }
   
   private boolean readTagData(ExtractorInput paramExtractorInput)
   {
+    int i = this.tagType;
     boolean bool2 = true;
     boolean bool1;
-    if ((this.tagType == 8) && (this.audioReader != null))
+    if ((i == 8) && (this.audioReader != null))
     {
       ensureReadyForMediaOutput();
       this.audioReader.consume(prepareTagData(paramExtractorInput), this.mediaTagTimestampOffsetUs + this.tagTimestampUs);
       bool1 = bool2;
     }
-    for (;;)
+    else if ((this.tagType == 9) && (this.videoReader != null))
     {
-      this.bytesToNextTagHeader = 4;
-      this.state = 2;
-      return bool1;
-      if ((this.tagType == 9) && (this.videoReader != null))
+      ensureReadyForMediaOutput();
+      this.videoReader.consume(prepareTagData(paramExtractorInput), this.mediaTagTimestampOffsetUs + this.tagTimestampUs);
+      bool1 = bool2;
+    }
+    else if ((this.tagType == 18) && (!this.outputSeekMap))
+    {
+      this.metadataReader.consume(prepareTagData(paramExtractorInput), this.tagTimestampUs);
+      long l = this.metadataReader.getDurationUs();
+      bool1 = bool2;
+      if (l != -9223372036854775807L)
       {
-        ensureReadyForMediaOutput();
-        this.videoReader.consume(prepareTagData(paramExtractorInput), this.mediaTagTimestampOffsetUs + this.tagTimestampUs);
+        this.extractorOutput.seekMap(new SeekMap.Unseekable(l));
+        this.outputSeekMap = true;
         bool1 = bool2;
-      }
-      else if ((this.tagType == 18) && (!this.outputSeekMap))
-      {
-        this.metadataReader.consume(prepareTagData(paramExtractorInput), this.tagTimestampUs);
-        long l = this.metadataReader.getDurationUs();
-        bool1 = bool2;
-        if (l != -9223372036854775807L)
-        {
-          this.extractorOutput.seekMap(new SeekMap.Unseekable(l));
-          this.outputSeekMap = true;
-          bool1 = bool2;
-        }
-      }
-      else
-      {
-        paramExtractorInput.skipFully(this.tagDataSize);
-        bool1 = false;
       }
     }
+    else
+    {
+      paramExtractorInput.skipFully(this.tagDataSize);
+      bool1 = false;
+    }
+    this.bytesToNextTagHeader = 4;
+    this.state = 2;
+    return bool1;
   }
   
   private boolean readTagHeader(ExtractorInput paramExtractorInput)
@@ -173,27 +175,36 @@ public final class FlvExtractor
   {
     do
     {
-      do
+      for (;;)
       {
-        for (;;)
+        int i = this.state;
+        if (i == 1) {
+          break;
+        }
+        if (i != 2)
         {
-          switch (this.state)
+          if (i != 3)
           {
-          default: 
-            throw new IllegalStateException();
-          case 1: 
-            if (!readFlvHeader(paramExtractorInput)) {
-              return -1;
+            if (i == 4)
+            {
+              if (readTagData(paramExtractorInput)) {
+                return 0;
+              }
             }
-            break;
-          case 2: 
-            skipToTagHeader(paramExtractorInput);
+            else {
+              throw new IllegalStateException();
+            }
+          }
+          else if (!readTagHeader(paramExtractorInput)) {
+            return -1;
           }
         }
-      } while (readTagHeader(paramExtractorInput));
-      return -1;
-    } while (!readTagData(paramExtractorInput));
-    return 0;
+        else {
+          skipToTagHeader(paramExtractorInput);
+        }
+      }
+    } while (readFlvHeader(paramExtractorInput));
+    return -1;
   }
   
   public void release() {}
@@ -207,31 +218,34 @@ public final class FlvExtractor
   
   public boolean sniff(ExtractorInput paramExtractorInput)
   {
-    paramExtractorInput.peekFully(this.scratch.data, 0, 3);
+    byte[] arrayOfByte = this.scratch.data;
+    boolean bool = false;
+    paramExtractorInput.peekFully(arrayOfByte, 0, 3);
     this.scratch.setPosition(0);
-    if (this.scratch.readUnsignedInt24() != FLV_TAG) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramExtractorInput.peekFully(this.scratch.data, 0, 2);
-        this.scratch.setPosition(0);
-      } while ((this.scratch.readUnsignedShort() & 0xFA) != 0);
-      paramExtractorInput.peekFully(this.scratch.data, 0, 4);
-      this.scratch.setPosition(0);
-      int i = this.scratch.readInt();
-      paramExtractorInput.resetPeekPosition();
-      paramExtractorInput.advancePeekPosition(i);
-      paramExtractorInput.peekFully(this.scratch.data, 0, 4);
-      this.scratch.setPosition(0);
-    } while (this.scratch.readInt() != 0);
-    return true;
+    if (this.scratch.readUnsignedInt24() != FLV_TAG) {
+      return false;
+    }
+    paramExtractorInput.peekFully(this.scratch.data, 0, 2);
+    this.scratch.setPosition(0);
+    if ((this.scratch.readUnsignedShort() & 0xFA) != 0) {
+      return false;
+    }
+    paramExtractorInput.peekFully(this.scratch.data, 0, 4);
+    this.scratch.setPosition(0);
+    int i = this.scratch.readInt();
+    paramExtractorInput.resetPeekPosition();
+    paramExtractorInput.advancePeekPosition(i);
+    paramExtractorInput.peekFully(this.scratch.data, 0, 4);
+    this.scratch.setPosition(0);
+    if (this.scratch.readInt() == 0) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.flv.FlvExtractor
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ public class NoColumnError
   
   public NoColumnError(String paramString, Class paramClass)
   {
-    super("No_Such_Column_" + paramString);
+    super(localStringBuilder.toString());
     this.mColumnName = paramString;
     this.mColumnType = paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.NoColumnError
  * JD-Core Version:    0.7.0.1
  */

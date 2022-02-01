@@ -1,29 +1,19 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import android.widget.TextView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vd;
-import com.tencent.mm.g.a.vd.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.autogen.a.rf;
+import com.tencent.mm.sdk.event.IListener;
 
-final class WalletOfflineCoinPurseUI$5
-  implements Runnable
+class WalletOfflineCoinPurseUI$5
+  extends IListener<rf>
 {
-  WalletOfflineCoinPurseUI$5(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, vd paramvd) {}
-  
-  public final void run()
+  WalletOfflineCoinPurseUI$5(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, q paramq)
   {
-    AppMethodBeat.i(43508);
-    if (!bo.isNullOrNil(this.kSA.cLF.cLG))
-    {
-      e.a((TextView)this.pny.findViewById(2131821672), this.kSA.cLF.cLG, this.kSA.cLF.content, this.kSA.cLF.url);
-      AppMethodBeat.o(43508);
-      return;
-    }
-    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "no bulletin data");
-    AppMethodBeat.o(43508);
+    super(paramq);
+    AppMethodBeat.i(269176);
+    this.__eventId = rf.class.getName().hashCode();
+    AppMethodBeat.o(269176);
   }
 }
 

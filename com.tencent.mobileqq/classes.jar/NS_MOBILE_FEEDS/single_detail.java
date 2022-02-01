@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,22 +16,23 @@ public final class single_detail
   public String feed_attach_info = "";
   public String feed_info = "";
   public String feedskey = "";
-  public ArrayList<Map<Integer, byte[]>> recomfeeds;
+  public ArrayList<Map<Integer, byte[]>> recomfeeds = null;
   public Map<Integer, byte[]> singledetail;
-  public long status;
-  public int time;
-  public long uContainerSubType;
+  public long status = 0L;
+  public int time = 0;
+  public long uContainerSubType = 0L;
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     Object localObject = (byte[])new byte[1];
     ((byte[])localObject)[0] = 0;
-    cache_singledetail.put(Integer.valueOf(0), localObject);
+    cache_singledetail.put(localInteger, localObject);
     cache_recomfeeds = new ArrayList();
     localObject = new HashMap();
     byte[] arrayOfByte = (byte[])new byte[1];
     ((byte[])arrayOfByte)[0] = 0;
-    ((Map)localObject).put(Integer.valueOf(0), arrayOfByte);
+    ((Map)localObject).put(localInteger, arrayOfByte);
     cache_recomfeeds.add(localObject);
   }
   
@@ -62,29 +64,34 @@ public final class single_detail
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.singledetail != null) {
-      paramJceOutputStream.write(this.singledetail, 0);
+    Object localObject = this.singledetail;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
     paramJceOutputStream.write(this.status, 1);
-    if (this.feed_info != null) {
-      paramJceOutputStream.write(this.feed_info, 2);
+    localObject = this.feed_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.feed_attach_info != null) {
-      paramJceOutputStream.write(this.feed_attach_info, 3);
+    localObject = this.feed_attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.feedskey != null) {
-      paramJceOutputStream.write(this.feedskey, 4);
+    localObject = this.feedskey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.time, 5);
-    if (this.recomfeeds != null) {
-      paramJceOutputStream.write(this.recomfeeds, 6);
+    localObject = this.recomfeeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
     paramJceOutputStream.write(this.uContainerSubType, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.single_detail
  * JD-Core Version:    0.7.0.1
  */

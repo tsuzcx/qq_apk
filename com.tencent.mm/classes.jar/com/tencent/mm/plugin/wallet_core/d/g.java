@@ -2,70 +2,58 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ad;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.wallet_core.model.ac;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
 
 public final class g
-  extends j<ad>
+  extends MAutoStorage<ac>
 {
   public static final String[] SQL_CREATE;
-  public static Map<String, ad> goD;
-  private e db;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(47080);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ad.info, "WalletLuckyMoney") };
-    goD = new HashMap();
-    AppMethodBeat.o(47080);
+    AppMethodBeat.i(70616);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ac.info, "WalletKindInfo") };
+    AppMethodBeat.o(70616);
   }
   
-  public g(e parame)
+  public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ad.info, "WalletLuckyMoney", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, ac.info, "WalletKindInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final boolean a(ad paramad)
+  public final ArrayList<ac> ikp()
   {
-    AppMethodBeat.i(47078);
-    if ((paramad != null) && (goD.containsKey(paramad.field_mNativeUrl))) {
-      goD.put(paramad.field_mNativeUrl, paramad);
-    }
-    boolean bool = super.replace(paramad);
-    AppMethodBeat.o(47078);
-    return bool;
-  }
-  
-  public final ad afw(String paramString)
-  {
-    AppMethodBeat.i(47077);
-    paramString = this.db.rawQuery("select * from WalletLuckyMoney where mNativeUrl=?", new String[] { paramString });
-    if (paramString == null)
+    ArrayList localArrayList = null;
+    AppMethodBeat.i(70615);
+    Cursor localCursor = this.db.rawQuery("select * from WalletKindInfo", null, 2);
+    if (localCursor == null)
     {
-      AppMethodBeat.o(47077);
+      AppMethodBeat.o(70615);
       return null;
     }
-    if (paramString.getCount() == 0)
+    if (localCursor.moveToFirst())
     {
-      paramString.close();
-      AppMethodBeat.o(47077);
-      return null;
+      localArrayList = new ArrayList();
+      do
+      {
+        ac localac = new ac();
+        localac.convertFrom(localCursor);
+        localArrayList.add(localac);
+      } while (localCursor.moveToNext());
     }
-    paramString.moveToFirst();
-    ad localad = new ad();
-    localad.convertFrom(paramString);
-    paramString.close();
-    AppMethodBeat.o(47077);
-    return localad;
+    localCursor.close();
+    AppMethodBeat.o(70615);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.g
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,16 @@ import com.qq.taf.jce.JceStruct;
 public final class GetResourceReqInfoV2
   extends JceStruct
 {
-  public byte cDelFlag;
-  public byte cPush;
-  public byte cState;
-  public byte cStatus;
+  public byte cDelFlag = 0;
+  public byte cPush = 0;
+  public byte cState = 0;
+  public byte cStatus = 0;
   public int iPluginType = 64;
-  public short sLanType;
-  public short sResSubType;
+  public short sLanType = 0;
+  public short sResSubType = 0;
   public String strPkgName = "";
-  public long uiCurVer;
-  public long uiResId;
+  public long uiCurVer = 0L;
+  public long uiResId = 0L;
   
   public GetResourceReqInfoV2() {}
   
@@ -64,7 +64,7 @@ public final class GetResourceReqInfoV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceReqInfoV2
  * JD-Core Version:    0.7.0.1
  */

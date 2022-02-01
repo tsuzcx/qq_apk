@@ -7,7 +7,7 @@ import java.util.List;
 
 public class f
 {
-  protected static f a = null;
+  protected static f a;
   protected final List<h> b = Collections.synchronizedList(new ArrayList());
   
   public static f a()
@@ -42,8 +42,13 @@ public class f
       while (localIterator.hasNext()) {
         ((h)localIterator.next()).a(paramString);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -54,8 +59,13 @@ public class f
       while (localIterator.hasNext()) {
         ((h)localIterator.next()).a(paramString1, paramInt1, paramInt2, paramString2);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString1;
+    }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
@@ -66,8 +76,13 @@ public class f
       while (localIterator.hasNext()) {
         ((h)localIterator.next()).a(paramString, paramLong1, paramLong2);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void b(h paramh)
@@ -86,7 +101,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadservice.f
  * JD-Core Version:    0.7.0.1
  */

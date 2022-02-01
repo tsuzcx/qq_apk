@@ -8,13 +8,13 @@ public class zzav
   extends zza
 {
   public static final Parcelable.Creator<zzav> CREATOR = new s();
-  public final zzo Tn;
+  public final zzo Vc;
   public final int statusCode;
   
   public zzav(int paramInt, zzo paramzzo)
   {
     this.statusCode = paramInt;
-    this.Tn = paramzzo;
+    this.Vc = paramzzo;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

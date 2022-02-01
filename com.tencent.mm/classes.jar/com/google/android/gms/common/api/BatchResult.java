@@ -23,20 +23,20 @@ public final class BatchResult
   
   public final <R extends Result> R take(BatchResultToken<R> paramBatchResultToken)
   {
-    AppMethodBeat.i(60491);
+    AppMethodBeat.i(10983);
     if (paramBatchResultToken.mId < this.zzcg.length) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkArgument(bool, "The result token does not belong to this batch");
       paramBatchResultToken = this.zzcg[paramBatchResultToken.mId].await(0L, TimeUnit.MILLISECONDS);
-      AppMethodBeat.o(60491);
+      AppMethodBeat.o(10983);
       return paramBatchResultToken;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.BatchResult
  * JD-Core Version:    0.7.0.1
  */

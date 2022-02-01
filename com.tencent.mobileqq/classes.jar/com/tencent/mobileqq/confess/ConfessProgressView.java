@@ -11,12 +11,12 @@ import android.view.View;
 public class ConfessProgressView
   extends View
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private float b;
+  private Paint a = new Paint();
+  private float b = 0.0F;
   private float c;
   private float d;
   private float e;
+  private float f;
   
   public ConfessProgressView(Context paramContext)
   {
@@ -38,47 +38,49 @@ public class ConfessProgressView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.argb(255, 252, 228, 80));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.a.setColor(Color.argb(255, 252, 228, 80));
+    this.a.setAntiAlias(true);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 <= 0) || (paramInt1 >= paramInt2)) {
-      this.jdField_a_of_type_Float = 0.0F;
-    }
-    for (;;)
+    if ((paramInt1 > 0) && (paramInt1 < paramInt2))
     {
-      invalidate();
-      return;
       int i = 80 / (paramInt2 - 1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.argb(255, 252, 228 - i * (paramInt1 - 1), 80));
-      float f1 = this.b / 15.0F;
-      float f2 = this.b / 5.0F;
+      int j = paramInt1 - 1;
+      this.a.setColor(Color.argb(255, 252, 228 - i * j, 80));
+      float f2 = this.c;
+      float f1 = f2 / 15.0F;
+      f2 /= 5.0F;
       if (paramInt1 == 1) {
-        this.jdField_a_of_type_Float = f1;
+        this.b = f1;
       } else {
-        this.jdField_a_of_type_Float = (f1 + (f2 - f1) / (paramInt2 - 2) * (paramInt1 - 1));
+        this.b = (f1 + (f2 - f1) / (paramInt2 - 2) * j);
       }
     }
+    else
+    {
+      this.b = 0.0F;
+    }
+    invalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    paramCanvas.drawCircle(this.b / 2.0F + this.d, this.c / 2.0F * 1.08F + this.e, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(this.c / 2.0F + this.e, this.d / 2.0F * 1.08F + this.f, this.b, this.a);
   }
   
   public void setSize(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.b = paramFloat1;
-    this.c = paramFloat2;
-    this.d = paramFloat3;
-    this.e = paramFloat4;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.e = paramFloat3;
+    this.f = paramFloat4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessProgressView
  * JD-Core Version:    0.7.0.1
  */

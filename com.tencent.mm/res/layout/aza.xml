@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<RelativeLayout android:background="@color/al2" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/ni">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/dp" android:paddingTop="@dimen/l6" android:paddingRight="@dimen/dp" android:paddingBottom="@dimen/l6" style="@style/l0">
-            <ImageView android:id="@id/a7d" android:paddingBottom="@dimen/l6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/as1" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="center" android:id="@id/a7f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l6" android:text="@string/f4y" android:maxLines="5" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/n8" />
-            <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/l2">
-                <TextView android:id="@id/evi" android:text="@string/f4z" style="@style/nt" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a78" android:ellipsize="end" android:gravity="center" android:id="@id/ero" android:background="@drawable/a8l" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/bv" android:text="" android:singleLine="true" />
+    <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/a7b" android:ellipsize="none" android:id="@id/ern" android:background="@drawable/a8j" android:padding="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d4" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a8b" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/ero" style="@style/lx" />
+</RelativeLayout>

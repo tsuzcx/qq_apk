@@ -1,91 +1,102 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class hz
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int ReqType;
-  public int wsX;
-  public int wux;
-  public LinkedList<String> wuy;
-  
-  public hz()
-  {
-    AppMethodBeat.i(62519);
-    this.wuy = new LinkedList();
-    AppMethodBeat.o(62519);
-  }
+  public int VSw;
+  public boolean YJG;
+  public String YJH;
+  public String hMA;
+  public String hMz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62520);
+    AppMethodBeat.i(19404);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.wux);
-      paramVarArgs.aO(2, this.ReqType);
-      paramVarArgs.e(3, 1, this.wuy);
-      paramVarArgs.aO(4, this.wsX);
-      AppMethodBeat.o(62520);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.di(1, this.YJG);
+      paramVarArgs.bS(2, this.VSw);
+      if (this.hMz != null) {
+        paramVarArgs.g(3, this.hMz);
+      }
+      if (this.hMA != null) {
+        paramVarArgs.g(4, this.hMA);
+      }
+      if (this.YJH != null) {
+        paramVarArgs.g(5, this.YJH);
+      }
+      AppMethodBeat.o(19404);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.wux);
-      int i = e.a.a.b.b.a.bl(2, this.ReqType);
-      int j = e.a.a.a.c(3, 1, this.wuy);
-      int k = e.a.a.b.b.a.bl(4, this.wsX);
-      AppMethodBeat.o(62520);
-      return paramInt + 0 + i + j + k;
+      int i = i.a.a.b.b.a.ko(1) + 1 + 0 + i.a.a.b.b.a.cJ(2, this.VSw);
+      paramInt = i;
+      if (this.hMz != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.hMz);
+      }
+      i = paramInt;
+      if (this.hMA != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.hMA);
+      }
+      paramInt = i;
+      if (this.YJH != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.YJH);
+      }
+      AppMethodBeat.o(19404);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wuy.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(62520);
+      AppMethodBeat.o(19404);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       hz localhz = (hz)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(62520);
+        AppMethodBeat.o(19404);
         return -1;
       case 1: 
-        localhz.wux = locala.CLY.sl();
-        AppMethodBeat.o(62520);
+        localhz.YJG = locala.ajGk.aai();
+        AppMethodBeat.o(19404);
         return 0;
       case 2: 
-        localhz.ReqType = locala.CLY.sl();
-        AppMethodBeat.o(62520);
+        localhz.VSw = locala.ajGk.aar();
+        AppMethodBeat.o(19404);
         return 0;
       case 3: 
-        localhz.wuy.add(locala.CLY.readString());
-        AppMethodBeat.o(62520);
+        localhz.hMz = locala.ajGk.readString();
+        AppMethodBeat.o(19404);
+        return 0;
+      case 4: 
+        localhz.hMA = locala.ajGk.readString();
+        AppMethodBeat.o(19404);
         return 0;
       }
-      localhz.wsX = locala.CLY.sl();
-      AppMethodBeat.o(62520);
+      localhz.YJH = locala.ajGk.readString();
+      AppMethodBeat.o(19404);
       return 0;
     }
-    AppMethodBeat.o(62520);
+    AppMethodBeat.o(19404);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.hz
  * JD-Core Version:    0.7.0.1
  */

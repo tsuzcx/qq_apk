@@ -14,10 +14,11 @@ class MemoryReportHelper$Consumer
   
   private long getAvgMB()
   {
-    if (this.count == 0L) {
+    long l = this.count;
+    if (l == 0L) {
       return 0L;
     }
-    return this.totalM / this.count;
+    return this.totalM / l;
   }
   
   private void tick(long paramLong)
@@ -36,7 +37,7 @@ class MemoryReportHelper$Consumer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.report.MemoryReportHelper.Consumer
  * JD-Core Version:    0.7.0.1
  */

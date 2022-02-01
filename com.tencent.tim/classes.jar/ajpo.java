@@ -1,0 +1,14 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class ajpo
+  implements BusinessObserver
+{
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes3.jar
+ * Qualified Name:     ajpo
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,73 +1,57 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
-import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.content.RectangleShape;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class RectangleShapeParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "p", "s", "r", "hd" });
+  
   static RectangleShape parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue = null;
+    String str = null;
+    Object localObject1 = str;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
     boolean bool = false;
-    AnimatablePointValue localAnimatablePointValue = null;
-    AnimatableValue localAnimatableValue = null;
-    String str1 = null;
-    label14:
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (str2.equals("nm"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str2.equals("p"))
+            if (i != 3)
             {
-              i = 1;
-              continue;
-              if (str2.equals("s"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("r"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("hd")) {
-                    i = 4;
-                  }
-                }
+              if (i != 4) {
+                paramJsonReader.skipValue();
+              } else {
+                bool = paramJsonReader.nextBoolean();
               }
             }
+            else {
+              localObject3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+            }
           }
-          break;
+          else {
+            localObject2 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localObject1 = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableValue = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatablePointValue = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else {
+        str = paramJsonReader.nextString();
+      }
     }
-    return new RectangleShape(str1, localAnimatableValue, localAnimatablePointValue, localAnimatableFloatValue, bool);
+    return new RectangleShape(str, (AnimatableValue)localObject1, (AnimatableValue)localObject2, (AnimatableFloatValue)localObject3, bool);
   }
 }
 

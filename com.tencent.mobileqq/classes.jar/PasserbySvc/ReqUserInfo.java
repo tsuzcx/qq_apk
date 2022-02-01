@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqUserInfo
   extends JceStruct
@@ -15,13 +16,13 @@ public final class ReqUserInfo
   static ArrayList<Cell> cache_vCells;
   static byte[] cache_vLBSKeyData;
   static ArrayList<Long> cache_vMacs;
-  public int ePosType;
-  public GPS stGps;
+  public int ePosType = 0;
+  public GPS stGps = null;
   public String strAuthName = "";
   public String strAuthPassword = "";
-  public ArrayList<Cell> vCells;
-  public byte[] vLBSKeyData;
-  public ArrayList<Long> vMacs;
+  public ArrayList<Cell> vCells = null;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Long> vMacs = null;
   
   public ReqUserInfo() {}
   
@@ -71,23 +72,27 @@ public final class ReqUserInfo
     paramJceOutputStream.write(this.strAuthName, 0);
     paramJceOutputStream.write(this.strAuthPassword, 1);
     paramJceOutputStream.write(this.ePosType, 2);
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 3);
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.vMacs != null) {
-      paramJceOutputStream.write(this.vMacs, 4);
+    localObject = this.vMacs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.vCells != null) {
-      paramJceOutputStream.write(this.vCells, 5);
+    localObject = this.vCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.vLBSKeyData != null) {
-      paramJceOutputStream.write(this.vLBSKeyData, 6);
+    localObject = this.vLBSKeyData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PasserbySvc.ReqUserInfo
  * JD-Core Version:    0.7.0.1
  */

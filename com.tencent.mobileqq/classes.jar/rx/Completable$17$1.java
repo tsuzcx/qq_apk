@@ -18,22 +18,21 @@ class Completable$17$1
     {
       this.this$1.val$onComplete.call();
       this.val$s.onCompleted();
-      return;
-    }
-    catch (Throwable localThrowable1)
-    {
       try
       {
         this.this$1.val$onAfterComplete.call();
         return;
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable1)
       {
-        Completable.ERROR_HANDLER.handleError(localThrowable2);
+        Completable.ERROR_HANDLER.handleError(localThrowable1);
+        return;
       }
-      localThrowable1 = localThrowable1;
-      this.val$s.onError(localThrowable1);
       return;
+    }
+    catch (Throwable localThrowable2)
+    {
+      this.val$s.onError(localThrowable2);
     }
   }
   
@@ -42,16 +41,12 @@ class Completable$17$1
     try
     {
       this.this$1.val$onError.call(paramThrowable);
-      this.val$s.onError(paramThrowable);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        paramThrowable = new CompositeException(Arrays.asList(new Throwable[] { paramThrowable, localThrowable }));
-      }
+      paramThrowable = new CompositeException(Arrays.asList(new Throwable[] { paramThrowable, localThrowable }));
     }
+    this.val$s.onError(paramThrowable);
   }
   
   public void onSubscribe(Subscription paramSubscription)
@@ -72,7 +67,7 @@ class Completable$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.Completable.17.1
  * JD-Core Version:    0.7.0.1
  */

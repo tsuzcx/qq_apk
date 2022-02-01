@@ -11,116 +11,117 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.h.c;
 import com.tencent.mm.pluginsdk.ui.emoji.PopEmojiView;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class PreViewListGridView
   extends ListView
 {
-  private WindowManager lnU;
-  private boolean lsi;
-  private WindowManager.LayoutParams lso;
-  private int lsp;
-  private int lsq;
-  private int lsr;
-  private boolean lss;
-  private volatile int lst;
-  private String lsu;
-  private PopEmojiView lsv;
-  private a lsw;
-  private ak mHandler;
+  private MMHandler mHandler;
   private int mOrientation;
+  private WindowManager mWindowManager;
+  private boolean xZc;
+  private WindowManager.LayoutParams xZi;
+  private int xZj;
+  private int xZk;
+  private int xZl;
+  private boolean xZm;
+  private volatile int xZn;
+  private String xZo;
+  private PopEmojiView xZp;
+  private a xZq;
   
   public PreViewListGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(53848);
-    this.lsi = true;
-    this.mHandler = new ak();
-    this.lst = -1;
+    AppMethodBeat.i(109421);
+    this.xZc = true;
+    this.mHandler = new MMHandler();
+    this.xZn = -1;
     init(paramContext);
-    AppMethodBeat.o(53848);
+    AppMethodBeat.o(109421);
   }
   
   public PreViewListGridView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(53849);
-    this.lsi = true;
-    this.mHandler = new ak();
-    this.lst = -1;
+    AppMethodBeat.i(109422);
+    this.xZc = true;
+    this.mHandler = new MMHandler();
+    this.xZn = -1;
     init(paramContext);
-    AppMethodBeat.o(53849);
+    AppMethodBeat.o(109422);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(53850);
-    this.lsv = new PopEmojiView(getContext());
-    this.lsp = paramContext.getResources().getDimensionPixelSize(2131428393);
-    this.lnU = ((WindowManager)paramContext.getSystemService("window"));
-    this.lso = new WindowManager.LayoutParams(-1, -1, 2, 8, 1);
-    this.lso.width = this.lsp;
-    this.lso.height = this.lsp;
-    this.lso.gravity = 17;
+    AppMethodBeat.i(109423);
+    this.xZp = new PopEmojiView(getContext());
+    this.xZj = paramContext.getResources().getDimensionPixelSize(h.c.emoji_preview_image_size);
+    this.mWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.xZi = new WindowManager.LayoutParams(-1, -1, 2, 8, 1);
+    this.xZi.width = this.xZj;
+    this.xZi.height = this.xZj;
+    this.xZi.gravity = 17;
     this.mOrientation = getResources().getConfiguration().orientation;
     if (this.mOrientation == 2)
     {
-      this.lsq = this.lnU.getDefaultDisplay().getHeight();
-      this.lsr = this.lnU.getDefaultDisplay().getWidth();
-      AppMethodBeat.o(53850);
+      this.xZk = this.mWindowManager.getDefaultDisplay().getHeight();
+      this.xZl = this.mWindowManager.getDefaultDisplay().getWidth();
+      AppMethodBeat.o(109423);
       return;
     }
-    this.lsq = this.lnU.getDefaultDisplay().getWidth();
-    this.lsr = this.lnU.getDefaultDisplay().getHeight();
-    AppMethodBeat.o(53850);
+    this.xZk = this.mWindowManager.getDefaultDisplay().getWidth();
+    this.xZl = this.mWindowManager.getDefaultDisplay().getHeight();
+    AppMethodBeat.o(109423);
   }
   
-  public final void bnw()
+  public final void dCD()
   {
-    AppMethodBeat.i(53853);
-    if (this.lss)
+    AppMethodBeat.i(109426);
+    if (this.xZm)
     {
-      this.lnU.removeView(this.lsv);
-      this.lss = false;
+      this.mWindowManager.removeView(this.xZp);
+      this.xZm = false;
     }
-    this.lsu = "";
-    AppMethodBeat.o(53853);
+    this.xZo = "";
+    AppMethodBeat.o(109426);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(53852);
+    AppMethodBeat.i(109425);
     switch (paramMotionEvent.getAction())
     {
     }
     do
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(53852);
+      AppMethodBeat.o(109425);
       return bool;
-    } while (!this.lss);
-    bnw();
-    AppMethodBeat.o(53852);
+    } while (!this.xZm);
+    dCD();
+    AppMethodBeat.o(109425);
     return true;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    AppMethodBeat.i(53851);
+    AppMethodBeat.i(109424);
     super.setAdapter(paramListAdapter);
-    this.lsw = ((a)paramListAdapter);
-    AppMethodBeat.o(53851);
+    this.xZq = ((a)paramListAdapter);
+    AppMethodBeat.o(109424);
   }
   
   public void setEnablePreView(boolean paramBoolean)
   {
-    this.lsi = paramBoolean;
+    this.xZc = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView
  * JD-Core Version:    0.7.0.1
  */

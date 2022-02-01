@@ -20,7 +20,7 @@ public class SemCamera10_2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.delegator.SemCamera10_2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/hkh" android:background="@color/atg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.qzone.widget.ExtendScrollView android:id="@id/l57" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/avv" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/mtx" android:background="@drawable/id8" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip">
+                <EditText android:textSize="17.0sp" android:textColor="@color/a6r" android:textColorHint="#ffb0b3bf" android:ellipsize="end" android:gravity="top" android:id="@id/mai" android:background="@color/ajr" android:paddingLeft="@dimen/a1f" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="11.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/ka9" android:maxLines="2" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/awc" app:clearFocusOnBack="true" />
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="175.5dip">
+                    <com.qzone.widget.ExtendEditText android:textSize="17.0sp" android:textColor="@color/a6r" android:textColorHint="#ffb0b3bf" android:gravity="top" android:id="@id/led" android:background="@color/ajr" android:paddingTop="10.0dip" android:paddingBottom="45.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="175.5dip" android:hint="说点什么吧，能让更多人看到你的内容~" android:maxLines="8" android:minLines="1" android:inputType="textMultiLine" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/awc" app:clearFocusOnBack="true" />
+                </RelativeLayout>
+                <RelativeLayout android:id="@id/fpg" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tencent.qcircle.QCircleDynamicGridView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:gravity="center" android:id="@id/fpf" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:stretchMode="columnWidth" android:layout_alignParentTop="true" android:layout_alignParentRight="true" app:stretchable="false" />
+                </RelativeLayout>
+            </LinearLayout>
+            <FrameLayout android:orientation="vertical" android:id="@id/nnb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <View android:layout_gravity="bottom" android:background="#ffd4d9e5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="25.0dip" />
+                <RelativeLayout android:layout_gravity="top" android:id="@id/nn_" android:layout_width="fill_parent" android:layout_height="47.0dip" android:layout_marginTop="10.0dip">
+                    <com.qzone.widget.QZoneCheckBox android:id="@id/nn9" android:focusable="false" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="3.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/afr" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/nnc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="发布到" android:layout_toRightOf="@id/nn9" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/nna" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="18.0dip" android:src="@drawable/ief" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <com.tencent.widget.HorizontalListView android:layout_gravity="bottom" android:id="@id/nok" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="52.0dip" android:layout_marginBottom="11.0dip" />
+                <com.tencent.widget.HorizontalListView android:layout_gravity="bottom" android:id="@id/nom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="52.0dip" android:layout_marginBottom="11.0dip" />
+                <ImageView android:layout_gravity="bottom|center|right" android:layout_width="38.0dip" android:layout_height="37.0dip" android:src="@drawable/e75" />
+            </FrameLayout>
+            <RelativeLayout android:id="@id/nne" android:layout_width="fill_parent" android:layout_height="47.0dip">
+                <View android:background="#ffd4d9e5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="25.0dip" android:layout_alignParentBottom="true" />
+                <com.qzone.widget.QZoneCheckBox android:id="@id/nnd" android:focusable="false" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="3.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/afs" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/nnf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="15" android:singleLine="true" android:layout_toRightOf="@id/nnd" android:layout_centerVertical="true" />
+                <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="18.0dip" android:src="@drawable/ief" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/nop" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="47.0dip">
+                <View android:background="#ffd4d9e5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="25.0dip" android:layout_alignParentBottom="true" />
+                <com.qzone.widget.QZoneCheckBox android:id="@id/noo" android:focusable="false" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="3.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/aft" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/nos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="同步到" android:layout_toRightOf="@id/noo" android:layout_centerVertical="true" />
+                <LinearLayout android:gravity="center" android:id="@id/nor" android:descendantFocusability="blocksDescendants" android:layout_width="53.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                    <com.qzone.widget.QZoneCheckBox android:id="@id/noq" android:focusable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" style="@style/aht" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </com.qzone.widget.ExtendScrollView>
+</RelativeLayout>

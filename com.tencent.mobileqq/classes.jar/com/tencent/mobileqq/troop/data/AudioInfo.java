@@ -9,15 +9,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbpc;
-import bdgz;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AudioInfo
-  extends bbpc
+  extends MediaInfo
   implements Serializable, Cloneable
 {
   public static final String AUDIO_DURATION = "duration";
@@ -26,7 +25,7 @@ public class AudioInfo
   protected static final String AUDIO_URL = "url";
   private static final long serialVersionUID = 1L;
   public int duration;
-  public ImageView mAudioIcon;
+  public ImageView mAudioIcon = null;
   private int mAudioType;
   protected int mMaxLayoutLength = 226;
   protected int mMinLayoutLength = 84;
@@ -58,16 +57,15 @@ public class AudioInfo
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = paramString.toLowerCase();
-      if (!paramString.endsWith(".slk")) {
-        break label27;
+      if (paramString.endsWith(".slk"))
+      {
+        this.mAudioType = 1;
+        return;
       }
-      this.mAudioType = 1;
+      if (paramString.endsWith(".amr")) {
+        this.mAudioType = 0;
+      }
     }
-    label27:
-    while (!paramString.endsWith(".amr")) {
-      return;
-    }
-    this.mAudioType = 0;
   }
   
   protected static final String getAudioTime(double paramDouble)
@@ -82,11 +80,10 @@ public class AudioInfo
   
   protected static final int parseTimeToSeconds(double paramDouble)
   {
-    int i = 0;
     if (paramDouble >= 1000.0D) {
-      i = (int)(paramDouble / 1000.0D + 0.5D);
+      return (int)(paramDouble / 1000.0D + 0.5D);
     }
-    return i;
+    return 0;
   }
   
   public Object clone()
@@ -108,16 +105,21 @@ public class AudioInfo
       localJSONObject.put("duration", parseTimeToSeconds(this.duration));
       localJSONObject.put("url", this.url);
       localJSONObject.put("size", this.size);
-      label55:
-      if (QLog.isColorLevel()) {
-        QLog.d("publish_mediaInfo", 2, "AudioInfo getJsonText: " + localJSONObject);
-      }
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      break label55;
+      label58:
+      StringBuilder localStringBuilder;
+      break label58;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AudioInfo getJsonText: ");
+      localStringBuilder.append(localJSONObject);
+      QLog.d("publish_mediaInfo", 2, localStringBuilder.toString());
+    }
+    return localJSONObject.toString();
   }
   
   public View getView(Context paramContext, View.OnClickListener paramOnClickListener)
@@ -125,27 +127,32 @@ public class AudioInfo
     if (this.duration < 0) {
       return null;
     }
-    View localView = LayoutInflater.from(paramContext).inflate(2131559774, null);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362885);
+    View localView = LayoutInflater.from(paramContext).inflate(2131625954, null);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131428846);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(localRelativeLayout.getLayoutParams());
-    int i = (int)((this.mMaxLayoutLength - this.mMinLayoutLength) / 60000.0F * this.duration + this.mMinLayoutLength);
-    if (this.duration < 60000) {}
-    for (localLayoutParams.width = ((int)bdgz.a(paramContext, i));; localLayoutParams.width = ((int)bdgz.a(paramContext, this.mMaxLayoutLength)))
-    {
-      localLayoutParams.height = ((int)bdgz.a(paramContext, 41.0F));
-      localLayoutParams.topMargin = ((int)bdgz.a(paramContext, 12.0F));
-      localLayoutParams.leftMargin = ((int)bdgz.a(paramContext, 3.0F));
-      localRelativeLayout.setLayoutParams(localLayoutParams);
-      i = (int)bdgz.a(paramContext, 5.0F);
-      localRelativeLayout.setPadding(i, i, i, i);
-      localView.findViewById(2131362888).setOnClickListener(paramOnClickListener);
-      this.mAudioIcon = ((ImageView)localView.findViewById(2131362887));
-      this.mAudioIcon.setOnClickListener(paramOnClickListener);
-      paramContext = (TextView)localView.findViewById(2131362886);
-      paramContext.setOnClickListener(paramOnClickListener);
-      paramContext.setText(getAudioTime(this.duration));
-      return localView;
+    int i = this.mMaxLayoutLength;
+    int k = this.mMinLayoutLength;
+    float f = (i - k) / 60000.0F;
+    int j = this.duration;
+    k = (int)(f * j + k);
+    if (j < 60000) {
+      localLayoutParams.width = ((int)DisplayUtils.a(paramContext, k));
+    } else {
+      localLayoutParams.width = ((int)DisplayUtils.a(paramContext, i));
     }
+    localLayoutParams.height = ((int)DisplayUtils.a(paramContext, 41.0F));
+    localLayoutParams.topMargin = ((int)DisplayUtils.a(paramContext, 12.0F));
+    localLayoutParams.leftMargin = ((int)DisplayUtils.a(paramContext, 3.0F));
+    localRelativeLayout.setLayoutParams(localLayoutParams);
+    i = (int)DisplayUtils.a(paramContext, 5.0F);
+    localRelativeLayout.setPadding(i, i, i, i);
+    localView.findViewById(2131428853).setOnClickListener(paramOnClickListener);
+    this.mAudioIcon = ((ImageView)localView.findViewById(2131428852));
+    this.mAudioIcon.setOnClickListener(paramOnClickListener);
+    paramContext = (TextView)localView.findViewById(2131428849);
+    paramContext.setOnClickListener(paramOnClickListener);
+    paramContext.setText(getAudioTime(this.duration));
+    return localView;
   }
   
   public void setMaxLayout(int paramInt)
@@ -160,7 +167,7 @@ public class AudioInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

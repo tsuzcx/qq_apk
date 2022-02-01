@@ -1,62 +1,71 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.aj;
-import com.tencent.pb.common.b.a.a.k;
-import com.tencent.wecall.talkroom.model.k;
+import com.tencent.pb.common.b.a.a.a.am;
+import com.tencent.pb.common.b.a.a.a.m;
+import com.tencent.pb.common.b.d;
+import com.tencent.pb.common.c.b;
+import com.tencent.wecall.talkroom.model.j;
 
 public final class h
-  extends com.tencent.pb.common.b.d
+  extends d
 {
+  public long Hnt;
   public String groupId;
-  public int nMZ;
-  public long nNa;
+  public int roomId;
   
-  public h(String paramString, int paramInt1, long paramLong, int paramInt2)
+  public h(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(128021);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneRejectVoiceGroup" });
-    a.k localk = new a.k();
-    try
+    AppMethodBeat.i(175625);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneRejectVoiceGroup" });
+    a.m localm = new a.m();
+    for (;;)
     {
-      localk.groupId = paramString;
-      localk.twP = paramInt1;
-      localk.twQ = paramLong;
-      localk.kJx = paramInt2;
-      localk.BdM = 2;
-      localk.netType = k.jN(com.tencent.pb.common.c.d.tFk);
-      this.mNetType = 3;
-      this.Bda = com.tencent.wecall.talkroom.model.c.dXv().axs(paramString);
-      c(211, localk);
-      AppMethodBeat.o(128021);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+      try
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "NetSceneRedirect constructor", paramString });
+        localm.groupId = paramString;
+        localm.UAZ = paramInt1;
+        localm.UBa = paramLong;
+        localm.wTC = paramInt2;
+        localm.ahdz = 2;
+        localm.netType = j.oL(com.tencent.pb.common.c.c.UMe);
+        if (paramInt3 != 0) {
+          continue;
+        }
+        localm.ahdP = 0;
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(localm.ahdP) });
+        aGP(3);
+        aGQ(com.tencent.wecall.talkroom.model.c.ked().bGH(paramString));
       }
+      catch (Exception paramString)
+      {
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect constructor", paramString });
+        continue;
+      }
+      c(211, localm);
+      AppMethodBeat.o(175625);
+      return;
+      localm.ahdP = 1;
     }
   }
   
-  public final Object ck(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128022);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
+    AppMethodBeat.i(62546);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.aj)e.a(new a.aj(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(128022);
+        paramArrayOfByte = (a.am)e.a(new a.am(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62546);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        b.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
         paramArrayOfByte = null;
         continue;
       }
@@ -64,19 +73,19 @@ public final class h
     }
   }
   
-  public final String dTD()
-  {
-    return "CsCmd.Cmd_V_CSVoiceRedirectReq";
-  }
-  
   public final int getType()
   {
     return 211;
   }
+  
+  public final String jQW()
+  {
+    return "CsCmd.Cmd_V_CSVoiceRedirectReq";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.h
  * JD-Core Version:    0.7.0.1
  */

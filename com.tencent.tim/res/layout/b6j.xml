@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@drawable/ak8" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/gx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r6w" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/gx2" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_toLeftOf="@id/gx3" android:layout_alignTop="@id/gx3" />
+</RelativeLayout>

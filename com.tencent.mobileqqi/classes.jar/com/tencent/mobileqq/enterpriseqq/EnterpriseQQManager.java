@@ -18,9 +18,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
+import fpd;
 import fpe;
 import fpf;
-import fpg;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,8 +45,8 @@ public class EnterpriseQQManager
   
   private EnterpriseQQManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new fpe(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new fpf(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fpd(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new fpe(this);
     if (paramQQAppInterface != null) {
       a(paramQQAppInterface);
     }
@@ -252,7 +252,7 @@ public class EnterpriseQQManager
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
           this.jdField_a_of_type_AndroidContentContext = paramContext;
-          paramContext = new fpg(this);
+          paramContext = new fpf(this);
           paramContext.a = paramString2;
           paramContext.b = ???;
           synchronized (jdField_b_of_type_ArrayOfByte)

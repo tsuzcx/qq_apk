@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/l8" android:paddingLeft="@dimen/ft" style="@style/lw"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/br4" android:background="@raw/default_avatar" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/abk" android:paddingRight="@dimen/g2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ft" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:id="@id/e_6" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lg" />
-        </LinearLayout>
-        <TextView android:id="@id/e_7" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/li" />
-    </LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/kyn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/erl" android:maxLines="1" android:layout_marginStart="@dimen/d4" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end" android:id="@id/lql" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/a6s" android:src="@raw/icons_outlined_arrow" android:layout_marginEnd="@dimen/d4" app:iconColor="@color/FG_2" />
+    </FrameLayout>
+    <View android:id="@id/l3c" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="@dimen/a6s" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
 </LinearLayout>

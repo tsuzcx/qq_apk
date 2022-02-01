@@ -23,20 +23,20 @@ public class MessageQueueDownloadMultiplexTask
   static
   {
     mDispatcher = null;
-    HandlerThread localHandlerThread;
     if (ImageManagerEnv.g().getDispatcher() == null)
     {
-      localHandlerThread = new HandlerThread("ImageDownloadMultiplexThread");
+      HandlerThread localHandlerThread = new HandlerThread("ImageDownloadMultiplexThread");
       localHandlerThread.start();
+      mDispatcher = new MessageQueueDownloadMultiplexTask.ImageDownloadMultiplexHandler(localHandlerThread.getLooper());
     }
-    for (mDispatcher = new MessageQueueDownloadMultiplexTask.ImageDownloadMultiplexHandler(localHandlerThread.getLooper());; mDispatcher = new MessageQueueDownloadMultiplexTask.ImageDownloadMultiplexHandler(ImageManagerEnv.g().getDispatcher()))
+    else
     {
-      sPool = null;
-      sPoolSync = new Object();
-      mObjectPoolSize = 0;
-      clearAndInitSize();
-      return;
+      mDispatcher = new MessageQueueDownloadMultiplexTask.ImageDownloadMultiplexHandler(ImageManagerEnv.g().getDispatcher());
     }
+    sPool = null;
+    sPoolSync = new Object();
+    mObjectPoolSize = 0;
+    clearAndInitSize();
   }
   
   private MessageQueueDownloadMultiplexTask(ImageTask paramImageTask)
@@ -60,13 +60,17 @@ public class MessageQueueDownloadMultiplexTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   private static MessageQueueDownloadMultiplexTask getNextSameDownloadImageTask(String paramString)
   {
+    LinkedList localLinkedList = (LinkedList)mDownloadImageTaskQueue.get(paramString);
     Object localObject = null;
     MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = null;
-    LinkedList localLinkedList = (LinkedList)mDownloadImageTaskQueue.get(paramString);
     if (localLinkedList != null)
     {
       localObject = localMessageQueueDownloadMultiplexTask;
@@ -101,20 +105,21 @@ public class MessageQueueDownloadMultiplexTask
   
   public static MessageQueueDownloadMultiplexTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = sPool;
-        sPool = sPool.next;
-        localMessageQueueDownloadMultiplexTask.next = null;
-        mObjectPoolSize -= 1;
-        localMessageQueueDownloadMultiplexTask.setImageTask(paramImageTask);
-        return localMessageQueueDownloadMultiplexTask;
+        if (sPool != null)
+        {
+          MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = sPool;
+          sPool = sPool.next;
+          localMessageQueueDownloadMultiplexTask.next = null;
+          mObjectPoolSize -= 1;
+          localMessageQueueDownloadMultiplexTask.setImageTask(paramImageTask);
+          return localMessageQueueDownloadMultiplexTask;
+        }
       }
-      return new MessageQueueDownloadMultiplexTask(paramImageTask);
     }
+    return new MessageQueueDownloadMultiplexTask(paramImageTask);
   }
   
   private static List<MessageQueueDownloadMultiplexTask> removeSameDownloadImageTask(String paramString)
@@ -135,47 +140,53 @@ public class MessageQueueDownloadMultiplexTask
     if (!getImageKey().needDecode()) {
       ImageTracer.end(getImageKey().url);
     }
-    Message localMessage;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      setResult(paramInt, paramVarArgs);
-    case 0: 
-    case 1: 
-      do
+      if (paramInt != 1)
       {
-        do
+        if (paramInt != 2)
         {
+          if (paramInt != 11)
+          {
+            if (paramInt != 12)
+            {
+              setResult(paramInt, paramVarArgs);
+              return;
+            }
+            paramVarArgs = mDispatcher.obtainMessage();
+            paramVarArgs.what = 12;
+            paramVarArgs.obj = new Object[] { this };
+            paramVarArgs.sendToTarget();
+            return;
+          }
+          localMessage = mDispatcher.obtainMessage();
+          localMessage.what = 11;
+          localMessage.obj = new Object[] { this, paramVarArgs[0] };
+          localMessage.sendToTarget();
           return;
-        } while (needRetry);
+        }
         localMessage = mDispatcher.obtainMessage();
-        localMessage.what = 0;
-        localMessage.obj = new Object[] { this, paramVarArgs[0] };
+        localMessage.what = 2;
+        localMessage.obj = new Object[] { this, paramVarArgs[0], paramVarArgs[1], paramVarArgs[2] };
         localMessage.sendToTarget();
         return;
-      } while (needRetry);
+      }
+      if (needRetry) {
+        return;
+      }
       localMessage = mDispatcher.obtainMessage();
       localMessage.what = 1;
       localMessage.obj = new Object[] { this, paramVarArgs[0] };
       localMessage.sendToTarget();
       return;
-    case 2: 
-      localMessage = mDispatcher.obtainMessage();
-      localMessage.what = 2;
-      localMessage.obj = new Object[] { this, paramVarArgs[0], paramVarArgs[1], paramVarArgs[2] };
-      localMessage.sendToTarget();
-      return;
-    case 11: 
-      localMessage = mDispatcher.obtainMessage();
-      localMessage.what = 11;
-      localMessage.obj = new Object[] { this, paramVarArgs[0] };
-      localMessage.sendToTarget();
+    }
+    if (needRetry) {
       return;
     }
-    paramVarArgs = mDispatcher.obtainMessage();
-    paramVarArgs.what = 12;
-    paramVarArgs.obj = new Object[] { this };
-    paramVarArgs.sendToTarget();
+    Message localMessage = mDispatcher.obtainMessage();
+    localMessage.what = 0;
+    localMessage.obj = new Object[] { this, paramVarArgs[0] };
+    localMessage.sendToTarget();
   }
   
   public void recycle()
@@ -198,7 +209,7 @@ public class MessageQueueDownloadMultiplexTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.MessageQueueDownloadMultiplexTask
  * JD-Core Version:    0.7.0.1
  */

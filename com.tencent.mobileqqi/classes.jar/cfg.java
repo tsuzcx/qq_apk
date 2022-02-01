@@ -1,48 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.provider.Settings.System;
+import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class cfg
-  extends BroadcastReceiver
+  implements Runnable
 {
   public cfg(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext)))
+    Object localObject = this.a.a.a();
+    localObject = this.a.a.b((String)localObject);
+    if ((localObject != ImageUtil.a()) && (this.a.X == 4096))
     {
-      paramContext = Settings.System.getString(this.a.a().getContentResolver(), "date_format");
-      if (Conversation.a(this.a) != null)
-      {
-        TimeManager.a().a();
-        if (paramContext != null)
-        {
-          TimeManager.a().a(paramContext);
-          TimeManager.a().a();
-        }
-        if (Conversation.a(this.a))
-        {
-          Conversation.a(this.a, 1014, 0L, false);
-          this.a.k();
-        }
+      if (!Conversation.d(this.a)) {
+        break label80;
       }
-      SubAccountAssistantImpl.a().a(paramContext);
-      if (this.a.a != null)
-      {
-        paramContext = this.a.a.a(TroopAssistantActivity.class);
-        if (paramContext != null) {
-          paramContext.sendEmptyMessage(2);
-        }
-      }
+      this.a.b(3500L);
+    }
+    for (;;)
+    {
+      this.a.b(new cfh(this, (Drawable)localObject));
+      return;
+      label80:
+      this.a.b(4500L);
     }
   }
 }

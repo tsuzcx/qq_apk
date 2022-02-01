@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.troopgift;
 
-import bcur;
-import bcuv;
-
-public class TroopGiftAnimationController$4$1
+class TroopGiftAnimationController$4$1
   implements Runnable
 {
-  public TroopGiftAnimationController$4$1(bcuv parambcuv) {}
+  TroopGiftAnimationController$4$1(TroopGiftAnimationController.4 param4) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class TroopGiftAnimationController$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1
  * JD-Core Version:    0.7.0.1
  */

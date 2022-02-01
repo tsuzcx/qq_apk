@@ -1,25 +1,25 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewStub;
+import android.view.ViewStub.OnInflateListener;
+import com.tencent.mobileqq.activity.Leba;
 
 public class crn
-  implements View.OnClickListener
+  implements ViewStub.OnInflateListener
 {
-  public crn(LbsBaseActivity paramLbsBaseActivity) {}
+  public crn(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void onInflate(ViewStub paramViewStub, View paramView)
   {
-    this.a.b.d(true);
-    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
-      LbsBaseActivity.c(this.a).dismiss();
+    this.a.f();
+    if (!Leba.a(this.a)) {
+      this.a.a(true);
     }
+    Leba.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     crn
  * JD-Core Version:    0.7.0.1
  */

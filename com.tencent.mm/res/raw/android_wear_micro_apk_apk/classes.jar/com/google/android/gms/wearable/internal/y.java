@@ -11,8 +11,8 @@ public final class y
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 2, paramzzbe.statusCode);
-    c.a(paramParcel, 3, paramzzbe.Tr);
-    c.a(paramParcel, 4, paramzzbe.Ts);
+    c.a(paramParcel, 3, paramzzbe.Vg);
+    c.a(paramParcel, 4, paramzzbe.Vh);
     c.v(paramParcel, i);
   }
 }

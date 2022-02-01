@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ark.vipreport;
 
-import anrx;
-import anry;
-import anrz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class ArkVipReporter$1
+class ArkVipReporter$1
   implements Runnable
 {
-  public ArkVipReporter$1(String paramString, anrz paramanrz) {}
+  ArkVipReporter$1(ArkVipReporter paramArkVipReporter, String paramString, ArkVipSceneConfig paramArkVipSceneConfig) {}
   
   public void run()
   {
     synchronized ()
     {
-      anrx localanrx = (anrx)anry.a().get(this.jdField_a_of_type_JavaLangString);
-      if ((localanrx != null) && (Math.abs(System.currentTimeMillis() - localanrx.a) >= this.jdField_a_of_type_Anrz.a))
+      Object localObject2 = (ArkVipReportScene)ArkVipReporter.a(this.this$0).get(this.a);
+      if ((localObject2 != null) && (Math.abs(System.currentTimeMillis() - ((ArkVipReportScene)localObject2).h) >= this.b.d))
       {
-        QLog.i("ArkVipReporter", 1, "startSceneByEvent() find timeout scene and report:" + this.jdField_a_of_type_JavaLangString);
-        anry.a(this.jdField_a_of_type_JavaLangString);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("startSceneByEvent() find timeout scene and report:");
+        ((StringBuilder)localObject2).append(this.a);
+        QLog.i("ArkVipReporter", 1, ((StringBuilder)localObject2).toString());
+        this.this$0.b(this.a);
       }
       return;
     }
@@ -27,7 +27,7 @@ public final class ArkVipReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReporter.1
  * JD-Core Version:    0.7.0.1
  */

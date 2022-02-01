@@ -103,12 +103,14 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.isSoftLiteImageReady = false;
     this.isMultiplyImageReady = false;
     this.isNormalImageReady = false;
@@ -136,7 +138,10 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
     addParam(new UniformParam.FloatParam("alphaNormal", this.alphaNormal * this.factorNormal));
     addParam(new UniformParam.FloatParam("alphaMultiply", this.alphaMultiply));
     addParam(new UniformParam.FloatParam("alphaSoftlight", this.alphaSoftlight));
-    addParam(new UniformParam.FloatParam("toothWhiten", (float)(this.alphaToothWhiten * this.alphaMouthCloseRatio)));
+    double d1 = this.alphaToothWhiten;
+    double d2 = this.alphaMouthCloseRatio;
+    Double.isNaN(d1);
+    addParam(new UniformParam.FloatParam("toothWhiten", (float)(d1 * d2)));
     addParam(new UniformParam.FloatParam("alphaLips", this.alphaLips));
     addParam(new UniformParam.FloatParam("alphaMixLips", 0.0F));
     addAttribParam("pointsVisValue", new float[0], true);
@@ -151,13 +156,21 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     AttributeParam localAttributeParam = getAttribParam("position");
-    if ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690)) {}
-    do
+    if (localAttributeParam != null)
     {
-      return false;
+      if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+        return false;
+      }
       localAttributeParam = getAttribParam("inputTextureCoordinate");
-    } while ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690));
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      if (localAttributeParam != null)
+      {
+        if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+          return false;
+        }
+        return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      }
+    }
+    return false;
   }
   
   public void resetCosDefaultEffect()
@@ -175,17 +188,20 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
     addParam(new UniformParam.FloatParam("alphaNormal", this.alphaNormal * this.factorNormal));
     addParam(new UniformParam.FloatParam("alphaMultiply", this.alphaMultiply));
     addParam(new UniformParam.FloatParam("alphaSoftlight", this.alphaSoftlight));
-    if ((this.normalImage == null) || (!this.normalImage.equals(paramFaceFeatureParam.faceFeatureNormalImage)))
+    String str = this.normalImage;
+    if ((str == null) || (!str.equals(paramFaceFeatureParam.faceFeatureNormalImage)))
     {
       this.isNormalImageReady = false;
       this.normalImage = paramFaceFeatureParam.faceFeatureNormalImage;
     }
-    if ((this.softlightImage == null) || (!this.softlightImage.equals(paramFaceFeatureParam.faceFeatureSoftlightImage)))
+    str = this.softlightImage;
+    if ((str == null) || (!str.equals(paramFaceFeatureParam.faceFeatureSoftlightImage)))
     {
       this.isSoftLiteImageReady = false;
       this.softlightImage = paramFaceFeatureParam.faceFeatureSoftlightImage;
     }
-    if ((this.multiplyImage == null) || (!this.multiplyImage.equals(paramFaceFeatureParam.faceFeatureMultiplyImage)))
+    str = this.multiplyImage;
+    if ((str == null) || (!str.equals(paramFaceFeatureParam.faceFeatureMultiplyImage)))
     {
       this.isMultiplyImageReady = false;
       this.multiplyImage = paramFaceFeatureParam.faceFeatureMultiplyImage;
@@ -216,13 +232,14 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
     {
       addParam(new UniformParam.TextureParam("inputImageTexture5", paramInt, 33989));
       this.isToothWhitenMaskReady = true;
-    }
-    while (!BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap("lipsMask.png"))) {
       return;
     }
-    GlUtil.loadTexture(this.texture[3], VideoMemoryManager.getInstance().getBeautyCacheBitmap("lipsMask.png"));
-    this.isToothWhitenMaskReady = true;
-    addParam(new UniformParam.TextureParam("inputImageTexture5", this.texture[3], 33989));
+    if (BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap("lipsMask.png")))
+    {
+      GlUtil.loadTexture(this.texture[3], VideoMemoryManager.getInstance().getBeautyCacheBitmap("lipsMask.png"));
+      this.isToothWhitenMaskReady = true;
+      addParam(new UniformParam.TextureParam("inputImageTexture5", this.texture[3], 33989));
+    }
   }
   
   public void setMultiplyAlphaValue(float paramFloat)
@@ -251,8 +268,11 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
   
   public void setToothWhitenAlphaValue(float paramFloat)
   {
-    this.alphaToothWhiten = (0.5F * paramFloat);
-    addParam(new UniformParam.FloatParam("toothWhiten", (float)(this.alphaToothWhiten * this.alphaMouthCloseRatio)));
+    this.alphaToothWhiten = (paramFloat * 0.5F);
+    double d1 = this.alphaToothWhiten;
+    double d2 = this.alphaMouthCloseRatio;
+    Double.isNaN(d1);
+    addParam(new UniformParam.FloatParam("toothWhiten", (float)(d1 * d2)));
   }
   
   public void updateParam(List<PointF> paramList, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -267,20 +287,30 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
   
   public void updatePointParams(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    this.alphaMouthCloseRatio = ((AlgoUtils.getDistance((PointF)paramList.get(81), (PointF)paramList.get(73)) / this.mFaceDetScale - 10.0D) / 20.0D);
-    this.alphaMouthCloseRatio = Math.max(Math.min(this.alphaMouthCloseRatio, 1.0D), 0.0D);
-    addParam(new UniformParam.FloatParam("toothWhiten", (float)(this.alphaToothWhiten * this.alphaMouthCloseRatio)));
-    float f1 = AlgoUtils.getDistance((PointF)paramList.get(65), (PointF)paramList.get(66));
-    float f2 = AlgoUtils.getDistance((PointF)paramList.get(73), (PointF)paramList.get(81));
-    if (f1 <= 0.0F)
+    if (paramList != null)
     {
-      addParam(new UniformParam.FloatParam("alphaMixLips", 0.0F));
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
+      double d1 = AlgoUtils.getDistance((PointF)paramList.get(81), (PointF)paramList.get(73));
+      double d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      this.alphaMouthCloseRatio = ((d1 / d2 - 10.0D) / 20.0D);
+      this.alphaMouthCloseRatio = Math.max(Math.min(this.alphaMouthCloseRatio, 1.0D), 0.0D);
+      d1 = this.alphaToothWhiten;
+      d2 = this.alphaMouthCloseRatio;
+      Double.isNaN(d1);
+      addParam(new UniformParam.FloatParam("toothWhiten", (float)(d1 * d2)));
+      float f2 = AlgoUtils.getDistance((PointF)paramList.get(65), (PointF)paramList.get(66));
+      float f1 = AlgoUtils.getDistance((PointF)paramList.get(73), (PointF)paramList.get(81));
+      if (f2 <= 0.0F)
+      {
+        addParam(new UniformParam.FloatParam("alphaMixLips", 0.0F));
+        return;
+      }
+      f2 *= 0.1F;
+      addParam(new UniformParam.FloatParam("alphaMixLips", Math.max(0.0F, Math.min(1.0F, (f1 - f2) / f2))));
     }
-    addParam(new UniformParam.FloatParam("alphaMixLips", Math.max(0.0F, Math.min(1.0F, (f2 - f1 * 0.1F) / (f1 * 0.1F)))));
   }
   
   public void updateTextureParams()
@@ -290,7 +320,7 @@ public class TTBeautyV5FaceFeatureAndTeethWhitenFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5FaceFeatureAndTeethWhitenFilter
  * JD-Core Version:    0.7.0.1
  */

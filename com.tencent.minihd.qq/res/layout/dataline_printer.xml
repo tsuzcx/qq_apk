@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/dataline_printer" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:id="@id/lite_listView" android:focusable="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/lite_bottomBar" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="44.0dip" android:baselineAligned="false">
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/ivPrintFile" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.5">
+                <ImageView android:background="@drawable/qfile_dataline_printer_file" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/dataline_printer_file" />
+                <TextView android:textSize="@dimen/qq_profilecard_btn_text_size" android:textColor="@color/dataline_printer_btn" android:id="@id/textPrintFile" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dataline_printer_file" android:drawablePadding="6.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/ivPrintImage" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.5">
+                <ImageView android:background="@drawable/qfile_dataline_printer_pic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/dataline_printer_image" />
+                <TextView android:textSize="@dimen/qq_profilecard_btn_text_size" android:textColor="@color/dataline_printer_btn" android:id="@id/textPrintImage" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dataline_printer_image" android:drawablePadding="6.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/litenightmask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -13,21 +13,21 @@ class DefaultWebCore$6
   
   public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    AppMethodBeat.i(90929);
-    paramWebView = this.bFH.bH(paramString2);
+    AppMethodBeat.i(140542);
+    paramWebView = this.exp.eJ(paramString2);
     if (paramWebView == null)
     {
-      AppMethodBeat.o(90929);
+      AppMethodBeat.o(140542);
       return false;
     }
     paramJsPromptResult.confirm(paramWebView);
-    AppMethodBeat.o(90929);
+    AppMethodBeat.o(140542);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.webview.default_impl.DefaultWebCore.6
  * JD-Core Version:    0.7.0.1
  */

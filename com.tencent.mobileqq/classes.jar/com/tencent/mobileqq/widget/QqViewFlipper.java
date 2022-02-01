@@ -26,13 +26,15 @@ public class QqViewFlipper
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      stopFlipping();
+      label5:
+      break label5;
     }
+    stopFlipping();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QqViewFlipper
  * JD-Core Version:    0.7.0.1
  */

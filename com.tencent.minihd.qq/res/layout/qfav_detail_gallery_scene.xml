@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/background" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.widget.Gallery android:id="@id/gallery" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/progresscircle" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+    <ImageButton android:id="@id/rawPhotoBtn" android:background="@null" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/qq_pic_download_original_img" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="@string/preview_raw_photo" />
+    <ImageButton android:id="@id/actionSheetBtn" android:background="@null" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:layout_marginBottom="16.0dip" android:src="@drawable/aio_gallery_more" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/browser_more" />
+    <include android:id="@id/rawPhotoMask" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/qq_pic_raw_image_downloading" />
+</RelativeLayout>

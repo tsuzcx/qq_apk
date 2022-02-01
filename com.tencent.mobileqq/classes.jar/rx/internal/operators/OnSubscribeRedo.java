@@ -56,10 +56,10 @@ public final class OnSubscribeRedo<T>
     if (paramLong == 0L) {
       return Observable.empty();
     }
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("count >= 0 expected");
+    if (paramLong >= 0L) {
+      return repeat(paramObservable, new OnSubscribeRedo.RedoFinite(paramLong - 1L), paramScheduler);
     }
-    return repeat(paramObservable, new OnSubscribeRedo.RedoFinite(paramLong - 1L), paramScheduler);
+    throw new IllegalArgumentException("count >= 0 expected");
   }
   
   public static <T> Observable<T> repeat(Observable<T> paramObservable, Scheduler paramScheduler)
@@ -84,13 +84,14 @@ public final class OnSubscribeRedo<T>
   
   public static <T> Observable<T> retry(Observable<T> paramObservable, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("count >= 0 expected");
+    if (paramLong >= 0L)
+    {
+      if (paramLong == 0L) {
+        return paramObservable;
+      }
+      return retry(paramObservable, new OnSubscribeRedo.RedoFinite(paramLong));
     }
-    if (paramLong == 0L) {
-      return paramObservable;
-    }
-    return retry(paramObservable, new OnSubscribeRedo.RedoFinite(paramLong));
+    throw new IllegalArgumentException("count >= 0 expected");
   }
   
   public static <T> Observable<T> retry(Observable<T> paramObservable, Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> paramFunc1)
@@ -121,7 +122,7 @@ public final class OnSubscribeRedo<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeRedo
  * JD-Core Version:    0.7.0.1
  */

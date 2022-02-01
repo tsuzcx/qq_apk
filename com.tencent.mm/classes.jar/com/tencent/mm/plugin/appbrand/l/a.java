@@ -1,40 +1,56 @@
 package com.tencent.mm.plugin.appbrand.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.protocal.protobuf.bvk;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.handoff.model.HandOffMG;
+import com.tencent.mm.plugin.handoff.model.HandOffMP;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/handoff/HandOffUtils;", "", "()V", "obtainHandOffModel", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "handOffType", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static boolean a(int paramInt1, int paramInt2, bvk parambvk)
+  public static final a rui;
+  
+  static
   {
-    return (paramInt1 == 0) && (paramInt2 == 0) && (parambvk != null);
+    AppMethodBeat.i(175133);
+    rui = new a();
+    AppMethodBeat.o(175133);
   }
   
-  public static boolean b(a.a<?> parama)
+  public static final HandOffMP J(w paramw)
   {
-    AppMethodBeat.i(132307);
-    if ((parama != null) && (a(parama.errType, parama.errCode, parama.fsN)))
+    AppMethodBeat.i(175132);
+    s.u(paramw, "<this>");
+    s.u(paramw, "<this>");
+    paramw = paramw.getInitConfig();
+    String str1 = Util.nullAsNil(paramw.iconUrl);
+    String str2 = Util.nullAsNil(paramw.hEy);
+    String str3 = Util.nullAsNil(paramw.appId);
+    String str4 = Util.nullAsNil(paramw.username);
+    String str5 = Util.nullAsNil(paramw.qAF);
+    if (paramw.aqJ())
     {
-      AppMethodBeat.o(132307);
-      return true;
+      s.s(str1, "icon");
+      s.s(str2, "title");
+      s.s(str3, "appId");
+      s.s(str5, "entryPage");
+      s.s(str4, "appUserName");
+      paramw = (HandOffMP)new HandOffMG(str1, str2, str3, str5, str4, 1, null, null, null, 448, null);
+      AppMethodBeat.o(175132);
+      return paramw;
     }
-    AppMethodBeat.o(132307);
-    return false;
-  }
-  
-  public static String c(a.a parama)
-  {
-    AppMethodBeat.i(132308);
-    if (parama == null)
-    {
-      AppMethodBeat.o(132308);
-      return "null";
-    }
-    parama = String.format(Locale.US, "%d %d %s", new Object[] { Integer.valueOf(parama.errType), Integer.valueOf(parama.errCode), parama.errMsg });
-    AppMethodBeat.o(132308);
-    return parama;
+    s.s(str1, "icon");
+    s.s(str2, "title");
+    s.s(str3, "appId");
+    s.s(str5, "entryPage");
+    s.s(str4, "appUserName");
+    paramw = new HandOffMP(str1, str2, str3, str5, str4, 1, null, null, null, 448, null);
+    AppMethodBeat.o(175132);
+    return paramw;
   }
 }
 

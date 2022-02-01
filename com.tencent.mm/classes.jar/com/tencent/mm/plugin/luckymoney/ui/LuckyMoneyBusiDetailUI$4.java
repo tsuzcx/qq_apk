@@ -1,50 +1,47 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.content.Intent;
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.luckymoney.model.k;
-import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.plugin.luckymoney.model.q;
+import com.tencent.mm.pluginsdk.wallet.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.wallet_core.ui.k;
 
 final class LuckyMoneyBusiDetailUI$4
-  implements View.OnClickListener
+  extends k
 {
-  LuckyMoneyBusiDetailUI$4(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, k paramk) {}
+  LuckyMoneyBusiDetailUI$4(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, q paramq, Context paramContext) {}
   
-  public final void onClick(View paramView)
+  public final void dr(View paramView)
   {
-    AppMethodBeat.i(42586);
-    if (!TextUtils.isEmpty(this.orS.okK))
+    AppMethodBeat.i(284091);
+    if (!TextUtils.isEmpty(this.KAd.Kot))
     {
-      ab.i("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl:" + this.orS.okK);
-      if (this.orS.okK.startsWith("weixin://wxpay"))
+      Log.i("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl:" + this.KAd.Kot);
+      if (this.KAd.Kot.startsWith("weixin://wxpay"))
       {
-        e.RX(12);
-        h.an(this.orQ.getContext(), 1);
-        AppMethodBeat.o(42586);
+        i.aGA(12);
+        f.bq(this.KAb.getContext(), 1);
+        AppMethodBeat.o(284091);
         return;
       }
-      e.RX(7);
-      paramView = new Intent();
-      paramView.putExtra("rawUrl", this.orS.okK);
-      d.b(this.orQ.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
-      AppMethodBeat.o(42586);
+      i.aGA(7);
+      i.bC(this.val$context, this.KAd.Kot);
+      AppMethodBeat.o(284091);
       return;
     }
-    e.RX(12);
-    h.an(this.orQ.getContext(), 1);
-    ab.e("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl is empty");
-    AppMethodBeat.o(42586);
+    i.aGA(12);
+    f.bq(this.KAb.getContext(), 1);
+    Log.e("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl is empty");
+    AppMethodBeat.o(284091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.4
  * JD-Core Version:    0.7.0.1
  */

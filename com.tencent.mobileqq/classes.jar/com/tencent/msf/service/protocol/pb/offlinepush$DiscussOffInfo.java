@@ -25,14 +25,15 @@ public final class offlinepush$DiscussOffInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "discuss_uin", "discuss_type", "discuss_info_seq", "discuss_remark", "dis_name" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2 }, DiscussOffInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "discuss_uin", "discuss_type", "discuss_info_seq", "discuss_remark", "dis_name" }, new Object[] { localLong, Integer.valueOf(0), localLong, localByteStringMicro1, localByteStringMicro2 }, DiscussOffInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.pb.offlinepush.DiscussOffInfo
  * JD-Core Version:    0.7.0.1
  */

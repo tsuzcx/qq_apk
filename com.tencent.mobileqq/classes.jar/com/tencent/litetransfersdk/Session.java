@@ -10,6 +10,7 @@ public class Session
   public int emFileFrom;
   public int emFileType;
   public int emTaskStatus;
+  public boolean isFileAssist;
   public MsgHeader msgHeader;
   public byte[] pFileBuffer;
   public String strFileNameSrc;
@@ -19,6 +20,7 @@ public class Session
   public int uChannelType;
   public long uFileSizeSrc;
   public long uFileSizeThumb;
+  public long uForwardSessionID;
   public int uMsgTime;
   public long uOwnerUin;
   public long uSessionID;
@@ -32,7 +34,7 @@ public class Session
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.Session
  * JD-Core Version:    0.7.0.1
  */

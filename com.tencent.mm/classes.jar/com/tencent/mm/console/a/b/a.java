@@ -4,62 +4,62 @@ import android.content.Context;
 import android.database.Cursor;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.e;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.r;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelimage.j.d;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.List;
 
 public class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  private static final int[] eur;
+  private static final int[] mau;
   
   static
   {
-    AppMethodBeat.i(16172);
-    eur = new int[] { 0, 1 };
+    AppMethodBeat.i(20217);
+    mau = new int[] { 0, 1 };
     try
     {
       Object localObject = Class.forName("com.tencent.mm.console.a.b.a").newInstance();
       if ((localObject != null) && ((localObject instanceof com.tencent.mm.pluginsdk.cmd.a))) {
         com.tencent.mm.pluginsdk.cmd.b.a((com.tencent.mm.pluginsdk.cmd.a)localObject, new String[] { "//aging" });
       }
-      AppMethodBeat.o(16172);
+      AppMethodBeat.o(20217);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      ab.printErrStackTrace("MicroMsg.AgingTestCommand", localThrowable, "", new Object[0]);
-      AppMethodBeat.o(16172);
+      Log.printErrStackTrace("MicroMsg.AgingTestCommand", localThrowable, "", new Object[0]);
+      AppMethodBeat.o(20217);
     }
   }
   
-  private static ad G(String paramString, int paramInt)
+  private static au an(String paramString, int paramInt)
   {
-    AppMethodBeat.i(16161);
-    ad localad = new ad();
-    localad.euF = (100000 + paramInt);
-    localad.setUsername(paramString);
-    localad.jm("alias_".concat(String.valueOf(paramInt)));
-    localad.jp("nickName_".concat(String.valueOf(paramInt)));
-    localad.jr("quanPin_".concat(String.valueOf(paramInt)));
-    localad.jq("pyInitial_".concat(String.valueOf(paramInt)));
-    localad.setType(3);
-    AppMethodBeat.o(16161);
-    return localad;
+    AppMethodBeat.i(20206);
+    au localau = new au();
+    localau.maN = (100000 + paramInt);
+    localau.setUsername(paramString);
+    localau.AV("alias_".concat(String.valueOf(paramInt)));
+    localau.setNickname("nickName_".concat(String.valueOf(paramInt)));
+    localau.AZ("quanPin_".concat(String.valueOf(paramInt)));
+    localau.AY("pyInitial_".concat(String.valueOf(paramInt)));
+    localau.setType(3);
+    AppMethodBeat.o(20206);
+    return localau;
   }
   
-  private static byte[] gd(long paramLong)
+  private static byte[] hr(long paramLong)
   {
     int i = (byte)(int)(paramLong & 0xFF);
     int j = (byte)(int)(paramLong >> 8 & 0xFF);
@@ -71,113 +71,113 @@ public class a
     return new byte[] { (byte)(int)(paramLong >> 56 & 0xFF), i2, i1, n, m, k, j, i };
   }
   
-  private static int jb(int paramInt)
+  private static int rp(int paramInt)
   {
-    AppMethodBeat.i(16160);
+    AppMethodBeat.i(20205);
     int j = (int)(Math.random() * paramInt);
     int i = j;
     if (j >= paramInt) {
       i = 0;
     }
-    AppMethodBeat.o(16160);
+    AppMethodBeat.o(20205);
     return i;
   }
   
-  public final boolean a(final Context paramContext, final String[] paramArrayOfString, String paramString)
+  public final boolean a(final Context paramContext, final String[] paramArrayOfString, final String paramString)
   {
-    AppMethodBeat.i(16159);
-    if (ab.getLogLevel() > 1)
+    AppMethodBeat.i(20204);
+    if (Log.getLogLevel() > 1)
     {
-      AppMethodBeat.o(16159);
+      AppMethodBeat.o(20204);
       return false;
     }
     if (paramArrayOfString.length <= 1)
     {
-      AppMethodBeat.o(16159);
+      AppMethodBeat.o(20204);
       return false;
     }
-    Object localObject1 = r.Zn();
+    paramString = com.tencent.mm.model.z.bAM();
     final b localb = new b();
     int i = 5001;
     while (i <= 6000)
     {
-      localb.euz.add("rdgztest_atm".concat(String.valueOf(i)));
+      localb.maB.add("rdgztest_atm".concat(String.valueOf(i)));
       i += 1;
     }
-    paramString = ((j)g.E(j.class)).bPQ().bPX();
-    localObject1 = paramString.a("SELECT * FROM message WHERE talker=? AND (type=3 OR type=43 OR type=47) AND isSend=1", new String[] { localObject1 }, 0);
-    while (((Cursor)localObject1).moveToNext())
+    com.tencent.mm.storagebase.h localh = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().getDB();
+    Cursor localCursor1 = localh.rawQuery("SELECT * FROM message WHERE talker=? AND (type=3 OR type=43 OR type=47) AND isSend=1", new String[] { paramString });
+    while (localCursor1.moveToNext())
     {
-      bi localbi = new bi();
-      localbi.convertFrom((Cursor)localObject1);
-      Cursor localCursor;
-      Object localObject2;
-      switch (localbi.getType())
+      cc localcc = new cc();
+      localcc.convertFrom(localCursor1);
+      Cursor localCursor2;
+      Object localObject;
+      switch (localcc.getType())
       {
       default: 
         break;
       case 3: 
-        localCursor = paramString.a("SELECT * FROM ImgInfo2 WHERE msgSvrId=?", new String[] { String.valueOf(localbi.field_msgSvrId) }, 0);
-        if (localCursor.moveToNext())
+        localCursor2 = localh.rawQuery("SELECT * FROM " + j.d.Og(paramString) + " WHERE msgSvrId=?", new String[] { String.valueOf(localcc.field_msgSvrId) });
+        if (localCursor2.moveToNext())
         {
-          localObject2 = new e();
-          ((e)localObject2).convertFrom(localCursor);
-          localb.euA.add(new c(localbi, localObject2));
+          localObject = new com.tencent.mm.modelimage.h();
+          ((com.tencent.mm.modelimage.h)localObject).convertFrom(localCursor2);
+          localb.maC.add(new c(localcc, localObject));
         }
-        localCursor.close();
+        localCursor2.close();
         break;
       case 43: 
-        localCursor = paramString.a("SELECT * FROM videoinfo2 WHERE msgsvrid=?", new String[] { String.valueOf(localbi.field_msgSvrId) }, 0);
-        if (localCursor.moveToNext())
+        localCursor2 = localh.rawQuery("SELECT * FROM videoinfo2 WHERE msgsvrid=?", new String[] { String.valueOf(localcc.field_msgSvrId) });
+        if (localCursor2.moveToNext())
         {
-          localObject2 = new s();
-          ((s)localObject2).convertFrom(localCursor);
-          localb.euB.add(new c(localbi, localObject2));
+          localObject = new com.tencent.mm.modelvideo.z();
+          ((com.tencent.mm.modelvideo.z)localObject).convertFrom(localCursor2);
+          localb.maD.add(new c(localcc, localObject));
         }
-        localCursor.close();
+        localCursor2.close();
         break;
       case 47: 
-        localCursor = paramString.a("SELECT * FROM EmojiInfo WHERE md5=?", new String[] { localbi.field_imgPath }, 0);
-        if (localCursor.moveToNext())
+        localCursor2 = localh.rawQuery("SELECT * FROM EmojiInfo WHERE md5=?", new String[] { localcc.field_imgPath });
+        if (localCursor2.moveToNext())
         {
-          localObject2 = new EmojiInfo();
-          ((EmojiInfo)localObject2).convertFrom(localCursor);
-          localb.euC.add(new c(localbi, localObject2));
+          localObject = new EmojiInfo();
+          ((EmojiInfo)localObject).convertFrom(localCursor2);
+          localb.maE.add(new c(localcc, localObject));
         }
-        localCursor.close();
+        localCursor2.close();
       }
     }
-    ((Cursor)localObject1).close();
-    if ((localb.euA.isEmpty()) && (localb.euC.isEmpty()) && (localb.euB.isEmpty()))
+    localCursor1.close();
+    if ((localb.maC.isEmpty()) && (localb.maE.isEmpty()) && (localb.maD.isEmpty()))
     {
       Toast.makeText(paramContext, "please send some data(img,video,emoji) to yourself", 1).show();
-      AppMethodBeat.o(16159);
+      AppMethodBeat.o(20204);
       return false;
     }
-    ab.i("MicroMsg.AgingTestCommand", "[oneliang]username size:%s,image size:%s,emoji size:%s,video size:%s", new Object[] { Integer.valueOf(localb.euz.size()), Integer.valueOf(localb.euA.size()), Integer.valueOf(localb.euC.size()), Integer.valueOf(localb.euB.size()) });
+    Log.i("MicroMsg.AgingTestCommand", "[oneliang]username size:%s,image size:%s,emoji size:%s,video size:%s", new Object[] { Integer.valueOf(localb.maB.size()), Integer.valueOf(localb.maC.size()), Integer.valueOf(localb.maE.size()), Integer.valueOf(localb.maD.size()) });
     if (paramArrayOfString.length == 2)
     {
       Toast.makeText(paramContext, "aging begin", 1).show();
-      aw.RO().ac(new Runnable()
+      bh.baH().postToWorker(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(16154);
-          a.O(localb.euz);
-          a.a(a.this, null, bo.getInt(paramArrayOfString[1], 0), localb);
+          AppMethodBeat.i(20199);
+          a.bx(localb.maB);
+          a.a(a.this, null, Util.getInt(paramArrayOfString[1], 0), localb);
           a.a(a.this, paramContext);
-          AppMethodBeat.o(16154);
+          AppMethodBeat.o(20199);
         }
       });
-      AppMethodBeat.o(16159);
+      AppMethodBeat.o(20204);
       return true;
     }
     if (paramArrayOfString.length < 3)
     {
-      AppMethodBeat.o(16159);
+      AppMethodBeat.o(20204);
       return false;
     }
-    int j = bo.getInt(paramArrayOfString[2], 0);
+    final int j = Util.getInt(paramArrayOfString[2], 0);
     paramString = paramArrayOfString[1];
     i = -1;
     switch (paramString.hashCode())
@@ -188,7 +188,7 @@ public class a
       switch (i)
       {
       default: 
-        AppMethodBeat.o(16159);
+        AppMethodBeat.o(20204);
         return true;
         if (paramString.equals("1"))
         {
@@ -206,23 +206,46 @@ public class a
         break;
       }
     }
-    aw.RO().ac(new a.2(this, j, paramContext));
-    AppMethodBeat.o(16159);
+    bh.baH().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(20200);
+        a.rq(j);
+        a.a(a.this, paramContext);
+        AppMethodBeat.o(20200);
+      }
+    });
+    AppMethodBeat.o(20204);
     return true;
     paramString = null;
     if (paramArrayOfString.length == 4) {
       paramString = paramArrayOfString[3];
     }
-    aw.RO().ac(new a.3(this, paramString, j, localb, paramContext));
-    AppMethodBeat.o(16159);
+    bh.baH().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(20201);
+        a.a(a.this, paramString, j, localb);
+        a.a(a.this, paramContext);
+        AppMethodBeat.o(20201);
+      }
+    });
+    AppMethodBeat.o(20204);
     return true;
-    AppMethodBeat.o(16159);
+    AppMethodBeat.o(20204);
     return true;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void execute();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.console.a.b.a
  * JD-Core Version:    0.7.0.1
  */

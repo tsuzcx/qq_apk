@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import azig;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -15,34 +15,41 @@ class DynamicAvatarRecordActivity$9
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stopRecord(): Async, mVideoFileDir:");
+        localStringBuilder.append(this.a.s);
+        localStringBuilder.append(",is to call AVideoCodec.recordSubmit()");
+        QLog.i("DynamicAvatarRecordActivity", 2, localStringBuilder.toString());
       }
-      azig.a().a().recordSubmit();
+      RecordManager.a().b().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
+      localUnsatisfiedLinkError.printStackTrace();
+      synchronized (this.a.H)
       {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+        this.a.H.set(true);
+        this.a.H.notifyAll();
+        if (QLog.isColorLevel())
         {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("stopRecord(): Async, mVideoFileDir:");
+          ((StringBuilder)???).append(this.a.s);
+          ((StringBuilder)???).append(", call AVideoCodec.recordSubmit() fail, error = ");
+          ((StringBuilder)???).append(localUnsatisfiedLinkError.getMessage());
+          QLog.d("DynamicAvatarRecordActivity", 2, ((StringBuilder)???).toString());
         }
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.9
  * JD-Core Version:    0.7.0.1
  */

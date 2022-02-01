@@ -1,200 +1,145 @@
 package com.tencent.mm.plugin.recordvideo.b;
 
-import a.f.b.j;
-import a.l;
-import android.graphics.Point;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.editor.a.a;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.story.e.c;
-import com.tencent.mm.plugin.story.e.c.a;
-import com.tencent.mm.plugin.story.e.c.a.a;
-import com.tencent.mm.plugin.story.model.audio.AudioCacheInfo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.af;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.platformtools.ExportFileUtil;
+import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.plugin.recordvideo.b.h;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig;", "", "muteOrigin", "", "audioCacheInfo", "Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "editDatas", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "drawingRect", "", "reMuxStartTimeMs", "", "reMuxEndTimeMs", "(ZLcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;Ljava/util/ArrayList;Ljava/util/ArrayList;[FII)V", "getAudioCacheInfo", "()Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;", "setAudioCacheInfo", "(Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditDatas", "()Ljava/util/ArrayList;", "setEditDatas", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "getMuteOrigin", "()Z", "setMuteOrigin", "(Z)V", "getReMuxEndTimeMs", "()I", "setReMuxEndTimeMs", "(I)V", "getReMuxStartTimeMs", "setReMuxStartTimeMs", "generateTargetConfig", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "isLandVideo", "videoInfo", "Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion$VideoInfo;", "setSize", "", "config", "toString", "", "videoConfigForFile", "videoPath", "Companion", "EncodeConfig", "plugin-recordvideo_release"})
 public final class b
+  implements CaptureDataManager.b
 {
-  public static final b.a qbb;
-  public boolean qaU;
-  public AudioCacheInfo qaV;
-  public ArrayList<com.tencent.mm.media.editor.a.b> qaW;
-  private ArrayList<a> qaX;
-  public float[] qaY;
-  public int qaZ;
-  public int qba;
+  public String NGk;
   
-  static
+  public final void a(final Context paramContext, final CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(150577);
-    qbb = new b.a((byte)0);
-    AppMethodBeat.o(150577);
-  }
-  
-  public b(boolean paramBoolean, AudioCacheInfo paramAudioCacheInfo, ArrayList<com.tencent.mm.media.editor.a.b> paramArrayList, ArrayList<a> paramArrayList1, float[] paramArrayOfFloat, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(150575);
-    this.qaU = paramBoolean;
-    this.qaV = paramAudioCacheInfo;
-    this.qaW = paramArrayList;
-    this.qaX = paramArrayList1;
-    this.qaY = paramArrayOfFloat;
-    this.qaZ = paramInt1;
-    this.qba = paramInt2;
-    AppMethodBeat.o(150575);
-  }
-  
-  public static b.b a(String paramString, RecordConfigProvider paramRecordConfigProvider, b.b paramb)
-  {
-    AppMethodBeat.i(150573);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(75020);
+    paramBundle = new l(paramContext);
+    paramBundle.Vtg = new u.g()
     {
-      AppMethodBeat.o(150573);
-      return paramb;
-    }
-    Object localObject = c.ssB;
-    if (paramString == null) {
-      j.ebi();
-    }
-    paramString = c.a.acN(paramString);
-    int i;
-    int j;
-    int k;
-    if (paramString != null)
+      public final void onCreateMMMenu(s paramAnonymouss)
+      {
+        AppMethodBeat.i(75018);
+        paramAnonymouss.c(0, paramContext.getResources().getString(b.h.retransmits));
+        paramAnonymouss.c(1, paramContext.getResources().getString(b.h.plugin_favorite_opt));
+        paramAnonymouss.c(2, paramContext.getResources().getString(b.h.save_img_to_local));
+        AppMethodBeat.o(75018);
+      }
+    };
+    paramBundle.GAC = new u.i()
     {
-      paramb.fzT = paramRecordConfigProvider.qbq.fzT;
-      paramb.audioSampleRate = paramRecordConfigProvider.qbq.audioSampleRate;
-      paramb.videoBitrate = paramString.videoBitrate;
-      paramb.eWL = paramString.rotate;
-      paramb.eRF = paramRecordConfigProvider.qbq.eRF;
-      ab.d("MicroMsg.RemuxMediaEditConfig", "video info : ".concat(String.valueOf(paramString)));
-      if (paramString.videoBitrate - 200000 > paramRecordConfigProvider.qbq.videoBitrate)
+      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        paramb.videoBitrate = paramRecordConfigProvider.qbq.videoBitrate;
-        paramb.qbc = true;
-        ab.i("MicroMsg.RemuxMediaEditConfig", "remux by high videoBitrate " + paramString.videoBitrate + "  " + paramRecordConfigProvider.qbq.videoBitrate);
-      }
-      i = paramRecordConfigProvider.qbq.width;
-      j = paramRecordConfigProvider.qbq.height;
-      if (paramString.width <= paramString.height) {
-        break label450;
-      }
-      k = 1;
-      if (k == 0) {
-        break label688;
-      }
-    }
-    for (;;)
-    {
-      if (paramRecordConfigProvider.qbs == 1)
-      {
-        localObject = af.hQ(ah.getContext());
-        k = ((Point)localObject).y;
-        m = ((Point)localObject).x;
-        paramRecordConfigProvider.qbq.height = (k * paramRecordConfigProvider.qbq.width / m);
-        k = paramString.width;
-        m = paramString.height;
-        if ((k - 32 > j) || (m - 32 > i))
+        AppMethodBeat.i(75019);
+        Object localObject1;
+        if (paramAnonymousInt == 0)
         {
-          paramb.eRu = j;
-          paramb.eRv = i;
-          paramb.qbc = true;
-          ab.i("MicroMsg.RemuxMediaEditConfig", "remux by:FIT_SCREEN by high size " + paramString.width + "  " + paramb.eRu);
+          Object localObject2 = b.this;
+          paramAnonymousMenuItem = paramContext;
+          localObject1 = paramCaptureVideoNormalModel.thumbPath;
+          ((b)localObject2).NGk = ((String)localObject1);
+          localObject2 = new Intent();
+          ((Intent)localObject2).putExtra("scene", 8);
+          ((Intent)localObject2).putExtra("select_is_ret", true);
+          ((Intent)localObject2).putExtra("Select_Conv_Type", 3);
+          ((Intent)localObject2).putExtra("image_path", (String)localObject1);
+          ((Intent)localObject2).putExtra("Retr_Msg_Type", 0);
+          c.d(paramAnonymousMenuItem, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1);
+          AppMethodBeat.o(75019);
+          return;
         }
-      }
-      for (;;)
-      {
-        j = paramString.fps;
-        i = j;
-        if (paramString.fps > paramRecordConfigProvider.qbq.fps * 1.5F)
+        if (paramAnonymousInt == 1)
         {
-          i = j;
-          if (paramRecordConfigProvider.qbq.fps >= 0) {
-            i = paramRecordConfigProvider.qbq.fps;
-          }
+          paramAnonymousMenuItem = paramCaptureVideoNormalModel.thumbPath;
+          localObject1 = new dn();
+          ((af)com.tencent.mm.kernel.h.ax(af.class)).a((dn)localObject1, 2, paramAnonymousMenuItem);
+          ((dn)localObject1).hDr.hDy = 44;
+          ((dn)localObject1).publish();
+          Log.i("MicroMsg.MMRecordUI", "[doFavInMM] path:%s", new Object[] { paramAnonymousMenuItem });
+          Toast.makeText(MMApplicationContext.getContext(), paramContext.getResources().getString(b.h.fav_edit_photo_successfully), 1).show();
+          ((Activity)paramContext).finish();
+          AppMethodBeat.o(75019);
+          return;
         }
-        paramb.eRw = i;
-        if (paramb.eRu % 16 != 0) {
-          paramb.eRu = d.zn(paramb.eRu);
-        }
-        if (paramb.eRv % 16 != 0) {
-          paramb.eRv = d.zn(paramb.eRv);
-        }
-        AppMethodBeat.o(150573);
-        return paramb;
-        label450:
-        k = 0;
-        break;
-        paramb.eRv = paramString.height;
-        paramb.eRu = paramString.width;
-        continue;
-        if (paramRecordConfigProvider.qbs == 2)
-        {
-          k = paramString.width;
-          m = paramString.height;
-          if ((k != j) || (m != i))
+        if (paramAnonymousInt == 2) {
+          ExportFileUtil.a(paramContext, new Runnable()new Runnable
           {
-            paramb.qbc = true;
-            ab.i("MicroMsg.RemuxMediaEditConfig", "remux by:FORCE_WIDTH_AND_HEIGHT by high size ");
-          }
-          paramb.eRu = j;
-          paramb.eRv = i;
-        }
-        else if (paramRecordConfigProvider.qbs == 4)
-        {
-          m = paramString.width - 32;
-          int n = paramString.height - 32;
-          paramb.eRv = paramString.height;
-          paramb.eRu = paramString.width;
-          if (k != 0)
-          {
-            if (n > i)
+            public final void run()
             {
-              paramb.eRv = i;
-              paramb.eRu = (i * m / n);
-              paramb.qbc = true;
-              ab.i("MicroMsg.RemuxMediaEditConfig", "remux by:SCALE_SIZE by high size ");
+              AppMethodBeat.i(279388);
+              Boolean localBoolean1 = Boolean.valueOf(com.tencent.mm.kernel.h.baE().ban().getBoolean(at.a.acPr, true));
+              Log.i("MicroMsg.MMRecordUI", "save pic ,imageState : %s", new Object[] { localBoolean1 });
+              Boolean localBoolean2 = (Boolean)b.2.this.IAM.gHE().J("KEY_PHOTO_IS_EDITED_BOOLEAN", Boolean.TRUE);
+              if ((!localBoolean1.booleanValue()) || (!localBoolean2.booleanValue())) {
+                com.tencent.threadpool.h.ahAA.bm(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(279389);
+                    String str = AndroidMediaUtil.getExportImagePath("jpg");
+                    y.O(b.2.this.IAM.thumbPath, str, false);
+                    y.deleteFile(b.2.this.IAM.thumbPath);
+                    AndroidMediaUtil.refreshMediaScanner(str, MMApplicationContext.getContext());
+                    AppMethodBeat.o(279389);
+                  }
+                });
+              }
+              Toast.makeText(MMApplicationContext.getContext(), b.2.this.val$context.getResources().getString(b.h.exports_saved, new Object[] { AndroidMediaUtil.getSysCameraDirPath() }), 1).show();
+              ((Activity)b.2.this.val$context).finish();
+              AppMethodBeat.o(279388);
             }
-          }
-          else if (m > j)
+          }, new Runnable()
           {
-            paramb.eRu = j;
-            paramb.eRv = (j * n / m);
-            paramb.qbc = true;
-            ab.i("MicroMsg.RemuxMediaEditConfig", "remux by:SCALE_SIZE by high size ");
-          }
+            public final void run()
+            {
+              AppMethodBeat.i(279385);
+              Toast.makeText(MMApplicationContext.getContext(), b.2.this.val$context.getResources().getString(b.h.save_image_err), 1).show();
+              AppMethodBeat.o(279385);
+            }
+          });
         }
-        else if (paramRecordConfigProvider.qbs == 3)
-        {
-          paramb.eRu = paramString.width;
-          paramb.eRv = paramString.height;
-        }
+        AppMethodBeat.o(75019);
       }
-      label688:
-      int m = i;
-      i = j;
-      j = m;
-    }
+    };
+    k.a(paramContext, paramBundle.jDd());
+    AppMethodBeat.o(75020);
   }
   
-  public final String toString()
+  public final void a(RecordMediaReportInfo paramRecordMediaReportInfo, Bundle paramBundle) {}
+  
+  public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
   {
-    AppMethodBeat.i(150574);
-    String str = "RemuxMediaEditConfig(muteOrigin=" + this.qaU + ", audioCacheInfo=" + this.qaV + ", editItems=" + this.qaW + ", drawingRect=" + Arrays.toString(this.qaY) + ", reMuxStartTimeMs=" + this.qaZ + ", reMuxEndTimeMs=" + this.qba + ')';
-    AppMethodBeat.o(150574);
-    return str;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.b.b
  * JD-Core Version:    0.7.0.1
  */

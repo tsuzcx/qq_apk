@@ -21,15 +21,16 @@ public final class oidb_cmd0x97b$CountDetailInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 80 }, new String[] { "enum_type", "uint32_count", "bytes_name", "bytes_url", "bytes_icon_url", "uint32_id" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, CountDetailInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 80 }, new String[] { "enum_type", "uint32_count", "bytes_name", "bytes_url", "bytes_icon_url", "uint32_id" }, new Object[] { Integer.valueOf(1), localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger }, CountDetailInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.CountDetailInfo
  * JD-Core Version:    0.7.0.1
  */

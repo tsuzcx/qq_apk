@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.utils;
 
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 
 public class MiniAppReportShareUtil
 {
@@ -30,17 +30,17 @@ public class MiniAppReportShareUtil
   public void reportShare(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
     long l = System.currentTimeMillis();
-    if (paramInt2 == 10) {}
-    for (paramInt2 = 0;; paramInt2 = 1)
-    {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).reportShare(null, l, paramString1, paramInt1, paramInt2, 0, paramInt4, paramString2, new MiniAppReportShareUtil.1(this, l, paramString1, paramInt1, paramInt2, paramInt4, paramString2));
-      return;
+    if (paramInt2 == 10) {
+      paramInt2 = 0;
+    } else {
+      paramInt2 = 1;
     }
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).reportShare(null, l, paramString1, paramInt1, paramInt2, 0, paramInt4, paramString2, new MiniAppReportShareUtil.1(this, l, paramString1, paramInt1, paramInt2, paramInt4, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniAppReportShareUtil
  * JD-Core Version:    0.7.0.1
  */

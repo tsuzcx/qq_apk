@@ -49,11 +49,21 @@ public class PTSRootNodeItemViewDelegate
   
   private boolean isSameAppInstance()
   {
-    if ((this.mRootView == null) || (this.mAppInstance == null)) {}
-    while (this.mAppInstance != this.mRootView.getAppInstance()) {
-      return false;
+    PTSItemView localPTSItemView = this.mRootView;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localPTSItemView != null)
+    {
+      PTSAppInstance localPTSAppInstance = this.mAppInstance;
+      if (localPTSAppInstance == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (localPTSAppInstance == localPTSItemView.getAppInstance()) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   private void removeFromNodeInfoMap(PTSNodeInfo paramPTSNodeInfo)
@@ -74,10 +84,22 @@ public class PTSRootNodeItemViewDelegate
     return this.mRootNodeInfo;
   }
   
+  public View getRootView()
+  {
+    return this.mRootView;
+  }
+  
   public boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
-    if (PTSLog.isDebug()) {
-      PTSLog.d("PTSRootNodeItemViewDelegate", "[insert] insertIndex = " + paramInt + ", nodeInfo = " + paramPTSNodeInfo);
+    Object localObject;
+    if (PTSLog.isDebug())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[insert] insertIndex = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", nodeInfo = ");
+      ((StringBuilder)localObject).append(paramPTSNodeInfo);
+      PTSLog.d("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject).toString());
     }
     if (paramPTSNodeInfo == null) {
       return false;
@@ -87,78 +109,88 @@ public class PTSRootNodeItemViewDelegate
       this.mRootNodeInfo = paramPTSNodeInfo;
       clearNodeInfoMap();
     }
-    for (;;)
+    else if (paramPTSNodeInfo.hasParent())
     {
-      addToNodeInfoMap(paramPTSNodeInfo);
-      return true;
-      if (paramPTSNodeInfo.hasParent())
+      localObject = getNodeInfoByID(paramPTSNodeInfo.getParentID());
+      if (localObject != null)
       {
-        PTSNodeInfo localPTSNodeInfo = getNodeInfoByID(paramPTSNodeInfo.getParentID());
-        if (localPTSNodeInfo != null) {
-          localPTSNodeInfo.addChild(paramInt, paramPTSNodeInfo);
-        } else {
-          PTSLog.e("PTSRootNodeItemViewDelegate", "[insert] error, can not find parent nodeInfo, nodeInfo = " + paramPTSNodeInfo);
-        }
+        ((PTSNodeInfo)localObject).addChild(paramInt, paramPTSNodeInfo);
       }
       else
       {
-        PTSLog.e("PTSRootNodeItemViewDelegate", "[insert] error, index = " + paramInt + ", nodeInfo = \n" + paramPTSNodeInfo);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[insert] error, can not find parent nodeInfo, nodeInfo = ");
+        ((StringBuilder)localObject).append(paramPTSNodeInfo);
+        PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject).toString());
       }
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[insert] error, index = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", nodeInfo = \n");
+      ((StringBuilder)localObject).append(paramPTSNodeInfo);
+      PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject).toString());
+    }
+    addToNodeInfoMap(paramPTSNodeInfo);
+    return true;
   }
   
   public boolean modify(PTSNodeInfo paramPTSNodeInfo)
   {
-    if (PTSLog.isDebug()) {
-      PTSLog.d("PTSRootNodeItemViewDelegate", "[modify] nodeInfo = " + paramPTSNodeInfo);
+    Object localObject;
+    if (PTSLog.isDebug())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[modify] nodeInfo = ");
+      ((StringBuilder)localObject).append(paramPTSNodeInfo);
+      PTSLog.d("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject).toString());
     }
+    int i = 0;
     if (paramPTSNodeInfo == null) {
       return false;
     }
     if (paramPTSNodeInfo.isRootNode())
     {
-      if (this.mRootNodeInfo != null) {
-        paramPTSNodeInfo.addChildren(this.mRootNodeInfo.getChildren());
+      localObject = this.mRootNodeInfo;
+      if (localObject != null) {
+        paramPTSNodeInfo.addChildren(((PTSNodeInfo)localObject).getChildren());
       }
       this.mRootNodeInfo = paramPTSNodeInfo;
     }
-    for (;;)
+    else if (paramPTSNodeInfo.hasParent())
     {
-      addToNodeInfoMap(paramPTSNodeInfo);
-      return true;
-      if (paramPTSNodeInfo.hasParent())
+      localObject = getNodeInfoByID(paramPTSNodeInfo.getParentID());
+      if (localObject != null)
       {
-        PTSNodeInfo localPTSNodeInfo1 = getNodeInfoByID(paramPTSNodeInfo.getParentID());
-        if (localPTSNodeInfo1 != null)
+        List localList = ((PTSNodeInfo)localObject).getChildren();
+        while (i < localList.size())
         {
-          List localList = localPTSNodeInfo1.getChildren();
-          int i = 0;
-          for (;;)
+          PTSNodeInfo localPTSNodeInfo = (PTSNodeInfo)localList.get(i);
+          if (localPTSNodeInfo.equals(paramPTSNodeInfo))
           {
-            if (i >= localList.size()) {
-              break label157;
-            }
-            PTSNodeInfo localPTSNodeInfo2 = (PTSNodeInfo)localList.get(i);
-            if (localPTSNodeInfo2.equals(paramPTSNodeInfo))
-            {
-              paramPTSNodeInfo.addChildren(localPTSNodeInfo2.getChildren());
-              localPTSNodeInfo1.setChild(i, paramPTSNodeInfo);
-              break;
-            }
-            i += 1;
+            paramPTSNodeInfo.addChildren(localPTSNodeInfo.getChildren());
+            ((PTSNodeInfo)localObject).setChild(i, paramPTSNodeInfo);
+            break;
           }
-        }
-        else
-        {
-          label157:
-          PTSLog.e("PTSRootNodeItemViewDelegate", "[modify] error, can not find parent nodeInfo, nodeInfo = " + paramPTSNodeInfo);
+          i += 1;
         }
       }
-      else
-      {
-        PTSLog.e("PTSRootNodeItemViewDelegate", "[modify] error, nodeInfo does not have parent, nodeInfo = " + paramPTSNodeInfo);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[modify] error, can not find parent nodeInfo, nodeInfo = ");
+      ((StringBuilder)localObject).append(paramPTSNodeInfo);
+      PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject).toString());
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[modify] error, nodeInfo does not have parent, nodeInfo = ");
+      ((StringBuilder)localObject).append(paramPTSNodeInfo);
+      PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject).toString());
+    }
+    addToNodeInfoMap(paramPTSNodeInfo);
+    return true;
   }
   
   public View onCreateNativeView()
@@ -173,7 +205,7 @@ public class PTSRootNodeItemViewDelegate
       this.mRootView.bindData(this.mAppInstance);
       return;
     }
-    PTSLog.i("PTSRootNodeItemViewDelegate", "[onLayoutTempPatchFinished], do not update, not the valid appInstance.");
+    PTSLog.i("PTSRootNodeItemViewDelegate", "[onLayoutTempPatchFinished], do not update, not the valid appInstance or the rootView is null.");
   }
   
   public boolean refreshNodeList(List<PTSNodeInfo> paramList)
@@ -183,53 +215,66 @@ public class PTSRootNodeItemViewDelegate
   
   public boolean remove(int paramInt)
   {
-    PTSNodeInfo localPTSNodeInfo1 = getNodeInfoByID(String.valueOf(paramInt));
-    if (PTSLog.isDebug()) {
-      PTSLog.d("PTSRootNodeItemViewDelegate", "[remove] nodeUniqueID = " + paramInt + ", nodeInfo = " + localPTSNodeInfo1);
-    }
-    if (localPTSNodeInfo1 == null)
+    Object localObject1 = getNodeInfoByID(String.valueOf(paramInt));
+    Object localObject2;
+    if (PTSLog.isDebug())
     {
-      PTSLog.e("PTSRootNodeItemViewDelegate", "[remove] nodeInfo does not exists, nodeUniqueID = " + paramInt);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[remove] nodeUniqueID = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(", nodeInfo = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      PTSLog.d("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject2).toString());
+    }
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[remove] nodeInfo does not exists, nodeUniqueID = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject1).toString());
       return false;
     }
-    if (localPTSNodeInfo1.isRootNode())
+    if (((PTSNodeInfo)localObject1).isRootNode())
     {
       this.mRootNodeInfo = null;
       clearNodeInfoMap();
     }
-    for (;;)
+    else if (((PTSNodeInfo)localObject1).hasParent())
     {
-      removeFromNodeInfoMap(localPTSNodeInfo1);
-      return true;
-      if (localPTSNodeInfo1.hasParent())
+      localObject2 = getNodeInfoByID(((PTSNodeInfo)localObject1).getParentID());
+      if (localObject2 != null)
       {
-        PTSNodeInfo localPTSNodeInfo2 = getNodeInfoByID(localPTSNodeInfo1.getParentID());
-        if (localPTSNodeInfo2 != null) {
-          localPTSNodeInfo2.removeChild(localPTSNodeInfo1);
-        } else {
-          PTSLog.e("PTSRootNodeItemViewDelegate", "[remove] error, can not find parent nodeInfo, nodeUniqueID = " + paramInt);
-        }
+        ((PTSNodeInfo)localObject2).removeChild((PTSNodeInfo)localObject1);
       }
       else
       {
-        PTSLog.e("PTSRootNodeItemViewDelegate", "[remove] error, nodeUniqueID = " + paramInt);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[remove] error, can not find parent nodeInfo, nodeUniqueID = ");
+        ((StringBuilder)localObject2).append(paramInt);
+        PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject2).toString());
       }
     }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[remove] error, nodeUniqueID = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      PTSLog.e("PTSRootNodeItemViewDelegate", ((StringBuilder)localObject2).toString());
+    }
+    removeFromNodeInfoMap((PTSNodeInfo)localObject1);
+    return true;
   }
   
   public void setRootView(ViewGroup paramViewGroup)
   {
-    if ((paramViewGroup instanceof PTSItemView))
-    {
+    if ((paramViewGroup instanceof PTSItemView)) {
       this.mRootView = ((PTSItemView)paramViewGroup);
-      return;
     }
-    PTSLog.e("PTSRootNodeItemViewDelegate", "[setRootView] error, not PTSItemView.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSRootNodeItemViewDelegate
  * JD-Core Version:    0.7.0.1
  */

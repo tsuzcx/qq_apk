@@ -6,100 +6,100 @@ import java.nio.ByteBuffer;
 public class e
   extends a
 {
-  public final b aAR;
-  public ByteBuffer aAS;
-  public long aAT;
-  public final int aAU;
+  public final b cKP;
+  public ByteBuffer cKQ;
+  public final int cKR;
+  public long timeUs;
   
   public e(int paramInt)
   {
-    AppMethodBeat.i(94739);
-    this.aAR = new b();
-    this.aAU = paramInt;
-    AppMethodBeat.o(94739);
+    AppMethodBeat.i(91850);
+    this.cKP = new b();
+    this.cKR = paramInt;
+    AppMethodBeat.o(91850);
   }
   
-  private ByteBuffer de(int paramInt)
+  private ByteBuffer hs(int paramInt)
   {
-    AppMethodBeat.i(94744);
+    AppMethodBeat.i(91855);
     Object localObject;
-    if (this.aAU == 1)
+    if (this.cKR == 1)
     {
       localObject = ByteBuffer.allocate(paramInt);
-      AppMethodBeat.o(94744);
+      AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aAU == 2)
+    if (this.cKR == 2)
     {
       localObject = ByteBuffer.allocateDirect(paramInt);
-      AppMethodBeat.o(94744);
+      AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aAS == null) {}
-    for (int i = 0;; i = this.aAS.capacity())
+    if (this.cKQ == null) {}
+    for (int i = 0;; i = this.cKQ.capacity())
     {
       localObject = new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
-      AppMethodBeat.o(94744);
+      AppMethodBeat.o(91855);
       throw ((Throwable)localObject);
     }
   }
   
-  public final void clear()
+  public final boolean RC()
   {
-    AppMethodBeat.i(94743);
-    super.clear();
-    if (this.aAS != null) {
-      this.aAS.clear();
-    }
-    AppMethodBeat.o(94743);
-  }
-  
-  public final void dd(int paramInt)
-  {
-    AppMethodBeat.i(94740);
-    if (this.aAS == null)
-    {
-      this.aAS = de(paramInt);
-      AppMethodBeat.o(94740);
-      return;
-    }
-    int i = this.aAS.capacity();
-    int j = this.aAS.position();
-    paramInt = j + paramInt;
-    if (i >= paramInt)
-    {
-      AppMethodBeat.o(94740);
-      return;
-    }
-    ByteBuffer localByteBuffer = de(paramInt);
-    if (j > 0)
-    {
-      this.aAS.position(0);
-      this.aAS.limit(j);
-      localByteBuffer.put(this.aAS);
-    }
-    this.aAS = localByteBuffer;
-    AppMethodBeat.o(94740);
-  }
-  
-  public final boolean nI()
-  {
-    AppMethodBeat.i(94741);
-    boolean bool = dc(1073741824);
-    AppMethodBeat.o(94741);
+    AppMethodBeat.i(91852);
+    boolean bool = hq(1073741824);
+    AppMethodBeat.o(91852);
     return bool;
   }
   
-  public final void nJ()
+  public final void RD()
   {
-    AppMethodBeat.i(94742);
-    this.aAS.flip();
-    AppMethodBeat.o(94742);
+    AppMethodBeat.i(91853);
+    this.cKQ.flip();
+    AppMethodBeat.o(91853);
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(91854);
+    super.clear();
+    if (this.cKQ != null) {
+      this.cKQ.clear();
+    }
+    AppMethodBeat.o(91854);
+  }
+  
+  public final void hr(int paramInt)
+  {
+    AppMethodBeat.i(91851);
+    if (this.cKQ == null)
+    {
+      this.cKQ = hs(paramInt);
+      AppMethodBeat.o(91851);
+      return;
+    }
+    int i = this.cKQ.capacity();
+    int j = this.cKQ.position();
+    paramInt = j + paramInt;
+    if (i >= paramInt)
+    {
+      AppMethodBeat.o(91851);
+      return;
+    }
+    ByteBuffer localByteBuffer = hs(paramInt);
+    if (j > 0)
+    {
+      this.cKQ.position(0);
+      this.cKQ.limit(j);
+      localByteBuffer.put(this.cKQ);
+    }
+    this.cKQ = localByteBuffer;
+    AppMethodBeat.o(91851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="#fff9f9f9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/title_bar" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/custom_commen_title" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/search_container" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="32.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="32.0dip">
+        <HorizontalScrollView android:id="@id/scroll_view" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <GridView android:id="@id/selected_friends" android:scrollbars="none" android:fadingEdge="none" android:layout_width="1.0dip" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="16.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="31.0dip" android:numColumns="1" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <EditText android:textSize="18.0sp" android:textColor="@color/skin_input" android:textColorHint="#4c000000" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/et_search_keyword" android:background="@android:color/transparent" android:paddingLeft="32.0dip" android:paddingRight="24.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/searchdialog_find_contact" android:maxLines="1" android:singleLine="true" android:maxLength="200" android:layout_weight="1.0" android:inputType="textNoSuggestions" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="32.0dip">
+        <com.tencent.common.app.InnerFrameManager android:id="@id/view_flipper" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ViewStub android:id="@id/friend_team_list_stub" android:layout="@layout/select_member_friend_team_inner_frame" android:inflatedId="@id/friend_team_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/ren_mai_team_list_stub" android:layout="@layout/select_member_ren_mai_team_list_inner_frame" android:inflatedId="@id/ren_mai_team_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/contacts_stub" android:layout="@layout/select_member_contacts_inner_frame" android:inflatedId="@id/contacts_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/troop_list_stub" android:layout="@layout/select_member_troop_list_inner_frame" android:inflatedId="@id/troop_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/discussion_list_stub" android:layout="@layout/select_member_discussion_list_inner_frame" android:inflatedId="@id/discussion_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/recent_member_stub" android:layout="@layout/select_member_recent_member_inner_frame" android:inflatedId="@id/recent_member" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/friend_list_stub" android:layout="@layout/select_member_friend_list_inner_frame" android:inflatedId="@id/friend_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/ren_mai_member_list_stub" android:layout="@layout/select_member_ren_mai_member_inner_frame" android:inflatedId="@id/ren_mai_member_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/troop_member_list_stub" android:layout="@layout/select_member_troop_member_inner_frame" android:inflatedId="@id/troop_member_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/discussion_member_list_stub" android:layout="@layout/select_member_discussion_member_inner_frame" android:inflatedId="@id/discussion_member_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.common.app.InnerFrameManager>
+        <ViewStub android:id="@id/search_panel_stub" android:layout="@layout/select_member_search_panel" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

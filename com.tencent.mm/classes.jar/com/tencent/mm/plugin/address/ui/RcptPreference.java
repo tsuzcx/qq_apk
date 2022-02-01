@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.plugin.address.model.RcptItem;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RcptPreference
   extends Preference
 {
-  RcptItem gMR;
+  RcptItem qjO;
   
   public RcptPreference(Context paramContext)
   {
@@ -28,52 +30,39 @@ public class RcptPreference
   public RcptPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(16929);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(16929);
+    AppMethodBeat.i(20973);
+    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.o(20973);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(16931);
+    AppMethodBeat.i(20975);
     super.onBindView(paramView);
-    if (this.gMR == null)
+    if (this.qjO == null)
     {
-      AppMethodBeat.o(16931);
+      AppMethodBeat.o(20975);
       return;
     }
-    ((TextView)paramView.findViewById(2131826226)).setText(this.gMR.name);
-    paramView = paramView.findViewById(16908312);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(16931);
-      return;
-    }
-    if (this.gMR.gKT)
-    {
-      paramView.setVisibility(0);
-      AppMethodBeat.o(16931);
-      return;
-    }
-    paramView.setVisibility(8);
-    AppMethodBeat.o(16931);
+    ((TextView)paramView.findViewById(R.h.gdT)).setText(this.qjO.name);
+    AppMethodBeat.o(20975);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(16930);
+    AppMethodBeat.i(20974);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970215, localViewGroup);
-    AppMethodBeat.o(16930);
+    localLayoutInflater.inflate(R.i.glW, localViewGroup);
+    AppMethodBeat.o(20974);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.RcptPreference
  * JD-Core Version:    0.7.0.1
  */

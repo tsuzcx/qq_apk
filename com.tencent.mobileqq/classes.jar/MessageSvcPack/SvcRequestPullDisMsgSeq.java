@@ -9,8 +9,8 @@ public final class SvcRequestPullDisMsgSeq
   extends JceStruct
 {
   static ArrayList<PullDisSeqParam> cache_vDisInfo;
-  public byte cVerifyType;
-  public ArrayList<PullDisSeqParam> vDisInfo;
+  public byte cVerifyType = 0;
+  public ArrayList<PullDisSeqParam> vDisInfo = null;
   
   public SvcRequestPullDisMsgSeq() {}
   
@@ -40,7 +40,7 @@ public final class SvcRequestPullDisMsgSeq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestPullDisMsgSeq
  * JD-Core Version:    0.7.0.1
  */

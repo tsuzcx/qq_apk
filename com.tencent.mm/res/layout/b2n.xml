@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="200.0dip">
-        <LinearLayout android:gravity="center" android:id="@id/f6c" android:background="@drawable/and" android:layout_width="@dimen/n3" android:layout_height="@dimen/n3">
-            <ImageView android:layout_gravity="center" android:id="@id/f6d" android:padding="0.5dip" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" android:layout_marginBottom="3.0dip" android:src="@drawable/aew" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ke" android:background="@color/ag7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jn" />
+    <ListView android:id="@id/jn" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/na" />
+    <FrameLayout android:id="@id/kd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginTop="148.0dip" android:layout_marginRight="30.0dip">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="214.0dip" android:layout_height="wrap_content" android:src="@raw/ipcall_welcome" android:scaleType="fitCenter" android:adjustViewBounds="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/ftk" android:singleLine="false" android:lineSpacingExtra="7.0dip" />
         </LinearLayout>
-    </RelativeLayout>
-</FrameLayout>
+    </FrameLayout>
+    <ImageButton android:id="@id/eq9" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/q_" android:layout_marginBottom="@dimen/q9" android:src="@drawable/bq" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

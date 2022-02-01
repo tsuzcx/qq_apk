@@ -1,0 +1,151 @@
+{
+    "ReadInjoy_daily_footer": {
+        "view_type": "UIView",
+        "view_id": "id_daily_footer_container",
+        "default_visible": "YES",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type":"UIView",
+                "view_id":"id_up_separator",
+                "default_visible":"YES",
+                "margin_left":"18",
+                "margin_right":"18",
+                "margin_top":"16",
+                "align_parent_top": "YES",
+                "height":{
+                    "type":"absolutely","value":"1"
+                },
+                "width":{
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#03081A"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "daily_data_container",
+                "visible_depend_on_children":"YES",
+                "margin_left":"18",
+                "margin_right":"18",
+                "align_parent_center_vertical": "YES",
+                "layout_type": "layout_relative",
+                "height":{
+                    "type": "relative",
+                    "value": "28.5"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"daily_date",
+                        "align_parent_center_vertical": "YES",
+                        "height":{
+                            "type": "wrap_content"
+                        },
+                        "width":{
+                            "type": "wrap_content"
+                        },
+                        "attributes":{
+                            "setText:": "$date",
+                            "setTextColorString:": "#03081A",
+                            "setBoldFontSizeString:": "12",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id": "daily_CN_container",
+                        "align_parent_right": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "visible_depend_on_children":"YES",
+                        "layout_type": "layout_relative",
+                        "height":{
+                            "type":"relative",
+                            "value": "20"
+                        },
+                        "width": {
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setCornerRadiusString:": "2",
+                            "setBackgroundColorString:":"#03081A"
+                        },
+                        "subviews": [
+                            {
+                                "view_type":"UILabel",
+                                "view_id":"daily_CN",
+                                "default_visible":"YES",
+                                "margin_left":"3",
+                                "margin_right":"3",
+                                "align_parent_center_vertical": "YES",
+                                "height":{
+                                    "type": "wrap_content"
+                                },
+                                "width":{
+                                    "type": "wrap_content"
+                                },
+                                "attributes":{
+                                    "setText:": "$title_CN",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setBoldFontSizeString:": "12",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"daily_EN",
+                        "margin_right":"6",
+                        "align_parent_center_vertical": "YES",
+                        "left_of_view": "daily_CN_container",
+                        "height":{
+                            "type": "wrap_content"
+                        },
+                        "width":{
+                            "type": "wrap_content"
+                        },
+                        "attributes":{
+                            "setText:": "$title_EN",
+                            "setTextColorString:": "#03081A",
+                            "setBoldFontSizeString:": "12",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    }
+                    
+                ]
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_dowm_separator",
+                "default_visible":"YES",
+                "margin_left":"18",
+                "margin_right":"18",
+                "margin_bottom": "16",
+                "align_parent_bottom": "YES",
+                "height":{
+                    "type":"absolutely","value":"1"
+                },
+                "width":{
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#03081A"
+                }
+            }
+        ]
+    }
+}

@@ -1,8 +1,10 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.activity.StrangerManageActivity.StrangeManagerListAdapter;
+import com.tencent.mobileqq.data.Stranger;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class dku
   implements View.OnClickListener
@@ -11,16 +13,12 @@ public class dku
   
   public void onClick(View paramView)
   {
-    paramView = this.a;
-    if (this.a.a == null)
-    {
-      this.a.a = ((ActionSheet)ActionSheetHelper.a(paramView, null));
-      this.a.a.a(2131562553);
-      this.a.a.a(2131561964, 3);
-      this.a.a.d(2131561746);
-      this.a.a.a(paramView);
+    paramView = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramView.hasNext()) {
+      ((Stranger)paramView.next()).uiSelected = true;
     }
-    this.a.a.show();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter.notifyDataSetChanged();
+    this.a.c(true);
   }
 }
 

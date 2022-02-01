@@ -1,203 +1,234 @@
 package com.tencent.mm.plugin.location.model;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.plugin.i.c;
-import com.tencent.mm.pluginsdk.location.a;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class k
-  implements f
 {
-  private List<a> callbacks;
-  az fBI;
-  int h;
-  LinkedList<com.tencent.mm.pluginsdk.location.b> oaC;
-  com.tencent.mm.pluginsdk.location.b oaD;
-  int w;
+  private b Kco;
+  HashSet<WeakReference<a>> Kcp;
+  double Kcq;
+  double Kcr;
+  double Kcs;
+  double Kct;
+  double Kcu;
+  boolean Kcv;
+  private b.a lsF;
+  private SensorManager mSensorManager;
+  private d owr;
   
   public k()
   {
-    AppMethodBeat.i(113335);
-    this.fBI = new az(1, "location_worker");
-    this.oaC = new LinkedList();
-    this.oaD = null;
-    this.callbacks = new ArrayList();
-    this.w = 300;
-    this.h = 300;
-    start();
-    AppMethodBeat.o(113335);
-  }
-  
-  public static String b(com.tencent.mm.pluginsdk.location.b paramb)
-  {
-    AppMethodBeat.i(113339);
-    paramb = com.tencent.mm.a.g.w(paramb.toString().getBytes());
-    String str = c.YL() + paramb.charAt(0) + paramb.charAt(1) + "/" + paramb.charAt(3) + paramb.charAt(4) + "/";
-    if (!com.tencent.mm.vfs.e.cN(str)) {
-      new com.tencent.mm.vfs.b(str).mkdirs();
-    }
-    paramb = str + "static_map_" + paramb;
-    AppMethodBeat.o(113339);
-    return paramb;
-  }
-  
-  private void iR(boolean paramBoolean)
-  {
-    AppMethodBeat.i(113340);
-    ab.i("MicroMsg.StaticMapServer", "httpgetStaticmapDone %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    Iterator localIterator;
-    a locala;
-    if (paramBoolean)
+    AppMethodBeat.i(55702);
+    this.Kco = new b();
+    this.Kcp = new HashSet();
+    this.Kcq = 900.0D;
+    this.Kcr = 900.0D;
+    this.Kcs = -1000.0D;
+    this.Kct = -1000.0D;
+    this.Kcu = 0.0D;
+    this.Kcv = false;
+    this.lsF = new b.a()
     {
-      if (this.oaD != null)
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
       {
-        localIterator = this.callbacks.iterator();
-        while (localIterator.hasNext())
+        AppMethodBeat.i(264941);
+        if (!paramAnonymousBoolean)
         {
-          locala = (a)localIterator.next();
-          if (locala != null) {
-            locala.a(b(this.oaD), this.oaD);
-          }
+          AppMethodBeat.o(264941);
+          return false;
+        }
+        if ((k.this.Kcs != -1000.0D) && (k.this.Kct != -1000.0D)) {
+          k.this.Kcv = f.a(k.this.Kct, k.this.Kcs, paramAnonymousFloat1, paramAnonymousFloat2, paramAnonymousInt, paramAnonymousDouble1);
+        }
+        k.this.Kcs = paramAnonymousFloat2;
+        k localk1 = k.this;
+        paramAnonymousDouble1 = paramAnonymousFloat1;
+        localk1.Kct = paramAnonymousDouble1;
+        if ((k.this.Kcr == 900.0D) || (k.this.Kcq == 900.0D))
+        {
+          localk1 = k.this;
+          k localk2 = k.this;
+          paramAnonymousDouble1 = f.k(paramAnonymousFloat2, paramAnonymousDouble1);
+          localk2.Kcq = paramAnonymousDouble1;
+          localk1.Kcr = paramAnonymousDouble1;
+        }
+        for (;;)
+        {
+          Log.d("MicroMsg.OrientationSensorMgr", "onGetLocation, update headding, mCurrentHeading = %f, mPreviousHeading = %f mIsMove = %b", new Object[] { Double.valueOf(k.this.Kcq), Double.valueOf(k.this.Kcr), Boolean.valueOf(k.this.Kcv) });
+          AppMethodBeat.o(264941);
+          return true;
+          k.this.Kcr = k.this.Kcq;
+          k.this.Kcq = f.k(paramAnonymousFloat2, paramAnonymousDouble1);
         }
       }
-    }
-    else if (this.oaD != null)
-    {
-      localIterator = this.callbacks.iterator();
-      while (localIterator.hasNext())
-      {
-        locala = (a)localIterator.next();
-        if (locala != null) {
-          locala.a(this.oaD);
-        }
-      }
-    }
-    this.oaD = null;
-    agO();
-    AppMethodBeat.o(113340);
+    };
+    this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
+    AppMethodBeat.o(55702);
   }
   
-  private void start()
+  private void dxC()
   {
-    AppMethodBeat.i(113336);
-    com.tencent.mm.kernel.g.Rc().a(648, this);
-    AppMethodBeat.o(113336);
+    AppMethodBeat.i(55704);
+    Log.i("MicroMsg.OrientationSensorMgr", "registerSensor ");
+    if (this.owr == null) {
+      this.owr = d.bJl();
+    }
+    this.owr.a(this.lsF, true);
+    Sensor localSensor = this.mSensorManager.getDefaultSensor(3);
+    this.mSensorManager.registerListener(this.Kco, localSensor, 1);
+    AppMethodBeat.o(55704);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(113333);
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      if (parama.equals((a)localIterator.next()))
+    AppMethodBeat.i(55706);
+    Iterator localIterator = this.Kcp.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((a)localWeakReference.get()).equals(parama)))
       {
-        AppMethodBeat.o(113333);
+        AppMethodBeat.o(55706);
         return;
       }
     }
-    this.callbacks.add(parama);
-    ab.i("MicroMsg.StaticMapServer", "addMapCallBack " + this.callbacks.size());
-    if (this.callbacks.size() == 1) {
-      start();
+    this.Kcp.add(new WeakReference(parama));
+    Log.i("MicroMsg.OrientationSensorMgr", "registerSensorListener %d", new Object[] { Integer.valueOf(this.Kcp.size()) });
+    if (this.Kcp.size() == 1) {
+      dxC();
     }
-    AppMethodBeat.o(113333);
-  }
-  
-  final void agO()
-  {
-    AppMethodBeat.i(113338);
-    if ((this.oaD == null) && (this.oaC.size() > 0))
-    {
-      this.oaD = ((com.tencent.mm.pluginsdk.location.b)this.oaC.removeFirst());
-      try
-      {
-        i = Integer.valueOf(bo.bf(com.tencent.mm.m.g.Nq().getValue("StaticMapGetClient"), "")).intValue();
-        ab.i("MicroMsg.StaticMapServer", "run local %d", new Object[] { Integer.valueOf(i) });
-        if (i == 0)
-        {
-          g localg = new g(this.oaD.fBB, this.oaD.fBC, this.oaD.cyX + 1, this.w, this.h, b(this.oaD), aa.dsG());
-          com.tencent.mm.kernel.g.Rc().a(localg, 0);
-          AppMethodBeat.o(113338);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          i = 0;
-        }
-        int j = this.w;
-        for (int i = this.h; j * i > 270000; i = (int)(i / 1.2D)) {
-          j = (int)(j / 1.2D);
-        }
-        if (bo.hl(ah.getContext()))
-        {
-          str = String.format("https://maps.googleapis.com/maps/api/staticmap?size=%dx%d&center=%f,%f&zoom=%d&format=jpg&language=%s&sensor=true", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(this.oaD.fBB), Float.valueOf(this.oaD.fBC), Integer.valueOf(this.oaD.cyX), aa.dsG() });
-          this.fBI.e(new k.a(this, true, str, b(this.oaD)));
-          AppMethodBeat.o(113338);
-          return;
-        }
-        String str = String.format("http://st.map.qq.com/api?size=%d*%d&center=%f,%f&zoom=%d&referer=weixin", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(this.oaD.fBC), Float.valueOf(this.oaD.fBB), Integer.valueOf(this.oaD.cyX) });
-        this.fBI.e(new k.a(this, false, str, b(this.oaD)));
-      }
-    }
-    AppMethodBeat.o(113338);
+    AppMethodBeat.o(55706);
   }
   
   public final void b(a parama)
   {
-    AppMethodBeat.i(113334);
-    this.callbacks.remove(parama);
-    ab.i("MicroMsg.StaticMapServer", "removeCallback " + this.callbacks.size());
-    if (this.callbacks.size() == 0)
+    AppMethodBeat.i(55707);
+    if ((this.Kcp == null) || (parama == null))
     {
-      ab.i("MicroMsg.StaticMapServer", "clean task");
-      this.oaC.clear();
-      this.oaD = null;
-      stop();
+      AppMethodBeat.o(55707);
+      return;
     }
-    AppMethodBeat.o(113334);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(113341);
-    if (paramm.getType() == 648)
+    Iterator localIterator = this.Kcp.iterator();
+    while (localIterator.hasNext())
     {
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (this.oaD != null))
-      {
-        iR(true);
-        AppMethodBeat.o(113341);
-        return;
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((a)localWeakReference.get()).equals(parama))) {
+        this.Kcp.remove(localWeakReference);
       }
-      iR(false);
     }
-    AppMethodBeat.o(113341);
+    Log.i("MicroMsg.OrientationSensorMgr", "unregisterSensorListener %d", new Object[] { Integer.valueOf(this.Kcp.size()) });
+    if (this.Kcp.size() == 0) {
+      fUw();
+    }
+    AppMethodBeat.o(55707);
   }
   
-  public final void stop()
+  public final double fUv()
   {
-    AppMethodBeat.i(113337);
-    ab.i("MicroMsg.StaticMapServer", "stop static map server");
-    com.tencent.mm.kernel.g.Rc().b(648, this);
-    AppMethodBeat.o(113337);
+    AppMethodBeat.i(55703);
+    if (this.Kcv)
+    {
+      Log.d("MicroMsg.OrientationSensorMgr", "getHeading, mIsMove = true, result = %f", new Object[] { Double.valueOf(this.Kcq) });
+      d = this.Kcq;
+      AppMethodBeat.o(55703);
+      return d;
+    }
+    Log.d("MicroMsg.OrientationSensorMgr", "getHeading, mIsMove = false, result = %f", new Object[] { Double.valueOf(this.Kcu) });
+    double d = this.Kcu;
+    AppMethodBeat.o(55703);
+    return d;
+  }
+  
+  final void fUw()
+  {
+    AppMethodBeat.i(55705);
+    Log.i("MicroMsg.OrientationSensorMgr", "unregisterSensor ");
+    this.mSensorManager.unregisterListener(this.Kco);
+    d.bJl().a(this.lsF);
+    AppMethodBeat.o(55705);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void Q(double paramDouble);
+  }
+  
+  protected final class b
+    implements SensorEventListener
+  {
+    private float seV = 0.0F;
+    private long timestamp = 200L;
+    
+    protected b() {}
+    
+    public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+    
+    public final void onSensorChanged(SensorEvent paramSensorEvent)
+    {
+      int i = 0;
+      AppMethodBeat.i(55701);
+      if (paramSensorEvent.sensor.getType() == 3)
+      {
+        long l1 = System.currentTimeMillis();
+        long l2 = this.timestamp;
+        float f1 = paramSensorEvent.values[0];
+        float f2;
+        if (f1 > 0.0F)
+        {
+          f1 %= 360.0F;
+          if ((l1 - l2 <= 200L) || (Math.abs(f1 - this.seV) <= 3.0F)) {
+            break label250;
+          }
+          paramSensorEvent = k.this;
+          f2 = this.seV;
+          paramSensorEvent.Kcu = f1;
+          if (paramSensorEvent.Kcp != null) {
+            break label226;
+          }
+        }
+        for (;;)
+        {
+          Log.d("MicroMsg.OrientationSensorMgr", "onOrientationChanged %f %f, mListenerList.size = %d", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Integer.valueOf(i) });
+          if (paramSensorEvent.Kcp == null) {
+            break label238;
+          }
+          Iterator localIterator = paramSensorEvent.Kcp.iterator();
+          while (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((k.a)localWeakReference.get()).Q(paramSensorEvent.fUv());
+            }
+          }
+          f1 = (f1 + ((int)f1 * -1 / 360 + 1) * 360) % 360.0F;
+          break;
+          label226:
+          i = paramSensorEvent.Kcp.size();
+        }
+        label238:
+        this.seV = f1;
+        this.timestamp = System.currentTimeMillis();
+      }
+      label250:
+      AppMethodBeat.o(55701);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.k
  * JD-Core Version:    0.7.0.1
  */

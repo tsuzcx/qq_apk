@@ -1,7 +1,7 @@
 package com.google.android.gms.common.internal;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class zzc
@@ -11,16 +11,16 @@ final class zzc
   
   public final void redirect()
   {
-    AppMethodBeat.i(61402);
+    AppMethodBeat.i(11894);
     if (this.zzsh != null) {
       this.val$fragment.startActivityForResult(this.zzsh, this.val$requestCode);
     }
-    AppMethodBeat.o(61402);
+    AppMethodBeat.o(11894);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.zzc
  * JD-Core Version:    0.7.0.1
  */

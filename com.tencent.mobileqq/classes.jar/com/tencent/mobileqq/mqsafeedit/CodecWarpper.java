@@ -15,25 +15,28 @@ public abstract class CodecWarpper
   
   public static void loadSo()
   {
-    if (!isSoLoaded.get()) {
-      try
+    if (!isSoLoaded.get()) {}
+    try
+    {
+      if (CoreUtil.loadLibrary("codecwrapperV2", BaseApplication.getContext()))
       {
-        if (CoreUtil.loadLibrary("codecwrapperV2", BaseApplication.getContext()))
-        {
-          isSoLoaded.set(true);
-          return;
-        }
-        String str = BaseApplication.getContext().getPackageName().replace(".", "_");
-        isSoLoaded.set(CoreUtil.loadLibrary(str + "_" + "codecwrapperV2", BaseApplication.getContext()));
+        isSoLoaded.set(true);
         return;
       }
-      catch (Exception localException) {}
+      Object localObject = BaseApplication.getContext().getPackageName().replace(".", "_");
+      AtomicBoolean localAtomicBoolean = isSoLoaded;
+      localObject = new StringBuilder(String.valueOf(localObject));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append("codecwrapperV2");
+      localAtomicBoolean.set(CoreUtil.loadLibrary(((StringBuilder)localObject).toString(), BaseApplication.getContext()));
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mqsafeedit.CodecWarpper
  * JD-Core Version:    0.7.0.1
  */

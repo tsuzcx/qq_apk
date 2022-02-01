@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -11,20 +11,23 @@ class CarrierHelper$1
   
   public void run()
   {
-    if ((CarrierHelper.a(this.this$0)) || (this.a.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if (!CarrierHelper.a(this.this$0))
     {
-      Integer localInteger = (Integer)localIterator.next();
-      if (5 == localInteger.intValue()) {
-        azqs.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.this$0), 0, "", "", "", "");
-      } else if ((CarrierHelper.a(this.this$0) == 2) || (CarrierHelper.a(this.this$0) == 1)) {
-        azqs.b(CarrierHelper.a(this.this$0), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.this$0), 0, String.valueOf(localInteger), "", "", "");
+      if (this.a.isEmpty()) {
+        return;
       }
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        if (5 == localInteger.intValue()) {
+          ReportController.b(CarrierHelper.b(this.this$0), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.c(this.this$0), 0, "", "", "", "");
+        } else if ((CarrierHelper.c(this.this$0) == 2) || (CarrierHelper.c(this.this$0) == 1)) {
+          ReportController.b(CarrierHelper.b(this.this$0), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.c(this.this$0), 0, String.valueOf(localInteger), "", "", "");
+        }
+      }
+      CarrierHelper.a(this.this$0, true);
     }
-    CarrierHelper.a(this.this$0, true);
   }
 }
 

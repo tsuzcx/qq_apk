@@ -1,0 +1,182 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0",
+        "pts:on-exposure": "{{rowKey}}"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n  \n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card-wrp",
+                "pts:on-tap": "{{rowKey}}",
+                "data-event-type": "{{'small-card-tap'}}",
+                "data-jump-url": "{{jumpUrl}}"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "flex-direction": "column",
+                "padding": "0px 32rpx",
+                "padding-top": "0px",
+                "padding-right": "32rpx",
+                "padding-bottom": "0px",
+                "padding-left": "32rpx",
+                "width": "750rpx"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "",
+                    "attributes": {
+                        "viewID": "2",
+                        "class": "separator top-separator",
+                        "wx:if": "{{top_separator}}"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "100%",
+                        "height": "1rpx",
+                        "background-color": "rgb(229, 229, 229)",
+                        "margin-top": "60rpx"
+                    },
+                    "children": []
+                },
+                {
+                    "tag": "view",
+                    "content": "\n    \n    \n  ",
+                    "attributes": {
+                        "viewID": "3",
+                        "class": "content-wrp"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "justify-content": "space-between"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "5",
+                                "class": "text-wrp"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "margin-top": "32rpx",
+                                "flex-direction": "column"
+                            },
+                            "children": [
+                                {
+                                    "tag": "text",
+                                    "content": "{{title}}",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "class": "title"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "margin-top": "33rpx",
+                                        "margin-right": "24rpx",
+                                        "font-size": "16px",
+                                        "-webkit-line-clamp": "2",
+                                        "color": "rgb(38, 38, 38)"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "8",
+                                        "class": "category-wrp",
+                                        "wx:if": "{{category}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "margin-top": "8rpx"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "text",
+                                            "content": "{{category}}",
+                                            "attributes": {
+                                                "viewID": "9"
+                                            },
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "display": "-webkit-box",
+                                                "overflow": "hidden",
+                                                "padding": "3rpx 6rpx",
+                                                "padding-top": "3rpx",
+                                                "padding-right": "6rpx",
+                                                "padding-bottom": "3rpx",
+                                                "padding-left": "6rpx",
+                                                "font-size": "11px",
+                                                "background-color": "rgb(255, 233, 233)",
+                                                "color": "rgb(255, 17, 13)",
+                                                "text-align": "center",
+                                                "-webkit-line-clamp": "1"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "tag": "img",
+                            "content": "",
+                            "attributes": {
+                                "viewID": "6",
+                                "class": "cover-img",
+                                "mode": "scaleToFill",
+                                "src": "{{image_url}}"
+                            },
+                            "styles": {
+                                "margin-right": "0rpx",
+                                "margin-top": "36rpx",
+                                "height": "146rpx",
+                                "width": "222rpx",
+                                "flex-shrink": "0"
+                            },
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "tag": "view",
+                    "content": "",
+                    "attributes": {
+                        "viewID": "4",
+                        "class": "separator btm-separator",
+                        "wx:if": "{{bottom_separator}}"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "100%",
+                        "height": "1rpx",
+                        "background-color": "rgb(229, 229, 229)",
+                        "margin-top": "36rpx"
+                    },
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

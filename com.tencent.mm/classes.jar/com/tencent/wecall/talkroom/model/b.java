@@ -3,44 +3,43 @@ package com.tencent.wecall.talkroom.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multi.talk;
 import com.tencent.pb.common.a.a;
-import com.tencent.pb.common.c.c;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  talk BzZ;
+  talk ahZE;
   
   public b()
   {
-    AppMethodBeat.i(127789);
-    this.BzZ = new talk();
-    c.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.BzZ });
-    AppMethodBeat.o(127789);
+    AppMethodBeat.i(62557);
+    this.ahZE = new talk();
+    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.ahZE });
+    AppMethodBeat.o(62557);
   }
   
   public final int Close()
   {
-    AppMethodBeat.i(127791);
-    if (!a.BcB)
+    AppMethodBeat.i(62559);
+    if (!a.ahcq)
     {
-      AppMethodBeat.o(127791);
+      AppMethodBeat.o(62559);
       return 0;
     }
     try
     {
-      if (this.BzZ != null)
+      if (this.ahZE != null)
       {
-        i = this.BzZ.close();
-        c.i("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
-        AppMethodBeat.o(127791);
+        i = this.ahZE.close();
+        com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
+        AppMethodBeat.o(62559);
         return i;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        c.w("simon:TalkRoomContext", new Object[] { "Close ", localThrowable });
+        com.tencent.pb.common.c.b.w("simon:TalkRoomContext", new Object[] { "Close ", localObject });
         int i = 0;
       }
     }
@@ -48,85 +47,85 @@ public final class b
   
   public final void OnMembersChanged(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(127792);
-    if ((!a.BcB) || (this.BzZ == null))
+    AppMethodBeat.i(62560);
+    if ((!a.ahcq) || (this.ahZE == null))
     {
-      AppMethodBeat.o(127792);
+      AppMethodBeat.o(62560);
       return;
     }
-    this.BzZ.OnMembersChanged(paramArrayOfInt);
-    AppMethodBeat.o(127792);
+    this.ahZE.OnMembersChanged(paramArrayOfInt);
+    AppMethodBeat.o(62560);
   }
   
-  public final byte[] dXs()
+  public final byte[] kea()
   {
-    if ((!a.BcB) || (this.BzZ == null)) {
+    if ((!a.ahcq) || (this.ahZE == null)) {
       return new byte[0];
     }
-    return this.BzZ.field_capInfo;
+    return this.ahZE.field_capInfo;
   }
   
-  public final void dXt()
+  public final void keb()
   {
-    if ((!a.BcB) || (this.BzZ == null)) {
+    if ((!a.ahcq) || (this.ahZE == null)) {
       return;
     }
-    this.BzZ.field_capInfo = null;
+    this.ahZE.field_capInfo = null;
   }
   
-  public final int dXu()
+  public final int kec()
   {
-    AppMethodBeat.i(127793);
+    AppMethodBeat.i(62561);
     try
     {
-      if (a.BcB)
+      if (a.ahcq)
       {
-        localObject = this.BzZ;
-        if (localObject != null) {}
+        localObject1 = this.ahZE;
+        if (localObject1 != null) {}
       }
       else
       {
-        AppMethodBeat.o(127793);
+        AppMethodBeat.o(62561);
         return 0;
       }
-      Object localObject = new AtomicInteger();
+      Object localObject1 = new AtomicInteger();
       AtomicInteger localAtomicInteger = new AtomicInteger();
-      this.BzZ.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
+      this.ahZE.getChannelBytes((AtomicInteger)localObject1, localAtomicInteger);
       int i = localAtomicInteger.get();
-      AppMethodBeat.o(127793);
+      AppMethodBeat.o(62561);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      c.w("simon:TalkRoomContext", new Object[] { "getTotalWWANBytes: ", localThrowable });
-      AppMethodBeat.o(127793);
+      com.tencent.pb.common.c.b.w("simon:TalkRoomContext", new Object[] { "getTotalWWANBytes: ", localObject2 });
+      AppMethodBeat.o(62561);
     }
     return 0;
   }
   
   public final int uninitLive()
   {
-    AppMethodBeat.i(127790);
-    if (!a.BcB)
+    AppMethodBeat.i(62558);
+    if (!a.ahcq)
     {
-      AppMethodBeat.o(127790);
+      AppMethodBeat.o(62558);
       return 0;
     }
     try
     {
-      if (this.BzZ != null)
+      if (this.ahZE != null)
       {
-        i = this.BzZ.uninit();
-        c.i("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
-        AppMethodBeat.o(127790);
+        i = this.ahZE.uninit();
+        com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
+        AppMethodBeat.o(62558);
         return i;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        c.w("simon:TalkRoomContext", new Object[] { "uninitLive ", localThrowable });
+        com.tencent.pb.common.c.b.w("simon:TalkRoomContext", new Object[] { "uninitLive ", localObject });
         int i = 0;
       }
     }
@@ -134,7 +133,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.b
  * JD-Core Version:    0.7.0.1
  */

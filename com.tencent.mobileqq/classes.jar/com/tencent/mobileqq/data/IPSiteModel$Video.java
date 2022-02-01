@@ -3,12 +3,11 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apeh;
 
 public class IPSiteModel$Video
   implements Parcelable
 {
-  public static final Parcelable.Creator<Video> CREATOR = new apeh();
+  public static final Parcelable.Creator<Video> CREATOR = new IPSiteModel.Video.1();
   public String buttonDesc;
   public String content;
   public String cover;
@@ -49,7 +48,45 @@ public class IPSiteModel$Video
   
   public String toString()
   {
-    return "Video{id='" + this.id + '\'' + ", buttonDesc='" + this.buttonDesc + '\'' + ", content='" + this.content + '\'' + ", cover='" + this.cover + '\'' + ", desc='" + this.desc + '\'' + ", name='" + this.name + '\'' + ", endTime='" + this.endTime + '\'' + ", isShow=" + this.isShow + ", newStartTime=" + this.newStartTime + ", newEndTime=" + this.newEndTime + ", redirectUrl='" + this.redirectUrl + '\'' + ", videoSource='" + this.videoSource + '\'' + ", showDate='" + this.showDate + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Video{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", buttonDesc='");
+    localStringBuilder.append(this.buttonDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", content='");
+    localStringBuilder.append(this.content);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", endTime='");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isShow=");
+    localStringBuilder.append(this.isShow);
+    localStringBuilder.append(", newStartTime=");
+    localStringBuilder.append(this.newStartTime);
+    localStringBuilder.append(", newEndTime=");
+    localStringBuilder.append(this.newEndTime);
+    localStringBuilder.append(", redirectUrl='");
+    localStringBuilder.append(this.redirectUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoSource='");
+    localStringBuilder.append(this.videoSource);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", showDate='");
+    localStringBuilder.append(this.showDate);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

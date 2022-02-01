@@ -1,18 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
 class dmc
   implements DialogInterface.OnClickListener
 {
-  dmc(dmb paramdmb) {}
+  dmc(dma paramdma) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
-    this.a.a.finish();
+    if (paramInt == 1)
+    {
+      this.a.a.d();
+      SubAccountMessageActivity.c(this.a.a, true);
+      SubAccountAssistantManager.a().a(this.a.a.b);
+      this.a.a.f();
+    }
   }
 }
 

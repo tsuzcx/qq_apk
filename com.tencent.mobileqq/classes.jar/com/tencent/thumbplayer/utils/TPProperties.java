@@ -55,14 +55,20 @@ public class TPProperties
   public TPProperties(Object... paramVarArgs)
   {
     int j = paramVarArgs.length;
-    if (j % 2 != 0) {
-      throw new IllegalArgumentException("Supplied arguments must be even");
-    }
-    int i = 0;
-    while (i < j)
+    if (j % 2 == 0)
     {
-      put(String.valueOf(paramVarArgs[i]), String.valueOf(paramVarArgs[(i + 1)]));
-      i += 2;
+      int i = 0;
+      while (i < j)
+      {
+        put(String.valueOf(paramVarArgs[i]), String.valueOf(paramVarArgs[(i + 1)]));
+        i += 2;
+      }
+      return;
+    }
+    paramVarArgs = new IllegalArgumentException("Supplied arguments must be even");
+    for (;;)
+    {
+      throw paramVarArgs;
     }
   }
   
@@ -73,29 +79,38 @@ public class TPProperties
   
   public boolean has(String paramString)
   {
-    if (paramString == null) {}
-    while (this.properties.get(paramString) == null) {
+    boolean bool = false;
+    if (paramString == null) {
       return false;
     }
-    return true;
+    if (this.properties.get(paramString) != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void propertiesToMap(Map<String, String> paramMap)
   {
-    if (paramMap == null) {
-      throw new IllegalArgumentException("map must not be null!");
-    }
-    Iterator localIterator = this.properties.entrySet().iterator();
-    while (localIterator.hasNext())
+    if (paramMap != null)
     {
-      Object localObject2 = (Map.Entry)localIterator.next();
-      Object localObject1 = ((Map.Entry)localObject2).getKey();
-      localObject2 = ((Map.Entry)localObject2).getValue();
-      if (localObject2 == null) {
-        paramMap.put(localObject1.toString(), "");
-      } else {
-        paramMap.put(localObject1.toString(), localObject2.toString());
+      Iterator localIterator = this.properties.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (Map.Entry)localIterator.next();
+        Object localObject1 = ((Map.Entry)localObject2).getKey();
+        localObject2 = ((Map.Entry)localObject2).getValue();
+        if (localObject2 == null) {
+          paramMap.put(localObject1.toString(), "");
+        } else {
+          paramMap.put(localObject1.toString(), localObject2.toString());
+        }
       }
+      return;
+    }
+    paramMap = new IllegalArgumentException("map must not be null!");
+    for (;;)
+    {
+      throw paramMap;
     }
   }
   
@@ -124,14 +139,13 @@ public class TPProperties
   {
     if (paramString1 != null)
     {
-      if (!TextUtils.isEmpty(paramString2)) {
+      if (!TextUtils.isEmpty(paramString2))
+      {
         this.properties.put(paramString1, paramString2);
+        return;
       }
+      this.properties.put(paramString1, "");
     }
-    else {
-      return;
-    }
-    this.properties.put(paramString1, "");
   }
   
   public void put(String paramString, Properties paramProperties)
@@ -151,26 +165,24 @@ public class TPProperties
   public String toString()
   {
     JSONObject localJSONObject = new JSONObject(this.properties);
-    if (localJSONObject.has("data")) {}
-    try
-    {
-      String str = localJSONObject.getString("data");
-      localJSONObject.remove("data");
-      localJSONObject.put("data", new JSONObject(str));
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+    if (localJSONObject.has("data")) {
+      try
+      {
+        String str = localJSONObject.getString("data");
+        localJSONObject.remove("data");
+        localJSONObject.put("data", new JSONObject(str));
+      }
+      catch (JSONException localJSONException)
       {
         TPLogUtil.e("TPProperties", localJSONException);
       }
     }
+    return localJSONObject.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPProperties
  * JD-Core Version:    0.7.0.1
  */

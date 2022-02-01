@@ -24,12 +24,13 @@ public final class TroopAppFlagInfo$ReqBody
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "str_version", "uint64_gcode", "uint32_mobile_ostype", "uint64_uin" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, ReqBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "str_version", "uint64_gcode", "uint32_mobile_ostype", "uint64_uin" }, new Object[] { localByteStringMicro, localLong, Integer.valueOf(0), localLong }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.pb.TroopAppFlagInfo.ReqBody
  * JD-Core Version:    0.7.0.1
  */

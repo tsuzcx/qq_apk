@@ -1,25 +1,20 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ggz
-  implements IStatusListener
+  implements TextWatcher
 {
   public ggz(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramInt != 100)
-    {
-      EditActivity.a(this.a, null);
-      EditActivity.a(this.a, null);
-    }
-    EditActivity.b(this.a, true);
+    EditActivity.a(this.a);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

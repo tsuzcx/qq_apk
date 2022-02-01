@@ -1,155 +1,159 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
+import android.content.Context;
 import android.graphics.PointF;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.r.b;
-import android.support.v7.widget.ae;
-import android.support.v7.widget.aj;
+import android.util.DisplayMetrics;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.r.a;
+import androidx.recyclerview.widget.RecyclerView.r.b;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.o;
+import androidx.recyclerview.widget.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.a;
 import com.tencent.mm.plugin.topstory.ui.video.b;
-import com.tencent.mm.plugin.topstory.ui.widget.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.topstory.ui.widget.f;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends e
+  extends f
 {
-  private aj agR;
-  private aj agS;
-  b thM;
+  b TLn;
+  private s bYd;
+  private s bYe;
   
   public c(b paramb)
   {
-    this.thM = paramb;
+    this.TLn = paramb;
   }
   
-  private int a(View paramView, aj paramaj)
-  {
-    AppMethodBeat.i(2019);
-    int i = paramaj.bh(paramView);
-    int j = this.thM.cJp();
-    AppMethodBeat.o(2019);
-    return i - j;
-  }
-  
-  private static View a(RecyclerView.i parami, aj paramaj)
+  private static View a(RecyclerView.LayoutManager paramLayoutManager, s params)
   {
     Object localObject = null;
-    AppMethodBeat.i(2020);
-    int n = parami.getChildCount();
+    AppMethodBeat.i(271829);
+    int n = paramLayoutManager.getChildCount();
     if (n == 0)
     {
-      AppMethodBeat.o(2020);
+      AppMethodBeat.o(271829);
       return null;
     }
     int j;
     int k;
-    if (parami.getClipToPadding())
+    if (paramLayoutManager.getClipToPadding())
     {
-      j = paramaj.iI() + (paramaj.iK() - a.tfs) / 2;
+      j = params.JE() + (params.JG() - a.TJc) / 2;
       int i = 2147483647;
       k = 0;
-      label57:
+      label55:
       if (k >= n) {
-        break label126;
+        break label124;
       }
-      View localView = parami.getChildAt(k);
-      int m = Math.abs(paramaj.bh(localView) + paramaj.bl(localView) / 2 - j);
+      View localView = paramLayoutManager.getChildAt(k);
+      int m = Math.abs(params.bs(localView) + params.bw(localView) / 2 - j);
       if (m >= i) {
-        break label135;
+        break label132;
       }
       localObject = localView;
       i = m;
     }
-    label135:
+    label132:
     for (;;)
     {
       k += 1;
-      break label57;
-      j = paramaj.getEnd() / 2;
+      break label55;
+      j = params.getEnd() / 2;
       break;
-      label126:
-      AppMethodBeat.o(2020);
+      label124:
+      AppMethodBeat.o(271829);
       return localObject;
     }
   }
   
-  private aj b(RecyclerView.i parami)
+  private s b(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(2021);
-    if ((this.agR == null) || (this.agR.getLayoutManager() != parami)) {
-      this.agR = aj.e(parami);
+    AppMethodBeat.i(271830);
+    if ((this.bYd == null) || (this.bYd.getLayoutManager() != paramLayoutManager)) {
+      this.bYd = s.e(paramLayoutManager);
     }
-    parami = this.agR;
-    AppMethodBeat.o(2021);
-    return parami;
+    paramLayoutManager = this.bYd;
+    AppMethodBeat.o(271830);
+    return paramLayoutManager;
   }
   
-  private aj c(RecyclerView.i parami)
+  private int c(View paramView, s params)
   {
-    AppMethodBeat.i(2022);
-    if ((this.agS == null) || (this.agS.getLayoutManager() != parami)) {
-      this.agS = aj.d(parami);
-    }
-    parami = this.agS;
-    AppMethodBeat.o(2022);
-    return parami;
+    AppMethodBeat.i(271826);
+    int i = params.bs(paramView);
+    int j = this.TLn.hNJ();
+    AppMethodBeat.o(271826);
+    return i - j;
   }
   
-  public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
+  private s c(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(2017);
+    AppMethodBeat.i(271832);
+    if ((this.bYe == null) || (this.bYe.getLayoutManager() != paramLayoutManager)) {
+      this.bYe = s.d(paramLayoutManager);
+    }
+    paramLayoutManager = this.bYe;
+    AppMethodBeat.o(271832);
+    return paramLayoutManager;
+  }
+  
+  public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(271835);
     if ((Math.abs(paramInt2) <= 500) || (Math.abs(paramInt1) >= Math.abs(paramInt2)))
     {
-      AppMethodBeat.o(2017);
+      AppMethodBeat.o(271835);
       return -1;
     }
-    int j = parami.getItemCount();
+    int j = paramLayoutManager.getItemCount();
     if (j == 0)
     {
-      AppMethodBeat.o(2017);
+      AppMethodBeat.o(271835);
       return -1;
     }
-    int i = this.thM.cJk() + 1;
+    int i = this.TLn.hND() + 1;
     if (i == -1)
     {
-      AppMethodBeat.o(2017);
+      AppMethodBeat.o(271835);
       return -1;
     }
     boolean bool;
-    if (parami.ij()) {
+    if (paramLayoutManager.canScrollHorizontally()) {
       if (paramInt1 > 0)
       {
         bool = true;
-        if (!(parami instanceof RecyclerView.r.b)) {
-          break label268;
+        if (!(paramLayoutManager instanceof RecyclerView.r.b)) {
+          break label263;
         }
-        parami = ((RecyclerView.r.b)parami).bI(j - 1);
-        if (parami == null) {
-          break label268;
+        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).fM(j - 1);
+        if (paramLayoutManager == null) {
+          break label263;
         }
-        if ((parami.x >= 0.0F) && (parami.y >= 0.0F)) {
-          break label242;
+        if ((paramLayoutManager.x >= 0.0F) && (paramLayoutManager.y >= 0.0F)) {
+          break label237;
         }
         paramInt1 = 1;
       }
     }
     for (;;)
     {
-      label140:
+      label136:
       if (paramInt1 != 0)
       {
         if (bool) {
-          break label260;
+          break label255;
         }
         paramInt1 = i + 1;
       }
       for (;;)
       {
-        ab.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.thM.cJk() + 1) });
-        AppMethodBeat.o(2017);
+        Log.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.TLn.hND() + 1) });
+        AppMethodBeat.o(271835);
         return paramInt1;
         bool = false;
         break;
@@ -160,79 +164,106 @@ public final class c
         }
         bool = false;
         break;
-        label242:
+        label237:
         paramInt1 = 0;
-        break label140;
+        break label136;
         if (bool) {
           paramInt1 = i + 1;
         } else {
-          label260:
+          label255:
           paramInt1 = i - 1;
         }
       }
-      label268:
+      label263:
       paramInt1 = 0;
     }
   }
   
-  public final View a(RecyclerView.i parami)
+  public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(2016);
-    if (parami.ik())
+    AppMethodBeat.i(271834);
+    if (paramLayoutManager.canScrollVertically())
     {
-      parami = a(parami, b(parami));
-      AppMethodBeat.o(2016);
-      return parami;
+      paramLayoutManager = a(paramLayoutManager, b(paramLayoutManager));
+      AppMethodBeat.o(271834);
+      return paramLayoutManager;
     }
-    if (parami.ij())
+    if (paramLayoutManager.canScrollHorizontally())
     {
-      parami = a(parami, c(parami));
-      AppMethodBeat.o(2016);
-      return parami;
+      paramLayoutManager = a(paramLayoutManager, c(paramLayoutManager));
+      AppMethodBeat.o(271834);
+      return paramLayoutManager;
     }
-    AppMethodBeat.o(2016);
+    AppMethodBeat.o(271834);
     return null;
   }
   
-  public final int[] a(RecyclerView.i parami, View paramView)
+  public final int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
   {
-    AppMethodBeat.i(2015);
+    AppMethodBeat.i(271833);
     int[] arrayOfInt = new int[2];
-    if (parami.ij())
+    if (paramLayoutManager.canScrollHorizontally())
     {
-      arrayOfInt[0] = a(paramView, c(parami));
-      if (!parami.ik()) {
-        break label65;
+      arrayOfInt[0] = c(paramView, c(paramLayoutManager));
+      if (!paramLayoutManager.canScrollVertically()) {
+        break label63;
       }
-      arrayOfInt[1] = a(paramView, b(parami));
+      arrayOfInt[1] = c(paramView, b(paramLayoutManager));
     }
     for (;;)
     {
-      AppMethodBeat.o(2015);
+      AppMethodBeat.o(271833);
       return arrayOfInt;
       arrayOfInt[0] = 0;
       break;
-      label65:
+      label63:
       arrayOfInt[1] = 0;
     }
   }
   
-  public final ae f(RecyclerView.i parami)
+  public final o f(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(2018);
-    if (!(parami instanceof RecyclerView.r.b))
+    AppMethodBeat.i(271837);
+    if (!(paramLayoutManager instanceof RecyclerView.r.b))
     {
-      AppMethodBeat.o(2018);
+      AppMethodBeat.o(271837);
       return null;
     }
-    parami = new c.1(this, this.adt.getContext());
-    AppMethodBeat.o(2018);
-    return parami;
+    paramLayoutManager = new o(this.mRecyclerView.getContext())
+    {
+      public final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
+      {
+        AppMethodBeat.i(271824);
+        paramAnonymousView = c.this.a(c.a(c.this).getLayoutManager(), paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = fO(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.bXY);
+        }
+        AppMethodBeat.o(271824);
+      }
+      
+      public final float c(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      public final int fP(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(126408);
+        paramAnonymousInt = Math.min(100, super.fP(paramAnonymousInt));
+        AppMethodBeat.o(126408);
+        return paramAnonymousInt;
+      }
+    };
+    AppMethodBeat.o(271837);
+    return paramLayoutManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.c
  * JD-Core Version:    0.7.0.1
  */

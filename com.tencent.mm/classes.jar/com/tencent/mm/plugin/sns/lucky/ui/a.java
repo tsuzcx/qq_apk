@@ -7,42 +7,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.k;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static Dialog f(Context paramContext, View paramView)
+  public static Dialog h(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(35903);
-    View localView = LayoutInflater.from(paramContext).inflate(2130970013, null);
+    AppMethodBeat.i(95200);
+    View localView = LayoutInflater.from(paramContext).inflate(b.g.lucky_comment_dialog, null);
     Object localObject;
-    if (aa.dsD()) {
+    if (LocaleUtil.isSimplifiedChineseAppLang()) {
       localObject = "font_1.otf";
     }
     for (;;)
     {
-      TextView localTextView = (TextView)localView.findViewById(2131825541);
-      if (!bo.isNullOrNil((String)localObject)) {
+      TextView localTextView = (TextView)localView.findViewById(b.f.lucky_money_title_tv);
+      if (!Util.isNullOrNil((String)localObject)) {
         localTextView.setTypeface(Typeface.createFromAsset(paramContext.getAssets(), (String)localObject));
       }
-      if (!aa.dsC()) {
+      if (!LocaleUtil.isChineseAppLang()) {
         localTextView.setTextSize(1, 10.0F);
       }
-      localObject = new com.tencent.mm.plugin.crashfix.b.a(paramContext, 2131493881);
+      localObject = new com.tencent.mm.plugin.crashfix.b.a(paramContext, b.k.mmalertdialog);
       ((Dialog)localObject).setContentView(localView);
       ((Dialog)localObject).setTitle(null);
       ((Dialog)localObject).setOnCancelListener(new a.1((Dialog)localObject));
-      ((TextView)localView.findViewById(2131825543)).setOnClickListener(new a.2((Dialog)localObject, paramView));
-      paramView = localView.findViewById(2131825539);
-      int i = BackwardSupportUtil.b.b(paramContext, 10.0F);
-      bo.n(paramView, i, i, i, i);
+      ((TextView)localView.findViewById(b.f.go_shake_lucky_btn)).setOnClickListener(new a.2((Dialog)localObject, paramView));
+      paramView = localView.findViewById(b.f.tips_dialog_close_btn);
+      int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 10.0F);
+      Util.expandViewTouchArea(paramView, i, i, i, i);
       paramView.setOnClickListener(new a.3((Dialog)localObject));
       ((Dialog)localObject).show();
-      AppMethodBeat.o(35903);
+      AppMethodBeat.o(95200);
       return localObject;
-      if (aa.dsE()) {
+      if (LocaleUtil.isTraditionalChineseAppLang()) {
         localObject = "font_2.otf";
       } else {
         localObject = null;
@@ -52,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.ui.a
  * JD-Core Version:    0.7.0.1
  */

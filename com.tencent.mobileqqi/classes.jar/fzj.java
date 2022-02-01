@@ -1,17 +1,14 @@
 import com.tencent.mobileqq.international.activity.FeedbackActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class fzj
-  implements Runnable
+  extends AccountObserver
 {
-  public fzj(FeedbackActivity paramFeedbackActivity) {}
+  public fzj(FeedbackActivity paramFeedbackActivity, String paramString) {}
   
-  public void run()
+  public void onUpdateSTwxWeb(String paramString)
   {
-    FeedbackActivity.c(this.a);
-    QQToast.a(this.a, 2131561435, 1).a();
-    QLog.e("FeedBackActivity", 2, "feedback failed");
+    new fzk(this.jdField_a_of_type_ComTencentMobileqqInternationalActivityFeedbackActivity, null).execute(new String[] { "http://mma.qq.com/cgi-bin/support/upload_support", this.jdField_a_of_type_JavaLangString });
   }
 }
 

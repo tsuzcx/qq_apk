@@ -1,113 +1,121 @@
 package com.tencent.soter.a.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.b.b;
+import com.tencent.soter.a.b.e;
 
 public abstract class d
 {
-  boolean Bnh = false;
-  public b Bnw;
+  boolean ahxY = false;
+  public b ahyt;
+  
+  abstract void b(e parame);
   
   /* Error */
-  final void b(com.tencent.soter.a.b.e parame)
+  final void c(final e parame)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 14	com/tencent/soter/a/g/d:Bnh	Z
+    //   3: getfield 16	com/tencent/soter/a/g/d:ahxY	Z
     //   6: ifeq +17 -> 23
-    //   9: ldc 19
-    //   11: ldc 21
+    //   9: ldc 22
+    //   11: ldc 24
     //   13: iconst_0
     //   14: anewarray 4	java/lang/Object
-    //   17: invokestatic 27	com/tencent/soter/core/c/d:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   17: invokestatic 30	com/tencent/soter/core/c/d:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   20: aload_0
     //   21: monitorexit
     //   22: return
-    //   23: invokestatic 33	com/tencent/soter/a/g/f:dVD	()Lcom/tencent/soter/a/g/f;
-    //   26: astore_2
-    //   27: ldc 35
-    //   29: ldc 37
-    //   31: iconst_1
-    //   32: anewarray 4	java/lang/Object
-    //   35: dup
-    //   36: iconst_0
-    //   37: aload_0
-    //   38: invokevirtual 41	java/lang/Object:hashCode	()I
-    //   41: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   44: aastore
-    //   45: invokestatic 50	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   48: aload_2
-    //   49: getfield 54	com/tencent/soter/a/g/f:BnH	Ljava/lang/Object;
-    //   52: astore_2
+    //   23: aload_0
+    //   24: aload_1
+    //   25: invokevirtual 32	com/tencent/soter/a/g/d:b	(Lcom/tencent/soter/a/b/e;)V
+    //   28: invokestatic 38	com/tencent/soter/a/g/f:jYD	()Lcom/tencent/soter/a/g/f;
+    //   31: astore_2
+    //   32: ldc 40
+    //   34: ldc 42
+    //   36: iconst_1
+    //   37: anewarray 4	java/lang/Object
+    //   40: dup
+    //   41: iconst_0
+    //   42: aload_0
+    //   43: invokevirtual 46	java/lang/Object:hashCode	()I
+    //   46: invokestatic 52	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   49: aastore
+    //   50: invokestatic 55	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   53: aload_2
-    //   54: monitorenter
-    //   55: getstatic 58	com/tencent/soter/a/g/f:BnG	Landroid/util/SparseArray;
-    //   58: aload_0
-    //   59: invokevirtual 41	java/lang/Object:hashCode	()I
-    //   62: invokevirtual 64	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   65: ifnonnull +49 -> 114
-    //   68: ldc 35
-    //   70: ldc 66
-    //   72: iconst_1
-    //   73: anewarray 4	java/lang/Object
-    //   76: dup
-    //   77: iconst_0
-    //   78: aload_0
-    //   79: invokevirtual 41	java/lang/Object:hashCode	()I
-    //   82: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   85: aastore
-    //   86: invokestatic 50	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   89: aload_2
-    //   90: monitorexit
-    //   91: invokestatic 72	com/tencent/soter/a/g/g:dVG	()Lcom/tencent/soter/a/g/g;
-    //   94: new 74	com/tencent/soter/a/g/d$1
-    //   97: dup
-    //   98: aload_0
-    //   99: aload_1
-    //   100: invokespecial 77	com/tencent/soter/a/g/d$1:<init>	(Lcom/tencent/soter/a/g/d;Lcom/tencent/soter/a/b/e;)V
-    //   103: invokevirtual 81	com/tencent/soter/a/g/g:d	(Ljava/lang/Runnable;)V
-    //   106: goto -86 -> 20
-    //   109: astore_1
-    //   110: aload_0
-    //   111: monitorexit
-    //   112: aload_1
-    //   113: athrow
-    //   114: getstatic 58	com/tencent/soter/a/g/f:BnG	Landroid/util/SparseArray;
-    //   117: aload_0
-    //   118: invokevirtual 41	java/lang/Object:hashCode	()I
-    //   121: invokevirtual 85	android/util/SparseArray:remove	(I)V
-    //   124: goto -35 -> 89
-    //   127: astore_1
-    //   128: aload_2
-    //   129: monitorexit
-    //   130: aload_1
-    //   131: athrow
+    //   54: getfield 59	com/tencent/soter/a/g/f:ahyF	Ljava/lang/Object;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: monitorenter
+    //   60: getstatic 63	com/tencent/soter/a/g/f:ahyE	Landroid/util/SparseArray;
+    //   63: aload_0
+    //   64: invokevirtual 46	java/lang/Object:hashCode	()I
+    //   67: invokevirtual 69	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   70: ifnonnull +49 -> 119
+    //   73: ldc 40
+    //   75: ldc 71
+    //   77: iconst_1
+    //   78: anewarray 4	java/lang/Object
+    //   81: dup
+    //   82: iconst_0
+    //   83: aload_0
+    //   84: invokevirtual 46	java/lang/Object:hashCode	()I
+    //   87: invokestatic 52	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   90: aastore
+    //   91: invokestatic 55	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   94: aload_2
+    //   95: monitorexit
+    //   96: invokestatic 77	com/tencent/soter/a/g/g:jYG	()Lcom/tencent/soter/a/g/g;
+    //   99: new 6	com/tencent/soter/a/g/d$1
+    //   102: dup
+    //   103: aload_0
+    //   104: aload_1
+    //   105: invokespecial 80	com/tencent/soter/a/g/d$1:<init>	(Lcom/tencent/soter/a/g/d;Lcom/tencent/soter/a/b/e;)V
+    //   108: invokevirtual 84	com/tencent/soter/a/g/g:postToMainThread	(Ljava/lang/Runnable;)V
+    //   111: goto -91 -> 20
+    //   114: astore_1
+    //   115: aload_0
+    //   116: monitorexit
+    //   117: aload_1
+    //   118: athrow
+    //   119: getstatic 63	com/tencent/soter/a/g/f:ahyE	Landroid/util/SparseArray;
+    //   122: aload_0
+    //   123: invokevirtual 46	java/lang/Object:hashCode	()I
+    //   126: invokevirtual 88	android/util/SparseArray:remove	(I)V
+    //   129: goto -35 -> 94
+    //   132: astore_1
+    //   133: aload_2
+    //   134: monitorexit
+    //   135: aload_1
+    //   136: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	this	d
-    //   0	132	1	parame	com.tencent.soter.a.b.e
+    //   0	137	0	this	d
+    //   0	137	1	parame	e
     // Exception table:
     //   from	to	target	type
-    //   2	20	109	finally
-    //   23	55	109	finally
-    //   91	106	109	finally
-    //   130	132	109	finally
-    //   55	89	127	finally
-    //   89	91	127	finally
-    //   114	124	127	finally
-    //   128	130	127	finally
+    //   2	20	114	finally
+    //   23	60	114	finally
+    //   96	111	114	finally
+    //   133	137	114	finally
+    //   60	94	132	finally
+    //   94	96	132	finally
+    //   119	129	132	finally
   }
   
-  abstract boolean dVB();
-  
-  abstract void dVC();
-  
   abstract void execute();
+  
+  abstract boolean jYA();
+  
+  abstract boolean jYB();
+  
+  abstract void jYC();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.a.g.d
  * JD-Core Version:    0.7.0.1
  */

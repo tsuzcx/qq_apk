@@ -11,15 +11,19 @@ class SonicJsPlugin$1
   
   public void callback(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "getDiffData callback updated data: " + paramString.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiffData callback updated data: ");
+      localStringBuilder.append(paramString.toString());
+      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, localStringBuilder.toString());
     }
     this.val$webView.callJs(this.val$callbackId, new String[] { paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

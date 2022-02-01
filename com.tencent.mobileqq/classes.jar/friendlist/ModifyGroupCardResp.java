@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class ModifyGroupCardResp
   extends JceStruct
 {
-  static int cache_result = 0;
+  static int cache_result;
   static ArrayList<Long> cache_vecUin = new ArrayList();
   public String ErrorString = "";
-  public long dwGroupCode;
-  public long dwGroupUin;
-  public int result;
-  public ArrayList<Long> vecUin;
+  public long dwGroupCode = 0L;
+  public long dwGroupUin = 0L;
+  public int result = 0;
+  public ArrayList<Long> vecUin = null;
   
   static
   {
@@ -47,14 +47,15 @@ public final class ModifyGroupCardResp
     paramJceOutputStream.write(this.dwGroupUin, 1);
     paramJceOutputStream.write(this.dwGroupCode, 2);
     paramJceOutputStream.write(this.vecUin, 3);
-    if (this.ErrorString != null) {
-      paramJceOutputStream.write(this.ErrorString, 4);
+    String str = this.ErrorString;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.ModifyGroupCardResp
  * JD-Core Version:    0.7.0.1
  */

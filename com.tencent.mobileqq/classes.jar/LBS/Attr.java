@@ -29,19 +29,29 @@ public final class Attr
   
   public String toString()
   {
-    return "Attr[imei=" + this.strImei + ",imsi=" + this.strImsi + ",phoneNum=" + this.strPhonenum + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder("Attr[imei=");
+    localStringBuilder.append(this.strImei);
+    localStringBuilder.append(",imsi=");
+    localStringBuilder.append(this.strImsi);
+    localStringBuilder.append(",phoneNum=");
+    localStringBuilder.append(this.strPhonenum);
+    localStringBuilder.append("]\n");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strImei != null) {
-      paramJceOutputStream.write(this.strImei, 0);
+    String str = this.strImei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strImsi != null) {
-      paramJceOutputStream.write(this.strImsi, 1);
+    str = this.strImsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strPhonenum != null) {
-      paramJceOutputStream.write(this.strPhonenum, 2);
+    str = this.strPhonenum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }

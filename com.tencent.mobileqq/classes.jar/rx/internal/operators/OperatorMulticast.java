@@ -42,7 +42,6 @@ public final class OperatorMulticast<T, R>
   
   public void connect(Action1<? super Subscription> arg1)
   {
-    Subject localSubject;
     synchronized (this.guard)
     {
       if (this.subscription != null)
@@ -50,35 +49,38 @@ public final class OperatorMulticast<T, R>
         ???.call(this.guardedSubscription);
         return;
       }
-      localSubject = (Subject)this.subjectFactory.call();
+      Subject localSubject = (Subject)this.subjectFactory.call();
       this.subscription = Subscribers.from(localSubject);
       Object localObject3 = new AtomicReference();
       ((AtomicReference)localObject3).set(Subscriptions.create(new OperatorMulticast.2(this, (AtomicReference)localObject3)));
       this.guardedSubscription = ((Subscription)((AtomicReference)localObject3).get());
       localObject3 = this.waitingForConnect.iterator();
-      if (((Iterator)localObject3).hasNext())
+      while (((Iterator)localObject3).hasNext())
       {
         Subscriber localSubscriber = (Subscriber)((Iterator)localObject3).next();
         localSubject.unsafeSubscribe(new OperatorMulticast.3(this, localSubscriber, localSubscriber));
       }
-    }
-    this.waitingForConnect.clear();
-    this.connectedSubject.set(localSubject);
-    ???.call(this.guardedSubscription);
-    synchronized (this.guard)
-    {
-      ??? = this.subscription;
-      if (??? != null)
+      this.waitingForConnect.clear();
+      this.connectedSubject.set(localSubject);
+      ???.call(this.guardedSubscription);
+      synchronized (this.guard)
       {
-        this.source.subscribe((Subscriber)???);
+        ??? = this.subscription;
+        if (??? != null) {
+          this.source.subscribe((Subscriber)???);
+        }
         return;
       }
+    }
+    for (;;)
+    {
+      throw ???;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorMulticast
  * JD-Core Version:    0.7.0.1
  */

@@ -20,46 +20,48 @@ class Mp3FrameInfoParse
   static
   {
     int[] arrayOfInt1 = { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
-    int[] arrayOfInt2 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
-    int[] arrayOfInt3 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    int[] arrayOfInt2 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
+    int[] arrayOfInt3 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 };
     int[] arrayOfInt4 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    BitrateTable = new int[][][] { { arrayOfInt1, arrayOfInt2, { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 } }, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, arrayOfInt3, arrayOfInt4 } };
-    arrayOfInt1 = new int[] { 11025, 12000, 8000 };
+    int[] arrayOfInt5 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    BitrateTable = new int[][][] { { arrayOfInt1, { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 }, arrayOfInt2 }, { arrayOfInt3, arrayOfInt4, arrayOfInt5 } };
+    arrayOfInt1 = new int[] { 0, 0, 0 };
     arrayOfInt2 = new int[] { 22050, 24000, 16000 };
-    SAMPLE_RATE_TABLE = new int[][] { arrayOfInt1, { 0, 0, 0 }, arrayOfInt2, { 44100, 48000, 32000 } };
+    arrayOfInt3 = new int[] { 44100, 48000, 32000 };
+    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, arrayOfInt1, arrayOfInt2, arrayOfInt3 };
   }
   
-  private static boolean IsMp3Header(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, int paramInt1, int paramInt2, Mp3FrameInfoParse.Mp3Info paramMp3Info)
+  private static boolean IsMp3Header(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, int paramInt1, int paramInt2, Mp3Info paramMp3Info)
   {
-    AppMethodBeat.i(128500);
+    AppMethodBeat.i(114233);
     if ((paramArrayOfByte == null) || (paramMp3Info == null))
     {
-      AppMethodBeat.o(128500);
+      AppMethodBeat.o(114233);
       return false;
     }
     int k = paramArrayOfByte[(paramInt2 + 1)] >> 3 & 0x3;
     if (1 == k)
     {
-      AppMethodBeat.o(128500);
+      AppMethodBeat.o(114233);
       return false;
     }
     int i = paramArrayOfByte[(paramInt2 + 1)] >> 1 & 0x3;
     if (i == 0)
     {
-      AppMethodBeat.o(128500);
+      AppMethodBeat.o(114233);
       return false;
     }
     int m = 4 - i;
     int n = paramArrayOfByte[(paramInt2 + 2)] >> 4 & 0xF;
     if (15 == n)
     {
-      AppMethodBeat.o(128500);
+      AppMethodBeat.o(114233);
       return false;
     }
     int i1 = paramArrayOfByte[(paramInt2 + 2)] >> 2 & 0x3;
     if (3 == i1)
     {
-      AppMethodBeat.o(128500);
+      AppMethodBeat.o(114233);
       return false;
     }
     int i2 = paramArrayOfByte[(paramInt2 + 3)];
@@ -80,7 +82,7 @@ class Mp3FrameInfoParse
         long l = paramTrackPositionDataSource.getCurPosition();
         if (paramTrackPositionDataSource.seek(l - paramInt1 + paramInt2 + i) < 0L)
         {
-          AppMethodBeat.o(128500);
+          AppMethodBeat.o(114233);
           return false;
           j = 1;
           break;
@@ -96,7 +98,7 @@ class Mp3FrameInfoParse
         byte[] arrayOfByte = new byte[4];
         if (paramTrackPositionDataSource.read(arrayOfByte, 4) == -1)
         {
-          AppMethodBeat.o(128500);
+          AppMethodBeat.o(114233);
           return false;
         }
         paramInt1 = Mp3DecodeBase.readInt(paramArrayOfByte, paramInt2, 4);
@@ -104,7 +106,7 @@ class Mp3FrameInfoParse
         paramTrackPositionDataSource.seek(l);
         if ((paramInt1 == 0) || (paramInt2 == 0) || ((0xFFFE0C00 & paramInt1) != (paramInt2 & 0xFFFE0C00)))
         {
-          AppMethodBeat.o(128500);
+          AppMethodBeat.o(114233);
           return false;
         }
         Logger.i("Mp3FrameInfoParse", "FirstFrameSize = ".concat(String.valueOf(i)));
@@ -125,7 +127,7 @@ class Mp3FrameInfoParse
         for (paramInt1 = 1;; paramInt1 = 2)
         {
           paramMp3Info.channels = paramInt1;
-          AppMethodBeat.o(128500);
+          AppMethodBeat.o(114233);
           return true;
           if (k == 2)
           {
@@ -141,22 +143,22 @@ class Mp3FrameInfoParse
       }
     }
     paramMp3Info.firstFrameSize = -1L;
-    AppMethodBeat.o(128500);
+    AppMethodBeat.o(114233);
     return false;
   }
   
-  public static int parseFrameInfo(TrackPositionDataSource paramTrackPositionDataSource, Mp3FrameInfoParse.Mp3Info paramMp3Info)
+  public static int parseFrameInfo(TrackPositionDataSource paramTrackPositionDataSource, Mp3Info paramMp3Info)
   {
-    AppMethodBeat.i(128498);
+    AppMethodBeat.i(114231);
     if (paramTrackPositionDataSource == null)
     {
-      AppMethodBeat.o(128498);
+      AppMethodBeat.o(114231);
       return -1;
     }
     byte[] arrayOfByte = new byte[1024];
     if (paramTrackPositionDataSource.read(arrayOfByte, 1024) < 1024)
     {
-      AppMethodBeat.o(128498);
+      AppMethodBeat.o(114231);
       return -2;
     }
     if (Mp3DecodeBase.hasId3v2(arrayOfByte, 4))
@@ -191,7 +193,7 @@ class Mp3FrameInfoParse
       if (l2 < l1 / 10L) {
         break;
       }
-      AppMethodBeat.o(128498);
+      AppMethodBeat.o(114231);
       return -3;
       paramTrackPositionDataSource.seek(0L);
     }
@@ -201,7 +203,7 @@ class Mp3FrameInfoParse
       if (m == -1)
       {
         paramMp3Info.firstFramePosition = -1L;
-        AppMethodBeat.o(128498);
+        AppMethodBeat.o(114231);
         return -3;
       }
       int k = i + m;
@@ -218,31 +220,31 @@ class Mp3FrameInfoParse
           Logger.i("Mp3FrameInfoParse", "FirstFramePos = " + paramMp3Info.firstFramePosition);
           if (paramTrackPositionDataSource.seek(paramMp3Info.firstFramePosition) < 0L)
           {
-            AppMethodBeat.o(128498);
+            AppMethodBeat.o(114231);
             return -1;
           }
           boolean bool = parseVBRFrameInfo(paramTrackPositionDataSource, paramMp3Info);
           if ((paramTrackPositionDataSource.seek(0L) < 0L) || (!bool))
           {
-            AppMethodBeat.o(128498);
+            AppMethodBeat.o(114231);
             return -1;
           }
-          AppMethodBeat.o(128498);
+          AppMethodBeat.o(114231);
           return 0;
         }
         j += 1;
       }
     }
-    AppMethodBeat.o(128498);
+    AppMethodBeat.o(114231);
     return -3;
   }
   
-  private static boolean parseVBRFrameInfo(TrackPositionDataSource paramTrackPositionDataSource, Mp3FrameInfoParse.Mp3Info paramMp3Info)
+  private static boolean parseVBRFrameInfo(TrackPositionDataSource paramTrackPositionDataSource, Mp3Info paramMp3Info)
   {
-    AppMethodBeat.i(128501);
+    AppMethodBeat.i(114234);
     if ((paramTrackPositionDataSource == null) || (paramMp3Info == null))
     {
-      AppMethodBeat.o(128501);
+      AppMethodBeat.o(114234);
       return false;
     }
     long l2 = paramMp3Info.sample_rate;
@@ -256,7 +258,7 @@ class Mp3FrameInfoParse
     }
     while (paramTrackPositionDataSource.seek(paramTrackPositionDataSource.getCurPosition() + l1) < 0L)
     {
-      AppMethodBeat.o(128501);
+      AppMethodBeat.o(114234);
       return false;
       l1 = 21L;
       continue;
@@ -268,7 +270,7 @@ class Mp3FrameInfoParse
     }
     if (paramTrackPositionDataSource.read(arrayOfByte, 1024) < 1024)
     {
-      AppMethodBeat.o(128501);
+      AppMethodBeat.o(114234);
       return false;
     }
     if (Mp3DecodeBase.isXingVBRheader(arrayOfByte, 4))
@@ -280,21 +282,21 @@ class Mp3FrameInfoParse
     }
     for (;;)
     {
-      AppMethodBeat.o(128501);
+      AppMethodBeat.o(114234);
       return true;
       if (paramTrackPositionDataSource.seek(paramTrackPositionDataSource.getCurPosition() - (l1 + 1024L)) < 0L)
       {
-        AppMethodBeat.o(128501);
+        AppMethodBeat.o(114234);
         return false;
       }
       if (paramTrackPositionDataSource.seek(paramTrackPositionDataSource.getCurPosition() + 36L) < 0L)
       {
-        AppMethodBeat.o(128501);
+        AppMethodBeat.o(114234);
         return false;
       }
       if (paramTrackPositionDataSource.read(arrayOfByte, 1024) < 1024)
       {
-        AppMethodBeat.o(128501);
+        AppMethodBeat.o(114234);
         return false;
       }
       if (Mp3DecodeBase.isVBRIVBRHeader(arrayOfByte, 4))
@@ -317,12 +319,12 @@ class Mp3FrameInfoParse
     }
   }
   
-  private static void parseVBRIInfo(Mp3FrameInfoParse.Mp3Info paramMp3Info, byte[] paramArrayOfByte, long paramLong)
+  private static void parseVBRIInfo(Mp3Info paramMp3Info, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(128503);
+    AppMethodBeat.i(114236);
     if ((paramArrayOfByte == null) || (paramMp3Info == null))
     {
-      AppMethodBeat.o(128503);
+      AppMethodBeat.o(114236);
       return;
     }
     long l1 = Mp3DecodeBase.readLong(paramArrayOfByte, 10, 4);
@@ -407,15 +409,15 @@ class Mp3FrameInfoParse
       paramMp3Info.scale_factor = i2;
       paramMp3Info.toc_table = arrayOfLong2;
     }
-    AppMethodBeat.o(128503);
+    AppMethodBeat.o(114236);
   }
   
-  private static void parseXingInfo(byte[] paramArrayOfByte, long paramLong, Mp3FrameInfoParse.Mp3Info paramMp3Info)
+  private static void parseXingInfo(byte[] paramArrayOfByte, long paramLong, Mp3Info paramMp3Info)
   {
-    AppMethodBeat.i(128502);
+    AppMethodBeat.i(114235);
     if ((paramArrayOfByte == null) || (paramMp3Info == null))
     {
-      AppMethodBeat.o(128502);
+      AppMethodBeat.o(114235);
       return;
     }
     Object localObject = null;
@@ -460,17 +462,17 @@ class Mp3FrameInfoParse
         paramMp3Info.toc_table = localObject;
         paramMp3Info.flag_value = k;
       }
-      AppMethodBeat.o(128502);
+      AppMethodBeat.o(114235);
       return;
     }
   }
   
-  private static void skipId3v2(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, Mp3FrameInfoParse.Mp3Info paramMp3Info)
+  private static void skipId3v2(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, Mp3Info paramMp3Info)
   {
-    AppMethodBeat.i(128499);
+    AppMethodBeat.i(114232);
     if ((paramTrackPositionDataSource == null) || (paramArrayOfByte == null))
     {
-      AppMethodBeat.o(128499);
+      AppMethodBeat.o(114232);
       return;
     }
     if ((paramArrayOfByte[0] == 73) && (paramArrayOfByte[1] == 68) && (paramArrayOfByte[2] == 51))
@@ -481,7 +483,7 @@ class Mp3FrameInfoParse
       }
       for (int k = 1; paramTrackPositionDataSource.seek(i) < 0L; k = 0)
       {
-        AppMethodBeat.o(128499);
+        AppMethodBeat.o(114232);
         return;
         i += 10;
       }
@@ -506,12 +508,34 @@ class Mp3FrameInfoParse
       Logger.i("Mp3FrameInfoParse", "id3V2 Size: " + paramMp3Info.idv2Size);
       paramTrackPositionDataSource.seek(j);
     }
-    AppMethodBeat.o(128499);
+    AppMethodBeat.o(114232);
+  }
+  
+  static class Mp3Info
+  {
+    int VBRType = 0;
+    int bit_rate = 0;
+    int channels = 0;
+    long duration = 0L;
+    int entry_count = 0;
+    int entry_size = 0;
+    long fileLengthInBytes = 0L;
+    long firstFramePosition = 0L;
+    long firstFrameSize = 0L;
+    int flag_value = 0;
+    int idv2Size = 0;
+    int isVbr = 0;
+    int layer = 0;
+    long lengthInFrames = 0L;
+    int mpeg_version = 0;
+    long sample_rate = 0L;
+    int scale_factor = 0;
+    long[] toc_table = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3FrameInfoParse
  * JD-Core Version:    0.7.0.1
  */

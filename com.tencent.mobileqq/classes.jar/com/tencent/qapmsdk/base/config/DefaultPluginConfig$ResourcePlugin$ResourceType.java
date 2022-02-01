@@ -2,7 +2,7 @@ package com.tencent.qapmsdk.base.config;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/config/DefaultPluginConfig$ResourcePlugin$ResourceType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "OPEN_RESOURCE", "OPEN_TAG", "OPEN_AUTO", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/config/DefaultPluginConfig$ResourcePlugin$ResourceType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "OPEN_RESOURCE", "OPEN_TAG", "OPEN_AUTO", "OUTSIDE_TAG", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public enum DefaultPluginConfig$ResourcePlugin$ResourceType
 {
   private final int value;
@@ -15,7 +15,9 @@ public enum DefaultPluginConfig$ResourcePlugin$ResourceType
     OPEN_TAG = localResourceType2;
     ResourceType localResourceType3 = new ResourceType("OPEN_AUTO", 2, 7);
     OPEN_AUTO = localResourceType3;
-    $VALUES = new ResourceType[] { localResourceType1, localResourceType2, localResourceType3 };
+    ResourceType localResourceType4 = new ResourceType("OUTSIDE_TAG", 3, 8);
+    OUTSIDE_TAG = localResourceType4;
+    $VALUES = new ResourceType[] { localResourceType1, localResourceType2, localResourceType3, localResourceType4 };
   }
   
   private DefaultPluginConfig$ResourcePlugin$ResourceType(int paramInt)
@@ -30,7 +32,7 @@ public enum DefaultPluginConfig$ResourcePlugin$ResourceType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.DefaultPluginConfig.ResourcePlugin.ResourceType
  * JD-Core Version:    0.7.0.1
  */

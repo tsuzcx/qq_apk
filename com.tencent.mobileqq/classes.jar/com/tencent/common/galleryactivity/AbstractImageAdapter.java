@@ -3,109 +3,105 @@ package com.tencent.common.galleryactivity;
 import android.view.View;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
-import zir;
-import ziz;
 
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  zir jdField_a_of_type_Zir;
-  private ziz jdField_a_of_type_Ziz;
+  private AbstractProgressView a;
+  AbstractImageListModel h;
   
-  private ziz a(int paramInt)
+  private AbstractProgressView a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Zir != null) && (paramInt == this.jdField_a_of_type_Zir.b())) {
-      return this.jdField_a_of_type_Ziz;
+    AbstractImageListModel localAbstractImageListModel = this.h;
+    if ((localAbstractImageListModel != null) && (paramInt == localAbstractImageListModel.b())) {
+      return this.a;
     }
     return null;
   }
   
   public static void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
+      if (paramInt != 6)
+      {
+        if (paramInt != 8) {
+          paramInt = 0;
+        } else {
+          paramInt = 3;
+        }
+      }
+      else {
+        paramInt = 1;
       }
     }
-    for (;;)
-    {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
-      }
-      return;
-      paramInt = 1;
-      break;
+    else {
       paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
     }
-  }
-  
-  public zir a()
-  {
-    return this.jdField_a_of_type_Zir;
+    boolean bool = paramURLDrawable.isAnim() ^ true;
+    paramView.setTag(2131296390, Boolean.valueOf(bool));
+    if (bool) {
+      paramView.setTag(2131296389, Integer.valueOf(paramInt));
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ziz localziz = a(paramInt1);
-    if (localziz != null) {
-      localziz.a(paramInt2);
+    AbstractProgressView localAbstractProgressView = a(paramInt1);
+    if (localAbstractProgressView != null) {
+      localAbstractProgressView.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ziz localziz = a(paramInt);
-    if (localziz != null) {
-      localziz.c();
+    AbstractProgressView localAbstractProgressView = a(paramInt);
+    if (localAbstractProgressView != null) {
+      localAbstractProgressView.c();
     }
   }
   
   public abstract void a(View paramView, int paramInt);
   
-  public void a(zir paramzir)
+  public void a(AbstractImageListModel paramAbstractImageListModel)
   {
-    this.jdField_a_of_type_Zir = paramzir;
+    this.h = paramAbstractImageListModel;
   }
   
-  public void a(ziz paramziz)
+  public void a(AbstractProgressView paramAbstractProgressView)
   {
-    this.jdField_a_of_type_Ziz = paramziz;
+    this.a = paramAbstractProgressView;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    ziz localziz = a(paramInt1);
-    if ((localziz != null) && (localziz.a())) {
-      localziz.a(paramInt2);
+    AbstractProgressView localAbstractProgressView = a(paramInt1);
+    if ((localAbstractProgressView != null) && (localAbstractProgressView.d())) {
+      localAbstractProgressView.a(paramInt2);
     }
+  }
+  
+  public AbstractImageListModel d()
+  {
+    return this.h;
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Zir == null) {
+    AbstractImageListModel localAbstractImageListModel = this.h;
+    if (localAbstractImageListModel == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Zir.a();
+    return localAbstractImageListModel.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Zir == null) {
+    AbstractImageListModel localAbstractImageListModel = this.h;
+    if (localAbstractImageListModel == null) {
       return null;
     }
-    return this.jdField_a_of_type_Zir.a(paramInt);
+    return localAbstractImageListModel.c(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -115,7 +111,7 @@ public abstract class AbstractImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractImageAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,14 @@ public final class feeds_info$PGCFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 98, 106, 112, 120, 160, 170 }, new String[] { "enum_pgc_feeds_card_type", "uint64_puin", "uint32_article_type", "msg_pgc_pic_info_list", "msg_pgc_video_info_list", "bytes_pgc_comments", "uint32_myself_follow_status", "uint32_follow_counts", "enum_pgc_feeds_type", "msg_gallery_feeds_info" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, PGCFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 98, 106, 112, 120, 160, 170 }, new String[] { "enum_pgc_feeds_card_type", "uint64_puin", "uint32_article_type", "msg_pgc_pic_info_list", "msg_pgc_video_info_list", "bytes_pgc_comments", "uint32_myself_follow_status", "uint32_follow_counts", "enum_pgc_feeds_type", "msg_gallery_feeds_info" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, null, null, localByteStringMicro, localInteger, localInteger, localInteger, null }, PGCFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.PGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

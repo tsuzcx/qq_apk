@@ -1,30 +1,22 @@
-import android.util.Log;
 import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebView;
-import java.util.List;
 
 public class hkp
   implements Runnable
 {
-  public hkp(BaseInterface paramBaseInterface, long paramLong, List paramList, WebView paramWebView) {}
+  public hkp(BaseInterface paramBaseInterface, long paramLong, String paramString, WebView paramWebView) {}
   
   public void run()
   {
-    String str = "javascript:QzoneApp.fire('batchCallback',{'guid':" + this.jdField_a_of_type_Long + ",'r':0,'data':" + this.jdField_a_of_type_JavaUtilList.toString() + "});";
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {}
+    String str = "javascript:QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']});";
+    LogUtility.e("Response<callBatch>", str);
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
-      label58:
-      Log.i(BaseInterface.TAG, "Response<callBatch> AsyncInterface result : " + str);
-      return;
-      Log.e(BaseInterface.TAG, "Response<callBatch> AsyncInterface result : webview is null !!!");
       return;
     }
-    catch (Exception localException)
-    {
-      break label58;
-    }
+    catch (Exception localException) {}
   }
 }
 

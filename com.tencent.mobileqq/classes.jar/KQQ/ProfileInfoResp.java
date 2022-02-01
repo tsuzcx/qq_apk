@@ -8,11 +8,11 @@ public final class ProfileInfoResp
   extends JceStruct
 {
   static byte[] cache_vecValue;
-  public byte cOper;
-  public byte cType;
-  public long dwTimeStamp;
+  public byte cOper = 0;
+  public byte cType = 0;
+  public long dwTimeStamp = 0L;
   public String strKey = "";
-  public byte[] vecValue;
+  public byte[] vecValue = null;
   
   public ProfileInfoResp() {}
   
@@ -50,7 +50,7 @@ public final class ProfileInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfileInfoResp
  * JD-Core Version:    0.7.0.1
  */

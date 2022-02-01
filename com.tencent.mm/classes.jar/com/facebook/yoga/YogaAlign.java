@@ -8,7 +8,7 @@ public enum YogaAlign
   
   static
   {
-    AppMethodBeat.i(144030);
+    AppMethodBeat.i(18053);
     AUTO = new YogaAlign("AUTO", 0, 0);
     FLEX_START = new YogaAlign("FLEX_START", 1, 1);
     CENTER = new YogaAlign("CENTER", 2, 2);
@@ -18,7 +18,7 @@ public enum YogaAlign
     SPACE_BETWEEN = new YogaAlign("SPACE_BETWEEN", 6, 6);
     SPACE_AROUND = new YogaAlign("SPACE_AROUND", 7, 7);
     $VALUES = new YogaAlign[] { AUTO, FLEX_START, CENTER, FLEX_END, STRETCH, BASELINE, SPACE_BETWEEN, SPACE_AROUND };
-    AppMethodBeat.o(144030);
+    AppMethodBeat.o(18053);
   }
   
   private YogaAlign(int paramInt)
@@ -28,44 +28,44 @@ public enum YogaAlign
   
   public static YogaAlign fromInt(int paramInt)
   {
-    AppMethodBeat.i(144029);
+    AppMethodBeat.i(18052);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       throw ((Throwable)localObject);
     case 0: 
       localObject = AUTO;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     case 1: 
       localObject = FLEX_START;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     case 2: 
       localObject = CENTER;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     case 3: 
       localObject = FLEX_END;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     case 4: 
       localObject = STRETCH;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     case 5: 
       localObject = BASELINE;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     case 6: 
       localObject = SPACE_BETWEEN;
-      AppMethodBeat.o(144029);
+      AppMethodBeat.o(18052);
       return localObject;
     }
     Object localObject = SPACE_AROUND;
-    AppMethodBeat.o(144029);
+    AppMethodBeat.o(18052);
     return localObject;
   }
   
@@ -76,7 +76,7 @@ public enum YogaAlign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.facebook.yoga.YogaAlign
  * JD-Core Version:    0.7.0.1
  */

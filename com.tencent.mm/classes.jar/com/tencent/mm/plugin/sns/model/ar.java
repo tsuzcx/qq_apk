@@ -1,218 +1,119 @@
 package com.tencent.mm.plugin.sns.model;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import com.tencent.e.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.autogen.a.vd;
+import com.tencent.mm.k.i;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.w;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class ar
 {
-  public static String D(bcs parambcs)
+  private static final int Qwz;
+  
+  static
   {
-    AppMethodBeat.i(36638);
-    if (parambcs == null)
-    {
-      AppMethodBeat.o(36638);
-      return null;
-    }
-    parambcs = ao.gl(ag.getAccSnsPath(), parambcs.Id) + i.j(parambcs);
-    ab.i("MicroMsg.SnsVideoLogic", "get sns video path %s", new Object[] { parambcs });
-    AppMethodBeat.o(36638);
-    return parambcs;
+    AppMethodBeat.i(95919);
+    Qwz = i.aRC().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
+    AppMethodBeat.o(95919);
   }
   
-  public static String a(String paramString, bcs parambcs)
+  public static boolean hhh()
   {
-    AppMethodBeat.i(36639);
-    if (parambcs == null) {
-      localObject = null;
-    }
-    while (e.cN((String)localObject))
+    AppMethodBeat.i(95917);
+    h.baF();
+    int i = ((Integer)h.baE().ban().get(at.a.acXg, Integer.valueOf(0))).intValue();
+    Log.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(Qwz) });
+    if (i < Qwz)
     {
-      ab.i("MicroMsg.SnsVideoLogic", "it needn't download video[%s] because of the video is self. %s", new Object[] { paramString, localObject });
-      AppMethodBeat.o(36639);
-      return localObject;
-      localObject = ao.gl(ag.getAccSnsPath(), parambcs.Id) + i.p(parambcs);
-      ab.i("MicroMsg.SnsVideoLogic", "get sns video tmp path %s", new Object[] { localObject });
+      h.baF();
+      h.baE().ban().set(at.a.acXg, Integer.valueOf(i + 1));
     }
-    parambcs = D(parambcs);
-    boolean bool = e.cN(parambcs);
-    Object localObject = aaG(paramString);
-    if (localObject == null)
+    for (boolean bool = true;; bool = false)
     {
-      if (bool)
+      AppMethodBeat.o(95917);
+      return bool;
+    }
+  }
+  
+  public static void j(ArrayList<String> paramArrayList, String paramString)
+  {
+    AppMethodBeat.i(95916);
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      AppMethodBeat.o(95916);
+      return;
+    }
+    paramArrayList = new ArrayList(paramArrayList).iterator();
+    while (paramArrayList.hasNext())
+    {
+      int i = Util.getInt((String)paramArrayList.next(), 0);
+      if (i != 0)
       {
-        ab.i("MicroMsg.SnsVideoLogic", "it old version already download video[%s]. path :%s", new Object[] { paramString, parambcs });
-        AppMethodBeat.o(36639);
-        return parambcs;
+        Object localObject = al.hgB().alB(i);
+        if (localObject != null)
+        {
+          TimeLineObject localTimeLineObject = ((SnsInfo)localObject).getTimeLine();
+          if ((localTimeLineObject != null) && (localTimeLineObject.ContentObj != null) && (localTimeLineObject.ContentObj.Zpq == 26))
+          {
+            localTimeLineObject.ContentObj.Zpt = paramString;
+            al.hgB().f(i, (SnsInfo)localObject);
+            localObject = new vd();
+            ((vd)localObject).hYU.hYV = i;
+            ((vd)localObject).publish();
+          }
+        }
       }
-      ab.i("MicroMsg.SnsVideoLogic", "video info is null and file is no exists, return null.[%s]", new Object[] { paramString });
-      AppMethodBeat.o(36639);
-      return null;
     }
-    if ((bool) && (((s)localObject).alS()))
-    {
-      ab.i("MicroMsg.SnsVideoLogic", "it had download sns video[%s] finish. %s", new Object[] { paramString, parambcs });
-      AppMethodBeat.o(36639);
-      return parambcs;
-    }
-    ab.i("MicroMsg.SnsVideoLogic", "it don't download video[%s] finish. file[%b] status[%d], return null.", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(((s)localObject).status) });
-    AppMethodBeat.o(36639);
-    return null;
+    AppMethodBeat.o(95916);
   }
   
-  public static String aaE(String paramString)
+  public static boolean jr(Context paramContext)
   {
-    AppMethodBeat.i(36636);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(36636);
-      return "";
-    }
-    int i = paramString.indexOf("SNS_");
-    if (i < 0)
-    {
-      AppMethodBeat.o(36636);
-      return "";
-    }
-    String str = "";
+    bool1 = true;
+    AppMethodBeat.i(95918);
     try
     {
-      paramString = paramString.substring(i + 4);
-      AppMethodBeat.o(36636);
-      return paramString;
+      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
+      if (paramContext == null) {
+        break label87;
+      }
+      paramContext = paramContext.signatures[0].toByteArray();
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramContext);
+      boolean bool2 = Util.isEqual(e.aC(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
+      if (!bool2) {
+        break label87;
+      }
     }
-    catch (Exception paramString)
+    catch (Exception paramContext)
     {
       for (;;)
       {
-        paramString = str;
+        Log.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
+        bool1 = false;
       }
     }
-  }
-  
-  public static String aaF(String paramString)
-  {
-    AppMethodBeat.i(36637);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(36637);
-      return null;
-    }
-    String str = ao.gl(ag.getAccSnsPath(), paramString);
-    ab.i("MicroMsg.SnsVideoLogic", "get sns video dir %s mediaId %s", new Object[] { str, paramString });
-    AppMethodBeat.o(36637);
-    return str;
-  }
-  
-  public static s aaG(String paramString)
-  {
-    AppMethodBeat.i(36643);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(36643);
-      return null;
-    }
-    paramString = u.vr(ve(paramString));
-    AppMethodBeat.o(36643);
-    return paramString;
-  }
-  
-  public static String be(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(36634);
-    paramString = c.a("snsvideo", paramInt, "sns", paramString);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(36634);
-      return null;
-    }
-    AppMethodBeat.o(36634);
-    return paramString;
-  }
-  
-  public static boolean c(s params, int paramInt)
-  {
-    AppMethodBeat.i(36641);
-    params.status = 130;
-    params.edL = paramInt;
-    params.bsY = 268435712;
-    boolean bool = o.alE().c(params);
-    ab.i("MicroMsg.SnsVideoLogic", "update sns Record filename %s, update %b", new Object[] { params.getFileName(), Boolean.valueOf(bool) });
-    AppMethodBeat.o(36641);
-    return bool;
-  }
-  
-  public static boolean dp(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(36640);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.w("MicroMsg.SnsVideoLogic", "init sns record, but snsLocalId is null");
-      AppMethodBeat.o(36640);
-      return false;
-    }
-    paramString = ve(paramString);
-    s locals = new s();
-    locals.fileName = paramString;
-    locals.createTime = bo.aox();
-    locals.status = 130;
-    locals.edL = paramInt;
-    boolean bool = o.alE().b(locals);
-    ab.i("MicroMsg.SnsVideoLogic", "init sns Record filename %s, insert %b", new Object[] { paramString, Boolean.valueOf(bool) });
-    AppMethodBeat.o(36640);
-    return bool;
-  }
-  
-  public static boolean gn(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(36642);
-    s locals = aaG(paramString1);
-    if (locals == null)
-    {
-      locals = new s();
-      locals.fileName = ve(paramString1);
-    }
-    for (int i = 1;; i = 0)
-    {
-      locals.createTime = bo.aox();
-      locals.cHH = paramString2;
-      locals.status = 199;
-      if (i != 0) {}
-      for (boolean bool = o.alE().b(locals);; bool = o.alE().c(locals))
-      {
-        ab.i("MicroMsg.SnsVideoLogic", "post sns video snsLocalId %s, md5 %s ret %b", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) });
-        AppMethodBeat.o(36642);
-        return bool;
-        locals.bsY = 33555200;
-      }
-    }
-  }
-  
-  public static String ve(String paramString)
-  {
-    AppMethodBeat.i(36635);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(36635);
-      return "";
-    }
-    String str = "SNS_".concat(String.valueOf(paramString));
-    ab.d("MicroMsg.SnsVideoLogic", "gen sns[%s] video file name [%s]", new Object[] { paramString, str });
-    AppMethodBeat.o(36635);
-    return str;
+    AppMethodBeat.o(95918);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ar
  * JD-Core Version:    0.7.0.1
  */

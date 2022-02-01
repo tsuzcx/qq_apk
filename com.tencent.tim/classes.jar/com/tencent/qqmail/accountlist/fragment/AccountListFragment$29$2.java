@@ -1,0 +1,20 @@
+package com.tencent.qqmail.accountlist.fragment;
+
+import com.tencent.qqmail.model.mail.QMMailManager;
+
+class AccountListFragment$29$2
+  implements Runnable
+{
+  AccountListFragment$29$2(AccountListFragment.29 param29, int paramInt1, int paramInt2) {}
+  
+  public void run()
+  {
+    QMMailManager.sharedInstance().markFolderMailAllRead(AccountListFragment.access$100(this.this$1.this$0), this.val$accountId, this.val$folderId);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qqmail.accountlist.fragment.AccountListFragment.29.2
+ * JD-Core Version:    0.7.0.1
+ */

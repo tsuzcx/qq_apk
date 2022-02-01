@@ -1,16 +1,46 @@
 package com.tencent.mm.loader.d;
 
-import a.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/common/IDataBatchFetcher;", "T", "", "pushDelay", "", "max_wait_item", "(II)V", "loader", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "getMax_wait_item", "()I", "setMax_wait_item", "(I)V", "pendingQueue", "Ljava/util/Vector;", "Landroid/util/Pair;", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/loader/common/IDataBatchFetcher$IDataBatchReady;", "getPushDelay", "setPushDelay", "readyCallback", "com/tencent/mm/loader/common/IDataBatchFetcher$readyCallback$1", "Lcom/tencent/mm/loader/common/IDataBatchFetcher$readyCallback$1;", "reqTime", "", "runningQueue", "timeout", "canAdd", "", "url", "callback", "dispatchCallback", "", "respList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/loader/model/Response;", "loadData", "loadDataImp", "urls", "", "Lcom/tencent/mm/loader/common/IDataBatchFetcher$IDataBatchReady2;", "prepareTask", "uithread", "block", "Lkotlin/Function0;", "uithreadDelay", "Companion", "IDataBatchReady", "IDataBatchReady2", "libimageloader_release"})
-public abstract class a<T>
+public final class a
+  implements com.tencent.mm.loader.e.g
 {
-  private static final String TAG = "MicroMsg.Loader.IDataBatchFetcher";
-  public static final a.a eOq = new a.a((byte)0);
+  public final String e(com.tencent.mm.loader.g.a.a<?> parama)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (parama != null)
+    {
+      localObject1 = localObject2;
+      if (!Util.isNullOrNil(parama.toString()))
+      {
+        localObject1 = com.tencent.mm.b.g.getMessageDigest(parama.toString().getBytes());
+        Log.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
+      }
+    }
+    return localObject1;
+  }
+  
+  public final String f(com.tencent.mm.loader.g.a.a<?> parama)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (parama != null)
+    {
+      localObject1 = localObject2;
+      if (!Util.isNullOrNil(parama.toString()))
+      {
+        localObject1 = com.tencent.mm.b.g.getMessageDigest(parama.toString().getBytes());
+        Log.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
+      }
+    }
+    return (String)localObject1 + ".tmp";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.d.a
  * JD-Core Version:    0.7.0.1
  */

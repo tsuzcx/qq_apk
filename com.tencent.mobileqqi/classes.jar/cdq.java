@@ -1,46 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileObserver;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Collection;
 
 public class cdq
-  implements TroopFileObserver
+  implements View.OnClickListener
 {
   public cdq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt > 0)
-    {
-      View localView = this.a.jdField_a_of_type_ArrayOfAndroidViewView[2];
-      this.a.a(localView, paramInt);
-    }
-  }
-  
-  public void a(TroopFileInfo paramTroopFileInfo) {}
-  
-  public void a(Collection paramCollection, boolean paramBoolean) {}
-  
-  public void b(TroopFileInfo paramTroopFileInfo) {}
-  
-  public void c(TroopFileInfo paramTroopFileInfo)
-  {
-    if ((paramTroopFileInfo != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 7;
-      localMessage.obj = paramTroopFileInfo;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-    }
-    if (ChatSettingForTroop.a(this.a).a() > 0)
-    {
-      paramTroopFileInfo = this.a.jdField_a_of_type_ArrayOfAndroidViewView[2];
-      this.a.a(paramTroopFileInfo, ChatSettingForTroop.a(this.a).a());
-    }
+    ChatSettingForTroop.a(this.a);
   }
 }
 

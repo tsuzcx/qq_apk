@@ -4,12 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig.SimpleLaunchParam;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.FileMaterialInfo;
+import java.util.List;
 
 public class LaunchParam
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParam> CREATOR = new LaunchParam.1();
+  public static final int FLAG_NEED_KILL = 2;
+  public static final int FLAG_NEED_NEW_PROCESS = 1;
+  public static final int FLAG_NONE = 0;
   public static final int LAUNCH_SCENE_1017 = 1017;
   public static final int LAUNCH_SCENE_1025 = 1025;
   public static final int LAUNCH_SCENE_1034 = 1034;
@@ -19,10 +25,14 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_1095 = 1095;
   public static final int LAUNCH_SCENE_1096 = 1096;
   public static final int LAUNCH_SCENE_1103 = 1103;
+  public static final int LAUNCH_SCENE_ACCOUNT_PANEL = 4013;
   public static final int LAUNCH_SCENE_AD_BANNER_POPUP = 2094;
   public static final int LAUNCH_SCENE_AD_SCHEME = 2054;
+  public static final int LAUNCH_SCENE_AIO_INTIMATE_DRAW = 2064;
   public static final int LAUNCH_SCENE_AIO_PANEL = 2053;
+  public static final int LAUNCH_SCENE_AIO_SHORTCUT_PANEL = 4008;
   public static final int LAUNCH_SCENE_AIO_SWEET_GREY_TIPS = 2080;
+  public static final int LAUNCH_SCENE_AIO_TITLE = 4014;
   public static final int LAUNCH_SCENE_APP_STORE_GAME_LIST = 2002;
   public static final int LAUNCH_SCENE_APP_STORE_TOP_LIST = 2001;
   public static final int LAUNCH_SCENE_ARK_BATTLE = 2072;
@@ -30,39 +40,62 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_ARK_SEARCH_OPEN_CARD = 2075;
   public static final int LAUNCH_SCENE_ARK_UNKNOWN = 2059;
   public static final int LAUNCH_SCENE_BIGINSERTPAGE = 4005;
+  public static final int LAUNCH_SCENE_C2C_AIO_SHORTCUT_PANEL = 4016;
   public static final int LAUNCH_SCENE_COLOR_NOTE = 1131;
   public static final int LAUNCH_SCENE_CONTACTS = 2006;
   public static final int LAUNCH_SCENE_DESKTOP_BOUTIQUE_RECOMMEND = 3008;
+  public static final int LAUNCH_SCENE_DESKTOP_CHESS_ROOM = 3038;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_FEEDS = 3016;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_QUICK_MATCH = 3013;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_RECOMMEND = 3012;
   public static final int LAUNCH_SCENE_DESKTOP_EVERYONE_PLAYING = 3007;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PK = 3009;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PLAYING_MORE = 3004;
+  public static final int LAUNCH_SCENE_DESKTOP_HEALTH_CODE = 3039;
+  public static final int LAUNCH_SCENE_DESKTOP_HOT = 3023;
   public static final int LAUNCH_SCENE_DESKTOP_MORE = 3005;
+  public static final int LAUNCH_SCENE_DESKTOP_MOST_COMMONLY_USED = 3027;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP = 3003;
+  public static final int LAUNCH_SCENE_DESKTOP_MY_APP_RED_DOT = 3021;
+  public static final int LAUNCH_SCENE_DESKTOP_PLAY = 3024;
   public static final int LAUNCH_SCENE_DESKTOP_POPULARITY_LIST = 3010;
   public static final int LAUNCH_SCENE_DESKTOP_RECENT_APP = 3001;
+  public static final int LAUNCH_SCENE_DESKTOP_RECENT_APP_RED_DOT = 3020;
   public static final int LAUNCH_SCENE_DESKTOP_RECOMMEND_APP = 3002;
+  public static final int LAUNCH_SCENE_DESKTOP_RESULT = 3026;
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_APP = 2077;
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_BAR = 3006;
   public static final int LAUNCH_SCENE_DESKTOP_SHORTCUT = 1023;
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
+  public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
   public static final int LAUNCH_SCENE_FRD_LIKE_MINI_APP_VIDEO = 2089;
   public static final int LAUNCH_SCENE_INTIMATE_RELATIONSHIP_PLAY_TOGETHER = 2064;
   public static final int LAUNCH_SCENE_INTIMATE_SWEET_KEY = 2087;
+  public static final int LAUNCH_SCENE_KD_SMALL_GAME_AD_CARD = 2086;
+  public static final int LAUNCH_SCENE_KD_SMALL_GAME_CARD = 2103;
   public static final int LAUNCH_SCENE_KUOLIE_RECOMM = 2065;
+  public static final int LAUNCH_SCENE_KUO_LIE_AIO_SHORTCUT_PANEL = 4017;
   public static final int LAUNCH_SCENE_LEBA = 2007;
   public static final int LAUNCH_SCENE_LEBA_MINIAPP = 2050;
+  public static final int LAUNCH_SCENE_LEFT_PANEL = 4007;
+  public static final int LAUNCH_SCENE_LIEF_ACHIVEMENT = 2062;
   public static final int LAUNCH_SCENE_MAIN_ENTRY = 1001;
   public static final int LAUNCH_SCENE_MINIAPP_ECSHOP = 4003;
+  public static final int LAUNCH_SCENE_MINI_APP_MESSAGE_PUBLIC_ACCOUNT = 4012;
+  public static final int LAUNCH_SCENE_MINI_APP_ONCE_SUBSCRIBE = 2105;
+  public static final int LAUNCH_SCENE_MINI_APP_PHONE_NUMBER_SEARCH = 2111;
   public static final int LAUNCH_SCENE_MINI_APP_PROFILE = 1024;
+  public static final int LAUNCH_SCENE_MINI_APP_ROBOT = 2112;
   public static final int LAUNCH_SCENE_MINI_APP_SUBSCRIBE = 2085;
+  public static final int LAUNCH_SCENE_MINI_APP_SYSTEM_SUBSCRIBE = 2114;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_LONG_PRESS = 1048;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
+  public static final int LAUNCH_SCENE_MINI_GAME_PUBLIC_ACCOUNT = 4011;
+  public static final int LAUNCH_SCENE_MODIFY_FRIEND_INTERACTIVE_STORAGE = 2218;
+  public static final int LAUNCH_SCENE_MODIFY_PWD = 2201;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
   public static final int LAUNCH_SCENE_PENDANTHOLDER = 4004;
@@ -70,6 +103,10 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MEMNU = 1035;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MESSAGE_CARD = 1074;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_TEMPLATE_MESSAGE = 1043;
+  public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_WEISHI = 4006;
+  public static final int LAUNCH_SCENE_QQ_FAV = 1010;
+  public static final int LAUNCH_SCENE_QQ_NOTICE = 2102;
+  public static final int LAUNCH_SCENE_QQ_SAFE_CENTER = 4010;
   public static final int LAUNCH_SCENE_QQ_WALLET = 1019;
   public static final int LAUNCH_SCENE_QQ_X_MAN = 2093;
   public static final int LAUNCH_SCENE_QR_CODE_FROM_ALBUM = 1013;
@@ -79,21 +116,30 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE = 2009;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_NINE = 2092;
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
+  public static final int LAUNCH_SCENE_QZONE_PUBLISH_MOOD = 2100;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
   public static final int LAUNCH_SCENE_QZONE_SWEET_WIDGET = 2088;
+  public static final int LAUNCH_SCENE_RECENT_COLOR_NOTE = 1132;
   public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2098;
+  public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME_2119 = 2119;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
+  public static final int LAUNCH_SCENE_SEARCH_ENTRY = 4001;
+  public static final int LAUNCH_SCENE_SEARCH_GUESS_YOU_LIKE = 3029;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
+  public static final int LAUNCH_SCENE_SEARCH_LIVE = 3017;
+  public static final int LAUNCH_SCENE_SEARCH_RECOMMEND_FOR_YOU = 3028;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_FIND = 1006;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_TOP = 1005;
   public static final int LAUNCH_SCENE_SETTING_ME = 2066;
   public static final int LAUNCH_SCENE_SHARE_C2C = 1007;
   public static final int LAUNCH_SCENE_SHARE_GROUP = 1008;
+  public static final int LAUNCH_SCENE_SHARE_MESSAGE_TO_FRIEND = 2217;
   public static final int LAUNCH_SCENE_SHARE_OPEN_SDK = 1036;
   public static final int LAUNCH_SCENE_SHARE_QZONE = 2003;
   public static final int LAUNCH_SCENE_SHARE_TICKET = 1044;
   public static final int LAUNCH_SCENE_SPLASH = 2004;
+  public static final int LAUNCH_SCENE_STATUS_SETTING_UI = 4015;
   public static final int LAUNCH_SCENE_STORY_CAMERA_PLAY_SHOW = 2083;
   public static final int LAUNCH_SCENE_TEMPLATE_MESSAGE = 1014;
   public static final int LAUNCH_SCENE_UNKNOWN = 9999;
@@ -110,6 +156,8 @@ public class LaunchParam
   public String extendData;
   public String extraKey;
   public String fakeUrl;
+  public List<FileMaterialInfo> fileMaterialInfoList;
+  public int forceReload = 0;
   public int fromBackToMiniApp;
   public String fromEnvVersion;
   public String fromMiniAppId;
@@ -117,9 +165,11 @@ public class LaunchParam
   public long launchClickTimeMillis;
   public String miniAppId;
   public String navigateExtData;
+  public String privateExtraData;
   public String reportData;
   public int scene = 9999;
   public String shareTicket;
+  public boolean skipHotReload = false;
   public int tempState = 0;
   public long timestamp;
   
@@ -130,26 +180,7 @@ public class LaunchParam
   
   private static String standardEntryPath(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "";
-    int i = paramString.indexOf("?");
-    Object localObject = paramString;
-    if (i != -1)
-    {
-      localObject = paramString.substring(0, i);
-      str = paramString.substring(i + 1, paramString.length());
-    }
-    paramString = (String)localObject;
-    if (!((String)localObject).toLowerCase().endsWith(".html")) {
-      paramString = (String)localObject + ".html";
-    }
-    localObject = new StringBuilder().append(paramString);
-    if (TextUtils.isEmpty(str)) {}
-    for (paramString = "";; paramString = "?" + str) {
-      return paramString;
-    }
+    return SimpleMiniAppConfig.SimpleLaunchParam.standardEntryPath(paramString);
   }
   
   public int describeContents()
@@ -159,51 +190,61 @@ public class LaunchParam
   
   public String getScheme()
   {
-    Object localObject2 = "mqqapi://microapp/open?mini_appid=" + this.miniAppId;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(this.entryPath)) {
-      localObject1 = (String)localObject2 + "&entryPath=" + this.entryPath;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("mqqapi://microapp/open?mini_appid=");
+    ((StringBuilder)localObject1).append(this.miniAppId);
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject2;
+    if (!TextUtils.isEmpty(this.entryPath))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("&entryPath=");
+      ((StringBuilder)localObject1).append(this.entryPath);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     localObject2 = localObject1;
-    if (!TextUtils.isEmpty(this.extendData)) {
-      localObject2 = (String)localObject1 + "&extraData=" + this.extendData;
+    if (!TextUtils.isEmpty(this.extendData))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&extraData=");
+      ((StringBuilder)localObject2).append(this.extendData);
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
     return localObject2;
   }
   
   public boolean isValid()
   {
-    boolean bool1 = true;
+    int i = this.scene;
     boolean bool2 = false;
-    switch (this.scene)
+    boolean bool1 = false;
+    if (i != 1037)
     {
-    default: 
-      if (TextUtils.isEmpty(this.miniAppId))
+      if (i != 2003)
       {
-        bool1 = bool2;
-        if (TextUtils.isEmpty(this.fakeUrl)) {
-          break;
+        switch (i)
+        {
+        default: 
+          if ((!TextUtils.isEmpty(this.miniAppId)) || (!TextUtils.isEmpty(this.fakeUrl))) {
+            bool1 = true;
+          }
+          return bool1;
         }
+        return TextUtils.isEmpty(this.fakeUrl) ^ true;
       }
-      else
-      {
+      return TextUtils.isEmpty(this.fakeUrl) ^ true;
+    }
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(this.miniAppId))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.fromMiniAppId)) {
         bool1 = true;
       }
-      break;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-        } while (!TextUtils.isEmpty(this.fakeUrl));
-        return false;
-      } while ((!TextUtils.isEmpty(this.miniAppId)) && (!TextUtils.isEmpty(this.fromMiniAppId)));
-      return false;
-    } while (!TextUtils.isEmpty(this.fakeUrl));
-    return false;
+    return bool1;
   }
   
   public void standardize()
@@ -213,33 +254,58 @@ public class LaunchParam
   
   public String toString()
   {
-    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", extendData='" + this.extendData + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + ", fakeUrl='" + this.fakeUrl + '\'' + ", timestamp=" + this.timestamp + ", launchClickTimeMillis=" + this.launchClickTimeMillis + ", tempState=" + this.tempState + ", shareTicket=" + this.shareTicket + ", envVersion=" + this.envVersion + ", reportData=" + this.reportData + ", fromBackToMiniApp=" + this.fromBackToMiniApp + ", fromEnvVersion=" + this.fromEnvVersion + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LaunchParam{scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(", miniAppId='");
+    localStringBuilder.append(this.miniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraKey='");
+    localStringBuilder.append(this.extraKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryPath='");
+    localStringBuilder.append(this.entryPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extendData='");
+    localStringBuilder.append(this.extendData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", navigateExtData='");
+    localStringBuilder.append(this.navigateExtData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fromMiniAppId='");
+    localStringBuilder.append(this.fromMiniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fakeUrl='");
+    localStringBuilder.append(this.fakeUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timestamp=");
+    localStringBuilder.append(this.timestamp);
+    localStringBuilder.append(", launchClickTimeMillis=");
+    localStringBuilder.append(this.launchClickTimeMillis);
+    localStringBuilder.append(", tempState=");
+    localStringBuilder.append(this.tempState);
+    localStringBuilder.append(", shareTicket=");
+    localStringBuilder.append(this.shareTicket);
+    localStringBuilder.append(", envVersion=");
+    localStringBuilder.append(this.envVersion);
+    localStringBuilder.append(", reportData=");
+    localStringBuilder.append(this.reportData);
+    localStringBuilder.append(", fromBackToMiniApp=");
+    localStringBuilder.append(this.fromBackToMiniApp);
+    localStringBuilder.append(", fromEnvVersion=");
+    localStringBuilder.append(this.fromEnvVersion);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.scene);
-    paramParcel.writeString(this.miniAppId);
-    paramParcel.writeString(this.extraKey);
-    paramParcel.writeString(this.entryPath);
-    paramParcel.writeString(this.navigateExtData);
-    paramParcel.writeString(this.fromMiniAppId);
-    paramParcel.writeLong(this.launchClickTimeMillis);
-    paramParcel.writeInt(this.tempState);
-    paramParcel.writeLong(this.timestamp);
-    paramParcel.writeString(this.shareTicket);
-    paramParcel.writeString(this.envVersion);
-    paramParcel.writeString(this.reportData);
-    paramParcel.writeString(this.extendData);
-    paramParcel.writeParcelable(this.entryModel, paramInt);
-    paramParcel.writeInt(this.fromBackToMiniApp);
-    paramParcel.writeString(this.fromEnvVersion);
-    paramParcel.writeParcelable(this.fromMiniAppInfo, paramInt);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

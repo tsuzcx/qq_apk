@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UserFacadeElementDetail
   extends JceStruct
@@ -11,12 +12,12 @@ public final class UserFacadeElementDetail
   static ElementInfo cache_background = new ElementInfo();
   static ArrayList<ElementInfo> cache_icons = new ArrayList();
   static ArrayList<ElementInfo> cache_other;
-  public ElementInfo background;
-  public ArrayList<ElementInfo> icons;
-  public int lottieId;
-  public ArrayList<ElementInfo> other;
-  public int templateId;
-  public int themeId;
+  public ElementInfo background = null;
+  public ArrayList<ElementInfo> icons = null;
+  public int lottieId = 0;
+  public ArrayList<ElementInfo> other = null;
+  public int templateId = 0;
+  public int themeId = 0;
   
   static
   {
@@ -54,20 +55,23 @@ public final class UserFacadeElementDetail
     paramJceOutputStream.write(this.templateId, 0);
     paramJceOutputStream.write(this.themeId, 1);
     paramJceOutputStream.write(this.lottieId, 2);
-    if (this.background != null) {
-      paramJceOutputStream.write(this.background, 3);
+    Object localObject = this.background;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.icons != null) {
-      paramJceOutputStream.write(this.icons, 4);
+    localObject = this.icons;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.other != null) {
-      paramJceOutputStream.write(this.other, 5);
+    localObject = this.other;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FACADE_DIY.UserFacadeElementDetail
  * JD-Core Version:    0.7.0.1
  */

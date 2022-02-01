@@ -1,0 +1,18 @@
+package com.tencent.qqmail.activity.vipcontacts;
+
+class VIPContactsIndexFragment$3$2
+  implements Runnable
+{
+  VIPContactsIndexFragment$3$2(VIPContactsIndexFragment.3 param3) {}
+  
+  public void run()
+  {
+    this.this$1.this$0.render(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qqmail.activity.vipcontacts.VIPContactsIndexFragment.3.2
+ * JD-Core Version:    0.7.0.1
+ */

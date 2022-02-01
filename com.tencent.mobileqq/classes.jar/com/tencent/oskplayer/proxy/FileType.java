@@ -44,7 +44,11 @@ public class FileType
       paramString = new String(Base16.decode(paramString), "UTF-8");
       return paramString;
     }
-    catch (UnsupportedEncodingException paramString) {}
+    catch (UnsupportedEncodingException paramString)
+    {
+      label16:
+      break label16;
+    }
     return UNKNOWN.toString();
   }
   
@@ -55,7 +59,11 @@ public class FileType
       paramString = Base16.encode(paramString.getBytes("UTF-8"));
       return paramString;
     }
-    catch (UnsupportedEncodingException paramString) {}
+    catch (UnsupportedEncodingException paramString)
+    {
+      label12:
+      break label12;
+    }
     return Base16.encode(UNKNOWN_UTF8_BYTES);
   }
   
@@ -85,28 +93,36 @@ public class FileType
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    boolean bool = true;
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (FileType)paramObject;
-      if (this.plainType == null) {
-        break;
+      String str = this.plainType;
+      if (str != null) {
+        if (str.equals(paramObject.plainType)) {
+          break label65;
+        }
+      } else if (paramObject.plainType == null) {
+        return true;
       }
-    } while (this.plainType.equals(paramObject.plainType));
-    while (paramObject.plainType != null) {
-      return false;
+      bool = false;
+      label65:
+      return bool;
     }
-    return true;
+    return false;
   }
   
   public int hashCode()
   {
-    if (this.plainType != null) {
-      return this.plainType.hashCode();
+    String str = this.plainType;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
@@ -118,7 +134,7 @@ public class FileType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.FileType
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.kiss.widget.textview;
 
-import android.annotation.TargetApi;
 import android.graphics.Typeface;
 import android.os.Build.VERSION;
 import android.text.InputFilter.LengthFilter;
@@ -8,64 +7,70 @@ import android.text.Layout.Alignment;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.StaticLayout;
+import android.text.StaticLayout.Builder;
 import android.text.TextDirectionHeuristic;
 import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.text.style.MetricAffectingSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static e eLy;
-  private static final SpannableString eLz;
-  CharSequence eLA = null;
-  CharSequence eLB = null;
-  int eLC = 0;
-  int eLD = 0;
-  TextPaint eLE = null;
-  Layout.Alignment eLF = Layout.Alignment.ALIGN_NORMAL;
-  TextUtils.TruncateAt eLG = null;
-  int eLH = -1;
-  TextDirectionHeuristic eLI = null;
-  float eLJ = 0.0F;
-  float eLK = 1.0F;
-  boolean eLL = false;
-  InputFilter.LengthFilter eLM = null;
-  int gravity = 51;
+  private static e mGI;
+  private static final SpannableString mGJ;
+  TextPaint bbb = null;
+  Layout.Alignment bbd = Layout.Alignment.ALIGN_NORMAL;
+  TextUtils.TruncateAt bbe = null;
+  int bbf = -1;
+  int bbl = -1;
+  public int fl = 51;
+  CharSequence mGK = null;
+  CharSequence mGL = null;
+  int mGM = 0;
+  int mGN = 0;
+  TextDirectionHeuristic mGO = null;
+  float mGP = 0.0F;
+  float mGQ = 1.1F;
+  boolean mGR = false;
+  InputFilter.LengthFilter mGS = null;
   int maxLength = -1;
   int maxLines = 2147483647;
   int width = 0;
   
   static
   {
-    AppMethodBeat.i(105713);
-    eLy = new e();
-    eLz = new SpannableString("");
-    AppMethodBeat.o(105713);
+    AppMethodBeat.i(141031);
+    mGI = new e();
+    mGJ = new SpannableString("");
+    AppMethodBeat.o(141031);
   }
   
-  private StaticLayout a(CharSequence paramCharSequence, boolean paramBoolean, int paramInt)
+  private StaticLayout a(CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(105712);
-    if (paramBoolean) {
-      paramCharSequence = new StaticLayout(paramCharSequence, this.eLC, this.eLD, this.eLE, this.width, this.eLF, this.eLK, this.eLJ, this.eLL, this.eLG, paramInt);
+    AppMethodBeat.i(233786);
+    if (paramInt2 >= 0) {
+      paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, this.mGM, this.mGN, this.bbb, this.width).setAlignment(this.bbd).setTextDirection(TextDirectionHeuristics.FIRSTSTRONG_LTR).setLineSpacing(this.mGP, this.mGQ).setIncludePad(this.mGR).setEllipsize(this.bbe).setEllipsizedWidth(paramInt1).setBreakStrategy(paramInt2).setMaxLines(2147483647).build();
     }
     for (;;)
     {
-      AppMethodBeat.o(105712);
+      AppMethodBeat.o(233786);
       return paramCharSequence;
-      if (Build.VERSION.SDK_INT >= 18)
+      if (paramBoolean)
       {
-        if (this.eLI == null) {
-          this.eLI = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+        paramCharSequence = new StaticLayout(paramCharSequence, this.mGM, this.mGN, this.bbb, this.width, this.bbd, this.mGQ, this.mGP, this.mGR, this.bbe, paramInt1);
+      }
+      else if (Build.VERSION.SDK_INT >= 18)
+      {
+        if (this.mGO == null) {
+          this.mGO = TextDirectionHeuristics.FIRSTSTRONG_LTR;
         }
-        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.eLC, this.eLD, this.eLE, this.width, this.eLF, this.eLI, this.eLK, this.eLJ, this.eLL, this.eLG, paramInt, this.maxLines);
+        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.b(paramCharSequence, this.mGM, this.mGN, this.bbb, this.width, this.bbd, this.mGO, this.mGQ, this.mGP, this.mGR, this.bbe, paramInt1, this.maxLines);
       }
       else
       {
-        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.eLC, this.eLD, this.eLE, this.width, this.eLF, this.eLK, this.eLJ, this.eLL, this.eLG, paramInt, this.maxLines);
+        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.mGM, this.mGN, this.bbb, this.width, this.bbd, this.mGQ, this.mGP, this.mGR, this.bbe, paramInt1, this.maxLines);
       }
     }
   }
@@ -73,192 +78,234 @@ public final class d
   public static d a(CharSequence paramCharSequence, int paramInt, com.tencent.mm.kiss.widget.textview.a.a parama)
   {
     boolean bool = false;
-    AppMethodBeat.i(105709);
-    Object localObject1 = paramCharSequence;
+    AppMethodBeat.i(141027);
+    Object localObject = paramCharSequence;
     if (paramCharSequence == null) {
-      localObject1 = "";
+      localObject = "";
     }
-    int i = ((CharSequence)localObject1).length();
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = "";
+    int i = ((CharSequence)localObject).length();
+    paramCharSequence = (CharSequence)localObject;
+    if (localObject == null) {
+      paramCharSequence = "";
     }
-    localObject1 = eLy.SL();
-    paramCharSequence = (CharSequence)localObject1;
-    if (localObject1 == null) {
-      paramCharSequence = new d();
-    }
-    paramCharSequence.eLA = ((CharSequence)localObject2).toString();
-    paramCharSequence.eLB = ((CharSequence)localObject2);
-    paramCharSequence.eLC = 0;
-    paramCharSequence.eLD = i;
-    paramCharSequence.width = paramInt;
-    paramCharSequence.eLE = new TextPaint();
-    if (parama.maxLines != -1)
-    {
-      paramInt = parama.maxLines;
-      if (paramInt >= 0) {
-        paramCharSequence.maxLines = paramInt;
-      }
+    localObject = bbJ();
+    ((d)localObject).mGK = paramCharSequence.toString();
+    ((d)localObject).mGL = paramCharSequence;
+    ((d)localObject).mGM = 0;
+    ((d)localObject).mGN = i;
+    ((d)localObject).width = paramInt;
+    ((d)localObject).bbb = new TextPaint();
+    if (parama.maxLines != -1) {
+      ((d)localObject).sF(parama.maxLines);
     }
     if (parama.maxLength != -1)
     {
       paramInt = parama.maxLength;
       if (paramInt >= 0)
       {
-        paramCharSequence.maxLength = paramInt;
-        paramCharSequence.eLM = new InputFilter.LengthFilter(paramCharSequence.maxLength);
+        ((d)localObject).maxLength = paramInt;
+        ((d)localObject).mGS = new InputFilter.LengthFilter(((d)localObject).maxLength);
       }
     }
-    localObject1 = parama.eLF;
-    if (localObject1 != null) {
-      paramCharSequence.eLF = ((Layout.Alignment)localObject1);
+    paramCharSequence = parama.bbd;
+    if (paramCharSequence != null) {
+      ((d)localObject).bbd = paramCharSequence;
     }
-    if (parama.eLG != null)
-    {
-      localObject1 = parama.eLG;
-      if (localObject1 != null) {
-        paramCharSequence.eLG = ((TextUtils.TruncateAt)localObject1);
-      }
+    if (parama.bbe != null) {
+      ((d)localObject).a(parama.bbe);
     }
-    paramCharSequence.gravity = parama.gravity;
-    if (parama.eMi != -1)
+    ((d)localObject).fl = parama.fl;
+    if (parama.mHo != -1)
     {
-      paramInt = parama.eMi;
+      paramInt = parama.mHo;
       if (paramInt >= 0) {
-        paramCharSequence.eLH = paramInt;
+        ((d)localObject).bbf = paramInt;
       }
     }
-    if (parama.eLI != null)
+    if (parama.mGO != null)
     {
-      localObject1 = parama.eLI;
+      paramCharSequence = parama.mGO;
       if (Build.VERSION.SDK_INT >= 18) {
-        paramCharSequence.eLI = ((TextDirectionHeuristic)localObject1);
+        ((d)localObject).mGO = paramCharSequence;
       }
     }
-    float f1 = parama.eLJ;
-    float f2 = parama.eLK;
-    paramCharSequence.eLJ = f1;
-    paramCharSequence.eLK = f2;
-    paramCharSequence.eLL = parama.eLL;
-    if (parama.bKi != null)
+    float f1 = parama.mGP;
+    float f2 = parama.mGQ;
+    ((d)localObject).mGP = f1;
+    ((d)localObject).mGQ = f2;
+    ((d)localObject).mGR = parama.mGR;
+    if (parama.bbO != null)
     {
       if (parama.fontStyle == -1) {
-        break label543;
+        break label540;
       }
-      localObject1 = parama.bKi;
+      paramCharSequence = parama.bbO;
       i = parama.fontStyle;
       if (i <= 0) {
-        break label517;
+        break label512;
       }
-      if (localObject1 != null) {
-        break label495;
+      if (paramCharSequence != null) {
+        break label492;
       }
-      localObject1 = Typeface.defaultFromStyle(i);
-      paramCharSequence.c((Typeface)localObject1);
-      if (localObject1 == null) {
-        break label507;
+      paramCharSequence = Typeface.defaultFromStyle(i);
+      ((d)localObject).g(paramCharSequence);
+      if (paramCharSequence == null) {
+        break label502;
       }
-      paramInt = ((Typeface)localObject1).getStyle();
-      label358:
+      paramInt = paramCharSequence.getStyle();
+      label330:
       paramInt = (paramInt ^ 0xFFFFFFFF) & i;
-      localObject1 = paramCharSequence.eLE;
+      paramCharSequence = ((d)localObject).bbb;
       if ((paramInt & 0x1) != 0) {
         bool = true;
       }
-      ((TextPaint)localObject1).setFakeBoldText(bool);
-      localObject1 = paramCharSequence.eLE;
+      paramCharSequence.setFakeBoldText(bool);
+      paramCharSequence = ((d)localObject).bbb;
       if ((paramInt & 0x2) == 0) {
-        break label512;
+        break label507;
       }
       f1 = -0.25F;
-      label402:
-      ((TextPaint)localObject1).setTextSkewX(f1);
+      label373:
+      paramCharSequence.setTextSkewX(f1);
     }
     for (;;)
     {
       if (parama.textSize != -1.0F)
       {
         f1 = parama.textSize;
-        paramCharSequence.eLE.setTextSize(f1);
+        ((d)localObject).bbb.setTextSize(f1);
       }
       if (parama.textColor != -1)
       {
         paramInt = parama.textColor;
-        paramCharSequence.eLE.setColor(paramInt);
+        ((d)localObject).bbb.setColor(paramInt);
       }
       if (parama.linkColor != -1)
       {
         paramInt = parama.linkColor;
-        paramCharSequence.eLE.linkColor = paramInt;
+        ((d)localObject).bbb.linkColor = paramInt;
       }
-      if (parama.eLQ != null) {
-        paramCharSequence.eLE = parama.eLQ;
+      if (parama.dso != null) {
+        ((d)localObject).bbb = parama.dso;
       }
-      AppMethodBeat.o(105709);
-      return paramCharSequence;
-      label495:
-      localObject1 = Typeface.create((Typeface)localObject1, i);
+      if (parama.bbl >= 0)
+      {
+        paramInt = parama.bbl;
+        if (paramInt >= 0) {
+          ((d)localObject).bbl = paramInt;
+        }
+      }
+      AppMethodBeat.o(141027);
+      return localObject;
+      label492:
+      paramCharSequence = Typeface.create(paramCharSequence, i);
       break;
-      label507:
+      label502:
       paramInt = 0;
-      break label358;
-      label512:
+      break label330;
+      label507:
       f1 = 0.0F;
-      break label402;
-      label517:
-      paramCharSequence.eLE.setFakeBoldText(false);
-      paramCharSequence.eLE.setTextSkewX(0.0F);
-      paramCharSequence.c((Typeface)localObject1);
+      break label373;
+      label512:
+      ((d)localObject).bbb.setFakeBoldText(false);
+      ((d)localObject).bbb.setTextSkewX(0.0F);
+      ((d)localObject).g(paramCharSequence);
       continue;
-      label543:
-      paramCharSequence.c(parama.bKi);
+      label540:
+      ((d)localObject).g(parama.bbO);
     }
   }
   
-  private d c(Typeface paramTypeface)
+  public static d a(CharSequence paramCharSequence, TextPaint paramTextPaint, int paramInt)
   {
-    AppMethodBeat.i(105710);
-    this.eLE.setTypeface(paramTypeface);
-    AppMethodBeat.o(105710);
+    AppMethodBeat.i(233766);
+    d locald = bbJ();
+    locald.mGL = paramCharSequence;
+    locald.mGM = 0;
+    locald.mGN = paramCharSequence.length();
+    locald.bbb = paramTextPaint;
+    locald.width = paramInt;
+    AppMethodBeat.o(233766);
+    return locald;
+  }
+  
+  private static d bbJ()
+  {
+    AppMethodBeat.i(233771);
+    d locald2 = mGI.bbL();
+    d locald1 = locald2;
+    if (locald2 == null) {
+      locald1 = new d();
+    }
+    AppMethodBeat.o(233771);
+    return locald1;
+  }
+  
+  private d g(Typeface paramTypeface)
+  {
+    AppMethodBeat.i(141028);
+    this.bbb.setTypeface(paramTypeface);
+    AppMethodBeat.o(141028);
     return this;
   }
   
-  @TargetApi(18)
-  public final f SK()
+  public final d M(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(105711);
+    AppMethodBeat.i(233797);
+    if (paramCharSequence == null)
+    {
+      AppMethodBeat.o(233797);
+      return this;
+    }
+    this.mGL = paramCharSequence;
+    this.mGM = 0;
+    this.mGN = paramCharSequence.length();
+    AppMethodBeat.o(233797);
+    return this;
+  }
+  
+  public final d a(TextUtils.TruncateAt paramTruncateAt)
+  {
+    if (paramTruncateAt != null) {
+      this.bbe = paramTruncateAt;
+    }
+    return this;
+  }
+  
+  public final f bbK()
+  {
+    AppMethodBeat.i(141029);
     int j;
     Object localObject1;
-    if ((this.eLG == null) || (this.eLH <= 0))
+    if ((this.bbe == null) || (this.bbf <= 0))
     {
       j = this.width;
-      if ((this.eLG == null) && (this.maxLines == 1)) {
-        this.eLG = TextUtils.TruncateAt.END;
+      if ((this.bbe == null) && (this.maxLines == 1)) {
+        this.bbe = TextUtils.TruncateAt.END;
       }
-      if ((this.maxLength > 0) && (this.eLM != null))
+      if ((this.maxLength > 0) && (this.mGS != null))
       {
-        localObject1 = this.eLM.filter(this.eLB, 0, this.eLB.length(), eLz, 0, 0);
+        localObject1 = this.mGS.filter(this.mGL, 0, this.mGL.length(), mGJ, 0, 0);
         if (localObject1 != null)
         {
-          this.eLB = ((CharSequence)localObject1);
-          if (this.eLD > this.eLB.length()) {
-            this.eLD = this.eLB.length();
+          this.mGL = ((CharSequence)localObject1);
+          if (this.mGN > this.mGL.length()) {
+            this.mGN = this.mGL.length();
           }
         }
       }
       if (h.DEBUG) {
-        ab.i("StaticTextView.StaticLayoutBuilder", "StaticLayoutWrapper build " + this.eLB + " " + this.width);
+        Log.i("StaticTextView.StaticLayoutBuilder", "StaticLayoutWrapper build " + this.mGL + " " + this.width);
       }
-      if (this.eLF == Layout.Alignment.ALIGN_NORMAL) {}
-      switch (this.gravity & 0x800007)
+      if (this.bbd == Layout.Alignment.ALIGN_NORMAL) {}
+      switch (this.fl & 0x800007)
       {
       default: 
-        this.eLF = Layout.Alignment.ALIGN_NORMAL;
-        label247:
-        this.eLE.setAntiAlias(true);
+        this.bbd = Layout.Alignment.ALIGN_NORMAL;
+        label251:
+        this.bbb.setAntiAlias(true);
         localObject1 = null;
-        if (((this.eLI != null) && ((!com.tencent.mm.compatible.util.d.fv(18)) || (this.eLI != TextDirectionHeuristics.FIRSTSTRONG_LTR))) || ((this.maxLines != 2147483647) && (this.maxLines != -1))) {
+        if (((this.mGO != null) && ((!com.tencent.mm.compatible.util.d.rb(18)) || (this.mGO != TextDirectionHeuristics.FIRSTSTRONG_LTR))) || ((this.maxLines != 2147483647) && (this.maxLines != -1))) {
           break;
         }
       }
@@ -267,7 +314,7 @@ public final class d
     {
       try
       {
-        localObject3 = a(this.eLB, bool, j);
+        localObject3 = a(this.mGL, bool, j, this.bbl);
         localObject1 = localObject3;
       }
       catch (Exception localException2)
@@ -275,7 +322,7 @@ public final class d
         for (;;)
         {
           Object localObject3;
-          ab.i("StaticTextView.StaticLayoutBuilder", "build static layout error: %s", new Object[] { localException2.getMessage() });
+          Log.i("StaticTextView.StaticLayoutBuilder", "build static layout error: %s", new Object[] { localException2.getMessage() });
           int i = 0;
           if (i < 3)
           {
@@ -283,7 +330,7 @@ public final class d
             Object localObject4 = localObject1;
             try
             {
-              SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.eLB);
+              SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.mGL);
               k = i;
               localObject4 = localObject1;
               MetricAffectingSpan[] arrayOfMetricAffectingSpan = (MetricAffectingSpan[])localSpannableStringBuilder.getSpans(0, localSpannableStringBuilder.length(), MetricAffectingSpan.class);
@@ -303,20 +350,20 @@ public final class d
               {
                 k = i;
                 localObject4 = localObject1;
-                this.eLB = localSpannableStringBuilder;
+                this.mGL = localSpannableStringBuilder;
                 k = i;
                 localObject4 = localObject1;
-                localObject1 = a(this.eLB, bool, j);
+                localObject1 = a(this.mGL, bool, j, this.bbl);
                 k = i;
                 localObject4 = localObject1;
-                ab.i("StaticTextView.StaticLayoutBuilder", "fix from build static layout, fixCount: %s", new Object[] { Integer.valueOf(i) });
+                Log.i("StaticTextView.StaticLayoutBuilder", "fix from build static layout, fixCount: %s", new Object[] { Integer.valueOf(i) });
                 break;
                 i = 100;
               }
             }
             catch (Exception localException1)
             {
-              ab.i("StaticTextView.StaticLayoutBuilder", "fix, build static layout error: %s, fixCount: %s", new Object[] { localException1.getMessage(), Integer.valueOf(k) });
+              Log.i("StaticTextView.StaticLayoutBuilder", "fix, build static layout error: %s, fixCount: %s", new Object[] { localException1.getMessage(), Integer.valueOf(k) });
               i = k;
               Object localObject2 = localObject4;
             }
@@ -326,35 +373,44 @@ public final class d
       localObject3 = localObject1;
       if (localObject1 == null)
       {
-        this.eLB = this.eLB.toString();
-        localObject3 = a(this.eLB, bool, j);
+        this.mGL = this.mGL.toString();
+        localObject3 = a(this.mGL, bool, j, this.bbl);
       }
       localObject1 = new f((StaticLayout)localObject3);
-      ((f)localObject1).eLP = this.eLA;
-      ((f)localObject1).text = this.eLB;
+      ((f)localObject1).mGV = this.mGK;
+      ((f)localObject1).bba = this.mGL;
       ((f)localObject1).maxLength = this.maxLength;
       ((f)localObject1).maxLines = this.maxLines;
-      ((f)localObject1).eLF = this.eLF;
-      ((f)localObject1).eLG = this.eLG;
-      ((f)localObject1).eLQ = this.eLE;
-      ((f)localObject1).gravity = this.gravity;
-      eLy.a(this);
-      AppMethodBeat.o(105711);
+      ((f)localObject1).bbd = this.bbd;
+      ((f)localObject1).bbe = this.bbe;
+      ((f)localObject1).dso = this.bbb;
+      ((f)localObject1).fl = this.fl;
+      ((f)localObject1).bbl = this.bbl;
+      mGI.a(this);
+      AppMethodBeat.o(141029);
       return localObject1;
-      j = this.eLH;
+      j = this.bbf;
       break;
-      this.eLF = Layout.Alignment.ALIGN_NORMAL;
-      break label247;
-      this.eLF = Layout.Alignment.ALIGN_OPPOSITE;
-      break label247;
-      this.eLF = Layout.Alignment.ALIGN_CENTER;
-      break label247;
+      this.bbd = Layout.Alignment.ALIGN_NORMAL;
+      break label251;
+      this.bbd = Layout.Alignment.ALIGN_OPPOSITE;
+      break label251;
+      this.bbd = Layout.Alignment.ALIGN_CENTER;
+      break label251;
     }
+  }
+  
+  public final d sF(int paramInt)
+  {
+    if (paramInt >= 0) {
+      this.maxLines = paramInt;
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.d
  * JD-Core Version:    0.7.0.1
  */

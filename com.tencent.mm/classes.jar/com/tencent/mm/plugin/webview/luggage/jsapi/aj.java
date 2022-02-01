@@ -1,81 +1,96 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.g.a.so;
-import com.tencent.mm.g.a.so.a;
-import com.tencent.mm.g.a.so.b;
-import com.tencent.mm.plugin.webview.luggage.c.b;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class aj
-  extends bi<e>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(153123);
-    ab.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
-    paramString = b.BJ(paramString);
-    if (paramString == null)
+    int j = 1;
+    AppMethodBeat.i(78578);
+    Log.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
+    JSONObject localJSONObject = c.ZL(paramString);
+    if (localJSONObject == null)
     {
-      parama.c("fail_invalid_data", null);
-      AppMethodBeat.o(153123);
+      Log.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
+      parama.j("fail_null_data", null);
+      AppMethodBeat.o(78578);
       return;
     }
-    String str1 = paramString.optString("currentUrl");
-    String str2 = paramString.optString("preVerifyAppId");
-    so localso = new so();
-    localso.cIQ.context = paramContext;
-    localso.cIQ.userName = paramString.optString("userName");
-    localso.cIQ.appId = paramString.optString("appId");
-    localso.cIQ.cIS = paramString.optString("relativeURL");
-    localso.cIQ.bDc = paramString.optInt("appVersion", 0);
-    localso.cIQ.scene = paramString.optInt("scene", 1018);
-    localso.cIQ.cmF = paramString.optString("sceneNote");
-    if (bo.isNullOrNil(localso.cIQ.cmF)) {
-      localso.cIQ.cmF = q.encode(bo.nullAsNil(str1));
+    String str2 = localJSONObject.optString("targetAppId");
+    String str3 = localJSONObject.optString("currentUrl");
+    String str1 = localJSONObject.optString("preVerifyAppId");
+    paramString = str1;
+    if (Util.isNullOrNil(str1)) {
+      paramString = localJSONObject.optString("referrerAppId");
     }
-    localso.cIQ.cIU = paramString.optString("downloadURL");
-    localso.cIQ.cIT = paramString.optInt("openType", 0);
-    localso.cIQ.cIV = paramString.optString("checkSumMd5");
-    localso.cIQ.cIX = false;
-    localso.cIQ.cIY.fpV = paramString.optString("extJsonInfo");
-    localso.cIQ.cJd = str2;
-    if (bo.isNullOrNil(localso.cIQ.cJd)) {
-      localso.cIQ.cJd = paramString.optString("sourceAppId");
-    }
-    localso.cIQ.cJe = str1;
-    localso.cIQ.cJf = paramString.optString("privateExtraData");
-    com.tencent.mm.sdk.b.a.ymk.l(localso);
-    if (localso.cIR.cJh)
+    if (Util.isNullOrNil(str2))
     {
-      parama.c(null, null);
-      AppMethodBeat.o(153123);
+      parama.j("invalid_targetAppId", null);
+      AppMethodBeat.o(78578);
       return;
     }
-    parama.c(bo.nullAsNil(localso.cIR.cJi), null);
-    AppMethodBeat.o(153123);
+    if (Util.isNullOrNil(paramString))
+    {
+      parama.j("invalid_referrerAppId", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    str1 = Util.nullAsNil(localJSONObject.optString("envVersion"));
+    int i = -1;
+    switch (str1.hashCode())
+    {
+    default: 
+      switch (i)
+      {
+      }
+      break;
+    }
+    for (j = 0;; j = 2)
+    {
+      str1 = localJSONObject.optString("path");
+      ((t)h.ax(t.class)).b(paramContext, str3, paramString, str2, j, str1, 0);
+      parama.j(null, null);
+      AppMethodBeat.o(78578);
+      return;
+      if (!str1.equals("develop")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!str1.equals("trial")) {
+        break;
+      }
+      i = 1;
+      break;
+    }
   }
   
-  public final void b(com.tencent.luggage.d.a<e>.a parama) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int bjL()
+  public final int dgI()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "openWeApp";
+    return "launchMiniProgram";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.aj
  * JD-Core Version:    0.7.0.1
  */

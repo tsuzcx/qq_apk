@@ -1,158 +1,127 @@
 package com.tencent.mm.plugin.mall.a;
 
-import android.database.Cursor;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
-import com.tencent.mm.plugin.wallet_core.model.mall.c;
-import com.tencent.mm.plugin.wallet_core.model.mall.d;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.plugin.wallet_core.model.y;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.utils.n;
+import com.tencent.mm.protocal.protobuf.ddc;
+import com.tencent.mm.protocal.protobuf.eky;
+import com.tencent.mm.protocal.protobuf.fll;
+import com.tencent.mm.protocal.protobuf.flm;
+import com.tencent.mm.protocal.protobuf.fmp;
+import com.tencent.mm.protocal.protobuf.gfc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.model.ab;
+import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.wallet_core.ui.i.b;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public class j
-  implements f, at
+public final class j
 {
-  private ak mHandler;
-  ConcurrentHashMap<Integer, y> oxW;
-  private boolean oxX;
-  private bz.a oxY;
-  private bz.a oxZ;
+  private static boolean KJn;
+  private static List<a> KJo;
   
-  public j()
+  static
   {
-    AppMethodBeat.i(43120);
-    this.oxW = new ConcurrentHashMap();
-    this.mHandler = new ak(Looper.getMainLooper());
-    this.oxX = false;
-    this.oxY = new j.1(this);
-    this.oxZ = new j.2(this);
-    AppMethodBeat.o(43120);
+    AppMethodBeat.i(66011);
+    KJn = false;
+    KJo = new ArrayList();
+    AppMethodBeat.o(66011);
   }
   
-  public static j bOs()
+  public static void a(a parama)
   {
-    AppMethodBeat.i(43121);
-    j localj = (j)q.S(j.class);
-    AppMethodBeat.o(43121);
-    return localj;
+    AppMethodBeat.i(66008);
+    Log.d("MicroMsg.QueryWeChatWalletManager", "remove ret: %s", new Object[] { Boolean.valueOf(KJo.remove(parama)) });
+    AppMethodBeat.o(66008);
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public static void a(a parama, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return null;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(43124);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("mallactivity", this.oxY, true);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("paymsg", this.oxZ, true);
-    c.cUX().Kc();
-    d.cVb().Kc();
-    if ((r.ZB()) && (r.Zw())) {
-      com.tencent.mm.plugin.wallet_core.model.mall.b.IB(com.tencent.mm.plugin.wallet_core.model.mall.b.umm);
-    }
-    for (;;)
+    AppMethodBeat.i(66007);
+    Log.i("MicroMsg.QueryWeChatWalletManager", "do query wechat wallet: %s", new Object[] { Boolean.valueOf(paramBoolean1) });
+    if (!com.tencent.mm.kernel.h.baz())
     {
-      g.RM();
-      g.RK().eHt.a(302, this);
-      AppMethodBeat.o(43124);
+      Log.w("MicroMsg.QueryWeChatWalletManager", "account not ready");
+      AppMethodBeat.o(66007);
       return;
-      com.tencent.mm.plugin.wallet_core.model.mall.b.IB(com.tencent.mm.plugin.wallet_core.model.mall.b.uml);
     }
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(43125);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("mallactivity", this.oxY, true);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("paymsg", this.oxZ, true);
-    g.RM();
-    g.RK().eHt.b(302, this);
-    AppMethodBeat.o(43125);
-  }
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(43126);
-    if ((paramInt2 == 0) && (paramInt1 == 0) && (!this.oxX) && (r.ZB()))
+    eky localeky = new eky();
+    String str = (String)((com.tencent.mm.plugin.wxpay.a.a)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(at.a.acYk, null);
+    if (!Util.isNullOrNil(str)) {}
+    try
     {
-      this.oxX = true;
-      com.tencent.mm.plugin.wallet_core.model.mall.b.IB(com.tencent.mm.plugin.wallet_core.model.mall.b.umm);
-    }
-    AppMethodBeat.o(43126);
-  }
-  
-  public void onSdcardMount(boolean paramBoolean) {}
-  
-  public final y yJ(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    AppMethodBeat.i(43122);
-    Object localObject3;
-    if (!this.oxW.contains(Integer.valueOf(paramInt)))
-    {
-      localObject3 = t.cTS();
-      String str = "select * from WalletFunciontList where wallet_region = ".concat(String.valueOf(paramInt));
-      localObject3 = ((com.tencent.mm.plugin.wallet_core.d.e)localObject3).db.a(str, null, 2);
-      ab.i("MicroMsg.WalletFunctionListStg", "getWalletFunciontListInfo ".concat(String.valueOf(str)));
-      if (localObject3 != null) {
-        break label126;
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        this.oxW.put(Integer.valueOf(paramInt), localObject1);
-      }
-      localObject1 = (y)this.oxW.get(Integer.valueOf(paramInt));
-      if (localObject1 != null) {
-        break;
-      }
-      localObject1 = new y();
-      AppMethodBeat.o(43122);
-      return localObject1;
-      label126:
-      localObject1 = localObject2;
-      if (((Cursor)localObject3).moveToNext())
+      localeky.parseFrom(str.getBytes(org.apache.commons.b.a.ISO_8859_1));
+      if (paramBoolean2)
       {
-        localObject1 = new y();
-        ((y)localObject1).convertFrom((Cursor)localObject3);
+        if (parama != null) {
+          parama.b(localeky);
+        }
+        i = 1;
+        if (((paramBoolean2) && (i == 0)) || (paramBoolean1))
+        {
+          if ((parama != null) && (!KJo.contains(parama))) {
+            KJo.add(parama);
+          }
+          if (!KJn) {
+            break label209;
+          }
+          Log.i("MicroMsg.QueryWeChatWalletManager", "is quering");
+          if ((i == 0) && (!paramBoolean1)) {
+            com.tencent.mm.plugin.report.service.h.OAn.kJ(997, 1);
+          }
+        }
+        AppMethodBeat.o(66007);
+        return;
       }
-      ((Cursor)localObject3).close();
     }
-    AppMethodBeat.o(43122);
-    return localObject1;
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.QueryWeChatWalletManager", localIOException, "", new Object[0]);
+        continue;
+        label209:
+        KJn = true;
+        i.a("wallet_balance_version", new i.b()
+        {
+          public final void fS(Object paramAnonymousObject)
+          {
+            AppMethodBeat.i(66003);
+            Log.i("MicroMsg.QueryWeChatWalletManager", "get from push done: %s", new Object[] { paramAnonymousObject });
+            long l = 0L;
+            if ((paramAnonymousObject instanceof Long)) {
+              l = ((Long)paramAnonymousObject).longValue();
+            }
+            j.a(l, this.KJp, j.this);
+            AppMethodBeat.o(66003);
+          }
+        });
+        continue;
+        int i = 0;
+      }
+    }
   }
   
-  public final ArrayList<MallFunction> yK(int paramInt)
+  public static abstract interface a
   {
-    AppMethodBeat.i(43123);
-    ArrayList localArrayList = yJ(paramInt).oxK;
-    AppMethodBeat.o(43123);
-    return localArrayList;
+    public abstract void b(eky parameky);
+    
+    public abstract void c(eky parameky);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,113 +1,195 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ListView;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ip;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainer;
-import com.tencent.mm.plugin.appbrand.widget.desktop.dynamicbackground.DynamicBackgroundGLSurfaceView;
-import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
-import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.MenuAppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d.a;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.platform.window.WxaWindowLayoutParams;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  implements com.tencent.mm.plugin.appbrand.widget.recentview.d
+  extends e
 {
-  public final com.tencent.mm.plugin.appbrand.widget.header.c a(Context paramContext, ListView paramListView, HeaderContainer paramHeaderContainer)
+  private Integer uvY;
+  private Integer uvZ;
+  private Float uwa;
+  private Integer uwb;
+  
+  public c(Context paramContext)
   {
-    AppMethodBeat.i(133650);
-    paramContext = new com.tencent.mm.plugin.appbrand.widget.desktop.a(paramContext, paramListView, paramHeaderContainer);
-    AppMethodBeat.o(133650);
-    return paramContext;
+    super(paramContext);
+    AppMethodBeat.i(323929);
+    Log.i("Luggage.WXA.AppBrandCenterInsideRuntimeFrameLayout", "AppBrandCenterInsideRuntimeFrameLayout: create");
+    AppMethodBeat.o(323929);
   }
   
-  public final AppBrandRecentView a(Context paramContext, d.b paramb, d.a parama)
+  private void dP(View paramView)
   {
-    AppMethodBeat.i(133646);
-    if (paramb == d.b.jvL)
+    AppMethodBeat.i(323931);
+    if (this.uwa == null)
     {
-      paramb = new ConversationAppBrandRecentView(paramContext);
-      paramb.setSceneFactory(parama);
-      parama = new FrameLayout.LayoutParams(-1, (int)paramContext.getResources().getDimension(2131428059));
-      paramb.setPadding(0, (int)paramContext.getResources().getDimension(2131428061), 0, 0);
-      paramb.setLayoutParams(parama);
-      AppMethodBeat.o(133646);
-      return paramb;
+      AppMethodBeat.o(323931);
+      return;
     }
-    if (paramb == d.b.jvK)
+    if (Math.abs(paramView.getScaleX() - this.uwa.floatValue()) >= 0.01F)
     {
-      paramb = new MenuAppBrandRecentView(paramContext);
-      paramb.setSceneFactory(parama);
-      parama = new FrameLayout.LayoutParams(-1, (int)paramContext.getResources().getDimension(2131428059));
-      paramb.setPadding(0, (int)paramContext.getResources().getDimension(2131428061), 0, 0);
-      paramb.setLayoutParams(parama);
-      AppMethodBeat.o(133646);
-      return paramb;
+      paramView.setScaleX(this.uwa.floatValue());
+      paramView.setScaleY(this.uwa.floatValue());
     }
-    AppMethodBeat.o(133646);
-    return null;
+    AppMethodBeat.o(323931);
   }
   
-  public final void aOA()
+  public final void addView(View paramView)
   {
-    AppMethodBeat.i(133651);
-    com.tencent.mm.plugin.appbrand.widget.desktop.b.aPi();
-    AppMethodBeat.o(133651);
+    AppMethodBeat.i(323934);
+    super.addView(paramView);
+    dP(paramView);
+    AppMethodBeat.o(323934);
   }
   
-  public final boolean aOB()
+  public final void addView(View paramView, int paramInt)
   {
-    AppMethodBeat.i(133652);
-    boolean bool = com.tencent.mm.plugin.appbrand.widget.desktop.b.aPg();
-    AppMethodBeat.o(133652);
-    return bool;
+    AppMethodBeat.i(323937);
+    super.addView(paramView, paramInt);
+    dP(paramView);
+    AppMethodBeat.o(323937);
   }
   
-  public final void aOy()
+  public final void addView(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(133647);
-    ab.i("MicroMsg.AppBrandRecentViewService", "[hideAppBrandRecentView] delay:%s type:%s", new Object[] { Integer.valueOf(300), Integer.valueOf(8) });
-    if (((h)g.RI().Rj()).SD())
+    AppMethodBeat.i(323942);
+    super.addView(paramView, paramInt1, paramInt2);
+    dP(paramView);
+    AppMethodBeat.o(323942);
+  }
+  
+  public final void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(323949);
+    super.addView(paramView, paramInt, paramLayoutParams);
+    dP(paramView);
+    AppMethodBeat.o(323949);
+  }
+  
+  public final void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(323946);
+    super.addView(paramView, paramLayoutParams);
+    dP(paramView);
+    AppMethodBeat.o(323946);
+  }
+  
+  protected final void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(323956);
+    int i = paramInt1;
+    if (this.uvZ != null)
     {
-      ip localip = new ip();
-      localip.cxY.delay = 300;
-      localip.cxY.type = 8;
-      com.tencent.mm.sdk.b.a.ymk.l(localip);
+      i = paramInt1;
+      if (this.uvY != null)
+      {
+        if (this.uvY.intValue() > 0) {
+          paramInt1 = View.MeasureSpec.makeMeasureSpec(this.uvY.intValue(), 1073741824);
+        }
+        i = paramInt1;
+        if (this.uvZ.intValue() > 0) {
+          paramInt3 = View.MeasureSpec.makeMeasureSpec(this.uvZ.intValue(), 1073741824);
+        }
+      }
     }
-    AppMethodBeat.o(133647);
+    for (;;)
+    {
+      super.measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      AppMethodBeat.o(323956);
+      return;
+      paramInt1 = i;
+    }
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.recentview.b aOz()
+  protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(133648);
-    com.tencent.mm.plugin.appbrand.widget.recentview.b localb = new com.tencent.mm.plugin.appbrand.widget.recentview.b();
-    AppMethodBeat.o(133648);
-    return localb;
+    AppMethodBeat.i(323963);
+    int i = 0;
+    int j = 0;
+    int n = j;
+    int m = i;
+    if (this.uvY != null)
+    {
+      n = j;
+      m = i;
+      if (this.uvZ != null)
+      {
+        m = (paramInt3 - paramInt1) / 2 - this.uvY.intValue() / 2;
+        n = (paramInt4 - paramInt2) / 2 - this.uvZ.intValue() / 2;
+      }
+    }
+    int i1;
+    int i2;
+    label97:
+    View localView;
+    int k;
+    if (this.uwb == null)
+    {
+      i1 = 17;
+      int i3 = getChildCount();
+      i2 = 0;
+      if (i2 >= i3) {
+        break label287;
+      }
+      localView = getChildAt(i2);
+      if (localView.getVisibility() != 8)
+      {
+        k = localView.getMeasuredWidth();
+        paramInt3 = localView.getMeasuredHeight();
+        switch (i1)
+        {
+        default: 
+          k = paramInt1 + k;
+          paramInt3 = paramInt2 + paramInt3;
+          Log.w("Luggage.WXA.AppBrandCenterInsideRuntimeFrameLayout", "onLayout: unhandled gravity[%d], good luck~", new Object[] { Integer.valueOf(i1) });
+          i = paramInt2;
+          j = paramInt1;
+        }
+      }
+    }
+    for (;;)
+    {
+      localView.layout(j, i, k, paramInt3);
+      i2 += 1;
+      break label97;
+      i1 = this.uwb.intValue();
+      break;
+      j = paramInt1 + m;
+      i = paramInt2 + n;
+      k = j + k;
+      paramInt3 = i + paramInt3;
+      continue;
+      k = paramInt1 + k;
+      i = paramInt4 - paramInt3;
+      paramInt3 = paramInt4;
+      j = paramInt1;
+    }
+    label287:
+    AppMethodBeat.o(323963);
   }
   
-  public final HeaderContainer dj(Context paramContext)
+  public final void setWxaLayoutParams(WxaWindowLayoutParams paramWxaWindowLayoutParams)
   {
-    AppMethodBeat.i(133649);
-    paramContext = new AppBrandDesktopContainer(paramContext);
-    AppMethodBeat.o(133649);
-    return paramContext;
-  }
-  
-  public final View dk(Context paramContext)
-  {
-    AppMethodBeat.i(133653);
-    paramContext = new DynamicBackgroundGLSurfaceView(paramContext, (byte)0);
-    AppMethodBeat.o(133653);
-    return paramContext;
+    AppMethodBeat.i(323953);
+    this.uvY = Integer.valueOf(paramWxaWindowLayoutParams.width);
+    this.uvZ = Integer.valueOf(paramWxaWindowLayoutParams.height);
+    this.uwa = Float.valueOf(paramWxaWindowLayoutParams.scale);
+    this.uwb = Integer.valueOf(paramWxaWindowLayoutParams.gravity);
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      dP(getChildAt(i));
+      i += 1;
+    }
+    requestLayout();
+    AppMethodBeat.o(323953);
   }
 }
 

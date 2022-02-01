@@ -3,7 +3,7 @@ package cooperation.qwallet.plugin;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import bdjz;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 class FakeUrl$3
@@ -13,7 +13,10 @@ class FakeUrl$3
   
   public void onClick(View paramView)
   {
-    QLog.i("FakeUrl", 2, "span click url = " + this.val$url);
+    paramView = new StringBuilder();
+    paramView.append("span click url = ");
+    paramView.append(this.val$url);
+    QLog.i("FakeUrl", 2, paramView.toString());
     if ((FakeUrl.access$000(this.this$0)) && (FakeUrl.access$100(this.this$0) != null) && (FakeUrl.access$100(this.this$0).isShowing())) {
       FakeUrl.access$100(this.this$0).dismiss();
     }
@@ -31,7 +34,7 @@ class FakeUrl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.FakeUrl.3
  * JD-Core Version:    0.7.0.1
  */

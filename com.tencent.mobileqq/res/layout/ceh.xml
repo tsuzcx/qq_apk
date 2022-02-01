@@ -2,15 +2,15 @@
 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/a4f" android:background="#9f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel android:id="@id/m8z" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:orientation="vertical" android:id="@id/b_7" android:background="@drawable/hj1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <com.tencent.mobileqq.widget.SlideBottomPanel android:id="@id/m8z" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:orientation="vertical" android:id="@id/b_7" android:background="@drawable/gtb" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <com.tencent.widget.XListView android:layout_gravity="bottom" android:id="@id/eap" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="58.0dip" android:divider="@null" />
             <RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip">
                 <ImageView android:id="@id/jv2" android:background="@drawable/hzk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
                 <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="4.0dip" android:text="@string/tfr" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
             </RelativeLayout>
         </FrameLayout>
-    </dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel>
+    </com.tencent.mobileqq.widget.SlideBottomPanel>
     <FrameLayout android:layout_gravity="bottom" android:id="@id/m7z" android:background="@drawable/skin_setting_strip_bg_unpressed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="75.0dip">
         <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/imy" android:background="@drawable/hj2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="15.0dip" android:text="@string/k4" android:layout_centerInParent="true" />
     </FrameLayout>

@@ -72,13 +72,13 @@ public final class h
     //   86: invokestatic 70	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   89: istore 4
     //   91: iload 4
-    //   93: ifne +300 -> 393
+    //   93: ifne +304 -> 397
     //   96: aload_1
     //   97: ldc 72
     //   99: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   102: astore_1
     //   103: aload_1
-    //   104: ifnull +310 -> 414
+    //   104: ifnull +319 -> 423
     //   107: aload_1
     //   108: arraylength
     //   109: ifne +4 -> 113
@@ -88,353 +88,335 @@ public final class h
     //   115: aaload
     //   116: ldc 80
     //   118: invokevirtual 84	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   121: ifeq +293 -> 414
-    //   124: aload_1
-    //   125: arraylength
-    //   126: istore_2
-    //   127: iload_2
-    //   128: bipush 7
-    //   130: if_icmplt +284 -> 414
-    //   133: aload_0
-    //   134: aload_1
-    //   135: iconst_1
-    //   136: aaload
-    //   137: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   140: putfield 37	com/tencent/hlyyb/downloader/e/h:a	J
-    //   143: aload_0
-    //   144: aload_1
-    //   145: iconst_2
-    //   146: aaload
-    //   147: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   150: putfield 41	com/tencent/hlyyb/downloader/e/h:b	J
-    //   153: aload_0
-    //   154: aload_1
-    //   155: iconst_3
-    //   156: aaload
-    //   157: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   160: putfield 43	com/tencent/hlyyb/downloader/e/h:c	J
-    //   163: aload_0
-    //   164: aload_1
-    //   165: iconst_4
-    //   166: aaload
-    //   167: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   170: putfield 45	com/tencent/hlyyb/downloader/e/h:d	J
-    //   173: aload_1
-    //   174: iconst_5
-    //   175: aaload
-    //   176: ldc 92
-    //   178: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   181: astore 5
-    //   183: aload 5
-    //   185: arraylength
-    //   186: istore_3
-    //   187: iconst_0
-    //   188: istore_2
-    //   189: iload_2
-    //   190: iload_3
-    //   191: if_icmpge +71 -> 262
-    //   194: new 94	com/tencent/hlyyb/downloader/e/b/a
-    //   197: dup
-    //   198: aload_0
-    //   199: aload 5
-    //   201: iload_2
-    //   202: aaload
-    //   203: invokespecial 97	com/tencent/hlyyb/downloader/e/b/a:<init>	(Lcom/tencent/hlyyb/downloader/e/h;Ljava/lang/String;)V
-    //   206: astore 6
-    //   208: aload 6
-    //   210: getfield 99	com/tencent/hlyyb/downloader/e/b/a:a	Z
-    //   213: ifeq +39 -> 252
-    //   216: aload_0
-    //   217: getfield 58	com/tencent/hlyyb/downloader/e/h:i	Ljava/util/List;
-    //   220: aload 6
-    //   222: invokeinterface 104 2 0
-    //   227: pop
-    //   228: iload_2
-    //   229: iconst_1
-    //   230: iadd
-    //   231: istore_2
-    //   232: goto -43 -> 189
-    //   235: astore_1
-    //   236: aload_1
-    //   237: invokevirtual 107	java/lang/NumberFormatException:printStackTrace	()V
-    //   240: return
-    //   241: astore_1
-    //   242: aload_0
-    //   243: iconst_0
-    //   244: putfield 53	com/tencent/hlyyb/downloader/e/h:e	Z
+    //   121: ifne +4 -> 125
+    //   124: return
+    //   125: aload_1
+    //   126: arraylength
+    //   127: istore_2
+    //   128: iload_2
+    //   129: bipush 7
+    //   131: if_icmpge +4 -> 135
+    //   134: return
+    //   135: aload_0
+    //   136: aload_1
+    //   137: iconst_1
+    //   138: aaload
+    //   139: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   142: putfield 37	com/tencent/hlyyb/downloader/e/h:a	J
+    //   145: aload_0
+    //   146: aload_1
+    //   147: iconst_2
+    //   148: aaload
+    //   149: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   152: putfield 41	com/tencent/hlyyb/downloader/e/h:b	J
+    //   155: aload_0
+    //   156: aload_1
+    //   157: iconst_3
+    //   158: aaload
+    //   159: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   162: putfield 43	com/tencent/hlyyb/downloader/e/h:c	J
+    //   165: aload_0
+    //   166: aload_1
+    //   167: iconst_4
+    //   168: aaload
+    //   169: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   172: putfield 45	com/tencent/hlyyb/downloader/e/h:d	J
+    //   175: aload_1
+    //   176: iconst_5
+    //   177: aaload
+    //   178: ldc 92
+    //   180: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   183: astore 5
+    //   185: aload 5
+    //   187: arraylength
+    //   188: istore_3
+    //   189: iconst_0
+    //   190: istore_2
+    //   191: iload_2
+    //   192: iload_3
+    //   193: if_icmpge +54 -> 247
+    //   196: new 94	com/tencent/hlyyb/downloader/e/b/a
+    //   199: dup
+    //   200: aload_0
+    //   201: aload 5
+    //   203: iload_2
+    //   204: aaload
+    //   205: invokespecial 97	com/tencent/hlyyb/downloader/e/b/a:<init>	(Lcom/tencent/hlyyb/downloader/e/h;Ljava/lang/String;)V
+    //   208: astore 6
+    //   210: aload 6
+    //   212: getfield 99	com/tencent/hlyyb/downloader/e/b/a:a	Z
+    //   215: ifeq +22 -> 237
+    //   218: aload_0
+    //   219: getfield 58	com/tencent/hlyyb/downloader/e/h:i	Ljava/util/List;
+    //   222: aload 6
+    //   224: invokeinterface 104 2 0
+    //   229: pop
+    //   230: iload_2
+    //   231: iconst_1
+    //   232: iadd
+    //   233: istore_2
+    //   234: goto -43 -> 191
+    //   237: aload_0
+    //   238: getfield 58	com/tencent/hlyyb/downloader/e/h:i	Ljava/util/List;
+    //   241: invokeinterface 107 1 0
+    //   246: return
     //   247: aload_1
-    //   248: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   251: return
-    //   252: aload_0
-    //   253: getfield 58	com/tencent/hlyyb/downloader/e/h:i	Ljava/util/List;
-    //   256: invokeinterface 111 1 0
-    //   261: return
-    //   262: aload_1
-    //   263: arraylength
-    //   264: bipush 9
-    //   266: if_icmplt +19 -> 285
-    //   269: aload_0
+    //   248: arraylength
+    //   249: bipush 9
+    //   251: if_icmplt +19 -> 270
+    //   254: aload_0
+    //   255: aload_1
+    //   256: bipush 7
+    //   258: aaload
+    //   259: invokevirtual 109	com/tencent/hlyyb/downloader/e/h:a	(Ljava/lang/String;)V
+    //   262: aload_0
+    //   263: aload_1
+    //   264: bipush 8
+    //   266: aaload
+    //   267: invokevirtual 111	com/tencent/hlyyb/downloader/e/h:b	(Ljava/lang/String;)V
     //   270: aload_1
-    //   271: bipush 7
-    //   273: aaload
-    //   274: invokevirtual 113	com/tencent/hlyyb/downloader/e/h:a	(Ljava/lang/String;)V
-    //   277: aload_0
-    //   278: aload_1
-    //   279: bipush 8
-    //   281: aaload
-    //   282: invokevirtual 115	com/tencent/hlyyb/downloader/e/h:b	(Ljava/lang/String;)V
-    //   285: aload_1
-    //   286: arraylength
-    //   287: bipush 11
-    //   289: if_icmplt +104 -> 393
-    //   292: aload_1
-    //   293: bipush 9
-    //   295: aaload
-    //   296: ldc 92
-    //   298: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   301: astore 5
-    //   303: aload 5
-    //   305: arraylength
-    //   306: istore_3
-    //   307: iconst_0
-    //   308: istore_2
-    //   309: iload_2
-    //   310: iload_3
-    //   311: if_icmpge +52 -> 363
-    //   314: new 94	com/tencent/hlyyb/downloader/e/b/a
-    //   317: dup
-    //   318: aload_0
-    //   319: aload 5
-    //   321: iload_2
-    //   322: aaload
-    //   323: invokespecial 97	com/tencent/hlyyb/downloader/e/b/a:<init>	(Lcom/tencent/hlyyb/downloader/e/h;Ljava/lang/String;)V
-    //   326: astore 6
-    //   328: aload 6
-    //   330: getfield 99	com/tencent/hlyyb/downloader/e/b/a:a	Z
-    //   333: ifeq +18 -> 351
+    //   271: arraylength
+    //   272: bipush 11
+    //   274: if_icmplt +123 -> 397
+    //   277: aload_1
+    //   278: bipush 9
+    //   280: aaload
+    //   281: ldc 92
+    //   283: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   286: astore 5
+    //   288: aload 5
+    //   290: arraylength
+    //   291: istore_3
+    //   292: iconst_0
+    //   293: istore_2
+    //   294: iload_2
+    //   295: iload_3
+    //   296: if_icmpge +56 -> 352
+    //   299: new 94	com/tencent/hlyyb/downloader/e/b/a
+    //   302: dup
+    //   303: aload_0
+    //   304: aload 5
+    //   306: iload_2
+    //   307: aaload
+    //   308: invokespecial 97	com/tencent/hlyyb/downloader/e/b/a:<init>	(Lcom/tencent/hlyyb/downloader/e/h;Ljava/lang/String;)V
+    //   311: astore 6
+    //   313: aload 6
+    //   315: getfield 99	com/tencent/hlyyb/downloader/e/b/a:a	Z
+    //   318: ifeq +18 -> 336
+    //   321: aload_0
+    //   322: getfield 60	com/tencent/hlyyb/downloader/e/h:j	Ljava/util/List;
+    //   325: aload 6
+    //   327: invokeinterface 104 2 0
+    //   332: pop
+    //   333: goto +12 -> 345
     //   336: aload_0
     //   337: getfield 60	com/tencent/hlyyb/downloader/e/h:j	Ljava/util/List;
-    //   340: aload 6
-    //   342: invokeinterface 104 2 0
-    //   347: pop
-    //   348: goto +67 -> 415
-    //   351: aload_0
-    //   352: getfield 60	com/tencent/hlyyb/downloader/e/h:j	Ljava/util/List;
-    //   355: invokeinterface 111 1 0
-    //   360: goto +55 -> 415
+    //   340: invokeinterface 107 1 0
+    //   345: iload_2
+    //   346: iconst_1
+    //   347: iadd
+    //   348: istore_2
+    //   349: goto -55 -> 294
+    //   352: aload_1
+    //   353: bipush 10
+    //   355: aaload
+    //   356: ldc 92
+    //   358: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   361: astore_1
+    //   362: aload_0
     //   363: aload_1
-    //   364: bipush 10
-    //   366: aaload
-    //   367: ldc 92
-    //   369: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   372: astore_1
-    //   373: aload_0
-    //   374: aload_1
-    //   375: iconst_0
-    //   376: aaload
-    //   377: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   380: putfield 62	com/tencent/hlyyb/downloader/e/h:k	J
-    //   383: aload_0
-    //   384: aload_1
-    //   385: iconst_1
-    //   386: aaload
-    //   387: invokestatic 121	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   390: putfield 64	com/tencent/hlyyb/downloader/e/h:l	I
-    //   393: aload_0
-    //   394: aload_0
-    //   395: invokespecial 125	com/tencent/hlyyb/downloader/e/h:m	()J
-    //   398: putfield 39	com/tencent/hlyyb/downloader/e/h:f	J
-    //   401: aload_0
-    //   402: iconst_1
-    //   403: putfield 53	com/tencent/hlyyb/downloader/e/h:e	Z
-    //   406: return
-    //   407: astore_1
-    //   408: aload_1
-    //   409: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
-    //   412: return
-    //   413: astore_1
-    //   414: return
-    //   415: iload_2
-    //   416: iconst_1
-    //   417: iadd
-    //   418: istore_2
-    //   419: goto -110 -> 309
+    //   364: iconst_0
+    //   365: aaload
+    //   366: invokestatic 90	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   369: putfield 62	com/tencent/hlyyb/downloader/e/h:k	J
+    //   372: aload_0
+    //   373: aload_1
+    //   374: iconst_1
+    //   375: aaload
+    //   376: invokestatic 117	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   379: putfield 64	com/tencent/hlyyb/downloader/e/h:l	I
+    //   382: goto +15 -> 397
+    //   385: astore_1
+    //   386: aload_1
+    //   387: invokevirtual 120	java/lang/Throwable:printStackTrace	()V
+    //   390: return
+    //   391: astore_1
+    //   392: aload_1
+    //   393: invokevirtual 121	java/lang/NumberFormatException:printStackTrace	()V
+    //   396: return
+    //   397: aload_0
+    //   398: aload_0
+    //   399: invokespecial 125	com/tencent/hlyyb/downloader/e/h:m	()J
+    //   402: putfield 39	com/tencent/hlyyb/downloader/e/h:f	J
+    //   405: aload_0
+    //   406: iconst_1
+    //   407: putfield 53	com/tencent/hlyyb/downloader/e/h:e	Z
+    //   410: return
+    //   411: astore_1
+    //   412: aload_0
+    //   413: iconst_0
+    //   414: putfield 53	com/tencent/hlyyb/downloader/e/h:e	Z
+    //   417: aload_1
+    //   418: invokevirtual 126	java/lang/Exception:printStackTrace	()V
+    //   421: return
+    //   422: astore_1
+    //   423: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	422	0	this	h
-    //   0	422	1	paramString	String
-    //   126	293	2	m	int
-    //   186	126	3	n	int
+    //   0	424	0	this	h
+    //   0	424	1	paramString	String
+    //   127	222	2	m	int
+    //   188	109	3	n	int
     //   89	3	4	bool	boolean
-    //   181	139	5	arrayOfString	String[]
-    //   206	135	6	locala	com.tencent.hlyyb.downloader.e.b.a
+    //   183	122	5	arrayOfString	String[]
+    //   208	118	6	locala	com.tencent.hlyyb.downloader.e.b.a
     // Exception table:
     //   from	to	target	type
-    //   133	173	235	java/lang/NumberFormatException
-    //   85	91	241	java/lang/Exception
-    //   107	112	241	java/lang/Exception
-    //   113	127	241	java/lang/Exception
-    //   133	173	241	java/lang/Exception
-    //   173	187	241	java/lang/Exception
-    //   194	228	241	java/lang/Exception
-    //   236	240	241	java/lang/Exception
-    //   252	261	241	java/lang/Exception
-    //   262	285	241	java/lang/Exception
-    //   285	307	241	java/lang/Exception
-    //   314	348	241	java/lang/Exception
-    //   351	360	241	java/lang/Exception
-    //   363	393	241	java/lang/Exception
-    //   393	406	241	java/lang/Exception
-    //   408	412	241	java/lang/Exception
-    //   363	393	407	java/lang/Throwable
-    //   96	103	413	java/lang/Exception
+    //   352	382	385	java/lang/Throwable
+    //   135	175	391	java/lang/NumberFormatException
+    //   85	91	411	java/lang/Exception
+    //   107	112	411	java/lang/Exception
+    //   113	124	411	java/lang/Exception
+    //   125	128	411	java/lang/Exception
+    //   135	175	411	java/lang/Exception
+    //   175	189	411	java/lang/Exception
+    //   196	230	411	java/lang/Exception
+    //   237	246	411	java/lang/Exception
+    //   247	270	411	java/lang/Exception
+    //   270	292	411	java/lang/Exception
+    //   299	333	411	java/lang/Exception
+    //   336	345	411	java/lang/Exception
+    //   352	382	411	java/lang/Exception
+    //   386	390	411	java/lang/Exception
+    //   392	396	411	java/lang/Exception
+    //   397	410	411	java/lang/Exception
+    //   96	103	422	java/lang/Exception
   }
   
   private com.tencent.hlyyb.downloader.e.b.a j()
   {
-    for (;;)
+    Object localObject3;
+    long l1;
+    long l3;
+    long l2;
+    label330:
+    label346:
+    Object localObject2;
+    label352:
+    label358:
+    synchronized (this.i)
     {
-      Object localObject5;
-      synchronized (this.i)
+      com.tencent.hlyyb.downloader.e.b.a locala;
+      if (this.i.size() == 0)
       {
-        if (this.i.size() == 0)
+        locala = new com.tencent.hlyyb.downloader.e.b.a(this, 0L, 0L, 0L, -1L);
+      }
+      else
+      {
+        localObject3 = (com.tencent.hlyyb.downloader.e.b.a)this.i.get(0);
+        Iterator localIterator = this.i.iterator();
+        if (!localIterator.hasNext()) {
+          break label346;
+        }
+        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+        if (!locala.h)
         {
-          localObject1 = new com.tencent.hlyyb.downloader.e.b.a(this, 0L, 0L, 0L, -1L);
-          if (localObject1 != null) {
-            ((com.tencent.hlyyb.downloader.e.b.a)localObject1).h = true;
+          l1 = this.a;
+          if (locala.g != -1L) {
+            l1 = locala.g;
           }
-          return localObject1;
+          if (l1 - locala.f > 0L) {}
         }
-        localObject4 = (com.tencent.hlyyb.downloader.e.b.a)this.i.get(0);
-        localObject5 = this.i.iterator();
-        if (!((Iterator)localObject5).hasNext()) {
-          break label364;
+        else
+        {
+          l1 = this.a;
+          if (locala.g != -1L) {
+            l1 = locala.g;
+          }
+          l3 = locala.f;
+          l2 = this.a;
+          if (((com.tencent.hlyyb.downloader.e.b.a)localObject3).g != -1L)
+          {
+            l2 = ((com.tencent.hlyyb.downloader.e.b.a)localObject3).g - ((com.tencent.hlyyb.downloader.e.b.a)localObject3).f;
+            break label330;
+          }
+          l2 -= ((com.tencent.hlyyb.downloader.e.b.a)localObject3).f;
+          break label330;
         }
-        Object localObject1 = (com.tencent.hlyyb.downloader.e.b.a)((Iterator)localObject5).next();
-        if (((com.tencent.hlyyb.downloader.e.b.a)localObject1).h) {
-          break label255;
+        if (locala != null) {
+          break label358;
         }
         l1 = this.a;
-        if (((com.tencent.hlyyb.downloader.e.b.a)localObject1).g != -1L)
-        {
-          l1 = ((com.tencent.hlyyb.downloader.e.b.a)localObject1).g - ((com.tencent.hlyyb.downloader.e.b.a)localObject1).f;
-          break label370;
-          localObject1 = localObject5;
-          if (localObject5 != null) {
-            continue;
-          }
-          l1 = this.a;
-          if (((com.tencent.hlyyb.downloader.e.b.a)localObject4).g == -1L) {
-            break label338;
-          }
-          l1 = ((com.tencent.hlyyb.downloader.e.b.a)localObject4).g - ((com.tencent.hlyyb.downloader.e.b.a)localObject4).f;
-          l2 = ((com.tencent.hlyyb.downloader.e.b.a)localObject4).f;
-          if (l1 <= com.tencent.hlyyb.downloader.a.a.a() << 1) {
-            break label351;
-          }
-          l1 = l2 + l1 / 2L;
-          localObject1 = new com.tencent.hlyyb.downloader.e.b.a(this, l1, l1, l1, ((com.tencent.hlyyb.downloader.e.b.a)localObject4).g);
-          ((com.tencent.hlyyb.downloader.e.b.a)localObject1).c = ((com.tencent.hlyyb.downloader.e.b.a)localObject4).b;
+        if (((com.tencent.hlyyb.downloader.e.b.a)localObject3).g != -1L) {
+          l1 = ((com.tencent.hlyyb.downloader.e.b.a)localObject3).g;
         }
-      }
-      l1 -= localObject2.f;
-      break label370;
-      label255:
-      long l1 = this.a;
-      if (localObject2.g != -1L) {}
-      for (l1 = localObject2.g - localObject2.f;; l1 -= localObject2.f)
-      {
-        l2 = this.a;
-        if (((com.tencent.hlyyb.downloader.e.b.a)localObject4).g == -1L) {
-          break;
+        l1 -= ((com.tencent.hlyyb.downloader.e.b.a)localObject3).f;
+        l2 = ((com.tencent.hlyyb.downloader.e.b.a)localObject3).f;
+        if (l1 <= com.tencent.hlyyb.downloader.a.a.a() << 1) {
+          break label352;
         }
-        l2 = ((com.tencent.hlyyb.downloader.e.b.a)localObject4).g - ((com.tencent.hlyyb.downloader.e.b.a)localObject4).f;
-        break label383;
+        l1 = l2 + l1 / 2L;
+        locala = new com.tencent.hlyyb.downloader.e.b.a(this, l1, l1, l1, ((com.tencent.hlyyb.downloader.e.b.a)localObject3).g);
+        locala.c = ((com.tencent.hlyyb.downloader.e.b.a)localObject3).b;
       }
-      l2 -= ((com.tencent.hlyyb.downloader.e.b.a)localObject4).f;
-      break label383;
-      label338:
-      long l2 = ((com.tencent.hlyyb.downloader.e.b.a)localObject4).f;
-      l1 -= l2;
-      continue;
-      label351:
-      Object localObject3 = null;
-      label364:
-      label370:
-      label383:
-      while (l1 <= l2)
-      {
-        localObject3 = localObject4;
-        break label389;
-        localObject5 = null;
-        break;
-        if (l1 <= 0L) {
-          break label255;
-        }
-        localObject5 = localObject3;
-        break;
+      if (locala != null) {
+        locala.h = true;
       }
-      label389:
-      Object localObject4 = localObject3;
+      return locala;
     }
   }
   
   private com.tencent.hlyyb.downloader.e.b.a k()
   {
+    List localList = this.j;
+    Object localObject3 = null;
+    try
+    {
+      Iterator localIterator = this.j.iterator();
+      Object localObject1;
+      do
+      {
+        localObject1 = localObject3;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+      } while ((((com.tencent.hlyyb.downloader.e.b.a)localObject1).h) || (((com.tencent.hlyyb.downloader.e.b.a)localObject1).f == ((com.tencent.hlyyb.downloader.e.b.a)localObject1).g));
+      if (localObject1 != null) {
+        ((com.tencent.hlyyb.downloader.e.b.a)localObject1).h = true;
+      }
+      return localObject1;
+    }
+    finally {}
     for (;;)
     {
-      synchronized (this.j)
-      {
-        Iterator localIterator = this.j.iterator();
-        if (localIterator.hasNext())
-        {
-          com.tencent.hlyyb.downloader.e.b.a locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
-          if ((locala.h) || (locala.f == locala.g)) {
-            continue;
-          }
-          if (locala != null) {
-            locala.h = true;
-          }
-          return locala;
-        }
-      }
-      Object localObject2 = null;
+      throw localObject2;
     }
   }
   
   private long l()
   {
-    Iterator localIterator1;
-    long l1;
-    com.tencent.hlyyb.downloader.e.b.a locala;
     synchronized (this.i)
     {
-      localIterator1 = this.i.iterator();
-      for (l1 = 0L; localIterator1.hasNext(); l1 = locala.e - locala.d + l1) {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator1.next();
+      Iterator localIterator = this.i.iterator();
+      com.tencent.hlyyb.downloader.e.b.a locala;
+      for (long l1 = 0L; localIterator.hasNext(); l1 += locala.e - locala.d) {
+        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
       }
-    }
-    synchronized (this.j)
-    {
-      localIterator1 = this.j.iterator();
-      long l2 = 0L;
-      while (localIterator1.hasNext())
+      synchronized (this.j)
       {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator1.next();
-        l3 = locala.g;
-        long l4 = locala.d;
-        l2 = l3 - l4 + l2;
-        continue;
-        localObject1 = finally;
-        throw localObject1;
-      }
-      Iterator localIterator2 = this.j.iterator();
-      for (long l3 = 0L; localIterator2.hasNext(); l3 = locala.e - locala.d + l3) {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator2.next();
-      }
-      l1 = l1 - l2 + l3;
-      if (l1 > 0L) {
-        return l1;
+        localIterator = this.j.iterator();
+        for (long l2 = 0L; localIterator.hasNext(); l2 += locala.g - locala.d) {
+          locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+        }
+        localIterator = this.j.iterator();
+        for (long l3 = 0L; localIterator.hasNext(); l3 += locala.e - locala.d) {
+          locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+        }
+        l1 = l1 - l2 + l3;
+        if (l1 > 0L) {
+          return l1;
+        }
       }
     }
     return 0L;
@@ -442,32 +424,27 @@ public final class h
   
   private long m()
   {
-    long l1 = 0L;
-    Iterator localIterator;
-    com.tencent.hlyyb.downloader.e.b.a locala;
     synchronized (this.i)
     {
-      localIterator = this.i.iterator();
-      while (localIterator.hasNext())
-      {
+      Iterator localIterator = this.i.iterator();
+      com.tencent.hlyyb.downloader.e.b.a locala;
+      for (long l1 = 0L; localIterator.hasNext(); l1 += locala.e - locala.d) {
         locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
-        l1 += locala.e - locala.d;
+      }
+      synchronized (this.j)
+      {
+        localIterator = this.j.iterator();
+        while (localIterator.hasNext())
+        {
+          locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+          l1 += locala.e - locala.d;
+        }
+        return l1;
       }
     }
-    synchronized (this.j)
+    for (;;)
     {
-      localIterator = this.j.iterator();
-      while (localIterator.hasNext())
-      {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
-        long l2 = locala.e;
-        long l3 = locala.d;
-        l1 = l2 - l3 + l1;
-        continue;
-        localObject1 = finally;
-        throw localObject1;
-      }
-      return l1;
+      throw localObject2;
     }
   }
   
@@ -491,13 +468,13 @@ public final class h
     //   6: monitorenter
     //   7: aload_0
     //   8: getfield 58	com/tencent/hlyyb/downloader/e/h:i	Ljava/util/List;
-    //   11: invokeinterface 145 1 0
+    //   11: invokeinterface 143 1 0
     //   16: astore 4
     //   18: aload 4
-    //   20: invokeinterface 151 1 0
+    //   20: invokeinterface 149 1 0
     //   25: ifeq +31 -> 56
     //   28: aload 4
-    //   30: invokeinterface 155 1 0
+    //   30: invokeinterface 153 1 0
     //   35: checkcast 94	com/tencent/hlyyb/downloader/e/b/a
     //   38: astore 5
     //   40: aload 5
@@ -519,13 +496,13 @@ public final class h
     //   64: monitorenter
     //   65: aload_0
     //   66: getfield 60	com/tencent/hlyyb/downloader/e/h:j	Ljava/util/List;
-    //   69: invokeinterface 145 1 0
+    //   69: invokeinterface 143 1 0
     //   74: astore 4
     //   76: aload 4
-    //   78: invokeinterface 151 1 0
-    //   83: ifeq +47 -> 130
+    //   78: invokeinterface 149 1 0
+    //   83: ifeq +31 -> 114
     //   86: aload 4
-    //   88: invokeinterface 155 1 0
+    //   88: invokeinterface 153 1 0
     //   93: checkcast 94	com/tencent/hlyyb/downloader/e/b/a
     //   96: astore 5
     //   98: aload 5
@@ -538,141 +515,155 @@ public final class h
     //   110: monitorexit
     //   111: aload 5
     //   113: areturn
-    //   114: astore 4
-    //   116: aload_3
-    //   117: monitorexit
-    //   118: aload 4
-    //   120: athrow
-    //   121: astore 4
+    //   114: aload_3
+    //   115: monitorexit
+    //   116: aconst_null
+    //   117: areturn
+    //   118: aload_3
+    //   119: monitorexit
+    //   120: aload 4
+    //   122: athrow
     //   123: aload_3
     //   124: monitorexit
-    //   125: aload 4
-    //   127: athrow
-    //   128: astore 4
-    //   130: aload_3
-    //   131: monitorexit
-    //   132: aconst_null
-    //   133: areturn
+    //   125: goto +6 -> 131
+    //   128: aload 4
+    //   130: athrow
+    //   131: goto -3 -> 128
     //   134: astore 4
     //   136: goto -80 -> 56
+    //   139: astore 4
+    //   141: goto -27 -> 114
+    //   144: astore 4
+    //   146: goto -23 -> 123
+    //   149: astore 4
+    //   151: goto -33 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	139	0	this	h
-    //   0	139	1	paramInt	int
+    //   0	154	0	this	h
+    //   0	154	1	paramInt	int
     //   45	62	2	m	int
-    //   16	71	4	localIterator	Iterator
-    //   114	5	4	localObject1	Object
-    //   121	5	4	localObject2	Object
-    //   128	1	4	localException1	java.lang.Exception
-    //   134	1	4	localException2	java.lang.Exception
+    //   16	113	4	localIterator	Iterator
+    //   134	1	4	localException1	java.lang.Exception
+    //   139	1	4	localException2	java.lang.Exception
+    //   144	1	4	localObject1	Object
+    //   149	1	4	localObject2	Object
     //   38	74	5	locala	com.tencent.hlyyb.downloader.e.b.a
     // Exception table:
     //   from	to	target	type
-    //   65	76	114	finally
-    //   76	104	114	finally
-    //   109	111	114	finally
-    //   116	118	114	finally
-    //   130	132	114	finally
-    //   7	18	121	finally
-    //   18	46	121	finally
-    //   51	53	121	finally
-    //   56	58	121	finally
-    //   123	125	121	finally
-    //   65	76	128	java/lang/Exception
-    //   76	104	128	java/lang/Exception
     //   7	18	134	java/lang/Exception
     //   18	46	134	java/lang/Exception
+    //   65	76	139	java/lang/Exception
+    //   76	104	139	java/lang/Exception
+    //   7	18	144	finally
+    //   18	46	144	finally
+    //   51	53	144	finally
+    //   56	58	144	finally
+    //   123	125	144	finally
+    //   65	76	149	finally
+    //   76	104	149	finally
+    //   109	111	149	finally
+    //   114	116	149	finally
+    //   118	120	149	finally
   }
   
   public final void a(long paramLong, int paramInt)
   {
-    if (this.k == 0L) {}
-    label68:
-    for (;;)
+    long l1;
+    if (this.k == 0L)
     {
-      this.k = paramLong;
-      int m;
-      if (this.l == 0) {
-        m = paramInt;
-      }
-      for (;;)
-      {
-        this.l = m;
-        return;
-        if (this.k <= paramLong) {
-          break label68;
-        }
-        paramLong = this.k;
-        break;
-        m = paramInt;
-        if (this.l > paramInt) {
-          m = this.l;
-        }
+      l1 = paramLong;
+    }
+    else
+    {
+      l1 = paramLong;
+      if (this.k > paramLong) {
+        l1 = this.k;
       }
     }
+    this.k = l1;
+    int m;
+    if (this.l == 0)
+    {
+      m = paramInt;
+    }
+    else
+    {
+      m = paramInt;
+      if (this.l > paramInt) {
+        m = this.l;
+      }
+    }
+    this.l = m;
   }
   
   public final void a(com.tencent.hlyyb.downloader.e.b.a parama)
   {
-    if (parama.g == -1L) {}
-    while (parama.d >= parama.g) {
+    if (parama.g == -1L) {
+      return;
+    }
+    if (parama.d >= parama.g) {
       return;
     }
     List localList = this.j;
+    Object localObject2 = null;
+    int i1 = 0;
     int m = 0;
+    Object localObject1 = localObject2;
+    int n = i1;
     for (;;)
     {
       try
       {
-        if (m >= this.j.size()) {
-          break label221;
-        }
-        locala = (com.tencent.hlyyb.downloader.e.b.a)this.j.get(m);
-        if (locala.d == parama.d)
+        if (m < this.j.size())
         {
-          if (locala == null) {
-            break label157;
+          localObject1 = (com.tencent.hlyyb.downloader.e.b.a)this.j.get(m);
+          if (((com.tencent.hlyyb.downloader.e.b.a)localObject1).d != parama.d) {
+            continue;
           }
-          if (parama.g <= locala.g) {
-            break label151;
+          n = m;
+        }
+        if (localObject1 != null)
+        {
+          if (parama.g <= ((com.tencent.hlyyb.downloader.e.b.a)localObject1).g) {
+            break label243;
           }
-          parama.b = locala.b;
-          parama.c = locala.c;
-          this.j.remove(m);
-          this.j.add(m, parama);
+          parama.b = ((com.tencent.hlyyb.downloader.e.b.a)localObject1).b;
+          parama.c = ((com.tencent.hlyyb.downloader.e.b.a)localObject1).c;
+          this.j.remove(n);
+          this.j.add(n, parama);
           return;
         }
+        m = 10000;
+        n = this.j.size();
+        if (n > 0) {
+          m = ((com.tencent.hlyyb.downloader.e.b.a)this.j.get(n - 1)).b + 1;
+        }
+        parama.c = m;
+        parama.b = m;
+        this.j.add(parama);
+        return;
       }
-      finally {}
-      m += 1;
-      continue;
-      label151:
-      parama = locala;
-      continue;
-      label157:
-      m = 10000;
-      int n = this.j.size();
-      if (n > 0) {
-        m = ((com.tencent.hlyyb.downloader.e.b.a)this.j.get(n - 1)).b + 1;
+      finally
+      {
+        continue;
+        throw parama;
+        continue;
+        m += 1;
       }
-      parama.c = m;
-      parama.b = m;
-      this.j.add(parama);
-      return;
-      label221:
-      com.tencent.hlyyb.downloader.e.b.a locala = null;
-      m = 0;
+      break;
+      label243:
+      parama = (com.tencent.hlyyb.downloader.e.b.a)localObject1;
     }
   }
   
   public final void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("null")))
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null")))
     {
-      this.g = "";
+      this.g = paramString.replace("|", "");
       return;
     }
-    this.g = paramString.replace("|", "");
+    this.g = "";
   }
   
   public final int b()
@@ -681,79 +672,81 @@ public final class h
     {
       Iterator localIterator = this.j.iterator();
       com.tencent.hlyyb.downloader.e.b.a locala;
-      long l1;
-      for (int m = 0; localIterator.hasNext(); m = (int)(locala.e - locala.d + l1))
-      {
+      for (int m = 0; localIterator.hasNext(); m = (int)(m + (locala.e - locala.d))) {
         locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
-        l1 = m;
       }
       return m;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   public final void b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("null")))
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null")))
     {
-      this.h = "";
+      this.h = paramString.replace("|", "");
       return;
     }
-    this.h = paramString.replace("|", "");
+    this.h = "";
   }
   
   public final boolean b(com.tencent.hlyyb.downloader.e.b.a parama)
   {
-    if (parama.b == -1) {
-      label255:
-      for (;;)
+    if (parama.b == -1) {}
+    for (;;)
+    {
+      com.tencent.hlyyb.downloader.e.b.a locala;
+      synchronized (this.i)
       {
-        synchronized (this.i)
+        if (parama.c == -1)
         {
-          if (parama.c == -1)
+          if (this.i.size() == 0)
           {
-            if (this.i.size() == 0)
-            {
-              parama.b = 0;
-              parama.g = this.a;
-              this.i.add(parama);
-              return true;
-            }
-          }
-          else if (parama.c < this.i.size())
-          {
-            Object localObject = null;
-            Iterator localIterator = this.i.iterator();
-            if (localIterator.hasNext())
-            {
-              com.tencent.hlyyb.downloader.e.b.a locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
-              if (locala.b == parama.c)
-              {
-                if (locala.f >= locala.g) {
-                  return false;
-                }
-                localObject = locala;
-                if (locala.f + com.tencent.hlyyb.downloader.a.a.a() <= parama.d) {
-                  break label255;
-                }
-                return false;
-              }
-              if ((locala.g <= parama.d) || (locala.d >= parama.g)) {
-                break label255;
-              }
-              return false;
-            }
-            if (localObject == null) {
-              return false;
-            }
-            parama.b = this.i.size();
-            localObject.g = parama.d;
+            parama.b = 0;
+            parama.g = this.a;
             this.i.add(parama);
             return true;
           }
         }
+        else if (parama.c < this.i.size())
+        {
+          localObject = null;
+          Iterator localIterator = this.i.iterator();
+          if (localIterator.hasNext())
+          {
+            locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+            if (locala.b == parama.c)
+            {
+              if (locala.f >= locala.g) {
+                return false;
+              }
+              if (locala.f + com.tencent.hlyyb.downloader.a.a.a() <= parama.d) {
+                break label254;
+              }
+              return false;
+            }
+            if ((locala.g <= parama.d) || (locala.d >= parama.g)) {
+              continue;
+            }
+            return false;
+          }
+          if (localObject == null) {
+            return false;
+          }
+          parama.b = this.i.size();
+          localObject.g = parama.d;
+          this.i.add(parama);
+          return true;
+        }
+        return false;
       }
+      return false;
+      label254:
+      Object localObject = locala;
     }
-    return false;
   }
   
   public final String c()
@@ -768,55 +761,58 @@ public final class h
     localStringBuilder.append("|");
     localStringBuilder.append(this.d);
     localStringBuilder.append("|");
-    Iterator localIterator;
     synchronized (this.i)
     {
-      localIterator = this.i.iterator();
-      if (localIterator.hasNext())
+      Iterator localIterator = this.i.iterator();
+      while (localIterator.hasNext())
       {
         localStringBuilder.append(((com.tencent.hlyyb.downloader.e.b.a)localIterator.next()).a());
         localStringBuilder.append(";");
       }
-    }
-    if (this.i.size() > 0) {
-      localObject1.deleteCharAt(localObject1.length() - 1);
-    }
-    localObject1.append("|");
-    localObject1.append("null");
-    localObject1.append("|");
-    if (TextUtils.isEmpty(this.g))
-    {
-      localObject1.append("null");
-      localObject1.append("|");
-      if (!TextUtils.isEmpty(this.h)) {
-        break label303;
+      if (this.i.size() > 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
       }
-      localObject1.append("null");
-    }
-    for (;;)
-    {
-      localObject1.append("|");
+      localStringBuilder.append("|");
+      localStringBuilder.append("null");
+      localStringBuilder.append("|");
+      if (TextUtils.isEmpty(this.g)) {
+        ??? = "null";
+      } else {
+        ??? = this.g;
+      }
+      localStringBuilder.append((String)???);
+      localStringBuilder.append("|");
+      if (TextUtils.isEmpty(this.h)) {
+        ??? = "null";
+      } else {
+        ??? = this.h;
+      }
+      localStringBuilder.append((String)???);
+      localStringBuilder.append("|");
       synchronized (this.j)
       {
         localIterator = this.j.iterator();
-        if (!localIterator.hasNext()) {
-          break label315;
+        while (localIterator.hasNext())
+        {
+          localStringBuilder.append(((com.tencent.hlyyb.downloader.e.b.a)localIterator.next()).a());
+          localStringBuilder.append(";");
         }
-        localObject1.append(((com.tencent.hlyyb.downloader.e.b.a)localIterator.next()).a());
-        localObject1.append(";");
+        if (this.j.size() > 0) {
+          localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+        }
+        localStringBuilder.append("|");
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(this.k);
+        ((StringBuilder)???).append(";");
+        ((StringBuilder)???).append(this.l);
+        localStringBuilder.append(((StringBuilder)???).toString());
+        return localStringBuilder.toString();
       }
-      localObject2.append(this.g);
-      break;
-      label303:
-      localObject2.append(this.h);
     }
-    label315:
-    if (this.j.size() > 0) {
-      localObject2.deleteCharAt(localObject2.length() - 1);
+    for (;;)
+    {
+      throw localObject3;
     }
-    localObject2.append("|");
-    localObject2.append(this.k + ";" + this.l);
-    return localObject2.toString();
   }
   
   public final long d()
@@ -826,42 +822,33 @@ public final class h
   
   public final boolean e()
   {
-    return (this.a > 0L) && (this.a == l());
+    long l1 = this.a;
+    return (l1 > 0L) && (l1 == l());
   }
   
   public final long f()
   {
-    Iterator localIterator1;
-    long l1;
-    com.tencent.hlyyb.downloader.e.b.a locala;
     synchronized (this.i)
     {
-      localIterator1 = this.i.iterator();
-      for (l1 = 0L; localIterator1.hasNext(); l1 = locala.f - locala.d + l1) {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator1.next();
+      Iterator localIterator = this.i.iterator();
+      com.tencent.hlyyb.downloader.e.b.a locala;
+      for (long l1 = 0L; localIterator.hasNext(); l1 += locala.f - locala.d) {
+        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
       }
-    }
-    synchronized (this.j)
-    {
-      localIterator1 = this.j.iterator();
-      long l2 = 0L;
-      while (localIterator1.hasNext())
+      synchronized (this.j)
       {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator1.next();
-        l3 = locala.g;
-        long l4 = locala.d;
-        l2 = l3 - l4 + l2;
-        continue;
-        localObject1 = finally;
-        throw localObject1;
-      }
-      Iterator localIterator2 = this.j.iterator();
-      for (long l3 = 0L; localIterator2.hasNext(); l3 = locala.f - locala.d + l3) {
-        locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator2.next();
-      }
-      l1 = l1 - l2 + l3;
-      if (l1 > 0L) {
-        return l1;
+        localIterator = this.j.iterator();
+        for (long l2 = 0L; localIterator.hasNext(); l2 += locala.g - locala.d) {
+          locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+        }
+        localIterator = this.j.iterator();
+        for (long l3 = 0L; localIterator.hasNext(); l3 += locala.f - locala.d) {
+          locala = (com.tencent.hlyyb.downloader.e.b.a)localIterator.next();
+        }
+        l1 = l1 - l2 + l3;
+        if (l1 > 0L) {
+          return l1;
+        }
       }
     }
     return 0L;
@@ -889,7 +876,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.h
  * JD-Core Version:    0.7.0.1
  */

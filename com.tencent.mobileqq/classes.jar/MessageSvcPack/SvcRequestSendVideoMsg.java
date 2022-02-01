@@ -8,12 +8,12 @@ public final class SvcRequestSendVideoMsg
   extends JceStruct
 {
   static byte[] cache_vMsg;
-  public byte cVerifyType;
-  public long lPeerUin;
-  public long lUin;
-  public long uClientIP;
-  public int uDateTime;
-  public byte[] vMsg;
+  public byte cVerifyType = 0;
+  public long lPeerUin = 0L;
+  public long lUin = 0L;
+  public long uClientIP = 0L;
+  public int uDateTime = 0;
+  public byte[] vMsg = null;
   
   public SvcRequestSendVideoMsg() {}
   
@@ -54,7 +54,7 @@ public final class SvcRequestSendVideoMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestSendVideoMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,37 @@
 package com.tencent.mm.opensdk.diffdev.a;
 
-import android.os.AsyncTask;
-import com.tencent.mm.opensdk.diffdev.OAuthListener;
-import com.tencent.mm.opensdk.utils.Log;
-
-public final class d
-  extends AsyncTask<Void, Void, d.a>
+public enum d
 {
-  private static String h = "https://open.weixin.qq.com/connect/sdk/qrconnect?appid=%s&noncestr=%s&timestamp=%s&scope=%s&signature=%s";
-  private String appId;
-  private String i;
-  private String j;
-  private OAuthListener k;
-  private f l;
-  private String scope;
-  private String signature;
+  private int a;
   
-  public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, OAuthListener paramOAuthListener)
+  static
   {
-    this.appId = paramString1;
-    this.scope = paramString2;
-    this.i = paramString3;
-    this.j = paramString4;
-    this.signature = paramString5;
-    this.k = paramOAuthListener;
+    d locald = new d("UUID_ERROR", 5, 500);
+    g = locald;
+    h = new d[] { b, c, d, e, f, locald };
   }
   
-  public final boolean a()
+  private d(int paramInt)
   {
-    Log.i("MicroMsg.SDK.GetQRCodeTask", "cancelTask");
-    if (this.l == null) {
-      return cancel(true);
-    }
-    return this.l.cancel(true);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UUIDStatusCode:");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.d
  * JD-Core Version:    0.7.0.1
  */

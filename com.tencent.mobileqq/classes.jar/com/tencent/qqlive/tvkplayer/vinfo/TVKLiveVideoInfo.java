@@ -9,16 +9,19 @@ public class TVKLiveVideoInfo
 {
   public static final int ERR_CGI = 10001;
   public static final int ERR_NETWORK = 10000;
+  public static final int SHOT_DIRECTION_DOWN = 2;
+  public static final int SHOT_DIRECTION_UP = 1;
   private static final long serialVersionUID = -1L;
-  private int aCode;
-  private int live360;
+  private int mAcode;
   private String[] mBackPlayUrl;
   private int mBufferLoadingTime;
   private int mCdnId;
   private int mErrModule;
   private boolean mGetDlnaUrl = false;
   private boolean mGetPreviewInfo = false;
-  private TVKLiveVideoInfo.SHOT_DIRECTION mLensDirection;
+  @TVKLiveVideoInfo.ShotDirection
+  private int mLensDirection;
+  private int mLive360;
   private String mOriginalPlayUrl = "";
   private String mPlayUrl = null;
   private String mProgramId;
@@ -31,8 +34,13 @@ public class TVKLiveVideoInfo
   private long mServerTime;
   private int mStream;
   private String mTargetId;
+  private int mVcode;
   private String mXml;
-  private int vCode;
+  
+  public int getAcode()
+  {
+    return this.mAcode;
+  }
   
   public String[] getBackPlayUrl()
   {
@@ -54,14 +62,14 @@ public class TVKLiveVideoInfo
     return this.mErrModule;
   }
   
-  public TVKLiveVideoInfo.SHOT_DIRECTION getLens_direction()
+  public int getLensDirection()
   {
     return this.mLensDirection;
   }
   
   public int getLive360()
   {
-    return this.live360;
+    return this.mLive360;
   }
   
   public String getOriginalPlayUrl()
@@ -122,19 +130,14 @@ public class TVKLiveVideoInfo
     return this.mTargetId;
   }
   
+  public int getVcode()
+  {
+    return this.mVcode;
+  }
+  
   public String getXml()
   {
     return this.mXml;
-  }
-  
-  public int getaCode()
-  {
-    return this.aCode;
-  }
-  
-  public int getvCode()
-  {
-    return this.vCode;
   }
   
   public boolean isGetDlnaUrl()
@@ -145,6 +148,11 @@ public class TVKLiveVideoInfo
   public boolean isGetPreviewInfo()
   {
     return this.mGetPreviewInfo;
+  }
+  
+  public void setAcode(int paramInt)
+  {
+    this.mAcode = paramInt;
   }
   
   public void setBackPlayUrl(String[] paramArrayOfString)
@@ -177,14 +185,14 @@ public class TVKLiveVideoInfo
     this.mGetPreviewInfo = paramBoolean;
   }
   
-  public void setLens_direction(TVKLiveVideoInfo.SHOT_DIRECTION paramSHOT_DIRECTION)
+  public void setLensDirection(@TVKLiveVideoInfo.ShotDirection int paramInt)
   {
-    this.mLensDirection = paramSHOT_DIRECTION;
+    this.mLensDirection = paramInt;
   }
   
   public void setLive360(int paramInt)
   {
-    this.live360 = paramInt;
+    this.mLive360 = paramInt;
   }
   
   public void setOriginalPlayUrl(String paramString)
@@ -242,24 +250,19 @@ public class TVKLiveVideoInfo
     this.mTargetId = paramString;
   }
   
+  public void setVcode(int paramInt)
+  {
+    this.mVcode = paramInt;
+  }
+  
   public void setXml(String paramString)
   {
     this.mXml = paramString;
   }
-  
-  public void setaCode(int paramInt)
-  {
-    this.aCode = paramInt;
-  }
-  
-  public void setvCode(int paramInt)
-  {
-    this.vCode = paramInt;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKLiveVideoInfo
  * JD-Core Version:    0.7.0.1
  */

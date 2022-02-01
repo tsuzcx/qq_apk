@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/nl" android:top="0.0dip" android:bottom="239.0dip" />
-    <item android:drawable="@drawable/nn" android:top="16.0dip" android:bottom="0.0dip" />
-    <item android:drawable="@drawable/nl" android:top="0.0dip" android:bottom="239.0dip" />
-    <item android:drawable="@drawable/nn" android:top="16.0dip" android:bottom="0.0dip" />
-</layer-list>
+    <item android:state_enabled="false" android:state_checked="true" android:drawable="@drawable/bso" />
+    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/bsp" />
+    <item android:state_checked="true" android:drawable="@drawable/bsn" />
+    <item android:drawable="@drawable/bsp" />
+</selector>

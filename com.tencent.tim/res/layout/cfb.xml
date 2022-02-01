@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/iet" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <moai.view.SafeWebView android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

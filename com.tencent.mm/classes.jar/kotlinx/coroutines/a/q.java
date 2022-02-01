@@ -1,256 +1,336 @@
 package kotlinx.coroutines.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.ah;
+import kotlin.d.a.a;
+import kotlin.d.d;
+import kotlin.g.b.an;
+import kotlin.g.b.s;
+import kotlinx.coroutines.internal.ac;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/internal/ThreadSafeHeap;", "T", "Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "", "", "Lkotlinx/coroutines/internal/SynchronizedObject;", "()V", "a", "", "[Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "isEmpty", "", "()Z", "size", "", "size$annotations", "addImpl", "", "node", "(Lkotlinx/coroutines/internal/ThreadSafeHeapNode;)V", "addLast", "addLastIf", "cond", "Lkotlin/Function0;", "(Lkotlinx/coroutines/internal/ThreadSafeHeapNode;Lkotlin/jvm/functions/Function0;)Z", "clear", "firstImpl", "()Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "peek", "realloc", "()[Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "remove", "(Lkotlinx/coroutines/internal/ThreadSafeHeapNode;)Z", "removeAtImpl", "index", "(I)Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "removeFirstIf", "predicate", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "removeFirstOrNull", "siftDownFrom", "i", "siftUpFrom", "swap", "j", "kotlinx-coroutines-core"})
-public final class q<T extends r,  extends Comparable<? super T>>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;", "E", "value", "<init>", "(Ljava/lang/Object;)V", "()V", "", "Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;", "list", "subscriber", "addSubscriber", "([Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;)[Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;", "", "cause", "", "cancel", "(Ljava/lang/Throwable;)Z", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "", "(Ljava/util/concurrent/CancellationException;)V", "close", "closeSubscriber", "(Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;)V", "Lkotlin/Function1;", "Lkotlinx/coroutines/channels/Handler;", "handler", "invokeOnClose", "(Lkotlin/jvm/functions/Function1;)V", "invokeOnCloseHandler", "(Ljava/lang/Throwable;)V", "element", "Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Closed;", "offerInternal", "(Ljava/lang/Object;)Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Closed;", "Lkotlinx/coroutines/channels/ReceiveChannel;", "openSubscription", "()Lkotlinx/coroutines/channels/ReceiveChannel;", "R", "Lkotlinx/coroutines/selects/SelectInstance;", "select", "Lkotlin/Function2;", "Lkotlinx/coroutines/channels/SendChannel;", "Lkotlin/coroutines/Continuation;", "", "block", "registerSelectSend", "(Lkotlinx/coroutines/selects/SelectInstance;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "removeSubscriber", "send", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/ChannelResult;", "trySend-JP2dKIU", "(Ljava/lang/Object;)Ljava/lang/Object;", "trySend", "isClosedForSend", "()Z", "Lkotlinx/coroutines/selects/SelectClause2;", "getOnSend", "()Lkotlinx/coroutines/selects/SelectClause2;", "onSend", "getValue", "()Ljava/lang/Object;", "getValue$annotations", "getValueOrNull", "valueOrNull", "Companion", "Closed", "State", "Subscriber", "kotlinx-coroutines-core", "Lkotlinx/coroutines/channels/BroadcastChannel;"}, k=1, mv={1, 5, 1}, xi=48)
+public final class q<E>
+  implements f<E>
 {
-  public T[] CJF;
-  public volatile int size;
+  private static final q.b ajxI;
+  @Deprecated
+  private static final a ajxK;
+  @Deprecated
+  private static final ac ajxL;
+  @Deprecated
+  private static final c<Object> ajxM;
   
-  private final void Wk(int paramInt)
+  static
   {
-    AppMethodBeat.i(118389);
-    for (int i = paramInt;; i = paramInt)
-    {
-      int j = i * 2 + 1;
-      if (j >= this.size)
-      {
-        AppMethodBeat.o(118389);
-        return;
-      }
-      Object localObject1 = this.CJF;
-      if (localObject1 == null) {
-        j.ebi();
-      }
-      paramInt = j;
-      if (j + 1 < this.size)
-      {
-        localComparable = localObject1[(j + 1)];
-        if (localComparable == null) {
-          j.ebi();
-        }
-        localComparable = (Comparable)localComparable;
-        Object localObject2 = localObject1[j];
-        if (localObject2 == null) {
-          j.ebi();
-        }
-        paramInt = j;
-        if (localComparable.compareTo(localObject2) < 0) {
-          paramInt = j + 1;
-        }
-      }
-      Comparable localComparable = localObject1[i];
-      if (localComparable == null) {
-        j.ebi();
-      }
-      localComparable = (Comparable)localComparable;
-      localObject1 = localObject1[paramInt];
-      if (localObject1 == null) {
-        j.ebi();
-      }
-      if (localComparable.compareTo(localObject1) <= 0)
-      {
-        AppMethodBeat.o(118389);
-        return;
-      }
-      iJ(i, paramInt);
-    }
+    AppMethodBeat.i(189291);
+    ajxI = new q.b((byte)0);
+    ajxK = new a(null);
+    ajxL = new ac("UNDEFINED");
+    ajxM = new c(ajxL, null);
+    ajvp = AtomicReferenceFieldUpdater.newUpdater(q.class, Object.class, "_state");
+    ajxJ = AtomicIntegerFieldUpdater.newUpdater(q.class, "_updating");
+    ajxq = AtomicReferenceFieldUpdater.newUpdater(q.class, Object.class, "onCloseHandler");
+    AppMethodBeat.o(189291);
   }
   
-  private final void iJ(int paramInt1, int paramInt2)
+  private static d<E>[] a(d<E>[] paramArrayOfd, d<E> paramd)
   {
-    AppMethodBeat.i(118390);
-    r[] arrayOfr = this.CJF;
-    if (arrayOfr == null) {
-      j.ebi();
+    AppMethodBeat.i(189273);
+    if (paramArrayOfd == null)
+    {
+      paramArrayOfd = new d[1];
+      for (int i = 0; i <= 0; i = 1) {
+        paramArrayOfd[0] = paramd;
+      }
+      AppMethodBeat.o(189273);
+      return paramArrayOfd;
     }
-    r localr1 = arrayOfr[paramInt2];
-    if (localr1 == null) {
-      j.ebi();
-    }
-    r localr2 = arrayOfr[paramInt1];
-    if (localr2 == null) {
-      j.ebi();
-    }
-    arrayOfr[paramInt1] = localr1;
-    arrayOfr[paramInt2] = localr2;
-    localr1.setIndex(paramInt1);
-    localr2.setIndex(paramInt2);
-    AppMethodBeat.o(118390);
+    paramArrayOfd = (d[])k.c(paramArrayOfd, paramd);
+    AppMethodBeat.o(189273);
+    return paramArrayOfd;
   }
   
-  public final T Wi(int paramInt)
+  private final a iZ(E paramE)
   {
-    AppMethodBeat.i(118387);
-    if (this.size > 0) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(189280);
+    if (!ajxJ.compareAndSet(this, 0, 1))
     {
-      localObject1 = (Throwable)new IllegalStateException("Check failed.".toString());
-      AppMethodBeat.o(118387);
-      throw ((Throwable)localObject1);
+      AppMethodBeat.o(189280);
+      return null;
     }
-    Object localObject1 = this.CJF;
-    if (localObject1 == null) {
-      j.ebi();
-    }
-    this.size -= 1;
-    Comparable localComparable;
-    if (paramInt < this.size)
+    try
     {
-      iJ(paramInt, this.size);
-      i = (paramInt - 1) / 2;
-      if (paramInt > 0)
+      c localc;
+      do
       {
-        localComparable = localObject1[paramInt];
-        if (localComparable == null) {
-          j.ebi();
-        }
-        localComparable = (Comparable)localComparable;
-        Object localObject2 = localObject1[i];
-        if (localObject2 == null) {
-          j.ebi();
-        }
-        if (localComparable.compareTo(localObject2) < 0)
+        localObject = this._state;
+        if ((localObject instanceof a))
         {
-          iJ(paramInt, i);
-          Wj(i);
+          paramE = (a)localObject;
+          return paramE;
         }
+        if (!(localObject instanceof c)) {
+          break;
+        }
+        localc = new c(paramE, ((c)localObject).ajxN);
+      } while (!ajvp.compareAndSet(this, localObject, localc));
+      Object localObject = ((c)localObject).ajxN;
+      if (localObject != null)
+      {
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject[i].iT(paramE);
+          i += 1;
+        }
+      }
+      return null;
+      paramE = (Throwable)new IllegalStateException(s.X("Invalid state ", localObject).toString());
+      AppMethodBeat.o(189280);
+      throw paramE;
+    }
+    finally
+    {
+      this._updating = 0;
+      AppMethodBeat.o(189280);
+    }
+  }
+  
+  public final boolean Ij()
+  {
+    return this._state instanceof a;
+  }
+  
+  public final Object b(E paramE, d<? super ah> paramd)
+  {
+    AppMethodBeat.i(189335);
+    paramE = iZ(paramE);
+    if (paramE == null)
+    {
+      if (a.aiwj == null)
+      {
+        AppMethodBeat.o(189335);
+        return null;
       }
     }
     else
     {
-      localComparable = localObject1[this.size];
-      if (localComparable == null) {
-        j.ebi();
-      }
-      if (localComparable.epN() != (q)this) {
-        break label218;
-      }
+      paramE = paramE.kDr();
+      AppMethodBeat.o(189335);
+      throw paramE;
     }
-    label218:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        break label223;
-      }
-      localObject1 = (Throwable)new IllegalStateException("Check failed.".toString());
-      AppMethodBeat.o(118387);
-      throw ((Throwable)localObject1);
-      Wk(paramInt);
-      break;
-    }
-    label223:
-    localComparable.a(null);
-    localComparable.setIndex(-1);
-    localObject1[this.size] = null;
-    AppMethodBeat.o(118387);
-    return localComparable;
+    paramE = ah.aiuX;
+    AppMethodBeat.o(189335);
+    return paramE;
   }
   
-  public final void Wj(int paramInt)
+  public final Object iV(E paramE)
   {
-    AppMethodBeat.i(118388);
-    for (;;)
+    AppMethodBeat.i(189344);
+    paramE = iZ(paramE);
+    if (paramE != null)
     {
-      if (paramInt <= 0)
-      {
-        AppMethodBeat.o(118388);
-        return;
-      }
-      Object localObject = this.CJF;
-      if (localObject == null) {
-        j.ebi();
-      }
-      int i = (paramInt - 1) / 2;
-      Comparable localComparable = localObject[i];
-      if (localComparable == null) {
-        j.ebi();
-      }
-      localComparable = (Comparable)localComparable;
-      localObject = localObject[paramInt];
-      if (localObject == null) {
-        j.ebi();
-      }
-      if (localComparable.compareTo(localObject) <= 0)
-      {
-        AppMethodBeat.o(118388);
-        return;
-      }
-      iJ(paramInt, i);
-      paramInt = i;
+      l.b localb = l.ajxF;
+      paramE = l.b.Y(paramE.kDr());
+      AppMethodBeat.o(189344);
+      return paramE;
     }
+    paramE = l.ajxF;
+    paramE = l.constructor-impl(ah.aiuX);
+    AppMethodBeat.o(189344);
+    return paramE;
   }
   
-  public final boolean a(T paramT)
+  public final boolean k(Throwable paramThrowable)
   {
     int i = 0;
-    boolean bool = false;
+    AppMethodBeat.i(189314);
+    Object localObject2;
     for (;;)
     {
-      int j;
-      try
+      localObject2 = this._state;
+      if ((localObject2 instanceof a))
       {
-        AppMethodBeat.i(118386);
-        j.q(paramT, "node");
-        if (paramT.epN() == null)
-        {
-          AppMethodBeat.o(118386);
-          return bool;
+        AppMethodBeat.o(189314);
+        return false;
+      }
+      if (!(localObject2 instanceof c)) {
+        break label172;
+      }
+      if (paramThrowable == null) {}
+      for (localObject1 = ajxK; ajvp.compareAndSet(this, localObject2, localObject1); localObject1 = new a(paramThrowable))
+      {
+        localObject1 = ((c)localObject2).ajxN;
+        if (localObject1 == null) {
+          break label114;
         }
-        j = paramT.getIndex();
-        if (j >= 0) {
-          i = 1;
-        }
-        if (i == 0)
+        int j = localObject1.length;
+        while (i < j)
         {
-          paramT = (Throwable)new IllegalStateException("Check failed.".toString());
-          AppMethodBeat.o(118386);
-          throw paramT;
+          localObject1[i].k(paramThrowable);
+          i += 1;
         }
       }
-      finally {}
-      Wi(j);
-      AppMethodBeat.o(118386);
-      bool = true;
     }
+    label114:
+    Object localObject1 = this.onCloseHandler;
+    if ((localObject1 != null) && (localObject1 != b.ajxo) && (ajxq.compareAndSet(this, localObject1, b.ajxo))) {
+      ((kotlin.g.a.b)an.y(localObject1, 1)).invoke(paramThrowable);
+    }
+    AppMethodBeat.o(189314);
+    return true;
+    label172:
+    paramThrowable = (Throwable)new IllegalStateException(s.X("Invalid state ", localObject2).toString());
+    AppMethodBeat.o(189314);
+    throw paramThrowable;
   }
   
-  public final T eqp()
+  public final x<E> kDj()
   {
-    try
+    AppMethodBeat.i(189306);
+    Object localObject1 = new d(this);
+    Object localObject2;
+    c localc;
+    do
     {
-      AppMethodBeat.i(118385);
-      r localr = eqq();
-      AppMethodBeat.o(118385);
-      return localr;
-    }
-    finally
+      localObject2 = this._state;
+      if ((localObject2 instanceof a))
+      {
+        ((d)localObject1).k(((a)localObject2).aoY);
+        localObject1 = (x)localObject1;
+        AppMethodBeat.o(189306);
+        return localObject1;
+      }
+      if (!(localObject2 instanceof c)) {
+        break;
+      }
+      if (((c)localObject2).value != ajxL) {
+        ((d)localObject1).iT(((c)localObject2).value);
+      }
+      localc = new c(((c)localObject2).value, a(((c)localObject2).ajxN, (d)localObject1));
+    } while (!ajvp.compareAndSet(this, localObject2, localc));
+    localObject1 = (x)localObject1;
+    AppMethodBeat.o(189306);
+    return localObject1;
+    localObject1 = (Throwable)new IllegalStateException(s.X("Invalid state ", localObject2).toString());
+    AppMethodBeat.o(189306);
+    throw ((Throwable)localObject1);
+  }
+  
+  public final void kDk()
+  {
+    AppMethodBeat.i(189327);
+    k(null);
+    AppMethodBeat.o(189327);
+  }
+  
+  public final boolean offer(E paramE)
+  {
+    AppMethodBeat.i(189353);
+    boolean bool = ab.a.a((ab)this, paramE);
+    AppMethodBeat.o(189353);
+    return bool;
+  }
+  
+  public final void p(kotlin.g.a.b<? super Throwable, ah> paramb)
+  {
+    AppMethodBeat.i(189320);
+    if (!ajxq.compareAndSet(this, null, paramb))
     {
-      localObject = finally;
-      throw localObject;
+      paramb = this.onCloseHandler;
+      if (paramb == b.ajxo)
+      {
+        paramb = new IllegalStateException("Another handler was already registered and successfully invoked");
+        AppMethodBeat.o(189320);
+        throw paramb;
+      }
+      paramb = new IllegalStateException(s.X("Another handler was already registered: ", paramb));
+      AppMethodBeat.o(189320);
+      throw paramb;
+    }
+    Object localObject = this._state;
+    if (((localObject instanceof a)) && (ajxq.compareAndSet(this, paramb, b.ajxo))) {
+      paramb.invoke(((a)localObject).aoY);
+    }
+    AppMethodBeat.o(189320);
+  }
+  
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Closed;", "", "closeCause", "", "(Ljava/lang/Throwable;)V", "sendException", "getSendException", "()Ljava/lang/Throwable;", "valueException", "getValueException", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class a
+  {
+    public final Throwable aoY;
+    
+    public a(Throwable paramThrowable)
+    {
+      this.aoY = paramThrowable;
+    }
+    
+    public final Throwable kDr()
+    {
+      AppMethodBeat.i(189279);
+      Throwable localThrowable = this.aoY;
+      if (localThrowable == null)
+      {
+        localThrowable = (Throwable)new p("Channel was closed");
+        AppMethodBeat.o(189279);
+        return localThrowable;
+      }
+      AppMethodBeat.o(189279);
+      return localThrowable;
     }
   }
   
-  public final T eqq()
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$State;", "E", "", "value", "subscribers", "", "Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;", "(Ljava/lang/Object;[Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;)V", "[Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class c<E>
   {
-    r[] arrayOfr = this.CJF;
-    if (arrayOfr != null) {
-      return arrayOfr[0];
+    public final q.d<E>[] ajxN;
+    public final Object value;
+    
+    public c(Object paramObject, q.d<E>[] paramArrayOfd)
+    {
+      this.value = paramObject;
+      this.ajxN = paramArrayOfd;
     }
-    return null;
   }
   
-  public final boolean isEmpty()
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ConflatedBroadcastChannel$Subscriber;", "E", "Lkotlinx/coroutines/channels/ConflatedChannel;", "Lkotlinx/coroutines/channels/ReceiveChannel;", "broadcastChannel", "Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;", "(Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;)V", "offerInternal", "", "element", "(Ljava/lang/Object;)Ljava/lang/Object;", "onCancelIdempotent", "", "wasClosed", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class d<E>
+    extends r<E>
   {
-    return this.size == 0;
+    private final q<E> ajxO;
+    
+    public d(q<E> paramq)
+    {
+      super();
+      this.ajxO = paramq;
+    }
+    
+    protected final void PK(boolean paramBoolean)
+    {
+      AppMethodBeat.i(189284);
+      if (paramBoolean) {
+        q.a(this.ajxO, this);
+      }
+      AppMethodBeat.o(189284);
+    }
+    
+    public final Object iT(E paramE)
+    {
+      AppMethodBeat.i(189288);
+      paramE = super.iT(paramE);
+      AppMethodBeat.o(189288);
+      return paramE;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.q
  * JD-Core Version:    0.7.0.1
  */

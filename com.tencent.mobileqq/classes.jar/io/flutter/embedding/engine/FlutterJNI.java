@@ -4,23 +4,33 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
 import android.view.Surface;
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.PlatformMessageHandler;
-import io.flutter.embedding.engine.renderer.FlutterRenderer.RenderSurface;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.plugin.common.StandardMessageCodec;
+import io.flutter.plugin.localization.LocalizationPlugin;
+import io.flutter.plugin.platform.PlatformViewsController;
 import io.flutter.view.AccessibilityBridge.Action;
 import io.flutter.view.FlutterCallbackInformation;
 import java.nio.ByteBuffer;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Locale.Builder;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
+@Keep
 public class FlutterJNI
 {
   private static final String TAG = "FlutterJNI";
@@ -32,9 +42,11 @@ public class FlutterJNI
   @Nullable
   private FlutterJNI.AccessibilityDelegate accessibilityDelegate;
   @NonNull
-  private final Set<FlutterEngine.EngineLifecycleListener> engineLifecycleListeners = new HashSet();
+  private final Set<FlutterEngine.EngineLifecycleListener> engineLifecycleListeners = new CopyOnWriteArraySet();
   @NonNull
-  private final Set<OnFirstFrameRenderedListener> firstFrameListeners = new HashSet();
+  private final Set<FlutterUiDisplayListener> flutterUiDisplayListeners = new CopyOnWriteArraySet();
+  @Nullable
+  private LocalizationPlugin localizationPlugin;
   @NonNull
   private final Looper mainLooper = Looper.getMainLooper();
   @Nullable
@@ -42,13 +54,14 @@ public class FlutterJNI
   @Nullable
   private PlatformMessageHandler platformMessageHandler;
   @Nullable
-  private FlutterRenderer.RenderSurface renderSurface;
+  private PlatformViewsController platformViewsController;
   
   private static void asyncWaitForVsync(long paramLong)
   {
-    if (asyncWaitForVsyncDelegate != null)
+    FlutterJNI.AsyncWaitForVsyncDelegate localAsyncWaitForVsyncDelegate = asyncWaitForVsyncDelegate;
+    if (localAsyncWaitForVsyncDelegate != null)
     {
-      asyncWaitForVsyncDelegate.asyncWaitForVsync(paramLong);
+      localAsyncWaitForVsyncDelegate.asyncWaitForVsync(paramLong);
       return;
     }
     throw new IllegalStateException("An AsyncWaitForVsyncDelegate must be registered with FlutterJNI before asyncWaitForVsync() is invoked.");
@@ -87,21 +100,15 @@ public class FlutterJNI
     return observatoryUri;
   }
   
-  private void handlePlatformMessage(@NonNull String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    if (this.platformMessageHandler != null) {
-      this.platformMessageHandler.handleMessageFromDart(paramString, paramArrayOfByte, paramInt);
-    }
-  }
-  
   private void handlePlatformMessageResponse(int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.platformMessageHandler != null) {
-      this.platformMessageHandler.handlePlatformMessageResponse(paramInt, paramArrayOfByte);
+    PlatformMessageHandler localPlatformMessageHandler = this.platformMessageHandler;
+    if (localPlatformMessageHandler != null) {
+      localPlatformMessageHandler.handlePlatformMessageResponse(paramInt, paramArrayOfByte);
     }
   }
   
-  private native long nativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean);
+  private native long nativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean, String[] paramArrayOfString);
   
   private native void nativeDestroy(long paramLong);
   
@@ -115,10 +122,9 @@ public class FlutterJNI
   
   private native Bitmap nativeGetBitmap(long paramLong);
   
-  @UiThread
-  public static native boolean nativeGetIsSoftwareRenderingEnabled();
+  private native boolean nativeGetIsSoftwareRenderingEnabled();
   
-  public static native void nativeInit(@NonNull Context paramContext, @NonNull String[] paramArrayOfString, @Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3);
+  public static native void nativeInit(@NonNull Context paramContext, @NonNull String[] paramArrayOfString, @Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3, long paramLong);
   
   private native void nativeInvokePlatformMessageEmptyResponseCallback(long paramLong, int paramInt);
   
@@ -129,9 +135,11 @@ public class FlutterJNI
   
   private native void nativeMarkTextureFrameAvailable(long paramLong1, long paramLong2);
   
+  private native void nativeNotifyLowMemoryWarning(long paramLong);
+  
   public static native void nativeOnVsync(long paramLong1, long paramLong2, long paramLong3);
   
-  public static native void nativeRecordStartTimestamp(long paramLong);
+  public static native void nativePrefetchDefaultFontManager();
   
   private native void nativeRegisterTexture(long paramLong1, long paramLong2, @NonNull SurfaceTexture paramSurfaceTexture);
   
@@ -149,20 +157,9 @@ public class FlutterJNI
   
   private native void nativeSurfaceDestroyed(long paramLong);
   
-  private native void nativeUnregisterTexture(long paramLong1, long paramLong2);
+  private native void nativeSurfaceWindowChanged(long paramLong, @NonNull Surface paramSurface);
   
-  @UiThread
-  private void onFirstFrame()
-  {
-    ensureRunningOnMainThread();
-    if (this.renderSurface != null) {
-      this.renderSurface.onFirstFrameRendered();
-    }
-    Iterator localIterator = this.firstFrameListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((OnFirstFrameRenderedListener)localIterator.next()).onFirstFrameRendered();
-    }
-  }
+  private native void nativeUnregisterTexture(long paramLong1, long paramLong2);
   
   private void onPreEngineRestart()
   {
@@ -186,8 +183,9 @@ public class FlutterJNI
   private void updateCustomAccessibilityActions(@NonNull ByteBuffer paramByteBuffer, @NonNull String[] paramArrayOfString)
   {
     ensureRunningOnMainThread();
-    if (this.accessibilityDelegate != null) {
-      this.accessibilityDelegate.updateCustomAccessibilityActions(paramByteBuffer, paramArrayOfString);
+    FlutterJNI.AccessibilityDelegate localAccessibilityDelegate = this.accessibilityDelegate;
+    if (localAccessibilityDelegate != null) {
+      localAccessibilityDelegate.updateCustomAccessibilityActions(paramByteBuffer, paramArrayOfString);
     }
   }
   
@@ -195,8 +193,9 @@ public class FlutterJNI
   private void updateSemantics(@NonNull ByteBuffer paramByteBuffer, @NonNull String[] paramArrayOfString)
   {
     ensureRunningOnMainThread();
-    if (this.accessibilityDelegate != null) {
-      this.accessibilityDelegate.updateSemantics(paramByteBuffer, paramArrayOfString);
+    FlutterJNI.AccessibilityDelegate localAccessibilityDelegate = this.accessibilityDelegate;
+    if (localAccessibilityDelegate != null) {
+      localAccessibilityDelegate.updateSemantics(paramByteBuffer, paramArrayOfString);
     }
   }
   
@@ -208,18 +207,97 @@ public class FlutterJNI
   }
   
   @UiThread
-  public void addOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void addIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
     ensureRunningOnMainThread();
-    this.firstFrameListeners.add(paramOnFirstFrameRenderedListener);
+    this.flutterUiDisplayListeners.add(paramFlutterUiDisplayListener);
   }
   
   @UiThread
   public void attachToNative(boolean paramBoolean)
   {
+    attachToNative(paramBoolean, new String[0]);
+  }
+  
+  @UiThread
+  public void attachToNative(boolean paramBoolean, String[] paramArrayOfString)
+  {
     ensureRunningOnMainThread();
     ensureNotAttachedToNative();
-    this.nativePlatformViewId = Long.valueOf(nativeAttach(this, paramBoolean));
+    this.nativePlatformViewId = Long.valueOf(performNativeAttach(this, paramBoolean, paramArrayOfString));
+  }
+  
+  @VisibleForTesting
+  String[] computePlatformResolvedLocale(@NonNull String[] paramArrayOfString)
+  {
+    if (this.localizationPlugin == null) {
+      return new String[0];
+    }
+    Object localObject = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      String str1 = paramArrayOfString[(i + 0)];
+      String str2 = paramArrayOfString[(i + 1)];
+      String str3 = paramArrayOfString[(i + 2)];
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        Locale.Builder localBuilder = new Locale.Builder();
+        if (!str1.isEmpty()) {
+          localBuilder.setLanguage(str1);
+        }
+        if (!str2.isEmpty()) {
+          localBuilder.setRegion(str2);
+        }
+        if (!str3.isEmpty()) {
+          localBuilder.setScript(str3);
+        }
+        ((List)localObject).add(localBuilder.build());
+      }
+      else
+      {
+        ((List)localObject).add(new Locale(str1, str2));
+      }
+      i += 3;
+    }
+    paramArrayOfString = this.localizationPlugin.resolveNativeLocale((List)localObject);
+    if (paramArrayOfString == null) {
+      return new String[0];
+    }
+    localObject = new String[3];
+    localObject[0] = paramArrayOfString.getLanguage();
+    localObject[1] = paramArrayOfString.getCountry();
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject[2] = paramArrayOfString.getScript();
+      return localObject;
+    }
+    localObject[2] = "";
+    return localObject;
+  }
+  
+  @UiThread
+  public FlutterOverlaySurface createOverlaySurface()
+  {
+    ensureRunningOnMainThread();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null) {
+      return localPlatformViewsController.createOverlaySurface();
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to position an overlay surface");
+  }
+  
+  @UiThread
+  public void destroyOverlaySurfaces()
+  {
+    ensureRunningOnMainThread();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
+    {
+      localPlatformViewsController.destroyOverlaySurfaces();
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to destroy an overlay surface");
   }
   
   @UiThread
@@ -289,15 +367,18 @@ public class FlutterJNI
   public void dispatchSemanticsAction(int paramInt, @NonNull AccessibilityBridge.Action paramAction, @Nullable Object paramObject)
   {
     ensureAttachedToNative();
-    if (paramObject != null) {
-      paramObject = StandardMessageCodec.INSTANCE.encodeMessage(paramObject);
-    }
-    for (int i = paramObject.position();; i = 0)
+    int i;
+    if (paramObject != null)
     {
-      dispatchSemanticsAction(paramInt, paramAction.value, paramObject, i);
-      return;
-      paramObject = null;
+      paramObject = StandardMessageCodec.INSTANCE.encodeMessage(paramObject);
+      i = paramObject.position();
     }
+    else
+    {
+      paramObject = null;
+      i = 0;
+    }
+    dispatchSemanticsAction(paramInt, paramAction.value, paramObject, i);
   }
   
   @UiThread
@@ -306,6 +387,21 @@ public class FlutterJNI
     ensureRunningOnMainThread();
     ensureAttachedToNative();
     return nativeGetBitmap(this.nativePlatformViewId.longValue());
+  }
+  
+  @UiThread
+  public boolean getIsSoftwareRenderingEnabled()
+  {
+    return nativeGetIsSoftwareRenderingEnabled();
+  }
+  
+  @VisibleForTesting
+  public void handlePlatformMessage(@NonNull String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    PlatformMessageHandler localPlatformMessageHandler = this.platformMessageHandler;
+    if (localPlatformMessageHandler != null) {
+      localPlatformMessageHandler.handleMessageFromDart(paramString, paramArrayOfByte, paramInt);
+    }
   }
   
   @UiThread
@@ -351,6 +447,98 @@ public class FlutterJNI
     nativeMarkTextureFrameAvailable(this.nativePlatformViewId.longValue(), paramLong);
   }
   
+  public native boolean nativeFlutterTextUtilsIsEmoji(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsEmojiModifier(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsEmojiModifierBase(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsRegionalIndicator(int paramInt);
+  
+  public native boolean nativeFlutterTextUtilsIsVariationSelector(int paramInt);
+  
+  @UiThread
+  public void notifyLowMemoryWarning()
+  {
+    ensureRunningOnMainThread();
+    ensureAttachedToNative();
+    nativeNotifyLowMemoryWarning(this.nativePlatformViewId.longValue());
+  }
+  
+  @UiThread
+  public void onBeginFrame()
+  {
+    ensureRunningOnMainThread();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
+    {
+      localPlatformViewsController.onBeginFrame();
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to begin the frame");
+  }
+  
+  @UiThread
+  public void onDisplayOverlaySurface(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    ensureRunningOnMainThread();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
+    {
+      localPlatformViewsController.onDisplayOverlaySurface(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to position an overlay surface");
+  }
+  
+  @UiThread
+  public void onDisplayPlatformView(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, FlutterMutatorsStack paramFlutterMutatorsStack)
+  {
+    ensureRunningOnMainThread();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
+    {
+      localPlatformViewsController.onDisplayPlatformView(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramFlutterMutatorsStack);
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to position a platform view");
+  }
+  
+  @UiThread
+  public void onEndFrame()
+  {
+    ensureRunningOnMainThread();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
+    {
+      localPlatformViewsController.onEndFrame();
+      return;
+    }
+    throw new RuntimeException("platformViewsController must be set before attempting to end the frame");
+  }
+  
+  @UiThread
+  @VisibleForTesting
+  public void onFirstFrame()
+  {
+    ensureRunningOnMainThread();
+    Iterator localIterator = this.flutterUiDisplayListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((FlutterUiDisplayListener)localIterator.next()).onFlutterUiDisplayed();
+    }
+  }
+  
+  @UiThread
+  @VisibleForTesting
+  void onRenderingStopped()
+  {
+    ensureRunningOnMainThread();
+    Iterator localIterator = this.flutterUiDisplayListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((FlutterUiDisplayListener)localIterator.next()).onFlutterUiNoLongerDisplayed();
+    }
+  }
+  
   @UiThread
   public void onSurfaceChanged(int paramInt1, int paramInt2)
   {
@@ -372,7 +560,28 @@ public class FlutterJNI
   {
     ensureRunningOnMainThread();
     ensureAttachedToNative();
+    onRenderingStopped();
     nativeSurfaceDestroyed(this.nativePlatformViewId.longValue());
+  }
+  
+  @UiThread
+  public void onSurfaceWindowChanged(@NonNull Surface paramSurface)
+  {
+    ensureRunningOnMainThread();
+    ensureAttachedToNative();
+    nativeSurfaceWindowChanged(this.nativePlatformViewId.longValue(), paramSurface);
+  }
+  
+  @VisibleForTesting
+  public long performNativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean)
+  {
+    return performNativeAttach(this, paramBoolean, new String[0]);
+  }
+  
+  @VisibleForTesting
+  public long performNativeAttach(@NonNull FlutterJNI paramFlutterJNI, boolean paramBoolean, String[] paramArrayOfString)
+  {
+    return nativeAttach(this, paramBoolean, paramArrayOfString);
   }
   
   @UiThread
@@ -391,10 +600,10 @@ public class FlutterJNI
   }
   
   @UiThread
-  public void removeOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void removeIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
     ensureRunningOnMainThread();
-    this.firstFrameListeners.remove(paramOnFirstFrameRenderedListener);
+    this.flutterUiDisplayListeners.remove(paramFlutterUiDisplayListener);
   }
   
   @UiThread
@@ -421,6 +630,13 @@ public class FlutterJNI
   }
   
   @UiThread
+  public void setLocalizationPlugin(@Nullable LocalizationPlugin paramLocalizationPlugin)
+  {
+    ensureRunningOnMainThread();
+    this.localizationPlugin = paramLocalizationPlugin;
+  }
+  
+  @UiThread
   public void setPlatformMessageHandler(@Nullable PlatformMessageHandler paramPlatformMessageHandler)
   {
     ensureRunningOnMainThread();
@@ -428,10 +644,10 @@ public class FlutterJNI
   }
   
   @UiThread
-  public void setRenderSurface(@Nullable FlutterRenderer.RenderSurface paramRenderSurface)
+  public void setPlatformViewsController(@NonNull PlatformViewsController paramPlatformViewsController)
   {
     ensureRunningOnMainThread();
-    this.renderSurface = paramRenderSurface;
+    this.platformViewsController = paramPlatformViewsController;
   }
   
   @UiThread
@@ -460,7 +676,7 @@ public class FlutterJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterJNI
  * JD-Core Version:    0.7.0.1
  */

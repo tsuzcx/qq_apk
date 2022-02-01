@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aing;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
-public class PhoneMatchView$1
+class PhoneMatchView$1
   implements Runnable
 {
   PhoneMatchView$1(PhoneMatchView paramPhoneMatchView) {}
   
   public void run()
   {
-    this.this$0.a(2131719785, 1000L, true);
+    this.this$0.a(2131916272, 1000L, true);
     PhoneMatchView.a(this.this$0).sendEmptyMessageDelayed(0, 15000L);
-    if (this.this$0.jdField_a_of_type_Awhw == null)
+    if (this.this$0.l == null)
     {
-      this.this$0.jdField_a_of_type_Awhw = new aing(this);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_Awhw);
+      this.this$0.l = new PhoneMatchView.1.1(this);
+      this.this$0.a.registObserver(this.this$0.l);
     }
     ThreadManager.excute(new PhoneMatchView.1.2(this), 16, null, false);
   }

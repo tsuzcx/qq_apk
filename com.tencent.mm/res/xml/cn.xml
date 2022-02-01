@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.HeadImgNewPreference mm:key="settings_change_avatar" mm:layout="@layout/bdi" mm:title="@string/iqu" />
+    <Preference mm:key="settings_name" mm:layout="@layout/bdi" mm:title="@string/iv5" />
+    <Preference mm:key="settings_pat" mm:layout="@layout/bdi" mm:title="@string/hgg" />
+    <Preference mm:key="settings_username" mm:layout="@layout/bdi" mm:title="@string/j1s" />
+    <Preference mm:key="settings_qrcode" mm:layout="@layout/bdi" mm:title="@string/ixh" mm:widgetLayout="@layout/bew" />
+    <Preference mm:key="settings_finder_recent_like" mm:layout="@layout/bdi" mm:title="@string/ism" />
+    <Preference mm:key="settings_more_info" mm:layout="@layout/bdi" mm:title="@string/a0g" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference mm:key="settings_wecoin" mm:layout="@layout/bdi" mm:title="@string/iu1" />
+    <PreferenceSmallCategory />
+    <Preference mm:key="settings_address" mm:layout="@layout/bdi" mm:title="@string/iq7" />
+    <Preference mm:key="settings_invoice" mm:layout="@layout/bdi" mm:title="@string/it0" />
+</PreferenceScreen>

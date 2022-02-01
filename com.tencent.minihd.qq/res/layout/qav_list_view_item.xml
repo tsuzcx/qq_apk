@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="1.0dip" android:layout_height="50.0dip" />
+    <ImageView android:id="@id/item_img" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="5.0dip" android:layout_centerVertical="true" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:maxWidth="@dimen/gaudio_list_name_maxwidth" android:singleLine="true" android:layout_toRightOf="@id/item_img" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/item_video" android:visibility="invisible" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/qav_item_video" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/item_voice" android:visibility="invisible" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="14.0dip" android:src="@drawable/qav_item_voice" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/item_go" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginLeft="14.0dip" android:src="@drawable/common_arrow_right_selector" />
+    </LinearLayout>
+</RelativeLayout>

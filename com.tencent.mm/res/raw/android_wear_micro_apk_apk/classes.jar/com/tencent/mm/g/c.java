@@ -11,19 +11,19 @@ public final class c
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aq(1, this.min);
-      paramVarArgs.aq(2, this.max);
+      paramVarArgs.at(1, this.min);
+      paramVarArgs.at(2, this.max);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.ak(1, this.min) + 0 + a.a.a.a.ak(2, this.max);
+      return a.a.a.a.an(1, this.min) + 0 + a.a.a.a.an(2, this.max);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -37,10 +37,10 @@ public final class c
       default: 
         return -1;
       case 1: 
-        localc.min = locala.ot();
+        localc.min = locala.pg();
         return 0;
       }
-      localc.max = locala.ot();
+      localc.max = locala.pg();
       return 0;
     }
     return -1;

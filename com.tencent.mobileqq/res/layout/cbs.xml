@@ -2,8 +2,8 @@
 <FrameLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:orientation="vertical" android:id="@id/lsf" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/m5e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/akz" formItem:bgType="evy" formItem:leftText="@string/ije" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/m5d" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/ijf" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/m5e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/akz" formItem:bgType="evy" formItem:leftText="@string/ije" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.QFormSimpleItem android:id="@id/m5d" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/ijf" formItem:showArrow="true" />
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/lsd" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:layout_gravity="center_horizontal" android:id="@id/lsc" android:layout_width="200.0dip" android:layout_height="160.0dip" android:layout_marginTop="100.0dip" android:src="@drawable/hqs" />

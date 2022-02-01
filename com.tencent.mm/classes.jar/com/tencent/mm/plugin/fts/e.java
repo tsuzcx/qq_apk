@@ -2,54 +2,49 @@ package com.tencent.mm.plugin.fts;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.fts.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
-  implements com.tencent.mm.plugin.fts.a.j
+  implements j
 {
-  public e()
+  public final au aEa(String paramString)
   {
-    AppMethodBeat.i(141121);
-    AppMethodBeat.o(141121);
-  }
-  
-  public final ad OT(String paramString)
-  {
-    AppMethodBeat.i(136566);
-    ad localad2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arq(paramString);
-    ad localad1 = localad2;
-    if (localad2 == null)
+    AppMethodBeat.i(52550);
+    au localau2 = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxq(paramString);
+    au localau1 = localau2;
+    if (localau2 == null)
     {
-      localad1 = new ad();
-      paramString = i("SELECT ROWID, username, alias, conRemark, nickname, verifyFlag, type, lvbuff, contactLabelIds FROM rcontact WHERE username = ? AND deleteFlag=0;", new String[] { paramString });
+      localau1 = new au();
+      paramString = h("SELECT ROWID, username, alias, conRemark, nickname, verifyFlag, type, lvbuff, contactLabelIds FROM rcontact WHERE username = ? AND deleteFlag=0;", new String[] { paramString });
       if (paramString.moveToNext())
       {
-        localad1.euF = paramString.getLong(0);
-        localad1.setUsername(paramString.getString(1));
-        localad1.jm(paramString.getString(2));
-        localad1.jn(paramString.getString(3));
-        localad1.jp(paramString.getString(4));
-        localad1.hu(paramString.getInt(5));
-        localad1.setType(paramString.getInt(6));
-        localad1.G(paramString.getBlob(7));
-        localad1.jw(paramString.getString(8));
-        localad1.hw(0);
+        localau1.maN = paramString.getLong(0);
+        localau1.setUsername(paramString.getString(1));
+        localau1.AV(paramString.getString(2));
+        localau1.AW(paramString.getString(3));
+        localau1.setNickname(paramString.getString(4));
+        localau1.pr(paramString.getInt(5));
+        localau1.ru(paramString.getInt(6));
+        localau1.ag(paramString.getBlob(7));
+        localau1.Be(paramString.getString(8));
+        localau1.pt(0);
       }
       paramString.close();
     }
-    AppMethodBeat.o(136566);
-    return localad1;
+    AppMethodBeat.o(52550);
+    return localau1;
   }
   
-  public final boolean OU(String paramString)
+  public final boolean aEb(String paramString)
   {
-    AppMethodBeat.i(136567);
-    paramString = i(String.format("SELECT 1 FROM rconversation WHERE username = ?", new Object[0]), new String[] { paramString });
+    AppMethodBeat.i(52551);
+    paramString = h(String.format("SELECT 1 FROM rconversation WHERE username = ?", new Object[0]), new String[] { paramString });
     try
     {
       boolean bool = paramString.moveToNext();
@@ -60,14 +55,14 @@ public final class e
       if (paramString != null) {
         paramString.close();
       }
-      AppMethodBeat.o(136567);
+      AppMethodBeat.o(52551);
     }
   }
   
-  public final long OV(String paramString)
+  public final long aEc(String paramString)
   {
-    AppMethodBeat.i(136568);
-    paramString = i("SELECT conversationTime FROM rconversation WHERE username=?;", new String[] { paramString });
+    AppMethodBeat.i(52552);
+    paramString = h("SELECT conversationTime FROM rconversation WHERE username=?;", new String[] { paramString });
     long l2 = 0L;
     long l1 = l2;
     if (paramString != null)
@@ -80,13 +75,13 @@ public final class e
     if (paramString != null) {
       paramString.close();
     }
-    AppMethodBeat.o(136568);
+    AppMethodBeat.o(52552);
     return l1;
   }
   
-  public final List<String> OW(String paramString)
+  public final List<String> aEd(String paramString)
   {
-    AppMethodBeat.i(136569);
+    AppMethodBeat.i(52553);
     ArrayList localArrayList = new ArrayList();
     String str = paramString;
     if (paramString.endsWith("")) {
@@ -94,39 +89,39 @@ public final class e
     }
     if (str.length() == 0)
     {
-      AppMethodBeat.o(136569);
+      AppMethodBeat.o(52553);
       return localArrayList;
     }
-    paramString = i(String.format("SELECT labelName FROM ContactLabel WHERE labelID IN (%s);", new Object[] { str }), null);
+    paramString = h(String.format("SELECT labelName FROM ContactLabel WHERE labelID IN (%s);", new Object[] { str }), null);
     while (paramString.moveToNext()) {
       localArrayList.add(paramString.getString(0));
     }
     paramString.close();
-    AppMethodBeat.o(136569);
+    AppMethodBeat.o(52553);
     return localArrayList;
   }
   
-  public final Cursor i(String paramString, String[] paramArrayOfString)
+  public final Cursor h(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(136564);
-    g.RM();
-    paramString = g.RL().eHT.a(paramString, paramArrayOfString, 2);
-    AppMethodBeat.o(136564);
+    AppMethodBeat.i(52548);
+    com.tencent.mm.kernel.h.baF();
+    paramString = com.tencent.mm.kernel.h.baE().mCO.rawQuery(paramString, paramArrayOfString, 2);
+    AppMethodBeat.o(52548);
     return paramString;
   }
   
   public final Cursor rawQuery(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(136565);
-    g.RM();
-    paramString = g.RL().eHT.a(paramString, paramArrayOfString, 0);
-    AppMethodBeat.o(136565);
+    AppMethodBeat.i(52549);
+    com.tencent.mm.kernel.h.baF();
+    paramString = com.tencent.mm.kernel.h.baE().mCO.rawQuery(paramString, paramArrayOfString);
+    AppMethodBeat.o(52549);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.e
  * JD-Core Version:    0.7.0.1
  */

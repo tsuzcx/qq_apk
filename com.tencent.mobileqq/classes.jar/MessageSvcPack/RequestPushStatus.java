@@ -10,15 +10,15 @@ public final class RequestPushStatus
   extends JceStruct
 {
   static ArrayList<InstanceInfo> cache_vecInstanceList = new ArrayList();
-  public byte cDataLine;
-  public byte cPrintable;
-  public byte cStatus;
-  public byte cViewFile;
-  public long lUin;
-  public long nClientType;
-  public long nInstanceId;
-  public long nPCVer;
-  public ArrayList<InstanceInfo> vecInstanceList;
+  public byte cDataLine = 0;
+  public byte cPrintable = 0;
+  public byte cStatus = 0;
+  public byte cViewFile = 0;
+  public long lUin = 0L;
+  public long nClientType = 0L;
+  public long nInstanceId = 0L;
+  public long nPCVer = 0L;
+  public ArrayList<InstanceInfo> vecInstanceList = null;
   
   static
   {
@@ -64,14 +64,15 @@ public final class RequestPushStatus
     paramJceOutputStream.write(this.nPCVer, 5);
     paramJceOutputStream.write(this.nClientType, 6);
     paramJceOutputStream.write(this.nInstanceId, 7);
-    if (this.vecInstanceList != null) {
-      paramJceOutputStream.write(this.vecInstanceList, 8);
+    ArrayList localArrayList = this.vecInstanceList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.RequestPushStatus
  * JD-Core Version:    0.7.0.1
  */

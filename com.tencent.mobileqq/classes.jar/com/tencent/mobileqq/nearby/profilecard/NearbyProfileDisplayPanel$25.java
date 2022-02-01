@@ -1,28 +1,21 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avkt;
-import awgf;
-import awgg;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class NearbyProfileDisplayPanel$25
-  implements Runnable
+class NearbyProfileDisplayPanel$25
+  implements DialogInterface.OnDismissListener
 {
-  public NearbyProfileDisplayPanel$25(avkt paramavkt) {}
+  NearbyProfileDisplayPanel$25(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    awgf localawgf = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localawgf != null)
-    {
-      localawgf.a(avkt.a(this.this$0));
-      localawgf.a();
-    }
+    this.a.aa = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.25
  * JD-Core Version:    0.7.0.1
  */

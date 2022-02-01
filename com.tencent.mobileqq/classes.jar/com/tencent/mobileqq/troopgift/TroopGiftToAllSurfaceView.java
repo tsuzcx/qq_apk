@@ -11,40 +11,35 @@ import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import bado;
-import badp;
-import badq;
-import badu;
-import badw;
-import badx;
-import baei;
-import baej;
-import baem;
-import baen;
-import baeo;
-import baes;
-import bcve;
-import bcvf;
-import bcvg;
-import bcvh;
-import bcvj;
-import bdgz;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
+import com.tencent.mobileqq.surfaceviewaction.action.OpacityAction;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Label;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopGiftToAllSurfaceView
   extends SpriteGLView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private baem jdField_a_of_type_Baem;
-  private baeo jdField_a_of_type_Baeo;
-  private baes jdField_a_of_type_Baes;
-  private bcvj jdField_a_of_type_Bcvj;
-  private String jdField_a_of_type_JavaLangString;
-  private baem jdField_b_of_type_Baem;
-  private baes jdField_b_of_type_Baes;
+  private Sprite a;
+  private Sprite b;
+  private ImageButton c;
+  private ImageButton d;
+  private Label e;
+  private float f;
+  private TroopGiftToAllSurfaceView.Options g;
+  private int h;
+  private String i;
   
   public TroopGiftToAllSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,183 +48,207 @@ public class TroopGiftToAllSurfaceView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Baem != null)
+    if (this.c != null)
     {
-      badu localbadu = new badu(500, 255, 0);
-      localbadu.a(new bcvh(this));
-      this.jdField_a_of_type_Baem.a(new bado[] { localbadu });
+      OpacityAction localOpacityAction = new OpacityAction(500, 255, 0);
+      localOpacityAction.a(new TroopGiftToAllSurfaceView.4(this));
+      this.c.a(new Action[] { localOpacityAction });
     }
   }
   
-  protected void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, baen parambaen, bcvj parambcvj)
+  protected void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
   {
-    Bitmap localBitmap;
-    Canvas localCanvas;
-    Paint localPaint;
-    float f1;
-    int j;
-    if ((!parambcvj.jdField_a_of_type_Boolean) && (paramBitmap1 != null))
+    if ((!paramOptions.f) && (paramBitmap1 != null))
     {
-      localBitmap = paramBitmap1.copy(Bitmap.Config.ARGB_8888, true);
-      localCanvas = new Canvas(localBitmap);
-      localPaint = new Paint();
+      Bitmap localBitmap = paramBitmap1.copy(Bitmap.Config.ARGB_8888, true);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Paint localPaint = new Paint();
       localPaint.setAntiAlias(true);
-      localPaint.setColor(parambcvj.g);
+      localPaint.setColor(paramOptions.i);
       localPaint.setTextSize(34.0F);
       paramBitmap1 = new Matrix();
-      f1 = 140.0F / paramBitmap2.getWidth();
+      float f1 = 140.0F / paramBitmap2.getWidth();
       paramBitmap1.postScale(f1, f1);
-      paramBitmap1.postTranslate((localBitmap.getWidth() - f1 * paramBitmap2.getWidth()) / 2.0F, 154.0F);
+      paramBitmap1.postTranslate((localBitmap.getWidth() - paramBitmap2.getWidth() * f1) / 2.0F, 154.0F);
       localCanvas.drawBitmap(paramBitmap2, paramBitmap1, localPaint);
-      if ((!TextUtils.isEmpty(parambcvj.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(parambcvj.jdField_a_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(paramOptions.k)) && (!TextUtils.isEmpty(paramOptions.j)))
       {
-        float f2 = localPaint.measureText(parambcvj.jdField_b_of_type_JavaLangString);
+        float f2 = localPaint.measureText(paramOptions.k);
+        paramBitmap2 = paramOptions.k;
+        int j = 0;
         f1 = 0.0F;
-        j = 0;
-        paramBitmap1 = parambcvj.jdField_b_of_type_JavaLangString;
-        int i = 0;
-        while (i < parambcvj.jdField_a_of_type_JavaLangString.length())
+        int k = 0;
+        while (j < paramOptions.j.length())
         {
-          float f3 = localPaint.measureText("" + parambcvj.jdField_a_of_type_JavaLangString.charAt(i));
-          if (f1 + f3 + f2 > 475.0F) {
+          paramBitmap1 = new StringBuilder();
+          paramBitmap1.append("");
+          paramBitmap1.append(paramOptions.j.charAt(j));
+          f1 += localPaint.measureText(paramBitmap1.toString());
+          if (f1 + f2 > 475.0F) {
             break;
           }
-          f1 += f3;
+          k += 1;
           j += 1;
-          i += 1;
         }
-        if (j <= 0) {
-          break label577;
+        paramBitmap1 = paramBitmap2;
+        if (k > 0) {
+          if (k == paramOptions.j.length())
+          {
+            paramBitmap1 = new StringBuilder();
+            paramBitmap1.append(paramOptions.j);
+            paramBitmap1.append(paramBitmap2);
+            paramBitmap1 = paramBitmap1.toString();
+          }
+          else
+          {
+            paramBitmap1 = new StringBuilder();
+            paramBitmap1.append(paramOptions.j.substring(0, k));
+            paramBitmap1.append("...");
+            paramBitmap1.append(paramBitmap2);
+            paramBitmap1 = paramBitmap1.toString();
+          }
         }
-        if (j != parambcvj.jdField_a_of_type_JavaLangString.length()) {
-          break label524;
-        }
-        paramBitmap1 = parambcvj.jdField_a_of_type_JavaLangString + paramBitmap1;
+        f1 = localPaint.measureText(paramBitmap1);
+        localCanvas.drawText(paramBitmap1, localBitmap.getWidth() / 2 - f1 / 2.0F, 359.20001F, localPaint);
       }
+      this.a = new Sprite(this, localBitmap);
+      this.a.d = (this.g.a / 2);
+      paramBitmap1 = this.a;
+      paramBitmap1.e = this.h;
+      paramBitmap1.f = 0.0F;
+      a(paramBitmap1);
     }
-    label524:
-    label577:
-    for (;;)
+    if (paramBitmap3 != null)
     {
-      f1 = localPaint.measureText(paramBitmap1);
-      localCanvas.drawText(paramBitmap1, localBitmap.getWidth() / 2 - f1 / 2.0F, 359.20001F, localPaint);
-      this.jdField_a_of_type_Baes = new baes(this, localBitmap);
-      this.jdField_a_of_type_Baes.c = (this.jdField_a_of_type_Bcvj.jdField_a_of_type_Int / 2);
-      this.jdField_a_of_type_Baes.d = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Baes.e = 0.0F;
-      a(this.jdField_a_of_type_Baes);
-      if (paramBitmap3 != null)
-      {
-        this.jdField_a_of_type_Baem = new baem(this, paramBitmap3, false);
-        this.jdField_a_of_type_Baem.a(this.jdField_a_of_type_Bcvj.jdField_a_of_type_Int / 2, this.jdField_a_of_type_Bcvj.jdField_b_of_type_Int * this.jdField_a_of_type_Bcvj.f / 100);
-      }
-      try
-      {
-        this.jdField_b_of_type_Baem = new baem(this, BitmapFactory.decodeResource(getResources(), 2130846716), true);
-        this.jdField_b_of_type_Baem.a(parambcvj.jdField_a_of_type_Int - bdgz.a(getContext(), 40.0F), bdgz.a(getContext(), 120.0F));
-        this.jdField_b_of_type_Baem.a(parambaen);
-        this.jdField_b_of_type_Baem.e = 0.75F;
-        a(this.jdField_b_of_type_Baem);
-        return;
-        paramBitmap1 = parambcvj.jdField_a_of_type_JavaLangString.substring(0, j) + "..." + paramBitmap1;
-      }
-      catch (OutOfMemoryError paramBitmap1)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("TroopGiftToAllSurfaceView", 2, "decode closeButton failed");
-        return;
-      }
+      this.c = new ImageButton(this, paramBitmap3, false);
+      this.c.a(this.g.a / 2, this.g.b * this.g.h / 100);
     }
-  }
-  
-  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString, baen parambaen, bcvj parambcvj)
-  {
-    this.jdField_a_of_type_Bcvj = parambcvj;
-    this.jdField_a_of_type_Int = (parambcvj.jdField_b_of_type_Int * parambcvj.c / 100);
-    this.jdField_a_of_type_Float = (getResources().getDisplayMetrics().density / 2.0F);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramString = new VideoSprite(this, getContext(), true);
-    paramString.b = true;
-    paramString.c = (this.jdField_a_of_type_Bcvj.jdField_a_of_type_Int / 2);
-    paramString.d = (this.jdField_a_of_type_Bcvj.jdField_b_of_type_Int / 2);
-    this.jdField_b_of_type_Baes = paramString;
-    a(paramBitmap1, paramBitmap2, paramBitmap3, parambaen, parambcvj);
-  }
-  
-  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, baen parambaen, bcvj parambcvj)
-  {
-    this.jdField_a_of_type_Bcvj = parambcvj;
-    this.jdField_a_of_type_Int = (parambcvj.jdField_b_of_type_Int * parambcvj.c / 100);
-    this.jdField_a_of_type_Float = (getResources().getDisplayMetrics().density / 2.0F);
-    paramArrayOfString = new baei(this, paramArrayOfString);
-    this.jdField_b_of_type_Baes = paramArrayOfString;
-    this.jdField_b_of_type_Baes.c = (this.jdField_a_of_type_Bcvj.jdField_a_of_type_Int / 2);
-    this.jdField_b_of_type_Baes.d = (this.jdField_a_of_type_Bcvj.jdField_b_of_type_Int / 2);
-    this.jdField_b_of_type_Baes.e = parambcvj.jdField_a_of_type_Float;
-    paramArrayOfString.e(parambcvj.h);
-    paramArrayOfString.a(true);
-    a(paramBitmap1, paramBitmap2, paramBitmap3, parambaen, parambcvj);
-  }
-  
-  public void a(badp parambadp)
-  {
-    if (this.jdField_b_of_type_Baes != null) {
-      this.jdField_b_of_type_Baes.a(new bado[] { new badu(500, 255, 0, 1) });
-    }
-    badu localbadu = new badu(500, 255, 0, 1);
-    localbadu.a(parambadp);
-    if (this.jdField_a_of_type_Baes != null) {
-      this.jdField_a_of_type_Baes.a(new bado[] { localbadu });
-    }
-    if (this.jdField_a_of_type_Baem != null)
+    try
     {
-      this.jdField_a_of_type_Baem.a(null);
-      this.jdField_a_of_type_Baem.a(new bado[] { new badu(500, 255, 0, 1) });
-    }
-    if (this.jdField_a_of_type_Baeo != null) {
-      this.jdField_a_of_type_Baeo.a(new bado[] { new badu(500, 255, 0, 1) });
-    }
-    if (this.jdField_b_of_type_Baem != null) {
-      this.jdField_b_of_type_Baem.a(new bado[] { new badu(500, 255, 0, 1) });
-    }
-  }
-  
-  public void a(baej parambaej)
-  {
-    if (this.jdField_a_of_type_Baes != null)
-    {
-      badx localbadx = new badx(new bado[] { new badw(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new badw(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.95F), new badw(200, this.jdField_a_of_type_Float * 0.95F, this.jdField_a_of_type_Float * 1.05F), new badw(200, this.jdField_a_of_type_Float * 1.05F, this.jdField_a_of_type_Float * 1.0F) });
-      this.jdField_a_of_type_Baes.a(new bado[] { localbadx });
-    }
-    if ((this.jdField_b_of_type_Baes != null) && ((this.jdField_b_of_type_Baes instanceof baei)))
-    {
-      ((baei)this.jdField_b_of_type_Baes).a = new bcve(this, parambaej);
-      ((baei)this.jdField_b_of_type_Baes).a(getContext(), this);
-    }
-    for (;;)
-    {
-      parambaej = new badq(500);
-      parambaej.a(new bcvf(this));
-      if (this.jdField_a_of_type_Baes != null) {
-        this.jdField_a_of_type_Baes.a(new bado[] { parambaej });
-      }
+      this.d = new ImageButton(this, BitmapFactory.decodeResource(getResources(), 2130849066), true);
+      this.d.a(paramOptions.a - DisplayUtils.a(getContext(), 40.0F), DisplayUtils.a(getContext(), 120.0F));
+      this.d.a(paramOnClickListener);
+      this.d.f = 0.75F;
+      a(this.d);
       return;
-      if ((this.jdField_b_of_type_Baes != null) && ((this.jdField_b_of_type_Baes instanceof VideoSprite))) {
-        ((VideoSprite)this.jdField_b_of_type_Baes).a(parambaej);
-      }
+    }
+    catch (OutOfMemoryError paramBitmap1)
+    {
+      label572:
+      break label572;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGiftToAllSurfaceView", 2, "decode closeButton failed");
     }
   }
   
-  public void a(baen parambaen)
+  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
   {
-    if (this.jdField_a_of_type_Baem != null)
+    this.g = paramOptions;
+    this.h = (paramOptions.b * paramOptions.d / 100);
+    this.f = (getResources().getDisplayMetrics().density / 2.0F);
+    this.i = paramString;
+    paramString = new VideoSprite(this, getContext(), true);
+    paramString.s = true;
+    paramString.d = (this.g.a / 2);
+    paramString.e = (this.g.b / 2);
+    this.b = paramString;
+    a(paramBitmap1, paramBitmap2, paramBitmap3, paramOnClickListener, paramOptions);
+  }
+  
+  public void a(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String[] paramArrayOfString, ImageButton.OnClickListener paramOnClickListener, TroopGiftToAllSurfaceView.Options paramOptions)
+  {
+    this.g = paramOptions;
+    this.h = (paramOptions.b * paramOptions.d / 100);
+    this.f = (getResources().getDisplayMetrics().density / 2.0F);
+    paramArrayOfString = new FrameSprite(this, paramArrayOfString);
+    this.b = paramArrayOfString;
+    this.b.d = (this.g.a / 2);
+    this.b.e = (this.g.b / 2);
+    this.b.f = paramOptions.c;
+    paramArrayOfString.e(paramOptions.l);
+    paramArrayOfString.a(true);
+    a(paramBitmap1, paramBitmap2, paramBitmap3, paramOnClickListener, paramOptions);
+  }
+  
+  public void a(Action.OnActionEndListener paramOnActionEndListener)
+  {
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((Sprite)localObject).a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    }
+    localObject = new OpacityAction(500, 255, 0, 1);
+    ((Action)localObject).a(paramOnActionEndListener);
+    paramOnActionEndListener = this.a;
+    if (paramOnActionEndListener != null) {
+      paramOnActionEndListener.a(new Action[] { localObject });
+    }
+    paramOnActionEndListener = this.c;
+    if (paramOnActionEndListener != null)
     {
-      this.jdField_a_of_type_Baem.a(parambaen);
-      this.jdField_a_of_type_Baem.e = 0.0F;
-      a(this.jdField_a_of_type_Baem);
-      parambaen = new badx(new bado[] { new badw(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new badw(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.88F), new badw(200, this.jdField_a_of_type_Float * 0.88F, this.jdField_a_of_type_Float) });
-      parambaen.a(new bcvg(this));
-      this.jdField_a_of_type_Baem.a(new bado[] { parambaen });
+      paramOnActionEndListener.a(null);
+      this.c.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    }
+    paramOnActionEndListener = this.e;
+    if (paramOnActionEndListener != null) {
+      paramOnActionEndListener.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    }
+    paramOnActionEndListener = this.d;
+    if (paramOnActionEndListener != null) {
+      paramOnActionEndListener.a(new Action[] { new OpacityAction(500, 255, 0, 1) });
+    }
+  }
+  
+  public void a(FrameSprite.OnFrameEndListener paramOnFrameEndListener)
+  {
+    if (this.a != null)
+    {
+      localObject = new ScaleAction(500, 0.0F, this.f * 1.1F);
+      float f1 = this.f;
+      ScaleAction localScaleAction1 = new ScaleAction(200, 1.1F * f1, f1 * 0.95F);
+      f1 = this.f;
+      ScaleAction localScaleAction2 = new ScaleAction(200, 0.95F * f1, f1 * 1.05F);
+      f1 = this.f;
+      localObject = new SequenceAction(new Action[] { localObject, localScaleAction1, localScaleAction2, new ScaleAction(200, 1.05F * f1, f1 * 1.0F) });
+      this.a.a(new Action[] { localObject });
+    }
+    Object localObject = this.b;
+    if ((localObject != null) && ((localObject instanceof FrameSprite)))
+    {
+      ((FrameSprite)localObject).u = new TroopGiftToAllSurfaceView.1(this, paramOnFrameEndListener);
+      ((FrameSprite)this.b).a(getContext(), this);
+    }
+    else
+    {
+      localObject = this.b;
+      if ((localObject != null) && ((localObject instanceof VideoSprite))) {
+        ((VideoSprite)localObject).a(paramOnFrameEndListener);
+      }
+    }
+    paramOnFrameEndListener = new DelayAction(500);
+    paramOnFrameEndListener.a(new TroopGiftToAllSurfaceView.2(this));
+    localObject = this.a;
+    if (localObject != null) {
+      ((Sprite)localObject).a(new Action[] { paramOnFrameEndListener });
+    }
+  }
+  
+  public void a(ImageButton.OnClickListener paramOnClickListener)
+  {
+    Object localObject = this.c;
+    if (localObject != null)
+    {
+      ((ImageButton)localObject).a(paramOnClickListener);
+      paramOnClickListener = this.c;
+      paramOnClickListener.f = 0.0F;
+      a(paramOnClickListener);
+      paramOnClickListener = new ScaleAction(500, 0.0F, this.f * 1.1F);
+      float f1 = this.f;
+      localObject = new ScaleAction(200, 1.1F * f1, f1 * 0.88F);
+      f1 = this.f;
+      paramOnClickListener = new SequenceAction(new Action[] { paramOnClickListener, localObject, new ScaleAction(200, 0.88F * f1, f1) });
+      paramOnClickListener.a(new TroopGiftToAllSurfaceView.3(this));
+      this.c.a(new Action[] { paramOnClickListener });
     }
   }
   
@@ -243,7 +262,7 @@ public class TroopGiftToAllSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.c;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d;
+import com.tencent.mm.sdk.SynchronizedPool;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.i.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,47 +22,47 @@ public class DrawCanvasArg
   implements Parcelable
 {
   public static final Parcelable.Creator<DrawCanvasArg> CREATOR;
-  public boolean hfP;
-  public String hfQ;
-  public long hfR;
-  public boolean hfS;
-  public JSONArray hfT;
-  public volatile Runnable hfU;
-  private volatile boolean hfV;
-  public volatile boolean hfW;
-  protected volatile int hfX;
-  protected volatile int hfY;
-  public List<DrawActionWrapper> hfq;
+  public List<DrawActionWrapper> qTR;
+  public boolean qUq;
+  public String qUr;
+  public long qUs;
+  public boolean qUt;
+  public JSONArray qUu;
+  public volatile b qUv;
+  private volatile boolean qUw;
+  public volatile boolean qUx;
+  protected volatile int qUy;
+  protected volatile int qUz;
   
   static
   {
-    AppMethodBeat.i(103710);
-    CREATOR = new DrawCanvasArg.2();
-    AppMethodBeat.o(103710);
+    AppMethodBeat.i(145393);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145393);
   }
   
   public DrawCanvasArg()
   {
-    AppMethodBeat.i(103702);
-    this.hfq = new ArrayList();
-    this.hfV = false;
-    this.hfW = false;
-    AppMethodBeat.o(103702);
+    AppMethodBeat.i(145385);
+    this.qTR = new ArrayList();
+    this.qUw = false;
+    this.qUx = false;
+    AppMethodBeat.o(145385);
   }
   
   public DrawCanvasArg(Parcel paramParcel)
   {
-    AppMethodBeat.i(103703);
-    this.hfq = new ArrayList();
-    this.hfV = false;
-    this.hfW = false;
+    AppMethodBeat.i(145386);
+    this.qTR = new ArrayList();
+    this.qUw = false;
+    this.qUx = false;
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.hfP = bool1;
-      this.hfQ = paramParcel.readString();
-      this.hfq = paramParcel.readArrayList(DrawCanvasArg.class.getClassLoader());
-      this.hfR = paramParcel.readLong();
+      this.qUq = bool1;
+      this.qUr = paramParcel.readString();
+      this.qTR = paramParcel.readArrayList(DrawCanvasArg.class.getClassLoader());
+      this.qUs = paramParcel.readLong();
       if (paramParcel.readInt() != 1) {
         break label102;
       }
@@ -68,8 +70,8 @@ public class DrawCanvasArg
     label102:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.hfS = bool1;
-      AppMethodBeat.o(103703);
+      this.qUt = bool1;
+      AppMethodBeat.o(145386);
       return;
       bool1 = false;
       break;
@@ -80,19 +82,19 @@ public class DrawCanvasArg
   {
     try
     {
-      AppMethodBeat.i(103706);
-      ab.i("DrawCanvasArg", "release %s", new Object[] { toString() });
-      this.hfY = 0;
-      this.hfX = 0;
-      this.hfU = null;
-      this.hfP = false;
-      this.hfT = null;
-      this.hfQ = null;
-      this.hfR = 0L;
-      this.hfS = false;
-      this.hfV = false;
-      this.hfW = false;
-      Iterator localIterator = this.hfq.iterator();
+      AppMethodBeat.i(145389);
+      Log.i("DrawCanvasArg", "release %s", new Object[] { toString() });
+      this.qUz = 0;
+      this.qUy = 0;
+      this.qUv = null;
+      this.qUq = false;
+      this.qUu = null;
+      this.qUr = null;
+      this.qUs = 0L;
+      this.qUt = false;
+      this.qUw = false;
+      this.qUx = false;
+      Iterator localIterator = this.qTR.iterator();
       while (localIterator.hasNext())
       {
         DrawActionWrapper localDrawActionWrapper = (DrawActionWrapper)localIterator.next();
@@ -101,10 +103,10 @@ public class DrawCanvasArg
         }
         localIterator.remove();
       }
-      com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d.ayb().hfu.release(this);
+      d.ckd().qTV.release(this);
     }
     finally {}
-    AppMethodBeat.o(103706);
+    AppMethodBeat.o(145389);
   }
   
   public int describeContents()
@@ -112,16 +114,16 @@ public class DrawCanvasArg
     return 0;
   }
   
-  public final void h(JSONArray paramJSONArray)
+  public final void k(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103704);
+    AppMethodBeat.i(145387);
     int i = 0;
     DrawActionWrapper localDrawActionWrapper;
-    if ((i < paramJSONArray.length()) && (!this.hfV))
+    if ((i < paramJSONArray.length()) && (!this.qUw))
     {
       JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      BaseDrawActionArg localBaseDrawActionArg = c.aya().zA(localJSONObject.optString("method"));
-      localDrawActionWrapper = (DrawActionWrapper)com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d.ayb().hfv.acquire();
+      BaseDrawActionArg localBaseDrawActionArg = c.ckc().WQ(localJSONObject.optString("method"));
+      localDrawActionWrapper = (DrawActionWrapper)d.ckd().qTW.acquire();
       localObject = localDrawActionWrapper;
       if (localDrawActionWrapper == null) {
         localObject = new DrawActionWrapper();
@@ -129,26 +131,26 @@ public class DrawCanvasArg
       if (localBaseDrawActionArg != null)
       {
         ((DrawActionWrapper)localObject).type = 2;
-        localBaseDrawActionArg.p(localJSONObject);
-        ((DrawActionWrapper)localObject).heL = localBaseDrawActionArg;
+        localBaseDrawActionArg.parse(localJSONObject);
+        ((DrawActionWrapper)localObject).qTs = localBaseDrawActionArg;
       }
       for (;;)
       {
-        this.hfq.add(localObject);
+        this.qTR.add(localObject);
         i += 1;
         break;
         ((DrawActionWrapper)localObject).type = 1;
-        ((DrawActionWrapper)localObject).heM = localJSONObject;
+        ((DrawActionWrapper)localObject).qTt = localJSONObject;
       }
     }
     paramJSONArray = new LinkedList();
     Object localObject = new ArrayList();
-    this.hfY += this.hfq.size();
-    int j = this.hfq.size() - 1;
+    this.qUz += this.qTR.size();
+    int j = this.qTR.size() - 1;
     i = 0;
     if (j >= 0)
     {
-      localDrawActionWrapper = (DrawActionWrapper)this.hfq.get(j);
+      localDrawActionWrapper = (DrawActionWrapper)this.qTR.get(j);
       boolean bool;
       switch (localDrawActionWrapper.type)
       {
@@ -157,7 +159,7 @@ public class DrawCanvasArg
         label235:
         if (bool)
         {
-          ab.i("DrawCanvasArg", "found redudant method %s", new Object[] { localDrawActionWrapper.getMethod() });
+          Log.i("DrawCanvasArg", "found redudant method %s", new Object[] { localDrawActionWrapper.getMethod() });
           ((List)localObject).add(localDrawActionWrapper);
           i += 1;
         }
@@ -169,14 +171,14 @@ public class DrawCanvasArg
         break;
         bool = false;
         break label235;
-        bool = localDrawActionWrapper.heL.axX();
+        bool = localDrawActionWrapper.qTs.cjZ();
         break label235;
         if ("save".equals(localDrawActionWrapper.getMethod()))
         {
           if ((paramJSONArray.size() > 0) && (((DrawActionWrapper)paramJSONArray.getLast()).getMethod().equals("restore")))
           {
             ((List)localObject).add(localDrawActionWrapper);
-            ((List)localObject).add(paramJSONArray.removeLast());
+            ((List)localObject).add((DrawActionWrapper)paramJSONArray.removeLast());
           }
           else
           {
@@ -193,44 +195,44 @@ public class DrawCanvasArg
         }
       }
     }
-    this.hfX += ((List)localObject).size();
+    this.qUy += ((List)localObject).size();
     paramJSONArray = ((List)localObject).iterator();
     while (paramJSONArray.hasNext())
     {
       localObject = (DrawActionWrapper)paramJSONArray.next();
-      this.hfq.remove(localObject);
+      this.qTR.remove(localObject);
       ((DrawActionWrapper)localObject).reset();
     }
-    ab.i("DrawCanvasArg", "optimize save&restore %d times, redudant count %d, allOpCount %d ", new Object[] { Integer.valueOf(this.hfX), Integer.valueOf(i), Integer.valueOf(this.hfY) });
-    AppMethodBeat.o(103704);
+    Log.i("DrawCanvasArg", "optimize save&restore %d times, redudant count %d, allOpCount %d ", new Object[] { Integer.valueOf(this.qUy), Integer.valueOf(i), Integer.valueOf(this.qUz) });
+    AppMethodBeat.o(145387);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(103705);
-    if ((this.hfU != null) && (!com.tencent.mm.sdk.g.d.ysm.remove(this.hfU)))
+    AppMethodBeat.i(145388);
+    if ((this.qUv != null) && (!this.qUv.cancel()))
     {
-      ab.i("DrawCanvasArg", "wait for async over");
-      this.hfV = true;
-      AppMethodBeat.o(103705);
+      Log.i("DrawCanvasArg", "wait for async over");
+      this.qUw = true;
+      AppMethodBeat.o(145388);
       return;
     }
     release();
-    AppMethodBeat.o(103705);
+    AppMethodBeat.o(145388);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(103707);
-    if (this.hfP)
+    AppMethodBeat.i(145390);
+    if (this.qUq)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.hfQ);
-      paramParcel.writeList(this.hfq);
-      paramParcel.writeLong(this.hfR);
-      if (!this.hfS) {
+      paramParcel.writeString(this.qUr);
+      paramParcel.writeList(this.qTR);
+      paramParcel.writeLong(this.qUs);
+      if (!this.qUt) {
         break label72;
       }
     }
@@ -238,7 +240,7 @@ public class DrawCanvasArg
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(103707);
+      AppMethodBeat.o(145390);
       return;
       paramInt = 0;
       break;
@@ -247,7 +249,7 @@ public class DrawCanvasArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg
  * JD-Core Version:    0.7.0.1
  */

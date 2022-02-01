@@ -9,17 +9,17 @@ public final class av
 {
   public int dq = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new av();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.dq = paramJceInputStream.read(this.dq, 0, true);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dq, 0);
   }

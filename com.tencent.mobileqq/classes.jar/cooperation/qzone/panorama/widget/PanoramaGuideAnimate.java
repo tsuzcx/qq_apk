@@ -10,92 +10,110 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bjnr;
-import bjns;
+import com.tencent.qzonehub.api.panorama.OnAnimateListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PanoramaGuideAnimate
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bjnr(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjns jdField_a_of_type_Bjns;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private float b;
-  private float c = 1.0F;
+  private static final float ALPHA_RATE = 0.05F;
+  private static final int HANDLE_MSG_ALPHA = 292;
+  private static final int HANDLE_MSG_ROTATE = 291;
+  private static final int ORIENTATION_ANTI_CLOCK_WISE = 1;
+  private static final int ORIENTATION_CLOCK_WISE = 0;
+  private static final int ROTATE_ANGEL = 45;
+  private static final float ROTATE_RATE = 0.15F;
+  private static final int TRANSLATION_DISTANCE = 140;
+  private float alpha = 1.0F;
+  private Context context;
+  private int currentOrientation = 0;
+  private float currentRotate = 0.0F;
+  private float currentTranslation = 0.0F;
+  private Handler handler = new PanoramaGuideAnimate.1(this);
+  private ImageView imgPhone;
+  private OnAnimateListener onAnimateListener;
+  private Timer timer;
+  private TimerTask timerTask;
+  private TextView tvToast;
   
   public PanoramaGuideAnimate(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public PanoramaGuideAnimate(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a()
+  private void init(Context paramContext)
   {
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new PanoramaGuideAnimate.2(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 800L, 1L);
+    this.context = paramContext;
   }
   
-  private void a(Context paramContext)
+  private void startTimer()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    Object localObject = this.timer;
+    if (localObject != null) {
+      ((Timer)localObject).cancel();
+    }
+    localObject = this.timerTask;
+    if (localObject != null) {
+      ((TimerTask)localObject).cancel();
+    }
+    this.timer = new Timer();
+    this.timerTask = new PanoramaGuideAnimate.2(this);
+    this.timer.schedule(this.timerTask, 800L, 1L);
   }
   
   @TargetApi(11)
-  public void a(int paramInt)
+  public void addView(int paramInt)
   {
     setOrientation(1);
     setGravity(1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847147);
+    this.imgPhone = new ImageView(this.context);
+    this.imgPhone.setImageResource(2130849511);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    addView(this.imgPhone, localLayoutParams);
+    this.tvToast = new TextView(this.context);
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718396));
+      this.tvToast.setText(this.context.getResources().getString(2131914892));
+    } else {
+      this.tvToast.setText(this.context.getResources().getString(2131914893));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setRotationY(0.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-      a();
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718397));
+    this.tvToast.setTextColor(-1);
+    this.tvToast.setTextSize(14.0F);
+    localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    addView(this.tvToast, localLayoutParams);
+    this.imgPhone.setRotationY(0.0F);
+    this.imgPhone.setTranslationX(0.0F);
+    startTimer();
+  }
+  
+  public void onPause()
+  {
+    Object localObject = this.timer;
+    if (localObject != null) {
+      ((Timer)localObject).cancel();
+    }
+    localObject = this.timerTask;
+    if (localObject != null) {
+      ((TimerTask)localObject).cancel();
     }
   }
   
-  public void setOnAnimateListener(bjns parambjns)
+  public void setOnAnimateListener(OnAnimateListener paramOnAnimateListener)
   {
-    this.jdField_a_of_type_Bjns = parambjns;
+    this.onAnimateListener = paramOnAnimateListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaGuideAnimate
  * JD-Core Version:    0.7.0.1
  */

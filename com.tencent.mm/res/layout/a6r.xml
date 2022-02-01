@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/cvi" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/cbs" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <FrameLayout android:id="@id/cbh" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginRight="@dimen/ms">
-        <TextView android:textColor="@color/s4" android:ellipsize="end" android:id="@id/cbl" android:paddingTop="@dimen/ms" android:paddingBottom="@dimen/ms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-    </FrameLayout>
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jf">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/cv9" android:contentDescription="@string/k1" style="@style/jd" />
+                    <ImageView android:layout_gravity="center" android:id="@id/cvd" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/shortvideo_play_btn" android:contentDescription="@string/k1" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ew">
+                    <TextView android:id="@id/cwv" android:text="{title}" style="@style/jk" />
+                    <TextView android:id="@id/cuu" android:visibility="gone" android:layout_marginTop="@dimen/f6" android:text="{desc}" style="@style/jh" />
+                    <TextView android:id="@id/cw8" android:visibility="gone" android:layout_marginTop="@dimen/f6" android:text="{source}" style="@style/jh" />
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/a6w" />
+            <include layout="@layout/a6v" />
+        </LinearLayout>
+        <include layout="@layout/a6t" />
+    </LinearLayout>
+</FrameLayout>

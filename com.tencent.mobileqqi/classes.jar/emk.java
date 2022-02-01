@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class emk
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnDismissListener
 {
   public emk(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.a = null;
   }

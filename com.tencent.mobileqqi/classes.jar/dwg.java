@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.AppActivity;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public final class dwg
-  implements PermissionDialogCallback
+class dwg
+  implements PermissionCallback
 {
-  public dwg(AppActivity paramAppActivity, QQAppInterface paramQQAppInterface) {}
+  dwg(dwf paramdwf) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.ACCESS_FINE_LOCATION", 500) }).request(new dwh(this));
+    new PermissionsDialog().a(this.a.jdField_a_of_type_MqqAppAppActivity, paramInt, paramArrayOfString, new dwh(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_MqqAppAppActivity);
   }
 }
 

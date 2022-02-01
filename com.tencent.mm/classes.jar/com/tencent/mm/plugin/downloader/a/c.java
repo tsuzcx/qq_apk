@@ -2,10 +2,12 @@ package com.tencent.mm.plugin.downloader.a;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
@@ -15,89 +17,66 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static final String[] kVE;
-  private static final Map<String, String> kVF;
+  private static final String[] xkF;
+  private static final Map<String, String> xkG;
   
   static
   {
-    AppMethodBeat.i(67892);
-    kVE = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
-    kVF = new ConcurrentHashMap();
-    AppMethodBeat.o(67892);
+    AppMethodBeat.i(123485);
+    xkF = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
+    xkG = new ConcurrentHashMap();
+    AppMethodBeat.o(123485);
   }
   
-  public static String Jz(String paramString)
+  public static String amF(String paramString)
   {
-    AppMethodBeat.i(67890);
-    if (bo.isNullOrNil(paramString)) {}
-    for (Object localObject = ""; (bo.isNullOrNil((String)localObject)) || (!Arrays.asList(kVE).contains(localObject)); localObject = Uri.parse(paramString).getHost())
+    AppMethodBeat.i(123483);
+    if (Util.isNullOrNil(paramString)) {}
+    for (Object localObject = ""; (Util.isNullOrNil((String)localObject)) || (!Arrays.asList(xkF).contains(localObject)); localObject = Uri.parse(paramString).getHost())
     {
-      ab.i("MicroMsg.GameDownloadExtension", "domain is not dlied4/dlied5");
-      AppMethodBeat.o(67890);
+      Log.i("MicroMsg.GameDownloadExtension", "domain is not dlied4/dlied5");
+      AppMethodBeat.o(123483);
       return paramString;
     }
-    localObject = (IPCString)f.a("com.tencent.mm", new IPCString(paramString), c.a.class);
+    localObject = (IPCString)j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class);
     if (localObject != null) {}
     for (localObject = ((IPCString)localObject).value;; localObject = "")
     {
-      paramString = dF(dF(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
-      ab.i("MicroMsg.GameDownloadExtension", "after openid added, url: %s", new Object[] { paramString });
-      AppMethodBeat.o(67890);
+      paramString = gx(gx(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
+      Log.i("MicroMsg.GameDownloadExtension", "after openid added, url: %s", new Object[] { paramString });
+      AppMethodBeat.o(123483);
       return paramString;
     }
   }
   
   public static void clearCache()
   {
-    AppMethodBeat.i(67889);
-    kVF.clear();
-    AppMethodBeat.o(67889);
+    AppMethodBeat.i(123482);
+    xkG.clear();
+    AppMethodBeat.o(123482);
   }
   
-  private static String dF(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(67891);
-    try
-    {
-      URI localURI = new URI(paramString1);
-      String str = localURI.getQuery();
-      if (str == null) {}
-      for (;;)
-      {
-        paramString2 = new URI(localURI.getScheme(), localURI.getAuthority(), localURI.getPath(), paramString2, localURI.getFragment()).toString();
-        AppMethodBeat.o(67891);
-        return paramString2;
-        paramString2 = str + "&" + paramString2;
-      }
-      return paramString1;
-    }
-    catch (URISyntaxException paramString2)
-    {
-      AppMethodBeat.o(67891);
-    }
-  }
-  
-  public static void h(String paramString, String... paramVarArgs)
+  public static void g(String paramString, String... paramVarArgs)
   {
     for (;;)
     {
       int i;
       try
       {
-        AppMethodBeat.i(67887);
-        if (!bo.isNullOrNil(paramString))
+        AppMethodBeat.i(123480);
+        if (!Util.isNullOrNil(paramString))
         {
           i = 0;
           if (i < 2)
           {
-            if (bo.isNullOrNil(paramVarArgs[i])) {
+            if (Util.isNullOrNil(paramVarArgs[i])) {
               break label62;
             }
-            kVF.put(paramVarArgs[i], paramString);
+            xkG.put(paramVarArgs[i], paramString);
             break label62;
           }
         }
-        AppMethodBeat.o(67887);
+        AppMethodBeat.o(123480);
         return;
       }
       finally {}
@@ -106,24 +85,47 @@ public final class c
     }
   }
   
-  public static void m(String... paramVarArgs)
+  private static String gx(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(123484);
+    try
+    {
+      URI localURI = new URI(paramString1);
+      String str = localURI.getQuery();
+      if (str == null) {}
+      for (;;)
+      {
+        paramString2 = new URI(localURI.getScheme(), localURI.getAuthority(), localURI.getPath(), paramString2, localURI.getFragment()).toString();
+        AppMethodBeat.o(123484);
+        return paramString2;
+        paramString2 = str + "&" + paramString2;
+      }
+      return paramString1;
+    }
+    catch (URISyntaxException paramString2)
+    {
+      AppMethodBeat.o(123484);
+    }
+  }
+  
+  public static void w(String... paramVarArgs)
   {
     for (;;)
     {
       int i;
       try
       {
-        AppMethodBeat.i(67888);
+        AppMethodBeat.i(123481);
         i = 0;
         if (i < 2)
         {
-          if (!bo.isNullOrNil(paramVarArgs[i])) {
-            kVF.remove(paramVarArgs[i]);
+          if (!Util.isNullOrNil(paramVarArgs[i])) {
+            xkG.remove(paramVarArgs[i]);
           }
         }
         else
         {
-          AppMethodBeat.o(67888);
+          AppMethodBeat.o(123481);
           return;
         }
       }
@@ -131,10 +133,14 @@ public final class c
       i += 1;
     }
   }
+  
+  static class a
+    implements m<IPCString, IPCString>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.a.c
  * JD-Core Version:    0.7.0.1
  */

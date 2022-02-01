@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/grid_item_layout" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.dataline.util.widget.AsyncImageView android:id="@id/image" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="false" />
+    <View android:id="@id/imageProgressBar" android:background="@drawable/aio_image_shade" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/image" android:layout_alignTop="@id/image" android:layout_alignRight="@id/image" android:layout_alignBottom="@id/image" />
+    <ImageView android:id="@id/ImageInfo" android:paddingLeft="3.0dip" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qfile_dataline_tips_icon_caution_small" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

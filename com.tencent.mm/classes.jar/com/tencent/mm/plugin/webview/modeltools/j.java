@@ -1,337 +1,676 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
-import android.os.RemoteException;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.PermissionRequest;
+import com.tencent.luggage.l.e.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.l.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.plugin.expt.a.a.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.am;
-import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.plugin.webview.model.ba;
+import com.tencent.mm.plugin.webview.ui.tools.newjsapi.r;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.Result.Companion;
+import kotlin.ResultKt;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.d.d;
+import kotlin.g.a.m;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.n.n;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/modeltools/WebViewPermissionRequestHelper;", "", "()V", "geolocationPermissions", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getGeolocationPermissions", "()Ljava/util/HashMap;", "locationPermissionExpireHour", "", "getLocationPermissionExpireHour", "()I", "locationPermissionExpireHour$delegate", "Lkotlin/Lazy;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "permissions", "getPermissions", "addGeolocationPermissions", "", "allow", "url", "origin", "callback", "Landroid/webkit/GeolocationPermissions$Callback;", "addPermissions", "request", "Landroid/webkit/PermissionRequest;", "addToCache", "getPermissionKey", "onGeolocationPermissionsShowPrompt", "context", "Landroid/content/Context;", "rawUrl", "a8KeyScene", "a8KeyUsername", "onPermissionRequest", "showNotGrantToast", "notGrandArray", "Ljava/util/LinkedList;", "showPermissionAlert", "resource", "", "(Landroid/content/Context;Landroid/webkit/PermissionRequest;[Ljava/lang/String;Ljava/lang/String;)V", "showSysPermissionAlert", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "(Landroid/content/Context;Ljava/util/ArrayList;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "showWebPermissionAlert", "words", "(Landroid/content/Context;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "allowKey", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  private static long uYp;
-  private static int uYq;
-  private static int uYr;
-  private static boolean uYs;
-  private static Map<String, String> uYt;
+  public static final a WOg;
+  private final HashMap<String, Boolean> WOh;
+  private final HashMap<String, Boolean> WOi;
+  private final kotlin.j WOj;
+  private final kotlin.j exj;
   
   static
   {
-    AppMethodBeat.i(153162);
-    uYp = 0L;
-    uYq = -1;
-    uYr = -1;
-    uYs = false;
-    uYt = new HashMap();
-    AppMethodBeat.o(153162);
+    AppMethodBeat.i(295877);
+    WOg = new a((byte)0);
+    AppMethodBeat.o(295877);
   }
   
-  public static void a(Bundle paramBundle, com.tencent.mm.plugin.webview.stub.e parame, boolean paramBoolean)
+  public j()
   {
-    AppMethodBeat.i(7023);
-    if (System.currentTimeMillis() - uYp < 1000L)
+    AppMethodBeat.i(295819);
+    this.WOh = new HashMap();
+    this.WOi = new HashMap();
+    this.WOj = kotlin.k.cm((kotlin.g.a.a)b.WOk);
+    this.exj = kotlin.k.cm((kotlin.g.a.a)c.WOl);
+    AppMethodBeat.o(295819);
+  }
+  
+  private static String a(PermissionRequest paramPermissionRequest, String paramString)
+  {
+    AppMethodBeat.i(295842);
+    Object localObject1 = "";
+    paramPermissionRequest = paramPermissionRequest.getResources();
+    s.s(paramPermissionRequest, "request.resources");
+    Object localObject2 = (Object[])paramPermissionRequest;
+    int k = localObject2.length;
+    int i = 0;
+    paramPermissionRequest = (PermissionRequest)localObject1;
+    if (i < k)
     {
-      AppMethodBeat.o(7023);
-      return;
-    }
-    String str1 = paramBundle.getString("url");
-    localObject1 = paramBundle.getString("filePath");
-    Object localObject3 = new String[1];
-    Object localObject2;
-    if (!bo.isNullOrNil((String)localObject1))
-    {
-      localObject2 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-      localObject2 = com.tencent.mm.sdk.platformtools.d.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
-      if (localObject2 != null)
+      String str = (String)localObject2[i];
+      localObject1 = (CharSequence)paramPermissionRequest;
+      if ((localObject1 == null) || (n.bp((CharSequence)localObject1))) {}
+      for (int j = 1;; j = 0)
       {
-        ab.i("MicroMsg.WebViewPreviewImgHelper", "recycle bitmap:%s", new Object[] { localObject2.toString() });
-        ((Bitmap)localObject2).recycle();
-        localObject3[0] = localObject1;
+        localObject1 = paramPermissionRequest;
+        if (j == 0) {
+          localObject1 = s.X(paramPermissionRequest, "-");
+        }
+        paramPermissionRequest = s.X((String)localObject1, str);
+        i += 1;
+        break;
       }
     }
-    while ((bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil(str1)))
+    localObject1 = new StringBuilder();
+    if (paramString == null) {}
+    for (paramString = null;; paramString = r.getHost(paramString))
     {
-      localObject3[0] = str1;
-      localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("nowUrl", str1);
-      ((Intent)localObject2).putExtra("urlList", (String[])localObject3);
-      ((Intent)localObject2).putExtra("type", -255);
-      ((Intent)localObject2).putExtra("isFromWebView", true);
-      ((Intent)localObject2).putExtra("isOuntLink", true);
-      str1 = "";
-      localObject1 = str1;
+      paramPermissionRequest = paramString + '-' + paramPermissionRequest;
+      AppMethodBeat.o(295842);
+      return paramPermissionRequest;
+      localObject2 = r.Xnn;
+    }
+  }
+  
+  private final void a(final Context paramContext, final PermissionRequest paramPermissionRequest, final String[] paramArrayOfString, final String paramString)
+  {
+    AppMethodBeat.i(295855);
+    final ah.f localf = new ah.f();
+    localf.aqH = "";
+    if ((kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.VIDEO_CAPTURE")) || (kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.AUDIO_CAPTURE")))
+    {
+      String str;
+      if ((kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.VIDEO_CAPTURE")) && (kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.AUDIO_CAPTURE")))
+      {
+        str = paramContext.getString(c.i.wv_allow_camera_and_record_audio_permission, new Object[] { paramPermissionRequest.getOrigin().toString() });
+        s.s(str, "{\n                contex…toString())\n            }");
+      }
       for (;;)
       {
-        try
+        localf.aqH = str;
+        kotlinx.coroutines.j.a(ar.kBZ(), null, null, (m)new f(this, paramContext, localf, paramPermissionRequest, paramString, paramArrayOfString, null), 3);
+        AppMethodBeat.o(295855);
+        return;
+        if (kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.VIDEO_CAPTURE"))
         {
-          localObject3 = parame.i(90001, new Bundle());
-          if (localObject3 != null)
-          {
-            localObject1 = str1;
-            localObject3 = ((Bundle)localObject3).getString("cookie", null);
-            localObject1 = str1;
-            if (!bo.isNullOrNil((String)localObject3))
-            {
-              localObject1 = str1;
-              ((Intent)localObject2).putExtra("cookie", (String)localObject3);
-            }
+          str = paramContext.getString(c.i.wv_allow_camera_permission, new Object[] { paramPermissionRequest.getOrigin().toString() });
+          s.s(str, "{\n                contex…toString())\n            }");
+        }
+        else
+        {
+          str = paramContext.getString(c.i.wv_allow_record_audio_permission, new Object[] { paramPermissionRequest.getOrigin().toString() });
+          s.s(str, "{\n                contex…toString())\n            }");
+        }
+      }
+    }
+    if (kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.PROTECTED_MEDIA_ID"))
+    {
+      a(this, paramPermissionRequest, paramString, true);
+      Log.i("MicroMsg.WebViewPermissionRequestHelper", "showPermissionAlert grant PROTECTED_MEDIA_ID");
+      AppMethodBeat.o(295855);
+      return;
+    }
+    paramPermissionRequest.deny();
+    Log.w("MicroMsg.WebViewPermissionRequestHelper", "showPermissionAlert not support permission");
+    AppMethodBeat.o(295855);
+  }
+  
+  private final void a(PermissionRequest paramPermissionRequest, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(295848);
+    if (paramBoolean1) {
+      paramPermissionRequest.grant(paramPermissionRequest.getResources());
+    }
+    for (;;)
+    {
+      if (paramBoolean2) {
+        ((Map)this.WOi).put(a(paramPermissionRequest, paramString), Boolean.valueOf(paramBoolean1));
+      }
+      AppMethodBeat.o(295848);
+      return;
+      paramPermissionRequest.deny();
+    }
+  }
+  
+  private final void a(boolean paramBoolean, String paramString1, String paramString2, GeolocationPermissions.Callback paramCallback)
+  {
+    AppMethodBeat.i(295835);
+    if (paramCallback != null) {
+      paramCallback.invoke(paramString2, paramBoolean, false);
+    }
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(295835);
+      return;
+    }
+    paramString2 = r.Xnn;
+    paramString1 = r.getHost(paramString1);
+    ((Map)this.WOh).put(paramString1, Boolean.valueOf(paramBoolean));
+    atj().encode(bkQ(paramString1), paramBoolean);
+    AppMethodBeat.o(295835);
+  }
+  
+  private final MultiProcessMMKV atj()
+  {
+    AppMethodBeat.i(295828);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)this.exj.getValue();
+    AppMethodBeat.o(295828);
+    return localMultiProcessMMKV;
+  }
+  
+  private static String bkQ(String paramString)
+  {
+    AppMethodBeat.i(295826);
+    s.u(paramString, "<this>");
+    paramString = s.X("##allow##", paramString);
+    AppMethodBeat.o(295826);
+    return paramString;
+  }
+  
+  private int iwe()
+  {
+    AppMethodBeat.i(295824);
+    int i = ((Number)this.WOj.getValue()).intValue();
+    AppMethodBeat.o(295824);
+    return i;
+  }
+  
+  public final void a(final Context paramContext, final String paramString1, final String paramString2, final int paramInt, final String paramString3, final String paramString4, final GeolocationPermissions.Callback paramCallback)
+  {
+    AppMethodBeat.i(295886);
+    s.u(paramContext, "context");
+    Log.i("MicroMsg.WebViewPermissionRequestHelper", "onGeolocationPermissionsShowPrompt, origin = %s", new Object[] { paramString4 });
+    Object localObject = (CharSequence)paramString1;
+    if ((localObject == null) || (n.bp((CharSequence)localObject))) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      if (paramCallback != null) {
+        paramCallback.invoke(paramString4, false, false);
+      }
+      AppMethodBeat.o(295886);
+      return;
+    }
+    localObject = r.Xnn;
+    localObject = r.getHost(paramString1);
+    boolean bool;
+    if (this.WOh.containsKey(localObject))
+    {
+      paramString1 = (Boolean)this.WOh.get(localObject);
+      paramContext = paramString1;
+      if (paramString1 == null) {
+        paramContext = Boolean.TRUE;
+      }
+      bool = paramContext.booleanValue();
+      Log.d("MicroMsg.WebViewPermissionRequestHelper", s.X("onGeolocationPermissionsShowPrompt use cache, allow = ", Boolean.valueOf(bool)));
+      if (paramCallback != null) {
+        paramCallback.invoke(paramString4, bool, false);
+      }
+      AppMethodBeat.o(295886);
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = atj().decodeLong((String)localObject, 0L);
+    if ((Math.abs(l1 - l2) < 3600000L * iwe()) && (atj().containsKey(bkQ((String)localObject))))
+    {
+      bool = atj().decodeBool(bkQ((String)localObject), true);
+      if (bool)
+      {
+        Log.i("MicroMsg.WebViewPermissionRequestHelper", "onGeolocationPermissionsShowPrompt less than " + iwe() + " hour(lastShowTime=" + l2 + ", allow=" + bool + "), do not show alert.");
+        a(bool, paramString1, paramString4, paramCallback);
+        AppMethodBeat.o(295886);
+        return;
+      }
+    }
+    atj().encode((String)localObject, l1);
+    kotlinx.coroutines.j.a(ar.kBZ(), null, null, (m)new d(this, paramContext, paramString4, paramString1, paramCallback, paramString2, paramInt, paramString3, null), 3);
+    AppMethodBeat.o(295886);
+  }
+  
+  public final void a(PermissionRequest paramPermissionRequest, Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(295898);
+    s.u(paramContext, "context");
+    Log.i("MicroMsg.WebViewPermissionRequestHelper", "onPermissionRequest");
+    if (paramPermissionRequest == null)
+    {
+      AppMethodBeat.o(295898);
+      return;
+    }
+    Object localObject1 = paramPermissionRequest.getResources();
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      if (localObject1 != null)
+      {
+        if (localObject1.length != 0) {
+          break label237;
+        }
+        i = 1;
+        label61:
+        if (i == 0) {
+          break label243;
+        }
+      }
+    }
+    label237:
+    label243:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label249;
+      }
+      paramPermissionRequest.deny();
+      AppMethodBeat.o(295898);
+      return;
+      localObject2 = (Collection)new ArrayList();
+      int k = localObject1.length;
+      i = 0;
+      if (i < k)
+      {
+        Object localObject3 = localObject1[i];
+        if ((localObject3.equals("android.webkit.resource.AUDIO_CAPTURE")) || (localObject3.equals("android.webkit.resource.VIDEO_CAPTURE")) || (localObject3.equals("android.webkit.resource.PROTECTED_MEDIA_ID"))) {}
+        for (int j = 1;; j = 0)
+        {
+          if (j != 0) {
+            ((Collection)localObject2).add(localObject3);
           }
-          localObject1 = str1;
-          Object localObject4 = parame.i(18, null);
-          if (localObject4 == null) {
-            continue;
-          }
-          localObject1 = str1;
-          localObject3 = ((Bundle)localObject4).getString("preChatName");
-          localObject1 = str1;
-          String str2 = ((Bundle)localObject4).getString("preUsername");
-          localObject1 = str1;
-          String str3 = ((Bundle)localObject4).getString("rawUrl");
-          localObject1 = str1;
-          parame = ((Bundle)localObject4).getString("url");
-          localObject1 = parame;
-          i = ((Bundle)localObject4).getInt("getA8KeyScene");
-          localObject1 = parame;
-          str1 = v.oQ("ImgPreview");
-          localObject1 = parame;
-          localObject4 = v.aae().z(str1, true);
-          localObject1 = parame;
-          ((v.b)localObject4).i("preUsername", localObject3);
-          localObject1 = parame;
-          ((v.b)localObject4).i("preChatName", str2);
-          localObject1 = parame;
-          ((v.b)localObject4).i("url", parame);
-          localObject1 = parame;
-          ((v.b)localObject4).i("rawUrl", str3);
-          if ((i != 53) && (i != 52)) {
-            continue;
-          }
-          localObject1 = parame;
-          ab.i("MicroMsg.WebViewPreviewImgHelper", "not allow to ScanQRCode");
+          i += 1;
+          break;
+        }
+      }
+      localObject1 = ((Collection)localObject2).toArray(new String[0]);
+      if (localObject1 == null)
+      {
+        paramPermissionRequest = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+        AppMethodBeat.o(295898);
+        throw paramPermissionRequest;
+      }
+      localObject1 = (String[])localObject1;
+      break;
+      i = 0;
+      break label61;
+    }
+    label249:
+    Object localObject2 = a(paramPermissionRequest, paramString);
+    if (this.WOi.containsKey(localObject2))
+    {
+      localObject1 = (Boolean)this.WOi.get(localObject2);
+      paramContext = (Context)localObject1;
+      if (localObject1 == null) {
+        paramContext = Boolean.FALSE;
+      }
+      boolean bool = paramContext.booleanValue();
+      a(paramPermissionRequest, paramString, bool, false);
+      Log.d("MicroMsg.WebViewPermissionRequestHelper", s.X("onPermissionRequest use cache ", Boolean.valueOf(bool)));
+      AppMethodBeat.o(295898);
+      return;
+    }
+    a(paramContext, paramPermissionRequest, (String[])localObject1, paramString);
+    AppMethodBeat.o(295898);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/modeltools/WebViewPermissionRequestHelper$Companion;", "", "()V", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<Integer>
+  {
+    public static final b WOk;
+    
+    static
+    {
+      AppMethodBeat.i(295782);
+      WOk = new b();
+      AppMethodBeat.o(295782);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<MultiProcessMMKV>
+  {
+    public static final c WOl;
+    
+    static
+    {
+      AppMethodBeat.i(295792);
+      WOl = new c();
+      AppMethodBeat.o(295792);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends kotlin.d.b.a.k
+    implements m<aq, d<? super ah>, Object>
+  {
+    int label;
+    
+    d(j paramj, Context paramContext, String paramString1, String paramString2, GeolocationPermissions.Callback paramCallback, String paramString3, int paramInt, String paramString4, d<? super d> paramd)
+    {
+      super(paramd);
+    }
+    
+    public final d<ah> create(Object paramObject, d<?> paramd)
+    {
+      AppMethodBeat.i(295810);
+      paramObject = (d)new d(this.WOm, paramContext, paramString4, paramString1, paramCallback, paramString2, paramInt, paramString3, paramd);
+      AppMethodBeat.o(295810);
+      return paramObject;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(295806);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      Object localObject1;
+      Object localObject2;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(295806);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = paramContext;
+        localObject1 = paramContext.getString(c.i.wv_get_location_msg, new Object[] { paramString4 });
+        s.s(localObject1, "context.getString(R.stri…get_location_msg, origin)");
+        localObject2 = (d)this;
+        this.label = 1;
+        localObject1 = j.b(paramObject, (String)localObject1, (d)localObject2);
+        paramObject = localObject1;
+        if (localObject1 == locala)
+        {
+          AppMethodBeat.o(295806);
+          return locala;
+        }
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
+        if (!((Boolean)paramObject).booleanValue())
+        {
+          j.a(this.WOm, false, paramString1, paramString4, paramCallback);
+          h.OAn.b(14340, new Object[] { aa.aUC(paramString2), aa.aUC(paramString1), Integer.valueOf(paramInt), paramString3, Integer.valueOf(ba.ctm()), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+          paramObject = ah.aiuX;
+          AppMethodBeat.o(295806);
+          return paramObject;
+        }
+        h.OAn.b(14340, new Object[] { aa.aUC(paramString2), aa.aUC(paramString1), Integer.valueOf(paramInt), paramString3, Integer.valueOf(ba.ctm()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        paramObject = p.al(new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+        localObject1 = this.WOm;
+        localObject2 = paramContext;
+        d locald = (d)this;
+        this.label = 2;
+        localObject1 = j.a((j)localObject1, (Context)localObject2, paramObject, locald);
+        paramObject = localObject1;
+        if (localObject1 != locala) {
+          break label417;
+        }
+        AppMethodBeat.o(295806);
+        return locala;
+      }
+      ResultKt.throwOnFailure(paramObject);
+      label417:
+      if (((Boolean)paramObject).booleanValue()) {
+        j.a(this.WOm, true, paramString1, paramString4, paramCallback);
+      }
+      for (;;)
+      {
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(295806);
+        return paramObject;
+        j.a(this.WOm, false, paramString1, paramString4, paramCallback);
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    e(Context paramContext, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends kotlin.d.b.a.k
+    implements m<aq, d<? super ah>, Object>
+  {
+    int label;
+    
+    f(j paramj, Context paramContext, ah.f<String> paramf, PermissionRequest paramPermissionRequest, String paramString, String[] paramArrayOfString, d<? super f> paramd)
+    {
+      super(paramd);
+    }
+    
+    public final d<ah> create(Object paramObject, d<?> paramd)
+    {
+      AppMethodBeat.i(295791);
+      paramObject = (d)new f(this.WOm, paramContext, localf, paramPermissionRequest, paramString, paramArrayOfString, paramd);
+      AppMethodBeat.o(295791);
+      return paramObject;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(295784);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      Object localObject1;
+      Object localObject2;
+      int i;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(295784);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = paramContext;
+        localObject1 = (String)localf.aqH;
+        localObject2 = (d)this;
+        this.label = 1;
+        localObject1 = j.b(paramObject, (String)localObject1, (d)localObject2);
+        paramObject = localObject1;
+        if (localObject1 == locala)
+        {
+          AppMethodBeat.o(295784);
+          return locala;
+        }
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
+        if (!((Boolean)paramObject).booleanValue())
+        {
+          Log.i("MicroMsg.WebViewPermissionRequestHelper", "onPermissionRequest cancel");
+          j.a(this.WOm, paramPermissionRequest, paramString, false);
+          paramObject = ah.aiuX;
+          AppMethodBeat.o(295784);
+          return paramObject;
+        }
+        paramObject = new ArrayList();
+        if ((kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.AUDIO_CAPTURE")) && (!b.s(paramContext, "android.permission.RECORD_AUDIO"))) {
+          paramObject.add("android.permission.RECORD_AUDIO");
+        }
+        if ((kotlin.a.k.contains(paramArrayOfString, "android.webkit.resource.VIDEO_CAPTURE")) && (!b.s(paramContext, "android.permission.CAMERA"))) {
+          paramObject.add("android.permission.CAMERA");
+        }
+        if (((Collection)paramObject).isEmpty()) {
+          i = 1;
+        }
+        break;
+      }
+      while (i == 0)
+      {
+        localObject1 = this.WOm;
+        localObject2 = paramContext;
+        d locald = (d)this;
+        this.label = 2;
+        localObject1 = j.a((j)localObject1, (Context)localObject2, paramObject, locald);
+        paramObject = localObject1;
+        if (localObject1 == locala)
+        {
+          AppMethodBeat.o(295784);
+          return locala;
+          i = 0;
+          continue;
+          ResultKt.throwOnFailure(paramObject);
+        }
+        else if (!((Boolean)paramObject).booleanValue())
+        {
+          j.a(this.WOm, paramPermissionRequest, paramString, false);
+        }
+      }
+      for (;;)
+      {
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(295784);
+        return paramObject;
+        j.a(this.WOm, paramPermissionRequest, paramString, true);
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "permissions", "", "", "kotlin.jvm.PlatformType", "grantResults", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    implements e.f
+  {
+    g(d<? super Boolean> paramd, j paramj, Context paramContext) {}
+    
+    public final void onResult(String[] paramArrayOfString, int[] paramArrayOfInt)
+    {
+      AppMethodBeat.i(295794);
+      if (paramArrayOfInt != null) {
+        if (paramArrayOfInt.length != 0) {
+          break label57;
+        }
+      }
+      label57:
+      for (int i = 1; i != 0; i = 0)
+      {
+        Log.i("MicroMsg.WebViewPermissionRequestHelper", "grantResults empty");
+        paramArrayOfString = this.ntL;
+        paramArrayOfInt = Boolean.FALSE;
+        localObject = Result.Companion;
+        paramArrayOfString.resumeWith(Result.constructor-impl(paramArrayOfInt));
+        AppMethodBeat.o(295794);
+        return;
+      }
+      Object localObject = new LinkedList();
+      int k = paramArrayOfString.length - 1;
+      boolean bool;
+      int j;
+      if (k >= 0)
+      {
+        i = 0;
+        bool = true;
+        j = i + 1;
+        if (paramArrayOfInt[i] != 0)
+        {
+          Log.i("MicroMsg.WebViewPermissionRequestHelper", "showSysPermissionAlert PERMISSION_GRANTED, %s", new Object[] { paramArrayOfString[i] });
+          ((LinkedList)localObject).add(paramArrayOfString[i]);
           bool = false;
         }
-        catch (Exception localException1)
-        {
-          int i;
-          int n;
-          boolean bool = true;
-          parame = (com.tencent.mm.plugin.webview.stub.e)localObject1;
-          ab.e("MicroMsg.WebViewPreviewImgHelper", "getCookie fail : %s", new Object[] { localException1.getMessage() });
-          continue;
-          i += n;
-          continue;
-          bool = true;
-          continue;
-          bool = true;
-          parame = localException2;
-          continue;
-        }
-        try
-        {
-          ((Intent)localObject2).putExtra("img_gallery_session_id", str1);
-          ((Intent)localObject2).putExtra("shouldShowScanQrCodeMenu", bool);
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putInt("stat_scene", 4);
-          ((Bundle)localObject1).putString("stat_url", parame);
-          ((Intent)localObject2).putExtra("_stat_obj", (Bundle)localObject1);
-          parame = ah.getContext();
-          if (dcL())
-          {
-            i = am.di(parame);
-            n = am.hY(parame);
-            int j = (int)paramBundle.getFloat("width");
-            int k = (int)paramBundle.getFloat("height");
-            int m = (int)paramBundle.getFloat("left");
-            float f = paramBundle.getFloat("top");
-            if (!paramBoolean) {
-              continue;
-            }
-            i = 0;
-            i = (int)(i + f);
-            n = com.tencent.mm.cb.a.gx(parame);
-            ab.d("MicroMsg.WebViewPreviewImgHelper", "doPreviewImg left %d, top %d, w %d, h %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-            ((Intent)localObject2).putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", m).putExtra("img_gallery_top", i);
-            if ((j > 0) && (k > 0) && (k < n)) {
-              ((Intent)localObject2).putExtra("shouldRunDragAnimation", true);
-            }
-          }
-          com.tencent.mm.bq.d.b(ah.getContext(), "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject2);
-          AppMethodBeat.o(7023);
-          return;
-        }
-        catch (Exception localException2) {}
+        if (j <= k) {}
       }
-      ab.i("MicroMsg.WebViewPreviewImgHelper", "decode fail %s", new Object[] { localObject1 });
-      localObject1 = "";
-    }
-    ab.w("MicroMsg.WebViewPreviewImgHelper", "imagePreview failed url is null");
-    AppMethodBeat.o(7023);
-  }
-  
-  public static void a(Map<String, Object> paramMap, MMWebView paramMMWebView)
-  {
-    AppMethodBeat.i(153159);
-    if ((paramMMWebView == null) || (paramMap == null))
-    {
-      AppMethodBeat.o(153159);
-      return;
-    }
-    if (uYr == -1)
-    {
-      uYr = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lUu, 1);
-      ab.i("MicroMsg.WebViewPreviewImgHelper", "openXWebUrlToPath %d", new Object[] { Integer.valueOf(uYr) });
-    }
-    if (uYr == 1) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      AppMethodBeat.o(153159);
-      return;
-    }
-    paramMap = (String)paramMap.get("current");
-    if (bo.isNullOrNil(paramMap))
-    {
-      AppMethodBeat.o(153159);
-      return;
-    }
-    ab.d("MicroMsg.WebViewPreviewImgHelper", "start getImageBitmapToFile");
-    String str = b.Uq() + "/reader_" + com.tencent.mm.a.g.w(paramMap.getBytes()) + ".jpg";
-    if (com.tencent.mm.vfs.e.cN(str))
-    {
-      ab.i("MicroMsg.WebViewPreviewImgHelper", "getImageBitmapToFile savePath exist");
-      uYt.put(paramMap, str);
-      uYs = true;
-      AppMethodBeat.o(153159);
-      return;
-    }
-    uYs = paramMMWebView.getImageBitmapToFile(paramMap, str, "", new j.1(paramMap));
-    AppMethodBeat.o(153159);
-  }
-  
-  public static String ahC(String paramString)
-  {
-    AppMethodBeat.i(153160);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(153160);
-      return null;
-    }
-    if (!uYs)
-    {
-      AppMethodBeat.o(153160);
-      return null;
-    }
-    paramString = (String)uYt.get(paramString);
-    if (!bo.isNullOrNil(paramString)) {
-      h.qsU.idkeyStat(1059L, 2L, 1L, false);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(153160);
-      return paramString;
-      h.qsU.idkeyStat(1059L, 5L, 1L, false);
-    }
-  }
-  
-  public static String d(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(153161);
-    if ((bo.isNullOrNil(paramString2)) || (!com.tencent.mm.vfs.e.cN(paramString2)))
-    {
-      ab.i("MicroMsg.WebViewPreviewImgHelper", "replaceCurrentPath path is null");
-      AppMethodBeat.o(153161);
-      return paramString1;
-    }
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramString2, localOptions);
-    if ((localOptions.outWidth <= 1) || (localOptions.outHeight <= 1))
-    {
-      ab.i("MicroMsg.WebViewPreviewImgHelper", "replaceCurrentPath file path invalid: %s", new Object[] { paramString2 });
-      h.qsU.idkeyStat(1059L, 4L, 1L, false);
-      AppMethodBeat.o(153161);
-      return paramString1;
-    }
-    h.qsU.idkeyStat(1059L, 3L, 1L, false);
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramArrayOfString.length)
+      for (;;)
       {
-        if (paramString1.equals(paramArrayOfString[i])) {
-          paramArrayOfString[i] = paramString2;
-        }
+        j.a(this.$context, (LinkedList)localObject);
+        Log.i("MicroMsg.WebViewPermissionRequestHelper", s.X("showSysPermissionAlert isGrant=", Boolean.valueOf(bool)));
+        paramArrayOfString = this.ntL;
+        paramArrayOfInt = Result.Companion;
+        paramArrayOfString.resumeWith(Result.constructor-impl(Boolean.valueOf(bool)));
+        AppMethodBeat.o(295794);
+        return;
+        i = j;
+        break;
+        bool = true;
       }
-      else
-      {
-        ab.i("MicroMsg.WebViewPreviewImgHelper", "replaceCurrentPath path: %s", new Object[] { paramString2 });
-        AppMethodBeat.o(153161);
-        return paramString2;
-      }
-      i += 1;
     }
   }
   
-  public static void d(com.tencent.mm.plugin.webview.stub.d paramd)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    implements DialogInterface.OnClickListener
   {
-    AppMethodBeat.i(7024);
-    if (paramd == null)
+    h(d<? super Boolean> paramd) {}
+    
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      AppMethodBeat.o(7024);
-      return;
-    }
-    try
-    {
-      paramd.i(108, new Bundle());
-      AppMethodBeat.o(7024);
-      return;
-    }
-    catch (RemoteException paramd)
-    {
-      AppMethodBeat.o(7024);
+      AppMethodBeat.i(295790);
+      Log.i("MicroMsg.WebViewPermissionRequestHelper", "showWebPermissionAlert ok");
+      paramDialogInterface = this.ntL;
+      Boolean localBoolean = Boolean.TRUE;
+      Result.Companion localCompanion = Result.Companion;
+      paramDialogInterface.resumeWith(Result.constructor-impl(localBoolean));
+      AppMethodBeat.o(295790);
     }
   }
   
-  public static void dcK()
+  @Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    implements DialogInterface.OnClickListener
   {
-    AppMethodBeat.i(7022);
-    uYp = System.currentTimeMillis();
-    AppMethodBeat.o(7022);
-  }
-  
-  public static boolean dcL()
-  {
-    AppMethodBeat.i(7025);
-    if (uYq == -1)
+    i(d<? super Boolean> paramd) {}
+    
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
-      uYq = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lUp, 1);
-      ab.i("MicroMsg.WebViewPreviewImgHelper", "shouldShowAnimation %d", new Object[] { Integer.valueOf(uYq) });
+      AppMethodBeat.i(295789);
+      Log.i("MicroMsg.WebViewPermissionRequestHelper", "showWebPermissionAlert cancel");
+      paramDialogInterface = this.ntL;
+      Boolean localBoolean = Boolean.FALSE;
+      Result.Companion localCompanion = Result.Companion;
+      paramDialogInterface.resumeWith(Result.constructor-impl(localBoolean));
+      AppMethodBeat.o(295789);
     }
-    if (uYq == 1)
-    {
-      AppMethodBeat.o(7025);
-      return true;
-    }
-    AppMethodBeat.o(7025);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.j
  * JD-Core Version:    0.7.0.1
  */

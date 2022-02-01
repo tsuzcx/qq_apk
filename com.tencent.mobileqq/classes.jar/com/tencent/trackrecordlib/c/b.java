@@ -54,51 +54,56 @@ public abstract class b
   public void a(long paramLong)
   {
     this.c = h.a(new Date(paramLong));
-    if (this.a != null) {}
-    try
-    {
-      this.a.put("time", this.c);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    JSONObject localJSONObject = this.a;
+    if (localJSONObject != null) {
+      try
+      {
+        localJSONObject.put("time", this.c);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
   
   public void a(String paramString)
   {
     this.e = paramString;
-    if (this.a != null) {}
-    try
-    {
-      this.a.put("extra", this.e);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
+    paramString = this.a;
+    if (paramString != null) {
+      try
+      {
+        paramString.put("extra", this.e);
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
   public void a(Map<String, Integer> paramMap)
   {
-    if (this.f != null) {
-      this.f.putAll(paramMap);
+    Map localMap = this.f;
+    if (localMap != null) {
+      localMap.putAll(paramMap);
+    } else {
+      this.f = paramMap;
     }
-    for (;;)
-    {
-      if (this.a != null) {}
+    paramMap = this.a;
+    if (paramMap != null) {
       try
       {
-        this.a.put("values", c(this.f));
+        paramMap.put("values", c(this.f));
         return;
       }
       catch (Throwable paramMap)
       {
         paramMap.printStackTrace();
       }
-      this.f = paramMap;
     }
   }
   
@@ -109,22 +114,23 @@ public abstract class b
   
   public void b(Map<String, String> paramMap)
   {
-    if (this.g != null) {
-      this.g.putAll(paramMap);
+    Map localMap = this.g;
+    if (localMap != null) {
+      localMap.putAll(paramMap);
+    } else {
+      this.g = paramMap;
     }
-    for (;;)
-    {
-      if (this.a != null) {}
+    paramMap = this.a;
+    if (paramMap != null) {
       try
       {
-        this.a.put("tags", c(this.g));
+        paramMap.put("tags", c(this.g));
         return;
       }
       catch (Throwable paramMap)
       {
         paramMap.printStackTrace();
       }
-      this.g = paramMap;
     }
   }
   
@@ -142,7 +148,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.c.b
  * JD-Core Version:    0.7.0.1
  */

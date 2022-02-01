@@ -138,177 +138,231 @@ public final class dl
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.d, 0);
-    if (this.df != null) {
-      paramJceOutputStream.write(this.df, 1);
+    String str = this.df;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.kl != null) {
-      paramJceOutputStream.write(this.kl, 2);
+    str = this.kl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.cY != null) {
-      paramJceOutputStream.write(this.cY, 3);
+    str = this.cY;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.cZ != null) {
-      paramJceOutputStream.write(this.cZ, 4);
+    str = this.cZ;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (1 != this.cA) {
-      paramJceOutputStream.write(this.cA, 5);
+    int i = this.cA;
+    if (1 != i) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.db != null) {
-      paramJceOutputStream.write(this.db, 6);
+    str = this.db;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 7);
+    i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 8);
+    str = this.h;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.km != 0) {
-      paramJceOutputStream.write(this.km, 9);
+    i = this.km;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 9);
     }
-    if (this.cH != 0) {
-      paramJceOutputStream.write(this.cH, 10);
+    i = this.cH;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
     paramJceOutputStream.write(this.kn, 11);
-    if (this.ko != null) {
-      paramJceOutputStream.write(this.ko, 12);
+    str = this.ko;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.dc != null) {
-      paramJceOutputStream.write(this.dc, 13);
+    str = this.dc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.kp != 0) {
-      paramJceOutputStream.write(this.kp, 14);
+    i = this.kp;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 14);
     }
-    if (this.kq != null) {
-      paramJceOutputStream.write(this.kq, 15);
+    str = this.kq;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
-    if (this.dj != 0) {
-      paramJceOutputStream.write(this.dj, 16);
+    short s = this.dj;
+    if (s != 0) {
+      paramJceOutputStream.write(s, 16);
     }
-    if (this.kr != 0) {
-      paramJceOutputStream.write(this.kr, 17);
+    i = this.kr;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 17);
     }
-    if (this.ks != null) {
-      paramJceOutputStream.write(this.ks, 18);
+    str = this.ks;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
-    if (this.kt != null) {
-      paramJceOutputStream.write(this.kt, 19);
+    str = this.kt;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
-    if (this.ku != 0) {
-      paramJceOutputStream.write(this.ku, 20);
+    i = this.ku;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 20);
     }
-    if (this.kv != null) {
-      paramJceOutputStream.write(this.kv, 21);
+    str = this.kv;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
-    if (this.kw != 0L) {
-      paramJceOutputStream.write(this.kw, 22);
+    long l = this.kw;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 22);
     }
-    if (this.kx != 0L) {
-      paramJceOutputStream.write(this.kx, 23);
+    l = this.kx;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 23);
     }
-    if (this.ky != 0L) {
-      paramJceOutputStream.write(this.ky, 24);
+    l = this.ky;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 24);
     }
-    if (this.kz != null) {
-      paramJceOutputStream.write(this.kz, 25);
+    str = this.kz;
+    if (str != null) {
+      paramJceOutputStream.write(str, 25);
     }
-    if (this.kA != null) {
-      paramJceOutputStream.write(this.kA, 26);
+    str = this.kA;
+    if (str != null) {
+      paramJceOutputStream.write(str, 26);
     }
-    if (this.kB != null) {
-      paramJceOutputStream.write(this.kB, 27);
+    str = this.kB;
+    if (str != null) {
+      paramJceOutputStream.write(str, 27);
     }
-    if (this.kC != null) {
-      paramJceOutputStream.write(this.kC, 28);
+    str = this.kC;
+    if (str != null) {
+      paramJceOutputStream.write(str, 28);
     }
-    if (this.kD != null) {
-      paramJceOutputStream.write(this.kD, 29);
+    str = this.kD;
+    if (str != null) {
+      paramJceOutputStream.write(str, 29);
     }
-    if (this.kE != null) {
-      paramJceOutputStream.write(this.kE, 30);
+    str = this.kE;
+    if (str != null) {
+      paramJceOutputStream.write(str, 30);
     }
-    if (this.kF != null) {
-      paramJceOutputStream.write(this.kF, 31);
+    str = this.kF;
+    if (str != null) {
+      paramJceOutputStream.write(str, 31);
     }
-    if (this.kG != null) {
-      paramJceOutputStream.write(this.kG, 32);
+    str = this.kG;
+    if (str != null) {
+      paramJceOutputStream.write(str, 32);
     }
-    if (this.kH != 0) {
-      paramJceOutputStream.write(this.kH, 33);
+    i = this.kH;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 33);
     }
-    if (this.kI != 0) {
-      paramJceOutputStream.write(this.kI, 34);
+    i = this.kI;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 34);
     }
     paramJceOutputStream.write(this.kJ, 35);
-    if (this.kK != null) {
-      paramJceOutputStream.write(this.kK, 36);
+    str = this.kK;
+    if (str != null) {
+      paramJceOutputStream.write(str, 36);
     }
-    if (this.kL != null) {
-      paramJceOutputStream.write(this.kL, 37);
+    str = this.kL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 37);
     }
-    if (this.kM != null) {
-      paramJceOutputStream.write(this.kM, 38);
+    str = this.kM;
+    if (str != null) {
+      paramJceOutputStream.write(str, 38);
     }
     paramJceOutputStream.write(this.kN, 39);
     paramJceOutputStream.write(this.kO, 40);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 41);
+    str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 41);
     }
-    if (this.kP != 1) {
-      paramJceOutputStream.write(this.kP, 42);
+    i = this.kP;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 42);
     }
-    if (this.kQ != null) {
-      paramJceOutputStream.write(this.kQ, 43);
+    str = this.kQ;
+    if (str != null) {
+      paramJceOutputStream.write(str, 43);
     }
-    if (this.kR != null) {
-      paramJceOutputStream.write(this.kR, 44);
+    str = this.kR;
+    if (str != null) {
+      paramJceOutputStream.write(str, 44);
     }
-    if (this.kS != null) {
-      paramJceOutputStream.write(this.kS, 45);
+    str = this.kS;
+    if (str != null) {
+      paramJceOutputStream.write(str, 45);
     }
-    if (this.kT != null) {
-      paramJceOutputStream.write(this.kT, 46);
+    str = this.kT;
+    if (str != null) {
+      paramJceOutputStream.write(str, 46);
     }
-    if (this.kU != null) {
-      paramJceOutputStream.write(this.kU, 47);
+    str = this.kU;
+    if (str != null) {
+      paramJceOutputStream.write(str, 47);
     }
-    if (this.kV != null) {
-      paramJceOutputStream.write(this.kV, 48);
+    str = this.kV;
+    if (str != null) {
+      paramJceOutputStream.write(str, 48);
     }
-    if (this.kW != null) {
-      paramJceOutputStream.write(this.kW, 49);
+    str = this.kW;
+    if (str != null) {
+      paramJceOutputStream.write(str, 49);
     }
-    if (this.kX != null) {
-      paramJceOutputStream.write(this.kX, 50);
+    str = this.kX;
+    if (str != null) {
+      paramJceOutputStream.write(str, 50);
     }
-    if (this.kY != null) {
-      paramJceOutputStream.write(this.kY, 51);
+    str = this.kY;
+    if (str != null) {
+      paramJceOutputStream.write(str, 51);
     }
-    if (this.kZ != 0L) {
-      paramJceOutputStream.write(this.kZ, 52);
+    l = this.kZ;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 52);
     }
-    if (this.la != null) {
-      paramJceOutputStream.write(this.la, 53);
+    str = this.la;
+    if (str != null) {
+      paramJceOutputStream.write(str, 53);
     }
-    if (this.lb != null) {
-      paramJceOutputStream.write(this.lb, 54);
+    str = this.lb;
+    if (str != null) {
+      paramJceOutputStream.write(str, 54);
     }
-    if (this.lc != 0) {
-      paramJceOutputStream.write(this.lc, 55);
+    i = this.lc;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 55);
     }
-    if (this.ld != null) {
-      paramJceOutputStream.write(this.ld, 56);
+    str = this.ld;
+    if (str != null) {
+      paramJceOutputStream.write(str, 56);
     }
-    if (this.le != null) {
-      paramJceOutputStream.write(this.le, 57);
+    str = this.le;
+    if (str != null) {
+      paramJceOutputStream.write(str, 57);
     }
-    if (this.lf != null) {
-      paramJceOutputStream.write(this.lf, 58);
+    str = this.lf;
+    if (str != null) {
+      paramJceOutputStream.write(str, 58);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.dl
  * JD-Core Version:    0.7.0.1
  */

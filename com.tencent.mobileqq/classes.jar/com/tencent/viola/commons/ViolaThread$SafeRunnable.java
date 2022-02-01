@@ -18,22 +18,28 @@ class ViolaThread$SafeRunnable
   {
     try
     {
-      if (this.mTask != null) {
+      if (this.mTask != null)
+      {
         this.mTask.run();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      while (!ViolaEnvironment.isDebugable()) {}
-      ViolaLogUtils.e("SafeRunnable", "SafeRunnable run throw expection:" + localThrowable.getMessage());
+      if (!ViolaEnvironment.isDebugable()) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SafeRunnable run throw expection:");
+      localStringBuilder.append(localThrowable.getMessage());
+      ViolaLogUtils.e("SafeRunnable", localStringBuilder.toString());
       throw localThrowable;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.commons.ViolaThread.SafeRunnable
  * JD-Core Version:    0.7.0.1
  */

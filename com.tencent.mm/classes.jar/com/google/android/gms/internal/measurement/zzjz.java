@@ -13,7 +13,7 @@ final class zzjz
   
   zzjz(String paramString1, String paramString2, String paramString3, long paramLong, Object paramObject)
   {
-    AppMethodBeat.i(69497);
+    AppMethodBeat.i(2020);
     Preconditions.checkNotEmpty(paramString1);
     Preconditions.checkNotEmpty(paramString3);
     Preconditions.checkNotNull(paramObject);
@@ -22,12 +22,12 @@ final class zzjz
     this.name = paramString3;
     this.zzaqz = paramLong;
     this.value = paramObject;
-    AppMethodBeat.o(69497);
+    AppMethodBeat.o(2020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjz
  * JD-Core Version:    0.7.0.1
  */

@@ -7,42 +7,42 @@ public class SystemProperties
   
   public static String get(String paramString)
   {
-    if (paramString.length() > 31) {
-      throw new IllegalArgumentException("key.length > 31");
+    if (paramString.length() <= 31) {
+      return native_get(paramString);
     }
-    return native_get(paramString);
+    throw new IllegalArgumentException("key.length > 31");
   }
   
   public static String get(String paramString1, String paramString2)
   {
-    if (paramString1.length() > 31) {
-      throw new IllegalArgumentException("key.length > 31");
+    if (paramString1.length() <= 31) {
+      return native_get(paramString1, paramString2);
     }
-    return native_get(paramString1, paramString2);
+    throw new IllegalArgumentException("key.length > 31");
   }
   
   public static boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    if (paramString.length() > 31) {
-      throw new IllegalArgumentException("key.length > 31");
+    if (paramString.length() <= 31) {
+      return native_get_boolean(paramString, paramBoolean);
     }
-    return native_get_boolean(paramString, paramBoolean);
+    throw new IllegalArgumentException("key.length > 31");
   }
   
   public static int getInt(String paramString, int paramInt)
   {
-    if (paramString.length() > 31) {
-      throw new IllegalArgumentException("key.length > 31");
+    if (paramString.length() <= 31) {
+      return native_get_int(paramString, paramInt);
     }
-    return native_get_int(paramString, paramInt);
+    throw new IllegalArgumentException("key.length > 31");
   }
   
   public static long getLong(String paramString, long paramLong)
   {
-    if (paramString.length() > 31) {
-      throw new IllegalArgumentException("key.length > 31");
+    if (paramString.length() <= 31) {
+      return native_get_long(paramString, paramLong);
     }
-    return native_get_long(paramString, paramLong);
+    throw new IllegalArgumentException("key.length > 31");
   }
   
   public static native String native_get(String paramString);
@@ -59,18 +59,20 @@ public class SystemProperties
   
   public static void set(String paramString1, String paramString2)
   {
-    if (paramString1.length() > 31) {
-      throw new IllegalArgumentException("key.length > 31");
+    if (paramString1.length() <= 31)
+    {
+      if ((paramString2 != null) && (paramString2.length() > 255)) {
+        throw new IllegalArgumentException("val.length > 255");
+      }
+      native_set(paramString1, paramString2);
+      return;
     }
-    if ((paramString2 != null) && (paramString2.length() > 255)) {
-      throw new IllegalArgumentException("val.length > 255");
-    }
-    native_set(paramString1, paramString2);
+    throw new IllegalArgumentException("key.length > 31");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.os.SystemProperties
  * JD-Core Version:    0.7.0.1
  */

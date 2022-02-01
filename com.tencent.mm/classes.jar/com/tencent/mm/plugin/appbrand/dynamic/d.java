@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class d
 {
-  private static volatile d hnq;
-  Map<String, c> hnr;
+  private static volatile d rkl;
+  Map<String, c> rkm;
   
   private d()
   {
-    AppMethodBeat.i(10675);
-    this.hnr = new ConcurrentHashMap();
-    AppMethodBeat.o(10675);
+    AppMethodBeat.i(121156);
+    this.rkm = new ConcurrentHashMap();
+    AppMethodBeat.o(121156);
   }
   
-  public static d azx()
+  public static d cns()
   {
-    AppMethodBeat.i(10676);
-    if (hnq == null) {}
+    AppMethodBeat.i(121157);
+    if (rkl == null) {}
     try
     {
-      if (hnq == null) {
-        hnq = new d();
+      if (rkl == null) {
+        rkl = new d();
       }
-      d locald = hnq;
-      AppMethodBeat.o(10676);
+      d locald = rkl;
+      AppMethodBeat.o(121157);
       return locald;
     }
     finally
     {
-      AppMethodBeat.o(10676);
+      AppMethodBeat.o(121157);
     }
   }
   
-  public final c AU(String paramString)
+  public final c YS(String paramString)
   {
-    AppMethodBeat.i(10677);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(121158);
+    if (Util.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.DynamicPageViewIPCProxyManager", "get IPCProxy from manager failed, key is null or nil.");
-      AppMethodBeat.o(10677);
+      Log.w("MicroMsg.DynamicPageViewIPCProxyManager", "get IPCProxy from manager failed, key is null or nil.");
+      AppMethodBeat.o(121158);
       return null;
     }
-    paramString = (c)this.hnr.get(paramString);
-    AppMethodBeat.o(10677);
+    paramString = (c)this.rkm.get(paramString);
+    AppMethodBeat.o(121158);
     return paramString;
   }
 }

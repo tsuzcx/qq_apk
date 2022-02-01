@@ -4,7 +4,7 @@ import a.a.a.a.a.b;
 
 public class a
 {
-  protected static b Vj = ;
+  protected static b Xe = ;
   
   protected int a(int paramInt, Object... paramVarArgs)
   {
@@ -27,7 +27,7 @@ public class a
     return this;
   }
   
-  public final int la()
+  public final int lk()
   {
     try
     {
@@ -43,10 +43,10 @@ public class a
   
   public final byte[] toByteArray()
   {
-    byte[] arrayOfByte = new byte[la()];
+    byte[] arrayOfByte = new byte[lk()];
     a.a.a.c.a locala = new a.a.a.c.a(arrayOfByte);
     a(locala);
-    locala.oN();
+    locala.pB();
     return arrayOfByte;
   }
 }

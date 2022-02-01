@@ -2,9 +2,9 @@ package com.tencent.recovery.a;
 
 final class b
 {
-  String aiV;
-  Object[] aiW;
-  Throwable aiX;
+  String amx;
+  Object[] amy;
+  Throwable amz;
   int level;
   String tag;
   

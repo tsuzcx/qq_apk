@@ -1,18 +1,13 @@
 package com.tencent.mobileqq.adapter;
 
-import aklr;
-import java.util.List;
-
 class TroopListAdapter2$2$1
   implements Runnable
 {
-  TroopListAdapter2$2$1(TroopListAdapter2.2 param2, List paramList) {}
+  TroopListAdapter2$2$1(TroopListAdapter2.2 param2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    aklr.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0);
+    this.a.a.notifyDataSetChanged();
   }
 }
 

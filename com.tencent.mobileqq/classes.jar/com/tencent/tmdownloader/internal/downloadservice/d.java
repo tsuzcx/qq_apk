@@ -21,11 +21,20 @@ class d
   public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask)
   {
     this.a.j = paramDownloaderTask.getRealSaveName();
-    ab.c("_DownloadInfo", "halleyTest onTaskCompletedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("halleyTest onTaskCompletedSubloop saveFileName = ");
+    ((StringBuilder)localObject).append(paramDownloaderTask.getRealSaveName());
+    ab.c("_DownloadInfo", ((StringBuilder)localObject).toString());
     this.a.b(paramDownloaderTask.getReceivedLength());
-    this.a.l = 0;
-    this.a.a(4);
-    ab.c("_DownloadInfo", "halleyTest onTaskCompletedSubloop mReceivedBytes=" + this.a.h + ",totalSize=" + this.a.i);
+    localObject = this.a;
+    ((c)localObject).l = 0;
+    ((c)localObject).a(4);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("halleyTest onTaskCompletedSubloop mReceivedBytes=");
+    ((StringBuilder)localObject).append(this.a.h);
+    ((StringBuilder)localObject).append(",totalSize=");
+    ((StringBuilder)localObject).append(this.a.i);
+    ab.c("_DownloadInfo", ((StringBuilder)localObject).toString());
     this.a.a(103, paramDownloaderTask);
     b.a().a(this.a, paramDownloaderTask);
     DownloadTaskNotifier.get().notify(c.a(this.a, paramDownloaderTask), 4);
@@ -36,8 +45,16 @@ class d
   public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask)
   {
     this.a.j = paramDownloaderTask.getRealSaveName();
-    ab.c("_DownloadInfo", "halleyTest onTaskDetectedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
-    ab.c("_DownloadInfo", "halleyTest onTaskDetectedSubloop percent=" + paramDownloaderTask.getPercentage() + ",receivedBytes=" + paramDownloaderTask.getReceivedLength());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskDetectedSubloop saveFileName = ");
+    localStringBuilder.append(paramDownloaderTask.getRealSaveName());
+    ab.c("_DownloadInfo", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskDetectedSubloop percent=");
+    localStringBuilder.append(paramDownloaderTask.getPercentage());
+    localStringBuilder.append(",receivedBytes=");
+    localStringBuilder.append(paramDownloaderTask.getReceivedLength());
+    ab.c("_DownloadInfo", localStringBuilder.toString());
     this.a.a(paramDownloaderTask.getTotalLength());
     if ((paramDownloaderTask.getPercentage() == 0) && (paramDownloaderTask.getReceivedLength() == 0L)) {
       this.a.a(2);
@@ -51,16 +68,23 @@ class d
   
   public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask)
   {
-    ab.c("_DownloadInfo", "halleyTest onTaskFailedSubloop failCode=" + paramDownloaderTask.getFailCode());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("halleyTest onTaskFailedSubloop failCode=");
+    ((StringBuilder)localObject).append(paramDownloaderTask.getFailCode());
+    ab.c("_DownloadInfo", ((StringBuilder)localObject).toString());
     this.a.j = paramDownloaderTask.getRealSaveName();
     this.a.b(paramDownloaderTask.getFailCode());
-    this.a.i = 0L;
-    this.a.h = 0L;
-    this.a.a(5);
+    localObject = this.a;
+    ((c)localObject).i = 0L;
+    ((c)localObject).h = 0L;
+    ((c)localObject).a(5);
     this.a.a(102, paramDownloaderTask);
     if ((paramDownloaderTask.getFailCode() == -72) && (this.b > 0))
     {
-      ab.c("_DownloadInfo", "failed code = -72,redownload mRetryCounter = " + this.b);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("failed code = -72,redownload mRetryCounter = ");
+      ((StringBuilder)localObject).append(this.b);
+      ab.c("_DownloadInfo", ((StringBuilder)localObject).toString());
       this.b -= 1;
       this.a.f();
       this.a.c();
@@ -76,18 +100,20 @@ class d
   public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask)
   {
     boolean bool = paramDownloaderTask.isPausedOnMobile();
-    ab.b("_DownloadInfo", "halleyTest onTaskPausedSubloop pauseType=" + bool + ",mIsPausedByMoble=" + this.a.G);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskPausedSubloop pauseType=");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(",mIsPausedByMoble=");
+    localStringBuilder.append(this.a.G);
+    ab.b("_DownloadInfo", localStringBuilder.toString());
     this.a.a(3);
     if (this.a.G) {
       paramDownloaderTask.setApkId("BY_MOBILE");
-    }
-    for (;;)
-    {
-      this.a.a(101, paramDownloaderTask);
-      DownloadTaskNotifier.get().notify(c.a(this.a, paramDownloaderTask), 2);
-      return;
+    } else {
       paramDownloaderTask.setApkId("BY_MAUAL");
     }
+    this.a.a(101, paramDownloaderTask);
+    DownloadTaskNotifier.get().notify(c.a(this.a, paramDownloaderTask), 2);
   }
   
   public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
@@ -108,9 +134,18 @@ class d
   
   public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask)
   {
-    ab.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop failCode=" + paramDownloaderTask.getFailCode());
-    ab.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop mReceivedBytes =" + this.a.h);
-    ab.c("_DownloadInfo", "halleyTest onTaskReceivedSubloop receivedLength=" + paramDownloaderTask.getReceivedLength());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskReceivedSubloop failCode=");
+    localStringBuilder.append(paramDownloaderTask.getFailCode());
+    ab.c("_DownloadInfo", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskReceivedSubloop mReceivedBytes =");
+    localStringBuilder.append(this.a.h);
+    ab.c("_DownloadInfo", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskReceivedSubloop receivedLength=");
+    localStringBuilder.append(paramDownloaderTask.getReceivedLength());
+    ab.c("_DownloadInfo", localStringBuilder.toString());
   }
   
   public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
@@ -120,8 +155,16 @@ class d
   
   public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask)
   {
-    ab.c("_DownloadInfo", "halleyTest onTaskStartedSubloop saveFileName = " + paramDownloaderTask.getRealSaveName());
-    ab.c("_DownloadInfo", "halleyTest onTaskStartedSubloop percent=" + paramDownloaderTask.getPercentage() + ",receivedBytes=" + paramDownloaderTask.getReceivedLength());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskStartedSubloop saveFileName = ");
+    localStringBuilder.append(paramDownloaderTask.getRealSaveName());
+    ab.c("_DownloadInfo", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("halleyTest onTaskStartedSubloop percent=");
+    localStringBuilder.append(paramDownloaderTask.getPercentage());
+    localStringBuilder.append(",receivedBytes=");
+    localStringBuilder.append(paramDownloaderTask.getReceivedLength());
+    ab.c("_DownloadInfo", localStringBuilder.toString());
     if (paramDownloaderTask.getPercentage() == 0) {
       this.a.a(2);
     }
@@ -130,7 +173,7 @@ class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadservice.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.pwdgroup.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,261 +22,323 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.plugin.pwdgroup.ui.widget.MMCallBackScrollView;
+import com.tencent.mm.plugin.pwdgroup.ui.widget.MMCallBackScrollView.a;
 import com.tencent.mm.plugin.pwdgroup.ui.widget.MMKeyBoardView;
 import com.tencent.mm.plugin.pwdgroup.ui.widget.MMKeyBoardView.a;
 import com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView;
 import com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView.a;
+import com.tencent.mm.plugin.report.service.l;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.model.lbs.Location;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.protocal.protobuf.abv;
-import com.tencent.mm.protocal.protobuf.abw;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.aqz;
+import com.tencent.mm.protocal.protobuf.ara;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.widget.MMScrollGridView;
+import com.tencent.mm.ui.widget.a.g.b;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Map.Entry;
 import java.util.Set;
 
 public class FacingCreateChatRoomAllInOneUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private b.a dZA;
-  private String eiu;
-  private ProgressDialog gsr;
-  private boolean jRa;
-  private ak mHandler;
-  private boolean ogA;
-  private d pFO;
-  private boolean pFP;
-  private boolean pFQ;
-  private boolean pFR;
-  private boolean pFS;
-  private boolean pFT;
-  private Location pFU;
-  private String pFV;
-  private MMPwdInputView pFW;
-  private View pFX;
-  private ProgressBar pFY;
-  private TextView pFZ;
-  public MenuItem.OnMenuItemClickListener pGA;
-  public MMPwdInputView.a pGB;
-  private View.OnClickListener pGC;
-  public MMKeyBoardView.a pGD;
-  private ap pGE;
-  private MMKeyBoardView pGa;
-  private TextView pGb;
-  private boolean pGc;
-  private boolean pGd;
-  private LinkedList<abw> pGe;
-  private HashMap<String, abw> pGf;
-  private LinkedList<abw> pGg;
-  private a pGh;
-  private View pGi;
-  private TextView pGj;
-  private MMScrollGridView pGk;
-  private View pGl;
-  private View pGm;
-  private Button pGn;
-  private MMCallBackScrollView pGo;
-  private TextView pGp;
-  private boolean pGq;
-  private Runnable pGr;
-  private ak pGs;
-  private ap pGt;
-  private com.tencent.mm.plugin.pwdgroup.a.a pGu;
-  private com.tencent.mm.plugin.pwdgroup.a.a pGv;
-  private int pGw;
-  private Animation pGx;
-  private AnimationSet pGy;
-  private Animation pGz;
+  private boolean EPk;
+  private TextView NgA;
+  private boolean NgB;
+  private boolean NgC;
+  private LinkedList<ara> NgD;
+  private HashMap<String, ara> NgE;
+  private LinkedList<ara> NgF;
+  private a NgG;
+  private View NgH;
+  private TextView NgI;
+  private MMScrollGridView NgJ;
+  private View NgK;
+  private View NgL;
+  private Button NgM;
+  private MMCallBackScrollView NgN;
+  private TextView NgO;
+  private boolean NgP;
+  private Runnable NgQ;
+  private MMHandler NgR;
+  private MTimerHandler NgS;
+  private com.tencent.mm.plugin.pwdgroup.a.a NgT;
+  private com.tencent.mm.plugin.pwdgroup.a.a NgU;
+  private int NgV;
+  private Animation NgW;
+  private AnimationSet NgX;
+  private Animation NgY;
+  public MenuItem.OnMenuItemClickListener NgZ;
+  private d Ngn;
+  private boolean Ngo;
+  private boolean Ngp;
+  private boolean Ngq;
+  private boolean Ngr;
+  private boolean Ngs;
+  private Location Ngt;
+  private String Ngu;
+  private MMPwdInputView Ngv;
+  private View Ngw;
+  private ProgressBar Ngx;
+  private TextView Ngy;
+  private MMKeyBoardView Ngz;
+  public MMPwdInputView.a Nha;
+  private View.OnClickListener Nhb;
+  public MMKeyBoardView.a Nhc;
+  private MTimerHandler Nhd;
+  private String lCS;
+  private b.a lsF;
+  private MMHandler mHandler;
+  private ProgressDialog pNH;
+  private boolean vxW;
   
   public FacingCreateChatRoomAllInOneUI()
   {
-    AppMethodBeat.i(24007);
-    this.pFP = false;
-    this.pFT = false;
-    this.pGc = false;
-    this.pGd = false;
-    this.jRa = false;
-    this.pGe = new LinkedList();
-    this.pGf = new HashMap();
-    this.pGg = new LinkedList();
-    this.pGq = false;
-    this.pGt = new ap(new FacingCreateChatRoomAllInOneUI.1(this), false);
-    this.mHandler = new FacingCreateChatRoomAllInOneUI.11(this);
-    this.pGA = new FacingCreateChatRoomAllInOneUI.12(this);
-    this.pGB = new FacingCreateChatRoomAllInOneUI.13(this);
-    this.pGC = new FacingCreateChatRoomAllInOneUI.14(this);
-    this.pGD = new FacingCreateChatRoomAllInOneUI.15(this);
-    this.dZA = new FacingCreateChatRoomAllInOneUI.16(this);
-    this.pGE = new ap(new FacingCreateChatRoomAllInOneUI.17(this), false);
-    AppMethodBeat.o(24007);
+    AppMethodBeat.i(27646);
+    this.Ngo = false;
+    this.Ngs = false;
+    this.NgB = false;
+    this.NgC = false;
+    this.vxW = false;
+    this.NgD = new LinkedList();
+    this.NgE = new HashMap();
+    this.NgF = new LinkedList();
+    this.NgP = false;
+    this.NgS = new MTimerHandler(new FacingCreateChatRoomAllInOneUI.1(this), false);
+    this.mHandler = new FacingCreateChatRoomAllInOneUI.12(this);
+    this.NgZ = new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(27633);
+        FacingCreateChatRoomAllInOneUI.this.finish();
+        AppMethodBeat.o(27633);
+        return false;
+      }
+    };
+    this.Nha = new MMPwdInputView.a()
+    {
+      public final void ar(boolean paramAnonymousBoolean, String paramAnonymousString)
+      {
+        AppMethodBeat.i(27634);
+        Log.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[onFinishInput] %b %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString });
+        FacingCreateChatRoomAllInOneUI.a(FacingCreateChatRoomAllInOneUI.this, paramAnonymousString);
+        if (paramAnonymousBoolean)
+        {
+          FacingCreateChatRoomAllInOneUI.a(FacingCreateChatRoomAllInOneUI.this, true);
+          FacingCreateChatRoomAllInOneUI.e(FacingCreateChatRoomAllInOneUI.this);
+        }
+        AppMethodBeat.o(27634);
+      }
+    };
+    this.Nhb = new FacingCreateChatRoomAllInOneUI.15(this);
+    this.Nhc = new FacingCreateChatRoomAllInOneUI.16(this);
+    this.lsF = new b.a()
+    {
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
+      {
+        AppMethodBeat.i(284565);
+        Log.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
+        if (paramAnonymousBoolean)
+        {
+          Location localLocation = new Location(paramAnonymousFloat2, paramAnonymousFloat1, (int)paramAnonymousDouble2, paramAnonymousInt, "", "");
+          if (!localLocation.iIQ())
+          {
+            FacingCreateChatRoomAllInOneUI.a(FacingCreateChatRoomAllInOneUI.this, localLocation);
+            FacingCreateChatRoomAllInOneUI.b(FacingCreateChatRoomAllInOneUI.this, true);
+            FacingCreateChatRoomAllInOneUI.e(FacingCreateChatRoomAllInOneUI.this);
+          }
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(284565);
+          return false;
+          if ((!FacingCreateChatRoomAllInOneUI.j(FacingCreateChatRoomAllInOneUI.this)) && (!d.bJm()))
+          {
+            FacingCreateChatRoomAllInOneUI.k(FacingCreateChatRoomAllInOneUI.this);
+            k.a(FacingCreateChatRoomAllInOneUI.this, FacingCreateChatRoomAllInOneUI.this.getString(R.l.gps_disable_tip), FacingCreateChatRoomAllInOneUI.this.getString(R.l.app_tip), FacingCreateChatRoomAllInOneUI.this.getString(R.l.jump_to_settings), FacingCreateChatRoomAllInOneUI.this.getString(R.l.app_cancel), false, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(27639);
+                d.dP(FacingCreateChatRoomAllInOneUI.this);
+                AppMethodBeat.o(27639);
+              }
+            }, null);
+          }
+          FacingCreateChatRoomAllInOneUI.b(FacingCreateChatRoomAllInOneUI.this, false);
+        }
+      }
+    };
+    this.Nhd = new MTimerHandler(new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(27641);
+        FacingCreateChatRoomAllInOneUI.a(FacingCreateChatRoomAllInOneUI.this, false);
+        FacingCreateChatRoomAllInOneUI.a(FacingCreateChatRoomAllInOneUI.this, FacingCreateChatRoomAllInOneUI.a.Nhm);
+        AppMethodBeat.o(27641);
+        return true;
+      }
+    }, false);
+    AppMethodBeat.o(27646);
   }
   
-  private void La(String paramString)
+  private void AK(boolean paramBoolean)
   {
-    AppMethodBeat.i(24021);
-    h.a(this, paramString, "", getString(2131297018), new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-    });
-    AppMethodBeat.o(24021);
+    AppMethodBeat.i(27657);
+    if (this.Ngz != null) {
+      this.Ngz.setKeyBoardEnable(paramBoolean);
+    }
+    AppMethodBeat.o(27657);
   }
   
   private void a(a parama)
   {
-    AppMethodBeat.i(24019);
-    if (this.pFZ != null) {}
-    switch (FacingCreateChatRoomAllInOneUI.10.pGI[parama.ordinal()])
+    AppMethodBeat.i(27658);
+    if (this.Ngy != null) {}
+    switch (11.Nhh[parama.ordinal()])
     {
     default: 
-      ab.w("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "unknow statue tip");
-      AppMethodBeat.o(24019);
+      Log.w("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "unknow statue tip");
+      AppMethodBeat.o(27658);
       return;
     case 1: 
-      ki(true);
-      this.pFP = false;
-      this.pFT = false;
-      this.pFY.setVisibility(8);
-      this.pFZ.setVisibility(8);
-      AppMethodBeat.o(24019);
+      AK(true);
+      this.Ngo = false;
+      this.Ngs = false;
+      this.Ngx.setVisibility(8);
+      this.Ngy.setVisibility(8);
+      AppMethodBeat.o(27658);
       return;
     case 2: 
-      ki(false);
-      this.pFZ.setText(2131302266);
-      this.pFY.setVisibility(0);
-      this.pFZ.setVisibility(8);
-      AppMethodBeat.o(24019);
+      AK(false);
+      this.Ngy.setText(R.l.gSI);
+      this.Ngx.setVisibility(0);
+      this.Ngy.setVisibility(8);
+      AppMethodBeat.o(27658);
       return;
     case 3: 
-      ki(true);
-      this.pFY.setVisibility(8);
-      this.pFZ.setVisibility(0);
-      this.pFZ.setText(2131302263);
-      cdm();
-      AppMethodBeat.o(24019);
+      AK(true);
+      this.Ngx.setVisibility(8);
+      this.Ngy.setVisibility(0);
+      this.Ngy.setText(R.l.gSG);
+      gDC();
+      AppMethodBeat.o(27658);
       return;
     }
-    ki(true);
-    this.pFY.setVisibility(8);
-    this.pFZ.setVisibility(0);
-    this.pFZ.setText(2131302265);
-    cdm();
-    AppMethodBeat.o(24019);
+    AK(true);
+    this.Ngx.setVisibility(8);
+    this.Ngy.setVisibility(0);
+    this.Ngy.setText(R.l.gSH);
+    gDC();
+    AppMethodBeat.o(27658);
   }
   
-  private void apS()
+  private void aoP(String paramString)
   {
-    AppMethodBeat.i(24009);
-    this.pFO = d.agQ();
-    this.pFO.a(this.dZA, true);
-    aw.Rc().a(653, this);
+    AppMethodBeat.i(27660);
+    k.a(this, paramString, "", getString(R.l.app_ok), new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+    });
+    AppMethodBeat.o(27660);
+  }
+  
+  private void bWB()
+  {
+    AppMethodBeat.i(27648);
+    this.Ngn = d.bJl();
+    this.Ngn.a(this.lsF, true, true);
+    bh.aZW().a(653, this);
     getWindow().getDecorView().setSystemUiVisibility(1280);
     initView();
-    AppMethodBeat.o(24009);
+    l.kK(3, 10);
+    AppMethodBeat.o(27648);
   }
   
-  private void cdk()
+  private void gDA()
   {
-    AppMethodBeat.i(24022);
-    this.jRa = false;
-    if (this.pGt != null) {
-      this.pGt.ag(0L, 0L);
+    AppMethodBeat.i(27661);
+    this.vxW = false;
+    if (this.NgS != null) {
+      this.NgS.startTimer(0L);
     }
-    AppMethodBeat.o(24022);
+    AppMethodBeat.o(27661);
   }
   
-  private void cdl()
+  private void gDB()
   {
-    AppMethodBeat.i(24023);
-    this.jRa = true;
-    if (this.pGt != null) {
-      this.pGt.stopTimer();
+    AppMethodBeat.i(27662);
+    this.vxW = true;
+    if (this.NgS != null) {
+      this.NgS.stopTimer();
     }
-    aw.Rc().a(this.pGu);
-    AppMethodBeat.o(24023);
+    bh.aZW().a(this.NgT);
+    AppMethodBeat.o(27662);
   }
   
-  private void cdm()
+  private void gDC()
   {
-    AppMethodBeat.i(24024);
-    Animation localAnimation1 = AnimationUtils.loadAnimation(this, 2131034126);
-    final Animation localAnimation2 = AnimationUtils.loadAnimation(this, 2131034125);
+    AppMethodBeat.i(27663);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(this, R.a.alpha_out);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(this, R.a.alpha_in);
     localAnimation1.setInterpolator(new AccelerateDecelerateInterpolator());
-    localAnimation1.setAnimationListener(new Animation.AnimationListener()
-    {
-      public final void onAnimationEnd(Animation paramAnonymousAnimation)
-      {
-        AppMethodBeat.i(23990);
-        FacingCreateChatRoomAllInOneUI.g(FacingCreateChatRoomAllInOneUI.this).axH();
-        FacingCreateChatRoomAllInOneUI.g(FacingCreateChatRoomAllInOneUI.this).startAnimation(localAnimation2);
-        AppMethodBeat.o(23990);
-      }
-      
-      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-      
-      public final void onAnimationStart(Animation paramAnonymousAnimation) {}
-    });
+    localAnimation1.setAnimationListener(new FacingCreateChatRoomAllInOneUI.9(this, localAnimation2));
     localAnimation2.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
-        AppMethodBeat.i(23991);
+        AppMethodBeat.i(284573);
         if (FacingCreateChatRoomAllInOneUI.r(FacingCreateChatRoomAllInOneUI.this) != null) {
           FacingCreateChatRoomAllInOneUI.r(FacingCreateChatRoomAllInOneUI.this).setKeyBoardEnable(true);
         }
-        AppMethodBeat.o(23991);
+        AppMethodBeat.o(284573);
       }
       
       public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    if (this.pFW != null) {
-      this.pFW.startAnimation(localAnimation1);
+    if (this.Ngv != null) {
+      this.Ngv.startAnimation(localAnimation1);
     }
-    if (this.pGa != null) {
-      this.pGa.setKeyBoardEnable(false);
+    if (this.Ngz != null) {
+      this.Ngz.setKeyBoardEnable(false);
     }
-    AppMethodBeat.o(24024);
+    AppMethodBeat.o(27663);
   }
   
   private void hideLoading()
   {
-    AppMethodBeat.i(24020);
-    if ((this.gsr != null) && (this.gsr.isShowing())) {
-      this.gsr.dismiss();
+    AppMethodBeat.i(27659);
+    if ((this.pNH != null) && (this.pNH.isShowing())) {
+      this.pNH.dismiss();
     }
-    AppMethodBeat.o(24020);
-  }
-  
-  private void ki(boolean paramBoolean)
-  {
-    AppMethodBeat.i(24018);
-    if (this.pGa != null) {
-      this.pGa.setKeyBoardEnable(paramBoolean);
-    }
-    AppMethodBeat.o(24018);
+    AppMethodBeat.o(27659);
   }
   
   public int getForceOrientation()
@@ -285,46 +348,73 @@ public class FacingCreateChatRoomAllInOneUI
   
   public int getLayoutId()
   {
-    return 2130969522;
+    return R.i.gjQ;
+  }
+  
+  public Set<Class<? extends UIComponent>> importUIComponents()
+  {
+    AppMethodBeat.i(284715);
+    HashSet localHashSet = new HashSet(super.importUIComponents());
+    localHashSet.add(com.tencent.mm.plugin.profile.ui.a.b.class);
+    AppMethodBeat.o(284715);
+    return localHashSet;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(24015);
-    setMMTitle(2131299913);
-    setBackBtn(this.pGA);
-    setActionbarColor(getResources().getColor(2131690605));
-    this.pFX = findViewById(2131823987);
-    this.pFY = ((ProgressBar)findViewById(2131823988));
-    this.pFZ = ((TextView)findViewById(2131823989));
-    this.pGa = ((MMKeyBoardView)findViewById(2131823990));
-    this.pGb = ((TextView)findViewById(2131823979));
-    this.pFW = ((MMPwdInputView)findViewById(2131823983));
-    this.pFW.setOnFinishInputListener(this.pGB);
-    this.pFW.requestFocus();
-    this.pGa.setOnInputDeleteListener(this.pGD);
-    a(a.pGK);
-    this.pGi = findViewById(2131823984);
-    this.pGj = ((TextView)findViewById(2131823985));
-    this.pGk = ((MMScrollGridView)findViewById(2131823986));
-    this.pGk.setVisibility(4);
-    this.pGn = ((Button)findViewById(2131823992));
-    this.pGn.setOnClickListener(this.pGC);
-    this.pGl = findViewById(2131823981);
-    this.pGm = findViewById(2131823991);
-    this.pGj.setText(2131299657);
-    this.pGo = ((MMCallBackScrollView)findViewById(2131823980));
-    this.pGp = ((TextView)findViewById(2131823982));
-    this.pGo.setMMOnScrollListener(new FacingCreateChatRoomAllInOneUI.3(this));
-    this.pGh = new a(this);
-    this.pGk.setAdapter(this.pGh);
-    this.pGh.setData(this.pGe);
-    AppMethodBeat.o(24015);
+    AppMethodBeat.i(27654);
+    setMMTitle(R.l.gHV);
+    setBackBtn(this.NgZ);
+    setActionbarColor(getResources().getColor(R.e.transparent));
+    setNavigationbarColor(getResources().getColor(R.e.fkW));
+    this.Ngw = findViewById(R.h.fHH);
+    this.Ngx = ((ProgressBar)findViewById(R.h.fHG));
+    this.Ngy = ((TextView)findViewById(R.h.fHI));
+    this.Ngz = ((MMKeyBoardView)findViewById(R.h.fHF));
+    this.NgA = ((TextView)findViewById(R.h.fHE));
+    this.Ngv = ((MMPwdInputView)findViewById(R.h.fHC));
+    this.Ngv.setOnFinishInputListener(this.Nha);
+    this.Ngv.requestFocus();
+    this.Ngz.setOnInputDeleteListener(this.Nhc);
+    a(a.Nhj);
+    this.NgH = findViewById(R.h.fHv);
+    this.NgI = ((TextView)findViewById(R.h.fHx));
+    this.NgJ = ((MMScrollGridView)findViewById(R.h.fHw));
+    this.NgJ.setVisibility(4);
+    this.NgM = ((Button)findViewById(R.h.fHy));
+    this.NgM.setOnClickListener(this.Nhb);
+    this.NgK = findViewById(R.h.fHz);
+    this.NgL = findViewById(R.h.fHA);
+    this.NgI.setText(R.l.gHn);
+    this.NgN = ((MMCallBackScrollView)findViewById(R.h.fHJ));
+    this.NgO = ((TextView)findViewById(R.h.fHD));
+    this.NgN.setMMOnScrollListener(new MMCallBackScrollView.a()
+    {
+      public final void onScrollStateChanged(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(284581);
+        if (FacingCreateChatRoomAllInOneUI.l(FacingCreateChatRoomAllInOneUI.this) != null)
+        {
+          if (paramAnonymousInt == 0)
+          {
+            FacingCreateChatRoomAllInOneUI.l(FacingCreateChatRoomAllInOneUI.this).setVisibility(4);
+            AppMethodBeat.o(284581);
+            return;
+          }
+          FacingCreateChatRoomAllInOneUI.l(FacingCreateChatRoomAllInOneUI.this).setVisibility(0);
+        }
+        AppMethodBeat.o(284581);
+      }
+    });
+    this.NgG = new a(this);
+    this.NgJ.setAdapter(this.NgG);
+    this.NgG.setData(this.NgD);
+    AppMethodBeat.o(27654);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(24014);
+    AppMethodBeat.i(27653);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 30764)
     {
@@ -333,159 +423,177 @@ public class FacingCreateChatRoomAllInOneUI
         paramIntent = paramIntent.getBundleExtra("result_data");
         if ((paramIntent != null) && (paramIntent.getString("go_next", "").equals("gdpr_auth_location")))
         {
-          g.RL().Ru().set(ac.a.yKH, Boolean.TRUE);
-          com.tencent.mm.pluginsdk.permission.b.b(this, "android.permission.ACCESS_COARSE_LOCATION", 64);
-          AppMethodBeat.o(24014);
+          com.tencent.mm.kernel.h.baE().ban().set(at.a.acXn, Boolean.TRUE);
+          com.tencent.mm.pluginsdk.permission.b.b(this, "android.permission.ACCESS_FINE_LOCATION", 64);
+          AppMethodBeat.o(27653);
           return;
         }
         finish();
-        AppMethodBeat.o(24014);
+        AppMethodBeat.o(27653);
         return;
       }
       finish();
     }
-    AppMethodBeat.o(24014);
+    AppMethodBeat.o(27653);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(24017);
+    AppMethodBeat.i(27656);
     super.onBackPressed();
     finish();
-    AppMethodBeat.o(24017);
+    AppMethodBeat.o(27656);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(24008);
+    AppMethodBeat.i(27647);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    if (com.tencent.mm.au.b.tM((String)g.RL().Ru().get(274436, null)))
+    if (com.tencent.mm.au.b.OE((String)com.tencent.mm.kernel.h.baE().ban().d(274436, null)))
     {
-      if (!com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.ACCESS_COARSE_LOCATION"))
+      if (!com.tencent.mm.pluginsdk.permission.b.s(this, "android.permission.ACCESS_FINE_LOCATION"))
       {
-        if (!((Boolean)g.RL().Ru().get(ac.a.yKH, Boolean.FALSE)).booleanValue())
+        if (!((Boolean)com.tencent.mm.kernel.h.baE().ban().get(at.a.acXn, Boolean.FALSE)).booleanValue())
         {
-          com.tencent.mm.plugin.account.a.b.a.b(this, getString(2131306183, new Object[] { aa.dsG() }), 30764, true);
-          AppMethodBeat.o(24008);
+          com.tencent.mm.plugin.account.sdk.c.a.b(this, getString(R.l.location_use_scene_gdpr_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 30764, true);
+          AppMethodBeat.o(27647);
           return;
         }
-        com.tencent.mm.pluginsdk.permission.b.b(this, "android.permission.ACCESS_COARSE_LOCATION", 64);
-        AppMethodBeat.o(24008);
+        com.tencent.mm.pluginsdk.permission.b.b(this, "android.permission.ACCESS_FINE_LOCATION", 64);
+        AppMethodBeat.o(27647);
       }
     }
     else
     {
-      boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 64, null, null);
-      ab.i("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_FINE_LOCATION", 64, getString(R.l.gHp), new g.b()
+      {
+        public final void e(boolean paramAnonymousBoolean1, String paramAnonymousString, boolean paramAnonymousBoolean2)
+        {
+          AppMethodBeat.i(284567);
+          if (!paramAnonymousBoolean1) {
+            FacingCreateChatRoomAllInOneUI.this.finish();
+          }
+          AppMethodBeat.o(284567);
+        }
+      });
+      Log.i("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
-        AppMethodBeat.o(24008);
+        AppMethodBeat.o(27647);
         return;
       }
     }
-    apS();
-    AppMethodBeat.o(24008);
+    bWB();
+    AppMethodBeat.o(27647);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(24013);
-    aw.Rc().b(653, this);
-    if (this.pFO != null) {
-      this.pFO.c(this.dZA);
+    AppMethodBeat.i(27652);
+    bh.aZW().b(653, this);
+    if (this.Ngn != null) {
+      this.Ngn.a(this.lsF);
     }
-    if (!this.pGd)
+    if (!this.NgC)
     {
-      aw.Rc().cancel(653);
-      if (this.pFU != null)
+      bh.aZW().cancel(653);
+      if (this.Ngt != null)
       {
-        this.pGv = new com.tencent.mm.plugin.pwdgroup.a.a(2, this.pFV, "", this.pFU.fBB, this.pFU.fBC, this.pFU.accuracy, this.pFU.cAJ, this.pFU.mac, this.pFU.cAL);
-        aw.Rc().a(this.pGv, 0);
+        this.NgU = new com.tencent.mm.plugin.pwdgroup.a.a(2, this.Ngu, "", this.Ngt.oDT, this.Ngt.oDU, this.Ngt.EOW, this.Ngt.hSq, this.Ngt.mac, this.Ngt.hSs);
+        bh.aZW().a(this.NgU, 0);
       }
     }
-    if (this.pGq) {
-      cdl();
+    if (this.NgP) {
+      gDB();
     }
-    if ((this.pGs != null) && (this.pGr != null)) {
-      this.pGs.removeCallbacks(this.pGr);
+    if ((this.NgR != null) && (this.NgQ != null)) {
+      this.NgR.removeCallbacks(this.NgQ);
     }
     super.onDestroy();
-    AppMethodBeat.o(24013);
+    AppMethodBeat.o(27652);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(24012);
-    if (this.pFO != null) {
-      this.pFO.c(this.dZA);
+    AppMethodBeat.i(27651);
+    if (this.Ngn != null) {
+      this.Ngn.a(this.lsF);
     }
-    if (this.pGq) {
-      cdl();
+    if (this.NgP) {
+      gDB();
     }
     super.onPause();
-    AppMethodBeat.o(24012);
+    AppMethodBeat.o(27651);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(24010);
+    AppMethodBeat.i(27649);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ab.i("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
-      AppMethodBeat.o(24010);
+      Log.i("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(27649);
       return;
     }
-    ab.i("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(24010);
+      AppMethodBeat.o(27649);
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        apS();
-        AppMethodBeat.o(24010);
+        bWB();
+        AppMethodBeat.o(27649);
         return;
       }
-      h.a(this, getString(2131302073), getString(2131302083), getString(2131300996), getString(2131297837), false, new DialogInterface.OnClickListener()new FacingCreateChatRoomAllInOneUI.2
+      k.a(this, getString(R.l.permission_location_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(24003);
-          FacingCreateChatRoomAllInOneUI.this.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+          AppMethodBeat.i(27623);
+          com.tencent.mm.pluginsdk.permission.b.lx(FacingCreateChatRoomAllInOneUI.this.getContext());
           FacingCreateChatRoomAllInOneUI.this.finish();
-          AppMethodBeat.o(24003);
+          AppMethodBeat.o(27623);
         }
-      }, new FacingCreateChatRoomAllInOneUI.2(this));
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(284578);
+          FacingCreateChatRoomAllInOneUI.this.finish();
+          AppMethodBeat.o(284578);
+        }
+      });
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(24011);
-    if (this.pFO != null) {
-      this.pFO.a(this.dZA, true);
+    AppMethodBeat.i(27650);
+    if (this.Ngn != null) {
+      this.Ngn.a(this.lsF, true, true);
     }
-    if (this.pGq) {
-      cdk();
+    if (this.NgP) {
+      gDA();
     }
     super.onResume();
-    AppMethodBeat.o(24011);
+    AppMethodBeat.o(27650);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(24016);
-    ab.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    switch (paramm.getType())
+    AppMethodBeat.i(27655);
+    Log.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    switch (paramp.getType())
     {
     default: 
-      ab.w("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[onSceneEnd] unknow scene type");
+      Log.w("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[onSceneEnd] unknow scene type");
     }
-    label612:
+    label609:
     do
     {
       int i;
@@ -493,133 +601,105 @@ public class FacingCreateChatRoomAllInOneUI
       {
         do
         {
-          AppMethodBeat.o(24016);
+          AppMethodBeat.o(27655);
           return;
-          paramm = (com.tencent.mm.plugin.pwdgroup.a.a)paramm;
-          i = paramm.cuo;
+          paramp = (com.tencent.mm.plugin.pwdgroup.a.a)paramp;
+          i = paramp.hHT;
           if (i != 0) {
-            break label612;
+            break label609;
           }
-          this.pFS = false;
-          if (!this.pGq) {
+          this.Ngr = false;
+          if (!this.NgP) {
             break;
           }
-          if (this.pGt != null) {
-            this.pGt.ag(3000L, 3000L);
+          if (this.NgS != null) {
+            this.NgS.startTimer(3000L);
           }
         } while ((paramInt1 != 0) || (paramInt2 != 0));
-        paramString = paramm.cdj().wov;
-        if (this.pGs == null) {
-          this.pGs = new al().caB();
+        paramString = paramp.gDz().YFm;
+        if (this.NgR == null) {
+          this.NgR = new MMHandler("FacingCreateChatRoomAllInOneUI");
         }
-        if (this.pGr != null) {
-          this.pGs.removeCallbacks(this.pGr);
+        if (this.NgQ != null) {
+          this.NgR.removeCallbacks(this.NgQ);
         }
-        this.pGr = new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(23989);
-            if (FacingCreateChatRoomAllInOneUI.s(FacingCreateChatRoomAllInOneUI.this) != null) {
-              FacingCreateChatRoomAllInOneUI.s(FacingCreateChatRoomAllInOneUI.this).clear();
-            }
-            if (FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this) != null) {
-              FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this).clear();
-            }
-            Object localObject;
-            if ((paramString != null) && (paramString.size() > 0))
-            {
-              j = paramString.size();
-              i = 0;
-              while (i < j)
-              {
-                localObject = (abw)paramString.get(i);
-                if (!bo.isNullOrNil(((abw)localObject).wSo)) {
-                  FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this).put(((abw)localObject).wSo, localObject);
-                }
-                i += 1;
-              }
-            }
-            int j = FacingCreateChatRoomAllInOneUI.c(FacingCreateChatRoomAllInOneUI.this).size();
-            int i = 0;
-            if (i < j)
-            {
-              localObject = (abw)FacingCreateChatRoomAllInOneUI.c(FacingCreateChatRoomAllInOneUI.this).get(i);
-              if (!FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this).containsKey(((abw)localObject).wSo)) {
-                ab.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[updateMember] delete member name:%s", new Object[] { ((abw)localObject).wSo });
-              }
-              for (;;)
-              {
-                i += 1;
-                break;
-                FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this).remove(((abw)localObject).wSo);
-              }
-            }
-            if ((FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this) != null) && (FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this).size() > 0))
-            {
-              localObject = FacingCreateChatRoomAllInOneUI.t(FacingCreateChatRoomAllInOneUI.this).entrySet().iterator();
-              while (((Iterator)localObject).hasNext())
-              {
-                abw localabw = (abw)((Map.Entry)((Iterator)localObject).next()).getValue();
-                FacingCreateChatRoomAllInOneUI.s(FacingCreateChatRoomAllInOneUI.this).add(localabw);
-                ab.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "cpan[updateMember] add member name:%s", new Object[] { localabw.wSo });
-              }
-            }
-            FacingCreateChatRoomAllInOneUI.c(FacingCreateChatRoomAllInOneUI.this).addAll(FacingCreateChatRoomAllInOneUI.s(FacingCreateChatRoomAllInOneUI.this));
-            FacingCreateChatRoomAllInOneUI.u(FacingCreateChatRoomAllInOneUI.this).sendEmptyMessage(10001);
-            AppMethodBeat.o(23989);
-          }
-        };
-        this.pGs.post(this.pGr);
-        this.eiu = paramm.cdj().wQf;
-        AppMethodBeat.o(24016);
+        this.NgQ = new FacingCreateChatRoomAllInOneUI.8(this, paramString);
+        this.NgR.post(this.NgQ);
+        this.lCS = paramp.gDz().Njp;
+        AppMethodBeat.o(27655);
         return;
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          a(a.pGK);
-          this.pGw = this.pGb.getHeight();
-          ab.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "mFacingInputMsgViewHeigth:%d", new Object[] { Integer.valueOf(this.pGw) });
-          this.pGx = AnimationUtils.loadAnimation(this, 2131034174);
-          this.pGz = AnimationUtils.loadAnimation(this, 2131034167);
-          this.pGy = new AnimationSet(true);
-          this.pGy.addAnimation(AnimationUtils.loadAnimation(this, 2131034247));
-          paramString = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.pGw);
+          a(a.Nhj);
+          this.NgV = this.NgA.getHeight();
+          Log.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "mFacingInputMsgViewHeigth:%d", new Object[] { Integer.valueOf(this.NgV) });
+          this.NgW = AnimationUtils.loadAnimation(this, R.a.faded_out);
+          this.NgY = AnimationUtils.loadAnimation(this, R.a.fjw);
+          this.NgX = new AnimationSet(true);
+          this.NgX.addAnimation(AnimationUtils.loadAnimation(this, R.a.fjB));
+          paramString = new TranslateAnimation(0.0F, 0.0F, 0.0F, -this.NgV);
           paramString.setDuration(300L);
-          this.pGy.addAnimation(paramString);
-          this.pGx.setDuration(200L);
-          this.pGy.setDuration(300L);
-          this.pGz.setDuration(300L);
-          this.pGx.setInterpolator(new AccelerateDecelerateInterpolator());
-          this.pGy.setInterpolator(new AccelerateDecelerateInterpolator());
-          this.pGz.setInterpolator(new AccelerateDecelerateInterpolator());
-          this.pGy.setFillAfter(true);
+          this.NgX.addAnimation(paramString);
+          this.NgW.setDuration(200L);
+          this.NgX.setDuration(300L);
+          this.NgY.setDuration(300L);
+          this.NgW.setInterpolator(new AccelerateDecelerateInterpolator());
+          this.NgX.setInterpolator(new AccelerateDecelerateInterpolator());
+          this.NgY.setInterpolator(new AccelerateDecelerateInterpolator());
+          this.NgX.setFillAfter(true);
           paramString.setFillAfter(true);
-          this.pGy.setAnimationListener(new FacingCreateChatRoomAllInOneUI.4(this));
-          this.pFW.setVisibility(4);
-          this.pFW.setAnimation(paramString);
-          this.pGa.startAnimation(this.pGx);
-          this.pFX.startAnimation(this.pGx);
-          this.pGb.startAnimation(this.pGx);
-          this.pGl.startAnimation(this.pGz);
-          this.pGi.startAnimation(this.pGy);
-          this.pGl.setVisibility(4);
-          this.pGa.setVisibility(8);
-          this.pGb.setVisibility(8);
-          this.pGq = true;
-          cdk();
-          AppMethodBeat.o(24016);
+          this.NgX.setAnimationListener(new Animation.AnimationListener()
+          {
+            public final void onAnimationEnd(Animation paramAnonymousAnimation)
+            {
+              AppMethodBeat.i(284587);
+              FacingCreateChatRoomAllInOneUI.n(FacingCreateChatRoomAllInOneUI.this).setVisibility(8);
+              FacingCreateChatRoomAllInOneUI.g(FacingCreateChatRoomAllInOneUI.this).setVisibility(0);
+              FacingCreateChatRoomAllInOneUI.o(FacingCreateChatRoomAllInOneUI.this).setVisibility(0);
+              FacingCreateChatRoomAllInOneUI.p(FacingCreateChatRoomAllInOneUI.this).setVisibility(0);
+              FacingCreateChatRoomAllInOneUI.m(FacingCreateChatRoomAllInOneUI.this).setVisibility(0);
+              FacingCreateChatRoomAllInOneUI.q(FacingCreateChatRoomAllInOneUI.this).setVisibility(8);
+              FacingCreateChatRoomAllInOneUI.r(FacingCreateChatRoomAllInOneUI.this).setVisibility(8);
+              FacingCreateChatRoomAllInOneUI.g(FacingCreateChatRoomAllInOneUI.this).clearAnimation();
+              FacingCreateChatRoomAllInOneUI.o(FacingCreateChatRoomAllInOneUI.this).clearAnimation();
+              FacingCreateChatRoomAllInOneUI.m(FacingCreateChatRoomAllInOneUI.this).clearAnimation();
+              AppMethodBeat.o(284587);
+            }
+            
+            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+            
+            public final void onAnimationStart(Animation paramAnonymousAnimation)
+            {
+              AppMethodBeat.i(284585);
+              FacingCreateChatRoomAllInOneUI.m(FacingCreateChatRoomAllInOneUI.this).setVisibility(4);
+              AppMethodBeat.o(284585);
+            }
+          });
+          this.Ngv.setVisibility(4);
+          this.Ngv.setAnimation(paramString);
+          this.Ngz.startAnimation(this.NgW);
+          this.Ngw.startAnimation(this.NgW);
+          this.NgA.startAnimation(this.NgW);
+          this.NgK.startAnimation(this.NgY);
+          this.NgH.startAnimation(this.NgX);
+          this.NgK.setVisibility(4);
+          this.Ngz.setVisibility(8);
+          this.NgA.setVisibility(8);
+          this.NgP = true;
+          gDA();
+          AppMethodBeat.o(27655);
           return;
         }
         if (paramInt2 == -431)
         {
-          this.pFP = true;
-          a(a.pGM);
-          AppMethodBeat.o(24016);
+          this.Ngo = true;
+          a(a.Nhl);
+          AppMethodBeat.o(27655);
           return;
         }
-        this.pFP = true;
-        a(a.pGN);
-        AppMethodBeat.o(24016);
+        this.Ngo = true;
+        a(a.Nhm);
+        AppMethodBeat.o(27655);
         return;
         if (i != 3) {
           break;
@@ -627,63 +707,63 @@ public class FacingCreateChatRoomAllInOneUI
       } while ((paramInt1 == 0) && (paramInt2 == 0));
       if (paramInt2 == -431)
       {
-        a(a.pGM);
-        this.pFP = true;
-        AppMethodBeat.o(24016);
+        a(a.Nhl);
+        this.Ngo = true;
+        AppMethodBeat.o(27655);
         return;
       }
-      a(a.pGN);
-      AppMethodBeat.o(24016);
+      a(a.Nhm);
+      AppMethodBeat.o(27655);
       return;
       if (i != 1) {
-        break label910;
+        break label902;
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         hideLoading();
-        paramString = paramm.cdj().wot;
-        ab.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "ChatRoomName is:%s", new Object[] { String.valueOf(paramString) });
-        this.pGd = true;
+        paramString = paramp.gDz().YFk;
+        Log.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "ChatRoomName is:%s", new Object[] { String.valueOf(paramString) });
+        this.NgC = true;
         finish();
-        paramm = new Intent();
-        paramm.putExtra("Chat_User", paramString);
-        com.tencent.mm.plugin.pwdgroup.a.gmO.d(paramm, this);
-        AppMethodBeat.o(24016);
+        paramp = new Intent();
+        paramp.putExtra("Chat_User", paramString);
+        com.tencent.mm.plugin.pwdgroup.a.pFn.d(paramp, this);
+        AppMethodBeat.o(27655);
         return;
       }
-      if ((paramInt2 == -432) && (!this.pGc))
+      if ((paramInt2 == -432) && (!this.NgB))
       {
-        this.pGc = true;
+        this.NgB = true;
         this.mHandler.sendEmptyMessageDelayed(10002, 3000L);
-        AppMethodBeat.o(24016);
+        AppMethodBeat.o(27655);
         return;
       }
       if (paramInt2 != -23) {
         break;
       }
       hideLoading();
-      La(getString(2131299659));
-    } while (this.pGt == null);
-    this.pGt.ag(3000L, 3000L);
-    AppMethodBeat.o(24016);
+      aoP(getString(R.l.gHo));
+    } while (this.NgS == null);
+    this.NgS.startTimer(3000L);
+    AppMethodBeat.o(27655);
     return;
     hideLoading();
-    paramString = com.tencent.mm.h.a.kO(paramString);
+    paramString = com.tencent.mm.broadcast.a.CH(paramString);
     if (paramString != null) {
       paramString.a(getContext(), null, null);
     }
     for (;;)
     {
-      if (this.pGt != null) {
-        this.pGt.ag(3000L, 3000L);
+      if (this.NgS != null) {
+        this.NgS.startTimer(3000L);
       }
-      AppMethodBeat.o(24016);
+      AppMethodBeat.o(27655);
       return;
-      La(getString(2131302265));
+      aoP(getString(R.l.gSH));
     }
-    label910:
+    label902:
     hideLoading();
-    AppMethodBeat.o(24016);
+    AppMethodBeat.o(27655);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -696,13 +776,13 @@ public class FacingCreateChatRoomAllInOneUI
   {
     static
     {
-      AppMethodBeat.i(24006);
-      pGK = new a("Normal", 0);
-      pGL = new a("Loading", 1);
-      pGM = new a("ToSimple", 2);
-      pGN = new a("Unknow", 3);
-      pGO = new a[] { pGK, pGL, pGM, pGN };
-      AppMethodBeat.o(24006);
+      AppMethodBeat.i(27645);
+      Nhj = new a("Normal", 0);
+      Nhk = new a("Loading", 1);
+      Nhl = new a("ToSimple", 2);
+      Nhm = new a("Unknow", 3);
+      Nhn = new a[] { Nhj, Nhk, Nhl, Nhm };
+      AppMethodBeat.o(27645);
     }
     
     private a() {}
@@ -710,7 +790,7 @@ public class FacingCreateChatRoomAllInOneUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI
  * JD-Core Version:    0.7.0.1
  */

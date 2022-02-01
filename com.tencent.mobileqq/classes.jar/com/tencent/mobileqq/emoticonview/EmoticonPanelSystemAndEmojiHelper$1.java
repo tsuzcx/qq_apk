@@ -1,37 +1,31 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apvp;
-import apwv;
 import java.util.List;
 
-public class EmoticonPanelSystemAndEmojiHelper$1
+class EmoticonPanelSystemAndEmojiHelper$1
   implements Runnable
 {
-  public EmoticonPanelSystemAndEmojiHelper$1(apvp paramapvp) {}
+  EmoticonPanelSystemAndEmojiHelper$1(EmoticonPanelSystemAndEmojiHelper paramEmoticonPanelSystemAndEmojiHelper) {}
   
   public void run()
   {
-    List localList = this.this$0.a.b;
-    int i;
-    apwv localapwv;
+    List localList = ((EmoticonPanelController)this.this$0.mPanelController).getPanelDataList();
     if (localList != null)
     {
-      i = 0;
-      if (i < localList.size())
+      int i = 0;
+      while (i < localList.size())
       {
-        localapwv = (apwv)localList.get(i);
-        if ((localapwv == null) || (localapwv.a != 7)) {}
+        localEmotionPanelInfo = (EmotionPanelInfo)localList.get(i);
+        if ((localEmotionPanelInfo != null) && (localEmotionPanelInfo.type == 7)) {
+          break label66;
+        }
+        i += 1;
       }
     }
-    for (;;)
-    {
-      if ((localapwv != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localapwv);
-      }
-      return;
-      i += 1;
-      break;
-      localapwv = null;
+    EmotionPanelInfo localEmotionPanelInfo = null;
+    label66:
+    if ((localEmotionPanelInfo != null) && (((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter() != null)) {
+      ((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter().refreshListViewAdapter(localEmotionPanelInfo);
     }
   }
 }

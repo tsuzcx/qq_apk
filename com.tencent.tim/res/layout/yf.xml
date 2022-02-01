@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/a7l" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/g8n" android:layout_width="@dimen/a74" android:layout_height="@dimen/a73" android:layout_centerHorizontal="true" android:contentDescription="@null">
+        <ImageView android:id="@id/g8k" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/com" android:scaleType="centerCrop" android:contentDescription="@null" />
+        <ImageView android:id="@id/g8l" android:background="@drawable/w7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="@null" />
+        <TextView android:textSize="17.0dip" android:textColor="#ff445a6c" android:gravity="center" android:id="@id/g8m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
+        <RelativeLayout android:id="@id/gba" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+            <com.tencent.av.ui.ArcBackGroundTextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" app:arcHeight="14.5dip" app:circleRadius="28.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center|top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="0.5dip" android:text="@string/dgt" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/dgt" />
+        </RelativeLayout>
+    </FrameLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/g90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a5a" android:maxWidth="@dimen/a76" android:singleLine="true" android:layout_below="@id/g8n" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/g92" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/i_u" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/m0z" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/i_t" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/g8q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d9i" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

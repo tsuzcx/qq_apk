@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class RecommendFriend
-  extends awge
+  extends Entity
 {
   public String name;
   public String source;
-  @awhs
+  @unique
   public String uin;
 }
 

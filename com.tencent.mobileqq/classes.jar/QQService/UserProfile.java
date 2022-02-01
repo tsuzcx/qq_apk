@@ -7,40 +7,40 @@ import com.qq.taf.jce.JceStruct;
 public final class UserProfile
   extends JceStruct
 {
-  static int cache_eUserIdentityType = 0;
+  static int cache_eUserIdentityType;
   static VipBaseInfo cache_stVipInfo;
   static byte[] cache_vC2CSign;
   static byte[] cache_vFaceID;
   static byte[] cache_vIntroContent = (byte[])new byte[1];
   static byte[] cache_vRichSign;
   public byte bAge = -1;
-  public short bAvailableCnt;
-  public short bCloseNeighborVote;
-  public byte bConstellation;
+  public short bAvailableCnt = 0;
+  public short bCloseNeighborVote = 0;
+  public byte bConstellation = 0;
   public byte bFavorited = -1;
   public byte bFavoritedMe = -1;
-  public short bIsLastVoteCharged;
-  public short bMutualFriends;
+  public short bIsLastVoteCharged = 0;
+  public short bMutualFriends = 0;
   public byte bSex = -1;
   public byte bSingle = -1;
-  public short bTodayVotedCnt;
-  public short bTollVoteCnt;
+  public short bTodayVotedCnt = 0;
+  public short bTollVoteCnt = 0;
   public byte bVote = -1;
-  public short bVoteCnt;
-  public long dwLikeCustomId;
+  public short bVoteCnt = 0;
+  public long dwLikeCustomId = 0L;
   public int eUserIdentityType = 0;
-  public long lEctID;
+  public long lEctID = 0L;
   public int lTime = -1;
-  public int nFaceNum;
-  public short shIntroType;
-  public VipBaseInfo stVipInfo;
+  public int nFaceNum = 0;
+  public short shIntroType = 0;
+  public VipBaseInfo stVipInfo = null;
   public String strNick = "";
-  public long uSource;
-  public byte[] vC2CSign;
-  public byte[] vFaceID;
-  public byte[] vIntroContent;
-  public byte[] vRichSign;
-  public short wFace;
+  public long uSource = 0L;
+  public byte[] vC2CSign = null;
+  public byte[] vFaceID = null;
+  public byte[] vIntroContent = null;
+  public byte[] vRichSign = null;
+  public short wFace = 0;
   
   static
   {
@@ -131,25 +131,30 @@ public final class UserProfile
     paramJceOutputStream.write(this.nFaceNum, 6);
     paramJceOutputStream.write(this.eUserIdentityType, 7);
     paramJceOutputStream.write(this.shIntroType, 8);
-    if (this.vIntroContent != null) {
-      paramJceOutputStream.write(this.vIntroContent, 9);
+    Object localObject = this.vIntroContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
-    if (this.vFaceID != null) {
-      paramJceOutputStream.write(this.vFaceID, 10);
+    localObject = this.vFaceID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
     paramJceOutputStream.write(this.bVote, 11);
     paramJceOutputStream.write(this.bSingle, 12);
     paramJceOutputStream.write(this.bFavorited, 13);
     paramJceOutputStream.write(this.bFavoritedMe, 14);
-    if (this.vRichSign != null) {
-      paramJceOutputStream.write(this.vRichSign, 15);
+    localObject = this.vRichSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
     paramJceOutputStream.write(this.bConstellation, 16);
-    if (this.stVipInfo != null) {
-      paramJceOutputStream.write(this.stVipInfo, 17);
+    localObject = this.stVipInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
-    if (this.vC2CSign != null) {
-      paramJceOutputStream.write(this.vC2CSign, 18);
+    localObject = this.vC2CSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 18);
     }
     paramJceOutputStream.write(this.bVoteCnt, 19);
     paramJceOutputStream.write(this.uSource, 20);
@@ -164,7 +169,7 @@ public final class UserProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.UserProfile
  * JD-Core Version:    0.7.0.1
  */

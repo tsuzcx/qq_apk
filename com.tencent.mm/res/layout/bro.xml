@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/f7r" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textStyle="bold" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c2" android:text="@string/hx4" style="@style/kn" />
+        <TextView android:gravity="center_horizontal" android:id="@id/ik2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/hx3" style="@style/zp" />
+        <View android:id="@id/ah6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.view.CheckBoxLicenseView android:layout_gravity="center_horizontal" android:id="@id/ik1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" />
+        <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/hfl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d4" android:text="@string/a3z" style="@style/oh" />
+        <TextView android:textSize="@dimen/bd" android:textStyle="bold" android:textColor="@color/a1c" android:layout_gravity="center_horizontal" android:id="@id/ik9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d_" android:text="@string/hx5" />
+    </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+</ScrollView>

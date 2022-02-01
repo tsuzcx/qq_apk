@@ -1,76 +1,70 @@
 package com.tencent.mobileqq.shortvideo.camera2;
 
-import ajwh;
-import aobe;
-import azfq;
-import azfu;
-import bdhj;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
+import com.tencent.mobileqq.camera.utils.CameraUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import java.io.File;
 
-public class Camera2Control$ImageSaveServer
+class Camera2Control$ImageSaveServer
   implements Runnable
 {
-  private final azfq jdField_a_of_type_Azfq;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final byte[] a;
+  private final Camera2Control.Camera2PictureData b;
   
-  public Camera2Control$ImageSaveServer(byte[] paramArrayOfByte, azfq paramazfq)
+  Camera2Control$ImageSaveServer(byte[] paramArrayOfByte, Camera2Control.Camera2PictureData paramCamera2PictureData)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Azfq = paramazfq;
+    this.a = paramArrayOfByte;
+    this.b = paramCamera2PictureData;
   }
   
   public void run()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    byte[] arrayOfByte = this.a;
+    String str = null;
+    if (arrayOfByte == null)
     {
-      azfu.a(2, "[Camera2]ImageSaveServer params error!");
-      if (this.jdField_a_of_type_Azfq.jdField_a_of_type_Ajwh != null) {
-        this.jdField_a_of_type_Azfq.jdField_a_of_type_Ajwh.a_(null);
+      Camera2Utils.a(2, "[Camera2]ImageSaveServer params error!");
+      if (this.b.c != null) {
+        this.b.c.a(null);
       }
+      return;
     }
-    do
+    int i = Camera2Utils.a(this.b.f, this.b.d);
+    boolean bool = this.b.e;
+    try
     {
-      return;
-      int j = azfu.a(this.jdField_a_of_type_Azfq.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_Azfq.jdField_a_of_type_Int);
-      boolean bool = this.jdField_a_of_type_Azfq.jdField_a_of_type_Boolean;
-      try
-      {
-        bdhj.a(aobe.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Azfq.jdField_a_of_type_AndroidGraphicsRect, bool, j), this.jdField_a_of_type_Azfq.jdField_a_of_type_JavaIoFile);
-        i = 1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ajwh localajwh;
-          String str;
-          localException.printStackTrace();
-          azfu.a(2, "[Camera2]ImageSaveServer Exception:" + localException);
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          azfu.a(2, "[Camera2]ImageSaveServer OutOfMemoryError:" + localOutOfMemoryError);
-          continue;
-          Object localObject = null;
-        }
-      }
-    } while (this.jdField_a_of_type_Azfq.jdField_a_of_type_Ajwh == null);
-    localajwh = this.jdField_a_of_type_Azfq.jdField_a_of_type_Ajwh;
-    if (i != 0)
+      ImageUtil.b(CameraUtils.b(this.a, this.b.b, bool, i), this.b.a);
+      i = 1;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      str = this.jdField_a_of_type_Azfq.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      localajwh.a_(str);
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[Camera2]ImageSaveServer OutOfMemoryError:");
+      localStringBuilder.append(localOutOfMemoryError);
+      Camera2Utils.a(2, localStringBuilder.toString());
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[Camera2]ImageSaveServer Exception:");
+      localStringBuilder.append(localException);
+      Camera2Utils.a(2, localStringBuilder.toString());
+    }
+    i = 0;
+    if (this.b.c != null)
+    {
+      CameraCover.PictureCallback localPictureCallback = this.b.c;
+      if (i != 0) {
+        str = this.b.a.getAbsolutePath();
+      }
+      localPictureCallback.a(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer
  * JD-Core Version:    0.7.0.1
  */

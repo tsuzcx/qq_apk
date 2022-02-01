@@ -13,16 +13,6 @@ public final class aj
   public int cJ = 0;
   public int cK = 0;
   
-  static
-  {
-    if (!aj.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      cF = bool;
-      return;
-    }
-  }
-  
   public aj()
   {
     f(this.cI);
@@ -32,29 +22,42 @@ public final class aj
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (cF) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (cF) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (aj)paramObject;
-    } while ((!JceUtil.equals(this.cI, paramObject.cI)) || (!JceUtil.equals(this.cJ, paramObject.cJ)) || (!JceUtil.equals(this.cK, paramObject.cK)));
-    return true;
+    }
+    paramObject = (aj)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.cI, paramObject.cI))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.cJ, paramObject.cJ))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.cK, paramObject.cK)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public void f(int paramInt)
@@ -101,7 +104,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.aj
  * JD-Core Version:    0.7.0.1
  */

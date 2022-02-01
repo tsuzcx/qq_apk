@@ -62,26 +62,26 @@ public class CustomInterfaceLogic
     this.customiseBySDK.putBoolean("custom_beacon_report", true);
     this.customiseByHost.putBoolean("welfare_task_callback", true);
     this.customiseByHost.putBoolean("core_action_callback", true);
-    if (paramString.equals("2")) {}
-    do
-    {
+    if (paramString.equals("2")) {
       return;
-      this.mDataReport = DataReport.getInstance(paramString, Global.getApplicationContext());
-      setCustomizeReport(this.mDataReport);
-      this.mShadow = new ShadowImpl();
-      this.baseImpl.setShadowImpl(this.mShadow);
-      this.mCustomizedLog = DefaultLog.getInstance();
-      ((DefaultLog)this.mCustomizedLog).init(Global.getApplicationContext(), "now", false);
-      setCustomizedLog(this.mCustomizedLog);
-      this.customCgi = DefaultHttp.getsInstance();
-      this.baseImpl.setCustomizedCgi(this.customCgi);
-      this.mCustomizedLoading = new DefaultLoading();
-      this.baseImpl.setCustomizedLoading(this.mCustomizedLoading);
-      this.mCustomizedDownloader = new DefaultHttp();
-      this.baseImpl.setCustomizedDownloader(this.mCustomizedDownloader);
-      this.baseImpl.setCustomToast(new DefautToast());
-    } while (!AppidConfig.isBrowserPlugin(Global.sAppid));
-    ExtSdkBizAbilityImpl.getInstance().setCustomizedBeaconReport(new CustomInterfaceLogic.1(this));
+    }
+    this.mDataReport = DataReport.getInstance(paramString, Global.getApplicationContext());
+    setCustomizeReport(this.mDataReport);
+    this.mShadow = new ShadowImpl();
+    this.baseImpl.setShadowImpl(this.mShadow);
+    this.mCustomizedLog = DefaultLog.getInstance();
+    ((DefaultLog)this.mCustomizedLog).init(Global.getApplicationContext(), "now", false);
+    setCustomizedLog(this.mCustomizedLog);
+    this.customCgi = DefaultHttp.getsInstance();
+    this.baseImpl.setCustomizedCgi(this.customCgi);
+    this.mCustomizedLoading = new DefaultLoading();
+    this.baseImpl.setCustomizedLoading(this.mCustomizedLoading);
+    this.mCustomizedDownloader = new DefaultHttp();
+    this.baseImpl.setCustomizedDownloader(this.mCustomizedDownloader);
+    this.baseImpl.setCustomToast(new DefautToast());
+    if (AppidConfig.isBrowserPlugin(Global.sAppid)) {
+      ExtSdkBizAbilityImpl.getInstance().setCustomizedBeaconReport(new CustomInterfaceLogic.1(this));
+    }
   }
   
   public boolean isBeaconReportCustomizedBySdk()
@@ -262,7 +262,7 @@ public class CustomInterfaceLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.CustomInterfaceLogic
  * JD-Core Version:    0.7.0.1
  */

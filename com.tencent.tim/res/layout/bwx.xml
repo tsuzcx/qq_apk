@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bja" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/bim" android:background="@drawable/ass" android:layout_width="296.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_centerHorizontal="true">
+        <com.qzone.album.ui.widget.CornerImageView android:id="@id/bjh" android:layout_width="fill_parent" android:layout_height="137.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/dialogTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/w68" android:singleLine="true" android:layout_below="@id/bjh" android:layout_alignLeft="@id/dialogText" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:id="@id/dialogText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="28.0dip" android:text="@string/w67" android:layout_below="@id/dialogTitle" />
+        <View android:id="@id/biw" android:background="@color/i6" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_marginTop="24.0dip" android:layout_below="@id/dialogText" />
+        <TextView android:gravity="center" android:id="@id/bil" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="25.0dip" android:text="@string/w66" android:layout_below="@id/dialogText" style="@style/z4" />
+        <View android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_below="@id/bil" />
+        <ImageView android:id="@id/hy0" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="7.0dip" android:layout_marginTop="7.0dip" android:src="@drawable/cfg" android:layout_alignLeft="@id/bjh" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bij" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/g8j" android:layout_below="@id/bim" android:layout_centerHorizontal="true" />
+</RelativeLayout>

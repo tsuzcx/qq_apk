@@ -1,11 +1,11 @@
 package com.tencent.open.appstore.receiver;
 
 import android.text.TextUtils;
-import bfkr;
-import bflp;
-import bfoh;
-import bfox;
+import com.tencent.open.appstore.dl.DownloadManagerV2;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.MyAppApi;
 
 class InstallStateReceiver$1
   implements Runnable
@@ -14,19 +14,22 @@ class InstallStateReceiver$1
   
   public void run()
   {
-    bflp.c("InstallStateReceiver", "[onReceive] ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bfoh.q)))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onReceive] ACTION_PACKAGE_REMOVED >> ");
+    ((StringBuilder)localObject).append(this.a);
+    LogUtility.c("InstallStateReceiver", ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.r)))
     {
-      bfkr.a().a(true);
-      bfox.a().f();
+      DownloadManagerV2.a().a(true);
+      MyAppApi.l().o();
     }
-    DownloadInfo localDownloadInfo = bfkr.a().c(this.b);
-    bfkr.a().d(localDownloadInfo);
+    localObject = DownloadManagerV2.a().c(this.b);
+    DownloadManagerV2.a().f((DownloadInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver.1
  * JD-Core Version:    0.7.0.1
  */

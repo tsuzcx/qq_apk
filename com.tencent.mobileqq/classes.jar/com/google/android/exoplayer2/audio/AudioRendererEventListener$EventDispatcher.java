@@ -15,13 +15,13 @@ public final class AudioRendererEventListener$EventDispatcher
   
   public AudioRendererEventListener$EventDispatcher(@Nullable Handler paramHandler, @Nullable AudioRendererEventListener paramAudioRendererEventListener)
   {
-    if (paramAudioRendererEventListener != null) {}
-    for (paramHandler = (Handler)Assertions.checkNotNull(paramHandler);; paramHandler = null)
-    {
-      this.handler = paramHandler;
-      this.listener = paramAudioRendererEventListener;
-      return;
+    if (paramAudioRendererEventListener != null) {
+      paramHandler = (Handler)Assertions.checkNotNull(paramHandler);
+    } else {
+      paramHandler = null;
     }
+    this.handler = paramHandler;
+    this.listener = paramAudioRendererEventListener;
   }
   
   public void audioSessionId(int paramInt)
@@ -68,8 +68,9 @@ public final class AudioRendererEventListener$EventDispatcher
   
   public boolean isNeedAudioData()
   {
-    if (this.listener != null) {
-      return this.listener.isNeedAudioData();
+    AudioRendererEventListener localAudioRendererEventListener = this.listener;
+    if (localAudioRendererEventListener != null) {
+      return localAudioRendererEventListener.isNeedAudioData();
     }
     return false;
   }
@@ -83,7 +84,7 @@ public final class AudioRendererEventListener$EventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.AudioRendererEventListener.EventDispatcher
  * JD-Core Version:    0.7.0.1
  */

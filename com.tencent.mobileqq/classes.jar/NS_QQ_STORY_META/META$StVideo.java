@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class META$StVideo
   extends MessageMicro<StVideo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 56, 64, 72, 82, 88, 98 }, new String[] { "fileId", "fileSize", "duration", "width", "height", "playUrl", "transStatus", "videoPrior", "videoRate", "vecVideoUrl", "playCount", "vecExtInfo" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null }, StVideo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field duration = PBField.initUInt32(0);
   public final PBStringField fileId = PBField.initString("");
   public final PBUInt32Field fileSize = PBField.initUInt32(0);
@@ -24,10 +24,16 @@ public final class META$StVideo
   public final PBUInt32Field videoPrior = PBField.initUInt32(0);
   public final PBUInt32Field videoRate = PBField.initUInt32(0);
   public final PBUInt32Field width = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 56, 64, 72, 82, 88, 98 }, new String[] { "fileId", "fileSize", "duration", "width", "height", "playUrl", "transStatus", "videoPrior", "videoRate", "vecVideoUrl", "playCount", "vecExtInfo" }, new Object[] { "", localInteger, localInteger, localInteger, localInteger, "", localInteger, localInteger, localInteger, null, localInteger, null }, StVideo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_META.META.StVideo
  * JD-Core Version:    0.7.0.1
  */

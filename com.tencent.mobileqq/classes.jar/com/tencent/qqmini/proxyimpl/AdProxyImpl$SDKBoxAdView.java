@@ -1,97 +1,100 @@
 package com.tencent.qqmini.proxyimpl;
 
-import aanh;
 import android.app.Activity;
+import android.content.Context;
+import com.tencent.gdtad.basics.adbox.IGdtAdBox;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
-import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsBoxAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBoxADLisener;
 import java.lang.ref.WeakReference;
 
 class AdProxyImpl$SDKBoxAdView
   extends AdProxy.AbsBoxAdView
 {
-  int SHARE_RATE = 53;
-  WeakReference<Activity> mActivity;
-  int mAdType;
-  String mAppid;
-  AdProxy.IBoxADLisener mBoxListener;
-  int mDeviceOrientation;
-  String mEntryPath;
-  aanh mGdtBoxView;
-  String mGdtCookie;
-  String mPosid;
-  String mRefer;
-  String mReportData;
-  String mUin;
-  String mVia;
+  WeakReference<Activity> a;
+  AdProxy.IBoxADLisener b;
+  IGdtAdBox c;
+  int d = 53;
+  String e;
+  String f;
+  String g;
+  int h;
+  int i;
+  String j;
+  String k;
+  String l;
+  String m;
+  String n;
   
   public AdProxyImpl$SDKBoxAdView(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.IBoxADLisener paramIBoxADLisener)
   {
     super(paramAdProxyImpl);
-    this.mActivity = new WeakReference(paramActivity);
-    this.mBoxListener = paramIBoxADLisener;
-    this.mAppid = paramString1;
-    this.mPosid = paramString2;
-    this.mUin = paramString3;
-    this.mAdType = paramInt1;
-    this.mDeviceOrientation = paramInt2;
-    this.mGdtCookie = paramString4;
-    this.mEntryPath = paramString5;
-    this.mReportData = paramString6;
-    this.mRefer = paramString7;
-    this.mVia = paramString8;
+    this.a = new WeakReference(paramActivity);
+    this.b = paramIBoxADLisener;
+    this.e = paramString1;
+    this.f = paramString2;
+    this.g = paramString3;
+    this.h = paramInt1;
+    this.i = paramInt2;
+    this.j = paramString4;
+    this.k = paramString5;
+    this.l = paramString6;
+    this.m = paramString7;
+    this.n = paramString8;
   }
   
   public void destroy()
   {
-    if (this.mGdtBoxView != null) {
-      this.mGdtBoxView.b();
+    IGdtAdBox localIGdtAdBox = this.c;
+    if (localIGdtAdBox != null) {
+      localIGdtAdBox.c();
     }
-    this.mGdtBoxView = null;
-    this.mActivity = null;
-    this.mBoxListener = null;
+    this.c = null;
+    this.a = null;
+    this.b = null;
   }
   
   public void loadAD()
   {
-    Object localObject;
-    if (this.mActivity != null)
-    {
-      localObject = (Activity)this.mActivity.get();
-      if (localObject != null) {
-        break label91;
-      }
-      localObject = new StringBuilder().append("loadAD, act is null, ");
-      if (this.mBoxListener == null) {
-        break label86;
-      }
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = (Activity)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
-    label86:
-    for (boolean bool = true;; bool = false)
+    if (localObject == null)
     {
-      QLog.e("AdProxyImpl", 1, bool);
-      if (this.mBoxListener != null) {
-        this.mBoxListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadAD, act is null, ");
+      boolean bool;
+      if (this.b != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.e("AdProxyImpl", 1, ((StringBuilder)localObject).toString());
+      localObject = this.b;
+      if (localObject != null) {
+        ((AdProxy.IBoxADLisener)localObject).onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
-      localObject = null;
-      break;
     }
-    label91:
-    this.this$0.requestAdInfo((Activity)localObject, this.mUin, this.mPosid, this.mAppid, this.SHARE_RATE, this.mAdType, this.mDeviceOrientation, this.mGdtCookie, this.mEntryPath, this.mReportData, this.mRefer, this.mVia, new AdProxyImpl.SDKBoxAdView.1(this, (Activity)localObject));
+    this.o.requestAdInfo((Context)localObject, this.g, this.f, this.e, this.d, this.h, this.i, this.j, this.k, this.l, this.m, this.n, 1, new AdProxyImpl.SDKBoxAdView.1(this, (Activity)localObject));
   }
   
   public void show()
   {
-    if (this.mGdtBoxView != null) {
-      this.mGdtBoxView.a();
+    IGdtAdBox localIGdtAdBox = this.c;
+    if (localIGdtAdBox != null) {
+      localIGdtAdBox.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView
  * JD-Core Version:    0.7.0.1
  */

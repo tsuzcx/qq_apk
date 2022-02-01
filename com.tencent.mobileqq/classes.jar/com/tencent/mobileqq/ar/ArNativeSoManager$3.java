@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.ar;
 
-import amxf;
 import java.util.ArrayList;
 
-public class ArNativeSoManager$3
+class ArNativeSoManager$3
   implements Runnable
 {
-  public ArNativeSoManager$3(amxf paramamxf, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString) {}
+  ArNativeSoManager$3(ArNativeSoManager paramArNativeSoManager, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString) {}
   
   public void run()
   {
-    amxf.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.b, this.jdField_a_of_type_JavaLangString);
+    ArNativeSoManager.a(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,159 +1,137 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.c;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class i
+  extends a
 {
-  public String equ;
-  private View iCk;
-  public String lix;
-  private Context mContext;
-  public String mTitle;
-  c rvj;
-  private int rvk;
-  private int rvl;
-  private boolean rvm;
-  private boolean rvn;
-  public i.a rvo;
+  private LinearLayout Api;
+  private ImageView QNl;
+  private LinearLayout QNm;
+  j QOk;
+  private View QOl;
+  private ImageView QOm;
+  int clickCount;
+  private TextView pmf;
   
-  public i(Context paramContext, h paramh, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  public i(Context paramContext, j paramj, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(37083);
-    this.equ = "";
-    this.mTitle = "";
-    this.lix = "";
-    this.rvk = -1;
-    this.rvl = -1;
-    this.rvm = false;
-    this.rvn = false;
-    this.equ = paramString1;
-    this.mTitle = paramString2;
-    this.lix = paramString3;
-    this.mContext = paramContext;
-    this.rvm = paramBoolean1;
-    this.rvn = paramBoolean2;
-    if ((paramh != null) && (paramh.getView() != null))
-    {
-      this.rvj = new c(paramContext);
-      this.rvj.setCanceledOnTouchOutside(true);
-      this.iCk = View.inflate(paramContext, 2130970778, null);
-      if (this.iCk == null)
-      {
-        ab.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
-        AppMethodBeat.o(37083);
-        return;
-      }
-      paramContext = (LinearLayout)this.iCk.findViewById(2131827848);
-      paramString1 = paramh.getView();
-      if (paramString1.getParent() != null) {
-        ((ViewGroup)paramString1.getParent()).removeView(paramString1);
-      }
-      this.rvk = ((int)paramh.cqV().rsK);
-      this.rvl = ((int)paramh.cqV().rsL);
-      paramh = new LinearLayout.LayoutParams(-1, -1);
-      if ((this.rvk != 2147483647) && (this.rvl != 2147483647)) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0)
-        {
-          paramh.width = this.rvk;
-          paramh.height = this.rvl;
-        }
-        paramContext.addView(paramString1, paramh);
-        ((TextView)this.iCk.findViewById(2131826158)).setText(paramString2);
-        paramContext = this.iCk.findViewById(2131827847);
-        paramContext.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(37078);
-            i.this.rvj.cancel();
-            AppMethodBeat.o(37078);
-          }
-        });
-        paramh = this.iCk.findViewById(2131827849);
-        paramh.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(37079);
-            i.this.rvj.cancel();
-            AppMethodBeat.o(37079);
-          }
-        });
-        if (!this.rvn) {
-          paramh.setVisibility(8);
-        }
-        if (this.rvm) {
-          paramContext.setVisibility(8);
-        }
-        paramContext = (ImageView)this.iCk.findViewById(2131823915);
-        paramContext.setVisibility(8);
-        if (bo.isNullOrNil(paramString3)) {
-          break label424;
-        }
-        paramh = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.gB("adId", paramString3);
-        if (paramh == null) {
-          break;
-        }
-        paramContext.setImageBitmap(paramh);
-        paramContext.setVisibility(0);
-        AppMethodBeat.o(37083);
-        return;
-      }
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramString3, 0, new i.3(this, paramContext));
-    }
-    label424:
-    AppMethodBeat.o(37083);
+    super(paramContext, paramj, paramViewGroup);
+    this.QOk = paramj;
   }
   
-  public final void crd()
+  public final void Gs()
   {
-    AppMethodBeat.i(37084);
-    if ((this.iCk == null) || (this.rvj == null))
+    AppMethodBeat.i(96458);
+    View localView = this.contentView;
+    this.QOm = ((ImageView)localView.findViewById(b.f.left_icon));
+    this.QNl = ((ImageView)localView.findViewById(b.f.right_arrow));
+    this.pmf = ((TextView)localView.findViewById(b.f.desc));
+    this.QNm = ((LinearLayout)localView.findViewById(b.f.innter_container));
+    this.Api = ((LinearLayout)localView.findViewById(b.f.container));
+    this.QOl = this.QNm;
+    AppMethodBeat.o(96458);
+  }
+  
+  public final boolean bP(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(96460);
+    if (!super.bP(paramJSONObject))
     {
-      AppMethodBeat.o(37084);
+      AppMethodBeat.o(96460);
+      return false;
+    }
+    try
+    {
+      paramJSONObject.put("clickCount", this.clickCount);
+      AppMethodBeat.o(96460);
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      Log.printErrStackTrace("AdLandingBorderedComp", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(96460);
+    }
+    return false;
+  }
+  
+  protected final int getLayout()
+  {
+    return b.g.sns_ad_native_landing_pages_item_lbs;
+  }
+  
+  protected final void had()
+  {
+    AppMethodBeat.i(96459);
+    this.pmf.setText(this.QOk.QJC.KbZ);
+    if (this.QOk.QKK)
+    {
+      this.QOm.setImageDrawable(com.tencent.mm.cd.a.m(this.context, b.e.lbs_w));
+      this.QNl.setImageDrawable(com.tencent.mm.cd.a.m(this.context, b.e.right_arrow_w));
+      this.pmf.setTextColor(-16777216);
+      this.QNm.setBackgroundResource(b.e.adlanding_comp_click_dark);
+    }
+    for (;;)
+    {
+      this.QNm.setPadding((int)this.QOk.paddingLeft, 0, (int)this.QOk.paddingRight, 0);
+      this.Api.setPadding(0, (int)this.QOk.paddingTop, 0, (int)this.QOk.paddingBottom);
+      f(this.QNm);
+      View.OnClickListener local1 = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(96457);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingLbsComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          paramAnonymousView = i.this;
+          paramAnonymousView.clickCount += 1;
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("map_view_type", 1);
+          paramAnonymousView.putExtra("kwebmap_slat", i.this.QOk.QJC.KbW);
+          paramAnonymousView.putExtra("kwebmap_lng", i.this.QOk.QJC.KbX);
+          paramAnonymousView.putExtra("kwebmap_scale", i.this.QOk.QJC.hQp);
+          paramAnonymousView.putExtra("kPoiName", i.this.QOk.QJC.hVI);
+          paramAnonymousView.putExtra("Kwebmap_locaion", i.this.QOk.QJC.KbZ);
+          Log.i("AdLandingBorderedComp", "locatint to slat " + i.this.QOk.QJC.KbW + ", slong " + i.this.QOk.QJC.KbX + ", " + i.this.QOk.QJC.hVI);
+          c.b(i.this.context, "location", ".ui.RedirectUI", paramAnonymousView, 2002);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingLbsComp$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(96457);
+        }
+      };
+      if (this.QOl != null) {
+        this.QOl.setOnClickListener(local1);
+      }
+      AppMethodBeat.o(96459);
       return;
+      this.QOm.setImageDrawable(com.tencent.mm.cd.a.m(this.context, b.e.lbs));
+      this.QNl.setImageDrawable(com.tencent.mm.cd.a.m(this.context, b.e.right_arrow));
+      this.pmf.setTextColor(-1);
+      this.QNm.setBackgroundResource(b.e.adlanding_comp_click_light);
     }
-    this.rvj.getWindow().setFlags(8, 8);
-    this.rvj.getWindow().addFlags(131200);
-    if (this.rvo != null)
-    {
-      this.rvj.setOnDismissListener(new i.4(this));
-      this.rvj.setOnCancelListener(new i.5(this));
-    }
-    this.rvj.setContentView(this.iCk);
-    BottomSheetBehavior.i((View)this.iCk.getParent()).t(ae.eU(this.mContext)[1]);
-    this.rvj.show();
-    AppMethodBeat.o(37084);
-  }
-  
-  public final void cre()
-  {
-    AppMethodBeat.i(37085);
-    if (this.rvj != null) {
-      this.rvj.dismiss();
-    }
-    AppMethodBeat.o(37085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.i
  * JD-Core Version:    0.7.0.1
  */

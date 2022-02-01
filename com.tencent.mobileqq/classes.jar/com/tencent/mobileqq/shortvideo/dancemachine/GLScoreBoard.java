@@ -31,7 +31,7 @@ public class GLScoreBoard
     if (!this.mHasComputeWidth)
     {
       GLImage localGLImage = getImageByIndex(0);
-      this.mNumberWidthSize = (1.0F * localGLImage.getWidth() / localGLImage.getHeight() * this.mScoreBoardSize.height());
+      this.mNumberWidthSize = (localGLImage.getWidth() * 1.0F / localGLImage.getHeight() * this.mScoreBoardSize.height());
       this.mHasComputeWidth = true;
     }
   }
@@ -44,89 +44,95 @@ public class GLScoreBoard
   
   private void computeScoreNumberAndDraw()
   {
-    int i = 1;
     this.mScoreBoardSize.left = (this.mParentSize.left + this.xOffsetFromParent);
     this.mScoreBoardSize.top = (this.mParentSize.top + this.yOffsetFromParent);
-    this.mScoreBoardSize.right = (this.mScoreBoardSize.left + this.widthBoard);
-    this.mScoreBoardSize.bottom = (this.mScoreBoardSize.top + this.heightBoard);
-    this.number[4] = (this.mScore / 10000);
-    int j = this.mScore % 10000;
-    this.number[3] = (j / 1000);
+    Object localObject = this.mScoreBoardSize;
+    ((RectF)localObject).right = (((RectF)localObject).left + this.widthBoard);
+    localObject = this.mScoreBoardSize;
+    ((RectF)localObject).bottom = (((RectF)localObject).top + this.heightBoard);
+    localObject = this.number;
+    int j = this.mScore;
+    int k = j / 10000;
+    int i = 4;
+    localObject[4] = k;
+    j %= 10000;
+    localObject[3] = (j / 1000);
     j %= 1000;
-    this.number[2] = (j / 100);
+    localObject[2] = (j / 100);
     j %= 100;
-    this.number[1] = (j / 10);
-    this.number[0] = (j % 10);
-    if (this.number[4] == 0) {
-      if (this.number[3] == 0) {
-        if (this.number[2] == 0) {
-          if (this.number[1] != 0) {}
+    localObject[1] = (j / 10);
+    localObject[0] = (j % 10);
+    if (localObject[4] == 0)
+    {
+      if (localObject[3] == 0) {
+        if (localObject[2] == 0)
+        {
+          if (localObject[1] == 0) {
+            i = 1;
+          } else {
+            i = 2;
+          }
+        }
+        else {
+          i = 3;
         }
       }
     }
-    for (;;)
-    {
-      float f1 = i * this.mNumberWidthSize + (i - 1) * this.mInterval;
-      float f2;
-      float f4;
-      float f3;
-      if (this.mScoreBoardSize.width() >= f1)
-      {
-        f2 = this.mNumberWidthSize;
-        f4 = this.mScoreBoardSize.top;
-        f3 = this.mScoreBoardSize.bottom;
-        f1 = (this.mScoreBoardSize.width() - f1) / 2.0F + this.mScoreBoardSize.left - this.mNumberImageSlope * f2;
-        j = i;
-        label284:
-        if (j <= 0) {
-          break label522;
-        }
-        if (j != i) {
-          break label513;
-        }
-      }
-      label513:
-      for (int k = 0;; k = this.mInterval)
-      {
-        int m = this.number[(j - 1)];
-        f1 = k + f1;
-        this.mNumberRegion.set(f1, f4, f1 + f2, f3);
-        super.setImageClipDrawRegion(this.mNumberRegion);
-        super.setImageRegion(this.mNumberRegion);
-        super.setCurrentImage(m);
-        super.draw();
-        f1 = this.mNumberRegion.right;
-        j -= 1;
-        break label284;
-        f1 = (i - 1) * this.mInterval;
-        float f5 = (this.mScoreBoardSize.width() - f1) / i;
-        GLImage localGLImage = getImageByIndex(0);
-        f1 = 1.0F * localGLImage.getHeight() / localGLImage.getWidth() * f5;
-        if (f1 >= this.mScoreBoardSize.height()) {
-          f1 = this.mScoreBoardSize.top;
-        }
-        for (f2 = this.mScoreBoardSize.bottom;; f2 = this.mScoreBoardSize.bottom - f2)
-        {
-          f4 = this.mScoreBoardSize.left;
-          f3 = f2;
-          f2 = f4;
-          f4 = f1;
-          f1 = f2;
-          f2 = f5;
-          break;
-          f2 = (this.mScoreBoardSize.height() - f1) / 2.0F;
-          f1 = this.mScoreBoardSize.top + f2;
-        }
-      }
-      label522:
-      return;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
+    else {
       i = 5;
+    }
+    float f1 = i;
+    float f2 = this.mNumberWidthSize;
+    j = i - 1;
+    f2 = f2 * f1 + this.mInterval * j;
+    float f3;
+    float f4;
+    if (this.mScoreBoardSize.width() >= f2)
+    {
+      f1 = this.mNumberWidthSize;
+      f3 = this.mScoreBoardSize.top;
+      f4 = this.mScoreBoardSize.bottom;
+      f2 = (this.mScoreBoardSize.width() - f2) / 2.0F + this.mScoreBoardSize.left - this.mNumberImageSlope * f1;
+    }
+    else
+    {
+      f2 = j * this.mInterval;
+      float f5 = (this.mScoreBoardSize.width() - f2) / f1;
+      localObject = getImageByIndex(0);
+      f1 = ((GLImage)localObject).getHeight() * 1.0F / ((GLImage)localObject).getWidth() * f5;
+      if (f1 >= this.mScoreBoardSize.height())
+      {
+        f1 = this.mScoreBoardSize.top;
+        f3 = this.mScoreBoardSize.bottom;
+      }
+      else
+      {
+        f2 = (this.mScoreBoardSize.height() - f1) / 2.0F;
+        f1 = this.mScoreBoardSize.top + f2;
+        f3 = this.mScoreBoardSize.bottom - f2;
+      }
+      f2 = this.mScoreBoardSize.left;
+      f4 = f3;
+      f3 = f1;
+      f1 = f5;
+    }
+    j = i;
+    while (j > 0)
+    {
+      if (j == i) {
+        k = 0;
+      } else {
+        k = this.mInterval;
+      }
+      int m = this.number[(j - 1)];
+      f2 += k;
+      this.mNumberRegion.set(f2, f3, f2 + f1, f4);
+      super.setImageClipDrawRegion(this.mNumberRegion);
+      super.setImageRegion(this.mNumberRegion);
+      super.setCurrentImage(m);
+      super.draw();
+      f2 = this.mNumberRegion.right;
+      j -= 1;
     }
   }
   
@@ -183,7 +189,7 @@ public class GLScoreBoard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLScoreBoard
  * JD-Core Version:    0.7.0.1
  */

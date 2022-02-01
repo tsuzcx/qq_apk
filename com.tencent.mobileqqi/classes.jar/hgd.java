@@ -1,25 +1,24 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
+@TargetApi(16)
 public class hgd
-  implements View.OnClickListener
+  implements BubblePopupWindow.OnDismissListener
 {
-  public hgd(ContextMenuTextView paramContextMenuTextView) {}
+  hgd(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((ContextMenuTextView.a(this.a) != null) && (ContextMenuTextView.a(this.a).isShowing())) {
-      ContextMenuTextView.a(this.a).dismiss();
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
     }
-    if (paramView.getId() == 2131234879)
+    for (;;)
     {
-      paramView = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
     }
   }
 }

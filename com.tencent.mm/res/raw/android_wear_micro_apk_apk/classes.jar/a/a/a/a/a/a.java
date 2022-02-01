@@ -3,7 +3,7 @@ package a.a.a.a.a;
 public final class a
   implements b
 {
-  public static a oA()
+  public static a pn()
   {
     return new a();
   }

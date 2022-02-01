@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e4v" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ftv" android:background="@drawable/awl" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:textSize="17.0sp" android:textColor="@color/a8u" android:gravity="center" android:id="@id/ftt" android:background="@drawable/b09" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" android:layout_marginLeft="8.0dip" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/fu4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/kxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/s44" android:singleLine="true" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/kxw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(1/3)" android:singleLine="true" />
+            </LinearLayout>
+            <TextView android:textSize="11.0dip" android:textColor="@color/a7_" android:id="@id/kxr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="2018年10月25日" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/fq8" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentRight="true">
+            <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:clickable="false" android:layout_margin="4.0dip" android:layout_centerInParent="true" style="@style/hy" />
+            <CheckBox android:id="@id/fol" android:background="@drawable/bw1" android:layout_width="23.0dip" android:layout_height="23.0dip" android:button="@null" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

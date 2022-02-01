@@ -1,6 +1,6 @@
 package com.tencent.mm.memory.a;
 
-import com.tencent.mm.a.f.b;
+import com.tencent.mm.b.f.b;
 import com.tencent.mm.memory.a.a.a.e;
 
 public abstract class a<T, V, X, Y>
@@ -18,12 +18,12 @@ public abstract class a<T, V, X, Y>
   
   public a(f.b<T, V> paramb)
   {
-    super(paramb);
+    super(10, paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a
  * JD-Core Version:    0.7.0.1
  */

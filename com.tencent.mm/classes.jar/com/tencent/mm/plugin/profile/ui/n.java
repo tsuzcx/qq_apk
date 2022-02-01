@@ -1,184 +1,161 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.profile.b;
-import com.tencent.mm.pluginsdk.b.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.pluginsdk.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.f;
-import java.util.Timer;
 import junit.framework.Assert;
 
-public final class n
-  implements a, n.b
+abstract class n
+  implements a, MStorageEx.IOnStorageChange
 {
-  private ad contact;
-  Context context;
-  private f screen;
+  protected HelperHeaderPreference.a MXI;
+  protected au contact;
+  protected Context context;
+  protected f screen;
   
-  public n(Context paramContext)
+  public n(Context paramContext, HelperHeaderPreference.a parama)
   {
     this.context = paramContext;
+    this.MXI = parama;
   }
   
-  private void bkc()
+  private void dvr()
   {
-    boolean bool1 = true;
-    AppMethodBeat.i(23607);
-    boolean bool2 = cck();
-    Object localObject = (HelperHeaderPreference)this.screen.atx("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).aB(this.contact.field_username, this.contact.Of(), this.context.getString(2131298830));
-    int i;
-    if (bool2)
-    {
-      i = 1;
-      ((HelperHeaderPreference)localObject).sb(i);
-      this.screen.cl("contact_info_voiceinput_install", bool2);
-      localObject = this.screen;
-      if (bool2) {
-        break label112;
-      }
+    this.screen.removeAll();
+    this.screen.aBe(getResourceId());
+    boolean bool = gBD();
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.bAi("contact_info_header_helper");
+    if (localHelperHeaderPreference != null) {
+      localHelperHeaderPreference.a(this.contact, this.MXI);
     }
-    for (;;)
+    if (!bool)
     {
-      ((f)localObject).cl("contact_info_voiceinput_uninstall", bool1);
-      AppMethodBeat.o(23607);
-      return;
-      i = 0;
-      break;
-      label112:
-      bool1 = false;
-    }
-  }
-  
-  private static boolean cck()
-  {
-    AppMethodBeat.i(23604);
-    if ((r.Zy() & 0x2000000) == 0)
-    {
-      AppMethodBeat.o(23604);
-      return true;
-    }
-    AppMethodBeat.o(23604);
-    return false;
-  }
-  
-  public static void u(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(23608);
-    if (paramBoolean) {}
-    for (Object localObject = paramContext.getString(2131303380);; localObject = paramContext.getString(2131303388))
-    {
-      paramContext.getString(2131297087);
-      paramContext = h.b(paramContext, (String)localObject, true, null);
-      localObject = new n.2(paramBoolean);
-      new Timer().schedule(new n.3(paramContext, (ak)localObject), 1500L);
-      AppMethodBeat.o(23608);
+      this.screen.bAk("contact_info_plugin_view");
+      this.screen.bAk("contact_info_plugin_clear_data");
+      this.screen.bAk("contact_info_plugin_uninstall");
       return;
     }
+    this.screen.bAk("contact_info_plugin_install");
   }
   
-  public final boolean Ke(String paramString)
-  {
-    AppMethodBeat.i(23605);
-    ab.d("MicroMsg.ContactWidgetVoiceInput", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bo.nullAsNil(paramString).length() <= 0)
-    {
-      AppMethodBeat.o(23605);
-      return false;
-    }
-    if (paramString.equals("contact_info_voiceinput_install"))
-    {
-      u(this.context, true);
-      AppMethodBeat.o(23605);
-      return true;
-    }
-    if (paramString.equals("contact_info_voiceinput_uninstall"))
-    {
-      h.d(this.context, this.context.getString(2131303384), "", this.context.getString(2131296891), this.context.getString(2131296888), new n.1(this), null);
-      AppMethodBeat.o(23605);
-      return true;
-    }
-    ab.e("MicroMsg.ContactWidgetVoiceInput", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(23605);
-    return false;
-  }
+  protected abstract void Av(boolean paramBoolean);
   
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(23610);
-    int i = bo.f(paramObject, 0);
-    ab.d("MicroMsg.ContactWidgetVoiceInput", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    aw.aaz();
-    if ((paramn != c.Ru()) || (i <= 0))
-    {
-      ab.e("MicroMsg.ContactWidgetVoiceInput", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
-      AppMethodBeat.o(23610);
-      return;
-    }
-    if ((i != 40) && (i != 34) && (i != 7))
-    {
-      AppMethodBeat.o(23610);
-      return;
-    }
-    bkc();
-    AppMethodBeat.o(23610);
-  }
-  
-  public final boolean a(f paramf, ad paramad, boolean paramBoolean, int paramInt)
+  public boolean a(f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(23606);
-    if (paramf != null) {}
+    if (paramau != null)
+    {
+      paramBoolean = true;
+      Assert.assertTrue(paramBoolean);
+      if (Util.nullAsNil(paramau.field_username).length() <= 0) {
+        break label77;
+      }
+    }
+    label77:
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramad != null) {
+      if (paramf != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(t.oo(paramad.field_username));
-      aw.aaz();
-      c.Ru().a(this);
-      this.contact = paramad;
+      bh.bCz();
+      c.ban().add(this);
+      this.contact = paramau;
       this.screen = paramf;
-      paramf.addPreferencesFromResource(2131165226);
-      bkc();
-      AppMethodBeat.o(23606);
+      dvr();
       return true;
+      paramBoolean = false;
+      break;
     }
   }
   
-  public final boolean bkb()
+  public boolean anl(String paramString)
   {
-    AppMethodBeat.i(23609);
-    aw.aaz();
-    c.Ru().b(this);
-    b.gmP.BO();
-    AppMethodBeat.o(23609);
+    if ("contact_info_plugin_clear_data".equals(paramString))
+    {
+      k.b(this.context, this.context.getString(R.l.contact_info_clear_data), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(27204);
+          n.this.clear();
+          AppMethodBeat.o(27204);
+        }
+      }, null);
+      return true;
+    }
+    if (paramString.equals("contact_info_plugin_install"))
+    {
+      Av(true);
+      return true;
+    }
+    if (paramString.equals("contact_info_plugin_uninstall"))
+    {
+      k.b(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(27205);
+          n.this.Av(false);
+          AppMethodBeat.o(27205);
+        }
+      }, null);
+      return true;
+    }
+    Log.e("MicroMsg.ContactWidgetPlugin", "handleEvent : unexpected key = ".concat(String.valueOf(paramString)));
+    return false;
+  }
+  
+  protected abstract void clear();
+  
+  public boolean dvq()
+  {
+    bh.bCz();
+    c.ban().remove(this);
+    this.screen.bAi("contact_info_header_helper");
     return true;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  protected abstract boolean gBD();
+  
+  protected abstract int getResourceId();
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    int i = Util.nullAsInt(paramObject, 0);
+    Log.d("MicroMsg.ContactWidgetPlugin", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
+    bh.bCz();
+    if ((paramMStorageEx != c.ban()) || (i <= 0)) {
+      Log.e("MicroMsg.ContactWidgetPlugin", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
+    }
+    while ((i != 40) && (i != 34) && (i != 7)) {
+      return;
+    }
+    dvr();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.n
  * JD-Core Version:    0.7.0.1
  */

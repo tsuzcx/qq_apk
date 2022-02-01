@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@null" android:paddingTop="@dimen/dv" android:paddingBottom="@dimen/dv" android:layout_width="fill_parent" android:layout_height="@dimen/lf"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/yc" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:src="@drawable/icon" />
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:textColor="@color/w_" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/yd" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ln" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:paddingRight="@dimen/dl" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/bhf" />
-            <TextView android:textColor="@color/rb" android:id="@id/ye" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="安全推荐" style="@style/lm" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:id="@id/yf" android:visibility="gone" android:text="@string/pt" style="@style/pd" />
-        <RadioButton android:layout_gravity="center_vertical" android:id="@id/yg" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:button="@drawable/a0c" />
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:id="@id/hst" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a66" android:layout_marginStart="@dimen/cv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hss" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_done" android:layout_marginEnd="@dimen/cv" app:iconColor="@color/s8" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:id="@id/dm4" android:background="@color/BW_0_Alpha_0_1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_marginStart="@dimen/cv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

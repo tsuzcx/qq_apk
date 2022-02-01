@@ -38,14 +38,15 @@ public final class FeedsProtocol$PicFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 80, 88, 96, 104, 114, 122 }, new String[] { "user_info", "pic_infos", "create_time", "feed_type", "feed_source", "feeds_id", "rpt_msg_rich_title", "is_listen", "view_times", "is_like", "like_num", "share_url", "lbs_info" }, new Object[] { null, null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, null }, PicFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 80, 88, 96, 104, 114, 122 }, new String[] { "user_info", "pic_infos", "create_time", "feed_type", "feed_source", "feeds_id", "rpt_msg_rich_title", "is_listen", "view_times", "is_like", "like_num", "share_url", "lbs_info" }, new Object[] { null, null, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, null, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, null }, PicFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.PicFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

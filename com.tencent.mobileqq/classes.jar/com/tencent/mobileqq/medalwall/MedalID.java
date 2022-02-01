@@ -3,12 +3,11 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aubi;
 
 public class MedalID
   implements Parcelable
 {
-  public static final Parcelable.Creator<MedalID> CREATOR = new aubi();
+  public static final Parcelable.Creator<MedalID> CREATOR = new MedalID.1();
   public int a;
   public int b;
   
@@ -18,7 +17,7 @@ public class MedalID
     this.b = paramInt2;
   }
   
-  public MedalID(Parcel paramParcel)
+  protected MedalID(Parcel paramParcel)
   {
     this.a = paramParcel.readInt();
     this.b = paramParcel.readInt();
@@ -37,7 +36,7 @@ public class MedalID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalID
  * JD-Core Version:    0.7.0.1
  */

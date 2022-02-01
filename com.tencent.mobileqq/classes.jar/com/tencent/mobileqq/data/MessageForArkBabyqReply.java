@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import ayzs;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -23,21 +23,22 @@ public class MessageForArkBabyqReply
   public String babyqReplyText;
   public String compatibleMsg;
   public int forwardID;
-  public boolean isFailed;
+  public boolean isFailed = false;
   public boolean isSingleApp = true;
   public ArrayList<ArkBabyqCardInfo> mArkBabyqReplyCardList;
-  public boolean mHasReportRecv;
+  public boolean mHasReportRecv = false;
   public String resIDForLongMsg;
   public boolean showAsBabyq = true;
   
   public void doOnEvent(int paramInt)
   {
-    if (this.mArkBabyqReplyCardList != null)
+    Object localObject = this.mArkBabyqReplyCardList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mArkBabyqReplyCardList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)localIterator.next();
+        ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)((Iterator)localObject).next();
         if (localArkBabyqCardInfo != null) {
           localArkBabyqCardInfo.doOnEvent(paramInt);
         }
@@ -51,7 +52,7 @@ public class MessageForArkBabyqReply
       this.mArkBabyqReplyCardList = new ArrayList();
     }
     fromBytes(this.msgData);
-    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(ayzs.g));
+    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(MessageConstants.g));
   }
   
   public boolean fromAppXml(String paramString)
@@ -59,42 +60,38 @@ public class MessageForArkBabyqReply
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    for (;;)
+    try
     {
-      int i;
-      try
+      paramString = new JSONObject(paramString);
+      this.babyqReplyText = paramString.optString("desc");
+      this.arkMsgId = paramString.optString("msgId");
+      this.arkSearchType = paramString.optInt("type", 1);
+      this.showAsBabyq = paramString.optBoolean("showAsBabyq");
+      this.isFailed = paramString.optBoolean("fail");
+      paramString = paramString.optJSONArray("apps");
+      int i = 0;
+      while (i < paramString.length())
       {
-        paramString = new JSONObject(paramString);
-        this.babyqReplyText = paramString.optString("desc");
-        this.arkMsgId = paramString.optString("msgId");
-        this.arkSearchType = paramString.optInt("type", 1);
-        this.showAsBabyq = paramString.optBoolean("showAsBabyq");
-        this.isFailed = paramString.optBoolean("fail");
-        paramString = paramString.optJSONArray("apps");
-        i = 0;
-        if (i < paramString.length())
-        {
-          String str = paramString.optString(i);
-          ArkBabyqCardInfo localArkBabyqCardInfo = new ArkBabyqCardInfo(this);
-          localArkBabyqCardInfo.fromAppXml(str);
-          if (this.mArkBabyqReplyCardList == null) {
-            this.mArkBabyqReplyCardList = new ArrayList();
-          }
-          if (i < this.mArkBabyqReplyCardList.size()) {
-            this.mArkBabyqReplyCardList.set(i, localArkBabyqCardInfo);
-          } else {
-            this.mArkBabyqReplyCardList.add(localArkBabyqCardInfo);
-          }
+        String str = paramString.optString(i);
+        ArkBabyqCardInfo localArkBabyqCardInfo = new ArkBabyqCardInfo(this);
+        localArkBabyqCardInfo.fromAppXml(str);
+        if (this.mArkBabyqReplyCardList == null) {
+          this.mArkBabyqReplyCardList = new ArrayList();
         }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return false;
+        if (i < this.mArkBabyqReplyCardList.size()) {
+          this.mArkBabyqReplyCardList.set(i, localArkBabyqCardInfo);
+        } else {
+          this.mArkBabyqReplyCardList.add(localArkBabyqCardInfo);
+        }
+        i += 1;
       }
       return true;
-      i += 1;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
   
   public boolean fromBytes(byte[] paramArrayOfByte)
@@ -117,92 +114,80 @@ public class MessageForArkBabyqReply
   
   public int getArkBabyqCardCount()
   {
-    int j;
-    if (this.mArkBabyqReplyCardList != null)
+    Object localObject = this.mArkBabyqReplyCardList;
+    int j = 0;
+    int i = 0;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mArkBabyqReplyCardList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label57;
+      localObject = ((ArrayList)localObject).iterator();
+      for (;;)
+      {
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)((Iterator)localObject).next();
+        if (localArkBabyqCardInfo != null) {
+          i += localArkBabyqCardInfo.getArkBabyqCardCount();
+        }
       }
-      ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)localIterator.next();
-      if (localArkBabyqCardInfo == null) {
-        break label59;
-      }
-      i = localArkBabyqCardInfo.getArkBabyqCardCount() + i;
     }
-    label57:
-    label59:
-    for (;;)
-    {
-      break;
-      j = 0;
-      return j;
-    }
+    return j;
   }
   
   public int getArkBabyqCardCountForApp(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = 0;
+    int i = 0;
+    if (bool) {
       return 0;
     }
-    int j;
-    if (this.mArkBabyqReplyCardList != null)
+    Object localObject = this.mArkBabyqReplyCardList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mArkBabyqReplyCardList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label70;
+      localObject = ((ArrayList)localObject).iterator();
+      for (;;)
+      {
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)((Iterator)localObject).next();
+        if (localArkBabyqCardInfo != null) {
+          i += localArkBabyqCardInfo.getArkBabyqCardCountForApp(paramString);
+        }
       }
-      ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)localIterator.next();
-      if (localArkBabyqCardInfo == null) {
-        break label72;
-      }
-      i = localArkBabyqCardInfo.getArkBabyqCardCountForApp(paramString) + i;
     }
-    label70:
-    label72:
-    for (;;)
-    {
-      break;
-      j = 0;
-      return j;
-    }
+    return j;
   }
   
   public ArkBabyqCardInfo getArkCardByPosition(int paramInt)
   {
     int i = getArkBabyqCardCount();
-    Object localObject;
-    if ((i <= 0) || (paramInt < 0) || (paramInt >= i))
+    if ((i > 0) && (paramInt >= 0))
     {
-      localObject = null;
-      return localObject;
-    }
-    int j = 0;
-    i = paramInt;
-    paramInt = j;
-    for (;;)
-    {
-      if (paramInt >= this.mArkBabyqReplyCardList.size()) {
-        break label99;
+      if (paramInt >= i) {
+        return null;
       }
-      ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)this.mArkBabyqReplyCardList.get(paramInt);
-      j = localArkBabyqCardInfo.getArkBabyqCardCount();
-      if (i < j)
+      int j = 0;
+      i = paramInt;
+      paramInt = j;
+      while (paramInt < this.mArkBabyqReplyCardList.size())
       {
-        localObject = localArkBabyqCardInfo;
-        if (i == 0) {
-          break;
+        ArkBabyqCardInfo localArkBabyqCardInfo = (ArkBabyqCardInfo)this.mArkBabyqReplyCardList.get(paramInt);
+        j = localArkBabyqCardInfo.getArkBabyqCardCount();
+        if (i < j)
+        {
+          if (i == 0) {
+            return localArkBabyqCardInfo;
+          }
+          return (ArkBabyqCardInfo)localArkBabyqCardInfo.mExtendedArkBabyqCardList.get(i - 1);
         }
-        return (ArkBabyqCardInfo)localArkBabyqCardInfo.mExtendedArkBabyqCardList.get(i - 1);
+        i -= j;
+        paramInt += 1;
       }
-      i -= j;
-      paramInt += 1;
     }
-    label99:
     return null;
   }
   
@@ -211,15 +196,15 @@ public class MessageForArkBabyqReply
     if (!TextUtils.isEmpty(this.babyqReplyText)) {
       return this.babyqReplyText;
     }
-    return BaseApplicationImpl.sApplication.getString(2131690290);
+    return BaseApplicationImpl.sApplication.getString(2131887061);
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     this.msgData = toBytes();
     this.msg = this.babyqReplyText;

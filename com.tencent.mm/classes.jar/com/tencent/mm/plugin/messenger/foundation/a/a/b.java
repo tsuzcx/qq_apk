@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.j.a.a.c;
-import com.tencent.mm.j.a.a.d;
-import com.tencent.mm.sdk.e.h;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.h.a.a.c;
+import com.tencent.mm.h.a.a.d;
+import com.tencent.mm.sdk.storage.IStorageEx;
+import com.tencent.mm.storage.al;
 
 public abstract interface b
-  extends h
+  extends IStorageEx
 {
-  public abstract long SQ(String paramString);
+  public abstract int E(String paramString, long paramLong1, long paramLong2);
   
-  public abstract long SR(String paramString);
+  public abstract long a(al paramal);
   
-  public abstract long SS(String paramString);
-  
-  public abstract long ST(String paramString);
-  
-  public abstract long SU(String paramString);
-  
-  public abstract d SV(String paramString);
-  
-  public abstract boolean SW(String paramString);
-  
-  public abstract c SX(String paramString);
-  
-  public abstract w SY(String paramString);
-  
-  public abstract StringBuilder SZ(String paramString);
-  
-  public abstract boolean Y(String paramString, long paramLong);
-  
-  public abstract boolean Z(String paramString, long paramLong);
-  
-  public abstract long a(w paramw);
-  
-  public abstract long a(w paramw, boolean paramBoolean);
+  public abstract long a(al paramal, boolean paramBoolean);
   
   public abstract boolean a(String paramString, d paramd);
   
-  public abstract boolean aa(String paramString, long paramLong);
+  public abstract long aLi(String paramString);
   
-  public abstract boolean ab(String paramString, long paramLong);
+  public abstract long aLj(String paramString);
   
-  public abstract c ac(String paramString, long paramLong);
+  public abstract long aLk(String paramString);
   
-  public abstract long b(w paramw);
+  public abstract long aLl(String paramString);
   
-  public abstract boolean bPT();
+  public abstract long aLm(String paramString);
   
-  public abstract c f(String paramString, long paramLong, boolean paramBoolean);
+  public abstract d aLn(String paramString);
   
-  public abstract int v(String paramString, long paramLong1, long paramLong2);
+  public abstract boolean aLo(String paramString);
+  
+  public abstract c aLp(String paramString);
+  
+  public abstract al aLq(String paramString);
+  
+  public abstract StringBuilder aLr(String paramString);
+  
+  public abstract boolean aM(String paramString, long paramLong);
+  
+  public abstract boolean aN(String paramString, long paramLong);
+  
+  public abstract boolean aO(String paramString, long paramLong);
+  
+  public abstract boolean aP(String paramString, long paramLong);
+  
+  public abstract c aQ(String paramString, long paramLong);
+  
+  public abstract long b(al paramal);
+  
+  public abstract c d(String paramString, long paramLong, boolean paramBoolean);
+  
+  public abstract boolean gbb();
   
   public static final class a
   {
+    public boolean KRh;
     public int id;
-    public boolean oDK;
     public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.a.b
  * JD-Core Version:    0.7.0.1
  */

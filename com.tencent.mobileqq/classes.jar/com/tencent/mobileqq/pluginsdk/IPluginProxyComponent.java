@@ -26,7 +26,6 @@ class IPluginProxyComponent
     try
     {
       localObject1 = ((List)localObject1).iterator();
-      Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (IPluginActivity)((WeakReference)((Iterator)localObject1).next()).get();
@@ -34,50 +33,53 @@ class IPluginProxyComponent
           ((IPluginActivity)localObject2).IFinish();
         }
       }
-      String str;
-      return;
     }
     catch (Exception localException)
     {
-      str = MobileQQ.processName;
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject2 = new Intent("com.tencent.process.exit");
-        ((Intent)localObject2).putExtra("K_EXCEP", paramString);
-        ((Intent)localObject2).putExtra("exit_type", 0);
-        paramString = new ArrayList();
-        paramString.add(str);
-        ((Intent)localObject2).putStringArrayListExtra("procNameList", paramString);
-        ((Intent)localObject2).putExtra("verify", getLocalVerify(paramString, false));
-        MobileQQ.getMobileQQ().sendBroadcast((Intent)localObject2);
-      }
+      Object localObject2;
+      label60:
+      break label60;
+    }
+    localObject1 = MobileQQ.processName;
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = new Intent("com.tencent.process.exit");
+      ((Intent)localObject2).putExtra("K_EXCEP", paramString);
+      ((Intent)localObject2).putExtra("exit_type", 0);
+      paramString = new ArrayList();
+      paramString.add(localObject1);
+      ((Intent)localObject2).putStringArrayListExtra("procNameList", paramString);
+      ((Intent)localObject2).putExtra("verify", getLocalVerify(paramString, false));
+      MobileQQ.getMobileQQ().sendBroadcast((Intent)localObject2);
     }
   }
   
   private static String getLocalVerify(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
+    Object localObject = new Time();
+    ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label134;
-      }
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).hour);
+    if (paramBoolean) {
+      localStringBuilder.append(((Time)localObject).minute - 1);
+    } else {
+      localStringBuilder.append(((Time)localObject).minute);
     }
-    label134:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
+    if (paramArrayList == null) {
+      paramArrayList = "null";
+    } else {
+      paramArrayList = paramArrayList.toString();
     }
+    localStringBuilder.append(paramArrayList);
+    paramArrayList = MD5.toMD5(localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramArrayList);
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    return MD5.toMD5(((StringBuilder)localObject).toString());
   }
   
   static void registerAccountReceiverIfNeccessary()
@@ -89,7 +91,10 @@ class IPluginProxyComponent
       localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
       localIntentFilter.addAction("mqq.intent.action.LOGOUT");
-      localIntentFilter.addAction("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mqq.intent.action.EXIT_");
+      localStringBuilder.append(MobileQQ.getMobileQQ().getPackageName());
+      localIntentFilter.addAction(localStringBuilder.toString());
     }
     try
     {
@@ -110,7 +115,7 @@ class IPluginProxyComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.IPluginProxyComponent
  * JD-Core Version:    0.7.0.1
  */

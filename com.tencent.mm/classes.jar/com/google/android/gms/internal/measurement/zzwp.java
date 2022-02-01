@@ -25,27 +25,27 @@ public final class zzwp
   
   static
   {
-    AppMethodBeat.i(69759);
+    AppMethodBeat.i(2282);
     zzbmt = new ConcurrentHashMap();
     zzbna = new String[] { "key", "value" };
-    AppMethodBeat.o(69759);
+    AppMethodBeat.o(2282);
   }
   
   private zzwp(ContentResolver paramContentResolver, Uri paramUri)
   {
-    AppMethodBeat.i(69753);
+    AppMethodBeat.i(2276);
     this.zzbmw = new Object();
     this.zzbmy = new Object();
     this.zzbmz = new ArrayList();
     this.zzbmu = paramContentResolver;
     this.uri = paramUri;
     this.zzbmv = new zzwq(this, null);
-    AppMethodBeat.o(69753);
+    AppMethodBeat.o(2276);
   }
   
   public static zzwp zza(ContentResolver paramContentResolver, Uri paramUri)
   {
-    AppMethodBeat.i(69754);
+    AppMethodBeat.i(2277);
     zzwp localzzwp = (zzwp)zzbmt.get(paramUri);
     Object localObject = localzzwp;
     if (localzzwp == null)
@@ -59,7 +59,7 @@ public final class zzwp
         localObject = paramContentResolver;
       }
     }
-    AppMethodBeat.o(69754);
+    AppMethodBeat.o(2277);
     return localObject;
   }
   
@@ -67,79 +67,79 @@ public final class zzwp
   private final Map<String, String> zzrv()
   {
     // Byte code:
-    //   0: ldc 106
-    //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 108	java/util/HashMap
-    //   8: dup
-    //   9: invokespecial 109	java/util/HashMap:<init>	()V
-    //   12: astore_2
-    //   13: aload_0
-    //   14: getfield 66	com/google/android/gms/internal/measurement/zzwp:zzbmu	Landroid/content/ContentResolver;
-    //   17: aload_0
-    //   18: getfield 68	com/google/android/gms/internal/measurement/zzwp:uri	Landroid/net/Uri;
-    //   21: getstatic 48	com/google/android/gms/internal/measurement/zzwp:zzbna	[Ljava/lang/String;
-    //   24: aconst_null
+    //   0: sipush 2279
+    //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 103	java/util/HashMap
+    //   9: dup
+    //   10: invokespecial 104	java/util/HashMap:<init>	()V
+    //   13: astore_2
+    //   14: aload_0
+    //   15: getfield 64	com/google/android/gms/internal/measurement/zzwp:zzbmu	Landroid/content/ContentResolver;
+    //   18: aload_0
+    //   19: getfield 66	com/google/android/gms/internal/measurement/zzwp:uri	Landroid/net/Uri;
+    //   22: getstatic 47	com/google/android/gms/internal/measurement/zzwp:zzbna	[Ljava/lang/String;
     //   25: aconst_null
     //   26: aconst_null
-    //   27: invokevirtual 113	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   30: astore_1
-    //   31: aload_1
-    //   32: ifnull +64 -> 96
-    //   35: aload_1
-    //   36: invokeinterface 119 1 0
-    //   41: ifeq +49 -> 90
-    //   44: aload_2
-    //   45: aload_1
-    //   46: iconst_0
-    //   47: invokeinterface 123 2 0
-    //   52: aload_1
-    //   53: iconst_1
-    //   54: invokeinterface 123 2 0
-    //   59: invokeinterface 128 3 0
-    //   64: pop
-    //   65: goto -30 -> 35
-    //   68: astore_2
-    //   69: aload_1
-    //   70: invokeinterface 131 1 0
-    //   75: ldc 106
-    //   77: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: aload_2
-    //   81: athrow
-    //   82: astore_1
-    //   83: ldc 106
-    //   85: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   88: aconst_null
-    //   89: areturn
-    //   90: aload_1
-    //   91: invokeinterface 131 1 0
-    //   96: ldc 106
-    //   98: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   101: aload_2
-    //   102: areturn
-    //   103: astore_1
-    //   104: goto -21 -> 83
+    //   27: aconst_null
+    //   28: invokevirtual 108	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   31: astore_1
+    //   32: aload_1
+    //   33: ifnull +66 -> 99
+    //   36: aload_1
+    //   37: invokeinterface 114 1 0
+    //   42: ifeq +51 -> 93
+    //   45: aload_2
+    //   46: aload_1
+    //   47: iconst_0
+    //   48: invokeinterface 118 2 0
+    //   53: aload_1
+    //   54: iconst_1
+    //   55: invokeinterface 118 2 0
+    //   60: invokeinterface 123 3 0
+    //   65: pop
+    //   66: goto -30 -> 36
+    //   69: astore_2
+    //   70: aload_1
+    //   71: invokeinterface 126 1 0
+    //   76: sipush 2279
+    //   79: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   82: aload_2
+    //   83: athrow
+    //   84: astore_1
+    //   85: sipush 2279
+    //   88: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: aconst_null
+    //   92: areturn
+    //   93: aload_1
+    //   94: invokeinterface 126 1 0
+    //   99: sipush 2279
+    //   102: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   105: aload_2
+    //   106: areturn
+    //   107: astore_1
+    //   108: goto -23 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	107	0	this	zzwp
-    //   30	40	1	localCursor	android.database.Cursor
-    //   82	9	1	localSecurityException	java.lang.SecurityException
-    //   103	1	1	localSQLiteException	android.database.sqlite.SQLiteException
-    //   12	33	2	localHashMap	java.util.HashMap
-    //   68	34	2	localMap	Map<String, String>
+    //   0	111	0	this	zzwp
+    //   31	40	1	localCursor	android.database.Cursor
+    //   84	10	1	localSecurityException	java.lang.SecurityException
+    //   107	1	1	localSQLiteException	android.database.sqlite.SQLiteException
+    //   13	33	2	localHashMap	java.util.HashMap
+    //   69	37	2	localMap	Map<String, String>
     // Exception table:
     //   from	to	target	type
-    //   35	65	68	finally
-    //   5	31	82	java/lang/SecurityException
-    //   69	82	82	java/lang/SecurityException
-    //   90	96	82	java/lang/SecurityException
-    //   5	31	103	android/database/sqlite/SQLiteException
-    //   69	82	103	android/database/sqlite/SQLiteException
-    //   90	96	103	android/database/sqlite/SQLiteException
+    //   36	66	69	finally
+    //   6	32	84	java/lang/SecurityException
+    //   70	84	84	java/lang/SecurityException
+    //   93	99	84	java/lang/SecurityException
+    //   6	32	107	android/database/sqlite/SQLiteException
+    //   70	84	107	android/database/sqlite/SQLiteException
+    //   93	99	107	android/database/sqlite/SQLiteException
   }
   
   private final void zzrw()
   {
-    AppMethodBeat.i(69757);
+    AppMethodBeat.i(2280);
     synchronized (this.zzbmy)
     {
       Iterator localIterator = this.zzbmz.iterator();
@@ -147,12 +147,12 @@ public final class zzwp
         ((zzwr)localIterator.next()).zzrx();
       }
     }
-    AppMethodBeat.o(69757);
+    AppMethodBeat.o(2280);
   }
   
   public final Map<String, String> zzrt()
   {
-    AppMethodBeat.i(69755);
+    AppMethodBeat.i(2278);
     Object localObject1;
     if (zzws.zzd("gms:phenotype:phenotype_flag:debug_disable_caching", false)) {
       localObject1 = zzrv();
@@ -173,14 +173,14 @@ public final class zzwp
         localObject3 = localObject1;
         if (localObject3 != null)
         {
-          AppMethodBeat.o(69755);
+          AppMethodBeat.o(2278);
           return localObject3;
           localObject1 = this.zzbmx;
         }
       }
     }
     Map localMap = Collections.emptyMap();
-    AppMethodBeat.o(69755);
+    AppMethodBeat.o(2278);
     return localMap;
   }
   
@@ -195,7 +195,7 @@ public final class zzwp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzwp
  * JD-Core Version:    0.7.0.1
  */

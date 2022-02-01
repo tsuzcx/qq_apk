@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.voip;
 
-import eww;
+import ewv;
 import java.util.HashMap;
 
 public class VoipNumberKeySoundPlay
@@ -37,7 +37,7 @@ public class VoipNumberKeySoundPlay
   
   public void a(String paramString)
   {
-    new eww(this, paramString).start();
+    new ewv(this, paramString).start();
   }
 }
 

@@ -1,33 +1,26 @@
 package com.tencent.mobileqq.app;
 
-import alwd;
-import com.tencent.mobileqq.app.automator.Automator;
+import android.os.Bundle;
+import com.tencent.mobileqq.friend.observer.FriendObserver;
 import mqq.os.MqqHandler;
 
-public class MayknowRecommendManager$2
-  implements Runnable
+class MayknowRecommendManager$2
+  extends FriendObserver
 {
-  public MayknowRecommendManager$2(alwd paramalwd) {}
+  MayknowRecommendManager$2(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public void run()
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
   {
-    if (alwd.a(this.this$0).a.a() == 1)
-    {
-      alwd.b(this.this$0);
-      return;
-    }
-    synchronized (alwd.a(this.this$0))
-    {
-      if (!alwd.a(this.this$0)) {
-        alwd.a(this.this$0).postDelayed(this, 5000L);
-      }
-      return;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_is_success", paramBoolean);
+    localBundle.putString("key_req_uin", paramString);
+    paramString = MayknowRecommendManager.b(this.a).obtainMessage(9, 0, 0, localBundle);
+    MayknowRecommendManager.b(this.a).sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.2
  * JD-Core Version:    0.7.0.1
  */

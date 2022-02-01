@@ -1,9 +1,13 @@
 package android.arch.lifecycle;
 
+import com.tencent.token.bj.a;
+import com.tencent.token.bl;
+import com.tencent.token.bm;
+
 public abstract interface GenericLifecycleObserver
-  extends LifecycleObserver
+  extends bl
 {
-  public abstract void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent);
+  public abstract void a(bm parambm, bj.a parama);
 }
 
 

@@ -22,31 +22,38 @@ public class NativeExceptionUpload
     x.c("Check extra jni for RQD NDK: %s", new Object[] { paramString });
     String str2 = "nativeRqd.2.1.0".replace("nativeRqd.", "").replace(".", "");
     String str1 = paramString.replace("nativeRqd.", "").replace(".", "");
-    if (str1.length() == 2) {
-      paramString = str1 + "0";
-    }
-    for (;;)
+    if (str1.length() == 2)
     {
-      try
+      paramString = new StringBuilder();
+      paramString.append(str1);
+      paramString.append("0");
+      paramString = paramString.toString();
+    }
+    else
+    {
+      paramString = str1;
+      if (str1.length() == 1)
       {
-        if (Integer.parseInt(paramString) < Integer.parseInt(str2)) {
-          continue;
-        }
+        paramString = new StringBuilder();
+        paramString.append(str1);
+        paramString.append("00");
+        paramString = paramString.toString();
+      }
+    }
+    try
+    {
+      if (Integer.parseInt(paramString) >= Integer.parseInt(str2))
+      {
         x.a("Extra RQD JNI can be accessed.", new Object[0]);
         return true;
       }
-      catch (Throwable paramString)
-      {
-        if (x.a(paramString)) {
-          continue;
-        }
+    }
+    catch (Throwable paramString)
+    {
+      if (!x.a(paramString)) {
         paramString.printStackTrace();
-        x.d("Extra RQD JNI can not be accessed.", new Object[0]);
       }
-      paramString = str1;
-      if (str1.length() == 1) {
-        paramString = str1 + "00";
-      }
+      x.d("Extra RQD JNI can not be accessed.", new Object[0]);
     }
     return false;
   }
@@ -105,7 +112,7 @@ public class NativeExceptionUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.feedback.eup.jni.NativeExceptionUpload
  * JD-Core Version:    0.7.0.1
  */

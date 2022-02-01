@@ -15,54 +15,54 @@ public class TXImageSprite
   
   public TXImageSprite(Context paramContext)
   {
-    AppMethodBeat.i(65934);
+    AppMethodBeat.i(13548);
     this.mContext = paramContext.getApplicationContext();
     TXCDRApi.initCrashReport(paramContext);
-    AppMethodBeat.o(65934);
+    AppMethodBeat.o(13548);
   }
   
   public Bitmap getThumbnail(float paramFloat)
   {
-    AppMethodBeat.i(65936);
+    AppMethodBeat.i(13550);
     if (this.mImageSprite != null)
     {
       Bitmap localBitmap = this.mImageSprite.getThumbnail(paramFloat);
-      AppMethodBeat.o(65936);
+      AppMethodBeat.o(13550);
       return localBitmap;
     }
-    AppMethodBeat.o(65936);
+    AppMethodBeat.o(13550);
     return null;
   }
   
   public void release()
   {
-    AppMethodBeat.i(65937);
+    AppMethodBeat.i(13551);
     if (this.mImageSprite != null)
     {
       this.mImageSprite.release();
       this.mImageSprite = null;
     }
-    AppMethodBeat.o(65937);
+    AppMethodBeat.o(13551);
   }
   
   public void setVTTUrlAndImageUrls(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(65935);
+    AppMethodBeat.i(13549);
     if (this.mImageSprite != null) {
       release();
     }
     if ((paramString != null) && (paramList != null) && (paramList.size() != 0))
     {
-      TXCDRApi.txReportDAU(this.mContext, com.tencent.liteav.basic.datareport.a.bz);
+      TXCDRApi.txReportDAU(this.mContext, com.tencent.liteav.basic.datareport.a.bD);
       this.mImageSprite = new b();
       this.mImageSprite.setVTTUrlAndImageUrls(paramString, paramList);
     }
-    AppMethodBeat.o(65935);
+    AppMethodBeat.o(13549);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.TXImageSprite
  * JD-Core Version:    0.7.0.1
  */

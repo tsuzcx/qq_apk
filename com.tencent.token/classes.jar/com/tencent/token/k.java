@@ -1,60 +1,50 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class k
+  extends JceStruct
 {
-  private List a = new ArrayList();
+  static byte[] g;
+  public long a = 0L;
+  public long b = 0L;
+  public int c = 0;
+  public int d = 0;
+  public byte[] e = null;
+  public String f = "";
   
-  public final int a()
+  static
   {
-    return this.a.size();
+    byte[] arrayOfByte = (byte[])new byte[1];
+    g = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public final void a(j paramj)
+  public final JceStruct newInit()
   {
-    Iterator localIterator = this.a.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (!((j)localIterator.next()).equals(paramj));
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.a.add(paramj);
-      }
-      return;
-    }
+    return new k();
   }
   
-  public final j b()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    if (this.a.size() == 0) {
-      return null;
-    }
-    return (j)this.a.get(0);
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, true);
+    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.d = paramJceInputStream.read(this.d, 3, true);
+    this.e = ((byte[])paramJceInputStream.read(g, 4, true));
+    this.f = paramJceInputStream.readString(5, true);
   }
   
-  public final String toString()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    StringBuilder localStringBuilder = new StringBuilder("bytes=");
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      j localj = (j)localIterator.next();
-      localStringBuilder.append(localj.a);
-      localStringBuilder.append("-");
-      if (localj.b != -1L) {
-        localStringBuilder.append(localj.b);
-      }
-      localStringBuilder.append(",");
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    return localStringBuilder.toString();
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
+    paramJceOutputStream.write(this.e, 4);
+    paramJceOutputStream.write(this.f, 5);
   }
 }
 

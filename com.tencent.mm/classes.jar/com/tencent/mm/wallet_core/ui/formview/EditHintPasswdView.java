@@ -13,40 +13,52 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnFocusChangeListener;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.k;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public final class EditHintPasswdView
   extends RelativeLayout
   implements View.OnFocusChangeListener
 {
-  private static final int AYU = 2130838582;
-  private int AYV;
-  private int AYW;
-  private int AYX;
-  private EditHintPasswdView.a AYY;
-  private View.OnFocusChangeListener gLH;
+  private static final int agVx = a.e.edit_passwd_shape_bg;
+  private static final int agVy = a.e.edit_passwd_shape_dark_bg;
+  private int LpR;
+  private int agVA;
+  private int agVB;
+  private int agVC;
+  private a agVD;
+  private int agVz;
   public TenpaySecureEditText mEditText;
-  private int tFy;
+  public String pwdNonce;
+  private long pwdTimestamp;
+  private View.OnFocusChangeListener qiH;
   
   public EditHintPasswdView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(142678);
+    AppMethodBeat.i(73117);
     this.mEditText = null;
-    this.AYV = 6;
-    this.tFy = 1;
-    this.AYW = AYU;
-    this.AYX = 1;
-    this.AYY = null;
-    this.gLH = null;
-    aA(paramContext);
-    AppMethodBeat.o(142678);
+    this.agVz = 6;
+    this.LpR = 1;
+    this.agVA = agVx;
+    this.agVB = 1;
+    this.agVD = null;
+    this.qiH = null;
+    this.pwdNonce = "";
+    this.pwdTimestamp = 0L;
+    ci(paramContext);
+    AppMethodBeat.o(73117);
   }
   
   public EditHintPasswdView(Context paramContext, AttributeSet paramAttributeSet)
@@ -57,44 +69,74 @@ public final class EditHintPasswdView
   public EditHintPasswdView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(49390);
+    AppMethodBeat.i(73116);
     this.mEditText = null;
-    this.AYV = 6;
-    this.tFy = 1;
-    this.AYW = AYU;
-    this.AYX = 1;
-    this.AYY = null;
-    this.gLH = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.PwdAttr, paramInt, 0);
-    this.tFy = paramAttributeSet.getInteger(0, 1);
-    this.AYW = paramAttributeSet.getResourceId(1, AYU);
-    this.AYX = paramAttributeSet.getInteger(2, 1);
+    this.agVz = 6;
+    this.LpR = 1;
+    this.agVA = agVx;
+    this.agVB = 1;
+    this.agVD = null;
+    this.qiH = null;
+    this.pwdNonce = "";
+    this.pwdTimestamp = 0L;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.PwdAttr, paramInt, 0);
+    this.LpR = paramAttributeSet.getInteger(a.k.PwdAttr_format, 1);
+    this.agVA = paramAttributeSet.getResourceId(a.k.PwdAttr_EditTextBg, agVx);
+    this.agVB = paramAttributeSet.getInteger(a.k.PwdAttr_PwdEncryptType, 1);
+    this.agVC = paramAttributeSet.getInteger(a.k.PwdAttr_PwdMode, 1);
     paramAttributeSet.recycle();
-    aA(paramContext);
-    TenpaySecureEditText.setSalt(Long.toString(cb.abp() / 1000L));
-    AppMethodBeat.o(49390);
+    ci(paramContext);
+    TenpaySecureEditText.setSalt(i.jPu());
+    AppMethodBeat.o(73116);
   }
   
-  private void aA(Context paramContext)
+  private boolean bZp()
   {
-    AppMethodBeat.i(142679);
-    this.mEditText = ((TenpaySecureEditText)w.hM(paramContext).inflate(2130969859, this, true).findViewById(2131820689));
-    b.a(this.mEditText, this.tFy);
-    this.AYV = getNumberSize();
-    if (this.mEditText != null)
+    AppMethodBeat.i(73120);
+    if ((this.mEditText != null) && (this.mEditText.getInputLength() == this.agVz))
     {
-      this.mEditText.setBackgroundResource(this.AYW);
+      AppMethodBeat.o(73120);
+      return true;
+    }
+    AppMethodBeat.o(73120);
+    return false;
+  }
+  
+  private void ci(final Context paramContext)
+  {
+    AppMethodBeat.i(73119);
+    this.mEditText = ((TenpaySecureEditText)af.mU(paramContext).inflate(a.g.hint_view_passwd, this, true).findViewById(a.f.wallet_content));
+    if ((this.agVA == agVx) && (aw.isDarkMode())) {
+      this.agVA = agVy;
+    }
+    if (this.agVC == 1) {
+      this.agVA = a.c.transparent;
+    }
+    TenpaySecureEditText localTenpaySecureEditText = this.mEditText;
+    int i = this.LpR;
+    boolean bool;
+    if (this.agVC == 1)
+    {
+      bool = true;
+      b.a(localTenpaySecureEditText, i, bool);
+      this.agVz = getNumberSize();
+      if (this.mEditText == null) {
+        break label230;
+      }
+      this.mEditText.setBackgroundResource(this.agVA);
       this.mEditText.setImeOptions(6);
       this.mEditText.setInputType(128);
       this.mEditText.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
-          AppMethodBeat.i(49389);
-          if (EditHintPasswdView.b(EditHintPasswdView.this) != null) {
-            EditHintPasswdView.b(EditHintPasswdView.this).onInputValidChange(EditHintPasswdView.c(EditHintPasswdView.this));
+          AppMethodBeat.i(73115);
+          paramAnonymousEditable = EditHintPasswdView.b(EditHintPasswdView.this).getText().toString();
+          EditHintPasswdView.this.setContentDescription(paramContext.getString(a.i.wc_pay_accessbility_pwd_view, new Object[] { paramAnonymousEditable.length() }));
+          if (EditHintPasswdView.c(EditHintPasswdView.this) != null) {
+            EditHintPasswdView.c(EditHintPasswdView.this).onInputValidChange(EditHintPasswdView.d(EditHintPasswdView.this));
           }
-          AppMethodBeat.o(49389);
+          AppMethodBeat.o(73115);
         }
         
         public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -106,141 +148,206 @@ public final class EditHintPasswdView
       this.mEditText.setLongClickable(false);
       super.setEnabled(true);
       super.setClickable(true);
-      AppMethodBeat.o(142679);
-      return;
     }
-    ab.e("MicroMsg.EditHintPasswdView", "hy: no edit text view");
-    AppMethodBeat.o(142679);
-  }
-  
-  private boolean asv()
-  {
-    AppMethodBeat.i(49392);
-    if ((this.mEditText != null) && (this.mEditText.getInputLength() == this.AYV))
+    for (;;)
     {
-      AppMethodBeat.o(49392);
-      return true;
+      setContentDescription(paramContext.getString(a.i.wc_pay_accessbility_pwd_view, new Object[] { "0" }));
+      this.mEditText.setImportantForAccessibility(2);
+      AppMethodBeat.o(73119);
+      return;
+      bool = false;
+      break;
+      label230:
+      Log.e("MicroMsg.EditHintPasswdView", "hy: no edit text view");
     }
-    AppMethodBeat.o(49392);
-    return false;
   }
   
   private int getNumberSize()
   {
-    AppMethodBeat.i(49393);
-    switch (this.tFy)
+    AppMethodBeat.i(73121);
+    switch (this.LpR)
     {
     case 2: 
     case 5: 
     case 6: 
     case 7: 
     default: 
-      ab.i("MicroMsg.EditHintPasswdView", "hy: error or not set format. use default");
-      AppMethodBeat.o(49393);
+      Log.i("MicroMsg.EditHintPasswdView", "hy: error or not set format. use default");
+      AppMethodBeat.o(73121);
       return 6;
     case 1: 
-      AppMethodBeat.o(49393);
+      AppMethodBeat.o(73121);
       return 6;
     case 3: 
-      AppMethodBeat.o(49393);
+      AppMethodBeat.o(73121);
       return 3;
     case 4: 
-      AppMethodBeat.o(49393);
+      AppMethodBeat.o(73121);
       return 4;
     }
-    AppMethodBeat.o(49393);
+    AppMethodBeat.o(73121);
     return 4;
   }
   
-  public final void cfK()
+  public final void aGC(int paramInt)
   {
-    AppMethodBeat.i(49397);
+    boolean bool = true;
+    AppMethodBeat.i(242245);
+    this.agVC = paramInt;
+    TenpaySecureEditText localTenpaySecureEditText;
+    if (this.agVC == 1)
+    {
+      this.agVA = a.c.transparent;
+      this.mEditText.setBackgroundResource(this.agVA);
+      localTenpaySecureEditText = this.mEditText;
+      paramInt = this.LpR;
+      if (this.agVC != 1) {
+        break label96;
+      }
+    }
+    for (;;)
+    {
+      b.a(localTenpaySecureEditText, paramInt, bool);
+      AppMethodBeat.o(242245);
+      return;
+      if (aw.isDarkMode())
+      {
+        this.agVA = agVy;
+        break;
+      }
+      this.agVA = agVx;
+      break;
+      label96:
+      bool = false;
+    }
+  }
+  
+  public final void gGd()
+  {
+    AppMethodBeat.i(73126);
     if (this.mEditText != null) {
       this.mEditText.ClearInput();
     }
-    AppMethodBeat.o(49397);
+    AppMethodBeat.o(73126);
+  }
+  
+  public final TenpaySecureEditText getEditText()
+  {
+    return this.mEditText;
   }
   
   public final int getEncrType()
   {
-    return this.AYX;
+    return this.agVB;
   }
   
   public final int getFormat()
   {
-    return this.tFy;
+    return this.LpR;
   }
   
   public final String getMd5Value()
   {
-    AppMethodBeat.i(49391);
+    AppMethodBeat.i(73118);
     if (this.mEditText != null)
     {
-      String str = ag.cE(this.mEditText.getText().toString());
-      AppMethodBeat.o(49391);
+      String str = this.mEditText.getPasswordHash();
+      AppMethodBeat.o(73118);
       return str;
     }
-    ab.w("MicroMsg.EditHintPasswdView", "hy: edit view is null");
-    AppMethodBeat.o(49391);
+    Log.w("MicroMsg.EditHintPasswdView", "hy: edit view is null");
+    AppMethodBeat.o(73118);
     return "";
   }
   
-  public final EditHintPasswdView.a getOnEditInputValidListener()
+  public final a getOnEditInputValidListener()
   {
-    return this.AYY;
+    return this.agVD;
   }
   
   public final View.OnFocusChangeListener getOnFocusChangeListener()
   {
-    return this.gLH;
+    return this.qiH;
+  }
+  
+  public final String getPwdNonce()
+  {
+    return this.pwdNonce;
+  }
+  
+  public final long getPwdTimestamp()
+  {
+    return this.pwdTimestamp;
   }
   
   public final String getText()
   {
-    AppMethodBeat.i(49396);
+    AppMethodBeat.i(73125);
     if (this.mEditText != null)
     {
-      String str = c.a.a(this.AYX, this.mEditText);
-      AppMethodBeat.o(49396);
+      String str = c.a.a(this.agVB, this.mEditText, this.pwdTimestamp, this.pwdNonce);
+      AppMethodBeat.o(73125);
       return str;
     }
-    ab.w("MicroMsg.EditHintPasswdView", "hy: no edit view");
-    AppMethodBeat.o(49396);
+    Log.w("MicroMsg.EditHintPasswdView", "hy: no edit view");
+    AppMethodBeat.o(73125);
     return "";
   }
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(49399);
-    if (this.gLH != null) {
-      this.gLH.onFocusChange(this, paramBoolean);
+    AppMethodBeat.i(73128);
+    if (this.qiH != null) {
+      this.qiH.onFocusChange(this, paramBoolean);
     }
-    if (this.AYY != null) {
-      this.AYY.onInputValidChange(asv());
+    if (this.agVD != null) {
+      this.agVD.onInputValidChange(bZp());
     }
-    AppMethodBeat.o(49399);
+    AppMethodBeat.o(73128);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(49398);
-    setMeasuredDimension(getDefaultSize(BackwardSupportUtil.b.b(getContext(), 960.0F), paramInt1), getDefaultSize(BackwardSupportUtil.b.b(getContext(), 720.0F), paramInt2));
-    paramInt2 = getMeasuredWidth();
-    if (this.AYV == 0) {}
-    for (paramInt1 = paramInt2 / 6;; paramInt1 = paramInt2 / this.AYV)
+    AppMethodBeat.i(73127);
+    setMeasuredDimension(getDefaultSize(BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 960.0F), paramInt1), getDefaultSize(BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 720.0F), paramInt2));
+    int j;
+    int i;
+    if (this.agVC == 0)
     {
-      int i = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
-      int j = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
-      setMeasuredDimension(getDefaultSize(paramInt2, i), getDefaultSize(paramInt1, j));
-      super.onMeasure(i, j);
-      AppMethodBeat.o(49398);
+      j = getMeasuredWidth();
+      if (this.agVz == 0)
+      {
+        paramInt1 = j / 6;
+        paramInt2 = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
+        i = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
+        setMeasuredDimension(getDefaultSize(j, paramInt2), getDefaultSize(paramInt1, i));
+        paramInt1 = i;
+      }
+    }
+    for (;;)
+    {
+      super.onMeasure(paramInt2, paramInt1);
+      AppMethodBeat.o(73127);
       return;
+      paramInt1 = j / this.agVz;
+      break;
+      j = getMeasuredWidth();
+      i = getMeasuredHeight();
+      paramInt2 = (j - a.fromDPToPix(getContext(), 8) * (this.agVz - 1)) / this.agVz;
+      paramInt1 = i;
+      if (i < paramInt2) {
+        paramInt1 = paramInt2;
+      }
+      i = View.MeasureSpec.makeMeasureSpec(j + 1, 1073741824);
+      paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
+      setMeasuredDimension(getDefaultSize(j, i), getDefaultSize(paramInt2, paramInt1));
+      paramInt2 = i;
     }
   }
   
   public final void setEditTextMaxLength(int paramInt)
   {
-    AppMethodBeat.i(49395);
+    AppMethodBeat.i(73124);
     if (this.mEditText != null)
     {
       InputFilter[] arrayOfInputFilter1 = this.mEditText.getFilters();
@@ -254,31 +361,46 @@ public final class EditHintPasswdView
       arrayOfInputFilter2[(arrayOfInputFilter2.length - 1)] = new InputFilter.LengthFilter(paramInt);
       this.mEditText.setFilters(arrayOfInputFilter2);
     }
-    AppMethodBeat.o(49395);
+    AppMethodBeat.o(73124);
   }
   
   public final void setEditTextSize(float paramFloat)
   {
-    AppMethodBeat.i(49394);
+    AppMethodBeat.i(73123);
     if (this.mEditText != null) {
       this.mEditText.setTextSize(paramFloat);
     }
-    AppMethodBeat.o(49394);
+    AppMethodBeat.o(73123);
   }
   
   public final void setEncrType(int paramInt)
   {
-    this.AYX = paramInt;
+    this.agVB = paramInt;
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.gLH = paramOnFocusChangeListener;
+    this.qiH = paramOnFocusChangeListener;
   }
   
-  public final void setOnInputValidListener(EditHintPasswdView.a parama)
+  public final void setOnInputValidListener(a parama)
   {
-    this.AYY = parama;
+    this.agVD = parama;
+  }
+  
+  public final void setPwdNonce(String paramString)
+  {
+    this.pwdNonce = paramString;
+  }
+  
+  public final void setPwdTimestamp(long paramLong)
+  {
+    this.pwdTimestamp = paramLong;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onInputValidChange(boolean paramBoolean);
   }
 }
 

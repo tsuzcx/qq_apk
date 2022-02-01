@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/j4h" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/f7r" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/a_g" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/d_" android:layout_marginBottom="@dimen/d0" android:src="@raw/icons_outlined_umbrella" app:iconColor="@color/aks" />
+            <TextView android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/a_f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jwd" style="@style/kn" />
+            <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/a_e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/jw_" style="@style/z8" />
+            <View android:id="@id/ah6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/a95" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c2" android:text="@string/jz" style="@style/oh" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/a0y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c2" android:text="@string/zp" style="@style/op" />
+        </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+    </ScrollView>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:gravity="center" android:id="@id/ckw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" style="@style/ok" />
+</FrameLayout>

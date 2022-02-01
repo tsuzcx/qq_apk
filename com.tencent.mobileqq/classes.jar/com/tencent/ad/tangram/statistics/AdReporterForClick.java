@@ -15,18 +15,19 @@ public final class AdReporterForClick
   public static void reportAsync(WeakReference<Context> paramWeakReference, Ad paramAd, String paramString)
   {
     AdLog.i("AdReporterForClick", String.format("reportAsync %s", new Object[] { paramString }));
-    if (paramWeakReference != null) {}
-    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForClickStatisticsStart(localContext, paramAd, paramString);
-      AdThreadManager.INSTANCE.post(new AdReporterForClick.1(paramString, paramWeakReference, paramAd), 4);
-      return;
+    Context localContext;
+    if (paramWeakReference != null) {
+      localContext = (Context)paramWeakReference.get();
+    } else {
+      localContext = null;
     }
+    a.reportForClickStatisticsStart(localContext, paramAd, paramString);
+    AdThreadManager.INSTANCE.post(new AdReporterForClick.1(paramString, paramWeakReference, paramAd), 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.AdReporterForClick
  * JD-Core Version:    0.7.0.1
  */

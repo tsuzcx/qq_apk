@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.flashchat.FlashChatPreview android:background="@drawable/gub" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/close" android:padding="18.0dip" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/cip" android:contentDescription="@string/qpc" />
+    <ImageView android:id="@id/close" android:padding="18.0dip" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/cip" android:contentDescription="@string/j6l" />
     <TextView android:textSize="@dimen/ayq" android:textColor="@color/a05" android:gravity="center" android:id="@id/aor" android:layout_width="wrap_content" android:layout_height="54.0dip" android:layout_marginRight="12.0dip" android:text="@string/qpd" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/qpe" />
     <ImageView android:id="@id/bdp" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/aen" android:layout_marginRight="8.0dip" android:src="@drawable/header_btn_add" android:layout_below="@id/close" android:layout_alignParentRight="true" />
     <com.etrump.mixlayout.ETTextView android:textColor="@color/skin_chat_buble" android:id="@id/jjy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aen" android:layout_marginRight="50.0dip" android:text="" android:layout_below="@id/close" android:layout_alignParentRight="true" />

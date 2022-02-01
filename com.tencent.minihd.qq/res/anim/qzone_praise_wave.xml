@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:interpolator="@anim/qzone_praise_wave_interpolator" android:fillAfter="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <scale android:duration="240" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.0" android:toXScale="1.8" android:fromYScale="1.0" android:toYScale="1.8" />
+    <scale android:duration="240" android:pivotX="50.0%" android:pivotY="50.0%" android:fillAfter="false" android:startOffset="240" android:fromXScale="1.0" android:toXScale="0.556" android:fromYScale="1.0" android:toYScale="0.556" />
+</set>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.richframework.widget.MultiPicViewPager android:id="@id/pas" android:layout_width="fill_parent" android:layout_height="375.0dip" />
+    <FrameLayout android:layout_gravity="center|left|top" android:id="@id/pbs" android:background="@drawable/f50" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip">
+        <TextView android:textSize="@dimen/ayk" android:textColor="@color/qcircle_skin_color_text_ghost" android:layout_gravity="center" android:id="@id/pbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+    </FrameLayout>
+</FrameLayout>

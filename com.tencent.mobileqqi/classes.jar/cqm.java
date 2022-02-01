@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.HornPublishActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.maproam.Utils;
-import com.tencent.mobileqq.utils.VipUtils;
 
 public class cqm
   implements View.OnClickListener
 {
-  public cqm(HornPublishActivity paramHornPublishActivity) {}
+  public cqm(HornPublishActivity paramHornPublishActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    VipUtils.b(this.a, 1, "mvip.gongneng.mobileqq.zhidinglaba.numberandroid");
+    this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.a.setEnabled(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.b.a(new cqn(this));
     Utils.a();
   }
 }

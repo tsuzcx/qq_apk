@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/e1h" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:id="@id/lvo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wav" />
-</RelativeLayout>
+    <Button android:layout_gravity="center" android:id="@id/npr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:text="第三方App - 加入小站" />
+</LinearLayout>

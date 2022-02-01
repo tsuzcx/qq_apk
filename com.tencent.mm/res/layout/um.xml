@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bgk" android:background="@color/zm" android:padding="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:background="#ffdfe0e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bgl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{正在同步}" android:layout_weight="1.0" />
-    <Button android:textColor="@color/a6i" android:layout_gravity="center" android:id="@id/bgm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ny" />
+    <ImageView android:id="@id/fn0" android:background="@raw/sns_shoot_location_normal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j6" android:layout_marginTop="@dimen/j6" android:layout_marginBottom="@dimen/j6" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/adx" android:id="@id/euv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/j6" android:layout_marginBottom="@dimen/j6" android:singleLine="true" />
 </LinearLayout>

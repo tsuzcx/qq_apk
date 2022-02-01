@@ -36,7 +36,7 @@
                         "view_type": "container",
                         "view_id": "id_top_container",
                         "layout_type": "layout_relative",
-                        "margin_left": "6",
+                        "margin_left": "16",
                         "margin_top": "0",
                         "default_visible":"YES",
                         "height": {
@@ -45,7 +45,7 @@
                         },
                         "width": {
                             "type": "relative",
-                            "value": "363"
+                            "value": "343"
                         },
                         "subviews": [
                             {
@@ -106,10 +106,23 @@
                         ]
                     },
                     {
+                        "view_id": "id_subscribed_topic_card_proteus_view_top_margin",
+                        "view_type": "UIView",
+                        "height":{
+                            "type":"absolutely",
+                            "value":"8"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"375"
+                        },
+                        "default_visible": "YES"
+                    },
+                    {
                         
                         "view_type": "ProteusCollectionView",
                         "view_id": "id_proteus_collection_view",
-                        "margin_left": "0",
+                        "margin_left": "10",
                         "below_of_view": "id_top_container",
                         "margin_top": "-4",
                         "height": {
@@ -117,7 +130,8 @@
                             "value": "178"
                         },
                         "width": {
-                            "type": "match_parent"
+                            "type": "relative",
+                            "value": "365"
                         },
                         "attributes": {
                             "setCellArray:":"$video_datas",
@@ -126,14 +140,14 @@
                             "setScrollBounceString:":"1",
                             "setEdgeDragString:":"1",
                             "setScrollJumpUrl:":"cmd_subscribed_topic_card_cell_Drag",
-                            "setScrollInsetLeft:right:top:bottom:":["3","0","8","0"]
+                            "setScrollInsetLeft:right:top:bottom:":["3","0","0","0"]
                         }
                     },
                     {
                         "view_type": "UIView",
                         "view_id": "id_bottom_container",
                         "layout_type": "layout_relative",
-                        "margin_left": "6",
+                        "margin_left": "16",
                         "align_parent_bottom": "YES",
                         "default_visible":"YES",
                         "event_type": "cmd_subscribed_topic_click_source",
@@ -229,22 +243,6 @@
                         }
                     }
                 ]
-            },
-            {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "margin_left":"6",
-                "height":{
-                    "type":"absolutely","value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
-                },
-                "attributes":{
-                    "setFrameString:":"-1",
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
             }
         ]
     }

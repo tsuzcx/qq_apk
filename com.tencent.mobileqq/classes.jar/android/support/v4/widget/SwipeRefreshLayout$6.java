@@ -10,16 +10,18 @@ class SwipeRefreshLayout$6
   
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (!SwipeRefreshLayout.access$1100(this.this$0)) {}
-    for (int i = (int)(SwipeRefreshLayout.access$1200(this.this$0) - Math.abs(this.this$0.mOriginalOffsetTop));; i = (int)SwipeRefreshLayout.access$1200(this.this$0))
-    {
-      int j = this.this$0.mFrom;
-      i = (int)((i - this.this$0.mFrom) * paramFloat);
-      int k = SwipeRefreshLayout.access$400(this.this$0).getTop();
-      SwipeRefreshLayout.access$900(this.this$0, i + j - k, false);
-      SwipeRefreshLayout.access$100(this.this$0).setArrowScale(1.0F - paramFloat);
-      return;
+    float f;
+    if (!SwipeRefreshLayout.access$1100(this.this$0)) {
+      f = SwipeRefreshLayout.access$1200(this.this$0) - Math.abs(this.this$0.mOriginalOffsetTop);
+    } else {
+      f = SwipeRefreshLayout.access$1200(this.this$0);
     }
+    int j = (int)f;
+    int i = this.this$0.mFrom;
+    j = (int)((j - this.this$0.mFrom) * paramFloat);
+    int k = SwipeRefreshLayout.access$400(this.this$0).getTop();
+    SwipeRefreshLayout.access$900(this.this$0, i + j - k, false);
+    SwipeRefreshLayout.access$100(this.this$0).setArrowScale(1.0F - paramFloat);
   }
 }
 

@@ -15,24 +15,24 @@ public class MatrixCursor$RowBuilder
   
   public RowBuilder add(Object paramObject)
   {
-    AppMethodBeat.i(12174);
+    AppMethodBeat.i(2855);
     if (this.index == this.endIndex)
     {
       paramObject = new CursorIndexOutOfBoundsException("No more columns left.");
-      AppMethodBeat.o(12174);
+      AppMethodBeat.o(2855);
       throw paramObject;
     }
     Object[] arrayOfObject = MatrixCursor.access$000(this.this$0);
     int i = this.index;
     this.index = (i + 1);
     arrayOfObject[i] = paramObject;
-    AppMethodBeat.o(12174);
+    AppMethodBeat.o(2855);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.wcdb.MatrixCursor.RowBuilder
  * JD-Core Version:    0.7.0.1
  */

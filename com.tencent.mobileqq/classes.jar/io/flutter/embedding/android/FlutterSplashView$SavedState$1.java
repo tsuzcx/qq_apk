@@ -3,8 +3,8 @@ package io.flutter.embedding.android;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
-final class FlutterSplashView$SavedState$1
-  implements Parcelable.Creator
+class FlutterSplashView$SavedState$1
+  implements Parcelable.Creator<FlutterSplashView.SavedState>
 {
   public FlutterSplashView.SavedState createFromParcel(Parcel paramParcel)
   {
@@ -18,7 +18,7 @@ final class FlutterSplashView$SavedState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView.SavedState.1
  * JD-Core Version:    0.7.0.1
  */

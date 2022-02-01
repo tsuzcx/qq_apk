@@ -17,7 +17,7 @@ public class IssueReportBehaviour
   
   public void onPublish(List<SQLiteLintIssue> paramList)
   {
-    AppMethodBeat.i(94094);
+    AppMethodBeat.i(52938);
     if (this.mReportDelegate != null)
     {
       int i = 0;
@@ -27,7 +27,7 @@ public class IssueReportBehaviour
         i += 1;
       }
     }
-    AppMethodBeat.o(94094);
+    AppMethodBeat.o(52938);
   }
   
   public static abstract interface IReportDelegate
@@ -37,7 +37,7 @@ public class IssueReportBehaviour
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.report.IssueReportBehaviour
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,66 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bfkp;
-import bflg;
-import bflp;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.appstore.db.DownloadInfoDB;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 
-public final class AppCenterReporter$3
+final class AppCenterReporter$3
   implements Runnable
 {
-  public AppCenterReporter$3(DownloadInfo paramDownloadInfo, int paramInt, String paramString) {}
+  AppCenterReporter$3(DownloadInfo paramDownloadInfo, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo == null) {}
-    boolean bool;
-    do
-    {
+    if (this.a == null) {
       return;
-      Object localObject = bfkp.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-      if (localObject != null)
-      {
-        bflp.b("AppCenterReporter", ">reportDownloadError " + ((DownloadInfo)localObject).w + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w = ((DownloadInfo)localObject).w;
-      }
-      localObject = BaseApplicationImpl.getApplication().getQQProcessName();
-      bool = TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
-      bflp.b("AppCenterReporter", ">reportDownloadError " + bool + "|" + (String)localObject + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w + "|");
-    } while (!bool);
-    bflp.b("AppCenterReporter", "[reportDownloadError] errorCode=" + this.jdField_a_of_type_Int + ",errorMsg=" + this.jdField_a_of_type_JavaLangString);
-    bflg.a(3006, bflg.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + bflg.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = DownloadInfoDB.a().b(this.a.b);
+    if (localObject != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">reportDownloadError ");
+      localStringBuilder.append(((DownloadInfo)localObject).R);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.a.R);
+      LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+      this.a.R = ((DownloadInfo)localObject).R;
+    }
+    localObject = BaseApplicationImpl.getApplication().getQQProcessName();
+    boolean bool = TextUtils.equals((CharSequence)localObject, this.a.R);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">reportDownloadError ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("|");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.a.R);
+    localStringBuilder.append("|");
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+    if (!bool) {
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[reportDownloadError] errorCode=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(",errorMsg=");
+    ((StringBuilder)localObject).append(this.c);
+    LogUtility.b("AppCenterReporter", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppCenterReporter.h(this.a));
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(AppCenterReporter.i(this.a));
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(this.c);
+    AppCenterReporter.a(3006, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.3
  * JD-Core Version:    0.7.0.1
  */

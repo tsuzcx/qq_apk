@@ -3,163 +3,222 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 import android.os.Looper;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.n.i;
-import com.tencent.mm.plugin.n.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.u.d;
+import com.tencent.mm.plugin.u.j;
+import com.tencent.mm.plugin.u.k;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   implements a
 {
-  boolean Pz;
-  boolean fqY;
+  j LaQ;
+  int LaR;
+  int LaS;
+  private int LaT;
+  a.a LaU;
+  a.d LaV;
+  a.b LaW;
+  a.c LaX;
+  boolean hS;
   boolean isStart;
-  i oMS;
-  int oMT;
-  int oMU;
-  private int oMV;
-  a.a oMW;
-  a.d oMX;
-  a.b oMY;
-  a.c oMZ;
+  boolean loop;
   
   public b()
   {
-    AppMethodBeat.i(3713);
-    this.fqY = false;
+    AppMethodBeat.i(107715);
+    this.loop = false;
     this.isStart = false;
-    this.Pz = false;
-    this.oMU = 0;
-    this.oMV = 0;
-    this.oMS = new i(Looper.getMainLooper());
-    Object localObject = this.oMS;
-    if (((i)localObject).oFd != null)
+    this.hS = false;
+    this.LaS = 0;
+    this.LaT = 0;
+    this.LaQ = new j(Looper.getMainLooper());
+    Object localObject = this.LaQ;
+    if (((j)localObject).KTe != null)
     {
-      localObject = ((i)localObject).oFd;
-      if (((j)localObject).oEN != null) {
-        ((j)localObject).oEN.oEJ = false;
+      localObject = ((j)localObject).KTe;
+      if (((k)localObject).KSM != null) {
+        ((k)localObject).KSM.KSH = false;
       }
     }
-    this.oMS.setNeedResetExtractor(false);
-    this.oMS.oFe = new b.1(this);
-    AppMethodBeat.o(3713);
+    this.LaQ.setNeedResetExtractor(false);
+    this.LaQ.KTf = new d()
+    {
+      public final void Qz()
+      {
+        AppMethodBeat.i(107710);
+        if (b.this.LaW != null) {
+          b.this.LaW.fX(b.this.LaQ);
+        }
+        if (b.this.isStart) {
+          b.this.LaQ.start();
+        }
+        b.this.hS = true;
+        AppMethodBeat.o(107710);
+      }
+      
+      public final void as(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(107714);
+        b.this.LaR = paramAnonymousInt3;
+        if (b.this.LaV != null) {
+          b.this.LaV.aS(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
+        }
+        AppMethodBeat.o(107714);
+      }
+      
+      public final void dEH()
+      {
+        AppMethodBeat.i(107713);
+        Log.i("MicroMsg.MMSegmentVideoPlayer", "onSeekComplete, onSeekCompleteListener: %s", new Object[] { b.this.LaX });
+        if (b.this.LaX != null)
+        {
+          b.this.LaX.fY(b.this.LaQ);
+          AppMethodBeat.o(107713);
+          return;
+        }
+        if (b.this.isStart) {
+          b.this.LaQ.start();
+        }
+        AppMethodBeat.o(107713);
+      }
+      
+      public final void onCompletion()
+      {
+        AppMethodBeat.i(107711);
+        if (b.this.loop) {
+          b.this.LaQ.aaS(b.this.LaS);
+        }
+        AppMethodBeat.o(107711);
+      }
+      
+      public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(107712);
+        if (b.this.LaU != null) {
+          b.this.LaU.jL(paramAnonymousInt1, paramAnonymousInt2);
+        }
+        AppMethodBeat.o(107712);
+      }
+    };
+    AppMethodBeat.o(107715);
   }
   
   public final void a(a.a parama)
   {
-    this.oMW = parama;
+    this.LaU = parama;
   }
   
   public final void a(a.b paramb)
   {
-    this.oMY = paramb;
+    this.LaW = paramb;
   }
   
   public final void a(a.c paramc)
   {
-    this.oMZ = paramc;
+    this.LaX = paramc;
   }
   
   public final void a(a.d paramd)
   {
-    this.oMX = paramd;
+    this.LaV = paramd;
   }
   
   public final int getCurrentPosition()
   {
-    AppMethodBeat.i(3722);
-    int i = this.oMS.bQz();
-    AppMethodBeat.o(3722);
+    AppMethodBeat.i(107724);
+    int i = this.LaQ.gbM();
+    AppMethodBeat.o(107724);
     return i;
   }
   
   public final int getDuration()
   {
-    return (int)this.oMS.oFd.aNP;
+    return (int)this.LaQ.KTe.durationMs;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(3720);
-    boolean bool = this.oMS.isPlaying();
-    AppMethodBeat.o(3720);
+    AppMethodBeat.i(107722);
+    boolean bool = this.LaQ.isPlaying();
+    AppMethodBeat.o(107722);
     return bool;
+  }
+  
+  public final void jM(int paramInt1, int paramInt2)
+  {
+    this.LaS = paramInt1;
+    this.LaT = paramInt2;
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(3719);
-    this.oMS.pause();
-    AppMethodBeat.o(3719);
+    AppMethodBeat.i(107721);
+    this.LaQ.pause();
+    AppMethodBeat.o(107721);
   }
   
   public final void prepareAsync()
   {
-    AppMethodBeat.i(3716);
-    this.oMS.prepare();
-    AppMethodBeat.o(3716);
+    AppMethodBeat.i(107718);
+    this.LaQ.prepare();
+    AppMethodBeat.o(107718);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(3723);
-    this.oMS.release();
-    AppMethodBeat.o(3723);
+    AppMethodBeat.i(107725);
+    this.LaQ.release();
+    AppMethodBeat.o(107725);
   }
   
   public final void seekTo(int paramInt)
   {
-    AppMethodBeat.i(3721);
-    if (this.oMS != null)
+    AppMethodBeat.i(107723);
+    if (this.LaQ != null)
     {
-      ab.i("MicroMsg.MMSegmentVideoPlayer", "seekTo: %s", new Object[] { Integer.valueOf(paramInt) });
-      this.oMS.zi(paramInt);
+      Log.i("MicroMsg.MMSegmentVideoPlayer", "seekTo: %s", new Object[] { Integer.valueOf(paramInt) });
+      this.LaQ.aaS(paramInt);
     }
-    AppMethodBeat.o(3721);
+    AppMethodBeat.o(107723);
   }
   
   public final void setAudioStreamType(int paramInt) {}
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(3715);
-    this.oMS.setPath(paramString);
-    AppMethodBeat.o(3715);
-  }
-  
-  public final void setLoop(int paramInt1, int paramInt2)
-  {
-    this.oMU = paramInt1;
-    this.oMV = paramInt2;
+    AppMethodBeat.i(107717);
+    this.LaQ.setPath(paramString);
+    AppMethodBeat.o(107717);
   }
   
   public final void setLooping(boolean paramBoolean)
   {
-    this.fqY = paramBoolean;
+    this.loop = paramBoolean;
   }
   
   public final void setSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(3714);
-    this.oMS.setSurface(paramSurface);
-    AppMethodBeat.o(3714);
+    AppMethodBeat.i(107716);
+    this.LaQ.setSurface(paramSurface);
+    AppMethodBeat.o(107716);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(3717);
-    if (this.Pz) {
-      this.oMS.start();
+    AppMethodBeat.i(107719);
+    if (this.hS) {
+      this.LaQ.start();
     }
     this.isStart = true;
-    AppMethodBeat.o(3717);
+    AppMethodBeat.o(107719);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(3718);
-    this.oMS.oFd.stop();
+    AppMethodBeat.i(107720);
+    this.LaQ.stop();
     this.isStart = false;
-    AppMethodBeat.o(3718);
+    AppMethodBeat.o(107720);
   }
 }
 

@@ -19,8 +19,12 @@ class RecyclerView$5
     RecyclerView.ViewHolder localViewHolder = RecyclerView.getChildViewHolderInt(paramView);
     if (localViewHolder != null)
     {
-      if ((!localViewHolder.isTmpDetached()) && (!localViewHolder.shouldIgnore())) {
-        throw new IllegalArgumentException("Called attach on a child which is not detached: " + localViewHolder);
+      if ((!localViewHolder.isTmpDetached()) && (!localViewHolder.shouldIgnore()))
+      {
+        paramView = new StringBuilder();
+        paramView.append("Called attach on a child which is not detached: ");
+        paramView.append(localViewHolder);
+        throw new IllegalArgumentException(paramView.toString());
       }
       localViewHolder.clearTmpDetachFlag();
     }
@@ -35,8 +39,12 @@ class RecyclerView$5
       localObject = RecyclerView.getChildViewHolderInt((View)localObject);
       if (localObject != null)
       {
-        if ((((RecyclerView.ViewHolder)localObject).isTmpDetached()) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore())) {
-          throw new IllegalArgumentException("called detach on an already detached child " + localObject);
+        if ((((RecyclerView.ViewHolder)localObject).isTmpDetached()) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("called detach on an already detached child ");
+          localStringBuilder.append(localObject);
+          throw new IllegalArgumentException(localStringBuilder.toString());
         }
         ((RecyclerView.ViewHolder)localObject).addFlags(256);
       }

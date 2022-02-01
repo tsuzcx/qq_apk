@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/r9" />
-    <PreferenceSmallCategory android:key="contact_info_facebookapp_cat" />
-    <Preference android:title="@string/axq" android:key="contact_info_facebookapp_listfriend" android:layout="@layout/afi" />
-    <Preference android:title="@string/axp" android:key="contact_info_facebookapp_connect" android:layout="@layout/afi" />
-    <Preference android:title="@string/cci" android:key="contact_info_facebookapp_addr" android:layout="@layout/afi" />
-    <PreferenceSmallCategory android:key="contact_info_facebookapp_cat2" />
-    <Preference android:title="@string/eda" android:key="contact_info_facebookapp_install" android:layout="@layout/a95" />
-    <Preference android:title="@string/edg" android:key="contact_info_facebookapp_uninstall" android:layout="@layout/aap" />
+    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/xa" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_view_message" android:layout="@layout/bdi" android:title="@string/bt5" />
+    <CheckBoxPreference android:key="contact_info_recommend_qqfriends_to_me" android:title="@string/bq1" />
+    <CheckBoxPreference android:key="contact_info_recommend_mobilefriends_to_me" android:title="@string/bq0" />
+    <CheckBoxPreference android:key="contact_info_recommend_fbfriends_to_me" android:title="@string/bpz" />
+    <Preference android:key="contact_info_bind_mobile_entry" android:layout="@layout/bdi" android:title="@string/iqy" />
+    <Preference android:key="contact_info_bind_mobile_entry_tip" android:layout="@layout/bf0" android:title="@string/bjt" />
+    <Preference android:key="contact_info_bind_qq_entry" android:layout="@layout/bdi" android:title="@string/alx" />
+    <Preference android:key="contact_info_bind_qq_entry_tip" android:layout="@layout/bf0" android:title="@string/bju" />
+    <Preference android:key="contact_info_bind_fb_entry" android:layout="@layout/bdi" android:title="@string/fhc" />
+    <Preference android:key="contact_info_bind_fb_entry_tip" android:layout="@layout/bf0" android:title="@string/bjs" />
+    <Preference android:key="contact_info_fmessage_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
     <PreferenceCategory />
 </PreferenceScreen>

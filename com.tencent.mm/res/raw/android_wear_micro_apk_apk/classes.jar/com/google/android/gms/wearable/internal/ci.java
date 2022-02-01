@@ -10,7 +10,7 @@ abstract class ci<R extends w>
 {
   public ci(p paramp)
   {
-    super(z.Qw, paramp);
+    super(z.Sl, paramp);
   }
 }
 

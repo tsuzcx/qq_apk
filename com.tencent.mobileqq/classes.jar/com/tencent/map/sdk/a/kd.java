@@ -26,17 +26,28 @@ public final class kd
     if (paramGeoPoint == null) {
       return null;
     }
-    double d2 = 0.0D;
-    double d1 = 0.0D;
-    int i = paramkc.d >> 1;
-    double d4 = paramkc.e;
+    int i = paramkc.d;
+    double d2 = paramkc.e;
     double d3 = paramkc.f;
+    double d1 = 0.0D;
     if (paramGeoPoint != null)
     {
-      d1 = Math.min(Math.max(Math.sin(paramGeoPoint.getLatitudeE6() / 1000000.0D * 0.0174532925199433D), -0.9999D), 0.9999D);
-      d2 = i + d4 * (paramGeoPoint.getLongitudeE6() / 1000000.0D);
-      d4 = i;
-      d1 = Math.log((1.0D + d1) / (1.0D - d1)) * d3 * 0.5D + d4;
+      d1 = paramGeoPoint.getLatitudeE6();
+      Double.isNaN(d1);
+      double d4 = Math.min(Math.max(Math.sin(d1 / 1000000.0D * 0.0174532925199433D), -0.9999D), 0.9999D);
+      d1 = i >> 1;
+      double d5 = paramGeoPoint.getLongitudeE6();
+      Double.isNaN(d5);
+      d5 /= 1000000.0D;
+      Double.isNaN(d1);
+      d2 = d5 * d2 + d1;
+      d4 = Math.log((d4 + 1.0D) / (1.0D - d4));
+      Double.isNaN(d1);
+      d1 += d4 * d3 * 0.5D;
+    }
+    else
+    {
+      d2 = 0.0D;
     }
     return new DoublePoint(d2, d1);
   }
@@ -46,15 +57,25 @@ public final class kd
     if (paramGeoPoint == null) {
       return null;
     }
-    double d = paramGeoPoint.getLatitudeE6() / 1000000.0D;
-    return new fw(paramGeoPoint.getLongitudeE6() / 1000000.0D * 20037508.34D / 180.0D, Math.log(Math.tan((d + 90.0D) * 3.141592653589793D / 360.0D)) / 0.0174532925199433D * 20037508.34D / 180.0D);
+    double d1 = paramGeoPoint.getLatitudeE6();
+    Double.isNaN(d1);
+    d1 /= 1000000.0D;
+    double d2 = paramGeoPoint.getLongitudeE6();
+    Double.isNaN(d2);
+    return new fw(d2 / 1000000.0D * 20037508.34D / 180.0D, Math.log(Math.tan((d1 + 90.0D) * 3.141592653589793D / 360.0D)) / 0.0174532925199433D * 20037508.34D / 180.0D);
   }
   
   public final double a(double paramDouble)
   {
     float f = this.a.b.f;
-    double d = this.a.b.a();
-    return 40076000.0D / (Math.pow(2.0D, (float)(f + Math.log(d) / Math.log(2.0D))) * 256.0D * fz.v) * Math.cos(3.141592653589793D * paramDouble / 180.0D);
+    double d2 = this.a.b.a();
+    double d1 = f;
+    d2 = Math.log(d2) / Math.log(2.0D);
+    Double.isNaN(d1);
+    d1 = Math.pow(2.0D, (float)(d1 + d2));
+    d2 = fz.v;
+    Double.isNaN(d2);
+    return 40076000.0D / (d1 * 256.0D * d2) * Math.cos(paramDouble * 3.141592653589793D / 180.0D);
   }
   
   public final double a(Point paramPoint1, Point paramPoint2)
@@ -62,7 +83,18 @@ public final class kd
     GeoPoint localGeoPoint1 = a(new DoublePoint(paramPoint1.x, paramPoint1.y));
     GeoPoint localGeoPoint2 = a(new DoublePoint(paramPoint2.x, paramPoint2.y));
     float[] arrayOfFloat = new float[1];
-    Location.distanceBetween(localGeoPoint1.getLatitudeE6() / 1000000.0D, localGeoPoint1.getLongitudeE6() / 1000000.0D, localGeoPoint2.getLatitudeE6() / 1000000.0D, localGeoPoint2.getLongitudeE6() / 1000000.0D, arrayOfFloat);
+    double d1 = localGeoPoint1.getLatitudeE6();
+    Double.isNaN(d1);
+    d1 /= 1000000.0D;
+    double d2 = localGeoPoint1.getLongitudeE6();
+    Double.isNaN(d2);
+    d2 /= 1000000.0D;
+    double d3 = localGeoPoint2.getLatitudeE6();
+    Double.isNaN(d3);
+    d3 /= 1000000.0D;
+    double d4 = localGeoPoint2.getLongitudeE6();
+    Double.isNaN(d4);
+    Location.distanceBetween(d1, d2, d3, d4 / 1000000.0D, arrayOfFloat);
     int i = (int)Math.sqrt(Math.pow(paramPoint1.x - paramPoint2.x, 2.0D) + Math.pow(paramPoint1.y - paramPoint2.y, 2.0D));
     return arrayOfFloat[0] / i;
   }
@@ -72,25 +104,30 @@ public final class kd
     if (paramGeoPoint == null) {
       return null;
     }
-    double d1 = paramGeoPoint.getLatitudeE6() / 1000000.0D;
-    double d2 = paramGeoPoint.getLongitudeE6() / 1000000.0D;
+    double d1 = paramGeoPoint.getLatitudeE6();
+    Double.isNaN(d1);
+    d1 /= 1000000.0D;
+    double d2 = paramGeoPoint.getLongitudeE6();
+    Double.isNaN(d2);
+    d2 /= 1000000.0D;
     paramGeoPoint = this.b.a(d1, d2);
     float f4 = paramGeoPoint.x;
     float f3 = paramGeoPoint.y;
-    float f2 = f3;
-    float f1 = f4;
-    if (this.c != null)
+    paramGeoPoint = this.c;
+    float f2 = f4;
+    float f1 = f3;
+    if (paramGeoPoint != null)
     {
-      paramGeoPoint = this.c.A;
-      f2 = f3;
-      f1 = f4;
+      paramGeoPoint = paramGeoPoint.A;
+      f2 = f4;
+      f1 = f3;
       if (paramGeoPoint != null)
       {
-        f1 = f4 + paramGeoPoint.left;
-        f2 = f3 + paramGeoPoint.top;
+        f2 = f4 + paramGeoPoint.left;
+        f1 = f3 + paramGeoPoint.top;
       }
     }
-    return new DoublePoint(f1, f2);
+    return new DoublePoint(f2, f1);
   }
   
   public final GeoPoint a(DoublePoint paramDoublePoint)
@@ -100,25 +137,26 @@ public final class kd
     }
     float f4 = (float)paramDoublePoint.x;
     float f3 = (float)paramDoublePoint.y;
-    float f2 = f3;
-    float f1 = f4;
-    if (this.c != null)
+    paramDoublePoint = this.c;
+    float f2 = f4;
+    float f1 = f3;
+    if (paramDoublePoint != null)
     {
-      paramDoublePoint = this.c.A;
-      f2 = f3;
-      f1 = f4;
+      paramDoublePoint = paramDoublePoint.A;
+      f2 = f4;
+      f1 = f3;
       if (paramDoublePoint != null)
       {
-        f1 = f4 - paramDoublePoint.left;
-        f2 = f3 - paramDoublePoint.top;
+        f2 = f4 - paramDoublePoint.left;
+        f1 = f3 - paramDoublePoint.top;
       }
     }
-    return this.b.a(f1, f2);
+    return this.b.a(f2, f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.kd
  * JD-Core Version:    0.7.0.1
  */

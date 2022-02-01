@@ -1,18 +1,22 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.util.PhoneNumQuickLoginManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class LoginView$21
-  implements Runnable
+  implements View.OnClickListener
 {
-  LoginView$21(LoginView paramLoginView, String paramString) {}
+  LoginView$21(LoginView paramLoginView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.this$0.a(this.a, true);
-    if (this.this$0.a != null) {
-      this.this$0.a.runOnUiThread(new LoginView.21.1(this, localObject));
-    }
+    this.a.b.showDialog(4);
+    PhoneNumQuickLoginManager.a(this.a.b, this.a.a, LoginView.B(this.a), this.a.K);
+    PhoneNumQuickLoginManager.b("0X800B8CD");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

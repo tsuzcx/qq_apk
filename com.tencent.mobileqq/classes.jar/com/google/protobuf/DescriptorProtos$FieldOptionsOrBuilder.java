@@ -1,0 +1,11 @@
+package com.google.protobuf;
+
+public abstract interface DescriptorProtos$FieldOptionsOrBuilder
+  extends GeneratedMessageV3.ExtendableMessageOrBuilder<DescriptorProtos.FieldOptions>
+{}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.google.protobuf.DescriptorProtos.FieldOptionsOrBuilder
+ * JD-Core Version:    0.7.0.1
+ */

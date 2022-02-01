@@ -4,17 +4,18 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cluster_identify_face_rsp
   extends JceStruct
 {
-  static int cache_mode = 0;
+  static int cache_mode;
   static ArrayList<cluster_search_result> cache_results = new ArrayList();
-  public boolean has_identify;
+  public boolean has_identify = false;
   public int mode = 1;
   public String msg = "";
-  public ArrayList<cluster_search_result> results;
-  public int ret;
+  public ArrayList<cluster_search_result> results = null;
+  public int ret = 0;
   public String url = "";
   
   static
@@ -48,22 +49,25 @@ public final class cluster_identify_face_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.has_identify, 2);
     paramJceOutputStream.write(this.mode, 3);
-    if (this.results != null) {
-      paramJceOutputStream.write(this.results, 4);
+    localObject = this.results;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 5);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.cluster_identify_face_rsp
  * JD-Core Version:    0.7.0.1
  */

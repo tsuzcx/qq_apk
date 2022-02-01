@@ -4,15 +4,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetQzoneMusicInfoReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
   static ArrayList<String> cache_vSongIdList = new ArrayList();
-  public long iUin;
-  public SourceInfo stSource;
-  public ArrayList<String> vSongIdList;
+  public long iUin = 0L;
+  public SourceInfo stSource = null;
+  public ArrayList<String> vSongIdList = null;
   
   static
   {
@@ -38,17 +39,19 @@ public final class GetQzoneMusicInfoReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUin, 0);
-    if (this.vSongIdList != null) {
-      paramJceOutputStream.write(this.vSongIdList, 1);
+    Object localObject = this.vSongIdList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 2);
+    localObject = this.stSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GetQzoneMusicInfoReq
  * JD-Core Version:    0.7.0.1
  */

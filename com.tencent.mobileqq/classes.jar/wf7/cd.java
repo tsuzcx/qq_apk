@@ -13,9 +13,10 @@ public class cd
   public cd(int paramInt, ArrayList<String> paramArrayList)
   {
     this.gT = paramArrayList;
-    if (this.gT != null)
+    paramArrayList = this.gT;
+    if (paramArrayList != null)
     {
-      this.gU = this.gT.size();
+      this.gU = paramArrayList.size();
       this.gW = true;
     }
     this.gV = paramInt;
@@ -23,12 +24,22 @@ public class cd
   
   private void a(String paramString, int paramInt, Exception paramException)
   {
-    bz.av().A().z().a(new Thread(), paramException, "cmd:" + this.gV + " func:" + paramString + " pos:" + paramInt, null);
+    ar localar = bz.av().A().z();
+    Thread localThread = new Thread();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cmd:");
+    localStringBuilder.append(this.gV);
+    localStringBuilder.append(" func:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" pos:");
+    localStringBuilder.append(paramInt);
+    localar.a(localThread, paramException, localStringBuilder.toString(), null);
   }
   
   private String getValue(int paramInt)
   {
-    if ((this.gU > 0) && (this.gU - 1 >= paramInt)) {
+    int i = this.gU;
+    if ((i > 0) && (i - 1 >= paramInt)) {
       return (String)this.gT.get(paramInt);
     }
     return null;
@@ -42,12 +53,9 @@ public class cd
       {
         String str = getValue(paramInt);
         if (!TextUtils.isEmpty(str)) {
-          return str.split(paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1))
-        {
+          paramString1 = str.split(paramString2);
+        } else if (!TextUtils.isEmpty(paramString1)) {
           paramString1 = paramString1.split(paramString2);
-          return paramString1;
         }
       }
     }
@@ -56,6 +64,7 @@ public class cd
       a("readArray", paramInt, paramString1);
     }
     return null;
+    return paramString1;
   }
   
   public boolean aJ()
@@ -66,16 +75,16 @@ public class cd
   public boolean b(int paramInt, boolean paramBoolean)
   {
     String str = getValue(paramInt);
-    boolean bool = paramBoolean;
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      bool = cb.G(Integer.valueOf(str).intValue());
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      a("readBool", paramInt, localException);
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        boolean bool = cb.G(Integer.valueOf(str).intValue());
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        a("readBool", paramInt, localException);
+      }
     }
     return paramBoolean;
   }
@@ -83,23 +92,23 @@ public class cd
   public int e(int paramInt1, int paramInt2)
   {
     String str = getValue(paramInt1);
-    int i = paramInt2;
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      i = Integer.valueOf(str).intValue();
-      return i;
-    }
-    catch (Exception localException)
-    {
-      a("readInt", paramInt1, localException);
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        int i = Integer.valueOf(str).intValue();
+        return i;
+      }
+      catch (Exception localException)
+      {
+        a("readInt", paramInt1, localException);
+      }
     }
     return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cd
  * JD-Core Version:    0.7.0.1
  */

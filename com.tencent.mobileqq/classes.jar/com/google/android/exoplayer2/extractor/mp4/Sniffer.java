@@ -17,17 +17,13 @@ final class Sniffer
     int[] arrayOfInt = COMPATIBLE_BRANDS;
     int j = arrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label42;
-      }
       if (arrayOfInt[i] == paramInt) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label42:
     return false;
   }
   
@@ -51,106 +47,111 @@ final class Sniffer
     }
     int n = (int)l1;
     ParsableByteArray localParsableByteArray = new ParsableByteArray(64);
-    int i = 0;
-    boolean bool2 = false;
+    boolean bool3 = false;
     int j = 0;
-    for (;;)
+    int i = 0;
+    while (j < n)
     {
-      boolean bool1 = bool2;
-      int m;
-      int i2;
-      int k;
-      if (j < n)
+      localParsableByteArray.reset(8);
+      paramExtractorInput.peekFully(localParsableByteArray.data, 0, 8);
+      l2 = localParsableByteArray.readUnsignedInt();
+      int i1 = localParsableByteArray.readInt();
+      int k = 16;
+      if (l2 == 1L)
       {
-        m = 8;
-        localParsableByteArray.reset(8);
-        paramExtractorInput.peekFully(localParsableByteArray.data, 0, 8);
-        l2 = localParsableByteArray.readUnsignedInt();
-        i2 = localParsableByteArray.readInt();
-        if (l2 == 1L)
-        {
-          k = 16;
-          paramExtractorInput.peekFully(localParsableByteArray.data, 8, 8);
-          localParsableByteArray.setLimit(16);
-          l1 = localParsableByteArray.readUnsignedLongToLong();
-        }
-        while (l1 < k)
-        {
-          return false;
-          l1 = l2;
-          k = m;
-          if (l2 == 0L)
-          {
-            long l3 = paramExtractorInput.getLength();
-            l1 = l2;
-            k = m;
-            if (l3 != -1L)
-            {
-              l1 = l3 - paramExtractorInput.getPosition() + 8;
-              k = m;
-            }
-          }
-        }
-        m = j + k;
-        j = m;
-        if (i2 == Atom.TYPE_moov) {
-          continue;
-        }
-        if ((i2 != Atom.TYPE_moof) && (i2 != Atom.TYPE_mvex)) {
-          break label268;
-        }
-        bool1 = true;
-      }
-      label268:
-      do
-      {
-        if ((i == 0) || (paramBoolean != bool1)) {
-          break;
-        }
-        return true;
-        bool1 = bool2;
-      } while (m + l1 - k >= n);
-      int i1 = (int)(l1 - k);
-      if (i2 == Atom.TYPE_ftyp)
-      {
-        if (i1 < 8) {
-          return false;
-        }
-        localParsableByteArray.reset(i1);
-        paramExtractorInput.peekFully(localParsableByteArray.data, 0, i1);
-        i2 = i1 / 4;
-        k = 0;
-        j = i;
-        if (k < i2)
-        {
-          if (k == 1) {
-            localParsableByteArray.skipBytes(4);
-          }
-          while (!isCompatibleBrand(localParsableByteArray.readInt()))
-          {
-            k += 1;
-            break;
-          }
-          j = 1;
-        }
-        k = j;
-        if (j == 0) {
-          return false;
-        }
+        paramExtractorInput.peekFully(localParsableByteArray.data, 8, 8);
+        localParsableByteArray.setLimit(16);
+        l1 = localParsableByteArray.readUnsignedLongToLong();
       }
       else
       {
-        k = i;
-        if (i1 != 0)
+        l1 = l2;
+        if (l2 == 0L)
         {
-          paramExtractorInput.advancePeekPosition(i1);
-          k = i;
+          long l3 = paramExtractorInput.getLength();
+          l1 = l2;
+          if (l3 != -1L)
+          {
+            l1 = paramExtractorInput.getPosition();
+            l1 = 8 + (l3 - l1);
+          }
+        }
+        k = 8;
+      }
+      l2 = k;
+      if (l1 < l2) {
+        return false;
+      }
+      j += k;
+      if (i1 != Atom.TYPE_moov) {
+        if ((i1 != Atom.TYPE_moof) && (i1 != Atom.TYPE_mvex))
+        {
+          if (j + l1 - l2 < n)
+          {
+            int i2 = (int)(l1 - l2);
+            int m = j + i2;
+            if (i1 == Atom.TYPE_ftyp)
+            {
+              if (i2 < 8) {
+                return false;
+              }
+              localParsableByteArray.reset(i2);
+              paramExtractorInput.peekFully(localParsableByteArray.data, 0, i2);
+              i1 = i2 / 4;
+              k = 0;
+              for (;;)
+              {
+                j = i;
+                if (k >= i1) {
+                  break;
+                }
+                if (k == 1)
+                {
+                  localParsableByteArray.skipBytes(4);
+                }
+                else if (isCompatibleBrand(localParsableByteArray.readInt()))
+                {
+                  j = 1;
+                  break;
+                }
+                k += 1;
+              }
+              k = j;
+              if (j == 0) {
+                return false;
+              }
+            }
+            else
+            {
+              k = i;
+              if (i2 != 0)
+              {
+                paramExtractorInput.advancePeekPosition(i2);
+                k = i;
+              }
+            }
+            j = m;
+            i = k;
+          }
+        }
+        else
+        {
+          bool1 = true;
+          break label421;
         }
       }
-      j = m + i1;
-      i = k;
     }
-    return false;
+    boolean bool1 = false;
+    label421:
+    boolean bool2 = bool3;
+    if (i != 0)
+    {
+      bool2 = bool3;
+      if (paramBoolean == bool1) {
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
   
   public static boolean sniffUnfragmented(ExtractorInput paramExtractorInput)
@@ -160,7 +161,7 @@ final class Sniffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.Sniffer
  * JD-Core Version:    0.7.0.1
  */

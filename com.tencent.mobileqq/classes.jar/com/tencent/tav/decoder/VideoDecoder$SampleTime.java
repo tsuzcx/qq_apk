@@ -1,30 +1,37 @@
 package com.tencent.tav.decoder;
 
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 
 class VideoDecoder$SampleTime
 {
-  private CMTime cmTime;
+  private CMSampleState sampleState;
   private long timeUs;
   
   private VideoDecoder$SampleTime(VideoDecoder paramVideoDecoder) {}
   
   private void fixCMTime()
   {
-    if (!this.cmTime.smallThan(CMTime.CMTimeZero)) {
+    if (!this.sampleState.getTime().smallThan(CMTime.CMTimeZero)) {
       return;
     }
-    this.cmTime = CMTime.fromUs(VideoDecoder.access$1100(this.this$0));
+    this.sampleState = new CMSampleState(CMTime.fromUs(VideoDecoder.access$1000(this.this$0)));
   }
   
   public String toString()
   {
-    return "SampleTime{cmTime=" + this.cmTime + ", timeUs=" + this.timeUs + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SampleTime{sampleState=");
+    localStringBuilder.append(this.sampleState);
+    localStringBuilder.append(", timeUs=");
+    localStringBuilder.append(this.timeUs);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoder.SampleTime
  * JD-Core Version:    0.7.0.1
  */

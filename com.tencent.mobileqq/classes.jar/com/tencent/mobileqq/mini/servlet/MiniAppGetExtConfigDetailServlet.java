@@ -6,9 +6,9 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExtConfigDetailRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdpd;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,46 +59,47 @@ public class MiniAppGetExtConfigDetailServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Object localObject3 = paramIntent.getByteArrayExtra("key_common_ext");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_common_ext");
     Object localObject2 = paramIntent.getParcelableArrayListExtra("key_ext_config_info");
     int i = paramIntent.getIntExtra("key_index", -1);
-    if (localObject3 != null) {}
-    for (Object localObject1 = new COMM.StCommonExt();; localObject1 = null) {
+    if (arrayOfByte != null)
+    {
+      localObject1 = new COMM.StCommonExt();
       try
       {
-        ((COMM.StCommonExt)localObject1).mergeFrom((byte[])localObject3);
-        localObject3 = new ArrayList();
-        if (localObject2 != null)
-        {
-          localObject2 = ((ArrayList)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            ((List)localObject3).add(((ExtConfigInfo)((Iterator)localObject2).next()).toProto());
-          }
-        }
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          QLog.e("MiniAppGetExtConfigDetailServlet", 1, "onSend. StCommonExt mergeFrom exception!", localThrowable);
-        }
-        localObject2 = new GetExtConfigDetailRequest((COMM.StCommonExt)localObject1, localThrowable).encode(paramIntent, i, getTraceId());
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new byte[4];
-        }
-        paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetExtConfigDetail");
-        paramPacket.putSendData(bdpd.a((byte[])localObject1));
-        paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-        super.onSend(paramIntent, paramPacket);
-        return;
+        QLog.e("MiniAppGetExtConfigDetailServlet", 1, "onSend. StCommonExt mergeFrom exception!", localThrowable);
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (localObject2 != null)
+    {
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        localArrayList.add(((ExtConfigInfo)((Iterator)localObject2).next()).toProto());
+      }
+    }
+    localObject2 = new GetExtConfigDetailRequest((COMM.StCommonExt)localObject1, localArrayList).encode(paramIntent, i, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetExtConfigDetail");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetExtConfigDetailServlet
  * JD-Core Version:    0.7.0.1
  */

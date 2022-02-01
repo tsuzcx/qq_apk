@@ -1,33 +1,28 @@
 package com.tencent.mobileqq.jsp;
 
-import aoyg;
-import aoyh;
-import athh;
-import bahm;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigProcessor;
+import com.tencent.mobileqq.teamwork.TeamWorkHandlerUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DocxApiPlugin$3
+class DocxApiPlugin$3
   implements Runnable
 {
-  public DocxApiPlugin$3(athh paramathh, String paramString1, String paramString2, String paramString3) {}
+  DocxApiPlugin$3(DocxApiPlugin paramDocxApiPlugin, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject = aoyh.a();
-    if ((((aoyg)localObject).a()) && (((aoyg)localObject).b()) && (bahm.a(this.a)))
+    Object localObject = TencentDocPreloadConfigProcessor.a();
+    if ((((TencentDocPreloadConfigBean)localObject).a()) && (((TencentDocPreloadConfigBean)localObject).b()) && (TeamWorkHandlerUtils.c(this.a)))
     {
-      localObject = bahm.b(this.a);
+      localObject = TeamWorkHandlerUtils.b(this.a);
       this.this$0.callJs(this.b, new String[] { localObject });
     }
-    for (;;)
+    else
     {
-      localObject = new ArrayList(1);
-      ((ArrayList)localObject).add(this.c);
-      athh.a(this.this$0, (ArrayList)localObject);
-      return;
       try
       {
         localObject = new JSONObject();
@@ -39,11 +34,14 @@ public class DocxApiPlugin$3
         QLog.e("DocxApiPlugin", 1, "JSONException ", localJSONException);
       }
     }
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(this.c);
+    DocxApiPlugin.a(this.this$0, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.3
  * JD-Core Version:    0.7.0.1
  */

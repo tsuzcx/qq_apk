@@ -5,7 +5,6 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import bjqq;
 
 public abstract class IServiceHandler$Stub
   extends Binder
@@ -28,7 +27,7 @@ public abstract class IServiceHandler$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IServiceHandler))) {
       return (IServiceHandler)localIInterface;
     }
-    return new bjqq(paramIBinder);
+    return new IServiceHandler.Stub.Proxy(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -38,27 +37,28 @@ public abstract class IServiceHandler$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
+      if (paramInt1 != 1598968902) {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
       paramParcel2.writeString("cooperation.qzone.remote.IServiceHandler");
       return true;
     }
     paramParcel1.enforceInterface("cooperation.qzone.remote.IServiceHandler");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      sendMsg(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+    if (paramParcel1.readInt() != 0) {
+      paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);
+    } else {
+      paramParcel1 = null;
     }
+    sendMsg(paramParcel1);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.remote.IServiceHandler.Stub
  * JD-Core Version:    0.7.0.1
  */

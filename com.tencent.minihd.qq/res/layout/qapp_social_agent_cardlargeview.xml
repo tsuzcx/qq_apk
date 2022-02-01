@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/agent_card_large_container" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.open.agent.CardLargeView android:id="@id/agent_game_cover_large" android:background="@drawable/qapp_social_card_default_cover" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/agent_appname_applogo_area_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/agent_app_icon_large" android:layout_width="@dimen/agent_auth_applogo_size" android:layout_height="@dimen/agent_auth_applogo_size" android:src="@drawable/qb_opensdk_app" android:adjustViewBounds="true" />
+            <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/agent_app_name_large" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/agent_auth_appname_topmargin" />
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.AnyScaleTypeImageView android:id="@id/game_cover_imgeview_large" android:layout_width="fill_parent" android:layout_height="fill_parent" android:adjustViewBounds="true" />
+    </com.tencent.open.agent.CardLargeView>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nick_avatar_area_large" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="16.0dip" android:layout_below="@id/agent_game_cover_large">
+        <ImageView android:id="@id/agent_auth_avatar_large" android:background="@drawable/qq_profilecard_avatar_bg" android:layout_width="@dimen/agent_auth_avatar_size" android:layout_height="@dimen/agent_auth_avatar_size" android:layout_marginTop="56.0dip" android:src="@drawable/h001" android:scaleType="fitXY" android:adjustViewBounds="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <TextView android:textSize="20.0sp" android:textColor="@color/black" android:id="@id/agent_auth_qq_nick_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/agent_auth_qq_num_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="18.0sp" android:textColor="#8c000000" android:id="@id/agent_auth_qq_desc_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="你已对该应用授权" />
+    </LinearLayout>
+</RelativeLayout>

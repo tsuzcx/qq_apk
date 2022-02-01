@@ -1,45 +1,46 @@
 package com.tencent.mobileqq.emosm;
 
-import alph;
 import android.text.TextUtils;
-import apmb;
-import apmi;
-import apno;
-import azqs;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.app.CameraEmoRoamingHandler;
 import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.api.ICameraEmoRoamingManagerService;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class CameraRoamingStrategy$3
+class CameraRoamingStrategy$3
   implements Runnable
 {
-  public CameraRoamingStrategy$3(apmb paramapmb, List paramList) {}
+  CameraRoamingStrategy$3(CameraRoamingStrategy paramCameraRoamingStrategy, List paramList) {}
   
   public void run()
   {
     int i = 0;
-    if (i < this.a.size())
+    while (i < this.a.size())
     {
       CameraEmotionData localCameraEmotionData = (CameraEmotionData)this.a.get(i);
       if (!TextUtils.isEmpty(localCameraEmotionData.resid))
       {
         localCameraEmotionData.RomaingType = "needDel";
-        this.this$0.a().b(localCameraEmotionData);
-        azqs.b(this.this$0.a, "dc00898", "", "", "0X800A372", "0X800A372", 0, 0, "", "", localCameraEmotionData.resid, "");
+        this.this$0.n().updateCustomEmotion(localCameraEmotionData);
+        ReportController.b(this.this$0.a, "dc00898", "", "", "0X800A372", "0X800A372", 0, 0, "", "", localCameraEmotionData.resid, "");
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("CameraRoamingStrategy", 2, "delete from local, Roma Type: " + localCameraEmotionData.RomaingType);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delete from local, Roma Type: ");
+          localStringBuilder.append(localCameraEmotionData.RomaingType);
+          QLog.d("CameraRoamingStrategy", 2, localStringBuilder.toString());
         }
-        this.this$0.a().a(localCameraEmotionData);
+        this.this$0.n().deleteCustomEmotion(localCameraEmotionData);
       }
+      i += 1;
     }
-    ((apno)this.this$0.a.getManager(334)).c();
-    ((alph)this.this$0.a.a(160)).a(3, true, 0);
+    ((ICameraEmoRoamingManagerService)this.this$0.a.getRuntimeService(ICameraEmoRoamingManagerService.class)).syncLocalDel();
+    ((CameraEmoRoamingHandler)this.this$0.a.getBusinessHandler(CameraEmoRoamingHandler.a)).a(3, true, 0);
   }
 }
 

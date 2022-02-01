@@ -15,11 +15,13 @@ public abstract interface KSecureEditText
   
   public abstract KeyboardType getKeyboardType();
   
-  public abstract long getTextColor();
+  public abstract int getMaxLength();
   
-  public abstract long getTintColor();
+  public abstract String getText();
   
-  public abstract String gettext();
+  public abstract DynamicColor getTextColor();
+  
+  public abstract DynamicColor getTintColor();
   
   public abstract boolean isCardFromatValid(int paramInt);
   
@@ -35,15 +37,21 @@ public abstract interface KSecureEditText
   
   public abstract void setKeyboardType(KeyboardType paramKeyboardType);
   
+  public abstract void setMaxLength(int paramInt);
+  
   public abstract void setOnTextChangedCallback(KSecureEditTextOnTextChangedCallback paramKSecureEditTextOnTextChangedCallback);
   
-  public abstract void setTextColor(long paramLong);
+  public abstract void setText(String paramString);
   
-  public abstract void setTintColor(long paramLong);
+  public abstract void setTextColor(DynamicColor paramDynamicColor);
+  
+  public abstract void setTextSize(float paramFloat);
+  
+  public abstract void setTintColor(DynamicColor paramDynamicColor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KSecureEditText
  * JD-Core Version:    0.7.0.1
  */

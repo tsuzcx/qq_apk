@@ -74,13 +74,15 @@ public class FabbyStrokeFilter
   public void apply()
   {
     super.apply();
-    GLES20.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void setBgColor(float[] paramArrayOfFloat)
@@ -105,7 +107,9 @@ public class FabbyStrokeFilter
   
   public void setStrokeColor(float[] paramArrayOfFloat)
   {
-    addParam(new UniformParam.Float4fParam("strokeColor", paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]));
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 4)) {
+      addParam(new UniformParam.Float4fParam("strokeColor", paramArrayOfFloat[0], paramArrayOfFloat[1], paramArrayOfFloat[2], paramArrayOfFloat[3]));
+    }
   }
   
   public void setStrokeGapInPixel(float paramFloat)
@@ -150,18 +154,18 @@ public class FabbyStrokeFilter
   
   public void updateTextureParam(PTDetectInfo paramPTDetectInfo)
   {
-    if ((this.item == null) || (paramPTDetectInfo == null))
+    if ((this.item != null) && (paramPTDetectInfo != null))
     {
-      addParam(new UniformParam.IntParam("useBg", 0));
+      addParam(new UniformParam.IntParam("useBg", 1));
+      updateStrokeBitmap(paramPTDetectInfo);
       return;
     }
-    addParam(new UniformParam.IntParam("useBg", 1));
-    updateStrokeBitmap(paramPTDetectInfo);
+    addParam(new UniformParam.IntParam("useBg", 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyStrokeFilter
  * JD-Core Version:    0.7.0.1
  */

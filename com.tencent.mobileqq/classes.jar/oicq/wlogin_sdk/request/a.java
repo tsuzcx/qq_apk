@@ -26,7 +26,11 @@ public class a
       paramString = paramString.a();
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label38:
+      break label38;
+    }
     return null;
   }
   
@@ -70,7 +74,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.a
  * JD-Core Version:    0.7.0.1
  */

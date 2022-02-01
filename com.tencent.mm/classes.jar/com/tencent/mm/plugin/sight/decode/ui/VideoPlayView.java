@@ -7,10 +7,14 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -19,148 +23,192 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.model.d.a;
-import com.tencent.mm.plugin.sight.decode.a.b;
+import com.tencent.mm.plugin.ar.a.e;
+import com.tencent.mm.plugin.ar.a.f;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.pluginsdk.ui.tools.e;
-import com.tencent.mm.pluginsdk.ui.tools.e.a;
-import com.tencent.mm.pluginsdk.ui.tools.e.b;
-import com.tencent.mm.pluginsdk.ui.tools.e.c;
-import com.tencent.mm.pluginsdk.ui.tools.e.d;
-import com.tencent.mm.pluginsdk.ui.tools.e.e;
-import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.tools.i;
+import com.tencent.mm.pluginsdk.ui.tools.i.a;
+import com.tencent.mm.pluginsdk.ui.tools.i.b;
+import com.tencent.mm.pluginsdk.ui.tools.i.c;
+import com.tencent.mm.pluginsdk.ui.tools.i.d;
+import com.tencent.mm.pluginsdk.ui.tools.i.e;
+import com.tencent.mm.pluginsdk.ui.tools.w;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
 
 public class VideoPlayView
   extends RelativeLayout
-  implements d.a, e
+  implements d.a, i
 {
+  private int PGT;
+  private int PGU;
+  private boolean PGV;
+  private a PGW;
+  private ViewGroup PGX;
+  public a PGY;
+  private double PGZ;
+  public TextView PHa;
+  public String PHb;
+  public ImageView PHc;
+  public boolean PHd;
+  private int PHe;
+  private int PHf;
+  private boolean PHg;
+  private boolean PHh;
+  private long PHi;
+  private Animation PHj;
+  private Animation PHk;
+  private Runnable PHl;
+  public int PHm;
   private int duration;
-  private String eNO;
-  private boolean efg;
-  private ak faV;
-  private ProgressBar gJE;
-  public View jbK;
-  public e kvG;
-  public boolean qUA;
-  private int qUB;
-  private int qUC;
-  private boolean qUD;
-  private boolean qUE;
-  private long qUF;
-  private Animation qUG;
-  private Animation qUH;
-  private Runnable qUI;
-  public int qUJ;
-  private int qUp;
-  private int qUq;
-  private boolean qUr;
-  private VideoPlayView.a qUs;
-  private ViewGroup qUt;
-  public a qUu;
-  private double qUv;
-  public TextView qUw;
-  public String qUx;
-  private View qUy;
-  public ImageView qUz;
+  private String fullPath;
+  private boolean lAj;
+  private MMHandler mRi;
+  public View maskView;
+  private View niB;
+  private ProgressBar qgC;
+  public i wCd;
   
   public VideoPlayView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(70325);
-    this.qUp = 320;
-    this.qUq = 240;
-    this.qUr = true;
-    this.kvG = null;
-    this.qUv = 0.0D;
-    this.qUx = "";
-    this.faV = new ak();
-    this.qUA = true;
+    AppMethodBeat.i(116172);
+    this.PGT = 320;
+    this.PGU = 240;
+    this.PGV = true;
+    this.wCd = null;
+    this.PGZ = 0.0D;
+    this.PHb = "";
+    this.mRi = new MMHandler();
+    this.PHd = true;
     this.duration = 0;
-    this.qUB = 0;
-    this.qUC = 0;
-    this.qUD = false;
-    this.qUE = false;
-    this.qUF = 0L;
-    this.qUG = new AlphaAnimation(1.0F, 0.0F);
-    this.qUH = new AlphaAnimation(0.0F, 1.0F);
-    this.qUI = new VideoPlayView.4(this);
-    this.qUJ = 0;
-    this.efg = false;
+    this.PHe = 0;
+    this.PHf = 0;
+    this.PHg = false;
+    this.PHh = false;
+    this.PHi = 0L;
+    this.PHj = new AlphaAnimation(1.0F, 0.0F);
+    this.PHk = new AlphaAnimation(0.0F, 1.0F);
+    this.PHl = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(116165);
+        VideoPlayView.this.gYL();
+        AppMethodBeat.o(116165);
+      }
+    };
+    this.PHm = 0;
+    this.lAj = false;
     init();
-    AppMethodBeat.o(70325);
+    AppMethodBeat.o(116172);
   }
   
   public VideoPlayView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(70326);
-    this.qUp = 320;
-    this.qUq = 240;
-    this.qUr = true;
-    this.kvG = null;
-    this.qUv = 0.0D;
-    this.qUx = "";
-    this.faV = new ak();
-    this.qUA = true;
+    AppMethodBeat.i(116173);
+    this.PGT = 320;
+    this.PGU = 240;
+    this.PGV = true;
+    this.wCd = null;
+    this.PGZ = 0.0D;
+    this.PHb = "";
+    this.mRi = new MMHandler();
+    this.PHd = true;
     this.duration = 0;
-    this.qUB = 0;
-    this.qUC = 0;
-    this.qUD = false;
-    this.qUE = false;
-    this.qUF = 0L;
-    this.qUG = new AlphaAnimation(1.0F, 0.0F);
-    this.qUH = new AlphaAnimation(0.0F, 1.0F);
-    this.qUI = new VideoPlayView.4(this);
-    this.qUJ = 0;
-    this.efg = false;
+    this.PHe = 0;
+    this.PHf = 0;
+    this.PHg = false;
+    this.PHh = false;
+    this.PHi = 0L;
+    this.PHj = new AlphaAnimation(1.0F, 0.0F);
+    this.PHk = new AlphaAnimation(0.0F, 1.0F);
+    this.PHl = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(116165);
+        VideoPlayView.this.gYL();
+        AppMethodBeat.o(116165);
+      }
+    };
+    this.PHm = 0;
+    this.lAj = false;
     init();
-    AppMethodBeat.o(70326);
+    AppMethodBeat.o(116173);
   }
   
-  private void Du(int paramInt)
+  private void Dh(boolean paramBoolean)
   {
-    AppMethodBeat.i(70338);
+    AppMethodBeat.i(116184);
+    this.wCd.H(this.PGZ);
+    this.wCd.start();
+    Log.i("MicroMsg.VideoPlayView", "startplay get duration " + this.duration + " lastPlayProgressTime: " + this.PGZ);
+    if (this.PGW != null) {
+      this.PGW.Di(paramBoolean);
+    }
+    AppMethodBeat.o(116184);
+  }
+  
+  private void ajo(int paramInt)
+  {
+    AppMethodBeat.i(116185);
     if (paramInt >= 0) {}
-    for (double d = paramInt;; d = this.kvG.getLastProgresstime())
+    for (double d = paramInt;; d = this.wCd.getLastProgresstime())
     {
-      this.qUv = d;
-      ab.i("MicroMsg.VideoPlayView", "pause play " + this.qUv + " lastTime: " + paramInt + " last " + this.kvG.getLastProgresstime());
-      this.kvG.pause();
-      this.faV.post(new VideoPlayView.7(this));
-      if (this.qUs != null) {
-        this.qUs.cmR();
+      this.PGZ = d;
+      Log.i("MicroMsg.VideoPlayView", "pause play " + this.PGZ + " lastTime: " + paramInt + " last " + this.wCd.getLastProgresstime());
+      this.wCd.pause();
+      this.mRi.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(116169);
+          if (VideoPlayView.c(VideoPlayView.this) != null) {
+            VideoPlayView.c(VideoPlayView.this).setIsPlay(false);
+          }
+          AppMethodBeat.o(116169);
+        }
+      });
+      if (this.PGW != null) {
+        this.PGW.gYM();
       }
-      AppMethodBeat.o(70338);
+      AppMethodBeat.o(116185);
       return;
     }
   }
   
-  private void cmP()
+  private void gYK()
   {
-    AppMethodBeat.i(70331);
-    ((View)this.qUu).setVisibility(0);
-    this.qUy.setVisibility(0);
-    if (this.qUA) {
-      this.qUz.setVisibility(0);
+    AppMethodBeat.i(116178);
+    ((View)this.PGY).setVisibility(0);
+    this.niB.setVisibility(0);
+    if (this.PHd) {
+      this.PHc.setVisibility(0);
     }
     int i;
-    if (this.qUJ == 2) {
+    if (this.PHm == 2) {
       i = 0;
     }
     for (;;)
     {
       if (i != 0) {
-        this.jbK.setVisibility(0);
+        this.maskView.setVisibility(0);
       }
-      this.faV.removeCallbacks(this.qUI);
-      this.faV.postDelayed(this.qUI, 3000L);
-      AppMethodBeat.o(70331);
+      this.mRi.removeCallbacks(this.PHl);
+      this.mRi.postDelayed(this.PHl, 3000L);
+      AppMethodBeat.o(116178);
       return;
-      if (bo.isNullOrNil(this.qUx)) {
+      if (Util.isNullOrNil(this.PHb)) {
         i = 0;
       } else {
         i = 1;
@@ -170,104 +218,248 @@ public class VideoPlayView
   
   private void init()
   {
-    AppMethodBeat.i(70327);
-    this.qUG.setDuration(200L);
-    this.qUH.setDuration(200L);
-    View.inflate(getContext(), 2130971066, this);
-    this.qUy = findViewById(2131828720);
-    this.qUz = ((ImageView)findViewById(2131828721));
-    this.qUz.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-    this.gJE = ((ProgressBar)findViewById(2131821246));
-    this.qUt = ((ViewGroup)findViewById(2131824108));
-    this.kvG = q.ga(getContext());
-    this.kvG.setLoop(false);
+    AppMethodBeat.i(116174);
+    this.PHj.setDuration(200L);
+    this.PHk.setDuration(200L);
+    View.inflate(getContext(), a.f.video_play_view, this);
+    this.niB = findViewById(a.e.play_close_btn);
+    this.PHc = ((ImageView)findViewById(a.e.menu_btn));
+    this.PHc.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+    this.qgC = ((ProgressBar)findViewById(a.e.progressbar));
+    this.PGX = ((ViewGroup)findViewById(a.e.video_container));
+    this.wCd = w.lG(getContext());
+    this.wCd.setLoop(false);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.qUt.addView((View)this.kvG, 0, localLayoutParams);
-    this.qUw = ((TextView)findViewById(2131827797));
-    this.jbK = this.qUw;
-    this.kvG.setVideoCallback(new VideoPlayView.1(this));
-    if ((this.kvG instanceof VideoSightView)) {
-      ((VideoSightView)this.kvG).setEnableConfigChanged(false);
+    this.PGX.addView((View)this.wCd, 0, localLayoutParams);
+    this.PHa = ((TextView)findViewById(a.e.show_ad_sight));
+    this.maskView = this.PHa;
+    this.wCd.setVideoCallback(new i.a()
+    {
+      public final void Qz()
+      {
+        AppMethodBeat.i(116158);
+        Log.d("MicroMsg.VideoPlayView", f.aPW() + " onPrepared");
+        VideoPlayView.a(VideoPlayView.this, true);
+        AppMethodBeat.o(116158);
+      }
+      
+      public final void fG(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(116162);
+        VideoPlayView.c(VideoPlayView.this, paramAnonymousInt1);
+        VideoPlayView.d(VideoPlayView.this, paramAnonymousInt2);
+        if (VideoPlayView.k(VideoPlayView.this)) {
+          VideoPlayView.l(VideoPlayView.this).post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(116157);
+              VideoPlayView.e(VideoPlayView.this, VideoPlayView.this.PHm);
+              AppMethodBeat.o(116157);
+            }
+          });
+        }
+        AppMethodBeat.o(116162);
+      }
+      
+      public final int gw(final int paramAnonymousInt1, final int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(116161);
+        MMHandlerThread.postToMainThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(116156);
+            Log.i("MicroMsg.VideoPlayView", "play time " + paramAnonymousInt1 + " video time " + paramAnonymousInt2);
+            if (paramAnonymousInt2 > 0)
+            {
+              VideoPlayView.b(VideoPlayView.this, paramAnonymousInt2);
+              if ((VideoPlayView.c(VideoPlayView.this) != null) && (VideoPlayView.h(VideoPlayView.this))) {
+                VideoPlayView.i(VideoPlayView.this);
+              }
+              VideoPlayView.f(VideoPlayView.this).ajp(paramAnonymousInt2);
+            }
+            if (VideoPlayView.c(VideoPlayView.this) != null)
+            {
+              if (VideoPlayView.c(VideoPlayView.this).getVideoTotalTime() != paramAnonymousInt2) {
+                VideoPlayView.c(VideoPlayView.this).setVideoTotalTime(paramAnonymousInt2);
+              }
+              VideoPlayView.c(VideoPlayView.this).seek(paramAnonymousInt1);
+              VideoPlayView.c(VideoPlayView.this).setIsPlay(true);
+            }
+            if (VideoPlayView.j(VideoPlayView.this).getVisibility() == 0) {
+              VideoPlayView.j(VideoPlayView.this).setVisibility(8);
+            }
+            VideoPlayView.a(VideoPlayView.this, paramAnonymousInt1);
+            AppMethodBeat.o(116156);
+          }
+        });
+        AppMethodBeat.o(116161);
+        return 0;
+      }
+      
+      public final void onCompletion()
+      {
+        AppMethodBeat.i(116160);
+        Log.d("MicroMsg.VideoPlayView", "on completion " + Util.getStack().toString());
+        if (!VideoPlayView.b(VideoPlayView.this))
+        {
+          VideoPlayView.a(VideoPlayView.this, 0.0D);
+          VideoPlayView.this.H(0.0D);
+          VideoPlayView.c(VideoPlayView.this).setIsPlay(false);
+          VideoPlayView.a(VideoPlayView.this, 0);
+          VideoPlayView.d(VideoPlayView.this);
+          if (System.currentTimeMillis() - VideoPlayView.e(VideoPlayView.this) < 2000L)
+          {
+            Log.i("MicroMsg.VideoPlayView", "Too short onCompletion");
+            AppMethodBeat.o(116160);
+            return;
+          }
+          VideoPlayView.a(VideoPlayView.this, System.currentTimeMillis());
+          if (VideoPlayView.f(VideoPlayView.this) != null)
+          {
+            VideoPlayView.f(VideoPlayView.this).gYN();
+            AppMethodBeat.o(116160);
+          }
+        }
+        else
+        {
+          VideoPlayView.c(VideoPlayView.this).setIsPlay(false);
+          VideoPlayView.a(VideoPlayView.this, (int)VideoPlayView.g(VideoPlayView.this));
+          VideoPlayView.d(VideoPlayView.this);
+          if (VideoPlayView.f(VideoPlayView.this) != null) {
+            VideoPlayView.f(VideoPlayView.this).gYO();
+          }
+        }
+        AppMethodBeat.o(116160);
+      }
+      
+      public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(116159);
+        Log.e("MicroMsg.VideoPlayView", "on play video error, what %d extra %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        VideoPlayView.a(VideoPlayView.this).stop();
+        AppMethodBeat.o(116159);
+      }
+    });
+    if ((this.wCd instanceof VideoSightView)) {
+      ((VideoSightView)this.wCd).setEnableConfigChanged(false);
     }
-    setOnTouchListener(new VideoPlayView.2(this));
-    cmQ();
-    ((View)this.kvG).post(new VideoPlayView.3(this));
-    AppMethodBeat.o(70327);
+    setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(116163);
+        if (paramAnonymousMotionEvent.getAction() == 1) {
+          VideoPlayView.m(VideoPlayView.this);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(116163);
+          return true;
+          paramAnonymousMotionEvent.getAction();
+        }
+      }
+    });
+    gYL();
+    ((View)this.wCd).post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(116164);
+        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+        if ((VideoPlayView.this.getContext() instanceof MMActivity))
+        {
+          ((MMActivity)VideoPlayView.this.getContext()).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+          if ((VideoPlayView.a(VideoPlayView.this) instanceof VideoSightView)) {
+            ((VideoSightView)VideoPlayView.a(VideoPlayView.this)).setDrawableWidth(localDisplayMetrics.widthPixels);
+          }
+        }
+        ((View)VideoPlayView.a(VideoPlayView.this)).requestLayout();
+        ((View)VideoPlayView.a(VideoPlayView.this)).postInvalidate();
+        AppMethodBeat.o(116164);
+      }
+    });
+    AppMethodBeat.o(116174);
   }
   
-  private void kT(boolean paramBoolean)
+  public final void H(double paramDouble)
   {
-    AppMethodBeat.i(70337);
-    this.kvG.A(this.qUv);
-    this.kvG.start();
-    ab.i("MicroMsg.VideoPlayView", "startplay get duration " + this.duration + " lastPlayProgressTime: " + this.qUv);
-    if (this.qUs != null) {
-      this.qUs.kU(paramBoolean);
+    AppMethodBeat.i(116196);
+    this.wCd.H(paramDouble);
+    this.PGY.seek((int)paramDouble);
+    AppMethodBeat.o(116196);
+  }
+  
+  public final boolean P(Context paramContext, boolean paramBoolean)
+  {
+    AppMethodBeat.i(116187);
+    paramBoolean = this.wCd.P(paramContext, paramBoolean);
+    AppMethodBeat.o(116187);
+    return paramBoolean;
+  }
+  
+  public final void bAi() {}
+  
+  public final void bAj() {}
+  
+  public final void bAk() {}
+  
+  public final void bAl() {}
+  
+  public final void c(double paramDouble, boolean paramBoolean)
+  {
+    AppMethodBeat.i(116199);
+    H(paramDouble);
+    AppMethodBeat.o(116199);
+  }
+  
+  public final void gYJ()
+  {
+    AppMethodBeat.i(116177);
+    this.qgC.setVisibility(0);
+    AppMethodBeat.o(116177);
+  }
+  
+  public final void gYL()
+  {
+    AppMethodBeat.i(116179);
+    if (this.PGY != null) {
+      ((View)this.PGY).setVisibility(4);
     }
-    AppMethodBeat.o(70337);
-  }
-  
-  public final void A(double paramDouble)
-  {
-    AppMethodBeat.i(70349);
-    this.kvG.A(paramDouble);
-    this.qUu.seek((int)paramDouble);
-    AppMethodBeat.o(70349);
-  }
-  
-  public final void cmO()
-  {
-    AppMethodBeat.i(70330);
-    this.gJE.setVisibility(0);
-    AppMethodBeat.o(70330);
-  }
-  
-  public final void cmQ()
-  {
-    AppMethodBeat.i(70332);
-    if (this.qUu != null) {
-      ((View)this.qUu).setVisibility(4);
-    }
-    this.qUy.setVisibility(8);
-    this.qUz.setVisibility(8);
-    this.jbK.setVisibility(8);
-    AppMethodBeat.o(70332);
-  }
-  
-  public final void e(double paramDouble, boolean paramBoolean)
-  {
-    AppMethodBeat.i(70352);
-    A(paramDouble);
-    AppMethodBeat.o(70352);
+    this.niB.setVisibility(8);
+    this.PHc.setVisibility(8);
+    this.maskView.setVisibility(8);
+    AppMethodBeat.o(116179);
   }
   
   public int getCurrentPosition()
   {
-    AppMethodBeat.i(70346);
-    int i = this.kvG.getCurrentPosition();
-    AppMethodBeat.o(70346);
+    AppMethodBeat.i(116193);
+    int i = this.wCd.getCurrentPosition();
+    AppMethodBeat.o(116193);
     return i;
   }
   
   public int getDuration()
   {
-    AppMethodBeat.i(70347);
+    AppMethodBeat.i(116194);
     if (this.duration == 0)
     {
-      i = this.kvG.getDuration();
-      AppMethodBeat.o(70347);
+      i = this.wCd.getDuration();
+      AppMethodBeat.o(116194);
       return i;
     }
     int i = this.duration;
-    AppMethodBeat.o(70347);
+    AppMethodBeat.o(116194);
     return i;
   }
   
   public double getLastProgresstime()
   {
-    AppMethodBeat.i(70344);
-    double d = Math.max(this.qUv, this.kvG.getLastProgresstime());
-    AppMethodBeat.o(70344);
+    AppMethodBeat.i(116191);
+    double d = Math.max(this.PGZ, this.wCd.getLastProgresstime());
+    AppMethodBeat.o(116191);
     return d;
   }
   
@@ -278,41 +470,41 @@ public class VideoPlayView
   
   public String getVideoPath()
   {
-    return this.eNO;
+    return this.fullPath;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(70339);
-    boolean bool = this.kvG.isPlaying();
-    AppMethodBeat.o(70339);
+    AppMethodBeat.i(116186);
+    boolean bool = this.wCd.isPlaying();
+    AppMethodBeat.o(116186);
     return bool;
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(70342);
-    this.kvG.onDetach();
-    AppMethodBeat.o(70342);
+    AppMethodBeat.i(116189);
+    this.wCd.onDetach();
+    AppMethodBeat.o(116189);
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(70336);
-    Du(-1);
-    AppMethodBeat.o(70336);
+    AppMethodBeat.i(116183);
+    ajo(-1);
+    AppMethodBeat.o(116183);
   }
   
   public void setForceScaleFullScreen(boolean paramBoolean) {}
   
   public void setIsDownloading(boolean paramBoolean)
   {
-    AppMethodBeat.i(70329);
-    this.qUD = paramBoolean;
+    AppMethodBeat.i(116176);
+    this.PHg = paramBoolean;
     Object localObject;
-    if ((this.kvG != null) && ((this.kvG instanceof VideoSightView)))
+    if ((this.wCd != null) && ((this.wCd instanceof VideoSightView)))
     {
-      localObject = (VideoSightView)this.kvG;
+      localObject = (VideoSightView)this.wCd;
       if (((VideoSightView)localObject).getController() != null)
       {
         localObject = ((VideoSightView)localObject).getController();
@@ -324,180 +516,195 @@ public class VideoPlayView
     label66:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      ((b)localObject).qSY = paramBoolean;
-      AppMethodBeat.o(70329);
+      ((SightPlayController)localObject).PFS = paramBoolean;
+      AppMethodBeat.o(116176);
       return;
     }
   }
   
   public void setLeftButtonOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(70333);
-    this.qUy.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(70333);
+    AppMethodBeat.i(116180);
+    this.niB.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(116180);
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(70343);
-    this.kvG.setLoop(paramBoolean);
-    AppMethodBeat.o(70343);
+    AppMethodBeat.i(116190);
+    this.wCd.setLoop(paramBoolean);
+    AppMethodBeat.o(116190);
   }
   
   public void setMute(boolean paramBoolean)
   {
-    this.efg = paramBoolean;
+    this.lAj = paramBoolean;
   }
   
-  public void setOnInfoCallback(e.b paramb) {}
+  public void setOnInfoCallback(i.b paramb) {}
   
-  public void setOnSeekCompleteCallback(e.c paramc) {}
+  public void setOnSeekCompleteCallback(i.c paramc) {}
   
-  public void setOnSurfaceCallback(e.d paramd) {}
+  public void setOnSurfaceCallback(i.d paramd) {}
   
-  public void setOneTimeVideoTextureUpdateCallback(e.e parame) {}
+  public void setOneTimeVideoTextureUpdateCallback(i.e parame) {}
   
   public void setPlayProgressCallback(boolean paramBoolean)
   {
-    AppMethodBeat.i(70350);
-    this.kvG.setPlayProgressCallback(paramBoolean);
-    AppMethodBeat.o(70350);
+    AppMethodBeat.i(116197);
+    this.wCd.setPlayProgressCallback(paramBoolean);
+    AppMethodBeat.o(116197);
   }
   
   public void setRightButtonOnCliclListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(70334);
-    this.qUz.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(70334);
+    AppMethodBeat.i(116181);
+    this.PHc.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(116181);
   }
   
   public void setThumb(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(70348);
-    this.kvG.setThumb(paramBitmap);
-    AppMethodBeat.o(70348);
+    AppMethodBeat.i(116195);
+    this.wCd.setThumb(paramBitmap);
+    AppMethodBeat.o(116195);
   }
   
-  public void setVideoCallback(e.a parama)
+  public void setVideoCallback(i.a parama)
   {
-    AppMethodBeat.i(70345);
-    this.kvG.setVideoCallback(parama);
-    AppMethodBeat.o(70345);
+    AppMethodBeat.i(116192);
+    this.wCd.setVideoCallback(parama);
+    AppMethodBeat.o(116192);
   }
   
   public void setVideoPath(String paramString)
   {
-    AppMethodBeat.i(70324);
-    this.eNO = paramString;
-    ab.i("MicroMsg.VideoPlayView", "videoPath  %s", new Object[] { this.eNO });
-    this.kvG.setVideoPath(this.eNO);
-    AppMethodBeat.o(70324);
+    AppMethodBeat.i(116171);
+    this.fullPath = paramString;
+    Log.i("MicroMsg.VideoPlayView", "videoPath  %s", new Object[] { this.fullPath });
+    this.wCd.setVideoPath(this.fullPath);
+    AppMethodBeat.o(116171);
   }
   
-  public void setVideoPlayViewEvent(VideoPlayView.a parama)
+  public void setVideoPlayViewEvent(a parama)
   {
-    this.qUs = parama;
+    this.PGW = parama;
   }
   
   public void setVideoTotalTime(int paramInt)
   {
-    AppMethodBeat.i(70328);
-    if (this.qUu.getVideoTotalTime() != paramInt) {
-      this.qUu.setVideoTotalTime(paramInt);
+    AppMethodBeat.i(116175);
+    if (this.PGY.getVideoTotalTime() != paramInt) {
+      this.PGY.setVideoTotalTime(paramInt);
     }
-    AppMethodBeat.o(70328);
+    AppMethodBeat.o(116175);
   }
   
   public final boolean start()
   {
-    AppMethodBeat.i(70335);
-    kT(true);
-    AppMethodBeat.o(70335);
+    AppMethodBeat.i(116182);
+    Dh(true);
+    AppMethodBeat.o(116182);
     return true;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(70341);
-    this.kvG.stop();
-    AppMethodBeat.o(70341);
+    AppMethodBeat.i(116188);
+    this.wCd.stop();
+    AppMethodBeat.o(116188);
   }
   
   public final void update(int paramInt)
   {
-    AppMethodBeat.i(70351);
-    this.qUE = true;
+    AppMethodBeat.i(116198);
+    this.PHh = true;
     Object localObject;
-    if ((this.qUC == 0) || (this.qUB == 0))
+    if ((this.PHf == 0) || (this.PHe == 0))
     {
       localObject = getResources().getDisplayMetrics();
-      this.qUC = ((DisplayMetrics)localObject).heightPixels;
-      this.qUB = ((DisplayMetrics)localObject).widthPixels;
-      if (this.qUC < this.qUB)
+      this.PHf = ((DisplayMetrics)localObject).heightPixels;
+      this.PHe = ((DisplayMetrics)localObject).widthPixels;
+      if (this.PHf < this.PHe)
       {
-        this.qUC = ((DisplayMetrics)localObject).widthPixels;
-        this.qUB = ((DisplayMetrics)localObject).heightPixels;
+        this.PHf = ((DisplayMetrics)localObject).widthPixels;
+        this.PHe = ((DisplayMetrics)localObject).heightPixels;
       }
-      ab.i("MicroMsg.VideoPlayView", "getScreen screen_height:" + this.qUC + " screen_width:" + this.qUB);
+      Log.i("MicroMsg.VideoPlayView", "getScreen screen_height:" + this.PHf + " screen_width:" + this.PHe);
     }
-    ViewGroup.LayoutParams localLayoutParams = this.qUt.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.PGX.getLayoutParams();
     RelativeLayout.LayoutParams localLayoutParams1;
-    if (this.qUu == null)
+    if (this.PGY == null)
     {
       localObject = null;
       localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
       if (paramInt != 1) {
         break label410;
       }
-      localLayoutParams1.width = this.qUB;
-      localLayoutParams1.height = ((int)(this.qUB * 1.0D * this.qUq / this.qUp));
-      if (this.qUu != null) {
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = BackwardSupportUtil.b.b(getContext(), 0.0F);
+      localLayoutParams1.width = this.PHe;
+      localLayoutParams1.height = ((int)(this.PHe * 1.0D * this.PGU / this.PGT));
+      if (this.PGY != null) {
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 0.0F);
       }
     }
     for (;;)
     {
-      if (this.qUu != null)
+      if (this.PGY != null)
       {
-        this.qUu.cmM();
-        ((View)this.qUu).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        if ((this.qUu instanceof AdVideoPlayerLoadingBar)) {
-          this.faV.postDelayed(new VideoPlayView.8(this), 500L);
+        this.PGY.gYF();
+        ((View)this.PGY).setLayoutParams((ViewGroup.LayoutParams)localObject);
+        if ((this.PGY instanceof AdVideoPlayerLoadingBar)) {
+          this.mRi.postDelayed(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(116170);
+              if (!VideoPlayView.a(VideoPlayView.this).isPlaying()) {
+                ((AdVideoPlayerLoadingBar)VideoPlayView.c(VideoPlayView.this)).cxb();
+              }
+              AppMethodBeat.o(116170);
+            }
+          }, 500L);
         }
       }
-      ab.i("MicroMsg.VideoPlayView", "orientation " + paramInt + " " + localLayoutParams1.width + " " + localLayoutParams1.height);
-      ((View)this.kvG).setLayoutParams(localLayoutParams1);
-      if ((this.kvG instanceof com.tencent.mm.plugin.sight.decode.a.a)) {
-        ((com.tencent.mm.plugin.sight.decode.a.a)this.kvG).ft(localLayoutParams1.width, localLayoutParams1.height);
+      Log.i("MicroMsg.VideoPlayView", "orientation " + paramInt + " " + localLayoutParams1.width + " " + localLayoutParams1.height);
+      ((View)this.wCd).setLayoutParams(localLayoutParams1);
+      if ((this.wCd instanceof com.tencent.mm.plugin.sight.decode.model.a)) {
+        ((com.tencent.mm.plugin.sight.decode.model.a)this.wCd).ld(localLayoutParams1.width, localLayoutParams1.height);
       }
       localLayoutParams.height = localLayoutParams1.height;
       localLayoutParams.width = localLayoutParams1.width;
-      this.qUt.setLayoutParams(localLayoutParams);
-      ((View)this.kvG).requestLayout();
-      AppMethodBeat.o(70351);
+      this.PGX.setLayoutParams(localLayoutParams);
+      ((View)this.wCd).requestLayout();
+      AppMethodBeat.o(116198);
       return;
-      localObject = (RelativeLayout.LayoutParams)((View)this.qUu).getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)((View)this.PGY).getLayoutParams();
       break;
       label410:
-      localLayoutParams1.height = this.qUB;
-      localLayoutParams1.width = ((int)(this.qUB * 1.0D * this.qUp / this.qUq));
-      if (this.qUu != null) {
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = BackwardSupportUtil.b.b(getContext(), 0.0F);
+      localLayoutParams1.height = this.PHe;
+      localLayoutParams1.width = ((int)(this.PHe * 1.0D * this.PGT / this.PGU));
+      if (this.PGY != null) {
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 0.0F);
       }
     }
   }
   
-  public final boolean w(Context paramContext, boolean paramBoolean)
+  public static abstract interface a
   {
-    AppMethodBeat.i(70340);
-    paramBoolean = this.kvG.w(paramContext, paramBoolean);
-    AppMethodBeat.o(70340);
-    return paramBoolean;
+    public abstract void Di(boolean paramBoolean);
+    
+    public abstract void ajp(int paramInt);
+    
+    public abstract void gYM();
+    
+    public abstract void gYN();
+    
+    public abstract void gYO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.VideoPlayView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,59 @@
 package btmsdkobf;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class dn
+public class dn<T>
 {
   private int hu = -1;
-  private LinkedHashSet mZ = new LinkedHashSet();
+  private LinkedHashSet<T> mZ = new LinkedHashSet();
   
   public dn(int paramInt)
   {
     this.hu = paramInt;
   }
   
-  public boolean b(Object paramObject)
+  public boolean b(T paramT)
   {
     try
     {
-      boolean bool = this.mZ.contains(paramObject);
+      boolean bool = this.mZ.contains(paramT);
       return bool;
     }
     finally
     {
-      paramObject = finally;
-      throw paramObject;
+      paramT = finally;
+      throw paramT;
     }
   }
   
-  /* Error */
-  public Object poll()
+  public T poll()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 20	btmsdkobf/dn:mZ	Ljava/util/LinkedHashSet;
-    //   6: ifnull +44 -> 50
-    //   9: aload_0
-    //   10: getfield 20	btmsdkobf/dn:mZ	Ljava/util/LinkedHashSet;
-    //   13: invokevirtual 32	java/util/LinkedHashSet:iterator	()Ljava/util/Iterator;
-    //   16: astore_1
-    //   17: aload_1
-    //   18: ifnull +32 -> 50
-    //   21: aload_1
-    //   22: invokeinterface 38 1 0
-    //   27: ifeq +23 -> 50
-    //   30: aload_1
-    //   31: invokeinterface 41 1 0
-    //   36: astore_1
-    //   37: aload_0
-    //   38: getfield 20	btmsdkobf/dn:mZ	Ljava/util/LinkedHashSet;
-    //   41: aload_1
-    //   42: invokevirtual 44	java/util/LinkedHashSet:remove	(Ljava/lang/Object;)Z
-    //   45: pop
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_1
-    //   49: areturn
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: goto -6 -> 46
-    //   55: astore_1
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	60	0	this	dn
-    //   16	36	1	localObject1	Object
-    //   55	4	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	55	finally
-    //   21	46	55	finally
+    try
+    {
+      if (this.mZ != null)
+      {
+        Object localObject1 = this.mZ.iterator();
+        if ((localObject1 != null) && (((Iterator)localObject1).hasNext()))
+        {
+          localObject1 = ((Iterator)localObject1).next();
+          this.mZ.remove(localObject1);
+          return localObject1;
+        }
+      }
+      return null;
+    }
+    finally {}
   }
   
-  public void push(Object paramObject)
+  public void push(T paramT)
   {
     try
     {
       if (this.mZ.size() >= this.hu) {
         poll();
       }
-      this.mZ.add(paramObject);
+      this.mZ.add(paramT);
       return;
     }
     finally {}

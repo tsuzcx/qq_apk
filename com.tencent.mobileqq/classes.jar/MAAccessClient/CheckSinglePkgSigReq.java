@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class CheckSinglePkgSigReq
   extends JceStruct
 {
-  public int marketVer;
+  public int marketVer = 0;
   public String pkgName = "";
   public String pkgSig = "";
-  public int sysVer;
-  public int versionCode;
+  public int sysVer = 0;
+  public int versionCode = 0;
   
   public CheckSinglePkgSigReq() {}
   
@@ -44,7 +44,7 @@ public final class CheckSinglePkgSigReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.CheckSinglePkgSigReq
  * JD-Core Version:    0.7.0.1
  */

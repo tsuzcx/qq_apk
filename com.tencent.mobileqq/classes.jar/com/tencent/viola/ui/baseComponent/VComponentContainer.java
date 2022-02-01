@@ -38,35 +38,68 @@ public abstract class VComponentContainer<T extends ViewGroup>
   public void addChild(VComponent paramVComponent, int paramInt)
   {
     System.nanoTime();
-    if ((paramVComponent == null) || (paramInt < -1)) {
-      return;
-    }
-    int i = paramInt;
-    if (paramInt >= this.mChildren.size()) {
-      i = -1;
-    }
-    if (i == -1)
+    if (paramVComponent != null)
     {
-      this.mChildren.add(paramVComponent);
+      if (paramInt < -1) {
+        return;
+      }
+      int i = paramInt;
+      if (paramInt >= this.mChildren.size()) {
+        i = -1;
+      }
+      if (i == -1)
+      {
+        this.mChildren.add(paramVComponent);
+        return;
+      }
+      this.mChildren.add(i, paramVComponent);
+    }
+  }
+  
+  public void addComponentView(VComponent paramVComponent, int paramInt)
+  {
+    if (paramVComponent == null) {
       return;
     }
-    this.mChildren.add(i, paramVComponent);
+    addChild(paramVComponent, paramInt);
+    addSubView(paramVComponent.mHost, paramInt);
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public void addSubView(View paramView, int paramInt)
   {
-    if ((paramView == null) || (getRealView() == null)) {
-      return;
+    if (paramView != null)
+    {
+      if (getRealView() == null) {
+        return;
+      }
+      int i = paramInt;
+      if (paramInt >= getRealView().getChildCount()) {
+        i = -1;
+      }
+      if (paramView.getParent() != null) {
+        ((ViewGroup)paramView.getParent()).removeView(paramView);
+      }
+      getRealView().addView(paramView, i);
     }
-    int i = paramInt;
-    if (paramInt >= getRealView().getChildCount()) {
-      i = -1;
+  }
+  
+  public void afterBringToRootByAnim()
+  {
+    Object localObject = this.mChildren;
+    if (localObject != null)
+    {
+      int j = ((ArrayList)localObject).size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (VComponent)this.mChildren.get(i);
+        if (localObject != null) {
+          ((VComponent)localObject).afterBringToRootByAnim();
+        }
+        i += 1;
+      }
     }
-    if (paramView.getParent() != null) {
-      ((ViewGroup)paramView.getParent()).removeView(paramView);
-    }
-    getRealView().addView(paramView, i);
   }
   
   public void applyEvents()
@@ -89,25 +122,41 @@ public abstract class VComponentContainer<T extends ViewGroup>
   
   public void applyLayout()
   {
-    if ((this.mHost instanceof VRecyclerView)) {
-      super.applyLayout();
-    }
-    for (;;)
+    if ((this.mHost instanceof VRecyclerView))
     {
+      super.applyLayout();
       return;
-      if (!isLazy())
+    }
+    if (!isLazy())
+    {
+      super.applyLayout();
+      int j = getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        super.applyLayout();
-        int j = getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          VComponent localVComponent = getChild(i);
-          if (localVComponent != null) {
-            localVComponent.applyLayout();
-          }
-          i += 1;
+        VComponent localVComponent = getChild(i);
+        if (localVComponent != null) {
+          localVComponent.applyLayout();
         }
+        i += 1;
+      }
+    }
+  }
+  
+  public void beforeBringToRootByAnim()
+  {
+    Object localObject = this.mChildren;
+    if (localObject != null)
+    {
+      int j = ((ArrayList)localObject).size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (VComponent)this.mChildren.get(i);
+        if (localObject != null) {
+          ((VComponent)localObject).beforeBringToRootByAnim();
+        }
+        i += 1;
       }
     }
   }
@@ -162,28 +211,23 @@ public abstract class VComponentContainer<T extends ViewGroup>
   public void createChildViewAt(Context paramContext, int paramInt)
   {
     Pair localPair = rearrangeIndexAndGetChild(paramInt);
-    VComponent localVComponent;
     if (localPair.first != null)
     {
-      localVComponent = (VComponent)localPair.first;
-      if (paramContext == null) {
-        break label60;
+      VComponent localVComponent = (VComponent)localPair.first;
+      if (paramContext != null) {
+        localVComponent.createView(paramContext);
+      } else {
+        localVComponent.createView();
       }
-      localVComponent.createView(paramContext);
-      if (!localVComponent.isInterceptAddView()) {
-        break label68;
+      if (localVComponent.isInterceptAddView())
+      {
+        localVComponent.addSubViewOnIntercept(getRealView(), ((Integer)localPair.second).intValue());
+        return;
       }
-      localVComponent.addSubViewOnIntercept(getRealView(), ((Integer)localPair.second).intValue());
+      if (!localVComponent.isVirtualComponent()) {
+        addSubView(localVComponent.getHostView(), ((Integer)localPair.second).intValue());
+      }
     }
-    label60:
-    label68:
-    while (localVComponent.isVirtualComponent())
-    {
-      return;
-      localVComponent.createView();
-      break;
-    }
-    addSubView(localVComponent.getHostView(), ((Integer)localPair.second).intValue());
   }
   
   public void createViewImpl()
@@ -199,9 +243,9 @@ public abstract class VComponentContainer<T extends ViewGroup>
     notifyParentWhenChildAddEnd();
   }
   
-  protected void createViewImpl(Context paramContext)
+  protected void createViewImplWithContext(Context paramContext)
   {
-    super.createViewImpl(paramContext);
+    super.createViewImplWithContext(paramContext);
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -215,9 +259,10 @@ public abstract class VComponentContainer<T extends ViewGroup>
   public void destroy()
   {
     super.destroy();
-    if (this.mChildren != null)
+    ArrayList localArrayList = this.mChildren;
+    if (localArrayList != null)
     {
-      int j = this.mChildren.size();
+      int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
@@ -228,13 +273,31 @@ public abstract class VComponentContainer<T extends ViewGroup>
     }
   }
   
+  public void destroyComp()
+  {
+    super.destroyComp();
+    ArrayList localArrayList = this.mChildren;
+    if (localArrayList != null)
+    {
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((VComponent)this.mChildren.get(i)).destroyComp();
+        i += 1;
+      }
+      this.mChildren.clear();
+    }
+  }
+  
   @Nullable
   public VComponent getChild(int paramInt)
   {
-    if ((this.mChildren == null) || (paramInt < 0) || (paramInt >= this.mChildren.size())) {
-      return null;
+    ArrayList localArrayList = this.mChildren;
+    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
+      return (VComponent)this.mChildren.get(paramInt);
     }
-    return (VComponent)this.mChildren.get(paramInt);
+    return null;
   }
   
   public int getChildCount()
@@ -244,23 +307,22 @@ public abstract class VComponentContainer<T extends ViewGroup>
   
   public ViewGroup.LayoutParams getChildLayoutParams(VComponent paramVComponent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    paramVComponent = null;
     if (paramView != null) {
       paramVComponent = paramView.getLayoutParams();
+    } else {
+      paramVComponent = null;
     }
     if (paramVComponent == null)
     {
-      paramView = new FrameLayout.LayoutParams(paramInt1, paramInt2);
-      ((FrameLayout.LayoutParams)paramView).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+      paramVComponent = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+      ((FrameLayout.LayoutParams)paramVComponent).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+      return paramVComponent;
     }
-    do
-    {
-      return paramView;
-      paramVComponent.width = paramInt1;
-      paramVComponent.height = paramInt2;
-      paramView = paramVComponent;
-    } while (!(paramVComponent instanceof ViewGroup.MarginLayoutParams));
-    ((ViewGroup.MarginLayoutParams)paramVComponent).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+    paramVComponent.width = paramInt1;
+    paramVComponent.height = paramInt2;
+    if ((paramVComponent instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)paramVComponent).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+    }
     return paramVComponent;
   }
   
@@ -295,6 +357,25 @@ public abstract class VComponentContainer<T extends ViewGroup>
     }
   }
   
+  public void onRecycler()
+  {
+    super.onRecycler();
+    Object localObject = this.mChildren;
+    if (localObject != null)
+    {
+      int j = ((ArrayList)localObject).size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (VComponent)this.mChildren.get(i);
+        if (localObject != null) {
+          ((VComponent)localObject).onRecycler();
+        }
+        i += 1;
+      }
+    }
+  }
+  
   protected Pair<VComponent, Integer> rearrangeIndexAndGetChild(int paramInt)
   {
     int i = paramInt;
@@ -324,24 +405,60 @@ public abstract class VComponentContainer<T extends ViewGroup>
   
   public void remove(VComponent paramVComponent, boolean paramBoolean)
   {
-    if ((paramVComponent == null) || (this.mChildren == null) || (this.mChildren.size() == 0)) {}
-    do
+    remove(paramVComponent, paramBoolean, false);
+  }
+  
+  public void remove(VComponent paramVComponent, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramVComponent != null)
     {
-      return;
-      this.mChildren.remove(paramVComponent);
-      if ((getRealView() != null) && (!paramVComponent.isVirtualComponent()) && (paramVComponent.getHostView() != null)) {
-        getRealView().removeView(paramVComponent.getHostView());
+      ArrayList localArrayList = this.mChildren;
+      if (localArrayList != null)
+      {
+        if (localArrayList.size() == 0) {
+          return;
+        }
+        this.mChildren.remove(paramVComponent);
+        if ((getRealView() != null) && (!paramVComponent.isVirtualComponent()) && (paramVComponent.getHostView() != null))
+        {
+          if (paramBoolean2) {
+            paramVComponent.beforeBringToRootByAnim();
+          }
+          getRealView().removeView(paramVComponent.getHostView());
+          if (paramBoolean2) {
+            paramVComponent.afterBringToRootByAnim();
+          }
+        }
+        if (paramBoolean1) {
+          paramVComponent.destroy();
+        }
       }
-    } while (!paramBoolean);
-    paramVComponent.destroy();
+    }
+  }
+  
+  public void removedByDiff()
+  {
+    super.removedByDiff();
+    ArrayList localArrayList = this.mChildren;
+    if (localArrayList != null)
+    {
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((VComponent)this.mChildren.get(i)).removedByDiff();
+        i += 1;
+      }
+    }
   }
   
   public void removedByJs()
   {
     super.removedByJs();
-    if (this.mChildren != null)
+    ArrayList localArrayList = this.mChildren;
+    if (localArrayList != null)
     {
-      int j = this.mChildren.size();
+      int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
@@ -357,68 +474,58 @@ public abstract class VComponentContainer<T extends ViewGroup>
     {
       ((ViewGroup)this.mHost).setClipToPadding(false);
       ((ViewGroup)this.mHost).setClipChildren(false);
-    }
-    while (!paramString.equals("hidden")) {
       return;
     }
-    ((ViewGroup)this.mHost).setClipToPadding(true);
-    ((ViewGroup)this.mHost).setClipChildren(true);
+    if (paramString.equals("hidden"))
+    {
+      ((ViewGroup)this.mHost).setClipToPadding(true);
+      ((ViewGroup)this.mHost).setClipChildren(true);
+    }
   }
   
   public boolean setProperty(String paramString, Object paramObject)
   {
-    int i;
     if (ViolaUtils.getString(paramObject, null) != null)
     {
-      i = -1;
-      switch (paramString.hashCode())
-      {
+      int i = -1;
+      if ((paramString.hashCode() == 529642498) && (paramString.equals("overflow"))) {
+        i = 0;
       }
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i == 0)
       {
-      default: 
-        return super.setProperty(paramString, paramObject);
-        if (paramString.equals("overflow")) {
-          i = 0;
+        this.mOverFlowValue = ViolaUtils.getString(paramObject, null);
+        if ((!TextUtils.isEmpty(this.mOverFlowValue)) && (this.mHost != null)) {
+          setOverFlow(this.mOverFlowValue);
         }
-        break;
+        return true;
       }
     }
-    this.mOverFlowValue = ViolaUtils.getString(paramObject, null);
-    if (!TextUtils.isEmpty(this.mOverFlowValue)) {
-      setOverFlow(this.mOverFlowValue);
-    }
-    return true;
+    return super.setProperty(paramString, paramObject);
   }
   
   public void unregisterFromContext(boolean paramBoolean)
   {
     super.unregisterFromContext(paramBoolean);
-    int j;
-    int i;
-    if (this.mChildren != null)
+    Object localObject = this.mChildren;
+    if (localObject != null)
     {
-      j = this.mChildren.size();
-      i = 0;
-    }
-    while (i < j)
-    {
-      VComponent localVComponent = (VComponent)this.mChildren.get(i);
-      if (localVComponent == null) {
-        return;
+      int j = ((ArrayList)localObject).size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (VComponent)this.mChildren.get(i);
+        if (localObject != null) {
+          ((VComponent)localObject).unregisterFromContext(paramBoolean);
+        }
+        i += 1;
       }
-      localVComponent.unregisterFromContext(paramBoolean);
-      i += 1;
+      this.mChildren.clear();
     }
-    this.mChildren.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponentContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -6,18 +6,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import android.util.Log;
 import java.lang.reflect.Method;
 
 public class i
 {
   private static boolean Q = false;
-  private static j R = null;
-  private static j S = null;
-  private static j T = null;
-  private static j U = null;
+  private static j R;
+  private static j S;
+  private static j T;
+  private static j U;
   private static Object V = new Object();
   private static HandlerThread W = null;
   private static Handler X = null;
@@ -34,85 +34,56 @@ public class i
   {
     switch (paramInt)
     {
-    }
-    String str;
-    do
-    {
+    default: 
+    case 2: 
+      T = new j(ad, 2, paramString);
+      paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_".concat(String.valueOf(paramString))), false, T);
+      String str = paramContext.getPackageName();
+      if (!str.equals(paramString))
+      {
+        U = new j(ad, 2, str);
+        paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_".concat(String.valueOf(str))), false, U);
+        return;
+      }
+      break;
+    case 1: 
+      S = new j(ad, 1, paramString);
+      paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/VAID_".concat(String.valueOf(paramString))), false, S);
       return;
+    case 0: 
       R = new j(ad, 0, null);
       paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAID"), true, R);
       return;
-      S = new j(ad, 1, paramString);
-      paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/VAID_" + paramString), false, S);
-      return;
-      T = new j(ad, 2, paramString);
-      paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_" + paramString), false, T);
-      str = paramContext.getPackageName();
-    } while (str.equals(paramString));
-    U = new j(ad, 2, str);
-    paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_" + str), false, U);
+    }
   }
   
-  /* Error */
   public static i c(Context paramContext)
   {
-    // Byte code:
-    //   0: getstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
-    //   3: ifnonnull +32 -> 35
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: getstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
-    //   12: ifnonnull +20 -> 32
-    //   15: aload_0
-    //   16: invokevirtual 121	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   19: putstatic 123	btmsdkobf/i:mContext	Landroid/content/Context;
-    //   22: new 2	btmsdkobf/i
-    //   25: dup
-    //   26: invokespecial 124	btmsdkobf/i:<init>	()V
-    //   29: putstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
-    //   32: ldc 2
-    //   34: monitorexit
-    //   35: getstatic 63	btmsdkobf/i:ae	Lbtmsdkobf/h;
-    //   38: ifnonnull +41 -> 79
-    //   41: ldc 2
-    //   43: monitorenter
-    //   44: getstatic 63	btmsdkobf/i:ae	Lbtmsdkobf/h;
-    //   47: ifnonnull +29 -> 76
-    //   50: aload_0
-    //   51: invokevirtual 121	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   54: putstatic 123	btmsdkobf/i:mContext	Landroid/content/Context;
-    //   57: invokestatic 127	btmsdkobf/i:e	()V
-    //   60: new 129	btmsdkobf/h
-    //   63: dup
-    //   64: getstatic 123	btmsdkobf/i:mContext	Landroid/content/Context;
-    //   67: invokespecial 132	btmsdkobf/h:<init>	(Landroid/content/Context;)V
-    //   70: putstatic 63	btmsdkobf/i:ae	Lbtmsdkobf/h;
-    //   73: invokestatic 135	btmsdkobf/i:h	()V
-    //   76: ldc 2
-    //   78: monitorexit
-    //   79: getstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
-    //   82: areturn
-    //   83: astore_0
-    //   84: ldc 2
-    //   86: monitorexit
-    //   87: aload_0
-    //   88: athrow
-    //   89: astore_0
-    //   90: ldc 2
-    //   92: monitorexit
-    //   93: aload_0
-    //   94: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	paramContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   9	32	83	finally
-    //   32	35	83	finally
-    //   84	87	83	finally
-    //   44	76	89	finally
-    //   76	79	89	finally
-    //   90	93	89	finally
+    if (ad == null) {
+      try
+      {
+        if (ad == null)
+        {
+          mContext = paramContext.getApplicationContext();
+          ad = new i();
+        }
+      }
+      finally {}
+    }
+    if (ae == null) {
+      try
+      {
+        if (ae == null)
+        {
+          mContext = paramContext.getApplicationContext();
+          e();
+          ae = new h(mContext);
+          h();
+        }
+      }
+      finally {}
+    }
+    return ad;
   }
   
   private void c(int paramInt, String paramString)
@@ -130,9 +101,34 @@ public class i
   
   private static void e()
   {
-    W = new HandlerThread("SqlWorkThread");
-    W.start();
-    X = new jc(W.getLooper());
+    HandlerThread localHandlerThread = new HandlerThread("SqlWorkThread");
+    W = localHandlerThread;
+    localHandlerThread.start();
+    X = new Handler(W.getLooper())
+    {
+      public final void handleMessage(Message arg1)
+      {
+        if (???.what == 11)
+        {
+          int i = ???.getData().getInt("type");
+          ??? = ???.getData().getString("appid");
+          try
+          {
+            i.d(i.i().a(i, ???));
+          }
+          catch (Exception ???)
+          {
+            new StringBuilder("readException:").append(???.toString());
+            ???.printStackTrace();
+          }
+          synchronized (i.j())
+          {
+            i.j().notify();
+            return;
+          }
+        }
+      }
+    };
   }
   
   public static String getProperty(String paramString1, String paramString2)
@@ -169,47 +165,38 @@ public class i
         try
         {
           V.wait(2000L);
-          if (SystemClock.uptimeMillis() - l >= 2000L) {
-            break label178;
-          }
-          switch (paramInt)
-          {
-          case 3: 
-            return;
-          }
         }
         catch (InterruptedException paramString)
         {
           paramString.printStackTrace();
-          continue;
         }
-      }
-      Z = Y;
-      Y = null;
-      continue;
-      if (Y != null)
-      {
-        aa = Y;
-        Y = null;
-      }
-      else
-      {
-        Log.e("VMS_IDLG_SDK_Client", "get vaid failed");
-        continue;
-        if (Y != null)
+        if (SystemClock.uptimeMillis() - l < 2000L) {
+          if (paramInt == 4) {}
+        }
+        switch (paramInt)
         {
-          ab = Y;
+        case 2: 
+          if (Y != null)
+          {
+            ab = Y;
+            Y = null;
+          }
+          break;
+        case 1: 
+          if (Y != null)
+          {
+            aa = Y;
+            Y = null;
+          }
+          break;
+        case 0: 
+          Z = Y;
           Y = null;
-        }
-        for (;;)
-        {
+          continue;
           ac = Y;
           Y = null;
-          break;
-          Log.e("VMS_IDLG_SDK_Client", "get aaid failed");
+          return;
         }
-        label178:
-        Log.d("VMS_IDLG_SDK_Client", "query timeout");
       }
     }
   }
@@ -224,8 +211,9 @@ public class i
     if (!f()) {
       return null;
     }
-    if (Z != null) {
-      return Z;
+    String str = Z;
+    if (str != null) {
+      return str;
     }
     b(0, null);
     if (R == null) {

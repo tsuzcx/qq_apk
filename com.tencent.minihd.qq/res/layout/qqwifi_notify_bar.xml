@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/qqwifi_notify_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/qqwifi_notify_bar" android:background="@drawable/common_tips_bg_blue" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/qqwifi_notify_bar_info" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="5.0dip" android:text="@string/set_pwd_text" android:drawableLeft="@drawable/qq_conversation_call_icon_wifi_nor" android:drawablePadding="10.0dip" android:layout_weight="1.0" style="@style/common_tips_white_font" />
+        <ImageView android:id="@id/qqwifi_notify_bar_close" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/close_pushbanner" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,58 +1,59 @@
 package com.tencent.mm.plugin.favorite;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.gg;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.fav.a.ad;
+import com.tencent.mm.plugin.fav.a.z;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class f
-  implements at
+  implements be
 {
-  private com.tencent.mm.sdk.b.c mEH;
+  private IListener Aqq;
   
   public f()
   {
-    AppMethodBeat.i(20537);
-    this.mEH = new com.tencent.mm.sdk.b.c() {};
-    AppMethodBeat.o(20537);
+    AppMethodBeat.i(24613);
+    this.Aqq = new SubCoreFav.1(this, com.tencent.mm.app.f.hfK);
+    AppMethodBeat.o(24613);
   }
   
   public final void clearPluginData(int paramInt) {}
   
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public final void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(20538);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.Fav.SubCoreFav", "onAccountPostReset updated:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    a.ymk.b(this.mEH);
-    g.b(y.class, new c());
-    g.b(com.tencent.mm.plugin.fav.a.ab.class, new e());
-    AppMethodBeat.o(20538);
+    AppMethodBeat.i(24614);
+    Log.i("MicroMsg.Fav.SubCoreFav", "onAccountPostReset updated:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.Aqq.alive();
+    h.b(z.class, new c());
+    h.b(ad.class, new e());
+    AppMethodBeat.o(24614);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(20539);
-    a.ymk.d(this.mEH);
-    ((n)g.G(n.class)).unregisterFTSUILogic(128);
-    ((n)g.G(n.class)).unregisterFTSUILogic(4192);
-    AppMethodBeat.o(20539);
+    AppMethodBeat.i(24615);
+    this.Aqq.dead();
+    ((n)h.az(n.class)).unregisterFTSUILogic(128);
+    ((n)h.az(n.class)).unregisterFTSUILogic(4192);
+    AppMethodBeat.o(24615);
   }
   
   public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.f
  * JD-Core Version:    0.7.0.1
  */

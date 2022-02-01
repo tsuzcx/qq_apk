@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.core.downloadproxy.api;
 
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -22,98 +23,156 @@ public class TPDownloadParam
     this.extInfoMap = paramMap;
   }
   
-  private String getExtraFormatNodesJsonInfo()
+  private String getExtraFormatNodesJsonInfo(ArrayList<Map<String, Object>> paramArrayList)
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {
+    if (paramArrayList == null) {
       return "[]";
     }
     for (;;)
     {
-      StringBuffer localStringBuffer;
       int i;
       try
       {
-        ArrayList localArrayList = (ArrayList)this.extInfoMap.get("dl_param_format_nodes");
-        localStringBuffer = new StringBuffer().append("[");
+        localObject = new StringBuffer();
+        ((StringBuffer)localObject).append("[");
         i = 0;
-        if (i < localArrayList.size())
+        if (i < paramArrayList.size())
         {
-          Map localMap = (Map)localArrayList.get(i);
-          if (i == localArrayList.size() - 1) {
-            localStringBuffer.append(String.format("{\"dl_param_name\":\"%s\", \"dl_param_bitrate\":%s}", new Object[] { localMap.get("dl_param_name"), localMap.get("dl_param_bitrate") }));
+          Map localMap = (Map)paramArrayList.get(i);
+          int j = paramArrayList.size();
+          if (i == j - 1) {
+            ((StringBuffer)localObject).append(String.format("{\"dl_param_name\":\"%s\", \"dl_param_bitrate\":%s}", new Object[] { localMap.get("dl_param_name"), localMap.get("dl_param_bitrate") }));
           } else {
-            localStringBuffer.append(String.format("{\"dl_param_name\":\"%s\", \"dl_param_bitrate\":%s}, ", new Object[] { localMap.get("dl_param_name"), localMap.get("dl_param_bitrate") }));
+            ((StringBuffer)localObject).append(String.format("{\"dl_param_name\":\"%s\", \"dl_param_bitrate\":%s}, ", new Object[] { localMap.get("dl_param_name"), localMap.get("dl_param_bitrate") }));
           }
         }
+        else
+        {
+          ((StringBuffer)localObject).append("]");
+          paramArrayList = ((StringBuffer)localObject).toString();
+          return paramArrayList;
+        }
       }
-      catch (Throwable localThrowable)
+      catch (Throwable paramArrayList)
       {
-        TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getExtraJsonInfo failed, error:");
+        ((StringBuilder)localObject).append(paramArrayList.toString());
+        TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", ((StringBuilder)localObject).toString());
         return "[]";
       }
-      localStringBuffer.append("]");
-      String str = localStringBuffer.toString();
-      return str;
+      i += 1;
+    }
+  }
+  
+  private String getUrlHostNodesJsonInfo(ArrayList<String> paramArrayList)
+  {
+    if (paramArrayList == null) {
+      return "[]";
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localObject = new StringBuffer();
+        ((StringBuffer)localObject).append("[");
+        i = 0;
+        if (i < paramArrayList.size())
+        {
+          String str = (String)paramArrayList.get(i);
+          if (i == paramArrayList.size() - 1) {
+            ((StringBuffer)localObject).append(String.format("\"%s\"", new Object[] { str }));
+          } else {
+            ((StringBuffer)localObject).append(String.format("\"%s\", ", new Object[] { str }));
+          }
+        }
+        else
+        {
+          ((StringBuffer)localObject).append("]");
+          paramArrayList = ((StringBuffer)localObject).toString();
+          return paramArrayList;
+        }
+      }
+      catch (Throwable paramArrayList)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getArrayListStr failed, error:");
+        ((StringBuilder)localObject).append(paramArrayList.toString());
+        TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", ((StringBuilder)localObject).toString());
+        return "[]";
+      }
       i += 1;
     }
   }
   
   public String getCdnUrls()
   {
-    int i = 0;
     if (this.urlList == null) {
       return "";
     }
     StringBuffer localStringBuffer = new StringBuffer();
+    Map localMap = this.extInfoMap;
+    int i = 0;
     boolean bool;
-    if ((this.extInfoMap != null) && (this.extInfoMap.containsKey("dl_param_enable_expand_donwload_url"))) {
+    if ((localMap != null) && (localMap.containsKey("dl_param_enable_expand_donwload_url"))) {
       bool = ((Boolean)this.extInfoMap.get("dl_param_enable_expand_donwload_url")).booleanValue();
+    } else {
+      bool = false;
     }
-    for (;;)
+    while (i < this.urlList.size())
     {
-      if (i < this.urlList.size())
-      {
-        localStringBuffer.append((String)this.urlList.get(i));
-        if (bool)
-        {
-          if (((String)this.urlList.get(i)).indexOf("?") <= 0) {
-            break label130;
-          }
+      localStringBuffer.append((String)this.urlList.get(i));
+      if (bool) {
+        if (((String)this.urlList.get(i)).indexOf("?") > 0) {
           localStringBuffer.append("&cost=low");
-        }
-        for (;;)
-        {
-          localStringBuffer.append(";");
-          i += 1;
-          break;
-          label130:
+        } else {
           localStringBuffer.append("?cost=low");
         }
       }
-      if (localStringBuffer.length() > 0) {
-        localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
-      }
-      return localStringBuffer.toString();
-      bool = false;
+      localStringBuffer.append(";");
+      i += 1;
     }
+    if (localStringBuffer.length() > 0) {
+      localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
+    }
+    return localStringBuffer.toString();
   }
   
   public int getClipCount()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_play_clip_count")) {
-      return 1;
+    Map localMap = this.extInfoMap;
+    int j = 1;
+    int i = j;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return 1;
+      }
+      i = j;
+      if (this.extInfoMap.containsKey("dl_param_play_clip_count")) {
+        i = ((Integer)this.extInfoMap.get("dl_param_play_clip_count")).intValue();
+      }
     }
-    return ((Integer)this.extInfoMap.get("dl_param_play_clip_count")).intValue();
+    return i;
   }
   
   public int getClipNo()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_play_clip_no")) {
-      return 1;
+    Map localMap = this.extInfoMap;
+    int j = 1;
+    int i = j;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return 1;
+      }
+      i = j;
+      if (this.extInfoMap.containsKey("dl_param_play_clip_no")) {
+        i = ((Integer)this.extInfoMap.get("dl_param_play_clip_no")).intValue();
+      }
     }
-    return ((Integer)this.extInfoMap.get("dl_param_play_clip_no")).intValue();
+    return i;
   }
   
   public int getDlType()
@@ -123,10 +182,11 @@ public class TPDownloadParam
   
   public Object getExtInfo(String paramString)
   {
-    if (this.extInfoMap == null) {
+    Map localMap = this.extInfoMap;
+    if (localMap == null) {
       return null;
     }
-    return this.extInfoMap.get(paramString);
+    return localMap.get(paramString);
   }
   
   public Map<String, Object> getExtInfoMap()
@@ -136,88 +196,140 @@ public class TPDownloadParam
   
   public String getExtraJsonInfo()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {
-      return "";
-    }
-    try
+    Object localObject1 = this.extInfoMap;
+    if (localObject1 != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      Iterator localIterator = this.extInfoMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      if (((Map)localObject1).isEmpty()) {
+        return "";
+      }
+      try
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if ((!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_is_offline")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_extra_info")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_definition")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_enable_expand_donwload_url")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_format_nodes"))) {
-          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        localObject1 = new HashMap();
+        localObject2 = this.extInfoMap.entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+          if ((!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_is_offline")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_extra_info")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_play_definition")) && (!((String)localEntry.getKey()).equalsIgnoreCase("dl_param_enable_expand_donwload_url"))) {
+            ((Map)localObject1).put(localEntry.getKey(), localEntry.getValue());
+          }
         }
+        localObject1 = new JSONObject((Map)localObject1).toString();
+        return localObject1;
       }
-      if (!this.extInfoMap.containsKey("dl_param_format_nodes")) {
-        break label261;
+      catch (Throwable localThrowable)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getExtraJsonInfo failed, error:");
+        ((StringBuilder)localObject2).append(localThrowable.toString());
+        TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", ((StringBuilder)localObject2).toString());
       }
     }
-    catch (Throwable localThrowable)
-    {
-      TPDLProxyLog.e("TPDownloadParam", 0, "tpdlnative", "getExtraJsonInfo failed, error:" + localThrowable.toString());
-      return "";
-    }
-    String str = localThrowable.toString();
-    return String.format("%s,\"%s\":%s}", new Object[] { str.substring(0, str.length() - 1), "dl_param_format_nodes", getExtraFormatNodesJsonInfo() });
-    label261:
-    str = str.toString();
-    return str;
+    return "";
   }
   
   public String getFormat()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_current_format")) {
-      return "";
+    Map localMap = this.extInfoMap;
+    String str2 = "";
+    String str1 = str2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return "";
+      }
+      str1 = str2;
+      if (this.extInfoMap.containsKey("dl_param_current_format")) {
+        str1 = (String)this.extInfoMap.get("dl_param_current_format");
+      }
     }
-    return (String)this.extInfoMap.get("dl_param_current_format");
+    return str1;
   }
   
   public String getKeyid()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_play_keyid")) {
-      return "";
+    Map localMap = this.extInfoMap;
+    String str2 = "";
+    String str1 = str2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return "";
+      }
+      str1 = str2;
+      if (this.extInfoMap.containsKey("dl_param_play_keyid")) {
+        str1 = (String)this.extInfoMap.get("dl_param_play_keyid");
+      }
     }
-    return (String)this.extInfoMap.get("dl_param_play_keyid");
+    return str1;
   }
   
   public Map<String, String> getOfflinePlayExtraInfo()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_play_extra_info")) {
-      return null;
+    Map localMap = this.extInfoMap;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return null;
+      }
+      if (this.extInfoMap.containsKey("dl_param_play_extra_info")) {
+        return (Map)this.extInfoMap.get("dl_param_play_extra_info");
+      }
     }
-    return (Map)this.extInfoMap.get("dl_param_play_extra_info");
+    return null;
   }
   
   public String getPlayDefinition()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_play_definition")) {
-      return "";
+    Map localMap = this.extInfoMap;
+    String str2 = "";
+    String str1 = str2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return "";
+      }
+      str1 = str2;
+      if (this.extInfoMap.containsKey("dl_param_play_definition")) {
+        str1 = (String)this.extInfoMap.get("dl_param_play_definition");
+      }
     }
-    return (String)this.extInfoMap.get("dl_param_play_definition");
+    return str1;
   }
   
   public String getSavaPath()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_save_path")) {
-      return "";
+    Map localMap = this.extInfoMap;
+    String str2 = "";
+    String str1 = str2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return "";
+      }
+      str1 = str2;
+      if (this.extInfoMap.containsKey("dl_param_save_path")) {
+        str1 = (String)this.extInfoMap.get("dl_param_save_path");
+      }
     }
-    return (String)this.extInfoMap.get("dl_param_save_path");
+    return str1;
   }
   
   public long getTotalDurationMS()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_file_duration")) {
-      return 0L;
+    Map localMap = this.extInfoMap;
+    long l2 = 0L;
+    long l1 = l2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return 0L;
+      }
+      l1 = l2;
+      if (this.extInfoMap.containsKey("dl_param_file_duration")) {
+        l1 = ((Long)this.extInfoMap.get("dl_param_file_duration")).longValue();
+      }
     }
-    return ((Long)this.extInfoMap.get("dl_param_file_duration")).longValue();
+    return l1;
   }
   
   public ArrayList<String> getUrlList()
@@ -227,28 +339,60 @@ public class TPDownloadParam
   
   public String getVid()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_vid")) {
-      return "";
+    Map localMap = this.extInfoMap;
+    String str2 = "";
+    String str1 = str2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return "";
+      }
+      str1 = str2;
+      if (this.extInfoMap.containsKey("dl_param_vid")) {
+        str1 = (String)this.extInfoMap.get("dl_param_vid");
+      }
     }
-    return (String)this.extInfoMap.get("dl_param_vid");
+    return str1;
   }
   
   public boolean isAdaptive()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {
-      return false;
+    Map localMap = this.extInfoMap;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return false;
+      }
+      bool1 = bool2;
+      if (this.extInfoMap.containsKey("dl_param_adaptive_type"))
+      {
+        bool1 = bool2;
+        if (((Integer)this.extInfoMap.get("dl_param_adaptive_type")).intValue() > 0) {
+          bool1 = true;
+        }
+      }
     }
-    return (this.extInfoMap.containsKey("dl_param_adaptive_type")) && (((Integer)this.extInfoMap.get("dl_param_adaptive_type")).intValue() > 0);
+    return bool1;
   }
   
   public boolean isOffline()
   {
-    if ((this.extInfoMap == null) || (this.extInfoMap.isEmpty())) {}
-    while (!this.extInfoMap.containsKey("dl_param_is_offline")) {
-      return false;
+    Map localMap = this.extInfoMap;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return false;
+      }
+      bool1 = bool2;
+      if (this.extInfoMap.containsKey("dl_param_is_offline")) {
+        bool1 = ((Boolean)this.extInfoMap.get("dl_param_is_offline")).booleanValue();
+      }
     }
-    return ((Boolean)this.extInfoMap.get("dl_param_is_offline")).booleanValue();
+    return bool1;
   }
   
   public void setDlType(int paramInt)
@@ -268,7 +412,7 @@ public class TPDownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadParam
  * JD-Core Version:    0.7.0.1
  */

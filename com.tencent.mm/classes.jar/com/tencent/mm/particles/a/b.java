@@ -10,39 +10,39 @@ import android.view.animation.Interpolator;
 public abstract class b
 {
   public int alpha;
-  private final Matrix asO = new Matrix();
-  private final Paint ghM = new Paint(1);
-  public long ghN;
-  public float ghO;
-  public float ghP;
-  public float ghQ;
-  public float ghR;
-  public Long ghS;
-  public Long ghT;
-  public float ghU;
-  public float ghV;
-  public Long ghW;
-  public float ghX;
-  public float ghY;
-  public float ghZ;
-  public Interpolator ghc;
-  public Rect ghd;
-  public float ghi;
-  public float ghk;
-  public Float ghm;
-  public Float gho;
-  public float ghu;
-  public Float ghw;
-  public long ghy;
-  public float gia;
-  public float gib;
-  public boolean gic;
-  public boolean gid;
-  public VelocityTracker gie;
-  public float gif;
-  public float gig;
-  public float gih;
-  public float gii;
+  public VelocityTracker doL;
+  private final Matrix matrix = new Matrix();
+  public float pwF;
+  public Float pwH;
+  public long pwJ;
+  private final Paint pwX = new Paint(1);
+  public long pwY;
+  public float pwZ;
+  public Interpolator pwn;
+  public Rect pwo;
+  public float pwt;
+  public float pwv;
+  public Float pwx;
+  public Float pwz;
+  public float pxa;
+  public float pxb;
+  public float pxc;
+  public Long pxd;
+  public Long pxe;
+  public float pxf;
+  public float pxg;
+  public Long pxh;
+  public float pxi;
+  public float pxj;
+  public float pxk;
+  public float pxl;
+  public float pxm;
+  public boolean pxn;
+  public boolean pxo;
+  public float pxp;
+  public float pxq;
+  public float pxr;
+  public float pxs;
   public boolean terminated;
   
   public static float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, Long paramLong1, Float paramFloat)
@@ -139,10 +139,10 @@ public abstract class b
   public final void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramCanvas.save();
-    paramCanvas.clipRect(this.ghd);
-    this.asO.reset();
-    this.ghM.setAlpha(this.alpha);
-    a(paramCanvas, this.asO, this.ghM, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    paramCanvas.clipRect(this.pwo);
+    this.matrix.reset();
+    this.pwX.setAlpha(this.alpha);
+    a(paramCanvas, this.matrix, this.pwX, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     paramCanvas.restore();
   }
   
@@ -152,61 +152,61 @@ public abstract class b
   
   public abstract int getWidth();
   
-  public final void j(Rect paramRect)
+  public void reset()
   {
-    this.ghd = paramRect;
-    this.ghS = a(this.ghm, this.ghQ, this.ghi);
-    this.ghT = a(this.gho, this.ghR, this.ghk);
-    this.ghW = a(this.ghw, this.ghV, this.ghu);
-    if (this.ghX == 0.0F) {
-      if (this.ghy < 0L) {
+    this.pwY = 0L;
+    this.pxa = 0.0F;
+    this.pwZ = 0.0F;
+    this.pxc = 0.0F;
+    this.pxb = 0.0F;
+    this.pwv = 0.0F;
+    this.pwt = 0.0F;
+    this.pwz = null;
+    this.pwx = null;
+    this.pxe = null;
+    this.pxd = null;
+    this.pxf = 0.0F;
+    this.pxg = 0.0F;
+    this.pwF = 0.0F;
+    this.pwH = null;
+    this.pxh = null;
+    this.pwJ = 0L;
+    this.pxi = 0.0F;
+    this.pxj = 0.0F;
+    this.pwn = null;
+    this.pxl = 0.0F;
+    this.pxk = 0.0F;
+    this.pxm = 0.0F;
+    this.alpha = 255;
+    this.pxn = false;
+    this.terminated = false;
+  }
+  
+  public final void u(Rect paramRect)
+  {
+    this.pwo = paramRect;
+    this.pxd = a(this.pwx, this.pxb, this.pwt);
+    this.pxe = a(this.pwz, this.pxc, this.pwv);
+    this.pxh = a(this.pwH, this.pxg, this.pwF);
+    if (this.pxi == 0.0F) {
+      if (this.pwJ < 0L) {
         break label199;
       }
     }
     label199:
-    for (float f = (float)this.ghy;; f = 9.223372E+018F)
+    for (float f = (float)this.pwJ;; f = 9.223372E+018F)
     {
-      this.ghX = f;
-      this.ghX = Math.min((float)a(this.ghO, this.ghQ, this.ghi, this.ghS, this.ghm, paramRect.left - getWidth(), paramRect.right), this.ghX);
-      this.ghX = Math.min((float)a(this.ghP, this.ghR, this.ghk, this.ghT, this.gho, paramRect.top - getHeight(), paramRect.bottom), this.ghX);
-      this.ghM.setAlpha(this.alpha);
+      this.pxi = f;
+      this.pxi = Math.min((float)a(this.pwZ, this.pxb, this.pwt, this.pxd, this.pwx, paramRect.left - getWidth(), paramRect.right), this.pxi);
+      this.pxi = Math.min((float)a(this.pxa, this.pxc, this.pwv, this.pxe, this.pwz, paramRect.top - getHeight(), paramRect.bottom), this.pxi);
+      this.pwX.setAlpha(this.alpha);
       return;
     }
-  }
-  
-  public void reset()
-  {
-    this.ghN = 0L;
-    this.ghP = 0.0F;
-    this.ghO = 0.0F;
-    this.ghR = 0.0F;
-    this.ghQ = 0.0F;
-    this.ghk = 0.0F;
-    this.ghi = 0.0F;
-    this.gho = null;
-    this.ghm = null;
-    this.ghT = null;
-    this.ghS = null;
-    this.ghU = 0.0F;
-    this.ghV = 0.0F;
-    this.ghu = 0.0F;
-    this.ghw = null;
-    this.ghW = null;
-    this.ghy = 0L;
-    this.ghX = 0.0F;
-    this.ghY = 0.0F;
-    this.ghc = null;
-    this.gia = 0.0F;
-    this.ghZ = 0.0F;
-    this.gib = 0.0F;
-    this.alpha = 255;
-    this.gic = false;
-    this.terminated = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.particles.a.b
  * JD-Core Version:    0.7.0.1
  */

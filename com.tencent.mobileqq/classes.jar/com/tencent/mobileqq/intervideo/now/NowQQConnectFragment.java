@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import atdh;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManager;
+import com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManagerApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class NowQQConnectFragment
@@ -15,7 +18,7 @@ public class NowQQConnectFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = getActivity();
+    paramViewGroup = getBaseActivity();
     if (paramViewGroup == null)
     {
       QLog.e("NowQQConnectFragment", 1, "activity is null");
@@ -27,13 +30,13 @@ public class NowQQConnectFragment
       QLog.e("NowQQConnectFragment", 1, "argsBundle is null");
       return paramLayoutInflater;
     }
-    ((atdh)atdh.a().getManager(306)).a(paramViewGroup, paramBundle);
+    ((IDynamicNowManager)((QQAppInterface)((IDynamicNowManagerApi)QRoute.api(IDynamicNowManagerApi.class)).getQQAppInterface()).getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a(paramViewGroup, paramBundle);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowQQConnectFragment
  * JD-Core Version:    0.7.0.1
  */

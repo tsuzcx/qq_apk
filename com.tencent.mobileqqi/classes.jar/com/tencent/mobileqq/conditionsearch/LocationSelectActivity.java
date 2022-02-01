@@ -29,12 +29,12 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnDismissListener;
+import flr;
 import fls;
 import flt;
 import flu;
 import flv;
 import flw;
-import flx;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -57,10 +57,10 @@ public class LocationSelectActivity
   public long a;
   public Handler a;
   ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new flx(this);
+  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new flw(this);
   private BaseAddress jdField_a_of_type_ComTencentMobileqqConditionsearchDataBaseAddress;
-  IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = new flv(this);
-  IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = new flu(this);
+  IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = new flu(this);
+  IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = new flt(this);
   public IphonePickerView a;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public ActionSheet a;
@@ -80,7 +80,7 @@ public class LocationSelectActivity
   public LocationSelectActivity()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsHandler = new flw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new flv(this);
   }
   
   private int a(ArrayList paramArrayList, String paramString)
@@ -253,12 +253,12 @@ public class LocationSelectActivity
   
   private void h()
   {
-    b(2131561977, new fls(this));
+    b(2131561977, new flr(this));
     d(true);
     this.k.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232994));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232995));
-    this.c = ((FormSimpleItem)findViewById(2131232996));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232993));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232994));
+    this.c = ((FormSimpleItem)findViewById(2131232995));
     Object localObject;
     if (this.j == 0)
     {
@@ -548,12 +548,12 @@ public class LocationSelectActivity
     {
     default: 
       return;
-    case 2131232994: 
+    case 2131232993: 
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004246", "0X8004246", 0, 0, "", "", "", "");
       this.jdField_b_of_type_Boolean = true;
-      b(new flt(this));
+      b(new fls(this));
       return;
-    case 2131232995: 
+    case 2131232994: 
       paramView = new Intent(this, CountrySelectActivity.class);
       paramView.putExtra("key_country_code", this.d);
       startActivityForResult(paramView, 1000);

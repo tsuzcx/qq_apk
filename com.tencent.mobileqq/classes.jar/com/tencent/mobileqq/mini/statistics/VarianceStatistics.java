@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.statistics;
 public class VarianceStatistics
   implements Statistic
 {
-  private int mIndex;
+  private int mIndex = 0;
   private final float[] mSamples;
   
   public VarianceStatistics(int paramInt)
@@ -13,16 +13,24 @@ public class VarianceStatistics
   
   public void addSample(float paramFloat)
   {
-    this.mSamples[(this.mIndex % this.mSamples.length)] = paramFloat;
-    this.mIndex += 1;
+    float[] arrayOfFloat = this.mSamples;
+    int i = this.mIndex;
+    arrayOfFloat[(i % arrayOfFloat.length)] = paramFloat;
+    this.mIndex = (i + 1);
   }
   
   public float calculate()
   {
-    if (this.mIndex < this.mSamples.length) {}
-    for (int i = this.mIndex; i == 0; i = this.mSamples.length) {
+    int i = this.mIndex;
+    float[] arrayOfFloat = this.mSamples;
+    if (i >= arrayOfFloat.length) {
+      i = arrayOfFloat.length;
+    }
+    float f2 = 0.0F;
+    if (i == 0) {
       return 0.0F;
     }
+    int k = 0;
     int j = 0;
     float f1 = 0.0F;
     while (j < i)
@@ -30,16 +38,17 @@ public class VarianceStatistics
       f1 += this.mSamples[j];
       j += 1;
     }
-    float f2 = f1 / i;
-    f1 = 0.0F;
-    j = 0;
+    float f3 = i;
+    float f4 = f1 / f3;
+    j = k;
+    f1 = f2;
     while (j < i)
     {
-      float f3 = this.mSamples[j] - f2;
-      f1 += f3 * f3;
+      f2 = this.mSamples[j] - f4;
+      f1 += f2 * f2;
       j += 1;
     }
-    return f1 / i;
+    return f1 / f3;
   }
   
   public void reset()
@@ -49,7 +58,7 @@ public class VarianceStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.statistics.VarianceStatistics
  * JD-Core Version:    0.7.0.1
  */

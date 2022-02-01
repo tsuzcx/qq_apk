@@ -21,18 +21,18 @@ public class WebAddress
   
   static
   {
-    AppMethodBeat.i(86234);
+    AppMethodBeat.i(155349);
     sAddressPattern = Pattern.compile("(?:(http|https|file)\\:\\/\\/)?(?:([-A-Za-z0-9$_.+!*'(),;?&=]+(?:\\:[-A-Za-z0-9$_.+!*'(),;?&=]+)?)@)?([a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_-][a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_\\.-]*|\\[[0-9a-fA-F:\\.]+\\])?(?:\\:([0-9]*))?(\\/?[^#]*)?.*", 2);
-    AppMethodBeat.o(86234);
+    AppMethodBeat.o(155349);
   }
   
   public WebAddress(String paramString)
   {
-    AppMethodBeat.i(86232);
+    AppMethodBeat.i(155347);
     if (paramString == null)
     {
       paramString = new NullPointerException();
-      AppMethodBeat.o(86232);
+      AppMethodBeat.o(155347);
       throw paramString;
     }
     this.mScheme = "";
@@ -80,20 +80,20 @@ public class WebAddress
           if (this.mScheme.equals("")) {
             this.mScheme = "http";
           }
-          AppMethodBeat.o(86232);
+          AppMethodBeat.o(155347);
           return;
         }
       }
       catch (NumberFormatException paramString)
       {
-        paramString = new WebAddress.ParseException("Bad port");
-        AppMethodBeat.o(86232);
+        paramString = new ParseException("Bad port");
+        AppMethodBeat.o(155347);
         throw paramString;
       }
       this.mPath = "/".concat(String.valueOf(paramString));
       continue;
-      paramString = new WebAddress.ParseException("Bad address");
-      AppMethodBeat.o(86232);
+      paramString = new ParseException("Bad address");
+      AppMethodBeat.o(155347);
       throw paramString;
       label283:
       if (this.mPort == -1) {
@@ -158,7 +158,7 @@ public class WebAddress
   
   public String toString()
   {
-    AppMethodBeat.i(86233);
+    AppMethodBeat.i(155348);
     String str2 = "";
     if ((this.mPort == 443) || (!this.mScheme.equals("https")))
     {
@@ -178,13 +178,24 @@ public class WebAddress
       str2 = this.mAuthInfo + "@";
     }
     String str1 = this.mScheme + "://" + str2 + this.mHost + str1 + this.mPath;
-    AppMethodBeat.o(86233);
+    AppMethodBeat.o(155348);
     return str1;
+  }
+  
+  public static class ParseException
+    extends RuntimeException
+  {
+    public String response;
+    
+    ParseException(String paramString)
+    {
+      this.response = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.util.WebAddress
  * JD-Core Version:    0.7.0.1
  */

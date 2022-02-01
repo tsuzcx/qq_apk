@@ -10,23 +10,23 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionRa
 public final class g
   extends a<BaseDrawActionArg>
 {
-  private static g hfz;
+  private static g qUa;
   
   static
   {
-    AppMethodBeat.i(103644);
-    hfz = new g();
-    AppMethodBeat.o(103644);
+    AppMethodBeat.i(145327);
+    qUa = new g();
+    AppMethodBeat.o(145327);
   }
   
-  public static g aye()
+  public static g ckg()
   {
-    return hfz;
+    return qUa;
   }
   
-  public final <T> T zC(String paramString)
+  public final <T> T WS(String paramString)
   {
-    AppMethodBeat.i(103643);
+    AppMethodBeat.i(145326);
     Object localObject = null;
     if ("linear".equalsIgnoreCase(paramString)) {
       localObject = new RealSetFillStyleActionLinearArg();
@@ -34,7 +34,7 @@ public final class g
     for (;;)
     {
       ((BaseDrawActionArg)localObject).method = paramString;
-      AppMethodBeat.o(103643);
+      AppMethodBeat.o(145326);
       return localObject;
       if ("radial".equalsIgnoreCase(paramString)) {
         localObject = new RealSetFillStyleActionRadialArg();
@@ -48,7 +48,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.g
  * JD-Core Version:    0.7.0.1
  */

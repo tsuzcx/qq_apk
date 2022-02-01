@@ -23,15 +23,15 @@ public final class zzax
   
   public final Bundle getGetServiceRequestExtraArgs()
   {
-    AppMethodBeat.i(50486);
+    AppMethodBeat.i(88381);
     if (this.zzdv == null)
     {
       localBundle = new Bundle();
-      AppMethodBeat.o(50486);
+      AppMethodBeat.o(88381);
       return localBundle;
     }
     Bundle localBundle = this.zzdv.toBundle();
-    AppMethodBeat.o(50486);
+    AppMethodBeat.o(88381);
     return localBundle;
   }
   
@@ -57,7 +57,7 @@ public final class zzax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzax
  * JD-Core Version:    0.7.0.1
  */

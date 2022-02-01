@@ -1,216 +1,228 @@
 package com.tencent.mm.plugin.appbrand.game.g;
 
-import a.y;
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.magicbrush.MagicBrushView;
-import com.tencent.magicbrush.c.g;
+import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.widget.b.c;
+import com.tencent.mm.media.widget.c.c;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.IOException;
+import com.tencent.mm.plugin.appbrand.game.f.a.e;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
+import kotlin.ah;
+import kotlin.g.a.b;
 
 final class a$b
   extends a.a
 {
-  c huM = null;
-  b.c huN = null;
-  private VideoTransPara huO = null;
+  c rtn = null;
+  b.b rto = null;
+  private VideoTransPara rtp = null;
   
   a$b(MagicBrushView paramMagicBrushView)
   {
     super(paramMagicBrushView, (byte)0);
   }
   
-  final void a(b.c paramc)
+  final void a(b.b paramb)
   {
     try
     {
-      this.huN = paramc;
+      this.rto = paramb;
       return;
     }
-    finally {}
+    finally
+    {
+      paramb = finally;
+      throw paramb;
+    }
   }
   
-  @SuppressLint({"DefaultLocale"})
   final void a(c.b paramb, d<String> paramd)
   {
-    AppMethodBeat.i(143208);
-    Object localObject = (MagicBrushView)this.huL.get();
+    AppMethodBeat.i(45315);
+    Object localObject = (MagicBrushView)this.rtm.get();
     if (localObject == null)
     {
       paramd.a(1, 111, "magic brush view not found", "");
-      AppMethodBeat.o(143208);
+      AppMethodBeat.o(45315);
       return;
     }
-    com.tencent.mm.plugin.appbrand.game.f.a.b localb = (com.tencent.mm.plugin.appbrand.game.f.a.b)((MagicBrushView)localObject).getTextureView();
-    if (localb == null)
+    localObject = (e)((MagicBrushView)localObject).getRendererView();
+    if (localObject == null)
     {
       paramd.a(1, 111, "texture view not found", "");
-      AppMethodBeat.o(143208);
+      AppMethodBeat.o(45315);
       return;
     }
-    if (!localb.isAvailable()) {
+    if (!((e)localObject).isAvailable()) {
       paramd.a(1, 111, "view not prepared", "");
     }
-    this.huO = new VideoTransPara();
-    this.huO.videoBitrate = paramb.bitrate;
-    this.huO.width = paramb.width;
-    this.huO.height = paramb.height;
-    this.huO.fps = paramb.fps;
-    this.huO.fzU = paramb.gop;
-    this.huO.fzW = 1;
-    this.huO.fzV = 2;
-    this.huO.duration = paramb.duration;
-    this.huO.fzT = 64000;
-    this.huO.audioSampleRate = 44100;
-    this.huO.fAg = 200;
-    ab.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: record param is %s", new Object[] { this.huO });
-    this.huM = new c(this.huO, localb.getAbsSurfaceRenderer(), localb.getEGLContext(), localb.getPreviewTextureId(), new a.b.1(this));
-    if (paramb.hvy == null)
+    this.rtp = new VideoTransPara();
+    this.rtp.videoBitrate = paramb.bitrate;
+    this.rtp.width = paramb.width;
+    this.rtp.height = paramb.height;
+    this.rtp.fps = paramb.fps;
+    this.rtp.nCd = paramb.gop;
+    this.rtp.oBP = 1;
+    this.rtp.oBO = 2;
+    this.rtp.duration = paramb.duration;
+    this.rtp.audioBitrate = 64000;
+    this.rtp.audioSampleRate = 44100;
+    this.rtp.oCa = 200;
+    Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: record param is %s", new Object[] { this.rtp });
+    this.rtn = new c(this.rtp, ((e)localObject).getAbsSurfaceRenderer(), ((e)localObject).getEGLContext(), ((e)localObject).getPreviewTextureId(), new com.tencent.mm.media.widget.c.c.a()
     {
-      AppMethodBeat.o(143208);
-      return;
-    }
-    if (paramb.hvx == null)
-    {
-      AppMethodBeat.o(143208);
-      return;
-    }
-    localObject = ((MagicBrushView)localObject).getTextureView().getBitmap();
-    if (localObject == null) {
-      ab.e("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: can not get current bitmap! just a hint");
-    }
-    for (;;)
-    {
-      this.huM.setMute(true);
-      this.huM.s(localb.getSurfaceWidth(), localb.getSurfaceHeight(), this.huO.width, this.huO.height);
-      this.huM.setFilePath(paramb.hvy.getAbsolutePath());
-      this.huM.km(0);
-      int i = this.huM.b(0, false, 0);
-      if (i == 0) {
-        break;
+      public final void ik(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(45312);
+        try
+        {
+          if (a.b.this.rto != null) {
+            a.b.this.rto.jE(paramAnonymousLong / 1000L);
+          }
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(45312);
+        }
       }
+    });
+    if (paramb.ruf == null)
+    {
+      AppMethodBeat.o(45315);
+      return;
+    }
+    if (paramb.rue == null)
+    {
+      AppMethodBeat.o(45315);
+      return;
+    }
+    Log.e("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: can not get current bitmap! just a hint");
+    this.rtn.setMute(true);
+    this.rtn.A(((e)localObject).getSurfaceWidth(), ((e)localObject).getSurfaceHeight(), this.rtp.width, this.rtp.height);
+    this.rtn.setFilePath(paramb.ruf.coT());
+    this.rtn.uw(0);
+    int i = this.rtn.b(0, false, 0);
+    if (i != 0)
+    {
       paramd.a(1, 110, String.format("media recoder start failed: %d", new Object[] { Integer.valueOf(i) }), "");
-      AppMethodBeat.o(143208);
+      AppMethodBeat.o(45315);
       return;
-      try
-      {
-        com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject, 70, Bitmap.CompressFormat.JPEG, paramb.hvx.getAbsolutePath(), true);
-      }
-      catch (IOException localIOException)
-      {
-        ab.printErrStackTrace("MicroMsg.BaseGameRecord.HardwareMgrImp", localIOException, "hy: save thumb bitmap failed!", new Object[0]);
-      }
     }
-    this.huM.fcJ = true;
-    localb.setOnTextureDrawFinishDelegate(new a.f.a.b() {});
-    ab.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: start succ!");
+    this.rtn.nLV = true;
+    ((e)localObject).setOnTextureDrawFinishDelegate(new b() {});
+    Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: start succ!");
     paramd.a(0, 0, "ok", "");
-    AppMethodBeat.o(143208);
+    AppMethodBeat.o(45315);
   }
   
   final void a(final d<String> paramd)
   {
-    AppMethodBeat.i(143209);
-    if (this.huM == null)
+    AppMethodBeat.i(45316);
+    if (this.rtn == null)
     {
       paramd.a(1, -1, "no recorder", "");
-      AppMethodBeat.o(143209);
+      AppMethodBeat.o(45316);
       return;
     }
-    this.huM.u(new Runnable()
+    this.rtn.J(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(143207);
-        ab.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: stopRecord, stop callback");
-        a.b.this.huM.clear();
+        AppMethodBeat.i(45314);
+        Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: stopRecord, stop callback");
+        a.b.this.rtn.clear();
         paramd.a(0, 0, "ok", "");
-        AppMethodBeat.o(143207);
+        AppMethodBeat.o(45314);
       }
     });
-    AppMethodBeat.o(143209);
-  }
-  
-  final void aAW()
-  {
-    try
-    {
-      this.huN = null;
-      return;
-    }
-    finally {}
-  }
-  
-  final VideoTransPara aAX()
-  {
-    return this.huO;
+    AppMethodBeat.o(45316);
   }
   
   final void b(d<String> paramd)
   {
-    AppMethodBeat.i(143210);
-    if (this.huM == null)
+    AppMethodBeat.i(45317);
+    if (this.rtn == null)
     {
       paramd.a(1, -1, "no recorder", "");
-      AppMethodBeat.o(143210);
+      AppMethodBeat.o(45317);
       return;
     }
-    this.huM.pause();
+    this.rtn.pause();
     paramd.a(0, 0, "ok", "");
-    AppMethodBeat.o(143210);
+    AppMethodBeat.o(45317);
   }
   
   final void c(d<String> paramd)
   {
-    AppMethodBeat.i(143211);
-    if (this.huM == null)
+    AppMethodBeat.i(45318);
+    if (this.rtn == null)
     {
       paramd.a(1, -1, "no recorder", "");
-      AppMethodBeat.o(143211);
+      AppMethodBeat.o(45318);
       return;
     }
-    Object localObject = (MagicBrushView)this.huL.get();
+    Object localObject = (MagicBrushView)this.rtm.get();
     if (localObject == null)
     {
       paramd.a(1, 111, "magic brush view not found", "");
-      AppMethodBeat.o(143211);
+      AppMethodBeat.o(45318);
       return;
     }
-    localObject = (com.tencent.mm.plugin.appbrand.game.f.a.b)((MagicBrushView)localObject).getTextureView();
+    localObject = (e)((MagicBrushView)localObject).getRendererView();
     if (localObject == null)
     {
       paramd.a(1, 111, "texture view not found", "");
-      AppMethodBeat.o(143211);
+      AppMethodBeat.o(45318);
       return;
     }
-    if (!((com.tencent.mm.plugin.appbrand.game.f.a.b)localObject).isAvailable()) {
+    if (!((e)localObject).isAvailable()) {
       paramd.a(1, 111, "view not prepared", "");
     }
-    this.huM.G(0, ((com.tencent.mm.plugin.appbrand.game.f.a.b)localObject).getSurfaceWidth(), ((com.tencent.mm.plugin.appbrand.game.f.a.b)localObject).getSurfaceHeight());
+    this.rtn.ae(0, ((e)localObject).getSurfaceWidth(), ((e)localObject).getSurfaceHeight());
     paramd.a(0, 0, "ok", "");
-    AppMethodBeat.o(143211);
+    AppMethodBeat.o(45318);
+  }
+  
+  final void cpl()
+  {
+    try
+    {
+      this.rto = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  final boolean cpm()
+  {
+    return true;
+  }
+  
+  final VideoTransPara cpn()
+  {
+    return this.rtp;
   }
   
   final void d(d<String> paramd)
   {
-    AppMethodBeat.i(143212);
-    if (this.huM != null)
+    AppMethodBeat.i(45319);
+    if (this.rtn != null)
     {
-      this.huM.cancel();
-      this.huM.clear();
+      this.rtn.cancel();
+      this.rtn.clear();
     }
     paramd.a(0, 0, "ok", "");
-    AppMethodBeat.o(143212);
+    AppMethodBeat.o(45319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.g.a.b
  * JD-Core Version:    0.7.0.1
  */

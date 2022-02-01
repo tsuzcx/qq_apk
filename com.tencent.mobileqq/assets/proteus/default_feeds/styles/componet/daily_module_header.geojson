@@ -26,73 +26,56 @@
             "view_type":"ReadInjoyAsynImageView",
             "view_id":"id_module_image",
             "margin_left":"12",
-            "margin_top":"13",
+            "margin_top":"11.5",
             "height":{
                 "type":"relative",
-                "value":"18"
+                "value":"21"
             },
             "width":{
                 "type":"relative",
-                "value":"18"
+                "value":"230"
             },
             "attributes":{
-                "setImageWithURLString:lineup:":["$module_image_url","1"]
-            }
-        },
-        {
-            "view_type":"UILabel",
-            "view_id":"id_module_name",
-            "right_of_view":"id_module_image",
-            "margin_left":"5",
-            "margin_top":"6",
-            "height":{
-                "type":"relative",
-                "value":"32"
-            },
-            "width":{
-                "type":"wrap_content"
-            },
-            "attributes":{
-                "setText:":"$module_name",
-                "setTextColorString:":"#262626",
-                "setBoldFontSizeString:":"17"
+                "setImageWithURLString:lineup:":["$module_image_url_new","1"],
+                "setScaleType:": "1"
             }
         },
         {
             "view_type":"ReadInjoyAsynImageView",
             "view_id":"id_module_sub_image",
             "align_parent_right":"YES",
-            "margin_right":"16",
-            "margin_top":"14",
+            "visible_depend_on_brother":"id_module_sub_name",
+            "margin_right":"20",
+            "margin_top":"17.5",
             "height":{
                 "type":"relative",
-                "value":"16"
+                "value":"9.5"
             },
             "width":{
                 "type":"relative",
-                "value":"8"
+                "value":"5.5"
             },
             "attributes":{
-                "setImageWithURLString:lineup:":["$module_sub_image_url","1"]
+                "setImageWithURLString:lineup:":["https://pub.idqqimg.com/pc/misc/files/20200609/92f337ef0f52465ba034148a2c38b56b.png","1"]
             }
         },
         {
             "view_type":"UILabel",
             "view_id":"id_module_sub_name",
             "left_of_view":"id_module_sub_image",
-            "margin_right":"5",
-            "margin_top":"12",
+            "margin_right":"6",
+            "margin_top":"13",
             "height":{
                 "type":"relative",
-                "value":"20"
+                "value":"18"
             },
             "width":{
                 "type":"wrap_content"
             },
             "attributes":{
-                "setText:":"$module_sub_name",
-                "setTextColorString:":"#FF4222",
-                "setFontSizeString:":"14"
+                "setText:":"$module_sub_name_new",
+                "setTextColorString:":"#B0B3BF",
+                "setFontSizeString:":"12"
             }
         }
     ]

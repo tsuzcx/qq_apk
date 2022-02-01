@@ -1,62 +1,94 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import android.text.TextUtils;
-import bfkr;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import nop;
-import qyj;
+import java.util.Iterator;
+import java.util.List;
 
-public class ADBaseAppDownloadManager$2
+class ADBaseAppDownloadManager$2
   implements Runnable
 {
-  public ADBaseAppDownloadManager$2(nop paramnop, qyj paramqyj, int paramInt) {}
+  ADBaseAppDownloadManager$2(ADBaseAppDownloadManager paramADBaseAppDownloadManager, DownloadInfo paramDownloadInfo, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Qyj.c;
-    int i;
-    int j;
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 3)))
+    try
     {
-      localObject = bfkr.a().a((String)localObject);
-      if (localObject != null)
+      if (this.this$0.c.size() == 0) {
+        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ADBaseAppDownloadManager", "notifyState error : empty downloads");
+      }
+      Object localObject1 = this.this$0.c.iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);
-        j = ((TMAssistantDownloadTaskInfo)localObject).mState;
-        if ((this.jdField_a_of_type_Int != 3) || (j != 3)) {
-          break label122;
+        ADVideoAppDownloadData localADVideoAppDownloadData = (ADVideoAppDownloadData)((Iterator)localObject1).next();
+        localObject2 = localADVideoAppDownloadData.d;
+        if ((localObject2 != null) && (localADVideoAppDownloadData.a != null))
+        {
+          if (localADVideoAppDownloadData.d.equals(this.a.e))
+          {
+            localADVideoAppDownloadData.f = this.b;
+            localADVideoAppDownloadData.g = this.a.t;
+            localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("notifyState success : progress = ");
+            ((StringBuilder)localObject2).append(this.a.t);
+            ((StringBuilder)localObject2).append(" packageName = ");
+            ((StringBuilder)localObject2).append(localADVideoAppDownloadData.d);
+            ((StringBuilder)localObject2).append(" appId = ");
+            ((StringBuilder)localObject2).append(localADVideoAppDownloadData.a);
+            ((IRIJAdLogService)localObject1).d("ADBaseAppDownloadManager", ((StringBuilder)localObject2).toString());
+            if (localADVideoAppDownloadData.k != null)
+            {
+              localADVideoAppDownloadData.k.downloadState = this.b;
+              localADVideoAppDownloadData.k.progress = this.a.t;
+            }
+            if (localADVideoAppDownloadData.p != null)
+            {
+              localADVideoAppDownloadData.p.G = this.b;
+              localADVideoAppDownloadData.p.H = this.a.t;
+            }
+            if (localADVideoAppDownloadData.o != null)
+            {
+              localADVideoAppDownloadData.o.ap = this.b;
+              localADVideoAppDownloadData.o.ao = this.a.t;
+            }
+            localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("progress ");
+            ((StringBuilder)localObject2).append(this.a.t);
+            ((IRIJAdLogService)localObject1).d("ADBaseAppDownloadManager", ((StringBuilder)localObject2).toString());
+            this.this$0.a(localADVideoAppDownloadData, this.b, this.a.t);
+          }
         }
-        this.this$0.c(this.jdField_a_of_type_Qyj);
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qyj.d;
-        ((DownloadInfo)localObject).f = i;
-        this.this$0.a((DownloadInfo)localObject, 4);
+        else
+        {
+          localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("notifyState error : packageName = ");
+          localStringBuilder.append(localADVideoAppDownloadData.d);
+          localStringBuilder.append(" appId = ");
+          localStringBuilder.append(localADVideoAppDownloadData.a);
+          ((IRIJAdLogService)localObject2).d("ADBaseAppDownloadManager", localStringBuilder.toString());
+        }
       }
-    }
-    label122:
-    do
-    {
       return;
-      if ((this.jdField_a_of_type_Int == 4) && (j == 2))
-      {
-        this.this$0.a(this.jdField_a_of_type_Qyj);
-        localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qyj.d;
-        ((DownloadInfo)localObject).f = i;
-        this.this$0.a((DownloadInfo)localObject, 3);
-        return;
-      }
-    } while (j != 4);
-    localObject = new DownloadInfo();
-    ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qyj.d;
-    ((DownloadInfo)localObject).f = 100;
-    this.this$0.a((DownloadInfo)localObject, 5);
+    }
+    catch (Exception localException)
+    {
+      localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("notifyState error ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      ((IRIJAdLogService)localObject1).d("ADBaseAppDownloadManager", ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

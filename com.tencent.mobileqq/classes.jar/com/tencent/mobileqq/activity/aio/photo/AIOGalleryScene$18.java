@@ -1,36 +1,18 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aghx;
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class AIOGalleryScene$18
-  implements Runnable
+class AIOGalleryScene$18
+  implements DialogInterface.OnCancelListener
 {
-  public AIOGalleryScene$18(aghx paramaghx, File paramFile, ArrayList paramArrayList) {}
+  AIOGalleryScene$18(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoFile != null)
-      {
-        Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        aghx.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("AIOGalleryScene", 1, "add qr action sheet error: " + localException.getMessage());
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.18
  * JD-Core Version:    0.7.0.1
  */

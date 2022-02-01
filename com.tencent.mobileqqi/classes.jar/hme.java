@@ -1,8 +1,20 @@
 import com.tencent.open.component.cache.database.DbCacheManager;
+import com.tencent.open.component.cache.database.DbCacheService;
+import java.util.HashMap;
 
-public abstract interface hme
+public class hme
+  implements hmd
 {
-  public abstract void a(DbCacheManager paramDbCacheManager);
+  public hme(DbCacheService paramDbCacheService) {}
+  
+  public void a(DbCacheManager paramDbCacheManager)
+  {
+    synchronized (this.a.a)
+    {
+      this.a.a.remove(paramDbCacheManager.a());
+      return;
+    }
+  }
 }
 
 

@@ -14,15 +14,15 @@ final class zzwq
   
   public final void onChange(boolean paramBoolean)
   {
-    AppMethodBeat.i(69760);
+    AppMethodBeat.i(2283);
     this.zzbnb.zzru();
     zzwp.zza(this.zzbnb);
-    AppMethodBeat.o(69760);
+    AppMethodBeat.o(2283);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzwq
  * JD-Core Version:    0.7.0.1
  */

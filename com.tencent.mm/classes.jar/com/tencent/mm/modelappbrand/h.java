@@ -1,8 +1,32 @@
 package com.tencent.mm.modelappbrand;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface h
+  extends a
 {
-  public abstract void b(boolean paramBoolean, long paramLong);
+  public abstract void KK(String paramString);
+  
+  public abstract String a(String paramString, View paramView, Bundle paramBundle, aa paramaa);
+  
+  public abstract void b(String paramString, View paramView);
+  
+  public abstract g bEI();
+  
+  public abstract n bEJ();
+  
+  public abstract View dM(Context paramContext);
+  
+  public abstract void dk(View paramView);
+  
+  public abstract p dl(View paramView);
+  
+  public abstract void initialize();
+  
+  public abstract void shutdown();
 }
 
 

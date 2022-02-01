@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class hd_video_comm$SharpSignInfo
   extends MessageMicro<SharpSignInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 98, 106, 112, 122 }, new String[] { "uint64_uin", "uint32_business_type", "uint64_business_id", "uint64_roomId", "uint32_timestamp", "uint32_timeout", "uint32_clientseq", "uint32_interface_ip", "uint32_interface_port", "uint32_engine_ip", "uint32_engine_port", "msg_initiator_addr", "rpt_receiver_addr", "uint32_client_ip", "msg_crypt_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0), null }, SharpSignInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public hd_video_comm.CryptInfo msg_crypt_info = new hd_video_comm.CryptInfo();
   public hd_video_comm.AddrInfo msg_initiator_addr = new hd_video_comm.AddrInfo();
   public final PBRepeatMessageField<hd_video_comm.AddrInfo> rpt_receiver_addr = PBField.initRepeatMessage(hd_video_comm.AddrInfo.class);
@@ -26,10 +26,17 @@ public final class hd_video_comm$SharpSignInfo
   public final PBUInt64Field uint64_business_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_roomId = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 98, 106, 112, 122 }, new String[] { "uint64_uin", "uint32_business_type", "uint64_business_id", "uint64_roomId", "uint32_timestamp", "uint32_timeout", "uint32_clientseq", "uint32_interface_ip", "uint32_interface_port", "uint32_engine_ip", "uint32_engine_port", "msg_initiator_addr", "rpt_receiver_addr", "uint32_client_ip", "msg_crypt_info" }, new Object[] { localLong, localInteger, localLong, localLong, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null, null, localInteger, null }, SharpSignInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.SharpSignInfo
  * JD-Core Version:    0.7.0.1
  */

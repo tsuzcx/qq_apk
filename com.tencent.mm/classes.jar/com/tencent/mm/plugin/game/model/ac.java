@@ -1,121 +1,137 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.ae;
-import com.tencent.mm.plugin.game.d.am;
-import com.tencent.mm.plugin.game.d.be;
-import com.tencent.mm.plugin.game.d.by;
-import com.tencent.mm.plugin.game.d.di;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.api.e;
+import com.tencent.mm.plugin.game.d.d;
+import com.tencent.mm.plugin.game.protobuf.ar;
+import com.tencent.mm.plugin.game.protobuf.as;
+import com.tencent.mm.plugin.game.protobuf.at;
+import com.tencent.mm.plugin.game.protobuf.au;
+import com.tencent.mm.plugin.game.protobuf.av;
+import com.tencent.mm.plugin.game.protobuf.az;
+import com.tencent.mm.plugin.game.protobuf.bq;
+import com.tencent.mm.plugin.game.protobuf.co;
+import com.tencent.mm.plugin.game.protobuf.el;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 
 public final class ac
   extends x
 {
-  private be noC;
-  public by noD;
-  public ac.a noE;
-  public com.tencent.mm.plugin.game.d.ah noF;
-  public di noG;
-  public am noH;
+  private bq IFq;
+  public co IFr;
+  public a IFs;
+  public au IFt;
+  public el IFu;
+  public az IFv;
   
-  public ac(be parambe)
+  public ac(bq parambq)
   {
-    AppMethodBeat.i(111372);
-    if (parambe == null)
+    AppMethodBeat.i(41537);
+    if (parambq == null)
     {
-      this.noC = new be();
-      AppMethodBeat.o(111372);
+      this.IFq = new bq();
+      AppMethodBeat.o(41537);
       return;
     }
-    this.noC = parambe;
-    ie(true);
-    AppMethodBeat.o(111372);
+    this.IFq = parambq;
+    wq(true);
+    AppMethodBeat.o(41537);
   }
   
   public ac(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(111373);
-    this.noC = new be();
+    AppMethodBeat.i(41538);
+    this.IFq = new bq();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(111373);
+      AppMethodBeat.o(41538);
       return;
     }
     try
     {
-      this.noC.parseFrom(paramArrayOfByte);
-      ie(false);
-      AppMethodBeat.o(111373);
+      this.IFq.parseFrom(paramArrayOfByte);
+      wq(false);
+      AppMethodBeat.o(41538);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
       for (;;)
       {
-        ab.e("MicroMsg.GamePBDataIndex4", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.e("MicroMsg.GamePBDataIndex4", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void bGM()
+  private void fGT()
   {
-    AppMethodBeat.i(111376);
-    if (this.noC == null)
+    AppMethodBeat.i(41541);
+    if (this.IFq == null)
     {
-      AppMethodBeat.o(111376);
+      AppMethodBeat.o(41541);
       return;
     }
-    this.noD = this.noC.nsM;
-    if ((this.noC.nsJ != null) && (this.noC.nsJ.npS != null))
+    this.IFr = this.IFq.IKf;
+    if ((this.IFq.IKc != null) && (this.IFq.IKc.IGJ != null))
     {
-      this.noE = new ac.a();
-      this.noE.noI = a(this.noC.nsJ.npS);
-      if (this.noE.noI != null)
+      this.IFs = new a();
+      this.IFs.IFw = a(this.IFq.IKc.IGJ);
+      if (this.IFs.IFw != null)
       {
-        this.noE.noI.nlU = this.noC.nsJ.Desc;
-        this.noE.noI.scene = 10;
-        this.noE.noI.cFj = 1002;
-        this.noE.noI.position = 1;
+        this.IFs.IFw.ICg = this.IFq.IKc.IGG;
+        this.IFs.IFw.scene = 10;
+        this.IFs.IFw.hYi = 1002;
+        this.IFs.IFw.position = 1;
       }
-      this.noE.noJ = this.noC.nsJ.nrv;
-      this.noE.noK = this.noC.nsJ.nru;
-      this.noE.desc = this.noC.nsJ.Desc;
-      this.noE.noL = this.noC.nsL;
+      this.IFs.IFx = this.IFq.IKc.IIT;
+      this.IFs.IFy = this.IFq.IKc.IIS;
+      this.IFs.desc = this.IFq.IKc.IGG;
+      this.IFs.IFz = this.IFq.IKe;
     }
-    this.noF = this.noC.nsK;
-    this.noG = this.noC.nsN;
-    this.noH = this.noC.nsO;
-    AppMethodBeat.o(111376);
+    this.IFt = this.IFq.IKd;
+    this.IFu = this.IFq.IKg;
+    this.IFv = this.IFq.IKh;
+    AppMethodBeat.o(41541);
   }
   
-  private void ie(boolean paramBoolean)
+  private void wq(boolean paramBoolean)
   {
-    AppMethodBeat.i(111374);
-    bGM();
-    jdMethod_if(paramBoolean);
-    AppMethodBeat.o(111374);
+    AppMethodBeat.i(41539);
+    fGT();
+    wr(paramBoolean);
+    AppMethodBeat.o(41539);
   }
   
-  private void jdMethod_if(boolean paramBoolean)
+  private void wr(boolean paramBoolean)
   {
-    AppMethodBeat.i(111375);
-    if ((this.noC == null) || (!paramBoolean))
+    AppMethodBeat.i(41540);
+    if ((this.IFq == null) || (!paramBoolean))
     {
-      AppMethodBeat.o(111375);
+      AppMethodBeat.o(41540);
       return;
     }
-    if ((this.noC.nsJ != null) && (this.noC.nsJ.npS != null)) {
-      com.tencent.mm.plugin.game.f.d.c(a(this.noC.nsJ.npS));
+    if ((this.IFq.IKc != null) && (this.IFq.IKc.IGJ != null)) {
+      d.c(a(this.IFq.IKc.IGJ));
     }
-    ((com.tencent.mm.plugin.game.api.d)g.E(com.tencent.mm.plugin.game.api.d.class)).bEP().init(com.tencent.mm.sdk.platformtools.ah.getContext());
-    AppMethodBeat.o(111375);
+    ((e)h.ax(e.class)).fCf().init(MMApplicationContext.getContext());
+    AppMethodBeat.o(41540);
+  }
+  
+  public static final class a
+  {
+    public c IFw;
+    public as IFx;
+    public at IFy;
+    public av IFz;
+    public String desc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ac
  * JD-Core Version:    0.7.0.1
  */

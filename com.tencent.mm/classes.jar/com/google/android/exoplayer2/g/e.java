@@ -2,54 +2,53 @@ package com.google.android.exoplayer2.g;
 
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
+import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.s;
-import com.google.android.exoplayer2.source.o;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.q;
+import com.google.android.exoplayer2.source.r;
 import com.google.android.exoplayer2.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.Map;
 
 public abstract class e
   extends h
 {
-  private final SparseArray<Map<p, e.b>> aYa = new SparseArray();
-  private final SparseBooleanArray aYb = new SparseBooleanArray();
-  private e.a aYc;
-  private int axn = 0;
+  private int cHn = 0;
+  private final SparseArray<Map<r, b>> dhQ = new SparseArray();
+  private final SparseBooleanArray dhR = new SparseBooleanArray();
+  public a dhS;
   
-  public final void Q(Object paramObject)
-  {
-    this.aYc = ((e.a)paramObject);
-  }
-  
-  public final i a(s[] paramArrayOfs, p paramp)
+  public final i a(s[] paramArrayOfs, r paramr)
   {
     Object localObject4 = new int[paramArrayOfs.length + 1];
-    Object localObject6 = new o[paramArrayOfs.length + 1][];
+    Object localObject5 = new q[paramArrayOfs.length + 1][];
     int[][][] arrayOfInt = new int[paramArrayOfs.length + 1][][];
     int i = 0;
-    while (i < localObject6.length)
+    while (i < localObject5.length)
     {
-      localObject6[i] = new o[paramp.length];
-      arrayOfInt[i] = new int[paramp.length][];
+      localObject5[i] = new q[paramr.length];
+      arrayOfInt[i] = new int[paramr.length][];
       i += 1;
     }
     Object localObject3 = new int[paramArrayOfs.length];
     i = 0;
     while (i < localObject3.length)
     {
-      localObject3[i] = paramArrayOfs[i].mE();
+      localObject3[i] = paramArrayOfs[i].Qt();
       i += 1;
     }
     int k = 0;
     int j;
     int i1;
-    Object localObject1;
     int m;
     int i2;
-    if (k < paramp.length)
+    label235:
+    Object localObject6;
+    if (k < paramr.length)
     {
-      localObject2 = paramp.aQH[k];
+      localObject2 = paramr.daE[k];
       j = paramArrayOfs.length;
       i1 = 0;
       i = 0;
@@ -58,9 +57,9 @@ public abstract class e
         localObject1 = paramArrayOfs[i];
         m = 0;
         n = j;
-        for (j = i1; m < ((o)localObject2).length; j = i1)
+        for (j = i1; m < ((q)localObject2).length; j = i1)
         {
-          i2 = ((s)localObject1).b(localObject2.aQc[m]) & 0x7;
+          i2 = ((s)localObject1).b(localObject2.cZY[m]) & 0x7;
           i1 = j;
           if (i2 > j)
           {
@@ -77,185 +76,270 @@ public abstract class e
         i1 = j;
         j = n;
       }
-      label235:
       if (j == paramArrayOfs.length) {
-        localObject1 = new int[((o)localObject2).length];
+        localObject1 = new int[((q)localObject2).length];
       }
       for (;;)
       {
         i = localObject4[j];
-        localObject6[j][i] = localObject2;
+        localObject5[j][i] = localObject2;
         arrayOfInt[j][i] = localObject1;
         localObject4[j] += 1;
         k += 1;
         break;
-        localObject5 = paramArrayOfs[j];
-        localObject1 = new int[((o)localObject2).length];
+        localObject6 = paramArrayOfs[j];
+        localObject1 = new int[((q)localObject2).length];
         i = 0;
-        while (i < ((o)localObject2).length)
+        while (i < ((q)localObject2).length)
         {
-          localObject1[i] = ((s)localObject5).b(localObject2.aQc[i]);
+          localObject1[i] = ((s)localObject6).b(localObject2.cZY[i]);
           i += 1;
         }
       }
     }
-    Object localObject2 = new p[paramArrayOfs.length];
-    Object localObject5 = new int[paramArrayOfs.length];
+    Object localObject2 = new r[paramArrayOfs.length];
+    Object localObject1 = new int[paramArrayOfs.length];
     i = 0;
     while (i < paramArrayOfs.length)
     {
       j = localObject4[i];
-      localObject2[i] = new p((o[])Arrays.copyOf(localObject6[i], j));
+      localObject2[i] = new r((q[])Arrays.copyOf(localObject5[i], j));
       arrayOfInt[i] = ((int[][])Arrays.copyOf(arrayOfInt[i], j));
-      localObject5[i] = paramArrayOfs[i].getTrackType();
+      localObject1[i] = paramArrayOfs[i].getTrackType();
       i += 1;
     }
     i = localObject4[paramArrayOfs.length];
-    localObject6 = new p((o[])Arrays.copyOf(localObject6[paramArrayOfs.length], i));
-    localObject4 = a(paramArrayOfs, (p[])localObject2, arrayOfInt);
+    localObject5 = new r((q[])Arrays.copyOf(localObject5[paramArrayOfs.length], i));
+    localObject4 = a(paramArrayOfs, (r[])localObject2, arrayOfInt);
     i = 0;
-    Object localObject7;
+    Map localMap;
     if (i < paramArrayOfs.length)
     {
-      if (this.aYb.get(i)) {
-        localObject1 = null;
+      if (this.dhR.get(i)) {
+        localObject4[i] = null;
       }
+      label579:
       for (;;)
       {
-        localObject4[i] = localObject1;
-        label590:
-        for (;;)
+        i += 1;
+        break;
+        localObject6 = localObject2[i];
+        localMap = (Map)this.dhQ.get(i);
+        if ((localMap != null) && (localMap.containsKey(localObject6))) {}
+        for (j = 1;; j = 0)
         {
-          i += 1;
-          break;
-          localObject1 = localObject2[i];
-          localObject7 = (Map)this.aYa.get(i);
-          if ((localObject7 != null) && (((Map)localObject7).containsKey(localObject1))) {}
-          for (j = 1;; j = 0)
-          {
-            if (j == 0) {
-              break label590;
-            }
-            localObject7 = (e.b)((Map)this.aYa.get(i)).get(localObject1);
-            if (localObject7 != null) {
-              break label592;
-            }
-            localObject1 = null;
-            break;
+          if (j == 0) {
+            break label579;
           }
+          if ((b)((Map)this.dhQ.get(i)).get(localObject6) != null) {
+            break label581;
+          }
+          break;
         }
-        label592:
-        f.a locala = ((e.b)localObject7).aYi;
-        j = ((e.b)localObject7).aYj;
-        localObject1 = locala.a(localObject1.aQH[j], ((e.b)localObject7).aXL);
       }
+      label581:
+      throw null;
     }
-    localObject3 = new e.a((int[])localObject5, (p[])localObject2, (int[])localObject3, arrayOfInt, (p)localObject6);
+    localObject3 = new a((int[])localObject1, (r[])localObject2, (int[])localObject3, arrayOfInt, (r)localObject5);
     localObject5 = new t[paramArrayOfs.length];
     i = 0;
     if (i < paramArrayOfs.length)
     {
       if (localObject4[i] != null) {}
-      for (localObject1 = t.axm;; localObject1 = null)
+      for (localObject1 = t.cHm;; localObject1 = null)
       {
         localObject5[i] = localObject1;
         i += 1;
         break;
       }
     }
-    int n = this.axn;
+    int n = this.cHn;
     if (n != 0)
     {
       m = -1;
       i = -1;
       j = 0;
       if (j >= paramArrayOfs.length) {
-        break label976;
+        break label928;
       }
       i1 = paramArrayOfs[j].getTrackType();
       localObject1 = localObject4[j];
       if (((i1 != 1) && (i1 != 2)) || (localObject1 == null)) {
-        break label973;
+        break label925;
       }
       localObject6 = arrayOfInt[j];
-      localObject7 = localObject2[j];
+      localMap = localObject2[j];
       if (localObject1 != null) {
-        break label864;
+        break label816;
       }
       k = 0;
-      label779:
+      label731:
       if (k == 0) {
-        break label973;
+        break label925;
       }
       if (i1 != 1) {
-        break label950;
+        break label902;
       }
       if (m == -1) {
-        break label937;
+        break label889;
       }
       j = 0;
     }
     for (;;)
     {
-      label799:
+      label751:
       if ((m != -1) && (i != -1))
       {
         k = 1;
-        label813:
+        label765:
         if ((k & j) != 0)
         {
           paramArrayOfs = new t(n);
           localObject5[m] = paramArrayOfs;
           localObject5[i] = paramArrayOfs;
         }
-        return new i(paramp, new g((f[])localObject4), localObject3, (t[])localObject5);
-        label864:
-        i2 = ((p)localObject7).a(((f)localObject1).qg());
+        return new i(paramr, new g((f[])localObject4), localObject3, (t[])localObject5);
+        i2 = localMap.a(((f)localObject1).Uc());
         k = 0;
         for (;;)
         {
           if (k >= ((f)localObject1).length()) {
-            break label931;
+            break label883;
           }
-          if ((localObject6[i2][localObject1.eh(k)] & 0x20) != 32)
+          if ((localObject6[i2][localObject1.iC(k)] & 0x20) != 32)
           {
             k = 0;
             break;
           }
           k += 1;
         }
-        label931:
+        label883:
         k = 1;
-        break label779;
-        label937:
+        break label731;
+        label889:
         m = j;
       }
-      label950:
-      label973:
+      label902:
+      label925:
       for (;;)
       {
+        label816:
         j += 1;
         break;
         if (i != -1)
         {
           j = 0;
-          break label799;
+          break label751;
         }
         i = j;
         continue;
         k = 0;
-        break label813;
+        break label765;
       }
-      label976:
+      label928:
       j = 1;
     }
   }
   
-  protected abstract f[] a(s[] paramArrayOfs, p[] paramArrayOfp, int[][][] paramArrayOfInt);
+  protected abstract f[] a(s[] paramArrayOfs, r[] paramArrayOfr, int[][][] paramArrayOfInt);
+  
+  public final void bi(Object paramObject)
+  {
+    this.dhS = ((a)paramObject);
+  }
+  
+  public static final class a
+  {
+    private final int[] dhT;
+    public final r[] dhU;
+    private final int[] dhV;
+    private final int[][][] dhW;
+    public final r dhX;
+    public final int length;
+    
+    a(int[] paramArrayOfInt1, r[] paramArrayOfr, int[] paramArrayOfInt2, int[][][] paramArrayOfInt, r paramr)
+    {
+      AppMethodBeat.i(92948);
+      this.dhT = paramArrayOfInt1;
+      this.dhU = paramArrayOfr;
+      this.dhW = paramArrayOfInt;
+      this.dhV = paramArrayOfInt2;
+      this.dhX = paramr;
+      this.length = paramArrayOfr.length;
+      AppMethodBeat.o(92948);
+    }
+    
+    public final int E(int paramInt1, int paramInt2, int paramInt3)
+    {
+      return this.dhW[paramInt1][paramInt2][paramInt3] & 0x7;
+    }
+    
+    public final int cj(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(210280);
+      int m = this.dhU[paramInt1].daE[paramInt2].length;
+      Object localObject = new int[m];
+      int j = 0;
+      int i = 0;
+      int k;
+      if (j < m)
+      {
+        if (E(paramInt1, paramInt2, j) != 4) {
+          break label237;
+        }
+        k = i + 1;
+        localObject[i] = j;
+        i = k;
+      }
+      label237:
+      for (;;)
+      {
+        j += 1;
+        break;
+        int[] arrayOfInt = Arrays.copyOf((int[])localObject, i);
+        localObject = null;
+        j = 0;
+        m = 0;
+        k = 16;
+        i = 0;
+        while (j < arrayOfInt.length)
+        {
+          int n = arrayOfInt[j];
+          String str = this.dhU[paramInt1].daE[paramInt2].cZY[n].cGN;
+          if (i == 0)
+          {
+            localObject = str;
+            k = Math.min(k, this.dhW[paramInt1][paramInt2][j] & 0x18);
+            j += 1;
+            i += 1;
+          }
+          else
+          {
+            if (!x.p(localObject, str)) {}
+            for (n = 1;; n = 0)
+            {
+              m |= n;
+              break;
+            }
+          }
+        }
+        if (m != 0)
+        {
+          paramInt1 = Math.min(k, this.dhV[paramInt1]);
+          AppMethodBeat.o(210280);
+          return paramInt1;
+        }
+        AppMethodBeat.o(210280);
+        return k;
+      }
+    }
+  }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.e
  * JD-Core Version:    0.7.0.1
  */

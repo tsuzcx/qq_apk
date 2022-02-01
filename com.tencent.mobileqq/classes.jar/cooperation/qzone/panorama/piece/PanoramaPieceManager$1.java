@@ -7,13 +7,13 @@ class PanoramaPieceManager$1
   
   public void run()
   {
-    this.this$0.b();
-    PanoramaPieceManager.a(this.this$0, PanoramaPieceManager.ProcessState.DIVIDE_PIECE);
+    this.this$0.loadOrgPieceData();
+    PanoramaPieceManager.access$002(this.this$0, PanoramaPieceManager.ProcessState.DIVIDE_PIECE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.panorama.piece.PanoramaPieceManager.1
  * JD-Core Version:    0.7.0.1
  */

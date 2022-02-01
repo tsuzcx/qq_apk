@@ -13,17 +13,17 @@ public class BankRemitScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Kr()
+  public final void aNw()
   {
-    AppMethodBeat.i(44658);
-    super.Kr();
-    this.nSx = new String[] { "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    AppMethodBeat.o(44658);
+    AppMethodBeat.i(67571);
+    super.aNw();
+    this.JMk = new String[] { "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    AppMethodBeat.o(67571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar
  * JD-Core Version:    0.7.0.1
  */

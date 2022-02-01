@@ -9,10 +9,10 @@ public final class SDKConfReq
   extends JceStruct
 {
   static ArrayList<String> cache_sUin;
-  public int iConfVersion;
-  public int iGetEspLastTime;
-  public int iGetSdkLastTime;
-  public ArrayList<String> sUin;
+  public int iConfVersion = 0;
+  public int iGetEspLastTime = 0;
+  public int iGetSdkLastTime = 0;
+  public ArrayList<String> sUin = null;
   
   public SDKConfReq() {}
   
@@ -41,15 +41,16 @@ public final class SDKConfReq
   {
     paramJceOutputStream.write(this.iConfVersion, 1);
     paramJceOutputStream.write(this.iGetSdkLastTime, 2);
-    if (this.sUin != null) {
-      paramJceOutputStream.write(this.sUin, 3);
+    ArrayList localArrayList = this.sUin;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
     paramJceOutputStream.write(this.iGetEspLastTime, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.SDKConfReq
  * JD-Core Version:    0.7.0.1
  */

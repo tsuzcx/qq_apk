@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahbf;
 import java.util.List;
 
-public class ZhituManager$8
+class ZhituManager$8
   implements Runnable
 {
-  public ZhituManager$8(ahbf paramahbf, String paramString) {}
+  ZhituManager$8(ZhituManager paramZhituManager, String paramString) {}
   
   public void run()
   {
-    ahbf.b(this.this$0).add(this.a);
+    ZhituManager.d(this.this$0).add(this.a);
   }
 }
 

@@ -9,16 +9,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bdaq;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class ColorSelectView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private int a;
+  private boolean b;
+  private int c;
+  private Paint d;
+  private float e;
   
   public ColorSelectView(Context paramContext)
   {
@@ -40,42 +40,43 @@ public class ColorSelectView
   
   private void a()
   {
-    this.b = bdaq.a(getContext(), 5.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
+    this.c = DisplayUtil.a(getContext(), 5.0F);
+    this.d = new Paint();
+    this.d.setAntiAlias(true);
+    this.e = getResources().getDisplayMetrics().density;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = getMeasuredWidth();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(i / 2, i / 2, (i - this.b) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean)
+    this.d.setColor(this.a);
+    this.d.setStyle(Paint.Style.FILL);
+    float f = i / 2;
+    paramCanvas.drawCircle(f, f, (i - this.c) / 2, this.d);
+    if (this.b)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-15550475);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-      paramCanvas.drawCircle(i / 2, i / 2, i / 2 - this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.d.setColor(-15550475);
+      this.d.setStyle(Paint.Style.STROKE);
+      this.d.setStrokeWidth(this.e);
+      paramCanvas.drawCircle(f, f, f - this.e, this.d);
     }
   }
   
   public void setColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     invalidate();
   }
   
   public void setSelect(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ColorSelectView
  * JD-Core Version:    0.7.0.1
  */

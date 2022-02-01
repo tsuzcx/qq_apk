@@ -1,333 +1,274 @@
 package com.tencent.matrix.a.b;
 
-import android.app.AlarmManager.OnAlarmListener;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.PowerManager;
-import android.os.WorkSource;
-import com.tencent.matrix.e.c.a;
+import android.os.IInterface;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public final class c
-  implements b.c, e.b, c.a
 {
-  private final com.tencent.matrix.a.a.a bLZ;
-  final d bMF;
-  private final com.tencent.matrix.a.a bMG;
-  f bMH;
-  a bMI;
-  final Context mContext;
-  private boolean mIsStart;
-  
-  public c(com.tencent.matrix.a.a parama)
+  private static boolean eTs;
+  private static n.b eTt = new n.b()
   {
-    this.bLZ = parama.bLZ;
-    this.bMF = new d();
-    this.bMG = parama;
-    this.mContext = parama.getApplication();
-  }
-  
-  private void a(com.tencent.matrix.a.a.a parama)
-  {
-    if (parama == null) {
-      throw new RuntimeException("batteryConfig is null");
-    }
-    if (parama.yE())
+    public final Object a(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
-      this.bMH = new f(this, parama, new f.a()
+      if ("registerAdapter".equals(paramAnonymousMethod.getName()))
       {
-        public final void e(Runnable paramAnonymousRunnable, long paramAnonymousLong)
-        {
-          c.this.bMF.mDetectHandler.postDelayed(paramAnonymousRunnable, paramAnonymousLong);
-        }
-        
-        public final boolean isScreenOn()
-        {
-          return ((PowerManager)c.this.mContext.getSystemService("power")).isScreenOn();
-        }
-      });
-      e.a(this);
-    }
-    if (parama.yF())
-    {
-      this.bMI = new a(this, this.bLZ);
-      this.bMF.j(new Runnable()
+        paramAnonymousObject = paramAnonymousMethod.invoke(paramAnonymousObject, paramAnonymousArrayOfObject);
+        paramAnonymousMethod = c.cm(paramAnonymousObject);
+        if (paramAnonymousMethod != null) {}
+      }
+      do
       {
-        public final void run()
-        {
-          c.this.bMI.yI();
-        }
-      });
-      b.a(this);
-    }
-  }
-  
-  public final void a(final int paramInt1, final long paramLong1, long paramLong2, final long paramLong3, int paramInt2, final PendingIntent paramPendingIntent, AlarmManager.OnAlarmListener paramOnAlarmListener)
-  {
-    if (this.bMI == null) {
-      return;
-    }
-    paramPendingIntent = new Runnable()
-    {
-      public final void run()
-      {
-        a locala = c.this.bMI;
-        int k = paramInt1;
-        long l1 = paramLong1;
-        long l2 = paramLong3;
-        long l3 = paramPendingIntent;
-        int m = this.bMJ;
-        Object localObject = this.bMU;
-        AlarmManager.OnAlarmListener localOnAlarmListener = this.bMV;
-        String str1 = this.bMN;
-        a.b localb;
-        String str2;
-        int i;
-        if (locala.bMg != null)
-        {
-          localb = locala.bMg;
-          str2 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", System.currentTimeMillis());
-          if (localObject != null) {
-            break label246;
-          }
-          i = -1;
-          if (localOnAlarmListener != null) {
-            break label255;
-          }
-        }
-        for (int j = -1;; j = localOnAlarmListener.hashCode())
-        {
-          try
-          {
-            str2 = String.format("%s onAlarmSet type:%d triggerAtMillis:%d windowMillis:%d intervalMillis:%d flags:%d operationInfo:%s operationHashCode:%d onAlarmListener:%s onAlarmListenerHashCode:%d\n%s\n\n", new Object[] { str2, Integer.valueOf(k), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(m), localObject, Integer.valueOf(i), localOnAlarmListener, Integer.valueOf(j), str1 });
-            localb.cx(str2);
-          }
-          catch (ClassCastException localClassCastException)
-          {
-            for (;;)
-            {
-              label246:
-              label255:
-              com.tencent.matrix.g.c.e("MicroMsg.AlarmDetector", localClassCastException.toString(), new Object[0]);
-            }
-          }
-          localObject = new a.a(k, l1, l3, (PendingIntent)localObject, localOnAlarmListener, str1);
-          locala.a(((a.a)localObject).bMm, ((a.a)localObject).bMl);
-          locala.bMh.add(localObject);
-          locala.yI();
-          return;
-          i = ((PendingIntent)localObject).hashCode();
+        return paramAnonymousObject;
+        return paramAnonymousMethod;
+        if (!"getBluetoothGatt".equals(paramAnonymousMethod.getName())) {
           break;
         }
-      }
-    };
-    this.bMF.j(paramPendingIntent);
-  }
-  
-  public final void a(final PendingIntent paramPendingIntent, final AlarmManager.OnAlarmListener paramOnAlarmListener)
-  {
-    paramPendingIntent = new Runnable()
-    {
-      public final void run()
-      {
-        int j = -1;
-        a locala = c.this.bMI;
-        PendingIntent localPendingIntent = paramPendingIntent;
-        AlarmManager.OnAlarmListener localOnAlarmListener = paramOnAlarmListener;
-        String str1 = this.bMN;
-        a.b localb;
-        String str2;
-        int i;
-        if (locala.bMg != null)
-        {
-          localb = locala.bMg;
-          str2 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", System.currentTimeMillis());
-          if (localPendingIntent != null) {
-            break label136;
-          }
-          i = -1;
-          if (localOnAlarmListener != null) {
-            break label145;
-          }
-        }
-        for (;;)
-        {
-          try
-          {
-            str1 = String.format("%s onAlarmRemove operationInfo:%s operationHashCode:%d onAlarmListener:%s onAlarmListenerHashCode:%d\n%s\n\n", new Object[] { str2, localPendingIntent, Integer.valueOf(i), localOnAlarmListener, Integer.valueOf(j), str1 });
-            localb.cx(str1);
-          }
-          catch (ClassCastException localClassCastException)
-          {
-            label136:
-            label145:
-            com.tencent.matrix.g.c.e("MicroMsg.AlarmDetector", localClassCastException.toString(), new Object[0]);
-            continue;
-          }
-          locala.a(localOnAlarmListener, new a.e(localPendingIntent));
-          locala.yI();
-          return;
-          i = localPendingIntent.hashCode();
-          break;
-          j = localOnAlarmListener.hashCode();
-        }
-      }
-    };
-    this.bMF.j(paramPendingIntent);
-  }
-  
-  public final void a(final IBinder paramIBinder, final int paramInt)
-  {
-    if (this.bMH == null) {
-      return;
+        paramAnonymousObject = paramAnonymousMethod.invoke(paramAnonymousObject, paramAnonymousArrayOfObject);
+        paramAnonymousMethod = c.cn(paramAnonymousObject);
+      } while (paramAnonymousMethod == null);
+      return paramAnonymousMethod;
+      return null;
     }
-    paramIBinder = new Runnable()
-    {
-      public final void run()
-      {
-        int i = 1;
-        f localf = c.this.bMH;
-        Object localObject1 = paramIBinder;
-        int j = paramInt;
-        long l = this.bMQ;
-        com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "onReleaseWakeLock token:%s", new Object[] { localObject1 });
-        Object localObject2;
-        if (localf.bNf != null)
-        {
-          localObject2 = localf.bNf;
-          String str1 = localObject1.toString();
-          String str2 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", l);
-          ((f.e)localObject2).bNu.append(str2).append(" onReleaseWakeLock token:").append(str1).append(" flags:").append(j).append("\n\n");
-          ((f.e)localObject2).bNt += 1;
-          ((f.e)localObject2).yR();
-        }
-        localObject1 = localObject1.toString();
-        if (localf.bMY.containsKey(localObject1))
-        {
-          localObject2 = ((f.d)localf.bMY.get(localObject1)).tag;
-          if (localf.bMZ.containsKey(localObject2))
-          {
-            localObject2 = (f.c)localf.bMZ.get(localObject2);
-            ((f.c)localObject2).yQ();
-            ((f.c)localObject2).bNo.remove(localObject1);
-            if (((f.c)localObject2).bNo.isEmpty()) {
-              break label261;
-            }
-            if (i == 0) {
-              ((f.c)localObject2).bNp = -1L;
-            }
-          }
-        }
-        for (;;)
-        {
-          localf.yN();
-          localf.bMY.remove(localObject1);
-          return;
-          label261:
-          i = 0;
-          break;
-          com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "onReleaseWakeLock not in mWakeLockInfoMap: %s", new Object[] { localObject1 });
-        }
-      }
-    };
-    this.bMF.j(paramIBinder);
-  }
+    
+    public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject) {}
+  };
+  private static n eTu = new n("bluetooth_manager", "android.bluetooth.IBluetoothManager", eTt);
+  private static List<a> eTv = new ArrayList();
   
-  public final void a(final IBinder paramIBinder, final int paramInt, final String paramString1, final String paramString2, final WorkSource paramWorkSource, final String paramString3)
+  public static void a(a parama)
   {
-    if (this.bMH == null) {
+    if (parama == null) {}
+    for (;;)
+    {
       return;
-    }
-    paramIBinder = new Runnable()
-    {
-      public final void run()
+      try
       {
-        f localf = c.this.bMH;
-        Object localObject1 = paramIBinder;
-        int i = paramInt;
-        String str2 = paramString1;
-        String str1 = this.bMN;
-        long l = this.bMO;
-        com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "onAcquireWakeLock token:%s tag:%s", new Object[] { localObject1, str2 });
-        if (localf.bNf != null)
-        {
-          localObject2 = localf.bNf;
-          String str3 = localObject1.toString();
-          String str4 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", l);
-          ((f.e)localObject2).bNu.append(str4).append(" onAcquireWakeLock token:").append(str3).append(" flags:").append(i).append(" tag:").append(str2).append('\n').append(str1).append('\n');
-          ((f.e)localObject2).bNt += 1;
-          ((f.e)localObject2).yR();
+        if (eTv.contains(parama)) {
+          continue;
         }
-        Object localObject2 = localObject1.toString();
-        if (!localf.bMY.containsKey(localObject2))
-        {
-          localObject1 = new f.d((String)localObject2, str2, i, l);
-          localf.bMY.put(localObject2, localObject1);
+        eTv.add(parama);
+        if ((eTs) || (eTv.isEmpty())) {
+          continue;
         }
-        for (;;)
-        {
-          ((f.d)localObject1).bNn.cy(str1);
-          if (!localf.bMZ.containsKey(str2)) {
-            localf.bMZ.put(str2, new f.c(str2));
-          }
-          localObject1 = (f.c)localf.bMZ.get(str2);
-          boolean bool = localf.bNd.isScreenOn();
-          ((f.c)localObject1).bNq = bool;
-          ((f.c)localObject1).bNl += 1;
-          if (!bool) {
-            ((f.c)localObject1).bNm += 1;
-          }
-          ((f.c)localObject1).bNo.put(localObject2, Boolean.TRUE);
-          if (((f.c)localObject1).bNp < 0L) {
-            ((f.c)localObject1).bNp = System.currentTimeMillis();
-          }
-          ((f.c)localObject1).bNn.cy(str1);
-          localf.bNd.e(localf.bNe, localf.bNa);
-          return;
-          localObject1 = (f.d)localf.bMY.get(localObject2);
-        }
+        com.tencent.matrix.e.c.i("Matrix.battery.BluetoothHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(eTu.doHook()) });
+        eTs = true;
       }
-    };
-    this.bMF.j(paramIBinder);
-  }
-  
-  public final void onDetectIssue(com.tencent.matrix.e.b paramb)
-  {
-    this.bMG.onDetectIssue(paramb);
-  }
-  
-  public final void start()
-  {
-    this.bMF.start();
-    a(this.bLZ);
-    try
-    {
-      this.mIsStart = true;
-      return;
+      finally {}
     }
-    finally {}
   }
   
-  public final void stop()
+  private static Object b(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     try
     {
-      this.mIsStart = false;
-      e.b(this);
-      b.b(this);
-      this.bMF.quit();
-      this.bMH = null;
-      return;
+      paramObject = paramMethod.invoke(paramObject, paramArrayOfObject);
+      if (paramObject != null) {
+        return paramObject;
+      }
     }
-    finally {}
+    finally
+    {
+      for (;;)
+      {
+        com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramObject, "reflect invocation fail", new Object[0]);
+        paramObject = null;
+      }
+      paramObject = paramMethod.getReturnType();
+      if ((paramObject == null) || (!paramObject.isPrimitive())) {
+        return null;
+      }
+      if ((paramObject == Byte.TYPE) || (paramObject == Short.TYPE) || (paramObject == Integer.TYPE)) {
+        return Integer.valueOf(0);
+      }
+      if (paramObject == Long.TYPE) {
+        return Long.valueOf(0L);
+      }
+      if (paramObject == Float.TYPE) {
+        return Float.valueOf(0.0F);
+      }
+      if (paramObject == Double.TYPE) {
+        return Double.valueOf(0.0D);
+      }
+      if (paramObject == Character.TYPE) {
+        return Character.valueOf('\000');
+      }
+      if (paramObject == Boolean.TYPE) {
+        return Boolean.FALSE;
+      }
+    }
+    return null;
+  }
+  
+  public static void b(a parama)
+  {
+    if (parama == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        eTv.remove(parama);
+        if ((!eTs) || (!eTv.isEmpty())) {
+          continue;
+        }
+        com.tencent.matrix.e.c.i("Matrix.battery.BluetoothHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(eTu.doUnHook()) });
+        eTs = false;
+      }
+      finally {}
+    }
+  }
+  
+  private static Object ck(Object paramObject)
+  {
+    try
+    {
+      Class localClass = Class.forName("android.bluetooth.IBluetooth");
+      ClassLoader localClassLoader = paramObject.getClass().getClassLoader();
+      paramObject = new InvocationHandler()
+      {
+        public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+        {
+          if ("startDiscovery".equals(paramAnonymousMethod.getName())) {
+            c.access$200();
+          }
+          try
+          {
+            paramAnonymousObject = c.c(this.eTE, paramAnonymousMethod, paramAnonymousArrayOfObject);
+            return paramAnonymousObject;
+          }
+          finally
+          {
+            com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramAnonymousObject, "invokeBluetooth fail", new Object[0]);
+          }
+          return null;
+        }
+      };
+      paramObject = Proxy.newProxyInstance(localClassLoader, new Class[] { IBinder.class, IInterface.class, localClass }, paramObject);
+      return paramObject;
+    }
+    finally
+    {
+      com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramObject, "proxyBluetooth fail", new Object[0]);
+    }
+    return null;
+  }
+  
+  private static Object cl(Object paramObject)
+  {
+    try
+    {
+      Class localClass = Class.forName("android.bluetooth.IBluetoothGatt");
+      ClassLoader localClassLoader = paramObject.getClass().getClassLoader();
+      paramObject = new InvocationHandler()
+      {
+        /* Error */
+        public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
+        {
+          // Byte code:
+          //   0: ldc 25
+          //   2: aload_2
+          //   3: invokevirtual 31	java/lang/reflect/Method:getName	()Ljava/lang/String;
+          //   6: invokevirtual 37	java/lang/String:equals	(Ljava/lang/Object;)Z
+          //   9: ifeq +18 -> 27
+          //   12: invokestatic 40	com/tencent/matrix/a/b/c:access$400	()V
+          //   15: aload_0
+          //   16: getfield 17	com/tencent/matrix/a/b/c$3:eTE	Ljava/lang/Object;
+          //   19: aload_2
+          //   20: aload_3
+          //   21: invokestatic 43	com/tencent/matrix/a/b/c:c	(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;
+          //   24: astore_1
+          //   25: aload_1
+          //   26: areturn
+          //   27: ldc 45
+          //   29: aload_2
+          //   30: invokevirtual 31	java/lang/reflect/Method:getName	()Ljava/lang/String;
+          //   33: invokevirtual 37	java/lang/String:equals	(Ljava/lang/Object;)Z
+          //   36: ifeq +52 -> 88
+          //   39: iconst_m1
+          //   40: istore 4
+          //   42: iload 4
+          //   44: istore 5
+          //   46: aload_3
+          //   47: arraylength
+          //   48: ifle +32 -> 80
+          //   51: aload_3
+          //   52: iconst_0
+          //   53: aaload
+          //   54: instanceof 47
+          //   57: ifeq +14 -> 71
+          //   60: aload_3
+          //   61: iconst_0
+          //   62: aaload
+          //   63: checkcast 47	java/lang/Integer
+          //   66: invokevirtual 51	java/lang/Integer:intValue	()I
+          //   69: istore 4
+          //   71: getstatic 57	android/os/Build$VERSION:SDK_INT	I
+          //   74: istore 5
+          //   76: iload 4
+          //   78: istore 5
+          //   80: iload 5
+          //   82: invokestatic 61	com/tencent/matrix/a/b/c:nc	(I)V
+          //   85: goto -70 -> 15
+          //   88: ldc 63
+          //   90: aload_2
+          //   91: invokevirtual 31	java/lang/reflect/Method:getName	()Ljava/lang/String;
+          //   94: invokevirtual 37	java/lang/String:equals	(Ljava/lang/Object;)Z
+          //   97: ifeq -82 -> 15
+          //   100: getstatic 57	android/os/Build$VERSION:SDK_INT	I
+          //   103: istore 4
+          //   105: invokestatic 66	com/tencent/matrix/a/b/c:axs	()V
+          //   108: goto -93 -> 15
+          //   111: astore_1
+          //   112: ldc 68
+          //   114: aload_1
+          //   115: ldc 70
+          //   117: iconst_0
+          //   118: anewarray 4	java/lang/Object
+          //   121: invokestatic 76	com/tencent/matrix/e/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   124: aconst_null
+          //   125: areturn
+          // Local variable table:
+          //   start	length	slot	name	signature
+          //   0	126	0	this	3
+          //   0	126	1	paramAnonymousObject	Object
+          //   0	126	2	paramAnonymousMethod	Method
+          //   0	126	3	paramAnonymousArrayOfObject	Object[]
+          //   40	64	4	i	int
+          //   44	37	5	j	int
+          // Exception table:
+          //   from	to	target	type
+          //   15	25	111	finally
+        }
+      };
+      paramObject = Proxy.newProxyInstance(localClassLoader, new Class[] { IBinder.class, IInterface.class, localClass }, paramObject);
+      return paramObject;
+    }
+    finally
+    {
+      com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BluetoothHooker", paramObject, "proxyBluetoothGatt fail", new Object[0]);
+    }
+    return null;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void awT();
+    
+    public abstract void awU();
+    
+    public abstract void awV();
+    
+    public abstract void mV(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.b.c
  * JD-Core Version:    0.7.0.1
  */

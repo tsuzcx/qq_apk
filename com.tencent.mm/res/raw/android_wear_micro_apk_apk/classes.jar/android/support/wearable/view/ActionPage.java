@@ -19,18 +19,18 @@ import android.view.WindowInsets;
 public class ActionPage
   extends ViewGroup
 {
-  public static int zB = 1;
-  public static int zC = 0;
-  private final ActionLabel zD;
-  private CircularButton zE;
-  private int zF;
-  private float zG;
-  private final Point zH = new Point();
-  private int zI;
-  private int zJ;
-  private boolean zK;
-  private int zL;
-  private boolean zM;
+  public static int Bq = 1;
+  public static int Br = 0;
+  private int BA;
+  private boolean BB;
+  private final ActionLabel Bs;
+  private CircularButton Bt;
+  private int Bu;
+  private float Bv;
+  private final Point Bw = new Point();
+  private int Bx;
+  private int By;
+  private boolean Bz;
   
   public ActionPage(Context paramContext)
   {
@@ -44,22 +44,22 @@ public class ActionPage
   
   public ActionPage(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    this(paramContext, paramAttributeSet, paramInt, j.wL);
+    this(paramContext, paramAttributeSet, paramInt, j.yA);
   }
   
   public ActionPage(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    this.zE = new CircularButton(paramContext);
-    this.zD = new ActionLabel(paramContext);
-    this.zD.setGravity(17);
-    this.zD.setMaxLines(2);
+    this.Bt = new CircularButton(paramContext);
+    this.Bs = new ActionLabel(paramContext);
+    this.Bs.setGravity(17);
+    this.Bs.setMaxLines(2);
     float f1 = 1.0F;
     float f2 = 0.0F;
     Object localObject = null;
     int j = 1;
     int i = 0;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, k.wY, paramInt1, paramInt2);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, k.yN, paramInt1, paramInt2);
     paramInt1 = 0;
     paramAttributeSet = (AttributeSet)localObject;
     paramInt2 = j;
@@ -69,9 +69,9 @@ public class ActionPage
       float f4;
       float f3;
       int k;
-      if (m == k.xg)
+      if (m == k.yV)
       {
-        this.zE.setColor(localTypedArray.getColorStateList(m));
+        this.Bt.setColor(localTypedArray.getColorStateList(m));
         f4 = f1;
         f3 = f2;
         localObject = paramAttributeSet;
@@ -87,88 +87,88 @@ public class ActionPage
         f2 = f3;
         f1 = f4;
         break;
-        if (m == k.xd)
+        if (m == k.yS)
         {
-          this.zE.setImageDrawable(localTypedArray.getDrawable(m));
+          this.Bt.setImageDrawable(localTypedArray.getDrawable(m));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xn)
+        else if (m == k.zc)
         {
-          this.zE.aP(localTypedArray.getInt(m, 0));
+          this.Bt.bj(localTypedArray.getInt(m, 0));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xo)
+        else if (m == k.zd)
         {
-          this.zE.aR(localTypedArray.getColor(m, -1));
+          this.Bt.bl(localTypedArray.getColor(m, -1));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xp)
+        else if (m == k.ze)
         {
-          this.zE.u(localTypedArray.getDimension(m, 0.0F));
+          this.Bt.v(localTypedArray.getDimension(m, 0.0F));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xe)
+        else if (m == k.yT)
         {
-          this.zD.setText(localTypedArray.getText(m));
+          this.Bs.setText(localTypedArray.getText(m));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xl)
+        else if (m == k.za)
         {
-          this.zD.s(localTypedArray.getDimension(m, 10.0F));
+          this.Bs.t(localTypedArray.getDimension(m, 10.0F));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xm)
+        else if (m == k.zb)
         {
-          this.zD.t(localTypedArray.getDimension(m, 60.0F));
+          this.Bs.u(localTypedArray.getDimension(m, 60.0F));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xb)
+        else if (m == k.yQ)
         {
-          this.zD.setTextColor(localTypedArray.getColorStateList(m));
+          this.Bs.setTextColor(localTypedArray.getColorStateList(m));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xf)
+        else if (m == k.yU)
         {
-          this.zD.setMaxLines(localTypedArray.getInt(m, 2));
+          this.Bs.setMaxLines(localTypedArray.getInt(m, 2));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xj)
+        else if (m == k.yY)
         {
           localObject = localTypedArray.getString(m);
           j = i;
@@ -176,7 +176,7 @@ public class ActionPage
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.wZ)
+        else if (m == k.yO)
         {
           k = localTypedArray.getInt(m, paramInt2);
           j = i;
@@ -184,7 +184,7 @@ public class ActionPage
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xa)
+        else if (m == k.yP)
         {
           j = localTypedArray.getInt(m, i);
           k = paramInt2;
@@ -192,16 +192,16 @@ public class ActionPage
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xc)
+        else if (m == k.yR)
         {
-          this.zD.setGravity(localTypedArray.getInt(m, 17));
+          this.Bs.setGravity(localTypedArray.getInt(m, 17));
           j = i;
           k = paramInt2;
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
         }
-        else if (m == k.xh)
+        else if (m == k.yW)
         {
           f3 = localTypedArray.getDimension(m, f2);
           j = i;
@@ -209,7 +209,7 @@ public class ActionPage
           localObject = paramAttributeSet;
           f4 = f1;
         }
-        else if (m == k.xi)
+        else if (m == k.yX)
         {
           f4 = localTypedArray.getDimension(m, f1);
           j = i;
@@ -224,9 +224,9 @@ public class ActionPage
           localObject = paramAttributeSet;
           f3 = f2;
           f4 = f1;
-          if (m == k.xk)
+          if (m == k.yZ)
           {
-            this.zE.setStateListAnimator(AnimatorInflater.loadStateListAnimator(paramContext, localTypedArray.getResourceId(m, 0)));
+            this.Bt.setStateListAnimator(AnimatorInflater.loadStateListAnimator(paramContext, localTypedArray.getResourceId(m, 0)));
             j = i;
             k = paramInt2;
             localObject = paramAttributeSet;
@@ -237,43 +237,43 @@ public class ActionPage
       }
     }
     localTypedArray.recycle();
-    this.zD.setLineSpacing(f2, f1);
-    this.zD.a(paramAttributeSet, paramInt2, i);
-    addView(this.zD);
-    addView(this.zE);
+    this.Bs.setLineSpacing(f2, f1);
+    this.Bs.a(paramAttributeSet, paramInt2, i);
+    addView(this.Bs);
+    addView(this.Bt);
   }
   
-  public final void aP(int paramInt)
+  public final void bj(int paramInt)
   {
-    this.zE.aP(paramInt);
+    this.Bt.bj(paramInt);
   }
   
-  public final ActionLabel eG()
+  public final ActionLabel eW()
   {
-    return this.zD;
+    return this.Bs;
   }
   
-  public final void eH()
+  public final void eX()
   {
-    this.zE.setColor(0);
+    this.Bt.setColor(0);
   }
   
   public WindowInsets onApplyWindowInsets(WindowInsets paramWindowInsets)
   {
-    this.zM = true;
-    if (this.zK != paramWindowInsets.isRound())
+    this.BB = true;
+    if (this.Bz != paramWindowInsets.isRound())
     {
-      this.zK = paramWindowInsets.isRound();
+      this.Bz = paramWindowInsets.isRound();
       requestLayout();
     }
     int i = paramWindowInsets.getSystemWindowInsetBottom();
-    if (this.zL != i)
+    if (this.BA != i)
     {
-      this.zL = i;
+      this.BA = i;
       requestLayout();
     }
-    if (this.zK) {
-      this.zL = ((int)Math.max(this.zL, 0.09375F * getMeasuredHeight()));
+    if (this.Bz) {
+      this.BA = ((int)Math.max(this.BA, 0.09375F * getMeasuredHeight()));
     }
     return paramWindowInsets;
   }
@@ -281,16 +281,16 @@ public class ActionPage
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (!this.zM) {
+    if (!this.BB) {
       requestApplyInsets();
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.zE.layout((int)(this.zH.x - this.zG), (int)(this.zH.y - this.zG), (int)(this.zH.x + this.zG), (int)(this.zH.y + this.zG));
-    paramInt1 = (int)((paramInt3 - paramInt1 - this.zI) / 2.0F);
-    this.zD.layout(paramInt1, this.zE.getBottom(), this.zI + paramInt1, this.zE.getBottom() + this.zJ);
+    this.Bt.layout((int)(this.Bw.x - this.Bv), (int)(this.Bw.y - this.Bv), (int)(this.Bw.x + this.Bv), (int)(this.Bw.y + this.Bv));
+    paramInt1 = (int)((paramInt3 - paramInt1 - this.Bx) / 2.0F);
+    this.Bs.layout(paramInt1, this.Bt.getBottom(), this.Bx + paramInt1, this.Bt.getBottom() + this.By);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -298,63 +298,63 @@ public class ActionPage
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredHeight();
     paramInt2 = getMeasuredWidth();
-    if ((this.zE.eS() == 1) && (this.zE.eR() != null))
+    if ((this.Bt.fi() == 1) && (this.Bt.fh() != null))
     {
-      this.zE.measure(0, 0);
-      this.zF = Math.min(this.zE.getMeasuredWidth(), this.zE.getMeasuredHeight());
-      this.zG = (this.zF / 2.0F);
-      if (!this.zK) {
+      this.Bt.measure(0, 0);
+      this.Bu = Math.min(this.Bt.getMeasuredWidth(), this.Bt.getMeasuredHeight());
+      this.Bv = (this.Bu / 2.0F);
+      if (!this.Bz) {
         break label231;
       }
-      this.zH.set(paramInt2 / 2, paramInt1 / 2);
-      this.zI = ((int)(paramInt2 * 0.625F));
-      this.zL = ((int)(paramInt1 * 0.09375F));
+      this.Bw.set(paramInt2 / 2, paramInt1 / 2);
+      this.Bx = ((int)(paramInt2 * 0.625F));
+      this.BA = ((int)(paramInt1 * 0.09375F));
     }
     for (;;)
     {
-      this.zJ = ((int)(paramInt1 - (this.zH.y + this.zG) - this.zL));
-      this.zD.measure(View.MeasureSpec.makeMeasureSpec(this.zI, 1073741824), View.MeasureSpec.makeMeasureSpec(this.zJ, 1073741824));
+      this.By = ((int)(paramInt1 - (this.Bw.y + this.Bv) - this.BA));
+      this.Bs.measure(View.MeasureSpec.makeMeasureSpec(this.Bx, 1073741824), View.MeasureSpec.makeMeasureSpec(this.By, 1073741824));
       return;
-      this.zF = ((int)(Math.min(paramInt2, paramInt1) * 0.45F));
-      this.zG = (this.zF / 2.0F);
-      this.zE.measure(View.MeasureSpec.makeMeasureSpec(this.zF, 1073741824), View.MeasureSpec.makeMeasureSpec(this.zF, 1073741824));
+      this.Bu = ((int)(Math.min(paramInt2, paramInt1) * 0.45F));
+      this.Bv = (this.Bu / 2.0F);
+      this.Bt.measure(View.MeasureSpec.makeMeasureSpec(this.Bu, 1073741824), View.MeasureSpec.makeMeasureSpec(this.Bu, 1073741824));
       break;
       label231:
-      this.zH.set(paramInt2 / 2, (int)(paramInt1 * 0.43F));
-      this.zI = ((int)(paramInt2 * 0.892F));
+      this.Bw.set(paramInt2 / 2, (int)(paramInt1 * 0.43F));
+      this.Bx = ((int)(paramInt2 * 0.892F));
     }
   }
   
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    if (this.zE != null) {
-      this.zE.setEnabled(paramBoolean);
+    if (this.Bt != null) {
+      this.Bt.setEnabled(paramBoolean);
     }
   }
   
   public final void setImageDrawable(Drawable paramDrawable)
   {
-    this.zE.setImageDrawable(paramDrawable);
+    this.Bt.setImageDrawable(paramDrawable);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.zE != null) {
-      this.zE.setOnClickListener(paramOnClickListener);
+    if (this.Bt != null) {
+      this.Bt.setOnClickListener(paramOnClickListener);
     }
   }
   
   public void setStateListAnimator(StateListAnimator paramStateListAnimator)
   {
-    if (this.zE != null) {
-      this.zE.setStateListAnimator(paramStateListAnimator);
+    if (this.Bt != null) {
+      this.Bt.setStateListAnimator(paramStateListAnimator);
     }
   }
   
   public final void setText(CharSequence paramCharSequence)
   {
-    this.zD.setText(paramCharSequence);
+    this.Bs.setText(paramCharSequence);
   }
 }
 

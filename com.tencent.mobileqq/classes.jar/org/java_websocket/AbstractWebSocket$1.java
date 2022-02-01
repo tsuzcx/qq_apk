@@ -25,17 +25,18 @@ class AbstractWebSocket$1
         WebSocket localWebSocket = (WebSocket)localIterator.next();
         AbstractWebSocket.access$100(this.this$0, localWebSocket, l1 - l2);
       }
-      return;
     }
     catch (Exception localException)
     {
-      this.connections.clear();
+      label85:
+      break label85;
     }
+    this.connections.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.AbstractWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

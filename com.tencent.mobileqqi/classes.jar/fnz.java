@@ -1,22 +1,16 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
+import com.tencent.mobileqq.model.EmoticonManager;
 
 public class fnz
   implements Runnable
 {
-  public fnz(BigEmoticonViewBinder paramBigEmoticonViewBinder, ImageView paramImageView) {}
+  public fnz(BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
   
   public void run()
   {
-    Bitmap localBitmap = EmosmUtils.getCoverBitmap(2, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
-    if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-    }
+    ((EmoticonManager)BigEmoticonViewBinder.a(this.a).getManager(12)).a(this.a.a.epId, Boolean.valueOf(true));
   }
 }
 

@@ -11,8 +11,8 @@ public final class SvcResponseIpwdStat
 {
   static RespondHeader cache_stRespondHeader;
   static RespondQueryIPwdStat cache_stRespondQueryIPwdStat;
-  public RespondHeader stRespondHeader;
-  public RespondQueryIPwdStat stRespondQueryIPwdStat;
+  public RespondHeader stRespondHeader = null;
+  public RespondQueryIPwdStat stRespondQueryIPwdStat = null;
   
   public SvcResponseIpwdStat() {}
   
@@ -42,7 +42,7 @@ public final class SvcResponseIpwdStat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.SvcResponseIpwdStat
  * JD-Core Version:    0.7.0.1
  */

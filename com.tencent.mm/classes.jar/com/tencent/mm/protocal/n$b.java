@@ -1,35 +1,35 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.jt;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.protocal.protobuf.mz;
 
 public final class n$b
   extends l.e
   implements l.c
 {
-  public jt wix;
+  public mz Yyc;
   
   public n$b()
   {
-    AppMethodBeat.i(123504);
-    this.wix = new jt();
-    AppMethodBeat.o(123504);
+    AppMethodBeat.i(257293);
+    this.Yyc = new mz();
+    AppMethodBeat.o(257293);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(123505);
-    this.wix = ((jt)new jt().parseFrom(paramArrayOfByte));
-    l.a(this, this.wix.getBaseResponse());
-    int i = this.wix.getBaseResponse().Ret;
-    AppMethodBeat.o(123505);
+    AppMethodBeat.i(257295);
+    this.Yyc = ((mz)new mz().parseFrom(paramArrayOfByte));
+    l.a(this, this.Yyc.getBaseResponse());
+    int i = this.Yyc.getBaseResponse().Idd;
+    AppMethodBeat.o(257295);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.n.b
  * JD-Core Version:    0.7.0.1
  */

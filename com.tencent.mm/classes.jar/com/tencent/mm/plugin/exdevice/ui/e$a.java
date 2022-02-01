@@ -1,27 +1,23 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.f.b.a.d;
+import kotlin.Metadata;
 
-final class e$a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/exdevice/ui/SportProfileUIC$AddFollowBtnViewHolder;", "", "(Lcom/tencent/mm/plugin/exdevice/ui/SportProfileUIC;)V", "addFollowTv", "Landroid/widget/TextView;", "getAddFollowTv", "()Landroid/widget/TextView;", "setAddFollowTv", "(Landroid/widget/TextView;)V", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class e$a
 {
-  int aoW;
-  String lOy;
-  d lRp = null;
-  int lRq;
-  String username;
+  TextView yEL;
   
-  public final e brj()
+  public e$a()
   {
-    AppMethodBeat.i(20234);
-    e locale = new e(this.aoW, this.lRq, this.lOy, this.username, this.lRp, (byte)0);
-    AppMethodBeat.o(20234);
-    return locale;
+    AppMethodBeat.i(274689);
+    AppMethodBeat.o(274689);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

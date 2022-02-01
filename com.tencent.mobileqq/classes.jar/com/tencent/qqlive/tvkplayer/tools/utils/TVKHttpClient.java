@@ -20,13 +20,13 @@ public class TVKHttpClient
   
   private TVKHttpClient(HttpDataSource.Factory paramFactory)
   {
-    if (paramFactory == null) {}
-    for (this.mHttpSrcFactory = new DefaultHttpDataSourceFactory("qqlive");; this.mHttpSrcFactory = paramFactory)
-    {
-      this.mRequestQueue = new RequestQueue(new BasicNetwork(this.mHttpSrcFactory), 2);
-      this.mRequestQueue.start();
-      return;
+    if (paramFactory == null) {
+      this.mHttpSrcFactory = new DefaultHttpDataSourceFactory("qqlive");
+    } else {
+      this.mHttpSrcFactory = paramFactory;
     }
+    this.mRequestQueue = new RequestQueue(new BasicNetwork(this.mHttpSrcFactory), 2);
+    this.mRequestQueue.start();
   }
   
   public static TVKHttpClient getInstance()
@@ -71,15 +71,16 @@ public class TVKHttpClient
   
   public static TVKHttpClient initHttpClient(HttpDataSource.Factory paramFactory)
   {
-    if (mHttpClient == null) {}
-    try
-    {
-      if (mHttpClient == null) {
-        mHttpClient = new TVKHttpClient(paramFactory);
+    if (mHttpClient == null) {
+      try
+      {
+        if (mHttpClient == null) {
+          mHttpClient = new TVKHttpClient(paramFactory);
+        }
       }
-      return mHttpClient;
+      finally {}
     }
-    finally {}
+    return mHttpClient;
   }
   
   public void deleteAsync(@NonNull String paramString, @Nullable Map<String, String> paramMap, int paramInt, @NonNull ITVKHttpProcessor.ITVKHttpCallback paramITVKHttpCallback)
@@ -134,7 +135,7 @@ public class TVKHttpClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKHttpClient
  * JD-Core Version:    0.7.0.1
  */

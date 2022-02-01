@@ -1,12 +1,13 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.biz.qqcircle.QCirclePluginUtil;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudWrite.StDelFeedReq;
 import feedcloud.FeedCloudWrite.StDelFeedRsp;
-import tra;
 
 public class QCircleDeleteFeedRequest
   extends QCircleBaseRequest
@@ -22,13 +23,21 @@ public class QCircleDeleteFeedRequest
     }
     this.req = new FeedCloudWrite.StDelFeedReq();
     this.req.from.set(0);
-    this.req.feed.set(tra.a(paramStFeed));
+    this.req.feed.set(QCirclePluginUtil.a(paramStFeed));
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudWrite.StDelFeedRsp localStDelFeedRsp = new FeedCloudWrite.StDelFeedRsp();
-    localStDelFeedRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDelFeedRsp.mergeFrom(paramArrayOfByte);
+      return localStDelFeedRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDelFeedRsp;
   }
   
@@ -37,14 +46,14 @@ public class QCircleDeleteFeedRequest
     return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DelFeed";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_middle" android:paddingRight="15.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="32.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="18.0dip" android:textColor="@color/skin_hint_input" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:text="@string/q7o" />
+    <RelativeLayout android:id="@id/btl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+        <EditText android:textColor="@color/skin_input" android:textColorHint="@color/skin_hint_input" android:id="@id/btm" android:background="@drawable/b70" android:layout_marginLeft="0.0dip" android:drawablePadding="15.0dip" android:imeOptions="actionDone" style="@style/k6" />
+        <ImageView android:id="@id/ayh" android:background="@drawable/common_input_box_clear" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

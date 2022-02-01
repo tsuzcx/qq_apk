@@ -29,35 +29,33 @@ public abstract interface d
   
   public abstract boolean a(KeyEvent paramKeyEvent);
   
-  public abstract boolean aP();
-  
-  public abstract PendingIntent aQ();
-  
-  public abstract ParcelableVolumeInfo aR();
-  
-  public abstract MediaMetadataCompat aS();
-  
-  public abstract PlaybackStateCompat aT();
-  
-  public abstract boolean aU();
-  
-  public abstract boolean aV();
-  
-  public abstract int aW();
-  
-  public abstract void aX();
-  
-  public abstract void aY();
-  
   public abstract void b(int paramInt1, int paramInt2, String paramString);
   
   public abstract void b(MediaDescriptionCompat paramMediaDescriptionCompat);
   
   public abstract void b(a parama);
   
-  public abstract void fastForward();
+  public abstract boolean bg();
   
-  public abstract void g(boolean paramBoolean);
+  public abstract PendingIntent bh();
+  
+  public abstract ParcelableVolumeInfo bi();
+  
+  public abstract MediaMetadataCompat bj();
+  
+  public abstract PlaybackStateCompat bk();
+  
+  public abstract boolean bl();
+  
+  public abstract boolean bm();
+  
+  public abstract int bn();
+  
+  public abstract void bo();
+  
+  public abstract void bp();
+  
+  public abstract void fastForward();
   
   public abstract Bundle getExtras();
   
@@ -75,11 +73,9 @@ public abstract interface d
   
   public abstract String getTag();
   
-  public abstract void h(boolean paramBoolean);
+  public abstract void j(boolean paramBoolean);
   
-  public abstract void n(int paramInt);
-  
-  public abstract void o(int paramInt);
+  public abstract void k(boolean paramBoolean);
   
   public abstract void pause();
   
@@ -110,6 +106,10 @@ public abstract interface d
   public abstract void skipToQueueItem(long paramLong);
   
   public abstract void stop();
+  
+  public abstract void x(int paramInt);
+  
+  public abstract void y(int paramInt);
 }
 
 

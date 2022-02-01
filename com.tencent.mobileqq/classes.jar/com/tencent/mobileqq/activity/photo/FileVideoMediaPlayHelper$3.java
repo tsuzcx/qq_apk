@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ainx;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import arsx;
-import bdhb;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.util.QFileUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class FileVideoMediaPlayHelper$3
+class FileVideoMediaPlayHelper$3
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$3(ainx paramainx, Bitmap paramBitmap) {}
+  FileVideoMediaPlayHelper$3(FileVideoMediaPlayHelper paramFileVideoMediaPlayHelper, Bitmap paramBitmap) {}
   
   public void run()
   {
-    String str = arsx.a(this.a);
-    if (bdhb.b(str)) {
+    String str = QFileUtils.a(this.a);
+    if (FileUtils.fileExistsAndNotEmpty(str)) {
       ThreadManagerV2.getUIHandlerV2().post(new FileVideoMediaPlayHelper.3.1(this, str));
     }
   }

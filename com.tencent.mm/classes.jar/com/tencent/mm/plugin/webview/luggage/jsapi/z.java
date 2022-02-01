@@ -1,62 +1,50 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.d.a.a;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.c.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.MMActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.Map;
 
 public class z
-  extends bi
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(6321);
-    try
-    {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("tousername");
-      String str1 = ((JSONObject)localObject).optString("extmsg");
-      ab.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
-      String str2 = ((JSONObject)localObject).optString("currentUrl");
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("toUserName", paramString);
-      ((Intent)localObject).putExtra("extInfo", str1);
-      ((Intent)localObject).putExtra("fromURL", str2);
-      ((Intent)localObject).putExtra("source", 2);
-      paramString = new z.1(this, parama);
-      a.gmO.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
-      AppMethodBeat.o(6321);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      ab.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
-      parama.c("fail", null);
-      AppMethodBeat.o(6321);
-    }
+    AppMethodBeat.i(78560);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("osVersion", Integer.valueOf(Build.VERSION.SDK_INT));
+    localHashMap.put("cpuCores", Integer.valueOf(a.getNumberOfCPUCores()));
+    localHashMap.put("cpuFreqHz", Integer.valueOf(a.Pb()));
+    localHashMap.put("memory", Long.valueOf(a.aG(MMApplicationContext.getContext())));
+    localHashMap.put("brand", Build.BRAND);
+    localHashMap.put("model", q.aPo());
+    paramb.d("", localHashMap);
+    AppMethodBeat.o(78560);
   }
   
-  public final void b(a.a parama) {}
-  
-  public final int bjL()
+  public final int dgI()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "jumpToBizProfile";
+    return "getSystemInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.z
  * JD-Core Version:    0.7.0.1
  */

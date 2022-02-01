@@ -4,7 +4,7 @@ import com.tencent.mm.wear.app.e.a;
 
 public final class g
 {
-  public a Vc;
+  public a WS;
 }
 
 

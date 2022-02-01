@@ -15,7 +15,7 @@ public final class praise_sso$TSsoCmd0x1Rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.praise.praise_sso.TSsoCmd0x1Rsp
  * JD-Core Version:    0.7.0.1
  */

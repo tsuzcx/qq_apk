@@ -26,13 +26,14 @@ public final class youtu$NameCardOcrRsp
   
   static
   {
+    Float localFloat = Float.valueOf(0.0F);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 37, 42, 53, 58, 69, 74, 82 }, new String[] { "errorcode", "errormsg", "uin", "uin_confidence", "phone", "phone_confidence", "name", "name_confidence", "image", "session_id" }, new Object[] { Integer.valueOf(0), "", "", Float.valueOf(0.0F), "", Float.valueOf(0.0F), "", Float.valueOf(0.0F), localByteStringMicro, "" }, NameCardOcrRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 37, 42, 53, 58, 69, 74, 82 }, new String[] { "errorcode", "errormsg", "uin", "uin_confidence", "phone", "phone_confidence", "name", "name_confidence", "image", "session_id" }, new Object[] { Integer.valueOf(0), "", "", localFloat, "", localFloat, "", localFloat, localByteStringMicro, "" }, NameCardOcrRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.mobileim.structmsg.youtu.NameCardOcrRsp
  * JD-Core Version:    0.7.0.1
  */

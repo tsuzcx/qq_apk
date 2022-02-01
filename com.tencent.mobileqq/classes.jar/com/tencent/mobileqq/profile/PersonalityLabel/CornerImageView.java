@@ -10,22 +10,17 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bhtb;
 import com.tencent.image.URLImageView;
+import com.tencent.util.VersionUtils;
 
 public class CornerImageView
   extends URLImageView
 {
-  public static ColorFilter a;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(637534208, PorterDuff.Mode.SRC_ATOP);
-  }
+  public static ColorFilter b = new PorterDuffColorFilter(637534208, PorterDuff.Mode.SRC_ATOP);
+  boolean a = false;
+  private float[] c = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+  private Path d;
+  private RectF e = new RectF();
   
   public CornerImageView(Context paramContext)
   {
@@ -44,101 +39,116 @@ public class CornerImageView
   
   public void a()
   {
-    if (!bhtb.i()) {
+    if (!VersionUtils.i()) {
       setLayerType(1, null);
     }
   }
   
+  protected void a(Canvas paramCanvas) {}
+  
+  protected void b(Canvas paramCanvas) {}
+  
   protected void drawableStateChanged()
   {
-    int k = 0;
     super.drawableStateChanged();
-    if (!this.jdField_a_of_type_Boolean) {}
-    Object localObject;
-    label83:
-    do
-    {
+    if (!this.a) {
       return;
-      localObject = getDrawableState();
-      int i = 0;
-      for (;;)
-      {
-        int j = k;
-        if (i < localObject.length)
-        {
-          if (localObject[i] == 16842919) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if (!(isPressed() | j)) {
-            break label83;
-          }
-          localObject = getDrawable();
-          if (localObject == null) {
-            break;
-          }
-          ((Drawable)localObject).setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
-          ((Drawable)localObject).invalidateSelf();
-          return;
-        }
-        i += 1;
+    }
+    Object localObject = getDrawableState();
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= localObject.length) {
+        break;
       }
+      if (localObject[i] == 16842919)
+      {
+        j = 1;
+        break;
+      }
+      i += 1;
+    }
+    if ((isPressed() | j))
+    {
       localObject = getDrawable();
-    } while (localObject == null);
-    ((Drawable)localObject).setColorFilter(null);
-    ((Drawable)localObject).invalidateSelf();
+      if (localObject != null)
+      {
+        ((Drawable)localObject).setColorFilter(b);
+        ((Drawable)localObject).invalidateSelf();
+      }
+    }
+    else
+    {
+      localObject = getDrawable();
+      if (localObject != null)
+      {
+        ((Drawable)localObject).setColorFilter(null);
+        ((Drawable)localObject).invalidateSelf();
+      }
+    }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    if (this.d == null) {
+      this.d = new Path();
     }
     int i = paramCanvas.save();
     try
     {
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      localRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      localPath.reset();
-      localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
-      paramCanvas.clipPath(localPath);
-      super.onDraw(paramCanvas);
-      return;
+      try
+      {
+        Path localPath = this.d;
+        RectF localRectF = this.e;
+        localRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+        localPath.reset();
+        localPath.addRoundRect(localRectF, this.c, Path.Direction.CW);
+        paramCanvas.clipPath(localPath);
+        a(paramCanvas);
+        super.onDraw(paramCanvas);
+        b(paramCanvas);
+      }
+      finally
+      {
+        break label107;
+      }
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      super.onDraw(paramCanvas);
-      return;
+      label96:
+      break label96;
     }
-    finally
-    {
-      paramCanvas.restoreToCount(i);
-    }
+    super.onDraw(paramCanvas);
+    paramCanvas.restoreToCount(i);
+    return;
+    label107:
+    paramCanvas.restoreToCount(i);
+    throw localObject;
   }
   
   public void setPressMask(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
+    this.c = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
     a();
   }
   
   public void setRadius(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.c = paramArrayOfFloat;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView
  * JD-Core Version:    0.7.0.1
  */

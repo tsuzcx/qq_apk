@@ -13,18 +13,8 @@ public final class ReqResOrder
   static byte[] cache_PkgInfo;
   static int cache_ResID;
   public String Path = "";
-  public byte[] PkgInfo;
-  public int ResID;
-  
-  static
-  {
-    if (!ReqResOrder.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public byte[] PkgInfo = null;
+  public int ResID = 0;
   
   public ReqResOrder() {}
   
@@ -42,18 +32,17 @@ public final class ReqResOrder
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -74,13 +63,24 @@ public final class ReqResOrder
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ReqResOrder)paramObject;
-    } while ((!JceUtil.equals(this.ResID, paramObject.ResID)) || (!JceUtil.equals(this.Path, paramObject.Path)) || (!JceUtil.equals(this.PkgInfo, paramObject.PkgInfo)));
-    return true;
+    }
+    paramObject = (ReqResOrder)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.ResID, paramObject.ResID))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.Path, paramObject.Path))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.PkgInfo, paramObject.PkgInfo)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -147,14 +147,15 @@ public final class ReqResOrder
   {
     paramJceOutputStream.write(this.ResID, 0);
     paramJceOutputStream.write(this.Path, 1);
-    if (this.PkgInfo != null) {
-      paramJceOutputStream.write(this.PkgInfo, 2);
+    byte[] arrayOfByte = this.PkgInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ResPackage.ReqResOrder
  * JD-Core Version:    0.7.0.1
  */

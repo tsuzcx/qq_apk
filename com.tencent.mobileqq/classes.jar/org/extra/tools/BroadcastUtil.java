@@ -19,74 +19,70 @@ public class BroadcastUtil
   
   private void removeUnUse()
   {
-    Object localObject3;
     synchronized (this.mSync)
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject3 = mDataList.iterator();
-      while (((Iterator)localObject3).hasNext())
+      Object localObject2 = new ArrayList();
+      Object localObject4 = mDataList.iterator();
+      while (((Iterator)localObject4).hasNext())
       {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject4).next();
         if (localWeakReference.get() == null) {
-          localArrayList.add(localWeakReference);
+          ((List)localObject2).add(localWeakReference);
         }
       }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = (WeakReference)((Iterator)localObject2).next();
+        mDataList.remove(localObject4);
+      }
+      return;
     }
-    Iterator localIterator = localObject2.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      localObject3 = (WeakReference)localIterator.next();
-      mDataList.remove(localObject3);
+      throw localObject3;
     }
   }
   
   public void onScreenOff()
   {
     removeUnUse();
-    for (;;)
+    int i;
+    synchronized (this.mSync)
     {
-      int i;
-      synchronized (this.mSync)
+      i = mDataList.size() - 1;
+      if (i >= 0)
       {
-        i = mDataList.size() - 1;
-        if (i >= 0)
-        {
-          ScreenBroadcastReceiver.ScreenStateListener localScreenStateListener = (ScreenBroadcastReceiver.ScreenStateListener)((WeakReference)mDataList.get(i)).get();
-          if (localScreenStateListener != null) {
-            localScreenStateListener.onScreenOff();
-          }
-        }
-        else
-        {
-          return;
+        ScreenBroadcastReceiver.ScreenStateListener localScreenStateListener = (ScreenBroadcastReceiver.ScreenStateListener)((WeakReference)mDataList.get(i)).get();
+        if (localScreenStateListener != null) {
+          localScreenStateListener.onScreenOff();
         }
       }
-      i -= 1;
+      else
+      {
+        return;
+      }
     }
   }
   
   public void onScreenOn()
   {
     removeUnUse();
-    for (;;)
+    int i;
+    synchronized (this.mSync)
     {
-      int i;
-      synchronized (this.mSync)
+      i = mDataList.size() - 1;
+      if (i >= 0)
       {
-        i = mDataList.size() - 1;
-        if (i >= 0)
-        {
-          ScreenBroadcastReceiver.ScreenStateListener localScreenStateListener = (ScreenBroadcastReceiver.ScreenStateListener)((WeakReference)mDataList.get(i)).get();
-          if (localScreenStateListener != null) {
-            localScreenStateListener.onScreenOn();
-          }
-        }
-        else
-        {
-          return;
+        ScreenBroadcastReceiver.ScreenStateListener localScreenStateListener = (ScreenBroadcastReceiver.ScreenStateListener)((WeakReference)mDataList.get(i)).get();
+        if (localScreenStateListener != null) {
+          localScreenStateListener.onScreenOn();
         }
       }
-      i -= 1;
+      else
+      {
+        return;
+      }
     }
   }
   
@@ -101,12 +97,13 @@ public class BroadcastUtil
   
   public void registerScreenBroadcast(ScreenBroadcastReceiver.ScreenStateListener paramScreenStateListener)
   {
-    if (this.receiver == null) {}
-    do
-    {
+    if (this.receiver == null) {
       return;
-      removeUnUse();
-    } while (paramScreenStateListener == null);
+    }
+    removeUnUse();
+    if (paramScreenStateListener == null) {
+      return;
+    }
     synchronized (this.mSync)
     {
       Iterator localIterator = mDataList.iterator();
@@ -115,57 +112,62 @@ public class BroadcastUtil
           return;
         }
       }
+      paramScreenStateListener = new WeakReference(paramScreenStateListener);
+      mDataList.add(paramScreenStateListener);
+      return;
     }
-    paramScreenStateListener = new WeakReference(paramScreenStateListener);
-    mDataList.add(paramScreenStateListener);
+    for (;;)
+    {
+      throw paramScreenStateListener;
+    }
   }
   
   public void unregisterScreenBroadcast()
   {
-    if (this.receiver != null)
+    ScreenBroadcastReceiver localScreenBroadcastReceiver = this.receiver;
+    if (localScreenBroadcastReceiver != null)
     {
-      this.receiver.unregister();
+      localScreenBroadcastReceiver.unregister();
       this.receiver = null;
     }
   }
   
   public void unregisterScreenBroadcast(ScreenBroadcastReceiver.ScreenStateListener paramScreenStateListener)
   {
-    if (this.receiver == null) {}
-    do
-    {
+    if (this.receiver == null) {
       return;
-      removeUnUse();
-    } while (paramScreenStateListener == null);
+    }
+    removeUnUse();
+    if (paramScreenStateListener == null) {
+      return;
+    }
     Object localObject2 = this.mSync;
     Object localObject1 = null;
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = mDataList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = mDataList.iterator();
-        if (localIterator.hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)localIterator.next();
-          if (paramScreenStateListener == localWeakReference.get()) {
-            localObject1 = localWeakReference;
-          }
-        }
-        else
-        {
-          if (localObject1 != null) {
-            mDataList.remove(localObject1);
-          }
-          return;
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (paramScreenStateListener == localWeakReference.get()) {
+          localObject1 = localWeakReference;
         }
       }
-      finally {}
+      if (localObject1 != null) {
+        mDataList.remove(localObject1);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramScreenStateListener;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.extra.tools.BroadcastUtil
  * JD-Core Version:    0.7.0.1
  */

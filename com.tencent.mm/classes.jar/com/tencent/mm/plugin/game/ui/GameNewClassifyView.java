@@ -10,107 +10,130 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.dh;
-import com.tencent.mm.plugin.game.d.di;
-import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.plugin.game.f.e;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.game.report.g;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.protobuf.ek;
+import com.tencent.mm.plugin.game.protobuf.el;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public class GameNewClassifyView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private LayoutInflater exe;
-  private LinearLayout mDJ;
-  private int nok;
+  private LinearLayout Api;
+  private int IFc;
+  private LayoutInflater pUI;
   
   public GameNewClassifyView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public final void a(di paramdi, int paramInt1, int paramInt2)
+  public final void a(el paramel, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(112119);
-    if ((paramdi == null) || (bo.es(paramdi.nrw)))
+    AppMethodBeat.i(42315);
+    if ((paramel == null) || (Util.isNullOrNil(paramel.IIU)))
     {
       setVisibility(8);
-      AppMethodBeat.o(112119);
+      AppMethodBeat.o(42315);
       return;
     }
-    this.nok = paramInt2;
-    if (this.exe == null) {
-      this.exe = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.IFc = paramInt2;
+    if (this.pUI == null) {
+      this.pUI = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
     }
-    this.mDJ.removeAllViews();
+    this.Api.removeAllViews();
     LinearLayout localLinearLayout;
-    while (this.mDJ.getChildCount() < paramdi.nrw.size())
+    while (this.Api.getChildCount() < paramel.IIU.size())
     {
-      localLinearLayout = (LinearLayout)this.exe.inflate(2130969800, this, false);
+      localLinearLayout = (LinearLayout)this.pUI.inflate(h.f.Iab, this, false);
       localLinearLayout.setOnClickListener(this);
-      this.mDJ.addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+      this.Api.addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
     }
     paramInt2 = 0;
-    if (paramInt2 < this.mDJ.getChildCount())
+    if (paramInt2 < this.Api.getChildCount())
     {
-      if (paramInt2 < paramdi.nrw.size()) {
-        this.mDJ.getChildAt(paramInt2).setVisibility(0);
+      if (paramInt2 < paramel.IIU.size()) {
+        this.Api.getChildAt(paramInt2).setVisibility(0);
       }
       for (;;)
       {
         paramInt2 += 1;
         break;
-        this.mDJ.getChildAt(paramInt2).setVisibility(8);
+        this.Api.getChildAt(paramInt2).setVisibility(8);
       }
     }
     paramInt2 = 0;
-    while (paramInt2 < paramdi.nrw.size())
+    while (paramInt2 < paramel.IIU.size())
     {
-      localLinearLayout = (LinearLayout)this.mDJ.getChildAt(paramInt2);
-      ImageView localImageView = (ImageView)localLinearLayout.findViewById(2131824535);
-      TextView localTextView = (TextView)localLinearLayout.findViewById(2131824536);
-      e.bHE().i(localImageView, ((dh)paramdi.nrw.get(paramInt2)).IconUrl);
-      localTextView.setText(((dh)paramdi.nrw.get(paramInt2)).Title);
-      localLinearLayout.setTag(new GameNewClassifyView.a(((dh)paramdi.nrw.get(paramInt2)).npR, paramInt2 + 1, ((dh)paramdi.nrw.get(paramInt2)).nqt));
+      localLinearLayout = (LinearLayout)this.Api.getChildAt(paramInt2);
+      ImageView localImageView = (ImageView)localLinearLayout.findViewById(h.e.HUg);
+      TextView localTextView = (TextView)localLinearLayout.findViewById(h.e.HUh);
+      e.fIb().p(localImageView, ((ek)paramel.IIU.get(paramInt2)).IHo);
+      localTextView.setText(((ek)paramel.IIU.get(paramInt2)).hAP);
+      localLinearLayout.setTag(new a(((ek)paramel.IIU.get(paramInt2)).IGI, paramInt2 + 1, ((ek)paramel.IIU.get(paramInt2)).IHI));
       paramInt2 += 1;
     }
     setVisibility(0);
     if (paramInt1 == 2) {
-      a.a(getContext(), 10, 1019, 0, null, this.nok, null);
+      com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1019, 0, null, this.IFc, null);
     }
-    AppMethodBeat.o(112119);
+    AppMethodBeat.o(42315);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(112120);
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof GameNewClassifyView.a)))
+    AppMethodBeat.i(42316);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
-      AppMethodBeat.o(112120);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(42316);
       return;
     }
-    paramView = (GameNewClassifyView.a)paramView.getTag();
-    if (!bo.isNullOrNil(paramView.url))
+    paramView = (a)paramView.getTag();
+    if (!Util.isNullOrNil(paramView.url))
     {
-      com.tencent.mm.plugin.game.f.c.ax(getContext(), paramView.url);
-      com.tencent.mm.game.report.c.a(getContext(), 10, 1019, paramView.position, 7, null, this.nok, a.lR(paramView.extInfo));
+      c.ba(getContext(), paramView.url);
+      g.a(getContext(), 10, 1019, paramView.position, 7, null, this.IFc, com.tencent.mm.plugin.game.c.a.EM(paramView.extInfo));
     }
-    AppMethodBeat.o(112120);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(42316);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(112118);
+    AppMethodBeat.i(42314);
     super.onFinishInflate();
-    this.exe = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.mDJ = ((LinearLayout)findViewById(2131824534));
-    AppMethodBeat.o(112118);
+    this.pUI = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.Api = ((LinearLayout)findViewById(h.e.HVW));
+    AppMethodBeat.o(42314);
+  }
+  
+  static final class a
+  {
+    public String extInfo;
+    public int position;
+    public String url;
+    
+    public a(String paramString1, int paramInt, String paramString2)
+    {
+      this.url = paramString1;
+      this.position = paramInt;
+      this.extInfo = paramString2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameNewClassifyView
  * JD-Core Version:    0.7.0.1
  */

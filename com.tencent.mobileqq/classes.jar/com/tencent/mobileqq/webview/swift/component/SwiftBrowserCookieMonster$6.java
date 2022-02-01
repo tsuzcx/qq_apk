@@ -10,12 +10,12 @@ final class SwiftBrowserCookieMonster$6
   
   public void run()
   {
-    SwiftBrowserCookieMonster.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentIntent);
+    SwiftBrowserCookieMonster.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.6
  * JD-Core Version:    0.7.0.1
  */

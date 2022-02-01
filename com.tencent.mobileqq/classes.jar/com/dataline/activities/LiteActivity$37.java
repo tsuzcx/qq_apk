@@ -9,14 +9,14 @@ class LiteActivity$37
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.setVisibility(8);
+    if (this.this$0.h != null) {
+      this.this$0.h.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.37
  * JD-Core Version:    0.7.0.1
  */

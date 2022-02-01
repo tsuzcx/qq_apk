@@ -8,8 +8,8 @@ public final class FontRsp
   extends JceStruct
 {
   public String actUrl = "";
-  public int authRet;
-  public int fontID;
+  public int authRet = 0;
+  public int fontID = 0;
   
   public FontRsp() {}
   
@@ -31,14 +31,15 @@ public final class FontRsp
   {
     paramJceOutputStream.write(this.fontID, 0);
     paramJceOutputStream.write(this.authRet, 1);
-    if (this.actUrl != null) {
-      paramJceOutputStream.write(this.actUrl, 2);
+    String str = this.actUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.FontRsp
  * JD-Core Version:    0.7.0.1
  */

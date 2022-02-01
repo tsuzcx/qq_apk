@@ -8,6 +8,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import photo_share_struct.pic_host;
@@ -32,62 +33,63 @@ public final class Photo
   static cell_video cache_videodata;
   public String albumid = "";
   public String bigurl = "";
-  public Map<String, byte[]> binaryExtInfo;
-  public Map<Integer, String> busi_param;
+  public Map<String, byte[]> binaryExtInfo = null;
+  public Map<Integer, String> busi_param = null;
   public String client_key = "";
-  public int cmtnum;
+  public int cmtnum = 0;
   public String curkey = "";
   public String currenturl = "";
   public String desc = "";
-  public stFaceInfo face_info;
-  public ArrayList<stFaceItem> facelist;
-  public int flag;
-  public int height;
-  public int isIndependentUgc;
-  public stLabelInfo label_info;
-  public int likenum;
+  public stFaceInfo face_info = null;
+  public ArrayList<stFaceItem> facelist = null;
+  public int flag = 0;
+  public int height = 0;
+  public int isIndependentUgc = 0;
+  public stLabelInfo label_info = null;
+  public int likenum = 0;
   public String lloc = "";
-  public Map<Integer, String> mapExifInfo;
-  public Map<String, String> mapExtern;
-  public Map<Integer, String> mapOcrInfo;
+  public Map<Integer, String> mapExifInfo = null;
+  public Map<String, String> mapExtern = null;
+  public Map<Integer, String> mapOcrInfo = null;
   public String midurl = "";
-  public int modifytime;
-  public byte mylike;
+  public int modifytime = 0;
+  public byte mylike = 0;
   public String name = "";
   public byte opmask = 7;
-  public int opsynflag;
-  public long origin_size;
-  public ArrayList<stPhotoTag> photoTag;
+  public int opsynflag = 0;
+  public long origin_size = 0L;
+  public ArrayList<stPhotoTag> photoTag = null;
   public String photo_visitor_ugc_key = "";
-  public pic_host pic_host_nick;
-  public Map<Integer, Integer> pics_enlargerate;
-  public int quanflag;
-  public long raw;
-  public long raw_height;
-  public long raw_width;
-  public s_outshare share_info;
-  public stPoi shoot_place_info;
-  public int shoottime;
-  public Map<Integer, String> shouzhang_extend_map;
+  public pic_host pic_host_nick = null;
+  public Map<Integer, Integer> pics_enlargerate = null;
+  public int quanflag = 0;
+  public long raw = 0L;
+  public long raw_height = 0L;
+  public long raw_width = 0L;
+  public s_outshare share_info = null;
+  public stPoi shoot_place_info = null;
+  public int shoottime = 0;
+  public Map<Integer, String> shouzhang_extend_map = null;
   public String sloc = "";
   public String smallurl = "";
   public String thumburl = "";
-  public int trannum;
-  public int type;
-  public long uin;
+  public int trannum = 0;
+  public int type = 0;
+  public long uin = 0L;
   public String unikey = "";
-  public int uploadtime;
+  public int uploadtime = 0;
   public String url = "";
-  public cell_video videodata;
-  public int videoflag;
-  public long view_count;
-  public int width;
+  public cell_video videodata = null;
+  public int videoflag = 0;
+  public long view_count = 0L;
+  public int width = 0;
   
   static
   {
-    cache_busi_param.put(Integer.valueOf(0), "");
+    Integer localInteger = Integer.valueOf(0);
+    cache_busi_param.put(localInteger, "");
     cache_pics_enlargerate = new HashMap();
-    cache_pics_enlargerate.put(Integer.valueOf(0), Integer.valueOf(0));
+    cache_pics_enlargerate.put(localInteger, localInteger);
     cache_photoTag = new ArrayList();
     Object localObject = new stPhotoTag();
     cache_photoTag.add(localObject);
@@ -101,9 +103,9 @@ public final class Photo
     localObject = new stFaceItem();
     cache_facelist.add(localObject);
     cache_mapExifInfo = new HashMap();
-    cache_mapExifInfo.put(Integer.valueOf(0), "");
+    cache_mapExifInfo.put(localInteger, "");
     cache_mapOcrInfo = new HashMap();
-    cache_mapOcrInfo.put(Integer.valueOf(0), "");
+    cache_mapOcrInfo.put(localInteger, "");
     cache_mapExtern = new HashMap();
     cache_mapExtern.put("", "");
     cache_binaryExtInfo = new HashMap();
@@ -111,7 +113,7 @@ public final class Photo
     ((byte[])localObject)[0] = 0;
     cache_binaryExtInfo.put("", localObject);
     cache_shouzhang_extend_map = new HashMap();
-    cache_shouzhang_extend_map.put(Integer.valueOf(0), "");
+    cache_shouzhang_extend_map.put(localInteger, "");
   }
   
   public Photo() {}
@@ -246,93 +248,116 @@ public final class Photo
     paramJceOutputStream.write(this.likenum, 13);
     paramJceOutputStream.write(this.mylike, 14);
     paramJceOutputStream.write(this.trannum, 15);
-    if (this.unikey != null) {
-      paramJceOutputStream.write(this.unikey, 16);
+    Object localObject = this.unikey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.curkey != null) {
-      paramJceOutputStream.write(this.curkey, 17);
+    localObject = this.curkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.midurl != null) {
-      paramJceOutputStream.write(this.midurl, 18);
+    localObject = this.midurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.thumburl != null) {
-      paramJceOutputStream.write(this.thumburl, 19);
+    localObject = this.thumburl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 20);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 20);
     }
     paramJceOutputStream.write(this.type, 21);
     paramJceOutputStream.write(this.isIndependentUgc, 22);
     paramJceOutputStream.write(this.opsynflag, 23);
     paramJceOutputStream.write(this.quanflag, 24);
     paramJceOutputStream.write(this.raw, 25);
-    if (this.currenturl != null) {
-      paramJceOutputStream.write(this.currenturl, 26);
+    localObject = this.currenturl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 26);
     }
-    if (this.pics_enlargerate != null) {
-      paramJceOutputStream.write(this.pics_enlargerate, 27);
+    localObject = this.pics_enlargerate;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 27);
     }
-    if (this.photoTag != null) {
-      paramJceOutputStream.write(this.photoTag, 28);
+    localObject = this.photoTag;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 28);
     }
     paramJceOutputStream.write(this.opmask, 29);
     paramJceOutputStream.write(this.shoottime, 30);
     paramJceOutputStream.write(this.flag, 31);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 32);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 32);
     }
     paramJceOutputStream.write(this.videoflag, 33);
-    if (this.videodata != null) {
-      paramJceOutputStream.write(this.videodata, 34);
+    localObject = this.videodata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 34);
     }
-    if (this.pic_host_nick != null) {
-      paramJceOutputStream.write(this.pic_host_nick, 35);
+    localObject = this.pic_host_nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 35);
     }
-    if (this.share_info != null) {
-      paramJceOutputStream.write(this.share_info, 36);
+    localObject = this.share_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 36);
     }
     paramJceOutputStream.write(this.view_count, 37);
-    if (this.photo_visitor_ugc_key != null) {
-      paramJceOutputStream.write(this.photo_visitor_ugc_key, 38);
+    localObject = this.photo_visitor_ugc_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 38);
     }
-    if (this.client_key != null) {
-      paramJceOutputStream.write(this.client_key, 39);
+    localObject = this.client_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 39);
     }
-    if (this.shoot_place_info != null) {
-      paramJceOutputStream.write(this.shoot_place_info, 40);
+    localObject = this.shoot_place_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 40);
     }
-    if (this.face_info != null) {
-      paramJceOutputStream.write(this.face_info, 41);
+    localObject = this.face_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 41);
     }
-    if (this.label_info != null) {
-      paramJceOutputStream.write(this.label_info, 42);
+    localObject = this.label_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 42);
     }
-    if (this.facelist != null) {
-      paramJceOutputStream.write(this.facelist, 43);
+    localObject = this.facelist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 43);
     }
     paramJceOutputStream.write(this.origin_size, 44);
-    if (this.mapExifInfo != null) {
-      paramJceOutputStream.write(this.mapExifInfo, 45);
+    localObject = this.mapExifInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 45);
     }
-    if (this.mapOcrInfo != null) {
-      paramJceOutputStream.write(this.mapOcrInfo, 46);
+    localObject = this.mapOcrInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 46);
     }
-    if (this.mapExtern != null) {
-      paramJceOutputStream.write(this.mapExtern, 47);
+    localObject = this.mapExtern;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 47);
     }
     paramJceOutputStream.write(this.raw_width, 48);
     paramJceOutputStream.write(this.raw_height, 49);
-    if (this.binaryExtInfo != null) {
-      paramJceOutputStream.write(this.binaryExtInfo, 50);
+    localObject = this.binaryExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 50);
     }
-    if (this.shouzhang_extend_map != null) {
-      paramJceOutputStream.write(this.shouzhang_extend_map, 51);
+    localObject = this.shouzhang_extend_map;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 51);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.Photo
  * JD-Core Version:    0.7.0.1
  */

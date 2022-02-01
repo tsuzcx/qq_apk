@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/faz" android:background="@drawable/p5" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j5">
+        <ImageView android:id="@id/ju6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/as4" android:layout_marginRight="@dimen/as5" android:layout_alignParentLeft="true" android:layout_centerInParent="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/juc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:layout_marginBottom="@dimen/g" android:layout_toRightOf="@id/ju6" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/acz" android:id="@id/jub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:layout_toRightOf="@id/ju6" android:layout_below="@id/juc" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,62 +1,60 @@
 package com.tencent.mm.plugin.fcm;
 
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ex;
+import com.tencent.mm.protocal.protobuf.ey;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
+  extends p
+  implements m
 {
-  private static final String[] mES = { "A53", "A53m", "A53t", "A33m", "A33", "A33t", "R7Plust", "R7Plus", "A59t", "A59s", "A59m", "R9PlustA", "R9PlusmA", "R9PlustmA", "R9tm", "R9m", "R9km", "A37t", "A37m", "R7sPlus", "R7Plusm", "A53", "A51kc", "A51", "A30" };
+  private h callback;
+  private final c rr;
   
-  public static final boolean e(g paramg)
+  public d(String paramString)
   {
-    AppMethodBeat.i(56441);
-    int i;
-    if ((Build.VERSION.SDK_INT == 21) || (Build.VERSION.SDK_INT == 22)) {
-      if (bo.bf(Build.MANUFACTURER, "").toLowerCase().indexOf("oppo".toLowerCase()) >= 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label165;
-        }
-        String[] arrayOfString = mES;
-        int j = arrayOfString.length;
-        i = 0;
-        label60:
-        if (i >= j) {
-          break label165;
-        }
-        String str = arrayOfString[i];
-        if ((!str.equalsIgnoreCase(Build.DEVICE)) && (!str.equalsIgnoreCase(Build.PRODUCT))) {
-          break label158;
-        }
-        ab.i("OPPOFirebaseProblem", "for oppo firebase problem, %s", new Object[] { Build.MODEL });
-        i = 1;
-        label112:
-        if ((i == 0) || (GooglePlayServicesUtil.isGooglePlayServicesAvailable(paramg.bX) == 0)) {
-          break label170;
-        }
-      }
-    }
-    label158:
-    label165:
-    label170:
-    for (boolean bool = true;; bool = false)
-    {
-      ab.i("MicroMsg.FCM.OPPOFirebaseProblem", "isNoSupportFCM() result:%s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(56441);
-      return bool;
-      i = 0;
-      break;
-      i += 1;
-      break label60;
-      i = 0;
-      break label112;
-    }
+    AppMethodBeat.i(127578);
+    c.a locala = new c.a();
+    locala.otE = new ex();
+    locala.otF = new ey();
+    locala.uri = "/cgi-bin/micromsg-bin/androidfcmunreg";
+    locala.funcId = 1059;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    ((ex)c.b.b(this.rr.otB)).YGM = paramString;
+    AppMethodBeat.o(127578);
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(127579);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(127579);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 643;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(127580);
+    Log.i("MicroMsg.FCM.NetSceneFcmUnreg", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(127580);
   }
 }
 

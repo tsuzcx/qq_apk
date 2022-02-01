@@ -27,14 +27,17 @@ public class QQAVImageDenoiseFilter
   
   public void onDestroy()
   {
-    if (this.mFrameBuffers != null)
+    int[] arrayOfInt = this.mFrameBuffers;
+    if (arrayOfInt != null)
     {
-      GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-      GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+      GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+      arrayOfInt = this.mFrameBufferTextures;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
-    if (this.mLastStoreTexture != -1)
+    int i = this.mLastStoreTexture;
+    if (i != -1)
     {
-      GLES20.glDeleteTextures(2, new int[] { this.mLastStoreTexture, this.mLastStoreBlurTexture }, 0);
+      GLES20.glDeleteTextures(2, new int[] { i, this.mLastStoreBlurTexture }, 0);
       GLES20.glDeleteFramebuffers(2, new int[] { this.mLastStoreFbo, this.mLastStoreBlurFbo }, 0);
       this.mLastStoreTexture = -1;
       this.mLastStoreFbo = -1;
@@ -53,26 +56,34 @@ public class QQAVImageDenoiseFilter
   public void onDraw2(int paramInt1, int paramInt2)
   {
     runPendingOnDrawTasks();
-    if ((!isInitialized()) || (this.mFrameBuffers == null) || (this.mFrameBufferTextures == null)) {
-      return;
-    }
-    if (this.mFirstFrameFlag)
+    if ((isInitialized()) && (this.mFrameBuffers != null))
     {
-      this.mFirstFrameFlag = false;
-      this.mInitFilter.onDraw2(this.mFrameBufferTextures[0], this.mLastStoreFbo);
-      this.mInitFilter.onDraw2(this.mFrameBufferTextures[0], this.mLastStoreBlurFbo);
-      Log.d("QQAVImageDenoiseFilter", "init last store");
+      Object localObject = this.mFrameBufferTextures;
+      if (localObject == null) {
+        return;
+      }
+      if (this.mFirstFrameFlag)
+      {
+        this.mFirstFrameFlag = false;
+        this.mInitFilter.onDraw2(localObject[0], this.mLastStoreFbo);
+        this.mInitFilter.onDraw2(this.mFrameBufferTextures[0], this.mLastStoreBlurFbo);
+        Log.d("QQAVImageDenoiseFilter", "init last store");
+      }
+      this.mRGB2YUVFilter.onDraw2(paramInt1, this.mFrameBuffers[0]);
+      this.mGaussianBlurFilter.onDraw2(this.mFrameBufferTextures[0], this.mFrameBuffers[1]);
+      localObject = this.mVDCalAndPredFilter;
+      int[] arrayOfInt = this.mFrameBufferTextures;
+      ((QQAVImageDenoiseVDCalAndPredFilter)localObject).mFilterSourceTexture2 = arrayOfInt[1];
+      ((QQAVImageDenoiseVDCalAndPredFilter)localObject).mFilterSourceTexture3 = arrayOfInt[0];
+      ((QQAVImageDenoiseVDCalAndPredFilter)localObject).mFilterSourceTexture4 = this.mLastStoreBlurTexture;
+      ((QQAVImageDenoiseVDCalAndPredFilter)localObject).onDraw2(this.mLastStoreTexture, this.mFrameBuffers[2]);
+      this.mEmptyFilter.onDraw2(this.mFrameBufferTextures[2], this.mLastStoreFbo);
+      this.mEmptyFilter.onDraw2(this.mFrameBufferTextures[1], this.mLastStoreBlurFbo);
+      localObject = this.mYUV2RGBFilter;
+      arrayOfInt = this.mFrameBufferTextures;
+      ((QQAVImageDenoiseYUV2RGBFilter)localObject).mFilterSourceTexture2 = arrayOfInt[0];
+      ((QQAVImageDenoiseYUV2RGBFilter)localObject).onDraw2(arrayOfInt[2], paramInt2);
     }
-    this.mRGB2YUVFilter.onDraw2(paramInt1, this.mFrameBuffers[0]);
-    this.mGaussianBlurFilter.onDraw2(this.mFrameBufferTextures[0], this.mFrameBuffers[1]);
-    this.mVDCalAndPredFilter.mFilterSourceTexture2 = this.mFrameBufferTextures[1];
-    this.mVDCalAndPredFilter.mFilterSourceTexture3 = this.mFrameBufferTextures[0];
-    this.mVDCalAndPredFilter.mFilterSourceTexture4 = this.mLastStoreBlurTexture;
-    this.mVDCalAndPredFilter.onDraw2(this.mLastStoreTexture, this.mFrameBuffers[2]);
-    this.mEmptyFilter.onDraw2(this.mFrameBufferTextures[2], this.mLastStoreFbo);
-    this.mEmptyFilter.onDraw2(this.mFrameBufferTextures[1], this.mLastStoreBlurFbo);
-    this.mYUV2RGBFilter.mFilterSourceTexture2 = this.mFrameBufferTextures[0];
-    this.mYUV2RGBFilter.onDraw2(this.mFrameBufferTextures[2], paramInt2);
   }
   
   public void onInit()
@@ -99,17 +110,21 @@ public class QQAVImageDenoiseFilter
   
   public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    if ((this.mOutputWidth != paramInt1) || (this.mOutputHeight != paramInt2)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((this.mOutputWidth == paramInt1) && (this.mOutputHeight == paramInt2)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    if (i != 0)
     {
-      super.onOutputSizeChanged(paramInt1, paramInt2);
-      if (i == 0) {
-        return;
-      }
-      if (this.mFrameBuffers != null)
+      int[] arrayOfInt = this.mFrameBuffers;
+      if (arrayOfInt != null)
       {
-        GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-        GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+        GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+        arrayOfInt = this.mFrameBufferTextures;
+        GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
       }
       this.mRGB2YUVFilter.onOutputSizeChanged(paramInt1, paramInt2);
       this.mGaussianBlurFilter.onOutputSizeChanged(paramInt1, paramInt2);
@@ -135,46 +150,47 @@ public class QQAVImageDenoiseFilter
         GLES20.glBindFramebuffer(36160, 0);
         i += 1;
       }
+      i = this.mLastStoreTexture;
+      if (i != -1)
+      {
+        GLES20.glDeleteTextures(2, new int[] { i, this.mLastStoreBlurTexture }, 0);
+        GLES20.glDeleteFramebuffers(2, new int[] { this.mLastStoreFbo, this.mLastStoreBlurFbo }, 0);
+        this.mLastStoreTexture = -1;
+        this.mLastStoreFbo = -1;
+        this.mLastStoreBlurTexture = -1;
+        this.mLastStoreBlurFbo = -1;
+      }
+      arrayOfInt = new int[2];
+      GLES20.glGenTextures(2, arrayOfInt, 0);
+      this.mLastStoreTexture = arrayOfInt[0];
+      this.mLastStoreFbo = CommonUtils.initFrameBuffer(paramInt1, paramInt2, this.mLastStoreTexture);
+      this.mLastStoreBlurTexture = arrayOfInt[1];
+      this.mLastStoreBlurFbo = CommonUtils.initFrameBuffer(paramInt1, paramInt2, this.mLastStoreBlurTexture);
+      this.mFirstFrameFlag = true;
     }
-    if (this.mLastStoreTexture != -1)
-    {
-      GLES20.glDeleteTextures(2, new int[] { this.mLastStoreTexture, this.mLastStoreBlurTexture }, 0);
-      GLES20.glDeleteFramebuffers(2, new int[] { this.mLastStoreFbo, this.mLastStoreBlurFbo }, 0);
-      this.mLastStoreTexture = -1;
-      this.mLastStoreFbo = -1;
-      this.mLastStoreBlurTexture = -1;
-      this.mLastStoreBlurFbo = -1;
-    }
-    int[] arrayOfInt = new int[2];
-    GLES20.glGenTextures(2, arrayOfInt, 0);
-    this.mLastStoreTexture = arrayOfInt[0];
-    this.mLastStoreFbo = CommonUtils.initFrameBuffer(paramInt1, paramInt2, this.mLastStoreTexture);
-    this.mLastStoreBlurTexture = arrayOfInt[1];
-    this.mLastStoreBlurFbo = CommonUtils.initFrameBuffer(paramInt1, paramInt2, this.mLastStoreBlurTexture);
-    this.mFirstFrameFlag = true;
   }
   
   public void setUpdateRate(float paramFloat)
   {
     float f;
-    if (paramFloat > 40.0F) {
+    if (paramFloat > 40.0F)
+    {
       f = 40.0F;
     }
-    for (;;)
+    else
     {
-      this.mUpdateRate = f;
-      this.mVDCalAndPredFilter.setUpdateRateLocal(f);
-      return;
       f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
     }
+    this.mUpdateRate = f;
+    this.mVDCalAndPredFilter.setUpdateRateLocal(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.denoise.QQAVImageDenoiseFilter
  * JD-Core Version:    0.7.0.1
  */

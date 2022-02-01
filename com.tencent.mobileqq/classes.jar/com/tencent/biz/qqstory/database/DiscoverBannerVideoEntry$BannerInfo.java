@@ -3,18 +3,17 @@ package com.tencent.biz.qqstory.database;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uup;
 
 public class DiscoverBannerVideoEntry$BannerInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BannerInfo> CREATOR = new uup();
+  public static final Parcelable.Creator<BannerInfo> CREATOR = new DiscoverBannerVideoEntry.BannerInfo.1();
   public String a;
   public String b;
   
   public DiscoverBannerVideoEntry$BannerInfo() {}
   
-  public DiscoverBannerVideoEntry$BannerInfo(Parcel paramParcel)
+  protected DiscoverBannerVideoEntry$BannerInfo(Parcel paramParcel)
   {
     this.a = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -33,7 +32,7 @@ public class DiscoverBannerVideoEntry$BannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo
  * JD-Core Version:    0.7.0.1
  */

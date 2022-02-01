@@ -1,29 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import org.json.JSONObject;
 
-public final class g
+public abstract interface g
+  extends b
 {
-  c hET;
-  int hry;
-  
-  public g(c paramc, int paramInt)
-  {
-    this.hET = paramc;
-    this.hry = paramInt;
-  }
-  
-  public final void BS(String paramString)
-  {
-    AppMethodBeat.i(91048);
-    this.hET.h(this.hry, paramString);
-    AppMethodBeat.o(91048);
-  }
+  public abstract h c(f paramf, JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.g
  * JD-Core Version:    0.7.0.1
  */

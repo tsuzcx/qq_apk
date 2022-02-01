@@ -1,17 +1,15 @@
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class cgo
+class cgo
   implements Runnable
 {
-  public cgo(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  cgo(cgn paramcgn, Drawable paramDrawable) {}
   
   public void run()
   {
-    Object localObject = this.a.b.a();
-    localObject = this.a.b.b((String)localObject);
-    this.a.runOnUiThread(new cgp(this, (Drawable)localObject));
+    this.jdField_a_of_type_Cgn.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

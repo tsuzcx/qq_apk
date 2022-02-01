@@ -51,13 +51,13 @@ public abstract class WebSocketServer
   protected List<WebSocketServer.WebSocketWorker> decoders;
   private List<Draft> drafts;
   private List<WebSocketImpl> iqueue;
-  private final AtomicBoolean isclosed = new AtomicBoolean(false);
-  private int queueinvokes = 0;
-  private final AtomicInteger queuesize = new AtomicInteger(0);
+  private final AtomicBoolean isclosed;
+  private int queueinvokes;
+  private final AtomicInteger queuesize;
   private Selector selector;
   private Thread selectorthread;
   private ServerSocketChannel server;
-  private WebSocketServerFactory wsf = new DefaultWebSocketServerFactory();
+  private WebSocketServerFactory wsf;
   
   public WebSocketServer()
   {
@@ -81,12 +81,18 @@ public abstract class WebSocketServer
   
   public WebSocketServer(InetSocketAddress paramInetSocketAddress, int paramInt, List<Draft> paramList, Collection<WebSocket> paramCollection)
   {
-    if ((paramInetSocketAddress == null) || (paramInt < 1) || (paramCollection == null)) {
-      throw new IllegalArgumentException("address and connectionscontainer must not be null and you need at least 1 decoder");
-    }
-    if (paramList == null) {}
-    for (this.drafts = Collections.emptyList();; this.drafts = paramList)
+    int i = 0;
+    this.isclosed = new AtomicBoolean(false);
+    this.queueinvokes = 0;
+    this.queuesize = new AtomicInteger(0);
+    this.wsf = new DefaultWebSocketServerFactory();
+    if ((paramInetSocketAddress != null) && (paramInt >= 1) && (paramCollection != null))
     {
+      if (paramList == null) {
+        this.drafts = Collections.emptyList();
+      } else {
+        this.drafts = paramList;
+      }
       this.address = paramInetSocketAddress;
       this.connections = paramCollection;
       setTcpNoDelay(false);
@@ -100,6 +106,12 @@ public abstract class WebSocketServer
         this.decoders.add(paramInetSocketAddress);
         i += 1;
       }
+      return;
+    }
+    paramInetSocketAddress = new IllegalArgumentException("address and connectionscontainer must not be null and you need at least 1 decoder");
+    for (;;)
+    {
+      throw paramInetSocketAddress;
     }
   }
   
@@ -110,14 +122,15 @@ public abstract class WebSocketServer
   
   private void doAccept(SelectionKey paramSelectionKey, Iterator<SelectionKey> paramIterator)
   {
-    if (!onConnect(paramSelectionKey)) {
-      paramSelectionKey.cancel();
-    }
-    do
+    if (!onConnect(paramSelectionKey))
     {
+      paramSelectionKey.cancel();
       return;
-      paramSelectionKey = this.server.accept();
-    } while (paramSelectionKey == null);
+    }
+    paramSelectionKey = this.server.accept();
+    if (paramSelectionKey == null) {
+      return;
+    }
     paramSelectionKey.configureBlocking(false);
     Object localObject = paramSelectionKey.socket();
     ((Socket)localObject).setTcpNoDelay(isTcpNoDelay());
@@ -157,45 +170,58 @@ public abstract class WebSocketServer
           localWebSocketImpl.inQueue.put(localByteBuffer);
           queue(localWebSocketImpl);
         }
+        else
+        {
+          pushBuffer(localByteBuffer);
+        }
       }
       catch (IOException localIOException)
       {
         pushBuffer(localByteBuffer);
         throw localIOException;
       }
-      pushBuffer(localByteBuffer);
     }
   }
   
   private void doBroadcast(Object paramObject, Collection<WebSocket> paramCollection)
   {
-    if ((paramObject instanceof String)) {}
-    for (String str = (String)paramObject;; str = null)
+    boolean bool = paramObject instanceof String;
+    ByteBuffer localByteBuffer = null;
+    String str;
+    if (bool) {
+      str = (String)paramObject;
+    } else {
+      str = null;
+    }
+    if ((paramObject instanceof ByteBuffer)) {
+      localByteBuffer = (ByteBuffer)paramObject;
+    }
+    if ((str == null) && (localByteBuffer == null)) {
+      return;
+    }
+    paramObject = new HashMap();
+    paramCollection = paramCollection.iterator();
+    for (;;)
     {
-      if ((paramObject instanceof ByteBuffer)) {}
-      for (paramObject = (ByteBuffer)paramObject;; paramObject = null)
+      WebSocket localWebSocket;
+      Draft localDraft;
+      if (paramCollection.hasNext())
       {
-        if ((str == null) && (paramObject == null)) {}
-        for (;;)
+        localWebSocket = (WebSocket)paramCollection.next();
+        if (localWebSocket != null)
         {
-          return;
-          HashMap localHashMap = new HashMap();
-          paramCollection = paramCollection.iterator();
-          while (paramCollection.hasNext())
-          {
-            WebSocket localWebSocket = (WebSocket)paramCollection.next();
-            if (localWebSocket != null)
-            {
-              Draft localDraft = localWebSocket.getDraft();
-              fillFrames(localDraft, localHashMap, str, paramObject);
-              try
-              {
-                localWebSocket.sendFrame((Collection)localHashMap.get(localDraft));
-              }
-              catch (WebsocketNotConnectedException localWebsocketNotConnectedException) {}
-            }
-          }
+          localDraft = localWebSocket.getDraft();
+          fillFrames(localDraft, paramObject, str, localByteBuffer);
         }
+      }
+      else
+      {
+        try
+        {
+          localWebSocket.sendFrame((Collection)paramObject.get(localDraft));
+        }
+        catch (WebsocketNotConnectedException localWebsocketNotConnectedException) {}
+        return;
       }
     }
   }
@@ -204,13 +230,17 @@ public abstract class WebSocketServer
   {
     try
     {
-      if (this.selectorthread != null) {
-        throw new IllegalStateException(getClass().getName() + " can only be started once.");
+      if (this.selectorthread == null)
+      {
+        this.selectorthread = Thread.currentThread();
+        return !this.isclosed.get();
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getName());
+      localStringBuilder.append(" can only be started once.");
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     finally {}
-    this.selectorthread = Thread.currentThread();
-    return !this.isclosed.get();
   }
   
   private boolean doRead(SelectionKey paramSelectionKey, Iterator<SelectionKey> paramIterator)
@@ -225,7 +255,8 @@ public abstract class WebSocketServer
     }
     try
     {
-      if (SocketChannelIOHelper.read(localByteBuffer, localWebSocketImpl, localWebSocketImpl.getChannel())) {
+      if (SocketChannelIOHelper.read(localByteBuffer, localWebSocketImpl, localWebSocketImpl.getChannel()))
+      {
         if (localByteBuffer.hasRemaining())
         {
           localWebSocketImpl.inQueue.put(localByteBuffer);
@@ -240,61 +271,68 @@ public abstract class WebSocketServer
           pushBuffer(localByteBuffer);
         }
       }
+      else {
+        pushBuffer(localByteBuffer);
+      }
+      return true;
     }
     catch (IOException paramSelectionKey)
     {
       pushBuffer(localByteBuffer);
       throw paramSelectionKey;
     }
-    pushBuffer(localByteBuffer);
-    return true;
   }
   
   private void doServerShutdown()
   {
     stopConnectionLostTimer();
-    if (this.decoders != null)
+    Object localObject = this.decoders;
+    if (localObject != null)
     {
-      Iterator localIterator = this.decoders.iterator();
-      while (localIterator.hasNext()) {
-        ((WebSocketServer.WebSocketWorker)localIterator.next()).interrupt();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((WebSocketServer.WebSocketWorker)((Iterator)localObject).next()).interrupt();
       }
     }
-    if (this.selector != null) {}
-    try
-    {
-      this.selector.close();
-      if (this.server == null) {}
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
+    localObject = this.selector;
+    if (localObject != null) {
+      try
       {
-        try
-        {
-          this.server.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          log.error("IOException during server.close", localIOException2);
-          onError(null, localIOException2);
-        }
-        localIOException1 = localIOException1;
+        ((Selector)localObject).close();
+      }
+      catch (IOException localIOException1)
+      {
         log.error("IOException during selector.close", localIOException1);
         onError(null, localIOException1);
+      }
+    }
+    ServerSocketChannel localServerSocketChannel = this.server;
+    if (localServerSocketChannel != null) {
+      try
+      {
+        localServerSocketChannel.close();
+        return;
+      }
+      catch (IOException localIOException2)
+      {
+        log.error("IOException during server.close", localIOException2);
+        onError(null, localIOException2);
       }
     }
   }
   
   private boolean doSetupSelectorAndServerThread()
   {
-    this.selectorthread.setName("WebSocketSelector-" + this.selectorthread.getId());
+    Object localObject = this.selectorthread;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WebSocketSelector-");
+    localStringBuilder.append(this.selectorthread.getId());
+    ((Thread)localObject).setName(localStringBuilder.toString());
     try
     {
       this.server = ServerSocketChannel.open();
       this.server.configureBlocking(false);
-      Object localObject = this.server.socket();
+      localObject = this.server.socket();
       ((ServerSocket)localObject).setReceiveBufferSize(16384);
       ((ServerSocket)localObject).setReuseAddress(isReuseAddr());
       ((ServerSocket)localObject).bind(this.address);
@@ -306,13 +344,13 @@ public abstract class WebSocketServer
         ((WebSocketServer.WebSocketWorker)((Iterator)localObject).next()).start();
       }
       onStart();
+      return true;
     }
     catch (IOException localIOException)
     {
       handleFatal(null, localIOException);
-      return false;
     }
-    return true;
+    return false;
   }
   
   private void doWrite(SelectionKey paramSelectionKey)
@@ -349,25 +387,21 @@ public abstract class WebSocketServer
   {
     log.error("Shutdown due to fatal error", paramException);
     onError(paramWebSocket, paramException);
-    if (this.decoders != null)
+    paramWebSocket = this.decoders;
+    if (paramWebSocket != null)
     {
-      paramWebSocket = this.decoders.iterator();
+      paramWebSocket = paramWebSocket.iterator();
       while (paramWebSocket.hasNext()) {
         ((WebSocketServer.WebSocketWorker)paramWebSocket.next()).interrupt();
       }
     }
-    if (this.selectorthread != null) {
-      this.selectorthread.interrupt();
+    paramWebSocket = this.selectorthread;
+    if (paramWebSocket != null) {
+      paramWebSocket.interrupt();
     }
     try
     {
       stop();
-      return;
-    }
-    catch (IOException paramWebSocket)
-    {
-      log.error("Error during shutdown", paramWebSocket);
-      onError(null, paramWebSocket);
       return;
     }
     catch (InterruptedException paramWebSocket)
@@ -375,22 +409,27 @@ public abstract class WebSocketServer
       Thread.currentThread().interrupt();
       log.error("Interrupt during stop", paramException);
       onError(null, paramWebSocket);
+      return;
+    }
+    catch (IOException paramWebSocket)
+    {
+      log.error("Error during shutdown", paramWebSocket);
+      onError(null, paramWebSocket);
     }
   }
   
   private void handleIOException(SelectionKey paramSelectionKey, WebSocket paramWebSocket, IOException paramIOException)
   {
-    if (paramWebSocket != null) {
-      paramWebSocket.closeConnection(1006, paramIOException.getMessage());
-    }
-    do
+    if (paramWebSocket != null)
     {
-      do
-      {
-        return;
-      } while (paramSelectionKey == null);
+      paramWebSocket.closeConnection(1006, paramIOException.getMessage());
+      return;
+    }
+    if (paramSelectionKey != null)
+    {
       paramSelectionKey = paramSelectionKey.channel();
-    } while ((paramSelectionKey == null) || (!paramSelectionKey.isOpen()));
+      if ((paramSelectionKey == null) || (!paramSelectionKey.isOpen())) {}
+    }
     try
     {
       paramSelectionKey.close();
@@ -446,10 +485,12 @@ public abstract class WebSocketServer
   
   public void broadcast(String paramString, Collection<WebSocket> paramCollection)
   {
-    if ((paramString == null) || (paramCollection == null)) {
-      throw new IllegalArgumentException();
+    if ((paramString != null) && (paramCollection != null))
+    {
+      doBroadcast(paramString, paramCollection);
+      return;
     }
-    doBroadcast(paramString, paramCollection);
+    throw new IllegalArgumentException();
   }
   
   public void broadcast(ByteBuffer paramByteBuffer)
@@ -459,10 +500,12 @@ public abstract class WebSocketServer
   
   public void broadcast(ByteBuffer paramByteBuffer, Collection<WebSocket> paramCollection)
   {
-    if ((paramByteBuffer == null) || (paramCollection == null)) {
-      throw new IllegalArgumentException();
+    if ((paramByteBuffer != null) && (paramCollection != null))
+    {
+      doBroadcast(paramByteBuffer, paramCollection);
+      return;
     }
-    doBroadcast(paramByteBuffer, paramCollection);
+    throw new IllegalArgumentException();
   }
   
   public void broadcast(byte[] paramArrayOfByte)
@@ -472,10 +515,12 @@ public abstract class WebSocketServer
   
   public void broadcast(byte[] paramArrayOfByte, Collection<WebSocket> paramCollection)
   {
-    if ((paramArrayOfByte == null) || (paramCollection == null)) {
-      throw new IllegalArgumentException();
+    if ((paramArrayOfByte != null) && (paramCollection != null))
+    {
+      broadcast(ByteBuffer.wrap(paramArrayOfByte), paramCollection);
+      return;
     }
-    broadcast(ByteBuffer.wrap(paramArrayOfByte), paramCollection);
+    throw new IllegalArgumentException();
   }
   
   public ByteBuffer createBuffer()
@@ -509,9 +554,10 @@ public abstract class WebSocketServer
     int i = j;
     if (j == 0)
     {
+      ServerSocketChannel localServerSocketChannel = this.server;
       i = j;
-      if (this.server != null) {
-        i = this.server.socket().getLocalPort();
+      if (localServerSocketChannel != null) {
+        i = localServerSocketChannel.socket().getLocalPort();
       }
     }
     return i;
@@ -551,35 +597,36 @@ public abstract class WebSocketServer
   public final void onWebsocketClose(WebSocket paramWebSocket, int paramInt, String paramString, boolean paramBoolean)
   {
     this.selector.wakeup();
+    label31:
     try
     {
       if (removeConnection(paramWebSocket)) {
         onClose(paramWebSocket, paramInt, paramString, paramBoolean);
       }
-      try
-      {
-        releaseBuffers(paramWebSocket);
-        return;
-      }
-      catch (InterruptedException paramWebSocket)
-      {
-        Thread.currentThread().interrupt();
-        return;
-      }
-      try
-      {
-        releaseBuffers(paramWebSocket);
-        throw paramString;
-      }
-      catch (InterruptedException paramWebSocket)
-      {
-        for (;;)
-        {
-          Thread.currentThread().interrupt();
-        }
-      }
     }
     finally {}
+    try
+    {
+      releaseBuffers(paramWebSocket);
+      return;
+    }
+    catch (InterruptedException paramWebSocket)
+    {
+      break label31;
+    }
+    Thread.currentThread().interrupt();
+    return;
+    try
+    {
+      releaseBuffers(paramWebSocket);
+    }
+    catch (InterruptedException paramWebSocket)
+    {
+      label47:
+      break label47;
+    }
+    Thread.currentThread().interrupt();
+    throw paramString;
   }
   
   public void onWebsocketCloseInitiated(WebSocket paramWebSocket, int paramInt, String paramString)
@@ -620,23 +667,22 @@ public abstract class WebSocketServer
     try
     {
       paramWebSocket.getSelectionKey().interestOps(5);
-      this.selector.wakeup();
-      return;
     }
     catch (CancelledKeyException localCancelledKeyException)
     {
-      for (;;)
-      {
-        paramWebSocket.outQueue.clear();
-      }
+      label17:
+      break label17;
     }
+    paramWebSocket.outQueue.clear();
+    this.selector.wakeup();
   }
   
   protected void queue(WebSocketImpl paramWebSocketImpl)
   {
     if (paramWebSocketImpl.getWorkerThread() == null)
     {
-      paramWebSocketImpl.setWorkerThread((WebSocketServer.WebSocketWorker)this.decoders.get(this.queueinvokes % this.decoders.size()));
+      List localList = this.decoders;
+      paramWebSocketImpl.setWorkerThread((WebSocketServer.WebSocketWorker)localList.get(this.queueinvokes % localList.size()));
       this.queueinvokes += 1;
     }
     paramWebSocketImpl.getWorkerThread().put(paramWebSocketImpl);
@@ -646,18 +692,22 @@ public abstract class WebSocketServer
   
   protected boolean removeConnection(WebSocket paramWebSocket)
   {
-    boolean bool = false;
     synchronized (this.connections)
     {
+      boolean bool;
       if (this.connections.contains(paramWebSocket))
       {
         bool = this.connections.remove(paramWebSocket);
-        if ((this.isclosed.get()) && (this.connections.isEmpty())) {
-          this.selectorthread.interrupt();
-        }
-        return bool;
       }
-      log.trace("Removing connection which is not in the connections collection! Possible no handshake recieved! {}", paramWebSocket);
+      else
+      {
+        log.trace("Removing connection which is not in the connections collection! Possible no handshake recieved! {}", paramWebSocket);
+        bool = false;
+      }
+      if ((this.isclosed.get()) && (this.connections.isEmpty())) {
+        this.selectorthread.interrupt();
+      }
+      return bool;
     }
   }
   
@@ -671,445 +721,435 @@ public abstract class WebSocketServer
     //   7: return
     //   8: aload_0
     //   9: invokespecial 702	org/java_websocket/server/WebSocketServer:doSetupSelectorAndServerThread	()Z
-    //   12: ifeq -5 -> 7
-    //   15: iconst_0
-    //   16: istore_1
-    //   17: iconst_5
-    //   18: istore_3
-    //   19: aload_0
-    //   20: getfield 341	org/java_websocket/server/WebSocketServer:selectorthread	Ljava/lang/Thread;
-    //   23: invokevirtual 705	java/lang/Thread:isInterrupted	()Z
-    //   26: istore 10
-    //   28: iload 10
-    //   30: ifne +462 -> 492
-    //   33: iload_3
-    //   34: ifeq +458 -> 492
-    //   37: iload_1
-    //   38: istore_2
-    //   39: iload_1
-    //   40: istore 6
-    //   42: iload_3
-    //   43: istore 4
-    //   45: iload_1
-    //   46: istore 7
-    //   48: iload_3
-    //   49: istore 5
-    //   51: iload_1
-    //   52: istore 9
-    //   54: iload_3
-    //   55: istore 8
-    //   57: aload_0
-    //   58: getfield 89	org/java_websocket/server/WebSocketServer:isclosed	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   61: invokevirtual 376	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   64: ifeq +5 -> 69
-    //   67: iconst_5
-    //   68: istore_2
-    //   69: iload_3
-    //   70: istore_1
-    //   71: iload_2
-    //   72: istore 6
-    //   74: iload_3
-    //   75: istore 4
-    //   77: iload_2
-    //   78: istore 7
-    //   80: iload_3
-    //   81: istore 5
-    //   83: iload_2
-    //   84: istore 9
-    //   86: iload_3
-    //   87: istore 8
-    //   89: aload_0
-    //   90: getfield 218	org/java_websocket/server/WebSocketServer:selector	Ljava/nio/channels/Selector;
-    //   93: iload_2
-    //   94: i2l
-    //   95: invokevirtual 709	java/nio/channels/Selector:select	(J)I
-    //   98: ifne +37 -> 135
-    //   101: iload_3
-    //   102: istore_1
-    //   103: iload_2
-    //   104: istore 6
-    //   106: iload_3
-    //   107: istore 4
-    //   109: iload_2
-    //   110: istore 7
-    //   112: iload_3
-    //   113: istore 5
-    //   115: iload_2
-    //   116: istore 9
-    //   118: iload_3
-    //   119: istore 8
-    //   121: aload_0
-    //   122: getfield 89	org/java_websocket/server/WebSocketServer:isclosed	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   125: invokevirtual 376	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   128: ifeq +7 -> 135
-    //   131: iload_3
-    //   132: iconst_1
-    //   133: isub
-    //   134: istore_1
-    //   135: iload_2
-    //   136: istore 6
-    //   138: iload_1
-    //   139: istore 4
-    //   141: iload_2
-    //   142: istore 7
-    //   144: iload_1
-    //   145: istore 5
-    //   147: iload_2
-    //   148: istore 9
-    //   150: iload_1
-    //   151: istore 8
-    //   153: aload_0
-    //   154: getfield 218	org/java_websocket/server/WebSocketServer:selector	Ljava/nio/channels/Selector;
-    //   157: invokevirtual 713	java/nio/channels/Selector:selectedKeys	()Ljava/util/Set;
-    //   160: invokeinterface 716 1 0
-    //   165: astore 13
-    //   167: aconst_null
-    //   168: astore 11
-    //   170: iload_2
-    //   171: istore 7
-    //   173: iload_1
-    //   174: istore 5
-    //   176: iload_2
-    //   177: istore 9
-    //   179: iload_1
-    //   180: istore 8
-    //   182: aload 13
-    //   184: invokeinterface 313 1 0
-    //   189: ifeq +196 -> 385
-    //   192: iload_2
-    //   193: istore 7
-    //   195: iload_1
-    //   196: istore 5
-    //   198: iload_2
-    //   199: istore 9
-    //   201: iload_1
-    //   202: istore 8
-    //   204: aload 13
-    //   206: invokeinterface 317 1 0
-    //   211: checkcast 179	java/nio/channels/SelectionKey
-    //   214: astore 12
-    //   216: iload_2
-    //   217: istore 7
-    //   219: iload_1
-    //   220: istore 5
-    //   222: iload_2
-    //   223: istore 9
-    //   225: iload_1
-    //   226: istore 8
-    //   228: aload 12
-    //   230: invokevirtual 479	java/nio/channels/SelectionKey:isValid	()Z
-    //   233: ifne +10 -> 243
-    //   236: aload 12
-    //   238: astore 11
-    //   240: goto -70 -> 170
+    //   12: ifne +4 -> 16
+    //   15: return
+    //   16: iconst_5
+    //   17: istore_1
+    //   18: iconst_0
+    //   19: istore_3
+    //   20: aload_0
+    //   21: getfield 341	org/java_websocket/server/WebSocketServer:selectorthread	Ljava/lang/Thread;
+    //   24: invokevirtual 705	java/lang/Thread:isInterrupted	()Z
+    //   27: istore 10
+    //   29: iload 10
+    //   31: ifne +446 -> 477
+    //   34: iload_1
+    //   35: ifeq +442 -> 477
+    //   38: iload_3
+    //   39: istore_2
+    //   40: iload_1
+    //   41: istore 6
+    //   43: iload_3
+    //   44: istore 7
+    //   46: iload_1
+    //   47: istore 8
+    //   49: iload_3
+    //   50: istore 9
+    //   52: iload_1
+    //   53: istore 4
+    //   55: iload_3
+    //   56: istore 5
+    //   58: aload_0
+    //   59: getfield 89	org/java_websocket/server/WebSocketServer:isclosed	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   62: invokevirtual 349	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   65: ifeq +5 -> 70
+    //   68: iconst_5
+    //   69: istore_2
+    //   70: iload_1
+    //   71: istore_3
+    //   72: iload_1
+    //   73: istore 6
+    //   75: iload_2
+    //   76: istore 7
+    //   78: iload_1
+    //   79: istore 8
+    //   81: iload_2
+    //   82: istore 9
+    //   84: iload_1
+    //   85: istore 4
+    //   87: iload_2
+    //   88: istore 5
+    //   90: aload_0
+    //   91: getfield 218	org/java_websocket/server/WebSocketServer:selector	Ljava/nio/channels/Selector;
+    //   94: iload_2
+    //   95: i2l
+    //   96: invokevirtual 709	java/nio/channels/Selector:select	(J)I
+    //   99: ifne +37 -> 136
+    //   102: iload_1
+    //   103: istore_3
+    //   104: iload_1
+    //   105: istore 6
+    //   107: iload_2
+    //   108: istore 7
+    //   110: iload_1
+    //   111: istore 8
+    //   113: iload_2
+    //   114: istore 9
+    //   116: iload_1
+    //   117: istore 4
+    //   119: iload_2
+    //   120: istore 5
+    //   122: aload_0
+    //   123: getfield 89	org/java_websocket/server/WebSocketServer:isclosed	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   126: invokevirtual 349	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   129: ifeq +7 -> 136
+    //   132: iload_1
+    //   133: iconst_1
+    //   134: isub
+    //   135: istore_3
+    //   136: iload_3
+    //   137: istore 6
+    //   139: iload_2
+    //   140: istore 7
+    //   142: iload_3
+    //   143: istore 8
+    //   145: iload_2
+    //   146: istore 9
+    //   148: iload_3
+    //   149: istore 4
+    //   151: iload_2
+    //   152: istore 5
+    //   154: aload_0
+    //   155: getfield 218	org/java_websocket/server/WebSocketServer:selector	Ljava/nio/channels/Selector;
+    //   158: invokevirtual 713	java/nio/channels/Selector:selectedKeys	()Ljava/util/Set;
+    //   161: invokeinterface 716 1 0
+    //   166: astore 13
+    //   168: aconst_null
+    //   169: astore 11
+    //   171: iload_3
+    //   172: istore 6
+    //   174: iload_2
+    //   175: istore 7
+    //   177: iload_3
+    //   178: istore 8
+    //   180: iload_2
+    //   181: istore 9
+    //   183: aload 13
+    //   185: invokeinterface 313 1 0
+    //   190: ifeq +191 -> 381
+    //   193: iload_3
+    //   194: istore 6
+    //   196: iload_2
+    //   197: istore 7
+    //   199: iload_3
+    //   200: istore 8
+    //   202: iload_2
+    //   203: istore 9
+    //   205: aload 13
+    //   207: invokeinterface 317 1 0
+    //   212: checkcast 179	java/nio/channels/SelectionKey
+    //   215: astore 12
+    //   217: iload_3
+    //   218: istore 6
+    //   220: iload_2
+    //   221: istore 7
+    //   223: iload_3
+    //   224: istore 8
+    //   226: iload_2
+    //   227: istore 9
+    //   229: aload 12
+    //   231: invokevirtual 479	java/nio/channels/SelectionKey:isValid	()Z
+    //   234: ifne +6 -> 240
+    //   237: goto +130 -> 367
+    //   240: iload_3
+    //   241: istore 6
     //   243: iload_2
     //   244: istore 7
-    //   246: iload_1
-    //   247: istore 5
+    //   246: iload_3
+    //   247: istore 8
     //   249: iload_2
     //   250: istore 9
-    //   252: iload_1
-    //   253: istore 8
-    //   255: aload 12
-    //   257: invokevirtual 719	java/nio/channels/SelectionKey:isAcceptable	()Z
-    //   260: ifeq +30 -> 290
+    //   252: aload 12
+    //   254: invokevirtual 719	java/nio/channels/SelectionKey:isAcceptable	()Z
+    //   257: ifeq +26 -> 283
+    //   260: iload_3
+    //   261: istore 6
     //   263: iload_2
     //   264: istore 7
-    //   266: iload_1
-    //   267: istore 5
+    //   266: iload_3
+    //   267: istore 8
     //   269: iload_2
     //   270: istore 9
-    //   272: iload_1
-    //   273: istore 8
-    //   275: aload_0
-    //   276: aload 12
-    //   278: aload 13
-    //   280: invokespecial 721	org/java_websocket/server/WebSocketServer:doAccept	(Ljava/nio/channels/SelectionKey;Ljava/util/Iterator;)V
-    //   283: aload 12
-    //   285: astore 11
-    //   287: goto -117 -> 170
-    //   290: iload_2
-    //   291: istore 7
-    //   293: iload_1
-    //   294: istore 5
-    //   296: iload_2
-    //   297: istore 9
-    //   299: iload_1
-    //   300: istore 8
-    //   302: aload 12
-    //   304: invokevirtual 724	java/nio/channels/SelectionKey:isReadable	()Z
-    //   307: ifeq +33 -> 340
-    //   310: iload_2
-    //   311: istore 7
-    //   313: iload_1
-    //   314: istore 5
-    //   316: iload_2
-    //   317: istore 9
-    //   319: iload_1
-    //   320: istore 8
-    //   322: aload_0
-    //   323: aload 12
-    //   325: aload 13
-    //   327: invokespecial 726	org/java_websocket/server/WebSocketServer:doRead	(Ljava/nio/channels/SelectionKey;Ljava/util/Iterator;)Z
-    //   330: ifne +10 -> 340
-    //   333: aload 12
-    //   335: astore 11
-    //   337: goto -167 -> 170
-    //   340: iload_2
-    //   341: istore 7
-    //   343: iload_1
-    //   344: istore 5
-    //   346: iload_2
-    //   347: istore 9
-    //   349: iload_1
-    //   350: istore 8
-    //   352: aload 12
-    //   354: invokevirtual 729	java/nio/channels/SelectionKey:isWritable	()Z
-    //   357: ifeq +181 -> 538
-    //   360: iload_2
-    //   361: istore 7
-    //   363: iload_1
-    //   364: istore 5
-    //   366: iload_2
-    //   367: istore 9
-    //   369: iload_1
-    //   370: istore 8
-    //   372: aload_0
-    //   373: aload 12
-    //   375: invokespecial 731	org/java_websocket/server/WebSocketServer:doWrite	(Ljava/nio/channels/SelectionKey;)V
-    //   378: aload 12
-    //   380: astore 11
-    //   382: goto -212 -> 170
-    //   385: iload_2
-    //   386: istore 7
-    //   388: iload_1
-    //   389: istore 5
-    //   391: iload_2
-    //   392: istore 9
-    //   394: iload_1
-    //   395: istore 8
-    //   397: aload_0
-    //   398: invokespecial 733	org/java_websocket/server/WebSocketServer:doAdditionalRead	()V
-    //   401: iload_2
-    //   402: istore_3
-    //   403: iload_1
-    //   404: istore_2
-    //   405: iload_3
-    //   406: istore_1
-    //   407: iload_2
-    //   408: istore_3
-    //   409: goto -390 -> 19
-    //   412: astore 11
-    //   414: aload_0
-    //   415: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
-    //   418: return
-    //   419: astore 11
-    //   421: aconst_null
-    //   422: astore 12
-    //   424: iload 6
-    //   426: istore_1
-    //   427: iload 4
-    //   429: istore_2
-    //   430: aload 12
-    //   432: ifnull +8 -> 440
-    //   435: aload 12
-    //   437: invokevirtual 182	java/nio/channels/SelectionKey:cancel	()V
-    //   440: aload_0
-    //   441: aload 12
-    //   443: aconst_null
-    //   444: aload 11
-    //   446: invokespecial 253	org/java_websocket/server/WebSocketServer:handleIOException	(Ljava/nio/channels/SelectionKey;Lorg/java_websocket/WebSocket;Ljava/io/IOException;)V
-    //   449: goto -42 -> 407
-    //   452: astore 11
-    //   454: aload_0
-    //   455: aconst_null
-    //   456: aload 11
-    //   458: invokespecial 163	org/java_websocket/server/WebSocketServer:handleFatal	(Lorg/java_websocket/WebSocket;Ljava/lang/Exception;)V
-    //   461: aload_0
-    //   462: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
-    //   465: return
-    //   466: astore 11
-    //   468: iload 7
-    //   470: istore_1
-    //   471: iload 5
-    //   473: istore_2
-    //   474: invokestatic 374	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   477: invokevirtual 510	java/lang/Thread:interrupt	()V
-    //   480: goto -73 -> 407
-    //   483: astore 11
-    //   485: aload_0
-    //   486: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
+    //   272: aload_0
+    //   273: aload 12
+    //   275: aload 13
+    //   277: invokespecial 721	org/java_websocket/server/WebSocketServer:doAccept	(Ljava/nio/channels/SelectionKey;Ljava/util/Iterator;)V
+    //   280: goto +87 -> 367
+    //   283: iload_3
+    //   284: istore 6
+    //   286: iload_2
+    //   287: istore 7
+    //   289: iload_3
+    //   290: istore 8
+    //   292: iload_2
+    //   293: istore 9
+    //   295: aload 12
+    //   297: invokevirtual 724	java/nio/channels/SelectionKey:isReadable	()Z
+    //   300: ifeq +29 -> 329
+    //   303: iload_3
+    //   304: istore 6
+    //   306: iload_2
+    //   307: istore 7
+    //   309: iload_3
+    //   310: istore 8
+    //   312: iload_2
+    //   313: istore 9
+    //   315: aload_0
+    //   316: aload 12
+    //   318: aload 13
+    //   320: invokespecial 726	org/java_websocket/server/WebSocketServer:doRead	(Ljava/nio/channels/SelectionKey;Ljava/util/Iterator;)Z
+    //   323: ifne +6 -> 329
+    //   326: goto +41 -> 367
+    //   329: iload_3
+    //   330: istore 6
+    //   332: iload_2
+    //   333: istore 7
+    //   335: iload_3
+    //   336: istore 8
+    //   338: iload_2
+    //   339: istore 9
+    //   341: aload 12
+    //   343: invokevirtual 729	java/nio/channels/SelectionKey:isWritable	()Z
+    //   346: ifeq +21 -> 367
+    //   349: iload_3
+    //   350: istore 6
+    //   352: iload_2
+    //   353: istore 7
+    //   355: iload_3
+    //   356: istore 8
+    //   358: iload_2
+    //   359: istore 9
+    //   361: aload_0
+    //   362: aload 12
+    //   364: invokespecial 731	org/java_websocket/server/WebSocketServer:doWrite	(Ljava/nio/channels/SelectionKey;)V
+    //   367: aload 12
+    //   369: astore 11
+    //   371: goto -200 -> 171
+    //   374: astore 11
+    //   376: iload_3
+    //   377: istore_1
+    //   378: goto +56 -> 434
+    //   381: iload_3
+    //   382: istore 6
+    //   384: iload_2
+    //   385: istore 7
+    //   387: iload_3
+    //   388: istore 8
+    //   390: iload_2
+    //   391: istore 9
+    //   393: aload_0
+    //   394: invokespecial 733	org/java_websocket/server/WebSocketServer:doAdditionalRead	()V
+    //   397: iload_3
+    //   398: istore_1
+    //   399: iload_2
+    //   400: istore_3
+    //   401: goto -381 -> 20
+    //   404: astore 13
+    //   406: aload 11
+    //   408: astore 12
+    //   410: iload_3
+    //   411: istore_1
+    //   412: aload 13
+    //   414: astore 11
+    //   416: goto +18 -> 434
+    //   419: invokestatic 347	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   422: invokevirtual 510	java/lang/Thread:interrupt	()V
+    //   425: iload 8
+    //   427: istore_1
+    //   428: iload 9
+    //   430: istore_3
+    //   431: goto -411 -> 20
+    //   434: aload 12
+    //   436: ifnull +8 -> 444
+    //   439: aload 12
+    //   441: invokevirtual 182	java/nio/channels/SelectionKey:cancel	()V
+    //   444: aload_0
+    //   445: aload 12
+    //   447: aconst_null
+    //   448: aload 11
+    //   450: invokespecial 253	org/java_websocket/server/WebSocketServer:handleIOException	(Ljava/nio/channels/SelectionKey;Lorg/java_websocket/WebSocket;Ljava/io/IOException;)V
+    //   453: iload_2
+    //   454: istore_3
+    //   455: goto -435 -> 20
+    //   458: aload_0
+    //   459: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
+    //   462: return
+    //   463: astore 11
+    //   465: goto +17 -> 482
+    //   468: astore 11
+    //   470: aload_0
+    //   471: aconst_null
+    //   472: aload 11
+    //   474: invokespecial 163	org/java_websocket/server/WebSocketServer:handleFatal	(Lorg/java_websocket/WebSocket;Ljava/lang/Exception;)V
+    //   477: aload_0
+    //   478: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
+    //   481: return
+    //   482: aload_0
+    //   483: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
+    //   486: goto +6 -> 492
     //   489: aload 11
     //   491: athrow
-    //   492: aload_0
-    //   493: invokespecial 735	org/java_websocket/server/WebSocketServer:doServerShutdown	()V
-    //   496: return
-    //   497: astore 13
-    //   499: aload 11
-    //   501: astore 12
-    //   503: iload_1
-    //   504: istore_3
-    //   505: aload 13
-    //   507: astore 11
-    //   509: iload_2
-    //   510: istore_1
-    //   511: iload_3
-    //   512: istore_2
-    //   513: goto -83 -> 430
+    //   492: goto -3 -> 489
+    //   495: astore 11
+    //   497: iload 6
+    //   499: istore_1
+    //   500: iload 7
+    //   502: istore_3
+    //   503: goto -483 -> 20
+    //   506: astore 11
+    //   508: goto -50 -> 458
+    //   511: astore 11
+    //   513: goto -94 -> 419
     //   516: astore 11
-    //   518: iload_1
-    //   519: istore_3
-    //   520: iload_2
-    //   521: istore_1
-    //   522: iload_3
-    //   523: istore_2
-    //   524: goto -94 -> 430
-    //   527: astore 11
-    //   529: iload 9
-    //   531: istore_1
-    //   532: iload 8
-    //   534: istore_2
-    //   535: goto -128 -> 407
-    //   538: aload 12
-    //   540: astore 11
-    //   542: goto -372 -> 170
+    //   518: aconst_null
+    //   519: astore 12
+    //   521: iload 4
+    //   523: istore_1
+    //   524: iload 5
+    //   526: istore_2
+    //   527: goto -93 -> 434
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	545	0	this	WebSocketServer
-    //   16	516	1	i	int
-    //   38	497	2	j	int
-    //   18	505	3	k	int
-    //   43	385	4	m	int
-    //   49	423	5	n	int
-    //   40	385	6	i1	int
-    //   46	423	7	i2	int
-    //   55	478	8	i3	int
-    //   52	478	9	i4	int
-    //   26	3	10	bool	boolean
-    //   168	213	11	localObject1	Object
-    //   412	1	11	localClosedByInterruptException	java.nio.channels.ClosedByInterruptException
-    //   419	26	11	localIOException1	IOException
-    //   452	5	11	localRuntimeException	java.lang.RuntimeException
-    //   466	1	11	localInterruptedException	InterruptedException
-    //   483	17	11	localObject2	Object
-    //   507	1	11	localIOException2	IOException
+    //   0	530	0	this	WebSocketServer
+    //   17	507	1	i	int
+    //   39	488	2	j	int
+    //   19	484	3	k	int
+    //   53	469	4	m	int
+    //   56	469	5	n	int
+    //   41	457	6	i1	int
+    //   44	457	7	i2	int
+    //   47	379	8	i3	int
+    //   50	379	9	i4	int
+    //   27	3	10	bool	boolean
+    //   169	201	11	localObject1	Object
+    //   374	33	11	localIOException1	IOException
+    //   414	35	11	localIOException2	IOException
+    //   463	1	11	localObject2	Object
+    //   468	22	11	localRuntimeException	java.lang.RuntimeException
+    //   495	1	11	localCancelledKeyException	CancelledKeyException
+    //   506	1	11	localClosedByInterruptException	java.nio.channels.ClosedByInterruptException
+    //   511	1	11	localInterruptedException	InterruptedException
     //   516	1	11	localIOException3	IOException
-    //   527	1	11	localCancelledKeyException	CancelledKeyException
-    //   540	1	11	localObject3	Object
-    //   214	325	12	localObject4	Object
-    //   165	161	13	localIterator	Iterator
-    //   497	9	13	localIOException4	IOException
+    //   215	305	12	localObject3	Object
+    //   166	153	13	localIterator	Iterator
+    //   404	9	13	localIOException4	IOException
     // Exception table:
     //   from	to	target	type
-    //   57	67	412	java/nio/channels/ClosedByInterruptException
-    //   89	101	412	java/nio/channels/ClosedByInterruptException
-    //   121	131	412	java/nio/channels/ClosedByInterruptException
-    //   153	167	412	java/nio/channels/ClosedByInterruptException
-    //   182	192	412	java/nio/channels/ClosedByInterruptException
-    //   204	216	412	java/nio/channels/ClosedByInterruptException
-    //   228	236	412	java/nio/channels/ClosedByInterruptException
-    //   255	263	412	java/nio/channels/ClosedByInterruptException
-    //   275	283	412	java/nio/channels/ClosedByInterruptException
-    //   302	310	412	java/nio/channels/ClosedByInterruptException
-    //   322	333	412	java/nio/channels/ClosedByInterruptException
-    //   352	360	412	java/nio/channels/ClosedByInterruptException
-    //   372	378	412	java/nio/channels/ClosedByInterruptException
-    //   397	401	412	java/nio/channels/ClosedByInterruptException
-    //   57	67	419	java/io/IOException
-    //   89	101	419	java/io/IOException
-    //   121	131	419	java/io/IOException
-    //   153	167	419	java/io/IOException
-    //   19	28	452	java/lang/RuntimeException
-    //   57	67	452	java/lang/RuntimeException
-    //   89	101	452	java/lang/RuntimeException
-    //   121	131	452	java/lang/RuntimeException
-    //   153	167	452	java/lang/RuntimeException
-    //   182	192	452	java/lang/RuntimeException
-    //   204	216	452	java/lang/RuntimeException
-    //   228	236	452	java/lang/RuntimeException
-    //   255	263	452	java/lang/RuntimeException
-    //   275	283	452	java/lang/RuntimeException
-    //   302	310	452	java/lang/RuntimeException
-    //   322	333	452	java/lang/RuntimeException
-    //   352	360	452	java/lang/RuntimeException
-    //   372	378	452	java/lang/RuntimeException
-    //   397	401	452	java/lang/RuntimeException
-    //   435	440	452	java/lang/RuntimeException
-    //   440	449	452	java/lang/RuntimeException
-    //   474	480	452	java/lang/RuntimeException
-    //   57	67	466	java/lang/InterruptedException
-    //   89	101	466	java/lang/InterruptedException
-    //   121	131	466	java/lang/InterruptedException
-    //   153	167	466	java/lang/InterruptedException
-    //   182	192	466	java/lang/InterruptedException
-    //   204	216	466	java/lang/InterruptedException
-    //   228	236	466	java/lang/InterruptedException
-    //   255	263	466	java/lang/InterruptedException
-    //   275	283	466	java/lang/InterruptedException
-    //   302	310	466	java/lang/InterruptedException
-    //   322	333	466	java/lang/InterruptedException
-    //   352	360	466	java/lang/InterruptedException
-    //   372	378	466	java/lang/InterruptedException
-    //   397	401	466	java/lang/InterruptedException
-    //   19	28	483	finally
-    //   57	67	483	finally
-    //   89	101	483	finally
-    //   121	131	483	finally
-    //   153	167	483	finally
-    //   182	192	483	finally
-    //   204	216	483	finally
-    //   228	236	483	finally
-    //   255	263	483	finally
-    //   275	283	483	finally
-    //   302	310	483	finally
-    //   322	333	483	finally
-    //   352	360	483	finally
-    //   372	378	483	finally
-    //   397	401	483	finally
-    //   435	440	483	finally
-    //   440	449	483	finally
-    //   454	461	483	finally
-    //   474	480	483	finally
-    //   182	192	497	java/io/IOException
-    //   204	216	497	java/io/IOException
-    //   397	401	497	java/io/IOException
-    //   228	236	516	java/io/IOException
-    //   255	263	516	java/io/IOException
-    //   275	283	516	java/io/IOException
-    //   302	310	516	java/io/IOException
-    //   322	333	516	java/io/IOException
-    //   352	360	516	java/io/IOException
-    //   372	378	516	java/io/IOException
-    //   57	67	527	java/nio/channels/CancelledKeyException
-    //   89	101	527	java/nio/channels/CancelledKeyException
-    //   121	131	527	java/nio/channels/CancelledKeyException
-    //   153	167	527	java/nio/channels/CancelledKeyException
-    //   182	192	527	java/nio/channels/CancelledKeyException
-    //   204	216	527	java/nio/channels/CancelledKeyException
-    //   228	236	527	java/nio/channels/CancelledKeyException
-    //   255	263	527	java/nio/channels/CancelledKeyException
-    //   275	283	527	java/nio/channels/CancelledKeyException
-    //   302	310	527	java/nio/channels/CancelledKeyException
-    //   322	333	527	java/nio/channels/CancelledKeyException
-    //   352	360	527	java/nio/channels/CancelledKeyException
-    //   372	378	527	java/nio/channels/CancelledKeyException
-    //   397	401	527	java/nio/channels/CancelledKeyException
+    //   229	237	374	java/io/IOException
+    //   252	260	374	java/io/IOException
+    //   272	280	374	java/io/IOException
+    //   295	303	374	java/io/IOException
+    //   315	326	374	java/io/IOException
+    //   341	349	374	java/io/IOException
+    //   361	367	374	java/io/IOException
+    //   183	193	404	java/io/IOException
+    //   205	217	404	java/io/IOException
+    //   393	397	404	java/io/IOException
+    //   20	29	463	finally
+    //   58	68	463	finally
+    //   90	102	463	finally
+    //   122	132	463	finally
+    //   154	168	463	finally
+    //   183	193	463	finally
+    //   205	217	463	finally
+    //   229	237	463	finally
+    //   252	260	463	finally
+    //   272	280	463	finally
+    //   295	303	463	finally
+    //   315	326	463	finally
+    //   341	349	463	finally
+    //   361	367	463	finally
+    //   393	397	463	finally
+    //   419	425	463	finally
+    //   439	444	463	finally
+    //   444	453	463	finally
+    //   470	477	463	finally
+    //   20	29	468	java/lang/RuntimeException
+    //   58	68	468	java/lang/RuntimeException
+    //   90	102	468	java/lang/RuntimeException
+    //   122	132	468	java/lang/RuntimeException
+    //   154	168	468	java/lang/RuntimeException
+    //   183	193	468	java/lang/RuntimeException
+    //   205	217	468	java/lang/RuntimeException
+    //   229	237	468	java/lang/RuntimeException
+    //   252	260	468	java/lang/RuntimeException
+    //   272	280	468	java/lang/RuntimeException
+    //   295	303	468	java/lang/RuntimeException
+    //   315	326	468	java/lang/RuntimeException
+    //   341	349	468	java/lang/RuntimeException
+    //   361	367	468	java/lang/RuntimeException
+    //   393	397	468	java/lang/RuntimeException
+    //   419	425	468	java/lang/RuntimeException
+    //   439	444	468	java/lang/RuntimeException
+    //   444	453	468	java/lang/RuntimeException
+    //   58	68	495	java/nio/channels/CancelledKeyException
+    //   90	102	495	java/nio/channels/CancelledKeyException
+    //   122	132	495	java/nio/channels/CancelledKeyException
+    //   154	168	495	java/nio/channels/CancelledKeyException
+    //   183	193	495	java/nio/channels/CancelledKeyException
+    //   205	217	495	java/nio/channels/CancelledKeyException
+    //   229	237	495	java/nio/channels/CancelledKeyException
+    //   252	260	495	java/nio/channels/CancelledKeyException
+    //   272	280	495	java/nio/channels/CancelledKeyException
+    //   295	303	495	java/nio/channels/CancelledKeyException
+    //   315	326	495	java/nio/channels/CancelledKeyException
+    //   341	349	495	java/nio/channels/CancelledKeyException
+    //   361	367	495	java/nio/channels/CancelledKeyException
+    //   393	397	495	java/nio/channels/CancelledKeyException
+    //   58	68	506	java/nio/channels/ClosedByInterruptException
+    //   90	102	506	java/nio/channels/ClosedByInterruptException
+    //   122	132	506	java/nio/channels/ClosedByInterruptException
+    //   154	168	506	java/nio/channels/ClosedByInterruptException
+    //   183	193	506	java/nio/channels/ClosedByInterruptException
+    //   205	217	506	java/nio/channels/ClosedByInterruptException
+    //   229	237	506	java/nio/channels/ClosedByInterruptException
+    //   252	260	506	java/nio/channels/ClosedByInterruptException
+    //   272	280	506	java/nio/channels/ClosedByInterruptException
+    //   295	303	506	java/nio/channels/ClosedByInterruptException
+    //   315	326	506	java/nio/channels/ClosedByInterruptException
+    //   341	349	506	java/nio/channels/ClosedByInterruptException
+    //   361	367	506	java/nio/channels/ClosedByInterruptException
+    //   393	397	506	java/nio/channels/ClosedByInterruptException
+    //   58	68	511	java/lang/InterruptedException
+    //   90	102	511	java/lang/InterruptedException
+    //   122	132	511	java/lang/InterruptedException
+    //   154	168	511	java/lang/InterruptedException
+    //   183	193	511	java/lang/InterruptedException
+    //   205	217	511	java/lang/InterruptedException
+    //   229	237	511	java/lang/InterruptedException
+    //   252	260	511	java/lang/InterruptedException
+    //   272	280	511	java/lang/InterruptedException
+    //   295	303	511	java/lang/InterruptedException
+    //   315	326	511	java/lang/InterruptedException
+    //   341	349	511	java/lang/InterruptedException
+    //   361	367	511	java/lang/InterruptedException
+    //   393	397	511	java/lang/InterruptedException
+    //   58	68	516	java/io/IOException
+    //   90	102	516	java/io/IOException
+    //   122	132	516	java/io/IOException
+    //   154	168	516	java/io/IOException
   }
   
   public final void setWebSocketFactory(WebSocketServerFactory paramWebSocketServerFactory)
   {
-    if (this.wsf != null) {
-      this.wsf.close();
+    WebSocketServerFactory localWebSocketServerFactory = this.wsf;
+    if (localWebSocketServerFactory != null) {
+      localWebSocketServerFactory.close();
     }
     this.wsf = paramWebSocketServerFactory;
   }
   
   public void start()
   {
-    if (this.selectorthread != null) {
-      throw new IllegalStateException(getClass().getName() + " can only be started once.");
+    if (this.selectorthread == null)
+    {
+      new Thread(this).start();
+      return;
     }
-    new Thread(this).start();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getName());
+    localStringBuilder.append(" can only be started once.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public void stop()
@@ -1126,26 +1166,30 @@ public abstract class WebSocketServer
     {
       ArrayList localArrayList = new ArrayList(this.connections);
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((WebSocket)((Iterator)???).next()).close(1001);
       }
-    }
-    this.wsf.close();
-    try
-    {
-      if ((this.selectorthread != null) && (this.selector != null))
+      this.wsf.close();
+      try
       {
-        this.selector.wakeup();
-        this.selectorthread.join(paramInt);
+        if ((this.selectorthread != null) && (this.selector != null))
+        {
+          this.selector.wakeup();
+          this.selectorthread.join(paramInt);
+        }
+        return;
       }
-      return;
+      finally {}
     }
-    finally {}
+    for (;;)
+    {
+      throw localObject3;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.server.WebSocketServer
  * JD-Core Version:    0.7.0.1
  */

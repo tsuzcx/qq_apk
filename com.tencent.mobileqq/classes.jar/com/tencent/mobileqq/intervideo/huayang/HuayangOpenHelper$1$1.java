@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import atar;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class HuayangOpenHelper$1$1
@@ -10,12 +9,12 @@ class HuayangOpenHelper$1$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Atar.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_JavaUtilMap);
+    this.this$0.b.downloadPlugin(this.this$0.a, this.this$0.c.getCurrentUin(), this.this$0.d, this.this$0.e, this.this$0.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangOpenHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

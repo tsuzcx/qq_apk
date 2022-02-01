@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="200" android:drawable="@drawable/acp" />
-    <item android:duration="200" android:drawable="@drawable/acq" />
-    <item android:duration="200" android:drawable="@drawable/acr" />
-</animation-list>
+    <size android:width="2.0dip" />
+    <solid android:color="@color/ahb" />
+</shape>

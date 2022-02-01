@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<FrameLayout android:id="@id/a8k" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="onClickBg"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <LinearLayout android:orientation="vertical" android:id="@id/een" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <RelativeLayout android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/ra" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" />
-                    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center|left|top" android:id="@id/b95" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/ra" />
-                    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="left" android:id="@id/e1h" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_toRightOf="@id/ra" android:layout_below="@id/b95" />
-                </RelativeLayout>
-                <View style="@style/nz" />
-                <EditText android:textColor="@color/w_" android:layout_gravity="bottom" android:id="@id/eeo" android:layout_marginTop="@dimen/n_" android:minHeight="@dimen/kw" style="@style/ml" />
-                <View style="@style/nz" />
-                <TextView android:gravity="center|left|top" android:id="@id/eep" android:text="@string/d47" android:height="70.0dip" style="@style/mm" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hh0" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/j77" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/na" />
+    <RelativeLayout android:id="@id/lby" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/j6k" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/gav" />
+    </LinearLayout>
+    <include layout="@layout/at9" />
+</FrameLayout>

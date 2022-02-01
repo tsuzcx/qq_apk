@@ -1,167 +1,72 @@
 package com.tencent.mm.plugin.notification;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.provider.Settings.System;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.u;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.a;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.bq.a;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/notification/NotificationChannelFactory;", "", "()V", "TAG", "", "createLoginChannel", "", "plugin-notification_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements u
 {
-  private static List<aq> piB;
-  private boolean piC;
-  private boolean piD;
-  private List<bi> piE;
+  public static final d MvM;
   
   static
   {
-    AppMethodBeat.i(125807);
-    piB = new ArrayList();
-    AppMethodBeat.o(125807);
+    AppMethodBeat.i(271948);
+    MvM = new d();
+    AppMethodBeat.o(271948);
   }
   
-  public d()
+  public static void aKX()
   {
-    this(false);
-  }
-  
-  public d(boolean paramBoolean)
-  {
-    AppMethodBeat.i(125803);
-    this.piC = false;
-    this.piD = false;
-    this.piE = new LinkedList();
-    this.piC = paramBoolean;
-    this.piD = false;
-    this.piE = new LinkedList();
-    AppMethodBeat.o(125803);
-  }
-  
-  public static void a(aq paramaq)
-  {
-    AppMethodBeat.i(125801);
-    synchronized (piB)
+    AppMethodBeat.i(271946);
+    Log.i("MicroMsg.NotificationChannelFactory", "createLoginChannel");
+    try
     {
-      if (!piB.contains(paramaq)) {
-        piB.add(paramaq);
-      }
-      AppMethodBeat.o(125801);
-      return;
-    }
-  }
-  
-  public static void b(aq paramaq)
-  {
-    AppMethodBeat.i(125802);
-    synchronized (piB)
-    {
-      piB.remove(paramaq);
-      AppMethodBeat.o(125802);
-      return;
-    }
-  }
-  
-  public final void a(bi parambi, cm paramcm)
-  {
-    AppMethodBeat.i(125805);
-    if (this.piC)
-    {
-      ab.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
-      AppMethodBeat.o(125805);
-      return;
-    }
-    synchronized (piB)
-    {
-      if (piB.isEmpty())
+      if (com.tencent.mm.compatible.util.d.rb(26))
       {
-        ab.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
-        AppMethodBeat.o(125805);
-        return;
-      }
-      if ((parambi.field_isSend != 0) || (parambi.field_status == 4))
-      {
-        ab.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
-        AppMethodBeat.o(125805);
-        return;
-      }
-    }
-    ??? = aa.a(paramcm.woP);
-    ??? = ((j)g.E(j.class)).YI().TL(new bq.a((String)???).asA(""));
-    if ((??? != null) && (!((bq)???).dyH()))
-    {
-      ab.d("MicroMsg.SyncMessageNotifier", "account no notification");
-      AppMethodBeat.o(125805);
-      return;
-    }
-    if (!this.piD)
-    {
-      this.piD = true;
-      Object localObject2 = new ArrayList();
-      synchronized (piB)
-      {
-        Iterator localIterator = piB.iterator();
-        if (localIterator.hasNext()) {
-          ((List)localObject2).add((aq)localIterator.next());
+        SharedPreferences localSharedPreferences = b.aQC();
+        Context localContext = MMApplicationContext.getContext();
+        NotificationManager localNotificationManager = (NotificationManager)localContext.getSystemService(NotificationManager.class);
+        NotificationChannel localNotificationChannel = new NotificationChannel("login_channel_id", (CharSequence)localContext.getString(g.b.notification_login_channel_name), 4);
+        localNotificationChannel.setDescription(localContext.getString(g.b.notification_login_channel_desc));
+        localNotificationChannel.enableLights(true);
+        localNotificationChannel.setLightColor(-16711936);
+        localNotificationChannel.setVibrationPattern(Util.VIRBRATOR_PATTERN);
+        localNotificationChannel.enableVibration(true);
+        if (Build.VERSION.SDK_INT >= 29) {
+          localNotificationChannel.setAllowBubbles(true);
         }
-      }
-      ??? = ((List)localObject2).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject2 = (aq)((Iterator)???).next();
-        new ak(((aq)localObject2).getLooper()).post(new d.2(this, paramcm, (aq)localObject2, parambi));
-      }
-      AppMethodBeat.o(125805);
-      return;
-    }
-    this.piE.add(parambi);
-    AppMethodBeat.o(125805);
-  }
-  
-  public final void bPR()
-  {
-    AppMethodBeat.i(125804);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(this.piE);
-    this.piE.clear();
-    if (localLinkedList.size() == 0)
-    {
-      AppMethodBeat.o(125804);
-      return;
-    }
-    Object localObject2 = new ArrayList();
-    synchronized (piB)
-    {
-      Iterator localIterator = piB.iterator();
-      if (localIterator.hasNext()) {
-        ((List)localObject2).add((aq)localIterator.next());
+        localNotificationChannel.setLockscreenVisibility(-1);
+        localNotificationChannel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, Notification.AUDIO_ATTRIBUTES_DEFAULT);
+        localNotificationManager.createNotificationChannel(localNotificationChannel);
+        localSharedPreferences.edit().putString("login_channel_id", "login_channel_id").commit();
+        a.boM("login_channel_id");
+        AppMethodBeat.o(271946);
+        return;
       }
     }
-    ??? = ((List)localObject2).iterator();
-    while (((Iterator)???).hasNext())
+    catch (Exception localException)
     {
-      localObject2 = (aq)((Iterator)???).next();
-      new ak(((aq)localObject2).getLooper()).post(new d.1(this, (aq)localObject2, localList));
+      Log.e("MicroMsg.NotificationChannelFactory", "createLoginChannel " + localException.getClass().getSimpleName() + ", " + localException.getMessage());
+      AppMethodBeat.o(271946);
     }
-    AppMethodBeat.o(125804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.d
  * JD-Core Version:    0.7.0.1
  */

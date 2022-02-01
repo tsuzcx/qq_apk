@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import arlf;
 import com.tencent.mobileqq.app.TroopManager;
 
-public class TroopFileModel$13$1
+class TroopFileModel$13$1
   implements Runnable
 {
-  public TroopFileModel$13$1(arlf paramarlf) {}
+  TroopFileModel$13$1(TroopFileModel.13 param13) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    this.a.c.b(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.13.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ public final class ReqSearchNearPoiListApi
 {
   static byte[] cache_vLBSKeyData;
   static ArrayList<Integer> cache_vTypes;
-  public int iBeginPos;
+  public int iBeginPos = 0;
   public int iRadius = 100;
   public int iReqNum = 10;
   public String strKeyword = "";
-  public byte[] vLBSKeyData;
-  public ArrayList<Integer> vTypes;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Integer> vTypes = null;
   
   public ReqSearchNearPoiListApi() {}
   
@@ -61,7 +61,7 @@ public final class ReqSearchNearPoiListApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.ReqSearchNearPoiListApi
  * JD-Core Version:    0.7.0.1
  */

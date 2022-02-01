@@ -9,14 +9,14 @@ class TroopStoryMainActivity$1
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.isFinishing())) {
-      this.this$0.a.b();
+    if ((this.this$0.d != null) && (!this.this$0.isFinishing())) {
+      this.this$0.d.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity.1
  * JD-Core Version:    0.7.0.1
  */

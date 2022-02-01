@@ -1,258 +1,351 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.detail;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.appbrand.a.i;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.WxaLuckyMoneyBaseUI;
-import com.tencent.mm.plugin.luckymoney.model.x;
-import com.tencent.mm.protocal.protobuf.aty;
-import com.tencent.mm.protocal.protobuf.bji;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.luckymoney.model.ah;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.cyk;
+import com.tencent.mm.protocal.protobuf.dyx;
+import com.tencent.mm.protocal.protobuf.ela;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 import java.util.List;
 
 public class WxaLuckyMoneyDetailUI
   extends WxaLuckyMoneyBaseUI
   implements b
 {
-  private View Ww;
-  private TextView kPB;
-  private TextView kRB;
-  private TextView nIU;
-  private TextView ojg;
-  private final a ojm;
-  private Intent ojn;
-  private ListView ojo;
-  private ImageView ojp;
-  private TextView ojq;
-  private ImageView ojr;
-  private View ojs;
-  private View ojt;
-  private c oju;
-  private AbsListView.OnScrollListener ojv;
-  private p tipDialog;
+  private TextView JCr;
+  private TextView KmQ;
+  private final a KmW;
+  private Intent KmX;
+  private ListView KmY;
+  private ImageView KmZ;
+  private TextView Kna;
+  private ImageView Knb;
+  private View Knc;
+  private View Knd;
+  private c Kne;
+  private AbsListView.OnScrollListener Knf;
+  private View nJ;
+  private TextView pJi;
+  private TextView tHK;
+  private w tipDialog;
   
   public WxaLuckyMoneyDetailUI()
   {
-    AppMethodBeat.i(42027);
-    this.ojm = new d();
+    AppMethodBeat.i(64916);
+    this.KmW = new d();
     this.tipDialog = null;
-    this.ojn = null;
-    this.ojv = new WxaLuckyMoneyDetailUI.1(this);
-    AppMethodBeat.o(42027);
+    this.KmX = null;
+    this.Knf = new AbsListView.OnScrollListener()
+    {
+      private boolean Kng = false;
+      private boolean Knh;
+      
+      public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        boolean bool = true;
+        AppMethodBeat.i(64913);
+        if ((paramAnonymousInt3 == 0) || (!this.Kng))
+        {
+          AppMethodBeat.o(64913);
+          return;
+        }
+        if (paramAnonymousInt1 > 0) {}
+        label64:
+        label115:
+        label118:
+        for (;;)
+        {
+          if (this.Knh != bool)
+          {
+            if (bool)
+            {
+              WxaLuckyMoneyDetailUI.a(WxaLuckyMoneyDetailUI.this, WxaLuckyMoneyDetailUI.this.getResources().getDrawable(a.e.lucky_money_actionbar_bg));
+              this.Knh = bool;
+            }
+          }
+          else
+          {
+            AppMethodBeat.o(64913);
+            return;
+            paramAnonymousAbsListView = paramAnonymousAbsListView.getChildAt(paramAnonymousInt1);
+            if (paramAnonymousAbsListView == null) {
+              break label115;
+            }
+          }
+          for (paramAnonymousInt1 = 0 - paramAnonymousAbsListView.getTop();; paramAnonymousInt1 = 0)
+          {
+            if (paramAnonymousInt1 > 100) {
+              break label118;
+            }
+            bool = false;
+            break;
+            WxaLuckyMoneyDetailUI.b(WxaLuckyMoneyDetailUI.this);
+            break label64;
+          }
+        }
+      }
+      
+      public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(64912);
+        if (paramAnonymousAbsListView.getCount() == 0)
+        {
+          AppMethodBeat.o(64912);
+          return;
+        }
+        switch (paramAnonymousInt)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(64912);
+          return;
+          if (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) {
+            WxaLuckyMoneyDetailUI.a(WxaLuckyMoneyDetailUI.this).ZG(paramAnonymousAbsListView.getCount());
+          }
+          this.Kng = false;
+          AppMethodBeat.o(64912);
+          return;
+          this.Kng = true;
+        }
+      }
+    };
+    AppMethodBeat.o(64916);
   }
   
-  private void a(i parami)
+  private void a(com.tencent.mm.plugin.luckymoney.appbrand.a.i parami)
   {
-    AppMethodBeat.i(42037);
+    AppMethodBeat.i(64926);
     AppCompatActivity localAppCompatActivity = getContext();
-    x.b(this.ojp, parami.oiD, parami.username);
-    x.a(localAppCompatActivity, this.ojq, parami.nickname);
-    x.a(localAppCompatActivity, this.nIU, parami.oiG);
-    if (parami.oiF == 1)
+    ah.a(this.KmZ, parami.Kmn, parami.username);
+    ah.a(localAppCompatActivity, this.Kna, parami.nickname);
+    ah.a(localAppCompatActivity, this.JCr, parami.Kmq);
+    if (parami.Kmp == 1)
     {
-      this.ojr.setVisibility(0);
-      this.ojr.setImageResource(2130839415);
-      if (parami.oiE != 2) {
-        break label201;
+      this.Knb.setVisibility(0);
+      this.Knb.setImageResource(a.e.lucky_money_group_icon);
+      if (parami.Kmo != 2) {
+        break label203;
       }
-      this.ojg.setText(e.E(parami.cNd / 100.0D));
-      this.oju.ojc = false;
-      this.ojs.setVisibility(0);
-      label117:
-      if (bo.isNullOrNil(parami.oiH)) {
-        break label213;
+      this.KmQ.setText(com.tencent.mm.wallet_core.ui.i.formatMoney2f(parami.ihV / 100.0D));
+      this.Kne.KmM = false;
+      this.Knc.setVisibility(0);
+      label118:
+      if (Util.isNullOrNil(parami.Kmr)) {
+        break label215;
       }
-      this.ojt.setVisibility(0);
-      this.kRB.setText(parami.oiH);
-      this.kRB.setTextColor(getResources().getColor(2131690258));
+      this.Knd.setVisibility(0);
+      this.tHK.setText(parami.Kmr);
+      this.tHK.setTextColor(getResources().getColor(a.c.lucky_money_operation_text_normal_color));
     }
     for (;;)
     {
-      if (bo.isNullOrNil(parami.oiI)) {
-        break label225;
+      if (Util.isNullOrNil(parami.Kms)) {
+        break label227;
       }
-      this.kPB.setText(parami.oiI);
-      AppMethodBeat.o(42037);
+      this.pJi.setText(parami.Kms);
+      AppMethodBeat.o(64926);
       return;
-      this.ojr.setVisibility(8);
+      this.Knb.setVisibility(8);
       break;
-      label201:
-      this.ojs.setVisibility(8);
-      break label117;
-      label213:
-      this.ojt.setVisibility(8);
+      label203:
+      this.Knc.setVisibility(8);
+      break label118;
+      label215:
+      this.Knd.setVisibility(8);
     }
-    label225:
-    this.kPB.setText(null);
-    AppMethodBeat.o(42037);
+    label227:
+    this.pJi.setText(null);
+    AppMethodBeat.o(64926);
   }
   
-  public final void Sp(String paramString)
+  public final void a(dyx paramdyx)
   {
-    AppMethodBeat.i(42028);
-    h.bO(this, paramString);
-    AppMethodBeat.o(42028);
-  }
-  
-  public final void a(bji parambji)
-  {
-    AppMethodBeat.i(42034);
-    if (parambji == null)
+    AppMethodBeat.i(64923);
+    if (paramdyx == null)
     {
       locali = null;
       a(locali);
-      ch(parambji.xxI);
-      AppMethodBeat.o(42034);
+      iP(paramdyx.abdH);
+      AppMethodBeat.o(64923);
       return;
     }
-    i locali = new i();
-    locali.username = parambji.xxJ;
-    locali.oiD = parambji.xxL;
-    locali.nickname = parambji.xxK;
-    locali.cNd = parambji.cNd;
-    locali.oiH = parambji.oiH;
-    locali.oiI = parambji.oiI;
-    if (parambji.xxN == 0) {}
+    com.tencent.mm.plugin.luckymoney.appbrand.a.i locali = new com.tencent.mm.plugin.luckymoney.appbrand.a.i();
+    locali.username = paramdyx.abdI;
+    locali.Kmn = paramdyx.abdK;
+    locali.nickname = paramdyx.abdJ;
+    locali.ihV = paramdyx.ihV;
+    locali.Kmr = paramdyx.Kmr;
+    locali.Kms = paramdyx.Kms;
+    if (paramdyx.abdM == 0) {}
     for (boolean bool = false;; bool = true)
     {
-      locali.oiJ = bool;
-      locali.oiF = parambji.oiF;
-      locali.oiE = parambji.oiE;
-      locali.oiG = parambji.oiG;
+      locali.Kmt = bool;
+      locali.Kmp = paramdyx.Kmp;
+      locali.Kmo = paramdyx.Kmo;
+      locali.Kmq = paramdyx.Kmq;
       break;
     }
   }
   
-  public final void a(bqs parambqs)
+  public final void a(ela paramela)
   {
-    AppMethodBeat.i(42035);
-    if (parambqs == null)
+    AppMethodBeat.i(64924);
+    if (paramela == null)
     {
       locali = null;
       a(locali);
-      ch(parambqs.xxI);
-      AppMethodBeat.o(42035);
+      iP(paramela.abdH);
+      AppMethodBeat.o(64924);
       return;
     }
-    i locali = new i();
-    locali.username = parambqs.xxJ;
-    locali.oiD = parambqs.xxL;
-    locali.nickname = parambqs.xxK;
-    locali.cNd = parambqs.cNd;
-    locali.oiH = parambqs.oiH;
-    locali.oiI = parambqs.oiI;
-    if (parambqs.xxN == 0) {}
+    com.tencent.mm.plugin.luckymoney.appbrand.a.i locali = new com.tencent.mm.plugin.luckymoney.appbrand.a.i();
+    locali.username = paramela.abdI;
+    locali.Kmn = paramela.abdK;
+    locali.nickname = paramela.abdJ;
+    locali.ihV = paramela.ihV;
+    locali.Kmr = paramela.Kmr;
+    locali.Kms = paramela.Kms;
+    if (paramela.abdM == 0) {}
     for (boolean bool = false;; bool = true)
     {
-      locali.oiJ = bool;
-      locali.oiF = parambqs.oiF;
-      locali.oiE = parambqs.oiE;
-      locali.oiG = parambqs.oiG;
+      locali.Kmt = bool;
+      locali.Kmp = paramela.Kmp;
+      locali.Kmo = paramela.Kmo;
+      locali.Kmq = paramela.Kmq;
       break;
     }
   }
   
-  public final void ad(Intent paramIntent)
+  public final void aY(Intent paramIntent)
   {
-    this.ojn = paramIntent;
+    this.KmX = paramIntent;
   }
   
-  public final MMActivity bMN()
+  public final void error(String paramString)
+  {
+    AppMethodBeat.i(64917);
+    k.cZ(this, paramString);
+    AppMethodBeat.o(64917);
+  }
+  
+  public final MMActivity fWt()
   {
     return this;
   }
   
-  public final void bMO()
+  public final void fWu()
   {
-    AppMethodBeat.i(42029);
+    AppMethodBeat.i(64918);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
-    AppMethodBeat.o(42029);
-  }
-  
-  public final void ch(List<aty> paramList)
-  {
-    AppMethodBeat.i(42036);
-    this.oju.ci(paramList);
-    AppMethodBeat.o(42036);
+    AppMethodBeat.o(64918);
   }
   
   public int getLayoutId()
   {
-    return 2130970025;
+    return a.g.lucky_money_detail_ui;
+  }
+  
+  public final void iP(List<cyk> paramList)
+  {
+    AppMethodBeat.i(64925);
+    this.Kne.iQ(paramList);
+    AppMethodBeat.o(64925);
   }
   
   public void initView()
   {
-    AppMethodBeat.i(42033);
-    setMMTitle(2131301210);
+    AppMethodBeat.i(64922);
+    setMMTitle(a.i.lucky_money_detail);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(42025);
+        AppMethodBeat.i(64914);
         if (WxaLuckyMoneyDetailUI.c(WxaLuckyMoneyDetailUI.this) != null) {
           WxaLuckyMoneyDetailUI.this.setResult(0, WxaLuckyMoneyDetailUI.c(WxaLuckyMoneyDetailUI.this));
         }
         for (;;)
         {
           WxaLuckyMoneyDetailUI.this.finish();
-          AppMethodBeat.o(42025);
+          AppMethodBeat.o(64914);
           return true;
           WxaLuckyMoneyDetailUI.this.setResult(-1, null);
         }
       }
     });
-    this.ojo = ((ListView)findViewById(2131825658));
-    this.oju = new c(getContext());
-    this.Ww = LayoutInflater.from(this).inflate(2130970022, null);
-    this.ojo.addHeaderView(this.Ww);
-    this.ojo.setAdapter(this.oju);
-    this.oju.ojc = false;
-    this.ojo.setOnScrollListener(this.ojv);
-    this.ojp = ((ImageView)this.Ww.findViewById(2131825606));
-    this.ojq = ((TextView)this.Ww.findViewById(2131825608));
-    this.ojr = ((ImageView)this.Ww.findViewById(2131825609));
-    this.nIU = ((TextView)this.Ww.findViewById(2131825610));
-    this.ojs = this.Ww.findViewById(2131825611);
-    this.ojg = ((TextView)this.Ww.findViewById(2131825612));
-    this.ojt = this.Ww.findViewById(2131825614);
-    this.kRB = ((TextView)this.Ww.findViewById(2131825616));
-    this.kPB = ((TextView)this.Ww.findViewById(2131825628));
-    this.tipDialog = h.b(getContext(), getString(2131301086), true, new WxaLuckyMoneyDetailUI.3(this));
+    this.KmY = ((ListView)findViewById(a.f.lucky_money_detail_record_list));
+    this.Kne = new c(getContext());
+    this.nJ = LayoutInflater.from(this).inflate(a.g.lucky_money_detail_header, null);
+    this.KmY.addHeaderView(this.nJ);
+    this.KmY.setAdapter(this.Kne);
+    this.Kne.KmM = false;
+    this.KmY.setOnScrollListener(this.Knf);
+    this.KmZ = ((ImageView)this.nJ.findViewById(a.f.lucky_money_detail_sender_avatar));
+    this.Kna = ((TextView)this.nJ.findViewById(a.f.lucky_money_detail_whose));
+    this.Knb = ((ImageView)this.nJ.findViewById(a.f.lucky_money_detail_group_icon));
+    this.JCr = ((TextView)this.nJ.findViewById(a.f.lucky_money_detail_wishing));
+    this.Knc = this.nJ.findViewById(a.f.lucky_money_detail_amount_area);
+    this.KmQ = ((TextView)this.nJ.findViewById(a.f.lucky_money_detail_amount));
+    this.Knd = this.nJ.findViewById(a.f.lucky_money_detail_layout);
+    this.tHK = ((TextView)this.nJ.findViewById(a.f.lucky_money_detail_tips));
+    this.pJi = ((TextView)this.nJ.findViewById(a.f.lucky_money_detail_desc));
+    this.tipDialog = k.a(getContext(), getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(64915);
+        WxaLuckyMoneyDetailUI.this.fWu();
+        if ((WxaLuckyMoneyDetailUI.d(WxaLuckyMoneyDetailUI.this).getVisibility() == 8) || (WxaLuckyMoneyDetailUI.e(WxaLuckyMoneyDetailUI.this).getVisibility() == 4))
+        {
+          Log.i("MicroMsg.WxaLuckyMoneyDetailUI", "user cancel & finish");
+          WxaLuckyMoneyDetailUI.this.i(-1, null);
+        }
+        AppMethodBeat.o(64915);
+      }
+    });
     this.tipDialog.show();
-    AppMethodBeat.o(42033);
+    AppMethodBeat.o(64922);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(42032);
-    if (this.ojn != null) {
-      setResult(0, this.ojn);
+    AppMethodBeat.i(64921);
+    if (this.KmX != null) {
+      setResult(0, this.KmX);
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(42032);
+      AppMethodBeat.o(64921);
       return;
       setResult(-1, null);
     }
@@ -260,33 +353,33 @@ public class WxaLuckyMoneyDetailUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(42030);
+    AppMethodBeat.i(64919);
     super.onCreate(paramBundle);
     initView();
-    this.ojm.a(this, getIntent());
-    AppMethodBeat.o(42030);
+    this.KmW.d(this, getIntent());
+    AppMethodBeat.o(64919);
   }
   
   public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
   {
-    AppMethodBeat.i(42031);
+    AppMethodBeat.i(64920);
     boolean bool = super.onCreatePanelMenu(paramInt, paramMenu);
-    paramMenu = (TextView)findViewById(2131820974);
+    paramMenu = (TextView)findViewById(a.f.action_option_text);
     if (paramMenu != null) {
-      paramMenu.setTextColor(getResources().getColor(2131690237));
+      paramMenu.setTextColor(getResources().getColor(a.c.lucky_money_goldstyle_envelop_primary_text_color));
     }
-    AppMethodBeat.o(42031);
+    AppMethodBeat.o(64920);
     return bool;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(42038);
+    AppMethodBeat.i(64927);
     super.onDestroy();
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
-    AppMethodBeat.o(42038);
+    AppMethodBeat.o(64927);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -297,7 +390,7 @@ public class WxaLuckyMoneyDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.WxaLuckyMoneyDetailUI
  * JD-Core Version:    0.7.0.1
  */

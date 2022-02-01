@@ -8,7 +8,7 @@ public final class ClientInfo
   extends JceStruct
 {
   static int cache_eUinType;
-  public int eUinType;
+  public int eUinType = 0;
   public String strAuthName = "";
   public String strAuthPassword = "";
   public String strUin = "";
@@ -41,7 +41,7 @@ public final class ClientInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ClientInfo
  * JD-Core Version:    0.7.0.1
  */

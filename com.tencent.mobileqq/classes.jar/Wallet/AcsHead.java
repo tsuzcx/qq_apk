@@ -29,20 +29,23 @@ public final class AcsHead
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 0);
+    String str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.platform != null) {
-      paramJceOutputStream.write(this.platform, 1);
+    str = this.platform;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.model != null) {
-      paramJceOutputStream.write(this.model, 2);
+    str = this.model;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsHead
  * JD-Core Version:    0.7.0.1
  */

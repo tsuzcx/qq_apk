@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="@color/a6q" />
-    <item android:state_enabled="false" android:color="@color/xt" />
-    <item android:color="@color/xm" />
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <size android:height="@dimen/cv" android:width="@dimen/cv" />
+            <solid android:color="@color/s6" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <size android:height="@dimen/cv" android:width="@dimen/cv" />
+            <solid android:color="@color/s6" />
+        </shape>
+    </item>
 </selector>

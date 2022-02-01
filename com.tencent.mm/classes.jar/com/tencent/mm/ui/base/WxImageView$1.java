@@ -1,30 +1,45 @@
 package com.tencent.mm.ui.base;
 
+import android.graphics.PointF;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class WxImageView$1
-  implements Runnable
+  implements View.OnTouchListener
 {
-  WxImageView$1(WxImageView paramWxImageView, long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  WxImageView$1(WxImageView paramWxImageView) {}
   
-  public final void run()
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(107097);
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.zot, (float)(l - this.fET));
-    float f2 = this.zou;
-    float f3 = this.zov;
-    this.zqk.k(f2 + f3 * f1, this.cdQ, this.cdR);
-    if (f1 < this.zot) {
-      this.zqk.mHandler.post(this);
+    AppMethodBeat.i(251287);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      paramView = ad.bCb().M("basescanui@datacenter", true);
+      Log.i("MicroMsg.WxImageView", "alvinluo WxImageView get touchCoordinate touch x: %s, y: %s", new Object[] { Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+      paramMotionEvent = WxImageView.a(this.adXw, paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
+      if (paramMotionEvent == null) {
+        break label108;
+      }
+      paramView.q("key_basescanui_touch_normalize_x", Float.valueOf(paramMotionEvent.x));
+      paramView.q("key_basescanui_touch_normalize_y", Float.valueOf(paramMotionEvent.y));
     }
-    AppMethodBeat.o(107097);
+    for (;;)
+    {
+      AppMethodBeat.o(251287);
+      return false;
+      label108:
+      Log.e("MicroMsg.WxImageView", "alvinluo get touchCoordinate is invalid");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.WxImageView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class VerifyPhoneNumActivity$8
   implements Runnable
@@ -11,26 +11,22 @@ class VerifyPhoneNumActivity$8
   {
     try
     {
-      if ((VerifyPhoneNumActivity.a(this.this$0) != null) && (VerifyPhoneNumActivity.a(this.this$0).isShowing()))
+      if ((VerifyPhoneNumActivity.d(this.this$0) != null) && (VerifyPhoneNumActivity.d(this.this$0).isShowing()))
       {
-        VerifyPhoneNumActivity.a(this.this$0).dismiss();
-        VerifyPhoneNumActivity.a(this.this$0).cancel();
+        VerifyPhoneNumActivity.d(this.this$0).dismiss();
+        VerifyPhoneNumActivity.d(this.this$0).cancel();
       }
-      VerifyPhoneNumActivity.a(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    VerifyPhoneNumActivity.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity.8
  * JD-Core Version:    0.7.0.1
  */

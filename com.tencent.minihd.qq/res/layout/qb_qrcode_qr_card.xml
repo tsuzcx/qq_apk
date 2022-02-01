@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/container" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/content_container" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/icon" android:background="@drawable/qb_qrcode_default_image" android:layout_width="75.0dip" android:layout_height="75.0dip" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/name_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:layout_toRightOf="@id/icon">
+                    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+                        <TextView android:ellipsize="end" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" style="@style/B4_Font" />
+                        <TextView android:ellipsize="end" android:id="@id/nickname" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:singleLine="true" style="@style/C9_Font" />
+                        <TextView android:ellipsize="end" android:id="@id/uin_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" style="@style/C9_Font" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/item_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+            <Button android:textSize="17.0sp" android:textColor="#ffffffff" android:id="@id/follow_btn" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="5.0dip" android:text="@string/saveContact" style="@style/ButtonBlue" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</RelativeLayout>

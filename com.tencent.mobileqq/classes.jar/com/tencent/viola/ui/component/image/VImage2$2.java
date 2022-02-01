@@ -16,53 +16,46 @@ class VImage2$2
   
   public void run()
   {
-    Object localObject1 = null;
     Object localObject2 = Base64.decode(this.val$url.split(",")[1], 0);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length, localOptions);
+    boolean bool = this.val$isNeedRealImageSize;
+    Object localObject1 = null;
     Bundle localBundle;
-    if (this.val$isNeedRealImageSize)
+    if (bool)
     {
       localBundle = new Bundle();
       localBundle.putInt(ImageAdapterHolder.BUNDLE_WIDTH, localOptions.outWidth);
       localBundle.putInt(ImageAdapterHolder.BUNDLE_HEIGHT, localOptions.outHeight);
     }
-    for (;;)
+    else
     {
-      try
-      {
-        if (Build.VERSION.SDK_INT <= 19) {
-          continue;
-        }
+      localBundle = null;
+    }
+    try
+    {
+      if (Build.VERSION.SDK_INT > 19) {
         localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        localOptions.inJustDecodeBounds = false;
-        localObject2 = BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length, localOptions);
-        localObject1 = localObject2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        ViolaLogUtils.d("VImage2", "setImage decode base64 error");
-        continue;
-        this.this$0.onError();
-        return;
-      }
-      if (localObject1 != null)
-      {
-        this.this$0.onSuccess(localObject1, this.val$url, localBundle);
-        return;
+      } else {
         localOptions.inPreferredConfig = Bitmap.Config.ARGB_4444;
       }
-      else
-      {
-        localBundle = null;
-      }
+      localOptions.inJustDecodeBounds = false;
+      localObject2 = BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length, localOptions);
+      localObject1 = localObject2;
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label144:
+      break label144;
+    }
+    ViolaLogUtils.d("VImage2", "setImage decode base64 error");
+    VImage2.access$100(this.this$0, localObject1, this.val$url, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.image.VImage2.2
  * JD-Core Version:    0.7.0.1
  */

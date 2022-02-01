@@ -19,13 +19,14 @@ public final class nearfield_friend$RspEnter
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "result", "security_level", "verify_url", "heartbeat_time", "expire_time" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RspEnter.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "result", "security_level", "verify_url", "heartbeat_time", "expire_time" }, new Object[] { null, localInteger, localByteStringMicro, localInteger, localInteger }, RspEnter.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.nearfield_friend.nearfield_friend.RspEnter
  * JD-Core Version:    0.7.0.1
  */

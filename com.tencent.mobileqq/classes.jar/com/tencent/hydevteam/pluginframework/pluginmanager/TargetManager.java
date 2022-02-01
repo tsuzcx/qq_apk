@@ -11,8 +11,12 @@ class TargetManager
   {
     this.a = new File(paramFile, "TargetFolder");
     this.b = new File(this.a, "tmp");
-    if ((this.a.exists()) && (!this.a.isDirectory())) {
-      throw new IllegalArgumentException(this.a.getAbsolutePath() + "已存在且不是目录");
+    if ((this.a.exists()) && (!this.a.isDirectory()))
+    {
+      paramFile = new StringBuilder();
+      paramFile.append(this.a.getAbsolutePath());
+      paramFile.append("已存在且不是目录");
+      throw new IllegalArgumentException(paramFile.toString());
     }
     if (!this.a.exists()) {
       this.a.mkdirs();
@@ -21,7 +25,7 @@ class TargetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.TargetManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import egz;
+import egy;
 
 public class ContentWrapView
   extends RelativeLayout
 {
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private egz jdField_a_of_type_Egz;
+  private egy jdField_a_of_type_Egy;
   
   public ContentWrapView(Context paramContext)
   {
@@ -32,13 +32,13 @@ public class ContentWrapView
   
   private void a()
   {
-    egz localegz = this.jdField_a_of_type_Egz;
-    if (localegz == null) {}
-    while (!localegz.jdField_a_of_type_Boolean) {
+    egy localegy = this.jdField_a_of_type_Egy;
+    if (localegy == null) {}
+    while (!localegy.jdField_a_of_type_Boolean) {
       return;
     }
-    egz.a(localegz).setTranslate(localegz.jdField_a_of_type_Float, localegz.b);
-    localegz.jdField_a_of_type_Boolean = false;
+    egy.a(localegy).setTranslate(localegy.jdField_a_of_type_Float, localegy.b);
+    localegy.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
@@ -48,34 +48,34 @@ public class ContentWrapView
   
   public void draw(Canvas paramCanvas)
   {
-    egz localegz = this.jdField_a_of_type_Egz;
-    if (localegz != null)
+    egy localegy = this.jdField_a_of_type_Egy;
+    if (localegy != null)
     {
       a();
-      paramCanvas.concat(egz.a(localegz));
+      paramCanvas.concat(egy.a(localegy));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_Egz == null) {
-      this.jdField_a_of_type_Egz = new egz();
+    if (this.jdField_a_of_type_Egy == null) {
+      this.jdField_a_of_type_Egy = new egy();
     }
   }
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_Egz != null) {
-      return this.jdField_a_of_type_Egz.jdField_a_of_type_Float;
+    if (this.jdField_a_of_type_Egy != null) {
+      return this.jdField_a_of_type_Egy.jdField_a_of_type_Float;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_Egz != null) {
-      return this.jdField_a_of_type_Egz.b;
+    if (this.jdField_a_of_type_Egy != null) {
+      return this.jdField_a_of_type_Egy.b;
     }
     return 0.0F;
   }
@@ -83,11 +83,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    egz localegz = this.jdField_a_of_type_Egz;
-    if (localegz.jdField_a_of_type_Float != paramFloat)
+    egy localegy = this.jdField_a_of_type_Egy;
+    if (localegy.jdField_a_of_type_Float != paramFloat)
     {
-      localegz.jdField_a_of_type_Float = paramFloat;
-      localegz.jdField_a_of_type_Boolean = true;
+      localegy.jdField_a_of_type_Float = paramFloat;
+      localegy.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }
@@ -102,11 +102,11 @@ public class ContentWrapView
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    egz localegz = this.jdField_a_of_type_Egz;
-    if (localegz.b != paramFloat)
+    egy localegy = this.jdField_a_of_type_Egy;
+    if (localegy.b != paramFloat)
     {
-      localegz.b = paramFloat;
-      localegz.jdField_a_of_type_Boolean = true;
+      localegy.b = paramFloat;
+      localegy.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }

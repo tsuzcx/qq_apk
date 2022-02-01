@@ -9,9 +9,10 @@ class ImageLoader$1
   
   public void run()
   {
-    if (this.val$imageUrl != null)
+    ImageUrl localImageUrl = this.val$imageUrl;
+    if (localImageUrl != null)
     {
-      this.val$listener.onImageLoaded(this.val$imageUrl.url, this.val$drawable, this.val$options);
+      this.val$listener.onImageLoaded(localImageUrl.url, this.val$drawable, this.val$options);
       return;
     }
     this.val$listener.onImageLoaded(this.val$url, this.val$drawable, this.val$options);
@@ -19,7 +20,7 @@ class ImageLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.ImageLoader.1
  * JD-Core Version:    0.7.0.1
  */

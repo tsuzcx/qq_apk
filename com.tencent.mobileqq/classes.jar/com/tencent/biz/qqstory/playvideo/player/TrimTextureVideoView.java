@@ -6,72 +6,58 @@ import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Build;
 import android.util.AttributeSet;
-import vxa;
-import vxb;
-import vyi;
-import vyo;
-import wxe;
-import xcp;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 
 public class TrimTextureVideoView
   extends TextureVideoView
-  implements MediaPlayer.OnSeekCompleteListener, vyo
+  implements MediaPlayer.OnSeekCompleteListener, IMediaPlayer.OnSeekCompleteListener
 {
-  public static int h;
-  protected Runnable a;
-  private vxb a;
-  protected Runnable b;
-  private vyo b;
-  protected boolean h;
-  public int i;
-  protected boolean i;
-  protected int j;
-  protected boolean j;
-  protected int k;
-  protected boolean k;
-  protected int l;
-  protected int m;
-  protected int n;
-  protected int o;
-  protected int p;
-  protected int q;
+  public static int D;
+  public int E = 0;
+  protected int F = 0;
+  protected int G = 0;
+  protected int H = 0;
+  protected int I = 0;
+  protected int J = 0;
+  protected int K = 0;
+  protected int L = 0;
+  protected int M = 0;
+  protected boolean N = false;
+  protected boolean O = false;
+  protected boolean P = true;
+  protected boolean Q = true;
+  protected Runnable R = new TrimTextureVideoView.1(this);
+  protected Runnable S = new TrimTextureVideoView.2(this);
+  private TrimTextureVideoView.OnPlayRecycleListener a;
+  private IMediaPlayer.OnSeekCompleteListener b;
   
   public TrimTextureVideoView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_j_of_type_Boolean = true;
-    this.jdField_k_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new TrimTextureVideoView.2(this);
     e();
   }
   
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_j_of_type_Boolean = true;
-    this.jdField_k_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new TrimTextureVideoView.2(this);
     e();
   }
   
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_j_of_type_Boolean = true;
-    this.jdField_k_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new TrimTextureVideoView.2(this);
     e();
   }
   
   private void e()
   {
-    int i1 = jdField_h_of_type_Int + 1;
-    jdField_h_of_type_Int = i1;
-    this.jdField_i_of_type_Int = i1;
-    setOnErrorListener(new vxa(this));
+    int i = D + 1;
+    D = i;
+    this.E = i;
+    setOnErrorListener(new TrimTextureVideoView.3(this));
     f();
     super.setOnSeekCompleteListener(this);
   }
@@ -79,57 +65,48 @@ public class TrimTextureVideoView
   private void f()
   {
     if (Build.MODEL.toUpperCase().equals("PIXEL 2 XL")) {
-      this.jdField_k_of_type_Boolean = false;
+      this.Q = false;
     }
   }
   
-  public int a()
+  protected IMediaPlayer a()
   {
-    return this.jdField_k_of_type_Int;
-  }
-  
-  protected vyi a()
-  {
-    if (this.jdField_k_of_type_Boolean) {
+    if (this.Q) {
       return new com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer();
     }
     return super.a();
   }
   
-  public void a()
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlayback()", Integer.valueOf(this.jdField_i_of_type_Int));
-    super.a();
-  }
-  
-  public void a(vyi paramvyi)
-  {
-    this.jdField_j_of_type_Boolean = true;
-    if ((this.jdField_j_of_type_Int != 0) && (this.l != 0))
+    this.P = true;
+    if ((this.F != 0) && (this.H != 0))
     {
-      int i1 = super.getCurrentPosition();
-      if (i1 < this.l)
+      int i = super.getCurrentPosition();
+      if (i < this.H)
       {
-        wxe.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
-        this.jdField_k_of_type_Int = i1;
+        SLog.a(this.c, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.F), Integer.valueOf(i));
+        this.G = i;
       }
     }
-    if (this.jdField_b_of_type_Vyo != null) {
-      this.jdField_b_of_type_Vyo.a(paramvyi);
+    IMediaPlayer.OnSeekCompleteListener localOnSeekCompleteListener = this.b;
+    if (localOnSeekCompleteListener != null) {
+      localOnSeekCompleteListener.a(paramIMediaPlayer);
     }
     d();
   }
   
   public void a(boolean paramBoolean)
   {
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]resumePlay(%b)", Integer.valueOf(this.jdField_i_of_type_Int), Boolean.valueOf(paramBoolean));
+    SLog.a(this.c, "[%d]resumePlay(%b)", Integer.valueOf(this.E), Boolean.valueOf(paramBoolean));
     if ((paramBoolean) || (!super.isPlaying()))
     {
-      this.m = this.jdField_j_of_type_Int;
-      super.seekTo(this.m);
-      this.jdField_j_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Vxb != null) {
-        this.jdField_a_of_type_Vxb.b();
+      this.I = this.F;
+      super.seekTo(this.I);
+      this.P = false;
+      TrimTextureVideoView.OnPlayRecycleListener localOnPlayRecycleListener = this.a;
+      if (localOnPlayRecycleListener != null) {
+        localOnPlayRecycleListener.a();
       }
     }
     super.start();
@@ -138,115 +115,121 @@ public class TrimTextureVideoView
   @TargetApi(14)
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_k_of_type_Boolean) && (com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.b())) {}
-    for (int i1 = 0 + paramInt1;; i1 = 0)
+    int i;
+    if ((this.Q) && (com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.n())) {
+      i = paramInt1 + 0;
+    } else {
+      i = 0;
+    }
+    int j = paramInt1 % 180;
+    float f1;
+    float f2;
+    if (((j > 0) && (paramInt2 < paramInt3)) || ((j == 0) && (paramInt2 > paramInt3)))
     {
-      float f1;
-      float f2;
-      if (((paramInt1 % 180 > 0) && (paramInt2 < paramInt3)) || ((paramInt1 % 180 == 0) && (paramInt2 > paramInt3)))
-      {
-        setRotation(i1 + 90);
-        f1 = 1.0F / xcp.a(getResources());
-        f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
-        setScaleX(Math.max(f1, f2));
-        setScaleY(Math.max(f1, f2));
-        wxe.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-        return true;
-      }
-      if (i1 != 0)
-      {
-        setRotation(i1);
-        f1 = 1.0F / xcp.a(getResources());
-        f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
-        setScaleX(Math.max(f1, f2));
-        setScaleY(Math.max(f1, f2));
-        wxe.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-        return false;
-      }
-      wxe.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      setRotation(i + 90);
+      f1 = 1.0F / TakeVideoUtils.b(getResources());
+      f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
+      setScaleX(Math.max(f1, f2));
+      setScaleY(Math.max(f1, f2));
+      SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      return true;
+    }
+    if (i != 0)
+    {
+      setRotation(i);
+      f1 = 1.0F / TakeVideoUtils.b(getResources());
+      f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
+      setScaleX(Math.max(f1, f2));
+      setScaleY(Math.max(f1, f2));
+      SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
-  }
-  
-  public int b()
-  {
-    return this.jdField_j_of_type_Int;
+    SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+    return false;
   }
   
   public void b()
   {
-    this.jdField_i_of_type_Boolean = false;
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlay! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    SLog.a(this.c, "[%d]stopPlayback()", Integer.valueOf(this.E));
+    super.b();
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_h_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Vyi == null) {
+    this.N = paramBoolean;
+    if (this.i == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Vyi.a(0.0F, 0.0F);
+      this.i.a(0.0F, 0.0F);
       return;
     }
-    this.jdField_a_of_type_Vyi.a(1.0F, 1.0F);
-  }
-  
-  public int c()
-  {
-    return this.l;
+    this.i.a(1.0F, 1.0F);
   }
   
   @TargetApi(14)
   public void c()
   {
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
-    this.m = super.getCurrentPosition();
-    removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    SLog.a(this.c, "[%d]pausePlay()", Integer.valueOf(this.E));
+    this.I = super.getCurrentPosition();
+    removeCallbacks(this.S);
     super.pause();
   }
   
   @TargetApi(14)
   public void d()
   {
-    if (this.l != 0)
+    if (this.H != 0)
     {
-      removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      postDelayed(this.jdField_b_of_type_JavaLangRunnable, this.l - this.jdField_j_of_type_Int);
+      removeCallbacks(this.S);
+      postDelayed(this.S, this.H - this.F);
     }
+  }
+  
+  public int getEndTime()
+  {
+    return this.H;
+  }
+  
+  public int getRealStartTime()
+  {
+    return this.G;
+  }
+  
+  public int getStartTime()
+  {
+    return this.F;
   }
   
   @TargetApi(14)
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_i_of_type_Boolean = true;
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]onAttachedToWindow! schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
-    post(this.jdField_a_of_type_JavaLangRunnable);
+    this.O = true;
+    SLog.a(this.c, "[%d]onAttachedToWindow! schedule!", Integer.valueOf(this.E));
+    post(this.R);
   }
   
   @TargetApi(14)
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_i_of_type_Boolean = false;
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]onDetachedFromWindow! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.O = false;
+    SLog.a(this.c, "[%d]onDetachedFromWindow! cancel schedule!", Integer.valueOf(this.E));
+    removeCallbacks(this.R);
   }
   
   @Deprecated
   public void onSeekComplete(android.media.MediaPlayer paramMediaPlayer)
   {
-    if ((this.jdField_j_of_type_Int != 0) && (this.l != 0))
+    if ((this.F != 0) && (this.H != 0))
     {
-      int i1 = super.getCurrentPosition();
-      if (i1 < this.l)
+      int i = super.getCurrentPosition();
+      if (i < this.H)
       {
-        wxe.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
-        this.jdField_k_of_type_Int = i1;
+        SLog.a(this.c, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.F), Integer.valueOf(i));
+        this.G = i;
       }
     }
   }
@@ -254,50 +237,50 @@ public class TrimTextureVideoView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    wxe.a(this.jdField_a_of_type_JavaLangString, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    SLog.a(this.c, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     super.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
-    b(this.jdField_h_of_type_Boolean);
+    b(this.N);
   }
   
-  public void setOnRecyclePlayListener(vxb paramvxb)
+  public void setOnRecyclePlayListener(TrimTextureVideoView.OnPlayRecycleListener paramOnPlayRecycleListener)
   {
-    this.jdField_a_of_type_Vxb = paramvxb;
+    this.a = paramOnPlayRecycleListener;
   }
   
-  public void setOnSeekCompleteListener(vyo paramvyo)
+  public void setOnSeekCompleteListener(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.jdField_b_of_type_Vyo = paramvyo;
+    this.b = paramOnSeekCompleteListener;
   }
   
   public void setPlayRange(int paramInt1, int paramInt2)
   {
-    int i2 = getDuration();
-    int i3 = Math.max(paramInt2 - paramInt1, 1000);
-    int i1 = paramInt1;
+    int j = getDuration();
+    int k = Math.max(paramInt2 - paramInt1, 1000);
+    int i = paramInt1;
     paramInt1 = paramInt2;
-    if (paramInt2 > i2)
+    if (paramInt2 > j)
     {
-      i1 = i2 - i3;
-      paramInt1 = i2;
+      i = j - k;
+      paramInt1 = j;
     }
-    wxe.a(this.jdField_a_of_type_JavaLangString, "[%d]setPlayRange(%d, %d)", Integer.valueOf(this.jdField_i_of_type_Int), Integer.valueOf(i1), Integer.valueOf(paramInt1));
-    if ((isPlaying()) && ((i1 != this.jdField_j_of_type_Int) || (paramInt1 != this.l)))
+    SLog.a(this.c, "[%d]setPlayRange(%d, %d)", Integer.valueOf(this.E), Integer.valueOf(i), Integer.valueOf(paramInt1));
+    if ((isPlaying()) && ((i != this.F) || (paramInt1 != this.H)))
     {
-      super.seekTo(this.jdField_j_of_type_Int);
-      this.jdField_j_of_type_Boolean = false;
+      super.seekTo(this.F);
+      this.P = false;
     }
-    this.jdField_j_of_type_Int = i1;
-    this.jdField_k_of_type_Int = i1;
-    this.l = paramInt1;
+    this.F = i;
+    this.G = i;
+    this.H = paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
  * JD-Core Version:    0.7.0.1
  */

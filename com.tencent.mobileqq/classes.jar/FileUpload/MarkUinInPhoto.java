@@ -46,15 +46,16 @@ public final class MarkUinInPhoto
     paramJceOutputStream.write(this.w, 2);
     paramJceOutputStream.write(this.h, 3);
     paramJceOutputStream.write(this.target_uin, 4);
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 5);
+    String str = this.groupid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.is_recommend, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.MarkUinInPhoto
  * JD-Core Version:    0.7.0.1
  */

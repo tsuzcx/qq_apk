@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
 public class dbb
-  implements View.OnClickListener
+  implements CustomMenuBar.OnMenuItemClickListener
 {
   public dbb(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    paramView.setVisibility(8);
+    PublicAccountChatActivity.a(this.a).a(paramString, this.a, this.a.b, this.a.c(), paramInt, PublicAccountChatActivity.a(this.a), this.a.a);
   }
 }
 

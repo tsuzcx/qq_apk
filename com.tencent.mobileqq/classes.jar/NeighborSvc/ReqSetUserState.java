@@ -9,8 +9,8 @@ public final class ReqSetUserState
 {
   static int cache_eUserState;
   static ReqHeader cache_stHeader;
-  public int eUserState;
-  public ReqHeader stHeader;
+  public int eUserState = 0;
+  public ReqHeader stHeader = null;
   
   public ReqSetUserState() {}
   
@@ -37,7 +37,7 @@ public final class ReqSetUserState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.ReqSetUserState
  * JD-Core Version:    0.7.0.1
  */

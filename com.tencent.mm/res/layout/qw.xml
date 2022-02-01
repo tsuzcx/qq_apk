@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/b3m" app:layout_constraintDimensionRatio="235:100" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toTopOf="dn" style="@style/fd" />
-    <android.support.constraint.Barrier android:id="@id/b48" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="dk" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
-    <include layout="@layout/qx" />
-</android.support.constraint.ConstraintLayout>
+<FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qv" />
+    <com.tencent.mm.ui.chatting.view.FoldableCellLayout android:id="@id/b62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

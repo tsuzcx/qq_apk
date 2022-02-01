@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bbwf;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-public class TroopFileDownloadMgr$2
+class TroopFileDownloadMgr$2
   implements Runnable
 {
-  public TroopFileDownloadMgr$2(bbwf parambbwf) {}
+  TroopFileDownloadMgr$2(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class TroopFileDownloadMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.2
  * JD-Core Version:    0.7.0.1
  */

@@ -79,392 +79,273 @@ public abstract class BasePaticleEmitter
   
   private void setParticleConfig(String paramString, ParticleConfig paramParticleConfig)
   {
-    boolean bool2 = false;
-    Object localObject = null;
-    paramParticleConfig = paramParticleConfig.getParticleEmitterConfig();
-    if (paramParticleConfig == null) {
+    ParticleConfig.ParticleEmitterConfigBean localParticleEmitterConfigBean = paramParticleConfig.getParticleEmitterConfig();
+    if (localParticleEmitterConfigBean == null) {
       return;
     }
-    if (paramParticleConfig.emission3DVector != null) {
-      paramString = new Vector3(paramParticleConfig.emission3DVector.x, paramParticleConfig.emission3DVector.y, paramParticleConfig.emission3DVector.z);
+    paramString = localParticleEmitterConfigBean.emission3DVector;
+    paramParticleConfig = null;
+    if (paramString != null) {
+      paramString = new Vector3(localParticleEmitterConfigBean.emission3DVector.x, localParticleEmitterConfigBean.emission3DVector.y, localParticleEmitterConfigBean.emission3DVector.z);
+    } else {
+      paramString = null;
     }
-    for (;;)
+    this.emission3DVector = paramString;
+    if (localParticleEmitterConfigBean.emission3DVectorVariance != null) {
+      paramString = new Vector3(localParticleEmitterConfigBean.emission3DVectorVariance.x, localParticleEmitterConfigBean.emission3DVectorVariance.y, localParticleEmitterConfigBean.emission3DVectorVariance.z);
+    } else {
+      paramString = null;
+    }
+    this.emission3DVectorVariance = paramString;
+    if (localParticleEmitterConfigBean.particlePath != null) {
+      paramString = localParticleEmitterConfigBean.particlePath.path;
+    } else {
+      paramString = "";
+    }
+    this.particlePath = paramString;
+    if (localParticleEmitterConfigBean.emitterType != null) {
+      i = localParticleEmitterConfigBean.emitterType.getValue();
+    } else {
+      i = 0;
+    }
+    this.emitterType = i;
+    if (localParticleEmitterConfigBean.sourcePosition != null) {
+      paramString = new Vector3(localParticleEmitterConfigBean.sourcePosition.x, localParticleEmitterConfigBean.sourcePosition.y, localParticleEmitterConfigBean.sourcePosition.z);
+    } else {
+      paramString = null;
+    }
+    this.sourcePosition = paramString;
+    paramString = this.sourcePosition;
+    if (paramString != null) {
+      paramString = new Vector3(paramString.x, this.sourcePosition.y, this.sourcePosition.z);
+    } else {
+      paramString = null;
+    }
+    this.originSourcePositionForRest = paramString;
+    if (localParticleEmitterConfigBean.sourcePositionVariance != null) {
+      paramString = new Vector3(localParticleEmitterConfigBean.sourcePositionVariance.x, localParticleEmitterConfigBean.sourcePositionVariance.y, localParticleEmitterConfigBean.sourcePositionVariance.z);
+    } else {
+      paramString = null;
+    }
+    this.sourcePositionVariance = paramString;
+    float f;
+    if (localParticleEmitterConfigBean.speed != null) {
+      f = localParticleEmitterConfigBean.speed.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.speed = f;
+    if (localParticleEmitterConfigBean.speedVariance != null) {
+      f = localParticleEmitterConfigBean.speedVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.speedVariance = f;
+    if (localParticleEmitterConfigBean.particleLifeSpan != null) {
+      f = localParticleEmitterConfigBean.particleLifeSpan.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.particleLifespan = f;
+    if (localParticleEmitterConfigBean.particleLifespanVariance != null) {
+      f = localParticleEmitterConfigBean.particleLifespanVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.particleLifespanVariance = f;
+    if (localParticleEmitterConfigBean.angle != null) {
+      f = localParticleEmitterConfigBean.angle.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.angle = f;
+    if (localParticleEmitterConfigBean.angle3d != null) {
+      paramString = new Vector3(localParticleEmitterConfigBean.angle3d.x, localParticleEmitterConfigBean.angle3d.y, localParticleEmitterConfigBean.angle3d.z);
+    } else {
+      paramString = null;
+    }
+    this.angle3d = paramString;
+    if (localParticleEmitterConfigBean.angleVariance != null) {
+      f = localParticleEmitterConfigBean.angleVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.angleVariance = f;
+    if (localParticleEmitterConfigBean.gravity != null) {
+      paramString = new Vector3(localParticleEmitterConfigBean.gravity.x, localParticleEmitterConfigBean.gravity.y, localParticleEmitterConfigBean.gravity.z);
+    } else {
+      paramString = null;
+    }
+    this.gravity = paramString;
+    if (localParticleEmitterConfigBean.radialAcceleration != null) {
+      f = localParticleEmitterConfigBean.radialAcceleration.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.radialAcceleration = f;
+    if (localParticleEmitterConfigBean.tangentialAcceleration != null) {
+      f = localParticleEmitterConfigBean.tangentialAcceleration.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.tangentialAcceleration = f;
+    if (localParticleEmitterConfigBean.tangentialAccelVariance != null) {
+      f = localParticleEmitterConfigBean.tangentialAccelVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.tangentialAccelVariance = f;
+    if (localParticleEmitterConfigBean.startColor != null) {
+      paramString = new Vector4(localParticleEmitterConfigBean.startColor.red, localParticleEmitterConfigBean.startColor.green, localParticleEmitterConfigBean.startColor.blue, localParticleEmitterConfigBean.startColor.alpha);
+    } else {
+      paramString = null;
+    }
+    this.startColor = paramString;
+    if (localParticleEmitterConfigBean.startColorVariance != null) {
+      paramString = new Vector4(localParticleEmitterConfigBean.startColorVariance.red, localParticleEmitterConfigBean.startColorVariance.green, localParticleEmitterConfigBean.startColorVariance.blue, localParticleEmitterConfigBean.startColorVariance.alpha);
+    } else {
+      paramString = null;
+    }
+    this.startColorVariance = paramString;
+    if (localParticleEmitterConfigBean.finishColor != null) {
+      paramString = new Vector4(localParticleEmitterConfigBean.finishColor.red, localParticleEmitterConfigBean.finishColor.green, localParticleEmitterConfigBean.finishColor.blue, localParticleEmitterConfigBean.finishColor.alpha);
+    } else {
+      paramString = null;
+    }
+    this.finishColor = paramString;
+    paramString = paramParticleConfig;
+    if (localParticleEmitterConfigBean.finishColorVariance != null) {
+      paramString = new Vector4(localParticleEmitterConfigBean.finishColorVariance.red, localParticleEmitterConfigBean.finishColorVariance.green, localParticleEmitterConfigBean.finishColorVariance.blue, localParticleEmitterConfigBean.finishColorVariance.alpha);
+    }
+    this.finishColorVariance = paramString;
+    if (localParticleEmitterConfigBean.maxParticles != null) {
+      i = localParticleEmitterConfigBean.maxParticles.getValue();
+    } else {
+      i = 0;
+    }
+    this.maxParticles = i;
+    if (localParticleEmitterConfigBean.startParticleSize != null) {
+      f = localParticleEmitterConfigBean.startParticleSize.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.startParticleSize = f;
+    if (localParticleEmitterConfigBean.startParticleSizeVariance != null) {
+      f = localParticleEmitterConfigBean.startParticleSizeVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.startParticleSizeVariance = f;
+    if (localParticleEmitterConfigBean.finishParticleSize != null) {
+      f = localParticleEmitterConfigBean.finishParticleSize.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.finishParticleSize = f;
+    if (localParticleEmitterConfigBean.finishParticleSizeVariance != null) {
+      f = localParticleEmitterConfigBean.finishParticleSizeVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.finishParticleSizeVariance = f;
+    if (localParticleEmitterConfigBean.duration != null) {
+      f = localParticleEmitterConfigBean.duration.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.duration = f;
+    if (localParticleEmitterConfigBean.blendFuncSource != null) {
+      i = localParticleEmitterConfigBean.blendFuncSource.getValue();
+    } else {
+      i = 0;
+    }
+    this.blendFuncSource = i;
+    if (localParticleEmitterConfigBean.blendFuncDestination != null) {
+      i = localParticleEmitterConfigBean.blendFuncDestination.getValue();
+    } else {
+      i = 0;
+    }
+    this.blendFuncDestination = i;
+    int i = this.blendFuncSource;
+    boolean bool = true;
+    if ((i != 1) || (this.blendFuncDestination != 771)) {
+      bool = false;
+    }
+    this.opacityModifyRGB = bool;
+    if (localParticleEmitterConfigBean.maxRadius != null) {
+      f = localParticleEmitterConfigBean.maxRadius.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.maxRadius = f;
+    if (localParticleEmitterConfigBean.maxRadiusVariance != null) {
+      f = localParticleEmitterConfigBean.maxRadiusVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.maxRadiusVariance = f;
+    if (localParticleEmitterConfigBean.minRadius != null) {
+      f = localParticleEmitterConfigBean.minRadius.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.minRadius = f;
+    if (localParticleEmitterConfigBean.minRadiusVariance != null) {
+      f = localParticleEmitterConfigBean.minRadiusVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.minRadiusVariance = f;
+    if (localParticleEmitterConfigBean.rotatePerSecond != null) {
+      f = localParticleEmitterConfigBean.rotatePerSecond.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.rotatePerSecond = f;
+    if (localParticleEmitterConfigBean.rotatePerSecondVariance != null) {
+      f = localParticleEmitterConfigBean.rotatePerSecondVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.rotatePerSecondVariance = f;
+    if (localParticleEmitterConfigBean.rotationStart != null) {
+      f = localParticleEmitterConfigBean.rotationStart.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.rotationStart = f;
+    if (localParticleEmitterConfigBean.rotationStartVariance != null) {
+      f = localParticleEmitterConfigBean.rotationStartVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.rotationStartVariance = f;
+    if (localParticleEmitterConfigBean.rotationEnd != null) {
+      f = localParticleEmitterConfigBean.rotationEnd.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.rotationEnd = f;
+    if (localParticleEmitterConfigBean.rotationEndVariance != null) {
+      f = localParticleEmitterConfigBean.rotationEndVariance.getValue();
+    } else {
+      f = 0.0F;
+    }
+    this.rotationEndVariance = f;
+    this.originEmissionRate = localParticleEmitterConfigBean.emissionRate;
+    this.emissionRate = this.originEmissionRate;
+    if (this.emissionRate <= 0.0F) {}
+    try
     {
-      this.emission3DVector = paramString;
-      label93:
-      label113:
-      int i;
-      label134:
-      label176:
-      label217:
-      float f;
-      if (paramParticleConfig.emission3DVectorVariance != null)
-      {
-        paramString = new Vector3(paramParticleConfig.emission3DVectorVariance.x, paramParticleConfig.emission3DVectorVariance.y, paramParticleConfig.emission3DVectorVariance.z);
-        this.emission3DVectorVariance = paramString;
-        if (paramParticleConfig.particlePath == null) {
-          break label1177;
-        }
-        paramString = paramParticleConfig.particlePath.path;
-        this.particlePath = paramString;
-        if (paramParticleConfig.emitterType == null) {
-          break label1184;
-        }
-        i = paramParticleConfig.emitterType.getValue();
-        this.emitterType = i;
-        if (paramParticleConfig.sourcePosition == null) {
-          break label1190;
-        }
-        paramString = new Vector3(paramParticleConfig.sourcePosition.x, paramParticleConfig.sourcePosition.y, paramParticleConfig.sourcePosition.z);
-        this.sourcePosition = paramString;
-        if (this.sourcePosition == null) {
-          break label1195;
-        }
-        paramString = new Vector3(this.sourcePosition.x, this.sourcePosition.y, this.sourcePosition.z);
-        this.originSourcePositionForRest = paramString;
-        if (paramParticleConfig.sourcePositionVariance == null) {
-          break label1200;
-        }
-        paramString = new Vector3(paramParticleConfig.sourcePositionVariance.x, paramParticleConfig.sourcePositionVariance.y, paramParticleConfig.sourcePositionVariance.z);
-        label258:
-        this.sourcePositionVariance = paramString;
-        if (paramParticleConfig.speed == null) {
-          break label1205;
-        }
-        f = paramParticleConfig.speed.getValue();
-        label278:
-        this.speed = f;
-        if (paramParticleConfig.speedVariance == null) {
-          break label1210;
-        }
-        f = paramParticleConfig.speedVariance.getValue();
-        label298:
-        this.speedVariance = f;
-        if (paramParticleConfig.particleLifeSpan == null) {
-          break label1215;
-        }
-        f = paramParticleConfig.particleLifeSpan.getValue();
-        label318:
-        this.particleLifespan = f;
-        if (paramParticleConfig.particleLifespanVariance == null) {
-          break label1220;
-        }
-        f = paramParticleConfig.particleLifespanVariance.getValue();
-        label338:
-        this.particleLifespanVariance = f;
-        if (paramParticleConfig.angle == null) {
-          break label1225;
-        }
-        f = paramParticleConfig.angle.getValue();
-        label358:
-        this.angle = f;
-        if (paramParticleConfig.angle3d == null) {
-          break label1230;
-        }
-        paramString = new Vector3(paramParticleConfig.angle3d.x, paramParticleConfig.angle3d.y, paramParticleConfig.angle3d.z);
-        label399:
-        this.angle3d = paramString;
-        if (paramParticleConfig.angleVariance == null) {
-          break label1235;
-        }
-        f = paramParticleConfig.angleVariance.getValue();
-        label419:
-        this.angleVariance = f;
-        if (paramParticleConfig.gravity == null) {
-          break label1240;
-        }
-        paramString = new Vector3(paramParticleConfig.gravity.x, paramParticleConfig.gravity.y, paramParticleConfig.gravity.z);
-        label460:
-        this.gravity = paramString;
-        if (paramParticleConfig.radialAcceleration == null) {
-          break label1245;
-        }
-        f = paramParticleConfig.radialAcceleration.getValue();
-        label480:
-        this.radialAcceleration = f;
-        if (paramParticleConfig.tangentialAcceleration == null) {
-          break label1250;
-        }
-        f = paramParticleConfig.tangentialAcceleration.getValue();
-        label500:
-        this.tangentialAcceleration = f;
-        if (paramParticleConfig.tangentialAccelVariance == null) {
-          break label1255;
-        }
-        f = paramParticleConfig.tangentialAccelVariance.getValue();
-        label520:
-        this.tangentialAccelVariance = f;
-        if (paramParticleConfig.startColor == null) {
-          break label1260;
-        }
-        paramString = new Vector4(paramParticleConfig.startColor.red, paramParticleConfig.startColor.green, paramParticleConfig.startColor.blue, paramParticleConfig.startColor.alpha);
-        label568:
-        this.startColor = paramString;
-        if (paramParticleConfig.startColorVariance == null) {
-          break label1265;
-        }
-        paramString = new Vector4(paramParticleConfig.startColorVariance.red, paramParticleConfig.startColorVariance.green, paramParticleConfig.startColorVariance.blue, paramParticleConfig.startColorVariance.alpha);
-        label616:
-        this.startColorVariance = paramString;
-        if (paramParticleConfig.finishColor == null) {
-          break label1270;
-        }
-        paramString = new Vector4(paramParticleConfig.finishColor.red, paramParticleConfig.finishColor.green, paramParticleConfig.finishColor.blue, paramParticleConfig.finishColor.alpha);
-        label664:
-        this.finishColor = paramString;
-        paramString = localObject;
-        if (paramParticleConfig.finishColorVariance != null) {
-          paramString = new Vector4(paramParticleConfig.finishColorVariance.red, paramParticleConfig.finishColorVariance.green, paramParticleConfig.finishColorVariance.blue, paramParticleConfig.finishColorVariance.alpha);
-        }
-        this.finishColorVariance = paramString;
-        if (paramParticleConfig.maxParticles == null) {
-          break label1275;
-        }
-        i = paramParticleConfig.maxParticles.getValue();
-        label736:
-        this.maxParticles = i;
-        if (paramParticleConfig.startParticleSize == null) {
-          break label1281;
-        }
-        f = paramParticleConfig.startParticleSize.getValue();
-        label757:
-        this.startParticleSize = f;
-        if (paramParticleConfig.startParticleSizeVariance == null) {
-          break label1286;
-        }
-        f = paramParticleConfig.startParticleSizeVariance.getValue();
-        label777:
-        this.startParticleSizeVariance = f;
-        if (paramParticleConfig.finishParticleSize == null) {
-          break label1291;
-        }
-        f = paramParticleConfig.finishParticleSize.getValue();
-        label797:
-        this.finishParticleSize = f;
-        if (paramParticleConfig.finishParticleSizeVariance == null) {
-          break label1296;
-        }
-        f = paramParticleConfig.finishParticleSizeVariance.getValue();
-        label817:
-        this.finishParticleSizeVariance = f;
-        if (paramParticleConfig.duration == null) {
-          break label1301;
-        }
-        f = paramParticleConfig.duration.getValue();
-        label837:
-        this.duration = f;
-        if (paramParticleConfig.blendFuncSource == null) {
-          break label1306;
-        }
-        i = paramParticleConfig.blendFuncSource.getValue();
-        label858:
-        this.blendFuncSource = i;
-        if (paramParticleConfig.blendFuncDestination == null) {
-          break label1312;
-        }
-        i = paramParticleConfig.blendFuncDestination.getValue();
-        label880:
-        this.blendFuncDestination = i;
-        boolean bool1 = bool2;
-        if (this.blendFuncSource == 1)
-        {
-          bool1 = bool2;
-          if (this.blendFuncDestination == 771) {
-            bool1 = true;
-          }
-        }
-        this.opacityModifyRGB = bool1;
-        if (paramParticleConfig.maxRadius == null) {
-          break label1318;
-        }
-        f = paramParticleConfig.maxRadius.getValue();
-        label936:
-        this.maxRadius = f;
-        if (paramParticleConfig.maxRadiusVariance == null) {
-          break label1323;
-        }
-        f = paramParticleConfig.maxRadiusVariance.getValue();
-        label956:
-        this.maxRadiusVariance = f;
-        if (paramParticleConfig.minRadius == null) {
-          break label1328;
-        }
-        f = paramParticleConfig.minRadius.getValue();
-        label976:
-        this.minRadius = f;
-        if (paramParticleConfig.minRadiusVariance == null) {
-          break label1333;
-        }
-        f = paramParticleConfig.minRadiusVariance.getValue();
-        label996:
-        this.minRadiusVariance = f;
-        if (paramParticleConfig.rotatePerSecond == null) {
-          break label1338;
-        }
-        f = paramParticleConfig.rotatePerSecond.getValue();
-        label1016:
-        this.rotatePerSecond = f;
-        if (paramParticleConfig.rotatePerSecondVariance == null) {
-          break label1343;
-        }
-        f = paramParticleConfig.rotatePerSecondVariance.getValue();
-        label1036:
-        this.rotatePerSecondVariance = f;
-        if (paramParticleConfig.rotationStart == null) {
-          break label1348;
-        }
-        f = paramParticleConfig.rotationStart.getValue();
-        label1056:
-        this.rotationStart = f;
-        if (paramParticleConfig.rotationStartVariance == null) {
-          break label1353;
-        }
-        f = paramParticleConfig.rotationStartVariance.getValue();
-        label1076:
-        this.rotationStartVariance = f;
-        if (paramParticleConfig.rotationEnd == null) {
-          break label1358;
-        }
-        f = paramParticleConfig.rotationEnd.getValue();
-        label1096:
-        this.rotationEnd = f;
-        if (paramParticleConfig.rotationEndVariance == null) {
-          break label1363;
-        }
-        f = paramParticleConfig.rotationEndVariance.getValue();
-        this.rotationEndVariance = f;
-        this.originEmissionRate = paramParticleConfig.emissionRate;
-        this.emissionRate = this.originEmissionRate;
-        if (this.emissionRate > 0.0F) {}
-      }
-      try
-      {
-        this.emissionRate = (this.maxParticles / this.particleLifespan);
-        this.emitCounter = 0.0F;
-        return;
-        paramString = null;
-        continue;
-        paramString = null;
-        break label93;
-        label1177:
-        paramString = "";
-        break label113;
-        label1184:
-        i = 0;
-        break label134;
-        label1190:
-        paramString = null;
-        break label176;
-        label1195:
-        paramString = null;
-        break label217;
-        label1200:
-        paramString = null;
-        break label258;
-        label1205:
-        f = 0.0F;
-        break label278;
-        label1210:
-        f = 0.0F;
-        break label298;
-        label1215:
-        f = 0.0F;
-        break label318;
-        label1220:
-        f = 0.0F;
-        break label338;
-        label1225:
-        f = 0.0F;
-        break label358;
-        label1230:
-        paramString = null;
-        break label399;
-        label1235:
-        f = 0.0F;
-        break label419;
-        label1240:
-        paramString = null;
-        break label460;
-        label1245:
-        f = 0.0F;
-        break label480;
-        label1250:
-        f = 0.0F;
-        break label500;
-        label1255:
-        f = 0.0F;
-        break label520;
-        label1260:
-        paramString = null;
-        break label568;
-        label1265:
-        paramString = null;
-        break label616;
-        label1270:
-        paramString = null;
-        break label664;
-        label1275:
-        i = 0;
-        break label736;
-        label1281:
-        f = 0.0F;
-        break label757;
-        label1286:
-        f = 0.0F;
-        break label777;
-        label1291:
-        f = 0.0F;
-        break label797;
-        label1296:
-        f = 0.0F;
-        break label817;
-        label1301:
-        f = 0.0F;
-        break label837;
-        label1306:
-        i = 0;
-        break label858;
-        label1312:
-        i = 0;
-        break label880;
-        label1318:
-        f = 0.0F;
-        break label936;
-        label1323:
-        f = 0.0F;
-        break label956;
-        label1328:
-        f = 0.0F;
-        break label976;
-        label1333:
-        f = 0.0F;
-        break label996;
-        label1338:
-        f = 0.0F;
-        break label1016;
-        label1343:
-        f = 0.0F;
-        break label1036;
-        label1348:
-        f = 0.0F;
-        break label1056;
-        label1353:
-        f = 0.0F;
-        break label1076;
-        label1358:
-        f = 0.0F;
-        break label1096;
-        label1363:
-        f = 0.0F;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          this.emissionRate = 1.0F;
-        }
-      }
+      this.emissionRate = (this.maxParticles / this.particleLifespan);
     }
+    catch (Exception paramString)
+    {
+      label1467:
+      break label1467;
+    }
+    this.emissionRate = 1.0F;
+    this.emitCounter = 0.0F;
   }
   
   int activeParticleCount()
@@ -474,10 +355,11 @@ public abstract class BasePaticleEmitter
   
   public boolean addParticle()
   {
-    if (this.particleCount == this.maxParticles) {
+    int i = this.particleCount;
+    if (i == this.maxParticles) {
       return false;
     }
-    initParticle(this.particles[this.particleCount]);
+    initParticle(this.particles[i]);
     this.particleCount += 1;
     return true;
   }
@@ -490,7 +372,11 @@ public abstract class BasePaticleEmitter
       paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length);
       return paramString;
     }
-    catch (OutOfMemoryError paramString) {}
+    catch (OutOfMemoryError paramString)
+    {
+      label16:
+      break label16;
+    }
     return null;
   }
   
@@ -499,8 +385,9 @@ public abstract class BasePaticleEmitter
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = this.texture;
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    if (this.textures != null) {
-      GLES20.glDeleteTextures(this.textures.length, this.textures, 0);
+    arrayOfInt = this.textures;
+    if (arrayOfInt != null) {
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
   }
   
@@ -545,8 +432,10 @@ public abstract class BasePaticleEmitter
     }
     catch (Exception localException)
     {
-      this.emissionRate = 1.0F;
+      label75:
+      break label75;
     }
+    this.emissionRate = 1.0F;
   }
   
   void setBaseRotation(float paramFloat)
@@ -606,23 +495,33 @@ public abstract class BasePaticleEmitter
   {
     this.particles = new Particle[this.maxParticles];
     int i = 0;
-    while (i < this.particles.length)
+    Object localObject;
+    for (;;)
     {
-      this.particles[i] = new Particle();
+      localObject = this.particles;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = new Particle();
       i += 1;
     }
     this.quads = new ParticleQuad[this.maxParticles];
     i = 0;
-    while (i < this.quads.length)
+    for (;;)
     {
-      this.quads[i] = new ParticleQuad();
+      localObject = this.quads;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = new ParticleQuad();
       i += 1;
     }
-    this.particleIndices = new int[this.maxParticles * 6];
-    this.particleVertices = new float[this.maxParticles * 18];
-    this.particleTextureCoordinates = new float[this.maxParticles * 12];
-    this.particleColors = new float[this.maxParticles * 24];
-    this.particleSpriteIndex = new int[this.maxParticles];
+    i = this.maxParticles;
+    this.particleIndices = new int[i * 6];
+    this.particleVertices = new float[i * 18];
+    this.particleTextureCoordinates = new float[i * 12];
+    this.particleColors = new float[i * 24];
+    this.particleSpriteIndex = new int[i];
     i = 0;
     while (i < this.maxParticles)
     {
@@ -639,12 +538,17 @@ public abstract class BasePaticleEmitter
     i = 0;
     while (i < this.maxParticles)
     {
-      this.particleIndices[(i * 6 + 0)] = (i * 4 + 0);
-      this.particleIndices[(i * 6 + 1)] = (i * 4 + 1);
-      this.particleIndices[(i * 6 + 2)] = (i * 4 + 2);
-      this.particleIndices[(i * 6 + 5)] = (i * 4 + 2);
-      this.particleIndices[(i * 6 + 4)] = (i * 4 + 3);
-      this.particleIndices[(i * 6 + 3)] = (i * 4 + 1);
+      localObject = this.particleIndices;
+      int j = i * 6;
+      int k = i * 4;
+      localObject[(j + 0)] = (k + 0);
+      int m = k + 1;
+      localObject[(j + 1)] = m;
+      int n = k + 2;
+      localObject[(j + 2)] = n;
+      localObject[(j + 5)] = n;
+      localObject[(j + 4)] = (k + 3);
+      localObject[(j + 3)] = m;
       i += 1;
     }
     this.active = true;
@@ -666,26 +570,32 @@ public abstract class BasePaticleEmitter
   
   public void updateWithCurrentTime(long paramLong, boolean paramBoolean)
   {
-    long l = 0L;
-    if (this.startTime > 0L)
+    long l2 = this.startTime;
+    long l1 = 0L;
+    if (l2 > 0L)
     {
-      l = paramLong - this.startTime;
-      this.totalTime = ((int)(this.totalTime + l));
+      l1 = paramLong - l2;
+      this.totalTime = ((int)(this.totalTime + l1));
     }
     this.startTime = paramLong;
-    updateWithDelta((float)l * 1.0F / 1000.0F, paramBoolean);
+    updateWithDelta((float)l1 * 1.0F / 1000.0F, paramBoolean);
   }
   
   public abstract void updateWithDelta(float paramFloat, boolean paramBoolean);
   
   protected boolean useFaceAnglesRotate()
   {
-    return this.rotateType[0] + this.rotateType[1] > 0;
+    int[] arrayOfInt = this.rotateType;
+    boolean bool = false;
+    if (arrayOfInt[0] + arrayOfInt[1] > 0) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.particle.BasePaticleEmitter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,25 @@
+{
+	"id": "600001",
+	"type": "LutFilter",
+	"name_en": "ziran", 
+	"name_cn": "默认",
+	"thumbnail": "thumbnail.jpg",
+	"version": 3.0,
+	"params":
+	{
+		"LutStyle": 1,
+		"DefaultAlpha":0.8,
+		"ChannelPrecision": 64,
+		"PicParams":{
+			"Path":"Lut.png"
+		},
+
+		"CompParam": {
+			"CompStyle":"2D",
+			"Block":[8, 8],
+			"Path":"live_filter_zr.astc"
+		}	
+	}
+	
+	
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/j95" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:checked="false" android:text="启用Debug配置" />
+    <TextView android:textSize="16.0dip" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/qq1" />
+    <Spinner android:id="@id/fyo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+    <TextView android:textSize="16.0dip" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/qpn" />
+    <Spinner android:id="@id/inh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+    <TextView android:textSize="16.0dip" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/qpi" />
+    <Spinner android:id="@id/aad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+</LinearLayout>

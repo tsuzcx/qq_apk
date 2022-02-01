@@ -15,35 +15,37 @@ public final class os
   
   public static int a(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject = null;
     Map localMap = (Map)d.get(paramString1);
-    if (localMap != null) {}
-    for (paramString1 = (os.b)localMap.get(paramString1);; paramString1 = null)
-    {
-      if (paramString1 != null)
-      {
-        if (paramString1.a != null) {
-          localObject = paramString1.a.get(paramString2);
-        }
-        if ((localObject instanceof AtomicInteger))
-        {
-          int i = paramInt;
-          if (paramInt <= 0) {
-            i = 1;
-          }
-          paramInt = ((AtomicInteger)localObject).get() + i;
-          ((AtomicInteger)localObject).set(paramInt);
-          return paramInt;
-        }
-        localObject = new AtomicInteger(1);
-        if (paramString1.a == null) {
-          paramString1.a = new Hashtable();
-        }
-        paramString1.a.put(paramString2, localObject);
-        return 1;
-      }
-      return -1;
+    Object localObject = null;
+    if (localMap != null) {
+      paramString1 = (os.b)localMap.get(paramString1);
+    } else {
+      paramString1 = null;
     }
+    if (paramString1 != null)
+    {
+      if (paramString1.a != null) {
+        localObject = paramString1.a.get(paramString2);
+      }
+      if ((localObject instanceof AtomicInteger))
+      {
+        int i = paramInt;
+        if (paramInt <= 0) {
+          i = 1;
+        }
+        paramString1 = (AtomicInteger)localObject;
+        paramInt = paramString1.get() + i;
+        paramString1.set(paramInt);
+        return paramInt;
+      }
+      localObject = new AtomicInteger(1);
+      if (paramString1.a == null) {
+        paramString1.a = new Hashtable();
+      }
+      paramString1.a.put(paramString2, localObject);
+      return 1;
+    }
+    return -1;
   }
   
   public static os.a a(String paramString)
@@ -87,7 +89,7 @@ public final class os
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.os
  * JD-Core Version:    0.7.0.1
  */

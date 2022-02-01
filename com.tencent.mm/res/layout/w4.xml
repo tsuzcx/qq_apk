@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/koz" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" />
+        <ImageView android:id="@id/kp0" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" />
+        <ImageView android:id="@id/kp1" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" />
+        <ImageView android:id="@id/kp2" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" />
+        <ImageView android:id="@id/kp3" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/kp4" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginTop="@dimen/ig" />
+        <ImageView android:id="@id/kp5" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/ig" />
+        <ImageView android:id="@id/kp6" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/ig" />
+        <ImageView android:id="@id/kp7" android:visibility="gone" android:layout_width="@dimen/akj" android:layout_height="@dimen/akj" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/ig" />
+    </LinearLayout>
+</LinearLayout>

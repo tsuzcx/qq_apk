@@ -39,14 +39,15 @@ public final class PhotoWall
   {
     paramJceOutputStream.write(this.photoId, 0);
     paramJceOutputStream.write(this.ctime, 1);
-    if (this.photoUrls != null) {
-      paramJceOutputStream.write(this.photoUrls, 2);
+    Map localMap = this.photoUrls;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.PhotoWall
  * JD-Core Version:    0.7.0.1
  */

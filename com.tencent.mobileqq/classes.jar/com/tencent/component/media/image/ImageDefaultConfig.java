@@ -1,11 +1,16 @@
 package com.tencent.component.media.image;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Process;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.component.media.ILog;
 import com.tencent.component.media.ImageManagerEnv;
+import java.util.Iterator;
+import java.util.List;
 
 public class ImageDefaultConfig
 {
@@ -33,34 +38,47 @@ public class ImageDefaultConfig
   {
     int i = getScreenWidth(paramContext);
     getScreenHeight(paramContext);
-    if (isQzone(paramContext)) {
-      switch (paramInt)
+    if (isQzone(paramContext))
+    {
+      if (paramInt != 0)
       {
+        if (paramInt != 1)
+        {
+          if (paramInt == 2) {
+            return new PoolParams.BucketParams(bmpSize4Qzone[2], bmpCount4Qzone[2]);
+          }
+        }
+        else {
+          return new PoolParams.BucketParams(bmpSize4Qzone[1], bmpCount4Qzone[1]);
+        }
+      }
+      else {
+        return new PoolParams.BucketParams(bmpSize4Qzone[0], bmpCount4Qzone[0]);
       }
     }
-    for (;;)
+    else if (isPicture(paramContext))
     {
-      return new PoolParams.BucketParams(1, 1);
-      return new PoolParams.BucketParams(bmpSize4Qzone[0], bmpCount4Qzone[0]);
-      return new PoolParams.BucketParams(bmpSize4Qzone[1], bmpCount4Qzone[1]);
-      return new PoolParams.BucketParams(bmpSize4Qzone[2], bmpCount4Qzone[2]);
-      if (isPicture(paramContext)) {
-        switch (paramInt)
-        {
-        default: 
-          break;
-        case 0: 
-          return new PoolParams.BucketParams(bmpSize4Picture[0], bmpCount4Picture[0]);
-        case 1: 
+      if (paramInt != 0)
+      {
+        if (paramInt == 1) {
           return new PoolParams.BucketParams(bmpSize4Picture[1], bmpCount4Picture[1]);
         }
-      } else {
-        switch (paramInt)
-        {
-        }
+      }
+      else {
+        return new PoolParams.BucketParams(bmpSize4Picture[0], bmpCount4Picture[0]);
       }
     }
-    return new PoolParams.BucketParams(16000, 1);
+    else
+    {
+      if (paramInt == 0) {
+        break label201;
+      }
+      if (paramInt == 1) {
+        break label162;
+      }
+    }
+    return new PoolParams.BucketParams(1, 1);
+    label162:
     int j = i * i * 4 / 9;
     i = 1048576 / j;
     paramInt = i;
@@ -68,238 +86,281 @@ public class ImageDefaultConfig
       paramInt = i + 1;
     }
     return new PoolParams.BucketParams(j + 1000, paramInt);
+    label201:
+    return new PoolParams.BucketParams(16000, 1);
   }
   
   public static int getArtBitmapPoolSize(Context paramContext)
   {
-    if (isPicture(paramContext)) {}
-    while (!isQzone(paramContext)) {
+    boolean bool = isPicture(paramContext);
+    int i = 2;
+    if (bool) {
       return 2;
     }
-    return 3;
+    if (isQzone(paramContext)) {
+      i = 3;
+    }
+    return i;
   }
   
-  /* Error */
   private static String getProcessName(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 80	com/tencent/component/media/image/ImageDefaultConfig:sProcessName	Ljava/lang/String;
-    //   6: invokestatic 86	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifeq +73 -> 82
-    //   12: invokestatic 92	android/os/Process:myPid	()I
-    //   15: istore_1
-    //   16: aload_0
-    //   17: ldc 94
-    //   19: invokevirtual 100	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   22: checkcast 102	android/app/ActivityManager
-    //   25: invokevirtual 106	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
-    //   28: astore_0
-    //   29: aload_0
-    //   30: ifnonnull +11 -> 41
-    //   33: ldc 108
-    //   35: astore_0
-    //   36: ldc 2
-    //   38: monitorexit
-    //   39: aload_0
-    //   40: areturn
-    //   41: aload_0
-    //   42: invokeinterface 114 1 0
-    //   47: astore_0
-    //   48: aload_0
-    //   49: invokeinterface 120 1 0
-    //   54: ifeq +28 -> 82
-    //   57: aload_0
-    //   58: invokeinterface 124 1 0
-    //   63: checkcast 126	android/app/ActivityManager$RunningAppProcessInfo
-    //   66: astore_2
-    //   67: aload_2
-    //   68: getfield 129	android/app/ActivityManager$RunningAppProcessInfo:pid	I
-    //   71: iload_1
-    //   72: if_icmpne -24 -> 48
-    //   75: aload_2
-    //   76: getfield 132	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
-    //   79: putstatic 80	com/tencent/component/media/image/ImageDefaultConfig:sProcessName	Ljava/lang/String;
-    //   82: getstatic 80	com/tencent/component/media/image/ImageDefaultConfig:sProcessName	Ljava/lang/String;
-    //   85: astore_0
-    //   86: goto -50 -> 36
-    //   89: astore_0
-    //   90: ldc 2
-    //   92: monitorexit
-    //   93: aload_0
-    //   94: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	paramContext	Context
-    //   15	58	1	i	int
-    //   66	10	2	localRunningAppProcessInfo	android.app.ActivityManager.RunningAppProcessInfo
-    // Exception table:
-    //   from	to	target	type
-    //   3	29	89	finally
-    //   41	48	89	finally
-    //   48	82	89	finally
-    //   82	86	89	finally
+    try
+    {
+      if (TextUtils.isEmpty(sProcessName))
+      {
+        int i = Process.myPid();
+        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+        if (paramContext == null) {
+          return "unknown";
+        }
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext())
+        {
+          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+          if (localRunningAppProcessInfo.pid == i) {
+            sProcessName = localRunningAppProcessInfo.processName;
+          }
+        }
+      }
+      paramContext = sProcessName;
+      return paramContext;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramContext;
+    }
   }
   
   public static int getScreenHeight(Context paramContext)
   {
-    int i;
     if (screenHeight <= 0)
     {
       paramContext = paramContext.getResources().getDisplayMetrics();
-      i = paramContext.widthPixels;
+      int i = paramContext.widthPixels;
       int j = paramContext.heightPixels;
-      if (i > j) {
-        break label39;
+      if (i <= j) {
+        i = j;
       }
-      i = j;
-    }
-    label39:
-    for (;;)
-    {
       screenHeight = i;
-      return screenHeight;
     }
+    return screenHeight;
   }
   
   public static int getScreenWidth(Context paramContext)
   {
-    int i;
-    int j;
     if (screenWidth <= 0)
     {
       paramContext = paramContext.getResources().getDisplayMetrics();
-      i = paramContext.widthPixels;
-      j = paramContext.heightPixels;
-      if (i > j) {
-        break label37;
+      int j = paramContext.widthPixels;
+      int k = paramContext.heightPixels;
+      int i = k;
+      if (j <= k) {
+        i = j;
       }
-    }
-    for (;;)
-    {
       screenWidth = i;
-      return screenWidth;
-      label37:
-      i = j;
     }
+    return screenWidth;
   }
   
   public static void initBmpCount4Picture(Context paramContext, int paramInt)
   {
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader----maxBitMapPool---" + paramInt });
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader--before--counts:---" + bmpCount4Picture[0] });
+    Object localObject = ImageManagerEnv.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---------ImageLoader----maxBitMapPool---");
+    localStringBuilder.append(paramInt);
+    ((ILog)localObject).d("ImageDefaultConfig", new Object[] { localStringBuilder.toString() });
+    localObject = ImageManagerEnv.getLogger();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---------ImageLoader--before--counts:---");
+    localStringBuilder.append(bmpCount4Picture[0]);
+    ((ILog)localObject).d("ImageDefaultConfig", new Object[] { localStringBuilder.toString() });
     int i = getScreenWidth(paramContext);
     int j = getScreenHeight(paramContext);
-    bmpSize4Picture[1] = ((int)(j * i * 4 * 0.6D));
-    bmpSize4Picture[0] = (i * i / 36 * 4);
-    i = paramInt - (bmpSize4Picture[0] * bmpCount4Picture[0] + bmpSize4Picture[1] * bmpCount4Picture[1]);
+    paramContext = bmpSize4Picture;
+    double d = j * i * 4;
+    Double.isNaN(d);
+    paramContext[1] = ((int)(d * 0.6D));
+    paramContext[0] = (i * i / 36 * 4);
+    i = paramContext[0];
+    localObject = bmpCount4Picture;
+    i = paramInt - (i * localObject[0] + paramContext[1] * localObject[1]);
     while (i < 0)
     {
-      bmpSize4Picture[1] = ((int)(bmpSize4Picture[1] * 0.8F));
-      bmpCount4Picture[0] = ((int)(bmpCount4Picture[0] * 0.8F));
-      i = paramInt - (bmpSize4Picture[0] * bmpCount4Picture[0] + bmpSize4Picture[1] * bmpCount4Picture[1]);
-      ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader---reduce bmp size(" + 0.8F + "),new size:" + bmpSize4Picture[0] });
+      paramContext = bmpSize4Picture;
+      paramContext[1] = ((int)(paramContext[1] * 0.8F));
+      localObject = bmpCount4Picture;
+      localObject[0] = ((int)(localObject[0] * 0.8F));
+      i = paramInt - (paramContext[0] * localObject[0] + paramContext[1] * localObject[1]);
+      paramContext = ImageManagerEnv.getLogger();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("---------ImageLoader---reduce bmp size(");
+      ((StringBuilder)localObject).append(0.8F);
+      ((StringBuilder)localObject).append("),new size:");
+      ((StringBuilder)localObject).append(bmpSize4Picture[0]);
+      paramContext.d("ImageDefaultConfig", new Object[] { ((StringBuilder)localObject).toString() });
     }
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader---size:" + bmpSize4Picture[0] });
-    while (i > bmpSize4Picture[0])
+    paramContext = ImageManagerEnv.getLogger();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("---------ImageLoader---size:");
+    ((StringBuilder)localObject).append(bmpSize4Picture[0]);
+    paramContext.d("ImageDefaultConfig", new Object[] { ((StringBuilder)localObject).toString() });
+    for (;;)
     {
-      paramContext = bmpCount4Picture;
-      paramContext[0] += 1;
-      i -= bmpSize4Picture[0];
+      paramContext = bmpSize4Picture;
+      if (i <= paramContext[0]) {
+        break;
+      }
+      localObject = bmpCount4Picture;
+      localObject[0] += 1;
+      i -= paramContext[0];
     }
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader--after--counts:-bmpCount4Picture[0]--" + bmpCount4Picture[0] + "-bmpCount4Picture[1]" + bmpCount4Picture[1] + ",bmpSize4Picture[1] == " + bmpSize4Picture[1] });
+    paramContext = ImageManagerEnv.getLogger();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("---------ImageLoader--after--counts:-bmpCount4Picture[0]--");
+    ((StringBuilder)localObject).append(bmpCount4Picture[0]);
+    ((StringBuilder)localObject).append("-bmpCount4Picture[1]");
+    ((StringBuilder)localObject).append(bmpCount4Picture[1]);
+    ((StringBuilder)localObject).append(",bmpSize4Picture[1] == ");
+    ((StringBuilder)localObject).append(bmpSize4Picture[1]);
+    paramContext.d("ImageDefaultConfig", new Object[] { ((StringBuilder)localObject).toString() });
   }
   
   public static void initBmpCount4Qzone(Context paramContext, int paramInt)
   {
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader----maxBitMapPool---" + paramInt });
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader--before--counts:---" + bmpCount4Qzone[0] + "," + bmpCount4Qzone[1] + "," + bmpCount4Qzone[2] });
+    Object localObject = ImageManagerEnv.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---------ImageLoader----maxBitMapPool---");
+    localStringBuilder.append(paramInt);
+    ((ILog)localObject).d("ImageDefaultConfig", new Object[] { localStringBuilder.toString() });
+    localObject = ImageManagerEnv.getLogger();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---------ImageLoader--before--counts:---");
+    localStringBuilder.append(bmpCount4Qzone[0]);
+    localStringBuilder.append(",");
+    localStringBuilder.append(bmpCount4Qzone[1]);
+    localStringBuilder.append(",");
+    localStringBuilder.append(bmpCount4Qzone[2]);
+    ((ILog)localObject).d("ImageDefaultConfig", new Object[] { localStringBuilder.toString() });
     int i = getScreenWidth(paramContext);
     getScreenHeight(paramContext);
-    bmpSize4Qzone[0] = ((int)(i * i * 4 * 0.09876543F) + 1000);
-    bmpSize4Qzone[1] = ((int)(i * i * 4 * 0.1975309F) + 1000);
-    bmpSize4Qzone[2] = ((int)(i * i * 4 * 0.3125F) + 1000);
-    i = paramInt - (bmpSize4Qzone[0] * bmpCount4Qzone[0] + bmpSize4Qzone[1] * bmpCount4Qzone[1] + bmpSize4Qzone[2] * bmpCount4Qzone[2]);
+    paramContext = bmpSize4Qzone;
+    float f = i * i * 4;
+    paramContext[0] = ((int)(0.09876543F * f) + 1000);
+    paramContext[1] = ((int)(0.1975309F * f) + 1000);
+    paramContext[2] = ((int)(f * 0.3125F) + 1000);
+    i = paramContext[0];
+    localObject = bmpCount4Qzone;
+    i = paramInt - (i * localObject[0] + paramContext[1] * localObject[1] + paramContext[2] * localObject[2]);
     while (i < 0)
     {
-      bmpSize4Qzone[0] = ((int)(bmpSize4Qzone[0] * 0.8F));
-      bmpSize4Qzone[1] = ((int)(bmpSize4Qzone[1] * 0.8F));
-      bmpSize4Qzone[2] = ((int)(bmpSize4Qzone[2] * 0.8F));
-      i = paramInt - (bmpSize4Qzone[0] * bmpCount4Qzone[0] + bmpSize4Qzone[1] * bmpCount4Qzone[1] + bmpSize4Qzone[2] * bmpCount4Qzone[2]);
-      ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader---reduce bmp size(" + 0.8F + "),new size:" + bmpSize4Qzone[0] + "," + bmpSize4Qzone[1] + "," + bmpSize4Qzone[2] });
+      paramContext = bmpSize4Qzone;
+      paramContext[0] = ((int)(paramContext[0] * 0.8F));
+      paramContext[1] = ((int)(paramContext[1] * 0.8F));
+      paramContext[2] = ((int)(paramContext[2] * 0.8F));
+      i = paramContext[0];
+      localObject = bmpCount4Qzone;
+      i = paramInt - (i * localObject[0] + paramContext[1] * localObject[1] + paramContext[2] * localObject[2]);
+      paramContext = ImageManagerEnv.getLogger();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("---------ImageLoader---reduce bmp size(");
+      ((StringBuilder)localObject).append(0.8F);
+      ((StringBuilder)localObject).append("),new size:");
+      ((StringBuilder)localObject).append(bmpSize4Qzone[0]);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(bmpSize4Qzone[1]);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(bmpSize4Qzone[2]);
+      paramContext.d("ImageDefaultConfig", new Object[] { ((StringBuilder)localObject).toString() });
     }
-    ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader---size:" + bmpSize4Qzone[0] + ",size1:" + bmpSize4Qzone[1] + ",size2:" + bmpSize4Qzone[2] });
-    paramInt = i;
-    int j;
-    if (paramInt > bmpSize4Qzone[0])
+    paramContext = ImageManagerEnv.getLogger();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("---------ImageLoader---size:");
+    ((StringBuilder)localObject).append(bmpSize4Qzone[0]);
+    ((StringBuilder)localObject).append(",size1:");
+    ((StringBuilder)localObject).append(bmpSize4Qzone[1]);
+    ((StringBuilder)localObject).append(",size2:");
+    ((StringBuilder)localObject).append(bmpSize4Qzone[2]);
+    paramContext.d("ImageDefaultConfig", new Object[] { ((StringBuilder)localObject).toString() });
+    while (i > bmpSize4Qzone[0])
     {
-      i = 1;
-      j = 0;
+      int j = 0;
+      paramInt = 1;
       while (j < PIC_WEIGHT[2])
       {
-        k = paramInt;
-        if (paramInt > bmpSize4Qzone[2])
+        paramContext = bmpSize4Qzone;
+        k = i;
+        if (i > paramContext[2])
         {
-          paramContext = bmpCount4Qzone;
-          paramContext[2] += 1;
-          k = paramInt - bmpSize4Qzone[2];
-          i = 0;
+          localObject = bmpCount4Qzone;
+          localObject[2] += 1;
+          k = i - paramContext[2];
+          paramInt = 0;
         }
         j += 1;
-        paramInt = k;
+        i = k;
       }
       j = 0;
       while (j < PIC_WEIGHT[1])
       {
-        k = paramInt;
-        if (paramInt > bmpSize4Qzone[1])
+        paramContext = bmpSize4Qzone;
+        k = i;
+        if (i > paramContext[1])
         {
-          paramContext = bmpCount4Qzone;
-          paramContext[1] += 1;
-          k = paramInt - bmpSize4Qzone[1];
-          i = 0;
+          localObject = bmpCount4Qzone;
+          localObject[1] += 1;
+          k = i - paramContext[1];
+          paramInt = 0;
         }
         j += 1;
-        paramInt = k;
+        i = k;
       }
-      int k = 0;
-      j = i;
-      i = k;
-      label572:
-      if (i < PIC_WEIGHT[0])
+      j = 0;
+      int k = paramInt;
+      while (j < PIC_WEIGHT[0])
       {
-        if ((bmpSize4Qzone[0] >= 6) || (paramInt <= bmpSize4Qzone[0])) {
-          break label704;
+        paramContext = bmpSize4Qzone;
+        int m = k;
+        paramInt = i;
+        if (paramContext[0] < 6)
+        {
+          m = k;
+          paramInt = i;
+          if (i > paramContext[0])
+          {
+            localObject = bmpCount4Qzone;
+            localObject[0] += 1;
+            paramInt = i - paramContext[0];
+            m = 0;
+          }
         }
-        paramContext = bmpCount4Qzone;
-        paramContext[0] += 1;
-        k = bmpSize4Qzone[0];
-        j = 0;
-        paramInt -= k;
+        j += 1;
+        k = m;
+        i = paramInt;
       }
-    }
-    label704:
-    for (;;)
-    {
-      i += 1;
-      break label572;
-      if (j == 0) {
+      if (k != 0) {
         break;
       }
-      ImageManagerEnv.getLogger().d("ImageDefaultConfig", new Object[] { "---------ImageLoader--after--counts:---" + bmpCount4Qzone[0] + "," + bmpCount4Qzone[1] + "," + bmpCount4Qzone[2] });
-      return;
     }
+    paramContext = ImageManagerEnv.getLogger();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("---------ImageLoader--after--counts:---");
+    ((StringBuilder)localObject).append(bmpCount4Qzone[0]);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(bmpCount4Qzone[1]);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(bmpCount4Qzone[2]);
+    paramContext.d("ImageDefaultConfig", new Object[] { ((StringBuilder)localObject).toString() });
   }
   
   public static boolean isMobileQQ(Context paramContext)
   {
     paramContext = getProcessName(paramContext);
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!"com.tencent.mobileqq".equals(paramContext)) {
+    if (TextUtils.isEmpty(paramContext)) {
       return false;
     }
-    return true;
+    return "com.tencent.mobileqq".equals(paramContext);
   }
   
   public static boolean isPicture(Context paramContext)
@@ -310,29 +371,45 @@ public class ImageDefaultConfig
   
   public static boolean isQzone(Context paramContext)
   {
-    boolean bool = true;
     paramContext = getProcessName(paramContext);
-    if (TextUtils.isEmpty(paramContext)) {}
-    do
-    {
+    boolean bool1 = TextUtils.isEmpty(paramContext);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      if ("com.tencent.mobileqq:qzone".equals(paramContext)) {
-        return true;
-      }
-      paramContext = paramContext.split("/");
-    } while ((paramContext.length < 2) || (!"com.tencent.mobileqq".equals(paramContext[0])) || (TextUtils.isEmpty(paramContext[1])));
-    paramContext = paramContext[1].toLowerCase().split("\\.");
-    if ((paramContext.length > 0) && (paramContext[(paramContext.length - 1)].startsWith("qzone")) && (paramContext[(paramContext.length - 1)].endsWith("proxyactivity"))) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if ("com.tencent.mobileqq:qzone".equals(paramContext)) {
+      return true;
+    }
+    paramContext = paramContext.split("/");
+    if (paramContext.length < 2) {
+      return false;
+    }
+    bool1 = bool2;
+    if ("com.tencent.mobileqq".equals(paramContext[0]))
+    {
+      if (TextUtils.isEmpty(paramContext[1])) {
+        return false;
+      }
+      paramContext = paramContext[1].toLowerCase().split("\\.");
+      bool1 = bool2;
+      if (paramContext.length > 0)
+      {
+        bool1 = bool2;
+        if (paramContext[(paramContext.length - 1)].startsWith("qzone"))
+        {
+          bool1 = bool2;
+          if (paramContext[(paramContext.length - 1)].endsWith("proxyactivity")) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.ImageDefaultConfig
  * JD-Core Version:    0.7.0.1
  */

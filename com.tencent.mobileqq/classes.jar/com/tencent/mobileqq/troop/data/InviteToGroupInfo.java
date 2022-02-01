@@ -3,32 +3,27 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bboz;
 import java.util.ArrayList;
 
 public class InviteToGroupInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new bboz();
-  public int a;
-  public String a;
-  public ArrayList<InviteToGroupInfo.UinInfo> a;
+  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new InviteToGroupInfo.1();
+  public String a = "";
   public String b = "";
-  public String c = "";
+  public ArrayList<InviteToGroupInfo.UinInfo> c;
+  public int d;
+  public String e = "";
   
-  public InviteToGroupInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public InviteToGroupInfo() {}
   
-  public InviteToGroupInfo(Parcel paramParcel)
+  protected InviteToGroupInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(InviteToGroupInfo.UinInfo.CREATOR);
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readString();
+    this.c = paramParcel.createTypedArrayList(InviteToGroupInfo.UinInfo.CREATOR);
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readString();
   }
   
   public int describeContents()
@@ -38,21 +33,36 @@ public class InviteToGroupInfo
   
   public String toString()
   {
-    return "InviteToGroupInfo{groupCode='" + this.jdField_a_of_type_JavaLangString + '\'' + ", msg='" + this.b + '\'' + ", invitedUinInfos=" + this.jdField_a_of_type_JavaUtilArrayList + ", verifyType=" + this.jdField_a_of_type_Int + ", verifyToken='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InviteToGroupInfo{groupCode='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", msg='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", invitedUinInfos=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", verifyType=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", verifyToken='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.c);
+    paramParcel.writeTypedList(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.InviteToGroupInfo
  * JD-Core Version:    0.7.0.1
  */

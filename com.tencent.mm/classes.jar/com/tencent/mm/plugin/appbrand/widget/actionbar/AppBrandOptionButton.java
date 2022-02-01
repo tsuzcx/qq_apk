@@ -6,150 +6,133 @@ import android.graphics.Bitmap;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
+import androidx.core.content.a;
+import com.tencent.luggage.wxa.a.b;
+import com.tencent.luggage.wxa.a.c;
+import com.tencent.luggage.wxa.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandOptionButton
   extends FrameLayout
 {
-  private boolean jbF;
-  private View jbG;
-  private View jbH;
-  private TextView jbI;
-  private ImageButton jbJ;
+  private ImageButton uze;
   
   public AppBrandOptionButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(87498);
-    this.jbF = true;
+    AppMethodBeat.i(135460);
     init(paramContext);
-    AppMethodBeat.o(87498);
+    AppMethodBeat.o(135460);
   }
   
   public AppBrandOptionButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(87499);
-    this.jbF = true;
+    AppMethodBeat.i(135461);
     init(paramContext);
-    AppMethodBeat.o(87499);
+    AppMethodBeat.o(135461);
   }
   
   private int getActionBarHeight()
   {
-    AppMethodBeat.i(87500);
-    int i = getResources().getDimensionPixelSize(2131427557);
-    AppMethodBeat.o(87500);
+    AppMethodBeat.i(135462);
+    int i = getResources().getDimensionPixelSize(a.b.DefaultActionbarHeight);
+    AppMethodBeat.o(135462);
     return i;
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(87501);
-    this.jbG = LayoutInflater.from(paramContext).inflate(2130968657, this, false);
-    this.jbH = this.jbG.findViewById(2131821148);
-    this.jbI = ((TextView)this.jbG.findViewById(2131821149));
-    this.jbI.setMaxLines(1);
-    this.jbI.setClickable(false);
-    this.jbI.setBackground(null);
-    addView(this.jbG, new FrameLayout.LayoutParams(-2, -1, 17));
-    this.jbG.setVisibility(8);
-    this.jbJ = new ImageButton(paramContext);
-    this.jbJ.setClickable(false);
-    this.jbJ.setBackground(null);
-    addView(this.jbJ, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
-    AppMethodBeat.o(87501);
+    AppMethodBeat.i(135463);
+    this.uze = new ImageButton(paramContext);
+    this.uze.setClickable(false);
+    this.uze.setBackground(null);
+    this.uze.setImportantForAccessibility(2);
+    addView(this.uze, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
+    setAccessibilityLabel(getDefaultAccessibilityLabel());
+    AppMethodBeat.o(135463);
   }
   
-  ImageView getButtonImage()
+  public CharSequence getAccessibilityClassName()
   {
-    return this.jbJ;
+    AppMethodBeat.i(324200);
+    String str = ImageButton.class.getName();
+    AppMethodBeat.o(324200);
+    return str;
+  }
+  
+  public ImageView getButtonImage()
+  {
+    return this.uze;
+  }
+  
+  protected String getDefaultAccessibilityLabel()
+  {
+    AppMethodBeat.i(324190);
+    String str = getContext().getString(a.g.app_brand_accessibility_option_button);
+    AppMethodBeat.o(324190);
+    return str;
   }
   
   protected Drawable getDefaultImageDrawable()
   {
-    AppMethodBeat.i(87507);
-    Drawable localDrawable = b.k(getContext(), 2130837716);
-    AppMethodBeat.o(87507);
+    AppMethodBeat.i(135468);
+    Drawable localDrawable = a.m(getContext(), a.c.app_brand_actionbar_option_light);
+    AppMethodBeat.o(135468);
     return localDrawable;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(87506);
-    this.jbF = true;
-    this.jbG.setVisibility(8);
-    this.jbJ.setVisibility(0);
-    this.jbJ.setAlpha(1.0F);
-    this.jbJ.setImageDrawable(getDefaultImageDrawable());
-    AppMethodBeat.o(87506);
+    AppMethodBeat.i(135467);
+    this.uze.setVisibility(0);
+    this.uze.setAlpha(1.0F);
+    this.uze.setImageDrawable(getDefaultImageDrawable());
+    AppMethodBeat.o(135467);
   }
   
-  public void setAccessibilityLabel(String paramString)
+  public final void setAccessibilityLabel(String paramString)
   {
-    AppMethodBeat.i(87502);
-    if ((this.jbJ != null) && (this.jbJ.getVisibility() == 0))
-    {
-      this.jbJ.setContentDescription(paramString);
-      AppMethodBeat.o(87502);
-      return;
+    AppMethodBeat.i(135464);
+    if ((this.uze != null) && (this.uze.getVisibility() == 0)) {
+      this.uze.setContentDescription(paramString);
     }
-    if ((this.jbI != null) && (this.jbI.getVisibility() == 0)) {
-      this.jbI.setContentDescription(paramString);
-    }
-    AppMethodBeat.o(87502);
+    AppMethodBeat.o(135464);
   }
   
   public void setColor(int paramInt)
   {
-    AppMethodBeat.i(87505);
-    this.jbI.setTextColor(paramInt);
-    this.jbJ.setImageDrawable(getDefaultImageDrawable());
-    this.jbJ.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.jbJ.setBackground(getBackground());
-    if (this.jbJ.getBackground() != null) {
-      this.jbJ.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    AppMethodBeat.i(135466);
+    this.uze.setImageDrawable(getDefaultImageDrawable());
+    this.uze.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.uze.setBackground(getBackground());
+    if (this.uze.getBackground() != null) {
+      this.uze.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
-    AppMethodBeat.o(87505);
+    AppMethodBeat.o(135466);
   }
   
   public void setIcon(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(87503);
+    AppMethodBeat.i(135465);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(87503);
+      AppMethodBeat.o(135465);
       return;
     }
-    this.jbF = false;
-    this.jbJ.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
-    this.jbJ.setVisibility(0);
-    this.jbG.setVisibility(8);
-    AppMethodBeat.o(87503);
-  }
-  
-  public void setText(String paramString)
-  {
-    AppMethodBeat.i(87504);
-    this.jbF = false;
-    this.jbI.setText(paramString);
-    this.jbG.setVisibility(0);
-    this.jbJ.setVisibility(8);
-    AppMethodBeat.o(87504);
+    this.uze.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
+    this.uze.setVisibility(0);
+    AppMethodBeat.o(135465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton
  * JD-Core Version:    0.7.0.1
  */

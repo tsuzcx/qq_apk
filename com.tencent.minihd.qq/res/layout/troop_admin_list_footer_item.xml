@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="62.0dip" android:contentDescription="@string/add_troop_admins"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/add_admin_icon" android:background="@drawable/qb_group_troop_bar_pulish_add_btn" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+    <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/skin_color_button_white" android:id="@id/add_admin_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/add_troop_admins" />
+</LinearLayout>

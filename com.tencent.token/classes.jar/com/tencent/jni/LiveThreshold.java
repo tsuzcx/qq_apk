@@ -2,14 +2,26 @@ package com.tencent.jni;
 
 public class LiveThreshold
 {
-  double mBlinkScore = 0.15D;
-  double mDownAngle = this.mUpAngle;
-  double mLeftAngle = this.mUpAngle;
-  double mMouthOpenScore = 1.0D;
-  double mNodAngle = 20.0D;
-  double mRightAngle = this.mUpAngle;
-  double mShakeAngle = 20.0D;
+  double mBlinkScore;
+  double mDownAngle;
+  double mLeftAngle;
+  double mMouthOpenScore;
+  double mNodAngle;
+  double mRightAngle;
+  double mShakeAngle;
   double mUpAngle = 21.0D;
+  
+  public LiveThreshold()
+  {
+    double d = this.mUpAngle;
+    this.mDownAngle = d;
+    this.mLeftAngle = d;
+    this.mRightAngle = d;
+    this.mBlinkScore = 0.15D;
+    this.mShakeAngle = 20.0D;
+    this.mNodAngle = 20.0D;
+    this.mMouthOpenScore = 1.0D;
+  }
   
   public double LeftAngle()
   {

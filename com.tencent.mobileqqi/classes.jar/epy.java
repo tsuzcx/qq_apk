@@ -1,13 +1,25 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class epy
-  extends TroopMemberListActivity.ViewHolder
+  extends Handler
 {
-  public CheckBox a;
+  public epy(FriendListInnerFrame paramFriendListInnerFrame) {}
   
-  private epy(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
+    }
+    this.a.a.setPadding(0, 0, 0, 0);
+  }
 }
 
 

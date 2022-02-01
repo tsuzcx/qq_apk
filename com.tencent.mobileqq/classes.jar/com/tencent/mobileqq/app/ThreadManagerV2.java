@@ -36,26 +36,27 @@ public class ThreadManagerV2
   
   static
   {
-    IsRunTimeShutDown = false;
     initRuntimShutDownHook();
     reflectAsyncTaskPool();
   }
   
   public static void excute(Runnable paramRunnable, int paramInt, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)
   {
-    if ((paramInt & 0xF0) == 0)
-    {
-      if (!ThreadSetting.isPublicVersion) {
+    if ((paramInt & 0xF0) == 0) {
+      if (!ThreadSetting.isPublicVersion)
+      {
         ThreadLog.trackException("ThreadManager", "ThreadManager.excute type is not valid");
       }
+      else
+      {
+        paramIThreadListener = sThreadWrapContext;
+        if (paramIThreadListener != null) {
+          paramIThreadListener.reportRDMException(new TSPInvalidArgsCatchedException("ThreadManager_excute_Type_NONE"), "ThreadManager_excute_Type_NONE", paramRunnable.getClass().getName());
+        }
+        return;
+      }
     }
-    else {
-      ThreadExcutor.getInstance().excute(paramRunnable, paramInt, paramIThreadListener, paramBoolean);
-    }
-    while (sThreadWrapContext == null) {
-      return;
-    }
-    sThreadWrapContext.reportRDMException(new TSPInvalidArgsCatchedException("ThreadManager_excute_Type_NONE"), "ThreadManager_excute_Type_NONE", paramRunnable.getClass().getName());
+    ThreadExcutor.getInstance().excute(paramRunnable, paramInt, paramIThreadListener, paramBoolean);
   }
   
   public static void executeOnFileThread(Runnable paramRunnable)
@@ -88,18 +89,19 @@ public class ThreadManagerV2
   
   private static Handler getFileThreadHandlerV2()
   {
-    if (FILE_THREAD_HANDLER == null) {}
-    try
-    {
-      if (FILE_THREAD_HANDLER == null)
+    if (FILE_THREAD_HANDLER == null) {
+      try
       {
-        FILE_THREAD = newFreeHandlerThread("QQ_FILE_RW", 0);
-        FILE_THREAD.start();
-        FILE_THREAD_HANDLER = new Handler(FILE_THREAD.getLooper());
+        if (FILE_THREAD_HANDLER == null)
+        {
+          FILE_THREAD = newFreeHandlerThread("QQ_FILE_RW", 0);
+          FILE_THREAD.start();
+          FILE_THREAD_HANDLER = new Handler(FILE_THREAD.getLooper());
+        }
       }
-      return FILE_THREAD_HANDLER;
+      finally {}
     }
-    finally {}
+    return FILE_THREAD_HANDLER;
   }
   
   public static Looper getFileThreadLooper()
@@ -122,15 +124,19 @@ public class ThreadManagerV2
   
   public static Looper getRecentThreadLooper()
   {
-    if (RECENT_THREAD_HANDLER == null) {}
-    try
-    {
-      RECENT_THREAD = newFreeHandlerThread("Recent_Handler", 0);
-      RECENT_THREAD.start();
-      RECENT_THREAD_HANDLER = new Handler(RECENT_THREAD.getLooper());
-      return RECENT_THREAD_HANDLER.getLooper();
+    if (RECENT_THREAD_HANDLER == null) {
+      try
+      {
+        if (RECENT_THREAD_HANDLER == null)
+        {
+          RECENT_THREAD = newFreeHandlerThread("Recent_Handler", 0);
+          RECENT_THREAD.start();
+          RECENT_THREAD_HANDLER = new Handler(RECENT_THREAD.getLooper());
+        }
+      }
+      finally {}
     }
-    finally {}
+    return RECENT_THREAD_HANDLER.getLooper();
   }
   
   public static Thread getSubThread()
@@ -143,18 +149,19 @@ public class ThreadManagerV2
   
   private static Handler getSubThreadHandlerV2()
   {
-    if (SUB_THREAD_HANDLER == null) {}
-    try
-    {
-      if (SUB_THREAD_HANDLER == null)
+    if (SUB_THREAD_HANDLER == null) {
+      try
       {
-        SUB_THREAD = newFreeHandlerThread("QQ_SUB", 0);
-        SUB_THREAD.start();
-        SUB_THREAD_HANDLER = new Handler(SUB_THREAD.getLooper());
+        if (SUB_THREAD_HANDLER == null)
+        {
+          SUB_THREAD = newFreeHandlerThread("QQ_SUB", 0);
+          SUB_THREAD.start();
+          SUB_THREAD_HANDLER = new Handler(SUB_THREAD.getLooper());
+        }
       }
-      return SUB_THREAD_HANDLER;
+      finally {}
     }
-    finally {}
+    return SUB_THREAD_HANDLER;
   }
   
   public static Looper getSubThreadLooper()
@@ -164,26 +171,28 @@ public class ThreadManagerV2
   
   public static Timer getTimer()
   {
-    if (TIMER == null) {}
-    try
-    {
-      TIMER = new ThreadManagerV2.4("QQ_Timer");
-      return TIMER;
+    if (TIMER == null) {
+      try
+      {
+        TIMER = new ThreadManagerV2.4("QQ_Timer");
+      }
+      finally {}
     }
-    finally {}
+    return TIMER;
   }
   
   public static Handler getUIHandlerV2()
   {
-    if (UI_HANDLER == null) {}
-    try
-    {
-      if (UI_HANDLER == null) {
-        UI_HANDLER = new Handler(Looper.getMainLooper());
+    if (UI_HANDLER == null) {
+      try
+      {
+        if (UI_HANDLER == null) {
+          UI_HANDLER = new Handler(Looper.getMainLooper());
+        }
       }
-      return UI_HANDLER;
+      finally {}
     }
-    finally {}
+    return UI_HANDLER;
   }
   
   public static void init()
@@ -200,14 +209,22 @@ public class ThreadManagerV2
   public static HandlerThread newFreeHandlerThread(String paramString, int paramInt)
   {
     HandlerThread localHandlerThread = ThreadExcutor.getInstance().newFreeHandlerThread(paramString, paramInt);
-    ThreadLog.printQLog("ThreadManager", localHandlerThread.getId() + "-" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localHandlerThread.getId());
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString);
+    ThreadLog.printQLog("ThreadManager", localStringBuilder.toString());
     return localHandlerThread;
   }
   
   public static Thread newFreeThread(Runnable paramRunnable, String paramString, int paramInt)
   {
     paramRunnable = ThreadExcutor.getInstance().newFreeThread(paramRunnable, paramString, paramInt);
-    ThreadLog.printQLog("ThreadManager", paramRunnable.getId() + "|" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramRunnable.getId());
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString);
+    ThreadLog.printQLog("ThreadManager", localStringBuilder.toString());
     return paramRunnable;
   }
   
@@ -247,13 +264,19 @@ public class ThreadManagerV2
   {
     try
     {
-      ThreadSmartPool localThreadSmartPool = ThreadAsyncTaskPool.createThreadPool();
-      localThreadSmartPool.allowCoreThreadTimeOut(true);
-      ThreadLog.printQLog("ThreadManager", "reflectAsyncTaskPool before:" + AsyncTask.THREAD_POOL_EXECUTOR);
-      Field localField = AsyncTask.class.getDeclaredField("THREAD_POOL_EXECUTOR");
-      localField.setAccessible(true);
-      localField.set(null, localThreadSmartPool);
-      ThreadLog.printQLog("ThreadManager", "reflectAsyncTaskPool after:" + AsyncTask.THREAD_POOL_EXECUTOR);
+      Object localObject1 = ThreadAsyncTaskPool.createThreadPool();
+      ((ThreadSmartPool)localObject1).allowCoreThreadTimeOut(true);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("reflectAsyncTaskPool before:");
+      ((StringBuilder)localObject2).append(AsyncTask.THREAD_POOL_EXECUTOR);
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject2).toString());
+      localObject2 = AsyncTask.class.getDeclaredField("THREAD_POOL_EXECUTOR");
+      ((Field)localObject2).setAccessible(true);
+      ((Field)localObject2).set(null, localObject1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reflectAsyncTaskPool after:");
+      ((StringBuilder)localObject1).append(AsyncTask.THREAD_POOL_EXECUTOR);
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject1).toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -265,7 +288,10 @@ public class ThreadManagerV2
   @Deprecated
   public static boolean remove(Runnable paramRunnable)
   {
-    ThreadLog.printQLog("ThreadManager", "Remove_Use_Deprecated_Method " + paramRunnable.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Remove_Use_Deprecated_Method ");
+    localStringBuilder.append(paramRunnable.getClass().getName());
+    ThreadLog.printQLog("ThreadManager", localStringBuilder.toString());
     return false;
   }
   
@@ -281,7 +307,7 @@ public class ThreadManagerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadManagerV2
  * JD-Core Version:    0.7.0.1
  */

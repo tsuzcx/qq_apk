@@ -16,7 +16,7 @@ public class VideoThumbnail
 {
   private static final String FILE_URL_PREFIX = "file://";
   private static final String[] PROJECTION_VIDEO = { "DISTINCT _id", "_data" };
-  private static final String TAG = VideoThumbnail.class.getSimpleName();
+  private static final String TAG = "VideoThumbnail";
   
   private static Bitmap createVideoThumbnail(String paramString)
   {
@@ -31,41 +31,41 @@ public class VideoThumbnail
   private static Bitmap getFirstKeyFrame(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: getstatic 41	android/os/Build$VERSION:SDK_INT	I
-    //   9: bipush 10
-    //   11: if_icmple +96 -> 107
-    //   14: new 53	android/media/MediaMetadataRetriever
-    //   17: dup
-    //   18: invokespecial 54	android/media/MediaMetadataRetriever:<init>	()V
-    //   21: astore 7
-    //   23: aload 7
-    //   25: aload_0
-    //   26: invokevirtual 58	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   29: aload 7
-    //   31: ldc2_w 59
-    //   34: iconst_2
-    //   35: invokevirtual 64	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
-    //   38: astore_0
-    //   39: aload_0
-    //   40: ifnull +128 -> 168
-    //   43: aload_0
-    //   44: invokevirtual 70	android/graphics/Bitmap:getWidth	()I
-    //   47: istore_2
-    //   48: aload_0
-    //   49: invokevirtual 73	android/graphics/Bitmap:getHeight	()I
-    //   52: istore_3
-    //   53: iload_2
-    //   54: iload_3
-    //   55: invokestatic 79	java/lang/Math:max	(II)I
-    //   58: istore 4
+    //   0: getstatic 35	android/os/Build$VERSION:SDK_INT	I
+    //   3: bipush 10
+    //   5: if_icmple +162 -> 167
+    //   8: new 47	android/media/MediaMetadataRetriever
+    //   11: dup
+    //   12: invokespecial 48	android/media/MediaMetadataRetriever:<init>	()V
+    //   15: astore 6
+    //   17: aload 6
+    //   19: aload_0
+    //   20: invokevirtual 52	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   23: aload 6
+    //   25: ldc2_w 53
+    //   28: iconst_2
+    //   29: invokevirtual 58	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
+    //   32: astore_0
+    //   33: aload_0
+    //   34: astore 5
+    //   36: aload_0
+    //   37: ifnull +67 -> 104
+    //   40: aload_0
+    //   41: invokevirtual 64	android/graphics/Bitmap:getWidth	()I
+    //   44: istore_2
+    //   45: aload_0
+    //   46: invokevirtual 67	android/graphics/Bitmap:getHeight	()I
+    //   49: istore_3
+    //   50: iload_2
+    //   51: iload_3
+    //   52: invokestatic 73	java/lang/Math:max	(II)I
+    //   55: istore 4
+    //   57: aload_0
+    //   58: astore 5
     //   60: iload 4
     //   62: sipush 512
-    //   65: if_icmple +103 -> 168
-    //   68: ldc 80
+    //   65: if_icmple +39 -> 104
+    //   68: ldc 74
     //   70: iload 4
     //   72: i2f
     //   73: fdiv
@@ -75,107 +75,104 @@ public class VideoThumbnail
     //   77: i2f
     //   78: fload_1
     //   79: fmul
-    //   80: invokestatic 84	java/lang/Math:round	(F)I
-    //   83: iload_3
-    //   84: i2f
-    //   85: fload_1
+    //   80: invokestatic 78	java/lang/Math:round	(F)I
+    //   83: fload_1
+    //   84: iload_3
+    //   85: i2f
     //   86: fmul
-    //   87: invokestatic 84	java/lang/Math:round	(F)I
+    //   87: invokestatic 78	java/lang/Math:round	(F)I
     //   90: iconst_1
-    //   91: invokestatic 88	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   91: invokestatic 82	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   94: astore 5
-    //   96: aload 5
-    //   98: astore_0
-    //   99: aload 7
-    //   101: invokevirtual 91	android/media/MediaMetadataRetriever:release	()V
-    //   104: aload_0
-    //   105: astore 5
-    //   107: aload 5
-    //   109: areturn
-    //   110: astore 5
-    //   112: aload 5
-    //   114: invokevirtual 94	java/lang/RuntimeException:printStackTrace	()V
-    //   117: aload_0
-    //   118: areturn
-    //   119: astore 5
-    //   121: aload 6
-    //   123: astore_0
-    //   124: aload 5
-    //   126: invokevirtual 95	java/lang/Throwable:printStackTrace	()V
-    //   129: aload 7
-    //   131: invokevirtual 91	android/media/MediaMetadataRetriever:release	()V
-    //   134: aload_0
-    //   135: areturn
-    //   136: astore 5
-    //   138: aload 5
-    //   140: invokevirtual 94	java/lang/RuntimeException:printStackTrace	()V
-    //   143: aload_0
-    //   144: areturn
-    //   145: astore_0
-    //   146: aload 7
-    //   148: invokevirtual 91	android/media/MediaMetadataRetriever:release	()V
-    //   151: aload_0
-    //   152: athrow
-    //   153: astore 5
-    //   155: aload 5
-    //   157: invokevirtual 94	java/lang/RuntimeException:printStackTrace	()V
-    //   160: goto -9 -> 151
-    //   163: astore 5
-    //   165: goto -41 -> 124
-    //   168: goto -69 -> 99
+    //   96: goto +8 -> 104
+    //   99: astore 5
+    //   101: goto +27 -> 128
+    //   104: aload 6
+    //   106: invokevirtual 85	android/media/MediaMetadataRetriever:release	()V
+    //   109: aload 5
+    //   111: areturn
+    //   112: astore_0
+    //   113: aload_0
+    //   114: invokevirtual 88	java/lang/RuntimeException:printStackTrace	()V
+    //   117: aload 5
+    //   119: areturn
+    //   120: astore_0
+    //   121: goto +29 -> 150
+    //   124: astore 5
+    //   126: aconst_null
+    //   127: astore_0
+    //   128: aload 5
+    //   130: invokevirtual 89	java/lang/Throwable:printStackTrace	()V
+    //   133: aload 6
+    //   135: invokevirtual 85	android/media/MediaMetadataRetriever:release	()V
+    //   138: goto +10 -> 148
+    //   141: astore 5
+    //   143: aload 5
+    //   145: invokevirtual 88	java/lang/RuntimeException:printStackTrace	()V
+    //   148: aload_0
+    //   149: areturn
+    //   150: aload 6
+    //   152: invokevirtual 85	android/media/MediaMetadataRetriever:release	()V
+    //   155: goto +10 -> 165
+    //   158: astore 5
+    //   160: aload 5
+    //   162: invokevirtual 88	java/lang/RuntimeException:printStackTrace	()V
+    //   165: aload_0
+    //   166: athrow
+    //   167: aconst_null
+    //   168: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	171	0	paramString	String
-    //   74	12	1	f	float
-    //   47	30	2	i	int
-    //   52	32	3	j	int
-    //   58	13	4	k	int
-    //   4	104	5	localObject1	Object
-    //   110	3	5	localRuntimeException1	java.lang.RuntimeException
-    //   119	6	5	localThrowable1	Throwable
-    //   136	3	5	localRuntimeException2	java.lang.RuntimeException
-    //   153	3	5	localRuntimeException3	java.lang.RuntimeException
-    //   163	1	5	localThrowable2	Throwable
-    //   1	121	6	localObject2	Object
-    //   21	126	7	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   0	169	0	paramString	String
+    //   74	10	1	f	float
+    //   44	33	2	i	int
+    //   49	36	3	j	int
+    //   55	16	4	k	int
+    //   34	61	5	localObject	Object
+    //   99	19	5	localThrowable1	Throwable
+    //   124	5	5	localThrowable2	Throwable
+    //   141	3	5	localRuntimeException1	java.lang.RuntimeException
+    //   158	3	5	localRuntimeException2	java.lang.RuntimeException
+    //   15	136	6	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
     // Exception table:
     //   from	to	target	type
-    //   99	104	110	java/lang/RuntimeException
-    //   23	39	119	java/lang/Throwable
-    //   129	134	136	java/lang/RuntimeException
-    //   23	39	145	finally
-    //   43	60	145	finally
-    //   68	96	145	finally
-    //   124	129	145	finally
-    //   146	151	153	java/lang/RuntimeException
-    //   43	60	163	java/lang/Throwable
-    //   68	96	163	java/lang/Throwable
+    //   40	57	99	java/lang/Throwable
+    //   68	96	99	java/lang/Throwable
+    //   104	109	112	java/lang/RuntimeException
+    //   17	33	120	finally
+    //   40	57	120	finally
+    //   68	96	120	finally
+    //   128	133	120	finally
+    //   17	33	124	java/lang/Throwable
+    //   133	138	141	java/lang/RuntimeException
+    //   150	155	158	java/lang/RuntimeException
   }
   
   public static BitmapReference getThumb(Context paramContext, String paramString)
   {
-    localObject = null;
     try
     {
-      Bitmap localBitmap = createVideoThumbnail(paramString);
-      localObject = localBitmap;
-      if (localBitmap == null)
-      {
-        localObject = localBitmap;
-        paramContext = queryVideoThumbnail(paramContext, paramString);
-        localObject = paramContext;
-      }
-      paramContext = (Context)localObject;
-      if (localObject != null) {}
+      localBitmap2 = createVideoThumbnail(paramString);
+      localBitmap1 = localBitmap2;
+      if (localBitmap2 != null) {}
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        paramContext = (Context)localObject;
-      }
+      label20:
+      label22:
+      break label20;
     }
-    return BitmapReference.getBitmapReference(paramContext);
+    try
+    {
+      localBitmap1 = queryVideoThumbnail(paramContext, paramString);
+    }
+    catch (Throwable paramContext)
+    {
+      localBitmap1 = localBitmap2;
+      break label22;
+    }
+    localBitmap1 = null;
+    return BitmapReference.getBitmapReference(localBitmap1);
   }
   
   public static boolean isVideo(String paramString)
@@ -187,71 +184,78 @@ public class VideoThumbnail
   private static String processPath(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    String str;
-    do
+    String str = paramString;
+    if (paramString.startsWith("file://")) {
+      str = paramString.substring(7);
+    }
+    paramString = str;
+    if (!str.startsWith(File.separator))
     {
-      return paramString;
-      str = paramString;
-      if (paramString.startsWith("file://")) {
-        str = paramString.substring("file://".length());
-      }
-      paramString = str;
-    } while (str.startsWith(File.separator));
-    return File.separator + str;
+      paramString = new StringBuilder();
+      paramString.append(File.separator);
+      paramString.append(str);
+      paramString = paramString.toString();
+    }
+    return paramString;
   }
   
   private static Bitmap queryVideoThumbnail(Context paramContext, String paramString)
   {
-    Object localObject = null;
-    if ((paramContext == null) || (Build.VERSION.SDK_INT < 5))
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (paramContext != null)
     {
-      paramString = null;
-      return paramString;
-    }
-    for (;;)
-    {
+      if (Build.VERSION.SDK_INT < 5) {
+        return null;
+      }
       try
       {
-        paramString = "_data='" + processPath(paramString) + "' COLLATE NOCASE";
-        localCursor = paramContext.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, PROJECTION_VIDEO, paramString, null, null);
-        if (localCursor == null) {}
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("_data='");
+        ((StringBuilder)localObject3).append(processPath(paramString));
+        ((StringBuilder)localObject3).append("' COLLATE NOCASE");
+        paramString = ((StringBuilder)localObject3).toString();
+        localObject3 = paramContext.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, PROJECTION_VIDEO, paramString, null, null);
+        paramString = localObject2;
+        if (localObject3 != null)
+        {
+          paramString = localObject2;
+          try
+          {
+            if (((Cursor)localObject3).getCount() > 0)
+            {
+              int i = ((Cursor)localObject3).getColumnIndexOrThrow("_id");
+              paramString = localObject2;
+              if (((Cursor)localObject3).moveToFirst())
+              {
+                long l = ((Cursor)localObject3).getLong(i);
+                paramString = MediaStore.Video.Thumbnails.getThumbnail(paramContext.getContentResolver(), l, 1, null);
+              }
+            }
+          }
+          finally
+          {
+            paramContext = (Context)localObject3;
+            break label170;
+          }
+        }
+        if (localObject3 != null) {
+          ((Cursor)localObject3).close();
+        }
+        return paramString;
       }
       finally
       {
-        try
-        {
-          if (localCursor.getCount() <= 0) {
-            break label158;
-          }
-          int i = localCursor.getColumnIndexOrThrow("_id");
-          if (!localCursor.moveToFirst()) {
-            break label158;
-          }
-          long l = localCursor.getLong(i);
-          paramContext = MediaStore.Video.Thumbnails.getThumbnail(paramContext.getContentResolver(), l, 1, null);
-          paramString = paramContext;
-          if (localCursor == null) {
-            break;
-          }
-          localCursor.close();
-          return paramContext;
-        }
-        finally
-        {
-          Cursor localCursor;
-          paramString = localCursor;
-        }
-        paramContext = finally;
-        paramString = localObject;
-        if (paramString != null) {
-          paramString.close();
+        paramContext = localObject1;
+        label170:
+        if (paramContext != null) {
+          paramContext.close();
         }
       }
-      label158:
-      paramContext = null;
     }
+    return null;
   }
   
   /* Error */
@@ -259,258 +263,358 @@ public class VideoThumbnail
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: new 152	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 218
-    //   12: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: lload_1
-    //   16: invokevirtual 221	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: astore 5
-    //   24: aload_0
-    //   25: invokevirtual 172	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   28: getstatic 222	android/provider/MediaStore$Video$Thumbnails:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   31: iconst_2
-    //   32: anewarray 23	java/lang/String
-    //   35: dup
-    //   36: iconst_0
-    //   37: ldc 224
-    //   39: aastore
-    //   40: dup
-    //   41: iconst_1
-    //   42: ldc 27
-    //   44: aastore
-    //   45: aload 5
-    //   47: aconst_null
-    //   48: aconst_null
-    //   49: invokevirtual 184	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   52: astore_0
-    //   53: aload_0
-    //   54: ifnull +139 -> 193
-    //   57: aload_0
-    //   58: astore 4
-    //   60: aload_0
-    //   61: invokeinterface 189 1 0
-    //   66: ifle +127 -> 193
-    //   69: aload_0
-    //   70: astore 4
-    //   72: aload_0
-    //   73: ldc 27
-    //   75: invokeinterface 195 2 0
-    //   80: istore_3
-    //   81: aload_0
-    //   82: astore 4
-    //   84: aload_0
-    //   85: invokeinterface 199 1 0
-    //   90: ifeq +103 -> 193
-    //   93: aload_0
-    //   94: astore 4
-    //   96: aload_0
-    //   97: iload_3
-    //   98: invokeinterface 227 2 0
-    //   103: astore 5
-    //   105: aload 5
-    //   107: astore 4
-    //   109: aload_0
-    //   110: ifnull +9 -> 119
-    //   113: aload_0
-    //   114: invokeinterface 212 1 0
-    //   119: aload 4
-    //   121: areturn
-    //   122: astore 5
-    //   124: aconst_null
-    //   125: astore_0
-    //   126: aload_0
-    //   127: astore 4
-    //   129: getstatic 21	com/tencent/component/media/image/VideoThumbnail:TAG	Ljava/lang/String;
-    //   132: new 152	java/lang/StringBuilder
-    //   135: dup
-    //   136: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   139: ldc 229
-    //   141: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: aload 5
-    //   146: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokestatic 238	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   155: aload_0
-    //   156: ifnull +35 -> 191
-    //   159: aload_0
-    //   160: invokeinterface 212 1 0
-    //   165: aconst_null
-    //   166: areturn
-    //   167: astore_0
-    //   168: aload 4
-    //   170: ifnull +10 -> 180
-    //   173: aload 4
-    //   175: invokeinterface 212 1 0
-    //   180: aload_0
-    //   181: athrow
-    //   182: astore_0
-    //   183: goto -15 -> 168
-    //   186: astore 5
-    //   188: goto -62 -> 126
-    //   191: aconst_null
-    //   192: areturn
-    //   193: aconst_null
-    //   194: astore 4
-    //   196: goto -87 -> 109
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: new 143	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   19: astore 5
+    //   21: aload 5
+    //   23: ldc 210
+    //   25: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: aload 5
+    //   31: lload_1
+    //   32: invokevirtual 213	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: aload 5
+    //   38: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: astore 5
+    //   43: aload_0
+    //   44: invokevirtual 164	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   47: getstatic 214	android/provider/MediaStore$Video$Thumbnails:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   50: iconst_2
+    //   51: anewarray 17	java/lang/String
+    //   54: dup
+    //   55: iconst_0
+    //   56: ldc 216
+    //   58: aastore
+    //   59: dup
+    //   60: iconst_1
+    //   61: ldc 21
+    //   63: aastore
+    //   64: aload 5
+    //   66: aconst_null
+    //   67: aconst_null
+    //   68: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   71: astore 5
+    //   73: aload 8
+    //   75: astore_0
+    //   76: aload 5
+    //   78: ifnull +79 -> 157
+    //   81: aload 8
+    //   83: astore_0
+    //   84: aload 5
+    //   86: astore 4
+    //   88: aload 5
+    //   90: invokeinterface 181 1 0
+    //   95: ifle +62 -> 157
+    //   98: aload 5
+    //   100: astore 4
+    //   102: aload 5
+    //   104: ldc 21
+    //   106: invokeinterface 187 2 0
+    //   111: istore_3
+    //   112: aload 8
+    //   114: astore_0
+    //   115: aload 5
+    //   117: astore 4
+    //   119: aload 5
+    //   121: invokeinterface 191 1 0
+    //   126: ifeq +31 -> 157
+    //   129: aload 5
+    //   131: astore 4
+    //   133: aload 5
+    //   135: iload_3
+    //   136: invokeinterface 219 2 0
+    //   141: astore_0
+    //   142: goto +15 -> 157
+    //   145: astore 4
+    //   147: aload 5
+    //   149: astore_0
+    //   150: aload 4
+    //   152: astore 5
+    //   154: goto +32 -> 186
+    //   157: aload_0
+    //   158: astore 4
+    //   160: aload 5
+    //   162: ifnull +97 -> 259
+    //   165: aload_0
+    //   166: astore 4
+    //   168: aload 5
+    //   170: invokeinterface 204 1 0
+    //   175: aload 4
+    //   177: areturn
+    //   178: astore_0
+    //   179: goto +84 -> 263
+    //   182: astore 5
+    //   184: aconst_null
+    //   185: astore_0
+    //   186: aload_0
+    //   187: astore 4
+    //   189: getstatic 221	com/tencent/component/media/image/VideoThumbnail:TAG	Ljava/lang/String;
+    //   192: astore 8
+    //   194: aload_0
+    //   195: astore 4
+    //   197: new 143	java/lang/StringBuilder
+    //   200: dup
+    //   201: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   204: astore 9
+    //   206: aload_0
+    //   207: astore 4
+    //   209: aload 9
+    //   211: ldc 223
+    //   213: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: pop
+    //   217: aload_0
+    //   218: astore 4
+    //   220: aload 9
+    //   222: aload 5
+    //   224: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   227: pop
+    //   228: aload_0
+    //   229: astore 4
+    //   231: aload 8
+    //   233: aload 9
+    //   235: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   238: invokestatic 232	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   241: aload 7
+    //   243: astore 4
+    //   245: aload_0
+    //   246: ifnull +13 -> 259
+    //   249: aload 6
+    //   251: astore 4
+    //   253: aload_0
+    //   254: astore 5
+    //   256: goto -88 -> 168
+    //   259: aload 4
+    //   261: areturn
+    //   262: astore_0
+    //   263: aload 4
+    //   265: ifnull +10 -> 275
+    //   268: aload 4
+    //   270: invokeinterface 204 1 0
+    //   275: goto +5 -> 280
+    //   278: aload_0
+    //   279: athrow
+    //   280: goto -2 -> 278
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	199	0	paramContext	Context
-    //   0	199	1	paramLong	long
-    //   80	18	3	i	int
-    //   1	194	4	localObject	Object
-    //   22	84	5	str	String
-    //   122	23	5	localException1	java.lang.Exception
-    //   186	1	5	localException2	java.lang.Exception
+    //   0	283	0	paramContext	Context
+    //   0	283	1	paramLong	long
+    //   111	25	3	i	int
+    //   7	125	4	localObject1	Object
+    //   145	6	4	localException1	java.lang.Exception
+    //   158	111	4	localObject2	Object
+    //   19	150	5	localObject3	Object
+    //   182	41	5	localException2	java.lang.Exception
+    //   254	1	5	localContext	Context
+    //   1	249	6	localObject4	Object
+    //   4	238	7	localObject5	Object
+    //   10	222	8	str	String
+    //   204	30	9	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   3	53	122	java/lang/Exception
-    //   3	53	167	finally
-    //   60	69	182	finally
-    //   72	81	182	finally
-    //   84	93	182	finally
-    //   96	105	182	finally
-    //   129	155	182	finally
-    //   60	69	186	java/lang/Exception
-    //   72	81	186	java/lang/Exception
-    //   84	93	186	java/lang/Exception
-    //   96	105	186	java/lang/Exception
+    //   88	98	145	java/lang/Exception
+    //   102	112	145	java/lang/Exception
+    //   119	129	145	java/lang/Exception
+    //   133	142	145	java/lang/Exception
+    //   12	73	178	finally
+    //   12	73	182	java/lang/Exception
+    //   88	98	262	finally
+    //   102	112	262	finally
+    //   119	129	262	finally
+    //   133	142	262	finally
+    //   189	194	262	finally
+    //   197	206	262	finally
+    //   209	217	262	finally
+    //   220	228	262	finally
+    //   231	241	262	finally
   }
   
   /* Error */
   public static String queryVideoThumbnailFilePath(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +10 -> 11
-    //   4: getstatic 41	android/os/Build$VERSION:SDK_INT	I
-    //   7: iconst_5
-    //   8: if_icmpge +7 -> 15
-    //   11: aconst_null
-    //   12: astore_3
-    //   13: aload_3
-    //   14: areturn
-    //   15: new 152	java/lang/StringBuilder
-    //   18: dup
-    //   19: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   22: ldc 162
-    //   24: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: aload_1
-    //   28: invokestatic 164	com/tencent/component/media/image/VideoThumbnail:processPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   31: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: ldc 166
-    //   36: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: astore_1
-    //   43: aload_0
-    //   44: invokevirtual 172	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   47: getstatic 178	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   50: getstatic 29	com/tencent/component/media/image/VideoThumbnail:PROJECTION_VIDEO	[Ljava/lang/String;
-    //   53: aload_1
-    //   54: aconst_null
-    //   55: aconst_null
-    //   56: invokevirtual 184	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   59: astore_1
-    //   60: aload_1
-    //   61: ifnull +131 -> 192
-    //   64: aload_1
-    //   65: astore_3
-    //   66: aload_1
-    //   67: invokeinterface 189 1 0
-    //   72: ifle +120 -> 192
-    //   75: aload_1
-    //   76: astore_3
-    //   77: aload_1
-    //   78: ldc 191
-    //   80: invokeinterface 195 2 0
-    //   85: istore_2
-    //   86: aload_1
-    //   87: astore_3
-    //   88: aload_1
-    //   89: invokeinterface 199 1 0
-    //   94: ifeq +98 -> 192
-    //   97: aload_1
-    //   98: astore_3
-    //   99: aload_0
-    //   100: aload_1
-    //   101: iload_2
-    //   102: invokeinterface 203 2 0
-    //   107: invokestatic 241	com/tencent/component/media/image/VideoThumbnail:queryVideoThumbnailFilePath	(Landroid/content/Context;J)Ljava/lang/String;
-    //   110: astore_0
-    //   111: aload_0
-    //   112: astore_3
-    //   113: aload_1
-    //   114: ifnull -101 -> 13
-    //   117: aload_1
-    //   118: invokeinterface 212 1 0
-    //   123: aload_0
-    //   124: areturn
-    //   125: astore_0
-    //   126: aconst_null
-    //   127: astore_1
-    //   128: aload_1
-    //   129: astore_3
-    //   130: getstatic 21	com/tencent/component/media/image/VideoThumbnail:TAG	Ljava/lang/String;
-    //   133: new 152	java/lang/StringBuilder
-    //   136: dup
-    //   137: invokespecial 153	java/lang/StringBuilder:<init>	()V
-    //   140: ldc 229
-    //   142: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: aload_0
-    //   146: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokestatic 238	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 7
+    //   9: aload_0
+    //   10: ifnull +249 -> 259
+    //   13: getstatic 35	android/os/Build$VERSION:SDK_INT	I
+    //   16: iconst_5
+    //   17: if_icmpge +5 -> 22
+    //   20: aconst_null
+    //   21: areturn
+    //   22: new 143	java/lang/StringBuilder
+    //   25: dup
+    //   26: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   29: astore_3
+    //   30: aload_3
+    //   31: ldc 154
+    //   33: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload_3
+    //   38: aload_1
+    //   39: invokestatic 156	com/tencent/component/media/image/VideoThumbnail:processPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   42: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload_3
+    //   47: ldc 158
+    //   49: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload_3
+    //   54: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: astore_1
+    //   58: aload_0
+    //   59: invokevirtual 164	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   62: getstatic 170	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   65: getstatic 23	com/tencent/component/media/image/VideoThumbnail:PROJECTION_VIDEO	[Ljava/lang/String;
+    //   68: aload_1
+    //   69: aconst_null
+    //   70: aconst_null
+    //   71: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   74: astore 4
+    //   76: aload 7
+    //   78: astore_1
+    //   79: aload 4
+    //   81: ifnull +74 -> 155
+    //   84: aload 7
+    //   86: astore_1
+    //   87: aload 4
+    //   89: astore_3
+    //   90: aload 4
+    //   92: invokeinterface 181 1 0
+    //   97: ifle +58 -> 155
+    //   100: aload 4
+    //   102: astore_3
+    //   103: aload 4
+    //   105: ldc 183
+    //   107: invokeinterface 187 2 0
+    //   112: istore_2
+    //   113: aload 7
+    //   115: astore_1
+    //   116: aload 4
+    //   118: astore_3
+    //   119: aload 4
+    //   121: invokeinterface 191 1 0
+    //   126: ifeq +29 -> 155
+    //   129: aload 4
+    //   131: astore_3
+    //   132: aload_0
+    //   133: aload 4
+    //   135: iload_2
+    //   136: invokeinterface 195 2 0
+    //   141: invokestatic 235	com/tencent/component/media/image/VideoThumbnail:queryVideoThumbnailFilePath	(Landroid/content/Context;J)Ljava/lang/String;
+    //   144: astore_1
+    //   145: goto +10 -> 155
+    //   148: astore_1
+    //   149: aload 4
+    //   151: astore_0
+    //   152: goto +30 -> 182
     //   155: aload_1
-    //   156: ifnull +34 -> 190
-    //   159: aload_1
-    //   160: invokeinterface 212 1 0
-    //   165: aconst_null
-    //   166: areturn
-    //   167: astore_0
-    //   168: aconst_null
-    //   169: astore_3
-    //   170: aload_3
-    //   171: ifnull +9 -> 180
-    //   174: aload_3
-    //   175: invokeinterface 212 1 0
-    //   180: aload_0
-    //   181: athrow
-    //   182: astore_0
-    //   183: goto -13 -> 170
-    //   186: astore_0
-    //   187: goto -59 -> 128
-    //   190: aconst_null
-    //   191: areturn
-    //   192: aconst_null
-    //   193: astore_0
-    //   194: goto -83 -> 111
+    //   156: astore_3
+    //   157: aload 4
+    //   159: ifnull +85 -> 244
+    //   162: aload 4
+    //   164: astore_0
+    //   165: aload_0
+    //   166: invokeinterface 204 1 0
+    //   171: aload_1
+    //   172: areturn
+    //   173: astore_0
+    //   174: aconst_null
+    //   175: astore_3
+    //   176: goto +71 -> 247
+    //   179: astore_1
+    //   180: aconst_null
+    //   181: astore_0
+    //   182: aload_0
+    //   183: astore_3
+    //   184: getstatic 221	com/tencent/component/media/image/VideoThumbnail:TAG	Ljava/lang/String;
+    //   187: astore 4
+    //   189: aload_0
+    //   190: astore_3
+    //   191: new 143	java/lang/StringBuilder
+    //   194: dup
+    //   195: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   198: astore 7
+    //   200: aload_0
+    //   201: astore_3
+    //   202: aload 7
+    //   204: ldc 223
+    //   206: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: pop
+    //   210: aload_0
+    //   211: astore_3
+    //   212: aload 7
+    //   214: aload_1
+    //   215: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: aload_0
+    //   220: astore_3
+    //   221: aload 4
+    //   223: aload 7
+    //   225: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   228: invokestatic 232	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: aload 6
+    //   233: astore_3
+    //   234: aload_0
+    //   235: ifnull +9 -> 244
+    //   238: aload 5
+    //   240: astore_1
+    //   241: goto -76 -> 165
+    //   244: aload_3
+    //   245: areturn
+    //   246: astore_0
+    //   247: aload_3
+    //   248: ifnull +9 -> 257
+    //   251: aload_3
+    //   252: invokeinterface 204 1 0
+    //   257: aload_0
+    //   258: athrow
+    //   259: aconst_null
+    //   260: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	197	0	paramContext	Context
-    //   0	197	1	paramString	String
-    //   85	17	2	i	int
-    //   12	163	3	localObject	Object
+    //   0	261	0	paramContext	Context
+    //   0	261	1	paramString	String
+    //   112	24	2	i	int
+    //   29	223	3	localObject1	Object
+    //   74	148	4	localObject2	Object
+    //   1	238	5	localObject3	Object
+    //   4	228	6	localObject4	Object
+    //   7	217	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   15	60	125	java/lang/Throwable
-    //   15	60	167	finally
-    //   66	75	182	finally
-    //   77	86	182	finally
-    //   88	97	182	finally
-    //   99	111	182	finally
-    //   130	155	182	finally
-    //   66	75	186	java/lang/Throwable
-    //   77	86	186	java/lang/Throwable
-    //   88	97	186	java/lang/Throwable
-    //   99	111	186	java/lang/Throwable
+    //   90	100	148	java/lang/Throwable
+    //   103	113	148	java/lang/Throwable
+    //   119	129	148	java/lang/Throwable
+    //   132	145	148	java/lang/Throwable
+    //   22	76	173	finally
+    //   22	76	179	java/lang/Throwable
+    //   90	100	246	finally
+    //   103	113	246	finally
+    //   119	129	246	finally
+    //   132	145	246	finally
+    //   184	189	246	finally
+    //   191	200	246	finally
+    //   202	210	246	finally
+    //   212	219	246	finally
+    //   221	231	246	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.VideoThumbnail
  * JD-Core Version:    0.7.0.1
  */

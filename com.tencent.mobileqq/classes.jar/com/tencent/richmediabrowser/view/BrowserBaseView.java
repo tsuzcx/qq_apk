@@ -1,189 +1,309 @@
 package com.tencent.richmediabrowser.view;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.KeyEvent;
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.api.event.IBrowserItemAnimationEvent;
+import com.tencent.richmediabrowser.api.event.IBrowserItemClickEvent;
+import com.tencent.richmediabrowser.api.event.IBrowserItemScrollEvent;
+import com.tencent.richmediabrowser.api.event.IDecoratorViewEvent;
+import com.tencent.richmediabrowser.api.event.IPictureScaleEvent;
+import com.tencent.richmediabrowser.core.IBaseViewBuilder;
 import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 import com.tencent.richmediabrowser.utils.ScreenUtils;
-import com.tencent.richmediabrowser.view.page.AdapterView;
-import com.tencent.richmediabrowser.view.page.Gallery;
-import com.tencent.richmediabrowser.view.page.ProGallery;
-import com.tencent.richmediabrowser.view.page.ProGallery.OnProGalleryGestureListener;
 
 public class BrowserBaseView
-  extends BaseView
-  implements ProGallery.OnProGalleryGestureListener
+  implements View.OnLongClickListener, IBrowserItemAnimationEvent, IBrowserItemScrollEvent, IPictureScaleEvent, IBaseViewBuilder
 {
-  private static final String TAG = "BrowserBaseView";
   public BrowserBasePresenter basePresenter;
-  public RelativeLayout contentView;
-  public RelativeLayout galleryView;
+  private IDecoratorViewEvent decoratorViewEvent;
   public boolean isInEnterAnim;
   public boolean isInExitAnim;
-  public Activity mContext;
+  public IBrowserItemAnimationEvent itemAnimationListener;
+  public IBrowserItemClickEvent itemClickEventListener;
+  public RelativeLayout mBrowserItemView;
+  public Context mContext;
   public int mScreenHeightPx;
   public int mScreenWidthPx;
   public int midScreenWidth;
+  public IPictureScaleEvent pictureScaleEventListener;
+  public IBrowserItemScrollEvent scrollEventListener;
   
-  public BrowserBaseView(Activity paramActivity, BrowserBasePresenter paramBrowserBasePresenter)
+  public BrowserBaseView(Context paramContext, BrowserBasePresenter paramBrowserBasePresenter)
   {
-    this.mContext = paramActivity;
-    this.mScreenWidthPx = this.mContext.getResources().getDisplayMetrics().widthPixels;
-    this.mScreenHeightPx = this.mContext.getResources().getDisplayMetrics().heightPixels;
+    this.mContext = paramContext;
+    if (paramBrowserBasePresenter.getRecyclerView() != null)
+    {
+      this.mScreenWidthPx = paramBrowserBasePresenter.getRecyclerView().getWidth();
+      this.mScreenHeightPx = paramBrowserBasePresenter.getRecyclerView().getHeight();
+    }
     this.basePresenter = paramBrowserBasePresenter;
   }
   
-  public boolean back()
+  public void bindView(int paramInt)
   {
-    return false;
+    IDecoratorViewEvent localIDecoratorViewEvent = this.decoratorViewEvent;
+    if (localIDecoratorViewEvent != null) {
+      localIDecoratorViewEvent.a(paramInt);
+    }
   }
   
-  public void buildComplete()
-  {
-    super.buildComplete();
-  }
+  public void buildComplete() {}
   
   public void buildParams(Intent paramIntent)
   {
-    super.buildParams(paramIntent);
     this.midScreenWidth = (ScreenUtils.getScreenWidth(this.mContext) / 2);
+    initParams(paramIntent);
   }
   
-  public void buildView(ViewGroup paramViewGroup)
-  {
-    super.buildView(paramViewGroup);
-    onCreate(paramViewGroup);
-  }
+  public void buildView() {}
   
-  public void clearTheOuchCache() {}
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public Rect getAnimationEndDstRect()
   {
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      return localIBrowserItemAnimationEvent.getAnimationEndDstRect();
+    }
     return null;
+  }
+  
+  public View getView(View paramView, ViewGroup paramViewGroup)
+  {
+    IDecoratorViewEvent localIDecoratorViewEvent = this.decoratorViewEvent;
+    if (localIDecoratorViewEvent != null) {
+      return localIDecoratorViewEvent.a(paramView, paramViewGroup);
+    }
+    return null;
+  }
+  
+  public void initParams(Intent paramIntent)
+  {
+    IDecoratorViewEvent localIDecoratorViewEvent = this.decoratorViewEvent;
+    if (localIDecoratorViewEvent != null) {
+      localIDecoratorViewEvent.a(paramIntent);
+    }
+  }
+  
+  public boolean isNeedDisallowInterceptEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
   
   public boolean needEnterRectAnimation()
   {
-    return true;
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      return localIBrowserItemAnimationEvent.needEnterRectAnimation();
+    }
+    return false;
   }
   
   public boolean needExitRectAnimation()
   {
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      return localIBrowserItemAnimationEvent.needExitRectAnimation();
+    }
     return false;
   }
   
-  public void notifyImageModelDataChanged()
+  public void onClickEvent()
   {
-    int i = this.basePresenter.getSelectedIndex();
-    Gallery localGallery = this.basePresenter.getGallery();
-    if ((localGallery != null) && (i != localGallery.getSelectedItemPosition())) {
-      localGallery.setSelection(i);
+    IBrowserItemClickEvent localIBrowserItemClickEvent = this.itemClickEventListener;
+    if (localIBrowserItemClickEvent != null)
+    {
+      localIBrowserItemClickEvent.onClickEvent();
+      return;
     }
+    this.basePresenter.back();
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    int i = this.mContext.getResources().getDisplayMetrics().widthPixels;
-    int j = this.mContext.getResources().getDisplayMetrics().heightPixels;
-    if ((i != this.mScreenWidthPx) || (j != this.mScreenHeightPx))
+    if (this.basePresenter.getRecyclerView() != null)
     {
-      this.mScreenWidthPx = i;
-      this.mScreenHeightPx = j;
-      URLDrawable.clearMemoryCache();
+      int i = this.basePresenter.getRecyclerView().getWidth();
+      int j = this.basePresenter.getRecyclerView().getHeight();
+      if ((i != this.mScreenWidthPx) || (j != this.mScreenHeightPx))
+      {
+        this.mScreenWidthPx = i;
+        this.mScreenHeightPx = j;
+        URLDrawable.clearMemoryCache();
+      }
     }
-  }
-  
-  public void onCreate(ViewGroup paramViewGroup)
-  {
-    if (this.basePresenter.getGallery() != null) {
-      ((ProGallery)this.basePresenter.getGallery()).setGestureListener(this);
-    }
-  }
-  
-  public View onCreateView(int paramInt, RichMediaBrowserInfo paramRichMediaBrowserInfo)
-  {
-    return null;
   }
   
   public void onDestroy()
   {
-    super.onDestroy();
+    setDecoratorViewEvent(null);
+    setBrowserItemClickListener(null);
+    setBrowserItemScrollEventListener(null);
+    setPictureScaleEventListener(null);
+    setBrowserItemAnimationListener(null);
   }
   
-  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup) {}
-  
-  public void onEnterAnimationEnd() {}
-  
-  public void onEnterAnimationStart() {}
-  
-  public void onExitAnimationEnd() {}
-  
-  public void onExitAnimationStart() {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
-  
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDestroyView(int paramInt, View paramView)
   {
-    return true;
+    IDecoratorViewEvent localIDecoratorViewEvent = this.decoratorViewEvent;
+    if (localIDecoratorViewEvent != null) {
+      localIDecoratorViewEvent.a(paramInt, paramView);
+    }
   }
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  public void onDoubleTap(int paramInt)
   {
-    return false;
+    IPictureScaleEvent localIPictureScaleEvent = this.pictureScaleEventListener;
+    if (localIPictureScaleEvent != null) {
+      localIPictureScaleEvent.onDoubleTap(paramInt);
+    }
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onEnterAnimationEnd()
   {
-    if (Math.abs(paramMotionEvent2.getRawX() - paramMotionEvent1.getRawX()) > this.midScreenWidth)
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      localIBrowserItemAnimationEvent.onEnterAnimationEnd();
+    }
+  }
+  
+  public void onEnterAnimationStart()
+  {
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      localIBrowserItemAnimationEvent.onEnterAnimationStart();
+    }
+  }
+  
+  public void onExitAnimationEnd()
+  {
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      localIBrowserItemAnimationEvent.onExitAnimationEnd();
+    }
+  }
+  
+  public void onExitAnimationStart()
+  {
+    IBrowserItemAnimationEvent localIBrowserItemAnimationEvent = this.itemAnimationListener;
+    if (localIBrowserItemAnimationEvent != null) {
+      localIBrowserItemAnimationEvent.onExitAnimationStart();
+    }
+  }
+  
+  public void onItemSelected(int paramInt)
+  {
+    IDecoratorViewEvent localIDecoratorViewEvent = this.decoratorViewEvent;
+    if (localIDecoratorViewEvent != null) {
+      localIDecoratorViewEvent.b(paramInt);
+    }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView = this.itemClickEventListener;
+    if (paramView != null)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserBaseView", 4, "onScrollHalfScreenWidth");
-      onScrollHalfScreenWidth();
+      paramView.onLongClickEvent();
+      return true;
     }
     return false;
   }
   
-  public void onScrollEnd(int paramInt) {}
+  public void onScale(int paramInt)
+  {
+    IPictureScaleEvent localIPictureScaleEvent = this.pictureScaleEventListener;
+    if (localIPictureScaleEvent != null) {
+      localIPictureScaleEvent.onScale(paramInt);
+    }
+  }
   
-  public void onScrollHalfScreenWidth() {}
+  public void onScaleBegin(int paramInt)
+  {
+    IPictureScaleEvent localIPictureScaleEvent = this.pictureScaleEventListener;
+    if (localIPictureScaleEvent != null) {
+      localIPictureScaleEvent.onScaleBegin(paramInt);
+    }
+  }
   
-  public void onScrollStart(int paramInt) {}
+  public void onScaleEnd(int paramInt)
+  {
+    IPictureScaleEvent localIPictureScaleEvent = this.pictureScaleEventListener;
+    if (localIPictureScaleEvent != null) {
+      localIPictureScaleEvent.onScaleEnd(paramInt);
+    }
+  }
+  
+  public void onScrollEnd()
+  {
+    IBrowserItemScrollEvent localIBrowserItemScrollEvent = this.scrollEventListener;
+    if (localIBrowserItemScrollEvent != null) {
+      localIBrowserItemScrollEvent.onScrollEnd();
+    }
+  }
+  
+  public void onScrollHalfScreenWidth()
+  {
+    IBrowserItemScrollEvent localIBrowserItemScrollEvent = this.scrollEventListener;
+    if (localIBrowserItemScrollEvent != null) {
+      localIBrowserItemScrollEvent.onScrollHalfScreenWidth();
+    }
+  }
+  
+  public void onScrollStart()
+  {
+    IBrowserItemScrollEvent localIBrowserItemScrollEvent = this.scrollEventListener;
+    if (localIBrowserItemScrollEvent != null) {
+      localIBrowserItemScrollEvent.onScrollStart();
+    }
+  }
   
   public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData) {}
   
-  public void onViewDetached(int paramInt, View paramView, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
-  
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
-  
-  public void showActionSheet(int paramInt) {}
-  
-  public void showContentView(boolean paramBoolean) {}
-  
-  public void updateUI() {}
-  
-  public void updateView(int paramInt, View paramView, boolean paramBoolean)
+  public void setBrowserItemAnimationListener(IBrowserItemAnimationEvent paramIBrowserItemAnimationEvent)
   {
-    updateView(paramInt, null, null, paramView, paramBoolean);
+    this.itemAnimationListener = paramIBrowserItemAnimationEvent;
   }
   
-  public void updateView(int paramInt, String paramString1, String paramString2, View paramView, boolean paramBoolean) {}
+  public void setBrowserItemClickListener(IBrowserItemClickEvent paramIBrowserItemClickEvent)
+  {
+    this.itemClickEventListener = paramIBrowserItemClickEvent;
+  }
+  
+  public void setBrowserItemScrollEventListener(IBrowserItemScrollEvent paramIBrowserItemScrollEvent)
+  {
+    this.scrollEventListener = paramIBrowserItemScrollEvent;
+  }
+  
+  public void setDecoratorViewEvent(IDecoratorViewEvent paramIDecoratorViewEvent)
+  {
+    this.decoratorViewEvent = paramIDecoratorViewEvent;
+  }
+  
+  public void setPictureScaleEventListener(IPictureScaleEvent paramIPictureScaleEvent)
+  {
+    this.pictureScaleEventListener = paramIPictureScaleEvent;
+  }
+  
+  public void updateUI()
+  {
+    IDecoratorViewEvent localIDecoratorViewEvent = this.decoratorViewEvent;
+    if (localIDecoratorViewEvent != null) {
+      localIDecoratorViewEvent.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.BrowserBaseView
  * JD-Core Version:    0.7.0.1
  */

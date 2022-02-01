@@ -4,54 +4,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.h.d;
 import junit.framework.Assert;
 
-public final class b<_Callback>
+public class b<_Callback>
   implements com.tencent.mm.vending.e.a
 {
-  private a AOj;
-  public d AOk;
-  private int c;
-  public _Callback d;
-  private int e;
+  private a agut;
+  public _Callback aguu;
+  private int aguv;
+  private int mPriority;
+  public d mScheduler;
   
   public b(_Callback param_Callback, a parama)
   {
-    AppMethodBeat.i(126108);
-    this.c = -1;
+    AppMethodBeat.i(74905);
+    this.mPriority = -1;
     Assert.assertNotNull("Callback should not be null!", param_Callback);
-    this.e = param_Callback.hashCode();
-    this.d = param_Callback;
-    this.AOj = parama;
-    AppMethodBeat.o(126108);
+    this.aguv = param_Callback.hashCode();
+    this.aguu = param_Callback;
+    this.agut = parama;
+    AppMethodBeat.o(74905);
   }
   
-  public final void dead()
+  public void dead()
   {
-    AppMethodBeat.i(126110);
-    Assert.assertNotNull(this.AOj);
-    this.AOj.b(this);
-    AppMethodBeat.o(126110);
+    AppMethodBeat.i(74907);
+    Assert.assertNotNull(this.agut);
+    this.agut.remove(this);
+    AppMethodBeat.o(74907);
   }
   
-  public final boolean equals(Object paramObject)
+  public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(126109);
-    if ((paramObject != null) && (paramObject.hashCode() == this.e))
+    AppMethodBeat.i(74906);
+    if ((paramObject != null) && (paramObject.hashCode() == this.aguv))
     {
-      AppMethodBeat.o(126109);
+      AppMethodBeat.o(74906);
       return true;
     }
-    AppMethodBeat.o(126109);
+    AppMethodBeat.o(74906);
     return false;
   }
   
-  public final int hashCode()
+  public int hashCode()
   {
-    return this.e;
+    return this.aguv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.b.b
  * JD-Core Version:    0.7.0.1
  */

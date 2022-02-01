@@ -10,8 +10,8 @@ public final class a
   static void a(PlaceReport paramPlaceReport, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramPlaceReport.Hc);
-    c.a(paramParcel, 2, paramPlaceReport.kl());
+    c.c(paramParcel, 1, paramPlaceReport.IR);
+    c.a(paramParcel, 2, paramPlaceReport.ku());
     c.a(paramParcel, 3, paramPlaceReport.getTag());
     c.a(paramParcel, 4, paramPlaceReport.getSource());
     c.v(paramParcel, i);

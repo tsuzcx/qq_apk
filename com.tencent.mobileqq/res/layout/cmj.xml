@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="296.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/joh" android:layout_width="fill_parent" android:layout_height="212.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+    <TextView android:textSize="20.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="9.0dip" android:text="@string/xgz" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/oq_" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="9.5dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ImageView android:layout_gravity="center" android:id="@id/oq9" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="换一换" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/i2z" android:background="@drawable/eed" android:layout_width="278.0dip" android:layout_height="wrap_content" android:layout_marginTop="43.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

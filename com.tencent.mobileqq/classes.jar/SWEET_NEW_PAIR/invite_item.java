@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class invite_item
   extends JceStruct
 {
-  public long time;
-  public long uin;
+  public long time = 0L;
+  public long uin = 0L;
   
   public invite_item() {}
   
@@ -32,7 +32,7 @@ public final class invite_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_PAIR.invite_item
  * JD-Core Version:    0.7.0.1
  */

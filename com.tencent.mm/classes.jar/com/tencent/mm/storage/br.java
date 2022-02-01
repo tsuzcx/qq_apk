@@ -1,236 +1,145 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
-import com.tencent.mm.cg.g.a;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
-import java.util.List;
-import junit.framework.Assert;
 
-public final class br
-  extends com.tencent.mm.sdk.e.k
-  implements g.a, com.tencent.mm.plugin.messenger.foundation.a.a.k
+public class br
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS role_info ( id TEXT PRIMARY KEY, name TEXT, status INT, text_reserved1 TEXT, text_reserved2 TEXT, text_reserved3 TEXT, text_reserved4 TEXT, int_reserved1 INT, int_reserved2 INT, int_reserved3 INT, int_reserved4 INT )" };
-  private e db = null;
+  public static final br adjV;
+  public static final br adjW;
+  public static final br adjX;
+  public static final br adjY;
+  public static final br adjZ;
+  public static final br adka;
+  public static final br adkb;
+  public static final br adkc;
+  public static final br adkd;
+  public static final br adke;
+  public static final br adkf;
+  public static final br adkg;
+  public static final br adkh;
+  public String tag = "";
+  public int time = 0;
   
-  public br(h paramh)
+  static
   {
-    this.db = paramh;
+    AppMethodBeat.i(133298);
+    adjV = new br("timeline");
+    adjW = new br("album_friend");
+    adjX = new br("album_self");
+    adjY = new br("album_stranger");
+    adjZ = new br("profile_friend");
+    adka = new br("profile_stranger");
+    adkb = new br("comment");
+    adkc = new br("comment_detail");
+    adkd = new br("other");
+    adke = new br("snssight");
+    adkf = new br("fts");
+    adkg = new br("storysight");
+    adkh = new br("storyalbum");
+    AppMethodBeat.o(133298);
   }
   
-  private void a(bq parambq)
+  public br(String paramString)
   {
-    AppMethodBeat.i(1454);
-    parambq.bsY = 135;
-    parambq = parambq.convertTo();
-    if ((parambq.size() > 0) && (this.db.insert("role_info", "id", parambq) != 0L)) {
-      doNotify();
-    }
-    AppMethodBeat.o(1454);
+    this.tag = paramString;
   }
   
-  private bq asB(String paramString)
+  public static br a(br parambr, int paramInt)
   {
-    Object localObject = null;
-    AppMethodBeat.i(1452);
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      bq localbq = new bq();
-      Cursor localCursor = this.db.a("role_info", null, "name= ?", new String[] { paramString }, null, null, null, 2);
-      paramString = localObject;
-      if (localCursor.moveToFirst())
-      {
-        localbq.convertFrom(localCursor);
-        paramString = localbq;
-      }
-      localCursor.close();
-      AppMethodBeat.o(1452);
-      return paramString;
-    }
+    AppMethodBeat.i(133295);
+    parambr = new br(parambr.tag);
+    parambr.time = paramInt;
+    AppMethodBeat.o(133295);
+    return parambr;
   }
   
-  private void b(bq parambq)
+  public static br jbh()
   {
-    AppMethodBeat.i(1459);
-    ContentValues localContentValues = parambq.convertTo();
-    if (localContentValues.size() > 0)
-    {
-      int i = this.db.update("role_info", localContentValues, "name like ?", new String[] { parambq.name });
-      ab.d("MicroMsg.RoleStorage", "update role info, name=" + parambq.name + ", res:" + i);
-      if (i > 0) {
-        doNotify();
-      }
-    }
-    AppMethodBeat.o(1459);
+    AppMethodBeat.i(133288);
+    br localbr = new br("timeline");
+    AppMethodBeat.o(133288);
+    return localbr;
   }
   
-  public final bq TL(String paramString)
+  public static br jbi()
   {
-    Object localObject = null;
-    AppMethodBeat.i(1451);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(1451);
-      return null;
-    }
-    bq localbq = new bq();
-    Cursor localCursor = this.db.a("role_info", null, "name LIKE ?", new String[] { "%".concat(String.valueOf(paramString)) }, null, null, null, 2);
-    paramString = localObject;
-    if (localCursor.moveToFirst())
-    {
-      localbq.convertFrom(localCursor);
-      paramString = localbq;
-    }
-    localCursor.close();
-    AppMethodBeat.o(1451);
-    return paramString;
+    AppMethodBeat.i(133289);
+    br localbr = new br("album_friend");
+    AppMethodBeat.o(133289);
+    return localbr;
   }
   
-  public final int a(g paramg)
+  public static br jbj()
   {
-    this.db = paramg;
-    return 0;
+    AppMethodBeat.i(133290);
+    br localbr = new br("album_self");
+    AppMethodBeat.o(133290);
+    return localbr;
   }
   
-  public final void aZ(String paramString, boolean paramBoolean)
+  public static br jbk()
   {
-    AppMethodBeat.i(1457);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
-      AppMethodBeat.o(1457);
-      return;
-    }
-    bq localbq = asB(paramString);
-    if (localbq == null)
-    {
-      a(new bq(paramString, paramBoolean, 2));
-      ab.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1457);
-      return;
-    }
-    localbq.setEnable(paramBoolean);
-    localbq.bsY = 4;
-    b(localbq);
-    AppMethodBeat.o(1457);
+    AppMethodBeat.i(133291);
+    br localbr = new br("album_stranger");
+    AppMethodBeat.o(133291);
+    return localbr;
   }
   
-  public final List<bq> bQi()
+  public static br jbl()
   {
-    AppMethodBeat.i(1453);
-    LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = this.db.a("role_info", null, "int_reserved1=1", null, null, null, null, 2);
-    while (localCursor.moveToNext())
-    {
-      bq localbq = new bq();
-      localbq.convertFrom(localCursor);
-      localLinkedList.add(localbq);
-    }
-    localCursor.close();
-    AppMethodBeat.o(1453);
-    return localLinkedList;
+    AppMethodBeat.i(133292);
+    br localbr = new br("comment_detail");
+    AppMethodBeat.o(133292);
+    return localbr;
   }
   
-  public final void cO(String paramString, int paramInt)
+  public static br jbm()
   {
-    AppMethodBeat.i(1456);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
-      AppMethodBeat.o(1456);
-      return;
-    }
-    if (asB(paramString) == null)
-    {
-      a(new bq(paramString, true, paramInt));
-      ab.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
-    }
-    AppMethodBeat.o(1456);
+    AppMethodBeat.i(133293);
+    br localbr = new br("snssight");
+    AppMethodBeat.o(133293);
+    return localbr;
   }
   
-  public final void delete(String paramString)
+  public static br jbn()
   {
-    AppMethodBeat.i(1460);
-    if (paramString.length() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      int i = this.db.delete("role_info", "name=?", new String[] { String.valueOf(paramString) });
-      ab.d("MicroMsg.RoleStorage", "delete name name :" + paramString + ", res:" + i);
-      if (i > 0) {
-        doNotify();
-      }
-      AppMethodBeat.o(1460);
-      return;
-    }
+    AppMethodBeat.i(133294);
+    br localbr = new br("storysight");
+    AppMethodBeat.o(133294);
+    return localbr;
   }
   
-  public final void f(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final br ayX(int paramInt)
   {
-    int i = 2;
-    AppMethodBeat.i(1458);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
-      AppMethodBeat.o(1458);
-      return;
-    }
-    bq localbq = asB(paramString);
-    if (localbq == null)
-    {
-      a(new bq(paramString, paramBoolean1, 2));
-      ab.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(1458);
-      return;
-    }
-    localbq.setEnable(paramBoolean1);
-    int j;
-    if (paramBoolean2)
-    {
-      j = localbq.status;
-      if (!paramBoolean2) {}
-    }
-    for (localbq.status = (i | j);; localbq.status &= 0xFFFFFFFD)
-    {
-      localbq.bsY = 4;
-      b(localbq);
-      AppMethodBeat.o(1458);
-      return;
-      i = 0;
-      break;
-    }
+    this.time = paramInt;
+    return this;
   }
   
-  public final String getTableName()
+  public boolean equals(Object paramObject)
   {
-    return "role_info";
+    AppMethodBeat.i(133296);
+    if ((paramObject instanceof br))
+    {
+      bool = ((br)paramObject).tag.equals(this.tag);
+      AppMethodBeat.o(133296);
+      return bool;
+    }
+    boolean bool = super.equals(paramObject);
+    AppMethodBeat.o(133296);
+    return bool;
   }
   
-  public final boolean has(String paramString)
+  public String toString()
   {
-    AppMethodBeat.i(1455);
-    bq localbq = TL(new bq.a(paramString).asA(""));
-    if ((localbq != null) && (paramString.equals(localbq.name)))
-    {
-      AppMethodBeat.o(1455);
-      return true;
-    }
-    AppMethodBeat.o(1455);
-    return false;
+    AppMethodBeat.i(133297);
+    String str = this.tag + "@" + this.time;
+    AppMethodBeat.o(133297);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.br
  * JD-Core Version:    0.7.0.1
  */

@@ -5,28 +5,19 @@ import java.io.Serializable;
 public final class GPSTYPE
   implements Serializable
 {
-  public static final GPSTYPE GPS_GCJ02;
+  public static final GPSTYPE GPS_GCJ02 = new GPSTYPE(1, 1, "GPS_GCJ02");
   public static final GPSTYPE GPS_WGS84;
-  public static final GPSTYPE GPS_WGS_REAL;
+  public static final GPSTYPE GPS_WGS_REAL = new GPSTYPE(2, 2, "GPS_WGS_REAL");
   public static final int _GPS_GCJ02 = 1;
   public static final int _GPS_WGS84 = 0;
   public static final int _GPS_WGS_REAL = 2;
-  private static GPSTYPE[] a;
+  private static GPSTYPE[] a = new GPSTYPE[3];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!GPSTYPE.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new GPSTYPE[3];
-      GPS_WGS84 = new GPSTYPE(0, 0, "GPS_WGS84");
-      GPS_GCJ02 = new GPSTYPE(1, 1, "GPS_GCJ02");
-      GPS_WGS_REAL = new GPSTYPE(2, 2, "GPS_WGS_REAL");
-      return;
-    }
+    GPS_WGS84 = new GPSTYPE(0, 0, "GPS_WGS84");
   }
   
   private GPSTYPE(int paramInt1, int paramInt2, String paramString)
@@ -39,15 +30,16 @@ public final class GPSTYPE
   public static GPSTYPE convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      GPSTYPE[] arrayOfGPSTYPE = a;
+      if (i >= arrayOfGPSTYPE.length) {
+        break;
+      }
+      if (arrayOfGPSTYPE[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -55,15 +47,16 @@ public final class GPSTYPE
   public static GPSTYPE convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      GPSTYPE[] arrayOfGPSTYPE = a;
+      if (i >= arrayOfGPSTYPE.length) {
+        break;
+      }
+      if (arrayOfGPSTYPE[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -80,7 +73,7 @@ public final class GPSTYPE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.GPSTYPE
  * JD-Core Version:    0.7.0.1
  */

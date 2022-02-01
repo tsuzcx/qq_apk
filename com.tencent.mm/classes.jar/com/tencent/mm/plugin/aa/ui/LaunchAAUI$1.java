@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.nn;
+import com.tencent.mm.sdk.event.IListener;
 
-final class LaunchAAUI$1
-  implements MenuItem.OnMenuItemClickListener
+class LaunchAAUI$1
+  extends IListener<nn>
 {
-  LaunchAAUI$1(LaunchAAUI paramLaunchAAUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  LaunchAAUI$1(LaunchAAUI paramLaunchAAUI, q paramq)
   {
-    AppMethodBeat.i(40824);
-    this.grm.finish();
-    AppMethodBeat.o(40824);
-    return false;
+    super(paramq);
+    AppMethodBeat.i(268570);
+    this.__eventId = nn.class.getName().hashCode();
+    AppMethodBeat.o(268570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.1
  * JD-Core Version:    0.7.0.1
  */

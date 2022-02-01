@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class ElementInfo
   extends JceStruct
 {
-  static int cache_elementType = 0;
-  public int appid;
+  static int cache_elementType;
+  public int appid = 0;
   public String data = "";
-  public int elementId;
-  public int elementType;
-  public int itemId;
+  public int elementId = 0;
+  public int elementType = 0;
+  public int itemId = 0;
   
   public ElementInfo() {}
   
@@ -40,14 +40,15 @@ public final class ElementInfo
     paramJceOutputStream.write(this.elementType, 1);
     paramJceOutputStream.write(this.appid, 2);
     paramJceOutputStream.write(this.itemId, 3);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 4);
+    String str = this.data;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FACADE_DIY.ElementInfo
  * JD-Core Version:    0.7.0.1
  */

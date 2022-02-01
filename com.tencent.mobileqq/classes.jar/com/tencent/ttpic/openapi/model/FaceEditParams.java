@@ -12,13 +12,17 @@ public class FaceEditParams
   public FaceEditParams()
   {
     this.mParamsMap.put("BEAUTY_WHITE", Double.valueOf(0.2D));
-    this.mParamsMap.put("BEAUTY_SMOOTH", Double.valueOf(0.5D));
-    this.mParamsMap.put("BEAUTY_COMPLEXION", Double.valueOf(0.5D));
+    HashMap localHashMap = this.mParamsMap;
+    Double localDouble = Double.valueOf(0.5D);
+    localHashMap.put("BEAUTY_SMOOTH", localDouble);
+    this.mParamsMap.put("BEAUTY_COMPLEXION", localDouble);
     this.mParamsMap.put("BEAUTY_ANTISPOT", Double.valueOf(1.0D));
-    this.mParamsMap.put("BEAUTY_EYEPOUCH", Double.valueOf(0.0D));
-    this.mParamsMap.put("BEAUTY_TOOTH", Double.valueOf(0.0D));
+    localHashMap = this.mParamsMap;
+    localDouble = Double.valueOf(0.0D);
+    localHashMap.put("BEAUTY_EYEPOUCH", localDouble);
+    this.mParamsMap.put("BEAUTY_TOOTH", localDouble);
     this.mParamsMap.put("BEAUTY_EYELIGHT", Double.valueOf(0.7D));
-    this.mParamsMap.put("BEAUTY_GLOSSY", Double.valueOf(0.0D));
+    this.mParamsMap.put("BEAUTY_GLOSSY", localDouble);
   }
   
   public FaceEditParams clone()
@@ -43,7 +47,7 @@ public class FaceEditParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.FaceEditParams
  * JD-Core Version:    0.7.0.1
  */

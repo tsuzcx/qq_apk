@@ -33,16 +33,21 @@ class VSliderView$AutoSidleTimer
   
   public void run()
   {
-    if ((this.this$0.isShown()) && (this.mSliderViewPagerWeakReference != null) && (this.mSliderViewPagerWeakReference.get() != null))
+    if (this.this$0.isShown())
     {
-      VSliderView.access$200((VSliderView)this.mSliderViewPagerWeakReference.get());
-      postDelayed(VSliderView.access$300(this.this$0));
+      WeakReference localWeakReference = this.mSliderViewPagerWeakReference;
+      if ((localWeakReference != null) && (localWeakReference.get() != null))
+      {
+        VSliderView.access$200((VSliderView)this.mSliderViewPagerWeakReference.get());
+        postDelayed(VSliderView.access$300(this.this$0));
+      }
     }
   }
   
   public void startTimer(int paramInt)
   {
-    if ((this.mSliderViewPagerWeakReference != null) && (this.mSliderViewPagerWeakReference.get() != null))
+    WeakReference localWeakReference = this.mSliderViewPagerWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       removeCallbacks(this);
       postDelayed(paramInt);
@@ -51,14 +56,15 @@ class VSliderView$AutoSidleTimer
   
   public void stopTimer()
   {
-    if ((this.mSliderViewPagerWeakReference != null) && (this.mSliderViewPagerWeakReference.get() != null)) {
+    WeakReference localWeakReference = this.mSliderViewPagerWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       removeCallbacks(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSliderView.AutoSidleTimer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l1" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/l2" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/l3" android:background="@null" android:paddingLeft="@dimen/gc" android:paddingRight="@dimen/gc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gg" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/dw" android:textColor="@color/e6" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/l4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sg" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="@dimen/ko" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/l5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sg" android:singleLine="true" />
-    </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/chat_force_notify_icon" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l7" android:visibility="gone" android:layout_width="@dimen/g2" android:layout_height="@dimen/g2" android:layout_marginLeft="@dimen/dl" android:src="@raw/icons_outlined_bellring_off" app:iconColor="@color/w" />
-    <ImageView android:id="@id/l8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/chat_phone_notify_title_icon" />
-    <ImageView android:id="@id/l9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/qq" />
-    <ImageView android:id="@id/l_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/chat_reject_title_icon" />
-</LinearLayout>
+<androidx.appcompat.widget.ActionMenuView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" app:divider="?x" app:dividerPadding="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

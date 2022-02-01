@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="bottom" android:id="@id/len" android:background="@android:color/white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#fff0f2f8" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <RelativeLayout android:id="@id/lmo" android:background="#0f0188fd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="8.0dip">
+        <ImageView android:id="@id/leo" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/htl" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff0188fd" android:ellipsize="end" android:id="@id/leq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="22.0dip" android:text="@string/q_j" android:singleLine="true" android:layout_toRightOf="@id/leo" android:layout_centerVertical="true" android:letterSpacing="-0.07" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/htm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ler" android:background="#0f0188fd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="8.0dip">
+        <LinearLayout android:id="@id/lem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_centerVertical="true">
+            <com.tencent.image.URLImageView android:id="@id/lej" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/htn" />
+            <com.tencent.image.URLImageView android:id="@id/lek" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="-5.0dip" android:src="@drawable/htn" />
+            <com.tencent.image.URLImageView android:id="@id/lel" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="-5.0dip" android:src="@drawable/htn" />
+        </LinearLayout>
+        <TextView android:textSize="16.0dip" android:textColor="@android:color/black" android:id="@id/lep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="10人已编辑" android:layout_toRightOf="@id/lem" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/htm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff0188fd" android:id="@id/les" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/q_2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

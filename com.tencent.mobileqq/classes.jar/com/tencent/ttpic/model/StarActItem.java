@@ -24,16 +24,27 @@ public class StarActItem
     this.texId = new int[paramList.size()];
     this.filePaths = new String[paramList.size()];
     int i = 0;
-    while (i < this.filePaths.length)
+    for (;;)
     {
-      this.filePaths[i] = (paramString + File.separator + "expression" + File.separator + ((ExpressionItem)paramList.get(i)).expressionID);
+      paramBaseFilter = this.filePaths;
+      if (i >= paramBaseFilter.length) {
+        break;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("expression");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(((ExpressionItem)paramList.get(i)).expressionID);
+      paramBaseFilter[i] = localStringBuilder.toString();
       i += 1;
     }
   }
   
   public void clear()
   {
-    GLES20.glDeleteTextures(this.texId.length, this.texId, 0);
+    int[] arrayOfInt = this.texId;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public int getOrigHeight(int paramInt)
@@ -53,11 +64,17 @@ public class StarActItem
   
   public void init()
   {
+    Object localObject = this.texId;
+    int j = localObject.length;
     int i = 0;
-    GLES20.glGenTextures(this.texId.length, this.texId, 0);
-    while (i < this.filePaths.length)
+    GLES20.glGenTextures(j, (int[])localObject, 0);
+    for (;;)
     {
-      Object localObject = this.filePaths[i];
+      localObject = this.filePaths;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = localObject[i];
       localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, 720, 1280);
       if (BitmapUtils.isLegal((Bitmap)localObject))
       {
@@ -74,7 +91,7 @@ public class StarActItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.model.StarActItem
  * JD-Core Version:    0.7.0.1
  */

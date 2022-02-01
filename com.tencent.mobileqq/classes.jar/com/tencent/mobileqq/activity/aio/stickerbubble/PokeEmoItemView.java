@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aepi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,89 +11,93 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class PokeEmoItemView
   extends View
   implements Runnable
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  public Paint a;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public String a;
-  private boolean jdField_a_of_type_Boolean;
   public int b;
-  public Paint b;
-  private boolean b;
   public int c;
   public int d;
-  private int e = 200;
+  public int e;
+  public Paint f;
+  public Paint g;
+  private long h;
+  private int i = 200;
+  private boolean j = false;
+  private boolean k;
+  private Drawable l;
   
   public PokeEmoItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = aepi.a(16.0F, paramContext.getResources());
-    this.c = aepi.a(80.0F, paramContext.getResources());
-    this.jdField_a_of_type_Int = aepi.a(2.0F, paramContext.getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(aepi.a(24.0F, paramContext.getResources()));
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aepi.a(4.0F, paramContext.getResources()));
+    this.c = AIOUtils.b(16.0F, paramContext.getResources());
+    this.d = AIOUtils.b(80.0F, paramContext.getResources());
+    this.b = AIOUtils.b(2.0F, paramContext.getResources());
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setColor(Color.parseColor("#FFDC4F"));
+    this.f.setTextSize(AIOUtils.b(24.0F, paramContext.getResources()));
+    this.g = new Paint(this.f);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setColor(Color.parseColor("#418DFF"));
+    this.g.setStrokeWidth(AIOUtils.b(4.0F, paramContext.getResources()));
   }
   
   private float a(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    long l1 = this.h;
+    if (l1 == 0L) {
       return 0.0F;
     }
-    double d1 = (paramLong - this.jdField_a_of_type_Long) % 400L / 400.0D * 20.0D;
-    if (d1 < 10.0D) {}
-    for (d1 -= 5.0D;; d1 = 10.0D - (d1 - 10.0D) - 5.0D) {
-      return (float)d1;
+    double d1 = (paramLong - l1) % 400L;
+    Double.isNaN(d1);
+    d1 = d1 / 400.0D * 20.0D;
+    if (d1 < 10.0D) {
+      d1 -= 5.0D;
+    } else {
+      d1 = 10.0D - (d1 - 10.0D) - 5.0D;
     }
+    return (float)d1;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.j;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = getMeasuredWidth();
-    int j = this.d;
-    int m = this.c;
-    int n = this.d;
-    int i1 = this.jdField_b_of_type_Int;
-    int i2 = this.jdField_a_of_type_Int;
-    int k = paramCanvas.save();
-    if (this.jdField_b_of_type_Boolean) {
-      paramCanvas.translate(i - m - (n - i1) - i2, 0.0F);
+    String str = this.a;
+    int i1 = getMeasuredWidth();
+    int m = this.e;
+    int i2 = this.d;
+    int i3 = this.c;
+    int i4 = this.b;
+    int n = paramCanvas.save();
+    if (this.k) {
+      paramCanvas.translate(i1 - i2 - (m - i3) - i4, 0.0F);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    Object localObject = this.l;
+    if (localObject != null) {
+      ((Drawable)localObject).draw(paramCanvas);
     }
-    long l = SystemClock.uptimeMillis();
-    m = this.c - this.jdField_b_of_type_Int;
-    Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    n = getMeasuredHeight() - localFontMetricsInt.descent - 4;
-    paramCanvas.rotate(a(l), j / 2 + m, localFontMetricsInt.ascent / 2 + n);
-    paramCanvas.drawText(str, m, n, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawText(str, m, n, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PokeEmoItemView", 4, String.format("mImgWidth:%d,measureW:%d,mTextWidth:%d,mTextOffset:%d,left:%d,mText:%s", new Object[] { Integer.valueOf(this.c), Integer.valueOf(i), Integer.valueOf(this.d), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(m), this.jdField_a_of_type_JavaLangString }));
+    long l1 = SystemClock.uptimeMillis();
+    i1 = this.d - this.c;
+    localObject = this.f.getFontMetricsInt();
+    i2 = getMeasuredHeight() - ((Paint.FontMetricsInt)localObject).descent - 4;
+    paramCanvas.rotate(a(l1), m / 2 + i1, ((Paint.FontMetricsInt)localObject).ascent / 2 + i2);
+    float f1 = i1;
+    float f2 = i2;
+    paramCanvas.drawText(str, f1, f2, this.g);
+    paramCanvas.drawText(str, f1, f2, this.f);
+    paramCanvas.restoreToCount(n);
+    if (this.h == 0L) {
+      this.h = l1;
     }
-    paramCanvas.restoreToCount(k);
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = l;
-    }
-    postDelayed(this, this.e);
+    postDelayed(this, this.i);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -111,42 +114,45 @@ public class PokeEmoItemView
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if (paramDrawable != null) {
-      paramDrawable.setBounds(0, 0, this.c, this.c);
+    if (paramDrawable != null)
+    {
+      int m = this.d;
+      paramDrawable.setBounds(0, 0, m, m);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.l = paramDrawable;
     invalidate(getLeft(), getTop(), getRight(), getBottom());
   }
   
   public void setIsSend(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void setText(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.d = ((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString));
+      this.e = ((int)this.f.measureText(paramString));
       invalidate(getLeft(), getTop(), getRight(), getBottom());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-      this.d = 0;
+      this.e = 0;
     }
+    this.a = paramString;
   }
   
   public void setTypeFace(Typeface paramTypeface)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (paramTypeface == null) {
+    if (this.j) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    if (paramTypeface != null)
+    {
+      this.j = true;
+      this.f.setTypeface(paramTypeface);
+      this.g.setTypeface(paramTypeface);
+    }
   }
 }
 

@@ -1,31 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class cmi
-  implements DialogInterface.OnClickListener
+  extends OpenIdObserver
 {
   public cmi(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (paramInt == 1)
+    if ((this.a.isFinishing()) || (this.a.c)) {}
+    do
     {
-      if ((this.a.a) && (this.a.f == 11)) {
-        ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
-      }
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b, this.a.b.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
-    }
-    while (paramInt != 0) {
       return;
-    }
-    this.a.setResult(0);
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.b, this.a.b.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.finish();
+      ForwardRecentActivity.a(this.a).e();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.v)) {
+          this.a.a();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
   }
 }
 

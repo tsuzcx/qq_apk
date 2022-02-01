@@ -29,18 +29,18 @@ class OperatorOnBackpressureDrop$2
     {
       this.val$child.onNext(paramT);
       this.val$requested.decrementAndGet();
-    }
-    while (this.this$0.onDrop == null) {
       return;
     }
-    try
-    {
-      this.this$0.onDrop.call(paramT);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Exceptions.throwOrReport(localThrowable, this.val$child, paramT);
+    if (this.this$0.onDrop != null) {
+      try
+      {
+        this.this$0.onDrop.call(paramT);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Exceptions.throwOrReport(localThrowable, this.val$child, paramT);
+      }
     }
   }
   
@@ -51,7 +51,7 @@ class OperatorOnBackpressureDrop$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorOnBackpressureDrop.2
  * JD-Core Version:    0.7.0.1
  */

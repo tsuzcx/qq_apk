@@ -1,48 +1,60 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.k;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class bi
 {
-  public static a fnc = null;
+  public final Object arguments;
+  public final String method;
   
-  public static k a(k paramk)
+  static
   {
-    AppMethodBeat.i(58107);
-    if (fnc == null)
+    AppMethodBeat.i(241955);
+    if (!bi.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(58107);
-      return paramk;
+      $assertionsDisabled = bool;
+      AppMethodBeat.o(241955);
+      return;
     }
-    paramk = fnc.aaT();
-    AppMethodBeat.o(58107);
-    return paramk;
   }
   
-  public static int aaS()
+  public bi(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(58108);
-    if (fnc != null)
-    {
-      int i = fnc.aaS();
-      AppMethodBeat.o(58108);
-      return i;
-    }
-    AppMethodBeat.o(58108);
-    return 0;
+    this.method = paramString;
+    this.arguments = paramObject;
   }
   
-  public static abstract interface a
+  public final <T> T argument(String paramString)
   {
-    public abstract int aaS();
-    
-    public abstract k aaT();
+    AppMethodBeat.i(241957);
+    if (this.arguments == null)
+    {
+      AppMethodBeat.o(241957);
+      return null;
+    }
+    if ((this.arguments instanceof Map))
+    {
+      paramString = ((Map)this.arguments).get(paramString);
+      AppMethodBeat.o(241957);
+      return paramString;
+    }
+    if ((this.arguments instanceof JSONObject))
+    {
+      paramString = ((JSONObject)this.arguments).opt(paramString);
+      AppMethodBeat.o(241957);
+      return paramString;
+    }
+    paramString = new ClassCastException();
+    AppMethodBeat.o(241957);
+    throw paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.model.bi
  * JD-Core Version:    0.7.0.1
  */

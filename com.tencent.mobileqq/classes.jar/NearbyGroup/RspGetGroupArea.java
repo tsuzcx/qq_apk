@@ -11,17 +11,7 @@ public final class RspGetGroupArea
   implements Cloneable
 {
   static GroupArea cache_stGroupArea;
-  public GroupArea stGroupArea;
-  
-  static
-  {
-    if (!RspGetGroupArea.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public GroupArea stGroupArea = null;
   
   public RspGetGroupArea() {}
   
@@ -37,18 +27,17 @@ public final class RspGetGroupArea
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -108,14 +97,15 @@ public final class RspGetGroupArea
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stGroupArea != null) {
-      paramJceOutputStream.write(this.stGroupArea, 0);
+    GroupArea localGroupArea = this.stGroupArea;
+    if (localGroupArea != null) {
+      paramJceOutputStream.write(localGroupArea, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.RspGetGroupArea
  * JD-Core Version:    0.7.0.1
  */

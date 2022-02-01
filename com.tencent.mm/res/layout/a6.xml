@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip" style="@style/a0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@android:id/icon1" android:visibility="invisible" android:layout_width="@dimen/pr" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" style="@style/a1" />
-    <ImageView android:id="@id/ki" android:background="?ew" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" style="@style/a3" />
-    <ImageView android:id="@android:id/icon2" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="@style/a2" />
-    <TextView android:textAppearance="?f_" android:gravity="top" android:id="@android:id/text2" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="29.0dip" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="?android:attr/dropDownItemStyle" />
-    <TextView android:textAppearance="?f9" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_above="@android:id/text2" android:layout_centerVertical="true" style="?android:attr/dropDownItemStyle" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/hqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <ListView android:id="@id/j9w" android:paddingBottom="60.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hqu" style="@style/na" />
+    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/bpd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hqu" />
+    <ImageView android:id="@id/jfm" android:background="@drawable/btb" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bpd" />
+    <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/j9z" android:visibility="gone" android:layout_width="@dimen/e" android:layout_height="fill_parent" android:layout_below="@id/bpd" android:layout_alignParentRight="true" />
+    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/j9v" android:background="@color/c" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/g" android:paddingRight="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bpd">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/bwh" />
+            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/bp9" android:paddingTop="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/m2" flowlayout:verticalSpacing="@dimen/g" />
+        </LinearLayout>
+    </com.tencent.mm.ui.contact.LabelContainerView>
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/hh0" android:background="@color/c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bpd">
+        <TextView android:id="@id/hgy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/bv" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a78" android:gravity="center_vertical" android:id="@id/j9u" android:background="@color/a" android:padding="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@raw/list_deletetext_icon" android:drawablePadding="@dimen/j6" android:layout_below="@id/bpd" />
+    <RelativeLayout android:background="@color/d" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="24.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/kqr" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ck" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/b1" android:gravity="right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/cm" android:layout_toRightOf="@id/kqs" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </RelativeLayout>

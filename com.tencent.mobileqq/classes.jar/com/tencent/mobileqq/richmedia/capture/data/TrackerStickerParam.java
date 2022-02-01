@@ -54,14 +54,15 @@ public class TrackerStickerParam
     try
     {
       paramString = new JSONObject(paramString).getJSONArray("TrackList");
+      Object localObject;
       if ((paramString != null) && (paramString.length() > 0))
       {
         int i = 0;
         while (i < paramString.length())
         {
-          JSONObject localJSONObject = paramString.getJSONObject(i);
+          localObject = paramString.getJSONObject(i);
           TrackerStickerParam localTrackerStickerParam = new TrackerStickerParam();
-          localTrackerStickerParam.FromJson(localJSONObject);
+          localTrackerStickerParam.FromJson((JSONObject)localObject);
           localArrayList.add(localTrackerStickerParam);
           i += 1;
         }
@@ -70,45 +71,42 @@ public class TrackerStickerParam
     }
     catch (JSONException paramString)
     {
-      SLog.e("TrackerStickerParam", "TrackList FromString" + paramString.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("TrackList FromString");
+      ((StringBuilder)localObject).append(paramString.toString());
+      SLog.e("TrackerStickerParam", ((StringBuilder)localObject).toString());
     }
   }
   
   public static String ToJsonString(ArrayList<TrackerStickerParam> paramArrayList)
   {
-    JSONArray localJSONArray = null;
-    Object localObject = localJSONArray;
-    if (paramArrayList != null)
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      localObject = localJSONArray;
-      if (paramArrayList.size() > 0)
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject = new JSONArray();
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        localObject = new JSONObject();
-        localJSONArray = new JSONArray();
-        int i = 0;
-        while (i < paramArrayList.size())
-        {
-          TrackerStickerParam localTrackerStickerParam = (TrackerStickerParam)paramArrayList.get(i);
-          if (localTrackerStickerParam != null) {
-            localJSONArray.put(localTrackerStickerParam.toJSONObject());
-          }
-          i += 1;
+        TrackerStickerParam localTrackerStickerParam = (TrackerStickerParam)paramArrayList.get(i);
+        if (localTrackerStickerParam != null) {
+          ((JSONArray)localObject).put(localTrackerStickerParam.toJSONObject());
         }
+        i += 1;
       }
-    }
-    try
-    {
-      ((JSONObject)localObject).put("TrackList", localJSONArray);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException paramArrayList)
-    {
-      for (;;)
+      try
       {
-        SLog.e("TrackerStickerParam", "TrackList" + paramArrayList.toString());
+        localJSONObject.put("TrackList", localObject);
       }
+      catch (JSONException paramArrayList)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("TrackList");
+        ((StringBuilder)localObject).append(paramArrayList.toString());
+        SLog.e("TrackerStickerParam", ((StringBuilder)localObject).toString());
+      }
+      return localJSONObject.toString();
     }
+    return null;
   }
   
   public static Map<Long, TrackerStickerParam.MotionInfo> mapMotionFromJarray(JSONArray paramJSONArray)
@@ -117,30 +115,28 @@ public class TrackerStickerParam
     if (paramJSONArray != null)
     {
       int i = 0;
-      for (;;)
+      while (i < paramJSONArray.length())
       {
-        if (i < paramJSONArray.length()) {
-          try
-          {
-            JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
-            TrackerStickerParam.MotionInfo localMotionInfo = new TrackerStickerParam.MotionInfo(false, 0L, 0.0F, 0.0F, 1.0F, 0.0F);
-            localMotionInfo.isLost = localJSONObject.getBoolean("isLost");
-            localMotionInfo.frameTime = localJSONObject.getLong("frameTime");
-            localMotionInfo.x = ((float)localJSONObject.getDouble("motionX"));
-            localMotionInfo.y = ((float)localJSONObject.getDouble("motionY"));
-            localMotionInfo.scale = ((float)localJSONObject.getDouble("scaleP"));
-            localMotionInfo.rotate = ((float)localJSONObject.getDouble("rotateP"));
-            localHashMap.put(Long.valueOf(localMotionInfo.frameTime), localMotionInfo);
-            i += 1;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              SLog.e("TrackerStickerParam", "mapMotionFromJarray" + localJSONException.toString());
-            }
-          }
+        try
+        {
+          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
+          localObject = new TrackerStickerParam.MotionInfo(false, 0L, 0.0F, 0.0F, 1.0F, 0.0F);
+          ((TrackerStickerParam.MotionInfo)localObject).isLost = localJSONObject.getBoolean("isLost");
+          ((TrackerStickerParam.MotionInfo)localObject).frameTime = localJSONObject.getLong("frameTime");
+          ((TrackerStickerParam.MotionInfo)localObject).x = ((float)localJSONObject.getDouble("motionX"));
+          ((TrackerStickerParam.MotionInfo)localObject).y = ((float)localJSONObject.getDouble("motionY"));
+          ((TrackerStickerParam.MotionInfo)localObject).scale = ((float)localJSONObject.getDouble("scaleP"));
+          ((TrackerStickerParam.MotionInfo)localObject).rotate = ((float)localJSONObject.getDouble("rotateP"));
+          localHashMap.put(Long.valueOf(((TrackerStickerParam.MotionInfo)localObject).frameTime), localObject);
         }
+        catch (JSONException localJSONException)
+        {
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mapMotionFromJarray");
+          ((StringBuilder)localObject).append(localJSONException.toString());
+          SLog.e("TrackerStickerParam", ((StringBuilder)localObject).toString());
+        }
+        i += 1;
       }
     }
     return localHashMap;
@@ -170,7 +166,10 @@ public class TrackerStickerParam
         }
         catch (JSONException localJSONException)
         {
-          SLog.e("TrackerStickerParam", "motionMapToJarray" + localJSONException.toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("motionMapToJarray");
+          ((StringBuilder)localObject).append(localJSONException.toString());
+          SLog.e("TrackerStickerParam", ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -206,7 +205,10 @@ public class TrackerStickerParam
     }
     catch (JSONException paramJSONObject)
     {
-      SLog.e("TrackerStickerParam", "mapMotionFromJarray" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mapMotionFromJarray");
+      localStringBuilder.append(paramJSONObject.toString());
+      SLog.e("TrackerStickerParam", localStringBuilder.toString());
     }
   }
   
@@ -238,14 +240,18 @@ public class TrackerStickerParam
       localJSONObject1.put("layerHeight", this.layerHeight);
       localJSONObject1.put("motionTrack", motionMapToJarray(this.mapMotionTrack));
       JSONObject localJSONObject2 = this.mSegmentKeeper.toJSONObject();
-      if (localJSONObject2 != null) {
+      if (localJSONObject2 != null)
+      {
         localJSONObject1.put("segmentdata", localJSONObject2);
+        return localJSONObject1;
       }
-      return localJSONObject1;
     }
     catch (JSONException localJSONException)
     {
-      SLog.e("TrackerStickerParam", "toJSONObject" + localJSONException.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toJSONObject");
+      localStringBuilder.append(localJSONException.toString());
+      SLog.e("TrackerStickerParam", localStringBuilder.toString());
     }
     return localJSONObject1;
   }
@@ -253,33 +259,44 @@ public class TrackerStickerParam
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("DynamicStickerData{");
-    localStringBuilder.append("centerP=").append(this.centerP);
-    localStringBuilder.append(", scale=").append(this.scale);
-    localStringBuilder.append(", rotate=").append(this.rotate);
-    localStringBuilder.append(", translateX=").append(this.translateXValue);
-    localStringBuilder.append(", translateY=").append(this.translateYValue);
-    localStringBuilder.append(", width=").append(this.width);
-    localStringBuilder.append(", height=").append(this.height);
-    localStringBuilder.append(", layerWidth=").append(this.layerWidth);
-    localStringBuilder.append(", layerHeight=").append(this.layerHeight);
-    localStringBuilder.append(", path='").append(this.path).append('\'');
+    localStringBuilder.append("centerP=");
+    localStringBuilder.append(this.centerP);
+    localStringBuilder.append(", scale=");
+    localStringBuilder.append(this.scale);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(", translateX=");
+    localStringBuilder.append(this.translateXValue);
+    localStringBuilder.append(", translateY=");
+    localStringBuilder.append(this.translateYValue);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", layerWidth=");
+    localStringBuilder.append(this.layerWidth);
+    localStringBuilder.append(", layerHeight=");
+    localStringBuilder.append(this.layerHeight);
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append('\'');
     String str = this.mSegmentKeeper.toString();
     if (!TextUtils.isEmpty(str))
     {
       localStringBuilder.append(",");
       localStringBuilder.append(str);
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append('}');
-      return localStringBuilder.toString();
       localStringBuilder.append(",segments=null");
     }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.TrackerStickerParam
  * JD-Core Version:    0.7.0.1
  */

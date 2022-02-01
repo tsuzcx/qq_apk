@@ -22,15 +22,17 @@ public final class oidb_0x86f$UserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58 }, new String[] { "uint64_tinyid", "uint64_uin", "bytes_nick_name", "bytes_head_url", "uint32_age", "uint32_gender", "bytes_label_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, UserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58 }, new String[] { "uint64_tinyid", "uint64_uin", "bytes_nick_name", "bytes_head_url", "uint32_age", "uint32_gender", "bytes_label_type" }, new Object[] { localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3 }, UserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x86f.oidb_0x86f.UserInfo
  * JD-Core Version:    0.7.0.1
  */

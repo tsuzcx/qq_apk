@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ahab;
 import com.tencent.mobileqq.widget.QQBlurView;
 
-public class LocationShareTipsBar$1
+class LocationShareTipsBar$1
   implements Runnable
 {
-  public LocationShareTipsBar$1(ahab paramahab) {}
+  LocationShareTipsBar$1(LocationShareTipsBar paramLocationShareTipsBar) {}
   
   public void run()
   {
-    if (ahab.a(this.this$0) != null) {
-      ahab.a(this.this$0).a();
+    if (LocationShareTipsBar.a(this.this$0) != null) {
+      LocationShareTipsBar.a(this.this$0).a();
     }
   }
 }

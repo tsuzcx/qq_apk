@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="80.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/hju" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="start|center" android:id="@id/hjr" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@drawable/c2x" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="22.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hk1" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="34.0dip" android:maxWidth="200.0dip" android:text="name" android:maxLines="1" android:lines="1" />
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="start|center" android:id="@id/hjw" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@drawable/c2x" android:layout_marginEnd="4.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hk7" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="20.0dip" android:maxWidth="200.0dip" android:text="action" android:maxLines="1" android:lines="1" android:layout_alignBottom="@id/hk1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_gravity="end|center|top" android:id="@id/lo3" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cp" android:src="@drawable/c2x" android:layout_marginEnd="@dimen/cp" />
+</FrameLayout>

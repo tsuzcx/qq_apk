@@ -10,7 +10,7 @@ public final class PageInfo
 {
   static ArrayList<ItemInfo> cache_item_infos = new ArrayList();
   public String appid = "";
-  public ArrayList<ItemInfo> item_infos;
+  public ArrayList<ItemInfo> item_infos = null;
   public String page_id = "";
   
   static
@@ -39,14 +39,15 @@ public final class PageInfo
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.page_id, 1);
-    if (this.item_infos != null) {
-      paramJceOutputStream.write(this.item_infos, 2);
+    ArrayList localArrayList = this.item_infos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.PageInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -32,31 +32,27 @@ public class TMAssistantCallYYBTaskInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.mUrl != null)
-    {
-      paramParcel.writeString(this.mUrl);
-      if (this.mSavePath == null) {
-        break label72;
-      }
-      paramParcel.writeString(this.mSavePath);
-    }
-    for (;;)
-    {
-      paramParcel.writeInt(this.mState);
-      paramParcel.writeLong(this.mReceiveDataLen);
-      paramParcel.writeLong(this.mTotalDataLen);
-      paramParcel.writeString(this.mContentType);
-      return;
-      paramParcel.writeString("");
-      break;
-      label72:
+    String str = this.mUrl;
+    if (str != null) {
+      paramParcel.writeString(str);
+    } else {
       paramParcel.writeString("");
     }
+    str = this.mSavePath;
+    if (str != null) {
+      paramParcel.writeString(str);
+    } else {
+      paramParcel.writeString("");
+    }
+    paramParcel.writeInt(this.mState);
+    paramParcel.writeLong(this.mReceiveDataLen);
+    paramParcel.writeLong(this.mTotalDataLen);
+    paramParcel.writeString(this.mContentType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo
  * JD-Core Version:    0.7.0.1
  */

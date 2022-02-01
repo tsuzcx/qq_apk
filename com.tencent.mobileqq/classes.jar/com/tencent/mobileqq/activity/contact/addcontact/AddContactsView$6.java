@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.widget.SwipListView.RightIconMenuListener;
 
 class AddContactsView$6
-  implements Runnable
+  implements SwipListView.RightIconMenuListener
 {
   AddContactsView$6(AddContactsView paramAddContactsView) {}
   
-  public void run()
+  public void onRightIconMenuHide(View paramView)
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.a.getManager(11);
-    ContactBindedActivity.a(this.this$0.a, 222, localPhoneContactManagerImp.a());
+    AddContactsView.b(this.a, true);
+  }
+  
+  public void onRightIconMenuShow(View paramView)
+  {
+    AddContactsView.b(this.a, false);
   }
 }
 

@@ -20,115 +20,119 @@ public abstract class mz<R extends nc.a>
   {
     NetResponse localNetResponse = new NetResponse();
     Object localObject2 = parammz.c;
-    try
-    {
-      localObject3 = c(parammz, paramVarArgs);
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject1 = (String)localObject2 + "?" + (String)localObject3;
-      }
-      parammz.c = ((String)localObject1);
-      switch (mz.1.a[parammz.i.ordinal()])
-      {
-      case 1: 
-        if ((parammz.e != null) && (!parammz.e.isEmpty())) {
-          return NetManager.getInstance().doGet((String)localObject1, parammz.g, parammz.h, parammz.e, null);
-        }
-        return NetManager.getInstance().doGet((String)localObject1, parammz.g, parammz.h);
-      }
-    }
-    catch (Exception parammz)
-    {
-      Object localObject3;
-      Object localObject1;
-      int j;
-      parammz.printStackTrace();
-      return localNetResponse;
-    }
-    localObject3 = new byte[0];
-    localObject2 = localObject3;
-    int i;
-    if (paramVarArgs.length > 0)
-    {
-      j = paramVarArgs.length;
-      i = 0;
-    }
     for (;;)
     {
-      localObject2 = localObject3;
-      if (i < j)
+      int i;
+      try
       {
-        localObject2 = paramVarArgs[i];
-        if ((localObject2 instanceof byte[])) {
-          localObject2 = (byte[])localObject2;
+        String str = c(parammz, paramVarArgs);
+        Object localObject1 = localObject2;
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("?");
+          ((StringBuilder)localObject1).append(str);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        parammz.c = ((String)localObject1);
+        i = mz.1.a[parammz.i.ordinal()];
+        if (i != 1)
+        {
+          if (i != 2) {
+            return localNetResponse;
+          }
+          i = 0;
+          if (paramVarArgs.length <= 0) {
+            break label276;
+          }
+          int j = paramVarArgs.length;
+          if (i >= j) {
+            break label276;
+          }
+          localObject2 = paramVarArgs[i];
+          if ((localObject2 instanceof byte[]))
+          {
+            paramVarArgs = (byte[])localObject2;
+            if ((parammz.e != null) && (!parammz.e.isEmpty())) {
+              return NetManager.getInstance().doPost((String)localObject1, parammz.g, paramVarArgs, parammz.h, parammz.e, null);
+            }
+            return NetManager.getInstance().doPost((String)localObject1, parammz.g, paramVarArgs, parammz.h);
+          }
+        }
+        else
+        {
+          if ((parammz.e != null) && (!parammz.e.isEmpty())) {
+            return NetManager.getInstance().doGet((String)localObject1, parammz.g, parammz.h, parammz.e, null);
+          }
+          parammz = NetManager.getInstance().doGet((String)localObject1, parammz.g, parammz.h);
+          return parammz;
         }
       }
-      else
+      catch (Exception parammz)
       {
-        if ((parammz.e != null) && (!parammz.e.isEmpty())) {
-          return NetManager.getInstance().doPost((String)localObject1, parammz.g, (byte[])localObject2, parammz.h, parammz.e, null);
-        }
-        parammz = NetManager.getInstance().doPost((String)localObject1, parammz.g, (byte[])localObject2, parammz.h);
-        return parammz;
+        parammz.printStackTrace();
+        return localNetResponse;
       }
       i += 1;
+      continue;
+      label276:
+      paramVarArgs = new byte[0];
     }
   }
   
   private static String c(@NonNull mz<R>.a parammz, Object... paramVarArgs)
   {
-    Object localObject2 = "";
     String[] arrayOfString = parammz.d;
-    Object localObject1 = localObject2;
-    if (arrayOfString != null)
+    if ((arrayOfString != null) && (paramVarArgs != null) && (arrayOfString.length <= paramVarArgs.length))
     {
-      localObject1 = localObject2;
-      if (paramVarArgs != null)
+      StringBuilder localStringBuilder = new StringBuilder();
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject1 = localObject2;
-        if (arrayOfString.length <= paramVarArgs.length)
+        localStringBuilder.append(arrayOfString[i]);
+        localStringBuilder.append("=%s&");
+        i += 1;
+      }
+      parammz = parammz.f;
+      if (!TextUtils.isEmpty(parammz))
+      {
+        parammz = parammz.split("&");
+        j = parammz.length;
+        i = 0;
+        while (i < j)
         {
-          localObject1 = new StringBuilder();
-          int j = arrayOfString.length;
-          int i = 0;
-          while (i < j)
+          arrayOfString = parammz[i].split("=");
+          if (arrayOfString.length == 2)
           {
-            ((StringBuilder)localObject1).append(arrayOfString[i]).append("=%s&");
-            i += 1;
+            localStringBuilder.append(arrayOfString[0]);
+            localStringBuilder.append("=");
+            localStringBuilder.append(arrayOfString[1]);
+            localStringBuilder.append("&");
           }
-          parammz = parammz.f;
-          if (!TextUtils.isEmpty(parammz))
-          {
-            parammz = parammz.split("&");
-            j = parammz.length;
-            i = 0;
-            while (i < j)
-            {
-              localObject2 = parammz[i].split("=");
-              if (localObject2.length == 2) {
-                ((StringBuilder)localObject1).append(localObject2[0]).append("=").append(localObject2[1]).append("&");
-              }
-              i += 1;
-            }
-          }
-          i = ((StringBuilder)localObject1).lastIndexOf("&");
-          if ((i >= 0) && (i == ((StringBuilder)localObject1).length() - 1)) {
-            ((StringBuilder)localObject1).deleteCharAt(i);
-          }
-          localObject1 = ((StringBuilder)localObject1).toString();
+          i += 1;
         }
       }
+      i = localStringBuilder.lastIndexOf("&");
+      if ((i >= 0) && (i == localStringBuilder.length() - 1)) {
+        localStringBuilder.deleteCharAt(i);
+      }
+      parammz = localStringBuilder.toString();
     }
-    return String.format((String)localObject1, paramVarArgs);
+    else
+    {
+      parammz = "";
+    }
+    return String.format(parammz, paramVarArgs);
   }
   
   private String g()
   {
-    String str = "http";
     if (this.d) {
-      str = "https";
+      return "https";
     }
-    return str;
+    return "http";
   }
   
   private R h()
@@ -139,12 +143,15 @@ public abstract class mz<R extends nc.a>
       localObject = ((ParameterizedType)localObject).getActualTypeArguments();
       if ((localObject.length > 0) && ((localObject[0] instanceof Class)))
       {
-        localObject = (Class)localObject[0];
-        ClassLoader localClassLoader = ((Class)localObject).getClassLoader();
-        if (((Class)localObject).isInterface()) {}
-        for (localObject = new Class[] { localObject };; localObject = ((Class)localObject).getInterfaces()) {
-          return (nc.a)Proxy.newProxyInstance(localClassLoader, (Class[])localObject, new mz.b(this, getClass()));
+        Class localClass = (Class)localObject[0];
+        ClassLoader localClassLoader = localClass.getClassLoader();
+        localObject = new Class[1];
+        if (localClass.isInterface()) {
+          localObject[0] = localClass;
+        } else {
+          localObject = localClass.getInterfaces();
         }
+        return (nc.a)Proxy.newProxyInstance(localClassLoader, (Class[])localObject, new mz.b(this, getClass()));
       }
     }
     return null;
@@ -182,8 +189,10 @@ public abstract class mz<R extends nc.a>
   {
     StringBuilder localStringBuilder = new StringBuilder();
     String str = g();
-    if (!TextUtils.isEmpty(str)) {
-      localStringBuilder.append(str).append("://");
+    if (!TextUtils.isEmpty(str))
+    {
+      localStringBuilder.append(str);
+      localStringBuilder.append("://");
     }
     str = d();
     if (!TextUtils.isEmpty(str)) {
@@ -194,7 +203,7 @@ public abstract class mz<R extends nc.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mz
  * JD-Core Version:    0.7.0.1
  */

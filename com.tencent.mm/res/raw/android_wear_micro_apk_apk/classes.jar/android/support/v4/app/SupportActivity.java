@@ -1,35 +1,35 @@
 package android.support.v4.app;
 
 import android.app.Activity;
-import android.arch.lifecycle.b;
-import android.arch.lifecycle.d;
 import android.arch.lifecycle.e;
-import android.arch.lifecycle.f;
-import android.arch.lifecycle.l;
+import android.arch.lifecycle.g;
+import android.arch.lifecycle.i;
+import android.arch.lifecycle.j;
+import android.arch.lifecycle.s;
 import android.os.Bundle;
-import android.support.v4.b.q;
+import android.support.v4.b.r;
 
 public class SupportActivity
   extends Activity
-  implements e
+  implements i
 {
-  private f bB = new f(this);
-  private q<Class<? extends Object>, Object> fJ = new q();
+  private j dk = new j(this);
+  private r<Class<? extends Object>, Object> hG = new r();
   
-  public b d()
+  public e h()
   {
-    return this.bB;
+    return this.dk;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    l.a(this);
+    s.a(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    this.bB.a(d.p);
+    this.dk.b(g.J);
     super.onSaveInstanceState(paramBundle);
   }
 }

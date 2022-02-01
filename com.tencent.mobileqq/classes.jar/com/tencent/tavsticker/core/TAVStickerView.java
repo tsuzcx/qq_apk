@@ -16,12 +16,12 @@ import org.libpag.PAGView;
 public class TAVStickerView
   extends FrameLayout
 {
-  private String mAssetPath = "";
-  private boolean mAutoPlay = false;
-  private Context mContext = null;
-  private PAGView mPagView = null;
-  private String mPath = "";
-  private int mRepeatCount = 0;
+  private String assetPath = "";
+  private Context context = null;
+  private boolean isAutoPlay = false;
+  private PAGView pagView = null;
+  private String path = "";
+  private int repeatCount = 0;
   
   public TAVStickerView(Context paramContext)
   {
@@ -36,14 +36,14 @@ public class TAVStickerView
   public TAVStickerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.mContext = paramContext;
-    paramContext = this.mContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.TAVStickerView, paramInt, 0);
+    this.context = paramContext;
+    paramContext = this.context.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.N, paramInt, 0);
     if (paramContext != null)
     {
-      this.mAssetPath = paramContext.getString(R.styleable.TAVStickerView_stickerAssetPath);
-      this.mPath = paramContext.getString(R.styleable.TAVStickerView_stickerPath);
-      this.mRepeatCount = paramContext.getInt(R.styleable.TAVStickerView_repeatCount, 0);
-      this.mAutoPlay = paramContext.getBoolean(R.styleable.TAVStickerView_autoPlay, false);
+      this.assetPath = paramContext.getString(R.styleable.Q);
+      this.path = paramContext.getString(R.styleable.R);
+      this.repeatCount = paramContext.getInt(R.styleable.P, 0);
+      this.isAutoPlay = paramContext.getBoolean(R.styleable.O, false);
       paramContext.recycle();
     }
     init();
@@ -51,167 +51,192 @@ public class TAVStickerView
   
   private void init()
   {
-    if (this.mPagView == null)
+    if (this.pagView == null)
     {
-      this.mPagView = new PAGView(this.mContext);
-      addView(this.mPagView);
+      this.pagView = new PAGView(this.context);
+      addView(this.pagView);
     }
-    if (!TextUtils.isEmpty(this.mAssetPath)) {
-      setStickerAssetPath(this.mAssetPath);
+    if (!TextUtils.isEmpty(this.assetPath)) {
+      setStickerAssetPath(this.assetPath);
+    } else if (!TextUtils.isEmpty(this.path)) {
+      setStickerPath(this.path);
     }
-    for (;;)
-    {
-      this.mPagView.setRepeatCount(this.mRepeatCount);
-      if (this.mAutoPlay) {
-        this.mPagView.play();
-      }
-      return;
-      if (!TextUtils.isEmpty(this.mPath)) {
-        setStickerPath(this.mPath);
-      }
+    this.pagView.setRepeatCount(this.repeatCount);
+    if (this.isAutoPlay) {
+      this.pagView.play();
     }
   }
   
   public void addListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    if ((paramAnimatorListener != null) && (this.mPagView != null)) {
-      this.mPagView.addListener(paramAnimatorListener);
+    if (paramAnimatorListener != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.addListener(paramAnimatorListener);
+      }
     }
   }
   
   public long duration()
   {
-    if (this.mPagView != null) {
-      return this.mPagView.duration() / 1000L;
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.duration() / 1000L;
     }
     return 0L;
   }
   
   public boolean flush()
   {
-    if (this.mPagView != null) {
-      return this.mPagView.flush();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.flush();
     }
     return false;
   }
   
   public boolean flush(boolean paramBoolean)
   {
-    if (this.mPagView != null) {
-      return this.mPagView.flush(paramBoolean);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.flush(paramBoolean);
     }
     return false;
   }
   
   public PAGFile getPagFile()
   {
-    if (this.mPagView != null) {
-      return this.mPagView.getFile();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.getFile();
     }
     return null;
   }
   
   public double getProgress()
   {
-    if (this.mPagView != null) {
-      this.mPagView.getProgress();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.getProgress();
     }
     return 0.0D;
   }
   
   public boolean isPlaying()
   {
-    if (this.mPagView != null) {
-      return this.mPagView.isPlaying();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      return localPAGView.isPlaying();
     }
     return false;
   }
   
   public float maxFrameRate()
   {
-    if (this.mPagView != null) {
-      this.mPagView.maxFrameRate();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.maxFrameRate();
     }
     return 0.0F;
   }
   
   public void play(int paramInt)
   {
-    if (this.mPagView != null)
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null)
     {
-      this.mPagView.setRepeatCount(paramInt);
-      this.mPagView.play();
+      localPAGView.setRepeatCount(paramInt);
+      this.pagView.play();
     }
   }
   
   public void removeListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    if ((paramAnimatorListener != null) && (this.mPagView != null)) {
-      this.mPagView.removeListener(paramAnimatorListener);
+    if (paramAnimatorListener != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.removeListener(paramAnimatorListener);
+      }
     }
   }
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    if (this.mPagView != null) {
-      this.mPagView.replaceImage(paramInt, paramPAGImage);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.replaceImage(paramInt, paramPAGImage);
     }
   }
   
   public void setMaxFrameRate(float paramFloat)
   {
-    if (this.mPagView != null) {
-      this.mPagView.setMaxFrameRate(paramFloat);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setMaxFrameRate(paramFloat);
     }
   }
   
   public void setProgress(double paramDouble)
   {
-    if (this.mPagView != null) {
-      this.mPagView.setProgress(paramDouble);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setProgress(paramDouble);
     }
   }
   
   public void setRepeatCount(int paramInt)
   {
-    if (this.mPagView != null) {
-      this.mPagView.setRepeatCount(paramInt);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setRepeatCount(paramInt);
     }
   }
   
   public void setStickerAssetPath(String paramString)
   {
-    paramString = TAVPAGFileManager.getInstance().getPAGFileFromAsset(this.mContext, paramString);
-    if ((paramString != null) && (this.mPagView != null)) {
-      this.mPagView.setFile(paramString);
+    paramString = TAVPAGFileManager.getInstance().getPAGFileFromAsset(this.context, paramString);
+    if (paramString != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.setFile(paramString);
+      }
     }
   }
   
   public void setStickerPath(String paramString)
   {
     paramString = TAVPAGFileManager.getInstance().getPAGFileFromPath(paramString);
-    if ((paramString != null) && (this.mPagView != null)) {
-      this.mPagView.setFile(paramString);
+    if (paramString != null)
+    {
+      PAGView localPAGView = this.pagView;
+      if (localPAGView != null) {
+        localPAGView.setFile(paramString);
+      }
     }
   }
   
   public void setTextData(int paramInt, PAGText paramPAGText)
   {
-    if (this.mPagView != null) {
-      this.mPagView.setTextData(paramInt, paramPAGText);
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.setTextData(paramInt, paramPAGText);
     }
   }
   
   public void stop()
   {
-    if (this.mPagView != null) {
-      this.mPagView.stop();
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null) {
+      localPAGView.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerView
  * JD-Core Version:    0.7.0.1
  */

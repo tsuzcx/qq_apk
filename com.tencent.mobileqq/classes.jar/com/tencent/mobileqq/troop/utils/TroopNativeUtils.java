@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 
 class TroopNativeUtils
 {
-  public boolean a;
+  public boolean a = false;
   
   private TroopNativeUtils()
   {
@@ -37,7 +37,7 @@ class TroopNativeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNativeUtils
  * JD-Core Version:    0.7.0.1
  */

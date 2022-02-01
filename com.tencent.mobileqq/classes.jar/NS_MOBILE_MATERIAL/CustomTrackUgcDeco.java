@@ -8,7 +8,7 @@ public final class CustomTrackUgcDeco
   extends JceStruct
 {
   static UgcCustomTrack cache_stUgcCustomTrack = new UgcCustomTrack();
-  public UgcCustomTrack stUgcCustomTrack;
+  public UgcCustomTrack stUgcCustomTrack = null;
   
   public CustomTrackUgcDeco() {}
   
@@ -24,14 +24,15 @@ public final class CustomTrackUgcDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stUgcCustomTrack != null) {
-      paramJceOutputStream.write(this.stUgcCustomTrack, 0);
+    UgcCustomTrack localUgcCustomTrack = this.stUgcCustomTrack;
+    if (localUgcCustomTrack != null) {
+      paramJceOutputStream.write(localUgcCustomTrack, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CustomTrackUgcDeco
  * JD-Core Version:    0.7.0.1
  */

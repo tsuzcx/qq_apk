@@ -8,17 +8,19 @@ public class SoFile
   
   public SoFile(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
-      throw new RuntimeException("SoFile args should not be null!");
+    if ((paramString1 != null) && (paramString2 != null) && (paramString3 != null))
+    {
+      this.fileName = paramString1;
+      this.arch = paramString2;
+      this.sha1 = paramString3;
+      return;
     }
-    this.fileName = paramString1;
-    this.arch = paramString2;
-    this.sha1 = paramString3;
+    throw new RuntimeException("SoFile args should not be null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.feedback.eup.SoFile
  * JD-Core Version:    0.7.0.1
  */

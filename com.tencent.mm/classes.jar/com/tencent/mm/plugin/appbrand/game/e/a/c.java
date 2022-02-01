@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.appbrand.game.e.a;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.game.g.b.e;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.game.g.b.d;
+import com.tencent.mm.plugin.appbrand.game.g.d;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.plugin.game.api.GameShareOption;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,14 +22,14 @@ public class c
   public static final int CTRL_INDEX = 669;
   public static final String NAME = "editGameRecorderVideo";
   
-  static ArrayList<GameShareOption> a(r paramr, JSONArray paramJSONArray)
+  static ArrayList<GameShareOption> a(y paramy, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(143153);
+    AppMethodBeat.i(45139);
     ArrayList localArrayList = new ArrayList(1);
     if ((paramJSONArray == null) || (paramJSONArray.length() <= 0))
     {
-      localArrayList.add(new GameShareOption(0, paramr.getContext().getString(2131297143), false));
-      AppMethodBeat.o(143153);
+      localArrayList.add(new GameShareOption(0, paramy.getContext().getString(ba.i.appbrand_game_screen_recording_share_to_friends), false));
+      AppMethodBeat.o(45139);
       return localArrayList;
     }
     int i = 0;
@@ -41,43 +42,42 @@ public class c
       }
       catch (JSONException paramJSONArray)
       {
-        ab.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEdit", paramJSONArray, "hy: json exception!", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEdit", paramJSONArray, "hy: json exception!", new Object[0]);
         localArrayList.clear();
-        localArrayList.add(new GameShareOption(0, paramr.getContext().getString(2131297143), false));
-        AppMethodBeat.o(143153);
+        localArrayList.add(new GameShareOption(0, paramy.getContext().getString(ba.i.appbrand_game_screen_recording_share_to_friends), false));
+        AppMethodBeat.o(45139);
         return localArrayList;
       }
     }
-    AppMethodBeat.o(143153);
+    AppMethodBeat.o(45139);
     return localArrayList;
   }
   
-  @SuppressLint({"DefaultLocale"})
-  protected final void a(r paramr, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  protected void a(com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt, b.a parama, String paramString, ArrayList<GameShareOption> paramArrayList, b.d paramd)
   {
-    AppMethodBeat.i(143155);
-    ab.w("MicroMsg.WAGameJsApiScreenRecorderEdit", "hy: fail errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    HashMap localHashMap = new HashMap(1);
-    localHashMap.put("errCode", Integer.valueOf(paramInt3));
-    paramr.h(paramInt1, j(String.format("fail: errType: %d, errCode: %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }), localHashMap));
-    AppMethodBeat.o(143155);
-  }
-  
-  protected void a(com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt, b.a parama, String paramString, ArrayList<GameShareOption> paramArrayList, b.e parame)
-  {
-    AppMethodBeat.i(143154);
-    parama = parama.htn;
-    if (bo.isNullOrNil(parama))
+    AppMethodBeat.i(45140);
+    parama = parama.rri;
+    if (Util.isNullOrNil(parama))
     {
       a(paramc, paramInt, 1, 802, "clipped file lost");
-      AppMethodBeat.o(143154);
+      AppMethodBeat.o(45140);
       return;
     }
     paramString = new HashMap(2);
     paramString.put("errCode", Integer.valueOf(0));
     paramString.put("videoPath", parama);
-    paramc.h(paramInt, j("ok", paramString));
-    AppMethodBeat.o(143154);
+    paramc.callback(paramInt, m("ok", paramString));
+    AppMethodBeat.o(45140);
+  }
+  
+  protected final void a(y paramy, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    AppMethodBeat.i(45141);
+    Log.w("MicroMsg.WAGameJsApiScreenRecorderEdit", "hy: fail errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    HashMap localHashMap = new HashMap(1);
+    localHashMap.put("errCode", Integer.valueOf(paramInt3));
+    paramy.callback(paramInt1, m(String.format("fail: errType: %d, errCode: %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }), localHashMap));
+    AppMethodBeat.o(45141);
   }
 }
 

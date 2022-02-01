@@ -35,13 +35,15 @@ final class DefaultMediaClock
   
   private boolean isUsingRendererClock()
   {
-    return (this.rendererClockSource != null) && (!this.rendererClockSource.isEnded()) && ((this.rendererClockSource.isReady()) || (!this.rendererClockSource.hasReadStreamToEnd()));
+    Renderer localRenderer = this.rendererClockSource;
+    return (localRenderer != null) && (!localRenderer.isEnded()) && ((this.rendererClockSource.isReady()) || (!this.rendererClockSource.hasReadStreamToEnd()));
   }
   
   public PlaybackParameters getPlaybackParameters()
   {
-    if (this.rendererClock != null) {
-      return this.rendererClock.getPlaybackParameters();
+    MediaClock localMediaClock = this.rendererClock;
+    if (localMediaClock != null) {
+      return localMediaClock.getPlaybackParameters();
     }
     return this.standaloneMediaClock.getPlaybackParameters();
   }
@@ -65,16 +67,22 @@ final class DefaultMediaClock
   
   public void onRendererEnabled(Renderer paramRenderer)
   {
-    MediaClock localMediaClock = paramRenderer.getMediaClock();
-    if ((localMediaClock != null) && (localMediaClock != this.rendererClock))
+    MediaClock localMediaClock1 = paramRenderer.getMediaClock();
+    if (localMediaClock1 != null)
     {
-      if (this.rendererClock != null) {
+      MediaClock localMediaClock2 = this.rendererClock;
+      if (localMediaClock1 != localMediaClock2)
+      {
+        if (localMediaClock2 == null)
+        {
+          this.rendererClock = localMediaClock1;
+          this.rendererClockSource = paramRenderer;
+          this.rendererClock.setPlaybackParameters(this.standaloneMediaClock.getPlaybackParameters());
+          ensureSynced();
+          return;
+        }
         throw ExoPlaybackException.createForUnexpected(new IllegalStateException("Multiple renderer media clocks enabled."));
       }
-      this.rendererClock = localMediaClock;
-      this.rendererClockSource = paramRenderer;
-      this.rendererClock.setPlaybackParameters(this.standaloneMediaClock.getPlaybackParameters());
-      ensureSynced();
     }
   }
   
@@ -85,9 +93,10 @@ final class DefaultMediaClock
   
   public PlaybackParameters setPlaybackParameters(PlaybackParameters paramPlaybackParameters)
   {
+    MediaClock localMediaClock = this.rendererClock;
     PlaybackParameters localPlaybackParameters = paramPlaybackParameters;
-    if (this.rendererClock != null) {
-      localPlaybackParameters = this.rendererClock.setPlaybackParameters(paramPlaybackParameters);
+    if (localMediaClock != null) {
+      localPlaybackParameters = localMediaClock.setPlaybackParameters(paramPlaybackParameters);
     }
     this.standaloneMediaClock.setPlaybackParameters(localPlaybackParameters);
     this.listener.onPlaybackParametersChanged(localPlaybackParameters);
@@ -116,7 +125,7 @@ final class DefaultMediaClock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.DefaultMediaClock
  * JD-Core Version:    0.7.0.1
  */

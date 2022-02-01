@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/k66" android:background="@drawable/fj" android:layout_width="fill_parent" android:layout_height="672.0dip" android:layout_alignParentBottom="true">
+        <FrameLayout android:id="@id/k65" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/ahw" android:layout_gravity="center_vertical" android:id="@id/aq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/we" />
+            <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/ahw" android:layout_gravity="center" android:id="@id/kpo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jpy" />
+            <Button android:enabled="false" android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/ae_" android:layout_gravity="center|right" android:id="@id/e_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/z9" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" style="@style/oi" />
+        </FrameLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/k67" android:paddingLeft="@dimen/cp" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/k65">
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/aev" android:gravity="center" android:id="@id/k69" android:background="@drawable/fk" android:padding="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jpo" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/aev" android:gravity="center" android:id="@id/k68" android:background="@drawable/fk" android:padding="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/jpk" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.recordvideo.ui.editor.audio.EditorAudioFinderLikeFragment android:id="@id/k6_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/k67" />
+        <com.tencent.mm.plugin.recordvideo.ui.editor.audio.EditorAudioFinderFavFragment android:id="@id/k64" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/k67" />
+    </RelativeLayout>
+    <View android:id="@id/k5m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/k66" />
+</merge>

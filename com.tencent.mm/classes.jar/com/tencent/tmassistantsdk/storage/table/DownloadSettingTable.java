@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
 import com.tencent.tmassistantsdk.storage.helper.SqliteHelper;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class DownloadSettingTable
   {
     localObject3 = null;
     localObject1 = null;
-    AppMethodBeat.i(76207);
+    AppMethodBeat.i(102453);
     HashMap localHashMap = new HashMap();
     try
     {
@@ -54,7 +54,7 @@ public class DownloadSettingTable
       for (;;)
       {
         localObject3 = localObject1;
-        ab.printErrStackTrace("DownloadSettingTable", localException, "", new Object[0]);
+        Log.printErrStackTrace("DownloadSettingTable", localException, "", new Object[0]);
         if (localObject1 != null) {
           localObject1.close();
         }
@@ -66,15 +66,15 @@ public class DownloadSettingTable
         break label176;
       }
       localObject3.close();
-      AppMethodBeat.o(76207);
+      AppMethodBeat.o(102453);
     }
-    AppMethodBeat.o(76207);
+    AppMethodBeat.o(102453);
     return localHashMap;
   }
   
   public static void save(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(76205);
+    AppMethodBeat.i(102451);
     if ((paramString1 != null) && (paramString2 != null)) {
       try
       {
@@ -87,23 +87,23 @@ public class DownloadSettingTable
           localContentValues.put("type", paramString3);
           localSQLiteDatabase.insert("settingInfo", null, localContentValues);
         }
-        AppMethodBeat.o(76205);
+        AppMethodBeat.o(102451);
         return;
       }
       catch (Exception paramString1)
       {
-        ab.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
+        Log.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(76205);
+    AppMethodBeat.o(102451);
   }
   
   private static int update(String paramString1, String paramString2, String paramString3, SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(76206);
+    AppMethodBeat.i(102452);
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(76206);
+      AppMethodBeat.o(102452);
       return -1;
     }
     try
@@ -120,12 +120,12 @@ public class DownloadSettingTable
     }
     catch (Exception paramString1)
     {
-      ab.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
+      Log.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
       return -2;
     }
     finally
     {
-      AppMethodBeat.o(76206);
+      AppMethodBeat.o(102452);
     }
   }
   
@@ -143,9 +143,9 @@ public class DownloadSettingTable
   
   public SqliteHelper getHelper()
   {
-    AppMethodBeat.i(76208);
+    AppMethodBeat.i(102454);
     SqliteHelper localSqliteHelper = AstSDKDBHelper_V2.getInstance();
-    AppMethodBeat.o(76208);
+    AppMethodBeat.o(102454);
     return localSqliteHelper;
   }
   
@@ -153,10 +153,19 @@ public class DownloadSettingTable
   {
     return "settingInfo";
   }
+  
+  public class Columns
+  {
+    public static final String SETTINGFIELD = "settingField";
+    public static final String TYPE = "type";
+    public static final String VALUE = "value";
+    
+    public Columns() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.DownloadSettingTable
  * JD-Core Version:    0.7.0.1
  */

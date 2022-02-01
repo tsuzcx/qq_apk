@@ -1,159 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bdz
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public int Scene;
-  public int woD;
-  public LinkedList<beb> wuP;
-  public int xtM;
-  public LinkedList<bdy> xtN;
-  public int xtO;
-  public String xtP;
-  
-  public bdz()
-  {
-    AppMethodBeat.i(51429);
-    this.xtN = new LinkedList();
-    this.wuP = new LinkedList();
-    AppMethodBeat.o(51429);
-  }
+  public String ZlX;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51430);
+    AppMethodBeat.i(258868);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZlX != null) {
+        paramVarArgs.g(1, this.ZlX);
       }
-      paramVarArgs.aO(2, this.woD);
-      paramVarArgs.aO(3, this.xtM);
-      paramVarArgs.e(4, 8, this.xtN);
-      paramVarArgs.aO(5, this.xtO);
-      paramVarArgs.e(6, 8, this.wuP);
-      if (this.xtP != null) {
-        paramVarArgs.e(7, this.xtP);
-      }
-      paramVarArgs.aO(8, this.Scene);
-      AppMethodBeat.o(51430);
+      paramVarArgs.bS(2, this.scene);
+      AppMethodBeat.o(258868);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label826;
+      if (this.ZlX == null) {
+        break label254;
       }
     }
-    label826:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label254:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ZlX) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.woD) + e.a.a.b.b.a.bl(3, this.xtM) + e.a.a.a.c(4, 8, this.xtN) + e.a.a.b.b.a.bl(5, this.xtO) + e.a.a.a.c(6, 8, this.wuP);
-      paramInt = i;
-      if (this.xtP != null) {
-        paramInt = i + e.a.a.b.b.a.f(7, this.xtP);
-      }
-      i = e.a.a.b.b.a.bl(8, this.Scene);
-      AppMethodBeat.o(51430);
+      int i = i.a.a.b.b.a.cJ(2, this.scene);
+      AppMethodBeat.o(258868);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.xtN.clear();
-        this.wuP.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(51430);
+        AppMethodBeat.o(258868);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bdz localbdz = (bdz)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(51430);
+          AppMethodBeat.o(258868);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localbdz.BaseRequest = ((hq)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(51430);
-          return 0;
-        case 2: 
-          localbdz.woD = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(51430);
-          return 0;
-        case 3: 
-          localbdz.xtM = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(51430);
-          return 0;
-        case 4: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bdy();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bdy)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localbdz.xtN.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(51430);
-          return 0;
-        case 5: 
-          localbdz.xtO = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(51430);
-          return 0;
-        case 6: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new beb();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((beb)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localbdz.wuP.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(51430);
-          return 0;
-        case 7: 
-          localbdz.xtP = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(51430);
+          localbdz.ZlX = locala.ajGk.readString();
+          AppMethodBeat.o(258868);
           return 0;
         }
-        localbdz.Scene = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(51430);
+        localbdz.scene = locala.ajGk.aar();
+        AppMethodBeat.o(258868);
         return 0;
       }
-      AppMethodBeat.o(51430);
+      AppMethodBeat.o(258868);
       return -1;
     }
   }

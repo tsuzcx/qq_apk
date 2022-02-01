@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.widget;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public abstract class SubscribeBannerView$BannerAdapter
   extends PagerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final LinkedList<View> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private final ArrayList a = new ArrayList();
+  private final LinkedList<View> b = new LinkedList();
+  private int c;
   
   protected abstract View a(View paramView, Object paramObject);
   
@@ -20,35 +20,37 @@ public abstract class SubscribeBannerView$BannerAdapter
   public View a(ViewGroup paramViewGroup, int paramInt)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)
+    if (this.a.size() > 1)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt % this.jdField_a_of_type_JavaUtilArrayList.size());
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-        break label76;
-      }
+      localObject = this.a;
+      localObject = ((ArrayList)localObject).get(paramInt % ((ArrayList)localObject).size());
     }
-    label76:
-    for (View localView = (View)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();; localView = a(paramViewGroup))
+    else
     {
-      paramViewGroup.addView(localView);
-      return a(localView, localObject);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      break;
+      localObject = this.a.get(0);
     }
+    View localView;
+    if (this.b.size() > 0) {
+      localView = (View)this.b.removeFirst();
+    } else {
+      localView = a(paramViewGroup);
+    }
+    paramViewGroup.addView(localView);
+    return a(localView, localObject);
   }
   
   public ArrayList a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   public void a(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     notifyDataSetChanged();
     if (paramArrayList != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.a.addAll(paramArrayList);
       notifyDataSetChanged();
     }
   }
@@ -57,22 +59,23 @@ public abstract class SubscribeBannerView$BannerAdapter
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramObject);
+    this.b.add(paramObject);
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
+    if (this.a.size() > 1) {
       return 2147483647;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.jdField_a_of_type_Int > 0)
+    int i = this.c;
+    if (i > 0)
     {
-      this.jdField_a_of_type_Int -= 1;
+      this.c = (i - 1);
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -85,13 +88,13 @@ public abstract class SubscribeBannerView$BannerAdapter
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_Int = getCount();
+    this.c = getCount();
     super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter
  * JD-Core Version:    0.7.0.1
  */

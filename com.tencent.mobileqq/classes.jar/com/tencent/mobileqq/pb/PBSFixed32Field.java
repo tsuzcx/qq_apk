@@ -13,12 +13,12 @@ public final class PBSFixed32Field
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof Integer)) {}
-    for (this.value = ((Integer)paramObject).intValue();; this.value = 0)
-    {
-      setHasFlag(false);
-      return;
+    if ((paramObject instanceof Integer)) {
+      this.value = ((Integer)paramObject).intValue();
+    } else {
+      this.value = 0;
     }
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -81,7 +81,7 @@ public final class PBSFixed32Field
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBSFixed32Field
  * JD-Core Version:    0.7.0.1
  */

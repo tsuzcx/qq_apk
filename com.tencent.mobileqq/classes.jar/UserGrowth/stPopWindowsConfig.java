@@ -12,20 +12,20 @@ public final class stPopWindowsConfig
   static stAnnexation cache_annexation;
   static Map<String, String> cache_exp;
   static stPopWindowsButton cache_jp_button = new stPopWindowsButton();
-  public stAnnexation annexation;
+  public stAnnexation annexation = null;
   public String bg_img_url = "";
-  public Map<String, String> exp;
+  public Map<String, String> exp = null;
   public String h5url = "";
-  public int index;
-  public stPopWindowsButton jp_button;
+  public int index = 0;
+  public stPopWindowsButton jp_button = null;
   public String remark = "";
-  public int scene;
+  public int scene = 0;
   public String schema_url = "";
   public String text = "";
   public String title = "";
   public String trace_id = "";
-  public int type;
-  public int windowsid;
+  public int type = 0;
+  public int windowsid = 0;
   
   static
   {
@@ -77,42 +77,52 @@ public final class stPopWindowsConfig
     paramJceOutputStream.write(this.windowsid, 0);
     paramJceOutputStream.write(this.index, 1);
     paramJceOutputStream.write(this.type, 2);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 3);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 4);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.remark != null) {
-      paramJceOutputStream.write(this.remark, 5);
+    localObject = this.remark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.bg_img_url != null) {
-      paramJceOutputStream.write(this.bg_img_url, 6);
+    localObject = this.bg_img_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.jp_button != null) {
-      paramJceOutputStream.write(this.jp_button, 7);
+    localObject = this.jp_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.annexation != null) {
-      paramJceOutputStream.write(this.annexation, 8);
+    localObject = this.annexation;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
     paramJceOutputStream.write(this.scene, 9);
-    if (this.h5url != null) {
-      paramJceOutputStream.write(this.h5url, 11);
+    localObject = this.h5url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.schema_url != null) {
-      paramJceOutputStream.write(this.schema_url, 12);
+    localObject = this.schema_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.exp != null) {
-      paramJceOutputStream.write(this.exp, 13);
+    localObject = this.exp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 14);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPopWindowsConfig
  * JD-Core Version:    0.7.0.1
  */

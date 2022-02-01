@@ -17,172 +17,171 @@ import com.tencent.qphone.base.util.QLog;
 public class RegionView
   extends View
 {
-  int jdField_a_of_type_Int;
-  final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private PortraitImageview jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview;
-  boolean jdField_a_of_type_Boolean;
-  Rect[] jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-  int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect;
+  final Rect a = new Rect();
+  final Paint b = new Paint();
   int c;
   int d;
   int e;
+  int f;
+  int g;
+  boolean h;
+  Rect[] i;
+  Rect j;
+  private PortraitImageview k;
   
   public RegionView(Context paramContext, PortraitImageview paramPortraitImageview, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     super(paramContext);
     paramPortraitImageview.setRegionView(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview = paramPortraitImageview;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.k = paramPortraitImageview;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramBoolean;
   }
   
-  public Bitmap a()
+  public Bitmap getBitmap()
   {
-    Matrix localMatrix = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    Matrix localMatrix = this.k.getImageViewMatrix();
+    Object localObject = this.k.getRestrictRect();
     localMatrix.postTranslate(-((RectF)localObject).left, -((RectF)localObject).top);
-    localMatrix.postScale(this.c / ((RectF)localObject).width(), this.d / ((RectF)localObject).height(), 0.0F, 0.0F);
-    int i = this.c;
-    int j = this.d;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-      if ((localObject != null) && (localBitmap != null)) {
-        new Canvas((Bitmap)localObject).drawBitmap(localBitmap, localMatrix, new Paint(6));
-      }
-      return localObject;
+    localMatrix.postScale(this.e / ((RectF)localObject).width(), this.f / ((RectF)localObject).height(), 0.0F, 0.0F);
+    int m = this.e;
+    int n = this.f;
+    if (this.h) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
+    localObject = Bitmap.createBitmap(m, n, (Bitmap.Config)localObject);
+    Bitmap localBitmap = this.k.getImageBitmap();
+    if ((localObject != null) && (localBitmap != null)) {
+      new Canvas((Bitmap)localObject).drawBitmap(localBitmap, localMatrix, new Paint(6));
+    }
+    return localObject;
   }
   
-  public Rect a()
+  public Rect getClipInfo()
   {
-    int j = 0;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    Object localObject2 = this.k.getImageViewMatrix();
+    Object localObject1 = this.k.getRestrictRect();
+    Bitmap localBitmap = this.k.getImageBitmap();
     Matrix localMatrix = new Matrix();
     ((Matrix)localObject2).invert(localMatrix);
     localObject2 = new RectF();
     localMatrix.mapRect((RectF)localObject2, (RectF)localObject1);
-    if (QLog.isColorLevel()) {
+    boolean bool = QLog.isColorLevel();
+    int n = 0;
+    if (bool) {
       QLog.i("RegionView", 2, String.format("getClipInfo src=[%.0f,%.0f,%.0f,%.0f],dst=[%.0f,%.0f,%.0f,%.0f],[tW,tH]=[%d,%d]", new Object[] { Float.valueOf(((RectF)localObject1).left), Float.valueOf(((RectF)localObject1).top), Float.valueOf(((RectF)localObject1).right), Float.valueOf(((RectF)localObject1).bottom), Float.valueOf(((RectF)localObject2).left), Float.valueOf(((RectF)localObject2).top), Float.valueOf(((RectF)localObject2).right), Float.valueOf(((RectF)localObject2).bottom), Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) }));
     }
     localObject1 = new Rect();
     ((RectF)localObject2).round((Rect)localObject1);
-    if (((Rect)localObject1).left < 0)
-    {
-      i = 0;
-      ((Rect)localObject1).left = i;
-      if (((Rect)localObject1).top >= 0) {
-        break label304;
-      }
-      i = j;
-      label240:
-      ((Rect)localObject1).top = i;
-      if (((Rect)localObject1).right <= localBitmap.getWidth()) {
-        break label313;
-      }
-      i = localBitmap.getWidth();
-      label263:
-      ((Rect)localObject1).right = i;
-      if (((Rect)localObject1).bottom <= localBitmap.getHeight()) {
-        break label322;
-      }
+    int m;
+    if (((Rect)localObject1).left < 0) {
+      m = 0;
+    } else {
+      m = ((Rect)localObject1).left;
     }
-    label304:
-    label313:
-    label322:
-    for (int i = localBitmap.getHeight();; i = ((Rect)localObject1).bottom)
-    {
-      ((Rect)localObject1).bottom = i;
-      return localObject1;
-      i = ((Rect)localObject1).left;
-      break;
-      i = ((Rect)localObject1).top;
-      break label240;
-      i = ((Rect)localObject1).right;
-      break label263;
+    ((Rect)localObject1).left = m;
+    if (((Rect)localObject1).top < 0) {
+      m = n;
+    } else {
+      m = ((Rect)localObject1).top;
     }
+    ((Rect)localObject1).top = m;
+    if (((Rect)localObject1).right > localBitmap.getWidth()) {
+      m = localBitmap.getWidth();
+    } else {
+      m = ((Rect)localObject1).right;
+    }
+    ((Rect)localObject1).right = m;
+    if (((Rect)localObject1).bottom > localBitmap.getHeight()) {
+      m = localBitmap.getHeight();
+    } else {
+      m = ((Rect)localObject1).bottom;
+    }
+    ((Rect)localObject1).bottom = m;
+    return localObject1;
   }
   
-  public Bitmap b()
+  public Bitmap getDisplayBmp()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    return this.k.getImageBitmap();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview != null)
+    Object localObject = this.k;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.b();
+      this.c = ((PortraitImageview)localObject).getClipWidth();
+      this.d = this.k.getClipHeight();
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.left = ((getWidth() - this.jdField_a_of_type_Int) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRect.right = ((getWidth() + this.jdField_a_of_type_Int) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRect.top = ((getHeight() - this.jdField_b_of_type_Int) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = ((getHeight() + this.jdField_b_of_type_Int) / 2);
-    if (this.e == 0)
+    this.a.left = ((getWidth() - this.c) / 2);
+    this.a.right = ((getWidth() + this.c) / 2);
+    this.a.top = ((getHeight() - this.d) / 2);
+    this.a.bottom = ((getHeight() + this.d) / 2);
+    if (this.g == 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1711276032);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+      this.b.setColor(1711276032);
+      this.b.setStyle(Paint.Style.FILL);
       localObject = new Path();
-      float f = this.jdField_a_of_type_AndroidGraphicsRect.top + this.jdField_a_of_type_AndroidGraphicsRect.height() * 0.5F;
-      ((Path)localObject).moveTo(getWidth(), f);
-      ((Path)localObject).addArc(new RectF(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom), 0.0F, -360.0F);
-      ((Path)localObject).moveTo(getWidth(), f);
+      float f1 = this.a.top + this.a.height() * 0.5F;
+      ((Path)localObject).moveTo(getWidth(), f1);
+      ((Path)localObject).addArc(new RectF(this.a.left, this.a.top, this.a.right, this.a.bottom), 0.0F, -360.0F);
+      ((Path)localObject).moveTo(getWidth(), f1);
       ((Path)localObject).lineTo(getWidth(), getHeight());
       ((Path)localObject).lineTo(0.0F, getHeight());
       ((Path)localObject).lineTo(0.0F, 0.0F);
       ((Path)localObject).lineTo(getWidth(), 0.0F);
-      ((Path)localObject).moveTo(getWidth(), f);
+      ((Path)localObject).moveTo(getWidth(), f1);
       ((Path)localObject).close();
-      paramCanvas.drawPath((Path)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1291845632);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(5.0F);
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidGraphicsRect.width() * 0.5F, f, this.jdField_a_of_type_AndroidGraphicsRect.width() * 0.5F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(3.0F);
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidGraphicsRect.width() * 0.5F, f, this.jdField_a_of_type_AndroidGraphicsRect.width() * 0.5F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath((Path)localObject, this.b);
+      this.b.setAntiAlias(true);
+      this.b.setStyle(Paint.Style.STROKE);
+      this.b.setColor(1291845632);
+      this.b.setStrokeWidth(5.0F);
+      paramCanvas.drawCircle(this.a.left + this.a.width() * 0.5F, f1, this.a.width() * 0.5F, this.b);
+      this.b.setColor(-1);
+      this.b.setStrokeWidth(3.0F);
+      paramCanvas.drawCircle(this.a.left + this.a.width() * 0.5F, f1, this.a.width() * 0.5F, this.b);
       return;
     }
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = new Rect[] { new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.left, 0, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.right, 0, getWidth(), this.jdField_a_of_type_AndroidGraphicsRect.top), new Rect(0, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, getWidth(), this.jdField_a_of_type_AndroidGraphicsRect.bottom), new Rect(0, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsRect.left, getHeight()), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsRect.right, getHeight()), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom, getWidth(), getHeight()) };
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect);
-    Object localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    this.i = new Rect[] { new Rect(0, 0, this.a.left, this.a.top), new Rect(this.a.left, 0, this.a.right, this.a.top), new Rect(this.a.right, 0, getWidth(), this.a.top), new Rect(0, this.a.top, this.a.left, this.a.bottom), new Rect(this.a.right, this.a.top, getWidth(), this.a.bottom), new Rect(0, this.a.bottom, this.a.left, getHeight()), new Rect(this.a.left, this.a.bottom, this.a.right, getHeight()), new Rect(this.a.right, this.a.bottom, getWidth(), getHeight()) };
+    this.j = new Rect();
+    this.j.set(this.a);
+    localObject = this.j;
     ((Rect)localObject).left -= 2;
-    localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    localObject = this.j;
     ((Rect)localObject).right += 2;
-    localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    localObject = this.j;
     ((Rect)localObject).top -= 2;
-    localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    localObject = this.j;
     ((Rect)localObject).bottom += 2;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1711276032);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsRect.length)
+    this.b.setColor(1711276032);
+    this.b.setStyle(Paint.Style.FILL);
+    int m = 0;
+    for (;;)
     {
-      paramCanvas.drawRect(this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i], this.jdField_a_of_type_AndroidGraphicsPaint);
-      i += 1;
+      localObject = this.i;
+      if (m >= localObject.length) {
+        break;
+      }
+      paramCanvas.drawRect(localObject[m], this.b);
+      m += 1;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(5.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1291845632);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(3.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.b.setColor(0);
+    paramCanvas.drawRect(this.j, this.b);
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeWidth(5.0F);
+    this.b.setColor(1291845632);
+    paramCanvas.drawRect(this.j, this.b);
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeWidth(3.0F);
+    this.b.setColor(-1);
+    paramCanvas.drawRect(this.j, this.b);
   }
 }
 

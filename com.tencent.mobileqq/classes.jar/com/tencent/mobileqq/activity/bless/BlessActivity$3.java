@@ -10,8 +10,8 @@ class BlessActivity$3
   
   public void run()
   {
-    BlessActivity.a(this.this$0).setImageBitmap(this.a);
-    BlessActivity.a(this.this$0).setVisibility(0);
+    BlessActivity.c(this.this$0).setImageBitmap(this.a);
+    BlessActivity.c(this.this$0).setVisibility(0);
   }
 }
 

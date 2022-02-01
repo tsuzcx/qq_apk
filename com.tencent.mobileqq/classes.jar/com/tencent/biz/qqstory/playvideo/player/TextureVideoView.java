@@ -20,61 +20,57 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.onTextureUpdateListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
+import java.io.IOException;
 import java.util.Map;
-import vwt;
-import vwu;
-import vwv;
-import vww;
-import vwx;
-import vwz;
-import vyi;
-import vyj;
-import vyk;
-import vyl;
-import vym;
-import vyn;
-import vyo;
-import vyq;
-import vyr;
-import vys;
 
 @TargetApi(14)
 public class TextureVideoView
   extends TextureView
   implements TextureView.SurfaceTextureListener, MediaController.MediaPlayerControl
 {
-  public int a;
-  protected Uri a;
-  protected Surface a;
-  public MediaController a;
-  public String a;
-  protected Map<String, String> a;
-  public vyi a;
-  private vyj jdField_a_of_type_Vyj = new vwz(this);
-  public vyk a;
-  public vyl a;
-  public vym a;
-  public vyn a;
-  protected vyo a;
-  vyq jdField_a_of_type_Vyq = new vwt(this);
-  protected vyr a;
-  public int b;
-  private vyk jdField_b_of_type_Vyk = new vwv(this);
-  private vyl jdField_b_of_type_Vyl = new vwx(this);
-  private vym jdField_b_of_type_Vym = new vww(this);
-  vyn jdField_b_of_type_Vyn = new vwu(this);
-  public boolean b;
-  protected int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  protected boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  protected boolean g;
+  protected boolean A = false;
+  IMediaPlayer.OnVideoSizeChangedListener B = new TextureVideoView.1(this);
+  IMediaPlayer.OnPreparedListener C = new TextureVideoView.2(this);
+  private IMediaPlayer.OnErrorListener D = new TextureVideoView.5(this);
+  private IMediaPlayer.OnBufferingUpdateListener E = new TextureVideoView.6(this);
+  private IMediaPlayer.OnCompletionListener a = new TextureVideoView.3(this);
+  private IMediaPlayer.OnInfoListener b = new TextureVideoView.4(this);
+  protected String c = "Q.qqstory.player.TextureVideoView";
+  protected Uri d;
+  protected Map<String, String> e;
+  protected int f = 0;
+  protected int g = 0;
+  protected Surface h = null;
+  protected IMediaPlayer i = null;
+  protected int j;
+  protected int k;
+  protected int l;
+  protected MediaController m;
+  protected IMediaPlayer.OnCompletionListener n;
+  protected IMediaPlayer.OnPreparedListener o;
+  protected IMediaPlayer.OnSeekCompleteListener p;
+  protected int q;
+  protected IMediaPlayer.OnErrorListener r;
+  protected IMediaPlayer.OnInfoListener s;
+  protected int t;
+  protected boolean u;
+  protected boolean v;
+  protected boolean w;
+  protected boolean x;
+  public boolean y;
+  protected IMediaPlayer.onTextureUpdateListener z;
   
   public TextureVideoView(Context paramContext)
   {
@@ -89,13 +85,190 @@ public class TextureVideoView
   public TextureVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.player.TextureVideoView";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    b();
+    c();
   }
   
-  private Activity a()
+  private void a(boolean paramBoolean)
+  {
+    if (this.d != null)
+    {
+      if (this.h == null) {
+        return;
+      }
+      b(false);
+      String str;
+      StringBuilder localStringBuilder;
+      if (paramBoolean) {
+        try
+        {
+          ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel())
+          {
+            str = this.c;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("requestAudioFocus Exception: ");
+            localStringBuilder.append(QLog.getStackTraceString(localException));
+            QLog.w(str, 2, localStringBuilder.toString());
+          }
+        }
+      }
+      try
+      {
+        this.i = a();
+        this.i.a(this.x);
+        if (this.j != 0) {
+          this.i.b(this.j);
+        } else {
+          this.j = this.i.o();
+        }
+        this.i.a(this.C);
+        this.i.a(this.B);
+        this.i.a(this.a);
+        this.i.a(this.D);
+        this.i.a(this.b);
+        this.i.a(this.E);
+        if (this.p != null) {
+          this.i.a(this.p);
+        }
+        this.q = 0;
+        this.i.a(getContext().getApplicationContext(), this.d, this.e);
+        this.i.a(this.h);
+        this.i.c(3);
+        this.i.b(true);
+        this.i.b();
+        this.f = 1;
+        e();
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(this.c, 2, "prepareAsync cause  IllegalStateException", localIllegalStateException);
+        }
+        this.f = -1;
+        this.g = -1;
+        this.D.a(this.i, 1, 0);
+        return;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        if (QLog.isColorLevel())
+        {
+          str = this.c;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unable to open content: ");
+          localStringBuilder.append(this.d);
+          QLog.w(str, 2, localStringBuilder.toString(), localIllegalArgumentException);
+        }
+        this.f = -1;
+        this.g = -1;
+        this.D.a(this.i, 1, 0);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        if (QLog.isColorLevel())
+        {
+          str = this.c;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unable to open content: ");
+          localStringBuilder.append(this.d);
+          QLog.w(str, 2, localStringBuilder.toString(), localIOException);
+        }
+        this.f = -1;
+        this.g = -1;
+        this.D.a(this.i, 1, 0);
+      }
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    IMediaPlayer localIMediaPlayer = this.i;
+    if (localIMediaPlayer != null)
+    {
+      localIMediaPlayer.f();
+      try
+      {
+        this.i.h();
+        this.i.g();
+      }
+      catch (IllegalStateException localIllegalStateException1)
+      {
+        IllegalStateException localIllegalStateException2 = new IllegalStateException("CatchedException, caused by: ", localIllegalStateException1);
+        QLog.e(this.c, 1, "mMediaPlayer.release() throw a exception!!", localIllegalStateException2);
+      }
+      this.i = null;
+      this.f = 0;
+      if (paramBoolean) {
+        this.g = 0;
+      }
+      ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
+    }
+  }
+  
+  private void c()
+  {
+    this.k = 0;
+    this.l = 0;
+    super.setSurfaceTextureListener(this);
+    super.setFocusable(true);
+    super.setFocusableInTouchMode(true);
+    super.requestFocus();
+    this.f = 0;
+    this.g = 0;
+  }
+  
+  private void d()
+  {
+    a(this.y ^ true);
+  }
+  
+  private void e()
+  {
+    if (this.i != null)
+    {
+      Object localObject = this.m;
+      if (localObject != null)
+      {
+        ((MediaController)localObject).setMediaPlayer(this);
+        if ((getParent() instanceof View)) {
+          localObject = (View)getParent();
+        } else {
+          localObject = this;
+        }
+        this.m.setAnchorView((View)localObject);
+        this.m.setEnabled(g());
+      }
+    }
+  }
+  
+  private void f()
+  {
+    if (this.m.isShowing())
+    {
+      this.m.hide();
+      return;
+    }
+    this.m.show();
+  }
+  
+  private boolean g()
+  {
+    if (this.i != null)
+    {
+      int i1 = this.f;
+      if ((i1 != -1) && (i1 != 0) && (i1 != 1)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private Activity getActivity()
   {
     try
     {
@@ -112,419 +285,85 @@ public class TextureVideoView
     }
   }
   
-  /* Error */
-  private void a(boolean paramBoolean)
+  protected IMediaPlayer a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   4: ifnull +10 -> 14
-    //   7: aload_0
-    //   8: getfield 117	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
-    //   11: ifnonnull +4 -> 15
-    //   14: return
-    //   15: aload_0
-    //   16: iconst_0
-    //   17: invokespecial 119	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:b	(Z)V
-    //   20: iload_1
-    //   21: ifeq +25 -> 46
-    //   24: aload_0
-    //   25: invokespecial 120	android/view/TextureView:getContext	()Landroid/content/Context;
-    //   28: invokevirtual 125	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   31: ldc 127
-    //   33: invokevirtual 131	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   36: checkcast 133	android/media/AudioManager
-    //   39: aconst_null
-    //   40: iconst_3
-    //   41: iconst_1
-    //   42: invokevirtual 137	android/media/AudioManager:requestAudioFocus	(Landroid/media/AudioManager$OnAudioFocusChangeListener;II)I
-    //   45: pop
-    //   46: aload_0
-    //   47: aload_0
-    //   48: invokevirtual 140	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:a	()Lvyi;
-    //   51: putfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   54: aload_0
-    //   55: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   58: aload_0
-    //   59: getfield 144	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_e_of_type_Boolean	Z
-    //   62: invokeinterface 148 2 0
-    //   67: aload_0
-    //   68: getfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
-    //   71: ifeq +300 -> 371
-    //   74: aload_0
-    //   75: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   78: aload_0
-    //   79: getfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
-    //   82: invokeinterface 153 2 0
-    //   87: aload_0
-    //   88: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   91: aload_0
-    //   92: getfield 63	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyn	Lvyn;
-    //   95: invokeinterface 156 2 0
-    //   100: aload_0
-    //   101: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   104: aload_0
-    //   105: getfield 58	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyq	Lvyq;
-    //   108: invokeinterface 159 2 0
-    //   113: aload_0
-    //   114: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   117: aload_0
-    //   118: getfield 68	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyk	Lvyk;
-    //   121: invokeinterface 162 2 0
-    //   126: aload_0
-    //   127: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   130: aload_0
-    //   131: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
-    //   134: invokeinterface 165 2 0
-    //   139: aload_0
-    //   140: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   143: aload_0
-    //   144: getfield 73	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vym	Lvym;
-    //   147: invokeinterface 168 2 0
-    //   152: aload_0
-    //   153: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   156: aload_0
-    //   157: getfield 83	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyj	Lvyj;
-    //   160: invokeinterface 171 2 0
-    //   165: aload_0
-    //   166: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyo	Lvyo;
-    //   169: ifnull +16 -> 185
-    //   172: aload_0
-    //   173: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   176: aload_0
-    //   177: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyo	Lvyo;
-    //   180: invokeinterface 176 2 0
-    //   185: aload_0
-    //   186: iconst_0
-    //   187: putfield 178	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_f_of_type_Int	I
-    //   190: aload_0
-    //   191: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   194: aload_0
-    //   195: invokevirtual 93	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:getContext	()Landroid/content/Context;
-    //   198: invokevirtual 125	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   201: aload_0
-    //   202: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   205: aload_0
-    //   206: getfield 180	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   209: invokeinterface 183 4 0
-    //   214: aload_0
-    //   215: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   218: aload_0
-    //   219: getfield 117	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
-    //   222: invokeinterface 186 2 0
-    //   227: aload_0
-    //   228: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   231: iconst_3
-    //   232: invokeinterface 188 2 0
-    //   237: aload_0
-    //   238: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   241: iconst_1
-    //   242: invokeinterface 189 2 0
-    //   247: aload_0
-    //   248: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   251: invokeinterface 190 1 0
-    //   256: aload_0
-    //   257: iconst_1
-    //   258: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
-    //   261: aload_0
-    //   262: invokespecial 192	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:d	()V
-    //   265: return
-    //   266: astore_2
-    //   267: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   270: ifeq +34 -> 304
-    //   273: aload_0
-    //   274: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   277: iconst_2
-    //   278: new 200	java/lang/StringBuilder
-    //   281: dup
-    //   282: invokespecial 202	java/lang/StringBuilder:<init>	()V
-    //   285: ldc 204
-    //   287: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: aload_0
-    //   291: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   294: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   297: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   300: aload_2
-    //   301: invokestatic 219	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   304: aload_0
-    //   305: iconst_m1
-    //   306: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
-    //   309: aload_0
-    //   310: iconst_m1
-    //   311: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
-    //   314: aload_0
-    //   315: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
-    //   318: aload_0
-    //   319: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   322: iconst_1
-    //   323: iconst_0
-    //   324: invokeinterface 224 4 0
-    //   329: pop
-    //   330: return
-    //   331: astore_2
-    //   332: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   335: ifeq -289 -> 46
-    //   338: aload_0
-    //   339: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   342: iconst_2
-    //   343: new 200	java/lang/StringBuilder
-    //   346: dup
-    //   347: invokespecial 202	java/lang/StringBuilder:<init>	()V
-    //   350: ldc 226
-    //   352: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: aload_2
-    //   356: invokestatic 230	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   359: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   365: invokestatic 233	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   368: goto -322 -> 46
-    //   371: aload_0
-    //   372: aload_0
-    //   373: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   376: invokeinterface 236 1 0
-    //   381: putfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
-    //   384: goto -297 -> 87
-    //   387: astore_2
-    //   388: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   391: ifeq +34 -> 425
-    //   394: aload_0
-    //   395: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   398: iconst_2
-    //   399: new 200	java/lang/StringBuilder
-    //   402: dup
-    //   403: invokespecial 202	java/lang/StringBuilder:<init>	()V
-    //   406: ldc 204
-    //   408: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   411: aload_0
-    //   412: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   415: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   418: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   421: aload_2
-    //   422: invokestatic 219	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   425: aload_0
-    //   426: iconst_m1
-    //   427: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
-    //   430: aload_0
-    //   431: iconst_m1
-    //   432: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
-    //   435: aload_0
-    //   436: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
-    //   439: aload_0
-    //   440: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   443: iconst_1
-    //   444: iconst_0
-    //   445: invokeinterface 224 4 0
-    //   450: pop
-    //   451: return
-    //   452: astore_2
-    //   453: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   456: ifeq +14 -> 470
-    //   459: aload_0
-    //   460: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   463: iconst_2
-    //   464: ldc 238
-    //   466: aload_2
-    //   467: invokestatic 219	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   470: aload_0
-    //   471: iconst_m1
-    //   472: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
-    //   475: aload_0
-    //   476: iconst_m1
-    //   477: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
-    //   480: aload_0
-    //   481: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
-    //   484: aload_0
-    //   485: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
-    //   488: iconst_1
-    //   489: iconst_0
-    //   490: invokeinterface 224 4 0
-    //   495: pop
-    //   496: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	497	0	this	TextureVideoView
-    //   0	497	1	paramBoolean	boolean
-    //   266	35	2	localIOException	java.io.IOException
-    //   331	25	2	localException	Exception
-    //   387	35	2	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   452	15	2	localIllegalStateException	IllegalStateException
-    // Exception table:
-    //   from	to	target	type
-    //   46	87	266	java/io/IOException
-    //   87	185	266	java/io/IOException
-    //   185	265	266	java/io/IOException
-    //   371	384	266	java/io/IOException
-    //   24	46	331	java/lang/Exception
-    //   46	87	387	java/lang/IllegalArgumentException
-    //   87	185	387	java/lang/IllegalArgumentException
-    //   185	265	387	java/lang/IllegalArgumentException
-    //   371	384	387	java/lang/IllegalArgumentException
-    //   46	87	452	java/lang/IllegalStateException
-    //   87	185	452	java/lang/IllegalStateException
-    //   185	265	452	java/lang/IllegalStateException
-    //   371	384	452	java/lang/IllegalStateException
+    return new MediaPlayerWrapper();
   }
   
-  private boolean a()
+  public void b()
   {
-    return (this.jdField_a_of_type_Vyi != null) && (this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1);
-  }
-  
-  private void b()
-  {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    super.setSurfaceTextureListener(this);
-    super.setFocusable(true);
-    super.setFocusableInTouchMode(true);
-    super.requestFocus();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Vyi != null) {
-      this.jdField_a_of_type_Vyi.e();
-    }
-    try
+    IMediaPlayer localIMediaPlayer = this.i;
+    if (localIMediaPlayer != null)
     {
-      this.jdField_a_of_type_Vyi.g();
-      this.jdField_a_of_type_Vyi.f();
-      this.jdField_a_of_type_Vyi = null;
-      this.jdField_a_of_type_Int = 0;
-      if (paramBoolean) {
-        this.jdField_b_of_type_Int = 0;
-      }
-      ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException1)
-    {
-      for (;;)
-      {
-        IllegalStateException localIllegalStateException2 = new IllegalStateException("CatchedException, caused by: ", localIllegalStateException1);
-        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mMediaPlayer.release() throw a exception!!", localIllegalStateException2);
-      }
-    }
-  }
-  
-  private void c()
-  {
-    if (!this.jdField_f_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      return;
-    }
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_Vyi != null) && (this.jdField_a_of_type_AndroidWidgetMediaController != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetMediaController.setMediaPlayer(this);
-      if (!(getParent() instanceof View)) {
-        break label60;
-      }
-    }
-    label60:
-    for (Object localObject = (View)getParent();; localObject = this)
-    {
-      this.jdField_a_of_type_AndroidWidgetMediaController.setAnchorView((View)localObject);
-      this.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(a());
-      return;
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetMediaController.isShowing())
-    {
-      this.jdField_a_of_type_AndroidWidgetMediaController.hide();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetMediaController.show();
-  }
-  
-  protected vyi a()
-  {
-    return new vys();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Vyi != null)
-    {
-      this.jdField_a_of_type_Vyi.e();
-      this.jdField_a_of_type_Vyi.f();
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi.a(null);
-      this.jdField_a_of_type_Vyi = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
+      localIMediaPlayer.f();
+      this.i.g();
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i = null;
+      this.f = 0;
+      this.g = 0;
       ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
     }
   }
   
   public boolean canPause()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.u;
   }
   
   public boolean canSeekBackward()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.v;
   }
   
   public boolean canSeekForward()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.w;
   }
   
   public int getAudioSessionId()
   {
-    if (this.jdField_c_of_type_Int == 0)
+    if (this.j == 0)
     {
-      MediaPlayer localMediaPlayer = new MediaPlayer();
-      this.jdField_c_of_type_Int = localMediaPlayer.getAudioSessionId();
-      localMediaPlayer.release();
+      ReportMediaPlayer localReportMediaPlayer = new ReportMediaPlayer();
+      this.j = localReportMediaPlayer.getAudioSessionId();
+      localReportMediaPlayer.release();
     }
-    return this.jdField_c_of_type_Int;
+    return this.j;
   }
   
   public int getBufferPercentage()
   {
-    if (this.jdField_a_of_type_Vyi != null) {
-      return this.jdField_f_of_type_Int;
+    if (this.i != null) {
+      return this.q;
     }
     return 0;
   }
   
   public int getCurrentPosition()
   {
-    if (a()) {
-      return this.jdField_a_of_type_Vyi.b();
+    if (g()) {
+      return this.i.k();
     }
     return 0;
   }
   
   public int getDuration()
   {
-    if (a()) {
-      return this.jdField_a_of_type_Vyi.a();
+    if (g()) {
+      return this.i.j();
     }
     return -1;
   }
   
   public boolean isPlaying()
   {
-    return (a()) && (this.jdField_a_of_type_Vyi.a());
+    return (g()) && (this.i.e());
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -541,187 +380,163 @@ public class TextureVideoView
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    int i;
-    if ((paramInt != 4) && (paramInt != 24) && (paramInt != 25) && (paramInt != 164) && (paramInt != 82) && (paramInt != 5) && (paramInt != 6))
-    {
-      i = 1;
-      if ((!a()) || (i == 0) || (this.jdField_a_of_type_AndroidWidgetMediaController == null)) {
-        break label188;
-      }
-      if ((paramInt != 79) && (paramInt != 85)) {
-        break label116;
-      }
-      if (!this.jdField_a_of_type_Vyi.a()) {
-        break label103;
-      }
-      pause();
-      this.jdField_a_of_type_AndroidWidgetMediaController.show();
+    int i1;
+    if ((paramInt != 4) && (paramInt != 24) && (paramInt != 25) && (paramInt != 164) && (paramInt != 82) && (paramInt != 5) && (paramInt != 6)) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
-    label103:
-    label116:
-    do
-    {
-      do
+    if ((g()) && (i1 != 0) && (this.m != null)) {
+      if ((paramInt != 79) && (paramInt != 85))
       {
-        return true;
-        i = 0;
-        break;
-        start();
-        this.jdField_a_of_type_AndroidWidgetMediaController.hide();
-        return true;
-        if (paramInt != 126) {
-          break label147;
+        if (paramInt == 126)
+        {
+          if (!this.i.e())
+          {
+            start();
+            this.m.hide();
+          }
+          return true;
         }
-      } while (this.jdField_a_of_type_Vyi.a());
-      start();
-      this.jdField_a_of_type_AndroidWidgetMediaController.hide();
-      return true;
-      if ((paramInt != 86) && (paramInt != 127)) {
-        break label184;
+        if ((paramInt != 86) && (paramInt != 127))
+        {
+          f();
+        }
+        else
+        {
+          if (this.i.e())
+          {
+            pause();
+            this.m.show();
+          }
+          return true;
+        }
       }
-    } while (!this.jdField_a_of_type_Vyi.a());
-    label147:
-    pause();
-    this.jdField_a_of_type_AndroidWidgetMediaController.show();
-    return true;
-    label184:
-    e();
-    label188:
+      else
+      {
+        if (this.i.e())
+        {
+          pause();
+          this.m.show();
+          return true;
+        }
+        start();
+        this.m.hide();
+        return true;
+      }
+    }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int k = TextureView.getDefaultSize(this.jdField_d_of_type_Int, paramInt1);
-    int m = TextureView.getDefaultSize(this.jdField_e_of_type_Int, paramInt2);
-    int j = m;
-    int i = k;
-    int n;
-    if (this.jdField_d_of_type_Int > 0)
+    int i3 = TextureView.getDefaultSize(this.k, paramInt1);
+    int i4 = TextureView.getDefaultSize(this.l, paramInt2);
+    int i2 = i3;
+    int i1 = i4;
+    if (this.k > 0)
     {
-      j = m;
-      i = k;
-      if (this.jdField_e_of_type_Int > 0)
+      i2 = i3;
+      i1 = i4;
+      if (this.l > 0)
       {
-        m = View.MeasureSpec.getMode(paramInt1);
-        paramInt1 = View.MeasureSpec.getSize(paramInt1);
-        n = View.MeasureSpec.getMode(paramInt2);
-        paramInt2 = View.MeasureSpec.getSize(paramInt2);
-        if ((m != 1073741824) || (n != 1073741824)) {
-          break label207;
-        }
-        if (this.jdField_d_of_type_Int * paramInt2 >= this.jdField_e_of_type_Int * paramInt1) {
-          break label149;
-        }
-        if (!this.jdField_g_of_type_Boolean) {
-          break label131;
-        }
-        i = this.jdField_d_of_type_Int * paramInt2 / this.jdField_e_of_type_Int;
-        j = paramInt2;
-      }
-    }
-    for (;;)
-    {
-      super.setMeasuredDimension(i, j);
-      return;
-      label131:
-      j = this.jdField_e_of_type_Int * paramInt1 / this.jdField_d_of_type_Int;
-      i = paramInt1;
-      continue;
-      label149:
-      if (this.jdField_d_of_type_Int * paramInt2 > this.jdField_e_of_type_Int * paramInt1)
-      {
-        if (this.jdField_g_of_type_Boolean)
+        i3 = View.MeasureSpec.getMode(paramInt1);
+        i1 = View.MeasureSpec.getSize(paramInt1);
+        i4 = View.MeasureSpec.getMode(paramInt2);
+        paramInt1 = View.MeasureSpec.getSize(paramInt2);
+        if ((i3 == 1073741824) && (i4 == 1073741824))
         {
-          j = this.jdField_e_of_type_Int * paramInt1 / this.jdField_d_of_type_Int;
-          i = paramInt1;
+          i2 = this.k;
+          i3 = this.l;
+          if (i2 * paramInt1 < i1 * i3) {
+            if (!this.A) {}
+          }
+          for (i2 = i2 * paramInt1 / i3;; i2 = i2 * paramInt1 / i3)
+          {
+            i1 = paramInt1;
+            break label343;
+            paramInt1 = i3 * i1 / i2;
+            paramInt2 = i1;
+            break;
+            paramInt2 = i1;
+            if (i2 * paramInt1 <= i1 * i3) {
+              break;
+            }
+            if (this.A)
+            {
+              paramInt1 = i3 * i1 / i2;
+              paramInt2 = i1;
+              break;
+            }
+          }
+        }
+        if (i3 == 1073741824)
+        {
+          paramInt2 = this.l * i1 / this.k;
+          if ((i4 != -2147483648) || (paramInt2 <= paramInt1))
+          {
+            paramInt1 = paramInt2;
+            paramInt2 = i1;
+            break label348;
+          }
         }
         else
         {
-          i = this.jdField_d_of_type_Int * paramInt2 / this.jdField_e_of_type_Int;
-          j = paramInt2;
-          continue;
-          label207:
-          if (m == 1073741824)
-          {
-            j = this.jdField_e_of_type_Int * paramInt1 / this.jdField_d_of_type_Int;
-            if ((n == -2147483648) && (j > paramInt2))
-            {
-              j = paramInt2;
-              i = paramInt1;
-            }
+          if (i4 != 1073741824) {
+            break label272;
           }
-          else
-          {
-            if (n == 1073741824)
-            {
-              k = this.jdField_d_of_type_Int * paramInt2 / this.jdField_e_of_type_Int;
-              j = paramInt2;
-              i = k;
-              if (m != -2147483648) {
-                continue;
-              }
-              j = paramInt2;
-              i = k;
-              if (k <= paramInt1) {
-                continue;
-              }
-              j = paramInt2;
-              i = paramInt1;
-              continue;
-            }
-            k = this.jdField_d_of_type_Int;
-            i = this.jdField_e_of_type_Int;
-            if ((n == -2147483648) && (i > paramInt2)) {
-              k = this.jdField_d_of_type_Int * paramInt2 / this.jdField_e_of_type_Int;
-            }
-            for (;;)
-            {
-              j = paramInt2;
-              i = k;
-              if (m != -2147483648) {
-                break;
-              }
-              j = paramInt2;
-              i = k;
-              if (k <= paramInt1) {
-                break;
-              }
-              j = this.jdField_e_of_type_Int * paramInt1 / this.jdField_d_of_type_Int;
-              i = paramInt1;
-              break;
-              paramInt2 = i;
-            }
+          paramInt2 = this.k * paramInt1 / this.l;
+          if ((i3 != -2147483648) || (paramInt2 <= i1)) {
+            break label269;
           }
-          i = paramInt1;
         }
-      }
-      else
-      {
-        j = paramInt2;
-        i = paramInt1;
+        paramInt2 = i1;
+        label269:
+        break label348;
+        label272:
+        paramInt2 = this.k;
+        i2 = this.l;
+        if ((i4 == -2147483648) && (i2 > paramInt1)) {
+          paramInt2 = paramInt2 * paramInt1 / i2;
+        } else {
+          paramInt1 = i2;
+        }
+        if ((i3 == -2147483648) && (paramInt2 > i1))
+        {
+          paramInt1 = this.l * i1 / this.k;
+          paramInt2 = i1;
+          break label348;
+        }
+        break label348;
       }
     }
+    label343:
+    paramInt2 = i2;
+    paramInt1 = i1;
+    label348:
+    super.setMeasuredDimension(paramInt2, paramInt1);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(paramSurfaceTexture);
+    this.h = new Surface(paramSurfaceTexture);
     if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceTextureAvailable: openVideo");
+      QLog.w(this.c, 1, "onSurfaceTextureAvailable: openVideo");
     }
-    c();
+    d();
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
+    paramSurfaceTexture = this.h;
+    if (paramSurfaceTexture != null)
     {
-      this.jdField_a_of_type_AndroidViewSurface.release();
-      this.jdField_a_of_type_AndroidViewSurface = null;
+      paramSurfaceTexture.release();
+      this.h = null;
     }
-    if (this.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    paramSurfaceTexture = this.m;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.hide();
     }
     b(true);
     return true;
@@ -729,124 +544,124 @@ public class TextureVideoView
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    int j = 1;
-    int i;
-    if (this.jdField_b_of_type_Int == 3)
-    {
-      i = 1;
-      if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-        break label67;
-      }
+    int i1 = this.g;
+    int i2 = 1;
+    if (i1 == 3) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
-    label67:
-    for (paramInt1 = j;; paramInt1 = 0)
+    if ((paramInt1 > 0) && (paramInt2 > 0)) {
+      paramInt1 = i2;
+    } else {
+      paramInt1 = 0;
+    }
+    if ((this.i != null) && (i1 != 0) && (paramInt1 != 0))
     {
-      if ((this.jdField_a_of_type_Vyi != null) && (i != 0) && (paramInt1 != 0))
-      {
-        if (this.jdField_g_of_type_Int != 0) {
-          seekTo(this.jdField_g_of_type_Int);
-        }
-        start();
+      paramInt1 = this.t;
+      if (paramInt1 != 0) {
+        seekTo(paramInt1);
       }
-      return;
-      i = 0;
-      break;
+      start();
     }
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.jdField_a_of_type_Vyr != null) {
-      this.jdField_a_of_type_Vyr.a(paramSurfaceTexture);
+    IMediaPlayer.onTextureUpdateListener localonTextureUpdateListener = this.z;
+    if (localonTextureUpdateListener != null) {
+      localonTextureUpdateListener.a(paramSurfaceTexture);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((a()) && (this.jdField_a_of_type_AndroidWidgetMediaController != null)) {
-      e();
+    if ((g()) && (this.m != null)) {
+      f();
     }
     return false;
   }
   
   public boolean onTrackballEvent(MotionEvent paramMotionEvent)
   {
-    if ((a()) && (this.jdField_a_of_type_AndroidWidgetMediaController != null)) {
-      e();
+    if ((g()) && (this.m != null)) {
+      f();
     }
     return false;
   }
   
   public void pause()
   {
-    if ((a()) && (this.jdField_a_of_type_Vyi.a()))
+    if ((g()) && (this.i.e()))
     {
-      this.jdField_a_of_type_Vyi.d();
-      this.jdField_a_of_type_Int = 4;
+      this.i.d();
+      this.f = 4;
     }
-    this.jdField_b_of_type_Int = 4;
+    this.g = 4;
   }
   
   public void seekTo(int paramInt)
   {
-    if (a())
+    if (g())
     {
-      this.jdField_a_of_type_Vyi.a(paramInt);
-      this.jdField_g_of_type_Int = 0;
+      this.i.a(paramInt);
+      this.t = 0;
       return;
     }
-    this.jdField_g_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void setCenterInside(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    this.A = paramBoolean;
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Vyi != null) {
-      this.jdField_a_of_type_Vyi.a(paramBoolean);
+    this.x = paramBoolean;
+    IMediaPlayer localIMediaPlayer = this.i;
+    if (localIMediaPlayer != null) {
+      localIMediaPlayer.a(paramBoolean);
     }
   }
   
-  public void setOnCompletionListener(vyk paramvyk)
+  public void setOnCompletionListener(IMediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    this.jdField_a_of_type_Vyk = paramvyk;
+    this.n = paramOnCompletionListener;
   }
   
-  public void setOnErrorListener(vyl paramvyl)
+  public void setOnErrorListener(IMediaPlayer.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_Vyl = paramvyl;
+    this.r = paramOnErrorListener;
   }
   
-  public void setOnInfoListener(vym paramvym)
+  public void setOnInfoListener(IMediaPlayer.OnInfoListener paramOnInfoListener)
   {
-    this.jdField_a_of_type_Vym = paramvym;
+    this.s = paramOnInfoListener;
   }
   
-  public void setOnPreparedListener(vyn paramvyn)
+  public void setOnPreparedListener(IMediaPlayer.OnPreparedListener paramOnPreparedListener)
   {
-    this.jdField_a_of_type_Vyn = paramvyn;
+    this.o = paramOnPreparedListener;
   }
   
-  public void setOnSeekCompleteListener(vyo paramvyo)
+  public void setOnSeekCompleteListener(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.jdField_a_of_type_Vyo = paramvyo;
-    if (this.jdField_a_of_type_Vyi != null) {
-      this.jdField_a_of_type_Vyi.a(paramvyo);
+    this.p = paramOnSeekCompleteListener;
+    IMediaPlayer localIMediaPlayer = this.i;
+    if (localIMediaPlayer != null) {
+      localIMediaPlayer.a(paramOnSeekCompleteListener);
     }
   }
   
   public void setVideoPath(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = null;; paramString = Uri.parse(paramString))
-    {
-      setVideoURI(paramString);
-      return;
+    if (paramString == null) {
+      paramString = null;
+    } else {
+      paramString = Uri.parse(paramString);
     }
+    setVideoURI(paramString);
   }
   
   public void setVideoURI(Uri paramUri)
@@ -856,35 +671,35 @@ public class TextureVideoView
   
   public void setVideoURI(Uri paramUri, Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_g_of_type_Int = 0;
+    this.d = paramUri;
+    this.e = paramMap;
+    this.t = 0;
     if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setVideoURI: openVideo");
+      QLog.w(this.c, 1, "setVideoURI: openVideo");
     }
-    c();
+    d();
     super.requestLayout();
     super.invalidate();
   }
   
-  public void setmOnTextureUpdateListener(vyr paramvyr)
+  public void setmOnTextureUpdateListener(IMediaPlayer.onTextureUpdateListener paramonTextureUpdateListener)
   {
-    this.jdField_a_of_type_Vyr = paramvyr;
+    this.z = paramonTextureUpdateListener;
   }
   
   public void start()
   {
-    if (a())
+    if (g())
     {
-      this.jdField_a_of_type_Vyi.c();
-      this.jdField_a_of_type_Int = 3;
+      this.i.c();
+      this.f = 3;
     }
-    this.jdField_b_of_type_Int = 3;
+    this.g = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView
  * JD-Core Version:    0.7.0.1
  */

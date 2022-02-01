@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.view.t;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,134 +10,185 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.luggage.g.f;
+import androidx.core.g.z;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.luggage.b.a.a.e;
+import com.tencent.luggage.l.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.d.a;
+import com.tencent.mm.plugin.appbrand.widget.f.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-@SuppressLint({"ViewConstructor"})
 public final class n
   extends FrameLayout
 {
-  private static final int VIEW_ID = 2131820573;
-  private View jlX;
-  private int jlY;
-  private final int[] jlZ;
-  private a jma;
-  private WeakHashMap<View, n.b> jmb;
-  private Runnable jmc;
-  private final Runnable jmd;
-  private final Set<n.a> jme;
-  private View mContent;
+  private static final int ehD = a.e.app_brand_ui_root;
+  private View bmR;
+  private View ehE;
+  private int ehF;
+  private final int[] ehG;
+  private WeakHashMap<View, b> ehI;
+  private Runnable ehJ;
+  private final Runnable ehK;
+  private final Set<a> ehL;
   private boolean mInLayout;
+  private ap uGx;
+  private a uGy;
   
   public n(Context paramContext, View paramView)
   {
-    super(paramContext);
-    AppMethodBeat.i(126668);
-    this.jlY = -1;
+    super(paramContext.getApplicationContext());
+    AppMethodBeat.i(137948);
+    this.ehF = -1;
     this.mInLayout = false;
-    this.jlZ = new int[2];
-    this.jmb = new WeakHashMap();
-    this.jmc = new n.1(this);
-    this.jmd = new n.2(this);
-    this.jme = new HashSet();
-    super.setId(VIEW_ID);
-    this.mContent = paramView;
-    super.addView(paramView);
-    AppMethodBeat.o(126668);
-  }
-  
-  public static n cJ(View paramView)
-  {
-    AppMethodBeat.i(126665);
-    paramView = (n)paramView.getRootView().findViewById(VIEW_ID);
-    AppMethodBeat.o(126665);
-    return paramView;
-  }
-  
-  public static u cL(View paramView)
-  {
-    AppMethodBeat.i(126681);
-    paramView = cJ(paramView);
-    if (paramView == null)
+    this.ehG = new int[2];
+    this.ehI = new WeakHashMap();
+    this.ehJ = new Runnable()
     {
-      AppMethodBeat.o(126681);
-      return null;
+      public final void run()
+      {
+        int i = 0;
+        AppMethodBeat.i(137943);
+        if (n.a(n.this) == null)
+        {
+          AppMethodBeat.o(137943);
+          return;
+        }
+        Log.i("MicroMsg.AppBrandUIdRootFrameLayout", "hideInactivePanelView, mPanel %s", new Object[] { n.a(n.this).getClass().getSimpleName() });
+        while (i < n.this.getChildCount())
+        {
+          View localView = n.this.getChildAt(i);
+          if ((localView != null) && (localView != n.b(n.this)) && (localView != n.a(n.this))) {
+            n.eg(localView);
+          }
+          i += 1;
+        }
+        AppMethodBeat.o(137943);
+      }
+    };
+    this.ehK = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(137944);
+        Log.i("MicroMsg.AppBrandUIdRootFrameLayout", "callOnPanelChanged, size %d", new Object[] { Integer.valueOf(n.c(n.this).size()) });
+        if (n.c(n.this).size() <= 0)
+        {
+          AppMethodBeat.o(137944);
+          return;
+        }
+        n.a[] arrayOfa = new n.a[n.c(n.this).size()];
+        n.c(n.this).toArray(arrayOfa);
+        AppMethodBeat.o(137944);
+      }
+    };
+    this.ehL = new HashSet();
+    super.setId(ehD);
+    this.bmR = paramView;
+    paramContext = AndroidContextUtil.castActivityOrNull(paramContext);
+    if ((paramContext instanceof FragmentActivity)) {
+      this.uGx = new ap(paramContext);
     }
-    if ((paramView.getOnLayoutListener() == null) || (!(paramView.getOnLayoutListener() instanceof u))) {
-      paramView.setOnLayoutListener(new u());
-    }
-    paramView = (u)paramView.getOnLayoutListener();
-    AppMethodBeat.o(126681);
-    return paramView;
+    AppMethodBeat.o(137948);
   }
   
-  public static n v(Activity paramActivity)
+  public static n Q(Activity paramActivity)
   {
-    AppMethodBeat.i(126666);
-    paramActivity = (n)paramActivity.findViewById(VIEW_ID);
-    AppMethodBeat.o(126666);
+    AppMethodBeat.i(137946);
+    paramActivity = (n)paramActivity.findViewById(ehD);
+    AppMethodBeat.o(137946);
     return paramActivity;
   }
   
-  public static void w(Activity paramActivity)
+  public static void R(Activity paramActivity)
   {
-    AppMethodBeat.i(126667);
-    paramActivity = v(paramActivity);
-    if ((paramActivity != null) && (paramActivity.jlX != null))
-    {
-      paramActivity.jlX.setVisibility(8);
-      paramActivity.jlX = null;
+    AppMethodBeat.i(137947);
+    paramActivity = Q(paramActivity);
+    if (paramActivity != null) {
+      paramActivity.cRg();
     }
-    AppMethodBeat.o(126667);
+    AppMethodBeat.o(137947);
+  }
+  
+  public static n ed(View paramView)
+  {
+    AppMethodBeat.i(137945);
+    paramView = (n)paramView.getRootView().findViewById(ehD);
+    AppMethodBeat.o(137945);
+    return paramView;
+  }
+  
+  public static u ef(View paramView)
+  {
+    AppMethodBeat.i(137962);
+    paramView = ed(paramView);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(137962);
+      return null;
+    }
+    if ((paramView.getOnLayoutListener() == null) || (!(paramView.getOnLayoutListener() instanceof u)))
+    {
+      u localu = new u();
+      paramView.setOnLayoutListener(localu);
+      if (paramView.uGx != null)
+      {
+        ap localap = paramView.uGx;
+        localu.uGZ = localap;
+        localap.uJd = new u.3(localu);
+      }
+    }
+    paramView = (u)paramView.getOnLayoutListener();
+    AppMethodBeat.o(137962);
+    return paramView;
   }
   
   public final void addView(View paramView)
   {
-    AppMethodBeat.i(126673);
-    if ((paramView == this.mContent) || (paramView == this.jlX)) {
+    AppMethodBeat.i(137953);
+    if ((paramView == this.bmR) || (paramView == this.ehE)) {
       super.addView(paramView);
     }
-    AppMethodBeat.o(126673);
+    AppMethodBeat.o(137953);
   }
   
   public final void addView(View paramView, int paramInt)
   {
-    AppMethodBeat.i(126674);
-    if ((paramView == this.mContent) || (paramView == this.jlX)) {
+    AppMethodBeat.i(137954);
+    if ((paramView == this.bmR) || (paramView == this.ehE)) {
       super.addView(paramView, paramInt);
     }
-    AppMethodBeat.o(126674);
+    AppMethodBeat.o(137954);
   }
   
   public final void addView(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(126675);
-    if ((paramView == this.mContent) || (paramView == this.jlX)) {
+    AppMethodBeat.i(137955);
+    if ((paramView == this.bmR) || (paramView == this.ehE)) {
       super.addView(paramView, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(126675);
+    AppMethodBeat.o(137955);
   }
   
   public final void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(126677);
-    if ((paramView == this.mContent) || (paramView == this.jlX)) {
+    AppMethodBeat.i(137957);
+    if ((paramView == this.bmR) || (paramView == this.ehE)) {
       super.addView(paramView, paramInt, paramLayoutParams);
     }
-    AppMethodBeat.o(126677);
+    AppMethodBeat.o(137957);
   }
   
   public final void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(126676);
-    if ((paramView == this.mContent) || (paramView == this.jlX)) {
+    AppMethodBeat.i(137956);
+    if ((paramView == this.bmR) || (paramView == this.ehE)) {
       super.addView(paramView, paramLayoutParams);
     }
-    AppMethodBeat.o(126676);
+    AppMethodBeat.o(137956);
   }
   
   protected final boolean addViewInLayout(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -152,96 +201,119 @@ public final class n
     return false;
   }
   
-  public final void cK(View paramView)
+  public final void cRg()
   {
-    AppMethodBeat.i(126679);
-    n(paramView, false);
-    AppMethodBeat.o(126679);
-  }
-  
-  public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(126671);
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1))
+    AppMethodBeat.i(324561);
+    if (this.ehE != null)
     {
-      if ((this.jlX != null) && (this.jlX.isShown()))
-      {
-        this.jlX.setVisibility(8);
-        AppMethodBeat.o(126671);
-        return true;
-      }
-      if (f.av(getContext()))
-      {
-        AppMethodBeat.o(126671);
-        return true;
-      }
+      this.ehE.setVisibility(8);
+      this.ehE = null;
     }
-    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(126671);
-    return bool;
+    AppMethodBeat.o(324561);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(126672);
-    n.b localb = (n.b)this.jmb.get(this.jlX);
-    if ((localb != null) && (localb.jmg) && (this.jlX != null) && (this.jlX.isShown()) && (paramMotionEvent.getAction() == 0))
+    AppMethodBeat.i(137952);
+    b localb = (b)this.ehI.get(this.ehE);
+    if ((localb != null) && (localb.ehN) && (this.ehE != null) && (this.ehE.isShown()) && (paramMotionEvent.getAction() == 0))
     {
       float f1 = paramMotionEvent.getRawY();
-      this.jlX.getLocationOnScreen(this.jlZ);
-      float f2 = this.jlZ[1];
-      float f3 = this.jlX.getHeight();
+      this.ehE.getLocationOnScreen(this.ehG);
+      float f2 = this.ehG[1];
+      float f3 = this.ehE.getHeight();
       if ((f1 < f2) || (f1 > f3 + f2))
       {
-        this.jlX.setVisibility(8);
-        AppMethodBeat.o(126672);
+        this.ehE.setVisibility(8);
+        AppMethodBeat.o(137952);
         return true;
       }
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(126672);
+    AppMethodBeat.o(137952);
     return bool;
+  }
+  
+  public final void ee(View paramView)
+  {
+    AppMethodBeat.i(137960);
+    n(paramView, false);
+    AppMethodBeat.o(137960);
   }
   
   public final View getCurrentBottomPanel()
   {
-    return this.jlX;
+    return this.ehE;
   }
   
   public final a getOnLayoutListener()
   {
-    return this.jma;
+    return this.uGy;
+  }
+  
+  public final boolean j(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(183769);
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1))
+    {
+      if ((this.ehE != null) && (this.ehE.isShown()))
+      {
+        this.ehE.setVisibility(8);
+        AppMethodBeat.o(183769);
+        return true;
+      }
+      if (f.bv(getContext()))
+      {
+        AppMethodBeat.o(183769);
+        return true;
+      }
+    }
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(183769);
+    return bool;
   }
   
   public final void n(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(126678);
-    if (this.jlX != null)
+    AppMethodBeat.i(137959);
+    if (this.ehE != null)
     {
-      this.jlX.setVisibility(8);
-      this.jlX = null;
+      this.ehE.setVisibility(8);
+      this.ehE = null;
     }
     if (this != paramView.getParent())
     {
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
-      this.jlX = paramView;
+      this.ehE = paramView;
       Object localObject = new FrameLayout.LayoutParams(-1, -2);
       ((FrameLayout.LayoutParams)localObject).gravity = 80;
       super.addView(paramView, (ViewGroup.LayoutParams)localObject);
-      localObject = new n.b((byte)0);
-      ((n.b)localObject).jmg = paramBoolean;
-      this.jmb.put(paramView, localObject);
+      localObject = new b((byte)0);
+      ((b)localObject).ehN = paramBoolean;
+      this.ehI.put(paramView, localObject);
     }
-    AppMethodBeat.o(126678);
+    AppMethodBeat.o(137959);
+  }
+  
+  protected final void onDetachedFromWindow()
+  {
+    AppMethodBeat.i(324576);
+    super.onDetachedFromWindow();
+    if (this.uGy != null) {
+      this.uGy.onDestroy();
+    }
+    this.uGy = null;
+    removeAllViews();
+    AppMethodBeat.o(324576);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(126680);
+    AppMethodBeat.i(137961);
     this.mInLayout = true;
-    if (t.as(this))
+    if (z.au(this))
     {
       int m = 0;
       int j = 0;
@@ -253,15 +325,15 @@ public final class n
         int i = j;
         int i2 = n;
         int i1 = k;
-        n.b localb;
+        b localb;
         if (localView != null)
         {
           i = j;
           i2 = n;
           i1 = k;
-          if (localView != this.mContent)
+          if (localView != this.bmR)
           {
-            localb = (n.b)this.jmb.get(localView);
+            localb = (b)this.ehI.get(localView);
             i = j;
             i2 = n;
             i1 = k;
@@ -271,18 +343,18 @@ public final class n
               if (j == 0)
               {
                 i = j;
-                if (localb.jmh != 0)
+                if (localb.ehO != 0)
                 {
                   i = j;
                   if (localView.getVisibility() == 0)
                   {
-                    this.jlX = localView;
-                    post(this.jmc);
+                    this.ehE = localView;
+                    post(this.ehJ);
                     i = 1;
                   }
                 }
               }
-              if (localb.jmh != 0) {
+              if (localb.ehO != 0) {
                 break label234;
               }
               j = 1;
@@ -298,7 +370,7 @@ public final class n
         for (i1 = 1;; i1 = 0)
         {
           i2 = n & i1;
-          localb.jmh = localView.getVisibility();
+          localb.ehO = localView.getVisibility();
           i1 = j | k;
           m += 1;
           j = i;
@@ -310,66 +382,74 @@ public final class n
         }
       }
       if ((j != 0) || ((k != 0) && (n != 0))) {
-        post(this.jmd);
+        post(this.ehK);
       }
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jma != null) {
-      this.jma.cN(this);
+    if (this.uGy != null) {
+      this.uGy.cN(this);
     }
     this.mInLayout = false;
-    AppMethodBeat.o(126680);
+    AppMethodBeat.o(137961);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(126670);
-    if (this.jlY > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.jlY, 1073741824);
+    AppMethodBeat.i(137950);
+    if (this.ehF > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.ehF, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(126670);
+    AppMethodBeat.o(137950);
   }
   
   public final void onViewRemoved(View paramView)
   {
-    AppMethodBeat.i(156316);
+    AppMethodBeat.i(137958);
     super.onViewRemoved(paramView);
-    this.jmb.remove(paramView);
-    AppMethodBeat.o(156316);
+    this.ehI.remove(paramView);
+    AppMethodBeat.o(137958);
   }
   
   public final void setForceHeight(int paramInt)
   {
-    AppMethodBeat.i(126669);
-    if (paramInt != this.jlY) {}
+    AppMethodBeat.i(137949);
+    if (paramInt != this.ehF) {}
     for (int i = 1;; i = 0)
     {
-      this.jlY = paramInt;
+      this.ehF = paramInt;
       if (i == 0) {
         break label62;
       }
-      if (t.as(this)) {
+      if (z.au(this)) {
         break;
       }
-      AppMethodBeat.o(126669);
+      AppMethodBeat.o(137949);
       return;
     }
     if (this.mInLayout)
     {
-      AppMethodBeat.o(126669);
+      AppMethodBeat.o(137949);
       return;
     }
     requestLayout();
     label62:
-    AppMethodBeat.o(126669);
+    AppMethodBeat.o(137949);
   }
   
   public final void setId(int paramInt) {}
   
   public final void setOnLayoutListener(a parama)
   {
-    this.jma = parama;
+    this.uGy = parama;
+  }
+  
+  public static abstract interface a {}
+  
+  static final class b
+  {
+    boolean ehN;
+    int ehO = 8;
   }
 }
 

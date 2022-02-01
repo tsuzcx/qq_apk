@@ -32,7 +32,7 @@ import com.tencent.mobileqq.widget.FakeTextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
-import ezh;
+import ezg;
 import mqq.app.BaseActivity;
 
 public class BaseActivity2
@@ -69,7 +69,7 @@ public class BaseActivity2
   {
     if (paramBoolean) {
       if (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-        new ezh(this).start();
+        new ezg(this).start();
       }
     }
     while (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
@@ -155,25 +155,25 @@ public class BaseActivity2
     {
     default: 
       return super.findViewById(paramInt);
+    case 2131231455: 
+      localObject = new FakeTextView(this);
+      ((TextView)localObject).setId(2131231455);
+      return localObject;
     case 2131231456: 
       localObject = new FakeTextView(this);
       ((TextView)localObject).setId(2131231456);
       return localObject;
-    case 2131231457: 
+    case 2131231375: 
       localObject = new FakeTextView(this);
-      ((TextView)localObject).setId(2131231457);
+      ((TextView)localObject).setId(2131231375);
       return localObject;
-    case 2131231376: 
+    case 2131231379: 
       localObject = new FakeTextView(this);
-      ((TextView)localObject).setId(2131231376);
-      return localObject;
-    case 2131231380: 
-      localObject = new FakeTextView(this);
-      ((TextView)localObject).setId(2131231380);
+      ((TextView)localObject).setId(2131231379);
       return localObject;
     }
     Object localObject = new FakeImageView(this);
-    ((ImageView)localObject).setId(2131231461);
+    ((ImageView)localObject).setId(2131231460);
     return localObject;
   }
   

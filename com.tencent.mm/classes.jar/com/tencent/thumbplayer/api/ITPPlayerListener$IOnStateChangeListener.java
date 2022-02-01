@@ -1,0 +1,12 @@
+package com.tencent.thumbplayer.api;
+
+public abstract interface ITPPlayerListener$IOnStateChangeListener
+{
+  public abstract void onStateChange(int paramInt1, int paramInt2);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.thumbplayer.api.ITPPlayerListener.IOnStateChangeListener
+ * JD-Core Version:    0.7.0.1
+ */

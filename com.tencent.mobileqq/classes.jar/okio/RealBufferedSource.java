@@ -4,26 +4,37 @@ import java.io.EOFException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import javax.annotation.Nullable;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.CharsKt;
+import okio.internal.BufferKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class RealBufferedSource
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/RealBufferedSource;", "Lokio/BufferedSource;", "source", "Lokio/Source;", "(Lokio/Source;)V", "buffer", "Lokio/Buffer;", "buffer$annotations", "()V", "getBuffer", "()Lokio/Buffer;", "bufferField", "closed", "", "close", "", "exhausted", "indexOf", "", "b", "", "fromIndex", "toIndex", "bytes", "Lokio/ByteString;", "indexOfElement", "targetBytes", "inputStream", "Ljava/io/InputStream;", "isOpen", "peek", "rangeEquals", "offset", "bytesOffset", "", "byteCount", "read", "sink", "Ljava/nio/ByteBuffer;", "", "readAll", "Lokio/Sink;", "readByte", "readByteArray", "readByteString", "readDecimalLong", "readFully", "readHexadecimalUnsignedLong", "readInt", "readIntLe", "readLong", "readLongLe", "readShort", "", "readShortLe", "readString", "", "charset", "Ljava/nio/charset/Charset;", "readUtf8", "readUtf8CodePoint", "readUtf8Line", "readUtf8LineStrict", "limit", "request", "require", "select", "options", "Lokio/Options;", "skip", "timeout", "Lokio/Timeout;", "toString", "okio"}, k=1, mv={1, 1, 16})
+public final class RealBufferedSource
   implements BufferedSource
 {
-  public final Buffer buffer = new Buffer();
-  boolean closed;
+  @JvmField
+  @NotNull
+  public final Buffer bufferField;
+  @JvmField
+  public boolean closed;
+  @JvmField
+  @NotNull
   public final Source source;
   
-  RealBufferedSource(Source paramSource)
+  public RealBufferedSource(@NotNull Source paramSource)
   {
-    if (paramSource == null) {
-      throw new NullPointerException("source == null");
-    }
     this.source = paramSource;
+    this.bufferField = new Buffer();
   }
   
+  @NotNull
   public Buffer buffer()
   {
-    return this.buffer;
+    return this.bufferField;
   }
   
   public void close()
@@ -33,15 +44,21 @@ final class RealBufferedSource
     }
     this.closed = true;
     this.source.close();
-    this.buffer.clear();
+    this.bufferField.clear();
   }
   
   public boolean exhausted()
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if ((this.closed ^ true)) {
+      return (this.bufferField.exhausted()) && (this.source.read(this.bufferField, 8192) == -1L);
     }
-    return (this.buffer.exhausted()) && (this.source.read(this.buffer, 8192L) == -1L);
+    throw ((Throwable)new IllegalStateException("closed".toString()));
+  }
+  
+  @NotNull
+  public Buffer getBuffer()
+  {
+    return this.bufferField;
   }
   
   public long indexOf(byte paramByte)
@@ -56,179 +73,247 @@ final class RealBufferedSource
   
   public long indexOf(byte paramByte, long paramLong1, long paramLong2)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    if ((paramLong1 < 0L) || (paramLong2 < paramLong1))
+    boolean bool = this.closed;
+    int i = 1;
+    if ((bool ^ true))
     {
-      throw new IllegalArgumentException(String.format("fromIndex=%s toIndex=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-      Object localObject;
-      paramLong1 = Math.max(paramLong1, localObject);
-    }
-    for (;;)
-    {
-      if (paramLong1 < paramLong2)
+      if ((0L > paramLong1) || (paramLong2 < paramLong1)) {
+        i = 0;
+      }
+      if (i != 0)
       {
-        long l = this.buffer.indexOf(paramByte, paramLong1, paramLong2);
-        if (l != -1L) {
-          return l;
-        }
-        l = this.buffer.size;
-        if ((l < paramLong2) && (this.source.read(this.buffer, 8192L) != -1L)) {
-          break;
+        while (paramLong1 < paramLong2)
+        {
+          long l = this.bufferField.indexOf(paramByte, paramLong1, paramLong2);
+          if (l != -1L) {
+            return l;
+          }
+          l = this.bufferField.size();
+          if (l >= paramLong2) {
+            break;
+          }
+          if (this.source.read(this.bufferField, 8192) == -1L) {
+            return -1L;
+          }
+          paramLong1 = Math.max(paramLong1, l);
         }
         return -1L;
       }
-      return -1L;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fromIndex=");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(" toIndex=");
+      ((StringBuilder)localObject).append(paramLong2);
+      throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
+    }
+    Object localObject = (Throwable)new IllegalStateException("closed".toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
   
-  public long indexOf(ByteString paramByteString)
+  public long indexOf(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
     return indexOf(paramByteString, 0L);
   }
   
-  public long indexOf(ByteString paramByteString, long paramLong)
+  public long indexOf(@NotNull ByteString paramByteString, long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    do
-    {
-      Object localObject;
-      paramLong = Math.max(paramLong, localObject - paramByteString.size() + 1L);
-      long l = this.buffer.indexOf(paramByteString, paramLong);
-      if (l != -1L) {
-        return l;
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
+    if ((this.closed ^ true)) {
+      for (;;)
+      {
+        long l = this.bufferField.indexOf(paramByteString, paramLong);
+        if (l != -1L) {
+          return l;
+        }
+        l = this.bufferField.size();
+        if (this.source.read(this.bufferField, 8192) == -1L) {
+          return -1L;
+        }
+        paramLong = Math.max(paramLong, l - paramByteString.size() + 1L);
       }
-      l = this.buffer.size;
-    } while (this.source.read(this.buffer, 8192L) != -1L);
-    return -1L;
+    }
+    paramByteString = (Throwable)new IllegalStateException("closed".toString());
+    for (;;)
+    {
+      throw paramByteString;
+    }
   }
   
-  public long indexOfElement(ByteString paramByteString)
+  public long indexOfElement(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "targetBytes");
     return indexOfElement(paramByteString, 0L);
   }
   
-  public long indexOfElement(ByteString paramByteString, long paramLong)
+  public long indexOfElement(@NotNull ByteString paramByteString, long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    do
-    {
-      Object localObject;
-      paramLong = Math.max(paramLong, localObject);
-      long l = this.buffer.indexOfElement(paramByteString, paramLong);
-      if (l != -1L) {
-        return l;
+    Intrinsics.checkParameterIsNotNull(paramByteString, "targetBytes");
+    if ((this.closed ^ true)) {
+      for (;;)
+      {
+        long l = this.bufferField.indexOfElement(paramByteString, paramLong);
+        if (l != -1L) {
+          return l;
+        }
+        l = this.bufferField.size();
+        if (this.source.read(this.bufferField, 8192) == -1L) {
+          return -1L;
+        }
+        paramLong = Math.max(paramLong, l);
       }
-      l = this.buffer.size;
-    } while (this.source.read(this.buffer, 8192L) != -1L);
-    return -1L;
+    }
+    paramByteString = (Throwable)new IllegalStateException("closed".toString());
+    for (;;)
+    {
+      throw paramByteString;
+    }
   }
   
+  @NotNull
   public InputStream inputStream()
   {
-    return new RealBufferedSource.1(this);
+    return (InputStream)new RealBufferedSource.inputStream.1(this);
   }
   
   public boolean isOpen()
   {
-    return !this.closed;
+    return this.closed ^ true;
   }
   
-  public boolean rangeEquals(long paramLong, ByteString paramByteString)
+  @NotNull
+  public BufferedSource peek()
   {
+    return Okio.buffer((Source)new PeekSource((BufferedSource)this));
+  }
+  
+  public boolean rangeEquals(long paramLong, @NotNull ByteString paramByteString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
     return rangeEquals(paramLong, paramByteString, 0, paramByteString.size());
   }
   
-  public boolean rangeEquals(long paramLong, ByteString paramByteString, int paramInt1, int paramInt2)
+  public boolean rangeEquals(long paramLong, @NotNull ByteString paramByteString, int paramInt1, int paramInt2)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
+    if ((this.closed ^ true))
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramLong >= 0L)
+      {
+        bool1 = bool2;
+        if (paramInt1 >= 0)
+        {
+          bool1 = bool2;
+          if (paramInt2 >= 0)
+          {
+            if (paramByteString.size() - paramInt1 < paramInt2) {
+              return false;
+            }
+            int i = 0;
+            while (i < paramInt2)
+            {
+              long l = i + paramLong;
+              if (!request(1L + l)) {
+                return false;
+              }
+              if (this.bufferField.getByte(l) != paramByteString.getByte(paramInt1 + i)) {
+                return false;
+              }
+              i += 1;
+            }
+            bool1 = true;
+          }
+        }
+      }
+      return bool1;
     }
-    if ((paramLong < 0L) || (paramInt1 < 0) || (paramInt2 < 0) || (paramByteString.size() - paramInt1 < paramInt2)) {
-      return false;
-    }
-    int i = 0;
+    paramByteString = (Throwable)new IllegalStateException("closed".toString());
     for (;;)
     {
-      if (i >= paramInt2) {
-        break label105;
-      }
-      long l = i + paramLong;
-      if ((!request(1L + l)) || (this.buffer.getByte(l) != paramByteString.getByte(paramInt1 + i))) {
-        break;
-      }
-      i += 1;
+      throw paramByteString;
     }
-    label105:
-    return true;
   }
   
-  public int read(ByteBuffer paramByteBuffer)
+  public int read(@NotNull ByteBuffer paramByteBuffer)
   {
-    if ((this.buffer.size == 0L) && (this.source.read(this.buffer, 8192L) == -1L)) {
+    Intrinsics.checkParameterIsNotNull(paramByteBuffer, "sink");
+    if ((this.bufferField.size() == 0L) && (this.source.read(this.bufferField, 8192) == -1L)) {
       return -1;
     }
-    return this.buffer.read(paramByteBuffer);
+    return this.bufferField.read(paramByteBuffer);
   }
   
-  public int read(byte[] paramArrayOfByte)
+  public int read(@NotNull byte[] paramArrayOfByte)
   {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "sink");
     return read(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int read(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-    if ((this.buffer.size == 0L) && (this.source.read(this.buffer, 8192L) == -1L)) {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "sink");
+    long l1 = paramArrayOfByte.length;
+    long l2 = paramInt1;
+    long l3 = paramInt2;
+    -Util.checkOffsetAndCount(l1, l2, l3);
+    if ((this.bufferField.size() == 0L) && (this.source.read(this.bufferField, 8192) == -1L)) {
       return -1;
     }
-    paramInt2 = (int)Math.min(paramInt2, this.buffer.size);
-    return this.buffer.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt2 = (int)Math.min(l3, this.bufferField.size());
+    return this.bufferField.read(paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  public long read(Buffer paramBuffer, long paramLong)
+  public long read(@NotNull Buffer paramBuffer, long paramLong)
   {
-    if (paramBuffer == null) {
-      throw new IllegalArgumentException("sink == null");
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "sink");
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    if ((this.buffer.size == 0L) && (this.source.read(this.buffer, 8192L) == -1L)) {
-      return -1L;
-    }
-    paramLong = Math.min(paramLong, this.buffer.size);
-    return this.buffer.read(paramBuffer, paramLong);
-  }
-  
-  public long readAll(Sink paramSink)
-  {
-    if (paramSink == null) {
-      throw new IllegalArgumentException("sink == null");
-    }
-    long l1 = 0L;
-    while (this.source.read(this.buffer, 8192L) != -1L)
+    if (i != 0)
     {
-      l2 = this.buffer.completeSegmentByteCount();
+      if ((true ^ this.closed))
+      {
+        if ((this.bufferField.size() == 0L) && (this.source.read(this.bufferField, 8192) == -1L)) {
+          return -1L;
+        }
+        paramLong = Math.min(paramLong, this.bufferField.size());
+        return this.bufferField.read(paramBuffer, paramLong);
+      }
+      throw ((Throwable)new IllegalStateException("closed".toString()));
+    }
+    paramBuffer = new StringBuilder();
+    paramBuffer.append("byteCount < 0: ");
+    paramBuffer.append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(paramBuffer.toString().toString()));
+  }
+  
+  public long readAll(@NotNull Sink paramSink)
+  {
+    Intrinsics.checkParameterIsNotNull(paramSink, "sink");
+    long l1 = 0L;
+    while (this.source.read(this.bufferField, 8192) != -1L)
+    {
+      l2 = this.bufferField.completeSegmentByteCount();
       if (l2 > 0L)
       {
         l1 += l2;
-        paramSink.write(this.buffer, l2);
+        paramSink.write(this.bufferField, l2);
       }
     }
     long l2 = l1;
-    if (this.buffer.size() > 0L)
+    if (this.bufferField.size() > 0L)
     {
-      l2 = l1 + this.buffer.size();
-      paramSink.write(this.buffer, this.buffer.size());
+      l2 = l1 + this.bufferField.size();
+      Buffer localBuffer = this.bufferField;
+      paramSink.write(localBuffer, localBuffer.size());
     }
     return l2;
   }
@@ -236,191 +321,219 @@ final class RealBufferedSource
   public byte readByte()
   {
     require(1L);
-    return this.buffer.readByte();
+    return this.bufferField.readByte();
   }
   
+  @NotNull
   public byte[] readByteArray()
   {
-    this.buffer.writeAll(this.source);
-    return this.buffer.readByteArray();
+    this.bufferField.writeAll(this.source);
+    return this.bufferField.readByteArray();
   }
   
+  @NotNull
   public byte[] readByteArray(long paramLong)
   {
     require(paramLong);
-    return this.buffer.readByteArray(paramLong);
+    return this.bufferField.readByteArray(paramLong);
   }
   
+  @NotNull
   public ByteString readByteString()
   {
-    this.buffer.writeAll(this.source);
-    return this.buffer.readByteString();
+    this.bufferField.writeAll(this.source);
+    return this.bufferField.readByteString();
   }
   
+  @NotNull
   public ByteString readByteString(long paramLong)
   {
     require(paramLong);
-    return this.buffer.readByteString(paramLong);
+    return this.bufferField.readByteString(paramLong);
   }
   
   public long readDecimalLong()
   {
     require(1L);
-    int i = 0;
-    while (request(i + 1))
+    long l2;
+    int i;
+    for (long l1 = 0L;; l1 = l2)
     {
-      byte b = this.buffer.getByte(i);
-      if (((b < 48) || (b > 57)) && ((i != 0) || (b != 45)))
-      {
-        if (i != 0) {
-          break;
-        }
-        throw new NumberFormatException(String.format("Expected leading [0-9] or '-' character but was %#x", new Object[] { Byte.valueOf(b) }));
+      l2 = l1 + 1L;
+      if (!request(l2)) {
+        break label139;
       }
-      i += 1;
+      i = this.bufferField.getByte(l1);
+      if (((i < (byte)48) || (i > (byte)57)) && ((l1 != 0L) || (i != (byte)45))) {
+        break;
+      }
     }
-    return this.buffer.readDecimalLong();
+    if (l1 == 0L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Expected leading [0-9] or '-' character but was 0x");
+      String str = Integer.toString(i, CharsKt.checkRadix(CharsKt.checkRadix(16)));
+      Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.Integer.toStri…(this, checkRadix(radix))");
+      localStringBuilder.append(str);
+      throw ((Throwable)new NumberFormatException(localStringBuilder.toString()));
+    }
+    label139:
+    return this.bufferField.readDecimalLong();
   }
   
-  public void readFully(Buffer paramBuffer, long paramLong)
+  public void readFully(@NotNull Buffer paramBuffer, long paramLong)
   {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "sink");
     try
     {
       require(paramLong);
-      this.buffer.readFully(paramBuffer, paramLong);
+      this.bufferField.readFully(paramBuffer, paramLong);
       return;
     }
     catch (EOFException localEOFException)
     {
-      paramBuffer.writeAll(this.buffer);
-      throw localEOFException;
+      paramBuffer.writeAll((Source)this.bufferField);
+      throw ((Throwable)localEOFException);
     }
   }
   
-  public void readFully(byte[] paramArrayOfByte)
+  public void readFully(@NotNull byte[] paramArrayOfByte)
   {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "sink");
     try
     {
       require(paramArrayOfByte.length);
-      this.buffer.readFully(paramArrayOfByte);
+      this.bufferField.readFully(paramArrayOfByte);
       return;
     }
     catch (EOFException localEOFException)
     {
       int i = 0;
-      while (this.buffer.size > 0L)
+      while (this.bufferField.size() > 0L)
       {
-        int j = this.buffer.read(paramArrayOfByte, i, (int)this.buffer.size);
-        if (j == -1) {
-          throw new AssertionError();
+        Buffer localBuffer = this.bufferField;
+        int j = localBuffer.read(paramArrayOfByte, i, (int)localBuffer.size());
+        if (j != -1) {
+          i += j;
+        } else {
+          throw ((Throwable)new AssertionError());
         }
-        i += j;
       }
-      throw localEOFException;
+      paramArrayOfByte = (Throwable)localEOFException;
+    }
+    for (;;)
+    {
+      throw paramArrayOfByte;
     }
   }
   
   public long readHexadecimalUnsignedLong()
   {
     require(1L);
-    int i = 0;
-    while (request(i + 1))
+    int j;
+    int k;
+    for (int i = 0;; i = j)
     {
-      byte b = this.buffer.getByte(i);
-      if (((b < 48) || (b > 57)) && ((b < 97) || (b > 102)) && ((b < 65) || (b > 70)))
-      {
-        if (i != 0) {
-          break;
-        }
-        throw new NumberFormatException(String.format("Expected leading [0-9a-fA-F] character but was %#x", new Object[] { Byte.valueOf(b) }));
+      j = i + 1;
+      if (!request(j)) {
+        break label151;
       }
-      i += 1;
+      k = this.bufferField.getByte(i);
+      if (((k < (byte)48) || (k > (byte)57)) && ((k < (byte)97) || (k > (byte)102)) && ((k < (byte)65) || (k > (byte)70))) {
+        break;
+      }
     }
-    return this.buffer.readHexadecimalUnsignedLong();
+    if (i == 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Expected leading [0-9a-fA-F] character but was 0x");
+      String str = Integer.toString(k, CharsKt.checkRadix(CharsKt.checkRadix(16)));
+      Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.Integer.toStri…(this, checkRadix(radix))");
+      localStringBuilder.append(str);
+      throw ((Throwable)new NumberFormatException(localStringBuilder.toString()));
+    }
+    label151:
+    return this.bufferField.readHexadecimalUnsignedLong();
   }
   
   public int readInt()
   {
     require(4L);
-    return this.buffer.readInt();
+    return this.bufferField.readInt();
   }
   
   public int readIntLe()
   {
     require(4L);
-    return this.buffer.readIntLe();
+    return this.bufferField.readIntLe();
   }
   
   public long readLong()
   {
     require(8L);
-    return this.buffer.readLong();
+    return this.bufferField.readLong();
   }
   
   public long readLongLe()
   {
     require(8L);
-    return this.buffer.readLongLe();
+    return this.bufferField.readLongLe();
   }
   
   public short readShort()
   {
     require(2L);
-    return this.buffer.readShort();
+    return this.bufferField.readShort();
   }
   
   public short readShortLe()
   {
     require(2L);
-    return this.buffer.readShortLe();
+    return this.bufferField.readShortLe();
   }
   
-  public String readString(long paramLong, Charset paramCharset)
+  @NotNull
+  public String readString(long paramLong, @NotNull Charset paramCharset)
   {
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
     require(paramLong);
-    if (paramCharset == null) {
-      throw new IllegalArgumentException("charset == null");
-    }
-    return this.buffer.readString(paramLong, paramCharset);
+    return this.bufferField.readString(paramLong, paramCharset);
   }
   
-  public String readString(Charset paramCharset)
+  @NotNull
+  public String readString(@NotNull Charset paramCharset)
   {
-    if (paramCharset == null) {
-      throw new IllegalArgumentException("charset == null");
-    }
-    this.buffer.writeAll(this.source);
-    return this.buffer.readString(paramCharset);
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
+    this.bufferField.writeAll(this.source);
+    return this.bufferField.readString(paramCharset);
   }
   
+  @NotNull
   public String readUtf8()
   {
-    this.buffer.writeAll(this.source);
-    return this.buffer.readUtf8();
+    this.bufferField.writeAll(this.source);
+    return this.bufferField.readUtf8();
   }
   
+  @NotNull
   public String readUtf8(long paramLong)
   {
     require(paramLong);
-    return this.buffer.readUtf8(paramLong);
+    return this.bufferField.readUtf8(paramLong);
   }
   
   public int readUtf8CodePoint()
   {
     require(1L);
-    int i = this.buffer.getByte(0L);
+    int i = this.bufferField.getByte(0L);
     if ((i & 0xE0) == 192) {
       require(2L);
+    } else if ((i & 0xF0) == 224) {
+      require(3L);
+    } else if ((i & 0xF8) == 240) {
+      require(4L);
     }
-    for (;;)
-    {
-      return this.buffer.readUtf8CodePoint();
-      if ((i & 0xF0) == 224) {
-        require(3L);
-      } else if ((i & 0xF8) == 240) {
-        require(4L);
-      }
-    }
+    return this.bufferField.readUtf8CodePoint();
   }
   
   @Nullable
@@ -429,116 +542,169 @@ final class RealBufferedSource
     long l = indexOf((byte)10);
     if (l == -1L)
     {
-      if (this.buffer.size != 0L) {
-        return readUtf8(this.buffer.size);
+      if (this.bufferField.size() != 0L) {
+        return readUtf8(this.bufferField.size());
       }
       return null;
     }
-    return this.buffer.readUtf8Line(l);
+    return BufferKt.readUtf8Line(this.bufferField, l);
   }
   
+  @NotNull
   public String readUtf8LineStrict()
   {
     return readUtf8LineStrict(9223372036854775807L);
   }
   
+  @NotNull
   public String readUtf8LineStrict(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("limit < 0: " + paramLong);
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramLong == 9223372036854775807L) {}
-    for (long l1 = 9223372036854775807L;; l1 = paramLong + 1L)
+    if (i != 0)
     {
-      long l2 = indexOf((byte)10, 0L, l1);
-      if (l2 == -1L) {
-        break;
+      if (paramLong == 9223372036854775807L) {
+        l1 = 9223372036854775807L;
+      } else {
+        l1 = paramLong + 1L;
       }
-      return this.buffer.readUtf8Line(l2);
+      byte b = (byte)10;
+      long l2 = indexOf(b, 0L, l1);
+      if (l2 != -1L) {
+        return BufferKt.readUtf8Line(this.bufferField, l2);
+      }
+      if ((l1 < 9223372036854775807L) && (request(l1)) && (this.bufferField.getByte(l1 - 1L) == (byte)13) && (request(1L + l1)) && (this.bufferField.getByte(l1) == b)) {
+        return BufferKt.readUtf8Line(this.bufferField, l1);
+      }
+      localObject1 = new Buffer();
+      Object localObject2 = this.bufferField;
+      long l1 = ((Buffer)localObject2).size();
+      ((Buffer)localObject2).copyTo((Buffer)localObject1, 0L, Math.min(32, l1));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("\\n not found: limit=");
+      ((StringBuilder)localObject2).append(Math.min(this.bufferField.size(), paramLong));
+      ((StringBuilder)localObject2).append(" content=");
+      ((StringBuilder)localObject2).append(((Buffer)localObject1).readByteString().hex());
+      ((StringBuilder)localObject2).append("…");
+      throw ((Throwable)new EOFException(((StringBuilder)localObject2).toString()));
     }
-    if ((l1 < 9223372036854775807L) && (request(l1)) && (this.buffer.getByte(l1 - 1L) == 13) && (request(1L + l1)) && (this.buffer.getByte(l1) == 10)) {
-      return this.buffer.readUtf8Line(l1);
-    }
-    Buffer localBuffer = new Buffer();
-    this.buffer.copyTo(localBuffer, 0L, Math.min(32L, this.buffer.size()));
-    throw new EOFException("\\n not found: limit=" + Math.min(this.buffer.size(), paramLong) + " content=" + localBuffer.readByteString().hex() + '…');
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("limit < 0: ");
+    ((StringBuilder)localObject1).append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject1).toString().toString()));
   }
   
   public boolean request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    while (this.buffer.size < paramLong) {
-      if (this.source.read(this.buffer, 8192L) == -1L) {
-        return false;
+    if (i != 0)
+    {
+      if ((this.closed ^ true))
+      {
+        while (this.bufferField.size() < paramLong) {
+          if (this.source.read(this.bufferField, 8192) == -1L) {
+            return false;
+          }
+        }
+        return true;
       }
+      throw ((Throwable)new IllegalStateException("closed".toString()));
     }
-    return true;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("byteCount < 0: ");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = (Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void require(long paramLong)
   {
-    if (!request(paramLong)) {
-      throw new EOFException();
+    if (request(paramLong)) {
+      return;
     }
+    throw ((Throwable)new EOFException());
   }
   
-  public int select(Options paramOptions)
+  public int select(@NotNull Options paramOptions)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    int i;
-    do
+    Intrinsics.checkParameterIsNotNull(paramOptions, "options");
+    if ((this.closed ^ true))
     {
-      i = this.buffer.selectPrefix(paramOptions, true);
-      if (i == -1) {
-        return -1;
-      }
-      if (i != -2) {
-        break;
-      }
-    } while (this.source.read(this.buffer, 8192L) != -1L);
-    return -1;
-    int j = paramOptions.byteStrings[i].size();
-    this.buffer.skip(j);
-    return i;
+      do
+      {
+        int i = BufferKt.selectPrefix(this.bufferField, paramOptions, true);
+        if (i != -2)
+        {
+          if (i == -1) {
+            break;
+          }
+          int j = paramOptions.getByteStrings$okio()[i].size();
+          this.bufferField.skip(j);
+          return i;
+        }
+      } while (this.source.read(this.bufferField, 8192) != -1L);
+      return -1;
+    }
+    paramOptions = (Throwable)new IllegalStateException("closed".toString());
+    for (;;)
+    {
+      throw paramOptions;
+    }
   }
   
   public void skip(long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
-    }
-    do
+    if ((this.closed ^ true))
     {
-      long l = Math.min(paramLong, this.buffer.size());
-      this.buffer.skip(l);
-      paramLong -= l;
-      if (paramLong <= 0L) {
-        break;
+      while (paramLong > 0L)
+      {
+        if ((this.bufferField.size() == 0L) && (this.source.read(this.bufferField, 8192) == -1L)) {
+          throw ((Throwable)new EOFException());
+        }
+        long l = Math.min(paramLong, this.bufferField.size());
+        this.bufferField.skip(l);
+        paramLong -= l;
       }
-    } while ((this.buffer.size != 0L) || (this.source.read(this.buffer, 8192L) != -1L));
-    throw new EOFException();
+      return;
+    }
+    Throwable localThrowable = (Throwable)new IllegalStateException("closed".toString());
+    for (;;)
+    {
+      throw localThrowable;
+    }
   }
   
+  @NotNull
   public Timeout timeout()
   {
     return this.source.timeout();
   }
   
+  @NotNull
   public String toString()
   {
-    return "buffer(" + this.source + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buffer(");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.RealBufferedSource
  * JD-Core Version:    0.7.0.1
  */

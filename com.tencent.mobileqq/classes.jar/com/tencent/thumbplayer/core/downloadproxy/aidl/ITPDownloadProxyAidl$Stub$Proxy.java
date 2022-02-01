@@ -46,6 +46,26 @@ class ITPDownloadProxyAidl$Stub$Proxy
     return "com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl";
   }
   
+  public String getNativeInfo(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+      localParcel1.writeInt(paramInt);
+      this.mRemote.transact(14, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      String str = localParcel2.readString();
+      return str;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
   public String getPlayErrorCodeStr(int paramInt)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -135,7 +155,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
     {
       localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
       localParcel1.writeInt(paramInt);
-      this.mRemote.transact(14, localParcel1, localParcel2, 0);
+      this.mRemote.transact(15, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -166,42 +186,61 @@ class ITPDownloadProxyAidl$Stub$Proxy
     }
   }
   
-  public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParamAidl paramTPDownloadParamAidl)
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    boolean bool = true;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    try
     {
-      try
+      localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeInt(paramInt3);
+      localParcel1.writeInt(paramInt4);
+      localParcel1.writeInt(paramInt5);
+      this.mRemote.transact(18, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParamAidl paramTPDownloadParamAidl)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeString(paramString);
+      boolean bool = true;
+      if (paramTPDownloadParamAidl != null)
       {
-        localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
-        localParcel1.writeInt(paramInt1);
-        localParcel1.writeInt(paramInt2);
-        localParcel1.writeString(paramString);
-        if (paramTPDownloadParamAidl != null)
-        {
-          localParcel1.writeInt(1);
-          paramTPDownloadParamAidl.writeToParcel(localParcel1, 0);
-          this.mRemote.transact(4, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          paramInt1 = localParcel2.readInt();
-          if (paramInt1 != 0) {
-            return bool;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
+        localParcel1.writeInt(1);
+        paramTPDownloadParamAidl.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      this.mRemote.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt1 = localParcel2.readInt();
+      if (paramInt1 == 0) {
         bool = false;
       }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
@@ -213,7 +252,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
     {
       localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
       localParcel1.writeLong(paramLong);
-      this.mRemote.transact(16, localParcel1, localParcel2, 0);
+      this.mRemote.transact(17, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -233,7 +272,26 @@ class ITPDownloadProxyAidl$Stub$Proxy
       localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
       localParcel1.writeInt(paramInt1);
       localParcel1.writeInt(paramInt2);
-      this.mRemote.transact(15, localParcel1, localParcel2, 0);
+      this.mRemote.transact(16, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void setUpdatePlayerInfoInterval(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+      localParcel1.writeInt(paramInt);
+      this.mRemote.transact(19, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -263,73 +321,34 @@ class ITPDownloadProxyAidl$Stub$Proxy
     }
   }
   
-  /* Error */
   public int startClipPlay(String paramString, int paramInt, ITPPlayListenerAidl paramITPPlayListenerAidl)
   {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore 4
-    //   5: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   8: astore 5
-    //   10: aload 4
-    //   12: ldc 28
-    //   14: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   17: aload 4
-    //   19: aload_1
-    //   20: invokevirtual 62	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   23: aload 4
-    //   25: iload_2
-    //   26: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   29: aload_3
-    //   30: ifnull +55 -> 85
-    //   33: aload_3
-    //   34: invokeinterface 96 1 0
-    //   39: astore_1
-    //   40: aload 4
-    //   42: aload_1
-    //   43: invokevirtual 99	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   46: aload_0
-    //   47: getfield 15	com/tencent/thumbplayer/core/downloadproxy/aidl/ITPDownloadProxyAidl$Stub$Proxy:mRemote	Landroid/os/IBinder;
-    //   50: iconst_3
-    //   51: aload 4
-    //   53: aload 5
-    //   55: iconst_0
-    //   56: invokeinterface 42 5 0
-    //   61: pop
-    //   62: aload 5
-    //   64: invokevirtual 45	android/os/Parcel:readException	()V
-    //   67: aload 5
-    //   69: invokevirtual 66	android/os/Parcel:readInt	()I
-    //   72: istore_2
-    //   73: aload 5
-    //   75: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   78: aload 4
-    //   80: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   83: iload_2
-    //   84: ireturn
-    //   85: aconst_null
-    //   86: astore_1
-    //   87: goto -47 -> 40
-    //   90: astore_1
-    //   91: aload 5
-    //   93: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   96: aload 4
-    //   98: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   101: aload_1
-    //   102: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	103	0	this	Proxy
-    //   0	103	1	paramString	String
-    //   0	103	2	paramInt	int
-    //   0	103	3	paramITPPlayListenerAidl	ITPPlayListenerAidl
-    //   3	94	4	localParcel1	Parcel
-    //   8	84	5	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   10	29	90	finally
-    //   33	40	90	finally
-    //   40	73	90	finally
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+        localParcel1.writeString(paramString);
+        localParcel1.writeInt(paramInt);
+        if (paramITPPlayListenerAidl != null)
+        {
+          paramString = paramITPPlayListenerAidl.asBinder();
+          localParcel1.writeStrongBinder(paramString);
+          this.mRemote.transact(3, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          paramInt = localParcel2.readInt();
+          return paramInt;
+        }
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      paramString = null;
+    }
   }
   
   public int startPlay(String paramString, TPDownloadParamAidl paramTPDownloadParamAidl, ITPPlayListenerAidl paramITPPlayListenerAidl)
@@ -346,28 +365,27 @@ class ITPDownloadProxyAidl$Stub$Proxy
         {
           localParcel1.writeInt(1);
           paramTPDownloadParamAidl.writeToParcel(localParcel1, 0);
-          if (paramITPPlayListenerAidl != null)
-          {
-            paramString = paramITPPlayListenerAidl.asBinder();
-            localParcel1.writeStrongBinder(paramString);
-            this.mRemote.transact(2, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-            int i = localParcel2.readInt();
-            return i;
-          }
         }
         else
         {
           localParcel1.writeInt(0);
-          continue;
         }
-        paramString = null;
+        if (paramITPPlayListenerAidl != null)
+        {
+          paramString = paramITPPlayListenerAidl.asBinder();
+          localParcel1.writeStrongBinder(paramString);
+          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
       }
       finally
       {
         localParcel2.recycle();
         localParcel1.recycle();
       }
+      paramString = null;
     }
   }
   
@@ -385,28 +403,27 @@ class ITPDownloadProxyAidl$Stub$Proxy
         {
           localParcel1.writeInt(1);
           paramTPDownloadParamAidl.writeToParcel(localParcel1, 0);
-          if (paramITPPreLoadListenerAidl != null)
-          {
-            paramString = paramITPPreLoadListenerAidl.asBinder();
-            localParcel1.writeStrongBinder(paramString);
-            this.mRemote.transact(11, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-            int i = localParcel2.readInt();
-            return i;
-          }
         }
         else
         {
           localParcel1.writeInt(0);
-          continue;
         }
-        paramString = null;
+        if (paramITPPreLoadListenerAidl != null)
+        {
+          paramString = paramITPPreLoadListenerAidl.asBinder();
+          localParcel1.writeStrongBinder(paramString);
+          this.mRemote.transact(11, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
       }
       finally
       {
         localParcel2.recycle();
         localParcel1.recycle();
       }
+      paramString = null;
     }
   }
   
@@ -450,7 +467,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

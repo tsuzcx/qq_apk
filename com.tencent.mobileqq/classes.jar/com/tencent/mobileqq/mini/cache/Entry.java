@@ -19,12 +19,16 @@ public class Entry
   
   public String encode()
   {
-    return this.mContent + ":" + this.mDataType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mContent);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.mDataType);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.Entry
  * JD-Core Version:    0.7.0.1
  */

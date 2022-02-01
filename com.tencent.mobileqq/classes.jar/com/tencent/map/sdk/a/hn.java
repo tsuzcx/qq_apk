@@ -5,7 +5,7 @@ public final class hn
 {
   public hn(int paramInt)
   {
-    super("Cannot create a LatLngBounds from " + paramInt + " items");
+    super(localStringBuilder.toString());
   }
 }
 

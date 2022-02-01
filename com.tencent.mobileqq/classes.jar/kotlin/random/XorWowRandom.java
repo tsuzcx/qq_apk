@@ -26,15 +26,31 @@ public final class XorWowRandom
     this.w = paramInt4;
     this.v = paramInt5;
     this.addend = paramInt6;
-    if ((this.x | this.y | this.z | this.w | this.v) != 0) {}
-    for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0) {
-      throw ((Throwable)new IllegalArgumentException("Initial state must have at least one non-zero element.".toString()));
+    paramInt1 = this.x;
+    paramInt3 = this.y;
+    paramInt4 = this.z;
+    paramInt5 = this.w;
+    paramInt6 = this.v;
+    paramInt2 = 0;
+    if ((paramInt1 | paramInt3 | paramInt4 | paramInt5 | paramInt6) != 0) {
+      paramInt1 = 1;
+    } else {
+      paramInt1 = 0;
     }
-    paramInt1 = i;
-    while (paramInt1 < 64)
+    if (paramInt1 != 0)
     {
-      nextInt();
-      paramInt1 += 1;
+      paramInt1 = paramInt2;
+      while (paramInt1 < 64)
+      {
+        nextInt();
+        paramInt1 += 1;
+      }
+      return;
+    }
+    Throwable localThrowable = (Throwable)new IllegalArgumentException("Initial state must have at least one non-zero element.".toString());
+    for (;;)
+    {
+      throw localThrowable;
     }
   }
   
@@ -60,7 +76,7 @@ public final class XorWowRandom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.random.XorWowRandom
  * JD-Core Version:    0.7.0.1
  */

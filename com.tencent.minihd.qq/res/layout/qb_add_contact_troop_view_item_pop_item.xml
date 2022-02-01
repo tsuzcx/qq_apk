@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/common_entry_btn_selector" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/pop_item_iamgeview" android:layout_width="28.0dip" android:layout_height="28.0dip" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:id="@id/pop_item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" />
+</LinearLayout>

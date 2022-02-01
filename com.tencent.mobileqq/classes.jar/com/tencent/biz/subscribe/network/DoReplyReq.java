@@ -5,7 +5,8 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyReq;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -31,7 +32,15 @@ public class DoReplyReq
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountWrite.StDoReplyRsp localStDoReplyRsp = new CertifiedAccountWrite.StDoReplyRsp();
-    localStDoReplyRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDoReplyRsp.mergeFrom(paramArrayOfByte);
+      return localStDoReplyRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDoReplyRsp;
   }
   
@@ -40,14 +49,14 @@ public class DoReplyReq
     return "CertifiedAccountSvc.certified_account_write.DoReply";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoReplyReq
  * JD-Core Version:    0.7.0.1
  */

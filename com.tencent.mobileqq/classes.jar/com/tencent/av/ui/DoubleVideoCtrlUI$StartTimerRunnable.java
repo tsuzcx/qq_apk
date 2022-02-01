@@ -14,31 +14,47 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   void a(long paramLong)
   {
     this.a = paramLong;
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable, 5000L);
-    this.this$0.c = true;
+    this.this$0.al.a().postDelayed(this.this$0.o, 5000L);
+    this.this$0.d = true;
   }
   
   void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.d, 1, "StartTimerRunnable.remove, mNeedRemoveAudioCallback[" + this.this$0.c + "], seq[" + paramLong + "], lastseq[" + this.a + "]");
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.X;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StartTimerRunnable.remove, mNeedRemoveAudioCallback[");
+      localStringBuilder.append(this.this$0.d);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("], lastseq[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
-    if (this.this$0.c) {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable);
+    if (this.this$0.d) {
+      this.this$0.al.a().removeCallbacks(this.this$0.o);
     }
   }
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.d, 1, "StartTimerRunnable.Run, seq[" + this.a + "]");
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.X;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StartTimerRunnable.Run, seq[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
-    this.this$0.A(this.a);
+    this.this$0.G(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.StartTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

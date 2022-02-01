@@ -24,7 +24,7 @@ public final class e
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903067, paramViewGroup, false);
     paramViewGroup = new f(this);
-    paramViewGroup.ahg = ((MMGIFImageView)paramContext.findViewById(2131558474));
+    paramViewGroup.akI = ((MMGIFImageView)paramContext.findViewById(2131558475));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -33,20 +33,20 @@ public final class e
   {
     paramb = (f)paramb;
     paramContext = new com.tencent.mm.wear.app.c.a();
-    paramContext.acL = paramb.ahg;
-    paramContext.acM = 2130837533;
+    paramContext.agm = paramb.akI;
+    paramContext.agn = 2130837533;
     paramContext.type = 1;
-    paramContext.acG = this.ahe.afg.VO;
-    paramContext.width = (MMActivity.nc() / 2);
-    paramContext.height = (MMActivity.nb() / 2);
+    paramContext.agh = this.akG.aiI.XJ;
+    paramContext.width = (MMActivity.nP() / 2);
+    paramContext.height = (MMActivity.nO() / 2);
     try
     {
       paramb = new d();
-      paramb.h(this.ahe.afg.VX.toByteArray());
-      paramContext.acQ = paramb.Vq;
-      paramContext.acJ = paramb.Vr;
+      paramb.h(this.akG.aiI.XS.toByteArray());
+      paramContext.agr = paramb.Xl;
+      paramContext.agk = paramb.Xm;
       label106:
-      h.me().a(paramContext);
+      h.mR().a(paramContext);
       return;
     }
     catch (IOException paramb)

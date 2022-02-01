@@ -6,29 +6,27 @@ import java.util.NavigableSet;
 
 public abstract interface a
 {
-  public abstract NavigableSet<e> a(String paramString, a.b paramb);
+  public abstract long Uo();
   
-  public abstract void a(e parame);
+  public abstract NavigableSet<g> a(String paramString, b paramb);
   
-  public abstract long ay(String paramString);
+  public abstract void a(g paramg);
   
-  public abstract void b(e parame);
+  public abstract void b(g paramg);
   
-  public abstract e d(String paramString, long paramLong);
+  public abstract long cS(String paramString);
   
-  public abstract e e(String paramString, long paramLong);
+  public abstract g e(String paramString, long paramLong);
   
   public abstract File e(String paramString, long paramLong1, long paramLong2);
   
-  public abstract void f(String paramString, long paramLong);
+  public abstract long f(String paramString, long paramLong1, long paramLong2);
   
-  public abstract boolean f(String paramString, long paramLong1, long paramLong2);
+  public abstract g f(String paramString, long paramLong);
   
-  public abstract long g(String paramString, long paramLong1, long paramLong2);
+  public abstract void g(String paramString, long paramLong);
   
-  public abstract void k(File paramFile);
-  
-  public abstract long qw();
+  public abstract void x(File paramFile);
   
   public static class a
     extends IOException
@@ -43,10 +41,19 @@ public abstract interface a
       super();
     }
   }
+  
+  public static abstract interface b
+  {
+    public abstract void a(a parama, g paramg);
+    
+    public abstract void a(a parama, g paramg1, g paramg2);
+    
+    public abstract void b(a parama, g paramg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.a
  * JD-Core Version:    0.7.0.1
  */

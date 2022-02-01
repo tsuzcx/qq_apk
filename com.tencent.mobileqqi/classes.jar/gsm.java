@@ -1,17 +1,51 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class gsm
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public gsm(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gsm(TroopBarPublishActivity paramTroopBarPublishActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839370);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131558490));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_AndroidNetUri = TroopBarUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, AppConstants.ap, 1001);
+      continue;
+      paramView = new ArrayList();
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_JavaUtilArrayList != null) {
+        paramView.addAll(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_JavaUtilArrayList);
+      }
+      TroopBarPublishActivity localTroopBarPublishActivity = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity;
+      Intent localIntent = new Intent(localTroopBarPublishActivity, TroopBarPublishActivity.class);
+      localIntent.setClass(localTroopBarPublishActivity, PhotoListActivity.class);
+      localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramView);
+      localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", TroopBarPublishActivity.class.getName());
+      localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqqi");
+      localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 8);
+      localIntent.getExtras().remove("forward_type");
+      localIntent.putExtra("album_enter_directly", true);
+      localIntent.putExtra("ALBUM_ID", AlbumUtil.b);
+      localIntent.putExtra("ALBUM_NAME", AlbumUtil.c);
+      localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.startActivityForResult(localIntent, 1001);
+      AlbumUtil.a(localTroopBarPublishActivity, false, true);
+    }
   }
 }
 

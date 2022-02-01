@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQServiceEntry.Tag;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.utils.ViewUtils;
+import eyh;
 import eyi;
-import eyj;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class ForwardTroopListAdapter
   
   public void a()
   {
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new eyj(this));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new eyi(this));
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -102,15 +102,15 @@ public class ForwardTroopListAdapter
     }
     TroopInfo localTroopInfo = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     String str = localTroopInfo.troopuin;
-    paramViewGroup = (TextView)localView.findViewById(2131231395);
-    paramView = (TextView)localView.findViewById(2131231396);
+    paramViewGroup = (TextView)localView.findViewById(2131231394);
+    paramView = (TextView)localView.findViewById(2131231395);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return localView;
     }
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     long l = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences((String)localObject1, 0).getLong((String)localObject1 + str, 1L);
     localObject1 = (ImageView)localView.findViewById(2131230940);
-    Object localObject2 = (ImageView)localView.findViewById(2131231394);
+    Object localObject2 = (ImageView)localView.findViewById(2131231393);
     localView.setBackgroundResource(2130837850);
     if (localObject2 != null)
     {
@@ -148,7 +148,7 @@ public class ForwardTroopListAdapter
       if (!this.jdField_a_of_type_Boolean) {
         break label342;
       }
-      ((ImageView)localObject1).setOnClickListener(new eyi(this));
+      ((ImageView)localObject1).setOnClickListener(new eyh(this));
     }
     for (;;)
     {

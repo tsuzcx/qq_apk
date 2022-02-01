@@ -14,23 +14,23 @@ public class zzb
   
   public IBinder asBinder()
   {
-    AppMethodBeat.i(115346);
+    AppMethodBeat.i(53036);
     NoSuchMethodError localNoSuchMethodError = new NoSuchMethodError();
-    AppMethodBeat.o(115346);
+    AppMethodBeat.o(53036);
     throw localNoSuchMethodError;
   }
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    AppMethodBeat.i(115347);
+    AppMethodBeat.i(53037);
     paramParcel1 = new NoSuchMethodError();
-    AppMethodBeat.o(115347);
+    AppMethodBeat.o(53037);
     throw paramParcel1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.ads_identifier.zzb
  * JD-Core Version:    0.7.0.1
  */

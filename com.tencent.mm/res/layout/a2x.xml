@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#fff6f6f8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/fad" android:background="@color/al2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/a4d"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center_horizontal" android:id="@id/jd" android:background="#f7ffffff" android:paddingTop="@dimen/l8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ListView android:id="@id/c12" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/c14" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/cpw" />
-    </LinearLayout>
-</FrameLayout>
+    <ImageView android:id="@id/fas" android:padding="@dimen/j6" android:layout_width="@dimen/a4f" android:layout_height="@dimen/a4f" android:scaleType="fitXY" />
+    <ImageView android:id="@id/fan" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/a4f" android:layout_height="@dimen/a4f" />
+    <TextView android:textSize="@dimen/m8" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fc9" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="@dimen/a4b" android:maxWidth="@dimen/a4f" android:layout_below="@id/fas" android:layout_centerHorizontal="true" style="@style/ma" />
+</RelativeLayout>

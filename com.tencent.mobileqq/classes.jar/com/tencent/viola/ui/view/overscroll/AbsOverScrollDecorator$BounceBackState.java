@@ -1,7 +1,6 @@
 package com.tencent.viola.ui.view.overscroll;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -10,9 +9,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
+import com.tencent.viola.ui.view.D8SafeAnimatorListener;
 
 public class AbsOverScrollDecorator$BounceBackState
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, AbsOverScrollDecorator.IDecoratorState
+  extends D8SafeAnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener, AbsOverScrollDecorator.IDecoratorState
 {
   protected final AbsOverScrollDecorator.AnimationAttributes mAnimAttributes;
   protected final Interpolator mBounceBackInterpolator = new DecelerateInterpolator();
@@ -22,30 +23,30 @@ public class AbsOverScrollDecorator$BounceBackState
   public AbsOverScrollDecorator$BounceBackState(AbsOverScrollDecorator paramAbsOverScrollDecorator, float paramFloat)
   {
     this.mDecelerateFactor = paramFloat;
-    this.mDoubleDecelerateFactor = (2.0F * paramFloat);
+    this.mDoubleDecelerateFactor = (paramFloat * 2.0F);
     this.mAnimAttributes = paramAbsOverScrollDecorator.createAnimationAttributes();
   }
   
   protected Animator createAnimator()
   {
-    float f1 = 0.0F;
     Object localObject = this.this$0.mViewAdapter.getView();
     this.mAnimAttributes.init((View)localObject);
-    if ((this.this$0.mVelocity == 0.0F) || ((this.this$0.mVelocity < 0.0F) && (this.this$0.mStartAttr.mDir)) || ((this.this$0.mVelocity > 0.0F) && (!this.this$0.mStartAttr.mDir))) {
-      return createBounceBackAnimator(this.mAnimAttributes.mAbsOffset);
-    }
-    float f2 = -this.this$0.mVelocity / this.mDecelerateFactor;
-    if (f2 < 0.0F) {}
-    for (;;)
+    if ((this.this$0.mVelocity != 0.0F) && ((this.this$0.mVelocity >= 0.0F) || (!this.this$0.mStartAttr.mDir)) && ((this.this$0.mVelocity <= 0.0F) || (this.this$0.mStartAttr.mDir)))
     {
-      f2 = -this.this$0.mVelocity * this.this$0.mVelocity / this.mDoubleDecelerateFactor + this.mAnimAttributes.mAbsOffset;
+      float f2 = -this.this$0.mVelocity / this.mDecelerateFactor;
+      float f1 = f2;
+      if (f2 < 0.0F) {
+        f1 = 0.0F;
+      }
+      f2 = -this.this$0.mVelocity * this.this$0.mVelocity / this.mDoubleDecelerateFactor;
+      f2 = this.mAnimAttributes.mAbsOffset + f2;
       localObject = createSlowdownAnimator((View)localObject, (int)f1, f2);
       ObjectAnimator localObjectAnimator = createBounceBackAnimator(f2);
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playSequentially(new Animator[] { localObject, localObjectAnimator });
       return localAnimatorSet;
-      f1 = f2;
     }
+    return createBounceBackAnimator(this.mAnimAttributes.mAbsOffset);
   }
   
   protected ObjectAnimator createBounceBackAnimator(float paramFloat)
@@ -89,7 +90,8 @@ public class AbsOverScrollDecorator$BounceBackState
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.this$0.issueStateTransition(this.this$0.mIdleState);
+    paramAnimator = this.this$0;
+    paramAnimator.issueStateTransition(paramAnimator.mIdleState);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -103,7 +105,7 @@ public class AbsOverScrollDecorator$BounceBackState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.AbsOverScrollDecorator.BounceBackState
  * JD-Core Version:    0.7.0.1
  */

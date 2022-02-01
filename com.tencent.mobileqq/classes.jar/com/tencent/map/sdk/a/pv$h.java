@@ -34,14 +34,18 @@ final class pv$h
   
   private static String b(String paramString)
   {
-    return paramString + " failed: ";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" failed: ");
+    return localStringBuilder.toString();
   }
   
   final void a()
   {
-    if ((this.d != null) && (this.d != EGL10.EGL_NO_SURFACE))
+    Object localObject = this.d;
+    if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
     {
-      Object localObject = this.b;
+      localObject = this.b;
       EGLDisplay localEGLDisplay = this.c;
       EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
       ((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
@@ -57,22 +61,23 @@ final class pv$h
   {
     if (this.f != null)
     {
-      pv localpv = (pv)this.a.get();
-      if (localpv != null) {
-        pv.c(localpv).a(this.b, this.c, this.f);
+      localObject = (pv)this.a.get();
+      if (localObject != null) {
+        pv.c((pv)localObject).a(this.b, this.c, this.f);
       }
       this.f = null;
     }
-    if (this.c != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      this.b.eglTerminate(this.c);
+      this.b.eglTerminate((EGLDisplay)localObject);
       this.c = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pv.h
  * JD-Core Version:    0.7.0.1
  */

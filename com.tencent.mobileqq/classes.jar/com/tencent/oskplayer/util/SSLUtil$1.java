@@ -21,14 +21,36 @@ final class SSLUtil$1
       while (i < paramArrayOfX509Certificate.length)
       {
         paramString = paramArrayOfX509Certificate[i];
-        PlayerUtils.log(3, "SSLUtil", " Server certificate " + (i + 1) + ":");
-        PlayerUtils.log(3, "SSLUtil", "  Subject DN: " + paramString.getSubjectX500Principal());
-        PlayerUtils.log(3, "SSLUtil", "  Issuer DN: " + paramString.getIssuerX500Principal());
-        PlayerUtils.log(3, "SSLUtil", "  Signature Algorithm: " + paramString.getSigAlgName());
-        PlayerUtils.log(3, "SSLUtil", "  Valid from: " + paramString.getNotBefore());
-        PlayerUtils.log(3, "SSLUtil", "  Valid until: " + paramString.getNotAfter());
-        PlayerUtils.log(3, "SSLUtil", "  Serial #: " + paramString.getSerialNumber().toString(16));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" Server certificate ");
         i += 1;
+        localStringBuilder.append(i);
+        localStringBuilder.append(":");
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Subject DN: ");
+        localStringBuilder.append(paramString.getSubjectX500Principal());
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Issuer DN: ");
+        localStringBuilder.append(paramString.getIssuerX500Principal());
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Signature Algorithm: ");
+        localStringBuilder.append(paramString.getSigAlgName());
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Valid from: ");
+        localStringBuilder.append(paramString.getNotBefore());
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Valid until: ");
+        localStringBuilder.append(paramString.getNotAfter());
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Serial #: ");
+        localStringBuilder.append(paramString.getSerialNumber().toString(16));
+        PlayerUtils.log(3, "SSLUtil", localStringBuilder.toString());
       }
     }
   }
@@ -40,7 +62,7 @@ final class SSLUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.util.SSLUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,38 @@
+package com.tencent.mm.plugin.textstatus.h.e;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.view.recyclerview.i.b;
+import kotlin.Metadata;
+
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/model/square/SquareHeaderData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "textStatus", "", "tips", "(Ljava/lang/String;Ljava/lang/String;)V", "getTextStatus", "()Ljava/lang/String;", "setTextStatus", "(Ljava/lang/String;)V", "getTips", "setTips", "getItemId", "", "getItemType", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  extends i.b
+{
+  public String TnA;
+  public String lym;
+  
+  public d(String paramString1, String paramString2)
+  {
+    this.TnA = paramString1;
+    this.lym = paramString2;
+  }
+  
+  public final long bZA()
+  {
+    AppMethodBeat.i(290473);
+    long l = hashCode();
+    AppMethodBeat.o(290473);
+    return l;
+  }
+  
+  public final int bZB()
+  {
+    return -1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.textstatus.h.e.d
+ * JD-Core Version:    0.7.0.1
+ */

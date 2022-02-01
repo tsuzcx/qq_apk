@@ -14,8 +14,12 @@ final class PluginManagerHelper$2
 {
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "onServiceConnected " + PluginManagerHelper.access$000().size());
+    if (QLog.isColorLevel())
+    {
+      paramComponentName = new StringBuilder();
+      paramComponentName.append("onServiceConnected ");
+      paramComponentName.append(PluginManagerHelper.access$000().size());
+      QLog.i("plugin_tag", 2, paramComponentName.toString());
     }
     if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
     {
@@ -46,11 +50,14 @@ final class PluginManagerHelper$2
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.i("plugin_tag", 1, "onServiceDisconnected" + paramComponentName);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onServiceDisconnected");
+    ((StringBuilder)localObject).append(paramComponentName);
+    QLog.i("plugin_tag", 1, ((StringBuilder)localObject).toString());
     paramComponentName = new ArrayList(PluginManagerHelper.access$000()).iterator();
     while (paramComponentName.hasNext())
     {
-      Object localObject = (WeakReference)paramComponentName.next();
+      localObject = (WeakReference)paramComponentName.next();
       if (localObject != null)
       {
         localObject = (PluginManagerHelper.OnPluginManagerLoadedListener)((WeakReference)localObject).get();
@@ -69,7 +76,7 @@ final class PluginManagerHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginManagerHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,8 @@ public final class PullGroupSeqParam
   extends JceStruct
   implements Cloneable
 {
-  public long lGroupCode;
-  public long lLastSeqId;
-  
-  static
-  {
-    if (!PullGroupSeqParam.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public long lGroupCode = 0L;
+  public long lLastSeqId = 0L;
   
   public PullGroupSeqParam() {}
   
@@ -38,18 +28,17 @@ public final class PullGroupSeqParam
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -68,13 +57,20 @@ public final class PullGroupSeqParam
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (PullGroupSeqParam)paramObject;
-    } while ((!JceUtil.equals(this.lGroupCode, paramObject.lGroupCode)) || (!JceUtil.equals(this.lLastSeqId, paramObject.lLastSeqId)));
-    return true;
+    }
+    paramObject = (PullGroupSeqParam)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lGroupCode, paramObject.lGroupCode))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.lLastSeqId, paramObject.lLastSeqId)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -129,7 +125,7 @@ public final class PullGroupSeqParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.PullGroupSeqParam
  * JD-Core Version:    0.7.0.1
  */

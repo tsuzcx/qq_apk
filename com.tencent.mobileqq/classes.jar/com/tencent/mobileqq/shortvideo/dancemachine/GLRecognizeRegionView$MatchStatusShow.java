@@ -118,21 +118,26 @@ public class GLRecognizeRegionView$MatchStatusShow
   private AnimationSet getTypefaceAnimation()
   {
     this.typefaceAnimation = null;
-    switch (this.status)
+    int i = this.status;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.typefaceAnimation == null) {
-        this.haveTypefaceStop = true;
+      if ((i != 1) && (i != 2))
+      {
+        if (i == 3) {
+          this.typefaceAnimation = getPerfectTypeAnimation();
+        }
       }
-      return this.typefaceAnimation;
-      this.typefaceAnimation = null;
-      continue;
-      this.typefaceAnimation = getMatchedTypeAnimation();
-      continue;
-      this.typefaceAnimation = getPerfectTypeAnimation();
+      else {
+        this.typefaceAnimation = getMatchedTypeAnimation();
+      }
     }
+    else {
+      this.typefaceAnimation = null;
+    }
+    if (this.typefaceAnimation == null) {
+      this.haveTypefaceStop = true;
+    }
+    return this.typefaceAnimation;
   }
   
   boolean checkHaveStopped()
@@ -142,45 +147,66 @@ public class GLRecognizeRegionView$MatchStatusShow
   
   String getAnimationLog()
   {
-    return " haveMongolianStop=" + this.haveMongolianStop + " haveBackgroundStop=" + this.haveBackgroundStop + " haveTypefaceStop=" + this.haveTypefaceStop;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" haveMongolianStop=");
+    localStringBuilder.append(this.haveMongolianStop);
+    localStringBuilder.append(" haveBackgroundStop=");
+    localStringBuilder.append(this.haveBackgroundStop);
+    localStringBuilder.append(" haveTypefaceStop=");
+    localStringBuilder.append(this.haveTypefaceStop);
+    return localStringBuilder.toString();
   }
   
   AnimationSet getBackGroundAnimation()
   {
     this.backgroundAnimation = null;
-    switch (this.status)
+    int i = this.status;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.backgroundAnimation == null) {
-        this.haveBackgroundStop = true;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i == 3) {
+            this.backgroundAnimation = newMongolianAnimation();
+          }
+        }
+        else {
+          this.backgroundAnimation = newMongolianAnimation();
+        }
       }
-      return this.backgroundAnimation;
-      this.backgroundAnimation = getMissTypeAnimation();
-      continue;
-      this.backgroundAnimation = newMongolianAnimation();
-      continue;
-      this.backgroundAnimation = newMongolianAnimation();
-      continue;
-      this.backgroundAnimation = newMongolianAnimation();
+      else {
+        this.backgroundAnimation = newMongolianAnimation();
+      }
     }
+    else {
+      this.backgroundAnimation = getMissTypeAnimation();
+    }
+    if (this.backgroundAnimation == null) {
+      this.haveBackgroundStop = true;
+    }
+    return this.backgroundAnimation;
   }
   
   String getMessageStatus()
   {
-    switch (this.status)
+    int i = this.status;
+    if (i != 0)
     {
-    default: 
-      return "unKnown";
-    case 0: 
-      return "MISS";
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return "unKnown";
+          }
+          return "PERFECT";
+        }
+        return "GREAT";
+      }
       return "GOOD";
-    case 2: 
-      return "GREAT";
     }
-    return "PERFECT";
+    return "MISS";
   }
   
   AnimationSet getMongolianAnimation()
@@ -211,19 +237,19 @@ public class GLRecognizeRegionView$MatchStatusShow
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.mongolianAnimation == paramAnimation) {
-      this.haveMongolianStop = true;
-    }
-    do
+    if (this.mongolianAnimation == paramAnimation)
     {
+      this.haveMongolianStop = true;
       return;
-      if (this.backgroundAnimation == paramAnimation)
-      {
-        this.haveBackgroundStop = true;
-        return;
-      }
-    } while (this.typefaceAnimation != paramAnimation);
-    this.haveTypefaceStop = true;
+    }
+    if (this.backgroundAnimation == paramAnimation)
+    {
+      this.haveBackgroundStop = true;
+      return;
+    }
+    if (this.typefaceAnimation == paramAnimation) {
+      this.haveTypefaceStop = true;
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -249,7 +275,7 @@ public class GLRecognizeRegionView$MatchStatusShow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView.MatchStatusShow
  * JD-Core Version:    0.7.0.1
  */

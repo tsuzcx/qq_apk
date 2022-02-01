@@ -11,20 +11,25 @@ public final class b
   
   public static b a()
   {
-    if (a == null) {}
-    synchronized (b)
-    {
-      if (a == null) {
-        a = new b();
+    if (a == null) {
+      synchronized (b)
+      {
+        if (a == null) {
+          a = new b();
+        }
       }
-      return a;
     }
+    return a;
   }
   
   public void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppStateManager", 2, "notifyChange...msg=" + paramObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyChange...msg=");
+      localStringBuilder.append(paramObject);
+      QLog.d("MiniAppStateManager", 2, localStringBuilder.toString());
     }
     setChanged();
     if (paramObject != null)
@@ -37,7 +42,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.app.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import amdp;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVHostCallback;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -15,17 +15,10 @@ public class IVCommonInterfaceImpl
   
   private String dealLocationStr(String paramString)
   {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (!"Unknown".equals(paramString)) {}
+    if ((paramString != null) && (!"Unknown".equals(paramString))) {
+      return paramString;
     }
-    else
-    {
-      str = "";
-    }
-    return str;
+    return "";
   }
   
   public static IVCommonInterfaceImpl getInstance()
@@ -35,62 +28,70 @@ public class IVCommonInterfaceImpl
   
   public Future<Bundle> getLocation(String paramString)
   {
-    return amdp.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
+    return ThreadManagerExecutor.getExecutorService(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
   }
   
   public void onHostActivityBackPress()
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityBackPress();
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityBackPress();
     }
   }
   
   public void onHostActivityDestroy()
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityDestroy();
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityDestroy();
     }
   }
   
   public void onHostActivityNewIntent(Intent paramIntent)
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityNewIntent(paramIntent);
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityNewIntent(paramIntent);
     }
   }
   
   public void onHostActivityPause()
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityPause();
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityPause();
     }
   }
   
   public void onHostActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityResult(paramInt1, paramInt2, paramIntent);
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityResult(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void onHostActivityResume()
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityResume();
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityResume();
     }
   }
   
   public void onHostActivityStop()
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onHostActivityStop();
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onHostActivityStop();
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.mIVHostCallback != null) {
-      this.mIVHostCallback.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    IVHostCallback localIVHostCallback = this.mIVHostCallback;
+    if (localIVHostCallback != null) {
+      localIVHostCallback.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
   }
   
@@ -101,7 +102,7 @@ public class IVCommonInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

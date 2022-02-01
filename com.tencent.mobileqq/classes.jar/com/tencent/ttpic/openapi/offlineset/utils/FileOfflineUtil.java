@@ -16,9 +16,20 @@ import java.io.UnsupportedEncodingException;
 public class FileOfflineUtil
 {
   private static final String DIR_NAME = "offlinepkg";
-  private static final String OFFELINE_DIR = "tencent" + File.separator + "com.tencent.ttpic" + File.separator + "offlinepkg";
+  private static final String OFFELINE_DIR;
   private static final String TAG = "FileOfflineUtil";
   private static String sCachePath;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("com.tencent.ttpic");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("offlinepkg");
+    OFFELINE_DIR = localStringBuilder.toString();
+  }
   
   private static void checkFileExit(String paramString)
   {
@@ -30,11 +41,17 @@ public class FileOfflineUtil
   
   public static String getCacheFilePath()
   {
-    if (sCachePath != null)
+    Object localObject = sCachePath;
+    if (localObject != null)
     {
-      File localFile = new File(sCachePath);
-      if (localFile.exists()) {
-        return localFile.getAbsolutePath() + File.separator + "offlinepkg";
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((File)localObject).getAbsolutePath());
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append("offlinepkg");
+        return localStringBuilder.toString();
       }
     }
     return null;
@@ -42,14 +59,17 @@ public class FileOfflineUtil
   
   public static String getOfflineDirPath()
   {
-    String str2 = getCacheFilePath();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = getSDCardPath();
+    Object localObject2 = getCacheFilePath();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = getSDCardPath();
     }
-    checkFileExit(str1);
-    LogUtils.i("Offline", "getOffPath:" + str1);
-    return str1;
+    checkFileExit((String)localObject1);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getOffPath:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    LogUtils.i("Offline", ((StringBuilder)localObject2).toString());
+    return localObject1;
   }
   
   public static String getSDCardPath()
@@ -57,14 +77,22 @@ public class FileOfflineUtil
     try
     {
       Object localObject = AEModule.getContext().getExternalFilesDir(null);
-      localObject = ((File)localObject).getAbsolutePath() + File.separator + OFFELINE_DIR;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(((File)localObject).getAbsolutePath());
+      localStringBuilder2.append(File.separator);
+      localStringBuilder2.append(OFFELINE_DIR);
+      localObject = localStringBuilder2.toString();
       return localObject;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("/sdcard");
+      localStringBuilder1.append(File.separator);
+      localStringBuilder1.append(OFFELINE_DIR);
+      return localStringBuilder1.toString();
     }
-    return "/sdcard" + File.separator + OFFELINE_DIR;
   }
   
   public static String getStringFromStream(InputStream paramInputStream)
@@ -82,45 +110,56 @@ public class FileOfflineUtil
         }
         localStringBuilder.append(str);
       }
-      return null;
-    }
-    catch (FileNotFoundException paramInputStream)
-    {
-      LogUtils.e("FileOfflineUtil", "FileNotFoundException");
-      return null;
       localBufferedReader.close();
       paramInputStream.close();
       paramInputStream = localStringBuilder.toString();
       return paramInputStream;
     }
+    catch (FileNotFoundException paramInputStream)
+    {
+      break label79;
+    }
     catch (UnsupportedEncodingException paramInputStream)
     {
-      LogUtils.e("FileOfflineUtil", "UnsupportedEncodingException");
-      return null;
+      break label70;
     }
     catch (IOException paramInputStream)
     {
-      LogUtils.e("FileOfflineUtil", "IOException");
+      label61:
+      label70:
+      label79:
+      break label61;
     }
+    LogUtils.e("FileOfflineUtil", "IOException");
+    return null;
+    LogUtils.e("FileOfflineUtil", "UnsupportedEncodingException");
+    return null;
+    LogUtils.e("FileOfflineUtil", "FileNotFoundException");
+    return null;
   }
   
   public static String readJsonStringFromFile(String paramString)
   {
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
     {
-      LogUtils.e("FileOfflineUtil", "file not exit:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file not exit:");
+      ((StringBuilder)localObject).append(paramString);
+      LogUtils.e("FileOfflineUtil", ((StringBuilder)localObject).toString());
       return null;
     }
     try
     {
-      paramString = getStringFromStream(new FileInputStream(localFile));
+      paramString = getStringFromStream(new FileInputStream((File)localObject));
       return paramString;
     }
     catch (FileNotFoundException paramString)
     {
-      LogUtils.e("FileOfflineUtil", "FileNotFoundException");
+      label62:
+      break label62;
     }
+    LogUtils.e("FileOfflineUtil", "FileNotFoundException");
     return null;
   }
   
@@ -131,32 +170,42 @@ public class FileOfflineUtil
       paramString = getStringFromStream(AEModule.getContext().getAssets().open(paramString));
       return paramString;
     }
-    catch (FileNotFoundException paramString)
+    catch (Exception paramString)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStringFromAssets|Exception:");
+      localStringBuilder.append(paramString.getMessage());
+      LogUtils.e("FileOfflineUtil", localStringBuilder.toString());
+      return null;
+      LogUtils.e("FileOfflineUtil", "getStringFromAssets|IOException");
+      return null;
       LogUtils.e("FileOfflineUtil", "getStringFromAssets|FileNotFoundException");
       return null;
     }
+    catch (FileNotFoundException paramString)
+    {
+      break label61;
+    }
     catch (IOException paramString)
     {
-      LogUtils.e("FileOfflineUtil", "getStringFromAssets|IOException");
-      return null;
+      label52:
+      label61:
+      break label52;
     }
-    catch (Exception paramString)
-    {
-      LogUtils.e("FileOfflineUtil", "getStringFromAssets|Exception:" + paramString.getMessage());
-    }
-    return null;
   }
   
   public static void setCachePath(String paramString)
   {
-    LogUtils.i("Offline", "cachePath:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cachePath:");
+    localStringBuilder.append(paramString);
+    LogUtils.i("Offline", localStringBuilder.toString());
     sCachePath = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil
  * JD-Core Version:    0.7.0.1
  */

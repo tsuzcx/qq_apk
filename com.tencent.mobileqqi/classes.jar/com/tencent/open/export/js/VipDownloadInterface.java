@@ -21,9 +21,9 @@ import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.UpdateManager;
 import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
 import com.tencent.smtt.sdk.WebView;
+import hop;
 import hoq;
 import hor;
-import hos;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -59,7 +59,7 @@ public class VipDownloadInterface
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new hos(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new hor(this, paramString));
   }
   
   public boolean cancelDownload(String paramString1, String paramString2)
@@ -305,7 +305,7 @@ public class VipDownloadInterface
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      DownloadApi.a(localArrayList, new hoq(this, (String)localObject));
+      DownloadApi.a(localArrayList, new hop(this, (String)localObject));
       return;
     }
     catch (JSONException paramString)
@@ -333,7 +333,7 @@ public class VipDownloadInterface
         paramString2.add(localDownloadInfo);
         i += 1;
       }
-      DownloadApi.a(paramString2, new hor(this));
+      DownloadApi.a(paramString2, new hoq(this));
       return;
     }
     catch (JSONException paramString1)

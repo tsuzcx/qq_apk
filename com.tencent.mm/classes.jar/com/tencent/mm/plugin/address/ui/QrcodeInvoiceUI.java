@@ -1,258 +1,340 @@
 package com.tencent.mm.plugin.address.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.j.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.base.v;
+import com.tencent.mm.ui.y.b;
 
 public class QrcodeInvoiceUI
   extends MMActivity
 {
-  private Dialog gKM;
-  private b gLA;
-  private int gLm;
-  private TextView gLq;
-  private InvoiceQrcodeTextView gMC;
-  private InvoiceQrcodeTextView gMD;
-  private InvoiceQrcodeTextView gME;
-  private InvoiceQrcodeTextView gMF;
-  private InvoiceQrcodeTextView gMG;
-  private InvoiceQrcodeTextView gMH;
-  private InvoiceQrcodeTextView gMI;
-  private Bitmap gMJ;
-  private o gMK;
-  private ImageView gML;
-  private View gMM;
-  private float gMN;
-  private View.OnClickListener gMO;
-  private View.OnClickListener gMP;
+  private com.tencent.mm.plugin.o.a.b qiA;
+  private int qim;
+  private TextView qiq;
+  private InvoiceQrcodeTextView qjA;
+  private InvoiceQrcodeTextView qjB;
+  private InvoiceQrcodeTextView qjC;
+  private InvoiceQrcodeTextView qjD;
+  private InvoiceQrcodeTextView qjE;
+  private InvoiceQrcodeTextView qjF;
+  private Bitmap qjG;
+  private v qjH;
+  private ImageView qjI;
+  private View qjJ;
+  private float qjK;
+  private View.OnClickListener qjL;
+  private View.OnClickListener qjM;
+  private InvoiceQrcodeTextView qjz;
+  private Dialog tipDialog;
   
   public QrcodeInvoiceUI()
   {
-    AppMethodBeat.i(16918);
-    this.gLm = 0;
-    this.gLA = null;
-    this.gKM = null;
-    this.gMK = null;
-    this.gMN = 0.0F;
-    this.gMO = new QrcodeInvoiceUI.5(this);
-    this.gMP = new QrcodeInvoiceUI.6(this);
-    AppMethodBeat.o(16918);
+    AppMethodBeat.i(20963);
+    this.qim = 0;
+    this.qiA = null;
+    this.tipDialog = null;
+    this.qjH = null;
+    this.qjK = 0.0F;
+    this.qjL = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(20961);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if ((paramAnonymousView.getId() == R.h.fKR) && (QrcodeInvoiceUI.b(QrcodeInvoiceUI.this) != null) && (QrcodeInvoiceUI.b(QrcodeInvoiceUI.this).isShowing())) {
+          QrcodeInvoiceUI.b(QrcodeInvoiceUI.this).dismiss();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(20961);
+      }
+    };
+    this.qjM = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(20962);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if ((paramAnonymousView.getId() == R.h.fKT) && (QrcodeInvoiceUI.b(QrcodeInvoiceUI.this) != null))
+        {
+          QrcodeInvoiceUI.this.showPopupWindow(paramAnonymousView);
+          QrcodeInvoiceUI.d(QrcodeInvoiceUI.this);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(20962);
+      }
+    };
+    AppMethodBeat.o(20963);
   }
   
   public int getLayoutId()
   {
-    return 2130970268;
+    return R.i.gmi;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(16922);
-    findViewById(2131826265);
-    this.gMC = ((InvoiceQrcodeTextView)findViewById(2131826267));
-    if (this.gMC != null) {
-      this.gMC.asy();
+    AppMethodBeat.i(20966);
+    findViewById(R.h.fTT);
+    this.qjz = ((InvoiceQrcodeTextView)findViewById(R.h.fTV));
+    if (this.qjz != null) {
+      this.qjz.bZs();
     }
-    this.gMD = ((InvoiceQrcodeTextView)findViewById(2131826268));
-    if (this.gMD != null) {
-      this.gMD.asy();
+    this.qjA = ((InvoiceQrcodeTextView)findViewById(R.h.fTR));
+    if (this.qjA != null) {
+      this.qjA.bZs();
     }
-    this.gME = ((InvoiceQrcodeTextView)findViewById(2131826269));
-    if (this.gME != null) {
-      this.gME.asy();
+    this.qjB = ((InvoiceQrcodeTextView)findViewById(R.h.fTU));
+    if (this.qjB != null) {
+      this.qjB.bZs();
     }
-    this.gMF = ((InvoiceQrcodeTextView)findViewById(2131826270));
-    if (this.gMF != null) {
-      this.gMF.asy();
+    this.qjC = ((InvoiceQrcodeTextView)findViewById(R.h.fTQ));
+    if (this.qjC != null) {
+      this.qjC.bZs();
     }
-    this.gMG = ((InvoiceQrcodeTextView)findViewById(2131826271));
-    if (this.gMG != null) {
-      this.gMG.asy();
+    this.qjD = ((InvoiceQrcodeTextView)findViewById(R.h.fTS));
+    if (this.qjD != null) {
+      this.qjD.bZs();
     }
-    this.gMH = ((InvoiceQrcodeTextView)findViewById(2131826272));
-    if (this.gMH != null) {
-      this.gMH.asy();
+    this.qjE = ((InvoiceQrcodeTextView)findViewById(R.h.fTO));
+    if (this.qjE != null) {
+      this.qjE.bZs();
     }
-    this.gMI = ((InvoiceQrcodeTextView)findViewById(2131826273));
-    if (this.gMI != null) {
-      this.gMI.asy();
+    this.qjF = ((InvoiceQrcodeTextView)findViewById(R.h.fTP));
+    if (this.qjF != null) {
+      this.qjF.bZs();
     }
-    this.gME.gLY = true;
-    this.gME.gLR = true;
-    if (this.gLm != 0)
+    this.qjB.qiW = true;
+    this.qjB.qiQ = true;
+    if (this.qim != 0)
     {
-      this.gLq = ((TextView)findViewById(2131826266));
-      this.gLA = com.tencent.mm.plugin.address.a.a.asm().mZ(this.gLm);
-      if (this.gLA == null)
+      this.qiq = ((TextView)findViewById(R.h.fTX));
+      this.qiA = com.tencent.mm.plugin.address.a.a.bZf().yy(this.qim);
+      if (this.qiA == null)
       {
-        ab.i("MicroMsg.QrcodeInvoiceUI", "invoiceSvrObj is null ,now finish..");
+        Log.i("MicroMsg.QrcodeInvoiceUI", "invoiceSvrObj is null ,now finish..");
         finish();
       }
-      if ((this.gLA != null) && (this.gLA.type != null) && (this.gLA.type.equals("0")))
+      if ((this.qiA != null) && (this.qiA.type != null) && (this.qiA.type.equals("0")))
       {
-        this.gLq.setText(getString(2131300795));
-        this.gMD.setVisibility(8);
-        if ((this.gLA.nLo != null) && (!this.gLA.nLo.equals("")))
+        this.qiq.setText(getString(R.l.gJR));
+        this.qjA.setVisibility(8);
+        if ((this.qiA.JFi != null) && (!this.qiA.JFi.equals("")))
         {
-          this.gME.setVisibility(0);
-          this.gME.setValStr(this.gLA.nLo);
-          if ((this.gLA.nLu == null) || (this.gLA.nLu.equals(""))) {
-            break label892;
+          this.qjB.setVisibility(0);
+          this.qjB.setValStr(this.qiA.JFi);
+          if ((this.qiA.JFo == null) || (this.qiA.JFo.equals(""))) {
+            break label905;
           }
-          this.gMF.setVisibility(0);
-          this.gMF.setValStr(this.gLA.nLu);
-          label418:
-          if ((this.gLA.nLs == null) || (this.gLA.nLs.equals(""))) {
-            break label904;
+          this.qjC.setVisibility(0);
+          this.qjC.setValStr(this.qiA.JFo);
+          label428:
+          if ((this.qiA.JFm == null) || (this.qiA.JFm.equals(""))) {
+            break label917;
           }
-          this.gMG.setVisibility(0);
-          this.gMG.setValStr(this.gLA.nLs);
-          label465:
-          if ((this.gLA.nLq == null) || (this.gLA.nLq.equals(""))) {
-            break label916;
+          this.qjD.setVisibility(0);
+          this.qjD.setValStr(this.qiA.JFm);
+          label475:
+          if ((this.qiA.JFk == null) || (this.qiA.JFk.equals(""))) {
+            break label929;
           }
-          this.gMH.setVisibility(0);
-          this.gMH.setValStr(this.gLA.nLq);
-          label512:
-          if ((this.gLA.nLp == null) || (this.gLA.nLp.equals(""))) {
-            break label928;
+          this.qjE.setVisibility(0);
+          this.qjE.setValStr(this.qiA.JFk);
+          label522:
+          if ((this.qiA.JFj == null) || (this.qiA.JFj.equals(""))) {
+            break label941;
           }
-          this.gMI.setVisibility(0);
-          this.gMI.setValStr(this.gLA.nLp);
-          label559:
-          this.gLq.setVisibility(0);
-          if (this.gLA != null)
+          this.qjF.setVisibility(0);
+          this.qjF.setValStr(this.qiA.JFj);
+          label569:
+          this.qiq.setVisibility(0);
+          if (this.qiA != null)
           {
-            this.gMC.setValStr(this.gLA.title);
-            this.gMD.setValStr(this.gLA.nLn);
+            this.qjz.setValStr(this.qiA.title);
+            this.qjA.setValStr(this.qiA.JFh);
           }
-          if (this.gMK == null)
+          if (this.qjH == null)
           {
-            localObject = View.inflate(this, 2130969917, null);
-            ((View)localObject).setOnClickListener(new QrcodeInvoiceUI.3(this));
-            this.gMM = ((View)localObject).findViewById(2131825165);
-            this.gML = ((ImageView)((View)localObject).findViewById(2131825166));
-            this.gMK = new o((View)localObject, -1, -1, true);
-            this.gMK.setClippingEnabled(false);
-            this.gMK.update();
-            this.gMK.setBackgroundDrawable(new ColorDrawable(16777215));
-            this.gMK.setOnDismissListener(new QrcodeInvoiceUI.4(this));
+            localObject = View.inflate(this, R.i.gkC, null);
+            ((View)localObject).setOnClickListener(new View.OnClickListener()
+            {
+              public final void onClick(View paramAnonymousView)
+              {
+                AppMethodBeat.i(20959);
+                com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+                localb.cH(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+                if ((QrcodeInvoiceUI.b(QrcodeInvoiceUI.this) != null) && (QrcodeInvoiceUI.b(QrcodeInvoiceUI.this).isShowing())) {
+                  QrcodeInvoiceUI.b(QrcodeInvoiceUI.this).dismiss();
+                }
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(20959);
+              }
+            });
+            this.qjJ = ((View)localObject).findViewById(R.h.fKS);
+            this.qjI = ((ImageView)((View)localObject).findViewById(R.h.fKR));
+            this.qjH = new v((View)localObject, -1, -1, true);
+            this.qjH.setClippingEnabled(false);
+            this.qjH.update();
+            this.qjH.setBackgroundDrawable(new ColorDrawable(16777215));
+            this.qjH.setOnDismissListener(new PopupWindow.OnDismissListener()
+            {
+              public final void onDismiss()
+              {
+                AppMethodBeat.i(20960);
+                QrcodeInvoiceUI.c(QrcodeInvoiceUI.this);
+                AppMethodBeat.o(20960);
+              }
+            });
           }
         }
       }
     }
     for (;;)
     {
-      setBackBtn(new QrcodeInvoiceUI.1(this));
-      addTextOptionMenu(0, getString(2131296914), new QrcodeInvoiceUI.2(this), null, q.b.zby);
-      if ((this.gLA == null) || (this.gLA.nLv == null) || (this.gLA.nLv.equals(""))) {
-        break label1059;
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(20957);
+          QrcodeInvoiceUI.this.setResult(0);
+          QrcodeInvoiceUI.this.finish();
+          AppMethodBeat.o(20957);
+          return true;
+        }
+      });
+      addTextOptionMenu(0, getString(R.l.app_edit), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(20958);
+          Object localObject = new Intent();
+          ((Intent)localObject).setClass(QrcodeInvoiceUI.this, AddInvoiceUI.class);
+          ((Intent)localObject).putExtra("invoice_id", QrcodeInvoiceUI.a(QrcodeInvoiceUI.this));
+          paramAnonymousMenuItem = QrcodeInvoiceUI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousMenuItem, "com/tencent/mm/plugin/address/ui/QrcodeInvoiceUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(20958);
+          return true;
+        }
+      }, null, y.b.adEJ);
+      if ((this.qiA == null) || (this.qiA.JFp == null) || (this.qiA.JFp.equals(""))) {
+        break label1072;
       }
-      localObject = (ImageView)findViewById(2131826275);
+      localObject = (ImageView)findViewById(R.h.fKT);
       if (localObject != null)
       {
         ((ImageView)localObject).setVisibility(0);
-        this.gMJ = com.tencent.mm.by.a.a.b(this, this.gLA.nLv, 12, 3);
-        ((ImageView)localObject).setImageBitmap(this.gMJ);
-        ((ImageView)localObject).setOnClickListener(this.gMP);
+        this.qjG = com.tencent.mm.bz.a.a.d(this, this.qiA.JFp, 12, 3);
+        ((ImageView)localObject).setImageBitmap(this.qjG);
+        ((ImageView)localObject).setOnClickListener(this.qjM);
       }
-      localObject = findViewById(2131826274);
+      localObject = findViewById(R.h.fKU);
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
-      localObject = (TextView)findViewById(2131826276);
+      localObject = (TextView)findViewById(R.h.fTN);
       if (localObject != null) {
         ((TextView)localObject).setVisibility(0);
       }
-      AppMethodBeat.o(16922);
+      AppMethodBeat.o(20966);
       return;
-      this.gME.setVisibility(8);
+      this.qjB.setVisibility(8);
       break;
-      label892:
-      this.gMF.setVisibility(8);
-      break label418;
-      label904:
-      this.gMG.setVisibility(8);
-      break label465;
-      label916:
-      this.gMH.setVisibility(8);
-      break label512;
-      label928:
-      this.gMI.setVisibility(8);
-      break label559;
-      if ((this.gLA == null) || (this.gLA.type == null) || (!this.gLA.type.equals("1"))) {
-        break label559;
+      label905:
+      this.qjC.setVisibility(8);
+      break label428;
+      label917:
+      this.qjD.setVisibility(8);
+      break label475;
+      label929:
+      this.qjE.setVisibility(8);
+      break label522;
+      label941:
+      this.qjF.setVisibility(8);
+      break label569;
+      if ((this.qiA == null) || (this.qiA.type == null) || (!this.qiA.type.equals("1"))) {
+        break label569;
       }
-      this.gLq.setText(getString(2131300801));
-      this.gMC.setVisibility(8);
-      this.gME.setVisibility(8);
-      this.gMF.setVisibility(8);
-      this.gMG.setVisibility(8);
-      this.gMH.setVisibility(8);
-      this.gMI.setVisibility(8);
-      break label559;
-      ab.i("MicroMsg.QrcodeInvoiceUI", "serverId is 0,now finish...");
+      this.qiq.setText(getString(R.l.gJT));
+      this.qjz.setVisibility(8);
+      this.qjB.setVisibility(8);
+      this.qjC.setVisibility(8);
+      this.qjD.setVisibility(8);
+      this.qjE.setVisibility(8);
+      this.qjF.setVisibility(8);
+      break label569;
+      Log.i("MicroMsg.QrcodeInvoiceUI", "serverId is 0,now finish...");
       finish();
     }
-    label1059:
-    Object localObject = (ImageView)findViewById(2131826275);
+    label1072:
+    Object localObject = (ImageView)findViewById(R.h.fKT);
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
-    localObject = findViewById(2131826274);
+    localObject = findViewById(R.h.fKU);
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = (TextView)findViewById(2131826276);
+    localObject = (TextView)findViewById(R.h.fTN);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
-    AppMethodBeat.o(16922);
+    AppMethodBeat.o(20966);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(16925);
+    AppMethodBeat.i(20969);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(16925);
+      AppMethodBeat.o(20969);
       return;
       if (paramInt2 == -1)
       {
         String str = paramIntent.getStringExtra("karea_result");
-        if (!bo.isNullOrNil(str))
+        if (!Util.isNullOrNil(str))
         {
-          ab.d("MicroMsg.QrcodeInvoiceUI", "AREA_RESULT:".concat(String.valueOf(str)));
-          this.gMG.setValStr(str);
+          Log.d("MicroMsg.QrcodeInvoiceUI", "AREA_RESULT:".concat(String.valueOf(str)));
+          this.qjD.setValStr(str);
         }
         paramIntent = paramIntent.getStringExtra("kpost_code");
-        if (!bo.isNullOrNil(paramIntent))
+        if (!Util.isNullOrNil(paramIntent))
         {
-          ab.d("MicroMsg.QrcodeInvoiceUI", "post:".concat(String.valueOf(paramIntent)));
-          this.gMG.setValStr(paramIntent);
+          Log.d("MicroMsg.QrcodeInvoiceUI", "post:".concat(String.valueOf(paramIntent)));
+          this.qjD.setValStr(paramIntent);
         }
-        AppMethodBeat.o(16925);
+        AppMethodBeat.o(20969);
         return;
         if (paramInt2 != -1) {
-          ab.i("MicroMsg.QrcodeInvoiceUI", "MallRecharge pay result : cancel");
+          Log.i("MicroMsg.QrcodeInvoiceUI", "MallRecharge pay result : cancel");
         }
       }
     }
@@ -260,43 +342,43 @@ public class QrcodeInvoiceUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(16919);
+    AppMethodBeat.i(20964);
     super.onCreate(paramBundle);
-    ab.d("MicroMsg.QrcodeInvoiceUI", "index Oncreate");
-    this.gLm = getIntent().getIntExtra("invoice_id", 0);
-    setMMTitle(2131300806);
-    AppMethodBeat.o(16919);
+    Log.d("MicroMsg.QrcodeInvoiceUI", "index Oncreate");
+    this.qim = getIntent().getIntExtra("invoice_id", 0);
+    setMMTitle(R.l.gJV);
+    AppMethodBeat.o(20964);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(16924);
+    AppMethodBeat.i(20968);
     super.onDestroy();
-    AppMethodBeat.o(16924);
+    AppMethodBeat.o(20968);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(16926);
+    AppMethodBeat.i(20970);
     if (paramInt == 4)
     {
       setResult(0);
       finish();
-      AppMethodBeat.o(16926);
+      AppMethodBeat.o(20970);
       return true;
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(16926);
+    AppMethodBeat.o(20970);
     return bool;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(16920);
+    AppMethodBeat.i(20965);
     getWindow().setSoftInputMode(3);
     super.onResume();
     initView();
-    AppMethodBeat.o(16920);
+    AppMethodBeat.o(20965);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -307,35 +389,35 @@ public class QrcodeInvoiceUI
   
   public void showPopupWindow(View paramView)
   {
-    AppMethodBeat.i(16923);
-    if ((this.gMK != null) && (!this.gMK.isShowing()))
+    AppMethodBeat.i(20967);
+    if ((this.qjH != null) && (!this.qjH.isShowing()))
     {
-      this.gMK.showAtLocation(paramView.getRootView(), 17, 0, 0);
-      this.gMK.setFocusable(true);
-      this.gMK.setTouchable(true);
-      this.gMK.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.gMK.setOutsideTouchable(true);
-      this.gMM.setVisibility(0);
-      this.gML.setOnClickListener(this.gMO);
-      this.gML.setImageBitmap(this.gMJ);
-      if (this.gMJ == null) {
+      this.qjH.showAtLocation(paramView.getRootView(), 17, 0, 0);
+      this.qjH.setFocusable(true);
+      this.qjH.setTouchable(true);
+      this.qjH.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.qjH.setOutsideTouchable(true);
+      this.qjJ.setVisibility(0);
+      this.qjI.setOnClickListener(this.qjL);
+      this.qjI.setImageBitmap(this.qjG);
+      if (this.qjG == null) {
         break label138;
       }
-      ab.e("MicroMsg.QrcodeInvoiceUI", "updatePopWindowContent mQRCodeBmp != null");
+      Log.e("MicroMsg.QrcodeInvoiceUI", "updatePopWindowContent mQRCodeBmp != null");
     }
     for (;;)
     {
-      this.gMK.update();
-      AppMethodBeat.o(16923);
+      this.qjH.update();
+      AppMethodBeat.o(20967);
       return;
       label138:
-      ab.i("MicroMsg.QrcodeInvoiceUI", "updatePopWindowContent mQRCodeBmp == null");
+      Log.i("MicroMsg.QrcodeInvoiceUI", "updatePopWindowContent mQRCodeBmp == null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.QrcodeInvoiceUI
  * JD-Core Version:    0.7.0.1
  */

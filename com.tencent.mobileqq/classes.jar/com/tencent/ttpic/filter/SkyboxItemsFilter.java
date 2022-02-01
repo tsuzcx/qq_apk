@@ -63,22 +63,22 @@ public class SkyboxItemsFilter
   public Frame render(Frame paramFrame, PTDetectInfo paramPTDetectInfo, int paramInt, Bitmap paramBitmap)
   {
     Iterator localIterator = this.skyboxFilters.iterator();
-    Frame localFrame;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
+      Frame localFrame = ((SkyboxFilter)localIterator.next()).render(paramFrame, paramPTDetectInfo, paramInt);
+      if (localFrame != paramFrame)
+      {
+        paramPTDetectInfo = localFrame;
+        break label53;
       }
-      localFrame = ((SkyboxFilter)localIterator.next()).render(paramFrame, paramPTDetectInfo, paramInt);
-    } while (localFrame == paramFrame);
-    for (paramPTDetectInfo = localFrame;; paramPTDetectInfo = paramFrame)
-    {
-      paramBitmap = this.maskBlendFilter.render(paramFrame, paramPTDetectInfo, paramBitmap, this.blendMode);
-      if (paramPTDetectInfo != paramFrame) {
-        paramPTDetectInfo.unlock();
-      }
-      return paramBitmap;
     }
+    paramPTDetectInfo = paramFrame;
+    label53:
+    paramBitmap = this.maskBlendFilter.render(paramFrame, paramPTDetectInfo, paramBitmap, this.blendMode);
+    if (paramPTDetectInfo != paramFrame) {
+      paramPTDetectInfo.unlock();
+    }
+    return paramBitmap;
   }
   
   public void setTriggerCtrlItemMap(HashMap<String, TriggerCtrlItem> paramHashMap)
@@ -101,7 +101,7 @@ public class SkyboxItemsFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.SkyboxItemsFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -24,41 +24,51 @@ class Mp4MaterialLoader$DecodeHandler
   {
     int i = paramMessage.what;
     HWVideoDecoder localHWVideoDecoder = (HWVideoDecoder)this.mDecoderRef.get();
-    if (localHWVideoDecoder == null) {}
-    do
+    if (localHWVideoDecoder == null) {
+      return;
+    }
+    if (i != 0)
     {
-      do
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          return;
-          switch (i)
+          if (i != 3)
           {
-          default: 
+            if (i != 4) {
+              return;
+            }
+            localHWVideoDecoder.resumeDecode();
             return;
           }
-        } while (paramMessage.obj == null);
-        long l = ((Long)paramMessage.obj).longValue();
-        if (l >= 0L) {
-          localHWVideoDecoder.nextTo(l);
+          localHWVideoDecoder.pauseDecode();
+          return;
         }
-        localHWVideoDecoder.decodeFrame();
+        localHWVideoDecoder.stopDecode();
         return;
-      } while (paramMessage.obj == null);
-      paramMessage = (Object[])paramMessage.obj;
-    } while (paramMessage.length != 3);
-    localHWVideoDecoder.startDecode(new DecodeConfig((String)paramMessage[1], 0, true, false), ((Integer)paramMessage[0]).intValue(), (SurfaceTexture.OnFrameAvailableListener)paramMessage[2], (HWDecodeListener)paramMessage[2]);
-    return;
-    localHWVideoDecoder.pauseDecode();
-    return;
-    localHWVideoDecoder.resumeDecode();
-    return;
-    localHWVideoDecoder.stopDecode();
+      }
+      if (paramMessage.obj != null)
+      {
+        paramMessage = (Object[])paramMessage.obj;
+        if (paramMessage.length != 3) {
+          return;
+        }
+        localHWVideoDecoder.startDecode(new DecodeConfig((String)paramMessage[1], 0, true, false), ((Integer)paramMessage[0]).intValue(), (SurfaceTexture.OnFrameAvailableListener)paramMessage[2], (HWDecodeListener)paramMessage[2]);
+      }
+    }
+    else if (paramMessage.obj != null)
+    {
+      long l = ((Long)paramMessage.obj).longValue();
+      if (l >= 0L) {
+        localHWVideoDecoder.nextTo(l);
+      }
+      localHWVideoDecoder.decodeFrame();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.Mp4MaterialLoader.DecodeHandler
  * JD-Core Version:    0.7.0.1
  */

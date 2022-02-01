@@ -24,16 +24,16 @@ public class zza
   
   protected final Parcel obtainAndWriteInterfaceToken()
   {
-    AppMethodBeat.i(115344);
+    AppMethodBeat.i(53034);
     Parcel localParcel = Parcel.obtain();
     localParcel.writeInterfaceToken(this.zzb);
-    AppMethodBeat.o(115344);
+    AppMethodBeat.o(53034);
     return localParcel;
   }
   
   protected final Parcel transactAndReadException(int paramInt, Parcel paramParcel)
   {
-    AppMethodBeat.i(115345);
+    AppMethodBeat.i(53035);
     Parcel localParcel = Parcel.obtain();
     try
     {
@@ -48,13 +48,13 @@ public class zza
     finally
     {
       paramParcel.recycle();
-      AppMethodBeat.o(115345);
+      AppMethodBeat.o(53035);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.ads_identifier.zza
  * JD-Core Version:    0.7.0.1
  */

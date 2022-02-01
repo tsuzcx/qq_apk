@@ -62,33 +62,28 @@ class StringsKt___StringsKt
   public static final boolean any(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$any");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
-    boolean bool2 = false;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$any");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     int i = 0;
-    for (;;)
+    while (i < paramCharSequence.length())
     {
-      boolean bool1 = bool2;
-      if (i < paramCharSequence.length())
-      {
-        if (((Boolean)paramFunction1.invoke(Character.valueOf(paramCharSequence.charAt(i)))).booleanValue()) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (((Boolean)paramFunction1.invoke(Character.valueOf(paramCharSequence.charAt(i)))).booleanValue()) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   @NotNull
@@ -97,8 +92,13 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$asIterable");
     if ((paramCharSequence instanceof String))
     {
-      if (paramCharSequence.length() == 0) {}
-      for (int i = 1; i != 0; i = 0) {
+      int i;
+      if (paramCharSequence.length() == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         return (Iterable)CollectionsKt.emptyList();
       }
     }
@@ -111,8 +111,13 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$asSequence");
     if ((paramCharSequence instanceof String))
     {
-      if (paramCharSequence.length() == 0) {}
-      for (int i = 1; i != 0; i = 0) {
+      int i;
+      if (paramCharSequence.length() == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         return SequencesKt.emptySequence();
       }
     }
@@ -312,46 +317,83 @@ class StringsKt___StringsKt
   public static final CharSequence drop(@NotNull CharSequence paramCharSequence, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramCharSequence.subSequence(RangesKt.coerceAtMost(paramInt, paramCharSequence.length()), paramCharSequence.length());
+    if (i != 0) {
+      return paramCharSequence.subSequence(RangesKt.coerceAtMost(paramInt, paramCharSequence.length()), paramCharSequence.length());
+    }
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Requested character count ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramCharSequence.toString().toString()));
   }
   
   @NotNull
   public static final String drop(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    paramString = paramString.substring(RangesKt.coerceAtMost(paramInt, paramString.length()));
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    return paramString;
+    if (i != 0)
+    {
+      paramString = paramString.substring(RangesKt.coerceAtMost(paramInt, paramString.length()));
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+      return paramString;
+    }
+    paramString = new StringBuilder();
+    paramString.append("Requested character count ");
+    paramString.append(paramInt);
+    paramString.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
   }
   
   @NotNull
   public static final CharSequence dropLast(@NotNull CharSequence paramCharSequence, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return StringsKt.take(paramCharSequence, RangesKt.coerceAtLeast(paramCharSequence.length() - paramInt, 0));
+    if (i != 0) {
+      return StringsKt.take(paramCharSequence, RangesKt.coerceAtLeast(paramCharSequence.length() - paramInt, 0));
+    }
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Requested character count ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramCharSequence.toString().toString()));
   }
   
   @NotNull
   public static final String dropLast(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return StringsKt.take(paramString, RangesKt.coerceAtLeast(paramString.length() - paramInt, 0));
+    if (i != 0) {
+      return StringsKt.take(paramString, RangesKt.coerceAtLeast(paramString.length() - paramInt, 0));
+    }
+    paramString = new StringBuilder();
+    paramString.append("Requested character count ");
+    paramString.append(paramInt);
+    paramString.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
   }
   
   @NotNull
@@ -411,8 +453,8 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$dropWhile");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = ((CharSequence)paramString).length();
+    int i = 0;
     while (i < j)
     {
       if (!((Boolean)paramFunction1.invoke(Character.valueOf(paramString.charAt(i)))).booleanValue())
@@ -485,11 +527,11 @@ class StringsKt___StringsKt
   @NotNull
   public static final CharSequence filterIndexed(@NotNull CharSequence paramCharSequence, @NotNull Function2<? super Integer, ? super Character, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Appendable localAppendable = (Appendable)new StringBuilder();
     int j = 0;
+    int i = 0;
     while (j < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(j);
@@ -505,12 +547,12 @@ class StringsKt___StringsKt
   @NotNull
   public static final String filterIndexed(@NotNull String paramString, @NotNull Function2<? super Integer, ? super Character, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramString, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     paramString = (CharSequence)paramString;
     Appendable localAppendable = (Appendable)new StringBuilder();
     int j = 0;
+    int i = 0;
     while (j < paramString.length())
     {
       char c = paramString.charAt(j);
@@ -528,11 +570,11 @@ class StringsKt___StringsKt
   @NotNull
   public static final <C extends Appendable> C filterIndexedTo(@NotNull CharSequence paramCharSequence, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Character, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int j = 0;
+    int i = 0;
     while (j < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(j);
@@ -639,26 +681,33 @@ class StringsKt___StringsKt
   @InlineOnly
   private static final Character findLast(@NotNull CharSequence paramCharSequence, Function1<? super Character, Boolean> paramFunction1)
   {
-    int i = paramCharSequence.length() - 1;
-    while (i >= 0)
+    int i = paramCharSequence.length();
+    char c;
+    do
     {
-      char c = paramCharSequence.charAt(i);
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        return Character.valueOf(c);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      c = paramCharSequence.charAt(i);
+    } while (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue());
+    return Character.valueOf(c);
     return null;
   }
   
   public static final char first(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$first");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramCharSequence.charAt(0);
+    if (i == 0) {
+      return paramCharSequence.charAt(0);
+    }
+    throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
   }
   
   public static final char first(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, Boolean> paramFunction1)
@@ -674,15 +723,24 @@ class StringsKt___StringsKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Char sequence contains no character matching the predicate."));
+    paramCharSequence = (Throwable)new NoSuchElementException("Char sequence contains no character matching the predicate.");
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   @Nullable
   public static final Character firstOrNull(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$firstOrNull");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Character.valueOf(paramCharSequence.charAt(0));
@@ -750,9 +808,9 @@ class StringsKt___StringsKt
   
   public static final <R> R foldIndexed(@NotNull CharSequence paramCharSequence, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Character, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -808,9 +866,9 @@ class StringsKt___StringsKt
   
   public static final void forEachIndexed(@NotNull CharSequence paramCharSequence, @NotNull Function2<? super Integer, ? super Character, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -851,22 +909,19 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     Map localMap = (Map)new LinkedHashMap();
     int i = 0;
-    if (i < paramCharSequence.length())
+    while (i < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(i);
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Character.valueOf(c));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Character.valueOf(c));
+      i += 1;
     }
     return localMap;
   }
@@ -879,22 +934,19 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     Map localMap = (Map)new LinkedHashMap();
     int i = 0;
-    if (i < paramCharSequence.length())
+    while (i < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(i);
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
+      i += 1;
     }
     return localMap;
   }
@@ -906,22 +958,19 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramM, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int i = 0;
-    if (i < paramCharSequence.length())
+    while (i < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(i);
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Character.valueOf(c));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Character.valueOf(c));
+      i += 1;
     }
     return paramM;
   }
@@ -934,22 +983,19 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int i = 0;
-    if (i < paramCharSequence.length())
+    while (i < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(i);
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
+      i += 1;
     }
     return paramM;
   }
@@ -967,8 +1013,8 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramCharSequence.length();
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Character.valueOf(paramCharSequence.charAt(i)))).booleanValue()) {
@@ -997,35 +1043,51 @@ class StringsKt___StringsKt
   public static final char last(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$last");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramCharSequence.charAt(StringsKt.getLastIndex(paramCharSequence));
+    if (i == 0) {
+      return paramCharSequence.charAt(StringsKt.getLastIndex(paramCharSequence));
+    }
+    throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
   }
   
   public static final char last(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramCharSequence.length() - 1;
-    while (i >= 0)
+    int i = paramCharSequence.length();
+    char c;
+    do
     {
-      char c = paramCharSequence.charAt(i);
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        return c;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      c = paramCharSequence.charAt(i);
+    } while (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue());
+    return c;
+    paramCharSequence = (Throwable)new NoSuchElementException("Char sequence contains no character matching the predicate.");
+    for (;;)
+    {
+      throw paramCharSequence;
     }
-    throw ((Throwable)new NoSuchElementException("Char sequence contains no character matching the predicate."));
   }
   
   @Nullable
   public static final Character lastOrNull(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$lastOrNull");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Character.valueOf(paramCharSequence.charAt(paramCharSequence.length() - 1));
@@ -1036,15 +1098,17 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramCharSequence.length() - 1;
-    while (i >= 0)
+    int i = paramCharSequence.length();
+    char c;
+    do
     {
-      char c = paramCharSequence.charAt(i);
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        return Character.valueOf(c);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      c = paramCharSequence.charAt(i);
+    } while (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue());
+    return Character.valueOf(c);
     return null;
   }
   
@@ -1066,10 +1130,10 @@ class StringsKt___StringsKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull CharSequence paramCharSequence, @NotNull Function2<? super Integer, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramCharSequence.length());
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -1088,10 +1152,10 @@ class StringsKt___StringsKt
   @NotNull
   public static final <R> List<R> mapIndexedNotNull(@NotNull CharSequence paramCharSequence, @NotNull Function2<? super Integer, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$mapIndexedNotNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList();
+    int j = 0;
     int i = 0;
     while (j < paramCharSequence.length())
     {
@@ -1108,10 +1172,10 @@ class StringsKt___StringsKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedNotNullTo(@NotNull CharSequence paramCharSequence, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$mapIndexedNotNullTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
+    int j = 0;
     int i = 0;
     while (j < paramCharSequence.length())
     {
@@ -1128,10 +1192,10 @@ class StringsKt___StringsKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull CharSequence paramCharSequence, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -1201,10 +1265,15 @@ class StringsKt___StringsKt
   @Nullable
   public static final Character max(@NotNull CharSequence paramCharSequence)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$max");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramCharSequence.charAt(0);
@@ -1212,9 +1281,8 @@ class StringsKt___StringsKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramCharSequence.charAt(i);
         c1 = c2;
@@ -1226,7 +1294,6 @@ class StringsKt___StringsKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -1235,11 +1302,16 @@ class StringsKt___StringsKt
   @Nullable
   public static final <R extends Comparable<? super R>> Character maxBy(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramCharSequence.charAt(0);
@@ -1248,6 +1320,7 @@ class StringsKt___StringsKt
       return Character.valueOf(c1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Character.valueOf(c1));
+    char c2 = c1;
     if (1 <= k)
     {
       i = j;
@@ -1258,8 +1331,8 @@ class StringsKt___StringsKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           c1 = c2;
+          localObject2 = localComparable;
         }
         c2 = c1;
         if (i == k) {
@@ -1269,18 +1342,22 @@ class StringsKt___StringsKt
         localObject1 = localObject2;
       }
     }
-    char c2 = c1;
     return Character.valueOf(c2);
   }
   
   @Nullable
   public static final Character maxWith(@NotNull CharSequence paramCharSequence, @NotNull Comparator<? super Character> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramCharSequence.charAt(0);
@@ -1288,9 +1365,8 @@ class StringsKt___StringsKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramCharSequence.charAt(i);
         c1 = c2;
@@ -1302,7 +1378,6 @@ class StringsKt___StringsKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -1311,10 +1386,15 @@ class StringsKt___StringsKt
   @Nullable
   public static final Character min(@NotNull CharSequence paramCharSequence)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$min");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramCharSequence.charAt(0);
@@ -1322,9 +1402,8 @@ class StringsKt___StringsKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramCharSequence.charAt(i);
         c1 = c2;
@@ -1336,7 +1415,6 @@ class StringsKt___StringsKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -1345,11 +1423,16 @@ class StringsKt___StringsKt
   @Nullable
   public static final <R extends Comparable<? super R>> Character minBy(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramCharSequence.charAt(0);
@@ -1358,6 +1441,7 @@ class StringsKt___StringsKt
       return Character.valueOf(c1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Character.valueOf(c1));
+    char c2 = c1;
     if (1 <= k)
     {
       i = j;
@@ -1368,8 +1452,8 @@ class StringsKt___StringsKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           c1 = c2;
+          localObject2 = localComparable;
         }
         c2 = c1;
         if (i == k) {
@@ -1379,18 +1463,22 @@ class StringsKt___StringsKt
         localObject1 = localObject2;
       }
     }
-    char c2 = c1;
     return Character.valueOf(c2);
   }
   
   @Nullable
   public static final Character minWith(@NotNull CharSequence paramCharSequence, @NotNull Comparator<? super Character> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramCharSequence.charAt(0);
@@ -1398,9 +1486,8 @@ class StringsKt___StringsKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramCharSequence.charAt(i);
         c1 = c2;
@@ -1412,7 +1499,6 @@ class StringsKt___StringsKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -1462,18 +1548,15 @@ class StringsKt___StringsKt
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     int i = 0;
-    if (i < paramCharSequence.length())
+    while (i < paramCharSequence.length())
     {
       char c = paramCharSequence.charAt(i);
       if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
         localStringBuilder1.append(c);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder2.append(c);
       }
+      i += 1;
     }
     return new Pair(localStringBuilder1, localStringBuilder2);
   }
@@ -1487,18 +1570,15 @@ class StringsKt___StringsKt
     StringBuilder localStringBuilder2 = new StringBuilder();
     int j = paramString.length();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
       if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
         localStringBuilder1.append(c);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder2.append(c);
       }
+      i += 1;
     }
     return new Pair(localStringBuilder1.toString(), localStringBuilder2.toString());
   }
@@ -1515,11 +1595,16 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramCharSequence.charAt(paramRandom.nextInt(paramCharSequence.length()));
+    if (i == 0) {
+      return paramCharSequence.charAt(paramRandom.nextInt(paramCharSequence.length()));
+    }
+    throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
   }
   
   @ExperimentalStdlibApi
@@ -1537,8 +1622,13 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramCharSequence.length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Character.valueOf(paramCharSequence.charAt(paramRandom.nextInt(paramCharSequence.length())));
@@ -1548,54 +1638,76 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced."));
-    }
-    char c1 = paramCharSequence.charAt(0);
-    int j = StringsKt.getLastIndex(paramCharSequence);
-    if (1 <= j)
-    {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        c1 = ((Character)paramFunction2.invoke(Character.valueOf(c1), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
-        c2 = c1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    char c2 = c1;
-    return c2;
+    if (i == 0)
+    {
+      char c2 = paramCharSequence.charAt(0);
+      int k = StringsKt.getLastIndex(paramCharSequence);
+      char c1 = c2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          c2 = ((Character)paramFunction2.invoke(Character.valueOf(c2), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
+          c1 = c2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return c1;
+    }
+    paramCharSequence = (Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced.");
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   public static final char reduceIndexed(@NotNull CharSequence paramCharSequence, @NotNull Function3<? super Integer, ? super Character, ? super Character, Character> paramFunction3)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$reduceIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced."));
-    }
-    char c1 = paramCharSequence.charAt(0);
-    int j = StringsKt.getLastIndex(paramCharSequence);
-    if (1 <= j)
-    {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        c1 = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(c1), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
-        c2 = c1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    char c2 = c1;
-    return c2;
+    if (i == 0)
+    {
+      char c2 = paramCharSequence.charAt(0);
+      int k = StringsKt.getLastIndex(paramCharSequence);
+      char c1 = c2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          c2 = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(c2), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
+          c1 = c2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return c1;
+    }
+    paramCharSequence = (Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced.");
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -1605,27 +1717,33 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$reduceOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
-    char c1 = paramCharSequence.charAt(0);
-    int j = StringsKt.getLastIndex(paramCharSequence);
-    if (1 <= j)
+    char c2 = paramCharSequence.charAt(0);
+    int k = StringsKt.getLastIndex(paramCharSequence);
+    char c1 = c2;
+    if (1 <= k)
     {
-      i = 1;
+      i = j;
       for (;;)
       {
-        c1 = ((Character)paramFunction2.invoke(Character.valueOf(c1), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
-        c2 = c1;
-        if (i == j) {
+        c2 = ((Character)paramFunction2.invoke(Character.valueOf(c2), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
+        c1 = c2;
+        if (i == k) {
           break;
         }
         i += 1;
       }
     }
-    char c2 = c1;
-    return Character.valueOf(c2);
+    return Character.valueOf(c1);
   }
   
   public static final char reduceRight(@NotNull CharSequence paramCharSequence, @NotNull Function2<? super Character, ? super Character, Character> paramFunction2)
@@ -1633,17 +1751,22 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = StringsKt.getLastIndex(paramCharSequence);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced."));
-    }
-    int i = j - 1;
-    char c = paramCharSequence.charAt(j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      c = ((Character)paramFunction2.invoke(Character.valueOf(paramCharSequence.charAt(i)), Character.valueOf(c))).charValue();
-      i -= 1;
+      int i = j - 1;
+      char c = paramCharSequence.charAt(j);
+      while (i >= 0)
+      {
+        c = ((Character)paramFunction2.invoke(Character.valueOf(paramCharSequence.charAt(i)), Character.valueOf(c))).charValue();
+        i -= 1;
+      }
+      return c;
     }
-    return c;
+    paramCharSequence = (Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced.");
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   public static final char reduceRightIndexed(@NotNull CharSequence paramCharSequence, @NotNull Function3<? super Integer, ? super Character, ? super Character, Character> paramFunction3)
@@ -1651,17 +1774,22 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = StringsKt.getLastIndex(paramCharSequence);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced."));
-    }
-    int i = j - 1;
-    char c = paramCharSequence.charAt(j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      c = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(paramCharSequence.charAt(i)), Character.valueOf(c))).charValue();
-      i -= 1;
+      int i = j - 1;
+      char c = paramCharSequence.charAt(j);
+      while (i >= 0)
+      {
+        c = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(paramCharSequence.charAt(i)), Character.valueOf(c))).charValue();
+        i -= 1;
+      }
+      return c;
     }
-    return c;
+    paramCharSequence = (Throwable)new UnsupportedOperationException("Empty char sequence can't be reduced.");
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -1697,10 +1825,10 @@ class StringsKt___StringsKt
   @InlineOnly
   private static final String reversed(@NotNull String paramString)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    if (paramString != null) {
+      return StringsKt.reversed((CharSequence)paramString).toString();
     }
-    return StringsKt.reversed((CharSequence)paramString).toString();
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
   }
   
   @ExperimentalStdlibApi
@@ -1708,11 +1836,16 @@ class StringsKt___StringsKt
   @NotNull
   public static final <R> List<R> scan(@NotNull CharSequence paramCharSequence, R paramR, @NotNull Function2<? super R, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$scan");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramCharSequence.length() + 1);
@@ -1732,11 +1865,16 @@ class StringsKt___StringsKt
   @NotNull
   public static final <R> List<R> scanIndexed(@NotNull CharSequence paramCharSequence, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Character, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$scanIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramCharSequence.length() + 1);
@@ -1759,16 +1897,22 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$scanReduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     char c = paramCharSequence.charAt(0);
     ArrayList localArrayList = new ArrayList(paramCharSequence.length());
     localArrayList.add(Character.valueOf(c));
-    int j = paramCharSequence.length();
-    i = 1;
-    while (i < j)
+    int k = paramCharSequence.length();
+    i = j;
+    while (i < k)
     {
       c = ((Character)paramFunction2.invoke(Character.valueOf(c), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
       localArrayList.add(Character.valueOf(c));
@@ -1784,16 +1928,22 @@ class StringsKt___StringsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$scanReduceIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramCharSequence.length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramCharSequence.length();
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     char c = paramCharSequence.charAt(0);
     ArrayList localArrayList = new ArrayList(paramCharSequence.length());
     localArrayList.add(Character.valueOf(c));
-    int j = paramCharSequence.length();
-    i = 1;
-    while (i < j)
+    int k = paramCharSequence.length();
+    i = j;
+    while (i < k)
     {
       c = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(c), Character.valueOf(paramCharSequence.charAt(i)))).charValue();
       localArrayList.add(Character.valueOf(c));
@@ -1805,44 +1955,53 @@ class StringsKt___StringsKt
   public static final char single(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$single");
-    switch (paramCharSequence.length())
+    int i = paramCharSequence.length();
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramCharSequence.charAt(0);
+      }
       throw ((Throwable)new IllegalArgumentException("Char sequence has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
     }
-    return paramCharSequence.charAt(0);
+    throw ((Throwable)new NoSuchElementException("Char sequence is empty."));
   }
   
   public static final char single(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Character localCharacter = (Character)null;
+    int i = 0;
     int k;
     for (int j = 0; i < paramCharSequence.length(); j = k)
     {
       char c = paramCharSequence.charAt(i);
       k = j;
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue())
-      {
-        if (j != 0) {
+      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
+        if (j == 0)
+        {
+          localCharacter = Character.valueOf(c);
+          k = 1;
+        }
+        else
+        {
           throw ((Throwable)new IllegalArgumentException("Char sequence contains more than one matching element."));
         }
-        localCharacter = Character.valueOf(c);
-        k = 1;
       }
       i += 1;
     }
-    if (j == 0) {
-      throw ((Throwable)new NoSuchElementException("Char sequence contains no character matching the predicate."));
-    }
-    if (localCharacter == null) {
+    if (j != 0)
+    {
+      if (localCharacter != null) {
+        return localCharacter.charValue();
+      }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Char");
     }
-    return localCharacter.charValue();
+    paramCharSequence = (Throwable)new NoSuchElementException("Char sequence contains no character matching the predicate.");
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   @Nullable
@@ -1858,28 +2017,27 @@ class StringsKt___StringsKt
   @Nullable
   public static final Character singleOrNull(@NotNull CharSequence paramCharSequence, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Character localCharacter = (Character)null;
-    int j = 0;
-    if (i < paramCharSequence.length())
+    int i = 0;
+    int k;
+    for (int j = 0; i < paramCharSequence.length(); j = k)
     {
-      c = paramCharSequence.charAt(i);
+      char c = paramCharSequence.charAt(i);
       k = j;
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        if (j == 0) {}
+      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localCharacter = Character.valueOf(c);
+        k = 1;
       }
-    }
-    while (j == 0)
-    {
-      char c;
-      return null;
-      localCharacter = Character.valueOf(c);
-      int k = 1;
       i += 1;
-      j = k;
-      break;
+    }
+    if (j == 0) {
+      return null;
     }
     return localCharacter;
   }
@@ -1915,10 +2073,10 @@ class StringsKt___StringsKt
   @InlineOnly
   private static final String slice(@NotNull String paramString, Iterable<Integer> paramIterable)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    if (paramString != null) {
+      return StringsKt.slice((CharSequence)paramString, paramIterable).toString();
     }
-    return StringsKt.slice((CharSequence)paramString, paramIterable).toString();
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
   }
   
   @NotNull
@@ -1964,50 +2122,89 @@ class StringsKt___StringsKt
   public static final CharSequence take(@NotNull CharSequence paramCharSequence, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramCharSequence.subSequence(0, RangesKt.coerceAtMost(paramInt, paramCharSequence.length()));
+    if (i != 0) {
+      return paramCharSequence.subSequence(0, RangesKt.coerceAtMost(paramInt, paramCharSequence.length()));
+    }
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Requested character count ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramCharSequence.toString().toString()));
   }
   
   @NotNull
   public static final String take(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    paramString = paramString.substring(0, RangesKt.coerceAtMost(paramInt, paramString.length()));
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    return paramString;
+    if (i != 0)
+    {
+      paramString = paramString.substring(0, RangesKt.coerceAtMost(paramInt, paramString.length()));
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      return paramString;
+    }
+    paramString = new StringBuilder();
+    paramString.append("Requested character count ");
+    paramString.append(paramInt);
+    paramString.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
   }
   
   @NotNull
   public static final CharSequence takeLast(@NotNull CharSequence paramCharSequence, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    i = paramCharSequence.length();
-    return paramCharSequence.subSequence(i - RangesKt.coerceAtMost(paramInt, i), i);
+    if (i != 0)
+    {
+      i = paramCharSequence.length();
+      return paramCharSequence.subSequence(i - RangesKt.coerceAtMost(paramInt, i), i);
+    }
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Requested character count ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramCharSequence.toString().toString()));
   }
   
   @NotNull
   public static final String takeLast(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested character count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    i = paramString.length();
-    paramString = paramString.substring(i - RangesKt.coerceAtMost(paramInt, i));
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    return paramString;
+    if (i != 0)
+    {
+      i = paramString.length();
+      paramString = paramString.substring(i - RangesKt.coerceAtMost(paramInt, i));
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+      return paramString;
+    }
+    paramString = new StringBuilder();
+    paramString.append("Requested character count ");
+    paramString.append(paramInt);
+    paramString.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
   }
   
   @NotNull
@@ -2032,22 +2229,17 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramString, "$this$takeLastWhile");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     int i = StringsKt.getLastIndex((CharSequence)paramString);
-    for (;;)
+    while (i >= 0)
     {
-      String str = paramString;
-      if (i >= 0)
+      if (!((Boolean)paramFunction1.invoke(Character.valueOf(paramString.charAt(i)))).booleanValue())
       {
-        if (!((Boolean)paramFunction1.invoke(Character.valueOf(paramString.charAt(i)))).booleanValue())
-        {
-          str = paramString.substring(i + 1);
-          Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).substring(startIndex)");
-        }
-      }
-      else {
-        return str;
+        paramString = paramString.substring(i + 1);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+        return paramString;
       }
       i -= 1;
     }
+    return paramString;
   }
   
   @NotNull
@@ -2074,22 +2266,17 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     int j = paramString.length();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      String str = paramString;
-      if (i < j)
+      if (!((Boolean)paramFunction1.invoke(Character.valueOf(paramString.charAt(i)))).booleanValue())
       {
-        if (!((Boolean)paramFunction1.invoke(Character.valueOf(paramString.charAt(i)))).booleanValue())
-        {
-          str = paramString.substring(0, i);
-          Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        }
-      }
-      else {
-        return str;
+        paramString = paramString.substring(0, i);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        return paramString;
       }
       i += 1;
     }
+    return paramString;
   }
   
   @NotNull
@@ -2117,14 +2304,15 @@ class StringsKt___StringsKt
   public static final List<Character> toList(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$toList");
-    switch (paramCharSequence.length())
+    int i = paramCharSequence.length();
+    if (i != 0)
     {
-    default: 
-      return StringsKt.toMutableList(paramCharSequence);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return StringsKt.toMutableList(paramCharSequence);
+      }
+      return CollectionsKt.listOf(Character.valueOf(paramCharSequence.charAt(0)));
     }
-    return CollectionsKt.listOf(Character.valueOf(paramCharSequence.charAt(0)));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
@@ -2138,14 +2326,15 @@ class StringsKt___StringsKt
   public static final Set<Character> toSet(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$toSet");
-    switch (paramCharSequence.length())
+    int i = paramCharSequence.length();
+    if (i != 0)
     {
-    default: 
-      return (Set)StringsKt.toCollection(paramCharSequence, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramCharSequence.length())));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)StringsKt.toCollection(paramCharSequence, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramCharSequence.length())));
+      }
+      return SetsKt.setOf(Character.valueOf(paramCharSequence.charAt(0)));
     }
-    return SetsKt.setOf(Character.valueOf(paramCharSequence.charAt(0)));
+    return SetsKt.emptySet();
   }
   
   @SinceKotlin(version="1.2")
@@ -2164,40 +2353,34 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "transform");
     SlidingWindowKt.checkWindowSizeStep(paramInt1, paramInt2);
     int k = paramCharSequence.length();
-    int j = k / paramInt2;
-    int i;
-    ArrayList localArrayList;
-    if (k % paramInt2 == 0)
-    {
+    int m = k / paramInt2;
+    int j = 0;
+    if (k % paramInt2 == 0) {
       i = 0;
-      localArrayList = new ArrayList(j + i);
-      i = 0;
+    } else {
+      i = 1;
     }
-    for (;;)
+    ArrayList localArrayList = new ArrayList(m + i);
+    int i = j;
+    while ((i >= 0) && (k > i))
     {
-      if (i < 0) {}
-      do
+      m = i + paramInt1;
+      if (m >= 0)
       {
-        do
-        {
-          return (List)localArrayList;
-          i = 1;
+        j = m;
+        if (m <= k) {}
+      }
+      else
+      {
+        if (!paramBoolean) {
           break;
-        } while (k <= i);
-        int m = i + paramInt1;
-        if (m >= 0)
-        {
-          j = m;
-          if (m <= k) {
-            break label115;
-          }
         }
-      } while (!paramBoolean);
-      j = k;
-      label115:
+        j = k;
+      }
       localArrayList.add(paramFunction1.invoke(paramCharSequence.subSequence(i, j)));
       i += paramInt2;
     }
+    return (List)localArrayList;
   }
   
   @SinceKotlin(version="1.2")
@@ -2215,10 +2398,13 @@ class StringsKt___StringsKt
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$windowedSequence");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "transform");
     SlidingWindowKt.checkWindowSizeStep(paramInt1, paramInt2);
-    if (paramBoolean) {}
-    for (IntRange localIntRange = StringsKt.getIndices(paramCharSequence);; localIntRange = RangesKt.until(0, paramCharSequence.length() - paramInt1 + 1)) {
-      return SequencesKt.map(CollectionsKt.asSequence((Iterable)RangesKt.step((IntProgression)localIntRange, paramInt2)), (Function1)new StringsKt___StringsKt.windowedSequence.2(paramCharSequence, paramInt1, paramFunction1));
+    IntRange localIntRange;
+    if (paramBoolean) {
+      localIntRange = StringsKt.getIndices(paramCharSequence);
+    } else {
+      localIntRange = RangesKt.until(0, paramCharSequence.length() - paramInt1 + 1);
     }
+    return SequencesKt.map(CollectionsKt.asSequence((Iterable)RangesKt.step((IntProgression)localIntRange, paramInt2)), (Function1)new StringsKt___StringsKt.windowedSequence.2(paramCharSequence, paramInt1, paramFunction1));
   }
   
   @NotNull
@@ -2274,8 +2460,9 @@ class StringsKt___StringsKt
     int i = 0;
     while (i < j)
     {
-      localArrayList.add(TuplesKt.to(Character.valueOf(paramCharSequence.charAt(i)), Character.valueOf(paramCharSequence.charAt(i + 1))));
+      char c = paramCharSequence.charAt(i);
       i += 1;
+      localArrayList.add(TuplesKt.to(Character.valueOf(c), Character.valueOf(paramCharSequence.charAt(i))));
     }
     return (List)localArrayList;
   }
@@ -2294,15 +2481,16 @@ class StringsKt___StringsKt
     int i = 0;
     while (i < j)
     {
-      localArrayList.add(paramFunction2.invoke(Character.valueOf(paramCharSequence.charAt(i)), Character.valueOf(paramCharSequence.charAt(i + 1))));
+      char c = paramCharSequence.charAt(i);
       i += 1;
+      localArrayList.add(paramFunction2.invoke(Character.valueOf(c), Character.valueOf(paramCharSequence.charAt(i))));
     }
     return (List)localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.StringsKt___StringsKt
  * JD-Core Version:    0.7.0.1
  */

@@ -2,43 +2,48 @@ package com.tencent.open.downloadnew;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import bfbm;
-import bflp;
-import bfmz;
-import bfok;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.appreport.AppReport;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import java.io.File;
 
-public class DownloadManager$4
+class DownloadManager$4
   implements Runnable
 {
-  public DownloadManager$4(bfok parambfok) {}
+  DownloadManager$4(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    Context localContext = bfbm.a().a();
+    Context localContext = CommonDataAdapter.a().b();
     boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
-    SimpleAccount localSimpleAccount = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
-    String str = "";
-    if (localSimpleAccount != null) {
-      str = localSimpleAccount.getUin();
+    Object localObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
+    if (localObject != null) {
+      localObject = ((SimpleAccount)localObject).getUin();
+    } else {
+      localObject = "";
     }
     if (!bool)
     {
-      bflp.c("DownloadManager_", "getUpdateApp will do full report");
-      bfmz.a(localContext, null, null, str, true);
-    }
-    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
+      LogUtility.c("DownloadManager_", "getUpdateApp will do full report");
+      AppReport.a(localContext, null, null, (String)localObject, true);
       return;
     }
-    bflp.c("DownloadManager_", "getUpdateApp will do incremental report");
-    bfmz.a(localContext, null, 0, null, null, str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localContext.getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("appcenter_app_report_storage_file.txt");
+    if (new File(localStringBuilder.toString()).exists())
+    {
+      LogUtility.c("DownloadManager_", "getUpdateApp will do incremental report");
+      AppReport.a(localContext, null, 0, null, null, (String)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

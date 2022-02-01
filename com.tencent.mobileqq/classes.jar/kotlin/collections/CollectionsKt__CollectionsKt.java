@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"indices", "Lkotlin/ranges/IntRange;", "", "getIndices", "(Ljava/util/Collection;)Lkotlin/ranges/IntRange;", "lastIndex", "", "T", "", "getLastIndex", "(Ljava/util/List;)I", "List", "size", "init", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "index", "MutableList", "", "arrayListOf", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "elements", "", "([Ljava/lang/Object;)Ljava/util/ArrayList;", "buildList", "E", "capacity", "builderAction", "", "Lkotlin/ExtensionFunctionType;", "emptyList", "listOf", "([Ljava/lang/Object;)Ljava/util/List;", "listOfNotNull", "", "element", "(Ljava/lang/Object;)Ljava/util/List;", "mutableListOf", "rangeCheck", "fromIndex", "toIndex", "rangeCheck$CollectionsKt__CollectionsKt", "throwCountOverflow", "throwIndexOverflow", "asCollection", "([Ljava/lang/Object;)Ljava/util/Collection;", "binarySearch", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/util/List;Ljava/lang/Object;Ljava/util/Comparator;II)I", "comparison", "", "(Ljava/util/List;Ljava/lang/Comparable;II)I", "binarySearchBy", "K", "key", "selector", "(Ljava/util/List;Ljava/lang/Comparable;IILkotlin/jvm/functions/Function1;)I", "containsAll", "", "Lkotlin/internal/OnlyInputTypes;", "ifEmpty", "R", "C", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "isNotEmpty", "isNullOrEmpty", "optimizeReadOnlyList", "orEmpty", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt__CollectionsKt
+class CollectionsKt__CollectionsKt
   extends CollectionsKt__CollectionsJVMKt
 {
   @SinceKotlin(version="1.1")
@@ -80,56 +80,40 @@ public class CollectionsKt__CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramList, "$this$binarySearch");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "comparison");
     rangeCheck$CollectionsKt__CollectionsKt(paramList.size(), paramInt1, paramInt2);
-    int i = paramInt2 - 1;
-    paramInt2 = paramInt1;
-    paramInt1 = i;
-    if (paramInt2 <= paramInt1)
+    paramInt2 -= 1;
+    while (paramInt1 <= paramInt2)
     {
-      i = paramInt2 + paramInt1 >>> 1;
+      int i = paramInt1 + paramInt2 >>> 1;
       int j = ((Number)paramFunction1.invoke(paramList.get(i))).intValue();
       if (j < 0) {
-        paramInt2 = i + 1;
+        paramInt1 = i + 1;
+      } else if (j > 0) {
+        paramInt2 = i - 1;
+      } else {
+        return i;
       }
-      for (;;)
-      {
-        break;
-        if (j <= 0) {
-          break label93;
-        }
-        paramInt1 = i - 1;
-      }
-      label93:
-      return i;
     }
-    return -(paramInt2 + 1);
+    return -(paramInt1 + 1);
   }
   
   public static final <T extends Comparable<? super T>> int binarySearch(@NotNull List<? extends T> paramList, @Nullable T paramT, int paramInt1, int paramInt2)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$binarySearch");
     rangeCheck$CollectionsKt__CollectionsKt(paramList.size(), paramInt1, paramInt2);
-    int i = paramInt2 - 1;
-    paramInt2 = paramInt1;
-    paramInt1 = i;
-    if (paramInt2 <= paramInt1)
+    paramInt2 -= 1;
+    while (paramInt1 <= paramInt2)
     {
-      i = paramInt2 + paramInt1 >>> 1;
+      int i = paramInt1 + paramInt2 >>> 1;
       int j = ComparisonsKt.compareValues((Comparable)paramList.get(i), paramT);
       if (j < 0) {
-        paramInt2 = i + 1;
+        paramInt1 = i + 1;
+      } else if (j > 0) {
+        paramInt2 = i - 1;
+      } else {
+        return i;
       }
-      for (;;)
-      {
-        break;
-        if (j <= 0) {
-          break label82;
-        }
-        paramInt1 = i - 1;
-      }
-      label82:
-      return i;
     }
-    return -(paramInt2 + 1);
+    return -(paramInt1 + 1);
   }
   
   public static final <T> int binarySearch(@NotNull List<? extends T> paramList, T paramT, @NotNull Comparator<? super T> paramComparator, int paramInt1, int paramInt2)
@@ -219,7 +203,7 @@ public class CollectionsKt__CollectionsKt
   @InlineOnly
   private static final <T> boolean isNotEmpty(@NotNull Collection<? extends T> paramCollection)
   {
-    return !paramCollection.isEmpty();
+    return paramCollection.isEmpty() ^ true;
   }
   
   @SinceKotlin(version="1.3")
@@ -282,14 +266,15 @@ public class CollectionsKt__CollectionsKt
   public static final <T> List<T> optimizeReadOnlyList(@NotNull List<? extends T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$optimizeReadOnlyList");
-    switch (paramList.size())
+    int i = paramList.size();
+    if (i != 0)
     {
-    default: 
-      return paramList;
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return paramList;
+      }
+      return CollectionsKt.listOf(paramList.get(0));
     }
-    return CollectionsKt.listOf(paramList.get(0));
+    return CollectionsKt.emptyList();
   }
   
   @InlineOnly
@@ -312,15 +297,34 @@ public class CollectionsKt__CollectionsKt
   
   private static final void rangeCheck$CollectionsKt__CollectionsKt(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt2 > paramInt3) {
-      throw ((Throwable)new IllegalArgumentException("fromIndex (" + paramInt2 + ") is greater than toIndex (" + paramInt3 + ")."));
+    if (paramInt2 <= paramInt3)
+    {
+      if (paramInt2 >= 0)
+      {
+        if (paramInt3 <= paramInt1) {
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("toIndex (");
+        localStringBuilder.append(paramInt3);
+        localStringBuilder.append(") is greater than size (");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(").");
+        throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fromIndex (");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(") is less than zero.");
+      throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
     }
-    if (paramInt2 < 0) {
-      throw ((Throwable)new IndexOutOfBoundsException("fromIndex (" + paramInt2 + ") is less than zero."));
-    }
-    if (paramInt3 > paramInt1) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex (" + paramInt3 + ") is greater than size (" + paramInt1 + ")."));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fromIndex (");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(") is greater than toIndex (");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(").");
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @PublishedApi
@@ -339,7 +343,7 @@ public class CollectionsKt__CollectionsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__CollectionsKt
  * JD-Core Version:    0.7.0.1
  */

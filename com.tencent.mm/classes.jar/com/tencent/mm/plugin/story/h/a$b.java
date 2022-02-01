@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryCommentSyncFlag;", "", "()V", "STORY_COMMENT_SYNC_FLAG_UNREAD", "", "getSTORY_COMMENT_SYNC_FLAG_UNREAD", "()I", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryCommentSyncFlag;", "", "()V", "STORY_COMMENT_SYNC_FLAG_UNREAD", "", "getSTORY_COMMENT_SYNC_FLAG_UNREAD", "()I", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$b
 {
-  private static final int sFW = 1;
-  public static final b sFX;
+  public static final b Sst;
+  private static final int Ssu;
   
   static
   {
-    AppMethodBeat.i(138839);
-    sFX = new b();
-    sFW = 1;
-    AppMethodBeat.o(138839);
+    AppMethodBeat.i(119468);
+    Sst = new b();
+    Ssu = 1;
+    AppMethodBeat.o(119468);
   }
   
-  public static int cEw()
+  public static int hyY()
   {
-    return sFW;
+    return Ssu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.a.b
  * JD-Core Version:    0.7.0.1
  */

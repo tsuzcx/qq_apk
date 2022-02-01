@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.FitSystemWindowsRelativeLayout android:id="@id/if7" android:background="#b3000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:stroke="http://schemas.android.com/apk/res-auto">
+    <com.tencent.widget.XPanelContainer android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <dov.com.qq.im.capture.text.EditTextPreView android:gravity="center" android:id="@id/jhn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jhb" android:layout_centerVertical="true" android:contentDescription="@null" />
+            <LinearLayout android:orientation="vertical" android:id="@id/jhb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/f8l" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+                <include android:id="@id/btx" layout="@layout/b5s" />
+                <RelativeLayout android:id="@id/dmp" android:background="#fffdfdfe" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+                    <EditText android:scrollbarStyle="insideInset" android:textSize="16.0sp" android:textColor="@android:color/black" android:gravity="center|left" android:id="@id/jhk" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:textCursorDrawable="@null" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </com.tencent.widget.XPanelContainer>
+    <dov.com.qq.im.capture.view.PressScaleTextView android:textSize="17.0sp" android:textColor="@color/if" android:id="@id/jgq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="22.5dip" android:text="@string/yq3" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <Button android:ellipsize="end" android:id="@id/jgr" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="29.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="14.0dip" android:text="@string/lqr" android:singleLine="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:textAllCaps="false" style="@style/i0" />
+</com.tencent.widget.FitSystemWindowsRelativeLayout>

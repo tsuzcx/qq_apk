@@ -1,386 +1,366 @@
 package com.tencent.mm.compatible.e;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.provider.Settings;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.lang.reflect.Method;
 
+@Deprecated
 public final class b
 {
-  public boolean emD;
-  public int emE;
-  public int emF;
-  public int emG;
-  public int emH;
-  public int emI;
-  public int emJ;
-  public int emK;
-  public int emL;
-  public int emM;
-  public int emN;
-  public int emO;
-  public int emP;
-  public int emQ;
-  public int emR;
-  public int emS;
-  public int emT;
-  public int emU;
-  public int emV;
-  public int emW;
-  public int emX;
-  public int emY;
-  public int emZ;
-  public short[] enA;
-  public boolean enB;
-  public int enC;
-  public boolean enD;
-  public int enE;
-  public int enF;
-  public int enG;
-  public int enH;
-  public int enI;
-  public int enJ;
-  public int enK;
-  public int enL;
-  public int enM;
-  public int enN;
-  public int ena;
-  public int enb;
-  public int enc;
-  public int ene;
-  public int enf;
-  public int eng;
-  public int enh;
-  public int eni;
-  public boolean enj;
-  public int enk;
-  public int enl;
-  public int enm;
-  public int enn;
-  public int eno;
-  public int enp;
-  public int enq;
-  public int enr;
-  public int ens;
-  public int ent;
-  public int enu;
-  public int env;
-  public int enw;
-  public int enx;
-  public int eny;
-  public short[] enz;
+  private static Boolean lYG = null;
   
-  public b()
+  public static boolean aPO()
   {
-    AppMethodBeat.i(92910);
-    this.emD = false;
-    this.enz = new short[15];
-    this.enA = new short[2];
-    this.enD = false;
-    reset();
-    AppMethodBeat.o(92910);
-  }
-  
-  public final boolean KY()
-  {
-    return ((this.emF >= 0) && (this.emG < 0)) || ((this.emF < 0) && (this.emG >= 0)) || (this.emH > 0);
-  }
-  
-  public final boolean KZ()
-  {
-    return this.emI >= 0;
-  }
-  
-  public final boolean La()
-  {
-    return this.emJ >= 0;
-  }
-  
-  public final int Lb()
-  {
-    AppMethodBeat.i(92911);
-    if (KZ())
+    AppMethodBeat.i(155848);
+    if (!Build.MANUFACTURER.equalsIgnoreCase("meizu"))
     {
-      int i = (this.emI & 0xE0) >> 5;
-      ab.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
-      if (i == 7)
-      {
-        AppMethodBeat.o(92911);
-        return -1;
-      }
-      AppMethodBeat.o(92911);
-      return i;
+      AppMethodBeat.o(155848);
+      return true;
     }
-    AppMethodBeat.o(92911);
-    return -1;
+    int i = 0;
+    if (Build.VERSION.SDK_INT == 17) {
+      i = 36;
+    }
+    for (;;)
+    {
+      boolean bool = ra(i);
+      AppMethodBeat.o(155848);
+      return bool;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = 27;
+      }
+    }
   }
   
-  public final boolean Lc()
+  public static boolean aPP()
   {
-    AppMethodBeat.i(92912);
-    if (KZ())
+    AppMethodBeat.i(155850);
+    if (!Build.MANUFACTURER.equalsIgnoreCase("meizu"))
     {
-      int i = this.emI & 0x10;
-      StringBuilder localStringBuilder = new StringBuilder("enableSpeaker ");
-      if (i > 0) {}
-      for (boolean bool = true;; bool = false)
+      AppMethodBeat.o(155850);
+      return true;
+    }
+    int i = 0;
+    if (Build.VERSION.SDK_INT == 17) {
+      i = 35;
+    }
+    for (;;)
+    {
+      boolean bool = ra(i);
+      AppMethodBeat.o(155850);
+      return bool;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = 26;
+      }
+    }
+  }
+  
+  public static boolean df(Context paramContext)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(155849);
+    if ((lYG != null) || (paramContext == null)) {}
+    for (;;)
+    {
+      try
       {
-        ab.d("VoipAudioInfo", bool);
-        if (i <= 0) {
-          break;
+        lYG = Boolean.valueOf(bool);
+        lYG = Boolean.FALSE;
+      }
+      finally
+      {
+        try
+        {
+          Log.printErrStackTrace("MicroMsg.PermissionUtil", paramContext, "", new Object[0]);
+          lYG = Boolean.FALSE;
         }
-        AppMethodBeat.o(92912);
+        finally
+        {
+          lYG = Boolean.FALSE;
+          AppMethodBeat.o(155849);
+        }
+      }
+      bool = lYG.booleanValue();
+      AppMethodBeat.o(155849);
+      return bool;
+      bool = paramContext.getPackageManager().hasSystemFeature("org.chromium.arc.device_management");
+    }
+  }
+  
+  public static void dg(Context paramContext)
+  {
+    AppMethodBeat.i(155851);
+    if (Build.MANUFACTURER.equalsIgnoreCase("meizu")) {
+      try
+      {
+        Object localObject1 = new Intent();
+        ((Intent)localObject1).setClassName("com.android.settings", "com.android.settings.applications.AppsCheckReadPermission");
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(155851);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        Log.e("MicroMsg.PermissionUtil", "unable start activity AppsCheckReadPermission");
+        try
+        {
+          Object localObject2 = new Intent("android.settings.APP_OPS_SETTINGS");
+          ((Intent)localObject2).addCategory("android.intent.category.DEFAULT");
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(155851);
+          return;
+        }
+        catch (Exception localException2)
+        {
+          Log.e("MicroMsg.PermissionUtil", "unable start activity APP_OPS_SETTINGS");
+          try
+          {
+            Object localObject3 = new Intent();
+            ((Intent)localObject3).setClassName("com.android.settings", "com.android.settings.Settings$AppControlSettingsActivity");
+            localObject3 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject3);
+            com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aYi(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            AppMethodBeat.o(155851);
+            return;
+          }
+          catch (Exception paramContext)
+          {
+            Log.e("MicroMsg.PermissionUtil", "unable start activity AppControlSettingsActivity");
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(155851);
+  }
+  
+  public static boolean dh(Context paramContext)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(155853);
+    int i = Build.VERSION.SDK_INT;
+    boolean bool1;
+    if (i >= 23) {
+      try
+      {
+        bool1 = ((Boolean)Settings.class.getDeclaredMethod("canDrawOverlays", new Class[] { Context.class }).invoke(null, new Object[] { paramContext })).booleanValue();
+        Log.i("MicroMsg.PermissionUtil", "isFloatWindowOpAllowed allowed: ".concat(String.valueOf(bool1)));
+        AppMethodBeat.o(155853);
+        return bool1;
+      }
+      catch (Exception paramContext)
+      {
+        Log.e("MicroMsg.PermissionUtil", "getDeclaredMethod:canDrawOverlays! Error:%s, etype:%s", new Object[] { paramContext.getMessage(), paramContext.getClass().getCanonicalName() });
+        AppMethodBeat.o(155853);
         return true;
       }
-      AppMethodBeat.o(92912);
-      return false;
     }
-    AppMethodBeat.o(92912);
-    return false;
-  }
-  
-  public final int Ld()
-  {
-    AppMethodBeat.i(92913);
-    if (KZ())
+    if (i >= 19)
     {
-      int i = (this.emI & 0xE) >> 1;
-      ab.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
-      if (i == 7)
+      Object localObject = MMApplicationContext.getContext().getSystemService("appops");
+      try
       {
-        AppMethodBeat.o(92913);
-        return -1;
-      }
-      AppMethodBeat.o(92913);
-      return i;
-    }
-    AppMethodBeat.o(92913);
-    return -1;
-  }
-  
-  public final boolean Le()
-  {
-    AppMethodBeat.i(92914);
-    if (KZ())
-    {
-      int i = this.emI & 0x1;
-      StringBuilder localStringBuilder = new StringBuilder("disableSpeaker ");
-      if (i > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ab.d("VoipAudioInfo", bool);
-        if (i <= 0) {
-          break;
+        paramContext = Class.forName("android.app.AppOpsManager").getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
+        bool1 = bool2;
+        if (paramContext != null) {}
+        try
+        {
+          i = ((Integer)paramContext.invoke(localObject, new Object[] { Integer.valueOf(24), Integer.valueOf(MMApplicationContext.getContext().getApplicationInfo().uid), MMApplicationContext.getPackageName() })).intValue();
+          if (i != 0) {
+            break label286;
+          }
+          bool1 = true;
         }
-        AppMethodBeat.o(92914);
-        return true;
-      }
-      AppMethodBeat.o(92914);
-      return false;
-    }
-    AppMethodBeat.o(92914);
-    return false;
-  }
-  
-  public final int Lf()
-  {
-    AppMethodBeat.i(92915);
-    if (La())
-    {
-      int i = (this.emJ & 0xE0) >> 5;
-      ab.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
-      if (i == 7)
-      {
-        AppMethodBeat.o(92915);
-        return -1;
-      }
-      AppMethodBeat.o(92915);
-      return i;
-    }
-    AppMethodBeat.o(92915);
-    return -1;
-  }
-  
-  public final boolean Lg()
-  {
-    AppMethodBeat.i(92916);
-    if (La())
-    {
-      int i = this.emJ & 0x10;
-      StringBuilder localStringBuilder = new StringBuilder("enableSpeaker ");
-      if (i > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ab.d("VoipAudioInfo", bool);
-        if (i <= 0) {
-          break;
+        catch (Exception paramContext)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.PermissionUtil", "call checkOp failed: %s etype:%s", new Object[] { paramContext.getMessage(), paramContext.getClass().getCanonicalName() });
+            bool1 = bool2;
+          }
         }
-        AppMethodBeat.o(92916);
-        return true;
+        Log.i("MicroMsg.PermissionUtil", "isFloatWindowOpAllowed allowed: ".concat(String.valueOf(bool1)));
+        AppMethodBeat.o(155853);
+        return bool1;
       }
-      AppMethodBeat.o(92916);
-      return false;
-    }
-    AppMethodBeat.o(92916);
-    return false;
-  }
-  
-  public final int Lh()
-  {
-    AppMethodBeat.i(92917);
-    if (La())
-    {
-      int i = (this.emJ & 0xE) >> 1;
-      ab.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
-      if (i == 7)
+      catch (NoSuchMethodException paramContext)
       {
-        AppMethodBeat.o(92917);
-        return -1;
-      }
-      AppMethodBeat.o(92917);
-      return i;
-    }
-    AppMethodBeat.o(92917);
-    return -1;
-  }
-  
-  public final boolean Li()
-  {
-    AppMethodBeat.i(92918);
-    if (La())
-    {
-      int i = this.emJ & 0x1;
-      StringBuilder localStringBuilder = new StringBuilder("disableSpeaker ");
-      if (i > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ab.d("VoipAudioInfo", bool);
-        if (i <= 0) {
-          break;
+        for (;;)
+        {
+          Log.e("MicroMsg.PermissionUtil", "NoSuchMethodException method:checkOp! Error:%s", new Object[] { paramContext.getMessage() });
+          paramContext = null;
         }
-        AppMethodBeat.o(92918);
-        return true;
       }
-      AppMethodBeat.o(92918);
-      return false;
+      catch (ClassNotFoundException paramContext)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.PermissionUtil", "ClassNotFoundException class:android.app.AppOpsManager! Error:%s", new Object[] { paramContext.getMessage() });
+          paramContext = null;
+          continue;
+          label286:
+          bool1 = false;
+        }
+      }
     }
-    AppMethodBeat.o(92918);
-    return false;
+    AppMethodBeat.o(155853);
+    return true;
   }
   
-  public final void dump()
+  /* Error */
+  private static boolean ra(int paramInt)
   {
-    AppMethodBeat.i(92919);
-    ab.d("VoipAudioInfo", "streamtype " + this.emE);
-    ab.d("VoipAudioInfo", "smode " + this.emF);
-    ab.d("VoipAudioInfo", "omode " + this.emG);
-    ab.d("VoipAudioInfo", "ospeaker " + this.emH);
-    ab.d("VoipAudioInfo", "operating" + this.emI);
-    ab.d("VoipAudioInfo", "moperating" + this.emJ);
-    ab.d("VoipAudioInfo", "mstreamtype" + this.emK);
-    ab.d("VoipAudioInfo", "mVoiceRecordMode" + this.emL);
-    ab.d("VoipAudioInfo", "agcMode :" + this.enr);
-    ab.d("VoipAudioInfo", "nsMode:" + this.emO);
-    ab.d("VoipAudioInfo", "aecMode:" + this.emN);
-    ab.d("VoipAudioInfo", "volumMode:" + this.emP);
-    ab.d("VoipAudioInfo", "micMode:" + this.enb);
-    ab.d("VoipAudioInfo", "sourceMode:" + this.enc);
-    ab.d("VoipAudioInfo", "speakerMode:" + this.ene);
-    ab.d("VoipAudioInfo", "phoneMode:" + this.enf);
-    ab.d("VoipAudioInfo", "voipstreamType:" + this.eng);
-    ab.d("VoipAudioInfo", "speakerstreamtype:" + this.enh);
-    ab.d("VoipAudioInfo", "phonestreamtype:" + this.eni);
-    ab.d("VoipAudioInfo", "ringphonestream:" + this.enk);
-    ab.d("VoipAudioInfo", "ringphonemode:" + this.enl);
-    ab.d("VoipAudioInfo", "ringspeakerstream:" + this.enm);
-    ab.d("VoipAudioInfo", "ringspeakermode:" + this.enn);
-    ab.d("VoipAudioInfo", "agcModeNew :" + this.enq);
-    ab.d("VoipAudioInfo", "nsModeNew:" + this.enp);
-    ab.d("VoipAudioInfo", "aecModeNew:" + this.eno);
-    ab.d("VoipAudioInfo", "agctargetdb:" + this.ens);
-    ab.d("VoipAudioInfo", "agcgaindb:" + this.ent);
-    ab.d("VoipAudioInfo", "agcflag:" + this.enu);
-    ab.d("VoipAudioInfo", "agclimiter:" + this.env);
-    ab.d("VoipAudioInfo", "inputVolumeScale:" + this.emQ);
-    ab.d("VoipAudioInfo", "outputVolumeScale:" + this.emR);
-    ab.d("VoipAudioInfo", "inputVolumeScaleForSpeaker:" + this.emS);
-    ab.d("VoipAudioInfo", "outputVolumeScaleForSpeaker:" + this.emT);
-    ab.d("VoipAudioInfo", "ehanceHeadsetEC:" + this.emW);
-    ab.d("VoipAudioInfo", "setECModeLevelForHeadSet:" + this.emX);
-    ab.d("VoipAudioInfo", "setECModeLevelForSpeaker:" + this.emY);
-    ab.d("VoipAudioInfo", "enableSpeakerEnhanceEC:" + this.emZ);
-    ab.d("VoipAudioInfo", "enableRecTimer:" + this.enw);
-    ab.d("VoipAudioInfo", "enablePlayTimer:" + this.enx);
-    ab.d("VoipAudioInfo", "setPlayerPrecorrectCofOnOrOff:" + this.eny);
-    ab.d("VoipAudioInfo", "outputVolumeGainForPhone:" + this.emU);
-    ab.d("VoipAudioInfo", "outputVolumeGainForSpeaker:" + this.emV);
-    ab.d("VoipAudioInfo", "noisegateon" + this.enB);
-    ab.d("VoipAudioInfo", "noisegatestrength[0]" + this.enA[0]);
-    ab.d("VoipAudioInfo", "noisegatestrength[1]" + this.enA[1]);
-    ab.d("VoipAudioInfo", "spkecenable:" + this.enC);
-    ab.d("VoipAudioInfo", "agcRxFlag:" + this.enK);
-    ab.d("VoipAudioInfo", "agcRxTargetdb:" + this.enL);
-    ab.d("VoipAudioInfo", "agcRxGaindb:" + this.enM);
-    ab.d("VoipAudioInfo", "agcRxLimiter:" + this.enN);
-    ab.d("VoipAudioInfo", "enableXnoiseSup:" + this.ena);
-    AppMethodBeat.o(92919);
-  }
-  
-  public final void reset()
-  {
-    this.emD = false;
-    this.emE = -1;
-    this.emF = -1;
-    this.emG = -1;
-    this.emH = -1;
-    this.emI = -1;
-    this.emJ = -1;
-    this.emK = -1;
-    this.emM = -1;
-    this.emL = -1;
-    this.enr = -1;
-    this.emN = -1;
-    this.emO = -1;
-    this.emP = -1;
-    this.enb = -1;
-    this.enc = -1;
-    this.ene = -1;
-    this.enf = -1;
-    this.eng = -1;
-    this.enh = -1;
-    this.eni = -1;
-    this.enj = false;
-    this.enk = -1;
-    this.enl = -1;
-    this.enn = -1;
-    this.enm = -1;
-    this.enq = -1;
-    this.eno = -1;
-    this.enp = -1;
-    this.ens = -1;
-    this.ent = -1;
-    this.enu = -1;
-    this.env = -1;
-    this.emQ = -1;
-    this.emR = -1;
-    this.emS = -1;
-    this.emT = -1;
-    this.emW = -1;
-    this.emX = -1;
-    this.emY = -1;
-    this.emZ = -1;
-    this.enw = 0;
-    this.enx = 0;
-    this.eny = -1;
-    this.emV = -1;
-    this.emU = -1;
-    this.enB = false;
-    this.enA[0] = -1;
-    this.enA[1] = -1;
-    this.enC = -1;
-    this.enK = -1;
-    this.enL = -1;
-    this.enM = -1;
-    this.enN = -1;
-    this.ena = -1;
+    // Byte code:
+    //   0: ldc_w 273
+    //   3: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: iload_0
+    //   7: ifne +11 -> 18
+    //   10: ldc_w 273
+    //   13: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: iconst_1
+    //   17: ireturn
+    //   18: invokestatic 222	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   21: ldc 224
+    //   23: invokevirtual 228	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   26: astore_2
+    //   27: aload_2
+    //   28: ifnull +160 -> 188
+    //   31: ldc 230
+    //   33: invokestatic 234	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   36: ldc_w 275
+    //   39: iconst_3
+    //   40: anewarray 179	java/lang/Class
+    //   43: dup
+    //   44: iconst_0
+    //   45: getstatic 242	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   48: aastore
+    //   49: dup
+    //   50: iconst_1
+    //   51: getstatic 242	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   54: aastore
+    //   55: dup
+    //   56: iconst_2
+    //   57: ldc 31
+    //   59: aastore
+    //   60: invokevirtual 245	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   63: astore_1
+    //   64: aload_1
+    //   65: ifnull +153 -> 218
+    //   68: aload_1
+    //   69: aload_2
+    //   70: iconst_3
+    //   71: anewarray 4	java/lang/Object
+    //   74: dup
+    //   75: iconst_0
+    //   76: iload_0
+    //   77: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   80: aastore
+    //   81: dup
+    //   82: iconst_1
+    //   83: invokestatic 222	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   86: invokevirtual 252	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   89: getfield 257	android/content/pm/ApplicationInfo:uid	I
+    //   92: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   95: aastore
+    //   96: dup
+    //   97: iconst_2
+    //   98: invokestatic 260	com/tencent/mm/sdk/platformtools/MMApplicationContext:getPackageName	()Ljava/lang/String;
+    //   101: aastore
+    //   102: invokevirtual 189	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   105: checkcast 238	java/lang/Integer
+    //   108: invokevirtual 264	java/lang/Integer:intValue	()I
+    //   111: istore_0
+    //   112: iload_0
+    //   113: ifeq +105 -> 218
+    //   116: ldc 80
+    //   118: ldc_w 277
+    //   121: iconst_1
+    //   122: anewarray 4	java/lang/Object
+    //   125: dup
+    //   126: iconst_0
+    //   127: iload_0
+    //   128: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   131: aastore
+    //   132: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   135: ldc_w 273
+    //   138: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: iconst_0
+    //   142: ireturn
+    //   143: astore_1
+    //   144: ldc 80
+    //   146: ldc_w 279
+    //   149: iconst_1
+    //   150: anewarray 4	java/lang/Object
+    //   153: dup
+    //   154: iconst_0
+    //   155: aload_1
+    //   156: invokevirtual 267	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
+    //   159: aastore
+    //   160: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   163: aconst_null
+    //   164: astore_1
+    //   165: goto -101 -> 64
+    //   168: astore_1
+    //   169: ldc 80
+    //   171: ldc_w 269
+    //   174: iconst_1
+    //   175: anewarray 4	java/lang/Object
+    //   178: dup
+    //   179: iconst_0
+    //   180: aload_1
+    //   181: invokevirtual 270	java/lang/ClassNotFoundException:getMessage	()Ljava/lang/String;
+    //   184: aastore
+    //   185: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   188: aconst_null
+    //   189: astore_1
+    //   190: goto -126 -> 64
+    //   193: astore_1
+    //   194: ldc 80
+    //   196: ldc_w 281
+    //   199: iconst_1
+    //   200: anewarray 4	java/lang/Object
+    //   203: dup
+    //   204: iconst_0
+    //   205: aload_1
+    //   206: invokevirtual 206	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   209: aastore
+    //   210: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   213: iconst_m1
+    //   214: istore_0
+    //   215: goto -103 -> 112
+    //   218: ldc_w 273
+    //   221: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   224: iconst_1
+    //   225: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	226	0	paramInt	int
+    //   63	6	1	localMethod	Method
+    //   143	13	1	localNoSuchMethodException	NoSuchMethodException
+    //   164	1	1	localObject1	Object
+    //   168	13	1	localClassNotFoundException	ClassNotFoundException
+    //   189	1	1	localObject2	Object
+    //   193	13	1	localException	Exception
+    //   26	44	2	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   31	64	143	java/lang/NoSuchMethodException
+    //   31	64	168	java/lang/ClassNotFoundException
+    //   68	112	193	java/lang/Exception
   }
 }
 

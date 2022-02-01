@@ -10,24 +10,24 @@ import com.google.android.gms.internal.ch;
 
 public final class bc
 {
-  private static Object KF = new Object();
-  private static boolean KG;
-  private static String KH;
-  private static int KI;
+  private static Object Mu = new Object();
+  private static boolean Mv;
+  private static String Mw;
+  private static int Mx;
   
-  public static int i(Context paramContext)
+  public static int j(Context paramContext)
   {
     for (;;)
     {
       String str;
-      synchronized (KF)
+      synchronized (Mu)
       {
-        if (KG) {
-          return KI;
+        if (Mv) {
+          return Mx;
         }
-        KG = true;
+        Mv = true;
         str = paramContext.getPackageName();
-        paramContext = ch.u(paramContext);
+        paramContext = ch.v(paramContext);
       }
       try
       {
@@ -38,8 +38,8 @@ public final class bc
           paramContext = finally;
           throw paramContext;
         }
-        KH = paramContext.getString("com.google.app.id");
-        KI = paramContext.getInt("com.google.android.gms.version");
+        Mw = paramContext.getString("com.google.app.id");
+        Mx = paramContext.getInt("com.google.android.gms.version");
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {

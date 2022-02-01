@@ -1,47 +1,33 @@
 package com.tencent.mobileqq.pic;
 
-import awjj;
-import azdo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pic.api.IDep;
+import com.tencent.mobileqq.pic.api.IPicPreDownload;
+import com.tencent.mobileqq.pic.api.impl.PicPreDownloadImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class PicPreDownloader$ScreenBroadcastReceiver$1
+class PicPreDownloader$ScreenBroadcastReceiver$1
   implements Runnable
 {
-  public PicPreDownloader$ScreenBroadcastReceiver$1(awjj paramawjj) {}
+  PicPreDownloader$ScreenBroadcastReceiver$1(PicPreDownloader.ScreenBroadcastReceiver paramScreenBroadcastReceiver) {}
   
   public void run()
   {
-    try
+    Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+    if (!TextUtils.isEmpty(((AppRuntime)localObject).getAccount()))
     {
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.this$0.a);
-      if (localObject1 != null)
-      {
-        PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
-        localObject1 = (azdo)((QQAppInterface)localObject1).getManager(95);
-        if (localPicPreDownloader != null)
-        {
-          localPicPreDownloader.f();
-          localPicPreDownloader.e();
-        }
-        if (localObject1 != null) {
-          ((azdo)localObject1).d();
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+      localObject = ((PicPreDownloadImpl)((AppRuntime)localObject).getRuntimeService(IPicPreDownload.class, "")).picPreDownloader;
+      ((PicPreDownloader)localObject).d();
+      PicPreDownloader.b((PicPreDownloader)localObject);
+      ((IDep)QRoute.api(IDep.class)).consumeAllThumbsInPendingQueue();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ package com.google.android.gms.wearable;
 public abstract interface x
 {
   @Deprecated
-  public abstract void kA();
+  public abstract void kJ();
   
   @Deprecated
-  public abstract void kB();
+  public abstract void kK();
 }
 
 

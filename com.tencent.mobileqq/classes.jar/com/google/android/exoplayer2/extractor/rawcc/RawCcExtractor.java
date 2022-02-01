@@ -44,11 +44,12 @@ public final class RawCcExtractor
     this.dataScratch.reset();
     if (paramExtractorInput.readFully(this.dataScratch.data, 0, 8, true))
     {
-      if (this.dataScratch.readInt() != HEADER_ID) {
-        throw new IOException("Input not RawCC");
+      if (this.dataScratch.readInt() == HEADER_ID)
+      {
+        this.version = this.dataScratch.readUnsignedByte();
+        return true;
       }
-      this.version = this.dataScratch.readUnsignedByte();
-      return true;
+      throw new IOException("Input not RawCC");
     }
     return false;
   }
@@ -63,33 +64,41 @@ public final class RawCcExtractor
       this.sampleBytesWritten += 3;
       this.remainingSampleCount -= 1;
     }
-    if (this.sampleBytesWritten > 0) {
-      this.trackOutput.sampleMetadata(this.timestampUs, 1, this.sampleBytesWritten, 0, null);
+    int i = this.sampleBytesWritten;
+    if (i > 0) {
+      this.trackOutput.sampleMetadata(this.timestampUs, 1, i, 0, null);
     }
   }
   
   private boolean parseTimestampAndSampleCount(ExtractorInput paramExtractorInput)
   {
     this.dataScratch.reset();
-    if (this.version == 0) {
+    int i = this.version;
+    if (i == 0)
+    {
       if (!paramExtractorInput.readFully(this.dataScratch.data, 0, 5, true)) {
         return false;
       }
+      this.timestampUs = (this.dataScratch.readUnsignedInt() * 1000L / 45L);
     }
-    for (this.timestampUs = (this.dataScratch.readUnsignedInt() * 1000L / 45L);; this.timestampUs = this.dataScratch.readLong())
+    else
     {
-      this.remainingSampleCount = this.dataScratch.readUnsignedByte();
-      this.sampleBytesWritten = 0;
-      return true;
-      if (this.version != 1) {
-        break label114;
+      if (i != 1) {
+        break label115;
       }
       if (!paramExtractorInput.readFully(this.dataScratch.data, 0, 9, true)) {
-        break;
+        return false;
       }
+      this.timestampUs = this.dataScratch.readLong();
     }
-    label114:
-    throw new ParserException("Unsupported version number: " + this.version);
+    this.remainingSampleCount = this.dataScratch.readUnsignedByte();
+    this.sampleBytesWritten = 0;
+    return true;
+    label115:
+    paramExtractorInput = new StringBuilder();
+    paramExtractorInput.append("Unsupported version number: ");
+    paramExtractorInput.append(this.version);
+    throw new ParserException(paramExtractorInput.toString());
   }
   
   public void init(ExtractorOutput paramExtractorOutput)
@@ -104,30 +113,38 @@ public final class RawCcExtractor
   {
     for (;;)
     {
-      switch (this.parserState)
+      int i = this.parserState;
+      if (i != 0)
       {
-      default: 
-        throw new IllegalStateException();
-      case 0: 
+        if (i != 1)
+        {
+          if (i == 2)
+          {
+            parseSamples(paramExtractorInput);
+            this.parserState = 1;
+            return 0;
+          }
+          throw new IllegalStateException();
+        }
+        if (parseTimestampAndSampleCount(paramExtractorInput))
+        {
+          this.parserState = 2;
+        }
+        else
+        {
+          this.parserState = 0;
+          return -1;
+        }
+      }
+      else
+      {
         if (!parseHeader(paramExtractorInput)) {
-          break label77;
+          break;
         }
         this.parserState = 1;
-        break;
-      case 1: 
-        if (!parseTimestampAndSampleCount(paramExtractorInput)) {
-          break label72;
-        }
-        this.parserState = 2;
       }
     }
-    label72:
-    this.parserState = 0;
-    label77:
     return -1;
-    parseSamples(paramExtractorInput);
-    this.parserState = 1;
-    return 0;
   }
   
   public void release() {}
@@ -139,9 +156,10 @@ public final class RawCcExtractor
   
   public boolean sniff(ExtractorInput paramExtractorInput)
   {
-    boolean bool = false;
     this.dataScratch.reset();
-    paramExtractorInput.peekFully(this.dataScratch.data, 0, 8);
+    byte[] arrayOfByte = this.dataScratch.data;
+    boolean bool = false;
+    paramExtractorInput.peekFully(arrayOfByte, 0, 8);
     if (this.dataScratch.readInt() == HEADER_ID) {
       bool = true;
     }
@@ -150,7 +168,7 @@ public final class RawCcExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.rawcc.RawCcExtractor
  * JD-Core Version:    0.7.0.1
  */

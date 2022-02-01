@@ -18,7 +18,7 @@ public final class zzep
   
   zzep(zzgl paramzzgl, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, Bundle paramBundle)
   {
-    AppMethodBeat.i(68722);
+    AppMethodBeat.i(1245);
     Preconditions.checkNotEmpty(paramString2);
     Preconditions.checkNotEmpty(paramString3);
     this.zzti = paramString2;
@@ -63,14 +63,14 @@ public final class zzep
     for (paramzzgl = new zzer(paramString1);; paramzzgl = new zzer(new Bundle()))
     {
       this.zzafq = paramzzgl;
-      AppMethodBeat.o(68722);
+      AppMethodBeat.o(1245);
       return;
     }
   }
   
   private zzep(zzgl paramzzgl, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, zzer paramzzer)
   {
-    AppMethodBeat.i(68721);
+    AppMethodBeat.i(1244);
     Preconditions.checkNotEmpty(paramString2);
     Preconditions.checkNotEmpty(paramString3);
     Preconditions.checkNotNull(paramzzer);
@@ -87,31 +87,31 @@ public final class zzep
       paramzzgl.zzge().zzip().zze("Event created with reverse previous/current timestamps. appId, name", zzfg.zzbm(paramString2), zzfg.zzbm(paramString3));
     }
     this.zzafq = paramzzer;
-    AppMethodBeat.o(68721);
+    AppMethodBeat.o(1244);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(68724);
+    AppMethodBeat.i(1247);
     String str1 = this.zzti;
     String str2 = this.name;
     String str3 = String.valueOf(this.zzafq);
     str1 = String.valueOf(str1).length() + 33 + String.valueOf(str2).length() + String.valueOf(str3).length() + "Event{appId='" + str1 + "', name='" + str2 + "', params=" + str3 + '}';
-    AppMethodBeat.o(68724);
+    AppMethodBeat.o(1247);
     return str1;
   }
   
   final zzep zza(zzgl paramzzgl, long paramLong)
   {
-    AppMethodBeat.i(68723);
+    AppMethodBeat.i(1246);
     paramzzgl = new zzep(paramzzgl, this.origin, this.zzti, this.name, this.timestamp, paramLong, this.zzafq);
-    AppMethodBeat.o(68723);
+    AppMethodBeat.o(1246);
     return paramzzgl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzep
  * JD-Core Version:    0.7.0.1
  */

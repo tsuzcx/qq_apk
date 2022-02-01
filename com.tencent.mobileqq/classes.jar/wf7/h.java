@@ -39,28 +39,33 @@ public final class h
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ssid != null) {
-      paramJceOutputStream.write(this.ssid, 0);
+    Object localObject = this.ssid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.u != null) {
-      paramJceOutputStream.write(this.u, 1);
+    localObject = this.u;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
     paramJceOutputStream.write(this.aB, 2);
-    if (this.C != 0) {
-      paramJceOutputStream.write(this.C, 3);
+    int i = this.C;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
     paramJceOutputStream.write(this.aC, 4);
-    if (this.aD != null) {
-      paramJceOutputStream.write(this.aD, 5);
+    localObject = this.aD;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.frequency != -1) {
-      paramJceOutputStream.write(this.frequency, 6);
+    i = this.frequency;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.h
  * JD-Core Version:    0.7.0.1
  */

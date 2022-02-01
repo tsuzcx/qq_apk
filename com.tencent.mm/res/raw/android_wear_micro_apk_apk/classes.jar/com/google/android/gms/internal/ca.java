@@ -10,9 +10,9 @@ public final class ca
   static void a(zzacw paramzzacw, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzacw.Hc);
-    c.a(paramParcel, 2, paramzzacw.jy());
-    c.a(paramParcel, 3, paramzzacw.jz());
+    c.c(paramParcel, 1, paramzzacw.IR);
+    c.a(paramParcel, 2, paramzzacw.jH());
+    c.a(paramParcel, 3, paramzzacw.jI());
     c.v(paramParcel, i);
   }
 }

@@ -12,9 +12,9 @@ public class zzbak
   implements w
 {
   public static final Parcelable.Creator<zzbak> CREATOR = new cu();
-  final int Hc;
-  private int QE;
-  private Intent QF;
+  final int IR;
+  private int St;
+  private Intent Su;
   
   public zzbak()
   {
@@ -28,27 +28,27 @@ public class zzbak
   
   zzbak(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.Hc = paramInt1;
-    this.QE = paramInt2;
-    this.QF = paramIntent;
+    this.IR = paramInt1;
+    this.St = paramInt2;
+    this.Su = paramIntent;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    if (this.QE == 0) {
-      return Status.HL;
+    if (this.St == 0) {
+      return Status.JA;
     }
-    return Status.HP;
+    return Status.JE;
   }
   
-  public final int jJ()
+  public final int jS()
   {
-    return this.QE;
+    return this.St;
   }
   
-  public final Intent jK()
+  public final Intent jT()
   {
-    return this.QF;
+    return this.Su;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

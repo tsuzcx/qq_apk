@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/au0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b8q" android:background="@drawable/qv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="5.0dip">
+        <com.tencent.widget.RecentDynamicAvatarView android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_margin="12.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/iag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+            <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j1" android:id="@id/title" android:paddingRight="12.0dip" android:duplicateParentState="true" android:layout_marginBottom="@dimen/ajw" android:includeFontPadding="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/hn" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" android:duplicateParentState="true" android:layout_marginRight="12.0dip" android:includeFontPadding="true" android:layout_below="@id/title" android:layout_alignParentRight="true" style="@style/cg" />
+            <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j9" android:id="@id/bgt" android:paddingRight="10.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:includeFontPadding="true" android:layout_toLeftOf="@id/unreadmsg" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

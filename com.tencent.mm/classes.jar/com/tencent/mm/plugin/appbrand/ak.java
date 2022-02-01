@@ -1,26 +1,14 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
+import com.tencent.mm.ui.bb;
 
-public final class ak
+public abstract interface ak
 {
-  public static ModulePkgInfo a(WxaAttributes.WxaVersionModuleInfo paramWxaVersionModuleInfo)
-  {
-    AppMethodBeat.i(101712);
-    ModulePkgInfo localModulePkgInfo = new ModulePkgInfo();
-    localModulePkgInfo.name = paramWxaVersionModuleInfo.name;
-    localModulePkgInfo.cqq = paramWxaVersionModuleInfo.cqq;
-    localModulePkgInfo.cnm = paramWxaVersionModuleInfo.cnm;
-    localModulePkgInfo.gUz = paramWxaVersionModuleInfo.gUz;
-    AppMethodBeat.o(101712);
-    return localModulePkgInfo;
-  }
+  public static final int qxA = bb.av(855638016, -855310);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ak
  * JD-Core Version:    0.7.0.1
  */

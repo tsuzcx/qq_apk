@@ -4,7 +4,7 @@
   xmlns:SquareImageView="http://schemas.android.com/apk/res/com.tencent.mobileqq">
     <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mobileqq.widget.ThemeSquareImageView android:id="@id/image" android:layout_width="@dimen/ale" android:layout_height="@dimen/ale" android:scaleType="centerCrop" android:layout_centerInParent="true" SquareImageView:filter_color="#ff777777" />
+            <com.tencent.mobileqq.search.base.widget.ThemeSquareImageView android:id="@id/image" android:layout_width="@dimen/ale" android:layout_height="@dimen/ale" android:scaleType="centerCrop" android:layout_centerInParent="true" SquareImageView:filter_color="#ff777777" />
             <com.tencent.widget.ThemeImageView android:id="@id/bb6" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
             <TextView android:textSize="12.0dip" android:textColor="@color/ahb" android:gravity="center" android:id="@id/jb7" android:background="@color/lx" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:layout_alignParentTop="true" />
         </RelativeLayout>

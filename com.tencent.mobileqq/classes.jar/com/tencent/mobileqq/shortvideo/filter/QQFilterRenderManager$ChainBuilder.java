@@ -14,10 +14,11 @@ public final class QQFilterRenderManager$ChainBuilder
   
   private void sort()
   {
-    j = 1;
     QQFilterRenderManager.ChainBuilder.1 local1 = new QQFilterRenderManager.ChainBuilder.1(this);
+    int k = Build.VERSION.SDK_INT;
+    j = 1;
     i = j;
-    if (Build.VERSION.SDK_INT >= 24) {}
+    if (k >= 24) {}
     try
     {
       this.mEntry.sort(local1);
@@ -48,25 +49,29 @@ public final class QQFilterRenderManager$ChainBuilder
   
   public void commit()
   {
-    if (this.mEntry.size() <= 0)
+    int j = this.mEntry.size();
+    int i = 0;
+    if (j <= 0)
     {
       this.mNeedSort = false;
-      SLog.i("QQFilterRenderManager", "QQFilterRenderManager ChainBuilder commit: size=" + this.mEntry.size());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QQFilterRenderManager ChainBuilder commit: size=");
+      ((StringBuilder)localObject).append(this.mEntry.size());
+      SLog.i("QQFilterRenderManager", ((StringBuilder)localObject).toString());
       return;
     }
     if (this.mNeedSort) {
       sort();
     }
-    int[] arrayOfInt = new int[this.mEntry.size()];
+    Object localObject = new int[this.mEntry.size()];
     Object[] arrayOfObject = new Object[this.mEntry.size()];
-    int i = 0;
     while (i < this.mEntry.size())
     {
-      arrayOfInt[i] = ((QQFilterRenderManager.ChainBuilder.Entry)this.mEntry.get(i)).type;
+      localObject[i] = ((QQFilterRenderManager.ChainBuilder.Entry)this.mEntry.get(i)).type;
       arrayOfObject[i] = ((QQFilterRenderManager.ChainBuilder.Entry)this.mEntry.get(i)).param;
       i += 1;
     }
-    QQFilterRenderManager.access$000(this.this$0).push(arrayOfInt, arrayOfObject);
+    QQFilterRenderManager.access$000(this.this$0).push((int[])localObject, arrayOfObject);
   }
   
   Object getParam(Object[] paramArrayOfObject, int paramInt)
@@ -84,7 +89,7 @@ public final class QQFilterRenderManager$ChainBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder
  * JD-Core Version:    0.7.0.1
  */

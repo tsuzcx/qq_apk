@@ -23,43 +23,47 @@ public class cv
   {
     synchronized (this.hx)
     {
-      if ((this.it == null) || (this.it.size() <= 0)) {
-        break label106;
-      }
-      Iterator localIterator = this.it.iterator();
-      while (localIterator.hasNext()) {
-        if (((ct)localIterator.next()).c(this.iw * 60L * 1000L)) {
-          localIterator.remove();
+      if ((this.it != null) && (this.it.size() > 0))
+      {
+        Iterator localIterator = this.it.iterator();
+        while (localIterator.hasNext()) {
+          if (((ct)localIterator.next()).c(this.iw * 60L * 1000L)) {
+            localIterator.remove();
+          }
         }
+        ((bq)ao.c().i(1)).a(new cv.1(this, paramArrayList));
       }
+      return;
     }
-    ((bq)ao.c().i(1)).a(new cv.1(this, paramArrayList));
-    label106:
+    for (;;)
+    {
+      throw paramArrayList;
+    }
   }
   
   private void f(List<ct> paramList)
   {
-    for (;;)
+    synchronized (this.ix)
     {
-      bg localbg;
-      ArrayList localArrayList2;
-      synchronized (this.ix)
+      if (this.ix.size() > 0)
       {
-        if (this.ix.size() <= 0) {
-          break;
-        }
         Iterator localIterator1 = this.ix.iterator();
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        localbg = (bg)localIterator1.next();
-        localArrayList2 = new ArrayList();
-        Iterator localIterator2 = paramList.iterator();
-        if (localIterator2.hasNext()) {
-          localArrayList2.add(((ct)localIterator2.next()).af());
+        while (localIterator1.hasNext())
+        {
+          bg localbg = (bg)localIterator1.next();
+          ArrayList localArrayList2 = new ArrayList();
+          Iterator localIterator2 = paramList.iterator();
+          while (localIterator2.hasNext()) {
+            localArrayList2.add(((ct)localIterator2.next()).af());
+          }
+          localbg.a(localArrayList2);
         }
       }
-      localbg.a(localArrayList2);
+      return;
+    }
+    for (;;)
+    {
+      throw paramList;
     }
   }
   
@@ -107,24 +111,22 @@ public class cv
   
   protected boolean bl()
   {
-    boolean bool = false;
-    for (;;)
+    synchronized (this.hx)
     {
-      synchronized (this.hx)
-      {
-        Iterator localIterator = this.iu.iterator();
-        if (localIterator.hasNext())
+      Iterator localIterator = this.iu.iterator();
+      boolean bool = false;
+      while (localIterator.hasNext()) {
+        if (((ct)localIterator.next()).c(300000L))
         {
-          if (((ct)localIterator.next()).c(300000L))
-          {
-            localIterator.remove();
-            bool = true;
-          }
-        }
-        else {
-          return bool;
+          localIterator.remove();
+          bool = true;
         }
       }
+      return bool;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -150,27 +152,29 @@ public class cv
   
   public ct e(String paramString, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      for (;;)
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    if (!bool)
+    {
+      Object localObject3 = this.hx;
+      Object localObject1 = localObject2;
+      try
       {
-        synchronized (this.hx)
+        if (!this.iu.isEmpty())
         {
-          if (!this.iu.isEmpty())
+          Iterator localIterator = this.iu.iterator();
+          do
           {
-            Iterator localIterator = this.iu.iterator();
-            if (localIterator.hasNext())
-            {
-              ct localct = (ct)localIterator.next();
-              if ((localct == null) || (!cb.a(paramString, localct.af().Z(), paramInt, localct.af().ab()))) {
-                continue;
-              }
-              paramString = localct;
-              return paramString;
+            localObject1 = localObject2;
+            if (!localIterator.hasNext()) {
+              break;
             }
-          }
+            localObject1 = (ct)localIterator.next();
+          } while ((localObject1 == null) || (!cb.a(paramString, ((ct)localObject1).af().Z(), paramInt, ((ct)localObject1).af().ab())));
         }
-        paramString = null;
+        return localObject1;
       }
+      finally {}
     }
     return null;
   }
@@ -197,17 +201,17 @@ public class cv
                 }
               }
             }
-          }
-          Iterator localIterator2 = this.iu.iterator();
-          while (localIterator2.hasNext())
-          {
-            ct localct2 = (ct)localIterator2.next();
-            if ((localct2 != null) && (localct2.af().e(localbn))) {
-              localIterator2.remove();
+            Iterator localIterator2 = this.iu.iterator();
+            while (localIterator2.hasNext())
+            {
+              ct localct2 = (ct)localIterator2.next();
+              if ((localct2 != null) && (localct2.af().e(localbn))) {
+                localIterator2.remove();
+              }
             }
+            localct1.ik = System.currentTimeMillis();
+            this.iu.add(localct1);
           }
-          localct1.ik = System.currentTimeMillis();
-          this.iu.add(localct1);
         }
       }
     }
@@ -215,7 +219,7 @@ public class cv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cv
  * JD-Core Version:    0.7.0.1
  */

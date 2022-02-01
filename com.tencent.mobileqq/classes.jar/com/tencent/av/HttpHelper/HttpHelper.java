@@ -9,7 +9,12 @@ public class HttpHelper
   
   public static boolean httpGetRequest(String paramString, Object paramObject, int paramInt, HttpHelper.HttpRequestListener paramHttpRequestListener)
   {
-    Log.e("HttpHelper", "httpGetRequest|url = " + paramString + "|| http request timeout =" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("httpGetRequest|url = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("|| http request timeout =");
+    localStringBuilder.append(paramInt);
+    Log.e("HttpHelper", localStringBuilder.toString());
     new Thread(new HttpHelper.1(paramString, paramInt, paramHttpRequestListener, paramObject)).start();
     return true;
   }
@@ -21,7 +26,12 @@ public class HttpHelper
   
   public static boolean httpPostRequest(String paramString, byte[] paramArrayOfByte, Map<String, String> paramMap, Object paramObject, int paramInt, HttpHelper.HttpRequestListener paramHttpRequestListener)
   {
-    Log.e("HttpHelper", "httpPostRequest|url = " + paramString + "|| http request timeout =" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("httpPostRequest|url = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("|| http request timeout =");
+    localStringBuilder.append(paramInt);
+    Log.e("HttpHelper", localStringBuilder.toString());
     new Thread(new HttpHelper.2(paramString, paramInt, paramArrayOfByte, paramMap, paramHttpRequestListener, paramObject)).start();
     return true;
   }
@@ -33,7 +43,7 @@ public class HttpHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.HttpHelper.HttpHelper
  * JD-Core Version:    0.7.0.1
  */

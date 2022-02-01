@@ -18,7 +18,7 @@ import java.util.Set;
 
 public class ParticleCloud
 {
-  private static final String TAG = ParticleCloud.class.getSimpleName();
+  private static final String TAG = "ParticleCloud";
   private static final HashMap<String, Object> s_params = new HashMap();
   private long[] mAttrExpressions;
   private double[] mAttrValue;
@@ -46,54 +46,57 @@ public class ParticleCloud
   
   private void advanceParticle(Particle paramParticle, double paramDouble)
   {
-    long l;
-    int i;
     if (this.mSprite.animated == 1)
     {
-      l = (int)((paramDouble - paramParticle.birth) / this.mSprite.frameDuration);
-      i = (int)(l % this.mSprite.frameCount);
-      if (this.mSprite.looped == 1) {
-        paramParticle.currFrame = i;
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (this.mSprite.looped == 2)
-    {
-      if ((l / this.mSprite.frameCount & 1L) == 1L)
+      long l = (int)((paramDouble - paramParticle.birth) / this.mSprite.frameDuration);
+      int i = (int)(l % this.mSprite.frameCount);
+      if (this.mSprite.looped == 1)
       {
-        paramParticle.currFrame = (this.mSprite.frameCount - 1 - i);
+        paramParticle.currFrame = i;
         return;
       }
+      if (this.mSprite.looped == 2)
+      {
+        if ((l / this.mSprite.frameCount & 1L) == 1L)
+        {
+          paramParticle.currFrame = (this.mSprite.frameCount - 1 - i);
+          return;
+        }
+        paramParticle.currFrame = i;
+        return;
+      }
+      if (l >= this.mSprite.frameCount) {
+        i = this.mSprite.frameCount - 1;
+      }
       paramParticle.currFrame = i;
-      return;
     }
-    if (l >= this.mSprite.frameCount) {
-      i = this.mSprite.frameCount - 1;
-    }
-    paramParticle.currFrame = i;
   }
   
   private void computeQuota(double paramDouble)
   {
-    if (this.mLastQuotaTime == 0.0D) {
+    double d1 = this.mLastQuotaTime;
+    if (d1 == 0.0D)
+    {
       this.mLastQuotaTime = paramDouble;
     }
-    for (;;)
+    else
     {
-      if (this.mQuota > this.mMaxCount - this.mParticles.total) {
-        this.mQuota = (this.mMaxCount - this.mParticles.total);
-      }
-      return;
-      int i = (int)(this.mEmitRate * (paramDouble - this.mLastQuotaTime));
+      long l = this.mEmitRate;
+      double d2 = l;
+      Double.isNaN(d2);
+      int i = (int)(d2 * (paramDouble - d1));
       if (i > 0)
       {
         this.mQuota += i;
-        paramDouble = this.mLastQuotaTime;
-        this.mLastQuotaTime = (i / this.mEmitRate + paramDouble);
+        paramDouble = i;
+        d2 = l;
+        Double.isNaN(paramDouble);
+        Double.isNaN(d2);
+        this.mLastQuotaTime = (d1 + paramDouble / d2);
       }
+    }
+    if (this.mQuota > this.mMaxCount - this.mParticles.total) {
+      this.mQuota = (this.mMaxCount - this.mParticles.total);
     }
   }
   
@@ -102,12 +105,14 @@ public class ParticleCloud
     Attribute localAttribute = new Attribute();
     localAttribute.mName = paramString;
     localAttribute.mValue = new Value(paramObject);
-    if (AttributeConst.ATTR_INDEX_MAP.containsKey(paramString)) {}
-    for (int i = ((Integer)AttributeConst.ATTR_INDEX_MAP.get(paramString)).intValue();; i = -1)
-    {
-      localAttribute.mVarIndex = i;
-      return localAttribute;
+    int i;
+    if (AttributeConst.ATTR_INDEX_MAP.containsKey(paramString)) {
+      i = ((Integer)AttributeConst.ATTR_INDEX_MAP.get(paramString)).intValue();
+    } else {
+      i = -1;
     }
+    localAttribute.mVarIndex = i;
+    return localAttribute;
   }
   
   private double doubleValue(JsonObject paramJsonObject, String paramString)
@@ -122,45 +127,36 @@ public class ParticleCloud
   static ParticleCloud fromJson(ParticleSystem paramParticleSystem, JsonObject paramJsonObject)
   {
     paramParticleSystem = new ParticleCloud(paramParticleSystem);
-    for (;;)
+    try
     {
-      Object localObject;
-      JsonElement localJsonElement;
-      try
+      paramParticleSystem.mName = paramJsonObject.get("name").getAsString();
+      Iterator localIterator = paramJsonObject.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        paramParticleSystem.mName = paramJsonObject.get("name").getAsString();
-        Iterator localIterator = paramJsonObject.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
+        Object localObject = (String)localIterator.next();
+        JsonElement localJsonElement = paramJsonObject.get((String)localObject);
+        if ((!(localJsonElement instanceof Number)) && (!(localJsonElement instanceof String)))
+        {
+          if (((localJsonElement instanceof JsonObject)) && (TextUtils.equals((CharSequence)localObject, "sprite"))) {
+            paramParticleSystem.initSprite((JsonObject)localJsonElement);
+          } else if (((localJsonElement instanceof JsonObject)) && (TextUtils.equals((CharSequence)localObject, "audio"))) {
+            paramParticleSystem.mSprite.audioPath = GsonUtils.getStringUnsafe((JsonObject)localJsonElement, "path");
+          }
         }
-        localObject = (String)localIterator.next();
-        localJsonElement = paramJsonObject.get((String)localObject);
-        if (((localJsonElement instanceof Number)) || ((localJsonElement instanceof String)))
+        else
         {
           localObject = createAttr((String)localObject, localJsonElement);
           paramParticleSystem.mAttrs.put(((Attribute)localObject).mName, localObject);
-          continue;
-        }
-        if (!(localJsonElement instanceof JsonObject)) {
-          break label133;
         }
       }
-      catch (Exception paramParticleSystem)
-      {
-        paramParticleSystem.printStackTrace();
-        return null;
-      }
-      if (TextUtils.equals((CharSequence)localObject, "sprite")) {
-        paramParticleSystem.initSprite((JsonObject)localJsonElement);
-      } else {
-        label133:
-        if (((localJsonElement instanceof JsonObject)) && (TextUtils.equals((CharSequence)localObject, "audio"))) {
-          paramParticleSystem.mSprite.audioPath = GsonUtils.getStringUnsafe((JsonObject)localJsonElement, "path");
-        }
-      }
+      paramParticleSystem.optimized();
+      return paramParticleSystem;
     }
-    paramParticleSystem.optimized();
-    return paramParticleSystem;
+    catch (Exception paramParticleSystem)
+    {
+      paramParticleSystem.printStackTrace();
+    }
+    return null;
   }
   
   private void initParticle(Particle paramParticle, double paramDouble)
@@ -196,7 +192,6 @@ public class ParticleCloud
   
   private void optimized()
   {
-    int i = 0;
     this.mMaxCount = (((Attribute)this.mAttrs.get("particleCountMax")).value());
     this.mEmitRate = (((Attribute)this.mAttrs.get("emissionRate")).value());
     this.mAttrExpressions = new long[10];
@@ -234,6 +229,7 @@ public class ParticleCloud
     this.mVarExpressions = new long[localArrayList.size()];
     this.mVarAttributes = new Attribute[localArrayList.size()];
     int j = localArrayList.size();
+    int i = 0;
     while (i < j)
     {
       this.mVarExpressions[i] = ((Attribute)localArrayList.get(i)).expression();
@@ -260,68 +256,73 @@ public class ParticleCloud
   
   public void emitImmediately(double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    double d = System.currentTimeMillis() / 1000.0D;
-    Particle localParticle = this.mSystem.advanceObtainUnlocked();
-    initParticle(localParticle, d);
-    localParticle.touchedPosition[0] = paramDouble1;
-    localParticle.touchedPosition[1] = paramDouble2;
-    localParticle.touchedPosition[2] = paramDouble3;
-    localParticle.next = this.mParticles.next;
-    this.mParticles.next = localParticle;
-    localParticle = this.mParticles;
-    localParticle.total += 1;
+    double d = System.currentTimeMillis();
+    Double.isNaN(d);
+    d /= 1000.0D;
+    Particle localParticle1 = this.mSystem.advanceObtainUnlocked();
+    initParticle(localParticle1, d);
+    localParticle1.touchedPosition[0] = paramDouble1;
+    localParticle1.touchedPosition[1] = paramDouble2;
+    localParticle1.touchedPosition[2] = paramDouble3;
+    localParticle1.next = this.mParticles.next;
+    Particle localParticle2 = this.mParticles;
+    localParticle2.next = localParticle1;
+    localParticle2.total += 1;
   }
   
   public Pair<Particle, ParticleExpressionBundle> getAdvanceExpression(double paramDouble)
   {
     ParticleExpressionBundle localParticleExpressionBundle = new ParticleExpressionBundle();
-    Object localObject1 = this.mParticles.next;
-    Object localObject2 = this.mParticles;
-    while (localObject1 != null)
+    Particle localParticle2 = this.mParticles.next;
+    Particle localParticle1 = this.mParticles;
+    for (;;)
     {
-      Particle localParticle;
-      if ((localObject1.a[2] > 0.0D) && (localObject1.a[2] + ((Particle)localObject1).birth <= paramDouble))
+      Particle localParticle3 = localParticle1;
+      for (localParticle1 = localParticle2;; localParticle1 = localParticle2)
       {
-        ((Particle)localObject2).next = ((Particle)localObject1).next;
-        localParticle = ((Particle)localObject1).next;
-        this.mSystem.putUnlocked((Particle)localObject1);
-        localObject1 = this.mParticles;
-        ((Particle)localObject1).total -= 1;
-        localObject1 = localParticle;
+        if (localParticle1 == null) {
+          break label158;
+        }
+        if ((localParticle1.a[2] <= 0.0D) || (localParticle1.a[2] + localParticle1.birth > paramDouble)) {
+          break;
+        }
+        localParticle3.next = localParticle1.next;
+        localParticle2 = localParticle1.next;
+        this.mSystem.putUnlocked(localParticle1);
+        localParticle1 = this.mParticles;
+        localParticle1.total -= 1;
       }
-      else
-      {
-        advanceParticle((Particle)localObject1, paramDouble);
-        this.mSystem.mParamsPool[(localObject1.paramOffset + 10)] = (paramDouble - ((Particle)localObject1).birth);
-        localParticle = ((Particle)localObject1).next;
-        localObject2 = localObject1;
-        localObject1 = localParticle;
-      }
+      advanceParticle(localParticle1, paramDouble);
+      this.mSystem.mParamsPool[(localParticle1.paramOffset + 10)] = (paramDouble - localParticle1.birth);
+      localParticle2 = localParticle1.next;
     }
+    label158:
     computeQuota(paramDouble);
-    if ((this.mParticles.total < this.mMaxCount) && (this.mQuota > 0L))
+    long l1 = this.mParticles.total;
+    long l2 = this.mMaxCount;
+    if ((l1 < l2) && (this.mQuota > 0L))
     {
-      long l = Math.min(this.mMaxCount - this.mParticles.total, this.mQuota);
-      this.mQuota -= l;
-      while (l > 0L)
+      l1 = Math.min(l2 - this.mParticles.total, this.mQuota);
+      this.mQuota -= l1;
+      while (l1 > 0L)
       {
-        localObject1 = this.mSystem.advanceObtainUnlocked();
-        initParticle((Particle)localObject1, paramDouble);
-        this.mSystem.mParamsPool[(localObject1.paramOffset + 10)] = (paramDouble - ((Particle)localObject1).birth);
-        ((Particle)localObject1).next = this.mParticles.next;
-        this.mParticles.next = ((Particle)localObject1);
-        localObject1 = this.mParticles;
-        ((Particle)localObject1).total += 1;
-        l -= 1L;
+        localParticle1 = this.mSystem.advanceObtainUnlocked();
+        initParticle(localParticle1, paramDouble);
+        this.mSystem.mParamsPool[(localParticle1.paramOffset + 10)] = (paramDouble - localParticle1.birth);
+        localParticle1.next = this.mParticles.next;
+        localParticle2 = this.mParticles;
+        localParticle2.next = localParticle1;
+        localParticle2.total += 1;
+        l1 -= 1L;
       }
     }
-    localObject1 = this.mParticles.next;
+    localParticle1 = this.mParticles.next;
     int i = 0;
     int j = this.mParticles.total;
     while (i < j)
     {
-      this.paramOffsets[i] = ((Particle)localObject1).paramOffset;
-      localObject1 = ((Particle)localObject1).next;
+      this.paramOffsets[i] = localParticle1.paramOffset;
+      localParticle1 = localParticle1.next;
       i += 1;
     }
     localParticleExpressionBundle.expressions = this.mVarExpressions;
@@ -337,7 +338,7 @@ public class ParticleCloud
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.ParticleCloud
  * JD-Core Version:    0.7.0.1
  */

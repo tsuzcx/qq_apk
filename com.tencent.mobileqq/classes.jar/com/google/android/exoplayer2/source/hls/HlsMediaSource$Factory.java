@@ -59,62 +59,42 @@ public final class HlsMediaSource$Factory
   
   public Factory setAllowChunklessPreparation(boolean paramBoolean)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.allowChunklessPreparation = paramBoolean;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.allowChunklessPreparation = paramBoolean;
+    return this;
   }
   
   public Factory setCompositeSequenceableLoaderFactory(CompositeSequenceableLoaderFactory paramCompositeSequenceableLoaderFactory)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.compositeSequenceableLoaderFactory = ((CompositeSequenceableLoaderFactory)Assertions.checkNotNull(paramCompositeSequenceableLoaderFactory));
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.compositeSequenceableLoaderFactory = ((CompositeSequenceableLoaderFactory)Assertions.checkNotNull(paramCompositeSequenceableLoaderFactory));
+    return this;
   }
   
   public Factory setExtractorFactory(HlsExtractorFactory paramHlsExtractorFactory)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.extractorFactory = ((HlsExtractorFactory)Assertions.checkNotNull(paramHlsExtractorFactory));
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.extractorFactory = ((HlsExtractorFactory)Assertions.checkNotNull(paramHlsExtractorFactory));
+    return this;
   }
   
   public Factory setMinLoadableRetryCount(int paramInt)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.minLoadableRetryCount = paramInt;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.minLoadableRetryCount = paramInt;
+    return this;
   }
   
   public Factory setPlaylistParser(ParsingLoadable.Parser<HlsPlaylist> paramParser)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.playlistParser = ((ParsingLoadable.Parser)Assertions.checkNotNull(paramParser));
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.playlistParser = ((ParsingLoadable.Parser)Assertions.checkNotNull(paramParser));
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.HlsMediaSource.Factory
  * JD-Core Version:    0.7.0.1
  */

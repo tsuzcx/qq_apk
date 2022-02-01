@@ -4,15 +4,15 @@ public class JsWebWorker$AsyncThread
   implements Runnable
 {
   protected String a;
-  protected String[] a;
   protected String b;
   protected String c;
+  protected String[] d;
   
   public void run()
   {
     try
     {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString);
+      this.this$0.a(this.a, this.b, this.c, this.d);
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ public class JsWebWorker$AsyncThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.JsWebWorker.AsyncThread
  * JD-Core Version:    0.7.0.1
  */

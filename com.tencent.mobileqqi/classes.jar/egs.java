@@ -1,21 +1,29 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
+import java.util.Map;
 
 public class egs
-  extends BizTroopObserver
+  extends FriendListObserver
 {
-  public egs(TroopView paramTroopView) {}
+  private egs(TroopView paramTroopView) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, Map paramMap)
   {
-    if (paramInt2 == 0) {
+    this.a.a();
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
       this.a.a();
     }
-    while (TextUtils.isEmpty(paramString2)) {
-      return;
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.a();
     }
-    this.a.a(paramString2);
   }
 }
 

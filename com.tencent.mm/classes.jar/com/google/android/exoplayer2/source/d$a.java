@@ -1,170 +1,83 @@
 package com.google.android.exoplayer2.source;
 
-import com.google.android.exoplayer2.b;
-import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.w;
-import com.google.android.exoplayer2.w.a;
-import com.google.android.exoplayer2.w.b;
+import com.google.android.exoplayer2.b.e;
+import com.google.android.exoplayer2.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$a
-  extends w
+  implements n
 {
-  private final long aOY;
-  private final long aOZ;
-  private final w avJ;
+  final n cFa;
+  private final j cGp;
+  private final long cYO;
+  private final long cYP;
+  boolean cYS;
+  boolean cYT;
   
-  public d$a(w paramw, long paramLong1, long paramLong2)
+  public d$a(j paramj, n paramn, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(95462);
-    if (paramw.ne() == 1)
-    {
-      bool = true;
-      a.checkArgument(bool);
-      if (paramw.nf() != 1) {
-        break label223;
-      }
-      bool = true;
-      label36:
-      a.checkArgument(bool);
-      w.b localb = paramw.a(0, new w.b());
-      if (localb.axV) {
-        break label229;
-      }
-      bool = true;
-      label66:
-      a.checkArgument(bool);
-      long l = paramLong2;
-      if (paramLong2 == -9223372036854775808L) {
-        l = localb.axh;
-      }
-      paramLong2 = l;
-      if (localb.axh != -9223372036854775807L)
-      {
-        paramLong2 = l;
-        if (l > localb.axh) {
-          paramLong2 = localb.axh;
-        }
-        if ((paramLong1 != 0L) && (!localb.axU)) {
-          break label235;
-        }
-        bool = true;
-        label146:
-        a.checkArgument(bool);
-        if (paramLong1 > paramLong2) {
-          break label241;
-        }
-        bool = true;
-        label161:
-        a.checkArgument(bool);
-      }
-      if (paramw.a(0, new w.a(), false).axL != 0L) {
-        break label247;
-      }
-    }
-    label223:
-    label229:
-    label235:
-    label241:
-    label247:
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkArgument(bool);
-      this.avJ = paramw;
-      this.aOY = paramLong1;
-      this.aOZ = paramLong2;
-      AppMethodBeat.o(95462);
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label36;
-      bool = false;
-      break label66;
-      bool = false;
-      break label146;
-      bool = false;
-      break label161;
-    }
+    this.cGp = paramj;
+    this.cFa = paramn;
+    this.cYO = paramLong1;
+    this.cYP = paramLong2;
+    this.cYS = paramBoolean;
   }
   
-  public final int O(Object paramObject)
+  public final void ST()
   {
-    AppMethodBeat.i(95466);
-    int i = this.avJ.O(paramObject);
-    AppMethodBeat.o(95466);
+    AppMethodBeat.i(92612);
+    this.cFa.ST();
+    AppMethodBeat.o(92612);
+  }
+  
+  public final int b(k paramk, e parame, boolean paramBoolean)
+  {
+    AppMethodBeat.i(92613);
+    if (this.cYS)
+    {
+      AppMethodBeat.o(92613);
+      return -3;
+    }
+    if (this.cYT)
+    {
+      parame.flags = 4;
+      AppMethodBeat.o(92613);
+      return -4;
+    }
+    int i = this.cFa.b(paramk, parame, paramBoolean);
+    if ((this.cYP != -9223372036854775808L) && (((i == -4) && (parame.timeUs >= this.cYP)) || ((i == -3) && (this.cGp.SR() == -9223372036854775808L))))
+    {
+      parame.clear();
+      parame.flags = 4;
+      this.cYT = true;
+      AppMethodBeat.o(92613);
+      return -4;
+    }
+    if ((i == -4) && (!parame.Ry())) {
+      parame.timeUs -= this.cYO;
+    }
+    AppMethodBeat.o(92613);
     return i;
   }
   
-  public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
+  public final void cp(long paramLong)
   {
-    long l = -9223372036854775807L;
-    AppMethodBeat.i(95465);
-    parama = this.avJ.a(0, parama, paramBoolean);
-    if (this.aOZ != -9223372036854775807L) {
-      l = this.aOZ - this.aOY;
-    }
-    parama.axh = l;
-    AppMethodBeat.o(95465);
-    return parama;
+    AppMethodBeat.i(92614);
+    this.cFa.cp(this.cYO + paramLong);
+    AppMethodBeat.o(92614);
   }
   
-  public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
+  public final boolean isReady()
   {
-    AppMethodBeat.i(95464);
-    paramb = this.avJ.a(0, paramb, paramBoolean, paramLong);
-    if (this.aOZ != -9223372036854775807L)
-    {
-      paramLong = this.aOZ - this.aOY;
-      paramb.axh = paramLong;
-      if (paramb.axY != -9223372036854775807L)
-      {
-        paramb.axY = Math.max(paramb.axY, this.aOY);
-        if (this.aOZ != -9223372036854775807L) {
-          break label176;
-        }
-      }
-    }
-    label176:
-    for (paramLong = paramb.axY;; paramLong = Math.min(paramb.axY, this.aOZ))
-    {
-      paramb.axY = paramLong;
-      paramb.axY -= this.aOY;
-      paramLong = b.o(this.aOY);
-      if (paramb.axS != -9223372036854775807L) {
-        paramb.axS += paramLong;
-      }
-      if (paramb.axT != -9223372036854775807L) {
-        paramb.axT = (paramLong + paramb.axT);
-      }
-      AppMethodBeat.o(95464);
-      return paramb;
-      paramLong = -9223372036854775807L;
-      break;
-    }
-  }
-  
-  public final int aS(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(95463);
-    paramInt1 = this.avJ.aS(paramInt1, paramInt2);
-    AppMethodBeat.o(95463);
-    return paramInt1;
-  }
-  
-  public final int ne()
-  {
-    return 1;
-  }
-  
-  public final int nf()
-  {
-    return 1;
+    AppMethodBeat.i(92611);
+    boolean bool = this.cFa.isReady();
+    AppMethodBeat.o(92611);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.d.a
  * JD-Core Version:    0.7.0.1
  */

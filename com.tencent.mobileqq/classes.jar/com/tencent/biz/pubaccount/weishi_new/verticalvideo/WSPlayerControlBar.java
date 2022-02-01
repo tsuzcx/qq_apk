@@ -11,17 +11,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.baseui.IPlayModeChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar;
-import tlo;
 
 public class WSPlayerControlBar
   extends RelativeLayout
+  implements IPlayModeChangeListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RotationSeekBar jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar;
-  private final String jdField_a_of_type_JavaLangString = "WS_VIDEO_seekBar";
-  private boolean jdField_a_of_type_Boolean;
+  private final String a = "WS_VIDEO_seekBar";
+  private int b = 1;
+  private RotationSeekBar c;
+  private ImageView d;
+  private boolean e;
   
   public WSPlayerControlBar(Context paramContext)
   {
@@ -43,84 +45,93 @@ public class WSPlayerControlBar
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559875, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar = ((RotationSeekBar)paramContext.findViewById(2131379758));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379759));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setProgress(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setMax(1000);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131626093, null);
+    this.c = ((RotationSeekBar)paramContext.findViewById(2131449638));
+    this.d = ((ImageView)paramContext.findViewById(2131449639));
+    this.c.setPadding(0, 0, 0, 0);
+    this.c.setProgress(0);
+    this.c.setMax(1000);
     addView(paramContext);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    ImageView localImageView = this.d;
+    if (localImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getBackground() != null) {}
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841474);
-      AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
+      localImageView.setVisibility(0);
+      if (this.d.getBackground() == null) {
+        try
+        {
+          this.d.setBackgroundResource(2130842814);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showLoadingProgressBar error:");
+          localStringBuilder.append(localOutOfMemoryError);
+          WSLog.d("WS_VIDEO_seekBar", localStringBuilder.toString());
+        }
+      }
+      AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.d.getBackground();
       if (localAnimationDrawable != null)
       {
         localAnimationDrawable.setVisible(true, true);
         localAnimationDrawable.setOneShot(false);
         localAnimationDrawable.start();
       }
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        tlo.d("WS_VIDEO_seekBar", "showLoadingProgressBar error:" + localOutOfMemoryError);
-      }
     }
   }
   
   public void a(Rect paramRect)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.getGlobalVisibleRect(paramRect);
+    RotationSeekBar localRotationSeekBar = this.c;
+    if (localRotationSeekBar != null) {
+      localRotationSeekBar.getGlobalVisibleRect(paramRect);
     }
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.dispatchTouchEvent(paramMotionEvent);
+    RotationSeekBar localRotationSeekBar = this.c;
+    if (localRotationSeekBar != null) {
+      localRotationSeekBar.dispatchTouchEvent(paramMotionEvent);
     }
   }
   
   public void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.removeCallbacks(paramRunnable);
+    RotationSeekBar localRotationSeekBar = this.c;
+    if (localRotationSeekBar != null) {
+      localRotationSeekBar.removeCallbacks(paramRunnable);
     }
   }
   
   public void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("WSPlayerControlBar hideLoadingProgressBar() mProgressLoading:").append(this.jdField_a_of_type_AndroidWidgetImageView).append(", getVisibility():");
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (Object localObject = Integer.valueOf(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());; localObject = "null")
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSPlayerControlBar hideLoadingProgressBar() mProgressLoading:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", getVisibility():");
+    Object localObject = this.d;
+    if (localObject != null) {
+      localObject = Integer.valueOf(((ImageView)localObject).getVisibility());
+    } else {
+      localObject = "null";
+    }
+    localStringBuilder.append(localObject);
+    WSLog.b("WS_VIDEO_ProgressBar", localStringBuilder.toString());
+    if (this.d != null)
     {
-      tlo.b("WS_VIDEO_ProgressBar", localObject);
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        tlo.b("WS_VIDEO_ProgressBar", "WSPlayerControlBar hideLoadingProgressBar() hide");
-        c();
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      return;
+      WSLog.b("WS_VIDEO_ProgressBar", "WSPlayerControlBar hideLoadingProgressBar() hide");
+      c();
+      this.d.setVisibility(8);
     }
   }
   
   public void c()
   {
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.d.getBackground();
     if ((localAnimationDrawable != null) && (localAnimationDrawable.isRunning()))
     {
       localAnimationDrawable.setOneShot(true);
@@ -128,40 +139,48 @@ public class WSPlayerControlBar
     }
   }
   
+  public int getCurrentMode()
+  {
+    return this.b;
+  }
+  
   public void setNeedDeepClearScreen(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setProgress(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setProgress((int)(1000.0F * paramFloat));
+    RotationSeekBar localRotationSeekBar = this.c;
+    if (localRotationSeekBar != null) {
+      localRotationSeekBar.setProgress((int)(paramFloat * 1000.0F));
     }
   }
   
   public void setSeekBarActivated(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setActivated(paramBoolean);
+    RotationSeekBar localRotationSeekBar = this.c;
+    if (localRotationSeekBar != null) {
+      localRotationSeekBar.setActivated(paramBoolean);
     }
   }
   
   public void setSeekBarChangeListener(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
+    this.c.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
   }
   
   public void setThumb(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar.setThumb(paramDrawable);
+    RotationSeekBar localRotationSeekBar = this.c;
+    if (localRotationSeekBar != null) {
+      localRotationSeekBar.setThumb(paramDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar
  * JD-Core Version:    0.7.0.1
  */

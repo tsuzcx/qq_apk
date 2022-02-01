@@ -1,27 +1,39 @@
 package com.tencent.mobileqq.emosm.web;
 
-import aknx;
-import akuq;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import apqh;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class MessengerService$IncomingHandler$5
-  implements Runnable
+class MessengerService$IncomingHandler$5
+  extends BroadcastReceiver
 {
-  public MessengerService$IncomingHandler$5(apqh paramapqh, QQAppInterface paramQQAppInterface, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$5(MessengerService.IncomingHandler paramIncomingHandler, MessengerService paramMessengerService, Bundle paramBundle) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.jdField_a_of_type_AndroidOsBundle.getString("url"));
-    Bundle localBundle = new Bundle();
-    if (bool) {}
-    for (int i = 0;; i = -1)
+    paramContext = paramIntent.getAction();
+    if (!TextUtils.isEmpty(paramContext))
     {
-      localBundle.putInt("result", i);
-      this.b.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-      return;
+      if (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM")) {
+        return;
+      }
+      paramContext = this.a.getApplicationContext();
+      if (paramContext != null) {
+        paramContext.unregisterReceiver(this);
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openDevLock unregisterReceiver context: ");
+        localStringBuilder.append(paramContext);
+        QLog.d("Q.emoji.web.MessengerService", 2, localStringBuilder.toString());
+      }
+      paramContext = new Bundle(paramIntent.getExtras());
+      this.b.putBundle("response", paramContext);
+      this.a.a(this.b);
     }
   }
 }

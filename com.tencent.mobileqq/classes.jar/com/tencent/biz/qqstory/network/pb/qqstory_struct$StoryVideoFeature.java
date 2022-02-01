@@ -25,13 +25,14 @@ public final class qqstory_struct$StoryVideoFeature
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 66, 72, 80 }, new String[] { "vid", "viewer_total_num", "stranger_view_total_num", "has_like", "uncheck_like_num", "total_like_num", "total_comment_num", "newest_like_list", "deny_comment", "viewing_total_num" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0) }, StoryVideoFeature.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 66, 72, 80 }, new String[] { "vid", "viewer_total_num", "stranger_view_total_num", "has_like", "uncheck_like_num", "total_like_num", "total_comment_num", "newest_like_list", "deny_comment", "viewing_total_num" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, null, localInteger, localInteger }, StoryVideoFeature.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFeature
  * JD-Core Version:    0.7.0.1
  */

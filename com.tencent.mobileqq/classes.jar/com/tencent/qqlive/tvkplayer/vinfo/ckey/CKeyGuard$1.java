@@ -12,10 +12,11 @@ final class CKeyGuard$1
   {
     try
     {
-      if (this.val$context != null) {
+      if (this.val$context != null)
+      {
         CKeyGuard.access$000(this.val$context);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -27,7 +28,7 @@ final class CKeyGuard$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyGuard.1
  * JD-Core Version:    0.7.0.1
  */

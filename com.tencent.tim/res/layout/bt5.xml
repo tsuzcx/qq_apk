@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/hub" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/gir" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ho6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/hub" android:layout_centerHorizontal="true">
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ho7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="1.5dip" android:text="当前正处于非WiFi环境" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffc60d" android:gravity="center" android:id="@id/ho8" android:layout_width="141.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.5dip" android:text="@string/scv" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/koi" android:visibility="gone" android:layout_width="108.0dip" android:layout_height="108.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
+</RelativeLayout>

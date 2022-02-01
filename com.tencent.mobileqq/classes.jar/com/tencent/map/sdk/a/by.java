@@ -31,8 +31,13 @@ public final class by
       while (localIterator.hasNext()) {
         localIterator.next();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public final void a(String paramString1, String arg2)
@@ -40,14 +45,15 @@ public final class by
     if ((!TextUtils.isEmpty(???)) && (!cd.a().b().equals(???))) {
       cd.a().a(???, true);
     }
-    if (!TextUtils.isEmpty(paramString1)) {}
-    synchronized (this.a)
-    {
-      this.a.b();
-      this.a.a(paramString1);
-      dc.a("settings_in_client", this.a.a());
-      a();
-      return;
+    if (!TextUtils.isEmpty(paramString1)) {
+      synchronized (this.a)
+      {
+        this.a.b();
+        this.a.a(paramString1);
+        dc.a("settings_in_client", this.a.a());
+        a();
+        return;
+      }
     }
   }
   

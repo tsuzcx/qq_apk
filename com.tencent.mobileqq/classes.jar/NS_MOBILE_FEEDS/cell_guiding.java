@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,15 +19,15 @@ public final class cell_guiding
   public String action_url = "";
   public String button_icon = "";
   public String button_title = "";
-  public Map<String, String> extendInfo;
-  public int guiding_type;
-  public s_picdata picdata;
+  public Map<String, String> extendInfo = null;
+  public int guiding_type = 0;
+  public s_picdata picdata = null;
   public String strJsonClient = "";
   public String subsummary = "";
   public String summary = "";
   public String title = "";
-  public ArrayList<guide_button> vecButton;
-  public ArrayList<s_user> vecUsers;
+  public ArrayList<guide_button> vecButton = null;
+  public ArrayList<s_user> vecUsers = null;
   
   static
   {
@@ -77,45 +78,56 @@ public final class cell_guiding
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 0);
+    Object localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.button_title != null) {
-      paramJceOutputStream.write(this.button_title, 3);
+    localObject = this.button_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 4);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 5);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.guiding_type, 6);
-    if (this.vecUsers != null) {
-      paramJceOutputStream.write(this.vecUsers, 7);
+    localObject = this.vecUsers;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.vecButton != null) {
-      paramJceOutputStream.write(this.vecButton, 8);
+    localObject = this.vecButton;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.subsummary != null) {
-      paramJceOutputStream.write(this.subsummary, 9);
+    localObject = this.subsummary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.button_icon != null) {
-      paramJceOutputStream.write(this.button_icon, 10);
+    localObject = this.button_icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strJsonClient != null) {
-      paramJceOutputStream.write(this.strJsonClient, 11);
+    localObject = this.strJsonClient;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_guiding
  * JD-Core Version:    0.7.0.1
  */

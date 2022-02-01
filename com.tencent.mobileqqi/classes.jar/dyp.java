@@ -1,35 +1,20 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor;
-import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor.Listener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public class dyp
-  implements Runnable
+  implements FileManagerUtil.TipsClickedInterface
 {
-  public dyp(FrameAnimationActor paramFrameAnimationActor) {}
+  public dyp(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a();
-      }
-      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_ArrayOfInt.length) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.b]);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.b();
-    return;
-    this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.jdField_a_of_type_Int]);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a(this.a.jdField_a_of_type_Int);
-    }
-    this.a.jdField_a_of_type_AndroidViewView.postDelayed(FrameAnimationActor.a(this.a), this.a.c);
-    FrameAnimationActor localFrameAnimationActor = this.a;
-    localFrameAnimationActor.jdField_a_of_type_Int += 1;
+    FileManagerUtil.a(GrayTipsItemBuilder.a(this.a).a(), 3);
+    FileManagerUtil.a((Activity)GrayTipsItemBuilder.a(this.a), GrayTipsItemBuilder.b(this.a).a(), GrayTipsItemBuilder.a(this.a).a, GrayTipsItemBuilder.b(this.a).d);
   }
 }
 

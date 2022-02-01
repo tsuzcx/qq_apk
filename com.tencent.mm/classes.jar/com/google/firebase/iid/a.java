@@ -7,28 +7,28 @@ import java.security.NoSuchAlgorithmException;
 
 public final class a
 {
-  public static KeyPair rV()
+  public static KeyPair Yr()
   {
-    AppMethodBeat.i(108713);
+    AppMethodBeat.i(4149);
     try
     {
       Object localObject = KeyPairGenerator.getInstance("RSA");
       ((KeyPairGenerator)localObject).initialize(2048);
       localObject = ((KeyPairGenerator)localObject).generateKeyPair();
-      AppMethodBeat.o(108713);
+      AppMethodBeat.o(4149);
       return localObject;
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
       AssertionError localAssertionError = new AssertionError(localNoSuchAlgorithmException);
-      AppMethodBeat.o(108713);
+      AppMethodBeat.o(4149);
       throw localAssertionError;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.a
  * JD-Core Version:    0.7.0.1
  */

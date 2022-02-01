@@ -10,36 +10,36 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 public final class a
   extends View
 {
-  private c rum;
+  private c QMJ;
   
   public a(Context paramContext, c paramc)
   {
     super(paramContext);
-    this.rum = paramc;
+    this.QMJ = paramc;
   }
   
   public final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(36964);
+    AppMethodBeat.i(96344);
     super.onDraw(paramCanvas);
     int k = getHeight();
     int i = getWidth();
     int j = (int)(Math.min(k, i) / 2.0F * 0.8D);
     i = (int)(i / 2.0F);
     k = (int)(k / 2.0F);
-    Bitmap localBitmap = this.rum.rtU;
+    Bitmap localBitmap = this.QMJ.QMs;
     if (localBitmap != null)
     {
-      j = (int)(j * 2 + this.rum.rtV * 2.0F);
+      j = (int)(j * 2 + this.QMJ.QMt * 2.0F);
       int m = localBitmap.getWidth() * j / localBitmap.getHeight();
       paramCanvas.drawBitmap(Bitmap.createScaledBitmap(localBitmap, m, j, false), i - (m >>> 1), k - (j >>> 1), null);
     }
-    AppMethodBeat.o(36964);
+    AppMethodBeat.o(96344);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.a
  * JD-Core Version:    0.7.0.1
  */

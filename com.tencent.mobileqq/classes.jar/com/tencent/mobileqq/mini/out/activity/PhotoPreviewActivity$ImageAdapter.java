@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import aior;
-import alud;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import bayu;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.common.galleryactivity.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.photo.OnProGalleryListener;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
 
 class PhotoPreviewActivity$ImageAdapter
   extends BaseAdapter
-  implements aior
+  implements OnProGalleryListener
 {
   SparseArray<URLDrawable> mActiveDrawable = new SparseArray();
   URLDrawable mRawDrawable;
@@ -53,40 +53,57 @@ class PhotoPreviewActivity$ImageAdapter
     if (paramView != null) {
       return paramView;
     }
-    String str = this.this$0.getURL(getItem(paramInt));
+    Object localObject = this.this$0.getURL(getItem(paramInt));
     URLDrawable localURLDrawable = (URLDrawable)this.mActiveDrawable.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "getView position=" + paramInt + ",cache=" + localURLDrawable + ",url=" + str);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("getView position=");
+      paramView.append(paramInt);
+      paramView.append(",cache=");
+      paramView.append(localURLDrawable);
+      paramView.append(",url=");
+      paramView.append((String)localObject);
+      QLog.d("PhotoPreviewActivity", 2, paramView.toString());
     }
-    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1)) {
+    paramView = new URLImageView2(paramViewGroup.getContext());
+    if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1))
+    {
       paramView.setImageDrawable(localURLDrawable);
     }
-    for (;;)
+    else if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramView.setContentDescription(alud.a(2131708533) + paramInt);
-      return paramView;
-      if (!TextUtils.isEmpty(str))
+      int i = paramViewGroup.getWidth();
+      int j = paramViewGroup.getHeight();
+      paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
+      paramViewGroup.mRequestWidth = i;
+      paramViewGroup.mRequestHeight = j;
+      paramViewGroup.mLoadingDrawable = URLDrawableHelperConstants.a;
+      paramViewGroup = URLDrawable.getDrawable((String)localObject, paramViewGroup);
+      int k = paramViewGroup.getStatus();
+      if ((k != 1) && (k != 2) && (k != 3))
       {
-        int i = paramViewGroup.getWidth();
-        int j = paramViewGroup.getHeight();
-        paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-        paramViewGroup.mRequestWidth = i;
-        paramViewGroup.mRequestHeight = j;
-        paramViewGroup.mLoadingDrawable = bayu.a;
-        paramViewGroup = URLDrawable.getDrawable(str, paramViewGroup);
-        switch (paramViewGroup.getStatus())
-        {
-        default: 
-          paramViewGroup.setTag(Integer.valueOf(1));
-          paramViewGroup.startDownload();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoPreviewActivity", 2, "getView position=" + paramInt + ",parentWidth=" + i + ",parentHeight=" + j);
-        }
-        paramView.setImageDrawable(paramViewGroup);
+        paramViewGroup.setTag(Integer.valueOf(1));
+        paramViewGroup.startDownload();
       }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getView position=");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(",parentWidth=");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(",parentHeight=");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("PhotoPreviewActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      paramView.setImageDrawable(paramViewGroup);
     }
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append(HardCodeUtil.a(2131905941));
+    paramViewGroup.append(paramInt);
+    paramView.setContentDescription(paramViewGroup.toString());
+    return paramView;
   }
   
   String listActiviteDrawables()
@@ -108,33 +125,40 @@ class PhotoPreviewActivity$ImageAdapter
   public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramView = (URLDrawable)this.mActiveDrawable.get(paramInt);
-    if (paramView != null) {
+    if (paramView != null)
+    {
       if (paramView.getStatus() == 3) {
         paramView.restartDownload();
       }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, listActiviteDrawables());
-      }
-      do
+      paramView = this.this$0.getURL(getItem(paramInt));
+      if (QLog.isColorLevel())
       {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCreateView position=");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(", url=");
+        ((StringBuilder)localObject).append(paramView);
+        QLog.d("PhotoPreviewActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      if (TextUtils.isEmpty(paramView)) {
         return null;
-        paramView = this.this$0.getURL(getItem(paramInt));
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoPreviewActivity", 2, "onCreateView position=" + paramInt + ", url=" + paramView);
-        }
-      } while (TextUtils.isEmpty(paramView));
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
-      localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
-      localURLDrawableOptions.mLoadingDrawable = bayu.a;
-      paramView = URLDrawable.getDrawable(paramView, localURLDrawableOptions);
+      }
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramViewGroup.getWidth();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramViewGroup.getHeight();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.a;
+      paramView = URLDrawable.getDrawable(paramView, (URLDrawable.URLDrawableOptions)localObject);
       paramView.setTag(Integer.valueOf(1));
       paramView.startDownload();
       this.mActiveDrawable.put(paramInt, paramView);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, listActiviteDrawables());
+    }
+    return null;
   }
   
   public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -154,12 +178,13 @@ class PhotoPreviewActivity$ImageAdapter
   
   public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
-    if (!ImageView.class.isInstance(paramView)) {}
-    do
-    {
+    if (!ImageView.class.isInstance(paramView)) {
       return;
-      paramView = ((ImageView)paramView).getDrawable();
-    } while (!URLDrawable.class.isInstance(paramView));
+    }
+    paramView = ((ImageView)paramView).getDrawable();
+    if (!URLDrawable.class.isInstance(paramView)) {
+      return;
+    }
     ((URLDrawable)paramView).updateRegionBitmap(paramRegionDrawableData);
   }
   
@@ -169,72 +194,92 @@ class PhotoPreviewActivity$ImageAdapter
   {
     if (paramInt == this.mRawDrawablePosition)
     {
-      if ((this.mRawDrawable != null) && (this.mRawDrawable.getStatus() == 0)) {
+      paramView = this.mRawDrawable;
+      if ((paramView != null) && (paramView.getStatus() == 0)) {
         this.mRawDrawable.cancelDownload(true);
       }
       this.mRawDrawable = null;
       this.mRawDrawablePosition = -1;
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "(preview)destory rawDrawable, position: " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("(preview)destory rawDrawable, position: ");
+        paramView.append(paramInt);
+        QLog.d("PhotoPreviewActivity", 2, paramView.toString());
       }
     }
   }
   
   public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (!(paramView instanceof AbstractImageAdapter.URLImageView2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "onscaleBegin,classcast error,class of current view is " + paramView.getClass().toString());
-      }
-    }
-    do
+    if (!(paramView instanceof URLImageView2))
     {
-      do
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-          paramView = (AbstractImageAdapter.URLImageView2)paramView;
-          paramViewGroup = paramView.getDrawable();
-          localObject = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
-        } while ((!(paramViewGroup instanceof URLDrawable)) || (!((URLDrawable)paramViewGroup).isFakeSize()) || (localObject != null));
-        paramViewGroup = ((URLDrawable)paramViewGroup).getURL();
-      } while ((!"file".equals(paramViewGroup.getProtocol())) || (paramViewGroup.getRef() != null));
-      if ((paramInt != this.mRawDrawablePosition) || (this.mRawDrawable == null)) {
-        break;
+        paramViewGroup = new StringBuilder();
+        paramViewGroup.append("onscaleBegin,classcast error,class of current view is ");
+        paramViewGroup.append(paramView.getClass().toString());
+        QLog.d("PhotoPreviewActivity", 2, paramViewGroup.toString());
       }
-      paramView = this.mRawDrawable;
-    } while ((!QLog.isColorLevel()) || (this.mRawDrawable == null));
-    QLog.d("PhotoPreviewActivity", 2, "use exist raw drawable");
-    return;
-    if ((QLog.isColorLevel()) && (this.mRawDrawable != null)) {
-      QLog.d("PhotoPreviewActivity", 2, "rawDrawable is exist");
-    }
-    paramViewGroup = paramViewGroup.toString() + "#NOSAMPLE";
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
-    ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
-    paramViewGroup = URLDrawable.getDrawable(paramViewGroup, (URLDrawable.URLDrawableOptions)localObject);
-    paramViewGroup.setTag(Integer.valueOf(2));
-    this.mRawDrawable = null;
-    this.mRawDrawablePosition = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "create rawDrawable, position:" + paramInt);
-    }
-    if (paramViewGroup.getStatus() == 1)
-    {
-      paramView.jdField_a_of_type_Boolean = true;
-      paramView.setImageDrawable(paramViewGroup);
-      paramView.jdField_a_of_type_Boolean = false;
       return;
     }
-    paramView.setDecodingDrawble(paramViewGroup);
-    paramViewGroup.startDownload();
+    paramView = (URLImageView2)paramView;
+    Object localObject = paramView.getDrawable();
+    paramViewGroup = paramView.a;
+    if ((localObject instanceof URLDrawable))
+    {
+      localObject = (URLDrawable)localObject;
+      if ((((URLDrawable)localObject).isFakeSize()) && (paramViewGroup == null))
+      {
+        paramViewGroup = ((URLDrawable)localObject).getURL();
+        if (("file".equals(paramViewGroup.getProtocol())) && (paramViewGroup.getRef() == null)) {
+          if ((paramInt == this.mRawDrawablePosition) && (this.mRawDrawable != null))
+          {
+            if ((QLog.isColorLevel()) && (this.mRawDrawable != null)) {
+              QLog.d("PhotoPreviewActivity", 2, "use exist raw drawable");
+            }
+          }
+          else
+          {
+            if ((QLog.isColorLevel()) && (this.mRawDrawable != null)) {
+              QLog.d("PhotoPreviewActivity", 2, "rawDrawable is exist");
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramViewGroup.toString());
+            ((StringBuilder)localObject).append("#NOSAMPLE");
+            paramViewGroup = ((StringBuilder)localObject).toString();
+            localObject = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
+            ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
+            paramViewGroup = URLDrawable.getDrawable(paramViewGroup, (URLDrawable.URLDrawableOptions)localObject);
+            paramViewGroup.setTag(Integer.valueOf(2));
+            this.mRawDrawable = null;
+            this.mRawDrawablePosition = paramInt;
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("create rawDrawable, position:");
+              ((StringBuilder)localObject).append(paramInt);
+              QLog.d("PhotoPreviewActivity", 2, ((StringBuilder)localObject).toString());
+            }
+            if (paramViewGroup.getStatus() == 1)
+            {
+              paramView.b = true;
+              paramView.setImageDrawable(paramViewGroup);
+              paramView.b = false;
+              return;
+            }
+            paramView.setDecodingDrawble(paramViewGroup);
+            paramViewGroup.startDownload();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PhotoPreviewActivity.ImageAdapter
  * JD-Core Version:    0.7.0.1
  */

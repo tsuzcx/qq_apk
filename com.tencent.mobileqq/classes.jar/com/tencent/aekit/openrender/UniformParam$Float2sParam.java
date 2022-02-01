@@ -25,18 +25,24 @@ public class UniformParam$Float2sParam
     if (this.handle < 0) {
       return;
     }
-    GLES20.glUniform2fv(this.handle, this.value.length / 2, this.value, 0);
+    paramInt = this.handle;
+    float[] arrayOfFloat = this.value;
+    GLES20.glUniform2fv(paramInt, arrayOfFloat.length / 2, arrayOfFloat, 0);
     GlUtil.checkGlError("Float2sParam setParams");
   }
   
   public String toString()
   {
-    return this.name + " = " + this.value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.value);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.UniformParam.Float2sParam
  * JD-Core Version:    0.7.0.1
  */

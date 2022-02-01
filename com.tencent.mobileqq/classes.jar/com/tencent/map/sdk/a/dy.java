@@ -30,20 +30,22 @@ public final class dy
       this.a = String.valueOf(((Character)paramObject).charValue());
       return;
     }
-    if (((paramObject instanceof Number)) || (b(paramObject))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      eg.a(bool);
-      this.a = paramObject;
-      return;
+    boolean bool;
+    if ((!(paramObject instanceof Number)) && (!b(paramObject))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    eg.a(bool);
+    this.a = paramObject;
   }
   
   private static boolean a(dy paramdy)
   {
-    if ((paramdy.a instanceof Number))
+    paramdy = paramdy.a;
+    if ((paramdy instanceof Number))
     {
-      paramdy = (Number)paramdy.a;
+      paramdy = (Number)paramdy;
       return ((paramdy instanceof BigInteger)) || ((paramdy instanceof Long)) || ((paramdy instanceof Integer)) || ((paramdy instanceof Short)) || ((paramdy instanceof Byte));
     }
     return false;
@@ -58,37 +60,35 @@ public final class dy
     Class[] arrayOfClass = b;
     int j = arrayOfClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label45;
-      }
       if (arrayOfClass[i].isAssignableFrom(paramObject)) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label45:
     return false;
   }
   
   public final Number b()
   {
-    if ((this.a instanceof String)) {
-      return new el((String)this.a);
+    Object localObject = this.a;
+    if ((localObject instanceof String)) {
+      return new el((String)localObject);
     }
-    return (Number)this.a;
+    return (Number)localObject;
   }
   
   public final String c()
   {
-    if ((this.a instanceof Number)) {
+    Object localObject = this.a;
+    if ((localObject instanceof Number)) {
       return b().toString();
     }
-    if ((this.a instanceof Boolean)) {
-      return ((Boolean)this.a).toString();
+    if ((localObject instanceof Boolean)) {
+      return ((Boolean)localObject).toString();
     }
-    return (String)this.a;
+    return (String)localObject;
   }
   
   public final double d()
@@ -109,38 +109,33 @@ public final class dy
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    double d1;
-    double d2;
-    do
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          return true;
-          if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-            return false;
-          }
-          paramObject = (dy)paramObject;
-          if (this.a != null) {
-            break;
-          }
-        } while (paramObject.a == null);
+      if (getClass() != paramObject.getClass()) {
         return false;
-        if ((!a(this)) || (!a(paramObject))) {
-          break;
-        }
-      } while (b().longValue() == paramObject.b().longValue());
-      return false;
-      if ((!(this.a instanceof Number)) || (!(paramObject.a instanceof Number))) {
-        break;
       }
-      d1 = b().doubleValue();
-      d2 = paramObject.b().doubleValue();
-    } while ((d1 == d2) || ((Double.isNaN(d1)) && (Double.isNaN(d2))));
+      paramObject = (dy)paramObject;
+      if (this.a == null) {
+        return paramObject.a == null;
+      }
+      if ((a(this)) && (a(paramObject))) {
+        return b().longValue() == paramObject.b().longValue();
+      }
+      if (((this.a instanceof Number)) && ((paramObject.a instanceof Number)))
+      {
+        double d1 = b().doubleValue();
+        double d2 = paramObject.b().doubleValue();
+        if (d1 != d2) {
+          return (Double.isNaN(d1)) && (Double.isNaN(d2));
+        }
+        return true;
+      }
+      return this.a.equals(paramObject.a);
+    }
     return false;
-    return this.a.equals(paramObject.a);
   }
   
   public final long f()
@@ -161,8 +156,9 @@ public final class dy
   
   public final boolean h()
   {
-    if ((this.a instanceof Boolean)) {
-      return ((Boolean)this.a).booleanValue();
+    Object localObject = this.a;
+    if ((localObject instanceof Boolean)) {
+      return ((Boolean)localObject).booleanValue();
     }
     return Boolean.parseBoolean(c());
   }
@@ -172,18 +168,17 @@ public final class dy
     if (this.a == null) {
       return 31;
     }
-    long l;
-    if (a(this))
+    if (a(this)) {}
+    Object localObject;
+    for (long l = b().longValue();; l = Double.doubleToLongBits(b().doubleValue()))
     {
-      l = b().longValue();
-      return (int)(l ^ l >>> 32);
+      return (int)(l >>> 32 ^ l);
+      localObject = this.a;
+      if (!(localObject instanceof Number)) {
+        break;
+      }
     }
-    if ((this.a instanceof Number))
-    {
-      l = Double.doubleToLongBits(b().doubleValue());
-      return (int)(l ^ l >>> 32);
-    }
-    return this.a.hashCode();
+    return localObject.hashCode();
   }
 }
 

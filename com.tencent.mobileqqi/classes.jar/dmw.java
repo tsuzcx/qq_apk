@@ -1,14 +1,28 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
 
-class dmw
-  implements Runnable
+public class dmw
+  implements TextWatcher
 {
-  dmw(dmu paramdmu) {}
+  public dmw(SubLoginActivity paramSubLoginActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    SubLoginActivity.a(this.a.a).setText("");
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

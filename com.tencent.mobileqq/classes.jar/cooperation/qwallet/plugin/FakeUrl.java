@@ -10,10 +10,10 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bdjz;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,56 +28,13 @@ public class FakeUrl
   public static final String FAKE_TITLE = "title";
   private static final String TAG = "FakeUrl";
   public static final Pattern URL_MATCH_TXT_REGEX = Pattern.compile("<TITLE=\"([^>]+)\",URL=\"([^<]+)\">", 2);
-  public Activity context;
-  public FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
-  protected FakeUrl.FakeListener fl;
+  protected Activity context;
+  protected FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
+  protected FakeUrl.FakeListener fl = null;
   private DialogInterface.OnClickListener lListener = new FakeUrl.1(this);
-  private bdjz mDialog;
+  private QQCustomDialog mDialog = null;
   private boolean mIsCloseAfterClickUrl = true;
   private DialogInterface.OnClickListener rListener = new FakeUrl.2(this);
-  
-  public FakeUrl(Context paramContext)
-  {
-    this.context = ((Activity)paramContext);
-  }
-  
-  public static void gotoH5(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    Object localObject = paramContext;
-    if ((paramContext instanceof BasePluginActivity)) {
-      localObject = ((BasePluginActivity)paramContext).getOutActivity();
-    }
-    paramContext = new Intent((Context)localObject, QQBrowserActivity.class);
-    paramContext.putExtra("url", paramString);
-    paramContext.putExtra("startOpenPageTime", System.currentTimeMillis());
-    paramContext.putExtra("hide_operation_bar", paramBoolean1);
-    paramContext.putExtra("hide_more_button", paramBoolean2);
-    ((Context)localObject).startActivity(paramContext);
-  }
-  
-  public static void gotoMqq(Context paramContext, String paramString)
-  {
-    Object localObject = paramContext;
-    if ((paramContext instanceof BasePluginActivity)) {
-      localObject = ((BasePluginActivity)paramContext).getOutActivity();
-    }
-    paramContext = new Intent((Context)localObject, JumpActivity.class);
-    paramContext.setData(Uri.parse(paramString));
-    ((Context)localObject).startActivity(paramContext);
-  }
-  
-  public static void gotoResultH5(Activity paramActivity, String paramString, boolean paramBoolean, int paramInt)
-  {
-    Activity localActivity = paramActivity;
-    if ((paramActivity instanceof BasePluginActivity)) {
-      localActivity = ((BasePluginActivity)paramActivity).getOutActivity();
-    }
-    paramActivity = new Intent(localActivity, QQBrowserActivity.class);
-    paramActivity.putExtra("url", paramString);
-    paramActivity.putExtra("startOpenPageTime", System.currentTimeMillis());
-    paramActivity.putExtra("hide_operation_bar", paramBoolean);
-    localActivity.startActivityForResult(paramActivity, paramInt);
-  }
   
   private Uri parseUrl(String paramString)
   {
@@ -93,56 +50,96 @@ public class FakeUrl
     return paramString;
   }
   
-  public bdjz getDialog()
+  public QQCustomDialog getDialog()
   {
     return this.mDialog;
   }
   
   public CharSequence getSpanStr(String paramString)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramString;
-      try
+    }
+    try
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("");
+      Matcher localMatcher = URL_MATCH_TXT_REGEX.matcher(paramString);
+      int m = 0;
+      int j = 0;
+      int k;
+      for (int i = 0; localMatcher.find(); i = k)
       {
-        SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("");
-        Matcher localMatcher = URL_MATCH_TXT_REGEX.matcher(paramString);
-        int j = 0;
-        int k = 0;
-        while (localMatcher.find())
+        m = localMatcher.start(0);
+        j = localMatcher.end(0);
+        String str1 = paramString.substring(localMatcher.start(1), localMatcher.end(1));
+        String str2 = paramString.substring(localMatcher.start(2), localMatcher.end(2));
+        k = i;
+        if (i != m)
         {
-          int m = localMatcher.start(0);
-          k = localMatcher.end(0);
-          String str1 = paramString.substring(localMatcher.start(1), localMatcher.end(1));
-          String str2 = paramString.substring(localMatcher.start(2), localMatcher.end(2));
-          j = i;
-          if (i != m)
-          {
-            localSpannableStringBuilder.append(paramString.substring(i, m));
-            j = k;
-          }
-          SpannableString localSpannableString = new SpannableString(str1);
-          localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
-          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165735)), 0, str1.length(), 33);
-          localSpannableStringBuilder.append(localSpannableString);
-          m = 1;
-          i = j;
-          j = m;
+          localSpannableStringBuilder.append(paramString.substring(i, m));
+          k = j;
         }
-        if (j != 0)
-        {
-          localSpannableStringBuilder.append(paramString.substring(k));
-          return localSpannableStringBuilder;
-        }
+        SpannableString localSpannableString = new SpannableString(str1);
+        localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
+        localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131166411)), 0, str1.length(), 33);
+        localSpannableStringBuilder.append(localSpannableString);
+        m = 1;
       }
-      catch (Throwable paramString)
+      if (m != 0)
       {
-        paramString.printStackTrace();
+        localSpannableStringBuilder.append(paramString.substring(j));
+        return localSpannableStringBuilder;
       }
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
+  }
+  
+  public void gotoH5(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject = paramContext;
+    if ((paramContext instanceof BasePluginActivity)) {
+      localObject = ((BasePluginActivity)paramContext).getOutActivity();
+    }
+    paramContext = new Intent();
+    paramContext.putExtra("url", paramString);
+    paramContext.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramContext.putExtra("hide_operation_bar", paramBoolean1);
+    paramContext.putExtra("hide_more_button", paramBoolean2);
+    RouteUtils.a((Context)localObject, paramContext, "/base/browser");
+  }
+  
+  public void gotoMqq(Context paramContext, String paramString)
+  {
+    Object localObject = paramContext;
+    if ((paramContext instanceof BasePluginActivity)) {
+      localObject = ((BasePluginActivity)paramContext).getOutActivity();
+    }
+    paramContext = new Intent((Context)localObject, JumpActivity.class);
+    paramContext.setData(Uri.parse(paramString));
+    ((Context)localObject).startActivity(paramContext);
+  }
+  
+  public void gotoResultH5(Activity paramActivity, String paramString, boolean paramBoolean, int paramInt)
+  {
+    Activity localActivity = paramActivity;
+    if ((paramActivity instanceof BasePluginActivity)) {
+      localActivity = ((BasePluginActivity)paramActivity).getOutActivity();
+    }
+    paramActivity = new Intent();
+    paramActivity.putExtra("url", paramString);
+    paramActivity.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramActivity.putExtra("hide_operation_bar", paramBoolean);
+    RouteUtils.a(localActivity, paramActivity, "/base/browser", paramInt);
+  }
+  
+  public void init(Context paramContext)
+  {
+    this.context = ((Activity)paramContext);
   }
   
   public boolean onFakePros(String paramString1, String paramString2, FakeUrl.FakeListener paramFakeListener)
@@ -162,69 +159,77 @@ public class FakeUrl
   public boolean onFakePros(String paramString, JSONObject paramJSONObject, FakeUrl.FakeListener paramFakeListener)
   {
     this.fl = paramFakeListener;
-    this.fakeInfo.reqUrl = paramString;
-    this.fakeInfo.data = paramJSONObject;
-    this.fakeInfo.retcode = paramJSONObject.optInt("retcode");
+    paramFakeListener = this.fakeInfo;
+    paramFakeListener.reqUrl = paramString;
+    paramFakeListener.data = paramJSONObject;
+    paramFakeListener.retcode = paramJSONObject.optInt("retcode");
     this.fakeInfo.retmsg = paramJSONObject.optString("retmsg");
     paramString = this.fakeInfo;
-    paramFakeListener = this.fakeInfo;
-    String str = paramJSONObject.optString("returl");
-    paramFakeListener.retUrl = str;
-    paramString.uri = parseUrl(str);
-    if (this.fakeInfo.uri != null) {
-      this.fakeInfo.host = this.fakeInfo.uri.getHost();
+    paramFakeListener = paramJSONObject.optString("returl");
+    paramString.retUrl = paramFakeListener;
+    paramString.uri = parseUrl(paramFakeListener);
+    if (this.fakeInfo.uri != null)
+    {
+      paramString = this.fakeInfo;
+      paramString.host = paramString.uri.getHost();
     }
     QLog.i("FakeUrl", 2, "show fake url dialog...");
     paramFakeListener = paramJSONObject.optString("lbutton");
-    if (TextUtils.isEmpty(paramFakeListener)) {}
-    for (paramString = null;; paramString = this.lListener)
+    if (TextUtils.isEmpty(paramFakeListener)) {
+      paramString = null;
+    } else {
+      paramString = this.lListener;
+    }
+    this.mDialog = new QQCustomDialog(this.context, 2131953338);
+    this.mDialog.setContentView(2131624611);
+    this.mDialog.setTitle(paramJSONObject.optString("title", null));
+    this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
+    this.mDialog.setNegativeButton(paramFakeListener, paramString);
+    this.mDialog.setPositiveButton(paramJSONObject.optString("rbutton"), this.rListener);
+    this.mDialog.setCanceledOnTouchOutside(true);
+    this.mDialog.setCancelable(false);
+    this.mDialog.setCanceledOnTouchOutside(false);
+    try
     {
-      this.mDialog = new bdjz(this.context, 2131755801);
-      this.mDialog.setContentView(2131558942);
-      this.mDialog.setTitle(paramJSONObject.optString("title", null));
-      this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
-      this.mDialog.setNegativeButton(paramFakeListener, paramString);
-      this.mDialog.setPositiveButton(paramJSONObject.optString("rbutton"), this.rListener);
-      this.mDialog.setCanceledOnTouchOutside(true);
-      this.mDialog.setCancelable(false);
-      this.mDialog.setCanceledOnTouchOutside(false);
-      try
-      {
-        this.mDialog.show();
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+      this.mDialog.show();
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return true;
   }
   
   protected boolean parseFakeUrl(String paramString)
   {
-    QLog.i("FakeUrl", 2, "parseFakeUrl url = " + paramString);
-    Object localObject = Uri.parse(paramString);
-    if (localObject == null) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseFakeUrl url = ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("FakeUrl", 2, ((StringBuilder)localObject).toString());
+    localObject = Uri.parse(paramString);
+    if (localObject == null) {
       return false;
-      localObject = ((Uri)localObject).getScheme();
-      if (localObject == null)
-      {
-        QLog.i("FakeUrl", 2, "no scheme...");
-        return false;
-      }
-      if (((String)localObject).startsWith("http"))
-      {
-        QLog.i("FakeUrl", 2, "goto h5...");
-        gotoH5(this.context, paramString, true, true);
-        return true;
-      }
-    } while (((String)localObject).compareTo("mqqapi") != 0);
-    QLog.i("FakeUrl", 2, "goto mqq...");
-    gotoMqq(this.context, paramString);
-    return true;
+    }
+    localObject = ((Uri)localObject).getScheme();
+    if (localObject == null)
+    {
+      QLog.i("FakeUrl", 2, "no scheme...");
+      return false;
+    }
+    if (((String)localObject).startsWith("http"))
+    {
+      QLog.i("FakeUrl", 2, "goto h5...");
+      gotoH5(this.context, paramString, true, true);
+      return true;
+    }
+    if (((String)localObject).compareTo("mqqapi") == 0)
+    {
+      QLog.i("FakeUrl", 2, "goto mqq...");
+      gotoMqq(this.context, paramString);
+      return true;
+    }
+    return false;
   }
   
   public void setIsCloseAfterClickUrl(boolean paramBoolean)
@@ -234,7 +239,7 @@ public class FakeUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.FakeUrl
  * JD-Core Version:    0.7.0.1
  */

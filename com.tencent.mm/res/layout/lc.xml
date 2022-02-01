@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMWebView android:id="@id/amq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+<androidx.browser.browseractions.BrowserActionsFallbackMenuView android:layout_gravity="center" android:orientation="vertical" android:id="@id/ak9" android:background="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="280.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/h9" android:ellipsize="end" android:gravity="center" android:id="@id/ak5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:maxLines="1" android:paddingStart="20.0dip" android:paddingEnd="20.0dip" />
+    <View android:background="@color/h7" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <ListView android:id="@id/ak8" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:dividerHeight="0.0dip" />
+</androidx.browser.browseractions.BrowserActionsFallbackMenuView>

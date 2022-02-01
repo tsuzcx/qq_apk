@@ -13,33 +13,27 @@ class AVReportCenter$2
   
   public void run()
   {
-    AVReportCenter localAVReportCenter;
-    File localFile;
-    Boolean localBoolean;
     if (AVReportCenter.access$200(this.this$0) == null)
     {
-      localAVReportCenter = this.this$0;
-      localFile = new File(AVReportCenter.access$000(this.this$0));
-      localBoolean = AVReportCenter.access$300(this.this$0);
-      if (!AVReportCenter.access$400(this.this$0)) {
-        break label111;
+      AVReportCenter localAVReportCenter = this.this$0;
+      File localFile = new File(AVReportCenter.access$000(localAVReportCenter));
+      Boolean localBoolean = AVReportCenter.access$300(this.this$0);
+      if (AVReportCenter.access$400(this.this$0)) {
+        localObject = AVReportCenter.access$500(this.this$0).getLooper();
+      } else {
+        localObject = null;
       }
-    }
-    label111:
-    for (Object localObject = AVReportCenter.access$500(this.this$0).getLooper();; localObject = null)
-    {
       AVReportCenter.access$202(localAVReportCenter, new Reporter(localFile, localBoolean, (Looper)localObject));
-      localObject = new HashMap();
-      AVReportCenter.access$600(this.this$0, (Map)localObject);
-      ((Map)localObject).putAll(this.val$data);
-      AVReportCenter.access$700(this.this$0, (Map)localObject);
-      return;
     }
+    Object localObject = new HashMap();
+    AVReportCenter.access$600(this.this$0, (Map)localObject);
+    ((Map)localObject).putAll(this.val$data);
+    AVReportCenter.access$700(this.this$0, (Map)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.reporter.AVReportCenter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,1634 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card-wrp"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "flex-direction": "column",
+                "background-color": "white",
+                "height": "228rpx"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "\n\n    \n\n    \n\n    \n  ",
+                    "attributes": {
+                        "viewID": "2",
+                        "class": "account-wrp",
+                        "pts:on-exposure": "{{$RIJArticle.rowKey}}",
+                        "pts:on-tap": "{{$RIJArticle.rowKey}}",
+                        "data-event-type": "{{'allInOneJump'}}",
+                        "data-jump-url": "{{str_card_info.str_jump_url}}",
+                        "data-feeds_type": "1060"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "position": "relative",
+                        "flex-direction": "column",
+                        "align-items": "flex-start",
+                        "width": "702rpx",
+                        "height": "190rpx",
+                        "margin": "10rpx auto auto auto",
+                        "margin-top": "10rpx",
+                        "margin-right": "auto",
+                        "margin-bottom": "auto",
+                        "margin-left": "auto",
+                        "background-size": "cover"
+                    },
+                    "children": [
+                        {
+                            "tag": "img",
+                            "content": "",
+                            "attributes": {
+                                "viewID": "3",
+                                "id": "bg-image",
+                                "src": "https://pub.idqqimg.com/pc/misc/files/20200904/e0d7f0e948924c8dad4c10c427337fc3.png",
+                                "mode": "scaleToFill"
+                            },
+                            "styles": {
+                                "position": "absolute",
+                                "width": "100%",
+                                "height": "100%",
+                                "border-radius": "8rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "4",
+                                "class": "title-wrp"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "position": "relative",
+                                "flex-direction": "row",
+                                "height": "30%",
+                                "width": "100%",
+                                "justify-content": "space-between"
+                            },
+                            "children": [
+                                {
+                                    "tag": "img",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "6",
+                                        "id": "title-image",
+                                        "src": "https://pub.idqqimg.com/pc/misc/files/20200904/6013882897474d018c2f1883f471b99a.png"
+                                    },
+                                    "styles": {
+                                        "position": "absolute",
+                                        "height": "34rpx",
+                                        "width": "178rpx",
+                                        "left": "24rpx",
+                                        "bottom": "0px"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "text",
+                                    "content": "今日0点至此刻新增数据",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "id": "title-text"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "position": "absolute",
+                                        "right": "24rpx",
+                                        "bottom": "0px",
+                                        "font-size": "20rpx",
+                                        "line-height": "32rpx",
+                                        "color": "white",
+                                        "font-family": "PingFangSC-Regular"
+                                    },
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "5",
+                                "class": "data-wrp"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "position": "relative",
+                                "flex-direction": "row",
+                                "height": "70%",
+                                "width": "100%",
+                                "justify-content": "space-between"
+                            },
+                            "children": [
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n        \n        \n        \n      ",
+                                    "attributes": {
+                                        "viewID": "8",
+                                        "class": "detail-data"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "width": "25%",
+                                        "height": "100%",
+                                        "flex-direction": "column"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "15",
+                                                "class": "detail-number",
+                                                "wx:if": "{{str_card_info.uint64_pv<10000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "31",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{str_card_info.uint64_pv}}",
+                                                    "attributes": {
+                                                        "viewID": "32",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "33",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "16",
+                                                "class": "detail-number",
+                                                "wx:elif": "{{str_card_info.uint64_pv<100000000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "34",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.uint64_pv-str_card_info.uint64_pv%1000)/10000}}",
+                                                    "attributes": {
+                                                        "viewID": "35",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "万",
+                                                    "attributes": {
+                                                        "viewID": "36",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "17",
+                                                "class": "detail-number",
+                                                "wx:else": ""
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "37",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.uint64_pv-str_card_info.uint64_pv%10000000)/100000000}}",
+                                                    "attributes": {
+                                                        "viewID": "38",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "亿",
+                                                    "attributes": {
+                                                        "viewID": "39",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n        ",
+                                            "attributes": {
+                                                "viewID": "18",
+                                                "class": "detail-description"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "padding-bottom": "28rpx",
+                                                "text-align": "center",
+                                                "height": "43%"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "浏览数",
+                                                    "attributes": {
+                                                        "viewID": "40",
+                                                        "class": "description-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "auto",
+                                                        "margin-left": "auto",
+                                                        "line-height": "24rpx",
+                                                        "font-size": "24rpx",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "text-align": "center"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "9",
+                                        "class": "split-line"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "margin": "auto",
+                                        "margin-top": "auto",
+                                        "margin-right": "auto",
+                                        "margin-bottom": "auto",
+                                        "margin-left": "auto",
+                                        "height": "18rpx",
+                                        "width": "2rpx",
+                                        "background-color": "rgba(255, 255, 255, 0.37)"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n        \n        \n        \n      ",
+                                    "attributes": {
+                                        "viewID": "10",
+                                        "class": "detail-data"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "width": "25%",
+                                        "height": "100%",
+                                        "flex-direction": "column"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "19",
+                                                "class": "detail-number",
+                                                "wx:if": "{{str_card_info.uint64_like<10000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "41",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{str_card_info.uint64_like}}",
+                                                    "attributes": {
+                                                        "viewID": "42",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "43",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "20",
+                                                "class": "detail-number",
+                                                "wx:elif": "{{str_card_info.uint64_like<100000000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "44",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.uint64_like-str_card_info.uint64_like%1000)/10000}}",
+                                                    "attributes": {
+                                                        "viewID": "45",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "万",
+                                                    "attributes": {
+                                                        "viewID": "46",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "21",
+                                                "class": "detail-number",
+                                                "wx:else": ""
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "47",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.uint64_like-str_card_info.uint64_like%10000000)/100000000}}",
+                                                    "attributes": {
+                                                        "viewID": "48",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "亿",
+                                                    "attributes": {
+                                                        "viewID": "49",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n        ",
+                                            "attributes": {
+                                                "viewID": "22",
+                                                "class": "detail-description"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "padding-bottom": "28rpx",
+                                                "text-align": "center",
+                                                "height": "43%"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "获赞数",
+                                                    "attributes": {
+                                                        "viewID": "50",
+                                                        "class": "description-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "auto",
+                                                        "margin-left": "auto",
+                                                        "line-height": "24rpx",
+                                                        "font-size": "24rpx",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "text-align": "center"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "11",
+                                        "class": "split-line"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "margin": "auto",
+                                        "margin-top": "auto",
+                                        "margin-right": "auto",
+                                        "margin-bottom": "auto",
+                                        "margin-left": "auto",
+                                        "height": "18rpx",
+                                        "width": "2rpx",
+                                        "background-color": "rgba(255, 255, 255, 0.37)"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n        \n        \n        \n      ",
+                                    "attributes": {
+                                        "viewID": "12",
+                                        "class": "detail-data"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "width": "25%",
+                                        "height": "100%",
+                                        "flex-direction": "column"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "23",
+                                                "class": "detail-number",
+                                                "wx:if": "{{str_card_info.uint64_comment<10000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "51",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{str_card_info.uint64_comment}}",
+                                                    "attributes": {
+                                                        "viewID": "52",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "53",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "24",
+                                                "class": "detail-number",
+                                                "wx:elif": "{{str_card_info.uint64_comment<100000000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "54",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.uint64_comment-str_card_info.uint64_comment%1000)/10000}}",
+                                                    "attributes": {
+                                                        "viewID": "55",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "万",
+                                                    "attributes": {
+                                                        "viewID": "56",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "25",
+                                                "class": "detail-number",
+                                                "wx:else": ""
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "57",
+                                                        "class": "sign"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.uint64_comment-str_card_info.uint64_comment%10000000)/100000000}}",
+                                                    "attributes": {
+                                                        "viewID": "58",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "亿",
+                                                    "attributes": {
+                                                        "viewID": "59",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n        ",
+                                            "attributes": {
+                                                "viewID": "26",
+                                                "class": "detail-description"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "padding-bottom": "28rpx",
+                                                "text-align": "center",
+                                                "height": "43%"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "获评数",
+                                                    "attributes": {
+                                                        "viewID": "60",
+                                                        "class": "description-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "auto",
+                                                        "margin-left": "auto",
+                                                        "line-height": "24rpx",
+                                                        "font-size": "24rpx",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "text-align": "center"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "13",
+                                        "class": "split-line"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "margin": "auto",
+                                        "margin-top": "auto",
+                                        "margin-right": "auto",
+                                        "margin-bottom": "auto",
+                                        "margin-left": "auto",
+                                        "height": "18rpx",
+                                        "width": "2rpx",
+                                        "background-color": "rgba(255, 255, 255, 0.37)"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n        \n        \n        \n      ",
+                                    "attributes": {
+                                        "viewID": "14",
+                                        "class": "detail-data"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "width": "25%",
+                                        "height": "100%",
+                                        "flex-direction": "column"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "27",
+                                                "class": "detail-number",
+                                                "wx:if": "{{str_card_info.int64_follower<10000&&str_card_info.int64_follower>-10000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "61",
+                                                        "class": "sign",
+                                                        "wx:if": "{{str_card_info.int64_follower<=0}}"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "+",
+                                                    "attributes": {
+                                                        "viewID": "62",
+                                                        "class": "sign",
+                                                        "wx:else": ""
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{str_card_info.int64_follower}}",
+                                                    "attributes": {
+                                                        "viewID": "63",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "64",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "28",
+                                                "class": "detail-number",
+                                                "wx:elif": "{{str_card_info.int64_follower<100000000&&str_card_info.int64_follower>-100000000}}"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "65",
+                                                        "class": "sign",
+                                                        "wx:if": "{{str_card_info.int64_follower<0}}"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "+",
+                                                    "attributes": {
+                                                        "viewID": "66",
+                                                        "class": "sign",
+                                                        "wx:else": ""
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.int64_follower-str_card_info.int64_follower%1000)/10000}}",
+                                                    "attributes": {
+                                                        "viewID": "67",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "万",
+                                                    "attributes": {
+                                                        "viewID": "68",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n          \n          \n          \n        ",
+                                            "attributes": {
+                                                "viewID": "29",
+                                                "class": "detail-number",
+                                                "wx:else": ""
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "position": "relative",
+                                                "height": "57%",
+                                                "flex-direction": "row",
+                                                "flex-wrap": "nowrap"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "",
+                                                    "attributes": {
+                                                        "viewID": "69",
+                                                        "class": "sign",
+                                                        "wx:if": "{{str_card_info.int64_follower<0}}"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "+",
+                                                    "attributes": {
+                                                        "viewID": "70",
+                                                        "class": "sign",
+                                                        "wx:else": ""
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px auto",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "auto"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "{{(str_card_info.int64_follower-str_card_info.int64_follower%10000000)/100000000}}",
+                                                    "attributes": {
+                                                        "viewID": "71",
+                                                        "class": "number-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto 1rpx 0px 1rpx",
+                                                        "position": "relative",
+                                                        "line-height": "48rpx",
+                                                        "font-size": "36rpx",
+                                                        "font-weight": "bold",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "1rpx",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx"
+                                                    },
+                                                    "children": []
+                                                },
+                                                {
+                                                    "tag": "text",
+                                                    "content": "亿",
+                                                    "attributes": {
+                                                        "viewID": "72",
+                                                        "class": "unit"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto auto 0px 1rpx",
+                                                        "font-size": "24rpx",
+                                                        "line-height": "48rpx",
+                                                        "position": "relative",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "0px",
+                                                        "margin-left": "1rpx",
+                                                        "color": "white"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "tag": "view",
+                                            "content": "\n          \n        ",
+                                            "attributes": {
+                                                "viewID": "30",
+                                                "class": "detail-description"
+                                            },
+                                            "styles": {
+                                                "display": "flex",
+                                                "box-sizing": "border-box",
+                                                "padding-bottom": "28rpx",
+                                                "text-align": "center",
+                                                "height": "43%"
+                                            },
+                                            "children": [
+                                                {
+                                                    "tag": "text",
+                                                    "content": "涨粉数",
+                                                    "attributes": {
+                                                        "viewID": "73",
+                                                        "class": "description-text"
+                                                    },
+                                                    "styles": {
+                                                        "box-sizing": "border-box",
+                                                        "display": "-webkit-box",
+                                                        "overflow": "hidden",
+                                                        "margin": "auto",
+                                                        "margin-top": "auto",
+                                                        "margin-right": "auto",
+                                                        "margin-bottom": "auto",
+                                                        "margin-left": "auto",
+                                                        "line-height": "24rpx",
+                                                        "font-size": "24rpx",
+                                                        "font-family": "PingFangSC-Regular",
+                                                        "color": "white",
+                                                        "text-align": "center"
+                                                    },
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

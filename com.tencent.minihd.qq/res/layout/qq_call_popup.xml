@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:paddingLeft="0.0dip" android:paddingTop="@dimen/dp_8" android:paddingRight="0.0dip" android:paddingBottom="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/voice_call_btn" android:background="@drawable/qq_call_item_bg" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_8" android:paddingRight="@dimen/dp_16" android:paddingBottom="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qq_call_voice" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/video_call_btn" android:background="@drawable/qq_call_item_bg" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_8" android:paddingRight="@dimen/dp_16" android:paddingBottom="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qq_call_video" />
+</LinearLayout>

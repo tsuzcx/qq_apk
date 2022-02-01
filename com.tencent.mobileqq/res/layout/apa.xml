@@ -6,7 +6,7 @@
         <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="1.0dip" />
         <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="1.0dip" />
         <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="1.0dip" />
-        <TextView android:textColor="@color/bp" android:textColorHighlight="@color/bp" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/jj4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_marginRight="8.0dip" android:text="@string/qe6" />
+        <TextView android:textColor="@color/black" android:textColorHighlight="@color/black" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/jj4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_marginRight="8.0dip" android:text="@string/qe6" />
     </LinearLayout>
     <TextView android:id="@id/jgl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="DebugText" />
 </FrameLayout>

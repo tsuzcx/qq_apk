@@ -9,8 +9,8 @@ public final class SvcReqBindUin
   extends JceStruct
 {
   static ArrayList<BindUin> cache_vecBindUin;
-  public byte cCmd;
-  public ArrayList<BindUin> vecBindUin;
+  public byte cCmd = 0;
+  public ArrayList<BindUin> vecBindUin = null;
   
   public SvcReqBindUin() {}
   
@@ -40,7 +40,7 @@ public final class SvcReqBindUin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcReqBindUin
  * JD-Core Version:    0.7.0.1
  */

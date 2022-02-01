@@ -2,10 +2,10 @@ package com.google.android.gms;
 
 public final class e
 {
-  public static final int[] Gl = { 2130772010, 2130772011, 2130772012 };
-  public static final int[] Gm = { 2130772018, 2130772019, 2130772020 };
-  public static final int Gn = 0;
-  public static final int Go = 1;
+  public static final int[] Ia = { 2130772019, 2130772020, 2130772021 };
+  public static final int[] Ib = { 2130772027, 2130772028, 2130772029 };
+  public static final int Ic = 0;
+  public static final int Id = 1;
 }
 
 

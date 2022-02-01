@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SetUserInfoResp
   extends JceStruct
 {
-  public long dwToUin;
-  public byte result;
+  public long dwToUin = 0L;
+  public byte result = 0;
   
   public SetUserInfoResp() {}
   
@@ -32,7 +32,7 @@ public final class SetUserInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SetUserInfoResp
  * JD-Core Version:    0.7.0.1
  */

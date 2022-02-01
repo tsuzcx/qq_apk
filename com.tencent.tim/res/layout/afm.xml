@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/knd" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/dwa" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="30.0dip">
+        <com.tenpay.sdk.view.ClearableEditText android:textColorHint="#ffbbbbbb" android:id="@id/knc" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/e9y" android:maxLength="6" android:layout_weight="1.0" android:imeOptions="actionDone" android:imeActionLabel="@string/e5o" style="@style/t2" />
+        <Button android:id="@id/i8e" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/ede" style="@style/sv" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/fmv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edo" />
+        <ImageView android:id="@id/bcd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/dw9" android:translationY="2.0dip" />
+        <Button android:textSize="16.0sp" android:textColor="@color/u2" android:gravity="center_vertical" android:id="@id/change_phone_num_btn" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:text="@string/e3u" style="@style/tb" />
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/kn7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

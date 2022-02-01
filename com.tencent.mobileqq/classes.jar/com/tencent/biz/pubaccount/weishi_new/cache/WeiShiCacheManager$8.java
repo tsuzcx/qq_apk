@@ -1,34 +1,45 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import UserGrowth.stSimpleGetFeedListRsp;
-import cooperation.qzone.LocalMultiProcConfig;
+import com.tencent.biz.pubaccount.weishi_new.util.WSSharePreferencesUtil;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import java.util.ArrayList;
-import java.util.List;
-import tcq;
-import tlo;
-import tlv;
 
-public class WeiShiCacheManager$8
+class WeiShiCacheManager$8
   implements Runnable
 {
-  public WeiShiCacheManager$8(tcq paramtcq, stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, ArrayList paramArrayList, long paramLong, List paramList) {}
+  WeiShiCacheManager$8(WeiShiCacheManager paramWeiShiCacheManager, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
-    boolean bool = tcq.a(this.this$0, this.jdField_a_of_type_UserGrowthStSimpleGetFeedListRsp, tcq.c(this.this$0), this.jdField_a_of_type_JavaUtilArrayList.size());
-    if (bool)
+    ArrayList localArrayList = new ArrayList();
+    if (this.a.size() >= WeiShiCacheManager.e(this.this$0))
     {
-      LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_msg_valid_timestamp", System.currentTimeMillis() + this.jdField_a_of_type_Long);
-      LocalMultiProcConfig.putInt("weishi_usergrowth", "key_red_msg_valid_count", this.jdField_a_of_type_JavaUtilList.size());
-      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", tlv.c());
-      tlv.a(this.jdField_a_of_type_JavaUtilArrayList, false);
+      int i = this.a.size();
+      if (this.a.size() - this.b > WeiShiCacheManager.e(this.this$0)) {
+        i = this.a.size() - this.b;
+      } else if (this.a.size() - this.b > 0) {
+        i = WeiShiCacheManager.e(this.this$0);
+      }
+      int j = i - WeiShiCacheManager.e(this.this$0);
+      while (j < i)
+      {
+        localArrayList.add(this.a.get(j));
+        j += 1;
+      }
     }
-    tlo.d("WeiShiCacheManager", "cacheRedDotData isSuccess: " + bool);
+    localArrayList.addAll(this.a);
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = new stSimpleGetFeedListRsp();
+    localstSimpleGetFeedListRsp.feeds = localArrayList;
+    WeiShiCacheManager localWeiShiCacheManager = this.this$0;
+    if (WeiShiCacheManager.a(localWeiShiCacheManager, localstSimpleGetFeedListRsp, WeiShiCacheManager.d(localWeiShiCacheManager), localArrayList.size())) {
+      WSSharePreferencesUtil.a("key_ws_cache_v", WeishiUtils.l());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.8
  * JD-Core Version:    0.7.0.1
  */

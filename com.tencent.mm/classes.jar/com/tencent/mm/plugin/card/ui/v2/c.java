@@ -1,412 +1,401 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
-import android.support.v7.widget.RecyclerView.a;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bkj;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.card.a.a;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.f;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.widget.CardTagTextView;
+import com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView;
+import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
+import com.tencent.mm.protocal.protobuf.dnd;
+import com.tencent.mm.protocal.protobuf.eal;
+import com.tencent.mm.protocal.protobuf.eam;
+import com.tencent.mm.protocal.protobuf.vs;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.aw;
 import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketVH;", "isInvalid", "", "(Z)V", "()Z", "setInvalid", "jumpList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "Lkotlin/collections/ArrayList;", "getJumpList", "()Ljava/util/ArrayList;", "setJumpList", "(Ljava/util/ArrayList;)V", "licenseList", "getLicenseList", "setLicenseList", "licenseTitle", "getLicenseTitle", "()Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "setLicenseTitle", "(Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;)V", "ticketList", "getTicketList", "setTicketList", "ticketTitle", "getTicketTitle", "setTicketTitle", "getItemCount", "", "getItemViewType", "position", "getModelByPos", "getPosByCardId", "cardId", "", "getPosInLicenseListByCardId", "getPosInTicketListByCardId", "getRelativePosByType", "cardType", "onBindViewHolder", "", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "removeModelByCardId", "title", "setModelList", "Companion", "plugin-card_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketVH;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "viewType", "", "(Landroid/view/View;I)V", "bgIv", "Lcom/tencent/mm/plugin/card/widget/MemberCardTopCropImageView;", "getBgIv", "()Lcom/tencent/mm/plugin/card/widget/MemberCardTopCropImageView;", "setBgIv", "(Lcom/tencent/mm/plugin/card/widget/MemberCardTopCropImageView;)V", "descTv", "Landroid/widget/TextView;", "getDescTv", "()Landroid/widget/TextView;", "setDescTv", "(Landroid/widget/TextView;)V", "logoIv", "Lcom/tencent/mm/pluginsdk/ui/applet/CdnImageView;", "getLogoIv", "()Lcom/tencent/mm/pluginsdk/ui/applet/CdnImageView;", "setLogoIv", "(Lcom/tencent/mm/pluginsdk/ui/applet/CdnImageView;)V", "mViewHeight", "mViewWidth", "rightLabelLayout", "Landroid/widget/LinearLayout;", "getRightLabelLayout", "()Landroid/widget/LinearLayout;", "setRightLabelLayout", "(Landroid/widget/LinearLayout;)V", "shadowIv", "Landroid/widget/ImageView;", "getShadowIv", "()Landroid/widget/ImageView;", "setShadowIv", "(Landroid/widget/ImageView;)V", "titleTv", "getTitleTv", "setTitleTv", "setCardBg", "", "imageView", "url", "", "radius", "", "setModel", "model", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "updateCardLabelLayout", "couponLabelList", "", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponLabel;", "labelLayout", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends RecyclerView.a<f>
+  extends RecyclerView.v
 {
-  public static final c.a kAz;
-  private ArrayList<d> kAt;
-  private ArrayList<d> kAu;
-  private ArrayList<d> kAv;
-  private d kAw;
-  private d kAx;
-  private boolean kAy;
+  public TextView descTv;
+  private int mViewHeight;
+  private int mViewWidth;
+  public TextView titleTv;
+  public CdnImageView wGP;
+  public MemberCardTopCropImageView wGQ;
+  public LinearLayout wGR;
+  public ImageView wGS;
   
-  static
+  public c(View paramView, int paramInt)
   {
-    AppMethodBeat.i(89297);
-    kAz = new c.a((byte)0);
-    AppMethodBeat.o(89297);
-  }
-  
-  public c(boolean paramBoolean)
-  {
-    this.kAy = paramBoolean;
-  }
-  
-  public final void In(String paramString)
-  {
-    AppMethodBeat.i(89293);
-    j.q(paramString, "cardId");
-    if (this.kAw != null) {}
-    for (int i = 1;; i = 0)
-    {
-      Object localObject = this.kAv;
-      int j;
-      Iterator localIterator;
-      d locald;
-      if (localObject != null)
-      {
-        i += ((ArrayList)localObject).size();
-        localArrayList = this.kAt;
-        j = i;
-        if (localArrayList != null)
-        {
-          localIterator = ((Iterable)localArrayList).iterator();
-          j = 0;
-        }
-      }
-      else
-      {
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            break label215;
-          }
-          locald = (d)localIterator.next();
-          localObject = locald.kAB;
-          if (localObject != null) {}
-          for (localObject = ((bkj)localObject).wmm;; localObject = null)
-          {
-            if (!m.I((String)localObject, paramString, false)) {
-              break label208;
-            }
-            localArrayList.remove(locald);
-            ab.d("MicroMsg.CardTicketAdapter", "remove ticket: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-            if (localArrayList.isEmpty()) {
-              if (this.kAv != null)
-              {
-                paramString = this.kAv;
-                if (paramString == null) {
-                  j.ebi();
-                }
-                if (!paramString.isEmpty()) {}
-              }
-              else
-              {
-                this.kAw = null;
-              }
-            }
-            notifyDataSetChanged();
-            AppMethodBeat.o(89293);
-            return;
-            break;
-          }
-          label208:
-          j += 1;
-        }
-        label215:
-        j = i + localArrayList.size();
-      }
-      i = j;
-      if (this.kAx != null) {
-        i = j + 1;
-      }
-      ArrayList localArrayList = this.kAu;
-      if (localArrayList != null)
-      {
-        localIterator = ((Iterable)localArrayList).iterator();
-        j = 0;
-        while (localIterator.hasNext())
-        {
-          locald = (d)localIterator.next();
-          localObject = locald.kAB;
-          if (localObject != null) {}
-          for (localObject = ((bkj)localObject).wmm; m.I((String)localObject, paramString, false); localObject = null)
-          {
-            localArrayList.remove(locald);
-            ab.d("MicroMsg.CardTicketAdapter", "remove license: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-            if (localArrayList.isEmpty()) {
-              this.kAx = null;
-            }
-            notifyDataSetChanged();
-            AppMethodBeat.o(89293);
-            return;
-          }
-          j += 1;
-        }
-        AppMethodBeat.o(89293);
-        return;
-      }
-      AppMethodBeat.o(89293);
-      return;
-    }
-  }
-  
-  public final void Io(String paramString)
-  {
-    AppMethodBeat.i(89295);
-    j.q(paramString, "title");
-    if (bo.isNullOrNil(paramString))
-    {
-      this.kAw = null;
-      AppMethodBeat.o(89295);
-      return;
-    }
-    if (this.kAw == null)
-    {
-      this.kAw = new d();
-      locald = this.kAw;
-      if (locald == null) {
-        j.ebi();
-      }
-      locald.type = 0;
-    }
-    d locald = this.kAw;
-    if (locald == null) {
-      j.ebi();
-    }
-    locald.title = paramString;
-    AppMethodBeat.o(89295);
-  }
-  
-  public final void Ip(String paramString)
-  {
-    AppMethodBeat.i(89296);
-    j.q(paramString, "title");
-    if (bo.isNullOrNil(paramString))
-    {
-      this.kAx = null;
-      AppMethodBeat.o(89296);
-      return;
-    }
-    if (this.kAx == null)
-    {
-      this.kAx = new d();
-      locald = this.kAx;
-      if (locald == null) {
-        j.ebi();
-      }
-      locald.type = 0;
-    }
-    d locald = this.kAx;
-    if (locald == null) {
-      j.ebi();
-    }
-    locald.title = paramString;
-    AppMethodBeat.o(89296);
-  }
-  
-  public final void a(ArrayList<d> paramArrayList1, ArrayList<d> paramArrayList2, ArrayList<d> paramArrayList3)
-  {
-    AppMethodBeat.i(89294);
-    this.kAv = paramArrayList1;
-    this.kAt = paramArrayList2;
-    this.kAu = paramArrayList3;
-    notifyDataSetChanged();
-    AppMethodBeat.o(89294);
-  }
-  
-  public final int bP(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(89292);
-    j.q(paramString, "cardId");
-    Object localObject;
-    Iterator localIterator;
+    super(paramView);
+    AppMethodBeat.i(112556);
     switch (paramInt)
     {
-    default: 
-      j.q(paramString, "cardId");
-      localObject = this.kAu;
-      if (localObject != null)
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(112556);
+      return;
+      paramView = paramView.findViewById(a.d.wgT);
+      s.s(paramView, "itemView.findViewById(R.id.card_list_header_text)");
+      setTitleTv((TextView)paramView);
+      AppMethodBeat.o(112556);
+      return;
+      Object localObject = paramView.findViewById(a.d.wjn);
+      s.s(localObject, "itemView.findViewById(R.id.clni_icon_iv)");
+      b((CdnImageView)localObject);
+      localObject = paramView.findViewById(a.d.wjp);
+      s.s(localObject, "itemView.findViewById(R.id.clni_title_tv)");
+      setTitleTv((TextView)localObject);
+      aw.a((Paint)getTitleTv().getPaint(), 0.8F);
+      paramView = paramView.findViewById(a.d.wjm);
+      s.s(paramView, "itemView.findViewById(R.id.clni_desc_tv)");
+      setDescTv((TextView)paramView);
+      dop().setUseSdcardCache(true);
+      AppMethodBeat.o(112556);
+      return;
+      localObject = paramView.findViewById(a.d.wjP);
+      s.s(localObject, "itemView.findViewById(R.id.ctci_logo_iv)");
+      b((CdnImageView)localObject);
+      localObject = paramView.findViewById(a.d.wjR);
+      s.s(localObject, "itemView.findViewById(R.id.ctci_title_tv)");
+      setTitleTv((TextView)localObject);
+      aw.a((Paint)getTitleTv().getPaint(), 0.8F);
+      localObject = paramView.findViewById(a.d.wjO);
+      s.s(localObject, "itemView.findViewById(R.id.ctci_desc_tv)");
+      setDescTv((TextView)localObject);
+      localObject = paramView.findViewById(a.d.wjM);
+      s.s(localObject, "itemView.findViewById(R.id.ctci_bg_iv)");
+      localObject = (MemberCardTopCropImageView)localObject;
+      s.u(localObject, "<set-?>");
+      this.wGQ = ((MemberCardTopCropImageView)localObject);
+      localObject = paramView.findViewById(a.d.wjN);
+      s.s(localObject, "itemView.findViewById(R.id.ctci_bg_shadow_iv)");
+      localObject = (ImageView)localObject;
+      s.u(localObject, "<set-?>");
+      this.wGS = ((ImageView)localObject);
+      paramView = paramView.findViewById(a.d.wjQ);
+      s.s(paramView, "itemView.findViewById(R.….ctci_right_label_layout)");
+      paramView = (LinearLayout)paramView;
+      s.u(paramView, "<set-?>");
+      this.wGR = paramView;
+      dop().setUseSdcardCache(true);
+      AppMethodBeat.o(112556);
+      return;
+      localObject = paramView.findViewById(a.d.wjp);
+      s.s(localObject, "itemView.findViewById(R.id.clni_title_tv)");
+      setTitleTv((TextView)localObject);
+      aw.a((Paint)getTitleTv().getPaint(), 0.8F);
+      paramView = paramView.findViewById(a.d.wjm);
+      s.s(paramView, "itemView.findViewById(R.id.clni_desc_tv)");
+      setDescTv((TextView)paramView);
+    }
+  }
+  
+  private static final void a(c paramc, kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(294206);
+    s.u(paramc, "this$0");
+    s.u(parama, "$func");
+    paramc.mViewHeight = paramc.caK.getHeight();
+    paramc.mViewWidth = paramc.caK.getWidth();
+    parama.invoke();
+    AppMethodBeat.o(294206);
+  }
+  
+  private void b(CdnImageView paramCdnImageView)
+  {
+    AppMethodBeat.i(294159);
+    s.u(paramCdnImageView, "<set-?>");
+    this.wGP = paramCdnImageView;
+    AppMethodBeat.o(294159);
+  }
+  
+  private CdnImageView dop()
+  {
+    AppMethodBeat.i(294151);
+    CdnImageView localCdnImageView = this.wGP;
+    if (localCdnImageView != null)
+    {
+      AppMethodBeat.o(294151);
+      return localCdnImageView;
+    }
+    s.bIx("logoIv");
+    AppMethodBeat.o(294151);
+    return null;
+  }
+  
+  private LinearLayout dor()
+  {
+    AppMethodBeat.i(294198);
+    LinearLayout localLinearLayout = this.wGR;
+    if (localLinearLayout != null)
+    {
+      AppMethodBeat.o(294198);
+      return localLinearLayout;
+    }
+    s.bIx("rightLabelLayout");
+    AppMethodBeat.o(294198);
+    return null;
+  }
+  
+  private TextView getDescTv()
+  {
+    AppMethodBeat.i(294179);
+    TextView localTextView = this.descTv;
+    if (localTextView != null)
+    {
+      AppMethodBeat.o(294179);
+      return localTextView;
+    }
+    s.bIx("descTv");
+    AppMethodBeat.o(294179);
+    return null;
+  }
+  
+  private TextView getTitleTv()
+  {
+    AppMethodBeat.i(294168);
+    TextView localTextView = this.titleTv;
+    if (localTextView != null)
+    {
+      AppMethodBeat.o(294168);
+      return localTextView;
+    }
+    s.bIx("titleTv");
+    AppMethodBeat.o(294168);
+    return null;
+  }
+  
+  private void setDescTv(TextView paramTextView)
+  {
+    AppMethodBeat.i(294189);
+    s.u(paramTextView, "<set-?>");
+    this.descTv = paramTextView;
+    AppMethodBeat.o(294189);
+  }
+  
+  private void setTitleTv(TextView paramTextView)
+  {
+    AppMethodBeat.i(294172);
+    s.u(paramTextView, "<set-?>");
+    this.titleTv = paramTextView;
+    AppMethodBeat.o(294172);
+  }
+  
+  public final void a(final b paramb)
+  {
+    AppMethodBeat.i(294238);
+    s.u(paramb, "model");
+    switch (paramb.type)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(294238);
+      return;
+      getTitleTv().setText((CharSequence)paramb.title);
+      AppMethodBeat.o(294238);
+      return;
+      paramb = paramb.wGD;
+      if (paramb != null)
       {
-        localIterator = ((Iterable)localObject).iterator();
-        paramInt = 0;
-      }
-      break;
-    case 1: 
-      while (localIterator.hasNext())
-      {
-        localObject = ((d)localIterator.next()).kAB;
-        if (localObject != null) {}
-        for (localObject = ((bkj)localObject).wmm; j.e(localObject, paramString); localObject = null)
+        if (!Util.isNullOrNil(paramb.abfK)) {
+          dop().iz(paramb.abfK, a.f.card_default_merchant_icon);
+        }
+        for (;;)
         {
-          AppMethodBeat.o(89292);
-          return paramInt;
-          j.q(paramString, "cardId");
-          localObject = this.kAv;
-          int i;
-          if (localObject != null)
+          getTitleTv().setText((CharSequence)paramb.abfJ);
+          getDescTv().setText((CharSequence)paramb.abfL);
+          AppMethodBeat.o(294238);
+          return;
+          dop().setImageResource(a.f.card_default_merchant_icon);
+        }
+        paramb = paramb.wGE;
+        if (paramb != null)
+        {
+          Object localObject1 = doq().getTag();
+          Object localObject2 = paramb.YBH;
+          if (((localObject1 instanceof String)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject1.equals(localObject2)))
           {
-            paramInt = ((ArrayList)localObject).size() + 0;
-            localObject = this.kAt;
-            if (localObject != null)
+            AppMethodBeat.o(294238);
+            return;
+          }
+          doq().setTag(localObject2);
+          dop().setRoundCorner(true);
+          if (!Util.isNullOrNil(paramb.abfE)) {
+            dop().iz(paramb.abfE, a.f.card_default_merchant_icon);
+          }
+          for (;;)
+          {
+            getTitleTv().setText((CharSequence)paramb.abfC);
+            getDescTv().setText((CharSequence)paramb.abfD);
+            if ((paramb.abfF != 1) && (paramb.abfF != 3) && (paramb.abfF != 4)) {
+              break;
+            }
+            doq().setVisibility(4);
+            dos().setVisibility(4);
+            this.caK.setBackground(this.caK.getContext().getResources().getDrawable(a.c.wep));
+            getTitleTv().setTextColor(Color.parseColor("#555555"));
+            getTitleTv().setShadowLayer(0.0F, 0.0F, 0.0F, com.tencent.mm.cd.a.w(this.caK.getContext(), a.a.transparent));
+            getDescTv().setTextColor(Color.parseColor("#555555"));
+            getDescTv().setShadowLayer(0.0F, 0.0F, 0.0F, com.tencent.mm.cd.a.w(this.caK.getContext(), a.a.transparent));
+            AppMethodBeat.o(294238);
+            return;
+            dop().setImageResource(a.f.card_default_merchant_icon);
+          }
+          getTitleTv().setTextColor(-1);
+          getDescTv().setTextColor(com.tencent.mm.cd.a.w(doq().getContext(), a.a.BW_100_Alpha_0_8));
+          localObject1 = paramb.abfG;
+          s.s(localObject1, "ticket_label");
+          localObject2 = (List)localObject1;
+          localObject1 = dor();
+          s.u(localObject2, "couponLabelList");
+          s.u(localObject1, "labelLayout");
+          ((LinearLayout)localObject1).removeAllViews();
+          label635:
+          int i;
+          if (((List)localObject2).isEmpty())
+          {
+            ((LinearLayout)localObject1).setVisibility(4);
+            paramb = (kotlin.g.a.a)new a(this, paramb);
+            if ((this.mViewHeight <= 0) || (this.mViewWidth <= 0))
             {
-              localIterator = ((Iterable)localObject).iterator();
-              i = 0;
+              this.mViewHeight = this.caK.getHeight();
+              this.mViewWidth = this.caK.getWidth();
+              if ((this.mViewHeight <= 0) || (this.mViewWidth <= 0))
+              {
+                this.caK.post(new c..ExternalSyntheticLambda0(this, paramb));
+                AppMethodBeat.o(294238);
+              }
             }
           }
           else
           {
+            ((LinearLayout)localObject1).setVisibility(0);
+            localObject2 = ((List)localObject2).iterator();
+            CardTagTextView localCardTagTextView;
+            while (((Iterator)localObject2).hasNext())
+            {
+              vs localvs = (vs)((Iterator)localObject2).next();
+              if (!Util.isNullOrNil(localvs.ZbR))
+              {
+                localCardTagTextView = new CardTagTextView(dor().getContext());
+                Context localContext = ((LinearLayout)localObject1).getContext();
+                localCardTagTextView.setMinHeight(com.tencent.mm.cd.a.fromDPToPix(localContext, 18));
+                i = com.tencent.mm.cd.a.fromDPToPix(localContext, 8);
+                int j = com.tencent.mm.cd.a.fromDPToPix(localContext, 4);
+                localCardTagTextView.setPadding(i, j, i, j);
+                localCardTagTextView.setText((CharSequence)localvs.ZbR);
+                localCardTagTextView.setTextSize(1, 10.0F);
+                if (Util.isNullOrNil(localvs.ZbS)) {
+                  break label815;
+                }
+                localCardTagTextView.setTextColor(Color.parseColor(localvs.ZbS));
+                label773:
+                if (Util.isNullOrNil(localvs.ZbT)) {
+                  break label824;
+                }
+                localCardTagTextView.setFillColor(l.dO(localvs.ZbT, localvs.ZbW));
+              }
+            }
             for (;;)
             {
-              if (!localIterator.hasNext()) {
-                break label241;
-              }
-              localObject = ((d)localIterator.next()).kAB;
-              if (localObject != null) {}
-              for (localObject = ((bkj)localObject).wmm;; localObject = null)
-              {
-                if (!j.e(localObject, paramString)) {
-                  break label234;
-                }
-                AppMethodBeat.o(89292);
-                return i + paramInt;
-                paramInt = 0;
-                break;
-              }
-              label234:
-              i += 1;
+              ((LinearLayout)localObject1).addView((View)localCardTagTextView);
+              break label635;
+              break;
+              label815:
+              localCardTagTextView.setTextColor(-1);
+              break label773;
+              label824:
+              localCardTagTextView.setFillColor(l.gy(-16777216, 26));
             }
           }
-          label241:
-          AppMethodBeat.o(89292);
-          return 0;
+          paramb.invoke();
+          AppMethodBeat.o(294238);
+          return;
+          paramb = paramb.wGF;
+          if (paramb != null)
+          {
+            getTitleTv().setText((CharSequence)paramb.aaUm);
+            localObject1 = (CharSequence)paramb.aaUo;
+            if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+            for (i = 1; i == 0; i = 0)
+            {
+              getDescTv().setText((CharSequence)paramb.aaUo);
+              getDescTv().setVisibility(0);
+              AppMethodBeat.o(294238);
+              return;
+            }
+            getDescTv().setVisibility(8);
+          }
         }
-        paramInt += 1;
       }
     }
-    AppMethodBeat.o(89292);
-    return 0;
   }
   
-  public final int getItemCount()
+  public final MemberCardTopCropImageView doq()
   {
-    AppMethodBeat.i(89290);
-    int j = 0;
-    if (this.kAw != null) {
-      j = 1;
-    }
-    ArrayList localArrayList = this.kAv;
-    int i = j;
-    if (localArrayList != null) {
-      i = j + localArrayList.size();
-    }
-    localArrayList = this.kAt;
-    j = i;
-    if (localArrayList != null) {
-      j = i + localArrayList.size();
-    }
-    i = j;
-    if (this.kAx != null) {
-      i = j + 1;
-    }
-    localArrayList = this.kAu;
-    j = i;
-    if (localArrayList != null) {
-      j = i + localArrayList.size();
-    }
-    AppMethodBeat.o(89290);
-    return j;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    AppMethodBeat.i(89289);
-    d locald = ts(paramInt);
-    if (locald != null)
+    AppMethodBeat.i(294225);
+    MemberCardTopCropImageView localMemberCardTopCropImageView = this.wGQ;
+    if (localMemberCardTopCropImageView != null)
     {
-      paramInt = locald.type;
-      AppMethodBeat.o(89289);
-      return paramInt;
+      AppMethodBeat.o(294225);
+      return localMemberCardTopCropImageView;
     }
-    AppMethodBeat.o(89289);
-    return -1;
-  }
-  
-  public final d ts(int paramInt)
-  {
-    AppMethodBeat.i(89291);
-    Object localObject1 = this.kAv;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
-      localObject2 = this.kAt;
-      if (localObject2 == null) {
-        break label137;
-      }
-      localObject2 = Integer.valueOf(((ArrayList)localObject2).size());
-      label48:
-      localObject3 = this.kAu;
-      if (localObject3 == null) {
-        break label143;
-      }
-    }
-    label137:
-    label143:
-    for (Object localObject3 = Integer.valueOf(((ArrayList)localObject3).size());; localObject3 = null)
-    {
-      ab.d("MicroMsg.CardTicketAdapter", "pos: %s, jSize: %s, tSize: %s, lSize: %s", new Object[] { Integer.valueOf(paramInt), localObject1, localObject2, localObject3 });
-      j = -1;
-      if (this.kAw == null) {
-        break label151;
-      }
-      if (paramInt != 0) {
-        break label149;
-      }
-      localObject1 = this.kAw;
-      AppMethodBeat.o(89291);
-      return localObject1;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label48;
-    }
-    label149:
-    int j = 0;
-    label151:
-    localObject1 = this.kAv;
-    int i = j;
-    if (localObject1 != null)
-    {
-      if ((paramInt > j) && (paramInt <= ((ArrayList)localObject1).size() + j))
-      {
-        localObject1 = (d)((ArrayList)localObject1).get(paramInt - j - 1);
-        AppMethodBeat.o(89291);
-        return localObject1;
-      }
-      i = j + ((ArrayList)localObject1).size();
-    }
-    localObject1 = this.kAt;
-    j = i;
-    if (localObject1 != null)
-    {
-      if ((paramInt > i) && (paramInt <= ((ArrayList)localObject1).size() + i))
-      {
-        localObject1 = (d)((ArrayList)localObject1).get(paramInt - i - 1);
-        AppMethodBeat.o(89291);
-        return localObject1;
-      }
-      j = i + ((ArrayList)localObject1).size();
-    }
-    i = j;
-    if (this.kAx != null)
-    {
-      j += 1;
-      i = j;
-      if (paramInt == j)
-      {
-        localObject1 = this.kAx;
-        AppMethodBeat.o(89291);
-        return localObject1;
-      }
-    }
-    localObject1 = this.kAu;
-    if ((localObject1 != null) && (paramInt > i) && (paramInt <= ((ArrayList)localObject1).size() + i))
-    {
-      localObject1 = (d)((ArrayList)localObject1).get(paramInt - i - 1);
-      AppMethodBeat.o(89291);
-      return localObject1;
-    }
-    AppMethodBeat.o(89291);
+    s.bIx("bgIv");
+    AppMethodBeat.o(294225);
     return null;
+  }
+  
+  public final ImageView dos()
+  {
+    AppMethodBeat.i(294229);
+    ImageView localImageView = this.wGS;
+    if (localImageView != null)
+    {
+      AppMethodBeat.o(294229);
+      return localImageView;
+    }
+    s.bIx("shadowIv");
+    AppMethodBeat.o(294229);
+    return null;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    a(c paramc, eal parameal)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.c
  * JD-Core Version:    0.7.0.1
  */

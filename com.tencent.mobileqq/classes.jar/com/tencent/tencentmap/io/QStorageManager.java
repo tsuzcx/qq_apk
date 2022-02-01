@@ -16,7 +16,7 @@ import java.io.File;
 public class QStorageManager
 {
   public static final String DATA = "data/";
-  private static QStorageManager a = null;
+  private static QStorageManager a;
   private Context b;
   private String c;
   private String d;
@@ -30,26 +30,59 @@ public class QStorageManager
   
   private QStorageManager(Context paramContext)
   {
-    if (paramContext == null) {
-      throw new Error("context can not be null");
-    }
-    this.b = paramContext.getApplicationContext();
-    String str1 = getStorageRootPath(paramContext);
-    String str2 = om.a(this.b);
-    if (nl.a(str2)) {}
-    for (this.c = (str1 + "/tencentmapsdk/");; this.c = (str1 + "/tencentmapsdk/" + str2))
+    if (paramContext != null)
     {
-      this.d = (this.c + "/data/v3/render/");
-      this.e = (this.c + "/sat/");
+      this.b = paramContext.getApplicationContext();
+      Object localObject1 = getStorageRootPath(paramContext);
+      Object localObject2 = om.a(this.b);
+      if (nl.a((String)localObject2))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("/tencentmapsdk/");
+        this.c = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("/tencentmapsdk/");
+        localStringBuilder.append((String)localObject2);
+        this.c = localStringBuilder.toString();
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.c);
+      ((StringBuilder)localObject1).append("/data/v3/render/");
+      this.d = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.c);
+      ((StringBuilder)localObject1).append("/sat/");
+      this.e = ((StringBuilder)localObject1).toString();
       this.j = paramContext.getFilesDir().getAbsolutePath();
-      this.g = (this.j + "/tencentMapSdk/config/");
-      this.k = (this.g + "temp/");
-      this.h = (this.j + "/tencentMapSdk/assets/");
-      this.i = (this.j + "/tencentMapSdk/dynamicAssets/");
-      this.f = (this.d + "closeRoadDatas/");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.j);
+      ((StringBuilder)localObject1).append("/tencentMapSdk/config/");
+      this.g = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.g);
+      ((StringBuilder)localObject1).append("temp/");
+      this.k = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.j);
+      ((StringBuilder)localObject1).append("/tencentMapSdk/assets/");
+      this.h = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.j);
+      ((StringBuilder)localObject1).append("/tencentMapSdk/dynamicAssets/");
+      this.i = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.d);
+      ((StringBuilder)localObject1).append("closeRoadDatas/");
+      this.f = ((StringBuilder)localObject1).toString();
       clearOldConfig(paramContext, gf.a(paramContext).a("sdkVersion"));
       return;
     }
+    throw new Error("context can not be null");
   }
   
   private static String a(Context paramContext)
@@ -67,17 +100,25 @@ public class QStorageManager
     {
       paramString = new StatFs(paramString);
       long l2;
-      if (Build.VERSION.SDK_INT < 18) {
-        l2 = paramString.getBlockSize();
-      }
-      for (long l1 = paramString.getAvailableBlocks();; l1 = paramString.getAvailableBlocksLong())
+      if (Build.VERSION.SDK_INT < 18)
       {
-        return l1 * l2 / 1024L / 1024L;
-        l2 = paramString.getBlockSizeLong();
+        l1 = paramString.getBlockSize();
+        l2 = paramString.getAvailableBlocks();
       }
-      return 0L;
+      else
+      {
+        l1 = paramString.getBlockSizeLong();
+        l2 = paramString.getAvailableBlocksLong();
+      }
+      long l1 = l1 * l2 / 1024L / 1024L;
+      return l1;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label56:
+      break label56;
+    }
+    return 0L;
   }
   
   public static QStorageManager getInstance(Context paramContext)
@@ -90,57 +131,64 @@ public class QStorageManager
   
   public static String getStorageRootPath(Context paramContext)
   {
-    int i2 = 0;
     boolean bool = Environment.getExternalStorageState().equals("mounted");
+    int m = Build.VERSION.SDK_INT;
+    int i2 = 0;
     int n;
-    int m;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (m >= 23)
     {
-      n = paramContext.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE", Process.myPid(), Process.myUid());
-      m = paramContext.checkPermission("android.permission.READ_EXTERNAL_STORAGE", Process.myPid(), Process.myUid());
+      m = paramContext.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE", Process.myPid(), Process.myUid());
+      n = paramContext.checkPermission("android.permission.READ_EXTERNAL_STORAGE", Process.myPid(), Process.myUid());
     }
-    for (;;)
+    else
     {
-      int i1 = i2;
-      if (n == 0)
-      {
-        i1 = i2;
-        if (m == 0) {
-          i1 = 1;
-        }
-      }
-      Object localObject;
-      if ((!bool) || (i1 == 0)) {
-        localObject = paramContext.getFilesDir().getPath();
-      }
-      String str;
-      do
-      {
-        do
-        {
-          return localObject;
-          str = a(paramContext);
-          localObject = str;
-        } while (getAvailableStorageSize(str) >= 5L);
-        str = paramContext.getFilesDir().getPath();
-        localObject = str;
-      } while (getAvailableStorageSize(str) >= 5L);
-      return a(paramContext);
       m = 0;
       n = 0;
     }
+    int i1 = i2;
+    if (m == 0)
+    {
+      i1 = i2;
+      if (n == 0) {
+        i1 = 1;
+      }
+    }
+    String str1;
+    if ((bool) && (i1 != 0))
+    {
+      String str2 = a(paramContext);
+      str1 = str2;
+      if (getAvailableStorageSize(str2) < 5L)
+      {
+        str2 = paramContext.getFilesDir().getPath();
+        str1 = str2;
+        if (getAvailableStorageSize(str2) < 5L) {
+          return a(paramContext);
+        }
+      }
+    }
+    else
+    {
+      str1 = paramContext.getFilesDir().getPath();
+    }
+    return str1;
   }
   
   public void clearOldConfig(Context paramContext, String paramString)
   {
-    if (nl.a(gf.a(paramContext).a("sdkVersion"))) {}
-    while (fz.a("4.1.0", paramString) <= 0) {
+    if (nl.a(gf.a(paramContext).a("sdkVersion"))) {
       return;
     }
-    ge.a(paramContext);
-    om.e(new File(this.g));
-    om.e(new File(this.h));
-    om.e(new File(this.j + "/tencentMapSdk/subKey/"));
+    if (fz.a("4.1.0", paramString) > 0)
+    {
+      ge.a(paramContext);
+      om.e(new File(this.g));
+      om.e(new File(this.h));
+      paramContext = new StringBuilder();
+      paramContext.append(this.j);
+      paramContext.append("/tencentMapSdk/subKey/");
+      om.e(new File(paramContext.toString()));
+    }
   }
   
   public String getAssetsDynamicPath()
@@ -153,7 +201,12 @@ public class QStorageManager
     if (nl.a(paramString)) {
       return this.h;
     }
-    return this.j + "/tencentMapSdk/subKey/" + paramString + "/assets/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("/tencentMapSdk/subKey/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/assets/");
+    return localStringBuilder.toString();
   }
   
   public File getCacheDir()
@@ -166,7 +219,12 @@ public class QStorageManager
     if (nl.a(paramString)) {
       return this.g;
     }
-    return this.j + "/tencentMapSdk/subKey/" + paramString + "/config/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("/tencentMapSdk/subKey/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/config/");
+    return localStringBuilder.toString();
   }
   
   public String getConfigTempPath(String paramString)
@@ -174,12 +232,18 @@ public class QStorageManager
     if (nl.a(paramString)) {
       return this.k;
     }
-    return getConfigPath(paramString) + "temp/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getConfigPath(paramString));
+    localStringBuilder.append("temp/");
+    return localStringBuilder.toString();
   }
   
   public File getDataDir()
   {
-    return new File(this.c + "/data/");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/data/");
+    return new File(localStringBuilder.toString());
   }
   
   public String getMapPath()
@@ -199,7 +263,7 @@ public class QStorageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.io.QStorageManager
  * JD-Core Version:    0.7.0.1
  */

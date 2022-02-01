@@ -2,21 +2,21 @@ package com.tencent.mm.sdk.a;
 
 public abstract class d
 {
-  public Runnable WP = null;
-  protected boolean WQ;
-  private int WR = 0;
+  public Runnable YK = null;
+  protected boolean YS;
+  private int YT = 0;
   
-  final int lb()
+  final int ln()
   {
-    if (this.WR == 0) {
-      this.WR = getClass().getName().hashCode();
+    if (this.YT == 0) {
+      this.YT = getClass().getName().hashCode();
     }
-    return this.WR;
+    return this.YT;
   }
   
-  public final boolean lc()
+  public final boolean lo()
   {
-    return this.WQ;
+    return this.YS;
   }
 }
 

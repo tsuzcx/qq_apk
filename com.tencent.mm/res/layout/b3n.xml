@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/d5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar android:id="@id/f9a" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="@dimen/ab_" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginTop="12.0dip">
-        <Button android:textSize="@dimen/dq" android:textColor="@color/a7f" android:gravity="center" android:id="@id/dsb" android:background="@android:color/transparent" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/pa" android:layout_marginStart="32.0dip" />
-        <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-        <Button android:textSize="@dimen/dq" android:textColor="@color/a6r" android:gravity="center" android:id="@id/dsc" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/rc" android:layout_marginEnd="32.0dip" style="@style/ns" />
-    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/be5" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginStart="@dimen/cp" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a7d" android:ellipsize="end" android:gravity="center" android:id="@id/koa" android:layout_width="0.0dip" android:layout_height="@dimen/d5" android:singleLine="true" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/evv" android:visibility="invisible" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cp" android:src="@raw/icons_outlined_help" />
 </LinearLayout>

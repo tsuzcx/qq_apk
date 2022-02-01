@@ -1,118 +1,90 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pe;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.plugin.sns.storage.j;
+import com.tencent.mm.plugin.sns.storage.u;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
 
 public final class an
+  implements j
 {
-  private static final int rib;
+  HashMap<String, u> cache;
   
-  static
+  public an()
   {
-    AppMethodBeat.i(36596);
-    rib = com.tencent.mm.m.g.Nq().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
-    AppMethodBeat.o(36596);
+    AppMethodBeat.i(95848);
+    this.cache = new HashMap();
+    AppMethodBeat.o(95848);
   }
   
-  public static boolean cpC()
+  public final boolean a(final u paramu)
   {
-    AppMethodBeat.i(36594);
-    com.tencent.mm.kernel.g.RM();
-    int i = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yKA, Integer.valueOf(0))).intValue();
-    ab.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(rib) });
-    if (i < rib)
+    AppMethodBeat.i(95852);
+    if ((paramu == null) || (Util.isNullOrNil(paramu.field_userName)))
     {
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yKA, Integer.valueOf(i + 1));
+      AppMethodBeat.o(95852);
+      return false;
     }
-    for (boolean bool = true;; bool = false)
+    al.gHI().post(new Runnable()
     {
-      AppMethodBeat.o(36594);
-      return bool;
-    }
-  }
-  
-  public static void e(ArrayList<String> paramArrayList, String paramString)
-  {
-    AppMethodBeat.i(36593);
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      AppMethodBeat.o(36593);
-      return;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      int i = bo.getInt((String)paramArrayList.next(), 0);
-      if (i != 0)
+      public final void run()
       {
-        Object localObject = ag.cpf().Ez(i);
-        if (localObject != null)
-        {
-          TimeLineObject localTimeLineObject = ((n)localObject).csh();
-          if ((localTimeLineObject != null) && (localTimeLineObject.xTS != null) && (localTimeLineObject.xTS.wNZ == 26))
-          {
-            localTimeLineObject.xTS.wOc = paramString;
-            ag.cpf().b(i, (n)localObject);
-            localObject = new pe();
-            ((pe)localObject).cFO.cFP = i;
-            a.ymk.l((b)localObject);
-          }
+        AppMethodBeat.i(95847);
+        an.this.cache.put(paramu.field_userName, paramu);
+        AppMethodBeat.o(95847);
+      }
+    });
+    AppMethodBeat.o(95852);
+    return true;
+  }
+  
+  public final u aYu(String paramString)
+  {
+    AppMethodBeat.i(95849);
+    paramString = (u)this.cache.get(paramString);
+    AppMethodBeat.o(95849);
+    return paramString;
+  }
+  
+  public final boolean hgZ()
+  {
+    AppMethodBeat.i(95850);
+    al.gHI().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(95845);
+        if (an.this.cache.size() > 50) {
+          an.a(an.this, 10);
         }
+        AppMethodBeat.o(95845);
       }
-    }
-    AppMethodBeat.o(36593);
+    });
+    AppMethodBeat.o(95850);
+    return true;
   }
   
-  public static boolean eT(Context paramContext)
+  public final boolean hha()
   {
-    bool1 = true;
-    AppMethodBeat.i(36595);
-    try
+    AppMethodBeat.i(95851);
+    al.gHI().post(new Runnable()
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
-      if (paramContext == null) {
-        break label87;
-      }
-      paramContext = paramContext.signatures[0].toByteArray();
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramContext);
-      boolean bool2 = bo.isEqual(com.tencent.e.f.e.bytesToHexString(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
-      if (!bool2) {
-        break label87;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      public final void run()
       {
-        ab.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
-        bool1 = false;
+        AppMethodBeat.i(95846);
+        an.a(an.this, an.this.cache.size());
+        AppMethodBeat.o(95846);
       }
-    }
-    AppMethodBeat.o(36595);
-    return bool1;
+    });
+    AppMethodBeat.o(95851);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.an
  * JD-Core Version:    0.7.0.1
  */

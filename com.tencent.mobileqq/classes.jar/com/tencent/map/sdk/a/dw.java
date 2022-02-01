@@ -8,10 +8,12 @@ public final class dw
   public final dt a(String paramString)
   {
     paramString = this.a.a(paramString);
-    if (paramString == null) {}
-    for (paramString = null;; paramString = paramString.getValue()) {
-      return (dt)paramString;
+    if (paramString == null) {
+      paramString = null;
+    } else {
+      paramString = paramString.getValue();
     }
+    return (dt)paramString;
   }
   
   public final void a(String paramString, dt paramdt)

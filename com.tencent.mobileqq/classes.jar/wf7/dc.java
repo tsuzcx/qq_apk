@@ -20,66 +20,55 @@ public class dc
       ((bs)getData()).b(System.currentTimeMillis());
     }
     Queue localQueue = ((bs)getData()).ao();
-    bs.a locala = null;
-    for (;;)
+    bs.a locala1 = null;
+    try
     {
-      try
-      {
-        if (localQueue.size() > 4) {
-          locala = (bs.a)localQueue.poll();
-        }
-        if (locala == null)
-        {
-          locala = new bs.a();
-          locala.gs = paramInt;
-          locala.gr = ((int)(System.currentTimeMillis() / 1000L - ((bs)getData()).an() / 1000L));
-          localQueue.add(locala);
-          return;
-        }
+      if (localQueue.size() > 4) {
+        locala1 = (bs.a)localQueue.poll();
       }
-      finally {}
+      bs.a locala2 = locala1;
+      if (locala1 == null) {
+        locala2 = new bs.a();
+      }
+      locala2.gs = paramInt;
+      locala2.gr = ((int)(System.currentTimeMillis() / 1000L - ((bs)getData()).an() / 1000L));
+      localQueue.add(locala2);
+      return;
     }
+    finally {}
   }
   
   protected void Y(int paramInt)
   {
-    if (this.jV != null)
+    bs.a locala = this.jV;
+    if (locala != null)
     {
-      if (Math.abs(this.jV.gs - paramInt) > 5) {
+      if (Math.abs(locala.gs - paramInt) > 5) {
         Z(paramInt);
       }
-      return;
     }
-    Z(paramInt);
+    else {
+      Z(paramInt);
+    }
   }
   
   public void a(WifiConfiguration paramWifiConfiguration, boolean paramBoolean)
   {
-    int i = 0;
-    int j = 1;
     if (paramWifiConfiguration != null)
     {
-      if (((bs)getData()).getNetworkId() != paramWifiConfiguration.networkId) {
-        i = 1;
-      }
+      ((bs)getData()).getNetworkId();
+      int i = paramWifiConfiguration.networkId;
       ((bs)this.gb).B(paramWifiConfiguration.networkId);
       ((bs)this.gb).a(paramWifiConfiguration);
-      j = i;
-      if (paramBoolean)
-      {
+      if (paramBoolean) {
         ((bs)getData()).d(true);
-        j = i;
       }
-      if (j != 0) {}
-      return;
     }
-    if (((bs)this.gb).aj() != null) {}
-    for (i = j;; i = 0)
+    else
     {
+      ((bs)this.gb).aj();
       ((bs)this.gb).B(cb.gI);
       ((bs)this.gb).a(null);
-      j = i;
-      break;
     }
   }
   
@@ -90,21 +79,28 @@ public class dc
   
   public boolean bG()
   {
-    boolean bool = false;
-    if (al() != null)
+    br localbr = al();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (localbr != null)
     {
       int i = ((bs)this.gb).getLevel();
       ((bs)this.gb).setLevel(ca.calculateSignalLevel(al().gd, 100) + 1);
       if (((bs)this.gb).getLevel() != i) {
-        bool = true;
+        bool1 = true;
       }
-      if (bool) {
+      bool2 = bool1;
+      if (bool1)
+      {
         Y(((bs)this.gb).getLevel());
+        return bool1;
       }
-      return bool;
     }
-    ((bs)this.gb).setLevel(-1);
-    return false;
+    else
+    {
+      ((bs)this.gb).setLevel(-1);
+    }
+    return bool2;
   }
   
   public void bH()
@@ -130,12 +126,16 @@ public class dc
   
   public String toString()
   {
-    return "ExtraWifiInfo{mData=" + this.gb + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtraWifiInfo{mData=");
+    localStringBuilder.append(this.gb);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.dc
  * JD-Core Version:    0.7.0.1
  */

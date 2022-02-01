@@ -1,26 +1,28 @@
 package com.tencent.mobileqq.fragment;
 
-import akkt;
-import alud;
-import amdu;
-import ameq;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import ashv;
-import azqs;
-import bcpe;
-import bcpf;
-import bcpg;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.RobotAdapter;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.robot.TroopRobotData;
+import com.tencent.mobileqq.troop.robot.TroopRobotInfo;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotHandler;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
+import com.tencent.mobileqq.troop.robot.api.TroopRobotObserver;
 import com.tencent.mobileqq.troop.widget.AddedRobotView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
@@ -29,12 +31,12 @@ import java.util.ArrayList;
 public class TroopRobotFragment
   extends IphoneTitleBarFragment
 {
-  akkt jdField_a_of_type_Akkt;
-  ameq jdField_a_of_type_Ameq = new ashv(this);
-  private AddedRobotView jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  RobotAdapter a;
+  TroopRobotObserver b = new TroopRobotFragment.1(this);
+  private XListView c;
+  private String d;
+  private AddedRobotView e;
+  private boolean f = false;
   
   private Intent a(Activity paramActivity)
   {
@@ -43,94 +45,95 @@ public class TroopRobotFragment
   
   private void a(long paramLong)
   {
-    if (getActivity() == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = getActivity().app;
-      } while (localObject == null);
-      localObject = ((bcpg)((QQAppInterface)localObject).getManager(203)).a(paramLong);
-    } while (getActivity() == null);
-    getActivity().runOnUiThread(new TroopRobotFragment.2(this, (bcpe)localObject));
+    if (getActivity() == null) {
+      return;
+    }
+    Object localObject = getBaseActivity().app;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((ITroopRobotService)((QQAppInterface)localObject).getRuntimeService(ITroopRobotService.class, "all")).getTroopRobotData(paramLong);
+    if (getActivity() != null) {
+      getActivity().runOnUiThread(new TroopRobotFragment.2(this, (TroopRobotData)localObject));
+    }
   }
   
   public void a()
   {
     QLog.d("TroopRobotFragment", 2, "getRobotLisFromServer");
+    long l;
     try
     {
-      l = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      ((amdu)getActivity().app.a(20)).h(l);
-      return;
+      l = Long.parseLong(this.d);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopRobotFragment", 2, "parseLong err", localException);
-        }
-        long l = 0L;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotFragment", 2, "parseLong err", localException);
       }
+      l = 0L;
     }
+    ((ITroopRobotHandler)getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.TROOP_ROBOT_HANDLER)).a(l);
   }
   
-  public void a(ArrayList<bcpf> paramArrayList1, ArrayList<bcpf> paramArrayList2, int paramInt)
+  public void a(ArrayList<TroopRobotInfo> paramArrayList1, ArrayList<TroopRobotInfo> paramArrayList2, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.jdField_a_of_type_ComTencentWidgetXListView.getVisibility() != 0)) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    Object localObject = this.c;
+    if ((localObject != null) && (((XListView)localObject).getVisibility() != 0)) {
+      this.c.setVisibility(0);
     }
-    if (this.jdField_a_of_type_Akkt != null) {
-      this.jdField_a_of_type_Akkt.a(paramArrayList2);
+    localObject = this.a;
+    if (localObject != null) {
+      ((RobotAdapter)localObject).a(paramArrayList2);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView.setAddList(paramArrayList1, paramInt, this.jdField_a_of_type_JavaLangString);
+    paramArrayList2 = this.e;
+    if (paramArrayList2 != null) {
+      paramArrayList2.setAddList(paramArrayList1, paramInt, this.d);
     }
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_JavaLangString = a(getActivity()).getStringExtra("uin");
-    this.jdField_a_of_type_Boolean = a(getActivity()).getBooleanExtra("be_admin_in_the_troop", false);
-    paramLayoutInflater = getActivity().getResources().getString(2131721115);
+    this.d = a(getActivity()).getStringExtra("uin");
+    this.f = a(getActivity()).getBooleanExtra("be_admin_in_the_troop", false);
+    paramLayoutInflater = getActivity().getResources().getString(2131917610);
     setTitle(paramLayoutInflater, paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131376047));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView = new AddedRobotView(getActivity());
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130849827));
-    this.jdField_a_of_type_Akkt = new akkt(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Akkt);
-    getActivity().addObserver(this.jdField_a_of_type_Ameq);
-    if ((AppSetting.c) && (this.leftView != null)) {
-      this.leftView.setContentDescription(alud.a(2131716142));
+    this.c = ((XListView)this.mContentView.findViewById(2131445151));
+    this.e = new AddedRobotView(getActivity());
+    this.c.setVerticalScrollBarEnabled(false);
+    this.c.addHeaderView(this.e);
+    this.c.setDivider(getResources().getDrawable(2130852616));
+    this.a = new RobotAdapter(getBaseActivity().app, getBaseActivity(), this.c, this.d, this.f);
+    this.c.setAdapter(this.a);
+    getBaseActivity().addObserver(this.b);
+    if ((AppSetting.e) && (this.leftView != null)) {
+      this.leftView.setContentDescription(HardCodeUtil.a(2131901576));
     }
-    azqs.b(getActivity().app, "dc00898", "", "", "", "0X8009F9D", 0, 0, "", "", "", "");
+    ReportController.b(getBaseActivity().app, "dc00898", "", "", "", "0X8009F9D", 0, 0, "", "", "", "");
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560500;
+    return 2131626740;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Akkt != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Akkt.a();
-      this.jdField_a_of_type_Akkt = null;
+      ((RobotAdapter)localObject).a();
+      this.a = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView != null)
+    localObject = this.e;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView.a();
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView = null;
+      ((AddedRobotView)localObject).a();
+      this.e = null;
     }
-    getActivity().removeObserver(this.jdField_a_of_type_Ameq);
+    getQBaseActivity().removeObserver(this.b);
   }
   
   public void onResume()
@@ -142,7 +145,7 @@ public class TroopRobotFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TroopRobotFragment
  * JD-Core Version:    0.7.0.1
  */

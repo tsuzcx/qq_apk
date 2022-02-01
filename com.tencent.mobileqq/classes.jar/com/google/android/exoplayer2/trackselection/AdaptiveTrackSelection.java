@@ -42,9 +42,9 @@ public class AdaptiveTrackSelection
     super(paramTrackGroup, paramArrayOfInt);
     this.bandwidthMeter = paramBandwidthMeter;
     this.maxInitialBitrate = paramInt;
-    this.minDurationForQualityIncreaseUs = (1000L * paramLong1);
-    this.maxDurationForQualityDecreaseUs = (1000L * paramLong2);
-    this.minDurationToRetainAfterDiscardUs = (1000L * paramLong3);
+    this.minDurationForQualityIncreaseUs = (paramLong1 * 1000L);
+    this.maxDurationForQualityDecreaseUs = (paramLong2 * 1000L);
+    this.minDurationToRetainAfterDiscardUs = (paramLong3 * 1000L);
     this.bandwidthFraction = paramFloat1;
     this.bufferedFractionToLiveEdgeForQualityIncrease = paramFloat2;
     this.minTimeBetweenBufferReevaluationMs = paramLong4;
@@ -57,39 +57,37 @@ public class AdaptiveTrackSelection
   
   private int determineIdealSelectedIndex(long paramLong)
   {
-    int i = 0;
     long l = this.bandwidthMeter.getBitrateEstimate();
-    int j;
-    if (l == -1L)
-    {
+    if (l == -1L) {
       l = this.maxInitialBitrate;
-      j = 0;
+    } else {
+      l = ((float)l * this.bandwidthFraction);
     }
-    for (;;)
+    int i = 0;
+    int j = 0;
+    while (i < this.length)
     {
-      if (i >= this.length) {
-        break label107;
-      }
       if ((paramLong == -9223372036854775808L) || (!isBlacklisted(i, paramLong)))
       {
-        if (Math.round(getFormat(i).bitrate * this.playbackSpeed) <= l)
-        {
+        if (Math.round(getFormat(i).bitrate * this.playbackSpeed) <= l) {
           return i;
-          l = ((float)l * this.bandwidthFraction);
-          break;
         }
         j = i;
       }
       i += 1;
     }
-    label107:
     return j;
   }
   
   private long minDurationForQualityIncreaseUs(long paramLong)
   {
-    if ((paramLong != -9223372036854775807L) && (paramLong <= this.minDurationForQualityIncreaseUs)) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if ((paramLong != -9223372036854775807L) && (paramLong <= this.minDurationForQualityIncreaseUs)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return ((float)paramLong * this.bufferedFractionToLiveEdgeForQualityIncrease);
     }
     return this.minDurationForQualityIncreaseUs;
@@ -102,20 +100,22 @@ public class AdaptiveTrackSelection
   
   public int evaluateQueueSize(long paramLong, List<? extends MediaChunk> paramList)
   {
-    int i = 0;
-    long l = this.clock.elapsedRealtime();
-    if ((this.lastBufferEvaluationMs != -9223372036854775807L) && (l - this.lastBufferEvaluationMs < this.minTimeBetweenBufferReevaluationMs)) {
+    long l1 = this.clock.elapsedRealtime();
+    long l2 = this.lastBufferEvaluationMs;
+    if ((l2 != -9223372036854775807L) && (l1 - l2 < this.minTimeBetweenBufferReevaluationMs)) {
       return paramList.size();
     }
-    this.lastBufferEvaluationMs = l;
-    if (paramList.isEmpty()) {
+    this.lastBufferEvaluationMs = l1;
+    boolean bool = paramList.isEmpty();
+    int i = 0;
+    if (bool) {
       return 0;
     }
     int j = paramList.size();
     if (Util.getPlayoutDurationForMediaDuration(((MediaChunk)paramList.get(j - 1)).startTimeUs - paramLong, this.playbackSpeed) < this.minDurationToRetainAfterDiscardUs) {
       return j;
     }
-    Format localFormat1 = getFormat(determineIdealSelectedIndex(l));
+    Format localFormat1 = getFormat(determineIdealSelectedIndex(l1));
     while (i < j)
     {
       MediaChunk localMediaChunk = (MediaChunk)paramList.get(i);
@@ -153,36 +153,27 @@ public class AdaptiveTrackSelection
     paramLong1 = this.clock.elapsedRealtime();
     int i = this.selectedIndex;
     this.selectedIndex = determineIdealSelectedIndex(paramLong1);
-    if (this.selectedIndex == i) {}
-    for (;;)
-    {
+    if (this.selectedIndex == i) {
       return;
-      Format localFormat1;
-      Format localFormat2;
-      if (!isBlacklisted(i, paramLong1))
-      {
-        localFormat1 = getFormat(i);
-        localFormat2 = getFormat(this.selectedIndex);
-        if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong2 >= minDurationForQualityIncreaseUs(paramLong3))) {
-          break label108;
-        }
+    }
+    if (!isBlacklisted(i, paramLong1))
+    {
+      Format localFormat1 = getFormat(i);
+      Format localFormat2 = getFormat(this.selectedIndex);
+      if ((localFormat2.bitrate > localFormat1.bitrate) && (paramLong2 < minDurationForQualityIncreaseUs(paramLong3))) {
+        this.selectedIndex = i;
+      } else if ((localFormat2.bitrate < localFormat1.bitrate) && (paramLong2 >= this.maxDurationForQualityDecreaseUs)) {
+        this.selectedIndex = i;
       }
-      for (this.selectedIndex = i; this.selectedIndex != i; this.selectedIndex = i)
-      {
-        label93:
-        this.reason = 3;
-        return;
-        label108:
-        if ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong2 < this.maxDurationForQualityDecreaseUs)) {
-          break label93;
-        }
-      }
+    }
+    if (this.selectedIndex != i) {
+      this.reason = 3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
  * JD-Core Version:    0.7.0.1
  */

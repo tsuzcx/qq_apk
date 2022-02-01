@@ -1,12 +1,13 @@
 package com.tencent.av.utils;
 
 import android.text.TextUtils;
-import atzp;
-import bdmh;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng;
+import com.tencent.mobileqq.utils.ProcessUtil;
+import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.QLog;
 
 final class VideoMsgTools$2
@@ -19,29 +20,32 @@ final class VideoMsgTools$2
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgTools", 2, "addMessage");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bdmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
-    }
-    for (;;)
+    if ((ProcessUtil.a(this.a.getApp())) && (!QQUtils.a(this.a.getApp())))
     {
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        atzp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+      QQMessageFacade localQQMessageFacade = this.a.getMessageFacade();
+      if (localQQMessageFacade != null)
+      {
+        MessageRecord localMessageRecord = this.b;
+        if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.frienduin))) {
+          localQQMessageFacade.a(this.b, this.d);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoMsgTools", 2, "addMessage end");
-      }
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin))) {
-        ((QQMessageFacade)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
-      }
+    }
+    else
+    {
+      this.a.getMsgHandler().a(this.b, this.c);
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      CUOpenCardGuideMng.a(this.a, this.b.frienduin, this.f, this.g, "qav");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoMsgTools", 2, "addMessage end");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.2
  * JD-Core Version:    0.7.0.1
  */

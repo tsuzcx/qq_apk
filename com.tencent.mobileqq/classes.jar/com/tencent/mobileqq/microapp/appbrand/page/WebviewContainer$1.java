@@ -2,6 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,21 +15,28 @@ class WebviewContainer$1
   {
     try
     {
-      paramView = this.val$jsonObject.optString("data");
+      Object localObject = this.val$jsonObject.optString("data");
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("data", paramView);
-      WebviewContainer.access$000(this.this$0).evaluteJs("WeixinJSBridge.subscribeHandler(\"onTextViewClick\", " + localJSONObject + "," + WebviewContainer.access$000(this.this$0).pageWebviewId + ")");
-      return;
+      localJSONObject.put("data", localObject);
+      localObject = WebviewContainer.access$000(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onTextViewClick\", ");
+      localStringBuilder.append(localJSONObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(WebviewContainer.access$000(this.this$0).pageWebviewId);
+      localStringBuilder.append(")");
+      ((PageWebview)localObject).evaluteJs(localStringBuilder.toString());
     }
-    catch (JSONException paramView)
+    catch (JSONException localJSONException)
     {
-      paramView.printStackTrace();
+      localJSONException.printStackTrace();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer.1
  * JD-Core Version:    0.7.0.1
  */

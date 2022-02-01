@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/p4" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginTop="40.0dip" android:src="@raw/app_brand_404_page_alert_icon" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/p5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" style="@style/l1" />
-</LinearLayout>
+<RelativeLayout android:id="@id/fd" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/t" android:textColor="@color/c9" android:ellipsize="end" android:gravity="center_vertical" android:id="@android:id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:id="@id/ex2" android:paddingLeft="@dimen/m2" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="23.0dip" android:src="@raw/icons_outlined_umbrella" app:iconColor="@color/ge" />
+        </LinearLayout>
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@android:id/text2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/la" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.wallet_core.ui.MMScrollView android:orientation="vertical" android:id="@id/ljx" android:background="@color/aj5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:paddingTop="0.0dip" style="@style/zv">
+        <TextView android:autoLink="phone" android:id="@id/ljr" android:text="@string/l7j" style="@style/a08" />
+        <LinearLayout style="@style/a0o">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/a6t" app:contentHint="@string/l7e" app:titleText="@string/l7e" style="@style/sm" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/bz0" android:visibility="gone" app:contentHint="@string/koo" app:titleText="@string/kot" style="@style/a06" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/byl" android:visibility="gone" app:contentHint="@string/kol" app:titleText="@string/kom" style="@style/a05" />
+            <com.tencent.mm.plugin.wallet_core.ui.view.WalletPhoneInputView android:id="@id/gwe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:phoneHint="@string/kph" app:phoneTitle="@string/l7h" />
+        </LinearLayout>
+        <Button android:id="@id/hfl" android:layout_marginTop="15.0dip" android:text="@string/a12" style="@style/a0k" />
+    </LinearLayout>
+</com.tencent.mm.wallet_core.ui.MMScrollView>

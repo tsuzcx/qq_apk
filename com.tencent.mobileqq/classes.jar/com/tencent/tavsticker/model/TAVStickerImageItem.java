@@ -51,25 +51,34 @@ public class TAVStickerImageItem
   
   public String toString()
   {
-    return "TAVStickerImageItem {layerIndex : " + this.layerIndex + ", layerName : " + this.layerName + ", layerType : " + this.layerType + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVStickerImageItem {layerIndex : ");
+    localStringBuilder.append(this.layerIndex);
+    localStringBuilder.append(", layerName : ");
+    localStringBuilder.append(this.layerName);
+    localStringBuilder.append(", layerType : ");
+    localStringBuilder.append(this.layerType);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.layerIndex);
-    if (this.layerName == null) {}
-    for (String str = "";; str = this.layerName)
-    {
-      paramParcel.writeString(str);
-      paramParcel.writeInt(this.layerType);
-      paramParcel.writeParcelable(this.bitmap, paramInt);
-      return;
+    String str;
+    if (this.layerName == null) {
+      str = "";
+    } else {
+      str = this.layerName;
     }
+    paramParcel.writeString(str);
+    paramParcel.writeInt(this.layerType);
+    paramParcel.writeParcelable(this.bitmap, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerImageItem
  * JD-Core Version:    0.7.0.1
  */

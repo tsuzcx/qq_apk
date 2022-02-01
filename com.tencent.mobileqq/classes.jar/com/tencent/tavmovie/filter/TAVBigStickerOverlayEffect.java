@@ -19,9 +19,10 @@ public class TAVBigStickerOverlayEffect
   
   public TAVVideoMixEffect.Filter createFilter()
   {
-    if (this.count == 0)
+    int i = this.count;
+    if (i == 0)
     {
-      this.count += 1;
+      this.count = (i + 1);
       return new TAVBigStickerOverlayEffect.StickerVideoCompositionMixerEffect(this, this.stickerContext, null);
     }
     return new TAVBigStickerOverlayEffect.StickerVideoCompositionMixerEffect(this, this.stickerContext.copy(), null);
@@ -44,7 +45,7 @@ public class TAVBigStickerOverlayEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.filter.TAVBigStickerOverlayEffect
  * JD-Core Version:    0.7.0.1
  */

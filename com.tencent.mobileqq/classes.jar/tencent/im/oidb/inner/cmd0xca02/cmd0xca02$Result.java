@@ -26,16 +26,18 @@ public final class cmd0xca02$Result
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 64, 74, 80, 88 }, new String[] { "uint32_id", "uint32_res", "string_hash_val", "string_icon", "string_name", "string_url", "bool_red_point", "bool_can_remove", "msg_app_info", "uint32_add_timestamp", "uint32_identify_visibilty" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Boolean.valueOf(false), Boolean.valueOf(false), null, Integer.valueOf(0), Integer.valueOf(31) }, Result.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 56, 64, 74, 80, 88 }, new String[] { "uint32_id", "uint32_res", "string_hash_val", "string_icon", "string_name", "string_url", "bool_red_point", "bool_can_remove", "msg_app_info", "uint32_add_timestamp", "uint32_identify_visibilty" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localBoolean, localBoolean, null, localInteger, Integer.valueOf(31) }, Result.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.inner.cmd0xca02.cmd0xca02.Result
  * JD-Core Version:    0.7.0.1
  */

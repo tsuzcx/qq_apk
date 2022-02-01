@@ -1,41 +1,65 @@
 package com.tencent.mobileqq.app;
 
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
 
 class QQAppInterface$14
-  implements Runnable
+  extends Handler
 {
-  public void run()
+  QQAppInterface$14(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    boolean bool = HttpDownloadUtil.a(this.this$0, MsfSdkUtils.insertMtype("lingyin", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("notification", 2, "-->SpecialSound download result:" + bool);
-    }
-    File localFile;
-    if (bool)
-    {
-      localFile = new File(QQAppInterface.d(this.this$0).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      if (localFile == null) {
-        break label105;
-      }
-    }
-    label105:
-    for (long l = localFile.length();; l = 0L)
-    {
-      QQAppInterface.a(this.this$0).a(l);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what != 0) {
       return;
     }
+    paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
+    if (paramMessage == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
+      }
+      return;
+    }
+    long l1 = QQAppInterface.sNextGetOnlineFriendDelay;
+    long l3 = SystemClock.uptimeMillis();
+    long l2 = Math.abs(l3 - this.this$0.sLastGetOnlineFriendTime);
+    Object localObject;
+    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.sNextGetOnlineFriendDelay))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend");
+      }
+      this.this$0.sLastGetOnlineFriendTime = l3;
+      localObject = (FriendListHandler)paramMessage.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (localObject != null) {
+        ((FriendListHandler)localObject).getOnlineFriend(paramMessage.getCurrentAccountUin(), (byte)0);
+      }
+    }
+    if (l2 < QQAppInterface.sNextGetOnlineFriendDelay) {
+      l1 = QQAppInterface.sNextGetOnlineFriendDelay - l2;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getOnlineFriend send next msg ");
+      ((StringBuilder)localObject).append(l1);
+      QLog.d("QQAppInterface", 2, ((StringBuilder)localObject).toString());
+    }
+    paramMessage = this.this$0.sGetOnlineFriendHandler.obtainMessage(0, new WeakReference(paramMessage));
+    this.this$0.sGetOnlineFriendHandler.sendMessageDelayed(paramMessage, l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.14
  * JD-Core Version:    0.7.0.1
  */

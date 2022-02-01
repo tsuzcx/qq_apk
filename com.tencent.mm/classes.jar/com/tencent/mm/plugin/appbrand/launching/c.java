@@ -1,52 +1,34 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.plugin.appbrand.appusage.s;
-import com.tencent.mm.plugin.appbrand.appusage.w;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.threadpool.i.d;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandCgiPrefetchTask;", "", "instanceId", "", "userName", "versionType", "", "prefetchType", "ts", "", "futureResult", "Lcom/tencent/threadpool/runnable/FutureEx;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandCgiPrefetchedResp;", "(Ljava/lang/String;Ljava/lang/String;IIJLcom/tencent/threadpool/runnable/FutureEx;)V", "getFutureResult", "()Lcom/tencent/threadpool/runnable/FutureEx;", "getInstanceId", "()Ljava/lang/String;", "getPrefetchType", "()I", "getTs", "()J", "getUserName", "getVersionType", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends b
 {
-  public static void a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  final String eup;
+  private final int euz;
+  final int sVB;
+  final d<AppBrandCgiPrefetchedResp> sVE;
+  private final long ts;
+  private final String userName;
+  
+  public c(String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong, d<AppBrandCgiPrefetchedResp> paramd)
   {
-    AppMethodBeat.i(131717);
-    paramAppBrandInitConfigWC.resetSession();
-    paramAppBrandInitConfigWC.resetSession();
-    com.tencent.mm.kernel.g.RJ();
-    paramAppBrandInitConfigWC.uin = a.getUin();
-    boolean bool = com.tencent.mm.plugin.appbrand.app.g.auK().aJ(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.gXd);
-    if (com.tencent.mm.plugin.appbrand.app.g.auL().aG(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.gXd)) {
-      paramAppBrandStatObject.iFX = 1;
-    }
-    for (;;)
-    {
-      if (paramAppBrandInitConfigWC.vY()) {
-        ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.boots.a.c.class)).rQ(com.tencent.mm.plugin.boots.a.b.jRI);
-      }
-      if (!paramAppBrandInitConfigWC.hiD)
-      {
-        ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.boots.a.c.class)).rQ(com.tencent.mm.plugin.boots.a.b.jRK);
-        if (!paramAppBrandInitConfigWC.vY()) {
-          ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.boots.a.c.class)).rQ(com.tencent.mm.plugin.boots.a.b.jRL);
-        }
-      }
-      AppMethodBeat.o(131717);
-      return;
-      if (bool) {
-        paramAppBrandStatObject.iFX = 2;
-      } else {
-        paramAppBrandStatObject.iFX = 3;
-      }
-    }
+    AppMethodBeat.i(320758);
+    this.eup = paramString1;
+    this.userName = paramString2;
+    this.euz = paramInt1;
+    this.sVB = paramInt2;
+    this.ts = paramLong;
+    this.sVE = paramd;
+    AppMethodBeat.o(320758);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c
  * JD-Core Version:    0.7.0.1
  */

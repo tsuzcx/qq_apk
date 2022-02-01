@@ -12,9 +12,9 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import gbz;
 import gca;
 import gcb;
-import gcc;
 
 public class RoamLocalSearchBar
   extends LinearLayout
@@ -57,15 +57,15 @@ public class RoamLocalSearchBar
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext);
     this.c = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130903944, null);
     addView(this.c);
-    this.c.findViewById(2131233086).setVisibility(8);
+    this.c.findViewById(2131233085).setVisibility(8);
     IphoneTitleBarActivity.b(this.c);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.c.findViewById(2131233086));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.c.findViewById(2131233085));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131233087));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131233086));
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.c.findViewById(2131234398));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.c.findViewById(2131234397));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131563055);
   }
   
@@ -86,8 +86,8 @@ public class RoamLocalSearchBar
     if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog != null) {
       return;
     }
-    View localView1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131231448);
-    View localView2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131231839);
+    View localView1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131231447);
+    View localView2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131231838);
     int i = localView1.getHeight();
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog = new RoamSearchDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.a(this.jdField_a_of_type_JavaLangString);
@@ -99,9 +99,9 @@ public class RoamLocalSearchBar
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new gca(this, localView2, localView1));
-    localTranslateAnimation2.setAnimationListener(new gcb(this, localView2, i));
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.setOnDismissListener(new gcc(this, localView2, i, localView1, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new gbz(this, localView2, localView1));
+    localTranslateAnimation2.setAnimationListener(new gca(this, localView2, i));
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.setOnDismissListener(new gcb(this, localView2, i, localView1, localTranslateAnimation2));
     localView2.startAnimation(localTranslateAnimation1);
   }
   

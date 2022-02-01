@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.webview.swift;
 
-import begt;
-import bejv;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
 
-public class WebViewModule$2
+class WebViewModule$2
   implements Runnable
 {
-  public WebViewModule$2(begt parambegt) {}
+  WebViewModule$2(WebViewModule paramWebViewModule) {}
   
   public void run()
   {
-    bejv.a(this.this$0.b());
+    SwiftOfflineDataUtils.a(this.this$0.getUrlFromIntent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewModule.2
  * JD-Core Version:    0.7.0.1
  */

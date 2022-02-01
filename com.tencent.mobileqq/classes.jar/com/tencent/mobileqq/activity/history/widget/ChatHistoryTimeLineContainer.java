@@ -39,17 +39,15 @@ public class ChatHistoryTimeLineContainer
   {
     if (a(paramMotionEvent))
     {
-      switch (paramMotionEvent.getAction())
+      if (paramMotionEvent.getAction() == 1)
       {
-      }
-      for (;;)
-      {
-        getParent().requestDisallowInterceptTouchEvent(true);
-        return false;
-        if (this.a != null) {
-          this.a.onTouchEvent(paramMotionEvent);
+        AutoFitScrollView localAutoFitScrollView = this.a;
+        if (localAutoFitScrollView != null) {
+          localAutoFitScrollView.onTouchEvent(paramMotionEvent);
         }
       }
+      getParent().requestDisallowInterceptTouchEvent(true);
+      return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }

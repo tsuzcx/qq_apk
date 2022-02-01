@@ -1,66 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import protocol.KQQConfig.UpgradeInfo;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class fkt
-  implements Parcelable.Creator
+public class fkt
+  extends DownloadListener
 {
-  public UpgradeDetailWrapper a(Parcel paramParcel)
+  public fkt(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    ApkUpdateDetail localApkUpdateDetail = null;
-    UpgradeInfo localUpgradeInfo;
-    if (paramParcel.readInt() == 1)
-    {
-      localUpgradeInfo = new UpgradeInfo();
-      localUpgradeInfo.iAppid = paramParcel.readInt();
-      localUpgradeInfo.bAppType = paramParcel.readByte();
-      localUpgradeInfo.iUpgradeType = paramParcel.readInt();
-      localUpgradeInfo.iUpgradeSdkId = paramParcel.readInt();
-      localUpgradeInfo.strTitle = paramParcel.readString();
-      localUpgradeInfo.strUpgradeDesc = paramParcel.readString();
-      localUpgradeInfo.strUrl = paramParcel.readString();
-      localUpgradeInfo.iActionType = paramParcel.readInt();
-      localUpgradeInfo.bNewSwitch = paramParcel.readByte();
-      localUpgradeInfo.iNewTimeStamp = paramParcel.readInt();
-      localUpgradeInfo.strUpgradePageUrl = paramParcel.readString();
-      localUpgradeInfo.iIncrementUpgrade = paramParcel.readInt();
-      localUpgradeInfo.iTipsType = paramParcel.readInt();
-      localUpgradeInfo.strBannerPicUrl = paramParcel.readString();
-      localUpgradeInfo.strNewUpgradeDescURL = paramParcel.readString();
-      localUpgradeInfo.iDisplayDay = paramParcel.readInt();
-      localUpgradeInfo.iTipsWaitDay = paramParcel.readInt();
-      localUpgradeInfo.strProgressName = paramParcel.readString();
-      localUpgradeInfo.strNewTipsDescURL = paramParcel.readString();
-      localUpgradeInfo.strNewSoftwareURL = paramParcel.readString();
-    }
-    for (;;)
-    {
-      if (paramParcel.readInt() == 1)
-      {
-        localApkUpdateDetail = new ApkUpdateDetail();
-        localApkUpdateDetail.fileMd5 = paramParcel.readString();
-        localApkUpdateDetail.newapksize = paramParcel.readInt();
-        localApkUpdateDetail.packageName = paramParcel.readString();
-        localApkUpdateDetail.patchsize = paramParcel.readInt();
-        localApkUpdateDetail.sigMd5 = paramParcel.readString();
-        localApkUpdateDetail.updatemethod = paramParcel.readInt();
-        localApkUpdateDetail.url = paramParcel.readString();
-        localApkUpdateDetail.versioncode = paramParcel.readInt();
-        localApkUpdateDetail.versionname = paramParcel.readString();
-      }
-      paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
-      paramParcel.a = ConfigHandler.a(localUpgradeInfo);
-      return paramParcel;
-      localUpgradeInfo = null;
-    }
+    super(paramString1, paramString2);
   }
   
-  public UpgradeDetailWrapper[] a(int paramInt)
+  public void c(DownloadTask paramDownloadTask)
   {
-    return new UpgradeDetailWrapper[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleConfigDownloadListener.onDone|task=" + paramDownloadTask);
+    }
+    Object localObject = this.a.a(paramDownloadTask.k, false).getAbsolutePath() + File.separatorChar + "config.json";
+    File localFile = new File(this.a.a(paramDownloadTask.k, true), "config.json");
+    if (!localFile.exists()) {}
+    do
+    {
+      return;
+      FileUtils.a(localFile, new File(this.a.a(paramDownloadTask.k, false), "config.json"));
+      localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleConfigDownloadListener.onDone|bubbleId=" + paramDownloadTask.k + ",copy temp file to formal dir finish");
+      }
+      localObject = BubbleManager.a(this.a, paramDownloadTask.k, (String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleConfigDownloadListener.onDone|bubbleId=" + paramDownloadTask.k + ",createBubbleConfig bubbleConfig=" + localObject);
+      }
+    } while (localObject == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap.put(Integer.valueOf(paramDownloadTask.k), localObject);
+    this.a.a(paramDownloadTask.k, "json");
   }
 }
 

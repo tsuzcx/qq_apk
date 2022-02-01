@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.emoji;
 
 final class d
 {
-  public String abU;
+  public String afv;
   public int pos;
   
   d() {}
@@ -10,7 +10,7 @@ final class d
   d(int paramInt, String paramString)
   {
     this.pos = paramInt;
-    this.abU = paramString;
+    this.afv = paramString;
   }
 }
 

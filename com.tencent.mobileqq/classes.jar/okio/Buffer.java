@@ -7,122 +7,154 @@ import java.nio.ByteBuffer;
 import java.nio.channels.ByteChannel;
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
+import java.security.Key;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import kotlin.Deprecated;
+import kotlin.DeprecationLevel;
+import kotlin.Metadata;
+import kotlin.ReplaceWith;
+import kotlin.TypeCastException;
+import kotlin.collections.ArraysKt;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.JvmName;
+import kotlin.jvm.JvmOverloads;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.Charsets;
+import okio.internal.BufferKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/Buffer;", "Lokio/BufferedSource;", "Lokio/BufferedSink;", "", "Ljava/nio/channels/ByteChannel;", "()V", "buffer", "getBuffer", "()Lokio/Buffer;", "head", "Lokio/Segment;", "<set-?>", "", "size", "()J", "setSize$okio", "(J)V", "clear", "", "clone", "close", "completeSegmentByteCount", "copy", "copyTo", "out", "Ljava/io/OutputStream;", "offset", "byteCount", "digest", "Lokio/ByteString;", "algorithm", "", "emit", "emitCompleteSegments", "equals", "", "other", "", "exhausted", "flush", "get", "", "pos", "getByte", "index", "-deprecated_getByte", "hashCode", "", "hmac", "key", "hmacSha1", "hmacSha256", "hmacSha512", "indexOf", "b", "fromIndex", "toIndex", "bytes", "indexOfElement", "targetBytes", "inputStream", "Ljava/io/InputStream;", "isOpen", "md5", "outputStream", "peek", "rangeEquals", "bytesOffset", "read", "sink", "Ljava/nio/ByteBuffer;", "", "readAll", "Lokio/Sink;", "readAndWriteUnsafe", "Lokio/Buffer$UnsafeCursor;", "unsafeCursor", "readByte", "readByteArray", "readByteString", "readDecimalLong", "readFrom", "input", "forever", "readFully", "readHexadecimalUnsignedLong", "readInt", "readIntLe", "readLong", "readLongLe", "readShort", "", "readShortLe", "readString", "charset", "Ljava/nio/charset/Charset;", "readUnsafe", "readUtf8", "readUtf8CodePoint", "readUtf8Line", "readUtf8LineStrict", "limit", "request", "require", "select", "options", "Lokio/Options;", "sha1", "sha256", "sha512", "-deprecated_size", "skip", "snapshot", "timeout", "Lokio/Timeout;", "toString", "writableSegment", "minimumCapacity", "writableSegment$okio", "write", "source", "byteString", "Lokio/Source;", "writeAll", "writeByte", "writeDecimalLong", "v", "writeHexadecimalUnsignedLong", "writeInt", "i", "writeIntLe", "writeLong", "writeLongLe", "writeShort", "s", "writeShortLe", "writeString", "string", "beginIndex", "endIndex", "writeTo", "writeUtf8", "writeUtf8CodePoint", "codePoint", "UnsafeCursor", "okio"}, k=1, mv={1, 1, 16})
 public final class Buffer
   implements Cloneable, ByteChannel, BufferedSink, BufferedSource
 {
-  private static final byte[] DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  static final int REPLACEMENT_CHARACTER = 65533;
+  @JvmField
   @Nullable
-  Segment head;
-  long size;
+  public Segment head;
+  private long size;
   
-  private ByteString digest(String paramString)
+  private final ByteString digest(String paramString)
   {
-    try
+    MessageDigest localMessageDigest = MessageDigest.getInstance(paramString);
+    Segment localSegment2 = this.head;
+    if (localSegment2 != null)
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance(paramString);
-      if (this.head != null)
+      localMessageDigest.update(localSegment2.data, localSegment2.pos, localSegment2.limit - localSegment2.pos);
+      Segment localSegment1 = localSegment2.next;
+      paramString = localSegment1;
+      if (localSegment1 == null)
       {
-        localMessageDigest.update(this.head.data, this.head.pos, this.head.limit - this.head.pos);
-        for (paramString = this.head.next; paramString != this.head; paramString = paramString.next) {
-          localMessageDigest.update(paramString.data, paramString.pos, paramString.limit - paramString.pos);
+        Intrinsics.throwNpe();
+        paramString = localSegment1;
+      }
+      while (paramString != localSegment2)
+      {
+        localMessageDigest.update(paramString.data, paramString.pos, paramString.limit - paramString.pos);
+        localSegment1 = paramString.next;
+        paramString = localSegment1;
+        if (localSegment1 == null)
+        {
+          Intrinsics.throwNpe();
+          paramString = localSegment1;
         }
       }
-      paramString = ByteString.of(localMessageDigest.digest());
-      return paramString;
     }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new AssertionError();
-    }
+    paramString = localMessageDigest.digest();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "messageDigest.digest()");
+    return new ByteString(paramString);
   }
   
-  private ByteString hmac(String paramString, ByteString paramByteString)
+  private final ByteString hmac(String paramString, ByteString paramByteString)
   {
     try
     {
       Mac localMac = Mac.getInstance(paramString);
-      localMac.init(new SecretKeySpec(paramByteString.toByteArray(), paramString));
-      if (this.head != null)
+      localMac.init((Key)new SecretKeySpec(paramByteString.internalArray$okio(), paramString));
+      Segment localSegment = this.head;
+      if (localSegment != null)
       {
-        localMac.update(this.head.data, this.head.pos, this.head.limit - this.head.pos);
-        for (paramString = this.head.next; paramString != this.head; paramString = paramString.next) {
+        localMac.update(localSegment.data, localSegment.pos, localSegment.limit - localSegment.pos);
+        paramByteString = localSegment.next;
+        paramString = paramByteString;
+        if (paramByteString == null)
+        {
+          Intrinsics.throwNpe();
+          paramString = paramByteString;
+        }
+        while (paramString != localSegment)
+        {
           localMac.update(paramString.data, paramString.pos, paramString.limit - paramString.pos);
+          paramByteString = paramString.next;
+          paramString = paramByteString;
+          if (paramByteString == null)
+          {
+            Intrinsics.throwNpe();
+            paramString = paramByteString;
+          }
         }
       }
-      paramString = ByteString.of(localMac.doFinal());
+      paramString = localMac.doFinal();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "mac.doFinal()");
+      paramString = new ByteString(paramString);
       return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new AssertionError();
     }
     catch (InvalidKeyException paramString)
     {
-      throw new IllegalArgumentException(paramString);
+      paramString = (Throwable)new IllegalArgumentException((Throwable)paramString);
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
-  private boolean rangeEquals(Segment paramSegment, int paramInt1, ByteString paramByteString, int paramInt2, int paramInt3)
+  private final void readFrom(InputStream paramInputStream, long paramLong, boolean paramBoolean)
   {
-    int i = paramSegment.limit;
-    byte[] arrayOfByte = paramSegment.data;
-    while (paramInt2 < paramInt3)
+    for (;;)
     {
-      int j = i;
-      int k = paramInt1;
-      Segment localSegment = paramSegment;
-      if (paramInt1 == i)
-      {
-        localSegment = paramSegment.next;
-        arrayOfByte = localSegment.data;
-        k = localSegment.pos;
-        j = localSegment.limit;
-      }
-      if (arrayOfByte[k] != paramByteString.getByte(paramInt2)) {
-        return false;
-      }
-      paramInt1 = k + 1;
-      paramInt2 += 1;
-      i = j;
-      paramSegment = localSegment;
-    }
-    return true;
-  }
-  
-  private void readFrom(InputStream paramInputStream, long paramLong, boolean paramBoolean)
-  {
-    if (paramInputStream == null) {
-      throw new IllegalArgumentException("in == null");
-    }
-    int i;
-    do
-    {
-      localSegment.limit += i;
-      this.size += i;
-      paramLong -= i;
       if ((paramLong <= 0L) && (!paramBoolean)) {
-        break;
+        return;
       }
-      Segment localSegment = writableSegment(1);
-      i = (int)Math.min(paramLong, 8192 - localSegment.limit);
+      Segment localSegment = writableSegment$okio(1);
+      int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
       i = paramInputStream.read(localSegment.data, localSegment.limit, i);
-    } while (i != -1);
-    if (paramBoolean) {
-      return;
+      if (i == -1)
+      {
+        if (localSegment.pos == localSegment.limit)
+        {
+          this.head = localSegment.pop();
+          SegmentPool.INSTANCE.recycle(localSegment);
+        }
+        if (paramBoolean) {
+          return;
+        }
+        throw ((Throwable)new EOFException());
+      }
+      localSegment.limit += i;
+      long l1 = this.size;
+      long l2 = i;
+      this.size = (l1 + l2);
+      paramLong -= l2;
     }
-    throw new EOFException();
   }
   
+  @Deprecated(level=DeprecationLevel.ERROR, message="moved to operator function", replaceWith=@ReplaceWith(expression="this[index]", imports={}))
+  @JvmName(name="-deprecated_getByte")
+  public final byte -deprecated_getByte(long paramLong)
+  {
+    return getByte(paramLong);
+  }
+  
+  @Deprecated(level=DeprecationLevel.ERROR, message="moved to val", replaceWith=@ReplaceWith(expression="size", imports={}))
+  @JvmName(name="-deprecated_size")
+  public final long -deprecated_size()
+  {
+    return this.size;
+  }
+  
+  @NotNull
   public Buffer buffer()
   {
     return this;
@@ -130,114 +162,103 @@ public final class Buffer
   
   public final void clear()
   {
-    try
-    {
-      skip(this.size);
-      return;
-    }
-    catch (EOFException localEOFException)
-    {
-      throw new AssertionError(localEOFException);
-    }
+    skip(size());
   }
   
+  @NotNull
   public Buffer clone()
   {
-    Buffer localBuffer = new Buffer();
-    if (this.size == 0L) {
-      return localBuffer;
-    }
-    localBuffer.head = this.head.sharedCopy();
-    Segment localSegment1 = localBuffer.head;
-    Segment localSegment2 = localBuffer.head;
-    Segment localSegment3 = localBuffer.head;
-    localSegment2.prev = localSegment3;
-    localSegment1.next = localSegment3;
-    for (localSegment1 = this.head.next; localSegment1 != this.head; localSegment1 = localSegment1.next) {
-      localBuffer.head.prev.push(localSegment1.sharedCopy());
-    }
-    localBuffer.size = this.size;
-    return localBuffer;
+    return copy();
   }
   
   public void close() {}
   
   public final long completeSegmentByteCount()
   {
-    long l2 = this.size;
-    long l1;
+    long l2 = size();
     if (l2 == 0L) {
-      l1 = 0L;
+      return 0L;
     }
-    Segment localSegment;
-    do
+    Segment localSegment = this.head;
+    if (localSegment == null) {
+      Intrinsics.throwNpe();
+    }
+    localSegment = localSegment.prev;
+    if (localSegment == null) {
+      Intrinsics.throwNpe();
+    }
+    long l1 = l2;
+    if (localSegment.limit < 8192)
     {
-      do
-      {
-        return l1;
-        localSegment = this.head.prev;
-        l1 = l2;
-      } while (localSegment.limit >= 8192);
       l1 = l2;
-    } while (!localSegment.owner);
-    return l2 - (localSegment.limit - localSegment.pos);
-  }
-  
-  public final Buffer copyTo(OutputStream paramOutputStream)
-  {
-    return copyTo(paramOutputStream, 0L, this.size);
-  }
-  
-  public final Buffer copyTo(OutputStream paramOutputStream, long paramLong1, long paramLong2)
-  {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("out == null");
+      if (localSegment.owner) {
+        l1 = l2 - (localSegment.limit - localSegment.pos);
+      }
     }
-    Util.checkOffsetAndCount(this.size, paramLong1, paramLong2);
-    if (paramLong2 == 0L) {}
-    for (;;)
+    return l1;
+  }
+  
+  @NotNull
+  public final Buffer copy()
+  {
+    Buffer localBuffer = new Buffer();
+    if (size() == 0L) {
+      return localBuffer;
+    }
+    Segment localSegment2 = this.head;
+    if (localSegment2 == null) {
+      Intrinsics.throwNpe();
+    }
+    Segment localSegment3 = localSegment2.sharedCopy();
+    localBuffer.head = localSegment3;
+    localSegment3.prev = localBuffer.head;
+    localSegment3.next = localSegment3.prev;
+    for (Segment localSegment1 = localSegment2.next; localSegment1 != localSegment2; localSegment1 = localSegment1.next)
     {
-      return this;
-      Segment localSegment2;
-      long l1;
-      long l2;
-      for (Segment localSegment1 = this.head;; localSegment1 = localSegment1.next)
-      {
-        localSegment2 = localSegment1;
-        l1 = paramLong1;
-        l2 = paramLong2;
-        if (paramLong1 < localSegment1.limit - localSegment1.pos) {
-          break;
-        }
-        paramLong1 -= localSegment1.limit - localSegment1.pos;
+      Segment localSegment4 = localSegment3.prev;
+      if (localSegment4 == null) {
+        Intrinsics.throwNpe();
       }
-      while (l2 > 0L)
-      {
-        int i = (int)(localSegment2.pos + l1);
-        int j = (int)Math.min(localSegment2.limit - i, l2);
-        paramOutputStream.write(localSegment2.data, i, j);
-        l2 -= j;
-        localSegment2 = localSegment2.next;
-        l1 = 0L;
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
       }
+      localSegment4.push(localSegment1.sharedCopy());
     }
+    localBuffer.setSize$okio(size());
+    return localBuffer;
   }
   
-  public final Buffer copyTo(Buffer paramBuffer, long paramLong1, long paramLong2)
+  @JvmOverloads
+  @NotNull
+  public final Buffer copyTo(@NotNull OutputStream paramOutputStream)
   {
-    if (paramBuffer == null) {
-      throw new IllegalArgumentException("out == null");
-    }
-    Util.checkOffsetAndCount(this.size, paramLong1, paramLong2);
+    return copyTo$default(this, paramOutputStream, 0L, 0L, 6, null);
+  }
+  
+  @JvmOverloads
+  @NotNull
+  public final Buffer copyTo(@NotNull OutputStream paramOutputStream, long paramLong)
+  {
+    return copyTo$default(this, paramOutputStream, paramLong, 0L, 4, null);
+  }
+  
+  @JvmOverloads
+  @NotNull
+  public final Buffer copyTo(@NotNull OutputStream paramOutputStream, long paramLong1, long paramLong2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramOutputStream, "out");
+    -Util.checkOffsetAndCount(this.size, paramLong1, paramLong2);
     if (paramLong2 == 0L) {
       return this;
     }
-    paramBuffer.size += paramLong2;
     Segment localSegment2;
     long l1;
     long l2;
     for (Segment localSegment1 = this.head;; localSegment1 = localSegment1.next)
     {
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
+      }
       localSegment2 = localSegment1;
       l1 = paramLong1;
       l2 = paramLong2;
@@ -246,95 +267,166 @@ public final class Buffer
       }
       paramLong1 -= localSegment1.limit - localSegment1.pos;
     }
-    label103:
-    if (l2 > 0L)
+    while (l2 > 0L)
     {
-      localSegment1 = localSegment2.sharedCopy();
-      localSegment1.pos = ((int)(localSegment1.pos + l1));
-      localSegment1.limit = Math.min(localSegment1.pos + (int)l2, localSegment1.limit);
-      if (paramBuffer.head != null) {
-        break label211;
+      if (localSegment2 == null) {
+        Intrinsics.throwNpe();
       }
-      localSegment1.prev = localSegment1;
-      localSegment1.next = localSegment1;
-      paramBuffer.head = localSegment1;
+      int i = (int)(localSegment2.pos + l1);
+      int j = (int)Math.min(localSegment2.limit - i, l2);
+      paramOutputStream.write(localSegment2.data, i, j);
+      l2 -= j;
+      localSegment2 = localSegment2.next;
+      l1 = 0L;
     }
-    for (;;)
+    return this;
+  }
+  
+  @NotNull
+  public final Buffer copyTo(@NotNull Buffer paramBuffer, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "out");
+    return copyTo(paramBuffer, paramLong, this.size - paramLong);
+  }
+  
+  @NotNull
+  public final Buffer copyTo(@NotNull Buffer paramBuffer, long paramLong1, long paramLong2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "out");
+    -Util.checkOffsetAndCount(size(), paramLong1, paramLong2);
+    if (paramLong2 == 0L) {
+      return this;
+    }
+    paramBuffer.setSize$okio(paramBuffer.size() + paramLong2);
+    Segment localSegment2;
+    long l1;
+    long l2;
+    for (Segment localSegment1 = this.head;; localSegment1 = localSegment1.next)
     {
+      if (localSegment1 == null) {
+        Intrinsics.throwNpe();
+      }
+      localSegment2 = localSegment1;
+      l1 = paramLong1;
+      l2 = paramLong2;
+      if (paramLong1 < localSegment1.limit - localSegment1.pos) {
+        break;
+      }
+      paramLong1 -= localSegment1.limit - localSegment1.pos;
+    }
+    while (l2 > 0L)
+    {
+      if (localSegment2 == null) {
+        Intrinsics.throwNpe();
+      }
+      localSegment1 = localSegment2.sharedCopy();
+      localSegment1.pos += (int)l1;
+      localSegment1.limit = Math.min(localSegment1.pos + (int)l2, localSegment1.limit);
+      Segment localSegment3 = paramBuffer.head;
+      if (localSegment3 == null)
+      {
+        localSegment1.prev = localSegment1;
+        localSegment1.next = localSegment1.prev;
+        paramBuffer.head = localSegment1.next;
+      }
+      else
+      {
+        if (localSegment3 == null) {
+          Intrinsics.throwNpe();
+        }
+        localSegment3 = localSegment3.prev;
+        if (localSegment3 == null) {
+          Intrinsics.throwNpe();
+        }
+        localSegment3.push(localSegment1);
+      }
       l2 -= localSegment1.limit - localSegment1.pos;
       localSegment2 = localSegment2.next;
       l1 = 0L;
-      break label103;
-      break;
-      label211:
-      paramBuffer.head.prev.push(localSegment1);
     }
+    return this;
   }
   
-  public BufferedSink emit()
+  @NotNull
+  public Buffer emit()
   {
     return this;
   }
   
+  @NotNull
   public Buffer emitCompleteSegments()
   {
     return this;
   }
   
-  public boolean equals(Object paramObject)
+  public boolean equals(@Nullable Object paramObject)
   {
-    long l1 = 0L;
-    if (this == paramObject) {
-      return true;
-    }
-    if (!(paramObject instanceof Buffer)) {
-      return false;
-    }
-    paramObject = (Buffer)paramObject;
-    if (this.size != paramObject.size) {
-      return false;
-    }
-    if (this.size == 0L) {
-      return true;
-    }
-    Object localObject2 = this.head;
-    paramObject = paramObject.head;
-    int j = ((Segment)localObject2).pos;
-    int i = paramObject.pos;
-    while (l1 < this.size)
+    if (this == paramObject) {}
+    for (;;)
     {
-      long l2 = Math.min(((Segment)localObject2).limit - j, paramObject.limit - i);
-      int k = 0;
-      while (k < l2)
+      return true;
+      if (!(paramObject instanceof Buffer)) {
+        return false;
+      }
+      long l1 = size();
+      paramObject = (Buffer)paramObject;
+      if (l1 != paramObject.size()) {
+        return false;
+      }
+      if (size() != 0L)
       {
-        if (localObject2.data[j] != paramObject.data[i]) {
-          return false;
+        Object localObject2 = this.head;
+        if (localObject2 == null) {
+          Intrinsics.throwNpe();
         }
-        k += 1;
-        i += 1;
-        j += 1;
+        paramObject = paramObject.head;
+        if (paramObject == null) {
+          Intrinsics.throwNpe();
+        }
+        int j = ((Segment)localObject2).pos;
+        int i = paramObject.pos;
+        l1 = 0L;
+        while (l1 < size())
+        {
+          long l3 = Math.min(((Segment)localObject2).limit - j, paramObject.limit - i);
+          long l2 = 0L;
+          int k = j;
+          while (l2 < l3)
+          {
+            if (localObject2.data[k] != paramObject.data[i]) {
+              return false;
+            }
+            l2 += 1L;
+            k += 1;
+            i += 1;
+          }
+          Object localObject1 = localObject2;
+          j = k;
+          if (k == ((Segment)localObject2).limit)
+          {
+            localObject1 = ((Segment)localObject2).next;
+            if (localObject1 == null) {
+              Intrinsics.throwNpe();
+            }
+            j = ((Segment)localObject1).pos;
+          }
+          Object localObject3 = paramObject;
+          k = i;
+          if (i == paramObject.limit)
+          {
+            localObject3 = paramObject.next;
+            if (localObject3 == null) {
+              Intrinsics.throwNpe();
+            }
+            k = ((Segment)localObject3).pos;
+          }
+          l1 += l3;
+          localObject2 = localObject1;
+          paramObject = localObject3;
+          i = k;
+        }
       }
-      k = j;
-      Object localObject1 = localObject2;
-      if (j == ((Segment)localObject2).limit)
-      {
-        localObject1 = ((Segment)localObject2).next;
-        k = ((Segment)localObject1).pos;
-      }
-      j = i;
-      localObject2 = paramObject;
-      if (i == paramObject.limit)
-      {
-        localObject2 = paramObject.next;
-        j = ((Segment)localObject2).pos;
-      }
-      l1 += l2;
-      i = j;
-      j = k;
-      paramObject = localObject2;
-      localObject2 = localObject1;
     }
-    return true;
   }
   
   public boolean exhausted()
@@ -344,66 +436,103 @@ public final class Buffer
   
   public void flush() {}
   
+  @NotNull
+  public Buffer getBuffer()
+  {
+    return this;
+  }
+  
+  @JvmName(name="getByte")
   public final byte getByte(long paramLong)
   {
-    Util.checkOffsetAndCount(this.size, paramLong, 1L);
-    if (this.size - paramLong > paramLong) {
-      for (localSegment = this.head;; localSegment = localSegment.next)
-      {
-        int i = localSegment.limit - localSegment.pos;
-        if (paramLong < i) {
-          return localSegment.data[(localSegment.pos + (int)paramLong)];
-        }
-        paramLong -= i;
-      }
-    }
-    paramLong -= this.size;
-    for (Segment localSegment = this.head.prev;; localSegment = localSegment.prev)
+    -Util.checkOffsetAndCount(size(), paramLong, 1L);
+    Segment localSegment = this.head;
+    if (localSegment != null)
     {
-      paramLong += localSegment.limit - localSegment.pos;
-      if (paramLong >= 0L) {
-        return localSegment.data[(localSegment.pos + (int)paramLong)];
+      if (size() - paramLong < paramLong)
+      {
+        for (l1 = size(); l1 > paramLong; l1 -= localSegment.limit - localSegment.pos)
+        {
+          localSegment = localSegment.prev;
+          if (localSegment == null) {
+            Intrinsics.throwNpe();
+          }
+        }
+        if (localSegment == null) {
+          Intrinsics.throwNpe();
+        }
+        return localSegment.data[((int)(localSegment.pos + paramLong - l1))];
+      }
+      long l2;
+      for (long l1 = 0L;; l1 = l2)
+      {
+        l2 = localSegment.limit - localSegment.pos + l1;
+        if (l2 > paramLong)
+        {
+          if (localSegment == null) {
+            Intrinsics.throwNpe();
+          }
+          return localSegment.data[((int)(localSegment.pos + paramLong - l1))];
+        }
+        localSegment = localSegment.next;
+        if (localSegment == null) {
+          Intrinsics.throwNpe();
+        }
       }
     }
+    localSegment = (Segment)null;
+    Intrinsics.throwNpe();
+    return localSegment.data[((int)(localSegment.pos + paramLong + 1L))];
   }
   
   public int hashCode()
   {
     Object localObject = this.head;
-    if (localObject == null) {
-      return 0;
-    }
-    int j = 1;
-    int i;
-    Segment localSegment;
-    do
+    if (localObject != null)
     {
-      int k = ((Segment)localObject).pos;
-      int m = ((Segment)localObject).limit;
-      for (i = j; k < m; i = j + i * 31)
+      int i = 1;
+      int j;
+      Segment localSegment;
+      do
       {
-        j = localObject.data[k];
-        k += 1;
-      }
-      localSegment = ((Segment)localObject).next;
-      j = i;
-      localObject = localSegment;
-    } while (localSegment != this.head);
-    return i;
+        int k = ((Segment)localObject).pos;
+        int m = ((Segment)localObject).limit;
+        j = i;
+        while (k < m)
+        {
+          j = j * 31 + localObject.data[k];
+          k += 1;
+        }
+        localSegment = ((Segment)localObject).next;
+        if (localSegment == null) {
+          Intrinsics.throwNpe();
+        }
+        localObject = localSegment;
+        i = j;
+      } while (localSegment != this.head);
+      return j;
+    }
+    return 0;
   }
   
-  public final ByteString hmacSha1(ByteString paramByteString)
+  @NotNull
+  public final ByteString hmacSha1(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "key");
     return hmac("HmacSHA1", paramByteString);
   }
   
-  public final ByteString hmacSha256(ByteString paramByteString)
+  @NotNull
+  public final ByteString hmacSha256(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "key");
     return hmac("HmacSHA256", paramByteString);
   }
   
-  public final ByteString hmacSha512(ByteString paramByteString)
+  @NotNull
+  public final ByteString hmacSha512(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "key");
     return hmac("HmacSHA512", paramByteString);
   }
   
@@ -419,238 +548,520 @@ public final class Buffer
   
   public long indexOf(byte paramByte, long paramLong1, long paramLong2)
   {
-    if ((paramLong1 < 0L) || (paramLong2 < paramLong1)) {
-      throw new IllegalArgumentException(String.format("size=%s fromIndex=%s toIndex=%s", new Object[] { Long.valueOf(this.size), Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    long l2 = 0L;
+    int i;
+    if ((0L <= paramLong1) && (paramLong2 >= paramLong1)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    long l2 = paramLong2;
-    if (paramLong2 > this.size) {
-      l2 = this.size;
-    }
-    if (paramLong1 == l2) {
-      return -1L;
-    }
-    Object localObject1 = this.head;
-    if (localObject1 == null) {
-      return -1L;
-    }
-    if (this.size - paramLong1 < paramLong1)
+    if (i != 0)
     {
-      l1 = this.size;
-      localObject2 = localObject1;
-      for (;;)
+      long l1 = paramLong2;
+      if (paramLong2 > size()) {
+        l1 = size();
+      }
+      if (paramLong1 == l1) {
+        return -1L;
+      }
+      Object localObject2 = this.head;
+      if (localObject2 != null)
       {
-        paramLong2 = l1;
+        paramLong2 = l2;
         localObject1 = localObject2;
-        if (l1 <= paramLong1) {
-          break;
-        }
-        localObject2 = ((Segment)localObject2).prev;
-        l1 -= ((Segment)localObject2).limit - ((Segment)localObject2).pos;
-      }
-    }
-    paramLong2 = 0L;
-    Object localObject2 = localObject1;
-    for (;;)
-    {
-      l1 = ((Segment)localObject2).limit - ((Segment)localObject2).pos + paramLong2;
-      localObject1 = localObject2;
-      if (l1 >= paramLong1) {
-        break;
-      }
-      localObject2 = ((Segment)localObject2).next;
-      paramLong2 = l1;
-    }
-    paramLong2 = ((Segment)localObject1).limit - ((Segment)localObject1).pos + paramLong2;
-    localObject1 = ((Segment)localObject1).next;
-    paramLong1 = paramLong2;
-    long l1 = paramLong2;
-    paramLong2 = paramLong1;
-    for (;;)
-    {
-      if (paramLong2 < l2)
-      {
-        localObject2 = ((Segment)localObject1).data;
-        int j = (int)Math.min(((Segment)localObject1).limit, ((Segment)localObject1).pos + l2 - paramLong2);
-        int i = (int)(((Segment)localObject1).pos + l1 - paramLong2);
-        while (i < j)
+        int j;
+        if (size() - paramLong1 < paramLong1)
         {
-          if (localObject2[i] == paramByte) {
-            return i - ((Segment)localObject1).pos + paramLong2;
+          paramLong2 = size();
+          localObject1 = localObject2;
+          while (paramLong2 > paramLong1)
+          {
+            localObject1 = ((Segment)localObject1).prev;
+            if (localObject1 == null) {
+              Intrinsics.throwNpe();
+            }
+            paramLong2 -= ((Segment)localObject1).limit - ((Segment)localObject1).pos;
           }
-          i += 1;
+          if (localObject1 != null) {
+            while (paramLong2 < l1)
+            {
+              localObject2 = ((Segment)localObject1).data;
+              j = (int)Math.min(((Segment)localObject1).limit, ((Segment)localObject1).pos + l1 - paramLong2);
+              i = (int)(((Segment)localObject1).pos + paramLong1 - paramLong2);
+              while (i < j)
+              {
+                if (localObject2[i] == paramByte) {
+                  return i - ((Segment)localObject1).pos + paramLong2;
+                }
+                i += 1;
+              }
+              paramLong1 = ((Segment)localObject1).limit - ((Segment)localObject1).pos + paramLong2;
+              localObject1 = ((Segment)localObject1).next;
+              if (localObject1 == null) {
+                Intrinsics.throwNpe();
+              }
+              paramLong2 = paramLong1;
+            }
+          }
         }
-        break;
+        else
+        {
+          for (;;)
+          {
+            l2 = ((Segment)localObject1).limit - ((Segment)localObject1).pos + paramLong2;
+            if (l2 > paramLong1)
+            {
+              if (localObject1 == null) {
+                break label454;
+              }
+              for (;;)
+              {
+                if (paramLong2 >= l1) {
+                  break label454;
+                }
+                localObject2 = ((Segment)localObject1).data;
+                j = (int)Math.min(((Segment)localObject1).limit, ((Segment)localObject1).pos + l1 - paramLong2);
+                i = (int)(((Segment)localObject1).pos + paramLong1 - paramLong2);
+                for (;;)
+                {
+                  if (i >= j) {
+                    break label389;
+                  }
+                  if (localObject2[i] == paramByte) {
+                    break;
+                  }
+                  i += 1;
+                }
+                label389:
+                paramLong1 = ((Segment)localObject1).limit - ((Segment)localObject1).pos + paramLong2;
+                localObject1 = ((Segment)localObject1).next;
+                if (localObject1 == null) {
+                  Intrinsics.throwNpe();
+                }
+                paramLong2 = paramLong1;
+              }
+            }
+            localObject1 = ((Segment)localObject1).next;
+            if (localObject1 == null) {
+              Intrinsics.throwNpe();
+            }
+            paramLong2 = l2;
+          }
+        }
       }
+      else
+      {
+        localObject1 = (Segment)null;
+      }
+      label454:
       return -1L;
-      l1 = paramLong1;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("size=");
+    ((StringBuilder)localObject1).append(size());
+    ((StringBuilder)localObject1).append(" fromIndex=");
+    ((StringBuilder)localObject1).append(paramLong1);
+    ((StringBuilder)localObject1).append(" toIndex=");
+    ((StringBuilder)localObject1).append(paramLong2);
+    localObject1 = (Throwable)new IllegalArgumentException(((StringBuilder)localObject1).toString().toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
   
-  public long indexOf(ByteString paramByteString)
+  public long indexOf(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
     return indexOf(paramByteString, 0L);
   }
   
-  public long indexOf(ByteString paramByteString, long paramLong)
+  public long indexOf(@NotNull ByteString paramByteString, long paramLong)
   {
-    if (paramByteString.size() == 0) {
-      throw new IllegalArgumentException("bytes is empty");
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
+    int i;
+    if (paramByteString.size() > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("fromIndex < 0");
-    }
-    Object localObject1 = this.head;
-    if (localObject1 == null) {
-      return -1L;
-    }
-    if (this.size - paramLong < paramLong)
+    if (i != 0)
     {
-      l2 = this.size;
-      localObject2 = localObject1;
-      for (;;)
-      {
-        l1 = l2;
-        localObject1 = localObject2;
-        if (l2 <= paramLong) {
-          break;
-        }
-        localObject2 = ((Segment)localObject2).prev;
-        l2 -= ((Segment)localObject2).limit - ((Segment)localObject2).pos;
+      long l1 = 0L;
+      if (paramLong >= 0L) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0)
+      {
+        Object localObject2 = this.head;
+        if (localObject2 != null)
+        {
+          Object localObject1 = localObject2;
+          int j;
+          int k;
+          long l2;
+          long l3;
+          int m;
+          if (size() - paramLong < paramLong)
+          {
+            l1 = size();
+            localObject1 = localObject2;
+            while (l1 > paramLong)
+            {
+              localObject1 = ((Segment)localObject1).prev;
+              if (localObject1 == null) {
+                Intrinsics.throwNpe();
+              }
+              l1 -= ((Segment)localObject1).limit - ((Segment)localObject1).pos;
+            }
+            if (localObject1 != null)
+            {
+              localObject2 = paramByteString.internalArray$okio();
+              j = localObject2[0];
+              k = paramByteString.size();
+              l2 = size() - k + 1L;
+              while (l1 < l2)
+              {
+                paramByteString = ((Segment)localObject1).data;
+                i = ((Segment)localObject1).limit;
+                l3 = ((Segment)localObject1).pos;
+                m = (int)Math.min(i, l3 + l2 - l1);
+                i = (int)(((Segment)localObject1).pos + paramLong - l1);
+                while (i < m)
+                {
+                  if ((paramByteString[i] == j) && (BufferKt.rangeEquals((Segment)localObject1, i + 1, (byte[])localObject2, 1, k)))
+                  {
+                    paramLong = i - ((Segment)localObject1).pos + l1;
+                    return paramLong;
+                  }
+                  i += 1;
+                }
+                paramLong = l1 + (((Segment)localObject1).limit - ((Segment)localObject1).pos);
+                localObject1 = ((Segment)localObject1).next;
+                if (localObject1 == null) {
+                  Intrinsics.throwNpe();
+                }
+                l1 = paramLong;
+              }
+            }
+          }
+          else
+          {
+            for (;;)
+            {
+              l2 = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+              if (l2 > paramLong)
+              {
+                if (localObject1 == null) {
+                  break label559;
+                }
+                localObject2 = paramByteString.internalArray$okio();
+                j = localObject2[0];
+                k = paramByteString.size();
+                l2 = size() - k + 1L;
+                for (;;)
+                {
+                  if (l1 >= l2) {
+                    break label559;
+                  }
+                  paramByteString = ((Segment)localObject1).data;
+                  i = ((Segment)localObject1).limit;
+                  l3 = ((Segment)localObject1).pos;
+                  m = (int)Math.min(i, l3 + l2 - l1);
+                  i = (int)(((Segment)localObject1).pos + paramLong - l1);
+                  for (;;)
+                  {
+                    if (i >= m) {
+                      break label495;
+                    }
+                    if ((paramByteString[i] == j) && (BufferKt.rangeEquals((Segment)localObject1, i + 1, (byte[])localObject2, 1, k)))
+                    {
+                      paramLong = i - ((Segment)localObject1).pos + l1;
+                      break;
+                    }
+                    i += 1;
+                  }
+                  label495:
+                  paramLong = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+                  localObject1 = ((Segment)localObject1).next;
+                  if (localObject1 == null) {
+                    Intrinsics.throwNpe();
+                  }
+                  l1 = paramLong;
+                }
+              }
+              localObject1 = ((Segment)localObject1).next;
+              if (localObject1 == null) {
+                Intrinsics.throwNpe();
+              }
+              l1 = l2;
+            }
+          }
+        }
+        else
+        {
+          paramByteString = (Segment)null;
+        }
+        label559:
+        return -1L;
+      }
+      paramByteString = new StringBuilder();
+      paramByteString.append("fromIndex < 0: ");
+      paramByteString.append(paramLong);
+      throw ((Throwable)new IllegalArgumentException(paramByteString.toString().toString()));
     }
-    long l1 = 0L;
-    Object localObject2 = localObject1;
+    paramByteString = (Throwable)new IllegalArgumentException("bytes is empty".toString());
     for (;;)
     {
-      l2 = ((Segment)localObject2).limit - ((Segment)localObject2).pos + l1;
-      localObject1 = localObject2;
-      if (l2 >= paramLong) {
-        break;
-      }
-      localObject2 = ((Segment)localObject2).next;
-      l1 = l2;
+      throw paramByteString;
     }
-    int j = paramByteString.getByte(0);
-    int k = paramByteString.size();
-    long l2 = this.size - k + 1L;
-    while (l1 < l2)
-    {
-      localObject2 = ((Segment)localObject1).data;
-      int m = (int)Math.min(((Segment)localObject1).limit, ((Segment)localObject1).pos + l2 - l1);
-      int i = (int)(((Segment)localObject1).pos + paramLong - l1);
-      while (i < m)
-      {
-        if ((localObject2[i] == j) && (rangeEquals((Segment)localObject1, i + 1, paramByteString, 1, k))) {
-          return i - ((Segment)localObject1).pos + l1;
-        }
-        i += 1;
-      }
-      paramLong = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
-      localObject1 = ((Segment)localObject1).next;
-      l1 = paramLong;
-    }
-    return -1L;
   }
   
-  public long indexOfElement(ByteString paramByteString)
+  public long indexOfElement(@NotNull ByteString paramByteString)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "targetBytes");
     return indexOfElement(paramByteString, 0L);
   }
   
-  public long indexOfElement(ByteString paramByteString, long paramLong)
+  public long indexOfElement(@NotNull ByteString paramByteString, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("fromIndex < 0");
+    Intrinsics.checkParameterIsNotNull(paramByteString, "targetBytes");
+    long l1 = 0L;
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    Object localObject1 = this.head;
-    if (localObject1 == null) {
+    if (i != 0)
+    {
+      Object localObject2 = this.head;
+      if (localObject2 != null)
+      {
+        Object localObject1 = localObject2;
+        int k;
+        int m;
+        int j;
+        int n;
+        int i1;
+        if (size() - paramLong < paramLong)
+        {
+          l1 = size();
+          localObject1 = localObject2;
+          while (l1 > paramLong)
+          {
+            localObject1 = ((Segment)localObject1).prev;
+            if (localObject1 == null) {
+              Intrinsics.throwNpe();
+            }
+            l1 -= ((Segment)localObject1).limit - ((Segment)localObject1).pos;
+          }
+          if (localObject1 != null)
+          {
+            if (paramByteString.size() == 2)
+            {
+              k = paramByteString.getByte(0);
+              m = paramByteString.getByte(1);
+              while (l1 < size())
+              {
+                localObject2 = ((Segment)localObject1).data;
+                j = (int)(((Segment)localObject1).pos + paramLong - l1);
+                n = ((Segment)localObject1).limit;
+                while (j < n)
+                {
+                  i1 = localObject2[j];
+                  paramLong = l1;
+                  paramByteString = (ByteString)localObject1;
+                  i = j;
+                  if (i1 != k) {
+                    if (i1 == m)
+                    {
+                      paramLong = l1;
+                      paramByteString = (ByteString)localObject1;
+                      i = j;
+                    }
+                    else
+                    {
+                      j += 1;
+                      continue;
+                    }
+                  }
+                  j = paramByteString.pos;
+                  return i - j + paramLong;
+                }
+                paramLong = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+                localObject1 = ((Segment)localObject1).next;
+                if (localObject1 == null) {
+                  Intrinsics.throwNpe();
+                }
+                l1 = paramLong;
+              }
+            }
+            paramByteString = paramByteString.internalArray$okio();
+            for (;;)
+            {
+              if (l1 >= size()) {
+                break label784;
+              }
+              localObject2 = ((Segment)localObject1).data;
+              i = (int)(((Segment)localObject1).pos + paramLong - l1);
+              k = ((Segment)localObject1).limit;
+              for (;;)
+              {
+                if (i >= k) {
+                  break label396;
+                }
+                m = localObject2[i];
+                n = paramByteString.length;
+                j = 0;
+                for (;;)
+                {
+                  if (j >= n) {
+                    break label387;
+                  }
+                  if (m == paramByteString[j])
+                  {
+                    j = ((Segment)localObject1).pos;
+                    paramLong = l1;
+                    break;
+                  }
+                  j += 1;
+                }
+                label387:
+                i += 1;
+              }
+              label396:
+              paramLong = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+              localObject1 = ((Segment)localObject1).next;
+              if (localObject1 == null) {
+                Intrinsics.throwNpe();
+              }
+              l1 = paramLong;
+            }
+          }
+        }
+        else
+        {
+          for (;;)
+          {
+            long l2 = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+            if (l2 > paramLong)
+            {
+              if (localObject1 == null) {
+                break label784;
+              }
+              if (paramByteString.size() == 2)
+              {
+                k = paramByteString.getByte(0);
+                m = paramByteString.getByte(1);
+                for (;;)
+                {
+                  if (l1 >= size()) {
+                    break label784;
+                  }
+                  localObject2 = ((Segment)localObject1).data;
+                  j = (int)(((Segment)localObject1).pos + paramLong - l1);
+                  n = ((Segment)localObject1).limit;
+                  for (;;)
+                  {
+                    if (j >= n) {
+                      break label582;
+                    }
+                    i1 = localObject2[j];
+                    paramLong = l1;
+                    paramByteString = (ByteString)localObject1;
+                    i = j;
+                    if (i1 == k) {
+                      break;
+                    }
+                    if (i1 == m)
+                    {
+                      paramLong = l1;
+                      paramByteString = (ByteString)localObject1;
+                      i = j;
+                      break;
+                    }
+                    j += 1;
+                  }
+                  label582:
+                  paramLong = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+                  localObject1 = ((Segment)localObject1).next;
+                  if (localObject1 == null) {
+                    Intrinsics.throwNpe();
+                  }
+                  l1 = paramLong;
+                }
+              }
+              paramByteString = paramByteString.internalArray$okio();
+              for (;;)
+              {
+                if (l1 >= size()) {
+                  break label784;
+                }
+                localObject2 = ((Segment)localObject1).data;
+                i = (int)(((Segment)localObject1).pos + paramLong - l1);
+                k = ((Segment)localObject1).limit;
+                for (;;)
+                {
+                  if (i >= k) {
+                    break label720;
+                  }
+                  m = localObject2[i];
+                  n = paramByteString.length;
+                  j = 0;
+                  for (;;)
+                  {
+                    if (j >= n) {
+                      break label711;
+                    }
+                    if (m == paramByteString[j]) {
+                      break;
+                    }
+                    j += 1;
+                  }
+                  label711:
+                  i += 1;
+                }
+                label720:
+                paramLong = ((Segment)localObject1).limit - ((Segment)localObject1).pos + l1;
+                localObject1 = ((Segment)localObject1).next;
+                if (localObject1 == null) {
+                  Intrinsics.throwNpe();
+                }
+                l1 = paramLong;
+              }
+            }
+            localObject1 = ((Segment)localObject1).next;
+            if (localObject1 == null) {
+              Intrinsics.throwNpe();
+            }
+            l1 = l2;
+          }
+        }
+      }
+      else
+      {
+        paramByteString = (Segment)null;
+      }
+      label784:
       return -1L;
     }
-    long l2;
-    if (this.size - paramLong < paramLong)
-    {
-      l2 = this.size;
-      localObject2 = localObject1;
-      for (;;)
-      {
-        l1 = l2;
-        localObject1 = localObject2;
-        if (l2 <= paramLong) {
-          break;
-        }
-        localObject2 = ((Segment)localObject2).prev;
-        l2 -= ((Segment)localObject2).limit - ((Segment)localObject2).pos;
-      }
-    }
-    long l1 = 0L;
-    Object localObject2 = localObject1;
+    paramByteString = new StringBuilder();
+    paramByteString.append("fromIndex < 0: ");
+    paramByteString.append(paramLong);
+    paramByteString = (Throwable)new IllegalArgumentException(paramByteString.toString().toString());
     for (;;)
     {
-      l2 = ((Segment)localObject2).limit - ((Segment)localObject2).pos + l1;
-      localObject1 = localObject2;
-      if (l2 >= paramLong) {
-        break;
-      }
-      localObject2 = ((Segment)localObject2).next;
-      l1 = l2;
+      throw paramByteString;
     }
-    int j;
-    int k;
-    int i;
-    int m;
-    int n;
-    if (paramByteString.size() == 2)
-    {
-      j = paramByteString.getByte(0);
-      k = paramByteString.getByte(1);
-      while (l1 < this.size)
-      {
-        paramByteString = ((Segment)localObject1).data;
-        i = (int)(((Segment)localObject1).pos + paramLong - l1);
-        m = ((Segment)localObject1).limit;
-        while (i < m)
-        {
-          n = paramByteString[i];
-          if ((n == j) || (n == k)) {
-            return l1 + (i - ((Segment)localObject1).pos);
-          }
-          i += 1;
-        }
-        l1 += ((Segment)localObject1).limit - ((Segment)localObject1).pos;
-        localObject1 = ((Segment)localObject1).next;
-        paramLong = l1;
-      }
-    }
-    paramByteString = paramByteString.internalArray();
-    while (l1 < this.size)
-    {
-      localObject2 = ((Segment)localObject1).data;
-      i = (int)(((Segment)localObject1).pos + paramLong - l1);
-      k = ((Segment)localObject1).limit;
-      while (i < k)
-      {
-        m = localObject2[i];
-        n = paramByteString.length;
-        j = 0;
-        while (j < n)
-        {
-          if (m == paramByteString[j]) {
-            return l1 + (i - ((Segment)localObject1).pos);
-          }
-          j += 1;
-        }
-        i += 1;
-      }
-      l1 += ((Segment)localObject1).limit - ((Segment)localObject1).pos;
-      localObject1 = ((Segment)localObject1).next;
-      paramLong = l1;
-    }
-    return -1L;
   }
   
+  @NotNull
   public InputStream inputStream()
   {
-    return new Buffer.2(this);
+    return (InputStream)new Buffer.inputStream.1(this);
   }
   
   public boolean isOpen()
@@ -658,696 +1069,893 @@ public final class Buffer
     return true;
   }
   
+  @NotNull
   public final ByteString md5()
   {
     return digest("MD5");
   }
   
+  @NotNull
   public OutputStream outputStream()
   {
-    return new Buffer.1(this);
+    return (OutputStream)new Buffer.outputStream.1(this);
   }
   
-  public boolean rangeEquals(long paramLong, ByteString paramByteString)
+  @NotNull
+  public BufferedSource peek()
   {
+    return Okio.buffer((Source)new PeekSource((BufferedSource)this));
+  }
+  
+  public boolean rangeEquals(long paramLong, @NotNull ByteString paramByteString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
     return rangeEquals(paramLong, paramByteString, 0, paramByteString.size());
   }
   
-  public boolean rangeEquals(long paramLong, ByteString paramByteString, int paramInt1, int paramInt2)
+  public boolean rangeEquals(long paramLong, @NotNull ByteString paramByteString, int paramInt1, int paramInt2)
   {
-    if ((paramLong < 0L) || (paramInt1 < 0) || (paramInt2 < 0) || (this.size - paramLong < paramInt2) || (paramByteString.size() - paramInt1 < paramInt2)) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
+    Intrinsics.checkParameterIsNotNull(paramByteString, "bytes");
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramLong >= 0L)
     {
-      if (i >= paramInt2) {
-        break label83;
+      bool1 = bool2;
+      if (paramInt1 >= 0)
+      {
+        bool1 = bool2;
+        if (paramInt2 >= 0)
+        {
+          bool1 = bool2;
+          if (size() - paramLong >= paramInt2)
+          {
+            if (paramByteString.size() - paramInt1 < paramInt2) {
+              return false;
+            }
+            int i = 0;
+            while (i < paramInt2)
+            {
+              if (getByte(i + paramLong) != paramByteString.getByte(paramInt1 + i)) {
+                return false;
+              }
+              i += 1;
+            }
+            bool1 = true;
+          }
+        }
       }
-      if (getByte(i + paramLong) != paramByteString.getByte(paramInt1 + i)) {
-        break;
-      }
-      i += 1;
     }
-    label83:
-    return true;
+    return bool1;
   }
   
-  public int read(ByteBuffer paramByteBuffer)
+  public int read(@NotNull ByteBuffer paramByteBuffer)
   {
+    Intrinsics.checkParameterIsNotNull(paramByteBuffer, "sink");
     Segment localSegment = this.head;
-    int i;
-    if (localSegment == null) {
-      i = -1;
-    }
-    int j;
-    do
+    if (localSegment != null)
     {
+      int i = Math.min(paramByteBuffer.remaining(), localSegment.limit - localSegment.pos);
+      paramByteBuffer.put(localSegment.data, localSegment.pos, i);
+      localSegment.pos += i;
+      this.size -= i;
+      if (localSegment.pos == localSegment.limit)
+      {
+        this.head = localSegment.pop();
+        SegmentPool.INSTANCE.recycle(localSegment);
+      }
       return i;
-      j = Math.min(paramByteBuffer.remaining(), localSegment.limit - localSegment.pos);
-      paramByteBuffer.put(localSegment.data, localSegment.pos, j);
-      localSegment.pos += j;
-      this.size -= j;
-      i = j;
-    } while (localSegment.pos != localSegment.limit);
-    this.head = localSegment.pop();
-    SegmentPool.recycle(localSegment);
-    return j;
+    }
+    return -1;
   }
   
-  public int read(byte[] paramArrayOfByte)
+  public int read(@NotNull byte[] paramArrayOfByte)
   {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "sink");
     return read(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int read(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "sink");
+    -Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
     Segment localSegment = this.head;
-    if (localSegment == null) {
+    if (localSegment != null)
+    {
+      paramInt2 = Math.min(paramInt2, localSegment.limit - localSegment.pos);
+      ArraysKt.copyInto(localSegment.data, paramArrayOfByte, paramInt1, localSegment.pos, localSegment.pos + paramInt2);
+      localSegment.pos += paramInt2;
+      setSize$okio(size() - paramInt2);
+      paramInt1 = paramInt2;
+      if (localSegment.pos == localSegment.limit)
+      {
+        this.head = localSegment.pop();
+        SegmentPool.INSTANCE.recycle(localSegment);
+        return paramInt2;
+      }
+    }
+    else
+    {
       paramInt1 = -1;
     }
-    do
+    return paramInt1;
+  }
+  
+  public long read(@NotNull Buffer paramBuffer, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "sink");
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      return paramInt1;
-      paramInt2 = Math.min(paramInt2, localSegment.limit - localSegment.pos);
-      System.arraycopy(localSegment.data, localSegment.pos, paramArrayOfByte, paramInt1, paramInt2);
-      localSegment.pos += paramInt2;
-      this.size -= paramInt2;
-      paramInt1 = paramInt2;
-    } while (localSegment.pos != localSegment.limit);
-    this.head = localSegment.pop();
-    SegmentPool.recycle(localSegment);
-    return paramInt2;
+      if (size() == 0L) {
+        return -1L;
+      }
+      long l = paramLong;
+      if (paramLong > size()) {
+        l = size();
+      }
+      paramBuffer.write(this, l);
+      return l;
+    }
+    paramBuffer = new StringBuilder();
+    paramBuffer.append("byteCount < 0: ");
+    paramBuffer.append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(paramBuffer.toString().toString()));
   }
   
-  public long read(Buffer paramBuffer, long paramLong)
+  public long readAll(@NotNull Sink paramSink)
   {
-    if (paramBuffer == null) {
-      throw new IllegalArgumentException("sink == null");
-    }
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.size == 0L) {
-      return -1L;
-    }
-    long l = paramLong;
-    if (paramLong > this.size) {
-      l = this.size;
-    }
-    paramBuffer.write(this, l);
-    return l;
-  }
-  
-  public long readAll(Sink paramSink)
-  {
-    long l = this.size;
+    Intrinsics.checkParameterIsNotNull(paramSink, "sink");
+    long l = size();
     if (l > 0L) {
       paramSink.write(this, l);
     }
     return l;
   }
   
+  @JvmOverloads
+  @NotNull
   public final Buffer.UnsafeCursor readAndWriteUnsafe()
   {
-    return readAndWriteUnsafe(new Buffer.UnsafeCursor());
+    return readAndWriteUnsafe$default(this, null, 1, null);
   }
   
-  public final Buffer.UnsafeCursor readAndWriteUnsafe(Buffer.UnsafeCursor paramUnsafeCursor)
+  @JvmOverloads
+  @NotNull
+  public final Buffer.UnsafeCursor readAndWriteUnsafe(@NotNull Buffer.UnsafeCursor paramUnsafeCursor)
   {
-    if (paramUnsafeCursor.buffer != null) {
-      throw new IllegalStateException("already attached to a buffer");
+    Intrinsics.checkParameterIsNotNull(paramUnsafeCursor, "unsafeCursor");
+    int i;
+    if (paramUnsafeCursor.buffer == null) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    paramUnsafeCursor.buffer = this;
-    paramUnsafeCursor.readWrite = true;
-    return paramUnsafeCursor;
+    if (i != 0)
+    {
+      paramUnsafeCursor.buffer = ((Buffer)this);
+      paramUnsafeCursor.readWrite = true;
+      return paramUnsafeCursor;
+    }
+    throw ((Throwable)new IllegalStateException("already attached to a buffer".toString()));
   }
   
   public byte readByte()
   {
-    if (this.size == 0L) {
-      throw new IllegalStateException("size == 0");
-    }
-    Segment localSegment = this.head;
-    int i = localSegment.pos;
-    int j = localSegment.limit;
-    byte[] arrayOfByte = localSegment.data;
-    int k = i + 1;
-    byte b = arrayOfByte[i];
-    this.size -= 1L;
-    if (k == j)
+    if (size() != 0L)
     {
-      this.head = localSegment.pop();
-      SegmentPool.recycle(localSegment);
+      Segment localSegment = this.head;
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      int i = localSegment.pos;
+      int j = localSegment.limit;
+      byte[] arrayOfByte = localSegment.data;
+      int k = i + 1;
+      byte b = arrayOfByte[i];
+      setSize$okio(size() - 1L);
+      if (k == j)
+      {
+        this.head = localSegment.pop();
+        SegmentPool.INSTANCE.recycle(localSegment);
+        return b;
+      }
+      localSegment.pos = k;
       return b;
     }
-    localSegment.pos = k;
-    return b;
+    throw ((Throwable)new EOFException());
   }
   
+  @NotNull
   public byte[] readByteArray()
   {
-    try
-    {
-      byte[] arrayOfByte = readByteArray(this.size);
-      return arrayOfByte;
-    }
-    catch (EOFException localEOFException)
-    {
-      throw new AssertionError(localEOFException);
-    }
+    return readByteArray(size());
   }
   
+  @NotNull
   public byte[] readByteArray(long paramLong)
   {
-    Util.checkOffsetAndCount(this.size, 0L, paramLong);
-    if (paramLong > 2147483647L) {
-      throw new IllegalArgumentException("byteCount > Integer.MAX_VALUE: " + paramLong);
+    int i;
+    if ((paramLong >= 0L) && (paramLong <= 2147483647)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    byte[] arrayOfByte = new byte[(int)paramLong];
-    readFully(arrayOfByte);
-    return arrayOfByte;
+    if (i != 0)
+    {
+      if (size() >= paramLong)
+      {
+        localObject = new byte[(int)paramLong];
+        readFully((byte[])localObject);
+        return localObject;
+      }
+      throw ((Throwable)new EOFException());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("byteCount: ");
+    ((StringBuilder)localObject).append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
   }
   
+  @NotNull
   public ByteString readByteString()
   {
-    return new ByteString(readByteArray());
+    return readByteString(size());
   }
   
+  @NotNull
   public ByteString readByteString(long paramLong)
   {
-    return new ByteString(readByteArray(paramLong));
+    int i;
+    if ((paramLong >= 0L) && (paramLong <= 2147483647)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      if (size() >= paramLong)
+      {
+        if (paramLong >= 4096)
+        {
+          localObject = snapshot((int)paramLong);
+          skip(paramLong);
+          return localObject;
+        }
+        return new ByteString(readByteArray(paramLong));
+      }
+      throw ((Throwable)new EOFException());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("byteCount: ");
+    ((StringBuilder)localObject).append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
   }
   
   public long readDecimalLong()
   {
-    if (this.size == 0L) {
-      throw new IllegalStateException("size == 0");
-    }
-    long l2 = 0L;
-    int n = 0;
-    int i1 = 0;
-    int i = 0;
-    long l3 = -7L;
-    Object localObject = this.head;
-    byte[] arrayOfByte = ((Segment)localObject).data;
-    int m = ((Segment)localObject).pos;
-    int i2 = ((Segment)localObject).limit;
-    long l1 = l2;
-    int j = n;
-    int k = i1;
-    l2 = l3;
-    n = i;
-    if (m < i2)
+    long l1 = size();
+    long l3 = 0L;
+    if (l1 != 0L)
     {
-      n = arrayOfByte[m];
-      if ((n >= 48) && (n <= 57))
+      int i1 = 0;
+      long l2 = -7L;
+      int i2 = 0;
+      int j = 0;
+      int k;
+      int m;
+      label264:
+      do
       {
-        i1 = 48 - n;
-        if ((l1 < -922337203685477580L) || ((l1 == -922337203685477580L) && (i1 < l2)))
+        localObject1 = this.head;
+        if (localObject1 == null) {
+          Intrinsics.throwNpe();
+        }
+        Object localObject2 = ((Segment)localObject1).data;
+        int n = ((Segment)localObject1).pos;
+        int i3 = ((Segment)localObject1).limit;
+        k = i1;
+        l1 = l3;
+        m = i2;
+        while (n < i3)
         {
-          localObject = new Buffer().writeDecimalLong(l1).writeByte(n);
-          if (k == 0) {
-            ((Buffer)localObject).readByte();
+          int i = localObject2[n];
+          i1 = (byte)48;
+          if ((i >= i1) && (i <= (byte)57))
+          {
+            i1 -= i;
+            if ((l1 >= -922337203685477580L) && ((l1 != -922337203685477580L) || (i1 >= l2)))
+            {
+              l1 = l1 * 10L + i1;
+            }
+            else
+            {
+              localObject1 = new Buffer().writeDecimalLong(l1).writeByte(i);
+              if (m == 0) {
+                ((Buffer)localObject1).readByte();
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("Number too large: ");
+              ((StringBuilder)localObject2).append(((Buffer)localObject1).readUtf8());
+              throw ((Throwable)new NumberFormatException(((StringBuilder)localObject2).toString()));
+            }
           }
-          throw new NumberFormatException("Number too large: " + ((Buffer)localObject).readUtf8());
+          else
+          {
+            if ((i != (byte)45) || (k != 0)) {
+              break label264;
+            }
+            l2 -= 1L;
+            m = 1;
+          }
+          n += 1;
+          k += 1;
+          continue;
+          if (k != 0)
+          {
+            j = 1;
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("Expected leading [0-9] or '-' character but was 0x");
+            ((StringBuilder)localObject1).append(-Util.toHexString(i));
+            throw ((Throwable)new NumberFormatException(((StringBuilder)localObject1).toString()));
+          }
         }
-        l1 = l1 * 10L + i1;
-      }
-      for (;;)
-      {
-        m += 1;
-        j += 1;
-        break;
-        if ((n != 45) || (j != 0)) {
-          break label250;
+        if (n == i3)
+        {
+          this.head = ((Segment)localObject1).pop();
+          SegmentPool.INSTANCE.recycle((Segment)localObject1);
         }
-        k = 1;
-        l2 -= 1L;
-      }
-      label250:
-      if (j == 0) {
-        throw new NumberFormatException("Expected leading [0-9] or '-' character but was 0x" + Integer.toHexString(n));
-      }
-      n = 1;
-    }
-    if (m == i2)
-    {
-      this.head = ((Segment)localObject).pop();
-      SegmentPool.recycle((Segment)localObject);
-    }
-    for (;;)
-    {
-      if (n == 0)
-      {
-        l3 = l2;
-        i = n;
-        i1 = k;
-        n = j;
-        l2 = l1;
-        if (this.head != null) {
+        else
+        {
+          ((Segment)localObject1).pos = n;
+        }
+        if (j != 0) {
           break;
         }
+        i2 = m;
+        l3 = l1;
+        i1 = k;
+      } while (this.head != null);
+      setSize$okio(size() - k);
+      if (m != 0) {
+        return l1;
       }
-      this.size -= j;
-      if (k == 0) {
-        break label367;
-      }
-      return l1;
-      ((Segment)localObject).pos = m;
+      return -l1;
     }
-    label367:
-    return -l1;
+    Object localObject1 = (Throwable)new EOFException();
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
+    }
   }
   
-  public final Buffer readFrom(InputStream paramInputStream)
+  @NotNull
+  public final Buffer readFrom(@NotNull InputStream paramInputStream)
   {
+    Intrinsics.checkParameterIsNotNull(paramInputStream, "input");
     readFrom(paramInputStream, 9223372036854775807L, true);
     return this;
   }
   
-  public final Buffer readFrom(InputStream paramInputStream, long paramLong)
+  @NotNull
+  public final Buffer readFrom(@NotNull InputStream paramInputStream, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
+    Intrinsics.checkParameterIsNotNull(paramInputStream, "input");
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    readFrom(paramInputStream, paramLong, false);
-    return this;
-  }
-  
-  public void readFully(Buffer paramBuffer, long paramLong)
-  {
-    if (this.size < paramLong)
+    if (i != 0)
     {
-      paramBuffer.write(this, this.size);
-      throw new EOFException();
+      readFrom(paramInputStream, paramLong, false);
+      return this;
     }
-    paramBuffer.write(this, paramLong);
+    paramInputStream = new StringBuilder();
+    paramInputStream.append("byteCount < 0: ");
+    paramInputStream.append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(paramInputStream.toString().toString()));
   }
   
-  public void readFully(byte[] paramArrayOfByte)
+  public void readFully(@NotNull Buffer paramBuffer, long paramLong)
   {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "sink");
+    if (size() >= paramLong)
+    {
+      paramBuffer.write(this, paramLong);
+      return;
+    }
+    paramBuffer.write(this, size());
+    throw ((Throwable)new EOFException());
+  }
+  
+  public void readFully(@NotNull byte[] paramArrayOfByte)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "sink");
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
       int j = read(paramArrayOfByte, i, paramArrayOfByte.length - i);
-      if (j == -1) {
-        throw new EOFException();
+      if (j != -1) {
+        i += j;
+      } else {
+        throw ((Throwable)new EOFException());
       }
-      i += j;
     }
   }
   
   public long readHexadecimalUnsignedLong()
   {
-    if (this.size == 0L) {
-      throw new IllegalStateException("size == 0");
-    }
-    long l2 = 0L;
-    int i = 0;
-    int j = 0;
-    Object localObject = this.head;
-    byte[] arrayOfByte = ((Segment)localObject).data;
-    int m = ((Segment)localObject).pos;
-    int n = ((Segment)localObject).limit;
-    long l1 = l2;
-    int k = i;
-    label60:
-    i = j;
-    if (m < n)
+    if (size() != 0L)
     {
-      int i1 = arrayOfByte[m];
-      if ((i1 >= 48) && (i1 <= 57)) {
-        i = i1 - 48;
-      }
-      for (;;)
+      int n = 0;
+      long l1 = 0L;
+      int j = 0;
+      long l2;
+      int k;
+      label250:
+      do
       {
-        if ((0x0 & l1) == 0L) {
-          break label302;
+        localObject1 = this.head;
+        if (localObject1 == null) {
+          Intrinsics.throwNpe();
         }
-        localObject = new Buffer().writeHexadecimalUnsignedLong(l1).writeByte(i1);
-        throw new NumberFormatException("Number too large: " + ((Buffer)localObject).readUtf8());
-        if ((i1 >= 97) && (i1 <= 102))
+        Object localObject2 = ((Segment)localObject1).data;
+        int m = ((Segment)localObject1).pos;
+        int i2 = ((Segment)localObject1).limit;
+        l2 = l1;
+        k = n;
+        int i1;
+        int i;
+        for (;;)
         {
-          i = i1 - 97 + 10;
+          i1 = j;
+          if (m >= i2) {
+            break label304;
+          }
+          i = localObject2[m];
+          n = (byte)48;
+          if ((i >= n) && (i <= (byte)57))
+          {
+            n = i - n;
+          }
+          else
+          {
+            n = (byte)97;
+            if ((i >= n) && (i <= (byte)102)) {}
+            for (;;)
+            {
+              n = i - n + 10;
+              break;
+              n = (byte)65;
+              if ((i < n) || (i > (byte)70)) {
+                break label250;
+              }
+            }
+          }
+          if ((0x0 & l2) != 0L) {
+            break;
+          }
+          l2 = l2 << 4 | n;
+          m += 1;
+          k += 1;
+        }
+        localObject1 = new Buffer().writeHexadecimalUnsignedLong(l2).writeByte(i);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Number too large: ");
+        ((StringBuilder)localObject2).append(((Buffer)localObject1).readUtf8());
+        throw ((Throwable)new NumberFormatException(((StringBuilder)localObject2).toString()));
+        if (k != 0)
+        {
+          i1 = 1;
         }
         else
         {
-          if ((i1 < 65) || (i1 > 70)) {
-            break;
-          }
-          i = i1 - 65 + 10;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Expected leading [0-9a-fA-F] character but was 0x");
+          ((StringBuilder)localObject1).append(-Util.toHexString(i));
+          throw ((Throwable)new NumberFormatException(((StringBuilder)localObject1).toString()));
         }
-      }
-      if (k == 0) {
-        throw new NumberFormatException("Expected leading [0-9a-fA-F] character but was 0x" + Integer.toHexString(i1));
-      }
-      i = 1;
-    }
-    if (m == n)
-    {
-      this.head = ((Segment)localObject).pop();
-      SegmentPool.recycle((Segment)localObject);
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        j = i;
-        i = k;
-        l2 = l1;
-        if (this.head != null) {
+        if (m == i2)
+        {
+          this.head = ((Segment)localObject1).pop();
+          SegmentPool.INSTANCE.recycle((Segment)localObject1);
+        }
+        else
+        {
+          ((Segment)localObject1).pos = m;
+        }
+        if (i1 != 0) {
           break;
         }
-      }
-      this.size -= k;
-      return l1;
-      label302:
-      l2 = i;
-      k += 1;
-      m += 1;
-      l1 = l2 | l1 << 4;
-      break label60;
-      ((Segment)localObject).pos = m;
+        n = k;
+        j = i1;
+        l1 = l2;
+      } while (this.head != null);
+      label304:
+      setSize$okio(size() - k);
+      return l2;
+    }
+    Object localObject1 = (Throwable)new EOFException();
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
   
   public int readInt()
   {
-    if (this.size < 4L) {
-      throw new IllegalStateException("size < 4: " + this.size);
-    }
-    Segment localSegment = this.head;
-    int j = localSegment.pos;
-    int i = localSegment.limit;
-    if (i - j < 4) {
-      return (readByte() & 0xFF) << 24 | (readByte() & 0xFF) << 16 | (readByte() & 0xFF) << 8 | readByte() & 0xFF;
-    }
-    byte[] arrayOfByte = localSegment.data;
-    int k = j + 1;
-    j = arrayOfByte[j];
-    int n = k + 1;
-    k = arrayOfByte[k];
-    int m = n + 1;
-    int i1 = arrayOfByte[n];
-    n = m + 1;
-    j = (j & 0xFF) << 24 | (k & 0xFF) << 16 | (i1 & 0xFF) << 8 | arrayOfByte[m] & 0xFF;
-    this.size -= 4L;
-    if (n == i)
+    if (size() >= 4L)
     {
-      this.head = localSegment.pop();
-      SegmentPool.recycle(localSegment);
-      return j;
+      Segment localSegment = this.head;
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      int j = localSegment.pos;
+      int i = localSegment.limit;
+      if (i - j < 4L) {
+        return (readByte() & 0xFF) << 24 | (readByte() & 0xFF) << 16 | (readByte() & 0xFF) << 8 | readByte() & 0xFF;
+      }
+      byte[] arrayOfByte = localSegment.data;
+      int k = j + 1;
+      j = arrayOfByte[j];
+      int n = k + 1;
+      k = arrayOfByte[k];
+      int m = n + 1;
+      n = arrayOfByte[n];
+      int i1 = m + 1;
+      m = arrayOfByte[m];
+      setSize$okio(size() - 4L);
+      if (i1 == i)
+      {
+        this.head = localSegment.pop();
+        SegmentPool.INSTANCE.recycle(localSegment);
+      }
+      else
+      {
+        localSegment.pos = i1;
+      }
+      return (j & 0xFF) << 24 | (k & 0xFF) << 16 | (n & 0xFF) << 8 | m & 0xFF;
     }
-    localSegment.pos = n;
-    return j;
+    throw ((Throwable)new EOFException());
   }
   
   public int readIntLe()
   {
-    return Util.reverseBytesInt(readInt());
+    return -Util.reverseBytes(readInt());
   }
   
   public long readLong()
   {
-    if (this.size < 8L) {
-      throw new IllegalStateException("size < 8: " + this.size);
-    }
-    Segment localSegment = this.head;
-    int k = localSegment.pos;
-    int i = localSegment.limit;
-    if (i - k < 8) {
-      return (readInt() & 0xFFFFFFFF) << 32 | readInt() & 0xFFFFFFFF;
-    }
-    byte[] arrayOfByte = localSegment.data;
-    int j = k + 1;
-    long l1 = arrayOfByte[k];
-    k = j + 1;
-    long l2 = arrayOfByte[j];
-    j = k + 1;
-    long l3 = arrayOfByte[k];
-    k = j + 1;
-    long l4 = arrayOfByte[j];
-    j = k + 1;
-    long l5 = arrayOfByte[k];
-    k = j + 1;
-    long l6 = arrayOfByte[j];
-    j = k + 1;
-    long l7 = arrayOfByte[k];
-    k = j + 1;
-    l1 = arrayOfByte[j] & 0xFF | (l2 & 0xFF) << 48 | (l1 & 0xFF) << 56 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8;
-    this.size -= 8L;
-    if (k == i)
+    if (size() >= 8L)
     {
-      this.head = localSegment.pop();
-      SegmentPool.recycle(localSegment);
-      return l1;
+      Segment localSegment = this.head;
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      int k = localSegment.pos;
+      int i = localSegment.limit;
+      if (i - k < 8L) {
+        return (readInt() & 0xFFFFFFFF) << 32 | 0xFFFFFFFF & readInt();
+      }
+      byte[] arrayOfByte = localSegment.data;
+      int j = k + 1;
+      long l1 = arrayOfByte[k];
+      k = j + 1;
+      long l2 = arrayOfByte[j];
+      j = k + 1;
+      long l3 = arrayOfByte[k];
+      k = j + 1;
+      long l4 = arrayOfByte[j];
+      j = k + 1;
+      long l5 = arrayOfByte[k];
+      k = j + 1;
+      long l6 = arrayOfByte[j];
+      j = k + 1;
+      long l7 = arrayOfByte[k];
+      k = j + 1;
+      long l8 = arrayOfByte[j];
+      setSize$okio(size() - 8L);
+      if (k == i)
+      {
+        this.head = localSegment.pop();
+        SegmentPool.INSTANCE.recycle(localSegment);
+      }
+      else
+      {
+        localSegment.pos = k;
+      }
+      return (l4 & 0xFF) << 32 | (l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8 | l8 & 0xFF;
     }
-    localSegment.pos = k;
-    return l1;
+    throw ((Throwable)new EOFException());
   }
   
   public long readLongLe()
   {
-    return Util.reverseBytesLong(readLong());
+    return -Util.reverseBytes(readLong());
   }
   
   public short readShort()
   {
-    if (this.size < 2L) {
-      throw new IllegalStateException("size < 2: " + this.size);
-    }
-    Segment localSegment = this.head;
-    int k = localSegment.pos;
-    int i = localSegment.limit;
-    if (i - k < 2) {
-      return (short)((readByte() & 0xFF) << 8 | readByte() & 0xFF);
-    }
-    byte[] arrayOfByte = localSegment.data;
-    int j = k + 1;
-    k = arrayOfByte[k];
-    int m = j + 1;
-    j = arrayOfByte[j];
-    this.size -= 2L;
-    if (m == i)
+    if (size() >= 2L)
     {
-      this.head = localSegment.pop();
-      SegmentPool.recycle(localSegment);
-    }
-    for (;;)
-    {
+      Segment localSegment = this.head;
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      int k = localSegment.pos;
+      int i = localSegment.limit;
+      if (i - k < 2) {
+        return (short)((readByte() & 0xFF) << 8 | readByte() & 0xFF);
+      }
+      byte[] arrayOfByte = localSegment.data;
+      int j = k + 1;
+      k = arrayOfByte[k];
+      int m = j + 1;
+      j = arrayOfByte[j];
+      setSize$okio(size() - 2L);
+      if (m == i)
+      {
+        this.head = localSegment.pop();
+        SegmentPool.INSTANCE.recycle(localSegment);
+      }
+      else
+      {
+        localSegment.pos = m;
+      }
       return (short)((k & 0xFF) << 8 | j & 0xFF);
-      localSegment.pos = m;
     }
+    throw ((Throwable)new EOFException());
   }
   
   public short readShortLe()
   {
-    return Util.reverseBytesShort(readShort());
+    return -Util.reverseBytes(readShort());
   }
   
-  public String readString(long paramLong, Charset paramCharset)
+  @NotNull
+  public String readString(long paramLong, @NotNull Charset paramCharset)
   {
-    Util.checkOffsetAndCount(this.size, 0L, paramLong);
-    if (paramCharset == null) {
-      throw new IllegalArgumentException("charset == null");
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
+    int i;
+    if ((paramLong >= 0L) && (paramLong <= 2147483647)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramLong > 2147483647L) {
-      throw new IllegalArgumentException("byteCount > Integer.MAX_VALUE: " + paramLong);
-    }
-    if (paramLong == 0L) {
-      paramCharset = "";
-    }
-    Segment localSegment;
-    String str;
-    do
+    if (i != 0)
     {
-      return paramCharset;
-      localSegment = this.head;
-      if (localSegment.pos + paramLong > localSegment.limit) {
-        return new String(readByteArray(paramLong), paramCharset);
+      if (this.size >= paramLong)
+      {
+        if (paramLong == 0L) {
+          return "";
+        }
+        Segment localSegment = this.head;
+        if (localSegment == null) {
+          Intrinsics.throwNpe();
+        }
+        if (localSegment.pos + paramLong > localSegment.limit) {
+          return new String(readByteArray(paramLong), paramCharset);
+        }
+        byte[] arrayOfByte = localSegment.data;
+        i = localSegment.pos;
+        int j = (int)paramLong;
+        paramCharset = new String(arrayOfByte, i, j, paramCharset);
+        localSegment.pos += j;
+        this.size -= paramLong;
+        if (localSegment.pos == localSegment.limit)
+        {
+          this.head = localSegment.pop();
+          SegmentPool.INSTANCE.recycle(localSegment);
+        }
+        return paramCharset;
       }
-      str = new String(localSegment.data, localSegment.pos, (int)paramLong, paramCharset);
-      localSegment.pos = ((int)(localSegment.pos + paramLong));
-      this.size -= paramLong;
-      paramCharset = str;
-    } while (localSegment.pos != localSegment.limit);
-    this.head = localSegment.pop();
-    SegmentPool.recycle(localSegment);
-    return str;
+      throw ((Throwable)new EOFException());
+    }
+    paramCharset = new StringBuilder();
+    paramCharset.append("byteCount: ");
+    paramCharset.append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(paramCharset.toString().toString()));
   }
   
-  public String readString(Charset paramCharset)
+  @NotNull
+  public String readString(@NotNull Charset paramCharset)
   {
-    try
-    {
-      paramCharset = readString(this.size, paramCharset);
-      return paramCharset;
-    }
-    catch (EOFException paramCharset)
-    {
-      throw new AssertionError(paramCharset);
-    }
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
+    return readString(this.size, paramCharset);
   }
   
+  @JvmOverloads
+  @NotNull
   public final Buffer.UnsafeCursor readUnsafe()
   {
-    return readUnsafe(new Buffer.UnsafeCursor());
+    return readUnsafe$default(this, null, 1, null);
   }
   
-  public final Buffer.UnsafeCursor readUnsafe(Buffer.UnsafeCursor paramUnsafeCursor)
+  @JvmOverloads
+  @NotNull
+  public final Buffer.UnsafeCursor readUnsafe(@NotNull Buffer.UnsafeCursor paramUnsafeCursor)
   {
-    if (paramUnsafeCursor.buffer != null) {
-      throw new IllegalStateException("already attached to a buffer");
+    Intrinsics.checkParameterIsNotNull(paramUnsafeCursor, "unsafeCursor");
+    int i;
+    if (paramUnsafeCursor.buffer == null) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    paramUnsafeCursor.buffer = this;
-    paramUnsafeCursor.readWrite = false;
-    return paramUnsafeCursor;
+    if (i != 0)
+    {
+      paramUnsafeCursor.buffer = ((Buffer)this);
+      paramUnsafeCursor.readWrite = false;
+      return paramUnsafeCursor;
+    }
+    throw ((Throwable)new IllegalStateException("already attached to a buffer".toString()));
   }
   
+  @NotNull
   public String readUtf8()
   {
-    try
-    {
-      String str = readString(this.size, Util.UTF_8);
-      return str;
-    }
-    catch (EOFException localEOFException)
-    {
-      throw new AssertionError(localEOFException);
-    }
+    return readString(this.size, Charsets.UTF_8);
   }
   
+  @NotNull
   public String readUtf8(long paramLong)
   {
-    return readString(paramLong, Util.UTF_8);
+    return readString(paramLong, Charsets.UTF_8);
   }
   
   public int readUtf8CodePoint()
   {
-    if (this.size == 0L) {
-      throw new EOFException();
-    }
-    int m = getByte(0L);
-    int j;
-    int i;
-    int k;
-    if ((m & 0x80) == 0)
+    if (size() != 0L)
     {
-      j = 0;
-      i = m & 0x7F;
-      k = 1;
-    }
-    while (this.size < k)
-    {
-      throw new EOFException("size < " + k + ": " + this.size + " (to read code point prefixed 0x" + Integer.toHexString(m) + ")");
-      if ((m & 0xE0) == 192)
+      int i = getByte(0L);
+      int n = 1;
+      int j;
+      int k;
+      int m;
+      if ((i & 0x80) == 0)
       {
-        i = m & 0x1F;
+        j = i & 0x7F;
+        k = 1;
+        m = 0;
+      }
+      else if ((i & 0xE0) == 192)
+      {
+        j = i & 0x1F;
         k = 2;
-        j = 128;
+        m = 128;
       }
-      else if ((m & 0xF0) == 224)
+      else if ((i & 0xF0) == 224)
       {
-        i = m & 0xF;
+        j = i & 0xF;
         k = 3;
-        j = 2048;
+        m = 2048;
       }
-      else if ((m & 0xF8) == 240)
+      else
       {
-        i = m & 0x7;
+        if ((i & 0xF8) != 240) {
+          break label330;
+        }
+        j = i & 0x7;
         k = 4;
-        j = 65536;
+        m = 65536;
       }
-      else
+      long l2 = size();
+      long l1 = k;
+      if (l2 >= l1)
       {
-        skip(1L);
-        return 65533;
+        while (n < k)
+        {
+          l2 = n;
+          int i1 = getByte(l2);
+          if ((i1 & 0xC0) == 128)
+          {
+            j = j << 6 | i1 & 0x3F;
+            n += 1;
+          }
+          else
+          {
+            skip(l2);
+            return 65533;
+          }
+        }
+        skip(l1);
+        if (j > 1114111) {
+          return 65533;
+        }
+        if ((55296 <= j) && (57343 >= j)) {
+          return 65533;
+        }
+        if (j < m) {
+          return 65533;
+        }
+        return j;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("size < ");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(": ");
+      ((StringBuilder)localObject).append(size());
+      ((StringBuilder)localObject).append(" (to read code point prefixed 0x");
+      ((StringBuilder)localObject).append(-Util.toHexString(i));
+      ((StringBuilder)localObject).append(')');
+      throw ((Throwable)new EOFException(((StringBuilder)localObject).toString()));
+      label330:
+      skip(1L);
+      return 65533;
     }
-    m = 1;
-    while (m < k)
+    Object localObject = (Throwable)new EOFException();
+    for (;;)
     {
-      int n = getByte(m);
-      if ((n & 0xC0) == 128)
-      {
-        m += 1;
-        i = n & 0x3F | i << 6;
-      }
-      else
-      {
-        skip(m);
-        return 65533;
-      }
+      throw ((Throwable)localObject);
     }
-    skip(k);
-    if (i > 1114111) {
-      return 65533;
-    }
-    if ((i >= 55296) && (i <= 57343)) {
-      return 65533;
-    }
-    if (i < j) {
-      return 65533;
-    }
-    return i;
   }
   
   @Nullable
   public String readUtf8Line()
   {
     long l = indexOf((byte)10);
-    if (l == -1L)
-    {
-      if (this.size != 0L) {
-        return readUtf8(this.size);
-      }
-      return null;
+    if (l != -1L) {
+      return BufferKt.readUtf8Line(this, l);
     }
-    return readUtf8Line(l);
+    if (size() != 0L) {
+      return readUtf8(size());
+    }
+    return null;
   }
   
-  String readUtf8Line(long paramLong)
-  {
-    if ((paramLong > 0L) && (getByte(paramLong - 1L) == 13))
-    {
-      str = readUtf8(paramLong - 1L);
-      skip(2L);
-      return str;
-    }
-    String str = readUtf8(paramLong);
-    skip(1L);
-    return str;
-  }
-  
+  @NotNull
   public String readUtf8LineStrict()
   {
     return readUtf8LineStrict(9223372036854775807L);
   }
   
+  @NotNull
   public String readUtf8LineStrict(long paramLong)
   {
-    long l1 = 9223372036854775807L;
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("limit < 0: " + paramLong);
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramLong == 9223372036854775807L) {}
-    for (;;)
+    if (i != 0)
     {
-      long l2 = indexOf((byte)10, 0L, l1);
-      if (l2 == -1L) {
-        break;
+      long l1 = 9223372036854775807L;
+      if (paramLong != 9223372036854775807L) {
+        l1 = paramLong + 1L;
       }
-      return readUtf8Line(l2);
-      l1 = paramLong + 1L;
+      byte b = (byte)10;
+      long l2 = indexOf(b, 0L, l1);
+      if (l2 != -1L) {
+        return BufferKt.readUtf8Line(this, l2);
+      }
+      if ((l1 < size()) && (getByte(l1 - 1L) == (byte)13) && (getByte(l1) == b)) {
+        return BufferKt.readUtf8Line(this, l1);
+      }
+      localObject = new Buffer();
+      l1 = size();
+      copyTo((Buffer)localObject, 0L, Math.min(32, l1));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("\\n not found: limit=");
+      localStringBuilder.append(Math.min(size(), paramLong));
+      localStringBuilder.append(" content=");
+      localStringBuilder.append(((Buffer)localObject).readByteString().hex());
+      localStringBuilder.append('…');
+      throw ((Throwable)new EOFException(localStringBuilder.toString()));
     }
-    if ((l1 < size()) && (getByte(l1 - 1L) == 13) && (getByte(l1) == 10)) {
-      return readUtf8Line(l1);
-    }
-    Buffer localBuffer = new Buffer();
-    copyTo(localBuffer, 0L, Math.min(32L, size()));
-    throw new EOFException("\\n not found: limit=" + Math.min(size(), paramLong) + " content=" + localBuffer.readByteString().hex() + '…');
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("limit < 0: ");
+    ((StringBuilder)localObject).append(paramLong);
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
   }
   
   public boolean request(long paramLong)
@@ -1357,207 +1965,47 @@ public final class Buffer
   
   public void require(long paramLong)
   {
-    if (this.size < paramLong) {
-      throw new EOFException();
+    if (this.size >= paramLong) {
+      return;
     }
+    throw ((Throwable)new EOFException());
   }
   
-  List<Integer> segmentSizes()
+  public int select(@NotNull Options paramOptions)
   {
-    if (this.head == null) {
-      return Collections.emptyList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(this.head.limit - this.head.pos));
-    for (Segment localSegment = this.head.next; localSegment != this.head; localSegment = localSegment.next) {
-      localArrayList.add(Integer.valueOf(localSegment.limit - localSegment.pos));
-    }
-    return localArrayList;
-  }
-  
-  public int select(Options paramOptions)
-  {
-    int i = selectPrefix(paramOptions, false);
+    Intrinsics.checkParameterIsNotNull(paramOptions, "options");
+    int i = BufferKt.selectPrefix$default(this, paramOptions, false, 2, null);
     if (i == -1) {
       return -1;
     }
-    long l = paramOptions.byteStrings[i].size();
-    try
-    {
-      skip(l);
-      return i;
-    }
-    catch (EOFException paramOptions)
-    {
-      throw new AssertionError();
-    }
+    skip(paramOptions.getByteStrings$okio()[i].size());
+    return i;
   }
   
-  int selectPrefix(Options paramOptions, boolean paramBoolean)
+  public final void setSize$okio(long paramLong)
   {
-    Segment localSegment1 = this.head;
-    if (localSegment1 == null)
-    {
-      if (paramBoolean)
-      {
-        n = -2;
-        return n;
-      }
-      return paramOptions.indexOf(ByteString.EMPTY);
-    }
-    Object localObject = localSegment1.data;
-    int i = localSegment1.pos;
-    int j = localSegment1.limit;
-    int[] arrayOfInt = paramOptions.trie;
-    int m = 0;
-    int k = -1;
-    paramOptions = localSegment1;
-    label65:
-    int n = m + 1;
-    int i4 = arrayOfInt[m];
-    m = n + 1;
-    n = arrayOfInt[n];
-    if (n != -1) {
-      k = n;
-    }
-    if (paramOptions == null) {}
-    label131:
-    int i2;
-    int i3;
-    int i1;
-    label187:
-    Segment localSegment2;
-    byte[] arrayOfByte;
-    do
-    {
-      n = k;
-      if (!paramBoolean) {
-        break;
-      }
-      return -2;
-      if (i4 >= 0) {
-        break label310;
-      }
-      n = i;
-      i = j;
-      j = m;
-      i2 = j;
-      j = n + 1;
-      i3 = localObject[n];
-      i1 = i2 + 1;
-      n = k;
-      if ((i3 & 0xFF) != arrayOfInt[i2]) {
-        break;
-      }
-      if (i1 != m + i4 * -1) {
-        break label293;
-      }
-      n = 1;
-      if (j != i) {
-        break label463;
-      }
-      localSegment2 = paramOptions.next;
-      i2 = localSegment2.pos;
-      arrayOfByte = localSegment2.data;
-      i3 = localSegment2.limit;
-      i = i3;
-      j = i2;
-      localObject = arrayOfByte;
-      paramOptions = localSegment2;
-      if (localSegment2 != localSegment1) {
-        break label259;
-      }
-    } while (n == 0);
-    paramOptions = null;
-    localObject = arrayOfByte;
-    j = i2;
-    i = i3;
-    label259:
-    label285:
-    label293:
-    label310:
-    label453:
-    label463:
-    for (;;)
-    {
-      if (n != 0)
-      {
-        n = arrayOfInt[i1];
-        m = i;
-        i = j;
-        j = m;
-        m = n;
-      }
-      for (;;)
-      {
-        if (m >= 0)
-        {
-          return m;
-          n = 0;
-          break label187;
-          n = j;
-          j = i1;
-          break label131;
-          i1 = i + 1;
-          i2 = localObject[i];
-          i = m;
-          for (;;)
-          {
-            n = k;
-            if (i == m + i4) {
-              break;
-            }
-            if ((i2 & 0xFF) == arrayOfInt[i])
-            {
-              n = arrayOfInt[(i + i4)];
-              if (i1 != j) {
-                break label453;
-              }
-              localSegment2 = paramOptions.next;
-              i1 = localSegment2.pos;
-              arrayOfByte = localSegment2.data;
-              i2 = localSegment2.limit;
-              m = n;
-              j = i2;
-              i = i1;
-              localObject = arrayOfByte;
-              paramOptions = localSegment2;
-              if (localSegment2 != localSegment1) {
-                break label285;
-              }
-              paramOptions = null;
-              m = n;
-              j = i2;
-              i = i1;
-              localObject = arrayOfByte;
-              break label285;
-            }
-            i += 1;
-          }
-        }
-        m = -m;
-        break label65;
-        i = i1;
-        m = n;
-      }
-    }
+    this.size = paramLong;
   }
   
+  @NotNull
   public final ByteString sha1()
   {
     return digest("SHA-1");
   }
   
+  @NotNull
   public final ByteString sha256()
   {
     return digest("SHA-256");
   }
   
+  @NotNull
   public final ByteString sha512()
   {
     return digest("SHA-512");
   }
   
+  @JvmName(name="size")
   public final long size()
   {
     return this.size;
@@ -1567,385 +2015,492 @@ public final class Buffer
   {
     while (paramLong > 0L)
     {
-      if (this.head == null) {
-        throw new EOFException();
-      }
-      int i = (int)Math.min(paramLong, this.head.limit - this.head.pos);
-      this.size -= i;
-      long l = paramLong - i;
       Segment localSegment = this.head;
-      localSegment.pos = (i + localSegment.pos);
-      paramLong = l;
-      if (this.head.pos == this.head.limit)
+      if (localSegment != null)
       {
-        localSegment = this.head;
-        this.head = localSegment.pop();
-        SegmentPool.recycle(localSegment);
-        paramLong = l;
+        int i = (int)Math.min(paramLong, localSegment.limit - localSegment.pos);
+        long l1 = size();
+        long l2 = i;
+        setSize$okio(l1 - l2);
+        l1 = paramLong - l2;
+        localSegment.pos += i;
+        paramLong = l1;
+        if (localSegment.pos == localSegment.limit)
+        {
+          this.head = localSegment.pop();
+          SegmentPool.INSTANCE.recycle(localSegment);
+          paramLong = l1;
+        }
+      }
+      else
+      {
+        throw ((Throwable)new EOFException());
       }
     }
   }
   
+  @NotNull
   public final ByteString snapshot()
   {
-    if (this.size > 2147483647L) {
-      throw new IllegalArgumentException("size > Integer.MAX_VALUE: " + this.size);
+    int i;
+    if (size() <= 2147483647) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return snapshot((int)this.size);
+    if (i != 0) {
+      return snapshot((int)size());
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("size > Int.MAX_VALUE: ");
+    localStringBuilder.append(size());
+    throw ((Throwable)new IllegalStateException(localStringBuilder.toString().toString()));
   }
   
+  @NotNull
   public final ByteString snapshot(int paramInt)
   {
     if (paramInt == 0) {
       return ByteString.EMPTY;
     }
-    return new SegmentedByteString(this, paramInt);
+    -Util.checkOffsetAndCount(size(), 0L, paramInt);
+    Segment localSegment = this.head;
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    while (j < paramInt)
+    {
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      if (localSegment.limit != localSegment.pos)
+      {
+        j += localSegment.limit - localSegment.pos;
+        i += 1;
+        localSegment = localSegment.next;
+      }
+      else
+      {
+        throw ((Throwable)new AssertionError("s.limit == s.pos"));
+      }
+    }
+    byte[][] arrayOfByte = new byte[i][];
+    int[] arrayOfInt = new int[i * 2];
+    localSegment = this.head;
+    i = 0;
+    j = k;
+    while (j < paramInt)
+    {
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      arrayOfByte[i] = localSegment.data;
+      j += localSegment.limit - localSegment.pos;
+      arrayOfInt[i] = Math.min(j, paramInt);
+      arrayOfInt[(((Object[])arrayOfByte).length + i)] = localSegment.pos;
+      localSegment.shared = true;
+      i += 1;
+      localSegment = localSegment.next;
+    }
+    return (ByteString)new SegmentedByteString((byte[][])arrayOfByte, arrayOfInt);
   }
   
+  @NotNull
   public Timeout timeout()
   {
     return Timeout.NONE;
   }
   
+  @NotNull
   public String toString()
   {
     return snapshot().toString();
   }
   
-  Segment writableSegment(int paramInt)
+  @NotNull
+  public final Segment writableSegment$okio(int paramInt)
   {
+    int i = 1;
     if ((paramInt < 1) || (paramInt > 8192)) {
-      throw new IllegalArgumentException();
+      i = 0;
     }
-    Segment localSegment2;
-    Segment localSegment1;
-    if (this.head == null)
+    if (i != 0)
     {
-      this.head = SegmentPool.take();
-      localSegment2 = this.head;
-      Segment localSegment3 = this.head;
-      localSegment1 = this.head;
-      localSegment3.prev = localSegment1;
-      localSegment2.next = localSegment1;
-    }
-    do
-    {
-      return localSegment1;
-      localSegment2 = this.head.prev;
-      if (localSegment2.limit + paramInt > 8192) {
-        break;
+      Segment localSegment = this.head;
+      if (localSegment == null)
+      {
+        localSegment = SegmentPool.INSTANCE.take();
+        this.head = localSegment;
+        localSegment.prev = localSegment;
+        localSegment.next = localSegment;
+        return localSegment;
       }
-      localSegment1 = localSegment2;
-    } while (localSegment2.owner);
-    return localSegment2.push(SegmentPool.take());
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      localSegment = localSegment.prev;
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
+      if ((localSegment.limit + paramInt <= 8192) && (localSegment.owner)) {
+        return localSegment;
+      }
+      return localSegment.push(SegmentPool.INSTANCE.take());
+    }
+    throw ((Throwable)new IllegalArgumentException("unexpected capacity".toString()));
   }
   
-  public int write(ByteBuffer paramByteBuffer)
+  public int write(@NotNull ByteBuffer paramByteBuffer)
   {
-    if (paramByteBuffer == null) {
-      throw new IllegalArgumentException("source == null");
-    }
+    Intrinsics.checkParameterIsNotNull(paramByteBuffer, "source");
     int j = paramByteBuffer.remaining();
     int i = j;
     while (i > 0)
     {
-      Segment localSegment = writableSegment(1);
+      Segment localSegment = writableSegment$okio(1);
       int k = Math.min(i, 8192 - localSegment.limit);
       paramByteBuffer.get(localSegment.data, localSegment.limit, k);
       i -= k;
-      localSegment.limit = (k + localSegment.limit);
+      localSegment.limit += k;
     }
     this.size += j;
     return j;
   }
   
-  public Buffer write(ByteString paramByteString)
+  @NotNull
+  public Buffer write(@NotNull ByteString paramByteString)
   {
-    if (paramByteString == null) {
-      throw new IllegalArgumentException("byteString == null");
-    }
-    paramByteString.write(this);
+    Intrinsics.checkParameterIsNotNull(paramByteString, "byteString");
+    paramByteString.write$okio(this, 0, paramByteString.size());
     return this;
   }
   
-  public Buffer write(byte[] paramArrayOfByte)
+  @NotNull
+  public Buffer write(@NotNull ByteString paramByteString, int paramInt1, int paramInt2)
   {
-    if (paramArrayOfByte == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    return write(paramArrayOfByte, 0, paramArrayOfByte.length);
-  }
-  
-  public Buffer write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (paramArrayOfByte == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-    int i = paramInt1 + paramInt2;
-    while (paramInt1 < i)
-    {
-      Segment localSegment = writableSegment(1);
-      int j = Math.min(i - paramInt1, 8192 - localSegment.limit);
-      System.arraycopy(paramArrayOfByte, paramInt1, localSegment.data, localSegment.limit, j);
-      paramInt1 += j;
-      localSegment.limit = (j + localSegment.limit);
-    }
-    this.size += paramInt2;
+    Intrinsics.checkParameterIsNotNull(paramByteString, "byteString");
+    paramByteString.write$okio(this, paramInt1, paramInt2);
     return this;
   }
   
-  public BufferedSink write(Source paramSource, long paramLong)
+  @NotNull
+  public Buffer write(@NotNull Source paramSource, long paramLong)
   {
+    Intrinsics.checkParameterIsNotNull(paramSource, "source");
     while (paramLong > 0L)
     {
       long l = paramSource.read(this, paramLong);
-      if (l == -1L) {
-        throw new EOFException();
+      if (l != -1L) {
+        paramLong -= l;
+      } else {
+        throw ((Throwable)new EOFException());
       }
-      paramLong -= l;
     }
     return this;
   }
   
-  public void write(Buffer paramBuffer, long paramLong)
+  @NotNull
+  public Buffer write(@NotNull byte[] paramArrayOfByte)
   {
-    if (paramBuffer == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    if (paramBuffer == this) {
-      throw new IllegalArgumentException("source == this");
-    }
-    Util.checkOffsetAndCount(paramBuffer.size, 0L, paramLong);
-    if (paramLong > 0L)
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "source");
+    return write(paramArrayOfByte, 0, paramArrayOfByte.length);
+  }
+  
+  @NotNull
+  public Buffer write(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "source");
+    long l1 = paramArrayOfByte.length;
+    long l2 = paramInt1;
+    long l3 = paramInt2;
+    -Util.checkOffsetAndCount(l1, l2, l3);
+    int i = paramInt2 + paramInt1;
+    while (paramInt1 < i)
     {
-      if (paramLong >= paramBuffer.head.limit - paramBuffer.head.pos) {
-        break label191;
-      }
-      if (this.head == null) {
-        break label162;
-      }
-      localSegment1 = this.head.prev;
-      if ((localSegment1 == null) || (!localSegment1.owner)) {
-        break label178;
-      }
-      l = localSegment1.limit;
-      if (!localSegment1.shared) {
-        break label168;
-      }
+      Segment localSegment = writableSegment$okio(1);
+      int j = Math.min(i - paramInt1, 8192 - localSegment.limit);
+      byte[] arrayOfByte = localSegment.data;
+      int k = localSegment.limit;
+      paramInt2 = paramInt1 + j;
+      ArraysKt.copyInto(paramArrayOfByte, arrayOfByte, k, paramInt1, paramInt2);
+      localSegment.limit += j;
+      paramInt1 = paramInt2;
     }
-    label162:
-    label168:
-    for (int i = 0;; i = localSegment1.pos)
+    setSize$okio(size() + l3);
+    return this;
+  }
+  
+  public void write(@NotNull Buffer paramBuffer, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "source");
+    int i;
+    if (paramBuffer != this) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (l + paramLong - i > 8192L) {
-        break label178;
+      -Util.checkOffsetAndCount(paramBuffer.size(), 0L, paramLong);
+      while (paramLong > 0L)
+      {
+        Segment localSegment1 = paramBuffer.head;
+        if (localSegment1 == null) {
+          Intrinsics.throwNpe();
+        }
+        i = localSegment1.limit;
+        localSegment1 = paramBuffer.head;
+        if (localSegment1 == null) {
+          Intrinsics.throwNpe();
+        }
+        if (paramLong < i - localSegment1.pos)
+        {
+          localSegment1 = this.head;
+          if (localSegment1 != null)
+          {
+            if (localSegment1 == null) {
+              Intrinsics.throwNpe();
+            }
+            localSegment1 = localSegment1.prev;
+          }
+          else
+          {
+            localSegment1 = null;
+          }
+          if ((localSegment1 != null) && (localSegment1.owner))
+          {
+            l = localSegment1.limit;
+            if (localSegment1.shared) {
+              i = 0;
+            } else {
+              i = localSegment1.pos;
+            }
+            if (l + paramLong - i <= 8192)
+            {
+              localSegment2 = paramBuffer.head;
+              if (localSegment2 == null) {
+                Intrinsics.throwNpe();
+              }
+              localSegment2.writeTo(localSegment1, (int)paramLong);
+              paramBuffer.setSize$okio(paramBuffer.size() - paramLong);
+              setSize$okio(size() + paramLong);
+              return;
+            }
+          }
+          localSegment1 = paramBuffer.head;
+          if (localSegment1 == null) {
+            Intrinsics.throwNpe();
+          }
+          paramBuffer.head = localSegment1.split((int)paramLong);
+        }
+        localSegment1 = paramBuffer.head;
+        if (localSegment1 == null) {
+          Intrinsics.throwNpe();
+        }
+        long l = localSegment1.limit - localSegment1.pos;
+        paramBuffer.head = localSegment1.pop();
+        Segment localSegment2 = this.head;
+        if (localSegment2 == null)
+        {
+          this.head = localSegment1;
+          localSegment1.prev = localSegment1;
+          localSegment1.next = localSegment1.prev;
+        }
+        else
+        {
+          if (localSegment2 == null) {
+            Intrinsics.throwNpe();
+          }
+          localSegment2 = localSegment2.prev;
+          if (localSegment2 == null) {
+            Intrinsics.throwNpe();
+          }
+          localSegment2.push(localSegment1).compact();
+        }
+        paramBuffer.setSize$okio(paramBuffer.size() - l);
+        setSize$okio(size() + l);
+        paramLong -= l;
       }
-      paramBuffer.head.writeTo(localSegment1, (int)paramLong);
-      paramBuffer.size -= paramLong;
-      this.size += paramLong;
       return;
-      localSegment1 = null;
-      break;
     }
-    label178:
-    paramBuffer.head = paramBuffer.head.split((int)paramLong);
-    label191:
-    Segment localSegment1 = paramBuffer.head;
-    long l = localSegment1.limit - localSegment1.pos;
-    paramBuffer.head = localSegment1.pop();
-    if (this.head == null)
-    {
-      this.head = localSegment1;
-      localSegment1 = this.head;
-      Segment localSegment2 = this.head;
-      Segment localSegment3 = this.head;
-      localSegment2.prev = localSegment3;
-      localSegment1.next = localSegment3;
-    }
+    paramBuffer = (Throwable)new IllegalArgumentException("source == this".toString());
     for (;;)
     {
-      paramBuffer.size -= l;
-      this.size += l;
-      paramLong -= l;
-      break;
-      this.head.prev.push(localSegment1).compact();
+      throw paramBuffer;
     }
   }
   
-  public long writeAll(Source paramSource)
+  public long writeAll(@NotNull Source paramSource)
   {
-    if (paramSource == null) {
-      throw new IllegalArgumentException("source == null");
-    }
+    Intrinsics.checkParameterIsNotNull(paramSource, "source");
     long l2;
     for (long l1 = 0L;; l1 += l2)
     {
-      l2 = paramSource.read(this, 8192L);
+      l2 = paramSource.read(this, 8192);
       if (l2 == -1L) {
-        break;
+        return l1;
       }
     }
-    return l1;
   }
   
+  @NotNull
   public Buffer writeByte(int paramInt)
   {
-    Segment localSegment = writableSegment(1);
+    Segment localSegment = writableSegment$okio(1);
     byte[] arrayOfByte = localSegment.data;
     int i = localSegment.limit;
     localSegment.limit = (i + 1);
     arrayOfByte[i] = ((byte)paramInt);
-    this.size += 1L;
+    setSize$okio(size() + 1L);
     return this;
   }
   
+  @NotNull
   public Buffer writeDecimalLong(long paramLong)
   {
     if (paramLong == 0L) {
       return writeByte(48);
     }
+    int j = 0;
+    int i = 1;
+    long l = paramLong;
     if (paramLong < 0L)
     {
-      paramLong = -paramLong;
-      if (paramLong < 0L) {
+      l = -paramLong;
+      if (l < 0L) {
         return writeUtf8("-9223372036854775808");
       }
+      j = 1;
     }
-    for (int j = 1;; j = 0)
+    if (l < 100000000L)
     {
-      int i;
-      if (paramLong < 100000000L) {
-        if (paramLong < 10000L) {
-          if (paramLong < 100L) {
-            if (paramLong < 10L) {
-              i = 1;
-            }
-          }
-        }
-      }
-      int k;
-      Segment localSegment;
-      byte[] arrayOfByte;
-      for (;;)
+      if (l < 10000L)
       {
-        k = i;
-        if (j != 0) {
-          k = i + 1;
-        }
-        localSegment = writableSegment(k);
-        arrayOfByte = localSegment.data;
-        i = localSegment.limit + k;
-        while (paramLong != 0L)
+        if (l < 100L)
         {
-          int m = (int)(paramLong % 10L);
-          i -= 1;
-          arrayOfByte[i] = DIGITS[m];
-          paramLong /= 10L;
+          if (l >= 10L) {
+            i = 2;
+          }
         }
-        i = 2;
-        continue;
-        if (paramLong < 1000L)
-        {
+        else if (l < 1000L) {
           i = 3;
-        }
-        else
-        {
+        } else {
           i = 4;
-          continue;
-          if (paramLong < 1000000L)
-          {
-            if (paramLong < 100000L) {
-              i = 5;
-            } else {
-              i = 6;
-            }
-          }
-          else if (paramLong < 10000000L)
-          {
-            i = 7;
-          }
-          else
-          {
-            i = 8;
-            continue;
-            if (paramLong < 1000000000000L)
-            {
-              if (paramLong < 10000000000L)
-              {
-                if (paramLong < 1000000000L) {
-                  i = 9;
-                } else {
-                  i = 10;
-                }
-              }
-              else if (paramLong < 100000000000L) {
-                i = 11;
-              } else {
-                i = 12;
-              }
-            }
-            else if (paramLong < 1000000000000000L)
-            {
-              if (paramLong < 10000000000000L) {
-                i = 13;
-              } else if (paramLong < 100000000000000L) {
-                i = 14;
-              } else {
-                i = 15;
-              }
-            }
-            else if (paramLong < 100000000000000000L)
-            {
-              if (paramLong < 10000000000000000L) {
-                i = 16;
-              } else {
-                i = 17;
-              }
-            }
-            else if (paramLong < 1000000000000000000L) {
-              i = 18;
-            } else {
-              i = 19;
-            }
-          }
         }
       }
-      if (j != 0) {
-        arrayOfByte[(i - 1)] = 45;
+      else if (l < 1000000L)
+      {
+        if (l < 100000L) {
+          i = 5;
+        } else {
+          i = 6;
+        }
       }
-      localSegment.limit += k;
-      paramLong = this.size;
-      this.size = (k + paramLong);
-      return this;
+      else if (l < 10000000L) {
+        i = 7;
+      } else {
+        i = 8;
+      }
     }
+    else if (l < 1000000000000L)
+    {
+      if (l < 10000000000L)
+      {
+        if (l < 1000000000L) {
+          i = 9;
+        } else {
+          i = 10;
+        }
+      }
+      else if (l < 100000000000L) {
+        i = 11;
+      } else {
+        i = 12;
+      }
+    }
+    else if (l < 1000000000000000L)
+    {
+      if (l < 10000000000000L) {
+        i = 13;
+      } else if (l < 100000000000000L) {
+        i = 14;
+      } else {
+        i = 15;
+      }
+    }
+    else if (l < 100000000000000000L)
+    {
+      if (l < 10000000000000000L) {
+        i = 16;
+      } else {
+        i = 17;
+      }
+    }
+    else if (l < 1000000000000000000L) {
+      i = 18;
+    } else {
+      i = 19;
+    }
+    int k = i;
+    if (j != 0) {
+      k = i + 1;
+    }
+    Segment localSegment = writableSegment$okio(k);
+    byte[] arrayOfByte = localSegment.data;
+    i = localSegment.limit + k;
+    while (l != 0L)
+    {
+      paramLong = 10;
+      int m = (int)(l % paramLong);
+      i -= 1;
+      arrayOfByte[i] = BufferKt.getHEX_DIGIT_BYTES()[m];
+      l /= paramLong;
+    }
+    if (j != 0) {
+      arrayOfByte[(i - 1)] = ((byte)45);
+    }
+    localSegment.limit += k;
+    setSize$okio(size() + k);
+    return this;
   }
   
+  @NotNull
   public Buffer writeHexadecimalUnsignedLong(long paramLong)
   {
     if (paramLong == 0L) {
       return writeByte(48);
     }
-    int j = Long.numberOfTrailingZeros(Long.highestOneBit(paramLong)) / 4 + 1;
-    Segment localSegment = writableSegment(j);
+    long l = paramLong >>> 1 | paramLong;
+    l |= l >>> 2;
+    l |= l >>> 4;
+    l |= l >>> 8;
+    l |= l >>> 16;
+    l |= l >>> 32;
+    l -= (l >>> 1 & 0x55555555);
+    l = (l >>> 2 & 0x33333333) + (l & 0x33333333);
+    l = (l >>> 4) + l & 0xF0F0F0F;
+    l += (l >>> 8);
+    l += (l >>> 16);
+    int j = (int)(((l & 0x3F) + (l >>> 32 & 0x3F) + 3) / 4);
+    Segment localSegment = writableSegment$okio(j);
     byte[] arrayOfByte = localSegment.data;
     int i = localSegment.limit + j - 1;
     int k = localSegment.limit;
     while (i >= k)
     {
-      arrayOfByte[i] = DIGITS[((int)(0xF & paramLong))];
+      arrayOfByte[i] = BufferKt.getHEX_DIGIT_BYTES()[((int)(0xF & paramLong))];
       paramLong >>>= 4;
       i -= 1;
     }
     localSegment.limit += j;
-    paramLong = this.size;
-    this.size = (j + paramLong);
+    setSize$okio(size() + j);
     return this;
   }
   
+  @NotNull
   public Buffer writeInt(int paramInt)
   {
-    Segment localSegment = writableSegment(4);
+    Segment localSegment = writableSegment$okio(4);
     byte[] arrayOfByte = localSegment.data;
     int j = localSegment.limit;
     int i = j + 1;
@@ -1956,18 +2511,20 @@ public final class Buffer
     arrayOfByte[j] = ((byte)(paramInt >>> 8 & 0xFF));
     arrayOfByte[i] = ((byte)(paramInt & 0xFF));
     localSegment.limit = (i + 1);
-    this.size += 4L;
+    setSize$okio(size() + 4L);
     return this;
   }
   
+  @NotNull
   public Buffer writeIntLe(int paramInt)
   {
-    return writeInt(Util.reverseBytesInt(paramInt));
+    return writeInt(-Util.reverseBytes(paramInt));
   }
   
+  @NotNull
   public Buffer writeLong(long paramLong)
   {
-    Segment localSegment = writableSegment(8);
+    Segment localSegment = writableSegment$okio(8);
     byte[] arrayOfByte = localSegment.data;
     int j = localSegment.limit;
     int i = j + 1;
@@ -1986,195 +2543,279 @@ public final class Buffer
     arrayOfByte[j] = ((byte)(int)(paramLong >>> 8 & 0xFF));
     arrayOfByte[i] = ((byte)(int)(paramLong & 0xFF));
     localSegment.limit = (i + 1);
-    this.size += 8L;
+    setSize$okio(size() + 8L);
     return this;
   }
   
+  @NotNull
   public Buffer writeLongLe(long paramLong)
   {
-    return writeLong(Util.reverseBytesLong(paramLong));
+    return writeLong(-Util.reverseBytes(paramLong));
   }
   
+  @NotNull
   public Buffer writeShort(int paramInt)
   {
-    Segment localSegment = writableSegment(2);
+    Segment localSegment = writableSegment$okio(2);
     byte[] arrayOfByte = localSegment.data;
     int i = localSegment.limit;
     int j = i + 1;
     arrayOfByte[i] = ((byte)(paramInt >>> 8 & 0xFF));
     arrayOfByte[j] = ((byte)(paramInt & 0xFF));
     localSegment.limit = (j + 1);
-    this.size += 2L;
+    setSize$okio(size() + 2L);
     return this;
   }
   
+  @NotNull
   public Buffer writeShortLe(int paramInt)
   {
-    return writeShort(Util.reverseBytesShort((short)paramInt));
+    return writeShort(-Util.reverseBytes((short)paramInt));
   }
   
-  public Buffer writeString(String paramString, int paramInt1, int paramInt2, Charset paramCharset)
+  @NotNull
+  public Buffer writeString(@NotNull String paramString, int paramInt1, int paramInt2, @NotNull Charset paramCharset)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("string == null");
+    Intrinsics.checkParameterIsNotNull(paramString, "string");
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
+    int j = 1;
+    int i;
+    if (paramInt1 >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt1 < 0) {
-      throw new IllegalAccessError("beginIndex < 0: " + paramInt1);
+    if (i != 0)
+    {
+      if (paramInt2 >= paramInt1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        if (paramInt2 <= paramString.length()) {
+          i = j;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          if (Intrinsics.areEqual(paramCharset, Charsets.UTF_8)) {
+            return writeUtf8(paramString, paramInt1, paramInt2);
+          }
+          paramString = paramString.substring(paramInt1, paramInt2);
+          Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+          if (paramString != null)
+          {
+            paramString = paramString.getBytes(paramCharset);
+            Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
+            return write(paramString, 0, paramString.length);
+          }
+          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        }
+        paramCharset = new StringBuilder();
+        paramCharset.append("endIndex > string.length: ");
+        paramCharset.append(paramInt2);
+        paramCharset.append(" > ");
+        paramCharset.append(paramString.length());
+        throw ((Throwable)new IllegalArgumentException(paramCharset.toString().toString()));
+      }
+      paramString = new StringBuilder();
+      paramString.append("endIndex < beginIndex: ");
+      paramString.append(paramInt2);
+      paramString.append(" < ");
+      paramString.append(paramInt1);
+      throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
     }
-    if (paramInt2 < paramInt1) {
-      throw new IllegalArgumentException("endIndex < beginIndex: " + paramInt2 + " < " + paramInt1);
-    }
-    if (paramInt2 > paramString.length()) {
-      throw new IllegalArgumentException("endIndex > string.length: " + paramInt2 + " > " + paramString.length());
-    }
-    if (paramCharset == null) {
-      throw new IllegalArgumentException("charset == null");
-    }
-    if (paramCharset.equals(Util.UTF_8)) {
-      return writeUtf8(paramString, paramInt1, paramInt2);
-    }
-    paramString = paramString.substring(paramInt1, paramInt2).getBytes(paramCharset);
-    return write(paramString, 0, paramString.length);
+    paramString = new StringBuilder();
+    paramString.append("beginIndex < 0: ");
+    paramString.append(paramInt1);
+    throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
   }
   
-  public Buffer writeString(String paramString, Charset paramCharset)
+  @NotNull
+  public Buffer writeString(@NotNull String paramString, @NotNull Charset paramCharset)
   {
+    Intrinsics.checkParameterIsNotNull(paramString, "string");
+    Intrinsics.checkParameterIsNotNull(paramCharset, "charset");
     return writeString(paramString, 0, paramString.length(), paramCharset);
   }
   
-  public final Buffer writeTo(OutputStream paramOutputStream)
+  @JvmOverloads
+  @NotNull
+  public final Buffer writeTo(@NotNull OutputStream paramOutputStream)
   {
-    return writeTo(paramOutputStream, this.size);
+    return writeTo$default(this, paramOutputStream, 0L, 2, null);
   }
   
-  public final Buffer writeTo(OutputStream paramOutputStream, long paramLong)
+  @JvmOverloads
+  @NotNull
+  public final Buffer writeTo(@NotNull OutputStream paramOutputStream, long paramLong)
   {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("out == null");
-    }
-    Util.checkOffsetAndCount(this.size, 0L, paramLong);
+    Intrinsics.checkParameterIsNotNull(paramOutputStream, "out");
+    -Util.checkOffsetAndCount(this.size, 0L, paramLong);
     Object localObject = this.head;
-    if (paramLong > 0L)
+    while (paramLong > 0L)
     {
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
       int i = (int)Math.min(paramLong, ((Segment)localObject).limit - ((Segment)localObject).pos);
       paramOutputStream.write(((Segment)localObject).data, ((Segment)localObject).pos, i);
       ((Segment)localObject).pos += i;
-      this.size -= i;
-      paramLong -= i;
-      if (((Segment)localObject).pos != ((Segment)localObject).limit) {
-        break label141;
-      }
-      Segment localSegment = ((Segment)localObject).pop();
-      this.head = localSegment;
-      SegmentPool.recycle((Segment)localObject);
-      localObject = localSegment;
-    }
-    label141:
-    for (;;)
-    {
-      break;
-      return this;
-    }
-  }
-  
-  public Buffer writeUtf8(String paramString)
-  {
-    return writeUtf8(paramString, 0, paramString.length());
-  }
-  
-  public Buffer writeUtf8(String paramString, int paramInt1, int paramInt2)
-  {
-    if (paramString == null) {
-      throw new IllegalArgumentException("string == null");
-    }
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("beginIndex < 0: " + paramInt1);
-    }
-    if (paramInt2 < paramInt1) {
-      throw new IllegalArgumentException("endIndex < beginIndex: " + paramInt2 + " < " + paramInt1);
-    }
-    int i;
-    label142:
-    int j;
-    label177:
-    byte[] arrayOfByte;
-    int k;
-    if (paramInt2 > paramString.length())
-    {
-      throw new IllegalArgumentException("endIndex > string.length: " + paramInt2 + " > " + paramString.length());
-      i = 0;
-      if ((j > 56319) || (i < 56320) || (i > 57343))
+      long l1 = this.size;
+      long l2 = i;
+      this.size = (l1 - l2);
+      l1 = paramLong - l2;
+      paramLong = l1;
+      if (((Segment)localObject).pos == ((Segment)localObject).limit)
       {
-        writeByte(63);
-        paramInt1 += 1;
-      }
-    }
-    else
-    {
-      if (paramInt1 >= paramInt2) {
-        return this;
-      }
-      j = paramString.charAt(paramInt1);
-      if (j < 128)
-      {
-        Segment localSegment = writableSegment(1);
-        arrayOfByte = localSegment.data;
-        k = localSegment.limit - paramInt1;
-        int m = Math.min(paramInt2, 8192 - k);
-        i = paramInt1 + 1;
-        arrayOfByte[(k + paramInt1)] = ((byte)j);
-        paramInt1 = i;
-        label250:
-        if (paramInt1 < m)
-        {
-          i = paramString.charAt(paramInt1);
-          if (i < 128) {}
-        }
-        else
-        {
-          i = paramInt1 + k - localSegment.limit;
-          localSegment.limit += i;
-          this.size += i;
-        }
-      }
-    }
-    for (;;)
-    {
-      break label177;
-      arrayOfByte[(paramInt1 + k)] = ((byte)i);
-      paramInt1 += 1;
-      break label250;
-      if (j < 2048)
-      {
-        writeByte(j >> 6 | 0xC0);
-        writeByte(j & 0x3F | 0x80);
-        paramInt1 += 1;
-      }
-      else if ((j < 55296) || (j > 57343))
-      {
-        writeByte(j >> 12 | 0xE0);
-        writeByte(j >> 6 & 0x3F | 0x80);
-        writeByte(j & 0x3F | 0x80);
-        paramInt1 += 1;
-      }
-      else
-      {
-        if (paramInt1 + 1 >= paramInt2) {
-          break;
-        }
-        i = paramString.charAt(paramInt1 + 1);
-        break label142;
-        i = (i & 0xFFFF23FF | (j & 0xFFFF27FF) << 10) + 65536;
-        writeByte(i >> 18 | 0xF0);
-        writeByte(i >> 12 & 0x3F | 0x80);
-        writeByte(i >> 6 & 0x3F | 0x80);
-        writeByte(i & 0x3F | 0x80);
-        paramInt1 += 2;
+        Segment localSegment = ((Segment)localObject).pop();
+        this.head = localSegment;
+        SegmentPool.INSTANCE.recycle((Segment)localObject);
+        localObject = localSegment;
+        paramLong = l1;
       }
     }
     return this;
   }
   
+  @NotNull
+  public Buffer writeUtf8(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "string");
+    return writeUtf8(paramString, 0, paramString.length());
+  }
+  
+  @NotNull
+  public Buffer writeUtf8(@NotNull String paramString, int paramInt1, int paramInt2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "string");
+    int i;
+    if (paramInt1 >= 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      if (paramInt2 >= paramInt1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        if (paramInt2 <= paramString.length()) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          while (paramInt1 < paramInt2)
+          {
+            int k = paramString.charAt(paramInt1);
+            int j;
+            if (k < 128)
+            {
+              localObject = writableSegment$okio(1);
+              byte[] arrayOfByte = ((Segment)localObject).data;
+              j = ((Segment)localObject).limit - paramInt1;
+              int m = Math.min(paramInt2, 8192 - j);
+              i = paramInt1 + 1;
+              arrayOfByte[(paramInt1 + j)] = ((byte)k);
+              paramInt1 = i;
+              while (paramInt1 < m)
+              {
+                i = paramString.charAt(paramInt1);
+                if (i >= 128) {
+                  break;
+                }
+                arrayOfByte[(paramInt1 + j)] = ((byte)i);
+                paramInt1 += 1;
+              }
+              i = j + paramInt1 - ((Segment)localObject).limit;
+              ((Segment)localObject).limit += i;
+              setSize$okio(size() + i);
+            }
+            else
+            {
+              label217:
+              if (k < 2048)
+              {
+                localObject = writableSegment$okio(2);
+                ((Segment)localObject).data[localObject.limit] = ((byte)(k >> 6 | 0xC0));
+                ((Segment)localObject).data[(localObject.limit + 1)] = ((byte)(k & 0x3F | 0x80));
+                ((Segment)localObject).limit += 2;
+                setSize$okio(size() + 2L);
+              }
+              for (;;)
+              {
+                paramInt1 += 1;
+                break;
+                if ((k >= 55296) && (k <= 57343))
+                {
+                  j = paramInt1 + 1;
+                  if (j < paramInt2) {
+                    i = paramString.charAt(j);
+                  } else {
+                    i = 0;
+                  }
+                  if ((k <= 56319) && (56320 <= i) && (57343 >= i))
+                  {
+                    i = ((k & 0x3FF) << 10 | i & 0x3FF) + 65536;
+                    localObject = writableSegment$okio(4);
+                    ((Segment)localObject).data[localObject.limit] = ((byte)(i >> 18 | 0xF0));
+                    ((Segment)localObject).data[(localObject.limit + 1)] = ((byte)(i >> 12 & 0x3F | 0x80));
+                    ((Segment)localObject).data[(localObject.limit + 2)] = ((byte)(i >> 6 & 0x3F | 0x80));
+                    ((Segment)localObject).data[(localObject.limit + 3)] = ((byte)(i & 0x3F | 0x80));
+                    ((Segment)localObject).limit += 4;
+                    setSize$okio(size() + 4L);
+                    paramInt1 += 2;
+                    break;
+                  }
+                  writeByte(63);
+                  paramInt1 = j;
+                  break label217;
+                }
+                localObject = writableSegment$okio(3);
+                ((Segment)localObject).data[localObject.limit] = ((byte)(k >> 12 | 0xE0));
+                ((Segment)localObject).data[(localObject.limit + 1)] = ((byte)(0x3F & k >> 6 | 0x80));
+                ((Segment)localObject).data[(localObject.limit + 2)] = ((byte)(k & 0x3F | 0x80));
+                ((Segment)localObject).limit += 3;
+                setSize$okio(size() + 3L);
+              }
+            }
+          }
+          return this;
+        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("endIndex > string.length: ");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" > ");
+        ((StringBuilder)localObject).append(paramString.length());
+        throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
+      }
+      paramString = new StringBuilder();
+      paramString.append("endIndex < beginIndex: ");
+      paramString.append(paramInt2);
+      paramString.append(" < ");
+      paramString.append(paramInt1);
+      throw ((Throwable)new IllegalArgumentException(paramString.toString().toString()));
+    }
+    paramString = new StringBuilder();
+    paramString.append("beginIndex < 0: ");
+    paramString.append(paramInt1);
+    paramString = (Throwable)new IllegalArgumentException(paramString.toString().toString());
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  @NotNull
   public Buffer writeUtf8CodePoint(int paramInt)
   {
     if (paramInt < 128)
@@ -2184,36 +2825,48 @@ public final class Buffer
     }
     if (paramInt < 2048)
     {
-      writeByte(paramInt >> 6 | 0xC0);
-      writeByte(paramInt & 0x3F | 0x80);
+      localObject = writableSegment$okio(2);
+      ((Segment)localObject).data[localObject.limit] = ((byte)(paramInt >> 6 | 0xC0));
+      ((Segment)localObject).data[(localObject.limit + 1)] = ((byte)(paramInt & 0x3F | 0x80));
+      ((Segment)localObject).limit += 2;
+      setSize$okio(size() + 2L);
+      return this;
+    }
+    if ((55296 <= paramInt) && (57343 >= paramInt))
+    {
+      writeByte(63);
       return this;
     }
     if (paramInt < 65536)
     {
-      if ((paramInt >= 55296) && (paramInt <= 57343))
-      {
-        writeByte(63);
-        return this;
-      }
-      writeByte(paramInt >> 12 | 0xE0);
-      writeByte(paramInt >> 6 & 0x3F | 0x80);
-      writeByte(paramInt & 0x3F | 0x80);
+      localObject = writableSegment$okio(3);
+      ((Segment)localObject).data[localObject.limit] = ((byte)(paramInt >> 12 | 0xE0));
+      ((Segment)localObject).data[(localObject.limit + 1)] = ((byte)(paramInt >> 6 & 0x3F | 0x80));
+      ((Segment)localObject).data[(localObject.limit + 2)] = ((byte)(paramInt & 0x3F | 0x80));
+      ((Segment)localObject).limit += 3;
+      setSize$okio(size() + 3L);
       return this;
     }
     if (paramInt <= 1114111)
     {
-      writeByte(paramInt >> 18 | 0xF0);
-      writeByte(paramInt >> 12 & 0x3F | 0x80);
-      writeByte(paramInt >> 6 & 0x3F | 0x80);
-      writeByte(paramInt & 0x3F | 0x80);
+      localObject = writableSegment$okio(4);
+      ((Segment)localObject).data[localObject.limit] = ((byte)(paramInt >> 18 | 0xF0));
+      ((Segment)localObject).data[(localObject.limit + 1)] = ((byte)(paramInt >> 12 & 0x3F | 0x80));
+      ((Segment)localObject).data[(localObject.limit + 2)] = ((byte)(paramInt >> 6 & 0x3F | 0x80));
+      ((Segment)localObject).data[(localObject.limit + 3)] = ((byte)(paramInt & 0x3F | 0x80));
+      ((Segment)localObject).limit += 4;
+      setSize$okio(size() + 4L);
       return this;
     }
-    throw new IllegalArgumentException("Unexpected code point: " + Integer.toHexString(paramInt));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unexpected code point: 0x");
+    ((StringBuilder)localObject).append(-Util.toHexString(paramInt));
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.Buffer
  * JD-Core Version:    0.7.0.1
  */

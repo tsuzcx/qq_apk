@@ -13,6 +13,8 @@ public abstract interface IMsfProxy
   
   public abstract void initMsfService();
   
+  public abstract int onKillProcess();
+  
   public abstract int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString);
   
   public abstract int registerMsfService(boolean paramBoolean1, boolean paramBoolean2);
@@ -33,7 +35,7 @@ public abstract interface IMsfProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.handler.IMsfProxy
  * JD-Core Version:    0.7.0.1
  */

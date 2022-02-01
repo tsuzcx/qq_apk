@@ -8,14 +8,14 @@ public final class ReqConfirmContactFriend
   extends JceStruct
 {
   static byte[] cache_vSig;
-  public byte bGroupId;
-  public byte bType;
-  public long lFromMobile;
-  public long lToMID;
-  public long lToMobile;
+  public byte bGroupId = 0;
+  public byte bType = 0;
+  public long lFromMobile = 0L;
+  public long lToMID = 0L;
+  public long lToMobile = 0L;
   public String strNickName = "";
   public String strReason = "";
-  public byte[] vSig;
+  public byte[] vSig = null;
   
   public ReqConfirmContactFriend() {}
   
@@ -56,17 +56,19 @@ public final class ReqConfirmContactFriend
     paramJceOutputStream.write(this.lToMobile, 3);
     paramJceOutputStream.write(this.vSig, 4);
     paramJceOutputStream.write(this.bGroupId, 5);
-    if (this.strReason != null) {
-      paramJceOutputStream.write(this.strReason, 6);
+    String str = this.strReason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.strNickName != null) {
-      paramJceOutputStream.write(this.strNickName, 7);
+    str = this.strNickName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     BumpSvc.ReqConfirmContactFriend
  * JD-Core Version:    0.7.0.1
  */

@@ -1,4 +1,3 @@
-import android.widget.CursorAdapter;
 import com.tencent.mobileqq.activity.BaseSystemActivity;
 
 public class bwq
@@ -8,9 +7,7 @@ public class bwq
   
   public void run()
   {
-    if (this.a.a.getCursor() != null) {
-      this.a.b();
-    }
+    this.a.a();
   }
 }
 

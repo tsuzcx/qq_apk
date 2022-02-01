@@ -25,8 +25,8 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.WebView;
+import fzo;
 import fzp;
-import fzq;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -49,7 +49,7 @@ public class DataApiPlugin
   
   public DataApiPlugin()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new fzp(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new fzo(this);
   }
   
   protected boolean handleEvent(String paramString, int paramInt, Map paramMap)
@@ -214,7 +214,7 @@ public class DataApiPlugin
             if (localObject1 != null) {
               paramVarArgs.putString("Cookie", (String)localObject1);
             }
-            ThreadManager.a(new fzq(this, paramString2, paramString1, paramJsBridgeListener, paramVarArgs, paramString3));
+            ThreadManager.a(new fzp(this, paramString2, paramString1, paramJsBridgeListener, paramVarArgs, paramString3));
             break;
           }
         }

@@ -4,34 +4,36 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout;
-import bdaq;
-import yvb;
-import yvc;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class GridListAdapter$1
+class GridListAdapter$1
   implements Runnable
 {
-  public GridListAdapter$1(yvb paramyvb, yvc paramyvc) {}
+  GridListAdapter$1(GridListAdapter paramGridListAdapter, GridListAdapter.Holder paramHolder) {}
   
   public void run()
   {
-    int i = bdaq.a(this.this$0.a, 5.0F);
-    new Paint().setTextSize(bdaq.a(this.this$0.a, 11.0F));
-    int j = this.a.a.getWidth();
-    int k = this.a.a.getHeight();
-    if ((j == 0) || (k == 0)) {
-      return;
+    int i = DisplayUtil.a(this.this$0.b, 5.0F);
+    new Paint().setTextSize(DisplayUtil.a(this.this$0.b, 11.0F));
+    int j = this.a.j.getWidth();
+    int k = this.a.j.getHeight();
+    if (j != 0)
+    {
+      if (k == 0) {
+        return;
+      }
+      GradientDrawable localGradientDrawable = new GradientDrawable();
+      localGradientDrawable.setShape(0);
+      float f = i;
+      localGradientDrawable.setCornerRadii(new float[] { f, f, f, f, f, f, f, f });
+      localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
+      this.a.j.setBackgroundDrawable(localGradientDrawable);
     }
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, i, i, i, i });
-    localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
-    this.a.a.setBackgroundDrawable(localGradientDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

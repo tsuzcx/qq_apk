@@ -9,10 +9,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
 
 @TargetApi(12)
 public class MapFragment
-  extends Fragment
+  extends ReportFragment
 {
   private TencentMap a;
   private MapView b = null;
@@ -51,7 +53,9 @@ public class MapFragment
       this.b = new MapView(getActivity().getBaseContext());
     }
     this.b.setOnTop(this.c);
-    return this.b;
+    paramLayoutInflater = this.b;
+    FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -117,7 +121,7 @@ public class MapFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.MapFragment
  * JD-Core Version:    0.7.0.1
  */

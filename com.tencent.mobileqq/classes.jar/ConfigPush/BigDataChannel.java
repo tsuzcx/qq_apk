@@ -13,11 +13,11 @@ public final class BigDataChannel
   static ArrayList<BigDataIpList> cache_vBigdata_iplists;
   static byte[] cache_vBigdata_pb_buf;
   public int iConnect_flag = 1;
-  public byte[] sBigdata_key_session;
-  public byte[] sBigdata_sig_session;
-  public long uSig_Uin;
-  public ArrayList<BigDataIpList> vBigdata_iplists;
-  public byte[] vBigdata_pb_buf;
+  public byte[] sBigdata_key_session = null;
+  public byte[] sBigdata_sig_session = null;
+  public long uSig_Uin = 0L;
+  public ArrayList<BigDataIpList> vBigdata_iplists = null;
+  public byte[] vBigdata_pb_buf = null;
   
   public BigDataChannel() {}
   
@@ -65,22 +65,25 @@ public final class BigDataChannel
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vBigdata_iplists, 0);
-    if (this.sBigdata_sig_session != null) {
-      paramJceOutputStream.write(this.sBigdata_sig_session, 1);
+    byte[] arrayOfByte = this.sBigdata_sig_session;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
-    if (this.sBigdata_key_session != null) {
-      paramJceOutputStream.write(this.sBigdata_key_session, 2);
+    arrayOfByte = this.sBigdata_key_session;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
     paramJceOutputStream.write(this.uSig_Uin, 3);
     paramJceOutputStream.write(this.iConnect_flag, 4);
-    if (this.vBigdata_pb_buf != null) {
-      paramJceOutputStream.write(this.vBigdata_pb_buf, 5);
+    arrayOfByte = this.vBigdata_pb_buf;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.BigDataChannel
  * JD-Core Version:    0.7.0.1
  */

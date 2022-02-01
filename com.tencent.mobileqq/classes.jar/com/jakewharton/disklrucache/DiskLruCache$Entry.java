@@ -20,15 +20,18 @@ final class DiskLruCache$Entry
   
   private IOException invalidLengths(String[] paramArrayOfString)
   {
-    throw new IOException("unexpected journal line: " + Arrays.toString(paramArrayOfString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unexpected journal line: ");
+    localStringBuilder.append(Arrays.toString(paramArrayOfString));
+    throw new IOException(localStringBuilder.toString());
   }
   
   private void setLengths(String[] paramArrayOfString)
   {
-    if (paramArrayOfString.length != DiskLruCache.access$1800(this.this$0)) {
-      throw invalidLengths(paramArrayOfString);
+    int i;
+    if (paramArrayOfString.length == DiskLruCache.access$1800(this.this$0)) {
+      i = 0;
     }
-    int i = 0;
     try
     {
       while (i < paramArrayOfString.length)
@@ -40,18 +43,36 @@ final class DiskLruCache$Entry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      throw invalidLengths(paramArrayOfString);
+      label40:
+      break label40;
+    }
+    throw invalidLengths(paramArrayOfString);
+    paramArrayOfString = invalidLengths(paramArrayOfString);
+    for (;;)
+    {
+      throw paramArrayOfString;
     }
   }
   
   public File getCleanFile(int paramInt)
   {
-    return new File(DiskLruCache.access$1900(this.this$0), this.key + "." + paramInt);
+    File localFile = DiskLruCache.access$1900(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt);
+    return new File(localFile, localStringBuilder.toString());
   }
   
   public File getDirtyFile(int paramInt)
   {
-    return new File(DiskLruCache.access$1900(this.this$0), this.key + "." + paramInt + ".tmp");
+    File localFile = DiskLruCache.access$1900(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".tmp");
+    return new File(localFile, localStringBuilder.toString());
   }
   
   public String getLengths()
@@ -63,7 +84,8 @@ final class DiskLruCache$Entry
     while (i < j)
     {
       long l = arrayOfLong[i];
-      localStringBuilder.append(' ').append(l);
+      localStringBuilder.append(' ');
+      localStringBuilder.append(l);
       i += 1;
     }
     return localStringBuilder.toString();
@@ -71,7 +93,7 @@ final class DiskLruCache$Entry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.jakewharton.disklrucache.DiskLruCache.Entry
  * JD-Core Version:    0.7.0.1
  */

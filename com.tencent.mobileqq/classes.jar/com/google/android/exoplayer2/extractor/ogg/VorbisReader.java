@@ -44,40 +44,48 @@ final class VorbisReader
       boolean bool = VorbisUtil.verifyVorbisHeaderCapturePattern(1, paramParsableByteArray, true);
       return bool;
     }
-    catch (ParserException paramParsableByteArray) {}
+    catch (ParserException paramParsableByteArray)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
   protected void onSeekEnd(long paramLong)
   {
-    int i = 0;
     super.onSeekEnd(paramLong);
-    if (paramLong != 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.seenFirstAudioPacket = bool;
-      if (this.vorbisIdHeader != null) {
-        i = this.vorbisIdHeader.blockSize0;
-      }
-      this.previousPacketBlockSize = i;
-      return;
+    int i = 0;
+    boolean bool;
+    if (paramLong != 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.seenFirstAudioPacket = bool;
+    VorbisUtil.VorbisIdHeader localVorbisIdHeader = this.vorbisIdHeader;
+    if (localVorbisIdHeader != null) {
+      i = localVorbisIdHeader.blockSize0;
+    }
+    this.previousPacketBlockSize = i;
   }
   
   protected long preparePayload(ParsableByteArray paramParsableByteArray)
   {
+    byte[] arrayOfByte = paramParsableByteArray.data;
     int i = 0;
-    if ((paramParsableByteArray.data[0] & 0x1) == 1) {
+    if ((arrayOfByte[0] & 0x1) == 1) {
       return -1L;
     }
     int j = decodeBlockSize(paramParsableByteArray.data[0], this.vorbisSetup);
     if (this.seenFirstAudioPacket) {
       i = (this.previousPacketBlockSize + j) / 4;
     }
-    appendNumberOfSamples(paramParsableByteArray, i);
+    long l = i;
+    appendNumberOfSamples(paramParsableByteArray, l);
     this.seenFirstAudioPacket = true;
     this.previousPacketBlockSize = j;
-    return i;
+    return l;
   }
   
   protected boolean readHeaders(ParsableByteArray paramParsableByteArray, long paramLong, StreamReader.SetupData paramSetupData)
@@ -130,7 +138,7 @@ final class VorbisReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.VorbisReader
  * JD-Core Version:    0.7.0.1
  */

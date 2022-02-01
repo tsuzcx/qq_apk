@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class structmsg$ReqSystemMsgAction
   extends MessageMicro<ReqSystemMsgAction>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 72 }, new String[] { "msg_type", "msg_seq", "req_uin", "sub_type", "src_id", "sub_src_id", "group_msg_type", "action_info", "language" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) }, ReqSystemMsgAction.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public structmsg.SystemMsgActionInfo action_info = new structmsg.SystemMsgActionInfo();
   public final PBUInt32Field group_msg_type = PBField.initUInt32(0);
   public final PBUInt32Field language = PBField.initUInt32(0);
@@ -20,10 +20,17 @@ public final class structmsg$ReqSystemMsgAction
   public final PBUInt32Field src_id = PBField.initUInt32(0);
   public final PBUInt32Field sub_src_id = PBField.initUInt32(0);
   public final PBUInt32Field sub_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 72 }, new String[] { "msg_type", "msg_seq", "req_uin", "sub_type", "src_id", "sub_src_id", "group_msg_type", "action_info", "language" }, new Object[] { Integer.valueOf(1), localLong, localLong, localInteger, localInteger, localInteger, localInteger, null, localInteger }, ReqSystemMsgAction.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.mobileim.structmsg.structmsg.ReqSystemMsgAction
  * JD-Core Version:    0.7.0.1
  */

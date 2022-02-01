@@ -28,14 +28,15 @@ public final class qqstory_service$MsgTabNodeVideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 74, 80, 90, 98 }, new String[] { "uint64_video_index", "uint32_did_read", "feed_id", "video_info", "vid", "recommand_id", "show_bottom", "bottom_wording", "bottom_link", "show_text", "text_wording", "text_link" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "" }, MsgTabNodeVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 74, 80, 90, 98 }, new String[] { "uint64_video_index", "uint32_did_read", "feed_id", "video_info", "vid", "recommand_id", "show_bottom", "bottom_wording", "bottom_link", "show_text", "text_wording", "text_link" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro1, null, localByteStringMicro2, localInteger, localInteger, "", "", localInteger, "", "" }, MsgTabNodeVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeVideoInfo
  * JD-Core Version:    0.7.0.1
  */

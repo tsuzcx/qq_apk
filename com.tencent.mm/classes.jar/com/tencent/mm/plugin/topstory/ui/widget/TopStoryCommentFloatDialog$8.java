@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.topstory.ui.widget;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class TopStoryCommentFloatDialog$8
   implements View.OnClickListener
@@ -11,11 +13,15 @@ final class TopStoryCommentFloatDialog$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(2249);
-    if (this.tmJ.getVisibility() == 0) {
-      this.tmJ.hide();
+    AppMethodBeat.i(126656);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.TQC.getVisibility() == 0) {
+      this.TQC.hide();
     }
-    AppMethodBeat.o(2249);
+    a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryCommentFloatDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(126656);
   }
 }
 

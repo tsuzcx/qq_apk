@@ -25,12 +25,11 @@ public class WXEmojiSharedObject
   
   public boolean checkArgs()
   {
-    if ((TextUtils.isEmpty(this.packageid)) || (TextUtils.isEmpty(this.thumburl)) || (TextUtils.isEmpty(this.url)) || (this.packageflag == -1))
-    {
-      Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
-      return false;
+    if ((!TextUtils.isEmpty(this.packageid)) && (!TextUtils.isEmpty(this.thumburl)) && (!TextUtils.isEmpty(this.url)) && (this.packageflag != -1)) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -56,7 +55,7 @@ public class WXEmojiSharedObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiSharedObject
  * JD-Core Version:    0.7.0.1
  */

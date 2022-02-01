@@ -5,19 +5,19 @@ import org.json.JSONObject;
 
 public final class i
 {
-  String bxZ;
-  private JSONObject bya;
+  String eiv;
+  private JSONObject eiw;
   
   i(m paramm)
   {
-    AppMethodBeat.i(90724);
-    paramm = paramm.tS();
-    this.bxZ = paramm.getString("event");
-    this.bya = paramm.optJSONObject("data");
-    if (this.bya == null) {
-      this.bya = new JSONObject();
+    AppMethodBeat.i(140324);
+    paramm = paramm.anZ();
+    this.eiv = paramm.getString("event");
+    this.eiw = paramm.optJSONObject("data");
+    if (this.eiw == null) {
+      this.eiw = new JSONObject();
     }
-    AppMethodBeat.o(90724);
+    AppMethodBeat.o(140324);
   }
 }
 

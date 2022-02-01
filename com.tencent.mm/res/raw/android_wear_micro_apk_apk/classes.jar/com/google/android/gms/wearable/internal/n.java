@@ -14,16 +14,16 @@ import java.util.Set;
 public final class n
   implements l
 {
-  private Uri IG;
-  private byte[] Sh;
-  private Map<String, m> Tk;
+  private Uri Kv;
+  private byte[] TW;
+  private Map<String, m> UZ;
   
   public n(l paraml)
   {
-    this.IG = paraml.getUri();
-    this.Sh = paraml.getData();
+    this.Kv = paraml.getUri();
+    this.TW = paraml.getData();
     HashMap localHashMap = new HashMap();
-    paraml = paraml.kv().entrySet().iterator();
+    paraml = paraml.kE().entrySet().iterator();
     while (paraml.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paraml.next();
@@ -31,42 +31,42 @@ public final class n
         localHashMap.put((String)localEntry.getKey(), (m)((m)localEntry.getValue()).freeze());
       }
     }
-    this.Tk = Collections.unmodifiableMap(localHashMap);
+    this.UZ = Collections.unmodifiableMap(localHashMap);
   }
   
   public final byte[] getData()
   {
-    return this.Sh;
+    return this.TW;
   }
   
   public final Uri getUri()
   {
-    return this.IG;
+    return this.Kv;
   }
   
-  public final Map<String, m> kv()
+  public final Map<String, m> kE()
   {
-    return this.Tk;
+    return this.UZ;
   }
   
   public final String toString()
   {
     boolean bool = Log.isLoggable("DataItem", 3);
     StringBuilder localStringBuilder = new StringBuilder("DataItemEntity{ ");
-    Object localObject1 = String.valueOf(this.IG);
+    Object localObject1 = String.valueOf(this.Kv);
     localStringBuilder.append(String.valueOf(localObject1).length() + 4 + "uri=" + (String)localObject1);
-    if (this.Sh == null) {}
-    for (localObject1 = "null";; localObject1 = Integer.valueOf(this.Sh.length))
+    if (this.TW == null) {}
+    for (localObject1 = "null";; localObject1 = Integer.valueOf(this.TW.length))
     {
       localObject1 = String.valueOf(localObject1);
       localStringBuilder.append(String.valueOf(localObject1).length() + 9 + ", dataSz=" + (String)localObject1);
-      int i = this.Tk.size();
+      int i = this.UZ.size();
       localStringBuilder.append(23 + ", numAssets=" + i);
-      if ((!bool) || (this.Tk.isEmpty())) {
+      if ((!bool) || (this.UZ.isEmpty())) {
         break label332;
       }
       localStringBuilder.append(", assets=[");
-      Iterator localIterator = this.Tk.entrySet().iterator();
+      Iterator localIterator = this.UZ.entrySet().iterator();
       for (localObject1 = ""; localIterator.hasNext(); localObject1 = ", ")
       {
         Object localObject2 = (Map.Entry)localIterator.next();

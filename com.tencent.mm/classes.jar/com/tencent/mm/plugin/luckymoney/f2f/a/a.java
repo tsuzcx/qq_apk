@@ -1,50 +1,48 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abc;
-import com.tencent.mm.protocal.protobuf.abd;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aqa;
+import com.tencent.mm.protocal.protobuf.aqb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class a
-  extends m
-  implements k
+  extends w
 {
-  private f callback;
-  private b goo;
-  private abd okA;
-  private abc okz;
+  private aqa Kok;
+  private aqb Kol;
+  private h callback;
+  private c nao;
   
   public a(String paramString)
   {
-    AppMethodBeat.i(42145);
-    b.a locala = new b.a();
-    locala.fsX = new abc();
-    locala.fsY = new abd();
+    AppMethodBeat.i(65035);
+    c.a locala = new c.a();
+    locala.otE = new aqa();
+    locala.otF = new aqb();
     locala.funcId = getType();
-    locala.reqCmdId = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
     locala.uri = "/cgi-bin/mmpay-bin/ftfhb/ffclearwxhb";
-    this.goo = locala.ado();
-    this.okz = ((abc)this.goo.fsV.fta);
-    this.okz.ojA = paramString;
-    AppMethodBeat.o(42145);
+    this.nao = locala.bEF();
+    this.Kok = ((aqa)c.b.b(this.nao.otB));
+    this.Kok.CAf = paramString;
+    AppMethodBeat.o(65035);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(42147);
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(42147);
+    AppMethodBeat.i(65037);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(65037);
     return i;
   }
   
@@ -53,20 +51,20 @@ public final class a
     return 1987;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(42146);
-    this.okA = ((abd)((b)paramq).fsW.fta);
-    ab.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.okA.cnK), this.okA.kNv });
+    AppMethodBeat.i(283849);
+    this.Kol = ((aqb)c.c.b(((c)params).otC));
+    Log.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.Kol.hAV), this.Kol.wYI });
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, this.okA.cnK, this.okA.kNv, this);
+      this.callback.onSceneEnd(paramInt2, this.Kol.hAV, this.Kol.wYI, this);
     }
-    AppMethodBeat.o(42146);
+    AppMethodBeat.o(283849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a.a
  * JD-Core Version:    0.7.0.1
  */

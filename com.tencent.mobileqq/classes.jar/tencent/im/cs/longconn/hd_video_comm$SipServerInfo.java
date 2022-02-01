@@ -23,13 +23,14 @@ public final class hd_video_comm$SipServerInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50, 56, 64 }, new String[] { "msg_sip_addr", "uint32_provider_id", "msg_caller_phone", "uint32_encode_type", "uint32_tls_flag", "bytes_domain", "uint32_srtp_flag", "rpt_uint32_dtmf_mode" }, new Object[] { null, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, SipServerInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50, 56, 64 }, new String[] { "msg_sip_addr", "uint32_provider_id", "msg_caller_phone", "uint32_encode_type", "uint32_tls_flag", "bytes_domain", "uint32_srtp_flag", "rpt_uint32_dtmf_mode" }, new Object[] { null, localInteger, null, localInteger, localInteger, localByteStringMicro, localInteger, localInteger }, SipServerInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.SipServerInfo
  * JD-Core Version:    0.7.0.1
  */

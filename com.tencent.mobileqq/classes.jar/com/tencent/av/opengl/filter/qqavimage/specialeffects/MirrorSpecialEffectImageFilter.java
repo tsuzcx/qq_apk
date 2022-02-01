@@ -28,34 +28,41 @@ public class MirrorSpecialEffectImageFilter
   
   public void onDraw2(int paramInt1, int paramInt2)
   {
-    int j = 2;
     long l = System.currentTimeMillis();
-    int i;
     if (l - this.mLastChangeOrientationTime > CHANGE_ORIENTATION_TIME)
     {
-      i = j;
-      switch (this.mDeviceOrientation)
+      int k = this.mDeviceOrientation;
+      int j = 2;
+      int i;
+      if (k != 0)
       {
-      default: 
         i = j;
+        if (k != 90) {
+          if (k != 180)
+          {
+            if (k != 270) {
+              i = j;
+            } else {
+              i = 4;
+            }
+          }
+          else {
+            i = 3;
+          }
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 1;
+      }
       if (this.mCurrentDeviceOrientation != i)
       {
         this.mLastChangeOrientationTime = l;
         this.mCurrentDeviceOrientation = i;
         setDeviceOrientation(i);
       }
-      super.onDraw2(paramInt1, paramInt2);
-      return;
-      i = 1;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
     }
+    super.onDraw2(paramInt1, paramInt2);
   }
   
   public void onInit()
@@ -72,26 +79,36 @@ public class MirrorSpecialEffectImageFilter
   
   public void setDeviceOrientation(int paramInt)
   {
-    int i = paramInt;
-    if (this.mMirrorType == 1016) {
-      switch (paramInt)
+    int i = this.mMirrorType;
+    int j = 3;
+    if (i == 1016)
+    {
+      if (paramInt != 1)
       {
-      default: 
-        i = 3;
+        i = j;
+        if (paramInt != 2) {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              i = j;
+            } else {
+              i = 1;
+            }
+          }
+          else {
+            i = 4;
+          }
+        }
+      }
+      else
+      {
+        i = 2;
       }
     }
-    for (;;)
-    {
-      setInteger(this.mDeviceOrientationLocation, i);
-      return;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 1;
+    else {
+      i = paramInt;
     }
+    setInteger(this.mDeviceOrientationLocation, i);
   }
   
   public void setOrientation(int paramInt)
@@ -101,7 +118,7 @@ public class MirrorSpecialEffectImageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.filter.qqavimage.specialeffects.MirrorSpecialEffectImageFilter
  * JD-Core Version:    0.7.0.1
  */

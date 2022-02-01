@@ -1,10 +1,11 @@
 package com.tencent.mm.pluginsdk.location;
 
+import com.tencent.mm.protocal.protobuf.dha;
+
 public abstract interface a
+  extends com.tencent.mm.kernel.c.a
 {
-  public abstract void a(b paramb);
-  
-  public abstract void a(String paramString, b paramb);
+  public abstract void a(dha paramdha, a.a parama);
 }
 
 

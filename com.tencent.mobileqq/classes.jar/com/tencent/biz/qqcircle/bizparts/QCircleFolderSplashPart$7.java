@@ -1,20 +1,18 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import tsk;
-
-public class QCircleFolderSplashPart$7
+class QCircleFolderSplashPart$7
   implements Runnable
 {
-  public QCircleFolderSplashPart$7(tsk paramtsk) {}
+  QCircleFolderSplashPart$7(QCircleFolderSplashPart paramQCircleFolderSplashPart) {}
   
   public void run()
   {
-    tsk.a(this.this$0);
+    QCircleFolderSplashPart.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.bizparts.QCircleFolderSplashPart.7
  * JD-Core Version:    0.7.0.1
  */

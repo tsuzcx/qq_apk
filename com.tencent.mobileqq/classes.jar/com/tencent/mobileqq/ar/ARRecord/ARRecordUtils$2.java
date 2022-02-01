@@ -3,24 +3,24 @@ package com.tencent.mobileqq.ar.ARRecord;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class ARRecordUtils$2
+final class ARRecordUtils$2
   implements Runnable
 {
-  public ARRecordUtils$2(boolean paramBoolean, String paramString) {}
+  ARRecordUtils$2(boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), this.b, 0).show();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 2, this.b, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2
  * JD-Core Version:    0.7.0.1
  */

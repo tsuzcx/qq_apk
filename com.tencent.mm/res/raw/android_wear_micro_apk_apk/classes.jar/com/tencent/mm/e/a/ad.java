@@ -3,24 +3,24 @@ package com.tencent.mm.e.a;
 public final class ad
   extends com.tencent.mm.d.a
 {
-  public int Wq;
+  public int Yl;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
-      ((a.a.a.c.a)paramVarArgs[0]).aq(1, this.Wq);
+      ((a.a.a.c.a)paramVarArgs[0]).at(1, this.Yl);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.ak(1, this.Wq) + 0;
+      return a.a.a.a.an(1, this.Yl) + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -34,7 +34,7 @@ public final class ad
       default: 
         return -1;
       }
-      localad.Wq = locala.ot();
+      localad.Yl = locala.pg();
       return 0;
     }
     return -1;

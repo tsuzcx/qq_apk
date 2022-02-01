@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class BindMContactIntroUI$1
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class BindMContactIntroUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(13422);
-    BindMContactIntroUI.a(this.gtw);
-    AppMethodBeat.o(13422);
+    AppMethodBeat.i(109850);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.pOL.bWk();
+    a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(109850);
   }
 }
 

@@ -37,18 +37,19 @@ public final class SpscArrayQueue<E>
   
   public boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException("null elements not allowed");
+    if (paramE != null)
+    {
+      Object[] arrayOfObject = this.buffer;
+      long l1 = this.producerIndex;
+      long l2 = calcElementOffset(l1);
+      if (lvElement(arrayOfObject, l2) != null) {
+        return false;
+      }
+      soProducerIndex(l1 + 1L);
+      soElement(arrayOfObject, l2, paramE);
+      return true;
     }
-    Object[] arrayOfObject = this.buffer;
-    long l1 = this.producerIndex;
-    long l2 = calcElementOffset(l1);
-    if (lvElement(arrayOfObject, l2) != null) {
-      return false;
-    }
-    soProducerIndex(l1 + 1L);
-    soElement(arrayOfObject, l2, paramE);
-    return true;
+    throw new NullPointerException("null elements not allowed");
   }
   
   public E peek()
@@ -85,7 +86,7 @@ public final class SpscArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.unsafe.SpscArrayQueue
  * JD-Core Version:    0.7.0.1
  */

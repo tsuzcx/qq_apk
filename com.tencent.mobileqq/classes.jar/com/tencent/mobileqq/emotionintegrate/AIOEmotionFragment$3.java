@@ -1,19 +1,22 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import android.app.Activity;
-import android.widget.PopupWindow;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.QueryCallback;
 
 class AIOEmotionFragment$3
-  implements Runnable
+  implements QueryCallback<EmoticonPackage>
 {
-  AIOEmotionFragment$3(AIOEmotionFragment paramAIOEmotionFragment, PopupWindow paramPopupWindow, TextView paramTextView) {}
+  AIOEmotionFragment$3(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (((this.this$0.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).isFinishing())) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetTextView, this.this$0.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() / 2, 0);
+    if (paramEmoticonPackage == null)
+    {
+      AIOEmotionFragment.a(this.b, this.a, 32);
+      return;
     }
+    AIOEmotionFragment.a(this.b, true);
   }
 }
 

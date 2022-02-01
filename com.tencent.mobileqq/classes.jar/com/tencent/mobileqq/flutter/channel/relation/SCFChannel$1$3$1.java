@@ -11,36 +11,32 @@ class SCFChannel$1$3$1
   
   public void run()
   {
-    boolean bool2 = true;
     Object localObject = new SCFSwitchs();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo != null)
+    SpecialCareInfo localSpecialCareInfo = this.a;
+    if (localSpecialCareInfo != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo.qzoneSwitch != 1) {
-        break label89;
+      int i = localSpecialCareInfo.qzoneSwitch;
+      boolean bool2 = false;
+      if (i == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
       ((SCFSwitchs)localObject).isQzoneNotify = Boolean.valueOf(bool1);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataSpecialCareInfo.globalSwitch != 1) {
-        break label94;
+      boolean bool1 = bool2;
+      if (this.a.globalSwitch == 1) {
+        bool1 = true;
       }
-    }
-    label89:
-    label94:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
       ((SCFSwitchs)localObject).isSpecialCare = Boolean.valueOf(bool1);
-      ((SCFSwitchs)localObject).isVoiceNewFlag = Boolean.valueOf(this.jdField_a_of_type_Boolean);
-      localObject = SCFSwitchs.toMap((SCFSwitchs)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelRelationSCFChannel$1$3.a.success(localObject);
-      return;
-      bool1 = false;
-      break;
     }
+    ((SCFSwitchs)localObject).isVoiceNewFlag = Boolean.valueOf(this.b);
+    localObject = SCFSwitchs.toMap((SCFSwitchs)localObject);
+    this.c.b.success(localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.3.1
  * JD-Core Version:    0.7.0.1
  */

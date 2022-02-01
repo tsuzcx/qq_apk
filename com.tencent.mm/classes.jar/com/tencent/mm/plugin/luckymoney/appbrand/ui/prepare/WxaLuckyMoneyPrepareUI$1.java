@@ -11,9 +11,9 @@ final class WxaLuckyMoneyPrepareUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(42053);
+    AppMethodBeat.i(64944);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(42053);
+    AppMethodBeat.o(64944);
   }
 }
 

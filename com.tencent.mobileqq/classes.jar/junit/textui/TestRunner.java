@@ -101,7 +101,7 @@ public class TestRunner
     catch (Exception localException) {}
   }
   
-  public void runFailed(String paramString)
+  protected void runFailed(String paramString)
   {
     System.err.println(paramString);
     System.exit(1);
@@ -119,56 +119,65 @@ public class TestRunner
   
   public TestResult start(String[] paramArrayOfString)
   {
-    String str1 = "";
-    String str2 = "";
+    Object localObject1 = "";
+    Object localObject2 = localObject1;
     int i = 0;
     boolean bool = false;
-    if (i < paramArrayOfString.length)
+    while (i < paramArrayOfString.length)
     {
-      if (paramArrayOfString[i].equals("-wait")) {
+      if (paramArrayOfString[i].equals("-wait"))
+      {
         bool = true;
       }
-      for (;;)
+      else if (paramArrayOfString[i].equals("-c"))
       {
         i += 1;
-        break;
-        if (paramArrayOfString[i].equals("-c"))
-        {
-          i += 1;
-          str1 = extractClassName(paramArrayOfString[i]);
+        localObject1 = extractClassName(paramArrayOfString[i]);
+      }
+      else if (paramArrayOfString[i].equals("-m"))
+      {
+        i += 1;
+        localObject2 = paramArrayOfString[i];
+        int j = ((String)localObject2).lastIndexOf('.');
+        localObject1 = ((String)localObject2).substring(0, j);
+        localObject2 = ((String)localObject2).substring(j + 1);
+      }
+      else if (paramArrayOfString[i].equals("-v"))
+      {
+        PrintStream localPrintStream = System.err;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JUnit ");
+        localStringBuilder.append(Version.id());
+        localStringBuilder.append(" by Kent Beck and Erich Gamma");
+        localPrintStream.println(localStringBuilder.toString());
+      }
+      else
+      {
+        localObject1 = paramArrayOfString[i];
+      }
+      i += 1;
+    }
+    if (!((String)localObject1).equals("")) {
+      try
+      {
+        if (!((String)localObject2).equals("")) {
+          return runSingleMethod((String)localObject1, (String)localObject2, bool);
         }
-        else if (paramArrayOfString[i].equals("-m"))
-        {
-          i += 1;
-          str2 = paramArrayOfString[i];
-          int j = str2.lastIndexOf('.');
-          str1 = str2.substring(0, j);
-          str2 = str2.substring(j + 1);
-        }
-        else if (paramArrayOfString[i].equals("-v"))
-        {
-          System.err.println("JUnit " + Version.id() + " by Kent Beck and Erich Gamma");
-        }
-        else
-        {
-          str1 = paramArrayOfString[i];
-        }
+        paramArrayOfString = doRun(getTest((String)localObject1), bool);
+        return paramArrayOfString;
+      }
+      catch (Exception paramArrayOfString)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Could not create and run test suite: ");
+        ((StringBuilder)localObject1).append(paramArrayOfString);
+        throw new Exception(((StringBuilder)localObject1).toString());
       }
     }
-    if (str1.equals("")) {
-      throw new Exception("Usage: TestRunner [-wait] testCaseName, where name is the name of the TestCase class");
-    }
-    try
+    paramArrayOfString = new Exception("Usage: TestRunner [-wait] testCaseName, where name is the name of the TestCase class");
+    for (;;)
     {
-      if (!str2.equals("")) {
-        return runSingleMethod(str1, str2, bool);
-      }
-      paramArrayOfString = doRun(getTest(str1), bool);
-      return paramArrayOfString;
-    }
-    catch (Exception paramArrayOfString)
-    {
-      throw new Exception("Could not create and run test suite: " + paramArrayOfString);
+      throw paramArrayOfString;
     }
   }
   
@@ -180,7 +189,7 @@ public class TestRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     junit.textui.TestRunner
  * JD-Core Version:    0.7.0.1
  */

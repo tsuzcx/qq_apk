@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.colornote.settings;
 
-import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -16,49 +14,128 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aobw;
-import aocp;
-import aocq;
-import aoea;
-import aoee;
-import aoeh;
-import aoei;
-import aoej;
-import aoeq;
-import arsx;
-import azqs;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.api.impl.ColorNoteControllerImpl;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.colornote.data.ColorNoteRecentConfBean;
+import com.tencent.mobileqq.colornote.data.ColorNoteRecentConfigProcessor;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+import com.tencent.mobileqq.fragment.QIphoneTitleBarFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class ColorNoteSettingFragment
-  extends IphoneTitleBarFragment
+  extends QIphoneTitleBarFragment
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SettingSectionContainer jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer;
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private Activity a;
+  private SettingSectionContainer b;
+  private FormSwitchItem c;
+  private TextView d;
   
-  private SparseArray<List<ColorNote>> a()
+  public static void a(Context paramContext, Class<? extends ColorNoteSettingFragment> paramClass, Bundle paramBundle)
   {
-    Object localObject1 = aoee.a;
+    if ((paramContext != null) && (paramClass != null))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800AA7E", "0X800AA7E", paramBundle.getInt("start_from", 1), 0, "", "", "", "");
+      paramBundle = new Intent();
+      paramBundle.addFlags(268435456);
+      paramBundle.addFlags(536870912);
+      paramBundle.addFlags(67108864);
+      QPublicFragmentActivity.Launcher.a(paramContext, paramBundle, QPublicFragmentActivity.class, paramClass);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("start fragment: ");
+        paramContext.append(paramClass.getName());
+        QLog.d("ColorNoteSettingFragment", 2, paramContext.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramBundle = "";
+      if (paramContext == null) {
+        paramContext = "context ";
+      } else {
+        paramContext = "";
+      }
+      localStringBuilder.append(paramContext);
+      paramContext = paramBundle;
+      if (paramClass == null) {
+        paramContext = "fragment ";
+      }
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("is null");
+      QLog.d("ColorNoteSettingFragment", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private void b()
+  {
+    if (!isAdded())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteSettingFragment", 2, "[loadContentView] fragment is not attached");
+      }
+      return;
+    }
+    this.b = ((SettingSectionContainer)this.t.findViewById(2131430975));
+    this.b.removeAllViews();
+    SparseArray localSparseArray = c();
+    Iterator localIterator = ColorNoteHistoryManager.a().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject1 = (IOnHeaderClickHandler)localIterator.next();
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((IOnHeaderClickHandler)localObject1).a())))
+      {
+        int i = ((IOnHeaderClickHandler)localObject1).b();
+        Object localObject2 = ColorNoteHistoryManager.a((List)localSparseArray.get(i));
+        ColorNoteSettingBaseSection localColorNoteSettingBaseSection = new ColorNoteSettingBaseSection(this.a);
+        BaseSectionAdapter localBaseSectionAdapter = new BaseSectionAdapter(getQBaseActivity().getAppRuntime());
+        localColorNoteSettingBaseSection.setAdapter(localBaseSectionAdapter);
+        if (localObject2 != null)
+        {
+          if (((List)localObject2).size() > 0) {
+            localColorNoteSettingBaseSection.setBgType(1);
+          } else {
+            localColorNoteSettingBaseSection.setBgType(0);
+          }
+          localBaseSectionAdapter.a((List)localObject2, i);
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).bottomMargin = this.t.getContext().getResources().getDimensionPixelSize(2131299685);
+        localColorNoteSettingBaseSection.setHeaderOnClickListener(new ColorNoteSettingFragment.2(this, (IOnHeaderClickHandler)localObject1, i));
+        localObject1 = ((IOnHeaderClickHandler)localObject1).a();
+        localColorNoteSettingBaseSection.setHeaderTitle((CharSequence)localObject1);
+        localColorNoteSettingBaseSection.setContentDescription((CharSequence)localObject1);
+        this.b.addView(localColorNoteSettingBaseSection, (ViewGroup.LayoutParams)localObject2);
+        ColorNoteHistoryManager.d(getQBaseActivity().getAppRuntime(), i);
+      }
+    }
+    a(getString(2131887859));
+  }
+  
+  private SparseArray<List<ColorNote>> c()
+  {
+    Object localObject1 = ColorNoteHistoryManager.a;
     SparseArray localSparseArray = new SparseArray(localObject1.length);
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       int k = localObject1[i];
-      localSparseArray.put(k, aoee.a(k));
+      localSparseArray.put(k, ColorNoteHistoryManager.a(getQBaseActivity().getAppRuntime(), k));
       i += 1;
     }
     List localList = (List)localSparseArray.get(17039360);
@@ -67,13 +144,13 @@ public class ColorNoteSettingFragment
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (ColorNote)((Iterator)localObject2).next();
-      if (arsx.a(((ColorNote)localObject3).getSubType()) == 4) {
+      if (ColorNoteSmallScreenUtil.a(((ColorNote)localObject3).getSubType()) == 4) {
         ((List)localObject1).add(localObject3);
       }
     }
     localList.removeAll((Collection)localObject1);
-    localList = aoee.a(16908288);
-    localObject2 = aoee.a(16908290);
+    localList = ColorNoteHistoryManager.a(getQBaseActivity().getAppRuntime(), 16908288);
+    localObject2 = ColorNoteHistoryManager.a(getQBaseActivity().getAppRuntime(), 16908290);
     Object localObject3 = (List)localSparseArray.get(17104896);
     if ((localList != null) && (localList.size() > 0)) {
       ((List)localObject3).addAll(localList);
@@ -84,123 +161,51 @@ public class ColorNoteSettingFragment
     if (((List)localObject1).size() > 0) {
       ((List)localObject3).addAll((Collection)localObject1);
     }
-    Collections.sort((List)localObject3, new aoei(this));
+    Collections.sort((List)localObject3, new ColorNoteSettingFragment.3(this));
     return localSparseArray;
   }
   
-  private void a()
+  private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer = ((SettingSectionContainer)this.mContentView.findViewById(2131364472));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer.removeAllViews();
-    SparseArray localSparseArray = a();
-    int[] arrayOfInt = aoee.a;
-    int j = arrayOfInt.length;
-    int i = 0;
-    if (i < j)
-    {
-      int k = arrayOfInt[i];
-      Object localObject1 = aoee.a(k);
-      if ((localObject1 == null) || (TextUtils.isEmpty(((aoeq)localObject1).a()))) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        Object localObject2 = aoee.a((List)localSparseArray.get(k));
-        ColorNoteSettingBaseSection localColorNoteSettingBaseSection = new ColorNoteSettingBaseSection(this.jdField_a_of_type_AndroidAppActivity);
-        aoea localaoea = new aoea();
-        localColorNoteSettingBaseSection.setAdapter(localaoea);
-        localaoea.a((List)localObject2, k);
-        localObject2 = new LinearLayout.LayoutParams(-1, -2);
-        ((LinearLayout.LayoutParams)localObject2).bottomMargin = this.mContentView.getContext().getResources().getDimensionPixelSize(2131298702);
-        localColorNoteSettingBaseSection.setHeaderOnClickListener(new aoeh(this, (aoeq)localObject1, k));
-        localObject1 = ((aoeq)localObject1).a();
-        localColorNoteSettingBaseSection.setHeaderTitle((CharSequence)localObject1);
-        localColorNoteSettingBaseSection.setContentDescription((CharSequence)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsSettingSectionContainer.addView(localColorNoteSettingBaseSection, (ViewGroup.LayoutParams)localObject2);
-        aoee.a(k);
-      }
+    AppRuntime localAppRuntime = getQBaseActivity().getAppRuntime();
+    ColorNoteRecentConfBean localColorNoteRecentConfBean = ColorNoteRecentConfigProcessor.a();
+    boolean bool = true;
+    int i;
+    if ((localColorNoteRecentConfBean != null) && (localColorNoteRecentConfBean.a())) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    setTitle(getString(2131690932));
-  }
-  
-  public static void a(Context paramContext, Class<? extends ColorNoteSettingFragment> paramClass, Bundle paramBundle)
-  {
-    if ((paramContext == null) || (paramClass == null)) {
-      if (QLog.isColorLevel())
-      {
-        paramBundle = new StringBuilder();
-        if (paramContext != null) {
-          break label62;
-        }
-        paramContext = "context ";
-        paramBundle = paramBundle.append(paramContext);
-        if (paramClass != null) {
-          break label68;
-        }
-        paramContext = "fragment ";
-        label42:
-        QLog.d("ColorNoteSettingFragment", 0, paramContext + "is null");
-      }
+    if ((!ColorNoteControllerImpl.isRecentlyViewedSwitchOn(localAppRuntime)) || (i == 0)) {
+      bool = false;
     }
-    label62:
-    label68:
-    do
+    this.c = ((FormSwitchItem)this.t.findViewById(2131430971));
+    this.d = ((TextView)this.t.findViewById(2131430972));
+    if (i != 0)
     {
-      return;
-      paramContext = "";
-      break;
-      paramContext = "";
-      break label42;
-      azqs.b(null, "dc00898", "", "", "0X800AA7E", "0X800AA7E", paramBundle.getInt("start_from", 1), 0, "", "", "", "");
-      paramBundle = new Intent();
-      paramBundle.addFlags(268435456);
-      paramBundle.addFlags(536870912);
-      paramBundle.addFlags(67108864);
-      adpn.a(paramContext, paramBundle, PublicFragmentActivity.class, paramClass);
-    } while (!QLog.isColorLevel());
-    QLog.d("ColorNoteSettingFragment", 0, "start fragment: " + paramClass.getName());
-  }
-  
-  private void b()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    aocp localaocp = aocq.a();
-    if ((localaocp != null) && (localaocp.a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((aobw.a(localQQAppInterface)) && (i != 0)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131364468));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364469));
-        if (i != 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aoej(this, localQQAppInterface));
-        }
-        return;
-      }
+      this.c.setVisibility(0);
+      this.d.setVisibility(0);
+      this.c.setChecked(bool);
+      this.c.setOnCheckedChangeListener(new ColorNoteSettingFragment.4(this, localAppRuntime));
     }
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected int a()
   {
-    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    a();
+    return 2131624512;
+  }
+  
+  protected void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
     b();
-  }
-  
-  public int getContentLayoutId()
-  {
-    return 2131558848;
+    d();
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -216,7 +221,7 @@ public class ColorNoteSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment
  * JD-Core Version:    0.7.0.1
  */

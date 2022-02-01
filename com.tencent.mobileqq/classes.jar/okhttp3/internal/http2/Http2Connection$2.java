@@ -20,13 +20,15 @@ class Http2Connection$2
     }
     catch (IOException localIOException)
     {
-      Http2Connection.access$000(this.this$0);
+      label19:
+      break label19;
     }
+    Http2Connection.access$000(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Http2Connection.2
  * JD-Core Version:    0.7.0.1
  */

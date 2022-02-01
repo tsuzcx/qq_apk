@@ -15,13 +15,13 @@ class AppBrandLaunchManager$StartMiniAppReceiver$3
     {
       MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("appInfo");
       paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      AppBrandLaunchManager.access$700(localMiniAppInfo, this.val$scene, paramJSONObject);
+      AppBrandLaunchManager.access$600(localMiniAppInfo, this.val$scene, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.StartMiniAppReceiver.3
  * JD-Core Version:    0.7.0.1
  */

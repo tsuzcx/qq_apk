@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.core.drm.httpclient;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public final class DefaultHttpDataSourceFactory
   extends HttpDataSource.BaseFactory
@@ -39,8 +39,9 @@ public final class DefaultHttpDataSourceFactory
   protected DefaultHttpDataSource createDataSourceInternal(int paramInt, HttpDataSource.RequestProperties paramRequestProperties)
   {
     paramRequestProperties = new DefaultHttpDataSource(this.userAgent, null, paramInt, paramInt, this.allowCrossProtocolRedirects, paramRequestProperties);
-    if (this.listener != null) {
-      paramRequestProperties.addTransferListener(this.listener);
+    TransferListener localTransferListener = this.listener;
+    if (localTransferListener != null) {
+      paramRequestProperties.addTransferListener(localTransferListener);
     }
     return paramRequestProperties;
   }
@@ -48,15 +49,16 @@ public final class DefaultHttpDataSourceFactory
   protected DefaultHttpDataSource createDataSourceInternal(HttpDataSource.RequestProperties paramRequestProperties)
   {
     paramRequestProperties = new DefaultHttpDataSource(this.userAgent, null, this.connectTimeoutMillis, this.readTimeoutMillis, this.allowCrossProtocolRedirects, paramRequestProperties);
-    if (this.listener != null) {
-      paramRequestProperties.addTransferListener(this.listener);
+    TransferListener localTransferListener = this.listener;
+    if (localTransferListener != null) {
+      paramRequestProperties.addTransferListener(localTransferListener);
     }
     return paramRequestProperties;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.httpclient.DefaultHttpDataSourceFactory
  * JD-Core Version:    0.7.0.1
  */

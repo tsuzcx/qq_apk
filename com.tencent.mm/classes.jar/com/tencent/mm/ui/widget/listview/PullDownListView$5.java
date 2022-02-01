@@ -13,17 +13,17 @@ final class PullDownListView$5
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(112730);
+    AppMethodBeat.i(159439);
     paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)PullDownListView.m(this.AIy).getLayoutParams();
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)PullDownListView.m(this.agjj).getLayoutParams();
     localMarginLayoutParams.topMargin = paramValueAnimator.intValue();
-    PullDownListView.m(this.AIy).setLayoutParams(localMarginLayoutParams);
-    AppMethodBeat.o(112730);
+    PullDownListView.m(this.agjj).setLayoutParams(localMarginLayoutParams);
+    AppMethodBeat.o(159439);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.widget.listview.PullDownListView.5
  * JD-Core Version:    0.7.0.1
  */

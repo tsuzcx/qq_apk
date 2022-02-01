@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amvq;
-import anag;
+import com.tencent.mobileqq.ar.arcore.IARCoreBridge;
 
-public class ARTransferPromotionRenderable$8
+class ARTransferPromotionRenderable$8
   implements Runnable
 {
-  public ARTransferPromotionRenderable$8(amvq paramamvq) {}
+  ARTransferPromotionRenderable$8(ARTransferPromotionRenderable paramARTransferPromotionRenderable) {}
   
   public void run()
   {
-    amvq.a(this.this$0).a(amvq.b(this.this$0), amvq.c(this.this$0));
+    ARTransferPromotionRenderable.q(this.this$0).a(ARTransferPromotionRenderable.r(this.this$0), ARTransferPromotionRenderable.s(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.8
  * JD-Core Version:    0.7.0.1
  */

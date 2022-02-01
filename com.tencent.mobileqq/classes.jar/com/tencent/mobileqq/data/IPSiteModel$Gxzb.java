@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apeg;
+import mqq.app.MobileQQ;
 
 public class IPSiteModel$Gxzb
   implements Parcelable
@@ -12,8 +11,8 @@ public class IPSiteModel$Gxzb
   public static final String BACKGROUND;
   public static final String BUBBLE;
   public static final String CARD;
-  public static final Parcelable.Creator<Gxzb> CREATOR = new apeg();
-  public static final String EMOJI = alud.a(2131706240);
+  public static final Parcelable.Creator<Gxzb> CREATOR = new IPSiteModel.Gxzb.1();
+  public static final String EMOJI = MobileQQ.sMobileQQ.getString(2131916985);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -28,14 +27,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = alud.a(2131706237);
-    THEME = alud.a(2131706233);
-    PENDANT = alud.a(2131706236);
-    FONT = alud.a(2131706238);
-    BACKGROUND = alud.a(2131706239);
-    FUNCALL = alud.a(2131706232);
-    CARD = alud.a(2131706234);
-    REDPACKT = alud.a(2131706235);
+    BUBBLE = MobileQQ.sMobileQQ.getString(2131916982);
+    THEME = MobileQQ.sMobileQQ.getString(2131916993);
+    PENDANT = MobileQQ.sMobileQQ.getString(2131916989);
+    FONT = MobileQQ.sMobileQQ.getString(2131916987);
+    BACKGROUND = MobileQQ.sMobileQQ.getString(2131916981);
+    FUNCALL = MobileQQ.sMobileQQ.getString(2131916988);
+    CARD = MobileQQ.sMobileQQ.getString(2131916983);
+    REDPACKT = MobileQQ.sMobileQQ.getString(2131916991);
   }
   
   public IPSiteModel$Gxzb() {}
@@ -57,7 +56,25 @@ public class IPSiteModel$Gxzb
   
   public String toString()
   {
-    return "Gxzb{appid=" + this.appid + ", appName='" + this.appName + '\'' + ", cover='" + this.cover + '\'' + ", feeType=" + this.feeType + ", id='" + this.id + '\'' + ", name='" + this.name + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Gxzb{appid=");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append(", appName='");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feeType=");
+    localStringBuilder.append(this.feeType);
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

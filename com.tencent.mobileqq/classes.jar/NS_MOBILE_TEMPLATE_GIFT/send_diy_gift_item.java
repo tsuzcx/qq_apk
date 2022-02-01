@@ -66,15 +66,16 @@ public final class send_diy_gift_item
     paramJceOutputStream.write(this.picUrl, 5);
     paramJceOutputStream.write(this.content, 6);
     paramJceOutputStream.write(this.arch, 7);
-    if (this.backId != null) {
-      paramJceOutputStream.write(this.backId, 8);
+    String str = this.backId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.recv_source, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.send_diy_gift_item
  * JD-Core Version:    0.7.0.1
  */

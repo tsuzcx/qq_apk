@@ -12,9 +12,9 @@ public class RealSetFillStyleActionArg
   
   static
   {
-    AppMethodBeat.i(103361);
-    CREATOR = new RealSetFillStyleActionArg.1();
-    AppMethodBeat.o(103361);
+    AppMethodBeat.i(145044);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145044);
   }
   
   public RealSetFillStyleActionArg() {}
@@ -29,11 +29,11 @@ public class RealSetFillStyleActionArg
     return 0;
   }
   
-  public void f(JSONArray paramJSONArray) {}
+  public void i(JSONArray paramJSONArray) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

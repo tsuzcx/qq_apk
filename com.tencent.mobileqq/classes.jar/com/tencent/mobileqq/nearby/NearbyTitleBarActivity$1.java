@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.AppIntefaceReportWrap;
 
 final class NearbyTitleBarActivity$1
   implements Runnable
@@ -9,12 +10,14 @@ final class NearbyTitleBarActivity$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, this.e);
+    AppInterface localAppInterface = this.a;
+    String str = this.b;
+    AppIntefaceReportWrap.a(localAppInterface, "CliOper", "", "", str, str, 0, 0, this.c, this.d, this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTitleBarActivity.1
  * JD-Core Version:    0.7.0.1
  */

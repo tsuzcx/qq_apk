@@ -12,10 +12,10 @@ public final class zzcx
   
   public zzcx(DataEvent paramDataEvent)
   {
-    AppMethodBeat.i(71175);
+    AppMethodBeat.i(101158);
     this.type = paramDataEvent.getType();
     this.zzdg = ((DataItem)paramDataEvent.getDataItem().freeze());
-    AppMethodBeat.o(71175);
+    AppMethodBeat.o(101158);
   }
   
   public final DataItem getDataItem()
@@ -35,7 +35,7 @@ public final class zzcx
   
   public final String toString()
   {
-    AppMethodBeat.i(71176);
+    AppMethodBeat.i(101159);
     String str1;
     if (getType() == 1) {
       str1 = "changed";
@@ -44,7 +44,7 @@ public final class zzcx
     {
       String str2 = String.valueOf(getDataItem());
       str1 = String.valueOf(str1).length() + 35 + String.valueOf(str2).length() + "DataEventEntity{ type=" + str1 + ", dataitem=" + str2 + " }";
-      AppMethodBeat.o(71176);
+      AppMethodBeat.o(101159);
       return str1;
       if (getType() == 2) {
         str1 = "deleted";
@@ -56,7 +56,7 @@ public final class zzcx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzcx
  * JD-Core Version:    0.7.0.1
  */

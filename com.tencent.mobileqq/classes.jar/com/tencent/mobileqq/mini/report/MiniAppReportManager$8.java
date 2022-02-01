@@ -18,87 +18,86 @@ final class MiniAppReportManager$8
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator1 = this.val$singleDcDataList.iterator();
-    label133:
-    label159:
-    label337:
-    label340:
-    label343:
-    label346:
-    label347:
-    for (;;)
+    while (localIterator1.hasNext())
     {
-      Object localObject;
-      String str4;
-      String str3;
-      String str1;
-      String str2;
-      int i;
-      if (localIterator1.hasNext())
+      Object localObject1 = (APP_REPORT_TRANSFER.SingleDcData)localIterator1.next();
+      if ((localObject1 != null) && (((APP_REPORT_TRANSFER.SingleDcData)localObject1).report_data != null))
       {
-        localObject = (APP_REPORT_TRANSFER.SingleDcData)localIterator1.next();
-        if ((localObject != null) && (((APP_REPORT_TRANSFER.SingleDcData)localObject).report_data != null))
-        {
-          str4 = "";
-          str3 = "";
-          Iterator localIterator2 = ((APP_REPORT_TRANSFER.SingleDcData)localObject).report_data.get().iterator();
-          str1 = "";
-          str2 = "";
-          localObject = "";
-          i = 0;
-          for (;;)
-          {
-            if (!localIterator2.hasNext()) {
-              break label346;
-            }
-            COMM.Entry localEntry = (COMM.Entry)localIterator2.next();
-            if (!"launchid".equals(localEntry.key.get())) {
-              break label343;
-            }
-            localObject = localEntry.value.get();
-            if (!"appid".equals(localEntry.key.get())) {
-              break label340;
-            }
-            str2 = localEntry.value.get();
-            if (!"sub_actiontype".equals(localEntry.key.get())) {
-              break label337;
-            }
-            str1 = localEntry.value.get();
-            if ((!"click".equals(str1)) && (!"load".equals(str1)) && (!"show".equals(str1)) && (!"load_fail".equals(str1)) && (!"show_fail".equals(str1))) {
-              break;
-            }
-            i = 1;
-            label231:
-            if ("app_type".equals(localEntry.key.get())) {
-              str4 = localEntry.value.get();
-            }
-            if ("app_status".equals(localEntry.key.get())) {
-              str3 = localEntry.value.get();
-            }
-          }
-        }
-      }
-      else
-      {
+        int i = 0;
+        Iterator localIterator2 = ((APP_REPORT_TRANSFER.SingleDcData)localObject1).report_data.get().iterator();
+        Object localObject5 = "";
+        Object localObject3 = "";
+        localObject1 = localObject3;
+        Object localObject2 = localObject1;
+        Object localObject6 = localObject2;
+        Object localObject7 = localObject2;
+        Object localObject8;
+        Object localObject9;
+        Object localObject10;
         for (;;)
         {
-          if ((i == 0) || (TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str2))) {
-            break label347;
+          localObject8 = localObject5;
+          localObject9 = localObject3;
+          localObject10 = localObject1;
+          if (!localIterator2.hasNext()) {
+            break;
           }
-          localArrayList.add(new MiniAppReportEntity((String)localObject, str2, str1, str4, str3));
-          break;
-          MiniAppReportManager.access$1000(localArrayList);
-          return;
-          break label231;
-          break label159;
-          break label133;
+          COMM.Entry localEntry = (COMM.Entry)localIterator2.next();
+          localObject2 = localObject5;
+          if ("launchid".equals(localEntry.key.get())) {
+            localObject2 = localEntry.value.get();
+          }
+          Object localObject4 = localObject3;
+          if ("appid".equals(localEntry.key.get())) {
+            localObject4 = localEntry.value.get();
+          }
+          int j = i;
+          localObject8 = localObject1;
+          if ("sub_actiontype".equals(localEntry.key.get()))
+          {
+            localObject1 = localEntry.value.get();
+            if ((!"click".equals(localObject1)) && (!"load".equals(localObject1)) && (!"show".equals(localObject1)) && (!"load_fail".equals(localObject1)))
+            {
+              localObject8 = localObject2;
+              localObject9 = localObject4;
+              localObject10 = localObject1;
+              if (!"show_fail".equals(localObject1)) {
+                break;
+              }
+            }
+            j = 1;
+            localObject8 = localObject1;
+          }
+          localObject9 = localObject7;
+          if ("app_type".equals(localEntry.key.get())) {
+            localObject9 = localEntry.value.get();
+          }
+          i = j;
+          localObject5 = localObject2;
+          localObject3 = localObject4;
+          localObject1 = localObject8;
+          localObject7 = localObject9;
+          if ("app_status".equals(localEntry.key.get()))
+          {
+            localObject6 = localEntry.value.get();
+            i = j;
+            localObject5 = localObject2;
+            localObject3 = localObject4;
+            localObject1 = localObject8;
+            localObject7 = localObject9;
+          }
+        }
+        if ((i != 0) && (!TextUtils.isEmpty(localObject8)) && (!TextUtils.isEmpty((CharSequence)localObject9))) {
+          localArrayList.add(new MiniAppReportEntity(localObject8, (String)localObject9, localObject10, localObject7, (String)localObject6));
         }
       }
     }
+    MiniAppReportManager.access$1000(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager.8
  * JD-Core Version:    0.7.0.1
  */

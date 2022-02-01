@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/clc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <include android:id="@id/mov" layout="@layout/cjl" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/moe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_below="@id/clc" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="vertical" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout style="@style/a_j">
+                <ImageButton android:id="@id/mhy" android:src="@drawable/ekv" android:contentDescription="@string/wwv" style="@style/aa2" />
+                <ImageButton android:id="@id/mi2" android:visibility="visible" android:src="@drawable/ens" android:contentDescription="@string/wwx" style="@style/aa2" />
+                <ImageButton android:id="@id/mi1" android:src="@drawable/eng" android:contentDescription="@string/wwy" style="@style/aa2" />
+                <ImageButton android:id="@id/mhz" android:visibility="visible" android:src="@drawable/emx" android:contentDescription="@string/www" style="@style/aa2" />
+                <ImageButton android:id="@id/mi0" android:src="@drawable/enm" android:contentDescription="@string/wwz" style="@style/aa2" />
+            </LinearLayout>
+            <HorizontalScrollView android:id="@id/lr_" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/lox" android:background="#00000000" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <com.tencent.qqmail.activity.compose.QMComposeAttach android:gravity="center" android:layout_gravity="center" android:id="@id/mog" android:padding="0.0dip" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:verticalSpacing="@dimen/bh7" android:stretchMode="spacingWidthUniform" android:columnWidth="@dimen/bh8" android:numColumns="auto_fit" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </FrameLayout>
+    <include android:id="@id/mps" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" layout="@layout/cto" />
+    <RelativeLayout android:id="@id/mo4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

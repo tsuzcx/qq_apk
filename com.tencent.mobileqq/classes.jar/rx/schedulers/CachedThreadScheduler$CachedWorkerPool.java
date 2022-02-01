@@ -5,7 +5,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import rx.internal.schedulers.NewThreadWorker;
 import rx.subscriptions.CompositeSubscription;
@@ -20,31 +19,31 @@ final class CachedThreadScheduler$CachedWorkerPool
   
   CachedThreadScheduler$CachedWorkerPool(long paramLong, TimeUnit paramTimeUnit)
   {
-    ScheduledFuture localScheduledFuture;
+    if (paramTimeUnit != null) {
+      paramLong = paramTimeUnit.toNanos(paramLong);
+    } else {
+      paramLong = 0L;
+    }
+    this.keepAliveTime = paramLong;
+    this.expiringWorkerQueue = new ConcurrentLinkedQueue();
+    this.allWorkers = new CompositeSubscription();
+    Object localObject2 = null;
+    Object localObject1;
     if (paramTimeUnit != null)
     {
-      paramLong = paramTimeUnit.toNanos(paramLong);
-      this.keepAliveTime = paramLong;
-      this.expiringWorkerQueue = new ConcurrentLinkedQueue();
-      this.allWorkers = new CompositeSubscription();
-      if (paramTimeUnit == null) {
-        break label105;
-      }
       paramTimeUnit = Executors.newScheduledThreadPool(1, CachedThreadScheduler.EVICTOR_THREAD_FACTORY);
       NewThreadWorker.tryEnableCancelPolicy(paramTimeUnit);
-      localScheduledFuture = paramTimeUnit.scheduleWithFixedDelay(new CachedThreadScheduler.CachedWorkerPool.1(this), this.keepAliveTime, this.keepAliveTime, TimeUnit.NANOSECONDS);
+      localObject1 = new CachedThreadScheduler.CachedWorkerPool.1(this);
+      paramLong = this.keepAliveTime;
+      localObject1 = paramTimeUnit.scheduleWithFixedDelay((Runnable)localObject1, paramLong, paramLong, TimeUnit.NANOSECONDS);
     }
-    for (;;)
+    else
     {
-      this.evictorService = paramTimeUnit;
-      this.evictorTask = localScheduledFuture;
-      return;
-      paramLong = 0L;
-      break;
-      label105:
-      localScheduledFuture = null;
-      paramTimeUnit = localObject;
+      localObject1 = null;
+      paramTimeUnit = localObject2;
     }
+    this.evictorService = paramTimeUnit;
+    this.evictorTask = ((Future)localObject1);
   }
   
   void evictExpiredWorkers()
@@ -114,7 +113,7 @@ final class CachedThreadScheduler$CachedWorkerPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.schedulers.CachedThreadScheduler.CachedWorkerPool
  * JD-Core Version:    0.7.0.1
  */

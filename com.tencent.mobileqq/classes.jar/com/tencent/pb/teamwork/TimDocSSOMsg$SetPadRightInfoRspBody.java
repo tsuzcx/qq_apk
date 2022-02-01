@@ -18,14 +18,15 @@ public final class TimDocSSOMsg$SetPadRightInfoRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 32, 42 }, new String[] { "uint32_retcode", "bytes_pad_url", "uint32_domainiid", "bytes_localpadid" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, SetPadRightInfoRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 32, 42 }, new String[] { "uint32_retcode", "bytes_pad_url", "uint32_domainiid", "bytes_localpadid" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, SetPadRightInfoRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.SetPadRightInfoRspBody
  * JD-Core Version:    0.7.0.1
  */

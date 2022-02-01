@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class ac
   extends JceStruct
 {
-  static ArrayList bl = new ArrayList();
+  static ArrayList<z> bl = new ArrayList();
   public long bg = 0L;
   public long bh = 0L;
-  public ArrayList bk = null;
+  public ArrayList<z> bk = null;
   
   static
   {
@@ -19,28 +19,31 @@ public final class ac
     bl.add(localz);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ac();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bg = paramJceInputStream.read(this.bg, 0, false);
     this.bh = paramJceInputStream.read(this.bh, 1, false);
     this.bk = ((ArrayList)paramJceInputStream.read(bl, 2, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bg != 0L) {
-      paramJceOutputStream.write(this.bg, 0);
+    long l = this.bg;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.bh != 0L) {
-      paramJceOutputStream.write(this.bh, 1);
+    l = this.bh;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.bk != null) {
-      paramJceOutputStream.write(this.bk, 2);
+    ArrayList localArrayList = this.bk;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }

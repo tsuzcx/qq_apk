@@ -13,7 +13,7 @@ public abstract interface PluginManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.PluginManagerImpl
  * JD-Core Version:    0.7.0.1
  */

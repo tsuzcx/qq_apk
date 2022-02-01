@@ -9,14 +9,16 @@ class ArkViewModelBase$14
   
   public void run()
   {
-    if (!this.this$0.mRectContainerF.isEmpty()) {
-      this.this$0.Update(this.this$0.mRectContainerF.left, this.this$0.mRectContainerF.top, this.this$0.mRectContainerF.right, this.this$0.mRectContainerF.bottom);
+    if (!this.this$0.mRectContainerF.isEmpty())
+    {
+      ArkViewModelBase localArkViewModelBase = this.this$0;
+      localArkViewModelBase.Update(localArkViewModelBase.mRectContainerF.left, this.this$0.mRectContainerF.top, this.this$0.mRectContainerF.right, this.this$0.mRectContainerF.bottom);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkViewModelBase.14
  * JD-Core Version:    0.7.0.1
  */

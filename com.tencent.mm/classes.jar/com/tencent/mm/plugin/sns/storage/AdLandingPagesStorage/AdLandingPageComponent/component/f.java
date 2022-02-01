@@ -1,124 +1,172 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.as;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.q;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class f
   extends a
 {
-  int clickCount;
-  private LinearLayout mDJ;
-  private ImageView ruQ;
-  private TextView ruR;
-  private LinearLayout ruS;
-  g ruZ;
-  private View rva;
-  private ImageView rvb;
+  private q PPI;
+  private z QOc;
+  private List<n> aAO;
   
-  public f(Context paramContext, g paramg, ViewGroup paramViewGroup)
+  public f(Context paramContext, z paramz, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramg, paramViewGroup);
-    this.ruZ = paramg;
+    super(paramContext, paramz, paramViewGroup);
+    AppMethodBeat.i(96438);
+    this.QOc = paramz;
+    this.aAO = new ArrayList();
+    AppMethodBeat.o(96438);
   }
   
-  public final boolean aq(JSONObject paramJSONObject)
+  public final void c(aa paramaa)
   {
-    AppMethodBeat.i(37060);
-    if (!super.aq(paramJSONObject))
-    {
-      AppMethodBeat.o(37060);
-      return false;
+    AppMethodBeat.i(96448);
+    if ((paramaa instanceof z)) {
+      this.QOc = ((z)paramaa);
     }
-    try
-    {
-      paramJSONObject.put("clickCount", this.clickCount);
-      AppMethodBeat.o(37060);
-      return true;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      ab.printErrStackTrace("AdLandingBorderedComp", paramJSONObject, "", new Object[0]);
-      AppMethodBeat.o(37060);
-    }
-    return false;
+    super.c(paramaa);
+    AppMethodBeat.o(96448);
   }
   
-  public final void cqK()
+  protected final void had()
   {
-    AppMethodBeat.i(37058);
-    View localView = this.contentView;
-    this.rvb = ((ImageView)localView.findViewById(2131822804));
-    this.ruQ = ((ImageView)localView.findViewById(2131821555));
-    this.ruR = ((TextView)localView.findViewById(2131821115));
-    this.ruS = ((LinearLayout)localView.findViewById(2131827856));
-    this.mDJ = ((LinearLayout)localView.findViewById(2131821084));
-    this.rva = this.ruS;
-    AppMethodBeat.o(37058);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37059);
-    this.ruR.setText(this.ruZ.rrV.nZY);
-    if (this.ruZ.rsM)
+    AppMethodBeat.i(96439);
+    if (this.PPI == null)
     {
-      this.rvb.setImageDrawable(com.tencent.mm.cb.a.k(this.context, 2130839267));
-      this.ruQ.setImageDrawable(com.tencent.mm.cb.a.k(this.context, 2130840170));
-      this.ruR.setTextColor(-16777216);
-      this.ruS.setBackgroundResource(2130837666);
+      this.PPI = new q(this.QOc.aAO, this.context, (FrameLayout)this.contentView);
+      this.PPI.CY();
+      this.aAO = hai();
     }
     for (;;)
     {
-      this.ruS.setPadding((int)this.ruZ.paddingLeft, 0, (int)this.ruZ.paddingRight, 0);
-      this.mDJ.setPadding(0, (int)this.ruZ.paddingTop, 0, (int)this.ruZ.paddingBottom);
-      a(this.ruS);
-      View.OnClickListener local1 = new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(37057);
-          paramAnonymousView = f.this;
-          paramAnonymousView.clickCount += 1;
-          paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("map_view_type", 1);
-          paramAnonymousView.putExtra("kwebmap_slat", f.this.ruZ.rrV.nZV);
-          paramAnonymousView.putExtra("kwebmap_lng", f.this.ruZ.rrV.nZW);
-          paramAnonymousView.putExtra("kwebmap_scale", f.this.ruZ.rrV.cyX);
-          paramAnonymousView.putExtra("kPoiName", f.this.ruZ.rrV.cDl);
-          paramAnonymousView.putExtra("Kwebmap_locaion", f.this.ruZ.rrV.nZY);
-          ab.i("AdLandingBorderedComp", "locatint to slat " + f.this.ruZ.rrV.nZV + ", slong " + f.this.ruZ.rrV.nZW + ", " + f.this.ruZ.rrV.cDl);
-          d.b(f.this.context, "location", ".ui.RedirectUI", paramAnonymousView, 2);
-          AppMethodBeat.o(37057);
-        }
-      };
-      if (this.rva != null) {
-        this.rva.setOnClickListener(local1);
-      }
-      AppMethodBeat.o(37059);
+      as.a(this.contentView, this.QOc.QKF);
+      AppMethodBeat.o(96439);
       return;
-      this.rvb.setImageDrawable(com.tencent.mm.cb.a.k(this.context, 2130839263));
-      this.ruQ.setImageDrawable(com.tencent.mm.cb.a.k(this.context, 2130840169));
-      this.ruR.setTextColor(-1);
-      this.ruS.setBackgroundResource(2130837667);
+      this.PPI.notify(this.QOc.aAO);
     }
   }
   
-  protected final int getLayout()
+  public final List<n> hai()
   {
-    return 2130970783;
+    AppMethodBeat.i(96447);
+    ArrayList localArrayList = new ArrayList(this.PPI.hjV());
+    AppMethodBeat.o(96447);
+    return localArrayList;
+  }
+  
+  protected final void hal()
+  {
+    AppMethodBeat.i(96440);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.QOV.paddingLeft, (int)this.QOV.paddingTop, (int)this.QOV.paddingRight, (int)this.QOV.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(96440);
+  }
+  
+  protected final View ham()
+  {
+    AppMethodBeat.i(96441);
+    FrameLayout localFrameLayout = new FrameLayout(this.context);
+    if (this.QOc.cornerRadius > 0)
+    {
+      GradientDrawable localGradientDrawable = new GradientDrawable();
+      localGradientDrawable.setShape(0);
+      localGradientDrawable.setColor(this.backgroundColor);
+      localGradientDrawable.setCornerRadius(this.QOc.cornerRadius);
+      localFrameLayout.setBackground(localGradientDrawable);
+      localFrameLayout.setClipToOutline(true);
+    }
+    AppMethodBeat.o(96441);
+    return localFrameLayout;
+  }
+  
+  public final void hao()
+  {
+    AppMethodBeat.i(96442);
+    Iterator localIterator = this.aAO.iterator();
+    while (localIterator.hasNext())
+    {
+      n localn = (n)localIterator.next();
+      if (localn.hji()) {
+        localn.hao();
+      }
+    }
+    super.hao();
+    AppMethodBeat.o(96442);
+  }
+  
+  public final void hap()
+  {
+    AppMethodBeat.i(96443);
+    Iterator localIterator = this.aAO.iterator();
+    while (localIterator.hasNext()) {
+      ((n)localIterator.next()).hap();
+    }
+    super.hap();
+    AppMethodBeat.o(96443);
+  }
+  
+  public final void haq()
+  {
+    AppMethodBeat.i(96444);
+    Iterator localIterator = this.aAO.iterator();
+    while (localIterator.hasNext())
+    {
+      n localn = (n)localIterator.next();
+      if (localn.hji()) {
+        localn.haq();
+      }
+    }
+    super.haq();
+    AppMethodBeat.o(96444);
+  }
+  
+  public final void har()
+  {
+    AppMethodBeat.i(96445);
+    Iterator localIterator = this.aAO.iterator();
+    while (localIterator.hasNext())
+    {
+      n localn = (n)localIterator.next();
+      if (localn.hji())
+      {
+        localn.hao();
+        localn.haq();
+      }
+      else
+      {
+        localn.hap();
+      }
+    }
+    AppMethodBeat.o(96445);
+  }
+  
+  public final void has()
+  {
+    AppMethodBeat.i(96446);
+    super.has();
+    Iterator localIterator = this.aAO.iterator();
+    while (localIterator.hasNext()) {
+      ((n)localIterator.next()).has();
+    }
+    AppMethodBeat.o(96446);
   }
 }
 

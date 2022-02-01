@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:drawableLeft="@raw/radio_off" android:drawablePadding="@dimen/m1"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/gqu" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.HardTouchableLayout android:id="@id/gq8" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.view.PhotoView android:id="@id/kkj" android:background="@color/g_" android:layout_width="120.0dip" android:layout_height="120.0dip" android:scaleType="fitCenter" />
+        <ImageView android:layout_gravity="center" android:id="@id/l70" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bh0" />
+        <ImageView android:layout_gravity="center|right|top" android:id="@id/h3_" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" android:src="@drawable/a3a" />
+        <TextView android:textSize="@dimen/cd" android:textColor="@color/al6" android:layout_gravity="center|right|top" android:id="@id/gqo" android:background="@drawable/a9p" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/bv" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/bv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" />
+    </com.tencent.mm.view.HardTouchableLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iq3" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/df" android:src="@raw/finder_feed_retransmission" app:iconColor="@color/al2" />
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

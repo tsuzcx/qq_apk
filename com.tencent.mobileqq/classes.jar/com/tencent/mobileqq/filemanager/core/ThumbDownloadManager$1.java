@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import arad;
-
-public class ThumbDownloadManager$1
+class ThumbDownloadManager$1
   implements Runnable
 {
-  public ThumbDownloadManager$1(arad paramarad, long paramLong, String paramString1, String paramString2) {}
+  ThumbDownloadManager$1(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (arad.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      arad.a(this.this$0);
+    if (ThumbDownloadManager.a(this.this$0, this.a, this.b, this.c)) {
+      ThumbDownloadManager.a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

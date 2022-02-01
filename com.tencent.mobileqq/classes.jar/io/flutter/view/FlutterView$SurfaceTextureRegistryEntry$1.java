@@ -11,15 +11,18 @@ class FlutterView$SurfaceTextureRegistryEntry$1
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((FlutterView.SurfaceTextureRegistryEntry.access$200(this.this$1)) || (FlutterView.access$100(this.this$1.this$0) == null)) {
-      return;
+    if (!FlutterView.SurfaceTextureRegistryEntry.access$200(this.this$1))
+    {
+      if (FlutterView.access$100(this.this$1.this$0) == null) {
+        return;
+      }
+      FlutterView.access$100(this.this$1.this$0).getFlutterJNI().markTextureFrameAvailable(FlutterView.SurfaceTextureRegistryEntry.access$300(this.this$1));
     }
-    FlutterView.access$100(this.this$1.this$0).getFlutterJNI().markTextureFrameAvailable(FlutterView.SurfaceTextureRegistryEntry.access$300(this.this$1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.FlutterView.SurfaceTextureRegistryEntry.1
  * JD-Core Version:    0.7.0.1
  */

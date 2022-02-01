@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/gmz" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="@dimen/xp" android:minHeight="@dimen/xp"
+<RelativeLayout android:id="@id/gmz" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="@dimen/xp" android:minHeight="@dimen/xp"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.widget.ThemeURLImageView android:id="@id/image" android:visibility="visible" android:clickable="false" android:duplicateParentState="false" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="@dimen/xs" android:layout_marginRight="10.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@null" />
     <FrameLayout android:id="@id/result_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/xs" android:layout_alignParentRight="true" android:layout_centerVertical="true">

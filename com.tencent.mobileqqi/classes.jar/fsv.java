@@ -9,7 +9,7 @@ public class fsv
   
   public void onClick(View paramView)
   {
-    this.a.c(paramView);
+    this.a.d(paramView);
   }
 }
 

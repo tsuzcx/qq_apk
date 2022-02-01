@@ -23,30 +23,53 @@ public class StickerItem3D
   {
     if ((!TextUtils.isEmpty(this.id)) && (this.id.contains(":")))
     {
-      if ((this.triggered) && (!TextUtils.isEmpty(this.extension))) {
-        break label136;
+      Object localObject;
+      if ((this.triggered) && (!TextUtils.isEmpty(this.extension)))
+      {
+        double d1 = paramLong - this.frameStartTime;
+        double d2 = Math.max(this.frameDuration, 1.0D);
+        Double.isNaN(d1);
+        int i = (int)(d1 / d2);
+        int j = this.frames;
+        int k = this.curPlayCount;
+        if (i >= j * (k + 1)) {
+          this.curPlayCount = (k + 1);
+        }
+        j = Math.max(this.frames, 1);
+        localObject = this.id.split(":");
+        if (localObject.length == 2)
+        {
+          localObject = localObject[1];
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("_");
+          localStringBuilder.append(i % j);
+          localStringBuilder.append(".");
+          localStringBuilder.append(this.extension);
+          this.curFrameImagePath = localStringBuilder.toString();
+        }
       }
-      this.curPlayCount = 0;
-      this.curFrameImagePath = "";
-      this.frameStartTime = paramLong;
-      Log.i("gameFilter", " updateActionTriggered item.id = " + this.id);
-      Log.i("gameFilter", "gameFilter updateActionTriggered triggered = " + this.triggered + "frameStartTime = " + this.frameStartTime + ", curPlayCount = " + this.curPlayCount);
+      else
+      {
+        this.curPlayCount = 0;
+        this.curFrameImagePath = "";
+        this.frameStartTime = paramLong;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" updateActionTriggered item.id = ");
+        ((StringBuilder)localObject).append(this.id);
+        Log.i("gameFilter", ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("gameFilter updateActionTriggered triggered = ");
+        ((StringBuilder)localObject).append(this.triggered);
+        ((StringBuilder)localObject).append("frameStartTime = ");
+        ((StringBuilder)localObject).append(this.frameStartTime);
+        ((StringBuilder)localObject).append(", curPlayCount = ");
+        ((StringBuilder)localObject).append(this.curPlayCount);
+        Log.i("gameFilter", ((StringBuilder)localObject).toString());
+      }
     }
-    label136:
-    int i;
-    int j;
-    do
-    {
-      return;
-      i = (int)((paramLong - this.frameStartTime) / Math.max(this.frameDuration, 1.0D));
-      if (i >= this.frames * (this.curPlayCount + 1)) {
-        this.curPlayCount += 1;
-      }
-      j = Math.max(this.frames, 1);
-      localObject = this.id.split(":");
-    } while (localObject.length != 2);
-    Object localObject = localObject[1];
-    this.curFrameImagePath = ((String)localObject + File.separator + (String)localObject + "_" + i % j + "." + this.extension);
   }
   
   public void reset()
@@ -57,7 +80,7 @@ public class StickerItem3D
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.gameplaysdk.model.StickerItem3D
  * JD-Core Version:    0.7.0.1
  */

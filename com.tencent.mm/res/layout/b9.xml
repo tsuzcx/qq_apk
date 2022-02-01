@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_vertical" android:id="@id/dq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?a0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/ot" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:id="@id/ou" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a00" />
-    <TextView android:id="@id/ov" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dr0" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fz" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g0" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b5" android:contentDescription="@string/e4" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_toRightOf="@id/fz">
+        <EditText android:textSize="@dimen/t" android:id="@id/j5n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="搜索" />
+    </LinearLayout>
+    <ImageButton android:id="@id/bde" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/bmm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

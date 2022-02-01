@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/ozb" android:background="@color/7v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.pull2refresh.RecyclerViewCompat android:id="@id/oz6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="72.0dip" android:src="@drawable/h7e" android:rotation="180.0" />
+    <FrameLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <FrameLayout android:layout_gravity="center|left" android:id="@id/oz8" android:layout_width="52.0dip" android:layout_height="52.0dip">
+            <ImageView android:layout_gravity="center" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/jvl" />
+        </FrameLayout>
+    </FrameLayout>
+    <RelativeLayout android:layout_gravity="bottom" android:background="@color/7n" android:layout_width="fill_parent" android:layout_height="77.0dip">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginBottom="21.0dip">
+            <com.tencent.mobileqq.widget.NumberCheckBox android:layout_gravity="center|left" android:id="@id/oz9" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="16.0dip" style="@style/2" />
+            <TextView android:textColor="@color/al3" android:layout_gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="44.0dip" android:text="@string/zoc" />
+            <Button android:textSize="14.0dip" android:textColor="@color/gg" android:layout_gravity="center|right" android:id="@id/oz_" android:background="@drawable/jve" android:layout_width="64.0dip" android:layout_height="32.0dip" android:layout_marginRight="15.0dip" android:text="确定" />
+        </FrameLayout>
+    </RelativeLayout>
+</FrameLayout>

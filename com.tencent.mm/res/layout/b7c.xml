@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="right" android:orientation="vertical" android:id="@id/fyk" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/flz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="@dimen/n6" android:layout_marginRight="@dimen/l5" android:layout_centerHorizontal="true">
-            <ImageView android:layout_gravity="center" android:id="@id/fm0" android:background="@drawable/bnp" android:layout_width="51.0dip" android:layout_height="56.0dip" />
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center" android:id="@id/fm1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:text="@string/frg" />
-            <Button android:textSize="@dimen/fm" android:textColor="#ff02bb00" android:layout_gravity="center_horizontal" android:id="@id/f2o" android:paddingLeft="@dimen/m7" android:paddingRight="@dimen/m7" android:layout_width="wrap_content" android:layout_height="@dimen/li" android:layout_marginTop="@dimen/l5" android:text="@string/fre" style="@style/pb" />
+    <LinearLayout android:gravity="end" android:orientation="vertical" android:id="@id/bsb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fv6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="80.0dip">
+            <RelativeLayout android:id="@id/fyf" android:background="@drawable/acq" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginTop="18.0dip" android:layout_marginBottom="@dimen/bv">
+                <ImageView android:id="@id/fye" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:layout_gravity="center_horizontal" android:id="@id/fyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" />
         </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-            <TextView android:textSize="@dimen/m2" android:textColor="#ff586187" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/fm2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="@string/frh" />
-        </LinearLayout>
-    </RelativeLayout>
+        <FrameLayout android:layout_gravity="end" android:id="@id/g11" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="end" android:orientation="vertical" android:id="@id/fwn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="80.0dip">
+                <RelativeLayout android:id="@id/fyi" android:background="@drawable/acq" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginBottom="@dimen/bv">
+                    <ImageView android:id="@id/fyh" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+                </RelativeLayout>
+                <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/fyj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g80" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fww" android:background="@drawable/acz" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:layerType="software" android:layout_marginEnd="18.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/a1k" android:gravity="center_vertical" android:id="@id/fwq" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="@string/g_u" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" />
+                <ImageView android:id="@id/fwi" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layerType="software" android:layout_marginEnd="@dimen/cd" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/fwx" android:background="@drawable/acz" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:layerType="software" android:layout_marginEnd="18.0dip">
+                <ImageView android:id="@id/g12" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/cd" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/a1k" android:gravity="center_vertical" android:id="@id/fwo" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="@string/g_t" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/cd" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

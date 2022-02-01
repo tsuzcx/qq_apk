@@ -13,46 +13,47 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.nearby.now.IResourceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class FitXImageView
   extends View
 {
-  private static final Matrix.ScaleToFit[] jdField_a_of_type_ArrayOfAndroidGraphicsMatrix$ScaleToFit = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int = 2147483647;
-  private Matrix jdField_b_of_type_AndroidGraphicsMatrix;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 2147483647;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 255;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int = 256;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private int g;
-  private int h;
+  private static final Matrix.ScaleToFit[] w = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
+  private Uri a;
+  private int b = 0;
+  private boolean c = false;
+  private boolean d = false;
+  private int e = 2147483647;
+  private int f = 2147483647;
+  private int g = 255;
+  private int h = 256;
+  private boolean i = false;
+  private Drawable j = null;
+  private int[] k = null;
+  private boolean l = false;
+  private int m = 0;
+  private int n;
+  private int o;
+  private Matrix p = null;
+  private final RectF q = new RectF();
+  private final RectF r = new RectF();
+  private boolean s;
+  private Context t;
+  private Matrix u;
+  private boolean v = false;
   
   public FitXImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.t = paramContext;
     a();
   }
   
   public FitXImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.t = paramContext;
     a();
     a(paramContext, paramAttributeSet);
   }
@@ -60,277 +61,312 @@ public class FitXImageView
   public FitXImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.t = paramContext;
     a();
     a(paramContext, paramAttributeSet);
   }
   
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = View.MeasureSpec.getMode(paramInt3);
+    int i1 = View.MeasureSpec.getMode(paramInt3);
     paramInt3 = View.MeasureSpec.getSize(paramInt3);
-    switch (i)
+    if (i1 != -2147483648)
     {
-    default: 
-      return paramInt1;
-    case 0: 
+      if (i1 != 0)
+      {
+        if (i1 != 1073741824) {
+          return paramInt1;
+        }
+        return paramInt3;
+      }
       return Math.min(paramInt1, paramInt2);
-    case -2147483648: 
-      return Math.min(Math.min(paramInt1, paramInt3), paramInt2);
     }
-    return paramInt3;
+    return Math.min(Math.min(paramInt1, paramInt3), paramInt2);
   }
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.u = new Matrix();
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.customFitMode);
-    this.jdField_f_of_type_Boolean = paramContext.getBoolean(0, false);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ((IResourceUtil)QRoute.api(IResourceUtil.class)).getCustomFitMode());
+    this.v = paramContext.getBoolean(((IResourceUtil)QRoute.api(IResourceUtil.class)).getCustomFitModeUseFitXFromStart(), false);
     paramContext.recycle();
   }
   
   private void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    Drawable localDrawable = this.j;
+    if (localDrawable != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
-      unscheduleDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localDrawable.setCallback(null);
+      unscheduleDrawable(this.j);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.j = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
       if (paramDrawable.isStateful()) {
         paramDrawable.setState(getDrawableState());
       }
-      paramDrawable.setLevel(this.jdField_f_of_type_Int);
-      this.g = paramDrawable.getIntrinsicWidth();
-      this.h = paramDrawable.getIntrinsicHeight();
+      paramDrawable.setLevel(this.m);
+      this.n = paramDrawable.getIntrinsicWidth();
+      this.o = paramDrawable.getIntrinsicHeight();
       e();
       d();
       return;
     }
-    this.h = -1;
-    this.g = -1;
+    this.o = -1;
+    this.n = -1;
   }
   
   /* Error */
   private void b()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aload_0
-    //   3: getfield 119	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
-    //   6: ifnull +4 -> 10
-    //   9: return
-    //   10: aload_0
-    //   11: invokevirtual 169	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:getResources	()Landroid/content/res/Resources;
-    //   14: astore_2
-    //   15: aload_2
-    //   16: ifnull -7 -> 9
-    //   19: aload_0
-    //   20: getfield 171	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
-    //   23: ifeq +58 -> 81
-    //   26: aload_2
-    //   27: aload_0
-    //   28: getfield 171	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
-    //   31: invokevirtual 177	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   34: astore_2
-    //   35: aload_2
-    //   36: astore_1
-    //   37: aload_0
-    //   38: aload_1
-    //   39: invokespecial 179	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	(Landroid/graphics/drawable/Drawable;)V
-    //   42: return
-    //   43: astore_2
-    //   44: ldc 181
-    //   46: new 183	java/lang/StringBuilder
-    //   49: dup
-    //   50: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   53: ldc 186
-    //   55: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: aload_0
-    //   59: getfield 171	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_Int	I
-    //   62: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: aload_2
-    //   69: invokestatic 203	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   72: pop
-    //   73: aload_0
-    //   74: aconst_null
-    //   75: putfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   78: goto -41 -> 37
-    //   81: aload_0
-    //   82: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   85: ifnull -76 -> 9
+    //   0: aload_0
+    //   1: getfield 79	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:j	Landroid/graphics/drawable/Drawable;
+    //   4: ifnull +4 -> 8
+    //   7: return
+    //   8: aload_0
+    //   9: invokevirtual 209	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:getResources	()Landroid/content/res/Resources;
+    //   12: astore_3
+    //   13: aload_3
+    //   14: ifnonnull +4 -> 18
+    //   17: return
+    //   18: aload_0
+    //   19: getfield 62	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:b	I
+    //   22: istore_1
+    //   23: aconst_null
+    //   24: astore_2
+    //   25: iload_1
+    //   26: ifeq +62 -> 88
+    //   29: aload_3
+    //   30: iload_1
+    //   31: invokevirtual 215	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   34: astore_3
+    //   35: aload_3
+    //   36: astore_2
+    //   37: goto +284 -> 321
+    //   40: astore_3
+    //   41: new 217	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   48: astore 4
+    //   50: aload 4
+    //   52: ldc 220
+    //   54: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload 4
+    //   60: aload_0
+    //   61: getfield 62	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:b	I
+    //   64: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: ldc 229
+    //   70: aload 4
+    //   72: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: aload_3
+    //   76: invokestatic 238	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   79: pop
+    //   80: aload_0
+    //   81: aconst_null
+    //   82: putfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   85: goto +236 -> 321
     //   88: aload_0
-    //   89: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   92: invokevirtual 210	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   95: astore_1
-    //   96: ldc 212
-    //   98: aload_1
-    //   99: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   102: ifne +12 -> 114
-    //   105: ldc 220
-    //   107: aload_1
-    //   108: invokevirtual 218	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   111: ifeq +167 -> 278
-    //   114: aload_0
-    //   115: getfield 64	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   118: invokevirtual 224	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   121: aload_0
-    //   122: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   125: invokevirtual 230	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
-    //   128: astore_2
-    //   129: aload_2
-    //   130: astore_1
-    //   131: aload_2
-    //   132: aconst_null
-    //   133: invokestatic 234	android/graphics/drawable/Drawable:createFromStream	(Ljava/io/InputStream;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-    //   136: astore_3
-    //   137: aload_3
-    //   138: astore_1
-    //   139: aload_2
-    //   140: ifnull +9 -> 149
-    //   143: aload_2
-    //   144: invokevirtual 239	java/io/InputStream:close	()V
-    //   147: aload_3
-    //   148: astore_1
-    //   149: aload_1
-    //   150: ifnonnull +36 -> 186
-    //   153: getstatic 245	java/lang/System:out	Ljava/io/PrintStream;
-    //   156: new 183	java/lang/StringBuilder
-    //   159: dup
-    //   160: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   163: ldc 247
-    //   165: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: aload_0
-    //   169: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   172: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokevirtual 256	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   181: aload_0
-    //   182: aconst_null
-    //   183: putfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   186: goto -149 -> 37
-    //   189: astore_1
-    //   190: aload_1
-    //   191: invokevirtual 259	java/io/IOException:printStackTrace	()V
-    //   194: aload_3
-    //   195: astore_1
-    //   196: goto -47 -> 149
-    //   199: astore_3
-    //   200: aconst_null
-    //   201: astore_2
-    //   202: aload_2
-    //   203: astore_1
-    //   204: ldc 181
-    //   206: new 183	java/lang/StringBuilder
+    //   89: getfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   92: astore_2
+    //   93: aload_2
+    //   94: ifnull +252 -> 346
+    //   97: aload_2
+    //   98: invokevirtual 245	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   101: astore_2
+    //   102: ldc 247
+    //   104: aload_2
+    //   105: invokevirtual 253	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   108: ifne +29 -> 137
+    //   111: ldc 255
+    //   113: aload_2
+    //   114: invokevirtual 253	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   117: ifeq +6 -> 123
+    //   120: goto +17 -> 137
+    //   123: aload_0
+    //   124: getfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   127: invokevirtual 256	android/net/Uri:toString	()Ljava/lang/String;
+    //   130: invokestatic 260	android/graphics/drawable/Drawable:createFromPath	(Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    //   133: astore_2
+    //   134: goto +137 -> 271
+    //   137: aload_0
+    //   138: getfield 99	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:t	Landroid/content/Context;
+    //   141: invokevirtual 264	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   144: aload_0
+    //   145: getfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   148: invokevirtual 270	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   151: astore_3
+    //   152: aload_3
+    //   153: astore_2
+    //   154: aload_3
+    //   155: aconst_null
+    //   156: invokestatic 274	android/graphics/drawable/Drawable:createFromStream	(Ljava/io/InputStream;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    //   159: astore 4
+    //   161: aload 4
+    //   163: astore_2
+    //   164: aload_3
+    //   165: ifnull +106 -> 271
+    //   168: aload_3
+    //   169: invokevirtual 279	java/io/InputStream:close	()V
+    //   172: aload 4
+    //   174: astore_2
+    //   175: goto +96 -> 271
+    //   178: astore_2
+    //   179: aload_2
+    //   180: invokevirtual 282	java/io/IOException:printStackTrace	()V
+    //   183: aload 4
+    //   185: astore_2
+    //   186: goto +85 -> 271
+    //   189: astore 4
+    //   191: goto +13 -> 204
+    //   194: astore_3
+    //   195: aconst_null
+    //   196: astore_2
+    //   197: goto +131 -> 328
+    //   200: astore 4
+    //   202: aconst_null
+    //   203: astore_3
+    //   204: aload_3
+    //   205: astore_2
+    //   206: new 217	java/lang/StringBuilder
     //   209: dup
-    //   210: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   213: ldc_w 261
-    //   216: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: aload_0
-    //   220: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   223: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   226: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   229: aload_3
-    //   230: invokestatic 203	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   233: pop
-    //   234: aload_2
-    //   235: ifnull +65 -> 300
-    //   238: aload_2
-    //   239: invokevirtual 239	java/io/InputStream:close	()V
-    //   242: aconst_null
-    //   243: astore_1
-    //   244: goto -95 -> 149
-    //   247: astore_1
-    //   248: aload_1
-    //   249: invokevirtual 259	java/io/IOException:printStackTrace	()V
-    //   252: aconst_null
-    //   253: astore_1
-    //   254: goto -105 -> 149
-    //   257: astore_2
-    //   258: aconst_null
-    //   259: astore_1
-    //   260: aload_1
-    //   261: ifnull +7 -> 268
-    //   264: aload_1
-    //   265: invokevirtual 239	java/io/InputStream:close	()V
-    //   268: aload_2
-    //   269: athrow
-    //   270: astore_1
-    //   271: aload_1
-    //   272: invokevirtual 259	java/io/IOException:printStackTrace	()V
-    //   275: goto -7 -> 268
-    //   278: aload_0
-    //   279: getfield 205	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   282: invokevirtual 262	android/net/Uri:toString	()Ljava/lang/String;
-    //   285: invokestatic 266	android/graphics/drawable/Drawable:createFromPath	(Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-    //   288: astore_1
-    //   289: goto -140 -> 149
-    //   292: astore_2
-    //   293: goto -33 -> 260
-    //   296: astore_3
-    //   297: goto -95 -> 202
-    //   300: aconst_null
-    //   301: astore_1
-    //   302: goto -153 -> 149
+    //   210: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   213: astore 5
+    //   215: aload_3
+    //   216: astore_2
+    //   217: aload 5
+    //   219: ldc_w 284
+    //   222: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: pop
+    //   226: aload_3
+    //   227: astore_2
+    //   228: aload 5
+    //   230: aload_0
+    //   231: getfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   234: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   237: pop
+    //   238: aload_3
+    //   239: astore_2
+    //   240: ldc 229
+    //   242: aload 5
+    //   244: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: aload 4
+    //   249: invokestatic 238	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   252: pop
+    //   253: aload_3
+    //   254: ifnull +15 -> 269
+    //   257: aload_3
+    //   258: invokevirtual 279	java/io/InputStream:close	()V
+    //   261: goto +8 -> 269
+    //   264: astore_2
+    //   265: aload_2
+    //   266: invokevirtual 282	java/io/IOException:printStackTrace	()V
+    //   269: aconst_null
+    //   270: astore_2
+    //   271: aload_2
+    //   272: ifnonnull +49 -> 321
+    //   275: getstatic 293	java/lang/System:out	Ljava/io/PrintStream;
+    //   278: astore_3
+    //   279: new 217	java/lang/StringBuilder
+    //   282: dup
+    //   283: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   286: astore 4
+    //   288: aload 4
+    //   290: ldc_w 295
+    //   293: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   296: pop
+    //   297: aload 4
+    //   299: aload_0
+    //   300: getfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   303: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   306: pop
+    //   307: aload_3
+    //   308: aload 4
+    //   310: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokevirtual 301	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   316: aload_0
+    //   317: aconst_null
+    //   318: putfield 240	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	Landroid/net/Uri;
+    //   321: aload_0
+    //   322: aload_2
+    //   323: invokespecial 303	com/tencent/mobileqq/nearby/now/view/widget/FitXImageView:a	(Landroid/graphics/drawable/Drawable;)V
+    //   326: return
+    //   327: astore_3
+    //   328: aload_2
+    //   329: ifnull +15 -> 344
+    //   332: aload_2
+    //   333: invokevirtual 279	java/io/InputStream:close	()V
+    //   336: goto +8 -> 344
+    //   339: astore_2
+    //   340: aload_2
+    //   341: invokevirtual 282	java/io/IOException:printStackTrace	()V
+    //   344: aload_3
+    //   345: athrow
+    //   346: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	305	0	this	FitXImageView
-    //   1	149	1	localObject1	java.lang.Object
-    //   189	2	1	localIOException1	java.io.IOException
-    //   195	49	1	localObject2	java.lang.Object
-    //   247	2	1	localIOException2	java.io.IOException
-    //   253	12	1	localObject3	java.lang.Object
-    //   270	2	1	localIOException3	java.io.IOException
-    //   288	14	1	localDrawable1	Drawable
-    //   14	22	2	localObject4	java.lang.Object
-    //   43	26	2	localException1	Exception
-    //   128	111	2	localInputStream	java.io.InputStream
-    //   257	12	2	localObject5	java.lang.Object
-    //   292	1	2	localObject6	java.lang.Object
-    //   136	59	3	localDrawable2	Drawable
-    //   199	31	3	localException2	Exception
-    //   296	1	3	localException3	Exception
+    //   0	347	0	this	FitXImageView
+    //   22	9	1	i1	int
+    //   24	151	2	localObject1	java.lang.Object
+    //   178	2	2	localIOException1	java.io.IOException
+    //   185	55	2	localObject2	java.lang.Object
+    //   264	2	2	localIOException2	java.io.IOException
+    //   270	63	2	localDrawable	Drawable
+    //   339	2	2	localIOException3	java.io.IOException
+    //   12	24	3	localObject3	java.lang.Object
+    //   40	36	3	localException1	Exception
+    //   151	18	3	localInputStream	java.io.InputStream
+    //   194	1	3	localObject4	java.lang.Object
+    //   203	105	3	localPrintStream	java.io.PrintStream
+    //   327	18	3	localObject5	java.lang.Object
+    //   48	136	4	localObject6	java.lang.Object
+    //   189	1	4	localException2	Exception
+    //   200	48	4	localException3	Exception
+    //   286	23	4	localStringBuilder1	java.lang.StringBuilder
+    //   213	30	5	localStringBuilder2	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   26	35	43	java/lang/Exception
-    //   143	147	189	java/io/IOException
-    //   114	129	199	java/lang/Exception
-    //   238	242	247	java/io/IOException
-    //   114	129	257	finally
-    //   264	268	270	java/io/IOException
-    //   131	137	292	finally
-    //   204	234	292	finally
-    //   131	137	296	java/lang/Exception
+    //   29	35	40	java/lang/Exception
+    //   168	172	178	java/io/IOException
+    //   154	161	189	java/lang/Exception
+    //   137	152	194	finally
+    //   137	152	200	java/lang/Exception
+    //   257	261	264	java/io/IOException
+    //   154	161	327	finally
+    //   206	215	327	finally
+    //   217	226	327	finally
+    //   228	238	327	finally
+    //   240	253	327	finally
+    //   332	336	339	java/io/IOException
   }
   
   private void c()
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.j;
     if (localDrawable != null)
     {
-      int j = localDrawable.getIntrinsicWidth();
-      int i = j;
-      if (j < 0) {
-        i = this.g;
+      int i2 = localDrawable.getIntrinsicWidth();
+      int i1 = i2;
+      if (i2 < 0) {
+        i1 = this.n;
       }
-      int k = localDrawable.getIntrinsicHeight();
-      j = k;
-      if (k < 0) {
-        j = this.h;
+      int i3 = localDrawable.getIntrinsicHeight();
+      i2 = i3;
+      if (i3 < 0) {
+        i2 = this.o;
       }
-      if ((i != this.g) || (j != this.h))
+      if ((i1 != this.n) || (i2 != this.o))
       {
-        this.g = i;
-        this.h = j;
+        this.n = i1;
+        this.o = i2;
         requestLayout();
       }
     }
@@ -338,81 +374,111 @@ public class FitXImageView
   
   private void d()
   {
-    float f1 = 0.0F;
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    int j = this.g;
-    int k = this.h;
-    int m = getWidth() - getPaddingLeft() - getPaddingRight();
-    int n = getHeight() - getPaddingTop() - getPaddingBottom();
-    if (((j < 0) || (m == j)) && ((k < 0) || (n == k))) {}
-    for (int i = 1; (j <= 0) || (k <= 0); i = 0)
+    if (this.j != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, m, n);
-      this.jdField_a_of_type_AndroidGraphicsMatrix = null;
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, j, k);
-    if (i != 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = null;
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = this.jdField_b_of_type_AndroidGraphicsMatrix;
-    if (m * k / j < n)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, j, k);
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, m, n);
-      this.jdField_a_of_type_AndroidGraphicsMatrix = this.jdField_b_of_type_AndroidGraphicsMatrix;
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF, Matrix.ScaleToFit.CENTER);
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = this.jdField_b_of_type_AndroidGraphicsMatrix;
-    float f3;
-    float f2;
-    if (j * n > m * k)
-    {
-      f3 = n / k;
-      f2 = (m - j * f3) * 0.5F;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f3, f3);
-      if (this.jdField_f_of_type_Boolean) {
-        break;
+      if (!this.c) {
+        return;
       }
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
-      return;
-      f3 = m / j;
-      f1 = n;
-      float f4 = k;
-      f2 = 0.0F;
-      f1 = (f1 - f4 * f3) * 0.5F;
+      int i2 = this.n;
+      int i3 = this.o;
+      int i4 = getWidth() - getPaddingLeft() - getPaddingRight();
+      int i5 = getHeight() - getPaddingTop() - getPaddingBottom();
+      int i1;
+      if (((i2 >= 0) && (i4 != i2)) || ((i3 >= 0) && (i5 != i3))) {
+        i1 = 0;
+      } else {
+        i1 = 1;
+      }
+      if ((i2 > 0) && (i3 > 0))
+      {
+        this.j.setBounds(0, 0, i2, i3);
+        if (i1 != 0)
+        {
+          this.p = null;
+          return;
+        }
+        Matrix localMatrix = this.u;
+        this.p = localMatrix;
+        i1 = i4 * i3;
+        int i6 = i1 / i2;
+        float f3 = 0.0F;
+        if (i6 < i5)
+        {
+          this.q.set(0.0F, 0.0F, i2, i3);
+          this.r.set(0.0F, 0.0F, i4, i5);
+          this.p = this.u;
+          this.p.setRectToRect(this.q, this.r, Matrix.ScaleToFit.CENTER);
+          return;
+        }
+        this.p = localMatrix;
+        float f1;
+        float f2;
+        if (i2 * i5 > i1)
+        {
+          f1 = i5 / i3;
+          f3 = (i4 - i2 * f1) * 0.5F;
+          f2 = 0.0F;
+        }
+        else
+        {
+          f1 = i4 / i2;
+          f2 = (i5 - i3 * f1) * 0.5F;
+        }
+        this.p.setScale(f1, f1);
+        if (!this.v) {
+          this.p.postTranslate((int)(f3 + 0.5F), (int)(f2 + 0.5F));
+        }
+      }
+      else
+      {
+        this.j.setBounds(0, 0, i4, i5);
+        this.p = null;
+      }
     }
   }
   
   private void e()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_c_of_type_Boolean))
+    Drawable localDrawable = this.j;
+    if ((localDrawable != null) && (this.i))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.mutate();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_d_of_type_Int * this.jdField_e_of_type_Int >> 8);
+      this.j = localDrawable.mutate();
+      this.j.setAlpha(this.g * this.h >> 8);
     }
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.j;
     if ((localDrawable != null) && (localDrawable.isStateful())) {
       localDrawable.setState(getDrawableState());
     }
   }
   
+  public boolean getCropToPadding()
+  {
+    return this.s;
+  }
+  
+  public Drawable getDrawable()
+  {
+    return this.j;
+  }
+  
+  public int getMaxHeight()
+  {
+    return this.f;
+  }
+  
+  public int getMaxWidth()
+  {
+    return this.e;
+  }
+  
   public void invalidateDrawable(Drawable paramDrawable)
   {
-    if (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+    if (paramDrawable == this.j)
     {
       invalidate();
       return;
@@ -423,218 +489,215 @@ public class FitXImageView
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.jumpToCurrentState();
+    Drawable localDrawable = this.j;
+    if (localDrawable != null) {
+      localDrawable.jumpToCurrentState();
     }
   }
   
   public void layout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     d();
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Drawable localDrawable;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    Drawable localDrawable = this.j;
+    if (localDrawable != null)
     {
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (getVisibility() != 0) {
-        break label33;
+      boolean bool;
+      if (getVisibility() == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label33:
-    for (boolean bool = true;; bool = false)
-    {
       localDrawable.setVisible(bool, false);
-      return;
     }
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfInt == null) {
+    int[] arrayOfInt = this.k;
+    if (arrayOfInt == null) {
       return super.onCreateDrawableState(paramInt);
     }
-    if (!this.jdField_d_of_type_Boolean) {
-      return this.jdField_a_of_type_ArrayOfInt;
+    if (!this.l) {
+      return arrayOfInt;
     }
-    return mergeDrawableStates(super.onCreateDrawableState(this.jdField_a_of_type_ArrayOfInt.length + paramInt), this.jdField_a_of_type_ArrayOfInt);
+    return mergeDrawableStates(super.onCreateDrawableState(paramInt + arrayOfInt.length), this.k);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
+    Drawable localDrawable = this.j;
+    if (localDrawable != null) {
+      localDrawable.setVisible(false, false);
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
-    while ((this.g == 0) || (this.h == 0)) {
+    if (this.j == null) {
       return;
     }
-    try
+    if (this.n != 0)
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsMatrix == null) && (getPaddingTop() == 0) && (getPaddingLeft() == 0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      if (this.o == 0) {
         return;
       }
+      try
+      {
+        if ((this.p == null) && (getPaddingTop() == 0) && (getPaddingLeft() == 0))
+        {
+          this.j.draw(paramCanvas);
+          return;
+        }
+        int i1 = paramCanvas.getSaveCount();
+        paramCanvas.save();
+        if (this.s)
+        {
+          int i2 = getScrollX();
+          int i3 = getScrollY();
+          paramCanvas.clipRect(getPaddingLeft() + i2, getPaddingTop() + i3, i2 + getRight() - getLeft() - getPaddingRight(), i3 + getBottom() - getTop() - getPaddingBottom());
+        }
+        paramCanvas.translate(getPaddingLeft(), getPaddingTop());
+        if (this.p != null) {
+          paramCanvas.concat(this.p);
+        }
+        this.j.draw(paramCanvas);
+        paramCanvas.restoreToCount(i1);
+        return;
+      }
+      catch (Exception paramCanvas)
+      {
+        paramCanvas.printStackTrace();
+      }
     }
-    catch (Exception paramCanvas)
-    {
-      paramCanvas.printStackTrace();
-      return;
-    }
-    int i = paramCanvas.getSaveCount();
-    paramCanvas.save();
-    if (this.jdField_e_of_type_Boolean)
-    {
-      int j = getScrollX();
-      int k = getScrollY();
-      paramCanvas.clipRect(getPaddingLeft() + j, getPaddingTop() + k, j + getRight() - getLeft() - getPaddingRight(), k + getBottom() - getTop() - getPaddingBottom());
-    }
-    paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-    if (this.jdField_a_of_type_AndroidGraphicsMatrix != null) {
-      paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restoreToCount(i);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     b();
-    int m = 0;
-    int i1 = View.MeasureSpec.getMode(paramInt1);
-    int n = View.MeasureSpec.getMode(paramInt2);
-    int j;
-    int k;
-    int i;
-    float f1;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+    int i5 = View.MeasureSpec.getMode(paramInt1);
+    int i4 = View.MeasureSpec.getMode(paramInt2);
+    int i1;
+    int i2;
+    if (this.j == null)
     {
-      this.g = -1;
-      this.h = -1;
-      j = 0;
-      k = 0;
-      i = 0;
-      f1 = 0.0F;
+      this.n = -1;
+      this.o = -1;
+      i1 = 0;
+      i2 = 0;
     }
+    int i3;
+    float f1;
     for (;;)
     {
-      int i2 = getPaddingLeft();
-      int i3 = getPaddingRight();
-      n = getPaddingTop();
-      i1 = getPaddingBottom();
-      if ((i != 0) || (m != 0))
-      {
-        paramInt1 = a(j + i2 + i3, this.jdField_b_of_type_Int, paramInt1);
-        j = a(k + n + i1, this.jdField_c_of_type_Int, paramInt2);
-        paramInt2 = paramInt1;
-        if (f1 == 0.0F) {
-          break label404;
-        }
-        paramInt2 = paramInt1;
-        if (Math.abs((paramInt1 - i2 - i3) / (j - n - i1) - f1) <= 1.0E-007D) {
-          break label404;
-        }
-        if (i == 0) {
-          break label410;
-        }
-        paramInt2 = (int)((j - n - i1) * f1) + i2 + i3;
-        if (paramInt2 > paramInt1) {
-          break label410;
-        }
-        i = 1;
-        paramInt1 = paramInt2;
-      }
-      for (;;)
-      {
-        paramInt2 = paramInt1;
-        if (i == 0)
-        {
-          paramInt2 = paramInt1;
-          if (m != 0)
-          {
-            i = (int)((paramInt1 - i2 - i3) / f1) + n + i1;
-            paramInt2 = paramInt1;
-            if (i <= j)
-            {
-              paramInt2 = paramInt1;
-              paramInt1 = i;
-            }
-          }
-        }
-        for (;;)
-        {
-          setMeasuredDimension(paramInt2, paramInt1);
-          return;
-          i = this.g;
-          k = this.h;
-          j = i;
-          if (i <= 0) {
-            j = 1;
-          }
-          i = k;
-          if (k <= 0) {
-            i = 1;
-          }
-          if (!this.jdField_b_of_type_Boolean) {
-            break label416;
-          }
-          if (i1 != 1073741824)
-          {
-            k = 1;
-            label301:
-            if (n == 1073741824) {
-              break label341;
-            }
-          }
-          label341:
-          for (m = 1;; m = 0)
-          {
-            f1 = j / i;
-            n = i;
-            i = k;
-            k = n;
-            break;
-            k = 0;
-            break label301;
-          }
-          i = Math.max(i2 + i3 + j, getSuggestedMinimumWidth());
-          j = Math.max(n + i1 + k, getSuggestedMinimumHeight());
-          i = resolveSizeAndState(i, paramInt1, 0);
-          paramInt1 = resolveSizeAndState(j, paramInt2, 0);
-          paramInt2 = i;
-          continue;
-          label404:
-          paramInt1 = j;
-        }
-        label410:
-        i = 0;
-      }
-      label416:
+      i4 = 0;
+      i3 = 0;
       f1 = 0.0F;
-      k = i;
-      i = 0;
+      i5 = i2;
+      break;
+      i2 = this.n;
+      i3 = this.o;
+      i1 = i2;
+      if (i2 <= 0) {
+        i1 = 1;
+      }
+      i2 = i3;
+      if (i3 <= 0) {
+        i2 = 1;
+      }
+      if (this.d)
+      {
+        if (i5 != 1073741824) {
+          i3 = 1;
+        } else {
+          i3 = 0;
+        }
+        if (i4 != 1073741824) {
+          i4 = 1;
+        } else {
+          i4 = 0;
+        }
+        f1 = i1 / i2;
+        i5 = i2;
+        break;
+      }
     }
+    int i8 = getPaddingLeft();
+    int i9 = getPaddingRight();
+    int i6 = getPaddingTop();
+    int i7 = getPaddingBottom();
+    if ((i3 == 0) && (i4 == 0))
+    {
+      i1 = Math.max(i1 + (i8 + i9), getSuggestedMinimumWidth());
+      i2 = Math.max(i5 + (i6 + i7), getSuggestedMinimumHeight());
+      paramInt1 = resolveSizeAndState(i1, paramInt1, 0);
+      i1 = resolveSizeAndState(i2, paramInt2, 0);
+    }
+    else
+    {
+      i2 = a(i1 + i8 + i9, this.e, paramInt1);
+      i5 = a(i5 + i6 + i7, this.f, paramInt2);
+      paramInt1 = i2;
+      i1 = i5;
+      if (f1 != 0.0F)
+      {
+        float f2 = i2 - i8 - i9;
+        float f3 = i5 - i6 - i7;
+        paramInt1 = i2;
+        i1 = i5;
+        if (Math.abs(f2 / f3 - f1) > 1.0E-007D)
+        {
+          if (i3 != 0)
+          {
+            paramInt2 = (int)(f3 * f1) + i8 + i9;
+            if (paramInt2 <= i2)
+            {
+              i3 = 1;
+              break label371;
+            }
+          }
+          i3 = 0;
+          paramInt2 = i2;
+          label371:
+          paramInt1 = paramInt2;
+          i1 = i5;
+          if (i3 == 0)
+          {
+            paramInt1 = paramInt2;
+            i1 = i5;
+            if (i4 != 0)
+            {
+              i2 = (int)((paramInt2 - i8 - i9) / f1) + i6 + i7;
+              paramInt1 = paramInt2;
+              i1 = i5;
+              if (i2 <= i5)
+              {
+                i1 = i2;
+                paramInt1 = paramInt2;
+              }
+            }
+          }
+        }
+      }
+    }
+    setMeasuredDimension(paramInt1, i1);
   }
   
   public void setAlpha(int paramInt)
   {
     paramInt &= 0xFF;
-    if (this.jdField_d_of_type_Int != paramInt)
+    if (this.g != paramInt)
     {
-      this.jdField_d_of_type_Int = paramInt;
-      this.jdField_c_of_type_Boolean = true;
+      this.g = paramInt;
+      this.i = true;
       e();
       invalidate();
     }
@@ -642,9 +705,9 @@ public class FitXImageView
   
   public void setCropToPadding(boolean paramBoolean)
   {
-    if (this.jdField_e_of_type_Boolean != paramBoolean)
+    if (this.s != paramBoolean)
     {
-      this.jdField_e_of_type_Boolean = paramBoolean;
+      this.s = paramBoolean;
       requestLayout();
       invalidate();
     }
@@ -652,19 +715,19 @@ public class FitXImageView
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    setImageDrawable(new BitmapDrawable(this.t.getResources(), paramBitmap));
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != paramDrawable) || (this.g != paramDrawable.getIntrinsicWidth()) || (this.h != paramDrawable.getIntrinsicHeight()))
+    if ((this.j != paramDrawable) || (this.n != paramDrawable.getIntrinsicWidth()) || (this.o != paramDrawable.getIntrinsicHeight()))
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidNetUri = null;
-      int i = this.g;
-      int j = this.h;
+      this.b = 0;
+      this.a = null;
+      int i1 = this.n;
+      int i2 = this.o;
       a(paramDrawable);
-      if ((i != this.g) || (j != this.h)) {
+      if ((i1 != this.n) || (i2 != this.o)) {
         requestLayout();
       }
       invalidate();
@@ -673,21 +736,22 @@ public class FitXImageView
   
   public void setImageLevel(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    this.m = paramInt;
+    Drawable localDrawable = this.j;
+    if (localDrawable != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setLevel(paramInt);
+      localDrawable.setLevel(paramInt);
       c();
     }
   }
   
   public void setImageResource(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidNetUri != null) || (this.jdField_a_of_type_Int != paramInt))
+    if ((this.a != null) || (this.b != paramInt))
     {
       a(null);
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidNetUri = null;
+      this.b = paramInt;
+      this.a = null;
       b();
       requestLayout();
       invalidate();
@@ -696,9 +760,9 @@ public class FitXImageView
   
   public void setImageState(int[] paramArrayOfInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    this.k = paramArrayOfInt;
+    this.l = paramBoolean;
+    if (this.j != null)
     {
       refreshDrawableState();
       c();
@@ -707,11 +771,16 @@ public class FitXImageView
   
   public void setImageURI(Uri paramUri)
   {
-    if ((this.jdField_a_of_type_Int != 0) || ((this.jdField_a_of_type_AndroidNetUri != paramUri) && ((paramUri == null) || (this.jdField_a_of_type_AndroidNetUri == null) || (!paramUri.equals(this.jdField_a_of_type_AndroidNetUri)))))
+    if (this.b == 0)
+    {
+      Uri localUri = this.a;
+      if ((localUri == paramUri) || ((paramUri != null) && (localUri != null) && (paramUri.equals(localUri)))) {}
+    }
+    else
     {
       a(null);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidNetUri = paramUri;
+      this.b = 0;
+      this.a = paramUri;
       b();
       requestLayout();
       invalidate();
@@ -720,12 +789,12 @@ public class FitXImageView
   
   public void setMaxHeight(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setMaxWidth(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void setSelected(boolean paramBoolean)
@@ -737,30 +806,27 @@ public class FitXImageView
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    Drawable localDrawable;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    Drawable localDrawable = this.j;
+    if (localDrawable != null)
     {
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (paramInt != 0) {
-        break label31;
+      boolean bool;
+      if (paramInt == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label31:
-    for (boolean bool = true;; bool = false)
-    {
       localDrawable.setVisible(bool, false);
-      return;
     }
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == paramDrawable) || (super.verifyDrawable(paramDrawable));
+    return (this.j == paramDrawable) || (super.verifyDrawable(paramDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.FitXImageView
  * JD-Core Version:    0.7.0.1
  */

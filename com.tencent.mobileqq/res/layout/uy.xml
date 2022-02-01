@@ -5,6 +5,6 @@
     <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="80.0dip" android:layout_marginRight="9.0dip" android:layout_marginBottom="8.0dip" android:text="@string/plh" />
     <RelativeLayout android:id="@id/iz6" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_below="@id/bat">
         <ImageView android:id="@id/b6" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/c4j" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/ba" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/pli" android:layout_toRightOf="@id/b6" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/ba" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/pli" android:layout_toRightOf="@id/b6" android:layout_centerVertical="true" />
     </RelativeLayout>
 </RelativeLayout>

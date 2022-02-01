@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?g4" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@android:id/text1" android:paddingLeft="@dimen/q5" android:paddingRight="?em" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?fd" android:drawableLeft="?android:listChoiceIndicatorMultiple" android:drawablePadding="20.0dip" android:drawableStart="?android:listChoiceIndicatorMultiple" android:paddingStart="@dimen/q5" android:paddingEnd="?em"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/e9q" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/hi" android:layout_gravity="left" android:id="@id/e9p" android:background="@drawable/axm" android:padding="16.0dip" android:text="@string/k4" style="@style/od" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/hi" android:id="@id/e9r" android:background="@drawable/axm" android:padding="16.0dip" android:text="@string/kw0" android:layout_alignParentRight="true" style="@style/od" />
+    <View android:id="@id/kuh" android:background="@color/ahb" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/e9o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/r" android:src="@drawable/bwj" android:layout_above="@id/kuh" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/e9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/k" android:text="@string/kvj" android:layout_below="@id/kuh" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m8" android:textColor="@color/a1c" android:id="@id/hse" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/kw0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtn;
 import android.os.Handler;
-import azfx;
 import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.shortvideo.common.GloableValue;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 
-public class RMVideoInitState$1
+class RMVideoInitState$1
   implements Runnable
 {
-  public RMVideoInitState$1(ajtn paramajtn) {}
+  RMVideoInitState$1(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
@@ -19,50 +18,47 @@ public class RMVideoInitState$1
       QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
     }
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.f())
+    if (!localRMVideoStateMgr.n())
     {
       RMVideoStateMgr.b(null);
-      if (localRMVideoStateMgr.f()) {}
+      if (!localRMVideoStateMgr.n()) {
+        return;
+      }
     }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(GloableValue.b);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(".nomedia");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).exists()) {}
+    try
     {
-      return;
-      File localFile = new File(azfx.a + File.separator + ".nomedia");
-      if (!localFile.exists()) {}
-      try
-      {
-        localFile.createNewFile();
-        label84:
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
-        }
-        localRMVideoStateMgr.a.postDelayed(this.this$0.a, 10000L);
-        localRMVideoStateMgr.l();
-        localRMVideoStateMgr.m();
-        localRMVideoStateMgr.k();
-        try
-        {
-          AVCodec.get().init();
-          this.this$0.c = true;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-          return;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          for (;;)
-          {
-            localUnsatisfiedLinkError.printStackTrace();
-            this.this$0.c = false;
-          }
-        }
-      }
-      catch (IOException localIOException)
-      {
-        break label84;
-      }
+      ((File)localObject).createNewFile();
+    }
+    catch (IOException localIOException)
+    {
+      label95:
+      break label95;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
+    }
+    localRMVideoStateMgr.I.postDelayed(this.this$0.g, 10000L);
+    localRMVideoStateMgr.s();
+    localRMVideoStateMgr.t();
+    localRMVideoStateMgr.r();
+    try
+    {
+      AVCodec.get().init();
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+      this.this$0.c = false;
+    }
+    this.this$0.c = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
     }
   }
 }

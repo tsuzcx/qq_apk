@@ -1,28 +1,32 @@
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class fph
-  extends FriendListObserver
+  extends WtloginObserver
 {
   public fph(EquipLockWebImpl paramEquipLockWebImpl) {}
   
-  protected void b(boolean paramBoolean, ArrayList paramArrayList)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (paramBoolean) {
-      EquipmentLockImpl.a().a(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
     }
-    for (;;)
+    if (paramInt == 0)
     {
-      EquipLockWebImpl.a(this.a, false);
-      EquipLockWebImpl.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
+      EquipLockWebImpl.c(this.a, true);
+      if (!EquipmentLockImpl.a().a(EquipLockWebImpl.a(this.a)))
+      {
+        EquipLockWebImpl.a(this.a, false);
+        EquipLockWebImpl.b(this.a, false);
       }
+      return;
     }
+    EquipLockWebImpl.a(this.a, false);
+    EquipLockWebImpl.c(this.a, false);
   }
 }
 

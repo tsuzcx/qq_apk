@@ -1,35 +1,108 @@
 package com.tencent.mm.plugin.fts.a.a;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 
-public final class k
+public abstract class k
+  extends c
 {
-  public long foo = 0L;
-  public int mRU = 0;
-  public String mRV = "";
-  public long mSX = 0L;
-  public long mSY = 0L;
-  public long mSZ = 0L;
-  public String mTa = "";
-  public String query = "";
-  public long timestamp = 0L;
-  public int type = 0;
+  private WeakReference<com.tencent.mm.plugin.fts.a.l> HpN;
+  public l Htr;
+  public m Hts;
   
-  public final void convertFrom(Cursor paramCursor)
+  public k(l paraml)
   {
-    AppMethodBeat.i(114274);
-    this.mSX = paramCursor.getLong(0);
-    this.query = paramCursor.getString(1);
-    this.mSY = paramCursor.getLong(2);
-    this.foo = paramCursor.getLong(3);
-    this.mRV = paramCursor.getString(4);
-    this.mSZ = paramCursor.getLong(5);
-    this.type = paramCursor.getInt(6);
-    this.mRU = paramCursor.getInt(7);
-    this.timestamp = paramCursor.getLong(8);
-    this.mTa = paramCursor.getString(9);
-    AppMethodBeat.o(114274);
+    this.Htr = paraml;
+    this.HpN = new WeakReference(paraml.HtC);
+    this.Htr.HtC = null;
+  }
+  
+  protected void a(m paramm)
+  {
+    paramm.FWt = j.cc(this.Htr.query, false);
+    paramm.resultCode = -5;
+  }
+  
+  public final boolean aXz()
+  {
+    Object localObject1 = this.Htr;
+    if (!Util.isNullOrNil(((l)localObject1).query)) {}
+    try
+    {
+      ((l)localObject1).query = new String(((l)localObject1).query.getBytes("UTF8"), "UTF8");
+      label37:
+      this.Hts = new m(this.Htr);
+      try
+      {
+        this.Hts.HtE = this;
+        a(this.Hts);
+        this.Hts.resultCode = 0;
+        if (this.Htr.handler == null)
+        {
+          localObject1 = (com.tencent.mm.plugin.fts.a.l)this.HpN.get();
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.fts.a.l)localObject1).b(this.Hts);
+          }
+          return true;
+        }
+        this.Htr.handler.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(131702);
+            com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)k.a(k.this).get();
+            if (locall != null) {
+              locall.b(k.b(k.this));
+            }
+            AppMethodBeat.o(131702);
+          }
+        });
+        return true;
+      }
+      catch (Exception localException)
+      {
+        if ((localException instanceof InterruptedException))
+        {
+          this.Hts.resultCode = 1;
+          throw localException;
+        }
+      }
+      finally
+      {
+        if (this.Htr.handler == null)
+        {
+          com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)this.HpN.get();
+          if (locall != null) {
+            locall.b(this.Hts);
+          }
+        }
+        for (;;)
+        {
+          throw localObject2;
+          this.Hts.resultCode = -1;
+          break;
+          this.Htr.handler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(131702);
+              com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)k.a(k.this).get();
+              if (locall != null) {
+                locall.b(k.b(k.this));
+              }
+              AppMethodBeat.o(131702);
+            }
+          });
+        }
+      }
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      break label37;
+    }
   }
 }
 

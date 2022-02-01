@@ -1,37 +1,23 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.f.a.b;
-import a.f.b.j;
-import a.l;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.story.h.j;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;"}, k=3, mv={1, 5, 1}, xi=48)
 final class StoryFavoritePanel$e$a
-  implements View.OnClickListener
+  extends u
+  implements b<j, Boolean>
 {
-  StoryFavoritePanel$e$a(StoryFavoritePanel.e parame, int paramInt) {}
-  
-  public final void onClick(View paramView)
+  StoryFavoritePanel$e$a(StoryFavoritePanel.c paramc)
   {
-    AppMethodBeat.i(110198);
-    paramView = this.sJV.sJT.getMOnAddItemClickListener();
-    if (paramView != null)
-    {
-      Object localObject = this.sJV.sJT.getMDatas().get(this.euX);
-      j.p(localObject, "mDatas[position]");
-      paramView.S(localObject);
-      AppMethodBeat.o(110198);
-      return;
-    }
-    AppMethodBeat.o(110198);
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryFavoritePanel.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,172 @@
 package com.tencent.mm.ba;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.bo;
-import junit.framework.Assert;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.ftb;
+import com.tencent.mm.protocal.protobuf.ftc;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class b
-  extends k
+  extends p
+  implements m
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS chattingbginfo ( username text  PRIMARY KEY , bgflag int  , path text  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int  ) " };
-  public h fnw;
+  private com.tencent.mm.am.h callback;
+  private String clientId;
+  private int dIY;
+  private String hQn;
+  public String oRL;
+  private int osy;
+  private c rr;
+  private String username;
   
-  public b(h paramh)
+  private b(String paramString)
   {
-    this.fnw = paramh;
+    AppMethodBeat.i(90688);
+    this.username = paramString;
+    this.osy = 0;
+    this.dIY = 0;
+    paramString = new StringBuilder();
+    com.tencent.mm.kernel.h.baC();
+    this.clientId = (com.tencent.mm.kernel.b.getUin() + System.currentTimeMillis());
+    AppMethodBeat.o(90688);
   }
   
-  public final boolean a(a parama)
+  public b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(78433);
-    parama.bsY = -1;
-    ContentValues localContentValues = parama.convertTo();
-    if ((int)this.fnw.a("chattingbginfo", "username", localContentValues) != -1)
+    this(paramString1);
+    this.hQn = paramString2;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(90690);
+    this.callback = paramh;
+    if ((this.hQn == null) || (this.hQn.length() == 0))
     {
-      doNotify(parama.getUsername());
-      AppMethodBeat.o(78433);
-      return true;
+      Log.e("MicroMsg.NetSceneUploadCardImg", "imgPath is null or length = 0");
+      AppMethodBeat.o(90690);
+      return -1;
     }
-    AppMethodBeat.o(78433);
-    return false;
+    if (!y.ZC(this.hQn))
+    {
+      Log.e("MicroMsg.NetSceneUploadCardImg", "The img does not exist, imgPath = " + this.hQn);
+      AppMethodBeat.o(90690);
+      return -1;
+    }
+    if (this.osy == 0) {
+      this.osy = ((int)new u(this.hQn).length());
+    }
+    paramh = new c.a();
+    paramh.otE = new ftb();
+    paramh.otF = new ftc();
+    paramh.uri = "/cgi-bin/micromsg-bin/uploadcardimg";
+    paramh.funcId = 575;
+    paramh.otG = 0;
+    paramh.respCmdId = 0;
+    this.rr = paramh.bEF();
+    int i = Math.min(this.osy - this.dIY, 32768);
+    paramh = y.bi(this.hQn, this.dIY, i);
+    if (paramh == null)
+    {
+      Log.e("MicroMsg.NetSceneUploadCardImg", "readFromFile error");
+      AppMethodBeat.o(90690);
+      return -1;
+    }
+    Log.i("MicroMsg.NetSceneUploadCardImg", "doScene uploadLen:%d, total: %d", new Object[] { Integer.valueOf(paramh.length), Integer.valueOf(this.osy) });
+    ftb localftb = (ftb)c.b.b(this.rr.otB);
+    localftb.ZqZ = this.username;
+    localftb.NkN = this.osy;
+    localftb.NkO = this.dIY;
+    localftb.NkQ = new gol().df(paramh);
+    localftb.NkP = localftb.NkQ.abwJ;
+    localftb.nUv = this.clientId;
+    i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(90690);
+    return i;
   }
   
-  public final boolean b(a parama)
+  public final int getType()
   {
-    AppMethodBeat.i(78434);
-    if (parama != null) {}
-    for (boolean bool = true;; bool = false)
+    return 575;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(90691);
+    Log.d("MicroMsg.NetSceneUploadCardImg", "onGYNetEnd:%s, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      Assert.assertTrue(bool);
-      ContentValues localContentValues = parama.convertTo();
-      if (localContentValues.size() <= 0) {
-        break;
+      Log.e("MicroMsg.NetSceneUploadCardImg", "upload card img error");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(90691);
+      return;
+    }
+    params = (ftc)c.c.b(((c)params).otC);
+    this.oRL = params.aaWa;
+    this.dIY = params.NkO;
+    if (this.dIY < this.osy)
+    {
+      if (doScene(dispatcher(), this.callback) < 0)
+      {
+        Log.e("MicroMsg.NetSceneUploadCardImg", "doScene again failed");
+        this.callback.onSceneEnd(3, -1, "", this);
       }
-      if (this.fnw.update("chattingbginfo", localContentValues, "username= ?", new String[] { parama.getUsername() }) <= 0) {
-        break;
-      }
-      doNotify(parama.getUsername());
-      AppMethodBeat.o(78434);
-      return true;
+      Log.d("MicroMsg.NetSceneUploadCardImg", "doScene again");
+      AppMethodBeat.o(90691);
+      return;
     }
-    AppMethodBeat.o(78434);
-    return false;
+    if (!Util.isNullOrNil(this.oRL))
+    {
+      params = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(this.username);
+      if ((params != null) && ((int)params.maN > 0) && (d.rs(params.field_type)))
+      {
+        params.Bw(this.oRL);
+        ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().d(this.username, params);
+      }
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(90691);
   }
   
-  public final a tS(String paramString)
+  public final int securityLimitCount()
   {
-    Object localObject = null;
-    AppMethodBeat.i(78435);
-    paramString = "select chattingbginfo.username,chattingbginfo.bgflag,chattingbginfo.path,chattingbginfo.reserved1,chattingbginfo.reserved2,chattingbginfo.reserved3,chattingbginfo.reserved4 from chattingbginfo   where chattingbginfo.username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
-    Cursor localCursor = this.fnw.a(paramString, null, 2);
-    if (localCursor == null)
+    return 100;
+  }
+  
+  public final p.b securityVerificationChecked(s params)
+  {
+    AppMethodBeat.i(90689);
+    if ((this.hQn == null) || (this.hQn.length() == 0))
     {
-      AppMethodBeat.o(78435);
-      return null;
+      params = p.b.oui;
+      AppMethodBeat.o(90689);
+      return params;
     }
-    paramString = localObject;
-    if (localCursor.moveToFirst())
-    {
-      paramString = new a();
-      paramString.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(78435);
-    return paramString;
+    params = p.b.ouh;
+    AppMethodBeat.o(90689);
+    return params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ba.b
  * JD-Core Version:    0.7.0.1
  */

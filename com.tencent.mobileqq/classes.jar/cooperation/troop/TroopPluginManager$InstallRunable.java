@@ -2,42 +2,41 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Looper;
-import biqn;
-import bkcs;
-import bkct;
-import bkcu;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.troop.plugin.TroopPluginCallback;
+import cooperation.plugin.IPluginManager;
 import java.lang.ref.WeakReference;
 
-public class TroopPluginManager$InstallRunable
+class TroopPluginManager$InstallRunable
   implements Runnable
 {
-  public Handler a;
-  public bkcu a;
-  public String a;
+  TroopPluginCallback a;
+  String b;
+  Handler c = new TroopPluginManager.InstallRunable.1(this, Looper.getMainLooper());
   
-  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bkcu parambkcu, String paramString)
+  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, TroopPluginCallback paramTroopPluginCallback, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bkcs(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bkcu = parambkcu;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramTroopPluginCallback;
+    this.b = paramString;
   }
   
   public void run()
   {
-    Object localObject = (QQAppInterface)this.this$0.a.get();
-    if (localObject == null) {}
-    do
-    {
+    Object localObject = (QQAppInterface)this.this$0.b.get();
+    if (localObject == null) {
       return;
-      localObject = (biqn)((QQAppInterface)localObject).getManager(27);
-    } while (localObject == null);
-    ((biqn)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bkct(this));
+    }
+    localObject = (IPluginManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN);
+    if (localObject == null) {
+      return;
+    }
+    ((IPluginManager)localObject).installPlugin(this.b, new TroopPluginManager.InstallRunable.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.InstallRunable
  * JD-Core Version:    0.7.0.1
  */

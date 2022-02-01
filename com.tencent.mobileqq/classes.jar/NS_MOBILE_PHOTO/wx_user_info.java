@@ -29,20 +29,23 @@ public final class wx_user_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 0);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.avatar_url != null) {
-      paramJceOutputStream.write(this.avatar_url, 1);
+    str = this.avatar_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.openid != null) {
-      paramJceOutputStream.write(this.openid, 2);
+    str = this.openid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.wx_user_info
  * JD-Core Version:    0.7.0.1
  */

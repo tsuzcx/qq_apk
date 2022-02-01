@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import awge;
-import awhp;
-import awhs;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -14,189 +12,208 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import ndv;
 
 public class EqqDetail
-  extends awge
+  extends Entity
 {
-  public byte[] accountData;
+  public byte[] accountData = null;
   public String address = "";
-  @awhp
-  public String certifiedDescription = alud.a(2131704581);
-  public int certifiedGrade;
+  @notColumn
+  public String certifiedDescription;
+  public int certifiedGrade = 0;
   public String displayNumber = "";
   public long eqqAccountFlag;
-  public int followType;
+  public int followType = 0;
   public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
   public boolean isConfirmed;
-  public boolean isRecvMsg;
+  public boolean isRecvMsg = false;
   public String latitude = "";
   public String longitude = "";
   public boolean mIsAgreeSyncLbs;
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
-  public int mShowMsgFlag = -1;
-  public String name = alud.a(2131704582);
+  public int mShowMsgFlag;
+  public String name = HardCodeUtil.a(2131902220);
   public String phoneNumber = "";
   public String realSummary = "";
-  public int seqno;
-  public String summary = alud.a(2131704580);
-  @awhs
+  public int seqno = 0;
+  public String summary = HardCodeUtil.a(2131902218);
+  @unique
   public String uin;
   
-  public EqqDetail() {}
+  public EqqDetail()
+  {
+    this.eqqAccountFlag = 0L;
+    this.isConfirmed = false;
+    this.mShowMsgFlag = -1;
+    this.mIsSyncLbs = false;
+    this.mIsAgreeSyncLbs = false;
+    this.mIsSyncLbsSelected = false;
+    this.certifiedDescription = HardCodeUtil.a(2131902219);
+  }
   
   public EqqDetail(mobileqq_mp.GetEqqAccountDetailInfoResponse paramGetEqqAccountDetailInfoResponse)
   {
-    Object localObject = (mobileqq_mp.EqqAccountInfo)paramGetEqqAccountDetailInfoResponse.accountInfo.get();
-    this.uin = ("" + (((mobileqq_mp.EqqAccountInfo)localObject).uin.get() & 0xFFFFFFFF));
+    long l = 0L;
+    this.eqqAccountFlag = 0L;
+    this.isConfirmed = false;
+    this.mShowMsgFlag = -1;
+    this.mIsSyncLbs = false;
+    this.mIsAgreeSyncLbs = false;
+    this.mIsSyncLbsSelected = false;
+    this.certifiedDescription = HardCodeUtil.a(2131902219);
+    Object localObject1 = (mobileqq_mp.EqqAccountInfo)paramGetEqqAccountDetailInfoResponse.accountInfo.get();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(((mobileqq_mp.EqqAccountInfo)localObject1).uin.get() & 0xFFFFFFFF);
+    this.uin = ((StringBuilder)localObject2).toString();
     this.seqno = paramGetEqqAccountDetailInfoResponse.seqno.get();
-    this.name = ((mobileqq_mp.EqqAccountInfo)localObject).name.get();
-    this.summary = ((mobileqq_mp.EqqAccountInfo)localObject).summary.get();
+    this.name = ((mobileqq_mp.EqqAccountInfo)localObject1).name.get();
+    this.summary = ((mobileqq_mp.EqqAccountInfo)localObject1).summary.get();
     this.realSummary = paramGetEqqAccountDetailInfoResponse.introduce.get();
     this.isRecvMsg = paramGetEqqAccountDetailInfoResponse.is_recv_msg.get();
     this.groupInfoList = paramGetEqqAccountDetailInfoResponse.config_group_info.get();
     this.followType = paramGetEqqAccountDetailInfoResponse.follow_type.get();
-    this.displayNumber = ((mobileqq_mp.EqqAccountInfo)localObject).display_number.get();
+    this.displayNumber = ((mobileqq_mp.EqqAccountInfo)localObject1).display_number.get();
     this.phoneNumber = paramGetEqqAccountDetailInfoResponse.phone_number.get();
-    this.certifiedGrade = ((mobileqq_mp.EqqAccountInfo)localObject).certified_grade.get();
-    long l;
-    int i;
-    int j;
-    label358:
-    int n;
-    int k;
-    if (((mobileqq_mp.EqqAccountInfo)localObject).account_flag.has())
+    this.certifiedGrade = ((mobileqq_mp.EqqAccountInfo)localObject1).certified_grade.get();
+    if (((mobileqq_mp.EqqAccountInfo)localObject1).account_flag.has()) {
+      l = ((mobileqq_mp.EqqAccountInfo)localObject1).account_flag.get();
+    }
+    this.eqqAccountFlag = l;
+    this.latitude = paramGetEqqAccountDetailInfoResponse.lat.get();
+    this.longitude = paramGetEqqAccountDetailInfoResponse.lng.get();
+    this.address = paramGetEqqAccountDetailInfoResponse.address.get();
+    this.accountData = paramGetEqqAccountDetailInfoResponse.toByteArray();
+    this.mShowMsgFlag = -1;
+    if ((paramGetEqqAccountDetailInfoResponse.config_group_info.has()) && (!paramGetEqqAccountDetailInfoResponse.config_group_info.isEmpty()))
     {
-      l = ((mobileqq_mp.EqqAccountInfo)localObject).account_flag.get();
-      this.eqqAccountFlag = l;
-      this.latitude = paramGetEqqAccountDetailInfoResponse.lat.get();
-      this.longitude = paramGetEqqAccountDetailInfoResponse.lng.get();
-      this.address = paramGetEqqAccountDetailInfoResponse.address.get();
-      this.accountData = paramGetEqqAccountDetailInfoResponse.toByteArray();
-      this.mShowMsgFlag = -1;
-      if ((!paramGetEqqAccountDetailInfoResponse.config_group_info.has()) || (paramGetEqqAccountDetailInfoResponse.config_group_info.isEmpty())) {
-        break label757;
-      }
       paramGetEqqAccountDetailInfoResponse = paramGetEqqAccountDetailInfoResponse.config_group_info.get();
-      if ((paramGetEqqAccountDetailInfoResponse == null) || (paramGetEqqAccountDetailInfoResponse.size() <= 0)) {
-        break label757;
-      }
-      paramGetEqqAccountDetailInfoResponse = paramGetEqqAccountDetailInfoResponse.iterator();
-      i = 0;
-      j = 0;
-      if (!paramGetEqqAccountDetailInfoResponse.hasNext()) {
-        break label754;
-      }
-      localObject = (mobileqq_mp.ConfigGroupInfo)paramGetEqqAccountDetailInfoResponse.next();
-      n = i;
-      k = j;
-      if (!((mobileqq_mp.ConfigGroupInfo)localObject).config_info.has()) {
-        break label745;
-      }
-      n = i;
-      k = j;
-      if (((mobileqq_mp.ConfigGroupInfo)localObject).config_info.isEmpty()) {
-        break label745;
-      }
-      localObject = ((mobileqq_mp.ConfigGroupInfo)localObject).config_info.get().iterator();
-      int m = j;
-      j = i;
-      label491:
-      do
+      if ((paramGetEqqAccountDetailInfoResponse != null) && (paramGetEqqAccountDetailInfoResponse.size() > 0))
       {
+        paramGetEqqAccountDetailInfoResponse = paramGetEqqAccountDetailInfoResponse.iterator();
+        int i = 0;
+        int k = 0;
         do
         {
-          n = j;
-          k = m;
-          if (!((Iterator)localObject).hasNext()) {
-            break label745;
-          }
-          mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject).next();
-          k = m;
-          if (localConfigInfo.state_id.get() == 5)
+          int m;
+          do
           {
-            if (localConfigInfo.state.get() != 1) {
+            j = i;
+            if (!paramGetEqqAccountDetailInfoResponse.hasNext()) {
               break;
             }
-            i = 1;
-            this.mShowMsgFlag = i;
-            k = 1;
-          }
-          i = j;
-          if (localConfigInfo.type.has())
-          {
-            i = j;
-            if (localConfigInfo.type.get() == 2)
-            {
-              i = j;
-              if (localConfigInfo.state_id.has())
-              {
-                i = j;
-                if (localConfigInfo.state_id.get() == 3)
-                {
-                  this.mIsSyncLbs = true;
-                  if (!localConfigInfo.state.has()) {}
-                }
-              }
-            }
-          }
-          switch (localConfigInfo.state.get())
-          {
-          default: 
-            if (QLog.isColorLevel()) {
-              QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localConfigInfo.state.get());
-            }
-            i = 1;
+            localObject1 = (mobileqq_mp.ConfigGroupInfo)paramGetEqqAccountDetailInfoResponse.next();
             j = i;
             m = k;
-          }
-        } while (k == 0);
-        j = i;
-        m = k;
-      } while (i == 0);
-      label644:
-      j = k;
-      label668:
-      if ((j == 0) || (i == 0)) {
-        break label742;
+            if (((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.has())
+            {
+              j = i;
+              m = k;
+              if (!((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.isEmpty())
+              {
+                localObject1 = ((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.get().iterator();
+                do
+                {
+                  do
+                  {
+                    j = i;
+                    m = k;
+                    if (!((Iterator)localObject1).hasNext()) {
+                      break;
+                    }
+                    localObject2 = (mobileqq_mp.ConfigInfo)((Iterator)localObject1).next();
+                    m = k;
+                    if (((mobileqq_mp.ConfigInfo)localObject2).state_id.get() == 5)
+                    {
+                      if (((mobileqq_mp.ConfigInfo)localObject2).state.get() == 1) {
+                        j = 1;
+                      } else {
+                        j = 0;
+                      }
+                      this.mShowMsgFlag = j;
+                      m = 1;
+                    }
+                    j = i;
+                    if (((mobileqq_mp.ConfigInfo)localObject2).type.has())
+                    {
+                      j = i;
+                      if (((mobileqq_mp.ConfigInfo)localObject2).type.get() == 2)
+                      {
+                        j = i;
+                        if (((mobileqq_mp.ConfigInfo)localObject2).state_id.has())
+                        {
+                          j = i;
+                          if (((mobileqq_mp.ConfigInfo)localObject2).state_id.get() == 3)
+                          {
+                            this.mIsSyncLbs = true;
+                            if (((mobileqq_mp.ConfigInfo)localObject2).state.has())
+                            {
+                              i = ((mobileqq_mp.ConfigInfo)localObject2).state.get();
+                              if (i != 0)
+                              {
+                                if (i != 1)
+                                {
+                                  if (i != 2)
+                                  {
+                                    if (QLog.isColorLevel())
+                                    {
+                                      StringBuilder localStringBuilder = new StringBuilder();
+                                      localStringBuilder.append("Error Eqq lbs state value: ");
+                                      localStringBuilder.append(((mobileqq_mp.ConfigInfo)localObject2).state.get());
+                                      QLog.e("EqqDetail", 2, localStringBuilder.toString());
+                                    }
+                                  }
+                                  else
+                                  {
+                                    this.mIsSyncLbsSelected = true;
+                                    this.mIsAgreeSyncLbs = false;
+                                  }
+                                }
+                                else
+                                {
+                                  this.mIsSyncLbsSelected = true;
+                                  this.mIsAgreeSyncLbs = true;
+                                }
+                              }
+                              else
+                              {
+                                this.mIsSyncLbsSelected = false;
+                                this.mIsAgreeSyncLbs = false;
+                              }
+                            }
+                            j = 1;
+                          }
+                        }
+                      }
+                    }
+                    i = j;
+                    k = m;
+                  } while (m == 0);
+                  i = j;
+                  k = m;
+                } while (j == 0);
+              }
+            }
+            i = j;
+            k = m;
+          } while (m == 0);
+          i = j;
+          k = m;
+        } while (j == 0);
+        break label794;
       }
     }
-    for (;;)
-    {
-      if (i == 0) {
-        this.mIsSyncLbs = false;
-      }
-      return;
-      l = 0L;
-      break;
-      i = 0;
-      break label491;
-      this.mIsSyncLbsSelected = false;
-      this.mIsAgreeSyncLbs = false;
-      i = 1;
-      break label644;
-      this.mIsSyncLbsSelected = true;
-      this.mIsAgreeSyncLbs = true;
-      i = 1;
-      break label644;
-      this.mIsSyncLbsSelected = true;
-      this.mIsAgreeSyncLbs = false;
-      i = 1;
-      break label644;
-      label742:
-      break label358;
-      label745:
-      i = n;
-      j = k;
-      break label668;
-      label754:
-      continue;
-      label757:
-      i = 0;
+    int j = 0;
+    label794:
+    if (j == 0) {
+      this.mIsSyncLbs = false;
     }
   }
   
@@ -225,15 +242,19 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    if (!ndv.a) {
+    boolean bool2 = CrmUtils.b;
+    boolean bool1 = false;
+    if (!bool2)
+    {
       if (QLog.isDevelopLevel()) {
         QLog.d("EqqDetail", 4, "Don't support sharp");
       }
-    }
-    while ((this.eqqAccountFlag & 0x400000) != 4194304L) {
       return false;
     }
-    return true;
+    if ((this.eqqAccountFlag & 0x400000) == 4194304L) {
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 

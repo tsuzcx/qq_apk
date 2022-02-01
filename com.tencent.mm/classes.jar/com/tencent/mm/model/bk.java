@@ -1,86 +1,59 @@
 package com.tencent.mm.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.at;
 
 public final class bk
-  extends m
-  implements k
 {
-  private f callback;
-  private final a fnh;
-  private final String fni;
-  private long fnj;
-  
-  public bk(a parama)
+  public static SharedPreferences bCE()
   {
-    this(parama, null);
-  }
-  
-  public bk(a parama, String paramString)
-  {
-    AppMethodBeat.i(58111);
-    ab.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, bo.dtY() });
-    this.fnh = parama;
-    this.fni = paramString;
-    AppMethodBeat.o(58111);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(58112);
-    prepareDispatcher(parame);
-    this.callback = paramf;
-    this.fnj = bo.yB();
-    g.RO().ac(new Runnable()
+    AppMethodBeat.i(132249);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("auth_info_key_prefs", g.aQe());
+    if (!localSharedPreferences.getBoolean("key_auth_info_prefs_created", false))
     {
-      public final void run()
+      f.Ozc.idkeyStat(148L, 12L, 1L, true);
+      Object localObject = new ap(at.acHq + "autoauth.cfg");
+      if ((!((ap)localObject).acGU) && (((ap)localObject).get(3) != null))
       {
-        AppMethodBeat.i(58109);
-        bk.this.onGYNetEnd(0, 0, 0, null, null, null);
-        AppMethodBeat.o(58109);
+        localEditor = localSharedPreferences.edit();
+        localEditor.putBoolean("key_auth_info_prefs_created", true);
+        localEditor.putInt("key_auth_update_version", ((Integer)((ap)localObject).get(1)).intValue());
+        localEditor.putInt("_auth_uin", ((Integer)((ap)localObject).get(2)).intValue());
+        localEditor.putString("_auth_key", (String)((ap)localObject).get(3));
+        localEditor.putString("server_id", (String)((ap)localObject).get(4));
+        Log.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! use autoauthcfg now commit[%b] create[%b], ver[%d], uin[%d], aak[%s], sid[%s]", new Object[] { Boolean.valueOf(localEditor.commit()), Boolean.valueOf(localSharedPreferences.getBoolean("key_auth_info_prefs_created", false)), Integer.valueOf(localSharedPreferences.getInt("key_auth_update_version", 0)), Integer.valueOf(localSharedPreferences.getInt("_auth_uin", 0)), localSharedPreferences.getString("_auth_key", ""), localSharedPreferences.getString("server_id", "") });
+        f.Ozc.idkeyStat(148L, 51L, 1L, true);
+        AppMethodBeat.o(132249);
+        return localSharedPreferences;
       }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(58110);
-        String str = super.toString() + "|doScene";
-        AppMethodBeat.o(58110);
-        return str;
+      localObject = MMApplicationContext.getContext().getSharedPreferences("auto_auth_key_prefs", g.aQe());
+      SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+      if (Util.isNullOrNil(((SharedPreferences)localObject).getString("_auth_key", ""))) {
+        break label525;
       }
-    });
-    AppMethodBeat.o(58112);
-    return 0;
-  }
-  
-  public final int getType()
-  {
-    return 0;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(58113);
-    if (this.fnh != null)
-    {
-      ab.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.fni, Long.valueOf(bo.av(this.fnj)) });
-      this.fnh.a(super.dispatcher());
+      localEditor.putBoolean("key_auth_info_prefs_created", true);
+      localEditor.putInt("key_auth_update_version", ((SharedPreferences)localObject).getInt("key_auth_update_version", 0));
+      localEditor.putInt("_auth_uin", ((SharedPreferences)localObject).getInt("_auth_uin", 0));
+      localEditor.putString("_auth_key", ((SharedPreferences)localObject).getString("_auth_key", ""));
+      localEditor.putString("server_id", MMApplicationContext.getContext().getSharedPreferences("server_id_prefs", g.aQe()).getString("server_id", ""));
+      Log.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! use oldAAKsp now commit[%b] create[%b], ver[%d], uin[%d], aak[%s], sid[%s]", new Object[] { Boolean.valueOf(localEditor.commit()), Boolean.valueOf(localSharedPreferences.getBoolean("key_auth_info_prefs_created", false)), Integer.valueOf(localSharedPreferences.getInt("key_auth_update_version", 0)), Integer.valueOf(localSharedPreferences.getInt("_auth_uin", 0)), localSharedPreferences.getString("_auth_key", ""), localSharedPreferences.getString("server_id", "") });
     }
-    this.callback.onSceneEnd(0, 0, null, this);
-    AppMethodBeat.o(58113);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(e parame);
+    for (;;)
+    {
+      AppMethodBeat.o(132249);
+      return localSharedPreferences;
+      label525:
+      Log.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! neither autoauthcfg nor oldAAKsp existed just install! stack[%s]", new Object[] { Util.getStack() });
+    }
   }
 }
 

@@ -16,11 +16,11 @@ import java.util.List;
 public final class c
   extends k
 {
-  private static String akk = null;
+  private static String anJ = null;
   
-  public static void E(Context paramContext)
+  public static void F(Context paramContext)
   {
-    String str = F(paramContext);
+    String str = G(paramContext);
     if (str == null) {}
     for (;;)
     {
@@ -40,23 +40,23 @@ public final class c
     }
   }
   
-  private static String F(Context paramContext)
+  private static String G(Context paramContext)
   {
-    if (akk != null) {
-      return akk;
+    if (anJ != null) {
+      return anJ;
     }
-    paramContext = a(paramContext, TinkerPatchService.nX());
+    paramContext = a(paramContext, TinkerPatchService.class);
     if (paramContext == null) {
       return null;
     }
-    akk = paramContext;
+    anJ = paramContext;
     return paramContext;
   }
   
-  public static boolean G(Context paramContext)
+  public static boolean H(Context paramContext)
   {
-    String str = T(paramContext);
-    paramContext = F(paramContext);
+    String str = V(paramContext);
+    paramContext = G(paramContext);
     if ((paramContext == null) || (paramContext.length() == 0)) {
       return false;
     }

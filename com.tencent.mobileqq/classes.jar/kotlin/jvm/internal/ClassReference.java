@@ -56,7 +56,7 @@ import org.jetbrains.annotations.Nullable;
 public final class ClassReference
   implements ClassBasedDeclarationContainer, KClass<Object>
 {
-  public static final ClassReference.Companion Companion;
+  public static final ClassReference.Companion Companion = new ClassReference.Companion(null);
   private static final Map<Class<? extends Function<?>>, Integer> FUNCTION_CLASSES;
   private static final HashMap<String, String> classFqNames;
   private static final HashMap<String, String> primitiveFqNames;
@@ -68,7 +68,6 @@ public final class ClassReference
   static
   {
     int i = 0;
-    Companion = new ClassReference.Companion(null);
     Object localObject2 = (Iterable)CollectionsKt.listOf(new Class[] { Function0.class, Function1.class, Function2.class, Function3.class, Function4.class, Function5.class, Function6.class, Function7.class, Function8.class, Function9.class, Function10.class, Function11.class, Function12.class, Function13.class, Function14.class, Function15.class, Function16.class, Function17.class, Function18.class, Function19.class, Function20.class, Function21.class, Function22.class });
     Object localObject1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
@@ -134,9 +133,16 @@ public final class ClassReference
       localObject4 = ((Iterator)localObject2).next();
       localObject3 = (Map)localObject1;
       localObject4 = (String)localObject4;
-      StringBuilder localStringBuilder = new StringBuilder().append("kotlin.jvm.internal.");
+      Object localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("kotlin.jvm.internal.");
       Intrinsics.checkExpressionValueIsNotNull(localObject4, "kotlinName");
-      localObject4 = TuplesKt.to(StringsKt.substringAfterLast$default((String)localObject4, '.', null, 2, null) + "CompanionObject", (String)localObject4 + ".Companion");
+      ((StringBuilder)localObject5).append(StringsKt.substringAfterLast$default((String)localObject4, '.', null, 2, null));
+      ((StringBuilder)localObject5).append("CompanionObject");
+      localObject5 = ((StringBuilder)localObject5).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject4);
+      localStringBuilder.append(".Companion");
+      localObject4 = TuplesKt.to(localObject5, localStringBuilder.toString());
       ((Map)localObject3).put(((Pair)localObject4).getFirst(), ((Pair)localObject4).getSecond());
     }
     localObject2 = (Map)localObject1;
@@ -146,7 +152,11 @@ public final class ClassReference
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
       localObject4 = (Class)((Map.Entry)localObject3).getKey();
       i = ((Number)((Map.Entry)localObject3).getValue()).intValue();
-      ((HashMap)localObject1).put(((Class)localObject4).getName(), "kotlin.Function" + i);
+      localObject3 = ((Class)localObject4).getName();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("kotlin.Function");
+      ((StringBuilder)localObject4).append(i);
+      ((HashMap)localObject1).put(localObject3, ((StringBuilder)localObject4).toString());
     }
     classFqNames = (HashMap)localObject1;
     localObject2 = (Map)classFqNames;
@@ -154,7 +164,7 @@ public final class ClassReference
     localObject2 = ((Iterable)((Map)localObject2).entrySet()).iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = ((Iterator)localObject2).next();
+      localObject3 = (Map.Entry)((Iterator)localObject2).next();
       ((Map)localObject1).put(((Map.Entry)localObject3).getKey(), StringsKt.substringAfterLast$default((String)((Map.Entry)localObject3).getValue(), '.', null, 2, null));
     }
     simpleNames = (Map)localObject1;
@@ -312,12 +322,15 @@ public final class ClassReference
   @NotNull
   public String toString()
   {
-    return getJClass().toString() + " (Kotlin reflection is not available)";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getJClass().toString());
+    localStringBuilder.append(" (Kotlin reflection is not available)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.ClassReference
  * JD-Core Version:    0.7.0.1
  */

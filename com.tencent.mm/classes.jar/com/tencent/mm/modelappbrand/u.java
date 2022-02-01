@@ -1,171 +1,188 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.af;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.autogen.mmdata.rpt.mn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class u
 {
-  private static Map<String, Long> fqa;
-  private static Map<String, Long> fqb;
-  private static Map<String, Long> fqc;
-  private static Map<String, Long> fqd;
-  private static Map<String, u.a> fqe;
+  private static Map<String, Long> opZ;
+  private static Map<String, Long> oqa;
+  private static Map<String, Long> oqb;
+  private static Map<String, Long> oqc;
+  private static Map<String, a> oqd;
   
   static
   {
-    AppMethodBeat.i(70641);
-    fqa = new HashMap();
-    fqb = new HashMap();
-    fqc = new HashMap();
-    fqd = new HashMap();
-    fqe = new HashMap();
-    AppMethodBeat.o(70641);
+    AppMethodBeat.i(76390);
+    opZ = new HashMap();
+    oqa = new HashMap();
+    oqb = new HashMap();
+    oqc = new HashMap();
+    oqd = new HashMap();
+    AppMethodBeat.o(76390);
   }
   
-  public static void C(String paramString, boolean paramBoolean)
+  public static void KN(String paramString)
   {
-    AppMethodBeat.i(70639);
-    ab.i("SearchWidgetStartTrace", "drawEnd %s,succ %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
+    AppMethodBeat.i(76378);
+    Object localObject = (a)oqd.get(paramString);
+    if (localObject != null)
     {
-      if (fqa.containsKey(paramString)) {}
-      for (long l = ((Long)fqa.get(paramString)).longValue(); l > 0L; l = 0L)
+      if (((a)localObject).oqg)
       {
-        System.currentTimeMillis();
-        AppMethodBeat.o(70639);
+        i("SearchWidgetStartTrace", "do not report draw succ agagin", new Object[0]);
+        AppMethodBeat.o(76378);
         return;
       }
-      ab.e("SearchWidgetStartTrace", "can't find widget Recv timestamp for appid %s", new Object[] { paramString });
+      ((a)localObject).oqg = true;
     }
-    AppMethodBeat.o(70639);
+    v.rG(20);
+    localObject = new mn().uY(KQ(paramString));
+    ((mn)localObject).iKD = KO(paramString);
+    ((mn)localObject).jbJ = 12L;
+    ((mn)localObject).jbL = 1L;
+    paramString = ((mn)localObject).uX(paramString);
+    paramString.jbK = System.currentTimeMillis();
+    paramString.uZ(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bMH();
+    AppMethodBeat.o(76378);
+  }
+  
+  public static int KO(String paramString)
+  {
+    AppMethodBeat.i(76380);
+    paramString = (a)oqd.get(paramString);
+    if (paramString != null)
+    {
+      int i = paramString.serviceType;
+      AppMethodBeat.o(76380);
+      return i;
+    }
+    AppMethodBeat.o(76380);
+    return 0;
+  }
+  
+  public static boolean KP(String paramString)
+  {
+    AppMethodBeat.i(76381);
+    boolean bool = oqd.containsKey(paramString);
+    AppMethodBeat.o(76381);
+    return bool;
+  }
+  
+  public static String KQ(String paramString)
+  {
+    AppMethodBeat.i(76382);
+    a locala = (a)oqd.get(paramString);
+    if (locala != null)
+    {
+      paramString = locala.oqe;
+      AppMethodBeat.o(76382);
+      return paramString;
+    }
+    AppMethodBeat.o(76382);
+    return paramString;
+  }
+  
+  public static int KR(String paramString)
+  {
+    AppMethodBeat.i(76383);
+    paramString = (a)oqd.get(paramString);
+    if (paramString != null)
+    {
+      int i = paramString.oqf;
+      AppMethodBeat.o(76383);
+      return i;
+    }
+    AppMethodBeat.o(76383);
+    return 0;
+  }
+  
+  public static void KS(String paramString)
+  {
+    AppMethodBeat.i(76387);
+    Log.i("SearchWidgetStartTrace", "realInsert %s", new Object[] { paramString });
+    AppMethodBeat.o(76387);
+  }
+  
+  public static void P(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(76388);
+    Log.i("SearchWidgetStartTrace", "drawEnd %s,succ %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      if (opZ.containsKey(paramString)) {}
+      for (long l = ((Long)opZ.get(paramString)).longValue(); l > 0L; l = 0L)
+      {
+        System.currentTimeMillis();
+        AppMethodBeat.o(76388);
+        return;
+      }
+      Log.e("SearchWidgetStartTrace", "can't find widget Recv timestamp for appid %s", new Object[] { paramString });
+    }
+    AppMethodBeat.o(76388);
   }
   
   public static void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
-    AppMethodBeat.i(70631);
-    u.a locala2 = (u.a)fqe.get(paramString1);
-    u.a locala1 = locala2;
+    AppMethodBeat.i(76379);
+    a locala2 = (a)oqd.get(paramString1);
+    a locala1 = locala2;
     if (locala2 == null) {
-      locala1 = new u.a();
+      locala1 = new a();
     }
-    locala1.cwc = paramString2;
-    locala1.fmF = paramInt1;
-    locala1.fqg = paramInt2;
-    locala1.fqf = paramString3;
-    fqe.put(paramString1, locala1);
-    AppMethodBeat.o(70631);
+    locala1.appid = paramString2;
+    locala1.serviceType = paramInt1;
+    locala1.oqf = paramInt2;
+    locala1.oqe = paramString3;
+    oqd.put(paramString1, locala1);
+    AppMethodBeat.o(76379);
   }
   
-  public static void acx()
+  public static void bES()
   {
-    AppMethodBeat.i(70640);
-    ab.i("SearchWidgetStartTrace", "hasInitData %s", new Object[] { Boolean.TRUE });
-    AppMethodBeat.o(70640);
+    AppMethodBeat.i(76389);
+    Log.i("SearchWidgetStartTrace", "hasInitData %s", new Object[] { Boolean.TRUE });
+    AppMethodBeat.o(76389);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(70637);
-    ab.e("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
-    AppMethodBeat.o(70637);
+    AppMethodBeat.i(76386);
+    Log.e("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    AppMethodBeat.o(76386);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(70636);
-    ab.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
-    AppMethodBeat.o(70636);
-  }
-  
-  public static void ql(String paramString)
-  {
-    AppMethodBeat.i(70630);
-    Object localObject = (u.a)fqe.get(paramString);
-    if (localObject != null)
-    {
-      if (((u.a)localObject).fqh)
-      {
-        i("SearchWidgetStartTrace", "do not report draw succ agagin", new Object[0]);
-        AppMethodBeat.o(70630);
-        return;
-      }
-      ((u.a)localObject).fqh = true;
-    }
-    v.kS(20);
-    localObject = new af().fB(qn(paramString));
-    ((af)localObject).cUl = qm(paramString);
-    ((af)localObject).cUh = 12L;
-    ((af)localObject).cUj = 1L;
-    paramString = ((af)localObject).fA(paramString);
-    paramString.cUi = System.currentTimeMillis();
-    paramString.fC(at.gU(ah.getContext())).ake();
-    AppMethodBeat.o(70630);
-  }
-  
-  public static int qm(String paramString)
-  {
-    AppMethodBeat.i(70632);
-    paramString = (u.a)fqe.get(paramString);
-    if (paramString != null)
-    {
-      int i = paramString.fmF;
-      AppMethodBeat.o(70632);
-      return i;
-    }
-    AppMethodBeat.o(70632);
-    return 0;
-  }
-  
-  public static String qn(String paramString)
-  {
-    AppMethodBeat.i(70633);
-    u.a locala = (u.a)fqe.get(paramString);
-    if (locala != null)
-    {
-      paramString = locala.fqf;
-      AppMethodBeat.o(70633);
-      return paramString;
-    }
-    AppMethodBeat.o(70633);
-    return paramString;
-  }
-  
-  public static int qo(String paramString)
-  {
-    AppMethodBeat.i(70634);
-    paramString = (u.a)fqe.get(paramString);
-    if (paramString != null)
-    {
-      int i = paramString.fqg;
-      AppMethodBeat.o(70634);
-      return i;
-    }
-    AppMethodBeat.o(70634);
-    return 0;
-  }
-  
-  public static void qp(String paramString)
-  {
-    AppMethodBeat.i(70638);
-    ab.i("SearchWidgetStartTrace", "realInsert %s", new Object[] { paramString });
-    AppMethodBeat.o(70638);
+    AppMethodBeat.i(76385);
+    Log.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    AppMethodBeat.o(76385);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(70635);
-    ab.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
-    AppMethodBeat.o(70635);
+    AppMethodBeat.i(76384);
+    Log.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    AppMethodBeat.o(76384);
+  }
+  
+  public static final class a
+  {
+    public String appid;
+    public String oqe;
+    public int oqf;
+    public boolean oqg;
+    public int serviceType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.u
  * JD-Core Version:    0.7.0.1
  */

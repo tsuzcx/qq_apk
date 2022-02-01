@@ -1,26 +1,26 @@
 package com.tencent.biz.troopgift;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import ywr;
 
 public abstract class absMultiViewPager
   extends ViewPager
   implements AdapterView.OnItemClickListener
 {
-  protected ViewPager.OnPageChangeListener a;
-  protected AdapterView.OnItemClickListener a;
-  protected absMultiViewPager.ViewPagerAdapter a;
-  protected ArrayList<Object> a;
-  protected ywr a;
-  protected ArrayList<View> b = new ArrayList();
-  protected int d;
+  protected ArrayList<Object> f = new ArrayList();
+  protected ArrayList<View> g = new ArrayList();
+  protected absMultiViewPager.ViewPagerAdapter h;
+  protected AdapterView.OnItemClickListener i;
+  protected int j;
+  protected absMultiViewPager.OnPagerSizeChangeListener k;
+  protected ViewPager.OnPageChangeListener l;
   
   public absMultiViewPager(Context paramContext)
   {
@@ -30,90 +30,106 @@ public abstract class absMultiViewPager
   public absMultiViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public static ArrayList<Object> a(ArrayList<Object> paramArrayList, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 > paramArrayList.size()) || (paramInt2 > paramArrayList.size())) {
-      throw new IndexOutOfBoundsException("subArrayList exception, start or end is large than src list size. src size:" + paramArrayList.size() + ", start:" + paramInt1 + ", end:" + paramInt2);
-    }
-    ArrayList localArrayList = new ArrayList();
-    while (paramInt1 < paramInt2)
+    if ((paramInt1 <= paramArrayList.size()) && (paramInt2 <= paramArrayList.size()))
     {
-      localArrayList.add(paramArrayList.get(paramInt1));
-      paramInt1 += 1;
+      localObject = new ArrayList();
+      while (paramInt1 < paramInt2)
+      {
+        ((ArrayList)localObject).add(paramArrayList.get(paramInt1));
+        paramInt1 += 1;
+      }
+      return localObject;
     }
-    return localArrayList;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("subArrayList exception, start or end is large than src list size. src size:");
+    ((StringBuilder)localObject).append(paramArrayList.size());
+    ((StringBuilder)localObject).append(", start:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", end:");
+    ((StringBuilder)localObject).append(paramInt2);
+    paramArrayList = new IndexOutOfBoundsException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramArrayList;
+    }
   }
-  
-  public abstract int a();
-  
-  public abstract View a(int paramInt);
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ywr != null) {
-      this.jdField_a_of_type_Ywr.a(paramInt1, paramInt2, getCurrentItem());
+    absMultiViewPager.OnPagerSizeChangeListener localOnPagerSizeChangeListener = this.k;
+    if (localOnPagerSizeChangeListener != null) {
+      localOnPagerSizeChangeListener.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
+  
+  public abstract View b(int paramInt);
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter = new absMultiViewPager.ViewPagerAdapter();
-    setAdapter(this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter);
-    this.b.clear();
-    int j = a();
-    if (this.d != j)
+    this.h = new absMultiViewPager.ViewPagerAdapter();
+    setAdapter(this.h);
+    this.g.clear();
+    int n = getViewPagerCount();
+    int m = this.j;
+    if (m != n)
     {
-      a(this.d, j);
-      this.d = j;
+      a(m, n);
+      this.j = n;
     }
-    int i = 0;
-    while (i < j)
+    m = 0;
+    while (m < n)
     {
-      this.b.add(a(i));
-      i += 1;
+      this.g.add(b(m));
+      m += 1;
     }
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter.a(this.b);
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter.notifyDataSetChanged();
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(0);
+    this.h.a(this.g);
+    this.h.notifyDataSetChanged();
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.l;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageSelected(0);
     }
   }
   
+  public abstract int getViewPagerCount();
+  
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener != null) {
-      this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    AdapterView.OnItemClickListener localOnItemClickListener = this.i;
+    if (localOnItemClickListener != null) {
+      localOnItemClickListener.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
   
   public void setData(ArrayList<Object> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.f = paramArrayList;
     b();
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.i = paramOnItemClickListener;
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.l = paramOnPageChangeListener;
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(ywr paramywr)
+  public void setOnPagerSizeChangeListener(absMultiViewPager.OnPagerSizeChangeListener paramOnPagerSizeChangeListener)
   {
-    this.jdField_a_of_type_Ywr = paramywr;
+    this.k = paramOnPagerSizeChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.absMultiViewPager
  * JD-Core Version:    0.7.0.1
  */

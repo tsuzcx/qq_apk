@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.events;
 
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class QCirclePushAnimationEvent
   extends SimpleBaseEvent
@@ -23,7 +23,7 @@ public class QCirclePushAnimationEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.events.QCirclePushAnimationEvent
  * JD-Core Version:    0.7.0.1
  */

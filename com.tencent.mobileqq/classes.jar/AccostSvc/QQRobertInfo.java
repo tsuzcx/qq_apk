@@ -27,14 +27,15 @@ public final class QQRobertInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.nickname, 0);
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 1);
+    String str = this.actionUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.QQRobertInfo
  * JD-Core Version:    0.7.0.1
  */

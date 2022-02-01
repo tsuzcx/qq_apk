@@ -1,0 +1,65 @@
+package com.tencent.luggage.wxa.jc;
+
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import java.util.Objects;
+
+public class m
+  extends a
+{
+  public static final Parcelable.Creator<m> CREATOR = new m.1();
+  public float b;
+  public float c;
+  
+  public m() {}
+  
+  public m(Parcel paramParcel)
+  {
+    super(paramParcel);
+  }
+  
+  public void a(Parcel paramParcel)
+  {
+    super.a(paramParcel);
+    this.b = paramParcel.readFloat();
+    this.c = paramParcel.readFloat();
+  }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (!(paramObject instanceof m)) {
+      return false;
+    }
+    if (!super.equals(paramObject)) {
+      return false;
+    }
+    paramObject = (m)paramObject;
+    return (Float.compare(paramObject.b, this.b) == 0) && (Float.compare(paramObject.c, this.c) == 0);
+  }
+  
+  public int hashCode()
+  {
+    return Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.b), Float.valueOf(this.c) });
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    super.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeFloat(this.b);
+    paramParcel.writeFloat(this.c);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.jc.m
+ * JD-Core Version:    0.7.0.1
+ */

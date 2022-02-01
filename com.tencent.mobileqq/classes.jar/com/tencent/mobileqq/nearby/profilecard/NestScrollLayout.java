@@ -2,7 +2,6 @@ package com.tencent.mobileqq.nearby.profilecard;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -11,30 +10,32 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import avpt;
+import androidx.viewpager.widget.ViewPager;
+import com.tencent.mobileqq.nearby.profilecard.api.INestScrollHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NestScrollLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private avpt jdField_a_of_type_Avpt;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
+  private VelocityTracker a;
+  private int b;
+  private int c = 0;
+  private int d;
   private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  private float f;
+  private float g;
+  private float h;
+  private boolean i = false;
+  private float j = 0.0F;
+  private View k;
+  private int l;
+  private int m = 0;
+  private int n = 0;
+  private int o;
+  private int p;
+  private Scroller q;
+  private INestScrollHelper r;
   
   public NestScrollLayout(Context paramContext)
   {
@@ -49,19 +50,14 @@ public class NestScrollLayout
   public NestScrollLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131298914) + ImmersiveUtils.getStatusBarHeight(paramContext);
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_Avpt = new avpt();
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131299920) + ImmersiveUtils.getStatusBarHeight(paramContext);
+    this.c = paramInt;
+    this.c = paramInt;
+    this.q = new Scroller(paramContext);
+    this.r = ((INestScrollHelper)QRoute.api(INestScrollHelper.class));
     paramContext = ViewConfiguration.get(paramContext);
-    this.jdField_c_of_type_Int = paramContext.getScaledTouchSlop();
-    this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
-  }
-  
-  private int a()
-  {
-    return (int)this.jdField_a_of_type_AndroidWidgetScroller.getCurrVelocity();
+    this.d = paramContext.getScaledTouchSlop();
+    this.e = paramContext.getScaledMaximumFlingVelocity();
   }
   
   private int a(int paramInt1, int paramInt2)
@@ -71,64 +67,66 @@ public class NestScrollLayout
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+    VelocityTracker localVelocityTracker = this.a;
+    if (localVelocityTracker != null)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      localVelocityTracker.recycle();
+      this.a = null;
     }
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.a == null) {
+      this.a = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.a.addMovement(paramMotionEvent);
   }
   
-  private boolean a()
+  private boolean b()
   {
-    return this.h == this.f;
+    return this.o == this.m;
+  }
+  
+  private int getScrollerVelocity()
+  {
+    return (int)this.q.getCurrVelocity();
   }
   
   public void computeScroll()
   {
-    int j;
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.q.computeScrollOffset())
     {
-      j = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-      if (this.jdField_a_of_type_Int != 1) {
-        break label99;
-      }
-      if (a())
+      int i1 = this.q.getCurrY();
+      int i2;
+      if (this.b == 1)
       {
-        int k = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY();
-        int m = a(this.jdField_a_of_type_AndroidWidgetScroller.getDuration(), this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
-        this.jdField_a_of_type_Avpt.a(a(), k - j, m);
-        this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-      }
-    }
-    else
-    {
-      return;
-    }
-    scrollTo(0, j);
-    invalidate();
-    for (;;)
-    {
-      this.i = j;
-      return;
-      label99:
-      if (this.jdField_a_of_type_Avpt.a())
-      {
-        scrollTo(0, j - this.i + getScrollY());
-        if (this.h <= this.g)
+        if (b())
         {
-          this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+          i2 = this.q.getFinalY();
+          int i3 = a(this.q.getDuration(), this.q.timePassed());
+          this.r.smoothScrollBy(getScrollerVelocity(), i2 - i1, i3);
+          this.q.abortAnimation();
           return;
         }
+        scrollTo(0, i1);
+        invalidate();
       }
-      invalidate();
+      else
+      {
+        if (this.r.isTop())
+        {
+          i2 = this.p;
+          scrollTo(0, getScrollY() + (i1 - i2));
+          if (this.o <= this.n)
+          {
+            this.q.abortAnimation();
+            return;
+          }
+        }
+        invalidate();
+      }
+      this.p = i1;
     }
   }
   
@@ -136,138 +134,157 @@ public class NestScrollLayout
   {
     float f3 = paramMotionEvent.getX();
     float f4 = paramMotionEvent.getY();
-    float f1 = Math.abs(f3 - this.jdField_a_of_type_Float);
-    float f2 = Math.abs(f4 - this.jdField_b_of_type_Float);
+    float f1 = Math.abs(f3 - this.f);
+    float f2 = Math.abs(f4 - this.g);
     a(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
+    int i2 = paramMotionEvent.getAction();
+    if (i2 != 0)
     {
-    }
-    for (;;)
-    {
-      super.dispatchTouchEvent(paramMotionEvent);
-      return true;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Float = f3;
-      this.jdField_b_of_type_Float = f4;
-      this.jdField_c_of_type_Float = f4;
-      this.jdField_d_of_type_Float = 0.0F;
-      this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-      continue;
-      this.jdField_d_of_type_Float = (this.jdField_c_of_type_Float - f4);
-      this.jdField_c_of_type_Float = f4;
-      if ((f1 > this.jdField_c_of_type_Int) && (f1 > 2.0F * f2)) {}
+      int i1 = 2;
       boolean bool;
-      for (this.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Boolean = true) {
-        do
-        {
-          bool = a();
-          if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && ((!this.jdField_a_of_type_Avpt.a()) || (this.jdField_d_of_type_Float >= 0.0F)))) {
-            break;
-          }
-          scrollBy(0, (int)(this.jdField_d_of_type_Float + 0.5D));
-          invalidate();
-          return true;
-        } while ((f2 <= this.jdField_c_of_type_Int) || (f2 <= f1));
-      }
-      if (this.jdField_a_of_type_Boolean)
+      if (i2 != 1)
       {
-        if ((this.jdField_d_of_type_Float < 0.0F) || (!a()))
+        if (i2 != 2)
         {
-          this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
-          f3 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity();
-          if (f3 <= 0.0F) {
-            break label401;
+          if (i2 == 3) {
+            a();
           }
         }
-        label401:
-        for (int j = 2;; j = 1)
+        else
         {
-          this.jdField_a_of_type_Int = j;
-          this.jdField_a_of_type_AndroidWidgetScroller.fling(0, getScrollY(), 0, -(int)f3, 0, 0, -2147483647, 2147483647);
-          this.i = getScrollY();
-          invalidate();
-          if (((f1 <= this.jdField_c_of_type_Int) && (f2 <= this.jdField_c_of_type_Int)) || (a())) {
-            break;
+          this.j = (this.h - f4);
+          this.h = f4;
+          if ((f1 > this.d) && (f1 > 2.0F * f2)) {
+            this.i = false;
+          } else if ((f2 > this.d) && (f2 > f1)) {
+            this.i = true;
           }
-          j = paramMotionEvent.getAction();
-          paramMotionEvent.setAction(3);
-          bool = super.dispatchTouchEvent(paramMotionEvent);
-          paramMotionEvent.setAction(j);
-          return bool;
+          bool = b();
+          if ((this.i) && (((this.j > 0.0F) && (!bool)) || ((this.r.isTop()) && (this.j < 0.0F))))
+          {
+            double d1 = this.j;
+            Double.isNaN(d1);
+            scrollBy(0, (int)(d1 + 0.5D));
+            invalidate();
+            return true;
+          }
         }
       }
-      a();
-      continue;
-      a();
+      else
+      {
+        if (this.i)
+        {
+          if ((this.j < 0.0F) || (!b()))
+          {
+            this.a.computeCurrentVelocity(1000, this.e);
+            f3 = this.a.getYVelocity();
+            if (f3 <= 0.0F) {
+              i1 = 1;
+            }
+            this.b = i1;
+            this.q.fling(0, getScrollY(), 0, -(int)f3, 0, 0, -2147483647, 2147483647);
+            this.p = getScrollY();
+            invalidate();
+          }
+          i1 = this.d;
+          if (((f1 > i1) || (f2 > i1)) && (!b()))
+          {
+            i1 = paramMotionEvent.getAction();
+            paramMotionEvent.setAction(3);
+            bool = super.dispatchTouchEvent(paramMotionEvent);
+            paramMotionEvent.setAction(i1);
+            return bool;
+          }
+        }
+        a();
+      }
     }
+    else
+    {
+      this.i = false;
+      this.f = f3;
+      this.g = f4;
+      this.h = f4;
+      this.j = 0.0F;
+      this.q.abortAnimation();
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_AndroidViewView.isClickable())) {
-      this.jdField_a_of_type_AndroidViewView.setClickable(true);
+    View localView = this.k;
+    if ((localView != null) && (!localView.isClickable())) {
+      this.k.setClickable(true);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = getChildAt(0);
-    measureChildWithMargins(this.jdField_a_of_type_AndroidViewView, paramInt1, 0, 0, 0);
-    this.e = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    this.f = (this.e - this.jdField_b_of_type_Int);
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt2) + this.f, 1073741824));
+    this.k = getChildAt(0);
+    measureChildWithMargins(this.k, paramInt1, 0, 0, 0);
+    this.l = this.k.getMeasuredHeight();
+    this.m = (this.l - this.c);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt2) + this.m, 1073741824));
   }
   
   public void scrollBy(int paramInt1, int paramInt2)
   {
-    int k = getScrollY();
-    int j = k + paramInt2;
-    if (j >= this.f) {
-      paramInt2 = this.f;
-    }
-    for (;;)
+    int i2 = getScrollY();
+    paramInt2 += i2;
+    int i1 = this.m;
+    if (paramInt2 >= i1)
     {
-      super.scrollBy(paramInt1, paramInt2 - k);
-      return;
-      paramInt2 = j;
-      if (j <= this.g) {
-        paramInt2 = this.g;
+      paramInt2 = i1;
+    }
+    else
+    {
+      i1 = this.n;
+      if (paramInt2 <= i1) {
+        paramInt2 = i1;
       }
     }
+    super.scrollBy(paramInt1, paramInt2 - i2);
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    int j;
-    if (paramInt2 >= this.f) {
-      j = this.f;
-    }
-    for (;;)
+    int i1 = this.m;
+    if (paramInt2 >= i1)
     {
-      this.h = j;
-      super.scrollTo(paramInt1, j);
-      return;
-      j = paramInt2;
-      if (paramInt2 <= this.g) {
-        j = this.g;
+      paramInt2 = i1;
+    }
+    else
+    {
+      i1 = this.n;
+      if (paramInt2 <= i1) {
+        paramInt2 = i1;
       }
     }
+    this.o = paramInt2;
+    super.scrollTo(paramInt1, paramInt2);
   }
   
   public void setPosition(int paramInt)
   {
-    this.jdField_a_of_type_Avpt.a(paramInt);
+    this.r.setPosition(paramInt);
+  }
+  
+  public void setTopOffset(int paramInt)
+  {
+    this.c = paramInt;
+    invalidate();
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_Avpt.a(paramViewPager);
+    this.r.setViewPager(paramViewPager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NestScrollLayout
  * JD-Core Version:    0.7.0.1
  */

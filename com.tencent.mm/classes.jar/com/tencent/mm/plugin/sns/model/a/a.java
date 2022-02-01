@@ -2,109 +2,120 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.e;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ao;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.plugin.sns.data.p;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.as;
+import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.br;
 
 public final class a
 {
-  public String cBO = "";
-  public String cqq = "";
-  public String czw;
-  public e rbc = null;
-  public SparseArray<e> rbd;
-  public String rbk = "";
-  public String rbl = "";
-  public SparseArray<bcs> rbn;
-  public String reC = "";
-  public String reG = "";
-  public bcs reH;
-  public boolean rjA = false;
-  public boolean rjB = false;
-  public int rjC = 0;
-  public az rjD;
-  public float rjE = 0.0F;
+  public p QmT = null;
+  public SparseArray<p> QmU;
+  public String QnZ = "";
+  public String Qoa = "";
+  public SparseArray<dmz> Qoc;
+  public String Qsm = "";
+  public String Qsq = "";
+  public dmz Qsr;
+  public boolean QzL = false;
+  public boolean QzM = false;
+  public int QzN = 0;
+  public br QzO;
+  public float QzP = 0.0F;
+  public String aesKey;
+  public String authKey;
+  public String hQX;
+  public String md5 = "";
+  public String mediaId = "";
+  public int mediaType = 0;
   public int size;
   public String url = "";
   
   public a(String paramString)
   {
-    this.cBO = paramString;
+    this.mediaId = paramString;
   }
   
-  public a(String paramString, SparseArray<bcs> paramSparseArray, SparseArray<e> paramSparseArray1, int paramInt)
+  public a(String paramString, SparseArray<dmz> paramSparseArray, SparseArray<p> paramSparseArray1, int paramInt)
   {
-    this.czw = paramString;
-    this.rbn = paramSparseArray;
-    this.rbd = paramSparseArray1;
+    this.hQX = paramString;
+    this.Qoc = paramSparseArray;
+    this.QmU = paramSparseArray1;
     this.size = paramInt;
-  }
-  
-  public final String cpP()
-  {
-    AppMethodBeat.i(36743);
-    if (this.rjC == 4)
-    {
-      str = i.p(this.reH);
-      AppMethodBeat.o(36743);
-      return str;
-    }
-    if (this.rjC == 6)
-    {
-      str = i.q(this.reH);
-      AppMethodBeat.o(36743);
-      return str;
-    }
-    if (this.rjA)
-    {
-      str = i.n(this.reH);
-      AppMethodBeat.o(36743);
-      return str;
-    }
-    String str = i.m(this.reH);
-    AppMethodBeat.o(36743);
-    return str;
   }
   
   public final String getPath()
   {
-    AppMethodBeat.i(36744);
-    if (!bo.isNullOrNil(this.rbk))
+    AppMethodBeat.i(96065);
+    if (!Util.isNullOrNil(this.QnZ))
     {
-      str = this.rbk;
-      AppMethodBeat.o(36744);
+      str = this.QnZ;
+      AppMethodBeat.o(96065);
       return str;
     }
-    if (bo.isNullOrNil(this.reC)) {
+    if (Util.isNullOrNil(this.Qsm)) {
       init();
     }
-    String str = this.reC;
-    AppMethodBeat.o(36744);
+    String str = this.Qsm;
+    AppMethodBeat.o(96065);
     return str;
   }
   
-  public final a gr(String paramString1, String paramString2)
+  public final String hhG()
   {
-    this.rbk = paramString1;
-    this.rbl = paramString2;
-    return this;
+    AppMethodBeat.i(96064);
+    if (this.QzN == 4)
+    {
+      if ((!Util.isNullOrNil(this.mediaId)) && (this.mediaId.contains("SlideFullCardAd_")))
+      {
+        Log.i("ParamsToLocalId", "preload, mediaId = " + this.mediaId);
+        str = t.p(this.Qsr);
+        AppMethodBeat.o(96064);
+        return str;
+      }
+      str = t.o(this.Qsr);
+      AppMethodBeat.o(96064);
+      return str;
+    }
+    if (this.QzN == 6)
+    {
+      str = t.q(this.Qsr);
+      AppMethodBeat.o(96064);
+      return str;
+    }
+    if (this.QzL)
+    {
+      str = t.m(this.Qsr);
+      AppMethodBeat.o(96064);
+      return str;
+    }
+    String str = t.l(this.Qsr);
+    AppMethodBeat.o(96064);
+    return str;
   }
   
   public final boolean init()
   {
-    AppMethodBeat.i(36742);
-    this.reC = ao.gl(ag.getAccSnsPath(), this.cBO);
-    AppMethodBeat.o(36742);
+    AppMethodBeat.i(96063);
+    this.Qsm = as.mg(al.getAccSnsPath(), this.mediaId);
+    AppMethodBeat.o(96063);
     return true;
+  }
+  
+  public final a mp(String paramString1, String paramString2)
+  {
+    this.QnZ = paramString1;
+    this.Qoa = paramString2;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.a.a
  * JD-Core Version:    0.7.0.1
  */

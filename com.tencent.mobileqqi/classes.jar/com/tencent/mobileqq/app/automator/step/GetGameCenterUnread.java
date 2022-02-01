@@ -4,12 +4,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.servlet.GameCenterManagerImp;
-import fhz;
+import fhy;
 
 public class GetGameCenterUnread
   extends AsyncStep
 {
-  private fhz a;
+  private fhy a;
   
   public GetGameCenterUnread(Automator paramAutomator, int paramInt)
   {
@@ -22,10 +22,10 @@ public class GetGameCenterUnread
     GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getManager(11);
     if (localGameCenterManagerImp != null)
     {
-      if (this.jdField_a_of_type_Fhz == null)
+      if (this.jdField_a_of_type_Fhy == null)
       {
-        this.jdField_a_of_type_Fhz = new fhz(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.registObserver(this.jdField_a_of_type_Fhz);
+        this.jdField_a_of_type_Fhy = new fhy(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.registObserver(this.jdField_a_of_type_Fhy);
       }
       localGameCenterManagerImp.b();
       return 2;
@@ -35,10 +35,10 @@ public class GetGameCenterUnread
   
   public void b()
   {
-    if (this.jdField_a_of_type_Fhz != null)
+    if (this.jdField_a_of_type_Fhy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.unRegistObserver(this.jdField_a_of_type_Fhz);
-      this.jdField_a_of_type_Fhz = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.unRegistObserver(this.jdField_a_of_type_Fhy);
+      this.jdField_a_of_type_Fhy = null;
     }
   }
 }

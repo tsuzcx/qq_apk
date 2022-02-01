@@ -1,37 +1,41 @@
 package com.tencent.gdtad.aditem;
 
-import aana;
-import aanb;
-import aase;
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class GdtPreLoader$1
+class GdtPreLoader$1
   implements Runnable
 {
-  public GdtPreLoader$1(aana paramaana, GdtAd paramGdtAd) {}
+  GdtPreLoader$1(GdtPreLoader paramGdtPreLoader, GdtAd paramGdtAd) {}
   
   public void run()
   {
-    if ((this.a == null) || (!this.a.isValid())) {
-      aase.d("GdtPreLoader", "preLoadAfterAdLoaded error");
-    }
-    do
+    GdtAd localGdtAd = this.a;
+    if ((localGdtAd != null) && (localGdtAd.isValid()))
     {
-      do
-      {
+      GdtLog.b("GdtPreLoader", "preLoadAfterAdLoaded");
+      if (!this.a.isQQMINIProgram()) {
         return;
-        aase.b("GdtPreLoader", "preLoadAfterAdLoaded");
-      } while (!this.a.isQQMINIProgram());
-      aase.b("GdtPreLoader", String.format("canPreloadForQQMINIProgram %b", new Object[] { Boolean.valueOf(this.a.canPreloadForQQMINIProgram()) }));
-    } while ((!this.a.canPreloadForQQMINIProgram()) || (TextUtils.isEmpty(this.a.getUrlForLandingPage())));
-    aase.b("GdtPreLoader", "MiniAppPrePullManager.getInstance().prePullAppinfoByLink start");
-    MiniAppPrePullManager.getInstance().prePullAppinfoByLink(this.a.getUrlForLandingPage(), false, new aanb(this));
+      }
+      GdtLog.b("GdtPreLoader", String.format("canPreloadForQQMINIProgram %b", new Object[] { Boolean.valueOf(this.a.canPreloadForQQMINIProgram()) }));
+      if (!this.a.canPreloadForQQMINIProgram()) {
+        return;
+      }
+      if (TextUtils.isEmpty(this.a.getUrlForLandingPage())) {
+        return;
+      }
+      GdtLog.b("GdtPreLoader", "MiniAppPrePullManager.getInstance().prePullAppinfoByLink start");
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).prePullAppinfoByLink(this.a.getUrlForLandingPage(), false, new GdtPreLoader.1.1(this));
+      return;
+    }
+    GdtLog.d("GdtPreLoader", "preLoadAfterAdLoaded error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtPreLoader.1
  * JD-Core Version:    0.7.0.1
  */

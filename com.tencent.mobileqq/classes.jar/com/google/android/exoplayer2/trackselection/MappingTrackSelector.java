@@ -23,58 +23,53 @@ public abstract class MappingTrackSelector
   {
     boolean[] arrayOfBoolean = new boolean[paramArrayOfTrackSelection.length];
     int i = 0;
-    if (i < arrayOfBoolean.length)
+    while (i < arrayOfBoolean.length)
     {
-      if ((!this.rendererDisabledFlags.get(i)) && ((paramArrayOfRendererCapabilities[i].getTrackType() == 5) || (paramArrayOfTrackSelection[i] != null))) {}
-      for (int j = 1;; j = 0)
-      {
-        arrayOfBoolean[i] = j;
-        i += 1;
-        break;
+      int j;
+      if ((!this.rendererDisabledFlags.get(i)) && ((paramArrayOfRendererCapabilities[i].getTrackType() == 5) || (paramArrayOfTrackSelection[i] != null))) {
+        j = 1;
+      } else {
+        j = 0;
       }
+      arrayOfBoolean[i] = j;
+      i += 1;
     }
     return arrayOfBoolean;
   }
   
   private static int findRenderer(RendererCapabilities[] paramArrayOfRendererCapabilities, TrackGroup paramTrackGroup)
   {
-    int k = paramArrayOfRendererCapabilities.length;
-    int j = 0;
+    int j = paramArrayOfRendererCapabilities.length;
     int i = 0;
     int m;
-    label22:
-    int n;
-    if (i < paramArrayOfRendererCapabilities.length)
+    for (int k = 0; i < paramArrayOfRendererCapabilities.length; k = m)
     {
       RendererCapabilities localRendererCapabilities = paramArrayOfRendererCapabilities[i];
-      m = 0;
-      if (m < paramTrackGroup.length)
-      {
-        n = localRendererCapabilities.supportsFormat(paramTrackGroup.getFormat(m)) & 0x7;
-        if (n <= j) {
-          break label102;
-        }
-        if (n == 4) {
-          return i;
-        }
-        k = n;
-      }
-    }
-    for (j = i;; j = n)
-    {
-      n = m + 1;
       m = j;
+      int n = 0;
       j = k;
       k = m;
       m = n;
-      break label22;
+      while (m < paramTrackGroup.length)
+      {
+        int i1 = localRendererCapabilities.supportsFormat(paramTrackGroup.getFormat(m)) & 0x7;
+        n = j;
+        if (i1 > j)
+        {
+          if (i1 == 4) {
+            return i;
+          }
+          k = i;
+          n = i1;
+        }
+        m += 1;
+        j = n;
+      }
       i += 1;
-      break;
-      return k;
-      label102:
-      n = k;
-      k = j;
+      m = j;
+      j = k;
     }
+    return j;
   }
   
   private static int[] getFormatSupport(RendererCapabilities paramRendererCapabilities, TrackGroup paramTrackGroup)
@@ -103,16 +98,14 @@ public abstract class MappingTrackSelector
   
   private static void maybeConfigureRenderersForTunneling(RendererCapabilities[] paramArrayOfRendererCapabilities, TrackGroupArray[] paramArrayOfTrackGroupArray, int[][][] paramArrayOfInt, RendererConfiguration[] paramArrayOfRendererConfiguration, TrackSelection[] paramArrayOfTrackSelection, int paramInt)
   {
-    int i1 = 0;
     if (paramInt == 0) {
       return;
     }
+    int i1 = 0;
     int i = 0;
     int k = -1;
-    int j = -1;
-    int m;
     int n;
-    if (i < paramArrayOfRendererCapabilities.length)
+    for (int j = -1; i < paramArrayOfRendererCapabilities.length; j = n)
     {
       int i2 = paramArrayOfRendererCapabilities[i].getTrackType();
       TrackSelection localTrackSelection = paramArrayOfTrackSelection[i];
@@ -132,52 +125,47 @@ public abstract class MappingTrackSelector
           n = j;
           if (rendererSupportsTunneling(paramArrayOfInt[i], paramArrayOfTrackGroupArray[i], localTrackSelection))
           {
-            if (i2 != 1) {
-              break label192;
+            if (i2 == 1)
+            {
+              if (j == -1)
+              {
+                n = i;
+                m = k;
+                break label146;
+              }
             }
-            if (j != -1) {
-              i = 0;
+            else {
+              if (k == -1) {
+                break label138;
+              }
             }
+            i = 0;
+            break label166;
+            label138:
+            m = i;
+            n = j;
           }
         }
       }
+      label146:
+      i += 1;
+      k = m;
     }
-    for (;;)
+    i = 1;
+    label166:
+    int m = i1;
+    if (j != -1)
     {
-      label115:
       m = i1;
-      if (j != -1)
-      {
-        m = i1;
-        if (k != -1) {
-          m = 1;
-        }
+      if (k != -1) {
+        m = 1;
       }
-      if ((i & m) == 0) {
-        break;
-      }
+    }
+    if ((i & m) != 0)
+    {
       paramArrayOfRendererCapabilities = new RendererConfiguration(paramInt);
       paramArrayOfRendererConfiguration[j] = paramArrayOfRendererCapabilities;
       paramArrayOfRendererConfiguration[k] = paramArrayOfRendererCapabilities;
-      return;
-      n = i;
-      m = k;
-      for (;;)
-      {
-        i += 1;
-        k = m;
-        j = n;
-        break;
-        label192:
-        if (k != -1)
-        {
-          i = 0;
-          break label115;
-        }
-        m = i;
-        n = j;
-      }
-      i = 1;
     }
   }
   
@@ -188,31 +176,30 @@ public abstract class MappingTrackSelector
     }
     int j = paramTrackGroupArray.indexOf(paramTrackSelection.getTrackGroup());
     int i = 0;
-    for (;;)
+    while (i < paramTrackSelection.length())
     {
-      if (i >= paramTrackSelection.length()) {
-        break label57;
-      }
       if ((paramArrayOfInt[j][paramTrackSelection.getIndexInTrackGroup(i)] & 0x20) != 32) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label57:
     return true;
   }
   
   public final void clearSelectionOverride(int paramInt, TrackGroupArray paramTrackGroupArray)
   {
     Map localMap = (Map)this.selectionOverrides.get(paramInt);
-    if ((localMap == null) || (!localMap.containsKey(paramTrackGroupArray))) {
-      return;
+    if (localMap != null)
+    {
+      if (!localMap.containsKey(paramTrackGroupArray)) {
+        return;
+      }
+      localMap.remove(paramTrackGroupArray);
+      if (localMap.isEmpty()) {
+        this.selectionOverrides.remove(paramInt);
+      }
+      invalidate();
     }
-    localMap.remove(paramTrackGroupArray);
-    if (localMap.isEmpty()) {
-      this.selectionOverrides.remove(paramInt);
-    }
-    invalidate();
   }
   
   public final void clearSelectionOverrides()
@@ -227,11 +214,14 @@ public abstract class MappingTrackSelector
   public final void clearSelectionOverrides(int paramInt)
   {
     Map localMap = (Map)this.selectionOverrides.get(paramInt);
-    if ((localMap == null) || (localMap.isEmpty())) {
-      return;
+    if (localMap != null)
+    {
+      if (localMap.isEmpty()) {
+        return;
+      }
+      this.selectionOverrides.remove(paramInt);
+      invalidate();
     }
-    this.selectionOverrides.remove(paramInt);
-    invalidate();
   }
   
   public final MappingTrackSelector.MappedTrackInfo getCurrentMappedTrackInfo()
@@ -266,10 +256,10 @@ public abstract class MappingTrackSelector
   
   public final TrackSelectorResult selectTracks(RendererCapabilities[] paramArrayOfRendererCapabilities, TrackGroupArray paramTrackGroupArray)
   {
-    int j = 0;
     Object localObject4 = new int[paramArrayOfRendererCapabilities.length + 1];
     Object localObject6 = new TrackGroup[paramArrayOfRendererCapabilities.length + 1][];
     int[][][] arrayOfInt = new int[paramArrayOfRendererCapabilities.length + 1][][];
+    int j = 0;
     int i = 0;
     while (i < localObject6.length)
     {
@@ -281,20 +271,20 @@ public abstract class MappingTrackSelector
     i = 0;
     int k;
     Object localObject1;
-    if (i < paramTrackGroupArray.length)
+    while (i < paramTrackGroupArray.length)
     {
       localObject2 = paramTrackGroupArray.get(i);
       k = findRenderer(paramArrayOfRendererCapabilities, (TrackGroup)localObject2);
-      if (k == paramArrayOfRendererCapabilities.length) {}
-      for (localObject1 = new int[((TrackGroup)localObject2).length];; localObject1 = getFormatSupport(paramArrayOfRendererCapabilities[k], (TrackGroup)localObject2))
-      {
-        int m = localObject4[k];
-        localObject6[k][m] = localObject2;
-        arrayOfInt[k][m] = localObject1;
-        localObject4[k] += 1;
-        i += 1;
-        break;
+      if (k == paramArrayOfRendererCapabilities.length) {
+        localObject1 = new int[((TrackGroup)localObject2).length];
+      } else {
+        localObject1 = getFormatSupport(paramArrayOfRendererCapabilities[k], (TrackGroup)localObject2);
       }
+      int m = localObject4[k];
+      localObject6[k][m] = localObject2;
+      arrayOfInt[k][m] = localObject1;
+      localObject4[k] += 1;
+      i += 1;
     }
     Object localObject2 = new TrackGroupArray[paramArrayOfRendererCapabilities.length];
     Object localObject5 = new int[paramArrayOfRendererCapabilities.length];
@@ -311,38 +301,44 @@ public abstract class MappingTrackSelector
     localObject6 = new TrackGroupArray((TrackGroup[])Arrays.copyOf(localObject6[paramArrayOfRendererCapabilities.length], i));
     localObject4 = selectTracks(paramArrayOfRendererCapabilities, (TrackGroupArray[])localObject2, arrayOfInt);
     i = 0;
-    if (i < paramArrayOfRendererCapabilities.length)
+    for (;;)
     {
-      if (this.rendererDisabledFlags.get(i)) {
+      k = paramArrayOfRendererCapabilities.length;
+      localObject1 = null;
+      if (i >= k) {
+        break;
+      }
+      if (this.rendererDisabledFlags.get(i))
+      {
         localObject4[i] = null;
       }
-      do
+      else
       {
-        i += 1;
-        break;
-        localObject1 = localObject2[i];
-      } while (!hasSelectionOverride(i, (TrackGroupArray)localObject1));
-      localObject7 = (MappingTrackSelector.SelectionOverride)((Map)this.selectionOverrides.get(i)).get(localObject1);
-      if (localObject7 == null) {}
-      for (localObject1 = null;; localObject1 = ((MappingTrackSelector.SelectionOverride)localObject7).createTrackSelection((TrackGroupArray)localObject1))
-      {
-        localObject4[i] = localObject1;
-        break;
+        localObject7 = localObject2[i];
+        if (hasSelectionOverride(i, (TrackGroupArray)localObject7))
+        {
+          MappingTrackSelector.SelectionOverride localSelectionOverride = (MappingTrackSelector.SelectionOverride)((Map)this.selectionOverrides.get(i)).get(localObject7);
+          if (localSelectionOverride != null) {
+            localObject1 = localSelectionOverride.createTrackSelection((TrackGroupArray)localObject7);
+          }
+          localObject4[i] = localObject1;
+        }
       }
+      i += 1;
     }
     Object localObject7 = determineEnabledRenderers(paramArrayOfRendererCapabilities, (TrackSelection[])localObject4);
     localObject3 = new MappingTrackSelector.MappedTrackInfo((int[])localObject5, (TrackGroupArray[])localObject2, (int[])localObject3, arrayOfInt, (TrackGroupArray)localObject6);
     localObject5 = new RendererConfiguration[paramArrayOfRendererCapabilities.length];
     i = j;
-    if (i < paramArrayOfRendererCapabilities.length)
+    while (i < paramArrayOfRendererCapabilities.length)
     {
-      if (localObject7[i] != 0) {}
-      for (localObject1 = RendererConfiguration.DEFAULT;; localObject1 = null)
-      {
-        localObject5[i] = localObject1;
-        i += 1;
-        break;
+      if (localObject7[i] != 0) {
+        localObject1 = RendererConfiguration.DEFAULT;
+      } else {
+        localObject1 = null;
       }
+      localObject5[i] = localObject1;
+      i += 1;
     }
     maybeConfigureRenderersForTunneling(paramArrayOfRendererCapabilities, (TrackGroupArray[])localObject2, arrayOfInt, (RendererConfiguration[])localObject5, (TrackSelection[])localObject4, this.tunnelingAudioSessionId);
     return new TrackSelectorResult(paramTrackGroupArray, (boolean[])localObject7, new TrackSelectionArray((TrackSelection[])localObject4), localObject3, (RendererConfiguration[])localObject5);
@@ -386,7 +382,7 @@ public abstract class MappingTrackSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.MappingTrackSelector
  * JD-Core Version:    0.7.0.1
  */

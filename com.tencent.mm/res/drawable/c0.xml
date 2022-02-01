@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/bz" />
-    <item android:state_focused="true" android:drawable="@drawable/bz" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/bz" />
-    <item android:drawable="@color/a3x" />
-</selector>
+    <item android:right="3.0dip">
+        <bitmap android:src="@drawable/bng" />
+    </item>
+</layer-list>

@@ -34,15 +34,16 @@ public final class Session
   {
     paramJceOutputStream.write(this.process_ip, 0);
     paramJceOutputStream.write(this.process_port, 1);
-    if (this.proxy_ip != null) {
-      paramJceOutputStream.write(this.proxy_ip, 2);
+    String str = this.proxy_ip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.proxy_port, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.Session
  * JD-Core Version:    0.7.0.1
  */

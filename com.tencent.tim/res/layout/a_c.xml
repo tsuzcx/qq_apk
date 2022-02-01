@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/anb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/puw" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+            <Button android:id="@id/anm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pyg" />
+            <TextView android:id="@id/jjo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/anf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pwd" />
+            <Button android:id="@id/and" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pye" />
+        </LinearLayout>
+        <TextView android:id="@id/jk1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+        <Button android:id="@id/ang" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/puk" />
+        <TextView android:id="@id/jjw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/amx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pzn" />
+            <Button android:id="@id/ane" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pwr" />
+        </LinearLayout>
+        <TextView android:id="@id/jjp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/puv" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/anl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pwh" android:layout_alignParentTop="true" />
+            <Button android:id="@id/amp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pyy" android:layout_toRightOf="@id/anl" android:layout_alignParentTop="true" />
+            <TextView android:id="@id/jk3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:minHeight="100.0dip" android:layout_below="@id/anl" />
+        </RelativeLayout>
+        <TextView android:id="@id/jjs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pxb" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/anj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pug" android:layout_alignParentTop="true" />
+            <Button android:id="@id/amn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/q0c" android:layout_toRightOf="@id/anj" />
+            <TextView android:id="@id/jjr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:minHeight="100.0dip" android:layout_below="@id/anj" />
+        </RelativeLayout>
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pwf" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/ank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/pvq" android:layout_alignParentTop="true" />
+            <Button android:id="@id/amo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/px5" android:layout_toRightOf="@id/ank" />
+            <TextView android:id="@id/jjv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:minHeight="100.0dip" android:layout_below="@id/amo" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

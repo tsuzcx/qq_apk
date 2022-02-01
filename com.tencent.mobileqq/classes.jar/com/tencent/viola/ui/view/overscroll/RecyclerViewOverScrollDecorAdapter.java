@@ -16,18 +16,22 @@ public class RecyclerViewOverScrollDecorAdapter
   {
     this.mRecyclerView = paramRecyclerView;
     paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if (((paramRecyclerView instanceof LinearLayoutManager)) || ((paramRecyclerView instanceof StaggeredGridLayoutManager)))
+    boolean bool = paramRecyclerView instanceof LinearLayoutManager;
+    if ((!bool) && (!(paramRecyclerView instanceof StaggeredGridLayoutManager))) {
+      throw new IllegalArgumentException("Recycler views with custom layout managers are not supported by this adapter out of the box.Try implementing and providing an explicit 'impl' parameter to the other c'tors, or otherwise create a custom adapter subclass of your own.");
+    }
+    int i;
+    if (bool) {
+      i = ((LinearLayoutManager)paramRecyclerView).getOrientation();
+    } else {
+      i = ((StaggeredGridLayoutManager)paramRecyclerView).getOrientation();
+    }
+    if (i == 0)
     {
-      if ((paramRecyclerView instanceof LinearLayoutManager)) {}
-      for (int i = ((LinearLayoutManager)paramRecyclerView).getOrientation(); i == 0; i = ((StaggeredGridLayoutManager)paramRecyclerView).getOrientation())
-      {
-        this.mImpl = new RecyclerViewOverScrollDecorAdapter.ImplHorizLayout(this);
-        return;
-      }
-      this.mImpl = new RecyclerViewOverScrollDecorAdapter.ImplVerticalLayout(this);
+      this.mImpl = new RecyclerViewOverScrollDecorAdapter.ImplHorizLayout(this);
       return;
     }
-    throw new IllegalArgumentException("Recycler views with custom layout managers are not supported by this adapter out of the box.Try implementing and providing an explicit 'impl' parameter to the other c'tors, or otherwise create a custom adapter subclass of your own.");
+    this.mImpl = new RecyclerViewOverScrollDecorAdapter.ImplVerticalLayout(this);
   }
   
   public View getView()
@@ -47,7 +51,7 @@ public class RecyclerViewOverScrollDecorAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.RecyclerViewOverScrollDecorAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.pluginsdk.ipc;
 import android.os.Bundle;
 
 public abstract class RemoteResultCallback
-  extends RemoteCallback.Stub
+  extends RemotesCallback.Stub
 {
   public abstract void onCallback(Bundle paramBundle);
 }

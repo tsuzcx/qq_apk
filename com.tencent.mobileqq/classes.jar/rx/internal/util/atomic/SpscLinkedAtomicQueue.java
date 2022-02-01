@@ -13,13 +13,14 @@ public final class SpscLinkedAtomicQueue<E>
   
   public boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException("null elements not allowed");
+    if (paramE != null)
+    {
+      paramE = new LinkedQueueNode(paramE);
+      lpProducerNode().soNext(paramE);
+      spProducerNode(paramE);
+      return true;
     }
-    paramE = new LinkedQueueNode(paramE);
-    lpProducerNode().soNext(paramE);
-    spProducerNode(paramE);
-    return true;
+    throw new NullPointerException("null elements not allowed");
   }
   
   public E peek()
@@ -45,7 +46,7 @@ public final class SpscLinkedAtomicQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.atomic.SpscLinkedAtomicQueue
  * JD-Core Version:    0.7.0.1
  */
